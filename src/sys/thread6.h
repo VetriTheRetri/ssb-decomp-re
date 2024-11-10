@@ -116,7 +116,7 @@ typedef struct Unk80045268
 extern u32 gSYControllerConnectedNum;
 extern sb32 gUpdateContData;
 extern s8 gPlayerControllerPortStatuses[MAXCONTROLLERS];
-extern gsController gPlayerControllers[MAXCONTROLLERS];
+extern gsController gSYControllerDevices[MAXCONTROLLERS];
 extern gsController gSysController;
 
 extern void schedule_contread(void);

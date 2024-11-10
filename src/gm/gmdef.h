@@ -177,7 +177,7 @@ typedef enum GMAttackSound
 	nGMHitSoundSlash,
 	nGMHitSoundFan,
 	nGMHitSoundBat,
-	nGMHitSoundEnumMax
+	nGMHitSoundEnumCount
 
 } GMAttackSound;
 
@@ -186,7 +186,7 @@ typedef enum GMAttackLevel
 	nGMHitLevelWeak,
 	nGMHitLevelMedium,
 	nGMHitLevelStrong,
-	nGMHitLevelEnumMax
+	nGMHitLevelEnumCount
 
 } GMAttackLevel;
 

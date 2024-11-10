@@ -236,7 +236,7 @@ void grWallpaperMakeSector(void)
 
     sGRWallpaperGObj = wallpaper_gobj = gcMakeGObjSPAfter(nGCCommonKindWallpaper, NULL, nGCCommonLinkIDWallpaper, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(wallpaper_gobj, lbCommonDrawSObjAttr, 0, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(wallpaper_gobj, lbCommonDrawSObjAttr, 0, GOBJ_PRIORITY_DEFAULT, ~0);
 
     wallpaper_sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, gMPCollisionGroundData->wallpaper);
 
@@ -261,7 +261,7 @@ void grWallpaperMakeBonus3(void)
 
     sGRWallpaperGObj = wallpaper_gobj = gcMakeGObjSPAfter(nGCCommonKindWallpaper, NULL, nGCCommonLinkIDWallpaper, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(wallpaper_gobj, grWallpaperBonus3FuncDisplay, 0, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(wallpaper_gobj, grWallpaperBonus3FuncDisplay, 0, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
 // 0x80104BDC
@@ -269,7 +269,7 @@ void grWallpaperMakeDecideKind(void)
 {
     if (gSCManagerSceneData.scene_curr == nSCKind1PTraining)
     {
-        scTrainingMode_SetBackgroundSprite();
+        sc1PTrainingModeLoadWallpaper();
         grWallpaperMakeStatic();
     }
     else if (gSCManagerBattleState->gkind >= nGRKindBonusStageStart)

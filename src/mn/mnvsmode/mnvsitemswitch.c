@@ -206,7 +206,7 @@ void mnVSItemSwitchMakeLabels(void)
 
     gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(gobj, mnVSItemSwitchLabelsFuncDisplay, 1, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, mnVSItemSwitchLabelsFuncDisplay, 1, GOBJ_PRIORITY_DEFAULT, ~0);
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSItemSwitchFiles[0], &lMNVSItemSwitchLabelVSOptionsSprite));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -300,7 +300,7 @@ void mnVSItemSwitchMakeDecal(void)
     SObj *sobj;
     
     gobj = gcMakeGObjSPAfter(0, NULL, 6, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 4, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 4, GOBJ_PRIORITY_DEFAULT, ~0);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSItemSwitchFiles[0], &lMNVSItemSwitchDecalButtonSprite));
     
@@ -322,7 +322,7 @@ void mnVSItemSwitchMakeItemList(void)
     SObj *sobj;
     
     gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSItemSwitchFiles[0], &lMNVSItemSwitchItemListSprite));
     
@@ -359,7 +359,7 @@ void mnVSItemSwitchMakeCursor(s32 off_y)
 
     sMNVSItemSwitchCursorGObj = gobj = gcMakeGObjSPAfter(0, NULL, 5, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 3, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 3, GOBJ_PRIORITY_DEFAULT, ~0);
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSItemSwitchFiles[0], &lMNVSItemSwitchCursorSprite));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -402,7 +402,7 @@ void mnVSItemSwitchMakeAppearance(s32 rate)
         
     sMNVSItemSwitchOptionGObjs[0] = gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSItemSwitchFiles[0], rate_offsets[rate]));
     
@@ -429,7 +429,7 @@ void mnVSItemSwitchInitToggles(void)
     {
         sMNVSItemSwitchOptionGObjs[i] = gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT);
 
-        gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, -1);
+        gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
         mnVSItemSwitchMakeToggle(gobj, 244.0F, i * 10 + 54);
         mnVSItemSwitchSetToggleSpriteColors(gobj, sMNVSItemSwitchOptionStatuses[i]);
     }

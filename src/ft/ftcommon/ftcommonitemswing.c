@@ -102,7 +102,7 @@ void ftCommonStarRodSwingProcUpdate(GObj *fighter_gobj)
 }
 
 // 0x80188618
-s32 dFTCommonItemSwingStatusIDs[/* */][nFTItemSwingTypeEnumMax] =
+s32 dFTCommonItemSwingStatusIDs[/* */][nFTItemSwingTypeEnumCount] =
 {
     { nFTCommonStatusSwordSwing1,   nFTCommonStatusSwordSwing3,   nFTCommonStatusSwordSwing4,   nFTCommonStatusSwordSwingDash   },
     { nFTCommonStatusBatSwing1,     nFTCommonStatusBatSwing3,     nFTCommonStatusBatSwing4,     nFTCommonStatusBatSwingDash     },

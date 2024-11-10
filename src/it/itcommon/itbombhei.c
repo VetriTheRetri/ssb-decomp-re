@@ -180,7 +180,7 @@ enum itBombHeiStatus
     nITBombHeiStatusExplodeMap,             // Explode on map collision
     nITBombHeiStatusExplode,               // Neutral explosion
     nITBombHeiStatusExplodeWait,            // Stall until explosion
-    nITBombHeiStatusEnumMax
+    nITBombHeiStatusEnumCount
 };
 
 // // // // // // // // // // // //

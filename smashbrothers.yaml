@@ -1162,10 +1162,10 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x1138E0, c, ovl7]
-      - [0x116F90, .data, ovl7]
-      - [0x117140, .rodata, ovl7]
-      - { start: 0x117180, type: .bss, vram: 0x80190960, name: ovl7 }
+      - [0x1138E0, c, sc/sc1pmode/sc1ptrainingmode]
+      - [0x116F90, .data, sc/sc1pmode/sc1ptrainingmode]
+      - [0x117140, .rodata, sc/sc1pmode/sc1ptrainingmode]
+      - { start: 0x117180, type: .bss, name: sc/sc1pmode/sc1ptrainingmode, vram: 0x80190960 }
 
   - name: ovl10
     type: code

@@ -178,7 +178,7 @@ void mvOpeningRunMakeWallpaper(void)
 	SObj *right_sobj;
 
 	gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
-	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_PRIORITY_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	left_sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMVOpeningRunFiles[0], &lMVOpeningRunWallpaperSprite));
 
@@ -209,7 +209,7 @@ void mvOpeningRunMakeCrash(void)
 	GObj *gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_PRIORITY_DEFAULT);
 
 	gcSetupCommonDObjs(gobj, lbRelocGetFileData(DObjDesc*, sMVOpeningRunFiles[2], &lMVOpeningRunCrashDObjDesc), NULL);
-	gcAddGObjDisplay(gobj, gcDrawDObjTreeForGObj, 6, GOBJ_PRIORITY_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, gcDrawDObjTreeForGObj, 6, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	DObjGetStruct(gobj)->translate.vec.f.x = 960.0F;
 	DObjGetStruct(gobj)->translate.vec.f.y = 360.0F;

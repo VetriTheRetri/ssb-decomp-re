@@ -325,9 +325,9 @@ sb32 mnVSResultsCheckStartPressed()
 
 	if (gMNVSResultsFramesElapsed >= gMNVSResultsMinFramesElapsed)
 	{
-		for (i = 0; i < ARRAY_COUNT(gPlayerControllers); i++)
+		for (i = 0; i < ARRAY_COUNT(gSYControllerDevices); i++)
 		{
-			if (gPlayerControllers[i].button_tap & START_BUTTON)
+			if (gSYControllerDevices[i].button_tap & START_BUTTON)
 				return TRUE;
 		}
 	}
@@ -686,7 +686,7 @@ void mnVSResultsCreateLogo()
 	logo_gobj = gcMakeGObjSPAfter(0, 0, 0x17, 0x80000000);
 
 	gcSetupCommonDObjs(logo_gobj, GetAddressFromOffset(gMNVSResultsFiles[4], offsets1[winner_char_id]), 0);
-	gcAddGObjDisplay(logo_gobj, gcDrawDObjTreeForGObj, 0x21, 0x80000000, -1);
+	gcAddGObjDisplay(logo_gobj, gcDrawDObjTreeForGObj, 0x21, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddMObjAll(logo_gobj, GetAddressFromOffset(gMNVSResultsFiles[4], offsets2[winner_char_id]));
 	gcAddMatAnimJointAll(logo_gobj, GetAddressFromOffset(gMNVSResultsFiles[4], offsets3[winner_char_id]), color);
 	gcPlayAnimAll(logo_gobj);
@@ -765,7 +765,7 @@ void mnVSResultsCreateBackground()
 	}
 
 	bg_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	gcAddGObjDisplay(bg_gobj, mnVSResultsRenderBackground, 0x1A, 0x80000000, -1);
+	gcAddGObjDisplay(bg_gobj, mnVSResultsRenderBackground, 0x1A, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	bg_sobj = lbCommonMakeSObjForGObj(bg_gobj, GetAddressFromOffset(gMNVSResultsFiles[0], &FILE_022_BACKGROUND_IMAGE_OFFSET));
 
@@ -1080,7 +1080,7 @@ void mnVSResultsCreatePlayerIndicator(s32 port_id, s32 color_index)
 	};
 
 	indicator_gobj = gcMakeGObjSPAfter(0, 0, 0x12, 0x80000000);
-	gcAddGObjDisplay(indicator_gobj, lbCommonDrawSObjAttr, 0x1B, 0x80000000, -1);
+	gcAddGObjDisplay(indicator_gobj, lbCommonDrawSObjAttr, 0x1B, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	if (gSCManagerTransferBattleState.players[port_id].pkind == 0)
 	{
@@ -1163,7 +1163,7 @@ void mnVSResultsDrawString(const char *str, f32 x, f32 y, s32 color_index, f32 s
 
 	current_x = x;
 	string_gobj = gcMakeGObjSPAfter(0, 0, 0x14, 0x80000000);
-	gcAddGObjDisplay(string_gobj, lbCommonDrawSObjAttr, 0x1D, 0x80000000, -1);
+	gcAddGObjDisplay(string_gobj, lbCommonDrawSObjAttr, 0x1D, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	for (i = 0; str[i] != 0; i++)
 	{
@@ -1521,7 +1521,7 @@ void mnVSResultsRenderOverlay(GObj* overlay_gobj)
 void mnVSResultsCreateOverlay()
 {
 	gMNVSResultsOverlayAlpha = 0;
-	gcAddGObjDisplay(gcMakeGObjSPAfter(0, 0, 0x15, 0x80000000), mnVSResultsRenderOverlay, 0x1E, 0x80000000, -1);
+	gcAddGObjDisplay(gcMakeGObjSPAfter(0, 0, 0x15, 0x80000000), mnVSResultsRenderOverlay, 0x1E, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
 // 0x80134DF4
@@ -1557,7 +1557,7 @@ void mnVSResultsRenderBackgroundOverlay(GObj* bg_overlay_gobj)
 void mnVSResultsCreateBackgroundOverlay()
 {
 	gMNVSResultsBackgroundOverlayAlpha = 0xFF;
-	gcAddGObjDisplay(gcMakeGObjSPAfter(0, 0, 0x19, 0x80000000), mnVSResultsRenderBackgroundOverlay, 0x23, 0x80000000, -1);
+	gcAddGObjDisplay(gcMakeGObjSPAfter(0, 0, 0x19, 0x80000000), mnVSResultsRenderBackgroundOverlay, 0x23, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
 // 0x80135028
@@ -1593,7 +1593,7 @@ void mnVSResultsRenderBackgroundOverlay2(GObj* bg_overlay_gobj)
 void mnVSResultsCreateBackgroundOverlay2()
 {
 	gMNVSResultsBackgroundOverlay2Alpha = 0xFF;
-	gcAddGObjDisplay(gcMakeGObjSPAfter(0, 0, 0x18, 0x80000000), mnVSResultsRenderBackgroundOverlay2, 0x22, 0x80000000, -1);
+	gcAddGObjDisplay(gcMakeGObjSPAfter(0, 0, 0x18, 0x80000000), mnVSResultsRenderBackgroundOverlay2, 0x22, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
 // 0x8013525C
@@ -1674,7 +1674,7 @@ void mnVSResultsCreateColumnHeaders()
 	FTStruct* ft_struct;
 
 	column_header_gobj = gcMakeGObjSPAfter(0, 0, 0x16, 0x80000000);
-	gcAddGObjDisplay(column_header_gobj, lbCommonDrawSObjAttr, 0x1F, 0x80000000, -1);
+	gcAddGObjDisplay(column_header_gobj, lbCommonDrawSObjAttr, 0x1F, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	for (i = 0; i < 4; i++)
 	{
@@ -1711,7 +1711,7 @@ void mnVSResultsDrawKOs(s32 y)
 {
 	GObj* kos_row_gobj;
 
-	kos_row_gobj = lbCommonMakeSpriteGObj(0, 0, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1F, 0x80000000, -1, GetAddressFromOffset(gMNVSResultsFiles[0], &FILE_022_KOS_TEXTURE_IMAGE_OFFSET), 1, 0, 1);
+	kos_row_gobj = lbCommonMakeSpriteGObj(0, 0, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1F, GOBJ_PRIORITY_DEFAULT, ~0, GetAddressFromOffset(gMNVSResultsFiles[0], &FILE_022_KOS_TEXTURE_IMAGE_OFFSET), 1, 0, 1);
 	SObjGetStruct(kos_row_gobj)->pos.x = 26.0F;
 	SObjGetStruct(kos_row_gobj)->pos.y = y;
 	SObjGetStruct(kos_row_gobj)->sprite.attr &= ~SP_FASTCOPY;
@@ -1751,7 +1751,7 @@ void mnVSResultsDrawTKOs(s32 y)
 	GObj* tkos_row_gobj;
 	SObj* negative_symbol_sobj;
 
-	tkos_row_gobj = lbCommonMakeSpriteGObj(0, 0, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1F, 0x80000000, -1, GetAddressFromOffset(gMNVSResultsFiles[0], &FILE_022_TKO_TEXTURE_IMAGE_OFFSET), 1, 0, 1);
+	tkos_row_gobj = lbCommonMakeSpriteGObj(0, 0, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1F, GOBJ_PRIORITY_DEFAULT, ~0, GetAddressFromOffset(gMNVSResultsFiles[0], &FILE_022_TKO_TEXTURE_IMAGE_OFFSET), 1, 0, 1);
 	SObjGetStruct(tkos_row_gobj)->pos.x = 26.0F;
 	SObjGetStruct(tkos_row_gobj)->pos.y = y;
 	SObjGetStruct(tkos_row_gobj)->sprite.attr &= ~SP_FASTCOPY;
@@ -1811,7 +1811,7 @@ void mnVSResultsCreateHorizontalLine(s32 y)
 	GObj* horizontal_line_gobj;
 
 	horizontal_line_gobj = gcMakeGObjSPAfter(0, 0, 0x16, 0x80000000);
-	gcAddGObjDisplay(horizontal_line_gobj, mnVSResultsRenderHorizontalLine, 0x1F, 0x80000000, -1);
+	gcAddGObjDisplay(horizontal_line_gobj, mnVSResultsRenderHorizontalLine, 0x1F, GOBJ_PRIORITY_DEFAULT, ~0);
 	horizontal_line_gobj->user_data.s = y;
 }
 
@@ -1826,7 +1826,7 @@ void mnVSResultsDrawPointsRow()
 {
 	GObj* points_row_gobj;
 
-	points_row_gobj = lbCommonMakeSpriteGObj(0, 0, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1F, 0x80000000, -1, GetAddressFromOffset(gMNVSResultsFiles[0], &FILE_022_POINTS_TEXTURE_IMAGE_OFFSET), 1, 0, 1);
+	points_row_gobj = lbCommonMakeSpriteGObj(0, 0, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1F, GOBJ_PRIORITY_DEFAULT, ~0, GetAddressFromOffset(gMNVSResultsFiles[0], &FILE_022_POINTS_TEXTURE_IMAGE_OFFSET), 1, 0, 1);
 	SObjGetStruct(points_row_gobj)->pos.x = 26.0F;
 	SObjGetStruct(points_row_gobj)->pos.y = 104.0F;
 	SObjGetStruct(points_row_gobj)->sprite.attr &= ~SP_FASTCOPY;
@@ -1889,7 +1889,7 @@ void mnVSResultsDrawPlaceRow(s32 y)
 	GObj* place_row_gobj;
 	s32 i;
 
-	place_row_gobj = lbCommonMakeSpriteGObj(0, 0, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1F, 0x80000000, -1, GetAddressFromOffset(gMNVSResultsFiles[0], &FILE_022_PLACE_TEXTURE_IMAGE_OFFSET), 1, NULL, 1);
+	place_row_gobj = lbCommonMakeSpriteGObj(0, 0, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1F, GOBJ_PRIORITY_DEFAULT, ~0, GetAddressFromOffset(gMNVSResultsFiles[0], &FILE_022_PLACE_TEXTURE_IMAGE_OFFSET), 1, NULL, 1);
 	SObjGetStruct(place_row_gobj)->pos.x = 10.0F;
 	SObjGetStruct(place_row_gobj)->pos.y = y;
 	SObjGetStruct(place_row_gobj)->sprite.attr &= ~SP_FASTCOPY;
@@ -2059,7 +2059,7 @@ void mnVSResultsCreateScreenTitle()
 		mnVSResultsDrawResultsNoContest
 	};
 
-	screen_title_gobj = lbCommonMakeSpriteGObj(0, 0, 0x16, 0x80000000, mnVSResultsRenderScreenTitle, 0x1F, 0x80000000, -1, GetAddressFromOffset(gMNVSResultsFiles[2], offsets[mnVSResultsGetIsTeamBattle()]), 1, results_routines[gMNVSResultsGameRule], 1);
+	screen_title_gobj = lbCommonMakeSpriteGObj(0, 0, 0x16, 0x80000000, mnVSResultsRenderScreenTitle, 0x1F, GOBJ_PRIORITY_DEFAULT, ~0, GetAddressFromOffset(gMNVSResultsFiles[2], offsets[mnVSResultsGetIsTeamBattle()]), 1, results_routines[gMNVSResultsGameRule], 1);
 	SObjGetStruct(screen_title_gobj)->pos.x = 32.0f;
 	SObjGetStruct(screen_title_gobj)->pos.y = 29.0f;
 	SObjGetStruct(screen_title_gobj)->sprite.attr &= ~SP_FASTCOPY;
@@ -2072,7 +2072,7 @@ void mnVSResultsCreateScreenTitle()
 // 0x80136830
 void mnVSResultsCreateResultsSYRdpViewport()
 {
-	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonDrawSprite, 0xF, 0x80000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonDrawSprite, 0xF, GOBJ_PRIORITY_DEFAULT, ~0, 0, 1, 0, 1, 0);
 	CObj *cobj = CObjGetStruct(camera_gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }

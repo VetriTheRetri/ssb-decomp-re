@@ -39,7 +39,7 @@ mnCommonSetOptionChangeWaitN(sMN1PModeOptionChangeWait, is_button, stick_range, 
 // // // // // // // // // // // //
 
 // 0x801331A0
-GObj *sMN1PModeOptionGObjs[nMN1PModeOptionEnumMax];
+GObj *sMN1PModeOptionGObjs[nMN1PModeOptionEnumCount];
 
 // 0x801331B0
 s32 sMN1PModePad0x801331B4[2];
@@ -202,7 +202,7 @@ void mn1PModeMake1PGame(void)
     SObj *sobj;
 
     sMN1PModeOptionGObjs[nMN1PModeOption1PGame] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, ~0);
     
     mn1PModeMakeOptionTab(gobj, 124.0F, 42.0F, 16);
     mn1PModeSetOptionSpriteColors(gobj, sMN1PModeOption == nMN1PModeOption1PGame, nMN1PModeOption1PGame);
@@ -227,7 +227,7 @@ void mn1PModeMakeTrainingMode(void)
     SObj *sobj;
     
     sMN1PModeOptionGObjs[nMN1PModeOptionTrainingMode] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, ~0);
     
     mn1PModeMakeOptionTab(gobj, 99.0F, 84.0F, 16);
     mn1PModeSetOptionSpriteColors(gobj, sMN1PModeOption == nMN1PModeOptionTrainingMode, nMN1PModeOptionTrainingMode);
@@ -252,7 +252,7 @@ void mn1PModeMakeBonus1Practice(void)
     SObj *sobj;
 
     sMN1PModeOptionGObjs[nMN1PModeOptionBonus1Practice] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, ~0);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PModeFiles[1], &lMN1PModeOptionTabSprite));
     
@@ -283,7 +283,7 @@ void mn1PModeMakeBonus2Practice(void)
     SObj *sobj;
 
     sMN1PModeOptionGObjs[nMN1PModeOptionBonus2Practice] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, ~0);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PModeFiles[1], &lMN1PModeOptionTabSprite));
     
@@ -352,7 +352,7 @@ void mn1PModeMakeLabels(void)
     SObj *sobj;
     
     gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, mn1PModeLabelsFuncDisplay, 1, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, mn1PModeLabelsFuncDisplay, 1, GOBJ_PRIORITY_DEFAULT, ~0);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PModeFiles[0], &lMNCommonSmashLogoSprite));
     
@@ -398,7 +398,7 @@ void mn1PModeMakeDecals(void)
     SObj *sobj;
     
     gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_PRIORITY_DEFAULT, ~0);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PModeFiles[0], &lMNCommonWallpaperSprite));
     

@@ -234,9 +234,9 @@ void scAutoDemoDetectExit(void)
 {
 	s32 player;
 
-	for (player = 0; player < ARRAY_COUNT(gPlayerControllers); player++)
+	for (player = 0; player < ARRAY_COUNT(gSYControllerDevices); player++)
 	{
-		u16 button_tap = gPlayerControllers[player].button_tap;
+		u16 button_tap = gSYControllerDevices[player].button_tap;
 
 		if (button_tap & (A_BUTTON | B_BUTTON | START_BUTTON))
 		{
@@ -606,7 +606,7 @@ void scAutoDemoInitSObjs(void)
 		nGCCommonLinkIDInterface, 
 		GOBJ_PRIORITY_DEFAULT
 	);
-	gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_PRIORITY_DEFAULT, -1);
+	gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	for (player = 0; player < ARRAY_COUNT(gSCManagerSceneData.demo_fkind); player++)
 	{
@@ -681,7 +681,7 @@ void scAutoDemoFuncStart(void)
 
 		ft_desc.pkind = gSCManagerBattleState->players[player].pkind;
 
-		ft_desc.controller = &gPlayerControllers[player];
+		ft_desc.controller = &gSYControllerDevices[player];
 
 		ft_desc.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[player].fkind);
 

@@ -161,7 +161,7 @@ typedef enum ITKind
 	nITKindMew,											// Mew
 	nITKindMBallMonsterEnd = nITKindMew,				// End of Pokémon item IDs
 
-	nITKindEnumMax 										// End of all item IDs
+	nITKindEnumCount 										// End of all item IDs
 
 } ITKind;
 

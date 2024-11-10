@@ -353,7 +353,7 @@ void mnStagesCreateBackground()
 	SObj* background_sobj;
 
 	background_gobj = gcMakeGObjSPAfter(0U, NULL, 0x2U, 0x80000000U);
-	gcAddGObjDisplay(background_gobj, lbCommonDrawSObjAttr, 0x0U, 0x80000000U, -1);
+	gcAddGObjDisplay(background_gobj, lbCommonDrawSObjAttr, 0x0U, GOBJ_PRIORITY_DEFAULT, ~0);
 	background_sobj = lbCommonMakeSObjForGObj(background_gobj, GetAddressFromOffset(gMNStagesFiles[1], &FILE_015_BACKGROUND_IMAGE_OFFSET));
 	background_sobj->cms = G_TX_WRAP;
 	background_sobj->cmt = G_TX_WRAP;
@@ -372,7 +372,7 @@ void mnStagesCreateWoodenCircle()
 	SObj* wooden_circle_sobj;
 
 	wooden_circle_gobj = gcMakeGObjSPAfter(0U, NULL, 8U, 0x80000000U);
-	gcAddGObjDisplay(wooden_circle_gobj, lbCommonDrawSObjAttr, 6U, 0x80000000U, -1);
+	gcAddGObjDisplay(wooden_circle_gobj, lbCommonDrawSObjAttr, 6U, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	wooden_circle_sobj = lbCommonMakeSObjForGObj(wooden_circle_gobj, GetAddressFromOffset(gMNStagesFiles[2], &FILE_01E_WOODEN_CIRCLE_IMAGE_OFFSET));
 	wooden_circle_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -411,7 +411,7 @@ void mnStagesCreateStageSelectGfx()
 	s32 x;
 
 	stage_select_gobj = gcMakeGObjSPAfter(0U, NULL, 6U, 0x80000000U);
-	gcAddGObjDisplay(stage_select_gobj, mnStagesRenderStageSelectGfx, 4U, 0x80000000U, -1);
+	gcAddGObjDisplay(stage_select_gobj, mnStagesRenderStageSelectGfx, 4U, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	// Stage Select texture
 	stage_select_sobj = lbCommonMakeSObjForGObj(stage_select_gobj, GetAddressFromOffset(gMNStagesFiles[2], &FILE_01E_STAGE_SELECT_IMAGE_OFFSET));
@@ -506,7 +506,7 @@ void mnStagesCreateStageImages()
 	s32 i;
 
 	stage_image_gobj = gcMakeGObjSPAfter(0U, NULL, 3U, 0x80000000U);
-	gcAddGObjDisplay(stage_image_gobj, lbCommonDrawSObjAttr, 1U, 0x80000000U, -1);
+	gcAddGObjDisplay(stage_image_gobj, lbCommonDrawSObjAttr, 1U, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	for (i = 0; i < ARRAY_COUNT(offsets); i++)
 	{
@@ -698,7 +698,7 @@ void mnStagesCreateStageNameAndLogo(s32 slot_id)
 
 	name_logo_gobj = gcMakeGObjSPAfter(0U, NULL, 4U, 0x80000000U);
 	gMNStagesNameLogoGobj = name_logo_gobj;
-	gcAddGObjDisplay(name_logo_gobj, lbCommonDrawSObjAttr, 2U, 0x80000000U, -1);
+	gcAddGObjDisplay(name_logo_gobj, lbCommonDrawSObjAttr, 2U, GOBJ_PRIORITY_DEFAULT, ~0);
 	mnStagesCreateLogo(gMNStagesNameLogoGobj, mnStagesGetStageID(slot_id));
 
 	if (slot_id != 9)
@@ -727,7 +727,7 @@ void mnStagesCreateCursor()
 	SObj* cursor_sobj;
 
 	gMNStagesCursorGobj = cursor_gobj = gcMakeGObjSPAfter(0U, NULL, 7U, 0x80000000U);
-	gcAddGObjDisplay(cursor_gobj, lbCommonDrawSObjAttr, 5U, 0x80000000U, -1);
+	gcAddGObjDisplay(cursor_gobj, lbCommonDrawSObjAttr, 5U, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	cursor_sobj = lbCommonMakeSObjForGObj(cursor_gobj, GetAddressFromOffset(gMNStagesFiles[2], &FILE_01E_CURSOR_IMAGE_OFFSET));
 	cursor_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -770,7 +770,7 @@ GObj* mnStagesCreateStagePreviewBackground(s32 stage_id)
 	s32 x;
 
 	stage_preview_bg_gobj = gcMakeGObjSPAfter(0U, NULL, 9U, 0x80000000U);
-	gcAddGObjDisplay(stage_preview_bg_gobj, mnStagesRenderStagePreviewBackground, 7U, 0x80000000U, -1);
+	gcAddGObjDisplay(stage_preview_bg_gobj, mnStagesRenderStagePreviewBackground, 7U, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	// draw patterned bg
 	for (x = 0x2B; x < 0x9B; x += 0x10)
@@ -852,7 +852,7 @@ GObj* mnStagesCreateStageGeo(s32 stage_id, MPGroundData* stage_info, MPGroundDes
 	}
 
 	stage_geo_gobj = gcMakeGObjSPAfter(0U, NULL, 5U, GOBJ_PRIORITY_DEFAULT);
-	gcAddGObjDisplay(stage_geo_gobj, (stage_info->layer_mask & (1 << stage_geo_id)) ? mnStagesRenderStagePreviewSecondary : mnStagesRenderStagePreviewPrimary, 3U, 0x80000000U, -1);
+	gcAddGObjDisplay(stage_geo_gobj, (stage_info->layer_mask & (1 << stage_geo_id)) ? mnStagesRenderStagePreviewSecondary : mnStagesRenderStagePreviewPrimary, 3U, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcSetupCustomDObjs(stage_geo_gobj, stage_geo->dobjdesc, NULL, nGCMatrixKindTraRotRpyRSca, nGCMatrixKindNull, nGCMatrixKindNull);
 
 	if (stage_geo->p_mobjsubs != NULL)

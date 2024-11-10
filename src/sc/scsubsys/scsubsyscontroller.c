@@ -36,9 +36,9 @@ s32 scSubsysControllerGetPlayerTapButtons(u32 buttons)
 {
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(gPlayerControllers); i++)
+    for (i = 0; i < ARRAY_COUNT(gSYControllerDevices); i++)
     {
-        if ((scSubsysControllerCheckConnected(i) != FALSE) && (gPlayerControllers[i].button_tap & buttons)) 
+        if ((scSubsysControllerCheckConnected(i) != FALSE) && (gSYControllerDevices[i].button_tap & buttons)) 
         {
             return i + 1;
         }
@@ -51,9 +51,9 @@ s32 scSubsysControllerGetPlayerHoldButtons(u32 buttons)
 {
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(gPlayerControllers); i++)
+    for (i = 0; i < ARRAY_COUNT(gSYControllerDevices); i++)
     {
-        if ((scSubsysControllerCheckConnected(i) != FALSE) && (gPlayerControllers[i].button_hold & buttons)) 
+        if ((scSubsysControllerCheckConnected(i) != FALSE) && (gSYControllerDevices[i].button_hold & buttons)) 
         {
             return i + 1;
         }
@@ -66,20 +66,20 @@ s32 scSubsysControllerGetPlayerStickLR(s8 range, sb32 right_or_left)
 {
     s32 i;
     
-    for (i = 0; i < ARRAY_COUNT(gPlayerControllers); i++)
+    for (i = 0; i < ARRAY_COUNT(gSYControllerDevices); i++)
     {
         if (scSubsysControllerCheckConnected(i) != FALSE)
         {
             if (right_or_left != 0)
             {
-                if (range < gPlayerControllers[i].stick_range.x)
+                if (range < gSYControllerDevices[i].stick_range.x)
                 {
-                    return gPlayerControllers[i].stick_range.x;
+                    return gSYControllerDevices[i].stick_range.x;
                 }
             }
-            else if (range > gPlayerControllers[i].stick_range.x)
+            else if (range > gSYControllerDevices[i].stick_range.x)
             {
-                return gPlayerControllers[i].stick_range.x;
+                return gSYControllerDevices[i].stick_range.x;
             }
         }
     }
@@ -91,20 +91,20 @@ s32 scSubsysControllerGetPlayerStickUD(s8 range, sb32 up_or_down)
 {
     s32 i;
     
-    for (i = 0; i < ARRAY_COUNT(gPlayerControllers); i++)
+    for (i = 0; i < ARRAY_COUNT(gSYControllerDevices); i++)
     {
         if (scSubsysControllerCheckConnected(i) != FALSE)
         {
             if (up_or_down != 0)
             {
-                if (range < gPlayerControllers[i].stick_range.y)
+                if (range < gSYControllerDevices[i].stick_range.y)
                 {
-                    return gPlayerControllers[i].stick_range.y;
+                    return gSYControllerDevices[i].stick_range.y;
                 }
             }
-            else if (range > gPlayerControllers[i].stick_range.y)
+            else if (range > gSYControllerDevices[i].stick_range.y)
             {
-                return gPlayerControllers[i].stick_range.y;
+                return gSYControllerDevices[i].stick_range.y;
             }
         }
     }
@@ -116,7 +116,7 @@ sb32 scSubsysControllerGetPlayerStickInRangeLR(s32 range_l_min, s32 range_r_min)
 {
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(gPlayerControllers); i++)
+    for (i = 0; i < ARRAY_COUNT(gSYControllerDevices); i++)
     {
         if (scSubsysControllerCheckConnected(i) != FALSE)
         {
@@ -124,8 +124,8 @@ sb32 scSubsysControllerGetPlayerStickInRangeLR(s32 range_l_min, s32 range_r_min)
             
             if
             (
-                (gPlayerControllers[i].stick_range.x < range_l_min) || 
-                (gPlayerControllers[i].stick_range.x > range_r_min)
+                (gSYControllerDevices[i].stick_range.x < range_l_min) || 
+                (gSYControllerDevices[i].stick_range.x > range_r_min)
             )
             {
                 is_out_range = TRUE;
@@ -146,7 +146,7 @@ sb32 scSubsysControllerGetPlayerStickInRangeUD(s32 range_d_min, s32 range_u_min)
 {
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(gPlayerControllers); i++)
+    for (i = 0; i < ARRAY_COUNT(gSYControllerDevices); i++)
     {
         if (scSubsysControllerCheckConnected(i) != FALSE)
         {
@@ -154,8 +154,8 @@ sb32 scSubsysControllerGetPlayerStickInRangeUD(s32 range_d_min, s32 range_u_min)
             
             if
             (
-                (gPlayerControllers[i].stick_range.y < range_d_min) || 
-                (gPlayerControllers[i].stick_range.y > range_u_min)
+                (gSYControllerDevices[i].stick_range.y < range_d_min) || 
+                (gSYControllerDevices[i].stick_range.y > range_u_min)
             )
             {
                 is_out_range = TRUE;

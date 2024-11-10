@@ -157,7 +157,7 @@ enum itMSBombStatus
     nITMSBombStatusAttached,
     nITMSBombStatusDetached,
     nITMSBombStatusExplode,
-    nITMSBombStatusEnumMax
+    nITMSBombStatusEnumCount
 };
 
 // // // // // // // // // // // //

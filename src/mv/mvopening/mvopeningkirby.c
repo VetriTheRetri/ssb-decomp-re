@@ -169,7 +169,7 @@ void mvOpeningKirbyMakeName(void)
 	s32 i;
 
 	sMVOpeningKirbyNameGObj = name_gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
-	gcAddGObjDisplay(name_gobj, lbCommonDrawSObjAttr, 27, GOBJ_PRIORITY_DEFAULT, -1);
+	gcAddGObjDisplay(name_gobj, lbCommonDrawSObjAttr, 27, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	for (i = 0; offsets[i] != 0; i++)
 	{
@@ -296,7 +296,7 @@ void mvOpeningKirbyMakeMotionWindow(void)
 		ft_desc.stock_count = gSCManagerBattleState->stocks;
 		ft_desc.damage = 0;
 		ft_desc.pkind = gSCManagerBattleState->players[i].pkind;
-		ft_desc.controller = &gPlayerControllers[i];
+		ft_desc.controller = &gSYControllerDevices[i];
 		ft_desc.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[i].fkind);
 
 		sMVOpeningKirbyStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&ft_desc);
@@ -322,7 +322,7 @@ void mvOpeningKirbyPosedWallpaperFuncDisplay(GObj *gobj)
 // 0x8018D970
 void mvOpeningKirbyMakePosedWallpaper(void)
 {
-	gcAddGObjDisplay(gcMakeGObjSPAfter(0, NULL, 19, GOBJ_PRIORITY_DEFAULT), mvOpeningKirbyPosedWallpaperFuncDisplay, 28, GOBJ_PRIORITY_DEFAULT, -1);
+	gcAddGObjDisplay(gcMakeGObjSPAfter(0, NULL, 19, GOBJ_PRIORITY_DEFAULT), mvOpeningKirbyPosedWallpaperFuncDisplay, 28, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
 // 0x8018D9BC

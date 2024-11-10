@@ -94,7 +94,7 @@ WPCreateDesc dITNyarsWeaponCoinWeaponDesc =
 enum itNyarsStatus
 {
     nITNyarsStatusAttack,
-    nITNyarsStatusEnumMax
+    nITNyarsStatusEnumCount
 };
 
 // // // // // // // // // // // //

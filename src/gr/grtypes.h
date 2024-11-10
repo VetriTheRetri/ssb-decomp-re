@@ -12,8 +12,8 @@
 
 struct GRDisplayDesc
 {
-	void *func_displaypri;
-	void *func_displaysec;
+	void *pri_func_display;
+	void *sec_func_display;
 	u8 dl_link;
 	void *proc_update;
 };
@@ -49,20 +49,20 @@ struct GRFileInfo
 union GRStruct
 {
 	// Common stages
-	grCommonGroundVarsPupupu pupupu;
-	grCommonGroundVarsSector sector;
-	grCommonGroundVarsZebes zebes;
-	grCommonGroundVarsYoster yoster;
-	grCommonGroundVarsInishie inishie;
-	grCommonGroundVarsJungle jungle;
-	grCommonGroundVarsHyrule hyrule;
-	grCommonGroundVarsYamabuki yamabuki;
-	grCommonGroundVarsCastle castle;
+	GRCommonGroundVarsPupupu pupupu;
+	GRCommonGroundVarsSector sector;
+	GRCommonGroundVarsZebes zebes;
+	GRCommonGroundVarsYoster yoster;
+	GRCommonGroundVarsInishie inishie;
+	GRCommonGroundVarsJungle jungle;
+	GRCommonGroundVarsHyrule hyrule;
+	GRCommonGroundVarsYamabuki yamabuki;
+	GRCommonGroundVarsCastle castle;
 
 	// Bonus stages
-	grBonusGroundVarsBonus1 bonus1;
+	GRBonusGroundVarsBonus1 bonus1;
 	GRBonusGroundVarsBonus2 bonus2;
-	grBonusGroundVarsBonus3 bonus3;
+	GRBonusGroundVarsBonus3 bonus3;
 };
 
 #endif

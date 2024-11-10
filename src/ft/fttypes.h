@@ -427,7 +427,7 @@ struct FTMotionEventSetDamageThrown2
 
 struct FTMotionDamageScript
 {
-	void* p_script[2][nFTKindEnumMax];
+	void* p_script[2][nFTKindEnumCount];
 };
 
 struct FTMotionEventSetDamageThrown

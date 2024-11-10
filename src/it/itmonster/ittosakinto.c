@@ -80,7 +80,7 @@ enum itTosakintoStatus
 {
     nITTosakintoStatusAppear,
     nITTosakintoStatusBounce,
-    nITTosakintoStatusEnumMax
+    nITTosakintoStatusEnumCount
 };
 
 // // // // // // // // // // // //

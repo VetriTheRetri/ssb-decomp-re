@@ -77,7 +77,7 @@ enum itPKFireStatus
 {
     nITNessPKFireStatusWait,
     nITNessPKFireStatusFall,
-    nITNessPKFireStatusEnumMax
+    nITNessPKFireStatusEnumCount
 };
 
 // // // // // // // // // // // //

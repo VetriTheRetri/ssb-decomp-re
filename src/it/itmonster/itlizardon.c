@@ -126,7 +126,7 @@ enum itLizardonStatus
     nITLizardonStatusFallUnused,            // Unused
     nITLizardonStatusFall,
     nITLizardonStatusAttack,
-    nITLizardonStatusEnumMax
+    nITLizardonStatusEnumCount
 };
 
 // // // // // // // // // // // //

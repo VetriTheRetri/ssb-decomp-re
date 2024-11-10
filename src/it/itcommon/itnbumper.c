@@ -159,7 +159,7 @@ enum itNBumperStatus
     nITNBumperStatusAttached,                // Ground active
     nITNBumperStatusHitAir,                   // Airborne hit
     nITNBumperStatusGDisappear,             // Ground despawn
-    nITNBumperStatusEnumMax
+    nITNBumperStatusEnumCount
 };
 
 // // // // // // // // // // // //

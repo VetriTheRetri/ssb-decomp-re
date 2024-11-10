@@ -45,7 +45,7 @@ s8 gPlayerControllerPortStatuses[MAXCONTROLLERS];
 ControllerInfo sContInfo[MAXCONTROLLERS];
 
 // 0x80045228
-gsController gPlayerControllers[MAXCONTROLLERS];
+gsController gSYControllerDevices[MAXCONTROLLERS];
 
 // 0x80045250
 sb32 gUpdateContData;
@@ -167,19 +167,19 @@ void update_global_contdata(void)
     {
         if (sContInfo[i].unk1C == FALSE)
         {
-            gPlayerControllers[i].button_hold = sContInfo[i].unk00;
-            gPlayerControllers[i].button_tap = sContInfo[i].unk04;
-            gPlayerControllers[i].button_release = sContInfo[i].unk0C;
-            gPlayerControllers[i].button_update = sContInfo[i].unk08;
-            gPlayerControllers[i].stick_range.x = sContInfo[i].unk0E;
-            gPlayerControllers[i].stick_range.y = sContInfo[i].unk0F;
+            gSYControllerDevices[i].button_hold = sContInfo[i].unk00;
+            gSYControllerDevices[i].button_tap = sContInfo[i].unk04;
+            gSYControllerDevices[i].button_release = sContInfo[i].unk0C;
+            gSYControllerDevices[i].button_update = sContInfo[i].unk08;
+            gSYControllerDevices[i].stick_range.x = sContInfo[i].unk0E;
+            gSYControllerDevices[i].stick_range.y = sContInfo[i].unk0F;
 
             sContInfo[i].unk04 = sContInfo[i].unk08 = sContInfo[i].unk0C = 0;
         }
     }
     update_controller_indices();
 
-    players = &gPlayerControllers[gPlayerControllerPortStatuses[0]];
+    players = &gSYControllerDevices[gPlayerControllerPortStatuses[0]];
 
     sys->button_tap = players->button_tap;
     sys->button_hold = players->button_hold;
@@ -237,12 +237,12 @@ void initialize_controllers(void) {
         sContInfo[i].unk1C = sContStatus[i].errno;
         sContInfo[i].unk1D = sContStatus[i].status;
 
-        gPlayerControllers[i].unk04 = 0;
-        gPlayerControllers[i].unk02 = 0;
-        gPlayerControllers[i].unk00 = 0;
+        gSYControllerDevices[i].unk04 = 0;
+        gSYControllerDevices[i].unk02 = 0;
+        gSYControllerDevices[i].unk00 = 0;
 
-        // gPlayerControllers[i].unk09 = 0;
-        gPlayerControllers[i].unk08 = gPlayerControllers[i].unk09 = 0;
+        // gSYControllerDevices[i].unk09 = 0;
+        gSYControllerDevices[i].unk08 = gSYControllerDevices[i].unk09 = 0;
     }
 
     update_controller_indices();

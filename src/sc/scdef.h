@@ -223,7 +223,7 @@ typedef enum SCBattleHandicap
 	nSCBattleHandicapOff,
 	nSCBattleHandicapOn,
 	nSCBattleHandicapAuto,
-	nSCBattleHandicapEnumMax
+	nSCBattleHandicapEnumCount
 
 } SCBattleHandicap;
 
@@ -235,7 +235,7 @@ typedef enum SCBattleItemSwitch
 	nSCBattleItemSwitchMiddle,
 	nSCBattleItemSwitchHigh,
 	nSCBattleItemSwitchVeryHigh,
-	nSCBattleItemSwitchEnumMax
+	nSCBattleItemSwitchEnumCount
 
 } SCBattleItemSwitch;
 
@@ -359,7 +359,7 @@ typedef enum SC1PGameBonus
 	nSC1PGameBonusDKPerfect,
 	nSC1PGameBonusGoodFriend,
 	nSC1PGameBonusTrueFriend,
-	nSC1PGameBonusEnumMax
+	nSC1PGameBonusEnumCount
 
 } SC1PGameBonus;
 
@@ -367,7 +367,7 @@ typedef enum SC1PContinueOption
 {
     nSC1PContinueOptionYes,
     nSC1PContinueOptionNo,
-    nSC1PContinueOptionEnumMax
+    nSC1PContinueOptionEnumCount
 
 } SC1PContinueOption;
 
@@ -379,132 +379,134 @@ typedef enum SC1PStageClearKind
 
 } SC1PStageClearKind;
 
-typedef enum SCTrainingMain
+typedef enum SC1PTrainingModeMain
 {
-	nSCTrainingMenuMainEnumStart,
+	nSC1PTrainingModeMenuMainEnumStart,
 
-	nSCTrainingMenuMainCP = nSCTrainingMenuMainEnumStart,
+	nSC1PTrainingModeMenuMainCP = nSC1PTrainingModeMenuMainEnumStart,
 
-	nSCTrainingMenuMainScrollStart = nSCTrainingMenuMainCP,
-	nSCTrainingMenuMainItem,
-	nSCTrainingMenuMainSpeed,
-	nSCTrainingMenuMainView,
-	nSCTrainingMenuMainScrollEnd = nSCTrainingMenuMainView,
+	nSC1PTrainingModeMenuMainScrollStart = nSC1PTrainingModeMenuMainCP,
+	nSC1PTrainingModeMenuMainItem,
+	nSC1PTrainingModeMenuMainSpeed,
+	nSC1PTrainingModeMenuMainView,
+	nSC1PTrainingModeMenuMainScrollEnd = nSC1PTrainingModeMenuMainView,
 
-	nSCTrainingMenuMainReset,
-	nSCTrainingMenuMainExit,
+	nSC1PTrainingModeMenuMainReset,
+	nSC1PTrainingModeMenuMainExit,
+	nSC1PTrainingModeMenuEnumEnd = nSC1PTrainingModeMenuMainExit,
 
-	nSCTrainingMenuMainEnumMax
+	nSC1PTrainingModeMenuMainEnumCount
 
-} SCTrainingMain;
+} SC1PTrainingModeMain;
 
-typedef enum SCTrainingCP
+typedef enum SC1PTrainingModeCP
 {
-	nSCTrainingMenuCPEnumStart,
-	nSCTrainingMenuCPStand = nSCTrainingMenuCPEnumStart,
-	nSCTrainingMenuCPWalk,
-	nSCTrainingMenuCPEvade,
-	nSCTrainingMenuCPJump,
-	nSCTrainingMenuCPAttack,
-	nSCTrainingMenuCPEnumMax
+	nSC1PTrainingModeMenuCPEnumStart,
+	nSC1PTrainingModeMenuCPStand = nSC1PTrainingModeMenuCPEnumStart,
+	nSC1PTrainingModeMenuCPWalk,
+	nSC1PTrainingModeMenuCPEvade,
+	nSC1PTrainingModeMenuCPJump,
+	nSC1PTrainingModeMenuCPAttack,
+	nSC1PTrainingModeMenuCPEnumCount
 
-} SCTrainingCP;
+} SC1PTrainingModeCP;
 
-typedef enum SCTrainingItem
+typedef enum SC1PTrainingModeItem
 {
-	nSCTrainingMenuItemEnumStart,
-	nSCTrainingMenuItemNone = nSCTrainingMenuItemEnumStart,
-	nSCTrainingMenuItemMaximTomato,
-	nSCTrainingMenuItemHeart,
-	nSCTrainingMenuItemStar,
-	nSCTrainingMenuItemBeamSword,
-	nSCTrainingMenuItemHomeRunBat,
-	nSCTrainingMenuItemFan,
-	nSCTrainingMenuItemStarRod,
-	nSCTrainingMenuItemRayGun,
-	nSCTrainingMenuItemFireFlower,
-	nSCTrainingMenuItemHammer,
-	nSCTrainingMenuItemMotionSensorBomb,
-	nSCTrainingMenuItemBobomb,
-	nSCTrainingMenuItemBumper,
-	nSCTrainingMenuItemGreenShell,
-	nSCTrainingMenuItemRedShell,
-	nSCTrainingMenuItemPokeBall,
-	nSCTrainingMenuItemEnumMax
+	nSC1PTrainingModeMenuItemEnumStart,
+	nSC1PTrainingModeMenuItemNone = nSC1PTrainingModeMenuItemEnumStart,
+	nSC1PTrainingModeMenuItemMaximTomato,
+	nSC1PTrainingModeMenuItemHeart,
+	nSC1PTrainingModeMenuItemStar,
+	nSC1PTrainingModeMenuItemBeamSword,
+	nSC1PTrainingModeMenuItemHomeRunBat,
+	nSC1PTrainingModeMenuItemFan,
+	nSC1PTrainingModeMenuItemStarRod,
+	nSC1PTrainingModeMenuItemRayGun,
+	nSC1PTrainingModeMenuItemFireFlower,
+	nSC1PTrainingModeMenuItemHammer,
+	nSC1PTrainingModeMenuItemMotionSensorBomb,
+	nSC1PTrainingModeMenuItemBobomb,
+	nSC1PTrainingModeMenuItemBumper,
+	nSC1PTrainingModeMenuItemGreenShell,
+	nSC1PTrainingModeMenuItemRedShell,
+	nSC1PTrainingModeMenuItemPokeBall,
+	nSC1PTrainingModeMenuItemEnumCount
 
-} SCTrainingItem;
+} SC1PTrainingModeItem;
 
-typedef enum SCTrainingSpeed
+typedef enum SC1PTrainingModeSpeed
 {
-	nSCTrainingMenuSpeedEnumStart,
-	nSCTrainingMenuSpeedFull = nSCTrainingMenuSpeedEnumStart,
-	nSCTrainingMenuSpeed2Thirds,
-	nSCTrainingMenuSpeedHalf,
-	nSCTrainingMenuSpeedQuarter,
-	nSCTrainingMenuSpeedEnumMax
+	nSC1PTrainingModeMenuSpeedEnumStart,
+	nSC1PTrainingModeMenuSpeedFull = nSC1PTrainingModeMenuSpeedEnumStart,
+	nSC1PTrainingModeMenuSpeed2Thirds,
+	nSC1PTrainingModeMenuSpeedHalf,
+	nSC1PTrainingModeMenuSpeedQuarter,
+	nSC1PTrainingModeMenuSpeedEnumCount
 
-} SCTrainingSpeed;
+} SC1PTrainingModeSpeed;
 
-typedef enum SCTrainingView
+typedef enum SC1PTrainingModeView
 {
-	nSCTrainingMenuViewEnumStart,
-	nSCTrainingMenuViewCloseUp = nSCTrainingMenuViewEnumStart,
-	nSCTrainingMenuViewNormal,
-	nSCTrainingMenuViewEnumMax
+	nSC1PTrainingModeMenuViewEnumStart,
+	nSC1PTrainingModeMenuViewCloseUp = nSC1PTrainingModeMenuViewEnumStart,
+	nSC1PTrainingModeMenuViewNormal,
+	nSC1PTrainingModeMenuViewEnumCount
 
-} SCTrainingView;
+} SC1PTrainingModeView;
 
-typedef enum SCTrainingMenuOptionSprites
+typedef enum SC1PTrainingModeMenuOptionSprites
 {
-	nSCTrainingMenuOptionSpriteItemStart,
-	nSCTrainingMenuOptionSpriteItemNone = nSCTrainingMenuOptionSpriteItemStart,
-	nSCTrainingMenuOptionSpriteItemMaximTomato,
-	nSCTrainingMenuOptionSpriteItemHeart,
-	nSCTrainingMenuOptionSpriteItemStar,
-	nSCTrainingMenuOptionSpriteItemBeamSword,
-	nSCTrainingMenuOptionSpriteItemHomeRunBat,
-	nSCTrainingMenuOptionSpriteItemFan,
-	nSCTrainingMenuOptionSpriteItemStarRod,
-	nSCTrainingMenuOptionSpriteItemRayGun,
-	nSCTrainingMenuOptionSpriteItemFireFlower,
-	nSCTrainingMenuOptionSpriteItemHammer,
-	nSCTrainingMenuOptionSpriteItemMotionSensorBomb,
-	nSCTrainingMenuOptionSpriteItemBobomb,
-	nSCTrainingMenuOptionSpriteItemBumper,
-	nSCTrainingMenuOptionSpriteItemGreenShell,
-	nSCTrainingMenuOptionSpriteItemRedShell,
-	nSCTrainingMenuOptionSpriteItemPokeBall,
-	nSCTrainingMenuOptionSpriteItemEnd = nSCTrainingMenuOptionSpriteItemPokeBall,
+	nSC1PTrainingModeMenuOptionSpriteItemStart,
+	nSC1PTrainingModeMenuOptionSpriteItemNone = nSC1PTrainingModeMenuOptionSpriteItemStart,
+	nSC1PTrainingModeMenuOptionSpriteItemMaximTomato,
+	nSC1PTrainingModeMenuOptionSpriteItemHeart,
+	nSC1PTrainingModeMenuOptionSpriteItemStar,
+	nSC1PTrainingModeMenuOptionSpriteItemBeamSword,
+	nSC1PTrainingModeMenuOptionSpriteItemHomeRunBat,
+	nSC1PTrainingModeMenuOptionSpriteItemFan,
+	nSC1PTrainingModeMenuOptionSpriteItemStarRod,
+	nSC1PTrainingModeMenuOptionSpriteItemRayGun,
+	nSC1PTrainingModeMenuOptionSpriteItemFireFlower,
+	nSC1PTrainingModeMenuOptionSpriteItemHammer,
+	nSC1PTrainingModeMenuOptionSpriteItemMotionSensorBomb,
+	nSC1PTrainingModeMenuOptionSpriteItemBobomb,
+	nSC1PTrainingModeMenuOptionSpriteItemBumper,
+	nSC1PTrainingModeMenuOptionSpriteItemGreenShell,
+	nSC1PTrainingModeMenuOptionSpriteItemRedShell,
+	nSC1PTrainingModeMenuOptionSpriteItemPokeBall,
+	nSC1PTrainingModeMenuOptionSpriteItemEnd = nSC1PTrainingModeMenuOptionSpriteItemPokeBall,
 
-	nSCTrainingMenuOptionSpriteSpeedStart,
-	nSCTrainingMenuOptionSpriteSpeedFull = nSCTrainingMenuOptionSpriteSpeedStart,
-	nSCTrainingMenuOptionSpriteSpeed2Thirds,
-	nSCTrainingMenuOptionSpriteSpeedHalf,
-	nSCTrainingMenuOptionSpriteSpeedQuarter,
-	nSCTrainingMenuOptionSpriteSpeedEnd = nSCTrainingMenuOptionSpriteSpeedQuarter,
+	nSC1PTrainingModeMenuOptionSpriteSpeedStart,
+	nSC1PTrainingModeMenuOptionSpriteSpeedFull = nSC1PTrainingModeMenuOptionSpriteSpeedStart,
+	nSC1PTrainingModeMenuOptionSpriteSpeed2Thirds,
+	nSC1PTrainingModeMenuOptionSpriteSpeedHalf,
+	nSC1PTrainingModeMenuOptionSpriteSpeedQuarter,
+	nSC1PTrainingModeMenuOptionSpriteSpeedEnd = nSC1PTrainingModeMenuOptionSpriteSpeedQuarter,
 
-	nSCTrainingMenuOptionSpriteCPStart,
-	nSCTrainingMenuOptionSpriteCPStand = nSCTrainingMenuOptionSpriteCPStart,
-	nSCTrainingMenuOptionSpriteCPWalk,
-	nSCTrainingMenuOptionSpriteCPEvade,
-	nSCTrainingMenuOptionSpriteCPJump,
-	nSCTrainingMenuOptionSpriteCPAttack,
-	nSCTrainingMenuOptionSpriteCPEnd = nSCTrainingMenuOptionSpriteCPAttack,
+	nSC1PTrainingModeMenuOptionSpriteCPStart,
+	nSC1PTrainingModeMenuOptionSpriteCPStand = nSC1PTrainingModeMenuOptionSpriteCPStart,
+	nSC1PTrainingModeMenuOptionSpriteCPWalk,
+	nSC1PTrainingModeMenuOptionSpriteCPEvade,
+	nSC1PTrainingModeMenuOptionSpriteCPJump,
+	nSC1PTrainingModeMenuOptionSpriteCPAttack,
+	nSC1PTrainingModeMenuOptionSpriteCPEnd = nSC1PTrainingModeMenuOptionSpriteCPAttack,
 
-	nSCTrainingMenuOptionSpriteViewStart,
-	nSCTrainingMenuOptionSpriteViewNormal = nSCTrainingMenuOptionSpriteViewStart,
-	nSCTrainingMenuOptionSpriteViewCloseUp,
-	nSCTrainingMenuOptionSpriteViewEnd = nSCTrainingMenuOptionSpriteViewCloseUp,
+	nSC1PTrainingModeMenuOptionSpriteViewStart,
+	nSC1PTrainingModeMenuOptionSpriteViewNormal = nSC1PTrainingModeMenuOptionSpriteViewStart,
+	nSC1PTrainingModeMenuOptionSpriteViewCloseUp,
+	nSC1PTrainingModeMenuOptionSpriteViewEnd = nSC1PTrainingModeMenuOptionSpriteViewCloseUp,
 
-	nSCTrainingMenuOptionSpriteIndicatorStart,
-	nSCTrainingMenuOptionSpriteLeftArrow = nSCTrainingMenuOptionSpriteIndicatorStart,
-	nSCTrainingMenuOptionSpriteRightArrow,
-	nSCTrainingMenuOptionSpriteCursor, 	// Red orb + underline
+	nSC1PTrainingModeMenuOptionSpriteIndicatorStart,
+	nSC1PTrainingModeMenuOptionSpriteLeftArrow = nSC1PTrainingModeMenuOptionSpriteIndicatorStart,
+	nSC1PTrainingModeMenuOptionSpriteRightArrow,
+	nSC1PTrainingModeMenuOptionSpriteCursor, 	// Red orb + underline
 
-	nSCTrainingMenuOptionSpriteEnumMax
+	nSC1PTrainingModeMenuOptionSpriteEnumCount
 
-} SCTrainingMenuOptionSprites;
+} SC1PTrainingModeMenuOptionSprites;
 
+typedef struct SC1PTrainingModeMenu				SC1PTrainingModeMenu;
 typedef struct SC1PGameComputer				SC1PGameComputer;
 typedef struct SC1PGameStage				SC1PGameStage;
 typedef struct SC1PGameFighter				SC1PGameFighter;
@@ -516,8 +518,8 @@ typedef struct SC1PGameBossWallpaper		SC1PGameBossWallpaper;
 typedef struct SC1PGameBossMain				SC1PGameBossMain;
 typedef struct SC1PStageClearStats			SC1PStageClearStats;
 typedef struct SC1PStageClearScore			SC1PStageClearScore;
-typedef struct SCTrainingSprites			SCTrainingSprites;
-typedef struct SCTrainingFiles				SCTrainingFiles;
+typedef struct SC1PTrainingModeSprites			SC1PTrainingModeSprites;
+typedef struct SC1PTrainingModeFiles			SC1PTrainingModeFiles;
 typedef struct SCExplainMain				SCExplainMain;
 typedef struct SCExplainArgs				SCExplainArgs;
 typedef struct SCExplainPhase				SCExplainPhase;

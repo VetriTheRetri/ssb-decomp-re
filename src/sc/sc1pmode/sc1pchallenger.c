@@ -145,7 +145,7 @@ void sc1PChallengerMakeDecals(void)
     SObj *sobj;
 
     gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, sc1PChallengerDecalsFuncDisplay, 0, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, sc1PChallengerDecalsFuncDisplay, 0, GOBJ_PRIORITY_DEFAULT, ~0);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PChallengerFiles[0], &lSC1PChallengerDecalExclaimSprite));
     

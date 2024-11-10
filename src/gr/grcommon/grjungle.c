@@ -113,7 +113,7 @@ void grJungleMakeTaruCann(void)
 
     gGRCommonStruct.jungle.tarucann_gobj = tarucann_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(tarucann_gobj, gcDrawDObjTreeForGObj, 6, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(tarucann_gobj, gcDrawDObjTreeForGObj, 6, GOBJ_PRIORITY_DEFAULT, ~0);
 
     grModelSetupGroundDObjs(tarucann_gobj, (DObjDesc*) ((intptr_t)&lGRJungleMapHead + (uintptr_t)map_head), NULL, dGRJungleTaruCannTransformKinds);
     gcAddGObjProcess(tarucann_gobj, gcPlayAnimAll, nGCProcessKindFunc, 5);

@@ -129,7 +129,7 @@ enum itEggStatus
     nITEggStatusThrown,
     nITEggStatusDropped,
     nITEggStatusExplode,
-    nITEggStatusEnumMax
+    nITEggStatusEnumCount
 };
 
 // // // // // // // // // // // //

@@ -94,7 +94,7 @@ WPCreateDesc dITHitokageWeaponFlameWeaponDesc =
 enum itHitokageStatus
 {
     itHitokageStatusDamaged,
-    itHitokageStatusEnumMax
+    itHitokageStatusEnumCount
 };
 
 // // // // // // // // // // // //

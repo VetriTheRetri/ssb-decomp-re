@@ -33,7 +33,7 @@ typedef enum GObjProcessKind
 {
     nGCProcessKindThread,
     nGCProcessKindFunc,
-    nGCProcessKindEnumMax
+    nGCProcessKindEnumCount
 
 } GObjProcessKind;
 
@@ -43,7 +43,7 @@ typedef enum GObjObjKind
     nGCCommonAppendDObj,
     nGCCommonAppendSObj,
     nGCCommonAppendCamera,
-    nGCCommonAppendEnumMax
+    nGCCommonAppendEnumCount
 
 } GObjObjKind;
 
@@ -101,7 +101,7 @@ typedef enum DObjVecKind
     nGCDrawVecKindTranslate,
     nGCDrawVecKindRotate,
     nGCDrawVecKindScale,
-    nGCDrawVecKindEnumMax
+    nGCDrawVecKindEnumCount
 
 } DObjVecKind;
 

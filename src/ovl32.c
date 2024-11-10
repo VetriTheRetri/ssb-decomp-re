@@ -483,7 +483,7 @@ void mnVSRecordCreateTitle()
 	SObj* title_sobj;
 
 	title_gobj = gcMakeGObjSPAfter(0, 0, 2, 0x80000000);
-	gcAddGObjDisplay(title_gobj, lbCommonDrawSObjAttr, 1, 0x80000000, -1);
+	gcAddGObjDisplay(title_gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	title_sobj = lbCommonMakeSObjForGObj(title_gobj, GetAddressFromOffset(gMNVSRecordFiles[1], &FILE_020_DATA_HEADER_IMAGE_OFFSET));
 	title_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -538,7 +538,7 @@ void mnVSRecordCreateSubtitle()
 	SObj* subtitle_sobj;
 
 	subtitle_gobj = gcMakeGObjSPAfter(0, 0, 2, 0x80000000);
-	gcAddGObjDisplay(subtitle_gobj, lbCommonDrawSObjAttr, 1, 0x80000000, -1);
+	gcAddGObjDisplay(subtitle_gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddGObjProcess(subtitle_gobj, mnVSRecordRenderSubtitle, 1, 1);
 
 	subtitle_sobj = lbCommonMakeSObjForGObj(subtitle_gobj, GetAddressFromOffset(gMNVSRecordFiles[0], &FILE_01F_SUBTITLE_BATTLE_SCORE_IMAGE_OFFSET));
@@ -564,7 +564,7 @@ void mnVSRecordCreatePortraitAndStatsArrows()
 	SObj* portrait_arrows_sobj;
 
 	portrait_arrows_gobj = gcMakeGObjSPAfter(0, 0, 2, 0x80000000);
-	gcAddGObjDisplay(portrait_arrows_gobj, lbCommonDrawSObjAttr, 1, 0x80000000, -1);
+	gcAddGObjDisplay(portrait_arrows_gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddGObjProcess(portrait_arrows_gobj, mnVSRecordUpdatePortraitArrowsDisplay, 1, 1);
 
 	// left arrow
@@ -601,7 +601,7 @@ void mnVSRecordCreateResortArrows()
 	SObj* resort_arrows_sobj;
 
 	resort_arrows_gobj = gcMakeGObjSPAfter(0, 0, 2, 0x80000000);
-	gcAddGObjDisplay(resort_arrows_gobj, lbCommonDrawSObjAttr, 1, 0x80000000, -1);
+	gcAddGObjDisplay(resort_arrows_gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddGObjProcess(resort_arrows_gobj, mnVSRecordUpdateResortArrowsDisplay, 1, 1);
 
 	resort_arrows_sobj = lbCommonMakeSObjForGObj(resort_arrows_gobj, GetAddressFromOffset(gMNVSRecordFiles[0], &FILE_01F_DOUBLE_DOWN_ARROW_IMAGE_OFFSET));
@@ -627,7 +627,7 @@ void mnVSRecordCreateColumnArrows()
 	SObj* column_arrows_sobj;
 
 	column_arrows_gobj = gcMakeGObjSPAfter(0, 0, 2, 0x80000000);
-	gcAddGObjDisplay(column_arrows_gobj, lbCommonDrawSObjAttr, 1, 0x80000000, -1);
+	gcAddGObjDisplay(column_arrows_gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddGObjProcess(column_arrows_gobj, mnVSRecordUpdateColumnArrowsDisplay, 1, 1);
 
 	column_arrows_sobj = lbCommonMakeSObjForGObj(column_arrows_gobj, GetAddressFromOffset(gMNVSRecordFiles[0], &FILE_01F_LEFT_AND_RIGHT_ARROW_IMAGE_OFFSET));
@@ -743,7 +743,7 @@ void mnVSRecordRenderTableGrid(GObj* table_border_gobj)
 void mnVSRecordCreateStatsGrid()
 {
 	GObj* table_border_gobj = gcMakeGObjSPAfter(0, 0, 2, 0x80000000);
-	gcAddGObjDisplay(table_border_gobj, mnVSRecordRenderTableGrid, 3, 0x80000000, -1);
+	gcAddGObjDisplay(table_border_gobj, mnVSRecordRenderTableGrid, 3, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
 // 0x80133438
@@ -1113,7 +1113,7 @@ GObj* mnVSRecordCreateBattleScoreTableValues()
 	s32 i, j;
 
 	values_gobj = gcMakeGObjSPAfter(0, 0, 6, 0x80000000);
-	gcAddGObjDisplay(values_gobj, lbCommonDrawSObjAttr, 5, 0x80000000, -1);
+	gcAddGObjDisplay(values_gobj, lbCommonDrawSObjAttr, 5, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	for (i = 0; i < 12; i++)
 	{
@@ -1144,7 +1144,7 @@ s32 mnVSRecordCreateBattleScoreTableHeaders()
 	SObj* headers_sobj;
 
 	headers_gobj = gcMakeGObjSPAfter(0, 0, 5, 0x80000000);
-	gcAddGObjDisplay(headers_gobj, lbCommonDrawSObjAttr, 4, 0x80000000, -1);
+	gcAddGObjDisplay(headers_gobj, lbCommonDrawSObjAttr, 4, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	headers_sobj = lbCommonMakeSObjForGObj(headers_gobj, GetAddressFromOffset(gMNVSRecordFiles[0], &FILE_01F_TOTAL_TEXTURE_IMAGE_OFFSET));
 	headers_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1184,7 +1184,7 @@ void mnVSRecordRenderRankingRowHighlight(GObj* row_highlight_gobj)
 void mnVSRecordCreateRankingRowHighlight()
 {
 	GObj* row_highlight_gobj = gcMakeGObjSPAfter(0, 0, 3, 0x80000000);
-	gcAddGObjDisplay(row_highlight_gobj, mnVSRecordRenderRankingRowHighlight, 2, 0x80000000, -1);
+	gcAddGObjDisplay(row_highlight_gobj, mnVSRecordRenderRankingRowHighlight, 2, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
 // 0x801348B4
@@ -1263,7 +1263,7 @@ GObj* mnVSRecordCreateRankingTableValues(s32 column)
 	}
 
 	table_values_gobj = gcMakeGObjSPAfter(0, 0, 6, 0x80000000);
-	gcAddGObjDisplay(table_values_gobj, lbCommonDrawSObjAttr, 5, 0x80000000, -1);
+	gcAddGObjDisplay(table_values_gobj, lbCommonDrawSObjAttr, 5, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	for (i = 0; i < 12; i++)
 	{
@@ -1345,7 +1345,7 @@ GObj* mnVSRecordCreateRankingTableHeaders(s32 column)
 	}
 
 	table_headers_gobj = gcMakeGObjSPAfter(0, 0, 5, 0x80000000);
-	gcAddGObjDisplay(table_headers_gobj, lbCommonDrawSObjAttr, 4, 0x80000000, -1);
+	gcAddGObjDisplay(table_headers_gobj, lbCommonDrawSObjAttr, 4, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	x = 0x30;
 	for (i = 0; i < ARRAY_COUNT(offsets); i++)
@@ -1410,7 +1410,7 @@ s32 mnVSRecordCreateIndividualTableValues()
 	s32 unused, unused2;
 
 	table_values_gobj = gcMakeGObjSPAfter(0, 0, 6, 0x80000000);
-	gcAddGObjDisplay(table_values_gobj, lbCommonDrawSObjAttr, 5, 0x80000000, -1);
+	gcAddGObjDisplay(table_values_gobj, lbCommonDrawSObjAttr, 5, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	for (i = 0; i < 12; i++)
 	{
@@ -1446,7 +1446,7 @@ s32 mnVSRecordCreateIndividualPortraitStatsAndTableHeaders()
 	s32 i;
 
 	individual_stats_gobj = gcMakeGObjSPAfter(0, 0, 5, 0x80000000);
-	gcAddGObjDisplay(individual_stats_gobj, lbCommonDrawSObjAttr, 4, 0x80000000, -1);
+	gcAddGObjDisplay(individual_stats_gobj, lbCommonDrawSObjAttr, 4, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	for (i = 0; i < 4; i++)
 	{

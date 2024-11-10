@@ -51,7 +51,7 @@ typedef enum MNSoundTestOptions
 	nMNSoundTestOptionVoice,
 	nMNSoundTestOptionEnd = nMNSoundTestOptionVoice,
 
-	nMNSoundTestOptionEnumMax
+	nMNSoundTestOptionEnumCount
 
 } MNSoundTestOptions;
 
@@ -63,7 +63,7 @@ typedef enum MNDataOptions
 	nMNDataOptionSoundTest,
 	nMNDataOptionEnd = nMNDataOptionSoundTest,
 
-	nMNDataOptionEnumMax
+	nMNDataOptionEnumCount
 
 } MNDataOptions;
 
@@ -75,7 +75,7 @@ typedef enum MNOptionOptions
 	nMNOptionOptionBackupClear,
 	nMNOptionOptionEnd = nMNOptionOptionBackupClear,
 
-	nMNOptionOptionEnumMax
+	nMNOptionOptionEnumCount
 
 } MNOptionOptions;
 
@@ -90,7 +90,7 @@ typedef enum MNBackupClearOptions
 	nMNBackupClearOptionAllDataClear,
 	nMNBackupClearOptionEnd = nMNBackupClearOptionAllDataClear,
 
-	nMNBackupClearOptionEnumMax
+	nMNBackupClearOptionEnumCount
 
 } MNBackupClearOptions;
 
@@ -100,7 +100,7 @@ typedef enum MNVSModeOptions
     nMNVSModeOptionRule,            // Rule
     nMNVSModeOptionTimeStock,       // Time/Stock
     nMNVSModeOptionOptions,         // VS Options
-	nMNVSModeOptionEnumMax
+	nMNVSModeOptionEnumCount
 
 } MNVSModeOptions;
 
@@ -133,7 +133,7 @@ typedef enum MNVSOptionsOptions
 	nMNVSOptionsOptionItemSwitch,
 	nMNVSOptionsOptionEnd = nMNVSOptionsOptionItemSwitch,
 
-	nMNVSOptionsOptionEnumMax
+	nMNVSOptionsOptionEnumCount
 
 } MNVSOptionsOptions;
 
@@ -146,7 +146,7 @@ typedef enum MNModeSelectOptions
 	nMNModeSelectOptionData,
 	nMNModeSelectOptionEnd = nMNModeSelectOptionData,
 
-	nMNModeSelectOptionEnumMax
+	nMNModeSelectOptionEnumCount
 
 } MNModeSelectOptions;
 
@@ -159,7 +159,7 @@ typedef enum MN1PModeOptions
 	nMN1PModeOptionBonus2Practice,
 	nMN1PModeOptionEnd = nMN1PModeOptionBonus2Practice,
 	
-	nMN1PModeOptionEnumMax
+	nMN1PModeOptionEnumCount
 
 } MN1PModeOptions;
 
@@ -168,7 +168,7 @@ typedef enum MNOptionTabStatus
 	nMNOptionTabStatusNot,
 	nMNOptionTabStatusHighlight,
 	nMNOptionTabStatusSelected,
-	nMNOptionTabStatusEnumMax
+	nMNOptionTabStatusEnumCount
 
 } MNOptionTabStatus;
 

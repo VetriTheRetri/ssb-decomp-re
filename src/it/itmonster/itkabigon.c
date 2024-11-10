@@ -79,7 +79,7 @@ enum itKabigonStatus
 {
     nITKabigonStatusJump,
     nITKabigonStatusFall,
-    nITKabigonStatusEnumMax
+    nITKabigonStatusEnumCount
 };
 
 // // // // // // // // // // // //

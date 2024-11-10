@@ -134,7 +134,7 @@ void mvOpeningStandoffMakeGround(void)
     GObj *gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
     gcAddDObjForGObj(gobj, lbRelocGetFileData(void*, sMVOpeningStandoffFiles[0], &lMVOpeningStandoffGroundDisplayList));
     gcAddXObjForDObjFixed(DObjGetStruct(gobj), nGCMatrixKindTraRotRpyRSca, 0);
-    gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 26, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 26, GOBJ_PRIORITY_DEFAULT, ~0);
 
     DObjGetStruct(gobj)->translate.vec.f.x = 0.0F;
     DObjGetStruct(gobj)->translate.vec.f.y = 0.0F;
@@ -284,7 +284,7 @@ void mvOpeningStandoffMakeWallpaper(void)
     SObj* wallpaper_sobj;
 
     wallpaper_gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(wallpaper_gobj, lbCommonDrawSObjAttr, 27, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(wallpaper_gobj, lbCommonDrawSObjAttr, 27, GOBJ_PRIORITY_DEFAULT, ~0);
     gcAddGObjProcess(wallpaper_gobj, mvOpeningStandoffWallpaperProcUpdate, nGCProcessKindFunc, 1);
 
     wallpaper_sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, lbRelocGetFileData(Sprite*, sMVOpeningStandoffFiles[1], &lMVOpeningStandoffWallpaperSprite));
@@ -347,7 +347,7 @@ void mvOpeningStandoffMakeLightning(void)
         ),
         0.0F
     );
-    gcAddGObjDisplay(lightning_gobj, gcDrawDObjTreeDLLinksForGObj, 26, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(lightning_gobj, gcDrawDObjTreeDLLinksForGObj, 26, GOBJ_PRIORITY_DEFAULT, ~0);
 
     DObjGetStruct(lightning_gobj)->translate.vec.f.x = 0.0F;
     DObjGetStruct(lightning_gobj)->translate.vec.f.y = 0.0F;

@@ -144,7 +144,7 @@ enum itBoxStatus
     nITBoxStatusThrown,
     nITBoxStatusDropped,
     nITBoxStatusExplode,
-    nITBoxStatusEnumMax
+    nITBoxStatusEnumCount
 };
 
 // // // // // // // // // // // //
@@ -197,7 +197,7 @@ void itBoxContainerSmashMakeEffect(Vec3f *pos)
 
         if (effect_gobj != NULL)
         {
-            gcAddGObjDisplay(effect_gobj, gcDrawDObjTreeForGObj, 11, GOBJ_PRIORITY_DEFAULT, -1);
+            gcAddGObjDisplay(effect_gobj, gcDrawDObjTreeForGObj, 11, GOBJ_PRIORITY_DEFAULT, ~0);
 
             dl = (Gfx*) ((*(uintptr_t*) ((uintptr_t)*dITBoxItemDesc.p_file + dITBoxItemDesc.o_attributes) - (intptr_t)&lITBoxDataStart) + (intptr_t)&lITBoxEffectDisplayList);
 

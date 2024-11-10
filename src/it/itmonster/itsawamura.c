@@ -94,7 +94,7 @@ enum itSawamuraStatus
     nITSawamuraStatusFall,
     nITSawamuraStatusWait,
     nITSawamuraStatusAttack,
-    nITSawamuraStatusEnumMax
+    nITSawamuraStatusEnumCount
 };
 
 // // // // // // // // // // // //

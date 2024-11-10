@@ -163,7 +163,7 @@ void mvEndingMakeRoomBackground(void)
     sMVEndingRoomBackgroundGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
 
     gcSetupCommonDObjs(gobj, lbRelocGetFileData(DObjDesc*, sMVEndingFiles[0], &lMVCommonRoomBackgroundDObjDesc), NULL);
-    gcAddGObjDisplay(gobj, gcDrawDObjTreeDLLinksForGObj, 29, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, gcDrawDObjTreeDLLinksForGObj, 29, GOBJ_PRIORITY_DEFAULT, ~0);
     gcAddMObjAll(gobj, lbRelocGetFileData(MObjSub***, sMVEndingFiles[0], &lMVCommonRoomBackgroundMObjSub));
     gcAddMatAnimJointAll(gobj, lbRelocGetFileData(AObjEvent32***, sMVEndingFiles[0], &lMVCommonRoomBackgroundMatAnimJoint), 0.0F);
     gcPlayAnimAll(gobj);
@@ -177,7 +177,7 @@ void mvEndingMakeRoomDesk(void)
     sMVEndingRoomDeskGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
 
     gcSetupCommonDObjs(gobj, lbRelocGetFileData(DObjDesc*, sMVEndingFiles[0], &lMVCommonRoomDeskDObjDesc), NULL);
-    gcAddGObjDisplay(gobj, gcDrawDObjTreeForGObj, 29, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, gcDrawDObjTreeForGObj, 29, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
 // 0x80131C94
@@ -188,7 +188,7 @@ void mvEndingMakeRoomBooks(void)
     sMVEndingRoomBooksGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
 
     gcSetupCommonDObjs(gobj, lbRelocGetFileData(DObjDesc*, sMVEndingFiles[0], &lMVCommonRoomBooksDObjDesc), NULL);
-    gcAddGObjDisplay(gobj, gcDrawDObjTreeForGObj, 29, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, gcDrawDObjTreeForGObj, 29, GOBJ_PRIORITY_DEFAULT, ~0);
     gcAddAnimJointAll(gobj, lbRelocGetFileData(AObjEvent32**, sMVEndingFiles[0], &lMVCommonRoomBooksAnimJoint), 300.0F);
     gcPlayAnimAll(gobj);
 }
@@ -201,7 +201,7 @@ void mvEndingMakeRoomPencils(void)
     sMVEndingRoomPencilsGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
 
     gcSetupCommonDObjs(gobj, lbRelocGetFileData(DObjDesc*, sMVEndingFiles[0], &lMVCommonRoomPencilsDObjDesc), NULL);
-    gcAddGObjDisplay(gobj, gcDrawDObjTreeForGObj, 29, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, gcDrawDObjTreeForGObj, 29, GOBJ_PRIORITY_DEFAULT, ~0);
     gcAddAnimJointAll(gobj, lbRelocGetFileData(AObjEvent32**, sMVEndingFiles[0], &lMVCommonRoomPencilsAnimJoint), 300.0F);
     gcPlayAnimAll(gobj);
 }
@@ -214,7 +214,7 @@ void mvEndingMakeRoomLamp(void)
     sMVEndingRoomLampGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
 
     gcSetupCommonDObjs(gobj, lbRelocGetFileData(DObjDesc*, sMVEndingFiles[0], &lMVCommonRoomLampDObjDesc), NULL);
-    gcAddGObjDisplay(gobj, gcDrawDObjTreeForGObj, 29, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, gcDrawDObjTreeForGObj, 29, GOBJ_PRIORITY_DEFAULT, ~0);
     gcAddAnimJointAll(gobj, lbRelocGetFileData(AObjEvent32**, sMVEndingFiles[0], &lMVCommonRoomLampAnimJoint), 300.0F);
     gcPlayAnimAll(gobj);
 }
@@ -230,7 +230,7 @@ void mvEndingMakeRoomTissues(void)
     dobj = gcAddDObjForGObj(gobj, lbRelocGetFileData(void*, sMVEndingFiles[0], &lMVCommonRoomTissuesDisplayList));
 
     gcAddXObjForDObjFixed(dobj, nGCMatrixKindTraRotRpyRSca, 0);
-    gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 29, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 29, GOBJ_PRIORITY_DEFAULT, ~0);
     gcAddDObjAnimJoint(dobj, lbRelocGetFileData(AObjEvent32*, sMVEndingFiles[0], &lMVCommonRoomTissuesAnimJoint), 300.0F);
     gcPlayAnimAll(gobj);
 }
@@ -296,7 +296,7 @@ void mvEndingMakeRoomFadeIn(void)
 
     sMVEndingRoomFadeInGObj = gobj = gcMakeGObjSPAfter(0, NULL, 18, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(gobj, mvEndingRoomFadeInFuncDisplay, 26, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, mvEndingRoomFadeInFuncDisplay, 26, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
 // 0x801321A4
@@ -355,7 +355,7 @@ void mvEndingMakeRoomLight(void)
 
     sMVEndingRoomLightGObj = gobj = gcMakeGObjSPAfter(0, NULL, 21, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(gobj, mvEndingRoomLightFuncDisplay, 30, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, mvEndingRoomLightFuncDisplay, 30, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
 // 0x8013249C

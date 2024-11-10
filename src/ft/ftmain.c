@@ -55,7 +55,7 @@ s32 sFTMainPad0x801312E0;
 // Columns = SFX level
 
 // 0x80128D00
-u16 dFTMainHitCollisionFGMs[/* */][nGMHitLevelEnumMax] =
+u16 dFTMainHitCollisionFGMs[/* */][nGMHitLevelEnumCount] =
 {
     { nSYAudioFGMPunchS,             nSYAudioFGMPunchM,             nSYAudioFGMPunchL             },    // Punch
     { nSYAudioFGMKickS,              nSYAudioFGMKickM,              nSYAudioFGMKickL              },    // Kick

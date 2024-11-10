@@ -1065,7 +1065,7 @@ void mnCharsCreateBio(s32 fkind)
 	};
 
 	gMNCharsBioGObj = bio_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	gcAddGObjDisplay(bio_gobj, lbCommonDrawSObjAttr, 0x1A, 0x80000000, -1);
+	gcAddGObjDisplay(bio_gobj, lbCommonDrawSObjAttr, 0x1A, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	bio_sobj = lbCommonMakeSObjForGObj(bio_gobj, GetAddressFromOffset(gMNCharsFiles[0], &FILE_010_BIO_UNDERLAY_TEXTURE_IMAGE_OFFSET));
 	bio_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1093,7 +1093,7 @@ void mnCharsCreateHeader()
 	SObj* header_sobj;
 
 	header_gobj = gcMakeGObjSPAfter(0, 0, 0x12, 0x80000000);
-	gcAddGObjDisplay(header_gobj, lbCommonDrawSObjAttr, 0x1B, 0x80000000, -1);
+	gcAddGObjDisplay(header_gobj, lbCommonDrawSObjAttr, 0x1B, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	// DATA header
 	header_sobj = lbCommonMakeSObjForGObj(header_gobj, GetAddressFromOffset(gMNCharsFiles[1], &FILE_020_DATA_HEADER_IMAGE_OFFSET));
@@ -1161,7 +1161,7 @@ void mnCharsCreateSeriesLogo(s32 fkind)
 
 	gMNCharsSeriesLogoGObj = series_logo_gobj = gcMakeGObjSPAfter(0, 0, 0x13, 0x80000000);
 	gcSetupCommonDObjs(series_logo_gobj, GetAddressFromOffset(gMNCharsFiles[3], offsets[fkind]), 0);
-	gcAddGObjDisplay(series_logo_gobj, gcDrawDObjTreeForGObj, 0x1C, 0x80000000, -1);
+	gcAddGObjDisplay(series_logo_gobj, gcDrawDObjTreeForGObj, 0x1C, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddMObjAll(series_logo_gobj, GetAddressFromOffset(gMNCharsFiles[3], zoom_offsets[fkind]));
 	gcAddMatAnimJointAll(series_logo_gobj, GetAddressFromOffset(gMNCharsFiles[3], color_offsets[fkind]), 4.0F);
 	gcPlayAnimAll(series_logo_gobj);
@@ -1200,7 +1200,7 @@ void mnCharsCreateName(s32 fkind)
 	};
 
 	gMNCharsNameGObj = name_gobj = gcMakeGObjSPAfter(0, 0, 0x14, 0x80000000);
-	gcAddGObjDisplay(name_gobj, lbCommonDrawSObjAttr, 0x1D, 0x80000000, -1);
+	gcAddGObjDisplay(name_gobj, lbCommonDrawSObjAttr, 0x1D, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	if ((fkind == nFTKindPurin) || (fkind == nFTKindCaptain))
 	{
@@ -1242,7 +1242,7 @@ void mnCharsCreateWorksBackground()
 	SObj* works_bg_sobj;
 
 	works_bg_gobj = gcMakeGObjSPAfter(0, 0, 0x15, 0x80000000);
-	gcAddGObjDisplay(works_bg_gobj, lbCommonDrawSObjAttr, 0x1E, 0x80000000, -1);
+	gcAddGObjDisplay(works_bg_gobj, lbCommonDrawSObjAttr, 0x1E, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	works_bg_sobj = lbCommonMakeSObjForGObj(works_bg_gobj, GetAddressFromOffset(gMNCharsFiles[0], &FILE_010_WORKS_BACKGROUND_IMAGE_OFFSET));
 	works_bg_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1266,7 +1266,7 @@ void mnCharsCreateWorks(s32 fkind)
 	};
 
 	gMNCharsWorksGObj = works_gobj = gcMakeGObjSPAfter(0, 0, 0x16, 0x80000000);
-	gcAddGObjDisplay(works_gobj, lbCommonDrawSObjAttr, 0x1F, 0x80000000, -1);
+	gcAddGObjDisplay(works_gobj, lbCommonDrawSObjAttr, 0x1F, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	works_sobj = lbCommonMakeSObjForGObj(works_gobj, GetAddressFromOffset(gMNCharsFiles[0], works_offsets[fkind]));
 	works_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1663,7 +1663,7 @@ void mnCharsCreateMoveName()
 	GObj* move_name_gobj;
 
 	gMNCharsMoveNameGObj = move_name_gobj = gcMakeGObjSPAfter(0, 0, 0x16, 0x80000000);
-	gcAddGObjDisplay(move_name_gobj, lbCommonDrawSObjAttr, 0x1F, 0x80000000, -1);
+	gcAddGObjDisplay(move_name_gobj, lbCommonDrawSObjAttr, 0x1F, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	mnCharsUpdateMoveName(gMNCharsMoveNameGObj);
 }
@@ -1723,7 +1723,7 @@ void mnCharsCreateWorksBackgroundViewport()
 // 0x80133364
 void mnCharsCreateWorksSYRdpViewport()
 {
-	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonDrawSprite, 0x28, 0x80000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonDrawSprite, 0x28, GOBJ_PRIORITY_DEFAULT, ~0, 0, 1, 0, 1, 0);
 	CObj *cobj = CObjGetStruct(camera_gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -1908,9 +1908,9 @@ void mnCharsHandleInput()
 	{
 		z_held_port--;
 
-		if (gPlayerControllers[z_held_port].stick_range.x < -20)
+		if (gSYControllerDevices[z_held_port].stick_range.x < -20)
 		{
-			DObjGetStruct(gMNCharsFighterGObj)->rotate.vec.f.y -= F_CLC_DTOR32(gPlayerControllers[z_held_port].stick_range.x / 60.0f);
+			DObjGetStruct(gMNCharsFighterGObj)->rotate.vec.f.y -= F_CLC_DTOR32(gSYControllerDevices[z_held_port].stick_range.x / 60.0f);
 
 			if (DObjGetStruct(gMNCharsFighterGObj)->rotate.vec.f.y > F_CLC_DTOR32(360.0F))
 			{
@@ -1920,9 +1920,9 @@ void mnCharsHandleInput()
 			gMNCharsAutoRotateFighter = FALSE;
 		}
 
-		if (gPlayerControllers[z_held_port].stick_range.x > 20)
+		if (gSYControllerDevices[z_held_port].stick_range.x > 20)
 		{
-			DObjGetStruct(gMNCharsFighterGObj)->rotate.vec.f.y -= F_CLC_DTOR32(gPlayerControllers[z_held_port].stick_range.x / 60.0f);
+			DObjGetStruct(gMNCharsFighterGObj)->rotate.vec.f.y -= F_CLC_DTOR32(gSYControllerDevices[z_held_port].stick_range.x / 60.0f);
 
 			if (DObjGetStruct(gMNCharsFighterGObj)->rotate.vec.f.y > F_CLC_DTOR32(360.0F))
 			{
@@ -1932,18 +1932,18 @@ void mnCharsHandleInput()
 			gMNCharsAutoRotateFighter = FALSE;
 		}
 
-		if ((gPlayerControllers[z_held_port].stick_range.y > 20) && (gMNCharsHeldStickAngle < 45.0f))
+		if ((gSYControllerDevices[z_held_port].stick_range.y > 20) && (gMNCharsHeldStickAngle < 45.0f))
 		{
-			gMNCharsHeldStickAngle += gPlayerControllers[z_held_port].stick_range.y / 60.0f;
+			gMNCharsHeldStickAngle += gSYControllerDevices[z_held_port].stick_range.y / 60.0f;
 
 			mnCharsMoveFighterCamera(CObjGetStruct(gMNCharsFighterCameraGObj), gMNCharsHeldStickAngle, gMNCharsHeldStickUnknown.s);
 
 			gMNCharsAutoRotateFighter = FALSE;
 		}
 
-		if ((gPlayerControllers[z_held_port].stick_range.y < -20) && (gMNCharsHeldStickAngle > -45.0f))
+		if ((gSYControllerDevices[z_held_port].stick_range.y < -20) && (gMNCharsHeldStickAngle > -45.0f))
 		{
-			gMNCharsHeldStickAngle += gPlayerControllers[z_held_port].stick_range.y / 60.0f;
+			gMNCharsHeldStickAngle += gSYControllerDevices[z_held_port].stick_range.y / 60.0f;
 
 			mnCharsMoveFighterCamera(CObjGetStruct(gMNCharsFighterCameraGObj), gMNCharsHeldStickAngle, gMNCharsHeldStickUnknown.s);
 

@@ -143,7 +143,7 @@ enum itGShellStatus
     nITGShellStatusDropped,
     nITGShellStatusSpin,
     nITGShellStatusSpinAir,
-    nITGShellStatusEnumMax
+    nITGShellStatusEnumCount
 };
 
 // // // // // // // // // // // //

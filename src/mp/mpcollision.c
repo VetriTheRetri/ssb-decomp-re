@@ -182,7 +182,7 @@ MPYakumonoDObj *gMPCollisionYakumonoDObjs;
 MPEdgeBounds gMPCollisionEdgeBounds;
 
 // 0x80131348
-MPLineGroup gMPCollisionLineGroups[nMPLineKindEnumMax];
+MPLineGroup gMPCollisionLineGroups[nMPLineKindEnumCount];
 
 // 0x80131368
 MPGeometryData *gMPCollisionGeometry;
@@ -3967,7 +3967,7 @@ s32 mpCollisionAllocLinesGetCountTotal(void)
     MPLineInfo *line_info;
     MPLineData *line_data;
     s32 i;
-    s32 line_count[nMPLineKindEnumMax];
+    s32 line_count[nMPLineKindEnumCount];
     s32 line_total, j;
 
     for (i = 0; i < ARRAY_COUNT(line_count); i++)
@@ -4005,7 +4005,7 @@ void mpCollisionInitLineIDsAll(void)
     MPLineData *line_data;
     MPLineInfo *line_info;
     s32 i;
-    s32 line_count[nMPLineKindEnumMax];
+    s32 line_count[nMPLineKindEnumCount];
     s32 j, line_id;
 
     for (i = 0; i < ARRAY_COUNT(line_count); i++)
@@ -4037,7 +4037,7 @@ void mpCollisionInitGroundData(void)
     gMPCollisionGroundData = lbRelocGetFileData
     (
         MPGroundData*,
-        (uintptr_t)lbRelocGetFileExternHeap
+        lbRelocGetFileExternHeap
         (
             dMPCollisionGroundFileInfos[gSCManagerBattleState->gkind].file_id, 
             syTaskmanMalloc

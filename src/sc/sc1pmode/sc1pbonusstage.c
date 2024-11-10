@@ -803,7 +803,7 @@ void sc1PBonusStageMakeTargetSprites(void)
 	file = lbRelocGetFileExternHeap(&D_NF_00000097, syTaskmanMalloc(lbRelocGetFileSize(&D_NF_00000097), 0x10));
 
 	gGRCommonStruct.bonus1.interface_gobj = interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_PRIORITY_DEFAULT);
-	gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_PRIORITY_DEFAULT, -1);
+	gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	for (i = 0; i < gGRCommonStruct.bonus1.target_count; i++)
 	{
@@ -826,7 +826,7 @@ void sc1PBonusStageMakePlatformSprites(void)
 	file = lbRelocGetFileExternHeap(&D_NF_00000097, syTaskmanMalloc(lbRelocGetFileSize(&D_NF_00000097), 0x10));
 
 	gGRCommonStruct.bonus2.interface_gobj = interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_PRIORITY_DEFAULT);
-	gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_PRIORITY_DEFAULT, -1);
+	gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	for (i = 0; i < gGRCommonStruct.bonus2.platform_count; i++)
 	{
@@ -951,7 +951,7 @@ void sc1PBonusStageMakeTimer(void)
 
 		interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_PRIORITY_DEFAULT);
 
-		gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_PRIORITY_DEFAULT, -1);
+		gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_PRIORITY_DEFAULT, ~0);
 
 		for (i = 0; i < ARRAY_COUNT(sSC1PBonusStageTimerDigits); i++)
 		{
@@ -1039,7 +1039,7 @@ void sc1PBonusStageFuncStart(void)
 		ft_desc.detail = nFTPartsDetailHigh;
 		ft_desc.costume = gSCManagerBattleState->players[player].costume;
 		ft_desc.pkind = gSCManagerBattleState->players[player].pkind;
-		ft_desc.controller = &gPlayerControllers[player];
+		ft_desc.controller = &gSYControllerDevices[player];
 		ft_desc.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[player].fkind);
 		ft_desc.is_skip_entry = TRUE;
 

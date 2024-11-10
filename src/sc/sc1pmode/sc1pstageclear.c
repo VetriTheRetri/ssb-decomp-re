@@ -1,7 +1,7 @@
 #include <ft/fighter.h>
+#include <gr/ground.h>
 #include <sc/scene.h>
 #include <sys/video.h>
-#include <sys/thread6.h>
 
 extern void syRdpSetViewport(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 
@@ -19,9 +19,6 @@ extern uintptr_t D_NF_000000A4;								// 0x000000A4
 extern uintptr_t D_NF_000000A5;								// 0x000000A5
 extern uintptr_t D_NF_00000024;								// 0x00000024
 extern uintptr_t D_NF_00000097;								// 0x00000097
-extern uintptr_t D_NF_0000001A;								// 0x0000001A
-
-extern intptr_t lGRWallpaperTraining0Sprite;                // 0x00020718
 
 // // // // // // // // // // // //
 //                               //
@@ -179,7 +176,7 @@ u32 dSC1PStageClearFileIDs[/* */] =
 	&D_NF_000000A5,
 	&D_NF_00000024,
 	&D_NF_00000097,
-	&D_NF_0000001A
+	&lGRWallpaperTrainingBlackFileID
 };
 
 // 0x80134EFC
@@ -583,7 +580,7 @@ void sc1PStageClearMakeTextSObjs(void)
 
 	gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
 
-	gcAddGObjDisplay(gobj, sc1PStageClearTextFuncDisplay, 26, GOBJ_PRIORITY_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, sc1PStageClearTextFuncDisplay, 26, GOBJ_PRIORITY_DEFAULT, ~0);
 	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearTextShadow));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -653,7 +650,7 @@ void sc1PStageClearMakeTextSObjs(void)
 	}
 	sSC1PStageClearBonusTextGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
 
-	gcAddGObjDisplay(gobj, sc1PStageClearTextFuncDisplay, 26, GOBJ_PRIORITY_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, sc1PStageClearTextFuncDisplay, 26, GOBJ_PRIORITY_DEFAULT, ~0);
 	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearTextBonus));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -675,7 +672,7 @@ void sc1PStageClearMakeScoreSObjs(void)
 
 	sSC1PStageClearScoreTextGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
 
-	gcAddGObjDisplay(gobj, sc1PStageClearTextFuncDisplay, 26, GOBJ_PRIORITY_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, sc1PStageClearTextFuncDisplay, 26, GOBJ_PRIORITY_DEFAULT, ~0);
 	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageClearFiles[1], &lSC1PStageClearTextScore));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -703,7 +700,7 @@ void sc1PStageClearMakeTimerTextSObjs(f32 y)
 
 	sSC1PStageClearTimerTextGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
 
-	gcAddGObjDisplay(gobj, sc1PStageClearTextFuncDisplay, 26, GOBJ_PRIORITY_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, sc1PStageClearTextFuncDisplay, 26, GOBJ_PRIORITY_DEFAULT, ~0);
 	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearTextTimer));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -750,7 +747,7 @@ void sc1PStageClearMakeTimerDigits(f32 y)
 
 	sSC1PStageClearTimerMultiplierGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
 
-	gcAddGObjDisplay(gobj, sc1PStageClearTextFuncDisplay, 26, GOBJ_PRIORITY_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, sc1PStageClearTextFuncDisplay, 26, GOBJ_PRIORITY_DEFAULT, ~0);
 	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageClearFiles[3], &lSC1PStageClearTextMultiplySign));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -798,7 +795,7 @@ s32 sc1PStageClearGetAppendTotalTimeScore(f32 y)
 
 	sSC1PStageClearTimerMultiplierGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
 
-	gcAddGObjDisplay(gobj, sc1PStageClearTextFuncDisplay, 26, GOBJ_PRIORITY_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, sc1PStageClearTextFuncDisplay, 26, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	switch (sSC1PStageClear1PGameStage)
 	{
@@ -830,7 +827,7 @@ void sc1PStageClearMakeDamageTextSObjs(f32 y)
 	s32 unused;
 
 	sSC1PStageClearDamageTextGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
-	gcAddGObjDisplay(gobj, sc1PStageClearTextFuncDisplay, 26, GOBJ_PRIORITY_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, sc1PStageClearTextFuncDisplay, 26, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearTextDamage));
 
@@ -879,7 +876,7 @@ void sc1PStageClearMakeDamageDigits(f32 y)
 
 	sSC1PStageClearDamageMultiplierGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
 
-	gcAddGObjDisplay(gobj, sc1PStageClearTextFuncDisplay, 26, GOBJ_PRIORITY_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, sc1PStageClearTextFuncDisplay, 26, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	sc1PStageClearMakeScoreDigits(gobj, sSC1PStageClearDamageDealt, x, (s32)y - 1, NULL, 1, 0, 0, 4, FALSE);
 	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageClearFiles[3], &lSC1PStageClearTextMultiplySign));
@@ -910,7 +907,7 @@ s32 sc1PStageClearGetAppendTotalDamageScore(f32 y)
 
 	sSC1PStageClearDamageMultiplierGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
 
-	gcAddGObjDisplay(gobj, sc1PStageClearTextFuncDisplay, 26, GOBJ_PRIORITY_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, sc1PStageClearTextFuncDisplay, 26, GOBJ_PRIORITY_DEFAULT, ~0);
 	damage_score_total = sSC1PStageClearDamageDealt * 10;
 
 	sc1PStageClearMakeScoreDigits(gobj, damage_score_total, 200.0F, (s32)y - 1, NULL, 1, 0, 0, 5, FALSE);
@@ -928,7 +925,7 @@ void sc1PStageClearMakeTargetTextSObjs(void)
 
 	sSC1PStageClearTargetGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
 
-	gcAddGObjDisplay(gobj, sc1PStageClearTextFuncDisplay, 26, GOBJ_PRIORITY_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, sc1PStageClearTextFuncDisplay, 26, GOBJ_PRIORITY_DEFAULT, ~0);
 	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearTextTarget));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -986,7 +983,7 @@ void func_ovl56_80132E40(f32 x, f32 y, s32 objective_num)
 
 	sSC1PStageClearBonusObjectiveGObjs[objective_num] = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
 
-	gcAddGObjDisplay(gobj, sc1PStageClearTextFuncDisplay, 26, GOBJ_PRIORITY_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, sc1PStageClearTextFuncDisplay, 26, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddGObjProcess(gobj, func_ovl56_80132DC0, nGCProcessKindFunc, 1);
 
 	gobj->user_data.u = (objective_num * 10) + sSC1PStageClearTotalTimeTics;
@@ -1131,7 +1128,7 @@ s32 sc1PStageClearGetAppendBonusStatPoints(s32 bonus_id, s32 bonus_num, f32 x, f
 
 	sSC1PStageClearBonusStatGObjs[bonus_num] = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
 
-	gcAddGObjDisplay(gobj, sc1PStageClearTextFuncDisplay, 26, GOBJ_PRIORITY_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, sc1PStageClearTextFuncDisplay, 26, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddGObjProcess(gobj, sc1PStageClearCommonProcUpdate, nGCProcessKindFunc, 1);
 
 	gobj->user_data.u = (bonus_num * 10) + sSC1PStageClearTotalTimeTics;
@@ -1214,7 +1211,7 @@ void sc1PStageClearMakeBonusPageArrow(void)
 
 	sSC1PStageClearBonusStatGObjs[9] = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
 
-	gcAddGObjDisplay(gobj, sc1PStageClearTextFuncDisplay, 26, GOBJ_PRIORITY_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, sc1PStageClearTextFuncDisplay, 26, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddGObjProcess(gobj, sc1PStageClearCommonProcUpdate, nGCProcessKindFunc, 1);
 
 	gobj->user_data.u = sSC1PStageClearTotalTimeTics + 90;
@@ -1300,7 +1297,7 @@ void sc1PStageClearMakeBonusTable(void)
 
 	gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
 
-	gcAddGObjDisplay(gobj, sc1PStageClearTextFuncDisplay, 26, GOBJ_PRIORITY_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, sc1PStageClearTextFuncDisplay, 26, GOBJ_PRIORITY_DEFAULT, ~0);
 	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearBonusBorder));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1357,7 +1354,7 @@ void sc1PStageClearMakeWallpaper(void)
 
 	gobj = gcMakeGObjSPAfter(0, NULL, 18, GOBJ_PRIORITY_DEFAULT);
 
-	gcAddGObjDisplay(gobj, sc1PStageClearWallpaperFuncDisplay, 27, GOBJ_PRIORITY_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, sc1PStageClearWallpaperFuncDisplay, 27, GOBJ_PRIORITY_DEFAULT, ~0);
 	sobj = lbCommonMakeSObjForGObj
 	(
 		gobj,
@@ -1365,7 +1362,7 @@ void sc1PStageClearMakeWallpaper(void)
 		(
 			Sprite*,
 			sSC1PStageClearFiles[6],
-			&lGRWallpaperTraining0Sprite
+			&lGRWallpaperTrainingBlackSprite
 		)
 	);
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1926,7 +1923,7 @@ void sc1PStageClearCopyFramebufToWallpaper(void)
 		SYVIDEO_BORDER_SIZE(320, 10, u16) +
 		SYVIDEO_BORDER_SIZE(1, 10, u16)
 	);
-	wallpaper_pixels = (u32*) lbRelocGetFileData(Sprite*, sSC1PStageClearFiles[6], &lGRWallpaperTraining0Sprite)->bitmap->buf;
+	wallpaper_pixels = (u32*) lbRelocGetFileData(Sprite*, sSC1PStageClearFiles[6], &lGRWallpaperTrainingBlackSprite)->bitmap->buf;
 
 	for (i = 0; i < 220; i++)
 	{

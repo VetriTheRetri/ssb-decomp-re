@@ -64,7 +64,7 @@ ITStatusDesc dITGLuckyStatusDescs[/* */] =
 enum itGLuckyStatus
 {
     nITGLuckyStatusDamaged,
-    nITGLuckyStatusEnumMax
+    nITGLuckyStatusEnumCount
 };
 
 // // // // // // // // // // // //

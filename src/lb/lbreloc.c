@@ -17,7 +17,7 @@ LBInternBuffer sLBRelocInternBuffer;
 // this buffer and pointers are used to DMA table entry info from the rom
 // as needed for reading in file data
 // 0x800D6310
-LBTableEntry sLBRelocTableEntries[nLBFileLocationEnumMax];
+LBTableEntry sLBRelocTableEntries[nLBFileLocationEnumCount];
 
 // 0x800D6334
 LBTableEntry *sLBRelocCurrentTableEntry;

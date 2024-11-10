@@ -108,7 +108,7 @@ enum itIwarkStatus
 {
     nITIwarkStatusFly,
     nITIwarkStatusAttack,
-    nITIwarkStatusEnumMax
+    nITIwarkStatusEnumCount
 };
 
 // // // // // // // // // // // //

@@ -256,7 +256,7 @@ void mnOptionMakeSoundToggle(void)
     SObj *sobj;
 
     sMNOptionSoundOptionGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, ~0);
 
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNOptionFiles[1], &lMNOptionMonoTextSprite));
 
@@ -296,7 +296,7 @@ void mnOptionMakeSound(void)
     SObj *sobj;
 
     sMNOptionOptionSoundGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, ~0);
 
     mnOptionMakeOptionTabs(gobj, 113.0F, 42.0F, 17);
     mnOptionSetOptionSpriteColors(gobj, sMNOptionOption == nMNOptionOptionSound);
@@ -322,7 +322,7 @@ void mnOptionMakeScreenAdjust(void)
 
     sMNOptionOptionScreenAdjustGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, ~0);
 
     mnOptionMakeOptionTabs(gobj, 91.0F, 89.0F, 17);
 
@@ -349,7 +349,7 @@ void mnOptionMakeBackupClear(void)
 
     sMNOptionOptionBackupClearGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, ~0);
     mnOptionMakeOptionTabs(gobj, 69.0F, 136.0F, 17);
     mnOptionSetOptionSpriteColors(gobj, sMNOptionOption == nMNOptionOptionBackupClear);
 
@@ -426,7 +426,7 @@ void mnOptionMakeLabels(void)
 
     gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(gobj, mnOptionLabelsFuncDisplay, 1, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, mnOptionLabelsFuncDisplay, 1, GOBJ_PRIORITY_DEFAULT, ~0);
 
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNOptionFiles[0], &lMNCommonSmashLogoSprite));
 
@@ -460,7 +460,7 @@ void mnOptionMakeDecals(void)
     SObj *sobj;
 
     gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_PRIORITY_DEFAULT, ~0);
 
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNOptionFiles[0], &lMNCommonWallpaperSprite));
 

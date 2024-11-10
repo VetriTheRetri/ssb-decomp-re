@@ -74,7 +74,7 @@ void mnMessageMakeWallpaper(void)
     SObj *sobj;
     
     gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_PRIORITY_DEFAULT, ~0);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMessageFiles[0], &lMNCommonWallpaperSprite));
     
@@ -100,7 +100,7 @@ void mnMessageTintFuncDisplay(GObj *gobj)
 // 0x80131CB8
 void mnMessageMakeTint(void)
 {
-    gcAddGObjDisplay(gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT), mnMessageTintFuncDisplay, 2, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT), mnMessageTintFuncDisplay, 2, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
 // 0x80131D04
@@ -110,7 +110,7 @@ void mnMessageMakeExclaim(void)
     SObj *sobj;
     
     gobj = gcMakeGObjSPAfter(0, NULL, 5, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 3, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 3, GOBJ_PRIORITY_DEFAULT, ~0);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMessageFiles[1], &lMNMessageDecalExclaimSprite));
     
@@ -152,7 +152,7 @@ void mnMessageMakeMessage(s32 message)
     };
 
     gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMessageFiles[1], message_offsets[message]));
 
@@ -267,7 +267,7 @@ void mnMessageMakeExclaimCamera(void)
 void mnMessageInitVars(void)
 {
     sMNMessageUnlockID = gSCManagerSceneData.unlock_messages[sMNMessageQueueID];
-    gSCManagerSceneData.unlock_messages[sMNMessageQueueID] = nLBBackupUnlockEnumMax;
+    gSCManagerSceneData.unlock_messages[sMNMessageQueueID] = nLBBackupUnlockEnumCount;
     
     sMNMessageUnk0x80132660 = 0;
     sMNMessageTotalTimeTics = 0;
@@ -424,7 +424,7 @@ void mnMessageStartScene(void)
     for
     (
         sMNMessageQueueID = 0;
-        sMNMessageQueueID < nLBBackupUnlockEnumMax && gSCManagerSceneData.unlock_messages[sMNMessageQueueID] != nLBBackupUnlockEnumMax;
+        sMNMessageQueueID < nLBBackupUnlockEnumCount && gSCManagerSceneData.unlock_messages[sMNMessageQueueID] != nLBBackupUnlockEnumCount;
         sMNMessageQueueID++
     )
     {

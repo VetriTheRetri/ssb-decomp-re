@@ -271,7 +271,7 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPCreateDesc *wp_desc, Vec3f *spawn
 
         func_display = (wp_desc->flags & WEAPON_FLAG_DOBJLINKS) ? wpDisplayDObjDLLinks : wpDisplayDLHead1;
     }
-    gcAddGObjDisplay(weapon_gobj, func_display, 14, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(weapon_gobj, func_display, 14, GOBJ_PRIORITY_DEFAULT, ~0);
 
     if (attr->p_mobjsubs != NULL)
     {

@@ -144,7 +144,7 @@ enum itMBallStatus
     nITMBallStatusDropped,
     nITMBallStatusOpen,
     nITMBallStatusOpenAir,
-    nITMBallStatusEnumMax
+    nITMBallStatusEnumCount
 };
 
 // // // // // // // // // // // //

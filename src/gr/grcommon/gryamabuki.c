@@ -248,7 +248,7 @@ void grYamabukiMakeGate(void)
 
     gGRCommonStruct.yamabuki.gate_gobj = gate_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(gate_gobj, gcDrawDObjTreeDLLinksForGObj, 6, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gate_gobj, gcDrawDObjTreeDLLinksForGObj, 6, GOBJ_PRIORITY_DEFAULT, ~0);
     gcSetupCustomDObjs
     (
         gate_gobj, 

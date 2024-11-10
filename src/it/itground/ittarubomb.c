@@ -97,7 +97,7 @@ enum itTaruBombStatus
     nITTaruBombStatusFall,
     nITTaruBombStatusExplode,
     nITTaruBombStatusRoll,
-    nITTaruBombStatusEnumMax
+    nITTaruBombStatusEnumCount
 };
 
 // // // // // // // // // // // //
@@ -150,7 +150,7 @@ void itTaruBombContainerSmashMakeEffect(Vec3f *pos)
 
         if (effect_gobj != NULL)
         {
-            gcAddGObjDisplay(effect_gobj, gcDrawDObjTreeForGObj, 11, GOBJ_PRIORITY_DEFAULT, -1);
+            gcAddGObjDisplay(effect_gobj, gcDrawDObjTreeForGObj, 11, GOBJ_PRIORITY_DEFAULT, ~0);
 
             dl = (Gfx*) ((*(uintptr_t*)((uintptr_t)*dITTaruBombItemDesc.p_file + dITTaruBombItemDesc.o_attributes) - (uintptr_t)&lITTaruBombDataStart) + (uintptr_t)&lITTaruBombEffectDisplayList);
 

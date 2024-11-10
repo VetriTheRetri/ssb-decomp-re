@@ -219,7 +219,18 @@ lLBTransitionCurtainFileID = 0x00000032;
 lLBTransitionCurtainDObjDesc = 0x00007AE0;
 lLBTransitionCurtainAnimJoint = 0x00007C98;
 
-lGRWallpaperTraining0Sprite = 0x00020718;
+lGRWallpaperTrainingBlackSprite = 0x00020718;
+lGRWallpaperTrainingYellowSprite = 0x00020718;
+lGRWallpaperTrainingBlueSprite = 0x00020718;
+
+lGRWallpaperTrainingBlackFileID = 0x0000001A;
+lGRWallpaperTrainingYellowFileID = 0x0000001B;
+lGRWallpaperTrainingBlueFileID = 0x0000001C;
+
+lSC1PTrainingModeDisplayLabelSprites = 0x00000000;
+lSC1PTrainingModeDisplayOptionSprites = 0x00000020;
+lSC1PTrainingModeMenuLabelSprites = 0x000000BC;
+lSC1PTrainingModeMenuOptionSprites = 0x0000013C;
 
 lSC1PBonusStagePlatformSprite = 0x000000C0;
 lSC1PBonusStageTargetSprite = 0x000001D0;

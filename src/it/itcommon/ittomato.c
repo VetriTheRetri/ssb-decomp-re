@@ -88,7 +88,7 @@ enum itTomatoStatus
     nITTomatoStatusWait,
     nITTomatoStatusFall,
     nITTomatoStatusDropped,
-    nITTomatoStatusEnumMax
+    nITTomatoStatusEnumCount
 };
 
 // // // // // // // // // // // //

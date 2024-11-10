@@ -361,7 +361,7 @@ GObj* scExplainMakeControlStickInterface(void)
         nGCCommonLinkIDInterface,
         GOBJ_PRIORITY_DEFAULT
     );
-    gcAddGObjDisplay(interface_gobj, scExplainControlStickFuncDisplay, 27, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(interface_gobj, scExplainControlStickFuncDisplay, 27, GOBJ_PRIORITY_DEFAULT, ~0);
     gcSetupCustomDObjs
     (
         interface_gobj, 
@@ -441,7 +441,7 @@ GObj* scExplainMakeTapSpark(void)
 {
     GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(interface_gobj, scExplainTapSparkFuncDisplay, 27, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(interface_gobj, scExplainTapSparkFuncDisplay, 27, GOBJ_PRIORITY_DEFAULT, ~0);
     gcAddDObjForGObj(interface_gobj, (void*) ((uintptr_t)sSCExplainGraphicsFileHead + (intptr_t)&lSCExplainTapSparkDisplayList));
     gcAddXObjForDObjFixed(DObjGetStruct(interface_gobj), nGCMatrixKindTra, 0);
     gcAddMObjAll(interface_gobj, lbRelocGetFileData(MObjSub***, sSCExplainGraphicsFileHead, &lSCExplainTapSparkMObjSub));
@@ -484,7 +484,7 @@ GObj* scExplainMakeSpecialMoveRGB(void)
         nGCCommonLinkIDInterface,
         GOBJ_PRIORITY_DEFAULT
     );
-    gcAddGObjDisplay(interface_gobj, scExplainTapSparkFuncDisplay, 27, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(interface_gobj, scExplainTapSparkFuncDisplay, 27, GOBJ_PRIORITY_DEFAULT, ~0);
     gcAddDObjForGObj(interface_gobj, lbRelocGetFileData(void*, sSCExplainGraphicsFileHead, &lSCExplainSpecialMoveRGBDisplayList));
     gcAddXObjForDObjFixed(DObjGetStruct(interface_gobj), nGCMatrixKindTra, 0);
 
@@ -514,7 +514,7 @@ SObj* scExplainMakeSObjOffset(intptr_t offset)
         nGCCommonLinkIDInterface,
         GOBJ_PRIORITY_DEFAULT
     );
-    gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 26, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 26, GOBJ_PRIORITY_DEFAULT, ~0);
 
     sobj = lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, sSCExplainGraphicsFileHead, offset));
 
@@ -603,9 +603,9 @@ void scExplainDetectExit(void)
 {
     s32 player;
 
-    for (player = 0; player < ARRAY_COUNT(gPlayerControllers); player++)
+    for (player = 0; player < ARRAY_COUNT(gSYControllerDevices); player++)
     {
-        u16 button_tap = gPlayerControllers[player].button_tap;
+        u16 button_tap = gSYControllerDevices[player].button_tap;
 
         if (button_tap & (A_BUTTON | B_BUTTON | START_BUTTON))
         {
@@ -767,7 +767,7 @@ void scExplainFuncStart(void)
 
         ft_desc.pkind = gSCManagerBattleState->players[player].pkind;
 
-        ft_desc.controller = &gPlayerControllers[player];
+        ft_desc.controller = &gSYControllerDevices[player];
 
         ft_desc.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[player].fkind);
 

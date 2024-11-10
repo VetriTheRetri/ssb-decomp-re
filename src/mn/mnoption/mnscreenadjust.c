@@ -144,7 +144,7 @@ void mnScreenAdjustMakeFrame(void)
 {
     GObj *gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_PRIORITY_DEFAULT);
     
-    gcAddGObjDisplay(gobj, mnScreenAdjustFrameFuncDisplay, 0, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, mnScreenAdjustFrameFuncDisplay, 0, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
 // 0x80131D4C
@@ -155,7 +155,7 @@ void mnScreenAdjustMakeGuide(void)
     
     gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNScreenAdjustFiles[0], &lMNScreenAdjustGuideSprite));
     
     sobj->pos.x = 10.0F;
@@ -170,7 +170,7 @@ void mnScreenAdjustMakeInstruction(void)
 
     gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNScreenAdjustFiles[0], &lMNScreenAdjustInstructionSprite));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;

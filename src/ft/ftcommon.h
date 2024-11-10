@@ -362,7 +362,7 @@ typedef enum ftCommonCliffStatusKind
 	nFTCommonCliffKindAttackSlow,
 	nFTCommonCliffKindEscapeSlow,
 
-	nFTCommonCliffKindEnumMax
+	nFTCommonCliffKindEnumCount
 
 } ftCommonCliffStatusKind;
 

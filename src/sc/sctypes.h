@@ -114,71 +114,72 @@ struct SC1PStageClearScore
 	s32 points;
 };
 
-struct SCTrainingSprites
+struct SC1PTrainingModeSprites
 {
 	Vec2h pos;
 	Sprite *sprite;
 };
 
-struct SCTrainingFiles
+struct SC1PTrainingModeFiles
 {
 	s32 file_id;
-	uintptr_t addr;
+	intptr_t offset;
 	SYColorRGB fog_color;
 };
 
-struct scTrainingStruct
+struct SC1PTrainingModeMenu
 {
-	s32 main_menu_option;					    // Option selected in the main training mode menu (vertically)
-	s32 damage;								    // Total combo damage accumulated
-	s32 combo;								    // Combo count
-	s32 item_hold;							    // Training Mode Item ID of item currently held by player
-	s32 item_menu_option;					    // Option selected in "Item" settings
-	s32 cp_menu_option;						    // Option selected in "CP" settings
-	s32 speed_menu_option;					    // Option selected in "Speed" settings
-	s32 view_menu_option;					    // Option selected in "View" settings
-	s32 opponent;							    // Dummy fighter's port ID
-	SCTrainingSprites* display_label_sprites;   // "DAMAGE", "COMBO", "ENEMY", "SPEED" text
-	Sprite** display_option_sprites;
-	SCTrainingSprites* menu_label_sprites;      // Orange text describing what each option is?
-	Sprite** menu_option_sprites;
-	SCTrainingSprites* unk_trainmenu_0x34;
-	SCTrainingSprites* unk_trainmenu_0x38;
-	GObj* damage_display_gobj;	                // Interface GObj of damage stat display
-	GObj* combo_display_gobj;	                // Interface GObj of combo stat display
-	GObj* cp_display_gobj;		                // Interface GObj of CP behavior display
-	GObj* speed_display_gobj;	                // Interface GObj of speed display
-	GObj* item_display_gobj;	                // Interface GObj of item display
-	GObj* menu_label_gobj;		                // Interface GObj of main menu options descriptions (orange text)
-	GObj* cursor_gobj;			                // Interface GObj of red underline + red orb cursor
-	GObj* cp_option_gobj;		                // Interface GObj of scrollable main menu CP options text
-	GObj* item_option_gobj;		                // Interface GObj of scrollable main menu Item options text
-	GObj* speed_option_gobj;	                // Interface GObj of scrollable main menu Speed options text
-	GObj* view_option_gobj;		                // Interface GObj of scrollable main menu View options text
-	GObj* arrow_option_gobj;	                // Interface GObj of arrow indicators around scrollable options
-	SObj* hscroll_option_sobj[4];               // Horizontally scrollable menu option SObjs (CP, Item, Speed, View)
-	GObj* unk_trainmenu_0x7C;
-	GObj* unk_trainmenu_0x80;
-	SObj* vscroll_option_sobj[6][2];            // Vertically scrollable main menu option
-									            // SObjs (CP, Item, Speed, View, Reset, EXIT); 
-                                                // [0] = text, [1] = arrow (if applicable)
-	u32 cursor_ulx,
-		cursor_uly;                             // Cursor underline upper left coordinates for display list
-	u32 cursor_lrx,
-		cursor_lry;                             // Cursor underline lower right coordinates for display list
+	s32 main_menu_option;					  // Option selected in the main training mode menu
+											  // (vertically)
+	s32 damage;								  // Total combo damage accumulated
+	s32 combo;								  // Combo count
+	s32 item_hold;							  // Training Mode Item ID of item currently held by player
+	s32 item_menu_option;					  // Option selected in "Item" settings
+	s32 cp_menu_option;						  // Option selected in "CP" settings
+	s32 speed_menu_option;					  // Option selected in "Speed" settings
+	s32 view_menu_option;					  // Option selected in "View" settings
+	s32 dummy;							 	  // Dummy fighter's port ID
+	SC1PTrainingModeSprites *display_label_sprites; // "DAMAGE", "COMBO", "ENEMY", "SPEED" text
+	Sprite **display_option_sprites;
+	SC1PTrainingModeSprites *menu_label_sprites; // Orange text describing what each option is?
+	Sprite **menu_option_sprites;
+	SC1PTrainingModeSprites *unk_trainmenu_0x34;
+	SC1PTrainingModeSprites *unk_trainmenu_0x38;
+	GObj *damage_display_gobj; // Interface GObj of damage stat display
+	GObj *combo_display_gobj;  // Interface GObj of combo stat display
+	GObj *cp_display_gobj;	   // Interface GObj of CP behavior display
+	GObj *speed_display_gobj;  // Interface GObj of speed display
+	GObj *item_display_gobj;   // Interface GObj of item display
+	GObj *menu_label_gobj;	   // Interface GObj of main menu options descriptions
+							   // (orange text)
+	GObj *cursor_gobj;
+	GObj *cp_option_gobj;	// Interface GObj of main menu CP options
+	GObj *item_option_gobj; // Interface GObj of main menu Item options
+	GObj *speed_option_gobj;
+	GObj *view_option_gobj;
+	GObj *arrow_option_gobj;
+	SObj *hscroll_option_sobj[4];
+	GObj *unk_trainmenu_0x7C;
+	GObj *combo0;
+	SObj *vscroll_option_sobj[6][2];
+	u32 cursor_ulx, cursor_uly;
+	u32 cursor_lrx, cursor_lry;
 	u16 button_hold;
 	u16 button_tap;
 	u16 button_queue;
 	s32 rapid_scroll_wait;
-	u8 damage_reset_wait;	                    // Wait this many frames before resetting combo damage
-	u8 combo_reset_wait;	                    // Wait this many frames before resetting combo count
-	ub8 exit_or_reset;		                    // 0 = exit, 1 = reset
-	u8 lagframe_wait;		                    // Wait this many frames before duplicate/lag frame is
-							                    // applied? Used for 2/3 speed with a setting of 1
-	u8 frameadvance_wait;	                    // Wait this many frames before advancing to the next frame
-	u8 item_spawn_wait;		                    // Cooldown before new item can be summoned
-	u16 magnify_wait;		                    // Cooldown before magnifying glass is shown again after switch back from Close-Up view
-	ub8 is_read_menu_inputs;                    // Menu navigation inputs are ignored if FALSE
+	u8 damage_reset_wait;	 // Wait this many frames before resetting combo damage
+	u8 combo_reset_wait;	 // Wait this many frames before resetting combo count
+	ub8 exit_or_reset;		 // 0 = exit, 1 = reset
+	u8 lagframe_wait;		 // Wait this many frames before duplicate/lag frame is
+							 // applied? Used for 2/3 speed with a setting of 1
+	u8 frameadvance_wait;	 // Wait this many frames before advancing to the next
+							 // frame
+	u8 item_spawn_wait;		 // Cooldown before new item can be summoned
+	u16 magnify_wait;		 // Cooldown before magnifying glass is shown again after
+							 // switching back from Close-Up view
+	ub8 is_read_menu_inputs; // Menu navigation inputs are ignored if FALSE
+	s32 unknown[2];
 };
 
 struct SCExplainMain
@@ -307,7 +308,7 @@ struct SCCommonData
 {
 	u8 scene_curr;									// Current scene
 	u8 scene_prev;									// Previous scene
-	u8 unlock_messages[nLBBackupUnlockEnumMax];		// Queued unlock messages
+	u8 unlock_messages[nLBBackupUnlockEnumCount];		// Queued unlock messages
 	u8 challenger_fkind;							// Opponent being fought in "Challenger Approaching" battle
 	u16 demo_mask_prev;								// Mask of previously demo'd fighters
 	u8 demo_first_fkind;							// First auto-demo fighter to focus on?
@@ -345,22 +346,22 @@ struct SCCommonData
 
 typedef struct scRuntimeInfo
 {
-	void* unk_pointer_0x0;
-	void* unk_pointer_0x4;
-	void* unk_pointer_0x8;
-	void* unk_scruntime_0xC;
+	void *unk_pointer_0x0;
+	void *unk_pointer_0x4;
+	void *unk_pointer_0x8;
+	void *unk_scruntime_0xC;
 	size_t arena_size;
-	void* unk_pointer_0x14;
-	void* unk_pointer_0x18;
-	void* unk_pointer_0x1C;
+	void *unk_pointer_0x14;
+	void *unk_pointer_0x18;
+	void *unk_pointer_0x1C;
 	s32 unk_0x20;
 	s32 unk_0x24;
 	s32 unk_0x28;
 	s32 unk_0x2C;
 	s32 unk_0x30;
-	void* unk_pointer_0x34;
-	void* unk_pointer_0x38;
-	void* unk_pointer_0x3C;
+	void *unk_pointer_0x34;
+	void *unk_pointer_0x38;
+	void *unk_pointer_0x3C;
 	s32 unk_0x40;
 	s32 unk_0x44;
 	s32 unk_0x48;
@@ -369,10 +370,10 @@ typedef struct scRuntimeInfo
 	s32 unk_0x54;
 	s32 unk_0x58;
 	s32 unk_0x5C;
-	void* unk_scruntime_0x60;
+	void *unk_scruntime_0x60;
 	s32 unk_0x64;
-	void* unk_pointer_0x68;
-	void* unk_pointer_0x6C;
+	void *unk_pointer_0x68;
+	void *unk_pointer_0x6C;
 	s32 unk_0x70;
 	s32 unk_0x74;
 	s32 unk_0x78;

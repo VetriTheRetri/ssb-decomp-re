@@ -21,7 +21,7 @@ extern intptr_t lGRZebesAcidMatAnimJoint;           // 0x00000BD0
 // // // // // // // // // // // //
 
 // 0x8012EA60
-grZebesAcid dGRZebesAcidAttributes[/* */] =
+GRZebesAcid dGRZebesAcidAttributes[/* */] =
 {
     { 1200, 60, 70, -3600.0F },
     {  180, 60, 70, -1000.0F },
@@ -91,7 +91,7 @@ GObj* grZebesMakeAcid(void)
     map_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_PRIORITY_DEFAULT);
     gGRCommonStruct.zebes.map_gobj = map_gobj;
 
-    gcAddGObjDisplay(map_gobj, gcDrawDObjTreeDLLinksForGObj, 12, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(map_gobj, gcDrawDObjTreeDLLinksForGObj, 12, GOBJ_PRIORITY_DEFAULT, ~0);
     gcSetupCustomDObjs
     (
         map_gobj, 
@@ -110,7 +110,7 @@ GObj* grZebesMakeAcid(void)
     gGRCommonStruct.zebes.acid_level_curr = dGRZebesAcidAttributes[ARRAY_COUNT(dGRZebesAcidAttributes) - 1].acid_level;
     gGRCommonStruct.zebes.acid_attr_id = 0;
 
-    gGRCommonStruct.zebes.gr_attack_coll = (void*) (((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRCommonHeaderStart) + (intptr_t)&lGRZebesAcidHit);
+    gGRCommonStruct.zebes.attack_coll = (void*) (((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRCommonHeaderStart) + (intptr_t)&lGRZebesAcidHit);
 
     grZebesAcidSetRandomWait();
 
@@ -237,7 +237,7 @@ sb32 grZebesAcidCheckGetDamageKind(GObj *ground_gobj, GObj *fighter_gobj, GRAtta
 
         if (DObjGetStruct(fighter_gobj)->translate.vec.f.y < (dobj->translate.vec.f.y + dobj->child->translate.vec.f.y))
         {
-            *gr_attack_coll = gGRCommonStruct.zebes.gr_attack_coll;
+            *gr_attack_coll = gGRCommonStruct.zebes.attack_coll;
             *kind = nGMHitEnvironmentAcid;
 
             return TRUE;

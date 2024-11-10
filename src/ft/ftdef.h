@@ -95,7 +95,7 @@
 #define FTCOMPUTER_COMMAND_MOVEAUTO             (nFTComputerCommandMoveAuto            << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0xC0
 #define FTCOMPUTER_COMMAND_STICK_X_VAR          (nFTComputerCommandStickXVar           << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0xD0
 #define FTCOMPUTER_COMMAND_STICK_Y_VAR          (nFTComputerCommandStickYVar           << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0xE0
-#define FTCOMPUTER_COMMAND_DEFAULT_MAX          (nFTComputerCommandEnumMax             << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0xF0
+#define FTCOMPUTER_COMMAND_DEFAULT_MAX          (nFTComputerCommandEnumCount             << FTCOMPUTER_COMMAND_TIMER_BITS)   // 0xF0
 #define FTCOMPUTER_COMMAND_PKTHUNDER            (0xF3)
 #define FTCOMPUTER_COMMAND_END                  (0xFF)
 
@@ -681,7 +681,7 @@ typedef enum FTMotionAttackIndex
     nFTMotionAttackIDItemEnd = nFTMotionAttackIDItemThrow,
 
     nFTMotionAttackIDNull,
-    nFTMotionAttackIDEnumMax
+    nFTMotionAttackIDEnumCount
 
 } FTMotionAttackIndex;
 
@@ -761,7 +761,7 @@ typedef enum FTStatusAttackIndex
     nFTStatusAttackIDItemEnd = nFTStatusAttackIDItemThrow,
 
     nFTStatusAttackIDNull,
-    nFTStatusAttackIDEnumMax
+    nFTStatusAttackIDEnumCount
 
 } FTStatusAttackIndex;
 
@@ -856,7 +856,7 @@ typedef enum FTItemSwingKind
     nFTItemSwingKindBat,
     nFTItemSwingKindHarisen,
     nFTItemSwingKindStarRod,
-    nFTItemSwingKindEnumMax
+    nFTItemSwingKindEnumCount
 
 } FTItemSwingKind;
 
@@ -866,7 +866,7 @@ typedef enum FTItemSwingType
     nFTItemSwingTypeAttack3,
     nFTItemSwingTypeAttack4,
     nFTItemSwingTypeAttackDash,
-    nFTItemSwingTypeEnumMax
+    nFTItemSwingTypeEnumCount
 	
 } FTItemSwingType;
 
@@ -962,7 +962,7 @@ typedef enum FTKind
     nFTKindNEnd = nFTKindNNess,
 
     nFTKindGDonkey,
-    nFTKindEnumMax,
+    nFTKindEnumCount,
     nFTKindNull        // NONE
 
 } FTKind;
@@ -995,7 +995,7 @@ typedef enum FTComputerCommandKind
     nFTComputerCommandMoveAuto,
     nFTComputerCommandStickXVar,
     nFTComputerCommandStickYVar,
-    nFTComputerCommandEnumMax
+    nFTComputerCommandEnumCount
 
 } FTComputerCommandKind;
 

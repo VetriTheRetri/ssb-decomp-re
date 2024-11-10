@@ -174,7 +174,7 @@ typedef enum lbFileLocation
     nLBFileLocationExtern,
     nLBFileLocationDefault,
     nLBFileLocationForce,
-	nLBFileLocationEnumMax
+	nLBFileLocationEnumCount
 
 } lbFileLocation;
 
@@ -187,7 +187,7 @@ typedef enum lbBackupUnlock
 	nLBBackupUnlockInishie,	 			    // Mushroom Kingdom
 	nLBBackupUnlockSoundTest, 			    // Sound Test menu
 	nLBBackupUnlockItemSwitch, 			    // Item Switch menu
-	nLBBackupUnlockEnumMax
+	nLBBackupUnlockEnumCount
 
 } lbBackupUnlock;
 

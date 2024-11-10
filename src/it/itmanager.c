@@ -265,7 +265,7 @@ GObj* itManagerMakeItem(GObj *parent_gobj, ITCreateDesc *item_desc, Vec3f *pos, 
     }
     else func_display = (attr->is_display_xlu) ? itDisplayXLUFuncDisplay : itDisplayOPAFuncDisplay;
 
-    gcAddGObjDisplay(item_gobj, func_display, 11, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(item_gobj, func_display, 11, GOBJ_PRIORITY_DEFAULT, ~0);
 
     item_gobj->user_data.p = ip;
 

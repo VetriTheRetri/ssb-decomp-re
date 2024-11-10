@@ -345,7 +345,7 @@ void mvOpeningJungleMakeFighters(void)
         ft_desc.level = gSCManagerBattleState->players[i].level;
         ft_desc.stock_count = gSCManagerBattleState->stocks;
         ft_desc.pkind = gSCManagerBattleState->players[i].pkind;
-        ft_desc.controller = &gPlayerControllers[i];
+        ft_desc.controller = &gSYControllerDevices[i];
         ft_desc.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[i].fkind);
 
         sMVOpeningJungleFighterGObj = fighter_gobj = ftManagerMakeFighter(&ft_desc);

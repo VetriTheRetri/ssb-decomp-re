@@ -505,11 +505,11 @@ void mnTitleFuncRun(GObj *gobj)
 			syTaskmanSetLoadScene();
 		}
 	}
-	else for (i = 0; i < ARRAY_COUNT(gPlayerControllers); i++)
+	else for (i = 0; i < ARRAY_COUNT(gSYControllerDevices); i++)
 	{
-		buttons = gPlayerControllers[i].button_tap;
+		buttons = gSYControllerDevices[i].button_tap;
 
-		if (gPlayerControllers[i].button_tap & (A_BUTTON | B_BUTTON | START_BUTTON))
+		if (gSYControllerDevices[i].button_tap & (A_BUTTON | B_BUTTON | START_BUTTON))
 		{
 			if (sMNTitleLayout != 0)
 			{
@@ -882,7 +882,7 @@ void mnTitleMakeFire(void)
 
 	if (fire_gobj != NULL)
 	{
-		gcAddGObjDisplay(fire_gobj, mnTitleFireFuncDisplay, 0, GOBJ_PRIORITY_DEFAULT, -1);
+		gcAddGObjDisplay(fire_gobj, mnTitleFireFuncDisplay, 0, GOBJ_PRIORITY_DEFAULT, ~0);
 		gcAddGObjProcess(fire_gobj, mnTitleFireProcUpdate, nGCProcessKindFunc, 1);
 
 		for (i = 0; i < 2; i++)
@@ -1039,7 +1039,7 @@ void mnTitleMakeLogo(void)
 		gcPlayAnimAll(animated_logo_gobj);
 
 		fire_logo_gobj = gcMakeGObjSPAfter(6, NULL, 7, GOBJ_PRIORITY_DEFAULT);
-		gcAddGObjDisplay(fire_logo_gobj, lbCommonDrawSObjAttr, 0, GOBJ_PRIORITY_DEFAULT, -1);
+		gcAddGObjDisplay(fire_logo_gobj, lbCommonDrawSObjAttr, 0, GOBJ_PRIORITY_DEFAULT, ~0);
 		gcAddGObjProcess(fire_logo_gobj, mnTitlePlayAnim, nGCProcessKindFunc, 1);
 
 		fire_logo_gobj->user_data.p = animated_logo_gobj;
@@ -1104,7 +1104,7 @@ void mnTitleMakeSprites(void)
 	s32 i;
 
 	gobj = gcMakeGObjSPAfter(8, NULL, 8, GOBJ_PRIORITY_DEFAULT);
-	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	for (i = 0; i < 7; i++)
 	{
@@ -1131,7 +1131,7 @@ void mnTitleMakeLabels(void)
 	gcPlayAnimAll(animation_gobj);
 
 	gobj = gcMakeGObjSPAfter(8, NULL, 8, GOBJ_PRIORITY_DEFAULT);
-	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddGObjProcess(gobj, mnTitleProcUpdate, nGCProcessKindFunc, 1);
 
 	gobj->user_data.p = animation_gobj;
@@ -1150,7 +1150,7 @@ void mnTitleMakeLabels(void)
 	gobj->flags = GOBJ_FLAG_HIDDEN;
 
 	gobj = gcMakeGObjSPAfter(9, NULL, 8, GOBJ_PRIORITY_DEFAULT);
-	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddGObjProcess(gobj, mnTitleUpdateLabelsPosition, nGCProcessKindFunc, 1);
 
 	gobj->user_data.p = animation_gobj;
@@ -1184,7 +1184,7 @@ void mnTitleMakePressStart(void)
 	press_start_anim_dobj = DObjGetStruct(press_start_anim_gobj)->child;
 
 	press_start_gobj = gcMakeGObjSPAfter(8, NULL, 9, GOBJ_PRIORITY_DEFAULT);
-	gcAddGObjDisplay(press_start_gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, -1);
+	gcAddGObjDisplay(press_start_gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddGObjProcess(press_start_gobj, mnTitlePressStartProcUpdate, nGCProcessKindFunc, 1);
 
 	press_start_gobj->user_data.p = press_start_anim_gobj;
@@ -1221,7 +1221,7 @@ void mnTitleMakeSlash(void)
 	if (gSCManagerSceneData.scene_prev == nSCKindOpeningNewcomers)
 	{
 		gobj = gcMakeGObjSPAfter(12, NULL, 14, GOBJ_PRIORITY_DEFAULT);
-		gcAddGObjDisplay(gobj, gcDrawDObjTreeDLLinksForGObj, 2, GOBJ_PRIORITY_DEFAULT, -1);
+		gcAddGObjDisplay(gobj, gcDrawDObjTreeDLLinksForGObj, 2, GOBJ_PRIORITY_DEFAULT, ~0);
 		gcSetupCustomDObjsWithMObj
 		(
 			gobj,
@@ -1376,7 +1376,7 @@ void mnTitleLogoFireFuncDisplay(GObj *gobj)
 void mnTitleMakeLogoFire(void)
 {
 	GObj *gobj = gcMakeGObjSPAfter(15, NULL, 4, GOBJ_PRIORITY_DEFAULT);
-	gcAddGObjDisplay(gobj, mnTitleLogoFireFuncDisplay, 3, GOBJ_PRIORITY_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, mnTitleLogoFireFuncDisplay, 3, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	gobj->camera_mask = COBJ_MASK_DLLINK(0);
 
@@ -1419,7 +1419,7 @@ void mnTitleFuncStart(void)
 {
 	s32 i;
 
-	for (i = 0; i < ARRAY_COUNT(gPlayerControllers); i++)
+	for (i = 0; i < ARRAY_COUNT(gSYControllerDevices); i++)
 	{
 		func_80004494(i);
 	}

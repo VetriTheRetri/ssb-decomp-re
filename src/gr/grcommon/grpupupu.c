@@ -17,7 +17,7 @@ enum grPupupuWhispyWindStatus
 	nGRPupupuWhispyWindStatusOpen,
 	nGRPupupuWhispyWindStatusBlow,
 	nGRPupupuWhispyWindStatusStop,
-    nGRPupupuWhispyWindStatusEnumMax
+    nGRPupupuWhispyWindStatusEnumCount
 };
 
 enum grPupupuWhispyMouthStatus
@@ -26,7 +26,7 @@ enum grPupupuWhispyMouthStatus
 	nGRPupupuWhispyMouthStatusTurn,
 	nGRPupupuWhispyMouthStatusOpen,
 	nGRPupupuWhispyMouthStatusClose,
-    nGRPupupuWhispyMouthStatusEnumMax
+    nGRPupupuWhispyMouthStatusEnumCount
 };
 
 enum grPupupuWhispyMouthTexture
@@ -34,14 +34,14 @@ enum grPupupuWhispyMouthTexture
     nGRPupupuWhispyMouthTextureOpen,
     nGRPupupuWhispyMouthTextureBlow,
     nGRPupupuWhispyMouthTextureClose,
-    nGRPupupuWhispyMouthTextureEnumMax
+    nGRPupupuWhispyMouthTextureEnumCount
 };
 
 enum grPupupuWhispyEyesStatus
 {
 	nGRPupupuWhispyEyesStatusTurn,
 	nGRPupupuWhispyEyesStatusBlink,
-    nGRPupupuWhispyEyesStatusEnumMax
+    nGRPupupuWhispyEyesStatusEnumCount
 };
 
 enum grPupupuWhispyEyesTexture
@@ -49,7 +49,7 @@ enum grPupupuWhispyEyesTexture
     nGRPupupuWhispyEyesTexture0,
     nGRPupupuWhispyEyesTexture1,
     nGRPupupuWhispyEyesTexture2,
-    nGRPupupuWhispyEyesTextureEnumMax
+    nGRPupupuWhispyEyesTextureEnumCount
 };
 
 enum grPupupuFlowerStatus
@@ -60,7 +60,7 @@ enum grPupupuFlowerStatus
 	nGRPupupuFlowerStatusWindLoop,
 	nGRPupupuFlowerStatusWindLoopEnd,
 	nGRPupupuFlowerStatusWindStop,
-    nGRPupupuFlowerStatusEnumMax
+    nGRPupupuFlowerStatusEnumCount
 };
 
 // // // // // // // // // // // //
@@ -70,14 +70,14 @@ enum grPupupuFlowerStatus
 // // // // // // // // // // // //
 
 // 0x8012E870
-intptr_t dGRPupupuWhispyEyesAnims[/* */][nGRPupupuWhispyEyesStatusEnumMax][2] =
+intptr_t dGRPupupuWhispyEyesAnims[/* */][nGRPupupuWhispyEyesStatusEnumCount][2] =
 {
     { { &lGRPupupuWhispyEyesLeftTurnAnimJoint, &lGRPupupuWhispyEyesLeftTurnMatAnimJoint }, { &lGRPupupuWhispyEyesLeftBlinkAnimJoint, 0x0 } },
     { { &lGRPupupuWhispyEyesRightTurnAnimJoint, &lGRPupupuWhispyEyesRightTurnMatAnimJoint }, { &lGRPupupuWhispyEyesRightBlinkAnimJoint, 0x0 } }
 };
 
 // 0x8012E890
-intptr_t dGRPupupuWhispyMouthAnims[/* */][nGRPupupuWhispyMouthStatusEnumMax][2] =
+intptr_t dGRPupupuWhispyMouthAnims[/* */][nGRPupupuWhispyMouthStatusEnumCount][2] =
 {
     // Left-facing
     { 
@@ -97,21 +97,21 @@ intptr_t dGRPupupuWhispyMouthAnims[/* */][nGRPupupuWhispyMouthStatusEnumMax][2] 
 };
 
 // 0x8012E8D0
-intptr_t dGRPupupuWhispyMouthTextures[/* */][nGRPupupuWhispyMouthTextureEnumMax] =
+intptr_t dGRPupupuWhispyMouthTextures[/* */][nGRPupupuWhispyMouthTextureEnumCount] =
 {
     { &lGRPupupuWhispyMouthLeftOpenTexture, &lGRPupupuWhispyMouthLeftBlowTexture, &lGRPupupuWhispyMouthLeftCloseTexture },
     { &lGRPupupuWhispyMouthRightOpenTexture, &lGRPupupuWhispyMouthRightBlowTexture, &lGRPupupuWhispyMouthRightCloseTexture }
 };
 
 // 0x8012E8E8
-intptr_t dGRPupupuWhispyEyesTextures[/* */][nGRPupupuWhispyEyesTextureEnumMax] =
+intptr_t dGRPupupuWhispyEyesTextures[/* */][nGRPupupuWhispyEyesTextureEnumCount] =
 {
     { &lGRPupupuWhispyEyesLeftTexture0, &lGRPupupuWhispyEyesLeftTexture1, &lGRPupupuWhispyEyesLeftTexture2 },
     { &lGRPupupuWhispyEyesRightTexture0, &lGRPupupuWhispyEyesRightTexture1, &lGRPupupuWhispyEyesRightTexture2 }
 };
 
 // 0x8012E900
-grPupupuEffect dGRPupupuWhispyLeavesEffectAttributes[/* */] = 
+GRPupupuEffect dGRPupupuWhispyLeavesEffectAttributes[/* */] = 
 {
     { { -715.0F, 450.0F, -696.0F }, F_CLC_DTOR32(-157.0F) },
     { { -205.0F, 450.0F, -762.0F }, F_CLC_DTOR32( -13.0F) }
@@ -637,7 +637,7 @@ GObj* grPupupuMakeMapGObj(intptr_t o_dobjdesc, intptr_t o_mobjsub, void (*func_d
 {
     GObj *ground_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(ground_gobj, func_display, dl_link, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(ground_gobj, func_display, dl_link, GOBJ_PRIORITY_DEFAULT, ~0);
 
     gcSetupCustomDObjs
     (

@@ -192,11 +192,11 @@ GObj* grDisplayMakeGeometryLayer(MPGroundDesc *gr_desc, s32 gr_desc_id, DObj **p
 
     if (gMPCollisionGroundData->layer_mask & (1 << gr_desc_id))
     {
-        func_display = dGRDisplayDescs[gr_desc_id].func_displaysec;
+        func_display = dGRDisplayDescs[gr_desc_id].sec_func_display;
     }
-    else func_display = dGRDisplayDescs[gr_desc_id].func_displaypri;
+    else func_display = dGRDisplayDescs[gr_desc_id].pri_func_display;
 
-    gcAddGObjDisplay(ground_gobj, func_display, dGRDisplayDescs[gr_desc_id].dl_link, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(ground_gobj, func_display, dGRDisplayDescs[gr_desc_id].dl_link, GOBJ_PRIORITY_DEFAULT, ~0);
     gcSetupCustomDObjs(ground_gobj, gr_desc->dobjdesc, p_dobj, nGCMatrixKindTraRotRpyRSca, nGCMatrixKindNull, nGCMatrixKindNull);
 
     if (gr_desc->p_mobjsubs != NULL)

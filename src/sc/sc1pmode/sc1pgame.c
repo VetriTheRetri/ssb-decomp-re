@@ -115,7 +115,7 @@ ub8 gSC1PGameBonusGiantImpact;
 ub8 gSC1PGameBonusMewCatcher;
 
 // 0x801936B0
-u32 gSC1PGameBonusAttackIDCount[nFTStatusAttackIDEnumMax];
+u32 gSC1PGameBonusAttackIDCount[nFTStatusAttackIDEnumCount];
 
 // 0x80193798
 u32 gSC1PGameBonusAttackIsSmashCount[2];
@@ -127,7 +127,7 @@ u32 gSC1PGameBonusAttackGroundAirCount[2];
 u32 gSC1PGameBonusAttackIsProjectileCount[2];
 
 // 0x801937B0
-u32 gSC1PGameBonusDefendIDCount[nFTStatusAttackIDEnumMax];
+u32 gSC1PGameBonusDefendIDCount[nFTStatusAttackIDEnumCount];
 
 // 0x80193898
 u32 gSC1PGameBonusDefendIsSmashCount[2];
@@ -1346,7 +1346,7 @@ void sc1PGameSpawnEnemyTeamNext(GObj *player_gobj)
 
         ft_desc.pkind = gSCManagerBattleState->players[player].pkind;
 
-        ft_desc.controller = &gPlayerControllers[player];
+        ft_desc.controller = &gSYControllerDevices[player];
 
         ft_desc.figatree_heap = figatree;
 
@@ -1719,7 +1719,7 @@ void sc1PGameInitTeamStockDisplay(void)
     make_gobj:
         interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_PRIORITY_DEFAULT);
 
-        gcAddGObjDisplay(interface_gobj, sc1PGameTeamStockDisplayFuncDisplay, 23, GOBJ_PRIORITY_DEFAULT, -1);
+        gcAddGObjDisplay(interface_gobj, sc1PGameTeamStockDisplayFuncDisplay, 23, GOBJ_PRIORITY_DEFAULT, ~0);
 
         for (i = 0; i < sSC1PGameEnemyStocksRemaining; i++)
         {
@@ -2108,7 +2108,7 @@ void sc1PGameFuncStart(void)
 
         ft_desc.pkind = gSCManagerBattleState->players[i].pkind;
 
-        ft_desc.controller = &gPlayerControllers[i];
+        ft_desc.controller = &gSYControllerDevices[i];
 
         ft_desc.figatree_heap = (sSC1PGamePlayerSetups[i].figatree != NULL) ? sSC1PGamePlayerSetups[i].figatree : ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[i].fkind);
 

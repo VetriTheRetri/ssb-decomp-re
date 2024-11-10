@@ -114,7 +114,7 @@ enum itHammerStatus
     nITHammerStatusHold,
     nITHammerStatusThrown,
     nITHammerStatusDropped,
-    nITHammerStatusEnumMax
+    nITHammerStatusEnumCount
 };
 
 // // // // // // // // // // // //

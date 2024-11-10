@@ -229,7 +229,7 @@ void mnN64FuncStart(void)
 	gobj = gcMakeGObjSPAfter(nGCCommonKindWallpaper, NULL, nGCCommonLinkIDWallpaper, GOBJ_PRIORITY_DEFAULT);
 
 	gcAddGObjProcess(gobj, mnN64LogoThreadUpdate, nGCProcessKindThread, 1);
-	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_PRIORITY_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	sprite = lbRelocGetFileData
 	(

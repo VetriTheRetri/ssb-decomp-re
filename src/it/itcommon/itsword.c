@@ -114,7 +114,7 @@ enum itSwordStatus
     nITSwordStatusHold,
     nITSwordStatusThrown,
     nITSwordStatusDropped,
-    nITSwordStatusEnumMax
+    nITSwordStatusEnumCount
 };
 
 // // // // // // // // // // // //

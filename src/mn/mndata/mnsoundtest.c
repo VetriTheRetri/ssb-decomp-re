@@ -59,13 +59,13 @@ s32 sMNSoundTestOption;                                             // Sound Tes
 s32 sMNSoundTestPad0x8013430C;
 
 // 0x80134310
-s32 sMNSoundTestOptionColorR[nMNSoundTestOptionEnumMax];            // R color value of sound test menu options
+s32 sMNSoundTestOptionColorR[nMNSoundTestOptionEnumCount];            // R color value of sound test menu options
 
 // 0x80134320
-s32 sMNSoundTestOptionColorG[nMNSoundTestOptionEnumMax];            // G color value of sound test menu options
+s32 sMNSoundTestOptionColorG[nMNSoundTestOptionEnumCount];            // G color value of sound test menu options
 
 // 0x80134330
-s32 sMNSoundTestOptionColorB[nMNSoundTestOptionEnumMax];            // B color value of sound test menu options
+s32 sMNSoundTestOptionColorB[nMNSoundTestOptionEnumCount];            // B color value of sound test menu options
 
 // 0x8013433C
 s32 sMNSoundTestOptionChangeWait;                                   // Frames to wait before new sound test option can be selected
@@ -77,10 +77,10 @@ s32 sMNSoundTestDirectionInputKind;                                 // Type of d
 s32 sMNSoundTestPad0x80134344;                                      // ???
 
 // 0x80134348
-s32 sMNSoundTestOptionSelectID[nMNSoundTestOptionEnumMax];          // Current selected ID of each option (e.g. Music is index 0 and holds a value from 0 to 44)
+s32 sMNSoundTestOptionSelectID[nMNSoundTestOptionEnumCount];          // Current selected ID of each option (e.g. Music is index 0 and holds a value from 0 to 44)
 
 // 0x80134358
-f32 sMNSoundTestSelectIDPositionsX[nMNSoundTestOptionEnumMax];      // X-Position of each selection ID
+f32 sMNSoundTestSelectIDPositionsX[nMNSoundTestOptionEnumCount];      // X-Position of each selection ID
 
 // 0x80134364
 s32 sMNSoundTestFadeOutWait;                                        // Frames to wait until fadeout is complete
@@ -1060,7 +1060,7 @@ SObj* mnSoundTestMakeHeaderSObjs(void)
 
     gobj = gcMakeGObjSPAfter(1, NULL, 2, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
 
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[2], &lMNSoundTestDataTextSprite));
 
@@ -1142,7 +1142,7 @@ SObj* mnSoundTestMakeMusicSObjs(void)
     SObj *sobj;
 
     gobj = gcMakeGObjSPAfter(1, NULL, 3, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
 
     gobj->user_data.s = nMNSoundTestOptionMusic;
 
@@ -1209,7 +1209,7 @@ SObj* mnSoundTestMakeSoundSObjs(void)
     SObj *sobj;
 
     gobj = gcMakeGObjSPAfter(1, NULL, 3, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
     gcAddGObjProcess(gobj, mnSoundTestOptionThreadUpdate, nGCProcessKindThread, 1);
 
     gobj->user_data.s = nMNSoundTestOptionSound;
@@ -1276,7 +1276,7 @@ SObj* mnSoundTestMakeVoiceSObjs(void)
     SObj *sobj;
 
     gobj = gcMakeGObjSPAfter(1, NULL, 3, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
     gcAddGObjProcess(gobj, mnSoundTestOptionThreadUpdate, nGCProcessKindThread, 1);
 
     gobj->user_data.s = nMNSoundTestOptionVoice;
@@ -1427,7 +1427,7 @@ void mnSoundTestMakeButtonSObjs(void)
 {
     GObj *gobj = gcMakeGObjSPAfter(1, NULL, 3, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
     mnSoundTestMakeAButtonSObj(gobj);
     mnSoundTestMakeBButtonSObj(gobj);
     mnSoundTestMakeStartButtonSObj(gobj);
@@ -1441,7 +1441,7 @@ void mnSoundTestMakeNumberSObj(GObj *gobj)
 {
     s32 i;
 
-    for (i = 0; i < nMNSoundTestOptionEnumMax; i++)
+    for (i = 0; i < nMNSoundTestOptionEnumCount; i++)
     {
         SObj *sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[1], dMNSoundTestDigitSpriteOffsets[0]));
 
@@ -1574,19 +1574,19 @@ void mnSoundTestMakeSelectIDGObjs(void)
 {
     GObj *gobj = gcMakeGObjSPAfter(1, NULL, 5, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
     gcAddGObjProcess(gobj, mnSoundTestSelectIDThreadUpdate, nGCProcessKindThread, 1);
 
     gobj->user_data.s = nMNSoundTestOptionMusic;
 
     gobj = gcMakeGObjSPAfter(1, NULL, 6, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
     gcAddGObjProcess(gobj, mnSoundTestSelectIDThreadUpdate, nGCProcessKindThread, 1);
 
     gobj->user_data.s = nMNSoundTestOptionSound;
 
     gobj = gcMakeGObjSPAfter(1, NULL, 7, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
     gcAddGObjProcess(gobj, mnSoundTestSelectIDThreadUpdate, nGCProcessKindThread, 1);
 
     gobj->user_data.s = nMNSoundTestOptionVoice;
@@ -1618,7 +1618,7 @@ void mnSoundTestArrowsThreadUpdate(GObj *gobj)
         }
         arrow_toggle_wait--;
 
-        id = sMNSoundTestOption * nMNSoundTestOptionEnumMax; // Really?
+        id = sMNSoundTestOption * nMNSoundTestOptionEnumCount; // Really?
 
         sobj->pos.x = dMNSoundTestArrowSpritePositions[id + 0];
         sobj->pos.y = dMNSoundTestArrowSpritePositions[id + 1];
@@ -1635,7 +1635,7 @@ void mnSoundTestMakeArrowSObjs(void)
     GObj *gobj = gcMakeGObjSPAfter(1, NULL, 2, GOBJ_PRIORITY_DEFAULT);
     SObj *sobj;
 
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
     gcAddGObjProcess(gobj, mnSoundTestArrowsThreadUpdate, nGCProcessKindThread, 1);
 
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[3], &lMNCommonLeftArrowSprite));

@@ -45,7 +45,7 @@ u32 sSCManagerUnk0x800A50EC;
 s32 D_800A50F0;
 
 // 0x800A50F8
-FTFileSize gSCManagerFighterFileSizes[nFTKindEnumMax];
+FTFileSize gSCManagerFighterFileSizes[nFTKindEnumCount];
 
 // 0x800A523C
 s32 sSCManagerUnk0x800A523C;
@@ -491,13 +491,13 @@ SCCommonData dSCManagerDefaultSceneData =
 
 	// Queued unlock messages
 	{
-		nLBBackupUnlockEnumMax,
-		nLBBackupUnlockEnumMax,
-		nLBBackupUnlockEnumMax,
-		nLBBackupUnlockEnumMax,
-		nLBBackupUnlockEnumMax,
-		nLBBackupUnlockEnumMax,
-		nLBBackupUnlockEnumMax
+		nLBBackupUnlockEnumCount,
+		nLBBackupUnlockEnumCount,
+		nLBBackupUnlockEnumCount,
+		nLBBackupUnlockEnumCount,
+		nLBBackupUnlockEnumCount,
+		nLBBackupUnlockEnumCount,
+		nLBBackupUnlockEnumCount
 	},
 
 	nFTKindLuigi,									// Challanger approaching character
@@ -571,7 +571,7 @@ SCBattleState dSCManagerDefaultBattleState =
 	FALSE,											// Is team attack enabled?
 	TRUE,											// Is stage select enabled?
 	100,											// Damage ratio
-	0xFFFFFFFF,										// Item Switch mask
+	~0,												// Item Switch mask
 	TRUE,											// ???
 	nSCBattleGameStatusWait,						// Status of current match
 	0,												// Time remaining (in tics)
@@ -1019,7 +1019,7 @@ void scManagerRunLoop(sb32 arg)
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[3]);
 				syDmaLoadOverlay(&dSCManagerOverlays[7]);
-				scManager_TrainingMode_InitScene();
+				sc1PTrainingModeStartScene();
 				break;
 
 			case nSCKindVSResults:

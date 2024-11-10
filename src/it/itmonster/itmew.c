@@ -65,7 +65,7 @@ ITStatusDesc dITMewStatusDescs[/* */] =
 enum itMewStatus
 {
     nITMewStatusFly,
-    nITMewStatusEnumMax
+    nITMewStatusEnumCount
 };
 
 // // // // // // // // // // // //

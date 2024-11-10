@@ -88,7 +88,7 @@ enum itHeartStatus
     nITHeartStatusWait,
     nITHeartStatusFall,
     nITHeartStatusDropped,
-    nITHeartStatusEnumMax
+    nITHeartStatusEnumCount
 };
 
 // // // // // // // // // // // //

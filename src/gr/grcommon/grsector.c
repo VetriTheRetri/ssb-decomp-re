@@ -1038,14 +1038,14 @@ void func_ovl2_80107CA0(void)
 void func_ovl2_80107D50(void)
 {
     GObj *map_gobj;
-    grSectorDesc *desc;
+    GRSectorDesc *desc;
 
     if (gGRCommonStruct.sector.arwing_flight_pattern != -1)
     {
         map_gobj = gGRCommonStruct.sector.map_gobj;
         gGRCommonStruct.sector.arwing_laser_count = dGRSectorArwingLaserCounts[gGRCommonStruct.sector.arwing_flight_pattern];
 
-        desc = (grSectorDesc*) ((intptr_t)dGRSectorArwingSectorDescs[gGRCommonStruct.sector.arwing_flight_pattern] + (uintptr_t)gGRCommonStruct.sector.map_head);
+        desc = (GRSectorDesc*) ((intptr_t)dGRSectorArwingSectorDescs[gGRCommonStruct.sector.arwing_flight_pattern] + (uintptr_t)gGRCommonStruct.sector.map_head);
 
         func_ovl2_80106A40(gGRCommonStruct.sector.map_dobjs[0], desc->anim_joint_0x0, 0.0F);
         func_ovl2_80106A40(gGRCommonStruct.sector.map_dobjs[7], desc->anim_joint_0x1C, 0.0F);
@@ -1093,7 +1093,7 @@ void grSectorInitAll(void)
 
     gGRCommonStruct.sector.map_gobj = map_gobj;
 
-    gcAddGObjDisplay(map_gobj, gcDrawDObjTreeDLLinksForGObj, 6, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(map_gobj, gcDrawDObjTreeDLLinksForGObj, 6, GOBJ_PRIORITY_DEFAULT, ~0);
     grModelSetupGroundDObjs(map_gobj, lbRelocGetFileData(DObjDesc*, map_file, &D_NF_00002C30), gGRCommonStruct.sector.map_dobjs, dGRSectorArwingTransformKinds);
     gcAddGObjProcess(map_gobj, gcPlayAnimAll, nGCProcessKindFunc, 5);
 

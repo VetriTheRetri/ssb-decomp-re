@@ -134,7 +134,7 @@ void mvOpeningYamabukiMakeWallpaper(void)
     SObj* sobj;
 
     gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, nGCMatrixKindTraRotRpyRSca, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, nGCMatrixKindTraRotRpyRSca, GOBJ_PRIORITY_DEFAULT, ~0);
 
     sobj = lbCommonMakeSObjForGObj
     (
@@ -191,7 +191,7 @@ void mvOpeningYamabukiMakeLegs(void)
         nGCMatrixKindNull,
         nGCMatrixKindNull
     );
-    gcAddGObjDisplay(gobj, gcDrawDObjTreeForGObj, 27, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, gcDrawDObjTreeForGObj, 27, GOBJ_PRIORITY_DEFAULT, ~0);
 
     DObjGetStruct(gobj)->translate.vec.f.x = 0.0F;
     DObjGetStruct(gobj)->translate.vec.f.y = 0.0F;
@@ -229,7 +229,7 @@ void mvOpeningYamabukiMakeLegsShadow(void)
         nGCMatrixKindNull,
         nGCMatrixKindNull
     );
-    gcAddGObjDisplay(gobj, gcDrawDObjTreeDLLinksForGObj, 27, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, gcDrawDObjTreeDLLinksForGObj, 27, GOBJ_PRIORITY_DEFAULT, ~0);
 
     DObjGetStruct(gobj)->translate.vec.f.x = 0.0F;
     DObjGetStruct(gobj)->translate.vec.f.y = 0.0F;
@@ -267,7 +267,7 @@ void mvOpeningYamabukiMakeMBall(void)
         nGCMatrixKindNull,
         nGCMatrixKindNull
     );
-    gcAddGObjDisplay(gobj, gcDrawDObjTreeDLLinksForGObj, 27, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, gcDrawDObjTreeDLLinksForGObj, 27, GOBJ_PRIORITY_DEFAULT, ~0);
 
     DObjGetStruct(gobj)->translate.vec.f.x = 0.0F;
     DObjGetStruct(gobj)->translate.vec.f.y = 0.0F;

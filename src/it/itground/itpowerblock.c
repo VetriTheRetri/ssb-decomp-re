@@ -65,7 +65,7 @@ ITStatusDesc dITPowerBlockStatusDescs[/* */] =
 enum itPowerBlockStatus
 {
     nITPowerBlockStatusWait,
-    nITPowerBlockStatusEnumMax
+    nITPowerBlockStatusEnumCount
 };
 
 // // // // // // // // // // // //

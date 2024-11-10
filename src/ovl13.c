@@ -518,7 +518,7 @@ void dbCubeMain(GObj* arg0)
 // 0x80131EA0
 GObj* dbCubeCreateGObj(void* ptr, void* dvar)
 {
-	GObj* gobj = gcMakeModelGObj(0x10000000, gcDefaultFuncRun, 0, 0x80000000, gcDrawDObjDLHead0, 0, 0x80000000, -1, dvar, 1, 0, ptr, 1);
+	GObj* gobj = gcMakeModelGObj(0x10000000, gcDefaultFuncRun, 0, 0x80000000, gcDrawDObjDLHead0, 0, GOBJ_PRIORITY_DEFAULT, ~0, dvar, 1, 0, ptr, 1);
 
 	return (gobj != NULL) ? gobj : NULL;
 }

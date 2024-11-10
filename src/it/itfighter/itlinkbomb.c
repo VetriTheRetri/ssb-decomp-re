@@ -133,7 +133,7 @@ enum itLinkBombStatus
 	nITLinkBombStatusThrown,
 	nITLinkBombStatusDropped,
 	nITLinkBombStatusExplode,
-	nITLinkBombStatusEnumMax
+	nITLinkBombStatusEnumCount
 };
 
 // // // // // // // // // // // //

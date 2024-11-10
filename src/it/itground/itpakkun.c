@@ -97,7 +97,7 @@ enum itPakkunStatus
     nITPakkunStatusWait,
     nITPakkunStatusAppear,
     nITPakkunStatusDamaged,
-    nITPakkunStatusEnumMax
+    nITPakkunStatusEnumCount
 };
 
 // // // // // // // // // // // //

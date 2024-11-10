@@ -106,7 +106,7 @@ enum itMLuckyStatus
     nITMLuckyStatusAppear,
     nITMLuckyStatusMakeEgg,
     nITMLuckyStatusDisappear,
-    nITMLuckyStatusEnumMax
+    nITMLuckyStatusEnumCount
 };
 
 // // // // // // // // // // // //

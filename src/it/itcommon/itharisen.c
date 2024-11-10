@@ -121,7 +121,7 @@ enum itHarisenStatus
     nITHarisenStatusHold,
     nITHarisenStatusThrown,
     nITHarisenStatusDropped,
-    nITHarisenStatusEnumMax
+    nITHarisenStatusEnumCount
 };
 
 // // // // // // // // // // // //

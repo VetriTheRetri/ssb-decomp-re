@@ -64,7 +64,7 @@ ITStatusDesc dITMarumineStatusDescs[/* */] =
 enum itMarumineStatus
 {
     nITMarumineStatusExplode,
-    nITMarumineStatusEnumMax
+    nITMarumineStatusEnumCount
 };
 
 // // // // // // // // // // // //

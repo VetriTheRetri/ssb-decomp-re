@@ -174,7 +174,7 @@ void mvOpeningClashMakeWallpaper(void)
 {
     // lower left quadrant
     GObj* gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 29, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 29, GOBJ_PRIORITY_DEFAULT, ~0);
     gcAddXObjForDObjFixed(gcAddDObjForGObj(gobj, lbRelocGetFileData(void*, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLLDisplayList)), 0x1C, 0);
     gcAddMObjAll(gobj, lbRelocGetFileData(MObjSub***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLLMObjSub));
     gcAddMatAnimJointAll(gobj, lbRelocGetFileData(AObjEvent32***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLLMatAnimJoint), 0.0F);
@@ -188,7 +188,7 @@ void mvOpeningClashMakeWallpaper(void)
 
     // lower right quadrant
     gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 29, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 29, GOBJ_PRIORITY_DEFAULT, ~0);
     gcAddXObjForDObjFixed(gcAddDObjForGObj(gobj, lbRelocGetFileData(void*, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLRDisplayList)), 0x1C, 0);
     gcAddMObjAll(gobj, lbRelocGetFileData(MObjSub***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLRMObjSub));
     gcAddMatAnimJointAll(gobj, lbRelocGetFileData(AObjEvent32***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLRMatAnimJoint), 0.0F);
@@ -202,7 +202,7 @@ void mvOpeningClashMakeWallpaper(void)
 
     // upper left quadrant
     gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 29, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 29, GOBJ_PRIORITY_DEFAULT, ~0);
     gcAddXObjForDObjFixed(gcAddDObjForGObj(gobj, lbRelocGetFileData(void*, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperULDisplayList)), 0x1C, 0);
     gcAddMObjAll(gobj, lbRelocGetFileData(MObjSub***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperULMObjSub));
     gcAddMatAnimJointAll(gobj, lbRelocGetFileData(AObjEvent32***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperULMatAnimJoint), 0.0F);
@@ -216,7 +216,7 @@ void mvOpeningClashMakeWallpaper(void)
 
     // upper right quadrant
     gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 29, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 29, GOBJ_PRIORITY_DEFAULT, ~0);
     gcAddXObjForDObjFixed(gcAddDObjForGObj(gobj, lbRelocGetFileData(void*, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperURDisplayList)), 0x1C, 0);
     gcAddMObjAll(gobj, lbRelocGetFileData(MObjSub***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperURMObjSub));
     gcAddMatAnimJointAll(gobj, lbRelocGetFileData(AObjEvent32***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperURMatAnimJoint), 0.0F);

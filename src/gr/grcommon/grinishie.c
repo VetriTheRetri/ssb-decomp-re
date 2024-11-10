@@ -354,7 +354,7 @@ void grInishieMakeScale(void)
     map_head = gGRCommonStruct.inishie.map_head;
     ground_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(ground_gobj, gcDrawDObjTreeForGObj, 6, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(ground_gobj, gcDrawDObjTreeForGObj, 6, GOBJ_PRIORITY_DEFAULT, ~0);
     grModelSetupGroundDObjs(ground_gobj, (DObjDesc*) ((uintptr_t)map_head + (intptr_t)&lGRInishieScaleDObjDesc), map_dobjs, dGRInishieScaleTransformKinds);
 
     gGRCommonStruct.inishie.scale[0].string_dobj = map_dobjs[4];
@@ -366,7 +366,7 @@ void grInishieMakeScale(void)
     for (i = 0; i < ARRAY_COUNT(gGRCommonStruct.inishie.scale); i++)
     {
         ground_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_PRIORITY_DEFAULT);
-        gcAddGObjDisplay(ground_gobj, gcDrawDObjDLHead0, 6, GOBJ_PRIORITY_DEFAULT, -1);
+        gcAddGObjDisplay(ground_gobj, gcDrawDObjDLHead0, 6, GOBJ_PRIORITY_DEFAULT, ~0);
 
         platform_dobj = gcAddDObjForGObj(ground_gobj, (void*) ((uintptr_t)map_head + (intptr_t)&lGRInishieMapHead));
         gGRCommonStruct.inishie.scale[i].platform_dobj = platform_dobj;

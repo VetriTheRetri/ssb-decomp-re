@@ -248,7 +248,7 @@ void mnDataMakeCharacters(void)
 
     sMNDataOptionCharactersGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, ~0);
 
     mnDataMakeOptionTab(gobj, pos_x, pos_y, 16);
 
@@ -288,7 +288,7 @@ void mnDataMakeVSRecord(void)
 
     sMNDataOptionVSRecordGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, ~0);
 
     mnDataMakeOptionTab(gobj, pos_x, pos_y, 16);
 
@@ -315,7 +315,7 @@ void mnDataMakeSoundTest(void)
 
     sMNDataOptionSoundTestGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, ~0);
 
     mnDataMakeOptionTab(gobj, 69.0F, 136.0F, 16);
 
@@ -393,7 +393,7 @@ void mnDataMakeLabels(void)
 
     gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(gobj, mnDataLabelsFuncDisplay, 1, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, mnDataLabelsFuncDisplay, 1, GOBJ_PRIORITY_DEFAULT, ~0);
 
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNDataFiles[0], &lMNCommonSmashLogoSprite));
 
@@ -427,7 +427,7 @@ void mnDataMakeDecals(void)
     SObj *sobj;
 
     gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_PRIORITY_DEFAULT, ~0);
 
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNDataFiles[0], &lMNCommonWallpaperSprite));
 

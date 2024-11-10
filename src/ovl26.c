@@ -415,7 +415,7 @@ void mnBattleCreateLockedPortrait(s32 portrait_id)
 
 	// portrait bg (fire)
 	texture_gobj = gcMakeGObjSPAfter(0U, NULL, 0x12U, 0x80000000U);
-	gcAddGObjDisplay(texture_gobj, lbCommonDrawSObjAttr, 0x1BU, 0x80000000U, -1);
+	gcAddGObjDisplay(texture_gobj, lbCommonDrawSObjAttr, 0x1BU, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddGObjProcess(texture_gobj, mnBattleSetPortraitX, 1, 1);
 
 	texture_sobj = lbCommonMakeSObjForGObj(texture_gobj, gFile013 + (intptr_t)&FILE_013_PORTRAIT_FIRE_BG_IMAGE_OFFSET);
@@ -427,7 +427,7 @@ void mnBattleCreateLockedPortrait(s32 portrait_id)
 
 	// portrait
 	texture_gobj = gcMakeGObjSPAfter(0U, NULL, 0x12U, 0x80000000U);
-	gcAddGObjDisplay(texture_gobj, mnBattleRenderPortraitWithNoise, 0x1BU, 0x80000000U, -1);
+	gcAddGObjDisplay(texture_gobj, mnBattleRenderPortraitWithNoise, 0x1BU, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddGObjProcess(texture_gobj, mnBattleSetPortraitX, 1, 1);
 
 	texture_sobj
@@ -440,7 +440,7 @@ void mnBattleCreateLockedPortrait(s32 portrait_id)
 
 	// question mark
 	texture_gobj = gcMakeGObjSPAfter(0U, NULL, 0x12U, 0x80000000U);
-	gcAddGObjDisplay(texture_gobj, lbCommonDrawSObjAttr, 0x1BU, 0x80000000U, -1);
+	gcAddGObjDisplay(texture_gobj, lbCommonDrawSObjAttr, 0x1BU, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddGObjProcess(texture_gobj, mnBattleSetPortraitX, 1, 1);
 
 	texture_sobj
@@ -476,7 +476,7 @@ void mnBattleCreatePortrait(s32 portrait_id)
 	{
 		// portrait bg (fire)
 		portrait_bg_gobj = gcMakeGObjSPAfter(0U, NULL, 0x1DU, 0x80000000U);
-		gcAddGObjDisplay(portrait_bg_gobj, lbCommonDrawSObjAttr, 0x24U, 0x80000000U, -1);
+		gcAddGObjDisplay(portrait_bg_gobj, lbCommonDrawSObjAttr, 0x24U, GOBJ_PRIORITY_DEFAULT, ~0);
 		portrait_bg_gobj->user_data.p = portrait_id;
 		gcAddGObjProcess(portrait_bg_gobj, mnBattleSetPortraitX, 1, 1);
 
@@ -486,7 +486,7 @@ void mnBattleCreatePortrait(s32 portrait_id)
 
 		// portrait
 		portrait_gobj = gcMakeGObjSPAfter(0U, NULL, 0x12U, 0x80000000U);
-		gcAddGObjDisplay(portrait_gobj, lbCommonDrawSObjAttr, 0x1BU, 0x80000000U, -1);
+		gcAddGObjDisplay(portrait_gobj, lbCommonDrawSObjAttr, 0x1BU, GOBJ_PRIORITY_DEFAULT, ~0);
 		gcAddGObjProcess(portrait_gobj, mnBattleSetPortraitX, 1, 1);
 
 		texture_sobj
@@ -523,7 +523,7 @@ void mnCreateTeamButton(s32 team_id, s32 port_id)
 	};
 
 	team_button_gobj = gMnBattlePanels[port_id].team_color_button = gcMakeGObjSPAfter(0U, NULL, 0x1BU, 0x80000000U);
-	gcAddGObjDisplay(team_button_gobj, lbCommonDrawSObjAttr, 0x22U, 0x80000000U, -1);
+	gcAddGObjDisplay(team_button_gobj, lbCommonDrawSObjAttr, 0x22U, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	team_button_sobj = lbCommonMakeSObjForGObj(team_button_gobj, gFile011 + team_color_button_offsets[team_id]);
 	team_button_sobj->pos.x = (f32)((port_id * 0x45) + 0x22);
@@ -844,7 +844,7 @@ void mnCreateTypeButton(s32 port_id)
 	};
 
 	type_button_gobj
-		= lbCommonMakeSpriteGObj(0, NULL, 0x18, 0x80000000, lbCommonDrawSObjAttr, 0x1E, 0x80000000, -1,
+		= lbCommonMakeSpriteGObj(0, NULL, 0x18, 0x80000000, lbCommonDrawSObjAttr, 0x1E, GOBJ_PRIORITY_DEFAULT, ~0,
 							 GetAddressFromOffset(gFile011, offsets[gMnBattlePanels[port_id].player_type]), 1, NULL, 1);
 
 	gMnBattlePanels[port_id].type_button = type_button_gobj;
@@ -869,7 +869,7 @@ void mnBattleCreateTypeImage(s32 port_id)
 	};
 
 	gMnBattlePanels[port_id].type = type_gobj = gcMakeGObjSPAfter(0U, NULL, 0x16U, 0x80000000U);
-	gcAddGObjDisplay(type_gobj, lbCommonDrawSObjAttr, 0x1CU, 0x80000000U, -1);
+	gcAddGObjDisplay(type_gobj, lbCommonDrawSObjAttr, 0x1CU, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	if (gMnBattlePanels[port_id].player_type == mnPanelTypeCPU)
 	{
@@ -917,7 +917,7 @@ void mnBattleCreatePanel(s32 port_id)
 	s32 start_x;
 
 	// create panel
-	temp_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1C, 0x80000000, -1,
+	temp_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1C, GOBJ_PRIORITY_DEFAULT, ~0,
 								   GetAddressFromOffset(gFile011, &FILE_011_PANEL_IMAGE_OFFSET), 1, NULL, 1);
 	gMnBattlePanels[port_id].panel = temp_gobj;
 	start_x = port_id * 0x45;
@@ -938,7 +938,7 @@ void mnBattleCreatePanel(s32 port_id)
 	mnBattleCreateTypeImage(port_id);
 
 	// create panel doors
-	temp_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x17, 0x80000000, panelRenderRoutines[port_id], 0x1D, 0x80000000, -1,
+	temp_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x17, 0x80000000, panelRenderRoutines[port_id], 0x1D, GOBJ_PRIORITY_DEFAULT, ~0,
 								   GetAddressFromOffset(gFile011, &FILE_011_PANEL_DOOR_L_IMAGE_OFFSET), 1,
 								   mnUpdatePanelDoors, 1);
 	temp_gobj->user_data.p = port_id;
@@ -962,7 +962,7 @@ void mnBattleCreatePanel(s32 port_id)
 	// name/logo
 	temp_gobj = gcMakeGObjSPAfter(0U, NULL, 0x16U, 0x80000000U);
 	gMnBattlePanels[port_id].name_logo = temp_gobj;
-	gcAddGObjDisplay(temp_gobj, lbCommonDrawSObjAttr, 0x1CU, 0x80000000U, -1);
+	gcAddGObjDisplay(temp_gobj, lbCommonDrawSObjAttr, 0x1CU, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	mnBattleSyncNameAndLogo(port_id);
 
@@ -1099,7 +1099,7 @@ void mnDrawTimerPicker(s32 num)
 	if (gMnBattlePickerGObj != NULL)
 		gcEjectGObj(gMnBattlePickerGObj);
 
-	picker_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x19, 0x80000000, lbCommonDrawSObjAttr, 0x1A, 0x80000000, -1,
+	picker_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x19, 0x80000000, lbCommonDrawSObjAttr, 0x1A, GOBJ_PRIORITY_DEFAULT, ~0,
 									 GetAddressFromOffset(gFile011, &FILE_011_PICKER_TIME_IMAGE_OFFSET), 1, NULL, 1);
 	gMnBattlePickerGObj = picker_gobj;
 
@@ -1137,7 +1137,7 @@ void mnDrawStockPicker(s32 num)
 	if (gMnBattlePickerGObj != NULL)
 		gcEjectGObj(gMnBattlePickerGObj);
 
-	picker_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x19, 0x80000000, lbCommonDrawSObjAttr, 0x1A, 0x80000000, -1,
+	picker_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x19, 0x80000000, lbCommonDrawSObjAttr, 0x1A, GOBJ_PRIORITY_DEFAULT, ~0,
 									 GetAddressFromOffset(gFile011, &FILE_011_PICKER_STOCK_IMAGE_OFFSET), 1, NULL, 1);
 	gMnBattlePickerGObj = picker_gobj;
 
@@ -1161,7 +1161,7 @@ void mnBattleCreateBackground()
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
 	background_gobj = gcMakeGObjSPAfter(0U, NULL, 0x11U, 0x80000000U);
-	gcAddGObjDisplay(background_gobj, lbCommonDrawSObjAttr, 0x1AU, 0x80000000U, -1);
+	gcAddGObjDisplay(background_gobj, lbCommonDrawSObjAttr, 0x1AU, GOBJ_PRIORITY_DEFAULT, ~0);
 	background_sobj
 		= lbCommonMakeSObjForGObj(background_gobj, GetAddressFromOffset(gFile015, &FILE_015_BACKGROUND_IMAGE_OFFSET));
 	background_sobj->cms = G_TX_WRAP;
@@ -1190,7 +1190,7 @@ void mnBattleDrawTitleAndBack()
 		{ 0x61, 0xAD, 0x49 }
 	};
 
-	title_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x19, 0x80000000, lbCommonDrawSObjAttr, 0x1A, 0x80000000, -1,
+	title_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x19, 0x80000000, lbCommonDrawSObjAttr, 0x1A, GOBJ_PRIORITY_DEFAULT, ~0,
 									GetAddressFromOffset(gFile012, title_offsets[gMnBattleIsTeamBattle]), 1, NULL, 1);
 	SObjGetStruct(title_gobj)->pos.x = 27.0F;
 	SObjGetStruct(title_gobj)->pos.y = 24.0F;
@@ -1204,7 +1204,7 @@ void mnBattleDrawTitleAndBack()
 	(gMnBattleRule == SCBATTLE_GAMERULE_TIME) ? mnDrawTimerPicker(gMnBattleTimerValue)
 											 : mnDrawStockPicker(gMnBattleStockValue);
 
-	back_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x19, 0x80000000, lbCommonDrawSObjAttr, 0x1A, 0x80000000, -1,
+	back_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x19, 0x80000000, lbCommonDrawSObjAttr, 0x1A, GOBJ_PRIORITY_DEFAULT, ~0,
 								   GetAddressFromOffset(gFile011, &FILE_011_BACK_IMAGE_OFFSET), 1, NULL, 1);
 	SObjGetStruct(back_gobj)->pos.x = 244.0F;
 	SObjGetStruct(back_gobj)->pos.y = 23.0F;
@@ -2124,7 +2124,7 @@ void mnBattleCreateWhiteSquare(s32 port_id)
 
 	white_square_gobj = gcMakeGObjSPAfter(0U, NULL, 0x1EU, 0x80000000U);
 	gMnBattlePanels[port_id].white_square = white_square_gobj;
-	gcAddGObjDisplay(white_square_gobj, lbCommonDrawSObjAttr, 0x25U, 0x80000000U, -1);
+	gcAddGObjDisplay(white_square_gobj, lbCommonDrawSObjAttr, 0x25U, GOBJ_PRIORITY_DEFAULT, ~0);
 	white_square_gobj->user_data.p = port_id;
 	gcAddGObjProcess(white_square_gobj, mnBattleFlashWhiteSquare, 0, 1);
 
@@ -2354,7 +2354,7 @@ void mnBattleDrawHandicapCPULevel(s32 port_id)
 
 	handicap_cpu_level_gobj = gcMakeGObjSPAfter(0U, NULL, 0x1CU, 0x80000000U);
 	gMnBattlePanels[port_id].handicap_cpu_level = handicap_cpu_level_gobj;
-	gcAddGObjDisplay(handicap_cpu_level_gobj, lbCommonDrawSObjAttr, 0x23U, 0x80000000U, -1);
+	gcAddGObjDisplay(handicap_cpu_level_gobj, lbCommonDrawSObjAttr, 0x23U, GOBJ_PRIORITY_DEFAULT, ~0);
 	handicap_cpu_level_gobj->user_data.p = port_id;
 	gcAddGObjProcess(handicap_cpu_level_gobj, mnBattleSyncHandicapCPULevelDisplay, 1, 1);
 
@@ -2412,7 +2412,7 @@ void mnDrawHandicapCPULevelValue(s32 port_id)
 
 	handicap_cpu_level_gobj = gcMakeGObjSPAfter(0U, NULL, 0x1CU, 0x80000000U);
 	gMnBattlePanels[port_id].handicap_cpu_level_value = handicap_cpu_level_gobj;
-	gcAddGObjDisplay(handicap_cpu_level_gobj, lbCommonDrawSObjAttr, 0x23U, 0x80000000U, -1);
+	gcAddGObjDisplay(handicap_cpu_level_gobj, lbCommonDrawSObjAttr, 0x23U, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	handicap_cpu_level_sobj
 		= lbCommonMakeSObjForGObj(handicap_cpu_level_gobj, GetAddressFromOffset(gFile000, offsets[value]));
@@ -2438,7 +2438,7 @@ void mnReplaceFighterNameWithHandicapCPULevel(s32 port_id)
 	{
 		arrow_gobj = gcMakeGObjSPAfter(0U, NULL, 0x1CU, 0x80000000U);
 		gMnBattlePanels[port_id].arrows = arrow_gobj;
-		gcAddGObjDisplay(arrow_gobj, lbCommonDrawSObjAttr, 0x23U, 0x80000000U, -1);
+		gcAddGObjDisplay(arrow_gobj, lbCommonDrawSObjAttr, 0x23U, GOBJ_PRIORITY_DEFAULT, ~0);
 		arrow_gobj->user_data.s = port_id;
 		gcAddGObjProcess(arrow_gobj, mnBattleSyncAndBlinkArrows, 0, 1);
 	}
@@ -2737,7 +2737,7 @@ void mnBattleAutoPositionCursor(GObj* cursor_gobj, s32 port_id)
 	}
 	else if (gMnBattlePanels[port_id].is_recalling == FALSE)
 	{
-		controller = &gPlayerControllers[port_id];
+		controller = &gSYControllerDevices[port_id];
 
 		is_within_bounds = (controller->stick_range.x < -8) || (controller->stick_range.x >= 9) ? TRUE : FALSE;
 
@@ -2896,7 +2896,7 @@ void mnGoBackToVSMenu()
 void mnExitIfBButtonHeld(s32 port_id)
 {
 	mnCharPanelBattle* panel_info = &gMnBattlePanels[port_id];
-	gsController* controller = &gPlayerControllers[port_id];
+	gsController* controller = &gSYControllerDevices[port_id];
 
 	if (panel_info->is_b_held)
 	{
@@ -2960,7 +2960,7 @@ void mnBattleHandleButtonPresses(GObj* cursor_gobj)
 	s32 port_id = cursor_gobj->user_data.s;
 
 	mnBattleAutoPositionCursor(cursor_gobj, port_id);
-	controller = &gPlayerControllers[port_id];
+	controller = &gSYControllerDevices[port_id];
 
 	if ((controller->button_tap & A_BUTTON) && (mnCheckAndHandleAnyPlayerTypeButtonPress(cursor_gobj, port_id) == FALSE)
 		&& (mnBattleSelectChar(cursor_gobj, port_id, gMnBattlePanels[port_id].held_port_id, 4) == FALSE)
@@ -3578,7 +3578,7 @@ void mnBattleCreateWhiteCircles()
 		gcSetupCommonDObjs(white_circle_gobj, GetAddressFromOffset(gMnBattleFiles[6], &FILE_016_WHITE_CIRCLE_OFFSET_2),
 					  0);
 
-		gcAddGObjDisplay(white_circle_gobj, gcDrawDObjTreeDLLinksForGObj, 9U, 0x80000000U, -1);
+		gcAddGObjDisplay(white_circle_gobj, gcDrawDObjTreeDLLinksForGObj, 9U, GOBJ_PRIORITY_DEFAULT, ~0);
 
 		white_circle_gobj->user_data.s = i;
 
@@ -3624,7 +3624,7 @@ void mnBattleCreateReadyToFightObjects()
 
 	// Ready to Fight banner
 	gobj = gcMakeGObjSPAfter(0U, NULL, 0x20U, 0x80000000U);
-	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0x26U, 0x80000000U, -1);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0x26U, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddGObjProcess(gobj, mnBattleBlinkIfReadyToFight, 1, 1);
 
 	// Ready to Fight banner bg
@@ -3661,7 +3661,7 @@ void mnBattleCreateReadyToFightObjects()
 
 	// Press Start indicator
 	gobj = gcMakeGObjSPAfter(0U, NULL, 0x16U, 0x80000000U);
-	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0x1CU, 0x80000000U, -1);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0x1CU, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddGObjProcess(gobj, mnBattleBlinkIfReadyToFight, 1, 1);
 
 	// "Press"

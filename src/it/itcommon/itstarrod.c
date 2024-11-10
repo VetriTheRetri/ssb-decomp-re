@@ -144,7 +144,7 @@ enum itStarRodStatus
     nITStarRodStatusHold,
     nITStarRodStatusThrown,
     nITStarRodStatusDropped,
-    nITStarRodStatusEnumMax
+    nITStarRodStatusEnumCount
 };
 
 // // // // // // // // // // // //

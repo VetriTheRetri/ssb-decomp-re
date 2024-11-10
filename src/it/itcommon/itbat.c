@@ -116,7 +116,7 @@ enum itBatStatus
     nITBatStatusHold,
     nITBatStatusThrown,
     nITBatStatusDropped,
-    nITBatStatusEnumMax
+    nITBatStatusEnumCount
 };
 
 // // // // // // // // // // // //

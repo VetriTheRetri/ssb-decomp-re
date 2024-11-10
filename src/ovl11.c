@@ -73,7 +73,7 @@ void mnNoControllerCreateNoControllerImage()
 	SObj* sobj;
 
 	gobj = gcMakeGObjSPAfter(0x3E9, 0, 1, 0x80000000);
-	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, 0x80000000, -1);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	sobj = lbCommonMakeSObjForGObj(gobj, GetAddressFromOffset(gMNNoControllerFiles[0], &FILE_0A9_NO_CONTROLLER_IMAGE_OFFSET));
 	sobj->pos.x = 10.0f;

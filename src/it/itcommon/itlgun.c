@@ -142,7 +142,7 @@ enum itLGunStatus
     nITLGunStatusHold,
     nITLGunStatusThrown,
     nITLGunStatusDropped,
-    nITLGunStatusEnumMax
+    nITLGunStatusEnumCount
 };
 
 // // // // // // // // // // // //

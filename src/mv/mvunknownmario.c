@@ -210,7 +210,7 @@ void mvUnknownMarioFuncStart(void)
 		ft_desc.stock_count = gSCManagerBattleState->stocks;
 		ft_desc.damage = 0;
 		ft_desc.pkind = gSCManagerBattleState->players[player].pkind;
-		ft_desc.controller = &gPlayerControllers[player];
+		ft_desc.controller = &gSYControllerDevices[player];
 
 		ft_desc.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[player].fkind);
 

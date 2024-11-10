@@ -9,7 +9,7 @@
 //                               //
 // // // // // // // // // // // //
 
-extern FTFileSize gSCManagerFighterFileSizes[nFTKindEnumMax];
+extern FTFileSize gSCManagerFighterFileSizes[nFTKindEnumCount];
 
 extern intptr_t D_NF_000000A3;
 extern intptr_t D_NF_000000C9;
@@ -57,7 +57,7 @@ LBFileNode sFTManagerForceStatusBuffer[7];
 // // // // // // // // // // // //
 
 // 0x80116E10
-extern FTData *dFTManagerDataFiles[nFTKindEnumMax];
+extern FTData *dFTManagerDataFiles[nFTKindEnumCount];
 
 /*
 FTData *dFTManagerDataFiles[] =
@@ -714,7 +714,7 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
 
     fighter_gobj = gcMakeGObjSPAfter(nGCCommonKindFighter, NULL, nGCCommonLinkIDFighter, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(fighter_gobj, ft_desc->func_display, FTRENDER_DLLINK_DEFAULT, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(fighter_gobj, ft_desc->func_display, FTRENDER_DLLINK_DEFAULT, GOBJ_PRIORITY_DEFAULT, ~0);
 
     fp = ftManagerGetNextStructAlloc();
 

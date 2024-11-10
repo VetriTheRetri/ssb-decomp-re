@@ -735,7 +735,7 @@ typedef enum gmFGMVoiceID
 	nSYAudioVoicePublicityUnkGasp,			// ???
 	// Dood I'm not gonna bother with these unless they're really used somehow
 	nSYAudioFGMVoiceEnd = 0x2B7,
-	nSYAudioFGMVoiceEnumMax = nSYAudioFGMVoiceEnd
+	nSYAudioFGMVoiceEnumCount = nSYAudioFGMVoiceEnd
 
 } gmFGMVoiceID;
 

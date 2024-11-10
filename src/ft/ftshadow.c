@@ -460,7 +460,7 @@ GObj* FTShadowMakeShadow(GObj *fighter_gobj)
     }
     shadow_gobj->user_data.p = fs;
 
-    gcAddGObjDisplay(shadow_gobj, FTShadowFuncDisplay, 7, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(shadow_gobj, FTShadowFuncDisplay, 7, GOBJ_PRIORITY_DEFAULT, ~0);
 
     return shadow_gobj;
 }

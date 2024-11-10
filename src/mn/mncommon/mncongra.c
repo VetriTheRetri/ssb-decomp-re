@@ -218,12 +218,12 @@ s32 mnCongraGetPlayerTapButtons(u32 buttons)
 {
 	s32 player;
 
-	for (player = 0; player < ARRAY_COUNT(gPlayerControllers); player++)
+	for (player = 0; player < ARRAY_COUNT(gSYControllerDevices); player++)
 	{
 		if
 		(
 			(mnCongraCheckPlayerControllerConnected(player) != FALSE) &&
-			(gPlayerControllers[player].button_tap & buttons)
+			(gSYControllerDevices[player].button_tap & buttons)
 		)
 		{
 			return player + 1;
@@ -304,7 +304,7 @@ void mnCongraFuncStart(void)
 
 	gobj = gcMakeGObjSPAfter(nGCCommonKindWallpaper, NULL, nGCCommonLinkIDWallpaper, GOBJ_PRIORITY_DEFAULT);
 
-	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_PRIORITY_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	sobj = lbCommonMakeSObjForGObj
 	(

@@ -180,7 +180,7 @@ GObj* lbTransitionMakeTransition(s32 transition_id, u32 id, s32 link, void (*fun
     
     gobj->user_data.s = transition_desc->unk_lbtransition_0xC;
     
-    gcAddGObjDisplay(gobj, func_display, dl_link_id, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, func_display, dl_link_id, GOBJ_PRIORITY_DEFAULT, ~0);
     gcSetupCustomDObjs
     (
         gobj, 

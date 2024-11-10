@@ -27,14 +27,14 @@
 #define GRYAMABUKI_MONSTER_WEAPON_ALL       (3)
 #define GRYAMABUKI_MONSTER_WEAPON_MAX       (4U)
 
-typedef struct grPupupuEffect
+typedef struct GRPupupuEffect
 {
 	Vec3f pos;
 	f32 rotate;
 
-} grPupupuEffect;
+} GRPupupuEffect;
 
-typedef struct grCommonGroundVarsPupupu
+typedef struct GRCommonGroundVarsPupupu
 {
 	void *map_head;
 	GObj *map_gobj[4];
@@ -56,9 +56,9 @@ typedef struct grCommonGroundVarsPupupu
 	s8 whispy_mouth_texture;
 	s8 whispy_eyes_texture;
 
-} grCommonGroundVarsPupupu;
+} GRCommonGroundVarsPupupu;
 
-typedef struct grSectorDesc
+typedef struct GRSectorDesc
 {
 	AObjEvent32 *anim_joint_0x0;
 	u8 filler_0x4[0x1C - 0x4];
@@ -68,9 +68,9 @@ typedef struct grSectorDesc
 	void *unk_sectordesc_0x28;
 	AObjEvent32 *anim_joint_0x2C;
 
-} grSectorDesc;
+} GRSectorDesc;
 
-typedef struct grCommonGroundVarsSector
+typedef struct GRCommonGroundVarsSector
 {
 	void *map_head;
 	GObj *map_gobj;
@@ -100,21 +100,21 @@ typedef struct grCommonGroundVarsSector
 	ub8 is_arwing_line_active;
 	ub8 is_arwing_line_collision;
 
-} grCommonGroundVarsSector;
+} GRCommonGroundVarsSector;
 
-typedef struct grZebesAcid
+typedef struct GRZebesAcid
 {
 	u16 acid_wait_base;
 	u16 acid_random_min, acid_random_max;
 	f32 acid_level;
 
-} grZebesAcid;
+} GRZebesAcid;
 
-typedef struct grCommonGroundVarsZebes
+typedef struct GRCommonGroundVarsZebes
 {
 	void *map_head;
 	GObj *map_gobj;
-	GRAttackColl *gr_attack_coll;
+	GRAttackColl *attack_coll;
 	f32 acid_level_curr;
 	f32 acid_level_step;
 	u16 acid_level_wait;
@@ -122,13 +122,13 @@ typedef struct grCommonGroundVarsZebes
 	u8 acid_attr_id;
 	u8 rumble_wait;
 
-} grCommonGroundVarsZebes;
+} GRCommonGroundVarsZebes;
 
-typedef struct grYosterCloud
+typedef struct GRYosterCloud
 {
 	GObj *gobj;
 	DObj *dobj[3];
-	f32 alt;
+	f32 altitude;
 	f32 pressure; // 0x18
 	u8 status;
 	s8 anim_id;
@@ -136,36 +136,36 @@ typedef struct grYosterCloud
 	s8 pressure_timer;
 	u8 evaporate_wait; // 0x1C
 
-} grYosterCloud;
+} GRYosterCloud;
 
-typedef struct grCommonGroundVarsYoster
+typedef struct GRCommonGroundVarsYoster
 {
 	void *map_head;
-	grYosterCloud clouds[3];
+	GRYosterCloud clouds[3];
 	s32 particle_bank_id;
 
-} grCommonGroundVarsYoster;
+} GRCommonGroundVarsYoster;
 
-typedef struct grInishieScale
+typedef struct GRInishieScale
 {
 	DObj *platform_dobj;
 	DObj *string_dobj;
 	f32 string_length;
 	f32 platform_base_y;
 
-} grInishieScale;
+} GRInishieScale;
 
-typedef struct grCommonGroundVarsInishie
+typedef struct GRCommonGroundVarsInishie
 {
 	void *map_head;
 	void *item_head;
-	grInishieScale scale[2];
+	GRInishieScale scale[2];
 	f32 splat_alt;	  			// Scale platform uh... thing I don't know how to explain, splat_accelerate gets added to this
 	f32 splat_accelerate; 		// Scale platform fall acceleration
 	u16 splat_wait;		  		// Wait this many frames before retracting if the platforms have fallen
 	u8 splat_status;   			// Current state of the platforms
-	u8 players_tt[4]; 	 		// Players timer, something to do with being grounded/airborne
-	ub8 players_ga[4]; 			// Players ground or air
+	u8 players_tt[4]; 	 		// Players timer, something to do with being GRounded/airborne
+	ub8 players_ga[4]; 			// Players GRound or air
 	GObj *pblock_gobj;
 	GRAttackColl *attack_coll;
 	u16 pblock_appear_wait;
@@ -174,9 +174,9 @@ typedef struct grCommonGroundVarsInishie
 	u8 pblock_status;
 	GObj *pakkun_gobj[2];
 
-} grCommonGroundVarsInishie;
+} GRCommonGroundVarsInishie;
 
-typedef struct grCommonGroundVarsJungle
+typedef struct GRCommonGroundVarsJungle
 {
 	void *map_head;
 	GObj *tarucann_gobj;
@@ -184,9 +184,9 @@ typedef struct grCommonGroundVarsJungle
 	u16 tarucann_wait;
 	f32 tarucann_rotate_step;
 
-} grCommonGroundVarsJungle;
+} GRCommonGroundVarsJungle;
 
-typedef struct grCommonGroundVarsHyrule
+typedef struct GRCommonGroundVarsHyrule
 {
 	void *map_head;
 	GObj *twister_gobj;
@@ -203,9 +203,9 @@ typedef struct grCommonGroundVarsHyrule
 	u8 twister_status;
 	u8 twister_pos_count;
 
-} grCommonGroundVarsHyrule;
+} GRCommonGroundVarsHyrule;
 
-typedef struct grCommonGroundVarsYamabuki
+typedef struct GRCommonGroundVarsYamabuki
 {
 	void *map_head;
 	void *item_head;
@@ -218,25 +218,25 @@ typedef struct grCommonGroundVarsYamabuki
 	u16 gate_wait;
 	u8 monster_id_prev;
 
-} grCommonGroundVarsYamabuki;
+} GRCommonGroundVarsYamabuki;
 
-typedef struct grCommonGroundVarsCastle
+typedef struct GRCommonGroundVarsCastle
 {
 	void *map_head;
 	void *item_head;
 	GObj *bumper_gobj;
 	Vec3f bumper_pos;
 
-} grCommonGroundVarsCastle;
+} GRCommonGroundVarsCastle;
 
-typedef struct grBonusGroundVarsBonus1
+typedef struct GRBonusGroundVarsBonus1
 {
 	s32 unk_bonus1_0x0;
 	GObj *interface_gobj; // GObj for target count HUD at the top of the screen
 	s32 unk_bonus1_0x8;
 	u8 target_count;
 
-} grBonusGroundVarsBonus1;
+} GRBonusGroundVarsBonus1;
 
 typedef struct GRBonusTarget
 {
@@ -256,13 +256,13 @@ typedef struct GRBonusGroundVarsBonus2
 
 } GRBonusGroundVarsBonus2;
 
-typedef struct grBonusGroundVarsBonus3
+typedef struct GRBonusGroundVarsBonus3
 {
 	void *map_head;
 	void *item_head;
 	Vec3f tarubomb_make_pos;
 	s32 tarubomb_make_wait;
 
-} grBonusGroundVarsBonus3;
+} GRBonusGroundVarsBonus3;
 
 #endif

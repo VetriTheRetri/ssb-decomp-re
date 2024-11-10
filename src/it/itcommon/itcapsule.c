@@ -128,7 +128,7 @@ enum itCapsuleStatus
     nITCapsuleStatusThrown,
     nITCapsuleStatusDropped,
     nITCapsuleStatusExplode,
-    nITCapsuleStatusEnumMax
+    nITCapsuleStatusEnumCount
 };
 
 // // // // // // // // // // // //

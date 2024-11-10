@@ -5,6 +5,14 @@
 #include <sys/objdef.h>
 #include <gr/grdef.h>
 
+extern intptr_t lGRWallpaperTrainingBlackSprite;			// 0x00020718
+extern intptr_t lGRWallpaperTrainingYellowSprite;			// 0x00020718
+extern intptr_t lGRWallpaperTrainingBlueSprite;				// 0x00020718
+
+extern u32 lGRWallpaperTrainingBlackFileID;					// 0x0000001A
+extern u32 lGRWallpaperTrainingYellowFileID;				// 0x0000001B
+extern u32 lGRWallpaperTrainingBlueFileID;					// 0x0000001C
+
 extern void grWallpaperCalcPersp(SObj *wallpaper_sobj);
 extern void grWallpaperCommonProcUpdate(GObj *wallpaper_gobj);
 extern void grWallpaperMakeCommon(void);

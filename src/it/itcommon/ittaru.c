@@ -141,7 +141,7 @@ enum itTaruStatus
     nITTaruStatusDropped,
     nITTaruStatusExplode,
     nITTaruStatusRoll,
-    nITTaruStatusEnumMax
+    nITTaruStatusEnumCount
 };
 
 // // // // // // // // // // // //

@@ -157,7 +157,7 @@ void mvOpeningCliffMakeHills(void)
         ),
         NULL
     );
-    gcAddGObjDisplay(hills_gobj, mvOpeningCliffHillsFuncDisplay, 26, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(hills_gobj, mvOpeningCliffHillsFuncDisplay, 26, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
 // 0x80131CA4 - Unused?
@@ -249,7 +249,7 @@ void mvOpeningCliffMakeWallpaper(void)
     SObj *wallpaper_sobj;
 
     wallpaper_gobj = gcMakeGObjSPAfter(0, NULL, 18, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(wallpaper_gobj, lbCommonDrawSObjAttr, 27, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(wallpaper_gobj, lbCommonDrawSObjAttr, 27, GOBJ_PRIORITY_DEFAULT, ~0);
     gcAddGObjProcess(wallpaper_gobj, mvOpeningCliffWallpaperFuncDisplay, nGCProcessKindFunc, 1);
 
     wallpaper_sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, lbRelocGetFileData(Sprite*, sMVOpeningCliffFiles[1], &lMVOpeningCliffWallpaperSprite));
@@ -291,7 +291,7 @@ void mvOpeningCliffMakeOcarina(void)
         nGCMatrixKindNull,
         nGCMatrixKindNull
     );
-    gcAddGObjDisplay(ocarina_gobj, gcDrawDObjTreeForGObj, 26, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjDisplay(ocarina_gobj, gcDrawDObjTreeForGObj, 26, GOBJ_PRIORITY_DEFAULT, ~0);
 
     DObjGetStruct(ocarina_gobj)->scale.vec.f.x = DObjGetStruct(sMVOpeningCliffFighterGObj)->scale.vec.f.x;
     DObjGetStruct(ocarina_gobj)->scale.vec.f.y = DObjGetStruct(sMVOpeningCliffFighterGObj)->scale.vec.f.y;

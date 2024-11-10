@@ -37,7 +37,7 @@ typedef enum MPKinetics
 {
 	nMPKineticsGround,
 	nMPKineticsAir,
-    nMPKineticsEnumMax
+    nMPKineticsEnumCount
 
 } MPKinetics;
 
@@ -70,7 +70,7 @@ typedef enum MPLineType
 	nMPLineKindCeil,
 	nMPLineKindRWall,
 	nMPLineKindLWall,
-	nMPLineKindEnumMax
+	nMPLineKindEnumCount
 
 } MPLineType;
 

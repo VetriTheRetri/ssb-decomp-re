@@ -137,7 +137,7 @@ enum itSpearStatus
 {
     nITSpearStatusAppear,
     nITSpearStatusFly,
-    nITSpearStatusEnumMax
+    nITSpearStatusEnumCount
 };
 
 // // // // // // // // // // // //

@@ -107,7 +107,7 @@ enum itDogasStatus
 {
     itDogasStatusAttack,
     itDogasStatusDisappear,
-    itDogasStatusEnumMax
+    itDogasStatusEnumCount
 };
 
 // // // // // // // // // // // //

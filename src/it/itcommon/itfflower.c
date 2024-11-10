@@ -143,7 +143,7 @@ enum itFFlowerStatus
     nITFFlowerStatusHold,
     nITFFlowerStatusThrown,
     nITFFlowerStatusDropped,
-    nITFFlowerStatusEnumMax
+    nITFFlowerStatusEnumCount
 };
 
 // // // // // // // // // // // //

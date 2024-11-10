@@ -108,7 +108,7 @@ enum itStarmieStatus
 {
     nITStarmieStatusNFollow,
     nITStarmieStatusAttack,
-    nITStarmieStatusEnumMax
+    nITStarmieStatusEnumCount
 };
 
 // // // // // // // // // // // //

@@ -147,7 +147,7 @@ void mvOpeningFoxDrawName()
 	s32 i;
 
 	gMVOpeningFoxNameGObj = name_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	gcAddGObjDisplay(name_gobj, lbCommonDrawSObjAttr, 0x1B, 0x80000000, -1);
+	gcAddGObjDisplay(name_gobj, lbCommonDrawSObjAttr, 0x1B, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	for (i = 0; offsets[i] != 0; i++)
 	{
@@ -265,7 +265,7 @@ void mvOpeningFoxInitFighterStagePanel()
 		spawn_info.stock_count = gSCManagerBattleState->stocks;
 		spawn_info.damage = 0;
 		spawn_info.pkind = gSCManagerBattleState->players[i].pkind;
-		spawn_info.controller = &gPlayerControllers[i];
+		spawn_info.controller = &gSYControllerDevices[i];
 		spawn_info.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[i].fkind);
 
 		gMVOpeningFoxStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
@@ -291,7 +291,7 @@ void mvOpeningFoxRenderPosedFighterBackground(GObj *gobj)
 // 0x8018D94C
 void mvOpeningFoxCreatePosedFighterBackground()
 {
-	gcAddGObjDisplay(gcMakeGObjSPAfter(0, 0, 0x13, 0x80000000), &mvOpeningFoxRenderPosedFighterBackground, 0x1C, 0x80000000, -1);
+	gcAddGObjDisplay(gcMakeGObjSPAfter(0, 0, 0x13, 0x80000000), &mvOpeningFoxRenderPosedFighterBackground, 0x1C, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
 // 0x8018D998

@@ -1,7 +1,7 @@
 #include <sys/obj.h>
 #include <stddef.h>
 
-GObj* gcSetupGObjScript(GObj *this_gobj, s32 id, GObj *next_gobj)
+s32 gcSetupGObjScript(GObj *this_gobj, s32 id, GObj *next_gobj)
 {
     if (this_gobj == NULL)
     {
@@ -20,7 +20,7 @@ GObj* gcSetupGObjScript(GObj *this_gobj, s32 id, GObj *next_gobj)
     
     this_gobj->gobjscripts_num++;
 
-    return NULL;
+    return 0;
 }
 
 GObj* gcAddGObjScript(GObj *gobj, GObjScript *gobjscript)
@@ -65,24 +65,24 @@ sb32 gcParseGObjScript(void (*func)(GObjScript))
     {
         switch (gobjscript[i].id + ARRAY_COUNT(gobj->gobjscripts)) 
         {
-        case nGCCommonEventEnd: 
+        case nGCCommonEventEnd:
             gcEjectGObj(NULL); 
             return TRUE;
             
-        case nGCCommonEventPause: 
-            gcPauseGObjProcessAll(NULL); 
+        case nGCCommonEventPause:
+            gcPauseGObjProcessAll(NULL);
             break;
             
-        case nGCCommonEventResume: 
-            gcResumeGObjProcessAll(NULL); 
+        case nGCCommonEventResume:
+            gcResumeGObjProcessAll(NULL);
             break;
             
-        case nGCCommonEventHide: 
-            gGCCurrentCommon->flags |= GOBJ_FLAG_HIDDEN; 
+        case nGCCommonEventHide:
+            gGCCurrentCommon->flags |= GOBJ_FLAG_HIDDEN;
             break;
             
         case nGCCommonEventShow:
-            gGCCurrentCommon->flags &= ~GOBJ_FLAG_HIDDEN; 
+            gGCCurrentCommon->flags &= ~GOBJ_FLAG_HIDDEN;
             break;
             
         default:

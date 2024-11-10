@@ -134,6 +134,7 @@ extern intptr_t lIFCommonBattlePauseDecalControlStick;      // 0x000017A8
 extern intptr_t lIFCommonBattlePauseDecalLTrigger;          // 0x000018C8
 extern intptr_t lIFCommonBattlePauseDecalRetry;             // 0x00000828
 
+extern u8 dIFCommonPlayerTeamColorIDs[/* */];
 extern intptr_t dIFCommonTimerDigitSpriteOffsets[/* */];
 
 extern void ifCommonPlayerDamageSetShowInterface(void);

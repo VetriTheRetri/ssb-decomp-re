@@ -230,9 +230,9 @@ void sc1PTrainingModeCheckLeaveMenu(void)
 
 		gSCManagerBattleState->game_status = nSCBattleGameStatusGo;
 
-		func_ovl2_800E7F68(gSCManagerBattleState->players[sSC1PTrainingModeMenu.dummy].fighter_gobj);
+		ftParamUnlockPlayerControl(gSCManagerBattleState->players[sSC1PTrainingModeMenu.dummy].fighter_gobj);
 		fighter_gobj = gSCManagerBattleState->players[player].fighter_gobj;
-		func_ovl2_800E7F68(fighter_gobj);
+		ftParamUnlockPlayerControl(fighter_gobj);
 
 		if (gSYControllerDevices[player].button_tap & B_BUTTON)
 		{

@@ -14,5 +14,6 @@ extern void grDisplayLayer2SecFuncDisplay(GObj *ground_gobj);
 extern void grDisplayLayer3PriFuncDisplay(GObj *ground_gobj);
 extern void grDisplayLayer3SecFuncDisplay(GObj *ground_gobj);
 extern void grDisplayDObjSetNoAnimMtx(GObj *ground_gobj, DObjDesc *dobjdesc);
+extern GObj* grDisplayMakeGeometryLayer(MPGroundDesc *gr_desc, s32 gr_desc_id, DObj **dobjs);
 
 #endif

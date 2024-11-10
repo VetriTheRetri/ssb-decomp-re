@@ -8,7 +8,6 @@
 
 
 // Externs
-extern GObj* D_ovl2_801313E4;
 extern intptr_t D_NF_800A5240;      // 0x800A5240
 extern intptr_t lOverlay38ArenaLo;  // 0x8018E690
 extern intptr_t lOverlay38ArenaHi;  // 0x803903E0
@@ -231,7 +230,7 @@ void mvOpeningSamusInitFighterStagePanel()
 	grWallpaperMakeDecideKind();
 	grCommonSetupInitAll();
 
-	next_dobj = stage_dobj = DObjGetStruct(D_ovl2_801313E4);
+	next_dobj = stage_dobj = DObjGetStruct(gGRCommonLayerGObjs[1]);
 
 	// This fixes the spot light things on Zebes
 	while (next_dobj != NULL)

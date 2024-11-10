@@ -1,20 +1,17 @@
 #include <ft/fighter.h>
+#include <if/interface.h>
 #include <gr/ground.h>
 #include <sc/scene.h>
 #include <sys/video.h>
-#include <lb/library.h>
 
 #include "character_select.h"
 
 // Externs
 extern intptr_t lOverlay26ArenaLo; // 0x8013C4C0
 extern intptr_t lOverlay26ArenaHi; // 0x803903E0
-extern f32 sqrtf(f32);
-extern void gcStopCurrentGObjThread(s32);
-extern void syTaskmanSetLoadScene();
 
 extern f32 menu_zoom[12]; // dSCSubsysFighterScales
-extern u8 D_ovl2_8012EF40[4];
+
 // Offsets
 extern intptr_t FILE_000_COLON_IMAGE_OFFSET; // file 0x000 image offset for colon
 extern intptr_t FILE_011_TYPE_CP_IMAGE_OFFSET;		  // file 0x011 image offset for CP type image
@@ -42,13 +39,7 @@ extern intptr_t FILE_015_BACKGROUND_IMAGE_OFFSET; // file 0x015 image offset for
 extern intptr_t FILE_016_WHITE_CIRCLE_OFFSET_1; // AObj? for white circle
 extern intptr_t FILE_016_WHITE_CIRCLE_OFFSET_2; // DObjDesc for white circle
 
-extern void ftDisplayLightsDrawReflect(Gfx**, f32, f32);
-
-
-
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
-extern GObj* gGCCommonLinks[GC_COMMON_MAX_LINKS];
-
 
 // Forward declarations
 sb32 mnBattleIsCostumeInUse(s32 fkind, s32 port_id, s32 costume_id);
@@ -3879,12 +3870,12 @@ void mnBattleSaveMatchInfo()
 		if (gSCManagerTransferBattleState.players[i].pkind == nFTPlayerKindMan)
 		{
 			gSCManagerTransferBattleState.players[i].color
-				= (gSCManagerTransferBattleState.is_team_battle == FALSE) ? i : D_ovl2_8012EF40[gSCManagerTransferBattleState.players[i].team];
+				= (gSCManagerTransferBattleState.is_team_battle == FALSE) ? i : dIFCommonPlayerTeamColorIDs[gSCManagerTransferBattleState.players[i].team];
 		}
 		else if (gSCManagerTransferBattleState.is_team_battle == FALSE)
 			gSCManagerTransferBattleState.players[i].color = 4;
 		else
-			gSCManagerTransferBattleState.players[i].color = D_ovl2_8012EF40[gSCManagerTransferBattleState.players[i].team];
+			gSCManagerTransferBattleState.players[i].color = dIFCommonPlayerTeamColorIDs[gSCManagerTransferBattleState.players[i].team];
 
 		gSCManagerTransferBattleState.players[i].tag = (gSCManagerTransferBattleState.players[i].pkind == nFTPlayerKindMan) ? i : 4;
 

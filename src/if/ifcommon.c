@@ -357,8 +357,8 @@ u16 dIFCommonTimerDigitsUnitLengths[/* */] =
     I_SEC_TO_TICS(1) 
 };
 
-// 0x8013EF40 - Unused?
-u8 dIFCommonUnused0x8013EF40[/* */] = { 0x00, 0x01, 0x03, 0x04, 0x00, 0x00, 0x00, 0x00 };
+// 0x8012EF40
+u8 dIFCommonPlayerTeamColorIDs[/* */] = { 0, 1, 3, 4, 0 };
 
 // 0x8012EF48
 u16 dIFCommonAnnounceTimerVoiceIDs[/* */] = 

@@ -179,7 +179,7 @@ void grDisplayDObjSetNoAnimMtx(GObj *ground_gobj, DObjDesc *dobjdesc)
 }
 
 // 0x8010547C
-GObj* grDisplayMakeGeometryLayer(MPGroundDesc *gr_desc, s32 gr_desc_id, DObj **p_dobj)
+GObj* grDisplayMakeGeometryLayer(MPGroundDesc *gr_desc, s32 gr_desc_id, DObj **dobjs)
 {
     GObj *ground_gobj;
     void (*func_display)(GObj*);
@@ -197,7 +197,7 @@ GObj* grDisplayMakeGeometryLayer(MPGroundDesc *gr_desc, s32 gr_desc_id, DObj **p
     else func_display = dGRDisplayDescs[gr_desc_id].pri_func_display;
 
     gcAddGObjDisplay(ground_gobj, func_display, dGRDisplayDescs[gr_desc_id].dl_link, GOBJ_PRIORITY_DEFAULT, ~0);
-    gcSetupCustomDObjs(ground_gobj, gr_desc->dobjdesc, p_dobj, nGCMatrixKindTraRotRpyRSca, nGCMatrixKindNull, nGCMatrixKindNull);
+    gcSetupCustomDObjs(ground_gobj, gr_desc->dobjdesc, dobjs, nGCMatrixKindTraRotRpyRSca, nGCMatrixKindNull, nGCMatrixKindNull);
 
     if (gr_desc->p_mobjsubs != NULL)
     {

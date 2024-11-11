@@ -235,6 +235,8 @@ lSC1PTrainingModeMenuOptionSprites = 0x0000013C;
 lSC1PBonusStagePlatformSprite = 0x000000C0;
 lSC1PBonusStageTargetSprite = 0x000001D0;
 
+lMNNoControllerFileID = 0x000000A9;
+
 lMNFightersMarioNameSprite = 0x00001838;
 lMNFightersLuigiNameSprite = 0x00001B18;
 lMNFightersSamusNameSprite = 0x00002358;
@@ -2046,7 +2048,7 @@ lMNTitleSlashMatAnimJoint = 0x25F60;
 lMNLogoFireDObjDesc = 0x28EB0;
 lMNLogoFireAnimJoint = 0x29010;
 
-FILE_0A9_NO_CONTROLLER_IMAGE_OFFSET = 0x8460;
+lMNNoControllerImageSprite = 0x8460;
 
 FILE_034_ROOM_OFFSET_1 = 0x42F8;
 FILE_034_ROOM_OFFSET_2 = 0x7E98;

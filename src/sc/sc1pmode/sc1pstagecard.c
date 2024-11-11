@@ -1918,7 +1918,7 @@ void sc1PStageCardFuncStart(void)
     s32 i;
 
     rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
-    rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+    rl_setup.table_files_num = (u32)&lLBRelocTableFilesNum;
     rl_setup.file_heap = NULL;
     rl_setup.file_heap_size = 0;
     rl_setup.status_buffer = sSC1PStageCardStatusBuffer;

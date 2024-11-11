@@ -8,6 +8,7 @@
 #include <mn/mnvsmode/mnvsmode.h>
 
 #include <mn/mncommon/mntitle.h>
+#include <mn/mncommon/mnnocontroller.h>
 #include <mn/mncommon/mnunusedfighters.h>
 #include <mn/mncommon/mnmodeselect.h>
 #include <mn/mncommon/mnmessage.h>

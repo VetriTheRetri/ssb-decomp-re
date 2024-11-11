@@ -1316,7 +1316,7 @@ s32 mnTitleMakeCameras(void)
 		lbCommonDrawSprite,
 		60,
 		COBJ_MASK_DLLINK(1) | COBJ_MASK_DLLINK(0),
-		-1,
+		~0,
 		FALSE,
 		nGCProcessKindFunc,
 		NULL,
@@ -1479,7 +1479,7 @@ void mnTitleLoadFiles(void)
 	LBRelocSetup rl_setup;
 
 	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
-	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+	rl_setup.table_files_num = (u32)&lLBRelocTableFilesNum;
 	rl_setup.file_heap = NULL;
 	rl_setup.file_heap_size = 0;
 	rl_setup.status_buffer = sMNTitleStatusBuffer;

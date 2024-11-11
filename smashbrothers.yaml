@@ -1182,11 +1182,12 @@ segments:
     vram: 0x800D6490
     exclusive_ram_id: overlay_800D6490
     subsegments:
-      - [0x119AC0, c, ovl11]
-      - [0x119C90, c, ovl11_1]
-      - [0x119D30, .data, ovl11]
-      - [0x119DE0, .data, ovl11_1]
-      - { start: auto, type: .bss, vram: 0x800D67C0, name: ovl11 }
+      - [0x119AC0, c, mn/mncommon/mnnocontroller]
+      - [0x119C90, c, mn/mncommon/mnnocontrollerfiles]
+      - [0x119D30, .data, mn/mncommon/mnnocontroller]
+      - [0x119DE0, .data, mn/mncommon/mnnocontrollerfiles]
+      - { start: auto, type: .bss, name: mn/mncommon/mnnocontroller, vram: 0x800D67C0 }
+      - { start: auto, type: .bss, name: mn/mncommon/mnnocontrollerfiles, vram: 0x800D67D0 }
 
   - name: ovl12
     type: code

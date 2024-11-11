@@ -1112,7 +1112,7 @@ void mvOpeningFirstDestinationInit()
 	func_800048D0(mvOpeningFirstDestinationSetFrameBuffer);
 
 	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
-	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+	rl_setup.table_files_num = (u32)&lLBRelocTableFilesNum;
 	rl_setup.file_heap = NULL;
 	rl_setup.file_heap_size = 0;
 	rl_setup.status_buffer = (LBFileNode*) &D_ovl34_80134D58;

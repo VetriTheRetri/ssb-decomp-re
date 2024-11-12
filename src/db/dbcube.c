@@ -418,7 +418,7 @@ void dbCubePlayTransition(void)
 }
 
 // 0x80131D00
-void dbCubeCheckAudioChange(GObj *gobj)
+void dbCubeAudioThreadUpdate(GObj *gobj)
 {
 	while (TRUE)
 	{
@@ -476,7 +476,7 @@ void dbCubeFuncRun(GObj *gobj)
 }
 
 // 0x80131EA0
-GObj* dbCubeMakeModel(void (*thread)(GObj*), void *dvar)
+GObj* dbCubeMakeGObj(void (*thread)(GObj*), void *dvar)
 {
 	GObj *gobj = gcMakeModelGObj
 	(
@@ -560,13 +560,13 @@ void dbCubeFuncStart(void)
 		)
 	);
 	dbCubeMakeCamera(NULL);
-	dbCubeMakeModel(dbCubeModelThreadUpdate, dDBCubeKirbyCubeDisplayList);
+	dbCubeMakeGObj(dbCubeModelThreadUpdate, dDBCubeKirbyCubeDisplayList);
 	lbTransitionSetupTransition();
 	lbTransitionMakeCamera(0x20000002, 0, 50, COBJ_MASK_DLLINK(1));
 	gcSetAnimSpeed(lbTransitionMakeTransition(dDBCubeMenuValueTransition, 0x20000000, 0, lbTransitionFuncDisplay, 1, lbTransitionProcUpdate), 0.25F);
 	gmRumbleMakeActor();
 	dbMenuInitMenu();
-	dbCubeMakeModel(dbCubeCheckAudioChange, NULL);
+	dbCubeMakeGObj(dbCubeAudioThreadUpdate, NULL);
 }
 
 // 0x8013214C

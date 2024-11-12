@@ -318,10 +318,10 @@ SYTaskmanSetup dDBCubeTaskmanSetup =
 s32 sDBCubePad0x80133130[2];
 
 // 0x80133138
-sb32 dDBCubeIsExitInterrupt;
+sb32 sDBCubeIsExitInterrupt;
 
 // 0x8013313C
-sb32 dDBCubeIsTransitionInterrupt;
+sb32 sDBCubeIsTransitionInterrupt;
 
 // 0x80133140
 LBFileNode sDBCubeStatusBuffer[5];
@@ -356,7 +356,7 @@ void dbCubeModelThreadUpdate(GObj *gobj)
 // 0x80131BBC
 void dbCubeExit(void)
 {
-	dDBCubeIsExitInterrupt = TRUE;
+	sDBCubeIsExitInterrupt = TRUE;
 }
 
 // 0x80131BCC - Unused?
@@ -413,8 +413,8 @@ void dbCubePlayBGM(void)
 // 0x80131CE8
 void dbCubePlayTransition(void)
 {
-	dDBCubeIsExitInterrupt = TRUE;
-	dDBCubeIsTransitionInterrupt = TRUE;
+	sDBCubeIsExitInterrupt = TRUE;
+	sDBCubeIsTransitionInterrupt = TRUE;
 }
 
 // 0x80131D00
@@ -464,7 +464,7 @@ void dbCubeFuncRun(GObj *gobj)
 	{
 		syErrorMakeControllerCamera(0, GOBJ_PRIORITY_DEFAULT, 0);
 	}
-	if (dDBCubeIsExitInterrupt != FALSE)
+	if (sDBCubeIsExitInterrupt != FALSE)
 	{
 		dbMenuDestroyMenu();
 
@@ -579,10 +579,10 @@ void dbCubeStartScene(void)
 
 	do
 	{
-		dDBCubeIsExitInterrupt = FALSE;
-		dDBCubeIsTransitionInterrupt = FALSE;
+		sDBCubeIsExitInterrupt = FALSE;
+		sDBCubeIsTransitionInterrupt = FALSE;
 
 		syTaskmanRun(&dDBCubeTaskmanSetup);
 	}
-	while (dDBCubeIsTransitionInterrupt != FALSE);
+	while (sDBCubeIsTransitionInterrupt != FALSE);
 }

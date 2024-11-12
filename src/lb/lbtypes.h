@@ -253,7 +253,7 @@ struct LBBackupData
 	u8 vs_itemswitch_battles; 	// Records number of VS games played for Item Switch unlock
 	u16 vs_total_battles;		// Total amount of VS games played?
 	u8 error_flags;		   		// Some kind of anti-piracy/anti-tempering measure?
-	u8 unk5E3;
+	u8 boot;                    // Not sure exactly what this is; variable name confirmed by Cube debug menu
 	u16 unk5E4;
 	u8 unk5E6;
 	u8 unk5E7;

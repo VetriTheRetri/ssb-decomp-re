@@ -39,7 +39,7 @@ SCBattleState gSCManagerVSBattleState;
 SCBattleState *gSCManagerBattleState;
 
 // 0x800A50EC
-u32 sSCManagerUnk0x800A50EC;
+u32 gSCManagerCIC;
 
 // 0x800A50F0
 s32 D_800A50F0;

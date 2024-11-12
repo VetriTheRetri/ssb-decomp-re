@@ -750,7 +750,7 @@ void mn1PModeFuncStart(void)
     
     lbRelocInitSetup(&rl_setup);
     
-    if (!(gSCManagerBackupData.error_flags & LBBACKUP_ERROR_HALFSTICKRANGE) && (gSCManagerBackupData.unk5E3 > 42) && (gSYMainIsDmemOK == FALSE))
+    if (!(gSCManagerBackupData.error_flags & LBBACKUP_ERROR_HALFSTICKRANGE) && (gSCManagerBackupData.boot > 42) && (gSYMainIsDmemOK == FALSE))
     {
         gSCManagerBackupData.error_flags |= LBBACKUP_ERROR_HALFSTICKRANGE;
     }

@@ -17,7 +17,6 @@ extern void func_ovl8_8037DD60(dbMenuPosition*, char*);
 extern void func_ovl8_80386BE0(char*, const char*);
 extern void func_ovl8_8037DFCC(s32, s16);
 
-
 // DATA
 // 0x80369F60
 u32 D_ovl9_80369F60 = 0xFFFFFFFF;

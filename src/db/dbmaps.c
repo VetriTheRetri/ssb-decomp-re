@@ -151,6 +151,12 @@ SYTaskmanSetup dDBMapsTaskmanSetup =
     dbMapsFuncStart         		// Task start function
 };
 
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
+
 // 0x800D6490
 void dbMapsExitFuncMenu(void)
 {

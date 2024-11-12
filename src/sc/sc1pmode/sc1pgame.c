@@ -1995,7 +1995,7 @@ void sc1PGameFuncStart(void)
     sc1PGameSetupStageAll();
     sc1PGameSetupFiles();
 
-    if (!(gSCManagerBackupData.error_flags & LBBACKUP_ERROR_VSBATTLECASTLE) && (gSCManagerBackupData.unk5E3 > 0x5C))
+    if (!(gSCManagerBackupData.error_flags & LBBACKUP_ERROR_VSBATTLECASTLE) && (gSCManagerBackupData.boot > 0x5C))
     {
         syDmaReadRom(0xF10, spA0, ARRAY_COUNT(spA0));
 

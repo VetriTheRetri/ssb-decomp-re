@@ -24,8 +24,11 @@ typedef struct dbMenuItem
 {
 	s32 type;
 	void (*proc_a)();
-	char* label;
-	union {
+	char *label;
+
+	union
+	{
+		void *def;		// So that no complaints are made by the compiler about incompatible pointer assignment...
 		s32 *s;
 		u32 *w;
 		u8 *b;

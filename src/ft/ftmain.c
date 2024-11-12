@@ -686,7 +686,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
     case nFTMotionEventStopRumble:
         if (fp->pkind != nFTPlayerKindDemo)
         {
-            gmRumbleSetRumbleID(fp->player, ftMotionEventCast(ms, FTMotionEventStopRumble)->rumble_id);
+            gmRumbleStopRumbleID(fp->player, ftMotionEventCast(ms, FTMotionEventStopRumble)->rumble_id);
         }
         ftMotionEventAdvance(ms, FTMotionEventStopRumble);
         break;
@@ -4428,12 +4428,12 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
 
     if (fp->pkind != nFTPlayerKindDemo)
     {
-        gmRumbleSetRumbleID(fp->player, 2);
-        gmRumbleSetRumbleID(fp->player, 3);
+        gmRumbleStopRumbleID(fp->player, 2);
+        gmRumbleStopRumbleID(fp->player, 3);
 
         if (!(flags & FTSTATUS_PRESERVE_RUMBLE))
         {
-            gmRumbleSetRumbleID(fp->player, 7);
+            gmRumbleStopRumbleID(fp->player, 7);
         }
         fp->joints[nFTPartsJointTopN]->rotate.vec.f.y = fp->lr * F_CLC_DTOR32(90.0F);
 

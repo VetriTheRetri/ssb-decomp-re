@@ -1464,9 +1464,9 @@ void mnTitleStartScene(void)
 	dMNTitleVideoSetup.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&dMNTitleVideoSetup);
 
-	if ((!gSCManagerSceneData.is_title_anim_viewed) && (gSCManagerBackupData.unk5E3 <= U8_MAX))
+	if ((!gSCManagerSceneData.is_title_anim_viewed) && (gSCManagerBackupData.boot <= U8_MAX))
 	{
-		gSCManagerBackupData.unk5E3++;
+		gSCManagerBackupData.boot++;
 		lbBackupWrite();
 	}
 	dMNTitleTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl9_VRAM - (uintptr_t)&ovl10_BSS_END);

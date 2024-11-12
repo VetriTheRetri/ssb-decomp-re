@@ -142,7 +142,7 @@ void scVSBattleFuncStart(void)
 
 	scVSBattleSetupFiles();
 
-	if (!(gSCManagerBackupData.error_flags & LBBACKUP_ERROR_1PGAMEMARIO) && (gSCManagerBackupData.unk5E3 >= 0x45))
+	if (!(gSCManagerBackupData.error_flags & LBBACKUP_ERROR_1PGAMEMARIO) && (gSCManagerBackupData.boot >= 0x45))
 	{
 		file = lbRelocGetFileExternHeap((u32)&D_NF_000000C7, syTaskmanMalloc(lbRelocGetFileSize((u32)&D_NF_000000C7), 0x10));
 

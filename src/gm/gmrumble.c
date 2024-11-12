@@ -566,7 +566,7 @@ void func_ovl2_801155C4(s32 player)
 }
 
 // 0x80115630
-void gmRumbleSetRumbleID(s32 player, s32 rumble_id)
+void gmRumbleStopRumbleID(s32 player, s32 rumble_id)
 {
     GMRumbleLink *rlink = sGMRumblePlayers[player].rlink;
 

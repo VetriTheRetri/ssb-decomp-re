@@ -1476,7 +1476,7 @@ void mnVSModeFuncStart(void)
     if
     (
         !(gSCManagerBackupData.error_flags & LBBACKUP_ERROR_RANDOMKNOCKBACK) && 
-        (gSCManagerBackupData.unk5E3 >= 22)                                  && 
+        (gSCManagerBackupData.boot >= 22)                                    && 
         (gSYMainIsSPImemOK == FALSE)
     )
     {

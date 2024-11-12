@@ -107,22 +107,22 @@ char* dMNDebugBattleStageStrings[18] = {
 };
 
 // 0x80132780
-dbMenuItem dMNDebugBattleMenuItems[15] = {
-	{ dbMenuItemKindStringByte,  dbBattleStartBattle, (char*) dMNDebugBattleSceneStrings,       (void*) &gMNDebugBattleMenuValueScene,            0.0F, 5.0F,  0 },
-	{ dbMenuItemKindNumericByte, 0,                        (char*) "BattleTime %3d",                 (void*) &gSCManagerTransferBattleState.time_limit,         1.0F, 60.0F, 0 },
-	{ dbMenuItemKindStringByte,  0,                        (char*) dMNDebugBattleStageStrings,       (void*) &gSCManagerSceneData.spgame_stage,                 0.0F, 17.0F, 0 },
-	{ dbMenuItemKindStringByte,  0,                        (char*) dMNDebugBattlePlayerKindStrings,  (void*) &gSCManagerTransferBattleState.players[0].pkind, 0.0F, 5.0F,  0 },
-	{ dbMenuItemKindStringByte,  0,                        (char*) dMNDebugBattleFighterKindStrings, (void*) &gSCManagerTransferBattleState.players[0].fkind, 0.0F, 26.0F, 0 },
-	{ dbMenuItemKindNumericByte, 0,                        (char*) "  %1d",                          (void*) &gSCManagerTransferBattleState.players[0].costume, 0.0F, 10.0F, 0 },
-	{ dbMenuItemKindStringByte,  0,                        (char*) dMNDebugBattlePlayerKindStrings,  (void*) &gSCManagerTransferBattleState.players[1].pkind, 0.0F, 5.0F,  0 },
-	{ dbMenuItemKindStringByte,  0,                        (char*) dMNDebugBattleFighterKindStrings, (void*) &gSCManagerTransferBattleState.players[1].fkind, 0.0F, 26.0F, 0 },
-	{ dbMenuItemKindNumericByte, 0,                        (char*) "  %1d",                          (void*) &gSCManagerTransferBattleState.players[1].costume, 0.0F, 10.0F, 0 },
-	{ dbMenuItemKindStringByte,  0,                        (char*) dMNDebugBattlePlayerKindStrings,  (void*) &gSCManagerTransferBattleState.players[2].pkind, 0.0F, 5.0F,  0 },
-	{ dbMenuItemKindStringByte,  0,                        (char*) dMNDebugBattleFighterKindStrings, (void*) &gSCManagerTransferBattleState.players[2].fkind, 0.0F, 26.0F, 0 },
-	{ dbMenuItemKindNumericByte, 0,                        (char*) "  %1d",                          (void*) &gSCManagerTransferBattleState.players[2].costume, 0.0F, 10.0F, 0 },
-	{ dbMenuItemKindStringByte,  0,                        (char*) dMNDebugBattlePlayerKindStrings,  (void*) &gSCManagerTransferBattleState.players[3].pkind, 0.0F, 5.0F,  0 },
-	{ dbMenuItemKindStringByte,  0,                        (char*) dMNDebugBattleFighterKindStrings, (void*) &gSCManagerTransferBattleState.players[3].fkind, 0.0F, 26.0F, 0 },
-	{ dbMenuItemKindNumericByte, 0,                        (char*) "  %1d",                          (void*) &gSCManagerTransferBattleState.players[3].costume, 0.0F, 10.0F, 0 }
+DBMenuOption dMNDebugBattleMenuOptions[15] = {
+	{ nDBMenuOptionKindStringByte,  dbBattleStartBattle, (char*) dMNDebugBattleSceneStrings,       (void*) &gMNDebugBattleMenuValueScene,            0.0F, 5.0F,  0 },
+	{ nDBMenuOptionKindNumericByte, 0,                        (char*) "BattleTime %3d",                 (void*) &gSCManagerTransferBattleState.time_limit,         1.0F, 60.0F, 0 },
+	{ nDBMenuOptionKindStringByte,  0,                        (char*) dMNDebugBattleStageStrings,       (void*) &gSCManagerSceneData.spgame_stage,                 0.0F, 17.0F, 0 },
+	{ nDBMenuOptionKindStringByte,  0,                        (char*) dMNDebugBattlePlayerKindStrings,  (void*) &gSCManagerTransferBattleState.players[0].pkind, 0.0F, 5.0F,  0 },
+	{ nDBMenuOptionKindStringByte,  0,                        (char*) dMNDebugBattleFighterKindStrings, (void*) &gSCManagerTransferBattleState.players[0].fkind, 0.0F, 26.0F, 0 },
+	{ nDBMenuOptionKindNumericByte, 0,                        (char*) "  %1d",                          (void*) &gSCManagerTransferBattleState.players[0].costume, 0.0F, 10.0F, 0 },
+	{ nDBMenuOptionKindStringByte,  0,                        (char*) dMNDebugBattlePlayerKindStrings,  (void*) &gSCManagerTransferBattleState.players[1].pkind, 0.0F, 5.0F,  0 },
+	{ nDBMenuOptionKindStringByte,  0,                        (char*) dMNDebugBattleFighterKindStrings, (void*) &gSCManagerTransferBattleState.players[1].fkind, 0.0F, 26.0F, 0 },
+	{ nDBMenuOptionKindNumericByte, 0,                        (char*) "  %1d",                          (void*) &gSCManagerTransferBattleState.players[1].costume, 0.0F, 10.0F, 0 },
+	{ nDBMenuOptionKindStringByte,  0,                        (char*) dMNDebugBattlePlayerKindStrings,  (void*) &gSCManagerTransferBattleState.players[2].pkind, 0.0F, 5.0F,  0 },
+	{ nDBMenuOptionKindStringByte,  0,                        (char*) dMNDebugBattleFighterKindStrings, (void*) &gSCManagerTransferBattleState.players[2].fkind, 0.0F, 26.0F, 0 },
+	{ nDBMenuOptionKindNumericByte, 0,                        (char*) "  %1d",                          (void*) &gSCManagerTransferBattleState.players[2].costume, 0.0F, 10.0F, 0 },
+	{ nDBMenuOptionKindStringByte,  0,                        (char*) dMNDebugBattlePlayerKindStrings,  (void*) &gSCManagerTransferBattleState.players[3].pkind, 0.0F, 5.0F,  0 },
+	{ nDBMenuOptionKindStringByte,  0,                        (char*) dMNDebugBattleFighterKindStrings, (void*) &gSCManagerTransferBattleState.players[3].fkind, 0.0F, 26.0F, 0 },
+	{ nDBMenuOptionKindNumericByte, 0,                        (char*) "  %1d",                          (void*) &gSCManagerTransferBattleState.players[3].costume, 0.0F, 10.0F, 0 }
 };
 
 // 0x80132924
@@ -163,7 +163,7 @@ u32 D_ovl14_801330D8[7];
 u32 D_ovl14_801330F8[6];
 
 // 0x80133110
-dbFighter gMNDebugBattleFighters[4];
+DBFighter gMNDebugBattleFighters[4];
 
 // 0x80131B00
 void dbBattleSetupDisplaylist(Gfx **display_list)
@@ -301,7 +301,7 @@ void dbBattleMain(GObj* arg0)
 		if (gDBMenuIsMenuOpen != FALSE)
 			dbBattleStartBattle();
 		else
-			dbMenuCreateMenu(0x1E, 0x14, 0x55, &dMNDebugBattleMenuItems, 0xF);
+			dbMenuCreateMenu(0x1E, 0x14, 0x55, &dMNDebugBattleMenuOptions, 0xF);
 	}
 
 	for (i = 0; i < 4; i++)
@@ -328,14 +328,14 @@ void dbBattleMain(GObj* arg0)
 			gMNDebugBattleFighters[i].fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
 			gMNDebugBattleFighters[i].fkind = gSCManagerTransferBattleState.players[i].fkind;
-			gMNDebugBattleFighters[i].costume_index = gSCManagerTransferBattleState.players[i].costume;
+			gMNDebugBattleFighters[i].costume = gSCManagerTransferBattleState.players[i].costume;
 		}
 
-		if (gSCManagerTransferBattleState.players[i].costume != gMNDebugBattleFighters[i].costume_index)
+		if (gSCManagerTransferBattleState.players[i].costume != gMNDebugBattleFighters[i].costume)
 		{
 			dbBattleSetShade(i);
 			ftParamInitModelTexturePartsAll(gMNDebugBattleFighters[i].fighter_gobj, gSCManagerTransferBattleState.players[i].costume, gSCManagerTransferBattleState.players[i].shade);
-			gMNDebugBattleFighters[i].costume_index = gSCManagerTransferBattleState.players[i].costume;
+			gMNDebugBattleFighters[i].costume = gSCManagerTransferBattleState.players[i].costume;
 		}
 	}
 
@@ -353,28 +353,28 @@ void dbBattleMain(GObj* arg0)
 
 		switch (gMNDebugBattleMenuValueScene)
 		{
-			case dbBattleSceneVsMode:
+			case nDBBattleSceneVsMode:
 				gSCManagerSceneData.scene_curr = nSCKindDebugMaps;
 				break;
-			case dbBattleScene1PMode:
+			case nDBBattleScene1PMode:
 				gSCManagerSceneData.scene_curr = nSCKind1PGame;
 				gSCManagerSceneData.player = 0;
 				gSCManagerSceneData.fkind = gSCManagerTransferBattleState.players[0].fkind;
 				gSCManagerSceneData.costume = gSCManagerTransferBattleState.players[0].costume;
 				break;
-			case dbBattleSceneStaffroll:
+			case nDBBattleSceneStaffroll:
 				gSCManagerSceneData.scene_curr = nSCKindStaffroll;
 				break;
-			case dbBattleSceneExplain:
+			case nDBBattleSceneExplain:
 				gSCManagerSceneData.scene_curr = nSCKindExplain;
 				gSCManagerTransferBattleState.is_team_battle = FALSE;
 				break;
-			case dbBattleSceneAutoDemo:
+			case nDBBattleSceneAutoDemo:
 				dbBattleSetDemoFtKinds();
 				gSCManagerSceneData.scene_curr = nSCKindAutoDemo;
 				gSCManagerTransferBattleState.is_team_battle = FALSE;
 				break;
-			case dbBattleSceneCongra:
+			case nDBBattleSceneCongra:
 				gSCManagerSceneData.scene_curr = nSCKindCongra;
 				break;
 		}
@@ -391,7 +391,7 @@ void dbBattleSyncCostumes(s32 arg0)
 
 	for (i = 0; i < 4; i++)
 	{
-		if (gSCManagerTransferBattleState.players[i].costume != gMNDebugBattleFighters[i].costume_index)
+		if (gSCManagerTransferBattleState.players[i].costume != gMNDebugBattleFighters[i].costume)
 		{
 			if (gSCManagerTransferBattleState.players[i].costume == 10)
 				gSCManagerTransferBattleState.players[i].costume = ftParamGetCostumeDevelop(gSCManagerTransferBattleState.players[i].fkind);
@@ -467,11 +467,11 @@ void dbBattleInit()
 		gMNDebugBattleFighters[i].fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
 		gMNDebugBattleFighters[i].fkind = gSCManagerTransferBattleState.players[i].fkind;
-		gMNDebugBattleFighters[i].costume_index = gSCManagerTransferBattleState.players[i].costume;
+		gMNDebugBattleFighters[i].costume = gSCManagerTransferBattleState.players[i].costume;
 	}
 
 	dbMenuInitMenu();
-	dbMenuCreateMenu(0x1E, 0x14, 0x55, &dMNDebugBattleMenuItems, 0xF);
+	dbMenuCreateMenu(0x1E, 0x14, 0x55, &dMNDebugBattleMenuOptions, 0xF);
 	scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 }
 

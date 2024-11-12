@@ -3,6 +3,7 @@
 
 #include <ssb_types.h>
 #include <sys/objdef.h>
+#include <db/dbdef.h>
 
 extern void dbMapsExitFuncMenu(void);
 extern void dbMapsFuncRun(GObj *gobj);

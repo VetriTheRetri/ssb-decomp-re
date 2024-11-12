@@ -46,20 +46,20 @@ char* dMNDebugFallsFighterKindStrings[5] = {
 };
 
 // 0x800D6738
-dbMenuItem dMNDebugFallsMenuItems[13] = {
-	{ dbMenuItemKindExitLabel,  dbFallsExit, (char*) "Exit",                          (void*) NULL,                                     0.0F, 0.0F,     0 },
-	{ dbMenuItemKindStringByte, 0,                (char*) dMNDebugFallsFighterKindStrings, (void*) &gSCManagerTransferBattleState.players[0].fkind, 0.0F, 26.0F,    0 },
-	{ dbMenuItemKindNumeric,    0,                (char*) " Dead : %3d",                   (void*) &gSCManagerTransferBattleState.players[0].falls,   0.0F, 65536.0F, 0 },
-	{ dbMenuItemKindNumeric,    0,                (char*) " Finish : %3d",                 (void*) &gSCManagerTransferBattleState.players[0].score,   0.0F, 65536.0F, 0 },
-	{ dbMenuItemKindStringByte, 0,                (char*) dMNDebugFallsFighterKindStrings, (void*) &gSCManagerTransferBattleState.players[1].fkind, 0.0F, 26.0F,    0 },
-	{ dbMenuItemKindNumeric,    0,                (char*) " Dead : %3d",                   (void*) &gSCManagerTransferBattleState.players[1].falls,   0.0F, 65536.0F, 0 },
-	{ dbMenuItemKindNumeric,    0,                (char*) " Finish : %3d",                 (void*) &gSCManagerTransferBattleState.players[1].score,   0.0F, 65536.0F, 0 },
-	{ dbMenuItemKindStringByte, 0,                (char*) dMNDebugFallsFighterKindStrings, (void*) &gSCManagerTransferBattleState.players[2].fkind, 0.0F, 26.0F,    0 },
-	{ dbMenuItemKindNumeric,    0,                (char*) " Dead : %3d",                   (void*) &gSCManagerTransferBattleState.players[2].falls,   0.0F, 65536.0F, 0 },
-	{ dbMenuItemKindNumeric,    0,                (char*) " Finish : %3d",                 (void*) &gSCManagerTransferBattleState.players[2].score,   0.0F, 65536.0F, 0 },
-	{ dbMenuItemKindStringByte, 0,                (char*) dMNDebugFallsFighterKindStrings, (void*) &gSCManagerTransferBattleState.players[3].fkind, 0.0F, 26.0F,    0 },
-	{ dbMenuItemKindNumeric,    0,                (char*) " Dead : %3d",                   (void*) &gSCManagerTransferBattleState.players[3].falls,   0.0F, 65536.0F, 0 },
-	{ dbMenuItemKindNumeric,    0,                (char*) " Finish : %3d",                 (void*) &gSCManagerTransferBattleState.players[3].score,   0.0F, 65536.0F, 0 }
+DBMenuOption dMNDebugFallsMenuOptions[13] = {
+	{ nDBMenuOptionKindExitLabel,  dbFallsExit, (char*) "Exit",                          (void*) NULL,                                     0.0F, 0.0F,     0 },
+	{ nDBMenuOptionKindStringByte, 0,                (char*) dMNDebugFallsFighterKindStrings, (void*) &gSCManagerTransferBattleState.players[0].fkind, 0.0F, 26.0F,    0 },
+	{ nDBMenuOptionKindNumeric,    0,                (char*) " Dead : %3d",                   (void*) &gSCManagerTransferBattleState.players[0].falls,   0.0F, 65536.0F, 0 },
+	{ nDBMenuOptionKindNumeric,    0,                (char*) " Finish : %3d",                 (void*) &gSCManagerTransferBattleState.players[0].score,   0.0F, 65536.0F, 0 },
+	{ nDBMenuOptionKindStringByte, 0,                (char*) dMNDebugFallsFighterKindStrings, (void*) &gSCManagerTransferBattleState.players[1].fkind, 0.0F, 26.0F,    0 },
+	{ nDBMenuOptionKindNumeric,    0,                (char*) " Dead : %3d",                   (void*) &gSCManagerTransferBattleState.players[1].falls,   0.0F, 65536.0F, 0 },
+	{ nDBMenuOptionKindNumeric,    0,                (char*) " Finish : %3d",                 (void*) &gSCManagerTransferBattleState.players[1].score,   0.0F, 65536.0F, 0 },
+	{ nDBMenuOptionKindStringByte, 0,                (char*) dMNDebugFallsFighterKindStrings, (void*) &gSCManagerTransferBattleState.players[2].fkind, 0.0F, 26.0F,    0 },
+	{ nDBMenuOptionKindNumeric,    0,                (char*) " Dead : %3d",                   (void*) &gSCManagerTransferBattleState.players[2].falls,   0.0F, 65536.0F, 0 },
+	{ nDBMenuOptionKindNumeric,    0,                (char*) " Finish : %3d",                 (void*) &gSCManagerTransferBattleState.players[2].score,   0.0F, 65536.0F, 0 },
+	{ nDBMenuOptionKindStringByte, 0,                (char*) dMNDebugFallsFighterKindStrings, (void*) &gSCManagerTransferBattleState.players[3].fkind, 0.0F, 26.0F,    0 },
+	{ nDBMenuOptionKindNumeric,    0,                (char*) " Dead : %3d",                   (void*) &gSCManagerTransferBattleState.players[3].falls,   0.0F, 65536.0F, 0 },
+	{ nDBMenuOptionKindNumeric,    0,                (char*) " Finish : %3d",                 (void*) &gSCManagerTransferBattleState.players[3].score,   0.0F, 65536.0F, 0 }
 };
 
 // 0x800D68A4
@@ -98,7 +98,7 @@ void dbFallsMain(GObj* arg0)
 	u8 temp_t0;
 
 	if (gSYControllerMain.button_tap & START_BUTTON)
-		dbMenuCreateMenu(0x32, 0x32, 0x64, &dMNDebugFallsMenuItems, 0xD);
+		dbMenuCreateMenu(0x32, 0x32, 0x64, &dMNDebugFallsMenuOptions, 0xD);
 
 	if (gMNDebugFallsExitInterrupt != 0)
 	{
@@ -136,7 +136,7 @@ void dbFallsInit()
 	gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	dbFallsCreateViewport(0);
 	dbMenuInitMenu();
-	dbMenuCreateMenu(0x32, 0x32, 0x64, &dMNDebugFallsMenuItems, 0xD);
+	dbMenuCreateMenu(0x32, 0x32, 0x64, &dMNDebugFallsMenuOptions, 0xD);
 }
 
 // 0x800D6688

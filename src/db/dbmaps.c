@@ -7,7 +7,7 @@
 // ovl9
 extern sb32 gDBMenuIsMenuOpen;
 
-extern void dbMenuCreateMenu(s32, s32, s32, dbMenuItem*, s32);
+extern void dbMenuCreateMenu(s32, s32, s32, DBMenuOption*, s32);
 extern void dbMenuDestroyMenu();
 
 // // // // // // // // // // // //
@@ -78,11 +78,11 @@ char *dDBMapsGroundNames[/* */] =
 };
 
 // 0x800D672C
-dbMenuItem dDBMapsMenuOptions[/* */] =
+DBMenuOption dDBMapsMenuOptions[/* */] =
 {
 	// Exit
 	{
-		dbMenuItemKindExitLabel,
+		nDBMenuOptionKindExitLabel,
 		dbMapsExitFuncMenu,
 		"Exit",
 		NULL,
@@ -93,7 +93,7 @@ dbMenuItem dDBMapsMenuOptions[/* */] =
 
 	// Stage
 	{
-		dbMenuItemKindString,
+		nDBMenuOptionKindString,
 		NULL,
 		(char*)dDBMapsGroundNames,
 		&dDBMapsGroundKind,

@@ -2,5 +2,6 @@
 #define _DBFUNCTIONS_H_
 
 #include <db/dbmaps.h>
+#include <db/dbcube.h>
 
 #endif

@@ -6,27 +6,10 @@
 #include <sys/error.h>
 #include <sys/video.h>
 
-// Externs
-extern intptr_t D_NF_800A5240;      // 0x800A5240
-extern intptr_t lOverlay13ArenaLo;  // 0x80133170
-extern intptr_t lOverlay13ArenaHi;  // 0x80369240
-
 extern void* func_800269C0_275C0(u16);
 
-// ovl9
 extern void dbMenuCreateMenu(s32, s32, s32, void*, s32);
 extern dbMenuDestroyMenu();
-
-// Forward declarations
-void dbCubeExit();
-void dbCubeDoTransition();
-void dbCubeStopBGM();
-void dbCubePlayBGM();
-void dbCubeStopFGM();
-void dbCubePlayFGM();
-void dbCubePlayCall();
-void dbCubeStopRumble();
-void dbCubeStartRumble();
 
 // // // // // // // // // // // //
 //                               //
@@ -40,7 +23,7 @@ s32 dDBCubePad0x801321E0[/* */] = { 0, 0 };
 // 0x801321E8
 u16 dDBCubeKirbyFaceTexture[/* */] =
 {
-	#include "dbcubekirbyface.txt"
+	#include "dbkirby.txt"
 };
 
 // 0x801329E8
@@ -180,43 +163,43 @@ f32 dDBCubeRotateStepY = 0.7F;
 f32 dDBCubeRotateStepZ = 0.2F;
 
 // 0x80132D24
-f32 D_ovl13_80132D24 = 0.0F;
+f32 dDBCubeUnknown0x80132D24 = 0.0F;
 
 // 0x80132D28
-f32 D_ovl13_80132D28 = 0.0F;
+f32 dDBCubeUnknown0x80132D28 = 0.0F;
 
 // 0x80132D2C
-s32 dDBCubeMenuValueCall = 0; // "call"
+u32 dDBCubeMenuValueCall = 0; // "call"
 
 // 0x80132D30
-s32 dDBCubeMenuValueFGM = 0; // "fgm"
+u32 dDBCubeMenuValueFGM = 0; // "fgm"
 
 // 0x80132D34
-s32 dDBCubeMenuValueBGM = 0; // "bgm"
+u32 dDBCubeMenuValueBGM = 0; // "bgm"
 
 // 0x80132D38
-s32 dDBCubeMenuValueEffect = 0; // "effect"
+u32 dDBCubeMenuValueEffect = 0; // "effect"
 
 // 0x80132D3C
 sb32 dDBCubeIsBGMInterrupt = FALSE;
 
 // 0x80132D40
-s32 dDBCubeMenuValueRumble = 0; // "rumble" (rumble_id)
+u32 dDBCubeMenuValueRumble = 0; // "rumble" (rumble_id)
 
 // 0x80132D44
-s32 dDBCubeMenuValueFrame = 0; // "frame" (duration)
+u32 dDBCubeMenuValueFrame = 0; // "frame" (duration)
 
 // 0x80132D48
-s32 gDBCubeQueuedFGM = 0;
+u32 gDBCubeQueuedFGM = 0;
 
 // 0x80132D4C
 alSoundEffect *dDBCubeSFX = NULL;
 
 // 0x80132D50
-s32 dDBCubeCurrentSoundID = 0;
+u32 dDBCubeCurrentSoundID = 0;
 
 // 0x80132D54
-s32 dDBCubeCallFGMs[/* */] =
+u32 dDBCubeCallFGMs[/* */] =
 {
 	nSYAudioVoicePublicityMario,
 	nSYAudioVoicePublicityFox,
@@ -233,7 +216,7 @@ s32 dDBCubeCallFGMs[/* */] =
 };
 
 // 0x80132D84
-s32 dDBCubeMenuValueTransition = 0; // transition id
+u32 dDBCubeMenuValueTransition = 0; // transition id
 
 // 0x80132D88
 char *dDBCubeUnknown0x80132D88[/* */] =
@@ -258,36 +241,71 @@ char *dDBCubeTransitionNames[/* */] =
 };
 
 // 0x80132DC8
-dbMenuItem dDBCubeMenuItems[/* */] =
+DBMenuOption dDBCubeMenuOptions[/* */] =
 {
-	{ dbMenuItemKindExitLabel,   NULL,               "Continue",                    	NULL,                       0.0F, 0.0F,    0 },
-	{ dbMenuItemKindNumeric,     dbCubeStartRumble,  "rumble %3d",                      &dDBCubeMenuValueRumble,    0.0F, 10.0F,   0 },
-	{ dbMenuItemKindNumeric,     dbCubeStartRumble,  "frame %4d",                       &dDBCubeMenuValueFrame,     0.0F, 8000.0F, 0 },
-	{ dbMenuItemKindLabel,       dbCubeStopRumble,   "STOP RUMBLE",                     NULL,                       0.0F, 0.0F,    0 },
-	{ dbMenuItemKindNumeric,     dbCubePlayCall,     "call %3d",                        &dDBCubeMenuValueCall,      0.0F, 11.0F,   0 },
-	{ dbMenuItemKindNumeric,     dbCubePlayFGM,      "fgm %3d",                         &dDBCubeMenuValueFGM,       0.0F, 695.0F,  0 },
-	{ dbMenuItemKindLabel,       dbCubeStopFGM,      "STOP FGM",                        NULL,                       0.0F, 0.0F,    0 },
-	{ dbMenuItemKindNumeric,     dbCubePlayBGM,      "bgm %3d",                         &dDBCubeMenuValueBGM,       0.0F, 46.0F,   0 },
-	{ dbMenuItemKindNumeric,     dbCubePlayBGM,      "effect %3d",                      &dDBCubeMenuValueEffect,    0.0F, 6.0F,    0 },
-	{ dbMenuItemKindLabel,       dbCubeStopBGM,      "STOP BGM",                        NULL,                       0.0F, 0.0F,    0 },
-	{ dbMenuItemKindString,      dbCubeDoTransition, (char*)dDBCubeTransitionNames, 	&dDBCubeMenuValueTransition,0.0F, 10.0F,   0 },
-	{ dbMenuItemKindNumericByte, NULL,               "cic %3d",                         &gSCManagerCIC,             0.0F, 255.0F,  0 },
-	{ dbMenuItemKindNumericByte, NULL,               "boot %3d",                        &gSCManagerBackupData.boot, 0.0F, 255.0F,  0 },
-	{ dbMenuItemKindNumeric,     NULL,               "TvType %3d",                      &osTvType,                 	0.0F, 255.0F,  0 },
-	{ dbMenuItemKindExitLabel,   dbCubeExit,         "Exit",                            NULL,                       0.0F, 0.0F,    0 }
+	{ nDBMenuOptionKindExitLabel,   NULL,               "Continue",                    	NULL,                       0.0F, 0.0F,    0 },
+	{ nDBMenuOptionKindNumeric,     dbCubeStartRumble,  "rumble %3d",                   &dDBCubeMenuValueRumble,    0.0F, 10.0F,   0 },
+	{ nDBMenuOptionKindNumeric,     dbCubeStartRumble,  "frame %4d",                    &dDBCubeMenuValueFrame,     0.0F, 8000.0F, 0 },
+	{ nDBMenuOptionKindLabel,       dbCubeStopRumble,   "STOP RUMBLE",                  NULL,                       0.0F, 0.0F,    0 },
+	{ nDBMenuOptionKindNumeric,     dbCubePlayCall,     "call %3d",                    	&dDBCubeMenuValueCall,      0.0F, 11.0F,   0 },
+	{ nDBMenuOptionKindNumeric,     dbCubePlayFGM,      "fgm %3d",                      &dDBCubeMenuValueFGM,       0.0F, 695.0F,  0 },
+	{ nDBMenuOptionKindLabel,       dbCubeStopFGM,      "STOP FGM",                    	NULL,                       0.0F, 0.0F,    0 },
+	{ nDBMenuOptionKindNumeric,     dbCubePlayBGM,      "bgm %3d",                     	&dDBCubeMenuValueBGM,       0.0F, 46.0F,   0 },
+	{ nDBMenuOptionKindNumeric,     dbCubePlayBGM,      "effect %3d",                  	&dDBCubeMenuValueEffect,    0.0F, 6.0F,    0 },
+	{ nDBMenuOptionKindLabel,       dbCubeStopBGM,      "STOP BGM",                     NULL,                       0.0F, 0.0F,    0 },
+	{ nDBMenuOptionKindString,      dbCubePlayTransition,(char*)dDBCubeTransitionNames, &dDBCubeMenuValueTransition,0.0F, 10.0F,   0 },
+	{ nDBMenuOptionKindNumericByte, NULL,               "cic %3d",                      &gSCManagerCIC,             0.0F, 255.0F,  0 },
+	{ nDBMenuOptionKindNumericByte, NULL,               "boot %3d",                     &gSCManagerBackupData.boot, 0.0F, 255.0F,  0 },
+	{ nDBMenuOptionKindNumeric,     NULL,               "TvType %3d",                   &osTvType,                 	0.0F, 255.0F,  0 },
+	{ nDBMenuOptionKindExitLabel,   dbCubeExit,         "Exit",                         NULL,                       0.0F, 0.0F,    0 }
 };
 
+// 0x80132F6C
 SYVideoSetup dDBCubeVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
-scRuntimeInfo dDBCubeTaskmanSetup =
+// 0x80132F88
+SYTaskmanSetup dDBCubeTaskmanSetup =
 {
-	0x00000000, 0x8000A5E4, 0x8000A340, 0x80133170, 0x00000000,
-	0x00000001, 0x00000002, 0x00002000, 0x00000000, 0x00000000,
-	0x00000000, 0x00001000, 0x00020000, 0x00001000, 0x80131B00,
-	0x80004310, 0x00000000, 0x00000600, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000088, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000088,
-	0x00000000, 0x0000006C, 0x00000000, 0x00000090, 0x80131FDC
+    // Task Manager Buffer Setup
+    {
+        0,                          // ???
+        gcRunAll,   				// Update function
+        gcDrawAll,          		// Frame draw function
+        &ovl13_BSS_END,             // Allocatable memory pool start
+        0,                          // Allocatable memory pool size
+        1,                          // ???
+        2,                          // Number of contexts?
+        sizeof(Gfx) * 1024,         // Display List Buffer 0 Size
+        0,         					// Display List Buffer 1 Size
+        0,                          // Display List Buffer 2 Size
+        0,                          // Display List Buffer 3 Size
+        0x1000,                     // Graphics Heap Size
+        2,                          // ???
+        0x1000,                     // RDP Output Buffer Size
+        dbCubeFuncLights,   		// Pre-render function
+        update_contdata,            // Controller I/O function
+    },
+
+    0,                              // Number of GObjThreads
+    sizeof(u64) * 192,              // Thread stack size
+    0,                              // Number of thread stacks
+    0,                              // ???
+    0,                              // Number of GObjProcesses
+    0,                              // Number of GObjs
+    sizeof(GObj),                   // GObj size
+    0,                              // Number of XObjs
+    NULL,        					// Matrix function list
+    NULL,                           // Function for ejecting DObjVec?
+    0,                              // Number of AObjs
+    0,                              // Number of MObjs
+    0,                              // Number of DObjs
+    sizeof(DObj),                   // DObj size
+    0,                              // Number of SObjs
+    sizeof(SObj),                   // SObj size
+    0,                              // Number of Cameras
+    sizeof(CObj),                 	// CObj size
+    
+    dbCubeFuncStart         		// Task start function
 };
 
 // // // // // // // // // // // //
@@ -321,15 +339,15 @@ void dbCubeFuncLights(Gfx **dls)
 }
 
 // 0x80131B24
-void dbCubeRotateKirbyCube(GObj *cube_gobj)
+void dbCubeModelThreadUpdate(GObj *gobj)
 {
-	DObj *cube_dobj = DObjGetStruct(cube_gobj);
+	DObj *dobj = DObjGetStruct(gobj);
 
 	while (TRUE)
 	{
-		cube_dobj->rotate.vec.f.x += dDBCubeRotateStepX;
-		cube_dobj->rotate.vec.f.y += dDBCubeRotateStepY;
-		cube_dobj->rotate.vec.f.z += dDBCubeRotateStepZ;
+		dobj->rotate.vec.f.x += dDBCubeRotateStepX;
+		dobj->rotate.vec.f.y += dDBCubeRotateStepY;
+		dobj->rotate.vec.f.z += dDBCubeRotateStepZ;
 
 		gcStopCurrentGObjThread(1);
 	}
@@ -393,7 +411,7 @@ void dbCubePlayBGM(void)
 }
 
 // 0x80131CE8
-void dbCubeDoTransition(void)
+void dbCubePlayTransition(void)
 {
 	dDBCubeIsExitInterrupt = TRUE;
 	dDBCubeIsTransitionInterrupt = TRUE;
@@ -440,7 +458,7 @@ void dbCubeFuncRun(GObj *gobj)
 {
 	if (gSYControllerMain.button_tap & START_BUTTON)
 	{
-		dbMenuCreateMenu(0x32, 0x32, 0x50, &dDBCubeMenuItems, 0xF);
+		dbMenuCreateMenu(0x32, 0x32, 0x50, &dDBCubeMenuOptions, 0xF);
 	}
 	if (gSYControllerMain.button_tap & Z_TRIG)
 	{
@@ -542,7 +560,7 @@ void dbCubeFuncStart(void)
 		)
 	);
 	dbCubeMakeCamera(NULL);
-	dbCubeMakeModel(dbCubeRotateKirbyCube, dDBCubeKirbyCubeDisplayList);
+	dbCubeMakeModel(dbCubeModelThreadUpdate, dDBCubeKirbyCubeDisplayList);
 	lbTransitionSetupTransition();
 	lbTransitionMakeCamera(0x20000002, 0, 50, COBJ_MASK_DLLINK(1));
 	gcSetAnimSpeed(lbTransitionMakeTransition(dDBCubeMenuValueTransition, 0x20000000, 0, lbTransitionFuncDisplay, 1, lbTransitionProcUpdate), 0.25F);
@@ -557,12 +575,12 @@ void dbCubeStartScene(void)
 	dDBCubeVideoSetup.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&dDBCubeVideoSetup);
 
-	dDBCubeTaskmanSetup.arena_size = (size_t) ((uintptr_t)&lOverlay13ArenaHi - (uintptr_t)&lOverlay13ArenaLo);
+	dDBCubeTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl9_VRAM - (uintptr_t)&ovl13_BSS_END);
 
 	do
 	{
-		dDBCubeIsExitInterrupt = 0;
-		dDBCubeIsTransitionInterrupt = 0;
+		dDBCubeIsExitInterrupt = FALSE;
+		dDBCubeIsTransitionInterrupt = FALSE;
 
 		syTaskmanRun(&dDBCubeTaskmanSetup);
 	}

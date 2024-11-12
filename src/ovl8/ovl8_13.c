@@ -70,7 +70,7 @@ void func_ovl8_8037D34C()
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037DAA0.s")
 
-void func_ovl8_8037DD60(dbMenuPosition* pos, char* text)
+void func_ovl8_8037DD60(DBMenuPosition* pos, char* text)
 {
 	s16 temp_s5;
 	char current;

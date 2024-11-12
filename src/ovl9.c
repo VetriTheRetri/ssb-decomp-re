@@ -10,10 +10,10 @@
 extern s32 sSYTaskmanCount;
 
 // ovl8
-extern dbMenuPosition* func_ovl8_803749BC(s32);
-extern void func_ovl8_80374A54(s32, dbMenuPosition*);
-extern void func_ovl8_80377AEC(dbMenuPosition*, dbMenuPosition*, u32, s32);
-extern void func_ovl8_8037DD60(dbMenuPosition*, char*);
+extern DBMenuPosition* func_ovl8_803749BC(s32);
+extern void func_ovl8_80374A54(s32, DBMenuPosition*);
+extern void func_ovl8_80377AEC(DBMenuPosition*, DBMenuPosition*, u32, s32);
+extern void func_ovl8_8037DD60(DBMenuPosition*, char*);
 extern void func_ovl8_80386BE0(char*, const char*);
 extern void func_ovl8_8037DFCC(s32, s16);
 
@@ -34,7 +34,7 @@ u32 dMNDebugMenuTextColor = 0xFFFFFFFF;
 u32 dMNDebugMenuTextBGColor[] = { 0x0000FFFF, 0x0000FFFF, 0xFFFFFFFF };
 
 // 0x80369F7C
-dbMenuPosition gMNDebugMenuMenuPosition = { 0 };
+DBMenuPosition gMNDebugMenuMenuPosition = { 0 };
 
 // 0x80369F84
 u16 D_ovl9_80369F84[] = {
@@ -196,10 +196,10 @@ s32 D_ovl9_80371404; // TODO - some struct, pretty important!
 GObj* gMNDebugMenuMenuGObj;
 
 // 0x8037140C
-dbMenuItem *gMNDebugMenuMenuItems;
+DBMenuOption *gMNDebugMenuMenuOptions;
 
 // 0x80371410
-s32 gMNDebugMenuMenuItemsCount;
+s32 gMNDebugMenuMenuOptionsCount;
 
 // 0x80371414
 s32 gMNDebugMenuCursorIndex;
@@ -264,7 +264,7 @@ void dbMenuUpdateMenuInputs()
 }
 
 // 0x80369310
-void dbMenuDrawString(dbMenuPosition *arg0, const char *str, ...)
+void dbMenuDrawString(DBMenuPosition *arg0, const char *str, ...)
 {
 	func_ovl8_80386BE0(gMNDebugMenuStringBuffer, &str);
 	func_ovl8_8037DD60(arg0, gMNDebugMenuStringBuffer);
@@ -273,8 +273,8 @@ void dbMenuDrawString(dbMenuPosition *arg0, const char *str, ...)
 // 0x80369358
 void dbMenuDrawBorder(s32 arg0, u32 color)
 {
-	dbMenuPosition* temp_s0;
-	dbMenuPosition menu_position;
+	DBMenuPosition* temp_s0;
+	DBMenuPosition menu_position;
 
 	temp_s0 = func_ovl8_803749BC(arg0);
 
@@ -308,8 +308,8 @@ void dbMenuDrawBorder(s32 arg0, u32 color)
 // 0x8036944C
 void dbMenuDrawBackground(s32 arg0, s32 color)
 {
-	dbMenuPosition *sp24;
-	dbMenuPosition sp1C;
+	DBMenuPosition *sp24;
+	DBMenuPosition sp1C;
 
 	sp24 = func_ovl8_803749BC(arg0);
 
@@ -324,34 +324,34 @@ void dbMenuDrawBackground(s32 arg0, s32 color)
 }
 
 // 0x803694C8
-void dbMenuDrawMenuItem(void* arg0, dbMenuItem* menu_item)
+void dbMenuDrawMenuItem(void* arg0, DBMenuOption* menu_item)
 {
 	switch (menu_item->type)
 	{
-		case dbMenuItemKindExitLabel:
-		case dbMenuItemKindLabel:
+		case nDBMenuOptionKindExitLabel:
+		case nDBMenuOptionKindLabel:
 			dbMenuDrawString(func_ovl8_803749BC(arg0), menu_item->label);
 			break;
-		case dbMenuItemKindNumeric:
+		case nDBMenuOptionKindNumeric:
 			dbMenuDrawString(func_ovl8_803749BC(arg0), menu_item->label, *menu_item->value.s);
 			break;
-		case dbMenuItemKindNumericByte:
+		case nDBMenuOptionKindNumericByte:
 			dbMenuDrawString(func_ovl8_803749BC(arg0), menu_item->label, *menu_item->value.b);
 			break;
-		case dbMenuItemKindDouble:
+		case nDBMenuOptionKindDouble:
 			dbMenuDrawString(func_ovl8_803749BC(arg0), menu_item->label, (f64) *menu_item->value.f);
 			break;
-		case dbMenuItemKindString:
+		case nDBMenuOptionKindString:
 			dbMenuDrawString(func_ovl8_803749BC(arg0), ((uintptr_t*) menu_item->label)[*menu_item->value.s]);
 			break;
-		case dbMenuItemKindStringByte:
+		case nDBMenuOptionKindStringByte:
 			dbMenuDrawString(func_ovl8_803749BC(arg0), ((uintptr_t*) menu_item->label)[*menu_item->value.b]);
 			break;
 	}
 }
 
 // 0x80369600
-void dbMenuDrawMenuItems(void* arg0, dbMenuItem *menu_item, s32 arg2)
+void dbMenuDrawMenuOptions(void* arg0, DBMenuOption *menu_item, s32 arg2)
 {
 	s32 i;
 
@@ -377,7 +377,7 @@ void gMNDebugMenuRenderMenu(s32 arg0)
 		gMNDebugMenuRedrawInterrupt = 0;
 
 		dbMenuDrawBackground(D_ovl9_80371404, &dMNDebugMenuBGColor);
-		dbMenuDrawMenuItems(D_ovl9_80371404, gMNDebugMenuMenuItems, gMNDebugMenuMenuItemsCount);
+		dbMenuDrawMenuOptions(D_ovl9_80371404, gMNDebugMenuMenuOptions, gMNDebugMenuMenuOptionsCount);
 		dbMenuDrawCursor(D_ovl9_80371404, gMNDebugMenuCursorIndex);
 	}
 
@@ -395,56 +395,56 @@ void dbMenuHandleInputs(GObj *gobj)
 
 	if ((controller->button_update & U_JPAD) || (gMNDebugMenuStickInputs & U_JPAD))
 	{
-		gMNDebugMenuCursorIndex = (gMNDebugMenuCursorIndex > 0) ? gMNDebugMenuCursorIndex - 1 : gMNDebugMenuMenuItemsCount - 1;
+		gMNDebugMenuCursorIndex = (gMNDebugMenuCursorIndex > 0) ? gMNDebugMenuCursorIndex - 1 : gMNDebugMenuMenuOptionsCount - 1;
 
 		gMNDebugMenuRedrawInterrupt = 1;
 	}
 
 	if ((controller->button_update & D_JPAD) || (gMNDebugMenuStickInputs & D_JPAD))
 	{
-		gMNDebugMenuCursorIndex = (gMNDebugMenuCursorIndex < (gMNDebugMenuMenuItemsCount - 1)) ? gMNDebugMenuCursorIndex + 1 : 0;
+		gMNDebugMenuCursorIndex = (gMNDebugMenuCursorIndex < (gMNDebugMenuMenuOptionsCount - 1)) ? gMNDebugMenuCursorIndex + 1 : 0;
 
 		gMNDebugMenuRedrawInterrupt = 1;
 	}
 
 	if ((controller->button_update & L_JPAD) || (gMNDebugMenuStickInputs & L_JPAD))
 	{
-		switch (gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].type)
+		switch (gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].type)
 		{
-			case dbMenuItemKindNumeric:
-			case dbMenuItemKindString:
-				if (gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].min < *gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.s)
+			case nDBMenuOptionKindNumeric:
+			case nDBMenuOptionKindString:
+				if (gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].min < *gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].value.s)
 				{
-					*gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.s -= 1;
+					*gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].value.s -= 1;
 				}
 				else
 				{
-					*gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.s = gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].max;
+					*gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].value.s = gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].max;
 				}
 				gMNDebugMenuRedrawInterrupt = 1;
 				break;
 
-			case dbMenuItemKindNumericByte:
-			case dbMenuItemKindStringByte:
-				if (gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].min < *gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.b)
+			case nDBMenuOptionKindNumericByte:
+			case nDBMenuOptionKindStringByte:
+				if (gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].min < *gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].value.b)
 				{
-					*gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.b -= 1;
+					*gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].value.b -= 1;
 				}
 				else
 				{
-					*gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.b = gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].max;
+					*gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].value.b = gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].max;
 				}
 				gMNDebugMenuRedrawInterrupt = 1;
 				break;
 
-			case dbMenuItemKindDouble:
+			case nDBMenuOptionKindDouble:
 				if (controller->button_update & L_JPAD)
 				{
-					if (gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].min < *gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.f + -1.0F)
+					if (gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].min < *gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].value.f + -1.0F)
 					{
-						*gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.f += -1.0F;
+						*gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].value.f += -1.0F;
 					}
-					else *gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.f = gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].min;
+					else *gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].value.f = gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].min;
 
 					gMNDebugMenuRedrawInterrupt = 1;
 				}
@@ -457,44 +457,44 @@ void dbMenuHandleInputs(GObj *gobj)
 
 	if ((controller->button_update & R_JPAD) || (gMNDebugMenuStickInputs & R_JPAD))
 	{
-		switch (gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].type)
+		switch (gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].type)
 		{
-			case dbMenuItemKindNumeric:
-			case dbMenuItemKindString:
-				if (*gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.s < gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].max)
+			case nDBMenuOptionKindNumeric:
+			case nDBMenuOptionKindString:
+				if (*gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].value.s < gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].max)
 				{
-					*gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.s += 1;
+					*gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].value.s += 1;
 				}
 				else
 				{
-					*gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.s = gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].min;
+					*gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].value.s = gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].min;
 				}
 				gMNDebugMenuRedrawInterrupt = 1;
 				break;
 
-			case dbMenuItemKindNumericByte:
-			case dbMenuItemKindStringByte:
-				if (*gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.b < gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].max)
+			case nDBMenuOptionKindNumericByte:
+			case nDBMenuOptionKindStringByte:
+				if (*gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].value.b < gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].max)
 				{
-					*gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.b += 1;
+					*gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].value.b += 1;
 				}
 				else
 				{
-					*gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.b = gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].min;
+					*gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].value.b = gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].min;
 				}
 				gMNDebugMenuRedrawInterrupt = 1;
 				break;
 
-			case dbMenuItemKindDouble:
+			case nDBMenuOptionKindDouble:
 				if (controller->button_update & R_JPAD)
 				{
-					if (gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].max > *gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.f + 1.0F)
+					if (gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].max > *gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].value.f + 1.0F)
 					{
-						*gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.f += 1.0F;
+						*gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].value.f += 1.0F;
 					}
 					else
 					{
-						*gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.f = gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].max;
+						*gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].value.f = gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].max;
 					}
 					gMNDebugMenuRedrawInterrupt = 1;
 				}
@@ -509,23 +509,23 @@ void dbMenuHandleInputs(GObj *gobj)
 
 	if (ABS(stick_x) > 20)
 	{
-		if (gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].type == dbMenuItemKindDouble)
+		if (gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].type == nDBMenuOptionKindDouble)
 		{
-			temp = (gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].unknown18 * stick_x);
+			temp = (gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].unknown18 * stick_x);
 
 			if (stick_x > 0)
 			{
-				if (gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].max > *gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.f + temp)
+				if (gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].max > *gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].value.f + temp)
 				{
-					*gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.f += temp;
+					*gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].value.f += temp;
 				}
-				else *gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.f = gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].max;
+				else *gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].value.f = gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].max;
 			}
-			else if (gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].min < *gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.f + temp)
+			else if (gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].min < *gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].value.f + temp)
 			{
-				*gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.f += temp;
+				*gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].value.f += temp;
 			}
-			else *gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].value.f = gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].min;
+			else *gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].value.f = gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].min;
 
 			gMNDebugMenuRedrawInterrupt = 1;
 		}
@@ -533,7 +533,7 @@ void dbMenuHandleInputs(GObj *gobj)
 
 	if (controller->button_tap & A_BUTTON)
 	{
-		if (gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].type == dbMenuItemKindExitLabel)
+		if (gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].type == nDBMenuOptionKindExitLabel)
 		{
 			gMNDebugMenuCursorIndexWhenExited = gMNDebugMenuCursorIndex;
 			func_ovl8_8037488C(D_ovl9_80371404);
@@ -543,9 +543,9 @@ void dbMenuHandleInputs(GObj *gobj)
 			sSYTaskmanCount = gMNDebugMenuOriginalGSGTLNumTasks;
 		}
 
-		if (gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].proc_a != NULL)
+		if (gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].proc_a != NULL)
 		{
-			gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].proc_a();
+			gMNDebugMenuMenuOptions[gMNDebugMenuCursorIndex].proc_a();
 
 			gMNDebugMenuRedrawInterrupt = 1;
 		}
@@ -561,13 +561,13 @@ void dbMenuHandleInputs(GObj *gobj)
 }
 
 // 0x80369D78
-void dbMenuCreateMenu(s32 x, s32 y, s32 w, dbMenuItem* menu_items, s32 menu_items_count)
+void dbMenuCreateMenu(s32 x, s32 y, s32 w, DBMenuOption* menu_items, s32 menu_items_count)
 {
 	if (gDBMenuIsMenuOpen == FALSE)
 	{
 		gDBMenuIsMenuOpen = TRUE;
-		gMNDebugMenuMenuItems = menu_items;
-		gMNDebugMenuMenuItemsCount = menu_items_count;
+		gMNDebugMenuMenuOptions = menu_items;
+		gMNDebugMenuMenuOptionsCount = menu_items_count;
 		gMNDebugMenuCursorIndex = gMNDebugMenuRedrawInterrupt = 0;
 		gMNDebugMenuCursorIndexWhenExited = -1;
 
@@ -580,7 +580,7 @@ void dbMenuCreateMenu(s32 x, s32 y, s32 w, dbMenuItem* menu_items, s32 menu_item
 		gMNDebugMenuMenuGObj = func_ovl8_80374910(D_ovl9_80371404);
 
 		dbMenuDrawBorder(D_ovl9_80371404, &dMNDebugMenuBorderColor);
-		dbMenuDrawMenuItems(D_ovl9_80371404, menu_items, menu_items_count);
+		dbMenuDrawMenuOptions(D_ovl9_80371404, menu_items, menu_items_count);
 		dbMenuDrawCursor(D_ovl9_80371404, gMNDebugMenuCursorIndex);
 
 		gMNDebugMenuDefaultMenuRenderProc = gMNDebugMenuMenuGObj->func_display;

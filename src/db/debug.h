@@ -5,22 +5,10 @@
 #include <sys/objdisplay.h>
 #include <sys/thread6.h>
 
+#include "dbdef.h"
 #include "dbfunctions.h"
 
-typedef enum dbMenuItemKind
-{
-	dbMenuItemKindExitLabel,        // Label which exits menu when selected
-	dbMenuItemKindNumeric,          // Number, 4 bytes
-	dbMenuItemKindDouble,           // Double
-	dbMenuItemKindString,           // String
-	dbMenuItemKindLabel,            // Label
-	dbMenuItemKindNumericByte,      // Number, 1 byte
-	dbMenuItemKindStringByte        // String, 1 byte
-
-} dbMenuItemKind;
-
-
-typedef struct dbMenuItem
+struct DBMenuOption
 {
 	s32 type;
 	void (*proc_a)();
@@ -35,39 +23,26 @@ typedef struct dbMenuItem
 		f32 *f;
 		void **p;
 	} value;
+
 	f32 min;
 	f32 max;
 	f32 unknown18;
+};
 
-} dbMenuItem;
-
-typedef struct dbMenuPosition
+struct DBMenuPosition
 {
 	s16 x;
 	s16 y;
 	u16 w;
 	u16 h;
+};
 
-} dbMenuPosition;
-
-typedef struct dbFighter
+struct DBFighter
 {
 	u8 fkind;
-	u8 costume_index;
-	GObj* fighter_gobj;
-
-} dbFighter;
-
-typedef enum dbBattleScene
-{
-	dbBattleSceneVsMode,
-	dbBattleScene1PMode,
-	dbBattleSceneStaffroll,
-	dbBattleSceneExplain,
-	dbBattleSceneAutoDemo,
-	dbBattleSceneCongra
-
-} dbBattleScene;
+	u8 costume;
+	GObj *fighter_gobj;
+};
 
 typedef struct dbUnk80369EE0_1
 {

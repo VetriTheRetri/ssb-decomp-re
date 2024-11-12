@@ -1,6 +1,6 @@
 #include <sys/objmanager.h>
 #include <sys/develop.h>
-#include <debug.h>
+#include <db/debug.h>
 
 extern void* D_ovl8_80388980[]; // function pointers it seems
 extern void* func_ovl8_803716D8(s32);

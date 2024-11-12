@@ -9,7 +9,7 @@
 #include "character_select.h"
 
 // Externs
-extern SCBattleState D_800A4B18;
+
 extern f32 menu_zoom[12]; // dSCSubsysFighterScales
 extern uintptr_t D_NF_800A5240;
 extern intptr_t lOverlay29ArenaLo;  // 0x80137E30
@@ -2434,8 +2434,8 @@ void mnBonusLoadMatchInfo()
 	gMnBonusCharSelected = FALSE;
 	gMnBonusHumanPanelPort = gSCManagerSceneData.player;
 	gMnBonusTotalTimeGobj = NULL;
-	gMnBonusIsTeamBattle = D_800A4B18.is_team_battle;
-	gMnBonusRule = D_800A4B18.game_rules;
+	gMnBonusIsTeamBattle = gSCManager1PGameBattleState.is_team_battle;
+	gMnBonusRule = gSCManager1PGameBattleState.game_rules;
 
 	mnBonusInitPort();
 

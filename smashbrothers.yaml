@@ -1195,9 +1195,10 @@ segments:
     vram: 0x800D6490
     exclusive_ram_id: overlay_800D6490
     subsegments:
-      - [0x119DF0, c, ovl12]
-      - [0x119FE0, .data, ovl12]
-      - [0x11A170, .rodata, ovl12]
+      - [0x119DF0, c, db/dbmaps]
+      - [0x119FE0, .data, db/dbmaps]
+      - [0x11A170, .rodata, db/dbmaps]
+      - { start: auto, type: .bss, name: db/dbmaps, vram: 0x800D69E0 }
 
   - name: ovl13
     type: code

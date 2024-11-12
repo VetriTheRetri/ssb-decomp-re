@@ -5,7 +5,7 @@
 
 void mnNoControllerStartScene();
 void mnTitleStartScene();
-void dbStageSelectStartScene();
+void dbMapsStartScene();
 void dbCubeStartScene();
 void dbBattleStartScene();
 void dbFallsStartScene();

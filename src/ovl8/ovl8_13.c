@@ -1,6 +1,6 @@
 #include <sys/objmanager.h>
 #include <sys/develop.h>
-#include <debug.h>
+#include <db/debug.h>
 
 extern s16 D_8038F000[];
 extern u16 D_8038F008[];

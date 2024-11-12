@@ -1,4 +1,4 @@
-#include <debug.h>
+#include <db/debug.h>
 #include <ft/fighter.h>
 #include <sc/scene.h>
 #include <sys/video.h>
@@ -464,13 +464,13 @@ s32 mnVSRecordIsUnlocked(s32 fkind)
 	switch (fkind)
 	{
 		case nFTKindNess:
-			return (gMNVSRecordUnlockedMask & gmSaveChrMask(nFTKindNess)) ? TRUE : FALSE;
+			return (gMNVSRecordUnlockedMask & LBBACKUP_MASK_FIGHTER(nFTKindNess)) ? TRUE : FALSE;
 		case nFTKindPurin:
-			return (gMNVSRecordUnlockedMask & gmSaveChrMask(nFTKindPurin)) ? TRUE : FALSE;
+			return (gMNVSRecordUnlockedMask & LBBACKUP_MASK_FIGHTER(nFTKindPurin)) ? TRUE : FALSE;
 		case nFTKindCaptain:
-			return (gMNVSRecordUnlockedMask & gmSaveChrMask(nFTKindCaptain)) ? TRUE : FALSE;
+			return (gMNVSRecordUnlockedMask & LBBACKUP_MASK_FIGHTER(nFTKindCaptain)) ? TRUE : FALSE;
 		case nFTKindLuigi:
-			return (gMNVSRecordUnlockedMask & gmSaveChrMask(nFTKindLuigi)) ? TRUE : FALSE;
+			return (gMNVSRecordUnlockedMask & LBBACKUP_MASK_FIGHTER(nFTKindLuigi)) ? TRUE : FALSE;
 		default:
 			return TRUE;
 	}

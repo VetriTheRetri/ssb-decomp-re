@@ -1,6 +1,6 @@
 #include <sys/objmanager.h>
 #include <sys/develop.h>
-#include <debug.h>
+#include <db/debug.h>
 
 
 extern dbUnknownLink D_ovl8_8038A170;

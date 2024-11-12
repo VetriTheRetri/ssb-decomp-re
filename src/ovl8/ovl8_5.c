@@ -1,6 +1,6 @@
 #include <sys/objmanager.h>
 #include <sys/develop.h>
-#include <debug.h>
+#include <db/debug.h>
 
 
 dbUnknownLinkStruct* func_ovl8_80373350(s32 arg0, s32 arg1) 

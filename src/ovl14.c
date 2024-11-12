@@ -6,7 +6,7 @@
 #include <lb/library.h>
 #include <sys/video.h>
 
-#include "debug.h"
+#include <db/debug.h>
 
 // Externs
 extern intptr_t D_NF_800A5240;      // 0x800A5240
@@ -15,7 +15,7 @@ extern intptr_t lOverlay14ArenaHi;  // 0x80369240
 
 extern void gcDefaultFuncRun(UNUSED GObj* arg0);
 extern FTCreateDesc dFTManagerDefaultFighterDesc;
-extern sb32 gMNDebugMenuIsMenuOpen; // isMenuShown
+extern sb32 gDBMenuIsMenuOpen; // isMenuShown
 extern void dbMenuCreateMenu(s32, s32, s32, void*, s32);
 extern dbMenuDestroyMenu();
 
@@ -251,7 +251,7 @@ s32 dbBattleGetMissingFtKind(u16 mask_1, u16 mask_2, s32 missing_index)
 	{
 		fkind += 1;
 
-		if ((mask_1 & gmSaveChrMask(fkind)) && !(mask_2 & gmSaveChrMask(fkind)))
+		if ((mask_1 & LBBACKUP_MASK_FIGHTER(fkind)) && !(mask_2 & LBBACKUP_MASK_FIGHTER(fkind)))
 			missing_index -= 1;
 	}
 	while (missing_index != 0);
@@ -275,7 +275,7 @@ void dbBattleSetDemoFtKinds()
 	if (gSCManagerSceneData.demo_mask_prev == 0)
 		gSCManagerSceneData.demo_first_fkind = gSCManagerSceneData.demo_fkind[0];
 
-	gSCManagerSceneData.demo_mask_prev |= gmSaveChrMask(gSCManagerSceneData.demo_fkind[0]);
+	gSCManagerSceneData.demo_mask_prev |= LBBACKUP_MASK_FIGHTER(gSCManagerSceneData.demo_fkind[0]);
 
 	non_recently_demoed_count = dbBattleGetUnlockedCharsCountForMask(unlocked_mask) - dbBattleGetUnlockedCharsCountForMask(gSCManagerSceneData.demo_mask_prev);
 
@@ -284,7 +284,7 @@ void dbBattleSetDemoFtKinds()
 	else
 	{
 		gSCManagerSceneData.demo_fkind[1] = dbBattleGetMissingFtKind(unlocked_mask, gSCManagerSceneData.demo_mask_prev, mtTrigGetRandomIntRange(non_recently_demoed_count));
-		gSCManagerSceneData.demo_mask_prev |= gmSaveChrMask(gSCManagerSceneData.demo_fkind[1]);
+		gSCManagerSceneData.demo_mask_prev |= LBBACKUP_MASK_FIGHTER(gSCManagerSceneData.demo_fkind[1]);
 	}
 }
 
@@ -296,9 +296,9 @@ void dbBattleMain(GObj* arg0)
 	GObj* fighter_gobj;
 	FTStruct *fp;
 
-	if (gSysController.button_tap & START_BUTTON)
+	if (gSYControllerMain.button_tap & START_BUTTON)
 	{
-		if (gMNDebugMenuIsMenuOpen != FALSE)
+		if (gDBMenuIsMenuOpen != FALSE)
 			dbBattleStartBattle();
 		else
 			dbMenuCreateMenu(0x1E, 0x14, 0x55, &dMNDebugBattleMenuItems, 0xF);
@@ -339,10 +339,10 @@ void dbBattleMain(GObj* arg0)
 		}
 	}
 
-	if (gSysController.button_tap & U_CBUTTONS)
+	if (gSYControllerMain.button_tap & U_CBUTTONS)
 		scSubsysFighterSetStatus(gMNDebugBattleFighters[1].fighter_gobj, gMNDebugBattleCurrentAnimation++);
 
-	if (gSysController.button_tap & D_CBUTTONS)
+	if (gSYControllerMain.button_tap & D_CBUTTONS)
 		scSubsysFighterSetStatus(gMNDebugBattleFighters[1].fighter_gobj, gMNDebugBattleCurrentAnimation--);
 
 	if (gMNDebugBattleExitInterrupt != 0)

@@ -317,7 +317,7 @@ void syErrorFillRectangle(Gfx *dl, u32 ulx, u32 uly, u32 lrx, u32 lry)
 // 0x80021B30
 void syErrorControllerFuncDisplay(GObj *gobj)
 {
-    SYController *controller = &gSysController;
+    SYController *controller = &gSYControllerMain;
     s32 offset_x = 60;
     s32 offset_y = 210;
     s32 i;
@@ -386,7 +386,7 @@ void syErrorControllerFuncDisplay(GObj *gobj)
 
     for (i = 0; i < 16; i++)
     {
-        if (gSysController.button_hold & (1 << i))
+        if (gSYControllerMain.button_hold & (1 << i))
         {
             syErrorFillRectangle(gSYTaskmanDLHeads[0]++, (i * 4) + 30, 206, (i * 4) + 33, 208);
         }
@@ -579,7 +579,7 @@ s32 syErrorWaitFramebufOrController(u32 buttons, void *framebuf)
         {
             return TRUE;
         }
-        if (buttons == gSysController.button_hold) 
+        if (buttons == gSYControllerMain.button_hold) 
         {
             return FALSE; 
         }

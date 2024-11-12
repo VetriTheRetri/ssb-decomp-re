@@ -72,7 +72,7 @@ OSPfs sMotorPfs[MAXCONTROLLERS];
 UNUSED u32 unref80045468[2];
 
 // 0x80045470
-SYController _gSysController; // needs to be plugged to linker manually (linker_constants.txt) otherwise this file doesn't match
+SYController _gSYControllerMain; // needs to be plugged to linker manually (linker_constants.txt) otherwise this file doesn't match
 
 
 // 0x80003C00
@@ -161,7 +161,7 @@ void read_controller_data(void) {
 void update_global_contdata(void)
 {
     s32 i;
-    SYController *players, *sys = &gSysController;
+    SYController *players, *sys = &gSYControllerMain;
 
     for (i = 0; i < 4; i++)
     {

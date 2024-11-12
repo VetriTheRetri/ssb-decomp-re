@@ -1,6 +1,6 @@
 #include <sys/objmanager.h>
 #include <sys/develop.h>
-#include <debug.h>
+#include <db/debug.h>
 
 extern s32 D_ovl8_80389F5C;
 extern s32 D_ovl8_80389F60;

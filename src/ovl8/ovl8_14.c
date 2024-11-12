@@ -1,6 +1,6 @@
 #include <sys/objmanager.h>
 #include <sys/develop.h>
-#include <debug.h>
+#include <db/debug.h>
 
 
 s32 func_ovl8_8037EE00(s32 arg0, dbUnknown3* arg1)

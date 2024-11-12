@@ -1,6 +1,6 @@
 #include <sys/objmanager.h>
 #include <sys/develop.h>
-#include <debug.h>
+#include <db/debug.h>
 
 extern dbUnknownLinkStruct D_ovl8_8038BC34;
 extern dbUnknownLinkStruct D_ovl8_8038BC8C;

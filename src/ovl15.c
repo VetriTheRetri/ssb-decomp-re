@@ -6,7 +6,7 @@
 #include <lb/library.h>
 #include <sys/video.h>
 
-#include "debug.h"
+#include <db/debug.h>
 
 // Extern
 extern intptr_t lOverlay15ArenaLo;  // 0x800D6A00
@@ -97,7 +97,7 @@ void dbFallsMain(GObj* arg0)
 {
 	u8 temp_t0;
 
-	if (gSysController.button_tap & START_BUTTON)
+	if (gSYControllerMain.button_tap & START_BUTTON)
 		dbMenuCreateMenu(0x32, 0x32, 0x64, &dMNDebugFallsMenuItems, 0xD);
 
 	if (gMNDebugFallsExitInterrupt != 0)

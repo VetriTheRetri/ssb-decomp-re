@@ -876,7 +876,7 @@ void scManagerRunLoop(sb32 arg)
 				syDmaLoadOverlay(&dSCManagerOverlays[12]);
 				syDmaLoadOverlay(&dSCManagerOverlays[8]);
 				syDmaLoadOverlay(&dSCManagerOverlays[9]);
-				dbStageSelectStartScene();
+				dbMapsStartScene();
 				break;
 
 			case nSCKindDebugSystem:

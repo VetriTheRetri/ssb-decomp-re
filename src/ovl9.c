@@ -4,7 +4,7 @@
 #include <gr/ground.h>
 #include <lb/library.h>
 
-#include "debug.h"
+#include <db/debug.h>
 
 // Externs
 extern s32 sSYTaskmanCount;
@@ -212,7 +212,7 @@ void (*gMNDebugMenuDefaultMenuRenderProc)(GObj*);
 s32 gMNDebugMenuRedrawInterrupt;
 
 // 0x80371420
-sb32 gMNDebugMenuIsMenuOpen;
+sb32 gDBMenuIsMenuOpen;
 
 // 0x80371424
 s32 gMNDebugMenuOriginalGSGTLNumTasks;
@@ -225,12 +225,12 @@ char gMNDebugMenuStringBuffer[0x38];
 void dbMenuUpdateMenuInputs()
 {
 	u16 inputs = 0;
-	SYController *controller = &gSysController;
+	SYController *controller = &gSYControllerMain;
 
-	if (gSysController.stick_range.x > 40)
+	if (gSYControllerMain.stick_range.x > 40)
 		inputs |= R_JPAD;
 
-	if (gSysController.stick_range.x < -40)
+	if (gSYControllerMain.stick_range.x < -40)
 		inputs |= L_JPAD;
 
 	if (controller->stick_range.y > 40)
@@ -388,7 +388,7 @@ void gMNDebugMenuRenderMenu(s32 arg0)
 // 0x8036975C
 void dbMenuHandleInputs(GObj *gobj)
 {
-	SYController *controller = &gSysController;
+	SYController *controller = &gSYControllerMain;
 	s32 stick_x;
 	f32 temp;
 
@@ -539,7 +539,7 @@ void dbMenuHandleInputs(GObj *gobj)
 			gMNDebugMenuCursorIndexWhenExited = gMNDebugMenuCursorIndex;
 			func_ovl8_8037488C(D_ovl9_80371404);
 
-			gMNDebugMenuIsMenuOpen = FALSE;
+			gDBMenuIsMenuOpen = FALSE;
 
 			sSYTaskmanCount = gMNDebugMenuOriginalGSGTLNumTasks;
 		}
@@ -555,7 +555,7 @@ void dbMenuHandleInputs(GObj *gobj)
 	{
 		func_ovl8_8037488C(D_ovl9_80371404);
 
-		gMNDebugMenuIsMenuOpen = FALSE;
+		gDBMenuIsMenuOpen = FALSE;
 
 		sSYTaskmanCount = gMNDebugMenuOriginalGSGTLNumTasks;
 	}
@@ -564,9 +564,9 @@ void dbMenuHandleInputs(GObj *gobj)
 // 0x80369D78
 void dbMenuCreateMenu(s32 x, s32 y, s32 w, dbMenuItem* menu_items, s32 menu_items_count)
 {
-	if (gMNDebugMenuIsMenuOpen == FALSE)
+	if (gDBMenuIsMenuOpen == FALSE)
 	{
-		gMNDebugMenuIsMenuOpen = TRUE;
+		gDBMenuIsMenuOpen = TRUE;
 		gMNDebugMenuMenuItems = menu_items;
 		gMNDebugMenuMenuItemsCount = menu_items_count;
 		gMNDebugMenuCursorIndex = gMNDebugMenuRedrawInterrupt = 0;
@@ -622,5 +622,5 @@ void dbMenuInitMenu()
 
 	func_ovl8_8037D908(sp18);
 
-	gMNDebugMenuIsMenuOpen = FALSE;
+	gDBMenuIsMenuOpen = FALSE;
 }

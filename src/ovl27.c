@@ -13,7 +13,7 @@ extern intptr_t lOverlay27ArenaLo;  // 0x801396D0
 extern intptr_t lOverlay27ArenaHi;  // 0x803903E0
 
 extern f32 menu_zoom[12]; // dSCSubsysFighterScales
-extern SCBattleState D_800A4B18;
+
 
 // Offsets
 extern intptr_t FILE_011_START_IMAGE_OFFSET; // Press Start's "Start" texture
@@ -3059,8 +3059,8 @@ void mn1PLoadMatchInfo()
 	gMN1PBonusesGObj = NULL;
 	gMN1PLevelGObj = NULL;
 	gMN1PStockGObj = NULL;
-	gMN1PIsTeamBattle = D_800A4B18.is_team_battle;
-	gMN1PRule = D_800A4B18.game_rules;
+	gMN1PIsTeamBattle = gSCManager1PGameBattleState.is_team_battle;
+	gMN1PRule = gSCManager1PGameBattleState.game_rules;
 
 	mn1PInitPort(gMN1PHumanPanelPort);
 

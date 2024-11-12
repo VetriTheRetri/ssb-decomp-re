@@ -1,5 +1,5 @@
 #include <sys/develop.h>
-#include <debug.h>
+#include <db/debug.h>
 
 s32 func_ovl8_803840C0(s32 arg0, dbUnknown3* arg1)
 {

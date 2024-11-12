@@ -5,7 +5,7 @@
 
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
-extern SYController gSysController;
+extern SYController gSYControllerMain;
 
 extern uintptr_t D_NF_00000011;
 
@@ -133,15 +133,15 @@ void func_ovl16_800D64BC(void)
 // 0x800D64C4
 void mnUnusedFightersTimeProcUpdate(GObj *gobj)
 {
-    if (gSysController.button_hold & L_JPAD)
+    if (gSYControllerMain.button_hold & L_JPAD)
     {
         sMNUnusedFightersTimePositionX -= 0.1F;
     }
-    if (gSysController.button_hold & R_JPAD)
+    if (gSYControllerMain.button_hold & R_JPAD)
     {
         sMNUnusedFightersTimePositionX += 0.1F;
     }
-    if (gSysController.button_hold & A_BUTTON)
+    if (gSYControllerMain.button_hold & A_BUTTON)
     {
         SObjGetStruct(gobj)->pos.x = (s32) sMNUnusedFightersTimePositionX;
     }
@@ -151,14 +151,14 @@ void mnUnusedFightersTimeProcUpdate(GObj *gobj)
 // 0x800D655C
 void mnUnusedFightersFuncRun(GObj *gobj)
 {
-    if (gSysController.button_tap & START_BUTTON)
+    if (gSYControllerMain.button_tap & START_BUTTON)
     {
         gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
         gSCManagerSceneData.scene_curr = nSCKindTitle;
 
         syTaskmanSetLoadScene();
     }
-    if (gSysController.button_tap & Z_TRIG)
+    if (gSYControllerMain.button_tap & Z_TRIG)
     {
         syErrorMakeControllerCamera(0x1F, 0x80000000, 0);
     }

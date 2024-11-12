@@ -117,7 +117,7 @@ extern u32 gSYControllerConnectedNum;
 extern sb32 gUpdateContData;
 extern s8 gPlayerControllerPortStatuses[MAXCONTROLLERS];
 extern SYController gSYControllerDevices[MAXCONTROLLERS];
-extern SYController gSysController;
+extern SYController gSYControllerMain;
 
 extern void schedule_contread(void);
 extern void update_contdata(void);

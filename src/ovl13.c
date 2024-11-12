@@ -6,7 +6,7 @@
 #include <lb/library.h>
 #include <sys/video.h>
 
-#include "debug.h"
+#include <db/debug.h>
 
 // Externs
 extern intptr_t D_NF_800A5240;      // 0x800A5240
@@ -498,10 +498,10 @@ void dbCubeCheckAudioChange(s32 arg0)
 // 0x80131E00
 void dbCubeMain(GObj* arg0)
 {
-	if (gSysController.button_tap & START_BUTTON)
+	if (gSYControllerMain.button_tap & START_BUTTON)
 		dbMenuCreateMenu(0x32, 0x32, 0x50, &dMNDebugCubeMenuItems, 0xF);
 
-	if (gSysController.button_tap & Z_TRIG)
+	if (gSYControllerMain.button_tap & Z_TRIG)
 		syErrorMakeControllerCamera(0, 0x80000000, 0);
 
 	if (dMNDebugCubeExitInterrupt != 0)

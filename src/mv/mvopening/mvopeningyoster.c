@@ -388,7 +388,7 @@ SYTaskmanSetup dMVOpeningYosterTaskmanSetup =
     128,                                // Number of GObjProcesses
     128,                                // Number of GObjs
     sizeof(GObj),                       // GObj size
-    512,                                // Number of Object Manager Matrices
+    512,                                // Number of XObjs
     dLBCommonFuncMatrixList,            // Matrix function list
     NULL,                               // Function for ejecting DObjVec?
     512,                                // Number of AObjs

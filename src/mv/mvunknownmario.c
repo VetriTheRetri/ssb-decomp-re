@@ -87,7 +87,7 @@ SYTaskmanSetup dMVUnknownMarioTaskmanSetup =
     0,                              // Number of GObjProcesses
     0,                              // Number of GObjs
     sizeof(GObj),                   // GObj size
-    0,                              // Number of Object Manager Matrices
+    0,                              // Number of XObjs
     dLBCommonFuncMatrixList,        // Matrix function list
     NULL,                           // Function for ejecting DObjVec?
     0,                              // Number of AObjs

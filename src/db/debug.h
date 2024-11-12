@@ -5,6 +5,8 @@
 #include <sys/objdisplay.h>
 #include <sys/thread6.h>
 
+#include "dbfunctions.h"
+
 typedef enum dbMenuItemKind
 {
 	dbMenuItemKindExitLabel,        // Label which exits menu when selected
@@ -71,7 +73,5 @@ typedef struct dbUnk80369EE0_1
 	u32 unk_80369EE0_1_0x8;
 
 } dbUnk80369EE0_1;
-
-#define gmSaveChrMask(kind) (1 << (kind))
 
 #endif

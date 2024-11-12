@@ -725,7 +725,7 @@ SYTaskmanSetup dMNSoundTestTaskmanSetup =
     64,                             // Number of GObjProcesses
     64,                             // Number of GObjs
     sizeof(GObj),                   // GObj size
-    256,                            // Number of Object Manager Matrices
+    256,                            // Number of XObjs
     NULL,                           // Matrix function list
     NULL,                           // Function for ejecting DObjVec?
     32,                             // Number of AObjs

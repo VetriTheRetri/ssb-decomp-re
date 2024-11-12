@@ -799,7 +799,7 @@ sLeftUntilStatus = 0x80045260;
 D_80045268 = 0x80045268;
 sMotorPfs = 0x800452C8;
 unref80045468 = 0x80045468;
-gSysController = 0x80045470; //size:0xA
+gSYControllerMain = 0x80045470; //size:0xA
 
 D_8003B6E0 = 0x8003B6E0;
 sSYTaskmanUpdateCount = 0x8003B6E4;

@@ -1,4 +1,4 @@
-#include <debug.h>
+#include <db/debug.h>
 #include <sys/develop.h>
 #include <ft/fighter.h>
 #include <sc/scene.h>
@@ -1760,7 +1760,7 @@ sb32 mnCharsIsUnlocked(s32 fkind)
 		(fkind == nFTKindNess)
 	)
 	{
-		if (gMNCharsUnlockedMask & gmSaveChrMask(fkind))
+		if (gMNCharsUnlockedMask & LBBACKUP_MASK_FIGHTER(fkind))
 			return TRUE;
 		else
 			return FALSE;

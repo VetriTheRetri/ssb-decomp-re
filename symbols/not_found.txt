@@ -763,5 +763,4 @@ D_ovl0_800D6452 = 0x800D6452;
 sLBParticleTransformsAllocFree = 0x800D6454;
 sLBParticleGeneratorsLastProcessed = 0x800D6458;
 
-menu_zoom = 0x80390D90;
 func_800A3040_41D90 = 0x800A3040;

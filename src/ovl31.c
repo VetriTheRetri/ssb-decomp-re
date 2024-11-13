@@ -29,7 +29,7 @@ typedef struct halAudioUnknown
 
 
 // Externs
-extern f32 menu_zoom[12];           // 0x80390D90
+extern f32 dSCSubsysFighterScales[12];           // 0x80390D90
 extern intptr_t D_NF_800A5240;      // 0x800A5240
 extern intptr_t lOverlay31ArenaLo;  // 0x8013A070
 extern intptr_t lOverlay31ArenaHi;  // 0x803903E0
@@ -984,9 +984,9 @@ s32 func_ovl31_80133810(s32 port_id)
 // 0x801338EC
 void mnVSResultsSetFighterScale(GObj* fighter_gobj, s32 port_id, s32 fkind, s32 place)
 {
-	DObjGetStruct(fighter_gobj)->scale.vec.f.x = menu_zoom[fkind];
-	DObjGetStruct(fighter_gobj)->scale.vec.f.y = menu_zoom[fkind];
-	DObjGetStruct(fighter_gobj)->scale.vec.f.z = menu_zoom[fkind];
+	DObjGetStruct(fighter_gobj)->scale.vec.f.x = dSCSubsysFighterScales[fkind];
+	DObjGetStruct(fighter_gobj)->scale.vec.f.y = dSCSubsysFighterScales[fkind];
+	DObjGetStruct(fighter_gobj)->scale.vec.f.z = dSCSubsysFighterScales[fkind];
 }
 
 // 0x8013392C

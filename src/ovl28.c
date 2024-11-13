@@ -13,7 +13,7 @@
 extern intptr_t lOverlay28ArenaLo;  // 0x80138CC0
 extern intptr_t lOverlay28ArenaHi;  // 0x803903E0
 // ovl1 stuff
-extern f32 menu_zoom[12]; // dSCSubsysFighterScales
+extern f32 dSCSubsysFighterScales[12]; // dSCSubsysFighterScales
 
 extern intptr_t FILE_000_COLON_IMAGE_OFFSET; // file 0x000 image offset for colon
 
@@ -983,9 +983,9 @@ void mnTrainingSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 fkind, s32 cost
 		}
 		DObjGetStruct(fighter_gobj)->rotate.vec.f.y = initial_y_rotation;
 
-		DObjGetStruct(fighter_gobj)->scale.vec.f.x = menu_zoom[fkind];
-		DObjGetStruct(fighter_gobj)->scale.vec.f.y = menu_zoom[fkind];
-		DObjGetStruct(fighter_gobj)->scale.vec.f.z = menu_zoom[fkind];
+		DObjGetStruct(fighter_gobj)->scale.vec.f.x = dSCSubsysFighterScales[fkind];
+		DObjGetStruct(fighter_gobj)->scale.vec.f.y = dSCSubsysFighterScales[fkind];
+		DObjGetStruct(fighter_gobj)->scale.vec.f.z = dSCSubsysFighterScales[fkind];
 
 		if (port_id == gMNTrainingCPUPanelPort)
 			ftParamCheckSetFighterColAnimID(fighter_gobj, 1, 0);

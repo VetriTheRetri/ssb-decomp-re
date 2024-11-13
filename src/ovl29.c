@@ -10,7 +10,7 @@
 
 // Externs
 
-extern f32 menu_zoom[12]; // dSCSubsysFighterScales
+extern f32 dSCSubsysFighterScales[12]; // dSCSubsysFighterScales
 extern uintptr_t D_NF_800A5240;
 extern intptr_t lOverlay29ArenaLo;  // 0x80137E30
 extern intptr_t lOverlay29ArenaHi;  // 0x803903E0
@@ -1229,9 +1229,9 @@ void mnBonusSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 fkind)
 
 		DObjGetStruct(fighter_gobj)->rotate.vec.f.y = initial_y_rotation;
 
-		DObjGetStruct(fighter_gobj)->scale.vec.f.x = menu_zoom[fkind];
-		DObjGetStruct(fighter_gobj)->scale.vec.f.y = menu_zoom[fkind];
-		DObjGetStruct(fighter_gobj)->scale.vec.f.z = menu_zoom[fkind];
+		DObjGetStruct(fighter_gobj)->scale.vec.f.x = dSCSubsysFighterScales[fkind];
+		DObjGetStruct(fighter_gobj)->scale.vec.f.y = dSCSubsysFighterScales[fkind];
+		DObjGetStruct(fighter_gobj)->scale.vec.f.z = dSCSubsysFighterScales[fkind];
 	}
 }
 

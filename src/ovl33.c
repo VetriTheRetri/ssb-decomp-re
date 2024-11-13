@@ -33,7 +33,7 @@ typedef struct charsSpecialActionInfo
 
 // Externs
 // dSCSubsysFighterScales
-extern f32 menu_zoom[12];
+extern f32 dSCSubsysFighterScales[12];
 extern intptr_t D_NF_800A5240;
 extern intptr_t lOverlay33ArenaLo;  // 0x80136A90
 extern intptr_t lOverlay33ArenaHi;  // 0x803903E0
@@ -1281,9 +1281,9 @@ void mnCharsCreateWorks(s32 fkind)
 // 0x80132494
 void mnCharsSetScale(GObj* fighter_gobj, s32 fkind)
 {
-	DObjGetStruct(fighter_gobj)->scale.vec.f.x = menu_zoom[fkind];
-	DObjGetStruct(fighter_gobj)->scale.vec.f.y = menu_zoom[fkind];
-	DObjGetStruct(fighter_gobj)->scale.vec.f.z = menu_zoom[fkind];
+	DObjGetStruct(fighter_gobj)->scale.vec.f.x = dSCSubsysFighterScales[fkind];
+	DObjGetStruct(fighter_gobj)->scale.vec.f.y = dSCSubsysFighterScales[fkind];
+	DObjGetStruct(fighter_gobj)->scale.vec.f.z = dSCSubsysFighterScales[fkind];
 }
 
 // 0x801324CC

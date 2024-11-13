@@ -10,7 +10,7 @@
 extern intptr_t lOverlay26ArenaLo; // 0x8013C4C0
 extern intptr_t lOverlay26ArenaHi; // 0x803903E0
 
-extern f32 menu_zoom[12]; // dSCSubsysFighterScales
+extern f32 dSCSubsysFighterScales[12]; // dSCSubsysFighterScales
 
 // Offsets
 extern intptr_t FILE_000_COLON_IMAGE_OFFSET; // file 0x000 image offset for colon
@@ -1372,9 +1372,9 @@ void mnBattleSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 fkind, s32 costum
 
 		DObjGetStruct(fighter_gobj)->rotate.vec.f.y = initial_y_rotation;
 
-		DObjGetStruct(fighter_gobj)->scale.vec.f.x = menu_zoom[fkind];
-		DObjGetStruct(fighter_gobj)->scale.vec.f.y = menu_zoom[fkind];
-		DObjGetStruct(fighter_gobj)->scale.vec.f.z = menu_zoom[fkind];
+		DObjGetStruct(fighter_gobj)->scale.vec.f.x = dSCSubsysFighterScales[fkind];
+		DObjGetStruct(fighter_gobj)->scale.vec.f.y = dSCSubsysFighterScales[fkind];
+		DObjGetStruct(fighter_gobj)->scale.vec.f.z = dSCSubsysFighterScales[fkind];
 
 		if (gMnBattlePanels[port_id].player_type == mnPanelTypeCPU)
 			ftParamCheckSetFighterColAnimID(fighter_gobj, 1, 0);

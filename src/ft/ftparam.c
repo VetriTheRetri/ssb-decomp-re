@@ -2652,7 +2652,7 @@ s32 ftParamGetCostumeTeamID(s32 fkind, s32 color)
 }
 
 // 0x800EC11C
-s32 ftParamGetCostumeDevelop(s32 fkind)
+s32 ftParamGetCostumeDebug(s32 fkind)
 {
     return dFTParamCostumeIDs[fkind].develop;
 }

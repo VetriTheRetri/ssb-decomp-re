@@ -22,6 +22,7 @@ struct DBMenuOption
 		u8 *b;
 		f32 *f;
 		void **p;
+
 	} value;
 
 	f32 min;

@@ -102,7 +102,7 @@ extern void func_ovl2_800EBC0C(s32 arg0, Vec3f *arg1, f32 *arg2, f32 arg3, DObj 
 extern void func_ovl2_800EBD08(DObj *root_dobj, f32 arg1, Vec3f *vec, f32 arg3);
 extern s32 ftParamGetCostumeCommonID(s32 fkind, s32 color);
 extern s32 ftParamGetCostumeTeamID(s32 fkind, s32 color);
-extern s32 ftParamGetCostumeDevelop(s32 fkind);
+extern s32 ftParamGetCostumeDebug(s32 fkind);
 extern void ftParamInitGame(void);
 
 #endif

@@ -25,7 +25,8 @@ typedef enum GObjKind
     nGCCommonKindShadow,                    // 1020
     nGCCommonKindTransition,                // 1021 - Screen fadeout actor?
     nGCCommonKindBossWallpaper = 1023,      // 1023
-    nGCCommonKindSceneCamera = 1025         // 1025
+    nGCCommonKindDebugCamera,               // 1024
+    nGCCommonKindSceneCamera                // 1025
 
 } GObjKind;
 

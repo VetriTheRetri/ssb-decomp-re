@@ -15,7 +15,7 @@ typedef enum DBMenuOptionKind
 
 typedef enum DBBattleScene
 {
-	nDBBattleSceneVsMode,
+	nDBBattleSceneVSMode,
 	nDBBattleScene1PMode,
 	nDBBattleSceneStaffroll,
 	nDBBattleSceneExplain,

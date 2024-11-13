@@ -13,6 +13,24 @@ extern dbMenuDestroyMenu();
 
 // // // // // // // // // // // //
 //                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x80133130
+s32 sDBCubePad0x80133130[2];
+
+// 0x80133138
+sb32 sDBCubeIsExitInterrupt;
+
+// 0x8013313C
+sb32 sDBCubeIsTransitionInterrupt;
+
+// 0x80133140
+LBFileNode sDBCubeStatusBuffer[5];
+
+// // // // // // // // // // // //
+//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -307,24 +325,6 @@ SYTaskmanSetup dDBCubeTaskmanSetup =
     
     dbCubeFuncStart         		// Task start function
 };
-
-// // // // // // // // // // // //
-//                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x80133130
-s32 sDBCubePad0x80133130[2];
-
-// 0x80133138
-sb32 sDBCubeIsExitInterrupt;
-
-// 0x8013313C
-sb32 sDBCubeIsTransitionInterrupt;
-
-// 0x80133140
-LBFileNode sDBCubeStatusBuffer[5];
 
 // // // // // // // // // // // //
 //                               //

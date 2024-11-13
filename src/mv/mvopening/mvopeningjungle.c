@@ -145,7 +145,7 @@ FTKeyCommand dMVOpeningJungleSamusInputSeq[/* */] =
 u32 dMVOpeningJungleFileIDs[/* */] = { &D_NF_00000025, &D_NF_00000040 };
 
 // 0x8018D93C
-SYVideoSetup dMVOpeningJungleVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMVOpeningJungleVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
 // 0x8018D958
 SYTaskmanSetup dMVOpeningJungleTaskmanSetup =

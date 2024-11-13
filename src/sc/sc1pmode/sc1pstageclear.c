@@ -2025,7 +2025,7 @@ void sc1PStageClearFuncStart(void)
 }
 
 // 0x801351EC
-SYVideoSetup dGM1PStageClearVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dGM1PStageClearVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
 // 0x80135208
 SYTaskmanSetup dGM1PStageClearTaskmanSetup =

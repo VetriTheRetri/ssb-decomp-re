@@ -85,7 +85,7 @@ s32 dSCExplainRandomSeed1 = 0x00000001;
 s32 dSCExplainRandomSeed2 = 0x00000001;
 
 // 0x8018E72C
-SYVideoSetup dSCExplainVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dSCExplainVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
 // 0x8018E748
 SYTaskmanSetup dSCExplainTaskmanSetup =

@@ -693,7 +693,7 @@ Gfx dMNSoundTestDisplayList[/* */] =
 };
 
 // 0x80134240
-SYVideoSetup dMNSoundTestVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMNSoundTestVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
 // 0x8013425C
 SYTaskmanSetup dMNSoundTestTaskmanSetup =

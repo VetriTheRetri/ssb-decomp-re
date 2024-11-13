@@ -63,7 +63,7 @@ Gfx dSC1PChallengerDisplayList[/* */] =
 };
 
 // 0x801323B8
-SYVideoSetup dSC1PChallengerVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dSC1PChallengerVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
 // 0x801323D4
 SYTaskmanSetup dSC1PChallengerTaskmanSetup =

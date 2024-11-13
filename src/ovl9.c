@@ -22,16 +22,16 @@ extern void func_ovl8_8037DFCC(s32, s16);
 u32 D_ovl9_80369F60 = 0xFFFFFFFF;
 
 // 0x80369F64
-u32 dMNDebugMenuBGColor = 0x0000FFFF;
+u32 dDBMenuBGColor = 0x0000FFFF;
 
 // 0x80369F68
-u32 dMNDebugMenuBorderColor = 0x80FFFFFF;
+u32 dDBMenuBorderColor = 0x80FFFFFF;
 
 // 0x80369F6C
-u32 dMNDebugMenuTextColor = 0xFFFFFFFF;
+u32 dDBMenuTextColor = 0xFFFFFFFF;
 
 // 0x80369F70
-u32 dMNDebugMenuTextBGColor[] = { 0x0000FFFF, 0x0000FFFF, 0xFFFFFFFF };
+u32 dDBMenuTextBGColor[] = { 0x0000FFFF, 0x0000FFFF, 0xFFFFFFFF };
 
 // 0x80369F7C
 DBMenuPosition gMNDebugMenuMenuPosition = { 0 };
@@ -376,7 +376,7 @@ void gMNDebugMenuRenderMenu(s32 arg0)
 	{
 		gMNDebugMenuRedrawInterrupt = 0;
 
-		dbMenuDrawBackground(D_ovl9_80371404, &dMNDebugMenuBGColor);
+		dbMenuDrawBackground(D_ovl9_80371404, &dDBMenuBGColor);
 		dbMenuDrawMenuOptions(D_ovl9_80371404, gMNDebugMenuMenuOptions, gMNDebugMenuMenuOptionsCount);
 		dbMenuDrawCursor(D_ovl9_80371404, gMNDebugMenuCursorIndex);
 	}
@@ -579,7 +579,7 @@ void dbMenuCreateMenu(s32 x, s32 y, s32 w, DBMenuOption* menu_items, s32 menu_it
 		D_ovl9_80371404 = func_ovl8_80381C80(&gMNDebugMenuMenuPosition);
 		gMNDebugMenuMenuGObj = func_ovl8_80374910(D_ovl9_80371404);
 
-		dbMenuDrawBorder(D_ovl9_80371404, &dMNDebugMenuBorderColor);
+		dbMenuDrawBorder(D_ovl9_80371404, &dDBMenuBorderColor);
 		dbMenuDrawMenuOptions(D_ovl9_80371404, menu_items, menu_items_count);
 		dbMenuDrawCursor(D_ovl9_80371404, gMNDebugMenuCursorIndex);
 
@@ -612,8 +612,8 @@ void dbMenuInitMenu()
 	func_ovl8_8037B98C(&sp2C);
 
 	func_ovl8_8037D6D4(D_ovl9_8036A398);
-	func_ovl8_8037D9D0(&dMNDebugMenuTextColor);
-	func_ovl8_8037D9B4(dMNDebugMenuTextBGColor);
+	func_ovl8_8037D9D0(&dDBMenuTextColor);
+	func_ovl8_8037D9B4(dDBMenuTextBGColor);
 
 	func_ovl8_8037D95C(sp18);
 

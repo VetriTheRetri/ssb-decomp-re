@@ -69,7 +69,7 @@ u32 dMVOpeningUnused0x8013265C[/* */] =
 };
 
 // 0x80132678
-SYVideoSetup dMVOpeningNewcomersVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMVOpeningNewcomersVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
 // 0x80132694
 SYTaskmanSetup dMVOpeningNewcomersTaskmanSetup =

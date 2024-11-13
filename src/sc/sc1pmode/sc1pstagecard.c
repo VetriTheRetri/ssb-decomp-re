@@ -1986,7 +1986,7 @@ void sc1PStageCardFuncStart(void)
 }
 
 // 0x80135B38
-SYVideoSetup dSC1PStageCardVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dSC1PStageCardVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
 // 0x80135B54
 SYTaskmanSetup dSC1PStageCardTaskmanSetup =

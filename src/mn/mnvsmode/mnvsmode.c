@@ -1522,7 +1522,7 @@ void mnVSModeFuncStart(void)
 }
 
 // 0x80134880
-SYVideoSetup dMNVSModeVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMNVSModeVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
 // 0x8013489C
 scRuntimeInfo dMNVSModeTaskmanSetup =

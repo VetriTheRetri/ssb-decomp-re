@@ -266,7 +266,7 @@ Gfx dSC1PBonusStageDisplayList[/* */] =
 };
 
 // 0x8018F080
-SYVideoSetup dSC1PBonusStageVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dSC1PBonusStageVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
 // 0x8018F09C
 SYTaskmanSetup dSC1PBonusStageTaskmanSetup =

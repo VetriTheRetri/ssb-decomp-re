@@ -818,7 +818,7 @@ void mnDataFuncStart(void)
 }
 
 // 0x80132FB0
-SYVideoSetup dMNDataVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMNDataVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
 // 0x80132FCC
 SYTaskmanSetup dMNDataTaskmanSetup = 

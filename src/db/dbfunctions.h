@@ -4,5 +4,6 @@
 #include <db/dbmaps.h>
 #include <db/dbcube.h>
 #include <db/dbbattle.h>
+#include <db/dbfalls.h>
 
 #endif

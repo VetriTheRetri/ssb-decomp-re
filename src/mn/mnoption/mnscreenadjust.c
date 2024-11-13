@@ -61,7 +61,7 @@ Gfx dMNScreenAdjustDisplayList[/* */] =
 };
 
 // 0x80132878
-SYVideoSetup dMNScreenAdjustVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMNScreenAdjustVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
 // 0x80132894
 SYTaskmanSetup dMNScreenAdjustTaskmanSetup =

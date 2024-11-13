@@ -124,7 +124,7 @@ s32 dSC1PTrainingModeWallpaperIDs[/* */] =
 SYColorRGBA dSC1PTrainingModeFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
 // 0x80190870
-SYVideoSetup dSC1PTrainingModeVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dSC1PTrainingModeVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
 // 0x8019088C
 SYTaskmanSetup dSC1PTrainingModeTaskmanSetup =

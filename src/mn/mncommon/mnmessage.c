@@ -365,7 +365,7 @@ void mnMessageFuncStart(void)
 }
 
 // 0x801325A0
-SYVideoSetup dMNMessageVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMNMessageVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
 // 0x801325BC
 SYTaskmanSetup dMNMessageTaskmanSetup =

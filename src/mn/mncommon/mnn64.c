@@ -55,7 +55,7 @@ Gfx dMNN64DisplayList[/* */] =
 };
 
 // 0x80131F98
-SYVideoSetup dMNN64VideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMNN64VideoSetup = SYVIDEO_SETUP_DEFAULT();
 
 // 0x80131FB4
 SYTaskmanSetup dMNN64TaskmanSetup =

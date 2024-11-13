@@ -90,7 +90,7 @@ Gfx dMNModeSelectDisplayList[/* */] =
 };
 
 // 0x80132BD8
-SYVideoSetup dMNModeSelectVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMNModeSelectVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
 // 0x80132BF4
 scRuntimeInfo dMNModeSelectTaskmanSetup =

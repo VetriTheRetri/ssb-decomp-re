@@ -1395,10 +1395,10 @@ segments:
     vram: 0x800D6490
     exclusive_ram_id: overlay_800D6490
     subsegments:
-      - [0x150740, c, ovl15]
-      - [0x150990, .data, ovl15]
-      - [0x150C00, .rodata, ovl15]
-      - { start: auto, type: .bss, vram: 0x800D69F0, name: ovl15 }
+      - [0x150740, c, db/dbfalls]
+      - [0x150990, .data, db/dbfalls]
+      - [0x150C00, .rodata, db/dbfalls]
+      - { start: auto, type: .bss, name: db/dbfalls, vram: 0x800D69F0 }
 
   - name: ovl31
     type: code

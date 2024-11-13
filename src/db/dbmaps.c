@@ -104,7 +104,7 @@ DBMenuOption dDBMapsMenuOptions[/* */] =
 };
 
 // 0x800D6764
-SYVideoSetup dDBMapsVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dDBMapsVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
 // 0x800D6780
 SYTaskmanSetup dDBMapsTaskmanSetup =
@@ -174,7 +174,6 @@ void dbMapsFuncRun(GObj *gobj)
 		}
 		else dbMenuCreateMenu(0x32, 0x32, 0x64, dDBMapsMenuOptions, ARRAY_COUNT(dDBMapsMenuOptions));
 	}
-
 	if (dDBMapsIsExit != FALSE)
 	{
 		dbMenuDestroyMenu();

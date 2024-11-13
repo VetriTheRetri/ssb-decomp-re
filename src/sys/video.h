@@ -33,7 +33,7 @@
     )                                                                               \
 )
 
-#define SYVIDEO_DEFINE_DEFAULT()                                \
+#define SYVIDEO_SETUP_DEFAULT()                                \
 {                                                               \
     gSCSubsysFramebuffer0,                                      \
     gSCSubsysFramebuffer1,                                      \

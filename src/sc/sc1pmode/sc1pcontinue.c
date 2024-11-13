@@ -1256,7 +1256,7 @@ void sc1PContinueFuncStart(void)
 }
 
 // 0x80134238
-SYVideoSetup dSC1PContinueVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dSC1PContinueVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
 // 0x80134254
 SYTaskmanSetup dSC1PContinueTaskmanSetup =

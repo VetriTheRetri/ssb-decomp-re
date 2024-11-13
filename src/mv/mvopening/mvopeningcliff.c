@@ -68,7 +68,7 @@ Lights1 dMVOpeningCliffLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0
 Lights1 dMVOpeningCliffLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x00, 0x14, 0x00);
 
 // 0x80132708
-SYVideoSetup dMVOpeningCliffVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMVOpeningCliffVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
 // 0x80132724
 SYTaskmanSetup dMVOpeningCliffTaskmanSetup =

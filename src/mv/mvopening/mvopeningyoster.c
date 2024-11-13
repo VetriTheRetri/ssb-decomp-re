@@ -356,7 +356,7 @@ void mvOpeningYosterFuncStart(void)
 }
 
 // 0x80132378
-SYVideoSetup dMVOpeningYosterVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMVOpeningYosterVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
 // 0x80132394
 SYTaskmanSetup dMVOpeningYosterTaskmanSetup =

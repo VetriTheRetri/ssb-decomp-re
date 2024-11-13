@@ -400,7 +400,7 @@ void mvOpeningRunFuncStart(void)
 }
 
 // 0x80132650
-SYVideoSetup dMVOpeningRunVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMVOpeningRunVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
 // 0x8013266C
 SYTaskmanSetup dMVOpeningRunTaskmanSetup =

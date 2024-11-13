@@ -279,7 +279,7 @@ DBMenuOption dDBCubeMenuOptions[/* */] =
 };
 
 // 0x80132F6C
-SYVideoSetup dDBCubeVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dDBCubeVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
 // 0x80132F88
 SYTaskmanSetup dDBCubeTaskmanSetup =
@@ -431,8 +431,8 @@ void dbCubeAudioThreadUpdate(GObj *gobj)
 		if
 		(
 			(
-				(dDBCubeSFX == NULL) 		||
-				(dDBCubeSFX->sfx_id == 0) 	||
+				(dDBCubeSFX == NULL) 						||
+				(dDBCubeSFX->sfx_id == 0) 					||
 				(dDBCubeCurrentSoundID != dDBCubeSFX->sfx_id)
 			)
 			&&
@@ -458,7 +458,7 @@ void dbCubeFuncRun(GObj *gobj)
 {
 	if (gSYControllerMain.button_tap & START_BUTTON)
 	{
-		dbMenuCreateMenu(0x32, 0x32, 0x50, &dDBCubeMenuOptions, 0xF);
+		dbMenuCreateMenu(0x32, 0x32, 0x50, dDBCubeMenuOptions, ARRAY_COUNT(dDBCubeMenuOptions));
 	}
 	if (gSYControllerMain.button_tap & Z_TRIG)
 	{

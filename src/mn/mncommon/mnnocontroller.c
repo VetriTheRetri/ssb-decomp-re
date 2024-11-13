@@ -21,7 +21,7 @@ s32 sMNNoControllerPad0x800D67C0;
 // // // // // // // // // // // //
 
 // 0x800D6700
-SYVideoSetup dMNNoControllerVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMNNoControllerVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
 // 0x800D671C
 SYTaskmanSetup dMNNoControllerTaskmanSetup =

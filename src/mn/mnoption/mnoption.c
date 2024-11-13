@@ -1025,7 +1025,7 @@ void mnOptionFuncStart(void)
 }
 
 // 0x801336F8
-SYVideoSetup dMNOptionVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMNOptionVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
 // 0x80133714
 SYTaskmanSetup dMNOptionTaskmanSetup =

@@ -68,7 +68,7 @@ Lights1 dMVOpeningStandoffLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF
 Lights1 dMVOpeningStandoffLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x00, 0x14, 0x00);
 
 // 0x80132908
-SYVideoSetup dMVOpeningStandoffVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMVOpeningStandoffVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
 // 0x80132924
 SYTaskmanSetup dMVOpeningStandoffTaskmanSetup =

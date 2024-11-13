@@ -454,7 +454,7 @@ void mvOpeningClashFuncStart(void)
 }
 
 // 0x80132928
-SYVideoSetup dMVOpeningClashVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMVOpeningClashVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
 // 0x80132944
 SYTaskmanSetup dMVOpeningClashTaskmanSetup =

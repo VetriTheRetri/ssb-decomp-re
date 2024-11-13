@@ -55,7 +55,7 @@ FTKeyCommand dMVUnknownMarioInputSeq[/* */] =
 SYColorRGBA dMVUnknownMarioFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
 // 0x8018D5BC
-SYVideoSetup dMVUnknownMarioVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMVUnknownMarioVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
 // 0x8018D5D8
 SYTaskmanSetup dMVUnknownMarioTaskmanSetup =

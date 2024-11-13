@@ -67,7 +67,7 @@ Lights1 dMVOpeningYamabukiLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF
 Lights1 dMVOpeningYamabukiLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x00, 0x14, 0x00);
 
 // 0x801323D8
-SYVideoSetup dMVOpeningYamabukiVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMVOpeningYamabukiVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
 // 0x801323F4
 SYTaskmanSetup dMVOpeningYamabukiTaskmanSetup =

@@ -142,7 +142,7 @@ DBMenuOption dDBBattleMenuOptions[/* */] =
 s32 dDBBattleStartFighterKinds[/* */] = { nFTKindMario, nFTKindDonkey, nFTKindSamus, nFTKindFox };
 
 // 0x80132934
-SYVideoSetup dDBBattleVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dDBBattleVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
 // 0x80132950
 SYTaskmanSetup dDBBattleTaskmanSetup =
@@ -340,7 +340,7 @@ void dbBattleFuncRun(GObj *gobj)
 		{
 			dbBattleStartBattle();
 		}
-		else dbMenuCreateMenu(0x1E, 0x14, 0x55, &dDBBattleMenuOptions, 0xF);
+		else dbMenuCreateMenu(0x1E, 0x14, 0x55, dDBBattleMenuOptions, ARRAY_COUNT(dDBBattleMenuOptions));
 	}
 	for (i = 0; i < ARRAY_COUNT(gSCManagerTransferBattleState.players); i++)
 	{

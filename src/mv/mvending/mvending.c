@@ -94,7 +94,7 @@ Lights1 dMVEndingLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0
 Lights1 dMVEndingLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x00, 0x14, 0x00);
 
 // 0x80132B08
-SYVideoSetup dMVEndingVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMVEndingVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
 // 0x80132B24
 SYTaskmanSetup dMVEndingTaskmanSetup =

@@ -575,7 +575,7 @@ void mvOpeningSectorFuncStart(void)
 }
 
 // 0x8013293C
-SYVideoSetup dMVOpeningSectorVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMVOpeningSectorVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
 // 0x80132958
 SYTaskmanSetup mvOpeningSectorTaskmanSetup =

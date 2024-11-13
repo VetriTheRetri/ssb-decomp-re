@@ -817,7 +817,7 @@ void mnBackupClearFuncStart(void)
 Vec2f dMNBackupClearUnused0x80132FB8[/* */] = { { 193.0F, 110.0F }, { 87.0F, 110.0F } };
 
 // 0x80132FC8
-SYVideoSetup dMNBackupClearVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMNBackupClearVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
 // 0x80132FE4
 SYTaskmanSetup dMNBackupClearTaskmanSetup =

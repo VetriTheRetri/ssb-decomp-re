@@ -1838,10 +1838,10 @@ segments:
     vram: 0x80369240
     exclusive_ram_id: overlay_80369240
     subsegments:
-      - [0x1AB6B0, c, ovl9]
-      - [0x1AC3D0, .data, ovl9]
-      - [0x1AC820, .rodata, ovl9]
-      - { start: auto, type: .bss, vram: 0x8036A400, name: ovl9 }
+      - [0x1AB6B0, c, db/dbmenu]
+      - [0x1AC3D0, .data, db/dbmenu]
+      - [0x1AC820, .rodata, db/dbmenu]
+      - { start: auto, type: .bss, name: db/dbmenu, vram: 0x8036A400 }
 
   - [0x1AC870, bin, relocData]
 

@@ -57,7 +57,7 @@ typedef struct FnBundle
 s32 D_8003B6E0 = 0;
 
 // 0x8003B6E4 - Total number of game updates
-u32 sSYTaskmanUpdateCount = 0;
+u32 dSYTaskmanUpdateCount = 0;
 
 // 0x8003B6E8 - Total number of drawn frames
 u32 dSYTaskmanFrameCount = 0;
@@ -218,7 +218,7 @@ s32 D_80046634;
 s32 D_80046638[2];
 
 // 0x80046640
-s32 sSYTaskmanCount;
+s32 gSYTaskmanTaskCount;
 
 // 0x80046644
 UNUSED s32 unref80046644;
@@ -416,7 +416,7 @@ void func_80004DB4(SYTaskGfx *gfx, s32 gfx_num, SYTaskGfxEnd *gfxend, SYTaskVi *
 {
 	s32 i;
 
-	for (i = 0; i < sSYTaskmanCount; i++)
+	for (i = 0; i < gSYTaskmanTaskCount; i++)
 	{
 		sSYTaskmanGfxBuffersStart[i] = (SYTaskGfx*) ((uintptr_t)gfx + (gfx_num * sizeof(SYTaskGfx)) * i);
 		sSYTaskmanGfxBuffersCurrent[i] = (SYTaskGfx*) ((uintptr_t)gfx + (gfx_num * sizeof(SYTaskGfx)) * i);
@@ -869,7 +869,7 @@ u32 syTaskmanSwitchContext(s32 arg0)
 	}
 	do
 	{
-		for (i = 0; i < sSYTaskmanCount; i++)
+		for (i = 0; i < gSYTaskmanTaskCount; i++)
 		{
 			if (D_80046638[i] == 0)
 			{
@@ -1007,14 +1007,14 @@ void func_80005DA0(FnBundle *arg0)
 
 			arg0->func_update(arg0);
 
-			sSYTaskmanUpdateCount++;
+			dSYTaskmanUpdateCount++;
 			sSYTaskmanUpdateTimeDelta = (osGetCount() - sSYTaskmanTimeStart) / 2971; // what is this constant?
 
 			if (syTaskmanCheckBreakLoop() != FALSE)
 			{
 				break;
 			}
-			if (sSYTaskmanUpdateCount % sSYTaskmanFrameInterval == 0)
+			if (dSYTaskmanUpdateCount % sSYTaskmanFrameInterval == 0)
 			{
 				syTaskmanSwitchContext(0);
 				sSYTaskmanTimeStart = osGetCount();
@@ -1051,7 +1051,7 @@ void func_80005DA0(FnBundle *arg0)
 
 			arg0->func_update(arg0);
 
-			sSYTaskmanUpdateCount++;
+			dSYTaskmanUpdateCount++;
 
 			sSYTaskmanUpdateTimeDelta = (osGetCount() - sSYTaskmanTimeStart) / 2971;
 
@@ -1059,7 +1059,7 @@ void func_80005DA0(FnBundle *arg0)
 			{
 				break;
 			}
-			if ((sSYTaskmanUpdateCount % sSYTaskmanFrameInterval == 0) && (syTaskmanSwitchContext(1) != FALSE))
+			if ((dSYTaskmanUpdateCount % sSYTaskmanFrameInterval == 0) && (syTaskmanSwitchContext(1) != FALSE))
 			{
 				sSYTaskmanTimeStart = osGetCount();
 
@@ -1172,19 +1172,19 @@ void func_80006548(syTaskmanBufferSetup *arg0, void (*arg1)())
 	s32 i;
 	syTaskmanDLBuffer sp44[2][4];
 
-	sSYTaskmanCount = arg0->contexts_num;
+	gSYTaskmanTaskCount = arg0->contexts_num;
 	D_800465F8.unk00 = arg0->unk00;
 	D_800465F8.fn04  = arg0->func_update;
 	D_800465F8.fn0C  = arg0->func_draw;
 
 	func_80004DB4
 	(
-		syTaskmanMalloc(arg0->unk14 * sizeof(DObj) * sSYTaskmanCount, 0x8),
+		syTaskmanMalloc(arg0->unk14 * sizeof(DObj) * gSYTaskmanTaskCount, 0x8),
 		arg0->unk14,
-		syTaskmanMalloc(sizeof(SYTaskGfxEnd) * sSYTaskmanCount, 0x8),
-		syTaskmanMalloc(sizeof(SYTaskVi) * sSYTaskmanCount, 0x8)
+		syTaskmanMalloc(sizeof(SYTaskGfxEnd) * gSYTaskmanTaskCount, 0x8),
+		syTaskmanMalloc(sizeof(SYTaskVi) * gSYTaskmanTaskCount, 0x8)
 	);
-	for (i = 0; i < sSYTaskmanCount; i++)
+	for (i = 0; i < gSYTaskmanTaskCount; i++)
 	{
 		sp44[i][0].start  = syTaskmanMalloc(arg0->dl_buffer0_size, 0x8);
 		sp44[i][0].length = arg0->dl_buffer0_size;
@@ -1197,7 +1197,7 @@ void func_80006548(syTaskmanBufferSetup *arg0, void (*arg1)())
 	}
 	syTaskmanSetDLBuffer(sp44);
 
-	for (i = 0; i < sSYTaskmanCount; i++)
+	for (i = 0; i < gSYTaskmanTaskCount; i++)
 	{
 		syMallocInit(&gSYTaskmanGraphicsHeap, 0x10002, syTaskmanMalloc(arg0->graphics_arena_size, 0x8), arg0->graphics_arena_size);
 		sSYTaskmanDefaultGraphicsHeap[i].id    = gSYTaskmanGraphicsHeap.id;
@@ -1216,7 +1216,7 @@ void func_80006548(syTaskmanBufferSetup *arg0, void (*arg1)())
 	D_80046668 = arg0->func_controller;
 	enable_auto_contread((uintptr_t)schedule_contread != (uintptr_t)D_80046668 ? TRUE : FALSE);
 
-	sSYTaskmanUpdateCount = dSYTaskmanFrameCount = 0;
+	dSYTaskmanUpdateCount = dSYTaskmanFrameCount = 0;
 
 	if (arg1 != NULL)
 		arg1();
@@ -1326,7 +1326,7 @@ void unref_80006AF8()
 void unref_80006B24(s32 arg0)
 {
 	if ((arg0 == 1) || (arg0 == 2))
-		sSYTaskmanCount = arg0;
+		gSYTaskmanTaskCount = arg0;
 }
 
 // 0x80006B44

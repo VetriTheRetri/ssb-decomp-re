@@ -802,7 +802,7 @@ unref80045468 = 0x80045468;
 gSYControllerMain = 0x80045470; //size:0xA
 
 D_8003B6E0 = 0x8003B6E0;
-sSYTaskmanUpdateCount = 0x8003B6E4;
+dSYTaskmanUpdateCount = 0x8003B6E4;
 dSYTaskmanFrameCount = 0x8003B6E8;
 D_8003B6EC = 0x8003B6EC;
 unref80045480 = 0x80045480;
@@ -847,7 +847,7 @@ sSYTaskmanRdpResetDL = 0x8004662C;
 gSYTaskmanTaskID = 0x80046630;
 D_80046634 = 0x80046634;
 D_80046638 = 0x80046638;
-sSYTaskmanCount = 0x80046640;
+gSYTaskmanTaskCount = 0x80046640;
 unref80046644 = 0x80046644;
 sSYTaskmanDefaultGraphicsHeap = 0x80046648; //size:0x20
 D_80046668 = 0x80046668;

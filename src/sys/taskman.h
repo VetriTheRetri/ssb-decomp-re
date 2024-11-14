@@ -61,7 +61,8 @@ typedef struct SYTaskmanSetup
 
 } SYTaskmanSetup; // size >= 0x8C
 
-extern u32 sSYTaskmanUpdateCount;
+extern s32 gSYTaskmanTaskCount;
+extern u32 dSYTaskmanUpdateCount;
 extern u32 dSYTaskmanFrameCount;
 extern Gfx *gSYTaskmanDLHeads[4];
 extern Gfx *sSYTaskmanDLBranches[4];

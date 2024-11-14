@@ -925,13 +925,13 @@ void syErrorFileLoaderThread8(void *arg)
 
         if (dSYErrorIsScreenActive == FALSE)
         {
-            if (sp50 == sSYTaskmanUpdateCount)
+            if (sp50 == dSYTaskmanUpdateCount)
             {
                 count++;
             }
             else count = 0;
 
-            sp50 = sSYTaskmanUpdateCount;
+            sp50 = dSYTaskmanUpdateCount;
 
             if (count >= 300)
             {

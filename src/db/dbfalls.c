@@ -3,9 +3,6 @@
 #include <sc/scene.h>
 #include <sys/video.h>
 
-extern void dbMenuCreateMenu(s32, s32, s32, void*, s32);
-extern dbMenuDestroyMenu();
-
 // // // // // // // // // // // //
 //                               //
 //   GLOBAL / STATIC VARIABLES   //
@@ -134,7 +131,7 @@ void dbFallsFuncRun(GObj *gobj)
 {
 	if (gSYControllerMain.button_tap & START_BUTTON)
 	{
-		dbMenuCreateMenu(0x32, 0x32, 0x64, dDBFallsMenuOptions, ARRAY_COUNT(dDBFallsMenuOptions));
+		dbMenuMakeMenu(0x32, 0x32, 0x64, dDBFallsMenuOptions, ARRAY_COUNT(dDBFallsMenuOptions));
 	}
 	if (dDBFallsIsExitInterrupt != FALSE)
 	{
@@ -190,7 +187,7 @@ void dbFallsFuncStart(void)
 	gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	dbFallsMakeCamera(NULL);
 	dbMenuInitMenu();
-	dbMenuCreateMenu(0x32, 0x32, 0x64, dDBFallsMenuOptions, ARRAY_COUNT(dDBFallsMenuOptions));
+	dbMenuMakeMenu(0x32, 0x32, 0x64, dDBFallsMenuOptions, ARRAY_COUNT(dDBFallsMenuOptions));
 }
 
 // 0x800D6688

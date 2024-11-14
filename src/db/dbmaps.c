@@ -4,12 +4,6 @@
 #include <sys/video.h>
 #include <sys/thread6.h>
 
-// ovl9
-extern sb32 gDBMenuIsMenuOpen;
-
-extern void dbMenuCreateMenu(s32, s32, s32, DBMenuOption*, s32);
-extern void dbMenuDestroyMenu();
-
 // // // // // // // // // // // //
 //                               //
 //   GLOBAL / STATIC VARIABLES   //
@@ -172,7 +166,7 @@ void dbMapsFuncRun(GObj *gobj)
 		{
 			dbMapsExitFuncMenu();
 		}
-		else dbMenuCreateMenu(0x32, 0x32, 0x64, dDBMapsMenuOptions, ARRAY_COUNT(dDBMapsMenuOptions));
+		else dbMenuMakeMenu(0x32, 0x32, 0x64, dDBMapsMenuOptions, ARRAY_COUNT(dDBMapsMenuOptions));
 	}
 	if (dDBMapsIsExit != FALSE)
 	{
@@ -199,7 +193,7 @@ void dbMapsFuncStart(void)
 	gcMakeGObjSPAfter(0, dbMapsFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	dbMenuInitMenu();
-	dbMenuCreateMenu(0x32, 0x32, 0x64, dDBMapsMenuOptions, ARRAY_COUNT(dDBMapsMenuOptions));
+	dbMenuMakeMenu(0x32, 0x32, 0x64, dDBMapsMenuOptions, ARRAY_COUNT(dDBMapsMenuOptions));
 }
 
 // 0x800D6620

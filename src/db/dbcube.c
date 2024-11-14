@@ -8,9 +8,6 @@
 
 extern void* func_800269C0_275C0(u16);
 
-extern void dbMenuCreateMenu(s32, s32, s32, void*, s32);
-extern dbMenuDestroyMenu();
-
 // // // // // // // // // // // //
 //                               //
 //   GLOBAL / STATIC VARIABLES   //
@@ -458,7 +455,7 @@ void dbCubeFuncRun(GObj *gobj)
 {
 	if (gSYControllerMain.button_tap & START_BUTTON)
 	{
-		dbMenuCreateMenu(0x32, 0x32, 0x50, dDBCubeMenuOptions, ARRAY_COUNT(dDBCubeMenuOptions));
+		dbMenuMakeMenu(0x32, 0x32, 0x50, dDBCubeMenuOptions, ARRAY_COUNT(dDBCubeMenuOptions));
 	}
 	if (gSYControllerMain.button_tap & Z_TRIG)
 	{

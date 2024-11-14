@@ -4,10 +4,6 @@
 #include <sc/scene.h>
 #include <sys/video.h>
 
-extern sb32 gDBMenuIsMenuOpen; // isMenuShown
-extern void dbMenuCreateMenu(s32, s32, s32, void*, s32);
-extern dbMenuDestroyMenu();
-
 // // // // // // // // // // // //
 //                               //
 //   GLOBAL / STATIC VARIABLES   //
@@ -340,7 +336,7 @@ void dbBattleFuncRun(GObj *gobj)
 		{
 			dbBattleStartBattle();
 		}
-		else dbMenuCreateMenu(0x1E, 0x14, 0x55, dDBBattleMenuOptions, ARRAY_COUNT(dDBBattleMenuOptions));
+		else dbMenuMakeMenu(0x1E, 0x14, 0x55, dDBBattleMenuOptions, ARRAY_COUNT(dDBBattleMenuOptions));
 	}
 	for (i = 0; i < ARRAY_COUNT(gSCManagerTransferBattleState.players); i++)
 	{
@@ -537,7 +533,7 @@ void dbBattleFuncStart(void)
 		sDBBattleFighters[i].costume = gSCManagerTransferBattleState.players[i].costume;
 	}
 	dbMenuInitMenu();
-	dbMenuCreateMenu(0x1E, 0x14, 0x55, &dDBBattleMenuOptions, 0xF);
+	dbMenuMakeMenu(0x1E, 0x14, 0x55, &dDBBattleMenuOptions, 0xF);
 	scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 }
 

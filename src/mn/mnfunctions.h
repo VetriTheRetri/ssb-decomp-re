@@ -13,7 +13,7 @@
 #include <mn/mncommon/mnmodeselect.h>
 #include <mn/mncommon/mnmessage.h>
 #include <mn/mncommon/mncongra.h>
-#include <mn/mncommon/mnn64.h>
+#include <mn/mncommon/mnstartup.h>
 
 #include <mn/mnoption/mnoption.h>
 #include <mn/mnoption/mnscreenadjust.h>

@@ -28,7 +28,7 @@ s32 sMVOpeningKirbyTotalTimeTics;
 GObj *sMVOpeningKirbyNameGObj;
 
 // 0x8018E230
-GObj *sMVOpeningKirbyStageFighterGObj;
+GObj *sMVOpeningKirbyFighterGObj;
 
 // 0x8018E234
 s32 sMVOpeningKirbyPad0x8018E234;
@@ -76,7 +76,7 @@ CObjDesc dMVOpeningKirbyStartCObjDesc = { { 0.0F, 400.0F, 2000.0F }, { 0.0F, 400
 CObjDesc dMVOpeningKirbyEndCObjDesc = { { 1100.0F, 400.0F, 1800.0F }, { 1100.0F, 400.0F, 0.0F }, 0.0F };
 
 // 0x8018E0E8
-FTKeyCommand dMVOpeningKirbyInputSeq[/* */] =
+FTKeyEvent dMVOpeningKirbyKeyEvents[/* */] =
 {
 	FTKEY_EVENT_STICK(45, I_CONTROLLER_RANGE_MAX, 1),   // 2001, 2D50
 	FTKEY_EVENT_BUTTON(A_BUTTON, 1),                    // 1001, 8000
@@ -210,7 +210,7 @@ void mvOpeningKirbyMakeMotionCamera(Vec3f vec)
 	dMVOpeningKirbyStartAdjustedCObjDesc = dMVOpeningKirbyStartCObjDesc;
 	dMVOpeningKirbyEndAdjustedCObjDesc = dMVOpeningKirbyEndCObjDesc;
 
-	sMVOpeningKirbyMotionCameraGObj = func_ovl2_8010DB2C(0);
+	sMVOpeningKirbyMotionCameraGObj = func_ovl2_8010DB2C(NULL);
 	cobj = CObjGetStruct(sMVOpeningKirbyMotionCameraGObj);
 
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 210.0F, 230.0F);
@@ -255,7 +255,7 @@ void mvOpeningKirbyMakeMotionWindow(void)
 	grWallpaperMakeDecideKind();
 	grCommonSetupInitAll();
 
-	if (mpCollisionGetMapObjCountKind(nMPMapObjKindMovieSpawn1) != 1)
+	if (mpCollisionGetMapObjCountKind(nMPMapObjKindMovieStart1) != 1)
 	{
 		while (TRUE)
 		{
@@ -263,7 +263,7 @@ void mvOpeningKirbyMakeMotionWindow(void)
 			scManagerRunPrintGObjStatus();
 		}
 	}
-	mpCollisionGetMapObjIDsKind(nMPMapObjKindMovieSpawn1, &pos_ids);
+	mpCollisionGetMapObjIDsKind(nMPMapObjKindMovieStart1, &pos_ids);
 	mpCollisionGetMapObjPositionID(pos_ids, &pos);
 
 	pos.y += 30.0F;
@@ -299,10 +299,10 @@ void mvOpeningKirbyMakeMotionWindow(void)
 		ft_desc.controller = &gSYControllerDevices[i];
 		ft_desc.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[i].fkind);
 
-		sMVOpeningKirbyStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&ft_desc);
+		sMVOpeningKirbyFighterGObj = fighter_gobj = ftManagerMakeFighter(&ft_desc);
 
 		ftParamInitPlayerBattleStats(i, fighter_gobj);
-		ftParamSetKey(fighter_gobj, dMVOpeningKirbyInputSeq);
+		ftParamSetKey(fighter_gobj, dMVOpeningKirbyKeyEvents);
 	}
 }
 
@@ -499,7 +499,7 @@ void mvOpeningKirbyFuncStart(void)
 	sMVOpeningKirbyBattleState = dSCManagerDefaultBattleState;
 	gSCManagerBattleState = &sMVOpeningKirbyBattleState;
 
-	gSCManagerBattleState->game_type = nSCBattleGameTypeOpening;
+	gSCManagerBattleState->game_type = nSCBattleGameTypeMovie;
 
 	gSCManagerBattleState->gkind = nGRKindPupupu;
 	gSCManagerBattleState->pl_count = 1;
@@ -553,8 +553,8 @@ SYTaskmanSetup dMVOpeningKirbyTaskmanSetup =
     // Task Manager Buffer Setup
     {
         0,                              // ???
-        gcRunAll,                  // Update function
-        scManagerFuncDraw,                  // Frame draw function
+        gcRunAll,                       // Update function
+        scManagerFuncDraw,              // Frame draw function
         &ovl43_BSS_END,                 // Allocatable memory pool start
         0,                              // Allocatable memory pool size
         1,                              // ???
@@ -587,7 +587,7 @@ SYTaskmanSetup dMVOpeningKirbyTaskmanSetup =
     0,                                  // Number of SObjs
     sizeof(SObj),                       // SObj size
     0,                                  // Number of Cameras
-    sizeof(CObj),                     // Camera size
+    sizeof(CObj),                       // Camera size
     
     mvOpeningKirbyFuncStart            	// Task start function
 };

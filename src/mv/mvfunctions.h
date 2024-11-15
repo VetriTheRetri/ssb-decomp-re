@@ -3,6 +3,7 @@
 
 #include <mv/mvunknownmario.h>
 
+#include <mv/mvopening/mvopeningpikachu.h>
 #include <mv/mvopening/mvopeningkirby.h>
 #include <mv/mvopening/mvopeningrun.h>
 #include <mv/mvopening/mvopeningyoster.h>

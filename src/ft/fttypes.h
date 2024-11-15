@@ -863,7 +863,7 @@ struct FTComputerInput
     Vec2b stick_range; // CPU stick input?
 };
 
-union FTKeyCommand
+union FTKeyEvent
 {
     u16 halfword;
 
@@ -880,7 +880,7 @@ union FTKeyCommand
 struct FTKey
 {
     s32 input_wait;
-    FTKeyCommand *input_seq;
+    FTKeyEvent *script;
 };
 
 struct FTAttributes

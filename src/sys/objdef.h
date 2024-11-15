@@ -60,39 +60,43 @@ typedef enum GObjEventKind
 
 typedef enum GObjLinkID
 {
+    // These assume that the scene has ovl3 loaded.
+    // Scenes without ovl3 seem to not follow any consistent link indexing convention.
+
     // GObj link indexes with ID 1
-    nGCCommonLinkIDGround = 1,         // ID 1: Stage object
+    nGCCommonLinkIDGround = 1,          // ID 1: Stage object
 
     nGCCommonLinkIDGroundDisplay = 2,   // ID 2: Stage renderer?
-    nGCCommonLinkIDItemActor = 2,      // ID 2: Item spawn actor
-    nGCCommonLinkID02 = 2,             // ID 2: ???
+    nGCCommonLinkIDItemActor = 2,       // ID 2: Item spawn actor
+    nGCCommonLinkID02 = 2,              // ID 2: ???
 
     // GObj link indexes with ID 3
-    nGCCommonLinkIDFighter = 3,        // ID 3: Fighter object
-    nGCCommonLinkIDCreditsName = 3,    // ID 3: Credits staff roll name
+    nGCCommonLinkIDFighter = 3,         // ID 3: Fighter object
+    nGCCommonLinkIDCreditsName = 3,     // ID 3: Credits staff roll name
 
     // GObj link indexes with ID 4
-    nGCCommonLinkIDItem = 4,           // ID 4: Item object
-    nGCCommonLinkIDCreditsJob = 4,     // ID 4: Credits staff roll job
+    nGCCommonLinkIDItem = 4,            // ID 4: Item object
+    nGCCommonLinkIDCreditsJob = 4,      // ID 4: Credits staff roll job
 
-    nGCCommonLinkIDWeapon = 5,         // ID 5: Weapon (projectile) object
-    nGCCommonLinkIDEffect,             // ID 6: Effect type 1 object (other ID is 8 but idk what it does)
-    nGCCommonLinkIDSpecialEffect = 8,  // ID 8: Effect type 2 object
-    nGCCommonLinkIDHighlight = 9,      // ID 9: Credits shootout rectangles that zoom in on crosshair
-    nGCCommonLinkIDCamera = 9,         // ID 9: Cameras?
-    nGCCommonLinkIDInterfaceActor = 10,// ID 10: Traffic lamp on match start
-    nGCCommonLinkIDInterface = 11,     // ID 11: HUD elements object
-    nGCCommonLinkIDMagnify = 12,       // ID 12: HUD magnifying glass
+    nGCCommonLinkIDWeapon = 5,          // ID 5: Weapon (projectile) object
+    nGCCommonLinkIDEffect,              // ID 6: Effect type 1 object (other ID is 8 but idk what it does)
+    nGCCommonLinkIDSpecialEffect = 8,   // ID 8: Effect type 2 object
+    nGCCommonLinkIDHighlight = 9,       // ID 9: Credits shootout rectangles that zoom in on crosshair
+    nGCCommonLinkIDCamera = 9,          // ID 9: Cameras?
+    nGCCommonLinkIDInterfaceActor = 10, // ID 10: Traffic lamp on match start
+    nGCCommonLinkIDInterface = 11,      // ID 11: HUD elements object
+    nGCCommonLinkIDMagnify = 12,        // ID 12: HUD magnifying glass
 
-    nGCCommonLinkIDMovie = 13,         // ID 13: Movie?
-    nGCCommonLinkIDRumble = 13,        // ID 13: Rumble object?
-    nGCCommonLinkIDWallpaper = 13,     // ID 13: Stage background object?
-    nGCCommonLinkIDWallpaperEffect=13, // ID 13: Stage background effect
-    nGCCommonLinkIDFighterParts = 13,  // ID 13: FighterParts
-    nGCCommonLinkIDShadow = 13,        // ID 13: Fighter shadows
-    nGCCommonLinkIDTransition = 13,    // ID 13: Screen fadeout transition
+    nGCCommonLinkIDMovie = 13,          // ID 13: Movie?
+    nGCCommonLinkIDRumble = 13,         // ID 13: Rumble object?
+    nGCCommonLinkIDWallpaper = 13,      // ID 13: Stage background object?
+    nGCCommonLinkIDWallpaperEffect=13,  // ID 13: Stage background effect
+    nGCCommonLinkIDFighterParts = 13,   // ID 13: FighterParts
+    nGCCommonLinkIDShadow = 13,         // ID 13: Fighter shadows
+    nGCCommonLinkIDTransition = 13,     // ID 13: Screen fadeout transition
 
-    nGCCommonLinkIDPauseMenu           // ID 14: Pause menu object?
+    nGCCommonLinkIDPauseMenu = 14,      // ID 14: Pause menu object?
+    nGCCommonLinkIDSceneCamera = 16     // ID 16: Scene camera?
 
 } GObjLinkID;
 

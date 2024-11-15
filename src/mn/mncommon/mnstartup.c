@@ -1,5 +1,5 @@
 #include <mn/menu.h>
-#include <sc/scene.h> // includes sys/obj.h
+#include <sc/scene.h>
 #include <sys/thread6.h>
 #include <sys/video.h>
 
@@ -20,16 +20,16 @@ extern uintptr_t D_NF_000000C2;
 // // // // // // // // // // // //
 
 // 0x80132040
-s32 sMNN64Pad0x80132040[2];
+s32 sMNStartupPad0x80132040[2];
 
 // 0x80132048
-LBFileNode sMNN64StatusBuffer[5];
+LBFileNode sMNStartupStatusBuffer[5];
 
 // 0x80132070 - Delay frames before N64 logo can be skipped
-s32 sMNN64SkipAllowWait;
+s32 sMNStartupSkipAllowWait;
 
 // 0x80132074 - if TRUE, proceed to the opening movie
-sb32 sMNN64IsProceedOpening;
+sb32 sMNStartupIsProceedOpening;
 
 // // // // // // // // // // // //
 //                               //
@@ -38,27 +38,27 @@ sb32 sMNN64IsProceedOpening;
 // // // // // // // // // // // //
 
 // 0x80131F50
-SYColorRGBA dMNN64EndFadeColor = { 0x00, 0x00, 0x00, 0xFF };
+SYColorRGBA dMNStartupEndFadeColor = { 0x00, 0x00, 0x00, 0xFF };
 
 // 0x80131F54
-SYColorRGBA dMNN64StartFadeColor = { 0x00, 0x00, 0x00, 0x00 };
+SYColorRGBA dMNStartupStartFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
 // 0x80131F58
-Lights1 dMNN64Lights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x0A, 0x32, 0x32);
+Lights1 dMNStartupLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x0A, 0x32, 0x32);
 
 // 0x80131F70
-Gfx dMNN64DisplayList[/* */] =
+Gfx dMNStartupDisplayList[/* */] =
 {
 	gsSPSetGeometryMode(G_LIGHTING),
-	gsSPSetLights1(dMNN64Lights1),
+	gsSPSetLights1(dMNStartupLights1),
 	gsSPEndDisplayList()
 };
 
 // 0x80131F98
-SYVideoSetup dMNN64VideoSetup = SYVIDEO_SETUP_DEFAULT();
+SYVideoSetup dMNStartupVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
 // 0x80131FB4
-SYTaskmanSetup dMNN64TaskmanSetup =
+SYTaskmanSetup dMNStartupTaskmanSetup =
 {
     // Task Manager Buffer Setup
     {
@@ -76,7 +76,7 @@ SYTaskmanSetup dMNN64TaskmanSetup =
         0x2800,                     // Graphics Heap Size
         2,                          // ???
         0xC000,                     // RDP Output Buffer Size
-        mnN64FuncLights,         	// Pre-render function
+        mnStartupFuncLights,        // Pre-render function
         update_contdata,            // Controller I/O function
     },
 
@@ -99,7 +99,7 @@ SYTaskmanSetup dMNN64TaskmanSetup =
     0,                              // Number of Cameras
     sizeof(CObj),                 	// CObj size
     
-    mnN64FuncStart               	// Task start function
+    mnStartupFuncStart              // Task start function
 };
 
 // // // // // // // // // // // //
@@ -109,7 +109,7 @@ SYTaskmanSetup dMNN64TaskmanSetup =
 // // // // // // // // // // // //
 
 // 0x80131B00
-void mnN64LogoThreadUpdate(GObj *gobj)
+void mnStartupLogoThreadUpdate(GObj *gobj)
 {
 	f32 step;
 	s32 i;
@@ -138,7 +138,7 @@ void mnN64LogoThreadUpdate(GObj *gobj)
 		gcStopCurrentGObjThread(1);
 		i++;
 	}
-	color = dMNN64EndFadeColor;
+	color = dMNStartupEndFadeColor;
 
 	lbFadeMakeActor(nGCCommonKindTransition, nGCCommonLinkIDTransition, 10, &color, 10, FALSE, NULL);
 
@@ -149,7 +149,7 @@ void mnN64LogoThreadUpdate(GObj *gobj)
 		gcStopCurrentGObjThread(1);
 		i++;
 	}
-	sMNN64IsProceedOpening = TRUE;
+	sMNStartupIsProceedOpening = TRUE;
 
 	while (TRUE)
 	{
@@ -158,19 +158,19 @@ void mnN64LogoThreadUpdate(GObj *gobj)
 }
 
 // 0x80131C20
-void mnN64ActorFuncRun(GObj *gobj)
+void mnStartupActorFuncRun(GObj *gobj)
 {
-	if (sMNN64SkipAllowWait != 0)
+	if (sMNStartupSkipAllowWait != 0)
 	{
-		sMNN64SkipAllowWait--;
+		sMNStartupSkipAllowWait--;
 	}
-	if ((sMNN64SkipAllowWait == 0) && (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE))
+	if ((sMNStartupSkipAllowWait == 0) && (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE))
 	{
 		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 		gSCManagerSceneData.scene_curr = nSCKindTitle;
 		syTaskmanSetLoadScene();
 	}
-	else if (sMNN64IsProceedOpening != FALSE)
+	else if (sMNStartupIsProceedOpening != FALSE)
 	{
 		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 		gSCManagerSceneData.scene_curr = nSCKindOpeningRoom;
@@ -179,7 +179,7 @@ void mnN64ActorFuncRun(GObj *gobj)
 }
 
 // 0x80131CB8
-void mnN64FuncStart(void)
+void mnStartupFuncStart(void)
 {
 	LBRelocSetup rl_setup;
 	CObj *cobj;
@@ -188,21 +188,21 @@ void mnN64FuncStart(void)
 	Sprite *sprite;
 	SYColorRGBA color;
 
-	sMNN64SkipAllowWait = 8;
-	sMNN64IsProceedOpening = FALSE;
+	sMNStartupSkipAllowWait = 8;
+	sMNStartupIsProceedOpening = FALSE;
 
 	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
 	rl_setup.table_files_num = (u32)&lLBRelocTableFilesNum;
 	rl_setup.file_heap = NULL;
 	rl_setup.file_heap_size = 0;
-	rl_setup.status_buffer = sMNN64StatusBuffer;
-	rl_setup.status_buffer_size = ARRAY_COUNT(sMNN64StatusBuffer);
+	rl_setup.status_buffer = sMNStartupStatusBuffer;
+	rl_setup.status_buffer_size = ARRAY_COUNT(sMNStartupStatusBuffer);
 	rl_setup.force_status_buffer = NULL;
 	rl_setup.force_status_buffer_size = 0;
 
 	lbRelocInitSetup(&rl_setup);
 
-	gcMakeGObjSPAfter(0, mnN64ActorFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
+	gcMakeGObjSPAfter(0, mnStartupActorFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 
 	cobj = CObjGetStruct
@@ -228,7 +228,7 @@ void mnN64FuncStart(void)
 
 	gobj = gcMakeGObjSPAfter(nGCCommonKindWallpaper, NULL, nGCCommonLinkIDWallpaper, GOBJ_PRIORITY_DEFAULT);
 
-	gcAddGObjProcess(gobj, mnN64LogoThreadUpdate, nGCProcessKindThread, 1);
+	gcAddGObjProcess(gobj, mnStartupLogoThreadUpdate, nGCProcessKindThread, 1);
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	sprite = lbRelocGetFileData
@@ -246,7 +246,7 @@ void mnN64FuncStart(void)
 				0x10
 			)
 		),
-		&lMNN64LogoSprite
+		&lMNStartupN64Sprite
 	);
 	sobj = lbCommonMakeSObjForGObj(gobj, sprite);
 
@@ -255,25 +255,25 @@ void mnN64FuncStart(void)
 	sobj->pos.x = 96.0F;
 	sobj->pos.y = 220.0F;
 
-	color = dMNN64StartFadeColor;
+	color = dMNStartupStartFadeColor;
 
 	lbFadeMakeActor(nGCCommonKindTransition, nGCCommonLinkIDTransition, 10, &color, 16, TRUE, NULL);
 }
 
 // 0x80131ECC
-void mnN64FuncLights(Gfx **dls)
+void mnStartupFuncLights(Gfx **dls)
 {
-	gSPDisplayList(dls[0]++, dMNN64DisplayList);
+	gSPDisplayList(dls[0]++, dMNStartupDisplayList);
 }
 
 // 0x80131EF0
-void mnN64StartScene(void)
+void mnStartupStartScene(void)
 {
 	auStopBGM();
 	
-	dMNN64VideoSetup.zbuffer = syVideoGetZBuffer(6400);
-	syVideoInit(&dMNN64VideoSetup);
+	dMNStartupVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&dMNStartupVideoSetup);
 
-	dMNN64TaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl58_BSS_END);
-	syTaskmanRun(&dMNN64TaskmanSetup);
+	dMNStartupTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl58_BSS_END);
+	syTaskmanRun(&dMNStartupTaskmanSetup);
 }

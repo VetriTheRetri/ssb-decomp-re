@@ -364,7 +364,7 @@ SYTaskmanSetup dMVOpeningYosterTaskmanSetup =
     // Task Manager Buffer Setup
     {
         0,                              // ???
-        gcRunAll,                  // Update function
+        gcRunAll,                       // Update function
         gcDrawAll,                  // Frame draw function
         &ovl45_BSS_END,                 // Allocatable memory pool start
         0,                              // Allocatable memory pool size
@@ -398,7 +398,7 @@ SYTaskmanSetup dMVOpeningYosterTaskmanSetup =
     128,                                // Number of SObjs
     sizeof(SObj),                       // SObj size
     16,                                 // Number of Cameras
-    sizeof(CObj),                     // Camera size
+    sizeof(CObj),                       // Camera size
     
     mvOpeningYosterFuncStart            // Task start function
 };

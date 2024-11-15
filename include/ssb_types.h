@@ -11,8 +11,6 @@ typedef signed int intptr_t;
 #include <stdint.h>
 #endif /* __sgi */
 
-// until there's a better place to put the math types...
-typedef f32 Mtx4f[4][4];
 typedef f32 Mtx44f[4][4]; // Same thing as above but I'm terrible at matrices and I need it to be extra specific
 
 typedef struct Vec3h

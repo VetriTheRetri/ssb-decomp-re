@@ -549,7 +549,7 @@ sb32 gmStaffrollGetPauseStatusResume(void)
 		{
 			gcResumeGObjProcessAll(sGMStaffrollScrollGObj);
 		}
-		name_gobj = gGCCommonLinks[nGCCommonLinkIDCreditsName];
+		name_gobj = gGCCommonLinks[3];
 
 		while (name_gobj != NULL)
 		{
@@ -557,7 +557,7 @@ sb32 gmStaffrollGetPauseStatusResume(void)
 
 			name_gobj = name_gobj->link_next;
 		}
-		job_gobj = gGCCommonLinks[nGCCommonLinkIDCreditsJob];
+		job_gobj = gGCCommonLinks[4];
 
 		while (job_gobj != NULL)
 		{
@@ -1245,7 +1245,7 @@ void func_ovl59_8013330C(void)
 
 	func_ovl59_80131C88(sGMStaffrollCamera);
 
-	gobj = gGCCommonLinks[nGCCommonLinkIDCreditsName];
+	gobj = gGCCommonLinks[3];
 
 	if (gobj != NULL)
 	{
@@ -1284,7 +1284,7 @@ sb32 gmStaffrollGetPauseStatusHighlight(void)
 			{
 				gcPauseGObjProcessAll(sGMStaffrollScrollGObj);
 			}
-			gobj = gGCCommonLinks[nGCCommonLinkIDCreditsName];
+			gobj = gGCCommonLinks[3];
 
 			while (gobj != NULL)
 			{
@@ -1292,7 +1292,7 @@ sb32 gmStaffrollGetPauseStatusHighlight(void)
 
 				gobj = gobj->link_next;
 			}
-			gobj = gGCCommonLinks[nGCCommonLinkIDCreditsJob];
+			gobj = gGCCommonLinks[4];
 
 			while (gobj != NULL)
 			{
@@ -1432,7 +1432,7 @@ void GMStaffrollJobAndNameThreadUpdate(GObj *gobj)
 // 0x80133854
 void GMStaffrollJobFuncDisplay(GObj *gobj)
 {
-	if (gobj == gGCCommonLinks[nGCCommonLinkIDCreditsJob])
+	if (gobj == gGCCommonLinks[4])
 	{
 		gSPTexture(gSYTaskmanDLHeads[0]++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
 		gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
@@ -1446,7 +1446,7 @@ void GMStaffrollJobFuncDisplay(GObj *gobj)
 // 0x80133930
 void GMStaffrollNameFuncDisplay(GObj *gobj)
 {
-	if (gobj == gGCCommonLinks[nGCCommonLinkIDCreditsName])
+	if (gobj == gGCCommonLinks[3])
 	{
 		gSPTexture(gSYTaskmanDLHeads[0]++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
 		gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
@@ -1622,7 +1622,7 @@ GObj* gmStaffrollMakeJobGObj(GMStaffrollJob *job)
 
 	wbase = 0.0F;
 
-	gobj = gcMakeGObjSPAfter(1, NULL, nGCCommonLinkIDCreditsJob, GOBJ_PRIORITY_DEFAULT);
+	gobj = gcMakeGObjSPAfter(1, NULL, 4, GOBJ_PRIORITY_DEFAULT);
 
 	gcAddGObjDisplay(gobj, GMStaffrollJobFuncDisplay, 2, GOBJ_PRIORITY_DEFAULT, ~0);
 
@@ -1659,7 +1659,7 @@ GObj* gmStaffrollMakeNameGObjAndDObjs(void)
 
 	name_character_id = -1;
 
-	gobj = gcMakeGObjSPAfter(1, NULL, nGCCommonLinkIDCreditsName, GOBJ_PRIORITY_DEFAULT);
+	gobj = gcMakeGObjSPAfter(1, NULL, 3, GOBJ_PRIORITY_DEFAULT);
 
 	gcAddGObjDisplay(gobj, GMStaffrollNameFuncDisplay, 1, GOBJ_PRIORITY_DEFAULT, ~0);
 

@@ -583,7 +583,7 @@ SYTaskmanSetup mvOpeningSectorTaskmanSetup =
     // Task Manager Buffer Setup
     {
         0,                              // ???
-        gcRunAll,                  // Update function
+        gcRunAll,                       // Update function
         gcDrawAll,                  // Frame draw function
         &ovl50_BSS_END,                 // Allocatable memory pool start
         0,                              // Allocatable memory pool size
@@ -617,7 +617,7 @@ SYTaskmanSetup mvOpeningSectorTaskmanSetup =
     0,                                  // Number of SObjs
     sizeof(SObj),                       // SObj size
     0,                                  // Number of Cameras
-    sizeof(CObj),                     // Camera size
+    sizeof(CObj),                       // Camera size
     
     mvOpeningSectorFuncStart            // Task start function
 };

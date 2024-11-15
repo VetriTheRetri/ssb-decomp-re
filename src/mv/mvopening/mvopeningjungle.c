@@ -47,10 +47,10 @@ GObj* sMVOpeningJungleStageCameraGObj;
 s32 sMVOpeningJunglePad0x8018DA5C[2];
 
 // 0x8018DA68
-CObjDesc sMVOpeningJungleUnusedCObjDescAdjustedStart;
+CObjDesc sMVOpeningJungleUnusedAdjustedStartCObjDesc;
 
 // 0x8018DA88
-CObjDesc sMVOpeningJungleUnusedCObjDescAdjustedEnd;
+CObjDesc sMVOpeningJungleUnusedAdjustedEndCObjDesc;
 
 // 0x8018DAA8
 LBFileNode sMVOpeningJungleStatusBuffer[48];
@@ -97,7 +97,7 @@ CObjDesc dMVOpeningJungleCObjDescEnd =
 };
 
 // 0x8018D8A8
-FTKeyCommand dMVOpeningJungleDonkeyInputSeq[/* */] =
+FTKeyEvent dMVOpeningJungleDonkeyKeyEvents[/* */] =
 {
     FTKEY_EVENT_STICK(0, -I_CONTROLLER_RANGE_MAX, 0),   // 0x2000, 0x00B0
     FTKEY_EVENT_BUTTON(B_BUTTON, 1),                    // 0x1001, 0x4000
@@ -120,7 +120,7 @@ FTKeyCommand dMVOpeningJungleDonkeyInputSeq[/* */] =
 };
 
 // 0x8018D8F0
-FTKeyCommand dMVOpeningJungleSamusInputSeq[/* */] =
+FTKeyEvent dMVOpeningJungleSamusKeyEvents[/* */] =
 {
     FTKEY_EVENT_STICK(-I_CONTROLLER_RANGE_MAX, 0, 20),  // 0x2014, 0xB000
     FTKEY_EVENT_STICK(0, 0, 75),                        // 0x204B, 0x0000
@@ -153,8 +153,8 @@ SYTaskmanSetup dMVOpeningJungleTaskmanSetup =
     // Task Manager Buffer Setup
     {
         0,                              // ???
-        gcRunAll,                  // Update function
-        scManagerFuncDraw,                  // Frame draw function
+        gcRunAll,                       // Update function
+        scManagerFuncDraw,              // Frame draw function
         &ovl51_BSS_END,                 // Allocatable memory pool start
         0,                              // Allocatable memory pool size
         1,                              // ???
@@ -187,7 +187,7 @@ SYTaskmanSetup dMVOpeningJungleTaskmanSetup =
     0,                                  // Number of SObjs
     sizeof(SObj),                       // SObj size
     0,                                  // Number of Cameras
-    sizeof(CObj),                     // Camera size
+    sizeof(CObj),                       // Camera size
     
     mvOpeningJungleFuncStart            // Task start function
 };
@@ -241,8 +241,8 @@ void mvOpeningJungleMakeGroundViewport(Vec3f unused)
 {
     CObj *cobj;
 
-    sMVOpeningJungleUnusedCObjDescAdjustedStart = dMVOpeningJungleCObjDescStart;
-    sMVOpeningJungleUnusedCObjDescAdjustedEnd = dMVOpeningJungleCObjDescEnd;
+    sMVOpeningJungleUnusedAdjustedStartCObjDesc = dMVOpeningJungleCObjDescStart;
+    sMVOpeningJungleUnusedAdjustedEndCObjDesc = dMVOpeningJungleCObjDescEnd;
 
     sMVOpeningJungleStageCameraGObj = func_ovl2_8010DB2C(NULL);
 
@@ -276,7 +276,7 @@ void mvOpeningJungleMakeFighters(void)
     grWallpaperMakeDecideKind();
     grCommonSetupInitAll();
 
-    if (mpCollisionGetMapObjCountKind(nMPMapObjKindMovieSpawn2) != 1)
+    if (mpCollisionGetMapObjCountKind(nMPMapObjKindMovieStart2) != 1)
     {
         while (TRUE)
         {
@@ -284,10 +284,10 @@ void mvOpeningJungleMakeFighters(void)
             scManagerRunPrintGObjStatus();
         }
     }
-    mpCollisionGetMapObjIDsKind(nMPMapObjKindMovieSpawn2, &pos_ids[1]);
+    mpCollisionGetMapObjIDsKind(nMPMapObjKindMovieStart2, &pos_ids[1]);
     mpCollisionGetMapObjPositionID(pos_ids[1], &spawn_position[1]);
 
-    if (mpCollisionGetMapObjCountKind(nMPMapObjKindMovieSpawn3) != 1)
+    if (mpCollisionGetMapObjCountKind(nMPMapObjKindMovieStart3) != 1)
     {
         while (TRUE)
         {
@@ -295,7 +295,7 @@ void mvOpeningJungleMakeFighters(void)
             scManagerRunPrintGObjStatus();
         }
     }
-    mpCollisionGetMapObjIDsKind(nMPMapObjKindMovieSpawn3, &pos_ids[0]);
+    mpCollisionGetMapObjIDsKind(nMPMapObjKindMovieStart3, &pos_ids[0]);
     mpCollisionGetMapObjPositionID(pos_ids[0], &spawn_position[0]);
 
     spawn_position[0].x += 1100.0F;
@@ -366,9 +366,9 @@ void mvOpeningJungleMakeFighters(void)
 
         if (gSCManagerBattleState->players[i].fkind == nFTKindDonkey)
         {
-            ftParamSetKey(fighter_gobj, dMVOpeningJungleDonkeyInputSeq);
+            ftParamSetKey(fighter_gobj, dMVOpeningJungleDonkeyKeyEvents);
         }
-        else ftParamSetKey(fighter_gobj, dMVOpeningJungleSamusInputSeq);
+        else ftParamSetKey(fighter_gobj, dMVOpeningJungleSamusKeyEvents);
     }
 }
 
@@ -405,7 +405,7 @@ void mvOpeningJungleFuncStart(void)
     sMVOpeningJungleBattleState = dSCManagerDefaultBattleState;
     gSCManagerBattleState = &sMVOpeningJungleBattleState;
 
-    gSCManagerBattleState->game_type = nSCBattleGameTypeOpening;
+    gSCManagerBattleState->game_type = nSCBattleGameTypeMovie;
 
     gSCManagerBattleState->gkind = nGRKindJungle;
     gSCManagerBattleState->pl_count = 1;

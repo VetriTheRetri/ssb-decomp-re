@@ -36,7 +36,7 @@ CObjDesc dMVOpeningFoxCObjDescEnd = {
 };
 
 // 0x8018E0C8
-FTKeyCommand dMVOpeningFoxInputSeq[] =
+FTKeyEvent dMVOpeningFoxKeyEvents[] =
 {
 	FTKEY_EVENT_STICK(206, 0, 1),     // 2001, CE00
 	FTKEY_EVENT_BUTTON(B_BUTTON, 1),  // 1001, 4000
@@ -58,31 +58,31 @@ u32 D_ovl39_8018E0E0[2] = {
 s32 D_ovl39_8018E1F0[2];
 
 // 0x8018E1F8
-s32 gMVOpeningFoxFramesElapsed;
+s32 sMVOpeningFoxFramesElapsed;
 
 // 0x8018E1FC
-GObj* gMVOpeningFoxNameGObj;
+GObj* sMVOpeningFoxNameGObj;
 
 // 0x8018E200
-GObj* gMVOpeningFoxStageFighterGObj;
+GObj* sMVOpeningFoxStageFighterGObj;
 
 // 0x8018E204
 s32 D_ovl39_8018E204;
 
 // 0x8018E208
-GObj* gMVOpeningFoxStageCameraGObj;
+GObj* sMVOpeningFoxStageCameraGObj;
 
 // 0x8018E20C
-void* gMVOpeningFoxFigatreeHeap;
+void* sMVOpeningFoxFigatreeHeap;
 
 // 0x8018E210
-f32 gMVOpeningFoxPosedFighterYSpeed;
+f32 sMVOpeningFoxPosedFighterYSpeed;
 
 // 0x8018E218
-CObjDesc dMVOpeningFoxCObjDescAdjustedStart;
+CObjDesc dMVOpeningFoxAdjustedStartCObjDesc;
 
 // 0x8018E238
-CObjDesc dMVOpeningFoxCObjDescAdjustedEnd;
+CObjDesc dMVOpeningFoxAdjustedEndCObjDesc;
 
 // 0x8018E258
 LBFileNode D_ovl39_8018E258[48];
@@ -91,10 +91,10 @@ LBFileNode D_ovl39_8018E258[48];
 LBFileNode D_ovl39_8018E3D8[7];
 
 // 0x8018E410
-uintptr_t gMVOpeningFoxFiles[2];
+uintptr_t sMVOpeningFoxFiles[2];
 
 // 0x8018E418
-SCBattleState gMVOpeningFoxBattleState;
+SCBattleState sMVOpeningFoxBattleState;
 
 
 // 0x8018D0C0
@@ -111,7 +111,7 @@ void mvOpeningFoxLoadFiles()
 	rl_setup.force_status_buffer = (LBFileNode*) &D_ovl39_8018E3D8;
 	rl_setup.force_status_buffer_size = 7;
 	lbRelocInitSetup(&rl_setup);
-	lbRelocLoadFilesExtern(D_ovl39_8018E0E0, ARRAY_COUNT(D_ovl39_8018E0E0), gMVOpeningFoxFiles, syTaskmanMalloc(lbRelocGetAllocSize(D_ovl39_8018E0E0, ARRAY_COUNT(D_ovl39_8018E0E0)), 0x10));
+	lbRelocLoadFilesExtern(D_ovl39_8018E0E0, ARRAY_COUNT(D_ovl39_8018E0E0), sMVOpeningFoxFiles, syTaskmanMalloc(lbRelocGetAllocSize(D_ovl39_8018E0E0, ARRAY_COUNT(D_ovl39_8018E0E0)), 0x10));
 }
 
 // 0x8018D160
@@ -146,12 +146,12 @@ void mvOpeningFoxDrawName()
 	};
 	s32 i;
 
-	gMVOpeningFoxNameGObj = name_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
+	sMVOpeningFoxNameGObj = name_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
 	gcAddGObjDisplay(name_gobj, lbCommonDrawSObjAttr, 0x1B, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	for (i = 0; offsets[i] != 0; i++)
 	{
-		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMVOpeningFoxFiles[0], offsets[i]));
+		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(sMVOpeningFoxFiles[0], offsets[i]));
 		name_sobj->sprite.attr &= ~SP_FASTCOPY;
 		name_sobj->sprite.attr |= SP_TRANSPARENT;
 		name_sobj->pos.x = positions[i].x + 110.0F;
@@ -166,15 +166,15 @@ void mvOpeningFoxAnimateStageCamera(GObj* camera_gobj)
 {
 	CObj *cobj = CObjGetStruct(camera_gobj);
 
-	if (gMVOpeningFoxFramesElapsed >= 15)
+	if (sMVOpeningFoxFramesElapsed >= 15)
 	{
-		cobj->vec.eye.x += (((dMVOpeningFoxCObjDescAdjustedEnd.eye.x - dMVOpeningFoxCObjDescAdjustedStart.eye.x) / 45.0F));
-		cobj->vec.eye.y += (((dMVOpeningFoxCObjDescAdjustedEnd.eye.y - dMVOpeningFoxCObjDescAdjustedStart.eye.y) / 45.0F));
-		cobj->vec.eye.z += (((dMVOpeningFoxCObjDescAdjustedEnd.eye.z - dMVOpeningFoxCObjDescAdjustedStart.eye.z) / 45.0F));
-		cobj->vec.at.x += (((dMVOpeningFoxCObjDescAdjustedEnd.at.x - dMVOpeningFoxCObjDescAdjustedStart.at.x) / 45.0F));
-		cobj->vec.at.y += (((dMVOpeningFoxCObjDescAdjustedEnd.at.y - dMVOpeningFoxCObjDescAdjustedStart.at.y) / 45.0F));
-		cobj->vec.at.z += (((dMVOpeningFoxCObjDescAdjustedEnd.at.z - dMVOpeningFoxCObjDescAdjustedStart.at.z) / 45.0F));
-		cobj->vec.up.x += (((dMVOpeningFoxCObjDescAdjustedEnd.upx - dMVOpeningFoxCObjDescAdjustedStart.upx) / 45.0F));
+		cobj->vec.eye.x += (((dMVOpeningFoxAdjustedEndCObjDesc.eye.x - dMVOpeningFoxAdjustedStartCObjDesc.eye.x) / 45.0F));
+		cobj->vec.eye.y += (((dMVOpeningFoxAdjustedEndCObjDesc.eye.y - dMVOpeningFoxAdjustedStartCObjDesc.eye.y) / 45.0F));
+		cobj->vec.eye.z += (((dMVOpeningFoxAdjustedEndCObjDesc.eye.z - dMVOpeningFoxAdjustedStartCObjDesc.eye.z) / 45.0F));
+		cobj->vec.at.x += (((dMVOpeningFoxAdjustedEndCObjDesc.at.x - dMVOpeningFoxAdjustedStartCObjDesc.at.x) / 45.0F));
+		cobj->vec.at.y += (((dMVOpeningFoxAdjustedEndCObjDesc.at.y - dMVOpeningFoxAdjustedStartCObjDesc.at.y) / 45.0F));
+		cobj->vec.at.z += (((dMVOpeningFoxAdjustedEndCObjDesc.at.z - dMVOpeningFoxAdjustedStartCObjDesc.at.z) / 45.0F));
+		cobj->vec.up.x += (((dMVOpeningFoxAdjustedEndCObjDesc.upx - dMVOpeningFoxAdjustedStartCObjDesc.upx) / 45.0F));
 	}
 }
 
@@ -183,37 +183,37 @@ void mvOpeningFoxCreateStageViewport(Vec3f arg0)
 {
 	CObj *cobj;
 
-	dMVOpeningFoxCObjDescAdjustedStart = dMVOpeningFoxCObjDescStart;
-	dMVOpeningFoxCObjDescAdjustedEnd = dMVOpeningFoxCObjDescEnd;
+	dMVOpeningFoxAdjustedStartCObjDesc = dMVOpeningFoxCObjDescStart;
+	dMVOpeningFoxAdjustedEndCObjDesc = dMVOpeningFoxCObjDescEnd;
 
-	gMVOpeningFoxStageCameraGObj = func_ovl2_8010DB2C(0);
-	cobj = CObjGetStruct(gMVOpeningFoxStageCameraGObj);
+	sMVOpeningFoxStageCameraGObj = func_ovl2_8010DB2C(0);
+	cobj = CObjGetStruct(sMVOpeningFoxStageCameraGObj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 210.0F, 230.0F);
 	cobj->projection.persp.aspect = 10.0F / 11.0F;
-	gcEndProcessAll(gMVOpeningFoxStageCameraGObj);
-	gcAddGObjProcess(gMVOpeningFoxStageCameraGObj, mvOpeningFoxAnimateStageCamera, 1, 1);
+	gcEndProcessAll(sMVOpeningFoxStageCameraGObj);
+	gcAddGObjProcess(sMVOpeningFoxStageCameraGObj, mvOpeningFoxAnimateStageCamera, 1, 1);
 
-	dMVOpeningFoxCObjDescAdjustedStart.eye.x += arg0.x;
-	dMVOpeningFoxCObjDescAdjustedStart.eye.y += arg0.y;
-	dMVOpeningFoxCObjDescAdjustedStart.eye.z += arg0.z;
-	dMVOpeningFoxCObjDescAdjustedStart.at.x += arg0.x;
-	dMVOpeningFoxCObjDescAdjustedStart.at.y += arg0.y;
-	dMVOpeningFoxCObjDescAdjustedStart.at.z += arg0.z;
+	dMVOpeningFoxAdjustedStartCObjDesc.eye.x += arg0.x;
+	dMVOpeningFoxAdjustedStartCObjDesc.eye.y += arg0.y;
+	dMVOpeningFoxAdjustedStartCObjDesc.eye.z += arg0.z;
+	dMVOpeningFoxAdjustedStartCObjDesc.at.x += arg0.x;
+	dMVOpeningFoxAdjustedStartCObjDesc.at.y += arg0.y;
+	dMVOpeningFoxAdjustedStartCObjDesc.at.z += arg0.z;
 
-	dMVOpeningFoxCObjDescAdjustedEnd.eye.x += arg0.x;
-	dMVOpeningFoxCObjDescAdjustedEnd.eye.y += arg0.y;
-	dMVOpeningFoxCObjDescAdjustedEnd.eye.z += arg0.z;
-	dMVOpeningFoxCObjDescAdjustedEnd.at.x += arg0.x;
-	dMVOpeningFoxCObjDescAdjustedEnd.at.y += arg0.y;
-	dMVOpeningFoxCObjDescAdjustedEnd.at.z += arg0.z;
+	dMVOpeningFoxAdjustedEndCObjDesc.eye.x += arg0.x;
+	dMVOpeningFoxAdjustedEndCObjDesc.eye.y += arg0.y;
+	dMVOpeningFoxAdjustedEndCObjDesc.eye.z += arg0.z;
+	dMVOpeningFoxAdjustedEndCObjDesc.at.x += arg0.x;
+	dMVOpeningFoxAdjustedEndCObjDesc.at.y += arg0.y;
+	dMVOpeningFoxAdjustedEndCObjDesc.at.z += arg0.z;
 
-	cobj->vec.eye.x = dMVOpeningFoxCObjDescAdjustedStart.eye.x;
-	cobj->vec.eye.y = dMVOpeningFoxCObjDescAdjustedStart.eye.y;
-	cobj->vec.eye.z = dMVOpeningFoxCObjDescAdjustedStart.eye.z;
-	cobj->vec.at.x = dMVOpeningFoxCObjDescAdjustedStart.at.x;
-	cobj->vec.at.y = dMVOpeningFoxCObjDescAdjustedStart.at.y;
-	cobj->vec.at.z = dMVOpeningFoxCObjDescAdjustedStart.at.z;
-	cobj->vec.up.x = dMVOpeningFoxCObjDescAdjustedStart.upx;
+	cobj->vec.eye.x = dMVOpeningFoxAdjustedStartCObjDesc.eye.x;
+	cobj->vec.eye.y = dMVOpeningFoxAdjustedStartCObjDesc.eye.y;
+	cobj->vec.eye.z = dMVOpeningFoxAdjustedStartCObjDesc.eye.z;
+	cobj->vec.at.x = dMVOpeningFoxAdjustedStartCObjDesc.at.x;
+	cobj->vec.at.y = dMVOpeningFoxAdjustedStartCObjDesc.at.y;
+	cobj->vec.at.z = dMVOpeningFoxAdjustedStartCObjDesc.at.z;
+	cobj->vec.up.x = dMVOpeningFoxAdjustedStartCObjDesc.upx;
 }
 
 // 0x8018D61C
@@ -228,7 +228,7 @@ void mvOpeningFoxInitFighterStagePanel()
 	grWallpaperMakeDecideKind();
 	grCommonSetupInitAll();
 
-	if (mpCollisionGetMapObjCountKind(nMPMapObjKindMovieSpawn1) != 1)
+	if (mpCollisionGetMapObjCountKind(nMPMapObjKindMovieStart1) != 1)
 	{
 		while (TRUE)
 		{
@@ -237,7 +237,7 @@ void mvOpeningFoxInitFighterStagePanel()
 		}
 	}
 
-	mpCollisionGetMapObjIDsKind(nMPMapObjKindMovieSpawn1, &pos_ids);
+	mpCollisionGetMapObjIDsKind(nMPMapObjKindMovieStart1, &pos_ids);
 	mpCollisionGetMapObjPositionID(pos_ids, &spawn_position);
 	mvOpeningFoxCreateStageViewport(spawn_position);
 	gmRumbleMakeActor();
@@ -268,10 +268,10 @@ void mvOpeningFoxInitFighterStagePanel()
 		spawn_info.controller = &gSYControllerDevices[i];
 		spawn_info.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[i].fkind);
 
-		gMVOpeningFoxStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
+		sMVOpeningFoxStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
 		ftParamInitPlayerBattleStats(i, fighter_gobj);
-		ftParamSetKey(fighter_gobj, dMVOpeningFoxInputSeq);
+		ftParamSetKey(fighter_gobj, dMVOpeningFoxKeyEvents);
 	}
 }
 
@@ -297,28 +297,28 @@ void mvOpeningFoxCreatePosedFighterBackground()
 // 0x8018D998
 void mvOpeningFoxAnimatePosedFighter(GObj* fighter_gobj)
 {
-	switch (gMVOpeningFoxFramesElapsed)
+	switch (sMVOpeningFoxFramesElapsed)
 	{
 		default:
 			break;
 		case 15:
-			gMVOpeningFoxPosedFighterYSpeed = 17.0F;
+			sMVOpeningFoxPosedFighterYSpeed = 17.0F;
 			break;
 		case 45:
-			gMVOpeningFoxPosedFighterYSpeed = 15.0F;
+			sMVOpeningFoxPosedFighterYSpeed = 15.0F;
 			break;
 		case 60:
-			gMVOpeningFoxPosedFighterYSpeed = 0.0F;
+			sMVOpeningFoxPosedFighterYSpeed = 0.0F;
 			break;
 	}
 
-	if ((gMVOpeningFoxFramesElapsed > 15) && (gMVOpeningFoxFramesElapsed < 45))
-		gMVOpeningFoxPosedFighterYSpeed += -1.0F / 15.0F;
+	if ((sMVOpeningFoxFramesElapsed > 15) && (sMVOpeningFoxFramesElapsed < 45))
+		sMVOpeningFoxPosedFighterYSpeed += -1.0F / 15.0F;
 
-	if ((gMVOpeningFoxFramesElapsed > 45) && (gMVOpeningFoxFramesElapsed < 60))
-		gMVOpeningFoxPosedFighterYSpeed += -1.0F;
+	if ((sMVOpeningFoxFramesElapsed > 45) && (sMVOpeningFoxFramesElapsed < 60))
+		sMVOpeningFoxPosedFighterYSpeed += -1.0F;
 
-	DObjGetStruct(fighter_gobj)->translate.vec.f.y -= gMVOpeningFoxPosedFighterYSpeed;
+	DObjGetStruct(fighter_gobj)->translate.vec.f.y -= sMVOpeningFoxPosedFighterYSpeed;
 }
 
 // 0x8018DA68
@@ -329,7 +329,7 @@ void mvOpeningFoxCreatePosedFighter()
 
 	spawn_info.fkind = nFTKindFox;
 	spawn_info.costume = ftParamGetCostumeCommonID(nFTKindFox, 0);
-	spawn_info.figatree_heap = gMVOpeningFoxFigatreeHeap;
+	spawn_info.figatree_heap = sMVOpeningFoxFigatreeHeap;
 	spawn_info.pos.x = 0.0f;
 	spawn_info.pos.y = 600.0f;
 	spawn_info.pos.z = 0.0f;
@@ -359,7 +359,7 @@ void mvOpeningFoxCreatePosedFighterViewport()
 	CObj *cobj = CObjGetStruct(camera_gobj);
 	syRdpSetViewport(&cobj->viewport, 210.0F, 10.0F, 310.0F, 230.0F);
 	cobj->projection.persp.aspect = 5.0F / 11.0F;
-	gcAddCameraCamAnimJoint(cobj, GetAddressFromOffset(gMVOpeningFoxFiles[1], &FILE_041_FOX_CAMERA_PARAMS_OFFSET), 0.0F);
+	gcAddCameraCamAnimJoint(cobj, GetAddressFromOffset(sMVOpeningFoxFiles[1], &FILE_041_FOX_CAMERA_PARAMS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
 }
 
@@ -377,7 +377,7 @@ void mvOpeningFoxCreatePosedFighterBackgroundViewport()
 // 0x8018DD98
 void mvOpeningFoxMainProc(GObj* arg0)
 {
-	gMVOpeningFoxFramesElapsed += 1;
+	sMVOpeningFoxFramesElapsed += 1;
 
 	if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON))
 	{
@@ -386,15 +386,15 @@ void mvOpeningFoxMainProc(GObj* arg0)
 		syTaskmanSetLoadScene();
 	}
 
-	if (gMVOpeningFoxFramesElapsed == 15)
+	if (sMVOpeningFoxFramesElapsed == 15)
 	{
-		gcEjectGObj(gMVOpeningFoxNameGObj);
+		gcEjectGObj(sMVOpeningFoxNameGObj);
 		mvOpeningFoxInitFighterStagePanel();
 		mvOpeningFoxCreatePosedFighterBackground();
 		mvOpeningFoxCreatePosedFighter();
 	}
 
-	if (gMVOpeningFoxFramesElapsed == 60)
+	if (sMVOpeningFoxFramesElapsed == 60)
 	{
 		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 		gSCManagerSceneData.scene_curr = 0x24;
@@ -405,16 +405,16 @@ void mvOpeningFoxMainProc(GObj* arg0)
 // 0x8018DE54
 void mvOpeningFoxInitFramesElapsed()
 {
-	gMVOpeningFoxFramesElapsed = 0;
+	sMVOpeningFoxFramesElapsed = 0;
 }
 
 // 0x8018DE60
 void mvOpeningFoxInit()
 {
-	gMVOpeningFoxBattleState = dSCManagerDefaultBattleState;
-	gSCManagerBattleState = &gMVOpeningFoxBattleState;
+	sMVOpeningFoxBattleState = dSCManagerDefaultBattleState;
+	gSCManagerBattleState = &sMVOpeningFoxBattleState;
 
-	gSCManagerBattleState->game_type = nSCBattleGameTypeOpening;
+	gSCManagerBattleState->game_type = nSCBattleGameTypeMovie;
 
 	gSCManagerBattleState->gkind = nGRKindSector;
 	gSCManagerBattleState->pl_count = 1;
@@ -437,7 +437,7 @@ void mvOpeningFoxInit()
 	efManagerInitEffects();
 	ftManagerSetupFilesAllKind(nFTKindFox);
 
-	gMVOpeningFoxFigatreeHeap = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
+	sMVOpeningFoxFigatreeHeap = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
 	mvOpeningFoxCreateNameViewport();
 	mvOpeningFoxCreatePosedFighterBackgroundViewport();
 	mvOpeningFoxCreatePosedFighterViewport();

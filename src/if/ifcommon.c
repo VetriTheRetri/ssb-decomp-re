@@ -1829,7 +1829,7 @@ void ifCommonPlayerTagFuncDisplay(GObj *interface_gobj)
 
             pos.y += fp->attr->camera_zoom_base;
 
-            func_ovl2_800EB924(CObjGetStruct(gCMManagerCameraGObj), gCMManagerMtx, &pos, &x, &y);
+            func_ovl2_800EB924(CObjGetStruct(gCMManagerCameraGObj), gCMManagerMatrix, &pos, &x, &y);
 
             if (cmManagerCheckTargetInBounds(x, y) != FALSE)
             {
@@ -1894,7 +1894,7 @@ void ifCommonItemArrowFuncDisplay(GObj *interface_gobj)
 
         pos.y += ip->coll_data.map_coll.top + 100.0F;
 
-        func_ovl2_800EB924(CObjGetStruct(gCMManagerCameraGObj), gCMManagerMtx, &pos, &x, &y);
+        func_ovl2_800EB924(CObjGetStruct(gCMManagerCameraGObj), gCMManagerMatrix, &pos, &x, &y);
 
         if (cmManagerCheckTargetInBounds(x, y) != FALSE)
         {

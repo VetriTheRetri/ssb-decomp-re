@@ -8,10 +8,10 @@
 
 // There's more of these that are currently in the C file for the How to Play tutorial
 
-extern intptr_t lSCExplainKeyInputSequence0;                // 0x00000000
-extern intptr_t lSCExplainKeyInputSequence1;                // 0x000009D4
-extern intptr_t lSCExplainKeyInputSequence2;                // 0x000013FC
-extern intptr_t lSCExplainKeyInputSequence3;                // 0x00001400
+extern intptr_t lSCExplainKeyKeyEvents0;                // 0x00000000
+extern intptr_t lSCExplainKeyKeyEvents1;                // 0x000009D4
+extern intptr_t lSCExplainKeyKeyEvents2;                // 0x000013FC
+extern intptr_t lSCExplainKeyKeyEvents3;                // 0x00001400
 extern intptr_t lSCExplainPhases;                           // 0x00001404
 extern intptr_t lSCExplainStickMObjSub;                     // 0x00005028
 extern intptr_t lSCExplainStickDObjDesc;                    // 0x00005300

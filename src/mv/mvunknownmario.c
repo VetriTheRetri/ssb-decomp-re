@@ -33,7 +33,7 @@ SCBattleState sMVUnkownMarioBattleState;
 // // // // // // // // // // // //
 
 // 0x8018D580
-FTKeyCommand dMVUnknownMarioInputSeq[/* */] =
+FTKeyEvent dMVUnknownMarioKeyEvents[/* */] =
 {
 	FTKEY_EVENT_BUTTON(0, 180),                                       // 0x10B4, 0x0000
 	FTKEY_EVENT_STICK(30, 0, 60),                                     // 0x203C, 0x1E00
@@ -218,7 +218,7 @@ void mvUnknownMarioFuncStart(void)
 		sMVUnkownMarioFighterGObj = fighter_gobj;
 
 		ftParamInitPlayerBattleStats(player, fighter_gobj);
-		ftParamSetKey(fighter_gobj, dMVUnknownMarioInputSeq);
+		ftParamSetKey(fighter_gobj, dMVUnknownMarioKeyEvents);
 	}
 	color = dMVUnknownMarioFadeColor;
 

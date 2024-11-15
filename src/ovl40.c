@@ -28,7 +28,7 @@ CObjDesc dMVOpeningLinkCObjDescEnd = {
 };
 
 // 0x8018E0A8
-FTKeyCommand dMVOpeningLinkGameKey[] = {
+FTKeyEvent dMVOpeningLinkGameKey[] = {
 
     FTKEY_EVENT_BUTTON(L_TRIG, 1),  // 0x1001, 0x0020
     FTKEY_EVENT_END()               // 0x0000
@@ -48,34 +48,34 @@ s32 D_ovl40_8018E1C0;
 s32 D_ovl40_8018E1C4;
 
 // 0x8018E1C8
-s32 gMVOpeningLinkFramesElapsed;
+s32 sMVOpeningLinkFramesElapsed;
 
 // 0x8018E1CC
-GObj* gMVOpeningLinkNameGObj;
+GObj* sMVOpeningLinkNameGObj;
 
 // 0x8018E1D0
-GObj* gMVOpeningLinkStageFighterGObj;
+GObj* sMVOpeningLinkStageFighterGObj;
 
 // 0x8018E1D4
 s32 D_ovl40_8018E1D4;
 
 // 0x8018E1D8
-GObj* gMVOpeningLinkStageCameraGObj;
+GObj* sMVOpeningLinkStageCameraGObj;
 
 // 0x8018E1DC
-void* gMVOpeningLinkFigatreeHeap;
+void* sMVOpeningLinkFigatreeHeap;
 
 // 0x8018E1E0
-f32 gMVOpeningLinkPosedFighterXSpeed;
+f32 sMVOpeningLinkPosedFighterXSpeed;
 
 // 0x8018E1E4
 s32 D_ovl40_8018E1E4;
 
 // 0x8018E1E8
-CObjDesc dMVOpeningLinkCObjDescAdjustedStart;
+CObjDesc dMVOpeningLinkAdjustedStartCObjDesc;
 
 // 0x8018E208
-CObjDesc dMVOpeningLinkCObjDescAdjustedEnd;
+CObjDesc dMVOpeningLinkAdjustedEndCObjDesc;
 
 // 0x8018E228
 LBFileNode D_ovl40_8018E228[48];
@@ -84,10 +84,10 @@ LBFileNode D_ovl40_8018E228[48];
 LBFileNode D_ovl40_8018E3A8[7];
 
 // 0x8018E3E0
-uintptr_t gMVOpeningLinkFiles[2];
+uintptr_t sMVOpeningLinkFiles[2];
 
 // 0x8018E3E8
-SCBattleState gMVOpeningLinkBattleState;
+SCBattleState sMVOpeningLinkBattleState;
 
 
 // 0x8018D0C0
@@ -104,7 +104,7 @@ void mvOpeningLinkLoadFiles()
 	rl_setup.force_status_buffer = D_ovl40_8018E3A8;
 	rl_setup.force_status_buffer_size = ARRAY_COUNT(D_ovl40_8018E3A8);
 	lbRelocInitSetup(&rl_setup);
-	lbRelocLoadFilesExtern(D_ovl40_8018E0B0, ARRAY_COUNT(D_ovl40_8018E0B0), gMVOpeningLinkFiles, syTaskmanMalloc(lbRelocGetAllocSize(D_ovl40_8018E0B0, ARRAY_COUNT(D_ovl40_8018E0B0)), 0x10));
+	lbRelocLoadFilesExtern(D_ovl40_8018E0B0, ARRAY_COUNT(D_ovl40_8018E0B0), sMVOpeningLinkFiles, syTaskmanMalloc(lbRelocGetAllocSize(D_ovl40_8018E0B0, ARRAY_COUNT(D_ovl40_8018E0B0)), 0x10));
 }
 
 // 0x8018D160
@@ -136,12 +136,12 @@ void mvOpeningLinkDrawName()
 	};
 	s32 i;
 
-	gMVOpeningLinkNameGObj = name_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
+	sMVOpeningLinkNameGObj = name_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
 	gcAddGObjDisplay(name_gobj, lbCommonDrawSObjAttr, 0x1B, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	for (i = 0; offsets[i] != 0; i++)
 	{
-		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMVOpeningLinkFiles[0], offsets[i]));
+		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(sMVOpeningLinkFiles[0], offsets[i]));
 		name_sobj->sprite.attr &= ~SP_FASTCOPY;
 		name_sobj->sprite.attr |= SP_TRANSPARENT;
 		name_sobj->pos.x = x_positions[i] + 100.0F;
@@ -156,15 +156,15 @@ void mvOpeningLinkAnimateStageCamera(GObj* camera_gobj)
 {
 	CObj *cobj = CObjGetStruct(camera_gobj);
 
-	if (gMVOpeningLinkFramesElapsed >= 15)
+	if (sMVOpeningLinkFramesElapsed >= 15)
 	{
-		cobj->vec.eye.x += (((dMVOpeningLinkCObjDescAdjustedEnd.eye.x - dMVOpeningLinkCObjDescAdjustedStart.eye.x) / 45.0F));
-		cobj->vec.eye.y += (((dMVOpeningLinkCObjDescAdjustedEnd.eye.y - dMVOpeningLinkCObjDescAdjustedStart.eye.y) / 45.0F));
-		cobj->vec.eye.z += (((dMVOpeningLinkCObjDescAdjustedEnd.eye.z - dMVOpeningLinkCObjDescAdjustedStart.eye.z) / 45.0F));
-		cobj->vec.at.x += (((dMVOpeningLinkCObjDescAdjustedEnd.at.x - dMVOpeningLinkCObjDescAdjustedStart.at.x) / 45.0F));
-		cobj->vec.at.y += (((dMVOpeningLinkCObjDescAdjustedEnd.at.y - dMVOpeningLinkCObjDescAdjustedStart.at.y) / 45.0F));
-		cobj->vec.at.z += (((dMVOpeningLinkCObjDescAdjustedEnd.at.z - dMVOpeningLinkCObjDescAdjustedStart.at.z) / 45.0F));
-		cobj->vec.up.x += (((dMVOpeningLinkCObjDescAdjustedEnd.upx - dMVOpeningLinkCObjDescAdjustedStart.upx) / 45.0F));
+		cobj->vec.eye.x += (((dMVOpeningLinkAdjustedEndCObjDesc.eye.x - dMVOpeningLinkAdjustedStartCObjDesc.eye.x) / 45.0F));
+		cobj->vec.eye.y += (((dMVOpeningLinkAdjustedEndCObjDesc.eye.y - dMVOpeningLinkAdjustedStartCObjDesc.eye.y) / 45.0F));
+		cobj->vec.eye.z += (((dMVOpeningLinkAdjustedEndCObjDesc.eye.z - dMVOpeningLinkAdjustedStartCObjDesc.eye.z) / 45.0F));
+		cobj->vec.at.x += (((dMVOpeningLinkAdjustedEndCObjDesc.at.x - dMVOpeningLinkAdjustedStartCObjDesc.at.x) / 45.0F));
+		cobj->vec.at.y += (((dMVOpeningLinkAdjustedEndCObjDesc.at.y - dMVOpeningLinkAdjustedStartCObjDesc.at.y) / 45.0F));
+		cobj->vec.at.z += (((dMVOpeningLinkAdjustedEndCObjDesc.at.z - dMVOpeningLinkAdjustedStartCObjDesc.at.z) / 45.0F));
+		cobj->vec.up.x += (((dMVOpeningLinkAdjustedEndCObjDesc.upx - dMVOpeningLinkAdjustedStartCObjDesc.upx) / 45.0F));
 	}
 }
 
@@ -173,37 +173,37 @@ void mvOpeningLinkCreateStageViewport(Vec3f arg0)
 {
 	CObj *cobj;
 
-	dMVOpeningLinkCObjDescAdjustedStart = dMVOpeningLinkCObjDescStart;
-	dMVOpeningLinkCObjDescAdjustedEnd = dMVOpeningLinkCObjDescEnd;
+	dMVOpeningLinkAdjustedStartCObjDesc = dMVOpeningLinkCObjDescStart;
+	dMVOpeningLinkAdjustedEndCObjDesc = dMVOpeningLinkCObjDescEnd;
 
-	gMVOpeningLinkStageCameraGObj = func_ovl2_8010DB2C(0);
-	cobj = CObjGetStruct(gMVOpeningLinkStageCameraGObj);
+	sMVOpeningLinkStageCameraGObj = func_ovl2_8010DB2C(0);
+	cobj = CObjGetStruct(sMVOpeningLinkStageCameraGObj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 90.0F, 310.0F, 230.0F);
 	cobj->projection.persp.aspect = 15.0F / 7.0F;
-	gcEndProcessAll(gMVOpeningLinkStageCameraGObj);
-	gcAddGObjProcess(gMVOpeningLinkStageCameraGObj, mvOpeningLinkAnimateStageCamera, 1, 1);
+	gcEndProcessAll(sMVOpeningLinkStageCameraGObj);
+	gcAddGObjProcess(sMVOpeningLinkStageCameraGObj, mvOpeningLinkAnimateStageCamera, 1, 1);
 
-	dMVOpeningLinkCObjDescAdjustedStart.eye.x += arg0.x;
-	dMVOpeningLinkCObjDescAdjustedStart.eye.y += arg0.y;
-	dMVOpeningLinkCObjDescAdjustedStart.eye.z += arg0.z;
-	dMVOpeningLinkCObjDescAdjustedStart.at.x += arg0.x;
-	dMVOpeningLinkCObjDescAdjustedStart.at.y += arg0.y;
-	dMVOpeningLinkCObjDescAdjustedStart.at.z += arg0.z;
+	dMVOpeningLinkAdjustedStartCObjDesc.eye.x += arg0.x;
+	dMVOpeningLinkAdjustedStartCObjDesc.eye.y += arg0.y;
+	dMVOpeningLinkAdjustedStartCObjDesc.eye.z += arg0.z;
+	dMVOpeningLinkAdjustedStartCObjDesc.at.x += arg0.x;
+	dMVOpeningLinkAdjustedStartCObjDesc.at.y += arg0.y;
+	dMVOpeningLinkAdjustedStartCObjDesc.at.z += arg0.z;
 
-	dMVOpeningLinkCObjDescAdjustedEnd.eye.x += arg0.x;
-	dMVOpeningLinkCObjDescAdjustedEnd.eye.y += arg0.y;
-	dMVOpeningLinkCObjDescAdjustedEnd.eye.z += arg0.z;
-	dMVOpeningLinkCObjDescAdjustedEnd.at.x += arg0.x;
-	dMVOpeningLinkCObjDescAdjustedEnd.at.y += arg0.y;
-	dMVOpeningLinkCObjDescAdjustedEnd.at.z += arg0.z;
+	dMVOpeningLinkAdjustedEndCObjDesc.eye.x += arg0.x;
+	dMVOpeningLinkAdjustedEndCObjDesc.eye.y += arg0.y;
+	dMVOpeningLinkAdjustedEndCObjDesc.eye.z += arg0.z;
+	dMVOpeningLinkAdjustedEndCObjDesc.at.x += arg0.x;
+	dMVOpeningLinkAdjustedEndCObjDesc.at.y += arg0.y;
+	dMVOpeningLinkAdjustedEndCObjDesc.at.z += arg0.z;
 
-	cobj->vec.eye.x = dMVOpeningLinkCObjDescAdjustedStart.eye.x;
-	cobj->vec.eye.y = dMVOpeningLinkCObjDescAdjustedStart.eye.y;
-	cobj->vec.eye.z = dMVOpeningLinkCObjDescAdjustedStart.eye.z;
-	cobj->vec.at.x = dMVOpeningLinkCObjDescAdjustedStart.at.x;
-	cobj->vec.at.y = dMVOpeningLinkCObjDescAdjustedStart.at.y;
-	cobj->vec.at.z = dMVOpeningLinkCObjDescAdjustedStart.at.z;
-	cobj->vec.up.x = dMVOpeningLinkCObjDescAdjustedStart.upx;
+	cobj->vec.eye.x = dMVOpeningLinkAdjustedStartCObjDesc.eye.x;
+	cobj->vec.eye.y = dMVOpeningLinkAdjustedStartCObjDesc.eye.y;
+	cobj->vec.eye.z = dMVOpeningLinkAdjustedStartCObjDesc.eye.z;
+	cobj->vec.at.x = dMVOpeningLinkAdjustedStartCObjDesc.at.x;
+	cobj->vec.at.y = dMVOpeningLinkAdjustedStartCObjDesc.at.y;
+	cobj->vec.at.z = dMVOpeningLinkAdjustedStartCObjDesc.at.z;
+	cobj->vec.up.x = dMVOpeningLinkAdjustedStartCObjDesc.upx;
 }
 
 // 0x8018D5F4
@@ -218,7 +218,7 @@ void mvOpeningLinkInitFighterStagePanel()
 	grWallpaperMakeDecideKind();
 	grCommonSetupInitAll();
 
-	if (mpCollisionGetMapObjCountKind(nMPMapObjKindMovieSpawn1) != 1)
+	if (mpCollisionGetMapObjCountKind(nMPMapObjKindMovieStart1) != 1)
 	{
 		while (TRUE)
 		{
@@ -227,7 +227,7 @@ void mvOpeningLinkInitFighterStagePanel()
 		}
 	}
 
-	mpCollisionGetMapObjIDsKind(nMPMapObjKindMovieSpawn1, &pos_ids);
+	mpCollisionGetMapObjIDsKind(nMPMapObjKindMovieStart1, &pos_ids);
 	mpCollisionGetMapObjPositionID(pos_ids, &spawn_position);
 	mvOpeningLinkCreateStageViewport(spawn_position);
 	gmRumbleMakeActor();
@@ -258,7 +258,7 @@ void mvOpeningLinkInitFighterStagePanel()
 		spawn_info.controller = &gSYControllerDevices[i];
 		spawn_info.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[i].fkind);
 
-		gMVOpeningLinkStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
+		sMVOpeningLinkStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
 		ftParamInitPlayerBattleStats(i, fighter_gobj);
 		ftParamSetKey(fighter_gobj, dMVOpeningLinkGameKey);
@@ -287,27 +287,27 @@ void mvOpeningLinkCreatePosedFighterBackground()
 // 0x8018D970
 void mvOpeningLinkAnimatePosedFighter(GObj* fighter_gobj)
 {
-	switch (gMVOpeningLinkFramesElapsed)
+	switch (sMVOpeningLinkFramesElapsed)
 	{
 		default:
 			break;
 		case 15:
-			gMVOpeningLinkPosedFighterXSpeed = 17.0F;
+			sMVOpeningLinkPosedFighterXSpeed = 17.0F;
 			break;
 		case 45:
-			gMVOpeningLinkPosedFighterXSpeed = 15.0F;
+			sMVOpeningLinkPosedFighterXSpeed = 15.0F;
 			break;
 		case 60:
-			gMVOpeningLinkPosedFighterXSpeed = 0.0F;
+			sMVOpeningLinkPosedFighterXSpeed = 0.0F;
 			break;
 	}
 
-	if ((gMVOpeningLinkFramesElapsed > 15) && (gMVOpeningLinkFramesElapsed < 45))
-		gMVOpeningLinkPosedFighterXSpeed += -1.0F / 15.0F;
-	if ((gMVOpeningLinkFramesElapsed > 45) && (gMVOpeningLinkFramesElapsed < 60))
-		gMVOpeningLinkPosedFighterXSpeed += -1.0F;
+	if ((sMVOpeningLinkFramesElapsed > 15) && (sMVOpeningLinkFramesElapsed < 45))
+		sMVOpeningLinkPosedFighterXSpeed += -1.0F / 15.0F;
+	if ((sMVOpeningLinkFramesElapsed > 45) && (sMVOpeningLinkFramesElapsed < 60))
+		sMVOpeningLinkPosedFighterXSpeed += -1.0F;
 
-	DObjGetStruct(fighter_gobj)->translate.vec.f.x -= gMVOpeningLinkPosedFighterXSpeed;
+	DObjGetStruct(fighter_gobj)->translate.vec.f.x -= sMVOpeningLinkPosedFighterXSpeed;
 }
 
 // 0x8018DA40
@@ -318,7 +318,7 @@ void mvOpeningLinkCreatePosedFighter()
 
 	spawn_info.fkind = nFTKindLink;
 	spawn_info.costume = ftParamGetCostumeCommonID(nFTKindLink, 0);
-	spawn_info.figatree_heap = gMVOpeningLinkFigatreeHeap;
+	spawn_info.figatree_heap = sMVOpeningLinkFigatreeHeap;
 	spawn_info.pos.x = 600.0f;
 	spawn_info.pos.y = 0.0f;
 	spawn_info.pos.z = 0.0f;
@@ -348,7 +348,7 @@ void mvOpeningLinkCreatePosedFighterViewport()
 	CObj *cobj = CObjGetStruct(camera_gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 90.0F);
 	cobj->projection.persp.aspect = 3.75F;
-	gcAddCameraCamAnimJoint(cobj, GetAddressFromOffset(gMVOpeningLinkFiles[1], &FILE_041_LINK_CAMERA_PARAMS_OFFSET), 0.0F);
+	gcAddCameraCamAnimJoint(cobj, GetAddressFromOffset(sMVOpeningLinkFiles[1], &FILE_041_LINK_CAMERA_PARAMS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
 }
 
@@ -366,7 +366,7 @@ void mvOpeningLinkCreatePosedFighterBackgroundViewport()
 // 0x8018DD80
 void mvOpeningLinkMainProc(GObj* arg0)
 {
-	gMVOpeningLinkFramesElapsed += 1;
+	sMVOpeningLinkFramesElapsed += 1;
 
 	if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE)
 	{
@@ -375,15 +375,15 @@ void mvOpeningLinkMainProc(GObj* arg0)
 		syTaskmanSetLoadScene();
 	}
 
-	if (gMVOpeningLinkFramesElapsed == 15)
+	if (sMVOpeningLinkFramesElapsed == 15)
 	{
-		gcEjectGObj(gMVOpeningLinkNameGObj);
+		gcEjectGObj(sMVOpeningLinkNameGObj);
 		mvOpeningLinkInitFighterStagePanel();
 		mvOpeningLinkCreatePosedFighterBackground();
 		mvOpeningLinkCreatePosedFighter();
 	}
 
-	if (gMVOpeningLinkFramesElapsed == 60)
+	if (sMVOpeningLinkFramesElapsed == 60)
 	{
 		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 		gSCManagerSceneData.scene_curr = 0x20;
@@ -394,16 +394,16 @@ void mvOpeningLinkMainProc(GObj* arg0)
 // 0x8018DE3C
 void mvOpeningLinkInitFramesElapsed()
 {
-	gMVOpeningLinkFramesElapsed = 0;
+	sMVOpeningLinkFramesElapsed = 0;
 }
 
 // 0x8018DE48
 void mvOpeningLinkInit()
 {
-	gMVOpeningLinkBattleState = dSCManagerDefaultBattleState;
-	gSCManagerBattleState = &gMVOpeningLinkBattleState;
+	sMVOpeningLinkBattleState = dSCManagerDefaultBattleState;
+	gSCManagerBattleState = &sMVOpeningLinkBattleState;
 
-	gSCManagerBattleState->game_type = nSCBattleGameTypeOpening;
+	gSCManagerBattleState->game_type = nSCBattleGameTypeMovie;
 
 	gSCManagerBattleState->gkind = nGRKindHyrule;
 	gSCManagerBattleState->pl_count = 1;
@@ -426,7 +426,7 @@ void mvOpeningLinkInit()
 	efManagerInitEffects();
 	ftManagerSetupFilesAllKind(nFTKindLink);
 
-	gMVOpeningLinkFigatreeHeap = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
+	sMVOpeningLinkFigatreeHeap = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
 	mvOpeningLinkCreateNameViewport();
 	mvOpeningLinkCreatePosedFighterBackgroundViewport();
 	mvOpeningLinkCreatePosedFighterViewport();
@@ -436,7 +436,7 @@ void mvOpeningLinkInit()
 }
 
 // 0x8018DFCC
-void gMVOpeningLinkFuncLights(Gfx **display_list)
+void sMVOpeningLinkFuncLights(Gfx **display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
 	ftDisplayLightsDrawReflect(display_list, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
@@ -461,7 +461,7 @@ scRuntimeInfo D_ovl40_8018E0F8 = {
 	0x800a26b8, &lOverlay40ArenaLo,
 	0x00000000, 0x00000001, 0x00000002, 0x00004000, 0x00002000,
 	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x0000c000,
-	gMVOpeningLinkFuncLights, update_contdata,
+	sMVOpeningLinkFuncLights, update_contdata,
 	0x00000000, 0x00000600, 0x00000000, 0x00000000,
 	0x00000000, 0x00000000, 0x00000088, 0x00000000,
 	0x800d5cac, 0x00000000, 0x00000000, 0x00000000,

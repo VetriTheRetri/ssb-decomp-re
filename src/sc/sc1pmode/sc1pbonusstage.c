@@ -13,6 +13,24 @@ extern void scManagerFuncDraw(void);
 
 // // // // // // // // // // // //
 //                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x8018F1A0
+void *gSC1PBonusStageFiles[4];
+
+// 0x8018F1B0
+SCBattleState sSC1PBonusStageBattleState;
+
+// 0x8018F3A0
+u8 sSC1PBonusStageTimerDigits[6];
+
+// 0x8018F3A8
+sb32 sSC1PBonusStageIsTimeUp;
+
+// // // // // // // // // // // //
+//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -312,24 +330,6 @@ SYTaskmanSetup dSC1PBonusStageTaskmanSetup =
     
     sc1PBonusStageFuncStart         // Task start function
 };
-
-// // // // // // // // // // // //
-//                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x8018F1A0
-void *gSC1PBonusStageFiles[4];
-
-// 0x8018F1B0
-SCBattleState sSC1PBonusStageBattleState;
-
-// 0x8018F3A0
-u8 sSC1PBonusStageTimerDigits[6];
-
-// 0x8018F3A8
-sb32 sSC1PBonusStageIsTimeUp;
 
 // // // // // // // // // // // //
 //                               //

@@ -28,11 +28,11 @@ extern FTOpeningDesc D_ovl1_80390BE8;
 	itMainSetFighterDrop((fp)->item_gobj, &vel, 1.0F);	\
 }
 
-#define FTKeyCommandCast(input_seq, type) ((type*)(input_seq))
+#define ftKeyEventCast(script, type) ((type*)(script))
 
-#define FTKeyGetButtons(input_seq) (*(FTKeyCommandCast((input_seq), u16)))
+#define ftKeyGetButtons(script) (*(ftKeyEventCast((script), u16)))
 
-#define FTKeyGetStickRange(input_seq) (FTKeyCommandCast((input_seq), Vec2b))
+#define ftKeyGetStickRange(script) (ftKeyEventCast((script), Vec2b))
 
 #define ftGetComTargetFighter(com) \
 ((FTStruct*)(com)->target_user)

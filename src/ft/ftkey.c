@@ -7,13 +7,13 @@
 // // // // // // // // // // // //
 
 // 0x80115B10
-void ftKeyProcessInputSequence(GObj *fighter_gobj)
+void ftKeyProcessKeyEvents(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     FTComputerInput *cp = &fp->input.cp;
     FTKey *key = &fp->key;
 
-    if (key->input_seq != NULL)
+    if (key->script != NULL)
     {
         if (key->input_wait != 0)
         {
@@ -21,33 +21,33 @@ void ftKeyProcessInputSequence(GObj *fighter_gobj)
         }
         while (TRUE)
         {
-            if ((key->input_seq == NULL) || (key->input_wait > 0))
+            if ((key->script == NULL) || (key->input_wait > 0))
             {
                 break;
             }
-            else key->input_wait = key->input_seq->command.param;
+            else key->input_wait = key->script->command.param;
 
-            switch (key->input_seq->command.opcode)
+            switch (key->script->command.opcode)
             {
-            case nFTKeyCommandEnd:
-                key->input_seq = NULL;
+            case nFTKeyEventEnd:
+                key->script = NULL;
                 break;
 
-            case nFTKeyCommandButton:
-                key->input_seq++;
+            case nFTKeyEventButton:
+                key->script++;
 
-                cp->button_inputs = FTKeyGetButtons(key->input_seq);
+                cp->button_inputs = ftKeyGetButtons(key->script);
 
-                key->input_seq++;
+                key->script++;
                 break;
 
-            case nFTKeyCommandStick:
-                key->input_seq++;
+            case nFTKeyEventStick:
+                key->script++;
 
-                cp->stick_range.x = FTKeyGetStickRange(key->input_seq)->x;
-                cp->stick_range.y = FTKeyGetStickRange(key->input_seq)->y;
+                cp->stick_range.x = ftKeyGetStickRange(key->script)->x;
+                cp->stick_range.y = ftKeyGetStickRange(key->script)->y;
 
-                key->input_seq++;
+                key->script++;
                 break;
             }
         }

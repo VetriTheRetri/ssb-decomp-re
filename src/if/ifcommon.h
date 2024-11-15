@@ -8,6 +8,8 @@
 #include <ft/ftdef.h>
 #include <it/itdef.h>
 
+extern u32 lIFCommonAnnounceCommonLetterFileID;             // 0x00000025               
+
 extern intptr_t lIFCommonPlayerArrowsDObjDesc;              // 0x00000188
 extern intptr_t lIFCommonPlayerArrowsAnimJoint;             // 0x00000270
 

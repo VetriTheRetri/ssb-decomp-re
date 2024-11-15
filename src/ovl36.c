@@ -32,7 +32,7 @@ CObjDesc dMVOpeningMarioCObjDescEnd = {
 };
 
 // 0x8018E0C8
-FTKeyCommand dMVOpeningMarioGameKey[] = {
+FTKeyEvent dMVOpeningMarioGameKey[] = {
 
 	FTKEY_EVENT_STICK(0, 0, 0),                         // 0x2000, 0x0000
 	FTKEY_EVENT_BUTTON(A_BUTTON, 1),                    // 0x1001, 0x8000
@@ -59,34 +59,34 @@ s32 D_ovl36_8018E200;
 s32 D_ovl36_8018E204;
 
 // 0x8018E208
-s32 gMVOpeningMarioFramesElapsed;
+s32 sMVOpeningMarioFramesElapsed;
 
 // 0x8018E20C
-GObj* gMVOpeningMarioNameGObj;
+GObj* sMVOpeningMarioNameGObj;
 
 // 0x8018E210
-GObj* gMVOpeningMarioStageFighterGObj;
+GObj* sMVOpeningMarioStageFighterGObj;
 
 // 0x8018E214
 s32 D_ovl36_8018E214;
 
 // 0x8018E218
-GObj* gMVOpeningMarioStageCameraGObj;
+GObj* sMVOpeningMarioStageCameraGObj;
 
 // 0x8018E21C
-void* gMVOpeningMarioFigatreeHeap;
+void* sMVOpeningMarioFigatreeHeap;
 
 // 0x8018E220
-f32 gMVOpeningMarioPosedFighterYSpeed;
+f32 sMVOpeningMarioPosedFighterYSpeed;
 
 // 0x8018E224
 // s32 D_ovl36_8018E224;
 
 // 0x8018E228
-CObjDesc dMVOpeningMarioCObjDescAdjustedStart;
+CObjDesc dMVOpeningMarioAdjustedStartCObjDesc;
 
 // 0x8018E248
-CObjDesc dMVOpeningMarioCObjDescAdjustedEnd;
+CObjDesc dMVOpeningMarioAdjustedEndCObjDesc;
 
 // 0x8018E268
 LBFileNode D_ovl36_8018E268[48];
@@ -95,10 +95,10 @@ LBFileNode D_ovl36_8018E268[48];
 LBFileNode D_ovl36_8018E3E8[7];
 
 // 0x8018E420
-uintptr_t gMVOpeningMarioFiles[2];
+uintptr_t sMVOpeningMarioFiles[2];
 
 // 0x8018E428
-SCBattleState gMVOpeningMarioBattleState;
+SCBattleState sMVOpeningMarioBattleState;
 
 
 // 0x8018D0C0
@@ -115,7 +115,7 @@ void mvOpeningMarioLoadFiles()
 	rl_setup.force_status_buffer = D_ovl36_8018E3E8;
 	rl_setup.force_status_buffer_size = ARRAY_COUNT(D_ovl36_8018E3E8);
 	lbRelocInitSetup(&rl_setup);
-	lbRelocLoadFilesExtern(D_ovl36_8018E0E8, ARRAY_COUNT(D_ovl36_8018E0E8), gMVOpeningMarioFiles, syTaskmanMalloc(lbRelocGetAllocSize(D_ovl36_8018E0E8, ARRAY_COUNT(D_ovl36_8018E0E8)), 0x10));
+	lbRelocLoadFilesExtern(D_ovl36_8018E0E8, ARRAY_COUNT(D_ovl36_8018E0E8), sMVOpeningMarioFiles, syTaskmanMalloc(lbRelocGetAllocSize(D_ovl36_8018E0E8, ARRAY_COUNT(D_ovl36_8018E0E8)), 0x10));
 }
 
 // 0x8018D160
@@ -147,12 +147,12 @@ void mvOpeningMarioDrawName()
 	};
 	s32 i;
 
-	gMVOpeningMarioNameGObj = name_gobj = gcMakeGObjSPAfter(0, 0, 0x11, GOBJ_PRIORITY_DEFAULT);
+	sMVOpeningMarioNameGObj = name_gobj = gcMakeGObjSPAfter(0, 0, 0x11, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(name_gobj, lbCommonDrawSObjAttr, 0x1B, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	for (i = 0; offsets[i] != 0; i++)
 	{
-		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMVOpeningMarioFiles[0], offsets[i]));
+		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(sMVOpeningMarioFiles[0], offsets[i]));
 		name_sobj->sprite.attr &= ~SP_FASTCOPY;
 		name_sobj->sprite.attr |= SP_TRANSPARENT;
 		name_sobj->pos.x = x_positions[i] + 80.0F;
@@ -167,15 +167,15 @@ void mvOpeningMarioAnimateStageCamera(GObj* camera_gobj)
 {
 	CObj *cobj = CObjGetStruct(camera_gobj);
 
-	if (gMVOpeningMarioFramesElapsed >= 15)
+	if (sMVOpeningMarioFramesElapsed >= 15)
 	{
-		cobj->vec.eye.x += (((dMVOpeningMarioCObjDescAdjustedEnd.eye.x - dMVOpeningMarioCObjDescAdjustedStart.eye.x) / 45.0F));
-		cobj->vec.eye.y += (((dMVOpeningMarioCObjDescAdjustedEnd.eye.y - dMVOpeningMarioCObjDescAdjustedStart.eye.y) / 45.0F));
-		cobj->vec.eye.z += (((dMVOpeningMarioCObjDescAdjustedEnd.eye.z - dMVOpeningMarioCObjDescAdjustedStart.eye.z) / 45.0F));
-		cobj->vec.at.x += (((dMVOpeningMarioCObjDescAdjustedEnd.at.x - dMVOpeningMarioCObjDescAdjustedStart.at.x) / 45.0F));
-		cobj->vec.at.y += (((dMVOpeningMarioCObjDescAdjustedEnd.at.y - dMVOpeningMarioCObjDescAdjustedStart.at.y) / 45.0F));
-		cobj->vec.at.z += (((dMVOpeningMarioCObjDescAdjustedEnd.at.z - dMVOpeningMarioCObjDescAdjustedStart.at.z) / 45.0F));
-		cobj->vec.up.x += (((dMVOpeningMarioCObjDescAdjustedEnd.upx - dMVOpeningMarioCObjDescAdjustedStart.upx) / 45.0F));
+		cobj->vec.eye.x += (((dMVOpeningMarioAdjustedEndCObjDesc.eye.x - dMVOpeningMarioAdjustedStartCObjDesc.eye.x) / 45.0F));
+		cobj->vec.eye.y += (((dMVOpeningMarioAdjustedEndCObjDesc.eye.y - dMVOpeningMarioAdjustedStartCObjDesc.eye.y) / 45.0F));
+		cobj->vec.eye.z += (((dMVOpeningMarioAdjustedEndCObjDesc.eye.z - dMVOpeningMarioAdjustedStartCObjDesc.eye.z) / 45.0F));
+		cobj->vec.at.x += (((dMVOpeningMarioAdjustedEndCObjDesc.at.x - dMVOpeningMarioAdjustedStartCObjDesc.at.x) / 45.0F));
+		cobj->vec.at.y += (((dMVOpeningMarioAdjustedEndCObjDesc.at.y - dMVOpeningMarioAdjustedStartCObjDesc.at.y) / 45.0F));
+		cobj->vec.at.z += (((dMVOpeningMarioAdjustedEndCObjDesc.at.z - dMVOpeningMarioAdjustedStartCObjDesc.at.z) / 45.0F));
+		cobj->vec.up.x += (((dMVOpeningMarioAdjustedEndCObjDesc.upx - dMVOpeningMarioAdjustedStartCObjDesc.upx) / 45.0F));
 	}
 }
 
@@ -184,37 +184,37 @@ void mvOpeningMarioCreateStageViewport(Vec3f arg0)
 {
 	CObj *cobj;
 
-	dMVOpeningMarioCObjDescAdjustedStart = dMVOpeningMarioCObjDescStart;
-	dMVOpeningMarioCObjDescAdjustedEnd = dMVOpeningMarioCObjDescEnd;
+	dMVOpeningMarioAdjustedStartCObjDesc = dMVOpeningMarioCObjDescStart;
+	dMVOpeningMarioAdjustedEndCObjDesc = dMVOpeningMarioCObjDescEnd;
 
-	gMVOpeningMarioStageCameraGObj = func_ovl2_8010DB2C(0);
-	cobj = CObjGetStruct(gMVOpeningMarioStageCameraGObj);
+	sMVOpeningMarioStageCameraGObj = func_ovl2_8010DB2C(0);
+	cobj = CObjGetStruct(sMVOpeningMarioStageCameraGObj);
 	syRdpSetViewport(&cobj->viewport, 110.0F, 10.0F, 310.0F, 230.0F);
 	cobj->projection.persp.aspect = 10.0F / 11.0F;
-	gcEndProcessAll(gMVOpeningMarioStageCameraGObj);
-	gcAddGObjProcess(gMVOpeningMarioStageCameraGObj, mvOpeningMarioAnimateStageCamera, 1, 1);
+	gcEndProcessAll(sMVOpeningMarioStageCameraGObj);
+	gcAddGObjProcess(sMVOpeningMarioStageCameraGObj, mvOpeningMarioAnimateStageCamera, 1, 1);
 
-	dMVOpeningMarioCObjDescAdjustedStart.eye.x += arg0.x;
-	dMVOpeningMarioCObjDescAdjustedStart.eye.y += arg0.y;
-	dMVOpeningMarioCObjDescAdjustedStart.eye.z += arg0.z;
-	dMVOpeningMarioCObjDescAdjustedStart.at.x += arg0.x;
-	dMVOpeningMarioCObjDescAdjustedStart.at.y += arg0.y;
-	dMVOpeningMarioCObjDescAdjustedStart.at.z += arg0.z;
+	dMVOpeningMarioAdjustedStartCObjDesc.eye.x += arg0.x;
+	dMVOpeningMarioAdjustedStartCObjDesc.eye.y += arg0.y;
+	dMVOpeningMarioAdjustedStartCObjDesc.eye.z += arg0.z;
+	dMVOpeningMarioAdjustedStartCObjDesc.at.x += arg0.x;
+	dMVOpeningMarioAdjustedStartCObjDesc.at.y += arg0.y;
+	dMVOpeningMarioAdjustedStartCObjDesc.at.z += arg0.z;
 
-	dMVOpeningMarioCObjDescAdjustedEnd.eye.x += arg0.x;
-	dMVOpeningMarioCObjDescAdjustedEnd.eye.y += arg0.y;
-	dMVOpeningMarioCObjDescAdjustedEnd.eye.z += arg0.z;
-	dMVOpeningMarioCObjDescAdjustedEnd.at.x += arg0.x;
-	dMVOpeningMarioCObjDescAdjustedEnd.at.y += arg0.y;
-	dMVOpeningMarioCObjDescAdjustedEnd.at.z += arg0.z;
+	dMVOpeningMarioAdjustedEndCObjDesc.eye.x += arg0.x;
+	dMVOpeningMarioAdjustedEndCObjDesc.eye.y += arg0.y;
+	dMVOpeningMarioAdjustedEndCObjDesc.eye.z += arg0.z;
+	dMVOpeningMarioAdjustedEndCObjDesc.at.x += arg0.x;
+	dMVOpeningMarioAdjustedEndCObjDesc.at.y += arg0.y;
+	dMVOpeningMarioAdjustedEndCObjDesc.at.z += arg0.z;
 
-	cobj->vec.eye.x = dMVOpeningMarioCObjDescAdjustedStart.eye.x;
-	cobj->vec.eye.y = dMVOpeningMarioCObjDescAdjustedStart.eye.y;
-	cobj->vec.eye.z = dMVOpeningMarioCObjDescAdjustedStart.eye.z;
-	cobj->vec.at.x = dMVOpeningMarioCObjDescAdjustedStart.at.x;
-	cobj->vec.at.y = dMVOpeningMarioCObjDescAdjustedStart.at.y;
-	cobj->vec.at.z = dMVOpeningMarioCObjDescAdjustedStart.at.z;
-	cobj->vec.up.x = dMVOpeningMarioCObjDescAdjustedStart.upx;
+	cobj->vec.eye.x = dMVOpeningMarioAdjustedStartCObjDesc.eye.x;
+	cobj->vec.eye.y = dMVOpeningMarioAdjustedStartCObjDesc.eye.y;
+	cobj->vec.eye.z = dMVOpeningMarioAdjustedStartCObjDesc.eye.z;
+	cobj->vec.at.x = dMVOpeningMarioAdjustedStartCObjDesc.at.x;
+	cobj->vec.at.y = dMVOpeningMarioAdjustedStartCObjDesc.at.y;
+	cobj->vec.at.z = dMVOpeningMarioAdjustedStartCObjDesc.at.z;
+	cobj->vec.up.x = dMVOpeningMarioAdjustedStartCObjDesc.upx;
 }
 
 // 0x8018D614
@@ -229,7 +229,7 @@ void mvOpeningMarioInitFighterStagePanel()
 	grWallpaperMakeDecideKind();
 	grCommonSetupInitAll();
 
-	if (mpCollisionGetMapObjCountKind(nMPMapObjKindMovieSpawn1) != 1)
+	if (mpCollisionGetMapObjCountKind(nMPMapObjKindMovieStart1) != 1)
 	{
 		while (TRUE)
 		{
@@ -238,7 +238,7 @@ void mvOpeningMarioInitFighterStagePanel()
 		}
 	}
 
-	mpCollisionGetMapObjIDsKind(nMPMapObjKindMovieSpawn1, &pos_ids);
+	mpCollisionGetMapObjIDsKind(nMPMapObjKindMovieStart1, &pos_ids);
 	mpCollisionGetMapObjPositionID(pos_ids, &spawn_position);
 	mvOpeningMarioCreateStageViewport(spawn_position);
 	gmRumbleMakeActor();
@@ -269,7 +269,7 @@ void mvOpeningMarioInitFighterStagePanel()
 		spawn_info.controller = &gSYControllerDevices[i];
 		spawn_info.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[i].fkind);
 
-		gMVOpeningMarioStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
+		sMVOpeningMarioStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
 		ftParamInitPlayerBattleStats(i, fighter_gobj);
 		ftParamSetKey(fighter_gobj, dMVOpeningMarioGameKey);
@@ -298,31 +298,31 @@ void mvOpeningMarioCreatePosedFighterBackground()
 // 0x8018D990
 void mvOpeningMarioAnimatePosedFighter(GObj* fighter_gobj)
 {
-	switch (gMVOpeningMarioFramesElapsed)
+	switch (sMVOpeningMarioFramesElapsed)
 	{
 		default:
 			break;
 		case 15:
-			gMVOpeningMarioPosedFighterYSpeed = 17.0F;
+			sMVOpeningMarioPosedFighterYSpeed = 17.0F;
 			break;
 		case 45:
-			gMVOpeningMarioPosedFighterYSpeed = 15.0F;
+			sMVOpeningMarioPosedFighterYSpeed = 15.0F;
 			break;
 		case 60:
-			gMVOpeningMarioPosedFighterYSpeed = 0.0F;
+			sMVOpeningMarioPosedFighterYSpeed = 0.0F;
 			break;
 	}
 
-	if ((gMVOpeningMarioFramesElapsed > 15) && (gMVOpeningMarioFramesElapsed < 45))
+	if ((sMVOpeningMarioFramesElapsed > 15) && (sMVOpeningMarioFramesElapsed < 45))
 	{
-		gMVOpeningMarioPosedFighterYSpeed += -1.0F / 15.0F;
+		sMVOpeningMarioPosedFighterYSpeed += -1.0F / 15.0F;
 	}
-	if ((gMVOpeningMarioFramesElapsed > 45) && (gMVOpeningMarioFramesElapsed < 60))
+	if ((sMVOpeningMarioFramesElapsed > 45) && (sMVOpeningMarioFramesElapsed < 60))
 	{
-		gMVOpeningMarioPosedFighterYSpeed += -1.0F;
+		sMVOpeningMarioPosedFighterYSpeed += -1.0F;
 	}
 
-	DObjGetStruct(fighter_gobj)->translate.vec.f.y -= gMVOpeningMarioPosedFighterYSpeed;
+	DObjGetStruct(fighter_gobj)->translate.vec.f.y -= sMVOpeningMarioPosedFighterYSpeed;
 }
 
 // 0x8018DA60
@@ -333,7 +333,7 @@ void mvOpeningMarioCreatePosedFighter()
 
 	spawn_info.fkind = nFTKindMario;
 	spawn_info.costume = ftParamGetCostumeCommonID(nFTKindMario, 0);
-	spawn_info.figatree_heap = gMVOpeningMarioFigatreeHeap;
+	spawn_info.figatree_heap = sMVOpeningMarioFigatreeHeap;
 	spawn_info.pos.x = 0.0f;
 	spawn_info.pos.y = 600.0f;
 	spawn_info.pos.z = 0.0f;
@@ -363,7 +363,7 @@ void mvOpeningMarioCreatePosedFighterViewport()
 	CObj *cobj = CObjGetStruct(camera_gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 110.0F, 230.0F);
 	cobj->projection.persp.aspect = 5.0F / 11.0F;
-	gcAddCameraCamAnimJoint(cobj, GetAddressFromOffset(gMVOpeningMarioFiles[1], &FILE_041_MARIO_CAMERA_PARAMS_OFFSET), 0.0F);
+	gcAddCameraCamAnimJoint(cobj, GetAddressFromOffset(sMVOpeningMarioFiles[1], &FILE_041_MARIO_CAMERA_PARAMS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
 }
 
@@ -382,7 +382,7 @@ void mvOpeningMarioCreatePosedFighterBackgroundViewport()
 void mvOpeningMarioMainProc(GObj* arg0)
 {
 
-	gMVOpeningMarioFramesElapsed += 1;
+	sMVOpeningMarioFramesElapsed += 1;
 
 	if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE)
 	{
@@ -391,15 +391,15 @@ void mvOpeningMarioMainProc(GObj* arg0)
 		syTaskmanSetLoadScene();
 	}
 
-	if (gMVOpeningMarioFramesElapsed == 15)
+	if (sMVOpeningMarioFramesElapsed == 15)
 	{
-		gcEjectGObj(gMVOpeningMarioNameGObj);
+		gcEjectGObj(sMVOpeningMarioNameGObj);
 		mvOpeningMarioInitFighterStagePanel();
 		mvOpeningMarioCreatePosedFighterBackground();
 		mvOpeningMarioCreatePosedFighter();
 	}
 
-	if (gMVOpeningMarioFramesElapsed == 60)
+	if (sMVOpeningMarioFramesElapsed == 60)
 	{
 		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 		gSCManagerSceneData.scene_curr = 0x1F;
@@ -410,16 +410,16 @@ void mvOpeningMarioMainProc(GObj* arg0)
 // 0x8018DE58
 void mvOpeningMarioInitFramesElapsed()
 {
-	gMVOpeningMarioFramesElapsed = 0;
+	sMVOpeningMarioFramesElapsed = 0;
 }
 
 // 0x8018DE64
 void mvOpeningMarioInit()
 {
-	gMVOpeningMarioBattleState = dSCManagerDefaultBattleState;
-	gSCManagerBattleState = &gMVOpeningMarioBattleState;
+	sMVOpeningMarioBattleState = dSCManagerDefaultBattleState;
+	gSCManagerBattleState = &sMVOpeningMarioBattleState;
 
-	gSCManagerBattleState->game_type = nSCBattleGameTypeOpening;
+	gSCManagerBattleState->game_type = nSCBattleGameTypeMovie;
 
 	gSCManagerBattleState->gkind = nGRKindCastle;
 	gSCManagerBattleState->pl_count = 1;
@@ -442,7 +442,7 @@ void mvOpeningMarioInit()
 	efManagerInitEffects();
 	ftManagerSetupFilesAllKind(nFTKindMario);
 
-	gMVOpeningMarioFigatreeHeap = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
+	sMVOpeningMarioFigatreeHeap = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
 	mvOpeningMarioCreateNameViewport();
 	mvOpeningMarioCreatePosedFighterBackgroundViewport();
 	mvOpeningMarioCreatePosedFighterViewport();

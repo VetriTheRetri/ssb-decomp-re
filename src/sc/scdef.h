@@ -131,59 +131,60 @@
 
 typedef enum SCKind
 {
-	nSCKindNoController,      	  // "No Controller" screen
-	nSCKindTitle,             	  // Title screen
-	nSCKindDebugMaps,      	  	  // Debug stage select
-	nSCKindDebugSystem,      	  // Debug main menu?
-	nSCKindDebugFighters,      	  // Debug character select
-	nSCKindDebugVSResults,    	  // Debug results screen
-	nSCKindDebugUnknown,      	  // Debug joystick test
-	nSCKindModeSelect,            // Main Menu
-	nSCKind1PMode,            	  // 1P mode menu
-	nSCKindVSMode,        		  // VS mode
-	nSCKindVSOptions,         	  // VS mode options
-	nSCKindVSItemSwitch,		  // VS mode item switch
-	nSCKindMessage,		  	      // Unlock message 
-	nSCKind1PChallenger,   		  // Challenger approaching
-	nSCKind1PStageCard,       	  // 1P game "[player] VS [opponent]" screen
-	nSCKindScreenAdjust,      	  // Screen adjust
-	nSCKindVSFighters,            // VS mode character select
-	nSCKind1PGameFighters,		  // 1P game character select
-	nSCKind1PTrainingFighters,    // Training mode character select
-	nSCKind1PBonus1Fighters,      // Bonus 1 practice character select
-	nSCKind1PBonus2Fighters,      // Bonus 2 practice character select
-	nSCKindStages,     	  		  // VS mode map select
-	nSCKindVSBattle,          	  // VS mode in-game
-	nSCKindUnknownMario,	   	  // Unknown movie sequence with Mario?
-	nSCKindVSResults,    	  	  // VS mode results
-	nSCKindVSRecord,          	  // Records screen
-	nSCKindDataCharacters,        	  // Character data screen
-	nSCKindN64,               	  // N64 logo
-	nSCKindOpeningRoom,       	  // Room with Master Hand and figures coming to life
-	nSCKindOpeningFox = 33,		  // Fox demo
-	nSCKindOpeningYoster = 39,	  // Yoshis in nest with eggs on Yoshi's Island
-	nSCKindOpeningCliff,	      // Link on dark hill
-	nSCKindOpeningStandoff = 41,  // Dark plains with Mario and Kirby in a standoff
-	nSCKindOpeningYamabuki,  	  // Pikachu rocking on Poké Ball
-	nSCKindOpeningClash,          // Characters clashing with each other, doing Neutral Aerials
-	nSCKindOpeningSector,		  // Great Fox, Arwings and Fox scene
-	nSCKindOpeningJungle,	      // DK VS Samus scene
-	nSCKindOpeningNewcomers,      // Last intro scene with hidden characters
-	nSCKindBackupClear,  	      // Save data clear
-	nSCKindEnding,            	  // Ending cutscene
-	nSCKind1PContinue,        	  // "Continue?" screen
-	nSCKind1PScoreUnk,   	  	  // Stage clear bonus thing?
-	nSCKind1PStageClear, 		  // Stage clear bonus score
-	nSCKind1PGame,            	  // 1P Game logic loop
-	nSCKind1PBonusStage,       	  // Bonus game in-game
-	nSCKind1PTraining,    		  // Training mode in-game
-	nSCKindCongra,	 		  	  // Congratulations screen
-	nSCKindStaffroll,             // Credits scene
-	nSCKindOption,           	  // Options menu
-	nSCKindData,              	  // Data menu
-	nSCKindSoundTest,        	  // Sound Test
-	nSCKindExplain,         	  // How to Play
-	nSCKindAutoDemo               // Auto-Demo
+	nSCKindNoController,      	  	// "No Controller" screen
+	nSCKindTitle,             	  	// Title screen
+	nSCKindDebugMaps,      	  	  	// Debug stage select
+	nSCKindDebugSystem,      	  	// Debug main menu?
+	nSCKindDebugFighters,      	  	// Debug character select
+	nSCKindDebugVSResults,    	  	// Debug results screen
+	nSCKindDebugUnknown,      	  	// Debug joystick test
+	nSCKindModeSelect,            	// Main Menu
+	nSCKind1PMode,            	  	// 1P mode menu
+	nSCKindVSMode,        		  	// VS mode
+	nSCKindVSOptions,         	  	// VS mode options
+	nSCKindVSItemSwitch,		  	// VS mode item switch
+	nSCKindMessage,		  	      	// Unlock message 
+	nSCKind1PChallenger,   		  	// Challenger approaching
+	nSCKind1PStageCard,       	  	// 1P game "[player] VS [opponent]" screen
+	nSCKindScreenAdjust,      	  	// Screen adjust
+	nSCKindVSFighters,            	// VS mode character select
+	nSCKind1PGameFighters,		  	// 1P game character select
+	nSCKind1PTrainingFighters,    	// Training mode character select
+	nSCKind1PBonus1Fighters,      	// Bonus 1 practice character select
+	nSCKind1PBonus2Fighters,      	// Bonus 2 practice character select
+	nSCKindStages,     	  		  	// VS mode map select
+	nSCKindVSBattle,          	  	// VS mode in-game
+	nSCKindUnknownMario,	   	  	// Unknown movie sequence with Mario?
+	nSCKindVSResults,    	  	  	// VS mode results
+	nSCKindVSRecord,          	  	// Records screen
+	nSCKindDataCharacters,        	// Character data screen
+	nSCKindN64,               	  	// N64 logo
+	nSCKindOpeningRoom,       	  	// Room with Master Hand and figures coming to life
+	nSCKindOpeningFox = 33,		  	// Fox opening scene
+	nSCKindOpeningRun = 38,			// Characters running on purple background
+	nSCKindOpeningYoster,	  		// Yoshis in nest with eggs on Yoshi's Island
+	nSCKindOpeningCliff,	      	// Link on dark hill
+	nSCKindOpeningStandoff,			// Dark plains with Mario and Kirby in a standoff
+	nSCKindOpeningYamabuki,  	  	// Pikachu rocking on Poké Ball
+	nSCKindOpeningClash,          	// Characters clashing with each other, doing Neutral Aerials
+	nSCKindOpeningSector,		  	// Great Fox, Arwings and Fox scene
+	nSCKindOpeningJungle,	      	// DK VS Samus scene
+	nSCKindOpeningNewcomers,      	// Last intro scene with hidden characters
+	nSCKindBackupClear,  	      	// Save data clear
+	nSCKindEnding,            	  	// Ending movie
+	nSCKind1PContinue,        	  	// "Continue?" screen
+	nSCKind1PScoreUnk,   	  	  	// Stage clear bonus thing?
+	nSCKind1PStageClear, 		  	// Stage clear bonus score
+	nSCKind1PGame,            	  	// 1P Game logic loop
+	nSCKind1PBonusStage,       	  	// Bonus game in-game
+	nSCKind1PTraining,    		  	// Training mode in-game
+	nSCKindCongra,	 		  	  	// Congratulations screen
+	nSCKindStaffroll,             	// Credits scene
+	nSCKindOption,           	  	// Options menu
+	nSCKindData,              	  	// Data menu
+	nSCKindSoundTest,        	  	// Sound Test
+	nSCKindExplain,         	  	// How to Play
+	nSCKindAutoDemo               	// Auto-Demo
 
 } SCKind;
 
@@ -254,7 +255,7 @@ typedef enum SCBattleGameType
 	nSCBattleGameTypeRoyal,        	// 0x1
 	nSCBattleGameTypeBonus,         // 0x2
 	nSCBattleGameTypeExplain,       // 0x3
-	nSCBattleGameTypeOpening,       // 0x4
+	nSCBattleGameTypeMovie,       // 0x4
 	nSCBattleGameType1PGame,        // 0x5
 	nSCBattleGameTypeUnk6,          // 0x6
 	nSCBattleGameTypeTraining   	// 0x7

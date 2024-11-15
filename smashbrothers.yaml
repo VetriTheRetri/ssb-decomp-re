@@ -1527,10 +1527,10 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x16CE70, c, ovl42]
-      - [0x16DE70, .data, ovl42]
-      - [0x16DFA0, .rodata, ovl42]
-      - { start: auto, type: .bss, vram: 0x8018E220, name: ovl42 }
+      - [0x16CE70, c, mv/mvopening/mvopeningpikachu]
+      - [0x16DE70, .data, mv/mvopening/mvopeningpikachu]
+      - [0x16DFA0, .rodata, mv/mvopening/mvopeningpikachu]
+      - { start: auto, type: .bss, name: mv/mvopening/mvopeningpikachu, vram: 0x8018E220 }
 
   - name: ovl43
     type: code
@@ -1699,9 +1699,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x17ECC0, c, mn/mncommon/mnn64]
-      - [0x17F110, .data, mn/mncommon/mnn64]
-      - { start: auto, type: .bss, name: mn/mncommon/mnn64, vram: 0x80132040 }
+      - [0x17ECC0, c, mn/mncommon/mnstartup]
+      - [0x17F110, .data, mn/mncommon/mnstartup]
+      - { start: auto, type: .bss, name: mn/mncommon/mnstartup, vram: 0x80132040 }
 
   - name: ovl59
     type: code

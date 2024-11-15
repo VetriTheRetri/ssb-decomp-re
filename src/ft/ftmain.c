@@ -1253,7 +1253,7 @@ void ftMainProcInterruptMain(GObj *fighter_gobj)
 
         case nFTPlayerKindKey:
         case nFTPlayerKindGameKey:
-            ftKeyProcessInputSequence(fighter_gobj);
+            ftKeyProcessKeyEvents(fighter_gobj);
 
         next:
             cp = &this_fp->input.cp;

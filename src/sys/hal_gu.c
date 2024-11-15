@@ -14,7 +14,7 @@
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunknown-pragmas"
 
-void syMatrixF2L(Mtx4f *src, Mtx *dst)
+void syMatrixF2L(Mtx44f *src, Mtx *dst)
 {
     u32 e1, e2;
 
@@ -53,7 +53,7 @@ void syMatrixF2L(Mtx4f *src, Mtx *dst)
 }
 
 // Same as above, but assumes column 3 is (0, 0, 0, 1)
-void syMatrixF2LFixedW(Mtx4f *src, Mtx *dst) 
+void syMatrixF2LFixedW(Mtx44f *src, Mtx *dst) 
 {
     u32 e1, e2;
 
@@ -119,7 +119,7 @@ s32 fast___cosf(f32 x)
 // with explicit float constants and other slight modifications.
 
 void syMatrixLookAtF(
-    Mtx4f *mf,
+    Mtx44f *mf,
     f32 xEye,
     f32 yEye,
     f32 zEye,
@@ -193,7 +193,7 @@ void syMatrixLookAt(
     f32 xUp,
     f32 yUp,
     f32 zUp) {
-    Mtx4f mf;
+    Mtx44f mf;
 
     syMatrixLookAtF(&mf, xEye, yEye, zEye, xAt, yAt, zAt, xUp, yUp, zUp);
 
@@ -202,7 +202,7 @@ void syMatrixLookAt(
 
 // Modified version of guLookAtF that takes an extra f32 argument and calls func_80019438
 void syMatrixModLookAtF(
-    Mtx4f *mf,
+    Mtx44f *mf,
     f32 xEye,
     f32 yEye,
     f32 zEye,
@@ -279,7 +279,7 @@ void syMatrixModLookAt(
     f32 xUp,
     f32 yUp,
     f32 zUp) {
-    Mtx4f mf;
+    Mtx44f mf;
 
     syMatrixModLookAtF(&mf, xEye, yEye, zEye, xAt, yAt, zAt, arg7, xUp, yUp, zUp);
 
@@ -288,7 +288,7 @@ void syMatrixModLookAt(
 
 // modified like hal's version of guLookAtF
 void syMatrixLookAtReflectF(
-    Mtx4f *mf,
+    Mtx44f *mf,
     LookAt *l,
     f32 xEye,
     f32 yEye,
@@ -389,7 +389,7 @@ void syMatrixLookAtReflect(
     f32 xUp,
     f32 yUp,
     f32 zUp) {
-    Mtx4f mf;
+    Mtx44f mf;
 
     syMatrixLookAtReflectF(&mf, l, xEye, yEye, zEye, xAt, yAt, zAt, xUp, yUp, zUp);
 
@@ -397,7 +397,7 @@ void syMatrixLookAtReflect(
 }
 
 void syMatrixModLookAtReflect_f(
-    Mtx4f *mf,
+    Mtx44f *mf,
     LookAt *l,
     f32 xEye,
     f32 yEye,
@@ -503,14 +503,14 @@ void syMatrixModLookAtReflect(
     f32 xUp,
     f32 yUp,
     f32 zUp) {
-    Mtx4f mf;
+    Mtx44f mf;
 
     syMatrixModLookAtReflect_f(&mf, l, xEye, yEye, zEye, xAt, yAt, zAt, arg8, xUp, yUp, zUp);
 
     syMatrixF2L(&mf, m);
 }
 
-void syMatrixOrthoF(Mtx4f *mf, f32 l, f32 r, f32 b, f32 t, f32 n, f32 f, f32 scale) {
+void syMatrixOrthoF(Mtx44f *mf, f32 l, f32 r, f32 b, f32 t, f32 n, f32 f, f32 scale) {
     s32 i, j;
 
     (*mf)[0][0] = 2 / (r - l);
@@ -534,7 +534,7 @@ void syMatrixOrthoF(Mtx4f *mf, f32 l, f32 r, f32 b, f32 t, f32 n, f32 f, f32 sca
 }
 
 void syMatrixOrtho(Mtx *m, f32 l, f32 r, f32 b, f32 t, f32 n, f32 f, f32 scale) {
-    Mtx4f mf;
+    Mtx44f mf;
 
     syMatrixOrthoF(&mf, l, r, b, t, n, f, scale);
 
@@ -543,7 +543,7 @@ void syMatrixOrtho(Mtx *m, f32 l, f32 r, f32 b, f32 t, f32 n, f32 f, f32 scale) 
 
 // this function seems to have larger changes than the prior `gu` functions
 void syMatrixPerspFastF(
-    Mtx4f mf,
+    Mtx44f mf,
     u16* perspNorm,
     f32 fovy,
     f32 aspect,
@@ -614,7 +614,7 @@ void syMatrixPerspFast(
     f32 near,
     f32 far,
     f32 scale) {
-    Mtx4f mf;
+    Mtx44f mf;
 
     syMatrixPerspFastF(&mf, perspNorm, fovy, aspect, near, far, scale);
 
@@ -622,7 +622,7 @@ void syMatrixPerspFast(
 }
 
 void syMatrixPerspF(
-    Mtx4f mf,
+    Mtx44f mf,
     u16* perspNorm,
     f32 fovy,
     f32 aspect,
@@ -675,14 +675,14 @@ void syMatrixPerspF(
 
 
 void hal_perspective(Mtx *m, u16 *perspNorm, f32 fovy, f32 aspect, f32 near, f32 far, f32 scale) {
-    Mtx4f mf;
+    Mtx44f mf;
 
     syMatrixPerspF(&mf, perspNorm, fovy, aspect, near, far, scale);
 
     syMatrixF2L(&mf, m);
 }
 
-void syMatrixScaF(Mtx4f *mf, f32 x, f32 y, f32 z) {
+void syMatrixScaF(Mtx44f *mf, f32 x, f32 y, f32 z) {
     s32 i, j;
 
     (*mf)[0][0] = x;
@@ -729,7 +729,7 @@ void syMatrixSca(Mtx *m, f32 x, f32 y, f32 z) {
     m->m[3][3] = 0;
 }
 
-void hal_rowscale_f(Mtx4f *mf, f32 x, f32 y, f32 z) {
+void hal_rowscale_f(Mtx44f *mf, f32 x, f32 y, f32 z) {
     s32 j;
 
     for (j = 0; j < 4; j++) {
@@ -745,7 +745,7 @@ void hal_rowscale_f(Mtx4f *mf, f32 x, f32 y, f32 z) {
     }
 }
 
-void syMatrixTraF(Mtx4f *mf, f32 x, f32 y, f32 z) {
+void syMatrixTraF(Mtx44f *mf, f32 x, f32 y, f32 z) {
     int i, j;
 
     (*mf)[3][0] = x;
@@ -814,7 +814,7 @@ void syMatrixTranslate(Mtx *m, f32 x, f32 y, f32 z) {
 #endif
 
 // takes radians instead of degrees
-void syMatrixRotR_f(Mtx4f *mf, f32 a, f32 x, f32 y, f32 z) {
+void syMatrixRotR_f(Mtx44f *mf, f32 a, f32 x, f32 y, f32 z) {
     f32 sine;
     f32 cosine;
     f32 ab, bc, ca, t;
@@ -853,14 +853,14 @@ void syMatrixRotR_f(Mtx4f *mf, f32 a, f32 x, f32 y, f32 z) {
 }
 
 void syMatrixRotR(Mtx *m, f32 a, f32 x, f32 y, f32 z) {
-    Mtx4f mf;
+    Mtx44f mf;
 
     syMatrixRotR_f(&mf, a, x, y, z);
 
     syMatrixF2LFixedW(&mf, m);
 }
 
-void syMatrixRotR_translate_f(Mtx4f *mf, f32 dx, f32 dy, f32 dz, f32 angle, f32 rx, f32 ry, f32 rz) {
+void syMatrixRotR_translate_f(Mtx44f *mf, f32 dx, f32 dy, f32 dz, f32 angle, f32 rx, f32 ry, f32 rz) {
     syMatrixRotR_f(mf, angle, rx, ry, rz);
     (*mf)[3][0] = dx;
     (*mf)[3][1] = dy;
@@ -868,14 +868,14 @@ void syMatrixRotR_translate_f(Mtx4f *mf, f32 dx, f32 dy, f32 dz, f32 angle, f32 
 }
 
 void syMatrixRotR_translate(Mtx *m, f32 dx, f32 dy, f32 dz, f32 angle, f32 rx, f32 ry, f32 rz) {
-    Mtx4f mf;
+    Mtx44f mf;
 
     syMatrixRotR_translate_f(&mf, dx, dy, dz, angle, rx, ry, rz);
     syMatrixF2LFixedW(&mf, m);
 }
 
 void syMatrixTraRotRSca_f(
-    Mtx4f *mf,
+    Mtx44f *mf,
     f32 dx,
     f32 dy,
     f32 dz,
@@ -905,14 +905,14 @@ void syMatrixTraRotRSca(
     f32 sx,
     f32 sy,
     f32 sz) {
-    Mtx4f mf;
+    Mtx44f mf;
 
     syMatrixTraRotRSca_f(&mf, dx, dy, dz, angle, rx, ry, rz, sx, sy, sz);
     syMatrixF2LFixedW(&mf, m);
 }
 
 // Return rotation matrix given roll, pitch, and yaw in radians
-void syMatrixRotRpyRF(Mtx4f *mf, f32 r, f32 p, f32 h) {
+void syMatrixRotRpyRF(Mtx44f *mf, f32 r, f32 p, f32 h) {
     f32 sinr, sinp, sinh;
     f32 cosr, cosp, cosh;
 
@@ -1015,7 +1015,7 @@ void syMatrixRotRpyR(Mtx *m, f32 r, f32 p, f32 h) {
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/hal_gu/syMatrixRotRpyR.s")
 #endif
 
-void syMatrixTraRotRpyR_f(Mtx4f *mf, f32 dx, f32 dy, f32 dz, f32 r, f32 p, f32 h) {
+void syMatrixTraRotRpyR_f(Mtx44f *mf, f32 dx, f32 dy, f32 dz, f32 r, f32 p, f32 h) {
     syMatrixRotRpyRF(mf, r, p, h);
     (*mf)[3][0] = dx;
     (*mf)[3][1] = dy;
@@ -1097,7 +1097,7 @@ void syMatrixTraRotRpyR(Mtx *m, f32 dx, f32 dy, f32 dz, f32 r, f32 p, f32 h) {
 #endif
 
 void syMatrixTraRotRpyRScaF(
-    Mtx4f *mf,
+    Mtx44f *mf,
     f32 dx,
     f32 dy,
     f32 dz,
@@ -1201,7 +1201,7 @@ void syMatrixTraRotRpyRSca(
 #endif
 
 // pitch yaw roll; i think...
-void syMatrixRotPyrR_f(Mtx4f *mf, f32 r, f32 p, f32 h) {
+void syMatrixRotPyrR_f(Mtx44f *mf, f32 r, f32 p, f32 h) {
     f32 sinr, sinp, sinh;
     f32 cosr, cosp, cosh;
     UNUSED u32 pad[4];
@@ -1236,13 +1236,13 @@ void syMatrixRotPyrR_f(Mtx4f *mf, f32 r, f32 p, f32 h) {
 }
 
 void syMatrixRotPyrR(Mtx *m, f32 r, f32 p, f32 h) {
-    Mtx4f mf;
+    Mtx44f mf;
 
     syMatrixRotPyrR_f(&mf, r, p, h);
     syMatrixF2LFixedW(&mf, m);
 }
 
-void syMatrixTraRotPyrR_f(Mtx4f *mf, f32 dx, f32 dy, f32 dz, f32 r, f32 p, f32 h) {
+void syMatrixTraRotPyrR_f(Mtx44f *mf, f32 dx, f32 dy, f32 dz, f32 r, f32 p, f32 h) {
     syMatrixRotPyrR_f(mf, r, p, h);
     (*mf)[3][0] = dx;
     (*mf)[3][1] = dy;
@@ -1250,14 +1250,14 @@ void syMatrixTraRotPyrR_f(Mtx4f *mf, f32 dx, f32 dy, f32 dz, f32 r, f32 p, f32 h
 }
 
 void syMatrixTraRotPyrR(Mtx *m, f32 dx, f32 dy, f32 dz, f32 r, f32 p, f32 h) {
-    Mtx4f mf;
+    Mtx44f mf;
 
     syMatrixTraRotPyrR_f(&mf, dx, dy, dz, r, p, h);
     syMatrixF2LFixedW(&mf, m);
 }
 
 void syMatrixTraRotPyrRSca_f(
-    Mtx4f *mf,
+    Mtx44f *mf,
     f32 dx,
     f32 dy,
     f32 dz,
@@ -1285,14 +1285,14 @@ void syMatrixTraRotPyrRSca(
     f32 sx,
     f32 sy,
     f32 sz) {
-    Mtx4f mf;
+    Mtx44f mf;
 
     syMatrixTraRotPyrRSca_f(&mf, dx, dy, dz, r, p, h, sx, sy, sz);
     syMatrixF2LFixedW(&mf, m);
 }
 
 // rotate pitch yaw?
-void syMatrixRotR_py_f(Mtx4f *mf, f32 p, f32 h) {
+void syMatrixRotR_py_f(Mtx44f *mf, f32 p, f32 h) {
     f32 sinp, sinh;
     f32 cosp, cosh;
 
@@ -1319,13 +1319,13 @@ void syMatrixRotR_py_f(Mtx4f *mf, f32 p, f32 h) {
 }
 
 void syMatrixRotR_py(Mtx *m, f32 p, f32 h) {
-    Mtx4f mf;
+    Mtx44f mf;
 
     syMatrixRotR_py_f(&mf, p, h);
     syMatrixF2LFixedW(&mf, m);
 }
 
-void syMatrixRotR_py_translate_f(Mtx4f *mf, f32 dx, f32 dy, f32 dz, f32 p, f32 h) {
+void syMatrixRotR_py_translate_f(Mtx44f *mf, f32 dx, f32 dy, f32 dz, f32 p, f32 h) {
     syMatrixRotR_py_f(mf, p, h);
     (*mf)[3][0] = dx;
     (*mf)[3][1] = dy;
@@ -1333,14 +1333,14 @@ void syMatrixRotR_py_translate_f(Mtx4f *mf, f32 dx, f32 dy, f32 dz, f32 p, f32 h
 }
 
 void syMatrixRotR_py_translate(Mtx *m, f32 dx, f32 dy, f32 dz, f32 p, f32 h) {
-    Mtx4f mf;
+    Mtx44f mf;
 
     syMatrixRotR_py_translate_f(&mf, dx, dy, dz, p, h);
     syMatrixF2LFixedW(&mf, m);
 }
 
 // roll pitch
-void syMatrixRotR_rp_f(Mtx4f *mf, f32 r, f32 p) {
+void syMatrixRotR_rp_f(Mtx44f *mf, f32 r, f32 p) {
     f32 sinr, sinp;
     f32 cosr, cosp;
 
@@ -1367,13 +1367,13 @@ void syMatrixRotR_rp_f(Mtx4f *mf, f32 r, f32 p) {
 }
 
 void syMatrixRotR_rp(Mtx *m, f32 p, f32 h) {
-    Mtx4f mf;
+    Mtx44f mf;
 
     syMatrixRotR_rp_f(&mf, p, h);
     syMatrixF2LFixedW(&mf, m);
 }
 
-void syMatrixRotR_rp_translate_f(Mtx4f *mf, f32 dx, f32 dy, f32 dz, f32 r, f32 p) {
+void syMatrixRotR_rp_translate_f(Mtx44f *mf, f32 dx, f32 dy, f32 dz, f32 r, f32 p) {
     syMatrixRotR_rp_f(mf, r, p);
     (*mf)[3][0] = dx;
     (*mf)[3][1] = dy;
@@ -1381,14 +1381,14 @@ void syMatrixRotR_rp_translate_f(Mtx4f *mf, f32 dx, f32 dy, f32 dz, f32 r, f32 p
 }
 
 void syMatrixRotR_rp_translate(Mtx *m, f32 dx, f32 dy, f32 dz, f32 r, f32 p) {
-    Mtx4f mf;
+    Mtx44f mf;
 
     syMatrixRotR_rp_translate_f(&mf, dx, dy, dz, r, p);
     syMatrixF2LFixedW(&mf, m);
 }
 
 // this has to be a fake matching, but whatever: it's unused
-void syMatrixRotR_yaw_f(Mtx4f *mf, f32 h) {
+void syMatrixRotR_yaw_f(Mtx44f *mf, f32 h) {
     f32 sinh;
     f32 cosh;
 
@@ -1419,13 +1419,13 @@ void syMatrixRotR_yaw_f(Mtx4f *mf, f32 h) {
 }
 
 void syMatrixRotR_yaw(Mtx *m, f32 h) {
-    Mtx4f mf;
+    Mtx44f mf;
 
     syMatrixRotR_yaw_f(&mf, h);
     syMatrixF2LFixedW(&mf, m);
 }
 
-void syMatrixRotR_yaw_translate_f(Mtx4f *mf, f32 dx, f32 dy, f32 dz, f32 h) {
+void syMatrixRotR_yaw_translate_f(Mtx44f *mf, f32 dx, f32 dy, f32 dz, f32 h) {
     syMatrixRotR_yaw_f(mf, h);
     (*mf)[3][0] = dx;
     (*mf)[3][1] = dy;
@@ -1433,13 +1433,13 @@ void syMatrixRotR_yaw_translate_f(Mtx4f *mf, f32 dx, f32 dy, f32 dz, f32 h) {
 }
 
 void syMatrixRotR_yaw_translate(Mtx *m, f32 dx, f32 dy, f32 dz, f32 h) {
-    Mtx4f mf;
+    Mtx44f mf;
 
     syMatrixRotR_yaw_translate_f(&mf, dx, dy, dz, h);
     syMatrixF2LFixedW(&mf, m);
 }
 
-void syMatrixRotR_pitch_f(Mtx4f *mf, f32 p) {
+void syMatrixRotR_pitch_f(Mtx44f *mf, f32 p) {
     f32 sinp;
     f32 cosp;
 
@@ -1471,13 +1471,13 @@ void syMatrixRotR_pitch_f(Mtx4f *mf, f32 p) {
 }
 
 void syMatrixRotR_pitch(Mtx *m, f32 p) {
-    Mtx4f mf;
+    Mtx44f mf;
 
     syMatrixRotR_pitch_f(&mf, p);
     syMatrixF2LFixedW(&mf, m);
 }
 
-void syMatrixRotR_pitch_translate_f(Mtx4f *mf, f32 dx, f32 dy, f32 dz, f32 p) {
+void syMatrixRotR_pitch_translate_f(Mtx44f *mf, f32 dx, f32 dy, f32 dz, f32 p) {
     syMatrixRotR_pitch_f(mf, p);
     (*mf)[3][0] = dx;
     (*mf)[3][1] = dy;
@@ -1485,25 +1485,25 @@ void syMatrixRotR_pitch_translate_f(Mtx4f *mf, f32 dx, f32 dy, f32 dz, f32 p) {
 }
 
 void syMatrixRotR_pitch_translate(Mtx *m, f32 dx, f32 dy, f32 dz, f32 p) {
-    Mtx4f mf;
+    Mtx44f mf;
 
     syMatrixRotR_pitch_translate_f(&mf, dx, dy, dz, p);
     syMatrixF2LFixedW(&mf, m);
 }
 
-void syMatrixRotR_f_degrees(Mtx4f *mf, f32 a, f32 x, f32 y, f32 z) {
+void syMatrixRotR_f_degrees(Mtx44f *mf, f32 a, f32 x, f32 y, f32 z) {
     syMatrixRotR_f(mf, (a * M_PI_F) / 180.0f, x, y, z);
 }
 
 void syMatrixRotD(Mtx *m, f32 a, f32 x, f32 y, f32 z) {
-    Mtx4f mf;
+    Mtx44f mf;
 
     syMatrixRotR_f(&mf, (a * M_PI_F) / 180.0f, x, y, z);
     syMatrixF2LFixedW(&mf, m);
 }
 
 void syMatrixRotR_translate_f_degrees(
-    Mtx4f *mf,
+    Mtx44f *mf,
     f32 dx,
     f32 dy,
     f32 dz,
@@ -1515,30 +1515,30 @@ void syMatrixRotR_translate_f_degrees(
 }
 
 void syMatrixTraRotD(Mtx *m, f32 dx, f32 dy, f32 dz, f32 a, f32 rx, f32 ry, f32 rz) {
-    Mtx4f mf;
+    Mtx44f mf;
 
     syMatrixRotR_translate_f(&mf, dx, dy, dz, (a * M_PI_F) / 180.0f, rx, ry, rz);
     syMatrixF2LFixedW(&mf, m);
 }
 
-void syMatrixRotRpyRF_degrees(Mtx4f *mf, f32 r, f32 p, f32 h) {
+void syMatrixRotRpyRF_degrees(Mtx44f *mf, f32 r, f32 p, f32 h) {
     syMatrixRotRpyRF(mf, (r * M_PI_F) / 180.0f, (p * M_PI_F) / 180.0f, (h * M_PI_F) / 180.0f);
 }
 
 void syMatrixRotRpyD(Mtx *m, f32 r, f32 p, f32 h) {
-    Mtx4f mf;
+    Mtx44f mf;
 
     syMatrixRotRpyRF(&mf, (r * M_PI_F) / 180.0f, (p * M_PI_F) / 180.0f, (h * M_PI_F) / 180.0f);
     syMatrixF2LFixedW(&mf, m);
 }
 
-void syMatrixTraRotRpyR_f_degrees(Mtx4f *mf, f32 dx, f32 dy, f32 dz, f32 r, f32 p, f32 h) {
+void syMatrixTraRotRpyR_f_degrees(Mtx44f *mf, f32 dx, f32 dy, f32 dz, f32 r, f32 p, f32 h) {
     syMatrixTraRotRpyR_f(
         mf, dx, dy, dz, (r * M_PI_F) / 180.0f, (p * M_PI_F) / 180.0f, (h * M_PI_F) / 180.0f);
 }
 
 void syMatrixTraRotRpyD(Mtx *m, f32 dx, f32 dy, f32 dz, f32 r, f32 p, f32 h) {
-    Mtx4f mf;
+    Mtx44f mf;
 
     syMatrixTraRotRpyR_f(
         &mf, dx, dy, dz, (r * M_PI_F) / 180.0f, (p * M_PI_F) / 180.0f, (h * M_PI_F) / 180.0f);

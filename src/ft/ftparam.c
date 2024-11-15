@@ -1332,12 +1332,12 @@ sb32 ftParamCheckSetSkeletonColAnimID(GObj *fighter_gobj, s32 colanim_id)
 }
 
 // 0x800E9B30 - Set automatic input sequence
-void ftParamSetKey(GObj *fighter_gobj, FTKeyCommand *input_seq)
+void ftParamSetKey(GObj *fighter_gobj, FTKeyEvent *script)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->key.input_wait = 0;
-    fp->key.input_seq = input_seq;
+    fp->key.script = script;
 }
 
 // 0x800E9B40 - Check if automatic input sequence exists
@@ -1345,7 +1345,7 @@ sb32 ftParamCheckHaveKey(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->key.input_seq != NULL)
+    if (fp->key.script != NULL)
     {
         return TRUE;
     }

@@ -58,7 +58,7 @@ extern void ftParamResetColAnim(GMColAnim *colanim);
 extern void ftParamResetFighterColAnim(GObj *fighter_gobj);
 extern void ftParamResetStatUpdateColAnim(GObj *fighter_gobj);
 extern sb32 ftParamCheckSetSkeletonColAnimID(GObj *fighter_gobj, s32 colanim_id);
-extern void ftParamSetKey(GObj *fighter_gobj, FTKeyCommand *input_seq);
+extern void ftParamSetKey(GObj *fighter_gobj, FTKeyEvent *script);
 extern sb32 ftParamCheckHaveKey(GObj *fighter_gobj);
 extern void ftParamRunProcEffect(GObj *fighter_gobj, void (*proc)(GObj*, EFStruct*));
 extern void ftParamStopEffect(GObj *effect_gobj, EFStruct *ep);

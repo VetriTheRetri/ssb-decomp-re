@@ -894,7 +894,7 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
     }
     if ((fp->pkind == nFTPlayerKindKey) || (fp->pkind == nFTPlayerKindGameKey))
     {
-        fp->key.input_seq = NULL;
+        fp->key.script = NULL;
         fp->key.input_wait = 0;
     }
     switch (fp->pkind)

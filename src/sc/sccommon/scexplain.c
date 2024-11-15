@@ -67,12 +67,12 @@ intptr_t dSCExplainStickMatAnimJoints[/* */] =
 };
 
 // 0x8018E710
-intptr_t dSCExplainKeyInputSequences[/* */] = 
+intptr_t dSCExplainKeyKeyEventss[/* */] = 
 {
-    &lSCExplainKeyInputSequence0,
-    &lSCExplainKeyInputSequence1,
-    &lSCExplainKeyInputSequence2,
-    &lSCExplainKeyInputSequence3
+    &lSCExplainKeyKeyEvents0,
+    &lSCExplainKeyKeyEvents1,
+    &lSCExplainKeyKeyEvents2,
+    &lSCExplainKeyKeyEvents3
 };
 
 // 0x8018E720
@@ -783,9 +783,9 @@ void scExplainFuncStart(void)
             fighter_gobj,
             lbRelocGetFileData
             (
-                FTKeyCommand*,
+                FTKeyEvent*,
                 sSCExplainMainFileHead,
-                dSCExplainKeyInputSequences[player]
+                dSCExplainKeyKeyEventss[player]
             )
         );
     }

@@ -109,9 +109,9 @@
 #define FTCOMPUTER_EVENT_END()                  (FTCOMPUTER_COMMAND_END)
 
 #define FTKEY_EVENT_INSTRUCTION(k, t)       ( ((((k) << 12) & 0xF000) | ((t) & 0xFFF)) & U16_MAX )
-#define FTKEY_EVENT_STICK(x, y, t)          FTKEY_EVENT_INSTRUCTION(nFTKeyCommandStick, t), (((((x) << 8) & 0xFF00) | (((y) << 0) & 0x00FF)) & U16_MAX)
-#define FTKEY_EVENT_BUTTON(b, t)            FTKEY_EVENT_INSTRUCTION(nFTKeyCommandButton, t), ((b) & U16_MAX)
-#define FTKEY_EVENT_END()                   FTKEY_EVENT_INSTRUCTION(nFTKeyCommandEnd, 0)
+#define FTKEY_EVENT_STICK(x, y, t)          FTKEY_EVENT_INSTRUCTION(nFTKeyEventStick, t), (((((x) << 8) & 0xFF00) | (((y) << 0) & 0x00FF)) & U16_MAX)
+#define FTKEY_EVENT_BUTTON(b, t)            FTKEY_EVENT_INSTRUCTION(nFTKeyEventButton, t), ((b) & U16_MAX)
+#define FTKEY_EVENT_END()                   FTKEY_EVENT_INSTRUCTION(nFTKeyEventEnd, 0)
 
 #define ftMotionEventAdvance(event, type) ((event)->p_script = (void*)((uintptr_t)(event)->p_script + (sizeof(type))))
 
@@ -1112,13 +1112,13 @@ typedef enum FTComputerObjectiveKind
 
 } FTComputerObjectiveKind;
 
-typedef enum FTKeyCommandKind
+typedef enum FTKeyEventKind
 {
-    nFTKeyCommandEnd,
-    nFTKeyCommandButton,
-    nFTKeyCommandStick
+    nFTKeyEventEnd,
+    nFTKeyEventButton,
+    nFTKeyEventStick
 
-} FTKeyCommandKind;
+} FTKeyEventKind;
 
 // Structs
 typedef struct FTStruct					        FTStruct;
@@ -1215,7 +1215,7 @@ typedef struct FTComputer				        FTComputer;
 typedef struct FTPlayerInput                    FTPlayerInput;
 typedef struct FTComputerInput                  FTComputerInput;
 typedef struct FTComputerAttack                 FTComputerAttack;
-typedef union  FTKeyCommand                     FTKeyCommand;
+typedef union  FTKeyEvent                     FTKeyEvent;
 typedef struct FTKey                            FTKey;
 typedef struct FTAttributes				        FTAttributes;
 typedef struct FTMesh		                    FTMesh;

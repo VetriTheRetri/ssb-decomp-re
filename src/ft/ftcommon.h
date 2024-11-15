@@ -392,7 +392,7 @@ typedef struct ftCommonSleepStatusVars
 typedef struct ftCommonEntryStatusVars
 {
 	s32 entry_wait;
-	s32 lr_entry;
+	s32 lr;
 	s32 ground_line_id;
 	sb32 is_rotate;
 

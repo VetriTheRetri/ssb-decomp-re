@@ -36,7 +36,7 @@ CObjDesc dMVOpeningSamusCObjDescEnd = {
 };
 
 // 0x8018E158
-FTKeyCommand dMVOpeningSamusInputSeq[] =
+FTKeyEvent dMVOpeningSamusKeyEvents[] =
 {
 	FTKEY_EVENT_BUTTON(Z_TRIG, 1),   // 1001, 0x2000
 	FTKEY_EVENT_BUTTON(A_BUTTON, 1), // 1001, 0x8000
@@ -55,34 +55,34 @@ u32 D_ovl38_8018E164[2] = {
 s32 D_ovl38_8018E270[2];
 
 // 0x8018E278
-s32 gMVOpeningSamusFramesElapsed;
+s32 sMVOpeningSamusFramesElapsed;
 
 // 0x8018E27C
-GObj* gMVOpeningSamusNameGObj;
+GObj* sMVOpeningSamusNameGObj;
 
 // 0x8018E280
-GObj* gMVOpeningSamusStageFighterGObj;
+GObj* sMVOpeningSamusStageFighterGObj;
 
 // 0x8018E284
 s32 D_ovl38_8018E284;
 
 // 0x8018E288
-GObj* gMVOpeningSamusStageCameraGObj;
+GObj* sMVOpeningSamusStageCameraGObj;
 
 // 0x8018E28C
-void* gMVOpeningSamusFigatreeHeap;
+void* sMVOpeningSamusFigatreeHeap;
 
 // 0x8018E290
-f32 gMVOpeningSamusPosedFighterYSpeed;
+f32 sMVOpeningSamusPosedFighterYSpeed;
 
 // 0x8018E294
 s32 D_ovl38_8018E294;
 
 // 0x8018E298
-CObjDesc dMVOpeningSamusCObjDescAdjustedStart;
+CObjDesc dMVOpeningSamusAdjustedStartCObjDesc;
 
 // 0x8018E2B8
-CObjDesc dMVOpeningSamusCObjDescAdjustedEnd;
+CObjDesc dMVOpeningSamusAdjustedEndCObjDesc;
 
 // 0x8018E2D8
 LBFileNode D_ovl38_8018E2D8[48];
@@ -91,10 +91,10 @@ LBFileNode D_ovl38_8018E2D8[48];
 LBFileNode D_ovl38_8018E458[7];
 
 // 0x8018E490
-uintptr_t gMVOpeningSamusFiles[2];
+uintptr_t sMVOpeningSamusFiles[2];
 
 // 0x8018E498
-SCBattleState gMVOpeningSamusBattleState;
+SCBattleState sMVOpeningSamusBattleState;
 
 
 // 0x8018D0C0
@@ -111,7 +111,7 @@ void mvOpeningSamusLoadFiles()
 	rl_setup.force_status_buffer = (LBFileNode*) &D_ovl38_8018E458;
 	rl_setup.force_status_buffer_size = 7;
 	lbRelocInitSetup(&rl_setup);
-	lbRelocLoadFilesExtern(D_ovl38_8018E164, ARRAY_COUNT(D_ovl38_8018E164), gMVOpeningSamusFiles, syTaskmanMalloc(lbRelocGetAllocSize(D_ovl38_8018E164, ARRAY_COUNT(D_ovl38_8018E164)), 0x10));
+	lbRelocLoadFilesExtern(D_ovl38_8018E164, ARRAY_COUNT(D_ovl38_8018E164), sMVOpeningSamusFiles, syTaskmanMalloc(lbRelocGetAllocSize(D_ovl38_8018E164, ARRAY_COUNT(D_ovl38_8018E164)), 0x10));
 }
 
 // 0x8018D160
@@ -143,12 +143,12 @@ void mvOpeningSamusDrawName()
 	};
 	s32 i;
 
-	gMVOpeningSamusNameGObj = name_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
+	sMVOpeningSamusNameGObj = name_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
 	gcAddGObjDisplay(name_gobj, lbCommonDrawSObjAttr, 0x1B, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	for (i = 0; offsets[i] != 0; i++)
 	{
-		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMVOpeningSamusFiles[0], offsets[i]));
+		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(sMVOpeningSamusFiles[0], offsets[i]));
 		name_sobj->sprite.attr &= ~SP_FASTCOPY;
 		name_sobj->sprite.attr |= SP_TRANSPARENT;
 		name_sobj->pos.x = positions[i] + 80.0F;
@@ -163,15 +163,15 @@ void mvOpeningSamusAnimateStageCamera(GObj* camera_gobj)
 {
 	CObj *cobj = CObjGetStruct(camera_gobj);
 
-	if (gMVOpeningSamusFramesElapsed >= 15)
+	if (sMVOpeningSamusFramesElapsed >= 15)
 	{
-		cobj->vec.eye.x += (((dMVOpeningSamusCObjDescAdjustedEnd.eye.x - dMVOpeningSamusCObjDescAdjustedStart.eye.x) / 45.0F));
-		cobj->vec.eye.y += (((dMVOpeningSamusCObjDescAdjustedEnd.eye.y - dMVOpeningSamusCObjDescAdjustedStart.eye.y) / 45.0F));
-		cobj->vec.eye.z += (((dMVOpeningSamusCObjDescAdjustedEnd.eye.z - dMVOpeningSamusCObjDescAdjustedStart.eye.z) / 45.0F));
-		cobj->vec.at.x += (((dMVOpeningSamusCObjDescAdjustedEnd.at.x - dMVOpeningSamusCObjDescAdjustedStart.at.x) / 45.0F));
-		cobj->vec.at.y += (((dMVOpeningSamusCObjDescAdjustedEnd.at.y - dMVOpeningSamusCObjDescAdjustedStart.at.y) / 45.0F));
-		cobj->vec.at.z += (((dMVOpeningSamusCObjDescAdjustedEnd.at.z - dMVOpeningSamusCObjDescAdjustedStart.at.z) / 45.0F));
-		cobj->vec.up.x += (((dMVOpeningSamusCObjDescAdjustedEnd.upx - dMVOpeningSamusCObjDescAdjustedStart.upx) / 45.0F));
+		cobj->vec.eye.x += (((dMVOpeningSamusAdjustedEndCObjDesc.eye.x - dMVOpeningSamusAdjustedStartCObjDesc.eye.x) / 45.0F));
+		cobj->vec.eye.y += (((dMVOpeningSamusAdjustedEndCObjDesc.eye.y - dMVOpeningSamusAdjustedStartCObjDesc.eye.y) / 45.0F));
+		cobj->vec.eye.z += (((dMVOpeningSamusAdjustedEndCObjDesc.eye.z - dMVOpeningSamusAdjustedStartCObjDesc.eye.z) / 45.0F));
+		cobj->vec.at.x += (((dMVOpeningSamusAdjustedEndCObjDesc.at.x - dMVOpeningSamusAdjustedStartCObjDesc.at.x) / 45.0F));
+		cobj->vec.at.y += (((dMVOpeningSamusAdjustedEndCObjDesc.at.y - dMVOpeningSamusAdjustedStartCObjDesc.at.y) / 45.0F));
+		cobj->vec.at.z += (((dMVOpeningSamusAdjustedEndCObjDesc.at.z - dMVOpeningSamusAdjustedStartCObjDesc.at.z) / 45.0F));
+		cobj->vec.up.x += (((dMVOpeningSamusAdjustedEndCObjDesc.upx - dMVOpeningSamusAdjustedStartCObjDesc.upx) / 45.0F));
 	}
 }
 
@@ -180,37 +180,37 @@ void mvOpeningSamusCreateStageViewport(Vec3f arg0)
 {
 	CObj *cobj;
 
-	dMVOpeningSamusCObjDescAdjustedStart = dMVOpeningSamusCObjDescStart;
-	dMVOpeningSamusCObjDescAdjustedEnd = dMVOpeningSamusCObjDescEnd;
+	dMVOpeningSamusAdjustedStartCObjDesc = dMVOpeningSamusCObjDescStart;
+	dMVOpeningSamusAdjustedEndCObjDesc = dMVOpeningSamusCObjDescEnd;
 
-	gMVOpeningSamusStageCameraGObj = func_ovl2_8010DB2C(0);
-	cobj = CObjGetStruct(gMVOpeningSamusStageCameraGObj);
+	sMVOpeningSamusStageCameraGObj = func_ovl2_8010DB2C(0);
+	cobj = CObjGetStruct(sMVOpeningSamusStageCameraGObj);
 	syRdpSetViewport(&cobj->viewport, 110.0F, 10.0F, 310.0F, 230.0F);
 	cobj->projection.persp.aspect = 10.0F / 11.0F;
-	gcEndProcessAll(gMVOpeningSamusStageCameraGObj);
-	gcAddGObjProcess(gMVOpeningSamusStageCameraGObj, mvOpeningSamusAnimateStageCamera, 1, 1);
+	gcEndProcessAll(sMVOpeningSamusStageCameraGObj);
+	gcAddGObjProcess(sMVOpeningSamusStageCameraGObj, mvOpeningSamusAnimateStageCamera, 1, 1);
 
-	dMVOpeningSamusCObjDescAdjustedStart.eye.x += arg0.x;
-	dMVOpeningSamusCObjDescAdjustedStart.eye.y += arg0.y;
-	dMVOpeningSamusCObjDescAdjustedStart.eye.z += arg0.z;
-	dMVOpeningSamusCObjDescAdjustedStart.at.x += arg0.x;
-	dMVOpeningSamusCObjDescAdjustedStart.at.y += arg0.y;
-	dMVOpeningSamusCObjDescAdjustedStart.at.z += arg0.z;
+	dMVOpeningSamusAdjustedStartCObjDesc.eye.x += arg0.x;
+	dMVOpeningSamusAdjustedStartCObjDesc.eye.y += arg0.y;
+	dMVOpeningSamusAdjustedStartCObjDesc.eye.z += arg0.z;
+	dMVOpeningSamusAdjustedStartCObjDesc.at.x += arg0.x;
+	dMVOpeningSamusAdjustedStartCObjDesc.at.y += arg0.y;
+	dMVOpeningSamusAdjustedStartCObjDesc.at.z += arg0.z;
 
-	dMVOpeningSamusCObjDescAdjustedEnd.eye.x += arg0.x;
-	dMVOpeningSamusCObjDescAdjustedEnd.eye.y += arg0.y;
-	dMVOpeningSamusCObjDescAdjustedEnd.eye.z += arg0.z;
-	dMVOpeningSamusCObjDescAdjustedEnd.at.x += arg0.x;
-	dMVOpeningSamusCObjDescAdjustedEnd.at.y += arg0.y;
-	dMVOpeningSamusCObjDescAdjustedEnd.at.z += arg0.z;
+	dMVOpeningSamusAdjustedEndCObjDesc.eye.x += arg0.x;
+	dMVOpeningSamusAdjustedEndCObjDesc.eye.y += arg0.y;
+	dMVOpeningSamusAdjustedEndCObjDesc.eye.z += arg0.z;
+	dMVOpeningSamusAdjustedEndCObjDesc.at.x += arg0.x;
+	dMVOpeningSamusAdjustedEndCObjDesc.at.y += arg0.y;
+	dMVOpeningSamusAdjustedEndCObjDesc.at.z += arg0.z;
 
-	cobj->vec.eye.x = dMVOpeningSamusCObjDescAdjustedStart.eye.x;
-	cobj->vec.eye.y = dMVOpeningSamusCObjDescAdjustedStart.eye.y;
-	cobj->vec.eye.z = dMVOpeningSamusCObjDescAdjustedStart.eye.z;
-	cobj->vec.at.x = dMVOpeningSamusCObjDescAdjustedStart.at.x;
-	cobj->vec.at.y = dMVOpeningSamusCObjDescAdjustedStart.at.y;
-	cobj->vec.at.z = dMVOpeningSamusCObjDescAdjustedStart.at.z;
-	cobj->vec.up.x = dMVOpeningSamusCObjDescAdjustedStart.upx;
+	cobj->vec.eye.x = dMVOpeningSamusAdjustedStartCObjDesc.eye.x;
+	cobj->vec.eye.y = dMVOpeningSamusAdjustedStartCObjDesc.eye.y;
+	cobj->vec.eye.z = dMVOpeningSamusAdjustedStartCObjDesc.eye.z;
+	cobj->vec.at.x = dMVOpeningSamusAdjustedStartCObjDesc.at.x;
+	cobj->vec.at.y = dMVOpeningSamusAdjustedStartCObjDesc.at.y;
+	cobj->vec.at.z = dMVOpeningSamusAdjustedStartCObjDesc.at.z;
+	cobj->vec.up.x = dMVOpeningSamusAdjustedStartCObjDesc.upx;
 }
 
 // 0x8018D614
@@ -244,7 +244,7 @@ void mvOpeningSamusInitFighterStagePanel()
 		next_dobj = lbCommonGetTreeDObjNextFromRoot(next_dobj, stage_dobj);
 	}
 
-	if (mpCollisionGetMapObjCountKind(nMPMapObjKindMovieSpawn1) != 1)
+	if (mpCollisionGetMapObjCountKind(nMPMapObjKindMovieStart1) != 1)
 	{
 		while (TRUE)
 		{
@@ -253,7 +253,7 @@ void mvOpeningSamusInitFighterStagePanel()
 		}
 	}
 
-	mpCollisionGetMapObjIDsKind(nMPMapObjKindMovieSpawn1, &pos_ids);
+	mpCollisionGetMapObjIDsKind(nMPMapObjKindMovieStart1, &pos_ids);
 	mpCollisionGetMapObjPositionID(pos_ids, &spawn_position);
 	mvOpeningSamusCreateStageViewport(spawn_position);
 	gmRumbleMakeActor();
@@ -284,10 +284,10 @@ void mvOpeningSamusInitFighterStagePanel()
 		spawn_info.controller = &gSYControllerDevices[i];
 		spawn_info.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[i].fkind);
 
-		gMVOpeningSamusStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
+		sMVOpeningSamusStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
 		ftParamInitPlayerBattleStats(i, fighter_gobj);
-		ftParamSetKey(fighter_gobj, dMVOpeningSamusInputSeq);
+		ftParamSetKey(fighter_gobj, dMVOpeningSamusKeyEvents);
 	}
 }
 
@@ -313,28 +313,28 @@ void mvOpeningSamusCreatePosedFighterBackground()
 // 0x8018D9F8
 void mvOpeningSamusAnimatePosedFighter(GObj* fighter_gobj)
 {
-	switch (gMVOpeningSamusFramesElapsed)
+	switch (sMVOpeningSamusFramesElapsed)
 	{
 		default:
 			break;
 		case 15:
-			gMVOpeningSamusPosedFighterYSpeed = 17.0F;
+			sMVOpeningSamusPosedFighterYSpeed = 17.0F;
 			break;
 		case 45:
-			gMVOpeningSamusPosedFighterYSpeed = 15.0F;
+			sMVOpeningSamusPosedFighterYSpeed = 15.0F;
 			break;
 		case 60:
-			gMVOpeningSamusPosedFighterYSpeed = 0.0F;
+			sMVOpeningSamusPosedFighterYSpeed = 0.0F;
 			break;
 	}
 
-	if ((gMVOpeningSamusFramesElapsed > 15) && (gMVOpeningSamusFramesElapsed < 45))
-		gMVOpeningSamusPosedFighterYSpeed += -1.0F / 15.0F;
+	if ((sMVOpeningSamusFramesElapsed > 15) && (sMVOpeningSamusFramesElapsed < 45))
+		sMVOpeningSamusPosedFighterYSpeed += -1.0F / 15.0F;
 
-	if ((gMVOpeningSamusFramesElapsed > 45) && (gMVOpeningSamusFramesElapsed < 60))
-		gMVOpeningSamusPosedFighterYSpeed += -1.0F;
+	if ((sMVOpeningSamusFramesElapsed > 45) && (sMVOpeningSamusFramesElapsed < 60))
+		sMVOpeningSamusPosedFighterYSpeed += -1.0F;
 
-	DObjGetStruct(fighter_gobj)->translate.vec.f.y -= gMVOpeningSamusPosedFighterYSpeed;
+	DObjGetStruct(fighter_gobj)->translate.vec.f.y -= sMVOpeningSamusPosedFighterYSpeed;
 }
 
 // 0x8018DAC8
@@ -345,7 +345,7 @@ void mvOpeningSamusCreatePosedFighter()
 
 	spawn_info.fkind = nFTKindSamus;
 	spawn_info.costume = ftParamGetCostumeCommonID(nFTKindSamus, 0);
-	spawn_info.figatree_heap = gMVOpeningSamusFigatreeHeap;
+	spawn_info.figatree_heap = sMVOpeningSamusFigatreeHeap;
 	spawn_info.pos.x = 0.0f;
 	spawn_info.pos.y = 600.0f;
 	spawn_info.pos.z = 0.0f;
@@ -375,7 +375,7 @@ void mvOpeningSamusCreatePosedFighterViewport()
 	CObj *cobj = CObjGetStruct(camera_gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 110.0F, 230.0F);
 	cobj->projection.persp.aspect = 5.0F / 11.0F;
-	gcAddCameraCamAnimJoint(cobj, GetAddressFromOffset(gMVOpeningSamusFiles[1], &FILE_041_SAMUS_CAMERA_PARAMS_OFFSET), 0.0F);
+	gcAddCameraCamAnimJoint(cobj, GetAddressFromOffset(sMVOpeningSamusFiles[1], &FILE_041_SAMUS_CAMERA_PARAMS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
 }
 
@@ -394,7 +394,7 @@ void mvOpeningSamusCreatePosedFighterBackgroundViewport()
 void mvOpeningSamusMainProc(GObj* arg0)
 {
 
-	gMVOpeningSamusFramesElapsed += 1;
+	sMVOpeningSamusFramesElapsed += 1;
 
 	if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE)
 	{
@@ -403,15 +403,15 @@ void mvOpeningSamusMainProc(GObj* arg0)
 		syTaskmanSetLoadScene();
 	}
 
-	if (gMVOpeningSamusFramesElapsed == 15)
+	if (sMVOpeningSamusFramesElapsed == 15)
 	{
-		gcEjectGObj(gMVOpeningSamusNameGObj);
+		gcEjectGObj(sMVOpeningSamusNameGObj);
 		mvOpeningSamusInitFighterStagePanel();
 		mvOpeningSamusCreatePosedFighterBackground();
 		mvOpeningSamusCreatePosedFighter();
 	}
 
-	if (gMVOpeningSamusFramesElapsed == 60)
+	if (sMVOpeningSamusFramesElapsed == 60)
 	{
 		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 		gSCManagerSceneData.scene_curr = 0x23;
@@ -422,16 +422,16 @@ void mvOpeningSamusMainProc(GObj* arg0)
 // 0x8018DEC4
 void mvOpeningSamusInitFramesElapsed()
 {
-	gMVOpeningSamusFramesElapsed = 0;
+	sMVOpeningSamusFramesElapsed = 0;
 }
 
 // 0x8018DED0
 void mvOpeningSamusInit()
 {
-	gMVOpeningSamusBattleState = dSCManagerDefaultBattleState;
-	gSCManagerBattleState = &gMVOpeningSamusBattleState;
+	sMVOpeningSamusBattleState = dSCManagerDefaultBattleState;
+	gSCManagerBattleState = &sMVOpeningSamusBattleState;
 
-	gSCManagerBattleState->game_type = nSCBattleGameTypeOpening;
+	gSCManagerBattleState->game_type = nSCBattleGameTypeMovie;
 
 	gSCManagerBattleState->gkind = nGRKindZebes;
 	gSCManagerBattleState->pl_count = 1;
@@ -455,7 +455,7 @@ void mvOpeningSamusInit()
 	scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 	ftManagerSetupFilesAllKind(nFTKindSamus);
 
-	gMVOpeningSamusFigatreeHeap = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
+	sMVOpeningSamusFigatreeHeap = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
 	mvOpeningSamusCreateNameViewport();
 	mvOpeningSamusCreatePosedFighterBackgroundViewport();
 	mvOpeningSamusCreatePosedFighterViewport();

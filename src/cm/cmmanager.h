@@ -5,7 +5,7 @@
 #include <sys/objdef.h>
 #include <cm/cmdef.h>
 
-extern u32 cmManagerGetCamBoundsMask(Vec3f *pos);
+extern u32 cmManagerGetCameraBoundsMask(Vec3f *pos);
 extern void cmManagerSetCameraBoundsPos(Vec3f *pos);
 extern u32 cmManagerGetCamTeamBoundsMask(Vec3f *pos);
 extern void cmManagerSetCameraTeamBoundsPos(Vec3f *pos);

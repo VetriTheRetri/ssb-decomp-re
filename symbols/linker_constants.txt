@@ -60,8 +60,8 @@ lOverlay64ArenaLo = ovl64_BSS_END;
 lOverlay64ArenaHi = 0x80392A00;
 lOverlay65ArenaLo = ovl65_BSS_END;
 lOverlay65ArenaHi = 0x80392A00;
-lMNN64ArenaLo = 0x80132080;
-lMNN64ArenaHi = 0x803903E0;
+lMNStartupArenaLo = 0x80132080;
+lMNStartupArenaHi = 0x803903E0;
 
 _ovl1SegRomStart = 0x001079c0;
 _ovl1SegRomEnd = 0x00109fb0;
@@ -235,6 +235,8 @@ lSC1PTrainingModeMenuOptionSprites = 0x0000013C;
 lSC1PBonusStagePlatformSprite = 0x000000C0;
 lSC1PBonusStageTargetSprite = 0x000001D0;
 
+lIFCommonAnnounceCommonLetterFileID = 0x00000025;
+lMVOpeningPikachuFileID = 0x00000041;
 lMNNoControllerFileID = 0x000000A9;
 
 lMNFightersMarioNameSprite = 0x00001838;
@@ -1481,7 +1483,7 @@ lMNCongraFoxTopSprite = 0x00020718;
 lMNCongraNessBottomSprite = 0x00020718;
 lMNCongraNessTopSprite = 0x00020718;
 
-lMNN64LogoSprite = 0x000073C0;
+lMNStartupN64Sprite = 0x000073C0;
 
 lGMStaffrollNameAndJobAUpperSprite = 0x00000008;
 lGMStaffrollNameAndJobBUpperSprite = 0x00000218;
@@ -1897,10 +1899,10 @@ lMNSoundTestAFunctionTextSprite = 0x00001450;
 lMNSoundTestHeaderTextSprite = 0x00001BB8;
 lMNSoundTestStartButtonSprite = 0x00001D50;
 
-lSCExplainKeyInputSequence0 = 0x00000000;
-lSCExplainKeyInputSequence1 = 0x000009D4;
-lSCExplainKeyInputSequence2 = 0x000013FC;
-lSCExplainKeyInputSequence3 = 0x00001400;
+lSCExplainKeyKeyEvents0 = 0x00000000;
+lSCExplainKeyKeyEvents1 = 0x000009D4;
+lSCExplainKeyKeyEvents2 = 0x000013FC;
+lSCExplainKeyKeyEvents3 = 0x00001400;
 lSCExplainPhases = 0x00001404;
 lSCExplainStickMObjSub = 0x00005028;
 lSCExplainStickDObjDesc = 0x00005300;
@@ -2099,7 +2101,7 @@ FILE_03F_TRANSITION_GFX_OUTLINE_OBJECT_OFFSET_2 = 0x11C4;
 FILE_041_SAMUS_CAMERA_PARAMS_OFFSET = 0x60;
 FILE_041_FOX_CAMERA_PARAMS_OFFSET = 0x90;
 FILE_041_YOSHI_CAMERA_PARAMS_OFFSET = 0xF0;
-FILE_041_PIKACHU_CAMERA_PARAMS_OFFSET = 0x120;
+lMVOpeningPikachuCamAnimJoint = 0x120;
 
 FILE_05A_BACKGROUND_IMAGE_OFFSET = 0x26C88;
 

@@ -39,7 +39,7 @@ SYTaskmanSetup dSCVSBattleTaskmanSetup =
     {
         0,                              // ???
         scVSBattleFuncUpdate,           // Update function
-        scManagerFuncDraw,                  // Frame draw function
+        scManagerFuncDraw,              // Frame draw function
         &ovl4_BSS_END,                 	// Allocatable memory pool start
         0,                              // Allocatable memory pool size
         1,                              // ???
@@ -72,7 +72,7 @@ SYTaskmanSetup dSCVSBattleTaskmanSetup =
     0,                                  // Number of SObjs
     sizeof(SObj),                       // SObj size
     0,                                  // Number of Cameras
-    sizeof(CObj),                     // Camera size
+    sizeof(CObj),                       // Camera size
     
     scVSBattleFuncStart             	// Task start function
 };

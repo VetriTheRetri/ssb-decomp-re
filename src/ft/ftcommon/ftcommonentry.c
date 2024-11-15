@@ -75,7 +75,7 @@ void ftCommonEntryNullProcUpdate(GObj *fighter_gobj)
             }
             else
             {
-                fp->lr = fp->status_vars.common.entry.lr_entry;
+                fp->lr = fp->status_vars.common.entry.lr;
 
                 DObjGetStruct(fighter_gobj)->translate.vec.f = fp->entry_pos;
 
@@ -117,7 +117,7 @@ void ftCommonAppearProcUpdate(GObj *fighter_gobj)
 
     if (fighter_gobj->anim_frame <= 0.0F)
     {
-        fp->lr = fp->status_vars.common.entry.lr_entry;
+        fp->lr = fp->status_vars.common.entry.lr;
 
         DObjGetStruct(fighter_gobj)->translate.vec.f = fp->entry_pos;
 
@@ -181,7 +181,7 @@ void ftCommonAppearSetStatus(GObj *fighter_gobj)
 
     fp->status_vars.common.entry.is_rotate = FALSE;
 
-    fp->status_vars.common.entry.lr_entry = fp->lr;
+    fp->status_vars.common.entry.lr = fp->lr;
 
     fp->lr = 0;
 
@@ -198,7 +198,7 @@ void ftCommonAppearSetStatus(GObj *fighter_gobj)
         break;
 
     case nFTKindFox:
-        efManagerFoxEntryArwingMakeEffect(&fp->entry_pos, fp->status_vars.common.entry.lr_entry);
+        efManagerFoxEntryArwingMakeEffect(&fp->entry_pos, fp->status_vars.common.entry.lr);
         break;
 
     case nFTKindDonkey:
@@ -220,20 +220,20 @@ void ftCommonAppearSetStatus(GObj *fighter_gobj)
         break;
 
     case nFTKindKirby:
-        efManagerKirbyEntryStarMakeEffect(&fp->entry_pos, fp->status_vars.common.entry.lr_entry);
+        efManagerKirbyEntryStarMakeEffect(&fp->entry_pos, fp->status_vars.common.entry.lr);
         break;
 
     case nFTKindPikachu:
     case nFTKindPurin:
-        efManagerMBallThrownMakeEffect(&fp->entry_pos, fp->status_vars.common.entry.lr_entry);
+        efManagerMBallThrownMakeEffect(&fp->entry_pos, fp->status_vars.common.entry.lr);
         break;
 
     case nFTKindCaptain:
-        if (fp->status_vars.common.entry.lr_entry == -1)
+        if (fp->status_vars.common.entry.lr == -1)
         {
             fp->status_vars.common.entry.is_rotate = TRUE;
         }
-        efManagerCaptainEntryCarMakeEffect(&fp->entry_pos, fp->status_vars.common.entry.lr_entry);
+        efManagerCaptainEntryCarMakeEffect(&fp->entry_pos, fp->status_vars.common.entry.lr);
         break;
 
     case nFTKindBoss:
@@ -261,7 +261,7 @@ void ftCommonAppearSetStatus(GObj *fighter_gobj)
     fp->motion_vars.flags.flag2 = 0;
     fp->motion_vars.flags.flag0 = 0;
 
-    if ((fp->fkind == nFTKindCaptain) && (fp->status_vars.common.entry.lr_entry == -1))
+    if ((fp->fkind == nFTKindCaptain) && (fp->status_vars.common.entry.lr == -1))
     {
         ftParamMoveDLLink(fighter_gobj, 1);
     }
@@ -311,7 +311,7 @@ void ftNessAppearEndSetStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, ((fp->status_vars.common.entry.lr_entry == +1) ? nFTNessStatusAppearREnd : nFTNessStatusAppearLEnd), 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_COLANIM));
+    ftMainSetFighterStatus(fighter_gobj, ((fp->status_vars.common.entry.lr == +1) ? nFTNessStatusAppearREnd : nFTNessStatusAppearLEnd), 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_COLANIM));
     ftCommonAppearInitStatusVars(fighter_gobj);
 
     fp->is_hide_shadow = FALSE;
@@ -324,7 +324,7 @@ void ftCaptainAppearStartProcUpdate(GObj *fighter_gobj)
 
     ftCommonAppearUpdateEffects(fighter_gobj);
 
-    if ((fp->status_vars.common.entry.lr_entry == -1) && (fp->dl_link != FTRENDER_DLLINK_DEFAULT) && (DObjGetStruct(fighter_gobj)->translate.vec.f.z > -1000.0F))
+    if ((fp->status_vars.common.entry.lr == -1) && (fp->dl_link != FTRENDER_DLLINK_DEFAULT) && (DObjGetStruct(fighter_gobj)->translate.vec.f.z > -1000.0F))
     {
         ftParamMoveDLLink(fighter_gobj, FTRENDER_DLLINK_DEFAULT);
     }
@@ -336,7 +336,7 @@ void ftCaptainAppearEndSetStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, ((fp->status_vars.common.entry.lr_entry == +1) ? nFTCaptainStatusAppearREnd : nFTCaptainStatusAppearLEnd), 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetFighterStatus(fighter_gobj, ((fp->status_vars.common.entry.lr == +1) ? nFTCaptainStatusAppearREnd : nFTCaptainStatusAppearLEnd), 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftCommonAppearInitStatusVars(fighter_gobj);
 
     fp->is_hide_shadow = FALSE;

@@ -3,10 +3,7 @@
 #include <wp/weapon.h>
 #include <if/interface.h>
 #include <sc/scene.h>
-#include <sys/malloc.h>
-
-extern Mtx44f gGCMatrixPerspF;
-extern SYMallocRegion gSYTaskmanGraphicsHeap;
+// #include <sys/taskman.h>
 
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
@@ -17,7 +14,7 @@ extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 // // // // // // // // // // // //
 
 // 0x80131460
-GObj* gCMManagerCameraGObj;
+GObj *gCMManagerCameraGObj;
 
 // 0x80131464
 f32 gCMManagerPauseCameraEyeY;
@@ -26,7 +23,7 @@ f32 gCMManagerPauseCameraEyeY;
 f32 gCMManagerPauseCameraEyeX; // Also from .bss
 
 // 0x80131470
-Mtx44f gCMManagerMtx; // Mtx44f?
+Mtx44f gCMManagerMatrix; // Mtx44f?
 
 // 0x801314B0
 CMStruct gCMManagerCameraStruct;
@@ -78,7 +75,7 @@ f32 dCMManagerPlayerZoomRanges[/* */] =
 // // // // // // // // // // // //
 
 // 0x8010B810
-u32 cmManagerGetCamBoundsMask(Vec3f *pos)
+u32 cmManagerGetCameraBoundsMask(Vec3f *pos)
 {
     u32 bounds = 0;
 
@@ -106,7 +103,7 @@ void cmManagerSetCameraBoundsPos(Vec3f *pos)
 {
     while (TRUE)
     {
-        u32 bounds = cmManagerGetCamBoundsMask(pos);
+        u32 bounds = cmManagerGetCameraBoundsMask(pos);
 
         if (bounds != 0)
         {
@@ -352,9 +349,9 @@ void cmManagerUpdateFollowEntities(Vec3f *vec, f32 *hz, f32 *vt)
 
             adjust = cmManagerCalcFighterZoomRange(cobj_fp, zoom);
 
-            lr = ((cobj_fp->camera_mode == nFTCameraModeEntry) || (cobj_fp->camera_mode == nFTCameraModeExplain))     ?
-                                                                        cobj_fp->status_vars.common.entry.lr_entry   :
-                                                                                                       cobj_fp->lr;
+            lr = ((cobj_fp->camera_mode == nFTCameraModeEntry) || (cobj_fp->camera_mode == nFTCameraModeExplain)) ?
+                                                                             cobj_fp->status_vars.common.entry.lr :
+                                                                                                      cobj_fp->lr;
 
             if (lr == -1)
             {
@@ -476,7 +473,7 @@ void cmManagerGetClampDimensionsMax(f32 hz, f32 vt, f32 *max)
     f32 maxd;
 
     vt /= lbCommonTan(F_CLC_DTOR32(gCMManagerCameraStruct.fovy * 0.5F));
-    hz /= ((lbCommonTan(F_CLC_DTOR32(gCMManagerCameraStruct.fovy * 0.5F)) * 
+    hz /= ((lbCommonTan(F_CLC_DTOR32(gCMManagerCameraStruct.fovy * 0.5F)) *
     gCMManagerCameraStruct.viewport_width) / gCMManagerCameraStruct.viewport_height);
 
     maxd = (hz > vt) ? hz : vt;
@@ -495,8 +492,7 @@ void cmManagerGetClampDimensionsMax(f32 hz, f32 vt, f32 *max)
 // 0x8010C320
 void cmManagerGetAdjustAtAngle(Vec3f *at, Vec3f *vec, f32 x, f32 y)
 {
-    f32 angle_x;
-    f32 angle_y;
+    f32 angle_x, angle_y;
 
     angle_x = gCMManagerPauseCameraEyeY + y + gMPCollisionGroundData->light_angle.z;
 
@@ -744,7 +740,7 @@ void func_ovl2_8010C960(GObj *camera_gobj)
 // 0x8010CA7C
 sb32 cmManagerCheckPausePlayerOutBounds(Vec3f *pos)
 {
-    if ((cmManagerGetCamBoundsMask(pos) != 0) || (pos->z < -1000.0F) || (pos->z > 1000.0F))
+    if ((cmManagerGetCameraBoundsMask(pos) != 0) || (pos->z < -1000.0F) || (pos->z > 1000.0F))
     {
         return TRUE;
     }
@@ -979,11 +975,11 @@ f32 cmManagerGetMtxMaxValue(void)
 
     ret = 0.0F;
 
-    for (i = 0; i < ARRAY_COUNT(gCMManagerMtx[i]); i++)
+    for (i = 0; i < ARRAY_COUNT(gCMManagerMatrix[i]); i++)
     {
-        for (j = 0; j < ARRAY_COUNT(gCMManagerMtx); j++)
+        for (j = 0; j < ARRAY_COUNT(gCMManagerMatrix); j++)
         {
-            abs = ABSF(gCMManagerMtx[i][j]);
+            abs = ABSF(gCMManagerMatrix[i][j]);
 
             if (ret < abs)
             {
@@ -1007,26 +1003,26 @@ sb32 cmManagerLookAtFuncMatrix(Mtx *mtx, CObj *cobj, Gfx **dls)
     gSYTaskmanGraphicsHeap.ptr = (Mtx*)gSYTaskmanGraphicsHeap.ptr + 1;
 
     syMatrixPerspFastF(gGCMatrixPerspF, &cobj->projection.persp.norm, cobj->projection.persp.fovy, cobj->projection.persp.aspect, cobj->projection.persp.near, cobj->projection.persp.far, cobj->projection.persp.scale);
-    syMatrixF2L(gGCMatrixPerspF, temp_mtx);
+    syMatrixF2L(&gGCMatrixPerspF, temp_mtx);
 
     sGCMatrixProjectL = temp_mtx;
 
     syMatrixLookAtReflectF(&sp5C, &gCMManagerCameraStruct.look_at, cobj->vec.eye.x, cobj->vec.eye.y, cobj->vec.eye.z, cobj->vec.at.x, cobj->vec.at.y, cobj->vec.at.z, cobj->vec.up.x, cobj->vec.up.y, cobj->vec.up.z);
-    guMtxCatF(sp5C, gGCMatrixPerspF, gCMManagerMtx);
+    guMtxCatF(sp5C, gGCMatrixPerspF, gCMManagerMatrix);
 
     max = cmManagerGetMtxMaxValue();
 
     if (max > 32000.0F)
     {
         syMatrixPerspFastF(gGCMatrixPerspF, &cobj->projection.persp.norm, cobj->projection.persp.fovy, cobj->projection.persp.aspect, cobj->projection.persp.near, cobj->projection.persp.far, 32000.0F / max);
-        syMatrixF2L(gGCMatrixPerspF, temp_mtx);
+        syMatrixF2L(&gGCMatrixPerspF, temp_mtx);
 
         sGCMatrixProjectL = temp_mtx;
 
         syMatrixLookAtReflectF(&sp5C, &gCMManagerCameraStruct.look_at, cobj->vec.eye.x, cobj->vec.eye.y, cobj->vec.eye.z, cobj->vec.at.x, cobj->vec.at.y, cobj->vec.at.z, cobj->vec.up.x, cobj->vec.up.y, cobj->vec.up.z);
-        guMtxCatF(sp5C, gGCMatrixPerspF, gCMManagerMtx);
+        guMtxCatF(sp5C, gGCMatrixPerspF, gCMManagerMatrix);
     }
-    syMatrixF2L(gCMManagerMtx, mtx);
+    syMatrixF2L(gCMManagerMatrix, mtx);
 
     return 0;
 }
@@ -1085,8 +1081,8 @@ void func_ovl2_8010D4C0(GObj *camera_gobj)
     gDPSetRenderMode(gSYTaskmanDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
     camera_gobj->camera_mask = COBJ_MASK_DLLINK(12) | COBJ_MASK_DLLINK(11) | 
-                            COBJ_MASK_DLLINK(10) | COBJ_MASK_DLLINK(9)  |
-                            COBJ_MASK_DLLINK(7)  | COBJ_MASK_DLLINK(6);
+                               COBJ_MASK_DLLINK(10) | COBJ_MASK_DLLINK(9)  |
+                               COBJ_MASK_DLLINK(7)  | COBJ_MASK_DLLINK(6);
 
     gcCaptureAll(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
     syTaskmanUpdateDLBuffers();
@@ -1469,8 +1465,6 @@ void cmManagerSetViewportDimensions(s32 ulx, s32 uly, s32 lrx, s32 lry)
 // 0x8010E5F4 - Checks if input position is within the camera's viewport
 sb32 cmManagerCheckTargetInBounds(f32 pos_x, f32 pos_y)
 {
-    // t = test, c = camera
-
     f32 viewport_width = (gCMManagerCameraStruct.viewport_width / 2);
     f32 viewport_height = (gCMManagerCameraStruct.viewport_height / 2);
 

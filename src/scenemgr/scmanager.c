@@ -1045,7 +1045,7 @@ void scManagerRunLoop(sb32 arg)
 			case nSCKindN64:
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[58]);
-				mnN64StartScene();
+				mnStartupStartScene();
 				break;
 
 			case nSCKindOpeningRoom:
@@ -1092,7 +1092,7 @@ void scManagerRunLoop(sb32 arg)
 
 			case 36:
 				syDmaLoadOverlay(&dSCManagerOverlays[42]);
-				intro_focus_pikachu_entry();
+				mvOpeningPikachuStartScene();
 				break;
 
 			case 37:

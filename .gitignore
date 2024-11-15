@@ -5,9 +5,11 @@
 *.o
 *.credits.encoded
 *.credits.metadata
+*.png
 assets
 __pycache__
 bin
+relocAssets
 undefined*
 tools/ido-recomp/
 tools/vpk0cmd

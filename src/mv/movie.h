@@ -3,6 +3,8 @@
 
 #include "mvfunctions.h"
 
+extern u32 lMVOpeningCommonFileID;					    // 0x00000041
+
 extern intptr_t D_NF_00000034;                          // 0x00000034
 extern intptr_t D_NF_0000004C;                          // 0x0000004C
 

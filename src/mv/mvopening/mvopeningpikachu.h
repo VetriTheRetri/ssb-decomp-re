@@ -5,12 +5,11 @@
 #include <sys/objdef.h>
 #include <PR/gbi.h>
 
-extern u32 lMVOpeningPikachuFileID;								// 0x00000041
 extern intptr_t lMVOpeningPikachuCamAnimJoint; 					// 0x00000120
 
 extern void mvOpeningPikachuSetupFiles(void);
 extern void mvOpeningPikachuSetNameColor(SObj *sobj);
-extern void mvOpeningPikachuDrawName(void);
+extern void mvOpeningPikachuMakeName(void);
 extern void mvOpeningPikachuMotionCameraProcUpdate(GObj *gobj);
 extern void mvOpeningPikachuMakeMotionCamera(Vec3f move);
 extern void mvOpeningPikachuMakeMotionWindow(void);

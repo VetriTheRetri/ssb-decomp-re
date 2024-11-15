@@ -55,7 +55,7 @@ u32 D_ovl38_8018E164[2] = {
 s32 D_ovl38_8018E270[2];
 
 // 0x8018E278
-s32 sMVOpeningSamusFramesElapsed;
+s32 sMVOpeningSamusTotalTimeTics;
 
 // 0x8018E27C
 GObj* sMVOpeningSamusNameGObj;
@@ -73,7 +73,7 @@ GObj* sMVOpeningSamusStageCameraGObj;
 void* sMVOpeningSamusFigatreeHeap;
 
 // 0x8018E290
-f32 sMVOpeningSamusPosedFighterYSpeed;
+f32 sMVOpeningSamusPosedFighterSpeed;
 
 // 0x8018E294
 s32 D_ovl38_8018E294;
@@ -128,7 +128,7 @@ void mvOpeningSamusSetNameColor(SObj* name_sobj)
 }
 
 // 0x8018D194
-void mvOpeningSamusDrawName()
+void mvOpeningSamusMakeName()
 {
 	GObj* name_gobj;
 	SObj* name_sobj;
@@ -163,7 +163,7 @@ void mvOpeningSamusAnimateStageCamera(GObj* camera_gobj)
 {
 	CObj *cobj = CObjGetStruct(camera_gobj);
 
-	if (sMVOpeningSamusFramesElapsed >= 15)
+	if (sMVOpeningSamusTotalTimeTics >= 15)
 	{
 		cobj->vec.eye.x += (((dMVOpeningSamusAdjustedEndCObjDesc.eye.x - dMVOpeningSamusAdjustedStartCObjDesc.eye.x) / 45.0F));
 		cobj->vec.eye.y += (((dMVOpeningSamusAdjustedEndCObjDesc.eye.y - dMVOpeningSamusAdjustedStartCObjDesc.eye.y) / 45.0F));
@@ -313,28 +313,28 @@ void mvOpeningSamusCreatePosedFighterBackground()
 // 0x8018D9F8
 void mvOpeningSamusAnimatePosedFighter(GObj* fighter_gobj)
 {
-	switch (sMVOpeningSamusFramesElapsed)
+	switch (sMVOpeningSamusTotalTimeTics)
 	{
 		default:
 			break;
 		case 15:
-			sMVOpeningSamusPosedFighterYSpeed = 17.0F;
+			sMVOpeningSamusPosedFighterSpeed = 17.0F;
 			break;
 		case 45:
-			sMVOpeningSamusPosedFighterYSpeed = 15.0F;
+			sMVOpeningSamusPosedFighterSpeed = 15.0F;
 			break;
 		case 60:
-			sMVOpeningSamusPosedFighterYSpeed = 0.0F;
+			sMVOpeningSamusPosedFighterSpeed = 0.0F;
 			break;
 	}
 
-	if ((sMVOpeningSamusFramesElapsed > 15) && (sMVOpeningSamusFramesElapsed < 45))
-		sMVOpeningSamusPosedFighterYSpeed += -1.0F / 15.0F;
+	if ((sMVOpeningSamusTotalTimeTics > 15) && (sMVOpeningSamusTotalTimeTics < 45))
+		sMVOpeningSamusPosedFighterSpeed += -1.0F / 15.0F;
 
-	if ((sMVOpeningSamusFramesElapsed > 45) && (sMVOpeningSamusFramesElapsed < 60))
-		sMVOpeningSamusPosedFighterYSpeed += -1.0F;
+	if ((sMVOpeningSamusTotalTimeTics > 45) && (sMVOpeningSamusTotalTimeTics < 60))
+		sMVOpeningSamusPosedFighterSpeed += -1.0F;
 
-	DObjGetStruct(fighter_gobj)->translate.vec.f.y -= sMVOpeningSamusPosedFighterYSpeed;
+	DObjGetStruct(fighter_gobj)->translate.vec.f.y -= sMVOpeningSamusPosedFighterSpeed;
 }
 
 // 0x8018DAC8
@@ -394,7 +394,7 @@ void mvOpeningSamusCreatePosedFighterBackgroundViewport()
 void mvOpeningSamusMainProc(GObj* arg0)
 {
 
-	sMVOpeningSamusFramesElapsed += 1;
+	sMVOpeningSamusTotalTimeTics += 1;
 
 	if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE)
 	{
@@ -403,7 +403,7 @@ void mvOpeningSamusMainProc(GObj* arg0)
 		syTaskmanSetLoadScene();
 	}
 
-	if (sMVOpeningSamusFramesElapsed == 15)
+	if (sMVOpeningSamusTotalTimeTics == 15)
 	{
 		gcEjectGObj(sMVOpeningSamusNameGObj);
 		mvOpeningSamusInitFighterStagePanel();
@@ -411,7 +411,7 @@ void mvOpeningSamusMainProc(GObj* arg0)
 		mvOpeningSamusCreatePosedFighter();
 	}
 
-	if (sMVOpeningSamusFramesElapsed == 60)
+	if (sMVOpeningSamusTotalTimeTics == 60)
 	{
 		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 		gSCManagerSceneData.scene_curr = 0x23;
@@ -420,9 +420,9 @@ void mvOpeningSamusMainProc(GObj* arg0)
 }
 
 // 0x8018DEC4
-void mvOpeningSamusInitFramesElapsed()
+void mvOpeningSamusInitTotalTimeTics()
 {
-	sMVOpeningSamusFramesElapsed = 0;
+	sMVOpeningSamusTotalTimeTics = 0;
 }
 
 // 0x8018DED0
@@ -442,7 +442,7 @@ void mvOpeningSamusInit()
 	mvOpeningSamusLoadFiles();
 	gcMakeGObjSPAfter(0x3F7, mvOpeningSamusMainProc, 0xD, 0x80000000);
 	gcMakeDefaultCameraGObj(9, 0x80000000, 0x64, 3, 0xFF);
-	mvOpeningSamusInitFramesElapsed();
+	mvOpeningSamusInitTotalTimeTics();
 	efParticleInitAll();
 	ftParamInitGame();
 	mpCollisionInitGroundData();
@@ -459,7 +459,7 @@ void mvOpeningSamusInit()
 	mvOpeningSamusCreateNameViewport();
 	mvOpeningSamusCreatePosedFighterBackgroundViewport();
 	mvOpeningSamusCreatePosedFighterViewport();
-	mvOpeningSamusDrawName();
+	mvOpeningSamusMakeName();
 
 	while (func_8000092C() < 1785U);
 }

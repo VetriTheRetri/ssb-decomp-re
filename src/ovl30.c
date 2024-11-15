@@ -139,13 +139,13 @@ u8 gMNStagesUnlockedMask;
 s32 gMNStagesCurrentHeap;
 
 // 0x80134C24; // frames elapsed on SSS
-s32 gMNStagesFramesElapsed;
+s32 gMNStagesTotalTimeTics;
 
 // 0x80134C28; // frames until can move cursor again
 s32 gMNStagesScrollBuffer;
 
 // 0x80134C2C // frames to wait until exiting the SSS
-s32 gMNStagesMaxFramesElapsed;
+s32 gMNStagesMaxTotalTimeTics;
 
 // 0x80134C30
 u32 D_ovl30_80134C30[60]; // 240 bytes
@@ -1147,8 +1147,8 @@ void mnStagesLoadSceneData()
 
 	gMNStagesUnlockedMask = gSCManagerBackupData.unlock_mask;
 	gMNStagesCurrentHeap = 1;
-	gMNStagesFramesElapsed = 0;
-	gMNStagesMaxFramesElapsed = gMNStagesFramesElapsed + I_MIN_TO_TICS(5);
+	gMNStagesTotalTimeTics = 0;
+	gMNStagesMaxTotalTimeTics = gMNStagesTotalTimeTics + I_MIN_TO_TICS(5);
 }
 
 // 0x80133D60
@@ -1164,11 +1164,11 @@ void mnStagesHandleButtonPresses(s32 arg0)
 	s32 stick_input;
 	s32 button_input;
 
-	gMNStagesFramesElapsed += 1;
+	gMNStagesTotalTimeTics += 1;
 
-	if (gMNStagesFramesElapsed >= 10)
+	if (gMNStagesTotalTimeTics >= 10)
 	{
-		if (gMNStagesFramesElapsed == gMNStagesMaxFramesElapsed)
+		if (gMNStagesTotalTimeTics == gMNStagesMaxTotalTimeTics)
 		{
 			gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 			gSCManagerSceneData.scene_curr = nSCKindTitle;
@@ -1179,7 +1179,7 @@ void mnStagesHandleButtonPresses(s32 arg0)
 		}
 
 		if (scSubsysControllerCheckNoInputAll() == FALSE)
-			gMNStagesMaxFramesElapsed = gMNStagesFramesElapsed + I_MIN_TO_TICS(5);
+			gMNStagesMaxTotalTimeTics = gMNStagesTotalTimeTics + I_MIN_TO_TICS(5);
 
 		if (gMNStagesScrollBuffer != 0)
 			gMNStagesScrollBuffer -= 1;

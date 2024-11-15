@@ -1685,7 +1685,7 @@ void gcEjectCamera(CObj *cobj)
 }
 
 // 0x800098A4
-GObj* gcInitGObjCommon(u32 id, void (*func_run)(GObj*), u8 link, u32 order)
+GObj* gcInitGObjCommon(u32 id, void (*func_run)(GObj*), u8 link, u32 priority)
 {
 	GObj *new_gobj;
 
@@ -1702,7 +1702,7 @@ GObj* gcInitGObjCommon(u32 id, void (*func_run)(GObj*), u8 link, u32 order)
 
 	new_gobj->id = id;
 	new_gobj->link_id = link;
-	new_gobj->link_priority = order;
+	new_gobj->link_priority = priority;
 	new_gobj->func_run = func_run;
 	new_gobj->gobjproc_head = NULL;
 	new_gobj->gobjproc_tail = NULL;
@@ -1721,9 +1721,9 @@ GObj* gcInitGObjCommon(u32 id, void (*func_run)(GObj*), u8 link, u32 order)
 }
 
 // 0x80009968
-GObj* gcMakeGObjSPAfter(u32 id, void (*func_run)(GObj*), u8 link, u32 order)
+GObj* gcMakeGObjSPAfter(u32 id, void (*func_run)(GObj*), u8 link, u32 priority)
 {
-	GObj *new_gobj = gcInitGObjCommon(id, func_run, link, order);
+	GObj *new_gobj = gcInitGObjCommon(id, func_run, link, priority);
 
 	if (new_gobj == NULL)
 	{
@@ -1735,9 +1735,9 @@ GObj* gcMakeGObjSPAfter(u32 id, void (*func_run)(GObj*), u8 link, u32 order)
 }
 
 // 0x800099A8
-GObj* gcMakeGObjSPBefore(u32 id, void (*func_run)(GObj*), u8 link, u32 order)
+GObj* gcMakeGObjSPBefore(u32 id, void (*func_run)(GObj*), u8 link, u32 priority)
 {
-	GObj *new_gobj = gcInitGObjCommon(id, func_run, link, order);
+	GObj *new_gobj = gcInitGObjCommon(id, func_run, link, priority);
 
 	if (new_gobj == NULL)
 	{
@@ -1804,7 +1804,7 @@ void gcEjectGObj(GObj *gobj)
 }
 
 // 0x80009B48
-void gcMoveGObjCommon(s32 sw, GObj *this_gobj, u8 link, u32 order, GObj *other_gobj)
+void gcMoveGObjCommon(s32 sw, GObj *this_gobj, u8 link, u32 priority, GObj *other_gobj)
 {
 	GObjProcess *current_gobjproc;
 	GObjProcess *orig_gobjproc;
@@ -1835,7 +1835,7 @@ void gcMoveGObjCommon(s32 sw, GObj *this_gobj, u8 link, u32 order, GObj *other_g
 	gcRemoveGObjFromLinkedList(this_gobj);
 
 	this_gobj->link_id = link;
-	this_gobj->link_priority = order;
+	this_gobj->link_priority = priority;
 
 	switch (sw)
 	{
@@ -1859,10 +1859,10 @@ void gcMoveGObjCommon(s32 sw, GObj *this_gobj, u8 link, u32 order, GObj *other_g
 }
 
 // 0x80009C90
-void func_80009C90(GObj *gobj, u8 link, u32 order) { gcMoveGObjCommon(0, gobj, link, order, NULL); }
+void func_80009C90(GObj *gobj, u8 link, u32 priority) { gcMoveGObjCommon(0, gobj, link, priority, NULL); }
 
 // 0x80009CC8
-void func_80009CC8(GObj *gobj, u8 link, u32 order) { gcMoveGObjCommon(1, gobj, link, order, NULL); }
+void func_80009CC8(GObj *gobj, u8 link, u32 priority) { gcMoveGObjCommon(1, gobj, link, priority, NULL); }
 
 // 0x80009D00
 void unref_80009D00(GObj *this_gobj, GObj *other_gobj)
@@ -1893,23 +1893,23 @@ void gcLinkGObjDLCommon(GObj *gobj, void (*func_display)(GObj*), u8 dl_link, u32
 }
 
 // 0x80009DF4
-void gcAddGObjDisplay(GObj *gobj, void (*func_display)(GObj*), u8 dl_link, u32 order, u32 camera_tag)
+void gcAddGObjDisplay(GObj *gobj, void (*func_display)(GObj*), u8 dl_link, u32 priority, u32 camera_tag)
 {
 	if (gobj == NULL)
 	{
 		gobj = gGCCurrentCommon;
 	}
-	gcLinkGObjDLCommon(gobj, func_display, dl_link, order, camera_tag);
+	gcLinkGObjDLCommon(gobj, func_display, dl_link, priority, camera_tag);
 	gcDLLinkGObjTail(gobj);
 }
 
 // 0x80009E38
-void unref_80009E38(GObj *gobj, void (*func_display)(GObj*), u8 dl_link, u32 order, u32 camera_tag)
+void unref_80009E38(GObj *gobj, void (*func_display)(GObj*), u8 dl_link, u32 priority, u32 camera_tag)
 {
 	if (gobj == NULL)
 		gobj = gGCCurrentCommon;
 
-	gcLinkGObjDLCommon(gobj, func_display, dl_link, order, camera_tag);
+	gcLinkGObjDLCommon(gobj, func_display, dl_link, priority, camera_tag);
 	gcDLLinkGObjHead(gobj);
 }
 
@@ -1934,10 +1934,10 @@ void unref_80009ED0(GObj *this_gobj, void (*func_display)(GObj*), s32 arg2, GObj
 }
 
 // 0x80009F28
-void func_80009F28(GObj *gobj, void (*func_display)(GObj*), u32 order, u64 arg3, u32 camera_tag)
+void func_80009F28(GObj *gobj, void (*func_display)(GObj*), u32 priority, u64 arg3, u32 camera_tag)
 {
 	gobj->dl_link_id = ARRAY_COUNT(gGCCommonDLLinks) - 1;
-	gobj->dl_link_priority = order;
+	gobj->dl_link_priority = priority;
 	gobj->func_display = func_display;
 	gobj->camera_mask = arg3;
 	gobj->camera_tag = camera_tag;
@@ -1946,24 +1946,24 @@ void func_80009F28(GObj *gobj, void (*func_display)(GObj*), u32 order, u64 arg3,
 }
 
 // 0x80009F74
-void func_80009F74(GObj *gobj, void (*func_display)(GObj*), u32 order, u64 arg3, u32 camera_tag)
+void func_80009F74(GObj *gobj, void (*func_display)(GObj*), u32 priority, u64 arg3, u32 camera_tag)
 {
 	if (gobj == NULL)
 	{
 		gobj = gGCCurrentCommon;
 	}
-	func_80009F28(gobj, func_display, order, arg3, camera_tag);
+	func_80009F28(gobj, func_display, priority, arg3, camera_tag);
 	gcDLLinkGObjTail(gobj);
 }
 
 // 0x80009FC0
-void unref_80009FC0(GObj *gobj, void (*func_display)(GObj*), u32 order, u64 arg3, u32 camera_tag)
+void unref_80009FC0(GObj *gobj, void (*func_display)(GObj*), u32 priority, u64 arg3, u32 camera_tag)
 {
 	if (gobj == NULL)
 	{
 		gobj = gGCCurrentCommon;
 	}
-	func_80009F28(gobj, func_display, order, arg3, camera_tag);
+	func_80009F28(gobj, func_display, priority, arg3, camera_tag);
 	gcDLLinkGObjHead(gobj);
 }
 
@@ -1990,7 +1990,7 @@ void unref_8000A06C(GObj *this_gobj, void (*func_display)(GObj*), u64 arg2, s32 
 }
 
 // 0x8000A0D0
-void gcMoveGObjDL(GObj *gobj, u8 dl_link, u32 order)
+void gcMoveGObjDL(GObj *gobj, u8 dl_link, u32 priority)
 {
 	if (dl_link >= ARRAY_COUNT(gGCCommonDLLinks) - 1)
 	{
@@ -2000,13 +2000,13 @@ void gcMoveGObjDL(GObj *gobj, u8 dl_link, u32 order)
 	gcRemoveGObjFromDLLinkedList(gobj);
 
 	gobj->dl_link_id = dl_link;
-	gobj->dl_link_priority = order;
+	gobj->dl_link_priority = priority;
 
 	gcDLLinkGObjTail(gobj);
 }
 
 // 0x8000A14C
-void gcMoveGObjDLHead(GObj *gobj, u8 dl_link, u32 order)
+void gcMoveGObjDLHead(GObj *gobj, u8 dl_link, u32 priority)
 {
 	if (dl_link >= ARRAY_COUNT(gGCCommonDLLinks) - 1)
 	{
@@ -2015,7 +2015,7 @@ void gcMoveGObjDLHead(GObj *gobj, u8 dl_link, u32 order)
 	}
 	gcRemoveGObjFromDLLinkedList(gobj);
 	gobj->dl_link_id = dl_link;
-	gobj->dl_link_priority = order;
+	gobj->dl_link_priority = priority;
 	gcDLLinkGObjHead(gobj);
 }
 
@@ -2038,18 +2038,18 @@ void unref_8000A208(GObj *this_gobj, GObj *other_gobj)
 }
 
 // 0x8000A24C
-void func_8000A24C(GObj *gobj, u32 order)
+void func_8000A24C(GObj *gobj, u32 priority)
 {
 	gcRemoveGObjFromDLLinkedList(gobj);
-	gobj->dl_link_priority = order;
+	gobj->dl_link_priority = priority;
 	gcDLLinkGObjTail(gobj);
 }
 
 // 0x8000A280
-void unref_8000A280(GObj *gobj, u32 order)
+void unref_8000A280(GObj *gobj, u32 priority)
 {
 	gcRemoveGObjFromDLLinkedList(gobj);
-	gobj->dl_link_priority = order;
+	gobj->dl_link_priority = priority;
 	gcDLLinkGObjHead(gobj);
 }
 

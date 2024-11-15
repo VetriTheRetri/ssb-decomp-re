@@ -84,10 +84,10 @@ s32 sMNVSModeInputDirection;
 s32 sMNVSModeChangeWait;
 
 // 0x80134980
-s32 sMNVSModeFramesElapsed;
+s32 sMNVSModeTotalTimeTics;
 
 // 0x80134984
-s32 sMNVSModeMaxFramesElapsed;
+s32 sMNVSModeMaxTotalTimeTics;
 
 // 0x80134988
 LBFileNode sMNVSModeStatusBuffer[24];
@@ -982,9 +982,9 @@ void mnVSModeFuncStartVars()
     sMNVSModeTimeStockArrowsGObj = 0;
     sMNVSModeRuleArrowsGObj = 0;
     sMNVSModeInputDirection = nMNVSModeInputDirectionNone;
-    sMNVSModeFramesElapsed = 0;
+    sMNVSModeTotalTimeTics = 0;
     sMNVSModeExitInterrupt = 0;
-    sMNVSModeMaxFramesElapsed = sMNVSModeFramesElapsed + I_MIN_TO_TICS(5);
+    sMNVSModeMaxTotalTimeTics = sMNVSModeTotalTimeTics + I_MIN_TO_TICS(5);
     sMNVSModeTimeStockArrowBlinkTimer = 0;
     sMNVSModeRuleArrowBlinkTimer = 0;
 }
@@ -1131,11 +1131,11 @@ void mnVSModeMain(GObj *gobj)
     s32 stick_range;
     s32 is_button;
 
-    sMNVSModeFramesElapsed++;
+    sMNVSModeTotalTimeTics++;
 
-    if (sMNVSModeFramesElapsed >= 10)
+    if (sMNVSModeTotalTimeTics >= 10)
     {
-        if (sMNVSModeFramesElapsed == sMNVSModeMaxFramesElapsed)
+        if (sMNVSModeTotalTimeTics == sMNVSModeMaxTotalTimeTics)
         {
             gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
             gSCManagerSceneData.scene_curr = nSCKindTitle;
@@ -1147,7 +1147,7 @@ void mnVSModeMain(GObj *gobj)
         }
         if (scSubsysControllerCheckNoInputAll() == FALSE)
         {
-            sMNVSModeMaxFramesElapsed = sMNVSModeFramesElapsed + I_MIN_TO_TICS(5);
+            sMNVSModeMaxTotalTimeTics = sMNVSModeTotalTimeTics + I_MIN_TO_TICS(5);
         }
         if (sMNVSModeExitInterrupt != 0)
         {

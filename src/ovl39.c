@@ -58,7 +58,7 @@ u32 D_ovl39_8018E0E0[2] = {
 s32 D_ovl39_8018E1F0[2];
 
 // 0x8018E1F8
-s32 sMVOpeningFoxFramesElapsed;
+s32 sMVOpeningFoxTotalTimeTics;
 
 // 0x8018E1FC
 GObj* sMVOpeningFoxNameGObj;
@@ -76,7 +76,7 @@ GObj* sMVOpeningFoxStageCameraGObj;
 void* sMVOpeningFoxFigatreeHeap;
 
 // 0x8018E210
-f32 sMVOpeningFoxPosedFighterYSpeed;
+f32 sMVOpeningFoxPosedFighterSpeed;
 
 // 0x8018E218
 CObjDesc dMVOpeningFoxAdjustedStartCObjDesc;
@@ -128,7 +128,7 @@ void mvOpeningFoxSetNameColor(SObj* name_sobj)
 }
 
 // 0x8018D194
-void mvOpeningFoxDrawName()
+void mvOpeningFoxMakeName()
 {
 	GObj* name_gobj;
 	SObj* name_sobj;
@@ -166,7 +166,7 @@ void mvOpeningFoxAnimateStageCamera(GObj* camera_gobj)
 {
 	CObj *cobj = CObjGetStruct(camera_gobj);
 
-	if (sMVOpeningFoxFramesElapsed >= 15)
+	if (sMVOpeningFoxTotalTimeTics >= 15)
 	{
 		cobj->vec.eye.x += (((dMVOpeningFoxAdjustedEndCObjDesc.eye.x - dMVOpeningFoxAdjustedStartCObjDesc.eye.x) / 45.0F));
 		cobj->vec.eye.y += (((dMVOpeningFoxAdjustedEndCObjDesc.eye.y - dMVOpeningFoxAdjustedStartCObjDesc.eye.y) / 45.0F));
@@ -297,28 +297,28 @@ void mvOpeningFoxCreatePosedFighterBackground()
 // 0x8018D998
 void mvOpeningFoxAnimatePosedFighter(GObj* fighter_gobj)
 {
-	switch (sMVOpeningFoxFramesElapsed)
+	switch (sMVOpeningFoxTotalTimeTics)
 	{
 		default:
 			break;
 		case 15:
-			sMVOpeningFoxPosedFighterYSpeed = 17.0F;
+			sMVOpeningFoxPosedFighterSpeed = 17.0F;
 			break;
 		case 45:
-			sMVOpeningFoxPosedFighterYSpeed = 15.0F;
+			sMVOpeningFoxPosedFighterSpeed = 15.0F;
 			break;
 		case 60:
-			sMVOpeningFoxPosedFighterYSpeed = 0.0F;
+			sMVOpeningFoxPosedFighterSpeed = 0.0F;
 			break;
 	}
 
-	if ((sMVOpeningFoxFramesElapsed > 15) && (sMVOpeningFoxFramesElapsed < 45))
-		sMVOpeningFoxPosedFighterYSpeed += -1.0F / 15.0F;
+	if ((sMVOpeningFoxTotalTimeTics > 15) && (sMVOpeningFoxTotalTimeTics < 45))
+		sMVOpeningFoxPosedFighterSpeed += -1.0F / 15.0F;
 
-	if ((sMVOpeningFoxFramesElapsed > 45) && (sMVOpeningFoxFramesElapsed < 60))
-		sMVOpeningFoxPosedFighterYSpeed += -1.0F;
+	if ((sMVOpeningFoxTotalTimeTics > 45) && (sMVOpeningFoxTotalTimeTics < 60))
+		sMVOpeningFoxPosedFighterSpeed += -1.0F;
 
-	DObjGetStruct(fighter_gobj)->translate.vec.f.y -= sMVOpeningFoxPosedFighterYSpeed;
+	DObjGetStruct(fighter_gobj)->translate.vec.f.y -= sMVOpeningFoxPosedFighterSpeed;
 }
 
 // 0x8018DA68
@@ -377,7 +377,7 @@ void mvOpeningFoxCreatePosedFighterBackgroundViewport()
 // 0x8018DD98
 void mvOpeningFoxMainProc(GObj* arg0)
 {
-	sMVOpeningFoxFramesElapsed += 1;
+	sMVOpeningFoxTotalTimeTics += 1;
 
 	if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON))
 	{
@@ -386,7 +386,7 @@ void mvOpeningFoxMainProc(GObj* arg0)
 		syTaskmanSetLoadScene();
 	}
 
-	if (sMVOpeningFoxFramesElapsed == 15)
+	if (sMVOpeningFoxTotalTimeTics == 15)
 	{
 		gcEjectGObj(sMVOpeningFoxNameGObj);
 		mvOpeningFoxInitFighterStagePanel();
@@ -394,7 +394,7 @@ void mvOpeningFoxMainProc(GObj* arg0)
 		mvOpeningFoxCreatePosedFighter();
 	}
 
-	if (sMVOpeningFoxFramesElapsed == 60)
+	if (sMVOpeningFoxTotalTimeTics == 60)
 	{
 		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 		gSCManagerSceneData.scene_curr = 0x24;
@@ -403,9 +403,9 @@ void mvOpeningFoxMainProc(GObj* arg0)
 }
 
 // 0x8018DE54
-void mvOpeningFoxInitFramesElapsed()
+void mvOpeningFoxInitTotalTimeTics()
 {
-	sMVOpeningFoxFramesElapsed = 0;
+	sMVOpeningFoxTotalTimeTics = 0;
 }
 
 // 0x8018DE60
@@ -425,7 +425,7 @@ void mvOpeningFoxInit()
 	mvOpeningFoxLoadFiles();
 	gcMakeGObjSPAfter(0x3F7, mvOpeningFoxMainProc, 0xD, 0x80000000);
 	gcMakeDefaultCameraGObj(9, 0x80000000, 0x64, 3, 0xFF);
-	mvOpeningFoxInitFramesElapsed();
+	mvOpeningFoxInitTotalTimeTics();
 	efParticleInitAll();
 	ftParamInitGame();
 	mpCollisionInitGroundData();
@@ -441,7 +441,7 @@ void mvOpeningFoxInit()
 	mvOpeningFoxCreateNameViewport();
 	mvOpeningFoxCreatePosedFighterBackgroundViewport();
 	mvOpeningFoxCreatePosedFighterViewport();
-	mvOpeningFoxDrawName();
+	mvOpeningFoxMakeName();
 
 	while (func_8000092C() < 2055U);
 }

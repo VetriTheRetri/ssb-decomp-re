@@ -138,10 +138,10 @@ GObj* gMnBonusTotalTimeGobj;
 u16 gMnBonusCharacterUnlockedMask;
 
 // 0x80137724 frames elapsed on CSS
-s32 gMnBonusFramesElapsed;
+s32 gMnBonusTotalTimeTics;
 
 // 0x80137728 frames to wait until exiting the CSS
-s32 gMnBonusMaxFramesElapsed;
+s32 gMnBonusMaxTotalTimeTics;
 
 // 0x8013772C looping timer that helps determine blink rate of Press Start (and Ready to Fight?)
 s32 gMnBonusPressStartFlashTimer;
@@ -1506,7 +1506,7 @@ sb32 mnBonusSelectChar(GObj* cursor_gobj, s32 port_id, s32 arg2, s32 select_butt
 	if (gMnBonusPanel.char_id != nFTKindNull)
 	{
 		mnBonusSelectCharWithToken(port_id, select_button);
-		gMnBonusPanel.min_frames_elapsed_until_recall = gMnBonusFramesElapsed + 0x1E;
+		gMnBonusPanel.min_frames_elapsed_until_recall = gMnBonusTotalTimeTics + 0x1E;
 		func_800269C0_275C0(0x9FU);
 		return TRUE;
 	}
@@ -1573,7 +1573,7 @@ sb32 mnBonusCheckAndHandleTokenPickup(GObj* cursor_gobj, s32 port_id)
 {
 	mnCharPanelBonus* panel_info = &gMnBonusPanel;
 
-	if ((gMnBonusFramesElapsed < gMnBonusPanel.min_frames_elapsed_until_recall))
+	if ((gMnBonusTotalTimeTics < gMnBonusPanel.min_frames_elapsed_until_recall))
 		return FALSE;
 	else if (gMnBonusPanel.cursor_state != mnCursorStateNotHoldingToken)
 		return FALSE;
@@ -1871,7 +1871,7 @@ void mnBonusExitIfBButtonPressed(s32 port_id)
 {
 	SYController* controller = &gSYControllerDevices[port_id];
 
-	if ((gMnBonusFramesElapsed >= 10) && (controller->button_tap & B_BUTTON))
+	if ((gMnBonusTotalTimeTics >= 10) && (controller->button_tap & B_BUTTON))
 		mnBonusGoBackTo1PMenu();
 }
 
@@ -2373,9 +2373,9 @@ void func_ovl29_801369C8() {}
 // 0x801369D0
 void mnBonusMain(s32 arg0)
 {
-	gMnBonusFramesElapsed += 1;
+	gMnBonusTotalTimeTics += 1;
 
-	if (gMnBonusFramesElapsed == gMnBonusMaxFramesElapsed)
+	if (gMnBonusTotalTimeTics == gMnBonusMaxTotalTimeTics)
 	{
 		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 		gSCManagerSceneData.scene_curr = nSCKindTitle;
@@ -2387,7 +2387,7 @@ void mnBonusMain(s32 arg0)
 	}
 
 	if (!scSubsysControllerCheckNoInputAll())
-		gMnBonusMaxFramesElapsed = gMnBonusFramesElapsed + I_MIN_TO_TICS(5);
+		gMnBonusMaxTotalTimeTics = gMnBonusTotalTimeTics + I_MIN_TO_TICS(5);
 
 	if (gMnBonusCharSelected && !gMnBonusPanel.unk_0x88)
 		gMnBonusCharSelected = 0;
@@ -2428,8 +2428,8 @@ void mnBonusInitPort()
 // 0x80136B54
 void mnBonusLoadMatchInfo()
 {
-	gMnBonusFramesElapsed = 0;
-	gMnBonusMaxFramesElapsed = gMnBonusFramesElapsed + I_MIN_TO_TICS(5);
+	gMnBonusTotalTimeTics = 0;
+	gMnBonusMaxTotalTimeTics = gMnBonusTotalTimeTics + I_MIN_TO_TICS(5);
 	D_ovl29_801376D4 = 5;
 	gMnBonusCharSelected = FALSE;
 	gMnBonusHumanPanelPort = gSCManagerSceneData.player;

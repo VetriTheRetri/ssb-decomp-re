@@ -160,7 +160,7 @@ s32 D_ovl31_80138F90[] = {
 s32 D_ovl31_801398A0[182];
 
 // 0x80139B78 frames elapsed on Results screen
-s32 gMNVSResultsFramesElapsed;
+s32 gMNVSResultsTotalTimeTics;
 
 // 0x80139B7C
 s32 gMNVSResultsHorizontalLineWidth;
@@ -205,7 +205,7 @@ s32 gMNVSResultsGameRule;
 ub8 gMNVSResultsIsTeamBattle;
 
 // 0x80139C18 frames to wait until pressing start will exit the Results screen
-s32 gMNVSResultsMinFramesElapsed;
+s32 gMNVSResultsMinTotalTimeTics;
 
 // 0x80139C20
 sb32 gMNVSResultsIsSharedWinner[4];
@@ -323,7 +323,7 @@ sb32 mnVSResultsCheckStartPressed()
 {
 	s32 i;
 
-	if (gMNVSResultsFramesElapsed >= gMNVSResultsMinFramesElapsed)
+	if (gMNVSResultsTotalTimeTics >= gMNVSResultsMinTotalTimeTics)
 	{
 		for (i = 0; i < ARRAY_COUNT(gSYControllerDevices); i++)
 		{
@@ -363,7 +363,7 @@ void mnVSResultsAnnounceWinner()
 	if (gMNVSResultsGameRule == 4)
 	{
 		// No Contest
-		switch (gMNVSResultsFramesElapsed)
+		switch (gMNVSResultsTotalTimeTics)
 		{
 			case 0x2:
 				func_800269C0_275C0(0x1F6U);
@@ -376,7 +376,7 @@ void mnVSResultsAnnounceWinner()
 	else if (!gMNVSResultsIsTeamBattle)
 	{
 		// FFA - "This Game's Winner Is..."
-		switch (gMNVSResultsFramesElapsed)
+		switch (gMNVSResultsTotalTimeTics)
 		{
 			case 0x51:
 				func_800269C0_275C0(0x216U);
@@ -392,7 +392,7 @@ void mnVSResultsAnnounceWinner()
 	else
 	{
 		// Teams - "Red/Blue/Grean Team Wins!"
-		switch (gMNVSResultsFramesElapsed)
+		switch (gMNVSResultsTotalTimeTics)
 		{
 			case 0x51:
 				func_800269C0_275C0(announcer_teams[mnVSResultsGetWinningTeam()]);
@@ -620,7 +620,7 @@ void mnVSResultsAnimateLogo(GObj* logo_gobj)
 	f32 min_scale = 10.0F;
 	f32 max_y = 1000.0F;
 
-	if (gMNVSResultsFramesElapsed >= 0x28)
+	if (gMNVSResultsTotalTimeTics >= 0x28)
 	{
 		if (min_scale < DObjGetStruct(logo_gobj)->scale.vec.f.x)
 		{
@@ -1912,41 +1912,41 @@ void mnVSResultsDrawPlaceRow(s32 y)
 // 0x80136290
 void mnVSResultsDrawResults0(s32 arg0)
 {
-	if (gMNVSResultsFramesElapsed == 0xB4)
+	if (gMNVSResultsTotalTimeTics == 0xB4)
 		mnVSResultsCreateOverlay();
 
-	if (gMNVSResultsFramesElapsed == 0xD2)
+	if (gMNVSResultsTotalTimeTics == 0xD2)
 	{
 		mnVSResultsCreateColumnHeaders();
 		mnVSResultsDrawKOs(0x42);
 	}
 
-	if (gMNVSResultsFramesElapsed == 0xE6)
+	if (gMNVSResultsTotalTimeTics == 0xE6)
 		mnVSResultsDrawTKOs(0x51);
 
-	if (gMNVSResultsFramesElapsed == 0xFA)
+	if (gMNVSResultsTotalTimeTics == 0xFA)
 		mnVSResultsCreateHorizontalLine(0x62);
 
-	if (gMNVSResultsFramesElapsed == 0x10E)
+	if (gMNVSResultsTotalTimeTics == 0x10E)
 		mnVSResultsDrawPointsRow();
 
-	if (gMNVSResultsFramesElapsed == 0x122)
+	if (gMNVSResultsTotalTimeTics == 0x122)
 		mnVSResultsDrawPlaceRow(0x7C);
 }
 
 // 0x80136358
 void mnVSResultsDrawResults1(s32 arg0)
 {
-	if (gMNVSResultsFramesElapsed == 0xB4)
+	if (gMNVSResultsTotalTimeTics == 0xB4)
 		mnVSResultsCreateOverlay();
 
-	if (gMNVSResultsFramesElapsed == 0xD2)
+	if (gMNVSResultsTotalTimeTics == 0xD2)
 		mnVSResultsDrawPlaceRow(0x42);
 
-	if (gMNVSResultsFramesElapsed == 0xE6)
+	if (gMNVSResultsTotalTimeTics == 0xE6)
 		mnVSResultsCreateHorizontalLine(0x6E);
 
-	if (gMNVSResultsFramesElapsed == 0xFA)
+	if (gMNVSResultsTotalTimeTics == 0xFA)
 	{
 		mnVSResultsCreateColumnHeaders();
 		mnVSResultsDrawKOs(0x7C);
@@ -1956,41 +1956,41 @@ void mnVSResultsDrawResults1(s32 arg0)
 // 0x801363E8
 void mnVSResultsDrawResults2(s32 arg0)
 {
-	if (gMNVSResultsFramesElapsed == 0xB4)
+	if (gMNVSResultsTotalTimeTics == 0xB4)
 		mnVSResultsCreateOverlay();
 
-	if (gMNVSResultsFramesElapsed == 0xD2)
+	if (gMNVSResultsTotalTimeTics == 0xD2)
 	{
 		mnVSResultsCreateColumnHeaders();
 		mnVSResultsDrawKOs(0x42);
 	}
 
-	if (gMNVSResultsFramesElapsed == 0xE6)
+	if (gMNVSResultsTotalTimeTics == 0xE6)
 		mnVSResultsDrawTKOs(0x51);
 
-	if (gMNVSResultsFramesElapsed == 0xFA)
+	if (gMNVSResultsTotalTimeTics == 0xFA)
 		mnVSResultsCreateHorizontalLine(0x62);
 
-	if (gMNVSResultsFramesElapsed == 0x10E)
+	if (gMNVSResultsTotalTimeTics == 0x10E)
 		mnVSResultsDrawPointsRow();
 
-	if (gMNVSResultsFramesElapsed == 0x122)
+	if (gMNVSResultsTotalTimeTics == 0x122)
 		mnVSResultsDrawPlaceRow(0x7C);
 }
 
 // 0x801364B0
 void mnVSResultsDrawResults3(s32 arg0)
 {
-	if (gMNVSResultsFramesElapsed == 0xB4)
+	if (gMNVSResultsTotalTimeTics == 0xB4)
 		mnVSResultsCreateOverlay();
 
-	if (gMNVSResultsFramesElapsed == 0xD2)
+	if (gMNVSResultsTotalTimeTics == 0xD2)
 		mnVSResultsDrawPlaceRow(0x42);
 
-	if (gMNVSResultsFramesElapsed == 0xE6)
+	if (gMNVSResultsTotalTimeTics == 0xE6)
 		mnVSResultsCreateHorizontalLine(0x6E);
 
-	if (gMNVSResultsFramesElapsed == 0xFA)
+	if (gMNVSResultsTotalTimeTics == 0xFA)
 	{
 		mnVSResultsCreateColumnHeaders();
 		mnVSResultsDrawKOs(0x7C);
@@ -2000,16 +2000,16 @@ void mnVSResultsDrawResults3(s32 arg0)
 // 0x80136540
 void mnVSResultsDrawResultsNoContest(s32 arg0)
 {
-	if (gMNVSResultsFramesElapsed == 0x1E)
+	if (gMNVSResultsTotalTimeTics == 0x1E)
 		mnVSResultsCreateOverlay();
 
-	if (gMNVSResultsFramesElapsed == 0x3C)
+	if (gMNVSResultsTotalTimeTics == 0x3C)
 	{
 		mnVSResultsCreateColumnHeaders();
 		mnVSResultsDrawKOs(0x42);
 	}
 
-	if (gMNVSResultsFramesElapsed == 0x50)
+	if (gMNVSResultsTotalTimeTics == 0x50)
 		mnVSResultsDrawTKOs(0x51);
 }
 
@@ -2396,7 +2396,7 @@ void mnVSResultsLoadMatchInfo()
 {
 	s32 i;
 
-	gMNVSResultsFramesElapsed = 0;
+	gMNVSResultsTotalTimeTics = 0;
 	gMNVSResultsHorizontalLineWidth = 0;
 	gMNVSResultsCharacterAlpha = 0;
 	gMNVSResultsIsTeamBattle = gSCManagerTransferBattleState.is_team_battle;
@@ -2411,7 +2411,7 @@ void mnVSResultsLoadMatchInfo()
 		else
 			gMNVSResultsGameRule = 2;
 
-		gMNVSResultsMinFramesElapsed = 0x19A;
+		gMNVSResultsMinTotalTimeTics = 0x19A;
 	}
 	else
 	{
@@ -2420,14 +2420,14 @@ void mnVSResultsLoadMatchInfo()
 		else
 			gMNVSResultsGameRule = 3;
 
-		gMNVSResultsMinFramesElapsed = 0x172;
+		gMNVSResultsMinTotalTimeTics = 0x172;
 	}
 
 
 	if (gSCManagerSceneData.is_reset)
 	{
 		gMNVSResultsGameRule = 4;
-		gMNVSResultsMinFramesElapsed = 0xC8;
+		gMNVSResultsMinTotalTimeTics = 0xC8;
 
 		gMNVSResultsDrawBackgroundFrame = 1;
 		gMNVSResultsDrawWinnerTextFrame = 1;
@@ -2814,9 +2814,9 @@ void mnVSResultsMain(s32 arg0)
 	u16 sp_game_complete_mask;
 	s32 i;
 
-	gMNVSResultsFramesElapsed += 1;
+	gMNVSResultsTotalTimeTics += 1;
 
-	if (gMNVSResultsFramesElapsed == gMNVSResultsDrawBackgroundFrame)
+	if (gMNVSResultsTotalTimeTics == gMNVSResultsDrawBackgroundFrame)
 	{
 		if (gMNVSResultsGameRule != 4)
 			mnVSResultsCreateBackgroundOverlay2();
@@ -2824,7 +2824,7 @@ void mnVSResultsMain(s32 arg0)
 		mnVSResultsCreateBackground();
 	}
 
-	if (gMNVSResultsFramesElapsed == gMNVSResultsDrawWinnerTextFrame)
+	if (gMNVSResultsTotalTimeTics == gMNVSResultsDrawWinnerTextFrame)
 	{
 		mnVSResultsDrawWinnerText();
 		mnVSResultsCreateScreenTitle();
@@ -2833,12 +2833,12 @@ void mnVSResultsMain(s32 arg0)
 			func_ovl31_80138830();
 	}
 
-	if (gMNVSResultsFramesElapsed == gMNVSResultsDrawFightersFrame)
+	if (gMNVSResultsTotalTimeTics == gMNVSResultsDrawFightersFrame)
 	{
 		mnVSResultsDrawFighters();
 	}
 
-	if (gMNVSResultsDrawFightersFrame < gMNVSResultsFramesElapsed)
+	if (gMNVSResultsDrawFightersFrame < gMNVSResultsTotalTimeTics)
 	{
 		if (gMNVSResultsCharacterAlpha < 0xFF)
 		{
@@ -2853,7 +2853,7 @@ void mnVSResultsMain(s32 arg0)
 
 	mnVSResultsAnnounceWinner();
 
-	if ((gMNVSResultsGameRule != 4) && (gMNVSResultsFramesElapsed == 0x78))
+	if ((gMNVSResultsGameRule != 4) && (gMNVSResultsTotalTimeTics == 0x78))
 	{
 		mnVSResultsPlayVictoryTheme();
 		func_ovl31_80137854();

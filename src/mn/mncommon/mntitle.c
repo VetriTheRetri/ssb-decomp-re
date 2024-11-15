@@ -461,7 +461,7 @@ void mnTitleProceedDemoNext(void)
 
 	case nSCKindModeSelect:
 	case nSCKindAutoDemo:
-		gSCManagerSceneData.scene_curr = nSCKindN64;
+		gSCManagerSceneData.scene_curr = nSCKindStartup;
 		break;
 
 	default:

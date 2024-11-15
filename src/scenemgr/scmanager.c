@@ -486,8 +486,8 @@ LBBackupData dSCManagerDefaultBackupData =
 // 0x800A3F80
 SCCommonData dSCManagerDefaultSceneData =
 {
-	nSCKindN64,										// Current scene
-	nSCKindN64,										// Previous scene
+	nSCKindStartup,										// Current scene
+	nSCKindStartup,										// Previous scene
 
 	// Queued unlock messages
 	{
@@ -1042,7 +1042,7 @@ void scManagerRunLoop(sb32 arg)
 				char_bkg_info_entry();
 				break;
 
-			case nSCKindN64:
+			case nSCKindStartup:
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[58]);
 				mnStartupStartScene();
@@ -1087,7 +1087,7 @@ void scManagerRunLoop(sb32 arg)
 
 			case 35:
 				syDmaLoadOverlay(&dSCManagerOverlays[41]);
-				intro_focus_yoshi_entry();
+				mvOpeningYoshiStartScene();
 				break;
 
 			case 36:

@@ -48,7 +48,7 @@ s32 D_ovl40_8018E1C0;
 s32 D_ovl40_8018E1C4;
 
 // 0x8018E1C8
-s32 sMVOpeningLinkFramesElapsed;
+s32 sMVOpeningLinkTotalTimeTics;
 
 // 0x8018E1CC
 GObj* sMVOpeningLinkNameGObj;
@@ -66,7 +66,7 @@ GObj* sMVOpeningLinkStageCameraGObj;
 void* sMVOpeningLinkFigatreeHeap;
 
 // 0x8018E1E0
-f32 sMVOpeningLinkPosedFighterXSpeed;
+f32 sMVOpeningLinkPosedFighterSpeed;
 
 // 0x8018E1E4
 s32 D_ovl40_8018E1E4;
@@ -121,7 +121,7 @@ void mvOpeningLinkSetNameColor(SObj* name_sobj)
 }
 
 // 0x8018D194
-void mvOpeningLinkDrawName()
+void mvOpeningLinkMakeName()
 {
 	GObj* name_gobj;
 	SObj* name_sobj;
@@ -156,7 +156,7 @@ void mvOpeningLinkAnimateStageCamera(GObj* camera_gobj)
 {
 	CObj *cobj = CObjGetStruct(camera_gobj);
 
-	if (sMVOpeningLinkFramesElapsed >= 15)
+	if (sMVOpeningLinkTotalTimeTics >= 15)
 	{
 		cobj->vec.eye.x += (((dMVOpeningLinkAdjustedEndCObjDesc.eye.x - dMVOpeningLinkAdjustedStartCObjDesc.eye.x) / 45.0F));
 		cobj->vec.eye.y += (((dMVOpeningLinkAdjustedEndCObjDesc.eye.y - dMVOpeningLinkAdjustedStartCObjDesc.eye.y) / 45.0F));
@@ -287,27 +287,27 @@ void mvOpeningLinkCreatePosedFighterBackground()
 // 0x8018D970
 void mvOpeningLinkAnimatePosedFighter(GObj* fighter_gobj)
 {
-	switch (sMVOpeningLinkFramesElapsed)
+	switch (sMVOpeningLinkTotalTimeTics)
 	{
 		default:
 			break;
 		case 15:
-			sMVOpeningLinkPosedFighterXSpeed = 17.0F;
+			sMVOpeningLinkPosedFighterSpeed = 17.0F;
 			break;
 		case 45:
-			sMVOpeningLinkPosedFighterXSpeed = 15.0F;
+			sMVOpeningLinkPosedFighterSpeed = 15.0F;
 			break;
 		case 60:
-			sMVOpeningLinkPosedFighterXSpeed = 0.0F;
+			sMVOpeningLinkPosedFighterSpeed = 0.0F;
 			break;
 	}
 
-	if ((sMVOpeningLinkFramesElapsed > 15) && (sMVOpeningLinkFramesElapsed < 45))
-		sMVOpeningLinkPosedFighterXSpeed += -1.0F / 15.0F;
-	if ((sMVOpeningLinkFramesElapsed > 45) && (sMVOpeningLinkFramesElapsed < 60))
-		sMVOpeningLinkPosedFighterXSpeed += -1.0F;
+	if ((sMVOpeningLinkTotalTimeTics > 15) && (sMVOpeningLinkTotalTimeTics < 45))
+		sMVOpeningLinkPosedFighterSpeed += -1.0F / 15.0F;
+	if ((sMVOpeningLinkTotalTimeTics > 45) && (sMVOpeningLinkTotalTimeTics < 60))
+		sMVOpeningLinkPosedFighterSpeed += -1.0F;
 
-	DObjGetStruct(fighter_gobj)->translate.vec.f.x -= sMVOpeningLinkPosedFighterXSpeed;
+	DObjGetStruct(fighter_gobj)->translate.vec.f.x -= sMVOpeningLinkPosedFighterSpeed;
 }
 
 // 0x8018DA40
@@ -366,7 +366,7 @@ void mvOpeningLinkCreatePosedFighterBackgroundViewport()
 // 0x8018DD80
 void mvOpeningLinkMainProc(GObj* arg0)
 {
-	sMVOpeningLinkFramesElapsed += 1;
+	sMVOpeningLinkTotalTimeTics += 1;
 
 	if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE)
 	{
@@ -375,7 +375,7 @@ void mvOpeningLinkMainProc(GObj* arg0)
 		syTaskmanSetLoadScene();
 	}
 
-	if (sMVOpeningLinkFramesElapsed == 15)
+	if (sMVOpeningLinkTotalTimeTics == 15)
 	{
 		gcEjectGObj(sMVOpeningLinkNameGObj);
 		mvOpeningLinkInitFighterStagePanel();
@@ -383,7 +383,7 @@ void mvOpeningLinkMainProc(GObj* arg0)
 		mvOpeningLinkCreatePosedFighter();
 	}
 
-	if (sMVOpeningLinkFramesElapsed == 60)
+	if (sMVOpeningLinkTotalTimeTics == 60)
 	{
 		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 		gSCManagerSceneData.scene_curr = 0x20;
@@ -392,9 +392,9 @@ void mvOpeningLinkMainProc(GObj* arg0)
 }
 
 // 0x8018DE3C
-void mvOpeningLinkInitFramesElapsed()
+void mvOpeningLinkInitTotalTimeTics()
 {
-	sMVOpeningLinkFramesElapsed = 0;
+	sMVOpeningLinkTotalTimeTics = 0;
 }
 
 // 0x8018DE48
@@ -414,7 +414,7 @@ void mvOpeningLinkInit()
 	mvOpeningLinkLoadFiles();
 	gcMakeGObjSPAfter(0x3F7, mvOpeningLinkMainProc, 0xD, 0x80000000);
 	gcMakeDefaultCameraGObj(9, 0x80000000, 0x64, 3, 0xFF);
-	mvOpeningLinkInitFramesElapsed();
+	mvOpeningLinkInitTotalTimeTics();
 	efParticleInitAll();
 	ftParamInitGame();
 	mpCollisionInitGroundData();
@@ -430,7 +430,7 @@ void mvOpeningLinkInit()
 	mvOpeningLinkCreateNameViewport();
 	mvOpeningLinkCreatePosedFighterBackgroundViewport();
 	mvOpeningLinkCreatePosedFighterViewport();
-	mvOpeningLinkDrawName();
+	mvOpeningLinkMakeName();
 
 	while (func_8000092C() < 1695U);
 }

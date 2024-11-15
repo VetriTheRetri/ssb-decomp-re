@@ -37,7 +37,7 @@ GObj *sMVOpeningPikachuMotionCameraGObj;
 void *sMVOpeningPikachuFigatreeHeap;
 
 // 0x8018E240
-f32 sMVOpeningPikachuPosedFighterYSpeed;
+f32 sMVOpeningPikachuPosedFighterSpeed;
 
 // 0x8018E244
 s32 sMVOpeningPikachuPad0x8018E244;
@@ -89,7 +89,7 @@ FTKeyEvent dMVOpeningPikachuKeyEvents[/* */] =
 };
 
 // 0x8018E0FC
-u32 dMVOpeningPikachuFileIDs[/* */] = { &lIFCommonAnnounceCommonLetterFileID, &lMVOpeningPikachuFileID };
+u32 dMVOpeningPikachuFileIDs[/* */] = { &lIFCommonAnnounceCommonLetterFileID, &lMVOpeningCommonFileID };
 
 // // // // // // // // // // // //
 //                               //
@@ -145,7 +145,7 @@ void mvOpeningPikachuSetNameColor(SObj *sobj)
 }
 
 // 0x8018D194
-void mvOpeningPikachuDrawName(void)
+void mvOpeningPikachuMakeName(void)
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -247,7 +247,7 @@ void mvOpeningPikachuMakeMotionWindow(void)
 {
 	GObj* fighter_gobj;
 	s32 i;
-	s32 mapobj_kinds[3];
+	s32 pos_ids[3];
 	Vec3f pos;
 
 	grWallpaperMakeDecideKind();
@@ -261,8 +261,8 @@ void mvOpeningPikachuMakeMotionWindow(void)
 			scManagerRunPrintGObjStatus();
 		}
 	}
-	mpCollisionGetMapObjIDsKind(nMPMapObjKindMovieStart1, mapobj_kinds);
-	mpCollisionGetMapObjPositionID(mapobj_kinds[0], &pos);
+	mpCollisionGetMapObjIDsKind(nMPMapObjKindMovieStart1, pos_ids);
+	mpCollisionGetMapObjPositionID(pos_ids[0], &pos);
 	mvOpeningPikachuMakeMotionCamera(pos);
 	gmRumbleMakeActor();
 	ftPublicityMakeActor();
@@ -306,7 +306,7 @@ void mvOpeningPikachuPosedWallpaperFuncDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 110, 170, 110, 255);
+	gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x6E, 0xAA, 0x6E, 0xFF);
 	gDPSetCombineLERP(gSYTaskmanDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 10, 110, 230);
@@ -342,26 +342,26 @@ void mvOpeningPikachuPosedFighterProcUpdate(GObj *fighter_gobj)
 		break;
 		
 	case 15:
-		sMVOpeningPikachuPosedFighterYSpeed = 17.0F;
+		sMVOpeningPikachuPosedFighterSpeed = 17.0F;
 		break;
 	
 	case 45:
-		sMVOpeningPikachuPosedFighterYSpeed = 15.0F;
+		sMVOpeningPikachuPosedFighterSpeed = 15.0F;
 		break;
 
 	case 60:
-		sMVOpeningPikachuPosedFighterYSpeed = 0.0F;
+		sMVOpeningPikachuPosedFighterSpeed = 0.0F;
 		break;
 	}
 	if ((sMVOpeningPikachuTotalTimeTics > 15) && (sMVOpeningPikachuTotalTimeTics < 45))
 	{
-		sMVOpeningPikachuPosedFighterYSpeed += -1.0F / 15.0F;
+		sMVOpeningPikachuPosedFighterSpeed += -1.0F / 15.0F;
 	}
 	if ((sMVOpeningPikachuTotalTimeTics > 45) && (sMVOpeningPikachuTotalTimeTics < 60))
 	{
-		sMVOpeningPikachuPosedFighterYSpeed += -1.0F;
+		sMVOpeningPikachuPosedFighterSpeed += -1.0F;
 	}
-	DObjGetStruct(fighter_gobj)->translate.vec.f.y += sMVOpeningPikachuPosedFighterYSpeed;
+	DObjGetStruct(fighter_gobj)->translate.vec.f.y += sMVOpeningPikachuPosedFighterSpeed;
 }
 
 // 0x8018DA80
@@ -533,9 +533,12 @@ void mvOpeningPikachuFuncStart(void)
 	mvOpeningPikachuMakeNameCamera();
 	mvOpeningPikachuMakePosedWallpaperCamera();
 	mvOpeningPikachuMakePosedFighterCamera();
-	mvOpeningPikachuDrawName();
+	mvOpeningPikachuMakeName();
 
-	while (func_8000092C() < 2145);
+	while (func_8000092C() < 2145)
+	{
+		continue;
+	}
 }
 
 // 0x8018E010

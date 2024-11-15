@@ -158,10 +158,11 @@ typedef enum SCKind
 	nSCKindVSResults,    	  	  	// VS mode results
 	nSCKindVSRecord,          	  	// Records screen
 	nSCKindDataCharacters,        	// Character data screen
-	nSCKindN64,               	  	// N64 logo
+	nSCKindStartup,               	// N64 logo
 	nSCKindOpeningRoom,       	  	// Room with Master Hand and figures coming to life
 	nSCKindOpeningFox = 33,		  	// Fox opening scene
-	nSCKindOpeningRun = 38,			// Characters running on purple background
+	nSCKindOpeningKirby = 37,		// Kirby opening scene
+	nSCKindOpeningRun,				// Characters running on purple background
 	nSCKindOpeningYoster,	  		// Yoshis in nest with eggs on Yoshi's Island
 	nSCKindOpeningCliff,	      	// Link on dark hill
 	nSCKindOpeningStandoff,			// Dark plains with Mario and Kirby in a standoff

@@ -49,7 +49,7 @@ s32 D_ovl35_801328A8[] = {
 s32 D_ovl35_801329E0[2];
 
 // 0x801329E8
-s32 gIntroPotraitsFramesElapsed;
+s32 gIntroPotraitsTotalTimeTics;
 
 // 0x801329EC
 s32 gIntroPotraitsCurrentRow;
@@ -235,10 +235,10 @@ void mvPortraitsAnimatePortraitOverlay(GObj* portrait_overlay_gobj)
 {
 	SObj* portrait_overlay_sobj = SObjGetStruct(portrait_overlay_gobj);
 
-	if (gIntroPotraitsFramesElapsed == 75)
+	if (gIntroPotraitsTotalTimeTics == 75)
 		portrait_overlay_sobj->pos.x = -656.0F;
 
-	if (gIntroPotraitsFramesElapsed < 75)
+	if (gIntroPotraitsTotalTimeTics < 75)
 	{
 		if (portrait_overlay_sobj->pos.x < 656.0F)
 		{
@@ -259,7 +259,7 @@ void mvPortraitsAnimatePortraitOverlay(GObj* portrait_overlay_gobj)
 		}
 	}
 
-	switch (gIntroPotraitsFramesElapsed)
+	switch (gIntroPotraitsTotalTimeTics)
 	{
 		case 15:
 			portrait_overlay_sobj->pos.x = -656.0F;
@@ -343,16 +343,16 @@ void mvPortraitsCreatePortraitOverlayViewport()
 // 0x80132610
 void mvPortraitsInitVariables()
 {
-	gIntroPotraitsFramesElapsed = 0;
+	gIntroPotraitsTotalTimeTics = 0;
 	gIntroPotraitsCurrentRow = 0;
 }
 
 // 0x80132624
 void mvPortraitsMain(GObj* arg0)
 {
-	gIntroPotraitsFramesElapsed++;
+	gIntroPotraitsTotalTimeTics++;
 
-	if (gIntroPotraitsFramesElapsed >= 10)
+	if (gIntroPotraitsTotalTimeTics >= 10)
 	{
 		// gIntroPortraitsUnusedCounter gets set to 0 if any diagonal stick press occurs...
 		// This scene must have been interactive at some point
@@ -369,13 +369,13 @@ void mvPortraitsMain(GObj* arg0)
 			syTaskmanSetLoadScene();
 		}
 
-		if (gIntroPotraitsFramesElapsed == 75)
+		if (gIntroPotraitsTotalTimeTics == 75)
 		{
 			gcEjectGObj(gIntroPortraitsPortraitGObj);
 			mvPortraitsCreatePortraitsSet2();
 		}
 
-		if (gIntroPotraitsFramesElapsed == 150)
+		if (gIntroPotraitsTotalTimeTics == 150)
 		{
 			gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 			gSCManagerSceneData.scene_curr = 0x1E;

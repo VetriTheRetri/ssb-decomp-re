@@ -438,6 +438,6 @@ void mnMessageStartScene(void)
     else
     {
         gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
-        gSCManagerSceneData.scene_curr = nSCKindN64;
+        gSCManagerSceneData.scene_curr = nSCKindStartup;
     }
 }

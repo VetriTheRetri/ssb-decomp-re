@@ -119,7 +119,7 @@ uintptr_t sMVOpeningFirstDestinationPluckedFigatreeHeap;
 uintptr_t sMVOpeningFirstDestinationDroppedFigatreeHeap;
 
 // 0x80134CE4
-s32 sMVOpeningFirstDestinationFramesElapsed;
+s32 sMVOpeningFirstDestinationTotalTimeTics;
 
 // 0x80134CE8
 GObj* sMVOpeningFirstDestinationMainCameraGObj;
@@ -225,10 +225,10 @@ void mvOpeningFirstDestinationFuncLights(Gfx **display_list)
 // 0x80131B58
 void mvOpeningFirstDestinationFadeOutAndDestroyRoomGeo(GObj* room_gobj)
 {
-	if (sMVOpeningFirstDestinationFramesElapsed > I_SEC_TO_TICS(18))
+	if (sMVOpeningFirstDestinationTotalTimeTics > I_SEC_TO_TICS(18))
 		gcPlayAnimAll(room_gobj);
 
-	if (sMVOpeningFirstDestinationFramesElapsed == I_SEC_TO_TICS(19))
+	if (sMVOpeningFirstDestinationTotalTimeTics == I_SEC_TO_TICS(19))
 		gcEjectGObj(room_gobj);
 }
 
@@ -289,7 +289,7 @@ void mvOpeningFirstDestinationCreateOutsideHaze()
 // 0x80131E88
 void mvOpeningFirstDestinationAnimateDeskObjects(GObj* desk_object_gobj)
 {
-	if (sMVOpeningFirstDestinationFramesElapsed >= 560)
+	if (sMVOpeningFirstDestinationTotalTimeTics >= 560)
 		gcPlayAnimAll(desk_object_gobj);
 }
 
@@ -335,7 +335,7 @@ void mvOpeningFirstDestinationCreateLamp()
 // 0x801320FC
 void mvOpeningFirstDestinationAnimateTissueBox(GObj* tissue_box_gobj)
 {
-	if (sMVOpeningFirstDestinationFramesElapsed >= 560)
+	if (sMVOpeningFirstDestinationTotalTimeTics >= 560)
 		gcPlayAnimAll(tissue_box_gobj);
 }
 
@@ -424,7 +424,7 @@ void mvOpeningFirstDestinationCreatePluckedFighter(s32 fkind)
 // 0x80132404
 void mvOpeningFirstDestinationRenderHALLogoBackground(GObj* logo_gobj)
 {
-	if (sMVOpeningFirstDestinationFramesElapsed >= 60)
+	if (sMVOpeningFirstDestinationTotalTimeTics >= 60)
 	{
 		if (sMVOpeningFirstDestinationOverlayAlpha > 0)
 		{
@@ -549,7 +549,7 @@ void mvOpeningFirstDestinationCreateMasterHandShadow()
 // 0x80132AB0
 void mvOpeningFirstDestinationAnimateDeskStage(GObj* desk_stage_gobj)
 {
-	if (sMVOpeningFirstDestinationFramesElapsed > 1060)
+	if (sMVOpeningFirstDestinationTotalTimeTics > 1060)
 		gcPlayAnimAll(desk_stage_gobj);
 }
 
@@ -961,7 +961,7 @@ s32 mvOpeningFirstDestinationGetPluckedFighterKind()
 // 0x801342E4
 void mvOpeningFirstDestinationInitGlobals()
 {
-	sMVOpeningFirstDestinationFramesElapsed = 0;
+	sMVOpeningFirstDestinationTotalTimeTics = 0;
 	sMVOpeningFirstDestinationPluckedFighterKind = mvOpeningFirstDestinationGetPluckedFighterKind();
 	sMVOpeningFirstDestinationDroppedFighterKind = mvOpeningFirstDestinationGetDroppedFighterKind();
 }
@@ -1001,9 +1001,9 @@ sb32 mvOpeningFirstDestinationSetFrameBuffer(GObj* gobj)
 // 0x80134400
 void mvOpeningFirstDestinationMainProc(GObj* arg0)
 {
-	sMVOpeningFirstDestinationFramesElapsed += 1;
+	sMVOpeningFirstDestinationTotalTimeTics += 1;
 
-	if (sMVOpeningFirstDestinationFramesElapsed >= 10)
+	if (sMVOpeningFirstDestinationTotalTimeTics >= 10)
 	{
 		if (sMVOpeningFirstDestinationUnusedCounter != 0)
 		{
@@ -1022,7 +1022,7 @@ void mvOpeningFirstDestinationMainProc(GObj* arg0)
 			syTaskmanSetLoadScene();
 		}
 
-		if (sMVOpeningFirstDestinationFramesElapsed == 280)
+		if (sMVOpeningFirstDestinationTotalTimeTics == 280)
 		{
 			mvOpeningFirstDestinationCreatePluckedFighter(sMVOpeningFirstDestinationPluckedFighterKind);
 			mvOpeningFirstDestinationCreatePencilHolder();
@@ -1030,45 +1030,45 @@ void mvOpeningFirstDestinationMainProc(GObj* arg0)
 			gcEjectGObj(sMVOpeningFirstDestinationOverlayGObj);
 			gcEjectGObj(sMVOpeningFirstDestinationMasterHandShadowGObj);
 		}
-		if (sMVOpeningFirstDestinationFramesElapsed == 695)
+		if (sMVOpeningFirstDestinationTotalTimeTics == 695)
 		{
 			mvOpeningFirstDestinationCreateDroppedFighter(sMVOpeningFirstDestinationDroppedFighterKind);
 		}
-		if (sMVOpeningFirstDestinationFramesElapsed == 380)
+		if (sMVOpeningFirstDestinationTotalTimeTics == 380)
 		{
 			scSubsysFighterSetStatus(sMVOpeningFirstDestinationPluckedFighterGObj, 0x10009);
 			DObjGetStruct(sMVOpeningFirstDestinationPluckedFighterGObj)->rotate.vec.f.x = 0.0F;
 			DObjGetStruct(sMVOpeningFirstDestinationPluckedFighterGObj)->rotate.vec.f.y = 0.0F;
 			DObjGetStruct(sMVOpeningFirstDestinationPluckedFighterGObj)->rotate.vec.f.z = 0.0F;
 		}
-		if (sMVOpeningFirstDestinationFramesElapsed == 450)
+		if (sMVOpeningFirstDestinationTotalTimeTics == 450)
 		{
 			mvOpeningFirstDestinationCreateCloseupOverlay();
 			gcEjectGObj(sMVOpeningFirstDestinationSunlightGObj);
 		}
-		if (sMVOpeningFirstDestinationFramesElapsed == 560)
+		if (sMVOpeningFirstDestinationTotalTimeTics == 560)
 		{
 			mvOpeningFirstDestinationDestroyViewports();
 			mvOpeningFirstDestinationCreateSecondSceneViewports();
 			scSubsysFighterSetStatus(sMVOpeningFirstDestinationMasterHandGObj, 0x10010);
 		}
-		if (sMVOpeningFirstDestinationFramesElapsed == 500)
+		if (sMVOpeningFirstDestinationTotalTimeTics == 500)
 		{
 			gcMoveGObjDL(sMVOpeningFirstDestinationPluckedFighterGObj, 9, -1);
 			mvOpeningFirstDestinationCreateSpotlight();
 		}
-		if (sMVOpeningFirstDestinationFramesElapsed == 860)
+		if (sMVOpeningFirstDestinationTotalTimeTics == 860)
 		{
 			mvOpeningFirstDestinationDestroyViewports();
 			mvOpeningFirstDestinationCreateThirdSceneViewports();
 			scSubsysFighterSetStatus(sMVOpeningFirstDestinationMasterHandGObj, 0x10011);
 			mvOpeningFirstDestinationCreateSnapGFX();
 		}
-		if (sMVOpeningFirstDestinationFramesElapsed == 1037)
+		if (sMVOpeningFirstDestinationTotalTimeTics == 1037)
 		{
 			CObjGetStruct(sMVOpeningFirstDestinationCameraGObj)->flags &= ~2;
 		}
-		if (sMVOpeningFirstDestinationFramesElapsed == 1040)
+		if (sMVOpeningFirstDestinationTotalTimeTics == 1040)
 		{
 			gcEjectGObj(sMVOpeningFirstDestinationOverlayGObj);
 			gcEjectGObj(sMVOpeningFirstDestinationSpotlightGObj);
@@ -1079,7 +1079,7 @@ void mvOpeningFirstDestinationMainProc(GObj* arg0)
 			mvOpeningFirstDestinationCreateDeskStage();
 			mvOpeningFirstDestinationCreateBackground();
 		}
-		if (sMVOpeningFirstDestinationFramesElapsed == I_SEC_TO_TICS(19))
+		if (sMVOpeningFirstDestinationTotalTimeTics == I_SEC_TO_TICS(19))
 		{
 			mvOpeningFirstDestinationDestroyViewports();
 			mvOpeningFirstDestinationCreateCloseUpGFX();
@@ -1089,12 +1089,12 @@ void mvOpeningFirstDestinationMainProc(GObj* arg0)
 			scSubsysFighterSetStatus(sMVOpeningFirstDestinationPluckedFighterGObj, 0x1000A);
 			mvOpeningFirstDestinationCreateFourthSceneViewports();
 		}
-		if (sMVOpeningFirstDestinationFramesElapsed == I_SEC_TO_TICS(18))
+		if (sMVOpeningFirstDestinationTotalTimeTics == I_SEC_TO_TICS(18))
 		{
 			gcEjectGObj(sMVOpeningFirstDestinationTransitionGFXOverlayGObj);
 			gcEjectGObj(sMVOpeningFirstDestinationTransitionGFXOutlineGObj);
 		}
-		if (sMVOpeningFirstDestinationFramesElapsed == I_SEC_TO_TICS(22))
+		if (sMVOpeningFirstDestinationTotalTimeTics == I_SEC_TO_TICS(22))
 		{
 			gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 			gSCManagerSceneData.scene_curr = 0x1D;

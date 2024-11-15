@@ -39,7 +39,7 @@ void intro_focus_dk_entry();
 void intro_focus_samus_entry();
 void intro_focus_fox_entry();
 void intro_focus_link_entry();
-void intro_focus_yoshi_entry();
+void mvOpeningYoshiStartScene();
 void mvOpeningPikachuStartScene();
 void mvOpeningKirbyStartScene();
 void mvOpeningRunStartScene();

@@ -117,10 +117,10 @@ mnCharPanel1P gMN1PPanel;
 GObj* gMN1PPickerGObj; // 0x80138F70; // stock/time picker
 
 // 0x80138F74
-s32 gMN1PFramesElapsed; // 0x80138F74; // frames elapsed on CSS
+s32 gMN1PTotalTimeTics; // 0x80138F74; // frames elapsed on CSS
 
 // 0x80138F78 frames to wait until exiting the CSS
-s32 gMN1PMaxFramesElapsed;
+s32 gMN1PMaxTotalTimeTics;
 
 // 0x80138F7C looping timer that helps determine blink rate of Press Start (and Ready to Fight?)
 s32 gMN1PPressStartFlashTimer;
@@ -1912,7 +1912,7 @@ sb32 mn1PSelectChar(GObj* cursor_gobj, s32 port_id, s32 arg2, s32 select_button)
 	if (gMN1PPanel.char_id != nFTKindNull)
 	{
 		mn1PSelectCharWithToken(port_id, select_button);
-		gMN1PPanel.min_frames_elapsed_until_recall = gMN1PFramesElapsed + 0x1E;
+		gMN1PPanel.min_frames_elapsed_until_recall = gMN1PTotalTimeTics + 0x1E;
 		return TRUE;
 	}
 
@@ -1974,7 +1974,7 @@ sb32 mn1PCheckAndHandleTokenPickup(GObj* cursor_gobj, s32 port_id)
 {
 	mnCharPanel1P* panel_info = &gMN1PPanel;
 
-	if ((gMN1PFramesElapsed < gMN1PPanel.min_frames_elapsed_until_recall) || (gMN1PPanel.is_recalling))
+	if ((gMN1PTotalTimeTics < gMN1PPanel.min_frames_elapsed_until_recall) || (gMN1PPanel.is_recalling))
 		return FALSE;
 
 	else if (gMN1PPanel.cursor_state != mnCursorStateNotHoldingToken)
@@ -2425,7 +2425,7 @@ void mn1PExitIfBButtonPressed(s32 port_id)
 {
 	SYController* controller = &gSYControllerDevices[port_id];
 
-	if ((gMN1PFramesElapsed >= 10) && (controller->button_tap & B_BUTTON))
+	if ((gMN1PTotalTimeTics >= 10) && (controller->button_tap & B_BUTTON))
 	{
 		mn1PGoBackTo1PMenu();
 	}
@@ -2554,7 +2554,7 @@ void mn1PSyncTokenAndFighter(GObj* token_gobj)
 	s32 fkind;
 	s32 port_id = token_gobj->user_data.s;
 
-	if (gMN1PFramesElapsed < 0x1E)
+	if (gMN1PTotalTimeTics < 0x1E)
 	{
 		token_gobj->flags = 1;
 	}
@@ -2952,9 +2952,9 @@ void mn1PDestroyCursorAndTokenProcesses()
 // 0x80137FCC
 void mn1PMain(s32 arg0)
 {
-	gMN1PFramesElapsed += 1;
+	gMN1PTotalTimeTics += 1;
 
-	if (gMN1PFramesElapsed == gMN1PMaxFramesElapsed)
+	if (gMN1PTotalTimeTics == gMN1PMaxTotalTimeTics)
 	{
 		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 		gSCManagerSceneData.scene_curr = nSCKindTitle;
@@ -2966,7 +2966,7 @@ void mn1PMain(s32 arg0)
 	}
 
 	if (scSubsysControllerCheckNoInputAll() == 0)
-		gMN1PMaxFramesElapsed = gMN1PFramesElapsed + I_MIN_TO_TICS(5);
+		gMN1PMaxTotalTimeTics = gMN1PTotalTimeTics + I_MIN_TO_TICS(5);
 
 	if (gMN1PIsStartTriggered) // gMN1PIsStartTriggered
 	{
@@ -2981,7 +2981,7 @@ void mn1PMain(s32 arg0)
 			syTaskmanSetLoadScene();
 		}
 	}
-	else if ((scSubsysControllerGetPlayerTapButtons(START_BUTTON)) && (gMN1PFramesElapsed > 60))
+	else if ((scSubsysControllerGetPlayerTapButtons(START_BUTTON)) && (gMN1PTotalTimeTics > 60))
 	{
 		if (mn1PIsReadyToFight())
 		{
@@ -3046,8 +3046,8 @@ void func_ovl27_801381D0() {}
 // 0x801381D8
 void mn1PLoadMatchInfo()
 {
-	gMN1PFramesElapsed = 0;
-	gMN1PMaxFramesElapsed = gMN1PFramesElapsed + I_MIN_TO_TICS(5);
+	gMN1PTotalTimeTics = 0;
+	gMN1PMaxTotalTimeTics = gMN1PTotalTimeTics + I_MIN_TO_TICS(5);
 	gMN1PIsStartTriggered = 0;
 	gMN1PTimerValue = gSCManagerSceneData.spgame_time_limit;
 	gMN1PHumanPanelPort = gSCManagerSceneData.player;

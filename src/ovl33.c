@@ -997,7 +997,7 @@ s32 gMNCharsRecentActionTypeIndex;
 s32 gMNCharsChangeWait;
 
 // 0x8013671C
-s32 gMNCharsFramesElapsed;
+s32 gMNCharsTotalTimeTics;
 
 // 0x80136720
 u32 D_ovl33_80136720[200];
@@ -1772,7 +1772,7 @@ sb32 mnCharsIsUnlocked(s32 fkind)
 // 0x80133568
 void mnCharsInitVars()
 {
-	gMNCharsFramesElapsed = 0;
+	gMNCharsTotalTimeTics = 0;
 
 	gMNCharsSeriesLogoGObj = NULL;
 	gMNCharsNameGObj = NULL;
@@ -2008,13 +2008,13 @@ void mnCharsHandleInputDemoMode()
 		syTaskmanSetLoadScene();
 	}
 
-	if (gMNCharsFramesElapsed == 300)
+	if (gMNCharsTotalTimeTics == 300)
 	{
 		gMNCharsCurrentIndex = mnCharsGetIndex(gMNCharsSecondFtKind);
 		mnCharsChangeFighter(mnCharsGetFtKind(gMNCharsCurrentIndex));
 	}
 
-	if (gMNCharsFramesElapsed == 600)
+	if (gMNCharsTotalTimeTics == 600)
 	{
 		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 		gSCManagerSceneData.scene_curr = nSCKindAutoDemo;
@@ -2027,9 +2027,9 @@ void mnCharsHandleInputDemoMode()
 void mnCharsMain(GObj* arg0)
 {
 
-	gMNCharsFramesElapsed += 1;
+	gMNCharsTotalTimeTics += 1;
 
-	if (gMNCharsFramesElapsed >= 10)
+	if (gMNCharsTotalTimeTics >= 10)
 	{
 		if (gMNCharsChangeWait != 0)
 			gMNCharsChangeWait -= 1;

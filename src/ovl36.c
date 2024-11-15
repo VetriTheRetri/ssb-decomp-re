@@ -59,7 +59,7 @@ s32 D_ovl36_8018E200;
 s32 D_ovl36_8018E204;
 
 // 0x8018E208
-s32 sMVOpeningMarioFramesElapsed;
+s32 sMVOpeningMarioTotalTimeTics;
 
 // 0x8018E20C
 GObj* sMVOpeningMarioNameGObj;
@@ -77,7 +77,7 @@ GObj* sMVOpeningMarioStageCameraGObj;
 void* sMVOpeningMarioFigatreeHeap;
 
 // 0x8018E220
-f32 sMVOpeningMarioPosedFighterYSpeed;
+f32 sMVOpeningMarioPosedFighterSpeed;
 
 // 0x8018E224
 // s32 D_ovl36_8018E224;
@@ -132,7 +132,7 @@ void mvOpeningMarioSetNameColor(SObj* name_sobj)
 }
 
 // 0x8018D194
-void mvOpeningMarioDrawName()
+void mvOpeningMarioMakeName()
 {
 	GObj* name_gobj;
 	SObj* name_sobj;
@@ -167,7 +167,7 @@ void mvOpeningMarioAnimateStageCamera(GObj* camera_gobj)
 {
 	CObj *cobj = CObjGetStruct(camera_gobj);
 
-	if (sMVOpeningMarioFramesElapsed >= 15)
+	if (sMVOpeningMarioTotalTimeTics >= 15)
 	{
 		cobj->vec.eye.x += (((dMVOpeningMarioAdjustedEndCObjDesc.eye.x - dMVOpeningMarioAdjustedStartCObjDesc.eye.x) / 45.0F));
 		cobj->vec.eye.y += (((dMVOpeningMarioAdjustedEndCObjDesc.eye.y - dMVOpeningMarioAdjustedStartCObjDesc.eye.y) / 45.0F));
@@ -298,31 +298,31 @@ void mvOpeningMarioCreatePosedFighterBackground()
 // 0x8018D990
 void mvOpeningMarioAnimatePosedFighter(GObj* fighter_gobj)
 {
-	switch (sMVOpeningMarioFramesElapsed)
+	switch (sMVOpeningMarioTotalTimeTics)
 	{
 		default:
 			break;
 		case 15:
-			sMVOpeningMarioPosedFighterYSpeed = 17.0F;
+			sMVOpeningMarioPosedFighterSpeed = 17.0F;
 			break;
 		case 45:
-			sMVOpeningMarioPosedFighterYSpeed = 15.0F;
+			sMVOpeningMarioPosedFighterSpeed = 15.0F;
 			break;
 		case 60:
-			sMVOpeningMarioPosedFighterYSpeed = 0.0F;
+			sMVOpeningMarioPosedFighterSpeed = 0.0F;
 			break;
 	}
 
-	if ((sMVOpeningMarioFramesElapsed > 15) && (sMVOpeningMarioFramesElapsed < 45))
+	if ((sMVOpeningMarioTotalTimeTics > 15) && (sMVOpeningMarioTotalTimeTics < 45))
 	{
-		sMVOpeningMarioPosedFighterYSpeed += -1.0F / 15.0F;
+		sMVOpeningMarioPosedFighterSpeed += -1.0F / 15.0F;
 	}
-	if ((sMVOpeningMarioFramesElapsed > 45) && (sMVOpeningMarioFramesElapsed < 60))
+	if ((sMVOpeningMarioTotalTimeTics > 45) && (sMVOpeningMarioTotalTimeTics < 60))
 	{
-		sMVOpeningMarioPosedFighterYSpeed += -1.0F;
+		sMVOpeningMarioPosedFighterSpeed += -1.0F;
 	}
 
-	DObjGetStruct(fighter_gobj)->translate.vec.f.y -= sMVOpeningMarioPosedFighterYSpeed;
+	DObjGetStruct(fighter_gobj)->translate.vec.f.y -= sMVOpeningMarioPosedFighterSpeed;
 }
 
 // 0x8018DA60
@@ -382,7 +382,7 @@ void mvOpeningMarioCreatePosedFighterBackgroundViewport()
 void mvOpeningMarioMainProc(GObj* arg0)
 {
 
-	sMVOpeningMarioFramesElapsed += 1;
+	sMVOpeningMarioTotalTimeTics += 1;
 
 	if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE)
 	{
@@ -391,7 +391,7 @@ void mvOpeningMarioMainProc(GObj* arg0)
 		syTaskmanSetLoadScene();
 	}
 
-	if (sMVOpeningMarioFramesElapsed == 15)
+	if (sMVOpeningMarioTotalTimeTics == 15)
 	{
 		gcEjectGObj(sMVOpeningMarioNameGObj);
 		mvOpeningMarioInitFighterStagePanel();
@@ -399,7 +399,7 @@ void mvOpeningMarioMainProc(GObj* arg0)
 		mvOpeningMarioCreatePosedFighter();
 	}
 
-	if (sMVOpeningMarioFramesElapsed == 60)
+	if (sMVOpeningMarioTotalTimeTics == 60)
 	{
 		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 		gSCManagerSceneData.scene_curr = 0x1F;
@@ -408,9 +408,9 @@ void mvOpeningMarioMainProc(GObj* arg0)
 }
 
 // 0x8018DE58
-void mvOpeningMarioInitFramesElapsed()
+void mvOpeningMarioInitTotalTimeTics()
 {
-	sMVOpeningMarioFramesElapsed = 0;
+	sMVOpeningMarioTotalTimeTics = 0;
 }
 
 // 0x8018DE64
@@ -430,7 +430,7 @@ void mvOpeningMarioInit()
 	mvOpeningMarioLoadFiles();
 	gcMakeGObjSPAfter(0x3F7, mvOpeningMarioMainProc, 0xD, 0x80000000);
 	gcMakeDefaultCameraGObj(9, 0x80000000, 0x64, 3, 0xFF);
-	mvOpeningMarioInitFramesElapsed();
+	mvOpeningMarioInitTotalTimeTics();
 	efParticleInitAll();
 	ftParamInitGame();
 	mpCollisionInitGroundData();
@@ -446,7 +446,7 @@ void mvOpeningMarioInit()
 	mvOpeningMarioCreateNameViewport();
 	mvOpeningMarioCreatePosedFighterBackgroundViewport();
 	mvOpeningMarioCreatePosedFighterViewport();
-	mvOpeningMarioDrawName();
+	mvOpeningMarioMakeName();
 
 	while (func_8000092C() < 1515U);
 }

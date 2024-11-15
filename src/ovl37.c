@@ -52,7 +52,7 @@ u32 D_ovl37_8018E0BC[2] = {
 s32 D_ovl37_8018E1C0[2];
 
 // 0x8018E1C8
-s32 sMVOpeningDKFramesElapsed;
+s32 sMVOpeningDKTotalTimeTics;
 
 // 0x8018E1CC
 GObj* sMVOpeningDKNameGObj;
@@ -69,7 +69,7 @@ GObj* sMVOpeningDKStageCameraGObj;
 void* sMVOpeningDKFigatreeHeap;
 
 // 0x8018E1E0
-f32 sMVOpeningDKPosedFighterYSpeed;
+f32 sMVOpeningDKPosedFighterSpeed;
 
 // 0x8018E1E8
 CObjDesc dMVOpeningDKAdjustedStartCObjDesc;
@@ -121,7 +121,7 @@ void mvOpeningDKSetNameColor(SObj* name_sobj)
 }
 
 // 0x8018D194
-void mvOpeningDKDrawName()
+void mvOpeningDKMakeName()
 {
 	GObj* name_gobj;
 	SObj* name_sobj;
@@ -158,7 +158,7 @@ void mvOpeningDKAnimateStageCamera(GObj* camera_gobj)
 {
 	CObj *cobj = CObjGetStruct(camera_gobj);
 
-	if (sMVOpeningDKFramesElapsed >= 15)
+	if (sMVOpeningDKTotalTimeTics >= 15)
 	{
 		cobj->vec.eye.x += (((dMVOpeningDKAdjustedEndCObjDesc.eye.x - dMVOpeningDKAdjustedStartCObjDesc.eye.x) / 45.0F));
 		cobj->vec.eye.y += (((dMVOpeningDKAdjustedEndCObjDesc.eye.y - dMVOpeningDKAdjustedStartCObjDesc.eye.y) / 45.0F));
@@ -290,28 +290,28 @@ void mvOpeningDKCreatePosedFighterBackground()
 // 0x8018D980
 void mvOpeningDKAnimatePosedFighter(GObj* fighter_gobj)
 {
-	switch (sMVOpeningDKFramesElapsed)
+	switch (sMVOpeningDKTotalTimeTics)
 	{
 		default:
 			break;
 		case 15:
-			sMVOpeningDKPosedFighterYSpeed = 17.0F;
+			sMVOpeningDKPosedFighterSpeed = 17.0F;
 			break;
 		case 45:
-			sMVOpeningDKPosedFighterYSpeed = 15.0F;
+			sMVOpeningDKPosedFighterSpeed = 15.0F;
 			break;
 		case 60:
-			sMVOpeningDKPosedFighterYSpeed = 0.0F;
+			sMVOpeningDKPosedFighterSpeed = 0.0F;
 			break;
 	}
 
-	if ((sMVOpeningDKFramesElapsed > 15) && (sMVOpeningDKFramesElapsed < 45))
-		sMVOpeningDKPosedFighterYSpeed += -1.0F / 15.0F;
+	if ((sMVOpeningDKTotalTimeTics > 15) && (sMVOpeningDKTotalTimeTics < 45))
+		sMVOpeningDKPosedFighterSpeed += -1.0F / 15.0F;
 
-	if ((sMVOpeningDKFramesElapsed > 45) && (sMVOpeningDKFramesElapsed < 60))
-		sMVOpeningDKPosedFighterYSpeed += -1.0F;
+	if ((sMVOpeningDKTotalTimeTics > 45) && (sMVOpeningDKTotalTimeTics < 60))
+		sMVOpeningDKPosedFighterSpeed += -1.0F;
 
-	DObjGetStruct(fighter_gobj)->translate.vec.f.y += sMVOpeningDKPosedFighterYSpeed;
+	DObjGetStruct(fighter_gobj)->translate.vec.f.y += sMVOpeningDKPosedFighterSpeed;
 }
 
 // 0x8018DA50
@@ -370,7 +370,7 @@ void mvOpeningDKCreatePosedFighterBackgroundViewport()
 // 0x8018DD80
 void mvOpeningDKMainProc(GObj* arg0)
 {
-	sMVOpeningDKFramesElapsed += 1;
+	sMVOpeningDKTotalTimeTics += 1;
 
 	if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON))
 	{
@@ -379,7 +379,7 @@ void mvOpeningDKMainProc(GObj* arg0)
 		syTaskmanSetLoadScene();
 	}
 
-	if (sMVOpeningDKFramesElapsed == 15)
+	if (sMVOpeningDKTotalTimeTics == 15)
 	{
 		gcEjectGObj(sMVOpeningDKNameGObj);
 		mvOpeningDKInitFighterStagePanel();
@@ -387,7 +387,7 @@ void mvOpeningDKMainProc(GObj* arg0)
 		mvOpeningDKCreatePosedFighter();
 	}
 
-	if (sMVOpeningDKFramesElapsed == 60)
+	if (sMVOpeningDKTotalTimeTics == 60)
 	{
 		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 		gSCManagerSceneData.scene_curr = 0x22;
@@ -396,9 +396,9 @@ void mvOpeningDKMainProc(GObj* arg0)
 }
 
 // 0x8018DE3C
-void mvOpeningDKInitFramesElapsed()
+void mvOpeningDKInitTotalTimeTics()
 {
-	sMVOpeningDKFramesElapsed = 0;
+	sMVOpeningDKTotalTimeTics = 0;
 }
 
 // 0x8018DE48
@@ -418,7 +418,7 @@ void mvOpeningDKInit()
 	mvOpeningDKLoadFiles();
 	gcMakeGObjSPAfter(0x3F7, mvOpeningDKMainProc, 0xD, 0x80000000);
 	gcMakeDefaultCameraGObj(9, 0x80000000, 0x64, 3, 0xFF);
-	mvOpeningDKInitFramesElapsed();
+	mvOpeningDKInitTotalTimeTics();
 	efParticleInitAll();
 	ftParamInitGame();
 	mpCollisionInitGroundData();
@@ -434,7 +434,7 @@ void mvOpeningDKInit()
 	mvOpeningDKCreateNameViewport();
 	mvOpeningDKCreatePosedFighterBackgroundViewport();
 	mvOpeningDKCreatePosedFighterViewport();
-	mvOpeningDKDrawName();
+	mvOpeningDKMakeName();
 
 	while (func_8000092C() < 1605U);
 }

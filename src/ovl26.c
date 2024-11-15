@@ -136,10 +136,10 @@ s32 gMnBattlePressStartFlashTimer;
 s32 D_ovl26_8013BDC8;
 
 // 0x8013BDCC frames elapsed on CSS
-s32 gMnBattleFramesElapsed;
+s32 gMnBattleTotalTimeTics;
 
 // 0x8013BDD0 frames to wait until exiting the CSS
-s32 gMnBattleMaxFramesElapsed;
+s32 gMnBattleMaxTotalTimeTics;
 
 // 0x8013BDD4
 u8 D_ovl26_8013BDD4[0x2d0];
@@ -2468,7 +2468,7 @@ sb32 mnBattleSelectChar(GObj* cursor_gobj, s32 port_id, s32 arg2, s32 select_but
 	if (gMnBattlePanels[panel_info->held_port_id].char_id != nFTKindNull)
 	{
 		mnBattleSelectCharWithToken(port_id, select_button);
-		panel_info->min_frames_elapsed_until_recall = gMnBattleFramesElapsed + 0x1E;
+		panel_info->min_frames_elapsed_until_recall = gMnBattleTotalTimeTics + 0x1E;
 		return TRUE;
 	}
 
@@ -2603,7 +2603,7 @@ sb32 mnBattleCheckAndHandleTokenPickup(GObj* cursor_gobj, s32 port_id)
 {
 	s32 i;
 
-	if ((gMnBattleFramesElapsed < gMnBattlePanels[port_id].min_frames_elapsed_until_recall)
+	if ((gMnBattleTotalTimeTics < gMnBattlePanels[port_id].min_frames_elapsed_until_recall)
 		|| (gMnBattlePanels[port_id].is_recalling))
 	{
 		return FALSE;
@@ -3111,7 +3111,7 @@ void mnBattleSyncTokenAndFighter(GObj* token_gobj)
 	s32 fkind;
 	s32 port_id = token_gobj->user_data.s;
 
-	if (gMnBattleFramesElapsed < 0x1E)
+	if (gMnBattleTotalTimeTics < 0x1E)
 		token_gobj->flags = 1;
 	else
 	{
@@ -3926,10 +3926,10 @@ void mnBattleMain(s32 arg0)
 	s32 i;
 	u32 stage_id;
 
-	gMnBattleFramesElapsed += 1;
+	gMnBattleTotalTimeTics += 1;
 	mnSyncControllerOrderArray();
 
-	if (gMnBattleFramesElapsed == gMnBattleMaxFramesElapsed)
+	if (gMnBattleTotalTimeTics == gMnBattleMaxTotalTimeTics)
 	{
 		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 		gSCManagerSceneData.scene_curr = 1;
@@ -3941,7 +3941,7 @@ void mnBattleMain(s32 arg0)
 	}
 
 	if (scSubsysControllerCheckNoInputAll() == 0)
-		gMnBattleMaxFramesElapsed = gMnBattleFramesElapsed + 0x4650;
+		gMnBattleMaxTotalTimeTics = gMnBattleTotalTimeTics + 0x4650;
 
 	if (gMnBattleIsStartTriggered)
 	{
@@ -3971,7 +3971,7 @@ void mnBattleMain(s32 arg0)
 	}
 	else
 	{
-		if ((scSubsysControllerGetPlayerTapButtons(START_BUTTON)) && (gMnBattleFramesElapsed >= 0x3D))
+		if ((scSubsysControllerGetPlayerTapButtons(START_BUTTON)) && (gMnBattleTotalTimeTics >= 0x3D))
 		{
 			if (mnBattleIsReadyToFight())
 			{
@@ -4144,8 +4144,8 @@ void mnBattleLoadMatchInfo()
 {
 	s32 i;
 
-	gMnBattleFramesElapsed = 0;
-	gMnBattleMaxFramesElapsed = gMnBattleFramesElapsed + 0x4650;
+	gMnBattleTotalTimeTics = 0;
+	gMnBattleMaxTotalTimeTics = gMnBattleTotalTimeTics + 0x4650;
 	gMnBattleTimerValue = gSCManagerTransferBattleState.time_limit;
 	gMnBattleStockValue = gSCManagerTransferBattleState.stocks;
 	gMnBattleIsStartTriggered = FALSE;

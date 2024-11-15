@@ -423,7 +423,7 @@ void sc1PManagerUpdateScene(void)
                     sc1PManagerTrySaveBackup(FALSE);
 
                     gSCManagerSceneData.scene_prev = nSCKind1PGame;
-                    gSCManagerSceneData.scene_curr = nSCKindN64;
+                    gSCManagerSceneData.scene_curr = nSCKindStartup;
 
                     return;
                 }
@@ -564,5 +564,5 @@ skip_main_stages:
         }
     }
     gSCManagerSceneData.scene_prev = nSCKind1PGame;
-    gSCManagerSceneData.scene_curr = nSCKindN64;
+    gSCManagerSceneData.scene_curr = nSCKindStartup;
 }

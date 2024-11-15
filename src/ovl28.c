@@ -133,10 +133,10 @@ s32 gMNTrainingPressStartFlashTimer;
 s32 D_ovl28_80138888;
 
 // 0x8013888C frames elapsed on CSS
-s32 gMNTrainingFramesElapsed;
+s32 gMNTrainingTotalTimeTics;
 
 // 0x80138890
-s32 gMNTrainingMaxFramesElapsed;
+s32 gMNTrainingMaxTotalTimeTics;
 
 // 0x80138894
 s32 gMNTrainingHumanPanelPort;
@@ -1413,7 +1413,7 @@ sb32 mnTrainingSelectChar(GObj* cursor_gobj, s32 port_id, s32 arg2, s32 select_b
 	if (gMNTrainingPanels[panel_info->held_port_id].char_id != nFTKindNull)
 	{
 		mnTrainingSelectCharWithToken(port_id, select_button);
-		panel_info->min_frames_elapsed_until_recall = gMNTrainingFramesElapsed + 0x1E;
+		panel_info->min_frames_elapsed_until_recall = gMNTrainingTotalTimeTics + 0x1E;
 		return TRUE;
 	}
 
@@ -1549,7 +1549,7 @@ sb32 mnTrainingCheckAndHandleTokenPickup(GObj* cursor_gobj, s32 port_id)
 {
 	s32 i;
 
-	if ((gMNTrainingFramesElapsed < gMNTrainingPanels[port_id].min_frames_elapsed_until_recall) || (gMNTrainingPanels[port_id].is_recalling))
+	if ((gMNTrainingTotalTimeTics < gMNTrainingPanels[port_id].min_frames_elapsed_until_recall) || (gMNTrainingPanels[port_id].is_recalling))
 		return FALSE;
 	else if (gMNTrainingPanels[port_id].cursor_state != mnCursorStateNotHoldingToken)
 		return FALSE;
@@ -1815,7 +1815,7 @@ void mnTrainingExitIfBButtonPressed(s32 port_id)
 {
 	SYController* controller = &gSYControllerDevices[port_id];
 
-	if ((gMNTrainingFramesElapsed >= 10) && (controller->button_tap & B_BUTTON))
+	if ((gMNTrainingTotalTimeTics >= 10) && (controller->button_tap & B_BUTTON))
 		mnTrainingGoBackTo1PMenu();
 }
 
@@ -1962,7 +1962,7 @@ void mnTrainingSyncTokenAndFighter(GObj* token_gobj)
 	s32 fkind;
 	s32 port_id = token_gobj->user_data.s;
 
-	if (gMNTrainingFramesElapsed < 0x1E)
+	if (gMNTrainingTotalTimeTics < 0x1E)
 	{
 		token_gobj->flags = 1;
 	}
@@ -2516,9 +2516,9 @@ void mnTrainingDestroyCursorAndTokenProcesses()
 // 0x80137700
 void mnTrainingMain(s32 arg0)
 {
-	gMNTrainingFramesElapsed += 1;
+	gMNTrainingTotalTimeTics += 1;
 
-	if (gMNTrainingFramesElapsed == gMNTrainingMaxFramesElapsed)
+	if (gMNTrainingTotalTimeTics == gMNTrainingMaxTotalTimeTics)
 	{
 		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 		gSCManagerSceneData.scene_curr = nSCKindTitle;
@@ -2530,7 +2530,7 @@ void mnTrainingMain(s32 arg0)
 	}
 
 	if (scSubsysControllerCheckNoInputAll() == 0)
-		gMNTrainingMaxFramesElapsed = gMNTrainingFramesElapsed + I_MIN_TO_TICS(5);
+		gMNTrainingMaxTotalTimeTics = gMNTrainingTotalTimeTics + I_MIN_TO_TICS(5);
 
 	if (gMNTrainingIsStartTriggered)
 	{
@@ -2545,7 +2545,7 @@ void mnTrainingMain(s32 arg0)
 			syTaskmanSetLoadScene();
 		}
 	}
-	else if ((scSubsysControllerGetPlayerTapButtons(START_BUTTON)) && (gMNTrainingFramesElapsed >= 0x3D))
+	else if ((scSubsysControllerGetPlayerTapButtons(START_BUTTON)) && (gMNTrainingTotalTimeTics >= 0x3D))
 	{
 		if (mnTrainingIsReadyToFight())
 		{
@@ -2646,9 +2646,9 @@ void mnTrainingLoadMatchInfo()
 	s32 i;
 	s32 fkind, costume_id;
 
-	gMNTrainingFramesElapsed = 0;
+	gMNTrainingTotalTimeTics = 0;
 	gMNTrainingIsStartTriggered = FALSE;
-	gMNTrainingMaxFramesElapsed = gMNTrainingFramesElapsed + I_MIN_TO_TICS(5);
+	gMNTrainingMaxTotalTimeTics = gMNTrainingTotalTimeTics + I_MIN_TO_TICS(5);
 	gMNTrainingHumanPanelPort = gSCManagerSceneData.player;
 	gMNTrainingCPUPanelPort = (gMNTrainingHumanPanelPort == 0) ? 1 : 0;
 	gMNTrainingCharacterUnlockedMask = gSCManagerBackupData.fighter_mask;

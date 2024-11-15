@@ -393,7 +393,7 @@ void scAutoDemoSetMagnifyDisplayOn(void)
 void scAutoDemoExit(void)
 {
 	gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
-	gSCManagerSceneData.scene_curr = nSCKindN64;
+	gSCManagerSceneData.scene_curr = nSCKindStartup;
 
 	syTaskmanSetLoadScene();
 }

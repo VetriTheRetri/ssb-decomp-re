@@ -2169,7 +2169,7 @@ void gmStaffrollFuncDraw(void)
 	}
 	if (sGMStaffrollStatus == -1)
 	{
-		gSCManagerSceneData.scene_curr = nSCKindN64;
+		gSCManagerSceneData.scene_curr = nSCKindStartup;
 
 		auStopBGM();
 		syVideoSetFlags(SYVIDEO_FLAG_BLACKOUT);

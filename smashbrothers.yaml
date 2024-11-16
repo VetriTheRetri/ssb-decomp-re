@@ -1472,10 +1472,10 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x167830, c, ovl37]
-      - [0x1687E0, .data, ovl37]
-      - [0x168900, .rodata, ovl37]
-      - { start: auto, type: .bss, vram: 0x8018E1C0, name: ovl37 }
+      - [0x167830, c, mv/mvopening/mvopeningdonkey]
+      - [0x1687E0, .data, mv/mvopening/mvopeningdonkey]
+      - [0x168900, .rodata, mv/mvopening/mvopeningdonkey]
+      - { start: auto, type: .bss, name: mv/mvopening/mvopeningdonkey, vram: 0x8018E1C0 }
 
   - name: ovl38
     type: code

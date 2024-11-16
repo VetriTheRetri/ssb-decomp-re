@@ -352,6 +352,26 @@ extern uintptr_t ovl25_RODATA_END;
 extern uintptr_t ovl25_BSS_START;
 extern uintptr_t ovl25_BSS_END;
 
+extern uintptr_t ovl36_ROM_START;
+extern uintptr_t ovl36_ROM_END;
+extern uintptr_t ovl36_VRAM;
+extern uintptr_t ovl36_TEXT_START;
+extern uintptr_t ovl36_TEXT_END;
+extern uintptr_t ovl36_DATA_START;
+extern uintptr_t ovl36_RODATA_END;
+extern uintptr_t ovl36_BSS_START;
+extern uintptr_t ovl36_BSS_END;
+
+extern uintptr_t ovl37_ROM_START;
+extern uintptr_t ovl37_ROM_END;
+extern uintptr_t ovl37_VRAM;
+extern uintptr_t ovl37_TEXT_START;
+extern uintptr_t ovl37_TEXT_END;
+extern uintptr_t ovl37_DATA_START;
+extern uintptr_t ovl37_RODATA_END;
+extern uintptr_t ovl37_BSS_START;
+extern uintptr_t ovl37_BSS_END;
+
 extern uintptr_t ovl38_ROM_START;
 extern uintptr_t ovl38_ROM_END;
 extern uintptr_t ovl38_VRAM;

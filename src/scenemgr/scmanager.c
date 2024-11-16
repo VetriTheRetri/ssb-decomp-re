@@ -1067,7 +1067,7 @@ void scManagerRunLoop(sb32 arg)
 
 			case 31:
 				syDmaLoadOverlay(&dSCManagerOverlays[37]);
-				intro_focus_dk_entry();
+				mvOpeningDonkeyStartScene();
 				break;
 
 			case 32:

@@ -43,10 +43,10 @@ f32 sMVOpeningLinkPosedFighterSpeed;
 s32 sMVOpeningLinkPad0x8018E1E4;
 
 // 0x8018E1E8
-CObjDesc dMVOpeningLinkAdjustedStartCObjDesc;
+CObjDesc sMVOpeningLinkAdjustedStartCObjDesc;
 
 // 0x8018E208
-CObjDesc dMVOpeningLinkAdjustedEndCObjDesc;
+CObjDesc sMVOpeningLinkAdjustedEndCObjDesc;
 
 // 0x8018E228
 LBFileNode sMVOpeningLinkStatusBuffer[48];
@@ -189,13 +189,13 @@ void mvOpeningLinkMotionCameraProcUpdate(GObj *gobj)
 
 	if (sMVOpeningLinkTotalTimeTics >= 15)
 	{
-		cobj->vec.eye.x += (((dMVOpeningLinkAdjustedEndCObjDesc.eye.x - dMVOpeningLinkAdjustedStartCObjDesc.eye.x) / 45.0F));
-		cobj->vec.eye.y += (((dMVOpeningLinkAdjustedEndCObjDesc.eye.y - dMVOpeningLinkAdjustedStartCObjDesc.eye.y) / 45.0F));
-		cobj->vec.eye.z += (((dMVOpeningLinkAdjustedEndCObjDesc.eye.z - dMVOpeningLinkAdjustedStartCObjDesc.eye.z) / 45.0F));
-		cobj->vec.at.x += (((dMVOpeningLinkAdjustedEndCObjDesc.at.x - dMVOpeningLinkAdjustedStartCObjDesc.at.x) / 45.0F));
-		cobj->vec.at.y += (((dMVOpeningLinkAdjustedEndCObjDesc.at.y - dMVOpeningLinkAdjustedStartCObjDesc.at.y) / 45.0F));
-		cobj->vec.at.z += (((dMVOpeningLinkAdjustedEndCObjDesc.at.z - dMVOpeningLinkAdjustedStartCObjDesc.at.z) / 45.0F));
-		cobj->vec.up.x += (((dMVOpeningLinkAdjustedEndCObjDesc.upx - dMVOpeningLinkAdjustedStartCObjDesc.upx) / 45.0F));
+		cobj->vec.eye.x += (((sMVOpeningLinkAdjustedEndCObjDesc.eye.x - sMVOpeningLinkAdjustedStartCObjDesc.eye.x) / 45.0F));
+		cobj->vec.eye.y += (((sMVOpeningLinkAdjustedEndCObjDesc.eye.y - sMVOpeningLinkAdjustedStartCObjDesc.eye.y) / 45.0F));
+		cobj->vec.eye.z += (((sMVOpeningLinkAdjustedEndCObjDesc.eye.z - sMVOpeningLinkAdjustedStartCObjDesc.eye.z) / 45.0F));
+		cobj->vec.at.x += (((sMVOpeningLinkAdjustedEndCObjDesc.at.x - sMVOpeningLinkAdjustedStartCObjDesc.at.x) / 45.0F));
+		cobj->vec.at.y += (((sMVOpeningLinkAdjustedEndCObjDesc.at.y - sMVOpeningLinkAdjustedStartCObjDesc.at.y) / 45.0F));
+		cobj->vec.at.z += (((sMVOpeningLinkAdjustedEndCObjDesc.at.z - sMVOpeningLinkAdjustedStartCObjDesc.at.z) / 45.0F));
+		cobj->vec.up.x += (((sMVOpeningLinkAdjustedEndCObjDesc.upx - sMVOpeningLinkAdjustedStartCObjDesc.upx) / 45.0F));
 	}
 }
 
@@ -204,8 +204,8 @@ void mvOpeningLinkMakeMotionCamera(Vec3f move)
 {
 	CObj *cobj;
 
-	dMVOpeningLinkAdjustedStartCObjDesc = dMVOpeningLinkCObjDescStart;
-	dMVOpeningLinkAdjustedEndCObjDesc = dMVOpeningLinkCObjDescEnd;
+	sMVOpeningLinkAdjustedStartCObjDesc = dMVOpeningLinkCObjDescStart;
+	sMVOpeningLinkAdjustedEndCObjDesc = dMVOpeningLinkCObjDescEnd;
 
 	sMVOpeningLinkStageCameraGObj = func_ovl2_8010DB2C(NULL);
 	cobj = CObjGetStruct(sMVOpeningLinkStageCameraGObj);
@@ -217,27 +217,27 @@ void mvOpeningLinkMakeMotionCamera(Vec3f move)
 	gcEndProcessAll(sMVOpeningLinkStageCameraGObj);
 	gcAddGObjProcess(sMVOpeningLinkStageCameraGObj, mvOpeningLinkMotionCameraProcUpdate, nGCProcessKindFunc, 1);
 
-	dMVOpeningLinkAdjustedStartCObjDesc.eye.x += move.x;
-	dMVOpeningLinkAdjustedStartCObjDesc.eye.y += move.y;
-	dMVOpeningLinkAdjustedStartCObjDesc.eye.z += move.z;
-	dMVOpeningLinkAdjustedStartCObjDesc.at.x += move.x;
-	dMVOpeningLinkAdjustedStartCObjDesc.at.y += move.y;
-	dMVOpeningLinkAdjustedStartCObjDesc.at.z += move.z;
+	sMVOpeningLinkAdjustedStartCObjDesc.eye.x += move.x;
+	sMVOpeningLinkAdjustedStartCObjDesc.eye.y += move.y;
+	sMVOpeningLinkAdjustedStartCObjDesc.eye.z += move.z;
+	sMVOpeningLinkAdjustedStartCObjDesc.at.x += move.x;
+	sMVOpeningLinkAdjustedStartCObjDesc.at.y += move.y;
+	sMVOpeningLinkAdjustedStartCObjDesc.at.z += move.z;
 
-	dMVOpeningLinkAdjustedEndCObjDesc.eye.x += move.x;
-	dMVOpeningLinkAdjustedEndCObjDesc.eye.y += move.y;
-	dMVOpeningLinkAdjustedEndCObjDesc.eye.z += move.z;
-	dMVOpeningLinkAdjustedEndCObjDesc.at.x += move.x;
-	dMVOpeningLinkAdjustedEndCObjDesc.at.y += move.y;
-	dMVOpeningLinkAdjustedEndCObjDesc.at.z += move.z;
+	sMVOpeningLinkAdjustedEndCObjDesc.eye.x += move.x;
+	sMVOpeningLinkAdjustedEndCObjDesc.eye.y += move.y;
+	sMVOpeningLinkAdjustedEndCObjDesc.eye.z += move.z;
+	sMVOpeningLinkAdjustedEndCObjDesc.at.x += move.x;
+	sMVOpeningLinkAdjustedEndCObjDesc.at.y += move.y;
+	sMVOpeningLinkAdjustedEndCObjDesc.at.z += move.z;
 
-	cobj->vec.eye.x = dMVOpeningLinkAdjustedStartCObjDesc.eye.x;
-	cobj->vec.eye.y = dMVOpeningLinkAdjustedStartCObjDesc.eye.y;
-	cobj->vec.eye.z = dMVOpeningLinkAdjustedStartCObjDesc.eye.z;
-	cobj->vec.at.x = dMVOpeningLinkAdjustedStartCObjDesc.at.x;
-	cobj->vec.at.y = dMVOpeningLinkAdjustedStartCObjDesc.at.y;
-	cobj->vec.at.z = dMVOpeningLinkAdjustedStartCObjDesc.at.z;
-	cobj->vec.up.x = dMVOpeningLinkAdjustedStartCObjDesc.upx;
+	cobj->vec.eye.x = sMVOpeningLinkAdjustedStartCObjDesc.eye.x;
+	cobj->vec.eye.y = sMVOpeningLinkAdjustedStartCObjDesc.eye.y;
+	cobj->vec.eye.z = sMVOpeningLinkAdjustedStartCObjDesc.eye.z;
+	cobj->vec.at.x = sMVOpeningLinkAdjustedStartCObjDesc.at.x;
+	cobj->vec.at.y = sMVOpeningLinkAdjustedStartCObjDesc.at.y;
+	cobj->vec.at.z = sMVOpeningLinkAdjustedStartCObjDesc.at.z;
+	cobj->vec.up.x = sMVOpeningLinkAdjustedStartCObjDesc.upx;
 }
 
 // 0x8018D5FC

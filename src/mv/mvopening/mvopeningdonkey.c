@@ -15,50 +15,50 @@ extern u32 func_8000092C();
 //                               //
 // // // // // // // // // // // //
 
-// 0x8018E1F0
-s32 sMVOpeningFoxPad0x8018E1F0[2];
+// 0x8018E1C0
+s32 sMVOpeningDonkeyPad0x8018E1C0[2];
 
-// 0x8018E1F8
-s32 sMVOpeningFoxTotalTimeTics;
+// 0x8018E1C8
+s32 sMVOpeningDonkeyTotalTimeTics;
 
-// 0x8018E1FC
-GObj *sMVOpeningFoxNameGObj;
+// 0x8018E1CC
+GObj *sMVOpeningDonkeyNameGObj;
 
-// 0x8018E200
-GObj *sMVOpeningFoxFighterGObj;
+// 0x8018E1D0
+GObj *sMVOpeningDonkeyFighterGObj;
 
-// 0x8018E204
-s32 sMVOpeningFoxPad0x8018E204;
+// 0x8018E1D4
+s32 sMVOpeningDonkeyPad0x8018E1D4;
+
+// 0x8018E1D8
+GObj *sMVOpeningDonkeyStageCameraGObj;
+
+// 0x8018E1DC
+void *sMVOpeningDonkeyFigatreeHeap;
+
+// 0x8018E1E0
+f32 sMVOpeningDonkeyPosedFighterSpeed;
+
+// 0x8018E1E4
+s32 sMVOpeningDonkeyPad0x8018E1E4;
+
+// 0x8018E1E8
+CObjDesc sMVOpeningDonkeyAdjustedStartCObjDesc;
 
 // 0x8018E208
-GObj *sMVOpeningFoxStageCameraGObj;
+CObjDesc sMVOpeningDonkeyAdjustedEndCObjDesc;
 
-// 0x8018E20C
-void *sMVOpeningFoxFigatreeHeap;
+// 0x8018E228
+LBFileNode sMVOpeningDonkeyStatusBuffer[48];
 
-// 0x8018E210
-f32 sMVOpeningFoxPosedFighterSpeed;
+// 0x8018E3A8
+LBFileNode sMVOpeningDonkeyForceStatusBuffer[7];
 
-// 0x8018E214
-s32 sMVOpeningFoxPad0x8018E214;
+// 0x8018E3E0
+void *sMVOpeningDonkeyFiles[2];
 
-// 0x8018E218
-CObjDesc sMVOpeningFoxAdjustedStartCObjDesc;
-
-// 0x8018E238
-CObjDesc sMVOpeningFoxAdjustedEndCObjDesc;
-
-// 0x8018E258
-LBFileNode sMVOpeningFoxStatusBuffer[48];
-
-// 0x8018E3D8
-LBFileNode sMVOpeningFoxForceStatusBuffer[7];
-
-// 0x8018E410
-void *sMVOpeningFoxFiles[2];
-
-// 0x8018E418
-SCBattleState sMVOpeningFoxBattleState;
+// 0x8018E3E8
+SCBattleState sMVOpeningDonkeyBattleState;
 
 // // // // // // // // // // // //
 //                               //
@@ -66,35 +66,34 @@ SCBattleState sMVOpeningFoxBattleState;
 //                               //
 // // // // // // // // // // // //
 
-// 0x8018E090
-CObjDesc dMVOpeningFoxCObjDescStart =
+// 0x8018E070
+CObjDesc dMVOpeningDonkeyCObjDescStart =
 {
-	{ -400.0F, 320.0F, 100.0F },
-	{    0.0F, 320.0F,   0.0F },
+	{ -1100.0F, 150.0F, 400.0F },
+	{     0.0F, 150.0F,   0.0F },
 	0.0F
 };
 
-// 0x8018E0AC
-CObjDesc dMVOpeningFoxCObjDescEnd =
+// 0x8018E08C
+CObjDesc dMVOpeningDonkeyCObjDescEnd =
 {
-	{ -3000.0F, 300.0F, 250.0F },
-	{     0.0F, 300.0F,-200.0F },
-	0.7F
+	{ -900.0F, 500.0F, 1800.0F },
+	{    0.0F, 500.0F,    0.0F },
+	0.0F
 };
 
-// 0x8018E0C8
-FTKeyEvent dMVOpeningFoxKeyEvents[/* */] =
+// 0x8018E0A8
+FTKeyEvent dMVOpeningDonkeyKeyEvents[/* */] =
 {
-	FTKEY_EVENT_STICK(-50, 0, 1),     // 2001, CE00
-	FTKEY_EVENT_BUTTON(B_BUTTON, 1),  // 1001, 4000
-	FTKEY_EVENT_BUTTON(0, 12),        // 100C, 0000
-	FTKEY_EVENT_BUTTON(B_BUTTON, 1),  // 1001, 4000
-	FTKEY_EVENT_BUTTON(0, 12),        // 100C, 0000
-	FTKEY_EVENT_END()                 // 0000
+	FTKEY_EVENT_STICK(0, -I_CONTROLLER_RANGE_MAX, 0), // 0x2000, 0x00B0
+	FTKEY_EVENT_BUTTON(B_BUTTON, 1),                  // 0x1001, 0x4000
+	FTKEY_EVENT_BUTTON(0, 1),                         // 0x1001, 0x0000
+	FTKEY_EVENT_BUTTON(B_BUTTON, 1),                  // 0x1001, 0x4000
+	FTKEY_EVENT_END()                                 // 0x0000
 };
 
-// 0x8018E0E0
-u32 dMVOpeningFoxFileIDs[/* */] = { &lIFCommonAnnounceCommonFileID, &lMVOpeningCommonFileID };
+// 0x8018E0BC
+u32 dMVOpeningDonkeyFileIDs[/* */] = { &lIFCommonAnnounceCommonFileID, &lMVOpeningCommonFileID };
 
 // // // // // // // // // // // //
 //                               //
@@ -103,7 +102,7 @@ u32 dMVOpeningFoxFileIDs[/* */] = { &lIFCommonAnnounceCommonFileID, &lMVOpeningC
 // // // // // // // // // // // //
 
 // 0x8018D0C0
-void mvOpeningFoxSetupFiles(void)
+void mvOpeningDonkeySetupFiles(void)
 {
 	LBRelocSetup rl_setup;
 
@@ -111,23 +110,23 @@ void mvOpeningFoxSetupFiles(void)
 	rl_setup.table_files_num = (u32)&lLBRelocTableFilesNum;
 	rl_setup.file_heap = NULL;
 	rl_setup.file_heap_size = 0;
-	rl_setup.status_buffer = sMVOpeningFoxStatusBuffer;
-	rl_setup.status_buffer_size = ARRAY_COUNT(sMVOpeningFoxStatusBuffer);
-	rl_setup.force_status_buffer = sMVOpeningFoxForceStatusBuffer;
-	rl_setup.force_status_buffer_size = ARRAY_COUNT(sMVOpeningFoxForceStatusBuffer);
+	rl_setup.status_buffer = sMVOpeningDonkeyStatusBuffer;
+	rl_setup.status_buffer_size = ARRAY_COUNT(sMVOpeningDonkeyStatusBuffer);
+	rl_setup.force_status_buffer = sMVOpeningDonkeyForceStatusBuffer;
+	rl_setup.force_status_buffer_size = ARRAY_COUNT(sMVOpeningDonkeyForceStatusBuffer);
 
 	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesExtern
 	(
-		dMVOpeningFoxFileIDs,
-		ARRAY_COUNT(dMVOpeningFoxFileIDs),
-		sMVOpeningFoxFiles,
+		dMVOpeningDonkeyFileIDs,
+		ARRAY_COUNT(dMVOpeningDonkeyFileIDs),
+		sMVOpeningDonkeyFiles,
 		syTaskmanMalloc
 		(
 			lbRelocGetAllocSize
 			(
-				dMVOpeningFoxFileIDs,
-				ARRAY_COUNT(dMVOpeningFoxFileIDs)
+				dMVOpeningDonkeyFileIDs,
+				ARRAY_COUNT(dMVOpeningDonkeyFileIDs)
 			),
 			0x10
 		)
@@ -135,7 +134,7 @@ void mvOpeningFoxSetupFiles(void)
 }
 
 // 0x8018D160
-void mvOpeningFoxSetNameColor(SObj *sobj)
+void mvOpeningDonkeySetNameColor(SObj *sobj)
 {
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -150,103 +149,101 @@ void mvOpeningFoxSetNameColor(SObj *sobj)
 }
 
 // 0x8018D194
-void mvOpeningFoxMakeName(void)
+void mvOpeningDonkeyMakeName(void)
 {
 	GObj *gobj;
 	SObj *sobj;
 
 	intptr_t offsets[/* */] =
 	{
-		&lIFCommonAnnounceCommonLetterF,
-		&lIFCommonAnnounceCommonLetterO,
-		&lIFCommonAnnounceCommonLetterX,
+		&lIFCommonAnnounceCommonLetterD,
+		&lIFCommonAnnounceCommonLetterK,
 		0x0
 	};
 	Vec2f pos[/* */] =
 	{
 		{  0.0F, 0.0F },
-		{ 30.0F, 0.0F },
-		{ 75.0F, 0.0F }
+		{ 40.0F, 0.0F }
 	};
 	s32 i;
 
-	sMVOpeningFoxNameGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
+	sMVOpeningDonkeyNameGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 27, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	for (i = 0; offsets[i] != 0x0; i++)
 	{
-		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMVOpeningFoxFiles[0], offsets[i]));
+		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMVOpeningDonkeyFiles[0], offsets[i]));
 
 		sobj->sprite.attr &= ~SP_FASTCOPY;
 		sobj->sprite.attr |= SP_TRANSPARENT;
 		
-		sobj->pos.x = pos[i].x + 110.0F;
+		sobj->pos.x = pos[i].x + 120.0F;
 		sobj->pos.y = pos[i].y + 100.0F;
 
-		mvOpeningFoxSetNameColor(sobj);
+		mvOpeningDonkeySetNameColor(sobj);
 	}
 }
 
-// 0x8018D314
-void mvOpeningFoxMotionCameraProcUpdate(GObj *gobj)
+// 0x8018D2FC
+void mvOpeningDonkeyMotionCameraProcUpdate(GObj *gobj)
 {
 	CObj *cobj = CObjGetStruct(gobj);
 
-	if (sMVOpeningFoxTotalTimeTics >= 15)
+	if (sMVOpeningDonkeyTotalTimeTics >= 15)
 	{
-		cobj->vec.eye.x += (((sMVOpeningFoxAdjustedEndCObjDesc.eye.x - sMVOpeningFoxAdjustedStartCObjDesc.eye.x) / 45.0F));
-		cobj->vec.eye.y += (((sMVOpeningFoxAdjustedEndCObjDesc.eye.y - sMVOpeningFoxAdjustedStartCObjDesc.eye.y) / 45.0F));
-		cobj->vec.eye.z += (((sMVOpeningFoxAdjustedEndCObjDesc.eye.z - sMVOpeningFoxAdjustedStartCObjDesc.eye.z) / 45.0F));
-		cobj->vec.at.x += (((sMVOpeningFoxAdjustedEndCObjDesc.at.x - sMVOpeningFoxAdjustedStartCObjDesc.at.x) / 45.0F));
-		cobj->vec.at.y += (((sMVOpeningFoxAdjustedEndCObjDesc.at.y - sMVOpeningFoxAdjustedStartCObjDesc.at.y) / 45.0F));
-		cobj->vec.at.z += (((sMVOpeningFoxAdjustedEndCObjDesc.at.z - sMVOpeningFoxAdjustedStartCObjDesc.at.z) / 45.0F));
-		cobj->vec.up.x += (((sMVOpeningFoxAdjustedEndCObjDesc.upx - sMVOpeningFoxAdjustedStartCObjDesc.upx) / 45.0F));
+		cobj->vec.eye.x += (((sMVOpeningDonkeyAdjustedEndCObjDesc.eye.x - sMVOpeningDonkeyAdjustedStartCObjDesc.eye.x) / 45.0F));
+		cobj->vec.eye.y += (((sMVOpeningDonkeyAdjustedEndCObjDesc.eye.y - sMVOpeningDonkeyAdjustedStartCObjDesc.eye.y) / 45.0F));
+		cobj->vec.eye.z += (((sMVOpeningDonkeyAdjustedEndCObjDesc.eye.z - sMVOpeningDonkeyAdjustedStartCObjDesc.eye.z) / 45.0F));
+		cobj->vec.at.x += (((sMVOpeningDonkeyAdjustedEndCObjDesc.at.x - sMVOpeningDonkeyAdjustedStartCObjDesc.at.x) / 45.0F));
+		cobj->vec.at.y += (((sMVOpeningDonkeyAdjustedEndCObjDesc.at.y - sMVOpeningDonkeyAdjustedStartCObjDesc.at.y) / 45.0F));
+		cobj->vec.at.z += (((sMVOpeningDonkeyAdjustedEndCObjDesc.at.z - sMVOpeningDonkeyAdjustedStartCObjDesc.at.z) / 45.0F));
+		cobj->vec.up.x += (((sMVOpeningDonkeyAdjustedEndCObjDesc.upx - sMVOpeningDonkeyAdjustedStartCObjDesc.upx) / 45.0F));
 	}
 }
 
-// 0x8018D40C
-void mvOpeningFoxMakeMotionCamera(Vec3f move)
+// 0x8018D3F4
+void mvOpeningDonkeyMakeMotionCamera(Vec3f move)
 {
 	CObj *cobj;
 
-	sMVOpeningFoxAdjustedStartCObjDesc = dMVOpeningFoxCObjDescStart;
-	sMVOpeningFoxAdjustedEndCObjDesc = dMVOpeningFoxCObjDescEnd;
+	sMVOpeningDonkeyAdjustedStartCObjDesc = dMVOpeningDonkeyCObjDescStart;
+	sMVOpeningDonkeyAdjustedEndCObjDesc = dMVOpeningDonkeyCObjDescEnd;
 
-	sMVOpeningFoxStageCameraGObj = func_ovl2_8010DB2C(NULL);
-	cobj = CObjGetStruct(sMVOpeningFoxStageCameraGObj);
+	sMVOpeningDonkeyStageCameraGObj = func_ovl2_8010DB2C(NULL);
+	cobj = CObjGetStruct(sMVOpeningDonkeyStageCameraGObj);
 
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 210.0F, 230.0F);
 
 	cobj->projection.persp.aspect = 10.0F / 11.0F;
 
-	gcEndProcessAll(sMVOpeningFoxStageCameraGObj);
-	gcAddGObjProcess(sMVOpeningFoxStageCameraGObj, mvOpeningFoxMotionCameraProcUpdate, nGCProcessKindFunc, 1);
+	gcEndProcessAll(sMVOpeningDonkeyStageCameraGObj);
+	gcAddGObjProcess(sMVOpeningDonkeyStageCameraGObj, mvOpeningDonkeyMotionCameraProcUpdate, nGCProcessKindFunc, 1);
 
-	sMVOpeningFoxAdjustedStartCObjDesc.eye.x += move.x;
-	sMVOpeningFoxAdjustedStartCObjDesc.eye.y += move.y;
-	sMVOpeningFoxAdjustedStartCObjDesc.eye.z += move.z;
-	sMVOpeningFoxAdjustedStartCObjDesc.at.x += move.x;
-	sMVOpeningFoxAdjustedStartCObjDesc.at.y += move.y;
-	sMVOpeningFoxAdjustedStartCObjDesc.at.z += move.z;
+	sMVOpeningDonkeyAdjustedStartCObjDesc.eye.x += move.x;
+	sMVOpeningDonkeyAdjustedStartCObjDesc.eye.y += move.y;
+	sMVOpeningDonkeyAdjustedStartCObjDesc.eye.z += move.z;
+	sMVOpeningDonkeyAdjustedStartCObjDesc.at.x += move.x;
+	sMVOpeningDonkeyAdjustedStartCObjDesc.at.y += move.y;
+	sMVOpeningDonkeyAdjustedStartCObjDesc.at.z += move.z;
 
-	sMVOpeningFoxAdjustedEndCObjDesc.eye.x += move.x;
-	sMVOpeningFoxAdjustedEndCObjDesc.eye.y += move.y;
-	sMVOpeningFoxAdjustedEndCObjDesc.eye.z += move.z;
-	sMVOpeningFoxAdjustedEndCObjDesc.at.x += move.x;
-	sMVOpeningFoxAdjustedEndCObjDesc.at.y += move.y;
-	sMVOpeningFoxAdjustedEndCObjDesc.at.z += move.z;
+	sMVOpeningDonkeyAdjustedEndCObjDesc.eye.x += move.x;
+	sMVOpeningDonkeyAdjustedEndCObjDesc.eye.y += move.y;
+	sMVOpeningDonkeyAdjustedEndCObjDesc.eye.z += move.z;
+	sMVOpeningDonkeyAdjustedEndCObjDesc.at.x += move.x;
+	sMVOpeningDonkeyAdjustedEndCObjDesc.at.y += move.y;
+	sMVOpeningDonkeyAdjustedEndCObjDesc.at.z += move.z;
 
-	cobj->vec.eye.x = sMVOpeningFoxAdjustedStartCObjDesc.eye.x;
-	cobj->vec.eye.y = sMVOpeningFoxAdjustedStartCObjDesc.eye.y;
-	cobj->vec.eye.z = sMVOpeningFoxAdjustedStartCObjDesc.eye.z;
-	cobj->vec.at.x = sMVOpeningFoxAdjustedStartCObjDesc.at.x;
-	cobj->vec.at.y = sMVOpeningFoxAdjustedStartCObjDesc.at.y;
-	cobj->vec.at.z = sMVOpeningFoxAdjustedStartCObjDesc.at.z;
-	cobj->vec.up.x = sMVOpeningFoxAdjustedStartCObjDesc.upx;
+	cobj->vec.eye.x = sMVOpeningDonkeyAdjustedStartCObjDesc.eye.x;
+	cobj->vec.eye.y = sMVOpeningDonkeyAdjustedStartCObjDesc.eye.y;
+	cobj->vec.eye.z = sMVOpeningDonkeyAdjustedStartCObjDesc.eye.z;
+	cobj->vec.at.x = sMVOpeningDonkeyAdjustedStartCObjDesc.at.x;
+	cobj->vec.at.y = sMVOpeningDonkeyAdjustedStartCObjDesc.at.y;
+	cobj->vec.at.z = sMVOpeningDonkeyAdjustedStartCObjDesc.at.z;
+	cobj->vec.up.x = sMVOpeningDonkeyAdjustedStartCObjDesc.upx;
 }
 
-// 0x8018D61C
-void mvOpeningFoxMakeMotionWindow(void)
+// 0x8018D604
+void mvOpeningDonkeyMakeMotionWindow(void)
 {
 	GObj *fighter_gobj;
 	s32 i;
@@ -266,7 +263,7 @@ void mvOpeningFoxMakeMotionWindow(void)
 	}
 	mpCollisionGetMapObjIDsKind(nMPMapObjKindMovieStart1, pos_ids);
 	mpCollisionGetMapObjPositionID(pos_ids[0], &pos);
-	mvOpeningFoxMakeMotionCamera(pos);
+	mvOpeningDonkeyMakeMotionCamera(pos);
 	gmRumbleMakeActor();
 	ftPublicityMakeActor();
 
@@ -297,19 +294,19 @@ void mvOpeningFoxMakeMotionWindow(void)
 		desc.controller = &gSYControllerDevices[i];
 		desc.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[i].fkind);
 
-		sMVOpeningFoxFighterGObj = fighter_gobj = ftManagerMakeFighter(&desc);
+		sMVOpeningDonkeyFighterGObj = fighter_gobj = ftManagerMakeFighter(&desc);
 
 		ftParamInitPlayerBattleStats(i, fighter_gobj);
-		ftParamSetKey(fighter_gobj, dMVOpeningFoxKeyEvents);
+		ftParamSetKey(fighter_gobj, dMVOpeningDonkeyKeyEvents);
 	}
 }
 
-// 0x8018D84C
-void mvOpeningFoxPosedWallpaperFuncDisplay(GObj *gobj)
+// 0x8018D834
+void mvOpeningDonkeyPosedWallpaperFuncDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x00, 0x3C, 0x28, 0xFF);
+	gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x46, 0x5A, 0x00, 0xFF);
 	gDPSetCombineLERP(gSYTaskmanDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 210, 10, 310, 230);
@@ -317,8 +314,8 @@ void mvOpeningFoxPosedWallpaperFuncDisplay(GObj *gobj)
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
-// 0x8018D94C
-void mvOpeningFoxMakePosedWallpaper(void)
+// 0x8018D934
+void mvOpeningDonkeyMakePosedWallpaper(void)
 {
 	gcAddGObjDisplay
 	(
@@ -329,69 +326,69 @@ void mvOpeningFoxMakePosedWallpaper(void)
 			19,
 			GOBJ_PRIORITY_DEFAULT
 		),
-		mvOpeningFoxPosedWallpaperFuncDisplay,
+		mvOpeningDonkeyPosedWallpaperFuncDisplay,
 		28,
 		GOBJ_PRIORITY_DEFAULT,
 		~0
 	);
 }
 
-// 0x8018D998
-void mvOpeningFoxPosedFighterProcUpdate(GObj *fighter_gobj)
+// 0x8018D980
+void mvOpeningDonkeyPosedFighterProcUpdate(GObj *fighter_gobj)
 {
-	switch (sMVOpeningFoxTotalTimeTics)
+	switch (sMVOpeningDonkeyTotalTimeTics)
 	{
 	default:
 		break;
 
 	case 15:
-		sMVOpeningFoxPosedFighterSpeed = 17.0F;
+		sMVOpeningDonkeyPosedFighterSpeed = 17.0F;
 		break;
 
 	case 45:
-		sMVOpeningFoxPosedFighterSpeed = 15.0F;
+		sMVOpeningDonkeyPosedFighterSpeed = 15.0F;
 		break;
 
 	case 60:
-		sMVOpeningFoxPosedFighterSpeed = 0.0F;
+		sMVOpeningDonkeyPosedFighterSpeed = 0.0F;
 		break;
 	}
-	if ((sMVOpeningFoxTotalTimeTics > 15) && (sMVOpeningFoxTotalTimeTics < 45))
+	if ((sMVOpeningDonkeyTotalTimeTics > 15) && (sMVOpeningDonkeyTotalTimeTics < 45))
 	{
-		sMVOpeningFoxPosedFighterSpeed += -1.0F / 15.0F;
+		sMVOpeningDonkeyPosedFighterSpeed += -1.0F / 15.0F;
 	}
-	if ((sMVOpeningFoxTotalTimeTics > 45) && (sMVOpeningFoxTotalTimeTics < 60))
+	if ((sMVOpeningDonkeyTotalTimeTics > 45) && (sMVOpeningDonkeyTotalTimeTics < 60))
 	{
-		sMVOpeningFoxPosedFighterSpeed += -1.0F;
+		sMVOpeningDonkeyPosedFighterSpeed += -1.0F;
 	}
-	DObjGetStruct(fighter_gobj)->translate.vec.f.y -= sMVOpeningFoxPosedFighterSpeed;
+	DObjGetStruct(fighter_gobj)->translate.vec.f.y += sMVOpeningDonkeyPosedFighterSpeed;
 }
 
-// 0x8018DA68
-void mvOpeningFoxMakePosedFighter(void)
+// 0x8018DA50
+void mvOpeningDonkeyMakePosedFighter(void)
 {
 	GObj *fighter_gobj;
 	FTCreateDesc desc = dFTManagerDefaultFighterDesc;
 
-	desc.fkind = nFTKindFox;
-	desc.costume = ftParamGetCostumeCommonID(nFTKindFox, 0);
-	desc.figatree_heap = sMVOpeningFoxFigatreeHeap;
+	desc.fkind = nFTKindDonkey;
+	desc.costume = ftParamGetCostumeCommonID(nFTKindDonkey, 0);
+	desc.figatree_heap = sMVOpeningDonkeyFigatreeHeap;
 	desc.pos.x = 0.0F;
-	desc.pos.y = 600.0F;
+	desc.pos.y = -600.0F;
 	desc.pos.z = 0.0F;
 
 	fighter_gobj = ftManagerMakeFighter(&desc);
 	scSubsysFighterSetStatus(fighter_gobj, 0x1000C);
 	gcMoveGObjDL(fighter_gobj, 26, -1);
-	gcAddGObjProcess(fighter_gobj, mvOpeningFoxPosedFighterProcUpdate, nGCProcessKindFunc, 1);
+	gcAddGObjProcess(fighter_gobj, mvOpeningDonkeyPosedFighterProcUpdate, nGCProcessKindFunc, 1);
 
 	DObjGetStruct(fighter_gobj)->scale.vec.f.x = 1.0F;
 	DObjGetStruct(fighter_gobj)->scale.vec.f.y = 1.0F;
 	DObjGetStruct(fighter_gobj)->scale.vec.f.z = 1.0F;
 }
 
-// 0x8018DB68
-void mvOpeningFoxMakeNameCamera(void)
+// 0x8018DB50
+void mvOpeningDonkeyMakeNameCamera(void)
 {
 	GObj *camera_gobj = gcMakeCameraGObj
 	(
@@ -414,8 +411,8 @@ void mvOpeningFoxMakeNameCamera(void)
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 0x8018DC08
-void mvOpeningFoxMakePosedFighterCamera(void)
+// 0x8018DBF0
+void mvOpeningDonkeyMakePosedFighterCamera(void)
 {
 	GObj *camera_gobj = gcMakeCameraGObj
 	(
@@ -439,12 +436,12 @@ void mvOpeningFoxMakePosedFighterCamera(void)
 	
 	cobj->projection.persp.aspect = 5.0F / 11.0F;
 
-	gcAddCameraCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningFoxFiles[1], &lMVOpeningFoxCamAnimJoint), 0.0F);
+	gcAddCameraCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningDonkeyFiles[1], &lMVOpeningDonkeyCamAnimJoint), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindFunc, 1);
 }
 
-// 0x8018DCF0
-void mvOpeningFoxMakePosedWallpaperCamera(void)
+// 0x8018DCD8
+void mvOpeningDonkeyMakePosedWallpaperCamera(void)
 {
 	CObj *cobj;
 	GObj *camera_gobj = gcMakeCameraGObj
@@ -469,10 +466,10 @@ void mvOpeningFoxMakePosedWallpaperCamera(void)
 	cobj->flags = COBJ_FLAG_DLBUFFERS | COBJ_FLAG_ZBUFFER;
 }
 
-// 0x8018DD98
-void mvOpeningFoxFuncRun(GObj *gobj)
+// 0x8018DD80
+void mvOpeningDonkeyFuncRun(GObj *gobj)
 {
-	sMVOpeningFoxTotalTimeTics++;
+	sMVOpeningDonkeyTotalTimeTics++;
 
 	if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON))
 	{
@@ -480,45 +477,45 @@ void mvOpeningFoxFuncRun(GObj *gobj)
 		gSCManagerSceneData.scene_curr = nSCKindTitle;
 		syTaskmanSetLoadScene();
 	}
-	if (sMVOpeningFoxTotalTimeTics == 15)
+	if (sMVOpeningDonkeyTotalTimeTics == 15)
 	{
-		gcEjectGObj(sMVOpeningFoxNameGObj);
-		mvOpeningFoxMakeMotionWindow();
-		mvOpeningFoxMakePosedWallpaper();
-		mvOpeningFoxMakePosedFighter();
+		gcEjectGObj(sMVOpeningDonkeyNameGObj);
+		mvOpeningDonkeyMakeMotionWindow();
+		mvOpeningDonkeyMakePosedWallpaper();
+		mvOpeningDonkeyMakePosedFighter();
 	}
-	if (sMVOpeningFoxTotalTimeTics == 60)
+	if (sMVOpeningDonkeyTotalTimeTics == 60)
 	{
 		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
-		gSCManagerSceneData.scene_curr = nSCKindOpeningPikachu;
+		gSCManagerSceneData.scene_curr = nSCKindOpeningLink;
 		syTaskmanSetLoadScene();
 	}
 }
 
-// 0x8018DE54
-void mvOpeningFoxInitVars(void)
+// 0x8018DE3C
+void mvOpeningDonkeyInitVars(void)
 {
-	sMVOpeningFoxTotalTimeTics = 0;
+	sMVOpeningDonkeyTotalTimeTics = 0;
 }
 
-// 0x8018DE60
-void mvOpeningFoxFuncStart(void)
+// 0x8018DE48
+void mvOpeningDonkeyFuncStart(void)
 {
-	sMVOpeningFoxBattleState = dSCManagerDefaultBattleState;
-	gSCManagerBattleState = &sMVOpeningFoxBattleState;
+	sMVOpeningDonkeyBattleState = dSCManagerDefaultBattleState;
+	gSCManagerBattleState = &sMVOpeningDonkeyBattleState;
 
 	gSCManagerBattleState->game_type = nSCBattleGameTypeMovie;
 
-	gSCManagerBattleState->gkind = nGRKindSector;
+	gSCManagerBattleState->gkind = nGRKindJungle;
 	gSCManagerBattleState->pl_count = 1;
 
-	gSCManagerBattleState->players[0].fkind = nFTKindFox;
+	gSCManagerBattleState->players[0].fkind = nFTKindDonkey;
 	gSCManagerBattleState->players[0].pkind = nFTPlayerKindKey;
 
-	mvOpeningFoxSetupFiles();
-	gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningFoxFuncRun, nGCCommonLinkIDMovie, GOBJ_PRIORITY_DEFAULT);
+	mvOpeningDonkeySetupFiles();
+	gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningDonkeyFuncRun, nGCCommonLinkIDMovie, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(9, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
-	mvOpeningFoxInitVars();
+	mvOpeningDonkeyInitVars();
 	efParticleInitAll();
 	ftParamInitGame();
 	mpCollisionInitGroundData();
@@ -528,40 +525,40 @@ void mvOpeningFoxFuncStart(void)
 	wpManagerAllocWeapons();
 	itManagerInitItems();
 	efManagerInitEffects();
-	ftManagerSetupFilesAllKind(nFTKindFox);
+	ftManagerSetupFilesAllKind(nFTKindDonkey);
 
-	sMVOpeningFoxFigatreeHeap = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
+	sMVOpeningDonkeyFigatreeHeap = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
 
-	mvOpeningFoxMakeNameCamera();
-	mvOpeningFoxMakePosedWallpaperCamera();
-	mvOpeningFoxMakePosedFighterCamera();
-	mvOpeningFoxMakeName();
+	mvOpeningDonkeyMakeNameCamera();
+	mvOpeningDonkeyMakePosedWallpaperCamera();
+	mvOpeningDonkeyMakePosedFighterCamera();
+	mvOpeningDonkeyMakeName();
 
-	while (func_8000092C() < 2055)
+	while (func_8000092C() < 1605)
 	{
 		continue;
 	}
 }
 
-// 0x8018DFE0
-void mvOpeningFoxFuncLights(Gfx **dls)
+// 0x8018DFCC
+void mvOpeningDonkeyFuncLights(Gfx **dls)
 {
 	gSPSetGeometryMode(dls[0]++, G_LIGHTING);
 	ftDisplayLightsDrawReflect(dls, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
 }
 
-// 0x8018E110
-SYVideoSetup dMVOpeningFoxVideoSetup = SYVIDEO_SETUP_DEFAULT();
+// 0x8018E0E0
+SYVideoSetup dMVOpeningDonkeyVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
-// 0x8018E12C
-SYTaskmanSetup dMVOpeningFoxTaskmanSetup =
+// 0x8018E0FC
+SYTaskmanSetup dMVOpeningDonkeyTaskmanSetup =
 {
     // Task Manager Buffer Setup
     {
         0,                              // ???
         gcRunAll,                 	 	// Update function
         scManagerFuncDraw,              // Frame draw function
-        &ovl39_BSS_END,                 // Allocatable memory pool start
+        &ovl37_BSS_END,                 // Allocatable memory pool start
         0,                              // Allocatable memory pool size
         1,                              // ???
         2,                              // Number of contexts?
@@ -572,7 +569,7 @@ SYTaskmanSetup dMVOpeningFoxTaskmanSetup =
         0x8000,                         // Graphics Heap Size
         2,                              // ???
         0xC000,                         // RDP Output Buffer Size
-        mvOpeningFoxFuncLights,    		// Pre-render function
+        mvOpeningDonkeyFuncLights,    		// Pre-render function
         update_contdata,                // Controller I/O function
     },
 
@@ -595,15 +592,15 @@ SYTaskmanSetup dMVOpeningFoxTaskmanSetup =
     0,                                  // Number of Cameras
     sizeof(CObj),                       // Camera size
     
-    mvOpeningFoxFuncStart          		// Task start function
+    mvOpeningDonkeyFuncStart          		// Task start function
 };
 
-// 0x8018E02C
-void mvOpeningFoxStartScene(void)
+// 0x8018E018
+void mvOpeningDonkeyStartScene(void)
 {
-	dMVOpeningFoxVideoSetup.zbuffer = syVideoGetZBuffer(6400);
-	syVideoInit(&dMVOpeningFoxVideoSetup);
+	dMVOpeningDonkeyVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&dMVOpeningDonkeyVideoSetup);
 
-	dMVOpeningFoxTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl39_BSS_END);
-	syTaskmanRun(&dMVOpeningFoxTaskmanSetup);
+	dMVOpeningDonkeyTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl37_BSS_END);
+	syTaskmanRun(&dMVOpeningDonkeyTaskmanSetup);
 }

@@ -35,7 +35,7 @@ void mnStartupStartScene();
 void intro_firstscene_entry();
 void mvPortraitsStartScene();
 void intro_focus_mario_entry();
-void intro_focus_dk_entry();
+void mvOpeningDonkeyStartScene();
 void mvOpeningSamusStartScene();
 void mvOpeningFoxStartScene();
 void mvOpeningLinkStartScene();

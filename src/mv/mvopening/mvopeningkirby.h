@@ -8,10 +8,10 @@
 extern intptr_t lMVOpeningKirbyCamAnimJoint;                    // 0x00000150
 
 extern void mvOpeningKirbySetupFiles(void);
-extern void mvOpeningKirbySetNameSpriteColors(SObj *sobj);
+extern void mvOpeningKirbyInitName(SObj *sobj);
 extern void mvOpeningKirbyMakeName(void);
-extern void mvOpeningKirbyMotionCameraProcUpdate(GObj *camera_gobj);
-extern void mvOpeningKirbyMakeMotionCamera(Vec3f vec);
+extern void mvOpeningKirbyMotionCameraProcUpdate(GObj *gobj);
+extern void mvOpeningKirbyMakeMotionCamera(Vec3f move);
 extern void mvOpeningKirbyMakeMotionWindow(void);
 extern void mvOpeningKirbyPosedWallpaperFuncDisplay(GObj *gobj);
 extern void mvOpeningKirbyMakePosedWallpaper(void);

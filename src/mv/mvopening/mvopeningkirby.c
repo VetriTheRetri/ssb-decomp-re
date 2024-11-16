@@ -37,7 +37,7 @@ GObj *sMVOpeningKirbyMotionCameraGObj;
 void *sMVOpeningKirbyFigatreeHeap;
 
 // 0x8018E240
-f32 sMVOpeningKirbyPosedSpeedY;
+f32 sMVOpeningKirbyPosedFighterSpeed;
 
 // 0x8018E244
 s32 sMVOpeningKirbyPad0x8018E244;
@@ -122,7 +122,7 @@ void mvOpeningKirbySetupFiles(void)
 }
 
 // 0x8018D160
-void mvOpeningKirbySetNameSpriteColors(SObj *sobj)
+void mvOpeningKirbyInitName(SObj *sobj)
 {
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -139,8 +139,8 @@ void mvOpeningKirbySetNameSpriteColors(SObj *sobj)
 // 0x8018D194
 void mvOpeningKirbyMakeName(void)
 {
-	GObj *name_gobj;
-	SObj *name_sobj;
+	GObj *gobj;
+	SObj *sobj;
 
 	// 0x8018E0FC
 	intptr_t offsets[/* */] =
@@ -165,27 +165,27 @@ void mvOpeningKirbyMakeName(void)
 
 	s32 i;
 
-	sMVOpeningKirbyNameGObj = name_gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
-	gcAddGObjDisplay(name_gobj, lbCommonDrawSObjAttr, 27, GOBJ_PRIORITY_DEFAULT, ~0);
+	sMVOpeningKirbyNameGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 27, GOBJ_PRIORITY_DEFAULT, ~0);
 
-	for (i = 0; offsets[i] != 0; i++)
+	for (i = 0; offsets[i] != 0x0; i++)
 	{
-		name_sobj = lbCommonMakeSObjForGObj(name_gobj, lbRelocGetFileData(Sprite*, sMVOpeningKirbyFiles[0], offsets[i]));
+		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMVOpeningKirbyFiles[0], offsets[i]));
 
-		name_sobj->sprite.attr &= ~SP_FASTCOPY;
-		name_sobj->sprite.attr |= SP_TRANSPARENT;
+		sobj->sprite.attr &= ~SP_FASTCOPY;
+		sobj->sprite.attr |= SP_TRANSPARENT;
 
-		name_sobj->pos.x = pos[i].x + 90.0F;
-		name_sobj->pos.y = pos[i].y + 100.0F;
+		sobj->pos.x = pos[i].x + 90.0F;
+		sobj->pos.y = pos[i].y + 100.0F;
 
-		mvOpeningKirbySetNameSpriteColors(name_sobj);
+		mvOpeningKirbyInitName(sobj);
 	}
 }
 
 // 0x8018D324
-void mvOpeningKirbyMotionCameraProcUpdate(GObj *camera_gobj)
+void mvOpeningKirbyMotionCameraProcUpdate(GObj *gobj)
 {
-	CObj *cobj = CObjGetStruct(camera_gobj);
+	CObj *cobj = CObjGetStruct(gobj);
 
 	if (sMVOpeningKirbyTotalTimeTics >= 15)
 	{
@@ -200,7 +200,7 @@ void mvOpeningKirbyMotionCameraProcUpdate(GObj *camera_gobj)
 }
 
 // 0x8018D41C
-void mvOpeningKirbyMakeMotionCamera(Vec3f vec)
+void mvOpeningKirbyMakeMotionCamera(Vec3f move)
 {
 	CObj *cobj;
 
@@ -217,19 +217,19 @@ void mvOpeningKirbyMakeMotionCamera(Vec3f vec)
 	gcEndProcessAll(sMVOpeningKirbyMotionCameraGObj);
 	gcAddGObjProcess(sMVOpeningKirbyMotionCameraGObj, mvOpeningKirbyMotionCameraProcUpdate, nGCProcessKindFunc, 1);
 
-	sMVOpeningKirbyAdjustedStartCObjDesc.eye.x += vec.x;
-	sMVOpeningKirbyAdjustedStartCObjDesc.eye.y += vec.y;
-	sMVOpeningKirbyAdjustedStartCObjDesc.eye.z += vec.z;
-	sMVOpeningKirbyAdjustedStartCObjDesc.at.x += vec.x;
-	sMVOpeningKirbyAdjustedStartCObjDesc.at.y += vec.y;
-	sMVOpeningKirbyAdjustedStartCObjDesc.at.z += vec.z;
+	sMVOpeningKirbyAdjustedStartCObjDesc.eye.x += move.x;
+	sMVOpeningKirbyAdjustedStartCObjDesc.eye.y += move.y;
+	sMVOpeningKirbyAdjustedStartCObjDesc.eye.z += move.z;
+	sMVOpeningKirbyAdjustedStartCObjDesc.at.x += move.x;
+	sMVOpeningKirbyAdjustedStartCObjDesc.at.y += move.y;
+	sMVOpeningKirbyAdjustedStartCObjDesc.at.z += move.z;
 
-	sMVOpeningKirbyAdjustedEndCObjDesc.eye.x += vec.x;
-	sMVOpeningKirbyAdjustedEndCObjDesc.eye.y += vec.y;
-	sMVOpeningKirbyAdjustedEndCObjDesc.eye.z += vec.z;
-	sMVOpeningKirbyAdjustedEndCObjDesc.at.x += vec.x;
-	sMVOpeningKirbyAdjustedEndCObjDesc.at.y += vec.y;
-	sMVOpeningKirbyAdjustedEndCObjDesc.at.z += vec.z;
+	sMVOpeningKirbyAdjustedEndCObjDesc.eye.x += move.x;
+	sMVOpeningKirbyAdjustedEndCObjDesc.eye.y += move.y;
+	sMVOpeningKirbyAdjustedEndCObjDesc.eye.z += move.z;
+	sMVOpeningKirbyAdjustedEndCObjDesc.at.x += move.x;
+	sMVOpeningKirbyAdjustedEndCObjDesc.at.y += move.y;
+	sMVOpeningKirbyAdjustedEndCObjDesc.at.z += move.z;
 
 	cobj->vec.eye.x = sMVOpeningKirbyAdjustedStartCObjDesc.eye.x;
 	cobj->vec.eye.y = sMVOpeningKirbyAdjustedStartCObjDesc.eye.y;
@@ -243,10 +243,9 @@ void mvOpeningKirbyMakeMotionCamera(Vec3f vec)
 // 0x8018D62C
 void mvOpeningKirbyMakeMotionWindow(void)
 {
-	GObj* fighter_gobj;
+	GObj *fighter_gobj;
 	s32 i;
-	s32 unused[2];
-	s32 pos_ids;
+	s32 pos_ids[3];
 	Vec3f pos;
 
 	grWallpaperMakeDecideKind();
@@ -260,8 +259,8 @@ void mvOpeningKirbyMakeMotionWindow(void)
 			scManagerRunPrintGObjStatus();
 		}
 	}
-	mpCollisionGetMapObjIDsKind(nMPMapObjKindMovieStart1, &pos_ids);
-	mpCollisionGetMapObjPositionID(pos_ids, &pos);
+	mpCollisionGetMapObjIDsKind(nMPMapObjKindMovieStart1, pos_ids);
+	mpCollisionGetMapObjPositionID(pos_ids[0], &pos);
 
 	pos.y += 30.0F;
 	
@@ -271,7 +270,7 @@ void mvOpeningKirbyMakeMotionWindow(void)
 
 	for (i = 0; i < ARRAY_COUNT(gSCManagerBattleState->players); i++)
 	{
-		FTCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
+		FTCreateDesc desc = dFTManagerDefaultFighterDesc;
 
 		if (gSCManagerBattleState->players[i].pkind == nFTPlayerKindNot)
 		{
@@ -279,24 +278,24 @@ void mvOpeningKirbyMakeMotionWindow(void)
 		}
 		ftManagerSetupFilesAllKind(gSCManagerBattleState->players[i].fkind);
 
-		ft_desc.fkind = gSCManagerBattleState->players[i].fkind;
-		ft_desc.pos.x = pos.x;
-		ft_desc.pos.y = pos.y;
-		ft_desc.pos.z = pos.z;
-		ft_desc.lr = +1;
-		ft_desc.team = gSCManagerBattleState->players[i].team;
-		ft_desc.player = i;
-		ft_desc.detail = nFTPartsDetailHigh;
-		ft_desc.costume = gSCManagerBattleState->players[i].costume;
-		ft_desc.handicap = gSCManagerBattleState->players[i].handicap;
-		ft_desc.level = gSCManagerBattleState->players[i].level;
-		ft_desc.stock_count = gSCManagerBattleState->stocks;
-		ft_desc.damage = 0;
-		ft_desc.pkind = gSCManagerBattleState->players[i].pkind;
-		ft_desc.controller = &gSYControllerDevices[i];
-		ft_desc.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[i].fkind);
+		desc.fkind = gSCManagerBattleState->players[i].fkind;
+		desc.pos.x = pos.x;
+		desc.pos.y = pos.y;
+		desc.pos.z = pos.z;
+		desc.lr = +1;
+		desc.team = gSCManagerBattleState->players[i].team;
+		desc.player = i;
+		desc.detail = nFTPartsDetailHigh;
+		desc.costume = gSCManagerBattleState->players[i].costume;
+		desc.handicap = gSCManagerBattleState->players[i].handicap;
+		desc.level = gSCManagerBattleState->players[i].level;
+		desc.stock_count = gSCManagerBattleState->stocks;
+		desc.damage = 0;
+		desc.pkind = gSCManagerBattleState->players[i].pkind;
+		desc.controller = &gSYControllerDevices[i];
+		desc.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[i].fkind);
 
-		sMVOpeningKirbyFighterGObj = fighter_gobj = ftManagerMakeFighter(&ft_desc);
+		sMVOpeningKirbyFighterGObj = fighter_gobj = ftManagerMakeFighter(&desc);
 
 		ftParamInitPlayerBattleStats(i, fighter_gobj);
 		ftParamSetKey(fighter_gobj, dMVOpeningKirbyKeyEvents);
@@ -319,7 +318,20 @@ void mvOpeningKirbyPosedWallpaperFuncDisplay(GObj *gobj)
 // 0x8018D970
 void mvOpeningKirbyMakePosedWallpaper(void)
 {
-	gcAddGObjDisplay(gcMakeGObjSPAfter(0, NULL, 19, GOBJ_PRIORITY_DEFAULT), mvOpeningKirbyPosedWallpaperFuncDisplay, 28, GOBJ_PRIORITY_DEFAULT, ~0);
+	gcAddGObjDisplay
+	(
+		gcMakeGObjSPAfter
+		(
+			0,
+			NULL,
+			19,
+			GOBJ_PRIORITY_DEFAULT
+		),
+		mvOpeningKirbyPosedWallpaperFuncDisplay,
+		28,
+		GOBJ_PRIORITY_DEFAULT,
+		~0
+	);
 }
 
 // 0x8018D9BC
@@ -327,45 +339,47 @@ void mvOpeningKirbyPosedFighterProcUpdate(GObj *fighter_gobj)
 {
 	switch (sMVOpeningKirbyTotalTimeTics)
 	{
-	case 15:
-		sMVOpeningKirbyPosedSpeedY = 17.0F;
-		break;
-	case 45:
-		sMVOpeningKirbyPosedSpeedY = 15.0F;
-		break;
-	case 60:
-		sMVOpeningKirbyPosedSpeedY = 0.0F;
+	default:
 		break;
 
-	default:
-		break;	
+	case 15:
+		sMVOpeningKirbyPosedFighterSpeed = 17.0F;
+		break;
+
+	case 45:
+		sMVOpeningKirbyPosedFighterSpeed = 15.0F;
+		break;
+
+	case 60:
+		sMVOpeningKirbyPosedFighterSpeed = 0.0F;
+		break;
 	}
 	if ((sMVOpeningKirbyTotalTimeTics > 15) && (sMVOpeningKirbyTotalTimeTics < 45))
 	{
-		sMVOpeningKirbyPosedSpeedY += -1.0F / 15.0F;
+		sMVOpeningKirbyPosedFighterSpeed += -1.0F / 15.0F;
 	}
 	if ((sMVOpeningKirbyTotalTimeTics > 45) && (sMVOpeningKirbyTotalTimeTics < 60))
 	{
-		sMVOpeningKirbyPosedSpeedY += -1.0F;
+		sMVOpeningKirbyPosedFighterSpeed += -1.0F;
 	}
-	DObjGetStruct(fighter_gobj)->translate.vec.f.y -= sMVOpeningKirbyPosedSpeedY;
+	DObjGetStruct(fighter_gobj)->translate.vec.f.y -= sMVOpeningKirbyPosedFighterSpeed;
 }
 
 // 0x8018DA8C
 void mvOpeningKirbyMakePosedFighter(void)
 {
-	GObj* fighter_gobj;
-	FTCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
+	GObj *fighter_gobj;
+	FTCreateDesc desc = dFTManagerDefaultFighterDesc;
 
-	ft_desc.fkind = nFTKindKirby;
-	ft_desc.costume = ftParamGetCostumeCommonID(nFTKindKirby, 0);
-	ft_desc.figatree_heap = sMVOpeningKirbyFigatreeHeap;
+	desc.fkind = nFTKindKirby;
+	desc.costume = ftParamGetCostumeCommonID(nFTKindKirby, 0);
+	desc.figatree_heap = sMVOpeningKirbyFigatreeHeap;
 
-	ft_desc.pos.x = 0.0F;
-	ft_desc.pos.y = 600.0F;
-	ft_desc.pos.z = 0.0F;
+	desc.pos.x = 0.0F;
+	desc.pos.y = 600.0F;
+	desc.pos.z = 0.0F;
 
-	fighter_gobj = ftManagerMakeFighter(&ft_desc);
+	fighter_gobj = ftManagerMakeFighter(&desc);
 	scSubsysFighterSetStatus(fighter_gobj, 0x1000C);
 	gcMoveGObjDL(fighter_gobj, 26, -1);
 	gcAddGObjProcess(fighter_gobj, mvOpeningKirbyPosedFighterProcUpdate, nGCProcessKindFunc, 1);
@@ -453,7 +467,7 @@ void mvOpeningKirbyMakePosedWallpaperCamera(void)
     );
     syRdpSetViewport(&cobj->viewport, 210.0F, 10.0F, 310.0F, 230.0F);
 
-	cobj->flags = 0x4 | 0x1;
+	cobj->flags = COBJ_FLAG_DLBUFFERS | COBJ_FLAG_ZBUFFER;
 }
 
 // 0x8018DDBC

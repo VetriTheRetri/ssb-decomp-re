@@ -879,7 +879,7 @@ void scManagerRunLoop(sb32 arg)
 				dbMapsStartScene();
 				break;
 
-			case nSCKindDebugSystem:
+			case nSCKindDebugCube:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[13]);
 				syDmaLoadOverlay(&dSCManagerOverlays[8]);
@@ -887,7 +887,7 @@ void scManagerRunLoop(sb32 arg)
 				dbCubeStartScene();
 				break;
 
-			case nSCKindDebugFighters:
+			case nSCKindDebugBattle:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[14]);
@@ -896,7 +896,7 @@ void scManagerRunLoop(sb32 arg)
 				dbBattleStartScene();
 				break;
 
-			case nSCKindDebugVSResults:
+			case nSCKindDebugFalls:
 				syDmaLoadOverlay(&dSCManagerOverlays[15]);
 				dbFallsStartScene();
 				break;
@@ -1062,7 +1062,7 @@ void scManagerRunLoop(sb32 arg)
 			case 30:
 				syDmaLoadOverlay(&dSCManagerOverlays[3]);
 				syDmaLoadOverlay(&dSCManagerOverlays[36]);
-				intro_focus_mario_entry();
+				mvOpeningMarioStartScene();
 				break;
 
 			case 31:

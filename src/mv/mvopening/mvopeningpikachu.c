@@ -67,20 +67,10 @@ SCBattleState sMVOpeningPikachuBattleState;
 // // // // // // // // // // // //
 
 // 0x8018E0C0
-CObjDesc dMVOpeningPikachuStartCObjDesc =
-{
-	{ 0.0F, 0.0F, 20000.0F },
-	{ 0.0F, 0.0F,     0.0F },
-	0.0F
-};
+CObjDesc dMVOpeningPikachuStartCObjDesc = { { 0.0F, 0.0F, 20000.0F }, { 0.0F, 0.0F, 0.0F }, 0.0F };
 
 // 0x8018E0DC
-CObjDesc dMVOpeningPikachuEndCObjDesc =
-{
-	{ 50.0F, -1640.0F, 1000.0F },
-	{ 50.0F, -1640.0F,    0.0F },
-	0.0F
-};
+CObjDesc dMVOpeningPikachuEndCObjDesc = { { 50.0F, -1640.0F, 1000.0F }, { 50.0F, -1640.0F, 0.0F }, 0.0F };
 
 // 0x8018E0F8 - Bruh?
 FTKeyEvent dMVOpeningPikachuKeyEvents[/* */] =
@@ -130,7 +120,7 @@ void mvOpeningPikachuSetupFiles(void)
 }
 
 // 0x8018D160
-void mvOpeningPikachuSetNameColor(SObj *sobj)
+void mvOpeningPikachuInitName(SObj *sobj)
 {
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -179,7 +169,7 @@ void mvOpeningPikachuMakeName(void)
 		sobj->pos.x = pos_x[i] + 65.0F;
 		sobj->pos.y = 100.0F;
 
-		mvOpeningPikachuSetNameColor(sobj);
+		mvOpeningPikachuInitName(sobj);
 	}
 }
 
@@ -476,6 +466,7 @@ void mvOpeningPikachuFuncRun(GObj *gobj)
 	{
 		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 		gSCManagerSceneData.scene_curr = nSCKindTitle;
+		
 		syTaskmanSetLoadScene();
 	}
 	if (sMVOpeningPikachuTotalTimeTics == 15)

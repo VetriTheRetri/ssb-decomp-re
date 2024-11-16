@@ -8,7 +8,7 @@
 extern intptr_t lMVOpeningYoshiCamAnimJoint; 					// 0x000000F0
 
 extern void mvOpeningYoshiSetupFiles(void);
-extern void mvOpeningYoshiSetNameColor(SObj *sobj);
+extern void mvOpeningYoshiInitName(SObj *sobj);
 extern void mvOpeningYoshiMakeName(void);
 extern void mvOpeningYoshiMotionCameraProcUpdate(GObj *gobj);
 extern void mvOpeningYoshiMakeMotionCamera(Vec3f move);

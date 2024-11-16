@@ -67,20 +67,10 @@ SCBattleState sMVOpeningFoxBattleState;
 // // // // // // // // // // // //
 
 // 0x8018E090
-CObjDesc dMVOpeningFoxCObjDescStart =
-{
-	{ -400.0F, 320.0F, 100.0F },
-	{    0.0F, 320.0F,   0.0F },
-	0.0F
-};
+CObjDesc dMVOpeningFoxCObjDescStart = { { -400.0F, 320.0F, 100.0F }, { 0.0F, 320.0F, 0.0F }, 0.0F };
 
 // 0x8018E0AC
-CObjDesc dMVOpeningFoxCObjDescEnd =
-{
-	{ -3000.0F, 300.0F, 250.0F },
-	{     0.0F, 300.0F,-200.0F },
-	0.7F
-};
+CObjDesc dMVOpeningFoxCObjDescEnd = { { -3000.0F, 300.0F, 250.0F }, { 0.0F, 300.0F,-200.0F }, 0.7F };
 
 // 0x8018E0C8
 FTKeyEvent dMVOpeningFoxKeyEvents[/* */] =
@@ -135,7 +125,7 @@ void mvOpeningFoxSetupFiles(void)
 }
 
 // 0x8018D160
-void mvOpeningFoxSetNameColor(SObj *sobj)
+void mvOpeningFoxInitName(SObj *sobj)
 {
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -183,7 +173,7 @@ void mvOpeningFoxMakeName(void)
 		sobj->pos.x = pos[i].x + 110.0F;
 		sobj->pos.y = pos[i].y + 100.0F;
 
-		mvOpeningFoxSetNameColor(sobj);
+		mvOpeningFoxInitName(sobj);
 	}
 }
 
@@ -478,6 +468,7 @@ void mvOpeningFoxFuncRun(GObj *gobj)
 	{
 		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 		gSCManagerSceneData.scene_curr = nSCKindTitle;
+		
 		syTaskmanSetLoadScene();
 	}
 	if (sMVOpeningFoxTotalTimeTics == 15)

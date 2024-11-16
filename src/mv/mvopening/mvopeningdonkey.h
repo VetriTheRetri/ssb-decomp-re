@@ -8,7 +8,7 @@
 extern intptr_t lMVOpeningDonkeyCamAnimJoint; 					// 0x00000030
 
 extern void mvOpeningDonkeySetupFiles(void);
-extern void mvOpeningDonkeySetNameColor(SObj *sobj);
+extern void mvOpeningDonkeyInitName(SObj *sobj);
 extern void mvOpeningDonkeyMakeName(void);
 extern void mvOpeningDonkeyMotionCameraProcUpdate(GObj *gobj);
 extern void mvOpeningDonkeyMakeMotionCamera(Vec3f move);

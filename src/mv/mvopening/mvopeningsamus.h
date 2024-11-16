@@ -8,7 +8,7 @@
 extern intptr_t lMVOpeningSamusCamAnimJoint;                    // 0x00000060
 
 extern void mvOpeningSamusSetupFiles(void);
-extern void mvOpeningSamusSetNameSpriteColors(SObj *sobj);
+extern void mvOpeningSamusInitName(SObj *sobj);
 extern void mvOpeningSamusMakeName(void);
 extern void mvOpeningSamusMotionCameraProcUpdate(GObj *camera_gobj);
 extern void mvOpeningSamusMakeMotionCamera(Vec3f vec);

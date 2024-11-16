@@ -67,20 +67,10 @@ SCBattleState sMVOpeningSamusBattleState;
 // // // // // // // // // // // //
 
 // 0x8018E120
-CObjDesc dMVOpeningSamusCObjDescStart =
-{
-	{ 400.0F, 1100.0F, 0.0F },
-	{   0.0F,  200.0F, 0.0F },
-	0.6F
-};
+CObjDesc dMVOpeningSamusCObjDescStart = { { 400.0F, 1100.0F, 0.0F }, { 0.0F,  200.0F, 0.0F }, 0.6F };
 
 // 0x8018E13C
-CObjDesc dMVOpeningSamusCObjDescEnd =
-{
-	{ 1600.0F, 230.0F, 200.0F },
-	{    0.0F, 200.0F,   0.0F },
-	0.6F
-};
+CObjDesc dMVOpeningSamusCObjDescEnd = { { 1600.0F, 230.0F, 200.0F }, { 0.0F, 200.0F, 0.0F }, 0.6F };
 
 // 0x8018E158
 FTKeyEvent dMVOpeningSamusKeyEvents[/* */] =
@@ -132,7 +122,7 @@ void mvOpeningSamusSetupFiles(void)
 }
 
 // 0x8018D160
-void mvOpeningSamusSetNameColor(SObj *sobj)
+void mvOpeningSamusInitName(SObj *sobj)
 {
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -180,7 +170,7 @@ void mvOpeningSamusMakeName(void)
 		sobj->pos.x = pos_x[i] + 80.0F;
 		sobj->pos.y = 100.0F;
 
-		mvOpeningSamusSetNameColor(sobj);
+		mvOpeningSamusInitName(sobj);
 	}
 }
 
@@ -491,6 +481,7 @@ void mvOpeningSamusFuncRun(GObj *gobj)
 	{
 		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 		gSCManagerSceneData.scene_curr = nSCKindTitle;
+		
 		syTaskmanSetLoadScene();
 	}
 	if (sMVOpeningSamusTotalTimeTics == 15)

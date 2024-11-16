@@ -67,20 +67,10 @@ SCBattleState sMVOpeningLinkBattleState;
 // // // // // // // // // // // //
 
 // 0x8018E070
-CObjDesc dMVOpeningLinkCObjDescStart =
-{
-	{ -800.0F, 180.0F, 800.0F },
-	{    0.0F, 180.0F,   0.0F },
-	0.0F
-};
+CObjDesc dMVOpeningLinkCObjDescStart = { { -800.0F, 180.0F, 800.0F }, { 0.0F, 180.0F, 0.0F }, 0.0F };
 
 // 0x8018E08C
-CObjDesc dMVOpeningLinkCObjDescEnd =
-{
-	{ 200.0F,   0.0F, 400.0F },
-	{  	0.0F, 240.0F,   0.0F },
-	0.4F
-};
+CObjDesc dMVOpeningLinkCObjDescEnd = { { 200.0F, 0.0F, 400.0F }, { 0.0F, 240.0F, 0.0F }, 0.4F };
 
 // 0x8018E0A8
 FTKeyEvent dMVOpeningLinkKeyEvents[/* */] =
@@ -131,7 +121,7 @@ void mvOpeningLinkSetupFiles(void)
 }
 
 // 0x8018D160
-void mvOpeningLinkSetNameColor(SObj *sobj)
+void mvOpeningLinkInitName(SObj *sobj)
 {
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -178,7 +168,7 @@ void mvOpeningLinkMakeName(void)
 		sobj->pos.x = pos_x[i] + 100.0F;
 		sobj->pos.y = 100.0F;
 
-		mvOpeningLinkSetNameColor(sobj);
+		mvOpeningLinkInitName(sobj);
 	}
 }
 
@@ -473,6 +463,7 @@ void mvOpeningLinkFuncRun(GObj *gobj)
 	{
 		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 		gSCManagerSceneData.scene_curr = nSCKindTitle;
+		
 		syTaskmanSetLoadScene();
 	}
 

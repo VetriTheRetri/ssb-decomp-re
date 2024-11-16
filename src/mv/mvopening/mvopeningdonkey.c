@@ -67,20 +67,10 @@ SCBattleState sMVOpeningDonkeyBattleState;
 // // // // // // // // // // // //
 
 // 0x8018E070
-CObjDesc dMVOpeningDonkeyCObjDescStart =
-{
-	{ -1100.0F, 150.0F, 400.0F },
-	{     0.0F, 150.0F,   0.0F },
-	0.0F
-};
+CObjDesc dMVOpeningDonkeyCObjDescStart = { { -1100.0F, 150.0F, 400.0F }, { 0.0F, 150.0F, 0.0F }, 0.0F };
 
 // 0x8018E08C
-CObjDesc dMVOpeningDonkeyCObjDescEnd =
-{
-	{ -900.0F, 500.0F, 1800.0F },
-	{    0.0F, 500.0F,    0.0F },
-	0.0F
-};
+CObjDesc dMVOpeningDonkeyCObjDescEnd = { { -900.0F, 500.0F, 1800.0F }, { 0.0F, 500.0F, 0.0F }, 0.0F };
 
 // 0x8018E0A8
 FTKeyEvent dMVOpeningDonkeyKeyEvents[/* */] =
@@ -134,7 +124,7 @@ void mvOpeningDonkeySetupFiles(void)
 }
 
 // 0x8018D160
-void mvOpeningDonkeySetNameColor(SObj *sobj)
+void mvOpeningDonkeyInitName(SObj *sobj)
 {
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -180,7 +170,7 @@ void mvOpeningDonkeyMakeName(void)
 		sobj->pos.x = pos[i].x + 120.0F;
 		sobj->pos.y = pos[i].y + 100.0F;
 
-		mvOpeningDonkeySetNameColor(sobj);
+		mvOpeningDonkeyInitName(sobj);
 	}
 }
 
@@ -475,6 +465,7 @@ void mvOpeningDonkeyFuncRun(GObj *gobj)
 	{
 		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 		gSCManagerSceneData.scene_curr = nSCKindTitle;
+		
 		syTaskmanSetLoadScene();
 	}
 	if (sMVOpeningDonkeyTotalTimeTics == 15)

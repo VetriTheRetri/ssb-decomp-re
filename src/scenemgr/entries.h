@@ -34,7 +34,7 @@ void char_bkg_info_entry();
 void mnStartupStartScene();
 void intro_firstscene_entry();
 void mvPortraitsStartScene();
-void intro_focus_mario_entry();
+void mvOpeningMarioStartScene();
 void mvOpeningDonkeyStartScene();
 void mvOpeningSamusStartScene();
 void mvOpeningFoxStartScene();

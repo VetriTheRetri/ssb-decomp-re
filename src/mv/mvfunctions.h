@@ -3,6 +3,7 @@
 
 #include <mv/mvunknownmario.h>
 
+#include <mv/mvopening/mvopeningmario.h>
 #include <mv/mvopening/mvopeningdonkey.h>
 #include <mv/mvopening/mvopeningsamus.h>
 #include <mv/mvopening/mvopeningfox.h>
@@ -19,6 +20,7 @@
 #include <mv/mvopening/mvopeningsector.h>
 #include <mv/mvopening/mvopeningjungle.h>
 #include <mv/mvopening/mvopeningnewcomers.h>
+
 #include <mv/mvending/mvending.h>
 
 #endif

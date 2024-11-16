@@ -8,7 +8,7 @@
 extern intptr_t lMVOpeningPikachuCamAnimJoint; 					// 0x00000120
 
 extern void mvOpeningPikachuSetupFiles(void);
-extern void mvOpeningPikachuSetNameColor(SObj *sobj);
+extern void mvOpeningPikachuInitName(SObj *sobj);
 extern void mvOpeningPikachuMakeName(void);
 extern void mvOpeningPikachuMotionCameraProcUpdate(GObj *gobj);
 extern void mvOpeningPikachuMakeMotionCamera(Vec3f move);

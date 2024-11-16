@@ -8,7 +8,7 @@
 extern intptr_t lMVOpeningFoxCamAnimJoint; 					    // 0x000000C0
 
 extern void mvOpeningFoxSetupFiles(void);
-extern void mvOpeningFoxSetNameColor(SObj *sobj);
+extern void mvOpeningFoxInitName(SObj *sobj);
 extern void mvOpeningFoxMakeName(void);
 extern void mvOpeningFoxMotionCameraProcUpdate(GObj *gobj);
 extern void mvOpeningFoxMakeMotionCamera(Vec3f move);

@@ -138,7 +138,7 @@ void dbFallsFuncRun(GObj *gobj)
 		dbMenuDestroyMenu();
 
 		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
-		gSCManagerSceneData.scene_curr = nSCKindDebugFighters;
+		gSCManagerSceneData.scene_curr = nSCKindDebugBattle;
 
 		syTaskmanSetLoadScene();
 	}

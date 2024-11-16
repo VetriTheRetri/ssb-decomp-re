@@ -168,6 +168,7 @@ void mnStartupActorFuncRun(GObj *gobj)
 	{
 		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 		gSCManagerSceneData.scene_curr = nSCKindTitle;
+		
 		syTaskmanSetLoadScene();
 	}
 	else if (sMNStartupIsProceedOpening != FALSE)

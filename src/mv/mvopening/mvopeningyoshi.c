@@ -67,20 +67,10 @@ SCBattleState sMVOpeningYoshiBattleState;
 // // // // // // // // // // // //
 
 // 0x8018E0C0
-CObjDesc dMVOpeningYoshiCObjDescStart =
-{
-	{ 1200.0F, 150.0F, 1000.0F },
-	{  100.0F, 200.0F,    0.0F },
-	0.0F
-};
+CObjDesc dMVOpeningYoshiCObjDescStart = { { 1200.0F, 150.0F, 1000.0F }, { 100.0F, 200.0F, 0.0F }, 0.0F };
 
 // 0x8018E0DC
-CObjDesc dMVOpeningYoshiCObjDescEnd =
-{
-	{ 2000.0F, 100.0F, 600.0F },
-	{ 1300.0F, 100.0F,-100.0F },
-	0.0
-};
+CObjDesc dMVOpeningYoshiCObjDescEnd = { { 2000.0F, 100.0F, 600.0F }, { 1300.0F, 100.0F,-100.0F }, 0.0F };
 
 // 0x8018E0F8
 FTKeyEvent dMVOpeningYoshiKeyEvents[/* */] =
@@ -133,7 +123,7 @@ void mvOpeningYoshiSetupFiles(void)
 }
 
 // 0x8018D160
-void mvOpeningYoshiSetNameColor(SObj *sobj)
+void mvOpeningYoshiInitName(SObj *sobj)
 {
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -181,7 +171,7 @@ void mvOpeningYoshiMakeName(void)
 		sobj->pos.x = pos_x[i] + 80.0F;
 		sobj->pos.y = 100.0F;
 
-		mvOpeningYoshiSetNameColor(sobj);
+		mvOpeningYoshiInitName(sobj);
 	}
 }
 
@@ -480,6 +470,7 @@ void mvOpeningYoshiFuncRun(GObj *gobj)
 	{
 		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 		gSCManagerSceneData.scene_curr = nSCKindTitle;
+		
 		syTaskmanSetLoadScene();
 	}
 	if (sMVOpeningYoshiTotalTimeTics == 15)

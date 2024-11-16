@@ -8,7 +8,7 @@
 extern intptr_t lMVOpeningLinkCamAnimJoint; 					// 0x000000C0
 
 extern void mvOpeningLinkSetupFiles(void);
-extern void mvOpeningLinkSetNameColor(SObj *sobj);
+extern void mvOpeningLinkInitName(SObj *sobj);
 extern void mvOpeningLinkMakeName(void);
 extern void mvOpeningLinkMotionCameraProcUpdate(GObj *gobj);
 extern void mvOpeningLinkMakeMotionCamera(Vec3f move);

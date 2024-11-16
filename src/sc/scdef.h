@@ -134,9 +134,9 @@ typedef enum SCKind
 	nSCKindNoController,      	  	// "No Controller" screen
 	nSCKindTitle,             	  	// Title screen
 	nSCKindDebugMaps,      	  	  	// Debug stage select
-	nSCKindDebugSystem,      	  	// Debug main menu?
-	nSCKindDebugFighters,      	  	// Debug character select
-	nSCKindDebugVSResults,    	  	// Debug results screen
+	nSCKindDebugCube,      	  		// Debug main menu with Kirby cube
+	nSCKindDebugBattle,      	  	// Debug character select
+	nSCKindDebugFalls,    	  		// Debug results screen
 	nSCKindDebugUnknown,      	  	// Debug joystick test
 	nSCKindModeSelect,            	// Main Menu
 	nSCKind1PMode,            	  	// 1P mode menu
@@ -160,7 +160,10 @@ typedef enum SCKind
 	nSCKindDataCharacters,        	// Character data screen
 	nSCKindStartup,               	// N64 logo
 	nSCKindOpeningRoom,       	  	// Room with Master Hand and figures coming to life
-	nSCKindOpeningSamus = 32,		// Samus opening scene
+	nSCKindOpeningPortraits,		// Stylized horizontal sliding portraits
+	nSCKindOpeningMario,			// Mario opening scene
+	nSCKindOpeningDonkey,			// Donkey Kong opening scene
+	nSCKindOpeningSamus,			// Samus opening scene
 	nSCKindOpeningFox,		  		// Fox opening scene
 	nSCKindOpeningLink,				// Donkey Kong opening scene
 	nSCKindOpeningYoshi,			// Yoshi opening scene

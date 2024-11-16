@@ -55,6 +55,7 @@ extern intptr_t lIFCommonAnnounceCommonLetterS;             // 0x000057F0
 extern intptr_t lIFCommonAnnounceCommonLetterT;             // 0x00005BD0
 extern intptr_t lIFCommonAnnounceCommonLetterU;             // 0x000060D8
 extern intptr_t lIFCommonAnnounceCommonLetterV;             // 0x000065D8
+extern intptr_t lIFCommonAnnounceCommonLetterX;             // 0x00007108
 extern intptr_t lIFCommonAnnounceCommonLetterY;             // 0x00007608
 extern intptr_t lIFCommonAnnounceCommonSymbolExclaim;       // 0x00007D98
 

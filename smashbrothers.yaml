@@ -320,7 +320,7 @@ segments:
       - { start: auto, type: .bss, name: sys/video,                vram: 0x80046670 }
       - { start: auto, type: .bss, name: sys/rdp,                  vram: 0x800466A0 }
       - { start: auto, type: .bss, name: sys/objmanager,           vram: 0x800466B0 }
-      - { start: auto, type: .bss, name: sys/objdisplay,              vram: 0x80046FA0 }
+      - { start: auto, type: .bss, name: sys/objdisplay,           vram: 0x80046FA0 }
       - { start: auto, type:  bss, name: sys/hal_audio,            vram: 0x800472D0 }
       - { start: auto, type: .bss, name: sys/error,                vram: 0x8009DA00 }
       - { start: auto, type: .bss, name: libultra/sp/sprite,       vram: 0x8009EDC0 }
@@ -1494,10 +1494,10 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x169AE0, c, ovl39]
-      - [0x16AAB0, .data, ovl39]
-      - [0x16ABE0, .rodata, ovl39]
-      - { start: auto, type: .bss, vram: 0x8018E1F0, name: ovl39 }
+      - [0x169AE0, c, mv/mvopening/mvopeningfox]
+      - [0x16AAB0, .data, mv/mvopening/mvopeningfox]
+      - [0x16ABE0, .rodata, mv/mvopening/mvopeningfox]
+      - { start: auto, type: .bss, name: mv/mvopening/mvopeningfox, vram: 0x8018E1F0 }
 
   - name: ovl40
     type: code

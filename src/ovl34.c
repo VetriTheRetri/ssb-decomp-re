@@ -214,7 +214,6 @@ LBFileNode D_ovl34_80135078[7];
 // 0x801350B0
 uintptr_t sMVOpeningFirstDestinationFiles[9];
 
-
 // 0x80131B00
 void mvOpeningFirstDestinationFuncLights(Gfx **display_list)
 {

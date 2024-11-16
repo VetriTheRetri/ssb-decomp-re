@@ -16,49 +16,49 @@ extern u32 func_8000092C();
 // // // // // // // // // // // //
 
 // 0x8018E220
-s32 sMVOpeningYoshiPad0x8018E220[2];
+s32 sMVOpeningFoxPad0x8018E220[2];
 
 // 0x8018E228
-s32 sMVOpeningYoshiTotalTimeTics;
+s32 sMVOpeningFoxTotalTimeTics;
 
 // 0x8018E22C
-GObj *sMVOpeningYoshiNameGObj;
+GObj *sMVOpeningFoxNameGObj;
 
 // 0x8018E230
-GObj *sMVOpeningYoshiStageFighterGObj;
+GObj *sMVOpeningFoxStageFighterGObj;
 
 // 0x8018E234
-s32 sMVOpeningYoshiPad0x8018E234;
+s32 sMVOpeningFoxPad0x8018E234;
 
 // 0x8018E238
-GObj *sMVOpeningYoshiStageCameraGObj;
+GObj *sMVOpeningFoxStageCameraGObj;
 
 // 0x8018E23C
-void *sMVOpeningYoshiFigatreeHeap;
+void *sMVOpeningFoxFigatreeHeap;
 
 // 0x8018E240
-f32 sMVOpeningYoshiPosedFighterSpeed;
+f32 sMVOpeningFoxPosedFighterSpeed;
 
 // 0x8018E244
-s32 sMVOpeningYoshiPad0x8018E244;
+s32 sMVOpeningFoxPad0x8018E244;
 
 // 0x8018E248
-CObjDesc dMVOpeningYoshiAdjustedStartCObjDesc;
+CObjDesc dMVOpeningFoxAdjustedStartCObjDesc;
 
 // 0x8018E268
-CObjDesc dMVOpeningYoshiAdjustedEndCObjDesc;
+CObjDesc dMVOpeningFoxAdjustedEndCObjDesc;
 
 // 0x8018E288
-LBFileNode sMVOpeningYoshiStatusBuffer[48];
+LBFileNode sMVOpeningFoxStatusBuffer[48];
 
 // 0x8018E408
-LBFileNode sMVOpeningYoshiForceStatusBuffer[7];
+LBFileNode sMVOpeningFoxForceStatusBuffer[7];
 
 // 0x8018E440
-void *sMVOpeningYoshiFiles[2];
+void *sMVOpeningFoxFiles[2];
 
 // 0x8018E448
-SCBattleState sMVOpeningYoshiBattleState;
+SCBattleState sMVOpeningFoxBattleState;
 
 // // // // // // // // // // // //
 //                               //
@@ -66,33 +66,35 @@ SCBattleState sMVOpeningYoshiBattleState;
 //                               //
 // // // // // // // // // // // //
 
-// 0x8018E0C0
-CObjDesc dMVOpeningYoshiCObjDescStart =
+// 0x8018E090
+CObjDesc dMVOpeningFoxCObjDescStart =
 {
-	{ 1200.0F, 150.0F, 1000.0F },
-	{  100.0F, 200.0F,    0.0F },
+	{ -400.0F, 320.0F, 100.0F },
+	{    0.0F, 320.0F,   0.0F },
 	0.0F
 };
 
-// 0x8018E0DC
-CObjDesc dMVOpeningYoshiCObjDescEnd =
+// 0x8018E0AC
+CObjDesc dMVOpeningFoxCObjDescEnd =
 {
-	{ 2000.0F, 100.0F, 600.0F },
-	{ 1300.0F, 100.0F,-100.0F },
-	0.0
+	{ -3000.0F, 300.0F, 250.0F },
+	{     0.0F, 300.0F,-200.0F },
+	0.7F
 };
 
-// 0x8018E0F8
-FTKeyEvent dMVOpeningYoshiKeyEvents[/* */] =
+// 0x8018E0C8
+FTKeyEvent dMVOpeningFoxKeyEvents[/* */] =
 {
-	FTKEY_EVENT_STICK(I_CONTROLLER_RANGE_MAX, 0, 20),   // 2014, 5000
-	FTKEY_EVENT_BUTTON(Z_TRIG, 1),                      // 1001, 2000
-	FTKEY_EVENT_BUTTON(A_BUTTON, 1),                    // 1001, 8000
-	FTKEY_EVENT_END()                                   // 0000
+	FTKEY_EVENT_STICK(-50, 0, 1),     // 2001, CE00
+	FTKEY_EVENT_BUTTON(B_BUTTON, 1),  // 1001, 4000
+	FTKEY_EVENT_BUTTON(0, 12),        // 100C, 0000
+	FTKEY_EVENT_BUTTON(B_BUTTON, 1),  // 1001, 4000
+	FTKEY_EVENT_BUTTON(0, 12),        // 100C, 0000
+	FTKEY_EVENT_END()                 // 0000
 };
 
-// 0x8018E108
-u32 dMVOpeningYoshiFileIDs[/* */] = { &lIFCommonAnnounceCommonLetterFileID, &lMVOpeningCommonFileID };
+// 0x8018E0E0
+u32 dMVOpeningFoxFileIDs[/* */] = { &lIFCommonAnnounceCommonLetterFileID, &lMVOpeningCommonFileID };
 
 // // // // // // // // // // // //
 //                               //
@@ -101,7 +103,7 @@ u32 dMVOpeningYoshiFileIDs[/* */] = { &lIFCommonAnnounceCommonLetterFileID, &lMV
 // // // // // // // // // // // //
 
 // 0x8018D0C0
-void mvOpeningYoshiSetupFiles(void)
+void mvOpeningFoxSetupFiles(void)
 {
 	LBRelocSetup rl_setup;
 
@@ -109,23 +111,23 @@ void mvOpeningYoshiSetupFiles(void)
 	rl_setup.table_files_num = (u32)&lLBRelocTableFilesNum;
 	rl_setup.file_heap = NULL;
 	rl_setup.file_heap_size = 0;
-	rl_setup.status_buffer = sMVOpeningYoshiStatusBuffer;
-	rl_setup.status_buffer_size = ARRAY_COUNT(sMVOpeningYoshiStatusBuffer);
-	rl_setup.force_status_buffer = sMVOpeningYoshiForceStatusBuffer;
-	rl_setup.force_status_buffer_size = ARRAY_COUNT(sMVOpeningYoshiForceStatusBuffer);
+	rl_setup.status_buffer = sMVOpeningFoxStatusBuffer;
+	rl_setup.status_buffer_size = ARRAY_COUNT(sMVOpeningFoxStatusBuffer);
+	rl_setup.force_status_buffer = sMVOpeningFoxForceStatusBuffer;
+	rl_setup.force_status_buffer_size = ARRAY_COUNT(sMVOpeningFoxForceStatusBuffer);
 
 	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesExtern
 	(
-		dMVOpeningYoshiFileIDs,
-		ARRAY_COUNT(dMVOpeningYoshiFileIDs),
-		sMVOpeningYoshiFiles,
+		dMVOpeningFoxFileIDs,
+		ARRAY_COUNT(dMVOpeningFoxFileIDs),
+		sMVOpeningFoxFiles,
 		syTaskmanMalloc
 		(
 			lbRelocGetAllocSize
 			(
-				dMVOpeningYoshiFileIDs,
-				ARRAY_COUNT(dMVOpeningYoshiFileIDs)
+				dMVOpeningFoxFileIDs,
+				ARRAY_COUNT(dMVOpeningFoxFileIDs)
 			),
 			0x10
 		)
@@ -133,7 +135,7 @@ void mvOpeningYoshiSetupFiles(void)
 }
 
 // 0x8018D160
-void mvOpeningYoshiSetNameColor(SObj *sobj)
+void mvOpeningFoxSetNameColor(SObj *sobj)
 {
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -148,103 +150,103 @@ void mvOpeningYoshiSetNameColor(SObj *sobj)
 }
 
 // 0x8018D194
-void mvOpeningYoshiMakeName(void)
+void mvOpeningFoxMakeName(void)
 {
 	GObj *gobj;
 	SObj *sobj;
 
 	intptr_t offsets[/* */] =
 	{
-		&lIFCommonAnnounceCommonLetterY,
+		&lIFCommonAnnounceCommonLetterF,
 		&lIFCommonAnnounceCommonLetterO,
-		&lIFCommonAnnounceCommonLetterS,
-		&lIFCommonAnnounceCommonLetterH,
-		&lIFCommonAnnounceCommonLetterI,
+		&lIFCommonAnnounceCommonLetterX,
 		0x0
 	};
-	f32 pos_x[/* */] =
+	Vec2f pos[/* */] =
 	{
-		0.0F, 30.0F, 65.0F, 95.0F, 128.0F
+		{  0.0F, 0.0F },
+		{ 30.0F, 0.0F },
+		{ 75.0F, 0.0F }
 	};
 	s32 i;
 
-	sMVOpeningYoshiNameGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
+	sMVOpeningFoxNameGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 27, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	for (i = 0; offsets[i] != 0x0; i++)
 	{
-		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMVOpeningYoshiFiles[0], offsets[i]));
+		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMVOpeningFoxFiles[0], offsets[i]));
 
 		sobj->sprite.attr &= ~SP_FASTCOPY;
 		sobj->sprite.attr |= SP_TRANSPARENT;
 		
-		sobj->pos.x = pos_x[i] + 80.0F;
-		sobj->pos.y = 100.0F;
+		sobj->pos.x = pos[i].x + 110.0F;
+		sobj->pos.y = pos[i].y + 100.0F;
 
-		mvOpeningYoshiSetNameColor(sobj);
+		mvOpeningFoxSetNameColor(sobj);
 	}
 }
 
 // 0x8018D314
-void mvOpeningYoshiMotionCameraProcUpdate(GObj *gobj)
+void mvOpeningFoxMotionCameraProcUpdate(GObj *gobj)
 {
 	CObj *cobj = CObjGetStruct(gobj);
 
-	if (sMVOpeningYoshiTotalTimeTics >= 15)
+	if (sMVOpeningFoxTotalTimeTics >= 15)
 	{
-		cobj->vec.eye.x += (((dMVOpeningYoshiAdjustedEndCObjDesc.eye.x - dMVOpeningYoshiAdjustedStartCObjDesc.eye.x) / 45.0F));
-		cobj->vec.eye.y += (((dMVOpeningYoshiAdjustedEndCObjDesc.eye.y - dMVOpeningYoshiAdjustedStartCObjDesc.eye.y) / 45.0F));
-		cobj->vec.eye.z += (((dMVOpeningYoshiAdjustedEndCObjDesc.eye.z - dMVOpeningYoshiAdjustedStartCObjDesc.eye.z) / 45.0F));
-		cobj->vec.at.x += (((dMVOpeningYoshiAdjustedEndCObjDesc.at.x - dMVOpeningYoshiAdjustedStartCObjDesc.at.x) / 45.0F));
-		cobj->vec.at.y += (((dMVOpeningYoshiAdjustedEndCObjDesc.at.y - dMVOpeningYoshiAdjustedStartCObjDesc.at.y) / 45.0F));
-		cobj->vec.at.z += (((dMVOpeningYoshiAdjustedEndCObjDesc.at.z - dMVOpeningYoshiAdjustedStartCObjDesc.at.z) / 45.0F));
-		cobj->vec.up.x += (((dMVOpeningYoshiAdjustedEndCObjDesc.upx - dMVOpeningYoshiAdjustedStartCObjDesc.upx) / 45.0F));
+		cobj->vec.eye.x += (((dMVOpeningFoxAdjustedEndCObjDesc.eye.x - dMVOpeningFoxAdjustedStartCObjDesc.eye.x) / 45.0F));
+		cobj->vec.eye.y += (((dMVOpeningFoxAdjustedEndCObjDesc.eye.y - dMVOpeningFoxAdjustedStartCObjDesc.eye.y) / 45.0F));
+		cobj->vec.eye.z += (((dMVOpeningFoxAdjustedEndCObjDesc.eye.z - dMVOpeningFoxAdjustedStartCObjDesc.eye.z) / 45.0F));
+		cobj->vec.at.x += (((dMVOpeningFoxAdjustedEndCObjDesc.at.x - dMVOpeningFoxAdjustedStartCObjDesc.at.x) / 45.0F));
+		cobj->vec.at.y += (((dMVOpeningFoxAdjustedEndCObjDesc.at.y - dMVOpeningFoxAdjustedStartCObjDesc.at.y) / 45.0F));
+		cobj->vec.at.z += (((dMVOpeningFoxAdjustedEndCObjDesc.at.z - dMVOpeningFoxAdjustedStartCObjDesc.at.z) / 45.0F));
+		cobj->vec.up.x += (((dMVOpeningFoxAdjustedEndCObjDesc.upx - dMVOpeningFoxAdjustedStartCObjDesc.upx) / 45.0F));
 	}
 }
 
 // 0x8018D40C
-void mvOpeningYoshiMakeMotionCamera(Vec3f move)
+void mvOpeningFoxMakeMotionCamera(Vec3f move)
 {
 	CObj *cobj;
 
-	dMVOpeningYoshiAdjustedStartCObjDesc = dMVOpeningYoshiCObjDescStart;
-	dMVOpeningYoshiAdjustedEndCObjDesc = dMVOpeningYoshiCObjDescEnd;
+	dMVOpeningFoxAdjustedStartCObjDesc = dMVOpeningFoxCObjDescStart;
+	dMVOpeningFoxAdjustedEndCObjDesc = dMVOpeningFoxCObjDescEnd;
 
-	sMVOpeningYoshiStageCameraGObj = func_ovl2_8010DB2C(NULL);
-	cobj = CObjGetStruct(sMVOpeningYoshiStageCameraGObj);
+	sMVOpeningFoxStageCameraGObj = func_ovl2_8010DB2C(NULL);
+	cobj = CObjGetStruct(sMVOpeningFoxStageCameraGObj);
 
-	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 150.0F);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 210.0F, 230.0F);
 
-	cobj->projection.persp.aspect = 15.0F / 7.0F;
+	cobj->projection.persp.aspect = 10.0F / 11.0F;
 
-	gcEndProcessAll(sMVOpeningYoshiStageCameraGObj);
-	gcAddGObjProcess(sMVOpeningYoshiStageCameraGObj, mvOpeningYoshiMotionCameraProcUpdate, nGCProcessKindFunc, 1);
+	gcEndProcessAll(sMVOpeningFoxStageCameraGObj);
+	gcAddGObjProcess(sMVOpeningFoxStageCameraGObj, mvOpeningFoxMotionCameraProcUpdate, nGCProcessKindFunc, 1);
 
-	dMVOpeningYoshiAdjustedStartCObjDesc.eye.x += move.x;
-	dMVOpeningYoshiAdjustedStartCObjDesc.eye.y += move.y;
-	dMVOpeningYoshiAdjustedStartCObjDesc.eye.z += move.z;
-	dMVOpeningYoshiAdjustedStartCObjDesc.at.x += move.x;
-	dMVOpeningYoshiAdjustedStartCObjDesc.at.y += move.y;
-	dMVOpeningYoshiAdjustedStartCObjDesc.at.z += move.z;
+	dMVOpeningFoxAdjustedStartCObjDesc.eye.x += move.x;
+	dMVOpeningFoxAdjustedStartCObjDesc.eye.y += move.y;
+	dMVOpeningFoxAdjustedStartCObjDesc.eye.z += move.z;
+	dMVOpeningFoxAdjustedStartCObjDesc.at.x += move.x;
+	dMVOpeningFoxAdjustedStartCObjDesc.at.y += move.y;
+	dMVOpeningFoxAdjustedStartCObjDesc.at.z += move.z;
 
-	dMVOpeningYoshiAdjustedEndCObjDesc.eye.x += move.x;
-	dMVOpeningYoshiAdjustedEndCObjDesc.eye.y += move.y;
-	dMVOpeningYoshiAdjustedEndCObjDesc.eye.z += move.z;
-	dMVOpeningYoshiAdjustedEndCObjDesc.at.x += move.x;
-	dMVOpeningYoshiAdjustedEndCObjDesc.at.y += move.y;
-	dMVOpeningYoshiAdjustedEndCObjDesc.at.z += move.z;
+	dMVOpeningFoxAdjustedEndCObjDesc.eye.x += move.x;
+	dMVOpeningFoxAdjustedEndCObjDesc.eye.y += move.y;
+	dMVOpeningFoxAdjustedEndCObjDesc.eye.z += move.z;
+	dMVOpeningFoxAdjustedEndCObjDesc.at.x += move.x;
+	dMVOpeningFoxAdjustedEndCObjDesc.at.y += move.y;
+	dMVOpeningFoxAdjustedEndCObjDesc.at.z += move.z;
 
-	cobj->vec.eye.x = dMVOpeningYoshiAdjustedStartCObjDesc.eye.x;
-	cobj->vec.eye.y = dMVOpeningYoshiAdjustedStartCObjDesc.eye.y;
-	cobj->vec.eye.z = dMVOpeningYoshiAdjustedStartCObjDesc.eye.z;
-	cobj->vec.at.x = dMVOpeningYoshiAdjustedStartCObjDesc.at.x;
-	cobj->vec.at.y = dMVOpeningYoshiAdjustedStartCObjDesc.at.y;
-	cobj->vec.at.z = dMVOpeningYoshiAdjustedStartCObjDesc.at.z;
-	cobj->vec.up.x = dMVOpeningYoshiAdjustedStartCObjDesc.upx;
+	cobj->vec.eye.x = dMVOpeningFoxAdjustedStartCObjDesc.eye.x;
+	cobj->vec.eye.y = dMVOpeningFoxAdjustedStartCObjDesc.eye.y;
+	cobj->vec.eye.z = dMVOpeningFoxAdjustedStartCObjDesc.eye.z;
+	cobj->vec.at.x = dMVOpeningFoxAdjustedStartCObjDesc.at.x;
+	cobj->vec.at.y = dMVOpeningFoxAdjustedStartCObjDesc.at.y;
+	cobj->vec.at.z = dMVOpeningFoxAdjustedStartCObjDesc.at.z;
+	cobj->vec.up.x = dMVOpeningFoxAdjustedStartCObjDesc.upx;
 }
 
 // 0x8018D61C
-void mvOpeningYoshiMakeMotionWindow(void)
+void mvOpeningFoxMakeMotionWindow(void)
 {
 	GObj *fighter_gobj;
 	s32 i;
@@ -264,11 +266,7 @@ void mvOpeningYoshiMakeMotionWindow(void)
 	}
 	mpCollisionGetMapObjIDsKind(nMPMapObjKindMovieStart1, pos_ids);
 	mpCollisionGetMapObjPositionID(pos_ids[0], &pos);
-
-	pos.x += -1000.0F;
-	pos.y += 70.0F;
-
-	mvOpeningYoshiMakeMotionCamera(pos);
+	mvOpeningFoxMakeMotionCamera(pos);
 	gmRumbleMakeActor();
 	ftPublicityMakeActor();
 
@@ -286,7 +284,7 @@ void mvOpeningYoshiMakeMotionWindow(void)
 		desc.pos.x = pos.x;
 		desc.pos.y = pos.y;
 		desc.pos.z = pos.z;
-		desc.lr = +1;
+		desc.lr = -1;
 		desc.team = gSCManagerBattleState->players[i].team;
 		desc.player = i;
 		desc.detail = nFTPartsDetailHigh;
@@ -299,28 +297,28 @@ void mvOpeningYoshiMakeMotionWindow(void)
 		desc.controller = &gSYControllerDevices[i];
 		desc.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[i].fkind);
 
-		sMVOpeningYoshiStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&desc);
+		sMVOpeningFoxStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&desc);
 
 		ftParamInitPlayerBattleStats(i, fighter_gobj);
-		ftParamSetKey(fighter_gobj, dMVOpeningYoshiKeyEvents);
+		ftParamSetKey(fighter_gobj, dMVOpeningFoxKeyEvents);
 	}
 }
 
-// 0x8018D874
-void mvOpeningYoshiPosedWallpaperFuncDisplay(GObj *gobj)
+// 0x8018D84C
+void mvOpeningFoxPosedWallpaperFuncDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0xFF, 0xBE, 0x5A, 0xFF);
+	gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x00, 0x3C, 0x28, 0xFF);
 	gDPSetCombineLERP(gSYTaskmanDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 150, 310, 230);
+	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 210, 10, 310, 230);
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
-// 0x8018D974
-void mvOpeningYoshiMakePosedWallpaper(void)
+// 0x8018D94C
+void mvOpeningFoxMakePosedWallpaper(void)
 {
 	gcAddGObjDisplay
 	(
@@ -331,69 +329,69 @@ void mvOpeningYoshiMakePosedWallpaper(void)
 			19,
 			GOBJ_PRIORITY_DEFAULT
 		),
-		mvOpeningYoshiPosedWallpaperFuncDisplay,
+		mvOpeningFoxPosedWallpaperFuncDisplay,
 		28,
 		GOBJ_PRIORITY_DEFAULT,
 		~0
 	);
 }
 
-// 0x8018D9C0
-void mvOpeningYoshiPosedFighterProcUpdate(GObj *fighter_gobj)
+// 0x8018D998
+void mvOpeningFoxPosedFighterProcUpdate(GObj *fighter_gobj)
 {
-	switch (sMVOpeningYoshiTotalTimeTics)
+	switch (sMVOpeningFoxTotalTimeTics)
 	{
 	default:
 		break;
 
 	case 15:
-		sMVOpeningYoshiPosedFighterSpeed = 17.0F;
+		sMVOpeningFoxPosedFighterSpeed = 17.0F;
 		break;
 
 	case 45:
-		sMVOpeningYoshiPosedFighterSpeed = 15.0F;
+		sMVOpeningFoxPosedFighterSpeed = 15.0F;
 		break;
 
 	case 60:
-		sMVOpeningYoshiPosedFighterSpeed = 0.0F;
+		sMVOpeningFoxPosedFighterSpeed = 0.0F;
 		break;
 	}
-	if ((sMVOpeningYoshiTotalTimeTics > 15) && (sMVOpeningYoshiTotalTimeTics < 45))
+	if ((sMVOpeningFoxTotalTimeTics > 15) && (sMVOpeningFoxTotalTimeTics < 45))
 	{
-		sMVOpeningYoshiPosedFighterSpeed += -1.0F / 15.0F;
+		sMVOpeningFoxPosedFighterSpeed += -1.0F / 15.0F;
 	}
-	if ((sMVOpeningYoshiTotalTimeTics > 45) && (sMVOpeningYoshiTotalTimeTics < 60))
+	if ((sMVOpeningFoxTotalTimeTics > 45) && (sMVOpeningFoxTotalTimeTics < 60))
 	{
-		sMVOpeningYoshiPosedFighterSpeed += -1.0F;
+		sMVOpeningFoxPosedFighterSpeed += -1.0F;
 	}
-	DObjGetStruct(fighter_gobj)->translate.vec.f.x += sMVOpeningYoshiPosedFighterSpeed;
+	DObjGetStruct(fighter_gobj)->translate.vec.f.y -= sMVOpeningFoxPosedFighterSpeed;
 }
 
-// 0x8018DA90
-void mvOpeningYoshiMakePosedFighter(void)
+// 0x8018DA68
+void mvOpeningFoxMakePosedFighter(void)
 {
 	GObj *fighter_gobj;
 	FTCreateDesc desc = dFTManagerDefaultFighterDesc;
 
-	desc.fkind = nFTKindYoshi;
-	desc.costume = ftParamGetCostumeCommonID(nFTKindYoshi, 0);
-	desc.figatree_heap = sMVOpeningYoshiFigatreeHeap;
-	desc.pos.x = -600.0F;
-	desc.pos.y = 0.0F;
+	desc.fkind = nFTKindFox;
+	desc.costume = ftParamGetCostumeCommonID(nFTKindFox, 0);
+	desc.figatree_heap = sMVOpeningFoxFigatreeHeap;
+	desc.pos.x = 0.0F;
+	desc.pos.y = 600.0F;
 	desc.pos.z = 0.0F;
 
 	fighter_gobj = ftManagerMakeFighter(&desc);
 	scSubsysFighterSetStatus(fighter_gobj, 0x1000C);
 	gcMoveGObjDL(fighter_gobj, 26, -1);
-	gcAddGObjProcess(fighter_gobj, mvOpeningYoshiPosedFighterProcUpdate, nGCProcessKindFunc, 1);
+	gcAddGObjProcess(fighter_gobj, mvOpeningFoxPosedFighterProcUpdate, nGCProcessKindFunc, 1);
 
 	DObjGetStruct(fighter_gobj)->scale.vec.f.x = 1.0F;
 	DObjGetStruct(fighter_gobj)->scale.vec.f.y = 1.0F;
 	DObjGetStruct(fighter_gobj)->scale.vec.f.z = 1.0F;
 }
 
-// 0x8018DB90
-void mvOpeningYoshiMakeNameCamera(void)
+// 0x8018DB68
+void mvOpeningFoxMakeNameCamera(void)
 {
 	GObj *camera_gobj = gcMakeCameraGObj
 	(
@@ -416,8 +414,8 @@ void mvOpeningYoshiMakeNameCamera(void)
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 0x8018DC30
-void mvOpeningYoshiMakePosedFighterCamera(void)
+// 0x8018DC08
+void mvOpeningFoxMakePosedFighterCamera(void)
 {
 	GObj *camera_gobj = gcMakeCameraGObj
 	(
@@ -437,16 +435,16 @@ void mvOpeningYoshiMakePosedFighterCamera(void)
 	);
 	CObj *cobj = CObjGetStruct(camera_gobj);
 
-	syRdpSetViewport(&cobj->viewport, 10.0F, 150.0F, 310.0F, 230.0F);
+	syRdpSetViewport(&cobj->viewport, 210.0F, 10.0F, 310.0F, 230.0F);
 	
-	cobj->projection.persp.aspect = 26.25F / 7.0F;
+	cobj->projection.persp.aspect = 5.0F / 11.0F;
 
-	gcAddCameraCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningYoshiFiles[1], &lMVOpeningYoshiCamAnimJoint), 0.0F);
+	gcAddCameraCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningFoxFiles[1], &lMVOpeningFoxCamAnimJoint), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindFunc, 1);
 }
 
-// 0x8018DD18
-void mvOpeningYoshiMakePosedWallpaperCamera(void)
+// 0x8018DCF0
+void mvOpeningFoxMakePosedWallpaperCamera(void)
 {
 	CObj *cobj;
 	GObj *camera_gobj = gcMakeCameraGObj
@@ -466,15 +464,15 @@ void mvOpeningYoshiMakePosedWallpaperCamera(void)
 		FALSE
 	);
 	cobj = CObjGetStruct(camera_gobj);
-	syRdpSetViewport(&cobj->viewport, 10.0F, 150.0F, 310.0F, 230.0F);
+	syRdpSetViewport(&cobj->viewport, 210.0F, 10.0F, 310.0F, 230.0F);
 
 	cobj->flags = COBJ_FLAG_DLBUFFERS | COBJ_FLAG_ZBUFFER;
 }
 
-// 0x8018DDC0
-void mvOpeningYoshiFuncRun(GObj *gobj)
+// 0x8018DD98
+void mvOpeningFoxFuncRun(GObj *gobj)
 {
-	sMVOpeningYoshiTotalTimeTics++;
+	sMVOpeningFoxTotalTimeTics++;
 
 	if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON))
 	{
@@ -482,45 +480,45 @@ void mvOpeningYoshiFuncRun(GObj *gobj)
 		gSCManagerSceneData.scene_curr = nSCKindTitle;
 		syTaskmanSetLoadScene();
 	}
-	if (sMVOpeningYoshiTotalTimeTics == 15)
+	if (sMVOpeningFoxTotalTimeTics == 15)
 	{
-		gcEjectGObj(sMVOpeningYoshiNameGObj);
-		mvOpeningYoshiMakeMotionWindow();
-		mvOpeningYoshiMakePosedWallpaper();
-		mvOpeningYoshiMakePosedFighter();
+		gcEjectGObj(sMVOpeningFoxNameGObj);
+		mvOpeningFoxMakeMotionWindow();
+		mvOpeningFoxMakePosedWallpaper();
+		mvOpeningFoxMakePosedFighter();
 	}
-	if (sMVOpeningYoshiTotalTimeTics == 60)
+	if (sMVOpeningFoxTotalTimeTics == 60)
 	{
 		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
-		gSCManagerSceneData.scene_curr = nSCKindOpeningKirby;
+		gSCManagerSceneData.scene_curr = nSCKindOpeningPikachu;
 		syTaskmanSetLoadScene();
 	}
 }
 
-// 0x8018DE7C
-void mvOpeningYoshiInitVars(void)
+// 0x8018DE54
+void mvOpeningFoxInitVars(void)
 {
-	sMVOpeningYoshiTotalTimeTics = 0;
+	sMVOpeningFoxTotalTimeTics = 0;
 }
 
-// 0x8018DE88
-void mvOpeningYoshiFuncStart(void)
+// 0x8018DE60
+void mvOpeningFoxFuncStart(void)
 {
-	sMVOpeningYoshiBattleState = dSCManagerDefaultBattleState;
-	gSCManagerBattleState = &sMVOpeningYoshiBattleState;
+	sMVOpeningFoxBattleState = dSCManagerDefaultBattleState;
+	gSCManagerBattleState = &sMVOpeningFoxBattleState;
 
 	gSCManagerBattleState->game_type = nSCBattleGameTypeMovie;
 
-	gSCManagerBattleState->gkind = nGRKindYoster;
+	gSCManagerBattleState->gkind = nGRKindSector;
 	gSCManagerBattleState->pl_count = 1;
 
-	gSCManagerBattleState->players[0].fkind = nFTKindYoshi;
+	gSCManagerBattleState->players[0].fkind = nFTKindFox;
 	gSCManagerBattleState->players[0].pkind = nFTPlayerKindKey;
 
-	mvOpeningYoshiSetupFiles();
-	gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningYoshiFuncRun, nGCCommonLinkIDMovie, GOBJ_PRIORITY_DEFAULT);
+	mvOpeningFoxSetupFiles();
+	gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningFoxFuncRun, nGCCommonLinkIDMovie, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(9, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
-	mvOpeningYoshiInitVars();
+	mvOpeningFoxInitVars();
 	efParticleInitAll();
 	ftParamInitGame();
 	mpCollisionInitGroundData();
@@ -530,40 +528,40 @@ void mvOpeningYoshiFuncStart(void)
 	wpManagerAllocWeapons();
 	itManagerInitItems();
 	efManagerInitEffects();
-	ftManagerSetupFilesAllKind(nFTKindYoshi);
+	ftManagerSetupFilesAllKind(nFTKindFox);
 
-	sMVOpeningYoshiFigatreeHeap = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
+	sMVOpeningFoxFigatreeHeap = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
 
-	mvOpeningYoshiMakeNameCamera();
-	mvOpeningYoshiMakePosedWallpaperCamera();
-	mvOpeningYoshiMakePosedFighterCamera();
-	mvOpeningYoshiMakeName();
+	mvOpeningFoxMakeNameCamera();
+	mvOpeningFoxMakePosedWallpaperCamera();
+	mvOpeningFoxMakePosedFighterCamera();
+	mvOpeningFoxMakeName();
 
-	while (func_8000092C() < 1875)
+	while (func_8000092C() < 2055)
 	{
 		continue;
 	}
 }
 
-// 0x8018E010
-void mvOpeningYoshiFuncLights(Gfx **dls)
+// 0x8018DFE0
+void mvOpeningFoxFuncLights(Gfx **dls)
 {
 	gSPSetGeometryMode(dls[0]++, G_LIGHTING);
 	ftDisplayLightsDrawReflect(dls, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
 }
 
-// 0x8018E13C
-SYVideoSetup dMVOpeningYoshiVideoSetup = SYVIDEO_SETUP_DEFAULT();
+// 0x8018E110
+SYVideoSetup dMVOpeningFoxVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
-// 0x8018E158
-SYTaskmanSetup dMVOpeningYoshiTaskmanSetup =
+// 0x8018E12C
+SYTaskmanSetup dMVOpeningFoxTaskmanSetup =
 {
     // Task Manager Buffer Setup
     {
         0,                              // ???
         gcRunAll,                 	 	// Update function
         scManagerFuncDraw,              // Frame draw function
-        &ovl41_BSS_END,                 // Allocatable memory pool start
+        &ovl39_BSS_END,                 // Allocatable memory pool start
         0,                              // Allocatable memory pool size
         1,                              // ???
         2,                              // Number of contexts?
@@ -574,7 +572,7 @@ SYTaskmanSetup dMVOpeningYoshiTaskmanSetup =
         0x8000,                         // Graphics Heap Size
         2,                              // ???
         0xC000,                         // RDP Output Buffer Size
-        mvOpeningYoshiFuncLights,    	// Pre-render function
+        mvOpeningFoxFuncLights,    		// Pre-render function
         update_contdata,                // Controller I/O function
     },
 
@@ -597,15 +595,15 @@ SYTaskmanSetup dMVOpeningYoshiTaskmanSetup =
     0,                                  // Number of Cameras
     sizeof(CObj),                       // Camera size
     
-    mvOpeningYoshiFuncStart          	// Task start function
+    mvOpeningFoxFuncStart          		// Task start function
 };
 
-// 0x8018E05C
-void mvOpeningYoshiStartScene(void)
+// 0x8018E02C
+void mvOpeningFoxStartScene(void)
 {
-	dMVOpeningYoshiVideoSetup.zbuffer = syVideoGetZBuffer(6400);
-	syVideoInit(&dMVOpeningYoshiVideoSetup);
+	dMVOpeningFoxVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&dMVOpeningFoxVideoSetup);
 
-	dMVOpeningYoshiTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl41_BSS_END);
-	syTaskmanRun(&dMVOpeningYoshiTaskmanSetup);
+	dMVOpeningFoxTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl39_BSS_END);
+	syTaskmanRun(&dMVOpeningFoxTaskmanSetup);
 }

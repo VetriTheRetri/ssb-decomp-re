@@ -101,11 +101,11 @@ typedef union SYColorPack
 
 } SYColorPack;
 
-typedef struct syRectangle
+typedef struct SYRectangle
 {
     s32 ulx, uly;
     s32 lrx, lry;
 
-} syRectangle;
+} SYRectangle;
 
 #endif /* SSB64_TYPES_H */

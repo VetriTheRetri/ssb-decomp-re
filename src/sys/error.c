@@ -35,7 +35,7 @@
 #define SYERROR_MESG_FAULT     ((OSMesg)2)
 
 // 0x8003CBB0
-syRectangle D_8003CBB0[/* */] =
+SYRectangle D_8003CBB0[/* */] =
 {
     { 0, 0, 3, 0 },
     { 0, 0, 0, 3 },
@@ -189,7 +189,7 @@ void func_800210C0(s32 arg0, s32 arg1, s32 arg2, sb32 arg3)
     if ((arg2 >= 0) && (arg2 < ARRAY_COUNT(D_8003CC30)))
     {
         Gfx *dl = gSYTaskmanDLHeads[0];
-        syRectangle *boxsize = D_8003CBB0;
+        SYRectangle *boxsize = D_8003CBB0;
         s32 *line = D_8003CC30[arg2];
         s32 i;
 

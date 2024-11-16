@@ -741,7 +741,7 @@ void mnVSOptionsMakeWallpaper(void)
 void mnVSOptionsUnderlineFuncDisplay(GObj *gobj)
 {   
     // 0x8013478C
-    syRectangle handicap_rect[/* */] =
+    SYRectangle handicap_rect[/* */] =
     {
         { 255, 77, 283, 77 },
         { 190, 77, 216, 77 },
@@ -749,14 +749,14 @@ void mnVSOptionsUnderlineFuncDisplay(GObj *gobj)
     };
 
     // 0x801347BC
-    syRectangle team_attack_rect[/* */] =
+    SYRectangle team_attack_rect[/* */] =
     {
         { 245, 106, 272, 106 },
         { 213, 106, 239, 106 }
     };
 
     // 0x801347DC
-    syRectangle stage_select_rect[/* */] =
+    SYRectangle stage_select_rect[/* */] =
     {
         { 241, 135, 269, 135 },
         { 208, 135, 234, 135 }

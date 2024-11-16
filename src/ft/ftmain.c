@@ -2709,8 +2709,6 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
                     case TRUE:
                         efManagerDamageSpawnMDustRandgcMakeEffect(&pos, this_fp->lr);
                         break;
-
-                    /* default: break; // This might not be necessary */
                     }
                 }
                 break;

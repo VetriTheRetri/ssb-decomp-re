@@ -551,14 +551,14 @@ void func_ovl60_801327CC(void)
 void mnOptionSoundUnderlineFuncDisplay(GObj *gobj)
 {
     // 0x801336AC
-    syRectangle rect[/* */] =
+    SYRectangle rect[/* */] =
     {
         { 233,  64, 273,  64 },
         { 179,  64, 225,  64 }
     };
 
     // 0x801336CC
-    syRectangle unused[/* */] =
+    SYRectangle unused[/* */] =
     {
         {  0xE9,  0x5E, 0x106,  0x5E },
         {  0xC8,  0x5E,  0xE2,  0x5E }

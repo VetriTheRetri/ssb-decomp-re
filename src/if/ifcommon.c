@@ -437,7 +437,7 @@ IFPauseDecal dIFCommonBattlePauseDecalsSpriteData[/* */] =
 };
 
 // 0x8012F0A4
-syRectangle dIFCommonBattlePauseBorderRectangle[/* */] =
+SYRectangle dIFCommonBattlePauseBorderRectangle[/* */] =
 {
     {  26,  24, 294,  26 },
     {  26,  24,  28, 199 },

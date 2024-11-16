@@ -1077,7 +1077,7 @@ void scManagerRunLoop(sb32 arg)
 
 			case 33:
 				syDmaLoadOverlay(&dSCManagerOverlays[39]);
-				intro_focus_fox_entry();
+				mvOpeningFoxStartScene();
 				break;
 
 			case 34:

@@ -5,7 +5,7 @@
 #include <sys/objdef.h>
 #include <PR/gbi.h>
 
-extern intptr_t lMVOpeningKirbyCamAnimJoint;
+extern intptr_t lMVOpeningKirbyCamAnimJoint;                    // 0x00000150
 
 extern void mvOpeningKirbySetupFiles(void);
 extern void mvOpeningKirbySetNameSpriteColors(SObj *sobj);

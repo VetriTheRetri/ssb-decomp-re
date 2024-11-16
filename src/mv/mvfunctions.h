@@ -3,6 +3,7 @@
 
 #include <mv/mvunknownmario.h>
 
+#include <mv/mvopening/mvopeningsamus.h>
 #include <mv/mvopening/mvopeningfox.h>
 #include <mv/mvopening/mvopeninglink.h>
 #include <mv/mvopening/mvopeningyoshi.h>

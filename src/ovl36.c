@@ -65,7 +65,7 @@ s32 sMVOpeningMarioTotalTimeTics;
 GObj* sMVOpeningMarioNameGObj;
 
 // 0x8018E210
-GObj* sMVOpeningMarioStageFighterGObj;
+GObj* sMVOpeningMarioFighterGObj;
 
 // 0x8018E214
 s32 D_ovl36_8018E214;
@@ -269,7 +269,7 @@ void mvOpeningMarioInitFighterStagePanel()
 		spawn_info.controller = &gSYControllerDevices[i];
 		spawn_info.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[i].fkind);
 
-		sMVOpeningMarioStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
+		sMVOpeningMarioFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
 		ftParamInitPlayerBattleStats(i, fighter_gobj);
 		ftParamSetKey(fighter_gobj, dMVOpeningMarioGameKey);

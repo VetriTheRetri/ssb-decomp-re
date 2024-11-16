@@ -1072,7 +1072,7 @@ void scManagerRunLoop(sb32 arg)
 
 			case 32:
 				syDmaLoadOverlay(&dSCManagerOverlays[38]);
-				intro_focus_samus_entry();
+				mvOpeningSamusStartScene();
 				break;
 
 			case 33:

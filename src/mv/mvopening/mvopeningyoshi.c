@@ -25,7 +25,7 @@ s32 sMVOpeningYoshiTotalTimeTics;
 GObj *sMVOpeningYoshiNameGObj;
 
 // 0x8018E230
-GObj *sMVOpeningYoshiStageFighterGObj;
+GObj *sMVOpeningYoshiFighterGObj;
 
 // 0x8018E234
 s32 sMVOpeningYoshiPad0x8018E234;
@@ -299,7 +299,7 @@ void mvOpeningYoshiMakeMotionWindow(void)
 		desc.controller = &gSYControllerDevices[i];
 		desc.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[i].fkind);
 
-		sMVOpeningYoshiStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&desc);
+		sMVOpeningYoshiFighterGObj = fighter_gobj = ftManagerMakeFighter(&desc);
 
 		ftParamInitPlayerBattleStats(i, fighter_gobj);
 		ftParamSetKey(fighter_gobj, dMVOpeningYoshiKeyEvents);

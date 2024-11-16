@@ -58,7 +58,7 @@ s32 sMVOpeningDKTotalTimeTics;
 GObj* sMVOpeningDKNameGObj;
 
 // 0x8018E1D0
-GObj* sMVOpeningDKStageFighterGObj;
+GObj* sMVOpeningDKFighterGObj;
 
 s32 D_ovl37_8018E1D4;
 
@@ -261,7 +261,7 @@ void mvOpeningDKInitFighterStagePanel()
 		spawn_info.controller = &gSYControllerDevices[i];
 		spawn_info.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[i].fkind);
 
-		sMVOpeningDKStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
+		sMVOpeningDKFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
 		ftParamInitPlayerBattleStats(i, fighter_gobj);
 		ftParamSetKey(fighter_gobj, dMVOpeningDKKeyEvents);

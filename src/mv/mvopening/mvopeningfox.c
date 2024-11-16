@@ -15,49 +15,49 @@ extern u32 func_8000092C();
 //                               //
 // // // // // // // // // // // //
 
-// 0x8018E220
-s32 sMVOpeningFoxPad0x8018E220[2];
+// 0x8018E1F0
+s32 sMVOpeningFoxPad0x8018E1F0[2];
 
-// 0x8018E228
+// 0x8018E1F8
 s32 sMVOpeningFoxTotalTimeTics;
 
-// 0x8018E22C
+// 0x8018E1FC
 GObj *sMVOpeningFoxNameGObj;
 
-// 0x8018E230
-GObj *sMVOpeningFoxStageFighterGObj;
+// 0x8018E200
+GObj *sMVOpeningFoxFighterGObj;
 
-// 0x8018E234
-s32 sMVOpeningFoxPad0x8018E234;
+// 0x8018E204
+s32 sMVOpeningFoxPad0x8018E204;
 
-// 0x8018E238
+// 0x8018E208
 GObj *sMVOpeningFoxStageCameraGObj;
 
-// 0x8018E23C
+// 0x8018E20C
 void *sMVOpeningFoxFigatreeHeap;
 
-// 0x8018E240
+// 0x8018E210
 f32 sMVOpeningFoxPosedFighterSpeed;
 
-// 0x8018E244
-s32 sMVOpeningFoxPad0x8018E244;
+// 0x8018E214
+s32 sMVOpeningFoxPad0x8018E214;
 
-// 0x8018E248
+// 0x8018E218
 CObjDesc dMVOpeningFoxAdjustedStartCObjDesc;
 
-// 0x8018E268
+// 0x8018E238
 CObjDesc dMVOpeningFoxAdjustedEndCObjDesc;
 
-// 0x8018E288
+// 0x8018E258
 LBFileNode sMVOpeningFoxStatusBuffer[48];
 
-// 0x8018E408
+// 0x8018E3D8
 LBFileNode sMVOpeningFoxForceStatusBuffer[7];
 
-// 0x8018E440
+// 0x8018E410
 void *sMVOpeningFoxFiles[2];
 
-// 0x8018E448
+// 0x8018E418
 SCBattleState sMVOpeningFoxBattleState;
 
 // // // // // // // // // // // //
@@ -297,7 +297,7 @@ void mvOpeningFoxMakeMotionWindow(void)
 		desc.controller = &gSYControllerDevices[i];
 		desc.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[i].fkind);
 
-		sMVOpeningFoxStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&desc);
+		sMVOpeningFoxFighterGObj = fighter_gobj = ftManagerMakeFighter(&desc);
 
 		ftParamInitPlayerBattleStats(i, fighter_gobj);
 		ftParamSetKey(fighter_gobj, dMVOpeningFoxKeyEvents);

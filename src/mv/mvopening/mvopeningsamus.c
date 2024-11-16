@@ -15,50 +15,50 @@ extern u32 func_8000092C();
 //                               //
 // // // // // // // // // // // //
 
-// 0x8018E220
-s32 sMVOpeningPikachuPad0x8018E220[2];
+// 0x8018E270
+s32 sMVOpeningSamusPad0x8018E270[2];
 
-// 0x8018E228
-s32 sMVOpeningPikachuTotalTimeTics;
+// 0x8018E278
+s32 sMVOpeningSamusTotalTimeTics;
 
-// 0x8018E22C
-GObj *sMVOpeningPikachuNameGObj;
+// 0x8018E27C
+GObj *sMVOpeningSamusNameGObj;
 
-// 0x8018E230
-GObj *sMVOpeningPikachuFighterGObj;
+// 0x8018E280
+GObj *sMVOpeningSamusFighterGObj;
 
-// 0x8018E234
-s32 sMVOpeningPikachuPad0x8018E234;
-
-// 0x8018E238
-GObj *sMVOpeningPikachuMotionCameraGObj;
-
-// 0x8018E23C
-void *sMVOpeningPikachuFigatreeHeap;
-
-// 0x8018E240
-f32 sMVOpeningPikachuPosedFighterSpeed;
-
-// 0x8018E244
-s32 sMVOpeningPikachuPad0x8018E244;
-
-// 0x8018E248
-CObjDesc sMVOpeningPikachuAdjustedStartCObjDesc;
-
-// 0x8018E268
-CObjDesc sMVOpeningPikachuAdjustedEndCObjDesc;
+// 0x8018E284
+s32 sMVOpeningSamusPad0x8018E284;
 
 // 0x8018E288
-LBFileNode sMVOpeningPikachuStatusBuffer[48];
+GObj *sMVOpeningSamusStageCameraGObj;
 
-// 0x8018E408
-LBFileNode sMVOpeningPikachuForceStatusBuffer[7];
+// 0x8018E28C
+void *sMVOpeningSamusFigatreeHeap;
 
-// 0x8018E440
-void *sMVOpeningPikachuFiles[2];
+// 0x8018E290
+f32 sMVOpeningSamusPosedFighterSpeed;
 
-// 0x8018E448
-SCBattleState sMVOpeningPikachuBattleState;
+// 0x8018E294
+s32 sMVOpeningSamusPad0x8018E294;
+
+// 0x8018E288
+CObjDesc dMVOpeningSamusAdjustedStartCObjDesc;
+
+// 0x8018E2B8
+CObjDesc dMVOpeningSamusAdjustedEndCObjDesc;
+
+// 0x8018E2D8
+LBFileNode sMVOpeningSamusStatusBuffer[48];
+
+// 0x8018E458
+LBFileNode sMVOpeningSamusForceStatusBuffer[7];
+
+// 0x8018E490
+void *sMVOpeningSamusFiles[2];
+
+// 0x8018E498
+SCBattleState sMVOpeningSamusBattleState;
 
 // // // // // // // // // // // //
 //                               //
@@ -66,30 +66,32 @@ SCBattleState sMVOpeningPikachuBattleState;
 //                               //
 // // // // // // // // // // // //
 
-// 0x8018E0C0
-CObjDesc dMVOpeningPikachuStartCObjDesc =
+// 0x8018E120
+CObjDesc dMVOpeningSamusCObjDescStart =
 {
-	{ 0.0F, 0.0F, 20000.0F },
-	{ 0.0F, 0.0F,     0.0F },
-	0.0F
+	{ 400.0F, 1100.0F, 0.0F },
+	{   0.0F,  200.0F, 0.0F },
+	0.6F
 };
 
-// 0x8018E0DC
-CObjDesc dMVOpeningPikachuEndCObjDesc =
+// 0x8018E13C
+CObjDesc dMVOpeningSamusCObjDescEnd =
 {
-	{ 50.0F, -1640.0F, 1000.0F },
-	{ 50.0F, -1640.0F,    0.0F },
-	0.0F
+	{ 1600.0F, 230.0F, 200.0F },
+	{    0.0F, 200.0F,   0.0F },
+	0.6F
 };
 
-// 0x8018E0F8 - Bruh?
-FTKeyEvent dMVOpeningPikachuKeyEvents[/* */] =
+// 0x8018E158
+FTKeyEvent dMVOpeningSamusKeyEvents[/* */] =
 {
-	FTKEY_EVENT_END()
+	FTKEY_EVENT_BUTTON(Z_TRIG, 1),   // 1001, 0x2000
+	FTKEY_EVENT_BUTTON(A_BUTTON, 1), // 1001, 0x8000
+	FTKEY_EVENT_END()                // 0000
 };
 
-// 0x8018E0FC
-u32 dMVOpeningPikachuFileIDs[/* */] = { &lIFCommonAnnounceCommonLetterFileID, &lMVOpeningCommonFileID };
+// 0x8018E164
+u32 dMVOpeningSamusFileIDs[/* */] = { &lIFCommonAnnounceCommonLetterFileID, &lMVOpeningCommonFileID };
 
 // // // // // // // // // // // //
 //                               //
@@ -98,7 +100,7 @@ u32 dMVOpeningPikachuFileIDs[/* */] = { &lIFCommonAnnounceCommonLetterFileID, &l
 // // // // // // // // // // // //
 
 // 0x8018D0C0
-void mvOpeningPikachuSetupFiles(void)
+void mvOpeningSamusSetupFiles(void)
 {
 	LBRelocSetup rl_setup;
 
@@ -106,23 +108,23 @@ void mvOpeningPikachuSetupFiles(void)
 	rl_setup.table_files_num = (u32)&lLBRelocTableFilesNum;
 	rl_setup.file_heap = NULL;
 	rl_setup.file_heap_size = 0;
-	rl_setup.status_buffer = sMVOpeningPikachuStatusBuffer;
-	rl_setup.status_buffer_size = ARRAY_COUNT(sMVOpeningPikachuStatusBuffer);
-	rl_setup.force_status_buffer = sMVOpeningPikachuForceStatusBuffer;
-	rl_setup.force_status_buffer_size = ARRAY_COUNT(sMVOpeningPikachuForceStatusBuffer);
+	rl_setup.status_buffer = sMVOpeningSamusStatusBuffer;
+	rl_setup.status_buffer_size = ARRAY_COUNT(sMVOpeningSamusStatusBuffer);
+	rl_setup.force_status_buffer = sMVOpeningSamusForceStatusBuffer;
+	rl_setup.force_status_buffer_size = ARRAY_COUNT(sMVOpeningSamusForceStatusBuffer);
 
 	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesExtern
 	(
-		dMVOpeningPikachuFileIDs,
-		ARRAY_COUNT(dMVOpeningPikachuFileIDs),
-		sMVOpeningPikachuFiles,
+		dMVOpeningSamusFileIDs,
+		ARRAY_COUNT(dMVOpeningSamusFileIDs),
+		sMVOpeningSamusFiles,
 		syTaskmanMalloc
 		(
 			lbRelocGetAllocSize
 			(
-				dMVOpeningPikachuFileIDs,
-				ARRAY_COUNT(dMVOpeningPikachuFileIDs)
+				dMVOpeningSamusFileIDs,
+				ARRAY_COUNT(dMVOpeningSamusFileIDs)
 			),
 			0x10
 		)
@@ -130,7 +132,7 @@ void mvOpeningPikachuSetupFiles(void)
 }
 
 // 0x8018D160
-void mvOpeningPikachuSetNameColor(SObj *sobj)
+void mvOpeningSamusSetNameColor(SObj *sobj)
 {
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -145,114 +147,128 @@ void mvOpeningPikachuSetNameColor(SObj *sobj)
 }
 
 // 0x8018D194
-void mvOpeningPikachuMakeName(void)
+void mvOpeningSamusMakeName(void)
 {
 	GObj *gobj;
 	SObj *sobj;
 
 	intptr_t offsets[/* */] =
 	{
-		&lIFCommonAnnounceCommonLetterP,
-		&lIFCommonAnnounceCommonLetterI,
-		&lIFCommonAnnounceCommonLetterK,
+		&lIFCommonAnnounceCommonLetterS,
 		&lIFCommonAnnounceCommonLetterA,
-		&lIFCommonAnnounceCommonLetterC,
-		&lIFCommonAnnounceCommonLetterH,
+		&lIFCommonAnnounceCommonLetterM,
 		&lIFCommonAnnounceCommonLetterU,
+		&lIFCommonAnnounceCommonLetterS,
 		0x0
 	};
 	f32 pos_x[/* */] =
 	{
-		0.0F, 30.0F, 45.0F, 75.0F, 110.0F, 140.0F, 170.0F
+		0.0F, 30.0F, 70.0F, 110.0F, 140.0F
 	};
 	s32 i;
 
-	sMVOpeningPikachuNameGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
+	sMVOpeningSamusNameGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 27, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	for (i = 0; offsets[i] != 0x0; i++)
 	{
-		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMVOpeningPikachuFiles[0], offsets[i]));
+		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMVOpeningSamusFiles[0], offsets[i]));
 
 		sobj->sprite.attr &= ~SP_FASTCOPY;
 		sobj->sprite.attr |= SP_TRANSPARENT;
-		sobj->pos.x = pos_x[i] + 65.0F;
+		
+		sobj->pos.x = pos_x[i] + 80.0F;
 		sobj->pos.y = 100.0F;
 
-		mvOpeningPikachuSetNameColor(sobj);
+		mvOpeningSamusSetNameColor(sobj);
 	}
 }
 
-// 0x8018D334
-void mvOpeningPikachuMotionCameraProcUpdate(GObj *gobj)
+// 0x8018D314
+void mvOpeningSamusMotionCameraProcUpdate(GObj *gobj)
 {
 	CObj *cobj = CObjGetStruct(gobj);
 
-	if (sMVOpeningPikachuTotalTimeTics >= 15)
+	if (sMVOpeningSamusTotalTimeTics >= 15)
 	{
-		cobj->vec.eye.x += (((sMVOpeningPikachuAdjustedEndCObjDesc.eye.x - sMVOpeningPikachuAdjustedStartCObjDesc.eye.x) / 45.0F));
-		cobj->vec.eye.y += (((sMVOpeningPikachuAdjustedEndCObjDesc.eye.y - sMVOpeningPikachuAdjustedStartCObjDesc.eye.y) / 45.0F));
-		cobj->vec.eye.z += (((sMVOpeningPikachuAdjustedEndCObjDesc.eye.z - sMVOpeningPikachuAdjustedStartCObjDesc.eye.z) / 45.0F));
-		cobj->vec.at.x += (((sMVOpeningPikachuAdjustedEndCObjDesc.at.x - sMVOpeningPikachuAdjustedStartCObjDesc.at.x) / 45.0F));
-		cobj->vec.at.y += (((sMVOpeningPikachuAdjustedEndCObjDesc.at.y - sMVOpeningPikachuAdjustedStartCObjDesc.at.y) / 45.0F));
-		cobj->vec.at.z += (((sMVOpeningPikachuAdjustedEndCObjDesc.at.z - sMVOpeningPikachuAdjustedStartCObjDesc.at.z) / 45.0F));
-		cobj->vec.up.x += (((sMVOpeningPikachuAdjustedEndCObjDesc.upx - sMVOpeningPikachuAdjustedStartCObjDesc.upx) / 45.0F));
+		cobj->vec.eye.x += (((dMVOpeningSamusAdjustedEndCObjDesc.eye.x - dMVOpeningSamusAdjustedStartCObjDesc.eye.x) / 45.0F));
+		cobj->vec.eye.y += (((dMVOpeningSamusAdjustedEndCObjDesc.eye.y - dMVOpeningSamusAdjustedStartCObjDesc.eye.y) / 45.0F));
+		cobj->vec.eye.z += (((dMVOpeningSamusAdjustedEndCObjDesc.eye.z - dMVOpeningSamusAdjustedStartCObjDesc.eye.z) / 45.0F));
+		cobj->vec.at.x += (((dMVOpeningSamusAdjustedEndCObjDesc.at.x - dMVOpeningSamusAdjustedStartCObjDesc.at.x) / 45.0F));
+		cobj->vec.at.y += (((dMVOpeningSamusAdjustedEndCObjDesc.at.y - dMVOpeningSamusAdjustedStartCObjDesc.at.y) / 45.0F));
+		cobj->vec.at.z += (((dMVOpeningSamusAdjustedEndCObjDesc.at.z - dMVOpeningSamusAdjustedStartCObjDesc.at.z) / 45.0F));
+		cobj->vec.up.x += (((dMVOpeningSamusAdjustedEndCObjDesc.upx - dMVOpeningSamusAdjustedStartCObjDesc.upx) / 45.0F));
 	}
 }
 
-// 0x8018D42C
-void mvOpeningPikachuMakeMotionCamera(Vec3f move)
+// 0x8018D40C
+void mvOpeningSamusMakeMotionCamera(Vec3f move)
 {
 	CObj *cobj;
 
-	sMVOpeningPikachuAdjustedStartCObjDesc = dMVOpeningPikachuStartCObjDesc;
-	sMVOpeningPikachuAdjustedEndCObjDesc = dMVOpeningPikachuEndCObjDesc;
+	dMVOpeningSamusAdjustedStartCObjDesc = dMVOpeningSamusCObjDescStart;
+	dMVOpeningSamusAdjustedEndCObjDesc = dMVOpeningSamusCObjDescEnd;
 
-	sMVOpeningPikachuMotionCameraGObj = func_ovl2_8010DB2C(NULL);
-
-	cobj = CObjGetStruct(sMVOpeningPikachuMotionCameraGObj);
+	sMVOpeningSamusStageCameraGObj = func_ovl2_8010DB2C(NULL);
+	cobj = CObjGetStruct(sMVOpeningSamusStageCameraGObj);
 
 	syRdpSetViewport(&cobj->viewport, 110.0F, 10.0F, 310.0F, 230.0F);
 
 	cobj->projection.persp.aspect = 10.0F / 11.0F;
 
-	gcEndProcessAll(sMVOpeningPikachuMotionCameraGObj);
-	gcAddGObjProcess(sMVOpeningPikachuMotionCameraGObj, mvOpeningPikachuMotionCameraProcUpdate, nGCProcessKindFunc, 1);
+	gcEndProcessAll(sMVOpeningSamusStageCameraGObj);
+	gcAddGObjProcess(sMVOpeningSamusStageCameraGObj, mvOpeningSamusMotionCameraProcUpdate, nGCProcessKindFunc, 1);
 
-	sMVOpeningPikachuAdjustedStartCObjDesc.eye.x += move.x;
-	sMVOpeningPikachuAdjustedStartCObjDesc.eye.y += move.y;
-	sMVOpeningPikachuAdjustedStartCObjDesc.eye.z += move.z;
-	sMVOpeningPikachuAdjustedStartCObjDesc.at.x += move.x;
-	sMVOpeningPikachuAdjustedStartCObjDesc.at.y += move.y;
-	sMVOpeningPikachuAdjustedStartCObjDesc.at.z += move.z;
+	dMVOpeningSamusAdjustedStartCObjDesc.eye.x += move.x;
+	dMVOpeningSamusAdjustedStartCObjDesc.eye.y += move.y;
+	dMVOpeningSamusAdjustedStartCObjDesc.eye.z += move.z;
+	dMVOpeningSamusAdjustedStartCObjDesc.at.x += move.x;
+	dMVOpeningSamusAdjustedStartCObjDesc.at.y += move.y;
+	dMVOpeningSamusAdjustedStartCObjDesc.at.z += move.z;
 
-	sMVOpeningPikachuAdjustedEndCObjDesc.eye.x += move.x;
-	sMVOpeningPikachuAdjustedEndCObjDesc.eye.y += move.y;
-	sMVOpeningPikachuAdjustedEndCObjDesc.eye.z += move.z;
-	sMVOpeningPikachuAdjustedEndCObjDesc.at.x += move.x;
-	sMVOpeningPikachuAdjustedEndCObjDesc.at.y += move.y;
-	sMVOpeningPikachuAdjustedEndCObjDesc.at.z += move.z;
+	dMVOpeningSamusAdjustedEndCObjDesc.eye.x += move.x;
+	dMVOpeningSamusAdjustedEndCObjDesc.eye.y += move.y;
+	dMVOpeningSamusAdjustedEndCObjDesc.eye.z += move.z;
+	dMVOpeningSamusAdjustedEndCObjDesc.at.x += move.x;
+	dMVOpeningSamusAdjustedEndCObjDesc.at.y += move.y;
+	dMVOpeningSamusAdjustedEndCObjDesc.at.z += move.z;
 
-	cobj->vec.eye.x = sMVOpeningPikachuAdjustedStartCObjDesc.eye.x;
-	cobj->vec.eye.y = sMVOpeningPikachuAdjustedStartCObjDesc.eye.y;
-	cobj->vec.eye.z = sMVOpeningPikachuAdjustedStartCObjDesc.eye.z;
-	cobj->vec.at.x = sMVOpeningPikachuAdjustedStartCObjDesc.at.x;
-	cobj->vec.at.y = sMVOpeningPikachuAdjustedStartCObjDesc.at.y;
-	cobj->vec.at.z = sMVOpeningPikachuAdjustedStartCObjDesc.at.z;
-	cobj->vec.up.x = sMVOpeningPikachuAdjustedStartCObjDesc.upx;
+	cobj->vec.eye.x = dMVOpeningSamusAdjustedStartCObjDesc.eye.x;
+	cobj->vec.eye.y = dMVOpeningSamusAdjustedStartCObjDesc.eye.y;
+	cobj->vec.eye.z = dMVOpeningSamusAdjustedStartCObjDesc.eye.z;
+	cobj->vec.at.x = dMVOpeningSamusAdjustedStartCObjDesc.at.x;
+	cobj->vec.at.y = dMVOpeningSamusAdjustedStartCObjDesc.at.y;
+	cobj->vec.at.z = dMVOpeningSamusAdjustedStartCObjDesc.at.z;
+	cobj->vec.up.x = dMVOpeningSamusAdjustedStartCObjDesc.upx;
 }
 
-// 0x8018D634
-void mvOpeningPikachuMakeMotionWindow(void)
+// 0x8018D61C
+void mvOpeningSamusMakeMotionWindow(void)
 {
-	GObj* fighter_gobj;
-	s32 i;
+	GObj *fighter_gobj;
+	s32 i, j;
 	s32 pos_ids[3];
 	Vec3f pos;
+	DObj *root_dobj, *next_dobj;
+	s32 unused[2];
 
 	grWallpaperMakeDecideKind();
 	grCommonSetupInitAll();
 
+	next_dobj = root_dobj = DObjGetStruct(gGRCommonLayerGObjs[1]);
+
+	// This fixes the spot light things on Zebes
+	while (next_dobj != NULL)
+	{
+		for (j = 0; j < next_dobj->xobjs_num; j++)
+		{
+			if (next_dobj->xobjs[j]->kind == 0x30)
+			{
+				next_dobj->xobjs[j]->kind = 0x25;
+			}
+		}
+		next_dobj = lbCommonGetTreeDObjNextFromRoot(next_dobj, root_dobj);
+	}
 	if (mpCollisionGetMapObjCountKind(nMPMapObjKindMovieStart1) != 1)
 	{
 		while (TRUE)
@@ -263,7 +279,7 @@ void mvOpeningPikachuMakeMotionWindow(void)
 	}
 	mpCollisionGetMapObjIDsKind(nMPMapObjKindMovieStart1, pos_ids);
 	mpCollisionGetMapObjPositionID(pos_ids[0], &pos);
-	mvOpeningPikachuMakeMotionCamera(pos);
+	mvOpeningSamusMakeMotionCamera(pos);
 	gmRumbleMakeActor();
 	ftPublicityMakeActor();
 
@@ -294,19 +310,19 @@ void mvOpeningPikachuMakeMotionWindow(void)
 		desc.controller = &gSYControllerDevices[i];
 		desc.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[i].fkind);
 
-		sMVOpeningPikachuFighterGObj = fighter_gobj = ftManagerMakeFighter(&desc);
+		sMVOpeningSamusFighterGObj = fighter_gobj = ftManagerMakeFighter(&desc);
 
 		ftParamInitPlayerBattleStats(i, fighter_gobj);
-		ftParamSetKey(fighter_gobj, dMVOpeningPikachuKeyEvents);
+		ftParamSetKey(fighter_gobj, dMVOpeningSamusKeyEvents);
 	}
 }
 
-// 0x8018D864
-void mvOpeningPikachuPosedWallpaperFuncDisplay(GObj *gobj)
+// 0x8018D8B0
+void mvOpeningSamusPosedWallpaperFuncDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x6E, 0xAA, 0x6E, 0xFF);
+	gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x00, 0x00, 0x50, 0xFF);
 	gDPSetCombineLERP(gSYTaskmanDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 10, 110, 230);
@@ -314,8 +330,8 @@ void mvOpeningPikachuPosedWallpaperFuncDisplay(GObj *gobj)
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
-// 0x8018D964
-void mvOpeningPikachuMakePosedWallpaper(void)
+// 0x8018D9AC
+void mvOpeningSamusMakePosedWallpaper(void)
 {
 	gcAddGObjDisplay
 	(
@@ -326,70 +342,69 @@ void mvOpeningPikachuMakePosedWallpaper(void)
 			19,
 			GOBJ_PRIORITY_DEFAULT
 		),
-		mvOpeningPikachuPosedWallpaperFuncDisplay,
+		mvOpeningSamusPosedWallpaperFuncDisplay,
 		28,
 		GOBJ_PRIORITY_DEFAULT,
 		~0
 	);
 }
 
-// 0x8018D9B0
-void mvOpeningPikachuPosedFighterProcUpdate(GObj *fighter_gobj)
+// 0x8018D9F8
+void mvOpeningSamusPosedFighterProcUpdate(GObj *fighter_gobj)
 {
-	switch (sMVOpeningPikachuTotalTimeTics)
+	switch (sMVOpeningSamusTotalTimeTics)
 	{
 	default:
 		break;
-		
+
 	case 15:
-		sMVOpeningPikachuPosedFighterSpeed = 17.0F;
+		sMVOpeningSamusPosedFighterSpeed = 17.0F;
 		break;
-	
+
 	case 45:
-		sMVOpeningPikachuPosedFighterSpeed = 15.0F;
+		sMVOpeningSamusPosedFighterSpeed = 15.0F;
 		break;
 
 	case 60:
-		sMVOpeningPikachuPosedFighterSpeed = 0.0F;
+		sMVOpeningSamusPosedFighterSpeed = 0.0F;
 		break;
 	}
-	if ((sMVOpeningPikachuTotalTimeTics > 15) && (sMVOpeningPikachuTotalTimeTics < 45))
+	if ((sMVOpeningSamusTotalTimeTics > 15) && (sMVOpeningSamusTotalTimeTics < 45))
 	{
-		sMVOpeningPikachuPosedFighterSpeed += -1.0F / 15.0F;
+		sMVOpeningSamusPosedFighterSpeed += -1.0F / 15.0F;
 	}
-	if ((sMVOpeningPikachuTotalTimeTics > 45) && (sMVOpeningPikachuTotalTimeTics < 60))
+	if ((sMVOpeningSamusTotalTimeTics > 45) && (sMVOpeningSamusTotalTimeTics < 60))
 	{
-		sMVOpeningPikachuPosedFighterSpeed += -1.0F;
+		sMVOpeningSamusPosedFighterSpeed += -1.0F;
 	}
-	DObjGetStruct(fighter_gobj)->translate.vec.f.y += sMVOpeningPikachuPosedFighterSpeed;
+	DObjGetStruct(fighter_gobj)->translate.vec.f.y -= sMVOpeningSamusPosedFighterSpeed;
 }
 
-// 0x8018DA80
-void mvOpeningPikachuMakePosedFighter(void)
+// 0x8018DAC8
+void mvOpeningSamusMakePosedFighter(void)
 {
-	GObj* fighter_gobj;
+	GObj *fighter_gobj;
 	FTCreateDesc desc = dFTManagerDefaultFighterDesc;
 
-	desc.fkind = nFTKindPikachu;
-	desc.costume = ftParamGetCostumeCommonID(nFTKindPikachu, 0);
-	desc.figatree_heap = sMVOpeningPikachuFigatreeHeap;
+	desc.fkind = nFTKindSamus;
+	desc.costume = ftParamGetCostumeCommonID(nFTKindSamus, 0);
+	desc.figatree_heap = sMVOpeningSamusFigatreeHeap;
 	desc.pos.x = 0.0F;
-	desc.pos.y = -600.0F;
+	desc.pos.y = 600.0F;
 	desc.pos.z = 0.0F;
 
 	fighter_gobj = ftManagerMakeFighter(&desc);
-
 	scSubsysFighterSetStatus(fighter_gobj, 0x1000C);
 	gcMoveGObjDL(fighter_gobj, 26, -1);
-	gcAddGObjProcess(fighter_gobj, mvOpeningPikachuPosedFighterProcUpdate, nGCProcessKindFunc, 1);
+	gcAddGObjProcess(fighter_gobj, mvOpeningSamusPosedFighterProcUpdate, nGCProcessKindFunc, 1);
 
 	DObjGetStruct(fighter_gobj)->scale.vec.f.x = 1.0F;
 	DObjGetStruct(fighter_gobj)->scale.vec.f.y = 1.0F;
 	DObjGetStruct(fighter_gobj)->scale.vec.f.z = 1.0F;
 }
 
-// 0x8018DB80
-void mvOpeningPikachuMakeNameCamera(void)
+// 0x8018DBC8
+void mvOpeningSamusMakeNameCamera(void)
 {
 	GObj *camera_gobj = gcMakeCameraGObj
 	(
@@ -412,8 +427,8 @@ void mvOpeningPikachuMakeNameCamera(void)
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 0x8018DC20
-void mvOpeningPikachuMakePosedFighterCamera(void)
+// 0x8018DC68
+void mvOpeningSamusMakePosedFighterCamera(void)
 {
 	GObj *camera_gobj = gcMakeCameraGObj
 	(
@@ -434,15 +449,15 @@ void mvOpeningPikachuMakePosedFighterCamera(void)
 	CObj *cobj = CObjGetStruct(camera_gobj);
 
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 110.0F, 230.0F);
-
+	
 	cobj->projection.persp.aspect = 5.0F / 11.0F;
 
-	gcAddCameraCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningPikachuFiles[1], &lMVOpeningPikachuCamAnimJoint), 0.0F);
+	gcAddCameraCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningSamusFiles[1], &lMVOpeningSamusCamAnimJoint), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindFunc, 1);
 }
 
-// 0x8018DD10
-void mvOpeningPikachuMakePosedWallpaperCamera(void)
+// 0x8018DD58
+void mvOpeningSamusMakePosedWallpaperCamera(void)
 {
 	CObj *cobj;
 	GObj *camera_gobj = gcMakeCameraGObj
@@ -467,10 +482,10 @@ void mvOpeningPikachuMakePosedWallpaperCamera(void)
 	cobj->flags = COBJ_FLAG_DLBUFFERS | COBJ_FLAG_ZBUFFER;
 }
 
-// 0x8018DDC0
-void mvOpeningPikachuFuncRun(GObj *gobj)
+// 0x8018DE08
+void mvOpeningSamusFuncRun(GObj *gobj)
 {
-	sMVOpeningPikachuTotalTimeTics++;
+	sMVOpeningSamusTotalTimeTics++;
 
 	if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON))
 	{
@@ -478,45 +493,45 @@ void mvOpeningPikachuFuncRun(GObj *gobj)
 		gSCManagerSceneData.scene_curr = nSCKindTitle;
 		syTaskmanSetLoadScene();
 	}
-	if (sMVOpeningPikachuTotalTimeTics == 15)
+	if (sMVOpeningSamusTotalTimeTics == 15)
 	{
-		gcEjectGObj(sMVOpeningPikachuNameGObj);
-		mvOpeningPikachuMakeMotionWindow();
-		mvOpeningPikachuMakePosedWallpaper();
-		mvOpeningPikachuMakePosedFighter();
+		gcEjectGObj(sMVOpeningSamusNameGObj);
+		mvOpeningSamusMakeMotionWindow();
+		mvOpeningSamusMakePosedWallpaper();
+		mvOpeningSamusMakePosedFighter();
 	}
-	if (sMVOpeningPikachuTotalTimeTics == 60)
+	if (sMVOpeningSamusTotalTimeTics == 60)
 	{
 		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
-		gSCManagerSceneData.scene_curr = nSCKindOpeningRun;
+		gSCManagerSceneData.scene_curr = nSCKindOpeningYoshi;
 		syTaskmanSetLoadScene();
 	}
 }
 
-// 0x8018DE7C
-void mvOpeningPikachuInitVars(void)
+// 0x8018DEC4
+void mvOpeningSamusInitVars(void)
 {
-	sMVOpeningPikachuTotalTimeTics = 0;
+	sMVOpeningSamusTotalTimeTics = 0;
 }
 
-// 0x8018DE88
-void mvOpeningPikachuFuncStart(void)
+// 0x8018DED0
+void mvOpeningSamusFuncStart(void)
 {
-	sMVOpeningPikachuBattleState = dSCManagerDefaultBattleState;
-	gSCManagerBattleState = &sMVOpeningPikachuBattleState;
+	sMVOpeningSamusBattleState = dSCManagerDefaultBattleState;
+	gSCManagerBattleState = &sMVOpeningSamusBattleState;
 
 	gSCManagerBattleState->game_type = nSCBattleGameTypeMovie;
 
-	gSCManagerBattleState->gkind = nGRKindYamabuki;
+	gSCManagerBattleState->gkind = nGRKindZebes;
 	gSCManagerBattleState->pl_count = 1;
 
-	gSCManagerBattleState->players[0].fkind = nFTKindPikachu;
+	gSCManagerBattleState->players[0].fkind = nFTKindSamus;
 	gSCManagerBattleState->players[0].pkind = nFTPlayerKindKey;
 
-	mvOpeningPikachuSetupFiles();
-	gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningPikachuFuncRun, nGCCommonLinkIDMovie, GOBJ_PRIORITY_DEFAULT);
+	mvOpeningSamusSetupFiles();
+	gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningSamusFuncRun, nGCCommonLinkIDMovie, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(9, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
-	mvOpeningPikachuInitVars();
+	mvOpeningSamusInitVars();
 	efParticleInitAll();
 	ftParamInitGame();
 	mpCollisionInitGroundData();
@@ -526,40 +541,41 @@ void mvOpeningPikachuFuncStart(void)
 	wpManagerAllocWeapons();
 	itManagerInitItems();
 	efManagerInitEffects();
-	ftManagerSetupFilesAllKind(nFTKindPikachu);
+	scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
+	ftManagerSetupFilesAllKind(nFTKindSamus);
 
-	sMVOpeningPikachuFigatreeHeap = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
+	sMVOpeningSamusFigatreeHeap = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
 
-	mvOpeningPikachuMakeNameCamera();
-	mvOpeningPikachuMakePosedWallpaperCamera();
-	mvOpeningPikachuMakePosedFighterCamera();
-	mvOpeningPikachuMakeName();
+	mvOpeningSamusMakeNameCamera();
+	mvOpeningSamusMakePosedWallpaperCamera();
+	mvOpeningSamusMakePosedFighterCamera();
+	mvOpeningSamusMakeName();
 
-	while (func_8000092C() < 2145)
+	while (func_8000092C() < 1785)
 	{
 		continue;
 	}
 }
 
-// 0x8018E010
-void mvOpeningPikachuFuncLights(Gfx **dls)
+// 0x8018E07C
+void mvOpeningSamusFuncLights(Gfx **dls)
 {
 	gSPSetGeometryMode(dls[0]++, G_LIGHTING);
 	ftDisplayLightsDrawReflect(dls, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
 }
 
-// 0x8018E140
-SYVideoSetup dMVOpeningPikachuVideoSetup = SYVIDEO_SETUP_DEFAULT();
+// 0x8018E198
+SYVideoSetup dMVOpeningSamusVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
-// 0x8018E15C
-SYTaskmanSetup dMVOpeningPikachuTaskmanSetup =
+// 0x8018E1B4
+SYTaskmanSetup dMVOpeningSamusTaskmanSetup =
 {
     // Task Manager Buffer Setup
     {
         0,                              // ???
         gcRunAll,                 	 	// Update function
         scManagerFuncDraw,              // Frame draw function
-        &ovl42_BSS_END,                 // Allocatable memory pool start
+        &ovl38_BSS_END,                 // Allocatable memory pool start
         0,                              // Allocatable memory pool size
         1,                              // ???
         2,                              // Number of contexts?
@@ -570,7 +586,7 @@ SYTaskmanSetup dMVOpeningPikachuTaskmanSetup =
         0x8000,                         // Graphics Heap Size
         2,                              // ???
         0xC000,                         // RDP Output Buffer Size
-        mvOpeningPikachuFuncLights,    	// Pre-render function
+        mvOpeningSamusFuncLights,    	// Pre-render function
         update_contdata,                // Controller I/O function
     },
 
@@ -593,15 +609,15 @@ SYTaskmanSetup dMVOpeningPikachuTaskmanSetup =
     0,                                  // Number of Cameras
     sizeof(CObj),                       // Camera size
     
-    mvOpeningPikachuFuncStart          	// Task start function
+    mvOpeningSamusFuncStart          	// Task start function
 };
 
-// 0x8018E05C
-void mvOpeningPikachuStartScene(void)
+// 0x8018E0C8
+void mvOpeningSamusStartScene(void)
 {
-	dMVOpeningPikachuVideoSetup.zbuffer = syVideoGetZBuffer(6400);
-	syVideoInit(&dMVOpeningPikachuVideoSetup);
+	dMVOpeningSamusVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&dMVOpeningSamusVideoSetup);
 
-	dMVOpeningPikachuTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl42_BSS_END);
-	syTaskmanRun(&dMVOpeningPikachuTaskmanSetup);
+	dMVOpeningSamusTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl38_BSS_END);
+	syTaskmanRun(&dMVOpeningSamusTaskmanSetup);
 }

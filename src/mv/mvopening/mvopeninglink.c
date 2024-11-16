@@ -25,7 +25,7 @@ s32 sMVOpeningLinkTotalTimeTics;
 GObj *sMVOpeningLinkNameGObj;
 
 // 0x8018E1D0
-GObj *sMVOpeningLinkStageFighterGObj;
+GObj *sMVOpeningLinkFighterGObj;
 
 // 0x8018E1D4
 s32 sMVOpeningLinkPad0x8018E1D4;
@@ -292,7 +292,7 @@ void mvOpeningLinkMakeMotionWindow(void)
 		desc.controller = &gSYControllerDevices[i];
 		desc.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[i].fkind);
 
-		sMVOpeningLinkStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&desc);
+		sMVOpeningLinkFighterGObj = fighter_gobj = ftManagerMakeFighter(&desc);
 
 		ftParamInitPlayerBattleStats(i, fighter_gobj);
 		ftParamSetKey(fighter_gobj, dMVOpeningLinkKeyEvents);

@@ -162,7 +162,8 @@ typedef enum SCKind
 	nSCKindOpeningRoom,       	  	// Room with Master Hand and figures coming to life
 	nSCKindOpeningSamus = 32,		// Samus opening scene
 	nSCKindOpeningFox,		  		// Fox opening scene
-	nSCKindOpeningPikachu = 36,		// Pikachu opening scene
+	nSCKindOpeningYoshi = 35,		// Yoshi opening scene
+	nSCKindOpeningPikachu,			// Pikachu opening scene
 	nSCKindOpeningKirby,			// Kirby opening scene
 	nSCKindOpeningRun,				// Characters running on purple background
 	nSCKindOpeningYoster,	  		// Yoshis in nest with eggs on Yoshi's Island

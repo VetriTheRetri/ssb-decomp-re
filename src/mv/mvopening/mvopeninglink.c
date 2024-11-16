@@ -90,7 +90,7 @@ FTKeyEvent dMVOpeningLinkKeyEvents[/* */] =
 };
 
 // 0x8018E0B0
-u32 dMVOpeningLinkFileIDs[/* */] = { &lIFCommonAnnounceCommonLetterFileID, &lMVOpeningCommonFileID };
+u32 dMVOpeningLinkFileIDs[/* */] = { &lIFCommonAnnounceCommonFileID, &lMVOpeningCommonFileID };
 
 // // // // // // // // // // // //
 //                               //

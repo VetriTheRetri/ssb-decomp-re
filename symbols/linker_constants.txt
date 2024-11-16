@@ -235,7 +235,7 @@ lSC1PTrainingModeMenuOptionSprites = 0x0000013C;
 lSC1PBonusStagePlatformSprite = 0x000000C0;
 lSC1PBonusStageTargetSprite = 0x000001D0;
 
-lIFCommonAnnounceCommonLetterFileID = 0x00000025;
+lIFCommonAnnounceCommonFileID = 0x00000025;
 lMVOpeningCommonFileID = 0x00000041;
 lMNNoControllerFileID = 0x000000A9;
 

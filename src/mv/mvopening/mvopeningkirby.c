@@ -5,9 +5,6 @@
 #include <sc/scene.h>
 #include <sys/video.h>
 
-extern uintptr_t D_NF_00000025;
-extern uintptr_t D_NF_00000041;
-
 extern void scManagerFuncDraw(void);
 extern u32 func_8000092C();
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
@@ -84,7 +81,7 @@ FTKeyEvent dMVOpeningKirbyKeyEvents[/* */] =
 };
 
 // 0x8018E0F4
-u32 dMVOpeningKirbyFileIDs[/* */] = { &D_NF_00000025, &D_NF_00000041 };
+u32 dMVOpeningKirbyFileIDs[/* */] = { &lIFCommonAnnounceCommonFileID, &lMVOpeningCommonFileID };
 
 // // // // // // // // // // // //
 //                               //

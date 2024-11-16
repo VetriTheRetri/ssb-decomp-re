@@ -92,7 +92,7 @@ FTKeyEvent dMVOpeningYoshiKeyEvents[/* */] =
 };
 
 // 0x8018E108
-u32 dMVOpeningYoshiFileIDs[/* */] = { &lIFCommonAnnounceCommonLetterFileID, &lMVOpeningCommonFileID };
+u32 dMVOpeningYoshiFileIDs[/* */] = { &lIFCommonAnnounceCommonFileID, &lMVOpeningCommonFileID };
 
 // // // // // // // // // // // //
 //                               //

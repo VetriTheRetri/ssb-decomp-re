@@ -89,7 +89,7 @@ FTKeyEvent dMVOpeningPikachuKeyEvents[/* */] =
 };
 
 // 0x8018E0FC
-u32 dMVOpeningPikachuFileIDs[/* */] = { &lIFCommonAnnounceCommonLetterFileID, &lMVOpeningCommonFileID };
+u32 dMVOpeningPikachuFileIDs[/* */] = { &lIFCommonAnnounceCommonFileID, &lMVOpeningCommonFileID };
 
 // // // // // // // // // // // //
 //                               //

@@ -91,7 +91,7 @@ FTKeyEvent dMVOpeningSamusKeyEvents[/* */] =
 };
 
 // 0x8018E164
-u32 dMVOpeningSamusFileIDs[/* */] = { &lIFCommonAnnounceCommonLetterFileID, &lMVOpeningCommonFileID };
+u32 dMVOpeningSamusFileIDs[/* */] = { &lIFCommonAnnounceCommonFileID, &lMVOpeningCommonFileID };
 
 // // // // // // // // // // // //
 //                               //

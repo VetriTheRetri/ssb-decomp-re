@@ -160,7 +160,8 @@ typedef enum SCKind
 	nSCKindDataCharacters,        	// Character data screen
 	nSCKindStartup,               	// N64 logo
 	nSCKindOpeningRoom,       	  	// Room with Master Hand and figures coming to life
-	nSCKindOpeningFox = 33,		  	// Fox opening scene
+	nSCKindOpeningSamus = 32,		// Samus opening scene
+	nSCKindOpeningFox,		  		// Fox opening scene
 	nSCKindOpeningKirby = 37,		// Kirby opening scene
 	nSCKindOpeningRun,				// Characters running on purple background
 	nSCKindOpeningYoster,	  		// Yoshis in nest with eggs on Yoshi's Island

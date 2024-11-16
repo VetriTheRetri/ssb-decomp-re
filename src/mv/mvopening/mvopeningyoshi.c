@@ -16,7 +16,7 @@ extern u32 func_8000092C();
 // // // // // // // // // // // //
 
 // 0x8018E220
-s32 sMVOpeningPad0x8018E220[2];
+s32 sMVOpeningYoshiPad0x8018E220[2];
 
 // 0x8018E228
 s32 sMVOpeningYoshiTotalTimeTics;
@@ -28,7 +28,7 @@ GObj *sMVOpeningYoshiNameGObj;
 GObj *sMVOpeningYoshiStageFighterGObj;
 
 // 0x8018E234
-s32 sMVOpeningPad0x8018E234;
+s32 sMVOpeningYoshiPad0x8018E234;
 
 // 0x8018E238
 GObj *sMVOpeningYoshiStageCameraGObj;
@@ -169,7 +169,7 @@ void mvOpeningYoshiMakeName(void)
 	s32 i;
 
 	sMVOpeningYoshiNameGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
-	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0x1B, GOBJ_PRIORITY_DEFAULT, ~0);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 27, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	for (i = 0; offsets[i] != 0x0; i++)
 	{

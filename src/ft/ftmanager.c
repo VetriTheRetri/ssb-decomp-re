@@ -616,7 +616,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTCreateDesc *ft_desc)
 
     case nFTKindMario:
     case nFTKindNMario:
-        fp->fighter_vars.mario.is_expend_tornado = FALSE;
+        fp->passive_vars.mario.is_expend_tornado = FALSE;
         break;
 
     case nFTKindGDonkey:
@@ -624,53 +624,53 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTCreateDesc *ft_desc)
 
     case nFTKindDonkey:
     case nFTKindNDonkey:
-        fp->fighter_vars.donkey.charge_level = 0;
+        fp->passive_vars.donkey.charge_level = 0;
         break;
 
     case nFTKindSamus:
     case nFTKindNSamus:
-        fp->fighter_vars.samus.charge_level = 0;
-        fp->fighter_vars.samus.charge_recoil = 0;
+        fp->passive_vars.samus.charge_level = 0;
+        fp->passive_vars.samus.charge_recoil = 0;
         break;
 
     case nFTKindLuigi:
     case nFTKindNLuigi:
-        fp->fighter_vars.mario.is_expend_tornado = FALSE;
+        fp->passive_vars.mario.is_expend_tornado = FALSE;
         break;
 
     case nFTKindCaptain:
     case nFTKindNCaptain:
-        fp->fighter_vars.captain.falcon_punch_unk = 0;
+        fp->passive_vars.captain.falcon_punch_unk = 0;
         break;
 
     case nFTKindKirby:
     case nFTKindNKirby:
-        fp->fighter_vars.kirby.copy_id = ft_desc->copy_kind;
+        fp->passive_vars.kirby.copy_id = ft_desc->copy_kind;
 
-        fp->fighter_vars.kirby.copysamus_charge_level = 0;
-        fp->fighter_vars.kirby.copysamus_charge_recoil = 0;
-        fp->fighter_vars.kirby.copydonkey_charge_level = 0;
-        fp->fighter_vars.kirby.copycaptain_falcon_punch_unk = 0;
-        fp->fighter_vars.kirby.copypurin_unk = 0;
-        fp->fighter_vars.kirby.copylink_boomerang_gobj = NULL;
+        fp->passive_vars.kirby.copysamus_charge_level = 0;
+        fp->passive_vars.kirby.copysamus_charge_recoil = 0;
+        fp->passive_vars.kirby.copydonkey_charge_level = 0;
+        fp->passive_vars.kirby.copycaptain_falcon_punch_unk = 0;
+        fp->passive_vars.kirby.copypurin_unk = 0;
+        fp->passive_vars.kirby.copylink_boomerang_gobj = NULL;
 
         if (ft_desc->copy_kind == nFTKindKirby)
         {
-            fp->fighter_vars.kirby.is_ignore_losecopy = FALSE;
+            fp->passive_vars.kirby.is_ignore_losecopy = FALSE;
         }
-        else fp->fighter_vars.kirby.is_ignore_losecopy = TRUE;
+        else fp->passive_vars.kirby.is_ignore_losecopy = TRUE;
 
         if (fp->fkind == nFTKindKirby)
         {
             ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)gFTDataKirbyMainMotion + (intptr_t)&lFTKirbySpecialNCopyData);
 
-            ftParamSetModelPartDefaultID(fighter_gobj, FTKIRBY_COPY_MODELPARTS_JOINT, copy_data[fp->fighter_vars.kirby.copy_id].copy_modelpart_id);
+            ftParamSetModelPartDefaultID(fighter_gobj, FTKIRBY_COPY_MODELPARTS_JOINT, copy_data[fp->passive_vars.kirby.copy_id].copy_modelpart_id);
         }
         break;
 
     case nFTKindLink:
     case nFTKindNLink:
-        fp->fighter_vars.link.boomerang_gobj = NULL;
+        fp->passive_vars.link.boomerang_gobj = NULL;
 
         ftParamSetModelPartDefaultID(fighter_gobj, 0x15, -1);
         ftParamSetModelPartDefaultID(fighter_gobj, 0x13, 0);
@@ -678,15 +678,15 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTCreateDesc *ft_desc)
 
     case nFTKindPurin:
     case nFTKindNPurin:
-        fp->fighter_vars.purin.unk_0x0 = 0;
+        fp->passive_vars.purin.unk_0x0 = 0;
         break;
 
     case nFTKindBoss:
-        fp->fighter_vars.boss.p = &fp->fighter_vars.boss.s;
-        fp->fighter_vars.boss.p->wait_div = 1.0F;
-        fp->fighter_vars.boss.p->status_id = -1;
-        fp->fighter_vars.boss.p->status_id_random = -1;
-        fp->fighter_vars.boss.p->status_id_guard = 0;
+        fp->passive_vars.boss.p = &fp->passive_vars.boss.s;
+        fp->passive_vars.boss.p->wait_div = 1.0F;
+        fp->passive_vars.boss.p->status_id = -1;
+        fp->passive_vars.boss.p->status_id_random = -1;
+        fp->passive_vars.boss.p->status_id_guard = 0;
 
         if (fp->pkind != nFTPlayerKindDemo)
         {

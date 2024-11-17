@@ -89,7 +89,7 @@ void ftBossWaitDecideStatusPlayer(GObj *fighter_gobj)
 
     angle = ftParamGetStickAngleRads(fp);
 
-    target_fp = ftGetStruct(fp->fighter_vars.boss.p->target_gobj);
+    target_fp = ftGetStruct(fp->passive_vars.boss.p->target_gobj);
 
     if (fp->input.pl.button_tap & fp->input.button_mask_b)
     {
@@ -179,13 +179,13 @@ void ftBossWaitDecideStatusComputer(GObj *fighter_gobj) // Decide Master Hand's 
     s32 unused[2];
     u8 *p_random;
 
-    fp->fighter_vars.boss.p->wait_timer--;
+    fp->passive_vars.boss.p->wait_timer--;
 
-    if (fp->fighter_vars.boss.p->wait_timer == 0)
+    if (fp->passive_vars.boss.p->wait_timer == 0)
     {
-        if (fp->fighter_vars.boss.p->status_id_guard == 3)
+        if (fp->passive_vars.boss.p->status_id_guard == 3)
         {
-            fp->fighter_vars.boss.p->status_id_guard = 0;
+            fp->passive_vars.boss.p->status_id_guard = 0;
 
             var = 2;
         }
@@ -193,19 +193,19 @@ void ftBossWaitDecideStatusComputer(GObj *fighter_gobj) // Decide Master Hand's 
         {
             random = mtTrigGetRandomIntRange(3);
 
-            var = dFTBossWaitRandomArrayLookup[fp->fighter_vars.boss.p->status_id * 3 + random];
+            var = dFTBossWaitRandomArrayLookup[fp->passive_vars.boss.p->status_id * 3 + random];
 
             if (var == 2)
             {
-                fp->fighter_vars.boss.p->status_id_guard = 0;
+                fp->passive_vars.boss.p->status_id_guard = 0;
             }
-            else fp->fighter_vars.boss.p->status_id_guard++;
+            else fp->passive_vars.boss.p->status_id_guard++;
         }
 
         if 
         (
-            ftGetStruct(fp->fighter_vars.boss.p->target_gobj)->coll_data.ground_line_id == -1 ||
-            ftGetStruct(fp->fighter_vars.boss.p->target_gobj)->coll_data.ground_line_id == -2
+            ftGetStruct(fp->passive_vars.boss.p->target_gobj)->coll_data.ground_line_id == -1 ||
+            ftGetStruct(fp->passive_vars.boss.p->target_gobj)->coll_data.ground_line_id == -2
         )
         {
             p_random = dFTBossWaitRandomNoGround[var];
@@ -214,11 +214,11 @@ void ftBossWaitDecideStatusComputer(GObj *fighter_gobj) // Decide Master Hand's 
 
         random = dFTBossWaitRandomStatusLookup[p_random[0] + mtTrigGetRandomIntRange(p_random[1])];
 
-        fp->fighter_vars.boss.p->status_id = var;
+        fp->passive_vars.boss.p->status_id = var;
 
         status_id = dFTBossWaitRandomStatusIDs[random];
 
-        fp->fighter_vars.boss.p->status_id_random = random;
+        fp->passive_vars.boss.p->status_id_random = random;
 
         switch (status_id)
         {
@@ -338,11 +338,11 @@ void ftBossWaitSetStatus(GObj *fighter_gobj)
     }
     else
     {
-        ground_line_id = ftGetStruct(fp->fighter_vars.boss.p->target_gobj)->coll_data.ground_line_id;
+        ground_line_id = ftGetStruct(fp->passive_vars.boss.p->target_gobj)->coll_data.ground_line_id;
 
         if ((ground_line_id == -1) || (ground_line_id == -2))
         {
-            ground_line_id = fp->fighter_vars.boss.p->default_line_id;
+            ground_line_id = fp->passive_vars.boss.p->default_line_id;
         }
 
         if (translate->x > gMPCollisionEdgeBounds.d2.right)
@@ -359,6 +359,6 @@ void ftBossWaitSetStatus(GObj *fighter_gobj)
         fp->status_vars.boss.wait.pos.y = pos.y;
     }
 
-    fp->status_vars.boss.wait.pos.y += (fp->fighter_vars.boss.p->wait_div == 1.5F) ? 600.0F : 400.0F;
+    fp->status_vars.boss.wait.pos.y += (fp->passive_vars.boss.p->wait_div == 1.5F) ? 600.0F : 400.0F;
     fp->status_vars.boss.wait.pos.z = 0.0F;
 }

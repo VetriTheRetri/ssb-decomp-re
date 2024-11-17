@@ -7,7 +7,7 @@
 // // // // // // // // // // // //
 
 #define FTKIRBY_COPYMARIO_FIREBALL_CHECK_FTKIND(fp, id_true, id_false) \
-(((fp->fighter_vars.kirby.copy_id == nFTKindMario) || (fp->fighter_vars.kirby.copy_id == nFTKindNMario) || (fp->fighter_vars.kirby.copy_id == nFTKindMMario)) ? id_true : id_false) \
+(((fp->passive_vars.kirby.copy_id == nFTKindMario) || (fp->passive_vars.kirby.copy_id == nFTKindNMario) || (fp->passive_vars.kirby.copy_id == nFTKindMMario)) ? id_true : id_false) \
 
 // // // // // // // // // // // //
 //                               //
@@ -38,7 +38,7 @@ void ftKirbyCopyMarioSpecialNProcAccessory(GObj *fighter_gobj)
 
         gmCollisionGetFighterPartsWorldPosition(fp->joints[FTKIRBY_COPYMARIO_FIREBALL_SPAWN_JOINT], &pos);
 
-        switch (fp->fighter_vars.kirby.copy_id) // jtbl at 0x8018C6A0
+        switch (fp->passive_vars.kirby.copy_id) // jtbl at 0x8018C6A0
         {
         case nFTKindMario:
         case nFTKindMMario:

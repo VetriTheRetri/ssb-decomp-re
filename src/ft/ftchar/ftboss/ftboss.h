@@ -103,11 +103,11 @@ typedef struct ftBossInfo
 
 } ftBossInfo;
 
-typedef struct FTBossFighterVars
+typedef struct FTBossPassiveVars
 {
     ftBossInfo *p, s;
 
-} FTBossFighterVars;
+} FTBossPassiveVars;
 
 typedef struct ftBossWaITStatusVars
 {

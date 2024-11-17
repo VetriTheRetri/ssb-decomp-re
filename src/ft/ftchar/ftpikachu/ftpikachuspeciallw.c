@@ -101,7 +101,7 @@ void ftPikachuSpecialLwStartInitStatusVars(GObj *fighter_gobj)
     fp->motion_vars.flags.flag1 = 0;
     fp->motion_vars.flags.flag0 = 0;
 
-    fp->fighter_vars.pikachu.is_thunder_destroy = FALSE;
+    fp->passive_vars.pikachu.is_thunder_destroy = FALSE;
 }
 
 // 0x80151FBC
@@ -139,10 +139,10 @@ sb32 ftPikachuSpecialLwCheckCollideThunder(GObj *fighter_gobj)
 
     if (thunder_gobj == NULL)
     {
-        fp->fighter_vars.pikachu.is_thunder_destroy |= TRUE;
+        fp->passive_vars.pikachu.is_thunder_destroy |= TRUE;
     }
 
-    if (fp->fighter_vars.pikachu.is_thunder_destroy & TRUE)
+    if (fp->passive_vars.pikachu.is_thunder_destroy & TRUE)
     {
         return FALSE;
     }
@@ -183,7 +183,7 @@ void ftPikachuSpecialLwLoopProcUpdate(GObj *fighter_gobj)
     {
         ftPikachuSpecialLwHitSetStatus(fighter_gobj);
     }
-    else if (fp->fighter_vars.pikachu.is_thunder_destroy & TRUE)
+    else if (fp->passive_vars.pikachu.is_thunder_destroy & TRUE)
     {
         ftPikachuSpecialLwEndSetStatus(fighter_gobj);
     }
@@ -202,7 +202,7 @@ void ftPikachuSpecialAirLwLoopProcUpdate(GObj *fighter_gobj)
     {
         ftPikachuSpecialAirLwHitSetStatus(fighter_gobj);
     }
-    else if (fp->fighter_vars.pikachu.is_thunder_destroy & TRUE)
+    else if (fp->passive_vars.pikachu.is_thunder_destroy & TRUE)
     {
         ftPikachuSpecialAirLwEndSetStatus(fighter_gobj);
     }
@@ -232,9 +232,9 @@ void ftPikachuSpecialLwProcDamage(GObj *fighter_gobj)
 
     if (thunder_gobj == NULL)
     {
-        fp->fighter_vars.pikachu.is_thunder_destroy |= TRUE;
+        fp->passive_vars.pikachu.is_thunder_destroy |= TRUE;
     }
-    if (!(fp->fighter_vars.pikachu.is_thunder_destroy & TRUE))
+    if (!(fp->passive_vars.pikachu.is_thunder_destroy & TRUE))
     {
         WPStruct *wp = wpGetStruct(thunder_gobj);
 

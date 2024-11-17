@@ -23,7 +23,7 @@ void ftSamusSpecialNProcDamage(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->fighter_vars.samus.charge_level = 0;
+    fp->passive_vars.samus.charge_level = 0;
 
     ftSamusSpecialNDestroyChargeShot(fp);
 }
@@ -129,11 +129,11 @@ void ftSamusSpecialNLoopProcUpdate(GObj *fighter_gobj)
     {
         fp->status_vars.samus.specialn.charge_int = FTSAMUS_CHARGE_INT;
 
-        if (fp->fighter_vars.samus.charge_level <= (FTSAMUS_CHARGE_MAX - 1))
+        if (fp->passive_vars.samus.charge_level <= (FTSAMUS_CHARGE_MAX - 1))
         {
-            fp->fighter_vars.samus.charge_level++;
+            fp->passive_vars.samus.charge_level++;
 
-            if (fp->fighter_vars.samus.charge_level == FTSAMUS_CHARGE_MAX)
+            if (fp->passive_vars.samus.charge_level == FTSAMUS_CHARGE_MAX)
             {
                 ftParamCheckSetFighterColAnimID(fighter_gobj, FTSAMUS_CHARGE_COLANIM_ID, FTSAMUS_CHARGE_COLANIM_LENGTH);
                 ftSamusSpecialNDestroyChargeShot(fp);
@@ -143,7 +143,7 @@ void ftSamusSpecialNLoopProcUpdate(GObj *fighter_gobj)
             {
                 WPStruct *wp = wpGetStruct(fp->status_vars.samus.specialn.charge_gobj);
 
-                wp->weapon_vars.charge_shot.charge_size = fp->fighter_vars.samus.charge_level;
+                wp->weapon_vars.charge_shot.charge_size = fp->passive_vars.samus.charge_level;
             }
         }
     }
@@ -197,7 +197,7 @@ void ftSamusSpecialNLoopSetStatus(GObj *fighter_gobj)
     fp->status_vars.samus.specialn.charge_int = FTSAMUS_CHARGE_INT;
 
     ftSamusSpecialNGetChargeShotPosition(fp, &pos);
-    fp->status_vars.samus.specialn.charge_gobj = wpSamusChargeShotMakeWeapon(fighter_gobj, &pos, fp->fighter_vars.samus.charge_level, FALSE);
+    fp->status_vars.samus.specialn.charge_gobj = wpSamusChargeShotMakeWeapon(fighter_gobj, &pos, fp->passive_vars.samus.charge_level, FALSE);
 }
 
 // 0x8015D7AC
@@ -223,32 +223,32 @@ void ftSamusSpecialNEndProcUpdate(GObj *fighter_gobj)
             DObjGetStruct(fp->status_vars.samus.specialn.charge_gobj)->translate.vec.f = pos;
 
             wp->weapon_vars.charge_shot.is_full_charge = TRUE;
-            wp->weapon_vars.charge_shot.charge_size = fp->fighter_vars.samus.charge_level;
+            wp->weapon_vars.charge_shot.charge_size = fp->passive_vars.samus.charge_level;
 
             mpCommonRunWeaponCollisionDefault(fp->status_vars.samus.specialn.charge_gobj, fp->coll_data.p_translate, &fp->coll_data);
 
             wp->weapon_vars.charge_shot.owner_gobj = NULL;
             fp->status_vars.samus.specialn.charge_gobj = NULL;
         }
-        else wpSamusChargeShotMakeWeapon(fighter_gobj, &pos, fp->fighter_vars.samus.charge_level, TRUE);
+        else wpSamusChargeShotMakeWeapon(fighter_gobj, &pos, fp->passive_vars.samus.charge_level, TRUE);
 
         if (fp->ga == nMPKineticsAir)
         {
-            charge_recoil_x = (fp->fighter_vars.samus.charge_level + 1);
+            charge_recoil_x = (fp->passive_vars.samus.charge_level + 1);
 
             fp->physics.vel_air.x = ((FTSAMUS_CHARGE_RECOIL_MUL * charge_recoil_x) + FTSAMUS_CHARGE_RECOIL_BASE) * -fp->lr;
 
-            charge_recoil_y = charge_recoil_x + FTSAMUS_CHARGE_RECOIL_ADD + (fp->fighter_vars.samus.charge_recoil * -FTSAMUS_CHARGE_RECOIL_BASE);
+            charge_recoil_y = charge_recoil_x + FTSAMUS_CHARGE_RECOIL_ADD + (fp->passive_vars.samus.charge_recoil * -FTSAMUS_CHARGE_RECOIL_BASE);
 
             if (fp->physics.vel_air.y < charge_recoil_y)
             {
                 fp->physics.vel_air.y = charge_recoil_y;
             }
-            fp->fighter_vars.samus.charge_recoil++;
+            fp->passive_vars.samus.charge_recoil++;
         }
-        else fp->physics.vel_ground.x = -((FTSAMUS_CHARGE_RECOIL_MUL * (fp->fighter_vars.samus.charge_level + 1)) + FTSAMUS_CHARGE_RECOIL_BASE);
+        else fp->physics.vel_ground.x = -((FTSAMUS_CHARGE_RECOIL_MUL * (fp->passive_vars.samus.charge_level + 1)) + FTSAMUS_CHARGE_RECOIL_BASE);
         
-        fp->fighter_vars.samus.charge_level = 0;
+        fp->passive_vars.samus.charge_level = 0;
         fp->proc_damage = NULL;
     }
     if (fighter_gobj->anim_frame <= 0.0F)
@@ -320,7 +320,7 @@ void ftSamusSpecialAirNEndSetStatus(GObj *fighter_gobj)
 // 0x8015DB14
 f32 ftSamusSpecialNStartGetAnimSpeed(FTStruct *fp)
 {
-    f32 ret = fp->fighter_vars.samus.charge_level / (f32)FTSAMUS_CHARGE_MAX;
+    f32 ret = fp->passive_vars.samus.charge_level / (f32)FTSAMUS_CHARGE_MAX;
 
     ret = (-0.16000003F) * ret + 1.0F;
 
@@ -344,7 +344,7 @@ void ftSamusSpecialNStartSetStatus(GObj *fighter_gobj)
     ftMainPlayAnimNoEffect(fighter_gobj);
     ftSamusSpecialNStartInitStatusVars(fp);
 
-    fp->status_vars.samus.specialn.is_release = (fp->fighter_vars.samus.charge_level == FTSAMUS_CHARGE_MAX) ? TRUE : FALSE;
+    fp->status_vars.samus.specialn.is_release = (fp->passive_vars.samus.charge_level == FTSAMUS_CHARGE_MAX) ? TRUE : FALSE;
 }
 
 // 0x8015DBDC

@@ -1303,20 +1303,20 @@ struct FTStruct
 
     } afterimage;
 
-    union FTFighterVars
+    union FTPassiveVars
     {
-        FTMarioFighterVars      mario;
-        FTDonkeyFighterVars     donkey;
-        FTSamusFighterVars      samus;
-        FTLinkFighterVars       link;
-        FTCaptainFighterVars    captain;
-        FTKirbyFighterVars      kirby;
-        FTPikachuFighterVars    pikachu;
-        FTPurinFighterVars      purin;
-        FTNessFighterVars       ness;
-        FTBossFighterVars       boss;
+        FTMarioPassiveVars      mario;
+        FTDonkeyPassiveVars     donkey;
+        FTSamusPassiveVars      samus;
+        FTLinkPassiveVars       link;
+        FTCaptainPassiveVars    captain;
+        FTKirbyPassiveVars      kirby;
+        FTPikachuPassiveVars    pikachu;
+        FTPurinPassiveVars      purin;
+        FTNessPassiveVars       ness;
+        FTBossPassiveVars       boss;
 
-    } fighter_vars;
+    } passive_vars;
 
     s32 hammer_tics;
 

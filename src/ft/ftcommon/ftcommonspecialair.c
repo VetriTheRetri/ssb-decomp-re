@@ -145,7 +145,7 @@ void ftKirbySpecialAirNSetStatusSelect(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    dFTKirbySpecialAirNStatusList[fp->fighter_vars.kirby.copy_id](fighter_gobj);
+    dFTKirbySpecialAirNStatusList[fp->passive_vars.kirby.copy_id](fighter_gobj);
 }
 
 // 0x80150F08

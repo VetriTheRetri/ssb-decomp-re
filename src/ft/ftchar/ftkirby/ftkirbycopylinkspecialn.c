@@ -12,11 +12,11 @@ void ftKirbyCopyLinkSpecialNDestroyBoomerang(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->fighter_vars.kirby.copylink_boomerang_gobj != NULL)
+    if (fp->passive_vars.kirby.copylink_boomerang_gobj != NULL)
     {
-        wpMainDestroyWeapon(fp->fighter_vars.kirby.copylink_boomerang_gobj);
+        wpMainDestroyWeapon(fp->passive_vars.kirby.copylink_boomerang_gobj);
 
-        fp->fighter_vars.kirby.copylink_boomerang_gobj = NULL;
+        fp->passive_vars.kirby.copylink_boomerang_gobj = NULL;
     }
 }
 
@@ -36,7 +36,7 @@ void ftKirbyCopyLinkSpecialNMakeBoomerang(GObj *fighter_gobj)
 
         gmCollisionGetFighterPartsWorldPosition(fp->joints[FTKIRBY_COPYLINK_BOOMERANG_SPAWN_JOINT], &pos);
 
-        fp->fighter_vars.kirby.copylink_boomerang_gobj = wpLinkBoomerangMakeWeapon(fighter_gobj, &pos);
+        fp->passive_vars.kirby.copylink_boomerang_gobj = wpLinkBoomerangMakeWeapon(fighter_gobj, &pos);
     }
 }
 
@@ -135,7 +135,7 @@ void ftKirbyCopyLinkSpecialNSetStatus(GObj *fighter_gobj)
 
     fp->proc_status = ftKirbyCopyLinkSpecialNProcStatus;
 
-    if (fp->fighter_vars.kirby.copylink_boomerang_gobj != NULL)
+    if (fp->passive_vars.kirby.copylink_boomerang_gobj != NULL)
     {
         ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyLinkSpecialNEmpty, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
@@ -153,7 +153,7 @@ void ftKirbyCopyLinkSpecialAirNSetStatus(GObj *fighter_gobj)
 
     fp->proc_status = ftKirbyCopyLinkSpecialNProcStatus;
 
-    if (fp->fighter_vars.kirby.copylink_boomerang_gobj != NULL)
+    if (fp->passive_vars.kirby.copylink_boomerang_gobj != NULL)
     {
         ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyLinkSpecialAirNEmpty, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 

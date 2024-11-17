@@ -88,25 +88,25 @@ void ftKirbySpecialNGotoSetCatchParams(GObj *fighter_gobj)
 }
 
 // 0x80161EB4
-void ftKirbySpecialNInitFighterVars(FTStruct *fp)
+void ftKirbySpecialNInitPassiveVars(FTStruct *fp)
 {
-    switch (fp->fighter_vars.kirby.copy_id)
+    switch (fp->passive_vars.kirby.copy_id)
     {
     case nFTKindSamus:
-        fp->fighter_vars.kirby.copysamus_charge_level = 0;
-        fp->fighter_vars.kirby.copysamus_charge_recoil = 0;
+        fp->passive_vars.kirby.copysamus_charge_level = 0;
+        fp->passive_vars.kirby.copysamus_charge_recoil = 0;
         break;
 
     case nFTKindDonkey:
-        fp->fighter_vars.kirby.copydonkey_charge_level = 0;
+        fp->passive_vars.kirby.copydonkey_charge_level = 0;
         break;
 
     case nFTKindCaptain:
-        fp->fighter_vars.kirby.copycaptain_falcon_punch_unk = 0;
+        fp->passive_vars.kirby.copycaptain_falcon_punch_unk = 0;
         break;
 
     case nFTKindPurin:
-        fp->fighter_vars.kirby.copypurin_unk = 0;
+        fp->passive_vars.kirby.copypurin_unk = 0;
         break;
     }
 }
@@ -120,7 +120,7 @@ void ftKirbySpecialNCopyInitCopyVars(GObj *fighter_gobj)
 
     if (fp->motion_vars.flags.flag1 != 0)
     {
-        if (fp->fighter_vars.kirby.copy_id == fp->status_vars.kirby.specialn.copy_id)
+        if (fp->passive_vars.kirby.copy_id == fp->status_vars.kirby.specialn.copy_id)
         {
             func_800269C0_275C0(nSYAudioFGMKirbySpecialNCopyUnk); // SFX?
         }
@@ -129,11 +129,11 @@ void ftKirbySpecialNCopyInitCopyVars(GObj *fighter_gobj)
             func_800269C0_275C0(nSYAudioFGMKirbySpecialNCopyThrow); // SFX?
 
             copy_id = fp->status_vars.kirby.specialn.copy_id;
-            fp->fighter_vars.kirby.copy_id = copy_id;
+            fp->passive_vars.kirby.copy_id = copy_id;
 
             ftParamSetModelPartDefaultID(fighter_gobj, FTKIRBY_COPY_MODELPARTS_JOINT, copy_data[copy_id].copy_modelpart_id);
             ftParamResetModelPartAll(fighter_gobj);
-            ftKirbySpecialNInitFighterVars(fp);
+            ftKirbySpecialNInitPassiveVars(fp);
         }
         fp->motion_vars.flags.flag1 = 0;
     }
@@ -192,7 +192,7 @@ void ftKirbySpecialNCatchProcUpdate(GObj *fighter_gobj)
 
         if ((victim_fp->fkind == nFTKindKirby) || (victim_fp->fkind == nFTKindNKirby))
         {
-            kirby_fp->status_vars.kirby.specialn.copy_id = victim_fp->fighter_vars.kirby.copy_id;
+            kirby_fp->status_vars.kirby.specialn.copy_id = victim_fp->passive_vars.kirby.copy_id;
             victim_fp->status_vars.common.capturekirby.is_kirby = TRUE;
         }
         else kirby_fp->status_vars.kirby.specialn.copy_id = copy_data[victim_fp->fkind].copy_id;
@@ -951,11 +951,11 @@ void ftKirbySpecialNLoseCopy(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftKirbySpecialNInitFighterVars(fp);
+    ftKirbySpecialNInitPassiveVars(fp);
     efManagerLoseKirbyStarMakeEffect(fighter_gobj);
     func_800269C0_275C0(nSYAudioFGMKirbySpecialNLoseCopy);
 
-    fp->fighter_vars.kirby.copy_id = nFTKindKirby;
+    fp->passive_vars.kirby.copy_id = nFTKindKirby;
 
     ftParamSetModelPartDefaultID(fighter_gobj, 6, 0);
     ftParamResetStatUpdateColAnim(fighter_gobj);
@@ -972,8 +972,8 @@ void ftKirbySpecialNDamageCheckLoseCopy(GObj *fighter_gobj)
             (fp->fkind == nFTKindKirby)    ||
             (fp->fkind == nFTKindNKirby)
         )                                                       &&
-        (fp->fighter_vars.kirby.copy_id != nFTKindKirby)       &&
-        (fp->fighter_vars.kirby.is_ignore_losecopy == FALSE)    &&
+        (fp->passive_vars.kirby.copy_id != nFTKindKirby)       &&
+        (fp->passive_vars.kirby.is_ignore_losecopy == FALSE)    &&
         (mtTrigGetRandomFloat() < FTKIRBY_COPYDAMAGE_LOSECOPY_RANDOM)
     )
     {

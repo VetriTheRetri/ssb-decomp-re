@@ -73,11 +73,11 @@ typedef enum ftCaptainStatus
 
 } ftCaptainStatus;
 
-typedef struct FTCaptainFighterVars
+typedef struct FTCaptainPassiveVars
 {
     s32 falcon_punch_unk;
 
-} FTCaptainFighterVars;
+} FTCaptainPassiveVars;
 
 typedef struct ftCaptainSpecialHiStatusVars
 {

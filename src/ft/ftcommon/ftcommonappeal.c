@@ -24,7 +24,7 @@ void ftCommonAppealSetStatus(GObj *fighter_gobj)
 
     if ((fp->fkind == nFTKindKirby) || (fp->fkind == nFTKindNKirby))
     {
-        if ((fp->fighter_vars.kirby.copy_id != nFTKindKirby) && (fp->fighter_vars.kirby.is_ignore_losecopy == FALSE))
+        if ((fp->passive_vars.kirby.copy_id != nFTKindKirby) && (fp->passive_vars.kirby.is_ignore_losecopy == FALSE))
         {
             ftKirbySpecialNLoseCopy(fighter_gobj);
         }

@@ -67,7 +67,7 @@ void ftCaptainSpecialAirNProcPhysics(GObj *fighter_gobj)
     if (fp->motion_vars.flags.flag1 != 0)
     {
         fp->motion_vars.flags.flag1 = 0;
-        fp->fighter_vars.captain.falcon_punch_unk++;
+        fp->passive_vars.captain.falcon_punch_unk++;
 
         boost = ftCaptainSpecialNGetAngle(fp->input.pl.stick_range.y);
 

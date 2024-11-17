@@ -149,7 +149,7 @@ void wpNessPKThunderHeadSetDestroyTrails(GObj *weapon_gobj, sb32 is_destroy)
 
         if (fp->player_number == head_wp->player_number)
         {
-            fp->fighter_vars.ness.is_thunder_destroy |= is_destroy;
+            fp->passive_vars.ness.is_thunder_destroy |= is_destroy;
         }
     }
     fp = ftGetStruct(head_wp->owner_gobj);
@@ -182,14 +182,14 @@ void wpNessPKThunderTrailUpdatePositions(GObj *weapon_gobj)
 
     if (fp->player_number == wp->player_number)
     {
-        s32 trail_pos_id = fp->fighter_vars.ness.pkthunder_trail_id - 1;
+        s32 trail_pos_id = fp->passive_vars.ness.pkthunder_trail_id - 1;
 
         if (trail_pos_id < 0)
         {
             trail_pos_id += FTNESS_PKTHUNDER_TRAIL_POS_COUNT;
         }
-        fp->fighter_vars.ness.pkthunder_trail_x[trail_pos_id] = DObjGetStruct(weapon_gobj)->translate.vec.f.x;
-        fp->fighter_vars.ness.pkthunder_trail_y[trail_pos_id] = DObjGetStruct(weapon_gobj)->translate.vec.f.y;
+        fp->passive_vars.ness.pkthunder_trail_x[trail_pos_id] = DObjGetStruct(weapon_gobj)->translate.vec.f.x;
+        fp->passive_vars.ness.pkthunder_trail_y[trail_pos_id] = DObjGetStruct(weapon_gobj)->translate.vec.f.y;
     }
 }
 
@@ -383,22 +383,22 @@ sb32 wpNessPKThunderTrailProcUpdate(GObj *weapon_gobj)
     }
     fp = ftGetStruct(wp->owner_gobj);
 
-    index = (fp->fighter_vars.ness.pkthunder_trail_id - (wp->weapon_vars.pkthunder_trail.trail_index * 2)) - 2;
+    index = (fp->passive_vars.ness.pkthunder_trail_id - (wp->weapon_vars.pkthunder_trail.trail_index * 2)) - 2;
 
     if (index < 0)
     {
         index += FTNESS_PKTHUNDER_TRAIL_POS_COUNT;
     }
-    DObjGetStruct(weapon_gobj)->translate.vec.f.x = fp->fighter_vars.ness.pkthunder_trail_x[index];
-    DObjGetStruct(weapon_gobj)->translate.vec.f.y = fp->fighter_vars.ness.pkthunder_trail_y[index];
+    DObjGetStruct(weapon_gobj)->translate.vec.f.x = fp->passive_vars.ness.pkthunder_trail_x[index];
+    DObjGetStruct(weapon_gobj)->translate.vec.f.y = fp->passive_vars.ness.pkthunder_trail_y[index];
 
     if (index > 0)
     {
-        DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f((fp->fighter_vars.ness.pkthunder_trail_y[index] - fp->fighter_vars.ness.pkthunder_trail_y[index - 1]), (fp->fighter_vars.ness.pkthunder_trail_x[index] - fp->fighter_vars.ness.pkthunder_trail_x[index - 1]));
+        DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f((fp->passive_vars.ness.pkthunder_trail_y[index] - fp->passive_vars.ness.pkthunder_trail_y[index - 1]), (fp->passive_vars.ness.pkthunder_trail_x[index] - fp->passive_vars.ness.pkthunder_trail_x[index - 1]));
     }
     else
     {
-        DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f((fp->fighter_vars.ness.pkthunder_trail_y[index] - fp->fighter_vars.ness.pkthunder_trail_y[FTNESS_PKTHUNDER_TRAIL_POS_COUNT - 1]), (fp->fighter_vars.ness.pkthunder_trail_x[index] - fp->fighter_vars.ness.pkthunder_trail_x[FTNESS_PKTHUNDER_TRAIL_POS_COUNT - 1]));
+        DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f((fp->passive_vars.ness.pkthunder_trail_y[index] - fp->passive_vars.ness.pkthunder_trail_y[FTNESS_PKTHUNDER_TRAIL_POS_COUNT - 1]), (fp->passive_vars.ness.pkthunder_trail_x[index] - fp->passive_vars.ness.pkthunder_trail_x[FTNESS_PKTHUNDER_TRAIL_POS_COUNT - 1]));
     }
     DObjGetStruct(weapon_gobj)->rotate.vec.f.z -= F_CST_DTOR32(90.0F);
 

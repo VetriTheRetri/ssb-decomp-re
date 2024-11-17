@@ -57,7 +57,7 @@ void ftKirbyCopyPurinSpecialAirNProcPhysics(GObj *fighter_gobj)
     {
         fp->motion_vars.flags.flag1 = 0;
 
-        fp->fighter_vars.kirby.copypurin_unk++;
+        fp->passive_vars.kirby.copypurin_unk++;
 
         boost = ftKirbyCopyPurinSpecialNGetAngle(fp->input.pl.stick_range.y);
 

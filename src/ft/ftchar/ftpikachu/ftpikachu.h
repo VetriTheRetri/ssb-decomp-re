@@ -98,11 +98,11 @@ typedef enum ftPikachuStatus
 
 } ftPikachuStatus;
 
-typedef struct FTPikachuFighterVars
+typedef struct FTPikachuPassiveVars
 {
 	sb32 is_thunder_destroy;
 
-} FTPikachuFighterVars;
+} FTPikachuPassiveVars;
 
 typedef struct ftPikachuSpecialHiStatusVars
 {

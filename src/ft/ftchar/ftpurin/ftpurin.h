@@ -55,10 +55,10 @@ typedef enum ftPurinStatus
 
 } ftPurinStatus;
 
-typedef struct FTPurinFighterVars
+typedef struct FTPurinPassiveVars
 {
     u32 unk_0x0;
 
-} FTPurinFighterVars;
+} FTPurinPassiveVars;
 
 #endif

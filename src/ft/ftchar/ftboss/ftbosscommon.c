@@ -23,9 +23,9 @@ void ftBossCommonCheckEdgeInvertLR(GObj *fighter_gobj)
     Vec3f pos_left;
     Vec3f pos_right;
 
-    mpCollisionGetLREdgeLeft(fp->fighter_vars.boss.p->current_line_id, &pos_left);
+    mpCollisionGetLREdgeLeft(fp->passive_vars.boss.p->current_line_id, &pos_left);
 
-    mpCollisionGetLREdgeRight(fp->fighter_vars.boss.p->current_line_id, &pos_right);
+    mpCollisionGetLREdgeRight(fp->passive_vars.boss.p->current_line_id, &pos_right);
 
     if (((((pos_left.x + pos_right.x) * 0.5F) - DObjGetStruct(fighter_gobj)->translate.vec.f.x) * fp->lr) < 0.0F)
     {
@@ -38,7 +38,7 @@ void ftBossCommonCheckPlayerInvertLR(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (((DObjGetStruct(fp->fighter_vars.boss.p->target_gobj)->translate.vec.f.x - DObjGetStruct(fighter_gobj)->translate.vec.f.x) * fp->lr) < 0.0F)
+    if (((DObjGetStruct(fp->passive_vars.boss.p->target_gobj)->translate.vec.f.x - DObjGetStruct(fighter_gobj)->translate.vec.f.x) * fp->lr) < 0.0F)
     {
         ftBossCommonInvertLR(fighter_gobj);
     }
@@ -58,22 +58,22 @@ void ftBossCommonGetRandomEdgeLR(s32 line_id, Vec3f *pos)
 void ftBossCommonGotoTargetEdge(GObj *fighter_gobj, Vec3f *pos)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTStruct *player_fp = ftGetStruct(fp->fighter_vars.boss.p->target_gobj);
-    ftBossInfo *boss = fp->fighter_vars.boss.p;
+    FTStruct *player_fp = ftGetStruct(fp->passive_vars.boss.p->target_gobj);
+    ftBossInfo *boss = fp->passive_vars.boss.p;
 
     if ((player_fp->coll_data.ground_line_id != -1) && (player_fp->coll_data.ground_line_id != -2))
     {
-        fp->fighter_vars.boss.p->current_line_id = player_fp->coll_data.ground_line_id;
+        fp->passive_vars.boss.p->current_line_id = player_fp->coll_data.ground_line_id;
     }
     else
     {
         if ((fp->coll_data.ground_line_id != -1) && (player_fp->coll_data.ground_line_id != -2))
         {
-            fp->fighter_vars.boss.p->current_line_id = fp->coll_data.ground_line_id;
+            fp->passive_vars.boss.p->current_line_id = fp->coll_data.ground_line_id;
         }
-        else fp->fighter_vars.boss.p->current_line_id = fp->fighter_vars.boss.p->default_line_id;
+        else fp->passive_vars.boss.p->current_line_id = fp->passive_vars.boss.p->default_line_id;
     }
-    ftBossCommonGetRandomEdgeLR(fp->fighter_vars.boss.p->current_line_id, pos);
+    ftBossCommonGetRandomEdgeLR(fp->passive_vars.boss.p->current_line_id, pos);
 
     pos->y += 100.0F;
 }
@@ -83,8 +83,8 @@ void ftBossCommonSetPosOffsetY(GObj *fighter_gobj, Vec3f *pos, f32 off_y)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    pos->x = DObjGetStruct(fp->fighter_vars.boss.p->target_gobj)->translate.vec.f.x;
-    pos->y = DObjGetStruct(fp->fighter_vars.boss.p->target_gobj)->translate.vec.f.y + off_y;
+    pos->x = DObjGetStruct(fp->passive_vars.boss.p->target_gobj)->translate.vec.f.x;
+    pos->y = DObjGetStruct(fp->passive_vars.boss.p->target_gobj)->translate.vec.f.y + off_y;
     pos->z = 0.0F;
 }
 
@@ -92,8 +92,8 @@ void ftBossCommonSetPosOffsetY(GObj *fighter_gobj, Vec3f *pos, f32 off_y)
 void ftBossCommonSetPosAddVelPlayer(GObj *fighter_gobj, Vec3f *pos, f32 vel_x, f32 vel_y)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTStruct *fp_unk = ftGetStruct(fp->fighter_vars.boss.p->target_gobj);
-    Vec3f translate = DObjGetStruct(fp->fighter_vars.boss.p->target_gobj)->translate.vec.f;
+    FTStruct *fp_unk = ftGetStruct(fp->passive_vars.boss.p->target_gobj);
+    Vec3f translate = DObjGetStruct(fp->passive_vars.boss.p->target_gobj)->translate.vec.f;
     f32 x;
     f32 y;
 
@@ -120,8 +120,8 @@ void ftBossCommonSetPosAddVelAuto(GObj *fighter_gobj, Vec3f *pos, f32 vel_x, f32
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    pos->x = DObjGetStruct(fp->fighter_vars.boss.p->target_gobj)->translate.vec.f.x + (((mtTrigGetRandomUShort() % 2) != 0) ? vel_x : -vel_x);
-    pos->y = DObjGetStruct(fp->fighter_vars.boss.p->target_gobj)->translate.vec.f.y + vel_y;
+    pos->x = DObjGetStruct(fp->passive_vars.boss.p->target_gobj)->translate.vec.f.x + (((mtTrigGetRandomUShort() % 2) != 0) ? vel_x : -vel_x);
+    pos->y = DObjGetStruct(fp->passive_vars.boss.p->target_gobj)->translate.vec.f.y + vel_y;
     pos->z = 0.0F;
 }
 
@@ -152,7 +152,7 @@ void ftBossCommonSetNextAttackWait(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->fighter_vars.boss.p->wait_timer = ((mtTrigGetRandomIntRange(FTBOSS_ATTACK_WAIT_MAX) + (FTBOSS_ATTACK_WAIT_LEVEL_DIV / fp->level)) / fp->fighter_vars.boss.p->wait_div);
+    fp->passive_vars.boss.p->wait_timer = ((mtTrigGetRandomIntRange(FTBOSS_ATTACK_WAIT_MAX) + (FTBOSS_ATTACK_WAIT_LEVEL_DIV / fp->level)) / fp->passive_vars.boss.p->wait_div);
 }
 
 // 0x80158528
@@ -207,7 +207,7 @@ void ftBossCommonSetDefaultLineID(GObj *fighter_gobj)
     }
     fp = ftGetStruct(fighter_gobj);
 
-    mpCollisionGetLineIDsTypeCount(nMPLineKindGround, 1, &fp->fighter_vars.boss.p->default_line_id);
+    mpCollisionGetLineIDsTypeCount(nMPLineKindGround, 1, &fp->passive_vars.boss.p->default_line_id);
 }
 
 // 0x801586A0
@@ -230,7 +230,7 @@ void ftBossCommonUpdateDamageStats(GObj *fighter_gobj)
         }
         else if (fp->percent_damage >= 200)
         {
-            fp->fighter_vars.boss.p->wait_div = 1.5F;
+            fp->passive_vars.boss.p->wait_div = 1.5F;
         }
     }
 }

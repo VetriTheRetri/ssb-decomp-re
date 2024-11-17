@@ -247,7 +247,7 @@ void ftCommonAppearSetStatus(GObj *fighter_gobj)
             }
             else boss_target_gobj = boss_target_gobj->link_next;
         }
-        fp->fighter_vars.boss.p->target_gobj = boss_target_gobj;
+        fp->passive_vars.boss.p->target_gobj = boss_target_gobj;
 
         break;
     }

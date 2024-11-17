@@ -324,9 +324,9 @@ void ftCommonThrownCommonStarUpdatePhysics(GObj *fighter_gobj, f32 decelerate)
         {
             if (((fp->fkind == nFTKindKirby) || (fp->fkind == nFTKindNKirby)) && (fp->status_vars.common.capturekirby.is_kirby != FALSE))
             {
-                ftKirbySpecialNInitFighterVars(fp);
+                ftKirbySpecialNInitPassiveVars(fp);
 
-                fp->fighter_vars.kirby.copy_id = nFTKindKirby;
+                fp->passive_vars.kirby.copy_id = nFTKindKirby;
 
                 ftParamSetModelPartDefaultID(fighter_gobj, 6, 0);
                 ftParamResetModelPartAll(fighter_gobj);

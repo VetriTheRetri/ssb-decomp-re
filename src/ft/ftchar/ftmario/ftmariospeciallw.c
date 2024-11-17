@@ -38,7 +38,7 @@ void ftMarioSpecialAirLwProcUpdate(GObj *fighter_gobj)
     if (fp->motion_vars.flags.flag2 != 0)
     {
         fp->motion_vars.flags.flag2 = 0;
-        fp->fighter_vars.mario.is_expend_tornado = TRUE;
+        fp->passive_vars.mario.is_expend_tornado = TRUE;
     }
     ftAnimEndSetFall(fighter_gobj);
 }
@@ -82,7 +82,7 @@ void ftMarioSpecialAirLwProcPhysics(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     FTAttributes *attr = fp->attr;
 
-    if ((fp->fighter_vars.mario.is_expend_tornado == FALSE) && (fp->motion_vars.flags.flag3 != 0) && (fp->input.pl.button_tap & fp->input.button_mask_b))
+    if ((fp->passive_vars.mario.is_expend_tornado == FALSE) && (fp->motion_vars.flags.flag3 != 0) && (fp->input.pl.button_tap & fp->input.button_mask_b))
     {
         ftPhysicsAddClampAirVelY(fp, FTMARIO_TORNADO_VEL_Y_TAP, FTMARIO_TORNADO_VEL_Y_CLAMP);
     }
@@ -173,7 +173,7 @@ void ftMarioSpecialAirLwSetStatus(GObj *fighter_gobj)
     ftMainSetFighterStatus(fighter_gobj, nFTMarioStatusSpecialAirLw, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
 
-    tornado_vel_y = (fp->fighter_vars.mario.is_expend_tornado != FALSE) ? 0.0F : FTMARIO_TORNADO_VEL_Y_TAP;
+    tornado_vel_y = (fp->passive_vars.mario.is_expend_tornado != FALSE) ? 0.0F : FTMARIO_TORNADO_VEL_Y_TAP;
 
     fp->physics.vel_air.y = (FTMARIO_TORNADO_VEL_Y_BASE - tornado_vel_y);
 

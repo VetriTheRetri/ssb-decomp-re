@@ -74,7 +74,7 @@ SYTaskmanSetup dSCVSBattleTaskmanSetup =
     0,                                  // Number of Cameras
     sizeof(CObj),                       // Camera size
     
-    scVSBattleFuncStart             	// Task start function
+    scVSBattleStartBattle             	// Task start function
 };
 
 // 0x8018D0C0
@@ -128,7 +128,7 @@ s32 scVSBattleGetStartPlayerLR(s32 target_player)
 }
 
 // 0x8018D228
-void scVSBattleFuncStart(void)
+void scVSBattleStartBattle(void)
 {
 	s32 unused[4];
 	s32 player;
@@ -142,7 +142,7 @@ void scVSBattleFuncStart(void)
 
 	scVSBattleSetupFiles();
 
-	if (!(gSCManagerBackupData.error_flags & LBBACKUP_ERROR_1PGAMEMARIO) && (gSCManagerBackupData.boot >= 0x45))
+	if (!(gSCManagerBackupData.error_flags & LBBACKUP_ERROR_1PGAMEMARIO) && (gSCManagerBackupData.boot >= 69))
 	{
 		file = lbRelocGetFileExternHeap((u32)&D_NF_000000C7, syTaskmanMalloc(lbRelocGetFileSize((u32)&D_NF_000000C7), 0x10));
 
@@ -417,7 +417,7 @@ sb32 scVSBattleSetScoreCheckSuddenDeath(void)
 }
 
 // 0x8018DE20 - Start sudden death
-void scVSBattleStartSudddenDeath(void)
+void scVSBattleStartSuddenDeath(void)
 {
 	s32 unused[3];
 	GObj *fighter_gobj;
@@ -533,7 +533,7 @@ void scVSBattleStartScene(void)
 	syVideoInit(&dSCVSBattleVideoSetup);
 
 	dSCVSBattleTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSYFramebufferSets - (uintptr_t)&ovl4_BSS_END);
-	dSCVSBattleTaskmanSetup.func_start = scVSBattleFuncStart;
+	dSCVSBattleTaskmanSetup.func_start = scVSBattleStartBattle;
 	scManagerFuncUpdate(&dSCVSBattleTaskmanSetup);
 
 	auStopBGM();
@@ -552,7 +552,7 @@ void scVSBattleStartScene(void)
 
 		gSCManagerBattleState->game_type = nSCBattleGameTypeRoyal;
 
-		dSCVSBattleTaskmanSetup.func_start = scVSBattleStartSudddenDeath;
+		dSCVSBattleTaskmanSetup.func_start = scVSBattleStartSuddenDeath;
 
 		scManagerFuncUpdate(&dSCVSBattleTaskmanSetup);
 		auStopBGM();

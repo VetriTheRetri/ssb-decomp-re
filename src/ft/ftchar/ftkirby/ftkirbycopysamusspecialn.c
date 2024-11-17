@@ -23,7 +23,7 @@ void ftKirbyCopySamusSpecialNProcDamage(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->fighter_vars.kirby.copysamus_charge_level = 0;
+    fp->passive_vars.kirby.copysamus_charge_level = 0;
 
     ftKirbyCopySamusSpecialNDestroyChargeShot(fp);
 }
@@ -129,11 +129,11 @@ void ftKirbyCopySamusSpecialNLoopProcUpdate(GObj *fighter_gobj)
     {
         fp->status_vars.kirby.copysamus_specialn.charge_int = FTKIRBY_COPYSAMUS_CHARGE_INT;
 
-        if (fp->fighter_vars.kirby.copysamus_charge_level <= (FTKIRBY_COPYSAMUS_CHARGE_MAX - 1))
+        if (fp->passive_vars.kirby.copysamus_charge_level <= (FTKIRBY_COPYSAMUS_CHARGE_MAX - 1))
         {
-            fp->fighter_vars.kirby.copysamus_charge_level++;
+            fp->passive_vars.kirby.copysamus_charge_level++;
 
-            if (fp->fighter_vars.kirby.copysamus_charge_level == FTKIRBY_COPYSAMUS_CHARGE_MAX)
+            if (fp->passive_vars.kirby.copysamus_charge_level == FTKIRBY_COPYSAMUS_CHARGE_MAX)
             {
                 ftParamCheckSetFighterColAnimID(fighter_gobj, FTKIRBY_COPYSAMUS_CHARGE_COLANIM_ID, FTKIRBY_COPYSAMUS_CHARGE_COLANIM_LENGTH);
                 ftKirbyCopySamusSpecialNDestroyChargeShot(fp);
@@ -144,7 +144,7 @@ void ftKirbyCopySamusSpecialNLoopProcUpdate(GObj *fighter_gobj)
             {
                 WPStruct *wp = wpGetStruct(fp->status_vars.kirby.copysamus_specialn.charge_gobj);
 
-                wp->weapon_vars.charge_shot.charge_size = fp->fighter_vars.kirby.copysamus_charge_level;
+                wp->weapon_vars.charge_shot.charge_size = fp->passive_vars.kirby.copysamus_charge_level;
             }
         }
     }
@@ -201,7 +201,7 @@ void ftKirbyCopySamusSpecialNLoopSetStatus(GObj *fighter_gobj)
     fp->status_vars.samus.specialn.charge_int = FTKIRBY_COPYSAMUS_CHARGE_INT;
 
     ftKirbyCopySamusSpecialNGetChargeShotPosition(fp, &pos);
-    fp->status_vars.kirby.copysamus_specialn.charge_gobj = wpSamusChargeShotMakeWeapon(fighter_gobj, &pos, fp->fighter_vars.kirby.copysamus_charge_level, 0);
+    fp->status_vars.kirby.copysamus_specialn.charge_gobj = wpSamusChargeShotMakeWeapon(fighter_gobj, &pos, fp->passive_vars.kirby.copysamus_charge_level, 0);
 }
 
 // 0x80157314
@@ -227,32 +227,32 @@ void ftKirbyCopySamusSpecialNEndProcUpdate(GObj *fighter_gobj)
             DObjGetStruct(fp->status_vars.kirby.copysamus_specialn.charge_gobj)->translate.vec.f = pos;
 
             wp->weapon_vars.charge_shot.is_full_charge = TRUE;
-            wp->weapon_vars.charge_shot.charge_size = fp->fighter_vars.kirby.copysamus_charge_level;
+            wp->weapon_vars.charge_shot.charge_size = fp->passive_vars.kirby.copysamus_charge_level;
 
             mpCommonRunWeaponCollisionDefault(fp->status_vars.kirby.copysamus_specialn.charge_gobj, fp->coll_data.p_translate, &fp->coll_data);
 
             wp->weapon_vars.charge_shot.owner_gobj = NULL;
             fp->status_vars.kirby.copysamus_specialn.charge_gobj = NULL;
         }
-        else wpSamusChargeShotMakeWeapon(fighter_gobj, &pos, fp->fighter_vars.kirby.copysamus_charge_level, 1);
+        else wpSamusChargeShotMakeWeapon(fighter_gobj, &pos, fp->passive_vars.kirby.copysamus_charge_level, 1);
 
         if (fp->ga == nMPKineticsAir)
         {
-            charge_recoil_x = fp->fighter_vars.kirby.copysamus_charge_level + 1;
+            charge_recoil_x = fp->passive_vars.kirby.copysamus_charge_level + 1;
 
             fp->physics.vel_air.x = ((FTKIRBY_COPYSAMUS_CHARGE_RECOIL_MUL * charge_recoil_x) + FTKIRBY_COPYSAMUS_CHARGE_RECOIL_BASE) * -fp->lr;
 
-            charge_recoil_y = charge_recoil_x + FTKIRBY_COPYSAMUS_CHARGE_RECOIL_ADD + (fp->fighter_vars.kirby.copysamus_charge_recoil * -FTKIRBY_COPYSAMUS_CHARGE_RECOIL_BASE);
+            charge_recoil_y = charge_recoil_x + FTKIRBY_COPYSAMUS_CHARGE_RECOIL_ADD + (fp->passive_vars.kirby.copysamus_charge_recoil * -FTKIRBY_COPYSAMUS_CHARGE_RECOIL_BASE);
 
             if (fp->physics.vel_air.y < charge_recoil_y)
             {
                 fp->physics.vel_air.y = charge_recoil_y;
             }
-            fp->fighter_vars.kirby.copysamus_charge_recoil++;
+            fp->passive_vars.kirby.copysamus_charge_recoil++;
         }
-        else fp->physics.vel_ground.x = -((FTKIRBY_COPYSAMUS_CHARGE_RECOIL_MUL * (fp->fighter_vars.kirby.copysamus_charge_level + 1)) + FTKIRBY_COPYSAMUS_CHARGE_RECOIL_BASE);
+        else fp->physics.vel_ground.x = -((FTKIRBY_COPYSAMUS_CHARGE_RECOIL_MUL * (fp->passive_vars.kirby.copysamus_charge_level + 1)) + FTKIRBY_COPYSAMUS_CHARGE_RECOIL_BASE);
         
-        fp->fighter_vars.kirby.copysamus_charge_level = 0;
+        fp->passive_vars.kirby.copysamus_charge_level = 0;
 
         fp->proc_damage = NULL;
     }
@@ -325,7 +325,7 @@ void ftKirbyCopySamusSpecialAirNEndSetStatus(GObj *fighter_gobj)
 // 0x8015767C
 f32 ftKirbyCopySamusSpecialNStartGetAnimSpeed(FTStruct *fp)
 {
-    f32 ret = fp->fighter_vars.kirby.copysamus_charge_level / (f32)FTKIRBY_COPYSAMUS_CHARGE_MAX;
+    f32 ret = fp->passive_vars.kirby.copysamus_charge_level / (f32)FTKIRBY_COPYSAMUS_CHARGE_MAX;
 
     ret = (-0.16000003F) * ret + 1.0F;
 
@@ -349,7 +349,7 @@ void ftKirbyCopySamusSpecialNStartSetStatus(GObj *fighter_gobj)
     ftMainPlayAnimNoEffect(fighter_gobj);
     ftKirbyCopySamusSpecialNInitStatusVars(fp);
 
-    fp->status_vars.kirby.copysamus_specialn.is_release = (fp->fighter_vars.kirby.copysamus_charge_level == FTKIRBY_COPYSAMUS_CHARGE_MAX) ? TRUE : FALSE;
+    fp->status_vars.kirby.copysamus_specialn.is_release = (fp->passive_vars.kirby.copysamus_charge_level == FTKIRBY_COPYSAMUS_CHARGE_MAX) ? TRUE : FALSE;
 }
 
 // 0x80157744

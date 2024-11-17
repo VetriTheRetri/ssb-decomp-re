@@ -11,7 +11,7 @@ void ftDonkeySpecialNProcDamage(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->fighter_vars.donkey.charge_level = 0;
+    fp->passive_vars.donkey.charge_level = 0;
 }
 
 // 0x8015AF1C
@@ -82,11 +82,11 @@ void ftDonkeySpecialNLoopProcUpdate(GObj *fighter_gobj)
     {
         if (fp->status_vars.donkey.specialn.is_charging != FALSE)
         {
-            if (fp->fighter_vars.donkey.charge_level < FTDONKEY_GIANTPUNCH_CHARGE_MAX)
+            if (fp->passive_vars.donkey.charge_level < FTDONKEY_GIANTPUNCH_CHARGE_MAX)
             {
-                fp->fighter_vars.donkey.charge_level++;
+                fp->passive_vars.donkey.charge_level++;
 
-                if (fp->fighter_vars.donkey.charge_level == FTDONKEY_GIANTPUNCH_CHARGE_MAX)
+                if (fp->passive_vars.donkey.charge_level == FTDONKEY_GIANTPUNCH_CHARGE_MAX)
                 {
                     gcSetAnimSpeed(fighter_gobj, FTDONKEY_GIANTPUNCH_CHRAGE_ANIM_SPEED);
 
@@ -149,7 +149,7 @@ void ftDonkeySpecialNLoopSetProcDamageAnimRate(GObj *fighter_gobj)
 
     fp->proc_damage = ftDonkeySpecialNProcDamage;
 
-    if (fp->fighter_vars.donkey.charge_level == FTDONKEY_GIANTPUNCH_CHARGE_MAX)
+    if (fp->passive_vars.donkey.charge_level == FTDONKEY_GIANTPUNCH_CHARGE_MAX)
     {
         gcSetAnimSpeed(fighter_gobj, FTDONKEY_GIANTPUNCH_CHRAGE_ANIM_SPEED);
     }
@@ -237,9 +237,9 @@ void ftDonkeySpecialNGetStatusChargeLevelReset(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->status_vars.donkey.specialn.charge_level = fp->fighter_vars.donkey.charge_level;
+    fp->status_vars.donkey.specialn.charge_level = fp->passive_vars.donkey.charge_level;
 
-    fp->fighter_vars.donkey.charge_level = 0;
+    fp->passive_vars.donkey.charge_level = 0;
 }
 
 //0x8015B51C
@@ -247,11 +247,11 @@ void ftDonkeySpecialNEndSetStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    s32 status_id = (fp->fighter_vars.donkey.charge_level == FTDONKEY_GIANTPUNCH_CHARGE_MAX) ? nFTDonkeyStatusSpecialNFull : nFTDonkeyStatusSpecialNEnd;
+    s32 status_id = (fp->passive_vars.donkey.charge_level == FTDONKEY_GIANTPUNCH_CHARGE_MAX) ? nFTDonkeyStatusSpecialNFull : nFTDonkeyStatusSpecialNEnd;
 
     ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_COLANIM);
 
-    fp->physics.vel_ground.x = fp->fighter_vars.donkey.charge_level * FTDONKEY_GIANTPUNCH_VEL_MUL;
+    fp->physics.vel_ground.x = fp->passive_vars.donkey.charge_level * FTDONKEY_GIANTPUNCH_VEL_MUL;
 
     ftDonkeySpecialNGetStatusChargeLevelReset(fighter_gobj);
 }
@@ -261,7 +261,7 @@ void ftDonkeySpecialAirNEndSetStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    s32 status_id = (fp->fighter_vars.donkey.charge_level == FTDONKEY_GIANTPUNCH_CHARGE_MAX) ? nFTDonkeyStatusSpecialAirNFull : nFTDonkeyStatusSpecialAirNEnd;
+    s32 status_id = (fp->passive_vars.donkey.charge_level == FTDONKEY_GIANTPUNCH_CHARGE_MAX) ? nFTDonkeyStatusSpecialAirNFull : nFTDonkeyStatusSpecialAirNEnd;
 
     ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, (FTSTATUS_PRESERVE_FASTFALL | FTSTATUS_PRESERVE_COLANIM));
 
@@ -273,7 +273,7 @@ void ftDonkeySpecialNInitStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->status_vars.donkey.specialn.is_release = (fp->fighter_vars.donkey.charge_level == FTDONKEY_GIANTPUNCH_CHARGE_MAX) ? TRUE : FALSE;
+    fp->status_vars.donkey.specialn.is_release = (fp->passive_vars.donkey.charge_level == FTDONKEY_GIANTPUNCH_CHARGE_MAX) ? TRUE : FALSE;
 
     fp->status_vars.donkey.specialn.is_charging = FALSE;
     fp->status_vars.donkey.specialn.is_cancel = FALSE;

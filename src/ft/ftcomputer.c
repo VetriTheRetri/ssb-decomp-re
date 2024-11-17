@@ -4249,7 +4249,7 @@ sb32 ftComputerCheckDetectTarget(FTStruct *this_fp, f32 detect_range_base)
                             {
                                 if ((((FTStruct*)user_data)->fkind == nFTKindNess) || (((FTStruct*)user_data)->fkind == nFTKindFox))
                                 {
-                                    fkind = (this_fp->fkind == nFTKindKirby) ? this_fp->fighter_vars.kirby.copy_id : this_fp->fkind;
+                                    fkind = (this_fp->fkind == nFTKindKirby) ? this_fp->passive_vars.kirby.copy_id : this_fp->fkind;
 
                                     switch (fkind)
                                     {
@@ -4269,7 +4269,7 @@ sb32 ftComputerCheckDetectTarget(FTStruct *this_fp, f32 detect_range_base)
                         {
                         case nFTKindDonkey:
                         case nFTKindGDonkey:
-                            if (this_fp->fighter_vars.donkey.charge_level == FTDONKEY_GIANTPUNCH_CHARGE_MAX)
+                            if (this_fp->passive_vars.donkey.charge_level == FTDONKEY_GIANTPUNCH_CHARGE_MAX)
                             {
                                 detect_ranges_x[attack_count++] = 4.0F;
                             }
@@ -4277,7 +4277,7 @@ sb32 ftComputerCheckDetectTarget(FTStruct *this_fp, f32 detect_range_base)
                             break;
 
                         case nFTKindSamus:
-                            if (this_fp->fighter_vars.samus.charge_level == FTSAMUS_CHARGE_MAX)
+                            if (this_fp->passive_vars.samus.charge_level == FTSAMUS_CHARGE_MAX)
                             {
                                 detect_ranges_x[attack_count++] = 4.0F;
                             }
@@ -4285,10 +4285,10 @@ sb32 ftComputerCheckDetectTarget(FTStruct *this_fp, f32 detect_range_base)
                             break;
 
                         case nFTKindKirby:
-                            switch (this_fp->fighter_vars.kirby.copy_id)
+                            switch (this_fp->passive_vars.kirby.copy_id)
                             {
                             case nFTKindDonkey:
-                                if (this_fp->fighter_vars.kirby.copydonkey_charge_level == FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_MAX)
+                                if (this_fp->passive_vars.kirby.copydonkey_charge_level == FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_MAX)
                                 {
                                     detect_ranges_x[attack_count++] = 4.0F;
                                 }
@@ -4296,7 +4296,7 @@ sb32 ftComputerCheckDetectTarget(FTStruct *this_fp, f32 detect_range_base)
                                 break;
 
                             case nFTKindSamus:
-                                if (this_fp->fighter_vars.kirby.copysamus_charge_level == FTKIRBY_COPYSAMUS_CHARGE_MAX)
+                                if (this_fp->passive_vars.kirby.copysamus_charge_level == FTKIRBY_COPYSAMUS_CHARGE_MAX)
                                 {
                                     detect_ranges_x[attack_count++] = 4.0F;
                                 }
@@ -5328,7 +5328,7 @@ sb32 func_ovl3_80135B78(FTStruct *this_fp)
 
         if (other_fp->fkind == nFTKindDonkey)
         {
-            if (other_fp->fighter_vars.donkey.charge_level == FTDONKEY_GIANTPUNCH_CHARGE_MAX)
+            if (other_fp->passive_vars.donkey.charge_level == FTDONKEY_GIANTPUNCH_CHARGE_MAX)
             {
                 if (this_fp->level && this_fp->level); // WTF???
             }
@@ -5779,7 +5779,7 @@ sb32 ftComputerCheckTryChargeSpecialN(FTStruct *fp)
             (fp->status_id != nFTDonkeyStatusSpecialLwStart)   &&
             (fp->status_id != nFTDonkeyStatusSpecialLwLoop)    &&
             (fp->status_id != nFTDonkeyStatusSpecialLwEnd)     &&
-            (fp->fighter_vars.donkey.charge_level < FTDONKEY_GIANTPUNCH_CHARGE_MAX)
+            (fp->passive_vars.donkey.charge_level < FTDONKEY_GIANTPUNCH_CHARGE_MAX)
         )
         {
             ftComputerSetCommandWaitShort(fp, 0xB);
@@ -5803,7 +5803,7 @@ sb32 ftComputerCheckTryChargeSpecialN(FTStruct *fp)
         case nFTCommonStatusLandingLight:
         case nFTCommonStatusOttottoWait:
         case nFTCommonStatusOttotto:
-            if (fp->fighter_vars.donkey.charge_level < FTDONKEY_GIANTPUNCH_CHARGE_MAX)
+            if (fp->passive_vars.donkey.charge_level < FTDONKEY_GIANTPUNCH_CHARGE_MAX)
             {
                 ftComputerSetCommandWaitShort(fp, 0xB);
                 return TRUE;
@@ -5819,7 +5819,7 @@ sb32 ftComputerCheckTryChargeSpecialN(FTStruct *fp)
             (fp->status_id != nFTSamusStatusSpecialAirNStart)  &&
             (fp->status_id != nFTSamusStatusSpecialNLoop)      &&
             (fp->status_id != nFTSamusStatusSpecialAirNEnd)    &&
-            (fp->fighter_vars.samus.charge_level < FTSAMUS_CHARGE_MAX)
+            (fp->passive_vars.samus.charge_level < FTSAMUS_CHARGE_MAX)
         )
         {
             ftComputerSetCommandWaitShort(fp, 0xB);
@@ -5828,7 +5828,7 @@ sb32 ftComputerCheckTryChargeSpecialN(FTStruct *fp)
         break;
 
     case nFTKindKirby:
-        switch (fp->fighter_vars.kirby.copy_id)
+        switch (fp->passive_vars.kirby.copy_id)
         {
         case nFTKindDonkey:
             if
@@ -5837,7 +5837,7 @@ sb32 ftComputerCheckTryChargeSpecialN(FTStruct *fp)
                 (fp->status_id != nFTKirbyStatusCopyDonkeySpecialAirNStart)   &&
                 (fp->status_id != nFTKirbyStatusCopyDonkeySpecialNLoop)       &&
                 (fp->status_id != nFTKirbyStatusCopyDonkeySpecialAirNLoop)    &&
-                (fp->fighter_vars.kirby.copydonkey_charge_level < FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_MAX)
+                (fp->passive_vars.kirby.copydonkey_charge_level < FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_MAX)
             )
             {
                 ftComputerSetCommandWaitShort(fp, 0xB);
@@ -5852,7 +5852,7 @@ sb32 ftComputerCheckTryChargeSpecialN(FTStruct *fp)
                 (fp->status_id != nFTKirbyStatusCopySamusSpecialAirNStart)&&
                 (fp->status_id != nFTKirbyStatusCopySamusSpecialNLoop)    &&
                 (fp->status_id != nFTKirbyStatusCopySamusSpecialAirNEnd)  &&
-                (fp->fighter_vars.kirby.copysamus_charge_level < FTKIRBY_COPYSAMUS_CHARGE_MAX)
+                (fp->passive_vars.kirby.copysamus_charge_level < FTKIRBY_COPYSAMUS_CHARGE_MAX)
             )
             {
                 ftComputerSetCommandWaitShort(fp, 0xB);
@@ -5868,7 +5868,7 @@ sb32 ftComputerCheckTryChargeSpecialN(FTStruct *fp)
 // 0x80136C0C
 sb32 ftComputerCheckTryCancelSpecialN(FTStruct *fp)
 {
-    switch ((fp->fkind == nFTKindKirby) ? fp->fighter_vars.kirby.copy_id : fp->fkind)
+    switch ((fp->fkind == nFTKindKirby) ? fp->passive_vars.kirby.copy_id : fp->fkind)
     {
     case nFTKindDonkey:
     case nFTKindGDonkey:
@@ -6872,7 +6872,7 @@ sb32 func_ovl3_80138AA8(FTStruct *this_fp, sb32 is_delay)
                 return FALSE;
             }
         }
-        fkind = (this_fp->fkind == nFTKindKirby) ? this_fp->fighter_vars.kirby.copy_id : this_fp->fkind;
+        fkind = (this_fp->fkind == nFTKindKirby) ? this_fp->passive_vars.kirby.copy_id : this_fp->fkind;
 
         if (fkind == nFTKindSamus)
         {
@@ -6971,7 +6971,7 @@ sb32 func_ovl3_80138EE4(FTStruct *fp)
     {
         return FALSE;
     }
-    fkind = (fp->fkind == nFTKindKirby) ? fp->fighter_vars.kirby.copy_id : fp->fkind;
+    fkind = (fp->fkind == nFTKindKirby) ? fp->passive_vars.kirby.copy_id : fp->fkind;
 
     if (fkind == nFTKindSamus)
     {

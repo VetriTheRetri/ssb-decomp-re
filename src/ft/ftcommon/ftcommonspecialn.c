@@ -81,7 +81,7 @@ void ftKirbySpecialNSetStatusSelect(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    dFTKirbySpecialNStatusList[fp->fighter_vars.kirby.copy_id](fighter_gobj);
+    dFTKirbySpecialNStatusList[fp->passive_vars.kirby.copy_id](fighter_gobj);
 }
 
 // 0x80151098

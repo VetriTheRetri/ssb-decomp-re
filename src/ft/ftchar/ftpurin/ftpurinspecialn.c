@@ -59,7 +59,7 @@ void ftPurinSpecialAirNProcPhysics(GObj *fighter_gobj)
     {
         fp->motion_vars.flags.flag1 = 0;
 
-        fp->fighter_vars.purin.unk_0x0++;
+        fp->passive_vars.purin.unk_0x0++;
 
         angle = ftPurinSpecialNGetAngle(fp->input.pl.stick_range.y);
 

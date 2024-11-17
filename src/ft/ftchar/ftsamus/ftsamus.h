@@ -69,12 +69,12 @@ typedef enum ftSamusStatus
 
 } ftSamusStatus;
 
-typedef struct FTSamusFighterVars
+typedef struct FTSamusPassiveVars
 {
     s32 charge_level;
     s32 charge_recoil;
 
-} FTSamusFighterVars;
+} FTSamusPassiveVars;
 
 typedef struct ftSamusSpecialNStatusVars
 {

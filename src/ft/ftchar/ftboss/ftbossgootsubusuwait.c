@@ -21,7 +21,7 @@ void ftBossGootsubusuWaitProcPhysics(GObj *fighter_gobj)
     }
     else
     {
-        f32 dist_x = DObjGetStruct(fp->fighter_vars.boss.p->target_gobj)->translate.vec.f.x - DObjGetStruct(fighter_gobj)->translate.vec.f.x;
+        f32 dist_x = DObjGetStruct(fp->passive_vars.boss.p->target_gobj)->translate.vec.f.x - DObjGetStruct(fighter_gobj)->translate.vec.f.x;
 
         if (ABSF(dist_x) > 35.0F)
         {

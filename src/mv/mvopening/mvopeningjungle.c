@@ -354,13 +354,13 @@ void mvOpeningJungleMakeFighters(void)
         {
             fp = ftGetStruct(fighter_gobj);
 
-            fp->fighter_vars.donkey.charge_level = 9;
+            fp->passive_vars.donkey.charge_level = 9;
         }
         else
         {
             fp = ftGetStruct(fighter_gobj);
 
-            fp->fighter_vars.samus.charge_level = 6;
+            fp->passive_vars.samus.charge_level = 6;
         }
         ftParamInitPlayerBattleStats(i, fighter_gobj);
 

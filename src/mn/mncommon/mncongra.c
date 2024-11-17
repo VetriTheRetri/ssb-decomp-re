@@ -292,7 +292,7 @@ void mnCongraFuncStart(void)
 			lbCommonDrawSprite,
 			80,
 			COBJ_MASK_DLLINK(0),
-			-1,
+			~0,
 			FALSE,
 			nGCProcessKindFunc,
 			NULL,

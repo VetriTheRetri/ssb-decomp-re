@@ -5001,22 +5001,22 @@ void efManagerNessPKThunderTrailProcUpdate(GObj *effect_gobj)
     }
     fp = ftGetStruct(ep->effect_vars.pkthunder.owner_gobj);
 
-    index = fp->fighter_vars.ness.pkthunder_trail_id - (FTNESS_PKTHUNDER_TRAIL_POS_COUNT - 2);
+    index = fp->passive_vars.ness.pkthunder_trail_id - (FTNESS_PKTHUNDER_TRAIL_POS_COUNT - 2);
 
     if (index < 0)
     {
         index += FTNESS_PKTHUNDER_TRAIL_POS_COUNT;
     }
-    DObjGetStruct(effect_gobj)->translate.vec.f.x = fp->fighter_vars.ness.pkthunder_trail_x[index];
-    DObjGetStruct(effect_gobj)->translate.vec.f.y = fp->fighter_vars.ness.pkthunder_trail_y[index];
+    DObjGetStruct(effect_gobj)->translate.vec.f.x = fp->passive_vars.ness.pkthunder_trail_x[index];
+    DObjGetStruct(effect_gobj)->translate.vec.f.y = fp->passive_vars.ness.pkthunder_trail_y[index];
 
     if (index > 0)
     {
-        DObjGetStruct(effect_gobj)->rotate.vec.f.z = atan2f((fp->fighter_vars.ness.pkthunder_trail_y[index] - fp->fighter_vars.ness.pkthunder_trail_y[index - 1]), (fp->fighter_vars.ness.pkthunder_trail_x[index] - fp->fighter_vars.ness.pkthunder_trail_x[index - 1]));
+        DObjGetStruct(effect_gobj)->rotate.vec.f.z = atan2f((fp->passive_vars.ness.pkthunder_trail_y[index] - fp->passive_vars.ness.pkthunder_trail_y[index - 1]), (fp->passive_vars.ness.pkthunder_trail_x[index] - fp->passive_vars.ness.pkthunder_trail_x[index - 1]));
     }
     else
     {
-        DObjGetStruct(effect_gobj)->rotate.vec.f.z = atan2f((fp->fighter_vars.ness.pkthunder_trail_y[index] - fp->fighter_vars.ness.pkthunder_trail_y[FTNESS_PKTHUNDER_TRAIL_POS_COUNT - 1]), (fp->fighter_vars.ness.pkthunder_trail_x[index] - fp->fighter_vars.ness.pkthunder_trail_x[FTNESS_PKTHUNDER_TRAIL_POS_COUNT - 1]));
+        DObjGetStruct(effect_gobj)->rotate.vec.f.z = atan2f((fp->passive_vars.ness.pkthunder_trail_y[index] - fp->passive_vars.ness.pkthunder_trail_y[FTNESS_PKTHUNDER_TRAIL_POS_COUNT - 1]), (fp->passive_vars.ness.pkthunder_trail_x[index] - fp->passive_vars.ness.pkthunder_trail_x[FTNESS_PKTHUNDER_TRAIL_POS_COUNT - 1]));
     }
     DObjGetStruct(effect_gobj)->rotate.vec.f.z -= F_CLC_DTOR32(90.0F);
 }

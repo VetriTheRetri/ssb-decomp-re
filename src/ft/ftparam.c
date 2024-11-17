@@ -1266,7 +1266,7 @@ void ftParamResetStatUpdateColAnim(GObj *fighter_gobj)
     case nFTKindDonkey:
     case nFTKindNDonkey:
     case nFTKindGDonkey:
-        if (fp->fighter_vars.donkey.charge_level == FTDONKEY_GIANTPUNCH_CHARGE_MAX)
+        if (fp->passive_vars.donkey.charge_level == FTDONKEY_GIANTPUNCH_CHARGE_MAX)
         {
             ftParamCheckSetFighterColAnimID(fighter_gobj, FTDONKEY_GIANTPUNCH_CHARGE_COLANIM_ID, FTDONKEY_GIANTPUNCH_CHARGE_COLANIM_LENGTH);
         }
@@ -1274,23 +1274,23 @@ void ftParamResetStatUpdateColAnim(GObj *fighter_gobj)
 
     case nFTKindSamus:
     case nFTKindNSamus:
-        if (fp->fighter_vars.samus.charge_level == FTSAMUS_CHARGE_MAX)
+        if (fp->passive_vars.samus.charge_level == FTSAMUS_CHARGE_MAX)
         {
             ftParamCheckSetFighterColAnimID(fighter_gobj, FTSAMUS_CHARGE_COLANIM_ID, FTSAMUS_CHARGE_COLANIM_LENGTH);
         }
         break;
 
     case nFTKindKirby:
-        if ((fp->fighter_vars.kirby.copy_id == nFTKindSamus) || (fp->fighter_vars.kirby.copy_id == nFTKindNSamus))
+        if ((fp->passive_vars.kirby.copy_id == nFTKindSamus) || (fp->passive_vars.kirby.copy_id == nFTKindNSamus))
         {
-            if (fp->fighter_vars.kirby.copysamus_charge_level == FTKIRBY_COPYSAMUS_CHARGE_MAX)
+            if (fp->passive_vars.kirby.copysamus_charge_level == FTKIRBY_COPYSAMUS_CHARGE_MAX)
             {
                 ftParamCheckSetFighterColAnimID(fighter_gobj, FTKIRBY_COPYSAMUS_CHARGE_COLANIM_ID, FTKIRBY_COPYSAMUS_CHARGE_COLANIM_LENGTH);
             }
         }
-        if ((fp->fighter_vars.kirby.copy_id == nFTKindDonkey) || (fp->fighter_vars.kirby.copy_id == nFTKindNDonkey) || (fp->fighter_vars.kirby.copy_id == nFTKindGDonkey))
+        if ((fp->passive_vars.kirby.copy_id == nFTKindDonkey) || (fp->passive_vars.kirby.copy_id == nFTKindNDonkey) || (fp->passive_vars.kirby.copy_id == nFTKindGDonkey))
         {
-            if (fp->fighter_vars.kirby.copydonkey_charge_level == FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_MAX)
+            if (fp->passive_vars.kirby.copydonkey_charge_level == FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_MAX)
             {
                 ftParamCheckSetFighterColAnimID(fighter_gobj, FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_COLANIM_ID, FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_COLANIM_LENGTH);
             }

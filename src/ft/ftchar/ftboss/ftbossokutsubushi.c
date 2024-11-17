@@ -31,7 +31,7 @@ void ftBossOkutsubushiProcPhysics(GObj *fighter_gobj)
 
     fp = ftGetStruct(fighter_gobj);
 
-    dist_x = DObjGetStruct(fp->fighter_vars.boss.p->target_gobj)->translate.vec.f.x - DObjGetStruct(fighter_gobj)->translate.vec.f.x;
+    dist_x = DObjGetStruct(fp->passive_vars.boss.p->target_gobj)->translate.vec.f.x - DObjGetStruct(fighter_gobj)->translate.vec.f.x;
 
     if (ABSF(dist_x) > 40.0F)
     {

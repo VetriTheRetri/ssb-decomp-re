@@ -12,11 +12,11 @@ void ftLinkSpecialNDestroyBoomerang(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->fighter_vars.link.boomerang_gobj != NULL)
+    if (fp->passive_vars.link.boomerang_gobj != NULL)
     {
-        wpMainDestroyWeapon(fp->fighter_vars.link.boomerang_gobj);
+        wpMainDestroyWeapon(fp->passive_vars.link.boomerang_gobj);
 
-        fp->fighter_vars.link.boomerang_gobj = NULL;
+        fp->passive_vars.link.boomerang_gobj = NULL;
     }
 }
 
@@ -36,7 +36,7 @@ void ftLinkSpecialNMakeBoomerang(GObj *fighter_gobj)
 
         gmCollisionGetFighterPartsWorldPosition(fp->joints[FTLINK_BOOMERANG_SPAWN_JOINT], &pos);
 
-        fp->fighter_vars.link.boomerang_gobj = wpLinkBoomerangMakeWeapon(fighter_gobj, &pos);
+        fp->passive_vars.link.boomerang_gobj = wpLinkBoomerangMakeWeapon(fighter_gobj, &pos);
     }
 }
 
@@ -135,7 +135,7 @@ void ftLinkSpecialNSetStatus(GObj *fighter_gobj)
 
     fp->proc_status = ftLinkSpecialNProcStatus;
 
-    if (fp->fighter_vars.link.boomerang_gobj != NULL)
+    if (fp->passive_vars.link.boomerang_gobj != NULL)
     {
         ftMainSetFighterStatus(fighter_gobj, nFTLinkStatusSpecialNEmpty, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
@@ -153,7 +153,7 @@ void ftLinkSpecialAirNSetStatus(GObj *fighter_gobj)
 
     fp->proc_status = ftLinkSpecialNProcStatus;
 
-    if (fp->fighter_vars.link.boomerang_gobj != NULL)
+    if (fp->passive_vars.link.boomerang_gobj != NULL)
     {
         ftMainSetFighterStatus(fighter_gobj, nFTLinkStatusSpecialAirNEmpty, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 

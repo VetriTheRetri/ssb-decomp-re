@@ -296,7 +296,7 @@ typedef struct ftKirbyAttack100Effect
 
 } ftKirbyAttack100Effect;
 
-typedef struct FTKirbyFighterVars
+typedef struct FTKirbyPassiveVars
 {
     s32 copy_id;
     s32 copysamus_charge_level;
@@ -307,7 +307,7 @@ typedef struct FTKirbyFighterVars
     sb32 is_ignore_losecopy;
     GObj *copylink_boomerang_gobj;
 
-} FTKirbyFighterVars;
+} FTKirbyPassiveVars;
 
 typedef struct ftKirbySpecialNStatusVars
 {

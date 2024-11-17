@@ -11,7 +11,7 @@ void ftBossYubideppou3ProcUpdate(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->fighter_vars.boss.p->wait_div == 1.5F) && (fighter_gobj->anim_frame >= 20.0F) && (fp->status_vars.boss.yubideppou.bullet_count != 3))
+    if ((fp->passive_vars.boss.p->wait_div == 1.5F) && (fighter_gobj->anim_frame >= 20.0F) && (fp->status_vars.boss.yubideppou.bullet_count != 3))
     {
         ftBossYubideppou3SetStatus(fighter_gobj);
     }
@@ -37,14 +37,14 @@ void ftBossYubideppou3ProcPhysics(GObj *fighter_gobj)
 
             gmCollisionGetFighterPartsWorldPosition(fp->joints[19], &pos);
 
-            if ((fp->fighter_vars.boss.p->wait_div == 1.5F) && (fp->status_vars.boss.yubideppou.bullet_count != 3))
+            if ((fp->passive_vars.boss.p->wait_div == 1.5F) && (fp->status_vars.boss.yubideppou.bullet_count != 3))
             {
                 wpBossBulletHardMakeWeapon(fighter_gobj, &pos);
             }
             else wpBossBulletNormalMakeWeapon(fighter_gobj, &pos); 
         }
     }
-    if (fp->fighter_vars.boss.p->wait_div == 1.5F)
+    if (fp->passive_vars.boss.p->wait_div == 1.5F)
     {
         ftBossYubideppou2UpdatePosition(fighter_gobj);
     }
@@ -68,7 +68,7 @@ void ftBossYubideppou3SetStatus(GObj *fighter_gobj)
 
     gmCollisionGetFighterPartsWorldPosition(fp->joints[15], &pos);
 
-    if ((fp->fighter_vars.boss.p->wait_div == 1.5F) && (fp->status_vars.boss.yubideppou.bullet_count != 3))
+    if ((fp->passive_vars.boss.p->wait_div == 1.5F) && (fp->status_vars.boss.yubideppou.bullet_count != 3))
     {
         wpBossBulletHardMakeWeapon(fighter_gobj, &pos);
     }

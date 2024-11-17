@@ -14,8 +14,8 @@ void ftBossYubideppou2UpdatePosition(GObj *fighter_gobj)
     Vec3f vel;
     f32 magnitude;
 
-    pos.x = DObjGetStruct(fp->fighter_vars.boss.p->target_gobj)->translate.vec.f.x + (-fp->lr * 3000.0F);
-    pos.y = DObjGetStruct(fp->fighter_vars.boss.p->target_gobj)->translate.vec.f.y;
+    pos.x = DObjGetStruct(fp->passive_vars.boss.p->target_gobj)->translate.vec.f.x + (-fp->lr * 3000.0F);
+    pos.y = DObjGetStruct(fp->passive_vars.boss.p->target_gobj)->translate.vec.f.y;
     pos.z = 0.0F;
 
     syVectorDiff3D(&vel, &pos, &DObjGetStruct(fighter_gobj)->translate.vec.f);

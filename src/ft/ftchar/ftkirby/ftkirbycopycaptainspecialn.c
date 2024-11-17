@@ -72,7 +72,7 @@ void ftKirbyCopyCaptainSpecialAirNProcPhysics(GObj *fighter_gobj)
     if (fp->motion_vars.flags.flag1 != 0)
     {
         fp->motion_vars.flags.flag1 = 0;
-        fp->fighter_vars.kirby.copycaptain_falcon_punch_unk++;
+        fp->passive_vars.kirby.copycaptain_falcon_punch_unk++;
 
         boost = ftKirbyCopyCaptainSpecialNGetAngle(fp->input.pl.stick_range.y);
 

@@ -22,8 +22,8 @@ void ftBossTsutsuku2ProcPhysics(GObj *fighter_gobj)
     }
     else
     {
-        translate.x = DObjGetStruct(fp->fighter_vars.boss.p->target_gobj)->translate.vec.f.x + (-fp->lr * 900.0F);
-        translate.y = DObjGetStruct(fp->fighter_vars.boss.p->target_gobj)->translate.vec.f.y + 300.0F;
+        translate.x = DObjGetStruct(fp->passive_vars.boss.p->target_gobj)->translate.vec.f.x + (-fp->lr * 900.0F);
+        translate.y = DObjGetStruct(fp->passive_vars.boss.p->target_gobj)->translate.vec.f.y + 300.0F;
         translate.z = 0.0F;
 
         syVectorDiff3D(&vel, &translate, &DObjGetStruct(fighter_gobj)->translate.vec.f);

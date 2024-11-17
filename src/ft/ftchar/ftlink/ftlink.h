@@ -73,11 +73,11 @@ typedef enum ftLinkStatus
 
 } ftLinkStatus;
 
-typedef struct FTLinkFighterVars
+typedef struct FTLinkPassiveVars
 {
     GObj *boomerang_gobj;
 
-} FTLinkFighterVars;
+} FTLinkPassiveVars;
 
 typedef struct ftLinkSpecialNStatusVars
 {

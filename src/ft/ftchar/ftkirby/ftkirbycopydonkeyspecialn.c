@@ -11,7 +11,7 @@ void ftKirbyCopyDonkeySpecialNProcDamage(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->fighter_vars.kirby.copydonkey_charge_level = 0;
+    fp->passive_vars.kirby.copydonkey_charge_level = 0;
 }
 
 // 0x801577AC
@@ -82,11 +82,11 @@ void ftKirbyCopyDonkeySpecialNLoopProcUpdate(GObj *fighter_gobj)
     {
         if (fp->status_vars.kirby.copydonkey_specialn.is_charging != FALSE)
         {
-            if (fp->fighter_vars.kirby.copydonkey_charge_level < FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_MAX)
+            if (fp->passive_vars.kirby.copydonkey_charge_level < FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_MAX)
             {
-                fp->fighter_vars.kirby.copydonkey_charge_level++;
+                fp->passive_vars.kirby.copydonkey_charge_level++;
 
-                if (fp->fighter_vars.kirby.copydonkey_charge_level == FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_MAX)
+                if (fp->passive_vars.kirby.copydonkey_charge_level == FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_MAX)
                 {
                     gcSetAnimSpeed(fighter_gobj, FTKIRBY_COPYDONKEY_GIANTPUNCH_CHRAGE_ANIM_SPEED);
 
@@ -149,7 +149,7 @@ void ftKirbyCopyDonkeySpecialNLoopSetProcDamageAnimRate(GObj *fighter_gobj)
 
     fp->proc_damage = ftKirbyCopyDonkeySpecialNProcDamage;
 
-    if (fp->fighter_vars.kirby.copydonkey_charge_level == FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_MAX)
+    if (fp->passive_vars.kirby.copydonkey_charge_level == FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_MAX)
     {
         gcSetAnimSpeed(fighter_gobj, FTKIRBY_COPYDONKEY_GIANTPUNCH_CHRAGE_ANIM_SPEED);
     }
@@ -237,9 +237,9 @@ void ftKirbyCopyDonkeySpecialNGetStatusChargeLevelReset(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->status_vars.kirby.copydonkey_specialn.charge_level = fp->fighter_vars.kirby.copydonkey_charge_level;
+    fp->status_vars.kirby.copydonkey_specialn.charge_level = fp->passive_vars.kirby.copydonkey_charge_level;
 
-    fp->fighter_vars.kirby.copydonkey_charge_level = 0;
+    fp->passive_vars.kirby.copydonkey_charge_level = 0;
 }
 
 // 0x80157DAC
@@ -247,11 +247,11 @@ void ftKirbyCopyDonkeySpecialNEndSetStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    s32 status_id = (fp->fighter_vars.kirby.copydonkey_charge_level == FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_MAX) ? nFTKirbyStatusCopyDonkeySpecialNFull : nFTKirbyStatusCopyDonkeySpecialNEnd;
+    s32 status_id = (fp->passive_vars.kirby.copydonkey_charge_level == FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_MAX) ? nFTKirbyStatusCopyDonkeySpecialNFull : nFTKirbyStatusCopyDonkeySpecialNEnd;
 
     ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_COLANIM);
 
-    fp->physics.vel_ground.x = fp->fighter_vars.kirby.copydonkey_charge_level * FTKIRBY_COPYDONKEY_GIANTPUNCH_VEL_MUL;
+    fp->physics.vel_ground.x = fp->passive_vars.kirby.copydonkey_charge_level * FTKIRBY_COPYDONKEY_GIANTPUNCH_VEL_MUL;
 
     ftKirbyCopyDonkeySpecialNGetStatusChargeLevelReset(fighter_gobj);
 }
@@ -261,7 +261,7 @@ void ftKirbyCopyDonkeySpecialAirNEndSetStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    s32 status_id = (fp->fighter_vars.kirby.copydonkey_charge_level == FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_MAX) ? nFTKirbyStatusCopyDonkeySpecialAirNFull : nFTKirbyStatusCopyDonkeySpecialAirNEnd;
+    s32 status_id = (fp->passive_vars.kirby.copydonkey_charge_level == FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_MAX) ? nFTKirbyStatusCopyDonkeySpecialAirNFull : nFTKirbyStatusCopyDonkeySpecialAirNEnd;
 
     ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, (FTSTATUS_PRESERVE_FASTFALL | FTSTATUS_PRESERVE_COLANIM));
 
@@ -273,7 +273,7 @@ void ftKirbyCopyDonkeySpecialNInitStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->status_vars.kirby.copydonkey_specialn.is_release = (fp->fighter_vars.kirby.copydonkey_charge_level == FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_MAX) ? TRUE : FALSE;
+    fp->status_vars.kirby.copydonkey_specialn.is_release = (fp->passive_vars.kirby.copydonkey_charge_level == FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_MAX) ? TRUE : FALSE;
 
     fp->status_vars.kirby.copydonkey_specialn.is_charging = FALSE;
     fp->status_vars.kirby.copydonkey_specialn.is_cancel = FALSE;

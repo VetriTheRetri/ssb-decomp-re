@@ -293,9 +293,9 @@ void wpLinkBoomerangClearGObjs(WPStruct *wp)
 
         if ((fp->fkind == nFTKindKirby) || (fp->fkind == nFTKindNKirby))
         {
-            fp->fighter_vars.kirby.copylink_boomerang_gobj = NULL;
+            fp->passive_vars.kirby.copylink_boomerang_gobj = NULL;
         }
-        else fp->fighter_vars.link.boomerang_gobj = NULL;
+        else fp->passive_vars.link.boomerang_gobj = NULL;
         
         wp->weapon_vars.boomerang.parent_gobj = NULL;
     }

@@ -12,7 +12,7 @@ sb32 ftBossWalkLoopCheckPlayerInRange(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     Vec3f *translate_m = &DObjGetStruct(fighter_gobj)->translate.vec.f;
-    Vec3f *translate_t = &DObjGetStruct(fp->fighter_vars.boss.p->target_gobj)->translate.vec.f;
+    Vec3f *translate_t = &DObjGetStruct(fp->passive_vars.boss.p->target_gobj)->translate.vec.f;
 
     if 
     (

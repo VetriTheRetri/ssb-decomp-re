@@ -6,7 +6,7 @@
 #include <sys/video.h>
 
 extern void scManagerFuncDraw(void);
-extern u32 func_8000092C();
+extern u32 sySchedulerGetTicCount();
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
@@ -542,7 +542,7 @@ void mvOpeningKirbyFuncStart(void)
 	mvOpeningKirbyMakePosedFighterCamera();
 	mvOpeningKirbyMakeName();
 
-	while (func_8000092C() < 1965)
+	while (sySchedulerGetTicCount() < 1965)
 	{
 		continue;
 	};
@@ -578,7 +578,7 @@ SYTaskmanSetup dMVOpeningKirbyTaskmanSetup =
         2,                              // ???
         0xC000,                         // RDP Output Buffer Size
         mvOpeningKirbyFuncLights,      	// Pre-render function
-        update_contdata,                // Controller I/O function
+        syControllerFuncRead,           // Controller I/O function
     },
 
     0,                                  // Number of GObjThreads

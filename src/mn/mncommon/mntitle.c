@@ -7,7 +7,7 @@
 extern void dbMenuUpdateMenuInputs();
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
-extern u32 func_8000092C();
+extern u32 sySchedulerGetTicCount();
 
 extern uintptr_t D_NF_000000A7;
 extern uintptr_t D_NF_000000A8;
@@ -199,7 +199,7 @@ SYTaskmanSetup dMNTitleTaskmanSetup =
     {
         0,                          // ???
         mnTitleFuncUpdate,          // Update function
-        gcDrawAll,                  // Frame draw function
+        gcDrawAll,                  	// Frame draw function
         &ovl10_BSS_END,             // Allocatable memory pool start
         0,                          // Allocatable memory pool size
         1,                          // ???
@@ -212,7 +212,7 @@ SYTaskmanSetup dMNTitleTaskmanSetup =
         2,                          // ???
         0x1000,                     // RDP Output Buffer Size
         mnTitleFuncLights,         	// Pre-render function
-        update_contdata,            // Controller I/O function
+        syControllerFuncRead,            // Controller I/O function
     },
 
     0,                              // Number of GObjThreads
@@ -1439,7 +1439,7 @@ void mnTitleFuncStart(void)
 
 	if (gSCManagerSceneData.scene_prev == nSCKindOpeningNewcomers)
 	{
-		while (func_8000092C() < 4215)
+		while (sySchedulerGetTicCount() < 4215)
 		{
 			continue;
 		};

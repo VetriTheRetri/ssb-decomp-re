@@ -2471,7 +2471,7 @@ void ifCommonTimerFuncRun(GObj *interface_gobj)
 
     if (sIFCommonTimerIsStarted != FALSE)
     {
-        temp = func_8000092C();
+        temp = sySchedulerGetTicCount();
         time_update = temp - D_ovl2_801317FC;
 
         if (time_update != 0)
@@ -3163,7 +3163,7 @@ void ifCommonBattleUpdateInterfaceAll(void)
         sIFCommonTimerIsStarted = TRUE;
         D_ovl2_801317FC = 0;
 
-        func_80000920(0);
+        sySchedulerSetTicCount(0);
     }
     switch (gSCManagerBattleState->game_status)
     {

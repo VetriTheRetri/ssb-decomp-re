@@ -84,7 +84,7 @@ scRuntimeInfo dMNUnusedFightersTaskmanSetup =
     0x20000,
     0x1000,
     mnUnusedFightersFuncLights,
-    update_contdata,
+    syControllerFuncRead,
     0x20,
     0x100,
     0x20,

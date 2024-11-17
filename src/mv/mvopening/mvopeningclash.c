@@ -6,7 +6,7 @@
 #include <lb/library.h>
 
 extern void syTaskmanSetLoadScene();
-extern u32 func_8000092C();
+extern u32 sySchedulerGetTicCount();
 extern void scManagerFuncDraw();
 extern void syRdpSetViewport(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 
@@ -447,7 +447,7 @@ void mvOpeningClashFuncStart(void)
 
     scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 
-    while (func_8000092C() < 3975)
+    while (sySchedulerGetTicCount() < 3975)
     {
         continue;
     }
@@ -463,7 +463,7 @@ SYTaskmanSetup dMVOpeningClashTaskmanSetup =
     {
         0,                              // ???
         gcRunAll,                       // Update function
-        gcDrawAll,                  // Frame draw function
+        gcDrawAll,                  	// Frame draw function
         &ovl49_BSS_END,                 // Allocatable memory pool start
         0,                              // Allocatable memory pool size
         1,                              // ???
@@ -476,7 +476,7 @@ SYTaskmanSetup dMVOpeningClashTaskmanSetup =
         2,                              // ???
         0xC000,                         // RDP Output Buffer Size
         mvOpeningClashFuncLights,       // Pre-render function
-        update_contdata,                // Controller I/O function
+        syControllerFuncRead,           // Controller I/O function
     },
 
     8,                                  // Number of GObjThreads

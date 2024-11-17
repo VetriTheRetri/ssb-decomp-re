@@ -298,7 +298,7 @@ SYTaskmanSetup dDBCubeTaskmanSetup =
         2,                          // ???
         0x1000,                     // RDP Output Buffer Size
         dbCubeFuncLights,   		// Pre-render function
-        update_contdata,            // Controller I/O function
+        syControllerFuncRead,            // Controller I/O function
     },
 
     0,                              // Number of GObjThreads

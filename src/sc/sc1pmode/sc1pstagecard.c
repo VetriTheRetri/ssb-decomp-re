@@ -5,7 +5,7 @@
 extern void scManagerFuncDraw();
 extern void func_800266A0_272A0();
 extern void* func_800269C0_275C0(u16);
-extern u32 func_8000092C();
+extern u32 sySchedulerGetTicCount();
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 extern uintptr_t D_NF_0000000B;             // 0x0000000B
@@ -1747,19 +1747,19 @@ void sc1PStageCardUpdateAnnounce(void)
     
     if ((sc1PStageCardCheckNotBonusStage(sSC1PStageCardStage) != FALSE) && (sSC1PStageCardStage != nSC1PGameStageBoss))
     {
-        if ((func_8000092C() >= 2) && (sSC1PStageCardIsAnnouncedFighterName == FALSE))
+        if ((sySchedulerGetTicCount() >= 2) && (sSC1PStageCardIsAnnouncedFighterName == FALSE))
         {
             func_800269C0_275C0(fighter_voices[sSC1PStageCardPlayerFighterDemoDesc.fkind]);
 
             sSC1PStageCardIsAnnouncedFighterName = TRUE;
         }
-        if ((tic < func_8000092C()) && (sSC1PStageCardIsAnnouncedVersus == FALSE))
+        if ((tic < sySchedulerGetTicCount()) && (sSC1PStageCardIsAnnouncedVersus == FALSE))
         {
             func_800269C0_275C0(nSYAudioVoiceAnnounceVersus);
 
             sSC1PStageCardIsAnnouncedVersus = TRUE;
         }
-        if (((tic + 60) < func_8000092C()) && (sSC1PStageCardIsAnnouncedVSFighterName == FALSE))
+        if (((tic + 60) < sySchedulerGetTicCount()) && (sSC1PStageCardIsAnnouncedVSFighterName == FALSE))
         {
             func_800269C0_275C0(vs_fighter_voices[sSC1PStageCardStage]);
 
@@ -1823,7 +1823,7 @@ void sc1PStageCardFuncRun(GObj *gobj)
     
     sc1PStageCardUpdateAnnounce();
     
-    if (func_8000092C() >= 60)
+    if (sySchedulerGetTicCount() >= 60)
     {
         if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE)
         {
@@ -1843,7 +1843,7 @@ void sc1PStageCardFuncRun(GObj *gobj)
         {
             sSC1PStageCardUnk0x80135CF4 = 0;
         }
-        if (func_8000092C() > 360)
+        if (sySchedulerGetTicCount() > 360)
         {
             func_800266A0_272A0();
             
@@ -1982,7 +1982,7 @@ void sc1PStageCardFuncStart(void)
     }
     else auPlaySong(0, nSYAudioBGM1PStageCard);
     
-    func_80000920(0);
+    sySchedulerSetTicCount(0);
 }
 
 // 0x80135B38
@@ -2008,7 +2008,7 @@ SYTaskmanSetup dSC1PStageCardTaskmanSetup =
         2,                          // ???
         0xC000,                     // RDP Output Buffer Size
         sc1PStageCardFuncLights,    // Pre-render function
-        update_contdata,            // Controller I/O function
+        syControllerFuncRead,            // Controller I/O function
     },
 
     0,                              // Number of GObjThreads

@@ -107,7 +107,7 @@ SYTaskmanSetup dDBMapsTaskmanSetup =
     {
         0,                          // ???
         gcRunAll,          			// Update function
-        gcDrawAll,                  // Frame draw function
+        gcDrawAll,                  	// Frame draw function
         &ovl12_BSS_END,             // Allocatable memory pool start
         0,                          // Allocatable memory pool size
         1,                          // ???
@@ -120,7 +120,7 @@ SYTaskmanSetup dDBMapsTaskmanSetup =
         2,                          // ???
         0x1000,                     // RDP Output Buffer Size
         NULL,         				// Pre-render function
-        update_contdata,            // Controller I/O function
+        syControllerFuncRead,            // Controller I/O function
     },
 
     8,                              // Number of GObjThreads

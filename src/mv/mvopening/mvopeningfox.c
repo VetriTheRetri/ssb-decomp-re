@@ -7,7 +7,7 @@
 
 extern void scManagerFuncDraw();
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
-extern u32 func_8000092C();
+extern u32 sySchedulerGetTicCount();
 
 // // // // // // // // // // // //
 //                               //
@@ -528,7 +528,7 @@ void mvOpeningFoxFuncStart(void)
 	mvOpeningFoxMakePosedFighterCamera();
 	mvOpeningFoxMakeName();
 
-	while (func_8000092C() < 2055)
+	while (sySchedulerGetTicCount() < 2055)
 	{
 		continue;
 	}
@@ -564,7 +564,7 @@ SYTaskmanSetup dMVOpeningFoxTaskmanSetup =
         2,                              // ???
         0xC000,                         // RDP Output Buffer Size
         mvOpeningFoxFuncLights,    		// Pre-render function
-        update_contdata,                // Controller I/O function
+        syControllerFuncRead,           // Controller I/O function
     },
 
     0,                                  // Number of GObjThreads

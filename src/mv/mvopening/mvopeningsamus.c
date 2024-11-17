@@ -7,7 +7,7 @@
 
 extern void scManagerFuncDraw();
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
-extern u32 func_8000092C();
+extern u32 sySchedulerGetTicCount();
 
 // // // // // // // // // // // //
 //                               //
@@ -542,7 +542,7 @@ void mvOpeningSamusFuncStart(void)
 	mvOpeningSamusMakePosedFighterCamera();
 	mvOpeningSamusMakeName();
 
-	while (func_8000092C() < 1785)
+	while (sySchedulerGetTicCount() < 1785)
 	{
 		continue;
 	}
@@ -578,7 +578,7 @@ SYTaskmanSetup dMVOpeningSamusTaskmanSetup =
         2,                              // ???
         0xC000,                         // RDP Output Buffer Size
         mvOpeningSamusFuncLights,    	// Pre-render function
-        update_contdata,                // Controller I/O function
+        syControllerFuncRead,           // Controller I/O function
     },
 
     0,                                  // Number of GObjThreads

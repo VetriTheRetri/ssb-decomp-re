@@ -1056,7 +1056,7 @@ void scManagerRunLoop(sb32 arg)
 
 			case 29:
 				syDmaLoadOverlay(&dSCManagerOverlays[35]);
-				mvPortraitsStartScene();
+				mvOpeningPortraitsStartScene();
 				break;
 
 			case 30:

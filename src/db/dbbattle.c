@@ -160,7 +160,7 @@ SYTaskmanSetup dDBBattleTaskmanSetup =
         2,                          // ???
         0xC000,                     // RDP Output Buffer Size
         dbBattleFuncLights,   		// Pre-render function
-        update_contdata,            // Controller I/O function
+        syControllerFuncRead,            // Controller I/O function
     },
 
     8,                              // Number of GObjThreads

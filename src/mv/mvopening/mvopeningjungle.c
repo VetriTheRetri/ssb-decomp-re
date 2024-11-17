@@ -6,7 +6,7 @@
 #include <sys/video.h>
 
 extern void syTaskmanSetLoadScene();
-extern u32 func_8000092C();
+extern u32 sySchedulerGetTicCount();
 extern void scManagerFuncDraw();
 extern void syRdpSetViewport(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 
@@ -167,7 +167,7 @@ SYTaskmanSetup dMVOpeningJungleTaskmanSetup =
         2,                              // ???
         0xC000,                         // RDP Output Buffer Size
         mvOpeningJungleFuncLights,      // Pre-render function
-        update_contdata,                // Controller I/O function
+        syControllerFuncRead,           // Controller I/O function
     },
 
     0,                                  // Number of GObjThreads
@@ -430,7 +430,7 @@ void mvOpeningJungleFuncStart(void)
     ifScreenFlashMakeInterface(0xFF);
     mvOpeningJungleMakeFighters();
 
-    while (func_8000092C() < 2880)
+    while (sySchedulerGetTicCount() < 2880)
     {
         continue;
     }

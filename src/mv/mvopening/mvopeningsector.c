@@ -3,7 +3,7 @@
 #include <mv/movie.h>
 #include <sys/video.h>
 
-extern u32 func_8000092C();
+extern u32 sySchedulerGetTicCount();
 extern void syRdpSetViewport(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 
 // // // // // // // // // // // //
@@ -567,7 +567,7 @@ void mvOpeningSectorFuncStart(void)
 
     scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 
-    while (func_8000092C() < 3420)
+    while (sySchedulerGetTicCount() < 3420)
     {
         continue;
     }
@@ -584,7 +584,7 @@ SYTaskmanSetup mvOpeningSectorTaskmanSetup =
     {
         0,                              // ???
         gcRunAll,                       // Update function
-        gcDrawAll,                  // Frame draw function
+        gcDrawAll,                  	// Frame draw function
         &ovl50_BSS_END,                 // Allocatable memory pool start
         0,                              // Allocatable memory pool size
         1,                              // ???
@@ -597,7 +597,7 @@ SYTaskmanSetup mvOpeningSectorTaskmanSetup =
         2,                              // ???
         0xC000,                         // RDP Output Buffer Size
         mvOpeningSectorFuncLights,      // Pre-render function
-        update_contdata,                // Controller I/O function
+        syControllerFuncRead,           // Controller I/O function
     },
 
     0,                                  // Number of GObjThreads

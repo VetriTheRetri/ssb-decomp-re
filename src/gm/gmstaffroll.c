@@ -2212,7 +2212,7 @@ SYTaskmanSetup dGMStaffrollTaskmanSetup =
         2,                          // ???
         0x1000,                     // RDP Output Buffer Size
         gmStaffrollFuncLights,     	// Pre-render function
-        update_contdata,            // Controller I/O function
+        syControllerFuncRead,            // Controller I/O function
     },
 
     16,                             // Number of GObjThreads

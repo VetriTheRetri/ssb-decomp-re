@@ -1542,7 +1542,7 @@ scRuntimeInfo dMNVSModeTaskmanSetup =
     0x20000,
     0xC000,
     mnVSModeFuncLights,
-    update_contdata,
+    syControllerFuncRead,
     0,
     0x600,
     0,

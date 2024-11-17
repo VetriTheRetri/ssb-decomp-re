@@ -7,7 +7,7 @@
 
 extern void scManagerFuncDraw();
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
-extern u32 func_8000092C();
+extern u32 sySchedulerGetTicCount();
 
 // // // // // // // // // // // //
 //                               //
@@ -526,7 +526,7 @@ void mvOpeningPikachuFuncStart(void)
 	mvOpeningPikachuMakePosedFighterCamera();
 	mvOpeningPikachuMakeName();
 
-	while (func_8000092C() < 2145)
+	while (sySchedulerGetTicCount() < 2145)
 	{
 		continue;
 	}
@@ -562,7 +562,7 @@ SYTaskmanSetup dMVOpeningPikachuTaskmanSetup =
         2,                              // ???
         0xC000,                         // RDP Output Buffer Size
         mvOpeningPikachuFuncLights,    	// Pre-render function
-        update_contdata,                // Controller I/O function
+        syControllerFuncRead,           // Controller I/O function
     },
 
     0,                                  // Number of GObjThreads

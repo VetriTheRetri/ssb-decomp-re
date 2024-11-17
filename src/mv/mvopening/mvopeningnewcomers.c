@@ -3,7 +3,7 @@
 #include <sc/scene.h>
 #include <sys/video.h>
 
-extern u32 func_8000092C();
+extern u32 sySchedulerGetTicCount();
 extern void syRdpSetViewport(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 
 // // // // // // // // // // // //
@@ -78,7 +78,7 @@ SYTaskmanSetup dMVOpeningNewcomersTaskmanSetup =
     {
         0,                              // ???
         gcRunAll,                       // Update function
-        gcDrawAll,                  // Frame draw function
+        gcDrawAll,                  	// Frame draw function
         &ovl52_BSS_END,                 // Allocatable memory pool start
         0,                              // Allocatable memory pool size
         1,                              // ???
@@ -91,7 +91,7 @@ SYTaskmanSetup dMVOpeningNewcomersTaskmanSetup =
         2,                              // ???
         0xC000,                         // RDP Output Buffer Size
         mvOpeningNewcomersFuncLights,   // Pre-render function
-        update_contdata,                // Controller I/O function
+        syControllerFuncRead,           // Controller I/O function
     },
 
     0,                                  // Number of GObjThreads
@@ -455,7 +455,7 @@ void mvOpeningNewcomersFuncStart(void)
     func_800269C0_275C0(nSYAudioFGMOpeningNewcomersClash);
     func_800269C0_275C0(nSYAudioVoiceAnnounceTitleWait);
 
-    while (func_8000092C() < 4155)
+    while (sySchedulerGetTicCount() < 4155)
     {
         continue;
     }

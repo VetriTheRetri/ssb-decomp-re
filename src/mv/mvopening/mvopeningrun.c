@@ -4,7 +4,7 @@
 #include <sc/scene.h>
 #include <sys/video.h>
 
-extern u32 func_8000092C();
+extern u32 sySchedulerGetTicCount();
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 extern uintptr_t D_NF_00000037;
@@ -393,7 +393,7 @@ void mvOpeningRunFuncStart(void)
 
 	scSubsysFighterSetLightParams(45.0F, 10.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 
-	while (func_8000092C() < 2250)
+	while (sySchedulerGetTicCount() < 2250)
 	{
 		continue;
 	};
@@ -409,7 +409,7 @@ SYTaskmanSetup dMVOpeningRunTaskmanSetup =
     {
         0,                              // ???
         gcRunAll,                       // Update function
-        gcDrawAll,                  // Frame draw function
+        gcDrawAll,                  	// Frame draw function
         &ovl44_BSS_END,                 // Allocatable memory pool start
         0,                              // Allocatable memory pool size
         1,                              // ???
@@ -422,7 +422,7 @@ SYTaskmanSetup dMVOpeningRunTaskmanSetup =
         2,                              // ???
         0xC000,                         // RDP Output Buffer Size
         mvOpeningRunFuncLights,      	// Pre-render function
-        update_contdata,                // Controller I/O function
+        syControllerFuncRead,           // Controller I/O function
     },
 
     8,                                  // Number of GObjThreads

@@ -702,7 +702,7 @@ SYTaskmanSetup dMNSoundTestTaskmanSetup =
     {
         0,                          // ???
         gcRunAll,              		// Update function
-        gcDrawAll,                  // Frame draw function
+        gcDrawAll,                  	// Frame draw function
         &ovl62_BSS_END,             // Allocatable memory pool start
         0,                          // Allocatable memory pool size
         1,                          // ???
@@ -715,7 +715,7 @@ SYTaskmanSetup dMNSoundTestTaskmanSetup =
         2,                          // ???
         0x1000,                     // RDP Output Buffer Size
         mnSoundTestFuncLights,      // Pre-render function
-        update_contdata,            // Controller I/O function
+        syControllerFuncRead,            // Controller I/O function
     },
 
     16,                             // Number of GObjThreads

@@ -573,7 +573,7 @@ s32 syErrorWaitFramebufOrController(u32 buttons, void *framebuf)
     while (TRUE) 
     {
         syErrorWaitMsec(16);
-        update_contdata();
+        syControllerFuncRead();
 
         if ((framebuf != NULL) && (osViGetCurrentFramebuffer() != framebuf))
         {

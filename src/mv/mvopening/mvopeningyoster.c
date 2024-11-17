@@ -5,7 +5,7 @@
 #include <sys/video.h>
 
 extern void syTaskmanSetLoadScene();
-extern u32 func_8000092C();
+extern u32 sySchedulerGetTicCount();
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
@@ -349,7 +349,7 @@ void mvOpeningYosterFuncStart(void)
     mvOpeningYosterMakeFighters();
     scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 
-    while (func_8000092C() < 3230)
+    while (sySchedulerGetTicCount() < 3230)
     {
         continue;
     }
@@ -365,7 +365,7 @@ SYTaskmanSetup dMVOpeningYosterTaskmanSetup =
     {
         0,                              // ???
         gcRunAll,                       // Update function
-        gcDrawAll,                  // Frame draw function
+        gcDrawAll,                  	// Frame draw function
         &ovl45_BSS_END,                 // Allocatable memory pool start
         0,                              // Allocatable memory pool size
         1,                              // ???
@@ -378,7 +378,7 @@ SYTaskmanSetup dMVOpeningYosterTaskmanSetup =
         2,                              // ???
         0xC000,                         // RDP Output Buffer Size
         mvOpeningYosterFuncLights,      // Pre-render function
-        update_contdata,                // Controller I/O function
+        syControllerFuncRead,           // Controller I/O function
     },
 
     8,                                  // Number of GObjThreads

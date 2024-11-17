@@ -1152,7 +1152,7 @@ void mvOpeningFirstDestinationInit()
 	scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 	func_800266A0_272A0();
 	auPlaySong(0, 0x21);
-	func_80000920(0);
+	sySchedulerSetTicCount(0);
 	D_800A50F0 = 0;
 }
 
@@ -1175,7 +1175,7 @@ scRuntimeInfo D_ovl34_80134BEC = {
 	0x800A26B8, &lOverlay34ArenaLo,
 	0x00000000, 0x00000001, 0x00000002, 0x00002EE0, 0x00001000,
 	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x0000C000,
-	mvOpeningFirstDestinationFuncLights, update_contdata,
+	mvOpeningFirstDestinationFuncLights, syControllerFuncRead,
 	0x00000000, 0x00000600, 0x00000000, 0x00000000,
 	0x00000000, 0x00000000, 0x00000088, 0x00000000,
 	0x800D5CAC, 0x00000000, 0x00000000, 0x00000000,

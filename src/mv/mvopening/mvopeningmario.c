@@ -6,7 +6,7 @@
 #include <sys/video.h>
 
 extern void scManagerFuncDraw(void);
-extern u32 func_8000092C();
+extern u32 sySchedulerGetTicCount();
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
@@ -540,7 +540,7 @@ void mvOpeningMarioFuncStart(void)
 	mvOpeningMarioMakePosedFighterCamera();
 	mvOpeningMarioMakeName();
 
-	while (func_8000092C() < 1515)
+	while (sySchedulerGetTicCount() < 1515)
 	{
 		continue;
 	};
@@ -576,7 +576,7 @@ SYTaskmanSetup dMVOpeningMarioTaskmanSetup =
         2,                              // ???
         0xC000,                         // RDP Output Buffer Size
         mvOpeningMarioFuncLights,      	// Pre-render function
-        update_contdata,                // Controller I/O function
+        syControllerFuncRead,           // Controller I/O function
     },
 
     0,                                  // Number of GObjThreads

@@ -110,7 +110,7 @@ scRuntimeInfo dMNModeSelectTaskmanSetup =
     0x20000,
     0xC000,
     mnModeSelectFuncLights,
-    update_contdata,
+    syControllerFuncRead,
     0,
     0x600,
     0,

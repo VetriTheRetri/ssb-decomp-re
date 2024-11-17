@@ -275,7 +275,7 @@ void schedule_contread(void) {
     dispatch_contevt(&evt);
 }
 
-void update_contdata(void) {
+void syControllerFuncRead(void) {
     ControllerEvent evt;
 
     evt.type = CONT_EVENT_UPDATE_GLOBAL_DATA;

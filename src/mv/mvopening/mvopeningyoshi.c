@@ -7,7 +7,7 @@
 
 extern void scManagerFuncDraw();
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
-extern u32 func_8000092C();
+extern u32 sySchedulerGetTicCount();
 
 // // // // // // // // // // // //
 //                               //
@@ -530,7 +530,7 @@ void mvOpeningYoshiFuncStart(void)
 	mvOpeningYoshiMakePosedFighterCamera();
 	mvOpeningYoshiMakeName();
 
-	while (func_8000092C() < 1875)
+	while (sySchedulerGetTicCount() < 1875)
 	{
 		continue;
 	}
@@ -566,7 +566,7 @@ SYTaskmanSetup dMVOpeningYoshiTaskmanSetup =
         2,                              // ???
         0xC000,                         // RDP Output Buffer Size
         mvOpeningYoshiFuncLights,    	// Pre-render function
-        update_contdata,                // Controller I/O function
+        syControllerFuncRead,           // Controller I/O function
     },
 
     0,                                  // Number of GObjThreads

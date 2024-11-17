@@ -826,7 +826,7 @@ SYTaskmanSetup dMNBackupClearTaskmanSetup =
     {
         0,                          // ???
         gcRunAll,              		// Update function
-        gcDrawAll,                  // Frame draw function
+        gcDrawAll,                  	// Frame draw function
         &ovl53_BSS_END,             // Allocatable memory pool start
         0,                          // Allocatable memory pool size
         1,                          // ???
@@ -839,7 +839,7 @@ SYTaskmanSetup dMNBackupClearTaskmanSetup =
         2,                          // ???
         0xC000,                     // RDP Output Buffer Size
         mnBackupClearFuncLights,    // Pre-render function
-        update_contdata,            // Controller I/O function
+        syControllerFuncRead,            // Controller I/O function
     },
 
     0,                              // Number of GObjThreads

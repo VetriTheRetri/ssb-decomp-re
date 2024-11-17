@@ -89,19 +89,23 @@ OSMesgQueue scTaskQueue;
 sb32 scUseCustomSwapBufferFunc;
 OSMesgQueue *scCustomSwapBufferQueue;
 void (*D_80045018_40828)(void);
-s32 D_8004501C_4082C;
+u32 sSYSchedulerTicCount;
 s32 D_80045020_40830; // gSoftReseting ..?
 s32 D_80045024_40834; // return of osAfterPreNMI
 void *D_80045028_40838[3];
 u8 D_80045034_40844;
 u8 D_80045035_40845;
 
-void func_80000920(s32 val) {
-    D_8004501C_4082C = val;
+// 0x80000920
+void sySchedulerSetTicCount(u32 tics)
+{
+    sSYSchedulerTicCount = tics;
 }
 
-s32 func_8000092C(void) {
-    return D_8004501C_4082C;
+// 0x0000092C
+u32 sySchedulerGetTicCount(void)
+{
+    return sSYSchedulerTicCount;
 }
 
 void unref_80000938(void) {
@@ -954,7 +958,7 @@ void func_8000205C(void) {
     // temp usages are needed to match
     SCClient *temp;
 
-    D_8004501C_4082C += 1;
+    sSYSchedulerTicCount += 1;
     cur = scClientList;
     while (cur != NULL) {
         temp = cur;
@@ -1093,7 +1097,7 @@ void thread3_scheduler(UNUSED void *arg) {
     D_80045018_40828                                       = func_800029D8;
     D_80045020_40830                                       = 0;
     D_80045024_40834                                       = -1;
-    D_8004501C_4082C                                       = 0;
+    sSYSchedulerTicCount                                       = 0;
     D_80045034_40844 = D_80045035_40845 = 0;
 
     switch (osTvType) {

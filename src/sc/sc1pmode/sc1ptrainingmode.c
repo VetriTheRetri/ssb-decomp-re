@@ -146,7 +146,7 @@ SYTaskmanSetup dSC1PTrainingModeTaskmanSetup =
         2,                          // ???
         0xC000,                     // RDP Output Buffer Size
         sc1PTrainingModeFuncLights, // Pre-render function
-        update_contdata,            // Controller I/O function
+        syControllerFuncRead,            // Controller I/O function
     },
 
     0,                              // Number of GObjThreads

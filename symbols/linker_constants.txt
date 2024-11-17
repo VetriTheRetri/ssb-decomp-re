@@ -175,6 +175,20 @@ _ovl65SegNoloadEnd = 0x80193900;
 lSYDmemCheckValidFunc = 0x00000000;
 lSYDmemCheckValidNBytes = 0x00000030;
 
+lMVOpeningPortraitsSet1FileID = 0x00000035;
+lMVOpeningPortraitsSet2FileID = 0x00000036;
+
+lMVOpeningPortraitsSet1SamusSprite = 0x00009960;
+lMVOpeningPortraitsSet1MarioSprite = 0x00013310;
+lMVOpeningPortraitsSet1FoxSprite = 0x0001CCC0;
+lMVOpeningPortraitsSet1PikachuSprite = 0x00026670;
+lMVOpeningPortraitsSet1CoverSprite = 0x0002B2D0;
+
+lMVOpeningPortraitsSet2LinkSprite = 0x00009960;
+lMVOpeningPortraitsSet2KirbySprite = 0x00013310;
+lMVOpeningPortraitsSet2DonkeySprite = 0x0001CCC0;
+lMVOpeningPortraitsSet2YoshiSprite = 0x00026670;
+
 lLBTransitionAeroplaneFileID = 0x00000028;
 lLBTransitionAeroplaneDObjDesc = 0x0000B3F8;
 lLBTransitionAeroplaneAnimJoint = 0x0000B710;
@@ -2006,7 +2020,7 @@ FILE_01E_STAGE_PREVIEW_PATTERNED_BG_IMAGE_OFFSET = 0xC728;
 FILE_01E_RANDOM_IMAGE_OFFSET = 0xCB10;
 FILE_01E_RANDOM_STAGE_PREVIEW_BG_IMAGE_OFFSET = 0xDE30;
 
-FILE_035_PORTRAIT_OVERLAY_IMAGE_OFFSET = 0x2B2D0;
+lMVOpeningPortraitsCoverSprite = 0x2B2D0;
 
 FILE_01F_QUESTION_MARK_IMAGE_OFFSET = 0x70;
 FILE_01F_TOTAL_TEXTURE_IMAGE_OFFSET = 0x258;

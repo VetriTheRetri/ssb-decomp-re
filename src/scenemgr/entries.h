@@ -33,7 +33,7 @@ void vs_records_entry();
 void char_bkg_info_entry();
 void mnStartupStartScene();
 void intro_firstscene_entry();
-void mvPortraitsStartScene();
+void mvOpeningPortraitsStartScene();
 void mvOpeningMarioStartScene();
 void mvOpeningDonkeyStartScene();
 void mvOpeningSamusStartScene();

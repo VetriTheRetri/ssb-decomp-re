@@ -120,7 +120,7 @@ extern SYController gSYControllerDevices[MAXCONTROLLERS];
 extern SYController gSYControllerMain;
 
 extern void schedule_contread(void);
-extern void update_contdata(void);
+extern void syControllerFuncRead(void);
 extern void enable_auto_contread(s32 shouldSchedule);
 extern void set_contstatus_delay(s32 delay);
 extern void func_80004474(s32 arg0);

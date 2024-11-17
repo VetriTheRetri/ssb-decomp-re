@@ -4,7 +4,7 @@
 #include <sys/video.h>
 
 extern void syTaskmanSetLoadScene();
-extern u32 func_8000092C();
+extern u32 sySchedulerGetTicCount();
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
@@ -77,7 +77,7 @@ SYTaskmanSetup dMVOpeningStandoffTaskmanSetup =
     {
         0,                              // ???
         gcRunAll,                       // Update function
-        gcDrawAll,                  // Frame draw function
+        gcDrawAll,                  	// Frame draw function
         &ovl47_BSS_END,                 // Allocatable memory pool start
         0,                              // Allocatable memory pool size
         1,                              // ???
@@ -90,7 +90,7 @@ SYTaskmanSetup dMVOpeningStandoffTaskmanSetup =
         2,                              // ???
         0xC000,                         // RDP Output Buffer Size
         mvOpeningStandoffFuncLights,    // Pre-render function
-        update_contdata,                // Controller I/O function
+        syControllerFuncRead,           // Controller I/O function
     },
 
     8,                                  // Number of GObjThreads
@@ -611,7 +611,7 @@ void mvOpeningStandoffFuncStart(void)
 
     scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 
-    while (func_8000092C() < 3610)
+    while (sySchedulerGetTicCount() < 3610)
     {
         continue;
     }

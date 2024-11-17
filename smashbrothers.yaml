@@ -1094,7 +1094,6 @@ segments:
       - [0x1081C0, data, ovl1]
       - { start: auto, type: .bss, name: sc/scsubsys/scsubsysfighter, vram: 0x803929D0 }
       - { start: auto, type: .bss, name: sc/scsubsys/scsubsyscontroller, vram: 0x803929F0 }
-      - { start: auto, type: .bss, name: sc/scsubsys/scsubsysframebuffer, vram: 0x80392A00 }
 
   - name: ovl4
     type: code

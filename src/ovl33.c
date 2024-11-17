@@ -2103,9 +2103,9 @@ void mnCharsInit()
 // 0x801364FC
 SYVideoSetup D_ovl33_801364FC = {
 
-	gSCSubsysFramebuffer0,
-	gSCSubsysFramebuffer1,
-	gSCSubsysFramebuffer2,
+	&gSYFramebufferSets[0],
+	&gSYFramebufferSets[1],
+	&gSYFramebufferSets[2],
 	0x00000000,
 	0x00000140,
 	0x000000F0,

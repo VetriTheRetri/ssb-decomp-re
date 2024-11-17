@@ -167,7 +167,7 @@ SYTaskmanSetup dMNCongraTaskmanSetup =
         2,                          // ???
         0xC000,                     // RDP Output Buffer Size
         mnCongraFuncLights,         // Pre-render function
-        syControllerFuncRead,            // Controller I/O function
+        syControllerFuncRead,       // Controller I/O function
     },
 
     0,                              // Number of GObjThreads
@@ -179,7 +179,7 @@ SYTaskmanSetup dMNCongraTaskmanSetup =
     sizeof(GObj),                   // GObj size
     0,                              // Number of XObjs
     NULL,                           // Matrix function list
-    NULL,                           // Function for ejecting DObjVec?
+    NULL,                           // DObjVec eject function
     0,                              // Number of AObjs
     0,                              // Number of MObjs
     0,                              // Number of DObjs
@@ -425,7 +425,7 @@ void mnCongraStartScene(void)
 	syVideoInit(&dMNCongraVideoSetup);
 
 	dMNCongraTaskmanSetup.buffer_setup.arena_size = (size_t) (SYVIDEO_DEFINE_FRAMEBUFFER_ADDR(320, 230, 0, 10, u32, 0) - (uintptr_t)&ovl57_BSS_END);
-	syTaskmanRun(&dMNCongraTaskmanSetup); subsys_arena_lo = gSCSubsysFramebuffer0; // WARNING: Newline memes!
+	syTaskmanRun(&dMNCongraTaskmanSetup); subsys_arena_lo = gSYFramebufferSets; // WARNING: Newline memes!
 
 	while ((uintptr_t)subsys_arena_lo < 0x80400000) { *subsys_arena_lo++ = GPACK_RGBA5551(0x00, 0x00, 0x00, 0x01); }
 }

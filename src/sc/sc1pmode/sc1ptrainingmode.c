@@ -146,7 +146,7 @@ SYTaskmanSetup dSC1PTrainingModeTaskmanSetup =
         2,                          // ???
         0xC000,                     // RDP Output Buffer Size
         sc1PTrainingModeFuncLights, // Pre-render function
-        syControllerFuncRead,            // Controller I/O function
+        syControllerFuncRead,       // Controller I/O function
     },
 
     0,                              // Number of GObjThreads
@@ -158,7 +158,7 @@ SYTaskmanSetup dSC1PTrainingModeTaskmanSetup =
     sizeof(GObj),                   // GObj size
     0,                              // Number of XObjs
     dLBCommonFuncMatrixList,        // Matrix function list
-    NULL,                           // Function for ejecting DObjVec?
+    NULL,                           // DObjVec eject function
     0,                              // Number of AObjs
     0,                              // Number of MObjs
     0,                              // Number of DObjs
@@ -1786,7 +1786,7 @@ void sc1PTrainingModeStartScene(void)
 
 	syVideoInit(&dSC1PTrainingModeVideoSetup);
 
-	dSC1PTrainingModeTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl7_BSS_END);
+	dSC1PTrainingModeTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSYFramebufferSets - (uintptr_t)&ovl7_BSS_END);
 	dSC1PTrainingModeTaskmanSetup.func_start = sc1PTrainingModeFuncStart;
 
 	do

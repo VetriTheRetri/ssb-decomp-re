@@ -42,7 +42,7 @@ SCBattleState *gSCManagerBattleState;
 u32 gSCManagerCIC;
 
 // 0x800A50F0
-s32 D_800A50F0;
+s32 gSCManagerUnkown0x800A50F0;
 
 // 0x800A50F8
 FTFileSize gSCManagerFighterFileSizes[nFTKindEnumCount];
@@ -844,7 +844,7 @@ void scManagerRunLoop(sb32 arg)
 	lbBackupIsSramValid();
 	lbBackupApplyOptions();
 
-	framebuffer = gSCSubsysFramebuffer0;
+	framebuffer = gSYFramebufferSets;
 	end = 0x80400000;
 
 	while ((uintptr_t)framebuffer < end)
@@ -1051,7 +1051,7 @@ void scManagerRunLoop(sb32 arg)
 			case nSCKindOpeningRoom:
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[34]);
-				intro_firstscene_entry();
+				mvOpeningRoomStartScene();
 				break;
 
 			case 29:

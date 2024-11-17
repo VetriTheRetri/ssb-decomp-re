@@ -1034,7 +1034,7 @@ SYTaskmanSetup dMNOptionTaskmanSetup =
     {
         0,                          // ???
         gcRunAll,              		// Update function
-        gcDrawAll,                  	// Frame draw function
+        gcDrawAll,                  // Frame draw function
         &ovl60_BSS_END,             // Allocatable memory pool start
         0,                          // Allocatable memory pool size
         1,                          // ???
@@ -1047,7 +1047,7 @@ SYTaskmanSetup dMNOptionTaskmanSetup =
         2,                          // ???
         0xC000,                     // RDP Output Buffer Size
         mnOptionFuncLights,         // Pre-render function
-        syControllerFuncRead,            // Controller I/O function
+        syControllerFuncRead,       // Controller I/O function
     },
 
     0,                              // Number of GObjThreads
@@ -1059,7 +1059,7 @@ SYTaskmanSetup dMNOptionTaskmanSetup =
     sizeof(GObj),                   // GObj size
     0,                              // Number of XObjs
     NULL,                           // Matrix function list
-    NULL,                           // Function for ejecting DObjVec?
+    NULL,                           // DObjVec eject function
     0,                              // Number of AObjs
     0,                              // Number of MObjs
     0,                              // Number of DObjs

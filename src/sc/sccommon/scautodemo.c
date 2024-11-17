@@ -178,7 +178,7 @@ SYTaskmanSetup dSCAutoDemoTaskmanSetup =
         2,                          // ???
         0xC000,                     // RDP Output Buffer Size
         scAutoDemoFuncLights,    	// Pre-render function
-        syControllerFuncRead,            // Controller I/O function
+        syControllerFuncRead,       // Controller I/O function
     },
 
     0,                              // Number of GObjThreads
@@ -190,7 +190,7 @@ SYTaskmanSetup dSCAutoDemoTaskmanSetup =
     sizeof(GObj),                   // GObj size
     0,                              // Number of XObjs
     dLBCommonFuncMatrixList,        // Matrix function list
-    NULL,                           // Function for ejecting DObjVec?
+    NULL,                           // DObjVec eject function
     0,                              // Number of AObjs
     0,                              // Number of MObjs
     0,                              // Number of DObjs
@@ -732,7 +732,7 @@ void scAutoDemoStartScene(void)
 
 	syVideoInit(&dSCAutoDemoVideoSetup);
 
-	dSCAutoDemoTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl64_BSS_END);
+	dSCAutoDemoTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSYFramebufferSets - (uintptr_t)&ovl64_BSS_END);
 	dSCAutoDemoTaskmanSetup.func_start = scAutoDemoFuncStart;
 
 	scManagerFuncUpdate(&dSCAutoDemoTaskmanSetup);

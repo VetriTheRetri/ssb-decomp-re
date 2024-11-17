@@ -1824,9 +1824,9 @@ void mnVSRecordInit()
 // 0x801369CC
 SYVideoSetup D_ovl32_801369CC = {
 
-	gSCSubsysFramebuffer0,
-	gSCSubsysFramebuffer1,
-	gSCSubsysFramebuffer2,
+	&gSYFramebufferSets[0],
+	&gSYFramebufferSets[1],
+	&gSYFramebufferSets[2],
 	0x00000000,
 	0x00000140,
 	0x000000F0,

@@ -107,7 +107,7 @@ SYTaskmanSetup dSCExplainTaskmanSetup =
         2,                          // ???
         0xC000,                     // RDP Output Buffer Size
         scExplainFuncLights,    	// Pre-render function
-        syControllerFuncRead,            // Controller I/O function
+        syControllerFuncRead,       // Controller I/O function
     },
 
     0,                              // Number of GObjThreads
@@ -119,7 +119,7 @@ SYTaskmanSetup dSCExplainTaskmanSetup =
     sizeof(GObj),                   // GObj size
     0,                              // Number of XObjs
     dLBCommonFuncMatrixList,        // Matrix function list
-    NULL,                           // Function for ejecting DObjVec?
+    NULL,                           // DObjVec eject function
     0,                              // Number of AObjs
     0,                              // Number of MObjs
     0,                              // Number of DObjs
@@ -850,7 +850,7 @@ void scExplainStartScene(void)
 
     set_lcg_seed_ptr(&dSCExplainRandomSeed1);
 
-    dSCExplainTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl63_BSS_END);
+    dSCExplainTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSYFramebufferSets - (uintptr_t)&ovl63_BSS_END);
     dSCExplainTaskmanSetup.func_start = scExplainFuncStart;
 
     scManagerFuncUpdate(&dSCExplainTaskmanSetup);

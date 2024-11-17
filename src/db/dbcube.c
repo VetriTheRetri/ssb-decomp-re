@@ -298,7 +298,7 @@ SYTaskmanSetup dDBCubeTaskmanSetup =
         2,                          // ???
         0x1000,                     // RDP Output Buffer Size
         dbCubeFuncLights,   		// Pre-render function
-        syControllerFuncRead,            // Controller I/O function
+        syControllerFuncRead,       // Controller I/O function
     },
 
     0,                              // Number of GObjThreads
@@ -310,7 +310,7 @@ SYTaskmanSetup dDBCubeTaskmanSetup =
     sizeof(GObj),                   // GObj size
     0,                              // Number of XObjs
     NULL,        					// Matrix function list
-    NULL,                           // Function for ejecting DObjVec?
+    NULL,                           // DObjVec eject function
     0,                              // Number of AObjs
     0,                              // Number of MObjs
     0,                              // Number of DObjs

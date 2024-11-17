@@ -578,7 +578,7 @@ SYTaskmanSetup dMVOpeningYoshiTaskmanSetup =
     sizeof(GObj),                       // GObj size
     0,                                  // Number of XObjs
     dLBCommonFuncMatrixList,            // Matrix function list
-    NULL,                               // Function for ejecting DObjVec?
+    NULL,                               // DObjVec eject function
     0,                                  // Number of AObjs
     0,                                  // Number of MObjs
     0,                                  // Number of DObjs

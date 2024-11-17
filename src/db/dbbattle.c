@@ -160,7 +160,7 @@ SYTaskmanSetup dDBBattleTaskmanSetup =
         2,                          // ???
         0xC000,                     // RDP Output Buffer Size
         dbBattleFuncLights,   		// Pre-render function
-        syControllerFuncRead,            // Controller I/O function
+        syControllerFuncRead,       // Controller I/O function
     },
 
     8,                              // Number of GObjThreads
@@ -172,7 +172,7 @@ SYTaskmanSetup dDBBattleTaskmanSetup =
     sizeof(GObj),                   // GObj size
     256,                            // Number of XObjs
     dLBCommonFuncMatrixList,        // Matrix function list
-    NULL,                           // Function for ejecting DObjVec?
+    NULL,                           // DObjVec eject function
     1024,                           // Number of AObjs
     160,                            // Number of MObjs
     256,                            // Number of DObjs

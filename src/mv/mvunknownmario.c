@@ -77,7 +77,7 @@ SYTaskmanSetup dMVUnknownMarioTaskmanSetup =
         2,                          // ???
         0xC000,                     // RDP Output Buffer Size
         mvUnknownMarioFuncLights,   // Pre-render function
-        syControllerFuncRead,            // Controller I/O function
+        syControllerFuncRead,       // Controller I/O function
     },
 
     0,                              // Number of GObjThreads
@@ -89,7 +89,7 @@ SYTaskmanSetup dMVUnknownMarioTaskmanSetup =
     sizeof(GObj),                   // GObj size
     0,                              // Number of XObjs
     dLBCommonFuncMatrixList,        // Matrix function list
-    NULL,                           // Function for ejecting DObjVec?
+    NULL,                           // DObjVec eject function
     0,                              // Number of AObjs
     0,                              // Number of MObjs
     0,                              // Number of DObjs

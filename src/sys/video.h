@@ -33,11 +33,11 @@
     )                                                                               \
 )
 
-#define SYVIDEO_SETUP_DEFAULT()                                \
+#define SYVIDEO_SETUP_DEFAULT()                                 \
 {                                                               \
-    gSCSubsysFramebuffer0,                                      \
-    gSCSubsysFramebuffer1,                                      \
-    gSCSubsysFramebuffer2,                                      \
+    &gSYFramebufferSets[0],                                     \
+    &gSYFramebufferSets[1],                                     \
+    &gSYFramebufferSets[2],                                     \
     NULL,                                                       \
     320,                                                        \
     240,                                                        \
@@ -67,9 +67,7 @@ typedef struct SYVideoSetup
 
 extern uintptr_t scmanager_BSS_END;         // Z-Buffer pointer = this - 6400 (or 12800 in ovl59)
 
-extern u16 gSCSubsysFramebuffer0[/* */];
-extern u16 gSCSubsysFramebuffer1[/* */];
-extern u16 gSCSubsysFramebuffer2[/* */];
+extern u16 gSYFramebufferSets[3][230][320];
 
 extern u16 *gSYVideoZBuffer;
 extern u32 gSYVideoColorDepth;

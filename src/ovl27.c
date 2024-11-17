@@ -3145,9 +3145,9 @@ void mn1PInitCSS()
 // 0x80138C90
 SYVideoSetup D_ovl27_80138C90 = {
 
-	gSCSubsysFramebuffer0,
-	gSCSubsysFramebuffer1,
-	gSCSubsysFramebuffer2,
+	&gSYFramebufferSets[0],
+	&gSYFramebufferSets[1],
+	&gSYFramebufferSets[2],
 	0x00000000,
 	0x00000140,
 	0x000000F0,

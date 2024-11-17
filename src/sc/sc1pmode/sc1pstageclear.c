@@ -11,7 +11,7 @@ extern void syRdpSetViewport(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 //                               //
 // // // // // // // // // // // //
 
-extern void *D_80044FA8_407B8;
+extern void *dSYSchedulerCurrentFramebuffer;
 
 extern uintptr_t D_NF_00000050;								// 0x00000050
 extern uintptr_t D_NF_00000051;								// 0x00000051
@@ -1916,10 +1916,10 @@ void sc1PStageClearCopyFramebufToWallpaper(void)
 	u32 *row_pixels;
 	u32 *wallpaper_pixels;
 
-	// D_80044FA8_407B8 = framebuf0; start farther in, skipping border
+	// dSYSchedulerCurrentFramebuffer = framebuf0; start farther in, skipping border
 	framebuffer_pixels = (u32*)
 	(
-		(uintptr_t)D_80044FA8_407B8 		+
+		(uintptr_t)dSYSchedulerCurrentFramebuffer 		+
 		SYVIDEO_BORDER_SIZE(320, 10, u16) +
 		SYVIDEO_BORDER_SIZE(1, 10, u16)
 	);
@@ -2034,7 +2034,7 @@ SYTaskmanSetup dGM1PStageClearTaskmanSetup =
     {
         0,                          // ???
         gcRunAll,              		// Update function
-        gcDrawAll,                  	// Frame draw function
+        gcDrawAll,                  // Frame draw function
         &ovl56_BSS_END,             // Allocatable memory pool start
         0,                          // Allocatable memory pool size
         1,                          // ???
@@ -2047,7 +2047,7 @@ SYTaskmanSetup dGM1PStageClearTaskmanSetup =
         2,                          // ???
         0xC000,                     // RDP Output Buffer Size
         sc1PStageClearFuncLights,   // Pre-render function
-        syControllerFuncRead,            // Controller I/O function
+        syControllerFuncRead,       // Controller I/O function
     },
 
     0,                              // Number of GObjThreads
@@ -2059,7 +2059,7 @@ SYTaskmanSetup dGM1PStageClearTaskmanSetup =
     sizeof(GObj),                   // GObj size
     0,                              // Number of XObjs
     dLBCommonFuncMatrixList,        // Matrix function list
-    NULL,                           // Function for ejecting DObjVec?
+    NULL,                           // DObjVec eject function
     0,                              // Number of AObjs
     0,                              // Number of MObjs
     0,                              // Number of DObjs

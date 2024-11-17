@@ -1384,9 +1384,9 @@ void mnStagesInitSSS()
 // 0x8013490C
 SYVideoSetup D_ovl30_8013490C = {
 
-	gSCSubsysFramebuffer0,
-	gSCSubsysFramebuffer1,
-	gSCSubsysFramebuffer2,
+	&gSYFramebufferSets[0],
+	&gSYFramebufferSets[1],
+	&gSYFramebufferSets[2],
 	0x00000000,
 	0x00000140,
 	0x000000F0,

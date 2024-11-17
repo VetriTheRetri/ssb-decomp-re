@@ -83,7 +83,7 @@ SYTaskmanSetup dDBFallsTaskmanSetup =
         2,                          // ???
         0xC000,                     // RDP Output Buffer Size
         dbFallsFuncLights,   		// Pre-render function
-        syControllerFuncRead,            // Controller I/O function
+        syControllerFuncRead,       // Controller I/O function
     },
 
     8,                              // Number of GObjThreads
@@ -95,7 +95,7 @@ SYTaskmanSetup dDBFallsTaskmanSetup =
     sizeof(GObj),                   // GObj size
     256,                            // Number of XObjs
     NULL,        					// Matrix function list
-    NULL,                           // Function for ejecting DObjVec?
+    NULL,                           // DObjVec eject function
     1024,                           // Number of AObjs
     0,                            	// Number of MObjs
     256,                            // Number of DObjs
@@ -196,6 +196,6 @@ void dbFallsStartScene(void)
 	dDBFallsVideoSetup.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&dDBFallsVideoSetup);
 
-	dDBFallsTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl15_BSS_END);
+	dDBFallsTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSYFramebufferSets - (uintptr_t)&ovl15_BSS_END);
 	syTaskmanRun(&dDBFallsTaskmanSetup);
 }

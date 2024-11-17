@@ -77,7 +77,7 @@ SYTaskmanSetup dMVOpeningCliffTaskmanSetup =
     {
         0,                              // ???
         gcRunAll,                       // Update function
-        gcDrawAll,                  	// Frame draw function
+        gcDrawAll,                  // Frame draw function
         &ovl46_BSS_END,                 // Allocatable memory pool start
         0,                              // Allocatable memory pool size
         1,                              // ???
@@ -102,7 +102,7 @@ SYTaskmanSetup dMVOpeningCliffTaskmanSetup =
     sizeof(GObj),                       // GObj size
     0,                                  // Number of XObjs
     dLBCommonFuncMatrixList,            // Matrix function list
-    NULL,                               // Function for ejecting DObjVec?
+    NULL,                               // DObjVec eject function
     0,                                  // Number of AObjs
     0,                                  // Number of MObjs
     0,                                  // Number of DObjs

@@ -30,7 +30,7 @@ SYTaskmanSetup dMNNoControllerTaskmanSetup =
     {
         0,                          // ???
         gcRunAll,          			// Update function
-        gcDrawAll,                  	// Frame draw function
+        gcDrawAll,                  // Frame draw function
         &ovl11_BSS_END,             // Allocatable memory pool start
         0,                          // Allocatable memory pool size
         1,                          // ???
@@ -43,7 +43,7 @@ SYTaskmanSetup dMNNoControllerTaskmanSetup =
         2,                          // ???
         0x1000,                     // RDP Output Buffer Size
         NULL,         				// Pre-render function
-        syControllerFuncRead,            // Controller I/O function
+        syControllerFuncRead,       // Controller I/O function
     },
 
     0,                              // Number of GObjThreads
@@ -55,7 +55,7 @@ SYTaskmanSetup dMNNoControllerTaskmanSetup =
     sizeof(GObj),                   // GObj size
     0,                              // Number of XObjs
     NULL,                           // Matrix function list
-    NULL,                           // Function for ejecting DObjVec?
+    NULL,                           // DObjVec eject function
     0,                              // Number of AObjs
     0,                              // Number of MObjs
     0,                              // Number of DObjs
@@ -130,6 +130,6 @@ void mnNoControllerStartScene(void)
 	dMNNoControllerVideoSetup.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&dMNNoControllerVideoSetup);
 
-	dMNNoControllerTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl11_BSS_END);
+	dMNNoControllerTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSYFramebufferSets - (uintptr_t)&ovl11_BSS_END);
 	syTaskmanRun(&dMNNoControllerTaskmanSetup);
 }

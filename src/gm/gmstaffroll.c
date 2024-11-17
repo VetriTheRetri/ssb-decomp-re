@@ -2212,7 +2212,7 @@ SYTaskmanSetup dGMStaffrollTaskmanSetup =
         2,                          // ???
         0x1000,                     // RDP Output Buffer Size
         gmStaffrollFuncLights,     	// Pre-render function
-        syControllerFuncRead,            // Controller I/O function
+        syControllerFuncRead,       // Controller I/O function
     },
 
     16,                             // Number of GObjThreads
@@ -2224,7 +2224,7 @@ SYTaskmanSetup dGMStaffrollTaskmanSetup =
     sizeof(GObj),                   // GObj size
     256,                            // Number of XObjs
     NULL,                           // Matrix function list
-    NULL,                           // Function for ejecting DObjVec?
+    NULL,                           // DObjVec eject function
     32,                             // Number of AObjs
     16,                             // Number of MObjs
     1024,                           // Number of DObjs
@@ -2261,7 +2261,7 @@ void gmStaffrollStartScene(void)
 	dGMStaffrollTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)SYVIDEO_DEFINE_FRAMEBUFFER_ADDR(640, 480, 0, 0, u16, 0) - (uintptr_t)&ovl59_BSS_END);
 	syTaskmanRun(&dGMStaffrollTaskmanSetup);
 
-	arena16 = gSCSubsysFramebuffer0;
+	arena16 = gSYFramebufferSets;
 
 	while ((uintptr_t)arena16 < 0x80400000) { *arena16++ = GPACK_RGBA5551(0x00, 0x00, 0x00, 0x01); }
 }

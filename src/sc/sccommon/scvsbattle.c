@@ -64,7 +64,7 @@ SYTaskmanSetup dSCVSBattleTaskmanSetup =
     sizeof(GObj),                       // GObj size
     0,                                  // Number of XObjs
     dLBCommonFuncMatrixList,            // Matrix function list
-    NULL,                               // Function for ejecting DObjVec?
+    NULL,                               // DObjVec eject function
     0,                                  // Number of AObjs
     0,                                  // Number of MObjs
     0,                                  // Number of DObjs
@@ -532,7 +532,7 @@ void scVSBattleStartScene(void)
 	dSCVSBattleVideoSetup.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&dSCVSBattleVideoSetup);
 
-	dSCVSBattleTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl4_BSS_END);
+	dSCVSBattleTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSYFramebufferSets - (uintptr_t)&ovl4_BSS_END);
 	dSCVSBattleTaskmanSetup.func_start = scVSBattleFuncStart;
 	scManagerFuncUpdate(&dSCVSBattleTaskmanSetup);
 

@@ -681,7 +681,7 @@ SYTaskmanSetup dSC1PGameTaskmanSetup =
         2,                          // ???
         0xC000,                     // RDP Output Buffer Size
         sc1PGameFuncLights,         // Pre-render function
-        syControllerFuncRead,            // Controller I/O function
+        syControllerFuncRead,       // Controller I/O function
     },
 
     0,                              // Number of GObjThreads
@@ -693,7 +693,7 @@ SYTaskmanSetup dSC1PGameTaskmanSetup =
     sizeof(GObj),                   // GObj size
     0,                              // Number of XObjs
     dLBCommonFuncMatrixList,        // Matrix function list
-    NULL,                           // Function for ejecting DObjVec?
+    NULL,                           // DObjVec eject function
     0,                              // Number of AObjs
     0,                              // Number of MObjs
     0,                              // Number of DObjs
@@ -2847,7 +2847,7 @@ void sc1PGameStartScene(void)
     dSC1PGameVideoSetup.zbuffer = syVideoGetZBuffer(6400);
     syVideoInit(&dSC1PGameVideoSetup);
 
-    dSC1PGameTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl65_BSS_END);
+    dSC1PGameTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSYFramebufferSets - (uintptr_t)&ovl65_BSS_END);
     dSC1PGameTaskmanSetup.func_start = sc1PGameFuncStart;
     scManagerFuncUpdate(&dSC1PGameTaskmanSetup);
     

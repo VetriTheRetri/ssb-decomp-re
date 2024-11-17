@@ -483,7 +483,7 @@ SYTaskmanSetup dMVOpeningPortraitsTaskmanSetup =
     {
         0,                              // ???
         gcRunAll,                       // Update function
-        gcDrawAll,                  	// Frame draw function
+        gcDrawAll,                  // Frame draw function
         &ovl35_BSS_END,                 // Allocatable memory pool start
         0,                              // Allocatable memory pool size
         1,                              // ???
@@ -508,7 +508,7 @@ SYTaskmanSetup dMVOpeningPortraitsTaskmanSetup =
     sizeof(GObj),                       // GObj size
     256,                                // Number of XObjs
     dLBCommonFuncMatrixList,            // Matrix function list
-    NULL,                               // Function for ejecting DObjVec?
+    NULL,                               // DObjVec eject function
     512,                                // Number of AObjs
     160,                                // Number of MObjs
     256,                                // Number of DObjs

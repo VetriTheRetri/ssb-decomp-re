@@ -72,7 +72,7 @@ SYTaskmanSetup dSC1PChallengerTaskmanSetup =
     {
         0,                          // ???
         gcRunAll,              		// Update function
-        gcDrawAll,                  	// Frame draw function
+        gcDrawAll,                  // Frame draw function
         &ovl23_BSS_END,             // Allocatable memory pool start
         0,                          // Allocatable memory pool size
         1,                          // ???
@@ -85,7 +85,7 @@ SYTaskmanSetup dSC1PChallengerTaskmanSetup =
         2,                          // ???
         0xC000,                     // RDP Output Buffer Size
         sc1PChallengerFuncLights,   // Pre-render function
-        syControllerFuncRead,            // Controller I/O function
+        syControllerFuncRead,       // Controller I/O function
     },
 
     0,                              // Number of GObjThreads
@@ -97,7 +97,7 @@ SYTaskmanSetup dSC1PChallengerTaskmanSetup =
     sizeof(GObj),                   // GObj size
     0,                              // Number of XObjs
     dLBCommonFuncMatrixList,        // Matrix function list
-    NULL,                           // Function for ejecting DObjVec?
+    NULL,                           // DObjVec eject function
     0,                              // Number of AObjs
     0,                              // Number of MObjs
     0,                              // Number of DObjs

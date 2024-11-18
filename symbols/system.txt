@@ -762,9 +762,9 @@ scCurrentGfxTask = 0x80044ECC;
 scCurrentAudioTask = 0x80044ED0;
 D_80044F38_40748 = 0x80044F38; // size:0x50
 scFrameBuffers = 0x80044F90;
-scNextFrameBuffer = 0x80044F9C;
+gSYSchedulerNextFramebuffer = 0x80044F9C;
 scUnkFrameBuffer = 0x80044FA0;
-scTimestampSetFb = 0x80044FAC;
+gSYSchedulerFramebufferSetTimestamp = 0x80044FAC;
 scRDPOutputBufferUsed = 0x80044FC8;
 scTaskQueue = 0x80044FF8;
 

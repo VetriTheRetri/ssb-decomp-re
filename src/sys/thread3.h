@@ -34,17 +34,17 @@ enum SYTaskState
     nSYScheduleStatusTaskStopped
 };
 
-struct SYTaskInfo;
-struct SYTaskGfx;
-
-typedef s32 (*SYTaskCallback)(struct SYTaskInfo *);
-typedef s32 (*SYTaskGfxCallback)(struct SYTaskGfx *);
-
 typedef struct SCClient
 {
     /* 0x00 */ struct SCClient* next;
     /* 0x04 */ OSMesgQueue* mq;
 } SCClient; // size = 0x8
+
+struct SYTaskInfo;
+struct SYTaskGfx;
+
+typedef sb32 (*SYTaskCallback)(struct SYTaskInfo*);
+typedef sb32 (*SYTaskGfxCallback)(struct SYTaskGfx*);
 
 // This may be the real form of `struct SpMqInfo`, but I'll have to double check
 // thread3.c to see if I can replace all forms...

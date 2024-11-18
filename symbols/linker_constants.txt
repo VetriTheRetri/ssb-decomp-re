@@ -129,6 +129,15 @@ _ovl65SegNoloadEnd = 0x80193900;
 lSYDmemCheckValidFunc = 0x00000000;
 lSYDmemCheckValidNBytes = 0x00000030;
 
+lMVCommonFileID = 0x00000034;
+lMVOpeningRoomTransitionFileID = 0x0000003F;
+lMVOpeningRoomScene1FileID = 0x00000038;
+lMVOpeningRoomScene2FileID = 0x00000039;
+lMVOpeningRoomScene3FileID = 0x0000003A;
+lMVOpeningRoomScene4FileID = 0x0000003B;
+lMVOpeningRunCrashFileID = 0x0000004B;
+lMVOpeningRoomWallpaperFileID = 0x0000005A;
+
 lMVOpeningPortraitsSet1FileID = 0x00000035;
 lMVOpeningPortraitsSet2FileID = 0x00000036;
 

@@ -70,12 +70,12 @@ OSViMode D_80044EE8_406F8;
 OSViMode D_80044F38_40748;
 u32 D_80044F88_40798[2];
 void *scFrameBuffers[3];
-void *scNextFrameBuffer;
+void *gSYSchedulerNextFramebuffer;
 void *scUnkFrameBuffer;
 u32 D_80044FA4_407B4;
 void *dSYSchedulerCurrentFramebuffer;
-u32 scTimestampSetFb;
-u32 scTimestampAudioTaskStarted;
+u32 gSYSchedulerFramebufferSetTimestamp;
+u32 gSYSchedulerAudioStartTimestamp;
 u32 D_80044FB4_407C4;
 u32 scTimeSpentAudio;
 struct ViSettings D_80044FBC_407CC; // bitflags? union?
@@ -149,7 +149,7 @@ s32 scCheckGfxTaskDefault(SYTaskGfx* t) {
     void* curFb;
     void* fb;
 
-    if (scNextFrameBuffer != NULL) {
+    if (gSYSchedulerNextFramebuffer != NULL) {
         return TRUE;
     }
     if (scUnkFrameBuffer != NULL) {
@@ -164,9 +164,9 @@ s32 scCheckGfxTaskDefault(SYTaskGfx* t) {
     if (idx != -1) {
         fb = scFrameBuffers[idx];
         if (fb != NULL && curFb != fb && nextFb != fb) {
-            scUnkFrameBuffer = scNextFrameBuffer = fb;
+            scUnkFrameBuffer = gSYSchedulerNextFramebuffer = fb;
             scRDPOutputBufferUsed = 0;
-            scTimestampSetFb = osGetCount();
+            gSYSchedulerFramebufferSetTimestamp = osGetCount();
             return TRUE;
         }
     }
@@ -175,9 +175,9 @@ s32 scCheckGfxTaskDefault(SYTaskGfx* t) {
     for (i = 0; i < ARRAY_COUNT(scFrameBuffers); i++) {
         fb = scFrameBuffers[i];
         if (fb != NULL && curFb != fb && nextFb != fb) {
-            scNextFrameBuffer = fb;
+            gSYSchedulerNextFramebuffer = fb;
             scRDPOutputBufferUsed = 0;
-            scTimestampSetFb = osGetCount();
+            gSYSchedulerFramebufferSetTimestamp = osGetCount();
             return TRUE;
         }
     }
@@ -645,29 +645,29 @@ void scSetNextFrameBuffer(void *arg0) {
     if (scUseCustomSwapBufferFunc != 0) {
         osSendMesg(scCustomSwapBufferQueue, (OSMesg)1, OS_MESG_NOBLOCK);
         if ((intptr_t)arg0 == -1) {
-            dSYSchedulerCurrentFramebuffer = scNextFrameBuffer;
-            scNextFrameBuffer = NULL;
+            dSYSchedulerCurrentFramebuffer = gSYSchedulerNextFramebuffer;
+            gSYSchedulerNextFramebuffer = NULL;
         } else {
             dSYSchedulerCurrentFramebuffer = arg0;
         }
     } else {
         if ((intptr_t)arg0 == -1) {
-            func_80001764(scNextFrameBuffer);
+            func_80001764(gSYSchedulerNextFramebuffer);
             // permutater solution
             // clang-format off
-            temp = scNextFrameBuffer; if (temp == scUnkFrameBuffer) { 
+            temp = gSYSchedulerNextFramebuffer; if (temp == scUnkFrameBuffer) { 
                 D_80044FA4_407B4 = 1; 
             }
             // clang-format on
             dSYSchedulerCurrentFramebuffer = temp;
-            scNextFrameBuffer = NULL;
+            gSYSchedulerNextFramebuffer = NULL;
         } else {
             func_80001764((void *)arg0);
             dSYSchedulerCurrentFramebuffer = arg0;
         }
     }
     // OS_CYCLES_TO_NSEC?
-    D_80044FB4_407C4 = (u32)((u32)(osGetCount() - scTimestampSetFb) / 0xB9BU);
+    D_80044FB4_407C4 = (u32)((u32)(osGetCount() - gSYSchedulerFramebufferSetTimestamp) / 0xB9BU);
 }
 
 // 0x800018E0
@@ -686,7 +686,7 @@ void scExecuteGfxTask(SYTaskGfx *arg0) {
 
 // 0x80001968
 void scExecuteAudioTask(SYTaskGfx *arg0) {
-    scTimestampAudioTaskStarted = osGetCount();
+    gSYSchedulerAudioStartTimestamp = osGetCount();
 
     if ((scCurrentGfxTask != NULL) && (scCurrentGfxTask->info.state == 2)) {
         osSpTaskYield();
@@ -711,7 +711,7 @@ s32 scExecuteTask(SYTaskInfo* task)
             SYTaskGfx* t = (void*) task;
 
             if (t->unk68 != NULL) {
-                *t->unk68 |= (uintptr_t) scNextFrameBuffer;
+                *t->unk68 |= (uintptr_t) gSYSchedulerNextFramebuffer;
                 osWritebackDCache(t->unk68, sizeof(t->unk68));
             }
             if ((uintptr_t) t->task.t.output_buffer == (uintptr_t) -1) {
@@ -978,7 +978,7 @@ void scHandleSPTaskDone(void) {
         osSendMesg(scCurrentAudioTask->info.mq, (OSMesg) 0, OS_MESG_NOBLOCK);
         scCurrentAudioTask = NULL;
         scExecuteTasks();
-        scTimeSpentAudio = (osGetCount() - scTimestampAudioTaskStarted) / 2971;
+        scTimeSpentAudio = (osGetCount() - gSYSchedulerAudioStartTimestamp) / 2971;
         return;
     }
 
@@ -1092,7 +1092,7 @@ void thread3_scheduler(UNUSED void *arg) {
     scMainQueueHead = D_80044EC8_406D8 = scCurrentGfxTask = scCurrentAudioTask = scPausedQueueHead = D_80044ED8_406E8 = NULL;
     scCurrentQueue3Task = scQueue3Head = D_80044EE0_406F0 = NULL;
     D_80044F88_40798[0]                                    = 0;
-    dSYSchedulerCurrentFramebuffer = scNextFrameBuffer = scUnkFrameBuffer = NULL;
+    dSYSchedulerCurrentFramebuffer = gSYSchedulerNextFramebuffer = scUnkFrameBuffer = NULL;
     scUseCustomSwapBufferFunc                                       = 0;
     D_80045018_40828                                       = func_800029D8;
     D_80045020_40830                                       = 0;

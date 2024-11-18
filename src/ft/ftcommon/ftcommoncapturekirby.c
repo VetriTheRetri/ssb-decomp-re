@@ -482,7 +482,7 @@ void ftCommonThrownKirbyStarSetStatus(GObj *fighter_gobj)
 {
     s32 i;
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)gFTDataKirbyMainMotion + (intptr_t)&lFTKirbySpecialNCopyData);
+    FTKirbyCopy *copy = lbRelocGetFileData(FTKirbyCopy*, gFTDataKirbyMainMotion, &lFTKirbySpecialNCopyData);;
 
     if (fp->ga == nMPKineticsGround)
     {
@@ -501,7 +501,7 @@ void ftCommonThrownKirbyStarSetStatus(GObj *fighter_gobj)
 
         if (attack_coll->attack_state == nGMAttackStateNew)
         {
-            attack_coll->damage = copy_data[fp->fkind].star_damage;
+            attack_coll->damage = copy[fp->fkind].star_damage;
         }
     }
     fp->is_invisible = fp->is_hide_shadow = TRUE;

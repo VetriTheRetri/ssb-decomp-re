@@ -434,7 +434,7 @@ void mn1PSelectCharWithToken(s32 port_id, s32 select_button)
 	s32 held_port_id = gMN1PPanel.held_port_id,
 		costume_id = ftParamGetCostumeCommonID(gMN1PPanel.char_id, select_button);
 
-	ftParamInitModelTexturePartsAll(gMN1PPanel.player, costume_id, 0);
+	ftParamInitAllParts(gMN1PPanel.player, costume_id, 0);
 
 	gMN1PPanel.costume_id = costume_id;
 	gMN1PPanel.is_selected = TRUE;
@@ -2355,7 +2355,7 @@ void mn1PSyncShadeAndCostume(s32 arg0, s32 select_button)
 {
 	s32 costume_id = ftParamGetCostumeCommonID(gMN1PPanel.char_id, select_button);
 
-	ftParamInitModelTexturePartsAll(gMN1PPanel.player, costume_id, 0);
+	ftParamInitAllParts(gMN1PPanel.player, costume_id, 0);
 
 	gMN1PPanel.costume_id = costume_id;
 

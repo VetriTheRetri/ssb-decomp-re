@@ -224,7 +224,7 @@ void mnBattleSelectCharWithToken(s32 port_id, s32 select_button)
 
 		gMnBattlePanels[held_port_id].shade = mnBattleGetShade(held_port_id);
 		gMnBattlePanels[held_port_id].costume_id = costume_id;
-		ftParamInitModelTexturePartsAll(gMnBattlePanels[held_port_id].player, costume_id, gMnBattlePanels[held_port_id].shade);
+		ftParamInitAllParts(gMnBattlePanels[held_port_id].player, costume_id, gMnBattlePanels[held_port_id].shade);
 	}
 
 	gMnBattlePanels[held_port_id].is_selected = TRUE;
@@ -1525,7 +1525,7 @@ void mnBattleUpdatePanelsAndFighterCostumes()
 				gMnBattlePanels[i].costume_id = ftParamGetCostumeCommonID(
 					gMnBattlePanels[i].char_id, mnBattleGetAvailableCostumeFFA(gMnBattlePanels[i].char_id, i));
 				gMnBattlePanels[i].shade = mnBattleGetShade(i);
-				ftParamInitModelTexturePartsAll(gMnBattlePanels[i].player, gMnBattlePanels[i].costume_id, gMnBattlePanels[i].shade);
+				ftParamInitAllParts(gMnBattlePanels[i].player, gMnBattlePanels[i].costume_id, gMnBattlePanels[i].shade);
 			}
 		}
 	}
@@ -1540,7 +1540,7 @@ void mnBattleUpdatePanelsAndFighterCostumes()
 				gMnBattlePanels[i].costume_id
 					= ftParamGetCostumeTeamID(gMnBattlePanels[i].char_id, gMnBattlePanels[i].team);
 				gMnBattlePanels[i].shade = mnBattleGetShade(i);
-				ftParamInitModelTexturePartsAll(gMnBattlePanels[i].player, gMnBattlePanels[i].costume_id, gMnBattlePanels[i].shade);
+				ftParamInitAllParts(gMnBattlePanels[i].player, gMnBattlePanels[i].costume_id, gMnBattlePanels[i].shade);
 			}
 		}
 	}
@@ -1686,7 +1686,7 @@ sb32 mnCheckAnyTeamButtonPress(GObj* cursor_gobj, s32 cursor_port_id)
 					= ftParamGetCostumeTeamID(gMnBattlePanels[port_id].char_id, gMnBattlePanels[port_id].team);
 
 				gMnBattlePanels[port_id].shade = shade = mnBattleGetShade(port_id);
-				ftParamInitModelTexturePartsAll(gMnBattlePanels[port_id].player, gMnBattlePanels[port_id].costume_id, shade);
+				ftParamInitAllParts(gMnBattlePanels[port_id].player, gMnBattlePanels[port_id].costume_id, shade);
 			}
 
 			func_800269C0_275C0(nSYAudioFGMTitlePressStart);
@@ -2826,7 +2826,7 @@ void mnTryCostumeChange(s32 port_id, s32 select_button)
 	gMnBattlePanels[port_id].costume_id = costume_id;
 	gMnBattlePanels[port_id].shade = mnBattleGetShade(port_id);
 
-	ftParamInitModelTexturePartsAll(gMnBattlePanels[port_id].player, costume_id, gMnBattlePanels[port_id].shade);
+	ftParamInitAllParts(gMnBattlePanels[port_id].player, costume_id, gMnBattlePanels[port_id].shade);
 
 	func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 }
@@ -3502,7 +3502,7 @@ void mnBattleSyncShadeAndCostume(s32 unused)
 			{
 				shade = mnBattleGetShade(i);
 				gMnBattlePanels[i].shade = shade;
-				ftParamInitModelTexturePartsAll(gMnBattlePanels[i].player, gMnBattlePanels[i].costume_id, shade);
+				ftParamInitAllParts(gMnBattlePanels[i].player, gMnBattlePanels[i].costume_id, shade);
 			}
 		}
 	}
@@ -3519,7 +3519,7 @@ void mnBattleSyncShadeAndCostume(s32 unused)
 				{
 					shade = mnBattleGetShade(i);
 					gMnBattlePanels[i].shade = shade;
-					ftParamInitModelTexturePartsAll(gMnBattlePanels[i].player, costume_id, shade);
+					ftParamInitAllParts(gMnBattlePanels[i].player, costume_id, shade);
 					gMnBattlePanels[i].costume_id = costume_id;
 				}
 			}

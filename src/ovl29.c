@@ -281,7 +281,7 @@ void mnBonusSelectCharWithToken(s32 port_id, s32 select_button)
 	s32 held_port_id = gMnBonusPanel.held_port_id,
 		costume_id = ftParamGetCostumeCommonID(gMnBonusPanel.char_id, select_button);
 
-	ftParamInitModelTexturePartsAll(gMnBonusPanel.player, costume_id, 0);
+	ftParamInitAllParts(gMnBonusPanel.player, costume_id, 0);
 
 	gMnBonusPanel.costume_id = costume_id;
 	gMnBonusPanel.is_selected = TRUE;
@@ -1808,7 +1808,7 @@ void mnBonusSyncShadeAndCostume(s32 arg0, s32 select_button)
 {
 	s32 costume_id = ftParamGetCostumeCommonID(gMnBonusPanel.char_id, select_button);
 
-	ftParamInitModelTexturePartsAll(gMnBonusPanel.player, costume_id, 0);
+	ftParamInitAllParts(gMnBonusPanel.player, costume_id, 0);
 
 	gMnBonusPanel.costume_id = costume_id;
 

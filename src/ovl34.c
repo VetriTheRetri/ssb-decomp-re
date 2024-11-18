@@ -4,6 +4,7 @@
 #include <sc/scene.h>
 #include <sys/video.h>
 
+extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 extern void scManagerFuncDraw();
 
 // Externs
@@ -58,8 +59,6 @@ extern intptr_t FILE_03F_TRANSITION_GFX_OVERLAY_OBJECT_OFFSET_2; // file 0x03F o
 extern intptr_t FILE_03F_TRANSITION_GFX_OUTLINE_OBJECT_OFFSET_1; // file 0x03F offset for First Destination transition gfx red outline
 extern intptr_t FILE_03F_TRANSITION_GFX_OUTLINE_OBJECT_OFFSET_2; // file 0x03F offset for First Destination transition gfx red outline
 extern intptr_t FILE_05A_BACKGROUND_IMAGE_OFFSET; // file 0x05A offset for background image footer
-
-extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
 //                               //
@@ -207,7 +206,7 @@ LBFileNode sMVOpeningRoomStatusBuffer[100];
 LBFileNode sMVOpeningRoomForceStatusBuffer[7];
 
 // 0x801350B0
-void *sMVOpeningRoomFiles[8];
+void *sMVOpeningRoomFiles[ARRAY_COUNT(dMVOpeningRoomFileIDs)];
 
 // // // // // // // // // // // //
 //                               //

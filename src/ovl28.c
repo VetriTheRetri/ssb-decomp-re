@@ -179,7 +179,7 @@ void mnTrainingSelectCharWithToken(s32 port_id, s32 select_button)
 			return;
 		}
 
-		ftParamInitModelTexturePartsAll(gMNTrainingPanels[held_port_id].player, costume_id, 0);
+		ftParamInitAllParts(gMNTrainingPanels[held_port_id].player, costume_id, 0);
 		gMNTrainingPanels[held_port_id].costume_id = costume_id;
 	}
 
@@ -1755,7 +1755,7 @@ void mnTrainingTryCostumeChange(s32 port_id, s32 select_button)
 		return;
 	}
 
-	ftParamInitModelTexturePartsAll(gMNTrainingPanels[port_id].player, costume_id, 0);
+	ftParamInitAllParts(gMNTrainingPanels[port_id].player, costume_id, 0);
 	gMNTrainingPanels[port_id].costume_id = costume_id;
 
 	func_800269C0_275C0(0xA4U);
@@ -2312,7 +2312,7 @@ void mnTrainingSyncShadeAndCostume(s32 unused)
 
 			if ((costume_id != gMNTrainingPanels[i].costume_id) && (gMNTrainingPanels[i].unk_0x88 == 0))
 			{
-				ftParamInitModelTexturePartsAll(gMNTrainingPanels[i].player, costume_id, 0);
+				ftParamInitAllParts(gMNTrainingPanels[i].player, costume_id, 0);
 				gMNTrainingPanels[i].costume_id = costume_id;
 			}
 		}

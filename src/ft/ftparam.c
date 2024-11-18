@@ -691,14 +691,14 @@ s32 ftParamGetBestHitStatusAll(GObj *fighter_gobj)
 }
 
 // 0x800E8B00
-void ftParamResetFighterDamagePartAll(GObj *fighter_gobj)
+void ftParamResetFighterDamageCollsAll(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     FTDamageColl *damage_coll = &fp->damage_colls[0];
-    FTDamageCollDesc *damage_coll_desc = &fp->attr->damage_colls_desc[0];
+    FTDamageCollDesc *damage_coll_desc = &fp->attr->damage_coll_descs[0];
     s32 i;
 
-    for (i = 0; i < FTPARTS_HURT_NUM_MAX; i++, damage_coll++, damage_coll_desc++)
+    for (i = 0; i < (ARRAY_COUNT(fp->damage_colls) + ARRAY_COUNT(fp->attr->damage_coll_descs)) / 2; i++, damage_coll++, damage_coll_desc++)
     {
         if (damage_coll_desc->joint_id != -1)
         {
@@ -974,7 +974,7 @@ void ftParamSetModelPartDetailAll(GObj *fighter_gobj, u8 detail)
 }
 
 // 0x800E9248
-void ftParamInitModelTexturePartsAll(GObj *fighter_gobj, s32 costume, s32 shade)
+void ftParamInitAllParts(GObj *fighter_gobj, s32 costume, s32 shade)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     FTAttributes *attr = fp->attr;
@@ -982,7 +982,7 @@ void ftParamInitModelTexturePartsAll(GObj *fighter_gobj, s32 costume, s32 shade)
     GObj *parts_gobj;
     FTParts *parts;
     FTCommonPartContainer *commonparts_container;
-    FTMesh *ft_mesh;
+    FTAccessPart *accesspart;
     FTModelPartStatus *modelpart_status;
     s32 detail_id;
     FTModelPart *modelpart;
@@ -991,7 +991,7 @@ void ftParamInitModelTexturePartsAll(GObj *fighter_gobj, s32 costume, s32 shade)
     s32 i;
 
     commonparts_container = attr->commonparts_container;
-    ft_mesh = attr->mesh;
+    accesspart = attr->accesspart;
 
     for (i = 0; i < ARRAY_COUNT(fp->joints) - nFTPartsJointCommonStart; i++)
     {
@@ -1034,7 +1034,7 @@ void ftParamInitModelTexturePartsAll(GObj *fighter_gobj, s32 costume, s32 shade)
                     lbCommonAddMObjForFighterPartsDObj(joint, mobjsubs, costume_matanim_joints, NULL, costume);
                 }
             }
-            if ((ft_mesh != NULL) && ((i + nFTPartsJointCommonStart) == ft_mesh->joint_id))
+            if ((accesspart != NULL) && ((i + nFTPartsJointCommonStart) == accesspart->joint_id))
             {
                 parts = ftGetParts(joint);
 
@@ -1049,9 +1049,9 @@ void ftParamInitModelTexturePartsAll(GObj *fighter_gobj, s32 costume, s32 shade)
                     parts_gobj = gcMakeGObjSPAfter(nGCCommonKindFighterParts, NULL, nGCCommonLinkIDFighterParts, GOBJ_PRIORITY_DEFAULT);
                     parts->gobj = parts_gobj;
 
-                    gcAddDObjForGObj(parts_gobj, ft_mesh->dl);
+                    gcAddDObjForGObj(parts_gobj, accesspart->dl);
 
-                    lbCommonAddMObjForFighterPartsDObj(DObjGetStruct(parts->gobj), ft_mesh->mobjsubs, ft_mesh->costume_matanim_joints, NULL, costume);
+                    lbCommonAddMObjForFighterPartsDObj(DObjGetStruct(parts->gobj), accesspart->mobjsubs, accesspart->costume_matanim_joints, NULL, costume);
                 }
             }
         }

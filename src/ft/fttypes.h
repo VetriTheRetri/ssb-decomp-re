@@ -141,6 +141,15 @@ struct FTData
     size_t file_anim_size;
 };
 
+// Accessory part (e.g. Pikachu wizard hat and Jigglypuff bow)
+struct FTAccessPart
+{
+    s32 joint_id;
+    Gfx *dl;
+    MObjSub **mobjsubs;
+    AObjEvent32 **costume_matanim_joints;
+};
+
 struct FTModelPart
 {
     void *display_list;
@@ -696,7 +705,7 @@ struct FTParts
     GObj *gobj;
 };
 
-struct FTWithheldPart
+struct FTHiddenPart
 {
     s32 root_joint_id;
     s32 parent_joint_id;
@@ -959,42 +968,33 @@ struct FTAttributes
     ub32 is_have_specialairlw: 1;
     ub32 is_have_catch       : 1;   // Whether fighter has a grab
     ub32 is_have_voice       : 1;
-    FTDamageCollDesc damage_colls_desc[FTPARTS_HURT_NUM_MAX];
-    Vec3f hit_detect_range;         // This is a radius around the fighter within which hitbox detection can occur
-    u32 *setup_parts;               // Pointer to two sets of flags marking joints that should be initialized on fighter creation
-    u32 *animlock;                  // Pointer to two sets of flags marking joints that should not be animated;
-                                    // Ignores special joints, so count starts from 4
-    s32 effect_joint_ids[5];        // The game will cycle through these joints when applying certain particles such as electricity and flames
-    sb32 cliff_status_ga[5];        // Bool for whether fighter is grounded or airborne during each cliff state
-    u8 filler_0x2CC[0x2D0 - 0x2CC];
-    FTWithheldPart *withheld_parts;
-    FTCommonPartContainer *commonparts_container;
-    DObjDesc *dobj_lookup; // WARNING: Not actually DObjDesc* but I don't know what this struct is or what its bounds are; bunch of consecutive floats
-    AObjEvent32 **shield_anim_joints[8];  // One for each ordinal direction
-    s32 joint_rfoot_id; // What does this do?
-    f32 joint_rfoot_rotate;
-    s32 joint_lfoot_id;
-    f32 joint_lfoot_rotate;
+    FTDamageCollDesc damage_coll_descs[11];
+    Vec3f hit_detect_range;                         // This is a radius around the fighter within which hitbox detection can occur
+    u32 *setup_parts;                               // Pointer to two sets of flags marking joints that should be initialized on fighter creation
+    u32 *animlock;                                  // Pointer to two sets of flags marking joints that should not be animated; ignores joints 0 through 3
+    s32 effect_joint_ids[5];                        // The game will cycle through these joints when applying certain particles such as electricity and flames
+    sb32 cliff_status_ga[5];                        // Bool for whether fighter is grounded or airborne during each cliff state
+    s32 unk_ftattr_0x2CC;                           // ???
+    FTHiddenPart *hiddenparts;                      // Hidden fighter body parts?
+    FTCommonPartContainer *commonparts_container;   // Base fighter body parts
+    DObjDesc *dobj_lookup;                          // I don't actually know how this works at the moment
+    AObjEvent32 **shield_anim_joints[8];            // One for each ordinal direction
+    s32 joint_rfoot_id;                             // Right foot joint
+    f32 joint_rfoot_rotate;                         // Amount of bend applied to right foot on slope contour?
+    s32 joint_lfoot_id;                             // Left foot joint
+    f32 joint_lfoot_rotate;                         // Amount of bend applied to left foot on slope contour?
     u8 filler_0x304[0x31C - 0x30C];
     f32 unk_0x31C;
     f32 unk_0x320;
-    Vec3f *translate_scales; // Scales the translation vector of a given joint?
-    FTModelPartContainer *modelparts_container;
-    FTMesh *mesh;
-    FTTexturePartContainer *textureparts_container;
-    s32 joint_itemheavy_id;
-    FTThrownStatusArray *thrown_status;
-    s32 joint_itemlight_id;
-    FTSprites *sprites;
-    FTSkeleton **skeleton;
-};
-
-struct FTMesh
-{
-    s32 joint_id;
-    Gfx *dl;
-    MObjSub **mobjsubs;
-    AObjEvent32 **costume_matanim_joints;
+    Vec3f *translate_scales;                        // A set of scaling vectors to modify the translation vector of a given joint?
+    FTModelPartContainer *modelparts_container;     // Passive model parts controlled via motion events or code
+    FTAccessPart *accesspart;                       // Headgear accessory (Pikachu wizard hat or Jigglypuff bow)
+    FTTexturePartContainer *textureparts_container; // These are generally facial expressions, controlled via motion events
+    s32 joint_itemheavy_id;                         // Joint for holding heavy items
+    FTThrownStatusArray *thrown_status;             // Array of thrown status IDs (forward- and back throw) to use for thrown fighters
+    s32 joint_itemlight_id;                         // Joint for holding light items
+    FTSprites *sprites;                             // Stock sprites, stock palettes and emblem sprites
+    FTSkeleton **skeleton;                          // Electric damage skeleton model data
 };
 
 // Main fighter struct
@@ -1153,7 +1153,7 @@ struct FTStruct
 
     } input;
 
-    FTComputer computer;
+    FTComputer computer;                // CPU player struct
 
     Vec2f damage_coll_size;             // Width and height of fighter's hurtbox; calculated from distance of TopN position to farthest hurtbox multiplied by 0.55
 
@@ -1172,7 +1172,7 @@ struct FTStruct
     u16 shuffle_tics;                   // Model shift timer
 
     GObj *throw_gobj;                   // GObj of opponent that threw this fighter
-    FTKind throw_fkind;               // Kind of opponent that threw this fighter
+    s32 throw_fkind;                    // Kind of opponent that threw this fighter
     u8 throw_team;                      // Team of opponent that threw this fighter
     u8 throw_player;                    // Port of opponent that threw this fighter
     s32 throw_player_number;            // Player number of opponent that threw this fighter
@@ -1191,7 +1191,7 @@ struct FTStruct
     s32 star_hitstatus;                 // Enemy CPUs avoid player depending on this?
     s32 hitstatus;
 
-    FTDamageColl damage_colls[FTPARTS_HURT_NUM_MAX];
+    FTDamageColl damage_colls[11];
 
     f32 unk_ft_0x7A0;                   // Unused?
     f32 hitlag_mul;
@@ -1200,7 +1200,7 @@ struct FTStruct
 
     s32 attack_damage;
     f32 attack_knockback;
-    u16 attack_attack_count;               // Number of times this fighter successfully dealt damage 
+    u16 attack_attack_count;            // Number of times this fighter successfully dealt damage 
     s32 attack_shield_push;             // Used to calculate shield/rebound pushback
     f32 attack_rebound;                 // Actually 2x staled damage?
     s32 attack_lr;

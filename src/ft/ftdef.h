@@ -4,7 +4,7 @@
 #define FTCOMPUTER_LEVEL_MAX 9
 #define FTCOMMON_HANDICAP_DEFAULT 9
 
-#define FTRENDER_DLLINK_DEFAULT 9
+#define FTDISPLAY_DLLINK_DEFAULT 9
 
 #define FTPARTS_HURT_NUM_MAX 11
 #define FTPARTS_JOINT_NUM_MAX 37
@@ -1203,7 +1203,7 @@ typedef struct FTHitLog		                    FTHitLog;
 typedef struct FTItemThrow				        FTItemThrow;
 typedef struct FTItemSwing				        FTItemSwing;
 typedef struct FTParts                          FTParts;
-typedef struct FTWithheldPart			        FTWithheldPart;
+typedef struct FTHiddenPart			        FTHiddenPart;
 typedef struct FTShadow                         FTShadow;
 typedef struct FTCostume                        FTCostume;
 typedef struct FTDemoDesc                       FTDemoDesc;
@@ -1218,6 +1218,6 @@ typedef struct FTComputerAttack                 FTComputerAttack;
 typedef union  FTKeyEvent                     FTKeyEvent;
 typedef struct FTKey                            FTKey;
 typedef struct FTAttributes				        FTAttributes;
-typedef struct FTMesh		                    FTMesh;
+typedef struct FTAccessPart		                    FTAccessPart;
 
 #endif

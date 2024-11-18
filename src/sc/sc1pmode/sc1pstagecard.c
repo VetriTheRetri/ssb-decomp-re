@@ -1262,9 +1262,9 @@ void sc1PStageCardInitVSFighters(s32 stage)
             
             if ((sSC1PStageCardPlayerFighterDemoDesc.costume == i % SC1PGAME_STAGE_YOSHI_VARIATIONS_COUNT) && (sSC1PStageCardPlayerFighterDemoDesc.fkind == nFTKindYoshi))
             {
-                ftParamInitModelTexturePartsAll(fighter_gobj, i % SC1PGAME_STAGE_YOSHI_VARIATIONS_COUNT, 1);
+                ftParamInitAllParts(fighter_gobj, i % SC1PGAME_STAGE_YOSHI_VARIATIONS_COUNT, 1);
             }
-            else ftParamInitModelTexturePartsAll(fighter_gobj, i % SC1PGAME_STAGE_YOSHI_VARIATIONS_COUNT, 0);
+            else ftParamInitAllParts(fighter_gobj, i % SC1PGAME_STAGE_YOSHI_VARIATIONS_COUNT, 0);
         }
         break;
         
@@ -1278,7 +1278,7 @@ void sc1PStageCardInitVSFighters(s32 stage)
             
             if (sSC1PStageCardCheckCostumeUsed(stage, nFTKindKirby, 0) != FALSE)
             {
-                ftParamInitModelTexturePartsAll(fighter_gobj, ftParamGetCostumeCommonID(nFTKindMario, 1), 0);
+                ftParamInitAllParts(fighter_gobj, ftParamGetCostumeCommonID(nFTKindMario, 1), 0);
             }
         }
         break;
@@ -1308,9 +1308,9 @@ void sc1PStageCardInitVSFighters(s32 stage)
         {
             if (ftParamGetCostumeCommonID(sSC1PStageCardPlayerFighterDemoDesc.fkind, 0) == sSC1PStageCardPlayerFighterDemoDesc.costume)
             {
-                ftParamInitModelTexturePartsAll(fighter_gobj, ftParamGetCostumeCommonID(sSC1PStageCardPlayerFighterDemoDesc.fkind, 1), 0);
+                ftParamInitAllParts(fighter_gobj, ftParamGetCostumeCommonID(sSC1PStageCardPlayerFighterDemoDesc.fkind, 1), 0);
             }
-            else ftParamInitModelTexturePartsAll(fighter_gobj, ftParamGetCostumeCommonID(sSC1PStageCardPlayerFighterDemoDesc.fkind, 0), 0);
+            else ftParamInitAllParts(fighter_gobj, ftParamGetCostumeCommonID(sSC1PStageCardPlayerFighterDemoDesc.fkind, 0), 0);
         }
         break;
         
@@ -1325,7 +1325,7 @@ void sc1PStageCardInitVSFighters(s32 stage)
         
         if (sSC1PStageCardCheckCostumeUsed(stage, nFTKindMario, 0) != FALSE)
         {
-            ftParamInitModelTexturePartsAll(fighter_gobj, ftParamGetCostumeCommonID(nFTKindMario, 1), 0);
+            ftParamInitAllParts(fighter_gobj, ftParamGetCostumeCommonID(nFTKindMario, 1), 0);
         }
         cobj = sc1PStageCardMakeStageCamera(stage, 33);
 
@@ -1335,7 +1335,7 @@ void sc1PStageCardInitVSFighters(s32 stage)
         
         if (sSC1PStageCardCheckCostumeUsed(stage, nFTKindLuigi, 0) != FALSE)
         {
-            ftParamInitModelTexturePartsAll(fighter_gobj, ftParamGetCostumeCommonID(nFTKindLuigi, 1), 0);
+            ftParamInitAllParts(fighter_gobj, ftParamGetCostumeCommonID(nFTKindLuigi, 1), 0);
         }
         break;
     }

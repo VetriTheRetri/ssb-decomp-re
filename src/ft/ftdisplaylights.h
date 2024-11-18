@@ -1,5 +1,5 @@
-#ifndef _FTRENDERLIGHTS_H_
-#define _FTRENDERLIGHTS_H_
+#ifndef _FTDISPLAYLIGHTS_H_
+#define _FTDISPLAYLIGHTS_H_
 
 #include <ssb_types.h>
 #include <PR/gbi.h>

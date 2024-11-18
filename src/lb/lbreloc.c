@@ -63,7 +63,7 @@ void* lbRelocFindFileStatusBuffer(u32 id)
     return NULL;
 }
 
-void* lbRelocGetFileStatusBuffer(u32 id)
+void* lbRelocGetStatusBufferFile(u32 id)
 {
     return lbRelocFindFileStatusBuffer(id);
 }
@@ -86,7 +86,7 @@ void* lbRelocFindFileForceStatusBuffer(u32 id)
     return lbRelocFindFileStatusBuffer(id);
 }
 
-void* lbRelocGetFileForceStatusBuffer(u32 id)
+void* lbRelocGetForceStatusBufferFile(u32 id)
 {
     return lbRelocFindFileForceStatusBuffer(id);
 }
@@ -192,7 +192,7 @@ void lbRelocLoadAndRelocFile(u32 file_id, void *ram_dst, u32 bytes_num, s32 loc)
                 break;
                 
             case nLBFileLocationDefault:
-                vaddr_extern = lbRelocGetFileInternBuffer(*file_id_extern);
+                vaddr_extern = lbRelocGetInternBufferFile(*file_id_extern);
                 break;
                 
             case nLBFileLocationForce:
@@ -307,7 +307,7 @@ void* lbRelocGetFileExternHeap(u32 id, void *heap)
     return lbRelocGetFileExternStatusBuffer(id);
 }
 
-void* lbRelocGetFileInternBuffer(u32 file_id)
+void* lbRelocGetInternBufferFile(u32 file_id)
 {
     size_t file_size;
     void *file;
@@ -396,7 +396,7 @@ size_t lbRelocLoadFilesIntern(u32 *ids, u32 len, void **files)
     // doesn't match as for-loop..?
     while (len)
     {
-        *files = lbRelocGetFileInternBuffer(*ids);
+        *files = lbRelocGetInternBufferFile(*ids);
 
         ids++;
         files++;

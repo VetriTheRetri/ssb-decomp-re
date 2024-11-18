@@ -1,5 +1,5 @@
-#ifndef _FTRENDERMAIN_H_
-#define _FTRENDERMAIN_H_
+#ifndef _FTDISPLAYMAIN_H_
+#define _FTDISPLAYMAIN_H_
 
 #include <ssb_types.h>
 #include <sys/objdef.h>

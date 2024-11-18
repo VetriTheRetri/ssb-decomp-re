@@ -468,7 +468,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         break;
 
     case nFTMotionEventResetDamageCollPartAll:
-        ftParamResetFighterDamagePartAll(fighter_gobj);
+        ftParamResetFighterDamageCollsAll(fighter_gobj);
 
         ftMotionEventAdvance(ms, FTMotionEventDefault);
         break;
@@ -4041,9 +4041,9 @@ void ftMainProcUpdateMain(GObj *fighter_gobj)
 }
 
 // 0x800E69C4
-void ftMainUpdateWithheldPartID(FTStruct *fp, s32 withheld_part_id)
+void ftMainUpdateWithheldPartID(FTStruct *fp, s32 hiddenpart_id)
 {
-    FTWithheldPart *withheld_part;
+    FTHiddenPart *hiddenpart;
     void *dl;
     DObj *root_joint;
     DObj *child_joint;
@@ -4054,15 +4054,15 @@ void ftMainUpdateWithheldPartID(FTStruct *fp, s32 withheld_part_id)
     FTParts *parts;
 
     attr = fp->attr;
-    withheld_part = &attr->withheld_parts[withheld_part_id];
+    hiddenpart = &attr->hiddenparts[hiddenpart_id];
 
-    if (withheld_part->root_joint_id >= nFTPartsJointCommonStart)
+    if (hiddenpart->root_joint_id >= nFTPartsJointCommonStart)
     {
         if (fp->detail_curr == nFTPartsDetailHigh)
         {
             commonpart = &fp->attr->commonparts_container->commonparts[0];
         }
-        else if (attr->commonparts_container->commonparts[1].dobjdesc[withheld_part->root_joint_id - nFTPartsJointCommonStart].dl != NULL)
+        else if (attr->commonparts_container->commonparts[1].dobjdesc[hiddenpart->root_joint_id - nFTPartsJointCommonStart].dl != NULL)
         {
             commonpart = &attr->commonparts_container->commonparts[1];
         }
@@ -4070,7 +4070,7 @@ void ftMainUpdateWithheldPartID(FTStruct *fp, s32 withheld_part_id)
     }
     else commonpart = NULL;
 
-    dl = (commonpart != NULL) ? commonpart->dobjdesc[withheld_part->root_joint_id - nFTPartsJointCommonStart].dl : NULL;
+    dl = (commonpart != NULL) ? commonpart->dobjdesc[hiddenpart->root_joint_id - nFTPartsJointCommonStart].dl : NULL;
 
     root_joint = gcAddDObjForGObj(fp->fighter_gobj, dl);
     root_joint->sib_prev->sib_next = NULL;
@@ -4078,15 +4078,15 @@ void ftMainUpdateWithheldPartID(FTStruct *fp, s32 withheld_part_id)
 
     if (dl != NULL)
     {
-        lbCommonAddMObjForFighterPartsDObj(root_joint, commonpart->p_mobjsubs[withheld_part->root_joint_id - nFTPartsJointCommonStart], commonpart->p_costume_matanim_joints[withheld_part->root_joint_id - nFTPartsJointCommonStart], NULL, fp->costume);
+        lbCommonAddMObjForFighterPartsDObj(root_joint, commonpart->p_mobjsubs[hiddenpart->root_joint_id - nFTPartsJointCommonStart], commonpart->p_costume_matanim_joints[hiddenpart->root_joint_id - nFTPartsJointCommonStart], NULL, fp->costume);
     }
     if (commonpart != NULL)
     {
-        fp->modelpart_status[withheld_part->root_joint_id - nFTPartsJointCommonStart].modelpart_id_base = fp->modelpart_status[withheld_part->root_joint_id - nFTPartsJointCommonStart].modelpart_id_curr = (dl != NULL) ? 0 : -1;
+        fp->modelpart_status[hiddenpart->root_joint_id - nFTPartsJointCommonStart].modelpart_id_base = fp->modelpart_status[hiddenpart->root_joint_id - nFTPartsJointCommonStart].modelpart_id_curr = (dl != NULL) ? 0 : -1;
     }
-    parent_joint = fp->joints[withheld_part->parent_joint_id];
+    parent_joint = fp->joints[hiddenpart->parent_joint_id];
 
-    switch (withheld_part->joint_kind)
+    switch (hiddenpart->joint_kind)
     {
     case 0:
         if (parent_joint->child != NULL)
@@ -4145,34 +4145,34 @@ void ftMainUpdateWithheldPartID(FTStruct *fp, s32 withheld_part_id)
         root_joint->parent = parent_joint;
         break;
     }
-    fp->joints[withheld_part->root_joint_id] = root_joint;
+    fp->joints[hiddenpart->root_joint_id] = root_joint;
 
     root_joint->user_data.p = parts = ftManagerGetNextPartsAlloc();
 
     parts->flags = attr->commonparts_container->commonparts[fp->detail_curr - nFTPartsDetailStart].flags;
-    parts->joint_id = withheld_part->root_joint_id;
+    parts->joint_id = hiddenpart->root_joint_id;
 
-    if (withheld_part->partindex_0x8 != 0)
+    if (hiddenpart->partindex_0x8 != 0)
     {
         lbCommonInitDObj(root_joint, 0x4B, 0, 0, fp->unk_ft_0x149);
     }
 }
 
 // 0x800E6CE0
-void ftMainAddWithheldPartID(FTStruct *fp, s32 withheld_part_id)
+void ftMainAddWithheldPartID(FTStruct *fp, s32 hiddenpart_id)
 {
     DObj *new_parent_joint;
     DObj *sibling_joint;
-    FTWithheldPart *withheld_part;
+    FTHiddenPart *hiddenpart;
     DObj *root_joint;
     DObj *child_joint;
     DObj *new_child_joint;
     DObj *parent_joint;
 
-    withheld_part = &fp->attr->withheld_parts[withheld_part_id];
-    root_joint = fp->joints[withheld_part->root_joint_id];
+    hiddenpart = &fp->attr->hiddenparts[hiddenpart_id];
+    root_joint = fp->joints[hiddenpart->root_joint_id];
 
-    if (withheld_part->root_joint_id == nFTPartsJointTransN)
+    if (hiddenpart->root_joint_id == nFTPartsJointTransN)
     {
         parent_joint = root_joint->parent;
         child_joint = root_joint->child;
@@ -4235,7 +4235,7 @@ void ftMainAddWithheldPartID(FTStruct *fp, s32 withheld_part_id)
         root_joint->sib_next = NULL;
         root_joint->parent = NULL;
 
-        new_parent_joint = fp->joints[withheld_part->parent_joint_id];
+        new_parent_joint = fp->joints[hiddenpart->parent_joint_id];
 
         if (new_parent_joint->child != NULL)
         {
@@ -4255,10 +4255,10 @@ void ftMainAddWithheldPartID(FTStruct *fp, s32 withheld_part_id)
 }
 
 // 0x800E6E00
-void ftMainEjectWithheldPartID(FTStruct *fp, s32 withheld_part_id)
+void ftMainEjectWithheldPartID(FTStruct *fp, s32 hiddenpart_id)
 {
-    FTWithheldPart *withheld_part = &fp->attr->withheld_parts[withheld_part_id];
-    DObj *root_joint = fp->joints[withheld_part->root_joint_id];
+    FTHiddenPart *hiddenpart = &fp->attr->hiddenparts[hiddenpart_id];
+    DObj *root_joint = fp->joints[hiddenpart->root_joint_id];
     DObj *parent_joint;
     DObj *child_joint;
     DObj *sibling_joint;
@@ -4312,7 +4312,7 @@ void ftMainEjectWithheldPartID(FTStruct *fp, s32 withheld_part_id)
             root_joint->sib_next->sib_prev = root_joint->sib_prev;
         }
     }
-    fp->joints[withheld_part->root_joint_id] = NULL;
+    fp->joints[hiddenpart->root_joint_id] = NULL;
     root_joint->sib_next = NULL;
     root_joint->sib_prev = NULL;
     root_joint->child = NULL;
@@ -4391,7 +4391,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
     }
     if (fp->is_hurtbox_modify)
     {
-        ftParamResetFighterDamagePartAll(fighter_gobj);
+        ftParamResetFighterDamageCollsAll(fighter_gobj);
     }
     if (!(flags & FTSTATUS_PRESERVE_MODELPART) && (fp->is_modelpart_modify))
     {
@@ -4500,7 +4500,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
     {
         fp->attack1_followup_frames = 0.0F;
     }
-    if ((fp->pkind != nFTPlayerKindDemo) && (fp->dl_link != FTRENDER_DLLINK_DEFAULT))
+    if ((fp->pkind != nFTPlayerKindDemo) && (fp->dl_link != FTDISPLAY_DLLINK_DEFAULT))
     {
         ftParamMoveDLLink(fighter_gobj, 9);
     }

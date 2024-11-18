@@ -324,9 +324,9 @@ void ftCaptainAppearStartProcUpdate(GObj *fighter_gobj)
 
     ftCommonAppearUpdateEffects(fighter_gobj);
 
-    if ((fp->status_vars.common.entry.lr == -1) && (fp->dl_link != FTRENDER_DLLINK_DEFAULT) && (DObjGetStruct(fighter_gobj)->translate.vec.f.z > -1000.0F))
+    if ((fp->status_vars.common.entry.lr == -1) && (fp->dl_link != FTDISPLAY_DLLINK_DEFAULT) && (DObjGetStruct(fighter_gobj)->translate.vec.f.z > -1000.0F))
     {
-        ftParamMoveDLLink(fighter_gobj, FTRENDER_DLLINK_DEFAULT);
+        ftParamMoveDLLink(fighter_gobj, FTDISPLAY_DLLINK_DEFAULT);
     }
     ftAnimEndCheckSetStatus(fighter_gobj, ftCaptainAppearEndSetStatus);
 }

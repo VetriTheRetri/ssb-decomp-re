@@ -348,33 +348,33 @@ void ftManagerSetupFilesKind(s32 fkind)
 
     if (data->file_mainmotion_id != 0)
     {
-        *data->p_file_mainmotion = lbRelocGetFileStatusBuffer(data->file_mainmotion_id);
+        *data->p_file_mainmotion = lbRelocGetStatusBufferFile(data->file_mainmotion_id);
     }
     if (data->file_submotion_id != 0)
     {
-        *data->p_file_submotion = lbRelocGetFileStatusBuffer(data->file_submotion_id);
+        *data->p_file_submotion = lbRelocGetStatusBufferFile(data->file_submotion_id);
     }
-    *data->p_file_model = lbRelocGetFileStatusBuffer(data->file_model_id);
+    *data->p_file_model = lbRelocGetStatusBufferFile(data->file_model_id);
 
     if (data->file_shieldpose_id != 0)
     {
-        data->p_file_shieldpose = lbRelocGetFileStatusBuffer(data->file_shieldpose_id);
+        data->p_file_shieldpose = lbRelocGetStatusBufferFile(data->file_shieldpose_id);
     }
     if (data->file_special1_id != 0)
     {
-        *data->p_file_special1 = lbRelocGetFileStatusBuffer(data->file_special1_id);
+        *data->p_file_special1 = lbRelocGetStatusBufferFile(data->file_special1_id);
     }
     if (data->file_special2_id != 0)
     {
-        *data->p_file_special2 = lbRelocGetFileStatusBuffer(data->file_special2_id);
+        *data->p_file_special2 = lbRelocGetStatusBufferFile(data->file_special2_id);
     }
     if (data->file_special3_id != 0)
     {
-        *data->p_file_special3 = lbRelocGetFileStatusBuffer(data->file_special3_id);
+        *data->p_file_special3 = lbRelocGetStatusBufferFile(data->file_special3_id);
     }
     if (data->file_special4_id != 0)
     {
-        *data->p_file_special4 = lbRelocGetFileStatusBuffer(data->file_special4_id);
+        *data->p_file_special4 = lbRelocGetStatusBufferFile(data->file_special4_id);
     }
     if (data->particles_script_lo != 0)
     {
@@ -478,9 +478,10 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTCreateDesc *ft_desc)
 #ifdef BUGFIX_CRASH_SELFDESTRUCT
     /*
      * shield_player is never explicitly initialized during creation, so its value is 0.
-     * This can result in a crash if a player other than P1 self-destructs
-     * without getting their shield hit, as shield_player is moved to damage_player,
-     * which is then used to award points the player who caused the shield break.
+     * This can result in a crash if a player other than P1 self-destructs directly
+     * from a shield break without getting their shield hit, as shield_player
+     * is moved to damage_player, which is then used to award points
+     * to the player who caused the shield break.
      * This results in an invalid GObj* being accessed without a NULL check, crashing the game.
      */
     fp->shield_player = -1;
@@ -614,6 +615,8 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTCreateDesc *ft_desc)
     case nFTKindMMario:
         fp->knockback_resist_passive = 30.0F;
 
+        /* fallthrough */
+
     case nFTKindMario:
     case nFTKindNMario:
         fp->passive_vars.mario.is_expend_tornado = FALSE;
@@ -621,6 +624,8 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTCreateDesc *ft_desc)
 
     case nFTKindGDonkey:
         fp->knockback_resist_passive = 48.0F;
+
+        /* fallthrough */
 
     case nFTKindDonkey:
     case nFTKindNDonkey:
@@ -662,9 +667,9 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTCreateDesc *ft_desc)
 
         if (fp->fkind == nFTKindKirby)
         {
-            ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)gFTDataKirbyMainMotion + (intptr_t)&lFTKirbySpecialNCopyData);
+            FTKirbyCopy *copy = lbRelocGetFileData(FTKirbyCopy*, gFTDataKirbyMainMotion, &lFTKirbySpecialNCopyData);
 
-            ftParamSetModelPartDefaultID(fighter_gobj, FTKIRBY_COPY_MODELPARTS_JOINT, copy_data[fp->passive_vars.kirby.copy_id].copy_modelpart_id);
+            ftParamSetModelPartDefaultID(fighter_gobj, FTKIRBY_COPY_MODELPARTS_JOINT, copy[fp->passive_vars.kirby.copy_id].copy_modelpart_id);
         }
         break;
 
@@ -672,8 +677,8 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTCreateDesc *ft_desc)
     case nFTKindNLink:
         fp->passive_vars.link.boomerang_gobj = NULL;
 
-        ftParamSetModelPartDefaultID(fighter_gobj, 0x15, -1);
-        ftParamSetModelPartDefaultID(fighter_gobj, 0x13, 0);
+        ftParamSetModelPartDefaultID(fighter_gobj, 21, -1);
+        ftParamSetModelPartDefaultID(fighter_gobj, 19, 0);
         break;
 
     case nFTKindPurin:
@@ -710,11 +715,11 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
     FTAttributes *attr;
     s32 unused;
     DObj *topn_joint;
-    FTMesh *ft_mesh;
+    FTAccessPart *accesspart;
 
     fighter_gobj = gcMakeGObjSPAfter(nGCCommonKindFighter, NULL, nGCCommonLinkIDFighter, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(fighter_gobj, ft_desc->func_display, FTRENDER_DLLINK_DEFAULT, GOBJ_PRIORITY_DEFAULT, ~0);
+    gcAddGObjDisplay(fighter_gobj, ft_desc->func_display, FTDISPLAY_DLLINK_DEFAULT, GOBJ_PRIORITY_DEFAULT, ~0);
 
     fp = ftManagerGetNextStructAlloc();
 
@@ -724,7 +729,7 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
     fp->fighter_gobj = fighter_gobj;
     fp->fkind = ft_desc->fkind;
     fp->data = dFTManagerDataFiles[fp->fkind];
-    attr = fp->attr = (FTAttributes*) ((uintptr_t)*fp->data->p_file_main + (intptr_t)fp->data->o_attributes);
+    attr = fp->attr = lbRelocGetFileData(FTAttributes*, *fp->data->p_file_main, fp->data->o_attributes);
     fp->figatree_heap = ft_desc->figatree_heap;
     fp->team = ft_desc->team;
     fp->player = ft_desc->player;
@@ -771,7 +776,7 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
 
     fp->unk_ft_0x149 = ft_desc->unk_rebirth_0x1C;
     fp->team_order = ft_desc->team_order;
-    fp->dl_link = FTRENDER_DLLINK_DEFAULT;
+    fp->dl_link = FTDISPLAY_DLLINK_DEFAULT;
 
     fp->is_skip_magnify = ft_desc->is_skip_magnify;
 
@@ -796,8 +801,19 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
 
     fp->joints[nFTPartsJointTopN]->xobjs[0]->unk05 = ft_desc->unk_rebirth_0x1D;
 
-    lbCommonSetupFighterPartsDObjs(DObjGetStruct(fighter_gobj), attr->commonparts_container, fp->detail_curr, &fp->joints[nFTPartsJointCommonStart], attr->setup_parts, 0x4B, 0, 0, fp->costume, fp->unk_ft_0x149);
-
+    lbCommonSetupFighterPartsDObjs
+    (
+        DObjGetStruct(fighter_gobj),
+        attr->commonparts_container,
+        fp->detail_curr,
+        &fp->joints[nFTPartsJointCommonStart],
+        attr->setup_parts,
+        0x4B,
+        nGCMatrixKindNull,
+        nGCMatrixKindNull,
+        fp->costume,
+        fp->unk_ft_0x149
+    );
     for (i = 0; i < ARRAY_COUNT(fp->joints); i++)
     {
         if (fp->joints[i] != NULL)
@@ -810,14 +826,14 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
 
             if (fp->costume != 0)
             {
-                if ((attr->mesh != NULL) && (i == attr->mesh->joint_id))
+                if ((attr->accesspart != NULL) && (i == attr->accesspart->joint_id))
                 {
-                    ft_mesh = attr->mesh;
+                    accesspart = attr->accesspart;
 
                     parts->gobj = gcMakeGObjSPAfter(nGCCommonKindFighterParts, NULL, nGCCommonLinkIDFighterParts, GOBJ_PRIORITY_DEFAULT);
 
-                    gcAddDObjForGObj(parts->gobj, ft_mesh->dl);
-                    lbCommonAddMObjForFighterPartsDObj(DObjGetStruct(parts->gobj), ft_mesh->mobjsubs, ft_mesh->costume_matanim_joints, NULL, fp->costume);
+                    gcAddDObjForGObj(parts->gobj, accesspart->dl);
+                    lbCommonAddMObjForFighterPartsDObj(DObjGetStruct(parts->gobj), accesspart->mobjsubs, accesspart->costume_matanim_joints, NULL, fp->costume);
                 }
             }
         }
@@ -850,15 +866,15 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
 
     for (i = 0; i < ARRAY_COUNT(fp->damage_colls); i++)
     {
-        if (attr->damage_colls_desc[i].joint_id != -1)
+        if (attr->damage_coll_descs[i].joint_id != -1)
         {
             fp->damage_colls[i].hitstatus = nGMHitStatusNormal;
-            fp->damage_colls[i].joint_id = attr->damage_colls_desc[i].joint_id;
+            fp->damage_colls[i].joint_id = attr->damage_coll_descs[i].joint_id;
             fp->damage_colls[i].joint = fp->joints[fp->damage_colls[i].joint_id];
-            fp->damage_colls[i].placement = attr->damage_colls_desc[i].placement;
-            fp->damage_colls[i].is_grabbable = attr->damage_colls_desc[i].is_grabbable;
-            fp->damage_colls[i].offset = attr->damage_colls_desc[i].offset;
-            fp->damage_colls[i].size = attr->damage_colls_desc[i].size;
+            fp->damage_colls[i].placement = attr->damage_coll_descs[i].placement;
+            fp->damage_colls[i].is_grabbable = attr->damage_coll_descs[i].is_grabbable;
+            fp->damage_colls[i].offset = attr->damage_coll_descs[i].offset;
+            fp->damage_colls[i].size = attr->damage_coll_descs[i].size;
 
             fp->damage_colls[i].size.x *= 0.5F;
             fp->damage_colls[i].size.y *= 0.5F;

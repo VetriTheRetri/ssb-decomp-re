@@ -58,9 +58,11 @@ Vec2f dFTDisplayMainShufflePositions[/* */][4] =
 // 0x8012B970
 s32 dFTDisplayMainPad0x8012B970[2] = { 0, 0 };
 
-/* 0x8012B978 - use xxd -i in Linux to convert your collision box texture into an unsigned char[] array;
+/* 
+ * 0x8012B978 - use xxd -i in Linux to convert your collision box texture into an unsigned char[] array;
  * I went out of my way to convert them into unsigned short[] instead, but as long as the bytes match,
  * it doesn't really matter what the datatype is, as the gbi macro doesn't care.
+ * Update: might include the u16 array version.
  */
 u16 dFTDisplayMainCollisionTexture[/* */] = 
 {
@@ -586,7 +588,6 @@ void ftDisplayMainDrawAfterImage(FTStruct *fp)
     vtx_count = ((uintptr_t)p_vtx - (uintptr_t)base_p_vtx) / (sizeof(*p_vtx) | sizeof(*base_p_vtx));
 
     gSPDisplayList(gSYTaskmanDLHeads[1]++, vtx_dl);
-
     gSPVertex(gSYTaskmanDLHeads[1]++, base_p_vtx, vtx_count, 0);
 
     for (i = 0; i < (vtx_count - 2); i += 2)

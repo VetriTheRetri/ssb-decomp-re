@@ -278,14 +278,14 @@ typedef enum ftKirbyStatus
 
 } ftKirbyStatus;
 
-typedef struct ftKirbyCopy
+typedef struct FTKirbyCopy
 {
     u16 copy_id;
     s16 copy_modelpart_id;
     f32 effect_scale; // Random position offset used for blue sparkle effect?
     s32 star_damage;
 
-} ftKirbyCopy;
+} FTKirbyCopy;
 
 typedef struct ftKirbyAttack100Effect
 {
@@ -325,7 +325,7 @@ typedef struct ftKirbySpecialLwStatusVars
 
 } ftKirbySpecialLwStatusVars;
 
-typedef struct ftKirbyCopyDonkeySpecialNStatusVars
+typedef struct FTKirbyCopyDonkeySpecialNStatusVars
 {
     sb32 is_release;
     s32 charge_level;
@@ -334,7 +334,7 @@ typedef struct ftKirbyCopyDonkeySpecialNStatusVars
 
 } ftKirbyCopyDonkeySpecialNStatusVars;
 
-typedef struct ftKirbyCopySamusSpecialNStatusVars
+typedef struct FTKirbyCopySamusSpecialNStatusVars
 {
     sb32 is_release;
     s32 charge_int;
@@ -342,7 +342,7 @@ typedef struct ftKirbyCopySamusSpecialNStatusVars
 
 } ftKirbyCopySamusSpecialNStatusVars;
 
-typedef struct ftKirbyCopyLinkSpecialNStatusVars
+typedef struct FTKirbyCopyLinkSpecialNStatusVars
 {
     sb32 is_smash;
 

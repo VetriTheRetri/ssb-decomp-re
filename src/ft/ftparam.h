@@ -41,14 +41,14 @@ extern void ftParamSetHitStatusPartID(GObj *fighter_gobj, s32 joint_id, s32 hits
 extern void ftParamSetHitStatusAll(GObj *fighter_gobj, s32 hitstatus);
 extern s32 ftParamGetBestHitStatusPart(GObj *fighter_gobj);
 extern s32 ftParamGetBestHitStatusAll(GObj *fighter_gobj);
-extern void ftParamResetFighterDamagePartAll(GObj *fighter_gobj);
+extern void ftParamResetFighterDamageCollsAll(GObj *fighter_gobj);
 extern void ftParamModifyDamageCollID(GObj *fighter_gobj, s32 joint_id, Vec3f *offset, Vec3f *size);
 extern void ftParamSetModelPartID(GObj *fighter_gobj, s32 joint_id, s32 modelpart_id);
 extern void ftParamSetModelPartDefaultID(GObj *fighter_gobj, s32 joint_id, s32 modelpart_id);
 extern void ftParamResetModelPartAll(GObj *fighter_gobj);
 extern void ftParamHideModelPartAll(GObj *fighter_gobj);
 extern void ftParamSetModelPartDetailAll(GObj *fighter_gobj, u8 detail);
-extern void ftParamInitModelTexturePartsAll(GObj *fighter_gobj, s32 costume, s32 shade);
+extern void ftParamInitAllParts(GObj *fighter_gobj, s32 costume, s32 shade);
 extern void ftParamInitTexturePartAll(GObj *fighter_gobj);
 extern void ftParamSetTexturePartID(GObj *fighter_gobj, s32 texturepart_id, s32 texture_id);
 extern void ftParamResetTexturePartAll(GObj *fighter_gobj);

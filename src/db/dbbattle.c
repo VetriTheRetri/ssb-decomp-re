@@ -369,7 +369,7 @@ void dbBattleFuncRun(GObj *gobj)
 		if (gSCManagerTransferBattleState.players[i].costume != sDBBattleFighters[i].costume)
 		{
 			dbBattleGetSetShade(i);
-			ftParamInitModelTexturePartsAll(sDBBattleFighters[i].fighter_gobj, gSCManagerTransferBattleState.players[i].costume, gSCManagerTransferBattleState.players[i].shade);
+			ftParamInitAllParts(sDBBattleFighters[i].fighter_gobj, gSCManagerTransferBattleState.players[i].costume, gSCManagerTransferBattleState.players[i].shade);
 			sDBBattleFighters[i].costume = gSCManagerTransferBattleState.players[i].costume;
 		}
 	}

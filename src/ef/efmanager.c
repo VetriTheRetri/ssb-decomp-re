@@ -5854,7 +5854,7 @@ void efManagerCaptureKirbyStarProcUpdate(GObj *effect_gobj)
     DObj *topn_dobj;
     EFStruct *ep;
     FTStruct *fp;
-    ftKirbyCopy *copy_data;
+    FTKirbyCopy *copy;
     Vec3f pos;
     DObj *child_dobj;
 
@@ -5862,7 +5862,7 @@ void efManagerCaptureKirbyStarProcUpdate(GObj *effect_gobj)
     fp = ftGetStruct(ep->fighter_gobj);
     topn_dobj = DObjGetStruct(effect_gobj);
 
-    copy_data = (ftKirbyCopy*) ((uintptr_t)gFTDataKirbyMainMotion + (intptr_t)&lFTKirbySpecialNCopyData);
+    copy = lbRelocGetFileData(FTKirbyCopy*, gFTDataKirbyMainMotion, &lFTKirbySpecialNCopyData);;
 
     child_dobj = topn_dobj->child;
 
@@ -5874,16 +5874,16 @@ void efManagerCaptureKirbyStarProcUpdate(GObj *effect_gobj)
     {
         pos = DObjGetStruct(ep->fighter_gobj)->translate.vec.f;
 
-        pos.y += mtTrigGetRandomIntRange(copy_data[fp->fkind].effect_scale * EFPART_CAPTUREKIRBYSTAR_SPARK_SCATTER_Y);
+        pos.y += mtTrigGetRandomIntRange(copy[fp->fkind].effect_scale * EFPART_CAPTUREKIRBYSTAR_SPARK_SCATTER_Y);
 
         if (fp->physics.vel_air.x > 0.0F)
         {
-            pos.x -= mtTrigGetRandomIntRange(copy_data[fp->fkind].effect_scale * EFPART_CAPTUREKIRBYSTAR_SPARK_SCATTER_X);
+            pos.x -= mtTrigGetRandomIntRange(copy[fp->fkind].effect_scale * EFPART_CAPTUREKIRBYSTAR_SPARK_SCATTER_X);
             efManagerStarRodSparkMakeEffect(&pos, -1);
         }
         else
         {
-            pos.x += mtTrigGetRandomIntRange(copy_data[fp->fkind].effect_scale * EFPART_CAPTUREKIRBYSTAR_SPARK_SCATTER_X);
+            pos.x += mtTrigGetRandomIntRange(copy[fp->fkind].effect_scale * EFPART_CAPTUREKIRBYSTAR_SPARK_SCATTER_X);
             efManagerStarRodSparkMakeEffect(&pos, +1);
         }
     }
@@ -5898,9 +5898,9 @@ GObj* efManagerCaptureKirbyStarMakeEffect(GObj *fighter_gobj)
     void *addr;
     void **p_addr;
     DObj *dobj;
-    ftKirbyCopy *copy_data;
+    FTKirbyCopy *copy;
 
-    copy_data = (ftKirbyCopy*) ((uintptr_t)gFTDataKirbyMainMotion + (intptr_t)&lFTKirbySpecialNCopyData);
+    copy = lbRelocGetFileData(FTKirbyCopy*, gFTDataKirbyMainMotion, &lFTKirbySpecialNCopyData);;
 
     dEFCaptureKirbyStarEffectDesc.file_head = &addr;
 
@@ -5923,7 +5923,7 @@ GObj* efManagerCaptureKirbyStarMakeEffect(GObj *fighter_gobj)
 
     dobj->child->user_data.p = ftGetStruct(fighter_gobj)->joints[nFTPartsJointTopN];
 
-    dobj->child->scale.vec.f.x = dobj->child->scale.vec.f.y = copy_data[ftGetStruct(fighter_gobj)->fkind].effect_scale;
+    dobj->child->scale.vec.f.x = dobj->child->scale.vec.f.y = copy[ftGetStruct(fighter_gobj)->fkind].effect_scale;
     dobj->child->scale.vec.f.z = 1.0F;
 
     ep->effect_vars.capture_kirby_star.effect_timer = 0;

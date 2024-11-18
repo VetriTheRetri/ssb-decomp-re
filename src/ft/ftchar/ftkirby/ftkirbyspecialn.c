@@ -116,7 +116,7 @@ void ftKirbySpecialNCopyInitCopyVars(GObj *fighter_gobj)
 {
     s16 copy_id;
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)gFTDataKirbyMainMotion + (intptr_t)&lFTKirbySpecialNCopyData);
+    FTKirbyCopy *copy = lbRelocGetFileData(FTKirbyCopy*, gFTDataKirbyMainMotion, &lFTKirbySpecialNCopyData);;
 
     if (fp->motion_vars.flags.flag1 != 0)
     {
@@ -131,7 +131,7 @@ void ftKirbySpecialNCopyInitCopyVars(GObj *fighter_gobj)
             copy_id = fp->status_vars.kirby.specialn.copy_id;
             fp->passive_vars.kirby.copy_id = copy_id;
 
-            ftParamSetModelPartDefaultID(fighter_gobj, FTKIRBY_COPY_MODELPARTS_JOINT, copy_data[copy_id].copy_modelpart_id);
+            ftParamSetModelPartDefaultID(fighter_gobj, FTKIRBY_COPY_MODELPARTS_JOINT, copy[copy_id].copy_modelpart_id);
             ftParamResetModelPartAll(fighter_gobj);
             ftKirbySpecialNInitPassiveVars(fp);
         }
@@ -175,7 +175,7 @@ void ftKirbySpecialNLoopProcUpdate(GObj *fighter_gobj)
 void ftKirbySpecialNCatchProcUpdate(GObj *fighter_gobj)
 {
     FTStruct *kirby_fp = ftGetStruct(fighter_gobj);
-    ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)gFTDataKirbyMainMotion + (intptr_t)&lFTKirbySpecialNCopyData);
+    FTKirbyCopy *copy = lbRelocGetFileData(FTKirbyCopy*, gFTDataKirbyMainMotion, &lFTKirbySpecialNCopyData);
     FTStruct *victim_fp;
     Vec3f kirby_pos;
     f32 dist;
@@ -195,7 +195,7 @@ void ftKirbySpecialNCatchProcUpdate(GObj *fighter_gobj)
             kirby_fp->status_vars.kirby.specialn.copy_id = victim_fp->passive_vars.kirby.copy_id;
             victim_fp->status_vars.common.capturekirby.is_kirby = TRUE;
         }
-        else kirby_fp->status_vars.kirby.specialn.copy_id = copy_data[victim_fp->fkind].copy_id;
+        else kirby_fp->status_vars.kirby.specialn.copy_id = copy[victim_fp->fkind].copy_id;
         
         func_800269C0_275C0(nSYAudioFGMKirbySpecialNCopyEat);
 

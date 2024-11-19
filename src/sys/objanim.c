@@ -2470,7 +2470,7 @@ void gcSetDObjTransformsForGObj(GObj *gobj, DObjDesc *dobjdesc)
     }
 }
 
-void gcAddCameraCamAnimJoint(CObj *cobj, AObjEvent32 *cobjanim_joint, f32 anim_frame)
+void gcAddCObjCamAnimJoint(CObj *cobj, AObjEvent32 *cobjanim_joint, f32 anim_frame)
 {
     AObj *aobj = cobj->aobj;
 
@@ -2485,7 +2485,7 @@ void gcAddCameraCamAnimJoint(CObj *cobj, AObjEvent32 *cobjanim_joint, f32 anim_f
     cobj->anim_frame = anim_frame;
 }
 
-void gcParseCameraCamAnimJoint(CObj *cobj)
+void gcParseCObjCamAnimJoint(CObj *cobj)
 {
     AObj *track_aobjs[nGCAnimTrackCameraEnd - nGCAnimTrackCameraStart + 1];
     AObj *aobj;
@@ -2822,7 +2822,7 @@ void gcParseCameraCamAnimJoint(CObj *cobj)
     }
 }
 
-void gcPlayCameraCamAnim(CObj *cobj)
+void gcPlayCObjCamAnim(CObj *cobj)
 {
     if (cobj->anim_wait != AOBJ_ANIM_NULL)
     {
@@ -2916,8 +2916,8 @@ void gcPlayCamAnim(GObj *gobj)
 {
     CObj *cobj = CObjGetStruct(gobj);
 
-    gcParseCameraCamAnimJoint(cobj);
-    gcPlayCameraCamAnim(cobj);
+    gcParseCObjCamAnimJoint(cobj);
+    gcPlayCObjCamAnim(cobj);
 }
 
 s32 gcGetAnimTotalLength(AObjEvent32 **anim_joints)

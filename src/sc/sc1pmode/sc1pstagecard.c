@@ -1162,7 +1162,7 @@ CObj* sc1PStageCardMakeStageCamera(s32 stage, u32 dl_link)
     cobj = CObjGetStruct(gobj);
     
     syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
-    gcAddCameraCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sSC1PStageCardFiles[0], cobjanim_joints[stage]), 0.0F);
+    gcAddCObjCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sSC1PStageCardFiles[0], cobjanim_joints[stage]), 0.0F);
     gcPlayCamAnim(gobj);
     
     switch (stage)
@@ -1542,7 +1542,7 @@ void sc1PStageCardMakeFighterCamera(s32 fkind, s32 cobj_id)
     
     sc1PStageCardGetFighterCObjDesc(&cobj_desc, fkind, cobj_id);
     
-    gcAddCameraCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sSC1PStageCardFiles[0], cobjanim_joints[fkind]), 0.0F);
+    gcAddCObjCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sSC1PStageCardFiles[0], cobjanim_joints[fkind]), 0.0F);
     gcPlayCamAnim(gobj);
     
     cobj->vec.eye.x = cobj_desc.eye.x;

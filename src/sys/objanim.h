@@ -156,13 +156,13 @@ extern void gcAddMObjAll(GObj *gobj, MObjSub ***p_mobjsubs);
 extern void gcSetDObjTransformsForGObj(GObj *gobj, DObjDesc *dobjdesc);
 
 // Add CamAnimJoint to Camera
-extern void gcAddCameraCamAnimJoint(CObj *cobj, AObjEvent32 *cobjanim_joint, f32 anim_frame); 
+extern void gcAddCObjCamAnimJoint(CObj *cobj, AObjEvent32 *cobjanim_joint, f32 anim_frame); 
 
 // Parse CamAnimJoint on Camera
-extern void gcParseCameraCamAnimJoint(CObj *cobj);
+extern void gcParseCObjCamAnimJoint(CObj *cobj);
 
 // Play CamAnimJoint on Camera
-extern void gcPlayCameraCamAnim(CObj *cobj);
+extern void gcPlayCObjCamAnim(CObj *cobj);
 
 // Parse and update CamAnimJoint on GObj's Camera
 extern void gcPlayCamAnim(GObj *gobj);

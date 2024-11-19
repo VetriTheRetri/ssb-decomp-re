@@ -402,7 +402,7 @@ void mvEndingSetupOperatorCamera(GObj *gobj)
     cobj->projection.persp.near = 128.0F;
     cobj->projection.persp.far = 16384.0F;
 
-    gcAddCameraCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVEndingFiles[1], &lMVEndingOperatorCamAnimJoint), 0.0F);
+    gcAddCObjCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVEndingFiles[1], &lMVEndingOperatorCamAnimJoint), 0.0F);
     gcAddGObjProcess(gobj, gcPlayCamAnim, nGCProcessKindFunc, 1);
 }
 

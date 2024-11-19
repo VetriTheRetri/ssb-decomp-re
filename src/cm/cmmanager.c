@@ -935,7 +935,7 @@ void func_ovl2_8010D030(AObjEvent32 *cobjanim_joint, f32 anim_frame, Vec3f *arg2
 
     gCMManagerCameraStruct.all_move = *arg2;
 
-    gcAddCameraCamAnimJoint(CObjGetStruct(gCMManagerCameraGObj), cobjanim_joint, anim_frame);
+    gcAddCObjCamAnimJoint(CObjGetStruct(gCMManagerCameraGObj), cobjanim_joint, anim_frame);
     func_ovl2_8010CBE4(gCMManagerCameraGObj);
 }
 

@@ -422,7 +422,7 @@ void mvOpeningSectorMakeMainCamera(void)
     cobj->projection.persp.near = 128.0F;
     cobj->projection.persp.far = 30000.0F;
 
-    gcAddCameraCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningSectorFiles[0], &lMVOpeningSectorCamAnimJoint), 0.0F);
+    gcAddCObjCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningSectorFiles[0], &lMVOpeningSectorCamAnimJoint), 0.0F);
     gcAddGObjProcess(camera_gobj, mvOpeningSectorCameraProcUpdate, nGCProcessKindFunc, 1);
 }
 

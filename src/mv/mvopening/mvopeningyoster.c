@@ -215,7 +215,7 @@ void mvOpeningYosterMakeMainCamera(void)
     cobj->projection.persp.near = 128.0F;
     cobj->projection.persp.far = 16384.0F;
 
-    gcAddCameraCamAnimJoint
+    gcAddCObjCamAnimJoint
     (
         cobj, 
         lbRelocGetFileData

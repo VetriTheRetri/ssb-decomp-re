@@ -702,7 +702,7 @@ void mvOpeningRoomInitScene1Cameras(GObj *gobj)
 	cobj->projection.persp.near = 80.0F;
 	cobj->projection.persp.far = 15000.0F;
 
-	gcAddCameraCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningRoomFiles[2], &lMVOpeningRoomScene1CamAnimJoint), 0.0F);
+	gcAddCObjCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningRoomFiles[2], &lMVOpeningRoomScene1CamAnimJoint), 0.0F);
 	gcAddGObjProcess(gobj, gcPlayCamAnim, nGCProcessKindFunc, 1);
 
 	cobj->flags |= COBJ_FLAG_DLBUFFERS;
@@ -758,7 +758,7 @@ void mvOpeningRoomInitScene2Cameras(GObj *gobj)
 	CObj *cobj = CObjGetStruct(gobj);
 
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
-	gcAddCameraCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningRoomFiles[3], &lMVOpeningRoomScene2CamAnimJoint), 0.0F);
+	gcAddCObjCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningRoomFiles[3], &lMVOpeningRoomScene2CamAnimJoint), 0.0F);
 	gcAddGObjProcess(gobj, gcPlayCamAnim, nGCProcessKindFunc, 1);
 
 	cobj->flags |= COBJ_FLAG_DLBUFFERS;
@@ -827,7 +827,7 @@ void mvOpeningRoomInitScene3Cameras(GObj *gobj)
 	cobj->projection.persp.near = 128.0F;
 	cobj->projection.persp.far = 16384.0F;
 
-	gcAddCameraCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningRoomFiles[4], &lMVOpeningRoomScene3CamAnimJoint), 0.0F);
+	gcAddCObjCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningRoomFiles[4], &lMVOpeningRoomScene3CamAnimJoint), 0.0F);
 	gcAddGObjProcess(gobj, gcPlayCamAnim, nGCProcessKindFunc, 1);
 
 	cobj->flags |= COBJ_FLAG_DLBUFFERS;
@@ -899,7 +899,7 @@ void mvOpeningRoomInitScene4Cameras(GObj *gobj)
 	cobj->projection.persp.near = 128.0F;
 	cobj->projection.persp.far = 16384.0F;
 
-	gcAddCameraCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningRoomFiles[5], &lMVOpeningRoomScene4CamAnimJoint), 0.0F);
+	gcAddCObjCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningRoomFiles[5], &lMVOpeningRoomScene4CamAnimJoint), 0.0F);
 	gcAddGObjProcess(gobj, gcPlayCamAnim, nGCProcessKindFunc, 1);
 }
 
@@ -996,7 +996,7 @@ void mvOpeningRoomMakeLogoCamera(void)
 	cobj = CObjGetStruct(gobj);
 
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
-	gcAddCameraCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningRoomFiles[2], &lMVOpeningRoomScene1CamAnimJoint), 0.0F);
+	gcAddCObjCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningRoomFiles[2], &lMVOpeningRoomScene1CamAnimJoint), 0.0F);
 	gcAddGObjProcess(gobj, gcPlayCamAnim, nGCProcessKindFunc, 1);
 }
 

@@ -25,7 +25,7 @@ s32 lbBackupCreateChecksum(LBBackupData *backup)
 // 0x800D45A4
 sb32 lbBackupIsChecksumValid(void)
 {
-    if ((lbBackupCreateChecksum(&gSCManagerBackupData) == gSCManagerBackupData.checksum) && (gSCManagerBackupData.unk5E4 == 0x29A)) // :otstare:
+    if ((lbBackupCreateChecksum(&gSCManagerBackupData) == gSCManagerBackupData.checksum) && (gSCManagerBackupData.unk5E4 == 666)) // :otstare:
     {
         return TRUE;
     }
@@ -140,7 +140,7 @@ void lbBackupClear1PHighScore(void)
         gSCManagerBackupData.spgame_records[i].spgame_continues       = dSCManagerDefaultBackupData.spgame_records[i].spgame_continues;
         gSCManagerBackupData.spgame_records[i].spgame_bonuses         = dSCManagerDefaultBackupData.spgame_records[i].spgame_bonuses;
         gSCManagerBackupData.spgame_records[i].spgame_best_difficulty = dSCManagerDefaultBackupData.spgame_records[i].spgame_best_difficulty;
-        gSCManagerBackupData.spgame_records[i].is_spgame_complete        = dSCManagerDefaultBackupData.spgame_records[i].is_spgame_complete;
+        gSCManagerBackupData.spgame_records[i].is_spgame_complete     = dSCManagerDefaultBackupData.spgame_records[i].is_spgame_complete;
     }
 }
 
@@ -176,7 +176,7 @@ void lbBackupClearPrize(void)
     gSCManagerBackupData.unlock_mask &= ~LBBACKUP_UNLOCK_MASK_PRIZE;
     gSCManagerBackupData.unlock_mask |= dSCManagerDefaultBackupData.unlock_mask;
 
-    gSCManagerBackupData.ground_mask    = dSCManagerDefaultBackupData.ground_mask;
+    gSCManagerBackupData.ground_mask = dSCManagerDefaultBackupData.ground_mask;
     gSCManagerBackupData.vs_itemswitch_battles = dSCManagerDefaultBackupData.vs_itemswitch_battles;
 }
 
@@ -186,8 +186,8 @@ void lbBackupClearAllData(void)
     gSCManagerBackupData = dSCManagerDefaultBackupData;
 }
 
-// 0x800D4C90
-void func_ovl0_800D4C90(void) // Unused, did HAL compile with -O3?
+// 0x800D4C90 - unused
+void func_ovl0_800D4C90(void)
 {
     return;
 }

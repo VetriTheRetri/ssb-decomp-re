@@ -1,7 +1,7 @@
 #include <lb/library.h>
 #include <sys/video.h>
 
-extern void *dSYSchedulerCurrentFramebuffer;
+extern void *gSYSchedulerCurrentFramebuffer;
 extern syRdpSetViewport(void*, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
@@ -224,7 +224,7 @@ void lbTransitionSetupTransition(void)
 
     framebuffer_pixels = (u32*)
 	(
-		(uintptr_t)dSYSchedulerCurrentFramebuffer + SYVIDEO_BORDER_SIZE(320, 10, u16) + 
+		(uintptr_t)gSYSchedulerCurrentFramebuffer + SYVIDEO_BORDER_SIZE(320, 10, u16) + 
         SYVIDEO_BORDER_SIZE(320, 220, u16) + SYVIDEO_BORDER_SIZE(1, 10, u16)
 	);
     for (i = 0; i < 220; i++)

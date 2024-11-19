@@ -5,6 +5,8 @@
 #include <sys/objdef.h>
 #include <PR/gbi.h>
 
+extern u32 lMVOpeningRunCrashFileID;			        // 0x0000004B
+
 extern intptr_t lMVOpeningRunWallpaperSprite; 			// 0x000058A0
 extern intptr_t lMVOpeningRunMainCamAnimJoint; 			// 0x00000000
 extern intptr_t lMVOpeningRunCrashMObjSub; 				// 0x00002AA8

@@ -73,7 +73,7 @@ void *scFrameBuffers[3];
 void *gSYSchedulerNextFramebuffer;
 void *scUnkFrameBuffer;
 u32 D_80044FA4_407B4;
-void *dSYSchedulerCurrentFramebuffer;
+void *gSYSchedulerCurrentFramebuffer;
 u32 gSYSchedulerFramebufferSetTimestamp;
 u32 gSYSchedulerAudioStartTimestamp;
 u32 D_80044FB4_407C4;
@@ -645,10 +645,10 @@ void scSetNextFrameBuffer(void *arg0) {
     if (scUseCustomSwapBufferFunc != 0) {
         osSendMesg(scCustomSwapBufferQueue, (OSMesg)1, OS_MESG_NOBLOCK);
         if ((intptr_t)arg0 == -1) {
-            dSYSchedulerCurrentFramebuffer = gSYSchedulerNextFramebuffer;
+            gSYSchedulerCurrentFramebuffer = gSYSchedulerNextFramebuffer;
             gSYSchedulerNextFramebuffer = NULL;
         } else {
-            dSYSchedulerCurrentFramebuffer = arg0;
+            gSYSchedulerCurrentFramebuffer = arg0;
         }
     } else {
         if ((intptr_t)arg0 == -1) {
@@ -659,11 +659,11 @@ void scSetNextFrameBuffer(void *arg0) {
                 D_80044FA4_407B4 = 1; 
             }
             // clang-format on
-            dSYSchedulerCurrentFramebuffer = temp;
+            gSYSchedulerCurrentFramebuffer = temp;
             gSYSchedulerNextFramebuffer = NULL;
         } else {
             func_80001764((void *)arg0);
-            dSYSchedulerCurrentFramebuffer = arg0;
+            gSYSchedulerCurrentFramebuffer = arg0;
         }
     }
     // OS_CYCLES_TO_NSEC?
@@ -1092,7 +1092,7 @@ void thread3_scheduler(UNUSED void *arg) {
     scMainQueueHead = D_80044EC8_406D8 = scCurrentGfxTask = scCurrentAudioTask = scPausedQueueHead = D_80044ED8_406E8 = NULL;
     scCurrentQueue3Task = scQueue3Head = D_80044EE0_406F0 = NULL;
     D_80044F88_40798[0]                                    = 0;
-    dSYSchedulerCurrentFramebuffer = gSYSchedulerNextFramebuffer = scUnkFrameBuffer = NULL;
+    gSYSchedulerCurrentFramebuffer = gSYSchedulerNextFramebuffer = scUnkFrameBuffer = NULL;
     scUseCustomSwapBufferFunc                                       = 0;
     D_80045018_40828                                       = func_800029D8;
     D_80045020_40830                                       = 0;

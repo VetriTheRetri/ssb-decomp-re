@@ -497,7 +497,7 @@ void ifCommonPlayerDamageSetShowInterface(void)
     {
         if (sIFCommonPlayerDamageInterface[i].interface_gobj != NULL)
         {
-            sIFCommonPlayerDamageInterface[i].is_display_interface = TRUE;
+            sIFCommonPlayerDamageInterface[i].is_show_interface = TRUE;
         }
     }
 }
@@ -799,7 +799,7 @@ void ifCommonPlayerDamageFuncDisplay(GObj *interface_gobj)
 
     player = ifGetPlayer(interface_gobj);
 
-    if ((sIFCommonPlayerDamageInterface[player].is_display_interface != FALSE) && ((gSCManagerBattleState->players[player].stock_count >= 0) || (sIFCommonPlayerDamageInterface[player].dead_stopupdate_wait != 0)))
+    if ((sIFCommonPlayerDamageInterface[player].is_show_interface != FALSE) && ((gSCManagerBattleState->players[player].stock_count >= 0) || (sIFCommonPlayerDamageInterface[player].dead_stopupdate_wait != 0)))
     {
         color_id = sIFCommonPlayerDamageInterface[player].color_id;
         scale = sIFCommonPlayerDamageInterface[player].scale;
@@ -960,7 +960,7 @@ void ifCommonPlayerDamageInitInterface(void)
             sIFCommonPlayerDamageInterface[player].scale = 1.04F;
             sIFCommonPlayerDamageInterface[player].is_update_anim = FALSE;
             sIFCommonPlayerDamageInterface[player].dead_stopupdate_wait = 180;
-            sIFCommonPlayerDamageInterface[player].is_display_interface = FALSE;
+            sIFCommonPlayerDamageInterface[player].is_show_interface = FALSE;
 
             ifSetPlayer(interface_gobj, player); // Cast is probably redundant but I don't want any compilers screaming at me
 

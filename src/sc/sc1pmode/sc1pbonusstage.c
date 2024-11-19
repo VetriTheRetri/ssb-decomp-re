@@ -368,7 +368,7 @@ void sc1PBonusStageInitVars(void)
 
 	gSCManagerBattleState->game_type = nSCBattleGameTypeBonus;
 	gSCManagerBattleState->game_rules = SCBATTLE_GAMERULE_BONUS | SCBATTLE_GAMERULE_TIME;
-	gSCManagerBattleState->is_display_score = FALSE;
+	gSCManagerBattleState->is_show_score = FALSE;
 	gSCManagerBattleState->pl_count = 1;
 	gSCManagerBattleState->cp_count = 0;
 

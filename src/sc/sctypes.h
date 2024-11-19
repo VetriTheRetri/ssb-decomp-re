@@ -299,7 +299,7 @@ struct SCBattleState
 	u32 time_remain;								// Tics remaining until timeout
 	u32 time_passed; 								// Current match tic, counts up from 0
 	u8 item_appearance_rate;						// Item appearance rate setting 
-	ub32 is_display_score : 1;						// Displays score when a fighter falls
+	ub32 is_show_score : 1;							// Displays score when a fighter falls
 	ub32 is_not_teamshadows : 1;					// If FALSE, shadows are colored based on players' team affiliation, otherwise use default shadow color
 	SCPlayerData players[GMCOMMON_PLAYERS_MAX]; 	// Holds data for each player
 };
@@ -308,7 +308,7 @@ struct SCCommonData
 {
 	u8 scene_curr;									// Current scene
 	u8 scene_prev;									// Previous scene
-	u8 unlock_messages[nLBBackupUnlockEnumCount];		// Queued unlock messages
+	u8 unlock_messages[nLBBackupUnlockEnumCount];	// Queued unlock messages
 	u8 challenger_fkind;							// Opponent being fought in "Challenger Approaching" battle
 	u16 demo_mask_prev;								// Mask of previously demo'd fighters
 	u8 demo_first_fkind;							// First auto-demo fighter to focus on?

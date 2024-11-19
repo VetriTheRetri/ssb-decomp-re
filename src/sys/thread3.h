@@ -146,6 +146,9 @@ extern u32 D_80044FB4_407C4;
 extern u32 scTimeSpentAudio;
 extern u64 sSYSchedulerRdpCache;
 extern s32 D_80045020_40830;
+extern void *gSYSchedulerNextFramebuffer;
+extern void *gSYSchedulerCurrentFramebuffer;
+extern u32 gSYSchedulerFramebufferSetTimestamp;
 
 extern void func_80000970(SYTaskInfo *arg0);
 extern void scAddClient(SCClient *arg0, OSMesgQueue *mq, OSMesg *msg, u32 count);

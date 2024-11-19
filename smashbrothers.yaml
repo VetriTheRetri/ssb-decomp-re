@@ -1439,10 +1439,10 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x162640, c, ovl34]
-      - [0x165560, .data, ovl34]
-      - [0x1657C0, .rodata, ovl34]
-      - { start: auto, type: .bss, vram: 0x80134CD0, name: ovl34 }
+      - [0x162640, c, mv/mvopening/mvopeningroom]
+      - [0x165560, .data, mv/mvopening/mvopeningroom]
+      - [0x1657C0, .rodata, mv/mvopening/mvopeningroom]
+      - { start: auto, type: .bss, name: mv/mvopening/mvopeningroom, vram: 0x80134CD0 }
 
   - name: ovl35
     type: code

@@ -409,7 +409,7 @@ sb32 scVSBattleSetScoreCheckSuddenDeath(void)
 		break;
 	}
 	gSCManagerVSBattleState.game_rules = SCBATTLE_GAMERULE_STOCK;
-	gSCManagerVSBattleState.is_display_score = FALSE;
+	gSCManagerVSBattleState.is_show_score = FALSE;
 
 	gSCManagerSceneData.is_suddendeath = TRUE;
 

@@ -573,7 +573,7 @@ void sc1PTrainingModeInitVars(void)
 	gSCManagerBattleState->game_type = nSCBattleGameTypeTraining;
 	gSCManagerBattleState->gkind = gSCManagerSceneData.gkind;
 	gSCManagerBattleState->time_limit = SCBATTLE_TIMELIMIT_INFINITE;
-	gSCManagerBattleState->is_display_score = FALSE;
+	gSCManagerBattleState->is_show_score = FALSE;
 	gSCManagerBattleState->item_toggles = 0;
 
 	for (player = 0; player < ARRAY_COUNT(gSCManagerBattleState->players); player++)

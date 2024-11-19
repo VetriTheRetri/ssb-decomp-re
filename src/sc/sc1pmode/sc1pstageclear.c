@@ -11,7 +11,7 @@ extern void syRdpSetViewport(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 //                               //
 // // // // // // // // // // // //
 
-extern void *dSYSchedulerCurrentFramebuffer;
+extern void *gSYSchedulerCurrentFramebuffer;
 
 extern uintptr_t D_NF_00000050;								// 0x00000050
 extern uintptr_t D_NF_00000051;								// 0x00000051
@@ -1916,10 +1916,10 @@ void sc1PStageClearCopyFramebufToWallpaper(void)
 	u32 *row_pixels;
 	u32 *wallpaper_pixels;
 
-	// dSYSchedulerCurrentFramebuffer = framebuf0; start farther in, skipping border
+	// gSYSchedulerCurrentFramebuffer = framebuf0; start farther in, skipping border
 	framebuffer_pixels = (u32*)
 	(
-		(uintptr_t)dSYSchedulerCurrentFramebuffer 		+
+		(uintptr_t)gSYSchedulerCurrentFramebuffer 		+
 		SYVIDEO_BORDER_SIZE(320, 10, u16) +
 		SYVIDEO_BORDER_SIZE(1, 10, u16)
 	);

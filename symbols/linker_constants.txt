@@ -2061,15 +2061,15 @@ lMVCommonRoomSpotlightMatAnimJoint = 0x22F10;
 lMVCommonRoomOutsideDisplayList = 0x24200;
 lMVCommonRoomSunlightDisplayList = 0x24708;
 
-FILE_038_CAMERA_PARAMETERS_OFFSET = 0x0;
-FILE_039_CAMERA_PARAMETERS_OFFSET = 0x0;
-FILE_03A_CAMERA_PARAMETERS_OFFSET = 0x0;
-FILE_03B_CAMERA_PARAMETERS_OFFSET = 0x0;
+lMVOpeningRoomScene1CamAnimJoint = 0x0;
+lMVOpeningRoomScene2CamAnimJoint = 0x0;
+lMVOpeningRoomScene3CamAnimJoint = 0x0;
+lMVOpeningRoomScene4CamAnimJoint = 0x0;
 
-FILE_03F_TRANSITION_GFX_OVERLAY_OBJECT_OFFSET_1 = 0x5A0;
-FILE_03F_TRANSITION_GFX_OVERLAY_OBJECT_OFFSET_2 = 0x714;
-FILE_03F_TRANSITION_GFX_OUTLINE_OBJECT_OFFSET_1 = 0xF40;
-FILE_03F_TRANSITION_GFX_OUTLINE_OBJECT_OFFSET_2 = 0x11C4;
+lMVOpeningRoomTransitionOverlayDisplayList = 0x5A0;
+lMVOpeningRoomTransitionOverlayAnimJoint = 0x714;
+lMVOpeningRoomTransitionOutlineDisplayList = 0xF40;
+lMVOpeningRoomTransitionOutlineAnimJoint = 0x11C4;
 
 lMVOpeningMarioCamAnimJoint = 0x00000000;
 lMVOpeningDonkeyCamAnimJoint = 0x30;

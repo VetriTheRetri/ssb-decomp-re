@@ -52,7 +52,7 @@ struct IFPlayerDamage
 	u8 break_anim_frame;
 	u8 dead_stopupdate_wait; // This counts down if the player loses their last
 							 // stock?
-	u8 is_display_interface;
+	u8 is_show_interface;
 };
 
 struct IFPlayerSteal

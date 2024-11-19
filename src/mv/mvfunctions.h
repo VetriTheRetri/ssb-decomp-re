@@ -3,6 +3,7 @@
 
 #include <mv/mvunknownmario.h>
 
+#include <mv/mvopening/mvopeningroom.h>
 #include <mv/mvopening/mvopeningportraits.h>
 #include <mv/mvopening/mvopeningmario.h>
 #include <mv/mvopening/mvopeningdonkey.h>

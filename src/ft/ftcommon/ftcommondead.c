@@ -52,7 +52,7 @@ void ftCommonDeadUpdateScore(FTStruct *this_fp)
 
     gSCManagerBattleState->players[this_fp->player].falls++;
 
-    if (gSCManagerBattleState->is_display_score)
+    if (gSCManagerBattleState->is_show_score)
     {
         ifCommonPlayerScoreMakeEffect(this_fp, -1);
     }
@@ -62,7 +62,7 @@ void ftCommonDeadUpdateScore(FTStruct *this_fp)
 
         gSCManagerBattleState->players[this_fp->damage_player].total_kos_players[this_fp->player]++;
 
-        if (gSCManagerBattleState->is_display_score)
+        if (gSCManagerBattleState->is_show_score)
         {
             ifCommonPlayerScoreMakeEffect(ftGetStruct(gSCManagerBattleState->players[this_fp->damage_player].fighter_gobj), 1);
         }

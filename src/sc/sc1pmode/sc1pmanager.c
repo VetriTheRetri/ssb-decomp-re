@@ -258,7 +258,7 @@ void sc1PManagerUpdateScene(void)
     gSCManager1PGameBattleState.is_team_battle = TRUE;
     gSCManager1PGameBattleState.game_rules = (SCBATTLE_GAMERULE_1PGAME | SCBATTLE_GAMERULE_TIME);
     gSCManager1PGameBattleState.damage_ratio = 100;
-    gSCManager1PGameBattleState.is_display_score = FALSE;
+    gSCManager1PGameBattleState.is_show_score = FALSE;
     gSCManager1PGameBattleState.is_not_teamshadows = TRUE;
 
     if (gSCManagerBackupData.error_flags & LBBACKUP_ERROR_1PGAMEMARIO)

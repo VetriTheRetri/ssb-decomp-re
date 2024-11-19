@@ -590,7 +590,7 @@ void scAutoDemoInitSObjs(void)
 	s32 player;
 	void *file;
 
-	file = lbRelocGetFileExternHeap
+	file = lbRelocGetExternHeapFile
 	(
 		(uintptr_t)&D_NF_0000000C, 
 		syTaskmanMalloc

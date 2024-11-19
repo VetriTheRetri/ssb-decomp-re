@@ -40,21 +40,21 @@
 extern uintptr_t lLBRelocTableFilesNum;     // 0x00000854
 extern uintptr_t lLBRelocTableAddr;         // 0x001AC870
 
-extern void* lbRelocFindFileStatusBuffer(u32 id);
+extern void* lbRelocFindStatusBufferFile(u32 id);
 extern void* lbRelocGetStatusBufferFile(u32 id);
-extern void* lbRelocFindFileForceStatusBuffer(u32 id);
+extern void* lbRelocFindForceStatusBufferFile(u32 id);
 extern void* lbRelocGetForceStatusBufferFile(u32 id);
-extern void lbRelocAddFileStatusBuffer(u32 id, void *addr);
-extern void lbRelocAddFileForceStatusBuffer(u32 id, void *addr);
+extern void lbRelocAddStatusBufferFile(u32 id, void *addr);
+extern void lbRelocAddForceStatusBufferFile(u32 id, void *addr);
 extern void lbRelocReadDmaTableEntry(u32 entry_id);
-extern void lbRelocLoadAndRelocFile(u32 file_id, void *ram_dst, u32 bytes_num, s32 loc);
-extern size_t lbRelocGetExternBytesNum(u32 file_id);
+extern void lbRelocLoadAndRelocFile(u32 id, void *ram_dst, u32 bytes_num, s32 loc);
+extern size_t lbRelocGetExternBytesNum(u32 id);
 extern size_t lbRelocGetFileSize(u32 id);
-extern void* lbRelocGetFileExternStatusBuffer(u32 file_id);
-extern void* lbRelocGetFileExternHeap(u32 id, void *heap);
-extern void* lbRelocGetInternBufferFile(u32 file_id);
-extern void* lbRelocGetFileExternForceStatusBuffer(u32 file_id);
-extern void* lbRelocGetFileExternForceStatusBufferHeap(u32 id, void *heap);
+extern void* lbRelocGetExternBufferFile(u32 id);
+extern void* lbRelocGetExternHeapFile(u32 id, void *heap);
+extern void* lbRelocGetInternBufferFile(u32 id);
+extern void* lbRelocGetForceExternBufferFile(u32 id);
+extern void* lbRelocGetForceExternHeapFile(u32 id, void *heap);
 extern size_t lbRelocLoadFilesExtern(u32 *ids, u32 len, void **files, void *heap);
 extern size_t lbRelocLoadFilesIntern(u32 *ids, u32 len, void **files);
 extern size_t lbRelocGetAllocSize(u32 *ids, u32 len);

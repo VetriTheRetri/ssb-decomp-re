@@ -186,7 +186,7 @@ LBFileNode D_ovl27_801392A8[7];
 u32 D_ovl27_801392E0[240];
 
 // 0x801396A0
-s32 gMN1PFiles[11];
+void *gMN1PFiles[11];
 
 // 0x80131B00
 void mn1PFuncLights(Gfx **display_list)
@@ -258,7 +258,7 @@ void mn1PCreateSmallerNumber(GObj* number_gobj, s32 num, f32 x, f32 y, s32 color
 	if (num < 0)
 		num = 0;
 
-	number_sobj = lbCommonMakeSObjForGObj(number_gobj, GetAddressFromOffset(gMN1PFiles[9], number_offsets[num % 10]));
+	number_sobj = lbCommonMakeSObjForGObj(number_gobj, lbRelocGetFileData(void*, gMN1PFiles[9], number_offsets[num % 10]));
 	mn1PSetTextureColors(number_sobj, colors);
 	left_x -= 8;
 	number_sobj->pos.x = left_x;
@@ -273,7 +273,7 @@ void mn1PCreateSmallerNumber(GObj* number_gobj, s32 num, f32 x, f32 y, s32 color
 	{
 		digit = (mn1PPow(10, place) != 0) ? num / mn1PPow(10, place) : 0;
 
-		number_sobj = lbCommonMakeSObjForGObj(number_gobj, GetAddressFromOffset(gMN1PFiles[9], number_offsets[digit % 10]));
+		number_sobj = lbCommonMakeSObjForGObj(number_gobj, lbRelocGetFileData(void*, gMN1PFiles[9], number_offsets[digit % 10]));
 		mn1PSetTextureColors(number_sobj, colors);
 		left_x -= 8;
 		number_sobj->pos.x = left_x;
@@ -401,7 +401,7 @@ void mn1PDrawString(GObj* gobj, const char *str, f32 x, f32 y, s32 color[3])
 		}
 		else
 		{
-			chr_sobj = lbCommonMakeSObjForGObj(gobj, GetAddressFromOffset(gMN1PFiles[8], chrOffsets[mn1PGetChrIndex(str[i])]));
+			chr_sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(void*, gMN1PFiles[8], chrOffsets[mn1PGetChrIndex(str[i])]));
 			chr_sobj->pos.x = start_x;
 
 			start_x += chrWidths[mn1PGetChrIndex(str[i])] + mn1PGetChrSpacing(str, i);
@@ -525,7 +525,7 @@ void mn1PAddRedXBoxToPortrait(GObj* portrait_gobj, s32 portrait_id)
 		y = portrait_sobj->pos.y;
 	s32 xbox_image_offset = &(FILE_013_XBOX_IMAGE_OFFSET);
 
-	portrait_sobj = lbCommonMakeSObjForGObj(portrait_gobj, GetAddressFromOffset(gMN1PFiles[4], xbox_image_offset)); // AppendTexture
+	portrait_sobj = lbCommonMakeSObjForGObj(portrait_gobj, lbRelocGetFileData(void*, gMN1PFiles[4], xbox_image_offset)); // AppendTexture
 
 	portrait_sobj->pos.x = x + 4.0F;
 	portrait_sobj->pos.y = y + 12.0F;
@@ -622,7 +622,7 @@ void mn1PCreateLockedPortrait(s32 portrait_id)
 	gcAddGObjDisplay(texture_gobj, lbCommonDrawSObjAttr, 0x1BU, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddGObjProcess(texture_gobj, mn1PSetPortraitX, 1, 1);
 
-	texture_sobj = lbCommonMakeSObjForGObj(texture_gobj, GetAddressFromOffset(gMN1PFiles[4], &FILE_013_PORTRAIT_FIRE_BG_IMAGE_OFFSET));
+	texture_sobj = lbCommonMakeSObjForGObj(texture_gobj, lbRelocGetFileData(void*, gMN1PFiles[4], &FILE_013_PORTRAIT_FIRE_BG_IMAGE_OFFSET));
 	texture_sobj->pos.x = (f32) (((portrait_id >= 6 ? portrait_id - 6 : portrait_id) * 0x2D) + 0x19);
 	texture_sobj->pos.y = (f32) (((portrait_id >= 6 ? 1 : 0) * 0x2B) + 0x24);
 
@@ -634,7 +634,7 @@ void mn1PCreateLockedPortrait(s32 portrait_id)
 	gcAddGObjDisplay(texture_gobj, mn1PRenderPortraitWithNoise, 0x1BU, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddGObjProcess(texture_gobj, mn1PSetPortraitX, 1, 1);
 
-	texture_sobj = lbCommonMakeSObjForGObj(texture_gobj, GetAddressFromOffset(gMN1PFiles[4], locked_portrait_offsets[mn1PGetFtKind(portrait_id)]));
+	texture_sobj = lbCommonMakeSObjForGObj(texture_gobj, lbRelocGetFileData(void*, gMN1PFiles[4], locked_portrait_offsets[mn1PGetFtKind(portrait_id)]));
 	texture_sobj->sprite.attr = texture_sobj->sprite.attr & ~SP_FASTCOPY;
 	texture_sobj->sprite.attr = texture_sobj->sprite.attr| SP_TRANSPARENT;
 
@@ -646,7 +646,7 @@ void mn1PCreateLockedPortrait(s32 portrait_id)
 	gcAddGObjDisplay(texture_gobj, lbCommonDrawSObjAttr, 0x1BU, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddGObjProcess(texture_gobj, mn1PSetPortraitX, 1, 1);
 
-	texture_sobj = lbCommonMakeSObjForGObj(texture_gobj, GetAddressFromOffset(gMN1PFiles[4], &FILE_013_PORTRAIT_QUESTION_MARK_IMAGE_OFFSET));
+	texture_sobj = lbCommonMakeSObjForGObj(texture_gobj, lbRelocGetFileData(void*, gMN1PFiles[4], &FILE_013_PORTRAIT_QUESTION_MARK_IMAGE_OFFSET));
 	texture_sobj->sprite.attr &= ~SP_FASTCOPY;
 	texture_sobj->sprite.attr |= SP_TRANSPARENT;
 	texture_sobj->envcolor.r = 0x5B;
@@ -682,7 +682,7 @@ void mn1PCreatePortrait(s32 portrait_id)
 		portrait_bg_gobj->user_data.p = portrait_id;
 		gcAddGObjProcess(portrait_bg_gobj, mn1PSetPortraitX, 1, 1);
 
-		texture_sobj = lbCommonMakeSObjForGObj(portrait_bg_gobj, GetAddressFromOffset(gMN1PFiles[4], &FILE_013_PORTRAIT_FIRE_BG_IMAGE_OFFSET));
+		texture_sobj = lbCommonMakeSObjForGObj(portrait_bg_gobj, lbRelocGetFileData(void*, gMN1PFiles[4], &FILE_013_PORTRAIT_FIRE_BG_IMAGE_OFFSET));
 		mn1PInitializePortraitBackgroundPosition(texture_sobj, portrait_id);
 
 		// portrait
@@ -690,7 +690,7 @@ void mn1PCreatePortrait(s32 portrait_id)
 		gcAddGObjDisplay(portrait_gobj, lbCommonDrawSObjAttr, 0x1BU, GOBJ_PRIORITY_DEFAULT, ~0);
 		gcAddGObjProcess(portrait_gobj, mn1PSetPortraitX, 1, 1);
 
-		texture_sobj = lbCommonMakeSObjForGObj(portrait_gobj, GetAddressFromOffset(gMN1PFiles[4], portrait_offsets[mn1PGetFtKind(portrait_id)]));
+		texture_sobj = lbCommonMakeSObjForGObj(portrait_gobj, lbRelocGetFileData(void*, gMN1PFiles[4], portrait_offsets[mn1PGetFtKind(portrait_id)]));
 		texture_sobj->sprite.attr = texture_sobj->sprite.attr & ~SP_FASTCOPY;
 		texture_sobj->sprite.attr = texture_sobj->sprite.attr| SP_TRANSPARENT;
 		portrait_gobj->user_data.p = portrait_id;
@@ -737,7 +737,7 @@ void mn1PSetNameAndLogo(GObj* name_logo_gobj, s32 port_id, s32 fkind)
 		gcRemoveSObjAll(name_logo_gobj);
 
 		// logo
-		sobj = lbCommonMakeSObjForGObj(name_logo_gobj, GetAddressFromOffset(gMN1PFiles[1], logo_offsets[fkind]));
+		sobj = lbCommonMakeSObjForGObj(name_logo_gobj, lbRelocGetFileData(void*, gMN1PFiles[1], logo_offsets[fkind]));
 		sobj->sprite.attr = sobj->sprite.attr & ~SP_FASTCOPY;
 		sobj->sprite.attr = sobj->sprite.attr | SP_TRANSPARENT;
 		sobj->sprite.red = 0;
@@ -747,7 +747,7 @@ void mn1PSetNameAndLogo(GObj* name_logo_gobj, s32 port_id, s32 fkind)
 		sobj->pos.y = 144.0F;
 
 		// name
-		sobj = lbCommonMakeSObjForGObj(name_logo_gobj, GetAddressFromOffset(gMN1PFiles[0], name_offsets[fkind]));
+		sobj = lbCommonMakeSObjForGObj(name_logo_gobj, lbRelocGetFileData(void*, gMN1PFiles[0], name_offsets[fkind]));
 		sobj->sprite.attr = sobj->sprite.attr & ~SP_FASTCOPY;
 		sobj->sprite.attr = sobj->sprite.attr | SP_TRANSPARENT;
 		sobj->pos.x = 33.0F;
@@ -798,7 +798,7 @@ void mn1PUpdatePanel(GObj* panel_gobj, s32 port_id)
 
 	panel_sobj = SObjGetStruct(panel_gobj);
 
-	panel_sobj->sprite.LUT = GetAddressFromOffset(gMN1PFiles[0], offsets[port_id]);
+	panel_sobj->sprite.LUT = lbRelocGetFileData(void*, gMN1PFiles[0], offsets[port_id]);
 }
 
 // 0x801331F4
@@ -816,7 +816,7 @@ void mn1PCreatePanel(s32 port_id)
 	};
 
 	// create panel
-	gobj = lbCommonMakeSpriteGObj(0, NULL, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1C, GOBJ_PRIORITY_DEFAULT, ~0, GetAddressFromOffset(gMN1PFiles[5], &FILE_017_PANEL_IMAGE_OFFSET), 1, NULL, 1);
+	gobj = lbCommonMakeSpriteGObj(0, NULL, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1C, GOBJ_PRIORITY_DEFAULT, ~0, lbRelocGetFileData(void*, gMN1PFiles[5], &FILE_017_PANEL_IMAGE_OFFSET), 1, NULL, 1);
 	SObjGetStruct(gobj)->pos.x = 25.0F;
 	SObjGetStruct(gobj)->pos.y = 127.0F;
 	SObjGetStruct(gobj)->sprite.attr &= ~SP_FASTCOPY;
@@ -824,7 +824,7 @@ void mn1PCreatePanel(s32 port_id)
 
 	gMN1PPanel.panel = gobj;
 
-	type_sobj = lbCommonMakeSObjForGObj(gobj, GetAddressFromOffset(gMN1PFiles[0], type_offsets[port_id]));
+	type_sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(void*, gMN1PFiles[0], type_offsets[port_id]));
 	type_sobj->pos.x = type_x_offsets[port_id] + 25.0F;
 	type_sobj->pos.y = 132.0F;
 	type_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -865,7 +865,7 @@ void mn1PCreateNumber(GObj* number_gobj, s32 num, f32 x, f32 y, s32 colors[], s3
 	if (num < 0)
 		num = 0;
 
-	number_sobj = lbCommonMakeSObjForGObj(number_gobj, GetAddressFromOffset(gMN1PFiles[0], number_offsets[num % 10]));
+	number_sobj = lbCommonMakeSObjForGObj(number_gobj, lbRelocGetFileData(void*, gMN1PFiles[0], number_offsets[num % 10]));
 	mn1PSetTextureColors(number_sobj, colors);
 	left_x -= widths[num % 10];
 	number_sobj->pos.x = left_x;
@@ -880,7 +880,7 @@ void mn1PCreateNumber(GObj* number_gobj, s32 num, f32 x, f32 y, s32 colors[], s3
 	{
 		digit = (mn1PPow(10, place) != 0) ? num / mn1PPow(10, place) : 0;
 
-		number_sobj = lbCommonMakeSObjForGObj(number_gobj, GetAddressFromOffset(gMN1PFiles[0], number_offsets[digit % 10]));
+		number_sobj = lbCommonMakeSObjForGObj(number_gobj, lbRelocGetFileData(void*, gMN1PFiles[0], number_offsets[digit % 10]));
 		mn1PSetTextureColors(number_sobj, colors);
 		left_x -= widths[digit % 10];
 		number_sobj->pos.x = left_x;
@@ -903,7 +903,7 @@ void mn1PDrawTimerValue(s32 num)
 
 	if (num == 100)
 	{
-		infinity_sobj = lbCommonMakeSObjForGObj(gMN1PPickerGObj, GetAddressFromOffset(gMN1PFiles[0], &FILE_011_INFINITY_IMAGE_OFFSET));
+		infinity_sobj = lbCommonMakeSObjForGObj(gMN1PPickerGObj, lbRelocGetFileData(void*, gMN1PFiles[0], &FILE_011_INFINITY_IMAGE_OFFSET));
 		infinity_sobj->pos.x = 194.0F;
 		infinity_sobj->pos.y = 24.0F;
 		infinity_sobj->envcolor.r = colors[0];
@@ -931,7 +931,7 @@ void mn1PDrawTimerPicker(s32 num)
 	if (gMN1PPickerGObj != NULL)
 		gcEjectGObj(gMN1PPickerGObj);
 
-	picker_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x17, 0x80000000, lbCommonDrawSObjAttr, 0x1A, GOBJ_PRIORITY_DEFAULT, ~0, GetAddressFromOffset(gMN1PFiles[0], &FILE_011_PICKER_TIME_IMAGE_OFFSET), 1, NULL, 1);
+	picker_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x17, 0x80000000, lbCommonDrawSObjAttr, 0x1A, GOBJ_PRIORITY_DEFAULT, ~0, lbRelocGetFileData(void*, gMN1PFiles[0], &FILE_011_PICKER_TIME_IMAGE_OFFSET), 1, NULL, 1);
 	gMN1PPickerGObj = picker_gobj;
 
 	SObjGetStruct(picker_gobj)->pos.x = 140.0F;
@@ -950,7 +950,7 @@ void mn1PCreateBackground()
 
 	background_gobj = gcMakeGObjSPAfter(0U, NULL, 0x11U, 0x80000000U);
 	gcAddGObjDisplay(background_gobj, lbCommonDrawSObjAttr, 0x1AU, GOBJ_PRIORITY_DEFAULT, ~0);
-	background_sobj = lbCommonMakeSObjForGObj(background_gobj, GetAddressFromOffset(gMN1PFiles[2], &FILE_015_BACKGROUND_IMAGE_OFFSET));
+	background_sobj = lbCommonMakeSObjForGObj(background_gobj, lbRelocGetFileData(void*, gMN1PFiles[2], &FILE_015_BACKGROUND_IMAGE_OFFSET));
 	background_sobj->cms = G_TX_WRAP;
 	background_sobj->cmt = G_TX_WRAP;
 	background_sobj->masks = 6;
@@ -1032,7 +1032,7 @@ void mn1PSyncAndBlinkLevelArrows(GObj* arrow_gobj)
 		}
 		else if (mn1PGetArrowSObj(arrow_gobj, 0) == NULL)
 		{
-			arrow_sobj = lbCommonMakeSObjForGObj(arrow_gobj, GetAddressFromOffset(gMN1PFiles[0], &FILE_011_ARROW_L_IMAGE_OFFSET));
+			arrow_sobj = lbCommonMakeSObjForGObj(arrow_gobj, lbRelocGetFileData(void*, gMN1PFiles[0], &FILE_011_ARROW_L_IMAGE_OFFSET));
 			arrow_sobj->pos.x = 194.0F;
 			arrow_sobj->pos.y = 158.0F;
 			arrow_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1049,7 +1049,7 @@ void mn1PSyncAndBlinkLevelArrows(GObj* arrow_gobj)
 		}
 		else if (mn1PGetArrowSObj(arrow_gobj, 1) == NULL)
 		{
-			arrow_sobj = lbCommonMakeSObjForGObj(arrow_gobj, GetAddressFromOffset(gMN1PFiles[0], &FILE_011_ARROW_R_IMAGE_OFFSET));
+			arrow_sobj = lbCommonMakeSObjForGObj(arrow_gobj, lbRelocGetFileData(void*, gMN1PFiles[0], &FILE_011_ARROW_R_IMAGE_OFFSET));
 			arrow_sobj->pos.x = 269.0F;
 			arrow_sobj->pos.y = 158.0F;
 			arrow_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1092,7 +1092,7 @@ void gMN1PDrawLevel(s32 level)
 	gMN1PLevelGObj = level_gobj = gcMakeGObjSPAfter(0U, NULL, 0x17U, 0x80000000U);
 	gcAddGObjDisplay(level_gobj, lbCommonDrawSObjAttr, 0x22U, GOBJ_PRIORITY_DEFAULT, ~0);
 
-	level_sobj = lbCommonMakeSObjForGObj(level_gobj, GetAddressFromOffset(gMN1PFiles[6], offsets[level]));
+	level_sobj = lbCommonMakeSObjForGObj(level_gobj, lbRelocGetFileData(void*, gMN1PFiles[6], offsets[level]));
 	level_sobj->sprite.attr &= ~SP_FASTCOPY;
 	level_sobj->sprite.attr |= SP_TRANSPARENT;
 	level_sobj->pos.x = positions[level].x;
@@ -1139,7 +1139,7 @@ void mn1PSyncAndBlinkStockArrows(GObj* arrow_gobj)
 		}
 		else if (mn1PGetArrowSObj(arrow_gobj, 0) == NULL)
 		{
-			arrow_sobj = lbCommonMakeSObjForGObj(arrow_gobj, GetAddressFromOffset(gMN1PFiles[0], &FILE_011_ARROW_L_IMAGE_OFFSET));
+			arrow_sobj = lbCommonMakeSObjForGObj(arrow_gobj, lbRelocGetFileData(void*, gMN1PFiles[0], &FILE_011_ARROW_L_IMAGE_OFFSET));
 			arrow_sobj->pos.x = 194.0F;
 			arrow_sobj->pos.y = 178.0F;
 			arrow_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1156,7 +1156,7 @@ void mn1PSyncAndBlinkStockArrows(GObj* arrow_gobj)
 		}
 		else if (mn1PGetArrowSObj(arrow_gobj, 1) == NULL)
 		{
-			arrow_sobj = lbCommonMakeSObjForGObj(arrow_gobj, GetAddressFromOffset(gMN1PFiles[0], &FILE_011_ARROW_R_IMAGE_OFFSET));
+			arrow_sobj = lbCommonMakeSObjForGObj(arrow_gobj, lbRelocGetFileData(void*, gMN1PFiles[0], &FILE_011_ARROW_R_IMAGE_OFFSET));
 			arrow_sobj->pos.x = 269.0F;
 			arrow_sobj->pos.y = 178.0F;
 			arrow_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1184,7 +1184,7 @@ void mn1PDrawStock(s32 stock, s32 fkind)
 	{
 		if (fkind == nFTKindNull)
 		{
-			icon_sobj = lbCommonMakeSObjForGObj(stock_gobj, GetAddressFromOffset(gMN1PFiles[7], &FILE_019_POLYGON_STOCK_ICON_IMAGE_OFFSET));
+			icon_sobj = lbCommonMakeSObjForGObj(stock_gobj, lbRelocGetFileData(void*, gMN1PFiles[7], &FILE_019_POLYGON_STOCK_ICON_IMAGE_OFFSET));
 			icon_sobj->pos.y = 179.0F;
 		}
 		else
@@ -1218,7 +1218,7 @@ void mn1PDrawPickerOptionsTitleAndBack()
 	GObj* picker_gobj;
 	SObj* picker_sobj;
 
-	picker_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x17, 0x80000000, mn1PRenderOptionsSection, 0x22, GOBJ_PRIORITY_DEFAULT, ~0, GetAddressFromOffset(gMN1PFiles[5], &FILE_017_1_PLAYER_GAME_TITLE_IMAGE_OFFSET), 1, NULL, 1);
+	picker_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x17, 0x80000000, mn1PRenderOptionsSection, 0x22, GOBJ_PRIORITY_DEFAULT, ~0, lbRelocGetFileData(void*, gMN1PFiles[5], &FILE_017_1_PLAYER_GAME_TITLE_IMAGE_OFFSET), 1, NULL, 1);
 	SObjGetStruct(picker_gobj)->pos.x = 27.0F;
 	SObjGetStruct(picker_gobj)->pos.y = 24.0F;
 	SObjGetStruct(picker_gobj)->sprite.attr &= ~SP_FASTCOPY;
@@ -1230,14 +1230,14 @@ void mn1PDrawPickerOptionsTitleAndBack()
 	mn1PDrawTimerPicker(gMN1PTimerValue);
 
 	// Back image
-	picker_sobj = lbCommonMakeSObjForGObj(picker_gobj, GetAddressFromOffset(gMN1PFiles[0], &FILE_011_BACK_IMAGE_OFFSET));
+	picker_sobj = lbCommonMakeSObjForGObj(picker_gobj, lbRelocGetFileData(void*, gMN1PFiles[0], &FILE_011_BACK_IMAGE_OFFSET));
 	picker_sobj->sprite.attr &= ~SP_FASTCOPY;
 	picker_sobj->sprite.attr |= SP_TRANSPARENT;
 	picker_sobj->pos.x = 244.0F;
 	picker_sobj->pos.y = 23.0F;
 
 	// Option texture
-	picker_sobj = lbCommonMakeSObjForGObj(picker_gobj, GetAddressFromOffset(gMN1PFiles[5], &FILE_017_OPTION_IMAGE_OFFSET));
+	picker_sobj = lbCommonMakeSObjForGObj(picker_gobj, lbRelocGetFileData(void*, gMN1PFiles[5], &FILE_017_OPTION_IMAGE_OFFSET));
 	picker_sobj->sprite.attr &= ~SP_FASTCOPY;
 	picker_sobj->sprite.attr |= SP_TRANSPARENT;
 	picker_sobj->envcolor.r = 0;
@@ -1250,7 +1250,7 @@ void mn1PDrawPickerOptionsTitleAndBack()
 	picker_sobj->pos.y = 129.0F;
 
 	// Level/Stock outline texture (mirrored vertically)
-	picker_sobj = lbCommonMakeSObjForGObj(picker_gobj, GetAddressFromOffset(gMN1PFiles[5], &FILE_017_STOCK_LEVEL_OUTLINE_IMAGE_OFFSET));
+	picker_sobj = lbCommonMakeSObjForGObj(picker_gobj, lbRelocGetFileData(void*, gMN1PFiles[5], &FILE_017_STOCK_LEVEL_OUTLINE_IMAGE_OFFSET));
 	picker_sobj->sprite.attr &= ~SP_FASTCOPY;
 	picker_sobj->sprite.attr |= SP_TRANSPARENT;
 	picker_sobj->sprite.red = 0x57;
@@ -1266,7 +1266,7 @@ void mn1PDrawPickerOptionsTitleAndBack()
 	picker_sobj->pos.y = 141.0F;
 
 	// Level label
-	picker_sobj = lbCommonMakeSObjForGObj(picker_gobj, GetAddressFromOffset(gMN1PFiles[5], &FILE_017_LEVEL_IMAGE_OFFSET));
+	picker_sobj = lbCommonMakeSObjForGObj(picker_gobj, lbRelocGetFileData(void*, gMN1PFiles[5], &FILE_017_LEVEL_IMAGE_OFFSET));
 	picker_sobj->sprite.attr &= ~SP_FASTCOPY;
 	picker_sobj->sprite.attr |= SP_TRANSPARENT;
 	picker_sobj->sprite.red = 0xC5;
@@ -1276,7 +1276,7 @@ void mn1PDrawPickerOptionsTitleAndBack()
 	picker_sobj->pos.y = 159.0F;
 
 	// Stock label
-	picker_sobj = lbCommonMakeSObjForGObj(picker_gobj, GetAddressFromOffset(gMN1PFiles[5], &FILE_017_STOCK_IMAGE_OFFSET));
+	picker_sobj = lbCommonMakeSObjForGObj(picker_gobj, lbRelocGetFileData(void*, gMN1PFiles[5], &FILE_017_STOCK_IMAGE_OFFSET));
 	picker_sobj->sprite.attr &= ~SP_FASTCOPY;
 	picker_sobj->sprite.attr |= SP_TRANSPARENT;
 	picker_sobj->sprite.red = 0xC5;
@@ -1343,7 +1343,7 @@ void mn1PDrawHighscore()
 
 		if (best_difficulty != 0)
 		{
-			difficulty_sobj = lbCommonMakeSObjForGObj(highscore_gobj, GetAddressFromOffset(gMN1PFiles[5], &FILE_017_SMASH_LOGO_IMAGE_OFFSET));
+			difficulty_sobj = lbCommonMakeSObjForGObj(highscore_gobj, lbRelocGetFileData(void*, gMN1PFiles[5], &FILE_017_SMASH_LOGO_IMAGE_OFFSET));
 			difficulty_sobj->sprite.attr &= ~SP_FASTCOPY;
 			difficulty_sobj->sprite.attr |= SP_TRANSPARENT;
 			difficulty_sobj->pos.x = 126.0F;
@@ -1384,7 +1384,7 @@ void mn1PDrawBonuses()
 		gMN1PBonusesGObj = bonuses_gobj = gcMakeGObjSPAfter(0U, NULL, 0x17U, 0x80000000U);
 		gcAddGObjDisplay(bonuses_gobj, lbCommonDrawSObjAttr, 0x1AU, GOBJ_PRIORITY_DEFAULT, ~0);
 
-		parenthesis_sobj = lbCommonMakeSObjForGObj(bonuses_gobj, GetAddressFromOffset(gMN1PFiles[5], &FILE_017_PARENTHESIS_L_IMAGE_OFFSET));
+		parenthesis_sobj = lbCommonMakeSObjForGObj(bonuses_gobj, lbRelocGetFileData(void*, gMN1PFiles[5], &FILE_017_PARENTHESIS_L_IMAGE_OFFSET));
 		parenthesis_sobj->sprite.attr &= ~SP_FASTCOPY;
 		parenthesis_sobj->sprite.attr |= SP_TRANSPARENT;
 		parenthesis_sobj->pos.x = 258.0F;
@@ -1393,7 +1393,7 @@ void mn1PDrawBonuses()
 		parenthesis_sobj->sprite.green = 0x6F;
 		parenthesis_sobj->sprite.blue = 0xCD;
 
-		parenthesis_sobj = lbCommonMakeSObjForGObj(bonuses_gobj, GetAddressFromOffset(gMN1PFiles[5], &FILE_017_PARENTHESIS_R_IMAGE_OFFSET));
+		parenthesis_sobj = lbCommonMakeSObjForGObj(bonuses_gobj, lbRelocGetFileData(void*, gMN1PFiles[5], &FILE_017_PARENTHESIS_R_IMAGE_OFFSET));
 		parenthesis_sobj->sprite.attr &= ~SP_FASTCOPY;
 		parenthesis_sobj->sprite.attr |= SP_TRANSPARENT;
 		parenthesis_sobj->pos.x = 286.0F;
@@ -1471,7 +1471,7 @@ void mn1PDrawTotalBonuses()
 	bonuses_gobj = gcMakeGObjSPAfter(0U, NULL, 0x17U, 0x80000000U);
 	gcAddGObjDisplay(bonuses_gobj, lbCommonDrawSObjAttr, 0x1AU, GOBJ_PRIORITY_DEFAULT, ~0);
 
-	parenthesis_sobj = lbCommonMakeSObjForGObj(bonuses_gobj, GetAddressFromOffset(gMN1PFiles[5], &FILE_017_PARENTHESIS_L_IMAGE_OFFSET));
+	parenthesis_sobj = lbCommonMakeSObjForGObj(bonuses_gobj, lbRelocGetFileData(void*, gMN1PFiles[5], &FILE_017_PARENTHESIS_L_IMAGE_OFFSET));
 	parenthesis_sobj->sprite.attr &= ~SP_FASTCOPY;
 	parenthesis_sobj->sprite.attr |= SP_TRANSPARENT;
 	parenthesis_sobj->pos.x = 258.0F;
@@ -1480,7 +1480,7 @@ void mn1PDrawTotalBonuses()
 	parenthesis_sobj->sprite.green = 0x6F;
 	parenthesis_sobj->sprite.blue = 0xCD;
 
-	parenthesis_sobj = lbCommonMakeSObjForGObj(bonuses_gobj, GetAddressFromOffset(gMN1PFiles[5], &FILE_017_PARENTHESIS_R_IMAGE_OFFSET));
+	parenthesis_sobj = lbCommonMakeSObjForGObj(bonuses_gobj, lbRelocGetFileData(void*, gMN1PFiles[5], &FILE_017_PARENTHESIS_R_IMAGE_OFFSET));
 	parenthesis_sobj->sprite.attr &= ~SP_FASTCOPY;
 	parenthesis_sobj->sprite.attr |= SP_TRANSPARENT;
 	parenthesis_sobj->pos.x = 286.0F;
@@ -1661,13 +1661,13 @@ void mn1PRedrawCursor(GObj* cursor_gobj, s32 port_id, s32 cursor_state)
 
 	gcRemoveSObjAll(cursor_gobj);
 
-	cursor_sobj = lbCommonMakeSObjForGObj(cursor_gobj, GetAddressFromOffset(gMN1PFiles[0], cursor_offsets[cursor_state]));
+	cursor_sobj = lbCommonMakeSObjForGObj(cursor_gobj, lbRelocGetFileData(void*, gMN1PFiles[0], cursor_offsets[cursor_state]));
 	cursor_sobj->pos.x = current_x;
 	cursor_sobj->pos.y = current_y;
 	cursor_sobj->sprite.attr &= ~SP_FASTCOPY;
 	cursor_sobj->sprite.attr |= SP_TRANSPARENT;
 
-	cursor_sobj = lbCommonMakeSObjForGObj(cursor_gobj, GetAddressFromOffset(gMN1PFiles[0], type_offsets[port_id]));
+	cursor_sobj = lbCommonMakeSObjForGObj(cursor_gobj, lbRelocGetFileData(void*, gMN1PFiles[0], type_offsets[port_id]));
 	cursor_sobj->pos.x = SObjGetPrev(cursor_sobj)->pos.x + type_positions[cursor_state].x;
 	cursor_sobj->pos.y = SObjGetPrev(cursor_sobj)->pos.y + type_positions[cursor_state].y;
 	cursor_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1868,7 +1868,7 @@ void mn1PCreateWhiteSquare(s32 port_id)
 	white_square_gobj->user_data.p = port_id;
 	gcAddGObjProcess(white_square_gobj, mn1PFlashWhiteSquare, 0, 1);
 
-	white_square_sobj = lbCommonMakeSObjForGObj(white_square_gobj, GetAddressFromOffset(gMN1PFiles[4], &FILE_013_WHITE_SQUARE));
+	white_square_sobj = lbCommonMakeSObjForGObj(white_square_gobj, lbRelocGetFileData(void*, gMN1PFiles[4], &FILE_013_WHITE_SQUARE));
 	white_square_sobj->pos.x = (f32) (((portrait_id >= 6 ? portrait_id - 6 : portrait_id) * 45) + 26);
 	white_square_sobj->pos.y = (f32) (((portrait_id >= 6 ? 1 : 0) * 43) + 37);
 }
@@ -2636,7 +2636,7 @@ void mn1PCreateCursor(s32 port_id)
 		6, 4, 2, 0
 	};
 
-	cursor_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x13, 0x80000000, lbCommonDrawSObjAttr, 0x1E, cursor_starting_display_orders[port_id], -1, GetAddressFromOffset(gMN1PFiles[0], &FILE_011_CURSOR_POINTER_IMAGE_OFFSET), 1, mn1PHandleButtonPresses, 2);
+	cursor_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x13, 0x80000000, lbCommonDrawSObjAttr, 0x1E, cursor_starting_display_orders[port_id], -1, lbRelocGetFileData(void*, gMN1PFiles[0], &FILE_011_CURSOR_POINTER_IMAGE_OFFSET), 1, mn1PHandleButtonPresses, 2);
 
 	cursor_gobj->user_data.s = port_id;
 	gMN1PPanel.cursor = cursor_gobj;
@@ -2669,7 +2669,7 @@ void mn1PCreateToken(s32 port_id)
 	};
 	s32 foo;
 
-	token_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x14, 0x80000000, lbCommonDrawSObjAttr, 0x1F, orders1[port_id], -1, GetAddressFromOffset(gMN1PFiles[0], offsets[port_id]), 1, mn1PSyncTokenAndFighter, 1);
+	token_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x14, 0x80000000, lbCommonDrawSObjAttr, 0x1F, orders1[port_id], -1, lbRelocGetFileData(void*, gMN1PFiles[0], offsets[port_id]), 1, mn1PSyncTokenAndFighter, 1);
 
 	token_gobj->user_data.s = port_id;
 	gMN1PPanel.token = token_gobj;
@@ -2801,11 +2801,11 @@ void mn1PCreateWhiteCircles()
 
 	white_circle_gobj = gcMakeGObjSPAfter(0U, NULL, 0x15U, 0x80000000U);
 
-	gcSetupCommonDObjs(white_circle_gobj, GetAddressFromOffset(gMN1PFiles[10], &FILE_016_WHITE_CIRCLE_OFFSET_2), 0);
+	gcSetupCommonDObjs(white_circle_gobj, lbRelocGetFileData(void*, gMN1PFiles[10], &FILE_016_WHITE_CIRCLE_OFFSET_2), 0);
 
 	gcAddGObjDisplay(white_circle_gobj, gcDrawDObjTreeDLLinksForGObj, 9U, GOBJ_PRIORITY_DEFAULT, ~0);
 
-	gcAddMObjAll(white_circle_gobj, GetAddressFromOffset(gMN1PFiles[10], &FILE_016_WHITE_CIRCLE_OFFSET_1));
+	gcAddMObjAll(white_circle_gobj, lbRelocGetFileData(void*, gMN1PFiles[10], &FILE_016_WHITE_CIRCLE_OFFSET_1));
 
 	gcAddGObjProcess(white_circle_gobj, mn1PSyncWhiteCircleSizeAndDisplay, 1, 1);
 
@@ -2849,7 +2849,7 @@ void mn1PCreateReadyToFightObjects()
 	gcAddGObjProcess(gobj, mn1PBlinkIfReadyToFight, 1, 1);
 
 	// Ready to Fight banner bg
-	sobj = lbCommonMakeSObjForGObj(gobj, GetAddressFromOffset(gMN1PFiles[0], &FILE_011_READY_TO_FIGHT_BG_IMAGE_OFFSET));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(void*, gMN1PFiles[0], &FILE_011_READY_TO_FIGHT_BG_IMAGE_OFFSET));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 	sobj->envcolor.r = 0;
@@ -2868,7 +2868,7 @@ void mn1PCreateReadyToFightObjects()
 	sobj->pos.y = 71.0F;
 
 	// Ready to Fight banner text
-	sobj = lbCommonMakeSObjForGObj(gobj, GetAddressFromOffset(gMN1PFiles[0], &FILE_011_READY_TO_FIGHT_IMAGE_OFFSET));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(void*, gMN1PFiles[0], &FILE_011_READY_TO_FIGHT_IMAGE_OFFSET));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 	sobj->envcolor.r = 0xFF;
@@ -2886,7 +2886,7 @@ void mn1PCreateReadyToFightObjects()
 	gcAddGObjProcess(gobj, mn1PBlinkIfReadyToFight, 1, 1);
 
 	// "Press"
-	sobj = lbCommonMakeSObjForGObj(gobj, GetAddressFromOffset(gMN1PFiles[0], &FILE_011_PRESS_IMAGE_OFFSET));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(void*, gMN1PFiles[0], &FILE_011_PRESS_IMAGE_OFFSET));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 	sobj->sprite.red = 0xD6;
@@ -2896,7 +2896,7 @@ void mn1PCreateReadyToFightObjects()
 	sobj->pos.y = 219.0F;
 
 	// "Start"
-	sobj = lbCommonMakeSObjForGObj(gobj, GetAddressFromOffset(gMN1PFiles[0], &FILE_011_START_IMAGE_OFFSET));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(void*, gMN1PFiles[0], &FILE_011_START_IMAGE_OFFSET));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 	sobj->sprite.red = 0xFF;

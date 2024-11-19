@@ -2241,7 +2241,7 @@ SYTaskmanSetup dGMStaffrollTaskmanSetup =
 void gmStaffrollStartScene(void)
 {
 	/* 
-	 * This is really weird. The function will only match if arena32 is assigned a hardcoded constant value.
+	 * This is really weird. The function will only match if fb32 is assigned a hardcoded constant value.
 	 * One would assume they did this for the default 320x230 framebuffers as well, but that is not the case.
 	 * The default framebuffers effectively start at ovl1_BSS_END, at 0x80392A00, which is 0x1900 bytes behind
 	 * where it would start if they had calculated the address with SYVIDEO_DEFINE_FRAMEBUFFER_ADDR.
@@ -2250,10 +2250,12 @@ void gmStaffrollStartScene(void)
 	 * being only a concept as seen here with the custom 640x480 framebuffer?
 	 */
 
-	u32 *arena32 = (u32*)SYVIDEO_DEFINE_FRAMEBUFFER_ADDR(640, 480, 0, 0, u16, 0);
-	u16 *arena16;
+	u16 *fb16;
+	u32 *fb32;
 
-	while ((uintptr_t)arena32 < 0x80400000) { *arena32++ = 0x00000000; }
+	fb32 = (u32*)SYVIDEO_DEFINE_FRAMEBUFFER_ADDR(640, 480, 0, 0, u16, 0);
+
+	while ((uintptr_t)fb32 < 0x80400000) { *fb32++ = 0x00000000; }
 
 	dGMStaffrollVideoSetup.zbuffer = syVideoGetZBuffer(12800);
 	syVideoInit(&dGMStaffrollVideoSetup);
@@ -2261,7 +2263,7 @@ void gmStaffrollStartScene(void)
 	dGMStaffrollTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)SYVIDEO_DEFINE_FRAMEBUFFER_ADDR(640, 480, 0, 0, u16, 0) - (uintptr_t)&ovl59_BSS_END);
 	syTaskmanRun(&dGMStaffrollTaskmanSetup);
 
-	arena16 = gSYFramebufferSets;
+	fb16 = (u16*) gSYFramebufferSets;
 
-	while ((uintptr_t)arena16 < 0x80400000) { *arena16++ = GPACK_RGBA5551(0x00, 0x00, 0x00, 0x01); }
+	while ((uintptr_t)fb16 < 0x80400000) { *fb16++ = GPACK_RGBA5551(0x00, 0x00, 0x00, 0x01); }
 }

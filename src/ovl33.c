@@ -1009,8 +1009,7 @@ LBFileNode D_ovl33_80136A40;
 u32 D_ovl33_80136A48[12];
 
 // 0x80136A78
-s32 gMNCharsFiles[4];
-
+void *gMNCharsFiles[4];
 
 // 0x80131B00
 void mnCharsFuncLights(Gfx **display_list)
@@ -1067,7 +1066,7 @@ void mnCharsCreateBio(s32 fkind)
 	gMNCharsBioGObj = bio_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
 	gcAddGObjDisplay(bio_gobj, lbCommonDrawSObjAttr, 0x1A, GOBJ_PRIORITY_DEFAULT, ~0);
 
-	bio_sobj = lbCommonMakeSObjForGObj(bio_gobj, GetAddressFromOffset(gMNCharsFiles[0], &FILE_010_BIO_UNDERLAY_TEXTURE_IMAGE_OFFSET));
+	bio_sobj = lbCommonMakeSObjForGObj(bio_gobj, lbRelocGetFileData(void*, gMNCharsFiles[0], &FILE_010_BIO_UNDERLAY_TEXTURE_IMAGE_OFFSET));
 	bio_sobj->sprite.attr &= ~SP_FASTCOPY;
 	bio_sobj->sprite.attr |= SP_TRANSPARENT;
 	bio_sobj->sprite.red = 0;
@@ -1076,7 +1075,7 @@ void mnCharsCreateBio(s32 fkind)
 	bio_sobj->pos.x = 126.0f;
 	bio_sobj->pos.y = 54.0f;
 
-	bio_sobj = lbCommonMakeSObjForGObj(bio_gobj, GetAddressFromOffset(gMNCharsFiles[0], offsets[fkind]));
+	bio_sobj = lbCommonMakeSObjForGObj(bio_gobj, lbRelocGetFileData(void*, gMNCharsFiles[0], offsets[fkind]));
 	bio_sobj->sprite.attr &= ~SP_FASTCOPY;
 	bio_sobj->sprite.attr |= SP_TRANSPARENT;
 	bio_sobj->sprite.red = 0xFF;
@@ -1096,7 +1095,7 @@ void mnCharsCreateHeader()
 	gcAddGObjDisplay(header_gobj, lbCommonDrawSObjAttr, 0x1B, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	// DATA header
-	header_sobj = lbCommonMakeSObjForGObj(header_gobj, GetAddressFromOffset(gMNCharsFiles[1], &FILE_020_DATA_HEADER_IMAGE_OFFSET));
+	header_sobj = lbCommonMakeSObjForGObj(header_gobj, lbRelocGetFileData(void*, gMNCharsFiles[1], &FILE_020_DATA_HEADER_IMAGE_OFFSET));
 	header_sobj->sprite.attr &= ~SP_FASTCOPY;
 	header_sobj->sprite.attr |= SP_TRANSPARENT;
 	header_sobj->pos.x = 23.0f;
@@ -1106,7 +1105,7 @@ void mnCharsCreateHeader()
 	header_sobj->sprite.blue = 0x46;
 
 	// Characters header
-	header_sobj = lbCommonMakeSObjForGObj(header_gobj, GetAddressFromOffset(gMNCharsFiles[0], &FILE_010_CHARACTERS_TEXTURE_IMAGE_OFFSET));
+	header_sobj = lbCommonMakeSObjForGObj(header_gobj, lbRelocGetFileData(void*, gMNCharsFiles[0], &FILE_010_CHARACTERS_TEXTURE_IMAGE_OFFSET));
 	header_sobj->sprite.attr &= ~SP_FASTCOPY;
 	header_sobj->sprite.attr |= SP_TRANSPARENT;
 	header_sobj->pos.x = 157.0f;
@@ -1119,7 +1118,7 @@ void mnCharsCreateHeader()
 	header_sobj->envcolor.b = 0;
 
 	// left arrow
-	header_sobj = lbCommonMakeSObjForGObj(header_gobj, GetAddressFromOffset(gMNCharsFiles[1], &FILE_020_ARROW_LEFT_IMAGE_OFFSET));
+	header_sobj = lbCommonMakeSObjForGObj(header_gobj, lbRelocGetFileData(void*, gMNCharsFiles[1], &FILE_020_ARROW_LEFT_IMAGE_OFFSET));
 	header_sobj->sprite.attr &= ~SP_FASTCOPY;
 	header_sobj->sprite.attr |= SP_TRANSPARENT;
 	header_sobj->pos.x = 257.0f;
@@ -1129,7 +1128,7 @@ void mnCharsCreateHeader()
 	header_sobj->sprite.blue = 0xC;
 
 	// right arrow
-	header_sobj = lbCommonMakeSObjForGObj(header_gobj, GetAddressFromOffset(gMNCharsFiles[1], &FILE_020_ARROW_RIGHT_IMAGE_OFFSET));
+	header_sobj = lbCommonMakeSObjForGObj(header_gobj, lbRelocGetFileData(void*, gMNCharsFiles[1], &FILE_020_ARROW_RIGHT_IMAGE_OFFSET));
 	header_sobj->sprite.attr &= ~SP_FASTCOPY;
 	header_sobj->sprite.attr |= SP_TRANSPARENT;
 	header_sobj->pos.x = 275.0f;
@@ -1160,10 +1159,10 @@ void mnCharsCreateSeriesLogo(s32 fkind)
 	};
 
 	gMNCharsSeriesLogoGObj = series_logo_gobj = gcMakeGObjSPAfter(0, 0, 0x13, 0x80000000);
-	gcSetupCommonDObjs(series_logo_gobj, GetAddressFromOffset(gMNCharsFiles[3], offsets[fkind]), 0);
+	gcSetupCommonDObjs(series_logo_gobj, lbRelocGetFileData(void*, gMNCharsFiles[3], offsets[fkind]), 0);
 	gcAddGObjDisplay(series_logo_gobj, gcDrawDObjTreeForGObj, 0x1C, GOBJ_PRIORITY_DEFAULT, ~0);
-	gcAddMObjAll(series_logo_gobj, GetAddressFromOffset(gMNCharsFiles[3], zoom_offsets[fkind]));
-	gcAddMatAnimJointAll(series_logo_gobj, GetAddressFromOffset(gMNCharsFiles[3], color_offsets[fkind]), 4.0F);
+	gcAddMObjAll(series_logo_gobj, lbRelocGetFileData(void*, gMNCharsFiles[3], zoom_offsets[fkind]));
+	gcAddMatAnimJointAll(series_logo_gobj, lbRelocGetFileData(void*, gMNCharsFiles[3], color_offsets[fkind]), 4.0F);
 	gcPlayAnimAll(series_logo_gobj);
 
 	DObjGetStruct(series_logo_gobj)->translate.vec.f.x = -350.0f;
@@ -1204,7 +1203,7 @@ void mnCharsCreateName(s32 fkind)
 
 	if ((fkind == nFTKindPurin) || (fkind == nFTKindCaptain))
 	{
-		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMNCharsFiles[0], &FILE_010_NAME_BORDER_TALL_IMAGE_OFFSET));
+		name_sobj = lbCommonMakeSObjForGObj(name_gobj, lbRelocGetFileData(void*, gMNCharsFiles[0], &FILE_010_NAME_BORDER_TALL_IMAGE_OFFSET));
 		name_sobj->sprite.attr &= ~SP_FASTCOPY;
 		name_sobj->sprite.attr |= SP_TRANSPARENT;
 		name_sobj->pos.x = 10.0f;
@@ -1215,7 +1214,7 @@ void mnCharsCreateName(s32 fkind)
 	}
 	else
 	{
-		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMNCharsFiles[0], &FILE_010_NAME_BORDER_IMAGE_OFFSET));
+		name_sobj = lbCommonMakeSObjForGObj(name_gobj, lbRelocGetFileData(void*, gMNCharsFiles[0], &FILE_010_NAME_BORDER_IMAGE_OFFSET));
 		name_sobj->sprite.attr &= ~SP_FASTCOPY;
 		name_sobj->sprite.attr |= SP_TRANSPARENT;
 		name_sobj->pos.x = 10.0f;
@@ -1225,7 +1224,7 @@ void mnCharsCreateName(s32 fkind)
 		name_sobj->sprite.blue = 0x07;
 	}
 
-	name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMNCharsFiles[0], offsets[fkind]));
+	name_sobj = lbCommonMakeSObjForGObj(name_gobj, lbRelocGetFileData(void*, gMNCharsFiles[0], offsets[fkind]));
 	name_sobj->sprite.attr &= ~SP_FASTCOPY;
 	name_sobj->sprite.attr |= SP_TRANSPARENT;
 	name_sobj->pos.x = coords[fkind].x;
@@ -1244,7 +1243,7 @@ void mnCharsCreateWorksBackground()
 	works_bg_gobj = gcMakeGObjSPAfter(0, 0, 0x15, 0x80000000);
 	gcAddGObjDisplay(works_bg_gobj, lbCommonDrawSObjAttr, 0x1E, GOBJ_PRIORITY_DEFAULT, ~0);
 
-	works_bg_sobj = lbCommonMakeSObjForGObj(works_bg_gobj, GetAddressFromOffset(gMNCharsFiles[0], &FILE_010_WORKS_BACKGROUND_IMAGE_OFFSET));
+	works_bg_sobj = lbCommonMakeSObjForGObj(works_bg_gobj, lbRelocGetFileData(void*, gMNCharsFiles[0], &FILE_010_WORKS_BACKGROUND_IMAGE_OFFSET));
 	works_bg_sobj->sprite.attr &= ~SP_FASTCOPY;
 	works_bg_sobj->sprite.attr |= SP_TRANSPARENT;
 	works_bg_sobj->pos.x = 116.0f;
@@ -1268,7 +1267,7 @@ void mnCharsCreateWorks(s32 fkind)
 	gMNCharsWorksGObj = works_gobj = gcMakeGObjSPAfter(0, 0, 0x16, 0x80000000);
 	gcAddGObjDisplay(works_gobj, lbCommonDrawSObjAttr, 0x1F, GOBJ_PRIORITY_DEFAULT, ~0);
 
-	works_sobj = lbCommonMakeSObjForGObj(works_gobj, GetAddressFromOffset(gMNCharsFiles[0], works_offsets[fkind]));
+	works_sobj = lbCommonMakeSObjForGObj(works_gobj, lbRelocGetFileData(void*, gMNCharsFiles[0], works_offsets[fkind]));
 	works_sobj->sprite.attr &= ~SP_FASTCOPY;
 	works_sobj->sprite.attr |= SP_TRANSPARENT;
 	works_sobj->pos.x = 139.0f;
@@ -1637,7 +1636,7 @@ void mnCharsUpdateMoveName(GObj* move_name_gobj)
 
 	if (move_type != 3)
 	{
-		move_name_sobj = lbCommonMakeSObjForGObj(move_name_gobj, GetAddressFromOffset(gMNCharsFiles[0], move_input_offsets[move_type]));
+		move_name_sobj = lbCommonMakeSObjForGObj(move_name_gobj, lbRelocGetFileData(void*, gMNCharsFiles[0], move_input_offsets[move_type]));
 		move_name_sobj->sprite.attr &= ~SP_FASTCOPY;
 		move_name_sobj->sprite.attr |= SP_TRANSPARENT;
 		move_name_sobj->pos.x = 24.0f;
@@ -1646,7 +1645,7 @@ void mnCharsUpdateMoveName(GObj* move_name_gobj)
 		move_name_sobj->sprite.green = 0x7D;
 		move_name_sobj->sprite.blue = 0xC;
 
-		move_name_sobj = lbCommonMakeSObjForGObj(move_name_gobj, GetAddressFromOffset(gMNCharsFiles[0], move_name_offsets[fkind][move_type]));
+		move_name_sobj = lbCommonMakeSObjForGObj(move_name_gobj, lbRelocGetFileData(void*, gMNCharsFiles[0], move_name_offsets[fkind][move_type]));
 		move_name_sobj->sprite.attr &= ~SP_FASTCOPY;
 		move_name_sobj->sprite.attr |= SP_TRANSPARENT;
 		move_name_sobj->pos.x = 24.0f;

@@ -1525,43 +1525,48 @@ void mnVSModeFuncStart(void)
 SYVideoSetup dMNVSModeVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
 // 0x8013489C
-scRuntimeInfo dMNVSModeTaskmanSetup =
+SYTaskmanSetup dMNVSModeTaskmanSetup =
 {
-    0x00000000,
-    gcRunAll,
-    gcDrawAll,
-    &ovl19_BSS_END,
-    0,
-    1,
-    2,
-    0xEA60,
-    0,
-    0,
-    0,
-    0x8000,
-    0x20000,
-    0xC000,
-    mnVSModeFuncLights,
-    syControllerFuncRead,
-    0,
-    0x600,
-    0,
-    0,
-    0,
-    0,
-    0x88,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0x88,
-    0,
-    0x6C,
-    0,
-    0x90,
-    mnVSModeFuncStart
+    // Task Manager Buffer Setup
+    {
+        0,                              // ???
+        gcRunAll,                 	 	// Update function
+        gcDrawAll,                      // Frame draw function
+        &ovl19_BSS_END,                 // Allocatable memory pool start
+        0,                              // Allocatable memory pool size
+        1,                              // ???
+        2,                              // Number of contexts?
+        sizeof(Gfx) * 7500,             // Display List Buffer 0 Size
+        0,                              // Display List Buffer 1 Size
+        0,                              // Display List Buffer 2 Size
+        0,                              // Display List Buffer 3 Size
+        0x8000,                         // Graphics Heap Size
+        2,                              // ???
+        0xC000,                         // RDP Output Buffer Size
+        mnVSModeFuncLights,    	        // Pre-render function
+        syControllerFuncRead,           // Controller I/O function
+    },
+
+    0,                                  // Number of GObjThreads
+    sizeof(u64) * 192,                  // Thread stack size
+    0,                                  // Number of thread stacks
+    0,                                  // ???
+    0,                                  // Number of GObjProcesses
+    0,                                  // Number of GObjs
+    sizeof(GObj),                       // GObj size
+    0,                                  // Number of XObjs
+    NULL,                               // Matrix function list
+    NULL,                               // DObjVec eject function
+    0,                                  // Number of AObjs
+    0,                                  // Number of MObjs
+    0,                                  // Number of DObjs
+    sizeof(DObj),                       // DObj size
+    0,                                  // Number of SObjs
+    sizeof(SObj),                       // SObj size
+    0,                                  // Number of Cameras
+    sizeof(CObj),                       // Camera size
+    
+    mnVSModeFuncStart          	        // Task start function
 };
 
 // 0x80134758
@@ -1570,6 +1575,6 @@ void mnVSModeStartScene(void)
     dMNVSModeVideoSetup.zbuffer = syVideoGetZBuffer(6400);
     syVideoInit(&dMNVSModeVideoSetup);
 
-    dMNVSModeTaskmanSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl19_BSS_END);
+    dMNVSModeTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl19_BSS_END);
     syTaskmanRun(&dMNVSModeTaskmanSetup);
 }

@@ -4579,7 +4579,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
         }
         else if (motion_desc->anim_file_id != 0)
         {
-            lbRelocGetFileExternForceStatusBufferHeap(motion_desc->anim_file_id, (void*)fp->figatree_heap);
+            lbRelocGetForceExternHeapFile(motion_desc->anim_file_id, (void*)fp->figatree_heap);
             fp->figatree = fp->figatree_heap;
         }
         else fp->figatree = NULL;

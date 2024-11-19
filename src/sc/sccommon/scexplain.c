@@ -141,7 +141,7 @@ SYTaskmanSetup dSCExplainTaskmanSetup =
 // 0x8018D0C0
 void scExplainLoadExplainFiles(void)
 {
-    sSCExplainGraphicsFileHead = lbRelocGetFileExternHeap
+    sSCExplainGraphicsFileHead = lbRelocGetExternHeapFile
     (
         (uintptr_t)&D_NF_000000C6,
         syTaskmanMalloc
@@ -153,7 +153,7 @@ void scExplainLoadExplainFiles(void)
             0x10
         )
     );
-    sSCExplainMainFileHead = lbRelocGetFileExternHeap
+    sSCExplainMainFileHead = lbRelocGetExternHeapFile
     (
         (uintptr_t)&D_NF_000000FC,
         syTaskmanMalloc

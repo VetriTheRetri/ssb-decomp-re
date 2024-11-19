@@ -560,7 +560,7 @@ SYTaskmanSetup dMVOpeningDonkeyTaskmanSetup =
         0x8000,                         // Graphics Heap Size
         2,                              // ???
         0xC000,                         // RDP Output Buffer Size
-        mvOpeningDonkeyFuncLights,    		// Pre-render function
+        mvOpeningDonkeyFuncLights,    	// Pre-render function
         syControllerFuncRead,           // Controller I/O function
     },
 
@@ -583,7 +583,7 @@ SYTaskmanSetup dMVOpeningDonkeyTaskmanSetup =
     0,                                  // Number of Cameras
     sizeof(CObj),                       // Camera size
     
-    mvOpeningDonkeyFuncStart          		// Task start function
+    mvOpeningDonkeyFuncStart          	// Task start function
 };
 
 // 0x8018E018

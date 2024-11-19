@@ -1930,7 +1930,7 @@ void ifCommonItemArrowSetAttr(void)
 {
     Sprite *sprite = sIFCommonItemArrowSprite =
 
-    lbRelocGetFileData(Sprite*, lbRelocGetFileExternHeap((intptr_t)&D_NF_00000057, syTaskmanMalloc(lbRelocGetFileSize((intptr_t)&D_NF_00000057), 0x10)), &lIFCommonItemArrow);
+    lbRelocGetFileData(Sprite*, lbRelocGetExternHeapFile((intptr_t)&D_NF_00000057, syTaskmanMalloc(lbRelocGetFileSize((intptr_t)&D_NF_00000057), 0x10)), &lIFCommonItemArrow);
 
     sprite->attr = SP_TEXSHUF | SP_TRANSPARENT;
 

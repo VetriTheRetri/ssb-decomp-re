@@ -208,9 +208,9 @@ void ftManagerAllocFighter(u32 data_flags, s32 allocs_num)
     gFTManagerMotionCount = 1;
     gFTManagerStatUpdateCount = 1;
 
-    gFTManagerCommonFile = lbRelocGetFileExternHeap((u32)&D_NF_000000A3, syTaskmanMalloc(lbRelocGetFileSize((u32)&D_NF_000000A3), 0x10));
+    gFTManagerCommonFile = lbRelocGetExternHeapFile((u32)&D_NF_000000A3, syTaskmanMalloc(lbRelocGetFileSize((u32)&D_NF_000000A3), 0x10));
 
-    lbRelocGetFileExternHeap((u32)&D_NF_000000C9, syTaskmanMalloc(lbRelocGetFileSize((u32)&D_NF_000000C9), 0x10));
+    lbRelocGetExternHeapFile((u32)&D_NF_000000C9, syTaskmanMalloc(lbRelocGetFileSize((u32)&D_NF_000000C9), 0x10));
 
     for (i = 0; i < (ARRAY_COUNT(dFTManagerDataFiles) + ARRAY_COUNT(gSCManagerFighterFileSizes)) / 2; i++)
     {
@@ -327,7 +327,7 @@ void ftManagerSetupFilesMainKind(s32 fkind)
 {
     FTData *data = dFTManagerDataFiles[fkind];
 
-    *data->p_file_main = lbRelocGetFileExternHeap(data->file_main_id, syTaskmanMalloc(lbRelocGetFileSize(data->file_main_id), 0x10));
+    *data->p_file_main = lbRelocGetExternHeapFile(data->file_main_id, syTaskmanMalloc(lbRelocGetFileSize(data->file_main_id), 0x10));
 
     if (data->particles_script_lo != 0)
     {

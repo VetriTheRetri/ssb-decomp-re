@@ -235,7 +235,7 @@ void mnStartupFuncStart(void)
 	sprite = lbRelocGetFileData
 	(
 		Sprite*,
-		lbRelocGetFileExternHeap
+		lbRelocGetExternHeapFile
 		(
 			&D_NF_000000C2,
 			syTaskmanMalloc

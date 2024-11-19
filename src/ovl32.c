@@ -102,8 +102,7 @@ u32 D_ovl32_80136CC8[6];
 u32 D_ovl32_80136CE0[42]; // unknown
 
 // 0x80136D88
-s32 gMNVSRecordFiles[4];
-
+void *gMNVSRecordFiles[4];
 
 // 0x80131B00
 void mnVSRecordSetLighting(Gfx **display_list)
@@ -261,7 +260,7 @@ void mnVSRecordCreateNumber(GObj* number_gobj, s32 num, f32 x, f32 y, s32 colors
 		s32 decimal = num % 10;
 		num = num / 10;
 
-		number_sobj = lbCommonMakeSObjForGObj(number_gobj, GetAddressFromOffset(gMNVSRecordFiles[0], number_offsets[decimal]));
+		number_sobj = lbCommonMakeSObjForGObj(number_gobj, lbRelocGetFileData(void*, gMNVSRecordFiles[0], number_offsets[decimal]));
 		mnVSRecordSetTextureColors(number_sobj, colors);
 
 		if (wide)
@@ -272,7 +271,7 @@ void mnVSRecordCreateNumber(GObj* number_gobj, s32 num, f32 x, f32 y, s32 colors
 		number_sobj->pos.x = left_x;
 		number_sobj->pos.y = y;
 
-		number_sobj = lbCommonMakeSObjForGObj(number_gobj, GetAddressFromOffset(gMNVSRecordFiles[0], &FILE_01F_DECIMAL_POINT_IMAGE_OFFSET));
+		number_sobj = lbCommonMakeSObjForGObj(number_gobj, lbRelocGetFileData(void*, gMNVSRecordFiles[0], &FILE_01F_DECIMAL_POINT_IMAGE_OFFSET));
 		mnVSRecordSetTextureColors(number_sobj, colors);
 
 		if (wide)
@@ -284,7 +283,7 @@ void mnVSRecordCreateNumber(GObj* number_gobj, s32 num, f32 x, f32 y, s32 colors
 		number_sobj->pos.y = y + 4.0f;
 	}
 
-	number_sobj = lbCommonMakeSObjForGObj(number_gobj, GetAddressFromOffset(gMNVSRecordFiles[0], number_offsets[num % 10]));
+	number_sobj = lbCommonMakeSObjForGObj(number_gobj, lbRelocGetFileData(void*, gMNVSRecordFiles[0], number_offsets[num % 10]));
 	mnVSRecordSetTextureColors(number_sobj, colors);
 
 	if (wide)
@@ -304,7 +303,7 @@ void mnVSRecordCreateNumber(GObj* number_gobj, s32 num, f32 x, f32 y, s32 colors
 	{
 		digit = (mnVSRecordPow(10, place) != 0) ? num / mnVSRecordPow(10, place) : 0;
 
-		number_sobj = lbCommonMakeSObjForGObj(number_gobj, GetAddressFromOffset(gMNVSRecordFiles[0], number_offsets[digit % 10]));
+		number_sobj = lbCommonMakeSObjForGObj(number_gobj, lbRelocGetFileData(void*, gMNVSRecordFiles[0], number_offsets[digit % 10]));
 		mnVSRecordSetTextureColors(number_sobj, colors);
 
 		if (wide)
@@ -431,7 +430,7 @@ void mnVSRecordDrawString(GObj* gobj, const char *str, f32 x, f32 y, s32 color[3
 		}
 		else
 		{
-			chr_sobj = lbCommonMakeSObjForGObj(gobj, GetAddressFromOffset(gMNVSRecordFiles[3], chrOffsets[mnVSRecordGetCharIndex(str[i])]));
+			chr_sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(void*, gMNVSRecordFiles[3], chrOffsets[mnVSRecordGetCharIndex(str[i])]));
 			chr_sobj->pos.x = start_x;
 
 			start_x += chr_sobj->sprite.width + mnVSRecordGetChrSpacing(str, i);
@@ -485,7 +484,7 @@ void mnVSRecordCreateTitle()
 	title_gobj = gcMakeGObjSPAfter(0, 0, 2, 0x80000000);
 	gcAddGObjDisplay(title_gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
 
-	title_sobj = lbCommonMakeSObjForGObj(title_gobj, GetAddressFromOffset(gMNVSRecordFiles[1], &FILE_020_DATA_HEADER_IMAGE_OFFSET));
+	title_sobj = lbCommonMakeSObjForGObj(title_gobj, lbRelocGetFileData(void*, gMNVSRecordFiles[1], &FILE_020_DATA_HEADER_IMAGE_OFFSET));
 	title_sobj->sprite.attr &= ~SP_FASTCOPY;
 	title_sobj->sprite.attr |= SP_TRANSPARENT;
 	title_sobj->sprite.red = 0x5F;
@@ -494,7 +493,7 @@ void mnVSRecordCreateTitle()
 	title_sobj->pos.x = 24.0f;
 	title_sobj->pos.y = 17.0f;
 
-	title_sobj = lbCommonMakeSObjForGObj(title_gobj, GetAddressFromOffset(gMNVSRecordFiles[0], &FILE_01F_VS_RECORD_IMAGE_OFFSET));
+	title_sobj = lbCommonMakeSObjForGObj(title_gobj, lbRelocGetFileData(void*, gMNVSRecordFiles[0], &FILE_01F_VS_RECORD_IMAGE_OFFSET));
 	title_sobj->sprite.attr &= ~SP_FASTCOPY;
 	title_sobj->sprite.attr |= SP_TRANSPARENT;
 	title_sobj->envcolor.r = 0;
@@ -520,7 +519,7 @@ void mnVSRecordRenderSubtitle(GObj* subtitle_gobj)
 	{
 		gcRemoveSObjAll(subtitle_gobj);
 
-		subtitle_sobj = lbCommonMakeSObjForGObj(subtitle_gobj, GetAddressFromOffset(gMNVSRecordFiles[0], offsets[gMNVSRecordStatsKind]));
+		subtitle_sobj = lbCommonMakeSObjForGObj(subtitle_gobj, lbRelocGetFileData(void*, gMNVSRecordFiles[0], offsets[gMNVSRecordStatsKind]));
 		subtitle_sobj->sprite.attr &= ~SP_FASTCOPY;
 		subtitle_sobj->sprite.attr |= SP_TRANSPARENT;
 		subtitle_sobj->sprite.red = 0;
@@ -541,7 +540,7 @@ void mnVSRecordCreateSubtitle()
 	gcAddGObjDisplay(subtitle_gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddGObjProcess(subtitle_gobj, mnVSRecordRenderSubtitle, 1, 1);
 
-	subtitle_sobj = lbCommonMakeSObjForGObj(subtitle_gobj, GetAddressFromOffset(gMNVSRecordFiles[0], &FILE_01F_SUBTITLE_BATTLE_SCORE_IMAGE_OFFSET));
+	subtitle_sobj = lbCommonMakeSObjForGObj(subtitle_gobj, lbRelocGetFileData(void*, gMNVSRecordFiles[0], &FILE_01F_SUBTITLE_BATTLE_SCORE_IMAGE_OFFSET));
 	subtitle_sobj->sprite.attr &= ~SP_FASTCOPY;
 	subtitle_sobj->sprite.attr |= SP_TRANSPARENT;
 	subtitle_sobj->sprite.red = 0;
@@ -568,7 +567,7 @@ void mnVSRecordCreatePortraitAndStatsArrows()
 	gcAddGObjProcess(portrait_arrows_gobj, mnVSRecordUpdatePortraitArrowsDisplay, 1, 1);
 
 	// left arrow
-	portrait_arrows_sobj = lbCommonMakeSObjForGObj(portrait_arrows_gobj, GetAddressFromOffset(gMNVSRecordFiles[1], &FILE_020_ARROW_LEFT_IMAGE_OFFSET));
+	portrait_arrows_sobj = lbCommonMakeSObjForGObj(portrait_arrows_gobj, lbRelocGetFileData(void*, gMNVSRecordFiles[1], &FILE_020_ARROW_LEFT_IMAGE_OFFSET));
 	portrait_arrows_sobj->sprite.attr &= ~SP_FASTCOPY;
 	portrait_arrows_sobj->sprite.attr |= SP_TRANSPARENT;
 	portrait_arrows_sobj->sprite.red = 0xE3;
@@ -578,7 +577,7 @@ void mnVSRecordCreatePortraitAndStatsArrows()
 	portrait_arrows_sobj->pos.y = 78.0f;
 
 	// right arrow
-	portrait_arrows_sobj = lbCommonMakeSObjForGObj(portrait_arrows_gobj, GetAddressFromOffset(gMNVSRecordFiles[1], &FILE_020_ARROW_RIGHT_IMAGE_OFFSET));
+	portrait_arrows_sobj = lbCommonMakeSObjForGObj(portrait_arrows_gobj, lbRelocGetFileData(void*, gMNVSRecordFiles[1], &FILE_020_ARROW_RIGHT_IMAGE_OFFSET));
 	portrait_arrows_sobj->sprite.attr &= ~SP_FASTCOPY;
 	portrait_arrows_sobj->sprite.attr |= SP_TRANSPARENT;
 	portrait_arrows_sobj->sprite.red = 0xE3;
@@ -604,7 +603,7 @@ void mnVSRecordCreateResortArrows()
 	gcAddGObjDisplay(resort_arrows_gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddGObjProcess(resort_arrows_gobj, mnVSRecordUpdateResortArrowsDisplay, 1, 1);
 
-	resort_arrows_sobj = lbCommonMakeSObjForGObj(resort_arrows_gobj, GetAddressFromOffset(gMNVSRecordFiles[0], &FILE_01F_DOUBLE_DOWN_ARROW_IMAGE_OFFSET));
+	resort_arrows_sobj = lbCommonMakeSObjForGObj(resort_arrows_gobj, lbRelocGetFileData(void*, gMNVSRecordFiles[0], &FILE_01F_DOUBLE_DOWN_ARROW_IMAGE_OFFSET));
 	resort_arrows_sobj->sprite.attr &= ~SP_FASTCOPY;
 	resort_arrows_sobj->sprite.attr |= SP_TRANSPARENT;
 	resort_arrows_sobj->pos.x = 281.0f;
@@ -630,7 +629,7 @@ void mnVSRecordCreateColumnArrows()
 	gcAddGObjDisplay(column_arrows_gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddGObjProcess(column_arrows_gobj, mnVSRecordUpdateColumnArrowsDisplay, 1, 1);
 
-	column_arrows_sobj = lbCommonMakeSObjForGObj(column_arrows_gobj, GetAddressFromOffset(gMNVSRecordFiles[0], &FILE_01F_LEFT_AND_RIGHT_ARROW_IMAGE_OFFSET));
+	column_arrows_sobj = lbCommonMakeSObjForGObj(column_arrows_gobj, lbRelocGetFileData(void*, gMNVSRecordFiles[0], &FILE_01F_LEFT_AND_RIGHT_ARROW_IMAGE_OFFSET));
 	column_arrows_sobj->sprite.attr &= ~SP_FASTCOPY;
 	column_arrows_sobj->sprite.attr |= SP_TRANSPARENT;
 	column_arrows_sobj->sprite.red = 0xE3;
@@ -792,7 +791,7 @@ SObj* mnVSRecordCreateLockedIcon(GObj* icon_gobj)
 {
 	SObj* icon_sobj;
 
-	icon_sobj = lbCommonMakeSObjForGObj(icon_gobj, GetAddressFromOffset(gMNVSRecordFiles[0], &FILE_01F_QUESTION_MARK_IMAGE_OFFSET));
+	icon_sobj = lbCommonMakeSObjForGObj(icon_gobj, lbRelocGetFileData(void*, gMNVSRecordFiles[0], &FILE_01F_QUESTION_MARK_IMAGE_OFFSET));
 	icon_sobj->sprite.attr &= ~SP_FASTCOPY;
 	icon_sobj->sprite.attr |= SP_TRANSPARENT;
 	icon_sobj->sprite.red = 0x8A;
@@ -829,7 +828,7 @@ void mnVSRecordCreateColumnIcons(s32 icon_gobj)
 	{
 		if (mnVSRecordIsUnlocked(fkinds[i]))
 		{
-			icon_sobj = lbCommonMakeSObjForGObj(icon_gobj, GetAddressFromOffset(gMNVSRecordFiles[0], offsets[fkinds[i]]));
+			icon_sobj = lbCommonMakeSObjForGObj(icon_gobj, lbRelocGetFileData(void*, gMNVSRecordFiles[0], offsets[fkinds[i]]));
 			icon_sobj->sprite.attr &= ~SP_FASTCOPY;
 			icon_sobj->sprite.attr |= SP_TRANSPARENT;
 		}
@@ -903,7 +902,7 @@ void mnVSRecordCreateRowIcons(GObj* icon_gobj)
 	{
 		if (mnVSRecordIsUnlocked(fkinds[i]))
 		{
-			icon_sobj = lbCommonMakeSObjForGObj(icon_gobj, GetAddressFromOffset(gMNVSRecordFiles[0], offsets[fkinds[i]]));
+			icon_sobj = lbCommonMakeSObjForGObj(icon_gobj, lbRelocGetFileData(void*, gMNVSRecordFiles[0], offsets[fkinds[i]]));
 			icon_sobj->sprite.attr &= ~SP_FASTCOPY;
 			icon_sobj->sprite.attr |= SP_TRANSPARENT;
 		}
@@ -979,13 +978,13 @@ void mnVSRecordCreatePortraitAndStats(GObj* individual_stats_gobj, s32 fkind)
 		0x0, 0x0, 0x0, 0x8A, 0x88, 0x92
 	};
 
-	sobj = lbCommonMakeSObjForGObj(individual_stats_gobj, GetAddressFromOffset(gMNVSRecordFiles[0], &FILE_01F_PORTRAIT_BACKGROUND_IMAGE_OFFSET));
+	sobj = lbCommonMakeSObjForGObj(individual_stats_gobj, lbRelocGetFileData(void*, gMNVSRecordFiles[0], &FILE_01F_PORTRAIT_BACKGROUND_IMAGE_OFFSET));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 	sobj->pos.x = 52.0f;
 	sobj->pos.y = 55.0f;
 
-	sobj = lbCommonMakeSObjForGObj(individual_stats_gobj, GetAddressFromOffset(gMNVSRecordFiles[2], offsets[fkind]));
+	sobj = lbCommonMakeSObjForGObj(individual_stats_gobj, lbRelocGetFileData(void*, gMNVSRecordFiles[2], offsets[fkind]));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 	sobj->pos.x = 57.0f;
@@ -994,7 +993,7 @@ void mnVSRecordCreatePortraitAndStats(GObj* individual_stats_gobj, s32 fkind)
 	mnVSRecordDrawString(individual_stats_gobj, "RANKING", 150, 60, color);
 	mnVSRecordCreateNumber(individual_stats_gobj, 12, 265, 58, colors, FALSE, TRUE, 2, FALSE);
 
-	sobj = lbCommonMakeSObjForGObj(individual_stats_gobj, GetAddressFromOffset(gMNVSRecordFiles[0], &FILE_01F_SLASH_IMAGE_OFFSET));
+	sobj = lbCommonMakeSObjForGObj(individual_stats_gobj, lbRelocGetFileData(void*, gMNVSRecordFiles[0], &FILE_01F_SLASH_IMAGE_OFFSET));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 	sobj->pos.x = 251.0f;
@@ -1146,7 +1145,7 @@ s32 mnVSRecordCreateBattleScoreTableHeaders()
 	headers_gobj = gcMakeGObjSPAfter(0, 0, 5, 0x80000000);
 	gcAddGObjDisplay(headers_gobj, lbCommonDrawSObjAttr, 4, GOBJ_PRIORITY_DEFAULT, ~0);
 
-	headers_sobj = lbCommonMakeSObjForGObj(headers_gobj, GetAddressFromOffset(gMNVSRecordFiles[0], &FILE_01F_TOTAL_TEXTURE_IMAGE_OFFSET));
+	headers_sobj = lbCommonMakeSObjForGObj(headers_gobj, lbRelocGetFileData(void*, gMNVSRecordFiles[0], &FILE_01F_TOTAL_TEXTURE_IMAGE_OFFSET));
 	headers_sobj->sprite.attr &= ~SP_FASTCOPY;
 	headers_sobj->sprite.attr |= SP_TRANSPARENT;
 	headers_sobj->sprite.red = 0x8A;
@@ -1293,7 +1292,7 @@ GObj* mnVSRecordCreateRankingTableValues(s32 column)
 					case vsRecordsRankingColumnKindTime:
 						mnVSRecordCreateNumber(table_values_gobj, (gSCManagerBackupData.vs_records[gMNVSRecordRankingFtKindOrder[i]].time_used % 3600) / 60, col_widths[column_order[j]] + x, y, colors, FALSE, FALSE, 2, TRUE);
 
-						table_values_sobj = lbCommonMakeSObjForGObj(table_values_gobj, GetAddressFromOffset(gMNVSRecordFiles[0], &FILE_01F_COLON_IMAGE_OFFSET));
+						table_values_sobj = lbCommonMakeSObjForGObj(table_values_gobj, lbRelocGetFileData(void*, gMNVSRecordFiles[0], &FILE_01F_COLON_IMAGE_OFFSET));
 						mnVSRecordSetTextureColors(table_values_sobj, colors);
 
 						table_values_sobj->pos.x = col_widths[column_order[j]] + x - 11;
@@ -1350,7 +1349,7 @@ GObj* mnVSRecordCreateRankingTableHeaders(s32 column)
 	x = 0x30;
 	for (i = 0; i < ARRAY_COUNT(offsets); i++)
 	{
-		table_headers_sobj = lbCommonMakeSObjForGObj(table_headers_gobj, GetAddressFromOffset(gMNVSRecordFiles[0], offsets[column_order[i]]));
+		table_headers_sobj = lbCommonMakeSObjForGObj(table_headers_gobj, lbRelocGetFileData(void*, gMNVSRecordFiles[0], offsets[column_order[i]]));
 		table_headers_sobj->sprite.attr &= ~SP_FASTCOPY;
 		table_headers_sobj->sprite.attr |= SP_TRANSPARENT;
 		table_headers_sobj->pos.x = x_padding[column_order[i]] + x;
@@ -1450,7 +1449,7 @@ s32 mnVSRecordCreateIndividualPortraitStatsAndTableHeaders()
 
 	for (i = 0; i < 4; i++)
 	{
-		individual_stats_sobj = lbCommonMakeSObjForGObj(individual_stats_gobj, GetAddressFromOffset(gMNVSRecordFiles[0], offsets[i]));
+		individual_stats_sobj = lbCommonMakeSObjForGObj(individual_stats_gobj, lbRelocGetFileData(void*, gMNVSRecordFiles[0], offsets[i]));
 		individual_stats_sobj->sprite.attr &= ~SP_FASTCOPY;
 		individual_stats_sobj->sprite.attr |= SP_TRANSPARENT;
 		individual_stats_sobj->pos.x = positions[i].x;

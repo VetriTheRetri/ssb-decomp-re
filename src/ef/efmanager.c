@@ -1741,7 +1741,7 @@ EFCreateDesc dEFManagerItemGetSwirlEffectDesc =
 //                               //
 // // // // // // // // // // // //
 
-/* 0x800FD300 - OLD NOTE: To match this, lbRelocGetFileExternHeap and lbRelocGetFileSize must take intptr_t or other int type as first argument
+/* 0x800FD300 - OLD NOTE: To match this, lbRelocGetExternHeapFile and lbRelocGetFileSize must take intptr_t or other int type as first argument
  *              NEW NOTE: Not entirely correct, their types do need to be identical however
  */
 void efManagerInitEffects(void)
@@ -1764,9 +1764,9 @@ void efManagerInitEffects(void)
     efDisplayMakeCLD();
     efDisplayMakeXLU();
 
-    gEFManagerFiles[0] = lbRelocGetFileExternHeap(&D_NF_00000053, syTaskmanMalloc(lbRelocGetFileSize(&D_NF_00000053), 0x10));
-    gEFManagerFiles[1] = lbRelocGetFileExternHeap(&D_NF_00000054, syTaskmanMalloc(lbRelocGetFileSize(&D_NF_00000054), 0x10));
-    gEFManagerFiles[2] = lbRelocGetFileExternHeap(&D_NF_00000055, syTaskmanMalloc(lbRelocGetFileSize(&D_NF_00000055), 0x10));
+    gEFManagerFiles[0] = lbRelocGetExternHeapFile(&D_NF_00000053, syTaskmanMalloc(lbRelocGetFileSize(&D_NF_00000053), 0x10));
+    gEFManagerFiles[1] = lbRelocGetExternHeapFile(&D_NF_00000054, syTaskmanMalloc(lbRelocGetFileSize(&D_NF_00000054), 0x10));
+    gEFManagerFiles[2] = lbRelocGetExternHeapFile(&D_NF_00000055, syTaskmanMalloc(lbRelocGetFileSize(&D_NF_00000055), 0x10));
 
     efDisplayInitAll();
 }

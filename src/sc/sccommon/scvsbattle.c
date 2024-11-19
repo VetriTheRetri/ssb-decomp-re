@@ -144,7 +144,7 @@ void scVSBattleStartBattle(void)
 
 	if (!(gSCManagerBackupData.error_flags & LBBACKUP_ERROR_1PGAMEMARIO) && (gSCManagerBackupData.boot >= 69))
 	{
-		file = lbRelocGetFileExternHeap((u32)&D_NF_000000C7, syTaskmanMalloc(lbRelocGetFileSize((u32)&D_NF_000000C7), 0x10));
+		file = lbRelocGetExternHeapFile((u32)&D_NF_000000C7, syTaskmanMalloc(lbRelocGetFileSize((u32)&D_NF_000000C7), 0x10));
 
 		func_dmem = lbRelocGetFileData(sb32 (*)(void), file, &lSYDmemCheckValidFunc);
 

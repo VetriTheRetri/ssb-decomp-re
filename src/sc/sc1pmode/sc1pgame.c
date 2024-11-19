@@ -1703,7 +1703,7 @@ void sc1PGameInitTeamStockDisplay(void)
         goto make_gobj;
 
     case nSC1PGameStageZako:
-        sSC1PGameZakoStockSprite = lbRelocGetFileExternHeap
+        sSC1PGameZakoStockSprite = lbRelocGetExternHeapFile
         (
             (uintptr_t)&D_NF_00000019, 
             syTaskmanMalloc
@@ -1999,7 +1999,7 @@ void sc1PGameFuncStart(void)
     {
         syDmaReadRom(0xF10, spA0, ARRAY_COUNT(spA0));
 
-        addr = lbRelocGetFileExternHeap((uintptr_t)&D_NF_000000C8, syTaskmanMalloc(lbRelocGetFileSize((uintptr_t)&D_NF_000000C8), 0x10));
+        addr = lbRelocGetExternHeapFile((uintptr_t)&D_NF_000000C8, syTaskmanMalloc(lbRelocGetFileSize((uintptr_t)&D_NF_000000C8), 0x10));
 
         proc = (sb32(*)(void*)) ((uintptr_t)addr + (intptr_t)&D_NF_00000000);
 
@@ -2034,7 +2034,7 @@ void sc1PGameFuncStart(void)
         // Need to load PK Fire graphics from Ness' file
         plns = dFTManagerDataFiles[nFTKindNess];
 
-        lbRelocGetFileExternHeap((uintptr_t)&D_NF_000000E6, syTaskmanMalloc(lbRelocGetFileSize((uintptr_t)&D_NF_000000E6), 0x10));
+        lbRelocGetExternHeapFile((uintptr_t)&D_NF_000000E6, syTaskmanMalloc(lbRelocGetFileSize((uintptr_t)&D_NF_000000E6), 0x10));
         efParticleGetLoadBankID
         (
             plns->particles_script_lo, 

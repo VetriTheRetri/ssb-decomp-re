@@ -1,7 +1,4 @@
-#include <ssb_types.h>
 #include <lb/library.h>
-
-#include <scenemgr/scene_manager.h>
 #include <sys/error.h>
 #include <sys/dma.h>
 
@@ -45,7 +42,7 @@ void *sLBRelocExternFileHeap;
 //                               //
 // // // // // // // // // // // //
 
-void* lbRelocFindFileStatusBuffer(u32 id)
+void* lbRelocFindStatusBufferFile(u32 id)
 {
     s32 i;
 
@@ -65,10 +62,10 @@ void* lbRelocFindFileStatusBuffer(u32 id)
 
 void* lbRelocGetStatusBufferFile(u32 id)
 {
-    return lbRelocFindFileStatusBuffer(id);
+    return lbRelocFindStatusBufferFile(id);
 }
 
-void* lbRelocFindFileForceStatusBuffer(u32 id)
+void* lbRelocFindForceStatusBufferFile(u32 id)
 {
     s32 i;
 
@@ -83,19 +80,19 @@ void* lbRelocFindFileForceStatusBuffer(u32 id)
         }
     }
 
-    return lbRelocFindFileStatusBuffer(id);
+    return lbRelocFindStatusBufferFile(id);
 }
 
 void* lbRelocGetForceStatusBufferFile(u32 id)
 {
-    return lbRelocFindFileForceStatusBuffer(id);
+    return lbRelocFindForceStatusBufferFile(id);
 }
 
-void lbRelocAddFileStatusBuffer(u32 id, void *addr)
+void lbRelocAddStatusBufferFile(u32 id, void *addr)
 {
     u32 num = sLBRelocInternBuffer.status_buffer_num;
 
-    if (num >= (u32)sLBRelocInternBuffer.status_buffer_max)
+    if (num >= sLBRelocInternBuffer.status_buffer_max)
     {
         while (TRUE)
         {
@@ -109,11 +106,11 @@ void lbRelocAddFileStatusBuffer(u32 id, void *addr)
     sLBRelocInternBuffer.status_buffer_num++;
 }
 
-void lbRelocAddFileForceStatusBuffer(u32 id, void *addr)
+void lbRelocAddForceStatusBufferFile(u32 id, void *addr)
 {
     u32 num = sLBRelocInternBuffer.force_status_buffer_num;
 
-    if (num >= (u32)sLBRelocInternBuffer.force_status_buffer_max)
+    if (num >= sLBRelocInternBuffer.force_status_buffer_max)
     {
         while (TRUE)
         {
@@ -130,7 +127,7 @@ void lbRelocReadDmaTableEntry(u32 entry_id)
 {
     syDmaReadRom
     (
-        (u32)sLBRelocInternBuffer.rom_table_lo + (entry_id * sizeof(LBTableEntry)),
+        sLBRelocInternBuffer.rom_table_lo + (entry_id * sizeof(LBTableEntry)),
         sLBRelocCurrentTableEntry,
         sizeof(LBTableEntry) * 2
     );
@@ -148,14 +145,16 @@ void lbRelocLoadAndRelocFile(u32 file_id, void *ram_dst, u32 bytes_num, s32 loc)
     data_rom_offset = sLBRelocInternBuffer.rom_table_hi + sLBRelocCurrentTableEntry->data_offset;
 
     if (sLBRelocCurrentTableEntry->is_compressed)
+    {
         syDmaReadVpk0(data_rom_offset, ram_dst);
-    else
-        syDmaReadRom(data_rom_offset, ram_dst, bytes_num);
+    }
+    else syDmaReadRom(data_rom_offset, ram_dst, bytes_num);
 
     if (loc == nLBFileLocationForce)
-        lbRelocAddFileForceStatusBuffer(file_id, ram_dst);
-    else
-        lbRelocAddFileStatusBuffer(file_id, ram_dst);
+    {
+        lbRelocAddForceStatusBufferFile(file_id, ram_dst);
+    }
+    else lbRelocAddStatusBufferFile(file_id, ram_dst);
     
     reloc_intern = sLBRelocCurrentTableEntry->reloc_intern_offset;
     
@@ -179,16 +178,17 @@ void lbRelocLoadAndRelocFile(u32 file_id, void *ram_dst, u32 bytes_num, s32 loc)
         syDmaReadRom(data_rom_offset, file_id_extern, sizeof(u16));
         
         if (loc == nLBFileLocationForce)
-            vaddr_extern = lbRelocFindFileForceStatusBuffer(*file_id_extern);
-        else
-            vaddr_extern = lbRelocFindFileStatusBuffer(*file_id_extern);
+        {
+            vaddr_extern = lbRelocFindForceStatusBufferFile(*file_id_extern);
+        }
+        else vaddr_extern = lbRelocFindStatusBufferFile(*file_id_extern);
 
         if (vaddr_extern == NULL)
         {
             switch (loc)
             {
             case nLBFileLocationExtern:
-                vaddr_extern = lbRelocGetFileExternStatusBuffer(*file_id_extern);
+                vaddr_extern = lbRelocGetExternBufferFile(*file_id_extern);
                 break;
                 
             case nLBFileLocationDefault:
@@ -196,7 +196,7 @@ void lbRelocLoadAndRelocFile(u32 file_id, void *ram_dst, u32 bytes_num, s32 loc)
                 break;
                 
             case nLBFileLocationForce:
-                vaddr_extern = lbRelocGetFileExternForceStatusBuffer(*file_id_extern);
+                vaddr_extern = lbRelocGetForceExternBufferFile(*file_id_extern);
                 break;
             }
         }
@@ -210,16 +210,16 @@ void lbRelocLoadAndRelocFile(u32 file_id, void *ram_dst, u32 bytes_num, s32 loc)
 size_t lbRelocGetExternBytesNum(u32 file_id)
 {
     u16 *rom_extern_csr;
-    u16 *file_id_read;  // s1
-    size_t bytes_read;    // s2
-    u16 *end;     // s3
+    u16 *file_id_read;
+    size_t bytes_read;
+    u16 *end;
     size_t compressed_size;
     void *rom_end;
     s32 unused;
     u8 file_ids_buf[16];
     s32 i;
 
-    if (lbRelocFindFileStatusBuffer(file_id) != NULL)
+    if (lbRelocFindStatusBufferFile(file_id) != NULL)
     {
         return 0;
     }
@@ -278,49 +278,48 @@ size_t lbRelocGetFileSize(u32 id)
  * Get a pointer to the start of a file.
  * This will copy the file from ROM into RAM if necessary
  */
-void* lbRelocGetFileExternStatusBuffer(u32 file_id)
+void* lbRelocGetExternBufferFile(u32 id)
 {
     void *file_alloc;
     void *file;
     size_t file_size;
 
-    file = lbRelocFindFileStatusBuffer(file_id);
-
+    file = lbRelocFindStatusBufferFile(id);
     if (file != NULL)
     {
         return file;
     }
     file_alloc = (void*) LBRELOC_CACHE_ALIGN((uintptr_t)sLBRelocExternFileHeap);
-    lbRelocReadDmaTableEntry(file_id);
+    lbRelocReadDmaTableEntry(id);
 
     file_size = sLBRelocCurrentTableEntry->decompressed_size * sizeof(u32);
     sLBRelocExternFileHeap = (void*) ((uintptr_t)file_alloc + file_size);
 
-    lbRelocLoadAndRelocFile(file_id, file_alloc, file_size, nLBFileLocationExtern);
+    lbRelocLoadAndRelocFile(id, file_alloc, file_size, nLBFileLocationExtern);
 
     return file_alloc;
 }
 
-void* lbRelocGetFileExternHeap(u32 id, void *heap)
+void* lbRelocGetExternHeapFile(u32 id, void *heap)
 {
     sLBRelocExternFileHeap = heap;
-    return lbRelocGetFileExternStatusBuffer(id);
+    return lbRelocGetExternBufferFile(id);
 }
 
-void* lbRelocGetInternBufferFile(u32 file_id)
+void* lbRelocGetInternBufferFile(u32 id)
 {
     size_t file_size;
     void *file;
     void *file_alloc, *file_alloc_end, *heap_end;
 
-    file = lbRelocFindFileStatusBuffer(file_id);
+    file = lbRelocFindStatusBufferFile(id);
     
     if (file != NULL)
     {
         return file;
     }
     file_alloc = (void*) LBRELOC_CACHE_ALIGN((uintptr_t)sLBRelocInternBuffer.heap_ptr);
-    lbRelocReadDmaTableEntry(file_id);
+    lbRelocReadDmaTableEntry(id);
 
     file_size = sLBRelocCurrentTableEntry->decompressed_size * sizeof(u32);
     
@@ -334,40 +333,40 @@ void* lbRelocGetInternBufferFile(u32 file_id)
     }
     sLBRelocInternBuffer.heap_ptr = ((uintptr_t)file_alloc + file_size);
     
-    lbRelocLoadAndRelocFile(file_id, file_alloc, file_size, nLBFileLocationDefault);
+    lbRelocLoadAndRelocFile(id, file_alloc, file_size, nLBFileLocationDefault);
 
     return file_alloc;
 }
 
-void* lbRelocGetFileExternForceStatusBuffer(u32 file_id)
+void* lbRelocGetForceExternBufferFile(u32 id)
 {
     void *file_alloc;
     void *file;
     size_t file_size;
 
-    file = lbRelocFindFileForceStatusBuffer(file_id);
+    file = lbRelocFindForceStatusBufferFile(id);
 
     if (file != NULL)
     {
         return file;
     }
     file_alloc = (void*) LBRELOC_CACHE_ALIGN((uintptr_t)sLBRelocExternFileHeap);
-    lbRelocReadDmaTableEntry(file_id);
+    lbRelocReadDmaTableEntry(id);
 
     file_size = sLBRelocCurrentTableEntry->decompressed_size * sizeof(u32);
     sLBRelocExternFileHeap = (void*) ((uintptr_t)file_alloc + file_size);
 
-    lbRelocLoadAndRelocFile(file_id, file_alloc, file_size, nLBFileLocationForce);
+    lbRelocLoadAndRelocFile(id, file_alloc, file_size, nLBFileLocationForce);
 
     return file_alloc;
 }
 
-void* lbRelocGetFileExternForceStatusBufferHeap(u32 id, void *heap)
+void* lbRelocGetForceExternHeapFile(u32 id, void *heap)
 {
     sLBRelocExternFileHeap = heap;
     sLBRelocInternBuffer.force_status_buffer_num = 0;
 
-    return lbRelocGetFileExternForceStatusBuffer(id);
+    return lbRelocGetForceExternBufferFile(id);
 }
 
 size_t lbRelocLoadFilesExtern(u32 *ids, u32 len, void **files, void *heap)
@@ -377,7 +376,7 @@ size_t lbRelocLoadFilesExtern(u32 *ids, u32 len, void **files, void *heap)
     // doesn't match as for-loop..?
     while (len != 0) 
     {
-        *files = lbRelocGetFileExternStatusBuffer(*ids);
+        *files = lbRelocGetExternBufferFile(*ids);
 
         ids++;
         files++;

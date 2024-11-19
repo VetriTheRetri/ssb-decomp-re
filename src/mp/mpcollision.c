@@ -4037,7 +4037,7 @@ void mpCollisionInitGroundData(void)
     gMPCollisionGroundData = lbRelocGetFileData
     (
         MPGroundData*,
-        lbRelocGetFileExternHeap
+        lbRelocGetExternHeapFile
         (
             dMPCollisionGroundFileInfos[gSCManagerBattleState->gkind].file_id, 
             syTaskmanMalloc

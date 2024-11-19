@@ -312,7 +312,7 @@ void mnCongraFuncStart(void)
 		lbRelocGetFileData
 		(
 			Sprite*,
-			lbRelocGetFileExternHeap
+			lbRelocGetExternHeapFile
 			(
 				dMNCongraPictures[sMNCongraFighterKind].bottom_file_id,
 				syTaskmanMalloc
@@ -338,7 +338,7 @@ void mnCongraFuncStart(void)
 		lbRelocGetFileData
 		(
 			Sprite*,
-			lbRelocGetFileExternHeap
+			lbRelocGetExternHeapFile
 			(
 				dMNCongraPictures[sMNCongraFighterKind].top_file_id,
 				syTaskmanMalloc
@@ -400,12 +400,12 @@ void mnCongraFuncLights(Gfx **dls)
 // 0x8013200C
 void mnCongraStartScene(void)
 {
-	u16 *subsys_arena_lo;
-	u32 *congra_arena_hi;
+	u16 *fb16;
+	u32 *fb32;
 
-	congra_arena_hi = (u32*)SYVIDEO_DEFINE_FRAMEBUFFER_ADDR(320, 230, 0, 10, u32, 0);
+	fb32 = (u32*)SYVIDEO_DEFINE_FRAMEBUFFER_ADDR(320, 230, 0, 10, u32, 0);
 
-	while ((uintptr_t)congra_arena_hi < 0x80400000) { *congra_arena_hi++ = GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF); } // WARNING: Newline memes!
+	while ((uintptr_t)fb32 < 0x80400000) { *fb32++ = GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF); } // WARNING: Newline memes!
 
 	switch (gSCManagerSceneData.scene_prev)
 	{
@@ -425,7 +425,7 @@ void mnCongraStartScene(void)
 	syVideoInit(&dMNCongraVideoSetup);
 
 	dMNCongraTaskmanSetup.buffer_setup.arena_size = (size_t) (SYVIDEO_DEFINE_FRAMEBUFFER_ADDR(320, 230, 0, 10, u32, 0) - (uintptr_t)&ovl57_BSS_END);
-	syTaskmanRun(&dMNCongraTaskmanSetup); subsys_arena_lo = gSYFramebufferSets; // WARNING: Newline memes!
+	syTaskmanRun(&dMNCongraTaskmanSetup); fb16 = (u16*) gSYFramebufferSets; // WARNING: Newline memes!
 
-	while ((uintptr_t)subsys_arena_lo < 0x80400000) { *subsys_arena_lo++ = GPACK_RGBA5551(0x00, 0x00, 0x00, 0x01); }
+	while ((uintptr_t)fb16 < 0x80400000) { *fb16++ = GPACK_RGBA5551(0x00, 0x00, 0x00, 0x01); }
 }

@@ -844,7 +844,7 @@ void scManagerRunLoop(sb32 arg)
 	lbBackupIsSramValid();
 	lbBackupApplyOptions();
 
-	framebuffer = gSYFramebufferSets;
+	framebuffer = (u16*) gSYFramebufferSets;
 	end = 0x80400000;
 
 	while ((uintptr_t)framebuffer < end)
@@ -1054,53 +1054,53 @@ void scManagerRunLoop(sb32 arg)
 				mvOpeningRoomStartScene();
 				break;
 
-			case 29:
+			case nSCKindOpeningPortraits:
 				syDmaLoadOverlay(&dSCManagerOverlays[35]);
 				mvOpeningPortraitsStartScene();
 				break;
 
-			case 30:
+			case nSCKindOpeningMario:
 				syDmaLoadOverlay(&dSCManagerOverlays[3]);
 				syDmaLoadOverlay(&dSCManagerOverlays[36]);
 				mvOpeningMarioStartScene();
 				break;
 
-			case 31:
+			case nSCKindOpeningDonkey:
 				syDmaLoadOverlay(&dSCManagerOverlays[37]);
 				mvOpeningDonkeyStartScene();
 				break;
 
-			case 32:
+			case nSCKindOpeningSamus:
 				syDmaLoadOverlay(&dSCManagerOverlays[38]);
 				mvOpeningSamusStartScene();
 				break;
 
-			case 33:
+			case nSCKindOpeningFox:
 				syDmaLoadOverlay(&dSCManagerOverlays[39]);
 				mvOpeningFoxStartScene();
 				break;
 
-			case 34:
+			case nSCKindOpeningLink:
 				syDmaLoadOverlay(&dSCManagerOverlays[40]);
 				mvOpeningLinkStartScene();
 				break;
 
-			case 35:
+			case nSCKindOpeningYoshi:
 				syDmaLoadOverlay(&dSCManagerOverlays[41]);
 				mvOpeningYoshiStartScene();
 				break;
 
-			case 36:
+			case nSCKindOpeningPikachu:
 				syDmaLoadOverlay(&dSCManagerOverlays[42]);
 				mvOpeningPikachuStartScene();
 				break;
 
-			case 37:
+			case nSCKindOpeningKirby:
 				syDmaLoadOverlay(&dSCManagerOverlays[43]);
 				mvOpeningKirbyStartScene();
 				break;
 
-			case 38:
+			case nSCKindOpeningRun:
 				syDmaLoadOverlay(&dSCManagerOverlays[44]);
 				mvOpeningRunStartScene();
 				break;
@@ -1322,7 +1322,7 @@ void scManagerMeterFuncDisplay(GObj *gobj)
 	// this needs to be in its own block to match. macro?
 	// could explain the double sync
 	{
-		size_t mem_free = (uintptr_t)gSYTaskmanGeneralHeap.end - (uintptr_t)gSYTaskmanGeneralHeap.ptr;
+		size_t mem_free = (size_t) ((uintptr_t)gSYTaskmanGeneralHeap.end - (uintptr_t)gSYTaskmanGeneralHeap.ptr);
 
 		gDPSetFillColor(gSYTaskmanDLHeads[0]++, syVideoGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
 		func_800218E0(0x14, 0x14, mem_free, 7, 1);
@@ -1428,7 +1428,7 @@ void scManagerInspectGObj(GObj *gobj)
     case nGCCommonKindEffect:
         ep = efGetStruct(gobj);
 
-        // Check if address is within base RDRAM + expansion pak bounds
+        // Check if address is within base RDRAM + expansion pak bounds (why though!?)
         if (((uintptr_t)ep >= 0x80000000) && ((uintptr_t)ep < 0x80800000))
         {
             syErrorDebugPrintf("effect\n");

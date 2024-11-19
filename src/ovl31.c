@@ -235,9 +235,7 @@ LBFileNode D_ovl31_8013A010;
 s32 D_ovl31_8013A018[12];
 
 // 0x8013A048
-s32 gMNVSResultsFiles[8];
-
-
+void *gMNVSResultsFiles[8];
 
 // 0x80131B20
 void mnVSResultsFuncLights(Gfx **display_list)
@@ -685,10 +683,10 @@ void mnVSResultsCreateLogo()
 
 	logo_gobj = gcMakeGObjSPAfter(0, 0, 0x17, 0x80000000);
 
-	gcSetupCommonDObjs(logo_gobj, GetAddressFromOffset(gMNVSResultsFiles[4], offsets1[winner_char_id]), 0);
+	gcSetupCommonDObjs(logo_gobj, lbRelocGetFileData(void*, gMNVSResultsFiles[4], offsets1[winner_char_id]), 0);
 	gcAddGObjDisplay(logo_gobj, gcDrawDObjTreeForGObj, 0x21, GOBJ_PRIORITY_DEFAULT, ~0);
-	gcAddMObjAll(logo_gobj, GetAddressFromOffset(gMNVSResultsFiles[4], offsets2[winner_char_id]));
-	gcAddMatAnimJointAll(logo_gobj, GetAddressFromOffset(gMNVSResultsFiles[4], offsets3[winner_char_id]), color);
+	gcAddMObjAll(logo_gobj, lbRelocGetFileData(void*, gMNVSResultsFiles[4], offsets2[winner_char_id]));
+	gcAddMatAnimJointAll(logo_gobj, lbRelocGetFileData(void*, gMNVSResultsFiles[4], offsets3[winner_char_id]), color);
 	gcPlayAnimAll(logo_gobj);
 	gcAddGObjProcess(logo_gobj, &mnVSResultsAnimateLogo, 1, 1);
 
@@ -767,7 +765,7 @@ void mnVSResultsCreateBackground()
 	bg_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
 	gcAddGObjDisplay(bg_gobj, mnVSResultsRenderBackground, 0x1A, GOBJ_PRIORITY_DEFAULT, ~0);
 
-	bg_sobj = lbCommonMakeSObjForGObj(bg_gobj, GetAddressFromOffset(gMNVSResultsFiles[0], &FILE_022_BACKGROUND_IMAGE_OFFSET));
+	bg_sobj = lbCommonMakeSObjForGObj(bg_gobj, lbRelocGetFileData(void*, gMNVSResultsFiles[0], &FILE_022_BACKGROUND_IMAGE_OFFSET));
 
 	SObjGetStruct(bg_gobj)->pos.x = 10.0f;
 	SObjGetStruct(bg_gobj)->pos.y = 10.0f;
@@ -1084,7 +1082,7 @@ void mnVSResultsCreatePlayerIndicator(s32 port_id, s32 color_index)
 
 	if (gSCManagerTransferBattleState.players[port_id].pkind == 0)
 	{
-		indicator_sobj = lbCommonMakeSObjForGObj(indicator_gobj, GetAddressFromOffset(gMNVSResultsFiles[1], offsets[port_id]));
+		indicator_sobj = lbCommonMakeSObjForGObj(indicator_gobj, lbRelocGetFileData(void*, gMNVSResultsFiles[1], offsets[port_id]));
 		indicator_sobj->sprite.attr &= ~SP_FASTCOPY;
 		indicator_sobj->sprite.attr |= SP_TRANSPARENT;
 		indicator_sobj->envcolor.r = dIFCommonPlayerTagShadowColorsR[color_index];
@@ -1096,7 +1094,7 @@ void mnVSResultsCreatePlayerIndicator(s32 port_id, s32 color_index)
 	}
 	else
 	{
-		indicator_sobj = lbCommonMakeSObjForGObj(indicator_gobj, GetAddressFromOffset(gMNVSResultsFiles[1], &FILE_026_INDICATOR_CP_IMAGE_OFFSET));
+		indicator_sobj = lbCommonMakeSObjForGObj(indicator_gobj, lbRelocGetFileData(void*, gMNVSResultsFiles[1], &FILE_026_INDICATOR_CP_IMAGE_OFFSET));
 		indicator_sobj->sprite.attr &= ~SP_FASTCOPY;
 		indicator_sobj->sprite.attr |= SP_TRANSPARENT;
 		indicator_sobj->envcolor.r = dIFCommonPlayerTagShadowColorsR[color_index];
@@ -1178,7 +1176,7 @@ void mnVSResultsDrawString(const char *str, f32 x, f32 y, s32 color_index, f32 s
 			else
 			{
 
-				string_sobj = lbCommonMakeSObjForGObj(string_gobj, GetAddressFromOffset(gMNVSResultsFiles[6], offsets[char_index]));
+				string_sobj = lbCommonMakeSObjForGObj(string_gobj, lbRelocGetFileData(void*, gMNVSResultsFiles[6], offsets[char_index]));
 				string_sobj->sprite.scalex = scale;
 				string_sobj->pos.x = current_x;
 
@@ -1384,7 +1382,7 @@ SObj* mnVSResultsCreateNumber(GObj* number_gobj, s32 number, s32 color_id)
 		{ { 0x00, 0x00, 0x00 }, { 0x4E, 0xB9, 0x4E } }
 	};
 
-	number_sobj = lbCommonMakeSObjForGObj(number_gobj, GetAddressFromOffset(gMNVSResultsFiles[5], offsets[number]));
+	number_sobj = lbCommonMakeSObjForGObj(number_gobj, lbRelocGetFileData(void*, gMNVSResultsFiles[5], offsets[number]));
 	number_sobj->sprite.attr &= ~SP_FASTCOPY;
 	number_sobj->sprite.attr |= SP_TRANSPARENT;
 	mnVSResultsSetNumberColor(number_sobj, color_id);
@@ -1415,19 +1413,19 @@ SObj* mnVSResultsCreatePlaceNumber(GObj* place_gobj, s32 port_id, s32 place, s32
 		{
 			if ((mnVSResultsGetWinnerPort() == port_id) || (gMNVSResultsIsSharedWinner[port_id]))
 			{
-				place_sobj = lbCommonMakeSObjForGObj(place_gobj, GetAddressFromOffset(gMNVSResultsFiles[0], &FILE_022_FIRST_PLACE_ICON_IMAGE_OFFSET));
+				place_sobj = lbCommonMakeSObjForGObj(place_gobj, lbRelocGetFileData(void*, gMNVSResultsFiles[0], &FILE_022_FIRST_PLACE_ICON_IMAGE_OFFSET));
 				place_sobj->user_data.s = 1;
 			}
 			else
 			{
-				place_sobj = lbCommonMakeSObjForGObj(place_gobj, GetAddressFromOffset(gMNVSResultsFiles[3], &FILE_0A4_1_IMAGE_OFFSET));
+				place_sobj = lbCommonMakeSObjForGObj(place_gobj, lbRelocGetFileData(void*, gMNVSResultsFiles[3], &FILE_0A4_1_IMAGE_OFFSET));
 				place_sobj->user_data.s = 0;
 				mnVSResultsSetNumberColor(place_sobj, color_id);
 			}
 		}
 		else
 		{
-			place_sobj = lbCommonMakeSObjForGObj(place_gobj, GetAddressFromOffset(gMNVSResultsFiles[0], &FILE_022_FIRST_PLACE_ICON_IMAGE_OFFSET));
+			place_sobj = lbCommonMakeSObjForGObj(place_gobj, lbRelocGetFileData(void*, gMNVSResultsFiles[0], &FILE_022_FIRST_PLACE_ICON_IMAGE_OFFSET));
 			place_sobj->user_data.s = 1;
 		}
 
@@ -1436,7 +1434,7 @@ SObj* mnVSResultsCreatePlaceNumber(GObj* place_gobj, s32 port_id, s32 place, s32
 	}
 	else
 	{
-		place_sobj = lbCommonMakeSObjForGObj(place_gobj, GetAddressFromOffset(gMNVSResultsFiles[3], offsets[place]));
+		place_sobj = lbCommonMakeSObjForGObj(place_gobj, lbRelocGetFileData(void*, gMNVSResultsFiles[3], offsets[place]));
 		place_sobj->sprite.attr &= ~SP_FASTCOPY;
 		place_sobj->sprite.attr |= SP_TRANSPARENT;
 		mnVSResultsSetNumberColor(place_sobj, color_id);
@@ -1453,7 +1451,7 @@ void mnVSResultsDrawNumber(GObj* number_gobj, f32 x, f32 y, s32 number, s32 colo
 
 	if (number < 0)
 	{
-		number_sobj = lbCommonMakeSObjForGObj(number_gobj, GetAddressFromOffset(gMNVSResultsFiles[5], &FILE_024_DASH_IMAGE_OFFSET));
+		number_sobj = lbCommonMakeSObjForGObj(number_gobj, lbRelocGetFileData(void*, gMNVSResultsFiles[5], &FILE_024_DASH_IMAGE_OFFSET));
 
 		if (mnVSResultsGetHundredsDigit(number) != 0)
 			number_sobj->pos.x = x;
@@ -1680,7 +1678,7 @@ void mnVSResultsCreateColumnHeaders()
 	{
 		if (gMNVSResultsIsPresent[i])
 		{
-			column_port_indicator_sobj = lbCommonMakeSObjForGObj(column_header_gobj, GetAddressFromOffset(gMNVSResultsFiles[0], offsets[i]));
+			column_port_indicator_sobj = lbCommonMakeSObjForGObj(column_header_gobj, lbRelocGetFileData(void*, gMNVSResultsFiles[0], offsets[i]));
 			column_port_indicator_sobj->pos.x = mnVSResultsGetColumnX(i) + 17.0F;
 			column_port_indicator_sobj->pos.y = 49.0F;
 			mnVSResultsSetColumnPortIndicatorColors(column_port_indicator_sobj);
@@ -1711,7 +1709,7 @@ void mnVSResultsDrawKOs(s32 y)
 {
 	GObj* kos_row_gobj;
 
-	kos_row_gobj = lbCommonMakeSpriteGObj(0, 0, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1F, GOBJ_PRIORITY_DEFAULT, ~0, GetAddressFromOffset(gMNVSResultsFiles[0], &FILE_022_KOS_TEXTURE_IMAGE_OFFSET), 1, 0, 1);
+	kos_row_gobj = lbCommonMakeSpriteGObj(0, 0, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1F, GOBJ_PRIORITY_DEFAULT, ~0, lbRelocGetFileData(void*, gMNVSResultsFiles[0], &FILE_022_KOS_TEXTURE_IMAGE_OFFSET), 1, 0, 1);
 	SObjGetStruct(kos_row_gobj)->pos.x = 26.0F;
 	SObjGetStruct(kos_row_gobj)->pos.y = y;
 	SObjGetStruct(kos_row_gobj)->sprite.attr &= ~SP_FASTCOPY;
@@ -1751,7 +1749,7 @@ void mnVSResultsDrawTKOs(s32 y)
 	GObj* tkos_row_gobj;
 	SObj* negative_symbol_sobj;
 
-	tkos_row_gobj = lbCommonMakeSpriteGObj(0, 0, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1F, GOBJ_PRIORITY_DEFAULT, ~0, GetAddressFromOffset(gMNVSResultsFiles[0], &FILE_022_TKO_TEXTURE_IMAGE_OFFSET), 1, 0, 1);
+	tkos_row_gobj = lbCommonMakeSpriteGObj(0, 0, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1F, GOBJ_PRIORITY_DEFAULT, ~0, lbRelocGetFileData(void*, gMNVSResultsFiles[0], &FILE_022_TKO_TEXTURE_IMAGE_OFFSET), 1, 0, 1);
 	SObjGetStruct(tkos_row_gobj)->pos.x = 26.0F;
 	SObjGetStruct(tkos_row_gobj)->pos.y = y;
 	SObjGetStruct(tkos_row_gobj)->sprite.attr &= ~SP_FASTCOPY;
@@ -1765,7 +1763,7 @@ void mnVSResultsDrawTKOs(s32 y)
 
 	if (gMNVSResultsGameRule != 4)
 	{
-		negative_symbol_sobj = lbCommonMakeSObjForGObj(tkos_row_gobj, GetAddressFromOffset(gMNVSResultsFiles[5], &FILE_024_DASH_IMAGE_OFFSET));
+		negative_symbol_sobj = lbCommonMakeSObjForGObj(tkos_row_gobj, lbRelocGetFileData(void*, gMNVSResultsFiles[5], &FILE_024_DASH_IMAGE_OFFSET));
 		negative_symbol_sobj->pos.x = 90.0F;
 		negative_symbol_sobj->pos.y = y + 3;
 		negative_symbol_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1826,7 +1824,7 @@ void mnVSResultsDrawPointsRow()
 {
 	GObj* points_row_gobj;
 
-	points_row_gobj = lbCommonMakeSpriteGObj(0, 0, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1F, GOBJ_PRIORITY_DEFAULT, ~0, GetAddressFromOffset(gMNVSResultsFiles[0], &FILE_022_POINTS_TEXTURE_IMAGE_OFFSET), 1, 0, 1);
+	points_row_gobj = lbCommonMakeSpriteGObj(0, 0, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1F, GOBJ_PRIORITY_DEFAULT, ~0, lbRelocGetFileData(void*, gMNVSResultsFiles[0], &FILE_022_POINTS_TEXTURE_IMAGE_OFFSET), 1, 0, 1);
 	SObjGetStruct(points_row_gobj)->pos.x = 26.0F;
 	SObjGetStruct(points_row_gobj)->pos.y = 104.0F;
 	SObjGetStruct(points_row_gobj)->sprite.attr &= ~SP_FASTCOPY;
@@ -1889,7 +1887,7 @@ void mnVSResultsDrawPlaceRow(s32 y)
 	GObj* place_row_gobj;
 	s32 i;
 
-	place_row_gobj = lbCommonMakeSpriteGObj(0, 0, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1F, GOBJ_PRIORITY_DEFAULT, ~0, GetAddressFromOffset(gMNVSResultsFiles[0], &FILE_022_PLACE_TEXTURE_IMAGE_OFFSET), 1, NULL, 1);
+	place_row_gobj = lbCommonMakeSpriteGObj(0, 0, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1F, GOBJ_PRIORITY_DEFAULT, ~0, lbRelocGetFileData(void*, gMNVSResultsFiles[0], &FILE_022_PLACE_TEXTURE_IMAGE_OFFSET), 1, NULL, 1);
 	SObjGetStruct(place_row_gobj)->pos.x = 10.0F;
 	SObjGetStruct(place_row_gobj)->pos.y = y;
 	SObjGetStruct(place_row_gobj)->sprite.attr &= ~SP_FASTCOPY;
@@ -2059,7 +2057,7 @@ void mnVSResultsCreateScreenTitle()
 		mnVSResultsDrawResultsNoContest
 	};
 
-	screen_title_gobj = lbCommonMakeSpriteGObj(0, 0, 0x16, 0x80000000, mnVSResultsRenderScreenTitle, 0x1F, GOBJ_PRIORITY_DEFAULT, ~0, GetAddressFromOffset(gMNVSResultsFiles[2], offsets[mnVSResultsGetIsTeamBattle()]), 1, results_routines[gMNVSResultsGameRule], 1);
+	screen_title_gobj = lbCommonMakeSpriteGObj(0, 0, 0x16, 0x80000000, mnVSResultsRenderScreenTitle, 0x1F, GOBJ_PRIORITY_DEFAULT, ~0, lbRelocGetFileData(void*, gMNVSResultsFiles[2], offsets[mnVSResultsGetIsTeamBattle()]), 1, results_routines[gMNVSResultsGameRule], 1);
 	SObjGetStruct(screen_title_gobj)->pos.x = 32.0f;
 	SObjGetStruct(screen_title_gobj)->pos.y = 29.0f;
 	SObjGetStruct(screen_title_gobj)->sprite.attr &= ~SP_FASTCOPY;

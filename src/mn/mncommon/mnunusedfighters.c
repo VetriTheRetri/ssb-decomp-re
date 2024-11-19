@@ -5,8 +5,6 @@
 
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
-extern SYController gSYControllerMain;
-
 extern uintptr_t D_NF_00000011;
 
 extern intptr_t lMNFightersMarioNameSprite;             // 0x00001838
@@ -67,43 +65,48 @@ Gfx dMNUnusedFightersDisplayList[/* */] =
 SYVideoSetup dMNUnusedFightersVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
 // 0x800D7074
-scRuntimeInfo dMNUnusedFightersTaskmanSetup =
+SYTaskmanSetup dMNUnusedFightersTaskmanSetup =
 {
-    0x00000000,
-    gcRunAll,
-    gcDrawAll,
-    &ovl16_BSS_END,
-    0,
-    1,
-    1,
-    0x1770,
-    0x200,
-    0,
-    0,
-    0x400,
-    0x20000,
-    0x1000,
-    mnUnusedFightersFuncLights,
-    syControllerFuncRead,
-    0x20,
-    0x100,
-    0x20,
-    0,
-    0x20,
-    0x20,
-    0x88,
-    0x100,
-    0,
-    0,
-    0x80,
-    0x8,
-    0x40,
-    0x88,
-    0x20,
-    0x6C,
-    0x8,
-    0x90,
-    mnUnusedFightersFuncStart
+    // Task Manager Buffer Setup
+    {
+        0,                              // ???
+        gcRunAll,                       // Update function
+        gcDrawAll,                      // Frame draw function
+        &ovl16_BSS_END,                 // Allocatable memory pool start
+        0,                              // Allocatable memory pool size
+        1,                              // ???
+        1,                              // Number of contexts?
+        sizeof(Gfx) * 750,              // Display List Buffer 0 Size
+        sizeof(Gfx) * 64,               // Display List Buffer 1 Size
+        0,                              // Display List Buffer 2 Size
+        0,                              // Display List Buffer 3 Size
+        0x400,                          // Graphics Heap Size
+        2,                              // ???
+        0x1000,                         // RDP Output Buffer Size
+        mnUnusedFightersFuncLights,     // Pre-render function
+        syControllerFuncRead,           // Controller I/O function
+    },
+
+    32,                                 // Number of GObjThreads
+    sizeof(u64) * 32,                   // Thread stack size
+    32,                                 // Number of thread stacks
+    0,                                  // ???
+    32,                                 // Number of GObjProcesses
+    32,                                 // Number of GObjs
+    sizeof(GObj),                       // GObj size
+    256,                                // Number of XObjs
+    NULL,                               // Matrix function list
+    NULL,                               // DObjVec eject function
+    128,                                // Number of AObjs
+    8,                                  // Number of MObjs
+    64,                                 // Number of DObjs
+    sizeof(DObj),                       // DObj size
+    32,                                 // Number of SObjs
+    sizeof(SObj),                       // SObj size
+    8,                                  // Number of Cameras
+    sizeof(CObj),                       // Camera size
+    
+    mnUnusedFightersFuncStart           // Task start function
 };
 
 // // // // // // // // // // // //
@@ -571,6 +574,6 @@ void mnUnusedFightersStartScene(void)
     dMNUnusedFightersVideoSetup.zbuffer = syVideoGetZBuffer(6400);
     syVideoInit(&dMNUnusedFightersVideoSetup);
 
-    dMNUnusedFightersTaskmanSetup.arena_size = (size_t) ((uintptr_t)&gSYFramebufferSets - (uintptr_t)&ovl16_BSS_END);
+    dMNUnusedFightersTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSYFramebufferSets - (uintptr_t)&ovl16_BSS_END);
     syTaskmanRun(&dMNUnusedFightersTaskmanSetup);
 }

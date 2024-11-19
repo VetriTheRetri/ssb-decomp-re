@@ -624,7 +624,7 @@ void sc1PTrainingModeInitVars(void)
 // 0x8018DD0C
 void sc1PTrainingModeLoadSprites(void)
 {
-	void *file = lbRelocGetFileExternHeap((u32)&D_NF_000000FE, syTaskmanMalloc(lbRelocGetFileSize((u32)&D_NF_000000FE), 0x10));
+	void *file = lbRelocGetExternHeapFile((u32)&D_NF_000000FE, syTaskmanMalloc(lbRelocGetFileSize((u32)&D_NF_000000FE), 0x10));
 
 	sSC1PTrainingModeMenu.display_label_sprites = lbRelocGetFileData(SC1PTrainingModeSprites*, file, &lSC1PTrainingModeDisplayLabelSprites);
 	sSC1PTrainingModeMenu.display_option_sprites = lbRelocGetFileData(Sprite**, file, &lSC1PTrainingModeDisplayOptionSprites);
@@ -640,7 +640,7 @@ void sc1PTrainingModeLoadWallpaper(void)
 	gMPCollisionGroundData->wallpaper = lbRelocGetFileData
 	(
 		Sprite*,
-		lbRelocGetFileExternForceStatusBufferHeap
+		lbRelocGetForceExternHeapFile
 		(
 			dSC1PTrainingModeWallpaperDescs[dSC1PTrainingModeWallpaperIDs[gSCManagerBattleState->gkind]].file_id,
 			(void*) ((uintptr_t)gMPCollisionGroundData->wallpaper - (intptr_t)dSC1PTrainingModeWallpaperHeapOffsets[gSCManagerBattleState->gkind])

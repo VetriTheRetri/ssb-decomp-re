@@ -175,7 +175,7 @@ GObj* lbTransitionMakeTransition(s32 transition_id, u32 id, s32 link, void (*fun
     LBTransitionDesc *transition_desc = &dLBTransitionDescs[transition_id];
     GObj *gobj;
 
-    lbRelocGetFileExternHeap(transition_desc->file_id, sLBTransitionFileHeap);
+    lbRelocGetExternHeapFile(transition_desc->file_id, sLBTransitionFileHeap);
     gobj = gcMakeGObjSPAfter(id, NULL, link, GOBJ_PRIORITY_DEFAULT);
     
     gobj->user_data.s = transition_desc->unk_lbtransition_0xC;

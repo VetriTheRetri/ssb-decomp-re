@@ -154,14 +154,13 @@ u32 D_ovl30_80134C30[60]; // 240 bytes
 LBFileNode D_ovl30_80134D20[30];
 
 // 0x80134E10
-s32 gMNStagesFiles[5];
+void *gMNStagesFiles[5];
 
 // 0x80134E24;
-uintptr_t gMNStagesModelHeap0Ptr;
+void *gMNStagesModelHeap0Ptr;
 
 // 0x80134E28;
-uintptr_t gMNStagesModelHeap1Ptr;
-
+void *gMNStagesModelHeap1Ptr;
 
 // 0x80131B00
 void mnStagesAllocateStageModelHeaps()
@@ -319,7 +318,7 @@ void mnStagesDrawString(GObj* gobj, const char *str, f32 x, f32 y, s32 color[3])
 		}
 		else
 		{
-			chr_sobj = lbCommonMakeSObjForGObj(gobj, GetAddressFromOffset(gMNStagesFiles[3], chrOffsets[mnStagesGetChrIndex(str[i])]));
+			chr_sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(void*, gMNStagesFiles[3], chrOffsets[mnStagesGetChrIndex(str[i])]));
 			chr_sobj->pos.x = start_x;
 
 			start_x += chr_sobj->sprite.width + mnStagesGetChrSpacing(str, i);
@@ -354,7 +353,7 @@ void mnStagesCreateBackground()
 
 	background_gobj = gcMakeGObjSPAfter(0U, NULL, 0x2U, 0x80000000U);
 	gcAddGObjDisplay(background_gobj, lbCommonDrawSObjAttr, 0x0U, GOBJ_PRIORITY_DEFAULT, ~0);
-	background_sobj = lbCommonMakeSObjForGObj(background_gobj, GetAddressFromOffset(gMNStagesFiles[1], &FILE_015_BACKGROUND_IMAGE_OFFSET));
+	background_sobj = lbCommonMakeSObjForGObj(background_gobj, lbRelocGetFileData(void*, gMNStagesFiles[1], &FILE_015_BACKGROUND_IMAGE_OFFSET));
 	background_sobj->cms = G_TX_WRAP;
 	background_sobj->cmt = G_TX_WRAP;
 	background_sobj->masks = 6;
@@ -374,7 +373,7 @@ void mnStagesCreateWoodenCircle()
 	wooden_circle_gobj = gcMakeGObjSPAfter(0U, NULL, 8U, 0x80000000U);
 	gcAddGObjDisplay(wooden_circle_gobj, lbCommonDrawSObjAttr, 6U, GOBJ_PRIORITY_DEFAULT, ~0);
 
-	wooden_circle_sobj = lbCommonMakeSObjForGObj(wooden_circle_gobj, GetAddressFromOffset(gMNStagesFiles[2], &FILE_01E_WOODEN_CIRCLE_IMAGE_OFFSET));
+	wooden_circle_sobj = lbCommonMakeSObjForGObj(wooden_circle_gobj, lbRelocGetFileData(void*, gMNStagesFiles[2], &FILE_01E_WOODEN_CIRCLE_IMAGE_OFFSET));
 	wooden_circle_sobj->sprite.attr &= ~SP_FASTCOPY;
 	wooden_circle_sobj->sprite.attr |= SP_TRANSPARENT;
 	wooden_circle_sobj->pos.x = 189.0f;
@@ -414,7 +413,7 @@ void mnStagesCreateStageSelectGfx()
 	gcAddGObjDisplay(stage_select_gobj, mnStagesRenderStageSelectGfx, 4U, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	// Stage Select texture
-	stage_select_sobj = lbCommonMakeSObjForGObj(stage_select_gobj, GetAddressFromOffset(gMNStagesFiles[2], &FILE_01E_STAGE_SELECT_IMAGE_OFFSET));
+	stage_select_sobj = lbCommonMakeSObjForGObj(stage_select_gobj, lbRelocGetFileData(void*, gMNStagesFiles[2], &FILE_01E_STAGE_SELECT_IMAGE_OFFSET));
 	stage_select_sobj->sprite.attr &= ~SP_FASTCOPY;
 	stage_select_sobj->sprite.attr |= SP_TRANSPARENT;
 	stage_select_sobj->envcolor.r = 0;
@@ -427,7 +426,7 @@ void mnStagesCreateStageSelectGfx()
 	stage_select_sobj->pos.y = 122.0f;
 
 	// Yellow oval left edge
-	yellow_oval_left_sobj = lbCommonMakeSObjForGObj(stage_select_gobj, GetAddressFromOffset(gMNStagesFiles[2], &FILE_01E_YELLOW_OVAL_LEFT_IMAGE_OFFSET));
+	yellow_oval_left_sobj = lbCommonMakeSObjForGObj(stage_select_gobj, lbRelocGetFileData(void*, gMNStagesFiles[2], &FILE_01E_YELLOW_OVAL_LEFT_IMAGE_OFFSET));
 	yellow_oval_left_sobj->sprite.attr &= ~SP_FASTCOPY;
 	yellow_oval_left_sobj->sprite.attr |= SP_TRANSPARENT;
 	yellow_oval_left_sobj->pos.x = 174.0f;
@@ -436,13 +435,13 @@ void mnStagesCreateStageSelectGfx()
 	// Yellow oval middle section
 	for (x = 0xBA; x < 0x106; x += 4)
 	{
-		yellow_oval_center_sobj = lbCommonMakeSObjForGObj(stage_select_gobj, GetAddressFromOffset(gMNStagesFiles[2], &FILE_01E_YELLOW_OVAL_CENTER_IMAGE_OFFSET));
+		yellow_oval_center_sobj = lbCommonMakeSObjForGObj(stage_select_gobj, lbRelocGetFileData(void*, gMNStagesFiles[2], &FILE_01E_YELLOW_OVAL_CENTER_IMAGE_OFFSET));
 		yellow_oval_center_sobj->pos.x = x;
 		yellow_oval_center_sobj->pos.y = 191.0f;
 	}
 
 	// Yellow oval right edge
-	yellow_oval_right_sobj = lbCommonMakeSObjForGObj(stage_select_gobj, GetAddressFromOffset(gMNStagesFiles[2], &FILE_01E_YELLOW_OVAL_RIGHT_IMAGE_OFFSET));
+	yellow_oval_right_sobj = lbCommonMakeSObjForGObj(stage_select_gobj, lbRelocGetFileData(void*, gMNStagesFiles[2], &FILE_01E_YELLOW_OVAL_RIGHT_IMAGE_OFFSET));
 	yellow_oval_right_sobj->sprite.attr &= ~SP_FASTCOPY;
 	yellow_oval_right_sobj->sprite.attr |= SP_TRANSPARENT;
 	yellow_oval_right_sobj->pos.x = 262.0f;
@@ -515,9 +514,9 @@ void mnStagesCreateStageImages()
 			x = i * 50;
 
 			if (i == 9)
-				stage_image_sobj = lbCommonMakeSObjForGObj(stage_image_gobj, GetAddressFromOffset(gMNStagesFiles[2], &FILE_01E_RANDOM_IMAGE_OFFSET));
+				stage_image_sobj = lbCommonMakeSObjForGObj(stage_image_gobj, lbRelocGetFileData(void*, gMNStagesFiles[2], &FILE_01E_RANDOM_IMAGE_OFFSET));
 			else
-				stage_image_sobj = lbCommonMakeSObjForGObj(stage_image_gobj, GetAddressFromOffset(gMNStagesFiles[2], offsets[mnStagesGetStageID(i)]));
+				stage_image_sobj = lbCommonMakeSObjForGObj(stage_image_gobj, lbRelocGetFileData(void*, gMNStagesFiles[2], offsets[mnStagesGetStageID(i)]));
 
 			if (i < 5)
 			{
@@ -564,7 +563,7 @@ void mnStagesCreateStageName(GObj* name_logo_gobj, s32 stage_id)
 		0x00001418, 0x00000f98, 0x000011d8
 	};
 
-	stage_name_sobj = lbCommonMakeSObjForGObj(name_logo_gobj, GetAddressFromOffset(gMNStagesFiles[2], offsets[stage_id]));
+	stage_name_sobj = lbCommonMakeSObjForGObj(name_logo_gobj, lbRelocGetFileData(void*, gMNStagesFiles[2], offsets[stage_id]));
 	mnStagesPositionStageName(stage_name_sobj, stage_id);
 
 	stage_name_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -668,7 +667,7 @@ void mnStagesCreateLogo(GObj* name_logo_gobj, s32 stage_id)
 
 	if (stage_id == 0xDE)
 	{
-		name_logo_sobj = lbCommonMakeSObjForGObj(name_logo_gobj, GetAddressFromOffset(gMNStagesFiles[2], &FILE_01E_SMASH_LOGO_IMAGE_OFFSET));
+		name_logo_sobj = lbCommonMakeSObjForGObj(name_logo_gobj, lbRelocGetFileData(void*, gMNStagesFiles[2], &FILE_01E_SMASH_LOGO_IMAGE_OFFSET));
 		name_logo_sobj->sprite.attr &= ~SP_FASTCOPY;
 		name_logo_sobj->sprite.attr |= SP_TRANSPARENT;
 		name_logo_sobj->sprite.red = 0x5C;
@@ -677,7 +676,7 @@ void mnStagesCreateLogo(GObj* name_logo_gobj, s32 stage_id)
 	}
 	else
 	{
-		name_logo_sobj = lbCommonMakeSObjForGObj(name_logo_gobj, GetAddressFromOffset(gMNStagesFiles[0], offsets[stage_id]));
+		name_logo_sobj = lbCommonMakeSObjForGObj(name_logo_gobj, lbRelocGetFileData(void*, gMNStagesFiles[0], offsets[stage_id]));
 		name_logo_sobj->sprite.attr &= ~SP_FASTCOPY;
 		name_logo_sobj->sprite.attr |= SP_TRANSPARENT;
 		name_logo_sobj->sprite.red = 0x5C;
@@ -729,7 +728,7 @@ void mnStagesCreateCursor()
 	gMNStagesCursorGobj = cursor_gobj = gcMakeGObjSPAfter(0U, NULL, 7U, 0x80000000U);
 	gcAddGObjDisplay(cursor_gobj, lbCommonDrawSObjAttr, 5U, GOBJ_PRIORITY_DEFAULT, ~0);
 
-	cursor_sobj = lbCommonMakeSObjForGObj(cursor_gobj, GetAddressFromOffset(gMNStagesFiles[2], &FILE_01E_CURSOR_IMAGE_OFFSET));
+	cursor_sobj = lbCommonMakeSObjForGObj(cursor_gobj, lbRelocGetFileData(void*, gMNStagesFiles[2], &FILE_01E_CURSOR_IMAGE_OFFSET));
 	cursor_sobj->sprite.attr &= ~SP_FASTCOPY;
 	cursor_sobj->sprite.attr |= SP_TRANSPARENT;
 	cursor_sobj->sprite.red = 0xFF;
@@ -742,7 +741,7 @@ void mnStagesCreateCursor()
 // 0x80132B84
 void mnStagesLoadStageFile(s32 stage_id, u8* heapAddr)
 {
-	gMNStagesGroundInfo = (s32)lbRelocGetFileExternForceStatusBufferHeap(dMNStagesFileInfoArray[stage_id].id, heapAddr) + dMNStagesFileInfoArray[stage_id].header_size;
+	gMNStagesGroundInfo = (s32)lbRelocGetForceExternHeapFile(dMNStagesFileInfoArray[stage_id].id, heapAddr) + dMNStagesFileInfoArray[stage_id].header_size;
 }
 
 // 0x80132BC8
@@ -775,7 +774,7 @@ GObj* mnStagesCreateStagePreviewBackground(s32 stage_id)
 	// draw patterned bg
 	for (x = 0x2B; x < 0x9B; x += 0x10)
 	{
-		stage_preview_bg_sobj = lbCommonMakeSObjForGObj(stage_preview_bg_gobj, GetAddressFromOffset(gMNStagesFiles[2], &FILE_01E_STAGE_PREVIEW_PATTERNED_BG_IMAGE_OFFSET));
+		stage_preview_bg_sobj = lbCommonMakeSObjForGObj(stage_preview_bg_gobj, lbRelocGetFileData(void*, gMNStagesFiles[2], &FILE_01E_STAGE_PREVIEW_PATTERNED_BG_IMAGE_OFFSET));
 		stage_preview_bg_sobj->pos.x = x;
 		stage_preview_bg_sobj->pos.y = 130.0f;
 
@@ -786,7 +785,7 @@ GObj* mnStagesCreateStagePreviewBackground(s32 stage_id)
 	if (stage_id == 0xDE)
 	{
 		// If Random, use Random image
-		stage_preview_bg_sobj = lbCommonMakeSObjForGObj(stage_preview_bg_gobj, GetAddressFromOffset(gMNStagesFiles[2], &FILE_01E_RANDOM_STAGE_PREVIEW_BG_IMAGE_OFFSET));
+		stage_preview_bg_sobj = lbCommonMakeSObjForGObj(stage_preview_bg_gobj, lbRelocGetFileData(void*, gMNStagesFiles[2], &FILE_01E_RANDOM_STAGE_PREVIEW_BG_IMAGE_OFFSET));
 		stage_preview_bg_sobj->pos.x = 40.0f;
 		stage_preview_bg_sobj->pos.y = 127.0f;
 	}
@@ -796,7 +795,7 @@ GObj* mnStagesCreateStagePreviewBackground(s32 stage_id)
 		if (gMNStagesIsTrainingMode == TRUE)
 		{
 			// If Training Mode, use Smash logo bg
-			stage_preview_bg_sobj = lbCommonMakeSObjForGObj(stage_preview_bg_gobj, GetAddressFromOffset(lbRelocGetFileExternForceStatusBufferHeap(dMNStagesTrainingBackgroundFileNodes[dMNStagesTrainingBackgroundIDs[stage_id]].id, (uintptr_t)gMNStagesGroundInfo->wallpaper - dMNStagesBackgroundFileOffsets[stage_id]), &FILE_01A_TRAINING_BACKGROUND_IMAGE_OFFSET));
+			stage_preview_bg_sobj = lbCommonMakeSObjForGObj(stage_preview_bg_gobj, lbRelocGetFileData(void*, lbRelocGetForceExternHeapFile(dMNStagesTrainingBackgroundFileNodes[dMNStagesTrainingBackgroundIDs[stage_id]].id, (uintptr_t)gMNStagesGroundInfo->wallpaper - dMNStagesBackgroundFileOffsets[stage_id]), &FILE_01A_TRAINING_BACKGROUND_IMAGE_OFFSET));
 		}
 		else
 		{

@@ -156,7 +156,7 @@ void itManagerInitItems(void) // Many linker things here
     {
         ip[i].alloc_next = NULL;
     }
-    gITManagerFileData = (void*) lbRelocGetFileExternHeap(&D_NF_000000FB, syTaskmanMalloc(lbRelocGetFileSize(&D_NF_000000FB), 0x10));
+    gITManagerFileData = (void*) lbRelocGetExternHeapFile(&D_NF_000000FB, syTaskmanMalloc(lbRelocGetFileSize(&D_NF_000000FB), 0x10));
 
     gITManagerParticleBankID = efParticleGetLoadBankID
     (

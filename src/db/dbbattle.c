@@ -533,7 +533,7 @@ void dbBattleFuncStart(void)
 		sDBBattleFighters[i].costume = gSCManagerTransferBattleState.players[i].costume;
 	}
 	dbMenuInitMenu();
-	dbMenuMakeMenu(0x1E, 0x14, 0x55, &dDBBattleMenuOptions, 0xF);
+	dbMenuMakeMenu(0x1E, 0x14, 0x55, dDBBattleMenuOptions, ARRAY_COUNT(dDBBattleMenuOptions));
 	scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 }
 

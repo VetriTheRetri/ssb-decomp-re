@@ -2743,7 +2743,7 @@ void func_8001663C(Gfx **dls, CObj *cobj, s32 buffer_id)
         gDPSetCycleType(dl++, G_CYC_FILL);
         gDPSetRenderMode(dl++, G_RM_NOOP, G_RM_NOOP2);
         gDPSetColorImage(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, gSYVideoResWidth, gSYVideoZBuffer);
-        gDPSetFillColor(dl++, GCOMBINE32_RGBA5551(GPACK_ZDZ(G_MAXFBZ, 0)));
+        gDPSetFillColor(dl++, GPACK_FILL16(GPACK_ZDZ(G_MAXFBZ, 0)));
         gDPFillRectangle(dl++, ulx, uly, lrx, lry);
     }
     gDPPipeSync(dl++);
@@ -2808,7 +2808,7 @@ void unref_80016AE4(Gfx **dls, CObj *cobj, s32 arg2, void *image, s32 max_lrx, s
         gDPSetCycleType(dl++, G_CYC_FILL);
         gDPSetRenderMode(dl++, G_RM_NOOP, G_RM_NOOP2);
         gDPSetColorImage(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, max_lrx, depth);
-        gDPSetFillColor(dl++, GCOMBINE32_RGBA5551(GPACK_ZDZ(G_MAXFBZ, 0)));
+        gDPSetFillColor(dl++, GPACK_FILL16(GPACK_ZDZ(G_MAXFBZ, 0)));
         gDPFillRectangle(dl++, ulx, uly, lrx, lry);
     }
     gDPPipeSync(dl++);

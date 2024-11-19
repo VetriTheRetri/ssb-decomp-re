@@ -1,9 +1,9 @@
 #include <if/interface.h>
+#include <ef/effect.h>
 #include <ft/fighter.h>
 #include <it/item.h>
 #include <cm/camera.h>
 #include <sc/scene.h>
-#include <sys/malloc.h>
 #include <sys/video.h>
 
 extern alSoundEffect* func_800269C0_275C0(u16);
@@ -18,11 +18,6 @@ extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 // // // // // // // // // // // //
 
 extern intptr_t D_NF_00000057;                              // 0x00000057
-
-extern SYMallocRegion gSYTaskmanGeneralHeap;
-
-extern GObj *gEFParticleStructsHead; // I don't think these belong in this file
-extern GObj *gEFParticleGeneratorsHead;
 
 // // // // // // // // // // // //
 //                               //
@@ -2589,7 +2584,7 @@ void ifCommonBattleInitPlacement(void)
 }
 
 // 0x80113638
-void func_ovl2_80113638(GObj *interface_gobj, u32 unused)
+void ifCommonBattleInterfacePauseFuncGObj(GObj *interface_gobj, u32 unused)
 {
     gcPauseGObjProcessAll(interface_gobj);
 
@@ -2597,7 +2592,7 @@ void func_ovl2_80113638(GObj *interface_gobj, u32 unused)
 }
 
 // 0x8011366C
-void func_ovl2_8011366C(GObj *interface_gobj, u32 unused)
+void ifCommonBattleInterfaceResumeFuncGObj(GObj *interface_gobj, u32 unused)
 {
     gcResumeGObjProcessAll(interface_gobj);
 
@@ -2607,16 +2602,16 @@ void func_ovl2_8011366C(GObj *interface_gobj, u32 unused)
 // 0x801136A4
 void ifCommonBattleInterfaceProcUpdate(void)
 {
-    gcFuncGObjAll(func_ovl2_80113638, 0);
+    gcFuncGObjAll(ifCommonBattleInterfacePauseFuncGObj, 0);
 
-    gcFuncGObjByLink(8, func_ovl2_8011366C, 0);
-    gcFuncGObjByLink(0xB, func_ovl2_8011366C, 0);
+    gcFuncGObjByLink(nGCCommonLinkIDSpecialEffect, ifCommonBattleInterfaceResumeFuncGObj, 0);
+    gcFuncGObjByLink(nGCCommonLinkIDInterface, ifCommonBattleInterfaceResumeFuncGObj, 0);
     gmRumbleResumeProcessAll();
-    func_ovl2_8011366C(gEFParticleStructsHead, 0);
-    func_ovl2_8011366C(gEFParticleGeneratorsHead, 0);
-    efParticleHeadSetSkipAll();
-    efParticleHeadClearSkipID(2);
-    efParticleHeadClearSkipID(3);
+    ifCommonBattleInterfaceResumeFuncGObj(gEFParticleStructsGObj, 0);
+    ifCommonBattleInterfaceResumeFuncGObj(gEFParticleGeneratorsGObj, 0);
+    efParticleGObjSetSkipAll();
+    efParticleGObjClearSkipID(2);
+    efParticleGObjClearSkipID(3);
     func_800266A0_272A0();
     ifCommonBattleEndPlaySoundQueue();
 }
@@ -2630,7 +2625,7 @@ void func_ovl2_80113744(GObj *fighter_gobj, u32 unused)
     {
         gcResumeGObjProcessAll(fighter_gobj);
         
-        fighter_gobj->flags &= ~0x40;
+        fighter_gobj->flags &= ~GOBJ_FLAG_NOFUNC;
     }
 }
 
@@ -2683,8 +2678,10 @@ void ifCommonBattleUpdateScoreStocks(FTStruct *fp)
 
     for (i = teammates_remain = 0; i < ARRAY_COUNT(gSCManagerBattleState->players); i++)
     {
-        if (gSCManagerBattleState->players[i].pkind == nFTPlayerKindNot) continue;
-
+        if (gSCManagerBattleState->players[i].pkind == nFTPlayerKindNot)
+        {
+            continue;
+        }
         switch (gSCManagerBattleState->is_team_battle)
         {
         case FALSE:
@@ -2711,8 +2708,10 @@ void ifCommonBattleUpdateScoreStocks(FTStruct *fp)
         case TRUE:
             for (i = 0; i < ARRAY_COUNT(gSCManagerBattleState->players); i++)
             {
-                if (gSCManagerBattleState->players[i].pkind == nFTPlayerKindNot) continue;
-
+                if (gSCManagerBattleState->players[i].pkind == nFTPlayerKindNot)
+                {
+                    continue;
+                }
                 if (gSCManagerBattleState->players[i].team == team)
                 {
                     gSCManagerBattleState->players[i].placement = sIFCommonBattlePlacement;
@@ -2747,7 +2746,7 @@ void ifCommonBattlePauseFuncDisplay(GObj *interface_gobj)
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_FILL);
     gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
-    gDPSetFillColor(gSYTaskmanDLHeads[0]++, GCOMBINE32_RGBA5551(GPACK_RGBA5551(0xFF, 0xFF, 0xFF, 0x01)));
+    gDPSetFillColor(gSYTaskmanDLHeads[0]++, GPACK_FILL16(GPACK_RGBA5551(0xFF, 0xFF, 0xFF, 0x01)));
 
     for (i = 0; i < ARRAY_COUNT(dIFCommonBattlePauseBorderRectangle); i++)
     {
@@ -3034,7 +3033,7 @@ void ifCommonBattlePauseUpdateInterface(void)
         {
             gSCManagerSceneData.is_reset = TRUE;
 
-            gcFuncGObjAll(func_ovl2_80113638, 0);
+            gcFuncGObjAll(ifCommonBattleInterfacePauseFuncGObj, 0);
             func_800266A0_272A0();
             gmRumbleInitPlayers();
             ifCommonBattlePauseSetGObjFlagsAll(GOBJ_FLAG_HIDDEN);
@@ -3249,7 +3248,7 @@ GObj* ifCommonAnnounceCompleteMakeInterface(void)
 // 0x80114B40
 void ifCommonBonusInterfaceProcUpdate(void)
 {
-    gcFuncGObjAll(func_ovl2_80113638, 0);
+    gcFuncGObjAll(ifCommonBattleInterfacePauseFuncGObj, 0);
     gmRumbleInitPlayers();
     func_800266A0_272A0();
     ifCommonBattleEndPlaySoundQueue();
@@ -3286,7 +3285,7 @@ void ifCommonBattleBossDefeatSetGameStatus(void)
 // 0x80114C20
 void ifCommon1PGameInterfaceProcSet(void)
 {
-    gcFuncGObjByLink(9, func_ovl2_8011366C, 0);
+    gcFuncGObjByLink(9, ifCommonBattleInterfaceResumeFuncGObj, 0);
     grWallpaperResumeAll();
     ifCommonInterfaceSetGObjFlagsAll(GOBJ_FLAG_HIDDEN);
 

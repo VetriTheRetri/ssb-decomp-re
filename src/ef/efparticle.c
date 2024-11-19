@@ -7,10 +7,10 @@
 // // // // // // // // // // // //
 
 // 0x80131A10
-GObj *gEFParticleStructsHead;
+GObj *gEFParticleStructsGObj;
 
 // 0x80131A14
-GObj *gEFParticleGeneratorsHead;
+GObj *gEFParticleGeneratorsGObj;
 
 // 0x80131A18
 s32 sEFParticleBanksNum;
@@ -27,35 +27,35 @@ uintptr_t sEFParticleScriptBanks[7];
 // 0x80115890
 void efParticleInitAll(void)
 {
-    gEFParticleStructsHead = lbParticleAllocStructs(112);
-    gEFParticleGeneratorsHead = lbParticleAllocGenerators(24);
+    gEFParticleStructsGObj = lbParticleAllocStructs(112);
+    gEFParticleGeneratorsGObj = lbParticleAllocGenerators(24);
     
     lbParticleAllocTransforms(80, sizeof(LBTransform));
     sEFParticleBanksNum = 0;
 }
 
 // 0x801158D8
-void efParticleHeadSetSkipID(u32 id)
+void efParticleGObjSetSkipID(u32 id)
 {
-    gEFParticleGeneratorsHead->flags = gEFParticleStructsHead->flags |= (0x10000 << id);
+    gEFParticleGeneratorsGObj->flags = gEFParticleStructsGObj->flags |= (0x10000 << id);
 }
 
 // 0x80115910
-void efParticleHeadSetSkipAll(void)
+void efParticleGObjSetSkipAll(void)
 {
-    gEFParticleGeneratorsHead->flags = gEFParticleStructsHead->flags |= ~0xFFFF;
+    gEFParticleGeneratorsGObj->flags = gEFParticleStructsGObj->flags |= ~0xFFFF;
 }
 
 // 0x80115944
-void efParticleHeadClearSkipID(u32 id)
+void efParticleGObjClearSkipID(u32 id)
 {
-    gEFParticleGeneratorsHead->flags = gEFParticleStructsHead->flags &= ~(0x10000 << id);
+    gEFParticleGeneratorsGObj->flags = gEFParticleStructsGObj->flags &= ~(0x10000 << id);
 }
 
 // 0x80115980
-void efParticleHeadClearSkipAll(void)
+void efParticleGObjClearSkipAll(void)
 {
-    gEFParticleGeneratorsHead->flags = gEFParticleStructsHead->flags &= 0xFFFF;
+    gEFParticleGeneratorsGObj->flags = gEFParticleStructsGObj->flags &= 0xFFFF;
 }
 
 // 0x801159B0

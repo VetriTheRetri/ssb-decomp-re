@@ -1116,7 +1116,7 @@ void mnSoundTestMusicFuncDisplay(GObj *gobj)
     gDPSetFillColor
     (
         gSYTaskmanDLHeads[0]++,
-        GCOMBINE32_RGBA5551
+        GPACK_FILL16
         (
             GCONVERT5551_RGBA8888
             (
@@ -1183,7 +1183,7 @@ void mnSoundTestSoundFuncDisplay(GObj *gobj)
     gDPSetFillColor
     (
         gSYTaskmanDLHeads[0]++,
-        GCOMBINE32_RGBA5551
+        GPACK_FILL16
         (
             GCONVERT5551_RGBA8888
             (
@@ -1250,7 +1250,7 @@ void mnSoundTestVoiceFuncDisplay(GObj *gobj)
     gDPSetFillColor
     (
         gSYTaskmanDLHeads[0]++,
-        GCOMBINE32_RGBA5551
+        GPACK_FILL16
         (
             GCONVERT5551_RGBA8888
             (

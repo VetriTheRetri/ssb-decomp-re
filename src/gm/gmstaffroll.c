@@ -520,7 +520,7 @@ Gfx dGMStaffrollTextBoxDisplayList[/* */] =
 	gsDPPipeSync(),
 	gsDPSetCycleType(G_CYC_FILL),
 	gsDPSetRenderMode(G_RM_NOOP, G_RM_NOOP2),
-	gsDPSetFillColor(GCOMBINE32_RGBA5551(GPACK_RGBA5551(0x42, 0x3A, 0x31, 0x01))),
+	gsDPSetFillColor(GPACK_FILL16(GPACK_RGBA5551(0x42, 0x3A, 0x31, 0x01))),
 	gsDPFillRectangle(346, 35, 348, 164),
 	gsDPFillRectangle(346, 35, 584,  37),
 	gsDPFillRectangle(582, 35, 584, 164),
@@ -743,7 +743,7 @@ void gmStaffrollHighlightFuncDisplay(GObj *gobj)
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_FILL);
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
-	gDPSetFillColor(gSYTaskmanDLHeads[0]++, GCOMBINE32_RGBA5551(GPACK_RGBA5551(0x80, 0x00, 0x00, 0x01)));
+	gDPSetFillColor(gSYTaskmanDLHeads[0]++, GPACK_FILL16(GPACK_RGBA5551(0x80, 0x00, 0x00, 0x01)));
 	gDPFillRectangle
 	(
 		gSYTaskmanDLHeads[0]++,

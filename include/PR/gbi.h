@@ -318,7 +318,7 @@
 * Use this for gDPSetFillColor.
 */
 
-#define GCOMBINE32_RGBA5551(w) (((w) << 16) | ((w) << 0))
+#define GPACK_FILL16(w) (((w) << 16) | ((w) << 0))
 
 /*
  * G_MTX: parameter flags

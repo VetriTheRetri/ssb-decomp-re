@@ -5,11 +5,14 @@
 #include <sys/objdef.h>
 #include <ef/efdef.h>
 
+extern GObj *gEFParticleStructsGObj;
+extern GObj *gEFParticleGeneratorsGObj;
+
 extern void efParticleInitAll(void);
-extern void efParticleHeadSetSkipID(u32 id);
-extern void efParticleHeadSetSkipAll(void);
-extern void efParticleHeadClearSkipID(u32 id);
-extern void efParticleHeadClearSkipAll(void);
+extern void efParticleGObjSetSkipID(u32 id);
+extern void efParticleGObjSetSkipAll(void);
+extern void efParticleGObjClearSkipID(u32 id);
+extern void efParticleGObjClearSkipAll(void);
 extern s32 efParticleGetBankID(uintptr_t textures_lo);
 extern s32 efParticleGetLoadBankID(uintptr_t textures_lo, uintptr_t textures_hi, uintptr_t scripts_lo, uintptr_t scripts_hi);
 

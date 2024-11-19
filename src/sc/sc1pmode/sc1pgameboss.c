@@ -769,7 +769,7 @@ void SC1PGameBossWallpaper3ProcUpdate1(GObj *gobj)
                 else if (gobj->func_display == sc1PGameBossFuncDisplayFadeColor)
                 {
                     ifCommonBattleEndSetBossDefeat();
-                    gcFuncGObjAll(func_ovl2_80113638, 0);
+                    gcFuncGObjAll(ifCommonBattleInterfacePauseFuncGObj, 0);
                 }
             }
         }

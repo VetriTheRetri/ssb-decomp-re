@@ -28,7 +28,7 @@ Gfx dGRWallpaperDisplayList[/* */] =
 {
     gsDPSetCycleType(G_CYC_FILL),
     gsDPSetRenderMode(G_RM_NOOP, G_RM_NOOP2),
-    gsDPSetFillColor(GCOMBINE32_RGBA5551(GPACK_RGBA5551(0x00, 0x00, 0x00, 0x01))),
+    gsDPSetFillColor(GPACK_FILL16(GPACK_RGBA5551(0x00, 0x00, 0x00, 0x01))),
     gsDPFillRectangle(10, 10, 310, 230), // 10 less than width and height?
     gsDPPipeSync(),
     gsDPSetCycleType(G_CYC_1CYCLE),

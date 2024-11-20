@@ -444,10 +444,10 @@ lGRBonus2PurinGroundFileID = 0x000125;
 lGRBonus2NessGroundFileID = 0x000126;
 lGRBonus3GroundFileID = 0x000127;
 
-lEFCommonParticleBankScriptsLo = 0x00AC7340;
-lEFCommonParticleBankScriptsHi = 0x00AC9DE0;
-lEFCommonParticleBankTexturesLo = 0x00AC9DE0;
-lEFCommonParticleBankTexturesHi = 0x00B16C80;
+lEFCommonParticleBankScriptsLo = spriteInfoStart_0_ROM_START;
+lEFCommonParticleBankScriptsHi = spriteInfoStart_0_ROM_END;
+lEFCommonParticleBankTexturesLo = imageBankStart_0_ROM_START;
+lEFCommonParticleBankTexturesHi = imageBankEnd_1_ROM_END;
 
 lEFManagerShieldDObjSetup = 0x00000300;
 
@@ -700,9 +700,9 @@ lGRPupupuWhispyEyesTransformKinds = 0x000010F0;
 lGRPupupuWhispyMouthTransformKinds = 0x00001770;
 lGRPupupuFlowersBackTrasnformKinds = 0x00002A80;
 lGRPupupuFlowersFrontTransformKinds = 0x000031F8;
-lGRPupupuParticleBankScriptsLo = 0x00B1E640;
-lGRPupupuParticleBankScriptsHi = 0x00B1E7E0;
-lGRPupupuParticleBankTexturesLo = 0x00B1E7E0;
+lGRPupupuParticleBankScriptsLo = spriteInfoStart_5_ROM_START;
+lGRPupupuParticleBankScriptsHi = spriteInfoStart_5_ROM_END;
+lGRPupupuParticleBankTexturesLo = imageBankStart_5_ROM_START;
 lGRPupupuParticleBankTexturesHi = 0x00B1F960;
 
 lGRSectorArwingLaser2DWeaponAttributes = 0x000000BC;

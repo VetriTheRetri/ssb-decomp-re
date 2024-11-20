@@ -447,7 +447,7 @@ lGRBonus3GroundFileID = 0x000127;
 lEFCommonParticleBankScriptsLo = spriteInfoStart_0_ROM_START;
 lEFCommonParticleBankScriptsHi = spriteInfoStart_0_ROM_END;
 lEFCommonParticleBankTexturesLo = imageBankStart_0_ROM_START;
-lEFCommonParticleBankTexturesHi = imageBankEnd_1_ROM_END;
+lEFCommonParticleBankTexturesHi = imageBankEnd_0_ROM_START;
 
 lEFManagerShieldDObjSetup = 0x00000300;
 
@@ -703,7 +703,7 @@ lGRPupupuFlowersFrontTransformKinds = 0x000031F8;
 lGRPupupuParticleBankScriptsLo = spriteInfoStart_5_ROM_START;
 lGRPupupuParticleBankScriptsHi = spriteInfoStart_5_ROM_END;
 lGRPupupuParticleBankTexturesLo = imageBankStart_5_ROM_START;
-lGRPupupuParticleBankTexturesHi = 0x00B1F960;
+lGRPupupuParticleBankTexturesHi = imageBankEnd_5_ROM_START;
 
 lGRSectorArwingLaser2DWeaponAttributes = 0x000000BC;
 lGRSectorArwingLaser3DWeaponAttributes = 0x000000F0;
@@ -737,10 +737,10 @@ D_NF_000004B8 = 0x000004B8;
 lGRYosterCloudDisplayList = 0x00000580;
 lGRYosterCloudSolidMatAnimJoint = 0x00000670;
 lGRYosterCloudEvaporateMatAnimJoint = 0x00000690;
-lGRYosterParticleBankScriptsLo = 0x00B22980;
-lGRYosterParticleBankScriptsHi = 0x00B22A00;
-lGRYosterParticleBankTexturesLo = 0x00B22A00;
-lGRYosterParticleBankTexturesHi = 0x00B22C30;
+lGRYosterParticleBankScriptsLo = spriteInfoStart_7_ROM_START;
+lGRYosterParticleBankScriptsHi = spriteInfoStart_7_ROM_END;
+lGRYosterParticleBankTexturesLo = imageBankStart_7_ROM_START;
+lGRYosterParticleBankTexturesHi = imageBankEnd_7_ROM_START;
 
 lGRInishieScaleDObjDesc = 0x00000380;
 lGRInishieMapHead = 0x000005F0;
@@ -752,10 +752,10 @@ lGRJungleTaruCannDefaultAnimJoint = 0x00000B20;
 lGRJungleTaruCannFillAnimJoint = 0x00000B68;
 lGRJungleTaruCannShootAnimJoint = 0x00000BF8;
 
-lGRHyruleParticleBankScriptsLo = 0x00B1F960;
-lGRHyruleParticleBankScriptsHi = 0x00B1FC80;
-lGRHyruleParticleBankTexturesLo = 0x00B1FC80;
-lGRHyruleParticleBankTexturesHi = 0x00B22980;
+lGRHyruleParticleBankScriptsLo = spriteInfoStart_6_ROM_START;
+lGRHyruleParticleBankScriptsHi = spriteInfoStart_6_ROM_END;
+lGRHyruleParticleBankTexturesLo = imageBankStart_6_ROM_START;
+lGRHyruleParticleBankTexturesHi = imageBankEnd_6_ROM_START;
 
 lGRYamabukiGateOpenAnimJoint = 0x000009B0;
 lGRYamabukiGateCloseAnimJoint = 0x00000A20;
@@ -769,10 +769,10 @@ lGRBonus3ItemHead = 0x00000000;
 lGRBonus3BumpersDObjDesc = 0x00000000;
 lGRBonus3BumpersAnimJoint = 0x00000110;
 
-lMNTitleParticleBankScriptsLo = 0x00B22C30;
-lMNTitleParticleBankScriptsHi = 0x00B22D40;
-lMNTitleParticleBankTexturesLo = 0x00B22D40;
-lMNTitleParticleBankTexturesHi = 0x00B277B0;
+lMNTitleParticleBankScriptsLo = spriteInfoStart_8_ROM_START;
+lMNTitleParticleBankScriptsHi = spriteInfoStart_8_ROM_END;
+lMNTitleParticleBankTexturesLo = imageBankStart_8_ROM_START;
+lMNTitleParticleBankTexturesHi = imageBankEnd_8_ROM_START;
 
 lMNTitleLogoAnimCutoutSprite = 0x00008FC8;
 lMNTitleLogoAnimStrikeVSprite = 0x000097E8;
@@ -1099,10 +1099,10 @@ lWPLinkBoomerangWeaponAttributes = 0x00000000;
 lWPBossBulletNormalWeaponAttributes = 0x00000774;
 lWPBossBulletHardWeaponAttributes = 0x000007A8;
 
-lITManagerParticleBankScriptsLo = 0x00B1BCA0;
-lITManagerParticleBankScriptsHi = 0x00B1BDE0;
-lITManagerParticleBankTexturesLo = 0x00B1BDE0;
-lITManagerParticleBankTexturesHi = 0x00B1E640;
+lITManagerParticleBankScriptsLo = spriteInfoStart_4_ROM_START;
+lITManagerParticleBankScriptsHi = spriteInfoStart_4_ROM_END;
+lITManagerParticleBankTexturesLo = imageBankStart_4_ROM_START;
+lITManagerParticleBankTexturesHi = imageBankEnd_4_ROM_START;
 
 lITMainContainerVelocitiesY = 0x00000000;
 

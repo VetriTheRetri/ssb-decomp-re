@@ -1022,7 +1022,7 @@ sb32 cmManagerLookAtFuncMatrix(Mtx *mtx, CObj *cobj, Gfx **dls)
         syMatrixLookAtReflectF(&sp5C, &gCMManagerCameraStruct.look_at, cobj->vec.eye.x, cobj->vec.eye.y, cobj->vec.eye.z, cobj->vec.at.x, cobj->vec.at.y, cobj->vec.at.z, cobj->vec.up.x, cobj->vec.up.y, cobj->vec.up.z);
         guMtxCatF(sp5C, gGCMatrixPerspF, gCMManagerMatrix);
     }
-    syMatrixF2L(gCMManagerMatrix, mtx);
+    syMatrixF2L(&gCMManagerMatrix, mtx);
 
     return 0;
 }
@@ -1345,7 +1345,7 @@ sb32 cmManageOrthoLookAtFuncMatrix(Mtx *mtx, CObj *cobj, Gfx **dls)
     height = (gCMManagerCameraStruct.viewport_height / 2);
 
     syMatrixOrthoF(&sp78, -width, width, -height, height, 100.0F, 12800.0F, 1.0F);
-    syMatrixLookAtF(sp38, 0.0F, 0.0F, 1000.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F);
+    syMatrixLookAtF(&sp38, 0.0F, 0.0F, 1000.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F);
 
     guMtxCatF(sp38, sp78, sp78);
     syMatrixF2L(&sp78, mtx);

@@ -153,7 +153,7 @@ DObjTransformTypes dGRSectorArwingTransformKinds[/* */] =
 };
 
 // 0x8012E9F0
-WPCreateDesc dGRSectorArwingWeaponLaser2DWeaponDesc =
+WPDesc dGRSectorArwingWeaponLaser2DWeaponDesc =
 {
     0,                                          // Render flags?
     nWPKindArwingLaser2D,                       // Weapon Kind
@@ -162,8 +162,8 @@ WPCreateDesc dGRSectorArwingWeaponLaser2DWeaponDesc =
     
     // DObj transformation struct
     {
-        nGCMatrixKindTraRotRpyR,                 // Main matrix transformations
-        nGCMatrixKindNull,                       // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyR,                // Main matrix transformations
+        nGCMatrixKindNull,                      // Secondary matrix transformations?
         0                                       // ???
     },
 
@@ -178,7 +178,7 @@ WPCreateDesc dGRSectorArwingWeaponLaser2DWeaponDesc =
 };
 
 // 0x8012EA24
-WPCreateDesc dGRSectorArwingWeaponLaser3DWeaponDesc =
+WPDesc dGRSectorArwingWeaponLaser3DWeaponDesc =
 {
     0,                                          // Render flags?
     nWPKindArwingLaser3D,                       // Weapon Kind
@@ -187,8 +187,8 @@ WPCreateDesc dGRSectorArwingWeaponLaser3DWeaponDesc =
     
     // DObj transformation struct
     {
-        nGCMatrixKindTraRotRpyR,                 // Main matrix transformations
-        nGCMatrixKindNull,                       // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyR,                // Main matrix transformations
+        nGCMatrixKindNull,                      // Secondary matrix transformations?
         0                                       // ???
     },
 
@@ -212,7 +212,7 @@ enum grSectorArwingStatus
 {
     nGRSectorArwingStatusSleep,
     nGRSectorArwingStatusWait,
-    nGRSectorArwingStatus2
+    nGRSectorArwingStatusPatrol
 };
 
 // // // // // // // // // // // //
@@ -307,9 +307,9 @@ sb32 grSectorArwingLaser3DFuncMatrix(Mtx *mtx, DObj *dobj, Gfx **dls)
     f[2][1] = sp80.y; // sp4C
     f[2][2] = sp80.z; // sp50
 
-    f[0][3] = f[1][3] = f[2][3] = 0.0F;             // sp34, sp44, sp54
+    f[0][3] = f[1][3] = f[2][3] = 0.0F;                     // sp34, sp44, sp54
 
-    f[3][0] = tx + gGRCommonStruct.sector.arwing_target_x;   // sp58
+    f[3][0] = tx + gGRCommonStruct.sector.arwing_target_x;  // sp58
     f[3][1] = ty;                                           // sp5C
     f[3][2] = tz;                                           // sp60
 
@@ -340,7 +340,7 @@ void func_ovl2_80106A40(DObj *dobj, AObjEvent32 *anim_joint, f32 arg2)
 }
 
 // 0x80106A98
-void func_ovl2_80106A98(void)
+void grSectorArwingUpdateSleep(void)
 {
     if (gSCManagerBattleState->game_status != nSCBattleGameStatusWait)
     {
@@ -349,7 +349,7 @@ void func_ovl2_80106A98(void)
 }
 
 // 0x80106AC0
-void grSectorArwingUpdateSleep(void)
+void grSectorArwingUpdateWait(void)
 {
     s32 random;
 
@@ -1014,7 +1014,7 @@ void grSectorArwingUpdateCollisions(void)
 }
 
 // 0x80107CA0
-void func_ovl2_80107CA0(void)
+void grSectorArwingUpdatePatrol(void)
 {
     grSectorArwingDecideZNear();
     func_ovl2_80106DD8();
@@ -1062,16 +1062,16 @@ void grSectorProcUpdate(GObj *ground_gobj)
 {
     switch (gGRCommonStruct.sector.arwing_status)
     {
-    case 0:
-        func_ovl2_80106A98();
-        break;
-
-    case nGRSectorArwingStatusWait:
+    case nGRSectorArwingStatusSleep:
         grSectorArwingUpdateSleep();
         break;
 
-    case 2:
-        func_ovl2_80107CA0();
+    case nGRSectorArwingStatusWait:
+        grSectorArwingUpdateWait();
+        break;
+
+    case nGRSectorArwingStatusPatrol:
+        grSectorArwingUpdatePatrol();
         break;
     }
     func_ovl2_80107D50();

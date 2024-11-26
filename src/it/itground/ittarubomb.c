@@ -23,7 +23,7 @@ extern intptr_t lITTaruBombEffectDisplayList;  // 0x000008A0
 //                               //
 // // // // // // // // // // // //
 
-ITCreateDesc dITTaruBombItemDesc =
+ITDesc dITTaruBombItemDesc =
 {
     nITKindTaruBomb,                            // Item Kind
     &gGRCommonStruct.bonus3.item_head,          // Pointer to item file data?

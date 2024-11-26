@@ -18,7 +18,7 @@ extern intptr_t lITMBallMatAnimJoint;       // 0x00009520
 //                               //
 // // // // // // // // // // // //
 
-ITCreateDesc dITMBallItemDesc =
+ITDesc dITMBallItemDesc =
 {
     nITKindMBall,                           // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?

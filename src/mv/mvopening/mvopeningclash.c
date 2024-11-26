@@ -105,7 +105,7 @@ void mvOpeningClashMakeFighters(void)
     };
 
     s32 i;
-    FTCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
+    FTDesc ft_desc = dFTManagerDefaultFighterDesc;
 
     for (i = 0; i < (ARRAY_COUNT(fkinds) + ARRAY_COUNT(sMVOpeningClashFigatreeHeaps)) / 2; i++)
     {

@@ -264,7 +264,7 @@ void mvOpeningYoshiMakeMotionWindow(void)
 
 	for (i = 0; i < ARRAY_COUNT(gSCManagerBattleState->players); i++)
 	{
-		FTCreateDesc desc = dFTManagerDefaultFighterDesc;
+		FTDesc desc = dFTManagerDefaultFighterDesc;
 
 		if (gSCManagerBattleState->players[i].pkind == nFTPlayerKindNot)
 		{
@@ -363,7 +363,7 @@ void mvOpeningYoshiPosedFighterProcUpdate(GObj *fighter_gobj)
 void mvOpeningYoshiMakePosedFighter(void)
 {
 	GObj *fighter_gobj;
-	FTCreateDesc desc = dFTManagerDefaultFighterDesc;
+	FTDesc desc = dFTManagerDefaultFighterDesc;
 
 	desc.fkind = nFTKindYoshi;
 	desc.costume = ftParamGetCostumeCommonID(nFTKindYoshi, 0);

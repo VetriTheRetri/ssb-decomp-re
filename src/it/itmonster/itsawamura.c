@@ -19,7 +19,7 @@ extern intptr_t lITSawamuraDisplayList;     // 0x00012340
 // // // // // // // // // // // //
 
 // 0x8018B220
-ITCreateDesc dITSawamuraItemDesc =
+ITDesc dITSawamuraItemDesc =
 {
     nITKindSawamura,                        // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?

@@ -11,7 +11,7 @@ extern u16 gFTManagerStatUpdateCount;
 extern void *gFTManagerCommonFile;
 extern size_t gFTManagerFigatreeHeapSize;
 
-extern FTCreateDesc dFTManagerDefaultFighterDesc;
+extern FTDesc dFTManagerDefaultFighterDesc;
 extern FTData *dFTManagerDataFiles[/* */];
 
 extern void ftManagerSetupFileSize();
@@ -27,7 +27,7 @@ extern void ftManagerSetupFilesAllKind(s32 fkind);
 extern void* ftManagerAllocFigatreeHeapKind(s32 fkind);
 extern void ftManagerDestroyFighter(GObj* fighter_gobj);
 extern void ftManagerDestroyFighterWeapons(GObj* fighter_gobj);
-extern void func_ovl2_800D79F0(GObj* fighter_gobj, FTCreateDesc *ft_desc);
-extern GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc);
+extern void func_ovl2_800D79F0(GObj* fighter_gobj, FTDesc *ft_desc);
+extern GObj* ftManagerMakeFighter(FTDesc *ft_desc);
 
 #endif

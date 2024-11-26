@@ -1039,7 +1039,7 @@ void scManagerRunLoop(sb32 arg)
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[33]);
-				char_bkg_info_entry();
+				mnCharactersStartScene();
 				break;
 
 			case nSCKindStartup:

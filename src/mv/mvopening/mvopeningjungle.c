@@ -307,7 +307,7 @@ void mvOpeningJungleMakeFighters(void)
 
     for (i = 0; i < ARRAY_COUNT(gSCManagerBattleState->players); i++)
     {
-        FTCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
+        FTDesc ft_desc = dFTManagerDefaultFighterDesc;
 
         if (gSCManagerBattleState->players[i].pkind == nFTPlayerKindNot)
         {

@@ -170,7 +170,7 @@ void func_ovl46_80131CA4()
 void mvOpeningCliffMakeFighter(void)
 {
     GObj* fighter_gobj;
-    FTCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
+    FTDesc ft_desc = dFTManagerDefaultFighterDesc;
 
     ft_desc.fkind = nFTKindLink;
     ft_desc.costume = ftParamGetCostumeCommonID(nFTKindLink, 0);

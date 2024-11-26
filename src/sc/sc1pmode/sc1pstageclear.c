@@ -1063,7 +1063,7 @@ sb32 sc1PStageClearCheckHaveBonusStats(void)
 		{
 			return TRUE;
 		}
-		if (i == GS_BITCOUNT(sSC1PStageClearBonusFlags))
+		if (i == NBITS(sSC1PStageClearBonusFlags))
 		{
 			return FALSE;
 		}
@@ -1230,7 +1230,7 @@ sb32 sc1PStageClearCheckHaveBonusStatID(s32 bonus_id)
 {
 	SC1PStageClearStats bonus;
 
-	while (bonus_id < GS_BITCOUNT(sSC1PStageClearBonusFlags))
+	while (bonus_id < NBITS(sSC1PStageClearBonusFlags))
 	{
 		sc1PStageClearSetupBonusStats(&bonus, bonus_id);
 
@@ -1263,7 +1263,7 @@ s32 sc1PStageClearGetUpdateBonusStatPointsAll(void)
 
 	while (TRUE)
 	{
-		if (sSC1PStageClearBonusID == GS_BITCOUNT(sSC1PStageClearBonusFlags))
+		if (sSC1PStageClearBonusID == NBITS(sSC1PStageClearBonusFlags))
 		{
 			sSC1PStageClearIsAdvance = TRUE;
 			return points;

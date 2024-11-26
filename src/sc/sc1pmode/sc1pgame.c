@@ -1270,7 +1270,7 @@ void sc1PGameSpawnEnemyTeamNext(GObj *player_gobj)
     FTStruct *fp;
     FTAttributes *attr;
     void *unused2;
-    FTCreateDesc ft_desc;
+    FTDesc ft_desc;
     void **figatree;
     GObj *com_gobj;
     s32 player;
@@ -1989,7 +1989,7 @@ void sc1PGameFuncStart(void)
     void *addr;
     u8 spA0[0x10];
     s32 i;
-    FTCreateDesc ft_desc;
+    FTDesc ft_desc;
     SYColorRGBA color;
 
     sc1PGameSetupStageAll();

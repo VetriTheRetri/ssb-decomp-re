@@ -1,4 +1,5 @@
 #include <ft/fighter.h>
+
 // // // // // // // // // // // //
 //                               //
 //             MACROS            //
@@ -107,10 +108,10 @@ void ftCommonGuardUpdateShieldVars(GObj *fighter_gobj)
                 if (fp->is_attach_effect)
                 {
                     // 0x801886C0
-                    Vec3f egg_gfx_offset = { 0.0F, 0.0F, 0.0F };
+                    Vec3f egg_effect_offset = { 0.0F, 0.0F, 0.0F };
 
-                    gmCollisionGetFighterPartsWorldPosition(fp->joints[nFTPartsJointYRotN], &egg_gfx_offset);
-                    efManagerEggBreakMakeEffect(&egg_gfx_offset);
+                    gmCollisionGetFighterPartsWorldPosition(fp->joints[nFTPartsJointYRotN], &egg_effect_offset);
+                    efManagerEggBreakMakeEffect(&egg_effect_offset);
                 }
             }
             ftParamProcStopEffect(fighter_gobj);
@@ -178,35 +179,35 @@ void ftCommonGuardUpdateShieldAngle(FTStruct *fp)
 }
 
 // WARNING: Actually DObjDesc*?
-void ftCommonGuardGetJointTransform(DObj *joint, DObjDesc *joint_desc, f32 range)
+void ftCommonGuardGetJointTransform(DObj *joint, DObjDesc *dobjdesc, f32 range)
 {
-    joint->rotate.vec.f.x = ((joint->rotate.vec.f.x - joint_desc->rotate.x) * range) + joint_desc->rotate.x;
-    joint->rotate.vec.f.y = ((joint->rotate.vec.f.y - joint_desc->rotate.y) * range) + joint_desc->rotate.y;
-    joint->rotate.vec.f.z = ((joint->rotate.vec.f.z - joint_desc->rotate.z) * range) + joint_desc->rotate.z;
+    joint->rotate.vec.f.x = ((joint->rotate.vec.f.x - dobjdesc->rotate.x) * range) + dobjdesc->rotate.x;
+    joint->rotate.vec.f.y = ((joint->rotate.vec.f.y - dobjdesc->rotate.y) * range) + dobjdesc->rotate.y;
+    joint->rotate.vec.f.z = ((joint->rotate.vec.f.z - dobjdesc->rotate.z) * range) + dobjdesc->rotate.z;
 
-    joint->translate.vec.f.x = ((joint->translate.vec.f.x - joint_desc->translate.x) * range) + joint_desc->translate.x;
-    joint->translate.vec.f.y = ((joint->translate.vec.f.y - joint_desc->translate.y) * range) + joint_desc->translate.y;
-    joint->translate.vec.f.z = ((joint->translate.vec.f.z - joint_desc->translate.z) * range) + joint_desc->translate.z;
+    joint->translate.vec.f.x = ((joint->translate.vec.f.x - dobjdesc->translate.x) * range) + dobjdesc->translate.x;
+    joint->translate.vec.f.y = ((joint->translate.vec.f.y - dobjdesc->translate.y) * range) + dobjdesc->translate.y;
+    joint->translate.vec.f.z = ((joint->translate.vec.f.z - dobjdesc->translate.z) * range) + dobjdesc->translate.z;
 }
 
 // WARNING: Actually DObjDesc*?
-void ftCommonGuardGetJointTransformScale(DObj *joint, DObjDesc *joint_desc, f32 range, Vec3f *scale)
+void ftCommonGuardGetJointTransformScale(DObj *joint, DObjDesc *dobjdesc, f32 range, Vec3f *scale)
 {
     f32 scale_translate;
 
-    joint->rotate.vec.f.x = ((joint->rotate.vec.f.x - joint_desc->rotate.x) * range) + joint_desc->rotate.x;
-    joint->rotate.vec.f.y = ((joint->rotate.vec.f.y - joint_desc->rotate.y) * range) + joint_desc->rotate.y;
-    joint->rotate.vec.f.z = ((joint->rotate.vec.f.z - joint_desc->rotate.z) * range) + joint_desc->rotate.z;
+    joint->rotate.vec.f.x = ((joint->rotate.vec.f.x - dobjdesc->rotate.x) * range) + dobjdesc->rotate.x;
+    joint->rotate.vec.f.y = ((joint->rotate.vec.f.y - dobjdesc->rotate.y) * range) + dobjdesc->rotate.y;
+    joint->rotate.vec.f.z = ((joint->rotate.vec.f.z - dobjdesc->rotate.z) * range) + dobjdesc->rotate.z;
 
     // y tho
 
-    scale_translate = joint_desc->translate.x * scale->x;
+    scale_translate = dobjdesc->translate.x * scale->x;
     joint->translate.vec.f.x = ((joint->translate.vec.f.x - scale_translate) * range) + scale_translate;
 
-    scale_translate = joint_desc->translate.y * scale->y;
+    scale_translate = dobjdesc->translate.y * scale->y;
     joint->translate.vec.f.y = ((joint->translate.vec.f.y - scale_translate) * range) + scale_translate;
 
-    scale_translate = joint_desc->translate.z * scale->z;
+    scale_translate = dobjdesc->translate.z * scale->z;
     joint->translate.vec.f.z = ((joint->translate.vec.f.z - scale_translate) * range) + scale_translate;
 }
 

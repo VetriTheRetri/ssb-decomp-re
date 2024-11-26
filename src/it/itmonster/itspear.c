@@ -25,7 +25,7 @@ extern intptr_t lITSpearMatAnimJoint;       // 0x0000E12C
 // // // // // // // // // // // //
 
 // 0x8018AE00
-ITCreateDesc dITSpearItemDesc =
+ITDesc dITSpearItemDesc =
 {
     nITKindSpear,                           // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -78,7 +78,7 @@ ITStatusDesc dITSpearStatusDescs[/* */] =
 };
 
 // 0x8018AE74
-WPCreateDesc dITSpearWeaponSwarmWeaponDesc =
+WPDesc dITSpearWeaponSwarmWeaponDesc =
 {
     0x01,                                   // Render flags?
     nWPKindSpearSwarm,                      // Weapon Kind
@@ -103,7 +103,7 @@ WPCreateDesc dITSpearWeaponSwarmWeaponDesc =
 };
 
 // 0x8018AEA8
-WPCreateDesc dITPippiWeaponSwarmWeaponDesc =
+WPDesc dITPippiWeaponSwarmWeaponDesc =
 {
     0x01,                                   // Render flags?
     nWPKindSpearSwarm,                      // Weapon Kind

@@ -20,7 +20,7 @@ lITStarRodWeaponStarSmashAttributes;        // 0x00000508
 //                               //
 // // // // // // // // // // // //
 
-ITCreateDesc dITStarRodItemDesc =
+ITDesc dITStarRodItemDesc =
 {
     nITKindStarRod,                         // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -107,7 +107,7 @@ ITStatusDesc dITStarRodStatusDescs[/* */] =
     }
 };
 
-WPCreateDesc dITStarRodWeaponStarWeaponDesc =
+WPDesc dITStarRodWeaponStarWeaponDesc =
 {
     0x00,                                   // Render flags?
     nWPKindStarRodStar,                     // Weapon Kind

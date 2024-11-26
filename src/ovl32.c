@@ -75,13 +75,13 @@ GObj* gMNVSRecordTableHeadersGObj;
 GObj* gMNVSRecordTableValuesGObj;
 
 // 0x80136C28
-s32 gMNVSRecordBattleScoreFtKindOrder[12];
+s32 gMNVSRecordBattleScoreFighterKindOrder[12];
 
 // 0x80136C58
-s32 gMNVSRecordRankingFtKindOrder[12];
+s32 gMNVSRecordRankingFighterKindOrder[12];
 
 // 0x80136C88
-s32 gMNVSRecordIndividualFtKindOrder[12];
+s32 gMNVSRecordIndividualFighterKindOrder[12];
 
 // 0x80136CB8
 s32 gMNVSRecordCurrentIndex;
@@ -111,7 +111,7 @@ void mnVSRecordSetLighting(Gfx **display_list)
 }
 
 // 0x80131B24
-s32 mnVSRecordGetFtKindByIndex(s32 index)
+s32 mnVSRecordGetFighterKindByIndex(s32 index)
 {
 	s32 FTKinds[12] = {
 
@@ -765,13 +765,13 @@ void mnVSRecordSetIconPositionForColumn(SObj* icon_sobj, s32 column)
 			col_width = 18;
 			x = 49.0f;
 			y = 49.0f;
-			fkind = gMNVSRecordBattleScoreFtKindOrder[column];
+			fkind = gMNVSRecordBattleScoreFighterKindOrder[column];
 			break;
 		case vsRecordsKindIndividual:
 			col_width = 19;
 			x = 66.0f;
 			y = 145.0f;
-			fkind = gMNVSRecordIndividualFtKindOrder[column];
+			fkind = gMNVSRecordIndividualFighterKindOrder[column];
 			break;
 	}
 
@@ -817,10 +817,10 @@ void mnVSRecordCreateColumnIcons(s32 icon_gobj)
 	switch (gMNVSRecordStatsKind)
 	{
 		case vsRecordsKindBattleScore:
-			fkinds = &gMNVSRecordBattleScoreFtKindOrder;
+			fkinds = &gMNVSRecordBattleScoreFighterKindOrder;
 			break;
 		case vsRecordsKindIndividual:
-			fkinds = &gMNVSRecordIndividualFtKindOrder;
+			fkinds = &gMNVSRecordIndividualFighterKindOrder;
 			break;
 	}
 
@@ -855,10 +855,10 @@ void mnVSRecordSetIconPositionForRow(SObj* icon_sobj, s32 row)
 	switch (gMNVSRecordStatsKind)
 	{
 		case vsRecordsKindBattleScore:
-			fkind = gMNVSRecordBattleScoreFtKindOrder[row];
+			fkind = gMNVSRecordBattleScoreFighterKindOrder[row];
 			break;
 		case vsRecordsKindRanking:
-			fkind = gMNVSRecordRankingFtKindOrder[row];
+			fkind = gMNVSRecordRankingFighterKindOrder[row];
 			break;
 	}
 
@@ -891,10 +891,10 @@ void mnVSRecordCreateRowIcons(GObj* icon_gobj)
 	switch (gMNVSRecordStatsKind)
 	{
 		case vsRecordsKindBattleScore:
-			fkinds = &gMNVSRecordBattleScoreFtKindOrder;
+			fkinds = &gMNVSRecordBattleScoreFighterKindOrder;
 			break;
 		case vsRecordsKindRanking:
-			fkinds = &gMNVSRecordRankingFtKindOrder;
+			fkinds = &gMNVSRecordRankingFighterKindOrder;
 			break;
 	}
 
@@ -924,7 +924,7 @@ s32 mnVSRecordGetRanking(s32 fkind)
 	s32 foo, bar;
 
 	for (i = 0; i < 12; i++)
-		fkinds_ordered[i] = mnVSRecordGetFtKindByIndex(i);
+		fkinds_ordered[i] = mnVSRecordGetFighterKindByIndex(i);
 
 	for (i = 0; i < 12; i++)
 		stats[i] = mnVSRecordGetWinPercentage(i);
@@ -1022,7 +1022,7 @@ void mnVSRecordSortData(s32 stats_kind)
 	s32 i;
 
 	for (i = 0; i < 12; i++)
-		fkinds_ordered[i] = mnVSRecordGetFtKindByIndex(i);
+		fkinds_ordered[i] = mnVSRecordGetFighterKindByIndex(i);
 
 	switch (stats_kind)
 	{
@@ -1060,7 +1060,7 @@ void mnVSRecordSortData(s32 stats_kind)
 			break;
 		case vsRecordsKindIndividual:
 			for (i = 0; i < 12; i++)
-				stats[i] = mnVSRecordGetWinPercentageAgainst(gMNVSRecordRankingFtKindOrder[gMNVSRecordCurrentIndex], i);
+				stats[i] = mnVSRecordGetWinPercentageAgainst(gMNVSRecordRankingFighterKindOrder[gMNVSRecordCurrentIndex], i);
 			break;
 	}
 
@@ -1085,15 +1085,15 @@ void mnVSRecordSortData(s32 stats_kind)
 	{
 		case vsRecordsKindBattleScore:
 			for (i = 0; i < 12; i++)
-				gMNVSRecordBattleScoreFtKindOrder[i] = fkinds_ordered[i];
+				gMNVSRecordBattleScoreFighterKindOrder[i] = fkinds_ordered[i];
 			break;
 		case vsRecordsKindRanking:
 			for (i = 0; i < 12; i++)
-				gMNVSRecordRankingFtKindOrder[i] = fkinds_ordered[i];
+				gMNVSRecordRankingFighterKindOrder[i] = fkinds_ordered[i];
 			break;
 		case vsRecordsKindIndividual:
 			for (i = 0; i < 12; i++)
-				gMNVSRecordIndividualFtKindOrder[i] = fkinds_ordered[i];
+				gMNVSRecordIndividualFighterKindOrder[i] = fkinds_ordered[i];
 			break;
 		default:
 			break;
@@ -1119,17 +1119,17 @@ GObj* mnVSRecordCreateBattleScoreTableValues()
 		x = 66.0f;
 		y = (i * 13);
 
-		if (mnVSRecordIsUnlocked(gMNVSRecordBattleScoreFtKindOrder[i]))
+		if (mnVSRecordIsUnlocked(gMNVSRecordBattleScoreFighterKindOrder[i]))
 		{
 			for (j = 0; j < 12; j++)
 			{
-				if (mnVSRecordIsUnlocked(gMNVSRecordBattleScoreFtKindOrder[j]))
+				if (mnVSRecordIsUnlocked(gMNVSRecordBattleScoreFighterKindOrder[j]))
 				{
-					mnVSRecordCreateNumber(values_gobj, gSCManagerBackupData.vs_records[gMNVSRecordBattleScoreFtKindOrder[i]].ko_count[gMNVSRecordBattleScoreFtKindOrder[j]], x + (j * 0x12), y + 65.0f, colors, FALSE, FALSE, 4, FALSE);
+					mnVSRecordCreateNumber(values_gobj, gSCManagerBackupData.vs_records[gMNVSRecordBattleScoreFighterKindOrder[i]].ko_count[gMNVSRecordBattleScoreFighterKindOrder[j]], x + (j * 0x12), y + 65.0f, colors, FALSE, FALSE, 4, FALSE);
 				}
 			}
 
-			mnVSRecordCreateNumber(values_gobj, mnVSRecordGetKOs(gMNVSRecordBattleScoreFtKindOrder[i]), x + 216.0f + 10.0f, y + 65.0f, colors, FALSE, FALSE, 6, FALSE);
+			mnVSRecordCreateNumber(values_gobj, mnVSRecordGetKOs(gMNVSRecordBattleScoreFighterKindOrder[i]), x + 216.0f + 10.0f, y + 65.0f, colors, FALSE, FALSE, 6, FALSE);
 		}
 	}
 
@@ -1266,7 +1266,7 @@ GObj* mnVSRecordCreateRankingTableValues(s32 column)
 
 	for (i = 0; i < 12; i++)
 	{
-		if (mnVSRecordIsUnlocked(gMNVSRecordRankingFtKindOrder[i]))
+		if (mnVSRecordIsUnlocked(gMNVSRecordRankingFighterKindOrder[i]))
 		{
 			x = 0x30;
 			y = (i * 13) + 65.0f;
@@ -1278,19 +1278,19 @@ GObj* mnVSRecordCreateRankingTableValues(s32 column)
 					SObj* table_values_sobj;
 
 					case vsRecordsRankingColumnKindWinPercentage:
-						mnVSRecordCreateNumber(table_values_gobj, mnVSRecordGetWinPercentage(gMNVSRecordRankingFtKindOrder[i]) * 10.0f, col_widths[column_order[j]] + x, y, colors, TRUE, FALSE, 3, FALSE);
+						mnVSRecordCreateNumber(table_values_gobj, mnVSRecordGetWinPercentage(gMNVSRecordRankingFighterKindOrder[i]) * 10.0f, col_widths[column_order[j]] + x, y, colors, TRUE, FALSE, 3, FALSE);
 						break;
 					case vsRecordsRankingColumnKindKOs:
-						mnVSRecordCreateNumber(table_values_gobj, mnVSRecordGetKOs(gMNVSRecordRankingFtKindOrder[i]), col_widths[column_order[j]] + x, y, colors, FALSE, FALSE, 6, FALSE);
+						mnVSRecordCreateNumber(table_values_gobj, mnVSRecordGetKOs(gMNVSRecordRankingFighterKindOrder[i]), col_widths[column_order[j]] + x, y, colors, FALSE, FALSE, 6, FALSE);
 						break;
 					case vsRecordsRankingColumnKindTKOs:
-						mnVSRecordCreateNumber(table_values_gobj, mnVSRecordGetTKOs(gMNVSRecordRankingFtKindOrder[i]), col_widths[column_order[j]] + x, y, colors, FALSE, FALSE, 6, FALSE);
+						mnVSRecordCreateNumber(table_values_gobj, mnVSRecordGetTKOs(gMNVSRecordRankingFighterKindOrder[i]), col_widths[column_order[j]] + x, y, colors, FALSE, FALSE, 6, FALSE);
 						break;
 					case vsRecordsRankingColumnKindSDPercentage:
-						mnVSRecordCreateNumber(table_values_gobj, mnVSRecordGetSDPercentage(gMNVSRecordRankingFtKindOrder[i]) * 10.0f, col_widths[column_order[j]] + x, y, colors, TRUE, FALSE, 3, FALSE);
+						mnVSRecordCreateNumber(table_values_gobj, mnVSRecordGetSDPercentage(gMNVSRecordRankingFighterKindOrder[i]) * 10.0f, col_widths[column_order[j]] + x, y, colors, TRUE, FALSE, 3, FALSE);
 						break;
 					case vsRecordsRankingColumnKindTime:
-						mnVSRecordCreateNumber(table_values_gobj, (gSCManagerBackupData.vs_records[gMNVSRecordRankingFtKindOrder[i]].time_used % 3600) / 60, col_widths[column_order[j]] + x, y, colors, FALSE, FALSE, 2, TRUE);
+						mnVSRecordCreateNumber(table_values_gobj, (gSCManagerBackupData.vs_records[gMNVSRecordRankingFighterKindOrder[i]].time_used % 3600) / 60, col_widths[column_order[j]] + x, y, colors, FALSE, FALSE, 2, TRUE);
 
 						table_values_sobj = lbCommonMakeSObjForGObj(table_values_gobj, lbRelocGetFileData(void*, gMNVSRecordFiles[0], &FILE_01F_COLON_IMAGE_OFFSET));
 						mnVSRecordSetTextureColors(table_values_sobj, colors);
@@ -1298,13 +1298,13 @@ GObj* mnVSRecordCreateRankingTableValues(s32 column)
 						table_values_sobj->pos.x = col_widths[column_order[j]] + x - 11;
 						table_values_sobj->pos.y = y;
 
-						mnVSRecordCreateNumber(table_values_gobj, gSCManagerBackupData.vs_records[gMNVSRecordRankingFtKindOrder[i]].time_used / 3600, col_widths[column_order[j]] + x - 13, y, colors, FALSE, FALSE, 3, FALSE);
+						mnVSRecordCreateNumber(table_values_gobj, gSCManagerBackupData.vs_records[gMNVSRecordRankingFighterKindOrder[i]].time_used / 3600, col_widths[column_order[j]] + x - 13, y, colors, FALSE, FALSE, 3, FALSE);
 						break;
 					case vsRecordsRankingColumnKindUsePercentage:
-						mnVSRecordCreateNumber(table_values_gobj, mnVSRecordGetUsePercentage(gMNVSRecordRankingFtKindOrder[i]) * 10.0f, col_widths[column_order[j]] + x, y, colors, TRUE, FALSE, 3, FALSE);
+						mnVSRecordCreateNumber(table_values_gobj, mnVSRecordGetUsePercentage(gMNVSRecordRankingFighterKindOrder[i]) * 10.0f, col_widths[column_order[j]] + x, y, colors, TRUE, FALSE, 3, FALSE);
 						break;
 					case vsRecordsRankingColumnKindAverage:
-						mnVSRecordCreateNumber(table_values_gobj, mnVSRecordGetAverage(gMNVSRecordRankingFtKindOrder[i]) * 10.0f, col_widths[column_order[j]] + x - 15, y, colors, TRUE, FALSE, 1, FALSE);
+						mnVSRecordCreateNumber(table_values_gobj, mnVSRecordGetAverage(gMNVSRecordRankingFighterKindOrder[i]) * 10.0f, col_widths[column_order[j]] + x - 15, y, colors, TRUE, FALSE, 1, FALSE);
 						break;
 				}
 
@@ -1413,13 +1413,13 @@ s32 mnVSRecordCreateIndividualTableValues()
 
 	for (i = 0; i < 12; i++)
 	{
-		if (mnVSRecordIsUnlocked(gMNVSRecordRankingFtKindOrder[i]))
+		if (mnVSRecordIsUnlocked(gMNVSRecordRankingFighterKindOrder[i]))
 		{
 			x = (i * 19) + 84.0f;
-			mnVSRecordCreateNumber(table_values_gobj, mnVSRecordGetWinPercentageAgainst(gMNVSRecordRankingFtKindOrder[gMNVSRecordCurrentIndex], gMNVSRecordIndividualFtKindOrder[i]) * 10.0f, x, y[0], colors, TRUE, FALSE, 3, FALSE);
-			mnVSRecordCreateNumber(table_values_gobj, gSCManagerBackupData.vs_records[gMNVSRecordRankingFtKindOrder[gMNVSRecordCurrentIndex]].ko_count[gMNVSRecordIndividualFtKindOrder[i]], x, y[1], colors, FALSE, FALSE, 4, FALSE);
-			mnVSRecordCreateNumber(table_values_gobj, gSCManagerBackupData.vs_records[gMNVSRecordIndividualFtKindOrder[i]].ko_count[gMNVSRecordRankingFtKindOrder[gMNVSRecordCurrentIndex]], x, y[2], colors, FALSE, FALSE, 4, FALSE);
-			mnVSRecordCreateNumber(table_values_gobj, mnVSRecordGetAverageAgainst(gMNVSRecordRankingFtKindOrder[gMNVSRecordCurrentIndex], gMNVSRecordIndividualFtKindOrder[i]) * 10.0f, x, y[3], colors, TRUE, FALSE, 3, FALSE);
+			mnVSRecordCreateNumber(table_values_gobj, mnVSRecordGetWinPercentageAgainst(gMNVSRecordRankingFighterKindOrder[gMNVSRecordCurrentIndex], gMNVSRecordIndividualFighterKindOrder[i]) * 10.0f, x, y[0], colors, TRUE, FALSE, 3, FALSE);
+			mnVSRecordCreateNumber(table_values_gobj, gSCManagerBackupData.vs_records[gMNVSRecordRankingFighterKindOrder[gMNVSRecordCurrentIndex]].ko_count[gMNVSRecordIndividualFighterKindOrder[i]], x, y[1], colors, FALSE, FALSE, 4, FALSE);
+			mnVSRecordCreateNumber(table_values_gobj, gSCManagerBackupData.vs_records[gMNVSRecordIndividualFighterKindOrder[i]].ko_count[gMNVSRecordRankingFighterKindOrder[gMNVSRecordCurrentIndex]], x, y[2], colors, FALSE, FALSE, 4, FALSE);
+			mnVSRecordCreateNumber(table_values_gobj, mnVSRecordGetAverageAgainst(gMNVSRecordRankingFighterKindOrder[gMNVSRecordCurrentIndex], gMNVSRecordIndividualFighterKindOrder[i]) * 10.0f, x, y[3], colors, TRUE, FALSE, 3, FALSE);
 		}
 	}
 
@@ -1460,7 +1460,7 @@ s32 mnVSRecordCreateIndividualPortraitStatsAndTableHeaders()
 	}
 
 	mnVSRecordCreateColumnIcons(individual_stats_gobj);
-	mnVSRecordCreatePortraitAndStats(individual_stats_gobj, gMNVSRecordRankingFtKindOrder[gMNVSRecordCurrentIndex]);
+	mnVSRecordCreatePortraitAndStats(individual_stats_gobj, gMNVSRecordRankingFighterKindOrder[gMNVSRecordCurrentIndex]);
 
 	return individual_stats_gobj;
 }
@@ -1635,7 +1635,7 @@ void mnVSRecordMain(GObj* arg0)
 			else
 				gMNVSRecordCurrentIndex--;
 
-			while (mnVSRecordIsUnlocked(gMNVSRecordRankingFtKindOrder[gMNVSRecordCurrentIndex]) == FALSE)
+			while (mnVSRecordIsUnlocked(gMNVSRecordRankingFighterKindOrder[gMNVSRecordCurrentIndex]) == FALSE)
 			{
 				if (gMNVSRecordCurrentIndex == 0)
 				{
@@ -1663,7 +1663,7 @@ void mnVSRecordMain(GObj* arg0)
 			else
 				gMNVSRecordCurrentIndex++;
 
-			while (mnVSRecordIsUnlocked(gMNVSRecordRankingFtKindOrder[gMNVSRecordCurrentIndex]) == FALSE)
+			while (mnVSRecordIsUnlocked(gMNVSRecordRankingFighterKindOrder[gMNVSRecordCurrentIndex]) == FALSE)
 			{
 				if (gMNVSRecordCurrentIndex == 11)
 				{
@@ -1736,7 +1736,7 @@ void mnVSRecordMain(GObj* arg0)
 			else
 				gMNVSRecordCurrentIndex++;
 
-			while (mnVSRecordIsUnlocked(gMNVSRecordRankingFtKindOrder[gMNVSRecordCurrentIndex]) == FALSE)
+			while (mnVSRecordIsUnlocked(gMNVSRecordRankingFighterKindOrder[gMNVSRecordCurrentIndex]) == FALSE)
 			{
 				if (gMNVSRecordCurrentIndex == 11)
 					gMNVSRecordCurrentIndex = 0;
@@ -1765,7 +1765,7 @@ void mnVSRecordMain(GObj* arg0)
 			else
 				gMNVSRecordCurrentIndex--;
 
-			while (mnVSRecordIsUnlocked(gMNVSRecordRankingFtKindOrder[gMNVSRecordCurrentIndex]) == FALSE)
+			while (mnVSRecordIsUnlocked(gMNVSRecordRankingFighterKindOrder[gMNVSRecordCurrentIndex]) == FALSE)
 			{
 				if (gMNVSRecordCurrentIndex == 0)
 					gMNVSRecordCurrentIndex = 11;

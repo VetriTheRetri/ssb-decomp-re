@@ -923,7 +923,7 @@ void lbCommonSetupTreeDObjs(DObj *root_dobj, DObjDesc *dobjdesc, DObj **dobjs, u
     {
         array_dobjs[i] = NULL;
     }
-    while (dobjdesc->id != ARRAY_COUNT(array_dobjs)) 
+    while (dobjdesc->id != ARRAY_COUNT(array_dobjs))
     {
         id = dobjdesc->id & 0xFFF;
 
@@ -1035,7 +1035,7 @@ void lbCommonSetupFighterPartsDObjs
     }
     for (i = 0; ((flags0 != 0) || (flags1 != 0)) && (dobjdesc->id != ARRAY_COUNT(array_dobjs)); i++)
     {
-        current_flags = (i < GS_BITCOUNT(u32)) ? flags0 : flags1;
+        current_flags = (i < NBITS(u32)) ? flags0 : flags1;
 
         if (current_flags & (1 << 31))
         {
@@ -1092,7 +1092,7 @@ void lbCommonSetupFighterPartsDObjs
         dobjs++;
         dobjdesc++;
 
-        if (i < GS_BITCOUNT(u32))
+        if (i < NBITS(u32))
         {
             flags0 <<= 1;
         }

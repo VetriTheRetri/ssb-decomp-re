@@ -16,7 +16,7 @@ lWPFoxBlasterWeaponAttributes;              // 0x00000000
 //                               //
 // // // // // // // // // // // //
 
-WPCreateDesc dWPFoxBlasterWeaponDesc = 
+WPDesc dWPFoxBlasterWeaponDesc = 
 {
     0x00,                                   // Render flags?
     nWPKindBlaster,                        // Weapon Kind

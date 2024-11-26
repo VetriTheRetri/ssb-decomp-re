@@ -30,7 +30,7 @@ Vec2f dITBoxItemSpawnVelocities[/* */] =
 };
 
 // 0x8018A350
-ITCreateDesc dITBoxItemDesc = 
+ITDesc dITBoxItemDesc = 
 {
     nITKindBox,                             // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?

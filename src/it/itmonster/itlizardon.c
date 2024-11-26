@@ -26,7 +26,7 @@ lITLizardonMatAnimJoint;                    // 0x0000D688
 // // // // // // // // // // // //
 
 // 0x8018AD30
-ITCreateDesc dITLizardonItemDesc = 
+ITDesc dITLizardonItemDesc = 
 {
     nITKindLizardon,                        // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -91,7 +91,7 @@ ITStatusDesc dITLizardonStatusDescs[/* */] =
 };
 
 // 0x8018ADC4
-WPCreateDesc dITLizardonWeaponFlameWeaponDesc = 
+WPDesc dITLizardonWeaponFlameWeaponDesc = 
 {
     0x00,                                   // Render flags?
     nWPKindLizardonFlame,                   // Weapon Kind

@@ -3,7 +3,7 @@
 extern void *gSC1PBonusStageFiles[/* */];
 
 // 0x8018F130
-ITCreateDesc dITTargetItemDesc =
+ITDesc dITTargetItemDesc =
 {
 	nITKindTarget,						// Item Kind
 	&gSC1PBonusStageFiles[0], 			// Pointer to item file data?

@@ -325,7 +325,7 @@ s32 D_ovl28_80138070[] = {
 void func_ovl28_80131FC8() {}
 
 // 0x80131FD0
-s32 mnTrainingGetFtKind(s32 portrait_id)
+s32 mnTrainingGetFighterKind(s32 portrait_id)
 {
 	s32 FTKind_order[12] = {
 
@@ -385,7 +385,7 @@ void mnTrainingCreateLockedPortrait(s32 portrait_id)
 	gcAddGObjDisplay(texture_gobj, mnTrainingRenderPortraitWithNoise, 0x1BU, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddGObjProcess(texture_gobj, mnTrainingSetPortraitX, 1, 1);
 
-	texture_sobj = lbCommonMakeSObjForGObj(texture_gobj, lbRelocGetFileData(void*, gMNTrainingFiles[6], locked_portrait_offsets[mnTrainingGetFtKind(portrait_id)]));
+	texture_sobj = lbCommonMakeSObjForGObj(texture_gobj, lbRelocGetFileData(void*, gMNTrainingFiles[6], locked_portrait_offsets[mnTrainingGetFighterKind(portrait_id)]));
 	texture_sobj->sprite.attr = texture_sobj->sprite.attr & ~SP_FASTCOPY;
 	texture_sobj->sprite.attr = texture_sobj->sprite.attr| SP_TRANSPARENT;
 
@@ -423,7 +423,7 @@ void mnTrainingCreatePortrait(s32 portrait_id)
 	};
 
 	// if locked, render locked portrait instead
-	if (mnTrainingGetIsLocked(mnTrainingGetFtKind(portrait_id)))
+	if (mnTrainingGetIsLocked(mnTrainingGetFighterKind(portrait_id)))
 	{
 		mnTrainingCreateLockedPortrait(portrait_id);
 	}
@@ -443,13 +443,13 @@ void mnTrainingCreatePortrait(s32 portrait_id)
 		gcAddGObjDisplay(portrait_gobj, lbCommonDrawSObjAttr, 0x1BU, GOBJ_PRIORITY_DEFAULT, ~0);
 		gcAddGObjProcess(portrait_gobj, mnTrainingSetPortraitX, 1, 1);
 
-		texture_sobj = lbCommonMakeSObjForGObj(portrait_gobj, lbRelocGetFileData(void*, gMNTrainingFiles[6], portrait_offsets[mnTrainingGetFtKind(portrait_id)]));
+		texture_sobj = lbCommonMakeSObjForGObj(portrait_gobj, lbRelocGetFileData(void*, gMNTrainingFiles[6], portrait_offsets[mnTrainingGetFighterKind(portrait_id)]));
 		texture_sobj->sprite.attr = texture_sobj->sprite.attr & ~SP_FASTCOPY;
 		texture_sobj->sprite.attr = texture_sobj->sprite.attr| SP_TRANSPARENT;
 		portrait_gobj->user_data.p = portrait_id;
 
 		// this conditionally draws a big red box with an X in it, but this check always fails
-		if (mnTrainingCheckFighterIsXBoxed(mnTrainingGetFtKind(portrait_id)))
+		if (mnTrainingCheckFighterIsXBoxed(mnTrainingGetFighterKind(portrait_id)))
 		{
 			mnTrainingAddRedXBoxToPortrait(portrait_gobj, portrait_id);
 		}
@@ -945,7 +945,7 @@ void mnTrainingRotateFighter(GObj *fighter_gobj)
 void mnTrainingSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 fkind, s32 costume_id)
 {
 	f32 initial_y_rotation;
-	FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
+	FTDesc spawn_info = dFTManagerDefaultFighterDesc;
 
 	if (fkind != nFTKindNull)
 	{
@@ -1576,7 +1576,7 @@ sb32 mnTrainingCheckAndHandleTokenPickup(GObj* cursor_gobj, s32 port_id)
 }
 
 // 0x80134EE8
-s32 mnTrainingGetFtKindFromTokenPosition(s32 port_id)
+s32 mnTrainingGetFighterKindFromTokenPosition(s32 port_id)
 {
 	SObj* token_sobj = SObjGetStruct(gMNTrainingPanels[port_id].token);
 	s32 current_y = (s32) token_sobj->pos.x + 13;
@@ -1592,7 +1592,7 @@ s32 mnTrainingGetFtKindFromTokenPosition(s32 port_id)
 
 		if (is_within_bounds)
 		{
-			char_id = mnTrainingGetFtKind((s32) (current_y - 25) / 45);
+			char_id = mnTrainingGetFighterKind((s32) (current_y - 25) / 45);
 
 			if ((mnTrainingCheckFighterIsXBoxed(char_id)) || (mnTrainingGetIsLocked(char_id)))
 				return nFTKindNull;
@@ -1609,7 +1609,7 @@ s32 mnTrainingGetFtKindFromTokenPosition(s32 port_id)
 
 		if (is_within_bounds)
 		{
-			char_id = mnTrainingGetFtKind(((s32) (current_y - 25) / 45) + 6);
+			char_id = mnTrainingGetFighterKind(((s32) (current_y - 25) / 45) + 6);
 
 			if ((mnTrainingCheckFighterIsXBoxed(char_id)) || (mnTrainingGetIsLocked(char_id)))
 				return nFTKindNull;
@@ -1995,7 +1995,7 @@ void mnTrainingSyncTokenAndFighter(GObj* token_gobj)
 		else
 			mnTrainingMoveToken(port_id);
 
-		fkind = mnTrainingGetFtKindFromTokenPosition(port_id);
+		fkind = mnTrainingGetFighterKindFromTokenPosition(port_id);
 
 		if ((gMNTrainingPanels[port_id].player_type == mnPanelTypeCPU)
 			&& (fkind != gMNTrainingPanels[port_id].char_id)

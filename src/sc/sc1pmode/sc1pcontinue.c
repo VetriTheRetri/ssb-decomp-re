@@ -343,7 +343,7 @@ void sc1PContinueSetFighterScale(GObj *gobj, s32 fkind)
 void sc1PContinueMakeFighter(s32 fkind)
 {
     GObj *fighter_gobj;
-    FTCreateDesc ft_desc;
+    FTDesc ft_desc;
 
     ft_desc = dFTManagerDefaultFighterDesc;
 

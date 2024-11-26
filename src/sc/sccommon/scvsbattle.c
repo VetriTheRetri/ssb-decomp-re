@@ -134,7 +134,7 @@ void scVSBattleStartBattle(void)
 	s32 player;
 	sb32 (*func_dmem)(void);
 	void *file;
-	FTCreateDesc ft_desc;
+	FTDesc ft_desc;
 	SYColorRGBA color;
 
 	gSCManagerSceneData.is_reset = FALSE;
@@ -422,7 +422,7 @@ void scVSBattleStartSuddenDeath(void)
 	s32 unused[3];
 	GObj *fighter_gobj;
 	s32 player;
-	FTCreateDesc ft_desc;
+	FTDesc ft_desc;
 	SYColorRGBA color;
 
 	gSCManagerSceneData.is_reset = FALSE;

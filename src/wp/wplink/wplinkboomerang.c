@@ -16,7 +16,7 @@ lWPLinkBoomerangWeaponAttributes;           // 0x00000000
 //                               //
 // // // // // // // // // // // //
 
-WPCreateDesc dWPLinkBoomerangWeaponDesc =
+WPDesc dWPLinkBoomerangWeaponDesc =
 {
     0x01,                                   // Render flags?
     nWPKindBoomerang,                       // Weapon Kind

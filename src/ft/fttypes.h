@@ -561,7 +561,7 @@ struct FTThrowReleaseDesc
     s32 knockback_base;
 };
 
-struct FTCreateDesc
+struct FTDesc
 {
     s32 fkind;
     Vec3f pos;
@@ -1195,7 +1195,7 @@ struct FTStruct
 
     f32 unk_ft_0x7A0;                   // Unused?
     f32 hitlag_mul;
-    f32 shield_lifeup_wait;
+    f32 shield_heal_wait;
     s32 unk_ft_0x7AC;                   // Unused?
 
     s32 attack_damage;

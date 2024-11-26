@@ -18,7 +18,7 @@ lWPBossBulletHardWeaponAttributes;          // 0x000007A8
 //                               //
 // // // // // // // // // // // //
 
-WPCreateDesc dWPBossBulletNormalWeaponDesc =
+WPDesc dWPBossBulletNormalWeaponDesc =
 {
     0x01,                                   // Render flags?
     nWPKindBulletNormal,                   // Weapon Kind
@@ -42,7 +42,7 @@ WPCreateDesc dWPBossBulletNormalWeaponDesc =
     wpBossBulletProcHit                     // Proc Absorb
 };
 
-WPCreateDesc dWPBossBulletHardWeaponDesc =
+WPDesc dWPBossBulletHardWeaponDesc =
 {
     0x01,                                   // Render flags?
     nWPKindBulletHard,                     // Weapon Kind

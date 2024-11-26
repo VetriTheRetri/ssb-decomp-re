@@ -126,7 +126,7 @@ wpSamusChargeShotAttributes dWPSamusChargeShotWeaponAttributes[/* */] =
     }
 };
 
-WPCreateDesc dWPSamusChargeShotWeaponDesc =
+WPDesc dWPSamusChargeShotWeaponDesc =
 {
     0x00,                                   // Render flags?
     nWPKindChargeShot,                     // Weapon Kind

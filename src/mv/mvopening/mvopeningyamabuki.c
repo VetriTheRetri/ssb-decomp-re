@@ -154,7 +154,7 @@ void mvOpeningYamabukiMakeWallpaper(void)
 void mvOpeningYamabukiMakeFighter(void)
 {
     GObj* fighter_gobj;
-    FTCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
+    FTDesc ft_desc = dFTManagerDefaultFighterDesc;
 
     ft_desc.fkind = nFTKindPikachu;
     ft_desc.costume = ftParamGetCostumeCommonID(nFTKindPikachu, 0);

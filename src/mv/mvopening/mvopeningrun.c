@@ -125,7 +125,7 @@ void mvOpeningRunMakeFighters(void)
 
 	for (i = 0; i < ARRAY_COUNT(fkinds); i++)
 	{
-		FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
+		FTDesc spawn_info = dFTManagerDefaultFighterDesc;
 
 		spawn_info.fkind = fkinds[i];
 		spawn_info.costume = ftParamGetCostumeCommonID(fkinds[i], 0);

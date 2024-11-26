@@ -1194,7 +1194,7 @@ typedef struct FTStatusDesc				        FTStatusDesc;
 typedef struct FTOpeningDesc		            FTOpeningDesc;
 typedef struct FTThrowHitDesc			        FTThrowHitDesc;
 typedef struct FTThrowReleaseDesc		        FTThrowReleaseDesc;
-typedef struct FTCreateDesc				        FTCreateDesc;
+typedef struct FTDesc				        FTDesc;
 typedef struct FTAttackMatrix                   FTAttackMatrix;
 typedef struct FTAttackColl					    FTAttackColl;
 typedef struct FTDamageCollDesc			        FTDamageCollDesc;

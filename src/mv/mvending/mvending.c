@@ -238,7 +238,7 @@ void mvEndingMakeRoomTissues(void)
 void mvEndingMakeFighter(s32 fkind)
 {
     GObj *fighter_gobj;
-    FTCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
+    FTDesc ft_desc = dFTManagerDefaultFighterDesc;
 
     ft_desc.fkind = fkind;
 

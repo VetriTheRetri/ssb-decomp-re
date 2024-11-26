@@ -21,7 +21,7 @@ extern intptr_t lITKamexDisplayList;        // 0x0000ED60
 // // // // // // // // // // // //
 
 // 0x8018AEE0
-ITCreateDesc dITKamexItemDesc = 
+ITDesc dITKamexItemDesc = 
 {
     nITKindKamex,                           // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -86,7 +86,7 @@ ITStatusDesc dITKamexStatusDescs[/* */] =
 };
 
 // 0x8018AF74
-WPCreateDesc dITKamexWeaponHydroWeaponDesc =
+WPDesc dITKamexWeaponHydroWeaponDesc =
 {
     0x01,                                   // Render flags?
     nWPKindKamexHydro,                      // Weapon Kind

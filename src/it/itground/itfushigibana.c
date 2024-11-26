@@ -26,7 +26,7 @@ extern s32 dGRYamabukiMonsterAttackKind;
 //                               //
 // // // // // // // // // // // //
 
-ITCreateDesc dITFushigibanaItemDesc =
+ITDesc dITFushigibanaItemDesc =
 {
     nITKindFushigibana,                         // Item Kind
     &gGRCommonStruct.yamabuki.item_head,        // Pointer to item file data?
@@ -50,7 +50,7 @@ ITCreateDesc dITFushigibanaItemDesc =
     NULL                                        // Proc Damage
 };
 
-WPCreateDesc dITFushigibanaWeaponRazorWeaponDesc =
+WPDesc dITFushigibanaWeaponRazorWeaponDesc =
 {
     0x03,                                       // Render flags?
     nWPKindFushigibanaRazor,                    // Weapon Kind

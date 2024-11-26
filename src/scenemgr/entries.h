@@ -30,7 +30,7 @@ void sc1PBonusStageStartScene();
 void sc1PTrainingModeStartScene();
 void vs_results_entry();
 void vs_records_entry();
-void char_bkg_info_entry();
+void mnCharactersStartScene();
 void mnStartupStartScene();
 void mvOpeningRoomStartScene();
 void mvOpeningPortraitsStartScene();

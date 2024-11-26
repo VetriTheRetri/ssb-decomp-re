@@ -35,8 +35,8 @@ extern intptr_t D_NF_00002EB4;                              // 0x00002EB4
 extern void func_ovl2_80106730(DObj *arg0, Vec3f *vec1, Vec3f *vec2, Vec3f *vec3);
 extern sb32 grSectorArwingLaser3DFuncMatrix(Mtx *mtx, DObj *dobj, Gfx **dls);
 extern void func_ovl2_80106A40(DObj *dobj, AObjEvent32 *anim_joint, f32 arg2);
-extern void func_ovl2_80106A98(void);
 extern void grSectorArwingUpdateSleep(void);
+extern void grSectorArwingUpdateWait(void);
 extern void func_ovl2_80106C88(void);
 extern void func_ovl2_80106CC4(void);
 extern void func_ovl2_80106D00(void);
@@ -59,7 +59,7 @@ extern void func_ovl2_80107910(void);
 extern void func_ovl2_80107958(void);
 extern void func_ovl2_80107B30(void);
 extern void grSectorArwingUpdateCollisions(void);
-extern void func_ovl2_80107CA0(void);
+extern void grSectorArwingUpdatePatrol(void);
 extern void func_ovl2_80107D50(void);
 extern void grSectorProcUpdate(GObj *ground_gobj);
 extern void grSectorInitAll(void);

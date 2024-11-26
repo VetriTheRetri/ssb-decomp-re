@@ -207,7 +207,7 @@ void sc1PChallengerFighterProcUpdate(GObj *fighter_gobj)
 void sc1PChallengerMakeFighter(s32 fkind)
 {
     GObj *fighter_gobj;
-    FTCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
+    FTDesc ft_desc = dFTManagerDefaultFighterDesc;
 
     ft_desc.fkind = fkind;
     ft_desc.costume = ftParamGetCostumeCommonID(fkind, 0);

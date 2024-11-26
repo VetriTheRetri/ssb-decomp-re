@@ -1690,7 +1690,7 @@ void sc1PTrainingModeUpdateDummyBehavior(void)
 void sc1PTrainingModeFuncStart(void)
 {
 	GObj *fighter_gobj;
-	FTCreateDesc ft_desc;
+	FTDesc ft_desc;
 	s32 player;
 	SYColorRGBA color;
 

@@ -17,7 +17,7 @@ extern intptr_t lITKabigonAnimJoint;        // 0x0000B158
 // // // // // // // // // // // //
 
 // 0x8018AB40
-ITCreateDesc dITKabigonItemDesc = 
+ITDesc dITKabigonItemDesc = 
 {
     nITKindKabigon,                         // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?

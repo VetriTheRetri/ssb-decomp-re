@@ -14,7 +14,7 @@ extern intptr_t lITTomatoItemAttributes;    // 0x000000B8
 //                               //
 // // // // // // // // // // // //
 
-ITCreateDesc dITTomatoItemDesc =
+ITDesc dITTomatoItemDesc =
 {
     nITKindTomato,                          // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?

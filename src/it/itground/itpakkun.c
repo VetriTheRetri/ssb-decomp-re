@@ -23,7 +23,7 @@ intptr_t lITPakkunDamagedMatAnimJoint;      // 0x00000E04
 //                               //
 // // // // // // // // // // // //
 
-ITCreateDesc dITPakkunItemDesc =
+ITDesc dITPakkunItemDesc =
 {
     nITKindPakkun,                          // Item Kind
     &gGRCommonStruct.inishie.item_head,     // Pointer to item file data?

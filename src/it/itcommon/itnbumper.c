@@ -19,7 +19,7 @@ extern intptr_t lITNBumperWaitDisplayList;  // 0x00007AF8
 // // // // // // // // // // // //
 
 // 0x8018A690
-ITCreateDesc dITNBumperItemDesc =
+ITDesc dITNBumperItemDesc =
 {
     nITKindNBumper,                         // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?

@@ -20,7 +20,7 @@ extern intptr_t lITDogasAnimJoint;          // 0x000128DC
 // // // // // // // // // // // //
 
 // 0x8018B2C0
-ITCreateDesc dITDogasItemDesc =
+ITDesc dITDogasItemDesc =
 {
     nITKindDogas,                           // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -73,7 +73,7 @@ ITStatusDesc dITDogasStatusDescs[/* */] =
 };
 
 // 0x8018B334
-WPCreateDesc dITDogasWeaponSmogWeaponDesc = 
+WPDesc dITDogasWeaponSmogWeaponDesc = 
 {
     0x03,                                   // Render flags?
     nWPKindDogasSmog,                       // Weapon Kind
@@ -299,7 +299,7 @@ sb32 itDogasWeaponSmogProcUpdate(GObj *weapon_gobj)
 // 0x80183144
 GObj* itDogasWeaponSmogMakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
 {
-    WPCreateDesc *weapon_desc = &dITDogasWeaponSmogWeaponDesc;
+    WPDesc *weapon_desc = &dITDogasWeaponSmogWeaponDesc;
     GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dITDogasWeaponSmogWeaponDesc, pos, WEAPON_FLAG_PARENT_ITEM);
     DObj *dobj;
     WPStruct *wp;

@@ -268,7 +268,7 @@ void mvOpeningMarioMakeMotionWindow(void)
 
 	for (i = 0; i < ARRAY_COUNT(gSCManagerBattleState->players); i++)
 	{
-		FTCreateDesc desc = dFTManagerDefaultFighterDesc;
+		FTDesc desc = dFTManagerDefaultFighterDesc;
 
 		if (gSCManagerBattleState->players[i].pkind == nFTPlayerKindNot)
 		{
@@ -367,7 +367,7 @@ void mvOpeningMarioPosedFighterProcUpdate(GObj *fighter_gobj)
 void mvOpeningMarioMakePosedFighter(void)
 {
 	GObj *fighter_gobj;
-	FTCreateDesc desc = dFTManagerDefaultFighterDesc;
+	FTDesc desc = dFTManagerDefaultFighterDesc;
 
 	desc.fkind = nFTKindMario;
 	desc.costume = ftParamGetCostumeCommonID(nFTKindMario, 0);

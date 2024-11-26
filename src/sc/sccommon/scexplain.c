@@ -710,7 +710,7 @@ void scExplainFuncStart(void)
     s32 unused[3];
     GObj *fighter_gobj;
     s32 player;
-    FTCreateDesc ft_desc;
+    FTDesc ft_desc;
     SYColorRGBA color;
 
     scExplainSetBattleState();

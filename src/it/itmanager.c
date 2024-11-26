@@ -237,7 +237,7 @@ void itManagerSetupItemDObjs(GObj *gobj, DObjDesc *dobjdesc, DObj **dobjs, u8 tr
 }
 
 // 0x8016E174
-GObj* itManagerMakeItem(GObj *parent_gobj, ITCreateDesc *item_desc, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itManagerMakeItem(GObj *parent_gobj, ITDesc *item_desc, Vec3f *pos, Vec3f *vel, u32 flags)
 {
     ITStruct *ip = itManagerGetNextStructAlloc();
     GObj *item_gobj;

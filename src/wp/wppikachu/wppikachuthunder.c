@@ -18,7 +18,7 @@ lWPPikachuThunderTrailWeaponAttributes;         // 0x00000040
 //                               //
 // // // // // // // // // // // //
 
-WPCreateDesc dWPPikachuThunderHeadWeaponDesc =
+WPDesc dWPPikachuThunderHeadWeaponDesc =
 {
     0x02,                                       // Render flags?
     nWPKindThunderHead,                        // Weapon Kind
@@ -42,7 +42,7 @@ WPCreateDesc dWPPikachuThunderHeadWeaponDesc =
     NULL                                        // Proc Absorb
 };
 
-WPCreateDesc dWPPikachuThunderTrailWeaponDesc =
+WPDesc dWPPikachuThunderTrailWeaponDesc =
 {
     0x02,                                       // Render flags?
     nWPKindThunderTrail,                       // Weapon Kind

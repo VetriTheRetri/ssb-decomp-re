@@ -997,7 +997,7 @@ void sc1PBonusStageFuncStart(void)
 	s32 unused[3];
 	s32 player;
 	GObj* fighter_gobj;
-	FTCreateDesc ft_desc;
+	FTDesc ft_desc;
 	SYColorRGBA color;
 
 	sc1PBonusStageInitVars();

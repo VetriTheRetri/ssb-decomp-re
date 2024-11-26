@@ -56,7 +56,7 @@ extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 // Forward declarations
 void mn1PRedrawCursor(GObj* cursor_gobj, s32 port_id, s32 cursor_state);
 void mn1PAnnounceFighter(s32 port_id, s32 panel_id);
-s32 mn1PGetFtKindFromTokenPositionEvenIfLocked();
+s32 mn1PGetFighterKindFromTokenPositionEvenIfLocked();
 void mn1PReorderCursorsOnPlacement(s32 port_id);
 void mn1PDrawStock(s32 stock, s32 fkind);
 void mn1PCreateWhiteSquare(s32 port_id);
@@ -174,7 +174,7 @@ u16 gMN1PCharacterUnlockedMask;
 u16 D_ovl27_80138FCA;
 
 // 0x80138FCC
-s32 gMN1PFtKind;
+s32 gMN1PFighterKind;
 
 // 0x80138FD0
 s32 gMN1PCostumeId[182];
@@ -574,7 +574,7 @@ s32 D_ovl27_80138860[] = {
 void func_ovl27_80132794() {}
 
 // 0x8013279C
-s32 mn1PGetFtKind(s32 portrait_id)
+s32 mn1PGetFighterKind(s32 portrait_id)
 {
 	s32 FTKind_order[12] = {
 
@@ -634,7 +634,7 @@ void mn1PCreateLockedPortrait(s32 portrait_id)
 	gcAddGObjDisplay(texture_gobj, mn1PRenderPortraitWithNoise, 0x1BU, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddGObjProcess(texture_gobj, mn1PSetPortraitX, 1, 1);
 
-	texture_sobj = lbCommonMakeSObjForGObj(texture_gobj, lbRelocGetFileData(void*, gMN1PFiles[4], locked_portrait_offsets[mn1PGetFtKind(portrait_id)]));
+	texture_sobj = lbCommonMakeSObjForGObj(texture_gobj, lbRelocGetFileData(void*, gMN1PFiles[4], locked_portrait_offsets[mn1PGetFighterKind(portrait_id)]));
 	texture_sobj->sprite.attr = texture_sobj->sprite.attr & ~SP_FASTCOPY;
 	texture_sobj->sprite.attr = texture_sobj->sprite.attr| SP_TRANSPARENT;
 
@@ -672,7 +672,7 @@ void mn1PCreatePortrait(s32 portrait_id)
 	};
 
 	// if locked, render locked portrait instead
-	if (mn1PGetIsLocked(mn1PGetFtKind(portrait_id)))
+	if (mn1PGetIsLocked(mn1PGetFighterKind(portrait_id)))
 		mn1PCreateLockedPortrait(portrait_id);
 	else
 	{
@@ -690,13 +690,13 @@ void mn1PCreatePortrait(s32 portrait_id)
 		gcAddGObjDisplay(portrait_gobj, lbCommonDrawSObjAttr, 0x1BU, GOBJ_PRIORITY_DEFAULT, ~0);
 		gcAddGObjProcess(portrait_gobj, mn1PSetPortraitX, 1, 1);
 
-		texture_sobj = lbCommonMakeSObjForGObj(portrait_gobj, lbRelocGetFileData(void*, gMN1PFiles[4], portrait_offsets[mn1PGetFtKind(portrait_id)]));
+		texture_sobj = lbCommonMakeSObjForGObj(portrait_gobj, lbRelocGetFileData(void*, gMN1PFiles[4], portrait_offsets[mn1PGetFighterKind(portrait_id)]));
 		texture_sobj->sprite.attr = texture_sobj->sprite.attr & ~SP_FASTCOPY;
 		texture_sobj->sprite.attr = texture_sobj->sprite.attr| SP_TRANSPARENT;
 		portrait_gobj->user_data.p = portrait_id;
 
 		// this conditionally draws a big red box with an X in it, but this check always fails
-		if (mn1PCheckFighterIsXBoxed(mn1PGetFtKind(portrait_id)))
+		if (mn1PCheckFighterIsXBoxed(mn1PGetFighterKind(portrait_id)))
 			mn1PAddRedXBoxToPortrait(portrait_gobj, portrait_id);
 
 		mn1PInitializePortraitBackgroundPosition(texture_sobj, portrait_id);
@@ -1323,7 +1323,7 @@ void mn1PDrawHighscore()
 		{ 0xE4, 0x41, 0x41 }
 	};
 	s32 best_difficulty;
-	s32 fkind = mn1PGetFtKindFromTokenPositionEvenIfLocked();
+	s32 fkind = mn1PGetFighterKindFromTokenPositionEvenIfLocked();
 
 	if (gMN1PHighscoreGObj != NULL)
 	{
@@ -1371,7 +1371,7 @@ void mn1PDrawBonuses()
 
 		0x00, 0x00, 0x00, 0x40, 0x6F, 0xCD
 	};
-	s32 fkind = mn1PGetFtKindFromTokenPositionEvenIfLocked();
+	s32 fkind = mn1PGetFighterKindFromTokenPositionEvenIfLocked();
 
 	if (gMN1PBonusesGObj != NULL)
 	{
@@ -1580,7 +1580,7 @@ void mn1PRotateFighter(GObj *fighter_gobj)
 void mn1PSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 fkind, s32 costume_id)
 {
 	f32 initial_y_rotation;
-	FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
+	FTDesc spawn_info = dFTManagerDefaultFighterDesc;
 
 	if (fkind != nFTKindNull)
 	{
@@ -2006,7 +2006,7 @@ sb32 mn1PCheckAndHandleTokenPickup(GObj* cursor_gobj, s32 port_id)
 }
 
 // 0x80135F34
-s32 mn1PGetFtKindFromTokenPositionEvenIfLocked()
+s32 mn1PGetFighterKindFromTokenPositionEvenIfLocked()
 {
 	SObj* token_sobj = SObjGetStruct(gMN1PPanel.token);
 	s32 current_y = (s32) token_sobj->pos.x + 13;
@@ -2021,7 +2021,7 @@ s32 mn1PGetFtKindFromTokenPositionEvenIfLocked()
 		is_within_bounds = (current_y >= 25) && (current_y < 295) ? TRUE : FALSE;
 
 		if (is_within_bounds)
-			return mn1PGetFtKind((s32) (current_y - 25) / 45);
+			return mn1PGetFighterKind((s32) (current_y - 25) / 45);
 	}
 
 	is_within_bounds = (current_x >= 79) && (current_x < 122) ? TRUE : FALSE;
@@ -2031,13 +2031,13 @@ s32 mn1PGetFtKindFromTokenPositionEvenIfLocked()
 		is_within_bounds = (current_y >= 25) && (current_y < 295) ? TRUE : FALSE;
 
 		if (is_within_bounds)
-			return mn1PGetFtKind(((s32) (current_y - 25) / 45) + 6);
+			return mn1PGetFighterKind(((s32) (current_y - 25) / 45) + 6);
 	}
 	return nFTKindNull;
 }
 
 // 0x80136050
-s32 mn1PGetFtKindFromTokenPosition(s32 port_id)
+s32 mn1PGetFighterKindFromTokenPosition(s32 port_id)
 {
 	SObj* token_sobj = SObjGetStruct(gMN1PPanel.token);
 	s32 current_y = (s32) token_sobj->pos.x + 13;
@@ -2053,7 +2053,7 @@ s32 mn1PGetFtKindFromTokenPosition(s32 port_id)
 
 		if (is_within_bounds)
 		{
-			char_id = mn1PGetFtKind((s32) (current_y - 25) / 45);
+			char_id = mn1PGetFighterKind((s32) (current_y - 25) / 45);
 
 			if ((mn1PCheckFighterIsXBoxed(char_id)) || (mn1PGetIsLocked(char_id)))
 				return nFTKindNull;
@@ -2070,7 +2070,7 @@ s32 mn1PGetFtKindFromTokenPosition(s32 port_id)
 
 		if (is_within_bounds)
 		{
-			char_id = mn1PGetFtKind(((s32) (current_y - 25) / 45) + 6);
+			char_id = mn1PGetFighterKind(((s32) (current_y - 25) / 45) + 6);
 
 			if ((mn1PCheckFighterIsXBoxed(char_id)) || (mn1PGetIsLocked(char_id)))
 				return nFTKindNull;
@@ -2582,7 +2582,7 @@ void mn1PSyncTokenAndFighter(GObj* token_gobj)
 	else
 		mn1PMoveToken(port_id);
 
-	fkind = mn1PGetFtKindFromTokenPosition(port_id);
+	fkind = mn1PGetFighterKindFromTokenPosition(port_id);
 
 	if ((!gMN1PPanel.is_selected)
 		&& (fkind != gMN1PPanel.char_id))
@@ -3053,7 +3053,7 @@ void mn1PLoadMatchInfo()
 	gMN1PHumanPanelPort = gSCManagerSceneData.player;
 	gMN1PLevelValue = gSCManagerBackupData.spgame_difficulty;
 	gMN1PStockValue = gSCManagerBackupData.spgame_stock_count;
-	gMN1PFtKind = gSCManagerSceneData.fkind;
+	gMN1PFighterKind = gSCManagerSceneData.fkind;
 	gMN1PCostumeId[0] = gSCManagerSceneData.costume;
 	gMN1PHighscoreGObj = NULL;
 	gMN1PBonusesGObj = NULL;

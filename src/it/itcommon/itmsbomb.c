@@ -17,7 +17,7 @@ extern intptr_t lITMSBombAttackEvents;         // 0x00000404
 //                               //
 // // // // // // // // // // // //
 
-ITCreateDesc dITMSBombItemDesc =
+ITDesc dITMSBombItemDesc =
 {
     nITKindMSBomb,                          // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?

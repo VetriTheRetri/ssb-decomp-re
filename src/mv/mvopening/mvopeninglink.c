@@ -257,7 +257,7 @@ void mvOpeningLinkMakeMotionWindow(void)
 
 	for (i = 0; i < ARRAY_COUNT(gSCManagerBattleState->players); i++)
 	{
-		FTCreateDesc desc = dFTManagerDefaultFighterDesc;
+		FTDesc desc = dFTManagerDefaultFighterDesc;
 
 		if (gSCManagerBattleState->players[i].pkind == nFTPlayerKindNot)
 		{
@@ -356,7 +356,7 @@ void mvOpeningLinkPosedFighterProcUpdate(GObj *fighter_gobj)
 void mvOpeningLinkMakePosedFighter(void)
 {
 	GObj *fighter_gobj;
-	FTCreateDesc desc = dFTManagerDefaultFighterDesc;
+	FTDesc desc = dFTManagerDefaultFighterDesc;
 
 	desc.fkind = nFTKindLink;
 	desc.costume = ftParamGetCostumeCommonID(nFTKindLink, 0);

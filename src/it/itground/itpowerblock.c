@@ -17,7 +17,7 @@ extern intptr_t lITPowerBlockAnimJoint;     // 0x00001288
 //                               //
 // // // // // // // // // // // //
 
-ITCreateDesc dITPowerBlockItemDesc =
+ITDesc dITPowerBlockItemDesc =
 {
     nITKindPowerBlock,                      // Item Kind
     &gGRCommonStruct.inishie.item_head,     // Pointer to item file data?

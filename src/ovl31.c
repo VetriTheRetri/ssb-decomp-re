@@ -73,7 +73,7 @@ void mnVSResultsDrawResults3(s32 arg0);
 void mnVSResultsDrawResultsNoContest(s32 arg0);
 u8 mnVSResultsGetWinningTeam();
 s32 mnVSResultsGetWinnerPort();
-s32 mnVSResultsGetFtKind(s32 port_id);
+s32 mnVSResultsGetFighterKind(s32 port_id);
 s32 mnVSResultsGetKOsMinusTKOs(s32 port_id);
 s32 mnVSResultsGetPlayerCountByPlace(s32 place);
 
@@ -380,7 +380,7 @@ void mnVSResultsAnnounceWinner()
 				func_800269C0_275C0(0x216U);
 				return;
 			case 0xD2:
-				func_800269C0_275C0(announcer_names[mnVSResultsGetFtKind(mnVSResultsGetWinnerPort())]);
+				func_800269C0_275C0(announcer_names[mnVSResultsGetFighterKind(mnVSResultsGetWinnerPort())]);
 				return;
 			case 0x10E:
 				func_800269C0_275C0(0x272U);
@@ -671,13 +671,13 @@ void mnVSResultsCreateLogo()
 	if (gMNVSResultsIsTeamBattle == FALSE)
 	{
 		winner_port_id = mnVSResultsGetWinnerPort();
-		winner_char_id = mnVSResultsGetFtKind(winner_port_id);
+		winner_char_id = mnVSResultsGetFighterKind(winner_port_id);
 		color = winner_port_id;
 	}
 
 	if (gMNVSResultsIsTeamBattle == TRUE)
 	{
-		winner_char_id = mnVSResultsGetFtKind(mnVSResultsGetWinnerPort());
+		winner_char_id = mnVSResultsGetFighterKind(mnVSResultsGetWinnerPort());
 		color = colors[mnVSResultsGetWinningTeam()];
 	}
 
@@ -784,13 +784,13 @@ s32 mnVSResultsGetPlacement(s32 port_id)
 }
 
 // 0x80133148
-s32 mnVSResultsGetFtKind(s32 port_id)
+s32 mnVSResultsGetFighterKind(s32 port_id)
 {
 	return gMNVSResultsFTKind[port_id];
 }
 
 // 0x8013315C
-void mnVSResultsSetFtKind()
+void mnVSResultsSetFighterKind()
 {
 	s32 i;
 
@@ -891,7 +891,7 @@ void mnVSResultsSetAnim(GObj* fighter_gobj, s32 port_id)
 {
 	if (gMNVSResultsGameRule == 4)
 	{
-		scSubsysFighterSetStatus(fighter_gobj, mnVSResultsGetDefeatedAnim(mnVSResultsGetFtKind(port_id)));
+		scSubsysFighterSetStatus(fighter_gobj, mnVSResultsGetDefeatedAnim(mnVSResultsGetFighterKind(port_id)));
 		return;
 	}
 
@@ -901,34 +901,34 @@ void mnVSResultsSetAnim(GObj* fighter_gobj, s32 port_id)
 			switch (gMNVSResultsPlacement[port_id])
 			{
 				case 0:
-					scSubsysFighterSetStatus(fighter_gobj, mnVSResultsGetVictoryAnim(mnVSResultsGetFtKind(port_id)));
+					scSubsysFighterSetStatus(fighter_gobj, mnVSResultsGetVictoryAnim(mnVSResultsGetFighterKind(port_id)));
 					return;
 				case 1:
-					scSubsysFighterSetStatus(fighter_gobj, mnVSResultsGetDefeatedAnim(mnVSResultsGetFtKind(port_id)));
+					scSubsysFighterSetStatus(fighter_gobj, mnVSResultsGetDefeatedAnim(mnVSResultsGetFighterKind(port_id)));
 					return;
 			}
 			break;
 		case 3:
 			if (gMNVSResultsPlacement[port_id] == 0)
 			{
-				scSubsysFighterSetStatus(fighter_gobj, mnVSResultsGetVictoryAnim(mnVSResultsGetFtKind(port_id)));
+				scSubsysFighterSetStatus(fighter_gobj, mnVSResultsGetVictoryAnim(mnVSResultsGetFighterKind(port_id)));
 				return;
 			}
 			else
 			{
-				scSubsysFighterSetStatus(fighter_gobj, mnVSResultsGetDefeatedAnim(mnVSResultsGetFtKind(port_id)));
+				scSubsysFighterSetStatus(fighter_gobj, mnVSResultsGetDefeatedAnim(mnVSResultsGetFighterKind(port_id)));
 				return;
 			}
 		case 4:
 		default:
 			if (gMNVSResultsPlacement[port_id] == 0)
 			{
-				scSubsysFighterSetStatus(fighter_gobj, mnVSResultsGetVictoryAnim(mnVSResultsGetFtKind(port_id)));
+				scSubsysFighterSetStatus(fighter_gobj, mnVSResultsGetVictoryAnim(mnVSResultsGetFighterKind(port_id)));
 				return;
 			}
 			else
 			{
-				scSubsysFighterSetStatus(fighter_gobj, mnVSResultsGetDefeatedAnim(mnVSResultsGetFtKind(port_id)));
+				scSubsysFighterSetStatus(fighter_gobj, mnVSResultsGetDefeatedAnim(mnVSResultsGetFighterKind(port_id)));
 				return;
 			}
 	}
@@ -991,9 +991,9 @@ void mnVSResultsSetFighterScale(GObj* fighter_gobj, s32 port_id, s32 fkind, s32 
 void mnVSResultsSpawnFighter(s32 port_id)
 {
 	s32 foo, bar, baz;
-	FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
+	FTDesc spawn_info = dFTManagerDefaultFighterDesc;
 
-	spawn_info.fkind = mnVSResultsGetFtKind(port_id);
+	spawn_info.fkind = mnVSResultsGetFighterKind(port_id);
 	spawn_info.costume = gSCManagerTransferBattleState.players[port_id].costume;
 	spawn_info.shade = gSCManagerTransferBattleState.players[port_id].shade;
 	spawn_info.figatree_heap = gMNVSResultsFigatreeHeaps[port_id];
@@ -1046,16 +1046,16 @@ void mnVSResultsSetIndicatorPosition(GObj* indicator_gobj, s32 port_id)
 	{
 		case 2:
 			SObjGetStruct(indicator_gobj)->pos.x = xy_positions_2p[temp_s0][sp214].x;
-			SObjGetStruct(indicator_gobj)->pos.y = xy_positions_2p[temp_s0][sp214].y + y_positions_kind[mnVSResultsGetFtKind(port_id)][temp_s0];
+			SObjGetStruct(indicator_gobj)->pos.y = xy_positions_2p[temp_s0][sp214].y + y_positions_kind[mnVSResultsGetFighterKind(port_id)][temp_s0];
 			break;
 		case 3:
 			SObjGetStruct(indicator_gobj)->pos.x = xy_positions_3p[temp_s0][sp214].x;
-			SObjGetStruct(indicator_gobj)->pos.y = xy_positions_3p[temp_s0][sp214].y + y_positions_kind[mnVSResultsGetFtKind(port_id)][temp_s0];
+			SObjGetStruct(indicator_gobj)->pos.y = xy_positions_3p[temp_s0][sp214].y + y_positions_kind[mnVSResultsGetFighterKind(port_id)][temp_s0];
 			break;
 		case 4:
 		default:
 			SObjGetStruct(indicator_gobj)->pos.x = xy_positions_4p[temp_s0][sp214].x;
-			SObjGetStruct(indicator_gobj)->pos.y = xy_positions_4p[temp_s0][sp214].y + y_positions_kind[mnVSResultsGetFtKind(port_id)][temp_s0]    ;
+			SObjGetStruct(indicator_gobj)->pos.y = xy_positions_4p[temp_s0][sp214].y + y_positions_kind[mnVSResultsGetFighterKind(port_id)][temp_s0]    ;
 			break;
 	}
 }
@@ -1227,7 +1227,7 @@ void mnVSResultsDrawWinsText(s32 winner_id)
 // 0x80134364
 s32 mnVSResultsGetWinnerKind()
 {
-	return mnVSResultsGetFtKind(mnVSResultsGetWinnerPort());
+	return mnVSResultsGetFighterKind(mnVSResultsGetWinnerPort());
 }
 
 // 0x8013438C
@@ -2335,7 +2335,7 @@ void mnVSResultsSetArrays()
 			gMNVSResultsPlacement[i] = 0;
 	}
 
-	mnVSResultsSetFtKind();
+	mnVSResultsSetFighterKind();
 }
 
 // 0x80137454
@@ -2357,7 +2357,7 @@ void mnVSResultsDrawFighter(s32 port_id)
 {
 	mnVSResultsSpawnFighter(port_id);
 	mnVSResultsSetFighterPosition(gMNVSResultsFighterGObjs[port_id], port_id, func_ovl31_80133810(port_id));
-	mnVSResultsSetFighterScale(gMNVSResultsFighterGObjs[port_id], port_id, mnVSResultsGetFtKind(port_id), func_ovl31_80133810(port_id));
+	mnVSResultsSetFighterScale(gMNVSResultsFighterGObjs[port_id], port_id, mnVSResultsGetFighterKind(port_id), func_ovl31_80133810(port_id));
 	mnVSResultsCreatePlayerIndicator(port_id, gSCManagerTransferBattleState.players[port_id].color);
 	mnVSResultsSetAnim(gMNVSResultsFighterGObjs[port_id], port_id);
 }
@@ -2745,7 +2745,7 @@ void mnVSResultsAutoHandicap()
 // 0x80138714
 void mnVSResultsPlayVictoryTheme()
 {
-	switch (mnVSResultsGetFtKind(mnVSResultsGetWinnerPort()))
+	switch (mnVSResultsGetFighterKind(mnVSResultsGetWinnerPort()))
 	{
 		case nFTKindMario:
 		case nFTKindLuigi:

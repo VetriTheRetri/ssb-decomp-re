@@ -99,11 +99,10 @@ struct LBTextureDesc
 struct LBTexture
 {
     u32 count;
-    s32 fmt;
-    s32 siz;
+    s32 fmt, siz;
     s32 width, height;
     u32 flags;
-    void *data[1];        // Offsets to image, then palette data
+    void *data[1];          // Offsets to image, then palette data
 };
 
 struct LBGenerator

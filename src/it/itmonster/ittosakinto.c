@@ -18,7 +18,7 @@ extern intptr_t lITTosakintoMatAnimJoint;   // 0x0000B90C
 // // // // // // // // // // // //
 
 // 0x8018ABC0
-ITCreateDesc dITTosakintoItemDesc =
+ITDesc dITTosakintoItemDesc =
 {
     nITKindTosakinto,                       // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?

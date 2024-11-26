@@ -4,7 +4,7 @@
 #define SCBATTLE_TIMELIMIT_INFINITE 100
 #define SCBATTLE_BONUSGAME_TASK_MAX 10
 
-#define SC1PGAME_BONUS_MASK_CREATE(kind)    (1 << ((kind) - (((kind) / GS_BITCOUNT(u32, 1)) * GS_BITCOUNT(u32, 1))))
+#define SC1PGAME_BONUS_MASK_CREATE(kind)    (1 << ((kind) - (((kind) / NBITS(u32, 1)) * NBITS(u32, 1))))
 
 #define SCBATTLE_GAMERULE_TIME 	            (1 << nSCBattleGameRuleTime)	        // 0x1
 #define SCBATTLE_GAMERULE_STOCK	            (1 << nSCBattleGameRuleStock)           // 0x2

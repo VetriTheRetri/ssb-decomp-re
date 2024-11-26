@@ -745,7 +745,7 @@ void sc1PStageCardMakeFighter(FTDemoDesc fighter, s32 card_anim_frame_id, void *
 {
     FTStruct *fp;
     GObj *fighter_gobj;
-    FTCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
+    FTDesc ft_desc = dFTManagerDefaultFighterDesc;
     
     // 0x80134FC0
     s32 dl_links[/* */] =
@@ -970,7 +970,7 @@ GObj* sc1PStageCardMakeVSFighter(s32 fkind, s32 stage, s32 card_anim_frame_id, v
 {
     GObj *fighter_gobj;
     FTStruct *fp;
-    FTCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
+    FTDesc ft_desc = dFTManagerDefaultFighterDesc;
 
     ft_desc.fkind = fkind;
     ft_desc.costume = ftParamGetCostumeCommonID(fkind, 0);
@@ -1525,7 +1525,7 @@ void sc1PStageCardMakeFighterCamera(s32 fkind, s32 cobj_id)
         func_80017EC0,
         dl_links[cobj_id][1],
         COBJ_MASK_DLLINK(dl_links[cobj_id][0]) | COBJ_MASK_DLLINK(15) |
-        COBJ_MASK_DLLINK(10)                  | COBJ_MASK_DLLINK(18),
+        COBJ_MASK_DLLINK(10)                   | COBJ_MASK_DLLINK(18),
         -1,
         FALSE,
         nGCProcessKindFunc,

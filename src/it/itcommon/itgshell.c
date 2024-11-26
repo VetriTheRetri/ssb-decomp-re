@@ -17,7 +17,7 @@ extern intptr_t lITGShellMatAnimJoint;      // 0x00006048
 //                               //
 // // // // // // // // // // // //
 
-ITCreateDesc dITGShellItemDesc =
+ITDesc dITGShellItemDesc =
 {
     nITKindGShell,                          // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?

@@ -259,7 +259,7 @@ void mvOpeningDonkeyMakeMotionWindow(void)
 
 	for (i = 0; i < ARRAY_COUNT(gSCManagerBattleState->players); i++)
 	{
-		FTCreateDesc desc = dFTManagerDefaultFighterDesc;
+		FTDesc desc = dFTManagerDefaultFighterDesc;
 
 		if (gSCManagerBattleState->players[i].pkind == nFTPlayerKindNot)
 		{
@@ -358,7 +358,7 @@ void mvOpeningDonkeyPosedFighterProcUpdate(GObj *fighter_gobj)
 void mvOpeningDonkeyMakePosedFighter(void)
 {
 	GObj *fighter_gobj;
-	FTCreateDesc desc = dFTManagerDefaultFighterDesc;
+	FTDesc desc = dFTManagerDefaultFighterDesc;
 
 	desc.fkind = nFTKindDonkey;
 	desc.costume = ftParamGetCostumeCommonID(nFTKindDonkey, 0);

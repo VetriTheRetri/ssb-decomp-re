@@ -2625,7 +2625,7 @@ FTComputerAttack dFTComputerAttacksNess[/* */] =
 
     // AttackAirN
     {
-        nFTComputerInputStickNButtonA,                     // Input script index
+        nFTComputerInputStickNButtonA,                      // Input script index
         5,                                                  // First frame of hitbox
         30,                                                 // Last frame of hitbox
         -162.0F,                                            // Horizontal range nearest

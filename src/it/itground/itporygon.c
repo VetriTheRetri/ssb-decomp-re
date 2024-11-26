@@ -16,7 +16,7 @@ extern intptr_t lITPorygonHitParties;       // 0x000001B4
 //                               //
 // // // // // // // // // // // //
 
-ITCreateDesc dITPorygonItemDesc = 
+ITDesc dITPorygonItemDesc = 
 {
     nITKindPorygon,                         // Item Kind
     &gGRCommonStruct.yamabuki.item_head,    // Pointer to item file data?

@@ -16,7 +16,7 @@ extern intptr_t lITMarumineAttackEvents;       // 0x0000014C
 //                               //
 // // // // // // // // // // // //
 
-ITCreateDesc dITMarumineItemDesc = 
+ITDesc dITMarumineItemDesc = 
 {
     nITKindMarumine,                        // Item Kind
     &gGRCommonStruct.yamabuki.item_head,    // Pointer to item file data?

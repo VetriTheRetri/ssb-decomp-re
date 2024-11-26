@@ -16,7 +16,7 @@ extern intptr_t lITEggAttackEvents;            // 0x00000B14
 //                               //
 // // // // // // // // // // // //
 
-ITCreateDesc dITEggItemDesc =
+ITDesc dITEggItemDesc =
 {
     nITKindEgg,                             // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?

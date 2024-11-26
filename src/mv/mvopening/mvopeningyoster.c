@@ -109,7 +109,7 @@ void mvOpeningYosterMakeFighters(void)
     };
 
     s32 i;
-    FTCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
+    FTDesc ft_desc = dFTManagerDefaultFighterDesc;
 
     for (i = 0; i < (ARRAY_COUNT(sMVOpeningYosterFigatreeHeaps) + ARRAY_COUNT(status_ids)) / 2; i++)
     {

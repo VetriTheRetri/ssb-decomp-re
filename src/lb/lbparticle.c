@@ -195,7 +195,8 @@ void lbParticleSetupBankID(s32 bank_id, LBScriptDesc *script_desc, LBTextureDesc
 
 	for (i = 1; i <= sLBParticleScriptBanksNum[bank_id]; i++)
 	{
-		/* By default, the scripts array is populated with the offsets of the scripts
+		/* 
+         * By default, the scripts array is populated with the offsets of the scripts
 		 * in their respective file, so this is essentially making them into valid RAM pointers.
 		 */
 		script_desc->scripts[i - 1] = lbRelocGetFileData(LBScript*, script_desc, script_desc->scripts[i - 1]);

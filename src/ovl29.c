@@ -53,7 +53,7 @@ void mnBonusSaveMatchInfo();
 sb32 mnBonusAreAllCompleted();
 void mnBonusCreateWhiteSquare(s32 port_id);
 void mnBonusReorderCursorsOnPlacement(s32 port_id);
-s32 mnBonusGetFtKindFromTokenPositionEvenIfLocked();
+s32 mnBonusGetFighterKindFromTokenPositionEvenIfLocked();
 void mnBonusAnnounceFighter(s32 port_id, s32 panel_id);
 void mnBonusReorderCursorsOnPickup(s32 port_id, s32 token_id);
 void mnBonusRedrawCursor(GObj* cursor_gobj, s32 port_id, s32 cursor_state);
@@ -425,7 +425,7 @@ s32 D_ovl29_80137180[] = {
 void func_ovl29_80132388() {}
 
 // 0x80132390
-s32 mnBonusGetFtKind(s32 portrait_id)
+s32 mnBonusGetFighterKind(s32 portrait_id)
 {
 	s32 FTKind_order[12] = {
 
@@ -485,7 +485,7 @@ void mnBonusCreateLockedPortrait(s32 portrait_id)
 	gcAddGObjDisplay(texture_gobj, mnBonusRenderPortraitWithNoise, 0x1BU, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddGObjProcess(texture_gobj, mnBonusSetPortraitX, 1, 1);
 
-	texture_sobj = lbCommonMakeSObjForGObj(texture_gobj, lbRelocGetFileData(void*, gMnBonusFiles[4], locked_portrait_offsets[mnBonusGetFtKind(portrait_id)]));
+	texture_sobj = lbCommonMakeSObjForGObj(texture_gobj, lbRelocGetFileData(void*, gMnBonusFiles[4], locked_portrait_offsets[mnBonusGetFighterKind(portrait_id)]));
 	texture_sobj->sprite.attr = texture_sobj->sprite.attr & ~SP_FASTCOPY;
 	texture_sobj->sprite.attr = texture_sobj->sprite.attr| SP_TRANSPARENT;
 
@@ -523,7 +523,7 @@ void mnBonusCreatePortrait(s32 portrait_id)
 	};
 
 	// if locked, render locked portrait instead
-	if (mnBonusGetIsLocked(mnBonusGetFtKind(portrait_id)))
+	if (mnBonusGetIsLocked(mnBonusGetFighterKind(portrait_id)))
 	{
 		mnBonusCreateLockedPortrait(portrait_id);
 	}
@@ -546,7 +546,7 @@ void mnBonusCreatePortrait(s32 portrait_id)
 		gcAddGObjDisplay(portrait_gobj, lbCommonDrawSObjAttr, 0x1BU, GOBJ_PRIORITY_DEFAULT, ~0);
 		gcAddGObjProcess(portrait_gobj, mnBonusSetPortraitX, 1, 1);
 
-		texture_sobj = lbCommonMakeSObjForGObj(portrait_gobj, lbRelocGetFileData(void*, gMnBonusFiles[4], portrait_offsets[mnBonusGetFtKind(portrait_id)]));
+		texture_sobj = lbCommonMakeSObjForGObj(portrait_gobj, lbRelocGetFileData(void*, gMnBonusFiles[4], portrait_offsets[mnBonusGetFighterKind(portrait_id)]));
 		texture_sobj->sprite.attr = texture_sobj->sprite.attr & ~SP_FASTCOPY;
 		texture_sobj->sprite.attr = texture_sobj->sprite.attr| SP_TRANSPARENT;
 		texture_sobj->pos.x = ((((portrait_id >= 6) ? portrait_id - 6 : portrait_id) * 0x2D) + 0x19);
@@ -554,7 +554,7 @@ void mnBonusCreatePortrait(s32 portrait_id)
 		portrait_gobj->user_data.p = portrait_id;
 
 		// this conditionally draws a big red box with an X in it, but this check always fails
-		if (mnBonusCheckFighterIsXBoxed(mnBonusGetFtKind(portrait_id)))
+		if (mnBonusCheckFighterIsXBoxed(mnBonusGetFighterKind(portrait_id)))
 		{
 			mnBonusAddRedXBoxToPortrait(portrait_gobj, portrait_id);
 		}
@@ -913,7 +913,7 @@ void mnBonusDrawBestTime()
 		0x00, 0x00, 0x00, 0x7E, 0x7C, 0x77
 	};
 	s32 best_time;
-	s32 fkind = mnBonusGetFtKindFromTokenPositionEvenIfLocked();
+	s32 fkind = mnBonusGetFighterKindFromTokenPositionEvenIfLocked();
 
 	if (gMnBonusHighscoreGobj != NULL)
 	{
@@ -992,7 +992,7 @@ void mnBonusDrawBestCount()
 
 		0x00, 0x00, 0x00, 0x7E, 0x7C, 0x77
 	};
-	s32 fkind = mnBonusGetFtKindFromTokenPositionEvenIfLocked();
+	s32 fkind = mnBonusGetFighterKindFromTokenPositionEvenIfLocked();
 
 	if (gMnBonusHighscoreGobj != NULL)
 	{
@@ -1045,7 +1045,7 @@ sb32 mnBonusIsCompleted(s32 fkind)
 // 0x80133BCC
 void mnBonusDrawHighscore()
 {
-	if (mnBonusIsCompleted(mnBonusGetFtKindFromTokenPositionEvenIfLocked()))
+	if (mnBonusIsCompleted(mnBonusGetFighterKindFromTokenPositionEvenIfLocked()))
 		mnBonusDrawBestTime();
 	else
 		mnBonusDrawBestCount();
@@ -1202,7 +1202,7 @@ void mnBonusRotateFighter(GObj *fighter_gobj)
 void mnBonusSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 fkind)
 {
 	f32 initial_y_rotation;
-	FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
+	FTDesc spawn_info = dFTManagerDefaultFighterDesc;
 
 	if (fkind != nFTKindNull)
 	{
@@ -1603,7 +1603,7 @@ sb32 mnBonusCheckAndHandleTokenPickup(GObj* cursor_gobj, s32 port_id)
 }
 
 // 0x80134E50
-s32 mnBonusGetFtKindFromTokenPositionEvenIfLocked()
+s32 mnBonusGetFighterKindFromTokenPositionEvenIfLocked()
 {
 	SObj* token_sobj = SObjGetStruct(gMnBonusPanel.token);
 	s32 current_y = (s32) token_sobj->pos.x + 13;
@@ -1618,7 +1618,7 @@ s32 mnBonusGetFtKindFromTokenPositionEvenIfLocked()
 		is_within_bounds = (current_y >= 25) && (current_y < 295) ? TRUE : FALSE;
 
 		if (is_within_bounds)
-			return mnBonusGetFtKind((s32) (current_y - 25) / 45);
+			return mnBonusGetFighterKind((s32) (current_y - 25) / 45);
 	}
 
 	is_within_bounds = (current_x >= 79) && (current_x < 122) ? TRUE : FALSE;
@@ -1628,13 +1628,13 @@ s32 mnBonusGetFtKindFromTokenPositionEvenIfLocked()
 		is_within_bounds = (current_y >= 25) && (current_y < 295) ? TRUE : FALSE;
 
 		if (is_within_bounds)
-			return mnBonusGetFtKind(((s32) (current_y - 25) / 45) + 6);
+			return mnBonusGetFighterKind(((s32) (current_y - 25) / 45) + 6);
 	}
 	return nFTKindNull;
 }
 
 // 0x80134F6C
-s32 mnBonusGetFtKindFromTokenPosition(s32 port_id)
+s32 mnBonusGetFighterKindFromTokenPosition(s32 port_id)
 {
 	SObj* token_sobj = SObjGetStruct(gMnBonusPanel.token);
 	s32 current_y = (s32) token_sobj->pos.x + 13;
@@ -1650,7 +1650,7 @@ s32 mnBonusGetFtKindFromTokenPosition(s32 port_id)
 
 		if (is_within_bounds)
 		{
-			char_id = mnBonusGetFtKind((s32) (current_y - 25) / 45);
+			char_id = mnBonusGetFighterKind((s32) (current_y - 25) / 45);
 
 			if ((mnBonusCheckFighterIsXBoxed(char_id)) || (mnBonusGetIsLocked(char_id)))
 				return nFTKindNull;
@@ -1667,7 +1667,7 @@ s32 mnBonusGetFtKindFromTokenPosition(s32 port_id)
 
 		if (is_within_bounds)
 		{
-			char_id = mnBonusGetFtKind(((s32) (current_y - 25) / 45) + 6);
+			char_id = mnBonusGetFighterKind(((s32) (current_y - 25) / 45) + 6);
 
 			if ((mnBonusCheckFighterIsXBoxed(char_id)) || (mnBonusGetIsLocked(char_id)))
 				return nFTKindNull;
@@ -2030,7 +2030,7 @@ void mnBonusSyncTokenAndFighter(GObj* token_gobj)
 		mnBonusMoveToken(port_id);
 	}
 
-	fkind = mnBonusGetFtKindFromTokenPosition(port_id);
+	fkind = mnBonusGetFighterKindFromTokenPosition(port_id);
 
 	if ((!gMnBonusPanel.is_selected)
 		&& (fkind != gMnBonusPanel.char_id))

@@ -16,7 +16,7 @@ lWPYoshiEggThrowWeaponAttributes;           // 0x0000000C
 //                               //
 // // // // // // // // // // // //
 
-WPCreateDesc dWPYoshiEggThrowWeaponDesc =
+WPDesc dWPYoshiEggThrowWeaponDesc =
 {
     0x00,                                   // Render flags?
     nWPKindEggThrow,                       // Weapon Kind

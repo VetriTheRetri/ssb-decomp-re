@@ -16,7 +16,7 @@ lWPKirbyCutterWeaponAttributes;             // 0x00000008
 //                               //
 // // // // // // // // // // // //
 
-WPCreateDesc dWPKirbyCutterWeaponDesc =
+WPDesc dWPKirbyCutterWeaponDesc =
 {
     0x03,                                   // Render flags?
     nWPKindCutter,                         // Weapon Kind

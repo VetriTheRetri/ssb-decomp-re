@@ -19,7 +19,7 @@ extern intptr_t lITFFlowerFlameAngles;      // 0x00000360
 //                               //
 // // // // // // // // // // // //
 
-ITCreateDesc dITFFlowerItemDesc = 
+ITDesc dITFFlowerItemDesc = 
 {
     nITKindFFlower,                         // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -106,7 +106,7 @@ ITStatusDesc dITFFlowerStatusDescs[/* */] =
     }
 };
 
-WPCreateDesc dITFFlowerWeaponFlameWeaponDesc =
+WPDesc dITFFlowerWeaponFlameWeaponDesc =
 {
     0x00,                                   // Render flags?
     nWPKindFFlowerFlame,                    // Weapon Kind

@@ -16,7 +16,7 @@ lWPSamusBombWeaponAttributes;               // 0x0000000C
 //                               //
 // // // // // // // // // // // //
 
-WPCreateDesc dWPSamusBombWeaponDesc =
+WPDesc dWPSamusBombWeaponDesc =
 {
     0x00,                                   // Render flags?
     nWPKindSamusBomb,                      // Weapon Kind

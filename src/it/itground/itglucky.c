@@ -16,7 +16,7 @@ extern intptr_t lITGLuckyItemAttributes;    // 0x000000BC
 //                               //
 // // // // // // // // // // // //
 
-ITCreateDesc dITGLuckyItemDesc =
+ITDesc dITGLuckyItemDesc =
 {
     nITKindGLucky,                          // Item Kind
     &gGRCommonStruct.yamabuki.item_head,    // Pointer to item file data?

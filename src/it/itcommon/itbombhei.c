@@ -27,7 +27,7 @@ intptr_t dITBombHeiDisplayListOffsets[/* */] =
 };
 
 // 0x80189F98
-ITCreateDesc dITBombHeiItemDesc =
+ITDesc dITBombHeiItemDesc =
 {
     nITKindBombHei,                         // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?

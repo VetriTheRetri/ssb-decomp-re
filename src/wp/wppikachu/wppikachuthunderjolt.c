@@ -22,7 +22,7 @@ lWPPikachuThunderJoltMatAnimJoint;                      // 0x00001AE0
 //                               //
 // // // // // // // // // // // //
 
-WPCreateDesc dWPPikachuThunderJoltAirWeaponDesc =
+WPDesc dWPPikachuThunderJoltAirWeaponDesc =
 {
     0x00,                                               // Render flags?
     nWPKindThunderJoltAir,                             // Weapon Kind
@@ -46,7 +46,7 @@ WPCreateDesc dWPPikachuThunderJoltAirWeaponDesc =
     wpPikachuThunderJoltAirProcHit                      // Proc Absorb
 };
 
-WPCreateDesc dWPPikachuThunderJoltGroundWeaponDesc =
+WPDesc dWPPikachuThunderJoltGroundWeaponDesc =
 {
     0x03,                                               // Render flags?
     nWPKindThunderJoltGround,                          // Weapon Kind

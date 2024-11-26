@@ -18,7 +18,7 @@ extern intptr_t lITLuckyAnimJoint;          // 0x000100BC
 // // // // // // // // // // // //
 
 // 0x8018AFB0
-ITCreateDesc dITMLuckyItemDesc = 
+ITDesc dITMLuckyItemDesc = 
 {
     nITKindMLucky,                          // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?

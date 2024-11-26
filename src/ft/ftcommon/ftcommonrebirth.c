@@ -20,7 +20,7 @@ f32 dFTCommonRebirthOffsetsX[/* */] = { 0.0F, -1000.0F, 1000.0F, -2000.0F };
 void ftCommonRebirthDownSetStatus(GObj *this_gobj)
 {
     FTStruct *this_fp = ftGetStruct(this_gobj);
-    FTCreateDesc rebirth_vars = dFTManagerDefaultFighterDesc;
+    FTDesc rebirth_vars = dFTManagerDefaultFighterDesc;
     GObj *other_gobj;
     FTStruct *other_fp;
     s32 halo_number;

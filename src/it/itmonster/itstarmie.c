@@ -21,7 +21,7 @@ extern intptr_t lITStarmieMatAnimJoint;     // 0x00011338
 // // // // // // // // // // // //
 
 // 0x8018B170
-ITCreateDesc dITStarmieItemDesc = 
+ITDesc dITStarmieItemDesc = 
 {
     nITKindStarmie,                         // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -74,7 +74,7 @@ ITStatusDesc dITStarmieStatusDescs[/* */] =
 };
 
 // 0x8018B1E4
-WPCreateDesc dITStarmieWeaponSwiftWeaponDesc = 
+WPDesc dITStarmieWeaponSwiftWeaponDesc = 
 {
     0x03,                                   // Render flags?
     nWPKindStarmieSwift,                    // Weapon Kind

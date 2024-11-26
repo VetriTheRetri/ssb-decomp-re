@@ -151,7 +151,7 @@ void func_ovl47_80131BF8()
 void mvOpeningStandoffMakeFighters(void)
 {
     GObj* fighter_gobj;
-    FTCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
+    FTDesc ft_desc = dFTManagerDefaultFighterDesc;
 
     ft_desc.fkind = nFTKindMario;
     ft_desc.costume = ftParamGetCostumeCommonID(nFTKindMario, 0);

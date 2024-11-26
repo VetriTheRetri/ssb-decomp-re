@@ -84,7 +84,7 @@ u32 wpManagerGetGroupID()
 }
 
 // 0x801655C8
-GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPCreateDesc *wp_desc, Vec3f *spawn_pos, u32 flags)
+GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPDesc *wp_desc, Vec3f *spawn_pos, u32 flags)
 {
     GObj *weapon_gobj;
     void (*func_display)(GObj*);

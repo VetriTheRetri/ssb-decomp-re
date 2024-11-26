@@ -270,7 +270,7 @@ void mvOpeningKirbyMakeMotionWindow(void)
 
 	for (i = 0; i < ARRAY_COUNT(gSCManagerBattleState->players); i++)
 	{
-		FTCreateDesc desc = dFTManagerDefaultFighterDesc;
+		FTDesc desc = dFTManagerDefaultFighterDesc;
 
 		if (gSCManagerBattleState->players[i].pkind == nFTPlayerKindNot)
 		{
@@ -369,7 +369,7 @@ void mvOpeningKirbyPosedFighterProcUpdate(GObj *fighter_gobj)
 void mvOpeningKirbyMakePosedFighter(void)
 {
 	GObj *fighter_gobj;
-	FTCreateDesc desc = dFTManagerDefaultFighterDesc;
+	FTDesc desc = dFTManagerDefaultFighterDesc;
 
 	desc.fkind = nFTKindKirby;
 	desc.costume = ftParamGetCostumeCommonID(nFTKindKirby, 0);

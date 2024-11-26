@@ -17,7 +17,7 @@
 // Structs
 
 // Weapon's blueprint to feed into wpManagerMakeWeapon
-struct WPCreateDesc
+struct WPDesc
 {
     u8 flags;
     s32 kind;

@@ -18,7 +18,7 @@ void itManagerSetPrevStructAlloc(ITStruct* ip);
 void itManagerSetupItemDObjs(GObj* gobj, DObjDesc* dobjdesc, DObj** dobjs, u8 transform_kind);
 
 // Create new item
-GObj* itManagerMakeItem(GObj* parent_gobj, ITCreateDesc* item_desc, Vec3f* pos, Vec3f* vel, u32 flags);
+GObj* itManagerMakeItem(GObj* parent_gobj, ITDesc* item_desc, Vec3f* pos, Vec3f* vel, u32 flags);
 
 // Create item and init spawn GFX + spin rotation if common item (indexes 0 - 19)
 GObj* itManagerMakeItemSetupCommon(GObj* parent_gobj, s32 index, Vec3f* pos, Vec3f* vel, u32 spawn_flags);

@@ -35,7 +35,7 @@ void (*dITPippiStatusProcList[/* */])(GObj*) =
 };
 
 // 0x8018B3A0
-ITCreateDesc dITPippiItemDesc = 
+ITDesc dITPippiItemDesc = 
 {
     nITKindPippi,                           // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?

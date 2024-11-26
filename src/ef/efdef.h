@@ -66,6 +66,6 @@ typedef enum LBTransformStatus
 } LBTransformStatus;
 
 typedef struct EFStruct			EFStruct;
-typedef struct EFCreateDesc		EFCreateDesc;
+typedef struct EFDesc		EFDesc;
 
 #endif

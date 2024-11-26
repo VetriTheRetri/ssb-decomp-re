@@ -20,7 +20,7 @@ extern intptr_t lITLinkBombBloatScales; 	// 0x000000A8
 //                               //
 // // // // // // // // // // // //
 
-ITCreateDesc dItLinkBombItemDesc =
+ITDesc dItLinkBombItemDesc =
 {
 	nITKindLinkBomb, 						// Item Kind
 	&gFTDataLinkMain, 						// Pointer to item file data?

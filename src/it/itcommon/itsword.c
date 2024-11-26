@@ -14,7 +14,7 @@ extern intptr_t lITSwordItemAttributes;     // 0x00000190
 //                               //
 // // // // // // // // // // // //
 
-ITCreateDesc dITSwordITemDesc =
+ITDesc dITSwordITemDesc =
 {
     nITKindSword,                           // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?

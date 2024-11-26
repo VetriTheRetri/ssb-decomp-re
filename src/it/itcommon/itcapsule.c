@@ -15,7 +15,7 @@ extern intptr_t lITCapsuleAttackEvents;        // 0x00000098
 //                               //
 // // // // // // // // // // // //
 
-ITCreateDesc dITCapsuleItemDesc = 
+ITDesc dITCapsuleItemDesc = 
 {
     nITKindCapsule,                         // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?

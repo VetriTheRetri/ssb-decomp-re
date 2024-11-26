@@ -961,7 +961,7 @@ void sc1PGameBossAdvanceWallpaper(void)
 }
 
 // 0x80192620
-void SC1PGameBossWallpaperProcUpdate(GObj *gobj)
+void sc1PGameBossWallpaperProcUpdate(GObj *gobj)
 {
     if (sSC1PGameBossMain.is_skip_wallpaper_change == FALSE)
     {
@@ -1009,14 +1009,14 @@ void sc1PGameBossInitWallpaper(void)
 
     if (gobj != NULL)
     {
-        gcAddGObjProcess(gobj, SC1PGameBossWallpaperProcUpdate, nGCProcessKindFunc, 3);
+        gcAddGObjProcess(gobj, sc1PGameBossWallpaperProcUpdate, nGCProcessKindFunc, 3);
 
         sc1PGameBossMakeCamera();
         sc1PGameBossSetBossPlayer();
 
         sSC1PGameBossMain.is_skip_wallpaper_change = FALSE;
         sSC1PGameBossMain.wallpaper_id = 0;
-        sSC1PGameBossMain.file_head = (uintptr_t) ((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobjdesc - (intptr_t)&D_NF_00004D48);
+        sSC1PGameBossMain.file_head = (void*) ((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobjdesc - (intptr_t)&D_NF_00004D48);
         sSC1PGameBossMain.change_wait = 0;
         sSC1PGameBossWallpaperStepRGBA = 0.0F;
     }

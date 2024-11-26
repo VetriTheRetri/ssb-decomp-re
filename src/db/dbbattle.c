@@ -342,7 +342,7 @@ void dbBattleFuncRun(GObj *gobj)
 	{
 		if (gSCManagerTransferBattleState.players[i].fkind != sDBBattleFighters[i].fkind)
 		{
-			FTCreateDesc desc = dFTManagerDefaultFighterDesc;
+			FTDesc desc = dFTManagerDefaultFighterDesc;
 
 			fighter_gobj = sDBBattleFighters[i].fighter_gobj;
 			fp = ftGetStruct(fighter_gobj);
@@ -521,7 +521,7 @@ void dbBattleFuncStart(void)
 	}
 	for (i = 0; i < ARRAY_COUNT(gSCManagerTransferBattleState.players); i++)
 	{
-		FTCreateDesc desc = dFTManagerDefaultFighterDesc;
+		FTDesc desc = dFTManagerDefaultFighterDesc;
 
 		desc.fkind = gSCManagerTransferBattleState.players[i].fkind;
 		desc.costume = gSCManagerTransferBattleState.players[i].costume;

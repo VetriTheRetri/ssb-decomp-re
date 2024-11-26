@@ -22,7 +22,7 @@ extern s32 dGRYamabukiMonsterAttackKind;
 //                               //
 // // // // // // // // // // // //
 
-ITCreateDesc dITHitokageItemDesc =
+ITDesc dITHitokageItemDesc =
 {
     nITKindHitokage,                        // Item Kind
     &gGRCommonStruct.yamabuki.item_head,    // Pointer to item file data?
@@ -61,7 +61,7 @@ ITStatusDesc dITHitokageStatusDescs[/* */] =
     }
 };
 
-WPCreateDesc dITHitokageWeaponFlameWeaponDesc =
+WPDesc dITHitokageWeaponFlameWeaponDesc =
 {
     0x00,                                   // Render flags?
     nWPKindHitokageFlame,                   // Weapon Kind

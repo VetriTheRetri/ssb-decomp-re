@@ -18,7 +18,7 @@ lITLGunWeaponAmmoWeaponAttributes;          // 0x000002B0
 //                               //
 // // // // // // // // // // // //
 
-ITCreateDesc dITLGunItemDesc =
+ITDesc dITLGunItemDesc =
 {
     nITKindLGun,                            // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -105,7 +105,7 @@ ITStatusDesc dITLGunStatusDescs[/* */] =
     }
 };
 
-WPCreateDesc lITLGunWeaponAmmoWeaponDesc =
+WPDesc lITLGunWeaponAmmoWeaponDesc =
 {
     0x00,                                   // Render flags?
     nWPKindLGunAmmo,                        // Weapon Kind

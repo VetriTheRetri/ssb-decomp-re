@@ -30,7 +30,7 @@ lWPNessPKThunderTrailWeaponAttributes;      // 0x00000040
 //                               //
 // // // // // // // // // // // //
 
-WPCreateDesc dWPNessPKThunderHeadWeaponDesc =
+WPDesc dWPNessPKThunderHeadWeaponDesc =
 {
     0x03,                                   // Render flags?
     nWPKindPKThunderHead,                   // Weapon Kind
@@ -54,7 +54,7 @@ WPCreateDesc dWPNessPKThunderHeadWeaponDesc =
     wpNessPKThunderHeadProcHit              // Proc Absorb
 };
 
-WPCreateDesc dWPNessPKThunderTrailWeaponDesc =
+WPDesc dWPNessPKThunderTrailWeaponDesc =
 {
     0x02,                                   // Render flags?
     nWPKindPKThunderTrail,                  // Weapon Kind
@@ -78,7 +78,7 @@ WPCreateDesc dWPNessPKThunderTrailWeaponDesc =
     wpNessPKThunderTrailProcHit             // Proc Absorb
 };
 
-WPCreateDesc dWPNessPKReflectHeadWeaponDesc =
+WPDesc dWPNessPKReflectHeadWeaponDesc =
 {
     0x03,                                   // Render flags?
     nWPKindPKThunderHead,                   // Weapon Kind
@@ -102,7 +102,7 @@ WPCreateDesc dWPNessPKReflectHeadWeaponDesc =
     wpNessPKReflectHeadProcHit              // Proc Absorb
 };
 
-WPCreateDesc dWPNessPKReflectTrailWeaponDesc =
+WPDesc dWPNessPKReflectTrailWeaponDesc =
 {
     0x02,                                   // Render flags?
     nWPKindPKThunderTrail,                  // Weapon Kind

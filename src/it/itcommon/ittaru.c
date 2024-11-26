@@ -15,7 +15,7 @@ extern intptr_t lITTaruAttackEvents;           // 0x0000067C
 //                               //
 // // // // // // // // // // // //
 
-ITCreateDesc dITTaruItemDesc =
+ITDesc dITTaruItemDesc =
 {
     nITKindTaru,                            // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?

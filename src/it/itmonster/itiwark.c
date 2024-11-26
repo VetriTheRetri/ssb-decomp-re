@@ -21,7 +21,7 @@ extern intptr_t lITIwarkDisplayList;        // 0x0000A640
 // // // // // // // // // // // //
 
 // 0x8018AA90
-ITCreateDesc dITIwarkItemDesc =
+ITDesc dITIwarkItemDesc =
 {
     nITKindIwark,                           // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -74,7 +74,7 @@ ITStatusDesc dITIwarkStatusDescs[/* */] =
 };
 
 // 0x8018AB04
-WPCreateDesc dITIwarkWeaponRockWeaponDesc =
+WPDesc dITIwarkWeaponRockWeaponDesc =
 {
     0x01,                                   // Render flags?
     nWPKindIwarkRock,                       // Weapon Kind

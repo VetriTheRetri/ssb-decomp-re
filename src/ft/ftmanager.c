@@ -460,7 +460,7 @@ void ftManagerDestroyFighterWeapons(GObj *fighter_gobj)
 }
 
 // 0x800D79F0
-void ftManagerInitFighter(GObj *fighter_gobj, FTCreateDesc *ft_desc)
+void ftManagerInitFighter(GObj *fighter_gobj, FTDesc *ft_desc)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     FTAttributes *attr = fp->attr;
@@ -550,7 +550,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTCreateDesc *ft_desc)
     fp->knockback_resist_passive = 0.0F;
     fp->damage_knockback = 0.0F;
     fp->hitlag_mul = 1.0F;
-    fp->shield_lifeup_wait = 10.0F;
+    fp->shield_heal_wait = 10.0F;
 
     fp->is_fast_fall = FALSE;
 
@@ -706,7 +706,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTCreateDesc *ft_desc)
 }
 
 // 0x800D7F3C
-GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
+GObj* ftManagerMakeFighter(FTDesc *ft_desc) // Create fighter
 {
     FTStruct *fp;
     GObj *fighter_gobj;

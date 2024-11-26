@@ -302,7 +302,7 @@ void mvOpeningRoomMakeTissues(void)
 void mvOpeningRoomMakeBoss(void)
 {
 	GObj *fighter_gobj;
-	FTCreateDesc desc = dFTManagerDefaultFighterDesc;
+	FTDesc desc = dFTManagerDefaultFighterDesc;
 
 	desc.fkind = nFTKindBoss;
 	desc.costume = ftParamGetCostumeCommonID(nFTKindBoss, 0);
@@ -352,7 +352,7 @@ void func_ovl34_80132328(void)
 void mvOpeningRoomMakePluckedFighter(s32 fkind)
 {
 	GObj *fighter_gobj;
-	FTCreateDesc desc = dFTManagerDefaultFighterDesc;
+	FTDesc desc = dFTManagerDefaultFighterDesc;
 
 	desc.fkind = fkind;
 	desc.costume = ftParamGetCostumeCommonID(fkind, 0);
@@ -473,7 +473,7 @@ void mvOpeningRoomMakeCloseUpEffect(void)
 void mvOpeningRoomMakeDroppedFighter(s32 fkind)
 {
 	GObj *fighter_gobj;
-	FTCreateDesc desc = dFTManagerDefaultFighterDesc;
+	FTDesc desc = dFTManagerDefaultFighterDesc;
 
 	desc.fkind = fkind;
 	desc.costume = ftParamGetCostumeCommonID(fkind, 0);

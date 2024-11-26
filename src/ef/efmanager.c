@@ -109,7 +109,7 @@ f32 dEFManagerDeadExplodeRotateD[/* */] = { 0.0F, 90.0F, 180.0F, 270.0F };
 u8 dEFManagerDamageNormalLightIDs[/* */] = { 0x49, 0x4A, 0x4B, 0x4C };
 
 // 0x8012DF24
-EFCreateDesc dEFManagerDamageSlashEffectDesc = 
+EFDesc dEFManagerDamageSlashEffectDesc = 
 {
     0x4 | 0x1,                              // Flags
     18,                                     // DL Link
@@ -139,7 +139,7 @@ EFCreateDesc dEFManagerDamageSlashEffectDesc =
 };
 
 // 0x8012DF4C
-EFCreateDesc dEFManagerShockSmallEffectDesc =
+EFDesc dEFManagerShockSmallEffectDesc =
 {
     EFFECT_FLAG_USERDATA,                   // Flags
     18,                                     // DL Link
@@ -169,7 +169,7 @@ EFCreateDesc dEFManagerShockSmallEffectDesc =
 };
 
 // 0x8012DF74
-EFCreateDesc dEFManagerDamageFlyOrbsEffectDesc =
+EFDesc dEFManagerDamageFlyOrbsEffectDesc =
 {
     EFFECT_FLAG_USERDATA | 0x1,             // Flags
     15,                                     // DL Link
@@ -199,7 +199,7 @@ EFCreateDesc dEFManagerDamageFlyOrbsEffectDesc =
 };
 
 // 0x8012DF9C
-EFCreateDesc dEFManagerDamageSpawnOrbsEffectDesc =
+EFDesc dEFManagerDamageSpawnOrbsEffectDesc =
 {
     EFFECT_FLAG_USERDATA,                   // Flags
     0,                                      // DL Link
@@ -229,7 +229,7 @@ EFCreateDesc dEFManagerDamageSpawnOrbsEffectDesc =
 };
 
 // 0x8012DFC4
-EFCreateDesc dEFManagerImpactWaveEffectDesc =
+EFDesc dEFManagerImpactWaveEffectDesc =
 {
     EFFECT_FLAG_USERDATA,                   // Flags
     10,                                     // DL Link
@@ -259,7 +259,7 @@ EFCreateDesc dEFManagerImpactWaveEffectDesc =
 };
 
 // 0x8012DFEC
-EFCreateDesc dEFStarRodSparkEffectDesc =
+EFDesc dEFStarRodSparkEffectDesc =
 {
     EFFECT_FLAG_USERDATA | 0x1,             // Flags
     15,                                     // DL Link
@@ -289,7 +289,7 @@ EFCreateDesc dEFStarRodSparkEffectDesc =
 };
 
 // 0x8012E014
-EFCreateDesc dEFManagerDamageFlySparksEffectDesc =
+EFDesc dEFManagerDamageFlySparksEffectDesc =
 {
     EFFECT_FLAG_USERDATA | 0x1,             // Flags
     15,                                     // DL Link
@@ -319,7 +319,7 @@ EFCreateDesc dEFManagerDamageFlySparksEffectDesc =
 };
 
 // 0x8012E03C
-EFCreateDesc dEFManagerDamageSpawnSparksEffectDesc =
+EFDesc dEFManagerDamageSpawnSparksEffectDesc =
 {
     EFFECT_FLAG_USERDATA,                   // Flags
     0,                                      // DL Link
@@ -349,7 +349,7 @@ EFCreateDesc dEFManagerDamageSpawnSparksEffectDesc =
 };
 
 // 0x8012E064
-EFCreateDesc dEFManagerDamageFlyMDustEffectDesc = 
+EFDesc dEFManagerDamageFlyMDustEffectDesc = 
 {
     EFFECT_FLAG_USERDATA | 0x1,             // Flags
     15,                                     // DL Link
@@ -379,7 +379,7 @@ EFCreateDesc dEFManagerDamageFlyMDustEffectDesc =
 };
 
 // 0x8012E08C
-EFCreateDesc dEFManagerDamageSpawnMDustEffectDesc =
+EFDesc dEFManagerDamageSpawnMDustEffectDesc =
 {
     EFFECT_FLAG_USERDATA,                   // Flags
     0,                                      // DL Link
@@ -409,7 +409,7 @@ EFCreateDesc dEFManagerDamageSpawnMDustEffectDesc =
 };
 
 // 0x8012E0B4
-EFCreateDesc dEFFireSparkEffectDesc =
+EFDesc dEFFireSparkEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA,             // Flags
     15,                                     // DL Link
@@ -448,7 +448,7 @@ intptr_t dEFManagerFoxReflectorAnimJointOffsets[/* */] =
 };
 
 // 0x8012E0EC
-EFCreateDesc dEFManagerFoxReflectorEffectDesc = 
+EFDesc dEFManagerFoxReflectorEffectDesc = 
 {
     0x4 | EFFECT_FLAG_USERDATA,             // Flags
     15,                                     // DL Link
@@ -488,7 +488,7 @@ SYColorRGBPair dEFManagerShieldColors[/* */] =
 };
 
 // 0x8012E134
-EFCreateDesc dEFManagerShieldEffectDesc =
+EFDesc dEFManagerShieldEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA,             // Flags
     15,                                     // DL Link
@@ -518,7 +518,7 @@ EFCreateDesc dEFManagerShieldEffectDesc =
 };
 
 // 0x8012E15C
-EFCreateDesc dEFManagerYoshiShieldEffectDesc =
+EFDesc dEFManagerYoshiShieldEffectDesc =
 {
     EFFECT_FLAG_USERDATA,                   // Flags
     15,                                     // DL Link
@@ -548,7 +548,7 @@ EFCreateDesc dEFManagerYoshiShieldEffectDesc =
 };
 
 // 0x8012E184
-EFCreateDesc dEFCatchSwirlEffectDesc = 
+EFDesc dEFCatchSwirlEffectDesc = 
 {
     0x4 | 0x1,                              // Flags
     18,                                     // DL Link
@@ -578,7 +578,7 @@ EFCreateDesc dEFCatchSwirlEffectDesc =
 };
 
 // 0x8012E1AC
-EFCreateDesc dEFReflectBreakEffectDesc =
+EFDesc dEFReflectBreakEffectDesc =
 {
     0x4 | 0x1,                              // Flags
     18,                                     // DL Link
@@ -608,7 +608,7 @@ EFCreateDesc dEFReflectBreakEffectDesc =
 };
 
 // 0x8012E1D4
-EFCreateDesc dEFManagerPikachuUnkEffectDesc =
+EFDesc dEFManagerPikachuUnkEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA | 0x1,       // Flags
     15,                                     // DL Link
@@ -638,7 +638,7 @@ EFCreateDesc dEFManagerPikachuUnkEffectDesc =
 };
 
 // 0x8012E1FC
-EFCreateDesc dEFManagerPikachuThunderShockEffectDesc =
+EFDesc dEFManagerPikachuThunderShockEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA,             // Flags
     15,                                     // DL Link
@@ -668,7 +668,7 @@ EFCreateDesc dEFManagerPikachuThunderShockEffectDesc =
 };
 
 // 0x8012E224
-EFCreateDesc dEFManagerPikachuThunderTrailEffectDesc =
+EFDesc dEFManagerPikachuThunderTrailEffectDesc =
 {
     EFFECT_FLAG_USERDATA,                   // Flags
     15,                                     // DL Link
@@ -698,7 +698,7 @@ EFCreateDesc dEFManagerPikachuThunderTrailEffectDesc =
 };
 
 // 0x8012E24C
-EFCreateDesc dEFThunderJoltEffectDesc =
+EFDesc dEFThunderJoltEffectDesc =
 {
     0x4,                                    // Flags
     15,                                     // DL Link
@@ -728,7 +728,7 @@ EFCreateDesc dEFThunderJoltEffectDesc =
 };
 
 // 0x8012E274
-EFCreateDesc dEFVulcanJabEffectDesc =
+EFDesc dEFVulcanJabEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA | 0x1,       // Flags
     15,                                     // DL Link
@@ -758,7 +758,7 @@ EFCreateDesc dEFVulcanJabEffectDesc =
 };
 
 // 0x8012E29C
-EFCreateDesc dEFManagerSamusGrappleBeamEffectDesc =
+EFDesc dEFManagerSamusGrappleBeamEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA,             // Flags
     15,                                     // DL Link
@@ -788,7 +788,7 @@ EFCreateDesc dEFManagerSamusGrappleBeamEffectDesc =
 };
 
 // 0x8012E2C4
-EFCreateDesc dEFManagerCaptainFalconKickEffectDesc =
+EFDesc dEFManagerCaptainFalconKickEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA,             // Flags
     15,                                     // DL Link
@@ -818,7 +818,7 @@ EFCreateDesc dEFManagerCaptainFalconKickEffectDesc =
 };
 
 // 0x8012E2EC
-EFCreateDesc dEFManagerCaptainFalconPunchEffectDesc =
+EFDesc dEFManagerCaptainFalconPunchEffectDesc =
 {
     EFFECT_FLAG_USERDATA,                   // Flags
     15,                                     // DL Link
@@ -848,7 +848,7 @@ EFCreateDesc dEFManagerCaptainFalconPunchEffectDesc =
 };
 
 // 0x8012E314
-EFCreateDesc dEFManagerPurinSingEffectDesc =
+EFDesc dEFManagerPurinSingEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA,             // Flags
     15,                                     // DL Link
@@ -878,7 +878,7 @@ EFCreateDesc dEFManagerPurinSingEffectDesc =
 };
 
 // 0x8012E33C
-EFCreateDesc dEFManagerDeadExplodeEffectDesc =
+EFDesc dEFManagerDeadExplodeEffectDesc =
 {
     EFFECT_FLAG_SPECIALLINK | 0x4,          // Flags
     18,                                     // DL Link
@@ -920,7 +920,7 @@ intptr_t dEFManagerDeadExplodeMatAnimJoints[/* */] =
 };
 
 // 0x8012E37C
-EFCreateDesc dEFManagerKirbyCutterUpEffectDesc =
+EFDesc dEFManagerKirbyCutterUpEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA,             // Flags
     15,                                     // DL Link
@@ -950,7 +950,7 @@ EFCreateDesc dEFManagerKirbyCutterUpEffectDesc =
 };
 
 // 0x8012E3A4
-EFCreateDesc dEFManagerKirbyCutterDownEffectDesc =
+EFDesc dEFManagerKirbyCutterDownEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA,             // Flags
     15,                                     // DL Link
@@ -980,7 +980,7 @@ EFCreateDesc dEFManagerKirbyCutterDownEffectDesc =
 };
 
 // 0x8012E3CC
-EFCreateDesc dEFManagerKirbyCutterDrawEffectDesc =
+EFDesc dEFManagerKirbyCutterDrawEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA,             // Flags
     15,                                     // DL Link
@@ -1010,7 +1010,7 @@ EFCreateDesc dEFManagerKirbyCutterDrawEffectDesc =
 };
 
 // 0x8012E3F4
-EFCreateDesc dEFManagerKirbyCutterTrailEffectDesc =
+EFDesc dEFManagerKirbyCutterTrailEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA,             // Flags
     15,                                     // DL Link
@@ -1040,7 +1040,7 @@ EFCreateDesc dEFManagerKirbyCutterTrailEffectDesc =
 };
 
 // 0x8012E41C
-EFCreateDesc dEFManagerNessPsychicMagnetEffectDesc =
+EFDesc dEFManagerNessPsychicMagnetEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA,             // Flags
     15,                                     // DL Link
@@ -1070,7 +1070,7 @@ EFCreateDesc dEFManagerNessPsychicMagnetEffectDesc =
 };
 
 // 0x8012E444
-EFCreateDesc dEFManagerNessPKThunderTrailEffectDesc =
+EFDesc dEFManagerNessPKThunderTrailEffectDesc =
 {
     EFFECT_FLAG_USERDATA,                   // Flags
     15,                                     // DL Link
@@ -1100,7 +1100,7 @@ EFCreateDesc dEFManagerNessPKThunderTrailEffectDesc =
 };
 
 // 0x8012E46C
-EFCreateDesc dEFManagerNessPKReflectTrailEffectDesc =
+EFDesc dEFManagerNessPKReflectTrailEffectDesc =
 {
     EFFECT_FLAG_USERDATA,                   // Flags
     18,                                     // DL Link
@@ -1130,7 +1130,7 @@ EFCreateDesc dEFManagerNessPKReflectTrailEffectDesc =
 };
 
 // 0x8012E494
-EFCreateDesc dEFManagerNessPKThunderWaveEffectDesc =
+EFDesc dEFManagerNessPKThunderWaveEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA,             // Flags
     15,                                     // DL Link
@@ -1160,7 +1160,7 @@ EFCreateDesc dEFManagerNessPKThunderWaveEffectDesc =
 };
 
 // 0x8012E4BC
-EFCreateDesc dEFManagerNessPKFlashEffectDesc =
+EFDesc dEFManagerNessPKFlashEffectDesc =
 {
     0x4,                                    // Flags
     18,                                     // DL Link
@@ -1190,7 +1190,7 @@ EFCreateDesc dEFManagerNessPKFlashEffectDesc =
 };
 
 // 0x8012E4E4
-EFCreateDesc dEFManagerLinkEntryWaveEffectDesc =
+EFDesc dEFManagerLinkEntryWaveEffectDesc =
 {
     0x4,                                    // Flags
     10,                                     // DL Link
@@ -1220,7 +1220,7 @@ EFCreateDesc dEFManagerLinkEntryWaveEffectDesc =
 };
 
 // 0x8012E50C
-EFCreateDesc dEFManagerLinkEntryBeamEffectDesc =
+EFDesc dEFManagerLinkEntryBeamEffectDesc =
 {
     0x4,                                    // Flags
     10,                                     // DL Link
@@ -1250,7 +1250,7 @@ EFCreateDesc dEFManagerLinkEntryBeamEffectDesc =
 };
 
 // 0x8012E534
-EFCreateDesc dEFManagerKirbyEntryStarEffectDesc =
+EFDesc dEFManagerKirbyEntryStarEffectDesc =
 {
     0x4 | 0x1,                              // Flags
     10,                                     // DL Link
@@ -1280,7 +1280,7 @@ EFCreateDesc dEFManagerKirbyEntryStarEffectDesc =
 };
 
 // 0x8012E55C
-EFCreateDesc dEFManagerMBallRaysEffectDesc =
+EFDesc dEFManagerMBallRaysEffectDesc =
 {
     0x4,                                    // Flags
     10,                                     // DL Link
@@ -1310,7 +1310,7 @@ EFCreateDesc dEFManagerMBallRaysEffectDesc =
 };
 
 // 0x8012E584
-EFCreateDesc dEFManagerMBallThrownEffectDesc =
+EFDesc dEFManagerMBallThrownEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA,             // Flags
     20,                                     // DL Link
@@ -1340,7 +1340,7 @@ EFCreateDesc dEFManagerMBallThrownEffectDesc =
 };
 
 // 0x8012E5AC
-EFCreateDesc dEFManagerYoshiEntryEggEffectDesc =
+EFDesc dEFManagerYoshiEntryEggEffectDesc =
 {
     0x1,                                    // Flags
     10,                                     // DL Link
@@ -1373,7 +1373,7 @@ EFCreateDesc dEFManagerYoshiEntryEggEffectDesc =
 intptr_t dEFManagerYoshiEggLayAnimJoints[/* */] = { &lEFManagerYoshiEggLayWaitAnimJoint, &lEFManagerYoshiEggLayBreakAnimJoint };
 
 // 0x8012E5DC
-EFCreateDesc dEFManagerYoshiEggLayEffectDesc =
+EFDesc dEFManagerYoshiEggLayEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA | 0x1,       // Flags
     10,                                     // DL Link
@@ -1403,7 +1403,7 @@ EFCreateDesc dEFManagerYoshiEggLayEffectDesc =
 };
 
 // 0x8012E604
-EFCreateDesc dEFManagerYoshiEggEscapeEffectDesc =
+EFDesc dEFManagerYoshiEggEscapeEffectDesc =
 {
     EFFECT_FLAG_USERDATA,                   // Flags
     15,                                     // DL Link
@@ -1433,7 +1433,7 @@ EFCreateDesc dEFManagerYoshiEggEscapeEffectDesc =
 };
 
 // 0x8012E62C
-EFCreateDesc dEFManagerLinkSpinAttackEffectDesc =
+EFDesc dEFManagerLinkSpinAttackEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA,             // Flags
     15,                                     // DL Link
@@ -1463,7 +1463,7 @@ EFCreateDesc dEFManagerLinkSpinAttackEffectDesc =
 };
 
 // 0x8012E654
-EFCreateDesc dEFManagerDonkeyEntryTaruEffectDesc =
+EFDesc dEFManagerDonkeyEntryTaruEffectDesc =
 {
     0x4,                                    // Flags
     10,                                     // DL Link
@@ -1493,7 +1493,7 @@ EFCreateDesc dEFManagerDonkeyEntryTaruEffectDesc =
 };
 
 // 0x8012E67C
-EFCreateDesc dEFManagerSamusEntryPointEffectDesc =
+EFDesc dEFManagerSamusEntryPointEffectDesc =
 {
     0x4,                                    // Flags
     10,                                     // DL Link
@@ -1523,7 +1523,7 @@ EFCreateDesc dEFManagerSamusEntryPointEffectDesc =
 };
 
 // 0x8012E6A4
-EFCreateDesc dEFManagerCaptainEntryCarEffectDesc =
+EFDesc dEFManagerCaptainEntryCarEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA,             // Flags
     10,                                     // DL Link
@@ -1553,7 +1553,7 @@ EFCreateDesc dEFManagerCaptainEntryCarEffectDesc =
 };
 
 // 0x8012E6CC
-EFCreateDesc dEFManagerMarioEntryDokanEffectDesc =
+EFDesc dEFManagerMarioEntryDokanEffectDesc =
 {
     0x4,                                    // Flags
     10,                                     // DL Link
@@ -1583,7 +1583,7 @@ EFCreateDesc dEFManagerMarioEntryDokanEffectDesc =
 };
 
 // 0x8012E6F4
-EFCreateDesc dEFManagerFoxEntryArwingEffectDesc =
+EFDesc dEFManagerFoxEntryArwingEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA | 0x1,       // Flags
     10,                                     // DL Link
@@ -1616,7 +1616,7 @@ EFCreateDesc dEFManagerFoxEntryArwingEffectDesc =
 u8 dEFManagerMusicNoteGenIDs[/* */] = { 0x40, 0x41, 0x42 };
 
 // 0x8012E720
-EFCreateDesc dEFCaptureKirbyStarEffectDesc =
+EFDesc dEFCaptureKirbyStarEffectDesc =
 {
     EFFECT_FLAG_USERDATA | 0x1,             // Flags
     15,                                     // DL Link
@@ -1646,7 +1646,7 @@ EFCreateDesc dEFCaptureKirbyStarEffectDesc =
 };
 
 // 0x8012E748
-EFCreateDesc dEFManagerLoseKirbyStarEffectDesc =
+EFDesc dEFManagerLoseKirbyStarEffectDesc =
 {
     EFFECT_FLAG_USERDATA | 0x1,             // Flags
     15,                                     // DL Link
@@ -1676,7 +1676,7 @@ EFCreateDesc dEFManagerLoseKirbyStarEffectDesc =
 };
 
 // 0x8012E770
-EFCreateDesc dEFManagerRebirthHaloEffectDesc =
+EFDesc dEFManagerRebirthHaloEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA,             // Flags
     10,                                     // DL Link
@@ -1706,7 +1706,7 @@ EFCreateDesc dEFManagerRebirthHaloEffectDesc =
 };
 
 // 0x8012E798
-EFCreateDesc dEFManagerItemGetSwirlEffectDesc =
+EFDesc dEFManagerItemGetSwirlEffectDesc =
 {
     0x4 | 0x1,                              // Flags
     18,                                     // DL Link
@@ -1939,7 +1939,7 @@ void efManagerFuncRun(GObj *effect_gobj)
 }
 
 // 0x800FD778
-GObj* efManagerMakeEffect(EFCreateDesc *effect_desc, sb32 is_force_return)
+GObj* efManagerMakeEffect(EFDesc *effect_desc, sb32 is_force_return)
 {
     GObj *effect_gobj;
     DObj *other_dobj;
@@ -2068,13 +2068,13 @@ GObj* efManagerMakeEffect(EFCreateDesc *effect_desc, sb32 is_force_return)
 }
 
 // 0x800FDAFC
-GObj* efManagerMakeEffectNoForce(EFCreateDesc *effect_desc)
+GObj* efManagerMakeEffectNoForce(EFDesc *effect_desc)
 {
     return efManagerMakeEffect(effect_desc, FALSE);
 }
 
 // 0x800FDB1C
-GObj* efManagerMakeEffectForce(EFCreateDesc *effect_desc)
+GObj* efManagerMakeEffectForce(EFDesc *effect_desc)
 {
     return efManagerMakeEffect(effect_desc, TRUE);
 }

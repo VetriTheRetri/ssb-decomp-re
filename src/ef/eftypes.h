@@ -9,7 +9,7 @@
 #include <ef/efdef.h>
 #include <ef/efvars.h>
 
-struct EFCreateDesc
+struct EFDesc
 {
     u8 flags;
     u8 dl_link;
@@ -33,7 +33,7 @@ typedef struct EFGroundParam
 
 } EFGroundParam;
 
-typedef struct EFGroundCreateDesc
+typedef struct EFGroundDesc
 {
     f32 alt_high;                       // Maximum alt
     f32 alt_low;                        // Minimum alt
@@ -41,16 +41,16 @@ typedef struct EFGroundCreateDesc
     f32 scale;                          // Scale
     u16 effect_status;                  // Effect status? Always -1?
     void (*proc_groundeffect)(GObj*);   // ???
-    EFCreateDesc effect_desc;           // Effect description
+    EFDesc effect_desc;           // Effect description
 
-} EFGroundCreateDesc;
+} EFGroundDesc;
 
 typedef struct EFGroundData
 {
     u8 params_num;                      // Number of elements in effect_params
     EFGroundParam *effect_params;       // Effect parameter descriptions
     intptr_t o_data;                    // ???
-    EFGroundCreateDesc *effect_descs;   // Ground effect creation descriptions
+    EFGroundDesc *effect_descs;   // Ground effect creation descriptions
 
 } EFGroundData;
 

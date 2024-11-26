@@ -57,7 +57,7 @@ wpMarioFireballAttributes dWPMarioFireballWeaponAttributes[/* */] =
 };
 
 // 0x80188E90
-WPCreateDesc dWPMarioFireballWeaponDesc =
+WPDesc dWPMarioFireballWeaponDesc =
 {
     0x00,                                   // Render flags?
     nWPKindFireball,                        // Weapon Kind

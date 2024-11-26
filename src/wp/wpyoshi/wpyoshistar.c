@@ -16,7 +16,7 @@ intptr_t lWPYoshiStarWeaponAttributes;      // 0x00000040
 //                               //
 // // // // // // // // // // // //
 
-WPCreateDesc dWPYoshiStarWeaponDesc =
+WPDesc dWPYoshiStarWeaponDesc =
 {
     0x00,                                   // Render flags?
     nWPKindYoshiStar,                      // Weapon Kind

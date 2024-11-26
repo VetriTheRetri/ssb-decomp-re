@@ -16,7 +16,7 @@ lWPLinkSpinAttackWeaponAttributes;          // 0x0000000C
 //                               //
 // // // // // // // // // // // //
 
-WPCreateDesc dWPLinkSpinAttackWeaponDesc =
+WPDesc dWPLinkSpinAttackWeaponDesc =
 {
     0x03,                                   // Render flags?
     nWPKindSpinAttack,                     // Weapon Kind

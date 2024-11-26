@@ -22,7 +22,7 @@ struct ITMonsterData
 	u8 monsters_num;
 };
 
-struct ITCreateDesc
+struct ITDesc
 {
 	s32 kind;
 	void **p_file;

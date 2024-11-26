@@ -20,7 +20,7 @@ extern intptr_t lITNyarsAnimJoint;          // 0x0000C130
 // // // // // // // // // // // //
 
 // 0x8018ACA0
-ITCreateDesc dITNyarsItemDesc =
+ITDesc dITNyarsItemDesc =
 {
     nITKindNyars,                           // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -61,7 +61,7 @@ ITStatusDesc dITNyarsStatusDescs[/* */] =
 };
 
 // 0x8018ACF4
-WPCreateDesc dITNyarsWeaponCoinWeaponDesc =
+WPDesc dITNyarsWeaponCoinWeaponDesc =
 {
     0x01,                                   // Render flags?
     nWPKindNyarsCoin,                       // Weapon Kind

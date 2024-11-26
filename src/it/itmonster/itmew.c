@@ -16,7 +16,7 @@ extern intptr_t lITMewDataStart;            // 0x0000BCC0
 // // // // // // // // // // // //
 
 // 0x8018AC40
-ITCreateDesc dITMewItemDesc =
+ITDesc dITMewItemDesc =
 {
     nITKindMew,                             // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?

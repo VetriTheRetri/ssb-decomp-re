@@ -35,7 +35,7 @@ EFGroundActor sEFGroundActor;
 // // // // // // // // // // // //
 
 // 0x8012F240
-EFGroundCreateDesc dEFGroundCastleEffectDescs[/* */] =
+EFGroundDesc dEFGroundCastleEffectDescs[/* */] =
 {
     // Right-facing Lakitu
     {
@@ -117,7 +117,7 @@ EFGroundCreateDesc dEFGroundCastleEffectDescs[/* */] =
 };
 
 // 0x8012F2C0
-EFGroundCreateDesc dEFGroundJungleEffectDescs[/* */] =
+EFGroundDesc dEFGroundJungleEffectDescs[/* */] =
 {
     // Kongo Jungle Birds
     {
@@ -160,7 +160,7 @@ EFGroundCreateDesc dEFGroundJungleEffectDescs[/* */] =
 };
 
 // 0x8012F300
-EFGroundCreateDesc dEFGroundSectorEffectDescs[/* */] =
+EFGroundDesc dEFGroundSectorEffectDescs[/* */] =
 {
     // Distant rocket with step physics (?)
     {
@@ -359,7 +359,7 @@ EFGroundCreateDesc dEFGroundSectorEffectDescs[/* */] =
 };
 
 // 0x8012F440
-EFGroundCreateDesc dEFGroundZebesEffectDescs[/* */] =
+EFGroundDesc dEFGroundZebesEffectDescs[/* */] =
 {
     // Spaceship
     {
@@ -441,7 +441,7 @@ EFGroundCreateDesc dEFGroundZebesEffectDescs[/* */] =
 };
 
 // 0x8012F4C0
-EFGroundCreateDesc dEFGroundYosterEffectDescs[/* */] =
+EFGroundDesc dEFGroundYosterEffectDescs[/* */] =
 {
     // Bird
     {
@@ -679,7 +679,7 @@ EFGroundCreateDesc dEFGroundYosterEffectDescs[/* */] =
 };
 
 // 0x8012F640
-EFGroundCreateDesc dEFGroundPupupuEffectDescs[/* */] =
+EFGroundDesc dEFGroundPupupuEffectDescs[/* */] =
 {
     // Left-facing Bronto Burt
     {
@@ -839,7 +839,7 @@ EFGroundCreateDesc dEFGroundPupupuEffectDescs[/* */] =
 };
 
 // 0x8012F740
-EFGroundCreateDesc dEFGroundYamabukiEffectDescs[/* */] =
+EFGroundDesc dEFGroundYamabukiEffectDescs[/* */] =
 {
     // Butterfree
     {
@@ -1353,7 +1353,7 @@ void efGroundSetupEffectDObjs(GObj *effect_gobj, DObjDesc *dobjdesc, DObj **dobj
 }
 
 // 0x8011652C
-GObj* efGroundMakeEffect(EFCreateDesc *effect_desc, s32 lr)
+GObj* efGroundMakeEffect(EFDesc *effect_desc, s32 lr)
 {
     GObj *effect_gobj;
     DObj *other_dobj;

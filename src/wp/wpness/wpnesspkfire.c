@@ -17,7 +17,7 @@ lWPNessPKFireWeaponAttributes;              // 0x00000000
 //                               //
 // // // // // // // // // // // //
 
-WPCreateDesc dWPNessPKFireWeaponDesc =
+WPDesc dWPNessPKFireWeaponDesc =
 {
     0x00,                                   // Render flags?
     nWPKindPKFire,                         // Weapon Kind

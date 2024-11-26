@@ -3795,13 +3795,13 @@ void ftMainProcUpdateMain(GObj *fighter_gobj)
     }
     if (!(fp->is_shield) && (fp->shield_health < 55))
     {
-        fp->shield_lifeup_wait--;
+        fp->shield_heal_wait--;
 
-        if (fp->shield_lifeup_wait == 0.0F)
+        if (fp->shield_heal_wait == 0.0F)
         {
             fp->shield_health++;
 
-            fp->shield_lifeup_wait = 10.0F;
+            fp->shield_heal_wait = 10.0F;
         }
     }
     fp->shield_health -= fp->shield_damage_total;

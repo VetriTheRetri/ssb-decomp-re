@@ -1116,7 +1116,7 @@ struct FTStruct
     ub32 is_hitstun : 1;
     u32 slope_contour : 3;
     ub32 is_use_animlocks : 1;
-    ub32 is_playing_sfx : 1;
+    ub32 is_muted : 1;                  // This is set to TRUE only in the Characters menu; prevents motion script sound effects from playing
     ub32 unk_ft_0x190_b5 : 1;           // Never seen this used
     ub32 is_show_item : 1;
     ub32 is_cliff_hold : 1;             // Whether fighter is holding onto a ledge
@@ -1128,7 +1128,7 @@ struct FTStruct
     ub32 is_special_interrupt : 1;      // Whether move can be interrupted by Link's boomerang? Have not seen this used anywhere else
     ub32 is_ignore_dead : 1;            // Ignore dead action states altogether
     ub32 is_catchstatus : 1;
-    ub32 unk_ft_0x192_b3 : 1;           // My brain stops working every time I try to understand what this does
+    ub32 unk_ft_0x192_b3 : 1;           // My brain stops working everytime I try to understand what this does
     ub32 is_use_fogcolor : 1;
     ub32 is_shield_catch : 1;           // Set to TRUE when fighter grabs after getting shield poked; there is a check for this flag that halves throw damage if TRUE
     ub32 is_knockback_paused : 1;       // Whether fighter's knockback is paused until hitlag is over?

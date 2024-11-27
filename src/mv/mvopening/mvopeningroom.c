@@ -366,7 +366,7 @@ void mvOpeningRoomMakePluckedFighter(s32 fkind)
 	DObjGetStruct(fighter_gobj)->scale.vec.f.y = 1.0F;
 	DObjGetStruct(fighter_gobj)->scale.vec.f.z = 1.0F;
 
-	scSubsysFighterSetStatus(fighter_gobj, 0x10008);
+	scSubsysFighterSetStatus(fighter_gobj, nFTDemoStatusFigurePulled);
 
 	gcMoveGObjDL(fighter_gobj, 6, -1);
 }
@@ -483,7 +483,7 @@ void mvOpeningRoomMakeDroppedFighter(s32 fkind)
 	desc.pos.z = -4734.600098F;
 	sMVOpeningRoomDroppedFighterGObj = fighter_gobj = ftManagerMakeFighter(&desc);
 
-	scSubsysFighterSetStatus(fighter_gobj, 0x10009);
+	scSubsysFighterSetStatus(fighter_gobj, nFTDemoStatusFigureFall);
 	gcMoveGObjDL(fighter_gobj, 6, -1);
 }
 
@@ -1231,7 +1231,7 @@ void mvOpeningRoomFuncRun(GObj *gobj)
 		}
 		if (sMVOpeningRoomTotalTimeTics == 380)
 		{
-			scSubsysFighterSetStatus(sMVOpeningRoomPluckedFighterGObj, 0x10009);
+			scSubsysFighterSetStatus(sMVOpeningRoomPluckedFighterGObj, nFTDemoStatusFigureFall);
 
 			DObjGetStruct(sMVOpeningRoomPluckedFighterGObj)->rotate.vec.f.x = 0.0F;
 			DObjGetStruct(sMVOpeningRoomPluckedFighterGObj)->rotate.vec.f.y = 0.0F;
@@ -1285,7 +1285,7 @@ void mvOpeningRoomFuncRun(GObj *gobj)
 			DObjGetStruct(sMVOpeningRoomPluckedFighterGObj)->rotate.vec.f.y = 0.0F;
 			DObjGetStruct(sMVOpeningRoomPluckedFighterGObj)->rotate.vec.f.z = 0.0F;
 
-			scSubsysFighterSetStatus(sMVOpeningRoomPluckedFighterGObj, 0x1000A);
+			scSubsysFighterSetStatus(sMVOpeningRoomPluckedFighterGObj, nFTDemoStatusFigureStand);
 			mvOpeningRoomMakeScene4Cameras();
 		}
 		if (sMVOpeningRoomTotalTimeTics == I_SEC_TO_TICS(18))

@@ -384,7 +384,7 @@ void mvOpeningSamusMakePosedFighter(void)
 	desc.pos.z = 0.0F;
 
 	fighter_gobj = ftManagerMakeFighter(&desc);
-	scSubsysFighterSetStatus(fighter_gobj, 0x1000C);
+	scSubsysFighterSetStatus(fighter_gobj, nFTDemoStatusStance);
 	gcMoveGObjDL(fighter_gobj, 26, -1);
 	gcAddGObjProcess(fighter_gobj, mvOpeningSamusPosedFighterProcUpdate, nGCProcessKindFunc, 1);
 

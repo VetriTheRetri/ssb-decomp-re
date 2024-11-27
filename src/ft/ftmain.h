@@ -14,7 +14,7 @@ extern void ftMainUpdateMotionEventsDefault(GObj* fighter_gobj);
 extern void ftMainUpdateMotionEventsDefaultEffect(GObj* fighter_gobj);
 extern void ftMainPlayAnimNoEffect(GObj* fighter_gobj);
 extern void ftMainPlayAnimDefault(GObj* fighter_gobj);
-extern sb32 ftMainUpdateColAnim(GMColAnim* colanim, GObj* fighter_gobj, sb32 is_playing_sfx, sb32 is_playing_effect);
+extern sb32 ftMainUpdateColAnim(GMColAnim* colanim, GObj* fighter_gobj, sb32 is_muted, sb32 is_playing_effect);
 extern void ftMainRunUpdateColAnim(GObj* fighter_gobj);
 extern void ftMainProcInterruptMain(GObj* fighter_gobj);
 extern void ftMainClearGroundElementsAll();

@@ -35,22 +35,25 @@
 #define FTANIM_USE_ANIMLOCKS            0x00000001
 #define FTANIM_USE_NONE                 0x00000000
 
-#define FTSTATUS_PRESERVE_NONE          (0)                                     // 0x0 - Just zero
-#define FTSTATUS_PRESERVE_HIT           (1 << nFTStatusPreserveHit)             // 0x1
-#define FTSTATUS_PRESERVE_COLANIM       (1 << nFTStatusPreserveColAnim)         // 0x2
-#define FTSTATUS_PRESERVE_EFFECT        (1 << nFTStatusPreserveEffect)          // 0x4
-#define FTSTATUS_PRESERVE_FASTFALL      (1 << nFTStatusPreserveFastFall)        // 0x8
-#define FTSTATUS_PRESERVE_HITSTATUS     (1 << nFTStatusPreserveHitStatus)       // 0x10
-#define FTSTATUS_PRESERVE_MODELPART     (1 << nFTStatusPreserveModelPart)       // 0x20
-#define FTSTATUS_PRESERVE_SLOPECONTOUR  (1 << nFTStatusPreserveSlopeContour)    // 0x40
-#define FTSTATUS_PRESERVE_TEXTUREPART   (1 << nFTStatusPreserveTexturePart)     // 0x80
-#define FTSTATUS_PRESERVE_PLAYERTAG     (1 << nFTStatusPreservePlayerTag)       // 0x100
-#define FTSTATUS_PRESERVE_THROWPOINTER  (1 << nFTStatusPreserveThrowPointer)    // 0x200
-#define FTSTATUS_PRESERVE_SHUFFLETIME   (1 << nFTStatusPreserveShuffleTime)     // 0x400
-#define FTSTATUS_PRESERVE_LOOPSFX       (1 << nFTStatusPreserveLoopSFX)         // 0x800
-#define FTSTATUS_PRESERVE_DAMAGEPLAYER  (1 << nFTStatusPreserveDamagePlayer)    // 0x1000
-#define FTSTATUS_PRESERVE_AFTERIMAGE    (1 << nFTStatusPreserveAfterImage)      // 0x2000
-#define FTSTATUS_PRESERVE_RUMBLE        (1 << nFTStatusPreserveRumble)          // 0x4000
+#define FTSTATUS_PRESERVE_NONE              (0)                                     // 0x0 - Just zero
+#define FTSTATUS_PRESERVE_HIT               (1 << nFTStatusPreserveHit)             // 0x1
+#define FTSTATUS_PRESERVE_COLANIM           (1 << nFTStatusPreserveColAnim)         // 0x2
+#define FTSTATUS_PRESERVE_EFFECT            (1 << nFTStatusPreserveEffect)          // 0x4
+#define FTSTATUS_PRESERVE_FASTFALL          (1 << nFTStatusPreserveFastFall)        // 0x8
+#define FTSTATUS_PRESERVE_HITSTATUS         (1 << nFTStatusPreserveHitStatus)       // 0x10
+#define FTSTATUS_PRESERVE_MODELPART         (1 << nFTStatusPreserveModelPart)       // 0x20
+#define FTSTATUS_PRESERVE_SLOPECONTOUR      (1 << nFTStatusPreserveSlopeContour)    // 0x40
+#define FTSTATUS_PRESERVE_TEXTUREPART       (1 << nFTStatusPreserveTexturePart)     // 0x80
+#define FTSTATUS_PRESERVE_PLAYERTAG         (1 << nFTStatusPreservePlayerTag)       // 0x100
+#define FTSTATUS_PRESERVE_THROWPOINTER      (1 << nFTStatusPreserveThrowPointer)    // 0x200
+#define FTSTATUS_PRESERVE_SHUFFLETIME       (1 << nFTStatusPreserveShuffleTime)     // 0x400
+#define FTSTATUS_PRESERVE_LOOPSFX           (1 << nFTStatusPreserveLoopSFX)         // 0x800
+#define FTSTATUS_PRESERVE_DAMAGEPLAYER      (1 << nFTStatusPreserveDamagePlayer)    // 0x1000
+#define FTSTATUS_PRESERVE_AFTERIMAGE        (1 << nFTStatusPreserveAfterImage)      // 0x2000
+#define FTSTATUS_PRESERVE_RUMBLE            (1 << nFTStatusPreserveRumble)          // 0x4000
+
+#define FTSTATUS_CHARACTERS_DEMO(status_id) (0x20000 + (status_id))
+#define FTSTATUS_CHARACTERS_NULL            0xA2C2A
 
 #define FTCATCHKIND_MASK_YOSHISPECIALN      (1 << nFTCatchKindYoshiSpecialN)    // 0x1
 #define FTCATCHKIND_MASK_KIRBYSPECIALN      (1 << nFTCatchKindKirbySpecialN)    // 0x2
@@ -613,6 +616,27 @@ typedef enum FTCommonStatus
     nFTCommonStatusSpecialStart // Start of special move table
 
 } FTCommonStatus;
+
+typedef enum FTDemoStatus
+{
+    nFTDemoStatusNull = 0x10000,
+    nFTDemoStatusWin1,          // Win / selected 1
+    nFTDemoStatusWin2,          // Win / selected 2
+    nFTDemoStatusWin3,          // Win / selected 3
+    nFTDemoStatusWin4,          // Win / selected 4
+    nFTDemoStatusLose,          // Lose (results screen)
+    nFTDemoStatusRun,           // Common status ID for opening movie running scene
+    nFTDemoStatusJump,          // Link jump status ID for opening movie running scene
+    nFTDemoStatusFigurePulled,  // Fighter plucked by Master Hand during opening movie
+    nFTDemoStatusFigureFall,    // Fighter dropped in opening movie / ending movie / game over
+    nFTDemoStatusFigureStand,   // Fighter standing up in opening movie / game over continue
+    nFTDemoStatusClash,         // Common status ID for opening movie clashing scene
+    nFTDemoStatusStance,        // Common status ID for opening movie sliding fighter poses
+    nFTDemoStatusIntroL,        // Common status ID for 1P Game Stage Cards (Player / Allies)
+    nFTDemoStatusIntroR,        // Common status ID for 1P Game Stage Cards (Enemies)
+    nFTDemoStatusSpecialStart   // Start of opening movie character-specific statuses
+
+} FTDemoStatus;
 
 typedef enum FTMotionAttackIndex
 {

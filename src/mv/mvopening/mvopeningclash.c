@@ -119,7 +119,7 @@ void mvOpeningClashMakeFighters(void)
         ft_desc.figatree_heap = sMVOpeningClashFigatreeHeaps[i];
         fighter_gobj = ftManagerMakeFighter(&ft_desc);
 
-        scSubsysFighterSetStatus(fighter_gobj, 0x1000B);
+        scSubsysFighterSetStatus(fighter_gobj, nFTDemoStatusClash);
 
         DObjGetStruct(fighter_gobj)->scale.vec.f.x = 1.0F;
         DObjGetStruct(fighter_gobj)->scale.vec.f.y = 1.0F;

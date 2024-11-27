@@ -342,7 +342,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         break;
 
     case nFTMotionEventPlaySFXStoreInfo:
-        if (!(fp->is_playing_sfx))
+        if (!(fp->is_muted))
         {
             fp->p_sfx = func_800269C0_275C0(ftMotionEventCastAdvance(ms, FTMotionEventDefault)->value);
 
@@ -352,7 +352,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         break;
 
     case nFTMotionEventPlaySFX:
-        if (!(fp->is_playing_sfx))
+        if (!(fp->is_muted))
         {
             func_800269C0_275C0(ftMotionEventCastAdvance(ms, FTMotionEventDefault)->value);
         }
@@ -360,7 +360,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         break;
 
     case nFTMotionEventPlayLoopSFXStoreInfo:
-        if (!(fp->is_playing_sfx))
+        if (!(fp->is_muted))
         {
             ftParamPlayLoopSFX(fp, ftMotionEventCastAdvance(ms, FTMotionEventDefault)->value);
         }
@@ -372,7 +372,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         break;
 
     case nFTMotionEventPlayVoiceStoreInfo:
-        if (!(fp->is_playing_sfx) && (fp->attr->is_have_voice))
+        if (!(fp->is_muted) && (fp->attr->is_have_voice))
         {
             ftParamPlayVoice(fp, ftMotionEventCastAdvance(ms, FTMotionEventDefault)->value);
         }
@@ -380,7 +380,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         break;
 
     case nFTMotionEventPlayLoopVoiceStoreInfo:
-        if (!(fp->is_playing_sfx) && (fp->attr->is_have_voice))
+        if (!(fp->is_muted) && (fp->attr->is_have_voice))
         {
             ftParamPlayLoopSFX(fp, ftMotionEventCastAdvance(ms, FTMotionEventDefault)->value);
         }
@@ -388,7 +388,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         break;
 
     case nFTMotionEventPlaySmashVoice:
-        if (!(fp->is_playing_sfx))
+        if (!(fp->is_muted))
         {
             ftParamPlayVoice(fp, fp->attr->smash_sfx[mtTrigGetRandomIntRange(ARRAY_COUNT(fp->attr->smash_sfx))]);
 
@@ -935,7 +935,7 @@ void ftMainPlayAnimDefault(GObj *fighter_gobj)
 }
 
 // 0x800E0880
-sb32 ftMainUpdateColAnim(GMColAnim *colanim, GObj *fighter_gobj, sb32 is_playing_sfx, sb32 is_playing_effect)
+sb32 ftMainUpdateColAnim(GMColAnim *colanim, GObj *fighter_gobj, sb32 is_muted, sb32 is_playing_effect)
 {
     s32 i, j;
     FTStruct *fp;
@@ -1134,7 +1134,7 @@ sb32 ftMainUpdateColAnim(GMColAnim *colanim, GObj *fighter_gobj, sb32 is_playing
                 break;
 
             case nGMColEventPlaySFX:
-                if (is_playing_sfx == FALSE)
+                if (is_muted == FALSE)
                 {
                     func_800269C0_275C0(GMColEventCastAdvance(colanim->cs[i].p_script, GMColEventDefault)->value);
                 }
@@ -1181,7 +1181,7 @@ void ftMainRunUpdateColAnim(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    while (ftMainUpdateColAnim(&fp->colanim, fighter_gobj, fp->is_playing_sfx, fp->is_playing_effect) != FALSE)
+    while (ftMainUpdateColAnim(&fp->colanim, fighter_gobj, fp->is_muted, fp->is_playing_effect) != FALSE)
     {
         ftParamResetStatUpdateColAnim(fighter_gobj);
     }

@@ -360,7 +360,7 @@ void sc1PContinueMakeFighter(s32 fkind)
 
     sSC1PContinueFighterGObj = fighter_gobj = ftManagerMakeFighter(&ft_desc);
 
-    scSubsysFighterSetStatus(fighter_gobj, 0x10009);
+    scSubsysFighterSetStatus(fighter_gobj, nFTDemoStatusFigureFall);
     sc1PContinueSetFighterScale(fighter_gobj, sSC1PContinueFighterDemoDesc.fkind);
 }
 
@@ -1091,7 +1091,7 @@ void sc1PContinueFuncRun(GObj *gobj)
 
                     gcEjectGObj(sSC1PContinueScoreGObj);
                     sc1PContinueMakeScoreDisplay(gSCManagerSceneData.spgame_score);
-					scSubsysFighterSetStatus(sSC1PContinueFighterGObj, 0x1000A);
+					scSubsysFighterSetStatus(sSC1PContinueFighterGObj, nFTDemoStatusFigureStand);
 
 					sSC1PContinueStatus = 1;
                     sSC1PContinueOptionYesRetryTic = sSC1PContinueTotalTimeTics + I_SEC_TO_TICS(4);

@@ -254,7 +254,7 @@ void mvEndingMakeFighter(s32 fkind)
 
     sMVEndingFighterGObj = fighter_gobj = ftManagerMakeFighter(&ft_desc);
 
-    scSubsysFighterSetStatus(fighter_gobj, 0x10009);
+    scSubsysFighterSetStatus(fighter_gobj, nFTDemoStatusFigureFall);
 }
 
 // 0x80131FE8

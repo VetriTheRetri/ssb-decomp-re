@@ -769,7 +769,7 @@ GObj* ftManagerMakeFighter(FTDesc *ft_desc) // Create fighter
 
     fp->display_mode = nDBDisplayModeMaster;
 
-    fp->is_playing_sfx = FALSE;
+    fp->is_muted = FALSE;
     fp->is_effect_interrupt = FALSE;
 
     fp->proc_status = NULL;

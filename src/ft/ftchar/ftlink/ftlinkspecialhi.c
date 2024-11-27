@@ -51,7 +51,7 @@ void ftLinkSpecialHiUpdateWeaponAttack(GObj *fighter_gobj, WPStruct *wp)
      * which happens to be attack1_followup_frames in FTStruct and attack_count in WPStruct. This is bad enough on its own, because attack1_followup_frames is a float,
      * which gets loaded as an integer. Not only that, this would be used as the loop iterator for weapon hitboxes... So not only does it receive the wrong struct, it also
      * could very well iterate out of bounds until it crashes from that instead. The only saving grace of this whole situation is that attack1_followup_frames is 0 outside of jabs.
-     * On top of that, fixing this function does yields results in no changes at all, because weapons are updated after fighters, and wpProcessUpdateHitPositions runs regardless.
+     * On top of that, fixing this function yields no changes at all, because weapons are updated after fighters, and wpProcessUpdateHitPositions runs regardless.
      * It is absolutely ridiculous how close HAL were to casually making the game collapse from Link's specials on two occasions.
      */
 

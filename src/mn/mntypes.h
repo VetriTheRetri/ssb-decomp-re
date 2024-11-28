@@ -22,4 +22,16 @@ struct MNCongraPicture
 	intptr_t top_offset;
 };
 
+struct MNCharactersMotion
+{
+	s32 status_id;
+	s32 anim_length;
+	u32 flags;
+};
+
+struct MNCharactersSpecialMotion
+{
+	MNCharactersMotion motions[3][8];
+};
+
 #endif

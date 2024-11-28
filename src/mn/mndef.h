@@ -20,6 +20,54 @@
 #define mnCommonSetOptionChangeWaitN(wait, is_button, stick_range, div)\
 ((wait) = (((is_button) != FALSE) ? (12) : mnCommonGetOptionChangeWaitN(stick_range, div)))
 
+typedef enum MNCharactersMotionKind
+{
+	nMNCharactersMotionKindSpecialHi,
+	nMNCharactersMotionKindSpecialN,
+	nMNCharactersMotionKindSpecialLw,
+	nMNCharactersMotionKindCommonStart,
+	nMNCharactersMotionKindWalkSlow = nMNCharactersMotionKindCommonStart,
+	nMNCharactersMotionKindWalkMiddle,
+	nMNCharactersMotionKindWalkFast,
+	nMNCharactersMotionKindRun,
+	nMNCharactersMotionKindJumpF,
+	nMNCharactersMotionKindJumpB,
+	nMNCharactersMotionKindJumpAerialF,
+	nMNCharactersMotionKindJumpAerialB,
+	nMNCharactersMotionKindSquat,
+	nMNCharactersMotionKindOttotto,
+	nMNCharactersMotionKindFuraFura,
+	nMNCharactersMotionKindWait,
+	nMNCharactersMotionKindDamageE1,
+	nMNCharactersMotionKindEscapeF,
+	nMNCharactersMotionKindEscapeB,
+	nMNCharactersMotionKindAttack1,
+	nMNCharactersMotionKindAttackDash,
+	nMNCharactersMotionKindAttackS3,
+	nMNCharactersMotionKindAttackHi3,
+	nMNCharactersMotionKindAttackLw3,
+	nMNCharactersMotionKindAttackS4,
+	nMNCharactersMotionKindAttackHi4,
+	nMNCharactersMotionKindAttackLw4,
+	nMNCharactersMotionKindAttackAirStart = 26,
+	nMNCharactersMotionKindAttackAirN = nMNCharactersMotionKindAttackAirStart,
+	nMNCharactersMotionKindAttackAirF,
+	nMNCharactersMotionKindAttackAirB,
+	nMNCharactersMotionKindAttackAirHi,
+	nMNCharactersMotionKindAttackAirLw,
+	nMNCharactersMotionKindAttackAirEnd = nMNCharactersMotionKindAttackAirLw,
+	nMNCharactersMotionKindThrowF,
+	nMNCharactersMotionKindThrowB,
+	nMNCharactersMotionKindWin1,
+	nMNCharactersMotionKindWin2,
+	nMNCharactersMotionKindWin3,
+	nMNCharactersMotionKindWin4,
+	nMNCharactersMotionKindLose,
+	nMNCharactersMotionKindAppeal,
+	nMNCharactersMotionKindEnumCount
+
+} MNCharactersMotionKind;
+
 typedef enum MNTitleLayout
 {
     nMNTitleLayoutOpening,      // logo animation intro
@@ -179,7 +227,9 @@ typedef enum MNOptionTabOnOff
 
 } MNOptionTabOnOff;
 
-typedef struct MNTitleSpriteDesc	MNTitleSpriteDesc;
-typedef struct MNCongraPicture		MNCongraPicture;
+typedef struct MNTitleSpriteDesc			MNTitleSpriteDesc;
+typedef struct MNCongraPicture				MNCongraPicture;
+typedef struct MNCharactersMotion			MNCharactersMotion;
+typedef struct MNCharactersSpecialMotion	MNCharactersSpecialMotion;
 
 #endif

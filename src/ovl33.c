@@ -22,67 +22,75 @@ mnCommonSetOptionChangeWaitN(sMNCharactersChangeWait, is_button, stick_range, di
 
 extern void scManagerFuncDraw();
 
-typedef enum MNCharactersMotionGroup
-{
-	nMNCharactersMotionGroupSpecialHi,
-	nMNCharactersMotionGroupSpecialN,
-	nMNCharactersMotionGroupSpecialLw,
-	nMNCharactersMotionGroupCommonStart,
-	nMNCharactersMotionGroupWalkSlow = nMNCharactersMotionGroupCommonStart,
-	nMNCharactersMotionGroupWalkMiddle,
-	nMNCharactersMotionGroupWalkFast,
-	nMNCharactersMotionGroupRun,
-	nMNCharactersMotionGroupJumpF,
-	nMNCharactersMotionGroupJumpB,
-	nMNCharactersMotionGroupJumpAerialF,
-	nMNCharactersMotionGroupJumpAerialB,
-	nMNCharactersMotionGroupSquat,
-	nMNCharactersMotionGroupOttotto,
-	nMNCharactersMotionGroupFuraFura,
-	nMNCharactersMotionGroupWait,
-	nMNCharactersMotionGroupDamageE1,
-	nMNCharactersMotionGroupEscapeF,
-	nMNCharactersMotionGroupEscapeB,
-	nMNCharactersMotionGroupAttack1,
-	nMNCharactersMotionGroupAttackDash,
-	nMNCharactersMotionGroupAttackS3,
-	nMNCharactersMotionGroupAttackHi3,
-	nMNCharactersMotionGroupAttackLw3,
-	nMNCharactersMotionGroupAttackS4,
-	nMNCharactersMotionGroupAttackHi4,
-	nMNCharactersMotionGroupAttackLw4,
-	nMNCharactersMotionGroupAttackAirStart = 26,
-	nMNCharactersMotionGroupAttackAirN = nMNCharactersMotionGroupAttackAirStart,
-	nMNCharactersMotionGroupAttackAirF,
-	nMNCharactersMotionGroupAttackAirB,
-	nMNCharactersMotionGroupAttackAirHi,
-	nMNCharactersMotionGroupAttackAirLw,
-	nMNCharactersMotionGroupAttackAirEnd = nMNCharactersMotionGroupAttackAirLw,
-	nMNCharactersMotionGroupThrowF,
-	nMNCharactersMotionGroupThrowB,
-	nMNCharactersMotionGroupWin1,
-	nMNCharactersMotionGroupWin2,
-	nMNCharactersMotionGroupWin3,
-	nMNCharactersMotionGroupWin4,
-	nMNCharactersMotionGroupLose,
-	nMNCharactersMotionGroupAppeal,
-	nMNCharactersMotionGroupEnumCount
+extern u32 lMNCharactersFileID;								// 0x00000010
+extern u32 lFTCommonEmblemSpritesFileID;					// 0x00000014
+extern u32 lMNDataCommonFileID;								// 0x00000020
+extern u32 lFTCommonEmblemModelsFileID;						// 0x00000023
 
-} MNCharactersMotionGroup;
+extern intptr_t lMNCharactersMarioStorySprite;				// 0x0000ACA8
+extern intptr_t lMNCharactersFoxStorySprite;				// 0x0000D128
+extern intptr_t lMNCharactersDonkeyStorySprite;				// 0x0000F5A8
+extern intptr_t lMNCharactersSamusStorySprite;				// 0x00011A28
+extern intptr_t lMNCharactersLuigiStorySprite;				// 0x00013EA8
+extern intptr_t lMNCharactersLinkStorySprite;				// 0x00016328
+extern intptr_t lMNCharactersYoshiStorySprite;				// 0x000187A8
+extern intptr_t lMNCharactersCaptainStorySprite;			// 0x0001AC28
+extern intptr_t lMNCharactersKirbyStorySprite;				// 0x0001D0A8
+extern intptr_t lMNCharactersPikachuStorySprite;			// 0x0001F528
+extern intptr_t lMNCharactersPurinStorySprite;				// 0x000219A8
+extern intptr_t lMNCharactersNessStorySprite;				// 0x00023E28
 
-typedef struct MNCharactersMotion
-{
-	s32 status_id;
-	s32 anim_length;
-	u32 flags;
+extern intptr_t lMNCharactersMarioWorksSprite;				// 0x00025AB8
+extern intptr_t lMNCharactersFoxWorksSprite;				// 0x00026518
+extern intptr_t lMNCharactersDonkeyWorksSprite;				// 0x00026F78
+extern intptr_t lMNCharactersSamusWorksSprite;				// 0x000279D8
+extern intptr_t lMNCharactersLuigiWorksSprite;				// 0x00028438
+extern intptr_t lMNCharactersLinkWorksSprite;				// 0x00028E98
+extern intptr_t lMNCharactersYoshiWorksSprite;				// 0x000298F8
+extern intptr_t lMNCharactersCaptainWorksSprite;			// 0x0002A358
+extern intptr_t lMNCharactersKirbyWorksSprite;				// 0x0002ADB8
+extern intptr_t lMNCharactersPikachuWorksSprite;			// 0x0002B818
+extern intptr_t lMNCharactersPurinWorksSprite;				// 0x0002C278
+extern intptr_t lMNCharactersNessWorksSprite;				// 0x0002CCD8
 
-} MNCharactersMotion;
+extern intptr_t lMNCharactersMotionSpecialHiInputSprite;	// 0x0002CDA8
+extern intptr_t lMNCharactersMotionSpecialNInputSprite;		// 0x0002CE78
+extern intptr_t lMNCharactersMotionSpecialLwInputSprite;	// 0x0002CF48
 
-typedef struct MNCharactersSpecialMotion
-{
-	MNCharactersMotion motions[3][8];
-
-} MNCharactersSpecialMotion;
+extern intptr_t lMNCharactersMarioSpecialHiNameSprite;		// 0x0002D088
+extern intptr_t lMNCharactersMarioSpecialNNameSprite;		// 0x0002DE48
+extern intptr_t lMNCharactersMarioSpecialLwNameSprite;		// 0x0002EC48
+extern intptr_t lMNCharactersFoxSpecialHiNameSprite;		// 0x0002D1C8
+extern intptr_t lMNCharactersFoxSpecialNNameSprite;			// 0x0002DF88
+extern intptr_t lMNCharactersFoxSpecialLwNameSprite;		// 0x0002ED88
+extern intptr_t lMNCharactersDonkeySpecialHiNameSprite;		// 0x0002D308
+extern intptr_t lMNCharactersDonkeySpecialNNameSprite;		// 0x0002E0C8
+extern intptr_t lMNCharactersDonkeySpecialLwNameSprite;		// 0x0002EEC8
+extern intptr_t lMNCharactersSamusSpecialHiNameSprite;		// 0x0002D448
+extern intptr_t lMNCharactersSamusSpecialNNameSprite;		// 0x0002E208
+extern intptr_t lMNCharactersSamusSpecialLwNameSprite;		// 0x0002F008
+extern intptr_t lMNCharactersLuigiSpecialLwNameSprite;		// 0x0002F148
+extern intptr_t lMNCharactersLinkSpecialHiNameSprite;		// 0x0002D588
+extern intptr_t lMNCharactersLinkSpecialNNameSprite;		// 0x0002E348
+extern intptr_t lMNCharactersLinkSpecialLwNameSprite;		// 0x0002F288
+extern intptr_t lMNCharactersYoshiSpecialHiNameSprite;		// 0x0002D6C8
+extern intptr_t lMNCharactersYoshiSpecialNNameSprite;		// 0x0002E488
+extern intptr_t lMNCharactersYoshiSpecialLwNameSprite;		// 0x0002F3C8
+extern intptr_t lMNCharactersCaptainSpecialHiNameSprite;	// 0x0002D808
+extern intptr_t lMNCharactersCaptainSpecialNNameSprite;		// 0x0002E5C8
+extern intptr_t lMNCharactersCaptainSpecialLwNameSprite;	// 0x0002F508
+extern intptr_t lMNCharactersKirbySpecialHiNameSprite;		// 0x0002D948
+extern intptr_t lMNCharactersKirbySpecialNNameSprite;		// 0x0002E740
+extern intptr_t lMNCharactersKirbySpecialLwNameSprite;		// 0x0002F648
+extern intptr_t lMNCharactersPikachuSpecialHiNameSprite;	// 0x0002DA88
+extern intptr_t lMNCharactersPikachuSpecialNNameSprite;		// 0x0002E888
+extern intptr_t lMNCharactersPikachuSpecialLwNameSprite;	// 0x0002F788
+extern intptr_t lMNCharactersPurinSpecialHiNameSprite;		// 0x0002DBC8
+extern intptr_t lMNCharactersPurinSpecialNNameSprite;		// 0x0002E9C8
+extern intptr_t lMNCharactersPurinSpecialLwNameSprite;		// 0x0002F8C8
+extern intptr_t lMNCharactersNessSpecialHiNameSprite;		// 0x0002DD08
+extern intptr_t lMNCharactersNessSpecialNNameSprite;		// 0x0002EB08
+extern intptr_t lMNCharactersNessSpecialLwNameSprite;		// 0x0002FA08
 
 // Externs
 
@@ -98,10 +106,14 @@ extern intptr_t FILE_020_ARROW_RIGHT_IMAGE_OFFSET; // file 0x020 image offset fo
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 // Forward declarations
-void mnCharactersUpdateMotionName(GObj* gobj);
+void mnCharactersUpdateMotionName(GObj *gobj);
 
+// // // // // // // // // // // //
+//                               //
+//       INITIALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
 
-// Data
 // 0x801340B0
 MNCharactersSpecialMotion dMNCharactersSpecialMotionMario =
 {
@@ -530,8 +542,8 @@ MNCharactersSpecialMotion dMNCharactersSpecialMotionPikachu =
 			{ FTSTATUS_CHARACTERS_DEMO(nFTPikachuStatusSpecialLwEnd),	666, FTSTATUS_PRESERVE_NONE 	},
 			{ FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusWait), 			 30, FTSTATUS_PRESERVE_NONE 	},
 			{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	},
-			{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	}
-			// Last row undefined -> all zeroes?
+			{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	},
+			// Last row undefined -> all zeroes
 		}
 	}
 };
@@ -1128,129 +1140,165 @@ MNCharactersMotion dMNCharactersPurinJumpAerialMotionDescs[/* */] =
 MNCharactersMotion dMNCharactersPurinFallMotionDesc = { FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusFall),	 30, FTSTATUS_PRESERVE_NONE 	};
 
 // 0x80135DA8
-MNCharactersMotion dMNCharactersAttack1MotionDescs[12][8] = {
+MNCharactersMotion dMNCharactersAttack1MotionDescs[/* */][8] =
+{
+	// Mario
+	{
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusAttack11),	 	666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusAttack12),	 	666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTMarioStatusAttack13),	 		666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusWait), 			 30, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	}
+	},
 
-	0x200BE, 0x0029A, 0x00000,
-	0x200BF, 0x0029A, 0x00000,
-	0x200DC, 0x0029A, 0x00000,
-	0x2000A, 0x0001E, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
+	// Fox
+	{
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusAttack11),	 	666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusAttack12),	 	666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTFoxStatusAttack100Start),	 	666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTFoxStatusAttack100Loop),	 	666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTFoxStatusAttack100End),	 	666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusWait), 			 30, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	}
+	},
 
-	0x200BE, 0x0029A, 0x00000,
-	0x200BF, 0x0029A, 0x00000,
-	0x200DC, 0x0029A, 0x00000,
-	0x200DD, 0x0029A, 0x00000,
-	0x200DE, 0x0029A, 0x00000,
-	0x2000A, 0x0001E, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
+	// Donkey Kong
+	{
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusAttack11),	 	666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusAttack12),	 	666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusWait), 			 30, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	},
+		// Last row undefined -> all zeroes
+	},
 
-	0x200BE, 0x0029A, 0x00000,
-	0x200BF, 0x0029A, 0x00000,
-	0x2000A, 0x0001E, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
-	0x00000, 0x00000, 0x00000,
+	// Samus
+	{
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusAttack11),	 	666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusAttack12),	 	666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusWait), 			 30, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	}
+	},
 
-	0x200BE, 0x0029A, 0x00000,
-	0x200BF, 0x0029A, 0x00000,
-	0x2000A, 0x0001E, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
+	// Luigi
+	{
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusAttack11),	 	666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusAttack12),	 	666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTLuigiStatusAttack13),	 		666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusWait), 			 30, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	}
+	},
 
-	0x200BE, 0x0029A, 0x00000,
-	0x200BF, 0x0029A, 0x00000,
-	0x200DC, 0x0029A, 0x00000,
-	0x2000A, 0x0001E, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
+	// Link
+	{
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusAttack11),	 	666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusAttack12),	 	666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTLinkStatusAttack100Start),	666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTLinkStatusAttack100Loop),	 	666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTLinkStatusAttack100End),	 	666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusWait), 			 30, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	}
+	},
 
-	0x200BE, 0x0029A, 0x00000,
-	0x200BF, 0x0029A, 0x00000,
-	0x200DD, 0x0029A, 0x00000,
-	0x200DE, 0x0029A, 0x00000,
-	0x200DF, 0x0029A, 0x00000,
-	0x2000A, 0x0001E, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
+	// Yoshi
+	{
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusAttack11),	 	666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusAttack12),	 	666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusWait), 			 30, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	}
+	},
 
-	0x200BE, 0x0029A, 0x00000,
-	0x200BF, 0x0029A, 0x00000,
-	0x2000A, 0x0001E, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
+	// Captain Falcon
+	{
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusAttack11),	 	666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusAttack12),	 	666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCaptainStatusAttack13),	 	666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCaptainStatusAttack100Start),	666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCaptainStatusAttack100Loop),	666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCaptainStatusAttack100End),	666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusWait), 			 30, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	}
+	},
 
-	0x200BE, 0x0029A, 0x00000,
-	0x200BF, 0x0029A, 0x00000,
-	0x200DC, 0x0029A, 0x00000,
-	0x200DD, 0x0029A, 0x00000,
-	0x200DE, 0x0029A, 0x00000,
-	0x200DF, 0x0029A, 0x00000,
-	0x2000A, 0x0001E, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
+	// Kirby
+	{
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusAttack11),	 	666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusAttack12),	 	666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTKirbyStatusAttack100Start),	666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTKirbyStatusAttack100Loop),	666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTKirbyStatusAttack100End),	 	666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusWait), 			 30, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	}
+	},
 
-	0x200BE, 0x0029A, 0x00000,
-	0x200BF, 0x0029A, 0x00000,
-	0x200DC, 0x0029A, 0x00000,
-	0x200DD, 0x0029A, 0x00000,
-	0x200DE, 0x0029A, 0x00000,
-	0x2000A, 0x0001E, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
+	// Pikachu
+	{
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusAttack11),	 	666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusWait), 			 30, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	}
+	},
 
-	0x200BE, 0x0029A, 0x00000,
-	0x2000A, 0x0001E, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
+	// Jigglypuff
+	{
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusAttack11),	 	666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusAttack12),	 	666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusWait), 			 30, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	}
+	},
 
-	0x200BE, 0x0029A, 0x00000,
-	0x200BF, 0x0029A, 0x00000,
-	0x2000A, 0x0001E, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
-
-	0x200BE, 0x0029A, 0x00000,
-	0x200BF, 0x0029A, 0x00000,
-	0x200DC, 0x0029A, 0x00000,
-	0x2000A, 0x0001E, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
-	0xA2C2A, 0x00001, 0x00000,
-	0xA2C2A, 0x00001, 0x00000
+	// Ness
+	{
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusAttack11),	 	666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusAttack12),	 	666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTNessStatusAttack13),	 		666, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusWait), 			 30, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	},
+		{ FTSTATUS_CHARACTERS_NULL, 								  1, FTSTATUS_PRESERVE_NONE 	}
+	},
 };
 
 // 0x80136228
 u32 dMNCharactersFileIDs[/* */] =
 {
-	0x0000010,
-	0x0000020,
-	0x0000014,
-	0x0000023,
+	&lMNCharactersFileID,
+	&lMNDataCommonFileID,
+	&lFTCommonEmblemSpritesFileID,
+	&lFTCommonEmblemModelsFileID
 };
 
-// 0x8013638
-s32 D_ovl33_80136238[] = {
-
+// 0x80136238
+s32 dMNCharactersUnknown0x80136238[/* */] =
+{
 	0x0000000,
 	0x0000000,
 	0x0000000,
@@ -1259,40 +1307,44 @@ s32 D_ovl33_80136238[] = {
 	0x0000000
 };
 
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
 
-// BSS
 // 0x801365F0
-s32 D_ovl33_801365F0[2];
+s32 sMNCharactersPad0x801365F0[2];
 
 // 0x801365F8
-s32 sMNCharactersCurrentFighterKind;
+s32 sMNCharactersPage;
 
 // 0x801365FC
-GObj* sMNCharactersSeriesLogoGObj;
+GObj* sMNCharactersEmblemGObj;
 
 // 0x80136600
-GObj* sMNCharactersNameGObj;
+GObj *sMNCharactersNameGObj;
 
 // 0x80136604
-GObj* sMNCharactersBioGObj;
+GObj *sMNCharactersStoryGObj;
 
 // 0x80136608
-GObj* sMNCharactersWorksGObj;
+GObj *sMNCharactersWorksGObj;
 
 // 0x8013660C
-GObj* sMNCharactersFighterGObj;
+GObj *sMNCharactersFighterGObj;
 
 // 0x80136610
-s32 D_ovl33_80136610[45];
+s32 sMNCharactersPad0x80136610[45];
 
 // 0x801366C4
-s32 sMNCharactersActionType;
+s32 sMNCharactersMotionKind;
 
 // 0x801366C8
 s32 sMNCharactersAnimFramesRemain;
 
 // 0x801366CC
-sb32 sMNCharactersUseAnimFramesRemaining;
+sb32 sMNCharactersIsUseAnimFramesRemain;
 
 // 0x801366D0
 sb32 sMNCharactersIsAutoRotate;
@@ -1301,10 +1353,10 @@ sb32 sMNCharactersIsAutoRotate;
 s32 sMNCharactersUnknown;
 
 // 0x801366D8
-s32 D_ovl33_801366D8;
+s32 sMNCharactersPad0x801366D8;
 
 // 0x801366DC
-GObj* sMNCharactersMoveNameGObj;
+GObj* sMNCharactersMotionNameGObj;
 
 // 0x801366E0
 GObj* sMNCharactersFighterCameraGObj;
@@ -1328,19 +1380,19 @@ s32 sMNCharactersFirstFighterKind;
 s32 sMNCharactersSecondFighterKind;
 
 // 0x801366FC
-s32 sMNCharactersCurrentActionTrack;
+s32 sMNCharactersCurrentMotionTrack;
 
-// 0x80136700
-u16 sMNCharactersUnlockedMask;
+// 0x80136700 - mask of available characters
+u16 sMNCharactersFighterMask;
 
 // 0x80136704
 s32 sMNCharactersCurrentAnimFrame;
 
 // 0x80136708
-s32 sMNCharactersRecentActionTypes[3];
+s32 sMNCharactersRecentMotionKinds[3];
 
 // 0x80136714
-s32 sMNCharactersRecentActionTypeIndex;
+s32 sMNCharactersRecentMotionKindsID;
 
 // 0x80136718
 s32 sMNCharactersChangeWait;
@@ -1357,6 +1409,12 @@ LBFileNode sMNCharactersForceStatusBuffer[7];
 // 0x80136A78
 void *sMNCharactersFiles[ARRAY_COUNT(dMNCharactersFileIDs)];
 
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
+
 // 0x80131B00
 void mnCharactersFuncLights(Gfx **dls)
 {
@@ -1365,7 +1423,7 @@ void mnCharactersFuncLights(Gfx **dls)
 }
 
 // 0x80131B58
-s32 mnCharactersGetFighterKind(s32 id)
+s32 mnCharactersGetFighterKind(s32 page)
 {
 	s32 fkinds[/* */] =
 	{
@@ -1382,150 +1440,182 @@ s32 mnCharactersGetFighterKind(s32 id)
 		nFTKindCaptain,
 		nFTKindNess
 	};
-	return fkinds[id];
+	return fkinds[page];
 }
 
 // 0x80131BA8
-s32 mnCharactersGetIndex(s32 fkind)
+s32 mnCharactersGetPage(s32 fkind)
 {
-	s32 indexes[/* */] =
-	{
-		0, 7, 2, 4, 1, 3, 5, 10, 6, 8, 9, 11
-	};
-	return indexes[fkind];
+	s32 pages[/* */] = { 0, 7, 2, 4, 1, 3, 5, 10, 6, 8, 9, 11 };
+
+	return pages[fkind];
 }
 
 // 0x80131BF8 - Unused?
-void func_ovl33_80131BF8() {}
+void func_ovl33_80131BF8(void)
+{
+	return;
+}
 
 // 0x80131C00
-void mnCharactersCreateBio(s32 fkind)
+void mnCharactersMakeStory(s32 fkind)
 {
-	GObj* bio_gobj;
-	SObj* bio_sobj;
-	intptr_t offsets[12] = {
+	GObj *gobj;
+	SObj *sobj;
 
-		0x0ACA8, 0x0D128, 0x0F5A8, 0x11A28, 0x13EA8, 0x16328,
-		0x187A8, 0x1AC28, 0x1D0A8, 0x1F528, 0x219A8, 0x23E28
+	intptr_t offsets[/* */] =
+	{
+		&lMNCharactersMarioStorySprite,
+		&lMNCharactersFoxStorySprite,
+		&lMNCharactersDonkeyStorySprite,
+		&lMNCharactersSamusStorySprite,
+		&lMNCharactersLuigiStorySprite,
+		&lMNCharactersLinkStorySprite,
+		&lMNCharactersYoshiStorySprite,
+		&lMNCharactersCaptainStorySprite,
+		&lMNCharactersKirbyStorySprite,
+		&lMNCharactersPikachuStorySprite,
+		&lMNCharactersPurinStorySprite,
+		&lMNCharactersNessStorySprite,
 	};
 
-	sMNCharactersBioGObj = bio_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	gcAddGObjDisplay(bio_gobj, lbCommonDrawSObjAttr, 0x1A, GOBJ_PRIORITY_DEFAULT, ~0);
+	sMNCharactersStoryGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 26, GOBJ_PRIORITY_DEFAULT, ~0);
 
-	bio_sobj = lbCommonMakeSObjForGObj(bio_gobj, lbRelocGetFileData(void*, sMNCharactersFiles[0], &FILE_010_BIO_UNDERLAY_TEXTURE_IMAGE_OFFSET));
-	bio_sobj->sprite.attr &= ~SP_FASTCOPY;
-	bio_sobj->sprite.attr |= SP_TRANSPARENT;
-	bio_sobj->sprite.red = 0;
-	bio_sobj->sprite.green = 0;
-	bio_sobj->sprite.blue = 0;
-	bio_sobj->pos.x = 126.0F;
-	bio_sobj->pos.y = 54.0F;
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNCharactersFiles[0], &FILE_010_BIO_UNDERLAY_TEXTURE_IMAGE_OFFSET));
 
-	bio_sobj = lbCommonMakeSObjForGObj(bio_gobj, lbRelocGetFileData(void*, sMNCharactersFiles[0], offsets[fkind]));
-	bio_sobj->sprite.attr &= ~SP_FASTCOPY;
-	bio_sobj->sprite.attr |= SP_TRANSPARENT;
-	bio_sobj->sprite.red = 0xFF;
-	bio_sobj->sprite.green = 0xFF;
-	bio_sobj->sprite.blue = 0xFF;
-	bio_sobj->pos.x = 126.0F;
-	bio_sobj->pos.y = 54.0F;
+	sobj->sprite.attr &= ~SP_FASTCOPY;
+	sobj->sprite.attr |= SP_TRANSPARENT;
+
+	sobj->sprite.red = 0x00;
+	sobj->sprite.green = 0x00;
+	sobj->sprite.blue = 0x00;
+
+	sobj->pos.x = 126.0F;
+	sobj->pos.y = 54.0F;
+
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNCharactersFiles[0], offsets[fkind]));
+
+	sobj->sprite.attr &= ~SP_FASTCOPY;
+	sobj->sprite.attr |= SP_TRANSPARENT;
+
+	sobj->sprite.red = 0xFF;
+	sobj->sprite.green = 0xFF;
+	sobj->sprite.blue = 0xFF;
+
+	sobj->pos.x = 126.0F;
+	sobj->pos.y = 54.0F;
 }
 
 // 0x80131D44
-void mnCharactersCreateHeader()
+void mnCharactersCreateHeader(void)
 {
-	GObj* header_gobj;
-	SObj* header_sobj;
+	GObj *gobj;
+	SObj *sobj;
 
-	header_gobj = gcMakeGObjSPAfter(0, 0, 0x12, 0x80000000);
-	gcAddGObjDisplay(header_gobj, lbCommonDrawSObjAttr, 0x1B, GOBJ_PRIORITY_DEFAULT, ~0);
+	gobj = gcMakeGObjSPAfter(0, NULL, 18, GOBJ_PRIORITY_DEFAULT);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 27, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	// DATA header
-	header_sobj = lbCommonMakeSObjForGObj(header_gobj, lbRelocGetFileData(void*, sMNCharactersFiles[1], &FILE_020_DATA_HEADER_IMAGE_OFFSET));
-	header_sobj->sprite.attr &= ~SP_FASTCOPY;
-	header_sobj->sprite.attr |= SP_TRANSPARENT;
-	header_sobj->pos.x = 23.0F;
-	header_sobj->pos.y = 17.0F;
-	header_sobj->sprite.red = 0x5F;
-	header_sobj->sprite.green = 0x58;
-	header_sobj->sprite.blue = 0x46;
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNCharactersFiles[1], &FILE_020_DATA_HEADER_IMAGE_OFFSET));
+
+	sobj->sprite.attr &= ~SP_FASTCOPY;
+	sobj->sprite.attr |= SP_TRANSPARENT;
+
+	sobj->pos.x = 23.0F;
+	sobj->pos.y = 17.0F;
+
+	sobj->sprite.red = 0x5F;
+	sobj->sprite.green = 0x58;
+	sobj->sprite.blue = 0x46;
 
 	// Characters header
-	header_sobj = lbCommonMakeSObjForGObj(header_gobj, lbRelocGetFileData(void*, sMNCharactersFiles[0], &FILE_010_CHARACTERS_TEXTURE_IMAGE_OFFSET));
-	header_sobj->sprite.attr &= ~SP_FASTCOPY;
-	header_sobj->sprite.attr |= SP_TRANSPARENT;
-	header_sobj->pos.x = 157.0F;
-	header_sobj->pos.y = 23.0F;
-	header_sobj->sprite.red = 0xF2;
-	header_sobj->sprite.green = 0xC7;
-	header_sobj->sprite.blue = 0xD;
-	header_sobj->envcolor.r = 0;
-	header_sobj->envcolor.g = 0;
-	header_sobj->envcolor.b = 0;
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNCharactersFiles[0], &FILE_010_CHARACTERS_TEXTURE_IMAGE_OFFSET));
+
+	sobj->sprite.attr &= ~SP_FASTCOPY;
+	sobj->sprite.attr |= SP_TRANSPARENT;
+
+	sobj->pos.x = 157.0F;
+	sobj->pos.y = 23.0F;
+
+	sobj->sprite.red = 0xF2;
+	sobj->sprite.green = 0xC7;
+	sobj->sprite.blue = 0x0D;
+
+	sobj->envcolor.r = 0x00;
+	sobj->envcolor.g = 0x00;
+	sobj->envcolor.b = 0x00;
 
 	// left arrow
-	header_sobj = lbCommonMakeSObjForGObj(header_gobj, lbRelocGetFileData(void*, sMNCharactersFiles[1], &FILE_020_ARROW_LEFT_IMAGE_OFFSET));
-	header_sobj->sprite.attr &= ~SP_FASTCOPY;
-	header_sobj->sprite.attr |= SP_TRANSPARENT;
-	header_sobj->pos.x = 257.0F;
-	header_sobj->pos.y = 40.0F;
-	header_sobj->sprite.red = 0xE3;
-	header_sobj->sprite.green = 0x7D;
-	header_sobj->sprite.blue = 0xC;
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNCharactersFiles[1], &FILE_020_ARROW_LEFT_IMAGE_OFFSET));
+
+	sobj->sprite.attr &= ~SP_FASTCOPY;
+	sobj->sprite.attr |= SP_TRANSPARENT;
+
+	sobj->pos.x = 257.0F;
+	sobj->pos.y = 40.0F;
+
+	sobj->sprite.red = 0xE3;
+	sobj->sprite.green = 0x7D;
+	sobj->sprite.blue = 0x0C;
 
 	// right arrow
-	header_sobj = lbCommonMakeSObjForGObj(header_gobj, lbRelocGetFileData(void*, sMNCharactersFiles[1], &FILE_020_ARROW_RIGHT_IMAGE_OFFSET));
-	header_sobj->sprite.attr &= ~SP_FASTCOPY;
-	header_sobj->sprite.attr |= SP_TRANSPARENT;
-	header_sobj->pos.x = 275.0F;
-	header_sobj->pos.y = 40.0F;
-	header_sobj->sprite.red = 0xE3;
-	header_sobj->sprite.green = 0x7D;
-	header_sobj->sprite.blue = 0xC;
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNCharactersFiles[1], &FILE_020_ARROW_RIGHT_IMAGE_OFFSET));
+
+	sobj->sprite.attr &= ~SP_FASTCOPY;
+	sobj->sprite.attr |= SP_TRANSPARENT;
+
+	sobj->pos.x = 275.0F;
+	sobj->pos.y = 40.0F;
+
+	sobj->sprite.red = 0xE3;
+	sobj->sprite.green = 0x7D;
+	sobj->sprite.blue = 0x0C;
 }
 
 // 0x80131F28
-void mnCharactersCreateSeriesLogo(s32 fkind)
+void mnCharactersMakeEmblem(s32 fkind)
 {
-	GObj* series_logo_gobj;
+	GObj *gobj;
 
-	intptr_t offsets[12] = {
-
+	intptr_t dobjdescs[/* */] =
+	{
 		0x0990, 0x21D0, 0x1348, 0x1860, 0x0990, 0x2520,
 		0x2F10, 0x3828, 0x3E68, 0x4710, 0x4710, 0x5A00
 	};
-	intptr_t zoom_offsets[12] = {
-
+	intptr_t mobjsubs[/* */] =
+	{
 		0x0000, 0x1940, 0x0B00, 0x1470, 0x0000, 0x22B0,
 		0x2690, 0x2FF0, 0x3900, 0x3F40, 0x3F40, 0x4840
 	};
-	intptr_t color_offsets[12] = {
-
+	intptr_t matanim_joints[/* */] =
+	{
 		0x0A14, 0x2254, 0x13CC, 0x18E4, 0x0A14, 0x25A4,
 		0x2F94, 0x38AC, 0x3EEC, 0x4794, 0x4794, 0x5A84
 	};
 
-	sMNCharactersSeriesLogoGObj = series_logo_gobj = gcMakeGObjSPAfter(0, 0, 0x13, 0x80000000);
-	gcSetupCommonDObjs(series_logo_gobj, lbRelocGetFileData(DObjDesc*, sMNCharactersFiles[3], offsets[fkind]), NULL);
-	gcAddGObjDisplay(series_logo_gobj, gcDrawDObjTreeForGObj, 28, GOBJ_PRIORITY_DEFAULT, ~0);
-	gcAddMObjAll(series_logo_gobj, lbRelocGetFileData(MObjSub***, sMNCharactersFiles[3], zoom_offsets[fkind]));
-	gcAddMatAnimJointAll(series_logo_gobj, lbRelocGetFileData(AObjEvent32***, sMNCharactersFiles[3], color_offsets[fkind]), 4.0F);
-	gcPlayAnimAll(series_logo_gobj);
+	sMNCharactersEmblemGObj = gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_PRIORITY_DEFAULT);
+	gcSetupCommonDObjs(gobj, lbRelocGetFileData(DObjDesc*, sMNCharactersFiles[3], dobjdescs[fkind]), NULL);
+	gcAddGObjDisplay(gobj, gcDrawDObjTreeForGObj, 28, GOBJ_PRIORITY_DEFAULT, ~0);
+	gcAddMObjAll(gobj, lbRelocGetFileData(MObjSub***, sMNCharactersFiles[3], mobjsubs[fkind]));
+	gcAddMatAnimJointAll(gobj, lbRelocGetFileData(AObjEvent32***, sMNCharactersFiles[3], matanim_joints[fkind]), 4.0F);
+	gcPlayAnimAll(gobj);
 
-	DObjGetStruct(series_logo_gobj)->translate.vec.f.x = -350.0F;
-	DObjGetStruct(series_logo_gobj)->translate.vec.f.y = 200.0F;
-	DObjGetStruct(series_logo_gobj)->translate.vec.f.z = 0.0F;
-	DObjGetStruct(series_logo_gobj)->scale.vec.f.x = 1.7F;
-	DObjGetStruct(series_logo_gobj)->scale.vec.f.y = 1.7F;
+	DObjGetStruct(gobj)->translate.vec.f.x = -350.0F;
+	DObjGetStruct(gobj)->translate.vec.f.y = 200.0F;
+	DObjGetStruct(gobj)->translate.vec.f.z = 0.0F;
+	DObjGetStruct(gobj)->scale.vec.f.x = 1.7F;
+	DObjGetStruct(gobj)->scale.vec.f.y = 1.7F;
 }
 
 // 0x801320E4
-void mnCharactersCreateName(s32 fkind)
+void mnCharactersMakeName(s32 fkind)
 {
-	GObj* name_gobj;
-	SObj* name_sobj;
-	Vec2f coords[12] = {
+	GObj *gobj;
+	SObj *sobj;
 
+	Vec2f pos[/* */] =
+	{
 		{ 33.0, 50.0 },
 		{ 46.0, 51.0 },
 		{ 24.0, 51.0 },
@@ -1539,93 +1629,118 @@ void mnCharactersCreateName(s32 fkind)
 		{ 34.0, 49.0 },
 		{ 42.0, 52.0 }
 	};
-	intptr_t offsets[12] = {
-
+	intptr_t offsets[/* */] =
+	{
 		0x2F98, 0x33A0, 0x4290, 0x4910, 0x4F78, 0x5398,
 		0x58F8, 0x6828, 0x6E48, 0x7628, 0x82E0, 0x8828
 	};
 
-	sMNCharactersNameGObj = name_gobj = gcMakeGObjSPAfter(0, 0, 0x14, 0x80000000);
-	gcAddGObjDisplay(name_gobj, lbCommonDrawSObjAttr, 0x1D, GOBJ_PRIORITY_DEFAULT, ~0);
+	sMNCharactersNameGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_PRIORITY_DEFAULT);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 29, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	if ((fkind == nFTKindPurin) || (fkind == nFTKindCaptain))
 	{
-		name_sobj = lbCommonMakeSObjForGObj(name_gobj, lbRelocGetFileData(void*, sMNCharactersFiles[0], &FILE_010_NAME_BORDER_TALL_IMAGE_OFFSET));
-		name_sobj->sprite.attr &= ~SP_FASTCOPY;
-		name_sobj->sprite.attr |= SP_TRANSPARENT;
-		name_sobj->pos.x = 10.0F;
-		name_sobj->pos.y = 44.0F;
-		name_sobj->sprite.red = 0x7D;
-		name_sobj->sprite.green = 0x45;
-		name_sobj->sprite.blue = 0x07;
+		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNCharactersFiles[0], &FILE_010_NAME_BORDER_TALL_IMAGE_OFFSET));
+		
+		sobj->sprite.attr &= ~SP_FASTCOPY;
+		sobj->sprite.attr |= SP_TRANSPARENT;
+
+		sobj->pos.x = 10.0F;
+		sobj->pos.y = 44.0F;
+
+		sobj->sprite.red = 0x7D;
+		sobj->sprite.green = 0x45;
+		sobj->sprite.blue = 0x07;
 	}
 	else
 	{
-		name_sobj = lbCommonMakeSObjForGObj(name_gobj, lbRelocGetFileData(void*, sMNCharactersFiles[0], &FILE_010_NAME_BORDER_IMAGE_OFFSET));
-		name_sobj->sprite.attr &= ~SP_FASTCOPY;
-		name_sobj->sprite.attr |= SP_TRANSPARENT;
-		name_sobj->pos.x = 10.0F;
-		name_sobj->pos.y = 45.0F;
-		name_sobj->sprite.red = 0x7D;
-		name_sobj->sprite.green = 0x45;
-		name_sobj->sprite.blue = 0x07;
-	}
+		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNCharactersFiles[0], &FILE_010_NAME_BORDER_IMAGE_OFFSET));
 
-	name_sobj = lbCommonMakeSObjForGObj(name_gobj, lbRelocGetFileData(void*, sMNCharactersFiles[0], offsets[fkind]));
-	name_sobj->sprite.attr &= ~SP_FASTCOPY;
-	name_sobj->sprite.attr |= SP_TRANSPARENT;
-	name_sobj->pos.x = coords[fkind].x;
-	name_sobj->pos.y = coords[fkind].y;
-	name_sobj->sprite.red = 0x7D;
-	name_sobj->sprite.green = 0x45;
-	name_sobj->sprite.blue = 0x07;
+		sobj->sprite.attr &= ~SP_FASTCOPY;
+		sobj->sprite.attr |= SP_TRANSPARENT;
+
+		sobj->pos.x = 10.0F;
+		sobj->pos.y = 45.0F;
+
+		sobj->sprite.red = 0x7D;
+		sobj->sprite.green = 0x45;
+		sobj->sprite.blue = 0x07;
+	}
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNCharactersFiles[0], offsets[fkind]));
+
+	sobj->sprite.attr &= ~SP_FASTCOPY;
+	sobj->sprite.attr |= SP_TRANSPARENT;
+
+	sobj->pos.x = pos[fkind].x;
+	sobj->pos.y = pos[fkind].y;
+
+	sobj->sprite.red = 0x7D;
+	sobj->sprite.green = 0x45;
+	sobj->sprite.blue = 0x07;
 }
 
 // 0x801322F0
-void mnCharactersCreateWorksBackground()
+void mnCharactersMakeWorksWallpaper(void)
 {
-	GObj* works_bg_gobj;
-	SObj* works_bg_sobj;
+	GObj *gobj;
+	SObj *sobj;
 
-	works_bg_gobj = gcMakeGObjSPAfter(0, 0, 0x15, 0x80000000);
-	gcAddGObjDisplay(works_bg_gobj, lbCommonDrawSObjAttr, 0x1E, GOBJ_PRIORITY_DEFAULT, ~0);
+	gobj = gcMakeGObjSPAfter(0, NULL, 21, GOBJ_PRIORITY_DEFAULT);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 30, GOBJ_PRIORITY_DEFAULT, ~0);
 
-	works_bg_sobj = lbCommonMakeSObjForGObj(works_bg_gobj, lbRelocGetFileData(void*, sMNCharactersFiles[0], &FILE_010_WORKS_BACKGROUND_IMAGE_OFFSET));
-	works_bg_sobj->sprite.attr &= ~SP_FASTCOPY;
-	works_bg_sobj->sprite.attr |= SP_TRANSPARENT;
-	works_bg_sobj->pos.x = 116.0F;
-	works_bg_sobj->pos.y = 173.0F;
-	works_bg_sobj->sprite.red = 0xCF;
-	works_bg_sobj->sprite.green = 0xCF;
-	works_bg_sobj->sprite.blue = 0xAE;
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNCharactersFiles[0], &FILE_010_WORKS_BACKGROUND_IMAGE_OFFSET));
+
+	sobj->sprite.attr &= ~SP_FASTCOPY;
+	sobj->sprite.attr |= SP_TRANSPARENT;
+
+	sobj->pos.x = 116.0F;
+	sobj->pos.y = 173.0F;
+
+	sobj->sprite.red = 0xCF;
+	sobj->sprite.green = 0xCF;
+	sobj->sprite.blue = 0xAE;
 }
 
 // 0x8013239C
-void mnCharactersCreateWorks(s32 fkind)
+void mnCharactersMakeWorks(s32 fkind)
 {
-	GObj* works_gobj;
-	SObj* works_sobj;
-	intptr_t works_offsets[12] = {
+	GObj *gobj;
+	SObj *sobj;
 
-		0x25AB8, 0x26518, 0x26F78, 0x279D8, 0x28438, 0x28E98,
-		0x298F8, 0x2A358, 0x2ADB8, 0x2B818, 0x2C278, 0x2CCD8
+	intptr_t offsets[/* */] =
+	{
+		&lMNCharactersMarioWorksSprite,
+		&lMNCharactersFoxWorksSprite,
+		&lMNCharactersDonkeyWorksSprite,
+		&lMNCharactersSamusWorksSprite,
+		&lMNCharactersLuigiWorksSprite,
+		&lMNCharactersLinkWorksSprite,
+		&lMNCharactersYoshiWorksSprite,
+		&lMNCharactersCaptainWorksSprite,
+		&lMNCharactersKirbyWorksSprite,
+		&lMNCharactersPikachuWorksSprite,
+		&lMNCharactersPurinWorksSprite,
+		&lMNCharactersNessWorksSprite,
 	};
 
-	sMNCharactersWorksGObj = works_gobj = gcMakeGObjSPAfter(0, 0, 0x16, 0x80000000);
-	gcAddGObjDisplay(works_gobj, lbCommonDrawSObjAttr, 0x1F, GOBJ_PRIORITY_DEFAULT, ~0);
+	sMNCharactersWorksGObj = gobj = gcMakeGObjSPAfter(0, NULL, 22, GOBJ_PRIORITY_DEFAULT);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 31, GOBJ_PRIORITY_DEFAULT, ~0);
 
-	works_sobj = lbCommonMakeSObjForGObj(works_gobj, lbRelocGetFileData(void*, sMNCharactersFiles[0], works_offsets[fkind]));
-	works_sobj->sprite.attr &= ~SP_FASTCOPY;
-	works_sobj->sprite.attr |= SP_TRANSPARENT;
-	works_sobj->pos.x = 139.0F;
-	works_sobj->pos.y = 180.0F;
-	works_sobj->sprite.red = 0xBC;
-	works_sobj->sprite.green = 0xBF;
-	works_sobj->sprite.blue = 0xFF;
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNCharactersFiles[0], offsets[fkind]));
+
+	sobj->sprite.attr &= ~SP_FASTCOPY;
+	sobj->sprite.attr |= SP_TRANSPARENT;
+
+	sobj->pos.x = 139.0F;
+	sobj->pos.y = 180.0F;
+
+	sobj->sprite.red = 0xBC;
+	sobj->sprite.green = 0xBF;
+	sobj->sprite.blue = 0xFF;
 }
 
 // 0x80132494
-void mnCharactersSetScale(GObj* fighter_gobj, s32 fkind)
+void mnCharactersSetFighterScale(GObj *fighter_gobj, s32 fkind)
 {
 	DObjGetStruct(fighter_gobj)->scale.vec.f.x = dSCSubsysFighterScales[fkind];
 	DObjGetStruct(fighter_gobj)->scale.vec.f.y = dSCSubsysFighterScales[fkind];
@@ -1633,7 +1748,7 @@ void mnCharactersSetScale(GObj* fighter_gobj, s32 fkind)
 }
 
 // 0x801324CC
-void mnCharactersSetPosition(GObj* fighter_gobj, s32 fkind)
+void mnCharactersSetFighterPosition(GObj *fighter_gobj, s32 fkind)
 {
 	DObjGetStruct(fighter_gobj)->translate.vec.f.x = 0.0F;
 	DObjGetStruct(fighter_gobj)->translate.vec.f.y = -100.0F;
@@ -1647,7 +1762,7 @@ void func_ovl33_801324F8(void)
 }
 
 // 0x80132500
-MNCharactersMotion* mnCharactersGetActionInfo(MNCharactersMotion *info, s32 fkind, s32 motion_kind, s32 arg3, s32 track)
+MNCharactersMotion* mnCharactersGetMotion(MNCharactersMotion *info, s32 fkind, s32 motion_kind, s32 arg3, s32 track)
 {
 	MNCharactersSpecialMotion *special_actions[/* */] =
 	{
@@ -1664,7 +1779,7 @@ MNCharactersMotion* mnCharactersGetActionInfo(MNCharactersMotion *info, s32 fkin
 		&dMNCharactersSpecialMotionPurin,
 		&dMNCharactersSpecialMotionNess
 	};
-	if ((motion_kind == nMNCharactersMotionGroupSpecialHi) || (motion_kind == nMNCharactersMotionGroupSpecialN) || (motion_kind == nMNCharactersMotionGroupSpecialLw))
+	if ((motion_kind == nMNCharactersMotionKindSpecialHi) || (motion_kind == nMNCharactersMotionKindSpecialN) || (motion_kind == nMNCharactersMotionKindSpecialLw))
 	{
 		*info = special_actions[fkind]->motions[motion_kind][track];
 
@@ -1674,13 +1789,13 @@ MNCharactersMotion* mnCharactersGetActionInfo(MNCharactersMotion *info, s32 fkin
 	{
 		if (fkind == nFTKindKirby)
 		{
-			if ((motion_kind == nMNCharactersMotionGroupJumpAerialF) || (motion_kind == nMNCharactersMotionGroupJumpAerialB))
+			if ((motion_kind == nMNCharactersMotionKindJumpAerialF) || (motion_kind == nMNCharactersMotionKindJumpAerialB))
 			{
 				*info = dMNCharactersKirbyJumpAerialMotionDescs[track];
 
 				return info;
 			}
-			else if ((motion_kind >= nMNCharactersMotionGroupAttackAirStart) && (motion_kind <= nMNCharactersMotionGroupAttackAirEnd) && (track == 1))
+			else if ((motion_kind >= nMNCharactersMotionKindAttackAirStart) && (motion_kind <= nMNCharactersMotionKindAttackAirEnd) && (track == 1))
 			{
 				*info = dMNCharactersKirbyFallMotionDesc;
 
@@ -1689,20 +1804,20 @@ MNCharactersMotion* mnCharactersGetActionInfo(MNCharactersMotion *info, s32 fkin
 		}
 		if (fkind == nFTKindPurin)
 		{
-			if ((motion_kind == nMNCharactersMotionGroupJumpAerialF) || (motion_kind == nMNCharactersMotionGroupJumpAerialB))
+			if ((motion_kind == nMNCharactersMotionKindJumpAerialF) || (motion_kind == nMNCharactersMotionKindJumpAerialB))
 			{
 				*info = dMNCharactersPurinJumpAerialMotionDescs[track];
 
 				return info;
 			}
-			else if ((motion_kind >= nMNCharactersMotionGroupAttackAirStart) && (motion_kind <= nMNCharactersMotionGroupAttackAirEnd) && (track == 1))
+			else if ((motion_kind >= nMNCharactersMotionKindAttackAirStart) && (motion_kind <= nMNCharactersMotionKindAttackAirEnd) && (track == 1))
 			{
 				*info = dMNCharactersPurinFallMotionDesc;
 
 				return info;
 			}
 		}
-		if (motion_kind == nMNCharactersMotionGroupAttack1)
+		if (motion_kind == nMNCharactersMotionKindAttack1)
 		{
 			*info = dMNCharactersAttack1MotionDescs[fkind][track];
 
@@ -1729,25 +1844,25 @@ sb32 mnCharactersCheckFighterAnimEnd(GObj *fighter_gobj)
 }
 
 // 0x80132794
-void mnCharactersFuncStartRecentActionTypes(void)
+void mnCharactersInitRecentMotionKinds(void)
 {
 	s32 i;
 
-	for (i = 0; i < ARRAY_COUNT(sMNCharactersRecentActionTypes); i++)
+	for (i = 0; i < ARRAY_COUNT(sMNCharactersRecentMotionKinds); i++)
 	{
-		sMNCharactersRecentActionTypes[i] = nMNCharactersMotionGroupEnumCount;
+		sMNCharactersRecentMotionKinds[i] = nMNCharactersMotionKindEnumCount;
 	}
-	sMNCharactersRecentActionTypeIndex = 0;
+	sMNCharactersRecentMotionKindsID = 0;
 }
 
 // 0x801327C0
-sb32 mnCharactersCheckRecentActionType(s32 motion_kind)
+sb32 mnCharactersCheckRecentMotionKind(s32 motion_kind)
 {
 	s32 i;
 
-	for (i = 0; i < ARRAY_COUNT(sMNCharactersRecentActionTypes); i++)
+	for (i = 0; i < ARRAY_COUNT(sMNCharactersRecentMotionKinds); i++)
 	{
-		if (motion_kind == sMNCharactersRecentActionTypes[i])
+		if (motion_kind == sMNCharactersRecentMotionKinds[i])
 		{
 			return TRUE;
 		}
@@ -1756,66 +1871,66 @@ sb32 mnCharactersCheckRecentActionType(s32 motion_kind)
 }
 
 // 0x801327FC
-s32 mnCharactersGetRandomActionType(void)
+s32 mnCharactersGetRandomMotionKind(void)
 {
 	s32 motion_kind;
 
 	do
 	{
-		motion_kind = mtTrigGetRandomTimeUCharRange(nMNCharactersMotionGroupEnumCount);
+		motion_kind = mtTrigGetRandomTimeUCharRange(nMNCharactersMotionKindEnumCount);
 	}
-	while (mnCharactersCheckRecentActionType(motion_kind) != FALSE);
+	while (mnCharactersCheckRecentMotionKind(motion_kind) != FALSE);
 
-	sMNCharactersRecentActionTypes[sMNCharactersRecentActionTypeIndex] = motion_kind;
+	sMNCharactersRecentMotionKinds[sMNCharactersRecentMotionKindsID] = motion_kind;
 
-	if (sMNCharactersRecentActionTypeIndex >= 2)
+	if (sMNCharactersRecentMotionKindsID >= (ARRAY_COUNT(sMNCharactersRecentMotionKinds) - 1))
 	{
-		sMNCharactersRecentActionTypeIndex = 0;
+		sMNCharactersRecentMotionKindsID = 0;
 	}
-	else sMNCharactersRecentActionTypeIndex++;
+	else sMNCharactersRecentMotionKindsID++;
 
 	return motion_kind;
 }
 
 // 0x8013286C
-MNCharactersMotion* mnCharactersSetActionInfo(MNCharactersMotion *motion, s32 motion_kind)
+MNCharactersMotion* mnCharactersSetMotion(MNCharactersMotion *motion, s32 motion_kind)
 {
-	MNCharactersMotion motion_get;
+	MNCharactersMotion get_motion;
 
-	mnCharactersGetActionInfo
+	mnCharactersGetMotion
 	(
-		&motion_get,
-		mnCharactersGetFighterKind(sMNCharactersCurrentFighterKind),
+		&get_motion,
+		mnCharactersGetFighterKind(sMNCharactersPage),
 		motion_kind,
 		sMNCharactersUnknown,
-		sMNCharactersCurrentActionTrack
+		sMNCharactersCurrentMotionTrack
 	);
-	if (motion_get.status_id == 0xA2C2A)
+	if (get_motion.status_id == FTSTATUS_CHARACTERS_NULL)
 	{
 		sMNCharactersCurrentAnimFrame++;
 
-		if (motion_get.anim_length == sMNCharactersCurrentAnimFrame)
+		if (get_motion.anim_length == sMNCharactersCurrentAnimFrame)
 		{
-			sMNCharactersActionType = motion_kind = mnCharactersGetRandomActionType();
+			sMNCharactersMotionKind = motion_kind = mnCharactersGetRandomMotionKind();
 			sMNCharactersCurrentAnimFrame = 0;
 		}
-		sMNCharactersCurrentActionTrack = 0;
+		sMNCharactersCurrentMotionTrack = 0;
 
-		mnCharactersGetActionInfo
+		mnCharactersGetMotion
 		(
-			&motion_get,
-			mnCharactersGetFighterKind(sMNCharactersCurrentFighterKind),
+			&get_motion,
+			mnCharactersGetFighterKind(sMNCharactersPage),
 			motion_kind,
 			sMNCharactersUnknown,
-			sMNCharactersCurrentActionTrack
+			sMNCharactersCurrentMotionTrack
 		);
-		*motion = motion_get;
+		*motion = get_motion;
 
 		return motion;
 	}
 	else
 	{
-		*motion = motion_get;
+		*motion = get_motion;
 
 		return motion;
 	}
@@ -1824,13 +1939,13 @@ MNCharactersMotion* mnCharactersSetActionInfo(MNCharactersMotion *motion, s32 mo
 // 0x80132984
 MNCharactersMotion* mnCharactersAdvanceTrack(MNCharactersMotion *motion, s32 arg1)
 {
-	MNCharactersMotion motion_get;
+	MNCharactersMotion get_motion;
 
-	sMNCharactersCurrentActionTrack++;
+	sMNCharactersCurrentMotionTrack++;
 
-	mnCharactersSetActionInfo(&motion_get, sMNCharactersActionType);
+	mnCharactersSetMotion(&get_motion, sMNCharactersMotionKind);
 
-	*motion = motion_get;
+	*motion = get_motion;
 
 	return motion;
 }
@@ -1838,13 +1953,13 @@ MNCharactersMotion* mnCharactersAdvanceTrack(MNCharactersMotion *motion, s32 arg
 // 0x801329E8
 void mnCharactersFighterProcUpdate(GObj* fighter_gobj)
 {
-	MNCharactersMotion new_action_info;
-	MNCharactersMotion next_action_info;
+	MNCharactersMotion new_motion;
+	MNCharactersMotion next_motion;
 	FTStruct *fp;
 
 	fp = ftGetStruct(fighter_gobj);
 
-	if (sMNCharactersUseAnimFramesRemaining != FALSE)
+	if (sMNCharactersIsUseAnimFramesRemain != FALSE)
 	{
 		if (sMNCharactersAnimFramesRemain != 0)
 		{
@@ -1854,71 +1969,71 @@ void mnCharactersFighterProcUpdate(GObj* fighter_gobj)
 		{
 			mnCharactersAdvanceTrack
 			(
-				&new_action_info,
-				mnCharactersGetFighterKind(sMNCharactersCurrentFighterKind)
+				&new_motion,
+				mnCharactersGetFighterKind(sMNCharactersPage)
 			);
-			mnCharactersGetActionInfo
+			mnCharactersGetMotion
 			(
-				&next_action_info,
-				mnCharactersGetFighterKind(sMNCharactersCurrentFighterKind),
-				sMNCharactersActionType,
+				&next_motion,
+				mnCharactersGetFighterKind(sMNCharactersPage),
+				sMNCharactersMotionKind,
 				sMNCharactersUnknown,
-				sMNCharactersCurrentActionTrack + 1
+				sMNCharactersCurrentMotionTrack + 1
 			);
 			if (fp->status_id == nFTCommonStatusDamageE1)
 			{
 				ftParamResetFighterColAnim(fighter_gobj);
 			}
-			ftMainSetFighterStatus(fighter_gobj, new_action_info.status_id, 0.0F, 1.0F, new_action_info.flags);
+			ftMainSetFighterStatus(fighter_gobj, new_motion.status_id, 0.0F, 1.0F, new_motion.flags);
 
-			if (new_action_info.status_id == FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusDamageE1))
+			if (new_motion.status_id == FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusDamageE1))
 			{
 				ftParamCheckSetSkeletonColAnimID(fighter_gobj, 3);
 			}
-			mnCharactersUpdateMotionName(sMNCharactersMoveNameGObj);
+			mnCharactersUpdateMotionName(sMNCharactersMotionNameGObj);
 
-			if (new_action_info.anim_length != 0x29A)
+			if (new_motion.anim_length != 666)
 			{
-				if (next_action_info.status_id == 0xA2C2A)
+				if (next_motion.status_id == FTSTATUS_CHARACTERS_NULL)
 				{
-					sMNCharactersAnimFramesRemain = new_action_info.anim_length + 20;
+					sMNCharactersAnimFramesRemain = new_motion.anim_length + 20;
 				}
-				else sMNCharactersAnimFramesRemain = new_action_info.anim_length;
+				else sMNCharactersAnimFramesRemain = new_motion.anim_length;
 
-				sMNCharactersUseAnimFramesRemaining = TRUE;
+				sMNCharactersIsUseAnimFramesRemain = TRUE;
 			}
 			else
 			{
 				sMNCharactersAnimFramesRemain = 0;
-				sMNCharactersUseAnimFramesRemaining = FALSE;
+				sMNCharactersIsUseAnimFramesRemain = FALSE;
 			}
 		}
 	}
 	else if (mnCharactersCheckFighterAnimEnd(fighter_gobj))
 	{
-		mnCharactersGetActionInfo
+		mnCharactersGetMotion
 		(
-			&new_action_info,
-			mnCharactersGetFighterKind(sMNCharactersCurrentFighterKind),
-			sMNCharactersActionType,
+			&new_motion,
+			mnCharactersGetFighterKind(sMNCharactersPage),
+			sMNCharactersMotionKind,
 			sMNCharactersUnknown,
-			sMNCharactersCurrentActionTrack
+			sMNCharactersCurrentMotionTrack
 		);
-		mnCharactersGetActionInfo
+		mnCharactersGetMotion
 		(
-			&next_action_info,
-			mnCharactersGetFighterKind(sMNCharactersCurrentFighterKind),
-			sMNCharactersActionType,
+			&next_motion,
+			mnCharactersGetFighterKind(sMNCharactersPage),
+			sMNCharactersMotionKind,
 			sMNCharactersUnknown,
-			sMNCharactersCurrentActionTrack + 1
+			sMNCharactersCurrentMotionTrack + 1
 		);
-		if (next_action_info.status_id == 0xA2C2A)
+		if (next_motion.status_id == FTSTATUS_CHARACTERS_NULL)
 		{
 			sMNCharactersAnimFramesRemain = 20;
 		}
 		else sMNCharactersAnimFramesRemain = 0;
 
-		sMNCharactersUseAnimFramesRemaining = TRUE;
+		sMNCharactersIsUseAnimFramesRemain = TRUE;
 	}
 	if (sMNCharactersIsAutoRotate != FALSE)
 	{
@@ -1937,65 +2052,65 @@ void mnCharactersMakeFighter(s32 fkind)
 	GObj* fighter_gobj;
 	FTStruct *fp;
 	FTDesc desc = dFTManagerDefaultFighterDesc;
-	MNCharactersMotion action_info;
+	MNCharactersMotion motion;
 
-	desc.fkind = mnCharactersGetFighterKind(sMNCharactersCurrentFighterKind);
-	desc.costume = ftParamGetCostumeCommonID(mnCharactersGetFighterKind(sMNCharactersCurrentFighterKind), 0);
+	desc.fkind = mnCharactersGetFighterKind(sMNCharactersPage);
+	desc.costume = ftParamGetCostumeCommonID(mnCharactersGetFighterKind(sMNCharactersPage), 0);
 	desc.figatree_heap = sMNCharactersFigatreeHeap;
 	sMNCharactersFighterGObj = fighter_gobj = ftManagerMakeFighter(&desc);
 
 	gcAddGObjProcess(fighter_gobj, mnCharactersFighterProcUpdate, nGCProcessKindFunc, 1);
 
 	fp = ftGetStruct(fighter_gobj);
+
 	fp->is_muted = TRUE;
 
-	mnCharactersSetScale(fighter_gobj, fkind);
-	mnCharactersSetPosition(fighter_gobj, fkind);
+	mnCharactersSetFighterScale(fighter_gobj, fkind);
+	mnCharactersSetFighterPosition(fighter_gobj, fkind);
 
 	sMNCharactersUnknown = 1;
 
-	mnCharactersFuncStartRecentActionTypes();
+	mnCharactersInitRecentMotionKinds();
 
-	sMNCharactersActionType = mnCharactersGetRandomActionType();
-	sMNCharactersCurrentActionTrack = 0;
+	sMNCharactersMotionKind = mnCharactersGetRandomMotionKind();
+	sMNCharactersCurrentMotionTrack = 0;
 	sMNCharactersCurrentAnimFrame = 0;
 
-	mnCharactersSetActionInfo(&action_info, sMNCharactersActionType);
+	mnCharactersSetMotion(&motion, sMNCharactersMotionKind);
 
-	ftMainSetFighterStatus(fighter_gobj, action_info.status_id, 0.0F, 1.0F, action_info.flags);
+	ftMainSetFighterStatus(fighter_gobj, motion.status_id, 0.0F, 1.0F, motion.flags);
 
-	if (action_info.anim_length != 0x29A)
+	if (motion.anim_length != 666)
 	{
-		sMNCharactersUseAnimFramesRemaining = TRUE;
-		sMNCharactersAnimFramesRemain = action_info.anim_length;
+		sMNCharactersIsUseAnimFramesRemain = TRUE;
+		sMNCharactersAnimFramesRemain = motion.anim_length;
 	}
 	else
 	{
-		sMNCharactersUseAnimFramesRemaining = FALSE;
+		sMNCharactersIsUseAnimFramesRemain = FALSE;
 		sMNCharactersAnimFramesRemain = 0;
 	}
-
-	mnCharactersUpdateMotionName(sMNCharactersMoveNameGObj);
+	mnCharactersUpdateMotionName(sMNCharactersMotionNameGObj);
 
 	sMNCharactersIsAutoRotate = TRUE;
 }
 
 // 0x80132DD4
-s32 mnCharactersGetMotionGroup(void)
+s32 mnCharactersGetMotionKind(void)
 {
-	switch (sMNCharactersActionType)
+	switch (sMNCharactersMotionKind)
 	{
-	case nMNCharactersMotionGroupSpecialHi:
-		return nMNCharactersMotionGroupSpecialHi;
+	case nMNCharactersMotionKindSpecialHi:
+		return nMNCharactersMotionKindSpecialHi;
 		
-	case nMNCharactersMotionGroupSpecialN:
-		return nMNCharactersMotionGroupSpecialN;
+	case nMNCharactersMotionKindSpecialN:
+		return nMNCharactersMotionKindSpecialN;
 
-	case nMNCharactersMotionGroupSpecialLw:
-		return nMNCharactersMotionGroupSpecialLw;
+	case nMNCharactersMotionKindSpecialLw:
+		return nMNCharactersMotionKindSpecialLw;
 		
 	default:
-		return nMNCharactersMotionGroupCommonStart;
+		return nMNCharactersMotionKindCommonStart;
 	}
 }
 
@@ -2007,32 +2122,34 @@ void mnCharactersUpdateMotionName(GObj *gobj)
 	// Move name offsets
 	intptr_t motion_names[/* */][3] =
 	{
-		0x2D088, 0x2DE48, 0x2EC48,
-		0x2D1C8, 0x2DF88, 0x2ED88,
-		0x2D308, 0x2E0C8, 0x2EEC8,
-		0x2D448, 0x2E208, 0x2F008,
-		0x2D088, 0x2DE48, 0x2F148,
-		0x2D588, 0x2E348, 0x2F288,
-		0x2D6C8, 0x2E488, 0x2F3C8,
-		0x2D808, 0x2E5C8, 0x2F508,
-		0x2D948, 0x2E740, 0x2F648,
-		0x2DA88, 0x2E888, 0x2F788,
-		0x2DBC8, 0x2E9C8, 0x2F8C8,
-		0x2DD08, 0x2EB08, 0x2FA08
+		{ &lMNCharactersMarioSpecialHiNameSprite, 	&lMNCharactersMarioSpecialNNameSprite, 	&lMNCharactersMarioSpecialLwNameSprite 	},
+		{ &lMNCharactersFoxSpecialHiNameSprite, 	&lMNCharactersFoxSpecialNNameSprite, 	&lMNCharactersFoxSpecialLwNameSprite 	},
+		{ &lMNCharactersDonkeySpecialHiNameSprite, 	&lMNCharactersDonkeySpecialNNameSprite, &lMNCharactersDonkeySpecialLwNameSprite },
+		{ &lMNCharactersSamusSpecialHiNameSprite, 	&lMNCharactersSamusSpecialNNameSprite, 	&lMNCharactersSamusSpecialLwNameSprite 	},
+		{ &lMNCharactersMarioSpecialHiNameSprite, 	&lMNCharactersMarioSpecialNNameSprite, 	&lMNCharactersLuigiSpecialLwNameSprite 	},
+		{ &lMNCharactersLinkSpecialHiNameSprite, 	&lMNCharactersLinkSpecialNNameSprite, 	&lMNCharactersLinkSpecialLwNameSprite 	},
+		{ &lMNCharactersYoshiSpecialHiNameSprite, 	&lMNCharactersYoshiSpecialNNameSprite, 	&lMNCharactersYoshiSpecialLwNameSprite 	},
+		{ &lMNCharactersCaptainSpecialHiNameSprite, &lMNCharactersCaptainSpecialNNameSprite,&lMNCharactersCaptainSpecialLwNameSprite},
+		{ &lMNCharactersKirbySpecialHiNameSprite, 	&lMNCharactersKirbySpecialNNameSprite, 	&lMNCharactersKirbySpecialLwNameSprite 	},
+		{ &lMNCharactersPikachuSpecialHiNameSprite, &lMNCharactersPikachuSpecialNNameSprite,&lMNCharactersPikachuSpecialLwNameSprite},
+		{ &lMNCharactersPurinSpecialHiNameSprite, 	&lMNCharactersPurinSpecialNNameSprite, 	&lMNCharactersPurinSpecialLwNameSprite 	},
+		{ &lMNCharactersNessSpecialHiNameSprite, 	&lMNCharactersNessSpecialNNameSprite, 	&lMNCharactersNessSpecialLwNameSprite 	}
 	};
 
 	// Input combination text offsets
 	intptr_t motion_inputs[/* */] =
 	{
-		0x2CDA8, 0x2CE78, 0x2CF48
+		&lMNCharactersMotionSpecialHiInputSprite,
+		&lMNCharactersMotionSpecialNInputSprite,
+		&lMNCharactersMotionSpecialLwInputSprite
 	};
 
-	s32 motion_kind = mnCharactersGetMotionGroup();
-	s32 fkind = mnCharactersGetFighterKind(sMNCharactersCurrentFighterKind);
+	s32 motion_kind = mnCharactersGetMotionKind();
+	s32 fkind = mnCharactersGetFighterKind(sMNCharactersPage);
 
 	gcRemoveSObjAll(gobj);
 
-	if (motion_kind != 3)
+	if (motion_kind != nMNCharactersMotionKindCommonStart)
 	{
 		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNCharactersFiles[0], motion_inputs[motion_kind]));
 
@@ -2044,7 +2161,7 @@ void mnCharactersUpdateMotionName(GObj *gobj)
 
 		sobj->sprite.red = 0xE3;
 		sobj->sprite.green = 0x7D;
-		sobj->sprite.blue = 0xC;
+		sobj->sprite.blue = 0x0C;
 
 		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNCharactersFiles[0], motion_names[fkind][motion_kind]));
 
@@ -2056,7 +2173,7 @@ void mnCharactersUpdateMotionName(GObj *gobj)
 
 		sobj->sprite.red = 0xE3;
 		sobj->sprite.green = 0x7D;
-		sobj->sprite.blue = 0xC;
+		sobj->sprite.blue = 0x0C;
 	}
 }
 
@@ -2065,10 +2182,10 @@ void mnCharactersMakeMotionName(void)
 {
 	GObj *gobj;
 
-	sMNCharactersMoveNameGObj = gobj = gcMakeGObjSPAfter(0, NULL, 22, GOBJ_PRIORITY_DEFAULT);
+	sMNCharactersMotionNameGObj = gobj = gcMakeGObjSPAfter(0, NULL, 22, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 31, GOBJ_PRIORITY_DEFAULT, ~0);
 
-	mnCharactersUpdateMotionName(sMNCharactersMoveNameGObj);
+	mnCharactersUpdateMotionName(sMNCharactersMotionNameGObj);
 }
 
 // 0x80133000
@@ -2280,7 +2397,7 @@ sb32 mnCharactersCheckUnlockedFighterKind(s32 fkind)
 		(fkind == nFTKindNess)
 	)
 	{
-		if (sMNCharactersUnlockedMask & LBBACKUP_MASK_FIGHTER(fkind))
+		if (sMNCharactersFighterMask & LBBACKUP_MASK_FIGHTER(fkind))
 		{
 			return TRUE;
 		}
@@ -2294,24 +2411,24 @@ void mnCharactersInitVars(void)
 {
 	sMNCharactersTotalTimeTics = 0;
 
-	sMNCharactersSeriesLogoGObj = NULL;
+	sMNCharactersEmblemGObj = NULL;
 	sMNCharactersNameGObj = NULL;
-	sMNCharactersBioGObj = NULL;
+	sMNCharactersStoryGObj = NULL;
 	sMNCharactersWorksGObj = NULL;
 	sMNCharactersFighterGObj = NULL;
-	sMNCharactersMoveNameGObj = NULL;
+	sMNCharactersMotionNameGObj = NULL;
 
-	sMNCharactersActionType = 0;
+	sMNCharactersMotionKind = 0;
 	sMNCharactersAnimFramesRemain = 0;
-	sMNCharactersUseAnimFramesRemaining = FALSE;
+	sMNCharactersIsUseAnimFramesRemain = FALSE;
 	sMNCharactersIsAutoRotate = TRUE;
 	sMNCharactersUnknown = 1;
-	sMNCharactersCurrentActionTrack = 0;
-	sMNCharactersUnlockedMask = gSCManagerBackupData.fighter_mask;
+	sMNCharactersCurrentMotionTrack = 0;
+	sMNCharactersFighterMask = gSCManagerBackupData.fighter_mask;
 
 	if (gSCManagerSceneData.scene_prev == nSCKindData)
 	{
-		sMNCharactersCurrentFighterKind = mnCharactersGetIndex(gSCManagerBackupData.characters_fkind);
+		sMNCharactersPage = mnCharactersGetPage(gSCManagerBackupData.characters_fkind);
 		sMNCharactersIsDemo = FALSE;
 	}
 	else
@@ -2319,15 +2436,15 @@ void mnCharactersInitVars(void)
 		sMNCharactersIsDemo = TRUE;
 		sMNCharactersFirstFighterKind = gSCManagerSceneData.demo_fkind[0];
 		sMNCharactersSecondFighterKind = gSCManagerSceneData.demo_fkind[1];
-		sMNCharactersCurrentFighterKind = mnCharactersGetIndex(sMNCharactersFirstFighterKind);
+		sMNCharactersPage = mnCharactersGetPage(sMNCharactersFirstFighterKind);
 	}
-	mnCharactersFuncStartRecentActionTypes();
+	mnCharactersInitRecentMotionKinds();
 }
 
 // 0x8013366C
 void mnCharactersBackupFighterKind(void)
 {
-	gSCManagerBackupData.characters_fkind = mnCharactersGetFighterKind(sMNCharactersCurrentFighterKind);
+	gSCManagerBackupData.characters_fkind = mnCharactersGetFighterKind(sMNCharactersPage);
 
 	lbBackupWrite();
 }
@@ -2335,25 +2452,25 @@ void mnCharactersBackupFighterKind(void)
 // 0x8013369C
 void mnCharactersChangeFighter(s32 fkind)
 {
-	if (sMNCharactersSeriesLogoGObj != NULL)
+	if (sMNCharactersEmblemGObj != NULL)
 	{
-		gcEjectGObj(sMNCharactersSeriesLogoGObj);
-		mnCharactersCreateSeriesLogo(fkind);
+		gcEjectGObj(sMNCharactersEmblemGObj);
+		mnCharactersMakeEmblem(fkind);
 	}
 	if (sMNCharactersNameGObj != NULL)
 	{
 		gcEjectGObj(sMNCharactersNameGObj);
-		mnCharactersCreateName(fkind);
+		mnCharactersMakeName(fkind);
 	}
-	if (sMNCharactersBioGObj != NULL)
+	if (sMNCharactersStoryGObj != NULL)
 	{
-		gcEjectGObj(sMNCharactersBioGObj);
-		mnCharactersCreateBio(fkind);
+		gcEjectGObj(sMNCharactersStoryGObj);
+		mnCharactersMakeStory(fkind);
 	}
 	if (sMNCharactersWorksGObj != NULL)
 	{
 		gcEjectGObj(sMNCharactersWorksGObj);
-		mnCharactersCreateWorks(fkind);
+		mnCharactersMakeWorks(fkind);
 	}
 	if (sMNCharactersFighterGObj != NULL)
 	{
@@ -2474,15 +2591,15 @@ void mnCharactersUpdateScene(void)
 		{
 			do
 			{
-				if (sMNCharactersCurrentFighterKind == nFTKindPlayableStart)
+				if (sMNCharactersPage == nFTKindPlayableStart)
 				{
-					sMNCharactersCurrentFighterKind = nFTKindPlayableEnd;
+					sMNCharactersPage = nFTKindPlayableEnd;
 				}
-				else sMNCharactersCurrentFighterKind--;
+				else sMNCharactersPage--;
 			}
-			while (mnCharactersCheckUnlockedFighterKind(mnCharactersGetFighterKind(sMNCharactersCurrentFighterKind)) == FALSE);
+			while (mnCharactersCheckUnlockedFighterKind(mnCharactersGetFighterKind(sMNCharactersPage)) == FALSE);
 
-			mnCharactersChangeFighter(mnCharactersGetFighterKind(sMNCharactersCurrentFighterKind));
+			mnCharactersChangeFighter(mnCharactersGetFighterKind(sMNCharactersPage));
 
 			mnCharactersSetOptionChangeWaitN(is_button, stick_range, 7);
 
@@ -2496,15 +2613,15 @@ void mnCharactersUpdateScene(void)
 		{
 			do
 			{
-				if (sMNCharactersCurrentFighterKind == nFTKindPlayableEnd)
+				if (sMNCharactersPage == nFTKindPlayableEnd)
 				{
-					sMNCharactersCurrentFighterKind = nFTKindPlayableStart;
+					sMNCharactersPage = nFTKindPlayableStart;
 				}
-				else sMNCharactersCurrentFighterKind++;
+				else sMNCharactersPage++;
 			}
-			while (mnCharactersCheckUnlockedFighterKind(mnCharactersGetFighterKind(sMNCharactersCurrentFighterKind)) == FALSE);
+			while (mnCharactersCheckUnlockedFighterKind(mnCharactersGetFighterKind(sMNCharactersPage)) == FALSE);
 
-			mnCharactersChangeFighter(mnCharactersGetFighterKind(sMNCharactersCurrentFighterKind));
+			mnCharactersChangeFighter(mnCharactersGetFighterKind(sMNCharactersPage));
 
 			mnCharactersSetOptionChangeWaitP(is_button, stick_range, 7);
 
@@ -2526,8 +2643,8 @@ void mnCharactersUpdateSceneDemo(void)
 	}
 	if (sMNCharactersTotalTimeTics == 300)
 	{
-		sMNCharactersCurrentFighterKind = mnCharactersGetIndex(sMNCharactersSecondFighterKind);
-		mnCharactersChangeFighter(mnCharactersGetFighterKind(sMNCharactersCurrentFighterKind));
+		sMNCharactersPage = mnCharactersGetPage(sMNCharactersSecondFighterKind);
+		mnCharactersChangeFighter(mnCharactersGetFighterKind(sMNCharactersPage));
 	}
 	if (sMNCharactersTotalTimeTics == 600)
 	{
@@ -2619,13 +2736,13 @@ void mnCharactersFuncStart(void)
 	mnCharactersMakeWorksCamera();
 	mnCharactersMakeFighterCamera();
 	mnCharactersCreateHeader();
-	mnCharactersCreateWorksBackground();
-	mnCharactersCreateWorks(mnCharactersGetFighterKind(sMNCharactersCurrentFighterKind));
-	mnCharactersCreateBio(mnCharactersGetFighterKind(sMNCharactersCurrentFighterKind));
-	mnCharactersCreateSeriesLogo(mnCharactersGetFighterKind(sMNCharactersCurrentFighterKind));
-	mnCharactersCreateName(mnCharactersGetFighterKind(sMNCharactersCurrentFighterKind));
+	mnCharactersMakeWorksWallpaper();
+	mnCharactersMakeWorks(mnCharactersGetFighterKind(sMNCharactersPage));
+	mnCharactersMakeStory(mnCharactersGetFighterKind(sMNCharactersPage));
+	mnCharactersMakeEmblem(mnCharactersGetFighterKind(sMNCharactersPage));
+	mnCharactersMakeName(mnCharactersGetFighterKind(sMNCharactersPage));
 	mnCharactersMakeMotionName();
-	mnCharactersMakeFighter(mnCharactersGetFighterKind(sMNCharactersCurrentFighterKind));
+	mnCharactersMakeFighter(mnCharactersGetFighterKind(sMNCharactersPage));
 
 	scSubsysFighterSetLightParams(45.0F, 10.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 

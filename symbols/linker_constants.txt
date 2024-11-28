@@ -129,6 +129,76 @@ _ovl65SegNoloadEnd = 0x80193900;
 lSYDmemCheckValidFunc = 0x00000000;
 lSYDmemCheckValidNBytes = 0x00000030;
 
+lMNCharactersFileID = 0x00000010;
+lFTCommonEmblemSpritesFileID = 0x00000014;
+lMNDataCommonFileID = 0x00000020;
+lFTCommonEmblemModelsFileID = 0x00000023;
+
+lMNCharactersMarioStorySprite = 0x0000ACA8;
+lMNCharactersFoxStorySprite = 0x0000D128;
+lMNCharactersDonkeyStorySprite = 0x0000F5A8;
+lMNCharactersSamusStorySprite = 0x00011A28;
+lMNCharactersLuigiStorySprite = 0x00013EA8;
+lMNCharactersLinkStorySprite = 0x00016328;
+lMNCharactersYoshiStorySprite = 0x000187A8;
+lMNCharactersCaptainStorySprite = 0x0001AC28;
+lMNCharactersKirbyStorySprite = 0x0001D0A8;
+lMNCharactersPikachuStorySprite = 0x0001F528;
+lMNCharactersPurinStorySprite = 0x000219A8;
+lMNCharactersNessStorySprite = 0x00023E28;
+
+lMNCharactersMarioWorksSprite = 0x00025AB8;
+lMNCharactersFoxWorksSprite = 0x00026518;
+lMNCharactersDonkeyWorksSprite = 0x00026F78;
+lMNCharactersSamusWorksSprite = 0x000279D8;
+lMNCharactersLuigiWorksSprite = 0x00028438;
+lMNCharactersLinkWorksSprite = 0x00028E98;
+lMNCharactersYoshiWorksSprite = 0x000298F8;
+lMNCharactersCaptainWorksSprite = 0x0002A358;
+lMNCharactersKirbyWorksSprite = 0x0002ADB8;
+lMNCharactersPikachuWorksSprite = 0x0002B818;
+lMNCharactersPurinWorksSprite = 0x0002C278;
+lMNCharactersNessWorksSprite = 0x0002CCD8;
+
+lMNCharactersMotionSpecialHiInputSprite = 0x0002CDA8;
+lMNCharactersMotionSpecialNInputSprite = 0x0002CE78;
+lMNCharactersMotionSpecialLwInputSprite = 0x0002CF48;
+
+lMNCharactersMarioSpecialHiNameSprite = 0x0002D088;
+lMNCharactersMarioSpecialNNameSprite = 0x0002DE48;
+lMNCharactersMarioSpecialLwNameSprite = 0x0002EC48;
+lMNCharactersFoxSpecialHiNameSprite = 0x0002D1C8;
+lMNCharactersFoxSpecialNNameSprite = 0x0002DF88;
+lMNCharactersFoxSpecialLwNameSprite = 0x0002ED88;
+lMNCharactersDonkeySpecialHiNameSprite = 0x0002D308;
+lMNCharactersDonkeySpecialNNameSprite = 0x0002E0C8;
+lMNCharactersDonkeySpecialLwNameSprite = 0x0002EEC8;
+lMNCharactersSamusSpecialHiNameSprite = 0x0002D448;
+lMNCharactersSamusSpecialNNameSprite = 0x0002E208;
+lMNCharactersSamusSpecialLwNameSprite = 0x0002F008;
+lMNCharactersLuigiSpecialLwNameSprite = 0x0002F148;
+lMNCharactersLinkSpecialHiNameSprite = 0x0002D588;
+lMNCharactersLinkSpecialNNameSprite = 0x0002E348;
+lMNCharactersLinkSpecialLwNameSprite = 0x0002F288;
+lMNCharactersYoshiSpecialHiNameSprite = 0x0002D6C8;
+lMNCharactersYoshiSpecialNNameSprite = 0x0002E488;
+lMNCharactersYoshiSpecialLwNameSprite = 0x0002F3C8;
+lMNCharactersCaptainSpecialHiNameSprite = 0x0002D808;
+lMNCharactersCaptainSpecialNNameSprite = 0x0002E5C8;
+lMNCharactersCaptainSpecialLwNameSprite = 0x0002F508;
+lMNCharactersKirbySpecialHiNameSprite = 0x0002D948;
+lMNCharactersKirbySpecialNNameSprite = 0x0002E740;
+lMNCharactersKirbySpecialLwNameSprite = 0x0002F648;
+lMNCharactersPikachuSpecialHiNameSprite = 0x0002DA88;
+lMNCharactersPikachuSpecialNNameSprite = 0x0002E888;
+lMNCharactersPikachuSpecialLwNameSprite = 0x0002F788;
+lMNCharactersPurinSpecialHiNameSprite = 0x0002DBC8;
+lMNCharactersPurinSpecialNNameSprite = 0x0002E9C8;
+lMNCharactersPurinSpecialLwNameSprite = 0x0002F8C8;
+lMNCharactersNessSpecialHiNameSprite = 0x0002DD08;
+lMNCharactersNessSpecialNNameSprite = 0x0002EB08;
+lMNCharactersNessSpecialLwNameSprite = 0x0002FA08;
+
 lMVCommonFileID = 0x00000034;
 lMVOpeningRoomTransitionFileID = 0x0000003F;
 lMVOpeningRoomScene1FileID = 0x00000038;
@@ -447,7 +517,7 @@ lGRBonus3GroundFileID = 0x000127;
 lEFCommonParticleBankScriptsLo = spriteInfoStart_0_ROM_START;
 lEFCommonParticleBankScriptsHi = spriteInfoStart_0_ROM_END;
 lEFCommonParticleBankTexturesLo = imageBankStart_0_ROM_START;
-lEFCommonParticleBankTexturesHi = imageBankEnd_0_ROM_START;
+lEFCommonParticleBankTexturesHi = imageBankStart_0_ROM_END;
 
 lEFManagerShieldDObjSetup = 0x00000300;
 
@@ -703,7 +773,7 @@ lGRPupupuFlowersFrontTransformKinds = 0x000031F8;
 lGRPupupuParticleBankScriptsLo = spriteInfoStart_5_ROM_START;
 lGRPupupuParticleBankScriptsHi = spriteInfoStart_5_ROM_END;
 lGRPupupuParticleBankTexturesLo = imageBankStart_5_ROM_START;
-lGRPupupuParticleBankTexturesHi = imageBankEnd_5_ROM_START;
+lGRPupupuParticleBankTexturesHi = imageBankStart_5_ROM_END;
 
 lGRSectorArwingLaser2DWeaponAttributes = 0x000000BC;
 lGRSectorArwingLaser3DWeaponAttributes = 0x000000F0;
@@ -740,7 +810,7 @@ lGRYosterCloudEvaporateMatAnimJoint = 0x00000690;
 lGRYosterParticleBankScriptsLo = spriteInfoStart_7_ROM_START;
 lGRYosterParticleBankScriptsHi = spriteInfoStart_7_ROM_END;
 lGRYosterParticleBankTexturesLo = imageBankStart_7_ROM_START;
-lGRYosterParticleBankTexturesHi = imageBankEnd_7_ROM_START;
+lGRYosterParticleBankTexturesHi = imageBankStart_7_ROM_END;
 
 lGRInishieScaleDObjDesc = 0x00000380;
 lGRInishieMapHead = 0x000005F0;
@@ -755,7 +825,7 @@ lGRJungleTaruCannShootAnimJoint = 0x00000BF8;
 lGRHyruleParticleBankScriptsLo = spriteInfoStart_6_ROM_START;
 lGRHyruleParticleBankScriptsHi = spriteInfoStart_6_ROM_END;
 lGRHyruleParticleBankTexturesLo = imageBankStart_6_ROM_START;
-lGRHyruleParticleBankTexturesHi = imageBankEnd_6_ROM_START;
+lGRHyruleParticleBankTexturesHi = imageBankStart_6_ROM_END;
 
 lGRYamabukiGateOpenAnimJoint = 0x000009B0;
 lGRYamabukiGateCloseAnimJoint = 0x00000A20;
@@ -772,7 +842,7 @@ lGRBonus3BumpersAnimJoint = 0x00000110;
 lMNTitleParticleBankScriptsLo = spriteInfoStart_8_ROM_START;
 lMNTitleParticleBankScriptsHi = spriteInfoStart_8_ROM_END;
 lMNTitleParticleBankTexturesLo = imageBankStart_8_ROM_START;
-lMNTitleParticleBankTexturesHi = imageBankEnd_8_ROM_START;
+lMNTitleParticleBankTexturesHi = imageBankStart_8_ROM_END;
 
 lMNTitleLogoAnimCutoutSprite = 0x00008FC8;
 lMNTitleLogoAnimStrikeVSprite = 0x000097E8;
@@ -1102,7 +1172,7 @@ lWPBossBulletHardWeaponAttributes = 0x000007A8;
 lITManagerParticleBankScriptsLo = spriteInfoStart_4_ROM_START;
 lITManagerParticleBankScriptsHi = spriteInfoStart_4_ROM_END;
 lITManagerParticleBankTexturesLo = imageBankStart_4_ROM_START;
-lITManagerParticleBankTexturesHi = imageBankEnd_4_ROM_START;
+lITManagerParticleBankTexturesHi = imageBankStart_4_ROM_END;
 
 lITMainContainerVelocitiesY = 0x00000000;
 

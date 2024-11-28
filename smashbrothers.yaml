@@ -348,7 +348,7 @@ segments:
       - [0x0406D0, c, scenemgr/scmanager]
       - [0x041DC0, .data, scenemgr/scmanager]
       - [0x042F30, .rodata, scenemgr/scmanager]
-      - { start: auto, type: .bss, name: scenemgr/scmanager, vram: 0x800A44D0 }
+      - { start: auto, type: .bss, name: scenemgr/scmanager }
 
   - name: ovl0
     type: code
@@ -376,11 +376,11 @@ segments:
       - [0x051C80, .rodata, lb/lbtransition]
 
     # ovl0 bss
-      - { start: auto, type: .bss, name: lb/lbcommon, vram: 0x800D62B0 }
-      - { start: auto, type: .bss, name: lb/lbreloc, vram: 0x800D62E0 }
-      - { start: auto, type: .bss, name: lb/lbparticle, vram: 0x800D6350 }
-      - { start: auto, type: .bss, name: lb/lbfade, vram: 0x800D6460 }
-      - { start: auto, type: .bss, name: lb/lbtransition, vram: 0x800D6480 }
+      - { start: auto, type: .bss, name: lb/lbcommon }
+      - { start: auto, type: .bss, name: lb/lbreloc }
+      - { start: auto, type: .bss, name: lb/lbparticle}
+      - { start: auto, type: .bss, name: lb/lbfade }
+      - { start: auto, type: .bss, name: lb/lbtransition }
 
   - name: ovl2
     type: code
@@ -549,50 +549,50 @@ segments:
     # Stage effect manager
       - [0x0AC530, .rodata, ef/efground]
     # ovl2 bss
-      - { start: auto, type: .bss, name: gm/gmcommon, vram: 0x80130D40 }
-      - { start: auto, type: .bss, name: sc/sc1pmode/sc1pmanager, vram: 0x80130D60 }
-      - { start: auto, type: .bss, name: ft/ftmanager, vram: 0x80130D80 }
-      - { start: auto, type: .bss, name: mp/mpprocess, vram: 0x80130DE0 }
-      - { start: auto, type: .bss, name: mp/mpcommon, vram: 0x80130E20 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftmario/ftmario, vram: 0x80130E30 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftmmario/ftmmario, vram: 0x80130E50 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftnmario/ftnmario, vram: 0x80130E70 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftfox/ftfox, vram: 0x80130E90 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftnfox/ftnfox, vram: 0x80130EB0 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftdonkey/ftdonkey, vram: 0x80130ED0 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftndonkey/ftndonkey, vram: 0x80130EF0 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftgdonkey/ftgdonkey, vram: 0x80130F10 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftsamus/ftsamus, vram: 0x80130F30 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftnsamus/ftnsamus, vram: 0x80130F50 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftluigi/ftluigi, vram: 0x80130F70 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftnluigi/ftnluigi, vram: 0x80130F90 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftlink/ftlink, vram: 0x80130FB0 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftnlink/ftnlink, vram: 0x80130FD0 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftyoshi/ftyoshi, vram: 0x80130FF0 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftnyoshi/ftnyoshi, vram: 0x80131010 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftcaptain/ftcaptain, vram: 0x80131030 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftncaptain/ftncaptain, vram: 0x80131050 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftkirby/ftkirby, vram: 0x80131070 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftnkirby/ftnkirby, vram: 0x80131090 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftpikachu/ftpikachu, vram: 0x801310B0 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftnpikachu/ftnpikachu, vram: 0x801310D0 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftpurin/ftpurin, vram: 0x801310F0 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftnpurin/ftnpurin, vram: 0x80131100 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftness/ftness, vram: 0x80131130 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftnness/ftnness, vram: 0x80131150 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftboss, vram: 0x80131170 }
-      - { start: auto, type: .bss, name: ft/ftmain, vram: 0x80131180 }
-      - { start: auto, type: .bss, name: ft/ftdisplaymain, vram: 0x801312F0 }
-      - { start: auto, type: .bss, name: mp/mpcollision, vram: 0x80131300 }
-      - { start: auto, type: .bss, name: ef/efmanager, vram: 0x801313B0 }
-      - { start: auto, type: .bss, name: gr/grwallpaper, vram: 0x801313D0 }
-      - { start: auto, type: .bss, name: gr/grcommonsetup, vram: 0x801313E0 }
-      - { start: auto, type: .bss, name: cm/cmmanager, vram: 0x80131460 } # 0x801314B0 + 0x118 padded to 0x80131570
-      - { start: auto, type: .bss, name: if/ifcommon, vram: 0x80131570 } # actual start is 0x80131598, padded from 1570?
-      - { start: auto, type: .bss, name: gm/gmrumble, vram: 0x80131870 }
-      - { start: auto, type: .bss, name: ef/efparticle, vram: 0x80131A10 }
-      - { start: auto, type: .bss, name: if/ifscreenflash, vram: 0x80131A10 }
-      - { start: auto, type: .bss, name: ef/efground, vram: 0x80131AB0 }
+      - { start: auto, type: .bss, name: gm/gmcommon }
+      - { start: auto, type: .bss, name: sc/sc1pmode/sc1pmanager }
+      - { start: auto, type: .bss, name: ft/ftmanager }
+      - { start: auto, type: .bss, name: mp/mpprocess }
+      - { start: auto, type: .bss, name: mp/mpcommon }
+      - { start: auto, type: .bss, name: ft/ftchar/ftmario/ftmario }
+      - { start: auto, type: .bss, name: ft/ftchar/ftmmario/ftmmario }
+      - { start: auto, type: .bss, name: ft/ftchar/ftnmario/ftnmario }
+      - { start: auto, type: .bss, name: ft/ftchar/ftfox/ftfox }
+      - { start: auto, type: .bss, name: ft/ftchar/ftnfox/ftnfox }
+      - { start: auto, type: .bss, name: ft/ftchar/ftdonkey/ftdonkey }
+      - { start: auto, type: .bss, name: ft/ftchar/ftndonkey/ftndonkey }
+      - { start: auto, type: .bss, name: ft/ftchar/ftgdonkey/ftgdonkey }
+      - { start: auto, type: .bss, name: ft/ftchar/ftsamus/ftsamus }
+      - { start: auto, type: .bss, name: ft/ftchar/ftnsamus/ftnsamus }
+      - { start: auto, type: .bss, name: ft/ftchar/ftluigi/ftluigi }
+      - { start: auto, type: .bss, name: ft/ftchar/ftnluigi/ftnluigi }
+      - { start: auto, type: .bss, name: ft/ftchar/ftlink/ftlink }
+      - { start: auto, type: .bss, name: ft/ftchar/ftnlink/ftnlink }
+      - { start: auto, type: .bss, name: ft/ftchar/ftyoshi/ftyoshi }
+      - { start: auto, type: .bss, name: ft/ftchar/ftnyoshi/ftnyoshi }
+      - { start: auto, type: .bss, name: ft/ftchar/ftcaptain/ftcaptain }
+      - { start: auto, type: .bss, name: ft/ftchar/ftncaptain/ftncaptain }
+      - { start: auto, type: .bss, name: ft/ftchar/ftkirby/ftkirby }
+      - { start: auto, type: .bss, name: ft/ftchar/ftnkirby/ftnkirby }
+      - { start: auto, type: .bss, name: ft/ftchar/ftpikachu/ftpikachu }
+      - { start: auto, type: .bss, name: ft/ftchar/ftnpikachu/ftnpikachu }
+      - { start: auto, type: .bss, name: ft/ftchar/ftpurin/ftpurin }
+      - { start: auto, type: .bss, name: ft/ftchar/ftnpurin/ftnpurin }
+      - { start: auto, type: .bss, name: ft/ftchar/ftness/ftness }
+      - { start: auto, type: .bss, name: ft/ftchar/ftnness/ftnness }
+      - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftboss }
+      - { start: auto, type: .bss, name: ft/ftmain }
+      - { start: auto, type: .bss, name: ft/ftdisplaymain }
+      - { start: auto, type: .bss, name: mp/mpcollision }
+      - { start: auto, type: .bss, name: ef/efmanager }
+      - { start: auto, type: .bss, name: gr/grwallpaper }
+      - { start: auto, type: .bss, name: gr/grcommonsetup }
+      - { start: auto, type: .bss, name: cm/cmmanager } # 0x801314B0 + 0x118 padded to 0x80131570
+      - { start: auto, type: .bss, name: if/ifcommon } # actual start is 0x80131598, padded from 1570?
+      - { start: auto, type: .bss, name: gm/gmrumble }
+      - { start: auto, type: .bss, name: ef/efparticle }
+      - { start: auto, type: .bss, name: if/ifscreenflash }
+      - { start: auto, type: .bss, name: ef/efground }
 
   - name: ovl3
     type: code
@@ -1077,10 +1077,10 @@ segments:
       - [0x107980, .rodata, it/itground/ittarubomb]
       - [0x1079B0, .rodata, it/itfighter/itlinkbomb]
     # ovl3 bss
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonthrown2, vram: 0x8018CF80 }
-      - { start: auto, type: .bss, name: ft/ftpublicity, vram: 0x8018CF90 }
-      - { start: auto, type: .bss, name: wp/wpmanager, vram: 0x8018CFF0 }
-      - { start: auto, type: .bss, name: it/itmanager, vram: 0x8018D040 }
+      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonthrown2 }
+      - { start: auto, type: .bss, name: ft/ftpublicity }
+      - { start: auto, type: .bss, name: wp/wpmanager }
+      - { start: auto, type: .bss, name: it/itmanager }
 
   - name: ovl1
     type: code
@@ -1092,8 +1092,8 @@ segments:
       - [0x107AC0, c, sc/scsubsys/scsubsysfighter]
       - [0x107CE0, c, sc/scsubsys/scsubsyscontroller]
       - [0x1081C0, data, ovl1]
-      - { start: auto, type: .bss, name: sc/scsubsys/scsubsysfighter, vram: 0x803929D0 }
-      - { start: auto, type: .bss, name: sc/scsubsys/scsubsyscontroller, vram: 0x803929F0 }
+      - { start: auto, type: .bss, name: sc/scsubsys/scsubsysfighter }
+      - { start: auto, type: .bss, name: sc/scsubsys/scsubsyscontroller }
 
   - name: ovl4
     type: code
@@ -1104,7 +1104,7 @@ segments:
       - [0x109FB0, c, sc/sccommon/scvsbattle]
       - [0x10B220, c, sc/sccommon/scvsbattlefiles]
       - [0x10B2C0, .data, sc/sccommon/scvsbattle]
-      - { start: 0x10B370, type: .bss, name: sc/sccommon/scvsbattlefiles, vram: 0x8018E480 }
+      - { start: 0x10B370, type: .bss, name: sc/sccommon/scvsbattlefiles }
 
   - name: ovl5
     type: code
@@ -1114,7 +1114,7 @@ segments:
     subsegments:
       - [0x10B370, c, mv/mvunknownmario]
       - [0x10B830, .data, mv/mvunknownmario]
-      - { start: 0x10B920, type: .bss, name: mv/mvunknownmario, vram: 0x8018D670 }
+      - { start: 0x10B920, type: .bss, name: mv/mvunknownmario }
 
   - name: ovl65
     type: code
@@ -1135,8 +1135,8 @@ segments:
     # Final Destination backgrounds
       - [0x1117D0, .rodata, sc/sc1pmode/sc1pgameboss]
     # Main 1P Game scene stuff
-      - { start: auto, type: .bss, name: sc/sc1pmode/sc1pgame, vram: 0x80192FA0 }
-      - { start: auto, type: .bss, name: sc/sc1pmode/sc1pgameboss, vram: 0x801938D0 }
+      - { start: auto, type: .bss, name: sc/sc1pmode/sc1pgame }
+      - { start: auto, type: .bss, name: sc/sc1pmode/sc1pgameboss }
 
   - name: ovl6
     type: code
@@ -1150,8 +1150,8 @@ segments:
       - [0x113600, .data, sc/sc1pmode/sc1pbonusstage]
       - [0x113870, .data, it/itground/ittarget]
       - [0x1138B0, .rodata, sc/sc1pmode/sc1pbonusstage]
-      - { start: 0x1138E0, type: .bss, name: sc/sc1pmode/sc1pbonusstage, vram: 0x8018F1A0 }
-      - { start: 0x1138E0, type: .bss, name: sc/sc1pmode/sc1pbonusstagefiles, vram: 0x8018F3B0 }
+      - { start: 0x1138E0, type: .bss, name: sc/sc1pmode/sc1pbonusstage }
+      - { start: 0x1138E0, type: .bss, name: sc/sc1pmode/sc1pbonusstagefiles }
 
   - name: ovl7
     type: code
@@ -1162,7 +1162,7 @@ segments:
       - [0x1138E0, c, sc/sc1pmode/sc1ptrainingmode]
       - [0x116F90, .data, sc/sc1pmode/sc1ptrainingmode]
       - [0x117140, .rodata, sc/sc1pmode/sc1ptrainingmode]
-      - { start: 0x117180, type: .bss, name: sc/sc1pmode/sc1ptrainingmode, vram: 0x80190960 }
+      - { start: 0x117180, type: .bss, name: sc/sc1pmode/sc1ptrainingmode }
 
   - name: ovl10
     type: code
@@ -1173,7 +1173,7 @@ segments:
       - [0x117180, c, mn/mncommon/mntitle]
       - [0x119860, .data, mn/mncommon/mntitle]
       - [0x119AB0, .rodata, mn/mncommon/mntitle]
-      - { start: auto, type: .bss, name: mn/mncommon/mntitle, vram: 0x80134440 }
+      - { start: auto, type: .bss, name: mn/mncommon/mntitle }
 
   - name: ovl11
     type: code
@@ -1185,8 +1185,8 @@ segments:
       - [0x119C90, c, mn/mncommon/mnnocontrollerfiles]
       - [0x119D30, .data, mn/mncommon/mnnocontroller]
       - [0x119DE0, .data, mn/mncommon/mnnocontrollerfiles]
-      - { start: auto, type: .bss, name: mn/mncommon/mnnocontroller, vram: 0x800D67C0 }
-      - { start: auto, type: .bss, name: mn/mncommon/mnnocontrollerfiles, vram: 0x800D67D0 }
+      - { start: auto, type: .bss, name: mn/mncommon/mnnocontroller }
+      - { start: auto, type: .bss, name: mn/mncommon/mnnocontrollerfiles }
 
   - name: ovl12
     type: code
@@ -1197,7 +1197,7 @@ segments:
       - [0x119DF0, c, db/dbmaps]
       - [0x119FE0, .data, db/dbmaps]
       - [0x11A170, .rodata, db/dbmaps]
-      - { start: auto, type: .bss, name: db/dbmaps, vram: 0x800D69E0 }
+      - { start: auto, type: .bss, name: db/dbmaps }
 
   - name: ovl13
     type: code
@@ -1208,7 +1208,7 @@ segments:
       - [0x11A340, c, db/dbcube]
       - [0x11AA20, .data, db/dbcube]
       - [0x11B860, .rodata, db/dbcube]
-      - { start: auto, type: .bss, name: db/dbcube, vram: 0x80133130 }
+      - { start: auto, type: .bss, name: db/dbcube }
 
   - name: ovl14
     type: code
@@ -1219,7 +1219,7 @@ segments:
       - [0x11B970, c, db/dbbattle]
       - [0x11C500, .data, db/dbbattle]
       - [0x11C850, .rodata, db/dbbattle]
-      - { start: auto, type: .bss, name: db/dbbattle, vram: 0x80132C20 }
+      - { start: auto, type: .bss, name: db/dbbattle }
 
   - name: ovl17
     type: code
@@ -1229,7 +1229,7 @@ segments:
     subsegments:
       - [0x11ca90, c, mn/mncommon/mnmodeselect]
       - [0x11DB20, .data, mn/mncommon/mnmodeselect]
-      - { start: auto, type: .bss, name: mn/mncommon/mnmodeselect, vram: 0x80132C80 }
+      - { start: auto, type: .bss, name: mn/mncommon/mnmodeselect }
 
   - name: ovl18
     type: code
@@ -1239,7 +1239,7 @@ segments:
     subsegments:
       - [0x11DC10, c, mn/mn1pmode/mn1pmode]
       - [0x11F190, .data, mn/mn1pmode/mn1pmode]
-      - { start: auto, type: .bss, name: mn/mn1pmode/mn1pmode, vram: 0x801331A0 }
+      - { start: auto, type: .bss, name: mn/mn1pmode/mn1pmode }
 
   - name: ovl60
     type: code
@@ -1249,7 +1249,7 @@ segments:
     subsegments:
       - [0x11F2B0, c, mn/mnoption/mnoption]
       - [0x120DD0, .data, mn/mnoption/mnoption]
-      - { start: auto, type: .bss, name: mn/mnoption/mnoption, vram: 0x801337A0 }
+      - { start: auto, type: .bss, name: mn/mnoption/mnoption }
 
   - name: ovl61
     type: code
@@ -1259,7 +1259,7 @@ segments:
     subsegments:
       - [0x120F50, c, mn/mndata/mndata]
       - [0x122370, .data, mn/mndata/mndata]
-      - { start: auto, type: .bss, name: mn/mndata/mndata, vram: 0x80133060 }
+      - { start: auto, type: .bss, name: mn/mndata/mndata }
 
   - name: ovl19
     type: code
@@ -1269,7 +1269,7 @@ segments:
     subsegments:
       - [0x1224b0, c, mn/mnvsmode/mnvsmode]
       - [0x125160, .data, mn/mnvsmode/mnvsmode]
-      - { start: auto, type: .bss, name: mn/mnvsmode/mnvsmode, vram: 0x80134870 }
+      - { start: auto, type: .bss, name: mn/mnvsmode/mnvsmode }
 
   - name: ovl20
     type: code
@@ -1279,7 +1279,7 @@ segments:
     subsegments:
       - [0x1252E0, c, mn/mnvsmode/mnvsoptions]
       - [0x127EA0, .data, mn/mnvsmode/mnvsoptions]
-      - { start: auto, type: .bss, name: mn/mnvsmode/mnvsoptions, vram: 0x801348C0 }
+      - { start: auto, type: .bss, name: mn/mnvsmode/mnvsoptions }
 
   - name: ovl21
     type: code
@@ -1289,7 +1289,7 @@ segments:
     subsegments:
       - [0x1280A0, c, mn/mnvsmode/mnvsitemswitch]
       - [0x1297B0, .data, mn/mnvsmode/mnvsitemswitch]
-      - { start: auto, type: .bss, name: mn/mnvsmode/mnvsitemswitch, vram: 0x801333D0 }
+      - { start: auto, type: .bss, name: mn/mnvsmode/mnvsitemswitch }
 
   - name: ovl22
     type: code
@@ -1299,7 +1299,7 @@ segments:
     subsegments:
       - [0x129970, c, mn/mncommon/mnmessage]
       - [0x12A370, .data, mn/mncommon/mnmessage]
-      - { start: auto, type: .bss, name: mn/mncommon/mnmessage, vram: 0x80132650 }
+      - { start: auto, type: .bss, name: mn/mncommon/mnmessage }
 
   - name: ovl23
     type: code
@@ -1309,7 +1309,7 @@ segments:
     subsegments:
       - [0x12A4C0, c, sc/sc1pmode/sc1pchallenger]
       - [0x12AD30, .data, sc/sc1pmode/sc1pchallenger]
-      - { start: auto, type: .bss, name: sc/sc1pmode/sc1pchallenger, vram: 0x80132480 }
+      - { start: auto, type: .bss, name: sc/sc1pmode/sc1pchallenger }
 
   - name: ovl24
     type: code
@@ -1320,7 +1320,7 @@ segments:
       - [0x12AE40, c, sc/sc1pmode/sc1pstagecard]
       - [0x12E130, .data, sc/sc1pmode/sc1pstagecard]
       - [0x12EF20, .rodata, sc/sc1pmode/sc1pstagecard]
-      - { start: auto, type: .bss, name: sc/sc1pmode/sc1pstagecard, vram: 0x80135C20 }
+      - { start: auto, type: .bss, name: sc/sc1pmode/sc1pstagecard }
 
   - name: ovl25
     type: code
@@ -1330,7 +1330,7 @@ segments:
     subsegments:
       - [0x12EF60, c, mn/mnoption/mnscreenadjust]
       - [0x12FC90, .data, mn/mnoption/mnscreenadjust]
-      - { start: auto, type: .bss, name: mn/mnoption/mnscreenadjust, vram: 0x80132920 }
+      - { start: auto, type: .bss, name: mn/mnoption/mnscreenadjust }
 
   - name: ovl26
     type: code
@@ -1397,7 +1397,7 @@ segments:
       - [0x150740, c, db/dbfalls]
       - [0x150990, .data, db/dbfalls]
       - [0x150C00, .rodata, db/dbfalls]
-      - { start: auto, type: .bss, name: db/dbfalls, vram: 0x800D69F0 }
+      - { start: auto, type: .bss, name: db/dbfalls }
 
   - name: ovl31
     type: code
@@ -1431,7 +1431,7 @@ segments:
       - [0x15DB50, c, mn/mndata/mncharacters]
       - [0x160100, .data, mn/mndata/mncharacters]
       - [0x162600, .rodata, mn/mndata/mncharacters]
-      - { start: auto, type: .bss, name: mn/mndata/mncharacters, vram: 0x801365F0 }
+      - { start: auto, type: .bss, name: mn/mndata/mncharacters }
 
   - name: ovl34
     type: code
@@ -1442,7 +1442,7 @@ segments:
       - [0x162640, c, mv/mvopening/mvopeningroom]
       - [0x165560, .data, mv/mvopening/mvopeningroom]
       - [0x1657C0, .rodata, mv/mvopening/mvopeningroom]
-      - { start: auto, type: .bss, name: mv/mvopening/mvopeningroom, vram: 0x80134CD0 }
+      - { start: auto, type: .bss, name: mv/mvopening/mvopeningroom }
 
   - name: ovl35
     type: code
@@ -1452,7 +1452,7 @@ segments:
     subsegments:
       - [0x165810, c, mv/mvopening/mvopeningportraits]
       - [0x1665B0, .data, mv/mvopening/mvopeningportraits]
-      - { start: auto, type: .bss, name: mv/mvopening/mvopeningportraits, vram: 0x801329E0 }
+      - { start: auto, type: .bss, name: mv/mvopening/mvopeningportraits }
 
   - name: ovl36
     type: code
@@ -1463,7 +1463,7 @@ segments:
       - [0x1666F0, c, mv/mvopening/mvopeningmario]
       - [0x1676C0, .data, mv/mvopening/mvopeningmario]
       - [0x167800, .rodata, mv/mvopening/mvopeningmario]
-      - { start: 0x167830, type: .bss, name: mv/mvopening/mvopeningmario, vram: 0x8018E200 }
+      - { start: 0x167830, type: .bss, name: mv/mvopening/mvopeningmario }
 
   - name: ovl37
     type: code
@@ -1474,7 +1474,7 @@ segments:
       - [0x167830, c, mv/mvopening/mvopeningdonkey]
       - [0x1687E0, .data, mv/mvopening/mvopeningdonkey]
       - [0x168900, .rodata, mv/mvopening/mvopeningdonkey]
-      - { start: auto, type: .bss, name: mv/mvopening/mvopeningdonkey, vram: 0x8018E1C0 }
+      - { start: auto, type: .bss, name: mv/mvopening/mvopeningdonkey }
 
   - name: ovl38
     type: code
@@ -1485,7 +1485,7 @@ segments:
       - [0x168930, c, mv/mvopening/mvopeningsamus]
       - [0x169990, .data, mv/mvopening/mvopeningsamus]
       - [0x169AB0, .rodata, mv/mvopening/mvopeningsamus]
-      - { start: auto, type: .bss, name: mv/mvopening/mvopeningsamus, vram: 0x8018E270 }
+      - { start: auto, type: .bss, name: mv/mvopening/mvopeningsamus }
 
   - name: ovl39
     type: code
@@ -1496,7 +1496,7 @@ segments:
       - [0x169AE0, c, mv/mvopening/mvopeningfox]
       - [0x16AAB0, .data, mv/mvopening/mvopeningfox]
       - [0x16ABE0, .rodata, mv/mvopening/mvopeningfox]
-      - { start: auto, type: .bss, name: mv/mvopening/mvopeningfox, vram: 0x8018E1F0 }
+      - { start: auto, type: .bss, name: mv/mvopening/mvopeningfox }
 
   - name: ovl40
     type: code
@@ -1507,7 +1507,7 @@ segments:
       - [0x16AC10, c, mv/mvopening/mvopeninglink]
       - [0x16BBC0, .data, mv/mvopening/mvopeninglink]
       - [0x16BCE0, .rodata, mv/mvopening/mvopeninglink]
-      - { start: 0x16BD10, type: .bss, name: mv/mvopening/mvopeninglink, vram: 0x8018E1C0 }
+      - { start: 0x16BD10, type: .bss, name: mv/mvopening/mvopeninglink }
 
   - name: ovl41
     type: code
@@ -1518,7 +1518,7 @@ segments:
       - [0x16BD10, c, mv/mvopening/mvopeningyoshi]
       - [0x16CD10, .data, mv/mvopening/mvopeningyoshi]
       - [0x16CE40, .rodata, mv/mvopening/mvopeningyoshi]
-      - { start: auto, type: .bss, name: mv/mvopening/mvopeningyoshi, vram: 0x8018E220 }
+      - { start: auto, type: .bss, name: mv/mvopening/mvopeningyoshi }
 
   - name: ovl42
     type: code
@@ -1529,7 +1529,7 @@ segments:
       - [0x16CE70, c, mv/mvopening/mvopeningpikachu]
       - [0x16DE70, .data, mv/mvopening/mvopeningpikachu]
       - [0x16DFA0, .rodata, mv/mvopening/mvopeningpikachu]
-      - { start: auto, type: .bss, name: mv/mvopening/mvopeningpikachu, vram: 0x8018E220 }
+      - { start: auto, type: .bss, name: mv/mvopening/mvopeningpikachu }
 
   - name: ovl43
     type: code
@@ -1540,7 +1540,7 @@ segments:
       - [0x16DFD0, c, mv/mvopening/mvopeningkirby]
       - [0x16EFC0, .data, mv/mvopening/mvopeningkirby]
       - [0x16F100, .rodata, mv/mvopening/mvopeningkirby]
-      - { start: auto, type: .bss, name: mv/mvopening/mvopeningkirby, vram: 0x8018E220 }
+      - { start: auto, type: .bss, name: mv/mvopening/mvopeningkirby }
 
   - name: ovl44
     type: code
@@ -1551,7 +1551,7 @@ segments:
       - [0x16F130, c, mv/mvopening/mvopeningrun]
       - [0x16FC00, .data, mv/mvopening/mvopeningrun]
       - [0x16FD30, .rodata, mv/mvopening/mvopeningrun]
-      - { start: auto, type: .bss, name: mv/mvopening/mvopeningrun, vram: 0x80132710 }
+      - { start: auto, type: .bss, name: mv/mvopening/mvopeningrun }
 
   - name: ovl45
     type: code
@@ -1561,7 +1561,7 @@ segments:
     subsegments:
       - [0x16FD40, c, mv/mvopening/mvopeningyoster]
       - [0x170570, .data, mv/mvopening/mvopeningyoster]
-      - { start: auto, type: .bss, name: mv/mvopening/mvopeningyoster, vram: 0x80132420 }
+      - { start: auto, type: .bss, name: mv/mvopening/mvopeningyoster }
   
   - name: ovl46
     type: code
@@ -1572,7 +1572,7 @@ segments:
       - [0x170660, c, mv/mvopening/mvopeningcliff]
       - [0x171230, .data, mv/mvopening/mvopeningcliff]
       - [0x171310, .rodata, mv/mvopening/mvopeningcliff]
-      - { start: auto, type: .bss, name: mv/mvopening/mvopeningcliff, vram: 0x801327C0 }
+      - { start: auto, type: .bss, name: mv/mvopening/mvopeningcliff }
 
   - name: ovl47
     type: code
@@ -1583,7 +1583,7 @@ segments:
       - [0x171320, c, mv/mvopening/mvopeningstandoff]
       - [0x1720F0, .data, mv/mvopening/mvopeningstandoff]
       - [0x1721D0, .rodata, mv/mvopening/mvopeningstandoff]
-      - { start: auto, type: .bss, name: mv/mvopening/mvopeningstandoff, vram: 0x801329C0 }
+      - { start: auto, type: .bss, name: mv/mvopening/mvopeningstandoff }
 
   - name: ovl48
     type: code
@@ -1593,7 +1593,7 @@ segments:
     subsegments:
       - [0x1721E0, c, mv/mvopening/mvopeningyamabuki]
       - [0x172A80, .data, mv/mvopening/mvopeningyamabuki]
-      - { start: auto, type: .bss, name: mv/mvopening/mvopeningyamabuki, vram: 0x80132480 }
+      - { start: auto, type: .bss, name: mv/mvopening/mvopeningyamabuki }
 
   - name: ovl49
     type: code
@@ -1603,7 +1603,7 @@ segments:
     subsegments:
       - [0x172B60, c, mv/mvopening/mvopeningclash]
       - [0x173930, .data, mv/mvopening/mvopeningclash]
-      - { start: auto, type: .bss, name: mv/mvopening/mvopeningclash, vram: 0x801329D0 }
+      - { start: auto, type: .bss, name: mv/mvopening/mvopeningclash }
 
   - name: ovl50
     type: code
@@ -1614,7 +1614,7 @@ segments:
       - [0x173A30, c, mv/mvopening/mvopeningsector]
       - [0x174820, .data, mv/mvopening/mvopeningsector]
       - [0x174920, .rodata, mv/mvopening/mvopeningsector]
-      - { start: auto, type: .bss, name: mv/mvopening/mvopeningsector, vram: 0x80132A10 }
+      - { start: auto, type: .bss, name: mv/mvopening/mvopeningsector }
 
   - name: ovl51
     type: code
@@ -1625,7 +1625,7 @@ segments:
       - [0x174940, c, mv/mvopening/mvopeningjungle]
       - [0x1750F0, .data, mv/mvopening/mvopeningjungle]
       - [0x175270, .rodata, mv/mvopening/mvopeningjungle]
-      - { start: auto, type: .bss, name: mv/mvopening/mvopeningjungle, vram: 0x8018DA40 }
+      - { start: auto, type: .bss, name: mv/mvopening/mvopeningjungle }
 
   - name: ovl52
     type: code
@@ -1636,7 +1636,7 @@ segments:
       - [0x1752C0, c, mv/mvopening/mvopeningnewcomers]
       - [0x175E00, .data, mv/mvopening/mvopeningnewcomers]
       - [0x175EE0, .rodata, mv/mvopening/mvopeningnewcomers]
-      - { start: auto, type: .bss, name: mv/mvopening/mvopeningnewcomers, vram: 0x80132740 }
+      - { start: auto, type: .bss, name: mv/mvopening/mvopeningnewcomers }
 
   - name: ovl53
     type: code
@@ -1647,7 +1647,7 @@ segments:
       - [0x175F00, c, mn/mnoption/mnbackupclear]
       - [0x177280, .data, mn/mnoption/mnbackupclear]
       - [0x177470, .rodata, mn/mnoption/mnbackupclear]
-      - { start: auto, type: .bss, name: mn/mnoption/mnbackupclear, vram: 0x801330A0 }
+      - { start: auto, type: .bss, name: mn/mnoption/mnbackupclear }
 
   - name: ovl54
     type: code
@@ -1658,7 +1658,7 @@ segments:
       - [0x1774A0, c, mv/mvending/mvending]
       - [0x178470, .data, mv/mvending/mvending]
       - [0x178550, .rodata, mv/mvending/mvending]
-      - { start: auto, type: .bss, name: mv/mvending/mvending, vram: 0x80132BC0 }
+      - { start: auto, type: .bss, name: mv/mvending/mvending }
 
   - name: ovl55
     type: code
@@ -1669,7 +1669,7 @@ segments:
       - [0x178560, c, sc/sc1pmode/sc1pcontinue]
       - [0x17ABC0, .data, sc/sc1pmode/sc1pcontinue]
       - [0x17AD40, .rodata, sc/sc1pmode/sc1pcontinue]
-      - { start: auto, type: .bss, name: sc/sc1pmode/sc1pcontinue, vram: 0x801342F0 }
+      - { start: auto, type: .bss, name: sc/sc1pmode/sc1pcontinue }
 
   - name: ovl56
     type: code
@@ -1680,7 +1680,7 @@ segments:
       - [0x17AD50, c, sc/sc1pmode/sc1pstageclear]
       - [0x17E130, .data, sc/sc1pmode/sc1pstageclear]
       - [0x17E4F0, .rodata, sc/sc1pmode/sc1pstageclear]
-      - { start: auto, type: .bss, name: sc/sc1pmode/sc1pstageclear, vram: 0x801352C0 }
+      - { start: auto, type: .bss, name: sc/sc1pmode/sc1pstageclear }
 
   - name: ovl57
     type: code
@@ -1690,7 +1690,7 @@ segments:
     subsegments:
       - [0x17E510, c, mn/mncommon/mncongra]
       - [0x17EB10, .data, mn/mncommon/mncongra]
-      - { start: auto, type: .bss, name: mn/mncommon/mncongra, vram: 0x801322B0 }
+      - { start: auto, type: .bss, name: mn/mncommon/mncongra }
 
   - name: ovl58
     type: code
@@ -1700,7 +1700,7 @@ segments:
     subsegments:
       - [0x17ECC0, c, mn/mncommon/mnstartup]
       - [0x17F110, .data, mn/mncommon/mnstartup]
-      - { start: auto, type: .bss, name: mn/mncommon/mnstartup, vram: 0x80132040 }
+      - { start: auto, type: .bss, name: mn/mncommon/mnstartup }
 
   - name: ovl59
     type: code
@@ -1711,7 +1711,7 @@ segments:
       - [0x17F200, c, gm/gmstaffroll]
       - [0x182960, .data, gm/gmstaffroll]
       - [0x187EB0, .rodata, gm/gmstaffroll]
-      - { start: auto, type: .bss, name: gm/gmstaffroll, vram: 0x8013A7D0 }
+      - { start: auto, type: .bss, name: gm/gmstaffroll }
 
   - name: ovl62
     type: code
@@ -1722,7 +1722,7 @@ segments:
       - [0x187ED0, c, mn/mndata/mnsoundtest]
       - [0x189DB0, .data, mn/mndata/mnsoundtest]
       - [0x18A6C0, .rodata, mn/mndata/mnsoundtest]
-      - { start: auto, type: .bss, name: mn/mndata/mnsoundtest, vram: 0x80134300 }
+      - { start: auto, type: .bss, name: mn/mndata/mnsoundtest }
 
   - name: ovl63
     type: code
@@ -1734,8 +1734,8 @@ segments:
       - [0x18BC50, c, sc/sccommon/scexplainfiles]
       - [0x18BCF0, .data, sc/sccommon/scexplain]
       - [0x18BDF0, .rodata, sc/sccommon/scexplain]
-      - { start: auto, type: .bss, name: sc/sccommon/scexplain, vram: 0x8018E7F0 }
-      - { start: auto, type: .bss, name: sc/sccommon/scexplainfiles, vram: 0x8018EA30 }
+      - { start: auto, type: .bss, name: sc/sccommon/scexplain }
+      - { start: auto, type: .bss, name: sc/sccommon/scexplainfiles }
 
 
   - name: ovl64
@@ -1748,8 +1748,8 @@ segments:
       - [0x18CE00, c, sc/sccommon/scautodemofiles]
       - [0x18CEA0, .data, sc/sccommon/scautodemo]
       - [0x18D020, .rodata, sc/sccommon/scautodemo]
-      - { start: auto, type: .bss, name: sc/sccommon/scautodemo, vram: 0x8018E2F0 }
-      - { start: auto, type: .bss, name: sc/sccommon/scautodemofiles, vram: 0x8018E500 }
+      - { start: auto, type: .bss, name: sc/sccommon/scautodemo }
+      - { start: auto, type: .bss, name: sc/sccommon/scautodemofiles }
 
   - name: ovl16
     type: code
@@ -1760,7 +1760,7 @@ segments:
       - [0x18D030, c, mn/mncommon/mnunusedfighters]
       - [0x18DBB0, .data, mn/mncommon/mnunusedfighters]
       - [0x18DCA0, .rodata, mn/mncommon/mnunusedfighters]
-      - { start: auto, type: .bss, name: mn/mncommon/mnunusedfighters, vram: 0x800D7110 }
+      - { start: auto, type: .bss, name: mn/mncommon/mnunusedfighters }
 
   - name: ovl8
     type: code
@@ -1840,7 +1840,7 @@ segments:
       - [0x1AB6B0, c, db/dbmenu]
       - [0x1AC3D0, .data, db/dbmenu]
       - [0x1AC820, .rodata, db/dbmenu]
-      - { start: auto, type: .bss, name: db/dbmenu, vram: 0x8036A400 }
+      - { start: auto, type: .bss, name: db/dbmenu }
 
   - [0x1AC870, bin, relocData]
 

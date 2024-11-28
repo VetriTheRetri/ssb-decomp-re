@@ -17,11 +17,8 @@ extern intptr_t FILE_01F_PORTRAIT_BACKGROUND_IMAGE_OFFSET;
 extern intptr_t FILE_01F_VS_RECORD_IMAGE_OFFSET;
 extern intptr_t FILE_01F_COLON_IMAGE_OFFSET;
 extern intptr_t FILE_020_DATA_HEADER_IMAGE_OFFSET;
-extern intptr_t lMNDataCommonArrowLeftSprite;
-extern intptr_t lMNDataCommonArrowRightSprite;
 
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
-
 
 // Forward declarations
 s32 mnVSRecordIsUnlocked(s32 fkind);

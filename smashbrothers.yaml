@@ -1104,7 +1104,7 @@ segments:
       - [0x109FB0, c, sc/sccommon/scvsbattle]
       - [0x10B220, c, sc/sccommon/scvsbattlefiles]
       - [0x10B2C0, .data, sc/sccommon/scvsbattle]
-      - { start: 0x10B370, type: .bss, name: sc/sccommon/scvsbattlefiles }
+      - { start: auto, type: .bss, name: sc/sccommon/scvsbattlefiles }
 
   - name: ovl5
     type: code
@@ -1114,7 +1114,7 @@ segments:
     subsegments:
       - [0x10B370, c, mv/mvunknownmario]
       - [0x10B830, .data, mv/mvunknownmario]
-      - { start: 0x10B920, type: .bss, name: mv/mvunknownmario }
+      - { start: auto, type: .bss, name: mv/mvunknownmario }
 
   - name: ovl65
     type: code
@@ -1150,8 +1150,8 @@ segments:
       - [0x113600, .data, sc/sc1pmode/sc1pbonusstage]
       - [0x113870, .data, it/itground/ittarget]
       - [0x1138B0, .rodata, sc/sc1pmode/sc1pbonusstage]
-      - { start: 0x1138E0, type: .bss, name: sc/sc1pmode/sc1pbonusstage }
-      - { start: 0x1138E0, type: .bss, name: sc/sc1pmode/sc1pbonusstagefiles }
+      - { start: auto, type: .bss, name: sc/sc1pmode/sc1pbonusstage }
+      - { start: auto, type: .bss, name: sc/sc1pmode/sc1pbonusstagefiles }
 
   - name: ovl7
     type: code
@@ -1162,7 +1162,7 @@ segments:
       - [0x1138E0, c, sc/sc1pmode/sc1ptrainingmode]
       - [0x116F90, .data, sc/sc1pmode/sc1ptrainingmode]
       - [0x117140, .rodata, sc/sc1pmode/sc1ptrainingmode]
-      - { start: 0x117180, type: .bss, name: sc/sc1pmode/sc1ptrainingmode }
+      - { start: auto, type: .bss, name: sc/sc1pmode/sc1ptrainingmode }
 
   - name: ovl10
     type: code
@@ -1342,7 +1342,7 @@ segments:
       - [0x12FDA0, c, ovl26]
       - [0x139620, .data, ovl26]
       - [0x139CB0, .rodata, ovl26]
-      - { start: 0x139D00, type: .bss, vram: 0x8013BA80, name: ovl26 }
+      - { start: auto, type: .bss, vram: 0x8013BA80, name: ovl26 }
 
   - name: ovl27
     type: code
@@ -1463,7 +1463,7 @@ segments:
       - [0x1666F0, c, mv/mvopening/mvopeningmario]
       - [0x1676C0, .data, mv/mvopening/mvopeningmario]
       - [0x167800, .rodata, mv/mvopening/mvopeningmario]
-      - { start: 0x167830, type: .bss, name: mv/mvopening/mvopeningmario }
+      - { start: auto, type: .bss, name: mv/mvopening/mvopeningmario }
 
   - name: ovl37
     type: code
@@ -1507,7 +1507,7 @@ segments:
       - [0x16AC10, c, mv/mvopening/mvopeninglink]
       - [0x16BBC0, .data, mv/mvopening/mvopeninglink]
       - [0x16BCE0, .rodata, mv/mvopening/mvopeninglink]
-      - { start: 0x16BD10, type: .bss, name: mv/mvopening/mvopeninglink }
+      - { start: auto, type: .bss, name: mv/mvopening/mvopeninglink }
 
   - name: ovl41
     type: code

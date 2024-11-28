@@ -1032,7 +1032,7 @@ void scManagerRunLoop(sb32 arg)
 			case nSCKindVSRecord:
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[32]);
-				vs_records_entry();
+				mnVSRecordStartScene();
 				break;
 
 			case nSCKindDataCharacters:

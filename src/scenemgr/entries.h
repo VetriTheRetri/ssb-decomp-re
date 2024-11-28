@@ -29,7 +29,7 @@ void sc1PManagerUpdateScene();
 void sc1PBonusStageStartScene();
 void sc1PTrainingModeStartScene();
 void vs_results_entry();
-void vs_records_entry();
+void mnVSRecordStartScene();
 void mnCharactersStartScene();
 void mnStartupStartScene();
 void mvOpeningRoomStartScene();

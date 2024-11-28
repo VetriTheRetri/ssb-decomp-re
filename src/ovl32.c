@@ -1,8 +1,7 @@
-#include <db/debug.h>
 #include <ft/fighter.h>
 #include <sc/scene.h>
+#include <mn/menu.h>
 #include <sys/video.h>
-#include <lb/library.h>
 
 #include "ovl32.h"
 
@@ -41,7 +40,7 @@ s32 dMNVSRecordRankingColumnWidths[7] = {
 };
 
 // 0x8013664C
-u32 D_ovl32_8013664C[4] = {
+u32 dMNVSRecordFileIDs[4] = {
 
 	0x1f, 0x20, 0x13, 0x21
 };
@@ -56,7 +55,6 @@ Gfx dMNVSRecordDisplayList[] = {
 	gsSPSetLights1(dMNVSRecordLights1),
 	gsSPEndDisplayList()
 };
-
 
 // BSS
 // 0x80136C10
@@ -96,25 +94,22 @@ s32 gMNVSRecordFirstColumn;
 s32 gMNVSRecordChangeWait;
 
 // 0x80136CC8
-u32 D_ovl32_80136CC8[6];
-
-// 0x80136CE0
-u32 D_ovl32_80136CE0[42]; // unknown
+LBFileNode sMNVSRecordStatusBuffer[24];
 
 // 0x80136D88
 void *gMNVSRecordFiles[4];
 
 // 0x80131B00
-void mnVSRecordSetLighting(Gfx **display_list)
+void mnVSRecordFuncLights(Gfx **dls)
 {
-	gSPDisplayList(display_list[0]++, dMNVSRecordDisplayList);
+	gSPDisplayList(dls[0]++, dMNVSRecordDisplayList);
 }
 
 // 0x80131B24
 s32 mnVSRecordGetFighterKindByIndex(s32 index)
 {
-	s32 FTKinds[12] = {
-
+	s32 fkinds[/* */] =
+	{
 		nFTKindMario,
 		nFTKindDonkey,
 		nFTKindLink,
@@ -128,7 +123,7 @@ s32 mnVSRecordGetFighterKindByIndex(s32 index)
 		nFTKindNess,
 		nFTKindPurin
 	};
-	return FTKinds[index];
+	return fkinds[index];
 }
 
 // 0x80131B74
@@ -317,7 +312,7 @@ void mnVSRecordCreateNumber(GObj* number_gobj, s32 num, f32 x, f32 y, s32 colors
 }
 
 // 0x8013232C
-s32 mnVSRecordGetCharIndex(char chr)
+s32 mnVSRecordGetCharIndex(u8 chr)
 {
 	switch (chr)
 	{
@@ -1532,7 +1527,7 @@ void mnVSRecordCreateTitleViewport()
 }
 
 // 0x80135D0C
-void mnVSRecordInitVars()
+void mnVSRecordFuncStartVars()
 {
 	gMNVSRecordStatsKind = vsRecordsKindBattleScore;
 	gMNVSRecordRedrawSubtitle = FALSE;
@@ -1784,7 +1779,7 @@ void mnVSRecordMain(GObj* arg0)
 }
 
 // 0x80136488
-void mnVSRecordInit()
+void mnVSRecordFuncStart(void)
 {
 	LBRelocSetup rl_setup;
 
@@ -1792,17 +1787,31 @@ void mnVSRecordInit()
 	rl_setup.table_files_num = (u32)&lLBRelocTableFilesNum;
 	rl_setup.file_heap = NULL;
 	rl_setup.file_heap_size = 0;
-	rl_setup.status_buffer = (LBFileNode*) &D_ovl32_80136CC8;
-	rl_setup.status_buffer_size = 0x18;
-	rl_setup.force_status_buffer = 0;
+	rl_setup.status_buffer = sMNVSRecordStatusBuffer;
+	rl_setup.status_buffer_size = ARRAY_COUNT(sMNVSRecordStatusBuffer);
+	rl_setup.force_status_buffer = NULL;
 	rl_setup.force_status_buffer_size = 0;
-	lbRelocInitSetup(&rl_setup);
-	lbRelocLoadFilesExtern(D_ovl32_8013664C, ARRAY_COUNT(D_ovl32_8013664C), gMNVSRecordFiles, syTaskmanMalloc(lbRelocGetAllocSize(D_ovl32_8013664C, ARRAY_COUNT(D_ovl32_8013664C)), 0x10U));
 
-	gcMakeGObjSPAfter(0, mnVSRecordMain, 0, 0x80000000);
+	lbRelocInitSetup(&rl_setup);
+	lbRelocLoadFilesExtern
+	(
+		dMNVSRecordFileIDs,
+		ARRAY_COUNT(dMNVSRecordFileIDs),
+		gMNVSRecordFiles,
+		syTaskmanMalloc
+		(
+			lbRelocGetAllocSize
+			(
+				dMNVSRecordFileIDs,
+				ARRAY_COUNT(dMNVSRecordFileIDs)
+			),
+			0x10
+		)
+	);
+	gcMakeGObjSPAfter(0, mnVSRecordMain, 0, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 
-	mnVSRecordInitVars();
+	mnVSRecordFuncStartVars();
 	mnVSRecordCreateTitleViewport();
 	mnVSRecordCreateRankingRowHighlightViewport();
 	mnVSRecordCreateTableGridViewport();
@@ -1821,38 +1830,59 @@ void mnVSRecordInit()
 }
 
 // 0x801369CC
-SYVideoSetup D_ovl32_801369CC = {
-
-	&gSYFramebufferSets[0],
-	&gSYFramebufferSets[1],
-	&gSYFramebufferSets[2],
-	0x00000000,
-	0x00000140,
-	0x000000F0,
-	0x00016A99
-};
+SYVideoSetup dMNVSRecordVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
 // 0x801369E8
-scRuntimeInfo D_ovl32_801369E8 = {
+SYTaskmanSetup dMNVSRecordTaskmanSetup =
+{
+    // Task Manager Buffer Setup
+    {
+        0,                          // ???
+        gcRunAll,              		// Update function
+        gcDrawAll,          		// Frame draw function
+        &ovl32_BSS_END,             // Allocatable memory pool start
+        0,                          // Allocatable memory pool size
+        1,                          // ???
+        2,                          // Number of contexts?
+        sizeof(Gfx) * 7500,         // Display List Buffer 0 Size
+        0,          				// Display List Buffer 1 Size
+        0,                          // Display List Buffer 2 Size
+        0,                          // Display List Buffer 3 Size
+        0x8000,                     // Graphics Heap Size
+        2,                          // ???
+        0xC000,                     // RDP Output Buffer Size
+        mnVSRecordFuncLights,   	// Pre-render function
+        syControllerFuncRead,       // Controller I/O function
+    },
 
-	0x00000000, 0x8000A5E4,
-	gcDrawAll, &lOverlay32ArenaLo,
-	0x00000000, 0x00000001, 0x00000002, 0x0000EA60, 0x00000000,
-	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x0000C000,
-	mnVSRecordSetLighting, syControllerFuncRead,
-	0x00000000, 0x00000600, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000088, 0x00000000,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x00000000, 0x00000088, 0x00000000, 0x0000006C,
-	0x00000000, 0x00000090,
-	mnVSRecordInit,
+    0,                              // Number of GObjThreads
+    sizeof(u64) * 192,              // Thread stack size
+    0,                              // Number of thread stacks
+    0,                              // ???
+    0,                              // Number of GObjProcesses
+    0,                              // Number of GObjs
+    sizeof(GObj),                   // GObj size
+    0,                              // Number of XObjs
+    NULL,      						// Matrix function list
+    NULL,                           // DObjVec eject function
+    0,                              // Number of AObjs
+    0,                              // Number of MObjs
+    0,                              // Number of DObjs
+    sizeof(DObj),                   // DObj size
+    0,                              // Number of SObjs
+    sizeof(SObj),                   // SObj size
+    0,                              // Number of Cameras
+    sizeof(CObj),                 	// CObj size
+    
+    mnVSRecordFuncStart         	// Task start function
 };
 
 // 0x801365D0
-void vs_records_entry()
+void mnVSRecordStartScene(void)
 {
-	D_ovl32_801369CC.zbuffer = syVideoGetZBuffer(6400);
-	syVideoInit(&D_ovl32_801369CC);
-	D_ovl32_801369E8.arena_size = (u32) ((uintptr_t)&lOverlay32ArenaHi - (uintptr_t)&lOverlay32ArenaLo);
-	syTaskmanRun(&D_ovl32_801369E8);
+	dMNVSRecordVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&dMNVSRecordVideoSetup);
+
+	dMNVSRecordTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl32_BSS_END);
+	syTaskmanRun(&dMNVSRecordTaskmanSetup);
 }

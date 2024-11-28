@@ -18,8 +18,8 @@ extern intptr_t FILE_01F_PORTRAIT_BACKGROUND_IMAGE_OFFSET;
 extern intptr_t FILE_01F_VS_RECORD_IMAGE_OFFSET;
 extern intptr_t FILE_01F_COLON_IMAGE_OFFSET;
 extern intptr_t FILE_020_DATA_HEADER_IMAGE_OFFSET;
-extern intptr_t FILE_020_ARROW_LEFT_IMAGE_OFFSET;
-extern intptr_t FILE_020_ARROW_RIGHT_IMAGE_OFFSET;
+extern intptr_t lMNDataCommonArrowLeftSprite;
+extern intptr_t lMNDataCommonArrowRightSprite;
 
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
@@ -567,7 +567,7 @@ void mnVSRecordCreatePortraitAndStatsArrows()
 	gcAddGObjProcess(portrait_arrows_gobj, mnVSRecordUpdatePortraitArrowsDisplay, 1, 1);
 
 	// left arrow
-	portrait_arrows_sobj = lbCommonMakeSObjForGObj(portrait_arrows_gobj, lbRelocGetFileData(void*, gMNVSRecordFiles[1], &FILE_020_ARROW_LEFT_IMAGE_OFFSET));
+	portrait_arrows_sobj = lbCommonMakeSObjForGObj(portrait_arrows_gobj, lbRelocGetFileData(void*, gMNVSRecordFiles[1], &lMNDataCommonArrowLeftSprite));
 	portrait_arrows_sobj->sprite.attr &= ~SP_FASTCOPY;
 	portrait_arrows_sobj->sprite.attr |= SP_TRANSPARENT;
 	portrait_arrows_sobj->sprite.red = 0xE3;
@@ -577,7 +577,7 @@ void mnVSRecordCreatePortraitAndStatsArrows()
 	portrait_arrows_sobj->pos.y = 78.0f;
 
 	// right arrow
-	portrait_arrows_sobj = lbCommonMakeSObjForGObj(portrait_arrows_gobj, lbRelocGetFileData(void*, gMNVSRecordFiles[1], &FILE_020_ARROW_RIGHT_IMAGE_OFFSET));
+	portrait_arrows_sobj = lbCommonMakeSObjForGObj(portrait_arrows_gobj, lbRelocGetFileData(void*, gMNVSRecordFiles[1], &lMNDataCommonArrowRightSprite));
 	portrait_arrows_sobj->sprite.attr &= ~SP_FASTCOPY;
 	portrait_arrows_sobj->sprite.attr |= SP_TRANSPARENT;
 	portrait_arrows_sobj->sprite.red = 0xE3;

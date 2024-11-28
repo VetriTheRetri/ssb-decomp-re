@@ -20,6 +20,7 @@
 #include <mn/mnoption/mnbackupclear.h>
 
 #include <mn/mndata/mndata.h>
+#include <mn/mndata/mncharacters.h>
 #include <mn/mndata/mnsoundtest.h>
 
 #endif

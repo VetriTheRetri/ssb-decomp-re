@@ -254,7 +254,7 @@ void mnDataMakeCharacters(void)
 
     mnDataSetOptionSpriteColors(gobj, sMNDataOption == nMNDataOptionCharacters);
 
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNDataFiles[1], &lMNDataCharacterOptionSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNDataFiles[1], &lMNDataCharactersOptionSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;

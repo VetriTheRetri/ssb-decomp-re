@@ -8,8 +8,6 @@
 extern void* func_800269C0_275C0(u16);
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
-
-
 // // // // // // // // // // // //
 //                               //
 //       EXTERNAL VARIABLES      //
@@ -1062,7 +1060,7 @@ SObj* mnSoundTestMakeHeaderSObjs(void)
 
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
 
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[2], &lMNSoundTestDataTextSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[2], &lMNDataCommonDataHeaderSprite));
 
     sobj->sprite.attr = SP_TRANSPARENT;
 

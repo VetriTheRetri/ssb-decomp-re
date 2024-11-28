@@ -1428,10 +1428,10 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x15DB50, c, ovl33]
-      - [0x160100, .data, ovl33]
-      - [0x162600, .rodata, ovl33]
-      - { start: auto, type: .bss, vram: 0x801365F0, name: ovl33 }
+      - [0x15DB50, c, mn/mndata/mncharacters]
+      - [0x160100, .data, mn/mndata/mncharacters]
+      - [0x162600, .rodata, mn/mndata/mncharacters]
+      - { start: auto, type: .bss, name: mn/mndata/mncharacters, vram: 0x801365F0 }
 
   - name: ovl34
     type: code

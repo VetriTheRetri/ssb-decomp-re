@@ -12,10 +12,10 @@
 // // // // // // // // // // // //
 
 extern intptr_t D_NF_000000FB;
-extern intptr_t lITManagerParticleBankScriptsLo;        // 0x00B1BCA0
-extern intptr_t lITManagerParticleBankScriptsHi;        // 0x00B1BDE0
-extern intptr_t lITManagerParticleBankTexturesLo;       // 0x00B1BDE0
-extern intptr_t lITManagerParticleBankTexturesHi;       // 0x00B1E640
+extern intptr_t lITManagerParticleScriptBankLo;        // 0x00B1BCA0
+extern intptr_t lITManagerParticleScriptBankHi;        // 0x00B1BDE0
+extern intptr_t lITManagerParticleTextureBankLo;       // 0x00B1BDE0
+extern intptr_t lITManagerParticleTextureBankHi;       // 0x00B1E640
 
 // // // // // // // // // // // //
 //                               //
@@ -160,10 +160,10 @@ void itManagerInitItems(void) // Many linker things here
 
     gITManagerParticleBankID = efParticleGetLoadBankID
     (
-        &lITManagerParticleBankScriptsLo, 
-        &lITManagerParticleBankScriptsHi,
-        &lITManagerParticleBankTexturesLo, 
-        &lITManagerParticleBankTexturesHi
+        &lITManagerParticleScriptBankLo, 
+        &lITManagerParticleScriptBankHi,
+        &lITManagerParticleTextureBankLo, 
+        &lITManagerParticleTextureBankHi
     );
     itManagerSetupContainerDrops();
     itManagerInitMonsterVars();

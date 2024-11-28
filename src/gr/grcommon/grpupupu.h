@@ -52,10 +52,10 @@ extern intptr_t lGRPupupuWhispyMouthTransformKinds;             // 0x00001770
 extern intptr_t D_NF_00001770;                                  // 0x00001770
 extern intptr_t lGRPupupuFlowersBackTrasnformKinds;             // 0x00002A80
 extern intptr_t lGRPupupuFlowersFrontTransformKinds;            // 0x000031F8
-extern intptr_t lGRPupupuParticleBankScriptsLo;                  // 0x00B1E640       
-extern intptr_t lGRPupupuParticleBankScriptsHi;                  // 0x00B1E7E0
-extern intptr_t lGRPupupuParticleBankTexturesLo;                 // 0x00B1E7E0
-extern intptr_t lGRPupupuParticleBankTexturesHi;                 // 0x00B1F960
+extern intptr_t lGRPupupuParticleScriptBankLo;                  // 0x00B1E640       
+extern intptr_t lGRPupupuParticleScriptBankHi;                  // 0x00B1E7E0
+extern intptr_t lGRPupupuParticleTextureBankLo;                 // 0x00B1E7E0
+extern intptr_t lGRPupupuParticleTextureBankHi;                 // 0x00B1F960
 
 extern s32 grPupupuWhispyGetLR(GObj *ground_gobj);
 extern void grPupupuWhispySetWindPush(void);

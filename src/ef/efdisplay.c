@@ -6,10 +6,10 @@
 //                               //
 // // // // // // // // // // // //
 
-extern uintptr_t lEFCommonParticleBankScriptsLo;                 // 0x00AC7340
-extern uintptr_t lEFCommonParticleBankScriptsHi;                 // 0x00AC9DE0
-extern uintptr_t lEFCommonParticleBankTexturesLo;                // 0x00AC9DE0
-extern uintptr_t lEFCommonParticleBankTexturesHi;                // 0x00B16C80
+extern uintptr_t lEFCommonParticleScriptBankLo;                 // 0x00AC7340
+extern uintptr_t lEFCommonParticleScriptBankHi;                 // 0x00AC9DE0
+extern uintptr_t lEFCommonParticleTextureBankLo;                // 0x00AC9DE0
+extern uintptr_t lEFCommonParticleTextureBankHi;                // 0x00B16C80
 
 // // // // // // // // // // // //
 //                               //
@@ -115,9 +115,9 @@ void efDisplayInitAll(void)
 
     gEFManagerParticleBankID = efParticleGetLoadBankID
     (
-        &lEFCommonParticleBankScriptsLo,
-        &lEFCommonParticleBankScriptsHi,
-        &lEFCommonParticleBankTexturesLo,
-        &lEFCommonParticleBankTexturesHi
+        &lEFCommonParticleScriptBankLo,
+        &lEFCommonParticleScriptBankHi,
+        &lEFCommonParticleTextureBankLo,
+        &lEFCommonParticleTextureBankHi
     );
 }

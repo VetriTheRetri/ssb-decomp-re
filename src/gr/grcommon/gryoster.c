@@ -13,10 +13,10 @@ extern intptr_t D_NF_000004B8;
 extern intptr_t lGRYosterCloudDisplayList;          // 0x00000580
 extern intptr_t lGRYosterCloudSolidMatAnimJoint;    // 0x00000670
 extern intptr_t lGRYosterCloudEvaporateMatAnimJoint;// 0x00000690
-extern intptr_t lGRYosterParticleBankScriptsLo;      // 0x00B22980
-extern intptr_t lGRYosterParticleBankScriptsHi;      // 0x00B22A00
-extern intptr_t lGRYosterParticleBankTexturesLo;     // 0x00B22A00
-extern intptr_t lGRYosterParticleBankTexturesHi;     // 0x00B22C30
+extern intptr_t lGRYosterParticleScriptBankLo;      // 0x00B22980
+extern intptr_t lGRYosterParticleScriptBankHi;      // 0x00B22A00
+extern intptr_t lGRYosterParticleTextureBankLo;     // 0x00B22A00
+extern intptr_t lGRYosterParticleTextureBankHi;     // 0x00B22C30
 
 // // // // // // // // // // // //
 //                               //
@@ -269,7 +269,7 @@ void grYosterInitAll(void)
 
         mpCollisionSetYakumonoOnID(dGRYosterCloudLineIDs[i]);
     }
-    gGRCommonStruct.yoster.particle_bank_id = efParticleGetLoadBankID(&lGRYosterParticleBankScriptsLo, &lGRYosterParticleBankScriptsHi, &lGRYosterParticleBankTexturesLo, &lGRYosterParticleBankTexturesHi);
+    gGRCommonStruct.yoster.particle_bank_id = efParticleGetLoadBankID(&lGRYosterParticleScriptBankLo, &lGRYosterParticleScriptBankHi, &lGRYosterParticleTextureBankLo, &lGRYosterParticleTextureBankHi);
 }
 
 // 0x80108C80

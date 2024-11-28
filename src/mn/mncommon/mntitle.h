@@ -6,10 +6,10 @@
 #include <PR/gbi.h>
 #include <mn/mndef.h>
 
-extern uintptr_t lMNTitleParticleBankScriptsLo; 	// 0x00B22C30
-extern uintptr_t lMNTitleParticleBankScriptsHi; 	// 0x00B22D40
-extern uintptr_t lMNTitleParticleBankTexturesLo; 	// 0x00B22D40
-extern uintptr_t lMNTitleParticleBankTexturesHi; 	// 0x00B277B0
+extern uintptr_t lMNTitleParticleScriptBankLo; 	// 0x00B22C30
+extern uintptr_t lMNTitleParticleScriptBankHi; 	// 0x00B22D40
+extern uintptr_t lMNTitleParticleTextureBankLo; 	// 0x00B22D40
+extern uintptr_t lMNTitleParticleTextureBankHi; 	// 0x00B277B0
 
 extern intptr_t lMNTitleLogoAnimJoint;              // 0x000251D0
 extern intptr_t lMNTitleLabelsAnimJoint;            // 0x00025350

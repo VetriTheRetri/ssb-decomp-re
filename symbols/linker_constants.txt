@@ -558,10 +558,10 @@ lGRBonus2PurinGroundFileID = 0x000125;
 lGRBonus2NessGroundFileID = 0x000126;
 lGRBonus3GroundFileID = 0x000127;
 
-lEFCommonParticleBankScriptsLo = efcommon_scb_ROM_START;
-lEFCommonParticleBankScriptsHi = efcommon_scb_ROM_END;
-lEFCommonParticleBankTexturesLo = efcommon_txb_ROM_START;
-lEFCommonParticleBankTexturesHi = efcommon_txb_ROM_END;
+lEFCommonParticleScriptBankLo = efcommon_scb_ROM_START;
+lEFCommonParticleScriptBankHi = efcommon_scb_ROM_END;
+lEFCommonParticleTextureBankLo = efcommon_txb_ROM_START;
+lEFCommonParticleTextureBankHi = efcommon_txb_ROM_END;
 
 lEFManagerShieldDObjSetup = 0x00000300;
 
@@ -814,10 +814,10 @@ lGRPupupuWhispyEyesTransformKinds = 0x000010F0;
 lGRPupupuWhispyMouthTransformKinds = 0x00001770;
 lGRPupupuFlowersBackTrasnformKinds = 0x00002A80;
 lGRPupupuFlowersFrontTransformKinds = 0x000031F8;
-lGRPupupuParticleBankScriptsLo = grpupupu_scb_ROM_START;
-lGRPupupuParticleBankScriptsHi = grpupupu_scb_ROM_END;
-lGRPupupuParticleBankTexturesLo = grpupupu_txb_ROM_START;
-lGRPupupuParticleBankTexturesHi = grpupupu_txb_ROM_END;
+lGRPupupuParticleScriptBankLo = grpupupu_scb_ROM_START;
+lGRPupupuParticleScriptBankHi = grpupupu_scb_ROM_END;
+lGRPupupuParticleTextureBankLo = grpupupu_txb_ROM_START;
+lGRPupupuParticleTextureBankHi = grpupupu_txb_ROM_END;
 
 lGRSectorArwingLaser2DWeaponAttributes = 0x000000BC;
 lGRSectorArwingLaser3DWeaponAttributes = 0x000000F0;
@@ -851,10 +851,10 @@ D_NF_000004B8 = 0x000004B8;
 lGRYosterCloudDisplayList = 0x00000580;
 lGRYosterCloudSolidMatAnimJoint = 0x00000670;
 lGRYosterCloudEvaporateMatAnimJoint = 0x00000690;
-lGRYosterParticleBankScriptsLo = gryoster_scb_ROM_START;
-lGRYosterParticleBankScriptsHi = gryoster_scb_ROM_END;
-lGRYosterParticleBankTexturesLo = gryoster_txb_ROM_START;
-lGRYosterParticleBankTexturesHi = gryoster_txb_ROM_END;
+lGRYosterParticleScriptBankLo = gryoster_scb_ROM_START;
+lGRYosterParticleScriptBankHi = gryoster_scb_ROM_END;
+lGRYosterParticleTextureBankLo = gryoster_txb_ROM_START;
+lGRYosterParticleTextureBankHi = gryoster_txb_ROM_END;
 
 lGRInishieScaleDObjDesc = 0x00000380;
 lGRInishieMapHead = 0x000005F0;
@@ -866,10 +866,10 @@ lGRJungleTaruCannDefaultAnimJoint = 0x00000B20;
 lGRJungleTaruCannFillAnimJoint = 0x00000B68;
 lGRJungleTaruCannShootAnimJoint = 0x00000BF8;
 
-lGRHyruleParticleBankScriptsLo = grhyrule_scb_ROM_START;
-lGRHyruleParticleBankScriptsHi = grhyrule_scb_ROM_END;
-lGRHyruleParticleBankTexturesLo = grhyrule_txb_ROM_START;
-lGRHyruleParticleBankTexturesHi = grhyrule_txb_ROM_END;
+lGRHyruleParticleScriptBankLo = grhyrule_scb_ROM_START;
+lGRHyruleParticleScriptBankHi = grhyrule_scb_ROM_END;
+lGRHyruleParticleTextureBankLo = grhyrule_txb_ROM_START;
+lGRHyruleParticleTextureBankHi = grhyrule_txb_ROM_END;
 
 lGRYamabukiGateOpenAnimJoint = 0x000009B0;
 lGRYamabukiGateCloseAnimJoint = 0x00000A20;
@@ -883,10 +883,10 @@ lGRBonus3ItemHead = 0x00000000;
 lGRBonus3BumpersDObjDesc = 0x00000000;
 lGRBonus3BumpersAnimJoint = 0x00000110;
 
-lMNTitleParticleBankScriptsLo = mntitle_scb_ROM_START;
-lMNTitleParticleBankScriptsHi = mntitle_scb_ROM_END;
-lMNTitleParticleBankTexturesLo = mntitle_txb_ROM_START;
-lMNTitleParticleBankTexturesHi = mntitle_txb_ROM_END;
+lMNTitleParticleScriptBankLo = mntitle_scb_ROM_START;
+lMNTitleParticleScriptBankHi = mntitle_scb_ROM_END;
+lMNTitleParticleTextureBankLo = mntitle_txb_ROM_START;
+lMNTitleParticleTextureBankHi = mntitle_txb_ROM_END;
 
 lMNTitleLogoAnimCutoutSprite = 0x00008FC8;
 lMNTitleLogoAnimStrikeVSprite = 0x000097E8;
@@ -1213,10 +1213,10 @@ lWPLinkBoomerangWeaponAttributes = 0x00000000;
 lWPBossBulletNormalWeaponAttributes = 0x00000774;
 lWPBossBulletHardWeaponAttributes = 0x000007A8;
 
-lITManagerParticleBankScriptsLo = itcommon_scb_ROM_START;
-lITManagerParticleBankScriptsHi = itcommon_scb_ROM_END;
-lITManagerParticleBankTexturesLo = itcommon_txb_ROM_START;
-lITManagerParticleBankTexturesHi = itcommon_txb_ROM_END;
+lITManagerParticleScriptBankLo = itcommon_scb_ROM_START;
+lITManagerParticleScriptBankHi = itcommon_scb_ROM_END;
+lITManagerParticleTextureBankLo = itcommon_txb_ROM_START;
+lITManagerParticleTextureBankHi = itcommon_txb_ROM_END;
 
 lITMainContainerVelocitiesY = 0x00000000;
 

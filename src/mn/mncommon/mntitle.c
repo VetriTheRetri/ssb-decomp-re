@@ -1380,7 +1380,7 @@ void mnTitleMakeLogoFire(void)
 
 	gobj->camera_mask = COBJ_MASK_DLLINK(0);
 
-	sMNTitleParticleBankID = efParticleGetLoadBankID(&lMNTitleParticleBankScriptsLo, &lMNTitleParticleBankScriptsHi, &lMNTitleParticleBankTexturesLo, &lMNTitleParticleBankTexturesHi);
+	sMNTitleParticleBankID = efParticleGetLoadBankID(&lMNTitleParticleScriptBankLo, &lMNTitleParticleScriptBankHi, &lMNTitleParticleTextureBankLo, &lMNTitleParticleTextureBankHi);
 }
 
 // 0x80133E68

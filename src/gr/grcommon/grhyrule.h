@@ -6,10 +6,10 @@
 #include <gr/grdef.h>
 #include <ef/efdef.h>
 
-extern intptr_t lGRHyruleParticleBankScriptsLo;            // 0x00B1F960
-extern intptr_t lGRHyruleParticleBankScriptsHi;            // 0x00B1FC80
-extern intptr_t lGRHyruleParticleBankTexturesLo;           // 0x00B1FC80
-extern intptr_t lGRHyruleParticleBankTexturesHi;           // 0x00B22980
+extern intptr_t lGRHyruleParticleScriptBankLo;            // 0x00B1F960
+extern intptr_t lGRHyruleParticleScriptBankHi;            // 0x00B1FC80
+extern intptr_t lGRHyruleParticleTextureBankLo;           // 0x00B1FC80
+extern intptr_t lGRHyruleParticleTextureBankHi;           // 0x00B22980
 
 extern LBParticle* grHyruleTwisterMakeEffect(Vec3f *pos, s32 effect_id);
 extern GObj* grHyruleMakeTwister(Vec3f *pos);

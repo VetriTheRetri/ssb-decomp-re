@@ -1845,27 +1845,70 @@ segments:
   - [0x1AC870, bin, relocData]
 
 # Particle banks
-  - [0xac7340, bin, spriteInfoStart_0]
-  - [0xac9de0, bin, imageBankStart_0]
-  - [0xb16c80, bin, spriteInfoStart_1]
-  - [0xb17060, bin, imageBankStart_1]
-  - [0xb174a0, bin, spriteInfoStart_2]
-  - [0xb176a0, bin, imageBankStart_2]
-  - [0xb19700, bin, spriteInfoStart_3]
-  - [0xb19850, bin, imageBankStart_3]
-  - [0xb1bca0, bin, spriteInfoStart_4]
-  - [0xb1bde0, bin, imageBankStart_4]
-  - [0xb1e640, bin, spriteInfoStart_5]
-  - [0xb1e7e0, bin, imageBankStart_5]
-  - [0xb1f960, bin, spriteInfoStart_6]
-  - [0xb1fc80, bin, imageBankStart_6]
-  - [0xb22980, bin, spriteInfoStart_7]
-  - [0xb22a00, bin, imageBankStart_7]
-  - [0xb22c30, bin, spriteInfoStart_8]
-  - [0xb22d40, bin, imageBankStart_8]
-  # - [0xb277b0, bin] next segment starts here
+  - name: efcommon.scb
+    type: bin
+    start: 0xAC7340
+  - name: efcommon.txb
+    type: bin
+    start: 0xAC9DE0
 
-# Music and sound effects.
+  - name: particles_unk0.scb
+    type: bin
+    start: 0xB16C80
+  - name: particles_unk0.txb
+    type: bin
+    start: 0xB17060
+
+  - name: particles_unk1.scb
+    type: bin
+    start: 0xB174A0
+  - name: particles_unk1.txb
+    type: bin
+    start: 0xB176A0
+
+  - name: particles_unk2.scb
+    type: bin
+    start: 0xB19700
+  - name: particles_unk2.txb
+    type: bin
+    start: 0xB19850
+
+  - name: itcommon.scb
+    type: bin
+    start: 0xB1BCA0
+  - name: itcommon.txb
+    type: bin
+    start: 0xB1BDE0
+
+  - name: grpupupu.scb
+    type: bin
+    start: 0xB1E640
+  - name: grpupupu.txb
+    type: bin
+    start: 0xB1E7E0
+
+  - name: grhyrule.scb
+    type: bin
+    start: 0xB1F960
+  - name: grhyrule.txb
+    type: bin
+    start: 0xB1FC80
+
+  - name: gryoster.scb
+    type: bin
+    start: 0xB22980
+  - name: gryoster.txb
+    type: bin
+    start: 0xB22A00
+
+  - name: mntitle.scb
+    type: bin
+    start: 0xB22C30
+  - name: mntitle.txb
+    type: bin
+    start: 0xB22D40
+
+# Music and sound effects
   - name: S1_music.sbk
     type: bin
     start: 0xB277B0

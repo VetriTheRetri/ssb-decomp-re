@@ -409,11 +409,11 @@ void sc1PGameBossMakeCamera(void)
             40,
             COBJ_MASK_DLLINK(5),
             1,
+            TRUE,
+            nGCProcessKindFunc,
+            NULL,
             1,
-            1,
-            0,
-            1,
-            0
+            FALSE
         )
     );
     syRdpSetViewport(&cobj->viewport, gCMManagerCameraStruct.viewport_ulx, gCMManagerCameraStruct.viewport_uly, gCMManagerCameraStruct.viewport_lrx, gCMManagerCameraStruct.viewport_lry);

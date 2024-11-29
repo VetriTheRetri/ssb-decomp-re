@@ -1,20 +1,4 @@
-func_ovl1_803903E0 = 0x803903E0; // segment:ovl1
-scSubsysFighterSetLightParams = 0x803904E0; // segment:ovl1
-scSubsysFighterGetLightAngleX = 0x8039051C; // segment:ovl1
-scSubsysFighterGetLightAngleY = 0x80390528; // segment:ovl1
-scSubsysFighterDrawLightColorGetAlpha = 0x80390534; // segment:ovl1
-scSubsysFighterProcUpdate = 0x80390584; // segment:ovl1
-scSubsysFighterSetStatus = 0x803905CC; // segment:ovl1
-func_ovl1_803905F4 = 0x803905F4; // segment:ovl1
 scSubsysFighterApplyVelTransN = 0x8039069C; // segment:ovl1
-scSubsysControllerCheckConnected = 0x80390700; // segment:ovl1
-scSubsysControllerGetPlayerTapButtons = 0x8039076C; // segment:ovl1
-scSubsysControllerGetPlayerHoldButtons = 0x80390804; // segment:ovl1
-scSubsysControllerGetPlayerStickLR = 0x8039089C; // segment:ovl1
-scSubsysControllerGetPlayerStickUD = 0x80390950; // segment:ovl1
-scSubsysControllerGetPlayerStickInRangeLR = 0x80390A04; // segment:ovl1
-scSubsysControllerGetPlayerStickInRangeUD = 0x80390AC0; // segment:ovl1
-scSubsysControllerCheckNoInputAll = 0x80390B7C; // segment:ovl1
 
 D_ovl1_80390BE0 = 0x80390BE0; // segment:ovl1
 D_ovl1_80390BE8 = 0x80390BE8; // segment:ovl1

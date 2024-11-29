@@ -509,7 +509,7 @@ struct CObj
     XObj *xobjs[2];
 
     AObj *aobj;
-    AObjScript cobjanim_joint;
+    AObjScript camanim_joint;
 
     f32 anim_wait;
     f32 anim_speed;

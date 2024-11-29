@@ -145,7 +145,7 @@ typedef enum SCKind
 	nSCKindVSItemSwitch,		  	// VS mode item switch
 	nSCKindMessage,		  	      	// Unlock message 
 	nSCKind1PChallenger,   		  	// Challenger approaching
-	nSCKind1PStageCard,       	  	// 1P game "[player] VS [opponent]" screen
+	nSCKind1PIntro,       	  	// 1P game "[player] VS [opponent]" screen
 	nSCKindScreenAdjust,      	  	// Screen adjust
 	nSCKindVSFighters,            	// VS mode character select
 	nSCKind1PGameFighters,		  	// 1P game character select

@@ -64,7 +64,7 @@ typedef enum gmMusicID
 	nSYAudioBGM1PGameOver,					// Game Over
 	nSYAudioBGMOpening,						// Opening Movie
 	nSYAudioBGMExplain,						// How to Play
-	nSYAudioBGM1PStageCard,					// 1P Game Stage Cards
+	nSYAudioBGM1PIntro,					// 1P Game Stage Cards
 	nSYAudioBGMZako,						// Battlefield
 	nSYAudioBGMMetal,						// Meta Crystal
 	nSYAudioBGMEnding,						// Ending Movie

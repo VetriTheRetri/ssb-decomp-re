@@ -20,64 +20,64 @@ extern uintptr_t D_NF_0000000E;             // 0x0000000E
 // // // // // // // // // // // //
 
 // 0x80135C20
-s32 sSC1PStageCardPad0x80135C20[2];
+s32 sSC1PIntroPad0x80135C20[2];
 
 // 0x80135C28
-s32 sSC1PStageCardStage;
+s32 sSC1PIntroStage;
 
 // 0x80135C2C
-GObj *sSC1PStageCardVSNameGObj;
+GObj *sSC1PIntroVSNameGObj;
 
 // 0x80135C30
-GObj *sSC1PStageCardNameGObj;
+GObj *sSC1PIntroNameGObj;
 
 // 0x80135C34
-s32 sSC1PStageCardPad0x80135C34;
+s32 sSC1PIntroPad0x80135C34;
 
 // 0x80135C38
-void *sSC1PStageCardFigatreeHeaps[32];
+void *sSC1PIntroFigatreeHeaps[32];
 
 // 0x80135CB8
-sb32 sSC1PStageCardIsAnnouncedFighterName;
+sb32 sSC1PIntroIsAnnouncedFighterName;
 
 // 0x80135CBC
-sb32 sSC1PStageCardIsAnnouncedVersus;
+sb32 sSC1PIntroIsAnnouncedVersus;
 
 // 0x80135CC0
-sb32 sSC1PStageCardIsAnnouncedVSFighterName;
+sb32 sSC1PIntroIsAnnouncedVSFighterName;
 
 // 0x80135CC4
-s32 sSC1PStageCardPad0x80135CC4;
+s32 sSC1PIntroPad0x80135CC4;
 
 // 0x80135CC8
-FTDemoDesc sSC1PStageCardPlayerFighterDemoDesc;
+FTDemoDesc sSC1PIntroPlayerFighterDemoDesc;
 
 // 0x80135CD4
-s32 sSC1PStageCardPad0x80135CD4;
+s32 sSC1PIntroPad0x80135CD4;
 
 // 0x80135CD8
-FTDemoDesc sSC1PStageCardAlly1FighterDemoDesc;
+FTDemoDesc sSC1PIntroAlly1FighterDemoDesc;
 
 // 0x80135CE4
-s32 sSC1PStageCardPad0x80135CE4;
+s32 sSC1PIntroPad0x80135CE4;
 
 // 0x80135CE8
-FTDemoDesc sSC1PStageCardAlly2FighterDemoDesc;
+FTDemoDesc sSC1PIntroAlly2FighterDemoDesc;
 
 // 0x80135CF4
-s32 sSC1PStageCardUnk0x80135CF4;
+s32 sSC1PIntroUnk0x80135CF4;
 
 // 0x80135CF8
-s32 sc1PStageCardTotalTimeTics;
+s32 sc1PIntroTotalTimeTics;
 
 // 0x80135D00
-LBFileNode sSC1PStageCardForceStatusBuffer[7];
+LBFileNode sSC1PIntroForceStatusBuffer[7];
 
 // 0x80135D38
-LBFileNode sSC1PStageCardStatusBuffer[100];
+LBFileNode sSC1PIntroStatusBuffer[100];
 
 // 0x80136058
-void *sSC1PStageCardFiles[4];
+void *sSC1PIntroFiles[4];
 
 // // // // // // // // // // // //
 //                               //
@@ -86,16 +86,16 @@ void *sSC1PStageCardFiles[4];
 // // // // // // // // // // // //
 
 // 0x80134DF0
-u32 dSC1PStageCardFileIDs[/* */] = { &D_NF_0000000B, &D_NF_0000000C, &D_NF_0000000D, &D_NF_0000000E };
+u32 dSC1PIntroFileIDs[/* */] = { &D_NF_0000000B, &D_NF_0000000C, &D_NF_0000000D, &D_NF_0000000E };
 
 // 0x80134E00
-Lights1 dSC1PStageCardLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x3C, 0x3C, 0x3C);
+Lights1 dSC1PIntroLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x3C, 0x3C, 0x3C);
 
 // 0x80134E18
-Gfx dSC1PStageCardDisplayList[/* */] =
+Gfx dSC1PIntroDisplayList[/* */] =
 {
     gsSPSetGeometryMode(G_LIGHTING),
-    gsSPSetLights1(dSC1PStageCardLights1),
+    gsSPSetLights1(dSC1PIntroLights1),
     gsSPEndDisplayList()
 };
 
@@ -106,13 +106,13 @@ Gfx dSC1PStageCardDisplayList[/* */] =
 // // // // // // // // // // // //
 
 // 0x80131B00
-void sc1PStageCardFuncLights(Gfx **dls)
+void sc1PIntroFuncLights(Gfx **dls)
 {
-    gSPDisplayList(dls[0]++, dSC1PStageCardDisplayList);
+    gSPDisplayList(dls[0]++, dSC1PIntroDisplayList);
 }
 
 // 0x80131B24
-void sc1PStageCardMakeSky(void)
+void sc1PIntroMakeSky(void)
 {
     GObj *gobj;
     SObj *sobj;
@@ -121,26 +121,26 @@ void sc1PStageCardMakeSky(void)
     
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 26, GOBJ_PRIORITY_DEFAULT, ~0);
     
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardSkySprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PIntroFiles[0], &lSC1PIntroSkySprite));
     
     sobj->pos.x = 10.0F;
     sobj->pos.y = 59.0F;
 }
 
 // 0x80131BA8
-void sc1PStageCardMakeBanners(void)
+void sc1PIntroMakeBanners(void)
 {
     GObj *gobj;
     SObj *sobj;
     
     gobj = gcMakeGObjSPAfter(0, NULL, 18, GOBJ_PRIORITY_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_PRIORITY_DEFAULT, ~0);
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardBannerTopSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PIntroFiles[0], &lSC1PIntroBannerTopSprite));
     
     sobj->pos.x = 10.0F;
     sobj->pos.y = 10.0F;
     
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardBannerBottomSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PIntroFiles[0], &lSC1PIntroBannerBottomSprite));
     sobj->pos.x = 10.0F;
     sobj->pos.y = 182.0F;
 }
@@ -156,7 +156,7 @@ void func_ovl24_80131C58(GObj *gobj)
     gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 10, 311, 59);
     gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 182, 311, 231);
     
-    if (sSC1PStageCardStage < 4)
+    if (sSC1PIntroStage < 4)
     {
         gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0x00, 0xFF);
     }
@@ -164,7 +164,7 @@ void func_ovl24_80131C58(GObj *gobj)
     
     gDPFillRectangle(gSYTaskmanDLHeads[0]++, 148, 31, 156, 39);
     
-    if (sSC1PStageCardStage < 8)
+    if (sSC1PIntroStage < 8)
     {
         gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0x00, 0xFF);
     }
@@ -172,7 +172,7 @@ void func_ovl24_80131C58(GObj *gobj)
     
     gDPFillRectangle(gSYTaskmanDLHeads[0]++, 202, 31, 210, 39);
     
-    if (sSC1PStageCardStage < 12)
+    if (sSC1PIntroStage < 12)
     {
         gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0x00, 0xFF);
     }
@@ -192,7 +192,7 @@ void func_ovl24_80131ECC(void)
 }
 
 // 0x80131ED4
-void sc1PStageCardMakeVSDecal(void)
+void sc1PIntroMakeVSDecal(void)
 {
     GObj *gobj;
     SObj *sobj;
@@ -201,7 +201,7 @@ void sc1PStageCardMakeVSDecal(void)
 
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 27, GOBJ_PRIORITY_DEFAULT, ~0);
     
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardDecalVSSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PIntroFiles[0], &lSC1PIntroDecalVSSprite));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -211,7 +211,7 @@ void sc1PStageCardMakeVSDecal(void)
 }
 
 // 0x80131F6C
-sb32 sc1PStageCardCheckNotBonusStage(s32 stage)
+sb32 sc1PIntroCheckNotBonusStage(s32 stage)
 {
     switch (stage)
     {
@@ -226,7 +226,7 @@ sb32 sc1PStageCardCheckNotBonusStage(s32 stage)
 }
 
 // 0x80131F98
-void sc1PStageCardMakeLabels(s32 stage)
+void sc1PIntroMakeLabels(s32 stage)
 {
     GObj *gobj;
     SObj *sobj;
@@ -234,28 +234,28 @@ void sc1PStageCardMakeLabels(s32 stage)
     // 0x80134E40
     intptr_t number_offsets[/* */] =    
     {
-        &lSC1PStageCardNumber1Sprite,
-        &lSC1PStageCardNumber2Sprite,
-        &lSC1PStageCardNumber3Sprite,
-        &lSC1PStageCardNumber1Sprite,
-        &lSC1PStageCardNumber4Sprite,
-        &lSC1PStageCardNumber5Sprite,
-        &lSC1PStageCardNumber6Sprite,
-        &lSC1PStageCardNumber2Sprite,
-        &lSC1PStageCardNumber7Sprite,
-        &lSC1PStageCardNumber8Sprite,
-        &lSC1PStageCardNumber9Sprite,
-        &lSC1PStageCardNumber3Sprite,
-        &lSC1PStageCardNumber10Sprite,
+        &lSC1PIntroNumber1Sprite,
+        &lSC1PIntroNumber2Sprite,
+        &lSC1PIntroNumber3Sprite,
+        &lSC1PIntroNumber1Sprite,
+        &lSC1PIntroNumber4Sprite,
+        &lSC1PIntroNumber5Sprite,
+        &lSC1PIntroNumber6Sprite,
+        &lSC1PIntroNumber2Sprite,
+        &lSC1PIntroNumber7Sprite,
+        &lSC1PIntroNumber8Sprite,
+        &lSC1PIntroNumber9Sprite,
+        &lSC1PIntroNumber3Sprite,
+        &lSC1PIntroNumber10Sprite,
         0x0
     };
     
     gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_PRIORITY_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 27, GOBJ_PRIORITY_DEFAULT, ~0);
     
-    if (sc1PStageCardCheckNotBonusStage(stage) == FALSE)
+    if (sc1PIntroCheckNotBonusStage(stage) == FALSE)
     {
-        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardTextBonusSprite));
+        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PIntroFiles[0], &lSC1PIntroTextBonusSprite));
 
         sobj->sprite.attr &= ~SP_FASTCOPY;
         sobj->sprite.attr |= SP_TRANSPARENT;
@@ -269,7 +269,7 @@ void sc1PStageCardMakeLabels(s32 stage)
     }
     if (stage == nSC1PGameStageBoss)
     {
-        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardTextFinalSprite));
+        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PIntroFiles[0], &lSC1PIntroTextFinalSprite));
         
         sobj->sprite.attr &= ~SP_FASTCOPY;
         sobj->sprite.attr |= SP_TRANSPARENT;
@@ -281,7 +281,7 @@ void sc1PStageCardMakeLabels(s32 stage)
         sobj->pos.x = 15.0F;
         sobj->pos.y = 17.0F;
     }
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardTextStageSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PIntroFiles[0], &lSC1PIntroTextStageSprite));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -295,7 +295,7 @@ void sc1PStageCardMakeLabels(s32 stage)
     
     if (stage != nSC1PGameStageBoss)
     {
-        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], number_offsets[stage]));
+        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PIntroFiles[0], number_offsets[stage]));
         
         sobj->sprite.attr &= ~SP_FASTCOPY;
         sobj->sprite.attr |= SP_TRANSPARENT;
@@ -310,7 +310,7 @@ void sc1PStageCardMakeLabels(s32 stage)
 }
 
 // 0x801321C0
-void sc1PStageCardMakeFigures(s32 stage)
+void sc1PIntroMakeFigures(s32 stage)
 {
     GObj *gobj;
     SObj *sobj;
@@ -319,20 +319,20 @@ void sc1PStageCardMakeFigures(s32 stage)
     // 0x80134E78
     intptr_t figure_offsets[/* */] =
     {
-        &lSC1PStageCardFigureLinkSprite,
-        &lSC1PStageCardFigureYoshiSprite,
-        &lSC1PStageCardFigureFoxSprite,
-        &lSC1PStageCardFigureBonusSprite,
-        &lSC1PStageCardFigureMarioBrosSprite,
-        &lSC1PStageCardFigurePikachuSprite,
-        &lSC1PStageCardFigureGDonkeySprite,
-        &lSC1PStageCardFigureBonusSprite,
-        &lSC1PStageCardFigureKirbySprite,
-        &lSC1PStageCardFigureSamusSprite,
-        &lSC1PStageCardFigureMMarioSprite,
-        &lSC1PStageCardFigureBonusSprite,
-        &lSC1PStageCardFigureZakoSprite,
-        &lSC1PStageCardFigureBossSprite,
+        &lSC1PIntroFigureLinkSprite,
+        &lSC1PIntroFigureYoshiSprite,
+        &lSC1PIntroFigureFoxSprite,
+        &lSC1PIntroFigureBonusSprite,
+        &lSC1PIntroFigureMarioBrosSprite,
+        &lSC1PIntroFigurePikachuSprite,
+        &lSC1PIntroFigureGDonkeySprite,
+        &lSC1PIntroFigureBonusSprite,
+        &lSC1PIntroFigureKirbySprite,
+        &lSC1PIntroFigureSamusSprite,
+        &lSC1PIntroFigureMMarioSprite,
+        &lSC1PIntroFigureBonusSprite,
+        &lSC1PIntroFigureZakoSprite,
+        &lSC1PIntroFigureBossSprite,
         0x0
     };
 
@@ -368,7 +368,7 @@ void sc1PStageCardMakeFigures(s32 stage)
     {
         if (i >= stage)
         {
-            sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], figure_offsets[i]));
+            sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PIntroFiles[0], figure_offsets[i]));
 
             sobj->sprite.attr &= ~SP_FASTCOPY;
             sobj->sprite.attr |= SP_TRANSPARENT;
@@ -380,7 +380,7 @@ void sc1PStageCardMakeFigures(s32 stage)
 }
 
 // 0x80132354
-void sc1PStageCardMakeBonusTasks(s32 stage)
+void sc1PIntroMakeBonusTasks(s32 stage)
 {
     GObj *gobj;
     SObj *sobj;
@@ -391,21 +391,21 @@ void sc1PStageCardMakeBonusTasks(s32 stage)
     switch (stage)
     {
     case nSC1PGameStageBonus1:
-        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardBonus1TaskSprite));
+        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PIntroFiles[0], &lSC1PIntroBonus1TaskSprite));
 
         sobj->pos.x = 160 - (sobj->sprite.width / 2);
         sobj->pos.y = 197.0F;
         break;
         
     case nSC1PGameStageBonus2:
-        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardBonus2TaskSprite));
+        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PIntroFiles[0], &lSC1PIntroBonus2TaskSprite));
         
         sobj->pos.x = 160 - (sobj->sprite.width / 2);
         sobj->pos.y = 197.0F;
         break;
         
     case nSC1PGameStageBonus3:
-        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardBonus3TaskSprite));
+        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PIntroFiles[0], &lSC1PIntroBonus3TaskSprite));
         
         sobj->pos.x = 160 - (sobj->sprite.width / 2);
         sobj->pos.y = 197.0F;
@@ -441,7 +441,7 @@ void sc1PStageCardMakeBonusTasks(s32 stage)
 }
 
 // 0x801324EC
-void sc1PStageCardMakeVSName(s32 stage)
+void sc1PIntroMakeVSName(s32 stage)
 {
     GObj *gobj;
     SObj *sobj;
@@ -449,26 +449,26 @@ void sc1PStageCardMakeVSName(s32 stage)
     // 0x80134F24
     intptr_t opponent_offsets[/* */] =
     {
-        &lSC1PStageCardNameLinkSprite,
-        &lSC1PStageCardVSNameYoshiTeamSprite,
-        &lSC1PStageCardVSNameFoxSprite,
+        &lSC1PIntroNameLinkSprite,
+        &lSC1PIntroVSNameYoshiTeamSprite,
+        &lSC1PIntroVSNameFoxSprite,
         0x0,
-        &lSC1PStageCardVSNameMarioBrosSprite,
-        &lSC1PStageCardNamePikachuSprite,
-        &lSC1PStageCardVSNameGDonkeySprite,
+        &lSC1PIntroVSNameMarioBrosSprite,
+        &lSC1PIntroNamePikachuSprite,
+        &lSC1PIntroVSNameGDonkeySprite,
         0x0,
-        &lSC1PStageCardVSNameKirbyTeamSprite,
-        &lSC1PStageCardVSNameSamusSprite,
-        &lSC1PStageCardVSNameMMarioSprite,
+        &lSC1PIntroVSNameKirbyTeamSprite,
+        &lSC1PIntroVSNameSamusSprite,
+        &lSC1PIntroVSNameMMarioSprite,
         0x0,
-        &lSC1PStageCardVSNameZakoSprite,
-        &lSC1PStageCardVSNameBossSprite,
+        &lSC1PIntroVSNameZakoSprite,
+        &lSC1PIntroVSNameBossSprite,
         0x0
     };
-    sSC1PStageCardVSNameGObj = gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_PRIORITY_DEFAULT);
+    sSC1PIntroVSNameGObj = gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_PRIORITY_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 27, GOBJ_PRIORITY_DEFAULT, ~0);
     
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardTextVSSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PIntroFiles[0], &lSC1PIntroTextVSSprite));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -479,9 +479,9 @@ void sc1PStageCardMakeVSName(s32 stage)
     
     if ((stage == nSC1PGameStageLink) || (stage == nSC1PGameStagePikachu))
     {
-        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[1], opponent_offsets[stage]));
+        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PIntroFiles[1], opponent_offsets[stage]));
     }
-    else sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], opponent_offsets[stage]));
+    else sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PIntroFiles[0], opponent_offsets[stage]));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -492,7 +492,7 @@ void sc1PStageCardMakeVSName(s32 stage)
 }
 
 // 0x80132634
-s32 sc1PStageCardGetAlliesNum(s32 stage)
+s32 sc1PIntroGetAlliesNum(s32 stage)
 {
     switch (stage)
     {
@@ -508,7 +508,7 @@ s32 sc1PStageCardGetAlliesNum(s32 stage)
 }
 
 // 0x80132668
-void sc1PStageCardMakeName(s32 stage)
+void sc1PIntroMakeName(s32 stage)
 {
     GObj *gobj;
     SObj *sobj;
@@ -516,24 +516,24 @@ void sc1PStageCardMakeName(s32 stage)
     // 0x80134F60
     intptr_t name_offsets[/* */] =
     {
-        &lSC1PStageCardNameMarioSprite,
-        &lSC1PStageCardNameFoxSprite,
-        &lSC1PStageCardNameDonkeySprite,
-        &lSC1PStageCardNameSamusSprite,
-        &lSC1PStageCardNameLuigiSprite,
-        &lSC1PStageCardNameLinkSprite,
-        &lSC1PStageCardNameYoshiSprite,
-        &lSC1PStageCardNameCaptainSprite,
-        &lSC1PStageCardNameKirbySprite,
-        &lSC1PStageCardNamePikachuSprite,
-        &lSC1PStageCardNamePurinSprite,
-        &lSC1PStageCardNameNessSprite
+        &lSC1PIntroNameMarioSprite,
+        &lSC1PIntroNameFoxSprite,
+        &lSC1PIntroNameDonkeySprite,
+        &lSC1PIntroNameSamusSprite,
+        &lSC1PIntroNameLuigiSprite,
+        &lSC1PIntroNameLinkSprite,
+        &lSC1PIntroNameYoshiSprite,
+        &lSC1PIntroNameCaptainSprite,
+        &lSC1PIntroNameKirbySprite,
+        &lSC1PIntroNamePikachuSprite,
+        &lSC1PIntroNamePurinSprite,
+        &lSC1PIntroNameNessSprite
     };
 
-    sSC1PStageCardNameGObj = gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_PRIORITY_DEFAULT);
+    sSC1PIntroNameGObj = gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_PRIORITY_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 27, GOBJ_PRIORITY_DEFAULT, ~0);
     
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[1], name_offsets[sSC1PStageCardPlayerFighterDemoDesc.fkind]));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PIntroFiles[1], name_offsets[sSC1PIntroPlayerFighterDemoDesc.fkind]));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -542,9 +542,9 @@ void sc1PStageCardMakeName(s32 stage)
     sobj->sprite.green = 0xFF;
     sobj->sprite.blue = 0xFF;
     
-    if (sc1PStageCardGetAlliesNum(stage) != 0)
+    if (sc1PIntroGetAlliesNum(stage) != 0)
     {
-        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardTextDashSprite));
+        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PIntroFiles[0], &lSC1PIntroTextDashSprite));
         
         sobj->sprite.attr &= ~SP_FASTCOPY;
         sobj->sprite.attr |= SP_TRANSPARENT;
@@ -553,7 +553,7 @@ void sc1PStageCardMakeName(s32 stage)
         sobj->sprite.green = 0xFF;
         sobj->sprite.blue = 0xFF;
         
-        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[1], name_offsets[sSC1PStageCardAlly1FighterDemoDesc.fkind]));
+        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PIntroFiles[1], name_offsets[sSC1PIntroAlly1FighterDemoDesc.fkind]));
         
         sobj->sprite.attr &= ~SP_FASTCOPY;
         sobj->sprite.attr |= SP_TRANSPARENT;
@@ -562,9 +562,9 @@ void sc1PStageCardMakeName(s32 stage)
         sobj->sprite.green = 0xFF;
         sobj->sprite.blue = 0xFF;
         
-        if (sc1PStageCardGetAlliesNum(stage) == 2)
+        if (sc1PIntroGetAlliesNum(stage) == 2)
         {
-            sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[1], name_offsets[sSC1PStageCardAlly2FighterDemoDesc.fkind]));
+            sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PIntroFiles[1], name_offsets[sSC1PIntroAlly2FighterDemoDesc.fkind]));
             
             sobj->sprite.attr &= ~SP_FASTCOPY;
             sobj->sprite.attr |= SP_TRANSPARENT;
@@ -577,9 +577,9 @@ void sc1PStageCardMakeName(s32 stage)
 }
 
 // 0x8013283C
-s32 sc1PStageCardGetPlayerNameOffsetX(s32 stage)
+s32 sc1PIntroGetPlayerNameOffsetX(s32 stage)
 {
-    s32 allies_num = sc1PStageCardGetAlliesNum(stage);
+    s32 allies_num = sc1PIntroGetAlliesNum(stage);
     s32 ally1_name_width;
     s32 max_name_width;
     SObj *sobj;
@@ -588,13 +588,13 @@ s32 sc1PStageCardGetPlayerNameOffsetX(s32 stage)
     {
         if (allies_num == 1)
         {
-            sobj = SObjGetStruct(sSC1PStageCardNameGObj);
+            sobj = SObjGetStruct(sSC1PIntroNameGObj);
 
             return sobj->sprite.width + sobj->next->sprite.width + sobj->next->next->sprite.width + 10;
         }
         else
         {
-            sobj = SObjGetStruct(sSC1PStageCardNameGObj);
+            sobj = SObjGetStruct(sSC1PIntroNameGObj);
 
             ally1_name_width = sobj->next->next->sprite.width;
 
@@ -607,38 +607,38 @@ s32 sc1PStageCardGetPlayerNameOffsetX(s32 stage)
             return sobj->sprite.width + sobj->next->sprite.width + max_name_width + 10;
         }
     }
-    else return SObjGetStruct(sSC1PStageCardNameGObj)->sprite.width + 10;
+    else return SObjGetStruct(sSC1PIntroNameGObj)->sprite.width + 10;
 }
 
 // 0x801328F4
-s32 sc1PStageCardGetVSNameOffsetX(s32 stage)
+s32 sc1PIntroGetVSNameOffsetX(s32 stage)
 {
-    SObj *sobj = SObjGetStruct(sSC1PStageCardVSNameGObj);
+    SObj *sobj = SObjGetStruct(sSC1PIntroVSNameGObj);
     
     return sobj->sprite.width + sobj->next->sprite.width + 10;
 }
 
 // 0x8013291C
-s32 sc1PStageCardGetTotalNameOffsetX(s32 stage)
+s32 sc1PIntroGetTotalNameOffsetX(s32 stage)
 {
-    return sc1PStageCardGetPlayerNameOffsetX(stage) + sc1PStageCardGetVSNameOffsetX(stage);
+    return sc1PIntroGetPlayerNameOffsetX(stage) + sc1PIntroGetVSNameOffsetX(stage);
 }
 
 // 0x8013294C
-void sc1PStageCardSetNamePositions(s32 stage)
+void sc1PIntroSetNamePositions(s32 stage)
 {
     s32 total_offset;
     s32 allies_num;
     SObj *sobj, *next_sobj;
     
-    total_offset = 160 - (sc1PStageCardGetTotalNameOffsetX(stage) / 2);
+    total_offset = 160 - (sc1PIntroGetTotalNameOffsetX(stage) / 2);
 
-    sobj = SObjGetStruct(sSC1PStageCardNameGObj);
+    sobj = SObjGetStruct(sSC1PIntroNameGObj);
 
     sobj->pos.x = total_offset;
     sobj->pos.y = 196.0F;
 
-    allies_num = sc1PStageCardGetAlliesNum(stage);
+    allies_num = sc1PIntroGetAlliesNum(stage);
     
     if (allies_num != 0)
     {
@@ -663,9 +663,9 @@ void sc1PStageCardSetNamePositions(s32 stage)
             next_sobj->next->next->pos.y = 204.0F;
         }
     }
-    sobj = SObjGetStruct(sSC1PStageCardVSNameGObj);
+    sobj = SObjGetStruct(sSC1PIntroVSNameGObj);
 
-    sobj->pos.x = sc1PStageCardGetPlayerNameOffsetX(stage) + total_offset;
+    sobj->pos.x = sc1PIntroGetPlayerNameOffsetX(stage) + total_offset;
     sobj->pos.y = 196.0F;
 
     sobj->next->pos.x = sobj->pos.x + sobj->sprite.width + 10.0F;
@@ -673,25 +673,25 @@ void sc1PStageCardSetNamePositions(s32 stage)
 }
 
 // 0x80132B10
-void sc1PStageCardMakeNameAll(s32 stage)
+void sc1PIntroMakeNameAll(s32 stage)
 {
-    sc1PStageCardMakeName(stage);
-    sc1PStageCardMakeVSName(stage);
-    sc1PStageCardSetNamePositions(stage);
+    sc1PIntroMakeName(stage);
+    sc1PIntroMakeVSName(stage);
+    sc1PIntroSetNamePositions(stage);
 }
 
 // 0x80132B40
-void sc1PStageCardMakeStageInfo(s32 stage)
+void sc1PIntroMakeStageInfo(s32 stage)
 {
-    if (sc1PStageCardCheckNotBonusStage(stage) != FALSE)
+    if (sc1PIntroCheckNotBonusStage(stage) != FALSE)
     {
-        sc1PStageCardMakeNameAll(stage);
+        sc1PIntroMakeNameAll(stage);
     }
-    else sc1PStageCardMakeBonusTasks(stage);
+    else sc1PIntroMakeBonusTasks(stage);
 }
 
 // 0x80132B80
-f32 sc1PStageCardGetFighterVelocityZ(s32 card_anim_frame_id)
+f32 sc1PIntroGetFighterVelocityZ(s32 card_anim_frame_id)
 {
     // 0x80134F90
     f32 vel_z[/* */] =
@@ -707,7 +707,7 @@ f32 sc1PStageCardGetFighterVelocityZ(s32 card_anim_frame_id)
 }
 
 // 0x80132BD4
-void sc1PStageCardUpdateFighterPositionZ(GObj *fighter_gobj)
+void sc1PIntroUpdateFighterPositionZ(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     DObj *dobj = DObjGetStruct(fighter_gobj);
@@ -715,7 +715,7 @@ void sc1PStageCardUpdateFighterPositionZ(GObj *fighter_gobj)
     
     if (dobj->translate.vec.f.z < 0.0F)
     {
-        dobj->translate.vec.f.z += sc1PStageCardGetFighterVelocityZ(id);
+        dobj->translate.vec.f.z += sc1PIntroGetFighterVelocityZ(id);
         
         if (dobj->translate.vec.f.z > 0.0F)
         {
@@ -725,7 +725,7 @@ void sc1PStageCardUpdateFighterPositionZ(GObj *fighter_gobj)
 }
 
 // 0x80132C44
-f32 sc1PStageCardGetFighterPositionZ(s32 card_anim_frame_id)
+f32 sc1PIntroGetFighterPositionZ(s32 card_anim_frame_id)
 {
     // 0x80134FA8
     f32 pos_z[/* */] =
@@ -741,7 +741,7 @@ f32 sc1PStageCardGetFighterPositionZ(s32 card_anim_frame_id)
 }
 
 // 0x80132C98
-void sc1PStageCardMakeFighter(FTDemoDesc fighter, s32 card_anim_frame_id, void **figatree)
+void sc1PIntroMakeFighter(FTDemoDesc fighter, s32 card_anim_frame_id, void **figatree)
 {
     FTStruct *fp;
     GObj *fighter_gobj;
@@ -775,11 +775,11 @@ void sc1PStageCardMakeFighter(FTDemoDesc fighter, s32 card_anim_frame_id, void *
     fp->card_anim_frame_id = card_anim_frame_id;
     
     gcMoveGObjDL(fighter_gobj, dl_links[card_anim_frame_id], GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjProcess(fighter_gobj, sc1PStageCardUpdateFighterPositionZ, nGCProcessKindFunc, 1);
+    gcAddGObjProcess(fighter_gobj, sc1PIntroUpdateFighterPositionZ, nGCProcessKindFunc, 1);
     
     DObjGetStruct(fighter_gobj)->translate.vec.f.x = 0.0F;
     DObjGetStruct(fighter_gobj)->translate.vec.f.y = 0.0F;
-    DObjGetStruct(fighter_gobj)->translate.vec.f.z = sc1PStageCardGetFighterPositionZ(card_anim_frame_id);
+    DObjGetStruct(fighter_gobj)->translate.vec.f.z = sc1PIntroGetFighterPositionZ(card_anim_frame_id);
     
     DObjGetStruct(fighter_gobj)->scale.vec.f.x = 1.0F;
     DObjGetStruct(fighter_gobj)->scale.vec.f.y = 1.0F;
@@ -787,7 +787,7 @@ void sc1PStageCardMakeFighter(FTDemoDesc fighter, s32 card_anim_frame_id, void *
 }
 
 // 0x80132E04
-void sc1PStageCardInitAllyTextParams(SObj *sobj)
+void sc1PIntroInitAllyTextParams(SObj *sobj)
 {
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -798,7 +798,7 @@ void sc1PStageCardInitAllyTextParams(SObj *sobj)
 }
 
 // 0x80132E2C
-void sc1PStageCardMakeAllyText(s32 stage)
+void sc1PIntroMakeAllyText(s32 stage)
 {
     GObj *gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_PRIORITY_DEFAULT);
 
@@ -806,33 +806,33 @@ void sc1PStageCardMakeAllyText(s32 stage)
     
     if (stage == nSC1PGameStageMario)
     {
-        SObj *sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardTextAlly1Sprite));
+        SObj *sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PIntroFiles[0], &lSC1PIntroTextAlly1Sprite));
         
         sobj->pos.x = 80.0F;
         sobj->pos.y = 80.0F;
         
-        sc1PStageCardInitAllyTextParams(sobj);
+        sc1PIntroInitAllyTextParams(sobj);
     }
     else
     {
-        SObj *sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardTextAlly2Sprite));
+        SObj *sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PIntroFiles[0], &lSC1PIntroTextAlly2Sprite));
         
         sobj->pos.x = 80.0F;
         sobj->pos.y = 70.0F;
         
-        sc1PStageCardInitAllyTextParams(sobj);
+        sc1PIntroInitAllyTextParams(sobj);
         
-        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardTextAlly1Sprite));
+        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PIntroFiles[0], &lSC1PIntroTextAlly1Sprite));
         
         sobj->pos.x = 90.0F;
         sobj->pos.y = 100.0F;
         
-        sc1PStageCardInitAllyTextParams(sobj);
+        sc1PIntroInitAllyTextParams(sobj);
     }
 }
 
 // 0x80132F40
-f32 sc1PStageCardGetVSFighterVelocityZ(s32 stage, s32 fkind)
+f32 sc1PIntroGetVSFighterVelocityZ(s32 stage, s32 fkind)
 {
     if (stage == nSC1PGameStageMario)
     {
@@ -846,20 +846,20 @@ f32 sc1PStageCardGetVSFighterVelocityZ(s32 stage, s32 fkind)
 }
 
 // 0x80132F84
-void sc1PStageCardVSFighterProcUpdate(GObj *fighter_gobj)
+void sc1PIntroVSFighterProcUpdate(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     DObj *dobj = DObjGetStruct(fighter_gobj);
     s32 id = fp->card_anim_frame_id;
     
-    switch (sSC1PStageCardStage)
+    switch (sSC1PIntroStage)
     {
     case nSC1PGameStageYoshi:
-        fighter_gobj->flags = ((id * 3) < sc1PStageCardTotalTimeTics) ? GOBJ_FLAG_NONE : GOBJ_FLAG_HIDDEN;
+        fighter_gobj->flags = ((id * 3) < sc1PIntroTotalTimeTics) ? GOBJ_FLAG_NONE : GOBJ_FLAG_HIDDEN;
         break;
         
     case nSC1PGameStageKirby:
-        fighter_gobj->flags = ((id * 10) < sc1PStageCardTotalTimeTics) ? GOBJ_FLAG_NONE : GOBJ_FLAG_HIDDEN;
+        fighter_gobj->flags = ((id * 10) < sc1PIntroTotalTimeTics) ? GOBJ_FLAG_NONE : GOBJ_FLAG_HIDDEN;
         break;
 
     case nSC1PGameStageZako:
@@ -868,7 +868,7 @@ void sc1PStageCardVSFighterProcUpdate(GObj *fighter_gobj)
     default:
         if (dobj->translate.vec.f.z < 0.0F)
         {
-            dobj->translate.vec.f.z += sc1PStageCardGetVSFighterVelocityZ(sSC1PStageCardStage, fp->fkind);
+            dobj->translate.vec.f.z += sc1PIntroGetVSFighterVelocityZ(sSC1PIntroStage, fp->fkind);
             
             if (dobj->translate.vec.f.z > 0.0F)
             {
@@ -880,7 +880,7 @@ void sc1PStageCardVSFighterProcUpdate(GObj *fighter_gobj)
 }
 
 // 0x80133080
-void sc1PStageCardSetKirbyTeamModelPartIDs(GObj *fighter_gobj, s32 fkind)
+void sc1PIntroSetKirbyTeamModelPartIDs(GObj *fighter_gobj, s32 fkind)
 {
     // 0x80134FD8
     s32 modelpart_ids[/* */] =
@@ -911,7 +911,7 @@ void sc1PStageCardSetKirbyTeamModelPartIDs(GObj *fighter_gobj, s32 fkind)
 }
 
 // 0x8013312C
-f32 sc1PStageCardGetVSFighterPositionZ(s32 stage, s32 fkind)
+f32 sc1PIntroGetVSFighterPositionZ(s32 stage, s32 fkind)
 {
     if (stage == nSC1PGameStageMario)
     {
@@ -925,7 +925,7 @@ f32 sc1PStageCardGetVSFighterPositionZ(s32 stage, s32 fkind)
 }
 
 // 0x80133170
-void sc1PStageCardVSFighterFuncDisplay(GObj *fighter_gobj)
+void sc1PIntroVSFighterFuncDisplay(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -934,23 +934,23 @@ void sc1PStageCardVSFighterFuncDisplay(GObj *fighter_gobj)
     gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_PASS, G_RM_AA_ZB_OPA_SURF2);
     gDPSetEnvColor(gSYTaskmanDLHeads[0]++, 0xFF, 0xFF, 0xFF, 0x00);
     
-    if (sSC1PStageCardStage == nSC1PGameStageZako)
+    if (sSC1PIntroStage == nSC1PGameStageZako)
     {
-        if (((fp->fkind * 2) - 28) < sc1PStageCardTotalTimeTics)
+        if (((fp->fkind * 2) - 28) < sc1PIntroTotalTimeTics)
         {
             ftMainSetFighterStatus(fighter_gobj, 0x1000E, 0.0F, 0.0F, FTSTATUS_PRESERVE_NONE);
             gcPlayAnimAll(fighter_gobj);
             gcEndProcessAll(fighter_gobj);
             ftDisplayMainFuncDisplay(fighter_gobj);
         }
-        if (((fp->fkind * 2) - 8) < sc1PStageCardTotalTimeTics)
+        if (((fp->fkind * 2) - 8) < sc1PIntroTotalTimeTics)
         {
             ftMainSetFighterStatus(fighter_gobj, 0x1000E, 1.0F, 0.0F, FTSTATUS_PRESERVE_NONE);
             gcPlayAnimAll(fighter_gobj);
             gcEndProcessAll(fighter_gobj);
             ftDisplayMainFuncDisplay(fighter_gobj);
         }
-        if (((fp->fkind * 2) + 12) < sc1PStageCardTotalTimeTics)
+        if (((fp->fkind * 2) + 12) < sc1PIntroTotalTimeTics)
         {
             ftMainSetFighterStatus(fighter_gobj, 0x1000E, 2.0F, 0.0F, FTSTATUS_PRESERVE_NONE);
             gcPlayAnimAll(fighter_gobj);
@@ -966,7 +966,7 @@ void sc1PStageCardVSFighterFuncDisplay(GObj *fighter_gobj)
 }
 
 // 0x80133398
-GObj* sc1PStageCardMakeVSFighter(s32 fkind, s32 stage, s32 card_anim_frame_id, void **figatree, u8 dl_link)
+GObj* sc1PIntroMakeVSFighter(s32 fkind, s32 stage, s32 card_anim_frame_id, void **figatree, u8 dl_link)
 {
     GObj *fighter_gobj;
     FTStruct *fp;
@@ -975,7 +975,7 @@ GObj* sc1PStageCardMakeVSFighter(s32 fkind, s32 stage, s32 card_anim_frame_id, v
     ft_desc.fkind = fkind;
     ft_desc.costume = ftParamGetCostumeCommonID(fkind, 0);
     ft_desc.figatree_heap = *figatree;
-    ft_desc.func_display = sc1PStageCardVSFighterFuncDisplay;
+    ft_desc.func_display = sc1PIntroVSFighterFuncDisplay;
     ft_desc.player = 0;
     ft_desc.unk_rebirth_0x1C = 4;
     ft_desc.unk_rebirth_0x1D = 4;
@@ -993,7 +993,7 @@ GObj* sc1PStageCardMakeVSFighter(s32 fkind, s32 stage, s32 card_anim_frame_id, v
     fp->card_anim_frame_id = card_anim_frame_id;
     
     gcMoveGObjDL(fighter_gobj, dl_link, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjProcess(fighter_gobj, sc1PStageCardVSFighterProcUpdate, nGCProcessKindFunc, 1);
+    gcAddGObjProcess(fighter_gobj, sc1PIntroVSFighterProcUpdate, nGCProcessKindFunc, 1);
     
     DObjGetStruct(fighter_gobj)->translate.vec.f.x = 0.0F;
     DObjGetStruct(fighter_gobj)->translate.vec.f.y = 0.0F;
@@ -1005,7 +1005,7 @@ GObj* sc1PStageCardMakeVSFighter(s32 fkind, s32 stage, s32 card_anim_frame_id, v
     
     if ((stage != nSC1PGameStageKirby) && (stage != nSC1PGameStageYoshi) && (stage != nSC1PGameStageZako))
     {
-        DObjGetStruct(fighter_gobj)->translate.vec.f.z = sc1PStageCardGetVSFighterPositionZ(stage, fkind);
+        DObjGetStruct(fighter_gobj)->translate.vec.f.z = sc1PIntroGetVSFighterPositionZ(stage, fkind);
     }
     if (stage == nSC1PGameStageBoss)
     {
@@ -1018,7 +1018,7 @@ GObj* sc1PStageCardMakeVSFighter(s32 fkind, s32 stage, s32 card_anim_frame_id, v
 }
 
 // 0x8013357C
-void sc1PStageCardMakeBonusPicture(s32 stage)
+void sc1PIntroMakeBonusPicture(s32 stage)
 {
     GObj *gobj;
     SObj *sobj;
@@ -1029,7 +1029,7 @@ void sc1PStageCardMakeBonusPicture(s32 stage)
     switch (stage)
     {
     case nSC1PGameStageBonus1:
-        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[2], &lSC1PStageCardPictureBonus1Sprite));
+        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PIntroFiles[2], &lSC1PIntroPictureBonus1Sprite));
         
         sobj->sprite.attr &= ~SP_FASTCOPY;
         sobj->sprite.attr |= SP_TRANSPARENT;
@@ -1039,7 +1039,7 @@ void sc1PStageCardMakeBonusPicture(s32 stage)
         break;
         
     case nSC1PGameStageBonus2:
-        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[3], &lSC1PStageCardPictureBonus2Sprite));
+        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PIntroFiles[3], &lSC1PIntroPictureBonus2Sprite));
         
         sobj->sprite.attr &= ~SP_FASTCOPY;
         sobj->sprite.attr |= SP_TRANSPARENT;
@@ -1049,7 +1049,7 @@ void sc1PStageCardMakeBonusPicture(s32 stage)
         break;
         
     case nSC1PGameStageBonus3:
-        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[2], &lSC1PStageCardPictureBonus3Sprite));
+        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PIntroFiles[2], &lSC1PIntroPictureBonus3Sprite));
         
         sobj->sprite.attr &= ~SP_FASTCOPY;
         sobj->sprite.attr |= SP_TRANSPARENT;
@@ -1061,7 +1061,7 @@ void sc1PStageCardMakeBonusPicture(s32 stage)
 }
 
 // 0x801336CC
-CObjDesc* sc1PStageCardGetStageCObjDesc(CObjDesc *cobj_desc, s32 stage)
+CObjDesc* sc1PIntroGetStageCObjDesc(CObjDesc *cobj_desc, s32 stage)
 {
     // 0x80134FF8
     CObjDesc cobj_descs[/* */] =
@@ -1115,29 +1115,29 @@ CObjDesc* sc1PStageCardGetStageCObjDesc(CObjDesc *cobj_desc, s32 stage)
 }
 
 // 0x8013376C
-CObj* sc1PStageCardMakeStageCamera(s32 stage, u32 dl_link)
+CObj* sc1PIntroMakeStageCamera(s32 stage, u32 dl_link)
 {
     GObj *gobj;
     CObj *cobj;
     CObjDesc cobj_desc;
 
     // 0x80135180
-    intptr_t cobjanim_joints[/* */] =
+    intptr_t camanim_joints[/* */] =
     {
-        &lSC1PStageCardStageLinkCamAnimJoint,
-        &lSC1PStageCardStageYoshiCamAnimJoint,
-        &lSC1PStageCardStageFoxCamAnimJoint,
+        &lSC1PIntroStageLinkCamAnimJoint,
+        &lSC1PIntroStageYoshiCamAnimJoint,
+        &lSC1PIntroStageFoxCamAnimJoint,
         0x0,
-        &lSC1PStageCardStageMarioCamAnimJoint,
-        &lSC1PStageCardStagePikachuCamAnimJoint,
-        &lSC1PStageCardStageDonkeyCamAnimJoint,
+        &lSC1PIntroStageMarioCamAnimJoint,
+        &lSC1PIntroStagePikachuCamAnimJoint,
+        &lSC1PIntroStageDonkeyCamAnimJoint,
         0x0,
-        &lSC1PStageCardStageKirbyCamAnimJoint,
-        &lSC1PStageCardStageSamusCamAnimJoint,
-        &lSC1PStageCardStageMMarioCamAnimJoint,
+        &lSC1PIntroStageKirbyCamAnimJoint,
+        &lSC1PIntroStageSamusCamAnimJoint,
+        &lSC1PIntroStageMMarioCamAnimJoint,
         0x0,
-        &lSC1PStageCardStageZakoCamAnimJoint,
-        &lSC1PStageCardStageBossCamAnimJoint
+        &lSC1PIntroStageZakoCamAnimJoint,
+        &lSC1PIntroStageBossCamAnimJoint
     };
     
     gobj = gcMakeCameraGObj
@@ -1162,13 +1162,13 @@ CObj* sc1PStageCardMakeStageCamera(s32 stage, u32 dl_link)
     cobj = CObjGetStruct(gobj);
     
     syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
-    gcAddCObjCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sSC1PStageCardFiles[0], cobjanim_joints[stage]), 0.0F);
+    gcAddCObjCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sSC1PIntroFiles[0], camanim_joints[stage]), 0.0F);
     gcPlayCamAnim(gobj);
     
     switch (stage)
     {
     case nSC1PGameStageMario:
-        sc1PStageCardGetStageCObjDesc(&cobj_desc, stage);
+        sc1PIntroGetStageCObjDesc(&cobj_desc, stage);
         
         cobj->vec.eye.x = cobj_desc.eye.x;
         cobj->vec.eye.y = cobj_desc.eye.y;
@@ -1185,38 +1185,38 @@ CObj* sc1PStageCardMakeStageCamera(s32 stage, u32 dl_link)
 }
 
 // 0x80133930
-sb32 sSC1PStageCardCheckCostumeUsed(s32 stage, s32 fkind, s32 color)
+sb32 sSC1PIntroCheckCostumeUsed(s32 stage, s32 fkind, s32 color)
 {
     switch (stage)
     {
     case nSC1PGameStageMario:
-        if ((fkind == sSC1PStageCardPlayerFighterDemoDesc.fkind) && (ftParamGetCostumeCommonID(fkind, color) == sSC1PStageCardPlayerFighterDemoDesc.costume))
+        if ((fkind == sSC1PIntroPlayerFighterDemoDesc.fkind) && (ftParamGetCostumeCommonID(fkind, color) == sSC1PIntroPlayerFighterDemoDesc.costume))
         {
             return TRUE;
         }
-        else if ((fkind == sSC1PStageCardAlly1FighterDemoDesc.fkind) && (ftParamGetCostumeCommonID(fkind, color) == sSC1PStageCardAlly1FighterDemoDesc.costume))
+        else if ((fkind == sSC1PIntroAlly1FighterDemoDesc.fkind) && (ftParamGetCostumeCommonID(fkind, color) == sSC1PIntroAlly1FighterDemoDesc.costume))
         {
             return TRUE;
         }
         else return FALSE;
         
     case nSC1PGameStageDonkey:
-        if ((fkind == sSC1PStageCardPlayerFighterDemoDesc.fkind) && (ftParamGetCostumeCommonID(fkind, color) == sSC1PStageCardPlayerFighterDemoDesc.costume))
+        if ((fkind == sSC1PIntroPlayerFighterDemoDesc.fkind) && (ftParamGetCostumeCommonID(fkind, color) == sSC1PIntroPlayerFighterDemoDesc.costume))
         {
             return TRUE;
         }
-        else if ((fkind == sSC1PStageCardAlly1FighterDemoDesc.fkind) && (ftParamGetCostumeCommonID(fkind, color) == sSC1PStageCardAlly1FighterDemoDesc.costume))
+        else if ((fkind == sSC1PIntroAlly1FighterDemoDesc.fkind) && (ftParamGetCostumeCommonID(fkind, color) == sSC1PIntroAlly1FighterDemoDesc.costume))
         {
             return TRUE;
         }
-        else if ((fkind == sSC1PStageCardAlly2FighterDemoDesc.fkind) && (ftParamGetCostumeCommonID(fkind, color) == sSC1PStageCardAlly2FighterDemoDesc.costume))
+        else if ((fkind == sSC1PIntroAlly2FighterDemoDesc.fkind) && (ftParamGetCostumeCommonID(fkind, color) == sSC1PIntroAlly2FighterDemoDesc.costume))
         {
             return TRUE;
         }
         else return FALSE;
         
     default:
-        if ((fkind == sSC1PStageCardPlayerFighterDemoDesc.fkind) && (ftParamGetCostumeCommonID(fkind, color) == sSC1PStageCardPlayerFighterDemoDesc.costume))
+        if ((fkind == sSC1PIntroPlayerFighterDemoDesc.fkind) && (ftParamGetCostumeCommonID(fkind, color) == sSC1PIntroPlayerFighterDemoDesc.costume))
         {
             return TRUE;
         }
@@ -1225,7 +1225,7 @@ sb32 sSC1PStageCardCheckCostumeUsed(s32 stage, s32 fkind, s32 color)
 }
 
 // 0x80133AC8
-void sc1PStageCardInitVSFighters(s32 stage)
+void sc1PIntroInitVSFighters(s32 stage)
 {
     s32 i;
     s32 costume;
@@ -1254,13 +1254,13 @@ void sc1PStageCardInitVSFighters(s32 stage)
     switch (stage)
     {
     case nSC1PGameStageYoshi:
-        sc1PStageCardMakeStageCamera(stage, 32);
+        sc1PIntroMakeStageCamera(stage, 32);
 
         for (i = 0; i < SC1PGAME_STAGE_YOSHI_TEAM_COUNT; i++)
         {
-            fighter_gobj = sc1PStageCardMakeVSFighter(nFTKindYoshi, stage, i, &sSC1PStageCardFigatreeHeaps[i + 1], 32);
+            fighter_gobj = sc1PIntroMakeVSFighter(nFTKindYoshi, stage, i, &sSC1PIntroFigatreeHeaps[i + 1], 32);
             
-            if ((sSC1PStageCardPlayerFighterDemoDesc.costume == i % SC1PGAME_STAGE_YOSHI_VARIATIONS_COUNT) && (sSC1PStageCardPlayerFighterDemoDesc.fkind == nFTKindYoshi))
+            if ((sSC1PIntroPlayerFighterDemoDesc.costume == i % SC1PGAME_STAGE_YOSHI_VARIATIONS_COUNT) && (sSC1PIntroPlayerFighterDemoDesc.fkind == nFTKindYoshi))
             {
                 ftParamInitAllParts(fighter_gobj, i % SC1PGAME_STAGE_YOSHI_VARIATIONS_COUNT, 1);
             }
@@ -1269,14 +1269,14 @@ void sc1PStageCardInitVSFighters(s32 stage)
         break;
         
     case nSC1PGameStageKirby:
-        sc1PStageCardMakeStageCamera(stage, 32);
+        sc1PIntroMakeStageCamera(stage, 32);
         
         for (i = 0; i < SC1PGAME_STAGE_KIRBY_TEAM_COUNT; i++)
         {
-            fighter_gobj = sc1PStageCardMakeVSFighter(nFTKindKirby, stage, i, &sSC1PStageCardFigatreeHeaps[i + 1], 32);
-            sc1PStageCardSetKirbyTeamModelPartIDs(fighter_gobj, stage);
+            fighter_gobj = sc1PIntroMakeVSFighter(nFTKindKirby, stage, i, &sSC1PIntroFigatreeHeaps[i + 1], 32);
+            sc1PIntroSetKirbyTeamModelPartIDs(fighter_gobj, stage);
             
-            if (sSC1PStageCardCheckCostumeUsed(stage, nFTKindKirby, 0) != FALSE)
+            if (sSC1PIntroCheckCostumeUsed(stage, nFTKindKirby, 0) != FALSE)
             {
                 ftParamInitAllParts(fighter_gobj, ftParamGetCostumeCommonID(nFTKindMario, 1), 0);
             }
@@ -1284,13 +1284,13 @@ void sc1PStageCardInitVSFighters(s32 stage)
         break;
         
     case nSC1PGameStageZako:
-        sc1PStageCardMakeStageCamera(stage, 32);
+        sc1PIntroMakeStageCamera(stage, 32);
 
         for (i = nFTKindNStart; i <= nFTKindNEnd; i++)
         {
             if ((i != nFTKindNLuigi) && (i != nFTKindNPurin))
             {
-                sc1PStageCardMakeVSFighter(i, stage, 0, &sSC1PStageCardFigatreeHeaps[i - nFTKindNStart + 1], 32);
+                sc1PIntroMakeVSFighter(i, stage, 0, &sSC1PIntroFigatreeHeaps[i - nFTKindNStart + 1], 32);
             }
         }
         break;
@@ -1301,39 +1301,39 @@ void sc1PStageCardInitVSFighters(s32 stage)
     case nSC1PGameStageSamus:
     case nSC1PGameStageMMario:
     case nSC1PGameStageBoss:
-        sc1PStageCardMakeStageCamera(stage, 32);
-        fighter_gobj = sc1PStageCardMakeVSFighter(fkinds[stage], stage, 0, &sSC1PStageCardFigatreeHeaps[1], 32);
+        sc1PIntroMakeStageCamera(stage, 32);
+        fighter_gobj = sc1PIntroMakeVSFighter(fkinds[stage], stage, 0, &sSC1PIntroFigatreeHeaps[1], 32);
         
-        if (sSC1PStageCardPlayerFighterDemoDesc.fkind == fkinds[stage])
+        if (sSC1PIntroPlayerFighterDemoDesc.fkind == fkinds[stage])
         {
-            if (ftParamGetCostumeCommonID(sSC1PStageCardPlayerFighterDemoDesc.fkind, 0) == sSC1PStageCardPlayerFighterDemoDesc.costume)
+            if (ftParamGetCostumeCommonID(sSC1PIntroPlayerFighterDemoDesc.fkind, 0) == sSC1PIntroPlayerFighterDemoDesc.costume)
             {
-                ftParamInitAllParts(fighter_gobj, ftParamGetCostumeCommonID(sSC1PStageCardPlayerFighterDemoDesc.fkind, 1), 0);
+                ftParamInitAllParts(fighter_gobj, ftParamGetCostumeCommonID(sSC1PIntroPlayerFighterDemoDesc.fkind, 1), 0);
             }
-            else ftParamInitAllParts(fighter_gobj, ftParamGetCostumeCommonID(sSC1PStageCardPlayerFighterDemoDesc.fkind, 0), 0);
+            else ftParamInitAllParts(fighter_gobj, ftParamGetCostumeCommonID(sSC1PIntroPlayerFighterDemoDesc.fkind, 0), 0);
         }
         break;
         
     case nSC1PGameStageDonkey:
-        sc1PStageCardMakeStageCamera(stage, 32);
-        sc1PStageCardMakeVSFighter(nFTKindDonkey, stage, 0, &sSC1PStageCardFigatreeHeaps[3], 32);
+        sc1PIntroMakeStageCamera(stage, 32);
+        sc1PIntroMakeVSFighter(nFTKindDonkey, stage, 0, &sSC1PIntroFigatreeHeaps[3], 32);
         break;
         
     case nSC1PGameStageMario:
-        sc1PStageCardMakeStageCamera(stage, 32);
-        fighter_gobj = sc1PStageCardMakeVSFighter(nFTKindMario, stage, 0, &sSC1PStageCardFigatreeHeaps[2], 32);
+        sc1PIntroMakeStageCamera(stage, 32);
+        fighter_gobj = sc1PIntroMakeVSFighter(nFTKindMario, stage, 0, &sSC1PIntroFigatreeHeaps[2], 32);
         
-        if (sSC1PStageCardCheckCostumeUsed(stage, nFTKindMario, 0) != FALSE)
+        if (sSC1PIntroCheckCostumeUsed(stage, nFTKindMario, 0) != FALSE)
         {
             ftParamInitAllParts(fighter_gobj, ftParamGetCostumeCommonID(nFTKindMario, 1), 0);
         }
-        cobj = sc1PStageCardMakeStageCamera(stage, 33);
+        cobj = sc1PIntroMakeStageCamera(stage, 33);
 
-        cobj->flags |= 0x1;
+        cobj->flags |= COBJ_FLAG_ZBUFFER;
         
-        fighter_gobj = sc1PStageCardMakeVSFighter(nFTKindLuigi, stage, 0, &sSC1PStageCardFigatreeHeaps[3], 33);
+        fighter_gobj = sc1PIntroMakeVSFighter(nFTKindLuigi, stage, 0, &sSC1PIntroFigatreeHeaps[3], 33);
         
-        if (sSC1PStageCardCheckCostumeUsed(stage, nFTKindLuigi, 0) != FALSE)
+        if (sSC1PIntroCheckCostumeUsed(stage, nFTKindLuigi, 0) != FALSE)
         {
             ftParamInitAllParts(fighter_gobj, ftParamGetCostumeCommonID(nFTKindLuigi, 1), 0);
         }
@@ -1342,7 +1342,7 @@ void sc1PStageCardInitVSFighters(s32 stage)
 }
 
 // 0x80133EE0
-CObjDesc* sc1PStageCardGetFighterCObjDesc(CObjDesc *cobj_desc, s32 fkind, s32 cobj_id)
+CObjDesc* sc1PIntroGetFighterCObjDesc(CObjDesc *cobj_desc, s32 fkind, s32 cobj_id)
 {
     
     // 0x801351F0
@@ -1481,27 +1481,27 @@ void func_ovl24_80133F88(void)
 }
 
 // 0x80133F90
-void sc1PStageCardMakeFighterCamera(s32 fkind, s32 cobj_id)
+void sc1PIntroMakeFighterCamera(s32 fkind, s32 cobj_id)
 {
     GObj* gobj;
     CObj *cobj;
     CObjDesc cobj_desc;
 
     // 0x801359D0
-    intptr_t cobjanim_joints[/* */] =
+    intptr_t camanim_joints[/* */] =
     {
-        &lSC1PStageCardFighterMarioCamAnimJoint,
-        &lSC1PStageCardFighterFoxCamAnimJoint,
-        &lSC1PStageCardFighterDonkeyCamAnimJoint,
-        &lSC1PStageCardFighterSamusCamAnimJoint,
-        &lSC1PStageCardFighterLuigiCamAnimJoint,
-        &lSC1PStageCardFighterLinkCamAnimJoint,
-        &lSC1PStageCardFighterYoshiCamAnimJoint,
-        &lSC1PStageCardFighterCaptainCamAnimJoint,
-        &lSC1PStageCardFighterKirbyCamAnimJoint,
-        &lSC1PStageCardFighterPikachuCamAnimJoint,
-        &lSC1PStageCardFighterPurinCamAnimJoint,
-        &lSC1PStageCardFighterNessCamAnimJoint
+        &lSC1PIntroFighterMarioCamAnimJoint,
+        &lSC1PIntroFighterFoxCamAnimJoint,
+        &lSC1PIntroFighterDonkeyCamAnimJoint,
+        &lSC1PIntroFighterSamusCamAnimJoint,
+        &lSC1PIntroFighterLuigiCamAnimJoint,
+        &lSC1PIntroFighterLinkCamAnimJoint,
+        &lSC1PIntroFighterYoshiCamAnimJoint,
+        &lSC1PIntroFighterCaptainCamAnimJoint,
+        &lSC1PIntroFighterKirbyCamAnimJoint,
+        &lSC1PIntroFighterPikachuCamAnimJoint,
+        &lSC1PIntroFighterPurinCamAnimJoint,
+        &lSC1PIntroFighterNessCamAnimJoint
     };
 
     // 0x80135A00 - col 0 is dl_link, col 1 is dl_link_priority
@@ -1540,9 +1540,9 @@ void sc1PStageCardMakeFighterCamera(s32 fkind, s32 cobj_id)
 
     syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
     
-    sc1PStageCardGetFighterCObjDesc(&cobj_desc, fkind, cobj_id);
+    sc1PIntroGetFighterCObjDesc(&cobj_desc, fkind, cobj_id);
     
-    gcAddCObjCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sSC1PStageCardFiles[0], cobjanim_joints[fkind]), 0.0F);
+    gcAddCObjCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sSC1PIntroFiles[0], camanim_joints[fkind]), 0.0F);
     gcPlayCamAnim(gobj);
     
     cobj->vec.eye.x = cobj_desc.eye.x;
@@ -1556,41 +1556,41 @@ void sc1PStageCardMakeFighterCamera(s32 fkind, s32 cobj_id)
     cobj->projection.persp.near = 128.0F;
     cobj->projection.persp.far = 16384.0F;
 
-    cobj->flags |= 0x1;
+    cobj->flags |= COBJ_FLAG_ZBUFFER;
 }
 
 // 0x80134190
-void sc1PStageCardInitFighters(s32 stage)
+void sc1PIntroInitFighters(s32 stage)
 {
     switch (stage)
     {
     case nSC1PGameStageDonkey:
-        sc1PStageCardMakeFighterCamera(sSC1PStageCardAlly2FighterDemoDesc.fkind, 5);
-        sc1PStageCardMakeFighter(sSC1PStageCardAlly2FighterDemoDesc, 5, &sSC1PStageCardFigatreeHeaps[2]);
-        sc1PStageCardMakeFighterCamera(sSC1PStageCardAlly1FighterDemoDesc.fkind, 4);
-        sc1PStageCardMakeFighter(sSC1PStageCardAlly1FighterDemoDesc, 4, &sSC1PStageCardFigatreeHeaps[1]);
-        sc1PStageCardMakeFighterCamera(sSC1PStageCardPlayerFighterDemoDesc.fkind, 3);
-        sc1PStageCardMakeFighter(sSC1PStageCardPlayerFighterDemoDesc, 3, &sSC1PStageCardFigatreeHeaps[0]);
-        sc1PStageCardMakeAllyText(stage);
+        sc1PIntroMakeFighterCamera(sSC1PIntroAlly2FighterDemoDesc.fkind, 5);
+        sc1PIntroMakeFighter(sSC1PIntroAlly2FighterDemoDesc, 5, &sSC1PIntroFigatreeHeaps[2]);
+        sc1PIntroMakeFighterCamera(sSC1PIntroAlly1FighterDemoDesc.fkind, 4);
+        sc1PIntroMakeFighter(sSC1PIntroAlly1FighterDemoDesc, 4, &sSC1PIntroFigatreeHeaps[1]);
+        sc1PIntroMakeFighterCamera(sSC1PIntroPlayerFighterDemoDesc.fkind, 3);
+        sc1PIntroMakeFighter(sSC1PIntroPlayerFighterDemoDesc, 3, &sSC1PIntroFigatreeHeaps[0]);
+        sc1PIntroMakeAllyText(stage);
         break;
 
     case nSC1PGameStageMario:
-        sc1PStageCardMakeFighterCamera(sSC1PStageCardAlly1FighterDemoDesc.fkind, 2);
-        sc1PStageCardMakeFighter(sSC1PStageCardAlly1FighterDemoDesc, 2, &sSC1PStageCardFigatreeHeaps[1]);
-        sc1PStageCardMakeFighterCamera(sSC1PStageCardPlayerFighterDemoDesc.fkind, 1);
-        sc1PStageCardMakeFighter(sSC1PStageCardPlayerFighterDemoDesc, 1, &sSC1PStageCardFigatreeHeaps[0]);
-        sc1PStageCardMakeAllyText(stage);
+        sc1PIntroMakeFighterCamera(sSC1PIntroAlly1FighterDemoDesc.fkind, 2);
+        sc1PIntroMakeFighter(sSC1PIntroAlly1FighterDemoDesc, 2, &sSC1PIntroFigatreeHeaps[1]);
+        sc1PIntroMakeFighterCamera(sSC1PIntroPlayerFighterDemoDesc.fkind, 1);
+        sc1PIntroMakeFighter(sSC1PIntroPlayerFighterDemoDesc, 1, &sSC1PIntroFigatreeHeaps[0]);
+        sc1PIntroMakeAllyText(stage);
         break;
 
     default:
-        sc1PStageCardMakeFighterCamera(sSC1PStageCardPlayerFighterDemoDesc.fkind, 0);
-        sc1PStageCardMakeFighter(sSC1PStageCardPlayerFighterDemoDesc, 0, &sSC1PStageCardFigatreeHeaps[0]);
+        sc1PIntroMakeFighterCamera(sSC1PIntroPlayerFighterDemoDesc.fkind, 0);
+        sc1PIntroMakeFighter(sSC1PIntroPlayerFighterDemoDesc, 0, &sSC1PIntroFigatreeHeaps[0]);
         break;
     }
 }
 
 // 0x8013438C
-void sc1PStageCardMakeBannersCamera(void)
+void sc1PIntroMakeBannersCamera(void)
 {
     CObj *cobj = CObjGetStruct
     (
@@ -1615,7 +1615,7 @@ void sc1PStageCardMakeBannersCamera(void)
 }
 
 // 0x8013442C
-void sc1PStageCardMakeDecalsCamera(void)
+void sc1PIntroMakeDecalsCamera(void)
 {
     CObj *cobj = CObjGetStruct
     (
@@ -1640,7 +1640,7 @@ void sc1PStageCardMakeDecalsCamera(void)
 }
 
 // 0x801344CC
-void sc1PStageCardMakePicturesCamera(void)
+void sc1PIntroMakePicturesCamera(void)
 {
     CObj *cobj = CObjGetStruct
     (
@@ -1665,7 +1665,7 @@ void sc1PStageCardMakePicturesCamera(void)
 }
 
 // 0x8013456C
-s32 sc1PStageCardGetFighterAllocsNum(s32 stage)
+s32 sc1PIntroGetFighterAllocsNum(s32 stage)
 {
     // 0x80135A30
     s32 allocs_num[/* */] =
@@ -1689,7 +1689,7 @@ s32 sc1PStageCardGetFighterAllocsNum(s32 stage)
 }
 
 // 0x801345CC
-void sc1PStageCardUpdateAnnounce(void)
+void sc1PIntroUpdateAnnounce(void)
 {
     // 0x80135A68
     u32 fighter_voices[/* */] =
@@ -1743,32 +1743,32 @@ void sc1PStageCardUpdateAnnounce(void)
         50,
         50
     };
-    u32 tic = announce_wait_tics[sSC1PStageCardPlayerFighterDemoDesc.fkind] + 1;
+    u32 tic = announce_wait_tics[sSC1PIntroPlayerFighterDemoDesc.fkind] + 1;
     
-    if ((sc1PStageCardCheckNotBonusStage(sSC1PStageCardStage) != FALSE) && (sSC1PStageCardStage != nSC1PGameStageBoss))
+    if ((sc1PIntroCheckNotBonusStage(sSC1PIntroStage) != FALSE) && (sSC1PIntroStage != nSC1PGameStageBoss))
     {
-        if ((sySchedulerGetTicCount() >= 2) && (sSC1PStageCardIsAnnouncedFighterName == FALSE))
+        if ((sySchedulerGetTicCount() >= 2) && (sSC1PIntroIsAnnouncedFighterName == FALSE))
         {
-            func_800269C0_275C0(fighter_voices[sSC1PStageCardPlayerFighterDemoDesc.fkind]);
+            func_800269C0_275C0(fighter_voices[sSC1PIntroPlayerFighterDemoDesc.fkind]);
 
-            sSC1PStageCardIsAnnouncedFighterName = TRUE;
+            sSC1PIntroIsAnnouncedFighterName = TRUE;
         }
-        if ((tic < sySchedulerGetTicCount()) && (sSC1PStageCardIsAnnouncedVersus == FALSE))
+        if ((tic < sySchedulerGetTicCount()) && (sSC1PIntroIsAnnouncedVersus == FALSE))
         {
             func_800269C0_275C0(nSYAudioVoiceAnnounceVersus);
 
-            sSC1PStageCardIsAnnouncedVersus = TRUE;
+            sSC1PIntroIsAnnouncedVersus = TRUE;
         }
-        if (((tic + 60) < sySchedulerGetTicCount()) && (sSC1PStageCardIsAnnouncedVSFighterName == FALSE))
+        if (((tic + 60) < sySchedulerGetTicCount()) && (sSC1PIntroIsAnnouncedVSFighterName == FALSE))
         {
-            func_800269C0_275C0(vs_fighter_voices[sSC1PStageCardStage]);
+            func_800269C0_275C0(vs_fighter_voices[sSC1PIntroStage]);
 
-            sSC1PStageCardIsAnnouncedVSFighterName = TRUE;
+            sSC1PIntroIsAnnouncedVSFighterName = TRUE;
         }
     }
-    else if (sc1PStageCardTotalTimeTics == 1)
+    else if (sc1PIntroTotalTimeTics == 1)
     {
-        switch (sSC1PStageCardStage)
+        switch (sSC1PIntroStage)
         {
         case nSC1PGameStageBonus1:
             func_800269C0_275C0(nSYAudioVoiceAnnounceBreakTheTargets);
@@ -1786,28 +1786,28 @@ void sc1PStageCardUpdateAnnounce(void)
 }
 
 // 0x80134810
-void sc1PStageCardInitVars(void)
+void sc1PIntroInitVars(void)
 {
-    sSC1PStageCardStage = gSCManagerSceneData.spgame_stage;
+    sSC1PIntroStage = gSCManagerSceneData.spgame_stage;
 
-    sSC1PStageCardPlayerFighterDemoDesc.fkind = gSCManager1PGameBattleState.players[gSCManagerSceneData.player].fkind;
-    sSC1PStageCardPlayerFighterDemoDesc.costume = gSCManager1PGameBattleState.players[gSCManagerSceneData.player].costume;
-    sSC1PStageCardPlayerFighterDemoDesc.shade = gSCManager1PGameBattleState.players[gSCManagerSceneData.player].shade;
+    sSC1PIntroPlayerFighterDemoDesc.fkind = gSCManager1PGameBattleState.players[gSCManagerSceneData.player].fkind;
+    sSC1PIntroPlayerFighterDemoDesc.costume = gSCManager1PGameBattleState.players[gSCManagerSceneData.player].costume;
+    sSC1PIntroPlayerFighterDemoDesc.shade = gSCManager1PGameBattleState.players[gSCManagerSceneData.player].shade;
     
-    sSC1PStageCardAlly1FighterDemoDesc.fkind = gSCManager1PGameBattleState.players[gSCManagerSceneData.ally_players[0]].fkind;
-    sSC1PStageCardAlly1FighterDemoDesc.costume = gSCManager1PGameBattleState.players[gSCManagerSceneData.ally_players[0]].costume;
-    sSC1PStageCardAlly1FighterDemoDesc.shade = gSCManager1PGameBattleState.players[gSCManagerSceneData.ally_players[0]].shade;
+    sSC1PIntroAlly1FighterDemoDesc.fkind = gSCManager1PGameBattleState.players[gSCManagerSceneData.ally_players[0]].fkind;
+    sSC1PIntroAlly1FighterDemoDesc.costume = gSCManager1PGameBattleState.players[gSCManagerSceneData.ally_players[0]].costume;
+    sSC1PIntroAlly1FighterDemoDesc.shade = gSCManager1PGameBattleState.players[gSCManagerSceneData.ally_players[0]].shade;
     
-    sSC1PStageCardAlly2FighterDemoDesc.fkind = gSCManager1PGameBattleState.players[gSCManagerSceneData.ally_players[1]].fkind;
-    sSC1PStageCardAlly2FighterDemoDesc.costume = gSCManager1PGameBattleState.players[gSCManagerSceneData.ally_players[1]].costume;
-    sSC1PStageCardAlly2FighterDemoDesc.shade = gSCManager1PGameBattleState.players[gSCManagerSceneData.ally_players[1]].shade;
+    sSC1PIntroAlly2FighterDemoDesc.fkind = gSCManager1PGameBattleState.players[gSCManagerSceneData.ally_players[1]].fkind;
+    sSC1PIntroAlly2FighterDemoDesc.costume = gSCManager1PGameBattleState.players[gSCManagerSceneData.ally_players[1]].costume;
+    sSC1PIntroAlly2FighterDemoDesc.shade = gSCManager1PGameBattleState.players[gSCManagerSceneData.ally_players[1]].shade;
     
-    sSC1PStageCardIsAnnouncedFighterName = FALSE;
-    sSC1PStageCardIsAnnouncedVersus = FALSE;
-    sSC1PStageCardIsAnnouncedVSFighterName = FALSE;
+    sSC1PIntroIsAnnouncedFighterName = FALSE;
+    sSC1PIntroIsAnnouncedVersus = FALSE;
+    sSC1PIntroIsAnnouncedVSFighterName = FALSE;
     
-    sSC1PStageCardUnk0x80135CF4 = 0;
-    sc1PStageCardTotalTimeTics = 0;
+    sSC1PIntroUnk0x80135CF4 = 0;
+    sc1PIntroTotalTimeTics = 0;
 }
 
 // 0x801348EC - unused?
@@ -1817,11 +1817,11 @@ void func_ovl24_801348EC(void)
 }
 
 // 0x801348F4
-void sc1PStageCardFuncRun(GObj *gobj)
+void sc1PIntroFuncRun(GObj *gobj)
 {
-    sc1PStageCardTotalTimeTics++;
+    sc1PIntroTotalTimeTics++;
     
-    sc1PStageCardUpdateAnnounce();
+    sc1PIntroUpdateAnnounce();
     
     if (sySchedulerGetTicCount() >= 60)
     {
@@ -1835,13 +1835,13 @@ void sc1PStageCardFuncRun(GObj *gobj)
             func_ovl24_801348EC();
             syTaskmanSetLoadScene();
         }
-        if (sSC1PStageCardUnk0x80135CF4 != 0)
+        if (sSC1PIntroUnk0x80135CF4 != 0)
         {
-            sSC1PStageCardUnk0x80135CF4--;
+            sSC1PIntroUnk0x80135CF4--;
         }
         if ((scSubsysControllerGetPlayerStickInRangeLR(-30, 30) != FALSE) && (scSubsysControllerGetPlayerStickInRangeUD(-30, 30) != FALSE))
         {
-            sSC1PStageCardUnk0x80135CF4 = 0;
+            sSC1PIntroUnk0x80135CF4 = 0;
         }
         if (sySchedulerGetTicCount() > 360)
         {
@@ -1857,7 +1857,7 @@ void sc1PStageCardFuncRun(GObj *gobj)
 }
 
 // 0x801349F8
-void sc1PStageCardSetupFighterFiles(s32 stage)
+void sc1PIntroSetupFighterFiles(s32 stage)
 {    
     // 0x80135B00
     s32 fkinds[/* */] =
@@ -1879,18 +1879,18 @@ void sc1PStageCardSetupFighterFiles(s32 stage)
     };
     s32 i;
     
-    ftManagerSetupFilesAllKind(sSC1PStageCardPlayerFighterDemoDesc.fkind);
+    ftManagerSetupFilesAllKind(sSC1PIntroPlayerFighterDemoDesc.fkind);
     
     switch (stage)
     {
     case nSC1PGameStageDonkey:
-        ftManagerSetupFilesAllKind(sSC1PStageCardAlly1FighterDemoDesc.fkind);
-        ftManagerSetupFilesAllKind(sSC1PStageCardAlly2FighterDemoDesc.fkind);
+        ftManagerSetupFilesAllKind(sSC1PIntroAlly1FighterDemoDesc.fkind);
+        ftManagerSetupFilesAllKind(sSC1PIntroAlly2FighterDemoDesc.fkind);
         ftManagerSetupFilesAllKind(nFTKindDonkey);
         break;
         
     case nSC1PGameStageMario:
-        ftManagerSetupFilesAllKind(sSC1PStageCardAlly1FighterDemoDesc.fkind);
+        ftManagerSetupFilesAllKind(sSC1PIntroAlly1FighterDemoDesc.fkind);
         ftManagerSetupFilesAllKind(nFTKindMario);
         ftManagerSetupFilesAllKind(nFTKindLuigi);
         break;
@@ -1912,7 +1912,7 @@ void sc1PStageCardSetupFighterFiles(s32 stage)
 }
 
 // 0x80134B38
-void sc1PStageCardFuncStart(void)
+void sc1PIntroFuncStart(void)
 {
     LBRelocSetup rl_setup;
     s32 i;
@@ -1921,75 +1921,75 @@ void sc1PStageCardFuncStart(void)
     rl_setup.table_files_num = (u32)&lLBRelocTableFilesNum;
     rl_setup.file_heap = NULL;
     rl_setup.file_heap_size = 0;
-    rl_setup.status_buffer = sSC1PStageCardStatusBuffer;
-    rl_setup.status_buffer_size = ARRAY_COUNT(sSC1PStageCardStatusBuffer);
-    rl_setup.force_status_buffer = sSC1PStageCardForceStatusBuffer;
-    rl_setup.force_status_buffer_size = ARRAY_COUNT(sSC1PStageCardForceStatusBuffer);
+    rl_setup.status_buffer = sSC1PIntroStatusBuffer;
+    rl_setup.status_buffer_size = ARRAY_COUNT(sSC1PIntroStatusBuffer);
+    rl_setup.force_status_buffer = sSC1PIntroForceStatusBuffer;
+    rl_setup.force_status_buffer_size = ARRAY_COUNT(sSC1PIntroForceStatusBuffer);
     
     lbRelocInitSetup(&rl_setup);
     lbRelocLoadFilesExtern
     (
-        dSC1PStageCardFileIDs,
-        ARRAY_COUNT(dSC1PStageCardFileIDs),
-        sSC1PStageCardFiles,
+        dSC1PIntroFileIDs,
+        ARRAY_COUNT(dSC1PIntroFileIDs),
+        sSC1PIntroFiles,
         syTaskmanMalloc
         (
             lbRelocGetAllocSize
-            (    dSC1PStageCardFileIDs,
-                ARRAY_COUNT(dSC1PStageCardFileIDs)
+            (    dSC1PIntroFileIDs,
+                ARRAY_COUNT(dSC1PIntroFileIDs)
             ),
             0x10
         )
     );
-    gcMakeGObjSPAfter(0, sc1PStageCardFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeGObjSPAfter(0, sc1PIntroFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
-    sc1PStageCardInitVars();
+    sc1PIntroInitVars();
     efParticleInitAll();
     efManagerInitEffects();
-    ftManagerAllocFighter(FTDATA_FLAG_SUBMOTION, sc1PStageCardGetFighterAllocsNum(sSC1PStageCardStage));
-    sc1PStageCardSetupFighterFiles(sSC1PStageCardStage);
+    ftManagerAllocFighter(FTDATA_FLAG_SUBMOTION, sc1PIntroGetFighterAllocsNum(sSC1PIntroStage));
+    sc1PIntroSetupFighterFiles(sSC1PIntroStage);
 
-    for (i = 0; i < sc1PStageCardGetFighterAllocsNum(sSC1PStageCardStage); i++)
+    for (i = 0; i < sc1PIntroGetFighterAllocsNum(sSC1PIntroStage); i++)
     {
-        sSC1PStageCardFigatreeHeaps[i] = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
+        sSC1PIntroFigatreeHeaps[i] = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
     }
-    sc1PStageCardMakePicturesCamera();
-    sc1PStageCardMakeDecalsCamera();
-    sc1PStageCardMakeBannersCamera();
-    sc1PStageCardMakeSky();
-    sc1PStageCardMakeBanners();
+    sc1PIntroMakePicturesCamera();
+    sc1PIntroMakeDecalsCamera();
+    sc1PIntroMakeBannersCamera();
+    sc1PIntroMakeSky();
+    sc1PIntroMakeBanners();
     
-    if (sc1PStageCardCheckNotBonusStage(sSC1PStageCardStage) != FALSE)
+    if (sc1PIntroCheckNotBonusStage(sSC1PIntroStage) != FALSE)
     {
-        sc1PStageCardMakeVSDecal();
+        sc1PIntroMakeVSDecal();
     }
-    else sc1PStageCardMakeBonusPicture(sSC1PStageCardStage);
+    else sc1PIntroMakeBonusPicture(sSC1PIntroStage);
     
-    sc1PStageCardMakeLabels(sSC1PStageCardStage);
-    sc1PStageCardMakeFigures(sSC1PStageCardStage);
-    sc1PStageCardMakeStageInfo(sSC1PStageCardStage);
+    sc1PIntroMakeLabels(sSC1PIntroStage);
+    sc1PIntroMakeFigures(sSC1PIntroStage);
+    sc1PIntroMakeStageInfo(sSC1PIntroStage);
     
-    if (sc1PStageCardCheckNotBonusStage(sSC1PStageCardStage) != FALSE)
+    if (sc1PIntroCheckNotBonusStage(sSC1PIntroStage) != FALSE)
     {
-        sc1PStageCardInitFighters(sSC1PStageCardStage);
-        sc1PStageCardInitVSFighters(sSC1PStageCardStage);
+        sc1PIntroInitFighters(sSC1PIntroStage);
+        sc1PIntroInitVSFighters(sSC1PIntroStage);
     }
     scSubsysFighterSetLightParams(-20.0F, 30.0F, 0xFF, 0xFF, 0xFF, 0xFF);
     
-    if (sSC1PStageCardStage == nSC1PGameStageBoss)
+    if (sSC1PIntroStage == nSC1PGameStageBoss)
     {
         auPlaySong(0, nSYAudioBGMBossStage);
     }
-    else auPlaySong(0, nSYAudioBGM1PStageCard);
+    else auPlaySong(0, nSYAudioBGM1PIntro);
     
     sySchedulerSetTicCount(0);
 }
 
 // 0x80135B38
-SYVideoSetup dSC1PStageCardVideoSetup = SYVIDEO_SETUP_DEFAULT();
+SYVideoSetup dSC1PIntroVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
 // 0x80135B54
-SYTaskmanSetup dSC1PStageCardTaskmanSetup =
+SYTaskmanSetup dSC1PIntroTaskmanSetup =
 {
     // Task Manager Buffer Setup
     {
@@ -2007,7 +2007,7 @@ SYTaskmanSetup dSC1PStageCardTaskmanSetup =
         0x10000,                    // Graphics Heap Size
         2,                          // ???
         0xC000,                     // RDP Output Buffer Size
-        sc1PStageCardFuncLights,    // Pre-render function
+        sc1PIntroFuncLights,    // Pre-render function
         syControllerFuncRead,       // Controller I/O function
     },
 
@@ -2030,15 +2030,15 @@ SYTaskmanSetup dSC1PStageCardTaskmanSetup =
     0,                              // Number of Cameras
     sizeof(CObj),                 	// CObj size
     
-    sc1PStageCardFuncStart          // Task start function
+    sc1PIntroFuncStart          // Task start function
 };
 
 // 0x80134D98
-void sc1PStageCardStartScene(void)
+void sc1PIntroStartScene(void)
 {
-    dSC1PStageCardVideoSetup.zbuffer = syVideoGetZBuffer(6400);
-    syVideoInit(&dSC1PStageCardVideoSetup);
+    dSC1PIntroVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+    syVideoInit(&dSC1PIntroVideoSetup);
     
-    dSC1PStageCardTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl24_BSS_END);
-    scManagerFuncUpdate(&dSC1PStageCardTaskmanSetup);
+    dSC1PIntroTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl24_BSS_END);
+    scManagerFuncUpdate(&dSC1PIntroTaskmanSetup);
 }

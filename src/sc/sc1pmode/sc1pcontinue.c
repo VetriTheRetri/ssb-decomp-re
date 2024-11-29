@@ -360,7 +360,7 @@ void sc1PContinueMakeFighter(s32 fkind)
 
     sSC1PContinueFighterGObj = fighter_gobj = ftManagerMakeFighter(&ft_desc);
 
-    scSubsysFighterSetStatus(fighter_gobj, nFTDemoStatusFigureFall);
+    scSubsysFighterSetStatus(fighter_gobj, nFTDemoStatusFigureDropped);
     sc1PContinueSetFighterScale(fighter_gobj, sSC1PContinueFighterDemoDesc.fkind);
 }
 

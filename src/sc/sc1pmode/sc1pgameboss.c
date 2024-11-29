@@ -420,7 +420,7 @@ void sc1PGameBossMakeCamera(void)
 
     cobj->projection.persp.aspect = (f32)(gCMManagerCameraStruct.viewport_lrx - gCMManagerCameraStruct.viewport_ulx) / (f32)(gCMManagerCameraStruct.viewport_lry - gCMManagerCameraStruct.viewport_uly);
 
-    cobj->flags |= 4;
+    cobj->flags |= COBJ_FLAG_DLBUFFERS;
 
     cobj->vec.at.x = cobj->vec.at.y = cobj->vec.at.z = 0.0F;
     cobj->vec.eye.x = cobj->vec.eye.y = 0.0F;
@@ -449,7 +449,7 @@ void sc1PGameBossMakeCamera(void)
 
     cobj->projection.persp.aspect = (f32)(gCMManagerCameraStruct.viewport_lrx - gCMManagerCameraStruct.viewport_ulx) / (f32)(gCMManagerCameraStruct.viewport_lry - gCMManagerCameraStruct.viewport_uly);
 
-    cobj->flags |= 4;
+    cobj->flags |= COBJ_FLAG_DLBUFFERS;
 
     cobj->vec.at.x = cobj->vec.at.y = cobj->vec.at.z = 0.0F;
     cobj->vec.eye.x = cobj->vec.eye.y = 0.0F;

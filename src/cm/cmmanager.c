@@ -929,13 +929,13 @@ void cmManagerSetCameraStatusPrev(void)
 }
 
 // 0x8010D030
-void func_ovl2_8010D030(AObjEvent32 *cobjanim_joint, f32 anim_frame, Vec3f *arg2)
+void func_ovl2_8010D030(AObjEvent32 *camanim_joint, f32 anim_frame, Vec3f *arg2)
 {
     cmManagerSetCameraStatusID(2);
 
     gCMManagerCameraStruct.all_move = *arg2;
 
-    gcAddCObjCamAnimJoint(CObjGetStruct(gCMManagerCameraGObj), cobjanim_joint, anim_frame);
+    gcAddCObjCamAnimJoint(CObjGetStruct(gCMManagerCameraGObj), camanim_joint, anim_frame);
     func_ovl2_8010CBE4(gCMManagerCameraGObj);
 }
 
@@ -1424,7 +1424,7 @@ GObj* func_ovl2_8010E374(void)
 
     syRdpSetViewport(&cobj->viewport, (f32)gCMManagerCameraStruct.viewport_ulx, (f32)gCMManagerCameraStruct.viewport_uly, (f32)gCMManagerCameraStruct.viewport_lrx, (f32)gCMManagerCameraStruct.viewport_lry);
 
-    cobj->flags |= 4;
+    cobj->flags |= COBJ_FLAG_DLBUFFERS;
 
     return camera_gobj;
 }

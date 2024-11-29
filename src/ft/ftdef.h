@@ -628,7 +628,7 @@ typedef enum FTDemoStatus
     nFTDemoStatusRun,           // Common status ID for opening movie running scene
     nFTDemoStatusJump,          // Link jump status ID for opening movie running scene
     nFTDemoStatusFigurePulled,  // Fighter plucked by Master Hand during opening movie
-    nFTDemoStatusFigureFall,    // Fighter dropped in opening movie / ending movie / game over
+    nFTDemoStatusFigureDropped, // Fighter dropped in opening movie / ending movie / game over
     nFTDemoStatusFigureStand,   // Fighter standing up in opening movie / game over continue
     nFTDemoStatusClash,         // Common status ID for opening movie clashing scene
     nFTDemoStatusStance,        // Common status ID for opening movie sliding fighter poses

@@ -1317,10 +1317,10 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x12AE40, c, sc/sc1pmode/sc1pstagecard]
-      - [0x12E130, .data, sc/sc1pmode/sc1pstagecard]
-      - [0x12EF20, .rodata, sc/sc1pmode/sc1pstagecard]
-      - { start: auto, type: .bss, name: sc/sc1pmode/sc1pstagecard }
+      - [0x12AE40, c, sc/sc1pmode/sc1pintro]
+      - [0x12E130, .data, sc/sc1pmode/sc1pintro]
+      - [0x12EF20, .rodata, sc/sc1pmode/sc1pintro]
+      - { start: auto, type: .bss, name: sc/sc1pmode/sc1pintro }
 
   - name: ovl25
     type: code

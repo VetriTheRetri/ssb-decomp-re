@@ -253,7 +253,7 @@ void mvOpeningClashMakeFightersCamera(void)
 
     syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-    cobj->flags |= 0x1;
+    cobj->flags |= COBJ_FLAG_ZBUFFER;
 
     cobj->projection.persp.near = 128.0F;
     cobj->projection.persp.far = 16384.0F;
@@ -286,7 +286,7 @@ void mvOpeningClashMakeVoidCamera(void)
     );
     syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
     
-    cobj->flags |= 1;
+    cobj->flags |= COBJ_FLAG_ZBUFFER;
 }
 
 // 0x801323C8

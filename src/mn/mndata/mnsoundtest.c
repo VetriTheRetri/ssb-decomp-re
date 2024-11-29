@@ -126,7 +126,7 @@ u32 dMNSoundTestMusicIDs[/* */] =
     nSYAudioBGMHammer,
     nSYAudioBGMStar,
     nSYAudioBGMTrainingMode,
-    nSYAudioBGM1PStageCard,
+    nSYAudioBGM1PIntro,
     nSYAudioBGMBossStage,
     nSYAudioBGMBossEntry,
     nSYAudioBGMLast,

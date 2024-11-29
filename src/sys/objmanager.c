@@ -1647,7 +1647,7 @@ CObj* gcAddCameraForGObj(GObj *gobj)
 	new_cobj->unk_camera_0x8C = 0;
 
 	new_cobj->aobj = NULL;
-	new_cobj->cobjanim_joint.event32 = NULL;
+	new_cobj->camanim_joint.event32 = NULL;
 
 	new_cobj->anim_wait = AOBJ_ANIM_NULL;
 	new_cobj->anim_speed = 1.0F;

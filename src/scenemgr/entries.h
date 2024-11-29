@@ -19,7 +19,7 @@ void mnVSOptionsStartScene();
 void mnVSItemSwitchStartScene();
 void mnMessageStartScene();
 void sc1PChallengerStartScene();
-void sc1PStageCardStartScene();
+void sc1PIntroStartScene();
 void mnScreenAdjustStartScene();
 void vs_css_entry();
 void mnStagesStartScene();

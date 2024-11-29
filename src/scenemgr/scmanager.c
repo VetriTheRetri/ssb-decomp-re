@@ -962,11 +962,11 @@ void scManagerRunLoop(sb32 arg)
 				sc1PChallengerStartScene();
 				break;
 
-			case nSCKind1PStageCard:
+			case nSCKind1PIntro:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[24]);
-				sc1PStageCardStartScene();
+				sc1PIntroStartScene();
 				break;
 
 			case nSCKindScreenAdjust:

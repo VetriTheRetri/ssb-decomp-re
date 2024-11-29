@@ -43,7 +43,7 @@ u8 gSC1PManagerKirbyTeamModelPartID;
 SYOverlay dSC1PManagerSubsysOverlay = SCMANAGER_OVERLAY_DEFINE(1);
 
 // 0x80116C14
-SYOverlay dSC1PManager1PStageCardOverlay = SCMANAGER_OVERLAY_DEFINE(24);
+SYOverlay dSC1PManager1PIntroOverlay = SCMANAGER_OVERLAY_DEFINE(24);
 
 // 0x80116C38
 SYOverlay dSC1PManager1PStageClearOverlay = SCMANAGER_OVERLAY_DEFINE(56);
@@ -349,12 +349,12 @@ void sc1PManagerUpdateScene(void)
                 break;
             }
             syDmaLoadOverlay(&dSC1PManagerSubsysOverlay);
-            syDmaLoadOverlay(&dSC1PManager1PStageCardOverlay);
+            syDmaLoadOverlay(&dSC1PManager1PIntroOverlay);
 
             gSCManagerSceneData.scene_prev = nSCKind1PGame;
-            gSCManagerSceneData.scene_curr = nSCKind1PStageCard;
+            gSCManagerSceneData.scene_curr = nSCKind1PIntro;
 
-            sc1PStageCardStartScene();
+            sc1PIntroStartScene();
 
             switch (gSCManagerSceneData.spgame_stage)
             {

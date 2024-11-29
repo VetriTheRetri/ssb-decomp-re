@@ -66,7 +66,7 @@ GObj *sMVOpeningRoomLogoCameraGObj;
 GObj *sMVOpeningRoomBossGObj;
 
 // 0x80134CF8
-s32 sMVOpeningRoomPluckedFighterKind;
+s32 sMVOpeningRoomPulledFighterKind;
 
 // 0x80134CFC
 GObj *sMVOpeningRoomDroppedFighterKind;
@@ -75,7 +75,7 @@ GObj *sMVOpeningRoomDroppedFighterKind;
 GObj *sMVOpeningRoomLogoGObj;
 
 // 0x80134D04
-GObj *sMVOpeningRoomPluckedFighterGObj;
+GObj *sMVOpeningRoomPulledFighterGObj;
 
 // 0x80134D08
 GObj *sMVOpeningRoomDroppedFighterGObj;
@@ -349,7 +349,7 @@ void func_ovl34_80132328(void)
 }
 
 // 0x80132330
-void mvOpeningRoomMakePluckedFighter(s32 fkind)
+void mvOpeningRoomMakePulledFighter(s32 fkind)
 {
 	GObj *fighter_gobj;
 	FTDesc desc = dFTManagerDefaultFighterDesc;
@@ -360,7 +360,7 @@ void mvOpeningRoomMakePluckedFighter(s32 fkind)
 	desc.pos.y = 0.0F;
 	desc.pos.z = 0.0F;
 	desc.figatree_heap = sMVOpeningRoomPluckedFigatreeHeap;
-	sMVOpeningRoomPluckedFighterGObj = fighter_gobj = ftManagerMakeFighter(&desc);
+	sMVOpeningRoomPulledFighterGObj = fighter_gobj = ftManagerMakeFighter(&desc);
 
 	DObjGetStruct(fighter_gobj)->scale.vec.f.x = 1.0F;
 	DObjGetStruct(fighter_gobj)->scale.vec.f.y = 1.0F;
@@ -483,7 +483,7 @@ void mvOpeningRoomMakeDroppedFighter(s32 fkind)
 	desc.pos.z = -4734.600098F;
 	sMVOpeningRoomDroppedFighterGObj = fighter_gobj = ftManagerMakeFighter(&desc);
 
-	scSubsysFighterSetStatus(fighter_gobj, nFTDemoStatusFigureFall);
+	scSubsysFighterSetStatus(fighter_gobj, nFTDemoStatusFigureDropped);
 	gcMoveGObjDL(fighter_gobj, 6, -1);
 }
 
@@ -678,7 +678,7 @@ void mvOpeningRoomMakeSpotlight(void)
 	gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindFunc, 1);
 	gcPlayAnimAll(gobj);
 
-	mvOpeningRoomSetSpotlightPosition(gobj, sMVOpeningRoomPluckedFighterKind);
+	mvOpeningRoomSetSpotlightPosition(gobj, sMVOpeningRoomPulledFighterKind);
 }
 
 // 0x801331B0
@@ -1125,13 +1125,13 @@ s32 mvOpeningRoomGetDroppedFighterKind(void)
 
 	s32 fkind;
 
-	while (fkind = fkinds[mtTrigGetRandomTimeUCharRange(ARRAY_COUNT(fkinds))], fkind == sMVOpeningRoomPluckedFighterKind);
+	while (fkind = fkinds[mtTrigGetRandomTimeUCharRange(ARRAY_COUNT(fkinds))], fkind == sMVOpeningRoomPulledFighterKind);
 
 	return fkind;
 }
 
 // 0x80134270
-s32 mvOpeningRoomGetPluckedFighterKind(void)
+s32 mvOpeningRoomGetPulledFighterKind(void)
 {
 	s32 fkinds[/* */] =
 	{
@@ -1152,7 +1152,7 @@ s32 mvOpeningRoomGetPluckedFighterKind(void)
 void mvOpeningRoomInitVars(void)
 {
 	sMVOpeningRoomTotalTimeTics = 0;
-	sMVOpeningRoomPluckedFighterKind = mvOpeningRoomGetPluckedFighterKind();
+	sMVOpeningRoomPulledFighterKind = mvOpeningRoomGetPulledFighterKind();
 	sMVOpeningRoomDroppedFighterKind = mvOpeningRoomGetDroppedFighterKind();
 }
 
@@ -1218,7 +1218,7 @@ void mvOpeningRoomFuncRun(GObj *gobj)
 		}
 		if (sMVOpeningRoomTotalTimeTics == 280)
 		{
-			mvOpeningRoomMakePluckedFighter(sMVOpeningRoomPluckedFighterKind);
+			mvOpeningRoomMakePulledFighter(sMVOpeningRoomPulledFighterKind);
 			mvOpeningRoomMakePencils();
 
 			gcEjectGObj(sMVOpeningRoomLogoGObj);
@@ -1231,11 +1231,11 @@ void mvOpeningRoomFuncRun(GObj *gobj)
 		}
 		if (sMVOpeningRoomTotalTimeTics == 380)
 		{
-			scSubsysFighterSetStatus(sMVOpeningRoomPluckedFighterGObj, nFTDemoStatusFigureFall);
+			scSubsysFighterSetStatus(sMVOpeningRoomPulledFighterGObj, nFTDemoStatusFigureDropped);
 
-			DObjGetStruct(sMVOpeningRoomPluckedFighterGObj)->rotate.vec.f.x = 0.0F;
-			DObjGetStruct(sMVOpeningRoomPluckedFighterGObj)->rotate.vec.f.y = 0.0F;
-			DObjGetStruct(sMVOpeningRoomPluckedFighterGObj)->rotate.vec.f.z = 0.0F;
+			DObjGetStruct(sMVOpeningRoomPulledFighterGObj)->rotate.vec.f.x = 0.0F;
+			DObjGetStruct(sMVOpeningRoomPulledFighterGObj)->rotate.vec.f.y = 0.0F;
+			DObjGetStruct(sMVOpeningRoomPulledFighterGObj)->rotate.vec.f.z = 0.0F;
 		}
 		if (sMVOpeningRoomTotalTimeTics == 450)
 		{
@@ -1250,7 +1250,7 @@ void mvOpeningRoomFuncRun(GObj *gobj)
 		}
 		if (sMVOpeningRoomTotalTimeTics == 500)
 		{
-			gcMoveGObjDL(sMVOpeningRoomPluckedFighterGObj, 9, -1);
+			gcMoveGObjDL(sMVOpeningRoomPulledFighterGObj, 9, -1);
 			mvOpeningRoomMakeSpotlight();
 		}
 		if (sMVOpeningRoomTotalTimeTics == 860)
@@ -1281,11 +1281,11 @@ void mvOpeningRoomFuncRun(GObj *gobj)
 			mvOpeningRoomEjectCameraGObjs();
 			mvOpeningRoomMakeCloseUpEffect();
 
-			DObjGetStruct(sMVOpeningRoomPluckedFighterGObj)->rotate.vec.f.x = 0.0F;
-			DObjGetStruct(sMVOpeningRoomPluckedFighterGObj)->rotate.vec.f.y = 0.0F;
-			DObjGetStruct(sMVOpeningRoomPluckedFighterGObj)->rotate.vec.f.z = 0.0F;
+			DObjGetStruct(sMVOpeningRoomPulledFighterGObj)->rotate.vec.f.x = 0.0F;
+			DObjGetStruct(sMVOpeningRoomPulledFighterGObj)->rotate.vec.f.y = 0.0F;
+			DObjGetStruct(sMVOpeningRoomPulledFighterGObj)->rotate.vec.f.z = 0.0F;
 
-			scSubsysFighterSetStatus(sMVOpeningRoomPluckedFighterGObj, nFTDemoStatusFigureStand);
+			scSubsysFighterSetStatus(sMVOpeningRoomPulledFighterGObj, nFTDemoStatusFigureStand);
 			mvOpeningRoomMakeScene4Cameras();
 		}
 		if (sMVOpeningRoomTotalTimeTics == I_SEC_TO_TICS(18))
@@ -1342,7 +1342,7 @@ void mvOpeningRoomFuncStart(void)
 	mvOpeningRoomInitVars();
 	efManagerInitEffects();
 	ftManagerAllocFighter(FTDATA_FLAG_SUBMOTION, 3);
-	ftManagerSetupFilesAllKind(sMVOpeningRoomPluckedFighterKind);
+	ftManagerSetupFilesAllKind(sMVOpeningRoomPulledFighterKind);
 	ftManagerSetupFilesAllKind(sMVOpeningRoomDroppedFighterKind);
 	ftManagerSetupFilesAllKind(nFTKindBoss);
 	

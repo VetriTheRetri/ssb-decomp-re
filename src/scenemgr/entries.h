@@ -59,7 +59,7 @@ void mnBackupClearStartScene();
 void mvEndingStartScene();
 void sc1PContinueStartScene();
 void sc1PStageClearStartScene();
-void gmStaffrollStartScene();
+void scStaffrollStartScene();
 void mnCongraStartScene();
 void mnSoundTestStartScene();
 void scExplainStartScene();

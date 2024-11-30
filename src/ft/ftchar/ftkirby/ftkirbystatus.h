@@ -13,7 +13,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDAttack100,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -33,7 +33,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDAttack100,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -53,7 +53,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDAttack100,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -73,7 +73,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDNone,						// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -93,7 +93,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDNone,						// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -113,7 +113,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDNone,						// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -133,7 +133,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDNone,						// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -153,7 +153,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDNone,						// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -173,7 +173,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDThrowF,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -193,7 +193,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDThrowF,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -213,7 +213,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDThrowF,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -233,7 +233,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopyMario,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		TRUE,											// Is projectile?
@@ -253,7 +253,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopyMario,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsAir,									// Grounded or aerial attack?
 		TRUE,											// Is projectile?
@@ -273,7 +273,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopyLuigi,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		TRUE,											// Is projectile?
@@ -293,7 +293,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopyLuigi,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsAir,									// Grounded or aerial attack?
 		TRUE,											// Is projectile?
@@ -313,7 +313,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopyFox,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		TRUE,											// Is projectile?
@@ -333,7 +333,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopyFox,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsAir,									// Grounded or aerial attack?
 		TRUE,											// Is projectile?
@@ -353,7 +353,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopySamus,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		TRUE,											// Is projectile?
@@ -373,7 +373,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopySamus,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		TRUE,											// Is projectile?
@@ -393,7 +393,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopySamus,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		TRUE,											// Is projectile?
@@ -413,7 +413,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopySamus,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsAir,									// Grounded or aerial attack?
 		TRUE,											// Is projectile?
@@ -433,7 +433,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopySamus,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsAir,									// Grounded or aerial attack?
 		TRUE,											// Is projectile?
@@ -453,7 +453,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopyDonkey,		// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -473,7 +473,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopyDonkey,		// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsAir,									// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -493,7 +493,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopyDonkey,		// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -513,7 +513,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopyDonkey,		// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsAir,									// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -533,7 +533,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopyDonkey,		// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -553,7 +553,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopyDonkey,		// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsAir,									// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -573,7 +573,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopyDonkey,		// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -593,7 +593,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopyDonkey,		// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsAir,									// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -613,7 +613,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDNone,						// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -633,7 +633,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDNone,						// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -653,7 +653,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopyPikachu,		// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		TRUE,											// Is projectile?
@@ -673,7 +673,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopyPikachu,		// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsAir,									// Grounded or aerial attack?
 		TRUE,											// Is projectile?
@@ -693,7 +693,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopyNess,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		TRUE,											// Is projectile?
@@ -713,7 +713,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopyNess,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsAir,									// Grounded or aerial attack?
 		TRUE,											// Is projectile?
@@ -733,7 +733,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialHi,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		TRUE,											// Is projectile?
@@ -753,7 +753,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialHi,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		TRUE,											// Is projectile?
@@ -773,7 +773,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialHi,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsAir,									// Grounded or aerial attack?
 		TRUE,											// Is projectile?
@@ -793,7 +793,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialHi,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsAir,									// Grounded or aerial attack?
 		TRUE,											// Is projectile?
@@ -813,7 +813,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialLw,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -833,7 +833,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialLw,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -853,7 +853,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialLw,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -873,7 +873,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialLw,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -893,7 +893,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialLw,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsAir,									// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -913,7 +913,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialLw,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsAir,									// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -933,7 +933,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialLw,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsAir,									// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -953,7 +953,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialLw,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsAir,									// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -973,7 +973,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialLw,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsAir,									// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -993,7 +993,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialN,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -1013,7 +1013,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialN,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -1033,7 +1033,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialN,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -1053,7 +1053,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialN,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -1073,7 +1073,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialN,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -1093,7 +1093,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialN,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -1113,7 +1113,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialN,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -1133,7 +1133,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialN,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -1153,7 +1153,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialN,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -1173,7 +1173,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialN,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsAir,									// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -1193,7 +1193,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialN,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsAir,									// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -1213,7 +1213,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialN,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsAir,									// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -1233,7 +1233,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialN,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack? - bruh moment here
 		FALSE,											// Is projectile?
@@ -1253,7 +1253,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialN,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsAir,									// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -1273,7 +1273,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialN,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsAir,									// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -1293,7 +1293,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialN,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsAir,									// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -1313,7 +1313,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialN,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsAir,									// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -1333,7 +1333,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialN,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsAir,									// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -1353,7 +1353,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopyLink,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		TRUE,											// Is projectile?
@@ -1373,7 +1373,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopyLink,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		TRUE,											// Is projectile?
@@ -1393,7 +1393,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopyLink,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		TRUE,											// Is projectile?
@@ -1413,7 +1413,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopyLink,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsAir,									// Grounded or aerial attack?
 		TRUE,											// Is projectile?
@@ -1433,7 +1433,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopyLink,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsAir,									// Grounded or aerial attack?
 		TRUE,											// Is projectile?
@@ -1453,7 +1453,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopyLink,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsAir,									// Grounded or aerial attack?
 		TRUE,											// Is projectile?
@@ -1473,7 +1473,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopyPurin,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -1493,7 +1493,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopyPurin,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsAir,								// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -1513,7 +1513,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopyCaptain,		// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -1533,7 +1533,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopyCaptain,		// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsAir,									// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -1553,7 +1553,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopyYoshi,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -1573,7 +1573,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopyYoshi,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -1593,7 +1593,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopyYoshi,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsGround,								// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -1613,7 +1613,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopyYoshi,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsAir,									// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -1633,7 +1633,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopyYoshi,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsAir,									// Grounded or aerial attack?
 		FALSE,											// Is projectile?
@@ -1653,7 +1653,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		nFTMotionAttackIDSpecialNCopyYoshi,			// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
-		0,												// ??? (Might be 3 individual bits?)
+		0,												// Unused
 		FALSE,											// Is Smash attack?
 		nMPKineticsAir,									// Grounded or aerial attack?
 		FALSE,											// Is projectile?

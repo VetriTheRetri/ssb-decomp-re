@@ -1919,7 +1919,7 @@ void sc1PStageClearCopyFramebufToWallpaper(void)
 	// gSYSchedulerCurrentFramebuffer = framebuf0; start farther in, skipping border
 	framebuffer_pixels = (u32*)
 	(
-		(uintptr_t)gSYSchedulerCurrentFramebuffer 		+
+		(uintptr_t)gSYSchedulerCurrentFramebuffer +
 		SYVIDEO_BORDER_SIZE(320, 10, u16) +
 		SYVIDEO_BORDER_SIZE(1, 10, u16)
 	);

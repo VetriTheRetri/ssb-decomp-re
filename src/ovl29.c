@@ -1853,9 +1853,9 @@ void mnBonusRecallToken(s32 port_id)
 void mnBonusGoBackTo1PMenu()
 {
 	if (gMnBonusType == 0)
-		gSCManagerSceneData.scene_prev = nSCKind1PBonus1Fighters;
+		gSCManagerSceneData.scene_prev = nSCKind1PBonus1Players;
 	else
-		gSCManagerSceneData.scene_prev = nSCKind1PBonus2Fighters;
+		gSCManagerSceneData.scene_prev = nSCKind1PBonus2Players;
 
 	gSCManagerSceneData.scene_curr = nSCKind1PMode;
 
@@ -2395,9 +2395,9 @@ void mnBonusMain(s32 arg0)
 	{
 
 		if (gMnBonusType == 0)
-			gSCManagerSceneData.scene_prev = nSCKind1PBonus1Fighters;
+			gSCManagerSceneData.scene_prev = nSCKind1PBonus1Players;
 		else
-			gSCManagerSceneData.scene_prev = nSCKind1PBonus2Fighters;
+			gSCManagerSceneData.scene_prev = nSCKind1PBonus2Players;
 
 		gSCManagerSceneData.scene_curr = nSCKind1PBonusStage;
 
@@ -2532,7 +2532,7 @@ void mnBonusInitCSS()
 	mnBonusCreateReadyToFightObjects();
 	scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 
-	if (gSCManagerSceneData.scene_prev != nSCKindStages)
+	if (gSCManagerSceneData.scene_prev != nSCKindMaps)
 		auPlaySong(0, 0xA);
 }
 

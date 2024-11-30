@@ -1914,7 +1914,7 @@ GObj* ifCommonItemArrowMakeInterface(ITStruct *ip)
         {
             interface_gobj->user_data.p = ip; // Give it up for... the GObj with the most flexible user_data assignments ever?
 
-            if ((gSCManagerSceneData.scene_curr == nSCKind1PTraining) && (gSCManagerBattleState->game_status == nSCBattleGameStatusPause))
+            if ((gSCManagerSceneData.scene_curr == nSCKind1PTrainingMode) && (gSCManagerBattleState->game_status == nSCBattleGameStatusPause))
             {
                 interface_gobj->flags = GOBJ_FLAG_HIDDEN;
             }

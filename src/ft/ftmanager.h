@@ -1,9 +1,9 @@
 #ifndef _FTMANAGER_H_
 #define _FTMANAGER_H_
 
-#include "ftdef.h"
 #include <ssb_types.h>
 #include <sys/objdef.h>
+#include <ft/ftdef.h>
 
 extern u32 gFTManagerPlayersNum;
 extern u16 gFTManagerMotionCount;
@@ -26,8 +26,8 @@ extern void ftManagerSetupFilesPlayablesAll();
 extern void ftManagerSetupFilesAllKind(s32 fkind);
 extern void* ftManagerAllocFigatreeHeapKind(s32 fkind);
 extern void ftManagerDestroyFighter(GObj* fighter_gobj);
-extern void ftManagerDestroyFighterWeapons(GObj* fighter_gobj);
-extern void func_ovl2_800D79F0(GObj* fighter_gobj, FTDesc *ft_desc);
-extern GObj* ftManagerMakeFighter(FTDesc *ft_desc);
+extern void ftManagerDestroyFighterWeapons(GObj *fighter_gobj);
+extern void func_ovl2_800D79F0(GObj *fighter_gobj, FTDesc *desc);
+extern GObj* ftManagerMakeFighter(FTDesc *desc);
 
 #endif

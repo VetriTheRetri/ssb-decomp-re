@@ -474,7 +474,7 @@ void sc1PManagerUpdateScene(void)
         gSCManagerSceneData.scene_prev = nSCKind1PGame;
         gSCManagerSceneData.scene_curr = nSCKindStaffroll;
 
-        gmStaffrollStartScene();
+        scStaffrollStartScene();
 
         syDmaLoadOverlay(&dSC1PManagerCongraOverlay);
 
@@ -534,7 +534,7 @@ skip_main_stages:
         if (gSCManagerSceneData.spgame_stage == nSC1PGameStageLuigi)
         {
             gSCManagerSceneData.scene_prev = nSCKind1PBonusStage;
-            gSCManagerSceneData.scene_curr = nSCKind1PBonus1Fighters;
+            gSCManagerSceneData.scene_curr = nSCKind1PBonus1Players;
             return;
         }
     }

@@ -28,12 +28,12 @@ typedef enum vsRecordsKind
 
 typedef enum vsRecordsRankingColumnKind
 {
-	vsRecordsRankingColumnKindWinPercentage,    // Win %
+	vsRecordsRankingColumnKindWinPercent,    	// Win %
 	vsRecordsRankingColumnKindKOs,              // KOs
 	vsRecordsRankingColumnKindTKOs,             // TKOs
-	vsRecordsRankingColumnKindSDPercentage,     // SD %
+	vsRecordsRankingColumnKindSDPercent,     	// SD %
 	vsRecordsRankingColumnKindTime,             // Time
-	vsRecordsRankingColumnKindUsePercentage,    // Use %
+	vsRecordsRankingColumnKindUsePercent,   	// Use %
 	vsRecordsRankingColumnKindAverage           // Avg
 
 } vsRecordsRankingColumnKind;

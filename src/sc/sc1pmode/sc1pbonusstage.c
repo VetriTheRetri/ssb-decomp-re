@@ -404,7 +404,7 @@ void sc1PBonusStageInitVars(void)
 
 		gSCManagerBattleState->time_limit = SCBATTLE_TIMELIMIT_INFINITE;
 
-		if (gSCManagerSceneData.scene_prev == nSCKind1PBonus1Fighters)
+		if (gSCManagerSceneData.scene_prev == nSCKind1PBonus1Players)
 		{
 			gSCManagerBattleState->gkind = fkind + nGRKindBonus1Start;
 		}
@@ -1203,9 +1203,9 @@ void sc1PBonusStageStartScene(void)
 		default:
 			sc1PBonusStageWriteBackup(tasks_remain, gSCManagerSceneData.bonus_fkind);
 
-			if (gSCManagerSceneData.scene_prev == nSCKind1PBonus1Fighters)
+			if (gSCManagerSceneData.scene_prev == nSCKind1PBonus1Players)
 			{
-				gSCManagerSceneData.scene_curr = nSCKind1PBonus1Fighters;
+				gSCManagerSceneData.scene_curr = nSCKind1PBonus1Players;
 
 				if (tasks_complete == SCBATTLE_BONUSGAME_TASK_MAX)
 				{
@@ -1239,7 +1239,7 @@ void sc1PBonusStageStartScene(void)
 			}
 			else
 			{
-				gSCManagerSceneData.scene_curr = nSCKind1PBonus2Fighters;
+				gSCManagerSceneData.scene_curr = nSCKind1PBonus2Players;
 
 				if ((tasks_complete == SCBATTLE_BONUSGAME_TASK_MAX) && (sc1PManagerCheckUnlockSoundTest() != FALSE))
 				{

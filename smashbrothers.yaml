@@ -1708,10 +1708,10 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x17F200, c, gm/gmstaffroll]
-      - [0x182960, .data, gm/gmstaffroll]
-      - [0x187EB0, .rodata, gm/gmstaffroll]
-      - { start: auto, type: .bss, name: gm/gmstaffroll }
+      - [0x17F200, c, sc/sccommon/scstaffroll]
+      - [0x182960, .data, sc/sccommon/scstaffroll]
+      - [0x187EB0, .rodata, sc/sccommon/scstaffroll]
+      - { start: auto, type: .bss, name: sc/sccommon/scstaffroll }
 
   - name: ovl62
     type: code

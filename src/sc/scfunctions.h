@@ -1,9 +1,12 @@
 #ifndef _SCFUNCTIONS_H_
 #define _SCFUNCTIONS_H_
 
-// Common scenes
+// Scene subsystem
 #include <sc/scsubsys/scsubsys.h>
+
+// Common scenes
 #include <sc/sccommon/scvsbattle.h>
+#include <sc/sccommon/scstaffroll.h>
 #include <sc/sccommon/scexplain.h>
 #include <sc/sccommon/scautodemo.h>
 

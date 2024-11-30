@@ -484,9 +484,9 @@ void ftParamClearAttackCollAll(GObj *fighter_gobj)
 
     for (i = 0; i < ARRAY_COUNT(fp->attack_colls); i++)
     {
-        FTAttackColl *ft_attack_coll = &fp->attack_colls[i];
+        FTAttackColl *attack_coll = &fp->attack_colls[i];
 
-        ft_attack_coll->attack_state = nGMAttackStateOff;
+        attack_coll->attack_state = nGMAttackStateOff;
     }
     fp->is_attack_active = FALSE;
 }
@@ -547,8 +547,8 @@ void ftParamLinkResetShieldModelParts(GObj *fighter_gobj)
 
     if ((fp->fkind == nFTKindLink) || (fp->fkind == nFTKindNLink))
     {
-        ftParamSetModelPartDefaultID(fighter_gobj, 0x15, 0);
-        ftParamSetModelPartDefaultID(fighter_gobj, 0x13, -1);
+        ftParamSetModelPartDefaultID(fighter_gobj, 21, 0);
+        ftParamSetModelPartDefaultID(fighter_gobj, 19, -1);
     }
 }
 
@@ -559,8 +559,8 @@ void ftParamSetHammerParams(GObj *fighter_gobj)
 
     if ((fp->fkind == nFTKindLink) || (fp->fkind == nFTKindNLink))
     {
-        ftParamSetModelPartDefaultID(fighter_gobj, 0x15, -1);
-        ftParamSetModelPartDefaultID(fighter_gobj, 0x13, 0);
+        ftParamSetModelPartDefaultID(fighter_gobj, 21, -1);
+        ftParamSetModelPartDefaultID(fighter_gobj, 19, 0);
     }
     ftParamTryUpdateItemMusic();
 }
@@ -626,7 +626,6 @@ void ftParamSetHitStatusPartID(GObj *fighter_gobj, s32 joint_id, s32 hitstatus)
              * This approach means if there are multiple hurtboxes on the same bone/joint ID, only the first one is checked
              * Same issue as Melee with Mr. Game & Watch / Fox's nose hurtboxes
              */
-
             return;
         }
     }

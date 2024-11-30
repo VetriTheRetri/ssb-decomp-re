@@ -1138,7 +1138,7 @@ void mnStagesLoadSceneData()
 			gMNStagesIsTrainingMode = TRUE;
 			gMNStagesCursorSlotId = mnStagesGetSlotID(gSCManagerSceneData.stages_training_gkind);
 			break;
-		case nSCKindVSFighters:
+		case nSCKindVSPlayers:
 			gMNStagesIsTrainingMode = FALSE;
 			gMNStagesCursorSlotId = mnStagesGetSlotID(gSCManagerSceneData.stages_vsmode_gkind);
 			break;
@@ -1201,7 +1201,7 @@ void mnStagesHandleButtonPresses(s32 arg0)
 			if (gMNStagesIsTrainingMode == TRUE)
 			{
 				gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
-				gSCManagerSceneData.scene_curr = nSCKind1PTraining;
+				gSCManagerSceneData.scene_curr = nSCKind1PTrainingMode;
 			}
 			else
 			{
@@ -1219,12 +1219,12 @@ void mnStagesHandleButtonPresses(s32 arg0)
 			if (gMNStagesIsTrainingMode == TRUE)
 			{
 				gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
-				gSCManagerSceneData.scene_curr = nSCKind1PTrainingFighters;
+				gSCManagerSceneData.scene_curr = nSCKind1PTrainingModePlayers;
 			}
 			else
 			{
 				gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
-				gSCManagerSceneData.scene_curr = nSCKindVSFighters;
+				gSCManagerSceneData.scene_curr = nSCKindVSPlayers;
 			}
 
 			syTaskmanSetLoadScene();

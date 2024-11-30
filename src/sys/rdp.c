@@ -83,7 +83,7 @@ void syRdpResetSettings(Gfx **dls)
     Gfx *dl = dls[0];
 
     gSPSegment(dl++, G_MWO_SEGMENT_0, 0x00000000);
-    func_800048F8(&dl);
+    syTaskmanInitSegmentF(&dl);
     gDPSetDepthImage(dl++, gSYVideoZBuffer);
     syRdpSetDefaultViewport(&sSYRdpViewport);
     gSPDisplayList(dl++, sSYRdpResetDisplayList);

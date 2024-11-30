@@ -433,7 +433,7 @@ void mnMessageStartScene(void)
     if (gSCManagerSceneData.scene_prev == nSCKindVSResults)
     {
         gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
-        gSCManagerSceneData.scene_curr = nSCKindVSFighters;
+        gSCManagerSceneData.scene_curr = nSCKindVSPlayers;
     }
     else
     {

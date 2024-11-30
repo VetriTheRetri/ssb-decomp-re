@@ -143,21 +143,21 @@ typedef enum SCKind
 	nSCKindVSMode,        		  	// VS mode
 	nSCKindVSOptions,         	  	// VS mode options
 	nSCKindVSItemSwitch,		  	// VS mode item switch
-	nSCKindMessage,		  	      	// Unlock message 
+	nSCKindMessage,		  	      	// Unlock message
 	nSCKind1PChallenger,   		  	// Challenger approaching
-	nSCKind1PIntro,       	  	// 1P game "[player] VS [opponent]" screen
+	nSCKind1PIntro,       	  		// 1P game "[player] VS [opponent]" screen
 	nSCKindScreenAdjust,      	  	// Screen adjust
-	nSCKindVSFighters,            	// VS mode character select
-	nSCKind1PGameFighters,		  	// 1P game character select
-	nSCKind1PTrainingFighters,    	// Training mode character select
-	nSCKind1PBonus1Fighters,      	// Bonus 1 practice character select
-	nSCKind1PBonus2Fighters,      	// Bonus 2 practice character select
-	nSCKindStages,     	  		  	// VS mode map select
+	nSCKindVSPlayers,          		// VS mode character select
+	nSCKind1PGamePlayers,		  	// 1P game character select
+	nSCKind1PTrainingModePlayers,  	// Training mode character select
+	nSCKind1PBonus1Players,      	// Bonus 1 practice character select
+	nSCKind1PBonus2Players,      	// Bonus 2 practice character select
+	nSCKindMaps,     	  		  	// Stage select
 	nSCKindVSBattle,          	  	// VS mode in-game
 	nSCKindUnknownMario,	   	  	// Unknown movie sequence with Mario?
 	nSCKindVSResults,    	  	  	// VS mode results
 	nSCKindVSRecord,          	  	// Records screen
-	nSCKindDataCharacters,        	// Character data screen
+	nSCKindCharacters,        		// Character data screen
 	nSCKindStartup,               	// N64 logo
 	nSCKindOpeningRoom,       	  	// Room with Master Hand and figures coming to life
 	nSCKindOpeningPortraits,		// Stylized horizontal sliding portraits
@@ -185,7 +185,7 @@ typedef enum SCKind
 	nSCKind1PStageClear, 		  	// Stage clear bonus score
 	nSCKind1PGame,            	  	// 1P Game logic loop
 	nSCKind1PBonusStage,       	  	// Bonus game in-game
-	nSCKind1PTraining,    		  	// Training mode in-game
+	nSCKind1PTrainingMode,    		// Training mode in-game
 	nSCKindCongra,	 		  	  	// Congratulations screen
 	nSCKindStaffroll,             	// Credits scene
 	nSCKindOption,           	  	// Options menu
@@ -515,6 +515,23 @@ typedef enum SC1PTrainingModeMenuOptionSprites
 
 } SC1PTrainingModeMenuOptionSprites;
 
+typedef enum SCStaffrollCompany
+{
+	nSCStaffrollCompanyNull = -1,
+	nSCStaffrollCompanyHAL,
+	nSCStaffrollCompanyNINTENDO,
+	nSCStaffrollCompanyCreatures,
+	nSCStaffrollCompanyGAMEFREAK,
+	nSCStaffrollCompanyRare,
+	nSCStaffrollCompanyMickeys,
+	nSCStaffrollCompanyKENProd,
+	nSCStaffrollCompanyAONIProd,
+	nSCStaffrollCompanyARTSVISION,
+	nSCStaffrollCompanyEZAKIProd,
+	nSCStaffrollCompanyNOA
+
+} SCStaffrollCompany;
+
 typedef struct SC1PTrainingModeMenu				SC1PTrainingModeMenu;
 typedef struct SC1PGameComputer				SC1PGameComputer;
 typedef struct SC1PGameStage				SC1PGameStage;
@@ -527,8 +544,16 @@ typedef struct SC1PGameBossWallpaper		SC1PGameBossWallpaper;
 typedef struct SC1PGameBossMain				SC1PGameBossMain;
 typedef struct SC1PStageClearStats			SC1PStageClearStats;
 typedef struct SC1PStageClearScore			SC1PStageClearScore;
-typedef struct SC1PTrainingModeSprites			SC1PTrainingModeSprites;
-typedef struct SC1PTrainingModeFiles			SC1PTrainingModeFiles;
+typedef struct SC1PTrainingModeSprites		SC1PTrainingModeSprites;
+typedef struct SC1PTrainingModeFiles		SC1PTrainingModeFiles;
+typedef struct SCStaffrollMatrix			SCStaffrollMatrix;
+typedef struct SCStaffrollText				SCStaffrollText;
+typedef struct SCStaffrollSprite			SCStaffrollSprite;
+typedef struct SCStaffrollStaff				SCStaffrollStaff;
+typedef struct SCStaffrollName				SCStaffrollName;
+typedef struct SCStaffrollJob				SCStaffrollJob;
+typedef struct SCStaffrollSetup				SCStaffrollSetup;
+typedef struct SCStaffrollProjection		SCStaffrollProjection;
 typedef struct SCExplainMain				SCExplainMain;
 typedef struct SCExplainArgs				SCExplainArgs;
 typedef struct SCExplainPhase				SCExplainPhase;

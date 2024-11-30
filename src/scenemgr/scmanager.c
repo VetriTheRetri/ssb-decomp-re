@@ -976,14 +976,14 @@ void scManagerRunLoop(sb32 arg)
 				mnScreenAdjustStartScene();
 				break;
 
-			case nSCKindVSFighters:
+			case nSCKindVSPlayers:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[26]);
 				vs_css_entry();
 				break;
 
-			case nSCKindStages:
+			case nSCKindMaps:
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[30]);
 				mnStagesStartScene();
@@ -1015,7 +1015,7 @@ void scManagerRunLoop(sb32 arg)
 				sc1PBonusStageStartScene();
 				break;
 
-			case nSCKind1PTraining:
+			case nSCKind1PTrainingMode:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[3]);
 				syDmaLoadOverlay(&dSCManagerOverlays[7]);
@@ -1035,7 +1035,7 @@ void scManagerRunLoop(sb32 arg)
 				mnVSRecordStartScene();
 				break;
 
-			case nSCKindDataCharacters:
+			case nSCKindCharacters:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[33]);
@@ -1146,23 +1146,23 @@ void scManagerRunLoop(sb32 arg)
 				mvOpeningNewcomersStartScene();
 				break;
 
-			case nSCKind1PGameFighters:
+			case nSCKind1PGamePlayers:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[27]);
 				classic_css_entry();
 				break;
 
-			case nSCKind1PTrainingFighters:
+			case nSCKind1PTrainingModePlayers:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[28]);
 				training_css_entry();
 				break;
 				
-			case nSCKind1PBonus1Fighters:
+			case nSCKind1PBonus1Players:
 #ifdef DAIRANTOU_OPT0
-			case nSCKind1PBonus2Fighters:
+			case nSCKind1PBonus2Players:
 #endif
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
@@ -1171,7 +1171,7 @@ void scManagerRunLoop(sb32 arg)
 				break;
 
 #ifndef DAIRANTOU_OPT0
-			case nSCKind1PBonus2Fighters:
+			case nSCKind1PBonus2Players:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[29]);
@@ -1215,7 +1215,7 @@ void scManagerRunLoop(sb32 arg)
 
 			case nSCKindStaffroll:
 				syDmaLoadOverlay(&dSCManagerOverlays[59]);
-				gmStaffrollStartScene();
+				scStaffrollStartScene();
 				break;
 
 			case nSCKindCongra:

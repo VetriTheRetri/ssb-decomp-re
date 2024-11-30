@@ -249,16 +249,16 @@ void func_800048D0(SYTaskGfxCallback arg0)
 }
 
 // 0x800048F8
-void func_800048F8(Gfx **dl)
+void syTaskmanInitSegmentF(Gfx **dl)
 {
 	sSYTaskmanSegmentFBase = &dl[0]->words.w1;
 	gSPSegment(dl[0]++, G_MWO_SEGMENT_F, 0x00000000);
 }
 
 // 0x80004928
-void unref_80004928(sb32 arg0)
+void unref_80004928(sb32 bool)
 {
-	sSYTaskmanIsNoNearClipping = arg0;
+	sSYTaskmanIsNoNearClipping = bool;
 }
 
 // 0x80004934
@@ -275,9 +275,9 @@ void syTaskmanInitGeneralHeap(void *start, u32 size)
 }
 
 // 0x80004980
-void* syTaskmanMalloc(size_t size, u32 alignment) // alloc_with_alignment
+void* syTaskmanMalloc(size_t size, u32 align) // alloc_with_alignment
 {
-	return syMallocSet(&gSYTaskmanGeneralHeap, size, alignment);
+	return syMallocSet(&gSYTaskmanGeneralHeap, size, align);
 }
 
 // 0x800049B0

@@ -163,7 +163,7 @@ void mnUnusedFightersFuncRun(GObj *gobj)
     }
     if (gSYControllerMain.button_tap & Z_TRIG)
     {
-        syErrorMakeControllerCamera(0x1F, 0x80000000, 0);
+        syErrorMakeControllerCamera(31, GOBJ_PRIORITY_DEFAULT, 0);
     }
 }
 

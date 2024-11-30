@@ -1,5 +1,5 @@
-#ifndef _SYTASKLOG_H_
-#define _SYTASKLOG_H_
+#ifndef _SYTASKMAN_H_
+#define _SYTASKMAN_H_
 
 #include <sys/malloc.h>
 #include <sys/thread3.h>
@@ -22,7 +22,7 @@ typedef struct syTaskmanBufferSetup
 	/* 0x08 */ void (*func_draw)(void);
 	/* 0x0C */ void *arena_start;           // Start of allocatable memory pool
 	/* 0x10 */ size_t arena_size;           // Size of allocatable memory pool for heap; usually from end of last overlay's .bss section to start of subsys (ovl1)
-	/* 0x14 */ u32 unk14; // count?
+	/* 0x14 */ u32 unk14; 					// Count?
 	/* 0x18 */ s32 contexts_num;            // Number of contexts? (what even is a task?)
 	/* 0x1C */ size_t dl_buffer0_size;
 	/* 0x20 */ size_t dl_buffer1_size;
@@ -32,7 +32,7 @@ typedef struct syTaskmanBufferSetup
 	/* 0x30 */ u16 unk30;
 	/* 0x34 */ s32 rdp_output_buffer_size;
 	/* 0x38 */ void (*func_lights)(Gfx**); 	// Lighting callback?
-	/* 0x3C */ void (*func_controller)(); // controller read callback?
+	/* 0x3C */ void (*func_controller)(); 	// Controller read callback?
 
 } syTaskmanBufferSetup; // size == 0x40
 
@@ -77,8 +77,8 @@ extern u16 D_80046628;
 extern s32 gSYTaskmanTaskID;
 
 extern void func_800048D0(SYTaskGfxCallback arg0);
-extern void func_800048F8(Gfx **dl);
-extern void* syTaskmanMalloc(size_t size, u32 alignment);
+extern void syTaskmanInitSegmentF(Gfx **dl);
+extern void* syTaskmanMalloc(size_t size, u32 align);
 extern void func_80004F78(void);
 extern void syTaskmanAppendGfxUcodeLoad(Gfx **dlist, u32 ucodeIdx);
 extern void func_800053CC(void);

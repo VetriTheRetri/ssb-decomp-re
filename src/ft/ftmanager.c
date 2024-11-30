@@ -460,14 +460,14 @@ void ftManagerDestroyFighterWeapons(GObj *fighter_gobj)
 }
 
 // 0x800D79F0
-void ftManagerInitFighter(GObj *fighter_gobj, FTDesc *ft_desc)
+void ftManagerInitFighter(GObj *fighter_gobj, FTDesc *desc)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     FTAttributes *attr = fp->attr;
     f32 scale;
 
-    fp->lr = ft_desc->lr;
-    fp->percent_damage = ft_desc->damage;
+    fp->lr = desc->lr;
+    fp->percent_damage = desc->damage;
 
     if (fp->pkind != nFTPlayerKindDemo)
     {
@@ -578,7 +578,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTDesc *ft_desc)
 
     fp->afterimage.desc_index = 0;
 
-    DObjGetStruct(fighter_gobj)->translate.vec.f = ft_desc->pos;
+    DObjGetStruct(fighter_gobj)->translate.vec.f = desc->pos;
     DObjGetStruct(fighter_gobj)->scale.vec.f.x = DObjGetStruct(fighter_gobj)->scale.vec.f.y = DObjGetStruct(fighter_gobj)->scale.vec.f.z = attr->size_mul;
 
     if (fp->pkind != nFTPlayerKindDemo)
@@ -650,7 +650,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTDesc *ft_desc)
 
     case nFTKindKirby:
     case nFTKindNKirby:
-        fp->passive_vars.kirby.copy_id = ft_desc->copy_kind;
+        fp->passive_vars.kirby.copy_id = desc->copy_kind;
 
         fp->passive_vars.kirby.copysamus_charge_level = 0;
         fp->passive_vars.kirby.copysamus_charge_recoil = 0;
@@ -659,7 +659,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTDesc *ft_desc)
         fp->passive_vars.kirby.copypurin_unk = 0;
         fp->passive_vars.kirby.copylink_boomerang_gobj = NULL;
 
-        if (ft_desc->copy_kind == nFTKindKirby)
+        if (desc->copy_kind == nFTKindKirby)
         {
             fp->passive_vars.kirby.is_ignore_losecopy = FALSE;
         }
@@ -706,7 +706,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTDesc *ft_desc)
 }
 
 // 0x800D7F3C
-GObj* ftManagerMakeFighter(FTDesc *ft_desc) // Create fighter
+GObj* ftManagerMakeFighter(FTDesc *desc) // Create fighter
 {
     FTStruct *fp;
     GObj *fighter_gobj;
@@ -719,37 +719,37 @@ GObj* ftManagerMakeFighter(FTDesc *ft_desc) // Create fighter
 
     fighter_gobj = gcMakeGObjSPAfter(nGCCommonKindFighter, NULL, nGCCommonLinkIDFighter, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(fighter_gobj, ft_desc->func_display, FTDISPLAY_DLLINK_DEFAULT, GOBJ_PRIORITY_DEFAULT, ~0);
+    gcAddGObjDisplay(fighter_gobj, desc->func_display, FTDISPLAY_DLLINK_DEFAULT, GOBJ_PRIORITY_DEFAULT, ~0);
 
     fp = ftManagerGetNextStructAlloc();
 
     fighter_gobj->user_data.p = fp;
 
-    fp->pkind = ft_desc->pkind;
+    fp->pkind = desc->pkind;
     fp->fighter_gobj = fighter_gobj;
-    fp->fkind = ft_desc->fkind;
+    fp->fkind = desc->fkind;
     fp->data = dFTManagerDataFiles[fp->fkind];
     attr = fp->attr = lbRelocGetFileData(FTAttributes*, *fp->data->p_file_main, fp->data->o_attributes);
-    fp->figatree_heap = ft_desc->figatree_heap;
-    fp->team = ft_desc->team;
-    fp->player = ft_desc->player;
-    fp->stock_count = ft_desc->stock_count;
+    fp->figatree_heap = desc->figatree_heap;
+    fp->team = desc->team;
+    fp->player = desc->player;
+    fp->stock_count = desc->stock_count;
 
     if (fp->pkind != nFTPlayerKindDemo)
     {
-        gSCManagerBattleState->players[fp->player].stock_count = ft_desc->stock_count;
+        gSCManagerBattleState->players[fp->player].stock_count = desc->stock_count;
     }
-    fp->detail_curr = fp->detail_base = ft_desc->detail;
+    fp->detail_curr = fp->detail_base = desc->detail;
 
-    fp->costume = ft_desc->costume;
-    fp->shade = ft_desc->shade;
+    fp->costume = desc->costume;
+    fp->shade = desc->shade;
 
     fp->shade_color.r = (attr->shade_color[fp->shade - 1].r * attr->shade_color[fp->shade - 1].a) / 0xFF;
     fp->shade_color.g = (attr->shade_color[fp->shade - 1].g * attr->shade_color[fp->shade - 1].a) / 0xFF;
     fp->shade_color.b = (attr->shade_color[fp->shade - 1].b * attr->shade_color[fp->shade - 1].a) / 0xFF;
 
-    fp->handicap = ft_desc->handicap;
-    fp->level = ft_desc->level;
+    fp->handicap = desc->handicap;
+    fp->level = desc->level;
 
     fp->card_anim_frame_id = 0;
     fp->unk_ft_0x3C = 0;
@@ -774,11 +774,11 @@ GObj* ftManagerMakeFighter(FTDesc *ft_desc) // Create fighter
 
     fp->proc_status = NULL;
 
-    fp->unk_ft_0x149 = ft_desc->unk_rebirth_0x1C;
-    fp->team_order = ft_desc->team_order;
+    fp->unk_ft_0x149 = desc->unk_rebirth_0x1C;
+    fp->team_order = desc->team_order;
     fp->dl_link = FTDISPLAY_DLLINK_DEFAULT;
 
-    fp->is_skip_magnify = ft_desc->is_skip_magnify;
+    fp->is_skip_magnify = desc->is_skip_magnify;
 
     fp->status_total_tics = 0;
 
@@ -799,7 +799,7 @@ GObj* ftManagerMakeFighter(FTDesc *ft_desc) // Create fighter
 
     lbCommonInitDObjTriTransform(topn_joint, 0x4B, nGCMatrixKindNull, nGCMatrixKindNull);
 
-    fp->joints[nFTPartsJointTopN]->xobjs[0]->unk05 = ft_desc->unk_rebirth_0x1D;
+    fp->joints[nFTPartsJointTopN]->xobjs[0]->unk05 = desc->unk_rebirth_0x1D;
 
     lbCommonSetupFighterPartsDObjs
     (
@@ -855,12 +855,12 @@ GObj* ftManagerMakeFighter(FTDesc *ft_desc) // Create fighter
     fp->input.pl.stick_range.x = fp->input.pl.stick_range.y = fp->input.pl.stick_prev.x = fp->input.pl.stick_prev.y = fp->input.cp.stick_range.x = fp->input.cp.stick_range.y = 0;
     fp->input.pl.button_hold = fp->input.pl.button_tap = fp->input.cp.button_inputs = 0;
 
-    fp->input.controller = ft_desc->controller;
+    fp->input.controller = desc->controller;
 
-    fp->input.button_mask_a = ft_desc->button_mask_a;
-    fp->input.button_mask_b = ft_desc->button_mask_b;
-    fp->input.button_mask_z = ft_desc->button_mask_z;
-    fp->input.button_mask_l = ft_desc->button_mask_l;
+    fp->input.button_mask_a = desc->button_mask_a;
+    fp->input.button_mask_b = desc->button_mask_b;
+    fp->input.button_mask_z = desc->button_mask_z;
+    fp->input.button_mask_l = desc->button_mask_l;
 
     fp->tap_stick_x = fp->tap_stick_y = fp->hold_stick_x = fp->hold_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
 
@@ -902,7 +902,7 @@ GObj* ftManagerMakeFighter(FTDesc *ft_desc) // Create fighter
     }
     else gcAddGObjProcess(fighter_gobj, scSubsysFighterProcUpdate, nGCProcessKindFunc, 5);
 
-    ftManagerInitFighter(fighter_gobj, ft_desc);
+    ftManagerInitFighter(fighter_gobj, desc);
 
     if (fp->pkind == nFTPlayerKindCom)
     {
@@ -924,7 +924,7 @@ GObj* ftManagerMakeFighter(FTDesc *ft_desc) // Create fighter
         break;
 
     default:
-        if (ft_desc->is_skip_entry)
+        if (desc->is_skip_entry)
         {
             mpCommonSetFighterWaitOrFall(fighter_gobj);
             ftParamLockPlayerControl(fighter_gobj);
@@ -940,7 +940,7 @@ GObj* ftManagerMakeFighter(FTDesc *ft_desc) // Create fighter
     {
         ftComputerSetFighterDamageDetectSize(fighter_gobj);
     }
-    if ((fp->pkind != nFTPlayerKindDemo) && !(ft_desc->is_skip_shadow_setup))
+    if ((fp->pkind != nFTPlayerKindDemo) && !(desc->is_skip_shadow_setup))
     {
         ftShadowMakeShadow(fighter_gobj);
     }

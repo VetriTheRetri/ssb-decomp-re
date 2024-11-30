@@ -233,25 +233,8 @@ typedef enum GMRumbleEvent
 
 } GMRumbleEvent;
 
-typedef enum GMStaffrollCompany
-{
-	nGMStaffrollCompanyNull = -1,
-	nGMStaffrollCompanyHAL,
-	nGMStaffrollCompanyNINTENDO,
-	nGMStaffrollCompanyCreatures,
-	nGMStaffrollCompanyGAMEFREAK,
-	nGMStaffrollCompanyRare,
-	nGMStaffrollCompanyMickeys,
-	nGMStaffrollCompanyKENProd,
-	nGMStaffrollCompanyAONIProd,
-	nGMStaffrollCompanyARTSVISION,
-	nGMStaffrollCompanyEZAKIProd,
-	nGMStaffrollCompanyNOA
-
-} GMStaffrollCompany;
-
 typedef struct GMHitFlags          			GMHitFlags;
-typedef struct GMAttackRecord                  GMAttackRecord;
+typedef struct GMAttackRecord               GMAttackRecord;
 typedef union  GMStatFlags                  GMStatFlags;
 typedef struct GMColScript                  GMColScript;
 typedef struct GMColKeys                    GMColKeys;
@@ -284,13 +267,5 @@ typedef struct GMRumbleEventDefault         GMRumbleEventDefault;
 typedef struct GMRumbleScript               GMRumbleScript;
 typedef struct GMRumbleLink                 GMRumbleLink;
 typedef struct GMRumblePlayer               GMRumblePlayer;
-typedef struct GMStaffrollMatrix			GMStaffrollMatrix;
-typedef struct GMStaffrollText				GMStaffrollText;
-typedef struct GMStaffrollSprite			GMStaffrollSprite;
-typedef struct GMStaffrollStaff				GMStaffrollStaff;
-typedef struct GMStaffrollName				GMStaffrollName;
-typedef struct GMStaffrollJob				GMStaffrollJob;
-typedef struct GMStaffrollSetup				GMStaffrollSetup;
-typedef struct GMStaffrollProjection		GMStaffrollProjection;
 
 #endif

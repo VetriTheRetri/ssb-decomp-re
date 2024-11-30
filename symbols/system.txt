@@ -221,7 +221,7 @@ gcSetAnimSpeed = 0x8000BB04;
 gcSetAllAnimSpeed = 0x8000BB4C;
 
 func_800048D0 = 0x800048D0;
-func_800048F8 = 0x800048F8;
+syTaskmanInitSegmentF = 0x800048F8;
 unref_80004928 = 0x80004928;
 unref_80004934 = 0x80004934;
 syTaskmanInitGeneralHeap = 0x80004950;

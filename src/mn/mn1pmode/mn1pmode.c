@@ -547,19 +547,19 @@ void mn1PModeInitVars(void)
 {
     switch (gSCManagerSceneData.scene_prev)
     {
-    case nSCKind1PGameFighters:
+    case nSCKind1PGamePlayers:
         sMN1PModeOption = nMN1PModeOption1PGame;
         break;
         
-    case nSCKind1PTrainingFighters:
+    case nSCKind1PTrainingModePlayers:
         sMN1PModeOption = nMN1PModeOptionTrainingMode;
         break;
         
-    case nSCKind1PBonus1Fighters:
+    case nSCKind1PBonus1Players:
         sMN1PModeOption = nMN1PModeOptionBonus1Practice;
         break;
         
-    case nSCKind1PBonus2Fighters:
+    case nSCKind1PBonus2Players:
         sMN1PModeOption = nMN1PModeOptionBonus2Practice;
         break;
     }
@@ -634,7 +634,7 @@ void mn1PModeFuncRun(GObj *gobj)
                 mn1PModeSetOptionSpriteColors(sMN1PModeOptionGObjs[nMN1PModeOption1PGame], nMNOptionTabStatusSelected, nMN1PModeOption1PGame);
 
                 gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
-                gSCManagerSceneData.scene_curr = nSCKind1PGameFighters;
+                gSCManagerSceneData.scene_curr = nSCKind1PGamePlayers;
                 gSCManagerSceneData.player = player - 1;
 
                 sMN1PModeIsProceedScene = TRUE;
@@ -645,7 +645,7 @@ void mn1PModeFuncRun(GObj *gobj)
                 mn1PModeSetOptionSpriteColors(sMN1PModeOptionGObjs[nMN1PModeOptionTrainingMode], nMNOptionTabStatusSelected, nMN1PModeOptionTrainingMode);
 
                 gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
-                gSCManagerSceneData.scene_curr = nSCKind1PTrainingFighters;
+                gSCManagerSceneData.scene_curr = nSCKind1PTrainingModePlayers;
                 gSCManagerSceneData.player = player - 1;
 
                 sMN1PModeIsProceedScene = TRUE;
@@ -656,7 +656,7 @@ void mn1PModeFuncRun(GObj *gobj)
                 mn1PModeSetOptionSpriteColors(sMN1PModeOptionGObjs[nMN1PModeOptionBonus1Practice], nMNOptionTabStatusSelected, nMN1PModeOptionBonus1Practice);
 
                 gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
-                gSCManagerSceneData.scene_curr = nSCKind1PBonus1Fighters;
+                gSCManagerSceneData.scene_curr = nSCKind1PBonus1Players;
                 gSCManagerSceneData.player = player - 1;
 
                 sMN1PModeIsProceedScene = TRUE;
@@ -667,7 +667,7 @@ void mn1PModeFuncRun(GObj *gobj)
                 mn1PModeSetOptionSpriteColors(sMN1PModeOptionGObjs[nMN1PModeOptionBonus2Practice], nMNOptionTabStatusSelected, nMN1PModeOptionBonus2Practice);
 
                 gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
-                gSCManagerSceneData.scene_curr = nSCKind1PBonus2Fighters;
+                gSCManagerSceneData.scene_curr = nSCKind1PBonus2Players;
                 gSCManagerSceneData.player = player - 1;
 
                 sMN1PModeIsProceedScene = TRUE;

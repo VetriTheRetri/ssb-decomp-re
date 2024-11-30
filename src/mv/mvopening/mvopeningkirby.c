@@ -11,6 +11,29 @@ extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
 //                               //
+//       INITIALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
+// 0x8018E0B0
+CObjDesc dMVOpeningKirbyStartCObjDesc = { { 0.0F, 400.0F, 2000.0F }, { 0.0F, 400.0F, 0.0F }, 0.0F };
+
+// 0x8018E0CC
+CObjDesc dMVOpeningKirbyEndCObjDesc = { { 1100.0F, 400.0F, 1800.0F }, { 1100.0F, 400.0F, 0.0F }, 0.0F };
+
+// 0x8018E0E8
+FTKeyEvent dMVOpeningKirbyKeyEvents[/* */] =
+{
+	FTKEY_EVENT_STICK(45, I_CONTROLLER_RANGE_MAX, 1),   // 2001, 2D50
+	FTKEY_EVENT_BUTTON(A_BUTTON, 1),                    // 1001, 8000
+	FTKEY_EVENT_END()                                   // 0000
+};
+
+// 0x8018E0F4
+u32 dMVOpeningKirbyFileIDs[/* */] = { &lIFCommonAnnounceCommonFileID, &lMVOpeningCommonFileID };
+
+// // // // // // // // // // // //
+//                               //
 //   GLOBAL / STATIC VARIABLES   //
 //                               //
 // // // // // // // // // // // //
@@ -55,33 +78,10 @@ LBFileNode sMVOpeningKirbyStatusBuffer[48];
 LBFileNode sMVOpeningKirbyForceStatusBuffer[7];
 
 // 0x8018E440
-void *sMVOpeningKirbyFiles[2];
+void *sMVOpeningKirbyFiles[ARRAY_COUNT(dMVOpeningKirbyFileIDs)];
 
 // 0x8018E448
 SCBattleState sMVOpeningKirbyBattleState;
-
-// // // // // // // // // // // //
-//                               //
-//       INITIALIZED DATA        //
-//                               //
-// // // // // // // // // // // //
-
-// 0x8018E0B0
-CObjDesc dMVOpeningKirbyStartCObjDesc = { { 0.0F, 400.0F, 2000.0F }, { 0.0F, 400.0F, 0.0F }, 0.0F };
-
-// 0x8018E0CC
-CObjDesc dMVOpeningKirbyEndCObjDesc = { { 1100.0F, 400.0F, 1800.0F }, { 1100.0F, 400.0F, 0.0F }, 0.0F };
-
-// 0x8018E0E8
-FTKeyEvent dMVOpeningKirbyKeyEvents[/* */] =
-{
-	FTKEY_EVENT_STICK(45, I_CONTROLLER_RANGE_MAX, 1),   // 2001, 2D50
-	FTKEY_EVENT_BUTTON(A_BUTTON, 1),                    // 1001, 8000
-	FTKEY_EVENT_END()                                   // 0000
-};
-
-// 0x8018E0F4
-u32 dMVOpeningKirbyFileIDs[/* */] = { &lIFCommonAnnounceCommonFileID, &lMVOpeningCommonFileID };
 
 // // // // // // // // // // // //
 //                               //
@@ -521,7 +521,7 @@ void mvOpeningKirbyFuncStart(void)
 	mvOpeningKirbySetupFiles();
 
 	gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningKirbyFuncRun, 13, GOBJ_PRIORITY_DEFAULT);
-	gcMakeDefaultCameraGObj(9, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeDefaultCameraGObj(nGCCommonLinkIDCamera, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 
 	mvOpeningKirbyInitVars();
 	efParticleInitAll();

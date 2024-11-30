@@ -10,42 +10,6 @@ extern void func_ovl0_800C9A38();
 
 // // // // // // // // // // // //
 //                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x80131180 - stage moving hazards
-GRObstacle sFTMainGroundObstacles[2];
-
-// 0x80131190 - stage environmental obstacles
-GRHazard sFTMainGroundHazards[1];
-
-// 0x80131198
-s32 sFTMainGroundObstaclesNum;
-
-// 0x8013119C
-s32 sFTMainGroundHazardsNum;
-
-// 0x801311A0
-sb32 gFTMainIsDamageDetect[GMCOMMON_PLAYERS_MAX];
-
-// 0x801311B0
-sb32 gFTMainIsAttackDetect[GMCOMMON_PLAYERS_MAX];
-
-// 0x801311C0
-s32 sFTMainHitLogID;
-
-// 0x801311C4
-s32 sFTMainPad0x801311C4;
-
-// 0x801311C8 - 0x10 bytes of padding after this, for mpcoll .bss
-FTHitLog sFTMainHitLogs[10];
-
-// 0x801312E0
-s32 sFTMainPad0x801312E0;
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -141,6 +105,42 @@ FTStatusDesc *dFTMainSpecialStatusDescs[/* */] =
     dFTNessSpecialStatusDescs,
     dFTDonkeySpecialStatusDescs
 };
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x80131180 - stage moving hazards
+GRObstacle sFTMainGroundObstacles[2];
+
+// 0x80131190 - stage environmental obstacles
+GRHazard sFTMainGroundHazards[1];
+
+// 0x80131198
+s32 sFTMainGroundObstaclesNum;
+
+// 0x8013119C
+s32 sFTMainGroundHazardsNum;
+
+// 0x801311A0
+sb32 gFTMainIsDamageDetect[GMCOMMON_PLAYERS_MAX];
+
+// 0x801311B0
+sb32 gFTMainIsAttackDetect[GMCOMMON_PLAYERS_MAX];
+
+// 0x801311C0
+s32 sFTMainHitLogID;
+
+// 0x801311C4
+s32 sFTMainPad0x801311C4;
+
+// 0x801311C8 - 0x10 bytes of padding after this, for mpcoll .bss
+FTHitLog sFTMainHitLogs[10];
+
+// 0x801312E0
+s32 sFTMainPad0x801312E0;
 
 // // // // // // // // // // // //
 //                               //

@@ -28,26 +28,24 @@ f32 mnVSRecordGetAverage(s32 fkind);
 f32 mnVSRecordGetSDPercentage(s32 fkind);
 f32 mnVSRecordGetWinPercentageAgainst(s32 fkind, s32 fkind_opponent);
 
+// // // // // // // // // // // //
+//                               //
+//       INITIALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
 
-// DATA
 // 0x80136630
-s32 dMNVSRecordRankingColumnWidths[7] = {
-
-	33, 33, 33, 33, 46, 35, 34
-};
+s32 dMNVSRecordRankingColumnWidths[/* */] = { 33, 33, 33, 33, 46, 35, 34 };
 
 // 0x8013664C
-u32 dMNVSRecordFileIDs[4] = {
-
-	0x1f, 0x20, 0x13, 0x21
-};
+u32 dMNVSRecordFileIDs[/* */] = { 0x1F, &lMNDataCommonFileID, 0x13, 0x21 };
 
 // 0x80136660
 Lights1 dMNVSRecordLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x3C, 0x3C, 0x3C);
 
 // 0x80136678
-Gfx dMNVSRecordDisplayList[] = {
-
+Gfx dMNVSRecordDisplayList[/* */] =
+{
 	gsSPSetGeometryMode(G_LIGHTING),
 	gsSPSetLights1(dMNVSRecordLights1),
 	gsSPEndDisplayList()

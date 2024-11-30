@@ -11,6 +11,30 @@ extern u32 sySchedulerGetTicCount();
 
 // // // // // // // // // // // //
 //                               //
+//       INITIALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
+// 0x8018E0C0
+CObjDesc dMVOpeningYoshiCObjDescStart = { { 1200.0F, 150.0F, 1000.0F }, { 100.0F, 200.0F, 0.0F }, 0.0F };
+
+// 0x8018E0DC
+CObjDesc dMVOpeningYoshiCObjDescEnd = { { 2000.0F, 100.0F, 600.0F }, { 1300.0F, 100.0F,-100.0F }, 0.0F };
+
+// 0x8018E0F8
+FTKeyEvent dMVOpeningYoshiKeyEvents[/* */] =
+{
+	FTKEY_EVENT_STICK(I_CONTROLLER_RANGE_MAX, 0, 20),   // 2014, 5000
+	FTKEY_EVENT_BUTTON(Z_TRIG, 1),                      // 1001, 2000
+	FTKEY_EVENT_BUTTON(A_BUTTON, 1),                    // 1001, 8000
+	FTKEY_EVENT_END()                                   // 0000
+};
+
+// 0x8018E108
+u32 dMVOpeningYoshiFileIDs[/* */] = { &lIFCommonAnnounceCommonFileID, &lMVOpeningCommonFileID };
+
+// // // // // // // // // // // //
+//                               //
 //   GLOBAL / STATIC VARIABLES   //
 //                               //
 // // // // // // // // // // // //
@@ -55,34 +79,10 @@ LBFileNode sMVOpeningYoshiStatusBuffer[48];
 LBFileNode sMVOpeningYoshiForceStatusBuffer[7];
 
 // 0x8018E440
-void *sMVOpeningYoshiFiles[2];
+void *sMVOpeningYoshiFiles[ARRAY_COUNT(dMVOpeningYoshiFileIDs)];
 
 // 0x8018E448
 SCBattleState sMVOpeningYoshiBattleState;
-
-// // // // // // // // // // // //
-//                               //
-//       INITIALIZED DATA        //
-//                               //
-// // // // // // // // // // // //
-
-// 0x8018E0C0
-CObjDesc dMVOpeningYoshiCObjDescStart = { { 1200.0F, 150.0F, 1000.0F }, { 100.0F, 200.0F, 0.0F }, 0.0F };
-
-// 0x8018E0DC
-CObjDesc dMVOpeningYoshiCObjDescEnd = { { 2000.0F, 100.0F, 600.0F }, { 1300.0F, 100.0F,-100.0F }, 0.0F };
-
-// 0x8018E0F8
-FTKeyEvent dMVOpeningYoshiKeyEvents[/* */] =
-{
-	FTKEY_EVENT_STICK(I_CONTROLLER_RANGE_MAX, 0, 20),   // 2014, 5000
-	FTKEY_EVENT_BUTTON(Z_TRIG, 1),                      // 1001, 2000
-	FTKEY_EVENT_BUTTON(A_BUTTON, 1),                    // 1001, 8000
-	FTKEY_EVENT_END()                                   // 0000
-};
-
-// 0x8018E108
-u32 dMVOpeningYoshiFileIDs[/* */] = { &lIFCommonAnnounceCommonFileID, &lMVOpeningCommonFileID };
 
 // // // // // // // // // // // //
 //                               //
@@ -510,7 +510,7 @@ void mvOpeningYoshiFuncStart(void)
 
 	mvOpeningYoshiSetupFiles();
 	gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningYoshiFuncRun, nGCCommonLinkIDMovie, GOBJ_PRIORITY_DEFAULT);
-	gcMakeDefaultCameraGObj(9, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeDefaultCameraGObj(nGCCommonLinkIDCamera, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	mvOpeningYoshiInitVars();
 	efParticleInitAll();
 	ftParamInitGame();

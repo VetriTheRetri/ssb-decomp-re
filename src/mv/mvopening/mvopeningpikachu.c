@@ -11,6 +11,27 @@ extern u32 sySchedulerGetTicCount();
 
 // // // // // // // // // // // //
 //                               //
+//       INITIALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
+// 0x8018E0C0
+CObjDesc dMVOpeningPikachuStartCObjDesc = { { 0.0F, 0.0F, 20000.0F }, { 0.0F, 0.0F, 0.0F }, 0.0F };
+
+// 0x8018E0DC
+CObjDesc dMVOpeningPikachuEndCObjDesc = { { 50.0F, -1640.0F, 1000.0F }, { 50.0F, -1640.0F, 0.0F }, 0.0F };
+
+// 0x8018E0F8 - Bruh?
+FTKeyEvent dMVOpeningPikachuKeyEvents[/* */] =
+{
+	FTKEY_EVENT_END()
+};
+
+// 0x8018E0FC
+u32 dMVOpeningPikachuFileIDs[/* */] = { &lIFCommonAnnounceCommonFileID, &lMVOpeningCommonFileID };
+
+// // // // // // // // // // // //
+//                               //
 //   GLOBAL / STATIC VARIABLES   //
 //                               //
 // // // // // // // // // // // //
@@ -55,31 +76,10 @@ LBFileNode sMVOpeningPikachuStatusBuffer[48];
 LBFileNode sMVOpeningPikachuForceStatusBuffer[7];
 
 // 0x8018E440
-void *sMVOpeningPikachuFiles[2];
+void *sMVOpeningPikachuFiles[ARRAY_COUNT(dMVOpeningPikachuFileIDs)];
 
 // 0x8018E448
 SCBattleState sMVOpeningPikachuBattleState;
-
-// // // // // // // // // // // //
-//                               //
-//       INITIALIZED DATA        //
-//                               //
-// // // // // // // // // // // //
-
-// 0x8018E0C0
-CObjDesc dMVOpeningPikachuStartCObjDesc = { { 0.0F, 0.0F, 20000.0F }, { 0.0F, 0.0F, 0.0F }, 0.0F };
-
-// 0x8018E0DC
-CObjDesc dMVOpeningPikachuEndCObjDesc = { { 50.0F, -1640.0F, 1000.0F }, { 50.0F, -1640.0F, 0.0F }, 0.0F };
-
-// 0x8018E0F8 - Bruh?
-FTKeyEvent dMVOpeningPikachuKeyEvents[/* */] =
-{
-	FTKEY_EVENT_END()
-};
-
-// 0x8018E0FC
-u32 dMVOpeningPikachuFileIDs[/* */] = { &lIFCommonAnnounceCommonFileID, &lMVOpeningCommonFileID };
 
 // // // // // // // // // // // //
 //                               //
@@ -506,7 +506,7 @@ void mvOpeningPikachuFuncStart(void)
 
 	mvOpeningPikachuSetupFiles();
 	gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningPikachuFuncRun, nGCCommonLinkIDMovie, GOBJ_PRIORITY_DEFAULT);
-	gcMakeDefaultCameraGObj(9, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeDefaultCameraGObj(nGCCommonLinkIDCamera, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	mvOpeningPikachuInitVars();
 	efParticleInitAll();
 	ftParamInitGame();

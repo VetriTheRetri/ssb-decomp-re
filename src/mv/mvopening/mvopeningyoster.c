@@ -19,6 +19,21 @@ extern uintptr_t D_NF_0000005D;
 
 // // // // // // // // // // // //
 //                               //
+//       INITIALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
+// 0x80132330
+u32 dMVOpeningYosterFileIDs[/* */] = { &D_NF_00000043, &D_NF_0000005D };
+
+// 0x80132338
+Lights1 dMVOpeningYosterLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x14, 0x14, 0x14);
+
+// 0x80132350
+Lights1 dMVOpeningYosterLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x00, 0x14, 0x00);
+
+// // // // // // // // // // // //
+//                               //
 //   GLOBAL / STATIC VARIABLES   //
 //                               //
 // // // // // // // // // // // //
@@ -42,22 +57,7 @@ LBFileNode sMVOpeningYosterStatusBuffer[48];
 LBFileNode sMVOpeningYosterForceStatusBuffer[7];
 
 // 0x801325F8
-void *sMVOpeningYosterFiles[2];
-
-// // // // // // // // // // // //
-//                               //
-//       INITIALIZED DATA        //
-//                               //
-// // // // // // // // // // // //
-
-// 0x80132330
-u32 dMVOpeningYosterFileIDs[/* */] = { &D_NF_00000043, &D_NF_0000005D };
-
-// 0x80132338
-Lights1 dMVOpeningYosterLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x14, 0x14, 0x14);
-
-// 0x80132350
-Lights1 dMVOpeningYosterLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x00, 0x14, 0x00);
+void *sMVOpeningYosterFiles[ARRAY_COUNT(dMVOpeningYosterFileIDs)];
 
 // // // // // // // // // // // //
 //                               //

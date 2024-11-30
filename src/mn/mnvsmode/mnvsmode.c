@@ -8,8 +8,6 @@
 extern void* func_800269C0_275C0(u16);
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
-
-
 // // // // // // // // // // // //
 //                               //
 //       EXTERNAL VARIABLES      //
@@ -19,6 +17,26 @@ extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 extern uintptr_t D_NF_00000000;
 extern uintptr_t D_NF_00000006;
 extern u8 gSYMainIsSPImemOK;
+
+// // // // // // // // // // // //
+//                               //
+//       INITIALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
+// 0x801347B0
+u32 dMNVSModeFileIDs[/* */] = { &D_NF_00000000, &D_NF_00000006 };
+
+// 0x801347B8
+Lights1 dMNVSModeLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x3C, 0x3C, 0x3C);
+
+// 0x801347D0
+Gfx dMNVSModeDisplayList[/* */] =
+{
+    gsSPSetGeometryMode(G_LIGHTING),
+    gsSPSetLights1(dMNVSModeLights1),
+    gsSPEndDisplayList()
+};
 
 // // // // // // // // // // // //
 //                               //
@@ -93,27 +111,13 @@ s32 sMNVSModeMaxTotalTimeTics;
 LBFileNode sMNVSModeStatusBuffer[24];
 
 // 0x80134A48
-void *sMNVSModeFiles[2];
+void *sMNVSModeFiles[ARRAY_COUNT(dMNVSModeFileIDs)];
 
 // // // // // // // // // // // //
 //                               //
-//       INITIALIZED DATA        //
+//           FUNCTIONS           //
 //                               //
 // // // // // // // // // // // //
-
-// 0x801347B0
-u32 dMNVSModeFileIDs[/* */] = { &D_NF_00000000, &D_NF_00000006 };
-
-// 0x801347B8
-Lights1 dMNVSModeLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x3C, 0x3C, 0x3C);
-
-// 0x801347D0
-Gfx dMNVSModeDisplayList[/* */] =
-{
-    gsSPSetGeometryMode(G_LIGHTING),
-    gsSPSetLights1(dMNVSModeLights1),
-    gsSPEndDisplayList()
-};
 
 // 0x80131B00
 void mnVSModeFuncLights(Gfx **display_list)

@@ -8,42 +8,6 @@ extern uintptr_t D_NF_0000000A;                                 // 0x0000000A
 
 // // // // // // // // // // // //
 //                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x80132480
-s32 sSC1PChallengerPad0x80132480[2];
-
-// 0x80132488
-s32 sSC1PChallengerFighterKind;
-
-// 0x8013248C
-void *sSC1PChallengerFigatreeHeap;
-
-// 0x80132490
-f32 sSC1PChallengerUnk0x80132490;
-
-// 0x80132494
-s32 sSC1PChallengerUnk0x80132494;
-
-// 0x80132498
-s32 sSC1PChallengerTotalTimeTics;
-
-// 0x8013249C
-s32 sSC1PChallengerPad0x8013249C;
-
-// 0x801324A0
-LBFileNode sSC1PChallengerForceStatusBuffer[7];
-
-// 0x801324D8
-LBFileNode sSC1PChallengerStatusBuffer[100];
-
-// 0x801327F8
-void *sSC1PChallengerFiles[1];
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -109,6 +73,42 @@ SYTaskmanSetup dSC1PChallengerTaskmanSetup =
     
     sc1PChallengerFuncStart         // Task start function
 };
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x80132480
+s32 sSC1PChallengerPad0x80132480[2];
+
+// 0x80132488
+s32 sSC1PChallengerFighterKind;
+
+// 0x8013248C
+void *sSC1PChallengerFigatreeHeap;
+
+// 0x80132490
+f32 sSC1PChallengerUnk0x80132490;
+
+// 0x80132494
+s32 sSC1PChallengerUnk0x80132494;
+
+// 0x80132498
+s32 sSC1PChallengerTotalTimeTics;
+
+// 0x8013249C
+s32 sSC1PChallengerPad0x8013249C;
+
+// 0x801324A0
+LBFileNode sSC1PChallengerForceStatusBuffer[7];
+
+// 0x801324D8
+LBFileNode sSC1PChallengerStatusBuffer[100];
+
+// 0x801327F8
+void *sSC1PChallengerFiles[ARRAY_COUNT(dSC1PChallengerFileIDs)];
 
 // // // // // // // // // // // //
 //                               //

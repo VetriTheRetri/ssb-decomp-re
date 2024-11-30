@@ -5,15 +5,6 @@
 
 // // // // // // // // // // // //
 //                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x800D6A00
-s32 sDBFallsPad0x800D6A00;
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -107,6 +98,15 @@ SYTaskmanSetup dDBFallsTaskmanSetup =
     
     dbFallsFuncStart         		// Task start function
 };
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x800D6A00
+s32 sDBFallsPad0x800D6A00;
 
 // // // // // // // // // // // //
 //                               //

@@ -264,7 +264,7 @@ struct ITStruct 					// Common items, stage hazards, fighter items and Pokémon
 	ub32 weight : 1;			  	// 0 = item is heavy, 1 = item is light
 	ub32 is_damage_all : 1;		  	// Item ignores ownership and can damage anything?
 	ub32 is_attach_surface : 1;	  	// Item is "sticking" to a map collision line specified by attach_line_id
-	ub32 is_thrown : 1;			  	// Apply magnitude and stale multiplier to damage output
+	ub32 is_thrown : 1;			  	// Apply magnitude and throw multiplier to damage output
 	u16 attach_line_id;			  	// Map collision line ID that item is attached to
 	u32 pickup_wait : 12;		  	// Number of frames item can last without being picked up (if applicable)
 	ub32 is_allow_knockback : 1;  	// Item can receive knockback velocity
@@ -279,7 +279,7 @@ struct ITStruct 					// Common items, stage hazards, fighter items and Pokémon
 
 	u16 multi;			  			// Multi-purpose variable; e.g. it is used as intangibility delay for Star Man and ammo count for Ray Gun
 
-	u32 event_id : 4; 			// Item hitbox script index? When in doubt, make this u8 : 4
+	u32 event_id : 4; 				// Item hitbox script index? When in doubt, make this u8 : 4
 
 	f32 rotate_step; 				// Item spin rotation step
 
@@ -297,7 +297,7 @@ struct ITStruct 					// Common items, stage hazards, fighter items and Pokémon
 
 		// Fighter items
 		ITFighterItemVarsPKFire pkfire;
-		ITFighterItemVarsLinkBomb link_bomb;
+		ITFighterItemVarsLinkBomb linkbomb;
 
 		// Stage items
 		ITGroundItemVarsPakkun pakkun;

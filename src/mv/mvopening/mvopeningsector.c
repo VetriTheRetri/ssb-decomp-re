@@ -18,6 +18,21 @@ extern uintptr_t D_NF_0000004A;
 
 // // // // // // // // // // // //
 //                               //
+//       INITIALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
+// 0x801328F0
+u32 dMVOpeningSectorFileIDs[/* */] = { &D_NF_00000049, &D_NF_000000A1, &D_NF_0000004A };
+
+// 0x80132900
+Lights1 dMVOpeningSectorLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x14, 0x14, 0x14);
+
+// 0x80132918
+Lights1 dMVOpeningSectorLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x00, 0x14, 0x00);
+
+// // // // // // // // // // // //
+//                               //
 //   GLOBAL / STATIC VARIABLES   //
 //                               //
 // // // // // // // // // // // //
@@ -59,22 +74,7 @@ LBFileNode sMVOpeningSectorStatusBuffer[48];
 LBFileNode sMVOpeningSectorForceStatusBuffer[7];
 
 // 0x80132C00
-void *sMVOpeningSectorFiles[3];
-
-// // // // // // // // // // // //
-//                               //
-//       INITIALIZED DATA        //
-//                               //
-// // // // // // // // // // // //
-
-// 0x801328F0
-u32 dMVOpeningSectorFileIDs[/* */] = { &D_NF_00000049, &D_NF_000000A1, &D_NF_0000004A };
-
-// 0x80132900
-Lights1 dMVOpeningSectorLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x14, 0x14, 0x14);
-
-// 0x80132918
-Lights1 dMVOpeningSectorLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x00, 0x14, 0x00);
+void *sMVOpeningSectorFiles[ARRAY_COUNT(dMVOpeningSectorFileIDs)];
 
 // // // // // // // // // // // //
 //                               //

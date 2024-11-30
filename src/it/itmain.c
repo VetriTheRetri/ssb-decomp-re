@@ -503,7 +503,7 @@ void itMainSetGroundAllowPickup(GObj *item_gobj) // Airborne item becomes ground
 }
 
 // 0x80172EC8
-void itMainSetItemStatus(GObj *item_gobj, ITStatusDesc *status_desc, s32 status_id) // Change item state
+void itMainSetItemStatus(GObj *item_gobj, ITStatusDesc *status_desc, s32 status_id)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 

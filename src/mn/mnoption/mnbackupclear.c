@@ -40,6 +40,45 @@ extern uintptr_t D_NF_0000004E;
 
 // // // // // // // // // // // //
 //                               //
+//       INITIALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
+// 0x80132E80
+u32 dMNBackupClearFileIDs[/* */] =
+{
+    &D_NF_00000000,
+    &D_NF_0000004D,
+    &D_NF_0000004E
+};
+
+// 0x80132E8C
+u16 dMNBackupClearUnused0x80132E8C[/* */] =
+{
+    0x0000, 0xFFFF,
+    0xFFFF, 0xFFFF,
+    0xFFFF, 0xFFFF,
+    0xFFFF, 0xFFFF,
+    0xFFFF, 0xFFFF,
+    0xFFFF, 0xFFFF,
+    0xFFFF, 0xFFFF,
+    0xFFFF, 0xFFFF,
+    0x0000, 0x0000
+};
+
+// 0x80132EB0
+Lights1 dMNBackupClearLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x3C, 0x3C, 0x3C);
+
+// 0x80132EC8
+Gfx dMNBackupClearDisplayList[/* */] =
+{
+    gsSPSetGeometryMode(G_LIGHTING),
+    gsSPSetLights1(dMNBackupClearLights1),
+    gsSPEndDisplayList()
+};
+
+// // // // // // // // // // // //
+//                               //
 //   GLOBAL / STATIC VARIABLES   //
 //                               //
 // // // // // // // // // // // //
@@ -105,46 +144,7 @@ s32 sMNBackupClearReturnTic;
 LBFileNode sMNBackupClearStatusBuffer[24];
 
 // 0x801331B0
-void *sMNBackupClearFiles[3];
-
-// // // // // // // // // // // //
-//                               //
-//       INITIALIZED DATA        //
-//                               //
-// // // // // // // // // // // //
-
-// 0x80132E80
-u32 dMNBackupClearFileIDs[/* */] =
-{
-    &D_NF_00000000,
-    &D_NF_0000004D,
-    &D_NF_0000004E
-};
-
-// 0x80132E8C
-u16 dMNBackupClearUnused0x80132E8C[/* */] =
-{
-    0x0000, 0xFFFF,
-    0xFFFF, 0xFFFF,
-    0xFFFF, 0xFFFF,
-    0xFFFF, 0xFFFF,
-    0xFFFF, 0xFFFF,
-    0xFFFF, 0xFFFF,
-    0xFFFF, 0xFFFF,
-    0xFFFF, 0xFFFF,
-    0x0000, 0x0000
-};
-
-// 0x80132EB0
-Lights1 dMNBackupClearLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x3C, 0x3C, 0x3C);
-
-// 0x80132EC8
-Gfx dMNBackupClearDisplayList[/* */] =
-{
-    gsSPSetGeometryMode(G_LIGHTING),
-    gsSPSetLights1(dMNBackupClearLights1),
-    gsSPEndDisplayList()
-};
+void *sMNBackupClearFiles[ARRAY_COUNT(dMNBackupClearFileIDs)];
 
 // // // // // // // // // // // //
 //                               //

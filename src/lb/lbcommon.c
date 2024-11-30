@@ -10,42 +10,6 @@ extern u16 gSinTable[/* */];
 
 // // // // // // // // // // // //
 //                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x800D62B0
-u16 sLBCommonExternSpriteAttr;
-
-// 0x800D62B2
-u16 sLBCommonExternBitmapFmt;
-
-// 0x800D62B4
-void *sLBCommonPrevBitmapBuf;
-
-// 0x800D62B8
-void *sLBCommonPrevSpriteLUT;
-
-// 0x800D62BC
-s32 sLBCommonScissorXMax;
-
-// 0x800D62C0
-s32 sLBCommonScissorYMax;
-
-// 0x800D62C4
-s32 sLBCommonScissorXMin;
-
-// 0x800D62C8
-s32 sLBCommonScissorYMin;
-
-// 0x800D62CC
-s32 sLBCommonPad0x800D62CC;
-
-// 0x800D62D0
-Vec3f gLBCommonScale;
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -310,6 +274,42 @@ f32 dLBCommonSinLookup[/* */] =
 	0.999925017356873, 0.999942004680634, 0.999957978725433, 0.999970972537994,
 	0.999980986118317, 0.999988973140717, 0.999994993209839, 1.000000000000000
 };
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x800D62B0
+u16 sLBCommonExternSpriteAttr;
+
+// 0x800D62B2
+u16 sLBCommonExternBitmapFmt;
+
+// 0x800D62B4
+void *sLBCommonPrevBitmapBuf;
+
+// 0x800D62B8
+void *sLBCommonPrevSpriteLUT;
+
+// 0x800D62BC
+s32 sLBCommonScissorXMax;
+
+// 0x800D62C0
+s32 sLBCommonScissorYMax;
+
+// 0x800D62C4
+s32 sLBCommonScissorXMin;
+
+// 0x800D62C8
+s32 sLBCommonScissorYMin;
+
+// 0x800D62CC
+s32 sLBCommonPad0x800D62CC;
+
+// 0x800D62D0
+Vec3f gLBCommonScale;
 
 // // // // // // // // // // // //
 //                               //

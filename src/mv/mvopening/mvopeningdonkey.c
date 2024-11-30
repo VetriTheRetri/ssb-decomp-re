@@ -11,6 +11,31 @@ extern u32 sySchedulerGetTicCount();
 
 // // // // // // // // // // // //
 //                               //
+//       INITIALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
+// 0x8018E070
+CObjDesc dMVOpeningDonkeyCObjDescStart = { { -1100.0F, 150.0F, 400.0F }, { 0.0F, 150.0F, 0.0F }, 0.0F };
+
+// 0x8018E08C
+CObjDesc dMVOpeningDonkeyCObjDescEnd = { { -900.0F, 500.0F, 1800.0F }, { 0.0F, 500.0F, 0.0F }, 0.0F };
+
+// 0x8018E0A8
+FTKeyEvent dMVOpeningDonkeyKeyEvents[/* */] =
+{
+	FTKEY_EVENT_STICK(0, -I_CONTROLLER_RANGE_MAX, 0), // 0x2000, 0x00B0
+	FTKEY_EVENT_BUTTON(B_BUTTON, 1),                  // 0x1001, 0x4000
+	FTKEY_EVENT_BUTTON(0, 1),                         // 0x1001, 0x0000
+	FTKEY_EVENT_BUTTON(B_BUTTON, 1),                  // 0x1001, 0x4000
+	FTKEY_EVENT_END()                                 // 0x0000
+};
+
+// 0x8018E0BC
+u32 dMVOpeningDonkeyFileIDs[/* */] = { &lIFCommonAnnounceCommonFileID, &lMVOpeningCommonFileID };
+
+// // // // // // // // // // // //
+//                               //
 //   GLOBAL / STATIC VARIABLES   //
 //                               //
 // // // // // // // // // // // //
@@ -55,35 +80,10 @@ LBFileNode sMVOpeningDonkeyStatusBuffer[48];
 LBFileNode sMVOpeningDonkeyForceStatusBuffer[7];
 
 // 0x8018E3E0
-void *sMVOpeningDonkeyFiles[2];
+void *sMVOpeningDonkeyFiles[ARRAY_COUNT(dMVOpeningDonkeyFileIDs)];
 
 // 0x8018E3E8
 SCBattleState sMVOpeningDonkeyBattleState;
-
-// // // // // // // // // // // //
-//                               //
-//       INITIALIZED DATA        //
-//                               //
-// // // // // // // // // // // //
-
-// 0x8018E070
-CObjDesc dMVOpeningDonkeyCObjDescStart = { { -1100.0F, 150.0F, 400.0F }, { 0.0F, 150.0F, 0.0F }, 0.0F };
-
-// 0x8018E08C
-CObjDesc dMVOpeningDonkeyCObjDescEnd = { { -900.0F, 500.0F, 1800.0F }, { 0.0F, 500.0F, 0.0F }, 0.0F };
-
-// 0x8018E0A8
-FTKeyEvent dMVOpeningDonkeyKeyEvents[/* */] =
-{
-	FTKEY_EVENT_STICK(0, -I_CONTROLLER_RANGE_MAX, 0), // 0x2000, 0x00B0
-	FTKEY_EVENT_BUTTON(B_BUTTON, 1),                  // 0x1001, 0x4000
-	FTKEY_EVENT_BUTTON(0, 1),                         // 0x1001, 0x0000
-	FTKEY_EVENT_BUTTON(B_BUTTON, 1),                  // 0x1001, 0x4000
-	FTKEY_EVENT_END()                                 // 0x0000
-};
-
-// 0x8018E0BC
-u32 dMVOpeningDonkeyFileIDs[/* */] = { &lIFCommonAnnounceCommonFileID, &lMVOpeningCommonFileID };
 
 // // // // // // // // // // // //
 //                               //
@@ -505,7 +505,7 @@ void mvOpeningDonkeyFuncStart(void)
 
 	mvOpeningDonkeySetupFiles();
 	gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningDonkeyFuncRun, nGCCommonLinkIDMovie, GOBJ_PRIORITY_DEFAULT);
-	gcMakeDefaultCameraGObj(9, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeDefaultCameraGObj(nGCCommonLinkIDCamera, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	mvOpeningDonkeyInitVars();
 	efParticleInitAll();
 	ftParamInitGame();

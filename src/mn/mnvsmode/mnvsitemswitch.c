@@ -32,45 +32,6 @@ mnCommonSetOptionChangeWaitN(sMNVSItemSwitchOptionChangeWait, is_button, stick_r
 
 // // // // // // // // // // // //
 //                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x801333D0
-s32 sMNVSItemSwitchPad0x801333D0[2];
-
-// 0x801333D8
-s32 sMNVSItemSwitchOptionSelectID;
-
-// 0x801333DC
-GObj *sMNVSItemSwitchUnkGObj;
-
-// 0x801333E0
-GObj *sMNVSItemSwitchOptionGObjs[(nITKindUtilityEnd - nITKindUtilityStart) + 1];
-
-// 0x80133420
-sb32 sMNVSItemSwitchOptionStatuses[(nITKindUtilityEnd - nITKindUtilityStart) + 1];
-
-// 0x80133460
-GObj *sMNVSItemSwitchCursorGObj;
-
-// 0x80133464
-s32 sMNVSItemSwitchOptionChangeWait;
-
-// 0x80133468
-s32 sMNVSItemSwitchTotalTimeTics;
-
-// 0x8013346C
-s32 sMNVSItemSwitchReturnTic;
-
-// 0x80133470
-LBFileNode sMNVSItemSwitchStatusBuffer[24];
-
-// 0x80133530
-void *sMNVSItemSwitchFiles[1];
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -109,6 +70,45 @@ Gfx dMNVSItemSwitchDisplayList[/* */] =
     gsSPSetLights1(dMNVSItemSwitchLights1),
     gsSPEndDisplayList()
 };
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x801333D0
+s32 sMNVSItemSwitchPad0x801333D0[2];
+
+// 0x801333D8
+s32 sMNVSItemSwitchOptionSelectID;
+
+// 0x801333DC
+GObj *sMNVSItemSwitchUnkGObj;
+
+// 0x801333E0
+GObj *sMNVSItemSwitchOptionGObjs[(nITKindUtilityEnd - nITKindUtilityStart) + 1];
+
+// 0x80133420
+sb32 sMNVSItemSwitchOptionStatuses[(nITKindUtilityEnd - nITKindUtilityStart) + 1];
+
+// 0x80133460
+GObj *sMNVSItemSwitchCursorGObj;
+
+// 0x80133464
+s32 sMNVSItemSwitchOptionChangeWait;
+
+// 0x80133468
+s32 sMNVSItemSwitchTotalTimeTics;
+
+// 0x8013346C
+s32 sMNVSItemSwitchReturnTic;
+
+// 0x80133470
+LBFileNode sMNVSItemSwitchStatusBuffer[24];
+
+// 0x80133530
+void *sMNVSItemSwitchFiles[ARRAY_COUNT(dMNVSItemSwitchFileIDs)];
 
 // // // // // // // // // // // //
 //                               //

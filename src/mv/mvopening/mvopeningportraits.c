@@ -8,6 +8,21 @@ extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
 //                               //
+//       INITIALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
+// 0x801328A0
+u32 dMVOpeningPortraitsFileIDs[/* */] = { &lMVOpeningPortraitsSet1FileID, &lMVOpeningPortraitsSet2FileID };
+
+// 0x801328A8
+Lights1 dMVOpeningPortraitsLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x14, 0x14, 0x14);
+
+// 0x801328C0
+Lights1 dMVOpeningPortraitsLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x00, 0x14, 0x00);
+
+// // // // // // // // // // // //
+//                               //
 //   GLOBAL / STATIC VARIABLES   //
 //                               //
 // // // // // // // // // // // //
@@ -19,7 +34,7 @@ s32 sMVOpeningPortraitsPad0x801329E0[2];
 s32 sMVOpeningPortraitsTotalTimeTics;
 
 // 0x801329EC
-s32 sMVOpeningPortraitsCurrentRow;
+s32 sMVOpeningPortraitsRow;
 
 // 0x801329F0
 GObj *sMVOpeningPortraitsGObj;
@@ -34,22 +49,7 @@ LBFileNode sMVOpeningPortraitsStatusBuffer[48];
 LBFileNode sMVOpeningPortraitsForceStatusBuffer[7];
 
 // 0x80132BB0
-void *sMVOpeningPortraitsFiles[2];
-
-// // // // // // // // // // // //
-//                               //
-//       INITIALIZED DATA        //
-//                               //
-// // // // // // // // // // // //
-
-// 0x801328A0
-u32 dMVOpeningPortraitsFileIDs[/* */] = { &lMVOpeningPortraitsSet1FileID, &lMVOpeningPortraitsSet2FileID };
-
-// 0x801328A8
-Lights1 dMVOpeningPortraitsLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x14, 0x14, 0x14);
-
-// 0x801328C0
-Lights1 dMVOpeningPortraitsLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x00, 0x14, 0x00);
+void *sMVOpeningPortraitsFiles[ARRAY_COUNT(dMVOpeningPortraitsFileIDs)];
 
 // // // // // // // // // // // //
 //                               //
@@ -189,7 +189,7 @@ void mvOpeningPortraitsCoverFuncDisplay(GObj *gobj)
 	gDPSetCombineLERP(gSYTaskmanDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
-	switch (sMVOpeningPortraitsCurrentRow)
+	switch (sMVOpeningPortraitsRow)
 	{
 	case 0:
 		mvOpeningPortraitsBlockRow1();
@@ -261,49 +261,49 @@ void mvOpeningPortraitsCoverProcUpdate(GObj *gobj)
 	case 15:
 		sobj->pos.x = -656.0F;
 		sobj->pos.y = 10.0F;
-		sMVOpeningPortraitsCurrentRow = 0;
+		sMVOpeningPortraitsRow = 0;
 		break;
 
 	case 45:
 		sobj->pos.x = -656.0F;
 		sobj->pos.y = 65.0F;
-		sMVOpeningPortraitsCurrentRow = 1;
+		sMVOpeningPortraitsRow = 1;
 		break;
 
 	case 30:
 		sobj->pos.x = -656.0F;
 		sobj->pos.y = 120.0F;
-		sMVOpeningPortraitsCurrentRow = 2;
+		sMVOpeningPortraitsRow = 2;
 		break;
 
 	case 60:
 		sobj->pos.x = -656.0F;
 		sobj->pos.y = 175.0F;
-		sMVOpeningPortraitsCurrentRow = 3;
+		sMVOpeningPortraitsRow = 3;
 		break;
 
 	case 105:
 		sobj->pos.x = 656.0F;
 		sobj->pos.y = 10.0F;
-		sMVOpeningPortraitsCurrentRow = 0;
+		sMVOpeningPortraitsRow = 0;
 		break;
 
 	case 135:
 		sobj->pos.x = 656.0F;
 		sobj->pos.y = 65.0F;
-		sMVOpeningPortraitsCurrentRow = 1;
+		sMVOpeningPortraitsRow = 1;
 		break;
 
 	case 90:
 		sobj->pos.x = 656.0F;
 		sobj->pos.y = 120.0F;
-		sMVOpeningPortraitsCurrentRow = 2;
+		sMVOpeningPortraitsRow = 2;
 		break;
 
 	case 120:
 		sobj->pos.x = 656.0F;
 		sobj->pos.y = 175.0F;
-		sMVOpeningPortraitsCurrentRow = 3;
+		sMVOpeningPortraitsRow = 3;
 		break;
 	}
 }
@@ -386,7 +386,7 @@ void mvOpeningPortraitsMakeCoverCamera(void)
 void mvOpeningPortraitsInitVars(void)
 {
 	sMVOpeningPortraitsTotalTimeTics = 0;
-	sMVOpeningPortraitsCurrentRow = 0;
+	sMVOpeningPortraitsRow = 0;
 }
 
 // 0x80132624

@@ -4,24 +4,6 @@
 #include <sc/scene.h>
 
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
- 
-// // // // // // // // // // // //
-//                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x801938D0
-GObj *sSC1PGameBossWallpaperGObj;
-
-// 0x801938D4 - Unused?
-s32 sSC1PGamePad0x801938D4;
-
-// 0x801938D8
-SC1PGameBossMain sSC1PGameBossMain;
-
-// 0x801938F0
-f32 sSC1PGameBossWallpaperStepRGBA;
 
 // // // // // // // // // // // //
 //                               //
@@ -362,6 +344,24 @@ SC1PGameBossWallpaper dSC1PGameBossWallpapers[/* */] =
         dSC1PGameBossPlans3                     // Drawing/rendering descriptor(s)
     }
 };
+ 
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x801938D0
+GObj *sSC1PGameBossWallpaperGObj;
+
+// 0x801938D4 - Unused?
+s32 sSC1PGamePad0x801938D4;
+
+// 0x801938D8
+SC1PGameBossMain sSC1PGameBossMain;
+
+// 0x801938F0
+f32 sSC1PGameBossWallpaperStepRGBA;
 
 // // // // // // // // // // // //
 //                               //

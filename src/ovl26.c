@@ -3741,9 +3741,9 @@ void mnSyncControllerOrderArray()
 	{
 		gMnBattleControllerOrderArray[port_id] = -1;
 
-		for (order = 0; gPlayerControllerPortStatuses[order] != -1; order++) // Array can go out of bounds!!! AND DOES!!!
+		for (order = 0; gSYControllerDeviceStatuses[order] != -1; order++) // Array can go out of bounds!!! AND DOES!!!
 		{
-			if (port_id == gPlayerControllerPortStatuses[order])
+			if (port_id == gSYControllerDeviceStatuses[order])
 				gMnBattleControllerOrderArray[port_id] = order;
 		}
 	}

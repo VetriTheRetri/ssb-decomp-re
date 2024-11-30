@@ -13,24 +13,6 @@ extern void scManagerFuncDraw(void);
 
 // // // // // // // // // // // //
 //                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x8018F1A0
-void *gSC1PBonusStageFiles[4];
-
-// 0x8018F1B0
-SCBattleState sSC1PBonusStageBattleState;
-
-// 0x8018F3A0
-u8 sSC1PBonusStageTimerDigits[6];
-
-// 0x8018F3A8
-sb32 sSC1PBonusStageIsTimeUp;
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -333,6 +315,27 @@ SYTaskmanSetup dSC1PBonusStageTaskmanSetup =
 
 // // // // // // // // // // // //
 //                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x8018F1A0
+void *gSC1PBonusStageItemFile;
+
+// 0x8018F1A8
+s32 gSC1PBonusStagePad0x8018F1A4[2];
+
+// 0x8018F1B0
+SCBattleState sSC1PBonusStageBattleState;
+
+// 0x8018F3A0
+u8 sSC1PBonusStageTimerDigits[6];
+
+// 0x8018F3A8
+sb32 sSC1PBonusStageIsTimeUp;
+
+// // // // // // // // // // // //
+//                               //
 //           FUNCTIONS           //
 //                               //
 // // // // // // // // // // // //
@@ -429,7 +432,7 @@ void sc1PBonusStageInitVars(void)
 // 0x8018D330
 void sc1PBonusStageBonus1LoadFile(void)
 {
-	gSC1PBonusStageFiles[0] = lbRelocGetExternHeapFile((u32)&D_NF_000000FD, syTaskmanMalloc(lbRelocGetFileSize((u32)&D_NF_000000FD), 0x10));
+	gSC1PBonusStageItemFile = lbRelocGetExternHeapFile((u32)&D_NF_000000FD, syTaskmanMalloc(lbRelocGetFileSize((u32)&D_NF_000000FD), 0x10));
 }
 
 // 0x8018D374
@@ -1003,7 +1006,7 @@ void sc1PBonusStageFuncStart(void)
 	sc1PBonusStageInitVars();
 	sc1PBonusStageSetupFiles();
 	sc1PBonusStageBonus1LoadFile();
-	gcMakeDefaultCameraGObj(9, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeDefaultCameraGObj(nGCCommonLinkIDCamera, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	efParticleInitAll();
 	ftParamInitGame();
 	mpCollisionInitGroundData();

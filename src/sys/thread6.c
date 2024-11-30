@@ -39,7 +39,7 @@ OSContPad sContData[MAXCONTROLLERS];
 u32 gSYControllerConnectedNum;
 
 // 0x800451A4
-s8 gPlayerControllerPortStatuses[MAXCONTROLLERS];
+s8 gSYControllerDeviceStatuses[MAXCONTROLLERS];
 
 // 0x800451A8
 ControllerInfo sContInfo[MAXCONTROLLERS];
@@ -82,13 +82,13 @@ void update_controller_indices(void) {
 
     for (i = 0; i < MAXCONTROLLERS; i++) {
         if (sContInfo[i].unk1C == 0) {
-            gPlayerControllerPortStatuses[v0++] = i;
+            gSYControllerDeviceStatuses[v0++] = i;
         }
     }
     gSYControllerConnectedNum = v0;
 
     for (i = v0; i < MAXCONTROLLERS; i++) {
-        gPlayerControllerPortStatuses[i] = -1;
+        gSYControllerDeviceStatuses[i] = -1;
     }
 }
 
@@ -179,7 +179,7 @@ void update_global_contdata(void)
     }
     update_controller_indices();
 
-    players = &gSYControllerDevices[gPlayerControllerPortStatuses[0]];
+    players = &gSYControllerDevices[gSYControllerDeviceStatuses[0]];
 
     sys->button_tap = players->button_tap;
     sys->button_hold = players->button_hold;

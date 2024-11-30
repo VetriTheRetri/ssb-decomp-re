@@ -17,42 +17,6 @@ extern uintptr_t D_NF_00000047;
 
 // // // // // // // // // // // //
 //                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x80132480
-s32 sMVOpeningYamabukiPad0x80132480[2];
-
-// 0x80132488
-void *sMVOpeningYamabukiFigatreeHeap;
-
-// 0x8013248C
-s32 sMVOpeningYamabukiTotalTimeTics;
-
-// 0x80132490
-s32 sMVOpeningYamabukiPad0x80132490;
-
-// 0x80132494
-GObj* sMVOpeningYamabukiFighterGObj;
-
-// 0x80132498
-s32 sMVOpeningYamabukiPad0x80132498;
-
-// 0x8013249C
-s32 sMVOpeningYamabukiUnused0x8013249C;
-
-// 0x801324A0
-LBFileNode sMVOpeningYamabukiStatusBuffer[48];
-
-// 0x80132620
-LBFileNode sMVOpeningYamabukiForceStatusBuffer[7];
-
-// 0x80132658
-void *sMVOpeningYamabukiFiles[1];
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -76,7 +40,7 @@ SYTaskmanSetup dMVOpeningYamabukiTaskmanSetup =
     {
         0,                              // ???
         gcRunAll,                       // Update function
-        gcDrawAll,                  // Frame draw function
+        gcDrawAll,                      // Frame draw function
         &ovl48_BSS_END,                 // Allocatable memory pool start
         0,                              // Allocatable memory pool size
         1,                              // ???
@@ -113,6 +77,42 @@ SYTaskmanSetup dMVOpeningYamabukiTaskmanSetup =
     
     mvOpeningYamabukiFuncStart          // Task start function
 };
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x80132480
+s32 sMVOpeningYamabukiPad0x80132480[2];
+
+// 0x80132488
+void *sMVOpeningYamabukiFigatreeHeap;
+
+// 0x8013248C
+s32 sMVOpeningYamabukiTotalTimeTics;
+
+// 0x80132490
+s32 sMVOpeningYamabukiPad0x80132490;
+
+// 0x80132494
+GObj* sMVOpeningYamabukiFighterGObj;
+
+// 0x80132498
+s32 sMVOpeningYamabukiPad0x80132498;
+
+// 0x8013249C
+s32 sMVOpeningYamabukiUnused0x8013249C;
+
+// 0x801324A0
+LBFileNode sMVOpeningYamabukiStatusBuffer[48];
+
+// 0x80132620
+LBFileNode sMVOpeningYamabukiForceStatusBuffer[7];
+
+// 0x80132658
+void *sMVOpeningYamabukiFiles[ARRAY_COUNT(dMVOpeningYamabukiFileIDs)];
 
 // // // // // // // // // // // //
 //                               //

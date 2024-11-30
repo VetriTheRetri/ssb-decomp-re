@@ -18,42 +18,6 @@ extern uintptr_t D_NF_00000046;
 
 // // // // // // // // // // // //
 //                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x801327C0
-s32 sMVOpeningCliffPad0x801327C0[2];
-
-// 0x801327C8
-void *sMVOpeningCliffFigatreeHeap;
-
-// 0x801327CC
-s32 sMVOpeningCliffTotalTimeTics;
-
-// 0x801327D0
-GObj* sMVOpeningCliffOcarinaGObj;
-
-// 0x801327D4
-GObj* sMVOpeningCliffFighterGObj;
-
-// 0x801327D8
-f32 sMVOpeningCliffWallpaperScrollSpeed;
-
-// 0x801327DC
-s32 sMVOpeningCliffUnused0x801327DC;
-
-// 0x801327E0
-LBFileNode sMVOpeningCliffStatusBuffer[48];
-
-// 0x80132960
-LBFileNode sMVOpeningCliffForceStatusBuffer[7];
-
-// 0x80132998
-void *sMVOpeningCliffFiles[2];
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -114,6 +78,42 @@ SYTaskmanSetup dMVOpeningCliffTaskmanSetup =
     
     mvOpeningCliffFuncStart             // Task start function
 };
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x801327C0
+s32 sMVOpeningCliffPad0x801327C0[2];
+
+// 0x801327C8
+void *sMVOpeningCliffFigatreeHeap;
+
+// 0x801327CC
+s32 sMVOpeningCliffTotalTimeTics;
+
+// 0x801327D0
+GObj* sMVOpeningCliffOcarinaGObj;
+
+// 0x801327D4
+GObj* sMVOpeningCliffFighterGObj;
+
+// 0x801327D8
+f32 sMVOpeningCliffWallpaperScrollSpeed;
+
+// 0x801327DC
+s32 sMVOpeningCliffUnused0x801327DC;
+
+// 0x801327E0
+LBFileNode sMVOpeningCliffStatusBuffer[48];
+
+// 0x80132960
+LBFileNode sMVOpeningCliffForceStatusBuffer[7];
+
+// 0x80132998
+void *sMVOpeningCliffFiles[ARRAY_COUNT(dMVOpeningCliffFileIDs)];
 
 // // // // // // // // // // // //
 //                               //

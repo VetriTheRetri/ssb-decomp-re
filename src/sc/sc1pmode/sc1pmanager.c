@@ -5,36 +5,6 @@
 
 // // // // // // // // // // // //
 //                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x80130D60
-u8 sSC1PManagerScenePrev;
-
-// 0x80130D64 - Total time (in frames) taken to complete 1P Game
-u32 gSC1PManagerTotalTimeTics;
-
-// 0x80130D68 - Total times fallen in 1P Game
-s32 gSC1PManagerTotalFalls;
-
-// 0x80130D6C - Total damage taken in 1P Game
-s32 gSC1PManagerTotalDamage;
-
-// 0x80130D70 - Starts at 0, increments by 1 each time a continue is used; lowers CP difficulty (on current stage?)
-s32 gSC1PManagerLevelDrop;
-
-// 0x80130D74 - Starts at 2, each time this reaches 0 it increments gSC1PManagerLevelDrop
-u8 sSC1PManagerLevelGuard;
-
-// 0x80130D75 - Copy ability of final Kirby on Kirby Team in 1P Game
-u8 gSC1PManagerKirbyTeamFinalCopy;
-
-// 0x80130D76
-u8 gSC1PManagerKirbyTeamModelPartID;
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -88,6 +58,36 @@ s32 dSC1PManagerChallangerFighterKinds[/* */] = { nFTKindLuigi, nFTKindNess, nFT
 
 // 0x80116DBC
 u32 dSC1PManagerUnlockNewcomerKinds[/* */] = { nLBBackupUnlockLuigi, nLBBackupUnlockNess, nLBBackupUnlockPurin, nLBBackupUnlockCaptain };
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x80130D60
+u8 sSC1PManagerScenePrev;
+
+// 0x80130D64 - Total time (in frames) taken to complete 1P Game
+u32 gSC1PManagerTotalTimeTics;
+
+// 0x80130D68 - Total times fallen in 1P Game
+s32 gSC1PManagerTotalFalls;
+
+// 0x80130D6C - Total damage taken in 1P Game
+s32 gSC1PManagerTotalDamage;
+
+// 0x80130D70 - Starts at 0, increments by 1 each time a continue is used; lowers CP difficulty (on current stage?)
+s32 gSC1PManagerLevelDrop;
+
+// 0x80130D74 - Starts at 2, each time this reaches 0 it increments gSC1PManagerLevelDrop
+u8 sSC1PManagerLevelGuard;
+
+// 0x80130D75 - Copy ability of final Kirby on Kirby Team in 1P Game
+u8 gSC1PManagerKirbyTeamFinalCopy;
+
+// 0x80130D76
+u8 gSC1PManagerKirbyTeamModelPartID;
 
 // // // // // // // // // // // //
 //                               //

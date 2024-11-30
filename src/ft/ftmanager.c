@@ -16,42 +16,6 @@ extern intptr_t D_NF_000000C9;
 
 // // // // // // // // // // // //
 //                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x80130D80
-FTStruct *sFTManagerStructsAllocFree;
-
-// 0x80130D84
-FTStruct *sFTManagerStructsAllocBuf;
-
-// 0x80130D88
-FTParts *sFTManagerPartsAllocFree;
-
-// 0x80130D8C
-FTParts *sFTManagerPartsAllocBuf;
-
-// 0x80130D90
-u32 gFTManagerPlayersNum;
-
-// 0x80130D94
-u16 gFTManagerMotionCount;
-
-// 0x80130D96
-u16 gFTManagerStatUpdateCount;
-
-// 0x80130D98
-void *gFTManagerCommonFile;
-
-// 0x80130D9C
-size_t gFTManagerFigatreeHeapSize;
-
-// 0x80130DA0
-LBFileNode sFTManagerForceStatusBuffer[7];
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -92,6 +56,42 @@ FTData *dFTManagerDataFiles[] =
 };
 
 */
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x80130D80
+FTStruct *sFTManagerStructsAllocFree;
+
+// 0x80130D84
+FTStruct *sFTManagerStructsAllocBuf;
+
+// 0x80130D88
+FTParts *sFTManagerPartsAllocFree;
+
+// 0x80130D8C
+FTParts *sFTManagerPartsAllocBuf;
+
+// 0x80130D90
+u32 gFTManagerPlayersNum;
+
+// 0x80130D94
+u16 gFTManagerMotionCount;
+
+// 0x80130D96
+u16 gFTManagerStatUpdateCount;
+
+// 0x80130D98
+void *gFTManagerCommonFile;
+
+// 0x80130D9C
+size_t gFTManagerFigatreeHeapSize;
+
+// 0x80130DA0
+LBFileNode sFTManagerForceStatusBuffer[7];
 
 // // // // // // // // // // // //
 //                               //
@@ -942,7 +942,7 @@ GObj* ftManagerMakeFighter(FTDesc *ft_desc) // Create fighter
     }
     if ((fp->pkind != nFTPlayerKindDemo) && !(ft_desc->is_skip_shadow_setup))
     {
-        FTShadowMakeShadow(fighter_gobj);
+        ftShadowMakeShadow(fighter_gobj);
     }
     return fighter_gobj;
 }

@@ -15,6 +15,26 @@ extern uintptr_t D_NF_0000000E;             // 0x0000000E
 
 // // // // // // // // // // // //
 //                               //
+//       INITIALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
+// 0x80134DF0
+u32 dSC1PIntroFileIDs[/* */] = { &D_NF_0000000B, &D_NF_0000000C, &D_NF_0000000D, &D_NF_0000000E };
+
+// 0x80134E00
+Lights1 dSC1PIntroLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x3C, 0x3C, 0x3C);
+
+// 0x80134E18
+Gfx dSC1PIntroDisplayList[/* */] =
+{
+    gsSPSetGeometryMode(G_LIGHTING),
+    gsSPSetLights1(dSC1PIntroLights1),
+    gsSPEndDisplayList()
+};
+
+// // // // // // // // // // // //
+//                               //
 //   GLOBAL / STATIC VARIABLES   //
 //                               //
 // // // // // // // // // // // //
@@ -77,27 +97,7 @@ LBFileNode sSC1PIntroForceStatusBuffer[7];
 LBFileNode sSC1PIntroStatusBuffer[100];
 
 // 0x80136058
-void *sSC1PIntroFiles[4];
-
-// // // // // // // // // // // //
-//                               //
-//       INITIALIZED DATA        //
-//                               //
-// // // // // // // // // // // //
-
-// 0x80134DF0
-u32 dSC1PIntroFileIDs[/* */] = { &D_NF_0000000B, &D_NF_0000000C, &D_NF_0000000D, &D_NF_0000000E };
-
-// 0x80134E00
-Lights1 dSC1PIntroLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x3C, 0x3C, 0x3C);
-
-// 0x80134E18
-Gfx dSC1PIntroDisplayList[/* */] =
-{
-    gsSPSetGeometryMode(G_LIGHTING),
-    gsSPSetLights1(dSC1PIntroLights1),
-    gsSPEndDisplayList()
-};
+void *sSC1PIntroFiles[ARRAY_COUNT(dSC1PIntroFileIDs)];
 
 // // // // // // // // // // // //
 //                               //

@@ -10,6 +10,26 @@ extern uintptr_t D_NF_00000009;                             // 0x00000009
 
 // // // // // // // // // // // //
 //                               //
+//       INITIALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
+// 0x80132500
+u32 dMNMessageFileIDs[/* */] = { &D_NF_00000000, &D_NF_00000009 };
+
+// 0x80132508
+Lights1 dMNMessageLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x3C, 0x3C, 0x3C);
+
+// 0x80132520
+Gfx dMNMessageDisplayList[/* */] =
+{
+    gsSPSetGeometryMode(G_LIGHTING),
+    gsSPSetLights1(dMNMessageLights1),
+    gsSPEndDisplayList()
+};
+
+// // // // // // // // // // // //
+//                               //
 //   GLOBAL / STATIC VARIABLES   //
 //                               //
 // // // // // // // // // // // //
@@ -33,27 +53,7 @@ s32 sMNMessageTotalTimeTics;
 LBFileNode sMNMessageStatusBuffer[100];
 
 // 0x80132988
-void *sMNMessageFiles[2];
-
-// // // // // // // // // // // //
-//                               //
-//       INITIALIZED DATA        //
-//                               //
-// // // // // // // // // // // //
-
-// 0x80132500
-u32 dMNMessageFileIDs[/* */] = { &D_NF_00000000, &D_NF_00000009 };
-
-// 0x80132508
-Lights1 dMNMessageLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x3C, 0x3C, 0x3C);
-
-// 0x80132520
-Gfx dMNMessageDisplayList[/* */] =
-{
-    gsSPSetGeometryMode(G_LIGHTING),
-    gsSPSetLights1(dMNMessageLights1),
-    gsSPEndDisplayList()
-};
+void *sMNMessageFiles[ARRAY_COUNT(dMNMessageFileIDs)];
 
 // // // // // // // // // // // //
 //                               //

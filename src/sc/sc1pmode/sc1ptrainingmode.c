@@ -12,27 +12,6 @@ extern u32 D_NF_000000FE;									// 0x000000FE
 
 // // // // // // // // // // // //
 //                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x80190960
-s32 sSC1PTrainingModePad0x80190960[2];
-
-// 0x80190968
-SCBattleState sSC1PTrainingModeBattleState;
-
-// 0x80190B58
-SC1PTrainingModeMenu sSC1PTrainingModeMenu;
-
-// 0x80190C40
-LBFileNode sSC1PTrainingModeStatusBuffer[100];
-
-// 0x80190F60
-LBFileNode sSC1PTrainingModeForceStatusBuffer[7];
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -170,6 +149,27 @@ SYTaskmanSetup dSC1PTrainingModeTaskmanSetup =
     
     sc1PTrainingModeFuncStart     	// Task start function
 };
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x80190960
+s32 sSC1PTrainingModePad0x80190960[2];
+
+// 0x80190968
+SCBattleState sSC1PTrainingModeBattleState;
+
+// 0x80190B58
+SC1PTrainingModeMenu sSC1PTrainingModeMenu;
+
+// 0x80190C40
+LBFileNode sSC1PTrainingModeStatusBuffer[100];
+
+// 0x80190F60
+LBFileNode sSC1PTrainingModeForceStatusBuffer[7];
 
 // // // // // // // // // // // //
 //                               //
@@ -1697,7 +1697,7 @@ void sc1PTrainingModeFuncStart(void)
 	sc1PTrainingModeInitVars();
 	sc1PTrainingModeSetupFiles();
 	sc1PTrainingModeLoadSprites();
-	gcMakeDefaultCameraGObj(9, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeDefaultCameraGObj(nGCCommonLinkIDCamera, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	efParticleInitAll();
 	ftParamInitGame();
 	mpCollisionInitGroundData();

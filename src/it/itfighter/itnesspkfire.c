@@ -24,8 +24,8 @@ ITDesc dITNessPKFireItemDesc =
 
     // DObj transformation struct
     {
-        nGCMatrixKindTraRotRpyRSca,          // Main matrix transformations
-        nGCMatrixKindNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyRSca,         // Main matrix transformations
+        nGCMatrixKindNull,                  // Secondary matrix transformations?
         0                                   // ???
     },
 

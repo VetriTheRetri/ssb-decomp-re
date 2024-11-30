@@ -22,147 +22,6 @@ extern uintptr_t D_NF_00000097;								// 0x00000097
 
 // // // // // // // // // // // //
 //                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x801352C0
-u32 sSC1PStageClearPad0x801352C0[3];
-
-// 0x801352CC
-u32 sSC1PStageClearTotalTimeTics;
-
-// 0x801352D0 - Set once, never used
-u32 sSC1PStageClearUnused0x801352D0;
-
-// 0x801352D4 - What kind of stage has been cleared
-s32 sSC1PStageClearKind;
-
-// 0x801352D8 - Whether player earned any special bonuses
-sb32 sSC1PStageClearIsHaveBonusStats;
-
-// 0x801352DC
-s32 sSC1PStageClearSecondsRemain;
-
-// 0x801352E0
-s32 sSC1PStageClearDamageDealt;
-
-// 0x801352E4
-s32 sSC1PStageClearDifficulty;
-
-// 0x801352E8
-s32 sSC1PStageClearScoreTotal;
-
-// 0x801352EC - Stage that the player just cleared / failed
-s32 sSC1PStageClear1PGameStage;
-
-// 0x801352F0
-s32 sSC1PStageClearPad0x801352F0[2];
-
-// 0x801352F8 - GObj of "Timer" and "Damage" scores
-GObj *sSC1PStageClearTimerTextGObj;
-
-// 0x801352FC
-GObj *sSC1PStageClearTimerMultiplierGObj;
-
-// 0x80135300
-GObj *sSC1PStageClearDamageTextGObj;
-
-// 0x80135304
-GObj *sSC1PStageClearDamageMultiplierGObj;
-
-// 0x80135308
-s32 sSC1PStageClearPad0x80135308[2];
-
-// 0x80135310 - GObj of "SCORE" text
-GObj *sSC1PStageClearScoreTextGObj;
-
-// 0x80135314 - GObj of "- BONUS -" text
-GObj *sSC1PStageClearBonusTextGObj;
-
-// 0x80135318
-GObj *sSC1PStageClearTargetGObj;
-
-// 0x8013531C
-s32 sSC1PStageClearPad0x8013531C;
-
-// 0x80135320
-u32 sSC1PStageClearBonusFlags[3];
-
-// 0x8013532C
-s32 sSC1PStageClearBonusID;
-
-// 0x80135330
-s32 sSC1PStageClearBonusNum;
-
-// 0x80135334
-s32 sSC1PStageClearIsSetCommonAdvanceTic;
-
-// 0x80135338
-sb32 sSC1PStageClearIsAdvance;
-
-// 0x8013533C
-s32 sSC1PStageClearIsAllowProceedNext;
-
-// 0x80135340
-u32 sSC1PStageClearCommonAdvanceTic;
-
-// 0x80135344
-u32 sSC1PStageClearBonusShowNextTic;
-
-// 0x80135348
-u32 sSC1PStageClearBonusAdvanceTic;
-
-// 0x80135350
-GObj *sSC1PStageClearBonusStatGObjs[10];
-
-// 0x80135378 - GObjs of target or platform sprites?
-GObj *sSC1PStageClearBonusObjectiveGObjs[10];
-
-// 0x801353A0
-u32 sSC1PStageClearBaseIntervalTic;
-
-// 0x801353A4
-s32 sSC1PStageClearBonusObjectivesCleared;
-
-// 0x801353A8
-s32 sSC1PStageClearTimerTextTic;
-
-// 0x801353AC
-s32 sSC1PStageClearTimerDigitTic;
-
-// 0x801353B0
-s32 sSC1PStageClearTimerMultiplierTic;
-
-// 0x801353B4
-s32 sSC1PStageClearTimerEjectTic;
-
-// 0x801353B8
-s32 sSC1PStageClearDamageTextTic;
-
-// 0x801353BC
-s32 sSC1PStageClearDamageDigitTic;
-
-// 0x801353C0
-s32 sSC1PStageClearDamageMultiplierTic;
-
-// 0x801353C4
-s32 sSC1PStageClearDamageEjectTic;
-
-// 0x801353C8
-s32 sSC1PStageClearPad0x801353C8[2];
-
-// 0x801353D0
-LBFileNode sSC1PStageClearStatusBuffer[48];
-
-// 0x80135550
-LBFileNode sSC1PStageClearForceStatusBuffer[7];
-
-// 0x80135588
-void *sSC1PStageClearFiles[7];
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -362,6 +221,147 @@ Lights1 dSC1PStageClearLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0
 
 // 0x801350E8
 Lights1 dSC1PStageClearLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x00, 0x14, 0x00);
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x801352C0
+u32 sSC1PStageClearPad0x801352C0[3];
+
+// 0x801352CC
+u32 sSC1PStageClearTotalTimeTics;
+
+// 0x801352D0 - Set once, never used
+u32 sSC1PStageClearUnused0x801352D0;
+
+// 0x801352D4 - What kind of stage has been cleared
+s32 sSC1PStageClearKind;
+
+// 0x801352D8 - Whether player earned any special bonuses
+sb32 sSC1PStageClearIsHaveBonusStats;
+
+// 0x801352DC
+s32 sSC1PStageClearSecondsRemain;
+
+// 0x801352E0
+s32 sSC1PStageClearDamageDealt;
+
+// 0x801352E4
+s32 sSC1PStageClearDifficulty;
+
+// 0x801352E8
+s32 sSC1PStageClearScoreTotal;
+
+// 0x801352EC - Stage that the player just cleared / failed
+s32 sSC1PStageClear1PGameStage;
+
+// 0x801352F0
+s32 sSC1PStageClearPad0x801352F0[2];
+
+// 0x801352F8 - GObj of "Timer" and "Damage" scores
+GObj *sSC1PStageClearTimerTextGObj;
+
+// 0x801352FC
+GObj *sSC1PStageClearTimerMultiplierGObj;
+
+// 0x80135300
+GObj *sSC1PStageClearDamageTextGObj;
+
+// 0x80135304
+GObj *sSC1PStageClearDamageMultiplierGObj;
+
+// 0x80135308
+s32 sSC1PStageClearPad0x80135308[2];
+
+// 0x80135310 - GObj of "SCORE" text
+GObj *sSC1PStageClearScoreTextGObj;
+
+// 0x80135314 - GObj of "- BONUS -" text
+GObj *sSC1PStageClearBonusTextGObj;
+
+// 0x80135318
+GObj *sSC1PStageClearTargetGObj;
+
+// 0x8013531C
+s32 sSC1PStageClearPad0x8013531C;
+
+// 0x80135320
+u32 sSC1PStageClearBonusFlags[3];
+
+// 0x8013532C
+s32 sSC1PStageClearBonusID;
+
+// 0x80135330
+s32 sSC1PStageClearBonusNum;
+
+// 0x80135334
+s32 sSC1PStageClearIsSetCommonAdvanceTic;
+
+// 0x80135338
+sb32 sSC1PStageClearIsAdvance;
+
+// 0x8013533C
+s32 sSC1PStageClearIsAllowProceedNext;
+
+// 0x80135340
+u32 sSC1PStageClearCommonAdvanceTic;
+
+// 0x80135344
+u32 sSC1PStageClearBonusShowNextTic;
+
+// 0x80135348
+u32 sSC1PStageClearBonusAdvanceTic;
+
+// 0x80135350
+GObj *sSC1PStageClearBonusStatGObjs[10];
+
+// 0x80135378 - GObjs of target or platform sprites?
+GObj *sSC1PStageClearBonusObjectiveGObjs[10];
+
+// 0x801353A0
+u32 sSC1PStageClearBaseIntervalTic;
+
+// 0x801353A4
+s32 sSC1PStageClearBonusObjectivesCleared;
+
+// 0x801353A8
+s32 sSC1PStageClearTimerTextTic;
+
+// 0x801353AC
+s32 sSC1PStageClearTimerDigitTic;
+
+// 0x801353B0
+s32 sSC1PStageClearTimerMultiplierTic;
+
+// 0x801353B4
+s32 sSC1PStageClearTimerEjectTic;
+
+// 0x801353B8
+s32 sSC1PStageClearDamageTextTic;
+
+// 0x801353BC
+s32 sSC1PStageClearDamageDigitTic;
+
+// 0x801353C0
+s32 sSC1PStageClearDamageMultiplierTic;
+
+// 0x801353C4
+s32 sSC1PStageClearDamageEjectTic;
+
+// 0x801353C8
+s32 sSC1PStageClearPad0x801353C8[2];
+
+// 0x801353D0
+LBFileNode sSC1PStageClearStatusBuffer[48];
+
+// 0x80135550
+LBFileNode sSC1PStageClearForceStatusBuffer[7];
+
+// 0x80135588
+void *sSC1PStageClearFiles[ARRAY_COUNT(dSC1PStageClearFileIDs)];
 
 // // // // // // // // // // // //
 //                               //

@@ -9,6 +9,8 @@
 extern intptr_t lSC1PBonusStagePlatformSprite;				// 0x000000B0
 extern intptr_t lSC1PBonusStageTargetSprite;				// 0x000001D0
 
+extern void *gSC1PBonusStageItemFile;
+
 extern void sc1PBonusStageFuncUpdate(void);
 extern void sc1PBonusStageInitVars(void);
 extern void sc1PBonusStageBonus1LoadFile(void);

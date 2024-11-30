@@ -49,7 +49,7 @@ Gfx dFTShadowNoNextLinkDL[/* */] =
 // // // // // // // // // // // //
 
 // 0x8013AE10
-f32 FTShadowGetAltitude(Vec3f *a, Vec3f *b, f32 f)
+f32 ftShadowGetAltitude(Vec3f *a, Vec3f *b, f32 f)
 {
     if (b->x == a->x)
     {
@@ -59,7 +59,7 @@ f32 FTShadowGetAltitude(Vec3f *a, Vec3f *b, f32 f)
 }
 
 // 0x8013AE60
-void FTShadowFuncDisplay(GObj *shadow_gobj)
+void ftShadowFuncDisplay(GObj *shadow_gobj)
 {
     FTShadow *fs;
     FTStruct *fp;
@@ -194,11 +194,11 @@ void FTShadowFuncDisplay(GObj *shadow_gobj)
 
                             if ((vertex_pos0.x <= shadow_edge_left) && (shadow_edge_left <= vertex_pos1.x))
                             {
-                                shadow_alt_left = FTShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_left);
+                                shadow_alt_left = ftShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_left);
 
                                 if ((vertex_pos0.x <= shadow_edge_right) && (shadow_edge_right <= vertex_pos1.x))
                                 {
-                                    shadow_alt_right = FTShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_right);
+                                    shadow_alt_right = ftShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_right);
                                 }
                                 else
                                 {
@@ -213,7 +213,7 @@ void FTShadowFuncDisplay(GObj *shadow_gobj)
 
                                     if (shadow_edge_right <= vertex_pos1.x)
                                     {
-                                        shadow_alt_right = FTShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_right);
+                                        shadow_alt_right = ftShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_right);
                                     }
                                     else
                                     {
@@ -221,7 +221,7 @@ void FTShadowFuncDisplay(GObj *shadow_gobj)
                                         vertex_pos0 = vertex_pos1;
 
                                         mpCollisionGetVertexPositionID(ground_line_id, i + 2, &vertex_pos1);
-                                        shadow_alt_right = FTShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_right);
+                                        shadow_alt_right = ftShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_right);
                                         spE0 = vertex_pos0.x;
                                         spDC = vertex_pos0.y;
                                         spEC = (((shadow_calc_right - shadow_calc_left) * (vertex_pos0.x - shadow_edge_left)) / (shadow_edge_right - shadow_edge_left)) + shadow_calc_left;
@@ -243,11 +243,11 @@ void FTShadowFuncDisplay(GObj *shadow_gobj)
 
                             if ((vertex_pos0.x <= shadow_edge_right) && (shadow_edge_right <= vertex_pos1.x))
                             {
-                                shadow_alt_right = FTShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_right);
+                                shadow_alt_right = ftShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_right);
 
                                 if ((vertex_pos0.x <= shadow_edge_left) && (vertex_pos1.x >= shadow_edge_left))
                                 {
-                                    shadow_alt_left = FTShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_left);
+                                    shadow_alt_left = ftShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_left);
                                 }
                                 else
                                 {
@@ -262,7 +262,7 @@ void FTShadowFuncDisplay(GObj *shadow_gobj)
 
                                     if (vertex_pos0.x <= shadow_edge_left)
                                     {
-                                        shadow_alt_left = FTShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_left);
+                                        shadow_alt_left = ftShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_left);
                                     }
                                     else
                                     {
@@ -271,7 +271,7 @@ void FTShadowFuncDisplay(GObj *shadow_gobj)
 
                                         mpCollisionGetVertexPositionID(ground_line_id, i + 2, &vertex_pos0);
 
-                                        shadow_alt_left = FTShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_left);
+                                        shadow_alt_left = ftShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_left);
                                         spE0 = vertex_pos1.x;
                                         spDC = vertex_pos1.y;
 
@@ -286,10 +286,9 @@ void FTShadowFuncDisplay(GObj *shadow_gobj)
                 }
                 else
                 {
-                    shadow_alt_left = FTShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_left);
-                    shadow_alt_right = FTShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_right);
+                    shadow_alt_left = ftShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_left);
+                    shadow_alt_right = ftShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_right);
                 }
-
                 if (gfx_vertex_num != 0)
                 {
                     if (gSYTaskmanTaskID != 0)
@@ -302,10 +301,27 @@ void FTShadowFuncDisplay(GObj *shadow_gobj)
 
                     if ((gSCManagerBattleState->is_team_battle == TRUE) && !(gSCManagerBattleState->is_not_teamshadows))
                     {
-                        gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, dFTCommonDataShadowColorTeams[fp->team].r, dFTCommonDataShadowColorTeams[fp->team].g, dFTCommonDataShadowColorTeams[fp->team].b, dFTCommonDataShadowColorTeams[fp->team].a);
+                        gDPSetPrimColor
+                        (
+                            gSYTaskmanDLHeads[0]++,
+                            0,
+                            0,
+                            dFTCommonDataShadowColorTeams[fp->team].r,
+                            dFTCommonDataShadowColorTeams[fp->team].g,
+                            dFTCommonDataShadowColorTeams[fp->team].b,
+                            dFTCommonDataShadowColorTeams[fp->team].a
+                        );
                     }
-                    else gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, dFTCommonDataShadowColorDefault.r, dFTCommonDataShadowColorDefault.g, dFTCommonDataShadowColorDefault.b, dFTCommonDataShadowColorDefault.a);
-
+                    else gDPSetPrimColor
+                    (
+                        gSYTaskmanDLHeads[0]++,
+                        0,
+                        0,
+                        dFTCommonDataShadowColorDefault.r,
+                        dFTCommonDataShadowColorDefault.g,
+                        dFTCommonDataShadowColorDefault.b,
+                        dFTCommonDataShadowColorDefault.a
+                    );
                     sv = shadow_vertex;
 
                     sv->n.ob[0] = shadow_edge_left;
@@ -430,7 +446,7 @@ void FTShadowFuncDisplay(GObj *shadow_gobj)
 }
 
 // 0x8013BB88
-GObj* FTShadowMakeShadow(GObj *fighter_gobj)
+GObj* ftShadowMakeShadow(GObj *fighter_gobj)
 {
     GObj *shadow_gobj = gcMakeGObjSPAfter(nGCCommonKindShadow, NULL, nGCCommonLinkIDShadow, GOBJ_PRIORITY_DEFAULT);
     FTStruct *fp;
@@ -460,7 +476,7 @@ GObj* FTShadowMakeShadow(GObj *fighter_gobj)
     }
     shadow_gobj->user_data.p = fs;
 
-    gcAddGObjDisplay(shadow_gobj, FTShadowFuncDisplay, 7, GOBJ_PRIORITY_DEFAULT, ~0);
+    gcAddGObjDisplay(shadow_gobj, ftShadowFuncDisplay, 7, GOBJ_PRIORITY_DEFAULT, ~0);
 
     return shadow_gobj;
 }

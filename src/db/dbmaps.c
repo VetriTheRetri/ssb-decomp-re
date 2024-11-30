@@ -6,15 +6,6 @@
 
 // // // // // // // // // // // //
 //                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x800D69E0
-s32 sDBMapsPad0x800D69E0;
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -144,6 +135,15 @@ SYTaskmanSetup dDBMapsTaskmanSetup =
     
     dbMapsFuncStart         		// Task start function
 };
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x800D69E0
+s32 sDBMapsPad0x800D69E0;
 
 // // // // // // // // // // // //
 //                               //

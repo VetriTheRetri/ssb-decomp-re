@@ -20,24 +20,6 @@ extern intptr_t D_NF_00000055;
 
 // // // // // // // // // // // //
 //                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x801313B0
-void *gEFManagerFiles[3];
-
-// 0x801313BC
-EFStruct *sEFManagerStructsAllocFree;
-
-// 0x801313C0
-s32 sEFManagerStructsFreeNum;
-
-// 0x801313C4
-s32 gEFManagerParticleBankID;
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -1734,6 +1716,24 @@ EFDesc dEFManagerItemGetSwirlEffectDesc =
     &lEFManagerItemGetSwirlAnimJoint,              // AnimJoint offset
     &lEFManagerItemGetSwirlMatAnimJoint            // MatAnimJoint offset
 };
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x801313B0
+void *gEFManagerFiles[3];
+
+// 0x801313BC
+EFStruct *sEFManagerStructsAllocFree;
+
+// 0x801313C0
+s32 sEFManagerStructsFreeNum;
+
+// 0x801313C4
+s32 gEFManagerParticleBankID;
 
 // // // // // // // // // // // //
 //                               //

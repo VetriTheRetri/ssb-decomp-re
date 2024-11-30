@@ -9,33 +9,6 @@ extern void* func_800269C0_275C0(u16);
 
 // // // // // // // // // // // //
 //                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x801322B0
-s32 sMNCongraPad0x801322B0[2];
-
-// 0x801322B8
-LBFileNode sMNCongraStatusBuffer[5];
-
-// 0x801322E0
-s32 sMNCongraFighterKind;
-
-// 0x801322E4
-s32 sMNCongraSkipWait;
-
-// 0x801322E8
-s32 sMNCongraSceneChangeWait;
-
-// 0x801322EC
-sb32 sMNCongraIsProceed;
-
-// 0x801322F0
-sb32 sMNCongraIsProceedScene;
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -194,6 +167,33 @@ SYTaskmanSetup dMNCongraTaskmanSetup =
 
 // // // // // // // // // // // //
 //                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x801322B0
+s32 sMNCongraPad0x801322B0[2];
+
+// 0x801322B8
+LBFileNode sMNCongraStatusBuffer[5];
+
+// 0x801322E0
+s32 sMNCongraFighterKind;
+
+// 0x801322E4
+s32 sMNCongraSkipWait;
+
+// 0x801322E8
+s32 sMNCongraSceneChangeWait;
+
+// 0x801322EC
+sb32 sMNCongraIsProceed;
+
+// 0x801322F0
+sb32 sMNCongraIsProceedScene;
+
+// // // // // // // // // // // //
+//                               //
 //           FUNCTIONS           //
 //                               //
 // // // // // // // // // // // //
@@ -203,9 +203,9 @@ sb32 mnCongraCheckPlayerControllerConnected(s32 player)
 {
 	s32 i;
 
-	for (i = 0; i < ARRAY_COUNT(gPlayerControllerPortStatuses); i++)
+	for (i = 0; i < ARRAY_COUNT(gSYControllerDeviceStatuses); i++)
 	{
-		if (player == gPlayerControllerPortStatuses[i])
+		if (player == gSYControllerDeviceStatuses[i])
 		{
 			return TRUE;
 		}	

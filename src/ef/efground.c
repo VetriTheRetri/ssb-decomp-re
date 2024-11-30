@@ -18,18 +18,6 @@ extern EFGroundParam dEFGroundYamabukiParams[6];
 
 // // // // // // // // // // // //
 //                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x80131AB0
-u8 sEFGroundPad0x80131AD0[40];
-
-// 0x80131AD8
-EFGroundActor sEFGroundActor;
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -1133,6 +1121,18 @@ EFGroundParam dEFGroundYamabukiParams[/* */] =
     { 2, 0, 0,10 },
     { 1, 0, 0, 1 }
 };
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x80131AB0
+u8 sEFGroundPad0x80131AD0[40];
+
+// 0x80131AD8
+EFGroundActor sEFGroundActor;
 
 // // // // // // // // // // // //
 //                               //

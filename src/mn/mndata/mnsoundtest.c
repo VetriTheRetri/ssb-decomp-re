@@ -43,54 +43,6 @@ mnCommonSetOptionChangeWaitN(sMNSoundTestOptionChangeWait, is_button, stick_rang
 
 // // // // // // // // // // // //
 //                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x80134300
-s32 sMNSoundTestPad0x80134300[2];
-
-// 0x80134308
-s32 sMNSoundTestOption;                                             // Sound Test option selected (0 = Music, 1 = Sound, 2 = Voice)
-
-// 0x8013430C
-s32 sMNSoundTestPad0x8013430C;
-
-// 0x80134310
-s32 sMNSoundTestOptionColorR[nMNSoundTestOptionEnumCount];            // R color value of sound test menu options
-
-// 0x80134320
-s32 sMNSoundTestOptionColorG[nMNSoundTestOptionEnumCount];            // G color value of sound test menu options
-
-// 0x80134330
-s32 sMNSoundTestOptionColorB[nMNSoundTestOptionEnumCount];            // B color value of sound test menu options
-
-// 0x8013433C
-s32 sMNSoundTestOptionChangeWait;                                   // Frames to wait before new sound test option can be selected
-
-// 0x80134340
-s32 sMNSoundTestDirectionInputKind;                                 // Type of directional input: 0 = none, 1 = left, 2 = right, 3 = up, 4 = down
-
-// 0x80134344
-s32 sMNSoundTestPad0x80134344;                                      // ???
-
-// 0x80134348
-s32 sMNSoundTestOptionSelectID[nMNSoundTestOptionEnumCount];          // Current selected ID of each option (e.g. Music is index 0 and holds a value from 0 to 44)
-
-// 0x80134358
-f32 sMNSoundTestSelectIDPositionsX[nMNSoundTestOptionEnumCount];      // X-Position of each selection ID
-
-// 0x80134364
-s32 sMNSoundTestFadeOutWait;                                        // Frames to wait until fadeout is complete
-
-// 0x80134368
-LBFileNode sMNSoundTestStatusBuffer[32];
-
-// 0x80134468
-void *sMNSoundTestFiles[5];
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -737,6 +689,54 @@ SYTaskmanSetup dMNSoundTestTaskmanSetup =
     
     mnSoundTestFuncStart            // Task start function
 };
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x80134300
+s32 sMNSoundTestPad0x80134300[2];
+
+// 0x80134308
+s32 sMNSoundTestOption;                                             // Sound Test option selected (0 = Music, 1 = Sound, 2 = Voice)
+
+// 0x8013430C
+s32 sMNSoundTestPad0x8013430C;
+
+// 0x80134310
+s32 sMNSoundTestOptionColorR[nMNSoundTestOptionEnumCount];          // R color value of sound test menu options
+
+// 0x80134320
+s32 sMNSoundTestOptionColorG[nMNSoundTestOptionEnumCount];          // G color value of sound test menu options
+
+// 0x80134330
+s32 sMNSoundTestOptionColorB[nMNSoundTestOptionEnumCount];          // B color value of sound test menu options
+
+// 0x8013433C
+s32 sMNSoundTestOptionChangeWait;                                   // Frames to wait before new sound test option can be selected
+
+// 0x80134340
+s32 sMNSoundTestDirectionInputKind;                                 // Type of directional input: 0 = none, 1 = left, 2 = right, 3 = up, 4 = down
+
+// 0x80134344
+s32 sMNSoundTestPad0x80134344;                                      // ???
+
+// 0x80134348
+s32 sMNSoundTestOptionSelectID[nMNSoundTestOptionEnumCount];        // Current selected ID of each option (e.g. Music is index 0 and holds a value from 0 to 44)
+
+// 0x80134358
+f32 sMNSoundTestSelectIDPositionsX[nMNSoundTestOptionEnumCount];    // X-Position of each selection ID
+
+// 0x80134364
+s32 sMNSoundTestFadeOutWait;                                        // Frames to wait until fadeout is complete
+
+// 0x80134368
+LBFileNode sMNSoundTestStatusBuffer[32];
+
+// 0x80134468
+void *sMNSoundTestFiles[ARRAY_COUNT(dMNSoundTestFileIDs)];
 
 // // // // // // // // // // // //
 //                               //

@@ -21,90 +21,6 @@ extern uintptr_t D_NF_000000C3;
 
 // // // // // // // // // // // //
 //                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x8013A7D0
-s32 sGMStaffrollPad0x8013A7D0[2];
-
-// 0x8013A7D8
-Gfx *sGMStaffrollNameAndJobDisplayLists[56];
-
-// 0x8013A8B8
-s32 sGMStaffrollNameID;
-
-// 0x8013A8BC
-f32 sGMStaffrollRollSpeed;
-
-// 0x8013A8C0
-s32 sGMStaffrollStatus;
-
-// 0x8013A8C4
-GMStaffrollName *sGMStaffrollNameAllocFree;
-
-// 0x8013A8C8
-GObj *sGMStaffrollScrollGObj;
-
-// 0x8013A8CC
-GObj *sGMStaffrollCrosshairGObj;
-
-// 0x8013A8D0
-sb32 sGMStaffrollIsPaused;
-
-// 0x8013A8D4
-f32 sGMStaffrollCrosshairPositionX;
-
-// 0x8013A8D8
-f32 sGMStaffrollCrosshairPositionY;
-
-// 0x8013A8DC
-AObjEvent32 *sGMStaffrollNameAnimJoint;
-
-// 0x8013A8E0
-void *sGMStaffrollNameInterpolation;
-
-// 0x8013A8E4
-CObj *sGMStaffrollCamera;
-
-// 0x8013A8E8
-void *sGMStaffrollDObjDesc;
-
-// 0x8013A8EC
-s32 sGMStaffrollHighlightSize;
-
-// 0x8013A8F0
-f32 sGMStaffrollHighlightPositionX;
-
-// 0x8013A8F4
-f32 sGMStaffrollHighlightPositionY;
-
-// 0x8013A8F8
-GObj *sGMStaffrollStaffRoleTextGObj;
-
-// 0x8013A8FC
-GObj *sGMStaffrollCompanyTextGObj;
-
-// 0x8013A900
-s32 sGMStaffrollRollBeginWait;
-
-// 0x8013A904 - controller port to use for credits sequence
-u8 sGMStaffrollPlayer;
-
-// 0x8013A908
-s32 sGMStaffrollRollEndWait;
-
-// 0x8013A910
-LBFileNode sGMStaffrollStatusBuffer[32];
-
-// 0x8013AA10
-void *sGMStaffrollFiles[1];
-
-// 0x8013AA18
-Mtx44f sGMStaffrollMatrix;
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -527,6 +443,90 @@ Gfx dGMStaffrollTextBoxDisplayList[/* */] =
 	gsDPFillRectangle(346, 162, 584, 164),
 	gsSPEndDisplayList()
 };
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x8013A7D0
+s32 sGMStaffrollPad0x8013A7D0[2];
+
+// 0x8013A7D8
+Gfx *sGMStaffrollNameAndJobDisplayLists[56];
+
+// 0x8013A8B8
+s32 sGMStaffrollNameID;
+
+// 0x8013A8BC
+f32 sGMStaffrollRollSpeed;
+
+// 0x8013A8C0
+s32 sGMStaffrollStatus;
+
+// 0x8013A8C4
+GMStaffrollName *sGMStaffrollNameAllocFree;
+
+// 0x8013A8C8
+GObj *sGMStaffrollScrollGObj;
+
+// 0x8013A8CC
+GObj *sGMStaffrollCrosshairGObj;
+
+// 0x8013A8D0
+sb32 sGMStaffrollIsPaused;
+
+// 0x8013A8D4
+f32 sGMStaffrollCrosshairPositionX;
+
+// 0x8013A8D8
+f32 sGMStaffrollCrosshairPositionY;
+
+// 0x8013A8DC
+AObjEvent32 *sGMStaffrollNameAnimJoint;
+
+// 0x8013A8E0
+void *sGMStaffrollNameInterpolation;
+
+// 0x8013A8E4
+CObj *sGMStaffrollCamera;
+
+// 0x8013A8E8
+void *sGMStaffrollDObjDesc;
+
+// 0x8013A8EC
+s32 sGMStaffrollHighlightSize;
+
+// 0x8013A8F0
+f32 sGMStaffrollHighlightPositionX;
+
+// 0x8013A8F4
+f32 sGMStaffrollHighlightPositionY;
+
+// 0x8013A8F8
+GObj *sGMStaffrollStaffRoleTextGObj;
+
+// 0x8013A8FC
+GObj *sGMStaffrollCompanyTextGObj;
+
+// 0x8013A900
+s32 sGMStaffrollRollBeginWait;
+
+// 0x8013A904 - controller port to use for credits sequence
+u8 sGMStaffrollPlayer;
+
+// 0x8013A908
+s32 sGMStaffrollRollEndWait;
+
+// 0x8013A910
+LBFileNode sGMStaffrollStatusBuffer[32];
+
+// 0x8013AA10
+void *sGMStaffrollFiles[ARRAY_COUNT(dGMStaffrollFileIDs)];
+
+// 0x8013AA18
+Mtx44f sGMStaffrollMatrix;
 
 // // // // // // // // // // // //
 //                               //

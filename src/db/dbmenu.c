@@ -10,48 +10,6 @@ extern void func_ovl8_8037DFCC(s32, s16);
 
 // // // // // // // // // // // //
 //                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x8036A400 - or string buffer?
-char sDBMenuFontBuffer[0x7000];
-
-// 0x80371400
-s32 sDBMenuCursorExitID;
-
-// 0x80371404
-s32 D_ovl9_80371404; // TODO - some struct, pretty important!
-
-// 0x80371408
-GObj* sDBMenuActorGObj;
-
-// 0x8037140C
-DBMenuOption *sDBMenuOptions;
-
-// 0x80371410
-s32 sDBMenuOptionsNum;
-
-// 0x80371414
-s32 sDBMenuCursorID;
-
-// 0x80371418
-void (*sDBMenuActorFuncDisplay)(GObj*);
-
-// 0x8037141C
-s32 sDBMenuIsRedrawInterrupt;
-
-// 0x80371420
-sb32 gDBMenuIsMenuOpen;
-
-// 0x80371424
-s32 sDBMenuTaskCountPrev;
-
-// 0x80371428
-char sDBMenuStringBuffer[0x38];
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -244,6 +202,48 @@ DBFont dDBMenuDefaultFont =
 	1,							// ???
 	dDBMenuGlyphs				// Glyphs?
 };
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x8036A400 - or string buffer?
+char sDBMenuFontBuffer[0x7000];
+
+// 0x80371400
+s32 sDBMenuCursorExitID;
+
+// 0x80371404
+s32 D_ovl9_80371404; // TODO - some struct, pretty important!
+
+// 0x80371408
+GObj* sDBMenuActorGObj;
+
+// 0x8037140C
+DBMenuOption *sDBMenuOptions;
+
+// 0x80371410
+s32 sDBMenuOptionsNum;
+
+// 0x80371414
+s32 sDBMenuCursorID;
+
+// 0x80371418
+void (*sDBMenuActorFuncDisplay)(GObj*);
+
+// 0x8037141C
+s32 sDBMenuIsRedrawInterrupt;
+
+// 0x80371420
+sb32 gDBMenuIsMenuOpen;
+
+// 0x80371424
+s32 sDBMenuTaskCountPrev;
+
+// 0x80371428
+char sDBMenuStringBuffer[0x38];
 
 // // // // // // // // // // // //
 //                               //

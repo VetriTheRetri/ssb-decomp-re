@@ -15,24 +15,6 @@ extern uintptr_t D_NF_000000C2;
 
 // // // // // // // // // // // //
 //                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x80132040
-s32 sMNStartupPad0x80132040[2];
-
-// 0x80132048
-LBFileNode sMNStartupStatusBuffer[5];
-
-// 0x80132070 - Delay frames before N64 logo can be skipped
-s32 sMNStartupSkipAllowWait;
-
-// 0x80132074 - if TRUE, proceed to the opening movie
-sb32 sMNStartupIsProceedOpening;
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -101,6 +83,24 @@ SYTaskmanSetup dMNStartupTaskmanSetup =
     
     mnStartupFuncStart              // Task start function
 };
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x80132040
+s32 sMNStartupPad0x80132040[2];
+
+// 0x80132048
+LBFileNode sMNStartupStatusBuffer[5];
+
+// 0x80132070 - Delay frames before N64 logo can be skipped
+s32 sMNStartupSkipAllowWait;
+
+// 0x80132074 - if TRUE, proceed to the opening movie
+sb32 sMNStartupIsProceedOpening;
 
 // // // // // // // // // // // //
 //                               //

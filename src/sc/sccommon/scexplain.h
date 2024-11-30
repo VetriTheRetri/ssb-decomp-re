@@ -28,7 +28,7 @@ extern intptr_t lSCExplainSpecialMoveRGBDisplayList;        // 0x00005E40
 extern void scExplainLoadExplainFiles(void);
 extern void scExplainSetBattleState(void);
 extern void scExplainStartBattle(void);
-extern void func_ovl63_8018D248(void);
+extern void scExplainMakeCamera(void);
 extern void scExplainWindowFuncDisplay(GObj *gobj);
 extern void scExplainMakeWindowCamera(void);
 extern void scExplainSetPlayerInterfacePositions(void);

@@ -3,21 +3,6 @@
 
 // // // // // // // // // // // //
 //                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x80131870
-GMRumbleScript sGMRumbleScripts[GMCOMMON_PLAYERS_MAX * GMRUMBLE_ARRAY_COLS];
-
-// 0x80131960
-GMRumbleLink sGMRumbleLinks[GMCOMMON_PLAYERS_MAX * GMRUMBLE_ARRAY_COLS];
-
-// 0x801319F0
-GMRumblePlayer sGMRumblePlayers[GMCOMMON_PLAYERS_MAX];
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -144,6 +129,21 @@ u8 dGMRumblePriorities[/* */] =
     3,  3, 
     3
 };
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x80131870
+GMRumbleScript sGMRumbleScripts[GMCOMMON_PLAYERS_MAX * GMRUMBLE_ARRAY_COLS];
+
+// 0x80131960
+GMRumbleLink sGMRumbleLinks[GMCOMMON_PLAYERS_MAX * GMRUMBLE_ARRAY_COLS];
+
+// 0x801319F0
+GMRumblePlayer sGMRumblePlayers[GMCOMMON_PLAYERS_MAX];
 
 // // // // // // // // // // // //
 //                               //

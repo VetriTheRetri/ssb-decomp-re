@@ -1,11 +1,22 @@
-#include <gm/generic.h>
 #include <lb/library.h>
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
 
 // 0x8018E480
 LBFileNode sSCVSBattleStatusBuffer[100];
 
 // 0x8018E7A0
 LBFileNode sSCVSBattleForceStatusBuffer[7];
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 // 0x8018E330
 void scVSBattleSetupFiles(void)

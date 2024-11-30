@@ -21,9 +21,9 @@ sb32 scSubsysControllerCheckConnected(s32 player)
 {
     s32 i;
     
-    for (i = 0; i < ARRAY_COUNT(gPlayerControllerPortStatuses); i++)
+    for (i = 0; i < ARRAY_COUNT(gSYControllerDeviceStatuses); i++)
     {
-        if (player == gPlayerControllerPortStatuses[i])
+        if (player == gSYControllerDeviceStatuses[i])
         {
             return TRUE;
         }

@@ -17,36 +17,6 @@ extern uintptr_t D_NF_0000003E;
 
 // // // // // // // // // // // //
 //                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x80132740
-s32 sMVOpeningNewcomersPad0x80132740[2];
-
-// 0x80132748
-s32 sMVOpeningNewcomersTotalTimeTics;
-
-// 0x8013274C
-s32 sMVOpeningNewcomersOverlayAlpha; 
-
-// 0x80132750
-u16 sMVOpeningNewcomersCharacterMask; 
-
-// 0x80132754
-s32 sMVOpeningNewcomersUnused0x80132754;
-
-// 0x80132758
-LBFileNode dMVOpeningNewcomersStatusBuffer[48];
-
-// 0x801328D8
-LBFileNode dMVOpeningNewcomersForceStatusBuffer[7];
-
-// 0x80132910
-void *sMVOpeningNewcomersFiles[2];
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -115,6 +85,36 @@ SYTaskmanSetup dMVOpeningNewcomersTaskmanSetup =
     
     mvOpeningNewcomersFuncStart         // Task start function
 };
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x80132740
+s32 sMVOpeningNewcomersPad0x80132740[2];
+
+// 0x80132748
+s32 sMVOpeningNewcomersTotalTimeTics;
+
+// 0x8013274C
+s32 sMVOpeningNewcomersOverlayAlpha; 
+
+// 0x80132750
+u16 sMVOpeningNewcomersCharacterMask; 
+
+// 0x80132754
+s32 sMVOpeningNewcomersUnused0x80132754;
+
+// 0x80132758
+LBFileNode dMVOpeningNewcomersStatusBuffer[48];
+
+// 0x801328D8
+LBFileNode dMVOpeningNewcomersForceStatusBuffer[7];
+
+// 0x80132910
+void *sMVOpeningNewcomersFiles[ARRAY_COUNT(dMVOpeningNewcomersFileIDs)];
 
 // // // // // // // // // // // //
 //                               //

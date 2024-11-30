@@ -25,25 +25,25 @@ alSoundEffect *sFTPublicityCommonALSound;       // Current common reaction sound
 u16 sFTPublicityCommonOrder;                    // Current common reaction's sound effect number
 
 // 0x8018CFA4
-sb32 sFTPublicityCallIsInterrupt;              // If TRUE, stop player's crowd chant
+sb32 sFTPublicityCallIsInterrupt;               // If TRUE, stop player's crowd chant
 
 // 0x8018CFA8
-s32 sFTPublicityCallWait;                      // Wait this much before new audience cheer can occur?
+s32 sFTPublicityCallWait;                       // Wait this much before new audience cheer can occur?
 
 // 0x8018CFAC
-s32 sFTPublicityCallPlayerNum;                 // ...or this is u32 and the other s32, not entirely sure which
+s32 sFTPublicityCallPlayerNum;                  // ...or this is u32 and the other s32, not entirely sure which
 
 // 0x8018CFB0
-alSoundEffect *sFTPublicityCallALSound;        // Fighter's chant sound struct
+alSoundEffect *sFTPublicityCallALSound;         // Fighter's chant sound struct
 
 // 0x8018CFB4
-u16 sFTPublicityCallOrder;                     // Current chant's sound effect number
+u16 sFTPublicityCallOrder;                      // Current chant's sound effect number
 
 // 0x8018CFB8
-s32 sFTPublicityCallCount;                     // Number of times fighter's name has been chanted
+s32 sFTPublicityCallCount;                      // Number of times fighter's name has been chanted
 
 // 0x8018CFBC
-u32 sFTPublicityCallID;                        // Sound effect ID of audience chant for fighter
+u32 sFTPublicityCallID;                         // Sound effect ID of audience chant for fighter
 
 // 0x8018CFC0
 s32 sFTPublicityPlayersDown;                    // Number of players too close to the bottom blast zone

@@ -13,8 +13,6 @@ extern void syRdpSetViewport(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 //                               //
 // // // // // // // // // // // //
 
-extern f32 dSCSubsysFighterScales[/* */];
-
 extern uintptr_t D_NF_0000004F;                         // 0x0000004F
 extern uintptr_t D_NF_00000050;							// 0x00000050
 extern uintptr_t D_NF_00000051;							// 0x00000051
@@ -41,6 +39,28 @@ mnCommonCheckGetOptionStickInputLR(sSC1PContinueOptionChangeWait, stick_range, m
 
 #define sc1PContinueSetOptionChangeWaitN(stick_range) \
 (sSC1PContinueOptionChangeWait = ((stick_range) + 160) / 5)
+
+// // // // // // // // // // // //
+//                               //
+//       INITIALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
+// 0x80134160
+u32 dSC1PContinueFileIDs[/* */] =
+{
+    &D_NF_0000004F,
+    &D_NF_00000051,
+    &D_NF_00000025,
+    &D_NF_000000A4,
+    &D_NF_00000050
+};
+
+// 0x80134178
+Lights1 dSC1PContinueLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x14, 0x14, 0x14);
+
+// 0x80134190
+Lights1 dSC1PContinueLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x00, 0x14, 0x00);
 
 // // // // // // // // // // // //
 //                               //
@@ -115,7 +135,7 @@ f32 sSC1PContinueGameOverColorStep;
 FTDemoDesc sSC1PContinueFighterDemoDesc;
 
 // 0x80134354 - ??? set but never used?
-s32 D_ovl55_80134354;
+s32 sSC1PContinueUnknown0x80134354;
 
 // 0x80134358
 s32 sSC1PContinueOptionNoGameOverInputWait;
@@ -142,29 +162,7 @@ LBFileNode sSC1PContinueStatusBuffer[48];
 LBFileNode sSC1PContinueForceStatusBuffer[7];
 
 // 0x80134528
-void *sSC1PContinueFiles[5];
-
-// // // // // // // // // // // //
-//                               //
-//       INITIALIZED DATA        //
-//                               //
-// // // // // // // // // // // //
-
-// 0x80134160
-u32 dSC1PContinueFileIDs[/* */] =
-{
-    &D_NF_0000004F,
-    &D_NF_00000051,
-    &D_NF_00000025,
-    &D_NF_000000A4,
-    &D_NF_00000050
-};
-
-// 0x80134178
-Lights1 dSC1PContinueLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x14, 0x14, 0x14);
-
-// 0x80134190
-Lights1 dSC1PContinueLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x00, 0x14, 0x00);
+void *sSC1PContinueFiles[ARRAY_COUNT(dSC1PContinueFileIDs)];
 
 // // // // // // // // // // // //
 //                               //
@@ -806,7 +804,7 @@ void sc1PContinueMakeRoomFadeInCamera(void)
     );
     syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-    cobj->flags = 4;
+    cobj->flags = COBJ_FLAG_DLBUFFERS;
 }
 
 // 0x80133474
@@ -833,7 +831,7 @@ void sc1PContinueMakeSpotlightFadeCamera(void)
     );
     syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-    cobj->flags = 4;
+    cobj->flags = COBJ_FLAG_DLBUFFERS;
 }
 
 // 0x80133524
@@ -860,7 +858,7 @@ void sc1PContinueMakeRoomFadeOutCamera(void)
     );
     syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-    cobj->flags = 4;
+    cobj->flags = COBJ_FLAG_DLBUFFERS;
 }
 
 // 0x801335D4
@@ -884,7 +882,7 @@ void sc1PContinueSetupCamera(CObj *cobj)
     cobj->projection.persp.near = 100.0F;
     cobj->projection.persp.far = 15000.0F;
 
-    cobj->flags = 4;
+    cobj->flags = COBJ_FLAG_DLBUFFERS;
 }
 
 // 0x80133694
@@ -964,7 +962,7 @@ void sc1PContinueMakeSpotlightCamera(void)
     );
     syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-    cobj->flags = 4;
+    cobj->flags = COBJ_FLAG_DLBUFFERS;
 }
 
 // 0x80133868
@@ -991,7 +989,7 @@ void sc1PContinueMakeTextCamera(void)
     );
     syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-    cobj->flags = 4;
+    cobj->flags = COBJ_FLAG_DLBUFFERS;
 }
 
 // 0x80133918
@@ -1005,7 +1003,7 @@ void sc1PContinueInitVars(void)
 
     sSC1PContinueOptionSelect = 0;
     sSC1PContinueStatus = 0;
-    D_ovl55_80134354 = 0;
+    sSC1PContinueUnknown0x80134354 = 0;
     sSC1PContinueOptionNoGameOverAutoWait = -1;
 }
 
@@ -1035,9 +1033,9 @@ void sc1PContinueFuncRun(GObj *gobj)
 
             syTaskmanSetLoadScene();
         }
-        if (D_ovl55_80134354 != 0)
+        if (sSC1PContinueUnknown0x80134354 != 0)
         {
-            D_ovl55_80134354--;
+            sSC1PContinueUnknown0x80134354--;
         }
         if (sSC1PContinueOptionChangeWait != 0)
         {

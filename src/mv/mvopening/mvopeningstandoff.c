@@ -18,42 +18,6 @@ extern uintptr_t D_NF_00000046;
 
 // // // // // // // // // // // //
 //                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x801329C0
-s32 sMVOpeningStandoffPad0x801329C0[2];
-
-// 0x801329C8
-void *sMVOpeningStandoffMarioFigatreeHeap;
-
-// 0x801329CC
-void *sMVOpeningStandoffKirbyFigatreeHeap;
-
-// 0x801329D0
-s32 sMVOpeningStandoffTotalTimeTics;
-
-// 0x801329D4
-f32 sMVOpeningStandoffWallpaperScrollSpeed;
-
-// 0x801329D8
-s32 sMVOpeningStandoffPad0x801329D8;
-
-// 0x801329DC
-s32 sMVOpeningStandoffUnused0x801329DC;
-
-// 0x801329E0
-LBFileNode sMVOpeningStandoffStatusBuffer[48];
-
-// 0x80132B60
-LBFileNode sMVOpeningStandoffForceStatusBuffer[7];
-
-// 0x80132B98
-void *sMVOpeningStandoffFiles[2];
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -114,6 +78,42 @@ SYTaskmanSetup dMVOpeningStandoffTaskmanSetup =
     
     mvOpeningStandoffFuncStart          // Task start function
 };
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x801329C0
+s32 sMVOpeningStandoffPad0x801329C0[2];
+
+// 0x801329C8
+void *sMVOpeningStandoffMarioFigatreeHeap;
+
+// 0x801329CC
+void *sMVOpeningStandoffKirbyFigatreeHeap;
+
+// 0x801329D0
+s32 sMVOpeningStandoffTotalTimeTics;
+
+// 0x801329D4
+f32 sMVOpeningStandoffWallpaperScrollSpeed;
+
+// 0x801329D8
+s32 sMVOpeningStandoffPad0x801329D8;
+
+// 0x801329DC
+s32 sMVOpeningStandoffUnused0x801329DC;
+
+// 0x801329E0
+LBFileNode sMVOpeningStandoffStatusBuffer[48];
+
+// 0x80132B60
+LBFileNode sMVOpeningStandoffForceStatusBuffer[7];
+
+// 0x80132B98
+void *sMVOpeningStandoffFiles[ARRAY_COUNT(dMVOpeningStandoffFileIDs)];
 
 // // // // // // // // // // // //
 //                               //

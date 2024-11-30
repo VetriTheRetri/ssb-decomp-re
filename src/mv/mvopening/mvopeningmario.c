@@ -11,6 +11,34 @@ extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
 //                               //
+//       INITIALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
+// 0x8018E090
+CObjDesc dMVOpeningMarioStartCObjDesc = { { 300.0F, 500.0F, 1700.0F }, { 0.0F, 100.0F, 0.0F }, 0.15F };
+
+// 0x8018E0AC
+CObjDesc dMVOpeningMarioEndCObjDesc = { { 800.0F, 500.0F, 1300.0F }, { 100.0F, 100.0F, 0.0F }, 0.15F };
+
+// 0x8018E0C8
+FTKeyEvent dMVOpeningMarioKeyEvents[/* */] =
+{
+	FTKEY_EVENT_STICK(0, 0, 0),                         // 0x2000, 0x0000
+	FTKEY_EVENT_BUTTON(A_BUTTON, 1),                    // 0x1001, 0x8000
+	FTKEY_EVENT_BUTTON(0, 11),                          // 0x100B, 0x0000
+	FTKEY_EVENT_BUTTON(A_BUTTON, 1),                    // 0x1001, 0x8000
+	FTKEY_EVENT_BUTTON(0, 20),                          // 0x1014, 0x0000
+	FTKEY_EVENT_STICK(0, -I_CONTROLLER_RANGE_MAX, 0),   // 0x2000, 0x00B0
+	FTKEY_EVENT_BUTTON(A_BUTTON, 1),                    // 0x1001, 0x8000
+	FTKEY_EVENT_END()                                   // 0x0000
+};
+
+// 0x8018E0E8
+u32 dMVOpeningMarioFileIDs[/* */] = { &lIFCommonAnnounceCommonFileID, &lMVOpeningCommonFileID };
+
+// // // // // // // // // // // //
+//                               //
 //   GLOBAL / STATIC VARIABLES   //
 //                               //
 // // // // // // // // // // // //
@@ -55,38 +83,10 @@ LBFileNode sMVOpeningMarioStatusBuffer[48];
 LBFileNode sMVOpeningMarioForceStatusBuffer[7];
 
 // 0x8018E420
-void *sMVOpeningMarioFiles[2];
+void *sMVOpeningMarioFiles[ARRAY_COUNT(dMVOpeningMarioFileIDs)];
 
 // 0x8018E428
 SCBattleState sMVOpeningMarioBattleState;
-
-// // // // // // // // // // // //
-//                               //
-//       INITIALIZED DATA        //
-//                               //
-// // // // // // // // // // // //
-
-// 0x8018E090
-CObjDesc dMVOpeningMarioStartCObjDesc = { { 300.0F, 500.0F, 1700.0F }, { 0.0F, 100.0F, 0.0F }, 0.15F };
-
-// 0x8018E0AC
-CObjDesc dMVOpeningMarioEndCObjDesc = { { 800.0F, 500.0F, 1300.0F }, { 100.0F, 100.0F, 0.0F }, 0.15F };
-
-// 0x8018E0C8
-FTKeyEvent dMVOpeningMarioKeyEvents[/* */] =
-{
-	FTKEY_EVENT_STICK(0, 0, 0),                         // 0x2000, 0x0000
-	FTKEY_EVENT_BUTTON(A_BUTTON, 1),                    // 0x1001, 0x8000
-	FTKEY_EVENT_BUTTON(0, 11),                          // 0x100B, 0x0000
-	FTKEY_EVENT_BUTTON(A_BUTTON, 1),                    // 0x1001, 0x8000
-	FTKEY_EVENT_BUTTON(0, 20),                          // 0x1014, 0x0000
-	FTKEY_EVENT_STICK(0, -I_CONTROLLER_RANGE_MAX, 0),   // 0x2000, 0x00B0
-	FTKEY_EVENT_BUTTON(A_BUTTON, 1),                    // 0x1001, 0x8000
-	FTKEY_EVENT_END()                                   // 0x0000
-};
-
-// 0x8018E0E8
-u32 dMVOpeningMarioFileIDs[/* */] = { &lIFCommonAnnounceCommonFileID, &lMVOpeningCommonFileID };
 
 // // // // // // // // // // // //
 //                               //
@@ -519,7 +519,7 @@ void mvOpeningMarioFuncStart(void)
 	mvOpeningMarioSetupFiles();
 
 	gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningMarioFuncRun, 13, GOBJ_PRIORITY_DEFAULT);
-	gcMakeDefaultCameraGObj(9, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeDefaultCameraGObj(nGCCommonLinkIDCamera, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 
 	mvOpeningMarioInitVars();
 	efParticleInitAll();

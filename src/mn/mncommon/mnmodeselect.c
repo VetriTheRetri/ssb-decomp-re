@@ -32,45 +32,6 @@ mnCommonSetOptionChangeWaitN(sMNModeSelectOptionChangeWait, is_button, stick_ran
 
 // // // // // // // // // // // //
 //                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x80132C80
-s32 sMNModeSelectPad0x80132C80[2];
-
-// 0x80132C88
-s32 sMNModeSelectOption;
-
-// 0x80132C8C
-GObj *sMNModeSelectOption1PModeGObj;
-
-// 0x80132C90
-GObj *sMNModeSelectOptionVSModeGObj;
-
-// 0x80132C94
-GObj *sMNModeSelectOptionOptionGObj;
-
-// 0x80132C98
-GObj *sMNModeSelectOptionDataGObj;
-
-// 0x80132C9C
-s32 sMNModeSelectOptionChangeWait;
-
-// 0x80132CA0
-s32 sMNModeSelectTotalTimeTics;
-
-// 0x80132CA4
-s32 sMNModeSelectReturnTic;
-
-// 0x80132CA8
-LBFileNode sMNModeSelectStatusBuffer[24];
-
-// 0x80132D68
-void *sMNModeSelectFiles[2];
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -136,6 +97,45 @@ SYTaskmanSetup dMNModeSelectTaskmanSetup =
     
     mnModeSelectFuncStart          	    // Task start function
 };
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x80132C80
+s32 sMNModeSelectPad0x80132C80[2];
+
+// 0x80132C88
+s32 sMNModeSelectOption;
+
+// 0x80132C8C
+GObj *sMNModeSelectOption1PModeGObj;
+
+// 0x80132C90
+GObj *sMNModeSelectOptionVSModeGObj;
+
+// 0x80132C94
+GObj *sMNModeSelectOptionOptionGObj;
+
+// 0x80132C98
+GObj *sMNModeSelectOptionDataGObj;
+
+// 0x80132C9C
+s32 sMNModeSelectOptionChangeWait;
+
+// 0x80132CA0
+s32 sMNModeSelectTotalTimeTics;
+
+// 0x80132CA4
+s32 sMNModeSelectReturnTic;
+
+// 0x80132CA8
+LBFileNode sMNModeSelectStatusBuffer[24];
+
+// 0x80132D68
+void *sMNModeSelectFiles[ARRAY_COUNT(dMNModeSelectFileIDs)];
 
 // // // // // // // // // // // //
 //                               //

@@ -11,6 +11,29 @@ extern u32 sySchedulerGetTicCount();
 
 // // // // // // // // // // // //
 //                               //
+//       INITIALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
+// 0x8018E120
+CObjDesc dMVOpeningSamusCObjDescStart = { { 400.0F, 1100.0F, 0.0F }, { 0.0F,  200.0F, 0.0F }, 0.6F };
+
+// 0x8018E13C
+CObjDesc dMVOpeningSamusCObjDescEnd = { { 1600.0F, 230.0F, 200.0F }, { 0.0F, 200.0F, 0.0F }, 0.6F };
+
+// 0x8018E158
+FTKeyEvent dMVOpeningSamusKeyEvents[/* */] =
+{
+	FTKEY_EVENT_BUTTON(Z_TRIG, 1),   // 1001, 0x2000
+	FTKEY_EVENT_BUTTON(A_BUTTON, 1), // 1001, 0x8000
+	FTKEY_EVENT_END()                // 0000
+};
+
+// 0x8018E164
+u32 dMVOpeningSamusFileIDs[/* */] = { &lIFCommonAnnounceCommonFileID, &lMVOpeningCommonFileID };
+
+// // // // // // // // // // // //
+//                               //
 //   GLOBAL / STATIC VARIABLES   //
 //                               //
 // // // // // // // // // // // //
@@ -55,33 +78,10 @@ LBFileNode sMVOpeningSamusStatusBuffer[48];
 LBFileNode sMVOpeningSamusForceStatusBuffer[7];
 
 // 0x8018E490
-void *sMVOpeningSamusFiles[2];
+void *sMVOpeningSamusFiles[ARRAY_COUNT(dMVOpeningSamusFileIDs)];
 
 // 0x8018E498
 SCBattleState sMVOpeningSamusBattleState;
-
-// // // // // // // // // // // //
-//                               //
-//       INITIALIZED DATA        //
-//                               //
-// // // // // // // // // // // //
-
-// 0x8018E120
-CObjDesc dMVOpeningSamusCObjDescStart = { { 400.0F, 1100.0F, 0.0F }, { 0.0F,  200.0F, 0.0F }, 0.6F };
-
-// 0x8018E13C
-CObjDesc dMVOpeningSamusCObjDescEnd = { { 1600.0F, 230.0F, 200.0F }, { 0.0F, 200.0F, 0.0F }, 0.6F };
-
-// 0x8018E158
-FTKeyEvent dMVOpeningSamusKeyEvents[/* */] =
-{
-	FTKEY_EVENT_BUTTON(Z_TRIG, 1),   // 1001, 0x2000
-	FTKEY_EVENT_BUTTON(A_BUTTON, 1), // 1001, 0x8000
-	FTKEY_EVENT_END()                // 0000
-};
-
-// 0x8018E164
-u32 dMVOpeningSamusFileIDs[/* */] = { &lIFCommonAnnounceCommonFileID, &lMVOpeningCommonFileID };
 
 // // // // // // // // // // // //
 //                               //
@@ -521,7 +521,7 @@ void mvOpeningSamusFuncStart(void)
 
 	mvOpeningSamusSetupFiles();
 	gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningSamusFuncRun, nGCCommonLinkIDMovie, GOBJ_PRIORITY_DEFAULT);
-	gcMakeDefaultCameraGObj(9, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeDefaultCameraGObj(nGCCommonLinkIDCamera, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	mvOpeningSamusInitVars();
 	efParticleInitAll();
 	ftParamInitGame();

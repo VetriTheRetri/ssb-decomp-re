@@ -21,51 +21,6 @@ extern uintptr_t D_NF_00000040;
 
 // // // // // // // // // // // //
 //                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x8018DA40
-s32 sMVOpeningJunglePad0x8018DA40[2];
-
-// 0x8018DA48
-s32 sMVOpeningJungleTotalTimeTics;
-
-// 0x8018DA4C
-s32 sMVOpeningJunglePad0x8018DA4C;
-
-// 0x8018DA50
-GObj* sMVOpeningJungleFighterGObj;
-
-// 0x8018DA54
-s32 sMVOpeningJunglePad0x8018DA54;
-
-// 0x8018DA58
-GObj* sMVOpeningJungleStageCameraGObj;
-
-// 0x8018DA5C
-s32 sMVOpeningJunglePad0x8018DA5C[2];
-
-// 0x8018DA68
-CObjDesc sMVOpeningJungleUnusedAdjustedStartCObjDesc;
-
-// 0x8018DA88
-CObjDesc sMVOpeningJungleUnusedAdjustedEndCObjDesc;
-
-// 0x8018DAA8
-LBFileNode sMVOpeningJungleStatusBuffer[48];
-
-// 0x8018DC28
-LBFileNode sMVOpeningJungleForceStatusBuffer[7];
-
-// 0x8018DC60
-void *sMVOpeningJungleFiles[2];
-
-// 0x8018DC68
-SCBattleState sMVOpeningJungleBattleState;
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -141,7 +96,7 @@ FTKeyEvent dMVOpeningJungleSamusKeyEvents[/* */] =
     FTKEY_EVENT_END()                                   // 0x0000
 };
 
-// 0x8018D934?
+// 0x8018D934
 u32 dMVOpeningJungleFileIDs[/* */] = { &D_NF_00000025, &D_NF_00000040 };
 
 // 0x8018D93C
@@ -191,6 +146,51 @@ SYTaskmanSetup dMVOpeningJungleTaskmanSetup =
     
     mvOpeningJungleFuncStart            // Task start function
 };
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x8018DA40
+s32 sMVOpeningJunglePad0x8018DA40[2];
+
+// 0x8018DA48
+s32 sMVOpeningJungleTotalTimeTics;
+
+// 0x8018DA4C
+s32 sMVOpeningJunglePad0x8018DA4C;
+
+// 0x8018DA50
+GObj* sMVOpeningJungleFighterGObj;
+
+// 0x8018DA54
+s32 sMVOpeningJunglePad0x8018DA54;
+
+// 0x8018DA58
+GObj* sMVOpeningJungleStageCameraGObj;
+
+// 0x8018DA5C
+s32 sMVOpeningJunglePad0x8018DA5C[2];
+
+// 0x8018DA68
+CObjDesc sMVOpeningJungleUnusedAdjustedStartCObjDesc;
+
+// 0x8018DA88
+CObjDesc sMVOpeningJungleUnusedAdjustedEndCObjDesc;
+
+// 0x8018DAA8
+LBFileNode sMVOpeningJungleStatusBuffer[48];
+
+// 0x8018DC28
+LBFileNode sMVOpeningJungleForceStatusBuffer[7];
+
+// 0x8018DC60
+void *sMVOpeningJungleFiles[ARRAY_COUNT(dMVOpeningJungleFileIDs)];
+
+// 0x8018DC68
+SCBattleState sMVOpeningJungleBattleState;
 
 // // // // // // // // // // // //
 //                               //
@@ -417,7 +417,7 @@ void mvOpeningJungleFuncStart(void)
 
     mvOpeningJungleSetupFiles();
     gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningJungleFuncRun, 13, GOBJ_PRIORITY_DEFAULT);
-    gcMakeDefaultCameraGObj(9, 0x80000000, 0x64, 3, 0xFF);
+    gcMakeDefaultCameraGObj(nGCCommonLinkIDCamera, 0x80000000, 0x64, 3, 0xFF);
     efParticleInitAll();
     ftParamInitGame();
     mpCollisionInitGroundData();

@@ -23,27 +23,6 @@ extern intptr_t D_NF_0001E018;
 
 // // // // // // // // // // // //
 //                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x8018E7F0
-SCBattleState sSCExplainBattleState;
-
-// 0x8018E9E0
-void *sSCExplainGraphicsFileHead;
-
-// 0x8018E9E4
-void *sSCExplainMainFileHead;
-
-// 0x8018E9E8
-SCExplainPhase *sSCExplainPhase;
-
-// 0x8018E9F0
-SCExplainMain sSCExplainStruct;
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -134,6 +113,27 @@ SYTaskmanSetup dSCExplainTaskmanSetup =
 
 // // // // // // // // // // // //
 //                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x8018E7F0
+SCBattleState sSCExplainBattleState;
+
+// 0x8018E9E0
+void *sSCExplainGraphicsFileHead;
+
+// 0x8018E9E4
+void *sSCExplainMainFileHead;
+
+// 0x8018E9E8
+SCExplainPhase *sSCExplainPhase;
+
+// 0x8018E9F0
+SCExplainMain sSCExplainStruct;
+
+// // // // // // // // // // // //
+//                               //
 //           FUNCTIONS           //
 //                               //
 // // // // // // // // // // // //
@@ -143,25 +143,19 @@ void scExplainLoadExplainFiles(void)
 {
     sSCExplainGraphicsFileHead = lbRelocGetExternHeapFile
     (
-        (uintptr_t)&D_NF_000000C6,
+        (u32)&D_NF_000000C6,
         syTaskmanMalloc
         (
-            lbRelocGetFileSize
-            (
-                (uintptr_t)&D_NF_000000C6
-            ),
+            lbRelocGetFileSize((u32)&D_NF_000000C6),
             0x10
         )
     );
     sSCExplainMainFileHead = lbRelocGetExternHeapFile
     (
-        (uintptr_t)&D_NF_000000FC,
+        (u32)&D_NF_000000FC,
         syTaskmanMalloc
         (
-            lbRelocGetFileSize
-            (
-                (uintptr_t)&D_NF_000000FC
-            ), 
+            lbRelocGetFileSize((u32)&D_NF_000000FC),
             0x10
         )
     );
@@ -209,9 +203,9 @@ void scExplainStartBattle(void)
 }
 
 // 0x8018D248
-void func_ovl63_8018D248(void)
+void scExplainMakeCamera(void)
 {
-    CObj *cobj = CObjGetStruct(gcMakeDefaultCameraGObj(9, 0x80000000U, 0x64, 1, 0xFF));
+    CObj *cobj = CObjGetStruct(gcMakeDefaultCameraGObj(nGCCommonLinkIDCamera, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF)));
 
     syRdpSetViewport
     (
@@ -717,7 +711,7 @@ void scExplainFuncStart(void)
     scExplainSetupFiles();
     scExplainLoadExplainFiles();
     cmManagerSetViewportDimensions(10, 10, 310, 160);
-    func_ovl63_8018D248();
+    scExplainMakeCamera();
     efParticleInitAll();
     ftParamInitGame();
     mpCollisionInitGroundData();

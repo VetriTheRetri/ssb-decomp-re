@@ -14,84 +14,6 @@ extern uintptr_t D_NF_000000A8;
 
 // // // // // // // // // // // //
 //                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x80134440
-s32 D_ovl10_80134440[2];
-
-// 0x80134448
-GObj *sMNTitleFireCameraGObj;
-
-// 0x8013444C
-s32 sMNTitleParticleBankID;
-
-// 0x80134450
-s32 sMNTitleLayout;
-
-// 0x80134454
-GObj *sMNTitleTransitionsGObj;
-
-// 0x80134458
-GObj *sMNTitleMainGObj;
-
-// 0x8013445C
-s32 sMNTitleTransitionTotalTimeTics;
-
-// 0x80134460
-sb32 sMNTitleIsStartActorProcess;
-
-// 0x80134464
-s32 sMNTitleFireAlpha;
-
-// 0x80134468
-s32 sMNTitleFireAlphaUnused;
-
-// 0x8013446C
-s32 sMNTitleLogoAlpha;
-
-// 0x80134470
-sb32 sMNTitleIsProceedScene;
-
-// 0x80134474
-s32 sMNTitleProceedSceneWait;
-
-// 0x80134478
-s32 sMNTitleFireTimer;
-
-// 0x8013447C
-f32 sMNTitleFireColorR;
-
-// 0x80134480
-f32 sMNTitleFireColorG;
-
-// 0x80134484
-f32 sMNTitleFireColorB;
-
-// 0x80134488
-f32 sMNTitleFireColorDeltaR;
-
-// 0x8013448C
-f32 sMNTitleFireColorDeltaG;
-
-// 0x80134490
-f32 sMNTitleFireColorDeltaB;
-
-// 0x80134494
-s32 sMNTitleFireColorID;
-
-// 0x80134498
-u32 sMNTitleAllowProceedWait;
-
-// 0x801344A0
-LBFileNode sMNTitleStatusBuffer[32];
-
-// 0x801345A0
-void *sMNTitleFiles[2];
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -242,6 +164,84 @@ s32 dMNTitleUnused0x80134418[/* */] = { 0, 0 };
 
 // 0x80134420
 u32 dMNTitleFileIDs[/* */] = { &D_NF_000000A7, &D_NF_000000A8 };
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x80134440
+s32 D_ovl10_80134440[2];
+
+// 0x80134448
+GObj *sMNTitleFireCameraGObj;
+
+// 0x8013444C
+s32 sMNTitleParticleBankID;
+
+// 0x80134450
+s32 sMNTitleLayout;
+
+// 0x80134454
+GObj *sMNTitleTransitionsGObj;
+
+// 0x80134458
+GObj *sMNTitleMainGObj;
+
+// 0x8013445C
+s32 sMNTitleTransitionTotalTimeTics;
+
+// 0x80134460
+sb32 sMNTitleIsStartActorProcess;
+
+// 0x80134464
+s32 sMNTitleFireAlpha;
+
+// 0x80134468
+s32 sMNTitleFireAlphaUnused;
+
+// 0x8013446C
+s32 sMNTitleLogoAlpha;
+
+// 0x80134470
+sb32 sMNTitleIsProceedScene;
+
+// 0x80134474
+s32 sMNTitleProceedSceneWait;
+
+// 0x80134478
+s32 sMNTitleFireTimer;
+
+// 0x8013447C
+f32 sMNTitleFireColorR;
+
+// 0x80134480
+f32 sMNTitleFireColorG;
+
+// 0x80134484
+f32 sMNTitleFireColorB;
+
+// 0x80134488
+f32 sMNTitleFireColorDeltaR;
+
+// 0x8013448C
+f32 sMNTitleFireColorDeltaG;
+
+// 0x80134490
+f32 sMNTitleFireColorDeltaB;
+
+// 0x80134494
+s32 sMNTitleFireColorID;
+
+// 0x80134498
+u32 sMNTitleAllowProceedWait;
+
+// 0x801344A0
+LBFileNode sMNTitleStatusBuffer[32];
+
+// 0x801345A0
+void *sMNTitleFiles[ARRAY_COUNT(dMNTitleFileIDs)];
 
 // // // // // // // // // // // //
 //                               //

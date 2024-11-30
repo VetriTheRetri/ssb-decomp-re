@@ -11,6 +11,32 @@ extern u32 sySchedulerGetTicCount();
 
 // // // // // // // // // // // //
 //                               //
+//       INITIALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
+// 0x8018E090
+CObjDesc dMVOpeningFoxCObjDescStart = { { -400.0F, 320.0F, 100.0F }, { 0.0F, 320.0F, 0.0F }, 0.0F };
+
+// 0x8018E0AC
+CObjDesc dMVOpeningFoxCObjDescEnd = { { -3000.0F, 300.0F, 250.0F }, { 0.0F, 300.0F,-200.0F }, 0.7F };
+
+// 0x8018E0C8
+FTKeyEvent dMVOpeningFoxKeyEvents[/* */] =
+{
+	FTKEY_EVENT_STICK(-50, 0, 1),     // 2001, CE00
+	FTKEY_EVENT_BUTTON(B_BUTTON, 1),  // 1001, 4000
+	FTKEY_EVENT_BUTTON(0, 12),        // 100C, 0000
+	FTKEY_EVENT_BUTTON(B_BUTTON, 1),  // 1001, 4000
+	FTKEY_EVENT_BUTTON(0, 12),        // 100C, 0000
+	FTKEY_EVENT_END()                 // 0000
+};
+
+// 0x8018E0E0
+u32 dMVOpeningFoxFileIDs[/* */] = { &lIFCommonAnnounceCommonFileID, &lMVOpeningCommonFileID };
+
+// // // // // // // // // // // //
+//                               //
 //   GLOBAL / STATIC VARIABLES   //
 //                               //
 // // // // // // // // // // // //
@@ -55,36 +81,10 @@ LBFileNode sMVOpeningFoxStatusBuffer[48];
 LBFileNode sMVOpeningFoxForceStatusBuffer[7];
 
 // 0x8018E410
-void *sMVOpeningFoxFiles[2];
+void *sMVOpeningFoxFiles[ARRAY_COUNT(dMVOpeningFoxFileIDs)];
 
 // 0x8018E418
 SCBattleState sMVOpeningFoxBattleState;
-
-// // // // // // // // // // // //
-//                               //
-//       INITIALIZED DATA        //
-//                               //
-// // // // // // // // // // // //
-
-// 0x8018E090
-CObjDesc dMVOpeningFoxCObjDescStart = { { -400.0F, 320.0F, 100.0F }, { 0.0F, 320.0F, 0.0F }, 0.0F };
-
-// 0x8018E0AC
-CObjDesc dMVOpeningFoxCObjDescEnd = { { -3000.0F, 300.0F, 250.0F }, { 0.0F, 300.0F,-200.0F }, 0.7F };
-
-// 0x8018E0C8
-FTKeyEvent dMVOpeningFoxKeyEvents[/* */] =
-{
-	FTKEY_EVENT_STICK(-50, 0, 1),     // 2001, CE00
-	FTKEY_EVENT_BUTTON(B_BUTTON, 1),  // 1001, 4000
-	FTKEY_EVENT_BUTTON(0, 12),        // 100C, 0000
-	FTKEY_EVENT_BUTTON(B_BUTTON, 1),  // 1001, 4000
-	FTKEY_EVENT_BUTTON(0, 12),        // 100C, 0000
-	FTKEY_EVENT_END()                 // 0000
-};
-
-// 0x8018E0E0
-u32 dMVOpeningFoxFileIDs[/* */] = { &lIFCommonAnnounceCommonFileID, &lMVOpeningCommonFileID };
 
 // // // // // // // // // // // //
 //                               //
@@ -508,7 +508,7 @@ void mvOpeningFoxFuncStart(void)
 
 	mvOpeningFoxSetupFiles();
 	gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningFoxFuncRun, nGCCommonLinkIDMovie, GOBJ_PRIORITY_DEFAULT);
-	gcMakeDefaultCameraGObj(9, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeDefaultCameraGObj(nGCCommonLinkIDCamera, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	mvOpeningFoxInitVars();
 	efParticleInitAll();
 	ftParamInitGame();

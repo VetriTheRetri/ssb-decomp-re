@@ -25,24 +25,6 @@ extern intptr_t D_NF_000159A8;                          // 0x000159A8
 
 // // // // // // // // // // // //
 //                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x800D7110
-s32 sMNUnusedFightersPad0x800D7110[2];
-
-// 0x800D7118
-LBFileNode sMNUnusedFightersStatusBuffer[10];
-
-// 0x800D7168
-void *sMNUnusedFightersFiles[1];
-
-// 0x800D716C
-f32 sMNUnusedFightersTimePositionX;
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -108,6 +90,24 @@ SYTaskmanSetup dMNUnusedFightersTaskmanSetup =
     
     mnUnusedFightersFuncStart           // Task start function
 };
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x800D7110
+s32 sMNUnusedFightersPad0x800D7110[2];
+
+// 0x800D7118
+LBFileNode sMNUnusedFightersStatusBuffer[10];
+
+// 0x800D7168
+void *sMNUnusedFightersFiles[ARRAY_COUNT(dMNUnusedFightersFileIDs)];
+
+// 0x800D716C
+f32 sMNUnusedFightersTimePositionX;
 
 // // // // // // // // // // // //
 //                               //

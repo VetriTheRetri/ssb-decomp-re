@@ -9,39 +9,6 @@ extern uintptr_t D_NF_0000000F;                             // 0x0000000F
 
 // // // // // // // // // // // //
 //                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x80132920
-s32 sMNScreenAdjustPad0x80132920[2];
-
-// 0x80132928
-f32 sMNScreenAdjustOffsetH;
-
-// 0x8013292C
-f32 sMNScreenAdjustOffsetV;
-
-// 0x80132930
-s32 sMNScreenAdjustButtonHoldWait;
-
-// 0x80132934
-s32 sMNScreenAdjustTotalTimeTics;
-
-// 0x80132938
-s32 sMNScreenAdjustReturnTic;
-
-// 0x80132940
-LBFileNode sMNScreenAdjustForceStatusBuffer[7];
-
-// 0x80132978
-LBFileNode sMNScreenAdjustStatusBuffer[24];
-
-// 0x80132A38
-void *sMNScreenAdjustFiles[1];
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -107,6 +74,39 @@ SYTaskmanSetup dMNScreenAdjustTaskmanSetup =
     
     mnScreenAdjustFuncStart         // Task start function
 };
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x80132920
+s32 sMNScreenAdjustPad0x80132920[2];
+
+// 0x80132928
+f32 sMNScreenAdjustOffsetH;
+
+// 0x8013292C
+f32 sMNScreenAdjustOffsetV;
+
+// 0x80132930
+s32 sMNScreenAdjustButtonHoldWait;
+
+// 0x80132934
+s32 sMNScreenAdjustTotalTimeTics;
+
+// 0x80132938
+s32 sMNScreenAdjustReturnTic;
+
+// 0x80132940
+LBFileNode sMNScreenAdjustForceStatusBuffer[7];
+
+// 0x80132978
+LBFileNode sMNScreenAdjustStatusBuffer[24];
+
+// 0x80132A38
+void *sMNScreenAdjustFiles[ARRAY_COUNT(dMNScreenAdjustFileIDs)];
 
 // // // // // // // // // // // //
 //                               //

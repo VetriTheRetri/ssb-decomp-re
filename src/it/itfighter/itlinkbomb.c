@@ -148,12 +148,12 @@ void itLinkBombExplodeWaitUpdateScale(GObj *item_gobj)
 	DObj *dobj = DObjGetStruct(item_gobj);
 	ITStruct *ip = itGetStruct(item_gobj);
 
-	if (ip->item_vars.link_bomb.scale_int == 0)
+	if (ip->item_vars.linkbomb.scale_int == 0)
 	{
 		f32 *scales = (f32*) ((uintptr_t)*dItLinkBombItemDesc.p_file + (intptr_t)&lITLinkBombBloatScales);
-		s32 scale_id = (ip->item_vars.link_bomb.scale_id > ITLINKBOMB_SCALE_INDEX_REWIND) ?
-					      (ITLINKBOMB_SCALE_INDEX_MAX - ip->item_vars.link_bomb.scale_id) :
-					   								    ip->item_vars.link_bomb.scale_id;
+		s32 scale_id = (ip->item_vars.linkbomb.scale_id > ITLINKBOMB_SCALE_INDEX_REWIND) ?
+					      (ITLINKBOMB_SCALE_INDEX_MAX - ip->item_vars.linkbomb.scale_id) :
+					   								    ip->item_vars.linkbomb.scale_id;
 
 		if (ip->is_hold)
 		{
@@ -161,15 +161,15 @@ void itLinkBombExplodeWaitUpdateScale(GObj *item_gobj)
 		}
 		else dobj->scale.vec.f.x = dobj->scale.vec.f.y = scales[scale_id];
 
-		ip->item_vars.link_bomb.scale_int = ITLINKBOMB_SCALE_INT;
+		ip->item_vars.linkbomb.scale_int = ITLINKBOMB_SCALE_INT;
 
-		if (ip->item_vars.link_bomb.scale_id >= ITLINKBOMB_SCALE_INDEX_MAX)
+		if (ip->item_vars.linkbomb.scale_id >= ITLINKBOMB_SCALE_INDEX_MAX)
 		{
-			ip->item_vars.link_bomb.scale_id = 0;
+			ip->item_vars.linkbomb.scale_id = 0;
 		}
-		else ip->item_vars.link_bomb.scale_id += 1; // Doesn't match with "++" lol
+		else ip->item_vars.linkbomb.scale_id += 1; // Doesn't match with "++" lol
 	}
-	ip->item_vars.link_bomb.scale_int--;
+	ip->item_vars.linkbomb.scale_int--;
 }
 
 // 0x80185A80
@@ -287,7 +287,7 @@ sb32 itLinkBombFallProcUpdate(GObj *item_gobj)
 	{
 		itMainCheckSetColAnimID(item_gobj, ITLINKBOMB_BLOAT_COLANIM_ID, ITLINKBOMB_BLOAT_COLANIM_LENGTH);
 
-		ip->item_vars.link_bomb.scale_id = 1;
+		ip->item_vars.linkbomb.scale_id = 1;
 	}
 	if (ip->lifetime < ITLINKBOMB_BLOAT_BEGIN)
 	{
@@ -321,7 +321,7 @@ sb32 itLinkBombWaitProcUpdate(GObj *item_gobj)
 	{
 		itMainCheckSetColAnimID(item_gobj, ITLINKBOMB_BLOAT_COLANIM_ID, ITLINKBOMB_BLOAT_COLANIM_LENGTH);
 
-		ip->item_vars.link_bomb.scale_id = 1;
+		ip->item_vars.linkbomb.scale_id = 1;
 	}
 	if (ip->lifetime < ITLINKBOMB_BLOAT_BEGIN)
 	{
@@ -409,7 +409,7 @@ sb32 itLinkBombHoldProcUpdate(GObj *item_gobj)
 		{
 			itMainCheckSetColAnimID(item_gobj, ITLINKBOMB_BLOAT_COLANIM_ID, ITLINKBOMB_BLOAT_COLANIM_LENGTH);
 
-			ip->item_vars.link_bomb.scale_id = 1;
+			ip->item_vars.linkbomb.scale_id = 1;
 		}
 		if (ip->lifetime < ITLINKBOMB_BLOAT_BEGIN)
 		{
@@ -462,9 +462,9 @@ sb32 itLinkBombDroppedProcUpdate(GObj *item_gobj)
 {
 	ITStruct *ip = itGetStruct(item_gobj);
 
-	if (ip->item_vars.link_bomb.drop_update_wait != 0)
+	if (ip->item_vars.linkbomb.drop_update_wait != 0)
 	{
-		ip->item_vars.link_bomb.drop_update_wait--;
+		ip->item_vars.linkbomb.drop_update_wait--;
 	}
 	else itLinkBombFallProcUpdate(item_gobj);
 
@@ -476,7 +476,7 @@ sb32 itLinkBombDroppedProcHit(GObj *item_gobj)
 {
 	ITStruct *ip = itGetStruct(item_gobj);
 
-	if (ip->item_vars.link_bomb.drop_update_wait == 0)
+	if (ip->item_vars.linkbomb.drop_update_wait == 0)
 	{
 		itLinkBombThrownProcHit(item_gobj);
 	}
@@ -488,7 +488,7 @@ sb32 itLinkBombDroppedProcDamage(GObj *item_gobj)
 {
 	ITStruct *ip = itGetStruct(item_gobj);
 
-	if (ip->item_vars.link_bomb.drop_update_wait == 0)
+	if (ip->item_vars.linkbomb.drop_update_wait == 0)
 	{
 		itLinkBombCommonProcDamage(item_gobj);
 	}
@@ -502,7 +502,7 @@ void itLinkBombDroppedSetStatus(GObj *item_gobj)
 
 	itLinkBombCommonSetHitStatusNormal(item_gobj);
 
-	ip->item_vars.link_bomb.drop_update_wait = 10;
+	ip->item_vars.linkbomb.drop_update_wait = 10;
 
 	ip->is_damage_all = TRUE;
 
@@ -618,8 +618,8 @@ GObj *itLinkBombMakeItem(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel)
 
 		ip->lifetime = ITLINKBOMB_LIFETIME;
 
-		ip->item_vars.link_bomb.scale_id = 0;
-		ip->item_vars.link_bomb.scale_int = ITLINKBOMB_SCALE_INT;
+		ip->item_vars.linkbomb.scale_id = 0;
+		ip->item_vars.linkbomb.scale_int = ITLINKBOMB_SCALE_INT;
 
 		ip->attack_coll.can_rehit_shield = TRUE;
 

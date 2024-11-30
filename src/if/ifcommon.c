@@ -21,102 +21,6 @@ extern intptr_t D_NF_00000057;                              // 0x00000057
 
 // // // // // // // // // // // //
 //                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x80131570 - Padding?
-s32 sIFCommonPad0x80131570[4];
-
-// 0x80131580
-IFPlayerCommon gIFCommonPlayerInterface;
-
-// 0x80131598
-IFPlayerDamage sIFCommonPlayerDamageInterface[GMCOMMON_PLAYERS_MAX];
-
-// 0x80131748
-IFPlayerMagnify sIFCommonPlayerMagnifyInterface[GMCOMMON_PLAYERS_MAX];
-
-// 0x801317C8 - Values of digits displayed on the match timer
-u8 sIFCommonTimerDigitsInterface[4];
-
-// 0x801317CC - This might be part of another struct
-s8 sIFCommonPlayerStocksNum[GMCOMMON_PLAYERS_MAX];
-
-// 0x801317D0
-GObj *sIFCommonPlayerStocksGObj[GMCOMMON_PLAYERS_MAX];
-
-// 0x801317E0 - Identical to gSCManagerBattleState->time_remain; the countdown timer adds one second once it has begun decrementing; s32 or u32?
-u32 sIFCommonTimerLimit;
-
-// 0x801317E4 - ID of player who paused
-u8 sIFCommonBattlePausePlayer;
-
-// 0x801317E5 - Poly-mode of pausing player?
-u8 sIFCommonBattlePausePlayerDetail;
-
-// 0x801317E6 - Number of frames the camera takes to revert to its pre-pause position
-u16 sIFCommonBattlePauseCameraRestoreWait;
-
-// 0x801317E8 - Eye X angle of camera before and after pausing
-f32 sIFCommonBattlePauseCameraEyeXOrigin;
-
-// 0x801317EC - Eye Y angle of camera before and after pausing
-f32 sIFCommonBattlePauseCameraEyeYOrigin;
-
-// 0x801317F0 - Sprite of red arrow indicator for grabbable items
-Sprite *sIFCommonItemArrowSprite;
-
-// 0x801317F4 - Number of unique teams in-game minus one?
-s32 sIFCommonBattlePlacement;
-
-// 0x801317F8 - Padding?
-s32 sIFCommonPad0x801317F8;
-
-// 0x801317FC
-u32 D_ovl2_801317FC;
-
-// 0x80131800
-u32 sIFCommonTimerIsStarted; // Confirmed u32 by ifCommonBattleUpdateInterfaceAll
-
-// 0x80131804 - Padding?
-s32 sIFCommonPad0x80131804;
-
-// 0x80131808 - Array of sound effect IDs to play on game end
-u16 sIFCommonBattleEndSoundQueue[16];
-
-// 0x80131828 - What kind of pause menu to display
-u8 sIFCommonBattlePauseKindInterface;
-
-// 0x80131829 - Number of sound effects queued to play on game end
-u8 sIFCommonBattleEndSoundNum;
-
-// 0x8013182C
-void (*sIFCommonBattleInterfaceProcUpdate)();
-
-// 0x80131830
-void (*sIFCommonBattleInterfaceProcSet)();
-
-// 0x80131834 - Padding?
-s32 sIFCommonPad0x80131834;
-
-// 0x80131838
-IFPlayerSteal sIFCommonPlayerStealInterface[GMCOMMON_PLAYERS_MAX];
-
-// 0x80131858
-u8 sIFCommonPlayerMagnifySoundWait;
-
-// 0x80131859
-u8 D_ovl2_80131859;
-
-// 0x8013185A
-u8 D_ovl2_8013185A;
-
-// 0x8013185C - Whether each second in the 5-second countdown before time-up has been announced
-ub8 sIFCommonIsAnnouncedSecond[5];
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -481,6 +385,102 @@ u16 dIFCommonAnnounceDefeatedVoiceIDs[/* */] =
     nSYAudioVoiceAnnouncePlayer3,
     nSYAudioVoiceAnnouncePlayer4
 };
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x80131570 - Padding?
+s32 sIFCommonPad0x80131570[4];
+
+// 0x80131580
+IFPlayerCommon gIFCommonPlayerInterface;
+
+// 0x80131598
+IFPlayerDamage sIFCommonPlayerDamageInterface[GMCOMMON_PLAYERS_MAX];
+
+// 0x80131748
+IFPlayerMagnify sIFCommonPlayerMagnifyInterface[GMCOMMON_PLAYERS_MAX];
+
+// 0x801317C8 - Values of digits displayed on the match timer
+u8 sIFCommonTimerDigitsInterface[4];
+
+// 0x801317CC - This might be part of another struct
+s8 sIFCommonPlayerStocksNum[GMCOMMON_PLAYERS_MAX];
+
+// 0x801317D0
+GObj *sIFCommonPlayerStocksGObj[GMCOMMON_PLAYERS_MAX];
+
+// 0x801317E0 - Identical to gSCManagerBattleState->time_remain; the countdown timer adds one second once it has begun decrementing; s32 or u32?
+u32 sIFCommonTimerLimit;
+
+// 0x801317E4 - ID of player who paused
+u8 sIFCommonBattlePausePlayer;
+
+// 0x801317E5 - Poly-mode of pausing player?
+u8 sIFCommonBattlePausePlayerDetail;
+
+// 0x801317E6 - Number of frames the camera takes to revert to its pre-pause position
+u16 sIFCommonBattlePauseCameraRestoreWait;
+
+// 0x801317E8 - Eye X angle of camera before and after pausing
+f32 sIFCommonBattlePauseCameraEyeXOrigin;
+
+// 0x801317EC - Eye Y angle of camera before and after pausing
+f32 sIFCommonBattlePauseCameraEyeYOrigin;
+
+// 0x801317F0 - Sprite of red arrow indicator for grabbable items
+Sprite *sIFCommonItemArrowSprite;
+
+// 0x801317F4 - Number of unique teams in-game minus one?
+s32 sIFCommonBattlePlacement;
+
+// 0x801317F8 - Padding?
+s32 sIFCommonPad0x801317F8;
+
+// 0x801317FC
+u32 D_ovl2_801317FC;
+
+// 0x80131800
+u32 sIFCommonTimerIsStarted; // Confirmed u32 by ifCommonBattleUpdateInterfaceAll
+
+// 0x80131804 - Padding?
+s32 sIFCommonPad0x80131804;
+
+// 0x80131808 - Array of sound effect IDs to play on game end
+u16 sIFCommonBattleEndSoundQueue[16];
+
+// 0x80131828 - What kind of pause menu to display
+u8 sIFCommonBattlePauseKindInterface;
+
+// 0x80131829 - Number of sound effects queued to play on game end
+u8 sIFCommonBattleEndSoundNum;
+
+// 0x8013182C
+void (*sIFCommonBattleInterfaceProcUpdate)();
+
+// 0x80131830
+void (*sIFCommonBattleInterfaceProcSet)();
+
+// 0x80131834 - Padding?
+s32 sIFCommonPad0x80131834;
+
+// 0x80131838
+IFPlayerSteal sIFCommonPlayerStealInterface[GMCOMMON_PLAYERS_MAX];
+
+// 0x80131858
+u8 sIFCommonPlayerMagnifySoundWait;
+
+// 0x80131859
+u8 D_ovl2_80131859;
+
+// 0x8013185A
+u8 D_ovl2_8013185A;
+
+// 0x8013185C - Whether each second in the 5-second countdown before time-up has been announced
+ub8 sIFCommonIsAnnouncedSecond[5];
 
 // // // // // // // // // // // //
 //                               //
@@ -2485,7 +2485,12 @@ void ifCommonTimerFuncRun(GObj *interface_gobj)
                     }
                     else gSCManagerBattleState->time_remain -= time_update;
 
-                    if ((gSCManagerBattleState->gkind == nGRKindInishie) && (gSCManagerBattleState->time_remain <= I_SEC_TO_TICS(30)) && (gMPCollisionBGMDefault != nSYAudioBGMInishieHurry))
+                    if
+                    (
+                        (gSCManagerBattleState->gkind == nGRKindInishie)          &&
+                        (gSCManagerBattleState->time_remain <= I_SEC_TO_TICS(30)) &&
+                        (gMPCollisionBGMDefault != nSYAudioBGMInishieHurry)
+                    )
                     {
                         gMPCollisionBGMDefault = nSYAudioBGMInishieHurry;
 

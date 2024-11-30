@@ -77,6 +77,12 @@ SYTaskmanSetup dSCVSBattleTaskmanSetup =
     scVSBattleStartBattle             	// Task start function
 };
 
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
+
 // 0x8018D0C0
 void scVSBattleFuncUpdate(void)
 {
@@ -156,7 +162,7 @@ void scVSBattleStartBattle(void)
 			gSCManagerBackupData.error_flags |= LBBACKUP_ERROR_1PGAMEMARIO;
 		}
 	}
-	gcMakeDefaultCameraGObj(9, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeDefaultCameraGObj(nGCCommonLinkIDCamera, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	efParticleInitAll();
 	ftParamInitGame();
 	mpCollisionInitGroundData();
@@ -428,7 +434,7 @@ void scVSBattleStartSuddenDeath(void)
 	gSCManagerSceneData.is_reset = FALSE;
 
 	scVSBattleSetupFiles();
-	gcMakeDefaultCameraGObj(9, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeDefaultCameraGObj(nGCCommonLinkIDCamera, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	efParticleInitAll();
 	ftParamInitGame();
 	mpCollisionInitGroundData();
@@ -538,7 +544,7 @@ void scVSBattleStartScene(void)
 
 	auStopBGM();
 
-	while (auIsBGMPlaying(0))
+	while (auIsBGMPlaying(0) != FALSE)
 	{
 		continue;
 	}
@@ -557,7 +563,7 @@ void scVSBattleStartScene(void)
 		scManagerFuncUpdate(&dSCVSBattleTaskmanSetup);
 		auStopBGM();
 
-		while (auIsBGMPlaying(0))
+		while (auIsBGMPlaying(0) != FALSE)
 		{
 			continue;
 		}

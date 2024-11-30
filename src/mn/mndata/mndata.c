@@ -41,6 +41,26 @@ extern uintptr_t D_NF_00000005;
 
 // // // // // // // // // // // //
 //                               //
+//       INITIALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
+// 0x80132F20
+u32 dMNDataFileIDs[/* */] = { &D_NF_00000000, &D_NF_00000005 };
+
+// 0x80132F28
+Lights1 dMNDataLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x3C, 0x3C, 0x3C);
+
+// 0x80132F40
+Gfx dMNDataDisplayList[/* */] =
+{
+    gsSPSetGeometryMode(G_LIGHTING),
+    gsSPSetLights1(dMNDataLights1),
+    gsSPEndDisplayList()
+};
+
+// // // // // // // // // // // //
+//                               //
 //   GLOBAL / STATIC VARIABLES   //
 //                               //
 // // // // // // // // // // // //
@@ -91,27 +111,7 @@ s32 sMNDataReturnTic;
 LBFileNode sMNDataStatusBuffer[24];
 
 // 0x80133160
-void *sMNDataFiles[2];
-
-// // // // // // // // // // // //
-//                               //
-//       INITIALIZED DATA        //
-//                               //
-// // // // // // // // // // // //
-
-// 0x80132F20
-u32 dMNDataFileIDs[/* */] = { &D_NF_00000000, &D_NF_00000005 };
-
-// 0x80132F28
-Lights1 dMNDataLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x3C, 0x3C, 0x3C);
-
-// 0x80132F40
-Gfx dMNDataDisplayList[/* */] =
-{
-    gsSPSetGeometryMode(G_LIGHTING),
-    gsSPSetLights1(dMNDataLights1),
-    gsSPEndDisplayList()
-};
+void *sMNDataFiles[ARRAY_COUNT(dMNDataFileIDs)];
 
 // // // // // // // // // // // //
 //                               //

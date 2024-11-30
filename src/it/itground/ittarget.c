@@ -1,12 +1,11 @@
 #include <it/item.h>
-
-extern void *gSC1PBonusStageFiles[/* */];
+#include <sc/scene.h>
 
 // 0x8018F130
 ITDesc dITTargetItemDesc =
 {
 	nITKindTarget,						// Item Kind
-	&gSC1PBonusStageFiles[0], 			// Pointer to item file data?
+	&gSC1PBonusStageItemFile, 		// Pointer to item file data?
 	0,									// Offset of item attributes in file?
 
 	// DObj transformation struct

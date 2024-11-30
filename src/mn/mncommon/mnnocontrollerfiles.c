@@ -2,27 +2,27 @@
 
 // // // // // // // // // // // //
 //                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x800D67D0
-void *gMNNoControllerFiles[1];
-
-// 0x800D67D8
-LBFileNode sMNNoControllerStatusBuffer[100];
-
-// 0x800D6AF8
-LBFileNode sMNNoControllerForceStatusBuffer[7];
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
 // 0x800D67B0
 u32 dMNNoControllerFileIDs[/* */] = { &lMNNoControllerFileID };
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x800D67D0
+void *gMNNoControllerFiles[ARRAY_COUNT(dMNNoControllerFileIDs)];
+
+// 0x800D67D8
+LBFileNode sMNNoControllerStatusBuffer[100];
+
+// 0x800D6AF8
+LBFileNode sMNNoControllerForceStatusBuffer[7];
 
 // // // // // // // // // // // //
 //                               //

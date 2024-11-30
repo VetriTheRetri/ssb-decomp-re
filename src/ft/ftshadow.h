@@ -5,8 +5,8 @@
 #include <sys/objdef.h>
 #include <ft/ftdef.h>
 
-extern f32 FTShadowGetAltitude(Vec3f *a, Vec3f *b, f32 f);
-extern void FTShadowFuncDisplay(GObj *shadow_gobj);
-extern GObj* FTShadowMakeShadow(GObj *fighter_gobj);
+extern f32 ftShadowGetAltitude(Vec3f *a, Vec3f *b, f32 f);
+extern void ftShadowFuncDisplay(GObj *shadow_gobj);
+extern GObj* ftShadowMakeShadow(GObj *fighter_gobj);
 
 #endif

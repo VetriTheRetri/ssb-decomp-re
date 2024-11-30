@@ -1,9 +1,25 @@
 #include <lb/library.h>
 #include <sys/hal_gu.h>
 
-// Equivalent file in Pokémon Snap: 4D880.c
-
 extern u16 gSinTable[0x800];
+
+// // // // // // // // // // // //
+//                               //
+//       INITIALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
+// 0x800D5D50
+u8 dLBParticleColorDitherMode = G_CD_MAGICSQ;
+
+// 0x800D5D54
+u8 dLBParticleAlphaDitherMode = G_AD_PATTERN;
+
+// 0x800D5D58
+u16 dLBParticleCurrentGeneratorID = 0;
+
+// 0x800D5D5C
+u8 dLBParticleCurrentTransformID = 123;
 
 // // // // // // // // // // // //
 //                               //
@@ -70,24 +86,6 @@ LBTransform *sLBParticleTransformsAllocFree;
 
 // 0x800D6458
 LBGenerator *sLBParticleGeneratorsLastProcessed;
-
-// // // // // // // // // // // //
-//                               //
-//       INITIALIZED DATA        //
-//                               //
-// // // // // // // // // // // //
-
-// 0x800D5D50
-u8 dLBParticleColorDitherMode = G_CD_MAGICSQ;
-
-// 0x800D5D54
-u8 dLBParticleAlphaDitherMode = G_AD_PATTERN;
-
-// 0x800D5D58
-u16 dLBParticleCurrentGeneratorID = 0;
-
-// 0x800D5D5C
-u8 dLBParticleCurrentTransformID = 123;
 
 // // // // // // // // // // // //
 //                               //

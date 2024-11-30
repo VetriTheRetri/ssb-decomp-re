@@ -13,6 +13,21 @@ extern uintptr_t D_NF_0000004B;
 
 // // // // // // // // // // // //
 //                               //
+//       INITIALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
+// 0x801325D0
+u32 dMVOpeningRunFileIDs[/* */] = { &D_NF_00000037, &D_NF_0000003C, &D_NF_0000004B };
+
+// 0x801325DC
+Lights1 dMVOpeningRunLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x14, 0x14, 0x14);
+
+// 0x801325F4
+Lights1 dMVOpeningRunLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x00, 0x14, 0x00);
+
+// // // // // // // // // // // //
+//                               //
 //   GLOBAL / STATIC VARIABLES   //
 //                               //
 // // // // // // // // // // // //
@@ -42,22 +57,7 @@ LBFileNode sMVOpeningRunStatusBuffer[100];
 LBFileNode sMVOpeningRunForceStatusBuffer[7];
 
 // 0x80132AA0
-void *sMVOpeningRunFiles[3];
-
-// // // // // // // // // // // //
-//                               //
-//       INITIALIZED DATA        //
-//                               //
-// // // // // // // // // // // //
-
-// 0x801325D0
-u32 dMVOpeningRunFileIDs[/* */] = { &D_NF_00000037, &D_NF_0000003C, &D_NF_0000004B };
-
-// 0x801325DC
-Lights1 dMVOpeningRunLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x14, 0x14, 0x14);
-
-// 0x801325F4
-Lights1 dMVOpeningRunLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x00, 0x14, 0x00);
+void *sMVOpeningRunFiles[ARRAY_COUNT(dMVOpeningRunFileIDs)];
 
 // // // // // // // // // // // //
 //                               //

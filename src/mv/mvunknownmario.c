@@ -7,27 +7,6 @@ extern void scManagerFuncDraw(void);
 
 // // // // // // // // // // // //
 //                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x8018D670
-s32 sMVUnknownMarioPad0x8018D670[2];
-
-// 0x8018D678
-LBFileNode sMVUnkownMarioStatusBuffer[20];
-
-// 0x8018D718
-LBFileNode sMVUnkownMarioForceStatusBuffer[7];
-
-// 0x8018D750
-GObj *sMVUnkownMarioFighterGObj;
-
-// 0x8018D758
-SCBattleState sMVUnkownMarioBattleState;
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -104,6 +83,27 @@ SYTaskmanSetup dMVUnknownMarioTaskmanSetup =
 
 // // // // // // // // // // // //
 //                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x8018D670
+s32 sMVUnknownMarioPad0x8018D670[2];
+
+// 0x8018D678
+LBFileNode sMVUnkownMarioStatusBuffer[20];
+
+// 0x8018D718
+LBFileNode sMVUnkownMarioForceStatusBuffer[7];
+
+// 0x8018D750
+GObj *sMVUnkownMarioFighterGObj;
+
+// 0x8018D758
+SCBattleState sMVUnkownMarioBattleState;
+
+// // // // // // // // // // // //
+//                               //
 //           FUNCTIONS           //
 //                               //
 // // // // // // // // // // // //
@@ -170,7 +170,7 @@ void mvUnknownMarioFuncStart(void)
 
 	mvUnknownMarioSetupFiles();
 	gcMakeGObjSPAfter(nGCCommonKindMovie, mvUnknownMarioFuncRun, nGCCommonLinkIDMovie, GOBJ_PRIORITY_DEFAULT);
-	gcMakeDefaultCameraGObj(9, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeDefaultCameraGObj(nGCCommonLinkIDCamera, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	efParticleInitAll();
 	ftParamInitGame();
 	mpCollisionInitGroundData();

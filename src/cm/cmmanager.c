@@ -9,27 +9,6 @@ extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
 //                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x80131460
-GObj *gCMManagerCameraGObj;
-
-// 0x80131464
-f32 gCMManagerPauseCameraEyeY;
-
-// 0x80131468
-f32 gCMManagerPauseCameraEyeX; // Also from .bss
-
-// 0x80131470
-Mtx44f gCMManagerMatrix; // Mtx44f?
-
-// 0x801314B0
-CMStruct gCMManagerCameraStruct;
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -67,6 +46,27 @@ f32 dCMManagerPlayerZoomRanges[/* */] =
     1.16F,  // 3 Players
     1.00F   // 4 Players
 };
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x80131460
+GObj *gCMManagerCameraGObj;
+
+// 0x80131464
+f32 gCMManagerPauseCameraEyeY;
+
+// 0x80131468
+f32 gCMManagerPauseCameraEyeX; // Also from .bss
+
+// 0x80131470
+Mtx44f gCMManagerMatrix; // Mtx44f?
+
+// 0x801314B0
+CMStruct gCMManagerCameraStruct;
 
 // // // // // // // // // // // //
 //                               //

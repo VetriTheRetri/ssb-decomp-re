@@ -34,6 +34,26 @@ mnCommonSetOptionChangeWaitN(sMN1PModeOptionChangeWait, is_button, stick_range, 
 
 // // // // // // // // // // // //
 //                               //
+//       INITIALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
+// 0x80133080
+u32 dMN1PModeFileIDs[/* */] = { &D_NF_00000000, &D_NF_00000002 };
+
+// 0x80133088
+Lights1 dMN1PModeLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x3C, 0x3C, 0x3C);
+
+// 0x801330A0
+Gfx dMN1PModeDisplayList[/* */] =
+{
+    gsSPSetGeometryMode(G_LIGHTING),
+    gsSPSetLights1(dMN1PModeLights1),
+    gsSPEndDisplayList()
+};
+
+// // // // // // // // // // // //
+//                               //
 //   GLOBAL / STATIC VARIABLES   //
 //                               //
 // // // // // // // // // // // //
@@ -66,27 +86,7 @@ s32 sMN1PModeReturnTic;
 LBFileNode sMN1PModeStatusBuffer[24];
 
 // 0x80133290
-void *sMN1PModeFiles[2];
-
-// // // // // // // // // // // //
-//                               //
-//       INITIALIZED DATA        //
-//                               //
-// // // // // // // // // // // //
-
-// 0x80133080
-u32 dMN1PModeFileIDs[/* */] = { &D_NF_00000000, &D_NF_00000002 };
-
-// 0x80133088
-Lights1 dMN1PModeLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x3C, 0x3C, 0x3C);
-
-// 0x801330A0
-Gfx dMN1PModeDisplayList[/* */] =
-{
-    gsSPSetGeometryMode(G_LIGHTING),
-    gsSPSetLights1(dMN1PModeLights1),
-    gsSPEndDisplayList()
-};
+void *sMN1PModeFiles[ARRAY_COUNT(dMN1PModeFileIDs)];
 
 // // // // // // // // // // // //
 //                               //

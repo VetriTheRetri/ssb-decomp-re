@@ -1,13 +1,4 @@
 #include <ft/fighter.h>
-#include <sys/malloc.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern SYMallocRegion gSYTaskmanGraphicsHeap;
 
 // // // // // // // // // // // //
 //                               //

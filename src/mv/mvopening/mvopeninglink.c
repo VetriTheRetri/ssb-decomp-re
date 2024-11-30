@@ -11,6 +11,28 @@ extern u32 sySchedulerGetTicCount();
 
 // // // // // // // // // // // //
 //                               //
+//       INITIALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
+// 0x8018E070
+CObjDesc dMVOpeningLinkCObjDescStart = { { -800.0F, 180.0F, 800.0F }, { 0.0F, 180.0F, 0.0F }, 0.0F };
+
+// 0x8018E08C
+CObjDesc dMVOpeningLinkCObjDescEnd = { { 200.0F, 0.0F, 400.0F }, { 0.0F, 240.0F, 0.0F }, 0.4F };
+
+// 0x8018E0A8
+FTKeyEvent dMVOpeningLinkKeyEvents[/* */] =
+{
+    FTKEY_EVENT_BUTTON(L_TRIG, 1),  // 0x1001, 0x0020
+    FTKEY_EVENT_END()               // 0x0000
+};
+
+// 0x8018E0B0
+u32 dMVOpeningLinkFileIDs[/* */] = { &lIFCommonAnnounceCommonFileID, &lMVOpeningCommonFileID };
+
+// // // // // // // // // // // //
+//                               //
 //   GLOBAL / STATIC VARIABLES   //
 //                               //
 // // // // // // // // // // // //
@@ -55,32 +77,10 @@ LBFileNode sMVOpeningLinkStatusBuffer[48];
 LBFileNode sMVOpeningLinkForceStatusBuffer[7];
 
 // 0x8018E3E0
-void *sMVOpeningLinkFiles[2];
+void *sMVOpeningLinkFiles[ARRAY_COUNT(dMVOpeningLinkFileIDs)];
 
 // 0x8018E3E8
 SCBattleState sMVOpeningLinkBattleState;
-
-// // // // // // // // // // // //
-//                               //
-//       INITIALIZED DATA        //
-//                               //
-// // // // // // // // // // // //
-
-// 0x8018E070
-CObjDesc dMVOpeningLinkCObjDescStart = { { -800.0F, 180.0F, 800.0F }, { 0.0F, 180.0F, 0.0F }, 0.0F };
-
-// 0x8018E08C
-CObjDesc dMVOpeningLinkCObjDescEnd = { { 200.0F, 0.0F, 400.0F }, { 0.0F, 240.0F, 0.0F }, 0.4F };
-
-// 0x8018E0A8
-FTKeyEvent dMVOpeningLinkKeyEvents[/* */] =
-{
-    FTKEY_EVENT_BUTTON(L_TRIG, 1),  // 0x1001, 0x0020
-    FTKEY_EVENT_END()               // 0x0000
-};
-
-// 0x8018E0B0
-u32 dMVOpeningLinkFileIDs[/* */] = { &lIFCommonAnnounceCommonFileID, &lMVOpeningCommonFileID };
 
 // // // // // // // // // // // //
 //                               //
@@ -504,7 +504,7 @@ void mvOpeningLinkFuncStart(void)
 
 	mvOpeningLinkSetupFiles();
 	gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningLinkFuncRun, nGCCommonLinkIDMovie, GOBJ_PRIORITY_DEFAULT);
-	gcMakeDefaultCameraGObj(9, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeDefaultCameraGObj(nGCCommonLinkIDCamera, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	mvOpeningLinkInitVars();
 	efParticleInitAll();
 	ftParamInitGame();

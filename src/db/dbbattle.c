@@ -6,24 +6,6 @@
 
 // // // // // // // // // // // //
 //                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x80132C20
-s32 sDBBattlePad0x80132C20[2];
-
-// 0x80132C28
-LBFileNode sDBBattleStatusBuffer[150];
-
-// 0x801330D8
-LBFileNode sDBBattleForceStatusBuffer[7];
-
-// 0x80133110
-DBFighter sDBBattleFighters[GMCOMMON_PLAYERS_MAX];
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -184,6 +166,24 @@ SYTaskmanSetup dDBBattleTaskmanSetup =
     
     dbBattleFuncStart         		// Task start function
 };
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x80132C20
+s32 sDBBattlePad0x80132C20[2];
+
+// 0x80132C28
+LBFileNode sDBBattleStatusBuffer[150];
+
+// 0x801330D8
+LBFileNode sDBBattleForceStatusBuffer[7];
+
+// 0x80133110
+DBFighter sDBBattleFighters[GMCOMMON_PLAYERS_MAX];
 
 // // // // // // // // // // // //
 //                               //

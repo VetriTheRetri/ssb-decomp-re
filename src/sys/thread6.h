@@ -115,7 +115,7 @@ typedef struct Unk80045268
 
 extern u32 gSYControllerConnectedNum;
 extern sb32 gUpdateContData;
-extern s8 gPlayerControllerPortStatuses[MAXCONTROLLERS];
+extern s8 gSYControllerDeviceStatuses[MAXCONTROLLERS];
 extern SYController gSYControllerDevices[MAXCONTROLLERS];
 extern SYController gSYControllerMain;
 

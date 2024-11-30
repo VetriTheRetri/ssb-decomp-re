@@ -19,33 +19,6 @@ extern intptr_t lITManagerParticleTextureBankHi;       // 0x00B1E640
 
 // // // // // // // // // // // //
 //                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x8018D040
-void *gITManagerFileData;
-
-// 0x8018D044
-s32 gITManagerParticleBankID;
-
-// 0x8018D048
-ITRandomWeights gITManagerRandomWeights;
-
-// 0x8018D060
-ITMonsterData gITManagerMonsterData;
-
-// 0x8018D090
-s32 gITManagerDisplayMode;
-
-// 0x8018D094 - points to next available item struct
-ITStruct *gITManagerStructsAllocFree;
-
-// 0x8018D098
-ITSpawnActor gITManagerSpawnActor;
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -133,6 +106,33 @@ GObj* (*dITManagerProcMakeList[/* */])(GObj*, Vec3f*, Vec3f*, u32) =
     itPippiMakeItem,        // Poké Ball Clefairy
     itMewMakeItem           // Poké Ball Mew
 };
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x8018D040
+void *gITManagerFileData;
+
+// 0x8018D044
+s32 gITManagerParticleBankID;
+
+// 0x8018D048
+ITRandomWeights gITManagerRandomWeights;
+
+// 0x8018D060
+ITMonsterData gITManagerMonsterData;
+
+// 0x8018D090
+s32 gITManagerDisplayMode;
+
+// 0x8018D094 - points to next available item struct
+ITStruct *gITManagerStructsAllocFree;
+
+// 0x8018D098
+ITSpawnActor gITManagerSpawnActor;
 
 // // // // // // // // // // // //
 //                               //

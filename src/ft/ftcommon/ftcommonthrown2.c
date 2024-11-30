@@ -3,21 +3,21 @@
 
 // // // // // // // // // // // //
 //                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x8018CF80
-s32 sFTCommonThrownScriptID;
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
 // 0x801886E0
 FTThrowHitDesc dFTCommonThrownNoDamageKnockback = { -1, 0, 361, 0, 0, 20, 0 };
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x8018CF80
+s32 sFTCommonThrownScriptID;
 
 // // // // // // // // // // // //
 //                               //

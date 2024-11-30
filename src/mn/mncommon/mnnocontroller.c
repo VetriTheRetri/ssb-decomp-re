@@ -7,15 +7,6 @@ extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
 //                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x800D67C0
-s32 sMNNoControllerPad0x800D67C0;
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -67,6 +58,15 @@ SYTaskmanSetup dMNNoControllerTaskmanSetup =
     
     mnNoControllerFuncStart         // Task start function
 };
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x800D67C0
+s32 sMNNoControllerPad0x800D67C0;
 
 // // // // // // // // // // // //
 //                               //

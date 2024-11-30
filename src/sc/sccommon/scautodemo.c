@@ -16,30 +16,6 @@ extern uintptr_t D_NF_0000000C;
 
 // // // // // // // // // // // //
 //                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x8018E2F0
-SCBattleState sSCAutoDemoBattleState;
-
-// 0x8018E4E0
-s32 sSCAutoDemoFocusChangeWait;
-
-// 0x8018E4E4
-u16 sSCAutoDemoCharacterFlag;
-
-// 0x8018E4E8
-GObj *sSCAutoDemoFighterNameGObj;
-
-// 0x8018E4EC
-SCAutoDemoProc *sSCAutoDemoProc;
-
-// 0x8018E4F0
-s16 sSCAutoDemoMapObjs[8];
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -202,6 +178,30 @@ SYTaskmanSetup dSCAutoDemoTaskmanSetup =
     
     scAutoDemoFuncStart           	// Task start function
 };
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x8018E2F0
+SCBattleState sSCAutoDemoBattleState;
+
+// 0x8018E4E0
+s32 sSCAutoDemoFocusChangeWait;
+
+// 0x8018E4E4
+u16 sSCAutoDemoFighterMask;
+
+// 0x8018E4E8
+GObj *sSCAutoDemoFighterNameGObj;
+
+// 0x8018E4EC
+SCAutoDemoProc *sSCAutoDemoProc;
+
+// 0x8018E4F0
+s16 sSCAutoDemoMapObjs[8];
 
 // // // // // // // // // // // //
 //                               //
@@ -515,26 +515,26 @@ s32 scAutoDemoGetShuffledFighterKind(u16 this_mask, u16 prev_mask, s32 random)
 // 0x8018D8C0
 s32 scAutoDemoGetFighterKind(s32 player)
 {
-	u16 character_flag;
+	u16 fighter_mask;
 	s32 unused;
-	s32 character_count2;
-	s32 character_count1;
-	s32 shuf;
+	s32 fighter_count2;
+	s32 fighter_count1;
+	s32 fkind;
 
 	if (player < 2)
 	{
 		return gSCManagerSceneData.demo_fkind[player];
 	}
-	character_flag = (gSCManagerBackupData.fighter_mask | LBBACKUP_CHARACTER_MASK_STARTER);
+	fighter_mask = (gSCManagerBackupData.fighter_mask | LBBACKUP_CHARACTER_MASK_STARTER);
 
-	character_count1 = scAutoDemoGetFighterKindsNum(character_flag), 
-	character_count2 = scAutoDemoGetFighterKindsNum(sSCAutoDemoCharacterFlag);
+	fighter_count1 = scAutoDemoGetFighterKindsNum(fighter_mask), 
+	fighter_count2 = scAutoDemoGetFighterKindsNum(sSCAutoDemoFighterMask);
 
-	shuf = scAutoDemoGetShuffledFighterKind(character_flag, sSCAutoDemoCharacterFlag, mtTrigGetRandomIntRange(character_count1 - character_count2));
+	fkind = scAutoDemoGetShuffledFighterKind(fighter_mask, sSCAutoDemoFighterMask, mtTrigGetRandomIntRange(fighter_count1 - fighter_count2));
 
-	sSCAutoDemoCharacterFlag |= 1 << shuf;
+	sSCAutoDemoFighterMask |= (1 << fkind);
 
-	return shuf;
+	return fkind;
 }
 
 // 0x8018D954
@@ -564,7 +564,7 @@ void scAutoDemoInitDemo(void)
 	{
 		gSCManagerSceneData.demo_gkind_order = 0;
 	}
-	sSCAutoDemoCharacterFlag = (1 << gSCManagerSceneData.demo_fkind[0]) | (1 << gSCManagerSceneData.demo_fkind[1]);
+	sSCAutoDemoFighterMask = (1 << gSCManagerSceneData.demo_fkind[0]) | (1 << gSCManagerSceneData.demo_fkind[1]);
 
 	for (i = 0; i < ARRAY_COUNT(gSCManagerBattleState->players); i++)
 	{
@@ -632,7 +632,7 @@ void scAutoDemoFuncStart(void)
 
 	scAutoDemoInitDemo();
 	scAutoDemoSetupFiles();
-	gcMakeDefaultCameraGObj(9, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeDefaultCameraGObj(nGCCommonLinkIDCamera, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	efParticleInitAll();
 	ftParamInitGame();
 	mpCollisionInitGroundData();

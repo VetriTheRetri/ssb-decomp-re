@@ -13,6 +13,7 @@ relocAssets
 undefined*
 tools/ido-recomp/
 tools/vpk0cmd
+tools/halAssetTool
 .vscode/
 build/
 ctx.c

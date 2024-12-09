@@ -190,9 +190,9 @@ void cmManagerSetCameraDeadUpStarPos(Vec3f *pos)
 }
 
 // 0x8010BB58
-f32 cmManagerGetPlayerNumZoomRange(s32 player_num)
+f32 cmManagerGetPlayerNumZoomRange(s32 players_num)
 {
-    f32 zoom = dCMManagerPlayerZoomRanges[player_num];
+    f32 zoom = dCMManagerPlayerZoomRanges[players_num];
 
     if (gSCManagerBattleState->game_type == nSCBattleGameTypeExplain)
     {
@@ -231,9 +231,9 @@ f32 cmManagerGetCamTargetAtY(f32 dist)
 // 0x8010BC54
 void cmManagerUpdateFollowEntities(Vec3f *vec, f32 *hz, f32 *vt)
 {
-    s32 player_num;
+    s32 players_num;
     s32 cobj_num;
-    FTCamera ft_cobj[GMCOMMON_PLAYERS_MAX];
+    FTCamera cams[GMCOMMON_PLAYERS_MAX];
     FTStruct *fp;
     WPStruct *wp;
     f32 pos_top;
@@ -245,7 +245,7 @@ void cmManagerUpdateFollowEntities(Vec3f *vec, f32 *hz, f32 *vt)
     f32 ft_bottom;
     f32 zoom;
     GObj *fighter_gobj;
-    FTStruct *cobj_fp;
+    FTStruct *cam_fp;
     f32 wp_top;
     f32 wp_bottom;
     f32 wp_left;
@@ -262,7 +262,7 @@ void cmManagerUpdateFollowEntities(Vec3f *vec, f32 *hz, f32 *vt)
 
     fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
 
-    player_num = 0;
+    players_num = 0;
 
     while (fighter_gobj != NULL)
     {
@@ -271,7 +271,7 @@ void cmManagerUpdateFollowEntities(Vec3f *vec, f32 *hz, f32 *vt)
         switch (fp->camera_mode)
         {
         default:
-            if (player_num >= ARRAY_COUNT(ft_cobj))
+            if (players_num >= ARRAY_COUNT(cams))
             {
                 while (TRUE)
                 {
@@ -279,24 +279,24 @@ void cmManagerUpdateFollowEntities(Vec3f *vec, f32 *hz, f32 *vt)
                     scManagerRunPrintGObjStatus();
                 }
             }
-            ft_cobj[player_num].target_fp = fp;
+            cams[players_num].target_fp = fp;
 
             switch (fp->camera_mode)
             {
             default:
-                ft_cobj[player_num].target_pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
+                cams[players_num].target_pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
                 break;
 
             case nFTCameraModeEntry:
             case nFTCameraModeExplain:
-                ft_cobj[player_num].target_pos = fp->entry_pos;
+                cams[players_num].target_pos = fp->entry_pos;
                 break;
 
             case nFTCameraModeDeadUp:
-                ft_cobj[player_num].target_pos = fp->status_vars.common.dead.pos;
+                cams[players_num].target_pos = fp->status_vars.common.dead.pos;
                 break;
             }
-            ft_cobj[player_num].target_pos.y += fp->attr->cam_offset_y;
+            cams[players_num].target_pos.y += fp->attr->cam_offset_y;
 
             if ((gSCManagerBattleState->game_type == nSCBattleGameType1PGame) && (gSCManagerBattleState->players[fp->player].is_spgame_team != FALSE))
             {
@@ -306,22 +306,22 @@ void cmManagerUpdateFollowEntities(Vec3f *vec, f32 *hz, f32 *vt)
                     break;
 
                     // WHAT!?!? There are a few ways to match this, but it appears to be a control flow issue more than anything.
-                    // Other solution #1: cast &ft_cobj[player_num].target_pos to an integer
+                    // Other solution #1: cast &cams[players_num].target_pos to an integer
                     // Other solution #2: explicitly define any of the Vec3f* functions below as s32 functions (just forget about it)
                 }
-                cmManagerSetCameraTeamBoundsPos(&ft_cobj[player_num].target_pos);
+                cmManagerSetCameraTeamBoundsPos(&cams[players_num].target_pos);
             }
             else switch (fp->camera_mode)
             {
             case nFTCameraModeDeadUp:
-                cmManagerSetCameraDeadUpStarPos(&ft_cobj[player_num].target_pos);
+                cmManagerSetCameraDeadUpStarPos(&cams[players_num].target_pos);
                 break;
 
             default:
-                cmManagerSetCameraBoundsPos(&ft_cobj[player_num].target_pos);
+                cmManagerSetCameraBoundsPos(&cams[players_num].target_pos);
                 break;
             }
-            player_num++;
+            players_num++;
             break;
 
         case nFTCameraModeGhost:
@@ -329,7 +329,7 @@ void cmManagerUpdateFollowEntities(Vec3f *vec, f32 *hz, f32 *vt)
         }
         fighter_gobj = fighter_gobj->link_next;
     }
-    if (player_num != 0)
+    if (players_num != 0)
     {
         ft_top = 65536.0F;
         ft_bottom = -65536.0F;
@@ -341,27 +341,27 @@ void cmManagerUpdateFollowEntities(Vec3f *vec, f32 *hz, f32 *vt)
         gm_left = 65536.0F;
         gm_right = -65536.0F;
 
-        zoom = cmManagerGetPlayerNumZoomRange(player_num);
+        zoom = cmManagerGetPlayerNumZoomRange(players_num);
 
-        for (cobj_num = 0; cobj_num < player_num; cobj_num++)
+        for (cobj_num = 0; cobj_num < players_num; cobj_num++)
         {
-            cobj_fp = ft_cobj[cobj_num].target_fp;
+            cam_fp = cams[cobj_num].target_fp;
 
-            adjust = cmManagerCalcFighterZoomRange(cobj_fp, zoom);
+            adjust = cmManagerCalcFighterZoomRange(cam_fp, zoom);
 
-            lr = ((cobj_fp->camera_mode == nFTCameraModeEntry) || (cobj_fp->camera_mode == nFTCameraModeExplain)) ?
-                                                                             cobj_fp->status_vars.common.entry.lr :
-                                                                                                      cobj_fp->lr;
+            lr = ((cam_fp->camera_mode == nFTCameraModeEntry) || (cam_fp->camera_mode == nFTCameraModeExplain)) ?
+                                                                             cam_fp->status_vars.common.entry.lr :
+                                                                                                      cam_fp->lr;
 
             if (lr == -1)
             {
-                pos_left = ft_cobj[cobj_num].target_pos.x - (1000.0F * adjust);
-                pos_right = ft_cobj[cobj_num].target_pos.x + (700.0F * adjust);
+                pos_left = cams[cobj_num].target_pos.x - (1000.0F * adjust);
+                pos_right = cams[cobj_num].target_pos.x + (700.0F * adjust);
             }
             else
             {
-                pos_left = ft_cobj[cobj_num].target_pos.x - (700.0F * adjust);
-                pos_right = ft_cobj[cobj_num].target_pos.x + (1000.0F * adjust);
+                pos_left = cams[cobj_num].target_pos.x - (700.0F * adjust);
+                pos_right = cams[cobj_num].target_pos.x + (1000.0F * adjust);
             }
             if (gm_left > pos_left)
             {
@@ -371,8 +371,8 @@ void cmManagerUpdateFollowEntities(Vec3f *vec, f32 *hz, f32 *vt)
             {
                 gm_right = pos_right;
             }
-            pos_top = ft_cobj[cobj_num].target_pos.y + (700.0F * adjust);
-            pos_bottom = ft_cobj[cobj_num].target_pos.y + (-700.0F * adjust);
+            pos_top = cams[cobj_num].target_pos.y + (700.0F * adjust);
+            pos_bottom = cams[cobj_num].target_pos.y + (-700.0F * adjust);
 
             if (gm_bottom > pos_bottom)
             {
@@ -382,23 +382,23 @@ void cmManagerUpdateFollowEntities(Vec3f *vec, f32 *hz, f32 *vt)
             {
                 gm_top = pos_top;
             }
-            if (ft_cobj[cobj_num].target_pos.x < ft_right) // ft_right = ft_right?
+            if (cams[cobj_num].target_pos.x < ft_right) // ft_right = ft_right?
             {
-                ft_right = ft_cobj[cobj_num].target_pos.x;
+                ft_right = cams[cobj_num].target_pos.x;
             }
-            if (ft_cobj[cobj_num].target_pos.x > ft_left) // ft_left = ft_left?
+            if (cams[cobj_num].target_pos.x > ft_left) // ft_left = ft_left?
             {
-                ft_left = ft_cobj[cobj_num].target_pos.x;
+                ft_left = cams[cobj_num].target_pos.x;
             }
-            if (ft_cobj[cobj_num].target_pos.y < ft_top) // ft_top = ft_top?
+            if (cams[cobj_num].target_pos.y < ft_top) // ft_top = ft_top?
             {
-                ft_top = ft_cobj[cobj_num].target_pos.y;
+                ft_top = cams[cobj_num].target_pos.y;
             }
-            if (ft_cobj[cobj_num].target_pos.y > ft_bottom) // ft_bottom = ft_bottom?
+            if (cams[cobj_num].target_pos.y > ft_bottom) // ft_bottom = ft_bottom?
             {
-                ft_bottom = ft_cobj[cobj_num].target_pos.y;
+                ft_bottom = cams[cobj_num].target_pos.y;
             }
-            ft_cobj[cobj_num].unk_ftcobj_0x10 = adjust;
+            cams[cobj_num].unk_ftcobj_0x10 = adjust;
         }
         weapon_gobj = gGCCommonLinks[nGCCommonLinkIDWeapon];
 

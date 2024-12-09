@@ -12,19 +12,17 @@
 #define mnCommonSetOptionChangeWaitP(wait, is_button, stick_range, div) ((wait) = (((is_button) != FALSE) ? (12) : mnCommonGetOptionChangeWaitP(stick_range, div)))
 #define mnCommonSetOptionChangeWaitN(wait, is_button, stick_range, div) ((wait) = (((is_button) != FALSE) ? (12) : mnCommonGetOptionChangeWaitN(stick_range, div)))
 
-// EXTERN
-      // 0x800A5240
-extern intptr_t lOverlay32ArenaLo;  // 0x80136DA0
-extern intptr_t lOverlay32ArenaHi;  // 0x803903E0
-
 // Stuff - where does it go?!?
-typedef enum vsRecordsKind
+typedef enum MNVSRecordKind
 {
-	vsRecordsKindBattleScore,     // BattleScore
-	vsRecordsKindRanking,         // Ranking
-	vsRecordsKindIndividual       // Individual
+	nMNVSRecordKindStart,	
+	nMNVSRecordKindBattleScore = nMNVSRecordKindStart,	// BattleScore
+	nMNVSRecordKindRanking,         					// Ranking
+	nMNVSRecordKindIndiv,       						// Individual
+	nMNVSRecordKindEnd = nMNVSRecordKindIndiv,
+	nMNVSRecordKindEnumCount
 
-} vsRecordsKind;
+} MNVSRecordKind;
 
 typedef enum vsRecordsRankingColumnKind
 {

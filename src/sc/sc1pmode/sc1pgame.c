@@ -1539,8 +1539,8 @@ void sc1PGameWaitStageBossUpdate(void)
     ftParamUnlockPlayerControl(player_gobj);
     ftParamUnlockPlayerControl(com_gobj);
 
-    player_fp->camera_mode = 0;
-    com_fp->camera_mode = 0;
+    player_fp->camera_mode = nFTCameraModeDefault;
+    com_fp->camera_mode = nFTCameraModeDefault;
 
     gSCManagerBattleState->game_status = nSCBattleGameStatusGo;
 

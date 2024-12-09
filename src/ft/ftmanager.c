@@ -552,7 +552,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTDesc *desc)
     fp->hitlag_mul = 1.0F;
     fp->shield_heal_wait = 10.0F;
 
-    fp->is_fast_fall = FALSE;
+    fp->is_fastfall = FALSE;
 
     fp->player_number = gFTManagerPlayersNum++;
 

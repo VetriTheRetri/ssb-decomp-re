@@ -1096,7 +1096,7 @@ struct FTStruct
     ub32 is_absorb : 1;                 // Fighter's absorb box is active
     s32 absorb_lr : 2;
     ub32 is_goto_attack100 : 1;
-    ub32 is_fast_fall : 1;
+    ub32 is_fastfall : 1;
     ub32 is_show_magnify : 1;
     ub32 is_limit_map_bounds : 1;       // When Master Hand is defeated, this is set to TRUE so the player cannot die if they are offstage;
                                         // Effectively keeps the player at the blast zone and ignores the dead action state
@@ -1121,7 +1121,7 @@ struct FTStruct
     ub32 is_show_item : 1;
     ub32 is_cliff_hold : 1;             // Whether fighter is holding onto a ledge
     ub32 is_effect_interrupt : 1;       // Is this flag's sole purpose to fast-forward GFX in the moveset event parser?
-    ub32 is_nullstatus : 1;             // Dead / Entry / Appear / Rebirth, ignore hit collisions + map_bounds?
+    ub32 is_ghost : 1;                  // If TRUE, fighter does not check for hit collisions and cannot be KO'd
     ub32 is_damage_resist : 1;
     ub32 is_ignore_training_menu : 1;   // Can't bring up training menu if TRUE? Might be used for some other things
     u32 camera_mode : 4;

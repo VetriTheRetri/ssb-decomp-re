@@ -430,7 +430,7 @@ void ftKirbySpecialAirNWaitProcPhysics(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     FTAttributes *attr = fp->attr;
 
-    if (fp->is_fast_fall)
+    if (fp->is_fastfall)
     {
         ftPhysicsApplyFastFall(fp, attr);
     }

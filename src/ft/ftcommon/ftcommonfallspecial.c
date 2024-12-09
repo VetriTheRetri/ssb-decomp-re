@@ -20,7 +20,7 @@ void ftCommonFallSpecialProcPhysics(GObj *fighter_gobj)
 
     ftPhysicsCheckSetFastFall(fp);
 
-    if (fp->is_fast_fall)
+    if (fp->is_fastfall)
     {
         ftPhysicsApplyFastFall(fp, attr);
     }

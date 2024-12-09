@@ -54,7 +54,7 @@ void ftCommonEntrySetStatus(GObj *fighter_gobj)
 
     fp->is_invisible = TRUE;
     fp->is_hide_shadow = TRUE;
-    fp->is_nullstatus = TRUE;
+    fp->is_ghost = TRUE;
     fp->is_playertag_hide = TRUE;
 }
 
@@ -159,9 +159,9 @@ void ftCommonAppearInitStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->is_nullstatus = TRUE;
+    fp->is_ghost = TRUE;
 
-    fp->camera_mode = 3;
+    fp->camera_mode = nFTCameraModeEntry;
 
     fp->is_hide_shadow = TRUE;
     fp->is_playertag_hide = TRUE;

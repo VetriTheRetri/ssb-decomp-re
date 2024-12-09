@@ -88,10 +88,10 @@ loop: // This makes no sense
     this_fp->status_vars.common.rebirth.halo_offset.z = 0.0F;
 
     this_fp->is_ignore_training_menu = TRUE;
-    this_fp->is_nullstatus = TRUE;
+    this_fp->is_ghost = TRUE;
     this_fp->is_hide_shadow = TRUE;
     this_fp->is_rebirth = TRUE;
-    this_fp->camera_mode = 1;
+    this_fp->camera_mode = nFTCameraModeGhost;
 
     this_fp->status_vars.common.rebirth.halo_number = halo_number;
 
@@ -129,7 +129,7 @@ void ftCommonRebirthDownProcUpdate(GObj *fighter_gobj)
 
     if (fp->status_vars.common.rebirth.halo_despawn_wait == (FTCOMMON_REBIRTH_HALO_DESPAWN_WAIT - FTCOMMON_REBIRTH_HALO_UNK_WAIT))
     {
-        fp->camera_mode = 0;
+        fp->camera_mode = nFTCameraModeDefault;
     }
     if (fp->status_vars.common.rebirth.halo_despawn_wait == (FTCOMMON_REBIRTH_HALO_DESPAWN_WAIT - FTCOMMON_REBIRTH_HALO_STAND_WAIT))
     {
@@ -162,7 +162,7 @@ void ftCommonRebirthStandSetStatus(GObj *fighter_gobj)
     ftMainPlayAnimNoEffect(fighter_gobj);
 
     fp->is_ignore_training_menu = TRUE;
-    fp->is_nullstatus = TRUE;
+    fp->is_ghost = TRUE;
     fp->is_hide_shadow = TRUE;
     fp->is_rebirth = TRUE;
 
@@ -201,7 +201,7 @@ void ftCommonRebirthWaitSetStatus(GObj *fighter_gobj)
 
     ftMainSetStatus(fighter_gobj, nFTCommonStatusRebirthWait, 0.0F, 1.0F, (FTSTATUS_PRESERVE_PLAYERTAG | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM));
 
-    fp->is_nullstatus = TRUE;
+    fp->is_ghost = TRUE;
     fp->is_hide_shadow = TRUE;
     fp->is_rebirth = TRUE;
 

@@ -849,8 +849,8 @@ typedef enum FTMotionEvent
 typedef enum FTCameraModes
 {
     nFTCameraModeDefault,
-    nFTCameraModeRebirth,
-    nFTCameraModeDeadUpStar,
+    nFTCameraModeGhost,
+    nFTCameraModeDeadUp,
     nFTCameraModeEntry,
     nFTCameraModeExplain
 

@@ -1663,7 +1663,7 @@ void ftMainSearchHitHazard(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     GRObstacle *gh = &sFTMainGroundObstacles[0];
 
-    if (!fp->is_nullstatus)
+    if (!(fp->is_ghost))
     {
         s32 i;
 
@@ -3674,7 +3674,7 @@ void ftMainSearchFighterCatch(GObj *this_gobj)
         }
         other_fp = ftGetStruct(other_gobj);
 
-        if (other_fp->is_nullstatus) 
+        if (other_fp->is_ghost) 
         {
             goto next_gobj;
         }
@@ -3769,7 +3769,7 @@ void ftMainProcSearchAllHit(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (!(fp->is_nullstatus))
+    if (!(fp->is_ghost))
     {
         sFTMainHitLogID = 0;
 
@@ -4055,7 +4055,7 @@ void ftMainProcUpdateMain(GObj *fighter_gobj)
 }
 
 // 0x800E69C4
-void ftMainUpdateWithheldPartID(FTStruct *fp, s32 hiddenpart_id)
+void ftMainUpdateHiddenPartID(FTStruct *fp, s32 hiddenpart_id)
 {
     FTHiddenPart *hiddenpart;
     void *dl;
@@ -4173,7 +4173,7 @@ void ftMainUpdateWithheldPartID(FTStruct *fp, s32 hiddenpart_id)
 }
 
 // 0x800E6CE0
-void ftMainAddWithheldPartID(FTStruct *fp, s32 hiddenpart_id)
+void ftMainAddHiddenPartID(FTStruct *fp, s32 hiddenpart_id)
 {
     DObj *new_parent_joint;
     DObj *sibling_joint;
@@ -4269,7 +4269,7 @@ void ftMainAddWithheldPartID(FTStruct *fp, s32 hiddenpart_id)
 }
 
 // 0x800E6E00
-void ftMainEjectWithheldPartID(FTStruct *fp, s32 hiddenpart_id)
+void ftMainEjectHiddenPartID(FTStruct *fp, s32 hiddenpart_id)
 {
     FTHiddenPart *hiddenpart = &fp->attr->hiddenparts[hiddenpart_id];
     DObj *root_joint = fp->joints[hiddenpart->root_joint_id];
@@ -4429,7 +4429,7 @@ void ftMainSetStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
 
     if (!(flags & FTSTATUS_PRESERVE_FASTFALL))
     {
-        fp->is_fast_fall = FALSE;
+        fp->is_fastfall = FALSE;
     }
 
     fp->is_invisible = FALSE;
@@ -4477,13 +4477,13 @@ void ftMainSetStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
 
     ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_NONE);
 
-    fp->is_nullstatus = FALSE;
+    fp->is_ghost = FALSE;
     fp->is_damage_resist = FALSE;
     fp->is_ignore_training_menu = FALSE;
 
-    if (fp->camera_mode != 3)
+    if (fp->camera_mode != nFTCameraModeEntry)
     {
-        fp->camera_mode = 0;
+        fp->camera_mode = nFTCameraModeDefault;
     }
     fp->camera_zoom_range = 1.0F;
 
@@ -4610,14 +4610,14 @@ void ftMainSetStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
                 {
                     if (anim_desc_update & (1 << 31))
                     {
-                        ftMainUpdateWithheldPartID(fp, i);
+                        ftMainUpdateHiddenPartID(fp, i);
                     }
                 }
                 else if (anim_desc_update & (1 << 31))
                 {
-                    ftMainAddWithheldPartID(fp, i);
+                    ftMainAddHiddenPartID(fp, i);
                 }
-                else ftMainEjectWithheldPartID(fp, i);
+                else ftMainEjectHiddenPartID(fp, i);
             }
 
             dobjdesc = attr->commonparts_container->commonparts[fp->detail_curr - nFTPartsDetailStart].dobjdesc;

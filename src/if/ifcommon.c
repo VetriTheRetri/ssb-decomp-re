@@ -1999,7 +1999,7 @@ void ifCommonAnnounceGoSetStatus(void)
 
         ftParamUnlockPlayerControl(fighter_gobj);
 
-        fp->camera_mode = 0;
+        fp->camera_mode = nFTCameraModeDefault;
 
         fighter_gobj = fighter_gobj->link_next;
     }

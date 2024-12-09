@@ -126,12 +126,12 @@ void ftCommonSleepSetStatus(GObj *fighter_gobj)
 
     fp->is_invisible = TRUE;
     fp->is_hide_shadow = TRUE;
-    fp->is_nullstatus = TRUE;
+    fp->is_ghost = TRUE;
     fp->is_ignore_training_menu = TRUE;
 
     fp->status_vars.common.sleep.stock_steal_wait = 0;
 
-    fp->camera_mode = 1;
+    fp->camera_mode = nFTCameraModeGhost;
 
     fp->is_playertag_hide = TRUE;
 }

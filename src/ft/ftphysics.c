@@ -232,9 +232,9 @@ void ftPhysicsApplyFastFall(FTStruct *fp, FTAttributes *attr)
 // 0x800D8DB0
 void ftPhysicsCheckSetFastFall(FTStruct *fp)
 {
-    if (!(fp->is_fast_fall) && (fp->physics.vel_air.y < 0.0F) && (fp->input.pl.stick_range.y <= FTCOMMON_FASTFALL_STICK_RANGE_MIN) && (fp->tap_stick_y < FTCOMMON_FASTFALL_BUFFER_FRAMES_MAX))
+    if (!(fp->is_fastfall) && (fp->physics.vel_air.y < 0.0F) && (fp->input.pl.stick_range.y <= FTCOMMON_FASTFALL_STICK_RANGE_MIN) && (fp->tap_stick_y < FTCOMMON_FASTFALL_BUFFER_FRAMES_MAX))
     {
-        fp->is_fast_fall = TRUE;
+        fp->is_fastfall = TRUE;
 
         fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
 
@@ -349,7 +349,7 @@ void ftPhysicsApplyAirVelDrift(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     FTAttributes *attr = fp->attr;
 
-    (fp->is_fast_fall) ? ftPhysicsApplyFastFall(fp, attr) : ftPhysicsApplyGravityDefault(fp, attr);
+    (fp->is_fastfall) ? ftPhysicsApplyFastFall(fp, attr) : ftPhysicsApplyGravityDefault(fp, attr);
 
     if (ftPhysicsCheckClampAirVelXDecMax(fp, attr) == FALSE)
     {
@@ -366,7 +366,7 @@ void ftPhysicsApplyAirVelDriftFastFall(GObj *fighter_gobj)
 
     ftPhysicsCheckSetFastFall(fp);
 
-    (fp->is_fast_fall) ? ftPhysicsApplyFastFall(fp, attr) : ftPhysicsApplyGravityDefault(fp, attr);
+    (fp->is_fastfall) ? ftPhysicsApplyFastFall(fp, attr) : ftPhysicsApplyGravityDefault(fp, attr);
 
     if (ftPhysicsCheckClampAirVelXDecMax(fp, attr) == FALSE)
     {
@@ -381,7 +381,7 @@ void ftPhysicsApplyAirVelFriction(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     FTAttributes *attr = fp->attr;
 
-    (fp->is_fast_fall) ? ftPhysicsApplyFastFall(fp, attr) : ftPhysicsApplyGravityDefault(fp, attr);
+    (fp->is_fastfall) ? ftPhysicsApplyFastFall(fp, attr) : ftPhysicsApplyGravityDefault(fp, attr);
 
     if (ftPhysicsCheckClampAirVelXDecMax(fp, attr) == FALSE)
     {

@@ -98,7 +98,7 @@ void ftCommonJumpAerialProcPhysics(GObj *fighter_gobj)
 
     ftPhysicsCheckSetFastFall(fp);
 
-    (fp->is_fast_fall) ? ftPhysicsApplyFastFall(fp, attr) : ftPhysicsApplyGravityDefault(fp, attr);
+    (fp->is_fastfall) ? ftPhysicsApplyFastFall(fp, attr) : ftPhysicsApplyGravityDefault(fp, attr);
 
     switch (fp->fkind)
     {

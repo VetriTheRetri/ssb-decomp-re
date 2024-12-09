@@ -292,7 +292,7 @@ void cmManagerUpdateFollowEntities(Vec3f *vec, f32 *hz, f32 *vt)
                 ft_cobj[player_num].target_pos = fp->entry_pos;
                 break;
 
-            case nFTCameraModeDeadUpStar:
+            case nFTCameraModeDeadUp:
                 ft_cobj[player_num].target_pos = fp->status_vars.common.dead.pos;
                 break;
             }
@@ -313,7 +313,7 @@ void cmManagerUpdateFollowEntities(Vec3f *vec, f32 *hz, f32 *vt)
             }
             else switch (fp->camera_mode)
             {
-            case nFTCameraModeDeadUpStar:
+            case nFTCameraModeDeadUp:
                 cmManagerSetCameraDeadUpStarPos(&ft_cobj[player_num].target_pos);
                 break;
 
@@ -324,7 +324,7 @@ void cmManagerUpdateFollowEntities(Vec3f *vec, f32 *hz, f32 *vt)
             player_num++;
             break;
 
-        case nFTCameraModeRebirth:
+        case nFTCameraModeGhost:
             break;
         }
         fighter_gobj = fighter_gobj->link_next;

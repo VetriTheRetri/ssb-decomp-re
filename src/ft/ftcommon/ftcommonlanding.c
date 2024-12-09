@@ -72,7 +72,7 @@ void ftCommonLandingSetStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->is_fast_fall) && (fp->physics.vel_air.y <= -fp->attr->tvel_fast))
+    if ((fp->is_fastfall) && (fp->physics.vel_air.y <= -fp->attr->tvel_fast))
     {
         ftCommonLandingSetStatusParam(fighter_gobj, nFTCommonStatusLandingHeavy, TRUE, FTCOMMON_LANDING_HEAVY_ANIM_SPEED);
     }

@@ -16,7 +16,7 @@ void ftCommonAttackAirLwProcHit(GObj *fighter_gobj)
     {
         ftParamClearAttackCollAll(fighter_gobj);
 
-        fp->is_fast_fall = FALSE;
+        fp->is_fastfall = FALSE;
 
         fp->physics.vel_air.y = FTCOMMON_ATTACKAIRLW_LINK_REHIT_BOUNCE_VEL_Y;
 

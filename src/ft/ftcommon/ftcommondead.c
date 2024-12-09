@@ -147,7 +147,7 @@ void ftCommonDeadClearSpecialStats(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->star_invincible_tics = 0;
-    fp->is_nullstatus = TRUE;
+    fp->is_ghost = TRUE;
     fp->is_hide_shadow = TRUE;
 
     ftParamTryUpdateItemMusic();
@@ -394,7 +394,7 @@ void ftCommonDeadUpStarSetStatus(GObj *fighter_gobj)
 
     fp->status_vars.common.dead.pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
-    fp->camera_mode = 2;
+    fp->camera_mode = nFTCameraModeDeadUp;
 
     fp->status_vars.common.dead.rebirth_wait = 1;
 
@@ -515,7 +515,7 @@ void ftCommonDeadUpFallSetStatus(GObj *fighter_gobj)
 
     fp->status_vars.common.dead.pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
-    fp->camera_mode = 2;
+    fp->camera_mode = nFTCameraModeDeadUp;
 
     fp->status_vars.common.dead.rebirth_wait = 1;
 
@@ -582,7 +582,7 @@ sb32 ftCommonDeadCheckInterruptCommon(GObj *fighter_gobj)
         }
         return FALSE;
     }
-    else if (!(fp->is_nullstatus))
+    else if (!(fp->is_ghost))
     {
         if ((gSCManagerBattleState->game_type == nSCBattleGameType1PGame) && (gSCManagerBattleState->players[fp->player].is_spgame_team != FALSE))
         {

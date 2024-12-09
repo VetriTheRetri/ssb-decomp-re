@@ -5142,7 +5142,7 @@ void ftComputerFollowObjectiveWalk(FTStruct *fp)
                 {
                     if (com->objective != nFTComputerObjectiveRecover)
                     {
-                        if (!(fp->is_fast_fall) && !(com->ftcom_flags_0x4A_b0))
+                        if (!(fp->is_fastfall) && !(com->ftcom_flags_0x4A_b0))
                         {
                             com->ftcom_flags_0x4A_b0 = TRUE;
 

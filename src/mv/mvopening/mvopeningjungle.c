@@ -307,7 +307,7 @@ void mvOpeningJungleMakeFighters(void)
 
     for (i = 0; i < ARRAY_COUNT(gSCManagerBattleState->players); i++)
     {
-        FTDesc ft_desc = dFTManagerDefaultFighterDesc;
+        FTDesc desc = dFTManagerDefaultFighterDesc;
 
         if (gSCManagerBattleState->players[i].pkind == nFTPlayerKindNot)
         {
@@ -315,40 +315,40 @@ void mvOpeningJungleMakeFighters(void)
         }
         ftManagerSetupFilesAllKind(gSCManagerBattleState->players[i].fkind);
 
-        ft_desc.fkind = gSCManagerBattleState->players[i].fkind;
+        desc.fkind = gSCManagerBattleState->players[i].fkind;
 
         if (gSCManagerBattleState->players[i].fkind == nFTKindDonkey)
         {
-            ft_desc.pos.x = spawn_position[1].x;
-            ft_desc.pos.y = spawn_position[1].y;
-            ft_desc.pos.z = spawn_position[1].z;
+            desc.pos.x = spawn_position[1].x;
+            desc.pos.y = spawn_position[1].y;
+            desc.pos.z = spawn_position[1].z;
 
-            ft_desc.lr = +1;
+            desc.lr = +1;
 
-            ft_desc.damage = 200;
+            desc.damage = 200;
         }
         else
         {
-            ft_desc.pos.x = spawn_position[0].x;
-            ft_desc.pos.y = spawn_position[0].y;
-            ft_desc.pos.z = spawn_position[0].z;
+            desc.pos.x = spawn_position[0].x;
+            desc.pos.y = spawn_position[0].y;
+            desc.pos.z = spawn_position[0].z;
 
-            ft_desc.lr = -1;
+            desc.lr = -1;
 
-            ft_desc.damage = 40;
+            desc.damage = 40;
         }
-        ft_desc.team = gSCManagerBattleState->players[i].team;
-        ft_desc.player = i;
-        ft_desc.detail = nFTPartsDetailHigh;
-        ft_desc.costume = gSCManagerBattleState->players[i].costume;
-        ft_desc.handicap = gSCManagerBattleState->players[i].handicap;
-        ft_desc.level = gSCManagerBattleState->players[i].level;
-        ft_desc.stock_count = gSCManagerBattleState->stocks;
-        ft_desc.pkind = gSCManagerBattleState->players[i].pkind;
-        ft_desc.controller = &gSYControllerDevices[i];
-        ft_desc.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[i].fkind);
+        desc.team = gSCManagerBattleState->players[i].team;
+        desc.player = i;
+        desc.detail = nFTPartsDetailHigh;
+        desc.costume = gSCManagerBattleState->players[i].costume;
+        desc.handicap = gSCManagerBattleState->players[i].handicap;
+        desc.level = gSCManagerBattleState->players[i].level;
+        desc.stock_count = gSCManagerBattleState->stocks;
+        desc.pkind = gSCManagerBattleState->players[i].pkind;
+        desc.controller = &gSYControllerDevices[i];
+        desc.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[i].fkind);
 
-        sMVOpeningJungleFighterGObj = fighter_gobj = ftManagerMakeFighter(&ft_desc);
+        sMVOpeningJungleFighterGObj = fighter_gobj = ftManagerMakeFighter(&desc);
 
         if (gSCManagerBattleState->players[i].fkind == nFTKindDonkey)
         {

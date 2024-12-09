@@ -116,7 +116,7 @@ enum itMLuckyStatus
 // // // // // // // // // // // //
 
 // 0x80180FC0
-void itMLuckyMakeEggInitItemVars(GObj *item_gobj)
+void itMLuckyMakeEggInitVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -171,7 +171,7 @@ void itMLuckyFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITMLuckyStatusDescs, nITMLuckyStatusFall);
+    itMainSetStatus(item_gobj, dITMLuckyStatusDescs, nITMLuckyStatusFall);
 }
 
 // 0x80181124
@@ -197,7 +197,7 @@ sb32 itMLuckyAppearProcMap(GObj *item_gobj)
 
         itMLuckyMakeEggSetStatus(item_gobj);
 
-        itMLuckyMakeEggInitItemVars(item_gobj);
+        itMLuckyMakeEggInitVars(item_gobj);
     }
     return FALSE;
 }
@@ -211,7 +211,7 @@ void itMLuckyAppearSetStatus(GObj *item_gobj)
     {
         func_800269C0_275C0(nSYAudioVoiceMBallLuckyAppear);
     }
-    itMainSetItemStatus(item_gobj, dITMLuckyStatusDescs, nITMLuckyStatusAppear);
+    itMainSetStatus(item_gobj, dITMLuckyStatusDescs, nITMLuckyStatusAppear);
 }
 
 // 0x80181200
@@ -291,7 +291,7 @@ sb32 itMLuckyMakeEggProcDamage(GObj *item_gobj)
 // 0x801813A8
 void itMLuckyMakeEggSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITMLuckyStatusDescs, nITMLuckyStatusMakeEgg);
+    itMainSetStatus(item_gobj, dITMLuckyStatusDescs, nITMLuckyStatusMakeEgg);
 }
 
 // 0x801813D0
@@ -317,7 +317,7 @@ void itMLuckyDisappearSetStatus(GObj *item_gobj)
 
     ip->damage_coll.hitstatus = nGMHitStatusNone;
 
-    itMainSetItemStatus(item_gobj, dITMLuckyStatusDescs, nITMLuckyStatusDisappear);
+    itMainSetStatus(item_gobj, dITMLuckyStatusDescs, nITMLuckyStatusDisappear);
 }
 
 // 0x80181430

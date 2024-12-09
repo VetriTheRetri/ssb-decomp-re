@@ -8,14 +8,14 @@
 extern void itKamexAttackUpdateHydro(GObj *item_gobj);
 extern sb32 itKamexFallProcUpdate(GObj *item_gobj);
 extern sb32 itKamexFallProcMap(GObj *item_gobj);
-extern void itKamexFallInitItemVars(GObj *item_gobj);
+extern void itKamexFallInitVars(GObj *item_gobj);
 extern void itKamexFallSetStatus(GObj *item_gobj);
 extern sb32 itKamexAppearProcUpdate(GObj *item_gobj);
 extern sb32 itKamexAppearProcMap(GObj *item_gobj);
 extern void itKamexAppearSetStatus(GObj *item_gobj);
 extern sb32 itKamexAttackProcUpdate(GObj *item_gobj);
 extern sb32 itKamexAttackProcMap(GObj *item_gobj);
-extern void itKamexAttackInitItemVars(GObj *item_gobj, sb32 is_ignore_setup);
+extern void itKamexAttackInitVars(GObj *item_gobj, sb32 is_ignore_setup);
 extern void itKamexAttackSetStatus(GObj *item_gobj);
 extern sb32 itKamexCommonProcUpdate(GObj *item_gobj);
 extern sb32 itKamexCommonProcMap(GObj *item_gobj);

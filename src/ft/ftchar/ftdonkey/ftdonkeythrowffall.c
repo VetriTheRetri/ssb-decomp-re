@@ -39,7 +39,7 @@ void ftDonkeyThrowFFallSetStatus(GObj *fighter_gobj)
     {
         mpCommonSetFighterAir(fp);
     }
-    ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusThrowFFall, 0.0F, 0.0F, FTSTATUS_PRESERVE_FASTFALL);
+    ftMainSetStatus(fighter_gobj, nFTDonkeyStatusThrowFFall, 0.0F, 0.0F, FTSTATUS_PRESERVE_FASTFALL);
     ftPhysicsClampAirVelXMax(fp);
 }
 
@@ -52,7 +52,7 @@ void ftDonkeyThrowFJumpSetStatus(GObj *fighter_gobj)
     s32 vel_y;
 
     mpCommonSetFighterAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusThrowFFall, 0.0F, 0.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTDonkeyStatusThrowFFall, 0.0F, 0.0F, FTSTATUS_PRESERVE_NONE);
 
     switch (fp->status_vars.common.throwf.input_source)
     {

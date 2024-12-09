@@ -126,7 +126,7 @@ sb32 ftCaptainSpecialLwBoundCheckGoto(GObj *fighter_gobj)
     if ((fp->motion_vars.flags.flag1 == 1) && (fp->coll_data.coll_mask_curr & (MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL)))
     {
         mpCommonSetFighterAir(fp);
-        ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialLwBound, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+        ftMainSetStatus(fighter_gobj, nFTCaptainStatusSpecialLwBound, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
         fp->motion_vars.flags.flag1 = 0;
 
@@ -213,7 +213,7 @@ void ftCaptainSpecialLwAirSetStatus(GObj *fighter_gobj)
     f32 rot_z = fp->joints[nFTPartsJointTopN]->rotate.vec.f.z;
 
     mpCommonSetFighterAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialLwAir, 0.0F, 1.0F, FTSTATUS_PRESERVE_EFFECT);
+    ftMainSetStatus(fighter_gobj, nFTCaptainStatusSpecialLwAir, 0.0F, 1.0F, FTSTATUS_PRESERVE_EFFECT);
 
     fp->joints[nFTPartsJointTopN]->rotate.vec.f.z = rot_z;
     fp->joints[nFTPartsJointTransN]->rotate.vec.f.z = fp->joints[nFTPartsJointTopN]->rotate.vec.f.z;
@@ -226,7 +226,7 @@ void ftCaptainSpecialLwAirSetStatus(GObj *fighter_gobj)
 void ftCaptainSpecialLwLandingSetStatus(GObj *fighter_gobj)
 {
     mpCommonSetFighterGround(ftGetStruct(fighter_gobj));
-    ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialLwLanding, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTCaptainStatusSpecialLwLanding, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 }
 
 // 0x80160128
@@ -236,7 +236,7 @@ void ftCaptainSpecialLwSetStatus(GObj *fighter_gobj)
 
     fp->proc_status = ftCaptainSpecialLwProcStatus;
 
-    ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialLw, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTCaptainStatusSpecialLw, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
 
     fp->proc_shield = ftCaptainSpecialLwProcHit;
@@ -251,7 +251,7 @@ void jtgt_ovl3_801601A0(GObj *fighter_gobj) // Unused
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialLwAir, 0.0F, 1.0F, FTSTATUS_PRESERVE_EFFECT);
+    ftMainSetStatus(fighter_gobj, nFTCaptainStatusSpecialLwAir, 0.0F, 1.0F, FTSTATUS_PRESERVE_EFFECT);
     ftMainPlayAnimNoEffect(fighter_gobj);
 
     fp->proc_hit = ftCaptainSpecialLwProcHit;
@@ -267,7 +267,7 @@ void ftCaptainSpecialAirLwSetStatus(GObj *fighter_gobj)
 
     fp->proc_status = ftCaptainSpecialLwProcStatus;
 
-    ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialAirLw, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTCaptainStatusSpecialAirLw, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
 
     fp->proc_lagstart = ftParamProcPauseEffect;

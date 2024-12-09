@@ -25,7 +25,7 @@ void ftDonkeyThrowFLandingSetStatus(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterGround(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusThrowFLanding, 0.0F, 0.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTDonkeyStatusThrowFLanding, 0.0F, 0.0F, FTSTATUS_PRESERVE_NONE);
 
     fp->status_vars.common.throwf.landing_anim_frame = 0.0F;
 }

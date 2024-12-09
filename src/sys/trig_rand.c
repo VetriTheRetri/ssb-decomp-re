@@ -59,22 +59,27 @@ f32 atanf(f32 yDivX) {
     }
 }
 
-f32 atan2f(f32 y, f32 x) {
-    f32 yDivX;
-    s32 ySign;
+f32 atan2f(f32 y, f32 x)
+{
+    f32 div;
+    s32 sign;
 
-    if (0.0f < x) { return atanf(y / x); }
-    if (x < 0.0f) {
-        yDivX = y / x;
-        ySign = ((y < 0.0f) ? -1 : 1);
+    if (x > 0.0F)
+    {
+        return atanf(y / x);
+    }
+    else if (x < 0.0F)
+    {
+        div = y / x;
+        sign = ((y < 0.0F) ? -1 : 1);
 
-        return (M_PI_F - atanf(ABSF(yDivX))) * ySign;
+        return (M_PI_F - atanf(ABSF(div))) * sign;
     }
-    if (y != 0.0f) {
-        return ((y < 0.0f) ? -1 : 1) * (M_PI_F / 2.0f);
-    } else {
-        return 0.0f;
+    else if (y != 0.0F)
+    {
+        return ((y < 0.0F) ? -1 : 1) * (M_PI_F / 2.0F);
     }
+    else return 0.0F;
 }
 
 f32 asinf(f32 x) {

@@ -186,7 +186,7 @@ void itMarumineExplodeSetStatus(GObj *item_gobj)
     ip->event_id = 0;
 
     itMarumineExplodeUpdateAttackEvent(item_gobj);
-    itMainSetItemStatus(item_gobj, dITMarumineStatusDescs, nITMarumineStatusExplode);
+    itMainSetStatus(item_gobj, dITMarumineStatusDescs, nITMarumineStatusExplode);
 }
 
 // 0x80183A74

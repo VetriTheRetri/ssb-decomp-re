@@ -125,17 +125,17 @@ void mvOpeningRunMakeFighters(void)
 
 	for (i = 0; i < ARRAY_COUNT(fkinds); i++)
 	{
-		FTDesc spawn_info = dFTManagerDefaultFighterDesc;
+		FTDesc desc = dFTManagerDefaultFighterDesc;
 
-		spawn_info.fkind = fkinds[i];
-		spawn_info.costume = ftParamGetCostumeCommonID(fkinds[i], 0);
+		desc.fkind = fkinds[i];
+		desc.costume = ftParamGetCostumeCommonID(fkinds[i], 0);
 
-		spawn_info.pos.x = 0.0F;
-		spawn_info.pos.y = 0.0F;
-		spawn_info.pos.z = 0.0F;
+		desc.pos.x = 0.0F;
+		desc.pos.y = 0.0F;
+		desc.pos.z = 0.0F;
 
-		spawn_info.figatree_heap = sMVOpeningRunFigatreeHeaps[i];
-		fighter_gobj = fighter_proxy_gobj = ftManagerMakeFighter(&spawn_info);
+		desc.figatree_heap = sMVOpeningRunFigatreeHeaps[i];
+		fighter_gobj = fighter_proxy_gobj = ftManagerMakeFighter(&desc);
 
 		if (fkinds[i] == nFTKindLink)
 		{

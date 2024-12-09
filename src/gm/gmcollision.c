@@ -1557,9 +1557,9 @@ sb32 gmCollisionCheckWeaponAttackShieldCollide(WPAttackColl *attack_coll, s32 at
 }
 
 // 0x800EFFCC
-sb32 gmCollisionCheckWeaponAttackSpecialCollide(WPAttackColl *attack_coll, s32 attack_id, FTStruct *fp, FTSpecialColl *spc_coll)
+sb32 gmCollisionCheckWeaponAttackSpecialCollide(WPAttackColl *attack_coll, s32 attack_id, FTStruct *fp, FTSpecialColl *special_coll)
 {
-    DObj *dobj = fp->joints[spc_coll->joint_id];
+    DObj *dobj = fp->joints[special_coll->joint_id];
     FTParts *parts = ftGetParts(dobj);
 
     func_ovl2_800EDE00(dobj);
@@ -1572,8 +1572,8 @@ sb32 gmCollisionCheckWeaponAttackSpecialCollide(WPAttackColl *attack_coll, s32 a
         attack_coll->size,
         attack_coll->attack_state,
         parts->unk_dobjtrans_0x9C,
-        &spc_coll->offset,
-        &spc_coll->size,
+        &special_coll->offset,
+        &special_coll->size,
         &parts->vec_scale,
         2,
         NULL,
@@ -1782,9 +1782,9 @@ sb32 gmCollisionCheckItemAttackShieldCollide(ITAttackColl *attack_coll, s32 atta
 }
 
 // 0x800F0518
-sb32 gmCollisionCheckItemAttackSpecialCollide(ITAttackColl *attack_coll, s32 attack_id, FTStruct *fp, FTSpecialColl *spc_coll)
+sb32 gmCollisionCheckItemAttackSpecialCollide(ITAttackColl *attack_coll, s32 attack_id, FTStruct *fp, FTSpecialColl *special_coll)
 {
-    DObj *dobj = fp->joints[spc_coll->joint_id];
+    DObj *dobj = fp->joints[special_coll->joint_id];
     FTParts *parts = ftGetParts(dobj);
 
     func_ovl2_800EDE00(dobj);
@@ -1797,8 +1797,8 @@ sb32 gmCollisionCheckItemAttackSpecialCollide(ITAttackColl *attack_coll, s32 att
         attack_coll->size,
         attack_coll->attack_state,
         parts->unk_dobjtrans_0x9C,
-        &spc_coll->offset,
-        &spc_coll->size,
+        &special_coll->offset,
+        &special_coll->size,
         &parts->vec_scale,
         2,
         NULL,

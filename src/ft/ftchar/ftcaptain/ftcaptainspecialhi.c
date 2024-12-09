@@ -147,7 +147,7 @@ void ftCaptainSpecialHiSetStatus(GObj *fighter_gobj)
 
     fp->proc_status = ftCaptainSpecialHiProcStatus;
 
-    ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialHi, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTCaptainStatusSpecialHi, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftCaptainSpecialHiSetCatchParams(fp);
     ftMainPlayAnimNoEffect(fighter_gobj);
 }
@@ -158,7 +158,7 @@ void ftCaptainSpecialHiProcCatch(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj), *catch_fp;
     GObj *search_gobj;
 
-    ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialHiCatch, 0.0F, 1.0F, FTSTATUS_PRESERVE_EFFECT);
+    ftMainSetStatus(fighter_gobj, nFTCaptainStatusSpecialHiCatch, 0.0F, 1.0F, FTSTATUS_PRESERVE_EFFECT);
     ftMainPlayAnimNoEffect(fighter_gobj);
     ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL);
     ftPhysicsStopVelAll(fighter_gobj);
@@ -181,7 +181,7 @@ void ftCaptainSpecialHiThrowSetStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialHiThrow, 0.0F, 1.0F, FTSTATUS_PRESERVE_EFFECT);
+    ftMainSetStatus(fighter_gobj, nFTCaptainStatusSpecialHiThrow, 0.0F, 1.0F, FTSTATUS_PRESERVE_EFFECT);
     ftMainPlayAnimNoEffect(fighter_gobj);
     ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_NONE);
 
@@ -199,7 +199,7 @@ void ftCaptainSpecialAirHiSetStatus(GObj *fighter_gobj)
 
     fp->proc_status = ftCaptainSpecialHiProcStatus;
 
-    ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialAirHi, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTCaptainStatusSpecialAirHi, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftCaptainSpecialHiSetCatchParams(fp);
     ftMainPlayAnimNoEffect(fighter_gobj);
 }

@@ -17,7 +17,7 @@ void ftBossWalkSetStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTBossStatusWalk, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTBossStatusWalk, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftBossCommonCheckEdgeInvertLR(fighter_gobj);
 
     fp->physics.vel_air.x = 0.0F;

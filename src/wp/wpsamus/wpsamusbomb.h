@@ -6,7 +6,7 @@
 #include <wp/wpdef.h>
 
 extern sb32 wpSamusBombExplodeProcUpdate(GObj *weapon_gobj);
-extern void wpSamusBombExplodeInitWeaponVars(GObj *weapon_gobj);
+extern void wpSamusBombExplodeInitVars(GObj *weapon_gobj);
 extern sb32 wpSamusBombProcUpdate(GObj *weapon_gobj);
 extern sb32 wpSamusBombProcMap(GObj *weapon_gobj);
 extern sb32 wpSamusBombProcHit(GObj *weapon_gobj);

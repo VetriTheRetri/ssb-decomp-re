@@ -207,14 +207,14 @@ void sc1PChallengerFighterProcUpdate(GObj *fighter_gobj)
 void sc1PChallengerMakeFighter(s32 fkind)
 {
     GObj *fighter_gobj;
-    FTDesc ft_desc = dFTManagerDefaultFighterDesc;
+    FTDesc desc = dFTManagerDefaultFighterDesc;
 
-    ft_desc.fkind = fkind;
-    ft_desc.costume = ftParamGetCostumeCommonID(fkind, 0);
-    ft_desc.player = 0;
-    ft_desc.figatree_heap = sSC1PChallengerFigatreeHeap;
+    desc.fkind = fkind;
+    desc.costume = ftParamGetCostumeCommonID(fkind, 0);
+    desc.player = 0;
+    desc.figatree_heap = sSC1PChallengerFigatreeHeap;
     
-    fighter_gobj = ftManagerMakeFighter(&ft_desc);
+    fighter_gobj = ftManagerMakeFighter(&desc);
     
     gcAddGObjProcess(fighter_gobj, sc1PChallengerFighterProcUpdate, nGCProcessKindFunc, 1);
     

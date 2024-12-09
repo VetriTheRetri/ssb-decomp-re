@@ -23,7 +23,7 @@ extern sb32 itBoxDroppedProcMap(GObj *item_gobj);
 extern void itBoxDroppedSetStatus(GObj *item_gobj);
 extern sb32 itBoxExplodeProcUpdate(GObj *item_gobj);
 extern GObj *itBoxMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
-extern void itBoxExplodeInitItemVars(GObj *item_gobj);
+extern void itBoxExplodeInitVars(GObj *item_gobj);
 extern void itBoxExplodeSetStatus(GObj *item_gobj);
 extern void itBoxExplodeMakeEffectGotoSetStatus(GObj *item_gobj);
 

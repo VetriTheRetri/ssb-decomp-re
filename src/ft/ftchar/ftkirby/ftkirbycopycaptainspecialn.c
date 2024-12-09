@@ -102,7 +102,7 @@ void ftKirbyCopyCaptainSpecialAirNProcPhysics(GObj *fighter_gobj)
 void ftKirbyCopyCaptainSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 {
     mpCommonSetFighterGround(ftGetStruct(fighter_gobj));
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyCaptainSpecialN, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_RUMBLE | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM));
+    ftMainSetStatus(fighter_gobj, nFTKirbyStatusCopyCaptainSpecialN, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_RUMBLE | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM));
 }
 
 // 0x80160A80
@@ -111,7 +111,7 @@ void ftKirbyCopyCaptainSpecialNSwitchStatusAir(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyCaptainSpecialAirN, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_RUMBLE | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM));
+    ftMainSetStatus(fighter_gobj, nFTKirbyStatusCopyCaptainSpecialAirN, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_RUMBLE | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM));
     ftPhysicsClampAirVelXMax(fp);
 }
 
@@ -144,7 +144,7 @@ void func_ovl3_80160B28() // Unused
 // 0x80160B30
 void ftKirbyCopyCaptainSpecialNSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyCaptainSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTKirbyStatusCopyCaptainSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
     ftKirbyCopyCaptainSpecialNInitStatusVars(fighter_gobj);
 }
@@ -152,7 +152,7 @@ void ftKirbyCopyCaptainSpecialNSetStatus(GObj *fighter_gobj)
 // 0x80160B70
 void ftKirbyCopyCaptainSpecialAirNSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyCaptainSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTKirbyStatusCopyCaptainSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
     ftKirbyCopyCaptainSpecialNInitStatusVars(fighter_gobj);
 }

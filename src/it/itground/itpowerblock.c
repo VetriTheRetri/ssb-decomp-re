@@ -89,7 +89,7 @@ void itPowerBlockWaitSetStatus(GObj *item_gobj)
 {
     ITStruct *ip;
 
-    itMainSetItemStatus(item_gobj, dITPowerBlockStatusDescs, nITPowerBlockStatusWait);
+    itMainSetStatus(item_gobj, dITPowerBlockStatusDescs, nITPowerBlockStatusWait);
 
     ip = itGetStruct(item_gobj), ip->damage_coll.hitstatus = nGMHitStatusNormal;
 }

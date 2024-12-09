@@ -73,7 +73,7 @@ void scSubsysFighterProcUpdate(GObj *fighter_gobj)
 // 0x803905CC
 void scSubsysFighterSetStatus(GObj *fighter_gobj, s32 status_id)
 {
-    ftMainSetFighterStatus(fighter_gobj, status_id, FTSTATUS_PRESERVE_NONE, 1.0F, 0.0F);
+    ftMainSetStatus(fighter_gobj, status_id, FTSTATUS_PRESERVE_NONE, 1.0F, 0.0F);
 }
 
 // 0x803905F4 - Is this to attach models to Master Hand in the opening movie?

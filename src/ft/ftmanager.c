@@ -507,7 +507,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTDesc *desc)
 
     fp->unk_ft_0x7AC = 0;
     fp->attack_damage = 0;
-    fp->attack_attack_count = 0;
+    fp->attack_count = 0;
     fp->attack_shield_push = 0;
     fp->shield_damage = 0;
     fp->damage_lag = 0;
@@ -539,13 +539,13 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTDesc *desc)
 
     fp->reflect_damage = 0;
 
-    fp->spc_coll = NULL;
+    fp->special_coll = NULL;
 
     fp->attack1_followup_frames = 0.0F;
     fp->unk_ft_0x7A0 = 0.0F;
     fp->attack_knockback = 0.0F;
     fp->attack_rebound = 0.0F;
-    fp->damage_stack = 0.0F;
+    fp->damage_knockback_stack = 0.0F;
     fp->knockback_resist_status = 0.0F;
     fp->knockback_resist_passive = 0.0F;
     fp->damage_knockback = 0.0F;
@@ -568,23 +568,29 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTDesc *desc)
     fp->is_shuffle_electric = FALSE;
     fp->shuffle_tics = 0;
 
-    fp->attack_id = nFTMotionAttackIDNone;
+    fp->motion_attack_id = nFTMotionAttackIDNone;
     fp->motion_count = 0;
-    fp->stat_flags.stat_attack_id = nFTStatusAttackIDNone;
+    fp->stat_flags.attack_id = nFTStatusAttackIDNone;
     fp->stat_flags.is_smash_attack = fp->stat_flags.ga = fp->stat_flags.is_projectile = 0;
 
     fp->stat_count = fp->damage_stat_count = 0;
     fp->damage_stat_flags = fp->stat_flags;
 
-    fp->afterimage.desc_index = 0;
+    fp->afterimage.desc_id = 0;
 
     DObjGetStruct(fighter_gobj)->translate.vec.f = desc->pos;
     DObjGetStruct(fighter_gobj)->scale.vec.f.x = DObjGetStruct(fighter_gobj)->scale.vec.f.y = DObjGetStruct(fighter_gobj)->scale.vec.f.z = attr->size_mul;
 
     if (fp->pkind != nFTPlayerKindDemo)
     {
-        sb32 is_collide_ground = func_ovl2_800F9348(&DObjGetStruct(fighter_gobj)->translate.vec.f, &fp->coll_data.ground_line_id, &fp->coll_data.ground_dist, &fp->coll_data.ground_flags, &fp->coll_data.ground_angle);
-
+        sb32 is_collide_ground = func_ovl2_800F9348
+        (
+            &DObjGetStruct(fighter_gobj)->translate.vec.f,
+            &fp->coll_data.ground_line_id,
+            &fp->coll_data.ground_dist,
+            &fp->coll_data.ground_flags,
+            &fp->coll_data.ground_angle
+        );
         if (is_collide_ground == FALSE)
         {
             fp->coll_data.ground_line_id = -1;
@@ -916,7 +922,7 @@ GObj* ftManagerMakeFighter(FTDesc *desc) // Create fighter
     switch (fp->pkind)
     {
     case nFTPlayerKindDemo:
-        scSubsysFighterSetStatus(fighter_gobj, 0x10000);
+        scSubsysFighterSetStatus(fighter_gobj, nFTDemoStatusNull);
         break;
 
     case nFTPlayerKindKey:

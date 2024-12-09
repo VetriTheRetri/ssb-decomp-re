@@ -180,7 +180,7 @@ sb32 itLGunFallProcMap(GObj *item_gobj)
 void itLGunWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITLGunStatusDescs, nITLGunStatusWait);
+    itMainSetStatus(item_gobj, dITLGunStatusDescs, nITLGunStatusWait);
 }
 
 // 0x801755B8
@@ -191,7 +191,7 @@ void itLGunFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITLGunStatusDescs, nITLGunStatusFall);
+    itMainSetStatus(item_gobj, dITLGunStatusDescs, nITLGunStatusFall);
 }
 
 // 0x801755FC
@@ -199,7 +199,7 @@ void itLGunHoldSetStatus(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->rotate.vec.f.y = F_CST_DTOR32(0.0F);
 
-    itMainSetItemStatus(item_gobj, dITLGunStatusDescs, nITLGunStatusHold);
+    itMainSetStatus(item_gobj, dITLGunStatusDescs, nITLGunStatusHold);
 }
 
 // 0x80175630
@@ -231,7 +231,7 @@ void itLGunThrownSetStatus(GObj *item_gobj)
 {
     s32 lr = ftGetStruct(itGetStruct(item_gobj)->owner_gobj)->lr;
 
-    itMainSetItemStatus(item_gobj, dITLGunStatusDescs, nITLGunStatusThrown);
+    itMainSetStatus(item_gobj, dITLGunStatusDescs, nITLGunStatusThrown);
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = (lr == -1) ? F_CST_DTOR32(-90.0F) : F_CST_DTOR32(90.0F);
 }
@@ -253,7 +253,7 @@ void itLGunDroppedSetStatus(GObj *item_gobj)
 {
     s32 lr = ftGetStruct(itGetStruct(item_gobj)->owner_gobj)->lr;
 
-    itMainSetItemStatus(item_gobj, dITLGunStatusDescs, nITLGunStatusDropped);
+    itMainSetStatus(item_gobj, dITLGunStatusDescs, nITLGunStatusDropped);
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = (lr == -1) ? F_CST_DTOR32(-90.0F) : F_CST_DTOR32(90.0F);
 }

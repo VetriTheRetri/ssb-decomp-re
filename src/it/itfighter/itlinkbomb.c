@@ -220,7 +220,7 @@ sb32 itLinkBombCommonProcDamage(GObj *item_gobj)
 	ITStruct *ip = itGetStruct(item_gobj);
 
 	if (ip->damage_queue >= ITLINKBOMB_HEALTH)
-		itLinkBombExplodeInitItemVars(item_gobj);
+		itLinkBombExplodeInitVars(item_gobj);
 	else
 	{
 		ip->lr = -ip->damage_lr;
@@ -242,7 +242,7 @@ sb32 itLinkBombThrownProcHit(GObj *item_gobj)
 		(ABSF(ip->physics.vel_air.y) > ITLINKBOMB_EXPLODE_THRESHOLD_VEL_Y)
 	)
 	{
-		itLinkBombExplodeInitItemVars(item_gobj);
+		itLinkBombExplodeInitVars(item_gobj);
 	}
 	else
 	{
@@ -281,7 +281,7 @@ sb32 itLinkBombFallProcUpdate(GObj *item_gobj)
 
 	if (ip->lifetime == 0)
 	{
-		itLinkBombExplodeInitItemVars(item_gobj);
+		itLinkBombExplodeInitVars(item_gobj);
 	}
 	if (ip->lifetime == ITLINKBOMB_BLOAT_BEGIN)
 	{
@@ -315,7 +315,7 @@ sb32 itLinkBombWaitProcUpdate(GObj *item_gobj)
 	}
 	if (ip->lifetime == 0)
 	{
-		itLinkBombExplodeInitItemVars(item_gobj);
+		itLinkBombExplodeInitVars(item_gobj);
 	}
 	if (ip->lifetime == ITLINKBOMB_BLOAT_BEGIN)
 	{
@@ -363,7 +363,7 @@ void itLinkBombWaitSetStatus(GObj *item_gobj)
 
 	itMapSetGround(ip);
 	itLinkBombCommonSetHitStatusNormal(item_gobj);
-	itMainSetItemStatus(item_gobj, dItLinkBombStatusDescs, nITLinkBombStatusWait);
+	itMainSetStatus(item_gobj, dItLinkBombStatusDescs, nITLinkBombStatusWait);
 }
 
 // 0x80185FD8
@@ -375,7 +375,7 @@ void itLinkBombFallSetStatus(GObj *item_gobj)
 
 	itMapSetAir(ip);
 	itLinkBombCommonSetHitStatusNormal(item_gobj);
-	itMainSetItemStatus(item_gobj, dItLinkBombStatusDescs, nITLinkBombStatusFall);
+	itMainSetStatus(item_gobj, dItLinkBombStatusDescs, nITLinkBombStatusFall);
 }
 
 // 0x80186024
@@ -392,7 +392,8 @@ sb32 itLinkBombHoldProcUpdate(GObj *item_gobj)
 	{
 		if (ip->lifetime == 0)
 		{
-			/* OK, WHAT? This function takes 5 arguments, but it doesn't match
+			/* 
+			 * OK, WHAT? This function takes 5 arguments, but it doesn't match
 			 * otherwise??? Did they actually redefine this? Passes pointer in a3
 			 * instead of u16... Do we leave this out of the header and declare it
 			 * erroneously in this file to match? 
@@ -403,7 +404,7 @@ sb32 itLinkBombHoldProcUpdate(GObj *item_gobj)
 
 			itMainSetFighterRelease(item_gobj, &ip->physics.vel_air, 1.0F);
 			itMainClearOwnerStats(item_gobj);
-			itLinkBombExplodeInitItemVars(item_gobj);
+			itLinkBombExplodeInitVars(item_gobj);
 		}
 		if (ip->lifetime == ITLINKBOMB_BLOAT_BEGIN)
 		{
@@ -425,7 +426,7 @@ sb32 itLinkBombHoldProcUpdate(GObj *item_gobj)
 void itLinkBombHoldSetStatus(GObj *item_gobj)
 {
 	itLinkBombCommonSetHitStatusNone(item_gobj);
-	itMainSetItemStatus(item_gobj, dItLinkBombStatusDescs, nITLinkBombStatusHold);
+	itMainSetStatus(item_gobj, dItLinkBombStatusDescs, nITLinkBombStatusHold);
 }
 
 // 0x80186150
@@ -439,7 +440,7 @@ sb32 itLinkBombThrownProcMap(GObj *item_gobj)
 	{
 		if ((ABSF(vel.x) > ITLINKBOMB_EXPLODE_THRESHOLD_VEL_X) || (ABSF(vel.y) > ITLINKBOMB_EXPLODE_THRESHOLD_VEL_Y))
 		{
-			itLinkBombExplodeInitItemVars(item_gobj);
+			itLinkBombExplodeInitVars(item_gobj);
 		}
 	}
 	return FALSE;
@@ -454,7 +455,7 @@ void itLinkBombThrownSetStatus(GObj *item_gobj)
 
 	ip->is_damage_all = TRUE;
 
-	itMainSetItemStatus(item_gobj, dItLinkBombStatusDescs, nITLinkBombStatusThrown);
+	itMainSetStatus(item_gobj, dItLinkBombStatusDescs, nITLinkBombStatusThrown);
 }
 
 // 0x80186270
@@ -506,10 +507,10 @@ void itLinkBombDroppedSetStatus(GObj *item_gobj)
 
 	ip->is_damage_all = TRUE;
 
-	itMainSetItemStatus(item_gobj, dItLinkBombStatusDescs, nITLinkBombStatusDropped);
+	itMainSetStatus(item_gobj, dItLinkBombStatusDescs, nITLinkBombStatusDropped);
 }
 
-void itLinkBombExplodeInitItemVars(GObj *item_gobj)
+void itLinkBombExplodeInitVars(GObj *item_gobj)
 {
 	ITStruct *ip = itGetStruct(item_gobj);
 
@@ -558,7 +559,7 @@ sb32 itLinkBombCommonProcShield(GObj *item_gobj)
 sb32 func_ovl3_801864BC(GObj *item_gobj) // Unused
 {
 	func_ovl3_80185B18(item_gobj);
-	itLinkBombExplodeInitItemVars(item_gobj);
+	itLinkBombExplodeInitVars(item_gobj);
 
 	return FALSE;
 }
@@ -596,7 +597,7 @@ sb32 itLinkBombExplodeProcUpdate(GObj *item_gobj)
 void itLinkBombExplodeSetStatus(GObj *item_gobj)
 {
 	itLinkBombExplodeInitAttackColl(item_gobj);
-	itMainSetItemStatus(item_gobj, dItLinkBombStatusDescs, nITLinkBombStatusExplode);
+	itMainSetStatus(item_gobj, dItLinkBombStatusDescs, nITLinkBombStatusExplode);
 }
 
 // 0x801865A0

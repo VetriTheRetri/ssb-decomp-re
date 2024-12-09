@@ -91,7 +91,7 @@ void ftCommonOttottoWaitSetStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusOttottoWait, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTCommonStatusOttottoWait, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
     fp->is_special_interrupt = TRUE;
 }
@@ -101,7 +101,7 @@ void ftCommonOttottoSetStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusOttotto, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTCommonStatusOttotto, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
     fp->physics.vel_air.x = fp->physics.vel_air.y = fp->physics.vel_air.z = 0.0F;
     fp->physics.vel_ground.x = 0.0F;

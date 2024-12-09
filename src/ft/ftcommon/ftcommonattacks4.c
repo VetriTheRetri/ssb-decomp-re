@@ -106,7 +106,7 @@ void ftCommonAttackS4SetStatus(GObj *fighter_gobj)
         fp->motion_vars.flags.flag1 = 0;
         break;
     }
-    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
 
     switch (fp->fkind)
@@ -121,7 +121,7 @@ void ftCommonAttackS4SetStatus(GObj *fighter_gobj)
 
     case nFTKindNess:
     case nFTKindNNess:
-        fp->spc_coll = (FTSpecialColl*) ((uintptr_t)gFTNessFileMainMotion + (intptr_t)&lFTNessAttackS4Reflector);
+        fp->special_coll = (FTSpecialColl*) ((uintptr_t)gFTNessFileMainMotion + (intptr_t)&lFTNessAttackS4Reflector);
         break;
     }
 }

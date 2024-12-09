@@ -143,7 +143,7 @@ void itKabigonFallFuncDisplay(GObj *item_gobj)
 }
 
 // 0x8017E25C
-void itKabigonFallInitItemVars(GObj *item_gobj)
+void itKabigonFallInitVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -180,8 +180,8 @@ void itKabigonFallInitItemVars(GObj *item_gobj)
 // 0x8017E350
 void itKabigonFallSetStatus(GObj *item_gobj)
 {
-    itKabigonFallInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITKabigonStatusDescs, nITKabigonStatusFall);
+    itKabigonFallInitVars(item_gobj);
+    itMainSetStatus(item_gobj, dITKabigonStatusDescs, nITKabigonStatusFall);
 }
 
 // 0x8017E384
@@ -251,7 +251,7 @@ void itKabigonCommonFuncDisplay(GObj *item_gobj)
 }
 
 // 0x8017E600
-void itKabigonJumpInitItemVars(GObj *item_gobj)
+void itKabigonJumpInitVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
@@ -267,8 +267,8 @@ void itKabigonJumpInitItemVars(GObj *item_gobj)
 // 0x8017E648
 void itKabigonJumpSetStatus(GObj *item_gobj)
 {
-    itKabigonJumpInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITKabigonStatusDescs, nITKabigonStatusJump);
+    itKabigonJumpInitVars(item_gobj);
+    itMainSetStatus(item_gobj, dITKabigonStatusDescs, nITKabigonStatusJump);
 }
 
 // 0x8017E67C

@@ -201,7 +201,7 @@ void ftCommonDeadDownSetStatus(GObj *fighter_gobj)
     u32 sfx_id;
 
     ftCommonDeadResetCommonVars(fighter_gobj);
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDeadDown, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTCommonStatusDeadDown, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftCommonDeadClearSpecialStats(fighter_gobj);
     ftCommonDeadInitStatusVars(fighter_gobj);
 
@@ -242,7 +242,7 @@ void ftCommonDeadRightSetStatus(GObj *fighter_gobj)
     u32 sfx_id;
 
     ftCommonDeadResetCommonVars(fighter_gobj);
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDeadLeftRight, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTCommonStatusDeadLeftRight, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftCommonDeadClearSpecialStats(fighter_gobj);
     ftCommonDeadInitStatusVars(fighter_gobj);
 
@@ -284,7 +284,7 @@ void ftCommonDeadLeftSetStatus(GObj *fighter_gobj)
     u32 sfx_id;
 
     ftCommonDeadResetCommonVars(fighter_gobj);
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDeadLeftRight, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTCommonStatusDeadLeftRight, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftCommonDeadClearSpecialStats(fighter_gobj);
     ftCommonDeadInitStatusVars(fighter_gobj);
 
@@ -389,7 +389,7 @@ void ftCommonDeadUpStarSetStatus(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftCommonDeadResetCommonVars(fighter_gobj);
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDeadUpStar, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTCommonStatusDeadUpStar, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftPhysicsStopVelAll(fighter_gobj);
 
     fp->status_vars.common.dead.pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
@@ -510,7 +510,7 @@ void ftCommonDeadUpFallSetStatus(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftCommonDeadResetCommonVars(fighter_gobj);
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDeadUpFall, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTCommonStatusDeadUpFall, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftPhysicsStopVelAll(fighter_gobj);
 
     fp->status_vars.common.dead.pos = DObjGetStruct(fighter_gobj)->translate.vec.f;

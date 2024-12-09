@@ -206,7 +206,7 @@ sb32 itMBallFallProcMap(GObj *item_gobj)
 void itMBallWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITMBallStatusDescs, nITMBallStatusWait);
+    itMainSetStatus(item_gobj, dITMBallStatusDescs, nITMBallStatusWait);
 }
 
 // 0x8017C7FC
@@ -217,7 +217,7 @@ void itMBallFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITMBallStatusDescs, nITMBallStatusFall);
+    itMainSetStatus(item_gobj, dITMBallStatusDescs, nITMBallStatusFall);
 }
 
 // 0x8017C840
@@ -229,7 +229,7 @@ void itMBallHoldSetStatus(GObj *item_gobj)
 
     ip->item_vars.mball.owner_gobj = ip->owner_gobj;
 
-    itMainSetItemStatus(item_gobj, dITMBallStatusDescs, nITMBallStatusHold);
+    itMainSetStatus(item_gobj, dITMBallStatusDescs, nITMBallStatusHold);
 }
 
 // 0x8017C880
@@ -303,14 +303,14 @@ sb32 itMBallCommonProcReflector(GObj *item_gobj)
 void itMBallThrownSetStatus(GObj *item_gobj)
 {
     itMBallOpenAddAnim(item_gobj);
-    itMainSetItemStatus(item_gobj, dITMBallStatusDescs, nITMBallStatusThrown);
+    itMainSetStatus(item_gobj, dITMBallStatusDescs, nITMBallStatusThrown);
 }
 
 // 0x8017CA14
 void itMBallDroppedSetStatus(GObj *item_gobj)
 {
     itMBallOpenAddAnim(item_gobj);
-    itMainSetItemStatus(item_gobj, dITMBallStatusDescs, nITMBallStatusDropped);
+    itMainSetStatus(item_gobj, dITMBallStatusDescs, nITMBallStatusDropped);
 }
 
 // 0x8017CA48
@@ -371,7 +371,7 @@ sb32 itMBallOpenProcMap(GObj *item_gobj)
 }
 
 // 0x8017CB84
-void itMBallOpenInitItemVars(GObj *item_gobj)
+void itMBallOpenInitVars(GObj *item_gobj)
 {
     s32 unused[2];
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -417,8 +417,8 @@ void itMBallOpenInitItemVars(GObj *item_gobj)
 // 0x8017CC88
 void itMBallOpenSetStatus(GObj *item_gobj)
 {
-    itMBallOpenInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITMBallStatusDescs, nITMBallStatusOpen);
+    itMBallOpenInitVars(item_gobj);
+    itMainSetStatus(item_gobj, dITMBallStatusDescs, nITMBallStatusOpen);
 }
 
 // 0x8017CCBC
@@ -475,7 +475,7 @@ sb32 itMBallOpenAirProcMap(GObj *item_gobj)
 // 0x8017CDE4
 void itMBallOpenAirSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITMBallStatusDescs, nITMBallStatusOpenAir);
+    itMainSetStatus(item_gobj, dITMBallStatusDescs, nITMBallStatusOpenAir);
 }
 
 // 0x8017CE0C

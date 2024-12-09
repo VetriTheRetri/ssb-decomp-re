@@ -210,7 +210,7 @@ sb32 itTaruFallProcMap(GObj *item_gobj)
 void itTaruWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITTaruStatusDescs, nITTaruStatusWait);
+    itMainSetStatus(item_gobj, dITTaruStatusDescs, nITTaruStatusWait);
 }
 
 // 0x80179D1C
@@ -221,13 +221,13 @@ void itTaruFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITTaruStatusDescs, nITTaruStatusFall);
+    itMainSetStatus(item_gobj, dITTaruStatusDescs, nITTaruStatusFall);
 }
 
 // 0x80179D60
 void itTaruHoldSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITTaruStatusDescs, nITTaruStatusHold);
+    itMainSetStatus(item_gobj, dITTaruStatusDescs, nITTaruStatusHold);
 }
 
 // 0x80179D88
@@ -257,7 +257,7 @@ void itTaruRollSetStatus(GObj *item_gobj)
 
     ip->physics.vel_air.y = 0.0F;
 
-    itMainSetItemStatus(item_gobj, dITTaruStatusDescs, nITTaruStatusRoll);
+    itMainSetStatus(item_gobj, dITTaruStatusDescs, nITTaruStatusRoll);
 }
 
 // 0x80179E28
@@ -291,7 +291,7 @@ sb32 itTaruThrownProcMap(GObj *item_gobj)
 }
 
 // 0x80179EF0
-void itTaruThrownInitItemVars(GObj *item_gobj)
+void itTaruThrownInitVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
@@ -304,8 +304,8 @@ void itTaruThrownInitItemVars(GObj *item_gobj)
 // 0x80179F1C
 void itTaruThrownSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITTaruStatusDescs, nITTaruStatusThrown);
-    itTaruThrownInitItemVars(item_gobj);
+    itMainSetStatus(item_gobj, dITTaruStatusDescs, nITTaruStatusThrown);
+    itTaruThrownInitVars(item_gobj);
 }
 
 // 0x80179F50 - Unused
@@ -319,8 +319,8 @@ sb32 func_ovl3_80179F50(GObj *item_gobj)
 // 0x80179F74
 void itTaruDroppedSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITTaruStatusDescs, nITTaruStatusDropped);
-    itTaruThrownInitItemVars(item_gobj);
+    itMainSetStatus(item_gobj, dITTaruStatusDescs, nITTaruStatusDropped);
+    itTaruThrownInitVars(item_gobj);
 }
 
 // 0x80179FA8
@@ -384,7 +384,7 @@ sb32 itTaruRollProcMap(GObj *item_gobj)
 
     if (itMapTestLRWallCheckGround(item_gobj) == FALSE)
     {
-        itMainSetItemStatus(item_gobj, dITTaruStatusDescs, nITTaruStatusDropped);
+        itMainSetStatus(item_gobj, dITTaruStatusDescs, nITTaruStatusDropped);
     }
     else if (ip->coll_data.coll_mask_curr & (MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL))
     {
@@ -414,7 +414,7 @@ GObj* itTaruMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 }
 
 // 0x8017A240
-void itTaruExplodeInitItemVars(GObj *item_gobj)
+void itTaruExplodeInitVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
@@ -441,8 +441,8 @@ void itTaruExplodeInitItemVars(GObj *item_gobj)
 // 0x8017A2D8
 void itTaruExplodeSetStatus(GObj *item_gobj)
 {
-    itTaruExplodeInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITTaruStatusDescs, nITTaruStatusExplode);
+    itTaruExplodeInitVars(item_gobj);
+    itMainSetStatus(item_gobj, dITTaruStatusDescs, nITTaruStatusExplode);
 }
 
 // 0x8017A30C

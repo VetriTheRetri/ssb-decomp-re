@@ -165,7 +165,7 @@ sb32 itStarmieAttackProcUpdate(GObj *item_gobj)
 }
 
 // 0x80181D8C
-void itStarmieAttackInitItemVars(GObj *item_gobj)
+void itStarmieAttackInitVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -186,8 +186,8 @@ void itStarmieAttackInitItemVars(GObj *item_gobj)
 // 0x80181E0C
 void itStarmieAttackSetStatus(GObj *item_gobj)
 {
-    itStarmieAttackInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITStarmieStatusDescs, nITStarmieStatusAttack);
+    itStarmieAttackInitVars(item_gobj);
+    itMainSetStatus(item_gobj, dITStarmieStatusDescs, nITStarmieStatusAttack);
 }
 
 // 0x80181E40
@@ -260,7 +260,7 @@ void itStarmieNFollowFindFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
 }
 
 // 0x801820CC
-void itStarmieNFollowInitItemVars(GObj *item_gobj)
+void itStarmieNFollowInitVars(GObj *item_gobj)
 {
     GObj *fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
     ITStruct *ip = itGetStruct(item_gobj);
@@ -309,8 +309,8 @@ void itStarmieNFollowInitItemVars(GObj *item_gobj)
 // 0x801821E8
 void itStarmieNFollowSetStatus(GObj *item_gobj)
 {
-    itStarmieNFollowInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITStarmieStatusDescs, nITStarmieStatusNFollow);
+    itStarmieNFollowInitVars(item_gobj);
+    itMainSetStatus(item_gobj, dITStarmieStatusDescs, nITStarmieStatusNFollow);
 }
 
 // 0x8018221C

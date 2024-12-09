@@ -32,7 +32,7 @@ union GMStatFlags
 		ub16 is_smash_attack : 1;
 		ub16 ga : 1;
 		ub16 is_projectile : 1;
-		u16 stat_attack_id : 10;
+		u16 attack_id : 10;
 	};
 	u16 halfword;
 };

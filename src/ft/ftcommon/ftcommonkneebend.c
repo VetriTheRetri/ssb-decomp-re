@@ -51,7 +51,7 @@ void ftCommonKneeBendSetStatusParam(GObj *fighter_gobj, s32 status_id, s32 input
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
     fp->status_vars.common.kneebend.jump_force = fp->input.pl.stick_range.y;
     fp->status_vars.common.kneebend.anim_frame = 0.0F;

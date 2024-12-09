@@ -45,7 +45,7 @@ void ftDonkeyThrowFWaitSetStatus(GObj *fighter_gobj)
     {
         mpCommonSetFighterGround(fp);
     }
-    ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusThrowFWait, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTDonkeyStatusThrowFWait, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 }
 
 // 0x8014D4EC

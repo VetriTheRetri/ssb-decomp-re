@@ -15,6 +15,6 @@ void ftBossOkukoukiProcUpdate(GObj *fighter_gobj)
 // 0x8015A314
 void ftBossOkukoukiSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTBossStatusOkukouki, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTBossStatusOkukouki, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftBossCommonCheckPlayerInvertLR(fighter_gobj);
 }

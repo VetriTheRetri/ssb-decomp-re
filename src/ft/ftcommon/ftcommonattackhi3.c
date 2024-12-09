@@ -23,7 +23,7 @@ void ftCommonAttackHi3SetStatus(GObj *fighter_gobj)
     }
     else status_id = nFTCommonStatusAttackHi3;
 
-    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
 }
 

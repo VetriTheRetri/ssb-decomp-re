@@ -30,7 +30,7 @@ void ftKirbyThrowFFallSetStatus(GObj *fighter_gobj)
     GObj *catch_gobj = this_fp->catch_gobj;
     FTStruct *catch_fp = ftGetStruct(catch_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusThrowFFall, 0.0F, 1.0F, FTSTATUS_PRESERVE_TEXTUREPART);
+    ftMainSetStatus(fighter_gobj, nFTKirbyStatusThrowFFall, 0.0F, 1.0F, FTSTATUS_PRESERVE_TEXTUREPART);
 
     catch_fp->is_ignore_dead = FALSE;
 }
@@ -68,5 +68,5 @@ void ftKirbyThrowFLandingSetStatus(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterGround(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusThrowFLanding, 0.0F, 1.0F, FTSTATUS_PRESERVE_TEXTUREPART);
+    ftMainSetStatus(fighter_gobj, nFTKirbyStatusThrowFLanding, 0.0F, 1.0F, FTSTATUS_PRESERVE_TEXTUREPART);
 }

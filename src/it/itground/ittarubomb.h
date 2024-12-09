@@ -18,7 +18,7 @@ extern sb32 itTaruBombExplodeProcUpdate(GObj *item_gobj);
 extern sb32 itTaruBombRollProcUpdate(GObj *item_gobj);
 extern sb32 itTaruBombRollProcMap(GObj *item_gobj);
 extern GObj* itTaruBombMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
-extern void itTaruBombExplodeInitItemVars(GObj *item_gobj);
+extern void itTaruBombExplodeInitVars(GObj *item_gobj);
 extern void itTaruBombExplodeSetStatus(GObj *item_gobj);
 extern void itTaruBombExplodeMakeEffectGotoSetStatus(GObj *item_gobj);
 

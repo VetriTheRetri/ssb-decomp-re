@@ -154,17 +154,17 @@ void mvOpeningYamabukiMakeWallpaper(void)
 void mvOpeningYamabukiMakeFighter(void)
 {
     GObj* fighter_gobj;
-    FTDesc ft_desc = dFTManagerDefaultFighterDesc;
+    FTDesc desc = dFTManagerDefaultFighterDesc;
 
-    ft_desc.fkind = nFTKindPikachu;
-    ft_desc.costume = ftParamGetCostumeCommonID(nFTKindPikachu, 0);
+    desc.fkind = nFTKindPikachu;
+    desc.costume = ftParamGetCostumeCommonID(nFTKindPikachu, 0);
 
-    ft_desc.pos.x = 0.0F;
-    ft_desc.pos.y = 0.0F;
-    ft_desc.pos.z = 0.0F;
+    desc.pos.x = 0.0F;
+    desc.pos.y = 0.0F;
+    desc.pos.z = 0.0F;
 
-    ft_desc.figatree_heap = sMVOpeningYamabukiFigatreeHeap;
-    sMVOpeningYamabukiFighterGObj = fighter_gobj = ftManagerMakeFighter(&ft_desc);
+    desc.figatree_heap = sMVOpeningYamabukiFigatreeHeap;
+    sMVOpeningYamabukiFighterGObj = fighter_gobj = ftManagerMakeFighter(&desc);
 
     scSubsysFighterSetStatus(fighter_gobj, 0x1000F);
 

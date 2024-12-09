@@ -142,7 +142,7 @@ void ftHammerSetStatusHammerWait(GObj *fighter_gobj)
     {
         mpCommonSetFighterGround(fp);
     }
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusHammerWait, ftHammerGetAnimFrame(fighter_gobj), 1.0F, ftHammerGetStatUpdateFlags(fighter_gobj));
+    ftMainSetStatus(fighter_gobj, nFTCommonStatusHammerWait, ftHammerGetAnimFrame(fighter_gobj), 1.0F, ftHammerGetStatUpdateFlags(fighter_gobj));
     ftHammerSetColAnim(fighter_gobj);
 }
 

@@ -644,7 +644,7 @@ s32 sSC1PGameBonusStatInvincibleTimer;
 SC1PGameStats sSC1PGameBonusStatEnemyStats[SC1PGAME_STAGE_MAX_TEAM_COUNT];
 
 // 0x801936A0 - Player's number of KOs scored on enemies
-s32 sSC1PGameBonusStatNumPlayerKOs;
+s32 sSC1PGameBonusStatPlayerKOsNum;
 
 // 0x801936A4
 sb32 gSC1PGameBonusBrosCalamity;
@@ -1241,7 +1241,7 @@ void sc1PGameSetupStageAll(void)
     sSC1PGameIsStartStage = FALSE;
     sSC1PGameIsEndStage = FALSE;
 
-    sSC1PGameBonusStatNumPlayerKOs = 0;
+    sSC1PGameBonusStatPlayerKOsNum = 0;
     sSC1PGameBonusStatEndPlayerStatus = -1;
     sSC1PGameBonusStatInvincibleTimer = 0;
     gSC1PGameBonusBrosCalamity = FALSE;
@@ -1270,7 +1270,7 @@ void sc1PGameSpawnEnemyTeamNext(GObj *player_gobj)
     FTStruct *fp;
     FTAttributes *attr;
     void *unused2;
-    FTDesc ft_desc;
+    FTDesc desc;
     void **figatree;
     GObj *com_gobj;
     s32 player;
@@ -1316,49 +1316,49 @@ void sc1PGameSpawnEnemyTeamNext(GObj *player_gobj)
         }
         sSC1PGamePlayerSetups[player].team_order = sSC1PGameCurrentEnemyVariation++;
 
-        ft_desc = dFTManagerDefaultFighterDesc;
+        desc = dFTManagerDefaultFighterDesc;
 
-        ft_desc.fkind = gSCManagerBattleState->players[player].fkind;
+        desc.fkind = gSCManagerBattleState->players[player].fkind;
 
-        sc1PGameGetRandomSpawnPosition(&ft_desc.pos, nMPMapObjKind1PGameEnemyTeamSpawn);
+        sc1PGameGetRandomSpawnPosition(&desc.pos, nMPMapObjKind1PGameEnemyTeamSpawn);
 
-        ft_desc.pos.y = (gMPCollisionGroundData->camera_bound_top + gMPCollisionGroundData->map_bound_top) * 0.5F;
+        desc.pos.y = (gMPCollisionGroundData->camera_bound_top + gMPCollisionGroundData->map_bound_top) * 0.5F;
 
-        ft_desc.lr = (ft_desc.pos.x >= 0.0F) ? -1 : +1;
+        desc.lr = (desc.pos.x >= 0.0F) ? -1 : +1;
 
-        ft_desc.team = gSCManagerBattleState->players[player].team;
+        desc.team = gSCManagerBattleState->players[player].team;
 
-        ft_desc.player = player;
+        desc.player = player;
 
-        ft_desc.detail = ((gSCManagerBattleState->pl_count + gSCManagerBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
+        desc.detail = ((gSCManagerBattleState->pl_count + gSCManagerBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
 
-        ft_desc.costume = gSCManagerBattleState->players[player].costume;
+        desc.costume = gSCManagerBattleState->players[player].costume;
 
-        ft_desc.shade = gSCManagerBattleState->players[player].shade;
+        desc.shade = gSCManagerBattleState->players[player].shade;
 
-        ft_desc.handicap = gSCManagerBattleState->players[player].handicap;
+        desc.handicap = gSCManagerBattleState->players[player].handicap;
 
-        ft_desc.level = gSCManagerBattleState->players[player].level;
+        desc.level = gSCManagerBattleState->players[player].level;
 
-        ft_desc.stock_count = gSCManagerBattleState->players[player].stock_count;
+        desc.stock_count = gSCManagerBattleState->players[player].stock_count;
 
-        ft_desc.damage = 0;
+        desc.damage = 0;
 
-        ft_desc.pkind = gSCManagerBattleState->players[player].pkind;
+        desc.pkind = gSCManagerBattleState->players[player].pkind;
 
-        ft_desc.controller = &gSYControllerDevices[player];
+        desc.controller = &gSYControllerDevices[player];
 
-        ft_desc.figatree_heap = figatree;
+        desc.figatree_heap = figatree;
 
-        ft_desc.copy_kind = sSC1PGamePlayerSetups[player].copy_kind;
+        desc.copy_kind = sSC1PGamePlayerSetups[player].copy_kind;
 
-        ft_desc.team_order = sSC1PGamePlayerSetups[player].team_order;
+        desc.team_order = sSC1PGamePlayerSetups[player].team_order;
 
-        ft_desc.is_skip_entry = TRUE;
-        ft_desc.is_skip_magnify = sSC1PGamePlayerSetups[player].is_skip_magnify;
-        ft_desc.is_skip_shadow_setup = TRUE;
+        desc.is_skip_entry = TRUE;
+        desc.is_skip_magnify = sSC1PGamePlayerSetups[player].is_skip_magnify;
+        desc.is_skip_shadow_setup = TRUE;
 
-        com_gobj = ftManagerMakeFighter(&ft_desc);
+        com_gobj = ftManagerMakeFighter(&desc);
 
         fp = ftGetStruct(com_gobj);
 
@@ -1752,7 +1752,7 @@ void sc1PGameSetPlayerDefeatStats(s32 player, s32 team_order)
         sSC1PGameEnemyStocksRemaining--;
         sSC1PGameEnemyStockSpriteFlags |= (1 << team_order);
 
-        enemy_stats = &sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs];
+        enemy_stats = &sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatPlayerKOsNum];
 
         enemy_stats->team_order = fp->team_order;
         enemy_stats->damage_status_id = fp->status_id;
@@ -1762,7 +1762,7 @@ void sc1PGameSetPlayerDefeatStats(s32 player, s32 team_order)
         enemy_stats->damage_stat_flags = fp->damage_stat_flags;
         enemy_stats->damage_stat_count = fp->damage_stat_count;
 
-        sSC1PGameBonusStatNumPlayerKOs++;
+        sSC1PGameBonusStatPlayerKOsNum++;
 
         if ((gSCManagerSceneData.spgame_stage == nSC1PGameStageMario) && (fp->fkind == nFTKindLuigi) && (sSC1PGameEnemyStocksRemaining != 0) && (fp->damage_player == gSCManagerSceneData.player))
         {
@@ -1989,7 +1989,7 @@ void sc1PGameFuncStart(void)
     void *addr;
     u8 spA0[0x10];
     s32 i;
-    FTDesc ft_desc;
+    FTDesc desc;
     SYColorRGBA color;
 
     sc1PGameSetupStageAll();
@@ -2074,7 +2074,7 @@ void sc1PGameFuncStart(void)
     }
     for (i = 0; i < (ARRAY_COUNT(gSCManagerBattleState->players) + ARRAY_COUNT(sSC1PGamePlayerSetups)) / 2; i++)
     {
-        ft_desc = dFTManagerDefaultFighterDesc;
+        desc = dFTManagerDefaultFighterDesc;
 
         if (gSCManagerBattleState->players[i].pkind == nFTPlayerKindNot)
         {
@@ -2082,45 +2082,45 @@ void sc1PGameFuncStart(void)
         }
         ftManagerSetupFilesAllKind(gSCManagerBattleState->players[i].fkind);
 
-        ft_desc.fkind = gSCManagerBattleState->players[i].fkind;
+        desc.fkind = gSCManagerBattleState->players[i].fkind;
 
-        sc1PGameGetSpawnPosition(&ft_desc.pos, sSC1PGamePlayerSetups[i].mapobj_kind);
+        sc1PGameGetSpawnPosition(&desc.pos, sSC1PGamePlayerSetups[i].mapobj_kind);
 
-        ft_desc.lr = sc1PGameGetEnemySpawnLR(i);
+        desc.lr = sc1PGameGetEnemySpawnLR(i);
 
-        ft_desc.team = gSCManagerBattleState->players[i].team;
+        desc.team = gSCManagerBattleState->players[i].team;
 
-        ft_desc.player = i;
+        desc.player = i;
 
-        ft_desc.detail = ((gSCManagerBattleState->pl_count + gSCManagerBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
+        desc.detail = ((gSCManagerBattleState->pl_count + gSCManagerBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
 
-        ft_desc.costume = gSCManagerBattleState->players[i].costume;
+        desc.costume = gSCManagerBattleState->players[i].costume;
 
-        ft_desc.shade = gSCManagerBattleState->players[i].shade;
+        desc.shade = gSCManagerBattleState->players[i].shade;
 
-        ft_desc.handicap = gSCManagerBattleState->players[i].handicap;
+        desc.handicap = gSCManagerBattleState->players[i].handicap;
 
-        ft_desc.level = gSCManagerBattleState->players[i].level;
+        desc.level = gSCManagerBattleState->players[i].level;
 
-        ft_desc.stock_count = gSCManagerBattleState->players[i].stock_count;
+        desc.stock_count = gSCManagerBattleState->players[i].stock_count;
 
-        ft_desc.damage = 0;
+        desc.damage = 0;
 
-        ft_desc.pkind = gSCManagerBattleState->players[i].pkind;
+        desc.pkind = gSCManagerBattleState->players[i].pkind;
 
-        ft_desc.controller = &gSYControllerDevices[i];
+        desc.controller = &gSYControllerDevices[i];
 
-        ft_desc.figatree_heap = (sSC1PGamePlayerSetups[i].figatree != NULL) ? sSC1PGamePlayerSetups[i].figatree : ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[i].fkind);
+        desc.figatree_heap = (sSC1PGamePlayerSetups[i].figatree != NULL) ? sSC1PGamePlayerSetups[i].figatree : ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[i].fkind);
 
-        ft_desc.copy_kind = sSC1PGamePlayerSetups[i].copy_kind;
+        desc.copy_kind = sSC1PGamePlayerSetups[i].copy_kind;
 
-        ft_desc.team_order = sSC1PGamePlayerSetups[i].team_order;
+        desc.team_order = sSC1PGamePlayerSetups[i].team_order;
 
-        ft_desc.is_skip_entry = sSC1PGamePlayerSetups[i].is_skip_entry;
+        desc.is_skip_entry = sSC1PGamePlayerSetups[i].is_skip_entry;
 
-        ft_desc.is_skip_magnify = sSC1PGamePlayerSetups[i].is_skip_magnify;
+        desc.is_skip_magnify = sSC1PGamePlayerSetups[i].is_skip_magnify;
 
-        fighter_gobj = ftManagerMakeFighter(&ft_desc), fp = ftGetStruct(fighter_gobj);
+        fighter_gobj = ftManagerMakeFighter(&desc), fp = ftGetStruct(fighter_gobj);
 
         ftParamInitPlayerBattleStats(i, fighter_gobj);
 
@@ -2179,9 +2179,9 @@ void sc1PGameAppendBonusStats(void)
     sSC1PGameStageTimeSec = I_TICS_TO_SEC(gSCManagerBattleState->time_passed);
     sSC1PGameTotalTimeSec = I_TICS_TO_SEC(gSC1PManagerTotalTimeTics);
 
-    if (sSC1PGameBonusStatNumPlayerKOs != 0)
+    if (sSC1PGameBonusStatPlayerKOsNum != 0)
     {
-        for (i = 0; i < sSC1PGameBonusStatNumPlayerKOs; i++)
+        for (i = 0; i < sSC1PGameBonusStatPlayerKOsNum; i++)
         {
             if
             (
@@ -2248,7 +2248,7 @@ check_item_strike:
                     // No Item
                     gSCManagerSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_NOITEM;
 
-                    if (sSC1PGameBonusStatNumPlayerKOs); // Bogus, but it matches
+                    if (sSC1PGameBonusStatPlayerKOsNum); // Bogus, but it matches
                 }
             }
         }
@@ -2511,19 +2511,19 @@ check_heavy_damage:
     }
     if
     (
-        (sSC1PGameBonusStatNumPlayerKOs != 0) &&
-        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_player == gSCManagerSceneData.player) &&
+        (sSC1PGameBonusStatPlayerKOsNum != 0) &&
+        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatPlayerKOsNum - 1].damage_player == gSCManagerSceneData.player) &&
         (
             (
-                (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_class == nFTHitLogObjectItem) &&
-                (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_kind >= nITKindMBallMonsterStart) &&
-                (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_kind <= nITKindMBallMonsterEnd)
+                (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatPlayerKOsNum - 1].damage_object_class == nFTHitLogObjectItem) &&
+                (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatPlayerKOsNum - 1].damage_object_kind >= nITKindMBallMonsterStart) &&
+                (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatPlayerKOsNum - 1].damage_object_kind <= nITKindMBallMonsterEnd)
             )
             ||
             (
-                (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_class == nFTHitLogObjectWeapon) &&
-                (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_kind >= nWPKindMonsterStart) &&
-                (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_kind <= nWPKindMonsterEnd)
+                (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatPlayerKOsNum - 1].damage_object_class == nFTHitLogObjectWeapon) &&
+                (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatPlayerKOsNum - 1].damage_object_kind >= nWPKindMonsterStart) &&
+                (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatPlayerKOsNum - 1].damage_object_kind <= nWPKindMonsterEnd)
             )
         )
     )
@@ -2533,11 +2533,11 @@ check_heavy_damage:
     }
     if
     (
-        (sSC1PGameBonusStatNumPlayerKOs != 0) &&
-        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_player == gSCManagerSceneData.player) &&
-        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_class == nFTHitLogObjectItem) &&
-        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_kind == nITKindMSBomb) &&
-        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_stat_flags.stat_attack_id == nFTStatusAttackIDNull)
+        (sSC1PGameBonusStatPlayerKOsNum != 0) &&
+        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatPlayerKOsNum - 1].damage_player == gSCManagerSceneData.player) &&
+        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatPlayerKOsNum - 1].damage_object_class == nFTHitLogObjectItem) &&
+        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatPlayerKOsNum - 1].damage_object_kind == nITKindMSBomb) &&
+        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatPlayerKOsNum - 1].damage_stat_flags.attack_id == nFTStatusAttackIDNull)
     )
     {
         // Booby Trap
@@ -2545,11 +2545,11 @@ check_heavy_damage:
     }
     if
     (
-        (sSC1PGameBonusStatNumPlayerKOs != 0) &&
-        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_player == gSCManagerSceneData.player) &&
+        (sSC1PGameBonusStatPlayerKOsNum != 0) &&
+        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatPlayerKOsNum - 1].damage_player == gSCManagerSceneData.player) &&
         (
-            (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_stat_flags.stat_attack_id == nFTStatusAttackIDThrowF) ||
-            (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_stat_flags.stat_attack_id == nFTStatusAttackIDThrowB)
+            (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatPlayerKOsNum - 1].damage_stat_flags.attack_id == nFTStatusAttackIDThrowF) ||
+            (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatPlayerKOsNum - 1].damage_stat_flags.attack_id == nFTStatusAttackIDThrowB)
         )
     )
     {
@@ -2573,10 +2573,10 @@ check_heavy_damage:
     }
     if
     (
-        (sSC1PGameBonusStatNumPlayerKOs != 0) &&
-        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_player != -1) &&
-        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_class == nFTHitLogObjectGround) &&
-        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_kind == nGMHitEnvironmentAcid)
+        (sSC1PGameBonusStatPlayerKOsNum != 0) &&
+        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatPlayerKOsNum - 1].damage_player != -1) &&
+        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatPlayerKOsNum - 1].damage_object_class == nFTHitLogObjectGround) &&
+        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatPlayerKOsNum - 1].damage_object_kind == nGMHitEnvironmentAcid)
     )
     {
         // Acid Clear
@@ -2585,16 +2585,16 @@ check_heavy_damage:
     if
     (
         (
-            (sSC1PGameBonusStatNumPlayerKOs != 0) &&
-            (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_player != -1) &&
-            (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_class == nFTHitLogObjectItem) &&
-            (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_kind == nITKindGBumper)
+            (sSC1PGameBonusStatPlayerKOsNum != 0) &&
+            (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatPlayerKOsNum - 1].damage_player != -1) &&
+            (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatPlayerKOsNum - 1].damage_object_class == nFTHitLogObjectItem) &&
+            (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatPlayerKOsNum - 1].damage_object_kind == nITKindGBumper)
         )
         ||
         (
-            (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_player == gSCManagerSceneData.player) &&
-            (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_class == nFTHitLogObjectItem) &&
-            (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_kind == nITKindNBumper)
+            (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatPlayerKOsNum - 1].damage_player == gSCManagerSceneData.player) &&
+            (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatPlayerKOsNum - 1].damage_object_class == nFTHitLogObjectItem) &&
+            (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatPlayerKOsNum - 1].damage_object_kind == nITKindNBumper)
         )
     )
     {
@@ -2604,10 +2604,10 @@ check_heavy_damage:
 
     if
     (
-        (sSC1PGameBonusStatNumPlayerKOs != 0) &&
-        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_player != -1) &&
-        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_class == nFTHitLogObjectGround) &&
-        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_kind == nGMHitEnvironmentTwister)
+        (sSC1PGameBonusStatPlayerKOsNum != 0) &&
+        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatPlayerKOsNum - 1].damage_player != -1) &&
+        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatPlayerKOsNum - 1].damage_object_class == nFTHitLogObjectGround) &&
+        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatPlayerKOsNum - 1].damage_object_kind == nGMHitEnvironmentTwister)
     )
     {
         // Twister Clear
@@ -2615,12 +2615,12 @@ check_heavy_damage:
     }
     if
     (
-        (sSC1PGameBonusStatNumPlayerKOs != 0) &&
-        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_player != -1) &&
-        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_class == nFTHitLogObjectWeapon) &&
+        (sSC1PGameBonusStatPlayerKOsNum != 0) &&
+        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatPlayerKOsNum - 1].damage_player != -1) &&
+        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatPlayerKOsNum - 1].damage_object_class == nFTHitLogObjectWeapon) &&
         (
-            (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_kind == nWPKindArwingLaser2D) ||
-            (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_kind == nWPKindArwingLaser3D)
+            (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatPlayerKOsNum - 1].damage_object_kind == nWPKindArwingLaser2D) ||
+            (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatPlayerKOsNum - 1].damage_object_kind == nWPKindArwingLaser3D)
         )
     )
     {
@@ -2677,7 +2677,7 @@ check_heavy_damage:
         {
             variation_order[i] = sSC1PGameEnemyVariations[sSC1PGameBonusStatEnemyStats[i].team_order];
         }
-        for (variation = 0; i < sSC1PGameBonusStatNumPlayerKOs; i++, variation = (variation == (SC1PGAME_STAGE_YOSHI_VARIATIONS_COUNT - 1)) ? 0 : variation++)
+        for (variation = 0; i < sSC1PGameBonusStatPlayerKOsNum; i++, variation = (variation == (SC1PGAME_STAGE_YOSHI_VARIATIONS_COUNT - 1)) ? 0 : variation++)
         {
             if (sSC1PGameEnemyVariations[sSC1PGameBonusStatEnemyStats[i].team_order] != variation_order[variation])
             {

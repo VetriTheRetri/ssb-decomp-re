@@ -101,12 +101,12 @@ struct ITAttackColl
 	ub32 can_hop : 1;									// Item can bounce off shields
 	ub32 can_reflect : 1;								// Item can be reflected
 	ub32 can_shield : 1;								// Item can be shielded
-	u32 attack_id : 6;									// Attack ID copied from object that spawned this item
+	u32 motion_attack_id : 6;							// Attack ID copied from object that spawned this item
 	u16 motion_count;									// Item's animation update number?
 	GMStatFlags stat_flags;								// Item's status flags
 	u16 stat_count;										// Item's status update number
-	s32 attack_count;										// Item's hitbox count, up to two
-	ITAttackPos attack_pos[ITEM_ATKCOLL_NUM_MAX];			// Item hitbox positions
+	s32 attack_count;									// Item's hitbox count, up to two
+	ITAttackPos attack_pos[ITEM_ATKCOLL_NUM_MAX];		// Item hitbox positions
 	GMAttackRecord attack_records[GMATKRECORD_NUM_MAX];	// Item's record of attacked targets
 };
 

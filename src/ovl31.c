@@ -991,13 +991,13 @@ void mnVSResultsSetFighterScale(GObj* fighter_gobj, s32 port_id, s32 fkind, s32 
 void mnVSResultsSpawnFighter(s32 port_id)
 {
 	s32 foo, bar, baz;
-	FTDesc spawn_info = dFTManagerDefaultFighterDesc;
+	FTDesc desc = dFTManagerDefaultFighterDesc;
 
-	spawn_info.fkind = mnVSResultsGetFighterKind(port_id);
-	spawn_info.costume = gSCManagerTransferBattleState.players[port_id].costume;
-	spawn_info.shade = gSCManagerTransferBattleState.players[port_id].shade;
-	spawn_info.figatree_heap = gMNVSResultsFigatreeHeaps[port_id];
-	gMNVSResultsFighterGObjs[port_id] = ftManagerMakeFighter(&spawn_info);
+	desc.fkind = mnVSResultsGetFighterKind(port_id);
+	desc.costume = gSCManagerTransferBattleState.players[port_id].costume;
+	desc.shade = gSCManagerTransferBattleState.players[port_id].shade;
+	desc.figatree_heap = gMNVSResultsFigatreeHeaps[port_id];
+	gMNVSResultsFighterGObjs[port_id] = ftManagerMakeFighter(&desc);
 }
 
 // 0x801339F4

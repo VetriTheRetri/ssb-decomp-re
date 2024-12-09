@@ -106,7 +106,7 @@ enum itHitokageStatus
 // 0x80183DA0
 void itHitokageDamagedSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITHitokageStatusDescs, itHitokageStatusDamaged);
+    itMainSetStatus(item_gobj, dITHitokageStatusDescs, itHitokageStatusDamaged);
 
     itGetStruct(item_gobj)->proc_dead = itHitokageDamagedProcDead;
 }

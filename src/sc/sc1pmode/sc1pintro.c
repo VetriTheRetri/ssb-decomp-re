@@ -745,7 +745,7 @@ void sc1PIntroMakeFighter(FTDemoDesc fighter, s32 card_anim_frame_id, void **fig
 {
     FTStruct *fp;
     GObj *fighter_gobj;
-    FTDesc ft_desc = dFTManagerDefaultFighterDesc;
+    FTDesc desc = dFTManagerDefaultFighterDesc;
     
     // 0x80134FC0
     s32 dl_links[/* */] =
@@ -758,15 +758,15 @@ void sc1PIntroMakeFighter(FTDemoDesc fighter, s32 card_anim_frame_id, void **fig
         29
     };
     
-    ft_desc.fkind = fighter.fkind;
-    ft_desc.costume = fighter.costume;
-    ft_desc.shade = fighter.shade;
+    desc.fkind = fighter.fkind;
+    desc.costume = fighter.costume;
+    desc.shade = fighter.shade;
     
-    ft_desc.figatree_heap = *figatree;
+    desc.figatree_heap = *figatree;
     
-    ft_desc.player = 0;
+    desc.player = 0;
     
-    fighter_gobj = ftManagerMakeFighter(&ft_desc);
+    fighter_gobj = ftManagerMakeFighter(&desc);
     
     scSubsysFighterSetStatus(fighter_gobj, 0x1000D);
     
@@ -938,21 +938,21 @@ void sc1PIntroVSFighterFuncDisplay(GObj *fighter_gobj)
     {
         if (((fp->fkind * 2) - 28) < sc1PIntroTotalTimeTics)
         {
-            ftMainSetFighterStatus(fighter_gobj, 0x1000E, 0.0F, 0.0F, FTSTATUS_PRESERVE_NONE);
+            ftMainSetStatus(fighter_gobj, 0x1000E, 0.0F, 0.0F, FTSTATUS_PRESERVE_NONE);
             gcPlayAnimAll(fighter_gobj);
             gcEndProcessAll(fighter_gobj);
             ftDisplayMainFuncDisplay(fighter_gobj);
         }
         if (((fp->fkind * 2) - 8) < sc1PIntroTotalTimeTics)
         {
-            ftMainSetFighterStatus(fighter_gobj, 0x1000E, 1.0F, 0.0F, FTSTATUS_PRESERVE_NONE);
+            ftMainSetStatus(fighter_gobj, 0x1000E, 1.0F, 0.0F, FTSTATUS_PRESERVE_NONE);
             gcPlayAnimAll(fighter_gobj);
             gcEndProcessAll(fighter_gobj);
             ftDisplayMainFuncDisplay(fighter_gobj);
         }
         if (((fp->fkind * 2) + 12) < sc1PIntroTotalTimeTics)
         {
-            ftMainSetFighterStatus(fighter_gobj, 0x1000E, 2.0F, 0.0F, FTSTATUS_PRESERVE_NONE);
+            ftMainSetStatus(fighter_gobj, 0x1000E, 2.0F, 0.0F, FTSTATUS_PRESERVE_NONE);
             gcPlayAnimAll(fighter_gobj);
             gcEndProcessAll(fighter_gobj);
             ftDisplayMainFuncDisplay(fighter_gobj);
@@ -970,22 +970,22 @@ GObj* sc1PIntroMakeVSFighter(s32 fkind, s32 stage, s32 card_anim_frame_id, void 
 {
     GObj *fighter_gobj;
     FTStruct *fp;
-    FTDesc ft_desc = dFTManagerDefaultFighterDesc;
+    FTDesc desc = dFTManagerDefaultFighterDesc;
 
-    ft_desc.fkind = fkind;
-    ft_desc.costume = ftParamGetCostumeCommonID(fkind, 0);
-    ft_desc.figatree_heap = *figatree;
-    ft_desc.func_display = sc1PIntroVSFighterFuncDisplay;
-    ft_desc.player = 0;
-    ft_desc.unk_rebirth_0x1C = 4;
-    ft_desc.unk_rebirth_0x1D = 4;
+    desc.fkind = fkind;
+    desc.costume = ftParamGetCostumeCommonID(fkind, 0);
+    desc.figatree_heap = *figatree;
+    desc.func_display = sc1PIntroVSFighterFuncDisplay;
+    desc.player = 0;
+    desc.unk_rebirth_0x1C = 4;
+    desc.unk_rebirth_0x1D = 4;
     
     if ((stage == nSC1PGameStageYoshi) || (stage == nSC1PGameStageZako))
     {
-        ft_desc.detail = nFTPartsDetailLow;
+        desc.detail = nFTPartsDetailLow;
     }
-    fighter_gobj = ftManagerMakeFighter(&ft_desc);
-    ftMainSetFighterStatus(fighter_gobj, 0x1000E, card_anim_frame_id, 0.0F, FTSTATUS_PRESERVE_NONE);
+    fighter_gobj = ftManagerMakeFighter(&desc);
+    ftMainSetStatus(fighter_gobj, 0x1000E, card_anim_frame_id, 0.0F, FTSTATUS_PRESERVE_NONE);
     gcPlayAnimAll(fighter_gobj);
     gcEndProcessAll(fighter_gobj);
     

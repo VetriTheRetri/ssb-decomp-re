@@ -1685,26 +1685,22 @@ void mnVSRecordMain(GObj* arg0)
 		{
 			func_800269C0_275C0(nSYAudioFGMFoxFoot);
 
-			if (sMNVSRecordCurrentIndex == 11)
+			if (sMNVSRecordCurrentIndex == nFTKindPlayableEnd)
 			{
-				sMNVSRecordCurrentIndex = 0;
+				sMNVSRecordCurrentIndex = nFTKindPlayableStart;
 			}
-			else
-				sMNVSRecordCurrentIndex++;
+			else sMNVSRecordCurrentIndex++;
 
 			while (mnVSRecordCheckHaveFighterKind(sMNVSRecordRankingFighterKindOrder[sMNVSRecordCurrentIndex]) == FALSE)
 			{
-				if (sMNVSRecordCurrentIndex == 11)
+				if (sMNVSRecordCurrentIndex == nFTKindPlayableEnd)
 				{
-					sMNVSRecordCurrentIndex = 0;
+					sMNVSRecordCurrentIndex = nFTKindPlayableStart;
 				}
-				else
-					sMNVSRecordCurrentIndex++;
+				else sMNVSRecordCurrentIndex++;
 			}
-
 			mnCommonSetOptionChangeWaitN(sMNVSRecordChangeWait, is_button, stick_range, 7);
 		}
-
 		if
 		(
 			mnCommonCheckGetOptionButtonInput(sMNVSRecordChangeWait, is_button, R_JPAD | R_TRIG | R_CBUTTONS) ||
@@ -1717,8 +1713,7 @@ void mnVSRecordMain(GObj* arg0)
 			{
 				sMNVSRecordFirstColumn = vsRecordsRankingColumnKindAverage;
 			}
-			else
-				sMNVSRecordFirstColumn--;
+			else sMNVSRecordFirstColumn--;
 
 			sMNVSRecordIsRedrawSubtitle = TRUE;
 
@@ -1760,27 +1755,28 @@ void mnVSRecordMain(GObj* arg0)
 		{
 			func_800269C0_275C0(nSYAudioFGMFoxFoot);
 
-			if (sMNVSRecordCurrentIndex == 11)
-				sMNVSRecordCurrentIndex = 0;
-			else
-				sMNVSRecordCurrentIndex++;
+			if (sMNVSRecordCurrentIndex == nFTKindPlayableEnd)
+			{
+				sMNVSRecordCurrentIndex = nFTKindPlayableStart;
+			}
+			else sMNVSRecordCurrentIndex++;
 
 			while (mnVSRecordCheckHaveFighterKind(sMNVSRecordRankingFighterKindOrder[sMNVSRecordCurrentIndex]) == FALSE)
 			{
-				if (sMNVSRecordCurrentIndex == 11)
-					sMNVSRecordCurrentIndex = 0;
-				else
-					sMNVSRecordCurrentIndex++;
+				if (sMNVSRecordCurrentIndex == nFTKindPlayableEnd)
+				{
+					sMNVSRecordCurrentIndex = nFTKindPlayableStart;
+				}
+				else sMNVSRecordCurrentIndex++;
 			}
-
 			mnVSRecordRedrawStats(sMNVSRecordStatsKind);
 
 			if (is_button)
+			{
 				sMNVSRecordChangeWait = 12;
-			else
-				sMNVSRecordChangeWait = mnCommonGetOptionChangeWaitP(20, 7);
+			}
+			else sMNVSRecordChangeWait = mnCommonGetOptionChangeWaitP(20, 7);
 		}
-
 		if
 		(
 			mnCommonCheckGetOptionButtonInput(sMNVSRecordChangeWait, is_button, L_JPAD | L_TRIG | L_CBUTTONS) ||
@@ -1789,25 +1785,27 @@ void mnVSRecordMain(GObj* arg0)
 		{
 			func_800269C0_275C0(nSYAudioFGMFoxFoot);
 
-			if (sMNVSRecordCurrentIndex == 0)
-				sMNVSRecordCurrentIndex = 11;
-			else
-				sMNVSRecordCurrentIndex--;
+			if (sMNVSRecordCurrentIndex == nFTKindPlayableStart)
+			{
+				sMNVSRecordCurrentIndex = nFTKindPlayableEnd;
+			}
+			else sMNVSRecordCurrentIndex--;
 
 			while (mnVSRecordCheckHaveFighterKind(sMNVSRecordRankingFighterKindOrder[sMNVSRecordCurrentIndex]) == FALSE)
 			{
-				if (sMNVSRecordCurrentIndex == 0)
-					sMNVSRecordCurrentIndex = 11;
-				else
-					sMNVSRecordCurrentIndex--;
+				if (sMNVSRecordCurrentIndex == nFTKindPlayableStart)
+				{
+					sMNVSRecordCurrentIndex = nFTKindPlayableEnd;
+				}
+				else sMNVSRecordCurrentIndex--;
 			}
-
 			mnVSRecordRedrawStats(sMNVSRecordStatsKind);
 
-			if (is_button)
+			if (is_button != FALSE)
+			{
 				sMNVSRecordChangeWait = 12;
-			else
-				sMNVSRecordChangeWait = mnCommonGetOptionChangeWaitN(-20, 7);
+			}
+			else sMNVSRecordChangeWait = mnCommonGetOptionChangeWaitN(-20, 7);
 		}
 	}
 }

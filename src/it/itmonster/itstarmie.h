@@ -7,11 +7,11 @@
 
 extern void itStarmieAttackUpdateSwift(GObj *item_gobj);
 extern sb32 itStarmieAttackProcUpdate(GObj *item_gobj);
-extern void itStarmieAttackInitItemVars(GObj *item_gobj);
+extern void itStarmieAttackInitVars(GObj *item_gobj);
 extern void itStarmieAttackSetStatus(GObj *item_gobj);
 extern sb32 itStarmieNFollowProcUpdate(GObj *item_gobj);
 extern void itStarmieNFollowFindFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj);
-extern void itStarmieNFollowInitItemVars(GObj *item_gobj);
+extern void itStarmieNFollowInitVars(GObj *item_gobj);
 extern void itStarmieNFollowSetStatus(GObj *item_gobj);
 extern sb32 itStarmieCommonProcUpdate(GObj *item_gobj);
 extern sb32 itStarmieCommonProcMap(GObj *item_gobj);

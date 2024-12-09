@@ -419,7 +419,7 @@ void ftDisplayMainDrawAfterImage(FTStruct *fp)
     s32 alphainc;
     Vec3f spAC;
 
-    index = fp->afterimage.desc_index;
+    index = fp->afterimage.desc_id;
 
     switch (fp->afterimage.is_itemswing)
     {

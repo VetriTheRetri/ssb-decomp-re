@@ -1532,7 +1532,7 @@ void ftParamUpdateDamage(FTStruct *fp, s32 damage)
 
     if (fp->item_gobj != NULL)
     {
-        if ((fp->damage_knockback != 0.0F) && ((fp->hitlag_tics == 0) || !(fp->is_knockback_paused) || !(fp->damage_knockback < (fp->damage_stack + 30.0F))))
+        if ((fp->damage_knockback != 0.0F) && ((fp->hitlag_tics == 0) || !(fp->is_knockback_paused) || !(fp->damage_knockback < (fp->damage_knockback_stack + 30.0F))))
         {
             ITStruct *ip = itGetStruct(fp->item_gobj);
 
@@ -1625,7 +1625,7 @@ u16 ftParamGetMotionCount(void)
 // 0x800EA5E8
 void ftParamSetMotionID(FTStruct *fp, s32 attack_id)
 {
-    fp->attack_id = attack_id;
+    fp->motion_attack_id = attack_id;
     fp->motion_count = ftParamGetMotionCount();
 }
 
@@ -1684,9 +1684,9 @@ void ftParamUpdate1PGameAttackStats(FTStruct *fp, u16 flags)
 
     if ((fp->pkind != nFTPlayerKindDemo) && (gSCManagerBattleState->game_type == nSCBattleGameType1PGame) && (fp->player == gSCManagerSceneData.player))
     {
-        if ((fp->stat_flags.stat_attack_id != nFTStatusAttackIDNone) && (fp->stat_flags.stat_attack_id != stat_flags.stat_attack_id))
+        if ((fp->stat_flags.attack_id != nFTStatusAttackIDNone) && (fp->stat_flags.attack_id != stat_flags.attack_id))
         {
-            gSC1PGameBonusAttackIDCount[fp->stat_flags.stat_attack_id]++;
+            gSC1PGameBonusAttackIDCount[fp->stat_flags.attack_id]++;
 
             gSC1PGameBonusAttackIsSmashCount[fp->stat_flags.is_smash_attack]++;
 
@@ -1762,9 +1762,9 @@ void ftParamUpdate1PGameDamageStats(FTStruct *fp, s32 damage_player, s32 damage_
 
         if (gSCManagerBattleState->game_type == nSCBattleGameType1PGame)
         {
-            if ((gSCManagerSceneData.player == damage_player) && (fp->damage_stat_flags.stat_attack_id != nFTStatusAttackIDNone))
+            if ((gSCManagerSceneData.player == damage_player) && (fp->damage_stat_flags.attack_id != nFTStatusAttackIDNone))
             {
-                gSC1PGameBonusDefendIDCount[fp->damage_stat_flags.stat_attack_id]++;
+                gSC1PGameBonusDefendIDCount[fp->damage_stat_flags.attack_id]++;
                 gSC1PGameBonusDefendIsSmashCount[fp->damage_stat_flags.is_smash_attack]++;
                 gSC1PGameBonusDefendGroundAirCount[fp->damage_stat_flags.ga]++;
                 gSC1PGameBonusDefendIsProjectileCount[fp->damage_stat_flags.is_projectile]++;

@@ -333,7 +333,7 @@ void itRShellCommonSetStatusWaitOrSpin(GObj *item_gobj)
         ip->attack_coll.attack_state = nGMAttackStateOff;
 
         itRShellCommonClearAnim(item_gobj);
-        itMainSetItemStatus(item_gobj, dITRShellStatusDescs, nITRShellStatusWait);
+        itMainSetStatus(item_gobj, dITRShellStatusDescs, nITRShellStatusWait);
     }
     else if (ip->item_vars.shell.is_damage != FALSE)
     {
@@ -354,7 +354,7 @@ void itRShellCommonSetStatusWaitOrSpin(GObj *item_gobj)
         ip->attack_coll.attack_state = nGMAttackStateOff;
 
         itRShellCommonClearAnim(item_gobj);
-        itMainSetItemStatus(item_gobj, dITRShellStatusDescs, nITRShellStatusWait);
+        itMainSetStatus(item_gobj, dITRShellStatusDescs, nITRShellStatusWait);
     }
 }
 
@@ -374,7 +374,7 @@ void itRShellFallSetStatus(GObj *item_gobj)
     ip->damage_coll.hitstatus = nGMHitStatusNormal;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITRShellStatusDescs, nITRShellStatusFall);
+    itMainSetStatus(item_gobj, dITRShellStatusDescs, nITRShellStatusFall);
 }
 
 // 0x8017A9D0
@@ -413,7 +413,7 @@ void itRShellHoldSetStatus(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->rotate.vec.f.y = F_CST_DTOR32(0.0F);
 
-    itMainSetItemStatus(item_gobj, dITRShellStatusDescs, nITRShellStatusHold);
+    itMainSetStatus(item_gobj, dITRShellStatusDescs, nITRShellStatusHold);
 }
 
 // 0x8017AAF0
@@ -428,7 +428,7 @@ void itRShellThrownSetStatus(GObj *item_gobj)
     ip->times_thrown = 0;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITRShellStatusDescs, nITRShellStatusThrown);
+    itMainSetStatus(item_gobj, dITRShellStatusDescs, nITRShellStatusThrown);
 }
 
 // 0x8017AB48
@@ -443,7 +443,7 @@ void itRShellDroppedSetStatus(GObj *item_gobj)
     ip->times_thrown = 0;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITRShellStatusDescs, nITRShellStatusDropped);
+    itMainSetStatus(item_gobj, dITRShellStatusDescs, nITRShellStatusDropped);
 }
 
 // 0x8017ABA0
@@ -603,7 +603,7 @@ sb32 itRShellSpinProcDamage(GObj *item_gobj)
 }
 
 // 0x8017AFEC
-void itRShellSpinInitItemVars(GObj *item_gobj)
+void itRShellSpinInitVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
@@ -645,12 +645,12 @@ void itRShellSpinInitItemVars(GObj *item_gobj)
 // 0x8017B0D4
 void itRShellSpinSetStatus(GObj *item_gobj)
 {
-    itRShellSpinInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITRShellStatusDescs, nITRShellStatusSpin);
+    itRShellSpinInitVars(item_gobj);
+    itMainSetStatus(item_gobj, dITRShellStatusDescs, nITRShellStatusSpin);
 }
 
 // 0x8017B108
-void itRShellSpinAirInitItemVars(GObj *item_gobj)
+void itRShellSpinAirInitVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
@@ -677,8 +677,8 @@ void itRShellSpinAirInitItemVars(GObj *item_gobj)
 // 0x8017B1A4
 void itRShellSpinAirSetStatus(GObj *item_gobj)
 {
-    itRShellSpinAirInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITRShellStatusDescs, nITRShellStatusSpinAir);
+    itRShellSpinAirInitVars(item_gobj);
+    itMainSetStatus(item_gobj, dITRShellStatusDescs, nITRShellStatusSpinAir);
 }
 
 // 0x8017B1D8

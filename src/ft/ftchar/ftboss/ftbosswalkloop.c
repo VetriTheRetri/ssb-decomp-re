@@ -51,7 +51,7 @@ void ftBossWalkLoopSetStatus(GObj *fighter_gobj)
 
     fp->physics.vel_air.y = 0;
 
-    ftMainSetFighterStatus(fighter_gobj, nFTBossStatusWalkLoop, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTBossStatusWalkLoop, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
     fp->physics.vel_air.x = fp->lr * 35.0F;
 }

@@ -100,7 +100,7 @@ void ftPurinSpecialAirNProcMap(GObj *fighter_gobj)
 void ftPurinSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 {
     mpCommonSetFighterGround(ftGetStruct(fighter_gobj));
-    ftMainSetFighterStatus(fighter_gobj, nFTPurinStatusSpecialN, fighter_gobj->anim_frame, 1.0F, FTPURIN_SPECIALN_STATUS_FLAGS);
+    ftMainSetStatus(fighter_gobj, nFTPurinStatusSpecialN, fighter_gobj->anim_frame, 1.0F, FTPURIN_SPECIALN_STATUS_FLAGS);
 }
 
 // 0x80151478
@@ -109,14 +109,14 @@ void ftPurinSpecialNSwitchStatusAir(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTPurinStatusSpecialAirN, fighter_gobj->anim_frame, 1.0F, FTPURIN_SPECIALN_STATUS_FLAGS);
+    ftMainSetStatus(fighter_gobj, nFTPurinStatusSpecialAirN, fighter_gobj->anim_frame, 1.0F, FTPURIN_SPECIALN_STATUS_FLAGS);
     ftPhysicsClampAirVelXMax(fp);
 }
 
 // 0x801514C4
 void ftPurinSpecialNSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTPurinStatusSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTPurinStatusSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftPurinSpecialNInitStatusVars(fighter_gobj);
     ftMainPlayAnimNoEffect(fighter_gobj);
 }
@@ -124,7 +124,7 @@ void ftPurinSpecialNSetStatus(GObj *fighter_gobj)
 // 0x80151504
 void ftPurinSpecialAirNSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTPurinStatusSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTPurinStatusSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftPurinSpecialNInitStatusVars(fighter_gobj);
     ftMainPlayAnimNoEffect(fighter_gobj);
 }

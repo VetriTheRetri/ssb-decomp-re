@@ -224,7 +224,7 @@ sb32 itGShellFallProcMap(GObj *item_gobj)
 }
 
 // 0x801787CC
-void itGShellWaitInitItemVars(GObj *item_gobj)
+void itGShellWaitInitVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
@@ -244,7 +244,7 @@ void itGShellWaitInitItemVars(GObj *item_gobj)
         ip->physics.vel_air.x = 0.0F;
 
         itGShellCommonClearAnim(item_gobj);
-        itMainSetItemStatus(item_gobj, dITGShellStatusDescs, nITGShellStatusWait);
+        itMainSetStatus(item_gobj, dITGShellStatusDescs, nITGShellStatusWait);
     }
     else if (ip->item_vars.shell.is_damage != FALSE)
     {
@@ -265,14 +265,14 @@ void itGShellWaitInitItemVars(GObj *item_gobj)
         ip->physics.vel_air.x = 0.0F;
 
         itGShellCommonClearAnim(item_gobj);
-        itMainSetItemStatus(item_gobj, dITGShellStatusDescs, nITGShellStatusWait);
+        itMainSetStatus(item_gobj, dITGShellStatusDescs, nITGShellStatusWait);
     }
 }
 
 // 0x80178910
 void itGShellWaitSetStatus(GObj *item_gobj)
 {
-    itGShellWaitInitItemVars(item_gobj);
+    itGShellWaitInitVars(item_gobj);
 }
 
 // 0x80178930
@@ -287,7 +287,7 @@ void itGShellFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITGShellStatusDescs, nITGShellStatusFall);
+    itMainSetStatus(item_gobj, dITGShellStatusDescs, nITGShellStatusFall);
 }
 
 // 0x8017897C
@@ -333,7 +333,7 @@ void itGShellHoldSetStatus(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->rotate.vec.f.y = 0.0F;
 
-    itMainSetItemStatus(item_gobj, dITGShellStatusDescs, nITGShellStatusHold);
+    itMainSetStatus(item_gobj, dITGShellStatusDescs, nITGShellStatusHold);
 }
 
 // 0x80178AC4
@@ -362,7 +362,7 @@ void itGShellThrownSetStatus(GObj *item_gobj)
     ip->item_vars.shell.health = 1;
     ip->item_vars.shell.is_damage = TRUE;
 
-    itMainSetItemStatus(item_gobj, dITGShellStatusDescs, nITGShellStatusThrown);
+    itMainSetStatus(item_gobj, dITGShellStatusDescs, nITGShellStatusThrown);
 }
 
 // 0x80178B60
@@ -373,7 +373,7 @@ void itGShellDroppedSetStatus(GObj *item_gobj)
     ip->item_vars.shell.health = 1;
     ip->item_vars.shell.is_damage = TRUE;
 
-    itMainSetItemStatus(item_gobj, dITGShellStatusDescs, nITGShellStatusDropped);
+    itMainSetStatus(item_gobj, dITGShellStatusDescs, nITGShellStatusDropped);
 }
 
 // 0x80178B98
@@ -469,7 +469,7 @@ sb32 itGShellSpinProcDamage(GObj *item_gobj)
 }
 
 // 0x80178E04
-void itGShellSpinInitItemVars(GObj *item_gobj)
+void itGShellSpinInitVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
@@ -507,12 +507,12 @@ void itGShellSpinInitItemVars(GObj *item_gobj)
 // 0x80178EDC
 void itGShellSpinSetStatus(GObj *item_gobj)
 {
-    itGShellSpinInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITGShellStatusDescs, nITGShellStatusSpin);
+    itGShellSpinInitVars(item_gobj);
+    itMainSetStatus(item_gobj, dITGShellStatusDescs, nITGShellStatusSpin);
 }
 
 // 0x80178F10
-void itGShellSpinAirInitItemVars(GObj *item_gobj)
+void itGShellSpinAirInitVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
@@ -538,8 +538,8 @@ void itGShellSpinAirInitItemVars(GObj *item_gobj)
 // 0x80178FA8
 void itGShellSpinAirSetStatus(GObj *item_gobj)
 {
-    itGShellSpinAirInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITGShellStatusDescs, nITGShellStatusSpinAir);
+    itGShellSpinAirInitVars(item_gobj);
+    itMainSetStatus(item_gobj, dITGShellStatusDescs, nITGShellStatusSpinAir);
 }
 
 // 0x80178FDC

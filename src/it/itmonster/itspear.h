@@ -7,10 +7,10 @@
 
 extern void itSpearFlyCallSwarmMember(GObj *item_gobj);
 extern sb32 itSpearAppearProcUpdate(GObj *item_gobj);
-extern void itSpearAppearInitItemVars(GObj *item_gobj);
+extern void itSpearAppearInitVars(GObj *item_gobj);
 extern void itSpearAppearSetStatus(GObj *item_gobj);
 extern sb32 itSpearFlyProcUpdate(GObj *item_gobj);
-extern void itSpearFlyInitItemVars(GObj *item_gobj);
+extern void itSpearFlyInitVars(GObj *item_gobj);
 extern void itSpearFlySetStatus(GObj *item_gobj);
 extern sb32 itSpearCommonProcUpdate(GObj *item_gobj);
 extern sb32 itSpearCommonProcMap(GObj *item_gobj);

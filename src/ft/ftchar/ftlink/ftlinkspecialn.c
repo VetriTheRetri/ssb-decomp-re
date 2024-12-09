@@ -98,14 +98,14 @@ void ftLinkSpecialNProcStatus(GObj *fighter_gobj)
 void ftLinkSpecialNSwitchStatusAir(GObj *fighter_gobj)
 {
     mpCommonSetFighterAir(ftGetStruct(fighter_gobj));
-    ftMainSetFighterStatus(fighter_gobj, nFTLinkStatusSpecialAirN, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_MODELPART);
+    ftMainSetStatus(fighter_gobj, nFTLinkStatusSpecialAirN, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_MODELPART);
 }
 
 // 0x801638EC
 void ftLinkSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 {
     mpCommonSetFighterGround(ftGetStruct(fighter_gobj));
-    ftMainSetFighterStatus(fighter_gobj, nFTLinkStatusSpecialN, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_MODELPART);
+    ftMainSetStatus(fighter_gobj, nFTLinkStatusSpecialN, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_MODELPART);
 }
 
 // 0x8016392C
@@ -114,7 +114,7 @@ void ftLinkSpecialNEmptySwitchStatusAir(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTLinkStatusSpecialAirNEmpty, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTLinkStatusSpecialAirNEmpty, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_NONE);
     fp->is_special_interrupt = TRUE;
 }
 
@@ -124,7 +124,7 @@ void ftLinkSpecialAirNEmptySwitchStatusGround(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterGround(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTLinkStatusSpecialNEmpty, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTLinkStatusSpecialNEmpty, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_NONE);
     fp->is_special_interrupt = TRUE;
 }
 
@@ -137,11 +137,11 @@ void ftLinkSpecialNSetStatus(GObj *fighter_gobj)
 
     if (fp->passive_vars.link.boomerang_gobj != NULL)
     {
-        ftMainSetFighterStatus(fighter_gobj, nFTLinkStatusSpecialNEmpty, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+        ftMainSetStatus(fighter_gobj, nFTLinkStatusSpecialNEmpty, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
         fp->is_special_interrupt = TRUE;
     }
-    else ftMainSetFighterStatus(fighter_gobj, nFTLinkStatusSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    else ftMainSetStatus(fighter_gobj, nFTLinkStatusSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
     ftMainPlayAnimNoEffect(fighter_gobj);
 }
@@ -155,11 +155,11 @@ void ftLinkSpecialAirNSetStatus(GObj *fighter_gobj)
 
     if (fp->passive_vars.link.boomerang_gobj != NULL)
     {
-        ftMainSetFighterStatus(fighter_gobj, nFTLinkStatusSpecialAirNEmpty, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+        ftMainSetStatus(fighter_gobj, nFTLinkStatusSpecialAirNEmpty, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
         fp->is_special_interrupt = TRUE;
     }
-    else ftMainSetFighterStatus(fighter_gobj, nFTLinkStatusSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    else ftMainSetStatus(fighter_gobj, nFTLinkStatusSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
     ftMainPlayAnimNoEffect(fighter_gobj);
 }
@@ -171,9 +171,9 @@ void ftLinkSpecialNGetSetStatus(GObj *fighter_gobj)
 
     if (fp->ga == nMPKineticsAir)
     {
-        ftMainSetFighterStatus(fighter_gobj, nFTLinkStatusSpecialAirNReturn, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+        ftMainSetStatus(fighter_gobj, nFTLinkStatusSpecialAirNReturn, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     }
-    else ftMainSetFighterStatus(fighter_gobj, nFTLinkStatusSpecialNGet, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    else ftMainSetStatus(fighter_gobj, nFTLinkStatusSpecialNGet, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
     ftMainPlayAnimNoEffect(fighter_gobj);
 }

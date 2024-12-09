@@ -170,16 +170,16 @@ void func_ovl46_80131CA4()
 void mvOpeningCliffMakeFighter(void)
 {
     GObj* fighter_gobj;
-    FTDesc ft_desc = dFTManagerDefaultFighterDesc;
+    FTDesc desc = dFTManagerDefaultFighterDesc;
 
-    ft_desc.fkind = nFTKindLink;
-    ft_desc.costume = ftParamGetCostumeCommonID(nFTKindLink, 0);
-    ft_desc.pos.x = 0.0F;
-    ft_desc.pos.y = 0.0F;
-    ft_desc.pos.z = 0.0F;
-    ft_desc.figatree_heap = sMVOpeningCliffFigatreeHeap;
+    desc.fkind = nFTKindLink;
+    desc.costume = ftParamGetCostumeCommonID(nFTKindLink, 0);
+    desc.pos.x = 0.0F;
+    desc.pos.y = 0.0F;
+    desc.pos.z = 0.0F;
+    desc.figatree_heap = sMVOpeningCliffFigatreeHeap;
 
-    sMVOpeningCliffFighterGObj = fighter_gobj = ftManagerMakeFighter(&ft_desc);
+    sMVOpeningCliffFighterGObj = fighter_gobj = ftManagerMakeFighter(&desc);
 
     scSubsysFighterSetStatus(fighter_gobj, 0x1000F);
 

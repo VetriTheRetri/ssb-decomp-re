@@ -126,7 +126,7 @@ sb32 itTomatoFallProcMap(GObj *item_gobj)
 void itTomatoWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITTomatoStatusDescs, nITTomatoStatusWait);
+    itMainSetStatus(item_gobj, dITTomatoStatusDescs, nITTomatoStatusWait);
 }
 
 // 0x80174588
@@ -137,7 +137,7 @@ void itTomatoFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITTomatoStatusDescs, nITTomatoStatusFall);
+    itMainSetStatus(item_gobj, dITTomatoStatusDescs, nITTomatoStatusFall);
 }
 
 // 0x801745CC
@@ -149,7 +149,7 @@ sb32 itTomatoDroppedProcMap(GObj *item_gobj)
 // 0x801745FC
 void itTomatoDroppedSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITTomatoStatusDescs, nITTomatoStatusDropped);
+    itMainSetStatus(item_gobj, dITTomatoStatusDescs, nITTomatoStatusDropped);
 }
 
 // 0x80174624

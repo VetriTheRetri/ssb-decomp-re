@@ -1580,7 +1580,7 @@ void mn1PRotateFighter(GObj *fighter_gobj)
 void mn1PSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 fkind, s32 costume_id)
 {
 	f32 initial_y_rotation;
-	FTDesc spawn_info = dFTManagerDefaultFighterDesc;
+	FTDesc desc = dFTManagerDefaultFighterDesc;
 
 	if (fkind != nFTKindNull)
 	{
@@ -1592,12 +1592,12 @@ void mn1PSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 fkind, s32 costume_id
 		else
 			initial_y_rotation = 0.0F;
 
-		spawn_info.fkind = fkind;
-		gMN1PPanel.costume_id = spawn_info.costume = costume_id;
-		spawn_info.shade = 0;
-		spawn_info.figatree_heap = gMN1PFigatreeHeap;
-		spawn_info.player = port_id;
-		gMN1PPanel.player = fighter_gobj = ftManagerMakeFighter(&spawn_info);
+		desc.fkind = fkind;
+		gMN1PPanel.costume_id = desc.costume = costume_id;
+		desc.shade = 0;
+		desc.figatree_heap = gMN1PFigatreeHeap;
+		desc.player = port_id;
+		gMN1PPanel.player = fighter_gobj = ftManagerMakeFighter(&desc);
 
 		gcAddGObjProcess(fighter_gobj, mn1PRotateFighter, 1, 1);
 

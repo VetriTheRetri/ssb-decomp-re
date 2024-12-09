@@ -20,7 +20,7 @@ extern sb32 itCapsuleDroppedProcMap(GObj *item_gobj);
 extern void itCapsuleDroppedSetStatus(GObj *item_gobj);
 extern sb32 itCapsuleExplodeProcUpdate(GObj *item_gobj);
 extern GObj* itCapsuleMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
-extern void itCapsuleExplodeInitItemVars(GObj *item_gobj);
+extern void itCapsuleExplodeInitVars(GObj *item_gobj);
 extern void itCapsuleExplodeSetStatus(GObj *item_gobj);
 extern void itCapsuleExplodeMakeEffectGotoSetStatus(GObj *item_gobj);
 

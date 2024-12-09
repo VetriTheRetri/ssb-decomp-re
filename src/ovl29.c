@@ -1202,7 +1202,7 @@ void mnBonusRotateFighter(GObj *fighter_gobj)
 void mnBonusSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 fkind)
 {
 	f32 initial_y_rotation;
-	FTDesc spawn_info = dFTManagerDefaultFighterDesc;
+	FTDesc desc = dFTManagerDefaultFighterDesc;
 
 	if (fkind != nFTKindNull)
 	{
@@ -1214,12 +1214,12 @@ void mnBonusSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 fkind)
 		else
 			initial_y_rotation = 0.0F;
 
-		spawn_info.fkind = fkind;
-		gMnBonusPanel.costume_id = spawn_info.costume = mnBonusGetAvailableCostume(fkind, 0);
-		// spawn_info.shade = 0;
-		spawn_info.figatree_heap = gMnBonusFigatreeHeap;
-		spawn_info.player = port_id;
-		gMnBonusPanel.player = fighter_gobj = ftManagerMakeFighter(&spawn_info);
+		desc.fkind = fkind;
+		gMnBonusPanel.costume_id = desc.costume = mnBonusGetAvailableCostume(fkind, 0);
+		// desc.shade = 0;
+		desc.figatree_heap = gMnBonusFigatreeHeap;
+		desc.player = port_id;
+		gMnBonusPanel.player = fighter_gobj = ftManagerMakeFighter(&desc);
 
 		gcAddGObjProcess(fighter_gobj, mnBonusRotateFighter, 1, 1);
 

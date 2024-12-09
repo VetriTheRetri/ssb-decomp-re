@@ -222,7 +222,7 @@ void itTaruBombRollSetStatus(GObj *item_gobj)
 
     ip->physics.vel_air.y = 0.0F;
 
-    itMainSetItemStatus(item_gobj, dITTaruBombStatusDescs, nITTaruBombStatusRoll);
+    itMainSetStatus(item_gobj, dITTaruBombStatusDescs, nITTaruBombStatusRoll);
 }
 
 // 0x80184E78
@@ -331,7 +331,7 @@ sb32 itTaruBombRollProcMap(GObj *item_gobj)
 
     if (itMapTestLRWallCheckGround(item_gobj) == FALSE)
     {
-        itMainSetItemStatus(item_gobj, dITTaruBombStatusDescs, nITTaruBombStatusFall);
+        itMainSetStatus(item_gobj, dITTaruBombStatusDescs, nITTaruBombStatusFall);
     }
     else if (ip->coll_data.coll_mask_curr & (MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL))
     {
@@ -357,7 +357,7 @@ GObj* itTaruBombMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 }
 
 // 0x801851F4
-void itTaruBombExplodeInitItemVars(GObj *item_gobj)
+void itTaruBombExplodeInitVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
@@ -383,8 +383,8 @@ void itTaruBombExplodeInitItemVars(GObj *item_gobj)
 // 0x80185284
 void itTaruBombExplodeSetStatus(GObj *item_gobj)
 {
-    itTaruBombExplodeInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITTaruBombStatusDescs, nITTaruBombStatusExplode);
+    itTaruBombExplodeInitVars(item_gobj);
+    itMainSetStatus(item_gobj, dITTaruBombStatusDescs, nITTaruBombStatusExplode);
 }
 
 // 0x801852B8

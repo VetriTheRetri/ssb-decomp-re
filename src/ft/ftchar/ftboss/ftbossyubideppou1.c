@@ -17,7 +17,7 @@ void ftBossYubideppou1SetStatus(GObj *fighter_gobj)
 {
     FTStruct *fp;
 
-    ftMainSetFighterStatus(fighter_gobj, nFTBossStatusYubideppou1, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTBossStatusYubideppou1, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftBossCommonCheckPlayerInvertLR(fighter_gobj);
 
     fp = ftGetStruct(fighter_gobj);

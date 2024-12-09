@@ -112,14 +112,14 @@ void ftFoxSpecialLwLoopSetReflectFlag(GObj *fighter_gobj)
 // 0x8015CD90
 void ftFoxSpecialLwLoopSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTFoxStatusSpecialLwLoop, 0.0F, 1.0F, (FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM));
+    ftMainSetStatus(fighter_gobj, nFTFoxStatusSpecialLwLoop, 0.0F, 1.0F, (FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM));
     ftFoxSpecialLwLoopSetReflectFlag(fighter_gobj);
 }
 
 // 0x8015CDCC
 void ftFoxSpecialAirLwLoopSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTFoxStatusSpecialAirLwLoop, 0.0F, 1.0F, (FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM));
+    ftMainSetStatus(fighter_gobj, nFTFoxStatusSpecialAirLwLoop, 0.0F, 1.0F, (FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM));
     ftFoxSpecialLwLoopSetReflectFlag(fighter_gobj);
 }
 
@@ -165,7 +165,7 @@ void ftFoxSpecialLwHitSetStatus(GObj *fighter_gobj)
 
     fp->lr = fp->reflect_lr;
 
-    ftMainSetFighterStatus(fighter_gobj, (fp->ga == nMPKineticsGround) ? nFTFoxStatusSpecialLwHit : nFTFoxStatusSpecialAirLwHit, 0.0F, 1.0F, (FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM));
+    ftMainSetStatus(fighter_gobj, (fp->ga == nMPKineticsGround) ? nFTFoxStatusSpecialLwHit : nFTFoxStatusSpecialAirLwHit, 0.0F, 1.0F, (FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM));
 
     fp->is_reflect = TRUE;
 }
@@ -218,14 +218,14 @@ void ftFoxSpecialLwTurnInitStatusVars(GObj *fighter_gobj)
 // 0x8015D054
 void ftFoxSpecialLwTurnSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTFoxStatusSpecialLwTurn, 0.0F, 1.0F, (FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM));
+    ftMainSetStatus(fighter_gobj, nFTFoxStatusSpecialLwTurn, 0.0F, 1.0F, (FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM));
     ftFoxSpecialLwTurnInitStatusVars(fighter_gobj);
 }
 
 // 0x8015D090
 void ftFox_SpecialAirLwTurn_SetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTFoxStatusSpecialAirLwTurn, 0.0F, 1.0F, (FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM));
+    ftMainSetStatus(fighter_gobj, nFTFoxStatusSpecialAirLwTurn, 0.0F, 1.0F, (FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM));
     ftFoxSpecialLwTurnInitStatusVars(fighter_gobj);
 }
 
@@ -264,13 +264,13 @@ void ftFoxSpecialLwEndProcUpdate(GObj *fighter_gobj)
 // 0x8015D180
 void ftFoxSpecialLwEndSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTFoxStatusSpecialLwEnd, 0.0F, 1.0F, (FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM));
+    ftMainSetStatus(fighter_gobj, nFTFoxStatusSpecialLwEnd, 0.0F, 1.0F, (FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM));
 }
 
 // 0x8015D1B0
 void ftFoxSpecialAirLwEndSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTFoxStatusSpecialAirLwEnd, 0.0F, 1.0F, (FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM));
+    ftMainSetStatus(fighter_gobj, nFTFoxStatusSpecialAirLwEnd, 0.0F, 1.0F, (FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM));
 }
 
 // 0x8015D1E0
@@ -289,13 +289,13 @@ void ftFoxSpecialLwStartInitStatusVars(GObj *fighter_gobj)
     {
         fp->is_attach_effect = TRUE;
     }
-    fp->spc_coll = (FTSpecialColl*) ((uintptr_t)gFTDataFoxMainMotion + (intptr_t)&lFTFoxSpecialLwReflector); // Another linker thing
+    fp->special_coll = (FTSpecialColl*) ((uintptr_t)gFTDataFoxMainMotion + (intptr_t)&lFTFoxSpecialLwReflector); // Another linker thing
 }
 
 // 0x8015D250
 void ftFoxSpecialLwStartSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTFoxStatusSpecialLwStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTFoxStatusSpecialLwStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
     ftFoxSpecialLwStartInitStatusVars(fighter_gobj);
 }
@@ -305,7 +305,7 @@ void ftFoxSpecialAirLwStartSetStatus(GObj* fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTFoxStatusSpecialAirLwStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTFoxStatusSpecialAirLwStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
     ftFoxSpecialLwStartInitStatusVars(fighter_gobj);
 

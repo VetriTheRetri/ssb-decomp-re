@@ -29,7 +29,7 @@ void ftCommonDownStandSetStatus(GObj *fighter_gobj)
     }
     else status_id = nFTCommonStatusDownStandU;
 
-    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
     fp->motion_vars.flags.flag1 = 0;
 }

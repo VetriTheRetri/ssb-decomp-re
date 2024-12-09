@@ -6203,9 +6203,9 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
     }
     else com->ftcom_flags_0x49_b3 = FALSE;
 
-    if (this_fp->computer.attack_attack_count != this_fp->attack_attack_count)
+    if (this_fp->computer.attack_count != this_fp->attack_count)
     {
-        this_fp->computer.attack_attack_count = this_fp->attack_attack_count;
+        this_fp->computer.attack_count = this_fp->attack_count;
 
         if (this_fp->attack_knockback > 160.0F)
         {

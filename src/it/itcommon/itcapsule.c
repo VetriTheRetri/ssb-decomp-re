@@ -178,7 +178,7 @@ sb32 itCapsuleFallProcMap(GObj *item_gobj)
 void itCapsuleWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITCapsuleStatusDescs, nITCapsuleStatusWait);
+    itMainSetStatus(item_gobj, dITCapsuleStatusDescs, nITCapsuleStatusWait);
 }
 
 // 0x80174098
@@ -194,13 +194,13 @@ void itCapsuleFallSetStatus(GObj *item_gobj)
 
     ip->damage_coll.hitstatus = nGMHitStatusNormal;
 
-    itMainSetItemStatus(item_gobj, dITCapsuleStatusDescs, nITCapsuleStatusFall);
+    itMainSetStatus(item_gobj, dITCapsuleStatusDescs, nITCapsuleStatusFall);
 }
 
 // 0x801740FC
 void itCapsuleHoldSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITCapsuleStatusDescs, nITCapsuleStatusHold);
+    itMainSetStatus(item_gobj, dITCapsuleStatusDescs, nITCapsuleStatusHold);
 }
 
 // 0x80174124
@@ -237,7 +237,7 @@ void itCapsuleThrownSetStatus(GObj *item_gobj)
 
     ip->damage_coll.hitstatus = nGMHitStatusNormal;
 
-    itMainSetItemStatus(item_gobj, dITCapsuleStatusDescs, nITCapsuleStatusThrown);
+    itMainSetStatus(item_gobj, dITCapsuleStatusDescs, nITCapsuleStatusThrown);
 }
 
 // 0x801741F0
@@ -257,7 +257,7 @@ sb32 itCapsuleDroppedProcMap(GObj *item_gobj)
 // 0x80174248
 void itCapsuleDroppedSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITCapsuleStatusDescs, nITCapsuleStatusDropped);
+    itMainSetStatus(item_gobj, dITCapsuleStatusDescs, nITCapsuleStatusDropped);
 }
 
 // 0x80174270
@@ -292,7 +292,7 @@ GObj* itCapsuleMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 }
 
 // 0x80174340
-void itCapsuleExplodeInitItemVars(GObj *item_gobj)
+void itCapsuleExplodeInitVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
@@ -322,8 +322,8 @@ void itCapsuleExplodeInitItemVars(GObj *item_gobj)
 // 0x801743F4
 void itCapsuleExplodeSetStatus(GObj *item_gobj)
 {
-    itCapsuleExplodeInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITCapsuleStatusDescs, nITCapsuleStatusExplode);
+    itCapsuleExplodeInitVars(item_gobj);
+    itMainSetStatus(item_gobj, dITCapsuleStatusDescs, nITCapsuleStatusExplode);
 }
 
 // 0x80174428

@@ -74,6 +74,6 @@ extern void ftMainProcUpdateMain(GObj* fighter_gobj);
 extern void ftMainUpdateWithheldPartID(FTStruct* fp, s32 index);
 extern void func_ovl2_800E6CE0(FTStruct* fp, s32 index);
 extern void func_ovl2_800E6E00(FTStruct* fp, s32 index);
-extern void ftMainSetFighterStatus(GObj* fighter_gobj, s32 status_id, f32 frame_begin, f32 anim_speed, u32 flags);
+extern void ftMainSetStatus(GObj* fighter_gobj, s32 status_id, f32 frame_begin, f32 anim_speed, u32 flags);
 
 #endif

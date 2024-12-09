@@ -126,8 +126,8 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPDesc *wp_desc, Vec3f *spawn_pos, 
 
         wp->display_mode = fp->display_mode;
 
-        wp->attack_coll.stale = ftParamGetStale(fp->player, fp->attack_id, fp->motion_count);
-        wp->attack_coll.attack_id = fp->attack_id;
+        wp->attack_coll.stale = ftParamGetStale(fp->player, fp->motion_attack_id, fp->motion_count);
+        wp->attack_coll.motion_attack_id = fp->motion_attack_id;
         wp->attack_coll.motion_count = fp->motion_count;
         wp->attack_coll.stat_flags = fp->stat_flags;
         wp->attack_coll.stat_count = fp->stat_count;
@@ -145,7 +145,7 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPDesc *wp_desc, Vec3f *spawn_pos, 
         wp->display_mode = owner_wp->display_mode;
 
         wp->attack_coll.stale = owner_wp->attack_coll.stale;
-        wp->attack_coll.attack_id = owner_wp->attack_coll.attack_id;
+        wp->attack_coll.motion_attack_id = owner_wp->attack_coll.motion_attack_id;
         wp->attack_coll.motion_count = owner_wp->attack_coll.motion_count;
         wp->attack_coll.stat_flags = owner_wp->attack_coll.stat_flags;
         wp->attack_coll.stat_count = owner_wp->attack_coll.stat_count;
@@ -163,7 +163,7 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPDesc *wp_desc, Vec3f *spawn_pos, 
         wp->display_mode = ip->display_mode;
 
         wp->attack_coll.stale = ip->attack_coll.stale;
-        wp->attack_coll.attack_id = ip->attack_coll.attack_id;
+        wp->attack_coll.motion_attack_id = ip->attack_coll.motion_attack_id;
         wp->attack_coll.motion_count = ip->attack_coll.motion_count;
         wp->attack_coll.stat_flags = ip->attack_coll.stat_flags;
         wp->attack_coll.stat_count = ip->attack_coll.stat_count;
@@ -180,10 +180,10 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPDesc *wp_desc, Vec3f *spawn_pos, 
 
         wp->display_mode = sWPManagerDisplayMode;
 
-        wp->attack_coll.attack_id = nFTMotionAttackIDNone;
+        wp->attack_coll.motion_attack_id = nFTMotionAttackIDNone;
         wp->attack_coll.stale = WEAPON_STALE_DEFAULT;
         wp->attack_coll.motion_count = ftParamGetMotionCount();
-        wp->attack_coll.stat_flags.stat_attack_id = nFTStatusAttackIDNone;
+        wp->attack_coll.stat_flags.attack_id = nFTStatusAttackIDNone;
         wp->attack_coll.stat_flags.is_smash_attack = wp->attack_coll.stat_flags.ga = wp->attack_coll.stat_flags.is_projectile = 0;
         wp->attack_coll.stat_count = ftParamGetStatUpdateCount();
         break;

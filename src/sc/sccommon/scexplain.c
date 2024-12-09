@@ -704,7 +704,7 @@ void scExplainFuncStart(void)
     s32 unused[3];
     GObj *fighter_gobj;
     s32 player;
-    FTDesc ft_desc;
+    FTDesc desc;
     SYColorRGBA color;
 
     scExplainSetBattleState();
@@ -729,7 +729,7 @@ void scExplainFuncStart(void)
 
     for (player = 0; player < ARRAY_COUNT(gSCManagerBattleState->players); player++)
     {
-        ft_desc = dFTManagerDefaultFighterDesc;
+        desc = dFTManagerDefaultFighterDesc;
 
         if (gSCManagerBattleState->players[player].pkind == nFTPlayerKindNot)
         {
@@ -737,35 +737,35 @@ void scExplainFuncStart(void)
         }
         ftManagerSetupFilesAllKind(gSCManagerBattleState->players[player].fkind);
 
-        ft_desc.fkind = gSCManagerBattleState->players[player].fkind;
+        desc.fkind = gSCManagerBattleState->players[player].fkind;
 
-        mpCollisionGetPlayerMapObjPosition(player, &ft_desc.pos);
+        mpCollisionGetPlayerMapObjPosition(player, &desc.pos);
 
-        ft_desc.lr = (ft_desc.pos.x >= 0.0F) ? -1 : +1;
+        desc.lr = (desc.pos.x >= 0.0F) ? -1 : +1;
 
-        ft_desc.team = gSCManagerBattleState->players[player].team;
+        desc.team = gSCManagerBattleState->players[player].team;
 
-        ft_desc.player = player;
+        desc.player = player;
 
-        ft_desc.detail = ((gSCManagerBattleState->pl_count + gSCManagerBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
+        desc.detail = ((gSCManagerBattleState->pl_count + gSCManagerBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
 
-        ft_desc.costume = gSCManagerBattleState->players[player].costume;
+        desc.costume = gSCManagerBattleState->players[player].costume;
 
-        ft_desc.handicap = gSCManagerBattleState->players[player].handicap;
+        desc.handicap = gSCManagerBattleState->players[player].handicap;
 
-        ft_desc.level = gSCManagerBattleState->players[player].level;
+        desc.level = gSCManagerBattleState->players[player].level;
 
-        ft_desc.stock_count = gSCManagerBattleState->stocks;
+        desc.stock_count = gSCManagerBattleState->stocks;
 
-        ft_desc.damage = 0;
+        desc.damage = 0;
 
-        ft_desc.pkind = gSCManagerBattleState->players[player].pkind;
+        desc.pkind = gSCManagerBattleState->players[player].pkind;
 
-        ft_desc.controller = &gSYControllerDevices[player];
+        desc.controller = &gSYControllerDevices[player];
 
-        ft_desc.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[player].fkind);
+        desc.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[player].fkind);
 
-        fighter_gobj = ftManagerMakeFighter(&ft_desc);
+        fighter_gobj = ftManagerMakeFighter(&desc);
 
         gSCManagerBattleState->players[player].color = player;
         gSCManagerBattleState->players[player].tag = player;

@@ -38,13 +38,13 @@ extern sb32 gmCollisionCheckFighterAttackShieldCollide(FTAttackColl *attack_coll
 extern sb32 gmCollisionCheckWeaponAttackFighterAttackCollide(WPAttackColl *wp_attack_coll, s32 attack_id, FTAttackColl *ft_attack_coll);
 extern sb32 gmCollisionCheckWeaponAttackFighterDamageCollide(WPAttackColl *attack_coll, s32 attack_id, FTDamageColl *damage_coll);
 extern sb32 gmCollisionCheckWeaponAttackShieldCollide(WPAttackColl *attack_coll, s32 attack_id, GObj *fighter_gobj, DObj *dobj, f32 *p_angle, Vec3f *vec);
-extern sb32 gmCollisionCheckWeaponAttackSpecialCollide(WPAttackColl *attack_coll, s32 attack_id, FTStruct *fp, FTSpecialColl *spc_coll);
+extern sb32 gmCollisionCheckWeaponAttackSpecialCollide(WPAttackColl *attack_coll, s32 attack_id, FTStruct *fp, FTSpecialColl *special_coll);
 extern sb32 gmCollisionCheckWeaponAttacksCollide(WPAttackColl *attack_coll1, s32 atk1_id, WPAttackColl *attack_coll2, s32 atk2_id);
 extern sb32 gmCollisionCheckWeaponAttackItemAttackCollide(WPAttackColl *wp_attack_coll, s32 wp_attack_id, ITAttackColl *it_attack_coll, s32 it_attack_id);
 extern sb32 gmCollisionCheckItemAttackFighterAttackCollide(ITAttackColl *it_attack_coll, s32 attack_id, FTAttackColl *ft_attack_coll);
 extern sb32 gmCollisionCheckItemAttackFighterDamageCollide(ITAttackColl *attack_coll, s32 attack_id, FTDamageColl *damage_coll);
 extern sb32 gmCollisionCheckItemAttackShieldCollide(ITAttackColl *attack_coll, s32 attack_id, GObj *fighter_gobj, DObj *dobj, f32 *p_angle, Vec3f *vec);
-extern sb32 gmCollisionCheckItemAttackSpecialCollide(ITAttackColl *attack_coll, s32 attack_id, FTStruct *fp, FTSpecialColl *spc_coll);
+extern sb32 gmCollisionCheckItemAttackSpecialCollide(ITAttackColl *attack_coll, s32 attack_id, FTStruct *fp, FTSpecialColl *special_coll);
 extern sb32 gmCollisionCheckItemAttacksCollide(ITAttackColl *attack_coll1, s32 atk1_id, ITAttackColl *attack_coll2, s32 atk2_id);
 extern sb32 gmCollisionCheckItemAttackDamageCollide(ITAttackColl *attack_coll, s32 attack_id, ITDamageColl *damage_coll, GObj *item_gobj);
 extern sb32 gmCollisionCheckWeaponAttackItemDamageCollide(WPAttackColl *attack_coll, s32 attack_id, ITDamageColl *damage_coll, GObj *item_gobj);

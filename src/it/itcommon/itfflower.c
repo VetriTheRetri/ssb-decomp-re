@@ -181,7 +181,7 @@ sb32 itFFlowerFallProcMap(GObj *item_gobj)
 void itFFlowerWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITFFlowerStatusDescs, nITFFlowerStatusWait);
+    itMainSetStatus(item_gobj, dITFFlowerStatusDescs, nITFFlowerStatusWait);
 }
 
 // 0x80175BE4
@@ -192,13 +192,13 @@ void itFFlowerFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITFFlowerStatusDescs, nITFFlowerStatusFall);
+    itMainSetStatus(item_gobj, dITFFlowerStatusDescs, nITFFlowerStatusFall);
 }
 
 // 0x80175C28
 void itFFlowerHoldSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITFFlowerStatusDescs, nITFFlowerStatusHold);
+    itMainSetStatus(item_gobj, dITFFlowerStatusDescs, nITFFlowerStatusHold);
 }
 
 // 0x80175C50
@@ -228,7 +228,7 @@ sb32 itFFlowerCommonProcHit(GObj *item_gobj)
 // 0x80175CC4
 void itFFlowerThrownSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITFFlowerStatusDescs, nITFFlowerStatusThrown);
+    itMainSetStatus(item_gobj, dITFFlowerStatusDescs, nITFFlowerStatusThrown);
 }
 
 // 0x80175CEC
@@ -246,7 +246,7 @@ sb32 itFFlowerDroppedProcMap(GObj *item_gobj)
 // 0x80175D38
 void itFFlowerDroppedSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITFFlowerStatusDescs, nITFFlowerStatusDropped);
+    itMainSetStatus(item_gobj, dITFFlowerStatusDescs, nITFFlowerStatusDropped);
 }
 
 // 0x80175D60

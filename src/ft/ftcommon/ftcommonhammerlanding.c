@@ -25,7 +25,7 @@ void ftCommonHammerLandingSetStatus(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterGround(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusHammerLanding, ftHammerGetAnimFrame(fighter_gobj), 1.0F, ftHammerGetStatUpdateFlags(fighter_gobj));
+    ftMainSetStatus(fighter_gobj, nFTCommonStatusHammerLanding, ftHammerGetAnimFrame(fighter_gobj), 1.0F, ftHammerGetStatUpdateFlags(fighter_gobj));
     ftHammerSetColAnim(fighter_gobj);
 
     fp->status_vars.common.hammer.landing_anim_frame = 0.0F;

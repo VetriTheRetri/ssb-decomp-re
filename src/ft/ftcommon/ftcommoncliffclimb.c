@@ -67,7 +67,7 @@ void ftCommonCliffQuickOrSlowSetStatus(GObj *fighter_gobj, s32 status_input)
     }
     else status_id = nFTCommonStatusCliffSlow, status_queue = nFTCommonCliffKindClimbSlow;
 
-    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
 
     fp->status_vars.common.cliffmotion.status_id = status_input + status_queue;
@@ -130,7 +130,7 @@ void ftCommonCliffClimbQuick1SetStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCliffClimbQuick1, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTCommonStatusCliffClimbQuick1, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
     fp->is_cliff_hold = TRUE;
 
@@ -142,7 +142,7 @@ void ftCommonCliffClimbSlow1SetStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCliffClimbSlow1, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTCommonStatusCliffClimbSlow1, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
     fp->is_cliff_hold = TRUE;
 
@@ -274,7 +274,7 @@ void ftCommonCliffCommon2InitStatusVars(GObj *fighter_gobj)
 void ftCommonCliffClimbQuick2SetStatus(GObj *fighter_gobj)
 {
     ftCommonCliffCommon2UpdateCollData(fighter_gobj);
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCliffClimbQuick2, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTCommonStatusCliffClimbQuick2, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftCommonCliffCommon2InitStatusVars(fighter_gobj);
 }
 
@@ -282,6 +282,6 @@ void ftCommonCliffClimbQuick2SetStatus(GObj *fighter_gobj)
 void ftCommonCliffClimbSlow2SetStatus(GObj *fighter_gobj)
 {
     ftCommonCliffCommon2UpdateCollData(fighter_gobj);
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCliffClimbSlow2, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTCommonStatusCliffClimbSlow2, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftCommonCliffCommon2InitStatusVars(fighter_gobj);
 }

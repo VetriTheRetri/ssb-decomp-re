@@ -156,7 +156,7 @@ sb32 itBatFallProcMap(GObj *item_gobj)
 void itBatWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITBatStatusDescs, nITBatStatusWait);
+    itMainSetStatus(item_gobj, dITBatStatusDescs, nITBatStatusWait);
 }
 
 // 0x80174EF8
@@ -167,7 +167,7 @@ void itBatFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITBatStatusDescs, nITBatStatusFall);
+    itMainSetStatus(item_gobj, dITBatStatusDescs, nITBatStatusFall);
 }
 
 // 0x80174F3C
@@ -175,7 +175,7 @@ void itBatHoldSetStatus(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->rotate.vec.f.y = F_CST_DTOR32(0.0F);
 
-    itMainSetItemStatus(item_gobj, dITBatStatusDescs, nITBatStatusHold);
+    itMainSetStatus(item_gobj, dITBatStatusDescs, nITBatStatusHold);
 }
 
 // 0x80174F70
@@ -208,7 +208,7 @@ sb32 itBatThrownProcHit(GObj *item_gobj)
 // 0x80175000
 void itBatThrownSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITBatStatusDescs, nITBatStatusThrown);
+    itMainSetStatus(item_gobj, dITBatStatusDescs, nITBatStatusThrown);
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F);
 }
@@ -222,7 +222,7 @@ sb32 itBatDroppedProcMap(GObj *item_gobj)
 // 0x80175074
 void itBatDroppedSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITBatStatusDescs, nITBatStatusDropped);
+    itMainSetStatus(item_gobj, dITBatStatusDescs, nITBatStatusDropped);
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F);
 }

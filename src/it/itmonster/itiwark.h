@@ -7,7 +7,7 @@
 
 extern void itIwarkAttackUpdateRock(GObj *iwark_gobj);
 extern sb32 itIwarkAttackProcUpdate(GObj *item_gobj);
-extern void itIwarkAttackInitItemVars(GObj *item_gobj);
+extern void itIwarkAttackInitVars(GObj *item_gobj);
 extern void itIwarkAttackSetStatus(GObj *item_gobj);
 extern sb32 itIwarkFlyProcUpdate(GObj *item_gobj);
 extern void itIwarkFlySetStatus(GObj *item_gobj);

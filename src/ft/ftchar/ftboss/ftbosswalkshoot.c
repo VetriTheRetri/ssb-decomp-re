@@ -15,5 +15,5 @@ void ftBossWalkShootProcUpdate(GObj *fighter_gobj)
 // 0x80159AC4
 void ftBossWalkShootSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTBossStatusWalkShoot, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTBossStatusWalkShoot, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 }

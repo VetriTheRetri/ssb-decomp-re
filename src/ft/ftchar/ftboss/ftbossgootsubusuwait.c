@@ -63,7 +63,7 @@ void ftBossGootsubusuWaitSetStatus(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
 
-    ftMainSetFighterStatus(fighter_gobj, nFTBossStatusGootsubusuWait, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTBossStatusGootsubusuWait, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
     fp->status_vars.boss.gootsubu.wait_timer = mtTrigGetRandomIntRange(60) + 60;
 

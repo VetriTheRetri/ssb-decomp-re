@@ -238,21 +238,21 @@ void mvEndingMakeRoomTissues(void)
 void mvEndingMakeFighter(s32 fkind)
 {
     GObj *fighter_gobj;
-    FTDesc ft_desc = dFTManagerDefaultFighterDesc;
+    FTDesc desc = dFTManagerDefaultFighterDesc;
 
-    ft_desc.fkind = fkind;
+    desc.fkind = fkind;
 
-    ft_desc.pos.x = -1077.804F;
-    ft_desc.pos.y = 4038.864F;
+    desc.pos.x = -1077.804F;
+    desc.pos.y = 4038.864F;
 
-    ft_desc.costume = sMVEndingFighterDemoDesc.costume;
-    ft_desc.shade = sMVEndingFighterDemoDesc.shade;
+    desc.costume = sMVEndingFighterDemoDesc.costume;
+    desc.shade = sMVEndingFighterDemoDesc.shade;
 
-    ft_desc.figatree_heap = sMVEndingFigatreeHeap;
+    desc.figatree_heap = sMVEndingFigatreeHeap;
 
-    ft_desc.pos.z = -3688.5298F;
+    desc.pos.z = -3688.5298F;
 
-    sMVEndingFighterGObj = fighter_gobj = ftManagerMakeFighter(&ft_desc);
+    sMVEndingFighterGObj = fighter_gobj = ftManagerMakeFighter(&desc);
 
     scSubsysFighterSetStatus(fighter_gobj, nFTDemoStatusFigureDropped);
 }

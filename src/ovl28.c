@@ -945,7 +945,7 @@ void mnTrainingRotateFighter(GObj *fighter_gobj)
 void mnTrainingSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 fkind, s32 costume_id)
 {
 	f32 initial_y_rotation;
-	FTDesc spawn_info = dFTManagerDefaultFighterDesc;
+	FTDesc desc = dFTManagerDefaultFighterDesc;
 
 	if (fkind != nFTKindNull)
 	{
@@ -959,12 +959,12 @@ void mnTrainingSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 fkind, s32 cost
 			initial_y_rotation = 0.0F;
 		}
 
-		spawn_info.fkind = fkind;
-		gMNTrainingPanels[port_id].costume_id = spawn_info.costume = costume_id;
-		spawn_info.shade = 0;
-		spawn_info.figatree_heap = gMNTrainingPanels[port_id].figatree_heap;
-		spawn_info.player = port_id;
-		fighter_gobj = ftManagerMakeFighter(&spawn_info);
+		desc.fkind = fkind;
+		gMNTrainingPanels[port_id].costume_id = desc.costume = costume_id;
+		desc.shade = 0;
+		desc.figatree_heap = gMNTrainingPanels[port_id].figatree_heap;
+		desc.player = port_id;
+		fighter_gobj = ftManagerMakeFighter(&desc);
 
 		gMNTrainingPanels[port_id].player = fighter_gobj;
 

@@ -1000,7 +1000,7 @@ void sc1PBonusStageFuncStart(void)
 	s32 unused[3];
 	s32 player;
 	GObj* fighter_gobj;
-	FTDesc ft_desc;
+	FTDesc desc;
 	SYColorRGBA color;
 
 	sc1PBonusStageInitVars();
@@ -1023,7 +1023,7 @@ void sc1PBonusStageFuncStart(void)
 	gmRumbleMakeActor();
 	ftPublicityMakeActor();
 
-	for (player = 0, ft_desc = dFTManagerDefaultFighterDesc; player < ARRAY_COUNT(gSCManagerBattleState->players); player++)
+	for (player = 0, desc = dFTManagerDefaultFighterDesc; player < ARRAY_COUNT(gSCManagerBattleState->players); player++)
 	{
 		if (gSCManagerBattleState->players[player].pkind == nFTPlayerKindNot)
 		{
@@ -1031,22 +1031,22 @@ void sc1PBonusStageFuncStart(void)
 		}
 		ftManagerSetupFilesAllKind(gSCManagerBattleState->players[player].fkind);
 
-		ft_desc.fkind = gSCManagerBattleState->players[player].fkind;
+		desc.fkind = gSCManagerBattleState->players[player].fkind;
 
-		sc1PBonusStageGetPlayerStartPosition(&ft_desc.pos);
+		sc1PBonusStageGetPlayerStartPosition(&desc.pos);
 
-		ft_desc.lr = (ft_desc.pos.x >= 0.0F) ? -1 : +1;
+		desc.lr = (desc.pos.x >= 0.0F) ? -1 : +1;
 
-		ft_desc.team = 0;
-		ft_desc.player = player;
-		ft_desc.detail = nFTPartsDetailHigh;
-		ft_desc.costume = gSCManagerBattleState->players[player].costume;
-		ft_desc.pkind = gSCManagerBattleState->players[player].pkind;
-		ft_desc.controller = &gSYControllerDevices[player];
-		ft_desc.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[player].fkind);
-		ft_desc.is_skip_entry = TRUE;
+		desc.team = 0;
+		desc.player = player;
+		desc.detail = nFTPartsDetailHigh;
+		desc.costume = gSCManagerBattleState->players[player].costume;
+		desc.pkind = gSCManagerBattleState->players[player].pkind;
+		desc.controller = &gSYControllerDevices[player];
+		desc.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[player].fkind);
+		desc.is_skip_entry = TRUE;
 
-		fighter_gobj = ftManagerMakeFighter(&ft_desc);
+		fighter_gobj = ftManagerMakeFighter(&desc);
 
 		ftParamInitPlayerBattleStats(player, fighter_gobj);
 

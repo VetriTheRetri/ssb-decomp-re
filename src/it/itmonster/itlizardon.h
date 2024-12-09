@@ -13,7 +13,7 @@ extern sb32 itLizardonFallProcMap(GObj *item_gobj);
 extern void itLizardonFallSetStatus(GObj *item_gobj);
 extern sb32 itLizardonAttackProcUpdate(GObj *item_gobj);
 extern sb32 itLizardonAttackProcMap(GObj *item_gobj);
-extern void itLizardonAttackInitItemVars(GObj *item_gobj);
+extern void itLizardonAttackInitVars(GObj *item_gobj);
 extern void itLizardonAttackSetStatus(GObj *item_gobj);
 extern sb32 itLizardonCommonProcUpdate(GObj *item_gobj);
 extern sb32 itLizardonCommonProcMap(GObj *item_gobj);

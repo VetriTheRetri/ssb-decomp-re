@@ -109,7 +109,7 @@ enum itPakkunStatus
 // 0x8017CF20
 void itPakkunWaitSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITPakkunStatusDescs, nITPakkunStatusWait);
+    itMainSetStatus(item_gobj, dITPakkunStatusDescs, nITPakkunStatusWait);
 
     itGetStruct(item_gobj)->proc_dead = NULL;
 
@@ -120,13 +120,13 @@ void itPakkunWaitSetStatus(GObj *item_gobj)
 // 0x8017CF58
 void itPakkunAppearSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITPakkunStatusDescs, nITPakkunStatusAppear);
+    itMainSetStatus(item_gobj, dITPakkunStatusDescs, nITPakkunStatusAppear);
 }
 
 // 0x8017CF80
 void itPakkunDamagedSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITPakkunStatusDescs, nITPakkunStatusDamaged);
+    itMainSetStatus(item_gobj, dITPakkunStatusDescs, nITPakkunStatusDamaged);
 
     itGetStruct(item_gobj)->proc_dead = itPakkunDamagedProcDead;
 }
@@ -208,7 +208,7 @@ sb32 itPakkunWaitProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017D190
-void itPakkunWaitInitItemVars(GObj *item_gobj)
+void itPakkunWaitInitVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
@@ -257,7 +257,7 @@ sb32 itPakkunAppearProcUpdate(GObj *item_gobj)
     {
         DObjGetStruct(item_gobj)->anim_wait = AOBJ_ANIM_NULL;
 
-        itPakkunWaitInitItemVars(item_gobj);
+        itPakkunWaitInitVars(item_gobj);
 
         ip->item_vars.pakkun.is_wait_fighter = FALSE;
     }
@@ -265,7 +265,7 @@ sb32 itPakkunAppearProcUpdate(GObj *item_gobj)
 
     if (dobj->anim_wait == AOBJ_ANIM_NULL)
     {
-        itPakkunWaitInitItemVars(item_gobj);
+        itPakkunWaitInitVars(item_gobj);
     }
     else dobj->translate.vec.f.y += ip->item_vars.pakkun.pos.y;
     

@@ -17,7 +17,7 @@ void ftBossDeadLeftSetStatus(GObj *fighter_gobj)
 {
     FTStruct *fp;
 
-    ftMainSetFighterStatus(fighter_gobj, nFTBossStatusDeadLeft, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTBossStatusDeadLeft, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
     fp = ftGetStruct(fighter_gobj);
     

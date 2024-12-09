@@ -100,7 +100,7 @@ sb32 itMewFlyProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017EC84
-void itMewFlyInitItemVars(GObj *item_gobj)
+void itMewFlyInitVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
@@ -128,8 +128,8 @@ void itMewFlyInitItemVars(GObj *item_gobj)
 // 0x8017ED20
 void itMewFlySetStatus(GObj *item_gobj)
 {
-    itMewFlyInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITMewStatusDescs, nITMewStatusFly);
+    itMewFlyInitVars(item_gobj);
+    itMainSetStatus(item_gobj, dITMewStatusDescs, nITMewStatusFly);
 }
 
 // 0x8017ED54

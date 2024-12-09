@@ -6,7 +6,7 @@
 #include <it/itdef.h>
 
 extern sb32 itMewFlyProcUpdate(GObj *item_gobj);
-extern void itMewFlyInitItemVars(GObj *item_gobj);
+extern void itMewFlyInitVars(GObj *item_gobj);
 extern void itMewFlySetStatus(GObj *item_gobj);
 extern sb32 itMewCommonProcUpdate(GObj *item_gobj);
 extern sb32 itMewCommonProcMap(GObj *item_gobj);

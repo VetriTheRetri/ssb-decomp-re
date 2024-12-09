@@ -47,7 +47,7 @@ void ftCommonDownWaitSetStatus(GObj *fighter_gobj)
     }
     else status_id = nFTCommonStatusDownWaitU;
 
-    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTCOMMON_DOWNBOUNCE_STATUS_FLAGS);
+    ftMainSetStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTCOMMON_DOWNBOUNCE_STATUS_FLAGS);
 
     fp->status_vars.common.downwait.stand_wait = FTCOMMON_DOWNWAIT_STAND_WAIT;
 
@@ -118,7 +118,7 @@ void ftCommonDownBounceSetStatus(GObj *fighter_gobj)
     }
     else status_id = nFTCommonStatusDownBounceU;
 
-    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_PLAYERTAG);
+    ftMainSetStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_PLAYERTAG);
     ftCommonDownBounceUpdateEffects(fighter_gobj);
 
     fp->status_vars.common.downbounce.attack_buffer = 0;

@@ -136,7 +136,7 @@ sb32 itNyarsAttackProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017EFA0
-void itNyarsAttackInitItemVars(GObj *item_gobj)
+void itNyarsAttackInitVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
@@ -150,8 +150,8 @@ void itNyarsAttackInitItemVars(GObj *item_gobj)
 // 0x8017EFC4
 void itNyarsAttackSetStatus(GObj *item_gobj)
 {
-    itNyarsAttackInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITNyarsStatusDescs, nITNyarsStatusAttack);
+    itNyarsAttackInitVars(item_gobj);
+    itMainSetStatus(item_gobj, dITNyarsStatusDescs, nITNyarsStatusAttack);
 }
 
 // 0x8017EFF8

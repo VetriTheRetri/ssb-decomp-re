@@ -144,7 +144,7 @@ void ftCommonDamageSetStatus(GObj *fighter_gobj)
 
     if (fp->hitlag_tics <= 0)
     {
-        ftMainSetFighterStatus(fighter_gobj, fp->status_vars.common.damage.status_id, 0.0F, 1.0F, (FTSTATUS_PRESERVE_DAMAGEPLAYER | FTSTATUS_PRESERVE_SHUFFLETIME));
+        ftMainSetStatus(fighter_gobj, fp->status_vars.common.damage.status_id, 0.0F, 1.0F, (FTSTATUS_PRESERVE_DAMAGEPLAYER | FTSTATUS_PRESERVE_SHUFFLETIME));
         ftMainPlayAnimNoEffect(fighter_gobj);
 
         if (fp->status_id == nFTCommonStatusDamageFlyRoll)
@@ -430,7 +430,7 @@ sb32 ftCommonDamageCheckCatchResist(FTStruct *fp)
     {
         return TRUE;
     }
-    if ((fp->hitlag_tics > 0) && (fp->is_knockback_paused) && (fp->damage_knockback < (fp->damage_stack + 30.0F)))
+    if ((fp->hitlag_tics > 0) && (fp->is_knockback_paused) && (fp->damage_knockback < (fp->damage_knockback_stack + 30.0F)))
     {
         return TRUE;
     }
@@ -449,7 +449,7 @@ void ftCommonDamageUpdateCatchResist(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->damage_knockback == 0.0F) || ((fp->hitlag_tics > 0) && (fp->is_knockback_paused) && (fp->damage_knockback < (fp->damage_stack + 30.0F))))
+    if ((fp->damage_knockback == 0.0F) || ((fp->hitlag_tics > 0) && (fp->is_knockback_paused) && (fp->damage_knockback < (fp->damage_knockback_stack + 30.0F))))
     {
         ftCommonDamageSetDamageColAnim(fighter_gobj);
     }
@@ -599,7 +599,7 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
     {
         ftKirbySpecialNDamageCheckLoseCopy(this_gobj);
     }
-    ftMainSetFighterStatus(this_gobj, status_id_set, 0.0F, 1.0F, FTSTATUS_PRESERVE_DAMAGEPLAYER);
+    ftMainSetStatus(this_gobj, status_id_set, 0.0F, 1.0F, FTSTATUS_PRESERVE_DAMAGEPLAYER);
     ftMainPlayAnimNoEffect(this_gobj);
 
     if (knockback >= 65000.0F)
@@ -619,7 +619,7 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
 
     this_fp->tap_stick_x = this_fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
 
-    this_fp->damage_stack = knockback;
+    this_fp->damage_knockback_stack = knockback;
 
     if ((damage_level == 3) || (is_rumble != FALSE))
     {
@@ -655,7 +655,7 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
     {
         FTStruct *attacker_fp = ftGetStruct(attacker_gobj);
 
-        attacker_fp->attack_attack_count++;
+        attacker_fp->attack_count++;
         attacker_fp->attack_knockback = knockback;
     }
 }
@@ -832,7 +832,7 @@ void ftCommonDamageUpdateMain(GObj *fighter_gobj)
             return;
         }
     }
-    if ((this_fp->damage_element != nGMHitElementSleep) && ((this_fp->damage_knockback == 0.0F) || ((this_fp->hitlag_tics > 0) && (this_fp->is_knockback_paused) && (this_fp->damage_knockback < (this_fp->damage_stack + 30.0F)))))
+    if ((this_fp->damage_element != nGMHitElementSleep) && ((this_fp->damage_knockback == 0.0F) || ((this_fp->hitlag_tics > 0) && (this_fp->is_knockback_paused) && (this_fp->damage_knockback < (this_fp->damage_knockback_stack + 30.0F)))))
     {
         ftCommonDamageSetDamageColAnim(fighter_gobj);
     }

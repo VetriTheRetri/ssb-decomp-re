@@ -73,7 +73,7 @@ void ftMarioSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 
     mpCommonSetFighterGround(fp);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTMarioStatusSpecialN, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_COLANIM);
+    ftMainSetStatus(fighter_gobj, nFTMarioStatusSpecialN, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_COLANIM);
 
     fp->proc_accessory = ftMarioSpecialNProcAccessory;
 }
@@ -84,7 +84,7 @@ void ftMarioSpecialNSwitchStatusAir(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTMarioStatusSpecialAirN, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_COLANIM);
+    ftMainSetStatus(fighter_gobj, nFTMarioStatusSpecialAirN, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_COLANIM);
     ftPhysicsClampAirVelXMax(fp);
 
     fp->proc_accessory = ftMarioSpecialNProcAccessory;
@@ -102,7 +102,7 @@ void ftMarioSpecialNInitStatusVars(GObj *fighter_gobj)
 // 0x80156014
 void ftMarioSpecialNSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTMarioStatusSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTMarioStatusSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
     ftMarioSpecialNInitStatusVars(fighter_gobj);
 }
@@ -110,7 +110,7 @@ void ftMarioSpecialNSetStatus(GObj *fighter_gobj)
 // 0x80156054
 void ftMarioSpecialAirNSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTMarioStatusSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_FASTFALL);
+    ftMainSetStatus(fighter_gobj, nFTMarioStatusSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_FASTFALL);
     ftMainPlayAnimNoEffect(fighter_gobj);
     ftMarioSpecialNInitStatusVars(fighter_gobj);
 }

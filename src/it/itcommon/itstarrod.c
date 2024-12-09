@@ -184,7 +184,7 @@ sb32 itStarRodFallProcMap(GObj *item_gobj)
 void itStarRodWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITStarRodStatusDescs, nITStarRodStatusWait);
+    itMainSetStatus(item_gobj, dITStarRodStatusDescs, nITStarRodStatusWait);
 }
 
 // 0x80177F4C
@@ -195,7 +195,7 @@ void itStarRodFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITStarRodStatusDescs, nITStarRodStatusFall);
+    itMainSetStatus(item_gobj, dITStarRodStatusDescs, nITStarRodStatusFall);
 }
 
 // 0x80177F90
@@ -203,7 +203,7 @@ void itStarRodHoldSetStatus(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->rotate.vec.f.y = F_CST_DTOR32(0.0F);
 
-    itMainSetItemStatus(item_gobj, dITStarRodStatusDescs, nITStarRodStatusHold);
+    itMainSetStatus(item_gobj, dITStarRodStatusDescs, nITStarRodStatusHold);
 }
 
 // 0x80177FC4
@@ -238,7 +238,7 @@ sb32 itStarRodThrownProcHit(GObj *item_gobj)
 // 0x80178058
 void itStarRodThrownSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITStarRodStatusDescs, nITStarRodStatusThrown);
+    itMainSetStatus(item_gobj, dITStarRodStatusDescs, nITStarRodStatusThrown);
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F);
 }
 
@@ -257,7 +257,7 @@ sb32 itStarRodDroppedProcMap(GObj *item_gobj)
 // 0x801780F0
 void itStarRodDroppedSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITStarRodStatusDescs, nITStarRodStatusDropped);
+    itMainSetStatus(item_gobj, dITStarRodStatusDescs, nITStarRodStatusDropped);
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F);
 }
 

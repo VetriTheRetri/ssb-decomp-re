@@ -118,7 +118,7 @@ void ftCommonCaptureKirbyProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
     this_fp->lr = -capture_fp->lr;
 
     mpCommonSetFighterAir(this_fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCaptureKirby, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTCommonStatusCaptureKirby, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
     ftParamMakeRumble(this_fp, 7, 0);
 
@@ -243,7 +243,7 @@ void ftCommonCaptureWaitKirbySetStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCaptureWaitKirby, 0.0F, 1.0F, (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_MODELPART));
+    ftMainSetStatus(fighter_gobj, nFTCommonStatusCaptureWaitKirby, 0.0F, 1.0F, (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_MODELPART));
     ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL);
 
     fp->is_invisible = TRUE;
@@ -255,7 +255,7 @@ void ftCommonCaptureWaitKirbySetStatus(GObj *fighter_gobj)
 // 0x8014BE24
 void ftCommonThrownKirbyEscape(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusFall, 0.0F, 1.0F, FTSTATUS_PRESERVE_DAMAGEPLAYER);
+    ftMainSetStatus(fighter_gobj, nFTCommonStatusFall, 0.0F, 1.0F, FTSTATUS_PRESERVE_DAMAGEPLAYER);
 }
 
 // 0x8014BE54
@@ -263,7 +263,7 @@ void ftCommonThrownCommonStarProcHit(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusFall, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTCommonStatusFall, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftPhysicsClampAirVelXMax(fp);
 }
 
@@ -490,7 +490,7 @@ void ftCommonThrownKirbyStarSetStatus(GObj *fighter_gobj)
     }
     fp->proc_status = ftCommonThrownKirbyStarProcStatus;
 
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusThrownKirbyStar, 0.0F, 1.0F, FTSTATUS_PRESERVE_THROWPOINTER);
+    ftMainSetStatus(fighter_gobj, nFTCommonStatusThrownKirbyStar, 0.0F, 1.0F, FTSTATUS_PRESERVE_THROWPOINTER);
     ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL);
 
     fp->proc_hit = ftCommonThrownCommonStarProcHit;
@@ -545,7 +545,7 @@ void ftCommonThrownCopyStarSetStatus(GObj *fighter_gobj)
     }
     fp->proc_status = ftCommonThrownCopyStarProcStatus;
 
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusThrownCopyStar, 0.0F, 1.0F, FTSTATUS_PRESERVE_THROWPOINTER);
+    ftMainSetStatus(fighter_gobj, nFTCommonStatusThrownCopyStar, 0.0F, 1.0F, FTSTATUS_PRESERVE_THROWPOINTER);
     ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL);
 
     fp->proc_hit = ftCommonThrownCommonStarProcHit;

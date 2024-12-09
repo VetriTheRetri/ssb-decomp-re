@@ -9,7 +9,7 @@ extern sb32 itDogasDisappearProcUpdate(GObj *item_gobj);
 extern void itDogasDisappearSetStatus(GObj *item_gobj);
 extern void itDogasAttackUpdateSmog(GObj *item_gobj);
 extern sb32 itDogasAttackProcUpdate(GObj *item_gobj);
-extern void itDogasAttackInitItemVars(GObj *item_gobj);
+extern void itDogasAttackInitVars(GObj *item_gobj);
 extern void itDogasAttackSetStatus(GObj *item_gobj);
 extern sb32 itDogasCommonProcUpdate(GObj *item_gobj);
 extern sb32 itDogasCommonProcMap(GObj *item_gobj);

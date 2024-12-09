@@ -7,9 +7,9 @@
 
 extern sb32 wpYoshiEggThrowProcDead(GObj *weapon_gobj);
 extern sb32 wpYoshiEggExplodeProcUpdate(GObj *weapon_gobj);
-extern void wpYoshiEggHitInitWeaponVars(GObj *weapon_gobj);
-extern void wpYoshiEggExpireInitWeaponVars(GObj *weapon_gobj);
-extern void wpYoshiEggThrowInitWeaponVars(GObj *weapon_gobj);
+extern void wpYoshiEggHitInitVars(GObj *weapon_gobj);
+extern void wpYoshiEggExpireInitVars(GObj *weapon_gobj);
+extern void wpYoshiEggThrowInitVars(GObj *weapon_gobj);
 extern sb32 wpYoshiEggThrowProcUpdate(GObj *weapon_gobj);
 extern sb32 wpYoshiEggThrowProcMap(GObj *weapon_gobj);
 extern sb32 wpYoshiEggThrowProcHit(GObj *weapon_gobj);

@@ -151,16 +151,16 @@ void func_ovl47_80131BF8()
 void mvOpeningStandoffMakeFighters(void)
 {
     GObj* fighter_gobj;
-    FTDesc ft_desc = dFTManagerDefaultFighterDesc;
+    FTDesc desc = dFTManagerDefaultFighterDesc;
 
-    ft_desc.fkind = nFTKindMario;
-    ft_desc.costume = ftParamGetCostumeCommonID(nFTKindMario, 0);
-    ft_desc.pos.x = 0.0F;
-    ft_desc.pos.y = 0.0F;
-    ft_desc.pos.z = 0.0F;
-    ft_desc.figatree_heap = sMVOpeningStandoffMarioFigatreeHeap;
+    desc.fkind = nFTKindMario;
+    desc.costume = ftParamGetCostumeCommonID(nFTKindMario, 0);
+    desc.pos.x = 0.0F;
+    desc.pos.y = 0.0F;
+    desc.pos.z = 0.0F;
+    desc.figatree_heap = sMVOpeningStandoffMarioFigatreeHeap;
 
-    fighter_gobj = ftManagerMakeFighter(&ft_desc);
+    fighter_gobj = ftManagerMakeFighter(&desc);
 
     scSubsysFighterSetStatus(fighter_gobj, 0x1000F);
 
@@ -168,14 +168,14 @@ void mvOpeningStandoffMakeFighters(void)
     DObjGetStruct(fighter_gobj)->scale.vec.f.y = 1.0F;
     DObjGetStruct(fighter_gobj)->scale.vec.f.z = 1.0F;
 
-    ft_desc.fkind = nFTKindKirby;
-    ft_desc.costume = ftParamGetCostumeCommonID(nFTKindKirby, 0);
-    ft_desc.pos.x = 0.0F;
-    ft_desc.pos.y = 0.0F;
-    ft_desc.pos.z = 0.0F;
-    ft_desc.figatree_heap = sMVOpeningStandoffKirbyFigatreeHeap;
+    desc.fkind = nFTKindKirby;
+    desc.costume = ftParamGetCostumeCommonID(nFTKindKirby, 0);
+    desc.pos.x = 0.0F;
+    desc.pos.y = 0.0F;
+    desc.pos.z = 0.0F;
+    desc.figatree_heap = sMVOpeningStandoffKirbyFigatreeHeap;
 
-    fighter_gobj = ftManagerMakeFighter(&ft_desc);
+    fighter_gobj = ftManagerMakeFighter(&desc);
 
     scSubsysFighterSetStatus(fighter_gobj, 0x1000F);
 

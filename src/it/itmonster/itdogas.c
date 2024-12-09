@@ -137,7 +137,7 @@ void itDogasDisappearSetStatus(GObj *item_gobj)
 
     ip->multi = ITDOGAS_DESPAWN_WAIT;
 
-    itMainSetItemStatus(item_gobj, dITDogasStatusDescs, itDogasStatusDisappear);
+    itMainSetStatus(item_gobj, dITDogasStatusDescs, itDogasStatusDisappear);
 }
 
 // 0x80182CDC
@@ -195,7 +195,7 @@ sb32 itDogasAttackProcUpdate(GObj *item_gobj)
 }
 
 // 0x80182E78
-void itDogasAttackInitItemVars(GObj *item_gobj)
+void itDogasAttackInitVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -218,8 +218,8 @@ void itDogasAttackInitItemVars(GObj *item_gobj)
 // 0x80182F0C
 void itDogasAttackSetStatus(GObj *item_gobj)
 {
-    itDogasAttackInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITDogasStatusDescs, itDogasStatusAttack);
+    itDogasAttackInitVars(item_gobj);
+    itMainSetStatus(item_gobj, dITDogasStatusDescs, itDogasStatusAttack);
 }
 
 // 0x80182F40

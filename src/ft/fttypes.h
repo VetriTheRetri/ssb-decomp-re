@@ -206,7 +206,7 @@ struct FTTexturePartStatus
 struct FTMotionFlags
 {
     s16 motion_id : 10;
-    u16 motion_attack_id : 6;
+    u16 attack_id : 6;
 };
 
 struct FTMotionScript
@@ -326,7 +326,7 @@ struct FTMotionEventSetThrow1
 
 struct FTMotionEventSetThrow2
 {
-	FTThrowHitDesc* fighter_throw;
+	FTThrowHitDesc* throw_desc;
 };
 
 struct FTMotionEventSetThrow
@@ -620,7 +620,7 @@ struct FTAttackColl
     ub32 is_hit_ground : 1;
     ub32 can_rebound : 1;
     ub32 is_scale_pos : 1;
-    u32 attack_id : 6;
+    u32 motion_attack_id : 6;
     u16 motion_count;
     u16 stat_count;
     Vec3f pos_curr;
@@ -792,7 +792,7 @@ struct FTComputer
     u16 target_find_wait;
     u16 wiggle_wait;                        // CPU player will wait this many frames before finding a new target?
     u16 target_damage_percent;              // ???
-    u16 attack_attack_count;                   // Number of times CPU player successfully dealt damage?
+    u16 attack_count;                       // Number of times CPU player successfully dealt damage?
     u16 appeal_attempt_frames;              // CPU player will attempt to taunt while this is not 0
     u16 stand_stop_wait;                    // CPU player will wait this many frames before breaking out of idle behavior
     GObj *target_gobj;                      // CPU player's target's GObj
@@ -1177,9 +1177,10 @@ struct FTStruct
     u8 throw_player;                    // Port of opponent that threw this fighter
     s32 throw_player_number;            // Player number of opponent that threw this fighter
 
-    u32 attack_id;                      // Also used in staling queue
-    u16 motion_count;                   // This is used to tell the game not to stale multihit attacks
-    GMStatFlags stat_flags;
+    u32 motion_attack_id;               // Used to group status_ids for the stale queue
+    u16 motion_count;                   // This is used to tell the game not to stale multihit attacks...
+                                        // ...if motion_attack_id and motion_count are equal to the previous queue entry
+    GMStatFlags stat_flags;             // Move statistics for determining what 1P Game bonus stats are awarded
     u16 stat_count;
 
     FTAttackColl attack_colls[4];
@@ -1200,20 +1201,20 @@ struct FTStruct
 
     s32 attack_damage;
     f32 attack_knockback;
-    u16 attack_attack_count;            // Number of times this fighter successfully dealt damage 
+    u16 attack_count;                   // Number of times this fighter successfully dealt damage 
     s32 attack_shield_push;             // Used to calculate shield/rebound pushback
     f32 attack_rebound;                 // Actually 2x staled damage?
     s32 attack_lr;
     s32 shield_damage;
     s32 shield_damage_total;            // shield_damage + hitbox damage + hitbox shield damage, does not persist?
-    s32 shield_lr;
+    s32 shield_lr;                      // Direction in which shield knockback is set to occur
     s32 shield_player;                  // Port of player hitting this fighter's shield
     s32 reflect_damage;
     s32 damage_lag;                     // Used to calculate hitlag?
     f32 damage_knockback;
     f32 knockback_resist_passive;       // Passive armor, always active (?)
     f32 knockback_resist_status;        // Resist this many units of knockback, effectively knockback-based armor
-    f32 damage_stack;                   // Knockback stacking?
+    f32 damage_knockback_stack;         // Knockback stacking?
     s32 damage_queue;                   // Used to calculate knockback?
     s32 damage_angle;
     s32 damage_element;
@@ -1222,7 +1223,7 @@ struct FTStruct
     s32 damage_joint_id;
     s32 damage_player_number;
     s32 damage_player;                  // Port index of damaging fighter
-    u16 damage_count;
+    u16 damage_count;                   // Number of times fighter has taken damage; initialized to 0 and incremented, but never used?
     s32 damage_kind;
     s32 damage_heal;                    // Percent damage to heal
     f32 damage_mul;
@@ -1240,18 +1241,18 @@ struct FTStruct
     GObj *catch_gobj;                   // GObj this fighter has caught
     GObj *capture_gobj;                 // GObj this fighter is captured by
 
-    FTThrowHitDesc *fighter_throw;      // Pointer to throw description
+    FTThrowHitDesc *throw_desc;         // Pointer to throw description
 
     GObj *item_gobj;
 
-    FTSpecialColl *spc_coll;
+    FTSpecialColl *special_coll;
 
     Vec3f entry_pos;
 
     f32 camera_zoom_frame;              // Maximum size of fighter's camera range?
     f32 camera_zoom_range;              // Multiplier of fighter's camera range?
 
-    FTMotionScript motion_script[2][2];
+    FTMotionScript motion_scripts[2][2];
 
     DObj *joints[FTPARTS_JOINT_NUM_MAX];
 
@@ -1261,17 +1262,17 @@ struct FTStruct
     FTData *data;
     FTAttributes *attr;
 
-    void **figatree;                // Main animation bank?
-    void **figatree_heap;           // Load animations into this?
+    void **figatree;                // Main animation
+    void **figatree_heap;           // Extern heap to load animations into
 
     void (*proc_update)(GObj*);
     void (*proc_accessory)(GObj*);
     void (*proc_interrupt)(GObj*);
     void (*proc_physics)(GObj*);
     void (*proc_map)(GObj*);
-    void (*proc_slope)(GObj*);   // Slope Contour update
+    void (*proc_slope)(GObj*);      // Slope Contour update
     void (*proc_damage)(GObj*);
-    void (*proc_trap)(GObj*);    // Used only by Yoshi Egg?
+    void (*proc_trap)(GObj*);       // Used only by Yoshi Egg?
     void (*proc_shield)(GObj*);
     void (*proc_hit)(GObj*);
     void (*proc_effect)(GObj*);
@@ -1289,20 +1290,21 @@ struct FTStruct
 
     GMColAnim colanim;
 
-    SYColorRGBA fog_color;      // Used only by Master Hand, when in the background on the -Z plane?
-    SYColorRGBA shade_color;    // Shade colors of character costume
+    SYColorRGBA fog_color;          // Used only by Master Hand, when in the background on the -Z plane?
+    SYColorRGBA shade_color;        // Shade colors of character costume
 
-    FTKey key;                  // Automatic input sequence struct
+    FTKey key;                      // Automatic input sequence struct
 
     struct FTAfterImageInfo
     {
         ub8 is_itemswing;
         s8 drawstatus;
-        u8 desc_index;
+        u8 desc_id;
         FTAfterImage desc[3];
 
     } afterimage;
 
+    // Variables independent of current status ID
     union FTPassiveVars
     {
         FTMarioPassiveVars      mario;
@@ -1320,6 +1322,7 @@ struct FTStruct
 
     s32 hammer_tics;
 
+    // Variables exclusive to current status ID or groups of status IDs
     union FTStatusVars
     {
         FTCommonStatusVars      common;

@@ -73,7 +73,7 @@ ITStatusDesc dITNessPKFireStatusDescs[/* */] =
 //                               //
 // // // // // // // // // // // //
 
-enum itPKFireStatus
+enum ITNessPKFireStatus
 {
     nITNessPKFireStatusWait,
     nITNessPKFireStatusFall,
@@ -218,7 +218,7 @@ void itNessPKFireWaitSetStatus(GObj *item_gobj)
     stat_flags = ip->attack_coll.stat_flags;
     stat_count = ip->attack_coll.stat_count;
 
-    itMainSetItemStatus(item_gobj, dITNessPKFireStatusDescs, nITNessPKFireStatusWait);
+    itMainSetStatus(item_gobj, dITNessPKFireStatusDescs, nITNessPKFireStatusWait);
 
     ip->attack_coll.stat_flags = stat_flags;
     ip->attack_coll.stat_count = stat_count;
@@ -238,7 +238,7 @@ void itNessPKFireFallSetStatus(GObj *item_gobj)
     stat_flags = ip->attack_coll.stat_flags;
     stat_count = ip->attack_coll.stat_count;
 
-    itMainSetItemStatus(item_gobj, dITNessPKFireStatusDescs, nITNessPKFireStatusFall);
+    itMainSetStatus(item_gobj, dITNessPKFireStatusDescs, nITNessPKFireStatusFall);
 
     ip->attack_coll.stat_flags = stat_flags;
     ip->attack_coll.stat_count = stat_count;
@@ -274,7 +274,7 @@ GObj* itNessPKFireMakeItem(GObj *weapon_gobj, Vec3f *pos, Vec3f *vel)
     ip->attack_coll.can_rehit_shield = TRUE;
 
     ip->attack_coll.stale = wp->attack_coll.stale;
-    ip->attack_coll.attack_id = wp->attack_coll.attack_id;
+    ip->attack_coll.motion_attack_id = wp->attack_coll.motion_attack_id;
     ip->attack_coll.motion_count = wp->attack_coll.motion_count;
     ip->attack_coll.stat_flags = wp->attack_coll.stat_flags;
     ip->attack_coll.stat_count = wp->attack_coll.stat_count;

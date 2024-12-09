@@ -10,7 +10,7 @@ extern sb32 itTosakintoAppearProcMap(GObj *item_gobj);
 extern void itTosakintoAppearSetStatus(GObj *item_gobj);
 extern sb32 itTosakintoBounceProcUpdate(GObj *item_gobj);
 extern sb32 itTosakintoBounceProcMap(GObj *item_gobj);
-extern void itTosakintoBounceInitItemVars(GObj *item_gobj);
+extern void itTosakintoBounceInitVars(GObj *item_gobj);
 extern void itTosakintoBounceSetStatus(GObj *item_gobj);
 extern sb32 itTosakintoCommonProcUpdate(GObj *item_gobj);
 extern sb32 itTosakintoCommonProcMap(GObj *item_gobj);

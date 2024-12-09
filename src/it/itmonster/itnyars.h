@@ -6,7 +6,7 @@
 #include <it/itdef.h>
 
 extern sb32 itNyarsAttackProcUpdate(GObj *item_gobj);
-extern void itNyarsAttackInitItemVars(GObj *item_gobj);
+extern void itNyarsAttackInitVars(GObj *item_gobj);
 extern void itNyarsAttackSetStatus(GObj *item_gobj);
 extern sb32 itNyarsCommonProcUpdate(GObj *item_gobj);
 extern sb32 itNyarsCommonProcMap(GObj *item_gobj);

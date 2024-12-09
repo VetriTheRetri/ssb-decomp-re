@@ -187,14 +187,14 @@ sb32 itKamexFallProcMap(GObj *item_gobj)
 
     if (ip->coll_data.coll_mask_curr & MPCOLL_FLAG_GROUND)
     {
-        itKamexAttackInitItemVars(item_gobj, TRUE);
+        itKamexAttackInitVars(item_gobj, TRUE);
         itKamexAttackSetStatus(item_gobj);
     }
     return FALSE;
 }
 
 // 0x80180860
-void itKamexFallInitItemVars(GObj *item_gobj)
+void itKamexFallInitVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
@@ -210,8 +210,8 @@ void itKamexFallInitItemVars(GObj *item_gobj)
 // 0x801808A4
 void itKamexFallSetStatus(GObj *item_gobj)
 {
-    itKamexFallInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITKamexStatusDescs, nITKamexStatusFall);
+    itKamexFallInitVars(item_gobj);
+    itMainSetStatus(item_gobj, dITKamexStatusDescs, nITKamexStatusFall);
 }
 
 // 0x801808D8
@@ -235,7 +235,7 @@ sb32 itKamexAppearProcMap(GObj *item_gobj)
     {
         ip->physics.vel_air.y = 0.0F;
 
-        itKamexAttackInitItemVars(item_gobj, FALSE);
+        itKamexAttackInitVars(item_gobj, FALSE);
         itKamexAttackSetStatus(item_gobj);
     }
     return FALSE;
@@ -252,7 +252,7 @@ void itKamexAppearSetStatus(GObj *item_gobj)
     {
         func_800269C0_275C0(nSYAudioVoiceMBallKamexAppear);
     }
-    itMainSetItemStatus(item_gobj, dITKamexStatusDescs, nITKamexStatusAppear);
+    itMainSetStatus(item_gobj, dITKamexStatusDescs, nITKamexStatusAppear);
 }
 
 // 0x801809BC
@@ -286,7 +286,7 @@ sb32 itKamexAttackProcMap(GObj *item_gobj)
 }
 
 // 0x80180A58
-void itKamexAttackInitItemVars(GObj *item_gobj, sb32 is_ignore_setup)
+void itKamexAttackInitVars(GObj *item_gobj, sb32 is_ignore_setup)
 {
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -317,7 +317,7 @@ void itKamexAttackInitItemVars(GObj *item_gobj, sb32 is_ignore_setup)
 // 0x80180AF4
 void itKamexAttackSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITKamexStatusDescs, nITKamexStatusAttack);
+    itMainSetStatus(item_gobj, dITKamexStatusDescs, nITKamexStatusAttack);
 }
 
 // 0x80180B1C

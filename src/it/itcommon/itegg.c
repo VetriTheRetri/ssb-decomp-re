@@ -195,7 +195,7 @@ void itEggWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
     itEggWaitSetModelVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITEggStatusDescs, nITEggStatusWait);
+    itMainSetStatus(item_gobj, dITEggStatusDescs, nITEggStatusWait);
 }
 
 // 0x8018171C
@@ -211,13 +211,13 @@ void itEggFallSetStatus(GObj *item_gobj)
     ip->is_damage_all = TRUE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITEggStatusDescs, nITEggStatusFall);
+    itMainSetStatus(item_gobj, dITEggStatusDescs, nITEggStatusFall);
 }
 
 // 0x80181778
 void itEggHoldSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITEggStatusDescs, nITEggStatusHold);
+    itMainSetStatus(item_gobj, dITEggStatusDescs, nITEggStatusHold);
 }
 
 // 0x801817A0
@@ -259,7 +259,7 @@ void itEggThrownSetStatus(GObj *item_gobj)
 
     ip->damage_coll.hitstatus = nGMHitStatusNormal;
 
-    itMainSetItemStatus(item_gobj, dITEggStatusDescs, nITEggStatusThrown);
+    itMainSetStatus(item_gobj, dITEggStatusDescs, nITEggStatusThrown);
 }
 
 // 0x80181894
@@ -285,7 +285,7 @@ void itEggDroppedSetStatus(GObj *item_gobj)
 
     ip->damage_coll.hitstatus = nGMHitStatusNormal;
 
-    itMainSetItemStatus(item_gobj, dITEggStatusDescs, nITEggStatusDropped);
+    itMainSetStatus(item_gobj, dITEggStatusDescs, nITEggStatusDropped);
 }
 
 // 0x80181928
@@ -342,7 +342,7 @@ GObj* itEggMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 }
 
 // 0x80181AA8
-void itEggExplodeInitItemVars(GObj *item_gobj)
+void itEggExplodeInitVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
@@ -371,8 +371,8 @@ void itEggExplodeInitItemVars(GObj *item_gobj)
 // 0x80181B5C
 void itEggExplodeSetStatus(GObj *item_gobj)
 {
-    itEggExplodeInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITEggStatusDescs, nITEggStatusExplode);
+    itEggExplodeInitVars(item_gobj);
+    itMainSetStatus(item_gobj, dITEggStatusDescs, nITEggStatusExplode);
 }
 
 // 0x80181B90

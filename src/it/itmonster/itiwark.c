@@ -199,7 +199,7 @@ sb32 itIwarkAttackProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017D948
-void itIwarkAttackInitItemVars(GObj *item_gobj)
+void itIwarkAttackInitVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -240,8 +240,8 @@ void itIwarkAttackInitItemVars(GObj *item_gobj)
 // 0x8017DA60
 void itIwarkAttackSetStatus(GObj *item_gobj)
 {
-    itIwarkAttackInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITIwarkStatusDescs, nITIwarkStatusAttack);
+    itIwarkAttackInitVars(item_gobj);
+    itMainSetStatus(item_gobj, dITIwarkStatusDescs, nITIwarkStatusAttack);
 }
 
 // 0x8017DA94
@@ -267,7 +267,7 @@ void itIwarkFlySetStatus(GObj *item_gobj)
 
     ip->physics.vel_air.x = ip->physics.vel_air.y = 0.0F;
 
-    itMainSetItemStatus(item_gobj, dITIwarkStatusDescs, nITIwarkStatusFly);
+    itMainSetStatus(item_gobj, dITIwarkStatusDescs, nITIwarkStatusFly);
 }
 
 // 0x8017DB18

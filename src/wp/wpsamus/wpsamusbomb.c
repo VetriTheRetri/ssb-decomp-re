@@ -19,13 +19,13 @@ lWPSamusBombWeaponAttributes;               // 0x0000000C
 WPDesc dWPSamusBombWeaponDesc =
 {
     0x00,                                   // Render flags?
-    nWPKindSamusBomb,                      // Weapon Kind
+    nWPKindSamusBomb,                       // Weapon Kind
     &gFTDataSamusMain,                      // Pointer to character's loaded files?
     &lWPSamusBombWeaponAttributes,          // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
-        nGCMatrixKindTra,                // Main matrix transformations
+        nGCMatrixKindTra,                   // Main matrix transformations
         0x46,                               // Secondary matrix transformations?
         0                                   // ???
     },
@@ -57,7 +57,7 @@ sb32 wpSamusBombExplodeProcUpdate(GObj *weapon_gobj)
 }
 
 // 0x80168F2C
-void wpSamusBombExplodeInitWeaponVars(GObj *weapon_gobj)
+void wpSamusBombExplodeInitVars(GObj *weapon_gobj)
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -89,7 +89,7 @@ sb32 wpSamusBombProcUpdate(GObj *weapon_gobj)
     if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
         efManagerSparkleWhiteMultiExplodeMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
-        wpSamusBombExplodeInitWeaponVars(weapon_gobj);
+        wpSamusBombExplodeInitVars(weapon_gobj);
         func_800269C0_275C0(nSYAudioFGMExplodeS);
 
         return FALSE;
@@ -169,7 +169,7 @@ sb32 wpSamusBombProcHit(GObj *weapon_gobj)
 {
     func_800269C0_275C0(nSYAudioFGMExplodeS);
     efManagerSparkleWhiteMultiExplodeMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
-    wpSamusBombExplodeInitWeaponVars(weapon_gobj);
+    wpSamusBombExplodeInitVars(weapon_gobj);
 
     return FALSE;
 }
@@ -228,7 +228,7 @@ GObj* wpSamusBombMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 
     wp->weapon_vars.samus_bomb.bomb_blink_timer = WPSAMUSBOMB_WAIT_BLINK_TIMER_SLOW;
 
-    wp->physics.vel_air.y = WPSAMUSBOMB_WAITVEL_Y;
+    wp->physics.vel_air.y = WPSAMUSBOMB_WAIT_VEL_Y;
 
     return weapon_gobj;
 }

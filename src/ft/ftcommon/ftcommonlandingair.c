@@ -12,5 +12,5 @@ void ftCommonLandingAirSetStatus(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterGround(fp);
-    ftMainSetFighterStatus(fighter_gobj, fp->status_id + (nFTCommonStatusLandingAirEnd - nFTCommonStatusLandingAirStart), 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, fp->status_id + (nFTCommonStatusLandingAirEnd - nFTCommonStatusLandingAirStart), 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 }

@@ -43,8 +43,8 @@ sb32 itMainCheckShootNoAmmo(GObj* item_gobj);
 void itMainDestroyItem(GObj* item_gobj);
 
 // Remove item from player - this is more than likely not included as Link's bomb erroneously calls this without
-// initializing stat_flags and stat_count void itMainSetFighterRelease(GObj *item_gobj, Vec3f *vel, f32 stale, u16
-// stat_flags, u16 stat_count);
+// initializing stat_flags and stat_count
+// void itMainSetFighterRelease(GObj *item_gobj, Vec3f *vel, f32 stale, u16 stat_flags, u16 stat_count);
 
 // Run item's drop routine
 void itMainSetFighterDrop(GObj* item_gobj, Vec3f* vel, f32 stale);
@@ -59,7 +59,7 @@ void itMainSetFighterHold(GObj* item_gobj, GObj* fighter_gobj);
 void itMainSetGroundAllowPickup(GObj* item_gobj);
 
 // Change item's action state
-void itMainSetItemStatus(GObj* item_gobj, ITStatusDesc* status_desc, s32 status_id);
+void itMainSetStatus(GObj* item_gobj, ITStatusDesc* status_desc, s32 status_id);
 
 // Apply ColAnim to item and return whether it was successfully applied
 sb32 itMainCheckSetColAnimID(GObj* item_gobj, s32 colanim_id, s32 duration);

@@ -73,7 +73,7 @@ void ftCommonJumpSetStatus(GObj *fighter_gobj)
 
     status_id = ((fp->input.pl.stick_range.x * fp->lr) > FTCOMMON_KNEEBEND_JUMP_F_OR_B_RANGE) ? nFTCommonStatusJumpF : nFTCommonStatusJumpB;
 
-    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
     switch (fp->status_vars.common.kneebend.input_source)
     {

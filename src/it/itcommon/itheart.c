@@ -126,7 +126,7 @@ sb32 itHeartFallProcMap(GObj *item_gobj)
 void itHeartWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITHeartStatusDescs, nITHeartStatusWait);
+    itMainSetStatus(item_gobj, dITHeartStatusDescs, nITHeartStatusWait);
 }
 
 // 0x801747B4
@@ -137,7 +137,7 @@ void itHeartFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITHeartStatusDescs, nITHeartStatusFall);
+    itMainSetStatus(item_gobj, dITHeartStatusDescs, nITHeartStatusFall);
 }
 
 // 0x801747F8
@@ -149,7 +149,7 @@ sb32 itHeartDroppedProcMap(GObj *item_gobj)
 // 0x80174828
 void itHeartDroppedSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITHeartStatusDescs, nITHeartStatusDropped);
+    itMainSetStatus(item_gobj, dITHeartStatusDescs, nITHeartStatusDropped);
 }
 
 // 0x80174850

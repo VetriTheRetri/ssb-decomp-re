@@ -167,7 +167,7 @@ sb32 itLizardonFallUnusedSetStatus(GObj *item_gobj) // Unused
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITLizardonStatusDescs, nITLizardonStatusFallUnused);
+    itMainSetStatus(item_gobj, dITLizardonStatusDescs, nITLizardonStatusFallUnused);
 }
 
 // 0x8017F53C
@@ -192,7 +192,7 @@ sb32 itLizardonFallProcMap(GObj *item_gobj)
         ip->physics.vel_air.y = 0.0F;
 
         itLizardonAttackSetStatus(item_gobj);
-        itLizardonAttackInitItemVars(item_gobj);
+        itLizardonAttackInitVars(item_gobj);
     }
     return FALSE;
 }
@@ -200,7 +200,7 @@ sb32 itLizardonFallProcMap(GObj *item_gobj)
 // 0x8017F5C4
 void itLizardonFallSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITLizardonStatusDescs, nITLizardonStatusFall);
+    itMainSetStatus(item_gobj, dITLizardonStatusDescs, nITLizardonStatusFall);
 }
 
 // 0x8017F5EC
@@ -265,7 +265,7 @@ sb32 itLizardonAttackProcMap(GObj *item_gobj)
 }
 
 // 0x8017F810
-void itLizardonAttackInitItemVars(GObj *item_gobj)
+void itLizardonAttackInitVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -296,7 +296,7 @@ void itLizardonAttackInitItemVars(GObj *item_gobj)
 // 0x8017F8E4
 void itLizardonAttackSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITLizardonStatusDescs, nITLizardonStatusAttack);
+    itMainSetStatus(item_gobj, dITLizardonStatusDescs, nITLizardonStatusAttack);
 }
 
 // 0x8017F90C

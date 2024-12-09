@@ -73,7 +73,7 @@ void ftNessSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 
     mpCommonSetFighterGround(fp);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialN, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALN_STATUS_FLAGS); // Action State Change
+    ftMainSetStatus(fighter_gobj, nFTNessStatusSpecialN, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALN_STATUS_FLAGS); // Action State Change
 
     fp->proc_accessory = ftNessSpecialNProcAccessory;
 }
@@ -85,7 +85,7 @@ void ftNessSpecialNSwitchStatusAir(GObj *fighter_gobj)
 
     mpCommonSetFighterAir(fp);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialAirN, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALN_STATUS_FLAGS); // Action State Change
+    ftMainSetStatus(fighter_gobj, nFTNessStatusSpecialAirN, fighter_gobj->anim_frame, 1.0F, FTNESS_SPECIALN_STATUS_FLAGS); // Action State Change
 
     ftPhysicsClampAirVelXMax(fp);
 
@@ -104,7 +104,7 @@ void ftNessSpecialNInitStatusVars(GObj *fighter_gobj)
 // 0x80153BD0
 void ftNessSpecialNSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTNessStatusSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
     ftNessSpecialNInitStatusVars(fighter_gobj);
 }
@@ -112,7 +112,7 @@ void ftNessSpecialNSetStatus(GObj *fighter_gobj)
 // 0x80153C10
 void ftNessSpecialAirNSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTNessStatusSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
     ftNessSpecialNInitStatusVars(fighter_gobj);
 }

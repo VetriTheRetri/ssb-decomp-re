@@ -369,7 +369,7 @@ void itBoxWaitSetStatus(GObj *item_gobj)
     DObjGetStruct(item_gobj)->rotate.vec.f.z = atan2f(ip->coll_data.ground_angle.y, ip->coll_data.ground_angle.x) - F_CST_DTOR32(90.0F);
 
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITBoxStatusDescs, nITBoxStatusWait);
+    itMainSetStatus(item_gobj, dITBoxStatusDescs, nITBoxStatusWait);
 }
 
 // 0x801797A4
@@ -380,7 +380,7 @@ void itBoxFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITBoxStatusDescs, nITBoxStatusFall);
+    itMainSetStatus(item_gobj, dITBoxStatusDescs, nITBoxStatusFall);
 }
 
 // 0x801797E8
@@ -389,7 +389,7 @@ void itBoxHoldSetStatus(GObj *item_gobj)
     DObjGetStruct(item_gobj)->child->rotate.vec.f.z = 0.0F;
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = 0.0F;
 
-    itMainSetItemStatus(item_gobj, dITBoxStatusDescs, nITBoxStatusHold);
+    itMainSetStatus(item_gobj, dITBoxStatusDescs, nITBoxStatusHold);
 }
 
 // 0x8017982C
@@ -411,7 +411,7 @@ void itBoxThrownSetStatus(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F);
 
-    itMainSetItemStatus(item_gobj, dITBoxStatusDescs, nITBoxStatusThrown);
+    itMainSetStatus(item_gobj, dITBoxStatusDescs, nITBoxStatusThrown);
 }
 
 // 0x801798B8
@@ -433,7 +433,7 @@ void itBoxDroppedSetStatus(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F);
 
-    itMainSetItemStatus(item_gobj, dITBoxStatusDescs, nITBoxStatusDropped);
+    itMainSetStatus(item_gobj, dITBoxStatusDescs, nITBoxStatusDropped);
 }
 
 // 0x80179948
@@ -472,7 +472,7 @@ GObj* itBoxMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 }
 
 // 0x80179A34
-void itBoxExplodeInitItemVars(GObj *item_gobj)
+void itBoxExplodeInitVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
@@ -500,8 +500,8 @@ void itBoxExplodeInitItemVars(GObj *item_gobj)
 // 0x80179AD4
 void itBoxExplodeSetStatus(GObj *item_gobj)
 {
-    itBoxExplodeInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITBoxStatusDescs, nITBoxStatusExplode);
+    itBoxExplodeInitVars(item_gobj);
+    itMainSetStatus(item_gobj, dITBoxStatusDescs, nITBoxStatusExplode);
 }
 
 // 0x80179B08

@@ -19,7 +19,7 @@ void ftBossOkupunch1SetStatus(GObj *fighter_gobj)
     s32 ground_line_id;
     s32 line_id;
 
-    ftMainSetFighterStatus(fighter_gobj, nFTBossStatusOkupunch1, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTBossStatusOkupunch1, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
     boss_fp = ftGetStruct(fighter_gobj);
 

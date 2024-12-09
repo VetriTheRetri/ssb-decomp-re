@@ -98,7 +98,7 @@ void ftSamusSpecialAirLwSwitchStatusGround(GObj *fighter_gobj)
     fp->motion_vars.flags.flag3 = FALSE;
 
     mpCommonSetFighterGround(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialLw, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTSamusStatusSpecialLw, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_NONE);
 }
 
 // 0x8015E170 - Go to aerial Screw Attack from grounded update process
@@ -108,7 +108,7 @@ void ftSamusSpecialLwTransferStatusAir(GObj *fighter_gobj)
     FTAttributes *attr = fp->attr;
 
     mpCommonSetFighterAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialAirLw, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTSamusStatusSpecialAirLw, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_NONE);
 
     fp->physics.vel_air.y = FTSAMUS_BOMB_VEL_Y_BASE;
     fp->jumps_used = attr->jumps_max;
@@ -118,7 +118,7 @@ void ftSamusSpecialLwTransferStatusAir(GObj *fighter_gobj)
 void ftSamusSpecialLwSwitchStatusAir(GObj *fighter_gobj)
 {
     mpCommonSetFighterAir(ftGetStruct(fighter_gobj));
-    ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialAirLw, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTSamusStatusSpecialAirLw, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_NONE);
 }
 
 // 0x8015E218
@@ -134,7 +134,7 @@ void ftSamusSpecialLwSetStatus(GObj *fighter_gobj)
 
     fp->motion_vars.flags.flag3 = FALSE;
 
-    ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialLw, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTSamusStatusSpecialLw, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
     ftSamusSpecialLwInitStatusVars(fp);
 
@@ -147,7 +147,7 @@ void ftSamusSpecialAirLwSetStatus(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     FTAttributes *attr = fp->attr;
 
-    ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialAirLw, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTSamusStatusSpecialAirLw, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
     ftSamusSpecialLwInitStatusVars(fp);
 

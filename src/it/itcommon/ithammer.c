@@ -158,7 +158,7 @@ sb32 itHammerFallProcMap(GObj *item_gobj)
 void itHammerWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITHammerStatusDescs, nITHammerStatusWait);
+    itMainSetStatus(item_gobj, dITHammerStatusDescs, nITHammerStatusWait);
 }
 
 // 0x801761F8
@@ -169,7 +169,7 @@ void itHammerFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITHammerStatusDescs, nITHammerStatusFall);
+    itMainSetStatus(item_gobj, dITHammerStatusDescs, nITHammerStatusFall);
 }
 
 // 0x8017623C
@@ -177,7 +177,7 @@ void itHammerHoldSetStatus(GObj *item_gobj)
 {
     DObjGetStruct(item_gobj)->rotate.vec.f.y = F_CST_DTOR32(0.0F);
 
-    itMainSetItemStatus(item_gobj, dITHammerStatusDescs, nITHammerStatusHold);
+    itMainSetStatus(item_gobj, dITHammerStatusDescs, nITHammerStatusHold);
 }
 
 // 0x80176270
@@ -212,7 +212,7 @@ sb32 itHammerCommonProcHit(GObj *item_gobj)
 // 0x80176300
 void itHammerThrownSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITHammerStatusDescs, nITHammerStatusThrown);
+    itMainSetStatus(item_gobj, dITHammerStatusDescs, nITHammerStatusThrown);
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F);
 
@@ -229,7 +229,7 @@ sb32 itHammerDroppedProcMap(GObj *item_gobj)
 void itHammerDroppedSetStatus(GObj *item_gobj)
 {
     itMainClearColAnim(item_gobj);
-    itMainSetItemStatus(item_gobj, dITHammerStatusDescs, nITHammerStatusDropped);
+    itMainSetStatus(item_gobj, dITHammerStatusDescs, nITHammerStatusDropped);
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F);
 

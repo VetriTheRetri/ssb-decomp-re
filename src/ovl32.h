@@ -1,5 +1,5 @@
-#ifndef _RESULTS_H_
-#define _RESULTS_H_
+#ifndef _MNVSRECORD_H_
+#define _MNVSRECORD_H_
 
 #include <ssb_types.h>
 #include <sys/objdisplay.h>

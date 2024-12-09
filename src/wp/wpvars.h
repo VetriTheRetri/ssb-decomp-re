@@ -15,7 +15,7 @@
 #define WPSAMUSBOMB_EXPLODE_LIFETIME 6
 #define WPSAMUSBOMB_EXPLODE_SIZE 180.0F
 #define WPSAMUSBOMB_WAIT_LIFETIME 100					 			// Countdown of Bomb until it explodes
-#define WPSAMUSBOMB_WAITVEL_Y 10.0F					 			// Initial velocity of Bomb
+#define WPSAMUSBOMB_WAIT_VEL_Y 10.0F					 			// Initial velocity of Bomb
 #define WPSAMUSBOMB_WAIT_ROTATE_SPEED_AIR F_CLC_DTOR32(20.0F)	 	// Bomb spins at this rate while airborne
 #define WPSAMUSBOMB_WAIT_ROTATE_SPEED_GROUND F_CLC_DTOR32(10.0F) 	// Bomb spins at this rate while grounded
 #define WPSAMUSBOMB_WAIT_COLLIDE_MOD_VEL 0.9F			 			// Modify velocity when colliding with an obstruction?

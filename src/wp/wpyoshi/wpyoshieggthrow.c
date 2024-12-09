@@ -19,13 +19,13 @@ lWPYoshiEggThrowWeaponAttributes;           // 0x0000000C
 WPDesc dWPYoshiEggThrowWeaponDesc =
 {
     0x00,                                   // Render flags?
-    nWPKindEggThrow,                       // Weapon Kind
+    nWPKindEggThrow,                        // Weapon Kind
     &gFTDataYoshiMain,                      // Pointer to character's loaded files?
     &lWPYoshiEggThrowWeaponAttributes,      // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
-        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
+        nGCMatrixKindTraRotRpyRSca,         // Main matrix transformations
         0x2E,                               // Secondary matrix transformations?
         0                                   // ???
     },
@@ -71,7 +71,7 @@ sb32 wpYoshiEggExplodeProcUpdate(GObj *weapon_gobj)
 }
 
 // 0x8016BFA0
-void wpYoshiEggHitInitWeaponVars(GObj *weapon_gobj) // Egg Throw explodes from landing successfully
+void wpYoshiEggHitInitVars(GObj *weapon_gobj) // Egg Throw explodes from landing successfully
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -96,7 +96,7 @@ void wpYoshiEggHitInitWeaponVars(GObj *weapon_gobj) // Egg Throw explodes from l
 }
 
 // 0x8016C00C
-void wpYoshiEggExpireInitWeaponVars(GObj *weapon_gobj) // Egg Throw explodes from expiring 
+void wpYoshiEggExpireInitVars(GObj *weapon_gobj) // Egg Throw explodes from expiring 
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -121,7 +121,7 @@ void wpYoshiEggExpireInitWeaponVars(GObj *weapon_gobj) // Egg Throw explodes fro
 }
 
 // 0x8016C07C
-void wpYoshiEggThrowInitWeaponVars(GObj *weapon_gobj)
+void wpYoshiEggThrowInitVars(GObj *weapon_gobj)
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
     f32 angle = ABS(wp->weapon_vars.egg_throw.stick_range) / WPEGGTHROW_TRAJECTORY_DIV;
@@ -168,7 +168,7 @@ sb32 wpYoshiEggThrowProcUpdate(GObj *weapon_gobj)
             efManagerYoshiEggExplodeMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
             efManagerEggBreakMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
-            wpYoshiEggExpireInitWeaponVars(weapon_gobj);
+            wpYoshiEggExpireInitVars(weapon_gobj);
 
             return FALSE;
         }
@@ -184,7 +184,7 @@ sb32 wpYoshiEggThrowProcUpdate(GObj *weapon_gobj)
     {
         wp->weapon_vars.egg_throw.is_spin = TRUE;
 
-        wpYoshiEggThrowInitWeaponVars(weapon_gobj);
+        wpYoshiEggThrowInitVars(weapon_gobj);
     }
     return FALSE;
 }
@@ -205,7 +205,7 @@ sb32 wpYoshiEggThrowProcMap(GObj *weapon_gobj)
 
         efManagerDustExpandSmallMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 
-        wpYoshiEggHitInitWeaponVars(weapon_gobj);
+        wpYoshiEggHitInitVars(weapon_gobj);
     }
     return FALSE;
 }
@@ -218,7 +218,7 @@ sb32 wpYoshiEggThrowProcHit(GObj *weapon_gobj)
     efManagerYoshiEggExplodeMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
     efManagerEggBreakMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
-    wpYoshiEggHitInitWeaponVars(weapon_gobj);
+    wpYoshiEggHitInitVars(weapon_gobj);
 
     return FALSE;
 }

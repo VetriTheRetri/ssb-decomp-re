@@ -378,7 +378,7 @@ void itBombHeiWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
     itBombHeiCommonSetHitStatusNormal(item_gobj);
-    itMainSetItemStatus(item_gobj, dITBombHeiStatusDescs, nITBombHeiStatusWait);
+    itMainSetStatus(item_gobj, dITBombHeiStatusDescs, nITBombHeiStatusWait);
 }
 
 // 0x801774B0
@@ -390,14 +390,14 @@ void itBombHeiFallSetStatus(GObj *item_gobj)
 
     itMapSetAir(ip);
     itBombHeiCommonSetHitStatusNormal(item_gobj);
-    itMainSetItemStatus(item_gobj, dITBombHeiStatusDescs, nITBombHeiStatusFall);
+    itMainSetStatus(item_gobj, dITBombHeiStatusDescs, nITBombHeiStatusFall);
 }
 
 // 0x801774FC
 void itBombHeiHoldSetStatus(GObj *item_gobj)
 {
     itBombHeiCommonSetHitStatusNone(item_gobj);
-    itMainSetItemStatus(item_gobj, dITBombHeiStatusDescs, nITBombHeiStatusHold);
+    itMainSetStatus(item_gobj, dITBombHeiStatusDescs, nITBombHeiStatusHold);
 }
 
 // 0x80177530
@@ -421,7 +421,7 @@ sb32 itBombHeiThrownProcMap(GObj *item_gobj)
 void itBombHeiThrownSetStatus(GObj *item_gobj)
 {
     itBombHeiCommonSetHitStatusNormal(item_gobj);
-    itMainSetItemStatus(item_gobj, dITBombHeiStatusDescs, nITBombHeiStatusThrown);
+    itMainSetStatus(item_gobj, dITBombHeiStatusDescs, nITBombHeiStatusThrown);
 }
 
 // 0x801775C4
@@ -434,7 +434,7 @@ sb32 itBombHeiDroppedProcMap(GObj *item_gobj)
 void itBombHeiDroppedSetStatus(GObj *item_gobj)
 {
     itBombHeiCommonSetHitStatusNormal(item_gobj);
-    itMainSetItemStatus(item_gobj, dITBombHeiStatusDescs, nITBombHeiStatusDropped);
+    itMainSetStatus(item_gobj, dITBombHeiStatusDescs, nITBombHeiStatusDropped);
 }
 
 // 0x8017761C
@@ -517,7 +517,7 @@ sb32 itBombHeiWalkProcMap(GObj *item_gobj)
 }
 
 // 0x80177848
-void itBombHeiWalkInitItemVars(GObj *item_gobj)
+void itBombHeiWalkInitVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
     ITAttributes *attr = ip->attr;
@@ -569,8 +569,8 @@ void itBombHeiWalkInitItemVars(GObj *item_gobj)
 void itBombHeiWalkSetStatus(GObj *item_gobj)
 {
     itBombHeiCommonSetHitStatusNormal(item_gobj);
-    itBombHeiWalkInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITBombHeiStatusDescs, nITBombHeiStatusWalk);
+    itBombHeiWalkInitVars(item_gobj);
+    itMainSetStatus(item_gobj, dITBombHeiStatusDescs, nITBombHeiStatusWalk);
 }
 
 // 0x801779E4
@@ -635,11 +635,11 @@ sb32 itBombHeiExplodeCommonProcHit(GObj *item_gobj)
 void itBombHeiExplodeMapSetStatus(GObj *item_gobj)
 {
     itBombHeiCommonSetHitStatusNormal(item_gobj);
-    itMainSetItemStatus(item_gobj, dITBombHeiStatusDescs, nITBombHeiStatusExplodeMap);
+    itMainSetStatus(item_gobj, dITBombHeiStatusDescs, nITBombHeiStatusExplodeMap);
 }
 
 // 0x80177BAC
-void itBombHeiExplodeInitItemVars(GObj *item_gobj)
+void itBombHeiExplodeInitVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
@@ -671,8 +671,8 @@ sb32 itBombHeiExplodeProcUpdate(GObj *item_gobj)
 // 0x80177C30
 void itBombHeiExplodeSetStatus(GObj *item_gobj)
 {
-    itBombHeiExplodeInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITBombHeiStatusDescs, nITBombHeiStatusExplode);
+    itBombHeiExplodeInitVars(item_gobj);
+    itMainSetStatus(item_gobj, dITBombHeiStatusDescs, nITBombHeiStatusExplode);
 }
 
 // 0x80177C64
@@ -702,7 +702,7 @@ sb32 itBombHeiExplodeWaitProcMap(GObj *item_gobj)
 }
 
 // 0x80177D28
-void itBombHeiExplodeWaitInitItemVars(GObj *item_gobj)
+void itBombHeiExplodeWaitInitVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -718,8 +718,8 @@ void itBombHeiExplodeWaitInitItemVars(GObj *item_gobj)
 void itBombHeiExplodeWaitSetStatus(GObj *item_gobj)
 {
     itBombHeiCommonSetHitStatusNormal(item_gobj);
-    itBombHeiExplodeWaitInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITBombHeiStatusDescs, nITBombHeiStatusExplodeWait);
+    itBombHeiExplodeWaitInitVars(item_gobj);
+    itMainSetStatus(item_gobj, dITBombHeiStatusDescs, nITBombHeiStatusExplodeWait);
 }
 
 // 0x80177D9C

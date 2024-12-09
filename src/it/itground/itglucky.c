@@ -76,7 +76,7 @@ enum itGLuckyStatus
 // 0x8017C240
 void itGLuckyDamagedSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITGLuckyStatusDescs, nITGLuckyStatusDamaged);
+    itMainSetStatus(item_gobj, dITGLuckyStatusDescs, nITGLuckyStatusDamaged);
 
     itGetStruct(item_gobj)->proc_dead = itGLuckyDamagedProcDead;
 }

@@ -503,7 +503,7 @@ void itMainSetGroundAllowPickup(GObj *item_gobj) // Airborne item becomes ground
 }
 
 // 0x80172EC8
-void itMainSetItemStatus(GObj *item_gobj, ITStatusDesc *status_desc, s32 status_id)
+void itMainSetStatus(GObj *item_gobj, ITStatusDesc *status_desc, s32 status_id)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
@@ -518,7 +518,7 @@ void itMainSetItemStatus(GObj *item_gobj, ITStatusDesc *status_desc, s32 status_
 
     ip->is_thrown = FALSE;
 
-    ip->attack_coll.stat_flags.stat_attack_id = nFTStatusAttackIDNull;
+    ip->attack_coll.stat_flags.attack_id = nFTStatusAttackIDNull;
     ip->attack_coll.stat_flags.is_smash_attack = ip->attack_coll.stat_flags.ga = ip->attack_coll.stat_flags.is_projectile = FALSE;
 
     ip->attack_coll.stat_count = ftParamGetStatUpdateCount();

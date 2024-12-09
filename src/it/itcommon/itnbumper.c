@@ -241,7 +241,7 @@ sb32 itNBumperThrownProcHit(GObj *item_gobj)
 void itNBumperWaitSetStatus(GObj *item_gobj)
 {
     itMainSetGroundAllowPickup(item_gobj);
-    itMainSetItemStatus(item_gobj, dITNBumperStatusDescs, nITNBumperStatusWait);
+    itMainSetStatus(item_gobj, dITNBumperStatusDescs, nITNBumperStatusWait);
 }
 
 // 0x8017B634
@@ -252,13 +252,13 @@ void itNBumperFallSetStatus(GObj *item_gobj)
     ip->is_allow_pickup = FALSE;
 
     itMapSetAir(ip);
-    itMainSetItemStatus(item_gobj, dITNBumperStatusDescs, nITNBumperStatusFall);
+    itMainSetStatus(item_gobj, dITNBumperStatusDescs, nITNBumperStatusFall);
 }
 
 // 0x8017B678
 void itNBumperHoldSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITNBumperStatusDescs, nITNBumperStatusHold);
+    itMainSetStatus(item_gobj, dITNBumperStatusDescs, nITNBumperStatusHold);
 }
 
 // 0x8017B6A0
@@ -323,7 +323,7 @@ void itNBumperThrownSetStatus(GObj *item_gobj)
     ip->coll_data.map_coll.top = ITBUMPER_COLL_SIZE;
     ip->coll_data.map_coll.bottom = -ITBUMPER_COLL_SIZE;
 
-    itMainSetItemStatus(item_gobj, dITNBumperStatusDescs, nITNBumperStatusThrown);
+    itMainSetStatus(item_gobj, dITNBumperStatusDescs, nITNBumperStatusThrown);
 }
 
 // 0x8017B828
@@ -336,7 +336,7 @@ void itNBumperDroppedSetStatus(GObj *item_gobj)
     ip->coll_data.map_coll.top = ITBUMPER_COLL_SIZE;
     ip->coll_data.map_coll.bottom = -ITBUMPER_COLL_SIZE;
 
-    itMainSetItemStatus(item_gobj, dITNBumperStatusDescs, nITNBumperStatusDropped);
+    itMainSetStatus(item_gobj, dITNBumperStatusDescs, nITNBumperStatusDropped);
 }
 
 // 0x8017B874
@@ -355,7 +355,7 @@ void itNBumperAttachedSetModelYaw(GObj *item_gobj)
 }
 
 // 0x8017B8DC
-void itNBumperAttachedInitItemVars(GObj *item_gobj)
+void itNBumperAttachedInitVars(GObj *item_gobj)
 {
     s32 unused[2];
     DObj *dobj;
@@ -525,8 +525,8 @@ sb32 itNBumperAttachedProcReflector(GObj *item_gobj)
 // 0x8017BD4C
 void itNBumperAttachedSetStatus(GObj *item_gobj)
 {
-    itNBumperAttachedInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITNBumperStatusDescs, nITNBumperStatusAttached);
+    itNBumperAttachedInitVars(item_gobj);
+    itMainSetStatus(item_gobj, dITNBumperStatusDescs, nITNBumperStatusAttached);
 }
 
 // 0x8017BD80
@@ -571,7 +571,7 @@ void itNBumperHitAirSetStatus(GObj *item_gobj)
 
     ip->item_vars.bumper.damage_all_delay = ITBUMPER_DAMAGE_ALL_WAIT;
 
-    itMainSetItemStatus(item_gobj, dITNBumperStatusDescs, nITNBumperStatusHitAir);
+    itMainSetStatus(item_gobj, dITNBumperStatusDescs, nITNBumperStatusHitAir);
 }
 
 // 0x8017BED4
@@ -616,7 +616,7 @@ void itNBumperGDisappearSetStatus(GObj *item_gobj)
     ip->physics.vel_air.y = 0.0F;
     ip->physics.vel_air.z = 0.0F;
 
-    itMainSetItemStatus(item_gobj, dITNBumperStatusDescs, nITNBumperStatusGDisappear);
+    itMainSetStatus(item_gobj, dITNBumperStatusDescs, nITNBumperStatusGDisappear);
 }
 
 // 0x8017BF8C

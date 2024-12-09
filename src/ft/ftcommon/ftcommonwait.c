@@ -27,7 +27,7 @@ void ftCommonWaitSetStatus(GObj *fighter_gobj)
         {
             mpCommonSetFighterGround(fp);
         }
-        ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusWait, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+        ftMainSetStatus(fighter_gobj, nFTCommonStatusWait, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
         fp->is_special_interrupt = TRUE;
 

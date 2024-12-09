@@ -19,7 +19,7 @@ extern sb32 itNBumperThrownProcReflector(GObj *item_gobj);
 extern void itNBumperThrownSetStatus(GObj *item_gobj);
 extern void itNBumperDroppedSetStatus(GObj *item_gobj);
 extern void itNBumperAttachedSetModelYaw(GObj *item_gobj);
-extern void itNBumperAttachedInitItemVars(GObj *item_gobj);
+extern void itNBumperAttachedInitVars(GObj *item_gobj);
 extern sb32 itNBumperAttachedProcHit(GObj *item_gobj);
 extern sb32 itNBumperAttachedProcUpdate(GObj *item_gobj);
 extern sb32 itNBumperAttachedProcMap(GObj *item_gobj);

@@ -109,17 +109,17 @@ void mvOpeningYosterMakeFighters(void)
     };
 
     s32 i;
-    FTDesc ft_desc = dFTManagerDefaultFighterDesc;
+    FTDesc desc = dFTManagerDefaultFighterDesc;
 
     for (i = 0; i < (ARRAY_COUNT(sMVOpeningYosterFigatreeHeaps) + ARRAY_COUNT(status_ids)) / 2; i++)
     {
-        ft_desc.fkind = nFTKindYoshi;
-        ft_desc.costume = ftParamGetCostumeCommonID(nFTKindYoshi, i);
-        ft_desc.pos.x = 0.0F;
-        ft_desc.pos.y = 0.0F;
-        ft_desc.pos.z = 0.0F;
-        ft_desc.figatree_heap = sMVOpeningYosterFigatreeHeaps[i];
-        fighter_gobj = ftManagerMakeFighter(&ft_desc);
+        desc.fkind = nFTKindYoshi;
+        desc.costume = ftParamGetCostumeCommonID(nFTKindYoshi, i);
+        desc.pos.x = 0.0F;
+        desc.pos.y = 0.0F;
+        desc.pos.z = 0.0F;
+        desc.figatree_heap = sMVOpeningYosterFigatreeHeaps[i];
+        fighter_gobj = ftManagerMakeFighter(&desc);
 
         scSubsysFighterSetStatus(fighter_gobj, status_ids[i]);
 

@@ -21,7 +21,7 @@ extern void itMBallThrownSetStatus(GObj *item_gobj);
 extern void itMBallDroppedSetStatus(GObj *item_gobj);
 extern sb32 itMBallOpenProcUpdate(GObj *mball_gobj);
 extern sb32 itMBallOpenProcMap(GObj *item_gobj);
-extern void itMBallOpenInitItemVars(GObj *item_gobj);
+extern void itMBallOpenInitVars(GObj *item_gobj);
 extern void itMBallOpenSetStatus(GObj *item_gobj);
 extern sb32 itMBallOpenAirProcUpdate(GObj *mball_gobj);
 extern sb32 itMBallOpenAirProcMap(GObj *item_gobj);

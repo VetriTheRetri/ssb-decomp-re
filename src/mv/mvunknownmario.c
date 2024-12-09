@@ -156,7 +156,7 @@ void mvUnknownMarioFuncStart(void)
 	s32 unused[3];
 	GObj *fighter_gobj;
 	s32 player;
-	FTDesc ft_desc;
+	FTDesc desc;
 	SYColorRGBA color;
 
 	sMVUnkownMarioBattleState = dSCManagerDefaultBattleState;
@@ -188,7 +188,7 @@ void mvUnknownMarioFuncStart(void)
 
 	for (player = 0; player < ARRAY_COUNT(gSCManagerBattleState->players); player++)
 	{
-		ft_desc = dFTManagerDefaultFighterDesc;
+		desc = dFTManagerDefaultFighterDesc;
 
 		if (gSCManagerBattleState->players[player].pkind == nFTPlayerKindNot)
 		{
@@ -196,25 +196,25 @@ void mvUnknownMarioFuncStart(void)
 		}
 		ftManagerSetupFilesAllKind(gSCManagerBattleState->players[player].fkind);
 
-		ft_desc.fkind = gSCManagerBattleState->players[player].fkind;
-		ft_desc.pos.x = 0.0F;
-		ft_desc.pos.y = 150.0F;
-		ft_desc.pos.z = 0.0F;
-		ft_desc.lr = +1;
-		ft_desc.team = gSCManagerBattleState->players[player].team;
-		ft_desc.player = player;
-		ft_desc.detail = nFTPartsDetailHigh;
-		ft_desc.costume = gSCManagerBattleState->players[player].costume;
-		ft_desc.handicap = gSCManagerBattleState->players[player].handicap;
-		ft_desc.level = gSCManagerBattleState->players[player].level;
-		ft_desc.stock_count = gSCManagerBattleState->stocks;
-		ft_desc.damage = 0;
-		ft_desc.pkind = gSCManagerBattleState->players[player].pkind;
-		ft_desc.controller = &gSYControllerDevices[player];
+		desc.fkind = gSCManagerBattleState->players[player].fkind;
+		desc.pos.x = 0.0F;
+		desc.pos.y = 150.0F;
+		desc.pos.z = 0.0F;
+		desc.lr = +1;
+		desc.team = gSCManagerBattleState->players[player].team;
+		desc.player = player;
+		desc.detail = nFTPartsDetailHigh;
+		desc.costume = gSCManagerBattleState->players[player].costume;
+		desc.handicap = gSCManagerBattleState->players[player].handicap;
+		desc.level = gSCManagerBattleState->players[player].level;
+		desc.stock_count = gSCManagerBattleState->stocks;
+		desc.damage = 0;
+		desc.pkind = gSCManagerBattleState->players[player].pkind;
+		desc.controller = &gSYControllerDevices[player];
 
-		ft_desc.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[player].fkind);
+		desc.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[player].fkind);
 
-		fighter_gobj = ftManagerMakeFighter(&ft_desc);
+		fighter_gobj = ftManagerMakeFighter(&desc);
 		sMVUnkownMarioFighterGObj = fighter_gobj;
 
 		ftParamInitPlayerBattleStats(player, fighter_gobj);

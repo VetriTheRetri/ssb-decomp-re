@@ -19,7 +19,7 @@ void ftBossOkutsubushiStartSetStatus(GObj *fighter_gobj)
     s32 ground_line_id;
     s32 line_id;
 
-    ftMainSetFighterStatus(fighter_gobj, nFTBossStatusOkutsubushiStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTBossStatusOkutsubushiStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
     boss_fp = ftGetStruct(fighter_gobj);
     target_fp = ftGetStruct(boss_fp->passive_vars.boss.p->target_gobj);

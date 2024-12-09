@@ -138,7 +138,7 @@ void ftCommonCaptureShoulderedSetStatus(GObj *fighter_gobj)
     ftCommonThrownSetStatusImmediate(fighter_gobj, nFTCommonStatusShouldered);
     ftCommonCaptureTrappedInitBreakoutVars(this_fp, (this_fp->percent_damage * 0.08F) + 14.0F);
 
-    damage = ftParamGetStaledDamage(capture_fp->player, 8, capture_fp->attack_id, capture_fp->motion_count);
+    damage = ftParamGetStaledDamage(capture_fp->player, 8, capture_fp->motion_attack_id, capture_fp->motion_count);
 
     if (ftParamGetBestHitStatusAll(fighter_gobj) != nGMHitStatusNormal)
     {
@@ -149,7 +149,7 @@ void ftCommonCaptureShoulderedSetStatus(GObj *fighter_gobj)
         ftCommonDamageUpdateDamageColAnim(fighter_gobj, ftParamGetCommonKnockback(this_fp->percent_damage, damage, damage, 0, 100, 0, this_fp->attr->weight, capture_fp->handicap, this_fp->handicap), 0);
         ftParamUpdateDamage(this_fp, damage);
         ftParamUpdatePlayerBattleStats(capture_fp->player, this_fp->player, damage);
-        ftParamUpdateStaleQueue(capture_fp->player, this_fp->player, capture_fp->attack_id, capture_fp->motion_count);
+        ftParamUpdateStaleQueue(capture_fp->player, this_fp->player, capture_fp->motion_attack_id, capture_fp->motion_count);
     }
     ftParamMakeRumble(this_fp, 7, 0);
 }

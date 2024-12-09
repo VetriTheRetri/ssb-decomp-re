@@ -341,22 +341,22 @@ void sc1PContinueSetFighterScale(GObj *gobj, s32 fkind)
 void sc1PContinueMakeFighter(s32 fkind)
 {
     GObj *fighter_gobj;
-    FTDesc ft_desc;
+    FTDesc desc;
 
-    ft_desc = dFTManagerDefaultFighterDesc;
+    desc = dFTManagerDefaultFighterDesc;
 
-    ft_desc.fkind = fkind;
+    desc.fkind = fkind;
 
-    ft_desc.pos.x = 90.0F;
+    desc.pos.x = 90.0F;
 
-    ft_desc.costume = sSC1PContinueFighterDemoDesc.costume;
-    ft_desc.shade = sSC1PContinueFighterDemoDesc.shade;
-    ft_desc.figatree_heap = sSC1PContinueFigatreeHeap;
+    desc.costume = sSC1PContinueFighterDemoDesc.costume;
+    desc.shade = sSC1PContinueFighterDemoDesc.shade;
+    desc.figatree_heap = sSC1PContinueFigatreeHeap;
 
-    ft_desc.pos.y = 2070.0F;
-    ft_desc.pos.z = 0.0F;
+    desc.pos.y = 2070.0F;
+    desc.pos.z = 0.0F;
 
-    sSC1PContinueFighterGObj = fighter_gobj = ftManagerMakeFighter(&ft_desc);
+    sSC1PContinueFighterGObj = fighter_gobj = ftManagerMakeFighter(&desc);
 
     scSubsysFighterSetStatus(fighter_gobj, nFTDemoStatusFigureDropped);
     sc1PContinueSetFighterScale(fighter_gobj, sSC1PContinueFighterDemoDesc.fkind);

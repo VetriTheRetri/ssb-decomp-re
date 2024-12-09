@@ -130,7 +130,7 @@ sb32 itSawamuraFallProcMap(GObj *item_gobj)
 // 0x801826A8
 void itSawamuraFallSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITSawamuraStatusDescs, nITSawamuraStatusFall);
+    itMainSetStatus(item_gobj, dITSawamuraStatusDescs, nITSawamuraStatusFall);
 }
 
 // 0x801826D0
@@ -158,7 +158,7 @@ sb32 itSawamuraWaitProcMap(GObj *item_gobj)
 // 0x8018273C
 void itSawamuraWaitSetStatus(GObj *item_gobj)
 {
-    itMainSetItemStatus(item_gobj, dITSawamuraStatusDescs, nITSawamuraStatusWait);
+    itMainSetStatus(item_gobj, dITSawamuraStatusDescs, nITSawamuraStatusWait);
 }
 
 // 0x80182764
@@ -217,7 +217,7 @@ void itSawamuraAttackSetFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
 }
 
 // 0x80182958
-void itSawamuraAttackInitItemVars(GObj *item_gobj)
+void itSawamuraAttackInitVars(GObj *item_gobj)
 {
     GObj *fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
     ITStruct *ip = itGetStruct(item_gobj);
@@ -273,8 +273,8 @@ void itSawamuraAttackInitItemVars(GObj *item_gobj)
 // 0x80182AAC
 void itSawamuraAttackSetStatus(GObj *item_gobj)
 {
-    itSawamuraAttackInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITSawamuraStatusDescs, nITSawamuraStatusAttack);
+    itSawamuraAttackInitVars(item_gobj);
+    itMainSetStatus(item_gobj, dITSawamuraStatusDescs, nITSawamuraStatusAttack);
 }
 
 // 0x80182AE0

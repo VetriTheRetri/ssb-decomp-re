@@ -48,7 +48,7 @@ void ftCommonCaptureWaitSetStatus(GObj *fighter_gobj)
     FTStruct *this_fp = ftGetStruct(fighter_gobj);
     FTStruct *capture_fp = ftGetStruct(this_fp->capture_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCaptureWait, 0.0F, 1.0F, (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_MODELPART));
+    ftMainSetStatus(fighter_gobj, nFTCommonStatusCaptureWait, 0.0F, 1.0F, (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_MODELPART));
 
     if ((capture_fp->fkind == nFTKindYoshi) || (capture_fp->fkind == nFTKindNYoshi))
     {

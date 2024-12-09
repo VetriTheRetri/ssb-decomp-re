@@ -128,7 +128,7 @@ void itTosakintoAppearSetStatus(GObj *item_gobj)
     {
         func_800269C0_275C0(nSYAudioVoiceMBallTosakintoAppear);
     }
-    itMainSetItemStatus(item_gobj, dITTosakintoStatusDescs, nITTosakintoStatusAppear);
+    itMainSetStatus(item_gobj, dITTosakintoStatusDescs, nITTosakintoStatusAppear);
 }
 
 // 0x8017E880
@@ -168,7 +168,7 @@ sb32 itTosakintoBounceProcMap(GObj *item_gobj)
 }
 
 // 0x8017E93C
-void itTosakintoBounceInitItemVars(GObj *item_gobj)
+void itTosakintoBounceInitVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -198,8 +198,8 @@ void itTosakintoBounceInitItemVars(GObj *item_gobj)
 // 0x8017EA14
 void itTosakintoBounceSetStatus(GObj *item_gobj)
 {
-    itTosakintoBounceInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITTosakintoStatusDescs, nITTosakintoStatusBounce);
+    itTosakintoBounceInitVars(item_gobj);
+    itMainSetStatus(item_gobj, dITTosakintoStatusDescs, nITTosakintoStatusBounce);
 }
 
 // 0x8017EA48

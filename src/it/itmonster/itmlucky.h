@@ -5,7 +5,7 @@
 #include <sys/objdef.h>
 #include <it/itdef.h>
 
-extern void itMLuckyMakeEggInitItemVars(GObj *item_gobj);
+extern void itMLuckyMakeEggInitVars(GObj *item_gobj);
 extern sb32 itMLuckyFallProcUpdate(GObj *item_gobj);
 extern sb32 itMLuckyFallProcMap(GObj *item_gobj);
 extern void itMLuckyFallSetStatus(GObj *item_gobj);

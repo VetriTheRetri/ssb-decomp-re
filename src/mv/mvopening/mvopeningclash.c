@@ -105,19 +105,19 @@ void mvOpeningClashMakeFighters(void)
     };
 
     s32 i;
-    FTDesc ft_desc = dFTManagerDefaultFighterDesc;
+    FTDesc desc = dFTManagerDefaultFighterDesc;
 
     for (i = 0; i < (ARRAY_COUNT(fkinds) + ARRAY_COUNT(sMVOpeningClashFigatreeHeaps)) / 2; i++)
     {
-        ft_desc.fkind = fkinds[i];
-        ft_desc.costume = ftParamGetCostumeCommonID(fkinds[i], 0);
+        desc.fkind = fkinds[i];
+        desc.costume = ftParamGetCostumeCommonID(fkinds[i], 0);
 
-        ft_desc.pos.x = 0.0F;
-        ft_desc.pos.y = 0.0F;
-        ft_desc.pos.z = 0.0F;
+        desc.pos.x = 0.0F;
+        desc.pos.y = 0.0F;
+        desc.pos.z = 0.0F;
 
-        ft_desc.figatree_heap = sMVOpeningClashFigatreeHeaps[i];
-        fighter_gobj = ftManagerMakeFighter(&ft_desc);
+        desc.figatree_heap = sMVOpeningClashFigatreeHeaps[i];
+        fighter_gobj = ftManagerMakeFighter(&desc);
 
         scSubsysFighterSetStatus(fighter_gobj, nFTDemoStatusClash);
 

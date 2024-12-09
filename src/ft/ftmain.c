@@ -257,11 +257,11 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
 
             attack_coll->is_scale_pos = (ev_kind == nFTMotionEventMakeAttackCollScaled) ? TRUE : FALSE;
 
-            attack_coll->attack_id = fp->attack_id;
+            attack_coll->motion_attack_id = fp->motion_attack_id;
 
             attack_coll->motion_count = fp->motion_count;
 
-            attack_coll->damage = ftParamGetStaledDamage(fp->player, attack_coll->damage, attack_coll->attack_id, attack_coll->motion_count);
+            attack_coll->damage = ftParamGetStaledDamage(fp->player, attack_coll->damage, attack_coll->motion_attack_id, attack_coll->motion_count);
         }
         else ftMotionEventAdvance(ms, FTMotionEventMakeAttack);
         break;
@@ -290,7 +290,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
 
             ftMotionEventAdvance(ms, FTMotionEventSetAttackCollDamage);
 
-            fp->attack_colls[attack_id].damage = ftParamGetStaledDamage(fp->player, fp->attack_colls[attack_id].damage, fp->attack_colls[attack_id].attack_id, fp->attack_colls[attack_id].motion_count);
+            fp->attack_colls[attack_id].damage = ftParamGetStaledDamage(fp->player, fp->attack_colls[attack_id].damage, fp->attack_colls[attack_id].motion_attack_id, fp->attack_colls[attack_id].motion_count);
         }
         else ftMotionEventAdvance(ms, FTMotionEventSetAttackCollDamage);
         break;
@@ -336,7 +336,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
     case nFTMotionEventSetThrow:
         ftMotionEventAdvance(ms, FTMotionEventSetThrow1);
 
-        fp->fighter_throw = ftMotionEventCast(ms, FTMotionEventSetThrow2)->fighter_throw;
+        fp->throw_desc = ftMotionEventCast(ms, FTMotionEventSetThrow2)->throw_desc;
 
         ftMotionEventAdvance(ms, FTMotionEventSetThrow2);
         break;
@@ -557,13 +557,13 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
     case nFTMotionEventSetParallelScript:
         ftMotionEventAdvance(ms, FTMotionEventParallel1);
 
-        if (fp->motion_script[0][1].p_script == NULL)
+        if (fp->motion_scripts[0][1].p_script == NULL)
         {
-            fp->motion_script[0][1].p_script = fp->motion_script[1][1].p_script = ftMotionEventCast(ms, FTMotionEventParallel2)->p_goto;
+            fp->motion_scripts[0][1].p_script = fp->motion_scripts[1][1].p_script = ftMotionEventCast(ms, FTMotionEventParallel2)->p_goto;
 
-            fp->motion_script[0][1].script_wait = fp->motion_script[1][1].script_wait = DObjGetStruct(fighter_gobj)->anim_speed - fighter_gobj->anim_frame;
+            fp->motion_scripts[0][1].script_wait = fp->motion_scripts[1][1].script_wait = DObjGetStruct(fighter_gobj)->anim_speed - fighter_gobj->anim_frame;
 
-            fp->motion_script[0][1].script_id = fp->motion_script[1][1].script_id = 0;
+            fp->motion_scripts[0][1].script_id = fp->motion_scripts[1][1].script_id = 0;
         }
         ftMotionEventAdvance(ms, FTMotionEventParallel2);
         break;
@@ -701,9 +701,9 @@ void ftMainUpdateMotionEventsNoEffect(GObj *fighter_gobj)
     u32 ev_kind;
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(fp->motion_script); i++)
+    for (i = 0; i < ARRAY_COUNT(fp->motion_scripts); i++)
     {
-        ms = &fp->motion_script[0][i];
+        ms = &fp->motion_scripts[0][i];
 
         if (ms->p_script != NULL)
         {
@@ -740,9 +740,9 @@ void ftMainUpdateMotionEventsNoEffect(GObj *fighter_gobj)
     }
     if (!(fp->is_effect_interrupt))
     {
-        for (i = 0; i < ARRAY_COUNT(fp->motion_script); i++)
+        for (i = 0; i < ARRAY_COUNT(fp->motion_scripts); i++)
         {
-            fp->motion_script[1][i] = fp->motion_script[0][i];
+            fp->motion_scripts[1][i] = fp->motion_scripts[0][i];
         }
     }
 }
@@ -755,9 +755,9 @@ void ftMainUpdateMotionEventsDefault(GObj *fighter_gobj)
     u32 ev_kind;
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(fp->motion_script); i++)
+    for (i = 0; i < ARRAY_COUNT(fp->motion_scripts); i++)
     {
-        ms = &fp->motion_script[0][i];
+        ms = &fp->motion_scripts[0][i];
 
         if (ms->p_script != NULL)
         {
@@ -828,9 +828,9 @@ void ftMainUpdateMotionEventsDefault(GObj *fighter_gobj)
             }
         }
     }
-    for (i = 0; i < ARRAY_COUNT(fp->motion_script); i++)
+    for (i = 0; i < ARRAY_COUNT(fp->motion_scripts); i++)
     {
-        fp->motion_script[1][i] = fp->motion_script[0][i];
+        fp->motion_scripts[1][i] = fp->motion_scripts[0][i];
     }
 }
 
@@ -842,9 +842,9 @@ void ftMainUpdateMotionEventsDefaultEffect(GObj *fighter_gobj)
     u32 ev_kind;
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(fp->motion_script); i++)
+    for (i = 0; i < ARRAY_COUNT(fp->motion_scripts); i++)
     {
-        ms = &fp->motion_script[1][i];
+        ms = &fp->motion_scripts[1][i];
 
         if (ms->p_script != NULL)
         {
@@ -2171,7 +2171,7 @@ void ftMainUpdateDamageStatFighter(FTStruct *attacker_fp, FTAttackColl *attack_c
                 sFTMainHitLogID++;
             }
             ftParamUpdatePlayerBattleStats(attacker_player, victim_fp->player, damage);
-            ftParamUpdateStaleQueue(attacker_player, victim_fp->player, attack_coll->attack_id, attack_coll->motion_count);
+            ftParamUpdateStaleQueue(attacker_player, victim_fp->player, attack_coll->motion_attack_id, attack_coll->motion_count);
         }
         else
         {
@@ -2261,7 +2261,7 @@ void ftMainUpdateReflectorStatWeapon(WPStruct *wp, WPAttackColl *wp_attack_coll,
 
     wpProcessUpdateHitInteractStatsGroupID(wp, wp_attack_coll, fighter_gobj, nGMHitTypeReflect, 0);
 
-    if (fp->spc_coll->damage_resist < damage)
+    if (fp->special_coll->damage_resist < damage)
     {
         if (wp_attack_coll->can_rehit_fighter)
         {
@@ -2282,6 +2282,13 @@ void ftMainUpdateReflectorStatWeapon(WPStruct *wp, WPAttackColl *wp_attack_coll,
     {
         wp->reflect_gobj = fighter_gobj;
 
+        /*
+         * Oversight: attack_id is not set to that of the reflecting fighter.
+         * This causes whatever move the original attacker used to summon the weapon
+         * to be added to the reflecting fighter's staling queue if valid.
+         * 
+         * e.g. Fox reflects Mario's Fire Ball -> Fox's Blaster stales, even though he hasn't used it.
+         */
         wp->reflect_stat_flags = fp->stat_flags;
         wp->reflect_stat_count = fp->stat_count;
 
@@ -2290,15 +2297,15 @@ void ftMainUpdateReflectorStatWeapon(WPStruct *wp, WPAttackColl *wp_attack_coll,
 }
 
 // 0x800E3308
-void ftMainUpdateAbsorbStatWeapon(WPStruct *ip, WPAttackColl *wp_attack_coll, FTStruct *fp, GObj *fighter_gobj)
+void ftMainUpdateAbsorbStatWeapon(WPStruct *wp, WPAttackColl *wp_attack_coll, FTStruct *fp, GObj *fighter_gobj)
 {
-    s32 damage = wpMainGetStaledDamage(ip);
+    s32 damage = wpMainGetStaledDamage(wp);
 
-    wpProcessUpdateHitInteractStatsGroupID(ip, wp_attack_coll, fighter_gobj, nGMHitTypeAbsorb, 0);
+    wpProcessUpdateHitInteractStatsGroupID(wp, wp_attack_coll, fighter_gobj, nGMHitTypeAbsorb, 0);
 
-    ip->absorb_gobj = fighter_gobj;
+    wp->absorb_gobj = fighter_gobj;
 
-    fp->absorb_lr = (DObjGetStruct(fighter_gobj)->translate.vec.f.x < DObjGetStruct(ip->weapon_gobj)->translate.vec.f.x) ? +1 : -1;
+    fp->absorb_lr = (DObjGetStruct(fighter_gobj)->translate.vec.f.x < DObjGetStruct(wp->weapon_gobj)->translate.vec.f.x) ? +1 : -1;
 
     if (!(wp_attack_coll->can_not_heal))
     {
@@ -2335,10 +2342,10 @@ void ftMainUpdateDamageStatWeapon(WPStruct *wp, WPAttackColl *wp_attack_coll, s3
     }
     if
     (
-        (fp->special_hitstatus == nGMHitStatusNormal) &&
-        (fp->star_hitstatus == nGMHitStatusNormal)    &&
-        (fp->hitstatus == nGMHitStatusNormal)         &&
-        (damage_coll->hitstatus == nGMHitStatusNormal)   &&
+        (fp->special_hitstatus == nGMHitStatusNormal)   &&
+        (fp->star_hitstatus == nGMHitStatusNormal)      &&
+        (fp->hitstatus == nGMHitStatusNormal)           &&
+        (damage_coll->hitstatus == nGMHitStatusNormal)  &&
         (ftMainCheckGetUpdateDamage(fp, &damage) != FALSE)
     )
     {
@@ -2357,7 +2364,7 @@ void ftMainUpdateDamageStatWeapon(WPStruct *wp, WPAttackColl *wp_attack_coll, s3
             sFTMainHitLogID++;
         }
         ftParamUpdatePlayerBattleStats(wp->player, fp->player, damage);
-        ftParamUpdateStaleQueue(wp->player, fp->player, wp_attack_coll->attack_id, wp_attack_coll->motion_count);
+        ftParamUpdateStaleQueue(wp->player, fp->player, wp_attack_coll->motion_attack_id, wp_attack_coll->motion_count);
     }
     func_800269C0_275C0(wp_attack_coll->fgm_id);
 }
@@ -2435,7 +2442,7 @@ void ftMainUpdateReflectorStatItem(ITStruct *ip, ITAttackColl *it_attack_coll, F
 
     itProcessSetHitInteractStats(it_attack_coll, fighter_gobj, nGMHitTypeReflect, 0);
 
-    if (fp->spc_coll->damage_resist < damage)
+    if (fp->special_coll->damage_resist < damage)
     {
         if (it_attack_coll->can_rehit_fighter)
         {
@@ -2456,6 +2463,13 @@ void ftMainUpdateReflectorStatItem(ITStruct *ip, ITAttackColl *it_attack_coll, F
     {
         ip->reflect_gobj = fighter_gobj;
 
+        /*
+         * Oversight: attack_id is not set to that of the reflecting fighter.
+         * This causes whatever move the original attacker used the item with
+         * to be added to the reflecting fighter's staling queue if valid.
+         * 
+         * e.g. Fox reflects an item thrown from LightThrowF4 -> Fox's own LightThrowF4 stales, even though he hasn't used it.
+         */
         ip->reflect_stat_flags = fp->stat_flags;
         ip->reflect_stat_count = fp->stat_count;
 
@@ -2522,10 +2536,10 @@ void ftMainUpdateDamageStatItem(ITStruct *ip, ITAttackColl *it_attack_coll, s32 
         }
         if 
         (
-            (fp->special_hitstatus == nGMHitStatusNormal) &&
-            (fp->star_hitstatus == nGMHitStatusNormal)    &&
-            (fp->hitstatus == nGMHitStatusNormal)         &&
-            (damage_coll->hitstatus == nGMHitStatusNormal)   &&
+            (fp->special_hitstatus == nGMHitStatusNormal)   &&
+            (fp->star_hitstatus == nGMHitStatusNormal)      &&
+            (fp->hitstatus == nGMHitStatusNormal)           &&
+            (damage_coll->hitstatus == nGMHitStatusNormal)  &&
             (ftMainCheckGetUpdateDamage(fp, &damage) != FALSE)
         )
         {
@@ -2544,7 +2558,7 @@ void ftMainUpdateDamageStatItem(ITStruct *ip, ITAttackColl *it_attack_coll, s32 
                 sFTMainHitLogID++;
             }
             ftParamUpdatePlayerBattleStats(ip->player, fp->player, damage);
-            ftParamUpdateStaleQueue(ip->player, fp->player, it_attack_coll->attack_id, it_attack_coll->motion_count);
+            ftParamUpdateStaleQueue(ip->player, fp->player, it_attack_coll->motion_attack_id, it_attack_coll->motion_count);
         }
         func_800269C0_275C0(it_attack_coll->fgm_id);
     }
@@ -3306,7 +3320,7 @@ void ftMainSearchWeaponAttack(GObj *fighter_gobj)
                             {
                                 if (gFTMainIsDamageDetect[i] == FALSE) continue;
 
-                                else if (gmCollisionCheckWeaponAttackSpecialCollide(wp_attack_coll, i, fp, fp->spc_coll) != FALSE)
+                                else if (gmCollisionCheckWeaponAttackSpecialCollide(wp_attack_coll, i, fp, fp->special_coll) != FALSE)
                                 {
                                     ftMainUpdateReflectorStatWeapon(wp, wp_attack_coll, fp, fighter_gobj);
 
@@ -3322,7 +3336,7 @@ void ftMainSearchWeaponAttack(GObj *fighter_gobj)
                                 {
                                     continue;
                                 }
-                                else if (gmCollisionCheckWeaponAttackSpecialCollide(wp_attack_coll, i, fp, fp->spc_coll) != FALSE)
+                                else if (gmCollisionCheckWeaponAttackSpecialCollide(wp_attack_coll, i, fp, fp->special_coll) != FALSE)
                                 {
                                     ftMainUpdateAbsorbStatWeapon(wp, wp_attack_coll, fp, fighter_gobj);
 
@@ -3501,7 +3515,7 @@ void ftMainSearchItemAttack(GObj *fighter_gobj)
                                 {
                                     continue;
                                 }
-                                else if (gmCollisionCheckItemAttackSpecialCollide(it_attack_coll, i, fp, fp->spc_coll) != FALSE)
+                                else if (gmCollisionCheckItemAttackSpecialCollide(it_attack_coll, i, fp, fp->special_coll) != FALSE)
                                 {
                                     ftMainUpdateReflectorStatItem(ip, it_attack_coll, fp, fighter_gobj);
 
@@ -3912,7 +3926,7 @@ void ftMainProcUpdateMain(GObj *fighter_gobj)
         }
         damage = fp->attack_damage;
 
-        if (fp->stat_flags.stat_attack_id == nFTStatusAttackIDBatSwing4)
+        if (fp->stat_flags.attack_id == nFTStatusAttackIDBatSwing4)
         {
             ftParamMakeRumble(fp, 10, 0);
         }
@@ -3927,7 +3941,7 @@ void ftMainProcUpdateMain(GObj *fighter_gobj)
     }
     else if (fp->reflect_lr != 0)
     {
-        switch (fp->spc_coll->kind)
+        switch (fp->special_coll->kind)
         {
         case nFTSpecialCollKindFoxReflector:
             ftFoxSpecialLwHitSetStatus(fighter_gobj);
@@ -3987,18 +4001,18 @@ void ftMainProcUpdateMain(GObj *fighter_gobj)
 
                 func_ovl2_800EDBA4(fp->joints[11]);
 
-                fp->afterimage.desc[fp->afterimage.desc_index].translate_x = parts->mtx_translate[3][0];
-                fp->afterimage.desc[fp->afterimage.desc_index].translate_y = parts->mtx_translate[3][1];
-                fp->afterimage.desc[fp->afterimage.desc_index].translate_z = parts->mtx_translate[3][2];
-                fp->afterimage.desc[fp->afterimage.desc_index].vec.x = parts->mtx_translate[2][0];
-                fp->afterimage.desc[fp->afterimage.desc_index].vec.y = parts->mtx_translate[2][1];
-                fp->afterimage.desc[fp->afterimage.desc_index].vec.z = parts->mtx_translate[2][2];
+                fp->afterimage.desc[fp->afterimage.desc_id].translate_x = parts->mtx_translate[3][0];
+                fp->afterimage.desc[fp->afterimage.desc_id].translate_y = parts->mtx_translate[3][1];
+                fp->afterimage.desc[fp->afterimage.desc_id].translate_z = parts->mtx_translate[3][2];
+                fp->afterimage.desc[fp->afterimage.desc_id].vec.x = parts->mtx_translate[2][0];
+                fp->afterimage.desc[fp->afterimage.desc_id].vec.y = parts->mtx_translate[2][1];
+                fp->afterimage.desc[fp->afterimage.desc_id].vec.z = parts->mtx_translate[2][2];
 
-                if (fp->afterimage.desc_index == 2)
+                if (fp->afterimage.desc_id == 2)
                 {
-                    fp->afterimage.desc_index = 0;
+                    fp->afterimage.desc_id = 0;
                 }
-                else fp->afterimage.desc_index++;
+                else fp->afterimage.desc_id++;
 
                 if (fp->afterimage.drawstatus <= 2)
                 {
@@ -4015,20 +4029,20 @@ void ftMainProcUpdateMain(GObj *fighter_gobj)
 
                 func_ovl0_800C9A38(mtx, fp->joints[fp->attr->joint_itemlight_id]);
 
-                fp->afterimage.desc[fp->afterimage.desc_index].translate_x = mtx[3][0];
-                fp->afterimage.desc[fp->afterimage.desc_index].translate_y = mtx[3][1];
-                fp->afterimage.desc[fp->afterimage.desc_index].translate_z = mtx[3][2];
-                fp->afterimage.desc[fp->afterimage.desc_index].vec.x = mtx[1][0];
-                fp->afterimage.desc[fp->afterimage.desc_index].vec.y = mtx[1][1];
-                fp->afterimage.desc[fp->afterimage.desc_index].vec.z = mtx[1][2];
+                fp->afterimage.desc[fp->afterimage.desc_id].translate_x = mtx[3][0];
+                fp->afterimage.desc[fp->afterimage.desc_id].translate_y = mtx[3][1];
+                fp->afterimage.desc[fp->afterimage.desc_id].translate_z = mtx[3][2];
+                fp->afterimage.desc[fp->afterimage.desc_id].vec.x = mtx[1][0];
+                fp->afterimage.desc[fp->afterimage.desc_id].vec.y = mtx[1][1];
+                fp->afterimage.desc[fp->afterimage.desc_id].vec.z = mtx[1][2];
 
-                syVectorNorm3D(&fp->afterimage.desc[fp->afterimage.desc_index].vec);
+                syVectorNorm3D(&fp->afterimage.desc[fp->afterimage.desc_id].vec);
 
-                if (fp->afterimage.desc_index == 2)
+                if (fp->afterimage.desc_id == 2)
                 {
-                    fp->afterimage.desc_index = 0;
+                    fp->afterimage.desc_id = 0;
                 }
-                else fp->afterimage.desc_index++;
+                else fp->afterimage.desc_id++;
 
                 if (fp->afterimage.drawstatus <= 2)
                 {
@@ -4321,7 +4335,7 @@ void ftMainEjectWithheldPartID(FTStruct *fp, s32 hiddenpart_id)
 }
 
 // 0x800E6F24
-void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 anim_speed, u32 flags)
+void ftMainSetStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 anim_speed, u32 flags)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     intptr_t event_file_head;
@@ -4490,7 +4504,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
         ftParamStopLoopSFX(fp);
     }
     fp->knockback_resist_status = 0.0F;
-    fp->damage_stack = 0.0F;
+    fp->damage_knockback_stack = 0.0F;
 
     if (!(flags & FTSTATUS_PRESERVE_AFTERIMAGE))
     {
@@ -4539,13 +4553,13 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
 
     if (fp->pkind != nFTPlayerKindDemo)
     {
-        if ((status_struct[status_struct_id].mflags.motion_attack_id == nFTMotionAttackIDNone) || (status_struct[status_struct_id].mflags.motion_attack_id != fp->attack_id))
+        if ((status_struct[status_struct_id].mflags.attack_id == nFTMotionAttackIDNone) || (status_struct[status_struct_id].mflags.attack_id != fp->motion_attack_id))
         {
-            ftParamSetMotionID(fp, status_struct[status_struct_id].mflags.motion_attack_id);
+            ftParamSetMotionID(fp, status_struct[status_struct_id].mflags.attack_id);
         }
         attack_flags = status_desc->sflags;
 
-        if ((attack_flags.stat_attack_id == nFTStatusAttackIDNone) || (attack_flags.stat_attack_id != fp->stat_flags.stat_attack_id))
+        if ((attack_flags.attack_id == nFTStatusAttackIDNone) || (attack_flags.attack_id != fp->stat_flags.attack_id))
         {
             ftParamSetStatUpdate(fp, status_struct[status_struct_id].sflags.halfword);
         }
@@ -4719,7 +4733,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
             }
             else event_script_ptr = NULL;
 
-            fp->motion_script[0][0].p_script = fp->motion_script[1][0].p_script = event_script_ptr;
+            fp->motion_scripts[0][0].p_script = fp->motion_scripts[1][0].p_script = event_script_ptr;
         }
         else
         {
@@ -4729,17 +4743,17 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
             }
             else event_script_ptr = NULL;
 
-            fp->motion_script[0][0].p_script = fp->motion_script[1][0].p_script = event_script_ptr;
+            fp->motion_scripts[0][0].p_script = fp->motion_scripts[1][0].p_script = event_script_ptr;
         }
         anim_frame = DObjGetStruct(fighter_gobj)->anim_speed - frame_begin;
 
-        fp->motion_script[0][0].script_wait = fp->motion_script[1][0].script_wait = anim_frame;
+        fp->motion_scripts[0][0].script_wait = fp->motion_scripts[1][0].script_wait = anim_frame;
 
-        fp->motion_script[0][0].script_id = fp->motion_script[1][0].script_id = 0;
+        fp->motion_scripts[0][0].script_id = fp->motion_scripts[1][0].script_id = 0;
 
-        for (i = 1; i < ARRAY_COUNT(fp->motion_script); i++)
+        for (i = 1; i < ARRAY_COUNT(fp->motion_scripts); i++)
         {
-            fp->motion_script[0][i].p_script = fp->motion_script[1][i].p_script = NULL;
+            fp->motion_scripts[0][i].p_script = fp->motion_scripts[1][i].p_script = NULL;
         }
 
         if (frame_begin != 0.0F)
@@ -4752,9 +4766,9 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
             ftMainRunUpdateColAnim(fighter_gobj);
         }
     }
-    else for (i = 0; i < ARRAY_COUNT(fp->motion_script); i++)
+    else for (i = 0; i < ARRAY_COUNT(fp->motion_scripts); i++)
     {
-        fp->motion_script[0][i].p_script = fp->motion_script[1][i].p_script = NULL;
+        fp->motion_scripts[0][i].p_script = fp->motion_scripts[1][i].p_script = NULL;
     }
     if (fp->pkind != nFTPlayerKindDemo)
     {

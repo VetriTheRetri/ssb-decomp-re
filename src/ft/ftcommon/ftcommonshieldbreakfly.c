@@ -26,7 +26,7 @@ void ftCommonShieldBreakFlySetStatus(GObj *fighter_gobj)
     FTAttributes *attr = fp->attr;
 
     mpCommonSetFighterAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusShieldBreakFly, 0.0F, 1.0F, FTSTATUS_PRESERVE_DAMAGEPLAYER);
+    ftMainSetStatus(fighter_gobj, nFTCommonStatusShieldBreakFly, 0.0F, 1.0F, FTSTATUS_PRESERVE_DAMAGEPLAYER);
     ftMainPlayAnimNoEffect(fighter_gobj);
 
     fp->physics.vel_air.x = 0.0F;
@@ -71,10 +71,10 @@ void ftCommonShieldBreakFlyCommonSetStatus(GObj *fighter_gobj)
 void ftCommonShieldBreakFlyReflectorSetStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTSpecialColl *spc_coll = fp->spc_coll;
-    Vec3f offset = spc_coll->offset;
+    FTSpecialColl *special_coll = fp->special_coll;
+    Vec3f offset = special_coll->offset;
 
-    gmCollisionGetFighterPartsWorldPosition(fp->joints[spc_coll->joint_id], &offset);
+    gmCollisionGetFighterPartsWorldPosition(fp->joints[special_coll->joint_id], &offset);
     efManagerReflectBreakMakeEffect(&offset, fp->reflect_lr);
     ftCommonShieldBreakFlySetStatus(fighter_gobj);
 }

@@ -103,7 +103,7 @@ struct WPAttackColl
     ub32 can_absorb : 1;                                    // Whether weapon can be absorbed
     ub32 can_not_heal : 1;                                  // Somewhat strangely implemented, this allows the weapon to heal upon being absorbed only if FALSE
     ub32 can_shield : 1;                                    // Whether weapon can be shielded
-    u32 attack_id : 6;                                      // Attack ID used for stale move negation queues
+    u32 motion_attack_id : 6;                               // Attack ID used for stale move negation queues
     u16 motion_count;                                       // Motion count used for stale move negation queues
     GMStatFlags stat_flags;                                 // Weapon's status flags
     u16 stat_count;                                         // Weapon's status update count

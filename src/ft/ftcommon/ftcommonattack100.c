@@ -74,7 +74,7 @@ void ftCommonAttack100StartSetStatus(GObj *fighter_gobj)
             status_id = nFTCaptainStatusAttack100Start;
             break;
         }
-        ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+        ftMainSetStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
         ftMainPlayAnimNoEffect(fighter_gobj);
 
         fp->status_vars.common.attack100.is_anim_end = FALSE;
@@ -185,7 +185,7 @@ void ftCommonAttack100LoopSetStatus(GObj *fighter_gobj)
         status_id = nFTCaptainStatusAttack100Loop;
         break;
     }
-    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftCommonAttack100LoopKirbyUpdateEffect(fp);
 }
 
@@ -222,7 +222,7 @@ void ftCommonAttack100EndSetStatus(GObj *fighter_gobj)
         status_id = nFTCaptainStatusAttack100End;
         break;
     }
-    ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 }
 
 // 0x8014F4EC

@@ -723,7 +723,7 @@ sb32 grSectorArwingWeaponLaserExplodeProcUpdate(GObj *weapon_gobj)
 }
 
 // 0x80107544
-void grSectorArwingWeaponLaserExplodeInitWeaponVars(GObj *weapon_gobj)
+void grSectorArwingWeaponLaserExplodeInitVars(GObj *weapon_gobj)
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -763,7 +763,7 @@ sb32 grSectorArwingWeaponLaser3DProcMap(GObj *weapon_gobj)
         {
             func_800269C0_275C0(nSYAudioFGMExplodeS);
             efManagerSparkleWhiteMultiExplodeMakeEffect(&dobj->translate.vec.f);
-            grSectorArwingWeaponLaserExplodeInitWeaponVars(weapon_gobj);
+            grSectorArwingWeaponLaserExplodeInitVars(weapon_gobj);
         }
     }
     return FALSE;
@@ -774,7 +774,7 @@ sb32 grSectorArwingWeaponLaser3DProcHit(GObj *weapon_gobj)
 {
     func_800269C0_275C0(nSYAudioFGMExplodeS);
     efManagerSparkleWhiteMultiExplodeMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
-    grSectorArwingWeaponLaserExplodeInitWeaponVars(weapon_gobj);
+    grSectorArwingWeaponLaserExplodeInitVars(weapon_gobj);
 
     return FALSE;
 }

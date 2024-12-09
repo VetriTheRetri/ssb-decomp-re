@@ -13,7 +13,7 @@ extern sb32 itSawamuraWaitProcMap(GObj *item_gobj);
 extern void itSawamuraWaitSetStatus(GObj *item_gobj);
 extern sb32 itSawamuraAttackProcUpdate(GObj *item_gobj);
 extern void itSawamuraAttackSetFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj);
-extern void itSawamuraAttackInitItemVars(GObj *item_gobj);
+extern void itSawamuraAttackInitVars(GObj *item_gobj);
 extern void itSawamuraAttackSetStatus(GObj *item_gobj);
 extern sb32 itSawamuraCommonProcUpdate(GObj *item_gobj);
 extern sb32 itSawamuraCommonProcMap(GObj *item_gobj);

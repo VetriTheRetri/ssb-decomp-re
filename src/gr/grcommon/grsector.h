@@ -50,7 +50,7 @@ extern sb32 grSectorArwingWeaponLaser2DProcHop(GObj *weapon_gobj);
 extern sb32 grSectorArwingWeaponLaser2DProcReflector(GObj *weapon_gobj);
 extern void grSectorArwingWeaponLaser2DMakeWeapon(void);
 extern sb32 grSectorArwingWeaponLaserExplodeProcUpdate(GObj *weapon_gobj);
-extern void grSectorArwingWeaponLaserExplodeInitWeaponVars(GObj *weapon_gobj);
+extern void grSectorArwingWeaponLaserExplodeInitVars(GObj *weapon_gobj);
 extern sb32 grSectorArwingWeaponLaser3DProcMap(GObj *weapon_gobj);
 extern sb32 grSectorArwingWeaponLaser3DProcHit(GObj *weapon_gobj);
 extern sb32 grSectorArwingWeaponLaser3DProcAbsorb(GObj *weapon_gobj);

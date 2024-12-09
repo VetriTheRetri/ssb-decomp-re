@@ -71,7 +71,7 @@ void ftCommonDokanStartSetStatus(GObj *fighter_gobj, s32 material)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 new_point_id;
 
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDokanStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTCommonStatusDokanStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
 
     fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
@@ -192,7 +192,7 @@ void ftCommonDokanWaitSetStatus(GObj *fighter_gobj)
     s32 line_id;
 
     mpCommonSetFighterAir(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDokanWait, 0.0F, 1.0F, FTSTATUS_PRESERVE_HITSTATUS);
+    ftMainSetStatus(fighter_gobj, nFTCommonStatusDokanWait, 0.0F, 1.0F, FTSTATUS_PRESERVE_HITSTATUS);
 
     fp->is_invisible = TRUE;
     fp->is_playertag_hide = TRUE;
@@ -274,7 +274,7 @@ void ftCommonDokanEndSetStatus(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterGround(fp);
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDokanEnd, 0.0F, 1.0F, FTSTATUS_PRESERVE_HITSTATUS);
+    ftMainSetStatus(fighter_gobj, nFTCommonStatusDokanEnd, 0.0F, 1.0F, FTSTATUS_PRESERVE_HITSTATUS);
 
     DObjGetStruct(fighter_gobj)->translate.vec.f = fp->status_vars.common.dokan.pos_target;
 
@@ -304,7 +304,7 @@ void ftCommonDokanWalkSetStatus(GObj *fighter_gobj)
 
     fp->lr = +1;
 
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDokanWalk, 0.0F, 1.0F, FTSTATUS_PRESERVE_HITSTATUS);
+    ftMainSetStatus(fighter_gobj, nFTCommonStatusDokanWalk, 0.0F, 1.0F, FTSTATUS_PRESERVE_HITSTATUS);
 
     DObjGetStruct(fighter_gobj)->translate.vec.f = fp->status_vars.common.dokan.pos_target;
 

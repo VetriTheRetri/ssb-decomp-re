@@ -1910,7 +1910,7 @@ void mnCharactersFighterProcUpdate(GObj *fighter_gobj)
 			{
 				ftParamResetFighterColAnim(fighter_gobj);
 			}
-			ftMainSetFighterStatus(fighter_gobj, new_motion.status_id, 0.0F, 1.0F, new_motion.flags);
+			ftMainSetStatus(fighter_gobj, new_motion.status_id, 0.0F, 1.0F, new_motion.flags);
 
 			if (new_motion.status_id == FTSTATUS_CHARACTERS_DEMO(nFTCommonStatusDamageE1))
 			{
@@ -2004,7 +2004,7 @@ void mnCharactersMakeFighter(s32 fkind)
 
 	mnCharactersSetMotion(&motion, sMNCharactersMotionKind);
 
-	ftMainSetFighterStatus(fighter_gobj, motion.status_id, 0.0F, 1.0F, motion.flags);
+	ftMainSetStatus(fighter_gobj, motion.status_id, 0.0F, 1.0F, motion.flags);
 
 	if (motion.anim_length != 666)
 	{

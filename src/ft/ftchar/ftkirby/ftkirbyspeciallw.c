@@ -102,7 +102,7 @@ void ftKirbySpecialLwStartProcUpdate(GObj *fighter_gobj)
 
     if (fp->motion_vars.flags.flag1 != 0)
     {
-        ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialLwHold, 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_COLANIM));
+        ftMainSetStatus(fighter_gobj, nFTKirbyStatusSpecialLwHold, 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_COLANIM));
         ftKirbySpecialLwSetDamageResist(fighter_gobj);
 
         fp->motion_vars.flags.flag1 = 0;
@@ -133,7 +133,7 @@ void ftKirbySpecialLwUnkDecideNextStatus(GObj *fighter_gobj, sb32 ga)
     {
         if (ga == nMPKineticsGround)
         {
-            ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialLwHold, 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_COLANIM));
+            ftMainSetStatus(fighter_gobj, nFTKirbyStatusSpecialLwHold, 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_COLANIM));
         }
         ftKirbySpecialLwSetDamageResist(fighter_gobj);
 
@@ -233,7 +233,7 @@ void ftKirbySpecialLwStartProcMap(GObj *fighter_gobj)
     if (mpCommonCheckFighterOnGround(fighter_gobj) == FALSE)
     {
         mpCommonSetFighterAir(fp);
-        ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialAirLwStart, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_COLANIM));
+        ftMainSetStatus(fighter_gobj, nFTKirbyStatusSpecialAirLwStart, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_COLANIM));
         ftKirbySpecialLwSetDropFallVel(fp);
     }
 }
@@ -246,7 +246,7 @@ void ftKirbySpecialLwUnkProcMap(GObj *fighter_gobj)
     if (mpCommonCheckFighterOnGround(fighter_gobj) == FALSE)
     {
         mpCommonSetFighterAir(fp);
-        ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialAirLwHold, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_COLANIM));
+        ftMainSetStatus(fighter_gobj, nFTKirbyStatusSpecialAirLwHold, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_COLANIM));
     }
 }
 
@@ -258,7 +258,7 @@ void ftKirbySpecialLwHoldProcMap(GObj *fighter_gobj)
     if (mpCommonCheckFighterOnGround(fighter_gobj) == FALSE)
     {
         mpCommonSetFighterAir(fp);
-        ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialAirLwFall, 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_COLANIM));
+        ftMainSetStatus(fighter_gobj, nFTKirbyStatusSpecialAirLwFall, 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_COLANIM));
 
         fp->is_damage_resist = TRUE;
 
@@ -274,7 +274,7 @@ void ftKirbySpecialAirLwStartProcMap(GObj *fighter_gobj)
     if (mpCommonCheckFighterLanding(fighter_gobj) != FALSE)
     {
         mpCommonSetFighterGround(fp);
-        ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialLwStart, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_NONE);
+        ftMainSetStatus(fighter_gobj, nFTKirbyStatusSpecialLwStart, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_NONE);
     }
 }
 
@@ -286,7 +286,7 @@ void ftKirbySpecialAirLwHoldProcMap(GObj *fighter_gobj)
     if (mpCommonCheckFighterLanding(fighter_gobj) != FALSE)
     {
         mpCommonSetFighterGround(fp);
-        ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialAirLwLanding, 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_COLANIM));
+        ftMainSetStatus(fighter_gobj, nFTKirbyStatusSpecialAirLwLanding, 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_COLANIM));
 
         fp->is_damage_resist = TRUE;
     }
@@ -297,7 +297,7 @@ void ftKirbySpecialLwStartSetStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialLwStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTKirbyStatusSpecialLwStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
 
     fp->motion_vars.flags.flag2 = 0;
@@ -311,7 +311,7 @@ void ftKirbySpecialLwUnkSetStatus(GObj *fighter_gobj) // Unused
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialLwUnk, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTKirbyStatusSpecialLwUnk, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
 
     ftKirbySpecialLwUnused(fighter_gobj);
@@ -321,7 +321,7 @@ void ftKirbySpecialLwUnkSetStatus(GObj *fighter_gobj) // Unused
 void ftKirbySpecialLwEndSetStatus(GObj *fighter_gobj)
 {
     mpCommonSetFighterAir(ftGetStruct(fighter_gobj));
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialLwEnd, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTKirbyStatusSpecialLwEnd, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
 }
 
@@ -331,7 +331,7 @@ void ftKirbySpecialAirLwStartSetStatus(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     ub32 armor_flag = fp->is_damage_resist;
 
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialAirLwStart, 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_COLANIM));
+    ftMainSetStatus(fighter_gobj, nFTKirbyStatusSpecialAirLwStart, 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_COLANIM));
     ftMainPlayAnimNoEffect(fighter_gobj);
 
     if (fp->is_damage_resist = armor_flag & TRUE) // wat
@@ -351,7 +351,7 @@ void ftKirbySpecialAirLwHoldSetStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialAirLwHold, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTKirbyStatusSpecialAirLwHold, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
     ftKirbySpecialLwUnused(fighter_gobj);
     ftKirbySpecialLwSetDropFallVel(fp);
@@ -360,6 +360,6 @@ void ftKirbySpecialAirLwHoldSetStatus(GObj *fighter_gobj)
 // 0x80161C5C
 void ftKirbySpecialAirLwEndSetStatus(GObj *fighter_gobj)
 {
-    ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialAirLwEnd, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTKirbyStatusSpecialAirLwEnd, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
 }

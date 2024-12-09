@@ -183,7 +183,7 @@ sb32 itSpearAppearProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017FEB8
-void itSpearAppearInitItemVars(GObj *item_gobj)
+void itSpearAppearInitVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -212,8 +212,8 @@ void itSpearAppearInitItemVars(GObj *item_gobj)
 // 0x8017FF74
 void itSpearAppearSetStatus(GObj *item_gobj)
 {
-    itSpearAppearInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITSpearStatusDescs, nITSpearStatusAppear);
+    itSpearAppearInitVars(item_gobj);
+    itMainSetStatus(item_gobj, dITSpearStatusDescs, nITSpearStatusAppear);
 }
 
 // 0x8017FFA8
@@ -262,7 +262,7 @@ sb32 itSpearFlyProcUpdate(GObj *item_gobj)
 }
 
 // 0x8018010C
-void itSpearFlyInitItemVars(GObj *item_gobj)
+void itSpearFlyInitVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
@@ -281,8 +281,8 @@ void itSpearFlyInitItemVars(GObj *item_gobj)
 // 0x80180160
 void itSpearFlySetStatus(GObj *item_gobj)
 {
-    itSpearFlyInitItemVars(item_gobj);
-    itMainSetItemStatus(item_gobj, dITSpearStatusDescs, nITSpearStatusFly);
+    itSpearFlyInitVars(item_gobj);
+    itMainSetStatus(item_gobj, dITSpearStatusDescs, nITSpearStatusFly);
 }
 
 // 0x80180194

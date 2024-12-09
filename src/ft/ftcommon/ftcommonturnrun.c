@@ -37,7 +37,7 @@ void ftCommonTurnRunSetStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusTurnRun, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
+    ftMainSetStatus(fighter_gobj, nFTCommonStatusTurnRun, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
     fp->motion_vars.flags.flag1 = 0;
     fp->motion_vars.flags.flag2 = 0;

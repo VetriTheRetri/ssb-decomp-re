@@ -1,5 +1,6 @@
 #include <ft/fighter.h>
 #include <wp/weapon.h>
+
 // // // // // // // // // // // //
 //                               //
 //             MACROS            //
@@ -24,7 +25,6 @@ void ftNessSpecialHiDecThunderTimers(FTStruct *fp)
     {
         fp->status_vars.ness.specialhi.pkjibaku_delay--;
     }
-
     if (fp->passive_vars.ness.is_thunder_destroy & TRUE)
     {
         if (fp->status_vars.ness.specialhi.pkthunder_end_delay != 0)

@@ -210,7 +210,7 @@ struct LBBackupVSRecord
 {
 	u16 ko_count[GMCOMMON_FIGHTERS_PLAYABLE_NUM];
 	u32 time_used;                                  // In seconds
-	u32 damage_dealt;
+	u32 damage_given;
 	u32 damage_taken;
 	u16 unk;
 	u16 selfdestructs;

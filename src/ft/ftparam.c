@@ -168,7 +168,7 @@ void ftParamInitPlayerBattleStats(s32 player, GObj *fighter_gobj)
         gSCManagerBattleState->players[player].total_damage_players[i] = 0;
     }
     gSCManagerBattleState->players[player].unk_pblock_0x28 = gSCManagerBattleState->players[player].unk_pblock_0x2C = gSCManagerBattleState->players[player].total_selfdestructs = 0;
-    gSCManagerBattleState->players[player].total_damage_dealt = gSCManagerBattleState->players[player].total_damage_all = 0;
+    gSCManagerBattleState->players[player].total_damage_given = gSCManagerBattleState->players[player].total_damage_all = 0;
     gSCManagerBattleState->players[player].combo_damage_foe = gSCManagerBattleState->players[player].combo_count_foe = 0;
 
     gSCManagerBattleState->players[player].fighter_gobj = fighter_gobj;
@@ -1739,7 +1739,7 @@ void ftParamUpdatePlayerBattleStats(s32 attack_player, s32 defend_player, s32 at
 {
     if ((attack_player != GMCOMMON_PLAYERS_MAX) && (attack_player != defend_player))
     {
-        gSCManagerBattleState->players[attack_player].total_damage_dealt += attack_damage;
+        gSCManagerBattleState->players[attack_player].total_damage_given += attack_damage;
 
         gSCManagerBattleState->players[defend_player].total_damage_players[attack_player] += attack_damage;
         gSCManagerBattleState->players[defend_player].combo_damage_foe += attack_damage;

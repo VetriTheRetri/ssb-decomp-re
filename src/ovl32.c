@@ -91,7 +91,7 @@ s32 sMNVSRecordPad0x80136C10[2];
 s32 sMNVSRecordStatsKind;
 
 // 0x80136C1C
-sb32 sMNVSRecordIsRedrawSubtitle;
+sb32 sMNVSRecordIsChangeSubtitle;
 
 // 0x80136C20
 GObj *sMNVSRecordTableHeadersGObj;
@@ -100,13 +100,13 @@ GObj *sMNVSRecordTableHeadersGObj;
 GObj *sMNVSRecordTableValuesGObj;
 
 // 0x80136C28 - VS Mode scores character order
-s32 sMNVSRecordBattleScoreFighterKinds[nFTKindPlayableEnd + 1];
+s32 sMNVSRecordBattleScoreFighterKinds[(nFTKindPlayableEnd - nFTKindPlayableStart) + 1];
 
 // 0x80136C58 - Ranking character order
-s32 sMNVSRecordRankingFighterKindOrder[nFTKindPlayableEnd + 1];
+s32 sMNVSRecordRankingFighterKindOrder[(nFTKindPlayableEnd - nFTKindPlayableStart) + 1];
 
 // 0x80136C88 - Individual character order
-s32 sMNVSRecordIndivFighterKinds[nFTKindPlayableEnd + 1];
+s32 sMNVSRecordIndivFighterKinds[(nFTKindPlayableEnd - nFTKindPlayableStart) + 1];
 
 // 0x80136CB8
 s32 sMNVSRecordCurrentIndex;
@@ -468,7 +468,7 @@ void mnVSRecordDrawString(GObj* gobj, const char *str, f32 x, f32 y, u32 *color)
 		if (((((str[i] >= '0') && (str[i] <= '9')) ? TRUE : FALSE)) || (str[i] == ' '))
 		{
 			if (str[i] == ' ')
-				start_x += 4.0f;
+				start_x += 4.0F;
 			else
 				start_x += str[i] - '0';
 		}
@@ -502,279 +502,324 @@ void mnVSRecordDrawString(GObj* gobj, const char *str, f32 x, f32 y, u32 *color)
 }
 
 // 0x801326EC
-s32 mnVSRecordCheckHaveFighterKind(s32 fkind)
+sb32 mnVSRecordCheckHaveFighterKind(s32 fkind)
 {
 	switch (fkind)
 	{
-		case nFTKindNess:
-			return (sMNVSRecordFighterMask & LBBACKUP_MASK_FIGHTER(nFTKindNess)) ? TRUE : FALSE;
-		case nFTKindPurin:
-			return (sMNVSRecordFighterMask & LBBACKUP_MASK_FIGHTER(nFTKindPurin)) ? TRUE : FALSE;
-		case nFTKindCaptain:
-			return (sMNVSRecordFighterMask & LBBACKUP_MASK_FIGHTER(nFTKindCaptain)) ? TRUE : FALSE;
-		case nFTKindLuigi:
-			return (sMNVSRecordFighterMask & LBBACKUP_MASK_FIGHTER(nFTKindLuigi)) ? TRUE : FALSE;
-		default:
-			return TRUE;
+	case nFTKindNess:
+		return (sMNVSRecordFighterMask & LBBACKUP_MASK_FIGHTER(nFTKindNess)) ? TRUE : FALSE;
+
+	case nFTKindPurin:
+		return (sMNVSRecordFighterMask & LBBACKUP_MASK_FIGHTER(nFTKindPurin)) ? TRUE : FALSE;
+
+	case nFTKindCaptain:
+		return (sMNVSRecordFighterMask & LBBACKUP_MASK_FIGHTER(nFTKindCaptain)) ? TRUE : FALSE;
+		
+	case nFTKindLuigi:
+		return (sMNVSRecordFighterMask & LBBACKUP_MASK_FIGHTER(nFTKindLuigi)) ? TRUE : FALSE;
+		
+	default:
+		return TRUE;
 	}
 }
 
 // 0x801327B8
-void mnVSRecordMakeTitle()
+void mnVSRecordMakeLabels(void)
 {
-	GObj* title_gobj;
-	SObj* title_sobj;
+	GObj *gobj;
+	SObj *sobj;
 
-	title_gobj = gcMakeGObjSPAfter(0, 0, 2, 0x80000000);
-	gcAddGObjDisplay(title_gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
+	gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_PRIORITY_DEFAULT);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
 
-	title_sobj = lbCommonMakeSObjForGObj(title_gobj, lbRelocGetFileData(void*, sMNVSRecordFiles[1], &FILE_020_DATA_HEADER_IMAGE_OFFSET));
-	title_sobj->sprite.attr &= ~SP_FASTCOPY;
-	title_sobj->sprite.attr |= SP_TRANSPARENT;
-	title_sobj->sprite.red = 0x5F;
-	title_sobj->sprite.green = 0x58;
-	title_sobj->sprite.blue = 0x46;
-	title_sobj->pos.x = 24.0f;
-	title_sobj->pos.y = 17.0f;
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSRecordFiles[1], &FILE_020_DATA_HEADER_IMAGE_OFFSET));
 
-	title_sobj = lbCommonMakeSObjForGObj(title_gobj, lbRelocGetFileData(void*, sMNVSRecordFiles[0], &FILE_01F_VS_RECORD_IMAGE_OFFSET));
-	title_sobj->sprite.attr &= ~SP_FASTCOPY;
-	title_sobj->sprite.attr |= SP_TRANSPARENT;
-	title_sobj->envcolor.r = 0;
-	title_sobj->envcolor.g = 0;
-	title_sobj->envcolor.b = 0;
-	title_sobj->sprite.red = 0xF2;
-	title_sobj->sprite.green = 0xC7;
-	title_sobj->sprite.blue = 0xD;
-	title_sobj->pos.x = 99.0f;
-	title_sobj->pos.y = 23.0f;
+	sobj->sprite.attr &= ~SP_FASTCOPY;
+	sobj->sprite.attr |= SP_TRANSPARENT;
+
+	sobj->sprite.red = 0x5F;
+	sobj->sprite.green = 0x58;
+	sobj->sprite.blue = 0x46;
+
+	sobj->pos.x = 24.0F;
+	sobj->pos.y = 17.0F;
+
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSRecordFiles[0], &FILE_01F_VS_RECORD_IMAGE_OFFSET));
+
+	sobj->sprite.attr &= ~SP_FASTCOPY;
+	sobj->sprite.attr |= SP_TRANSPARENT;
+
+	sobj->envcolor.r = 0x00;
+	sobj->envcolor.g = 0x00;
+	sobj->envcolor.b = 0x00;
+
+	sobj->sprite.red = 0xF2;
+	sobj->sprite.green = 0xC7;
+	sobj->sprite.blue = 0x0D;
+
+	sobj->pos.x = 99.0F;
+	sobj->pos.y = 23.0F;
 }
 
 // 0x801328D4
-void mnVSRecordRenderSubtitle(GObj* subtitle_gobj)
+void mnVSRecordSubtitleProcUpdate(GObj *gobj)
 {
-	SObj* subtitle_sobj;
-	intptr_t offsets[4] = {
-
-		&FILE_01F_SUBTITLE_BATTLE_SCORE_IMAGE_OFFSET, 0x1458, 0x1318, 0
+	SObj *sobj;
+	intptr_t offsets[/* */] =
+	{
+		&FILE_01F_SUBTITLE_BATTLE_SCORE_IMAGE_OFFSET,
+		0x1458,
+		0x1318,
+		0x0
 	};
 
-	if (sMNVSRecordIsRedrawSubtitle)
+	if (sMNVSRecordIsChangeSubtitle != FALSE)
 	{
-		gcRemoveSObjAll(subtitle_gobj);
+		gcRemoveSObjAll(gobj);
 
-		subtitle_sobj = lbCommonMakeSObjForGObj(subtitle_gobj, lbRelocGetFileData(void*, sMNVSRecordFiles[0], offsets[sMNVSRecordStatsKind]));
-		subtitle_sobj->sprite.attr &= ~SP_FASTCOPY;
-		subtitle_sobj->sprite.attr |= SP_TRANSPARENT;
-		subtitle_sobj->sprite.red = 0;
-		subtitle_sobj->sprite.green = 0;
-		subtitle_sobj->sprite.blue = 0;
-		subtitle_sobj->pos.x = 222.0f;
-		subtitle_sobj->pos.y = 28.0f;
+		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSRecordFiles[0], offsets[sMNVSRecordStatsKind]));
+
+		sobj->sprite.attr &= ~SP_FASTCOPY;
+		sobj->sprite.attr |= SP_TRANSPARENT;
+
+		sobj->sprite.red = 0x00;
+		sobj->sprite.green = 0x00;
+		sobj->sprite.blue = 0x00;
+
+		sobj->pos.x = 222.0F;
+		sobj->pos.y = 28.0F;
 	}
 }
 
 // 0x80132994
-void mnVSRecordMakeSubtitle()
+void mnVSRecordMakeSubtitle(void)
 {
-	GObj* subtitle_gobj;
-	SObj* subtitle_sobj;
+	GObj *gobj;
+	SObj *sobj;
 
-	subtitle_gobj = gcMakeGObjSPAfter(0, 0, 2, 0x80000000);
-	gcAddGObjDisplay(subtitle_gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
-	gcAddGObjProcess(subtitle_gobj, mnVSRecordRenderSubtitle, 1, 1);
+	gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_PRIORITY_DEFAULT);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
+	gcAddGObjProcess(gobj, mnVSRecordSubtitleProcUpdate, nGCProcessKindFunc, 1);
 
-	subtitle_sobj = lbCommonMakeSObjForGObj(subtitle_gobj, lbRelocGetFileData(void*, sMNVSRecordFiles[0], &FILE_01F_SUBTITLE_BATTLE_SCORE_IMAGE_OFFSET));
-	subtitle_sobj->sprite.attr &= ~SP_FASTCOPY;
-	subtitle_sobj->sprite.attr |= SP_TRANSPARENT;
-	subtitle_sobj->sprite.red = 0;
-	subtitle_sobj->sprite.green = 0;
-	subtitle_sobj->sprite.blue = 0;
-	subtitle_sobj->pos.x = 222.0f;
-	subtitle_sobj->pos.y = 28.0f;
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSRecordFiles[0], &FILE_01F_SUBTITLE_BATTLE_SCORE_IMAGE_OFFSET));
+
+	sobj->sprite.attr &= ~SP_FASTCOPY;
+	sobj->sprite.attr |= SP_TRANSPARENT;
+
+	sobj->sprite.red = 0x00;
+	sobj->sprite.green = 0x00;
+	sobj->sprite.blue = 0x00;
+
+	sobj->pos.x = 222.0F;
+	sobj->pos.y = 28.0F;
 }
 
 // 0x80132A50
-void mnVSRecordUpdatePortraitArrowsDisplay(GObj* portrait_arrows_gobj)
+void mnVSRecordPortraitArrowsProcUpdate(GObj *gobj)
 {
-	portrait_arrows_gobj->flags = (sMNVSRecordStatsKind == nMNVSRecordKindIndiv) ? 0 : 1;
+	gobj->flags = (sMNVSRecordStatsKind == nMNVSRecordKindIndiv) ? GOBJ_FLAG_NONE : GOBJ_FLAG_HIDDEN;
 }
 
 // 0x80132A7C
-void mnVSRecordMakePortraitAndStatsArrows()
+void mnVSRecordMakePortraitStatsArrows(void)
 {
-	GObj* portrait_arrows_gobj;
-	SObj* portrait_arrows_sobj;
+	GObj *gobj;
+	SObj *sobj;
 
-	portrait_arrows_gobj = gcMakeGObjSPAfter(0, 0, 2, 0x80000000);
-	gcAddGObjDisplay(portrait_arrows_gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
-	gcAddGObjProcess(portrait_arrows_gobj, mnVSRecordUpdatePortraitArrowsDisplay, 1, 1);
+	gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_PRIORITY_DEFAULT);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
+	gcAddGObjProcess(gobj, mnVSRecordPortraitArrowsProcUpdate, nGCProcessKindFunc, 1);
 
 	// left arrow
-	portrait_arrows_sobj = lbCommonMakeSObjForGObj(portrait_arrows_gobj, lbRelocGetFileData(void*, sMNVSRecordFiles[1], &lMNDataCommonArrowLeftSprite));
-	portrait_arrows_sobj->sprite.attr &= ~SP_FASTCOPY;
-	portrait_arrows_sobj->sprite.attr |= SP_TRANSPARENT;
-	portrait_arrows_sobj->sprite.red = 0xE3;
-	portrait_arrows_sobj->sprite.green = 0x7D;
-	portrait_arrows_sobj->sprite.blue = 0xC;
-	portrait_arrows_sobj->pos.x = 40.0f;
-	portrait_arrows_sobj->pos.y = 78.0f;
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSRecordFiles[1], &lMNDataCommonArrowLeftSprite));
+
+	sobj->sprite.attr &= ~SP_FASTCOPY;
+	sobj->sprite.attr |= SP_TRANSPARENT;
+
+	sobj->sprite.red = 0xE3;
+	sobj->sprite.green = 0x7D;
+	sobj->sprite.blue = 0x0C;
+
+	sobj->pos.x = 40.0F;
+	sobj->pos.y = 78.0F;
 
 	// right arrow
-	portrait_arrows_sobj = lbCommonMakeSObjForGObj(portrait_arrows_gobj, lbRelocGetFileData(void*, sMNVSRecordFiles[1], &lMNDataCommonArrowRightSprite));
-	portrait_arrows_sobj->sprite.attr &= ~SP_FASTCOPY;
-	portrait_arrows_sobj->sprite.attr |= SP_TRANSPARENT;
-	portrait_arrows_sobj->sprite.red = 0xE3;
-	portrait_arrows_sobj->sprite.green = 0x7D;
-	portrait_arrows_sobj->sprite.blue = 0xC;
-	portrait_arrows_sobj->pos.x = 105.0f;
-	portrait_arrows_sobj->pos.y = 78.0f;
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSRecordFiles[1], &lMNDataCommonArrowRightSprite));
+
+	sobj->sprite.attr &= ~SP_FASTCOPY;
+	sobj->sprite.attr |= SP_TRANSPARENT;
+
+	sobj->sprite.red = 0xE3;
+	sobj->sprite.green = 0x7D;
+	sobj->sprite.blue = 0x0C;
+
+	sobj->pos.x = 105.0F;
+	sobj->pos.y = 78.0F;
 }
 
 // 0x80132BA4
-void mnVSRecordUpdateResortArrowsDisplay(GObj* resort_arrows_gobj)
+void mnVSRecordResortArrowsProcUpdate(GObj *gobj)
 {
-	resort_arrows_gobj->flags = ((sMNVSRecordStatsKind == nMNVSRecordKindBattleScore) || (sMNVSRecordStatsKind == nMNVSRecordKindRanking)) ? 0 : 1;
+	gobj->flags =
+	(
+		(sMNVSRecordStatsKind == nMNVSRecordKindBattleScore) ||
+		(sMNVSRecordStatsKind == nMNVSRecordKindRanking)
+	)
+	? GOBJ_FLAG_NONE : GOBJ_FLAG_HIDDEN;
 }
 
 // 0x80132BD4
-void mnVSRecordMakeResortArrows()
+void mnVSRecordMakeResortArrows(void)
 {
-	GObj* resort_arrows_gobj;
-	SObj* resort_arrows_sobj;
+	GObj *gobj;
+	SObj *sobj;
 
-	resort_arrows_gobj = gcMakeGObjSPAfter(0, 0, 2, 0x80000000);
-	gcAddGObjDisplay(resort_arrows_gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
-	gcAddGObjProcess(resort_arrows_gobj, mnVSRecordUpdateResortArrowsDisplay, 1, 1);
+	gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_PRIORITY_DEFAULT);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
+	gcAddGObjProcess(gobj, mnVSRecordResortArrowsProcUpdate, nGCProcessKindFunc, 1);
 
-	resort_arrows_sobj = lbCommonMakeSObjForGObj(resort_arrows_gobj, lbRelocGetFileData(void*, sMNVSRecordFiles[0], &FILE_01F_DOUBLE_DOWN_ARROW_IMAGE_OFFSET));
-	resort_arrows_sobj->sprite.attr &= ~SP_FASTCOPY;
-	resort_arrows_sobj->sprite.attr |= SP_TRANSPARENT;
-	resort_arrows_sobj->pos.x = 281.0f;
-	resort_arrows_sobj->pos.y = 39.0f;
-	resort_arrows_sobj->sprite.red = 0xE3;
-	resort_arrows_sobj->sprite.green = 0x7D;
-	resort_arrows_sobj->sprite.blue = 0xC;
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSRecordFiles[0], &FILE_01F_DOUBLE_DOWN_ARROW_IMAGE_OFFSET));
+
+	sobj->sprite.attr &= ~SP_FASTCOPY;
+	sobj->sprite.attr |= SP_TRANSPARENT;
+
+	sobj->pos.x = 281.0F;
+	sobj->pos.y = 39.0F;
+
+	sobj->sprite.red = 0xE3;
+	sobj->sprite.green = 0x7D;
+	sobj->sprite.blue = 0xC;
 }
 
 // 0x80132C9C
-void mnVSRecordUpdateColumnArrowsDisplay(GObj* column_arrows_gobj)
+void mnVSRecordColumnArrowsProcUpdate(GObj *gobj)
 {
-	column_arrows_gobj->flags = (sMNVSRecordStatsKind == nMNVSRecordKindRanking) ? 0 : 1;
+	gobj->flags = (sMNVSRecordStatsKind == nMNVSRecordKindRanking) ? GOBJ_FLAG_NONE : GOBJ_FLAG_HIDDEN;
 }
 
 // 0x80132CC8
-void mnVSRecordMakeColumnArrows()
+void mnVSRecordMakeColumnArrows(void)
 {
-	GObj* column_arrows_gobj;
-	SObj* column_arrows_sobj;
+	GObj *gobj;
+	SObj *sobj;
 
-	column_arrows_gobj = gcMakeGObjSPAfter(0, 0, 2, 0x80000000);
-	gcAddGObjDisplay(column_arrows_gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
-	gcAddGObjProcess(column_arrows_gobj, mnVSRecordUpdateColumnArrowsDisplay, 1, 1);
+	gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_PRIORITY_DEFAULT);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
+	gcAddGObjProcess(gobj, mnVSRecordColumnArrowsProcUpdate, nGCProcessKindFunc, 1);
 
-	column_arrows_sobj = lbCommonMakeSObjForGObj(column_arrows_gobj, lbRelocGetFileData(void*, sMNVSRecordFiles[0], &FILE_01F_LEFT_AND_RIGHT_ARROW_IMAGE_OFFSET));
-	column_arrows_sobj->sprite.attr &= ~SP_FASTCOPY;
-	column_arrows_sobj->sprite.attr |= SP_TRANSPARENT;
-	column_arrows_sobj->sprite.red = 0xE3;
-	column_arrows_sobj->sprite.green = 0x7D;
-	column_arrows_sobj->sprite.blue = 0xC;
-	column_arrows_sobj->pos.x = 25.0f;
-	column_arrows_sobj->pos.y = 47.0f;
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSRecordFiles[0], &FILE_01F_LEFT_AND_RIGHT_ARROW_IMAGE_OFFSET));
+
+	sobj->sprite.attr &= ~SP_FASTCOPY;
+	sobj->sprite.attr |= SP_TRANSPARENT;
+
+	sobj->sprite.red = 0xE3;
+	sobj->sprite.green = 0x7D;
+	sobj->sprite.blue = 0x0C;
+
+	sobj->pos.x = 25.0F;
+	sobj->pos.y = 47.0F;
 }
 
 // 0x80132D90
-void mnVSRecordRenderBattleScoreGrid()
+void mnVSRecordDrawBattleScoreGrid(void)
 {
 	s32 i;
 
 	for (i = 0; i < 14; i++)
+	{
 		gDPFillRectangle(gSYTaskmanDLHeads[0]++, 24, 48 + i * 13, 295, 48 + i * 13);
-
+	}
 	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 24, 48, 24, 217);
 
-	for (i = 0; i < 14; i += 1)
+	for (i = 0; i < 14; i++)
 	{
 		if (i == 13)
 		{
 			gDPFillRectangle(gSYTaskmanDLHeads[0]++, i * 18 + 61, 48, i * 18 + 61, 217);
 		}
-		else
-			gDPFillRectangle(gSYTaskmanDLHeads[0]++, i * 18 + 48, 48, i * 18 + 48, 217);
+		else gDPFillRectangle(gSYTaskmanDLHeads[0]++, i * 18 + 48, 48, i * 18 + 48, 217);
 	}
 }
 
 // 0x80132EE4
-void mnVSRecordRenderRankingGrid(s32 first_column)
+void mnVSRecordDrawRankingGrid(s32 first_column)
 {
 	s32 x;
-	s32 indexes[ARRAY_COUNT(dMNVSRecordRankingColumnWidths)];
+	s32 ids[ARRAY_COUNT(dMNVSRecordRankingColumnWidths)];
 	s32 i;
 
-	for (i = 0; i < ARRAY_COUNT(indexes); i++)
+	for (i = 0; i < ARRAY_COUNT(ids); i++)
 	{
 		if (first_column >= ARRAY_COUNT(dMNVSRecordRankingColumnWidths))
+		{
 			first_column -= ARRAY_COUNT(dMNVSRecordRankingColumnWidths);
-
-		indexes[i] = first_column++;
+		}
+		ids[i] = first_column++;
 	}
 	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 24, 46, 295, 46);
 
 	for (i = 0; i < 13; i++)
+	{
 		gDPFillRectangle(gSYTaskmanDLHeads[0]++, 24, 61 + i * 13, 295, 61 + i * 13);
-
+	}
 	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 24, 46, 24, 217);
 
 	x = 48;
 
-	for(i = 0; i < ARRAY_COUNT(indexes) + 1; i++)
+	for(i = 0; i < ARRAY_COUNT(ids) + 1; i++)
 	{
 		gDPFillRectangle(gSYTaskmanDLHeads[0]++, x, 46, x, 217);
 
-		if (i < ARRAY_COUNT(indexes))
-			x += dMNVSRecordRankingColumnWidths[indexes[i]];
+		if (i < ARRAY_COUNT(ids))
+		{
+			x += dMNVSRecordRankingColumnWidths[ids[i]];
+		}
 	}
 }
 
 // 0x801330FC
-void mnVSRecordRenderIndividualGrid()
+void mnVSRecordDrawIndividualGrid(void)
 {
 	s32 i;
 
 	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 26, 144, 293, 144);
 
 	for (i = 0; i < 5; i++)
+	{
 		gDPFillRectangle(gSYTaskmanDLHeads[0]++, 26, 157 + i * 12, 293, 157 + i * 12);
-
+	}
 	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 26, 144, 26, 205);
 
 	for (i = 0; i < 13; i++)
+	{
 		gDPFillRectangle(gSYTaskmanDLHeads[0]++, 65 + i * 19, 144, 65 + i * 19, 205);
+	}
 }
 
 // 0x8013328C
-void mnVSRecordRenderTableGrid(GObj* table_border_gobj)
+void mnVSRecordTableGridFuncDisplay(GObj *gobj)
 {
 	s32 unused;
 
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_FILL);
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
-	gDPSetFillColor(gSYTaskmanDLHeads[0]++, syVideoGetFillColor(0x62626AFF));
+	gDPSetFillColor(gSYTaskmanDLHeads[0]++, syVideoGetFillColor(GPACK_RGBA8888(0x62, 0x62, 0x6A, 0xFF)));
 
 	switch (sMNVSRecordStatsKind)
 	{
-		case nMNVSRecordKindBattleScore:
-			mnVSRecordRenderBattleScoreGrid();
-			break;
-		case nMNVSRecordKindRanking:
-			mnVSRecordRenderRankingGrid(sMNVSRecordFirstColumn);
-			break;
-		case nMNVSRecordKindIndiv:
-			mnVSRecordRenderIndividualGrid();
-			break;
+	case nMNVSRecordKindBattleScore:
+		mnVSRecordDrawBattleScoreGrid();
+		break;
+	
+	case nMNVSRecordKindRanking:
+		mnVSRecordDrawRankingGrid(sMNVSRecordFirstColumn);
+		break;
+		
+	case nMNVSRecordKindIndiv:
+		mnVSRecordDrawIndividualGrid();
+		break;
 	}
-
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
@@ -783,232 +828,247 @@ void mnVSRecordRenderTableGrid(GObj* table_border_gobj)
 }
 
 // 0x801333EC
-void mnVSRecordMakeStatsGrid()
+void mnVSRecordMakeStatsGrid(void)
 {
-	GObj* table_border_gobj = gcMakeGObjSPAfter(0, 0, 2, 0x80000000);
-	gcAddGObjDisplay(table_border_gobj, mnVSRecordRenderTableGrid, 3, GOBJ_PRIORITY_DEFAULT, ~0);
+	GObj *gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_PRIORITY_DEFAULT);
+	gcAddGObjDisplay(gobj, mnVSRecordTableGridFuncDisplay, 3, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
 // 0x80133438
-void mnVSRecordSetIconPositionForColumn(SObj* icon_sobj, s32 column)
+void mnVSRecordSetIconPositionForColumn(SObj *sobj, s32 column)
 {
 	f32 x;
 	f32 y;
 	s32 fkind;
 	s32 col_width;
-	Vec2f offsets[12] = {
-
-		{ 1.0f, -5.0f }, { 1.0f, -6.0f }, { 0.0f, -6.0f }, { 0.0f, -4.0f },
-		{ 1.0f, -6.0f }, { 0.0f, -5.0f }, { 1.0f, -5.0f }, { 0.0f, -3.0f },
-		{ 0.0f,  1.0f }, { 0.0f, -5.0f }, { 0.0f, -1.0f }, { 0.0f, -2.0f }
+	Vec2f offsets[/* */] =
+	{
+		{ 1.0F, -5.0F }, { 1.0F, -6.0F },
+		{ 0.0F, -6.0F }, { 0.0F, -4.0F },
+		{ 1.0F, -6.0F }, { 0.0F, -5.0F },
+		{ 1.0F, -5.0F }, { 0.0F, -3.0F },
+		{ 0.0F,  1.0F }, { 0.0F, -5.0F },
+		{ 0.0F, -1.0F }, { 0.0F, -2.0F }
 	};
 
 	switch (sMNVSRecordStatsKind)
 	{
-		case nMNVSRecordKindBattleScore:
-			col_width = 18;
-			x = 49.0f;
-			y = 49.0f;
-			fkind = sMNVSRecordBattleScoreFighterKinds[column];
-			break;
-		case nMNVSRecordKindIndiv:
-			col_width = 19;
-			x = 66.0f;
-			y = 145.0f;
-			fkind = sMNVSRecordIndivFighterKinds[column];
-			break;
-	}
+	case nMNVSRecordKindBattleScore:
+		col_width = 18;
+		x = 49.0F;
+		y = 49.0F;
+		fkind = sMNVSRecordBattleScoreFighterKinds[column];
+		break;
 
+	case nMNVSRecordKindIndiv:
+		col_width = 19;
+		x = 66.0F;
+		y = 145.0F;
+		fkind = sMNVSRecordIndivFighterKinds[column];
+		break;
+	}
 	if (mnVSRecordCheckHaveFighterKind(fkind))
 	{
-		icon_sobj->pos.x = x + (col_width * column) + offsets[fkind].x;
-		icon_sobj->pos.y = y + offsets[fkind].y;
+		sobj->pos.x = x + (col_width * column) + offsets[fkind].x;
+		sobj->pos.y = y + offsets[fkind].y;
 	}
-	else {
-		icon_sobj->pos.x = x + (col_width * column) + 5.0f;
-		icon_sobj->pos.y = y;
+	else
+	{
+		sobj->pos.x = x + (col_width * column) + 5.0F;
+		sobj->pos.y = y;
 	}
 }
 
 // 0x801335A0
-SObj* mnVSRecordMakeLockedIcon(GObj* icon_gobj)
+SObj* mnVSRecordMakeLockedIcon(GObj *gobj)
 {
-	SObj* icon_sobj;
+	SObj* sobj;
 
-	icon_sobj = lbCommonMakeSObjForGObj(icon_gobj, lbRelocGetFileData(void*, sMNVSRecordFiles[0], &FILE_01F_QUESTION_MARK_IMAGE_OFFSET));
-	icon_sobj->sprite.attr &= ~SP_FASTCOPY;
-	icon_sobj->sprite.attr |= SP_TRANSPARENT;
-	icon_sobj->sprite.red = 0x8A;
-	icon_sobj->sprite.green = 0x88;
-	icon_sobj->sprite.blue = 0x92;
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSRecordFiles[0], &FILE_01F_QUESTION_MARK_IMAGE_OFFSET));
 
-	return icon_sobj;
+	sobj->sprite.attr &= ~SP_FASTCOPY;
+	sobj->sprite.attr |= SP_TRANSPARENT;
+
+	sobj->sprite.red = 0x8A;
+	sobj->sprite.green = 0x88;
+	sobj->sprite.blue = 0x92;
+
+	return sobj;
 }
 
 // 0x801335FC
-void mnVSRecordMakeColumnIcons(s32 icon_gobj)
+void mnVSRecordMakeColumnIcons(GObj *gobj)
 {
-	intptr_t offsets[12] = {
-
+	intptr_t offsets[/* */] =
+	{
 		0x1918, 0x1A98, 0x1CA8, 0x1E88,
 		0x2008, 0x2370, 0x2178, 0x2540,
 		0x2930, 0x2B30, 0x27C8, 0x2698
 	};
 	s32 i;
-	SObj *icon_sobj;
+	SObj *sobj;
 	s32 *fkinds;
 
 	switch (sMNVSRecordStatsKind)
 	{
-		case nMNVSRecordKindBattleScore:
-			fkinds = sMNVSRecordBattleScoreFighterKinds;
-			break;
-		case nMNVSRecordKindIndiv:
-			fkinds = sMNVSRecordIndivFighterKinds;
-			break;
-	}
+	case nMNVSRecordKindBattleScore:
+		fkinds = sMNVSRecordBattleScoreFighterKinds;
+		break;
 
+	case nMNVSRecordKindIndiv:
+		fkinds = sMNVSRecordIndivFighterKinds;
+		break;
+	}
 	for (i = 0; i < ARRAY_COUNT(offsets); i++)
 	{
-		if (mnVSRecordCheckHaveFighterKind(fkinds[i]))
+		if (mnVSRecordCheckHaveFighterKind(fkinds[i]) != FALSE)
 		{
-			icon_sobj = lbCommonMakeSObjForGObj(icon_gobj, lbRelocGetFileData(Sprite*, sMNVSRecordFiles[0], offsets[fkinds[i]]));
-			icon_sobj->sprite.attr &= ~SP_FASTCOPY;
-			icon_sobj->sprite.attr |= SP_TRANSPARENT;
-		}
-		else icon_sobj = mnVSRecordMakeLockedIcon(icon_gobj);
+			sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSRecordFiles[0], offsets[fkinds[i]]));
 
-		mnVSRecordSetIconPositionForColumn(icon_sobj, i);
+			sobj->sprite.attr &= ~SP_FASTCOPY;
+			sobj->sprite.attr |= SP_TRANSPARENT;
+		}
+		else sobj = mnVSRecordMakeLockedIcon(gobj);
+
+		mnVSRecordSetIconPositionForColumn(sobj, i);
 	}
 }
 
 // 0x80133740
-void mnVSRecordSetIconPositionForRow(SObj* icon_sobj, s32 row)
+void mnVSRecordSetRowIconPosition(SObj *sobj, s32 row)
 {
-	f32 x = 25.0f;
-	f32 y = 62.0f;
+	f32 x = 25.0F;
+	f32 y = 62.0F;
 	s32 fkind;
-	Vec2f offsets[12] =
+	Vec2f offsets[/* */] =
 	{
-
-		{ 5.0f, 0.0f }, { 5.0f, 0.0f }, { 0.0f, 0.0f }, { 0.0f, 0.0f },
-		{ 3.0f, 0.0f }, { 5.0f, 0.0f }, { 5.0f, 0.0f }, { 1.0f, 0.0f },
-		{ 0.0f, 1.0f }, { 0.0f, 0.0f }, { 4.0f, 0.0f }, { 3.0f, 0.0f }
+		{ 5.0F, 0.0F }, { 5.0F, 0.0F },
+		{ 0.0F, 0.0F }, { 0.0F, 0.0F },
+		{ 3.0F, 0.0F }, { 5.0F, 0.0F },
+		{ 5.0F, 0.0F }, { 1.0F, 0.0F },
+		{ 0.0F, 1.0F }, { 0.0F, 0.0F },
+		{ 4.0F, 0.0F }, { 3.0F, 0.0F }
 	};
 
 	switch (sMNVSRecordStatsKind)
 	{
-		case nMNVSRecordKindBattleScore:
-			fkind = sMNVSRecordBattleScoreFighterKinds[row];
-			break;
-		case nMNVSRecordKindRanking:
-			fkind = sMNVSRecordRankingFighterKindOrder[row];
-			break;
+	case nMNVSRecordKindBattleScore:
+		fkind = sMNVSRecordBattleScoreFighterKinds[row];
+		break;
+		
+	case nMNVSRecordKindRanking:
+		fkind = sMNVSRecordRankingFighterKindOrder[row];
+		break;
 	}
-
-	if (mnVSRecordCheckHaveFighterKind(fkind))
+	if (mnVSRecordCheckHaveFighterKind(fkind) != FALSE)
 	{
-		icon_sobj->pos.x = x + offsets[fkind].x;
-		icon_sobj->pos.y = y + (row * 13) + offsets[fkind].y;
+		sobj->pos.x = x + offsets[fkind].x;
+		sobj->pos.y = y + (row * 13) + offsets[fkind].y;
 	}
 	else
 	{
-		icon_sobj->pos.x = x + 8.0f;
-		icon_sobj->pos.y = y + (row * 13);
+		sobj->pos.x = x + 8.0F;
+		sobj->pos.y = y + (row * 13);
 	}
 }
 
 // 0x8013388C
-void mnVSRecordMakeRowIcons(GObj* icon_gobj)
+void mnVSRecordMakeRowIcons(GObj *gobj)
 {
-	intptr_t offsets[12] = {
-
+	intptr_t offsets[/* */] =
+	{
 		0x2D18, 0x2EF8, 0x3198, 0x3438,
 		0x3618, 0x3A38, 0x37F8, 0x3CD8,
 		0x4308, 0x45A8, 0x4098, 0x3EB8
 	};
 	s32 i;
-	SObj* icon_sobj;
-	s32* fkinds;
-	s32 foo;
+	SObj *sobj;
+	s32 *fkinds;
+	s32 unused;
 
 	switch (sMNVSRecordStatsKind)
 	{
-		case nMNVSRecordKindBattleScore:
-			fkinds = sMNVSRecordBattleScoreFighterKinds;
-			break;
-		case nMNVSRecordKindRanking:
-			fkinds = sMNVSRecordRankingFighterKindOrder;
-			break;
+	case nMNVSRecordKindBattleScore:
+		fkinds = sMNVSRecordBattleScoreFighterKinds;
+		break;
+	
+	case nMNVSRecordKindRanking:
+		fkinds = sMNVSRecordRankingFighterKindOrder;
+		break;
 	}
-
 	for (i = 0; i < ARRAY_COUNT(offsets); i++)
 	{
-		if (mnVSRecordCheckHaveFighterKind(fkinds[i]))
+		if (mnVSRecordCheckHaveFighterKind(fkinds[i]) != FALSE)
 		{
-			icon_sobj = lbCommonMakeSObjForGObj(icon_gobj, lbRelocGetFileData(Sprite*, sMNVSRecordFiles[0], offsets[fkinds[i]]));
-			icon_sobj->sprite.attr &= ~SP_FASTCOPY;
-			icon_sobj->sprite.attr |= SP_TRANSPARENT;
-		}
-		else
-			icon_sobj = mnVSRecordMakeLockedIcon(icon_gobj);
+			sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSRecordFiles[0], offsets[fkinds[i]]));
 
-		mnVSRecordSetIconPositionForRow(icon_sobj, i);
+			sobj->sprite.attr &= ~SP_FASTCOPY;
+			sobj->sprite.attr |= SP_TRANSPARENT;
+		}
+		else sobj = mnVSRecordMakeLockedIcon(gobj);
+
+		mnVSRecordSetRowIconPosition(sobj, i);
 	}
 }
 
 // 0x801339D0
 s32 mnVSRecordGetRanking(s32 fkind)
 {
-	s32 fkinds_ordered[12];
-	s32 rank[12];
+	s32 fkinds[(nFTKindPlayableEnd - nFTKindPlayableStart) + 1];
+	s32 rank[(nFTKindPlayableEnd - nFTKindPlayableStart) + 1];
 	s32 current_order;
 	s32 i;
-	f64 stats[12];
-	s32 foo, bar;
+	f64 stats[(nFTKindPlayableEnd - nFTKindPlayableStart) + 1];
+	s32 unused[2];
 
 	for (i = nFTKindPlayableStart; i <= nFTKindPlayableEnd; i++)
-		fkinds_ordered[i] = mnVSRecordGetFighterKindByIndex(i);
-
+	{
+		fkinds[i] = mnVSRecordGetFighterKindByIndex(i);
+	}
 	for (i = nFTKindPlayableStart; i <= nFTKindPlayableEnd; i++)
+	{
 		stats[i] = mnVSRecordGetWinPercent(i);
-
+	}
 	for (i = nFTKindPlayableStart; i <= nFTKindPlayableEnd; i++)
 	{
 		s32 j;
 
-		for (j = i + 1; j < 12; j++)
+		for (j = i + 1; j <= nFTKindPlayableEnd; j++)
 		{
-			if ((mnVSRecordCheckHaveFighterKind(fkinds_ordered[i]) == FALSE) ||
-				(stats[fkinds_ordered[i]] < stats[fkinds_ordered[j]]) &&
-				(mnVSRecordCheckHaveFighterKind(fkinds_ordered[j])))
+			if
+			(
+				(mnVSRecordCheckHaveFighterKind(fkinds[i]) == FALSE) ||
+				(stats[fkinds[i]] < stats[fkinds[j]]) &&
+				(mnVSRecordCheckHaveFighterKind(fkinds[j]) != FALSE)
+			)
 			{
-				s32 prev = fkinds_ordered[i];
-				fkinds_ordered[i] = fkinds_ordered[j];
-				fkinds_ordered[j] = prev;
+				s32 prev = fkinds[i];
+
+				fkinds[i] = fkinds[j];
+				fkinds[j] = prev;
 			}
 		}
 	}
-
 	current_order = 1;
 
 	for (i = nFTKindPlayableStart; i <= nFTKindPlayableEnd; i++)
 	{
-		rank[fkinds_ordered[i]] = current_order;
+		rank[fkinds[i]] = current_order;
 
-		if (i != 11 && stats[fkinds_ordered[i]] != stats[fkinds_ordered[i + 1]])
-			current_order  = i + 2;
+		if ((i != nFTKindPlayableEnd) && (stats[fkinds[i]] != stats[fkinds[i + 1]]))
+		{
+			current_order = i + 2;
+		}
 	}
-
 	return rank[fkind];
 }
 
 // 0x80133C60
-void mnVSRecordMakePortraitAndStats(GObj* gobj, s32 fkind)
+void mnVSRecordMakePortraitStats(GObj* gobj, s32 fkind)
 {
 	SObj* sobj;
-	intptr_t offsets[12] = {
-
+	intptr_t offsets[/* */] =
+	{
 		0x4728, 0x0D068, 0x08BC8, 0x0AE18,
 		0x6978, 0x11508, 0x13758, 0x19E48,
 		0xF2B8, 0x159A8, 0x1C098, 0x17BF8
@@ -1053,7 +1113,7 @@ void mnVSRecordMakePortraitAndStats(GObj* gobj, s32 fkind)
 	mnVSRecordMakeDigits(gobj, mnVSRecordGetUsePercent(fkind) * 10, 265, 66, digit_colors, TRUE, TRUE, 3, FALSE);
 
 	mnVSRecordDrawString(gobj, "ATTACK 3TOTAL", 149, 78, string_colors);
-	mnVSRecordMakeDigits(gobj, gSCManagerBackupData.vs_records[fkind].damage_dealt, 265, 76, digit_colors, FALSE, TRUE, 6, FALSE);
+	mnVSRecordMakeDigits(gobj, gSCManagerBackupData.vs_records[fkind].damage_given, 265, 76, digit_colors, FALSE, TRUE, 6, FALSE);
 
 	mnVSRecordDrawString(gobj, "DAMAGE TOTAL", 150, 86, string_colors);
 	mnVSRecordMakeDigits(gobj, gSCManagerBackupData.vs_records[fkind].damage_taken, 265, 84, digit_colors, FALSE, TRUE, 6, FALSE);
@@ -1062,86 +1122,111 @@ void mnVSRecordMakePortraitAndStats(GObj* gobj, s32 fkind)
 // 0x80133FE8
 void mnVSRecordSortData(s32 stats_kind)
 {
-	s32 fkinds_ordered[12];
-	f64 stats[12];
+	s32 fkinds[(nFTKindPlayableEnd - nFTKindPlayableStart) + 1];
+	f64 stats[(nFTKindPlayableEnd - nFTKindPlayableStart) + 1];
 	s32 i;
 
 	for (i = nFTKindPlayableStart; i <= nFTKindPlayableEnd; i++)
-		fkinds_ordered[i] = mnVSRecordGetFighterKindByIndex(i);
-
+	{
+		fkinds[i] = mnVSRecordGetFighterKindByIndex(i);
+	}
 	switch (stats_kind)
 	{
-		case nMNVSRecordKindBattleScore:
-			for (i = nFTKindPlayableStart; i <= nFTKindPlayableEnd; i++)
-				stats[i] = mnVSRecordGetKOs(i);
-			break;
+	case nMNVSRecordKindBattleScore:
+		for (i = nFTKindPlayableStart; i <= nFTKindPlayableEnd; i++)
+		{
+			stats[i] = mnVSRecordGetKOs(i);
+		}
+		break;
+
 		case nMNVSRecordKindRanking:
 			for (i = nFTKindPlayableStart; i <= nFTKindPlayableEnd; i++)
 			{
-				switch (sMNVSRecordFirstColumn) {
-					case vsRecordsRankingColumnKindWinPercent:
-						stats[i] = mnVSRecordGetWinPercent(i);
-						break;
-					case vsRecordsRankingColumnKindKOs:
-						stats[i] = mnVSRecordGetKOs(i);
-						break;
-					case vsRecordsRankingColumnKindTKOs:
-						stats[i] = mnVSRecordGetTKOs(i);
-						break;
-					case vsRecordsRankingColumnKindSDPercent:
-						stats[i] = mnVSRecordGetSelfDestructsPercent(i);
-						break;
-					case vsRecordsRankingColumnKindTime:
-						stats[i] = gSCManagerBackupData.vs_records[i].time_used;
-						break;
-					case vsRecordsRankingColumnKindUsePercent:
-						stats[i] = mnVSRecordGetUsePercent(i);
-						break;
-					case vsRecordsRankingColumnKindAverage:
-						stats[i] = mnVSRecordGetAverage(i);
-						break;
+				switch (sMNVSRecordFirstColumn)
+				{
+				case vsRecordsRankingColumnKindWinPercent:
+					stats[i] = mnVSRecordGetWinPercent(i);
+					break;
+
+				case vsRecordsRankingColumnKindKOs:
+					stats[i] = mnVSRecordGetKOs(i);
+					break;
+					
+				case vsRecordsRankingColumnKindTKOs:
+					stats[i] = mnVSRecordGetTKOs(i);
+					break;
+				
+				case vsRecordsRankingColumnKindSDPercent:
+					stats[i] = mnVSRecordGetSelfDestructsPercent(i);
+					break;
+				
+				case vsRecordsRankingColumnKindTime:
+					stats[i] = gSCManagerBackupData.vs_records[i].time_used;
+					break;
+					
+				case vsRecordsRankingColumnKindUsePercent:
+					stats[i] = mnVSRecordGetUsePercent(i);
+					break;
+					
+				case vsRecordsRankingColumnKindAverage:
+					stats[i] = mnVSRecordGetAverage(i);
+					break;
 				}
 			}
 			break;
-		case nMNVSRecordKindIndiv:
-			for (i = nFTKindPlayableStart; i <= nFTKindPlayableEnd; i++)
-				stats[i] = mnVSRecordGetWinPercentAgainst(sMNVSRecordRankingFighterKindOrder[sMNVSRecordCurrentIndex], i);
-			break;
-	}
 
+	case nMNVSRecordKindIndiv:
+		for (i = nFTKindPlayableStart; i <= nFTKindPlayableEnd; i++)
+		{
+			stats[i] = mnVSRecordGetWinPercentAgainst(sMNVSRecordRankingFighterKindOrder[sMNVSRecordCurrentIndex], i);
+		}
+		break;
+	}
 	for (i = nFTKindPlayableStart; i <= nFTKindPlayableEnd; i++)
 	{
 		s32 j;
 
-		for (j = i + 1; j < 12; j++)
+		for (j = i + 1; j <= nFTKindPlayableEnd; j++)
 		{
-			if ((mnVSRecordCheckHaveFighterKind(fkinds_ordered[i]) == FALSE) ||
-				(stats[fkinds_ordered[i]] < stats[fkinds_ordered[j]]) &&
-				(mnVSRecordCheckHaveFighterKind(fkinds_ordered[j])))
+			if
+			(
+				(mnVSRecordCheckHaveFighterKind(fkinds[i]) == FALSE) ||
+				(stats[fkinds[i]] < stats[fkinds[j]]) &&
+				(mnVSRecordCheckHaveFighterKind(fkinds[j]) != FALSE)
+			)
 			{
-				s32 prev = fkinds_ordered[i];
-				fkinds_ordered[i] = fkinds_ordered[j];
-				fkinds_ordered[j] = prev;
+				s32 prev = fkinds[i];
+
+				fkinds[i] = fkinds[j];
+				fkinds[j] = prev;
 			}
 		}
 	}
-
 	switch (stats_kind)
 	{
-		case nMNVSRecordKindBattleScore:
-			for (i = nFTKindPlayableStart; i <= nFTKindPlayableEnd; i++)
-				sMNVSRecordBattleScoreFighterKinds[i] = fkinds_ordered[i];
-			break;
-		case nMNVSRecordKindRanking:
-			for (i = nFTKindPlayableStart; i <= nFTKindPlayableEnd; i++)
-				sMNVSRecordRankingFighterKindOrder[i] = fkinds_ordered[i];
-			break;
-		case nMNVSRecordKindIndiv:
-			for (i = nFTKindPlayableStart; i <= nFTKindPlayableEnd; i++)
-				sMNVSRecordIndivFighterKinds[i] = fkinds_ordered[i];
-			break;
-		default:
-			break;
+	case nMNVSRecordKindBattleScore:
+		for (i = nFTKindPlayableStart; i <= nFTKindPlayableEnd; i++)
+		{
+			sMNVSRecordBattleScoreFighterKinds[i] = fkinds[i];
+		}
+		break;
+
+	case nMNVSRecordKindRanking:
+		for (i = nFTKindPlayableStart; i <= nFTKindPlayableEnd; i++)
+		{
+			sMNVSRecordRankingFighterKindOrder[i] = fkinds[i];
+		}
+		break;
+		
+	case nMNVSRecordKindIndiv:
+		for (i = nFTKindPlayableStart; i <= nFTKindPlayableEnd; i++)
+		{
+			sMNVSRecordIndivFighterKinds[i] = fkinds[i];
+		}
+		break;
+		
+	default:
+		break;
 	}
 }
 
@@ -1150,66 +1235,78 @@ GObj* mnVSRecordMakeBattleScoreTableValues()
 {
 	f32 x, y;
 	u32 colors[/* */] = { 0x00, 0x00, 0x00, 0xE5, 0xD1, 0x99 };
-	GObj* values_gobj;
+	GObj* gobj;
 	s32 i, j;
 
-	values_gobj = gcMakeGObjSPAfter(0, 0, 6, 0x80000000);
-	gcAddGObjDisplay(values_gobj, lbCommonDrawSObjAttr, 5, GOBJ_PRIORITY_DEFAULT, ~0);
+	gobj = gcMakeGObjSPAfter(0, NULL, 6, GOBJ_PRIORITY_DEFAULT);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 5, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	for (i = nFTKindPlayableStart; i <= nFTKindPlayableEnd; i++)
 	{
-		x = 66.0f;
+		x = 66.0F;
 		y = (i * 13);
 
 		if (mnVSRecordCheckHaveFighterKind(sMNVSRecordBattleScoreFighterKinds[i]))
 		{
-			for (j = 0; j < 12; j++)
+			for (j = nFTKindPlayableStart; j <= nFTKindPlayableEnd; j++)
 			{
 				if (mnVSRecordCheckHaveFighterKind(sMNVSRecordBattleScoreFighterKinds[j]))
 				{
-					mnVSRecordMakeDigits(values_gobj, gSCManagerBackupData.vs_records[sMNVSRecordBattleScoreFighterKinds[i]].ko_count[sMNVSRecordBattleScoreFighterKinds[j]], x + (j * 0x12), y + 65.0f, colors, FALSE, FALSE, 4, FALSE);
+					mnVSRecordMakeDigits
+					(
+						gobj,
+						gSCManagerBackupData.vs_records[sMNVSRecordBattleScoreFighterKinds[i]].ko_count[sMNVSRecordBattleScoreFighterKinds[j]],
+						x + (j * 18),
+						y + 65.0F,
+						colors,
+						FALSE,
+						FALSE,
+						4,
+						FALSE
+					);
 				}
 			}
-
-			mnVSRecordMakeDigits(values_gobj, mnVSRecordGetKOs(sMNVSRecordBattleScoreFighterKinds[i]), x + 216.0f + 10.0f, y + 65.0f, colors, FALSE, FALSE, 6, FALSE);
+			mnVSRecordMakeDigits(gobj, mnVSRecordGetKOs(sMNVSRecordBattleScoreFighterKinds[i]), x + 216.0F + 10.0F, y + 65.0F, colors, FALSE, FALSE, 6, FALSE);
 		}
 	}
-
-	return values_gobj;
+	return gobj;
 }
 
 // 0x80134610
-s32 mnVSRecordMakeBattleScoreTableHeaders()
+GObj* mnVSRecordMakeBattleScoreTableHeaders(void)
 {
-	GObj* headers_gobj;
-	SObj* headers_sobj;
+	GObj *gobj;
+	SObj *sobj;
 
-	headers_gobj = gcMakeGObjSPAfter(0, 0, 5, 0x80000000);
-	gcAddGObjDisplay(headers_gobj, lbCommonDrawSObjAttr, 4, GOBJ_PRIORITY_DEFAULT, ~0);
+	gobj = gcMakeGObjSPAfter(0, NULL, 5, GOBJ_PRIORITY_DEFAULT);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 4, GOBJ_PRIORITY_DEFAULT, ~0);
 
-	headers_sobj = lbCommonMakeSObjForGObj(headers_gobj, lbRelocGetFileData(void*, sMNVSRecordFiles[0], &FILE_01F_TOTAL_TEXTURE_IMAGE_OFFSET));
-	headers_sobj->sprite.attr &= ~SP_FASTCOPY;
-	headers_sobj->sprite.attr |= SP_TRANSPARENT;
-	headers_sobj->sprite.red = 0x8A;
-	headers_sobj->sprite.green = 0x88;
-	headers_sobj->sprite.blue = 0x92;
-	headers_sobj->pos.x = 264.0f;
-	headers_sobj->pos.y = 50.0f;
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSRecordFiles[0], &FILE_01F_TOTAL_TEXTURE_IMAGE_OFFSET));
 
-	mnVSRecordMakeRowIcons(headers_gobj);
-	mnVSRecordMakeColumnIcons(headers_gobj);
+	sobj->sprite.attr &= ~SP_FASTCOPY;
+	sobj->sprite.attr |= SP_TRANSPARENT;
 
-	return headers_gobj;
+	sobj->sprite.red = 0x8A;
+	sobj->sprite.green = 0x88;
+	sobj->sprite.blue = 0x92;
+
+	sobj->pos.x = 264.0F;
+	sobj->pos.y = 50.0F;
+
+	mnVSRecordMakeRowIcons(gobj);
+	mnVSRecordMakeColumnIcons(gobj);
+
+	return gobj;
 }
 
 // 0x801346D8
-void mnVSRecordRenderRankingRowHighlight(GObj* row_highlight_gobj)
+void mnVSRecordRankingHighlightFuncDisplay(GObj *gobj)
 {
 	if (sMNVSRecordStatsKind == nMNVSRecordKindRanking)
 	{
 		gDPPipeSync(gSYTaskmanDLHeads[0]++);
 		gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
-		gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 39, 0, 255, 255);
+		gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x27, 0x00, 0xFF, 0xFF);
 		gDPSetCombineLERP(gSYTaskmanDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
 		gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 		gDPFillRectangle(gSYTaskmanDLHeads[0]++, 24, 62 + (sMNVSRecordCurrentIndex * 13), 295, 74 + (sMNVSRecordCurrentIndex * 13));
@@ -1222,136 +1319,227 @@ void mnVSRecordRenderRankingRowHighlight(GObj* row_highlight_gobj)
 }
 
 // 0x80134868
-void mnVSRecordMakeRankingRowHighlight()
+void mnVSRecordMakeRankingHighlight(void)
 {
-	GObj* row_highlight_gobj = gcMakeGObjSPAfter(0, 0, 3, 0x80000000);
-	gcAddGObjDisplay(row_highlight_gobj, mnVSRecordRenderRankingRowHighlight, 2, GOBJ_PRIORITY_DEFAULT, ~0);
+	gcAddGObjDisplay(gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT), mnVSRecordRankingHighlightFuncDisplay, 2, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
 // 0x801348B4
 f32 mnVSRecordGetAverage(s32 fkind)
 {
 	if (gSCManagerBackupData.vs_records[fkind].games_played != 0)
+	{
 		return (f32) gSCManagerBackupData.vs_records[fkind].player_count_tally / gSCManagerBackupData.vs_records[fkind].games_played;
-	else
-		return 0.0f;
+	}
+	else return 0.0F;
 }
 
 // 0x80134934
-s32 mnVSRecordGetGamesPlayedSum()
+s32 mnVSRecordGetGamesPlayedSum(void)
 {
 	s32 i;
-	s32 total_games_played = 0;
+	s32 total = 0;
 
 	for (i = nFTKindPlayableStart; i <= nFTKindPlayableEnd; i++)
-		total_games_played += gSCManagerBackupData.vs_records[i].games_played;
-
-	return total_games_played;
+	{
+		total += gSCManagerBackupData.vs_records[i].games_played;
+	}
+	return total;
 }
 
 // 0x80134978
 f32 mnVSRecordGetUsePercent(s32 fkind)
 {
-	f32 use_percentage;
+	f32 use_percent;
 
-	if (mnVSRecordGetGamesPlayedSum() != 0.0f)
-		use_percentage = gSCManagerBackupData.vs_records[fkind].games_played / (f32) mnVSRecordGetGamesPlayedSum();
-	else
-		use_percentage = 0.0f;
+	if (mnVSRecordGetGamesPlayedSum() != 0.0F)
+	{
+		use_percent = gSCManagerBackupData.vs_records[fkind].games_played / (f32) mnVSRecordGetGamesPlayedSum();
+	}
+	else use_percent = 0.0F;
 
-	return use_percentage * 100.0f;
+	return use_percent * 100.0F;
 }
 
 // 0x80134A1C
 f32 mnVSRecordGetSelfDestructsPercent(s32 fkind)
 {
-	f32 sd_percentage;
-	f32 total_kos = mnVSRecordGetTKOs(fkind);
+	f32 selfdestruct_percent;
+	f32 total_tkos = mnVSRecordGetTKOs(fkind);
 	f32 selfdestructs = gSCManagerBackupData.vs_records[fkind].selfdestructs;
 
-	if (total_kos != 0.0f)
-		sd_percentage = selfdestructs / total_kos;
-	else
-		sd_percentage = 0.0f;
+	if (total_tkos != 0.0F)
+	{
+		selfdestruct_percent = selfdestructs / total_tkos;
+	}
+	else selfdestruct_percent = 0.0F;
 
-	return sd_percentage * 100.0f;
+	return selfdestruct_percent * 100.0F;
 }
 
 // 0x80134AA8
 GObj* mnVSRecordMakeRankingTableValues(s32 column)
 {
-	s32 col_widths[7] = {
-
-		27, 30, 30, 23, 35, 27, 39
-	};
-	GObj* gobj;
+	s32 col_widths[/* */] = { 27, 30, 30, 23, 35, 27, 39 };
+	GObj *gobj;
 	u32 colors[/* */] = { 0x00, 0x00, 0x00, 0xE5, 0xD1, 0x99 };
 	s32 i;
 	s32 j;
-	s32 column_order[7];
+	s32 column_order[ARRAY_COUNT(col_widths)];
 	s32 x;
 	f32 y;
 
-	for (i = 0; i < ARRAY_COUNT(col_widths); i++)
+	for (i = 0; i < (ARRAY_COUNT(col_widths) + ARRAY_COUNT(column_order)) / 2; i++)
 	{
 		if (column >= ARRAY_COUNT(col_widths))
+		{
 			column -= ARRAY_COUNT(col_widths);
-
+		}
 		column_order[i] = column++;
 	}
 
-	gobj = gcMakeGObjSPAfter(0, 0, 6, 0x80000000);
+	gobj = gcMakeGObjSPAfter(0, NULL, 6, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 5, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	for (i = nFTKindPlayableStart; i <= nFTKindPlayableEnd; i++)
 	{
 		if (mnVSRecordCheckHaveFighterKind(sMNVSRecordRankingFighterKindOrder[i]))
 		{
-			x = 0x30;
-			y = (i * 13) + 65.0f;
+			x = 48;
+			y = (i * 13) + 65.0F;
 
-			for (j = 0; j < ARRAY_COUNT(col_widths); j++)
+			for (j = 0; j < (ARRAY_COUNT(col_widths) + ARRAY_COUNT(column_order)) / 2; j++)
 			{
+				SObj *sobj;
+
 				switch (column_order[j])
 				{
-					SObj* sobj;
+				case vsRecordsRankingColumnKindWinPercent:
+					mnVSRecordMakeDigits
+					(
+						gobj, mnVSRecordGetWinPercent(sMNVSRecordRankingFighterKindOrder[i]) * 10.0F,
+						col_widths[column_order[j]] + x,
+						y,
+						colors,
+						TRUE,
+						FALSE,
+						3,
+						FALSE
+					);
+					break;
+					
+				case vsRecordsRankingColumnKindKOs:
+					mnVSRecordMakeDigits
+					(
+						gobj,
+						mnVSRecordGetKOs(sMNVSRecordRankingFighterKindOrder[i]),
+						col_widths[column_order[j]] + x,
+						y,
+						colors,
+						FALSE,
+						FALSE,
+						6,
+						FALSE
+					);
+					break;
+					
+				case vsRecordsRankingColumnKindTKOs:
+					mnVSRecordMakeDigits
+					(
+						gobj,
+						mnVSRecordGetTKOs(sMNVSRecordRankingFighterKindOrder[i]),
+						col_widths[column_order[j]] + x,
+						y,
+						colors,
+						FALSE,
+						FALSE,
+						6,
+						FALSE
+					);
+					break;
+					
+				case vsRecordsRankingColumnKindSDPercent:
+					mnVSRecordMakeDigits
+					(
+						gobj,
+						mnVSRecordGetSelfDestructsPercent(sMNVSRecordRankingFighterKindOrder[i]) * 10.0F,
+						col_widths[column_order[j]] + x,
+						y,
+						colors,
+						TRUE,
+						FALSE,
+						3,
+						FALSE
+					);
+					break;
+					
+				case vsRecordsRankingColumnKindTime:
+					mnVSRecordMakeDigits
+					(
+						gobj,
+						(gSCManagerBackupData.vs_records[sMNVSRecordRankingFighterKindOrder[i]].time_used % 3600) / 60,
+						col_widths[column_order[j]] + x,
+						y,
+						colors,
+						FALSE,
+						FALSE,
+						2,
+						TRUE
+					);
+					sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSRecordFiles[0], &FILE_01F_COLON_IMAGE_OFFSET));
+					mnVSRecordSetTextureColors(sobj, colors);
 
-					case vsRecordsRankingColumnKindWinPercent:
-						mnVSRecordMakeDigits(gobj, mnVSRecordGetWinPercent(sMNVSRecordRankingFighterKindOrder[i]) * 10.0f, col_widths[column_order[j]] + x, y, colors, TRUE, FALSE, 3, FALSE);
-						break;
-					case vsRecordsRankingColumnKindKOs:
-						mnVSRecordMakeDigits(gobj, mnVSRecordGetKOs(sMNVSRecordRankingFighterKindOrder[i]), col_widths[column_order[j]] + x, y, colors, FALSE, FALSE, 6, FALSE);
-						break;
-					case vsRecordsRankingColumnKindTKOs:
-						mnVSRecordMakeDigits(gobj, mnVSRecordGetTKOs(sMNVSRecordRankingFighterKindOrder[i]), col_widths[column_order[j]] + x, y, colors, FALSE, FALSE, 6, FALSE);
-						break;
-					case vsRecordsRankingColumnKindSDPercent:
-						mnVSRecordMakeDigits(gobj, mnVSRecordGetSelfDestructsPercent(sMNVSRecordRankingFighterKindOrder[i]) * 10.0f, col_widths[column_order[j]] + x, y, colors, TRUE, FALSE, 3, FALSE);
-						break;
-					case vsRecordsRankingColumnKindTime:
-						mnVSRecordMakeDigits(gobj, (gSCManagerBackupData.vs_records[sMNVSRecordRankingFighterKindOrder[i]].time_used % 3600) / 60, col_widths[column_order[j]] + x, y, colors, FALSE, FALSE, 2, TRUE);
+					sobj->pos.x = col_widths[column_order[j]] + x - 11;
+					sobj->pos.y = y;
 
-						sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(void*, sMNVSRecordFiles[0], &FILE_01F_COLON_IMAGE_OFFSET));
-						mnVSRecordSetTextureColors(sobj, colors);
+					mnVSRecordMakeDigits
+					(
+						gobj,
+						gSCManagerBackupData.vs_records[sMNVSRecordRankingFighterKindOrder[i]].time_used / 3600,
+						col_widths[column_order[j]] + x - 13,
+						y,
+						colors,
+						FALSE,
+						FALSE,
+						3,
+						FALSE
+					);
+					break;
 
-						sobj->pos.x = col_widths[column_order[j]] + x - 11;
-						sobj->pos.y = y;
+				case vsRecordsRankingColumnKindUsePercent:
+					mnVSRecordMakeDigits
+					(
+						gobj,
+						mnVSRecordGetUsePercent(sMNVSRecordRankingFighterKindOrder[i]) * 10.0F,
+						col_widths[column_order[j]] + x,
+						y,
+						colors,
+						TRUE,
+						FALSE,
+						3,
+						FALSE
+					);
+					break;
 
-						mnVSRecordMakeDigits(gobj, gSCManagerBackupData.vs_records[sMNVSRecordRankingFighterKindOrder[i]].time_used / 3600, col_widths[column_order[j]] + x - 13, y, colors, FALSE, FALSE, 3, FALSE);
-						break;
-					case vsRecordsRankingColumnKindUsePercent:
-						mnVSRecordMakeDigits(gobj, mnVSRecordGetUsePercent(sMNVSRecordRankingFighterKindOrder[i]) * 10.0f, col_widths[column_order[j]] + x, y, colors, TRUE, FALSE, 3, FALSE);
-						break;
-					case vsRecordsRankingColumnKindAverage:
-						mnVSRecordMakeDigits(gobj, mnVSRecordGetAverage(sMNVSRecordRankingFighterKindOrder[i]) * 10.0f, col_widths[column_order[j]] + x - 15, y, colors, TRUE, FALSE, 1, FALSE);
-						break;
+				case vsRecordsRankingColumnKindAverage:
+					mnVSRecordMakeDigits
+					(
+						gobj,
+						mnVSRecordGetAverage(sMNVSRecordRankingFighterKindOrder[i]) * 10.0F,
+						col_widths[column_order[j]] + x - 15,
+						y,
+						colors,
+						TRUE,
+						FALSE,
+						1,
+						FALSE
+					);
+					break;
 				}
-
 				x += dMNVSRecordRankingColumnWidths[column_order[j]];
 			}
 		}
 	}
-
 	return gobj;
 }
 
@@ -1410,15 +1598,15 @@ f32 mnVSRecordGetWinPercentAgainst(s32 this_fkind, s32 against_fkind)
 {
 	f32 kos_for = gSCManagerBackupData.vs_records[this_fkind].ko_count[against_fkind];
 	f32 total_kos = kos_for + gSCManagerBackupData.vs_records[against_fkind].ko_count[this_fkind];
-	f32 ko_percentage;
+	f32 ko_percent;
 
 	if (total_kos != 0.0F)
 	{
-		ko_percentage = kos_for / total_kos;
+		ko_percent = kos_for / total_kos;
 	}
-	else ko_percentage = 0.0F;
+	else ko_percent = 0.0F;
 
-	return ko_percentage * 100.0F;
+	return ko_percent * 100.0F;
 }
 
 // 0x801353F4
@@ -1439,7 +1627,7 @@ void func_ovl32_8013547C(void)
 }
 
 // 0x80135484
-GObj* mnVSRecordMakeIndividualTableValues(void)
+GObj* mnVSRecordMakeIndivTableValues(void)
 {
 	GObj *gobj;
 	f32 y[/* */] = { 160.0F, 172.0F, 184.0F, 196.0F };
@@ -1510,7 +1698,7 @@ GObj* mnVSRecordMakeIndividualTableValues(void)
 }
 
 // 0x80135784
-GObj* mnVSRecordMakeIndividualPortraitStatsAndTableHeaders(void)
+GObj* mnVSRecordMakeIndivPortraitAll(void)
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -1550,7 +1738,7 @@ GObj* mnVSRecordMakeIndividualPortraitStatsAndTableHeaders(void)
 	}
 
 	mnVSRecordMakeColumnIcons(gobj);
-	mnVSRecordMakePortraitAndStats(gobj, sMNVSRecordRankingFighterKindOrder[sMNVSRecordCurrentIndex]);
+	mnVSRecordMakePortraitStats(gobj, sMNVSRecordRankingFighterKindOrder[sMNVSRecordCurrentIndex]);
 
 	return gobj;
 }
@@ -1577,8 +1765,8 @@ void mnVSRecordMakeStats(s32 stats_kind)
 	case nMNVSRecordKindIndiv:
 		mnVSRecordSortData(stats_kind);
 
-		sMNVSRecordTableHeadersGObj = mnVSRecordMakeIndividualPortraitStatsAndTableHeaders();
-		sMNVSRecordTableValuesGObj = mnVSRecordMakeIndividualTableValues();
+		sMNVSRecordTableHeadersGObj = mnVSRecordMakeIndivPortraitAll();
+		sMNVSRecordTableValuesGObj = mnVSRecordMakeIndivTableValues();
 		break;
 	}
 }
@@ -1659,7 +1847,7 @@ void mnVSRecordMakeTableGridCamera(void)
 }
 
 // 0x80135BCC
-void mnVSRecordMakeRankingRowHighlightCamera(void)
+void mnVSRecordMakeRankingHighlightCamera(void)
 {
 	CObj *cobj = CObjGetStruct
 	(
@@ -1684,7 +1872,7 @@ void mnVSRecordMakeRankingRowHighlightCamera(void)
 }
 
 // 0x80135C6C
-void mnVSRecordMakeTitleCamera(void)
+void mnVSRecordMakeLabelsCamera(void)
 {
 	CObj *cobj = CObjGetStruct
 	(
@@ -1712,7 +1900,7 @@ void mnVSRecordMakeTitleCamera(void)
 void mnVSRecordInitVars(void)
 {
 	sMNVSRecordStatsKind = nMNVSRecordKindBattleScore;
-	sMNVSRecordIsRedrawSubtitle = FALSE;
+	sMNVSRecordIsChangeSubtitle = FALSE;
 	sMNVSRecordCurrentIndex = 0;
 	sMNVSRecordChangeWait = 0;
 	sMNVSRecordFighterMask = gSCManagerBackupData.fighter_mask;
@@ -1755,9 +1943,9 @@ void mnVSRecordFuncRun(GObj *gobj)
 	{
 		sMNVSRecordChangeWait = 0;
 	}
-	if (sMNVSRecordIsRedrawSubtitle)
+	if (sMNVSRecordIsChangeSubtitle)
 	{
-		sMNVSRecordIsRedrawSubtitle = FALSE;
+		sMNVSRecordIsChangeSubtitle = FALSE;
 	}
 	if (scSubsysControllerGetPlayerTapButtons(B_BUTTON))
 	{
@@ -1773,7 +1961,7 @@ void mnVSRecordFuncRun(GObj *gobj)
 			func_800269C0_275C0(nSYAudioFGMBurnS);
 
 			sMNVSRecordStatsKind--;
-			sMNVSRecordIsRedrawSubtitle = TRUE;
+			sMNVSRecordIsChangeSubtitle = TRUE;
 
 			mnVSRecordRedrawStats(sMNVSRecordStatsKind);
 		}
@@ -1791,7 +1979,7 @@ void mnVSRecordFuncRun(GObj *gobj)
 		func_800269C0_275C0(nSYAudioFGMBurnS);
 
 		sMNVSRecordStatsKind++;
-		sMNVSRecordIsRedrawSubtitle = TRUE;
+		sMNVSRecordIsChangeSubtitle = TRUE;
 
 		mnVSRecordRedrawStats(sMNVSRecordStatsKind);
 	}
@@ -1860,7 +2048,7 @@ void mnVSRecordFuncRun(GObj *gobj)
 			}
 			else sMNVSRecordFirstColumn--;
 
-			sMNVSRecordIsRedrawSubtitle = TRUE;
+			sMNVSRecordIsChangeSubtitle = TRUE;
 
 			mnVSRecordRedrawStats(sMNVSRecordStatsKind);
 
@@ -1880,7 +2068,7 @@ void mnVSRecordFuncRun(GObj *gobj)
 			}
 			else sMNVSRecordFirstColumn++;
 
-			sMNVSRecordIsRedrawSubtitle = TRUE;
+			sMNVSRecordIsChangeSubtitle = TRUE;
 
 			mnVSRecordRedrawStats(sMNVSRecordStatsKind);
 
@@ -1986,19 +2174,19 @@ void mnVSRecordFuncStart(void)
 	gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 
 	mnVSRecordInitVars();
-	mnVSRecordMakeTitleCamera();
-	mnVSRecordMakeRankingRowHighlightCamera();
+	mnVSRecordMakeLabelsCamera();
+	mnVSRecordMakeRankingHighlightCamera();
 	mnVSRecordMakeTableGridCamera();
 	mnVSRecordMakeTableHeadersCamera();
 	mnVSRecordMakeTableValuesCamera();
-	mnVSRecordMakeTitle();
+	mnVSRecordMakeLabels();
 	mnVSRecordMakeSubtitle();
-	mnVSRecordMakePortraitAndStatsArrows();
+	mnVSRecordMakePortraitStatsArrows();
 	mnVSRecordMakeResortArrows();
 	mnVSRecordMakeColumnArrows();
 	mnVSRecordMakeStatsGrid();
 	mnVSRecordMakeStats(sMNVSRecordStatsKind);
-	mnVSRecordMakeRankingRowHighlight();
+	mnVSRecordMakeRankingHighlight();
 
 	auPlaySong(0, nSYAudioBGMData);
 }

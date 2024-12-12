@@ -333,7 +333,7 @@ struct SCPlayerData
 	s32 unk_pblock_0x28;
 	s32 unk_pblock_0x2C;
 	s32 total_selfdestructs;					    // Applied when damaging player's ID is -1 or GMCOMMON_PLAYERS_MAX
-	s32 total_damage_dealt;						    // Total damage dealt to all players
+	s32 total_damage_given;						    // Total damage dealt to all players
 	s32 total_damage_all;						    // Damage received from all hazards
 	s32 total_damage_players[GMCOMMON_PLAYERS_MAX]; // Total damage received from each player present
 	s32 stock_damage_all;						    // All damage received per current stock, from any hazard

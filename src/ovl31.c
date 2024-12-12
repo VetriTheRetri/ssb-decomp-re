@@ -277,10 +277,10 @@ void mnVSResultsSaveDataToSRAM()
 			if (vs_record->time_used > I_MIN_TO_TICS(1000) - 1)
 				vs_record->time_used = I_MIN_TO_TICS(1000) - 1;
 
-			vs_record->damage_dealt += gSCManagerTransferBattleState.players[i].total_damage_dealt;
+			vs_record->damage_given += gSCManagerTransferBattleState.players[i].total_damage_given;
 
-			if (vs_record->damage_dealt > 999999)
-				vs_record->damage_dealt = 999999;
+			if (vs_record->damage_given > 999999)
+				vs_record->damage_given = 999999;
 
 			vs_record->damage_taken += gSCManagerTransferBattleState.players[i].total_damage_all;
 

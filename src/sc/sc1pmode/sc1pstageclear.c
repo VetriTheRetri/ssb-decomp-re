@@ -1450,7 +1450,7 @@ void sc1PStageClearInitVars(void)
 		break;
 	}
 	sSC1PStageClearSecondsRemain = gSCManagerSceneData.spgame_time_remain;
-	sSC1PStageClearDamageDealt = gSCManager1PGameBattleState.players[gSCManagerSceneData.player].total_damage_dealt;
+	sSC1PStageClearDamageDealt = gSCManager1PGameBattleState.players[gSCManagerSceneData.player].total_damage_given;
 	sSC1PStageClearScoreTotal = gSCManagerSceneData.spgame_score;
 
 	sSC1PStageClearBonusFlags[0] = gSCManagerSceneData.bonus_get_mask[0];

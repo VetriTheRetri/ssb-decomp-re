@@ -2471,7 +2471,7 @@ check_heavy_damage:
         // Speedster
         gSCManagerSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_SPEEDSTER;
     }
-    if (gSCManagerBattleState->players[gSCManagerSceneData.player].total_damage_dealt == 0)
+    if (gSCManagerBattleState->players[gSCManagerSceneData.player].total_damage_given == 0)
     {
         // Pacifist
         gSCManagerSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_PACIFIST;

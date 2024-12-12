@@ -85,11 +85,12 @@
 
 #define DISTANCE(a, b) (((a) < (b)) ? -((a) - (b)) : ((a) - (b)))
 
-#define I_SEC_TO_TICS(q) ((int)((q)*TIME_SEC))
-#define I_TICS_TO_SEC(q) ((int)((q) / TIME_SEC))
-#define I_MIN_TO_SEC(q) ((int)((q)*TIME_SEC))
-#define I_MIN_TO_TICS(q) ((int)((q)*TIME_MIN))
-#define I_HRS_TO_TICS(q) ((int)((q)*TIME_HRS))
+#define I_SEC_TO_TICS(q) 	((int)((q)*TIME_SEC))
+#define I_TICS_TO_SEC(q) 	((int)((q) / TIME_SEC))
+#define I_MIN_TO_SEC(q)  	((int)((q)*TIME_SEC))
+#define I_MIN_TO_TICS(q) 	((int)((q)*TIME_MIN))
+#define I_HRS_TO_TICS(q) 	((int)((q)*TIME_HRS))
+#define I_HRS_TO_SEC(q)	 	((int)((q)*TIME_MIN))
 
 #define F_TIME_TO_TICS(q, u) ((int)((q) * (u)))
 

@@ -9,7 +9,7 @@
 // // // // // // // // // // // //
 
 extern intptr_t lGRZebesAcidHit;                    // 0x000000BC
-extern intptr_t D_NF_000008C0;
+extern intptr_t lGRZebesAcidMObjSub;
 extern intptr_t lGRZebesAcidDObjSetup;              // 0x00000B08
 extern intptr_t lGRZebesAcidAnimJoint;              // 0x00000B90
 extern intptr_t lGRZebesAcidMatAnimJoint;           // 0x00000BD0
@@ -101,16 +101,22 @@ GObj* grZebesMakeAcid(void)
         nGCMatrixKindNull,
         nGCMatrixKindNull
     );
-    gcAddMObjAll(map_gobj, (uintptr_t)map_head + (intptr_t)&D_NF_000008C0);
+    gcAddMObjAll(map_gobj, lbRelocGetFileData(MObjSub***, map_head, &lGRZebesAcidMObjSub));
     gcAddGObjProcess(map_gobj, gcPlayAnimAll, nGCProcessKindFunc, 5);
-    gcAddAnimAll(map_gobj, (uintptr_t)map_head + (intptr_t)&lGRZebesAcidAnimJoint, (uintptr_t)map_head + (intptr_t)&lGRZebesAcidMatAnimJoint, 0.0F);
+    gcAddAnimAll
+    (
+        map_gobj,
+        lbRelocGetFileData(AObjEvent32**, map_head, &lGRZebesAcidAnimJoint),
+        lbRelocGetFileData(AObjEvent32***, map_head, &lGRZebesAcidMatAnimJoint),
+        0.0F
+    );
     gcPlayAnimAll(map_gobj);
 
     gGRCommonStruct.zebes.acid_status = nGRZebesAcidStatusWait;
     gGRCommonStruct.zebes.acid_level_curr = dGRZebesAcidAttributes[ARRAY_COUNT(dGRZebesAcidAttributes) - 1].acid_level;
     gGRCommonStruct.zebes.acid_attr_id = 0;
 
-    gGRCommonStruct.zebes.attack_coll = (void*) (((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRCommonHeaderStart) + (intptr_t)&lGRZebesAcidHit);
+    gGRCommonStruct.zebes.attack_coll = lbRelocGetFileData(GRAttackColl*, ((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRCommonHeaderStart), &lGRZebesAcidHit);
 
     grZebesAcidSetRandomWait();
 

@@ -494,6 +494,7 @@ void mnVSRecordDrawString(GObj* gobj, const char *str, f32 x, f32 y, u32 *color)
 
 			chr_sobj->sprite.attr &= ~SP_FASTCOPY;
 			chr_sobj->sprite.attr |= SP_TRANSPARENT;
+			
 			chr_sobj->sprite.red = color[0];
 			chr_sobj->sprite.green = color[1];
 			chr_sobj->sprite.blue = color[2];

@@ -454,7 +454,8 @@ void ftNessSpecialHiUpdateModelRoll(GObj *fighter_gobj) // Update joint's X rota
 
     /* 
 
-    fp->joints[4]->rotate.vec.f.x = (atan2f(((fp->physics.vel_air.x * fp->lr) < 0.0F) ? -fp->physics.vel_air.x : fp->physics.vel_air.x, fp->physics.vel_air.y) * fp->lr) - F_CST_DTOR32(90.0F); 
+    fp->joints[4]->rotate.vec.f.x = 
+    (atan2f(((fp->physics.vel_air.x * fp->lr) < 0.0F) ? -fp->physics.vel_air.x : fp->physics.vel_air.x, fp->physics.vel_air.y) * fp->lr) - F_CST_DTOR32(90.0F); 
     
     */
 

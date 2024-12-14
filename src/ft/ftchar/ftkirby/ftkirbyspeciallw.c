@@ -329,12 +329,12 @@ void ftKirbySpecialLwEndSetStatus(GObj *fighter_gobj)
 void ftKirbySpecialAirLwStartSetStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    ub32 armor_flag = fp->is_damage_resist;
+    ub32 is_damage_resist = fp->is_damage_resist;
 
     ftMainSetStatus(fighter_gobj, nFTKirbyStatusSpecialAirLwStart, 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_COLANIM));
     ftMainPlayAnimNoEffect(fighter_gobj);
 
-    if (fp->is_damage_resist = armor_flag & TRUE) // wat
+    if (fp->is_damage_resist = is_damage_resist & TRUE) // wat
     {
         fp->motion_vars.flags.flag2 = 1;
     }

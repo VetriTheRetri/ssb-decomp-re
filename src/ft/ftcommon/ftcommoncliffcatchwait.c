@@ -39,7 +39,7 @@ void ftCommonCliffCommonProcMap(GObj *fighter_gobj)
 void ftCommonCliffCatchSetStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    Vec3f vel;
+    Vec3f pos;
 
     mpCommonSetFighterGround(fp);
     ftMainSetStatus(fighter_gobj, nFTCommonStatusCliffCatch, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
@@ -55,11 +55,11 @@ void ftCommonCliffCatchSetStatus(GObj *fighter_gobj)
 
     if (fp->lr == +1)
     {
-        mpCollisionGetLREdgeLeft(fp->coll_data.cliff_id, &vel);
+        mpCollisionGetLREdgeLeft(fp->coll_data.cliff_id, &pos);
     }
-    else mpCollisionGetLREdgeRight(fp->coll_data.cliff_id, &vel);
+    else mpCollisionGetLREdgeRight(fp->coll_data.cliff_id, &pos);
 
-    efManagerFlashMiddleMakeEffect(&vel);
+    efManagerFlashMiddleMakeEffect(&pos);
 
     fp->proc_damage = ftCommonCliffCommonProcDamage;
 

@@ -12,10 +12,10 @@ struct SC1PGameComputer
 {
 	ub8 is_team_attack;
 	u8 item_appearance_rate;
-	u8 enemy_level[5];
-	u8 enemy_handicap[5];
-	u8 ally_level[5];
-	u8 ally_handicap[5];
+	u8 enemy_level[nSC1PGameDifficultyEnumCount];
+	u8 enemy_handicap[nSC1PGameDifficultyEnumCount];
+	u8 ally_level[nSC1PGameDifficultyEnumCount];
+	u8 ally_handicap[nSC1PGameDifficultyEnumCount];
 };
 
 struct SC1PGameStage
@@ -308,7 +308,7 @@ struct SCBattleResults
 	s32 kos;
 	u8 player_or_team;
 	u8 unk_battleres_0x9;
-	ub8 is_human_player;
+	ub8 is_human;
 };
 
 struct SCPlayerData
@@ -414,45 +414,5 @@ struct SCCommonData
 	u8 challenger_level_drop;						// Subtract from default CP level
 	ub8 is_title_anim_viewed;						// Has the title screen animation been viewed?
 };
-
-typedef struct scRuntimeInfo
-{
-	void *unk_pointer_0x0;
-	void *unk_pointer_0x4;
-	void *unk_pointer_0x8;
-	void *unk_scruntime_0xC;
-	size_t arena_size;
-	void *unk_pointer_0x14;
-	void *unk_pointer_0x18;
-	void *unk_pointer_0x1C;
-	s32 unk_0x20;
-	s32 unk_0x24;
-	s32 unk_0x28;
-	s32 unk_0x2C;
-	s32 unk_0x30;
-	void *unk_pointer_0x34;
-	void *unk_pointer_0x38;
-	void *unk_pointer_0x3C;
-	s32 unk_0x40;
-	s32 unk_0x44;
-	s32 unk_0x48;
-	s32 unk_0x4C;
-	s32 unk_0x50;
-	s32 unk_0x54;
-	s32 unk_0x58;
-	s32 unk_0x5C;
-	void *unk_scruntime_0x60;
-	s32 unk_0x64;
-	void *unk_pointer_0x68;
-	void *unk_pointer_0x6C;
-	s32 unk_0x70;
-	s32 unk_0x74;
-	s32 unk_0x78;
-	s32 unk_0x7C;
-	s32 unk_0x80;
-	s32 unk_0x84;
-	void (*func_start)(); // 0x88
-
-} scRuntimeInfo; // This is actually something from gtl.c, will have to move at a later point
 
 #endif

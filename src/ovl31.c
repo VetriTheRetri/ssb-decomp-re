@@ -2915,12 +2915,12 @@ SYVideoSetup D_ovl31_80139710 = {
 };
 
 // 0x8013972C
-scRuntimeInfo D_ovl31_8013972C = {
+SYTaskmanSetup D_ovl31_8013972C = {
 
 	0x00000000, 0x8000A5E4,
 	0x800A26B8, &lOverlay31ArenaLo,
 	0x00000000, 0x00000001, 0x00000002, 0x00004E20, 0x00000400,
-	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x0000C000,
+	0x00000000, 0x00000000, 0x00008000, 0x0002, 0x0000C000,
 	mnVSResultsFuncLights, syControllerFuncRead,
 	0x00000000, 0x00000600, 0x00000000, 0x00000000,
 	0x00000000, 0x00000000, 0x00000088, 0x00000000,
@@ -3005,7 +3005,7 @@ void vs_results_entry()
 
 	D_ovl31_80139710.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&D_ovl31_80139710);
-	D_ovl31_8013972C.arena_size = (u32) ((uintptr_t)&lOverlay31ArenaHi - (uintptr_t)&lOverlay31ArenaLo);
+	D_ovl31_8013972C.buffer_setup.arena_size = (u32) ((uintptr_t)&lOverlay31ArenaHi - (uintptr_t)&lOverlay31ArenaLo);
 	scManagerFuncUpdate(&D_ovl31_8013972C);
 
 	for (i = 0; i < 4; i++)

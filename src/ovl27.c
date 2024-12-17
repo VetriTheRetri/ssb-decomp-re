@@ -3155,12 +3155,12 @@ SYVideoSetup D_ovl27_80138C90 = {
 };
 
 // 0x80138CAC
-scRuntimeInfo D_ovl27_80138CAC = {
+SYTaskmanSetup D_ovl27_80138CAC = {
 
 	0x00000000, 0x8000A5E4,
 	gcDrawAll, &lOverlay27ArenaLo,
 	0x00000000, 0x00000001, 0x00000002, 0x00004A38, 0x00000200,
-	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x00008000,
+	0x00000000, 0x00000000, 0x00008000, 0x0002, 0x00008000,
 	mn1PFuncLights, syControllerFuncRead,
 	0x00000000, 0x00000100, 0x00000000, 0x00000000,
 	0x00000000, 0x00000000, 0x00000088, 0x00000000,
@@ -3175,6 +3175,6 @@ void classic_css_entry()
 {
 	D_ovl27_80138C90.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&D_ovl27_80138C90);
-	D_ovl27_80138CAC.arena_size = (u32) ((uintptr_t)&lOverlay27ArenaHi - (uintptr_t)&lOverlay27ArenaLo);
+	D_ovl27_80138CAC.buffer_setup.arena_size = (u32) ((uintptr_t)&lOverlay27ArenaHi - (uintptr_t)&lOverlay27ArenaLo);
 	syTaskmanRun(&D_ovl27_80138CAC);
 }

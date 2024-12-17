@@ -4284,12 +4284,12 @@ SYVideoSetup D_ovl26_8013B980 = {
 };
 
 // 0x8013B99C
-scRuntimeInfo D_ovl26_8013B99C = {
+SYTaskmanSetup D_ovl26_8013B99C = {
 
 	0x00000000, 0x8000A5E4,
 	0x800A26B8, &lOverlay26ArenaLo,
 	0x00000000, 0x00000001, 0x00000002, 0x000055F0, 0x00000200,
-	0x00000000, 0x00000000, 0x00003A98, 0x00020000, 0x00008000,
+	0x00000000, 0x00000000, 0x00003A98, 0x0002, 0x00008000,
 	mnBattleFuncLights, syControllerFuncRead,
 	0x00000000, 0x00000200, 0x00000000, 0x00000000,
 	0x00000000, 0x00000000, 0x00000088, 0x00000000,
@@ -4304,6 +4304,6 @@ void vs_css_entry()
 {
 	D_ovl26_8013B980.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&D_ovl26_8013B980);
-	D_ovl26_8013B99C.arena_size = (size_t) ((uintptr_t)&lOverlay26ArenaHi - (uintptr_t)&lOverlay26ArenaLo);
+	D_ovl26_8013B99C.buffer_setup.arena_size = (size_t) ((uintptr_t)&lOverlay26ArenaHi - (uintptr_t)&lOverlay26ArenaLo);
 	scManagerFuncUpdate(&D_ovl26_8013B99C);
 }

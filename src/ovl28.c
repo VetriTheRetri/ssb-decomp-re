@@ -2802,12 +2802,12 @@ SYVideoSetup D_ovl28_8013842C = {
 };
 
 // 0x80138448
-scRuntimeInfo D_ovl28_80138448 = {
+SYTaskmanSetup D_ovl28_80138448 = {
 
 	0x00000000, 0x8000A5E4,
 	scManagerFuncDraw, &lOverlay28ArenaLo,
 	0x00000000, 0x00000001, 0x00000002, 0x000055F0, 0x00000200,
-	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x00008000,
+	0x00000000, 0x00000000, 0x00008000, 0x0002, 0x00008000,
 	mnTrainingFuncLights, syControllerFuncRead,
 	0x00000000, 0x00000200, 0x00000000, 0x00000000,
 	0x00000000, 0x00000000, 0x00000088, 0x00000000,
@@ -2822,6 +2822,6 @@ void training_css_entry()
 {
 	D_ovl28_8013842C.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&D_ovl28_8013842C);
-	D_ovl28_80138448.arena_size = (u32) ((uintptr_t)&lOverlay28ArenaHi - (uintptr_t)&lOverlay28ArenaLo);
+	D_ovl28_80138448.buffer_setup.arena_size = (u32) ((uintptr_t)&lOverlay28ArenaHi - (uintptr_t)&lOverlay28ArenaLo);
 	scManagerFuncUpdate(&D_ovl28_80138448);
 }

@@ -276,7 +276,8 @@ typedef enum SC1PGameDifficulty
 	nSC1PGameDifficultyEasy,
 	nSC1PGameDifficultyNormal,
 	nSC1PGameDifficultyHard,
-	nSC1PGameDifficultyVeryHard
+	nSC1PGameDifficultyVeryHard,
+	nSC1PGameDifficultyEnumCount
 
 } SC1PGameDifficulty;
 

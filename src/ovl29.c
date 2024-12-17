@@ -2549,12 +2549,12 @@ SYVideoSetup D_ovl29_80137530 = {
 };
 
 // 0x8013754C
-scRuntimeInfo D_ovl29_8013754C = {
+SYTaskmanSetup D_ovl29_8013754C = {
 
 	0x00000000, 0x8000A5E4,
 	gcDrawAll, &lOverlay29ArenaLo,
 	0x00000000, 0x00000001, 0x00000002, 0x00004A38, 0x00000200,
-	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x00008000,
+	0x00000000, 0x00000000, 0x00008000, 0x0002, 0x00008000,
 	mnBonusFuncLights, syControllerFuncRead,
 	0x00000000, 0x00000100, 0x00000000, 0x00000000,
 	0x00000000, 0x00000000, 0x00000088, 0x00000000,
@@ -2569,6 +2569,6 @@ void bonus_css_entry()
 {
 	D_ovl29_80137530.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&D_ovl29_80137530);
-	D_ovl29_8013754C.arena_size = (u32) ((uintptr_t)&lOverlay29ArenaHi - (uintptr_t)&lOverlay29ArenaLo);
+	D_ovl29_8013754C.buffer_setup.arena_size = (u32) ((uintptr_t)&lOverlay29ArenaHi - (uintptr_t)&lOverlay29ArenaLo);
 	syTaskmanRun(&D_ovl29_8013754C);
 }

@@ -1393,11 +1393,11 @@ SYVideoSetup D_ovl30_8013490C = {
 };
 
 // 0x80134928
-scRuntimeInfo D_ovl30_80134928 = {
+SYTaskmanSetup D_ovl30_80134928 = {
 	0x00000000, 0x8000A5E4,
 	scManagerFuncDraw, &lOverlay30ArenaLo,
 	0x00000000, 0x00000001, 0x00000002, 0x00004268, 0x00001000,
-	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x00008000,
+	0x00000000, 0x00000000, 0x00008000, 0x0002, 0x00008000,
 	mnStagesSetLighting, syControllerFuncRead,
 	0x00000000, 0x00000200, 0x00000000, 0x00000000,
 	0x00000000, 0x00000000, 0x00000088, 0x00000000,
@@ -1412,6 +1412,6 @@ void mnStagesStartScene()
 {
 	D_ovl30_8013490C.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&D_ovl30_8013490C);
-	D_ovl30_80134928.arena_size = (u32) ((uintptr_t)&lOverlay30ArenaHi - (uintptr_t)&lOverlay30ArenaLo);
+	D_ovl30_80134928.buffer_setup.arena_size = (u32) ((uintptr_t)&lOverlay30ArenaHi - (uintptr_t)&lOverlay30ArenaLo);
 	scManagerFuncUpdate(&D_ovl30_80134928);
 }

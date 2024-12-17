@@ -273,9 +273,9 @@ sb32 scVSBattleSetScoreCheckSuddenDeath(void)
 
 			if (gSCManagerBattleState->players[i].pkind == nFTPlayerKindMan)
 			{
-				player_results[result_count].is_human_player = TRUE;
+				player_results[result_count].is_human = TRUE;
 			}
-			else player_results[result_count].is_human_player = FALSE;
+			else player_results[result_count].is_human = FALSE;
 
 			result_count++;
 		}
@@ -336,11 +336,11 @@ sb32 scVSBattleSetScoreCheckSuddenDeath(void)
 					player_results[j].tko += gSCManagerBattleState->players[i].score - gSCManagerBattleState->players[i].falls;
 					player_results[j].kos += gSCManagerBattleState->players[i].score;
 
-					if (player_results[j].is_human_player || (gSCManagerBattleState->players[i].pkind == nFTPlayerKindMan))
+					if (player_results[j].is_human || (gSCManagerBattleState->players[i].pkind == nFTPlayerKindMan))
 					{
-						player_results[j].is_human_player = TRUE;
+						player_results[j].is_human = TRUE;
 					}
-					else player_results[j].is_human_player = FALSE;
+					else player_results[j].is_human = FALSE;
 
 					goto l_continue;
 				}
@@ -350,11 +350,11 @@ sb32 scVSBattleSetScoreCheckSuddenDeath(void)
 			player_results[result_count].player_or_team = gSCManagerBattleState->players[i].team;
 			player_results[result_count].unk_battleres_0x9 = FALSE;
 
-			if (player_results[result_count].is_human_player || (gSCManagerBattleState->players[i].pkind == nFTPlayerKindMan))
+			if (player_results[result_count].is_human || (gSCManagerBattleState->players[i].pkind == nFTPlayerKindMan))
 			{
-				player_results[result_count].is_human_player = TRUE;
+				player_results[result_count].is_human = TRUE;
 			}
-			else player_results[result_count].is_human_player = FALSE;
+			else player_results[result_count].is_human = FALSE;
 
 			result_count++;
 

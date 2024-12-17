@@ -616,7 +616,7 @@ void syMatrixPerspFast(
     f32 scale) {
     Mtx44f mf;
 
-    syMatrixPerspFastF(&mf, perspNorm, fovy, aspect, near, far, scale);
+    syMatrixPerspFastF(mf, perspNorm, fovy, aspect, near, far, scale);
 
     syMatrixF2L(&mf, m);
 }
@@ -677,7 +677,7 @@ void syMatrixPerspF(
 void hal_perspective(Mtx *m, u16 *perspNorm, f32 fovy, f32 aspect, f32 near, f32 far, f32 scale) {
     Mtx44f mf;
 
-    syMatrixPerspF(&mf, perspNorm, fovy, aspect, near, far, scale);
+    syMatrixPerspF(mf, perspNorm, fovy, aspect, near, far, scale);
 
     syMatrixF2L(&mf, m);
 }

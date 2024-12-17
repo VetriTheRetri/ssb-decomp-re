@@ -227,6 +227,32 @@ typedef enum MNOptionTabOnOff
 
 } MNOptionTabOnOff;
 
+typedef enum MNVSRecordKind
+{
+	nMNVSRecordKindStart,	
+	nMNVSRecordKindBattleScore = nMNVSRecordKindStart,	// BattleScore
+	nMNVSRecordKindRanking,         					// Ranking
+	nMNVSRecordKindIndiv,       						// Individual
+	nMNVSRecordKindEnd = nMNVSRecordKindIndiv,
+	nMNVSRecordKindEnumCount
+
+} MNVSRecordKind;
+
+typedef enum MNVSRecordRankingKind
+{
+	nMNVSRecordRankingKindStart,
+	nMNVSRecordRankingKindWinPercent = nMNVSRecordRankingKindStart,	// Win %
+	nMNVSRecordRankingKindKOs,              						// KOs
+	nMNVSRecordRankingKindTKO,             							// TKOs
+	nMNVSRecordRankingKindSDPercent,     							// SD %
+	nMNVSRecordRankingKindTime,             						// Time
+	nMNVSRecordRankingKindUsePercent,   							// Use %
+	nMNVSRecordRankingKindAvg,           							// Avg
+	nMNVSRecordRankingKindEnd = nMNVSRecordRankingKindAvg,
+	nMNVSRecordRankingKindEnumCount
+
+} MNVSRecordRankingKind;
+
 typedef struct MNTitleSpriteDesc			MNTitleSpriteDesc;
 typedef struct MNCongraPicture				MNCongraPicture;
 typedef struct MNCharactersMotion			MNCharactersMotion;

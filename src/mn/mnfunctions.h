@@ -21,6 +21,7 @@
 
 #include <mn/mndata/mndata.h>
 #include <mn/mndata/mncharacters.h>
+#include <mn/mndata/mnvsrecord.h>
 #include <mn/mndata/mnsoundtest.h>
 
 #endif

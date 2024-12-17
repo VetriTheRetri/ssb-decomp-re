@@ -4,6 +4,7 @@
 #include "mntypes.h"
 #include "mnfunctions.h"
 
+extern u32 lMNPlayersPortraitsFileID;               // 0x00000013
 extern u32 lMNDataCommonFileID;						// 0x00000020
 
 extern intptr_t lMNCommonOptionTabLeftSprite;       // 0x000001E8
@@ -35,6 +36,20 @@ extern intptr_t lMNCommonWallpaperSprite;           // 0x00018000
 extern intptr_t lMNDataCommonDataHeaderSprite;      // 0x00000B40
 extern intptr_t lMNDataCommonArrowLeftSprite;       // 0x00000BE0
 extern intptr_t lMNDataCommonArrowRightSprite;      // 0x00000C80
+
+// lMNPlayers is only temporarily here
+extern intptr_t lMNPlayersMarioPortraitSprite;		// 0x00004728
+extern intptr_t lMNPlayersFoxPortraitSprite;		// 0x0000D068
+extern intptr_t lMNPlayersDonkeyPortraitSprite;		// 0x00008BC8
+extern intptr_t lMNPlayersSamusPortraitSprite;		// 0x0000AE18
+extern intptr_t lMNPlayersLuigiPortraitSprite;		// 0x00006978
+extern intptr_t lMNPlayersLinkPortraitSprite;		// 0x00011508
+extern intptr_t lMNPlayersYoshiPortraitSprite;		// 0x00013758
+extern intptr_t lMNPlayersCaptainPortraitSprite;	// 0x00019E48
+extern intptr_t lMNPlayersKirbyPortraitSprite;		// 0x0000F2B8
+extern intptr_t lMNPlayersPikachuPortraitSprite;	// 0x000159A8
+extern intptr_t lMNPlayersPurinPortraitSprite;		// 0x0001C098
+extern intptr_t lMNPlayersNessPortraitSprite;		// 0x00017BF8
 
 extern intptr_t lMNVSModeVSSprite;                  // 0x00006118
 extern intptr_t lMNVSModeVSStartSprite;             // 0x000024C8

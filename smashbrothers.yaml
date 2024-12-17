@@ -1417,10 +1417,10 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x158A40, c, ovl32]
-      - [0x15D570, .data, ovl32]
-      - [0x15D9C0, .rodata, ovl32]
-      - { start: auto, type: .bss, vram: 0x80136C10, name: ovl32 }
+      - [0x158A40, c, mn/mndata/mnvsrecord]
+      - [0x15D570, .data, mn/mndata/mnvsrecord]
+      - [0x15D9C0, .rodata, mn/mndata/mnvsrecord]
+      - { start: auto, type: .bss, name: mn/mndata/mnvsrecord }
 
   - name: ovl33
     type: code

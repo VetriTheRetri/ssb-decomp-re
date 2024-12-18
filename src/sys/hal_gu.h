@@ -93,7 +93,7 @@ extern void syMatrixLookAtReflect(
     f32 xUp,
     f32 yUp,
     f32 zUp);
-extern void syMatrixModLookAtReflect_f(
+extern void syMatrixModLookAtReflectF(
     Mtx44f *mf,
     LookAt *l,
     f32 xEye,
@@ -134,7 +134,7 @@ syMatrixPerspFast(Mtx *m, u16 *perspNorm, f32 fovy, f32 aspect, f32 near, f32 fa
 extern void
 syMatrixPerspF(Mtx44f mf, u16 *perspNorm, f32 fovy, f32 aspect, f32 near, f32 far, f32 scale);
 extern void
-hal_perspective(Mtx *m, u16 *perspNorm, f32 fovy, f32 aspect, f32 near, f32 far, f32 scale);
+syMatrixPersp(Mtx *m, u16 *perspNorm, f32 fovy, f32 aspect, f32 near, f32 far, f32 scale);
 extern void syMatrixScaF(Mtx44f *mf, f32 x, f32 y, f32 z);
 extern void syMatrixSca(Mtx *m, f32 x, f32 y, f32 z);
 extern void syMatrixTraF(Mtx44f *mf, f32 x, f32 y, f32 z);

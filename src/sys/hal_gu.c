@@ -6,13 +6,11 @@
 
 #include <macros.h>
 #include <ssb_types.h>
+#include <lb/library.h>
 
 #include <PR/gu.h>
 #include <PR/mbi.h>
 #include <PR/ultratypes.h>
-
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wunknown-pragmas"
 
 void syMatrixF2L(Mtx44f *src, Mtx *dst)
 {
@@ -62,7 +60,7 @@ void syMatrixF2LFixedW(Mtx44f *src, Mtx *dst)
     dst->m[0][0] = COMBINE_INTEGRAL(e1, e2);
     dst->m[2][0] = COMBINE_FRACTIONAL(e1, e2);
     e1           = FTOFIX32((*src)[0][2]);
-    e2           = FTOFIX32(0.0f);
+    e2           = FTOFIX32(0.0F);
     dst->m[0][1] = COMBINE_INTEGRAL(e1, e2);
     dst->m[2][1] = COMBINE_FRACTIONAL(e1, e2);
     e1           = FTOFIX32((*src)[1][0]);
@@ -70,7 +68,7 @@ void syMatrixF2LFixedW(Mtx44f *src, Mtx *dst)
     dst->m[0][2] = COMBINE_INTEGRAL(e1, e2);
     dst->m[2][2] = COMBINE_FRACTIONAL(e1, e2);
     e1           = FTOFIX32((*src)[1][2]);
-    e2           = FTOFIX32(0.0f);
+    e2           = FTOFIX32(0.0F);
     dst->m[0][3] = COMBINE_INTEGRAL(e1, e2);
     dst->m[2][3] = COMBINE_FRACTIONAL(e1, e2);
     e1           = FTOFIX32((*src)[2][0]);
@@ -78,7 +76,7 @@ void syMatrixF2LFixedW(Mtx44f *src, Mtx *dst)
     dst->m[1][0] = COMBINE_INTEGRAL(e1, e2);
     dst->m[3][0] = COMBINE_FRACTIONAL(e1, e2);
     e1           = FTOFIX32((*src)[2][2]);
-    e2           = FTOFIX32(0.0f);
+    e2           = FTOFIX32(0.0F);
     dst->m[1][1] = COMBINE_INTEGRAL(e1, e2);
     dst->m[3][1] = COMBINE_FRACTIONAL(e1, e2);
     e1           = FTOFIX32((*src)[3][0]);
@@ -86,29 +84,29 @@ void syMatrixF2LFixedW(Mtx44f *src, Mtx *dst)
     dst->m[1][2] = COMBINE_INTEGRAL(e1, e2);
     dst->m[3][2] = COMBINE_FRACTIONAL(e1, e2);
     e1           = FTOFIX32((*src)[3][2]);
-    e2           = FTOFIX32(1.0f);
+    e2           = FTOFIX32(1.0F);
     dst->m[1][3] = COMBINE_INTEGRAL(e1, e2);
     dst->m[3][3] = COMBINE_FRACTIONAL(e1, e2);
 }
 
-s32 fast_sinf(f32 x) 
+s32 syMatrixFastSin(f32 x) 
 {
-    s32 idx = RAD_TO_IDX(x);
-    u16 sinx = gSinTable[idx & (ARRAY_COUNT(gSinTable) - 1)];
+    s32 index = RAD_TO_IDX(x);
+    u16 sinx = gSinTable[index & 0x7FF];
 
-    if ((idx & 0x800) != 0)
+    if ((index & 0x800) != 0)
     {
         return -sinx;
     }
     return sinx;
 }
 
-s32 fast___cosf(f32 x)
+s32 syMatrixFastCos(f32 x)
 {
-    s32 idx = RAD_TO_IDX(x + (M_PI_F / 2.0F));
-    u16 cosx = gSinTable[idx & (ARRAY_COUNT(gSinTable) - 1)];
+    s32 index = RAD_TO_IDX(x + F_CST_DTOR32(90.0F));
+    u16 cosx = gSinTable[index & 0x7FF];
     
-    if ((idx & 0x800) != 0)
+    if ((index & 0x800) != 0)
     { 
         return -cosx;
     }
@@ -118,63 +116,66 @@ s32 fast___cosf(f32 x)
 // As noticed in Kirby64 decomp, these functions are copies from libultra, but
 // with explicit float constants and other slight modifications.
 
-void syMatrixLookAtF(
+void syMatrixLookAtF
+(
     Mtx44f *mf,
-    f32 xEye,
-    f32 yEye,
-    f32 zEye,
-    f32 xAt,
-    f32 yAt,
-    f32 zAt,
-    f32 xUp,
-    f32 yUp,
-    f32 zUp) {
-    f32 len, xLook, yLook, zLook, xRight, yRight, zRight;
+    f32 eye_x,
+    f32 eye_y,
+    f32 eye_z,
+    f32 at_x,
+    f32 at_y,
+    f32 at_z,
+    f32 up_x,
+    f32 up_y,
+    f32 up_z
+)
+{
+    f32 len, look_x, look_y, look_z, right_x, right_y, right_z;
 
-    xLook = xAt - xEye;
-    yLook = yAt - yEye;
-    zLook = zAt - zEye;
+    look_x = at_x - eye_x;
+    look_y = at_y - eye_y;
+    look_z = at_z - eye_z;
 
     /* Negate because positive Z is behind us: */
-    len = -1.0f / sqrtf(xLook * xLook + yLook * yLook + zLook * zLook);
-    xLook *= len;
-    yLook *= len;
-    zLook *= len;
+    len = -1.0F / sqrtf(SQUARE(look_x) + SQUARE(look_y) + SQUARE(look_z));
+    look_x *= len;
+    look_y *= len;
+    look_z *= len;
 
     /* Right = Up x Look */
+    right_x = up_y * look_z - up_z * look_y;
+    right_y = up_z * look_x - up_x * look_z;
+    right_z = up_x * look_y - up_y * look_x;
 
-    xRight = yUp * zLook - zUp * yLook;
-    yRight = zUp * xLook - xUp * zLook;
-    zRight = xUp * yLook - yUp * xLook;
-    len    = 1.0f / sqrtf(xRight * xRight + yRight * yRight + zRight * zRight);
-    xRight *= len;
-    yRight *= len;
-    zRight *= len;
+    len = 1.0F / sqrtf(SQUARE(right_x) + SQUARE(right_y) + SQUARE(right_z));
+    right_x *= len;
+    right_y *= len;
+    right_z *= len;
 
     /* Up = Look x Right */
+    up_x = look_y * right_z - look_z * right_y;
+    up_y = look_z * right_x - look_x * right_z;
+    up_z = look_x * right_y - look_y * right_x;
 
-    xUp = yLook * zRight - zLook * yRight;
-    yUp = zLook * xRight - xLook * zRight;
-    zUp = xLook * yRight - yLook * xRight;
-    len = 1.0f / sqrtf(xUp * xUp + yUp * yUp + zUp * zUp);
-    xUp *= len;
-    yUp *= len;
-    zUp *= len;
+    len = 1.0F / sqrtf(SQUARE(up_x) + SQUARE(up_y) + SQUARE(up_z));
+    up_x *= len;
+    up_y *= len;
+    up_z *= len;
 
-    (*mf)[0][0] = xRight;
-    (*mf)[1][0] = yRight;
-    (*mf)[2][0] = zRight;
-    (*mf)[3][0] = -(xEye * xRight + yEye * yRight + zEye * zRight);
+    (*mf)[0][0] = right_x;
+    (*mf)[1][0] = right_y;
+    (*mf)[2][0] = right_z;
+    (*mf)[3][0] = -(eye_x * right_x + eye_y * right_y + eye_z * right_z);
 
-    (*mf)[0][1] = xUp;
-    (*mf)[1][1] = yUp;
-    (*mf)[2][1] = zUp;
-    (*mf)[3][1] = -(xEye * xUp + yEye * yUp + zEye * zUp);
+    (*mf)[0][1] = up_x;
+    (*mf)[1][1] = up_y;
+    (*mf)[2][1] = up_z;
+    (*mf)[3][1] = -(eye_x * up_x + eye_y * up_y + eye_z * up_z);
 
-    (*mf)[0][2] = xLook;
-    (*mf)[1][2] = yLook;
-    (*mf)[2][2] = zLook;
-    (*mf)[3][2] = -(xEye * xLook + yEye * yLook + zEye * zLook);
+    (*mf)[0][2] = look_x;
+    (*mf)[1][2] = look_y;
+    (*mf)[2][2] = look_z;
+    (*mf)[3][2] = -(eye_x * look_x + eye_y * look_y + eye_z * look_z);
 
     (*mf)[0][3] = 0;
     (*mf)[1][3] = 0;
@@ -182,20 +183,23 @@ void syMatrixLookAtF(
     (*mf)[3][3] = 1;
 }
 
-void syMatrixLookAt(
+void syMatrixLookAt
+(
     Mtx *m,
-    f32 xEye,
-    f32 yEye,
-    f32 zEye,
-    f32 xAt,
-    f32 yAt,
-    f32 zAt,
-    f32 xUp,
-    f32 yUp,
-    f32 zUp) {
+    f32 eye_x,
+    f32 eye_y,
+    f32 eye_z,
+    f32 at_x,
+    f32 at_y,
+    f32 at_z,
+    f32 up_x,
+    f32 up_y,
+    f32 up_z
+)
+{
     Mtx44f mf;
 
-    syMatrixLookAtF(&mf, xEye, yEye, zEye, xAt, yAt, zAt, xUp, yUp, zUp);
+    syMatrixLookAtF(&mf, eye_x, eye_y, eye_z, at_x, at_y, at_z, up_x, up_y, up_z);
 
     syMatrixF2L(&mf, m);
 }
@@ -203,63 +207,63 @@ void syMatrixLookAt(
 // Modified version of guLookAtF that takes an extra f32 argument and calls func_80019438
 void syMatrixModLookAtF(
     Mtx44f *mf,
-    f32 xEye,
-    f32 yEye,
-    f32 zEye,
-    f32 xAt,
-    f32 yAt,
-    f32 zAt,
+    f32 eye_x,
+    f32 eye_y,
+    f32 eye_z,
+    f32 at_x,
+    f32 at_y,
+    f32 at_z,
     f32 arg7,
-    f32 xUp,
-    f32 yUp,
-    f32 zUp) {
+    f32 up_x,
+    f32 up_y,
+    f32 up_z) {
     f32 len;
     Vec3f look;
     Vec3f right;
 
-    look.x = xAt - xEye;
-    look.y = yAt - yEye;
-    look.z = zAt - zEye;
+    look.x = at_x - eye_x;
+    look.y = at_y - eye_y;
+    look.z = at_z - eye_z;
 
     /* Negate because positive Z is behind us: */
-    len = -1.0f / sqrtf(look.x * look.x + look.y * look.y + look.z * look.z);
+    len = -1.0F / sqrtf(look.x * look.x + look.y * look.y + look.z * look.z);
     look.x *= len;
     look.y *= len;
     look.z *= len;
 
     /* Right = Up x Look */
 
-    right.x = yUp * look.z - zUp * look.y;
-    right.y = zUp * look.x - xUp * look.z;
-    right.z = xUp * look.y - yUp * look.x;
-    len     = 1.0f / sqrtf(right.x * right.x + right.y * right.y + right.z * right.z);
+    right.x = up_y * look.z - up_z * look.y;
+    right.y = up_z * look.x - up_x * look.z;
+    right.z = up_x * look.y - up_y * look.x;
+    len     = 1.0F / sqrtf(right.x * right.x + right.y * right.y + right.z * right.z);
     right.x *= len;
     right.y *= len;
     right.z *= len;
 
     func_80019438(&right, &look, arg7);
-    xUp = (look.y * right.z) - (look.z * right.y);
-    yUp = (look.z * right.x) - (look.x * right.z);
-    zUp = (look.x * right.y) - (look.y * right.x);
-    len = 1.0f / sqrtf(((xUp * xUp) + (yUp * yUp)) + (zUp * zUp));
-    xUp = xUp * len;
-    yUp = yUp * len;
-    zUp = zUp * len;
+    up_x = (look.y * right.z) - (look.z * right.y);
+    up_y = (look.z * right.x) - (look.x * right.z);
+    up_z = (look.x * right.y) - (look.y * right.x);
+    len = 1.0F / sqrtf(((up_x * up_x) + (up_y * up_y)) + (up_z * up_z));
+    up_x = up_x * len;
+    up_y = up_y * len;
+    up_z = up_z * len;
 
     (*mf)[0][0] = right.x;
     (*mf)[1][0] = right.y;
     (*mf)[2][0] = right.z;
-    (*mf)[3][0] = -(xEye * right.x + yEye * right.y + zEye * right.z);
+    (*mf)[3][0] = -(eye_x * right.x + eye_y * right.y + eye_z * right.z);
 
-    (*mf)[0][1] = xUp;
-    (*mf)[1][1] = yUp;
-    (*mf)[2][1] = zUp;
-    (*mf)[3][1] = -(xEye * xUp + yEye * yUp + zEye * zUp);
+    (*mf)[0][1] = up_x;
+    (*mf)[1][1] = up_y;
+    (*mf)[2][1] = up_z;
+    (*mf)[3][1] = -(eye_x * up_x + eye_y * up_y + eye_z * up_z);
 
     (*mf)[0][2] = look.x;
     (*mf)[1][2] = look.y;
     (*mf)[2][2] = look.z;
-    (*mf)[3][2] = -(xEye * look.x + yEye * look.y + zEye * look.z);
+    (*mf)[3][2] = -(eye_x * look.x + eye_y * look.y + eye_z * look.z);
 
     (*mf)[0][3] = 0;
     (*mf)[1][3] = 0;
@@ -267,78 +271,86 @@ void syMatrixModLookAtF(
     (*mf)[3][3] = 1;
 }
 
-void syMatrixModLookAt(
+void syMatrixModLookAt
+(
     Mtx *m,
-    f32 xEye,
-    f32 yEye,
-    f32 zEye,
-    f32 xAt,
-    f32 yAt,
-    f32 zAt,
+    f32 eye_x,
+    f32 eye_y,
+    f32 eye_z,
+    f32 at_x,
+    f32 at_y,
+    f32 at_z,
     f32 arg7,
-    f32 xUp,
-    f32 yUp,
-    f32 zUp) {
+    f32 up_x,
+    f32 up_y,
+    f32 up_z
+)
+{
     Mtx44f mf;
 
-    syMatrixModLookAtF(&mf, xEye, yEye, zEye, xAt, yAt, zAt, arg7, xUp, yUp, zUp);
+    syMatrixModLookAtF(&mf, eye_x, eye_y, eye_z, at_x, at_y, at_z, arg7, up_x, up_y, up_z);
 
     syMatrixF2L(&mf, m);
 }
 
 // modified like hal's version of guLookAtF
-void syMatrixLookAtReflectF(
+void syMatrixLookAtReflectF
+(
     Mtx44f *mf,
     LookAt *l,
-    f32 xEye,
-    f32 yEye,
-    f32 zEye,
-    f32 xAt,
-    f32 yAt,
-    f32 zAt,
-    f32 xUp,
-    f32 yUp,
-    f32 zUp) {
-    f32 len, xLook, yLook, zLook, xRight, yRight, zRight;
+    f32 eye_x,
+    f32 eye_y,
+    f32 eye_z,
+    f32 at_x,
+    f32 at_y,
+    f32 at_z,
+    f32 up_x,
+    f32 up_y,
+    f32 up_z
+)
+{
+    f32 len, look_x, look_y, look_z, right_x, right_y, right_z;
 
-    xLook = xAt - xEye;
-    yLook = yAt - yEye;
-    zLook = zAt - zEye;
+    look_x = at_x - eye_x;
+    look_y = at_y - eye_y;
+    look_z = at_z - eye_z;
 
     /* Negate because positive Z is behind us: */
-    len = -1.0f / sqrtf(xLook * xLook + yLook * yLook + zLook * zLook);
-    xLook *= len;
-    yLook *= len;
-    zLook *= len;
+    len = -1.0F / sqrtf(look_x * look_x + look_y * look_y + look_z * look_z);
+    look_x *= len;
+    look_y *= len;
+    look_z *= len;
 
     /* Right = Up x Look */
 
-    xRight = yUp * zLook - zUp * yLook;
-    yRight = zUp * xLook - xUp * zLook;
-    zRight = xUp * yLook - yUp * xLook;
-    len    = 1.0f / sqrtf(xRight * xRight + yRight * yRight + zRight * zRight);
-    xRight *= len;
-    yRight *= len;
-    zRight *= len;
+    right_x = up_y * look_z - up_z * look_y;
+    right_y = up_z * look_x - up_x * look_z;
+    right_z = up_x * look_y - up_y * look_x;
+
+    len = 1.0F / sqrtf(right_x * right_x + right_y * right_y + right_z * right_z);
+    right_x *= len;
+    right_y *= len;
+    right_z *= len;
 
     /* Up = Look x Right */
 
-    xUp = yLook * zRight - zLook * yRight;
-    yUp = zLook * xRight - xLook * zRight;
-    zUp = xLook * yRight - yLook * xRight;
-    len = 1.0f / sqrtf(xUp * xUp + yUp * yUp + zUp * zUp);
-    xUp *= len;
-    yUp *= len;
-    zUp *= len;
+    up_x = look_y * right_z - look_z * right_y;
+    up_y = look_z * right_x - look_x * right_z;
+    up_z = look_x * right_y - look_y * right_x;
+
+    len = 1.0F / sqrtf(up_x * up_x + up_y * up_y + up_z * up_z);
+    up_x *= len;
+    up_y *= len;
+    up_z *= len;
 
     /* reflectance vectors = Up and Right */
 
-    l->l[0].l.dir[0]  = FTOFRAC8(xRight);
-    l->l[0].l.dir[1]  = FTOFRAC8(yRight);
-    l->l[0].l.dir[2]  = FTOFRAC8(zRight);
-    l->l[1].l.dir[0]  = FTOFRAC8(xUp);
-    l->l[1].l.dir[1]  = FTOFRAC8(yUp);
-    l->l[1].l.dir[2]  = FTOFRAC8(zUp);
+    l->l[0].l.dir[0]  = FTOFRAC8(right_x);
+    l->l[0].l.dir[1]  = FTOFRAC8(right_y);
+    l->l[0].l.dir[2]  = FTOFRAC8(right_z);
+    l->l[1].l.dir[0]  = FTOFRAC8(up_x);
+    l->l[1].l.dir[1]  = FTOFRAC8(up_y);
+    l->l[1].l.dir[2]  = FTOFRAC8(up_z);
     l->l[0].l.col[0]  = 0x00;
     l->l[0].l.col[1]  = 0x00;
     l->l[0].l.col[2]  = 0x00;
@@ -356,20 +368,20 @@ void syMatrixLookAtReflectF(
     l->l[1].l.colc[2] = 0x00;
     l->l[1].l.pad2    = 0x00;
 
-    (*mf)[0][0] = xRight;
-    (*mf)[1][0] = yRight;
-    (*mf)[2][0] = zRight;
-    (*mf)[3][0] = -(xEye * xRight + yEye * yRight + zEye * zRight);
+    (*mf)[0][0] = right_x;
+    (*mf)[1][0] = right_y;
+    (*mf)[2][0] = right_z;
+    (*mf)[3][0] = -(eye_x * right_x + eye_y * right_y + eye_z * right_z);
 
-    (*mf)[0][1] = xUp;
-    (*mf)[1][1] = yUp;
-    (*mf)[2][1] = zUp;
-    (*mf)[3][1] = -(xEye * xUp + yEye * yUp + zEye * zUp);
+    (*mf)[0][1] = up_x;
+    (*mf)[1][1] = up_y;
+    (*mf)[2][1] = up_z;
+    (*mf)[3][1] = -(eye_x * up_x + eye_y * up_y + eye_z * up_z);
 
-    (*mf)[0][2] = xLook;
-    (*mf)[1][2] = yLook;
-    (*mf)[2][2] = zLook;
-    (*mf)[3][2] = -(xEye * xLook + yEye * yLook + zEye * zLook);
+    (*mf)[0][2] = look_x;
+    (*mf)[1][2] = look_y;
+    (*mf)[2][2] = look_z;
+    (*mf)[3][2] = -(eye_x * look_x + eye_y * look_y + eye_z * look_z);
 
     (*mf)[0][3] = 0;
     (*mf)[1][3] = 0;
@@ -377,81 +389,89 @@ void syMatrixLookAtReflectF(
     (*mf)[3][3] = 1;
 }
 
-void syMatrixLookAtReflect(
+void syMatrixLookAtReflect
+(
     Mtx *m,
     LookAt *l,
-    f32 xEye,
-    f32 yEye,
-    f32 zEye,
-    f32 xAt,
-    f32 yAt,
-    f32 zAt,
-    f32 xUp,
-    f32 yUp,
-    f32 zUp) {
+    f32 eye_x,
+    f32 eye_y,
+    f32 eye_z,
+    f32 at_x,
+    f32 at_y,
+    f32 at_z,
+    f32 up_x,
+    f32 up_y,
+    f32 up_z
+)
+{
     Mtx44f mf;
 
-    syMatrixLookAtReflectF(&mf, l, xEye, yEye, zEye, xAt, yAt, zAt, xUp, yUp, zUp);
+    syMatrixLookAtReflectF(&mf, l, eye_x, eye_y, eye_z, at_x, at_y, at_z, up_x, up_y, up_z);
 
     syMatrixF2L(&mf, m);
 }
 
-void syMatrixModLookAtReflect_f(
+void syMatrixModLookAtReflectF
+(
     Mtx44f *mf,
     LookAt *l,
-    f32 xEye,
-    f32 yEye,
-    f32 zEye,
-    f32 xAt,
-    f32 yAt,
-    f32 zAt,
-    f32 arg8,
-    f32 xUp,
-    f32 yUp,
-    f32 zUp) {
+    f32 eye_x,
+    f32 eye_y,
+    f32 eye_z,
+    f32 at_x,
+    f32 at_y,
+    f32 at_z,
+    f32 roll,
+    f32 up_x,
+    f32 up_y,
+    f32 up_z
+)
+{
     f32 len;
     Vec3f look;
     Vec3f right;
 
-    look.x = xAt - xEye;
-    look.y = yAt - yEye;
-    look.z = zAt - zEye;
+    look.x = at_x - eye_x;
+    look.y = at_y - eye_y;
+    look.z = at_z - eye_z;
 
     /* Negate because positive Z is behind us: */
-    len = -1.0f / sqrtf(look.x * look.x + look.y * look.y + look.z * look.z);
+    len = -1.0F / sqrtf(look.x * look.x + look.y * look.y + look.z * look.z);
     look.x *= len;
     look.y *= len;
     look.z *= len;
 
     /* Right = Up x Look */
 
-    right.x = yUp * look.z - zUp * look.y;
-    right.y = zUp * look.x - xUp * look.z;
-    right.z = xUp * look.y - yUp * look.x;
-    len     = 1.0f / sqrtf(right.x * right.x + right.y * right.y + right.z * right.z);
+    right.x = up_y * look.z - up_z * look.y;
+    right.y = up_z * look.x - up_x * look.z;
+    right.z = up_x * look.y - up_y * look.x;
+
+    len = 1.0F / sqrtf(right.x * right.x + right.y * right.y + right.z * right.z);
     right.x *= len;
     right.y *= len;
     right.z *= len;
 
     /* Up = Look x Right */
 
-    func_80019438(&right, &look, arg8);
-    xUp = look.y * right.z - look.z * right.y;
-    yUp = look.z * right.x - look.x * right.z;
-    zUp = look.x * right.y - look.y * right.x;
-    len = 1.0f / sqrtf(xUp * xUp + yUp * yUp + zUp * zUp);
-    xUp *= len;
-    yUp *= len;
-    zUp *= len;
+    func_80019438(&right, &look, roll);
+    up_x = look.y * right.z - look.z * right.y;
+    up_y = look.z * right.x - look.x * right.z;
+    up_z = look.x * right.y - look.y * right.x;
+
+    len = 1.0F / sqrtf(up_x * up_x + up_y * up_y + up_z * up_z);
+    up_x *= len;
+    up_y *= len;
+    up_z *= len;
 
     /* reflectance vectors = Up and Right */
 
     l->l[0].l.dir[0]  = FTOFRAC8(right.x);
     l->l[0].l.dir[1]  = FTOFRAC8(right.y);
     l->l[0].l.dir[2]  = FTOFRAC8(right.z);
-    l->l[1].l.dir[0]  = FTOFRAC8(xUp);
-    l->l[1].l.dir[1]  = FTOFRAC8(yUp);
-    l->l[1].l.dir[2]  = FTOFRAC8(zUp);
+    l->l[1].l.dir[0]  = FTOFRAC8(up_x);
+    l->l[1].l.dir[1]  = FTOFRAC8(up_y);
+    l->l[1].l.dir[2]  = FTOFRAC8(up_z);
     l->l[0].l.col[0]  = 0x00;
     l->l[0].l.col[1]  = 0x00;
     l->l[0].l.col[2]  = 0x00;
@@ -472,17 +492,17 @@ void syMatrixModLookAtReflect_f(
     (*mf)[0][0] = right.x;
     (*mf)[1][0] = right.y;
     (*mf)[2][0] = right.z;
-    (*mf)[3][0] = -(xEye * right.x + yEye * right.y + zEye * right.z);
+    (*mf)[3][0] = -(eye_x * right.x + eye_y * right.y + eye_z * right.z);
 
-    (*mf)[0][1] = xUp;
-    (*mf)[1][1] = yUp;
-    (*mf)[2][1] = zUp;
-    (*mf)[3][1] = -(xEye * xUp + yEye * yUp + zEye * zUp);
+    (*mf)[0][1] = up_x;
+    (*mf)[1][1] = up_y;
+    (*mf)[2][1] = up_z;
+    (*mf)[3][1] = -(eye_x * up_x + eye_y * up_y + eye_z * up_z);
 
     (*mf)[0][2] = look.x;
     (*mf)[1][2] = look.y;
     (*mf)[2][2] = look.z;
-    (*mf)[3][2] = -(xEye * look.x + yEye * look.y + zEye * look.z);
+    (*mf)[3][2] = -(eye_x * look.x + eye_y * look.y + eye_z * look.z);
 
     (*mf)[0][3] = 0;
     (*mf)[1][3] = 0;
@@ -490,27 +510,31 @@ void syMatrixModLookAtReflect_f(
     (*mf)[3][3] = 1;
 }
 
-void syMatrixModLookAtReflect(
+void syMatrixModLookAtReflect
+(
     Mtx *m,
     LookAt *l,
-    f32 xEye,
-    f32 yEye,
-    f32 zEye,
-    f32 xAt,
-    f32 yAt,
-    f32 zAt,
-    f32 arg8,
-    f32 xUp,
-    f32 yUp,
-    f32 zUp) {
+    f32 eye_x,
+    f32 eye_y,
+    f32 eye_z,
+    f32 at_x,
+    f32 at_y,
+    f32 at_z,
+    f32 roll,
+    f32 up_x,
+    f32 up_y,
+    f32 up_z
+)
+{
     Mtx44f mf;
 
-    syMatrixModLookAtReflect_f(&mf, l, xEye, yEye, zEye, xAt, yAt, zAt, arg8, xUp, yUp, zUp);
+    syMatrixModLookAtReflectF(&mf, l, eye_x, eye_y, eye_z, at_x, at_y, at_z, roll, up_x, up_y, up_z);
 
     syMatrixF2L(&mf, m);
 }
 
-void syMatrixOrthoF(Mtx44f *mf, f32 l, f32 r, f32 b, f32 t, f32 n, f32 f, f32 scale) {
+void syMatrixOrthoF(Mtx44f *mf, f32 l, f32 r, f32 b, f32 t, f32 n, f32 f, f32 scale)
+{
     s32 i, j;
 
     (*mf)[0][0] = 2 / (r - l);
@@ -521,19 +545,36 @@ void syMatrixOrthoF(Mtx44f *mf, f32 l, f32 r, f32 b, f32 t, f32 n, f32 f, f32 sc
     (*mf)[3][2] = -(f + n) / (f - n);
     (*mf)[3][3] = 1;
 
-    for (i = 0; i < 3; i++) {
-        if (i != 0) { (*mf)[i][0] = 0; }
-        if (i != 1) { (*mf)[i][1] = 0; }
-        if (i != 2) { (*mf)[i][2] = 0; }
-        if (i != 3) { (*mf)[i][3] = 0; }
+    for (i = 0; i < 3; i++)
+    {
+        if (i != 0)
+        {
+            (*mf)[i][0] = 0;
+        }
+        if (i != 1)
+        {
+            (*mf)[i][1] = 0;
+        }
+        if (i != 2)
+        {
+            (*mf)[i][2] = 0;
+        }
+        if (i != 3)
+        {
+            (*mf)[i][3] = 0;
+        }
     }
-
-    for (i = 0; i < 4; i++) {
-        for (j = 0; j < 4; j++) { (*mf)[i][j] *= scale; }
+    for (i = 0; i < ARRAY_COUNT(*mf); i++)
+    {
+        for (j = 0; j < ARRAY_COUNT(*mf[0]); j++)
+        {
+            (*mf)[i][j] *= scale;
+        }
     }
 }
 
-void syMatrixOrtho(Mtx *m, f32 l, f32 r, f32 b, f32 t, f32 n, f32 f, f32 scale) {
+void syMatrixOrtho(Mtx *m, f32 l, f32 r, f32 b, f32 t, f32 n, f32 f, f32 scale)
+{
     Mtx44f mf;
 
     syMatrixOrthoF(&mf, l, r, b, t, n, f, scale);
@@ -542,43 +583,25 @@ void syMatrixOrtho(Mtx *m, f32 l, f32 r, f32 b, f32 t, f32 n, f32 f, f32 scale) 
 }
 
 // this function seems to have larger changes than the prior `gu` functions
-void syMatrixPerspFastF(
-    Mtx44f mf,
-    u16* perspNorm,
-    f32 fovy,
-    f32 aspect,
-    f32 near,
-    f32 far,
-    f32 scale) {
+void syMatrixPerspFastF(Mtx44f mf, u16 *persp_norm, f32 fovy, f32 aspect, f32 near, f32 far, f32 scale)
+{
     f32 cot;
-    u16 sinAngle;
-    f32 sinX, cosX;
+    u16 index;
+    f32 sin, cos;
     s32 unused[4];
 
-    fovy *= 0.008726646f;
+    fovy *= 0.008726646F;
 
-    sinAngle = (s32) (fovy * 651.8986f) & 0xFFF;
-    // clang-format off
-    do { \
-        sinX = (f32) gSinTable[sinAngle & (ARRAY_COUNT(gSinTable) - 1)]; \
-        if (sinAngle & 0x800) { \
-            sinX = -sinX; \
-        } \
-        sinAngle += 0x400; \
-        cosX = (f32) gSinTable[sinAngle & (ARRAY_COUNT(gSinTable) - 1)]; \
-        if (sinAngle & 0x800) { \
-            cosX = -cosX; \
-        } \
-    } while (0);
-    // clang-format on
-    cot = cosX / sinX;
+    lbGetSinCosUShort(sin, cos, fovy, index);
+
+    cot = cos / sin;
 
     mf[0][0] = (cot / aspect) * scale;
     mf[1][1] = cot * scale;
     mf[2][2] = ((near + far) * scale) / (near - far);
     mf[2][3] = -scale;
-    mf[3][2] = (2.0f * near * far * scale) / (near - far);
-    mf[3][3] = 0.0f;
+    mf[3][2] = (2.0F * near * far * scale) / (near - far);
+    mf[3][3] = 0.0F;
 
     mf[0][1] = 0;
     mf[0][2] = 0;
@@ -594,58 +617,70 @@ void syMatrixPerspFastF(
     mf[3][0] = 0;
     mf[3][1] = 0;
 
-    if (perspNorm != NULL) {
-        if (near + far <= 2.0f) {
-            *perspNorm = (u16) 0xFFFF;
-        } else {
-            *perspNorm = (u16) ((2.0f * 65536.0f) / (near + far));
-            if (*perspNorm <= 0) {
-                *perspNorm = (u16) 0x0001;
+    if (persp_norm != NULL)
+    {
+        if (near + far <= 2.0F)
+        {
+            *persp_norm = 0xFFFF;
+        }
+        else
+        {
+            *persp_norm = (2.0F * 65536.0F) / (near + far);
+
+            if (*persp_norm <= 0)
+            {
+                *persp_norm = 1;
             }
         }
     }
 }
 
-void syMatrixPerspFast(
+void syMatrixPerspFast
+(
     Mtx *m,
-    u16 *perspNorm,
+    u16 *persp_norm,
     f32 fovy,
     f32 aspect,
     f32 near,
     f32 far,
-    f32 scale) {
+    f32 scale
+)
+{
     Mtx44f mf;
 
-    syMatrixPerspFastF(mf, perspNorm, fovy, aspect, near, far, scale);
+    syMatrixPerspFastF(mf, persp_norm, fovy, aspect, near, far, scale);
 
     syMatrixF2L(&mf, m);
 }
 
-void syMatrixPerspF(
+void syMatrixPerspF
+(
     Mtx44f mf,
-    u16* perspNorm,
+    u16 *persp_norm,
     f32 fovy,
     f32 aspect,
     f32 near,
     f32 far,
-    f32 scale) {
+    f32 scale
+)
+{
     s32 unused1;
-    f32 cotValue;
-    f32 sinValue;
-    f32 cosValue;
-    s32 unused3;
+    f32 cot;
+    f32 sin;
+    f32 cos;
+    s32 unused2;
 
-    fovy *= 3.1415926f / 180.0f;
-    cosValue = cosf(fovy / 2);
-    sinValue = sinf(fovy / 2);
-    cotValue = cosValue / sinValue;
+    fovy *= DTOR32;
+    cos = cosf(fovy / 2);
+    sin = sinf(fovy / 2);
+    cot = cos / sin;
 
-    mf[0][0] = (cotValue / aspect) * scale;
-    mf[1][1] = cotValue * scale;
+    mf[0][0] = (cot / aspect) * scale;
+    mf[1][1] = cot * scale;
     mf[2][2] = ((near + far) * scale) / (near - far);
     mf[2][3] = -scale;
-    mf[3][2] = (2.0f * near * far * scale) / (near - far);
-    mf[3][3] = 0.0f;
+    mf[3][2] = (2.0F * near * far * scale) / (near - far);
+    mf[3][3] = 0.0F;
 
     mf[0][1] = 0;
     mf[0][2] = 0;
@@ -661,43 +696,57 @@ void syMatrixPerspF(
     mf[3][0] = 0;
     mf[3][1] = 0;
 
-    if (perspNorm != NULL) {
-        if (near + far <= 2.0f) {
-            *perspNorm = 0xFFFF;
-        } else {
-            *perspNorm = (2.0f * 65536.0f) / (near + far);
-            if (*perspNorm <= 0) {
-                *perspNorm = 1;
+    if (persp_norm != NULL)
+    {
+        if (near + far <= 2.0F)
+        {
+            *persp_norm = 0xFFFF;
+        }
+        else
+        {
+            *persp_norm = (2.0F * 65536.0F) / (near + far);
+
+            if (*persp_norm <= 0)
+            {
+                *persp_norm = 1;
             }
         }
     }
 }
 
 
-void hal_perspective(Mtx *m, u16 *perspNorm, f32 fovy, f32 aspect, f32 near, f32 far, f32 scale) {
+void syMatrixPersp(Mtx *m, u16 *persp_norm, f32 fovy, f32 aspect, f32 near, f32 far, f32 scale)
+{
     Mtx44f mf;
 
-    syMatrixPerspF(mf, perspNorm, fovy, aspect, near, far, scale);
+    syMatrixPerspF(mf, persp_norm, fovy, aspect, near, far, scale);
 
     syMatrixF2L(&mf, m);
 }
 
-void syMatrixScaF(Mtx44f *mf, f32 x, f32 y, f32 z) {
+void syMatrixScaF(Mtx44f *mf, f32 x, f32 y, f32 z)
+{
     s32 i, j;
 
     (*mf)[0][0] = x;
     (*mf)[1][1] = y;
     (*mf)[2][2] = z;
-    (*mf)[3][3] = 1.0f;
+    (*mf)[3][3] = 1.0F;
 
-    for (i = 0; i < 4; i++) {
-        for (j = 0; j < 4; j++) {
-            if (i != j) { (*mf)[i][j] = 0; }
+    for (i = 0; i < ARRAY_COUNT(*mf); i++)
+    {
+        for (j = 0; j < ARRAY_COUNT(*mf[0]); j++)
+        {
+            if (i != j)
+            {
+                (*mf)[i][j] = 0;
+            }
         }
     }
 }
 
-void syMatrixSca(Mtx *m, f32 x, f32 y, f32 z) {
+void syMatrixSca(Mtx *m, f32 x, f32 y, f32 z)
+{
     s32 e1, e2;
 
     m->m[0][1] = 0;
@@ -729,86 +778,77 @@ void syMatrixSca(Mtx *m, f32 x, f32 y, f32 z) {
     m->m[3][3] = 0;
 }
 
-void hal_rowscale_f(Mtx44f *mf, f32 x, f32 y, f32 z) {
+void syMatrixRowscaleF(Mtx44f *mf, f32 x, f32 y, f32 z)
+{
     s32 j;
 
-    for (j = 0; j < 4; j++) {
-        if ((*mf)[0][j] != 0.0f) { (*mf)[0][j] *= x; }
+    for (j = 0; j < ARRAY_COUNT(*mf[0]); j++)
+    {
+        if ((*mf)[0][j] != 0.0F)
+        {
+            (*mf)[0][j] *= x;
+        }
     }
-
-    for (j = 0; j < 4; j++) {
-        if ((*mf)[1][j] != 0.0f) { (*mf)[1][j] *= y; }
+    for (j = 0; j < ARRAY_COUNT(*mf[0]); j++)
+    {
+        if ((*mf)[1][j] != 0.0F)
+        {
+            (*mf)[1][j] *= y;
+        }
     }
-
-    for (j = 0; j < 4; j++) {
-        if ((*mf)[2][j] != 0.0f) { (*mf)[2][j] *= z; }
+    for (j = 0; j < ARRAY_COUNT(*mf[0]); j++)
+    {
+        if ((*mf)[2][j] != 0.0F)
+        {
+            (*mf)[2][j] *= z;
+        }
     }
 }
 
-void syMatrixTraF(Mtx44f *mf, f32 x, f32 y, f32 z) {
+void syMatrixTraF(Mtx44f *mf, f32 x, f32 y, f32 z)
+{
     int i, j;
 
     (*mf)[3][0] = x;
     (*mf)[3][1] = y;
     (*mf)[3][2] = z;
 
-    for (i = 0; i < 3; i++) {
-        for (j = 0; j < 4; j++) {
-            if (i == j) {
-                (*mf)[i][j] = 1.0f;
-            } else {
-                (*mf)[i][j] = 0.0f;
+    for (i = 0; i < 3; i++)
+    {
+        for (j = 0; j < ARRAY_COUNT(*mf[0]); j++)
+        {
+            if (i == j)
+            {
+                (*mf)[i][j] = 1.0F;
             }
+            else (*mf)[i][j] = 0.0F;
         }
     }
-    (*mf)[3][3] = 1.0f;
+    (*mf)[3][3] = 1.0F;
 }
 
-#ifdef NON_MATCHING
-void syMatrixTranslate(Mtx *m, f32 x, f32 y, f32 z) {
-    u32 e1, e2;
+#if 0
+void syMatrixTranslate(Mtx *m, f32 x, f32 y, f32 z)
+{
+    u32 tempx = FTOFIX32(x), tempy = FTOFIX32(y), tempz = FTOFIX32(z);
 
-    e1         = FTOFIX32(1); // 0, 0
-    e2         = FTOFIX32(0); // 0, 1
-    m->m[0][0] = COMBINE_INTEGRAL(e1, e2);
-    m->m[2][0] = COMBINE_FRACTIONAL(e1, e2);
-
-    e1         = FTOFIX32(0); // 0, 2
-    e2         = FTOFIX32(0); // 0, 3
-    m->m[0][1] = COMBINE_INTEGRAL(e1, e2);
-    m->m[2][1] = COMBINE_FRACTIONAL(e1, e2);
-
-    e1         = FTOFIX32(0); // 1 0
-    e2         = FTOFIX32(1); // 1 1
-    m->m[0][2] = COMBINE_INTEGRAL(e1, e2);
-    m->m[2][2] = COMBINE_FRACTIONAL(e1, e2);
-
-    e1         = FTOFIX32(0); // 1 2
-    e2         = FTOFIX32(0);
-    m->m[0][3] = COMBINE_INTEGRAL(e1, e2);
-    m->m[2][3] = COMBINE_FRACTIONAL(e1, e2);
-
-    e1         = FTOFIX32(0); // 2 0
-    e2         = FTOFIX32(0);
-    m->m[1][0] = COMBINE_INTEGRAL(e1, e2);
-    m->m[3][0] = COMBINE_FRACTIONAL(e1, e2);
-
-    e1         = FTOFIX32(1); // 2 2
-    e2         = FTOFIX32(0);
-    m->m[1][1] = COMBINE_INTEGRAL(e1, e2);
-    m->m[3][1] = COMBINE_FRACTIONAL(e1, e2);
-
-    e1         = FTOFIX32(x); // 3 0
-    e2         = FTOFIX32(y); // 3 1
-    m->m[1][2] = COMBINE_INTEGRAL(e1, e2);
-    m->m[3][2] = COMBINE_FRACTIONAL(e1, e2);
-
-    e1         = FTOFIX32(z); // 3 2
-    e2         = FTOFIX32(1); // 3 3
-    m->m[1][3] = COMBINE_INTEGRAL(e1, e2);
-    m->m[3][3] = COMBINE_FRACTIONAL(e1, e2);
+    m->m[0][0] = COMBINE_INTEGRAL(FTOFIX32(1), FTOFIX32(0));
+    m->m[2][0] = COMBINE_FRACTIONAL(FTOFIX32(1), FTOFIX32(0));
+    m->m[0][1] = COMBINE_INTEGRAL(FTOFIX32(0), FTOFIX32(0));
+    m->m[2][1] = COMBINE_FRACTIONAL(FTOFIX32(0), FTOFIX32(0));
+    m->m[0][2] = COMBINE_INTEGRAL(FTOFIX32(0), FTOFIX32(1));
+    m->m[2][2] = COMBINE_FRACTIONAL(FTOFIX32(0), FTOFIX32(1));
+    m->m[0][3] = COMBINE_INTEGRAL(FTOFIX32(0), FTOFIX32(0));
+    m->m[2][3] = COMBINE_FRACTIONAL(FTOFIX32(0), FTOFIX32(0));
+    m->m[1][0] = COMBINE_INTEGRAL(FTOFIX32(0), FTOFIX32(0));
+    m->m[3][0] = COMBINE_FRACTIONAL(FTOFIX32(0), FTOFIX32(0));
+    m->m[1][1] = COMBINE_INTEGRAL(FTOFIX32(1), FTOFIX32(0));
+    m->m[3][1] = COMBINE_FRACTIONAL(FTOFIX32(1), FTOFIX32(0));
+    m->m[1][2] = COMBINE_INTEGRAL(tempx, tempy);
+    m->m[3][2] = COMBINE_FRACTIONAL(tempx, tempy);
+    m->m[1][3] = COMBINE_INTEGRAL(tempz, FTOFIX32(1));
+    m->m[3][3] = COMBINE_FRACTIONAL(tempz, FTOFIX32(1));
 }
-
 #else
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/hal_gu/syMatrixTranslate.s")
 #endif
@@ -822,7 +862,7 @@ void syMatrixRotR_f(Mtx44f *mf, f32 a, f32 x, f32 y, f32 z) {
     guNormalize(&x, &y, &z);
     sine   = __sinf(a);
     cosine = __cosf(a);
-    t      = (1.0f - cosine);
+    t      = (1.0F - cosine);
     ab     = x * y * t;
     bc     = y * z * t;
     ca     = z * x * t;
@@ -842,14 +882,14 @@ void syMatrixRotR_f(Mtx44f *mf, f32 a, f32 x, f32 y, f32 z) {
     (*mf)[1][0] = ab - z * sine;
     (*mf)[0][1] = ab + z * sine;
 
-    (*mf)[0][3] = 0.0f;
-    (*mf)[1][3] = 0.0f;
-    (*mf)[2][3] = 0.0f;
+    (*mf)[0][3] = 0.0F;
+    (*mf)[1][3] = 0.0F;
+    (*mf)[2][3] = 0.0F;
 
-    (*mf)[3][0] = 0.0f;
-    (*mf)[3][1] = 0.0f;
-    (*mf)[3][2] = 0.0f;
-    (*mf)[3][3] = 1.0f;
+    (*mf)[3][0] = 0.0F;
+    (*mf)[3][1] = 0.0F;
+    (*mf)[3][2] = 0.0F;
+    (*mf)[3][3] = 1.0F;
 }
 
 void syMatrixRotR(Mtx *m, f32 a, f32 x, f32 y, f32 z) {
@@ -890,7 +930,7 @@ void syMatrixTraRotRSca_f(
     (*mf)[3][0] = dx;
     (*mf)[3][1] = dy;
     (*mf)[3][2] = dz;
-    hal_rowscale_f(mf, sx, sy, sz);
+    syMatrixRowscaleF(mf, sx, sy, sz);
 }
 
 void syMatrixTraRotRSca(
@@ -935,14 +975,14 @@ void syMatrixRotRpyRF(Mtx44f *mf, f32 r, f32 p, f32 h) {
     (*mf)[2][1] = cosr * sinp * sinh - sinr * cosh;
     (*mf)[2][2] = cosr * cosp;
 
-    (*mf)[3][2] = 0.0f;
-    (*mf)[3][1] = 0.0f;
-    (*mf)[3][0] = 0.0f;
+    (*mf)[3][2] = 0.0F;
+    (*mf)[3][1] = 0.0F;
+    (*mf)[3][0] = 0.0F;
 
-    (*mf)[3][3] = 1.0f;
-    (*mf)[2][3] = 0.0f;
-    (*mf)[1][3] = 0.0f;
-    (*mf)[0][3] = 0.0f;
+    (*mf)[3][3] = 1.0F;
+    (*mf)[2][3] = 0.0F;
+    (*mf)[1][3] = 0.0F;
+    (*mf)[0][3] = 0.0F;
 }
 
 #ifdef NON_MATCHING
@@ -1005,11 +1045,11 @@ void syMatrixRotRpyR(Mtx *m, f32 r, f32 p, f32 h) {
     m->m[3][1] = COMBINE_FRACTIONAL(e1, 0);
 
     // [3, 0] -> [3, 3]
-    m->m[1][2] = COMBINE_INTEGRAL(0, 0);
-    m->m[3][2] = COMBINE_FRACTIONAL(0, 0);
+    m->m[1][2] = COMBINE_INTEGRAL(FTOFIX32(0), FTOFIX32(0));
+    m->m[3][2] = COMBINE_FRACTIONAL(FTOFIX32(0), FTOFIX32(0));
 
-    m->m[1][3] = COMBINE_INTEGRAL(0, FTOFIX32(1.0f));
-    m->m[3][3] = COMBINE_FRACTIONAL(0, FTOFIX32(1.0f));
+    m->m[1][3] = COMBINE_INTEGRAL(0, FTOFIX32(1.0F));
+    m->m[3][3] = COMBINE_FRACTIONAL(0, FTOFIX32(1.0F));
 }
 #else
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/hal_gu/syMatrixRotRpyR.s")
@@ -1088,7 +1128,7 @@ void syMatrixTraRotRpyR(Mtx *m, f32 dx, f32 dy, f32 dz, f32 r, f32 p, f32 h) {
     m->m[3][2] = COMBINE_FRACTIONAL(e1, e2);
 
     e1         = FTOFIX32(dz);
-    e2         = FTOFIX32(1.0f);
+    e2         = FTOFIX32(1.0F);
     m->m[1][3] = COMBINE_INTEGRAL(e1, e2);
     m->m[3][3] = COMBINE_FRACTIONAL(e1, e2);
 }
@@ -1111,7 +1151,7 @@ void syMatrixTraRotRpyRScaF(
     (*mf)[3][0] = dx;
     (*mf)[3][1] = dy;
     (*mf)[3][2] = dz;
-    hal_rowscale_f(mf, sx, sy, sz);
+    syMatrixRowscaleF(mf, sx, sy, sz);
 }
 
 #ifdef NON_MATCHING
@@ -1192,7 +1232,7 @@ void syMatrixTraRotRpyRSca(
     m->m[3][2] = COMBINE_FRACTIONAL(e1, e2);
 
     e1         = FTOFIX32(dz);
-    e2         = FTOFIX32(1.0f);
+    e2         = FTOFIX32(1.0F);
     m->m[1][3] = COMBINE_INTEGRAL(e1, e2);
     m->m[3][3] = COMBINE_FRACTIONAL(e1, e2);
 }
@@ -1271,7 +1311,7 @@ void syMatrixTraRotPyrRSca_f(
     (*mf)[3][0] = dx;
     (*mf)[3][1] = dy;
     (*mf)[3][2] = dz;
-    hal_rowscale_f(mf, sx, sy, sz);
+    syMatrixRowscaleF(mf, sx, sy, sz);
 }
 
 void syMatrixTraRotPyrRSca(
@@ -1315,7 +1355,7 @@ void syMatrixRotR_py_f(Mtx44f *mf, f32 p, f32 h) {
 
     (*mf)[0][3] = (*mf)[1][3] = (*mf)[2][3] = (*mf)[3][0] = (*mf)[3][1] = (*mf)[3][2] = 0;
 
-    (*mf)[3][3] = 1.0f;
+    (*mf)[3][3] = 1.0F;
 }
 
 void syMatrixRotR_py(Mtx *m, f32 p, f32 h) {
@@ -1363,7 +1403,7 @@ void syMatrixRotR_rp_f(Mtx44f *mf, f32 r, f32 p) {
 
     (*mf)[0][3] = (*mf)[1][3] = (*mf)[2][3] = (*mf)[3][0] = (*mf)[3][1] = (*mf)[3][2] = 0;
 
-    (*mf)[3][3] = 1.0f;
+    (*mf)[3][3] = 1.0F;
 }
 
 void syMatrixRotR_rp(Mtx *m, f32 p, f32 h) {
@@ -1492,13 +1532,13 @@ void syMatrixRotR_pitch_translate(Mtx *m, f32 dx, f32 dy, f32 dz, f32 p) {
 }
 
 void syMatrixRotR_f_degrees(Mtx44f *mf, f32 a, f32 x, f32 y, f32 z) {
-    syMatrixRotR_f(mf, (a * M_PI_F) / 180.0f, x, y, z);
+    syMatrixRotR_f(mf, (a * M_PI_F) / 180.0F, x, y, z);
 }
 
 void syMatrixRotD(Mtx *m, f32 a, f32 x, f32 y, f32 z) {
     Mtx44f mf;
 
-    syMatrixRotR_f(&mf, (a * M_PI_F) / 180.0f, x, y, z);
+    syMatrixRotR_f(&mf, (a * M_PI_F) / 180.0F, x, y, z);
     syMatrixF2LFixedW(&mf, m);
 }
 
@@ -1511,38 +1551,36 @@ void syMatrixRotR_translate_f_degrees(
     f32 rx,
     f32 ry,
     f32 rz) {
-    syMatrixRotR_translate_f(mf, dx, dy, dz, (a * M_PI_F) / 180.0f, rx, ry, rz);
+    syMatrixRotR_translate_f(mf, dx, dy, dz, (a * M_PI_F) / 180.0F, rx, ry, rz);
 }
 
 void syMatrixTraRotD(Mtx *m, f32 dx, f32 dy, f32 dz, f32 a, f32 rx, f32 ry, f32 rz) {
     Mtx44f mf;
 
-    syMatrixRotR_translate_f(&mf, dx, dy, dz, (a * M_PI_F) / 180.0f, rx, ry, rz);
+    syMatrixRotR_translate_f(&mf, dx, dy, dz, (a * M_PI_F) / 180.0F, rx, ry, rz);
     syMatrixF2LFixedW(&mf, m);
 }
 
 void syMatrixRotRpyRF_degrees(Mtx44f *mf, f32 r, f32 p, f32 h) {
-    syMatrixRotRpyRF(mf, (r * M_PI_F) / 180.0f, (p * M_PI_F) / 180.0f, (h * M_PI_F) / 180.0f);
+    syMatrixRotRpyRF(mf, (r * M_PI_F) / 180.0F, (p * M_PI_F) / 180.0F, (h * M_PI_F) / 180.0F);
 }
 
 void syMatrixRotRpyD(Mtx *m, f32 r, f32 p, f32 h) {
     Mtx44f mf;
 
-    syMatrixRotRpyRF(&mf, (r * M_PI_F) / 180.0f, (p * M_PI_F) / 180.0f, (h * M_PI_F) / 180.0f);
+    syMatrixRotRpyRF(&mf, (r * M_PI_F) / 180.0F, (p * M_PI_F) / 180.0F, (h * M_PI_F) / 180.0F);
     syMatrixF2LFixedW(&mf, m);
 }
 
 void syMatrixTraRotRpyR_f_degrees(Mtx44f *mf, f32 dx, f32 dy, f32 dz, f32 r, f32 p, f32 h) {
     syMatrixTraRotRpyR_f(
-        mf, dx, dy, dz, (r * M_PI_F) / 180.0f, (p * M_PI_F) / 180.0f, (h * M_PI_F) / 180.0f);
+        mf, dx, dy, dz, (r * M_PI_F) / 180.0F, (p * M_PI_F) / 180.0F, (h * M_PI_F) / 180.0F);
 }
 
 void syMatrixTraRotRpyD(Mtx *m, f32 dx, f32 dy, f32 dz, f32 r, f32 p, f32 h) {
     Mtx44f mf;
 
     syMatrixTraRotRpyR_f(
-        &mf, dx, dy, dz, (r * M_PI_F) / 180.0f, (p * M_PI_F) / 180.0f, (h * M_PI_F) / 180.0f);
+        &mf, dx, dy, dz, (r * M_PI_F) / 180.0F, (p * M_PI_F) / 180.0F, (h * M_PI_F) / 180.0F);
     syMatrixF2LFixedW(&mf, m);
 }
-
-#pragma GCC diagnostic pop

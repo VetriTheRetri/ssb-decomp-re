@@ -1,7 +1,7 @@
 #include <sys/obj.h>
 
 #include <sys/taskman.h>
-#include <sys/hal_gu.h>
+#include <sys/matrix.h>
 #include <sys/video.h>
 
 #include <config.h>

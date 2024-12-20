@@ -3,7 +3,7 @@
 #include <cm/camera.h>
 #include <sc/scene.h>
 #include <sys/malloc.h>
-#include <sys/hal_gu.h>
+#include <sys/matrix.h>
 #include <sys/develop.h>
 
 // // // // // // // // // // // //

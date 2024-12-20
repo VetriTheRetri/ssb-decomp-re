@@ -3,7 +3,7 @@
 
 #include <ssb_types.h>
 #include <sys/obj.h>
-#include <sys/hal_gu.h>
+#include <sys/matrix.h>
 #include <sys/vector.h>
 #include <gm/generic.h>
 #include <sys/trig_rand.h>

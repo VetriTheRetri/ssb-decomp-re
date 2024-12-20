@@ -1,6 +1,6 @@
 #include "common.h"
 
-#include "hal_gu.h"
+#include "matrix.h"
 
 #include <sys/vector.h>
 
@@ -205,7 +205,8 @@ void syMatrixLookAt
 }
 
 // Modified version of guLookAtF that takes an extra f32 argument and calls func_80019438
-void syMatrixModLookAtF(
+void syMatrixModLookAtF
+(
     Mtx44f *mf,
     f32 eye_x,
     f32 eye_y,
@@ -213,10 +214,12 @@ void syMatrixModLookAtF(
     f32 at_x,
     f32 at_y,
     f32 at_z,
-    f32 arg7,
+    f32 roll,
     f32 up_x,
     f32 up_y,
-    f32 up_z) {
+    f32 up_z
+)
+{
     f32 len;
     Vec3f look;
     Vec3f right;
@@ -241,7 +244,7 @@ void syMatrixModLookAtF(
     right.y *= len;
     right.z *= len;
 
-    func_80019438(&right, &look, arg7);
+    func_80019438(&right, &look, roll);
     up_x = (look.y * right.z) - (look.z * right.y);
     up_y = (look.z * right.x) - (look.x * right.z);
     up_z = (look.x * right.y) - (look.y * right.x);
@@ -280,7 +283,7 @@ void syMatrixModLookAt
     f32 at_x,
     f32 at_y,
     f32 at_z,
-    f32 arg7,
+    f32 roll,
     f32 up_x,
     f32 up_y,
     f32 up_z
@@ -288,7 +291,7 @@ void syMatrixModLookAt
 {
     Mtx44f mf;
 
-    syMatrixModLookAtF(&mf, eye_x, eye_y, eye_z, at_x, at_y, at_z, arg7, up_x, up_y, up_z);
+    syMatrixModLookAtF(&mf, eye_x, eye_y, eye_z, at_x, at_y, at_z, roll, up_x, up_y, up_z);
 
     syMatrixF2L(&mf, m);
 }
@@ -714,7 +717,6 @@ void syMatrixPerspF
     }
 }
 
-
 void syMatrixPersp(Mtx *m, u16 *persp_norm, f32 fovy, f32 aspect, f32 near, f32 far, f32 scale)
 {
     Mtx44f mf;
@@ -850,7 +852,7 @@ void syMatrixTranslate(Mtx *m, f32 x, f32 y, f32 z)
     m->m[3][3] = COMBINE_FRACTIONAL(tempz, FTOFIX32(1));
 }
 #else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/hal_gu/syMatrixTranslate.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/matrix/syMatrixTranslate.s")
 #endif
 
 // takes radians instead of degrees
@@ -1038,7 +1040,7 @@ void syMatrixRotRpyR(Mtx *m, f32 r, f32 p, f32 y)
     m->m[3][3] = COMBINE_FRACTIONAL(0, FTOFIX32(1.0F));
 }
 #else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/hal_gu/syMatrixRotRpyR.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/matrix/syMatrixRotRpyR.s")
 #endif
 
 void syMatrixTraRotRpyRF(Mtx44f *mf, f32 tx, f32 ty, f32 tz, f32 r, f32 p, f32 y)
@@ -1121,7 +1123,7 @@ void syMatrixTraRotRpyR(Mtx *m, f32 tx, f32 ty, f32 tz, f32 r, f32 p, f32 y)
     m->m[3][3] = COMBINE_FRACTIONAL(e1, e2);
 }
 #else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/hal_gu/syMatrixTraRotRpyR.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/matrix/syMatrixTraRotRpyR.s")
 #endif
 
 void syMatrixTraRotRpyRScaF(Mtx44f *mf, f32 tx, f32 ty, f32 tz, f32 r, f32 p, f32 y, f32 sx, f32 sy, f32 sz)
@@ -1207,7 +1209,7 @@ void syMatrixTraRotRpyRSca(Mtx44f *mf, f32 tx, f32 ty, f32 tz, f32 r, f32 p, f32
     m->m[3][3] = COMBINE_FRACTIONAL(e1, e2);
 }
 #else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/hal_gu/syMatrixTraRotRpyRSca.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/matrix/syMatrixTraRotRpyRSca.s")
 #endif
 
 // Pitch yaw roll, I think...

@@ -559,7 +559,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 }
                 case nGCMatrixKindTraRotR:
                 {
-                    syMatrixRotR_translate
+                    syMatrixTraRotR
                     (
                         mtx_store.gbi,
                         dobj->translate.vec.f.x,
@@ -734,7 +734,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 }
                 case nGCMatrixKindVecTraRotR:
                 {
-                    syMatrixRotR_translate
+                    syMatrixTraRotR
                     (
                         mtx_store.gbi,
                         translate->vec.f.x,

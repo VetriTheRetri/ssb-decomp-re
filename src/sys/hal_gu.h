@@ -139,12 +139,12 @@ extern void syMatrixScaF(Mtx44f *mf, f32 x, f32 y, f32 z);
 extern void syMatrixSca(Mtx *m, f32 x, f32 y, f32 z);
 extern void syMatrixTraF(Mtx44f *mf, f32 x, f32 y, f32 z);
 extern void syMatrixTranslate(Mtx *m, f32 x, f32 y, f32 z);
-extern void syMatrixRotR_f(Mtx44f *mf, f32 a, f32 x, f32 y, f32 z);
+extern void syMatrixRotRF(Mtx44f *mf, f32 a, f32 x, f32 y, f32 z);
 extern void syMatrixRotR(Mtx *m, f32 a, f32 x, f32 y, f32 z);
 extern void
-syMatrixRotR_translate_f(Mtx44f *mf, f32 dx, f32 dy, f32 dz, f32 angle, f32 rx, f32 ry, f32 rz);
-extern void syMatrixRotR_translate(Mtx *m, f32 dx, f32 dy, f32 dz, f32 angle, f32 rx, f32 ry, f32 rz);
-extern void syMatrixTraRotRSca_f(
+syMatrixTraRotRF(Mtx44f *mf, f32 dx, f32 dy, f32 dz, f32 angle, f32 rx, f32 ry, f32 rz);
+extern void syMatrixTraRotR(Mtx *m, f32 dx, f32 dy, f32 dz, f32 angle, f32 rx, f32 ry, f32 rz);
+extern void syMatrixTraRotRScaF(
     Mtx44f *mf,
     f32 dx,
     f32 dy,
@@ -170,7 +170,7 @@ extern void syMatrixTraRotRSca(
     f32 sz);
 extern void syMatrixRotRpyRF(Mtx44f *mf, f32 r, f32 p, f32 h);
 extern void syMatrixRotRpyR(Mtx *m, f32 r, f32 p, f32 h);
-extern void syMatrixTraRotRpyR_f(Mtx44f *mf, f32 dx, f32 dy, f32 dz, f32 r, f32 p, f32 h);
+extern void syMatrixTraRotRpyRF(Mtx44f *mf, f32 dx, f32 dy, f32 dz, f32 r, f32 p, f32 h);
 extern void syMatrixTraRotRpyR(Mtx *m, f32 dx, f32 dy, f32 dz, f32 r, f32 p, f32 h);
 extern void syMatrixTraRotRpyRScaF(
     Mtx44f *mf,
@@ -194,11 +194,11 @@ extern void syMatrixTraRotRpyRSca(
     f32 sx,
     f32 sy,
     f32 sz);
-extern void syMatrixRotPyrR_f(Mtx44f *mf, f32 r, f32 p, f32 h);
+extern void syMatrixRotPyrRF(Mtx44f *mf, f32 r, f32 p, f32 h);
 extern void syMatrixRotPyrR(Mtx *m, f32 r, f32 p, f32 h);
-extern void syMatrixTraRotPyrR_f(Mtx44f *mf, f32 dx, f32 dy, f32 dz, f32 r, f32 p, f32 h);
+extern void syMatrixTraRotPyrRF(Mtx44f *mf, f32 dx, f32 dy, f32 dz, f32 r, f32 p, f32 h);
 extern void syMatrixTraRotPyrR(Mtx *m, f32 dx, f32 dy, f32 dz, f32 r, f32 p, f32 h);
-extern void syMatrixTraRotPyrRSca_f(
+extern void syMatrixTraRotPyrRScaF(
     Mtx44f *mf,
     f32 dx,
     f32 dy,
@@ -220,32 +220,32 @@ extern void syMatrixTraRotPyrRSca(
     f32 sx,
     f32 sy,
     f32 sz);
-extern void syMatrixRotR_py_f(Mtx44f *mf, f32 p, f32 h);
-extern void syMatrixRotR_py(Mtx *m, f32 p, f32 h);
-extern void syMatrixRotR_py_translate_f(Mtx44f *mf, f32 dx, f32 dy, f32 dz, f32 p, f32 h);
-extern void syMatrixRotR_py_translate(Mtx *m, f32 dx, f32 dy, f32 dz, f32 p, f32 h);
-extern void syMatrixRotR_rp_f(Mtx44f *mf, f32 r, f32 p);
-extern void syMatrixRotR_rp(Mtx *m, f32 p, f32 h);
-extern void syMatrixRotR_rp_translate_f(Mtx44f *mf, f32 dx, f32 dy, f32 dz, f32 r, f32 p);
-extern void syMatrixRotR_rp_translate(Mtx *m, f32 dx, f32 dy, f32 dz, f32 r, f32 p);
-extern void syMatrixRotR_yaw_f(Mtx44f *mf, f32 h);
-extern void syMatrixRotR_yaw(Mtx *m, f32 h);
-extern void syMatrixRotR_yaw_translate_f(Mtx44f *mf, f32 dx, f32 dy, f32 dz, f32 h);
-extern void syMatrixRotR_yaw_translate(Mtx *m, f32 dx, f32 dy, f32 dz, f32 h);
-extern void syMatrixRotR_pitch_f(Mtx44f *mf, f32 p);
-extern void syMatrixRotR_pitch(Mtx *m, f32 p);
-extern void syMatrixRotR_pitch_translate_f(Mtx44f *mf, f32 dx, f32 dy, f32 dz, f32 p);
-extern void syMatrixRotR_pitch_translate(Mtx *m, f32 dx, f32 dy, f32 dz, f32 p);
-extern void syMatrixRotR_f_degrees(Mtx44f *mf, f32 a, f32 x, f32 y, f32 z);
+extern void syMatrixRotPyRF(Mtx44f *mf, f32 p, f32 h);
+extern void syMatrixRotPyR(Mtx *m, f32 p, f32 h);
+extern void syMatrixTraRotPyRF(Mtx44f *mf, f32 dx, f32 dy, f32 dz, f32 p, f32 h);
+extern void syMatrixTraRotPyR(Mtx *m, f32 dx, f32 dy, f32 dz, f32 p, f32 h);
+extern void syMatrixRotRpRF(Mtx44f *mf, f32 r, f32 p);
+extern void syMatrixRotRpR(Mtx *m, f32 p, f32 h);
+extern void syMatrixTraRotRpRF(Mtx44f *mf, f32 dx, f32 dy, f32 dz, f32 r, f32 p);
+extern void syMatrixTraRotRpR(Mtx *m, f32 dx, f32 dy, f32 dz, f32 r, f32 p);
+extern void syMatrixRotYawRF(Mtx44f *mf, f32 h);
+extern void syMatrixRotYawR(Mtx *m, f32 h);
+extern void syMatrixTraRotYawRF(Mtx44f *mf, f32 dx, f32 dy, f32 dz, f32 h);
+extern void syMatrixTraRotYawR(Mtx *m, f32 dx, f32 dy, f32 dz, f32 h);
+extern void syMatrixRotPitchRF(Mtx44f *mf, f32 p);
+extern void syMatrixRotPitchR(Mtx *m, f32 p);
+extern void syMatrixTraRotPitchRF(Mtx44f *mf, f32 dx, f32 dy, f32 dz, f32 p);
+extern void syMatrixTraRotPitchR(Mtx *m, f32 dx, f32 dy, f32 dz, f32 p);
+extern void syMatrixRotDF(Mtx44f *mf, f32 a, f32 x, f32 y, f32 z);
 extern void syMatrixRotD(Mtx *m, f32 a, f32 x, f32 y, f32 z);
 extern void
-syMatrixRotR_translate_f_degrees(Mtx44f *mf, f32 dx, f32 dy, f32 dz, f32 a, f32 rx, f32 ry, f32 rz);
+syMatrixTraRotDF(Mtx44f *mf, f32 dx, f32 dy, f32 dz, f32 a, f32 rx, f32 ry, f32 rz);
 extern void
 syMatrixTraRotD(Mtx *m, f32 dx, f32 dy, f32 dz, f32 a, f32 rx, f32 ry, f32 rz);
-extern void syMatrixRotRpyRF_degrees(Mtx44f *mf, f32 r, f32 p, f32 h);
+extern void syMatrixRotRpyDF(Mtx44f *mf, f32 r, f32 p, f32 h);
 extern void syMatrixRotRpyD(Mtx *m, f32 r, f32 p, f32 h);
 extern void
-syMatrixTraRotRpyR_f_degrees(Mtx44f *mf, f32 dx, f32 dy, f32 dz, f32 r, f32 p, f32 h);
+syMatrixTraRotRpyDF(Mtx44f *mf, f32 dx, f32 dy, f32 dz, f32 r, f32 p, f32 h);
 extern void syMatrixTraRotRpyD(Mtx *m, f32 dx, f32 dy, f32 dz, f32 r, f32 p, f32 h);
 
 #endif /* SYS_SYSTEM_08_H */

@@ -25,9 +25,6 @@
 #define COMBINE_INTEGRAL(a, b)   (((a)&0xffff0000) | (((b) >> 16)))
 #define COMBINE_FRACTIONAL(a, b) (((a) << 16) | ((b)&0xffff))
 
-#define COMBINE_INTEGRAL2(a, b)   ((((b) >> 16)) | ((a)&0xffff0000))
-#define COMBINE_FRACTIONAL2(a, b) (((b)&0xffff) | ((a) << 16))
-
 #define SINTABLE_RAD_TO_ID(x)      ((s32)((x) * ((f32)ARRAY_COUNT(gSinTable) / PI32)))
 #define SINTABLE_MASK_ID (ARRAY_COUNT(gSinTable) - 1)
 

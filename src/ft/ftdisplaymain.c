@@ -967,7 +967,7 @@ void ftDisplayMainDrawParts(DObj *dobj)
     s32 sp90;
     s32 hitstatus;
     DObj *sibling_dobj;
-    gsMtxStore mtx_store;
+    SYMatrixHub mtx_store;
     s32 i;
     Vec3f sp74;
 
@@ -1075,7 +1075,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
     FTStruct *fp;
     FTAttributes *attr;
     FTAttackColl *attack_coll;
-    gsMtxStore mtx_store;
+    SYMatrixHub mtx_store;
     s32 i;
     Vec3f sp128;
     f32 cam_pos_x;

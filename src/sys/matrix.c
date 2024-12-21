@@ -1,16 +1,6 @@
-#include "common.h"
-
-#include "matrix.h"
-
-#include <sys/vector.h>
-
-#include <macros.h>
-#include <ssb_types.h>
 #include <lb/library.h>
 
-#include <PR/gu.h>
-#include <PR/mbi.h>
-#include <PR/ultratypes.h>
+extern u16 gSinTable[0x800];
 
 void syMatrixF2L(Mtx44f *src, Mtx *dst)
 {
@@ -60,38 +50,34 @@ void syMatrixF2LFixedW(Mtx44f *src, Mtx *dst)
     dst->m[0][0] = COMBINE_INTEGRAL(e1, e2);
     dst->m[2][0] = COMBINE_FRACTIONAL(e1, e2);
     e1           = FTOFIX32((*src)[0][2]);
-    e2           = FTOFIX32(0.0F);
-    dst->m[0][1] = COMBINE_INTEGRAL(e1, e2);
-    dst->m[2][1] = COMBINE_FRACTIONAL(e1, e2);
+    dst->m[0][1] = COMBINE_INTEGRAL(e1, FTOFIX32(0.0F));
+    dst->m[2][1] = COMBINE_FRACTIONAL(e1, FTOFIX32(0.0F));
     e1           = FTOFIX32((*src)[1][0]);
     e2           = FTOFIX32((*src)[1][1]);
     dst->m[0][2] = COMBINE_INTEGRAL(e1, e2);
     dst->m[2][2] = COMBINE_FRACTIONAL(e1, e2);
     e1           = FTOFIX32((*src)[1][2]);
-    e2           = FTOFIX32(0.0F);
-    dst->m[0][3] = COMBINE_INTEGRAL(e1, e2);
-    dst->m[2][3] = COMBINE_FRACTIONAL(e1, e2);
+    dst->m[0][3] = COMBINE_INTEGRAL(e1, FTOFIX32(0.0F));
+    dst->m[2][3] = COMBINE_FRACTIONAL(e1, FTOFIX32(0.0F));
     e1           = FTOFIX32((*src)[2][0]);
     e2           = FTOFIX32((*src)[2][1]);
     dst->m[1][0] = COMBINE_INTEGRAL(e1, e2);
     dst->m[3][0] = COMBINE_FRACTIONAL(e1, e2);
     e1           = FTOFIX32((*src)[2][2]);
-    e2           = FTOFIX32(0.0F);
-    dst->m[1][1] = COMBINE_INTEGRAL(e1, e2);
-    dst->m[3][1] = COMBINE_FRACTIONAL(e1, e2);
+    dst->m[1][1] = COMBINE_INTEGRAL(e1, FTOFIX32(0.0F));
+    dst->m[3][1] = COMBINE_FRACTIONAL(e1, FTOFIX32(0.0F));
     e1           = FTOFIX32((*src)[3][0]);
     e2           = FTOFIX32((*src)[3][1]);
     dst->m[1][2] = COMBINE_INTEGRAL(e1, e2);
     dst->m[3][2] = COMBINE_FRACTIONAL(e1, e2);
     e1           = FTOFIX32((*src)[3][2]);
-    e2           = FTOFIX32(1.0F);
-    dst->m[1][3] = COMBINE_INTEGRAL(e1, e2);
-    dst->m[3][3] = COMBINE_FRACTIONAL(e1, e2);
+    dst->m[1][3] = COMBINE_INTEGRAL(e1, FTOFIX32(1.0F));
+    dst->m[3][3] = COMBINE_FRACTIONAL(e1, FTOFIX32(1.0F));
 }
 
 s32 syMatrixFastSin(f32 x) 
 {
-    s32 index = RAD_TO_IDX(x);
+    s32 index = SINTABLE_RAD_TO_ID(x);
     u16 sinx = gSinTable[index & 0x7FF];
 
     if ((index & 0x800) != 0)
@@ -103,7 +89,7 @@ s32 syMatrixFastSin(f32 x)
 
 s32 syMatrixFastCos(f32 x)
 {
-    s32 index = RAD_TO_IDX(x + F_CST_DTOR32(90.0F));
+    s32 index = SINTABLE_RAD_TO_ID(x + F_CST_DTOR32(90.0F));
     u16 cosx = gSinTable[index & 0x7FF];
     
     if ((index & 0x800) != 0)
@@ -759,17 +745,17 @@ void syMatrixSca(Mtx *m, f32 x, f32 y, f32 z)
     m->m[3][0] = 0;
 
     e1         = FTOFIX32(x);
-    e2         = FTOFIX32(0);
+    e2         = FTOFIX32(0.0F);
     m->m[0][0] = COMBINE_INTEGRAL(e1, e2);
     m->m[2][0] = COMBINE_FRACTIONAL(e1, e2);
 
-    e1         = FTOFIX32(0);
+    e1         = FTOFIX32(0.0F);
     e2         = FTOFIX32(y);
     m->m[0][2] = COMBINE_INTEGRAL(e1, e2);
     m->m[2][2] = COMBINE_FRACTIONAL(e1, e2);
 
     e1         = FTOFIX32(z);
-    e2         = FTOFIX32(0);
+    e2         = FTOFIX32(0.0F);
     m->m[1][1] = COMBINE_INTEGRAL(e1, e2);
     m->m[3][1] = COMBINE_FRACTIONAL(e1, e2);
 
@@ -833,29 +819,32 @@ void syMatrixTra(Mtx *m, f32 x, f32 y, f32 z)
 {
     u32 e1, e2;
 
-    m->m[0][0] = COMBINE_INTEGRAL(FTOFIX32(1), FTOFIX32(0));
-    m->m[2][0] = COMBINE_FRACTIONAL(FTOFIX32(1), FTOFIX32(0));
-    m->m[0][1] = COMBINE_INTEGRAL(FTOFIX32(0), FTOFIX32(0));
-    m->m[2][1] = COMBINE_FRACTIONAL(FTOFIX32(0), FTOFIX32(0));
-    m->m[0][2] = COMBINE_INTEGRAL(FTOFIX32(0), FTOFIX32(1));
-    m->m[2][2] = COMBINE_FRACTIONAL(FTOFIX32(0), FTOFIX32(1));
-    m->m[0][3] = COMBINE_INTEGRAL(FTOFIX32(0), FTOFIX32(0));
-    m->m[2][3] = COMBINE_FRACTIONAL(FTOFIX32(0), FTOFIX32(0));
-    m->m[1][0] = COMBINE_INTEGRAL(FTOFIX32(0), FTOFIX32(0));
-    m->m[3][0] = COMBINE_FRACTIONAL(FTOFIX32(0), FTOFIX32(0));
-    m->m[1][1] = COMBINE_INTEGRAL(FTOFIX32(1), FTOFIX32(0));
-    m->m[3][1] = COMBINE_FRACTIONAL(FTOFIX32(1), FTOFIX32(0));
+    m->m[0][0] = COMBINE_INTEGRAL(FTOFIX32(1.0F), FTOFIX32(0.0F));
+    m->m[2][0] = COMBINE_FRACTIONAL(FTOFIX32(1.0F), FTOFIX32(0.0F));
+
+    m->m[0][1] = COMBINE_INTEGRAL(FTOFIX32(0.0F), FTOFIX32(0.0F));
+    m->m[2][1] = COMBINE_FRACTIONAL(FTOFIX32(0.0F), FTOFIX32(0.0F));
+
+    m->m[0][2] = COMBINE_INTEGRAL(FTOFIX32(0.0F), FTOFIX32(1.0F));
+    m->m[2][2] = COMBINE_FRACTIONAL(FTOFIX32(0.0F), FTOFIX32(1.0F));
+
+    m->m[0][3] = COMBINE_INTEGRAL(FTOFIX32(0.0F), FTOFIX32(0.0F));
+    m->m[2][3] = COMBINE_FRACTIONAL(FTOFIX32(0.0F), FTOFIX32(0.0F));
+
+    m->m[1][0] = COMBINE_INTEGRAL(FTOFIX32(0.0F), FTOFIX32(0.0F));
+    m->m[3][0] = COMBINE_FRACTIONAL(FTOFIX32(0.0F), FTOFIX32(0.0F));
+
+    m->m[1][1] = COMBINE_INTEGRAL(FTOFIX32(1.0F), FTOFIX32(0.0F));
+    m->m[3][1] = COMBINE_FRACTIONAL(FTOFIX32(1.0F), FTOFIX32(0.0F));
     
     e1 = FTOFIX32(x);
     e2 = FTOFIX32(y);
-
     m->m[1][2] = COMBINE_INTEGRAL(e1, e2);
     m->m[3][2] = COMBINE_FRACTIONAL(e1, e2);
 
     e1 = FTOFIX32(z);
-
-    m->m[1][3] = COMBINE_INTEGRAL(e1, FTOFIX32(1));
-    m->m[3][3] = COMBINE_FRACTIONAL(e1, FTOFIX32(1));
+    m->m[1][3] = COMBINE_INTEGRAL(e1, FTOFIX32(1.0F));
+    m->m[3][3] = COMBINE_FRACTIONAL(e1, FTOFIX32(1.0F));
 }
 
 // Takes radians instead of degrees
@@ -992,8 +981,8 @@ void syMatrixRotRpyR(Mtx *m, f32 r, f32 p, f32 y)
     m->m[2][0] = COMBINE_FRACTIONAL(e1, e2);
 
     e1         = -sinp * 2;
-    m->m[0][1] = COMBINE_INTEGRAL(e1, FTOFIX32(0));
-    m->m[2][1] = COMBINE_FRACTIONAL(e1, FTOFIX32(0));
+    m->m[0][1] = COMBINE_INTEGRAL(e1, FTOFIX32(0.0F));
+    m->m[2][1] = COMBINE_FRACTIONAL(e1, FTOFIX32(0.0F));
 
     // [1, 0] -> [1, 3]
     e1 = ((((sinr * sinp) >> 15) * cosy) >> 14) - ((cosr * siny) >> 14);
@@ -1002,8 +991,8 @@ void syMatrixRotRpyR(Mtx *m, f32 r, f32 p, f32 y)
     m->m[2][2] = COMBINE_FRACTIONAL(e1, e2);
 
     e1 = (sinr * cosp) >> 14;
-    m->m[0][3] = COMBINE_INTEGRAL(e1, FTOFIX32(0));
-    m->m[2][3] = COMBINE_FRACTIONAL(e1, FTOFIX32(0));
+    m->m[0][3] = COMBINE_INTEGRAL(e1, FTOFIX32(0.0F));
+    m->m[2][3] = COMBINE_FRACTIONAL(e1, FTOFIX32(0.0F));
 
     // [2, 0] -> [2, 3]
     e1 = ((((cosr * sinp) >> 15) * cosy) >> 14) + ((sinr * siny) >> 14);
@@ -1013,14 +1002,14 @@ void syMatrixRotRpyR(Mtx *m, f32 r, f32 p, f32 y)
     m->m[3][0] = COMBINE_FRACTIONAL(e1, e2);
 
     e1         = (cosr * cosp) >> 14;
-    m->m[1][1] = COMBINE_INTEGRAL(e1, FTOFIX32(0));
-    m->m[3][1] = COMBINE_FRACTIONAL(e1, FTOFIX32(0));
+    m->m[1][1] = COMBINE_INTEGRAL(e1, FTOFIX32(0.0F));
+    m->m[3][1] = COMBINE_FRACTIONAL(e1, FTOFIX32(0.0F));
 
-    m->m[1][2] = COMBINE_INTEGRAL(FTOFIX32(0), FTOFIX32(0));
-    m->m[3][2] = COMBINE_FRACTIONAL(FTOFIX32(0), FTOFIX32(0));
+    m->m[1][2] = COMBINE_INTEGRAL(FTOFIX32(0.0F), FTOFIX32(0.0F));
+    m->m[3][2] = COMBINE_FRACTIONAL(FTOFIX32(0.0F), FTOFIX32(0.0F));
 
-    m->m[1][3] = COMBINE_INTEGRAL(FTOFIX32(0), FTOFIX32(1));
-    m->m[3][3] = COMBINE_FRACTIONAL(FTOFIX32(0), FTOFIX32(1));
+    m->m[1][3] = COMBINE_INTEGRAL(FTOFIX32(0.0F), FTOFIX32(1.0F));
+    m->m[3][3] = COMBINE_FRACTIONAL(FTOFIX32(0.0F), FTOFIX32(1.0F));
 }
 
 void syMatrixTraRotRpyRF(Mtx44f *mf, f32 tx, f32 ty, f32 tz, f32 r, f32 p, f32 y)
@@ -1049,8 +1038,8 @@ void syMatrixTraRotRpyR(Mtx *m, f32 tx, f32 ty, f32 tz, f32 r, f32 p, f32 y)
     m->m[2][0] = COMBINE_FRACTIONAL(e1, e2);
 
     e1         = -sinp * 2;
-    m->m[0][1] = COMBINE_INTEGRAL(e1, FTOFIX32(0));
-    m->m[2][1] = COMBINE_FRACTIONAL(e1, FTOFIX32(0));
+    m->m[0][1] = COMBINE_INTEGRAL(e1, FTOFIX32(0.0F));
+    m->m[2][1] = COMBINE_FRACTIONAL(e1, FTOFIX32(0.0F));
 
     // [1, 0] -> [1, 3]
     e1 = ((((sinr * sinp) >> 15) * cosy) >> 14) - ((cosr * siny) >> 14);
@@ -1059,8 +1048,8 @@ void syMatrixTraRotRpyR(Mtx *m, f32 tx, f32 ty, f32 tz, f32 r, f32 p, f32 y)
     m->m[2][2] = COMBINE_FRACTIONAL(e1, e2);
 
     e1 = (sinr * cosp) >> 14;
-    m->m[0][3] = COMBINE_INTEGRAL(e1, FTOFIX32(0));
-    m->m[2][3] = COMBINE_FRACTIONAL(e1, FTOFIX32(0));
+    m->m[0][3] = COMBINE_INTEGRAL(e1, FTOFIX32(0.0F));
+    m->m[2][3] = COMBINE_FRACTIONAL(e1, FTOFIX32(0.0F));
 
     // [2, 0] -> [2, 3]
     e1 = ((((cosr * sinp) >> 15) * cosy) >> 14) + ((sinr * siny) >> 14);
@@ -1070,8 +1059,8 @@ void syMatrixTraRotRpyR(Mtx *m, f32 tx, f32 ty, f32 tz, f32 r, f32 p, f32 y)
     m->m[3][0] = COMBINE_FRACTIONAL(e1, e2);
 
     e1         = (cosr * cosp) >> 14;
-    m->m[1][1] = COMBINE_INTEGRAL(e1, FTOFIX32(0));
-    m->m[3][1] = COMBINE_FRACTIONAL(e1, FTOFIX32(0));
+    m->m[1][1] = COMBINE_INTEGRAL(e1, FTOFIX32(0.0F));
+    m->m[3][1] = COMBINE_FRACTIONAL(e1, FTOFIX32(0.0F));
 
     // [3, 0] -> [3, 3]
     // [3, 0] -> [3, 3]
@@ -1081,8 +1070,8 @@ void syMatrixTraRotRpyR(Mtx *m, f32 tx, f32 ty, f32 tz, f32 r, f32 p, f32 y)
     m->m[3][2] = COMBINE_FRACTIONAL(e1, e2);
 
     e1         = FTOFIX32(tz);
-    m->m[1][3] = COMBINE_INTEGRAL(e1, FTOFIX32(1));
-    m->m[3][3] = COMBINE_FRACTIONAL(e1, FTOFIX32(1));
+    m->m[1][3] = COMBINE_INTEGRAL(e1, FTOFIX32(1.0F));
+    m->m[3][3] = COMBINE_FRACTIONAL(e1, FTOFIX32(1.0F));
 }
 
 void syMatrixTraRotRpyRScaF(Mtx44f *mf, f32 tx, f32 ty, f32 tz, f32 r, f32 p, f32 y, f32 sx, f32 sy, f32 sz)
@@ -1117,8 +1106,8 @@ void syMatrixTraRotRpyRSca(Mtx *m, f32 tx, f32 ty, f32 tz, f32 r, f32 p, f32 y, 
     m->m[2][0] = COMBINE_FRACTIONAL(e1, e2);
 
     e1         = (-sinp * scalex) >> 7;
-    m->m[0][1] = COMBINE_INTEGRAL(e1, FTOFIX32(0));
-    m->m[2][1] = COMBINE_FRACTIONAL(e1, FTOFIX32(0));
+    m->m[0][1] = COMBINE_INTEGRAL(e1, FTOFIX32(0.0F));
+    m->m[2][1] = COMBINE_FRACTIONAL(e1, FTOFIX32(0.0F));
 
     // [1, 0] -> [1, 3]
     e1         = ((((((sinr * sinp) >> 15) * cosy) >> 14) - ((cosr * siny) >> 14)) * scaley) >> 8;
@@ -1127,8 +1116,8 @@ void syMatrixTraRotRpyRSca(Mtx *m, f32 tx, f32 ty, f32 tz, f32 r, f32 p, f32 y, 
     m->m[2][2] = COMBINE_FRACTIONAL(e1, e2);
 
     e1 = (((sinr * cosp) >> 14) * scaley) >> 8;
-    m->m[0][3] = COMBINE_INTEGRAL(e1, FTOFIX32(0));
-    m->m[2][3] = COMBINE_FRACTIONAL(e1, FTOFIX32(0));
+    m->m[0][3] = COMBINE_INTEGRAL(e1, FTOFIX32(0.0F));
+    m->m[2][3] = COMBINE_FRACTIONAL(e1, FTOFIX32(0.0F));
 
     // [2, 0] -> [2, 3]
     e1         = ((((((cosr * sinp) >> 15) * cosy) >> 14) + ((sinr * siny) >> 14)) * scalez) >> 8;
@@ -1137,8 +1126,8 @@ void syMatrixTraRotRpyRSca(Mtx *m, f32 tx, f32 ty, f32 tz, f32 r, f32 p, f32 y, 
     m->m[3][0] = COMBINE_FRACTIONAL(e1, e2);
 
     e1         = (((cosr * cosp) >> 14) * scalez) >> 8;
-    m->m[1][1] = COMBINE_INTEGRAL(e1, FTOFIX32(0));
-    m->m[3][1] = COMBINE_FRACTIONAL(e1, FTOFIX32(0));
+    m->m[1][1] = COMBINE_INTEGRAL(e1, FTOFIX32(0.0F));
+    m->m[3][1] = COMBINE_FRACTIONAL(e1, FTOFIX32(0.0F));
 
     // [3, 0] -> [3, 3]
     e1         = FTOFIX32(tx);
@@ -1147,8 +1136,8 @@ void syMatrixTraRotRpyRSca(Mtx *m, f32 tx, f32 ty, f32 tz, f32 r, f32 p, f32 y, 
     m->m[3][2] = COMBINE_FRACTIONAL(e1, e2);
 
     e1         = FTOFIX32(tz);
-    m->m[1][3] = COMBINE_INTEGRAL(e1, FTOFIX32(1));
-    m->m[3][3] = COMBINE_FRACTIONAL(e1, FTOFIX32(1));
+    m->m[1][3] = COMBINE_INTEGRAL(e1, FTOFIX32(1.0F));
+    m->m[3][3] = COMBINE_FRACTIONAL(e1, FTOFIX32(1.0F));
 }
 
 // Pitch yaw roll, I think...

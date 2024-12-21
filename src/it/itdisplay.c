@@ -19,7 +19,7 @@ void itDisplayHitCollisions(GObj *item_gobj)
     s32 i;
     ITAttackColl *it_attack_coll;
     ITDamageColl *damage_coll;
-    gsMtxStore mtx_store;
+    SYMatrixHub mtx_store;
     Vec3f *translate;
 
     it_attack_coll = &ip->attack_coll;
@@ -125,7 +125,7 @@ void itDisplayMapCollisions(GObj *item_gobj)
     ITStruct *ip = itGetStruct(item_gobj);
     Vec3f *translate = &DObjGetStruct(item_gobj)->translate.vec.f;
     MPObjectColl *map_coll = &ip->coll_data.map_coll;
-    gsMtxStore mtx_store;
+    SYMatrixHub mtx_store;
 
     gDPPipeSync(gSYTaskmanDLHeads[1]++);
 

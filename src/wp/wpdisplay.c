@@ -29,7 +29,7 @@ void wpDisplayHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
     WPAttackColl *attack_coll = &wp->attack_coll;
-    gsMtxStore mtx_store;
+    SYMatrixHub mtx_store;
     s32 i;
 
     for (i = 0; i < attack_coll->attack_count; i++)
@@ -94,7 +94,7 @@ void wpDisplayMapCollisions(GObj *weapon_gobj) // Render weapon ECB?
     WPStruct *wp = wpGetStruct(weapon_gobj);
     Vec3f *translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
     MPObjectColl *map_coll = &wp->coll_data.map_coll;
-    gsMtxStore mtx_store;
+    SYMatrixHub mtx_store;
 
     gDPPipeSync(gSYTaskmanDLHeads[1]++);
 

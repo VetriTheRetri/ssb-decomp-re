@@ -330,7 +330,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
     XObj *xobj;
     s32 sp2CC;
     s32 ret;
-    gsMtxStore mtx_store;
+    SYMatrixHub mtx_store;
     GCTranslate *translate;
     GCRotate *rotate; // fp (s8)
     GCTranslate *scale;
@@ -2840,7 +2840,7 @@ void gcPrepCameraMatrix(Gfx **dls, CObj *cobj)
     Gfx *dl;
     s32 i;
     XObj *xobj;
-    gsMtxStore mtx_store;
+    SYMatrixHub mtx_store;
     s32 var_s3;
     s32 spC8;
     LookAt *look_at;

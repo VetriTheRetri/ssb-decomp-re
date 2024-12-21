@@ -81,11 +81,11 @@
 #define LBPARTICLE_MASK_GENLINK(id)				\
 (((id) + 1) * 8)
 
-#define lbGetSinCosUShort(sin, cos, angle, id) 	\
+#define syGetSinCosUShort(sin, cos, angle, id) 	\
 {                                               \
     id = SINTABLE_RAD_TO_ID(angle) & 0xFFF;     \
                                                 \
-    sin = gSinTable[id & SINTABLE_MASK_ID];     \
+    sin = gSinTable[id & 0x7FF];     			\
                                                 \
     if (id & 0x800)                             \
     {                                           \
@@ -93,7 +93,7 @@
     }                                          	\
     id += 0x400;                               	\
                                     			\
-    cos = gSinTable[id & SINTABLE_MASK_ID];     \
+    cos = gSinTable[id & 0x7FF];     			\
                                                 \
     if (id & 0x800)                             \
     {                                           \

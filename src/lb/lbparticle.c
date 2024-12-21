@@ -1336,8 +1336,8 @@ LBParticle* lbParticleUpdateStruct(LBParticle *this_ptc, LBParticle *other_ptc, 
     {
         gen = this_ptc->gen;
 
-        lbGetSinCosUShort(sx1, cx1, this_ptc->gravity, angle_id);
-        lbGetSinCosUShort(sx2, cx2, this_ptc->friction, angle_id);
+        syGetSinCosUShort(sx1, cx1, this_ptc->gravity, angle_id);
+        syGetSinCosUShort(sx2, cx2, this_ptc->friction, angle_id);
         
         sx1 *= (1.0F / 32768.0F);
         cx1 *= (1.0F / 32768.0F);
@@ -1348,14 +1348,14 @@ LBParticle* lbParticleUpdateStruct(LBParticle *this_ptc, LBParticle *other_ptc, 
 
         sp70 = ABSF(gen->unk_gen_0x38);
         
-        lbGetSinCosUShort(sx3, cx3, ABSF(gen->unk_gen_0x3C), angle_id_2);
+        syGetSinCosUShort(sx3, cx3, ABSF(gen->unk_gen_0x3C), angle_id_2);
         
         sp70 += this_ptc->vel.z * (sx3 / cx3);
         sp70 *= this_ptc->vel.y;
         
         this_ptc->vel.x += gen->gravity;
 
-        lbGetSinCosUShort(sx4, cx4, this_ptc->vel.x, angle_id);
+        syGetSinCosUShort(sx4, cx4, this_ptc->vel.x, angle_id);
         
         sp70 *= (1.0F / 32768.0F);
 

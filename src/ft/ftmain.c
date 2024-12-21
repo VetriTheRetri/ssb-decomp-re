@@ -1188,7 +1188,7 @@ void ftMainRunUpdateColAnim(GObj *fighter_gobj)
 }
 
 // 0x800E1260
-void ftMainProcInterruptMain(GObj *fighter_gobj)
+void ftMainProcUpdate(GObj *fighter_gobj)
 {
     FTStruct *this_fp = ftGetStruct(fighter_gobj);
     FTStruct *other_fp;
@@ -1667,7 +1667,7 @@ void ftMainSearchHitHazard(GObj *fighter_gobj)
     {
         s32 i;
 
-        if (!fp->hitlag_tics)
+        if (!(fp->hitlag_tics))
         {
             if (fp->twister_wait)
             {
@@ -3786,7 +3786,7 @@ void ftMainProcSearchAllHit(GObj *fighter_gobj)
 }
 
 // 0x800E61EC
-void ftMainProcUpdateMain(GObj *fighter_gobj)
+void ftMainProcParams(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 damage;

@@ -503,7 +503,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 }
                 case nGCMatrixKindTra:
                 {
-                    syMatrixTranslate(mtx_store.gbi, dobj->translate.vec.f.x, dobj->translate.vec.f.y, dobj->translate.vec.f.z);
+                    syMatrixTra(mtx_store.gbi, dobj->translate.vec.f.x, dobj->translate.vec.f.y, dobj->translate.vec.f.z);
                     break;
                 }
                 case nGCMatrixKindRotD:
@@ -713,7 +713,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 }
                 case nGCMatrixKindVecTra:
                 {
-                    syMatrixTranslate(mtx_store.gbi, translate->vec.f.x, translate->vec.f.y, translate->vec.f.z);
+                    syMatrixTra(mtx_store.gbi, translate->vec.f.x, translate->vec.f.y, translate->vec.f.z);
                     break;
                 }
                 case nGCMatrixKindVecRotR:

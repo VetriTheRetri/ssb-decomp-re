@@ -54,7 +54,7 @@ void wpDisplayHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
             {
                 syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-                syMatrixTranslate(mtx_store.gbi, attack_coll->attack_pos[i].pos_prev.x, attack_coll->attack_pos[i].pos_prev.y, attack_coll->attack_pos[i].pos_prev.z);
+                syMatrixTra(mtx_store.gbi, attack_coll->attack_pos[i].pos_prev.x, attack_coll->attack_pos[i].pos_prev.y, attack_coll->attack_pos[i].pos_prev.z);
 
                 gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
@@ -68,7 +68,7 @@ void wpDisplayHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
             }
             syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-            syMatrixTranslate(mtx_store.gbi, attack_coll->attack_pos[i].pos_curr.x, attack_coll->attack_pos[i].pos_curr.y, attack_coll->attack_pos[i].pos_curr.z);
+            syMatrixTra(mtx_store.gbi, attack_coll->attack_pos[i].pos_curr.x, attack_coll->attack_pos[i].pos_curr.y, attack_coll->attack_pos[i].pos_curr.z);
 
             gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
@@ -100,7 +100,7 @@ void wpDisplayMapCollisions(GObj *weapon_gobj) // Render weapon ECB?
 
     syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-    syMatrixTranslate(mtx_store.gbi, translate->x, translate->y + map_coll->bottom, translate->z);
+    syMatrixTra(mtx_store.gbi, translate->x, translate->y + map_coll->bottom, translate->z);
 
     gSPMatrix(gSYTaskmanDLHeads[1]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
@@ -114,7 +114,7 @@ void wpDisplayMapCollisions(GObj *weapon_gobj) // Render weapon ECB?
 
     syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-    syMatrixTranslate(mtx_store.gbi, translate->x, translate->y + map_coll->center, translate->z);
+    syMatrixTra(mtx_store.gbi, translate->x, translate->y + map_coll->center, translate->z);
 
     gSPMatrix(gSYTaskmanDLHeads[1]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 

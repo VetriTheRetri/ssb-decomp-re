@@ -985,7 +985,7 @@ void ftDisplayMainDrawParts(DObj *dobj)
         {
             syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-            syMatrixTranslate(mtx_store.gbi, damage_coll->offset.x, damage_coll->offset.y, damage_coll->offset.z);
+            syMatrixTra(mtx_store.gbi, damage_coll->offset.x, damage_coll->offset.y, damage_coll->offset.z);
 
             gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
@@ -1214,7 +1214,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
         {
             syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-            syMatrixTranslate
+            syMatrixTra
             (
                 mtx_store.gbi,
                 dFTDisplayMainShufflePositions[fp->is_shuffle_electric][fp->shuffle_frame_index].x,
@@ -1255,7 +1255,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
 
             syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-            syMatrixTranslate
+            syMatrixTra
             (
                 mtx_store.gbi,
                 DObjGetStruct(fighter_gobj)->translate.vec.f.x,
@@ -1275,7 +1275,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
 
             syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-            syMatrixTranslate
+            syMatrixTra
             (
                 mtx_store.gbi,
                 DObjGetStruct(fighter_gobj)->translate.vec.f.x,
@@ -1297,7 +1297,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
 
             gDPPipeSync(gSYTaskmanDLHeads[0]++);
 
-            syMatrixTranslate
+            syMatrixTra
             (
                 mtx_store.gbi,
                 DObjGetStruct(fighter_gobj)->translate.vec.f.x + (fp->coll_data.cliffcatch_coll.x * fp->lr),
@@ -1356,7 +1356,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
                 {
                     syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-                    syMatrixTranslate(mtx_store.gbi, attack_coll->pos_prev.x, attack_coll->pos_prev.y, attack_coll->pos_prev.z);
+                    syMatrixTra(mtx_store.gbi, attack_coll->pos_prev.x, attack_coll->pos_prev.y, attack_coll->pos_prev.z);
 
                     gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
@@ -1370,7 +1370,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
                 }
                 syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-                syMatrixTranslate(mtx_store.gbi, attack_coll->pos_curr.x, attack_coll->pos_curr.y, attack_coll->pos_curr.z);
+                syMatrixTra(mtx_store.gbi, attack_coll->pos_curr.x, attack_coll->pos_curr.y, attack_coll->pos_curr.z);
 
                 gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 

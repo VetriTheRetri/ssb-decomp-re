@@ -899,12 +899,12 @@ GObj* ftManagerMakeFighter(FTDesc *desc) // Create fighter
 
     if (fp->pkind != nFTPlayerKindDemo)
     {
-        gcAddGObjProcess(fighter_gobj, ftMainProcInterruptMain, nGCProcessKindFunc, 5);
+        gcAddGObjProcess(fighter_gobj, ftMainProcUpdate, nGCProcessKindFunc, 5);
         gcAddGObjProcess(fighter_gobj, ftMainProcPhysicsMapDefault, nGCProcessKindFunc, 4);
         gcAddGObjProcess(fighter_gobj, ftMainProcPhysicsMapCapture, nGCProcessKindFunc, 3);
         gcAddGObjProcess(fighter_gobj, ftMainProcSearchAllCatch, nGCProcessKindFunc, 2);
         gcAddGObjProcess(fighter_gobj, ftMainProcSearchAllHit, nGCProcessKindFunc, 1);
-        gcAddGObjProcess(fighter_gobj, ftMainProcUpdateMain, nGCProcessKindFunc, 0);
+        gcAddGObjProcess(fighter_gobj, ftMainProcParams, nGCProcessKindFunc, 0);
     }
     else gcAddGObjProcess(fighter_gobj, scSubsysFighterProcUpdate, nGCProcessKindFunc, 5);
 

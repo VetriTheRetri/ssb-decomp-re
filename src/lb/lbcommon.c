@@ -1468,7 +1468,7 @@ sb32 func_ovl0_800C99CC(Mtx *mtx, DObj *dobj, Gfx **dls)
 
     gmCollisionGetFighterPartsWorldPosition(attach_dobj, &translate_base);
     
-    syMatrixTranslate(mtx, translate_base.x, translate_base.y, translate_base.z);
+    syMatrixTra(mtx, translate_base.x, translate_base.y, translate_base.z);
     
     return 0;
 }

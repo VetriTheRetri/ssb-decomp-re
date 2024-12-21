@@ -140,7 +140,7 @@ syMatrixPersp(Mtx *m, u16 *perspNorm, f32 fovy, f32 aspect, f32 near, f32 far, f
 extern void syMatrixScaF(Mtx44f *mf, f32 x, f32 y, f32 z);
 extern void syMatrixSca(Mtx *m, f32 x, f32 y, f32 z);
 extern void syMatrixTraF(Mtx44f *mf, f32 x, f32 y, f32 z);
-extern void syMatrixTranslate(Mtx *m, f32 x, f32 y, f32 z);
+extern void syMatrixTra(Mtx *m, f32 x, f32 y, f32 z);
 extern void syMatrixRotRF(Mtx44f *mf, f32 a, f32 x, f32 y, f32 z);
 extern void syMatrixRotR(Mtx *m, f32 a, f32 x, f32 y, f32 z);
 extern void

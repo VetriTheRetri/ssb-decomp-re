@@ -1,7 +1,7 @@
 #include <lb/library.h>
 #include <sys/matrix.h>
 
-extern u16 gSinTable[0x800];
+extern u16 gSYSinTable[0x800];
 
 // // // // // // // // // // // //
 //                               //

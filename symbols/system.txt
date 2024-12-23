@@ -459,19 +459,19 @@ gGCMesgQueue = 0x80046A70;
 D_80046A88 = 0x80046A88;
 D_80046F88 = 0x80046F88;
 
-func_8001D610 = 0x8001D610;
-func_8001D754 = 0x8001D754;
-func_8001D8E0 = 0x8001D8E0;
-func_8001DA40 = 0x8001DA40;
-func_8001DB74 = 0x8001DB74;
-func_8001DC88 = 0x8001DC88;
-func_8001DD94 = 0x8001DD94;
+syInterpCatromCubicSpline = 0x8001D610;
+syInterpQuadSpline = 0x8001D754;
+syInterpBezier3Points = 0x8001D8E0;
+syInterpBezier4Points = 0x8001DA40;
+syInterpCubicBezierScale = 0x8001DB74;
+syInterpQuadBezier4Points = 0x8001DC88;
+syInterpCubicSplineTimeFrac = 0x8001DD94;
 func_8001E020 = 0x8001E020;
 func_8001E1A8 = 0x8001E1A8;
 func_8001E240 = 0x8001E240;
 func_8001E344 = 0x8001E344;
-hal_interpolation_cubic = 0x8001E530;
-hal_interpolation_quadratic = 0x8001E574;
+syInterpCubic = 0x8001E530;
+syInterpQuad = 0x8001E574;
 
 gcPrepDObjMatrix = 0x80010D70;
 gcDrawMObjForDObj = 0x80012D90;
@@ -686,7 +686,7 @@ dSYErrorFPUExceptions = 0x8003D044;
 dSYErrorMesgPositionX = 0x8003D05C;
 dSYErrorMesgPositionY = 0x8003D060;
 
-gSinTable = 0x8003B950; // size:0x1000
+gSYSinTable = 0x8003B950; // size:0x1000
 
 OverlayManager = 0x8003B6B0;
 sNoThread5 = 0x8003B6D4; // size:0x4

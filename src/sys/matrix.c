@@ -1,6 +1,6 @@
 #include <lb/library.h>
 
-extern u16 gSinTable[0x800];
+extern u16 gSYSinTable[0x800];
 
 void syMatrixF2L(Mtx44f *src, Mtx *dst)
 {
@@ -78,7 +78,7 @@ void syMatrixF2LFixedW(Mtx44f *src, Mtx *dst)
 s32 syMatrixFastSin(f32 x) 
 {
     s32 index = SINTABLE_RAD_TO_ID(x);
-    u16 sinx = gSinTable[index & 0x7FF];
+    u16 sinx = gSYSinTable[index & 0x7FF];
 
     if ((index & 0x800) != 0)
     {
@@ -90,7 +90,7 @@ s32 syMatrixFastSin(f32 x)
 s32 syMatrixFastCos(f32 x)
 {
     s32 index = SINTABLE_RAD_TO_ID(x + F_CST_DTOR32(90.0F));
-    u16 cosx = gSinTable[index & 0x7FF];
+    u16 cosx = gSYSinTable[index & 0x7FF];
     
     if ((index & 0x800) != 0)
     { 

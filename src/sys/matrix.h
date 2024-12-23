@@ -4,7 +4,7 @@
 #include <ssb_types.h>
 #include <PR/mbi.h>
 
-extern u16 gSinTable[0x800];
+extern u16 gSYSinTable[0x800];
 
 typedef union SYMatrixHub
 {

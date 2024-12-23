@@ -9,8 +9,8 @@
 //                               //
 // // // // // // // // // // // //
 
-extern void hal_interpolation_quadratic(void*, void*, f32);
-extern void hal_interpolation_cubic(void*, void*, f32);
+extern void syInterpQuad(void*, void*, f32);
+extern void syInterpCubic(void*, void*, f32);
 
 // // // // // // // // // // // //
 //                               //
@@ -242,7 +242,7 @@ void func_ovl2_80106730(DObj *arg0, Vec3f *vec1, Vec3f *vec2, Vec3f *vec3)
             {
                 vlen = 1.0F;
             }
-            hal_interpolation_quadratic(vec1, aobj->interpolate, vlen);
+            syInterpQuad(vec1, aobj->interpolate, vlen);
         }
         aobj = aobj->next;
     }
@@ -254,7 +254,7 @@ void func_ovl2_80106730(DObj *arg0, Vec3f *vec1, Vec3f *vec2, Vec3f *vec3)
         {
             if ((aobj->kind != nGCAnimKindNone) && !(arg0->parent_gobj->flags & GOBJ_FLAG_NOANIM) && (aobj->track == nGCAnimTrackTraI))
             {
-                hal_interpolation_cubic(vec3, aobj->interpolate, vlen);
+                syInterpCubic(vec3, aobj->interpolate, vlen);
             }
             aobj = aobj->next;
         }

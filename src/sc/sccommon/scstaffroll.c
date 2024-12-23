@@ -3,7 +3,7 @@
 #include <sys/video.h>
 #include <sys/thread6.h>
 
-extern void hal_interpolation_cubic(Vec3f*, void*, f32);
+extern void syInterpCubic(Vec3f*, void*, f32);
 extern void syMatrixTraRotRpyRScaF(Mtx44f mf,f32 dx,f32 dy,f32 dz,f32 r,f32 p,f32 h,f32 sx,f32 sy,f32 sz);
 extern void syMatrixPerspFastF(Mtx44f a, u16* b, f32 c, f32 d, f32 e, f32 f, f32  g);
 extern void syMatrixLookAtF(Mtx44f mf, f32 xEye, f32 yEye, f32 zEye, f32 xAt, f32 yAt, f32 zAt, f32 xUp, f32 yUp, f32 zUp);
@@ -1405,7 +1405,7 @@ void SCStaffrollJobAndNameThreadUpdate(GObj *gobj)
 	{
 		gcAddDObjAnimJoint(dobj, sSCStaffrollNameAnimJoint, cn->interpolation * 99.0F);
 
-		hal_interpolation_cubic(&pos, sSCStaffrollNameInterpolation, cn->interpolation);
+		syInterpCubic(&pos, sSCStaffrollNameInterpolation, cn->interpolation);
 
 		dobj->translate.vec.f.x = pos.x + cn->offset_x;
 		dobj->translate.vec.f.y = pos.y + 12.0F;

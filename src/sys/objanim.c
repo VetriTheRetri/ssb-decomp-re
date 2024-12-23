@@ -1,6 +1,6 @@
 #include <sys/obj.h>
 
-extern void hal_interpolation_cubic(Vec3f*, void*, f32);
+extern void syInterpCubic(Vec3f*, void*, f32);
 
 // // // // // // // // // // // //
 //                               //
@@ -789,7 +789,7 @@ void gcPlayDObjAnimJoint(DObj *dobj)
                         {
                             value = 1.0F;
                         }
-                        hal_interpolation_cubic(&dobj->translate.vec.f, aobj->interpolate, value);
+                        syInterpCubic(&dobj->translate.vec.f, aobj->interpolate, value);
                         break;
 
                     case nGCAnimTrackTraX: 
@@ -1638,7 +1638,7 @@ sb32 gcCheckGetDObjNoAxisTrack
                 {
                     *axis_value = 1.0F;
                 }
-                hal_interpolation_cubic(translate, aobj->interpolate, *axis_value);
+                syInterpCubic(translate, aobj->interpolate, *axis_value);
 
                 switch (track)
                 {
@@ -2864,7 +2864,7 @@ void gcPlayCObjCamAnim(CObj *cobj)
                         {
                             value = 1.0F;
                         }
-                        hal_interpolation_cubic(&cobj->vec.eye, aobj->interpolate, value);
+                        syInterpCubic(&cobj->vec.eye, aobj->interpolate, value);
                         break;
                     
                     case nGCAnimTrackAtX:
@@ -2890,7 +2890,7 @@ void gcPlayCObjCamAnim(CObj *cobj)
                         {
                             value = 1.0F;
                         }
-                        hal_interpolation_cubic(&cobj->vec.at, aobj->interpolate, value);
+                        syInterpCubic(&cobj->vec.at, aobj->interpolate, value);
                         break;
 
                     case nGCAnimTrackUpX:

@@ -3,10 +3,10 @@
 #include <gr/ground.h>
 #include <sys/video.h>
 
-extern void hal_interpolation_cubic(void*, void*, f32);
+extern void syInterpCubic(void*, void*, f32);
 extern void* func_80026A10_27610(u16);
 
-extern u16 gSinTable[/* */];
+extern u16 gSYSinTable[/* */];
 
 // // // // // // // // // // // //
 //                               //
@@ -515,7 +515,7 @@ void lbCommonMatrixTraRotScaInv
 
     idx = ((s32) (rotx * 651.8986206F)) & 0xFFF;
     
-    sinx = gSinTable[idx & 0x7FF];
+    sinx = gSYSinTable[idx & 0x7FF];
     
     if (idx & 0x800)
     {
@@ -523,7 +523,7 @@ void lbCommonMatrixTraRotScaInv
     }
     idx += 0x400;
     
-    cosx = gSinTable[idx & 0x7FF];
+    cosx = gSYSinTable[idx & 0x7FF];
     
     if (idx & 0x800)
     {
@@ -531,7 +531,7 @@ void lbCommonMatrixTraRotScaInv
     }
     idy = ((s32) (roty * 651.8986206F)) & 0xFFF;
     
-    siny = gSinTable[idy & 0x7FF];
+    siny = gSYSinTable[idy & 0x7FF];
     
     if (idy & 0x800)
     {
@@ -539,7 +539,7 @@ void lbCommonMatrixTraRotScaInv
     }
     idy += 0x400;
     
-    cosy = gSinTable[idy & 0x7FF];
+    cosy = gSYSinTable[idy & 0x7FF];
     
     if (idy & 0x800)
     {
@@ -547,7 +547,7 @@ void lbCommonMatrixTraRotScaInv
     }
     idz = ((s32) (rotz * 651.8986206F)) & 0xFFF;
     
-    sinz = gSinTable[idz & 0x7FF];
+    sinz = gSYSinTable[idz & 0x7FF];
     
     if (idz & 0x800)
     {
@@ -555,7 +555,7 @@ void lbCommonMatrixTraRotScaInv
     }
     idz += 0x400;
     
-    cosz = gSinTable[idz & 0x7FF];
+    cosz = gSYSinTable[idz & 0x7FF];
     
     if (idz & 0x800)
     {
@@ -626,7 +626,7 @@ void lbCommonMatrixRotSca(Mtx *mtx, f32 rotx, f32 roty, f32 rotz, f32 scax, f32 
 
     idx = ((s32) (rotx * 651.8986206F)) & 0xFFF;
     
-    sinx = gSinTable[idx & 0x7FF];
+    sinx = gSYSinTable[idx & 0x7FF];
     
     if (idx & 0x800)
     {
@@ -634,7 +634,7 @@ void lbCommonMatrixRotSca(Mtx *mtx, f32 rotx, f32 roty, f32 rotz, f32 scax, f32 
     }
     idx += 0x400;
     
-    cosx = gSinTable[idx & 0x7FF];
+    cosx = gSYSinTable[idx & 0x7FF];
     
     if (idx & 0x800)
     {
@@ -642,7 +642,7 @@ void lbCommonMatrixRotSca(Mtx *mtx, f32 rotx, f32 roty, f32 rotz, f32 scax, f32 
     }
     idy = ((s32) (roty * 651.8986206F)) & 0xFFF;
     
-    siny = gSinTable[idy & 0x7FF];
+    siny = gSYSinTable[idy & 0x7FF];
     
     if (idy & 0x800)
     {
@@ -650,7 +650,7 @@ void lbCommonMatrixRotSca(Mtx *mtx, f32 rotx, f32 roty, f32 rotz, f32 scax, f32 
     }
     idy += 0x400;
     
-    cosy = gSinTable[idy & 0x7FF];
+    cosy = gSYSinTable[idy & 0x7FF];
     
     if (idy & 0x800)
     {
@@ -658,7 +658,7 @@ void lbCommonMatrixRotSca(Mtx *mtx, f32 rotx, f32 roty, f32 rotz, f32 scax, f32 
     }
     idz = ((s32) (rotz * 651.8986206F)) & 0xFFF;
     
-    sinz = gSinTable[idz & 0x7FF];
+    sinz = gSYSinTable[idz & 0x7FF];
     
     if (idz & 0x800)
     {
@@ -666,7 +666,7 @@ void lbCommonMatrixRotSca(Mtx *mtx, f32 rotx, f32 roty, f32 rotz, f32 scax, f32 
     }
     idz += 0x400;
     
-    cosz = gSinTable[idz & 0x7FF];
+    cosz = gSYSinTable[idz & 0x7FF];
     
     if (idz & 0x800)
     {
@@ -1301,7 +1301,7 @@ void lbCommonPlayTranslateScaledDObjAnim(DObj *dobj, Vec3f *scale)
                         {
                             interp = 1.0F;
                         }
-                        hal_interpolation_cubic(&dobj->translate.vec.f, aobj->interpolate, interp);
+                        syInterpCubic(&dobj->translate.vec.f, aobj->interpolate, interp);
 
                         dobj->translate.vec.f.x *= scale->x;
                         dobj->translate.vec.f.y *= scale->y;

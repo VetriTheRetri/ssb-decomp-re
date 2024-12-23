@@ -1,35 +1,19 @@
 #include "common.h"
 #include "interpolation.h"
 
-#include <macros.h>
-#include <ssb_types.h>
-
-#include <PR/gu.h>
-#include <PR/ultratypes.h>
-
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wunknown-pragmas"
-
-#define SQ(x) SQUARE(x)
-#define CB(x) CUBE(x)
-// biquadrate lol; easier to make a symbol than quartic (QT looks familiar too me)
-#define BQ(x) ((x) * (x) * (x) * (x))
+// Biquadrate; easier to make a symbol than quartic (QT looks familiar to me)
+#define BIQUAD(x) ((x) * (x) * (x) * (x))
 
 // Catmull-Rom cubic spline
-void func_8001D610(Vec3f *out, Vec3f *ctrl, f32 s, f32 t);
-
 #ifdef NON_MATCHING
-#define BASIS1(t, s) ((-CB((t)) + 2.0f * SQ((t)) - (t)) * (s))
-#define BASIS2(t, s) ((2.0f - (s)) * CB((t)) + ((s)-3.0f) * SQ((t)) + 1.0f)
-#define BASIS3(t, s) (((s)-2.0f) * CB((t)) + (3.0f - 2.0f * (s)) * SQ((t)) + (s) * (t))
-#define BASIS4(t, s) ((CB((t)) - SQ((t))) * (s))
+void syInterpCatromCubicSpline(Vec3f *out, Vec3f *ctrl, f32 s, f32 t)
+{
+    #define BASIS1(t, s) ((-CUBE((t)) + 2.0F * SQUARE((t)) - (t)) * (s))
+    #define BASIS2(t, s) ((2.0F - (s)) * CUBE((t)) + ((s)-3.0F) * SQUARE((t)) + 1.0F)
+    #define BASIS3(t, s) (((s)-2.0F) * CUBE((t)) + (3.0F - 2.0F * (s)) * SQUARE((t)) + (s) * (t))
+    #define BASIS4(t, s) ((CUBE((t)) - SQUARE((t))) * (s))
 
-void func_8001D610(Vec3f *out, Vec3f *ctrl, f32 s, f32 t) {
-    f32 b1;
-    f32 b2;
-    f32 b3;
-    UNUSED f32 extra;
-    f32 b4;
+    f32 b1, b2, b3, b4;
 
     b1 = BASIS1(t, s);
     b2 = BASIS2(t, s);
@@ -44,19 +28,19 @@ void func_8001D610(Vec3f *out, Vec3f *ctrl, f32 s, f32 t) {
 
     out->z = ctrl[0].z * BASIS1(t, s) + ctrl[1].z * BASIS2(t, s) + ctrl[2].z * BASIS3(t, s)
            + ctrl[3].z * BASIS4(t, s);
+
+    #undef BASIS1
+    #undef BASIS2
+    #undef BASIS3
+    #undef BASIS4
 }
-
-#undef BASIS1
-#undef BASIS2
-#undef BASIS3
-#undef BASIS4
-
 #else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/interpolation/func_8001D610.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/interpolation/syInterpCatromCubicSpline.s")
 #endif
 
 // quadratic spline?
-void func_8001D754(Vec3f* out, Vec3f* ctrl, f32 s, f32 t) {
+void syInterpQuadSpline(Vec3f *out, Vec3f *ctrl, f32 s, f32 t)
+{
     f32 tSq;
     f32 b2;
     f32 b3;
@@ -65,13 +49,13 @@ void func_8001D754(Vec3f* out, Vec3f* ctrl, f32 s, f32 t) {
     f32 other;
 
     tSq = t * t;
-    b1 = ((((-3.0f) * tSq) + (4.0f * t)) - 1.0f) * s;
-    temp = s - 3.0f;
+    b1 = ((((-3.0F) * tSq) + (4.0F * t)) - 1.0F) * s;
+    temp = s - 3.0F;
     other = s;
-    b2 = (((2.0f - other) * 3.0f) * tSq) + ((2.0f * temp) * t);
-    temp = 3.0f - (2.0f * other);
-    b3 = ((((other - 2.0f) * 3.0f) * tSq) + ((2.0f * temp) * t)) + other;
-    other = ((3.0f * tSq) - (2.0f * t)) * other;
+    b2 = (((2.0F - other) * 3.0F) * tSq) + ((2.0F * temp) * t);
+    temp = 3.0F - (2.0F * other);
+    b3 = ((((other - 2.0F) * 3.0F) * tSq) + ((2.0F * temp) * t)) + other;
+    other = ((3.0F * tSq) - (2.0F * t)) * other;
 
     out->x = (ctrl[0].x * b1) + (ctrl[1].x * b2) + (ctrl[2].x * b3) + (ctrl[3].x * other);
     out->y = (ctrl[0].y * b1) + (ctrl[1].y * b2) + (ctrl[2].y * b3) + (ctrl[3].y * other);
@@ -79,14 +63,14 @@ void func_8001D754(Vec3f* out, Vec3f* ctrl, f32 s, f32 t) {
 }
 
 // some sort of bezier interpolation
-void func_8001D8E0(Vec3f *out, Vec3f *ctrl, f32 t);
 #ifdef NON_MATCHING
-#define BASIS1(t) ((1.0f / 6.0f) * (CB(1.0f - t)))
-#define BASIS2(t) ((1.0f / 6.0f) * (((3.0f * CB(t)) - (6.0f * SQ(t))) + 4.0f))
-#define BASIS3(t) ((1.0f / 6.0f) * ((((SQ(t) - CB(t)) + t) * 3.0f) + 1.0f))
-#define BASIS4(t) ((1.0f / 6.0f) * CB(t))
+#define BASIS1(t) ((1.0F / 6.0F) * (CUBE(1.0F - t)))
+#define BASIS2(t) ((1.0F / 6.0F) * (((3.0F * CUBE(t)) - (6.0F * SQUARE(t))) + 4.0F))
+#define BASIS3(t) ((1.0F / 6.0F) * ((((SQUARE(t) - CUBE(t)) + t) * 3.0F) + 1.0F))
+#define BASIS4(t) ((1.0F / 6.0F) * CUBE(t))
 
-void func_8001D8E0(Vec3f *out, Vec3f *ctrl, f32 t) {
+void syInterpBezier3Points(Vec3f *out, Vec3f *ctrl, f32 t)
+{
     f32 b1, b2, b3, b4;
 
     b4 = BASIS4(t);
@@ -104,11 +88,12 @@ void func_8001D8E0(Vec3f *out, Vec3f *ctrl, f32 t) {
 #undef BASIS3
 #undef BASIS4
 #else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/interpolation/func_8001D8E0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/interpolation/syInterpBezier3Points.s")
 #endif
 
 // quadratic bezier with four control points (not three?)
-void func_8001DA40(Vec3f* out, Vec3f* ctrl, f32 t) {
+void syInterpBezier4Points(Vec3f* out, Vec3f* ctrl, f32 t)
+{
     UNUSED s32 pad[2];
     f32 tSq;
     f32 mt;
@@ -118,10 +103,10 @@ void func_8001DA40(Vec3f* out, Vec3f* ctrl, f32 t) {
     f32 b1;
 
     tSq = t * t;
-    b1 = 1.0f - t;
+    b1 = 1.0F - t;
     b4 = -0.5f * b1 * b1;
-    mt = ((3.0f * tSq) - (4.0f * t)) * 0.5f;
-    b2 = ((-3.0f * tSq) + (2.0f * t) + 1.0f) * 0.5f;
+    mt = ((3.0F * tSq) - (4.0F * t)) * 0.5f;
+    b2 = ((-3.0F * tSq) + (2.0F * t) + 1.0F) * 0.5f;
     b3 = 0.5f * tSq;
 
     out->x = (ctrl[0].x * b4) + (ctrl[1].x * mt) + (ctrl[2].x * b2) + (ctrl[3].x * b3);
@@ -130,9 +115,9 @@ void func_8001DA40(Vec3f* out, Vec3f* ctrl, f32 t) {
 }
 
 // cubic bezier with scale factor of 3?
-void func_8001DB74(Vec3f *out, Vec3f *ctrl, f32 t);
 #ifdef NON_MATCHING
-void func_8001DB74(Vec3f *out, Vec3f *ctrl, f32 t) {
+void syInterpCubicBezierScale(Vec3f *out, Vec3f *ctrl, f32 t)
+{
     f32 mt;
     f32 tSq;
     f32 b1;
@@ -140,36 +125,37 @@ void func_8001DB74(Vec3f *out, Vec3f *ctrl, f32 t) {
     f32 b3;
     f32 b4;
 
-    tSq = SQ(t);
-    mt  = 1.0f - t;
+    tSq = SQUARE(t);
+    mt  = 1.0F - t;
 
-    b4 = CB(t);
-    b1 = CB(mt);
-    b2 = 3.0f * t * CB(mt);
-    b3 = 3.0f * tSq * mt;
+    b4 = CUBE(t);
+    b1 = CUBE(mt);
+    b2 = 3.0F * t * CUBE(mt);
+    b3 = 3.0F * tSq * mt;
 
     out->x = (ctrl[3].x * b4) + ((ctrl[0].x * b1) + (ctrl[1].x * b2) + (ctrl[2].x * b3));
     out->y = (ctrl[3].y * b4) + ((ctrl[0].y * b1) + (ctrl[1].y * b2) + (ctrl[2].y * b3));
     out->z = (ctrl[3].z * b4) + ((ctrl[0].z * b1) + (ctrl[1].z * b2) + (ctrl[2].z * b3));
 }
 #else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/interpolation/func_8001DB74.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/interpolation/syInterpCubicBezierScale.s")
 #endif
 
 // four point quadratic bezier with scale of 3?
-void func_8001DC88(Vec3f* out, Vec3f* ctrl, f32 t) {
+void syInterpQuadBezier4Points(Vec3f* out, Vec3f* ctrl, f32 t)
+{
     f32 mt;
     f32 b1;
     f32 b2;
     f32 b3;
     f32 b4;
 
-    mt = t - 1.0f;
-    b4 = -3.0f * mt * mt;
-    b1 = SQ(t);
-    b1 = 3.0f * b1;
-    b2 = ((1.0f - (4.0f * t)) + b1) * 3.0f;
-    b3 = ((2.0f * t) - b1) * 3.0f;
+    mt = t - 1.0F;
+    b4 = -3.0F * mt * mt;
+    b1 = SQUARE(t);
+    b1 = 3.0F * b1;
+    b2 = ((1.0F - (4.0F * t)) + b1) * 3.0F;
+    b3 = ((2.0F * t) - b1) * 3.0F;
 
     out->x = (ctrl[0].x * b4) + (ctrl[1].x * b2) + (ctrl[2].x * b3) + (ctrl[3].x * b1);
     out->y = (ctrl[0].y * b4) + (ctrl[1].y * b2) + (ctrl[2].y * b3) + (ctrl[3].y * b1);
@@ -177,180 +163,218 @@ void func_8001DC88(Vec3f* out, Vec3f* ctrl, f32 t) {
 }
 
 
-// arg1->unk02 is total frames? elapsed frames?
+// arg1->points_num is total frames? elapsed frames?
 // delta time cubic interpolation?
-void func_8001DD94(Vec3f *out, HalInterpolationParam *params, f32 t) {
-    s16 targetFrame; // f10
-    Vec3f *cur;
+void syInterpCubicSplineTimeFrac(Vec3f *out, SYInterpDesc *desc, f32 t)
+{
+    s16 target_frame; // f10
+    Vec3f *point;
 
-    if (!(t < 0.0f) && !(t > 1.0f)) {
-        if (t < 1.0f) {
-            // convert interval from [0,1] to [0,totalFrames]
-            t *= (f32)(params->unk02 - 1);
-            targetFrame = t;
-            // get only the rounding difference for interpolation?
-            t = t - (f32)targetFrame;
+    if ((t < 0.0F) || (t > 1.0F))
+    {
+        return;
+    }
+    else if (t < 1.0F)
+    {
+        // convert interval from [0,1] to [0,totalFrames]
+        t *= (f32) (desc->points_num - 1);
 
-            switch (params->kind) {
-                case HAL_INTERP_LINEAR:
-                    cur    = params->unk08 + targetFrame;
-                    out->x = (cur[1].x - cur[0].x) * t + cur[0].x;
-                    out->y = (cur[1].y - cur[0].y) * t + cur[0].y;
-                    out->z = (cur[1].z - cur[0].z) * t + cur[0].z;
+        target_frame = t;
 
-                    break;
-                case HAL_INTERP_BEZIER_S3:
-                    func_8001DB74(out, params->unk08 + targetFrame * 3, t);
-                    break;
-                case HAL_INTERP_BEZIER: func_8001D8E0(out, params->unk08 + targetFrame, t); break;
-                case HAL_INTERP_CATROM:
-                    func_8001D610(out, params->unk08 + targetFrame, params->unk04, t);
-                    break;
-            }
-        } else {
-            targetFrame = params->unk02 - 1;
+        // get only the rounding difference for interpolation?
+        t -= target_frame;
 
-            switch (params->kind) {
-                case HAL_INTERP_LINEAR:
-                    cur  = &params->unk08[targetFrame];
-                    *out = *cur;
-                    break;
-                case HAL_INTERP_BEZIER_S3:
-                    cur  = &params->unk08[targetFrame * 3];
-                    *out = *cur;
-                    break;
-                case HAL_INTERP_BEZIER:
-                    func_8001D8E0(out, params->unk08 + (targetFrame - 1), 1.0f);
-                    break;
-                case HAL_INTERP_CATROM:
-                    cur  = &params->unk08[targetFrame + 1];
-                    *out = *cur;
-                    break;
-            }
+        switch (desc->kind)
+        {
+        case nSYInterpKindLinear:
+            point = &desc->points[target_frame];
+            out->x = (point[1].x - point[0].x) * t + point[0].x;
+            out->y = (point[1].y - point[0].y) * t + point[0].y;
+            out->z = (point[1].z - point[0].z) * t + point[0].z;
+            break;
+
+        case nSYInterpKindBezierS3:
+            syInterpCubicBezierScale(out, desc->points + target_frame * 3, t);
+            break;
+                
+        case nSYInterpKindBezier:
+            syInterpBezier3Points(out, desc->points + target_frame, t);
+            break;
+
+        case nSYInterpKindCatrom:
+            syInterpCatromCubicSpline(out, desc->points + target_frame, desc->unk04, t);
+            break;
+        }
+    }
+    else
+    {
+        target_frame = desc->points_num - 1;
+
+        switch (desc->kind)
+        {
+        case nSYInterpKindLinear:
+            point  = &desc->points[target_frame];
+            *out = *point;
+            break;
+
+        case nSYInterpKindBezierS3:
+            point  = &desc->points[target_frame * 3];
+            *out = *point;
+            break;
+                
+        case nSYInterpKindBezier:
+            syInterpBezier3Points(out, desc->points + (target_frame - 1), 1.0F);
+            break;
+        
+        case nSYInterpKindCatrom:
+            point  = &desc->points[target_frame + 1];
+            *out = *point;
+            break;
         }
     }
 }
 
 // quadratic interpolation
-void func_8001E020(Vec3f *out, HalInterpolationParam *params, f32 t) {
-    s16 targetFrame;
-    f32 tOrig;
-    Vec3f *cur;
+void func_8001E020(Vec3f *out, SYInterpDesc *desc, f32 t)
+{
+    s16 target_frame;
+    f32 t_origin;
+    Vec3f *point;
 
-    if (!(t < 0.0f) && !(t > 1.0f)) {
-        tOrig = t;
-        t *= (f32)(params->unk02 - 1);
-        targetFrame = t;
-        t           = t - (f32)targetFrame;
+    if ((t < 0.0F) || (t > 1.0F))
+    {
+        return;
+    }
+    else
+    {
+        t_origin = t;
+        t *= (f32) (desc->points_num - 1);
 
-        switch (params->kind) {
-            case HAL_INTERP_LINEAR:
-                if (tOrig == 1.0f) { targetFrame -= 1; }
-                cur    = params->unk08 + targetFrame;
-                out->x = cur[1].x - cur[0].x;
-                out->y = cur[1].y - cur[0].y;
-                out->z = cur[1].z - cur[0].z;
+        target_frame = t;
+        t = t - (f32) target_frame;
 
-                break;
-            case HAL_INTERP_BEZIER_S3:
-                func_8001DC88(out, params->unk08 + targetFrame * 3, t);
-                break;
-            case HAL_INTERP_BEZIER: func_8001DA40(out, params->unk08 + targetFrame, t); break;
-            case HAL_INTERP_CATROM:
-                func_8001D754(out, params->unk08 + targetFrame, params->unk04, t);
-                break;
+        switch (desc->kind)
+        {
+        case nSYInterpKindLinear:
+            if (t_origin == 1.0F)
+            {
+                target_frame--;
+            }
+            point    = desc->points + target_frame;
+            out->x = point[1].x - point[0].x;
+            out->y = point[1].y - point[0].y;
+            out->z = point[1].z - point[0].z;
+            break;
+           
+        case nSYInterpKindBezierS3:
+            syInterpQuadBezier4Points(out, desc->points + target_frame * 3, t);
+            break;
+            
+        case nSYInterpKindBezier: syInterpBezier4Points(out, desc->points + target_frame, t); break;
+        case nSYInterpKindCatrom:
+            syInterpQuadSpline(out, desc->points + target_frame, desc->unk04, t);
+            break;
         }
     }
 }
 
 // sqrt of quartic polynomial of x?
-f32 func_8001E1A8(f32 x, f32 *cof) {
-    f32 sum;
+f32 func_8001E1A8(f32 x, f32 *cof)
+{
+    f32 sum = cof[0] * BIQUAD(x) + cof[1] * CUBE(x) + cof[2] * SQUARE(x) + cof[3] * x + cof[4];
 
-    sum = cof[0] * BQ(x) + cof[1] * CB(x) + cof[2] * SQ(x) + cof[3] * x + cof[4];
-
-    if ((sum < 0.0f) && (sum > -0.001f)) { sum = 0.0f; }
-
+    if ((sum < 0.0F) && (sum > -0.001F))
+    {
+        sum = 0.0F;
+    }
     return sqrtf(sum);
 }
 
-f32 func_8001E240(f32 arg0, f32 arg1, f32 *cof) {
-    f32 sp4C; // f24
-    f32 f22;
-    f32 f20;
+f32 func_8001E240(f32 arg0, f32 arg1, f32 *cof)
+{
+    f32 sp4C = (arg1 - arg0) / 8;
+    f32 f22 = 0.0F;
+    f32 f20 = arg0 + sp4C;
     s32 i;
 
-    sp4C = (arg1 - arg0) / 8;
-    f22  = 0.0f;
-    f20  = arg0 + sp4C;
-    for (i = 2; i < 9; i++) {
-        if (!(i & 1)) {
-            f22 += 4.0f * func_8001E1A8(f20, cof);
-        } else {
-            f22 += 2.0f * func_8001E1A8(f20, cof);
+    for (i = 2; i < 9; i++)
+    {
+        if (!(i & 1))
+        {
+            f22 += 4.0F * func_8001E1A8(f20, cof);
         }
+        else f22 += 2.0F * func_8001E1A8(f20, cof);
+        
         f20 += sp4C;
     }
-
-    return ((func_8001E1A8(arg0, cof) + f22 + func_8001E1A8(arg1, cof)) * sp4C) / 3.0f;
+    return ((func_8001E1A8(arg0, cof) + f22 + func_8001E1A8(arg1, cof)) * sp4C) / 3.0F;
 }
 
 // something like get arg1 as fractional frames?
-f32 func_8001E344(HalInterpolationParam *params, f32 arg1) {
-    f32 *cur; // v0
-    s32 idx;
+f32 func_8001E344(SYInterpDesc *desc, f32 arg1)
+{
+    f32 *point; // v0
+    s32 id;
     f32 f28; // sp5C
     f32 f20;
-    f32 min = 0.0f;
-    f32 max = 1.0f;
+    f32 min = 0.0F;
+    f32 max = 1.0F;
     f32 res;
     f32 diff; // f24
 
-    idx = 0;
-    cur = params->unk10;
-    while (cur[1] < arg1) {
-        idx++;
-        cur++;
+    id = 0;
+    point = desc->keyframes;
+
+    while (point[1] < arg1)
+    {
+        id++;
+        point++;
     }
+    switch (desc->kind)
+    {
+    case nSYInterpKindLinear:
+        f28 = (arg1 - desc->keyframes[id]) / (desc->keyframes[id + 1] - desc->keyframes[id]);
+        break;
 
-    switch (params->kind) {
-        case HAL_INTERP_LINEAR:
-            f28 = (arg1 - params->unk10[idx]) / (params->unk10[idx + 1] - params->unk10[idx]);
-            break;
-        case HAL_INTERP_BEZIER_S3:
-        case HAL_INTERP_BEZIER:
-        case HAL_INTERP_CATROM:
-            f20 = (arg1 - params->unk10[idx]) * params->unk0C;
+    case nSYInterpKindBezierS3:
+    case nSYInterpKindBezier:
+    case nSYInterpKindCatrom:
+        f20 = (arg1 - desc->keyframes[id]) * desc->length;
 
-            do {
-                f28 = (min + max) / 2.0f;
-                res = func_8001E240(min, f28, params->unk14 + (idx * 5));
+        do
+        {
+            f28 = (min + max) / 2.0F;
+            res = func_8001E240(min, f28, desc->quartics + (id * 5));
 
-                if (f20 < (res + 0.00001f)) {
-                    max = f28;
-                } else {
-                    min = f28;
-                    f20 -= res;
-                }
+            if (f20 < (res + 0.00001F)) 
+            {
+                max = f28;
+            }
+            else
+            {
+                min = f28;
+                f20 -= res;
+            }
+            diff = (min < max) ? -(min - max) : min - max;
 
-                diff = min < max ? -(min - max) : min - max;
+            if (diff < 0.00001F)
+            {
+                break;
+            }
+        }
+        while ((res + 0.00001F) < f20 || f20 < (res - 0.00001F));
 
-                if (diff < 0.00001f) { break; }
-
-            } while ((res + 0.00001f) < f20 || f20 < (res - 0.00001f));
-
-            break;
+        break;
     }
-
-    return ((f32)idx + f28) / ((f32)params->unk02 - 1.0f);
+    return ((f32) id + f28) / ((f32) desc->points_num - 1.0F);
 }
 
-void hal_interpolation_cubic(Vec3f *out, HalInterpolationParam *p, f32 t) {
-    func_8001DD94(out, p, func_8001E344(p, t));
+void syInterpCubic(Vec3f *out, SYInterpDesc *p, f32 t)
+{
+    syInterpCubicSplineTimeFrac(out, p, func_8001E344(p, t));
 }
 
-void hal_interpolation_quadratic(Vec3f *out, HalInterpolationParam *p, f32 t) {
+void syInterpQuad(Vec3f *out, SYInterpDesc *p, f32 t)
+{
     func_8001E020(out, p, func_8001E344(p, t));
 }
-
-#pragma GCC diagnostic pop

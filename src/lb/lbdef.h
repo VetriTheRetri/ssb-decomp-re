@@ -85,7 +85,7 @@
 {                                               \
     id = SINTABLE_RAD_TO_ID(angle) & 0xFFF;     \
                                                 \
-    sin = gSinTable[id & 0x7FF];     			\
+    sin = gSYSinTable[id & 0x7FF];     			\
                                                 \
     if (id & 0x800)                             \
     {                                           \
@@ -93,7 +93,7 @@
     }                                          	\
     id += 0x400;                               	\
                                     			\
-    cos = gSinTable[id & 0x7FF];     			\
+    cos = gSYSinTable[id & 0x7FF];     			\
                                                 \
     if (id & 0x800)                             \
     {                                           \

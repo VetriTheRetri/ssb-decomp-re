@@ -126,6 +126,7 @@
 /// Math Functions
 #define SQUARE(x) ((x) * (x))
 #define CUBE(x) ((x) * (x) * (x))
+#define BIQUAD(x) ((x) * (x) * (x) * (x))
 
 #define ABS(x) ((x) < 0 ? -(x) : (x))
 #define ABSF(x) ((x) < 0.0F ? -(x) : (x))

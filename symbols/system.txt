@@ -466,10 +466,10 @@ syInterpBezier4Points = 0x8001DA40;
 syInterpCubicBezierScale = 0x8001DB74;
 syInterpQuadBezier4Points = 0x8001DC88;
 syInterpCubicSplineTimeFrac = 0x8001DD94;
-func_8001E020 = 0x8001E020;
-func_8001E1A8 = 0x8001E1A8;
-func_8001E240 = 0x8001E240;
-func_8001E344 = 0x8001E344;
+syInterpQuadSplineTimeFrac = 0x8001E020;
+syInterpGetQuartSum = 0x8001E1A8;
+syInterpGetCubicIntegralApprox = 0x8001E240;
+syInterpGetFracFrame = 0x8001E344;
 syInterpCubic = 0x8001E530;
 syInterpQuad = 0x8001E574;
 

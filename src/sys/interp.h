@@ -32,10 +32,10 @@ extern void syInterpBezier4Points(Vec3f* out, Vec3f* ctrl, f32 t);
 extern void syInterpCubicBezierScale(Vec3f *out, Vec3f *ctrl, f32 t);
 extern void syInterpQuadBezier4Points(Vec3f* out, Vec3f* ctrl, f32 t);
 extern void syInterpCubicSplineTimeFrac(Vec3f *out, SYInterpDesc *desc, f32 t);
-extern void func_8001E020(Vec3f *out, SYInterpDesc *desc, f32 t);
-extern f32 func_8001E1A8(f32 x, f32 *cof);
-extern f32 func_8001E240(f32 arg0, f32 arg1, f32 *cof);
-extern f32 func_8001E344(SYInterpDesc *desc, f32 arg1);
+extern void syInterpQuadSplineTimeFrac(Vec3f *out, SYInterpDesc *desc, f32 t);
+extern f32 syInterpGetQuartSum(f32 x, f32 *cof);
+extern f32 syInterpGetCubicIntegralApprox(f32 t, f32 f, f32 *cof);
+extern f32 syInterpGetFracFrame(SYInterpDesc *desc, f32 t);
 extern void syInterpCubic(Vec3f *out, SYInterpDesc *desc, f32 t);
 extern void syInterpQuad(Vec3f *out, SYInterpDesc *desc, f32 t);
 

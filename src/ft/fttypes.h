@@ -6,7 +6,7 @@
 // #include <sys/objdisplay.h> // Probably shouldn't be included
 // #include <PR/ultratypes.h>
 #include <sys/obj.h>
-#include <sys/thread6.h>
+#include <sys/controller.h>
 #include <mp/map.h>
 #include <ef/effect.h>
 #include <cm/camera.h>

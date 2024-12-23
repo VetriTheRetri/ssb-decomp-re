@@ -8,7 +8,7 @@
 #include <sys/rdp.h>
 #include <sys/video.h>
 #include <sys/thread3.h>
-#include <sys/thread6.h>
+#include <sys/controller.h>
 
 #include <macros.h>
 #include <ssb_types.h>
@@ -1214,7 +1214,7 @@ void func_80006548(syTaskmanBufferSetup *arg0, void (*arg1)())
 	func_80004CB4(arg0->unk30, syTaskmanMalloc(arg0->rdp_output_buffer_size, 0x10), arg0->rdp_output_buffer_size);
 	syRdpSetFuncLights(arg0->func_lights);
 	D_80046668 = arg0->func_controller;
-	enable_auto_contread((uintptr_t)schedule_contread != (uintptr_t)D_80046668 ? TRUE : FALSE);
+	syControllerSetAutoRead((uintptr_t)syControllerScheduleRead != (uintptr_t)D_80046668 ? TRUE : FALSE);
 
 	dSYTaskmanUpdateCount = dSYTaskmanFrameCount = 0;
 

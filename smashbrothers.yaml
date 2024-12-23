@@ -89,7 +89,7 @@ segments:
       - [0x001510, pad, padding_1510]
       - [0x001520, c, sys/thread3]
       - [0x003660, c, sys/dma]
-      - [0x004800, c, sys/thread6]
+      - [0x004800, c, sys/controller]
       - [0x0054D0, c, sys/taskman]
       - [0x0078E0, c, sys/malloc]
       - [0x007970, c, sys/video]
@@ -284,7 +284,7 @@ segments:
       - [0x03E240, .data, libultra/io/aisetnextbuf]
       - [0x03E250, .rodata, sys/main]
       - [0x03E270, .rodata, sys/thread3]
-      - [0x03E2D0, .rodata, sys/thread6]
+      - [0x03E2D0, .rodata, sys/controller]
       - [0x03E2F0, .rodata, sys/taskman]
       - [0x03E510, .rodata, sys/malloc]
       - [0x03E530, .rodata, sys/objmanager]
@@ -315,7 +315,8 @@ segments:
       - { start: auto, type: .bss, name: sys/main,                 vram: 0x8003FAD0 }
       - { start: auto, type: .bss, name: sys/thread3,              vram: 0x80044EC0 }
       - { start: auto, type: .bss, name: sys/dma,                  vram: 0x80045040 }
-      - { start: auto, type: .bss, name: sys/thread6,              vram: 0x800450F0 }
+      - { start: auto, type: .bss, name: sys/controller,              vram: 0x800450F0 }
+      - { start: auto, type: .bss, name: sys/maindevice,           vram: 0x80045470 }
       - { start: auto, type: .bss, name: sys/taskman,              vram: 0x80045480 }
       - { start: auto, type: .bss, name: sys/video,                vram: 0x80046670 }
       - { start: auto, type: .bss, name: sys/rdp,                  vram: 0x800466A0 }

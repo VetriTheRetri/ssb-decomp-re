@@ -18,10 +18,10 @@ typedef struct ControllerInput
 
 typedef struct SYController
 {
-    /* 0x00 */ u16 button_hold; // button
-    /* 0x02 */ u16 button_tap; // new button presses?
-    /* 0x04 */ u16 button_update; // buttons to handle?
-    /* 0x06 */ u16 button_release; // released buttons?
+    u16 button_hold; // button
+    u16 button_tap; // new button presses?
+    u16 button_update; // buttons to handle?
+    u16 button_release; // released buttons?
     Vec2b stick_range;
 
 } SYController; // size = 0x0A
@@ -38,7 +38,7 @@ typedef struct ControllerInfo
     /* 0x0E */ s8 unk0E;  // stick x
     /* 0x0F */ s8 unk0F;  // stick y
     /* 0x10 */ s32 unk10;
-    /* 0x14 */ u32 unk14;
+    /* 0x14 */ s32 unk14;
     /* 0x18 */ s32 unk18; // some sort of countdown
     /* 0x1C */ u8 unk1C;  // cont status errno
     /* 0x1D */ u8 unk1D;  // cont status status
@@ -114,18 +114,18 @@ typedef struct Unk80045268
 } Unk80045268; // size = 0x18
 
 extern u32 gSYControllerConnectedNum;
-extern sb32 gUpdateContData;
+extern sb32 sSYControllerIsUpdateData;
 extern s8 gSYControllerDeviceStatuses[MAXCONTROLLERS];
 extern SYController gSYControllerDevices[MAXCONTROLLERS];
 extern SYController gSYControllerMain;
 
-extern void schedule_contread(void);
+extern void syControllerScheduleRead(void);
 extern void syControllerFuncRead(void);
-extern void enable_auto_contread(s32 shouldSchedule);
-extern void set_contstatus_delay(s32 delay);
+extern void syControllerSetAutoRead(s32 shouldSchedule);
+extern void syControllerSetStatusDelay(s32 delay);
 extern void func_80004474(s32 arg0);
 extern void func_80004494(s32 arg0);
 extern void func_800044B4(s32 arg0);
-extern void thread6_controllers(void *arg);
+extern void syControllerThreadMain(void *arg);
 
 #endif /* SYS_THREAD_6_H */

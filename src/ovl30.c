@@ -3,7 +3,7 @@
 #include <sc/scene.h>
 #include <lb/library.h>
 #include <sys/video.h>
-#include <sys/thread6.h>
+#include <sys/controller.h>
 
 // Externs
 extern intptr_t lOverlay30ArenaLo;  // 0x80134E30

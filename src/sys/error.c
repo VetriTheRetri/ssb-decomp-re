@@ -6,7 +6,7 @@
 #include <sys/obj.h>
 #include <sys/video.h>
 #include <sys/thread3.h>
-#include <sys/thread6.h>
+#include <sys/controller.h>
 
 // #include <macros.h> // (included in obj.h)
 #include <config.h>

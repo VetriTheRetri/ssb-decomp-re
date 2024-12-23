@@ -6,7 +6,7 @@
 #include <sys/taskman.h>
 #include <sys/hal_audio.h>
 #include <sys/thread3.h>
-#include <sys/thread6.h>
+#include <sys/controller.h>
 
 // #include <linkersegs.h>
 #include <macros.h>
@@ -145,7 +145,7 @@ void syMainThread5(UNUSED void *arg)
     sSYMainThread4Stack[0] = STACK_PROBE_MAGIC; osStartThread(&sSYMainThread4);
     osRecvMesg(&sSYMainThreadingQueue, NULL, OS_MESG_BLOCK);
 
-    osCreateThread(&gSYMainThread6, 6, thread6_controllers, NULL, gSYMainThread6Stack + THREAD6_STACK_SIZE, THREAD6_PRI);
+    osCreateThread(&gSYMainThread6, 6, syControllerThreadMain, NULL, gSYMainThread6Stack + THREAD6_STACK_SIZE, THREAD6_PRI);
     gSYMainThread6Stack[0] = STACK_PROBE_MAGIC; osStartThread(&gSYMainThread6);
     osRecvMesg(&sSYMainThreadingQueue, NULL, OS_MESG_BLOCK);
 

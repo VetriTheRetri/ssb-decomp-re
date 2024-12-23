@@ -3,7 +3,7 @@
 #include <sc/scene.h>
 #include <lb/library.h>
 #include <sys/video.h>
-#include <sys/thread6.h>
+#include <sys/controller.h>
 
 extern void auStopBGM();
 extern void* func_800269C0_275C0(u16);

@@ -295,22 +295,22 @@ f32 syInterpGetQuartSum(f32 x, f32 *cof)
 
 f32 syInterpGetCubicIntegralApprox(f32 t, f32 f, f32 *cof)
 {
-    f32 sp4C = (f - t) / 8;
-    f32 f22 = 0.0F;
-    f32 time_scale = t + sp4C;
+    f32 factor = (f - t) / 8;
+    f32 sum = 0.0F;
+    f32 time_scale = t + factor;
     s32 i;
 
     for (i = 2; i < 9; i++)
     {
         if (!(i & 1))
         {
-            f22 += 4.0F * syInterpGetQuartSum(time_scale, cof);
+            sum += 4.0F * syInterpGetQuartSum(time_scale, cof);
         }
-        else f22 += 2.0F * syInterpGetQuartSum(time_scale, cof);
+        else sum += 2.0F * syInterpGetQuartSum(time_scale, cof);
         
-        time_scale += sp4C;
+        time_scale += factor;
     }
-    return ((syInterpGetQuartSum(t, cof) + f22 + syInterpGetQuartSum(f, cof)) * sp4C) / 3.0F;
+    return ((syInterpGetQuartSum(t, cof) + sum + syInterpGetQuartSum(f, cof)) * factor) / 3.0F;
 }
 
 // something like get t as fractional frames?

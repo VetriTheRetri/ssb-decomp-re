@@ -275,7 +275,7 @@ void grYamabukiInitGroundVars(void)
 
     dGRYamabukiMonsterAttackKind = GRYAMABUKI_MONSTER_WEAPON_MAX;
 
-    gGRCommonStruct.yamabuki.monster_id_prev = nITKindGroundMonsterEnd - nITKindGroundMonsterStart + 1;
+    gGRCommonStruct.yamabuki.monster_id_prev = (nITKindGroundMonsterEnd - nITKindGroundMonsterStart) + 1;
     gGRCommonStruct.yamabuki.gate_pos.z = 0.0F;
 
     grYamabukiGateSetPositionNear();

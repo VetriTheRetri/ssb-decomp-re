@@ -3,7 +3,7 @@
 #include <it/item.h>
 #include <gr/ground.h>
 #include <sc/scene.h>
-#include <sys/thread6.h>
+#include <sys/controller.h>
 
 extern alSoundEffect* func_800269C0_275C0(u16);
 extern void func_ovl0_800C9A38();

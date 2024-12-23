@@ -9,7 +9,7 @@
 #include <sys/hal_audio.h>
 #include <sys/video.h>
 #include <sc/sctypes.h> // Temporarily, until ovl defines are fixed
-#include <sys/thread6.h>
+#include <sys/controller.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -810,7 +810,7 @@ void scManagerRunLoop(sb32 arg)
 	u16 *framebuffer;
 	uintptr_t end;
 
-	set_contstatus_delay(60);
+	syControllerSetStatusDelay(60);
 
 	syErrorSetFuncPrint(scManagerFuncPrint);
 	syErrorStartRmonThread5Hang();

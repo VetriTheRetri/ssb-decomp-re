@@ -1,6 +1,6 @@
 #include <mn/menu.h>
 #include <sc/scene.h>
-#include <sys/thread6.h>
+#include <sys/controller.h>
 #include <sys/video.h>
 
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);

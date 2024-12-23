@@ -3,7 +3,7 @@
 
 #include <ssb_types.h>
 #include <sys/obj.h>
-#include <sys/thread6.h>
+#include <sys/controller.h>
 
 #include "dbdef.h"
 

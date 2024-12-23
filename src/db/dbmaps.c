@@ -2,7 +2,7 @@
 #include <gr/ground.h>
 #include <sc/scene.h>
 #include <sys/video.h>
-#include <sys/thread6.h>
+#include <sys/controller.h>
 
 // // // // // // // // // // // //
 //                               //

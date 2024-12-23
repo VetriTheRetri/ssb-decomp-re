@@ -1,5 +1,5 @@
 #include <sys/obj.h>
-#include <sys/thread6.h>
+#include <sys/controller.h>
 
 // // // // // // // // // // // //
 //                               //

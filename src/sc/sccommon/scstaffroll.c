@@ -1,7 +1,7 @@
 #include <sc/scene.h>
 #include <gm/gmsound.h>
 #include <sys/video.h>
-#include <sys/thread6.h>
+#include <sys/controller.h>
 
 extern void syInterpCubic(Vec3f*, void*, f32);
 extern void syMatrixTraRotRpyRScaF(Mtx44f mf,f32 dx,f32 dy,f32 dz,f32 r,f32 p,f32 h,f32 sx,f32 sy,f32 sz);

@@ -849,7 +849,7 @@ GObj* ftManagerMakeFighter(FTDesc *desc) // Create fighter
         if (fp->joints[i] != NULL)
         {
             fp->modelpart_status[i - nFTPartsJointCommonStart].modelpart_id_base = 
-            fp->modelpart_status[i - nFTPartsJointCommonStart].modelpart_id_curr = (fp->joints[i]->display_ptr != NULL) ? 0 : -1;
+            fp->modelpart_status[i - nFTPartsJointCommonStart].modelpart_id_curr = (fp->joints[i]->dl != NULL) ? 0 : -1;
         }
     }
     for (i = 0; i < ARRAY_COUNT(fp->texturepart_status); i++)
@@ -899,7 +899,7 @@ GObj* ftManagerMakeFighter(FTDesc *desc) // Create fighter
 
     if (fp->pkind != nFTPlayerKindDemo)
     {
-        gcAddGObjProcess(fighter_gobj, ftMainProcUpdate, nGCProcessKindFunc, 5);
+        gcAddGObjProcess(fighter_gobj, ftMainProcUpdateInterrupt, nGCProcessKindFunc, 5);
         gcAddGObjProcess(fighter_gobj, ftMainProcPhysicsMapDefault, nGCProcessKindFunc, 4);
         gcAddGObjProcess(fighter_gobj, ftMainProcPhysicsMapCapture, nGCProcessKindFunc, 3);
         gcAddGObjProcess(fighter_gobj, ftMainProcSearchAllCatch, nGCProcessKindFunc, 2);

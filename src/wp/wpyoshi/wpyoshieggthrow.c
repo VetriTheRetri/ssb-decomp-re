@@ -84,7 +84,7 @@ void wpYoshiEggHitInitVars(GObj *weapon_gobj) // Egg Throw explodes from landing
 
     wp->attack_coll.size = WPEGGTHROW_EXPLODE_SIZE;
 
-    DObjGetStruct(weapon_gobj)->display_list = NULL;
+    DObjGetStruct(weapon_gobj)->dl = NULL;
 
     wp->proc_update = wpYoshiEggExplodeProcUpdate;
     wp->proc_map = NULL;
@@ -109,7 +109,7 @@ void wpYoshiEggExpireInitVars(GObj *weapon_gobj) // Egg Throw explodes from expi
 
     wp->attack_coll.size = WPEGGTHROW_EXPLODE_SIZE;
 
-    DObjGetStruct(weapon_gobj)->display_list = NULL;
+    DObjGetStruct(weapon_gobj)->dl = NULL;
 
     wp->proc_update = wpYoshiEggExplodeProcUpdate;
     wp->proc_map = NULL;

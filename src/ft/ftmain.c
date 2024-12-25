@@ -1188,7 +1188,7 @@ void ftMainRunUpdateColAnim(GObj *fighter_gobj)
 }
 
 // 0x800E1260
-void ftMainProcUpdate(GObj *fighter_gobj)
+void ftMainProcUpdateInterrupt(GObj *fighter_gobj)
 {
     FTStruct *this_fp = ftGetStruct(fighter_gobj);
     FTStruct *other_fp;

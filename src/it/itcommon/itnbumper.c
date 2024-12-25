@@ -372,7 +372,7 @@ void itNBumperAttachedInitVars(GObj *item_gobj)
 
     dl = itGetPData(ip, lITNBumperDataStart, lITNBumperWaitDisplayList); // (uintptr_t)((uintptr_t)ip->attr->dobj_setup - (intptr_t)&lITNBumperDataStart) + (intptr_t)&lITNBumperWaitDisplayList; Linker thing
 
-    dobj->display_list = dl;
+    dobj->dl = dl;
 
     mobjsub = itGetPData(ip, lITNBumperDataStart, lITNBumperWaitMObjSub); // ((uintptr_t)((uintptr_t)ip->attr->dobj_setup - (intptr_t)&lITNBumperDataStart) + (intptr_t)&lITNBumperWaitMObjSub);
 

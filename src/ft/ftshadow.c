@@ -293,9 +293,9 @@ void ftShadowFuncDisplay(GObj *shadow_gobj)
                 {
                     if (gSYTaskmanTaskID != 0)
                     {
-                        shadow_vertex = &fs->shadow_vertex2[0];
+                        shadow_vertex = &fs->vtx2[0];
                     }
-                    else shadow_vertex = &fs->shadow_vertex1[0];
+                    else shadow_vertex = &fs->vtx1[0];
 
                     gDPPipeSync(gSYTaskmanDLHeads[0]++);
 
@@ -461,18 +461,18 @@ GObj* ftShadowMakeShadow(GObj *fighter_gobj)
 
     fs->player = fp->player;
 
-    for (i = 0; i < (ARRAY_COUNT(fs->shadow_vertex1) + ARRAY_COUNT(fs->shadow_vertex2)) / 2; i++)
+    for (i = 0; i < (ARRAY_COUNT(fs->vtx1) + ARRAY_COUNT(fs->vtx2)) / 2; i++)
     {
-        fs->shadow_vertex1[i].n.flag = 0;
-        fs->shadow_vertex1[i].n.n[0] = 0;
-        fs->shadow_vertex1[i].n.n[1] = 0;
-        fs->shadow_vertex1[i].n.n[2] = 0;
-        fs->shadow_vertex1[i].n.a = 128;
-        fs->shadow_vertex2[i].n.flag = 0;
-        fs->shadow_vertex2[i].n.n[0] = 0;
-        fs->shadow_vertex2[i].n.n[1] = 0;
-        fs->shadow_vertex2[i].n.n[2] = 0;
-        fs->shadow_vertex2[i].n.a = 128;
+        fs->vtx1[i].n.flag = 0;
+        fs->vtx1[i].n.n[0] = 0;
+        fs->vtx1[i].n.n[1] = 0;
+        fs->vtx1[i].n.n[2] = 0;
+        fs->vtx1[i].n.a = 128;
+        fs->vtx2[i].n.flag = 0;
+        fs->vtx2[i].n.n[0] = 0;
+        fs->vtx2[i].n.n[1] = 0;
+        fs->vtx2[i].n.n[2] = 0;
+        fs->vtx2[i].n.a = 128;
     }
     shadow_gobj->user_data.p = fs;
 

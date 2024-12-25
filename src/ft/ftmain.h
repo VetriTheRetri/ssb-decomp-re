@@ -16,7 +16,7 @@ extern void ftMainPlayAnimNoEffect(GObj* fighter_gobj);
 extern void ftMainPlayAnimDefault(GObj* fighter_gobj);
 extern sb32 ftMainUpdateColAnim(GMColAnim* colanim, GObj* fighter_gobj, sb32 is_muted, sb32 is_playing_effect);
 extern void ftMainRunUpdateColAnim(GObj* fighter_gobj);
-extern void ftMainProcUpdate(GObj* fighter_gobj);
+extern void ftMainProcUpdateInterrupt(GObj* fighter_gobj);
 extern void ftMainClearGroundElementsAll();
 extern sb32 ftMainCheckAddGroundObstacle(GObj* ogobj, sb32 (*proc_update)(GObj*, GObj*, s32*));
 extern void ftMainClearGroundObstacle(GObj* ogobj);

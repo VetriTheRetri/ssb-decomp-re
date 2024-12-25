@@ -261,7 +261,7 @@ void itSawamuraAttackInitVars(GObj *item_gobj)
     {
         Gfx *dl = (Gfx*)itGetPData(ip, lITSawamuraDataStart, lITSawamuraDisplayList);
 
-        dobj->display_list = dl;
+        dobj->dl = dl;
 
         func_800269C0_275C0(nSYAudioVoiceMBallSawamuraKick);
     }

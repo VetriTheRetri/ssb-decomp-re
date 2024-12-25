@@ -70,7 +70,7 @@ void wpSamusBombExplodeInitVars(GObj *weapon_gobj)
 
     wp->attack_coll.size = WPSAMUSBOMB_EXPLODE_SIZE;
 
-    DObjGetStruct(weapon_gobj)->display_ptr = NULL;
+    DObjGetStruct(weapon_gobj)->dl = NULL;
 
     wp->proc_update = wpSamusBombExplodeProcUpdate;
     wp->proc_map = NULL;

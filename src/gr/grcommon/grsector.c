@@ -738,7 +738,7 @@ void grSectorArwingWeaponLaserExplodeInitVars(GObj *weapon_gobj)
 
     wp->attack_coll.size = 200.0F;
 
-    DObjGetStruct(weapon_gobj)->display_list = NULL;
+    DObjGetStruct(weapon_gobj)->dl = NULL;
 
     wpMainClearAttackRecord(wp);
 

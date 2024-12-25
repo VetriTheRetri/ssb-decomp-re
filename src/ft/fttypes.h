@@ -152,7 +152,7 @@ struct FTAccessPart
 
 struct FTModelPart
 {
-    void *display_list;
+    Gfx *dl;
     MObjSub **mobjsubs;
     AObjEvent32 **costume_matanim_joints;
     AObjEvent32 **main_matanim_joints;
@@ -718,18 +718,18 @@ struct FTSkeleton
 {
     union
     {
-        Gfx *display_list;
-        Gfx **dl_array;
+        Gfx *dl;        // Single array of display lists
+        Gfx **dls;      // Pointer to two arrays of display lists
     };
     u8 flags;
 };
 
 struct FTShadow
 {
-    Vtx shadow_vertex1[8];
-    Vtx shadow_vertex2[8];
+    Vtx vtx1[8];
+    Vtx vtx2[8];
     s32 player;
-    s32 unk_0x104;
+    s32 unused;
 };
 
 struct FTCostume

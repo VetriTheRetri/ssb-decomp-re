@@ -299,7 +299,7 @@ void itKamexAttackInitVars(GObj *item_gobj, sb32 is_ignore_setup)
         {
             Gfx *dl = (Gfx*)itGetPData(ip, lITKamexDataStart, lITKamexDisplayList);
 
-            dobj->display_list = dl;
+            dobj->dl = dl;
 
             ip->coll_data.map_coll.top = ITKAMEX_COLL_SIZE;
             ip->coll_data.map_coll.center = 0.0F;

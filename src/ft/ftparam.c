@@ -350,7 +350,7 @@ void ftParamStopVoiceRunProcDamage(GObj *fighter_gobj)
     }
 }
 
-// Update render priority? Runs when a fighter gets Screen KO'd
+// 0x800E827C
 void ftParamMoveDLLink(GObj *fighter_gobj, u8 dl_link)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
@@ -523,7 +523,7 @@ void ftParamRefreshAttackCollID(GObj *fighter_gobj, s32 attack_id)
 }
 
 // 0x800E86B4
-void ftParamSetCollDataVelPush(GObj *fighter_gobj, Vec3f *vel_push)
+void ftParamSetVelPush(GObj *fighter_gobj, Vec3f *vel_push)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -777,7 +777,7 @@ void ftParamSetModelPartID(GObj *fighter_gobj, s32 joint_id, s32 modelpart_id)
                 {
                     modelpart = &fp->attr->modelparts_container->modelparts_desc[joint_id - nFTPartsJointCommonStart]->modelparts[modelpart_id][fp->detail_curr - nFTPartsDetailStart];
 
-                    joint->display_list = modelpart->display_list;
+                    joint->dl = modelpart->dl;
 
                     lbCommonAddMObjForFighterPartsDObj(joint, modelpart->mobjsubs, modelpart->costume_matanim_joints, modelpart->main_matanim_joints, fp->costume);
 
@@ -791,7 +791,7 @@ void ftParamSetModelPartID(GObj *fighter_gobj, s32 joint_id, s32 modelpart_id)
                     }
                     else detail_id = 1;
 
-                    joint->display_list = commonparts_container->commonparts[detail_id].dobjdesc[joint_id - nFTPartsJointCommonStart].dl;
+                    joint->dl = commonparts_container->commonparts[detail_id].dobjdesc[joint_id - nFTPartsJointCommonStart].dl;
 
                     if (commonparts_container->commonparts[detail_id].p_mobjsubs != NULL)
                     {
@@ -810,7 +810,7 @@ void ftParamSetModelPartID(GObj *fighter_gobj, s32 joint_id, s32 modelpart_id)
                     parts->flags = commonparts_container->commonparts[detail_id].flags;
                 }
             }
-            else joint->display_list = NULL;
+            else joint->dl = NULL;
 
             fp->is_modelpart_modify = TRUE;
         }
@@ -860,7 +860,7 @@ void ftParamResetModelPartAll(GObj *fighter_gobj)
 
                 if (modelpart_status->modelpart_id_curr == -1)
                 {
-                    joint->display_list = NULL;
+                    joint->dl = NULL;
                 }
                 else
                 {
@@ -870,7 +870,7 @@ void ftParamResetModelPartAll(GObj *fighter_gobj)
                     {
                         modelpart = &attr->modelparts_container->modelparts_desc[i]->modelparts[modelpart_status->modelpart_id_curr][fp->detail_curr - nFTPartsDetailStart];
 
-                        joint->display_list = modelpart->display_list;
+                        joint->dl = modelpart->dl;
 
                         lbCommonAddMObjForFighterPartsDObj(joint, modelpart->mobjsubs, modelpart->costume_matanim_joints, modelpart->main_matanim_joints, fp->costume);
 
@@ -884,7 +884,7 @@ void ftParamResetModelPartAll(GObj *fighter_gobj)
                         }
                         else detail_id = 1;
 
-                        joint->display_list = commonparts_container->commonparts[detail_id].dobjdesc[i].dl;
+                        joint->dl = commonparts_container->commonparts[detail_id].dobjdesc[i].dl;
 
                         if (commonparts_container->commonparts[detail_id].p_mobjsubs != NULL)
                         {
@@ -931,7 +931,7 @@ void ftParamHideModelPartAll(GObj *fighter_gobj)
 
                 gcRemoveMObjAll(joint);
 
-                joint->display_list = NULL;
+                joint->dl = NULL;
             }
         }
     }

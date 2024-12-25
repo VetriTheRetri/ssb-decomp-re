@@ -799,7 +799,14 @@ void ifCommonPlayerDamageFuncDisplay(GObj *interface_gobj)
 
     player = ifGetPlayer(interface_gobj);
 
-    if ((sIFCommonPlayerDamageInterface[player].is_show_interface != FALSE) && ((gSCManagerBattleState->players[player].stock_count >= 0) || (sIFCommonPlayerDamageInterface[player].dead_stopupdate_wait != 0)))
+    if
+    (
+        (sIFCommonPlayerDamageInterface[player].is_show_interface != FALSE) &&
+        (
+            (gSCManagerBattleState->players[player].stock_count >= 0)       ||
+            (sIFCommonPlayerDamageInterface[player].dead_stopupdate_wait != 0)
+        )
+    )
     {
         color_id = sIFCommonPlayerDamageInterface[player].color_id;
         scale = sIFCommonPlayerDamageInterface[player].scale;
@@ -818,14 +825,14 @@ void ifCommonPlayerDamageFuncDisplay(GObj *interface_gobj)
             {
                 damage_scale = 0.0F;
             }
-            color_r = (s32)((dIFCommonPlayerDamageDigitColorsR[color_id] - 0x64) * damage_scale) + 0x64;
-            color_g = (s32)((dIFCommonPlayerDamageDigitColorsG[color_id] - 0x14) * damage_scale) + 0x14;
-            color_b = (s32)((dIFCommonPlayerDamageDigitColorsB[color_id] - 0x14) * damage_scale) + 0x14;
+            color_r = (s32) ((dIFCommonPlayerDamageDigitColorsR[color_id] - 0x64) * damage_scale) + 0x64;
+            color_g = (s32) ((dIFCommonPlayerDamageDigitColorsG[color_id] - 0x14) * damage_scale) + 0x14;
+            color_b = (s32) ((dIFCommonPlayerDamageDigitColorsB[color_id] - 0x14) * damage_scale) + 0x14;
         }
         sobj = sobj->next;
         ifchar = sobj->user_data.p;
 
-        sobj->sprite = *(Sprite*) ((uintptr_t)gGMCommonFiles[2] + (intptr_t)dIFCommonPlayerDamageDigitSpriteOffsets[ifchar->image_id]);
+        sobj->sprite = *lbRelocGetFileData(Sprite*, gGMCommonFiles[2], dIFCommonPlayerDamageDigitSpriteOffsets[ifchar->image_id]);
 
         sobj->pos.x = (ifchar->pos.x - (sobj->sprite.width * 0.5F * scale));
         sobj->pos.y = (ifchar->pos.y - (sobj->sprite.height * 0.5F * scale));
@@ -853,7 +860,7 @@ void ifCommonPlayerDamageFuncDisplay(GObj *interface_gobj)
             {
                 ifchar = sobj->user_data.p;
 
-                sobj->sprite = *(Sprite*) ((uintptr_t)gGMCommonFiles[2] + (intptr_t)dIFCommonPlayerDamageDigitSpriteOffsets[ifchar->image_id]);
+                sobj->sprite = *lbRelocGetFileData(Sprite*, gGMCommonFiles[2], dIFCommonPlayerDamageDigitSpriteOffsets[ifchar->image_id]);
 
                 pos_x = ifchar->pos.x - (sobj->sprite.width * 0.5F * scale);
                 pos_y = ifchar->pos.y - (sobj->sprite.height * 0.5F * scale);
@@ -930,8 +937,16 @@ void ifCommonPlayerDamageInitInterface(void)
             {
                 sobj = lbCommonMakeSObjForGObj(interface_gobj, ft_sprites->emblem);
 
-                sobj->pos.x = (s32)((gIFCommonPlayerInterface.player_pos_x[player] - (sobj->sprite.width  * dIFCommonPlayerDamageEmblemScales[player] * 0.5F)) + dIFCommonPlayerDamageEmblemOffsetsX[player]);
-                sobj->pos.y = (s32)((gIFCommonPlayerInterface.player_pos_y         - (sobj->sprite.height * dIFCommonPlayerDamageEmblemScales[player] * 0.5F)) + dIFCommonPlayerDamageEmblemOffsetsY[player]);
+                sobj->pos.x = (s32)
+                (
+                    (gIFCommonPlayerInterface.player_pos_x[player] -
+                    (sobj->sprite.width  * dIFCommonPlayerDamageEmblemScales[player] * 0.5F)) + dIFCommonPlayerDamageEmblemOffsetsX[player]
+                );
+                sobj->pos.y = (s32)
+                (
+                    (gIFCommonPlayerInterface.player_pos_y         -
+                    (sobj->sprite.height * dIFCommonPlayerDamageEmblemScales[player] * 0.5F)) + dIFCommonPlayerDamageEmblemOffsetsY[player]
+                );
 
                 sobj->sprite.scalex = sobj->sprite.scaley = dIFCommonPlayerDamageEmblemScales[player];
 
@@ -1022,9 +1037,13 @@ void ifCommonPlayerStockMultiFuncDisplay(GObj *interface_gobj)
         {
             if (TRUE)
             {
-                // Bruh... well, at least it doesn't sound too unreasonable to have this here... I guess?
-                // Insert missing debug code here, yadda yadda...
-                // ...why are you still reading this?
+                /*
+                 * ...well, at least it doesn't sound too unreasonable to have this here... I suppose?
+                 * ...
+                 * ...
+                 * ...are you still reading this? 
+                 * ...well then, on an unrelated note, please try to match some of those pesky nonmatchings!
+                 */
             }
             if (stock_count <= 6)
             {

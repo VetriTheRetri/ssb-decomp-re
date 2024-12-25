@@ -2024,11 +2024,11 @@ void lbCommonDrawDObjScaleX(DObj *dobj)
         f32 bak = gGCScaleX;
         s32 status = gcPrepDObjMatrix(&gSYTaskmanDLHeads[1], dobj);
         
-        if ((dobj->display_list != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
+        if ((dobj->dv != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
             gcDrawMObjForDObj(dobj, &gSYTaskmanDLHeads[1]);
             
-            gSPDisplayList(gSYTaskmanDLHeads[1]++, dobj->display_list);
+            gSPDisplayList(gSYTaskmanDLHeads[1]++, dobj->dl);
         }        
         if (dobj->child != NULL)
         {
@@ -2071,11 +2071,11 @@ void lbCommonDrawDObjDefault(DObj *dobj)
     {
         s32 status = gcPrepDObjMatrix(&gSYTaskmanDLHeads[0], dobj);
         
-        if ((dobj->display_list != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
+        if ((dobj->dv != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
             gcDrawMObjForDObj(dobj, &gSYTaskmanDLHeads[0]);
             
-            gSPDisplayList(gSYTaskmanDLHeads[0]++, dobj->display_list);
+            gSPDisplayList(gSYTaskmanDLHeads[0]++, dobj->dl);
         }        
         if (dobj->child != NULL)
         {

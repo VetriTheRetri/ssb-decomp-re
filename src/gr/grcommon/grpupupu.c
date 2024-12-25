@@ -193,7 +193,7 @@ void grPupupuWhispySetWindPush(void)
 
                     push.x = (lr_wind == 0) ? -push.x : push.x;
 
-                    ftParamSetCollDataVelPush(fighter_gobj, &push);
+                    ftParamSetVelPush(fighter_gobj, &push);
                 }
             }
         }

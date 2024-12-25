@@ -223,7 +223,7 @@ void itIwarkAttackInitVars(GObj *item_gobj)
 
     if (ip->kind == nITKindIwark)
     {
-        dobj->display_list = dl = (Gfx*)itGetPData(ip, lITIwarkDataStart, lITIwarkDisplayList);
+        dobj->dl = dl = (Gfx*) itGetPData(ip, lITIwarkDataStart, lITIwarkDisplayList);
 
         pos.y += ITIWARK_IWARK_ADD_POS_Y;
     }

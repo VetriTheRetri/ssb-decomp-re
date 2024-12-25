@@ -1417,7 +1417,7 @@ DObj* gcAddDObjForGObj(GObj *gobj, void *dvar)
 	new_dobj->parent = DOBJ_PARENT_NULL;
 	new_dobj->sib_next = NULL;
 	new_dobj->child = NULL;
-	new_dobj->display_ptr = dvar;
+	new_dobj->dv = dvar;
 
 	gcInitDObj(new_dobj);
 
@@ -1440,7 +1440,7 @@ DObj* gcAddSiblingForDObj(DObj *dobj, void *dvar)
 	new_dobj->parent = dobj->parent;
 
 	new_dobj->child = NULL;
-	new_dobj->display_ptr = dvar;
+	new_dobj->dv = dvar;
 
 	gcInitDObj(new_dobj);
 
@@ -1473,7 +1473,7 @@ DObj* gcAddChildForDObj(DObj *dobj, void *dvar)
 	new_dobj->parent = dobj;
 	new_dobj->child = NULL;
 	new_dobj->sib_next = NULL;
-	new_dobj->display_ptr = dvar;
+	new_dobj->dv = dvar;
 
 	gcInitDObj(new_dobj);
 

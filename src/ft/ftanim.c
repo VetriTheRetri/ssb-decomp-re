@@ -144,11 +144,11 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
                             track_aobjs[i] = gcAddAObjForDObj(root_dobj, i + nGCAnimTrackJointStart);
                         }
                         track_aobjs[i]->value_base = track_aobjs[i]->value_target;
-
                         track_aobjs[i]->value_target = ftAnimGetTargetFrac(AObjAnimAdvance(root_dobj->anim_joint.event16)->s, i + nGCAnimTrackJointStart, 0);
 
                         track_aobjs[i]->rate_base = track_aobjs[i]->rate_target;
                         track_aobjs[i]->rate_target = 0.0F;
+
                         track_aobjs[i]->kind = nGCAnimKindCubic;
 
                         if (payload != 0.0F)
@@ -182,7 +182,6 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
                             track_aobjs[i] = gcAddAObjForDObj(root_dobj, i + nGCAnimTrackJointStart);
                         }
                         track_aobjs[i]->value_base = track_aobjs[i]->value_target;
-
                         track_aobjs[i]->value_target = ftAnimGetTargetFrac(AObjAnimAdvance(root_dobj->anim_joint.event16)->s, i + nGCAnimTrackJointStart, 0);
 
                         track_aobjs[i]->kind = nGCAnimKindLinear;
@@ -219,11 +218,9 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
                             track_aobjs[i] = gcAddAObjForDObj(root_dobj, i + nGCAnimTrackJointStart);
                         }
                         track_aobjs[i]->value_base = track_aobjs[i]->value_target;
-
                         track_aobjs[i]->value_target = ftAnimGetTargetFrac(AObjAnimAdvance(root_dobj->anim_joint.event16)->s, i + nGCAnimTrackJointStart, 0);
 
                         track_aobjs[i]->rate_base = track_aobjs[i]->rate_target;
-
                         track_aobjs[i]->rate_target = ftAnimGetTargetFrac(AObjAnimAdvance(root_dobj->anim_joint.event16)->s, i + nGCAnimTrackJointStart, 1);
 
                         track_aobjs[i]->kind = nGCAnimKindCubic;
@@ -288,13 +285,11 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
                             track_aobjs[i] = gcAddAObjForDObj(root_dobj, i + nGCAnimTrackJointStart);
                         }
                         track_aobjs[i]->value_base = track_aobjs[i]->value_target;
-
                         track_aobjs[i]->value_target = ftAnimGetTargetFrac(AObjAnimAdvance(root_dobj->anim_joint.event16)->s, i + nGCAnimTrackJointStart, 0);
 
                         track_aobjs[i]->kind = nGCAnimKindStep;
 
                         track_aobjs[i]->length_invert = payload;
-
                         track_aobjs[i]->length = -root_dobj->anim_wait - root_dobj->anim_speed;
 
                         track_aobjs[i]->rate_target = 0.0F;

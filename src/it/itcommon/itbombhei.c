@@ -231,14 +231,14 @@ void itBombHeiCommonSetWalkLR(GObj *item_gobj, ub8 lr)
         ip->lr = +1;
         ip->physics.vel_air.x = ITBOMBHEI_WALK_VEL_X;
 
-        dobj->display_list = dlr;
+        dobj->dl = dlr;
     }
     else
     {
         ip->lr = -1;
         ip->physics.vel_air.x = -ITBOMBHEI_WALK_VEL_X;
 
-        dobj->display_list = dll;
+        dobj->dl = dll;
     }
 }
 
@@ -340,7 +340,7 @@ sb32 itBombHeiWaitProcUpdate(GObj *item_gobj)
         {
             ip->physics.vel_air.x = -ITBOMBHEI_WALK_VEL_X;
 
-            dobj->display_list = dll;
+            dobj->dl = dll;
 
             ip->lr = -1;
         }

@@ -101,7 +101,7 @@ void wpBossBulletExplodeInitVars(GObj *weapon_gobj)
 
     wp->attack_coll.size = WPYUBIBULLET_EXPLODE_SIZE;
 
-    DObjGetStruct(weapon_gobj)->display_ptr = NULL;
+    DObjGetStruct(weapon_gobj)->dl = NULL;
 
     wp->proc_update = wpBossBulletExplodeProcUpdate;
     wp->proc_map = NULL;

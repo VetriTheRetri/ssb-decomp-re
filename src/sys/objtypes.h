@@ -422,9 +422,9 @@ struct DObj                 // Draw Object
 
     union
     {
-        void *display_ptr;
-        Gfx *display_list;
-        Gfx **dl_array;
+        void *dv;           // Default void* display list variable
+        Gfx *dl;
+        Gfx **dls;
         DObjMultiList *multi_list;
         DObjDLLink *dl_link;
         DObjDistDL *dist_dl;

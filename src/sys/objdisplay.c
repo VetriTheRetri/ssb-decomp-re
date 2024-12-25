@@ -1512,13 +1512,13 @@ void gcDrawDObjForGObj(GObj *gobj, Gfx **dl_head)
 
     gGCScaleX = 1.0F;
 
-    if (dobj->display_list != NULL)
+    if (dobj->dv != NULL)
     {
         if (dobj->flags == DOBJ_FLAG_NONE)
         {
             num = gcPrepDObjMatrix(dl_head, dobj);
             gcDrawMObjForDObj(dobj, dl_head);
-            gSPDisplayList(dl_head[0]++, dobj->display_list);
+            gSPDisplayList(dl_head[0]++, dobj->dl);
 
             if (num != 0)
             {
@@ -1567,10 +1567,10 @@ void gcDrawDObjTree(DObj *this_dobj)
         bak = gGCScaleX;
         num = gcPrepDObjMatrix(gSYTaskmanDLHeads, this_dobj);
 
-        if ((this_dobj->display_list != NULL) && !(this_dobj->flags & DOBJ_FLAG_NOTEXTURE))
+        if ((this_dobj->dv != NULL) && !(this_dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
             gcDrawMObjForDObj(this_dobj, gSYTaskmanDLHeads);
-            gSPDisplayList(gSYTaskmanDLHeads[0]++, this_dobj->display_list);
+            gSPDisplayList(gSYTaskmanDLHeads[0]++, this_dobj->dl);
         }
         if (this_dobj->child != NULL)
         { 
@@ -1842,7 +1842,7 @@ void gcDrawDObjTreeMultiList(DObj *dobj)
     DObj *current_dobj;
     f32 bak;
 
-    dls = dobj->dl_array;
+    dls = dobj->dls;
 
     if (!(dobj->flags & DOBJ_FLAG_HIDDEN))
     {
@@ -1986,7 +1986,7 @@ void func_80014CD0(DObj *dobj)
     if (!(dobj->flags & DOBJ_FLAG_HIDDEN))
     {
         bak = gGCScaleX;
-        s0 = (DObjDLLink**)dobj->display_ptr;
+        s0 = (DObjDLLink**)dobj->dv;
         if (s0 != NULL)
         {
             dl_link = s0[sGCDetailLevel];
@@ -2167,7 +2167,7 @@ void gcDrawDObjTreeDLArray(DObj *dobj)
     f32 bak;
     DObj *current_dobj;
 
-    dls = dobj->dl_array;
+    dls = dobj->dls;
 
     if (!(dobj->flags & DOBJ_FLAG_HIDDEN))
     {
@@ -2320,7 +2320,7 @@ void gcDrawDObjTreeDLDoubleArray(DObj *dobj)
     Gfx **dls;
     Gfx ***p_dls;
 
-    p_dls = (Gfx***)dobj->display_ptr;
+    p_dls = (Gfx***)dobj->dv;
 
     if (!(dobj->flags & DOBJ_FLAG_HIDDEN)) 
     {
@@ -2444,7 +2444,7 @@ void func_80015C0C(DObj *dobj)
     if (!(dobj->flags & DOBJ_FLAG_HIDDEN))
     {
         bak = gGCScaleX;
-        p_multi_list = (DObjMultiList**)dobj->display_ptr;
+        p_multi_list = (DObjMultiList**)dobj->dv;
 
         if (p_multi_list != NULL) 
         {

@@ -31,7 +31,7 @@ extern void ftParamUpdateAnimKeys(GObj *fighter_gobj);
 extern void ftParamClearAttackCollAll(GObj *fighter_gobj);
 extern void ftParamClearAttackRecordID(FTStruct *fp, s32 attack_id);
 extern void ftParamRefreshAttackCollID(GObj *fighter_gobj, s32 attack_id);
-extern void ftParamSetCollDataVelPush(GObj *fighter_gobj, Vec3f *vel_push);
+extern void ftParamSetVelPush(GObj *fighter_gobj, Vec3f *vel_push);
 extern s32 ftParamGetJointID(FTStruct *fp, s32 joint_id);
 extern void ftParamLinkResetShieldModelParts(GObj *fighter_gobj);
 extern void ftParamSetHammerParams(GObj *fighter_gobj);

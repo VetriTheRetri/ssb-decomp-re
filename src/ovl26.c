@@ -3879,7 +3879,7 @@ void mnBattleSaveMatchInfo()
 
 		gSCManagerTransferBattleState.players[i].tag = (gSCManagerTransferBattleState.players[i].pkind == nFTPlayerKindMan) ? i : 4;
 
-		gSCManagerTransferBattleState.players[i].is_single_stockicon = (gSCManagerTransferBattleState.game_rules & 1) ? TRUE : FALSE;
+		gSCManagerTransferBattleState.players[i].is_single_stockicon = (gSCManagerTransferBattleState.game_rules & SCBATTLE_GAMERULE_TIME) ? TRUE : FALSE;
 
 		if (gSCManagerTransferBattleState.players[i].pkind == nFTPlayerKindCom)
 			gSCManagerTransferBattleState.players[i].level = gMnBattlePanels[i].cpu_level;

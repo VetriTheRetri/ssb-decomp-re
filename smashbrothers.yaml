@@ -42,7 +42,7 @@ options:
 
   extensions_path: tools/splat_ext
 
-  rodata_string_guesser_level: 2
+  rodata_string_guesser_level: 3
   data_string_guesser_level: 2
 
   # elf_section_list_path: build/smashbrothers.elf

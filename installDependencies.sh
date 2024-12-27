@@ -28,6 +28,7 @@ then
 	if [[ $(dpkg -l | grep -c python3-pip) == 0 ]] ; then missingAptPackages=$"${missingAptPackages}python3-pip " ; fi
 	if [[ $(dpkg -l | grep -c ripgrep) == 0 ]] ; then missingAptPackages=$"${missingAptPackages}ripgrep " ; fi
 	if [[ $(dpkg -l | grep -c clang-format) == 0 ]] ; then missingAptPackages=$"${missingAptPackages}clang-format " ; fi
+	if [[ $(dpkg -l | grep -P "\scurl\s" -c) == 0 ]] ; then missingAptPackages=$"${missingAptPackages}curl " ; fi
 
 	if [ ! -z "$missingAptPackages" ]
 	then

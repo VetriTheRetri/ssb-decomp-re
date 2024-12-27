@@ -315,7 +315,7 @@ segments:
       - { start: auto, type: .bss, name: sys/main,                 vram: 0x8003FAD0 }
       - { start: auto, type: .bss, name: sys/thread3,              vram: 0x80044EC0 }
       - { start: auto, type: .bss, name: sys/dma,                  vram: 0x80045040 }
-      - { start: auto, type: .bss, name: sys/controller,              vram: 0x800450F0 }
+      - { start: auto, type: .bss, name: sys/controller,           vram: 0x800450F0 }
       - { start: auto, type: .bss, name: sys/maindevice,           vram: 0x80045470 }
       - { start: auto, type: .bss, name: sys/taskman,              vram: 0x80045480 }
       - { start: auto, type: .bss, name: sys/video,                vram: 0x80046670 }

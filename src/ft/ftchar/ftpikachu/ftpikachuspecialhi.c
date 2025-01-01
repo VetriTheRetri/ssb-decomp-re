@@ -467,7 +467,7 @@ void ftPikachuSpecialAirHiEndProcPhysics(GObj *fighter_gobj)
 
         attr = fp->attr;
 
-        ftPhysicsClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attr->aerial_acceleration * FTPIKACHU_QUICKATTACK_AIR_ACCEL_MUL, attr->aerial_speed_max_x * FTPIKACHU_QUICKATTACK_AIR_SPEED_MUL);
+        ftPhysicsClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attr->air_accel * FTPIKACHU_QUICKATTACK_AIR_ACCEL_MUL, attr->air_speed_max_x * FTPIKACHU_QUICKATTACK_AIR_SPEED_MUL);
        
         ftPhysicsApplyAirVelXFriction(fp, fp->attr);
     }

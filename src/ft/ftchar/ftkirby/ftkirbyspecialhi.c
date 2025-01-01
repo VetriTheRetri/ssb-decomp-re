@@ -128,7 +128,7 @@ void ftKirbySpecialHiProcPhysics(GObj *fighter_gobj)
 
     if (ftPhysicsCheckClampAirVelXDecMax(fp, attr) == FALSE)
     {
-        ftPhysicsClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attr->aerial_acceleration * FTKIRBY_FINALCUTTER_AIR_ACCEL_MUL, attr->aerial_speed_max_x);
+        ftPhysicsClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attr->air_accel * FTKIRBY_FINALCUTTER_AIR_ACCEL_MUL, attr->air_speed_max_x);
         ftPhysicsApplyAirVelXFriction(fp, attr);
     }
 }
@@ -152,7 +152,7 @@ void ftKirbySpecialHiLandingProcPhysics(GObj *fighter_gobj)
 
         if (ftPhysicsCheckClampAirVelXDecMax(fp, attr) == FALSE)
         {
-            ftPhysicsClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attr->aerial_acceleration * FTKIRBY_FINALCUTTER_AIR_ACCEL_MUL, attr->aerial_speed_max_x);
+            ftPhysicsClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attr->air_accel * FTKIRBY_FINALCUTTER_AIR_ACCEL_MUL, attr->air_speed_max_x);
             ftPhysicsApplyAirVelXFriction(fp, attr);
         }
     }
@@ -175,7 +175,7 @@ void ftKirbySpecialAirHiProcPhysics(GObj *fighter_gobj)
 
     if (ftPhysicsCheckClampAirVelXDecMax(fp, attr) == FALSE)
     {
-        ftPhysicsClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attr->aerial_acceleration * FTKIRBY_FINALCUTTER_AIR_ACCEL_MUL, attr->aerial_speed_max_x);
+        ftPhysicsClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attr->air_accel * FTKIRBY_FINALCUTTER_AIR_ACCEL_MUL, attr->air_speed_max_x);
         ftPhysicsApplyAirVelXFriction(fp, attr);
     }
 }
@@ -190,7 +190,7 @@ void ftKirbySpecialAirHiFallProcPhysics(GObj *fighter_gobj)
 
     if (ftPhysicsCheckClampAirVelXDecMax(fp, attr) == FALSE)
     {
-        ftPhysicsClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attr->aerial_acceleration * FTKIRBY_FINALCUTTER_AIR_ACCEL_MUL, attr->aerial_speed_max_x);
+        ftPhysicsClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attr->air_accel * FTKIRBY_FINALCUTTER_AIR_ACCEL_MUL, attr->air_speed_max_x);
         ftPhysicsApplyAirVelXFriction(fp, attr);
     }
 }

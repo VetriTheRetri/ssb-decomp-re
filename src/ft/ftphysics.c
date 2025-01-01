@@ -267,7 +267,7 @@ void ftPhysicsClampAirVelX(FTStruct *fp, f32 clamp)
 // 0x800D8EB8
 void ftPhysicsClampAirVelXMax(FTStruct *fp)
 {
-    ftPhysicsClampAirVelX(fp, fp->attr->aerial_speed_max_x);
+    ftPhysicsClampAirVelX(fp, fp->attr->air_speed_max_x);
 }
 
 // 0x800D8EDC
@@ -293,7 +293,7 @@ sb32 ftPhysicsCheckClampAirVelXDec(FTStruct *fp, f32 clamp)
 // 0x800D8FA8
 sb32 ftPhysicsCheckClampAirVelXDecMax(FTStruct *fp, FTAttributes *attr)
 {
-    return ftPhysicsCheckClampAirVelXDec(fp, attr->aerial_speed_max_x);
+    return ftPhysicsCheckClampAirVelXDec(fp, attr->air_speed_max_x);
 }
 
 // 0x800D8FC8
@@ -317,7 +317,7 @@ void ftPhysicsClampAirVelXStickRange(FTStruct *fp, s32 stick_range_min, f32 vel,
 // 0x800D9044
 void ftPhysicsClampAirVelXStickDefault(FTStruct *fp, FTAttributes *attr)
 {
-    ftPhysicsClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attr->aerial_acceleration, attr->aerial_speed_max_x);
+    ftPhysicsClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attr->air_accel, attr->air_speed_max_x);
 }
 
 // 0x800D9074
@@ -325,7 +325,7 @@ void ftPhysicsApplyAirVelXFriction(FTStruct *fp, FTAttributes *attr)
 {
     if (fp->physics.vel_air.x < 0.0F)
     {
-        fp->physics.vel_air.x += attr->aerial_friction;
+        fp->physics.vel_air.x += attr->air_friction;
 
         if (fp->physics.vel_air.x >= 0.0F)
         {
@@ -334,7 +334,7 @@ void ftPhysicsApplyAirVelXFriction(FTStruct *fp, FTAttributes *attr)
     }
     else
     {
-        fp->physics.vel_air.x -= attr->aerial_friction;
+        fp->physics.vel_air.x -= attr->air_friction;
 
         if (fp->physics.vel_air.x <= 0.0F)
         {

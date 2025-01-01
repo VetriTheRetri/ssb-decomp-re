@@ -517,12 +517,12 @@ typedef struct ftCommonReboundStatusVars
 
 } ftCommonReboundStatusVars;
 
-typedef struct ftCommonCliffWaITStatusVars
+typedef struct ftCommonCliffWaitStatusVars
 {
-	s32 status_id;
+	sb32 is_allow_interrupt;
 	s32 fall_wait;
 
-} ftCommonCliffWaITStatusVars;
+} ftCommonCliffWaitStatusVars;
 
 typedef struct ftCommonCliffMotionStatusVars
 {
@@ -751,7 +751,7 @@ typedef union FTCommonStatusVars
 	ftCommonDownWaITStatusVars downwait;
 	ftCommonDownBounceStatusVars downbounce;
 	ftCommonReboundStatusVars rebound;
-	ftCommonCliffWaITStatusVars cliffwait;
+	ftCommonCliffWaitStatusVars cliffwait;
 	ftCommonCliffMotionStatusVars cliffmotion;
 	ftCommonLiftStatusVars lift;
 	ftCommonItemThrowStatusVars itemthrow;

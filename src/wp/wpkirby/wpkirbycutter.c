@@ -154,7 +154,7 @@ GObj* wpKirbyCutterMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 
     wp->physics.vel_air.x = wp->lr * WPFINALCUTTER_VEL;
 
-    if (mpCollisionGetUDCommonUp(fp->coll_data.ground_line_id, pos, NULL, NULL, &wp->coll_data.ground_angle) != FALSE)
+    if (mpCollisionGetUDCommonUpper(fp->coll_data.ground_line_id, pos, NULL, NULL, &wp->coll_data.ground_angle) != FALSE)
     {
         wp->coll_data.ground_line_id = fp->coll_data.ground_line_id;
 

@@ -246,7 +246,7 @@ extern LBParticle* efManagerFlameStaticMakeEffect(Vec3f *pos);
 extern LBParticle* efManagerDustCollideMakeEffect(Vec3f *pos);
 extern GObj* efManagerShockSmallMakeEffect(Vec3f *pos);
 extern void efManagerDustLightProcUpdate(GObj *effect_gobj);
-extern LBParticle* efManagerDustLightMakeEffect(Vec3f *pos, sb32 is_invert_vel, f32 f_index);
+extern LBParticle* efManagerDustLightMakeEffect(Vec3f *pos, s32 lr, f32 f_index);
 extern LBParticle* efManagerDustHeavyMakeEffect(Vec3f *pos, s32 lr);
 extern void efManagerDustHeavyDoubleProcUpdate(GObj *effect_gobj);
 extern LBParticle* efManagerDustHeavyDoubleMakeEffect(Vec3f *pos, s32 lr, f32 f_index);

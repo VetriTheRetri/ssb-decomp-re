@@ -492,7 +492,7 @@ void itRShellSpinCheckCollisionEdge(GObj *item_gobj)
     {
         if (ip->lr == -1)
         {
-            mpCollisionGetLREdgeLeft(ip->coll_data.ground_line_id, &pos);
+            mpCollisionGetLREdgeUpperL(ip->coll_data.ground_line_id, &pos);
 
             if (pos.x >= (joint->translate.vec.f.x - attr->map_coll_width))
             {
@@ -501,7 +501,7 @@ void itRShellSpinCheckCollisionEdge(GObj *item_gobj)
         }
         else
         {
-            mpCollisionGetLREdgeRight(ip->coll_data.ground_line_id, &pos);
+            mpCollisionGetLREdgeUpperR(ip->coll_data.ground_line_id, &pos);
 
             if (pos.x <= (joint->translate.vec.f.x + attr->map_coll_width))
             {

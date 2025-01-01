@@ -221,7 +221,7 @@ f32 gMPCollisionLightAngleX;
 f32 gMPCollisionLightAngleY;
 
 // 0x80131398
-u16 gMPCollisionUpdateFrame;
+u16 gMPCollisionUpdateTic;
 
 // 0x8013139C
 u32 gMPCollisionBGMCurrent;
@@ -365,13 +365,13 @@ sb32 mpCollisionGetUDCommon(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flag
 }
 
 // 0x800F3DD8
-sb32 mpCollisionGetUDCommonUp(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flags, Vec3f *angle)
+sb32 mpCollisionGetUDCommonUpper(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flags, Vec3f *angle)
 {
     return mpCollisionGetUDCommon(line_id, object_pos, dist, flags, angle, +1);
 }
 
 // 0x800F3E04
-sb32 mpCollisionGetUDCommonDown(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flags, Vec3f *angle)
+sb32 mpCollisionGetUDCommonUnder(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flags, Vec3f *angle)
 {
     return mpCollisionGetUDCommon(line_id, object_pos, dist, flags, angle, -1);
 }
@@ -563,26 +563,26 @@ void mpCollisionGetLREdge(s32 line_id, Vec3f *object_pos, s32 lr)
     }
 }
 
-// 0x800F4408
-void mpCollisionGetLREdgeRight(s32 line_id, Vec3f *object_pos)
+// 0x800F4408 - Get right edge of ground line ID
+void mpCollisionGetLREdgeUpperR(s32 line_id, Vec3f *object_pos)
 {
     mpCollisionGetLREdge(line_id, object_pos, +1);
 }
 
-// 0x800F4428
-void mpCollisionGetLREdgeLeft(s32 line_id, Vec3f *object_pos)
+// 0x800F4428 - Get left edge of ground line ID
+void mpCollisionGetLREdgeUpperL(s32 line_id, Vec3f *object_pos)
 {
     mpCollisionGetLREdge(line_id, object_pos, -1);
 }
 
-// 0x800F4448
-void func_ovl2_800F4448(s32 line_id, Vec3f *object_pos)
+// 0x800F4448 - Get left edge of ceiling line ID (!?)
+void mpCollisionGetLREdgeUnderR(s32 line_id, Vec3f *object_pos)
 {
     mpCollisionGetLREdge(line_id, object_pos, +1);
 }
 
-// 0x800F4468
-void func_ovl2_800F4468(s32 line_id, Vec3f *object_pos)
+// 0x800F4468 - Get right edge of ceiling line ID (!?)
+void mpCollisionGetLREdgeUnderL(s32 line_id, Vec3f *object_pos)
 {
     mpCollisionGetLREdge(line_id, object_pos, -1);
 }
@@ -650,26 +650,26 @@ void mpCollisionGetUDEdge(s32 line_id, Vec3f *object_pos, s32 ud)
     }
 }
 
-// 0x800F4650
-void mpCollisionGetUDEdgeUp(s32 line_id, Vec3f *object_pos)
+// 0x800F4650 - Thunder Jolt: on ground, traveling left -> snap to left wall underneath (line ID)
+void mpCollisionGetUDEdgeUnderL(s32 line_id, Vec3f *object_pos)
 {
     mpCollisionGetUDEdge(line_id, object_pos, +1);
 }
 
-// 0x800F4670
-void mpCollisionGetUDEdgeDown(s32 line_id, Vec3f *object_pos)
+// 0x800F4670 - Thunder Jolt: on ground, traveling right -> snap to left wall above (line ID)
+void mpCollisionGetUDEdgeUpperL(s32 line_id, Vec3f *object_pos)
 {
     mpCollisionGetUDEdge(line_id, object_pos, -1);
 }
 
-// 0x800F4690
-void func_ovl2_800F4690(s32 line_id, Vec3f *object_pos)
+// 0x800F4690 - Thunder Jolt: on ground, traveling right -> snap to right wall underneath (line ID)
+void mpCollisionGetUDEdgeUnderR(s32 line_id, Vec3f *object_pos)
 {
     mpCollisionGetUDEdge(line_id, object_pos, +1);
 }
 
-// 0x800F46B0
-void func_ovl2_800F46B0(s32 line_id, Vec3f *object_pos)
+// 0x800F46B0 - Thunder Jolt: on ground, traveling left -> snap to right wall above (line ID)
+void mpCollisionGetUDEdgeUpperR(s32 line_id, Vec3f *object_pos)
 {
     mpCollisionGetUDEdge(line_id, object_pos, -1);
 }
@@ -3201,7 +3201,6 @@ void mpCollisionGetSpeedLineID(s32 line_id, Vec3f *speed)
         }
     }
     yakumono_id = gMPCollisionVertexInfo->vertex_info[line_id].yakumono_id;
-
     yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[yakumono_id];
 
     if (yakumono_dobj->user_data.s >= nMPYakumonoStatusOff)
@@ -3220,7 +3219,6 @@ s32 mpCollisionGetLineTypeID(s32 line_id)
 {
     DObj *yakumono_dobj;
     MPVertexInfo *vertex_info;
-    u8 yakumono_id;
 
     if ((line_id == -1) || (line_id == -2))
     {
@@ -3244,7 +3242,7 @@ s32 mpCollisionGetLineTypeID(s32 line_id)
     return vertex_info->line_type;
 }
 
-// 0x800FA964
+// 0x800FA964 - Get line ID to the lower-right
 s32 mpCollisionGetEdgeUnderRLineID(s32 line_id)
 {
     DObj *yakumono_dobj;
@@ -3269,10 +3267,10 @@ s32 mpCollisionGetEdgeUnderRLineID(s32 line_id)
             scManagerRunPrintGObjStatus();
         }
     }
-    return vertex_info->edge_psign_id;
+    return vertex_info->edge_next_line_id;
 }
 
-// 0x800FAA24
+// 0x800FAA24 - Get line ID to the lower-left
 s32 mpCollisionGetEdgeUnderLLineID(s32 line_id)
 {
     DObj *yakumono_dobj;
@@ -3297,10 +3295,10 @@ s32 mpCollisionGetEdgeUnderLLineID(s32 line_id)
             scManagerRunPrintGObjStatus();
         }
     }
-    return vertex_info->edge_nsign_id;
+    return vertex_info->edge_prev_line_id;
 }
 
-// 0x800FAAE4
+// 0x800FAAE4 - Get line ID to the upper-right
 s32 mpCollisionGetEdgeUpperRLineID(s32 line_id)
 {
     DObj *yakumono_dobj;
@@ -3325,10 +3323,10 @@ s32 mpCollisionGetEdgeUpperRLineID(s32 line_id)
             scManagerRunPrintGObjStatus();
         }
     }
-    return vertex_info->edge_psign_id;
+    return vertex_info->edge_next_line_id;
 }
 
-// 0x800FABA4
+// 0x800FABA4 - Get line ID to the upper-left
 s32 mpCollisionGetEdgeUpperLLineID(s32 line_id)
 {
     DObj *yakumono_dobj;
@@ -3353,10 +3351,10 @@ s32 mpCollisionGetEdgeUpperLLineID(s32 line_id)
             scManagerRunPrintGObjStatus();
         }
     }
-    return vertex_info->edge_nsign_id;
+    return vertex_info->edge_prev_line_id;
 }
 
-// 0x800FAC64
+// 0x800FAC64 - Get line ID to the upper-right of a left wall
 s32 mpCollisionGetEdgeRightULineID(s32 line_id)
 {
     DObj *yakumono_dobj;
@@ -3381,10 +3379,10 @@ s32 mpCollisionGetEdgeRightULineID(s32 line_id)
             scManagerRunPrintGObjStatus();
         }
     }
-    return vertex_info->edge_psign_id;
+    return vertex_info->edge_next_line_id;
 }
 
-// 0x800FAD24
+// 0x800FAD24 - Get line ID to the lower-right of a left wall
 s32 mpCollisionGetEdgeRightDLineID(s32 line_id)
 {
     DObj *yakumono_dobj;
@@ -3409,10 +3407,10 @@ s32 mpCollisionGetEdgeRightDLineID(s32 line_id)
             scManagerRunPrintGObjStatus();
         }
     }
-    return vertex_info->edge_nsign_id;
+    return vertex_info->edge_prev_line_id;
 }
 
-// 0x800FADE4
+// 0x800FADE4 - Get line ID to the upper-left of a right wall
 s32 mpCollisionGetEdgeLeftULineID(s32 line_id)
 {
     DObj *yakumono_dobj;
@@ -3437,10 +3435,10 @@ s32 mpCollisionGetEdgeLeftULineID(s32 line_id)
             scManagerRunPrintGObjStatus();
         }
     }
-    return vertex_info->edge_psign_id;
+    return vertex_info->edge_next_line_id;
 }
 
-// 0x800FAEA4
+// 0x800FAEA4 - Get line ID to the lower-left of a right wall
 s32 mpCollisionGetEdgeLeftDLineID(s32 line_id)
 {
     DObj *yakumono_dobj;
@@ -3465,7 +3463,7 @@ s32 mpCollisionGetEdgeLeftDLineID(s32 line_id)
             scManagerRunPrintGObjStatus();
         }
     }
-    return vertex_info->edge_nsign_id;
+    return vertex_info->edge_prev_line_id;
 }
 
 // 0x800FAF64
@@ -3639,13 +3637,13 @@ void func_ovl2_800FB31C(void)
         }
         if (unk_bool != FALSE)
         {
-            gMPCollisionVertexInfo->vertex_info[i].edge_psign_id = line_prev;
-            gMPCollisionVertexInfo->vertex_info[i].edge_nsign_id = line_next;
+            gMPCollisionVertexInfo->vertex_info[i].edge_next_line_id = line_prev;
+            gMPCollisionVertexInfo->vertex_info[i].edge_prev_line_id = line_next;
         }
         else
         {
-            gMPCollisionVertexInfo->vertex_info[i].edge_psign_id = line_next;
-            gMPCollisionVertexInfo->vertex_info[i].edge_nsign_id = line_prev;
+            gMPCollisionVertexInfo->vertex_info[i].edge_next_line_id = line_next;
+            gMPCollisionVertexInfo->vertex_info[i].edge_prev_line_id = line_prev;
         }
         continue;
     }
@@ -3844,13 +3842,13 @@ void func_ovl2_800FBAD0(GObj *ground_gobj)
     func_ovl2_800FB808();
     func_ovl2_800FBA84();
 
-    gMPCollisionUpdateFrame++;
+    gMPCollisionUpdateTic++;
 }
 
 // 0x800FBCF8
 void mpCollisionAdvanceUpdateFrame(GObj *ground_gobj)
 {
-    gMPCollisionUpdateFrame++;
+    gMPCollisionUpdateTic++;
 }
 
 // 0x800FBD14
@@ -4032,7 +4030,7 @@ void mpCollisionInitLineIDsAll(void)
 // 0x800FC284
 void mpCollisionInitGroundData(void)
 {
-    MPGeometryData *geometry_info;
+    MPGeometryData *gdata;
 
     gMPCollisionGroundData = lbRelocGetFileData
     (
@@ -4050,9 +4048,9 @@ void mpCollisionInitGroundData(void)
     );
 
     gMPCollisionGeometry = gMPCollisionGroundData->map_geometry;
-    geometry_info = gMPCollisionGeometry;
+    gdata = gMPCollisionGeometry;
 
-    if (geometry_info == NULL)
+    if (gdata == NULL)
     {
         while (TRUE)
         {
@@ -4060,10 +4058,10 @@ void mpCollisionInitGroundData(void)
             scManagerRunPrintGObjStatus();
         }
     }
-    gMPCollisionVertexData  = geometry_info->vertex_data;
-    gMPCollisionVertexIDs   = geometry_info->vertex_id;
-    gMPCollisionVertexLinks = geometry_info->vertex_links;
-    gMPCollisionMapObjs     = geometry_info->mapobjs;
+    gMPCollisionVertexData  = gdata->vertex_data;
+    gMPCollisionVertexIDs   = gdata->vertex_id;
+    gMPCollisionVertexLinks = gdata->vertex_links;
+    gMPCollisionMapObjs     = gdata->mapobjs;
 
     gMPCollisionLinesNum = mpCollisionAllocLinesGetCountTotal();
 
@@ -4107,7 +4105,7 @@ void mpCollisionClearYakumonoAll(void)
     {
         gMPCollisionYakumonoDObjs->yakumono_dobj[i]->user_data.s = nMPYakumonoStatusNone;
     }
-    gMPCollisionUpdateFrame = 0;
+    gMPCollisionUpdateTic = 0;
 }
 
 // 0x800FC4A8

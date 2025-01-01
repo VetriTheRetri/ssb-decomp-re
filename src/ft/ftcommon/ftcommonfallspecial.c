@@ -32,7 +32,7 @@ void ftCommonFallSpecialProcPhysics(GObj *fighter_gobj)
 
     if (ftPhysicsCheckClampAirVelXDec(fp, fp->status_vars.common.fallspecial.drift) == FALSE)
     {
-        ftPhysicsClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attr->aerial_acceleration, fp->status_vars.common.fallspecial.drift);
+        ftPhysicsClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attr->air_accel, fp->status_vars.common.fallspecial.drift);
         ftPhysicsApplyAirVelXFriction(fp, attr);
     }
 }
@@ -76,7 +76,7 @@ void ftCommonFallSpecialSetStatus(GObj *fighter_gobj, f32 drift, sb32 unknown, s
 
     ftMainSetStatus(fighter_gobj, nFTCommonStatusFallSpecial, 0.0F, 1.0F, FTSTATUS_PRESERVE_FASTFALL);
 
-    fp->status_vars.common.fallspecial.drift = (attr->aerial_speed_max_x * drift);
+    fp->status_vars.common.fallspecial.drift = (attr->air_speed_max_x * drift);
 
     ftPhysicsClampAirVelX(fp, fp->status_vars.common.fallspecial.drift);
 

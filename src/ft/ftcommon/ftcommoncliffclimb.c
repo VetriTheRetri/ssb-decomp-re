@@ -89,7 +89,7 @@ sb32 ftCommonCliffClimbOrFallCheckInterruptCommon(GObj *fighter_gobj)
 
         if ((angle > F_CST_DTOR32(50.0F)) || ((angle > F_CST_DTOR32(-50.0F)) && ((fp->input.pl.stick_range.x * fp->lr) >= 0)))
         {
-            if (fp->status_vars.common.cliffmotion.status_id != 0)
+            if (fp->status_vars.common.cliffwait.is_allow_interrupt != FALSE)
             {
                 ftCommonCliffQuickOrSlowSetStatus(fighter_gobj, 0);
 
@@ -97,7 +97,7 @@ sb32 ftCommonCliffClimbOrFallCheckInterruptCommon(GObj *fighter_gobj)
             }
             else return FALSE;
         }
-        else if (fp->status_vars.common.cliffmotion.status_id != 0)
+        else if (fp->status_vars.common.cliffwait.is_allow_interrupt != FALSE)
         {
             fp->cliffcatch_wait = FTCOMMON_CLIFF_CATCH_WAIT;
 
@@ -108,7 +108,7 @@ sb32 ftCommonCliffClimbOrFallCheckInterruptCommon(GObj *fighter_gobj)
         }
         else return FALSE;
     }
-    else fp->status_vars.common.cliffmotion.status_id = 1;
+    else fp->status_vars.common.cliffwait.is_allow_interrupt = TRUE;
 
     return FALSE;
 }
@@ -183,7 +183,7 @@ void ftCommonCliffCommon2ProcPhysics(GObj *fighter_gobj)
 
         pos.x += vel.x;
 
-        if (mpCollisionGetUDCommonUp(fp->status_vars.common.cliffmotion.cliff_id, &pos, &y, NULL, NULL) != FALSE)
+        if (mpCollisionGetUDCommonUpper(fp->status_vars.common.cliffmotion.cliff_id, &pos, &y, NULL, NULL) != FALSE)
         {
             pos.y += y;
 
@@ -240,19 +240,19 @@ void ftCommonCliffCommon2UpdateCollData(GObj *fighter_gobj)
     }
     if (fp->lr == +1)
     {
-        mpCollisionGetLREdgeLeft(coll_data->cliff_id, translate);
+        mpCollisionGetLREdgeUpperL(coll_data->cliff_id, translate);
 
         translate->x += 5.0F;
     }
     else
     {
-        mpCollisionGetLREdgeRight(coll_data->cliff_id, translate);
+        mpCollisionGetLREdgeUpperR(coll_data->cliff_id, translate);
 
         translate->x -= 5.0F;
     }
     coll_data->ground_line_id = coll_data->cliff_id;
 
-    mpCollisionGetUDCommonUp(coll_data->ground_line_id, translate, &coll_data->ground_dist, &coll_data->ground_flags, &coll_data->ground_angle);
+    mpCollisionGetUDCommonUpper(coll_data->ground_line_id, translate, &coll_data->ground_dist, &coll_data->ground_flags, &coll_data->ground_angle);
 
     translate->y += coll_data->ground_dist;
 

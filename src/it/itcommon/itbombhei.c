@@ -470,7 +470,7 @@ sb32 itBombHeiWalkProcUpdate(GObj *item_gobj)
     {
         if (ip->lr == -1)
         {
-            mpCollisionGetLREdgeLeft(ip->coll_data.ground_line_id, &pos);
+            mpCollisionGetLREdgeUpperL(ip->coll_data.ground_line_id, &pos);
 
             if (pos.x >= (dobj->translate.vec.f.x - attr->map_coll_width))
             {
@@ -479,7 +479,7 @@ sb32 itBombHeiWalkProcUpdate(GObj *item_gobj)
         }
         else
         {
-            mpCollisionGetLREdgeRight(ip->coll_data.ground_line_id, &pos);
+            mpCollisionGetLREdgeUpperR(ip->coll_data.ground_line_id, &pos);
 
             if (pos.x <= (dobj->translate.vec.f.x + attr->map_coll_width))
             {
@@ -543,7 +543,7 @@ void itBombHeiWalkInitVars(GObj *item_gobj)
     {
         if (ip->lr == -1)
         {
-            mpCollisionGetLREdgeLeft(ip->coll_data.ground_line_id, &pos);
+            mpCollisionGetLREdgeUpperL(ip->coll_data.ground_line_id, &pos);
 
             if (pos.x >= (dobj->translate.vec.f.x - attr->map_coll_width))
             {
@@ -552,7 +552,7 @@ void itBombHeiWalkInitVars(GObj *item_gobj)
         }
         else
         {
-            mpCollisionGetLREdgeRight(ip->coll_data.ground_line_id, &pos);
+            mpCollisionGetLREdgeUpperR(ip->coll_data.ground_line_id, &pos);
 
             if (pos.x <= (dobj->translate.vec.f.x + attr->map_coll_width))
             {

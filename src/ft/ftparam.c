@@ -1875,7 +1875,7 @@ void* ftParamMakeEffect(GObj *fighter_gobj, s32 effect_id, s32 joint_id, Vec3f *
         }
         if (is_scale_pos != FALSE)
         {
-            scale = 1.0F / fp->attr->size_mul;
+            scale = 1.0F / fp->attr->size;
 
             pos.x *= scale;
             pos.y *= scale;

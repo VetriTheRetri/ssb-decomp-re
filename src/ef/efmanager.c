@@ -2849,7 +2849,7 @@ void efManagerDustLightProcUpdate(GObj *effect_gobj)
 }
 
 // 0x800FF048
-LBParticle* efManagerDustLightMakeEffect(Vec3f *pos, sb32 is_invert_vel, f32 f_index)
+LBParticle* efManagerDustLightMakeEffect(Vec3f *pos, s32 lr, f32 f_index)
 {
     GObj *effect_gobj;
     LBParticle *ptc;
@@ -2906,7 +2906,7 @@ LBParticle* efManagerDustLightMakeEffect(Vec3f *pos, sb32 is_invert_vel, f32 f_i
 
             ep->effect_vars.dust_light.vel1.x = __cosf(angle) * EFPART_DUSTNORMAL_VEL_BASE;
 
-            if (is_invert_vel == TRUE)
+            if (lr == +1)
             {
                 ep->effect_vars.dust_light.vel1.x = -ep->effect_vars.dust_light.vel1.x;
             }

@@ -35,7 +35,7 @@ sb32 mpCommonCheckSetFighterCliffEdge(GObj *fighter_gobj, s32 ground_line_id)
     }
     else
     {
-        mpCollisionGetLREdgeLeft(ground_line_id, &edge_pos);
+        mpCollisionGetLREdgeUpperL(ground_line_id, &edge_pos);
 
         if (translate->x <= edge_pos.x)
         {
@@ -43,7 +43,7 @@ sb32 mpCommonCheckSetFighterCliffEdge(GObj *fighter_gobj, s32 ground_line_id)
             {
                 edge_pos.x += 40.0F;
 
-                mpCollisionGetUDCommonUp(ground_line_id, &edge_pos, &ground_dist, &flags, &angle);
+                mpCollisionGetUDCommonUpper(ground_line_id, &edge_pos, &ground_dist, &flags, &angle);
 
                 edge_pos.y += ground_dist;
                 sp4C.x = map_coll->width + edge_pos.x;
@@ -59,11 +59,11 @@ sb32 mpCommonCheckSetFighterCliffEdge(GObj *fighter_gobj, s32 ground_line_id)
         }
         else if ((fp->lr == +1) && (fp->input.pl.stick_range.x < 60))
         {
-            mpCollisionGetLREdgeRight(ground_line_id, &edge_pos);
+            mpCollisionGetLREdgeUpperR(ground_line_id, &edge_pos);
 
             edge_pos.x -= 40.0F;
 
-            mpCollisionGetUDCommonUp(ground_line_id, &edge_pos, &ground_dist, &flags, &angle);
+            mpCollisionGetUDCommonUpper(ground_line_id, &edge_pos, &ground_dist, &flags, &angle);
 
             edge_pos.y += ground_dist;
             sp4C.x = edge_pos.x - map_coll->width;
@@ -111,11 +111,11 @@ sb32 mpCommonCheckSetFighterEdge(GObj *fighter_gobj, s32 ground_line_id)
     }
     else
     {
-        mpCollisionGetLREdgeLeft(ground_line_id, &edge_pos);
+        mpCollisionGetLREdgeUpperL(ground_line_id, &edge_pos);
 
         if (translate->x <= edge_pos.x)
         {
-            if (mpCollisionGetUDCommonUp(ground_line_id, &edge_pos, &ground_dist, &flags, &angle));
+            if (mpCollisionGetUDCommonUpper(ground_line_id, &edge_pos, &ground_dist, &flags, &angle));
 
             sp4C.x = edge_pos.x + 1.0F;
             sp4C.y = edge_pos.y + 1.0F;
@@ -130,9 +130,9 @@ sb32 mpCommonCheckSetFighterEdge(GObj *fighter_gobj, s32 ground_line_id)
         }
         else
         {
-            mpCollisionGetLREdgeRight(ground_line_id, &edge_pos);
+            mpCollisionGetLREdgeUpperR(ground_line_id, &edge_pos);
 
-            if (mpCollisionGetUDCommonUp(ground_line_id, &edge_pos, &ground_dist, &flags, &angle));
+            if (mpCollisionGetUDCommonUpper(ground_line_id, &edge_pos, &ground_dist, &flags, &angle));
 
             sp4C.x = edge_pos.x - 1.0F;
             sp4C.y = edge_pos.y + 1.0F;
@@ -309,17 +309,17 @@ sb32 func_ovl2_800DDF74(GObj *fighter_gobj, FTStruct *fp, FTAttributes *attr, DO
     f32 ternary;
     f32 translate_y;
 
-    if (mpCollisionGetUDCommonUp(fp->coll_data.ground_line_id, vec, &sp48, &sp3C, &sp64) != FALSE)
+    if (mpCollisionGetUDCommonUpper(fp->coll_data.ground_line_id, vec, &sp48, &sp3C, &sp64) != FALSE)
     {
         translate_y = (vec->y + sp48) - DObjGetStruct(fighter_gobj)->translate.vec.f.y;
     }
     else
     {
-        mpCollisionGetLREdgeLeft(fp->coll_data.ground_line_id, &vec_translate);
+        mpCollisionGetLREdgeUpperL(fp->coll_data.ground_line_id, &vec_translate);
 
         if (vec_translate.x < vec->x)
         {
-            mpCollisionGetLREdgeRight(fp->coll_data.ground_line_id, &vec_translate);
+            mpCollisionGetLREdgeUpperR(fp->coll_data.ground_line_id, &vec_translate);
         }
         translate_y = vec_translate.y - DObjGetStruct(fighter_gobj)->translate.vec.f.y;
     }
@@ -887,7 +887,7 @@ void mpCommonSetFighterGround(FTStruct *fp)
 
     fp->jumps_used = 0;
 
-    fp->stat_flags.ga = nMPKineticsGround; // Ground/Air bool?
+    fp->stat_flags.ga = nMPKineticsGround;
 }
 
 // 0x800DEEC8
@@ -942,7 +942,7 @@ void mpCommonCopyCollDataStats(MPCollData *this_coll_data, Vec3f *pos, MPCollDat
     this_coll_data->coll_mask_unk = 0;
     this_coll_data->coll_mask_stat = 0;
     this_coll_data->is_coll_end = FALSE;
-    this_coll_data->coll_update_frame = other_coll_data->coll_update_frame;
+    this_coll_data->coll_update_tic = other_coll_data->coll_update_tic;
 }
 
 // 0x800DEFF8
@@ -950,7 +950,7 @@ void mpCommonResetCollDataStats(MPCollData *coll_data)
 {
     coll_data->p_map_coll = &coll_data->map_coll;
 
-    coll_data->coll_update_frame = gMPCollisionUpdateFrame;
+    coll_data->coll_update_tic = gMPCollisionUpdateTic;
     coll_data->coll_mask_curr = 0;
 }
 

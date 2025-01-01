@@ -30,7 +30,7 @@ void ftCommonLGunShootProcAccessory(GObj *fighter_gobj)
             Vec3f make_ammo_offset = { 0.0F, 60.0F, 180.0F };
             Vec3f make_effect_offset;
 
-            size_mul = 1.0F / fp->attr->size_mul;
+            size_mul = 1.0F / fp->attr->size;
 
             make_ammo_offset.x *= size_mul;
             make_ammo_offset.y *= size_mul;
@@ -120,7 +120,7 @@ void ftCommonFireFlowerShootUpdateAmmoStats(FTStruct *fp, s32 ammo_sub)
 
     if (ip->multi >= ammo_sub)
     {
-        size_mul = 1.0F / fp->attr->size_mul;
+        size_mul = 1.0F / fp->attr->size;
 
         make_flame_offset.x *= size_mul;
         make_flame_offset.y *= size_mul;

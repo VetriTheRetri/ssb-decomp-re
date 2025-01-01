@@ -408,7 +408,7 @@ GObj* itManagerMakeItem(GObj *parent_gobj, ITDesc *item_desc, Vec3f *pos, Vec3f 
     ip->coll_data.map_coll.width    = attr->map_coll_width;
     ip->coll_data.p_map_coll        = &ip->coll_data.map_coll;
     ip->coll_data.ignore_line_id    = -1;
-    ip->coll_data.coll_update_frame = gMPCollisionUpdateFrame;
+    ip->coll_data.coll_update_tic = gMPCollisionUpdateTic;
     ip->coll_data.coll_mask_curr = 0;
     ip->coll_data.vel_push.x        = 0.0F;
     ip->coll_data.vel_push.y        = 0.0F;

@@ -23,9 +23,9 @@ void ftBossCommonCheckEdgeInvertLR(GObj *fighter_gobj)
     Vec3f pos_left;
     Vec3f pos_right;
 
-    mpCollisionGetLREdgeLeft(fp->passive_vars.boss.p->current_line_id, &pos_left);
+    mpCollisionGetLREdgeUpperL(fp->passive_vars.boss.p->current_line_id, &pos_left);
 
-    mpCollisionGetLREdgeRight(fp->passive_vars.boss.p->current_line_id, &pos_right);
+    mpCollisionGetLREdgeUpperR(fp->passive_vars.boss.p->current_line_id, &pos_right);
 
     if (((((pos_left.x + pos_right.x) * 0.5F) - DObjGetStruct(fighter_gobj)->translate.vec.f.x) * fp->lr) < 0.0F)
     {
@@ -49,9 +49,9 @@ void ftBossCommonGetRandomEdgeLR(s32 line_id, Vec3f *pos)
 {
     if ((mtTrigGetRandomUShort() % 2) != 0)
     {
-        mpCollisionGetLREdgeLeft(line_id, pos);
+        mpCollisionGetLREdgeUpperL(line_id, pos);
     }
-    else mpCollisionGetLREdgeRight(line_id, pos);
+    else mpCollisionGetLREdgeUpperR(line_id, pos);
 }
 
 // 0x801580E0
@@ -101,7 +101,7 @@ void ftBossCommonSetPosAddVelPlayer(GObj *fighter_gobj, Vec3f *pos, f32 vel_x, f
 
     translate.x += ((mtTrigGetRandomUShort() % 2) != 0) ? vel_x : -vel_x;
 
-    if (mpCollisionGetUDCommonUp(fp_unk->coll_data.ground_line_id, &translate, &y, NULL, NULL) != FALSE)
+    if (mpCollisionGetUDCommonUpper(fp_unk->coll_data.ground_line_id, &translate, &y, NULL, NULL) != FALSE)
     {
         pos->x = translate.x;
     }
@@ -109,7 +109,7 @@ void ftBossCommonSetPosAddVelPlayer(GObj *fighter_gobj, Vec3f *pos, f32 vel_x, f
     {
         translate.x = (x < translate.x) ? x - vel_x : x + vel_x;
 
-        pos->x = (mpCollisionGetUDCommonUp(fp_unk->coll_data.ground_line_id, &translate, &y, NULL, NULL) != FALSE) ? translate.x : x;
+        pos->x = (mpCollisionGetUDCommonUpper(fp_unk->coll_data.ground_line_id, &translate, &y, NULL, NULL) != FALSE) ? translate.x : x;
     }
     pos->y = (translate.y + y + vel_y);
     pos->z = 0.0F;
@@ -135,14 +135,14 @@ void ftBossCommonGetPositionCenter(s32 line_id, Vec3f *pos_input)
     Vec3f pos_right;
     f32 y;
 
-    mpCollisionGetLREdgeLeft(line_id, &pos_left);
-    mpCollisionGetLREdgeRight(line_id, &pos_right);
+    mpCollisionGetLREdgeUpperL(line_id, &pos_left);
+    mpCollisionGetLREdgeUpperR(line_id, &pos_right);
 
     pos_input->x = (pos_left.x + pos_right.x) * 0.5F;
     pos_input->z = 0.0F;
     pos_input->y = 0.0F;
 
-    mpCollisionGetUDCommonUp(line_id, pos_input, &y, NULL, NULL);
+    mpCollisionGetUDCommonUpper(line_id, pos_input, &y, NULL, NULL);
 
     pos_input->y += y;
 }

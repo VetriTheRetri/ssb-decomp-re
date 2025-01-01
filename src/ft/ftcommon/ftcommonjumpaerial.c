@@ -106,7 +106,7 @@ void ftCommonJumpAerialProcPhysics(GObj *fighter_gobj)
     case nFTKindNKirby:
         if (ftPhysicsCheckClampAirVelXDecMax(fp, attr) == FALSE)
         {
-            ftPhysicsClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attr->aerial_acceleration * FTKIRBY_JUMPAERIAL_VEL_MUL, attr->aerial_speed_max_x * FTKIRBY_JUMPAERIAL_VEL_MUL);
+            ftPhysicsClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attr->air_accel * FTKIRBY_JUMPAERIAL_VEL_MUL, attr->air_speed_max_x * FTKIRBY_JUMPAERIAL_VEL_MUL);
         }
         break;
 
@@ -114,7 +114,7 @@ void ftCommonJumpAerialProcPhysics(GObj *fighter_gobj)
     case nFTKindNPurin:
         if (ftPhysicsCheckClampAirVelXDecMax(fp, attr) == FALSE)
         {
-            ftPhysicsClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attr->aerial_acceleration * FTPURIN_JUMPAERIAL_VEL_MUL, attr->aerial_speed_max_x * FTPURIN_JUMPAERIAL_VEL_MUL);
+            ftPhysicsClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attr->air_accel * FTPURIN_JUMPAERIAL_VEL_MUL, attr->air_speed_max_x * FTPURIN_JUMPAERIAL_VEL_MUL);
         }
         break;
     }
@@ -155,13 +155,13 @@ void ftCommonJumpAerialSetStatus(GObj *fighter_gobj, s32 input_source)
         stick_range_x = fp->input.pl.stick_range.x;
         break;
     } 
-    fp->physics.vel_air.y = (((stick_range_y * attr->jump_height_mul) + attr->jump_height_base) * attr->aerial_jump_height);
+    fp->physics.vel_air.y = (((stick_range_y * attr->jump_height_mul) + attr->jump_height_base) * attr->jumpaerial_height);
 
     if ((fp->fkind == nFTKindNess) || (fp->fkind == nFTKindNNess))
     {
-        fp->status_vars.common.jumpaerial.vel_x = stick_range_x * attr->aerial_jump_vel_x;
+        fp->status_vars.common.jumpaerial.vel_x = stick_range_x * attr->jumpaerial_vel_x;
     }
-    else fp->physics.vel_air.x = stick_range_x * attr->aerial_jump_vel_x;
+    else fp->physics.vel_air.x = stick_range_x * attr->jumpaerial_vel_x;
 
     fp->jumps_used++;
 
@@ -213,11 +213,11 @@ void ftCommonJumpAerialMultiSetStatus(GObj *fighter_gobj, s32 input_source)
         break;
     }
 
-    fp->physics.vel_air.x = stick_range_x * attr->aerial_jump_vel_x;
+    fp->physics.vel_air.x = stick_range_x * attr->jumpaerial_vel_x;
 
     if (fp->jumps_used == 1)
     {
-        fp->physics.vel_air.y = (((stick_range_y * attr->jump_height_mul) + attr->jump_height_base) * attr->aerial_jump_height);
+        fp->physics.vel_air.y = (((stick_range_y * attr->jump_height_mul) + attr->jump_height_base) * attr->jumpaerial_height);
 
         fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
     }

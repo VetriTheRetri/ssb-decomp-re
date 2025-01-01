@@ -47,7 +47,7 @@ void ftCommonThrownProcMap(GObj *fighter_gobj)
 
     if (capture_fp->coll_data.ground_line_id != -1)
     {
-        if (mpCollisionGetUDCommonUp(capture_fp->coll_data.ground_line_id, this_pos, &dist_y, &this_fp->coll_data.ground_flags, &this_fp->coll_data.ground_angle) != FALSE)
+        if (mpCollisionGetUDCommonUpper(capture_fp->coll_data.ground_line_id, this_pos, &dist_y, &this_fp->coll_data.ground_flags, &this_fp->coll_data.ground_angle) != FALSE)
         {
             this_fp->coll_data.ground_line_id = capture_fp->coll_data.ground_line_id;
 

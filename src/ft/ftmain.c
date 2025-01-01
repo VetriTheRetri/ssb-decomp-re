@@ -1854,7 +1854,7 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
 
             if (attack_coll->is_scale_pos)
             {
-                size_mul = 1.0F / fp->attr->size_mul;
+                size_mul = 1.0F / fp->attr->size;
 
                 attack_coll->pos_curr.x *= size_mul;
                 attack_coll->pos_curr.y *= size_mul;
@@ -1879,7 +1879,7 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
 
             if (attack_coll->is_scale_pos)
             {
-                size_mul = 1.0F / fp->attr->size_mul;
+                size_mul = 1.0F / fp->attr->size;
 
                 attack_coll->pos_curr.x *= size_mul;
                 attack_coll->pos_curr.y *= size_mul;

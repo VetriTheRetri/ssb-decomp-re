@@ -17,9 +17,9 @@ struct MPVertexInfo
 	u8 line_type;
 	s16 coll_pos_next;
 	s16 coll_pos_prev;
-	s16 edge_psign_id; // PSign = positive sign -> collision types that use +1
+	s16 edge_next_line_id; // PSign = positive sign -> collision types that use +1
 					   // for orientation (Upper/Ground and Right)
-	s16 edge_nsign_id; // NSign = negative sign -> collision types that use -1
+	s16 edge_prev_line_id; // NSign = negative sign -> collision types that use -1
 					   // for orientation (Under/Down/Ceil and Left)
 };
 
@@ -123,9 +123,9 @@ struct MPObjectColl
 
 struct MPCollData
 {
-	Vec3f* p_translate;			 	// Points to object's TopN translation vector
-	s32* p_lr;					 	// Points to object's facing direction sign
-	Vec3f pos_curr;				// Main object collision position
+	Vec3f *p_translate;			 	// Points to object's TopN translation vector
+	s32 *p_lr;					 	// Points to object's facing direction sign
+	Vec3f pos_curr;					// Main object collision position
 	Vec3f pos_correct;			 	// Unconfirmed
 	Vec3f pos_speed;			 	// Applied from moving collisions
 	Vec3f vel_push;				 	// Applied from extern stage objects such as Whispy's Wind
@@ -133,11 +133,11 @@ struct MPCollData
 	MPObjectColl *p_map_coll; 		// Points back to environmental collision box???
 	Vec2f cliffcatch_coll;		 	// Ledge grab collision box
 	u16 coll_mask_prev;			 	// Previous collision flags?
-	u16 coll_mask_curr;			// Current collision flags
+	u16 coll_mask_curr;				// Current collision flags
 	u16 coll_mask_unk;			 	// ???
 	u16 coll_mask_stat;			 	// Used exclusively by object to transition between
 								 	// action states? Also, persists unlike the above three.
-	u16 coll_update_frame;		 	// Updates each frame?
+	u16 coll_update_tic;		 	// Updates each frame?
 	s32 ewall_line_id;			 	// Line ID of wall that is right under the ledge the
 								 	// object is standing on?
 	sb32 is_coll_end;			 	// Collision task completion bool? Main collision loop's

@@ -433,7 +433,7 @@ sb32 itNBumperAttachedProcUpdate(GObj *item_gobj)
     {
         if (ip->lr == -1)
         {
-            mpCollisionGetLREdgeLeft(ip->coll_data.ground_line_id, &edge_pos);
+            mpCollisionGetLREdgeUpperL(ip->coll_data.ground_line_id, &edge_pos);
 
             if (edge_pos.x >= (dobj->translate.vec.f.x - attr->map_coll_width))
             {
@@ -442,7 +442,7 @@ sb32 itNBumperAttachedProcUpdate(GObj *item_gobj)
         }
         else
         {
-            mpCollisionGetLREdgeRight(ip->coll_data.ground_line_id, &edge_pos);
+            mpCollisionGetLREdgeUpperR(ip->coll_data.ground_line_id, &edge_pos);
 
             if (edge_pos.x <= (dobj->translate.vec.f.x + attr->map_coll_width))
             {

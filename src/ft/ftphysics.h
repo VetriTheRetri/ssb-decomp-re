@@ -58,7 +58,7 @@ void ftPhysicsApplyGravityDefault(FTStruct* fp, FTAttributes *attr);
 // Clamp aerial X velocity
 void ftPhysicsClampAirVelX(FTStruct* fp, f32 clamp);
 
-// Clamp maximum aerial X velocity to fighter's aerial_speed_max_x
+// Clamp maximum aerial X velocity to fighter's air_speed_max_x
 void ftPhysicsClampAirVelXMax(FTStruct* fp);
 
 // If horizontal air speed is greater than clamp value, decrement velocity

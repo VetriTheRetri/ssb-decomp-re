@@ -16,7 +16,7 @@ void ftCommonCaptureWaitProcMap(GObj *fighter_gobj)
     Vec3f capture_pos;
     f32 dist_y;
 
-    if (mpCollisionGetUDCommonUp(capture_fp->coll_data.ground_line_id, this_pos, &dist_y, &this_fp->coll_data.ground_flags, &this_fp->coll_data.ground_angle) != FALSE)
+    if (mpCollisionGetUDCommonUpper(capture_fp->coll_data.ground_line_id, this_pos, &dist_y, &this_fp->coll_data.ground_flags, &this_fp->coll_data.ground_angle) != FALSE)
     {
         this_fp->coll_data.ground_line_id = capture_fp->coll_data.ground_line_id;
 
@@ -29,9 +29,9 @@ void ftCommonCaptureWaitProcMap(GObj *fighter_gobj)
     {
         if (capture_fp->lr == +1)
         {
-            mpCollisionGetLREdgeRight(capture_fp->coll_data.ground_line_id, &capture_pos);
+            mpCollisionGetLREdgeUpperR(capture_fp->coll_data.ground_line_id, &capture_pos);
         }
-        else mpCollisionGetLREdgeLeft(capture_fp->coll_data.ground_line_id, &capture_pos);
+        else mpCollisionGetLREdgeUpperL(capture_fp->coll_data.ground_line_id, &capture_pos);
 
         this_pos->y = capture_pos.y;
 

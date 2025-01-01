@@ -79,7 +79,7 @@ void ftCommonStarRodSwingProcUpdate(GObj *fighter_gobj)
             // 0x80188600
             Vec3f make_star_offset = { 0.0F, 200.0F, 0.0F };
 
-            scale_mul = 1.0F / fp->attr->size_mul;
+            scale_mul = 1.0F / fp->attr->size;
 
             make_star_offset.x *= scale_mul;
             make_star_offset.y *= scale_mul;

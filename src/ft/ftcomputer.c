@@ -4547,7 +4547,7 @@ sb32 ftComputerCheckSetTargetEdgeRight(FTStruct *fp, sb32 is_find_edge_target)
     {
         if (mpCollisionCheckExistLineID(line_ids[i]) != FALSE)
         {
-            mpCollisionGetLREdgeRight(line_ids[i], &edge_pos);
+            mpCollisionGetLREdgeUpperR(line_ids[i], &edge_pos);
 
             if (gSCManagerBattleState->gkind == nGRKindZebes)
             {
@@ -4566,7 +4566,7 @@ sb32 ftComputerCheckSetTargetEdgeRight(FTStruct *fp, sb32 is_find_edge_target)
 
             if (edge_dist_x > 0.0F)
             {
-                edge_predict_x = (edge_dist_x / fp->attr->aerial_speed_max_x);
+                edge_predict_x = (edge_dist_x / fp->attr->air_speed_max_x);
                 fall_predict = -(-fp->attr->tvel_base - fp->physics.vel_air.y) / fp->attr->gravity;
 
                 if (fall_predict <= 0)
@@ -4641,7 +4641,7 @@ sb32 ftComputerCheckSetTargetEdgeLeft(FTStruct *fp, sb32 is_find_edge_target)
     {
         if (mpCollisionCheckExistLineID(line_ids[i]) != FALSE)
         {
-            mpCollisionGetLREdgeLeft(line_ids[i], &edge_pos);
+            mpCollisionGetLREdgeUpperL(line_ids[i], &edge_pos);
 
             if (gSCManagerBattleState->gkind == nGRKindZebes)
             {
@@ -4660,7 +4660,7 @@ sb32 ftComputerCheckSetTargetEdgeLeft(FTStruct *fp, sb32 is_find_edge_target)
 
             if (edge_dist_x < 0.0F)
             {
-                edge_predict_x = (edge_dist_x / -fp->attr->aerial_speed_max_x);
+                edge_predict_x = (edge_dist_x / -fp->attr->air_speed_max_x);
                 fall_predict = -(-fp->attr->tvel_base - fp->physics.vel_air.y) / fp->attr->gravity;
 
                 if (fall_predict <= 0)
@@ -4970,8 +4970,8 @@ void ftComputerFollowObjectiveWalk(FTStruct *fp)
     {
         if (mpCollisionCheckCeilLineCollisionSame(&fp->joints[nFTPartsJointTopN]->translate.vec.f, &target_pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
         {
-            func_ovl2_800F4468(stand_line_id, &edge_left);
-            func_ovl2_800F4448(stand_line_id, &edge_right);
+            mpCollisionGetLREdgeUnderL(stand_line_id, &edge_left);
+            mpCollisionGetLREdgeUnderR(stand_line_id, &edge_right);
 
             if (DISTANCE(edge_left.x, fp->joints[nFTPartsJointTopN]->translate.vec.f.x) < DISTANCE(edge_right.x, fp->joints[nFTPartsJointTopN]->translate.vec.f.x))
             {
@@ -4993,8 +4993,8 @@ void ftComputerFollowObjectiveWalk(FTStruct *fp)
         (DISTANCE(com->target_pos.x, fp->joints[nFTPartsJointTopN]->translate.vec.f.x) < (DISTANCE(com->target_pos.y, fp->joints[nFTPartsJointTopN]->translate.vec.f.y) * 0.2F))
     )
     {
-        mpCollisionGetLREdgeLeft(fp->coll_data.ground_line_id, &sp9C);
-        mpCollisionGetLREdgeRight(fp->coll_data.ground_line_id, &sp90);
+        mpCollisionGetLREdgeUpperL(fp->coll_data.ground_line_id, &sp9C);
+        mpCollisionGetLREdgeUpperR(fp->coll_data.ground_line_id, &sp90);
 
         if (DISTANCE(sp9C.x, fp->joints[nFTPartsJointTopN]->translate.vec.f.x) < DISTANCE(sp90.x, fp->joints[nFTPartsJointTopN]->translate.vec.f.x))
         {
@@ -5013,7 +5013,7 @@ void ftComputerFollowObjectiveWalk(FTStruct *fp)
         {
             if (mpCollisionCheckLWallLineCollisionSame(&fp->joints[nFTPartsJointTopN]->translate.vec.f, &target_pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
             {
-                mpCollisionGetUDEdgeUp(stand_line_id, &ga_last);
+                mpCollisionGetUDEdgeUnderL(stand_line_id, &ga_last);
 
                 com->target_pos.x = ga_last.x + 100.0;
                 com->target_pos.y = ga_last.y + 100.0;
@@ -5030,7 +5030,7 @@ void ftComputerFollowObjectiveWalk(FTStruct *fp)
         }
         else if (mpCollisionCheckRWallLineCollisionSame(&fp->joints[nFTPartsJointTopN]->translate.vec.f, &target_pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
         {
-            func_ovl2_800F4690(stand_line_id, &ga_last);
+            mpCollisionGetUDEdgeUnderR(stand_line_id, &ga_last);
 
             com->target_pos.x = ga_last.x - 100.0;
             com->target_pos.y = ga_last.y + 100.0;
@@ -5213,8 +5213,8 @@ void ftComputerFollowObjectiveWalk(FTStruct *fp)
             {
                 if (com->target_line_id >= 0)
                 {
-                    mpCollisionGetLREdgeLeft(com->target_line_id, &sp74);
-                    mpCollisionGetLREdgeRight(com->target_line_id, &sp68);
+                    mpCollisionGetLREdgeUpperL(com->target_line_id, &sp74);
+                    mpCollisionGetLREdgeUpperR(com->target_line_id, &sp68);
 
                     if ((sp74.x <= com->target_pos.x) && (sp68.x >= com->target_pos.x))
                     {
@@ -5243,9 +5243,9 @@ void ftComputerFollowObjectiveWalk(FTStruct *fp)
                 {
                     if (fp->physics.vel_air.x < 0.0F)
                     {
-                        mpCollisionGetLREdgeLeft(fp->coll_data.ground_line_id, &sp58);
+                        mpCollisionGetLREdgeUpperL(fp->coll_data.ground_line_id, &sp58);
                     }
-                    else mpCollisionGetLREdgeRight(fp->coll_data.ground_line_id, &sp58);
+                    else mpCollisionGetLREdgeUpperR(fp->coll_data.ground_line_id, &sp58);
 
                     if (sp58.x < fp->joints[nFTPartsJointTopN]->translate.vec.f.x)
                     {
@@ -5719,9 +5719,9 @@ sb32 ftComputerCheckSetEvadeTarget(FTStruct *this_fp)
 
             if (this_pos_x < predict_x)
             {
-                mpCollisionGetLREdgeLeft(line_id, &edge_pos);
+                mpCollisionGetLREdgeUpperL(line_id, &edge_pos);
             }
-            else mpCollisionGetLREdgeRight(line_id, &edge_pos);
+            else mpCollisionGetLREdgeUpperR(line_id, &edge_pos);
         }
         else edge_pos = this_fp->joints[nFTPartsJointTopN]->translate.vec.f;
 
@@ -6403,8 +6403,8 @@ s32 ftComputerProcWalk(GObj *fighter_gobj)
         }
         else
         {
-            mpCollisionGetLREdgeLeft(com->ground_line_id, &edge_left_pos);
-            mpCollisionGetLREdgeRight(com->ground_line_id, &edge_right_pos);
+            mpCollisionGetLREdgeUpperL(com->ground_line_id, &edge_left_pos);
+            mpCollisionGetLREdgeUpperR(com->ground_line_id, &edge_right_pos);
 
             if (com->target_pos.x < edge_left_pos.x)
             {
@@ -6788,8 +6788,8 @@ void func_ovl3_8013877C(FTStruct *this_fp)
             {
                 com->edge_pos.x = (((2.0 * mtTrigGetRandomFloat()) - 1.0) * 2500.0) + com->origin_pos.x;
 
-                mpCollisionGetLREdgeLeft(com->ground_line_id, &edge_left_pos);
-                mpCollisionGetLREdgeRight(com->ground_line_id, &edge_right_pos);
+                mpCollisionGetLREdgeUpperL(com->ground_line_id, &edge_left_pos);
+                mpCollisionGetLREdgeUpperR(com->ground_line_id, &edge_right_pos);
 
                 if (com->edge_pos.x < edge_left_pos.x)
                 {
@@ -7049,8 +7049,8 @@ sb32 func_ovl3_80138EE4(FTStruct *fp)
     {
         if (fp->coll_data.ground_line_id >= 0)
         {
-            mpCollisionGetLREdgeLeft(fp->coll_data.ground_line_id, &edge_left_pos);
-            mpCollisionGetLREdgeRight(fp->coll_data.ground_line_id, &edge_right_pos);
+            mpCollisionGetLREdgeUpperL(fp->coll_data.ground_line_id, &edge_left_pos);
+            mpCollisionGetLREdgeUpperR(fp->coll_data.ground_line_id, &edge_right_pos);
 
             if (com->target_pos.x < fp->joints[nFTPartsJointTopN]->translate.vec.f.x)
             {
@@ -7835,7 +7835,7 @@ void ftComputerSetupAll(GObj *fighter_gobj)
         {
             if (i >= 7)
             {
-                dash_speed -= fp->attr->dash_decelerate;
+                dash_speed -= fp->attr->dash_decel;
             }
             com->dash_predict += dash_speed;
         }
@@ -7860,7 +7860,7 @@ void ftComputerSetupAll(GObj *fighter_gobj)
         {
             if ((mpCollisionCheckExistLineID(line_ids[i]) != FALSE) && (mpCollisionCheckExistPlatformLineID(line_ids[i]) == FALSE))
             {
-                mpCollisionGetLREdgeLeft(line_ids[i], &edge_pos);
+                mpCollisionGetLREdgeUpperL(line_ids[i], &edge_pos);
 
                 if (edge_left_nearest > edge_pos.x)
                 {
@@ -7877,7 +7877,7 @@ void ftComputerSetupAll(GObj *fighter_gobj)
                     com->cliff_left_pos.x = edge_pos.x;
                     com->cliff_left_pos.y = edge_pos.y;
                 }
-                mpCollisionGetLREdgeRight(line_ids[i], &edge_pos);
+                mpCollisionGetLREdgeUpperR(line_ids[i], &edge_pos);
 
                 if (edge_right_nearest < edge_pos.x)
                 {

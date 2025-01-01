@@ -526,8 +526,8 @@ s32 sc1PBonusStageGetPlatformKind(s32 line_id)
 	Vec3f pos_left;
 	Vec3f pos_right;
 
-	mpCollisionGetLREdgeLeft(line_id, &pos_left);
-	mpCollisionGetLREdgeRight(line_id, &pos_right);
+	mpCollisionGetLREdgeUpperL(line_id, &pos_left);
+	mpCollisionGetLREdgeUpperR(line_id, &pos_right);
 
 	if ((pos_right.x - pos_left.x) <= 750.0F)
 	{

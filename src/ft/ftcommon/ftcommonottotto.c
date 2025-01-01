@@ -69,9 +69,9 @@ void ftCommonOttottoProcMap(GObj *fighter_gobj)
     {
         if (fp->lr == +1)
         {
-            mpCollisionGetLREdgeRight(fp->coll_data.ground_line_id, &pos);
+            mpCollisionGetLREdgeUpperR(fp->coll_data.ground_line_id, &pos);
         }
-        else mpCollisionGetLREdgeLeft(fp->coll_data.ground_line_id, &pos);
+        else mpCollisionGetLREdgeUpperL(fp->coll_data.ground_line_id, &pos);
 
         if (DObjGetStruct(fighter_gobj)->translate.vec.f.x < pos.x)
         {

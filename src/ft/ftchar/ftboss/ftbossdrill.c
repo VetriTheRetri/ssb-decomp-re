@@ -85,11 +85,11 @@ void ftBossDrillSetStatus(GObj *fighter_gobj)
 
     fp = ftGetStruct(fighter_gobj);
 
-    mpCollisionGetLREdgeLeft(fp->coll_data.ground_line_id, &pos);
+    mpCollisionGetLREdgeUpperL(fp->coll_data.ground_line_id, &pos);
 
     fp->status_vars.boss.drill.edgeleft_pos_x = pos.x;
 
-    mpCollisionGetLREdgeRight(fp->coll_data.ground_line_id, &pos);
+    mpCollisionGetLREdgeUpperR(fp->coll_data.ground_line_id, &pos);
 
     fp->status_vars.boss.drill.edgeright_pos_x = pos.x;
 

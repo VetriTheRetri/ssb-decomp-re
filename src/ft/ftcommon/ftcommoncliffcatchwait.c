@@ -21,9 +21,9 @@ void ftCommonCliffCommonProcPhysics(GObj *fighter_gobj)
 
     if (fp->lr == +1)
     {
-        mpCollisionGetLREdgeLeft(fp->coll_data.cliff_id, &vel);
+        mpCollisionGetLREdgeUpperL(fp->coll_data.cliff_id, &vel);
     }
-    else mpCollisionGetLREdgeRight(fp->coll_data.cliff_id, &vel);
+    else mpCollisionGetLREdgeUpperR(fp->coll_data.cliff_id, &vel);
 
     topn_joint->translate.vec.f.x = ((transn_joint->translate.vec.f.z * fp->lr * topn_joint->scale.vec.f.x) + vel.x);
     topn_joint->translate.vec.f.y = ((transn_joint->translate.vec.f.y * topn_joint->scale.vec.f.y) + vel.y);
@@ -55,9 +55,9 @@ void ftCommonCliffCatchSetStatus(GObj *fighter_gobj)
 
     if (fp->lr == +1)
     {
-        mpCollisionGetLREdgeLeft(fp->coll_data.cliff_id, &pos);
+        mpCollisionGetLREdgeUpperL(fp->coll_data.cliff_id, &pos);
     }
-    else mpCollisionGetLREdgeRight(fp->coll_data.cliff_id, &pos);
+    else mpCollisionGetLREdgeUpperR(fp->coll_data.cliff_id, &pos);
 
     efManagerFlashMiddleMakeEffect(&pos);
 
@@ -71,18 +71,18 @@ void ftCommonCliffCommonProcDamage(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     MPObjectColl *map_coll = &fp->coll_data.map_coll;
-    Vec3f vel;
+    Vec3f pos;
 
     if (fp->lr == +1)
     {
-        mpCollisionGetLREdgeLeft(fp->coll_data.cliff_id, &vel);
+        mpCollisionGetLREdgeUpperL(fp->coll_data.cliff_id, &pos);
     }
-    else mpCollisionGetLREdgeRight(fp->coll_data.cliff_id, &vel);
+    else mpCollisionGetLREdgeUpperR(fp->coll_data.cliff_id, &pos);
 
-    vel.x -= ((map_coll->width + 30.0F) * fp->lr);
-    vel.y -= map_coll->center;
+    pos.x -= ((map_coll->width + 30.0F) * fp->lr);
+    pos.y -= map_coll->center;
 
-    mpCommonRunFighterCollisionDefault(fighter_gobj, &vel, &fp->coll_data);
+    mpCommonRunFighterCollisionDefault(fighter_gobj, &pos, &fp->coll_data);
 }
 
 // 0x80144DA4
@@ -101,7 +101,7 @@ void ftCommonCliffWaitSetStatus(GObj *fighter_gobj)
 
     ftMainSetStatus(fighter_gobj, nFTCommonStatusCliffWait, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
-    fp->status_vars.common.cliffwait.status_id = 0;
+    fp->status_vars.common.cliffwait.is_allow_interrupt = FALSE;
 
     if (fp->percent_damage < FTCOMMON_CLIFF_DAMAGE_HIGH)
     {

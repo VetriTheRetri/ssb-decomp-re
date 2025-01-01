@@ -894,7 +894,7 @@ struct FTKey
 
 struct FTAttributes
 {
-    f32 size_mul;
+    f32 size;
     f32 walkslow_anim_length;
     f32 walkmiddle_anim_length;
     f32 walkfast_anim_length;
@@ -905,17 +905,17 @@ struct FTAttributes
     f32 walk_speed_mul;
     f32 traction;
     f32 dash_speed;
-    f32 dash_decelerate;
+    f32 dash_decel;
     f32 run_speed;
     f32 kneebend_anim_length; // Jump squat frames
     f32 jump_vel_x;
     f32 jump_height_mul;
     f32 jump_height_base;
-    f32 aerial_jump_vel_x;
-    f32 aerial_jump_height;
-    f32 aerial_acceleration;
-    f32 aerial_speed_max_x;
-    f32 aerial_friction;
+    f32 jumpaerial_vel_x;
+    f32 jumpaerial_height;
+    f32 air_accel;
+    f32 air_speed_max_x;
+    f32 air_friction;
     f32 gravity;
     f32 tvel_base;
     f32 tvel_fast;

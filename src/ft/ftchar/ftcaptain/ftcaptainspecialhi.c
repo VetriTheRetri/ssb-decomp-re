@@ -65,9 +65,9 @@ void ftCaptainSpecialHiProcPhysics(GObj *fighter_gobj)
     fp->physics.vel_air.y = fp->status_vars.captain.specialhi.vel.y;
     fp->physics.vel_air.z = 0.0F;
 
-    if (ftPhysicsCheckClampAirVelXDec(fp, attr->aerial_speed_max_x * FTCAPTAIN_FALCONDIVE_AIR_SPEED_MAX_MUL) == FALSE)
+    if (ftPhysicsCheckClampAirVelXDec(fp, attr->air_speed_max_x * FTCAPTAIN_FALCONDIVE_AIR_SPEED_MAX_MUL) == FALSE)
     {
-        ftPhysicsClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attr->aerial_acceleration * FTCAPTAIN_FALCONDIVE_AIR_ACCEL_MUL, attr->aerial_speed_max_x * FTCAPTAIN_FALCONDIVE_AIR_SPEED_MAX_MUL);
+        ftPhysicsClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attr->air_accel * FTCAPTAIN_FALCONDIVE_AIR_ACCEL_MUL, attr->air_speed_max_x * FTCAPTAIN_FALCONDIVE_AIR_SPEED_MAX_MUL);
         ftPhysicsApplyAirVelXFriction(fp, attr);
     }
     fp->status_vars.captain.specialhi.vel.x = fp->physics.vel_air.x;

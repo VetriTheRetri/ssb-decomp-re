@@ -259,7 +259,7 @@ void ftLinkSpecialAirHiProcPhysics(GObj *fighter_gobj)
     {
         FTAttributes *attr = fp->attr;
 
-        ftPhysicsClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attr->aerial_acceleration * FTLINK_SPINATTACK_AIR_DRIFT_MUL, attr->aerial_speed_max_x);
+        ftPhysicsClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attr->air_accel * FTLINK_SPINATTACK_AIR_DRIFT_MUL, attr->air_speed_max_x);
         ftPhysicsApplyAirVelXFriction(fp, fp->attr);
     }
 }

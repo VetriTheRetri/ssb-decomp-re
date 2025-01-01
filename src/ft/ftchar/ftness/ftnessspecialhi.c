@@ -399,46 +399,38 @@ void ftNessSpecialAirHiEndSetStatus(GObj *fighter_gobj)
 // 0x80154598
 void ftNessSpecialHiCollideWallPhysics(GObj *fighter_gobj, MPCollData *coll_data)
 {
-    f32 tan_lwall_angle;
-    f32 rotation;
-    f32 tangent;
-    f32 tan_rwall_angle;
+    s32 unused;
+    f32 rot, tan;
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    rotation = (fp->lr == +1) ? fp->status_vars.ness.specialhi.pkjibaku_angle : (F_CST_DTOR32(180.0F) - fp->status_vars.ness.specialhi.pkjibaku_angle);
+    rot = (fp->lr == +1) ? fp->status_vars.ness.specialhi.pkjibaku_angle : (F_CST_DTOR32(180.0F) - fp->status_vars.ness.specialhi.pkjibaku_angle);
 
-    if (rotation > F_CST_DTOR32(360.0F))
+    if (rot > F_CST_DTOR32(360.0F))
     {
-        rotation -= F_CST_DTOR32(360.0F);
+        rot -= F_CST_DTOR32(360.0F);
     }
-
     if (coll_data->coll_mask_curr & MPCOLL_FLAG_LWALL)
     {
-        tan_lwall_angle = atan2f(coll_data->lwall_angle.y, coll_data->lwall_angle.x);
+        tan = atan2f(coll_data->lwall_angle.y, coll_data->lwall_angle.x);
 
-        tangent = tan_lwall_angle;
-
-        if (tan_lwall_angle > F_CST_DTOR32(360.0F))
+        if (tan > F_CST_DTOR32(360.0F))
         {
-            tangent = tan_lwall_angle - F_CST_DTOR32(360.0F);
+            tan -= F_CST_DTOR32(360.0F);
         }
 
-        tangent = ((rotation + F_CST_DTOR32(180.0F)) < tangent) ? (tangent + F_CST_DTOR32(90.0F)) : (tangent + F_CST_DTOR32(-90.0F)); // To fix Ness's janky left wall collision, compare rotation - PI32
+        tan = ((rot + F_CST_DTOR32(180.0F)) < tan) ? (tan + F_CST_DTOR32(90.0F)) : (tan + F_CST_DTOR32(-90.0F)); // To fix Ness's janky left wall collision, compare rotation - PI32
     }
     if (coll_data->coll_mask_curr & MPCOLL_FLAG_RWALL)
     {
-        tan_rwall_angle = atan2f(coll_data->rwall_angle.y, coll_data->rwall_angle.x);
+        tan = atan2f(coll_data->rwall_angle.y, coll_data->rwall_angle.x);
 
-        tangent = tan_rwall_angle;
-
-        if (tangent > F_CST_DTOR32(360.0F))
+        if (tan > F_CST_DTOR32(360.0F))
         {
-            tangent = tan_rwall_angle - F_CST_DTOR32(360.0F);
+            tan -= F_CST_DTOR32(360.0F);
         }
-        tangent = ((tangent + F_CST_DTOR32(180.0F)) < rotation) ? (tangent + (F_CST_DTOR32(90.0F))) : (tangent + F_CST_DTOR32(-90.0F));
+        tan = ((tan + F_CST_DTOR32(180.0F)) < rot) ? (tan + (F_CST_DTOR32(90.0F))) : (tan + F_CST_DTOR32(-90.0F));
     }
-
-    syVectorRotate3D(&fp->physics.vel_air, SYVECTOR_AXIS_Z, tangent - (fp->status_vars.ness.specialhi.pkjibaku_angle * fp->lr));
+    syVectorRotate3D(&fp->physics.vel_air, SYVECTOR_AXIS_Z, tan - (fp->status_vars.ness.specialhi.pkjibaku_angle * fp->lr));
 
     fp->status_vars.ness.specialhi.pkjibaku_angle = atan2f(fp->physics.vel_air.y, fp->physics.vel_air.x * fp->lr);
 }

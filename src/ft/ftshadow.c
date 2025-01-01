@@ -140,8 +140,8 @@ void ftShadowFuncDisplay(GObj *shadow_gobj)
                 shadow_size = fp->attr->shadow_size;
                 shadow_calc_left = 0.0F, shadow_calc_right = 1984.0F;
 
-                mpCollisionGetLREdgeLeft(ground_line_id, &vertex_pos0);
-                mpCollisionGetLREdgeRight(ground_line_id, &vertex_pos1);
+                mpCollisionGetLREdgeUpperL(ground_line_id, &vertex_pos0);
+                mpCollisionGetLREdgeUpperR(ground_line_id, &vertex_pos1);
 
                 shadow_edge_left = shadow_center - shadow_size;
                 shadow_edge_right = shadow_center + shadow_size;

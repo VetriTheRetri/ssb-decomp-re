@@ -89,7 +89,7 @@ GObj* grHyruleMakeTwister(Vec3f *pos)
         }
         gGRCommonStruct.hyrule.twister_line_id = line_id;
 
-        mpCollisionGetLREdgeLeft(line_id, &edge_pos);
+        mpCollisionGetLREdgeUpperL(line_id, &edge_pos);
 
         edge_under = mpCollisionGetEdgeUnderLLineID(line_id);
 
@@ -99,7 +99,7 @@ GObj* grHyruleMakeTwister(Vec3f *pos)
         }
         else gGRCommonStruct.hyrule.twister_leftedge_x = edge_pos.x + 300.0F;
         
-        mpCollisionGetLREdgeRight(line_id, &edge_pos);
+        mpCollisionGetLREdgeUpperR(line_id, &edge_pos);
 
         edge_under = mpCollisionGetEdgeUnderRLineID(line_id);
 
@@ -279,7 +279,7 @@ void grHyruleTwisterUpdateMove(void)
         }
         else pos->x = pos_x;
 
-        mpCollisionGetUDCommonUp(gGRCommonStruct.hyrule.twister_line_id, pos, &ground_level, NULL, NULL);
+        mpCollisionGetUDCommonUpper(gGRCommonStruct.hyrule.twister_line_id, pos, &ground_level, NULL, NULL);
 
         pos->y += ground_level;
 

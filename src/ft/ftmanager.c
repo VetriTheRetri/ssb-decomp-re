@@ -579,7 +579,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTDesc *desc)
     fp->afterimage.desc_id = 0;
 
     DObjGetStruct(fighter_gobj)->translate.vec.f = desc->pos;
-    DObjGetStruct(fighter_gobj)->scale.vec.f.x = DObjGetStruct(fighter_gobj)->scale.vec.f.y = DObjGetStruct(fighter_gobj)->scale.vec.f.z = attr->size_mul;
+    DObjGetStruct(fighter_gobj)->scale.vec.f.x = DObjGetStruct(fighter_gobj)->scale.vec.f.y = DObjGetStruct(fighter_gobj)->scale.vec.f.z = attr->size;
 
     if (fp->pkind != nFTPlayerKindDemo)
     {
@@ -894,7 +894,7 @@ GObj* ftManagerMakeFighter(FTDesc *desc) // Create fighter
     fp->coll_data.p_map_coll = &fp->coll_data.map_coll;
     fp->coll_data.cliffcatch_coll = attr->cliffcatch_coll;
     fp->coll_data.ignore_line_id = -1;
-    fp->coll_data.coll_update_frame = gMPCollisionUpdateFrame;
+    fp->coll_data.coll_update_tic = gMPCollisionUpdateTic;
     fp->coll_data.coll_mask_curr = 0;
 
     if (fp->pkind != nFTPlayerKindDemo)

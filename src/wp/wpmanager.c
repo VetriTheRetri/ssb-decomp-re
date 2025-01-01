@@ -296,7 +296,7 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPDesc *wp_desc, Vec3f *spawn_pos, 
     wp->coll_data.lwall_line_id = -1;
     wp->coll_data.rwall_line_id = -1;
 
-    wp->coll_data.coll_update_frame = gMPCollisionUpdateFrame;
+    wp->coll_data.coll_update_tic = gMPCollisionUpdateTic;
     wp->coll_data.coll_mask_curr = 0;
 
     wp->coll_data.vel_push.x = 0.0F;

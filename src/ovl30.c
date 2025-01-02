@@ -1102,7 +1102,7 @@ void mnStagesSaveSceneData()
 	{
 		do
 		{
-			stage_id = mtTrigGetRandomTimeUCharRange(9);
+			stage_id = syUtilsGetRandomTimeUCharRange(9);
 		} while (mnStagesGetIsLocked(stage_id) || stage_id == gSCManagerSceneData.gkind);
 
 		gSCManagerSceneData.gkind = stage_id;

@@ -285,7 +285,7 @@ s32 wpPikachuThunderJoltGroundGetStatus(GObj *weapon_gobj)
 
                     wpPikachuThunderJoltGroundAddAnim(weapon_gobj);
 
-                    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(-rotate.x, rotate.y);
+                    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = syUtilsArcTan2(-rotate.x, rotate.y);
 
                     return nWPPikachuThunderJoltStatusActive;
                 }
@@ -309,7 +309,7 @@ s32 wpPikachuThunderJoltGroundGetStatus(GObj *weapon_gobj)
 
                 wpPikachuThunderJoltGroundAddAnim(weapon_gobj);
 
-                DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(-rotate.x, rotate.y);
+                DObjGetStruct(weapon_gobj)->rotate.vec.f.z = syUtilsArcTan2(-rotate.x, rotate.y);
 
                 return nWPPikachuThunderJoltStatusActive;
             }
@@ -336,7 +336,7 @@ s32 wpPikachuThunderJoltGroundGetStatus(GObj *weapon_gobj)
 
                     wpPikachuThunderJoltGroundAddAnim(weapon_gobj);
 
-                    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(-rotate.x, rotate.y);
+                    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = syUtilsArcTan2(-rotate.x, rotate.y);
 
                     return nWPPikachuThunderJoltStatusActive;
                 }
@@ -369,7 +369,7 @@ s32 wpPikachuThunderJoltGroundGetStatus(GObj *weapon_gobj)
 
                     wpPikachuThunderJoltGroundAddAnim(weapon_gobj);
 
-                    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(-rotate.x, rotate.y);
+                    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = syUtilsArcTan2(-rotate.x, rotate.y);
 
                     return nWPPikachuThunderJoltStatusActive;
                 }
@@ -385,7 +385,7 @@ s32 wpPikachuThunderJoltGroundGetStatus(GObj *weapon_gobj)
     default: 
         break;
     }
-    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(-wp->weapon_vars.thunder_jolt.rotate.x, wp->weapon_vars.thunder_jolt.rotate.y);
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = syUtilsArcTan2(-wp->weapon_vars.thunder_jolt.rotate.x, wp->weapon_vars.thunder_jolt.rotate.y);
 
     return nWPPikachuThunderJoltStatusNull;
 }
@@ -418,7 +418,7 @@ sb32 wpPikachuThunderJoltGroundCheckDestroy(GObj *weapon_gobj)
 
         return TRUE;
     }
-    else DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(-angle.x, angle.y);
+    else DObjGetStruct(weapon_gobj)->rotate.vec.f.z = syUtilsArcTan2(-angle.x, angle.y);
 
     return FALSE;
 }
@@ -733,7 +733,7 @@ GObj* wpPikachuThunderJoltGroundMakeWeapon(GObj *prev_gobj, Vec3f *pos, s32 coll
         break;
 
     case nMPLineKindLWall:
-        if (atan2f(new_wp->weapon_vars.thunder_jolt.rotate.y, new_wp->weapon_vars.thunder_jolt.rotate.x) > F_CST_DTOR32(135.0F)) // 2.3561945F
+        if (syUtilsArcTan2(new_wp->weapon_vars.thunder_jolt.rotate.y, new_wp->weapon_vars.thunder_jolt.rotate.x) > F_CST_DTOR32(135.0F)) // 2.3561945F
         {
             DObjGetStruct(new_gobj)->rotate.vec.f.y = F_CST_DTOR32(0.0F);
             new_wp->lr = 3;
@@ -746,7 +746,7 @@ GObj* wpPikachuThunderJoltGroundMakeWeapon(GObj *prev_gobj, Vec3f *pos, s32 coll
         break;
 
     case nMPLineKindRWall:
-        if (atan2f(new_wp->weapon_vars.thunder_jolt.rotate.y, new_wp->weapon_vars.thunder_jolt.rotate.x) > F_CST_DTOR32(45.0F))
+        if (syUtilsArcTan2(new_wp->weapon_vars.thunder_jolt.rotate.y, new_wp->weapon_vars.thunder_jolt.rotate.x) > F_CST_DTOR32(45.0F))
         {
             DObjGetStruct(new_gobj)->rotate.vec.f.y = F_CST_DTOR32(0.0F);
             new_wp->lr = 2;

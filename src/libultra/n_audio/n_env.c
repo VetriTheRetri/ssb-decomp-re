@@ -99,19 +99,19 @@ void func_80027338_27F38(void) {
 	osSetIntMask(mask);
 }
 
-extern s32 sRandSeed1;
-extern s32 sRandSeed2;
+extern s32 sRandomSeed1;
+extern s32 sRandomSeed2;
 
 //split 0x27F90?
 f32 randFloat1(void) {
-	sRandSeed2 = (sRandSeed2 * 0x343FD) + 0x269EC3;
-	return ((sRandSeed2 >> 16) & 0xFFFF) / 65536.0f;
+	sRandomSeed2 = (sRandomSeed2 * 0x343FD) + 0x269EC3;
+	return ((sRandomSeed2 >> 16) & 0xFFFF) / 65536.0f;
 }
 
 
 f32 randFloat2(void) {
-	sRandSeed1 = (sRandSeed1 * 0x343FD) + 0x269EC3;
-	return ((sRandSeed1 >> 16) & 0xFFFF) / 65536.0f;
+	sRandomSeed1 = (sRandomSeed1 * 0x343FD) + 0x269EC3;
+	return ((sRandomSeed1 >> 16) & 0xFFFF) / 65536.0f;
 }
 
 void func_80027458_28058(void) {
@@ -668,7 +668,7 @@ static void __CSPHandleMetaMsg(ALCSPlayer *seqp, ALEvent *event);
 // 0x29DAC
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/__CSPHandleMetaMsg.s")
 
-// Uses sRandSeed2
+// Uses sRandomSeed2
 // 0x29FA8
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_800293A8_29FA8.s")
 

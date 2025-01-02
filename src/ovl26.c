@@ -3088,7 +3088,7 @@ s32 mnSelectRandomFighter(GObj* token_gobj)
 	do
 	{
 		do
-			fkind = mtTrigGetRandomTimeUCharRange(12);
+			fkind = syUtilsGetRandomTimeUCharRange(12);
 		while (mnBattleCheckFighterIsXBoxed(fkind) != 0);
 	} while (mnBattleGetIsLocked(fkind) != 0);
 
@@ -3329,7 +3329,7 @@ void mnBattleAutopositionOverlappedTokens(s32 port_id_1, s32 port_id_2, f32 unus
 
 	if (SObjGetStruct(gMnBattlePanels[port_id_1].token)->pos.x
 		== SObjGetStruct(gMnBattlePanels[port_id_2].token)->pos.x)
-		gMnBattlePanels[port_id_1].token_x_velocity += mtTrigGetRandomIntRange(2) - 1;
+		gMnBattlePanels[port_id_1].token_x_velocity += syUtilsGetRandomIntRange(2) - 1;
 	else
 	{
 		gMnBattlePanels[port_id_1].token_x_velocity += (-1.0F
@@ -3340,7 +3340,7 @@ void mnBattleAutopositionOverlappedTokens(s32 port_id_1, s32 port_id_2, f32 unus
 
 	if (SObjGetStruct(gMnBattlePanels[port_id_1].token)->pos.y
 		== SObjGetStruct(gMnBattlePanels[port_id_2].token)->pos.y)
-		gMnBattlePanels[port_id_1].token_y_velocity += mtTrigGetRandomIntRange(2) - 1;
+		gMnBattlePanels[port_id_1].token_y_velocity += syUtilsGetRandomIntRange(2) - 1;
 	else
 		gMnBattlePanels[port_id_1].token_y_velocity += (-1.0F
 														* (SObjGetStruct(gMnBattlePanels[port_id_2].token)->pos.y
@@ -3959,7 +3959,7 @@ void mnBattleMain(s32 arg0)
 				max_stage_id = (gSCManagerBackupData.unlock_mask & LBBACKUP_UNLOCK_MASK_INISHIE) ? nGRKindInishie + 1 : nGRKindStarterEnd + 1;
 
 				do
-					stage_id = mtTrigGetRandomTimeUCharRange(max_stage_id);
+					stage_id = syUtilsGetRandomTimeUCharRange(max_stage_id);
 				while (stage_id == gSCManagerSceneData.gkind);
 
 				gSCManagerSceneData.gkind = stage_id;

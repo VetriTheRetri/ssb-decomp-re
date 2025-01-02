@@ -94,7 +94,7 @@ void ftCommonSleepProcUpdate(GObj *fighter_gobj)
                 }
                 if (active_teammate_count != 0)
                 {
-                    random_steal_target = mtTrigGetRandomIntRange(active_teammate_count);
+                    random_steal_target = syUtilsGetRandomIntRange(active_teammate_count);
 
                     gSCManagerBattleState->players[steal_from_player[random_steal_target]].stock_count--;
 

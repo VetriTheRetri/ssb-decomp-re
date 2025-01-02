@@ -2174,9 +2174,9 @@ LBParticle* efManagerDamageNormalLightMakeEffect(Vec3f *pos, s32 player, s32 siz
 
             tfm->translate = *pos;
 
-            vel = (is_static != FALSE) ? 0.0F : ((mtTrigGetRandomFloat() * 38.0F) + 12.0F);
+            vel = (is_static != FALSE) ? 0.0F : ((syUtilsGetRandomFloat() * 38.0F) + 12.0F);
 
-            angle = mtTrigGetRandomFloat() * F_CLC_DTOR32(360.0F);
+            angle = syUtilsGetRandomFloat() * F_CLC_DTOR32(360.0F);
 
             ep->effect_vars.common.vel.x = __cosf(angle) * vel;
             ep->effect_vars.common.vel.y = __sinf(angle) * vel;
@@ -2318,9 +2318,9 @@ LBParticle* efManagerImpactShockMakeEffect(Vec3f *pos, s32 size)
 
             tfm->translate = *pos;
 
-            vel = ((mtTrigGetRandomFloat() * 8.0F) + 2.0F);
+            vel = ((syUtilsGetRandomFloat() * 8.0F) + 2.0F);
 
-            angle = mtTrigGetRandomFloat() * F_CLC_DTOR32(360.0F);
+            angle = syUtilsGetRandomFloat() * F_CLC_DTOR32(360.0F);
 
             ep->effect_vars.common.vel.x = __cosf(angle) * vel;
             ep->effect_vars.common.vel.y = __sinf(angle) * vel;
@@ -2406,9 +2406,9 @@ LBParticle* efManagerDamageFireMakeEffect(Vec3f *pos, s32 size)
 
             tfm->translate = *pos;
 
-            vel = ((mtTrigGetRandomFloat() * 18.0F) + 12.0F);
+            vel = ((syUtilsGetRandomFloat() * 18.0F) + 12.0F);
 
-            angle = mtTrigGetRandomFloat() * F_CLC_DTOR32(360.0F);
+            angle = syUtilsGetRandomFloat() * F_CLC_DTOR32(360.0F);
 
             ep->effect_vars.common.vel.x = __cosf(angle) * vel;
             ep->effect_vars.common.vel.y = __sinf(angle) * vel;
@@ -2474,9 +2474,9 @@ LBParticle* efManagerDamageElectricMakeEffect(Vec3f *pos, s32 size)
 
             tfm->translate = *pos;
 
-            vel = (mtTrigGetRandomFloat() * 7.0F) + 3.0F;
+            vel = (syUtilsGetRandomFloat() * 7.0F) + 3.0F;
 
-            angle = mtTrigGetRandomFloat() * F_CLC_DTOR32(360.0F);
+            angle = syUtilsGetRandomFloat() * F_CLC_DTOR32(360.0F);
 
             ep->effect_vars.common.vel.x = __cosf(angle) * vel;
             ep->effect_vars.common.vel.y = __sinf(angle) * vel;
@@ -2568,15 +2568,15 @@ LBParticle* efManagerFlameLRMakeEffect(Vec3f *pos, s32 lr)
 
             tfm->translate = *pos;
 
-            tfm->translate.x += ((mtTrigGetRandomFloat() * EFPART_FLAMELR_OFF_X_BASE) + EFPART_FLAMELR_OFF_X_ADD);
-            tfm->translate.y += ((mtTrigGetRandomFloat() * EFPART_FLAMELR_OFF_Y_BASE) + EFPART_FLAMELR_OFF_Y_ADD);
+            tfm->translate.x += ((syUtilsGetRandomFloat() * EFPART_FLAMELR_OFF_X_BASE) + EFPART_FLAMELR_OFF_X_ADD);
+            tfm->translate.y += ((syUtilsGetRandomFloat() * EFPART_FLAMELR_OFF_Y_BASE) + EFPART_FLAMELR_OFF_Y_ADD);
 
-            angle = mtTrigGetRandomFloat() * F_CLC_DTOR32(90.0F);
+            angle = syUtilsGetRandomFloat() * F_CLC_DTOR32(90.0F);
 
             ep->effect_vars.common.vel.x = __cosf(angle) * EFPART_FLAMELR_VEL_BASE * -lr;
             ep->effect_vars.common.vel.y = __sinf(angle) * EFPART_FLAMELR_VEL_BASE;
 
-            tfm->scale.x = tfm->scale.y = tfm->scale.z = (mtTrigGetRandomFloat() * 1) + 1.0F;
+            tfm->scale.x = tfm->scale.y = tfm->scale.z = (syUtilsGetRandomFloat() * 1) + 1.0F;
         }
         else ptc = efManagerDestroyParticleGObj(ptc, effect_gobj);
     }
@@ -2635,12 +2635,12 @@ LBParticle* efManagerFlameRandgcMakeEffect(Vec3f *pos)
 
             tfm->translate = *pos;
 
-            angle = (mtTrigGetRandomFloat() * EFPART_FLAMERANDOM_ANGLE_BASE) + EFPART_FLAMERANDOM_ANGLE_ADD;
+            angle = (syUtilsGetRandomFloat() * EFPART_FLAMERANDOM_ANGLE_BASE) + EFPART_FLAMERANDOM_ANGLE_ADD;
 
             ep->effect_vars.common.vel.x = __cosf(angle) * EFPART_FLAMERANDOM_VEL_BASE;
             ep->effect_vars.common.vel.y = __sinf(angle) * EFPART_FLAMERANDOM_VEL_BASE;
 
-            tfm->scale.x = tfm->scale.y = tfm->scale.z = (mtTrigGetRandomFloat() * 1) + 1.0F;
+            tfm->scale.x = tfm->scale.y = tfm->scale.z = (syUtilsGetRandomFloat() * 1) + 1.0F;
         }
         else ptc = efManagerDestroyParticleGObj(ptc, effect_gobj);
     }
@@ -2702,7 +2702,7 @@ LBParticle* efManagerFlameStaticMakeEffect(Vec3f *pos)
             ep->effect_vars.common.vel.x = 0.0F;
             ep->effect_vars.common.vel.y = 0.0F;
 
-            tfm->scale.x = tfm->scale.y = tfm->scale.z = (mtTrigGetRandomFloat() * 1) + 1.0F;
+            tfm->scale.x = tfm->scale.y = tfm->scale.z = (syUtilsGetRandomFloat() * 1) + 1.0F;
         }
         else ptc = efManagerDestroyParticleGObj(ptc, effect_gobj);
     }
@@ -2761,15 +2761,15 @@ LBParticle* efManagerDustCollideMakeEffect(Vec3f *pos)
 
             tfm->translate = *pos;
 
-            tfm->translate.x += ((mtTrigGetRandomFloat() * EFPART_DUSTCOLL_OFF_BASE) + EFPART_DUSTCOLL_OFF_ADD);
-            tfm->translate.y += ((mtTrigGetRandomFloat() * EFPART_DUSTCOLL_OFF_BASE) + EFPART_DUSTCOLL_OFF_ADD);
+            tfm->translate.x += ((syUtilsGetRandomFloat() * EFPART_DUSTCOLL_OFF_BASE) + EFPART_DUSTCOLL_OFF_ADD);
+            tfm->translate.y += ((syUtilsGetRandomFloat() * EFPART_DUSTCOLL_OFF_BASE) + EFPART_DUSTCOLL_OFF_ADD);
 
-            angle = (mtTrigGetRandomFloat() * EFPART_DUSTCOLL_ANGLE_BASE) + EFPART_DUSTCOLL_ANGLE_ADD; // F_CLC_DTOR32(90.0F), QUART_PI32
+            angle = (syUtilsGetRandomFloat() * EFPART_DUSTCOLL_ANGLE_BASE) + EFPART_DUSTCOLL_ANGLE_ADD; // F_CLC_DTOR32(90.0F), QUART_PI32
 
             ep->effect_vars.common.vel.x = __cosf(angle) * EFPART_DUSTCOLL_VEL_BASE;
             ep->effect_vars.common.vel.y = __sinf(angle) * EFPART_DUSTCOLL_VEL_BASE;
 
-            tfm->scale.x = tfm->scale.y = tfm->scale.z = (mtTrigGetRandomFloat() * 1) + 1.0F;
+            tfm->scale.x = tfm->scale.y = tfm->scale.z = (syUtilsGetRandomFloat() * 1) + 1.0F;
         }
         else ptc = efManagerDestroyParticleGObj(ptc, effect_gobj);
     }
@@ -2796,8 +2796,8 @@ GObj* efManagerShockSmallMakeEffect(Vec3f *pos)
     dobj = DObjGetStruct(effect_gobj);
     ep = efGetStruct(effect_gobj);
 
-    pos->x += (mtTrigGetRandomFloat() * EFPART_SHOCKSMALL_OFF_BASE) + EFPART_SHOCKSMALL_OFF_ADD;
-    pos->y += (mtTrigGetRandomFloat() * EFPART_SHOCKSMALL_OFF_BASE) + EFPART_SHOCKSMALL_OFF_ADD;
+    pos->x += (syUtilsGetRandomFloat() * EFPART_SHOCKSMALL_OFF_BASE) + EFPART_SHOCKSMALL_OFF_ADD;
+    pos->y += (syUtilsGetRandomFloat() * EFPART_SHOCKSMALL_OFF_BASE) + EFPART_SHOCKSMALL_OFF_ADD;
 
     dobj->translate.vec.f = *pos;
 
@@ -2807,7 +2807,7 @@ GObj* efManagerShockSmallMakeEffect(Vec3f *pos)
     */
 
 #if !defined (DAIRANTOU_OPT0)
-    angle = mtTrigGetRandomFloat() * F_CLC_DTOR32(360.0F); // F_CLC_DTOR32(360.0F)
+    angle = syUtilsGetRandomFloat() * F_CLC_DTOR32(360.0F); // F_CLC_DTOR32(360.0F)
 #endif
 
 #if !defined (DAIRANTOU_OPT0)
@@ -2822,11 +2822,11 @@ GObj* efManagerShockSmallMakeEffect(Vec3f *pos)
 
     ep->effect_vars.common.vel.y = 0.0F;
 
-    scale = (mtTrigGetRandomFloat() * EFPART_SHOCKSMALL_SCALE_BASE) + EFPART_SHOCKSMALL_SCALE_ADD;
+    scale = (syUtilsGetRandomFloat() * EFPART_SHOCKSMALL_SCALE_BASE) + EFPART_SHOCKSMALL_SCALE_ADD;
 
     dobj->scale.vec.f.x = dobj->scale.vec.f.y = scale;
 
-    dobj->rotate.vec.f.z = mtTrigGetRandomFloat() * F_CLC_DTOR32(360.0F); // F_CLC_DTOR32(360.0F)
+    dobj->rotate.vec.f.z = syUtilsGetRandomFloat() * F_CLC_DTOR32(360.0F); // F_CLC_DTOR32(360.0F)
 
     return effect_gobj;
 }
@@ -2900,9 +2900,9 @@ LBParticle* efManagerDustLightMakeEffect(Vec3f *pos, s32 lr, f32 f_index)
 
             tfm->translate.y += EFPART_DUSTNORMAL_OFF_Y;
 
-            tfm->rotate.z = mtTrigGetRandomFloat() * F_CLC_DTOR32(360.0F); // F_CLC_DTOR32(360.0F)
+            tfm->rotate.z = syUtilsGetRandomFloat() * F_CLC_DTOR32(360.0F); // F_CLC_DTOR32(360.0F)
 
-            angle = (mtTrigGetRandomFloat() * EFPART_DUSTNORMAL_ANGLE_BASE) + EFPART_DUSTNORMAL_ANGLE_ADD;
+            angle = (syUtilsGetRandomFloat() * EFPART_DUSTNORMAL_ANGLE_BASE) + EFPART_DUSTNORMAL_ANGLE_ADD;
 
             ep->effect_vars.dust_light.vel1.x = __cosf(angle) * EFPART_DUSTNORMAL_VEL_BASE;
 
@@ -3236,15 +3236,15 @@ void efManagerDamageSpawnOrbsProcUpdate(GObj *this_gobj)
 
             dobj->translate.vec.f = this_ep->effect_vars.damage_spawn_orbs.pos;
 
-            dobj->scale.vec.f.x = dobj->scale.vec.f.y = (mtTrigGetRandomFloat() * EFPART_DAMAGESPAWNORBS_SCALE_BASE) + EFPART_DAMAGESPAWNORBS_SCALE_ADD;
+            dobj->scale.vec.f.x = dobj->scale.vec.f.y = (syUtilsGetRandomFloat() * EFPART_DAMAGESPAWNORBS_SCALE_BASE) + EFPART_DAMAGESPAWNORBS_SCALE_ADD;
 
-            vel = (mtTrigGetRandomFloat() * EFPART_DAMAGESPAWNORBS_VEL_BASE) + EFPART_DAMAGESPAWNORBS_VEL_ADD;
+            vel = (syUtilsGetRandomFloat() * EFPART_DAMAGESPAWNORBS_VEL_BASE) + EFPART_DAMAGESPAWNORBS_VEL_ADD;
 
-            angle = (mtTrigGetRandomFloat() * EFPART_DAMAGESPAWNORBS_ANGLE_BASE) + EFPART_DAMAGESPAWNORBS_ANGLE_ADD1 + EFPART_DAMAGESPAWNORBS_ANGLE_ADD2;
+            angle = (syUtilsGetRandomFloat() * EFPART_DAMAGESPAWNORBS_ANGLE_BASE) + EFPART_DAMAGESPAWNORBS_ANGLE_ADD1 + EFPART_DAMAGESPAWNORBS_ANGLE_ADD2;
 
             new_ep->effect_vars.damage_fly_orbs.vel.x = __cosf(angle) * vel;
             new_ep->effect_vars.damage_fly_orbs.vel.y = __sinf(angle) * vel;
-            new_ep->effect_vars.damage_fly_orbs.lifetime = mtTrigGetRandomIntRange(EFPART_DAMAGESPAWNORBS_LIFETIME_RANDOM_MOD) + EFPART_DAMAGESPAWNORBS_LIFETIME_ADD;
+            new_ep->effect_vars.damage_fly_orbs.lifetime = syUtilsGetRandomIntRange(EFPART_DAMAGESPAWNORBS_LIFETIME_RANDOM_MOD) + EFPART_DAMAGESPAWNORBS_LIFETIME_ADD;
         }
     }
     this_ep->effect_vars.damage_spawn_orbs.lifetime--;
@@ -3272,7 +3272,7 @@ GObj* efManagerDamageSpawnOrbsMakeEffect(Vec3f *pos)
 
     ep->effect_vars.damage_spawn_orbs.pos = *pos;
 
-    ep->effect_vars.damage_spawn_orbs.lifetime = (mtTrigGetRandomIntRange(3) * 4) + 4;
+    ep->effect_vars.damage_spawn_orbs.lifetime = (syUtilsGetRandomIntRange(3) * 4) + 4;
 
     return effect_gobj;
 }
@@ -3280,7 +3280,7 @@ GObj* efManagerDamageSpawnOrbsMakeEffect(Vec3f *pos)
 // 0x800FFB38
 GObj* efManagerDamageSpawnOrbsRandgcMakeEffect(Vec3f *pos)
 {
-    if (mtTrigGetRandomIntRange(4) != 0)
+    if (syUtilsGetRandomIntRange(4) != 0)
     {
         return NULL;
     }
@@ -3410,7 +3410,7 @@ GObj* efManagerStarRodSparkMakeEffect(Vec3f *pos, s32 lr)
 
         dobj->translate.vec.f = *pos;
 
-        dobj->rotate.vec.f.z = mtTrigGetRandomFloat() * F_CLC_DTOR32(360.0F); // F_CLC_DTOR32(360.0F)
+        dobj->rotate.vec.f.z = syUtilsGetRandomFloat() * F_CLC_DTOR32(360.0F); // F_CLC_DTOR32(360.0F)
 
         dobj->scale.vec.f.x = EFPART_STARRODSPARK_SCALE;
         dobj->scale.vec.f.y = EFPART_STARRODSPARK_SCALE;
@@ -3477,7 +3477,7 @@ void efManagerDamageSpawnSparksProcUpdate(GObj *effect_gobj)
 
             dobj->translate.vec.f = this_ep->effect_vars.damage_spawn_sparks.pos;
 
-            dobj->rotate.vec.f.z = mtTrigGetRandomFloat() * F_CLC_DTOR32(360.0F);
+            dobj->rotate.vec.f.z = syUtilsGetRandomFloat() * F_CLC_DTOR32(360.0F);
 
             var = dEFManagerDamageSpawnSparksAngles[ -(lifetime / EFPART_DAMAGESPAWNSPARK_LIFETIME_MOD) + (EFPART_DAMAGESPAWNSPARK_LIFETIME_MOD / 2) ];
 
@@ -3525,7 +3525,7 @@ GObj* efManagerDamageSpawnSparksMakeEffect(Vec3f *pos, s32 lr)
 // 0x80100218
 GObj* efManagerDamageSpawnSparksRandgcMakeEffect(Vec3f *pos, s32 lr)
 {
-    if (mtTrigGetRandomIntRange(4) != 0)
+    if (syUtilsGetRandomIntRange(4) != 0)
     {
         return NULL;
     }
@@ -3558,7 +3558,7 @@ void efManagerDamageSpawnMDustProcUpdate(GObj *effect_gobj)
 
             dobj->translate.vec.f = this_ep->effect_vars.damage_spawn_mdust.pos;
 
-            dobj->rotate.vec.f.z = mtTrigGetRandomFloat() * F_CLC_DTOR32(360.0F);
+            dobj->rotate.vec.f.z = syUtilsGetRandomFloat() * F_CLC_DTOR32(360.0F);
 
             var = dEFManagerDamageSpawnMDustAngles[ -(lifetime / EFPART_DAMAGESPAWNMDUST_LIFETIME_MOD) + (EFPART_DAMAGESPAWNMDUST_LIFETIME_MOD / 2) ];
 
@@ -3606,7 +3606,7 @@ GObj* efManagerDamageSpawnMDustMakeEffect(Vec3f *pos, s32 lr)
 // 0x80100440
 GObj* efManagerDamageSpawnMDustRandgcMakeEffect(Vec3f *pos, s32 lr)
 {
-    if (mtTrigGetRandomIntRange(4) != 0)
+    if (syUtilsGetRandomIntRange(4) != 0)
     {
         return NULL;
     }
@@ -3989,8 +3989,8 @@ LBParticle* efManagerSetOffMakeEffect(Vec3f *pos, s32 size)
 
             tfm->translate = *pos;
 
-            vel = (mtTrigGetRandomFloat() * 18.0F) + 12.0F;
-            angle = mtTrigGetRandomFloat() * F_CLC_DTOR32(360.0F); // F_CLC_DTOR32(360.0F)
+            vel = (syUtilsGetRandomFloat() * 18.0F) + 12.0F;
+            angle = syUtilsGetRandomFloat() * F_CLC_DTOR32(360.0F); // F_CLC_DTOR32(360.0F)
 
             ep->effect_vars.common.vel.x = __cosf(angle) * vel;
             ep->effect_vars.common.vel.y = __sinf(angle) * vel;
@@ -4493,7 +4493,7 @@ void efManagerPikachuThunderTrailProcUpdate(GObj *effect_gobj)
 
             DObjGetStruct(effect_gobj)->rotate.vec.f.z = F_CLC_DTOR32(180.0F);
         }
-        else DObjGetStruct(effect_gobj)->mobj->texture_id_curr = mtTrigGetRandomIntRange(3);
+        else DObjGetStruct(effect_gobj)->mobj->texture_id_curr = syUtilsGetRandomIntRange(3);
     }
 }
 
@@ -5012,11 +5012,11 @@ void efManagerNessPKThunderTrailProcUpdate(GObj *effect_gobj)
 
     if (index > 0)
     {
-        DObjGetStruct(effect_gobj)->rotate.vec.f.z = atan2f((fp->passive_vars.ness.pkthunder_trail_y[index] - fp->passive_vars.ness.pkthunder_trail_y[index - 1]), (fp->passive_vars.ness.pkthunder_trail_x[index] - fp->passive_vars.ness.pkthunder_trail_x[index - 1]));
+        DObjGetStruct(effect_gobj)->rotate.vec.f.z = syUtilsArcTan2((fp->passive_vars.ness.pkthunder_trail_y[index] - fp->passive_vars.ness.pkthunder_trail_y[index - 1]), (fp->passive_vars.ness.pkthunder_trail_x[index] - fp->passive_vars.ness.pkthunder_trail_x[index - 1]));
     }
     else
     {
-        DObjGetStruct(effect_gobj)->rotate.vec.f.z = atan2f((fp->passive_vars.ness.pkthunder_trail_y[index] - fp->passive_vars.ness.pkthunder_trail_y[FTNESS_PKTHUNDER_TRAIL_POS_COUNT - 1]), (fp->passive_vars.ness.pkthunder_trail_x[index] - fp->passive_vars.ness.pkthunder_trail_x[FTNESS_PKTHUNDER_TRAIL_POS_COUNT - 1]));
+        DObjGetStruct(effect_gobj)->rotate.vec.f.z = syUtilsArcTan2((fp->passive_vars.ness.pkthunder_trail_y[index] - fp->passive_vars.ness.pkthunder_trail_y[FTNESS_PKTHUNDER_TRAIL_POS_COUNT - 1]), (fp->passive_vars.ness.pkthunder_trail_x[index] - fp->passive_vars.ness.pkthunder_trail_x[FTNESS_PKTHUNDER_TRAIL_POS_COUNT - 1]));
     }
     DObjGetStruct(effect_gobj)->rotate.vec.f.z -= F_CLC_DTOR32(90.0F);
 }
@@ -5792,7 +5792,7 @@ LBParticle* efManagerMusicNoteMakeEffect(Vec3f *pos)
     LBParticle *ptc = lbParticleMakeScriptID
     (
         gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(0), 
-        dEFManagerMusicNoteGenIDs[mtTrigGetRandomIntRange(ARRAY_COUNT(dEFManagerMusicNoteGenIDs))]
+        dEFManagerMusicNoteGenIDs[syUtilsGetRandomIntRange(ARRAY_COUNT(dEFManagerMusicNoteGenIDs))]
     );
 
     if (ptc != NULL)
@@ -5874,16 +5874,16 @@ void efManagerCaptureKirbyStarProcUpdate(GObj *effect_gobj)
     {
         pos = DObjGetStruct(ep->fighter_gobj)->translate.vec.f;
 
-        pos.y += mtTrigGetRandomIntRange(copy[fp->fkind].effect_scale * EFPART_CAPTUREKIRBYSTAR_SPARK_SCATTER_Y);
+        pos.y += syUtilsGetRandomIntRange(copy[fp->fkind].effect_scale * EFPART_CAPTUREKIRBYSTAR_SPARK_SCATTER_Y);
 
         if (fp->physics.vel_air.x > 0.0F)
         {
-            pos.x -= mtTrigGetRandomIntRange(copy[fp->fkind].effect_scale * EFPART_CAPTUREKIRBYSTAR_SPARK_SCATTER_X);
+            pos.x -= syUtilsGetRandomIntRange(copy[fp->fkind].effect_scale * EFPART_CAPTUREKIRBYSTAR_SPARK_SCATTER_X);
             efManagerStarRodSparkMakeEffect(&pos, -1);
         }
         else
         {
-            pos.x += mtTrigGetRandomIntRange(copy[fp->fkind].effect_scale * EFPART_CAPTUREKIRBYSTAR_SPARK_SCATTER_X);
+            pos.x += syUtilsGetRandomIntRange(copy[fp->fkind].effect_scale * EFPART_CAPTUREKIRBYSTAR_SPARK_SCATTER_X);
             efManagerStarRodSparkMakeEffect(&pos, +1);
         }
     }

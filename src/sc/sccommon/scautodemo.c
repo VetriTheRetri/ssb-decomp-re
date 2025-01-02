@@ -278,8 +278,8 @@ void func_ovl64_8018D220(GObj *fighter_gobj)
 	func_ovl2_8010CF44
 	(
 		fighter_gobj,
-		F_CLC_DTOR32(D_ovl64_8018E1D4[mtTrigGetRandomIntRange(ARRAY_COUNT(D_ovl64_8018E1D4))]),
-		F_CLC_DTOR32(D_ovl64_8018E1EC[mtTrigGetRandomIntRange(ARRAY_COUNT(D_ovl64_8018E1EC))]),
+		F_CLC_DTOR32(D_ovl64_8018E1D4[syUtilsGetRandomIntRange(ARRAY_COUNT(D_ovl64_8018E1D4))]),
+		F_CLC_DTOR32(D_ovl64_8018E1EC[syUtilsGetRandomIntRange(ARRAY_COUNT(D_ovl64_8018E1EC))]),
 		ftGetStruct(fighter_gobj)->attr->closeup_camera_zoom,
 		0.3F,
 		28.0F
@@ -452,7 +452,7 @@ void scAutoDemoGetPlayerStartPosition(s32 mapobj_kind, Vec3f *mapobj_pos)
 	s32 mapobj_select;
 	s32 mapobj;
 
-	mapobj_random = mtTrigGetRandomIntRange(((ARRAY_COUNT(dSCAutoDemoMapObjKindList) + ARRAY_COUNT(sSCAutoDemoMapObjs)) / 2) - mapobj_kind);
+	mapobj_random = syUtilsGetRandomIntRange(((ARRAY_COUNT(dSCAutoDemoMapObjKindList) + ARRAY_COUNT(sSCAutoDemoMapObjs)) / 2) - mapobj_kind);
 
 	for (i = j = 0; i < (ARRAY_COUNT(dSCAutoDemoMapObjKindList) + ARRAY_COUNT(sSCAutoDemoMapObjs)) / 2; i++)
 	{
@@ -530,7 +530,7 @@ s32 scAutoDemoGetFighterKind(s32 player)
 	fighter_count1 = scAutoDemoGetFighterKindsNum(fighter_mask), 
 	fighter_count2 = scAutoDemoGetFighterKindsNum(sSCAutoDemoFighterMask);
 
-	fkind = scAutoDemoGetShuffledFighterKind(fighter_mask, sSCAutoDemoFighterMask, mtTrigGetRandomIntRange(fighter_count1 - fighter_count2));
+	fkind = scAutoDemoGetShuffledFighterKind(fighter_mask, sSCAutoDemoFighterMask, syUtilsGetRandomIntRange(fighter_count1 - fighter_count2));
 
 	sSCAutoDemoFighterMask |= (1 << fkind);
 
@@ -542,9 +542,9 @@ s32 scAutoDemoGetPlayerDamage(s32 player)
 {
 	if (player < 2)
 	{
-		return mtTrigGetRandomIntRange(30);
+		return syUtilsGetRandomIntRange(30);
 	}
-	else return mtTrigGetRandomIntRange(60) + 40;
+	else return syUtilsGetRandomIntRange(60) + 40;
 }
 
 // 0x8018D990

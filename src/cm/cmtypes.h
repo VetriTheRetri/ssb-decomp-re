@@ -6,7 +6,7 @@
 #include <sys/matrix.h>
 #include <sys/vector.h>
 #include <gm/generic.h>
-#include <sys/trig_rand.h>
+#include <sys/utils.h>
 
 #include <cm/cmdef.h>
 

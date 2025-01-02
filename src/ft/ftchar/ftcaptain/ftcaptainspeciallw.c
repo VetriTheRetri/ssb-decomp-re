@@ -85,7 +85,7 @@ void ftCaptainSpecialLwProcPhysics(GObj *fighter_gobj)
 
     if (fp->ga == nMPKineticsGround)
     {
-        fp->joints[nFTPartsJointTopN]->rotate.vec.f.z = -atan2f(fp->coll_data.ground_angle.x, fp->coll_data.ground_angle.y);
+        fp->joints[nFTPartsJointTopN]->rotate.vec.f.z = -syUtilsArcTan2(fp->coll_data.ground_angle.x, fp->coll_data.ground_angle.y);
         ftPhysicsApplyGroundVelTransN(fighter_gobj);
     }
     else if (fp->motion_vars.flags.flag0 != 0)

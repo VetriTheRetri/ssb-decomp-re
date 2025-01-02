@@ -140,7 +140,7 @@ GObj* lbTransitionMakeCamera(u32 id, s32 link, u32 link_priority, u64 camera_mas
     cobj->projection.persp.aspect = 15.0F / 11.0F;
     cobj->projection.persp.fovy = 45.0F;
     
-    cobj->vec.eye.z = 1100.0F / tanf(F_CLC_DTOR32(cobj->projection.persp.fovy * 0.5F));
+    cobj->vec.eye.z = 1100.0F / syUtilsTan(F_CLC_DTOR32(cobj->projection.persp.fovy * 0.5F));
 
     cobj->flags |= COBJ_FLAG_DLBUFFERS | COBJ_FLAG_ZBUFFER;
     

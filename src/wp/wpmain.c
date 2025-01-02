@@ -185,12 +185,12 @@ void wpMainReflectorRotateWeaponModel(GObj *weapon_gobj)
     if (direction.z == -1)
     {
         rotate->y = F_CST_DTOR32(90.0F);
-        rotate->x = atan2f(angle.x, angle.y);
+        rotate->x = syUtilsArcTan2(angle.x, angle.y);
     }
     else
     {
         rotate->y = F_CST_DTOR32(-90.0F);
-        rotate->x = atan2f(-angle.x, angle.y);
+        rotate->x = syUtilsArcTan2(-angle.x, angle.y);
     }
     rotate->z = 0.0F;
 }

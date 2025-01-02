@@ -206,7 +206,7 @@ void itSawamuraAttackSetFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
     ip->physics.vel_air.y = ip->physics.vel_air.z = 0.0F;
     ip->physics.vel_air.x = ITSAWAMURA_KICK_VEL_X;
 
-    syVectorRotate3D(&ip->physics.vel_air, SYVECTOR_AXIS_Z, atan2f(dist.y, dist.x));
+    syVectorRotate3D(&ip->physics.vel_air, SYVECTOR_AXIS_Z, syUtilsArcTan2(dist.y, dist.x));
 
     ip->lr = (dist.x < 0.0F) ? -1 : +1;
 

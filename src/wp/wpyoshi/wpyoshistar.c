@@ -130,7 +130,7 @@ sb32 wpYoshiStarProcHop(GObj *weapon_gobj)
 
     func_80019438(&wp->physics.vel_air, &wp->shield_collide_dir, wp->shield_collide_angle * 2);
 
-    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->physics.vel_air.y, wp->physics.vel_air.x);
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = syUtilsArcTan2(wp->physics.vel_air.y, wp->physics.vel_air.x);
 
     if (wp->physics.vel_air.x > 0.0F)
     {
@@ -151,7 +151,7 @@ sb32 wpYoshiStarProcReflector(GObj *weapon_gobj)
 
     wpMainReflectorSetLR(wp, fp);
 
-    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->physics.vel_air.y, wp->physics.vel_air.x);
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = syUtilsArcTan2(wp->physics.vel_air.y, wp->physics.vel_air.x);
 
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
     DObjGetStruct(weapon_gobj)->scale.vec.f.y = 1.0F;

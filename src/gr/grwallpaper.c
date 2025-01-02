@@ -71,8 +71,8 @@ void grWallpaperCalcPersp(SObj *wallpaper_sobj)
     }
     else
     {
-        angle.y = atan2f(dist.x, dist.z);
-        angle.x = atan2f(dist.y, dist.z);
+        angle.y = syUtilsArcTan2(dist.x, dist.z);
+        angle.x = syUtilsArcTan2(dist.y, dist.z);
     }
     scale = 20000.0F / (mag + 8000.0F);
 

@@ -138,7 +138,7 @@ void itStarmieAttackUpdateSwift(GObj *item_gobj)
 
         func_800269C0_275C0(nSYAudioFGMMonsterShoot);
 
-        ip->item_vars.starmie.swift_spawn_wait = (mtTrigGetRandomIntRange(ITSTARMIE_SWIFT_SPAWN_WAIT_RANDOM) + ITSTARMIE_SWIFT_SPAWN_WAIT_CONST);
+        ip->item_vars.starmie.swift_spawn_wait = (syUtilsGetRandomIntRange(ITSTARMIE_SWIFT_SPAWN_WAIT_RANDOM) + ITSTARMIE_SWIFT_SPAWN_WAIT_CONST);
 
         ip->physics.vel_air.x = -ip->lr * ITSTARMIE_PUSH_VEL_X;
     }
@@ -239,7 +239,7 @@ void itStarmieNFollowFindFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
     ip->physics.vel_air.y = ip->physics.vel_air.z = 0.0F;
     ip->physics.vel_air.x = ITSTARMIE_FOLLOW_VEL_X;
 
-    syVectorRotate3D(&ip->physics.vel_air, SYVECTOR_AXIS_Z, atan2f(dist.y, dist.x));
+    syVectorRotate3D(&ip->physics.vel_air, SYVECTOR_AXIS_Z, syUtilsArcTan2(dist.y, dist.x));
 
     ip->item_vars.starmie.target_pos = target_pos;
 
@@ -400,7 +400,7 @@ sb32 itStarmieWeaponSwiftProcHop(GObj *weapon_gobj)
 
     func_80019438(&wp->physics.vel_air, &wp->shield_collide_dir, wp->shield_collide_angle * 2);
 
-    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->physics.vel_air.y, wp->physics.vel_air.x);
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = syUtilsArcTan2(wp->physics.vel_air.y, wp->physics.vel_air.x);
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
     if (wp->physics.vel_air.x > 0.0F)
@@ -420,7 +420,7 @@ sb32 itStarmieWeaponSwiftProcReflector(GObj *weapon_gobj)
 
     wpMainReflectorSetLR(wp, fp);
 
-    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->physics.vel_air.y, wp->physics.vel_air.x);
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = syUtilsArcTan2(wp->physics.vel_air.y, wp->physics.vel_air.x);
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
     wp->lr = -wp->lr;

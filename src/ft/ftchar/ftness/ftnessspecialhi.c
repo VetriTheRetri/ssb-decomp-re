@@ -411,7 +411,7 @@ void ftNessSpecialHiCollideWallPhysics(GObj *fighter_gobj, MPCollData *coll_data
     }
     if (coll_data->coll_mask_curr & MPCOLL_FLAG_LWALL)
     {
-        tan = atan2f(coll_data->lwall_angle.y, coll_data->lwall_angle.x);
+        tan = syUtilsArcTan2(coll_data->lwall_angle.y, coll_data->lwall_angle.x);
 
         if (tan > F_CST_DTOR32(360.0F))
         {
@@ -422,7 +422,7 @@ void ftNessSpecialHiCollideWallPhysics(GObj *fighter_gobj, MPCollData *coll_data
     }
     if (coll_data->coll_mask_curr & MPCOLL_FLAG_RWALL)
     {
-        tan = atan2f(coll_data->rwall_angle.y, coll_data->rwall_angle.x);
+        tan = syUtilsArcTan2(coll_data->rwall_angle.y, coll_data->rwall_angle.x);
 
         if (tan > F_CST_DTOR32(360.0F))
         {
@@ -432,7 +432,7 @@ void ftNessSpecialHiCollideWallPhysics(GObj *fighter_gobj, MPCollData *coll_data
     }
     syVectorRotate3D(&fp->physics.vel_air, SYVECTOR_AXIS_Z, tan - (fp->status_vars.ness.specialhi.pkjibaku_angle * fp->lr));
 
-    fp->status_vars.ness.specialhi.pkjibaku_angle = atan2f(fp->physics.vel_air.y, fp->physics.vel_air.x * fp->lr);
+    fp->status_vars.ness.specialhi.pkjibaku_angle = syUtilsArcTan2(fp->physics.vel_air.y, fp->physics.vel_air.x * fp->lr);
 }
 
 // 0x80154758
@@ -447,11 +447,11 @@ void ftNessSpecialHiUpdateModelRoll(GObj *fighter_gobj) // Update joint's X rota
     /* 
 
     fp->joints[4]->rotate.vec.f.x = 
-    (atan2f(((fp->physics.vel_air.x * fp->lr) < 0.0F) ? -fp->physics.vel_air.x : fp->physics.vel_air.x, fp->physics.vel_air.y) * fp->lr) - F_CST_DTOR32(90.0F); 
+    (syUtilsArcTan2(((fp->physics.vel_air.x * fp->lr) < 0.0F) ? -fp->physics.vel_air.x : fp->physics.vel_air.x, fp->physics.vel_air.y) * fp->lr) - F_CST_DTOR32(90.0F); 
     
     */
 
-    fp->joints[4]->rotate.vec.f.x = (atan2f(fp->physics.vel_air.x, fp->physics.vel_air.y) * fp->lr) - F_CST_DTOR32(90.0F);
+    fp->joints[4]->rotate.vec.f.x = (syUtilsArcTan2(fp->physics.vel_air.x, fp->physics.vel_air.y) * fp->lr) - F_CST_DTOR32(90.0F);
 
     func_ovl2_800EB528(fp->joints[4]);
 }
@@ -645,7 +645,7 @@ void ftNessSpecialHiJibakuSwitchStatusAir(GObj *fighter_gobj)
     }
     ftMainSetStatus(fighter_gobj, nFTNessStatusSpecialAirHiJibaku, frame_begin, 1.0F, FTNESS_SPECIALHI_STATUS_FLAGS);
 
-    fp->status_vars.ness.specialhi.pkjibaku_angle = atan2f(fp->physics.vel_air.y, fp->physics.vel_air.x * fp->lr);
+    fp->status_vars.ness.specialhi.pkjibaku_angle = syUtilsArcTan2(fp->physics.vel_air.y, fp->physics.vel_air.x * fp->lr);
 
     fp->jumps_used = fp->attr->jumps_max;
 }
@@ -716,7 +716,7 @@ void ftNessSpecialAirHiJibakuSetStatus(GObj *fighter_gobj)
 
     fp->lr = (dist_x >= 0.0F) ? +1 : -1;
 
-    fp->status_vars.ness.specialhi.pkjibaku_angle  = atan2f(dist_y, fp->lr * dist_x);
+    fp->status_vars.ness.specialhi.pkjibaku_angle  = syUtilsArcTan2(dist_y, fp->lr * dist_x);
 
     fp->physics.vel_air.x = (__cosf(fp->status_vars.ness.specialhi.pkjibaku_angle) * FTNESS_PKJIBAKU_VEL * fp->lr);
     fp->physics.vel_air.y = (__sinf(fp->status_vars.ness.specialhi.pkjibaku_angle) * FTNESS_PKJIBAKU_VEL);
@@ -769,6 +769,6 @@ void ftNessSpecialAirHiJibakuBoundSetStatus(GObj *fighter_gobj, Vec3f *angle, Ve
 
     ftMainSetStatus(fighter_gobj, nFTNessStatusSpecialAirHiBound, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    efManagerImpactWaveMakeEffect(pos, SYVECTOR_AXIS_Z, atan2f(-angle->x, angle->y));
+    efManagerImpactWaveMakeEffect(pos, SYVECTOR_AXIS_Z, syUtilsArcTan2(-angle->x, angle->y));
     efManagerQuakeMakeEffect(2);
 }

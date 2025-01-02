@@ -438,7 +438,7 @@ void ftCommonThrownCommonStarProcMap(GObj *fighter_gobj)
             fp->motion_vars.flags.flag1 = 0;
         }
         efManagerQuakeMakeEffect(2);
-        efManagerImpactWaveMakeEffect(&pos, SYVECTOR_AXIS_Z, atan2f(-angle->x, angle->y));
+        efManagerImpactWaveMakeEffect(&pos, SYVECTOR_AXIS_Z, syUtilsArcTan2(-angle->x, angle->y));
     }
 }
 

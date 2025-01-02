@@ -489,7 +489,7 @@ void itManagerSetItemSpawnWait(void)
 {
     gITManagerSpawnActor.item_spawn_wait = 
     dITManagerAppearanceRatesMin[gSCManagerBattleState->item_appearance_rate] + 
-    mtTrigGetRandomIntRange(dITManagerAppearanceRatesMax[gSCManagerBattleState->item_appearance_rate] - dITManagerAppearanceRatesMin[gSCManagerBattleState->item_appearance_rate]);
+    syUtilsGetRandomIntRange(dITManagerAppearanceRatesMax[gSCManagerBattleState->item_appearance_rate] - dITManagerAppearanceRatesMin[gSCManagerBattleState->item_appearance_rate]);
 }
 
 // 0x8016EB78
@@ -512,7 +512,7 @@ void itManagerMakeRandomItem(GObj *item_gobj)
         {
             index = itMainGetWeightedItemKind(&gITManagerSpawnActor.weights);
 
-            mpCollisionGetMapObjPositionID(gITManagerSpawnActor.item_mapobjs[mtTrigGetRandomIntRange(gITManagerSpawnActor.item_mapobj_count)], &pos);
+            mpCollisionGetMapObjPositionID(gITManagerSpawnActor.item_mapobjs[syUtilsGetRandomIntRange(gITManagerSpawnActor.item_mapobj_count)], &pos);
 
             vel.x = vel.y = vel.z = 0.0F;
 

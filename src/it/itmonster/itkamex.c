@@ -150,7 +150,7 @@ void itKamexAttackUpdateHydro(GObj *item_gobj)
         efManagerDamageSpawnSparksMakeEffect(&pos, ip->lr);
         func_800269C0_275C0(nSYAudioFGMKamexHydro);
 
-        ip->item_vars.kamex.hydro_spawn_wait = mtTrigGetRandomIntRange(ITKAMEX_HYDRO_SPAWN_WAIT_RANDOM) + ITKAMEX_HYDRO_SPAWN_WAIT_CONST;
+        ip->item_vars.kamex.hydro_spawn_wait = syUtilsGetRandomIntRange(ITKAMEX_HYDRO_SPAWN_WAIT_RANDOM) + ITKAMEX_HYDRO_SPAWN_WAIT_CONST;
 
         pos = dobj->translate.vec.f;
 
@@ -463,7 +463,7 @@ sb32 itKamexWeaponHydroProcReflector(GObj *weapon_gobj)
 
     wpMainReflectorSetLR(wp, fp);
 
-    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->physics.vel_air.y, wp->physics.vel_air.x);
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = syUtilsArcTan2(wp->physics.vel_air.y, wp->physics.vel_air.x);
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
     wp->lr = -wp->lr;

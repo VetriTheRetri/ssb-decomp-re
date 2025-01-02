@@ -63,7 +63,7 @@ void ftKirbySpecialLwSetDropFallVel(FTStruct *fp)
 // 0x80161478
 f32 ftKirbySpecialLwGetGroundAxisYaw(FTStruct *fp)
 {
-    f32 rot_z = -atan2f(fp->coll_data.ground_angle.x, fp->coll_data.ground_angle.y);
+    f32 rot_z = -syUtilsArcTan2(fp->coll_data.ground_angle.x, fp->coll_data.ground_angle.y);
 
     fp->joints[nFTPartsJointTopN]->rotate.vec.f.z = rot_z;
 

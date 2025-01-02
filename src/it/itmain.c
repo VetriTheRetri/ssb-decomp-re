@@ -574,7 +574,7 @@ s32 itMainSearchWeightedItemKind(s32 random, ITRandomWeights *weights, u32 min, 
 // 0x80173090
 s32 itMainGetWeightedItemKind(ITRandomWeights *weights)
 {
-    return weights->item_kinds[itMainSearchWeightedItemKind(mtTrigGetRandomIntRange(weights->item_num), weights, 0, weights->item_count)];
+    return weights->item_kinds[itMainSearchWeightedItemKind(syUtilsGetRandomIntRange(weights->item_num), weights, 0, weights->item_count)];
 }
 
 // 0x801730D4
@@ -641,7 +641,7 @@ GObj* itMainMakeMonster(GObj *item_gobj)
     vel.z = 0.0F;
 
     // Is this checking to spawn Mew? Can only spawn once at least one character has been unlocked.
-    if ((gSCManagerBackupData.unlock_mask & LBBACKUP_UNLOCK_MASK_NEWCOMERS) && (mtTrigGetRandomIntRange(151) == 0) && (gITManagerMonsterData.monster_curr != nITKindMew) && (gITManagerMonsterData.monster_prev != nITKindMew))
+    if ((gSCManagerBackupData.unlock_mask & LBBACKUP_UNLOCK_MASK_NEWCOMERS) && (syUtilsGetRandomIntRange(151) == 0) && (gITManagerMonsterData.monster_curr != nITKindMew) && (gITManagerMonsterData.monster_prev != nITKindMew))
     {
         index = nITKindMew;
     }
@@ -655,7 +655,7 @@ GObj* itMainMakeMonster(GObj *item_gobj)
                 j++;
             }
         }
-        index = gITManagerMonsterData.monster_id[mtTrigGetRandomIntRange(gITManagerMonsterData.monsters_num)];
+        index = gITManagerMonsterData.monster_id[syUtilsGetRandomIntRange(gITManagerMonsterData.monsters_num)];
     }
     if (gITManagerMonsterData.monsters_num != 10)
     {

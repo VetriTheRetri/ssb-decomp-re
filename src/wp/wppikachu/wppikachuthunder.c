@@ -203,7 +203,7 @@ sb32 wpPikachuThunderTrailProcUpdate(GObj *weapon_gobj)
 
         return TRUE;
     }
-    else DObjGetStruct(weapon_gobj)->mobj->texture_id_curr = mtTrigGetRandomIntRange(WPPIKACHUTHUNDER_TEXTURE_COUNT - 1);
+    else DObjGetStruct(weapon_gobj)->mobj->texture_id_curr = syUtilsGetRandomIntRange(WPPIKACHUTHUNDER_TEXTURE_COUNT - 1);
 
     return FALSE;
 }

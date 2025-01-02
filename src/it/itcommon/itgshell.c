@@ -422,11 +422,11 @@ sb32 itGShellCommonProcHit(GObj *item_gobj)
 
     ip->damage_coll.hitstatus = nGMHitStatusNormal;
 
-    ip->item_vars.shell.health = mtTrigGetRandomIntRange(ITGSHELL_HEALTH_MAX);
+    ip->item_vars.shell.health = syUtilsGetRandomIntRange(ITGSHELL_HEALTH_MAX);
 
     ip->physics.vel_air.y = ITGSHELL_REBOUND_VEL_Y;
 
-    ip->physics.vel_air.x = mtTrigGetRandomFloat() * (-ip->physics.vel_air.x * ITGSHELL_REBOUND_MUL_X);
+    ip->physics.vel_air.x = syUtilsGetRandomFloat() * (-ip->physics.vel_air.x * ITGSHELL_REBOUND_MUL_X);
 
     itMainClearOwnerStats(item_gobj);
     itGShellCommonClearAnim(item_gobj);

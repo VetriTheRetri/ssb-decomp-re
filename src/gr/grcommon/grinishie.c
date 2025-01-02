@@ -455,7 +455,7 @@ void grInishiePowerBlockUpdateMake(void)
 
     if (gGRCommonStruct.inishie.pblock_appear_wait == 0)
     {
-        s32 pblock_pos_id = gGRCommonStruct.inishie.pblock_pos_ids[mtTrigGetRandomIntRange(gGRCommonStruct.inishie.pblock_pos_count)];
+        s32 pblock_pos_id = gGRCommonStruct.inishie.pblock_pos_ids[syUtilsGetRandomIntRange(gGRCommonStruct.inishie.pblock_pos_count)];
 
         mpCollisionGetMapObjPositionID(pblock_pos_id, &pos);
 

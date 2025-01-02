@@ -351,7 +351,7 @@ void itNBumperAttachedSetModelYaw(GObj *item_gobj)
 
     ip->attach_line_id = ip->coll_data.ground_line_id;
 
-    dobj->rotate.vec.f.z = atan2f(ground_angle.y, ground_angle.x) - F_CLC_DTOR32(90.0F);
+    dobj->rotate.vec.f.z = syUtilsArcTan2(ground_angle.y, ground_angle.x) - F_CLC_DTOR32(90.0F);
 }
 
 // 0x8017B8DC

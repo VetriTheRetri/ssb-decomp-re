@@ -2,7 +2,7 @@
 #include "vector.h"
 
 #include "macros.h"
-#include <sys/trig_rand.h>
+#include <sys/utils.h>
 
 #include <ssb_types.h>
 
@@ -126,7 +126,7 @@ f32 syVectorAngleDiff3D(Vec3f *a, Vec3f *b)
         {
             cos_diff = -1.0F;
         }
-        return acosf(cos_diff);
+        return syUtilsArcCos(cos_diff);
     }
     // at least one of the vectors is a zero vector
     return 0.0F;

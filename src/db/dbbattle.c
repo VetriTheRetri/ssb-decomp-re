@@ -301,7 +301,7 @@ void dbBattleSetDemoFighterKinds(void)
 	}
 	non_recently_demoed_count = dbBattleGetFighterKindsNum(unlocked_mask) - dbBattleGetFighterKindsNum(gSCManagerSceneData.demo_mask_prev);
 
-	gSCManagerSceneData.demo_fkind[0] = dbBattleGetShuffledFighterKind(unlocked_mask, gSCManagerSceneData.demo_mask_prev, mtTrigGetRandomIntRange(non_recently_demoed_count));
+	gSCManagerSceneData.demo_fkind[0] = dbBattleGetShuffledFighterKind(unlocked_mask, gSCManagerSceneData.demo_mask_prev, syUtilsGetRandomIntRange(non_recently_demoed_count));
 
 	if (gSCManagerSceneData.demo_mask_prev == 0)
 	{
@@ -317,7 +317,7 @@ void dbBattleSetDemoFighterKinds(void)
 	}
 	else
 	{
-		gSCManagerSceneData.demo_fkind[1] = dbBattleGetShuffledFighterKind(unlocked_mask, gSCManagerSceneData.demo_mask_prev, mtTrigGetRandomIntRange(non_recently_demoed_count));
+		gSCManagerSceneData.demo_fkind[1] = dbBattleGetShuffledFighterKind(unlocked_mask, gSCManagerSceneData.demo_mask_prev, syUtilsGetRandomIntRange(non_recently_demoed_count));
 		gSCManagerSceneData.demo_mask_prev |= LBBACKUP_MASK_FIGHTER(gSCManagerSceneData.demo_fkind[1]);
 	}
 }

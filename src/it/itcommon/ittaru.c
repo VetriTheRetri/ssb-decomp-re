@@ -346,7 +346,7 @@ sb32 itTaruRollProcUpdate(GObj *item_gobj)
     f32 roll_rotate_step;
     f32 sqrt_vel;
 
-    ip->physics.vel_air.x += (-(atan2f(ip->coll_data.ground_angle.y, ip->coll_data.ground_angle.x) - F_CLC_DTOR32(90.0F)) * ITTARU_MUL_VEL_X);
+    ip->physics.vel_air.x += (-(syUtilsArcTan2(ip->coll_data.ground_angle.y, ip->coll_data.ground_angle.x) - F_CLC_DTOR32(90.0F)) * ITTARU_MUL_VEL_X);
 
     ip->lr = (ip->physics.vel_air.x >= 0.0F) ? +1 : -1;
 

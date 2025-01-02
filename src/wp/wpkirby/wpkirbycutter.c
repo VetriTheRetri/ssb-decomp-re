@@ -59,7 +59,7 @@ sb32 wpKirbyCutterProcUpdate(GObj *weapon_gobj)
     }
     else if (wp->ga == nMPKineticsGround)
     {
-        DObjGetStruct(weapon_gobj)->rotate.vec.f.z = -atan2f(wp->coll_data.ground_angle.x, wp->coll_data.ground_angle.y);
+        DObjGetStruct(weapon_gobj)->rotate.vec.f.z = -syUtilsArcTan2(wp->coll_data.ground_angle.x, wp->coll_data.ground_angle.y);
     }
     return FALSE;
 }

@@ -238,8 +238,8 @@ sb32 itMLuckyMakeEggProcUpdate(GObj *lucky_gobj)
             {
                 pos = dobj->translate.vec.f;
 
-                vel.x = (mtTrigGetRandomFloat() * ITMLUCKY_EGG_SPAWN_BASE_VEL) + ITMLUCKY_EGG_SPAWN_ADD_VEL_X;
-                vel.y = (mtTrigGetRandomFloat() * ITMLUCKY_EGG_SPAWN_BASE_VEL) + ITMLUCKY_EGG_SPAWN_ADD_VEL_Y;
+                vel.x = (syUtilsGetRandomFloat() * ITMLUCKY_EGG_SPAWN_BASE_VEL) + ITMLUCKY_EGG_SPAWN_ADD_VEL_X;
+                vel.y = (syUtilsGetRandomFloat() * ITMLUCKY_EGG_SPAWN_BASE_VEL) + ITMLUCKY_EGG_SPAWN_ADD_VEL_Y;
                 vel.z = 0.0F;
 
                 egg_gobj = itManagerMakeItemSetupCommon(lucky_gobj, nITKindEgg, &pos, &vel, (ITEM_FLAG_COLLPROJECT | ITEM_FLAG_PARENT_ITEM));

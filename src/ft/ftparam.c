@@ -244,7 +244,7 @@ void ftParamSetDamageShuffle(FTStruct *fp, sb32 is_electric, s32 damage, s32 sta
 // 0x800E8000
 f32 ftParamGetStickAngleRads(FTStruct *fp)
 {
-    return atan2f(fp->input.pl.stick_range.y, ABS(fp->input.pl.stick_range.x));
+    return syUtilsArcTan2(fp->input.pl.stick_range.y, ABS(fp->input.pl.stick_range.x));
 }
 
 // 0x800E8044
@@ -1468,7 +1468,7 @@ f32 ftParamGetCommonKnockback(s32 percent_damage, s32 recent_damage, s32 hit_dam
     }
     if (gSCManagerBackupData.error_flags & LBBACKUP_ERROR_RANDOMKNOCKBACK)
     {
-        knockback = mtTrigGetRandomFloat() * 200.0F;
+        knockback = syUtilsGetRandomFloat() * 200.0F;
     }
     return knockback;
 }
@@ -1494,7 +1494,7 @@ f32 ftParamGetGroundHazardKnockback(s32 percent_damage, s32 recent_damage, s32 h
     }
     if (gSCManagerBackupData.error_flags & LBBACKUP_ERROR_RANDOMKNOCKBACK)
     {
-        knockback = mtTrigGetRandomFloat() * 200.0F;
+        knockback = syUtilsGetRandomFloat() * 200.0F;
     }
     return knockback;
 }
@@ -1538,7 +1538,7 @@ void ftParamUpdateDamage(FTStruct *fp, s32 damage)
 
             if ((ip->weight != nITWeightHeavy) || (fp->fkind != nFTKindDonkey) && (fp->fkind != nFTKindNDonkey) && (fp->fkind != nFTKindGDonkey))
             {
-                if ((damage > mtTrigGetRandomIntRange(60)) || ((itMainCheckShootNoAmmo(fp->item_gobj) != FALSE) && (mtTrigGetRandomIntRange(2) == 0)))
+                if ((damage > syUtilsGetRandomIntRange(60)) || ((itMainCheckShootNoAmmo(fp->item_gobj) != FALSE) && (syUtilsGetRandomIntRange(2) == 0)))
                 {
                     ftSetupDropItem(fp);
                 }
@@ -1862,15 +1862,15 @@ void* ftParamMakeEffect(GObj *fighter_gobj, s32 effect_id, s32 joint_id, Vec3f *
         {
             if (effect_scatter->x != 0)
             {
-                pos.x += (mtTrigGetRandomFloat() - 0.5F) * (effect_scatter->x * 2.0F);
+                pos.x += (syUtilsGetRandomFloat() - 0.5F) * (effect_scatter->x * 2.0F);
             }
             if (effect_scatter->y != 0)
             {
-                pos.y += (mtTrigGetRandomFloat() - 0.5F) * (effect_scatter->y * 2.0F);
+                pos.y += (syUtilsGetRandomFloat() - 0.5F) * (effect_scatter->y * 2.0F);
             }
             if (effect_scatter->z != 0)
             {
-                pos.z += (mtTrigGetRandomFloat() - 0.5F) * (effect_scatter->z * 2.0F);
+                pos.z += (syUtilsGetRandomFloat() - 0.5F) * (effect_scatter->z * 2.0F);
             }
         }
         if (is_scale_pos != FALSE)
@@ -1935,8 +1935,8 @@ void* ftParamMakeEffect(GObj *fighter_gobj, s32 effect_id, s32 joint_id, Vec3f *
         break;
 
     case nEFKindDustExpandLarge:
-        pos.x += ((mtTrigGetRandomFloat() * 160.0F) - 80.0F);
-        pos.y += ((mtTrigGetRandomFloat() * 160.0F) - 80.0F);
+        pos.x += ((syUtilsGetRandomFloat() * 160.0F) - 80.0F);
+        pos.y += ((syUtilsGetRandomFloat() * 160.0F) - 80.0F);
 
         effect = efManagerDustExpandLargeMakeEffect(&pos);
         break;
@@ -1960,7 +1960,7 @@ void* ftParamMakeEffect(GObj *fighter_gobj, s32 effect_id, s32 joint_id, Vec3f *
     case nEFKindImpactWave:
         if ((fp->ga == nMPKineticsGround) && (fp->coll_data.ground_line_id != -1) && (fp->coll_data.ground_line_id != -2))
         {
-            effect = efManagerImpactWaveMakeEffect(&pos, 4, atan2f(-fp->coll_data.ground_angle.x, fp->coll_data.ground_angle.y));
+            effect = efManagerImpactWaveMakeEffect(&pos, 4, syUtilsArcTan2(-fp->coll_data.ground_angle.x, fp->coll_data.ground_angle.y));
         }
         else effect = efManagerImpactAirWaveMakeEffect(&pos, 4);
         break;
@@ -2616,23 +2616,23 @@ void func_ovl2_800EBD08(DObj *root_dobj, f32 arg1, Vec3f *vec, f32 arg3)
         {
             child1_dobj->rotate.vec.f.y = F_CLC_DTOR32(90.0F);
 
-            child1_dobj->rotate.vec.f.x = atan2f((-sp38 * xmul) + (sp58 * normal), (-sp38 * ymul) + (sp50 * normal));
+            child1_dobj->rotate.vec.f.x = syUtilsArcTan2((-sp38 * xmul) + (sp58 * normal), (-sp38 * ymul) + (sp50 * normal));
         }
         else
         {
             child1_dobj->rotate.vec.f.y = F_CLC_DTOR32(-90.0F);
 
-            child1_dobj->rotate.vec.f.x = atan2f(-((-sp38 * xmul) + (sp58 * normal)), (-sp38 * ymul) + (sp50 * normal));
+            child1_dobj->rotate.vec.f.x = syUtilsArcTan2(-((-sp38 * xmul) + (sp58 * normal)), (-sp38 * ymul) + (sp50 * normal));
         }
         child1_dobj->rotate.vec.f.z = 0.0F;
     }
     else
     {
-        child1_dobj->rotate.vec.f.y = asinf(-inverse_xy_2);
-        child1_dobj->rotate.vec.f.x = atan2f((-sp38 * zmul) + (imbadatmathhelp * normal), square_xy * cos_arg3 * inverse_xyz);
-        child1_dobj->rotate.vec.f.z = atan2f((ymul * normal) + (sp50 * sp38), (xmul * normal) + (sp58 * sp38));
+        child1_dobj->rotate.vec.f.y = syUtilsArcSin(-inverse_xy_2);
+        child1_dobj->rotate.vec.f.x = syUtilsArcTan2((-sp38 * zmul) + (imbadatmathhelp * normal), square_xy * cos_arg3 * inverse_xyz);
+        child1_dobj->rotate.vec.f.z = syUtilsArcTan2((ymul * normal) + (sp50 * sp38), (xmul * normal) + (sp58 * sp38));
     }
-    child2_dobj->rotate.vec.f.z = acosf(((SQUARE(sqrtxyz) - square_trax) - square_arg1) / (2.0F * trax * arg1));
+    child2_dobj->rotate.vec.f.z = syUtilsArcCos(((SQUARE(sqrtxyz) - square_trax) - square_arg1) / (2.0F * trax * arg1));
 
     func_ovl2_800EB528(child1_dobj);
     func_ovl2_800EB528(child2_dobj);

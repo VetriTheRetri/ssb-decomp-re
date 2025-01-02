@@ -55,5 +55,5 @@ void ftBossTsutsuku2SetStatus(GObj *fighter_gobj)
 
     fp = ftGetStruct(fighter_gobj);
 
-    fp->status_vars.boss.tsutsuku.wait_timer = mtTrigGetRandomIntRange(80) + 60;
+    fp->status_vars.boss.tsutsuku.wait_timer = syUtilsGetRandomIntRange(80) + 60;
 }

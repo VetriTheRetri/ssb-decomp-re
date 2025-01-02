@@ -150,7 +150,7 @@ void itKabigonFallInitVars(GObj *item_gobj)
 
     ip->physics.vel_air.y = ITKABIGON_DROP_VEL_Y;
 
-    dobj->translate.vec.f.x += ((ITKABIGON_DROP_OFF_X_MUL * mtTrigGetRandomFloat()) + ITKABIGON_DROP_OFF_X_ADD);
+    dobj->translate.vec.f.x += ((ITKABIGON_DROP_OFF_X_MUL * syUtilsGetRandomFloat()) + ITKABIGON_DROP_OFF_X_ADD);
 
     itMainRefreshAttackColl(item_gobj);
 
@@ -205,8 +205,8 @@ sb32 itKabigonJumpProcUpdate(GObj *item_gobj)
     {
         Vec3f pos = dobj->translate.vec.f;
 
-        pos.x += (mtTrigGetRandomFloat() * ITKABIGON_JUMP_GFX_MUL_OFF) - ITKABIGON_JUMP_GFX_SUB_OFF;
-        pos.y += (mtTrigGetRandomFloat() * ITKABIGON_JUMP_GFX_MUL_OFF) - ITKABIGON_JUMP_GFX_SUB_OFF;
+        pos.x += (syUtilsGetRandomFloat() * ITKABIGON_JUMP_GFX_MUL_OFF) - ITKABIGON_JUMP_GFX_SUB_OFF;
+        pos.y += (syUtilsGetRandomFloat() * ITKABIGON_JUMP_GFX_MUL_OFF) - ITKABIGON_JUMP_GFX_SUB_OFF;
 
         efManagerDustExpandLargeMakeEffect(&pos);
 

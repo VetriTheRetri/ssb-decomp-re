@@ -7,8 +7,8 @@
 //                               //
 // // // // // // // // // // // //
 
-extern f32 mtTrigGetRandomFloat();
-extern f32 atan2f(f32, f32);
+extern f32 syUtilsGetRandomFloat();
+extern f32 syUtilsArcTan2(f32, f32);
 
 extern alSoundEffect *func_800269C0_275C0(u16);
 
@@ -162,13 +162,13 @@ void itTaruBombContainerSmashMakeEffect(Vec3f *pos)
 
                 dobj->translate.vec.f = *pos;
 
-                dobj->scale.vec.f.x = (mtTrigGetRandomFloat() * 48.0F) + -24.0F;
-                dobj->scale.vec.f.y = (mtTrigGetRandomFloat() * 50.0F) + 10.0F;
-                dobj->scale.vec.f.z = (mtTrigGetRandomFloat() * 32.0F) + -16.0F;
+                dobj->scale.vec.f.x = (syUtilsGetRandomFloat() * 48.0F) + -24.0F;
+                dobj->scale.vec.f.y = (syUtilsGetRandomFloat() * 50.0F) + 10.0F;
+                dobj->scale.vec.f.z = (syUtilsGetRandomFloat() * 32.0F) + -16.0F;
 
-                dobj->anim_wait = F_CLC_DTOR32((mtTrigGetRandomFloat() * 100.0F) + -50.0F);
-                dobj->anim_speed = F_CLC_DTOR32((mtTrigGetRandomFloat() * 100.0F) + -50.0F);
-                dobj->anim_frame = F_CLC_DTOR32((mtTrigGetRandomFloat() * 100.0F) + -50.0F);
+                dobj->anim_wait = F_CLC_DTOR32((syUtilsGetRandomFloat() * 100.0F) + -50.0F);
+                dobj->anim_speed = F_CLC_DTOR32((syUtilsGetRandomFloat() * 100.0F) + -50.0F);
+                dobj->anim_frame = F_CLC_DTOR32((syUtilsGetRandomFloat() * 100.0F) + -50.0F);
             }
             ep->effect_vars.container.lifetime = ITTARUBOMB_GFX_LIFETIME;
 
@@ -309,7 +309,7 @@ sb32 itTaruBombRollProcUpdate(GObj *item_gobj)
     f32 roll_rotate_step;
     f32 sqrt_vel;
 
-    ip->physics.vel_air.x += (-(atan2f(ip->coll_data.ground_angle.y, ip->coll_data.ground_angle.x) - F_CLC_DTOR32(90.0F) /*HALF_PI32*/) * ITTARUBOMB_MUL_VEL_X);
+    ip->physics.vel_air.x += (-(syUtilsArcTan2(ip->coll_data.ground_angle.y, ip->coll_data.ground_angle.x) - F_CLC_DTOR32(90.0F) /*HALF_PI32*/) * ITTARUBOMB_MUL_VEL_X);
 
     ip->lr = (ip->physics.vel_air.x >= 0.0F) ? +1 : -1;
 

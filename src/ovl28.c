@@ -2150,12 +2150,12 @@ void mnTrainingAutopositionOverlappedTokens(s32 port_id_1, s32 port_id_2, f32 un
 	int unused_2;
 
 	if (SObjGetStruct(gMNTrainingPanels[port_id_1].token)->pos.x == SObjGetStruct(gMNTrainingPanels[port_id_2].token)->pos.x)
-		gMNTrainingPanels[port_id_1].token_x_velocity += mtTrigGetRandomIntRange(2) - 1;
+		gMNTrainingPanels[port_id_1].token_x_velocity += syUtilsGetRandomIntRange(2) - 1;
 	else
 		gMNTrainingPanels[port_id_1].token_x_velocity += (-1.0F * (SObjGetStruct(gMNTrainingPanels[port_id_2].token)->pos.x - SObjGetStruct(gMNTrainingPanels[port_id_1].token)->pos.x)) / 10.0F;
 
 	if (SObjGetStruct(gMNTrainingPanels[port_id_1].token)->pos.y == SObjGetStruct(gMNTrainingPanels[port_id_2].token)->pos.y)
-		gMNTrainingPanels[port_id_1].token_y_velocity += mtTrigGetRandomIntRange(2) - 1;
+		gMNTrainingPanels[port_id_1].token_y_velocity += syUtilsGetRandomIntRange(2) - 1;
 	else
 		gMNTrainingPanels[port_id_1].token_y_velocity += (-1.0F * (SObjGetStruct(gMNTrainingPanels[port_id_2].token)->pos.y - SObjGetStruct(gMNTrainingPanels[port_id_1].token)->pos.y)) / 10.0F;
 }
@@ -2672,7 +2672,7 @@ void mnTrainingLoadMatchInfo()
 		{
 			do
 			{
-				fkind = mtTrigGetRandomTimeUCharRange(12);
+				fkind = syUtilsGetRandomTimeUCharRange(12);
 			} while (mnTrainingCheckFighterIsXBoxed(fkind));
 		} while (mnTrainingGetIsLocked(fkind));
 

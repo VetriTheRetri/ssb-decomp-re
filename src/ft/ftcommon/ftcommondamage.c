@@ -205,7 +205,7 @@ void ftCommonDamageFlyRollUpdateModelRoll(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->joints[4]->rotate.vec.f.x = atan2f(fp->physics.vel_air.x + fp->physics.vel_damage_air.x, fp->physics.vel_air.y + fp->physics.vel_damage_air.y) * fp->lr;
+    fp->joints[4]->rotate.vec.f.x = syUtilsArcTan2(fp->physics.vel_air.x + fp->physics.vel_damage_air.x, fp->physics.vel_air.y + fp->physics.vel_damage_air.y) * fp->lr;
 
     func_ovl2_800EB528(fp->joints[4]);
 }
@@ -569,7 +569,7 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
         {
             status_id_var = status_id_set = nFTCommonStatusDamageFlyTop;
         }
-        else if ((this_fp->percent_damage >= FTCOMMON_DAMAGE_FIGHTER_FLYROLL_DAMAGE_MIN) && (mtTrigGetRandomFloat() < FTCOMMON_DAMAGE_FIGHTER_FLYROLL_RANDOM_CHANCE))
+        else if ((this_fp->percent_damage >= FTCOMMON_DAMAGE_FIGHTER_FLYROLL_DAMAGE_MIN) && (syUtilsGetRandomFloat() < FTCOMMON_DAMAGE_FIGHTER_FLYROLL_RANDOM_CHANCE))
         {
             status_id_var = status_id_set = nFTCommonStatusDamageFlyRoll;           
         }

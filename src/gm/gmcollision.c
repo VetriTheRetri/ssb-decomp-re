@@ -302,21 +302,21 @@ void func_ovl2_800EDA0C(Mtx44f mtx, Vec3f *rotate)
         if (dst[0][2] == -1.0F)
         {
             rotate->y = F_CLC_DTOR32(90.0F);
-            rotate->x = atan2f(dst[1][0], dst[1][1]);
+            rotate->x = syUtilsArcTan2(dst[1][0], dst[1][1]);
 
         }
         else
         {
             rotate->y = F_CLC_DTOR32(-90.0F);
-            rotate->x = atan2f(-dst[1][0], dst[1][1]);
+            rotate->x = syUtilsArcTan2(-dst[1][0], dst[1][1]);
         }
         rotate->z = 0;
     }
     else
     {
-        rotate->y = asinf(-dst[0][2]);
-        rotate->x = atan2f(dst[1][2], dst[2][2]);
-        rotate->z = atan2f(dst[0][1], dst[0][0]);
+        rotate->y = syUtilsArcSin(-dst[0][2]);
+        rotate->x = syUtilsArcTan2(dst[1][2], dst[2][2]);
+        rotate->z = syUtilsArcTan2(dst[0][1], dst[0][0]);
     }
 }
 
@@ -2170,5 +2170,5 @@ f32 gmCollisionGetDamageSlashRotation(FTStruct *fp, FTAttackColl *attack_coll)
         pos.x = attack_coll->pos_curr.x - attack_coll->pos_prev.x;
         pos.y = attack_coll->pos_curr.y - attack_coll->pos_prev.y;
     }
-    return atan2f(pos.y, pos.x);
+    return syUtilsArcTan2(pos.y, pos.x);
 }

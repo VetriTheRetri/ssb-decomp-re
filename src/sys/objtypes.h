@@ -10,7 +10,7 @@
 #include <PR/sp.h>
 #include <PR/gu.h>
 
-#include <sys/trig_rand.h>
+#include <sys/utils.h>
 #include <sys/vector.h>
 #include <sys/taskman.h>
 

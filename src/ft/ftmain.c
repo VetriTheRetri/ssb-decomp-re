@@ -390,7 +390,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
     case nFTMotionEventPlaySmashVoice:
         if (!(fp->is_muted))
         {
-            ftParamPlayVoice(fp, fp->attr->smash_sfx[mtTrigGetRandomIntRange(ARRAY_COUNT(fp->attr->smash_sfx))]);
+            ftParamPlayVoice(fp, fp->attr->smash_sfx[syUtilsGetRandomIntRange(ARRAY_COUNT(fp->attr->smash_sfx))]);
 
             ftMotionEventAdvance(ms, FTMotionEventDefault);
         }
@@ -1749,7 +1749,7 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
         {
             if (fp->ga == nMPKineticsAir)
             {
-                damage_angle = atan2f(vel_damage_air->y, vel_damage_air->x);
+                damage_angle = syUtilsArcTan2(vel_damage_air->y, vel_damage_air->x);
 
                 vel_damage_new.y = vel_damage_air->x;
                 vel_damage_new.x = vel_damage_air->y;
@@ -2633,7 +2633,7 @@ void ftMainGetBumperDamageAngle(GObj *fighter_gobj, GObj *attacker_gobj)
         }
         dist_y = (DObjGetStruct(fighter_gobj)->translate.vec.f.y + fp->coll_data.map_coll.center) - DObjGetStruct(attacker_gobj)->translate.vec.f.y;
 
-        fp->damage_angle = (dist_x == 0) ? 0 : F_CLC_RTOD32(atanf(dist_y / dist_x));
+        fp->damage_angle = (dist_x == 0) ? 0 : F_CLC_RTOD32(syUtilsArcTan(dist_y / dist_x));
     }
 }
 

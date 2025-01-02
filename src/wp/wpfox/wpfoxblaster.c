@@ -88,7 +88,7 @@ sb32 wpFoxBlasterProcHop(GObj *weapon_gobj)
 
     func_80019438(&wp->physics.vel_air, &wp->shield_collide_dir, wp->shield_collide_angle * 2);
 
-    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->physics.vel_air.y, wp->physics.vel_air.x);
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = syUtilsArcTan2(wp->physics.vel_air.y, wp->physics.vel_air.x);
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
     efManagerFoxBlasterGlowMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
@@ -104,7 +104,7 @@ sb32 wpFoxBlasterProcReflector(GObj *weapon_gobj)
 
     wpMainReflectorSetLR(wp, fp);
 
-    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->physics.vel_air.y, wp->physics.vel_air.x);
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = syUtilsArcTan2(wp->physics.vel_air.y, wp->physics.vel_air.x);
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
     return FALSE;
@@ -124,7 +124,7 @@ GObj* wpFoxBlasterMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 
     wp->physics.vel_air.x = wp->lr * WPBLASTER_VEL_X;
 
-    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->physics.vel_air.y, wp->physics.vel_air.x);
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = syUtilsArcTan2(wp->physics.vel_air.y, wp->physics.vel_air.x);
 
     efManagerFoxBlasterGlowMakeEffect(pos);
 

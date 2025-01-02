@@ -152,7 +152,7 @@ void ftPikachuSpecialHiUpdateModelRollScale(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->joints[FTPIKACHU_QUICKATTACK_BASE_JOINT]->rotate.vec.f.x = (atan2f(fp->physics.vel_air.x, fp->physics.vel_air.y) * fp->lr) - F_CST_DTOR32(90.0F);
+    fp->joints[FTPIKACHU_QUICKATTACK_BASE_JOINT]->rotate.vec.f.x = (syUtilsArcTan2(fp->physics.vel_air.x, fp->physics.vel_air.y) * fp->lr) - F_CST_DTOR32(90.0F);
 
     fp->joints[FTPIKACHU_QUICKATTACK_BASE_JOINT]->scale.vec.f.x = FTPIKACHU_QUICKATTACK_SCALE_X;
     fp->joints[FTPIKACHU_QUICKATTACK_BASE_JOINT]->scale.vec.f.y = FTPIKACHU_QUICKATTACK_SCALE_Y;
@@ -335,7 +335,7 @@ void ftPikachuSpecialAirHiSetStatus(GObj *fighter_gobj)
 
     if (sqrt_stick_range > FTPIKACHU_QUICKATTACK_STICK_RANGE_MIN)
     {
-        angle = atan2f(fp->input.pl.stick_range.y, fp->input.pl.stick_range.x * fp->lr);
+        angle = syUtilsArcTan2(fp->input.pl.stick_range.y, fp->input.pl.stick_range.x * fp->lr);
 
         fp->status_vars.pikachu.specialhi.stick_range.x = fp->input.pl.stick_range.x;
         fp->status_vars.pikachu.specialhi.stick_range.y = fp->input.pl.stick_range.y;

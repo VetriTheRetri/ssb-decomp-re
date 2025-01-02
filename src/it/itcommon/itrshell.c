@@ -559,7 +559,7 @@ sb32 itRShellCommonProcHit(GObj *item_gobj)
     }
     ip->damage_coll.hitstatus = nGMHitStatusNormal;
 
-    ip->item_vars.shell.health = mtTrigGetRandomIntRange(ITRSHELL_HEALTH_MAX);
+    ip->item_vars.shell.health = syUtilsGetRandomIntRange(ITRSHELL_HEALTH_MAX);
 
     ip->physics.vel_air.x = ((ip->physics.vel_air.x * -1.0F) + (ITRSHELL_RECOIL_VEL_X * ip->attack_lr)) * ITRSHELL_RECOIL_MUL_X;
 

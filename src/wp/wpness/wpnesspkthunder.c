@@ -394,11 +394,11 @@ sb32 wpNessPKThunderTrailProcUpdate(GObj *weapon_gobj)
 
     if (index > 0)
     {
-        DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f((fp->passive_vars.ness.pkthunder_trail_y[index] - fp->passive_vars.ness.pkthunder_trail_y[index - 1]), (fp->passive_vars.ness.pkthunder_trail_x[index] - fp->passive_vars.ness.pkthunder_trail_x[index - 1]));
+        DObjGetStruct(weapon_gobj)->rotate.vec.f.z = syUtilsArcTan2((fp->passive_vars.ness.pkthunder_trail_y[index] - fp->passive_vars.ness.pkthunder_trail_y[index - 1]), (fp->passive_vars.ness.pkthunder_trail_x[index] - fp->passive_vars.ness.pkthunder_trail_x[index - 1]));
     }
     else
     {
-        DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f((fp->passive_vars.ness.pkthunder_trail_y[index] - fp->passive_vars.ness.pkthunder_trail_y[FTNESS_PKTHUNDER_TRAIL_POS_COUNT - 1]), (fp->passive_vars.ness.pkthunder_trail_x[index] - fp->passive_vars.ness.pkthunder_trail_x[FTNESS_PKTHUNDER_TRAIL_POS_COUNT - 1]));
+        DObjGetStruct(weapon_gobj)->rotate.vec.f.z = syUtilsArcTan2((fp->passive_vars.ness.pkthunder_trail_y[index] - fp->passive_vars.ness.pkthunder_trail_y[FTNESS_PKTHUNDER_TRAIL_POS_COUNT - 1]), (fp->passive_vars.ness.pkthunder_trail_x[index] - fp->passive_vars.ness.pkthunder_trail_x[FTNESS_PKTHUNDER_TRAIL_POS_COUNT - 1]));
     }
     DObjGetStruct(weapon_gobj)->rotate.vec.f.z -= F_CST_DTOR32(90.0F);
 
@@ -412,7 +412,7 @@ sb32 wpNessPKThunderTrailProcUpdate(GObj *weapon_gobj)
     }
     wpMainDecLifeCheckExpire(wp);
 
-    DObjGetStruct(weapon_gobj)->mobj->texture_id_curr = mtTrigGetRandomIntRange(WPPKTHUNDER_TEXTURE_COUNT - 1);
+    DObjGetStruct(weapon_gobj)->mobj->texture_id_curr = syUtilsGetRandomIntRange(WPPKTHUNDER_TEXTURE_COUNT - 1);
 
     return FALSE;
 }
@@ -617,7 +617,7 @@ GObj* wpNessPKReflectHeadMakeWeapon(GObj *old_gobj, Vec3f *pos, f32 angle)
     wp->physics.vel_air.y = (WPPKTHUNDER_VEL * localvel.y);
     wp->physics.vel_air.z = 0.0F;
 
-    DObjGetStruct(new_gobj)->rotate.vec.f.z = atan2f(wp->physics.vel_air.y, wp->physics.vel_air.x);
+    DObjGetStruct(new_gobj)->rotate.vec.f.z = syUtilsArcTan2(wp->physics.vel_air.y, wp->physics.vel_air.x);
 
     return new_gobj;
 }
@@ -648,7 +648,7 @@ sb32 wpNessPKReflectTrailProcUpdate(GObj *weapon_gobj)
 
     wpMainDecLifeCheckExpire(wp);
 
-    DObjGetStruct(weapon_gobj)->mobj->texture_id_curr = mtTrigGetRandomIntRange(WPPKTHUNDER_TEXTURE_COUNT - 1);
+    DObjGetStruct(weapon_gobj)->mobj->texture_id_curr = syUtilsGetRandomIntRange(WPPKTHUNDER_TEXTURE_COUNT - 1);
 
     return FALSE;
 }
@@ -706,7 +706,7 @@ GObj* wpNessPKReflectTrailMakeWeapon(GObj *old_gobj, Vec3f *pos, s32 trail_index
     new_wp->physics.vel_air.y = old_wp->physics.vel_air.y;
 
     // With the crash fix, this makes the trail look janky when reflected more than twice.
-    // Solution: DObjGetStruct(new_gobj)->rotate.vec.f.z = atan2f(new_wp->physics.vel_air.y, new_wp->physics.vel_air.x) - F_CST_DTOR32(90.0F);
+    // Solution: DObjGetStruct(new_gobj)->rotate.vec.f.z = syUtilsArcTan2(new_wp->physics.vel_air.y, new_wp->physics.vel_air.x) - F_CST_DTOR32(90.0F);
 
     DObjGetStruct(new_gobj)->rotate.vec.f.z = DObjGetStruct(old_gobj)->rotate.vec.f.z - F_CST_DTOR32(90.0F);
 

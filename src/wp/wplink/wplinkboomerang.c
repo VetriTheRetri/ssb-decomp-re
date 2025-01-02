@@ -243,7 +243,7 @@ f32 wpLinkBoomerangGetDistUpdateAngle(GObj *weapon_gobj)
         }
         else
         {
-            angle = atan2f(dist_y, dist_x);
+            angle = syUtilsArcTan2(dist_y, dist_x);
 
             if (angle < F_CST_DTOR32(-180.0F))
             {
@@ -337,7 +337,7 @@ sb32 wpLinkBoomerangCheckBound(WPStruct *wp, Vec3f *coll_angle)
         {
             lbCommonReflect2D(&wp->physics.vel_air, coll_angle);
 
-            wp->weapon_vars.boomerang.default_angle = atan2f(wp->physics.vel_air.y, wp->physics.vel_air.x);
+            wp->weapon_vars.boomerang.default_angle = syUtilsArcTan2(wp->physics.vel_air.y, wp->physics.vel_air.x);
 
             wpLinkBoomerangClampAngle360(&wp->weapon_vars.boomerang.default_angle);
         }
@@ -504,7 +504,7 @@ sb32 wpLinkBoomerangProcReflector(GObj *weapon_gobj)
     dist_x = DObjGetStruct(weapon_gobj)->translate.vec.f.x - DObjGetStruct(wp->owner_gobj)->translate.vec.f.x;
     dist_y = DObjGetStruct(weapon_gobj)->translate.vec.f.y - (DObjGetStruct(wp->owner_gobj)->translate.vec.f.y + 250.0F);
 
-    wp->weapon_vars.boomerang.default_angle = atan2f(dist_y, dist_x);
+    wp->weapon_vars.boomerang.default_angle = syUtilsArcTan2(dist_y, dist_x);
 
     wpLinkBoomerangClampAngle360(&wp->weapon_vars.boomerang.default_angle);
     wpLinkBoomerangUpdateVelLR(wp, sqrtf(SQUARE(wp->physics.vel_air.x) + SQUARE(wp->physics.vel_air.y)));
@@ -519,7 +519,7 @@ f32 wpLinkBoomerangGetAngleSetVel(Vec3f *vel, FTStruct *fp, s32 lr, f32 vel_mul)
 
     if (ABS(fp->input.pl.stick_range.y) > WPBOOMERANG_ANGLE_STICK_THRESHOLD)
     {
-        angle = atan2f(fp->input.pl.stick_range.y, ABS(fp->input.pl.stick_range.x));
+        angle = syUtilsArcTan2(fp->input.pl.stick_range.y, ABS(fp->input.pl.stick_range.x));
 
         if (angle > F_CST_DTOR32(30.0F)) // 0.5235988F
         {

@@ -47,7 +47,7 @@ void ftBossCommonCheckPlayerInvertLR(GObj *fighter_gobj)
 // 0x80158094
 void ftBossCommonGetRandomEdgeLR(s32 line_id, Vec3f *pos)
 {
-    if ((mtTrigGetRandomUShort() % 2) != 0)
+    if ((syUtilsGetRandomUShort() % 2) != 0)
     {
         mpCollisionGetLREdgeUpperL(line_id, pos);
     }
@@ -99,7 +99,7 @@ void ftBossCommonSetPosAddVelPlayer(GObj *fighter_gobj, Vec3f *pos, f32 vel_x, f
 
     x = translate.x;
 
-    translate.x += ((mtTrigGetRandomUShort() % 2) != 0) ? vel_x : -vel_x;
+    translate.x += ((syUtilsGetRandomUShort() % 2) != 0) ? vel_x : -vel_x;
 
     if (mpCollisionGetUDCommonUpper(fp_unk->coll_data.ground_line_id, &translate, &y, NULL, NULL) != FALSE)
     {
@@ -120,7 +120,7 @@ void ftBossCommonSetPosAddVelAuto(GObj *fighter_gobj, Vec3f *pos, f32 vel_x, f32
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    pos->x = DObjGetStruct(fp->passive_vars.boss.p->target_gobj)->translate.vec.f.x + (((mtTrigGetRandomUShort() % 2) != 0) ? vel_x : -vel_x);
+    pos->x = DObjGetStruct(fp->passive_vars.boss.p->target_gobj)->translate.vec.f.x + (((syUtilsGetRandomUShort() % 2) != 0) ? vel_x : -vel_x);
     pos->y = DObjGetStruct(fp->passive_vars.boss.p->target_gobj)->translate.vec.f.y + vel_y;
     pos->z = 0.0F;
 }
@@ -152,7 +152,7 @@ void ftBossCommonSetNextAttackWait(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->passive_vars.boss.p->wait_timer = ((mtTrigGetRandomIntRange(FTBOSS_ATTACK_WAIT_MAX) + (FTBOSS_ATTACK_WAIT_LEVEL_DIV / fp->level)) / fp->passive_vars.boss.p->wait_div);
+    fp->passive_vars.boss.p->wait_timer = ((syUtilsGetRandomIntRange(FTBOSS_ATTACK_WAIT_MAX) + (FTBOSS_ATTACK_WAIT_LEVEL_DIV / fp->level)) / fp->passive_vars.boss.p->wait_div);
 }
 
 // 0x80158528

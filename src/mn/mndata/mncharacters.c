@@ -1803,7 +1803,7 @@ s32 mnCharactersGetRandomMotionKind(void)
 
 	do
 	{
-		motion_kind = mtTrigGetRandomTimeUCharRange(nMNCharactersMotionKindEnumCount);
+		motion_kind = syUtilsGetRandomTimeUCharRange(nMNCharactersMotionKindEnumCount);
 	}
 	while (mnCharactersCheckRecentMotionKind(motion_kind) != FALSE);
 
@@ -2416,11 +2416,11 @@ void mnCharactersMoveFighterCamera(CObj *cobj, f32 angle, s32 unused)
 	cobj->vec.eye.y = __sinf(radians) * 3000.0F;
 	cobj->vec.eye.z = cosf(radians) * 3000.0F;
 
-	theta = atan2f(370.0F, 0.0F) + radians;
+	theta = syUtilsArcTan2(370.0F, 0.0F) + radians;
 	cobj->vec.at.y = __sinf(theta) * 370.0F;
 	cobj->vec.at.z = cosf(theta) * 370.0F;
 
-	theta = atan2f(1.0F, 0.0F) + radians;
+	theta = syUtilsArcTan2(1.0F, 0.0F) + radians;
 	cobj->vec.up.y = __sinf(theta);
 	cobj->vec.up.z = cosf(theta);
 }

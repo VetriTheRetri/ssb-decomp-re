@@ -824,14 +824,14 @@ void scExplainFuncLights(Gfx **dls)
 // 0x8018E568
 void scExplainFuncUpdate(void)
 {
-    set_lcg_seed_ptr(&dSCExplainRandomSeed1);
+    syUtilsSetRandomSeedPtr(&dSCExplainRandomSeed1);
     gcRunAll();
 }
 
 // 0x8018E594
 void scExplainFuncDraw(void)
 {
-    set_lcg_seed_ptr(&dSCExplainRandomSeed2);
+    syUtilsSetRandomSeedPtr(&dSCExplainRandomSeed2);
     scManagerFuncDraw();
 }
 
@@ -842,12 +842,12 @@ void scExplainStartScene(void)
 
     syVideoInit(&dSCExplainVideoSetup);
 
-    set_lcg_seed_ptr(&dSCExplainRandomSeed1);
+    syUtilsSetRandomSeedPtr(&dSCExplainRandomSeed1);
 
     dSCExplainTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSYFramebufferSets - (uintptr_t)&ovl63_BSS_END);
     dSCExplainTaskmanSetup.func_start = scExplainFuncStart;
 
     scManagerFuncUpdate(&dSCExplainTaskmanSetup);
     gmRumbleInitPlayers();
-    set_lcg_seed_ptr(NULL);
+    syUtilsSetRandomSeedPtr(NULL);
 }

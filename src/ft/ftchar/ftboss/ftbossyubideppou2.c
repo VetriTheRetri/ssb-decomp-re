@@ -60,5 +60,5 @@ void ftBossYubideppou2SetStatus(GObj *fighter_gobj)
 
     fp = ftGetStruct(fighter_gobj);
 
-    fp->status_vars.boss.yubideppou.wait_timer = mtTrigGetRandomIntRange(120) + 60;
+    fp->status_vars.boss.yubideppou.wait_timer = syUtilsGetRandomIntRange(120) + 60;
 }

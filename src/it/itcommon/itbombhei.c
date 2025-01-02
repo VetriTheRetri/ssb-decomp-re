@@ -329,7 +329,7 @@ sb32 itBombHeiWaitProcUpdate(GObj *item_gobj)
 
         if (lr == 0)
         {
-            lr = mtTrigGetRandomIntRange(2) - 1;
+            lr = syUtilsGetRandomIntRange(2) - 1;
         }
         if (lr < 0)
         {

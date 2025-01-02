@@ -156,8 +156,8 @@ void itDogasAttackUpdateSmog(GObj *item_gobj)
 
         pos = dobj->translate.vec.f;
 
-        pos.x += (mtTrigGetRandomFloat() * ITDOGAS_SMOG_MUL_OFF_X) - ITDOGAS_SMOG_SUB_OFF_X;
-        pos.y += (mtTrigGetRandomFloat() * ITDOGAS_SMOG_MUL_OFF_Y) - ITDGOAS_SMOG_SUB_OFF_Y;
+        pos.x += (syUtilsGetRandomFloat() * ITDOGAS_SMOG_MUL_OFF_X) - ITDOGAS_SMOG_SUB_OFF_X;
+        pos.y += (syUtilsGetRandomFloat() * ITDOGAS_SMOG_MUL_OFF_Y) - ITDGOAS_SMOG_SUB_OFF_Y;
 
         if (pos.x < dobj->translate.vec.f.x)
         {

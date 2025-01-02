@@ -643,13 +643,13 @@ void func_ovl65_80191B44(GObj *gobj)
     s32 sw;
 
     sw = 0;
-    angle = (mtTrigGetRandomIntRange(2) * 30) + 30;
+    angle = (syUtilsGetRandomIntRange(2) * 30) + 30;
 
     lr = ABS(gMPCollisionEdgeBounds.d2.left - 2000.0F) + ABS(gMPCollisionEdgeBounds.d2.right + 2000.0F);
     bt = ABS(gMPCollisionGroundData->map_bound_top - 2000.0F) + ABS(gMPCollisionGroundData->map_bound_bottom + 2000.0F);
 
-    dobj->translate.vec.f.x = (mtTrigGetRandomFloat() * lr) + (gMPCollisionEdgeBounds.d2.left - 2000.0F);
-    dobj->translate.vec.f.y = (mtTrigGetRandomFloat() * bt) + (gMPCollisionGroundData->map_bound_bottom + 2000.0F);
+    dobj->translate.vec.f.x = (syUtilsGetRandomFloat() * lr) + (gMPCollisionEdgeBounds.d2.left - 2000.0F);
+    dobj->translate.vec.f.y = (syUtilsGetRandomFloat() * bt) + (gMPCollisionGroundData->map_bound_bottom + 2000.0F);
 
     if (dobj->translate.vec.f.x < 0.0F)
     {
@@ -901,7 +901,7 @@ GObj* sc1PGameBossMakeWallpaperEffect(s32 effect_id, s32 anim_id, s32 plan_id)
         lbCommonAddDObjAnimAll(dobj, (o_anim_joint != 0) ? (void*) (addr + o_anim_joint) : NULL, (o_matanim_joint != 0) ? (void*) (addr + o_matanim_joint) : NULL, 0.0F);
         gcPlayAnimAll(effect_gobj);
     }
-    DObjGetStruct(effect_gobj)->child->user_data.s = mtTrigGetRandomIntRange
+    DObjGetStruct(effect_gobj)->child->user_data.s = syUtilsGetRandomIntRange
     (
         (
             ARRAY_COUNT(dSC1PGameBossCometEnvColorR) + 
@@ -929,8 +929,8 @@ void sc1PGameBossAdvanceWallpaper(void)
     {
         if (sSC1PGameBossMain.bosswallpaper->is_random_wallpaper == TRUE)
         {
-            effect_id = mtTrigGetRandomIntRange(sSC1PGameBossMain.bosswallpaper->effect_count);
-            anim_id   = mtTrigGetRandomIntRange(sSC1PGameBossMain.bosswallpaper->anim_count);
+            effect_id = syUtilsGetRandomIntRange(sSC1PGameBossMain.bosswallpaper->effect_count);
+            anim_id   = syUtilsGetRandomIntRange(sSC1PGameBossMain.bosswallpaper->anim_count);
 
             if (j == sSC1PGameBossMain.bosswallpaper->bossplan[k].unk_sc1pbossplan_0x0)
             {

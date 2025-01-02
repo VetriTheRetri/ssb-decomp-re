@@ -714,7 +714,7 @@ void ifCommonPlayerDamageUpdateAnim(GObj *interface_gobj)
 
             if (char_id > 0)
             {
-                random = mtTrigGetRandomIntRange(char_id);
+                random = syUtilsGetRandomIntRange(char_id);
 
                 for (i = j = 0; i < sIFCommonPlayerDamageInterface[player].char_display_count; i++)
                 {
@@ -993,7 +993,7 @@ void ifCommonPlayerDamageStartBreakAnim(FTStruct *fp)
 
     for (i = 0; i < sIFCommonPlayerDamageInterface[player].char_display_count; i++)
     {
-        sIFCommonPlayerDamageInterface[player].chars[i].vel.x = (mtTrigGetRandomFloat() * 2) + (-1.0F);
+        sIFCommonPlayerDamageInterface[player].chars[i].vel.x = (syUtilsGetRandomFloat() * 2) + (-1.0F);
         sIFCommonPlayerDamageInterface[player].chars[i].vel.y = -10.0F;
 
         sIFCommonPlayerDamageInterface[player].chars[i].is_lock_movement = FALSE;
@@ -1597,7 +1597,7 @@ void ifCommonPlayerMagnifyFuncDisplay(FTStruct *fp)
         dobj->translate.vec.f.x = ifmag->pos.x;
         dobj->translate.vec.f.y = ifmag->pos.y;
 
-        dobj->rotate.vec.f.z = atan2f(fp->magnify_pos.y, fp->magnify_pos.x) - F_CST_DTOR32(90.0F);
+        dobj->rotate.vec.f.z = syUtilsArcTan2(fp->magnify_pos.y, fp->magnify_pos.x) - F_CST_DTOR32(90.0F);
 
         dobj->scale.vec.f.x = dobj->scale.vec.f.y = gIFCommonPlayerInterface.magnify_scale * 0.5F;
 
@@ -2318,7 +2318,7 @@ void ifCommonEntryAllThread(GObj *interface_gobj)
 {
     gcStopCurrentGObjThread(90);
     ifCommonCountdownMakeInterface();
-    ifCommonEntryFocusMakeInterface(mtTrigGetRandomIntRange(3));
+    ifCommonEntryFocusMakeInterface(syUtilsGetRandomIntRange(3));
     gcEjectGObj(NULL);
     gcStopCurrentGObjThread(1);
 }

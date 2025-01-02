@@ -606,7 +606,7 @@ sb32 ftCommonDeadCheckInterruptCommon(GObj *fighter_gobj)
             }
             if (pos->y > gMPCollisionGroundData->map_bound_team_top)
             {
-                if (mtTrigGetRandomFloat() < (1.0F / 6.0F))
+                if (syUtilsGetRandomFloat() < (1.0F / 6.0F))
                 {
                     ftCommonDeadUpFallSetStatus(fighter_gobj);
 
@@ -637,7 +637,7 @@ sb32 ftCommonDeadCheckInterruptCommon(GObj *fighter_gobj)
         }
         else if (pos->y > gMPCollisionGroundData->map_bound_top)
         {
-            if (mtTrigGetRandomFloat() < (1.0F / 6.0F))
+            if (syUtilsGetRandomFloat() < (1.0F / 6.0F))
             {
                 ftCommonDeadUpFallSetStatus(fighter_gobj);
             }

@@ -364,21 +364,21 @@ void grSectorArwingUpdateWait(void)
 
         if (gGRCommonStruct.sector.arwing_type_cycle != 0)
         {
-            random = mtTrigGetRandomIntRange(5);
+            random = syUtilsGetRandomIntRange(5);
 
             if (random == 4)
             {
-                gGRCommonStruct.sector.arwing_target_x = dGRSectorArwingMapPositionsX[mtTrigGetRandomIntRange(ARRAY_COUNT(dGRSectorArwingMapPositionsX))];
+                gGRCommonStruct.sector.arwing_target_x = dGRSectorArwingMapPositionsX[syUtilsGetRandomIntRange(ARRAY_COUNT(dGRSectorArwingMapPositionsX))];
             }
             gGRCommonStruct.sector.arwing_type_cycle--;
-            gGRCommonStruct.sector.arwing_state_timer = mtTrigGetRandomIntRange(540) + 180;
+            gGRCommonStruct.sector.arwing_state_timer = syUtilsGetRandomIntRange(540) + 180;
             gGRCommonStruct.sector.arwing_pilot_curr = -1;
         }
         else
         {
-            random = mtTrigGetRandomIntRange(3) + 5;
+            random = syUtilsGetRandomIntRange(3) + 5;
 
-            gGRCommonStruct.sector.unk_sector_0x4C = ((mtTrigGetRandomUShort() % 2) != 0) ? random - 5 : -1;
+            gGRCommonStruct.sector.unk_sector_0x4C = ((syUtilsGetRandomUShort() % 2) != 0) ? random - 5 : -1;
 
             gGRCommonStruct.sector.arwing_type_cycle = 3;
             gGRCommonStruct.sector.arwing_pilot_curr = -2;
@@ -502,7 +502,7 @@ void func_ovl2_80106DD8(void)
             if (gGRCommonStruct.sector.arwing_state_timer == 0)
             {
                 u8 *random = &dGRSectorArwingPilotWaitTimers[gGRCommonStruct.sector.arwing_pilot_prev][0];
-                s32 pilot_id = dGRSectorArwingPilotIDs[random[0] + mtTrigGetRandomIntRange(random[1])];
+                s32 pilot_id = dGRSectorArwingPilotIDs[random[0] + syUtilsGetRandomIntRange(random[1])];
 
                 if (pilot_id != 0)
                 {
@@ -517,7 +517,7 @@ void func_ovl2_80106DD8(void)
 // 0x80106F2
 s32 grSectorArwingPrepareLaserCount(void)
 {
-    if (mtTrigGetRandomIntRange(3) >= 3)
+    if (syUtilsGetRandomIntRange(3) >= 3)
     {
         return 2;
     }
@@ -582,20 +582,20 @@ void func_ovl2_801070A4(Vec3f *rotate, Vec3f *direction, Vec3f *vec3, Vec3f *vec
         if (vec3->z == -1.0F)
         {
             rotate->y = F_CST_DTOR32(90.0F);
-            rotate->x = atan2f(vec4->x, vec4->y);
+            rotate->x = syUtilsArcTan2(vec4->x, vec4->y);
         }
         else
         {
             rotate->y = F_CST_DTOR32(-90.0F);
-            rotate->x = atan2f(-vec4->x, vec4->y);
+            rotate->x = syUtilsArcTan2(-vec4->x, vec4->y);
         }
         rotate->z = 0.0F;
     }
     else
     {
-        rotate->y = asinf(-vec3->z);
-        rotate->x = atan2f(vec4->z, direction->z);
-        rotate->z = atan2f(vec3->y, vec3->x);
+        rotate->y = syUtilsArcSin(-vec3->z);
+        rotate->x = syUtilsArcTan2(vec4->z, direction->z);
+        rotate->z = syUtilsArcTan2(vec3->y, vec3->x);
     }
 }
 
@@ -838,7 +838,7 @@ void grSectorArwingWeaponLaser3DMakeWeapon(void)
 
     gmCollisionGetWorldPosition(mtx, &wp_pos);
 
-    random = mtTrigGetRandomIntRange(gSCManagerBattleState->pl_count + gSCManagerBattleState->cp_count);
+    random = syUtilsGetRandomIntRange(gSCManagerBattleState->pl_count + gSCManagerBattleState->cp_count);
 
     fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
 
@@ -1027,7 +1027,7 @@ void grSectorArwingUpdatePatrol(void)
     {
         gGRCommonStruct.sector.map_gobj->flags = GOBJ_FLAG_HIDDEN;
 
-        gGRCommonStruct.sector.arwing_appear_timer = mtTrigGetRandomIntRange(1140) + 960;
+        gGRCommonStruct.sector.arwing_appear_timer = syUtilsGetRandomIntRange(1140) + 960;
         gGRCommonStruct.sector.arwing_status = nGRSectorArwingStatusWait;
 
         mpCollisionSetYakumonoOffID(1);

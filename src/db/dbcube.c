@@ -550,9 +550,9 @@ void dbCubeFuncStart(void)
 		COBJ_FLAG_FILLCOLOR,
 		GPACK_RGBA8888
 		(
-			mtTrigGetRandomIntRange(0x80),
-			mtTrigGetRandomIntRange(0x80),
-			mtTrigGetRandomIntRange(0x80),
+			syUtilsGetRandomIntRange(0x80),
+			syUtilsGetRandomIntRange(0x80),
+			syUtilsGetRandomIntRange(0x80),
 			0xFF
 		)
 	);

@@ -752,7 +752,7 @@ void mnVSResultsCreateBackground()
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
 	if (gMNVSResultsGameRule == 4)
-		winner_port_id = mtTrigGetRandomIntRange(4);
+		winner_port_id = syUtilsGetRandomIntRange(4);
 	else
 	{
 		if (gMNVSResultsIsTeamBattle == FALSE)
@@ -862,7 +862,7 @@ void mnVSResultsMakeFighterFaceWinner(GObj* fighter_gobj, s32 port_id, s32 place
 		f32 x2 = winner_dobj->translate.vec.f.x;
 		f32 z2 = winner_dobj->translate.vec.f.z;
 
-		DObjGetStruct(fighter_gobj)->rotate.vec.f.y = atan2f(x2 - x1, z2 - z1);
+		DObjGetStruct(fighter_gobj)->rotate.vec.f.y = syUtilsArcTan2(x2 - x1, z2 - z1);
 	}
 }
 
@@ -875,9 +875,9 @@ s32 mnVSResultsGetVictoryAnim(s32 fkind)
 	};
 
 	if (fkind == nFTKindKirby)
-		return victory_anims[mtTrigGetRandomIntRange(2)];
+		return victory_anims[syUtilsGetRandomIntRange(2)];
 	else
-		return victory_anims[mtTrigGetRandomIntRange(3)];
+		return victory_anims[syUtilsGetRandomIntRange(3)];
 }
 
 // 0x801334CC
@@ -2971,7 +2971,7 @@ void mnVSResultsInit()
 	{
 		lbTransitionSetupTransition();
 		lbTransitionMakeCamera(0x20000002, 0, 0xA, 0x100000000);
-		lbTransitionMakeTransition(mtTrigGetRandomIntRange(0xB), 0x20000000, 0, lbTransitionFuncDisplay, 0x20, lbTransitionProcUpdate);
+		lbTransitionMakeTransition(syUtilsGetRandomIntRange(0xB), 0x20000000, 0, lbTransitionFuncDisplay, 0x20, lbTransitionProcUpdate);
 	}
 
 	mnVSResultsCreateLogoViewport();

@@ -339,7 +339,7 @@ sb32 func_ovl2_800DDF74(GObj *fighter_gobj, FTStruct *fp, FTAttributes *attr, DO
     {
         ternary = ((joint->translate.vec.f.x < vec->x) ? -(joint->translate.vec.f.x - vec->x) : (joint->translate.vec.f.x - vec->x));
 
-        tangent = DObjGetStruct(fighter_gobj)->translate.vec.f.y - ternary * tanf(attr->unk_0x320);
+        tangent = DObjGetStruct(fighter_gobj)->translate.vec.f.y - ternary * syUtilsTan(attr->unk_0x320);
 
         if (vec->y < tangent)
         {
@@ -397,7 +397,7 @@ void mpCommonUpdateFighterSlopeContour(GObj *fighter_gobj)
             }
             if (fp->slope_contour & FTSLOPECONTOUR_FLAG_FULL)
             {
-                DObjGetStruct(fighter_gobj)->rotate.vec.f.x = (atan2f(fp->coll_data.ground_angle.x, fp->coll_data.ground_angle.y) * fp->lr);
+                DObjGetStruct(fighter_gobj)->rotate.vec.f.x = (syUtilsArcTan2(fp->coll_data.ground_angle.x, fp->coll_data.ground_angle.y) * fp->lr);
             }
         }
     }

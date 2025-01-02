@@ -209,13 +209,13 @@ void itBoxContainerSmashMakeEffect(Vec3f *pos)
 
                 dobj->translate.vec.f = *pos;
 
-                dobj->scale.vec.f.x = (mtTrigGetRandomFloat() * 48.0F) + -24.0F;
-                dobj->scale.vec.f.y = (mtTrigGetRandomFloat() * 50.0F) + 10.0F;
-                dobj->scale.vec.f.z = (mtTrigGetRandomFloat() * 32.0F) + -16.0F;
+                dobj->scale.vec.f.x = (syUtilsGetRandomFloat() * 48.0F) + -24.0F;
+                dobj->scale.vec.f.y = (syUtilsGetRandomFloat() * 50.0F) + 10.0F;
+                dobj->scale.vec.f.z = (syUtilsGetRandomFloat() * 32.0F) + -16.0F;
 
-                dobj->anim_wait = F_CLC_DTOR32((mtTrigGetRandomFloat() * 100.0F) + -50.0F);
-                dobj->anim_speed = F_CLC_DTOR32((mtTrigGetRandomFloat() * 100.0F) + -50.0F);
-                dobj->anim_frame = F_CLC_DTOR32((mtTrigGetRandomFloat() * 100.0F) + -50.0F);
+                dobj->anim_wait = F_CLC_DTOR32((syUtilsGetRandomFloat() * 100.0F) + -50.0F);
+                dobj->anim_speed = F_CLC_DTOR32((syUtilsGetRandomFloat() * 100.0F) + -50.0F);
+                dobj->anim_frame = F_CLC_DTOR32((syUtilsGetRandomFloat() * 100.0F) + -50.0F);
             }
             ep->effect_vars.container.lifetime = ITCONTAINER_GFX_LIFETIME;
 
@@ -248,7 +248,7 @@ sb32 itBoxCommonCheckSpawnItems(GObj *item_gobj)
 
         if (index <= nITKindCommonEnd)
         {
-            random = mtTrigGetRandomIntRange(5);
+            random = syUtilsGetRandomIntRange(5);
 
             if (random < 2)
             {
@@ -268,7 +268,7 @@ sb32 itBoxCommonCheckSpawnItems(GObj *item_gobj)
 
                 spawn_pos = &dITBoxItemSpawnVelocities[3];
             }
-            if (mtTrigGetRandomIntRange(32) == 0) // 1 in 32 chance to spawn identical items
+            if (syUtilsGetRandomIntRange(32) == 0) // 1 in 32 chance to spawn identical items
             {
                 vel_identical.z = 0.0F;
 
@@ -366,7 +366,7 @@ void itBoxWaitSetStatus(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    DObjGetStruct(item_gobj)->rotate.vec.f.z = atan2f(ip->coll_data.ground_angle.y, ip->coll_data.ground_angle.x) - F_CST_DTOR32(90.0F);
+    DObjGetStruct(item_gobj)->rotate.vec.f.z = syUtilsArcTan2(ip->coll_data.ground_angle.y, ip->coll_data.ground_angle.x) - F_CST_DTOR32(90.0F);
 
     itMainSetGroundAllowPickup(item_gobj);
     itMainSetStatus(item_gobj, dITBoxStatusDescs, nITBoxStatusWait);

@@ -148,7 +148,7 @@ void ftCommonGuardUpdateShieldCollision(FTStruct *fp)
 // 0x80148488
 void ftCommonGuardUpdateShieldAngle(FTStruct *fp)
 {
-    f32 angle_r = atan2f(fp->input.pl.stick_range.y, fp->input.pl.stick_range.x * fp->lr);
+    f32 angle_r = syUtilsArcTan2(fp->input.pl.stick_range.y, fp->input.pl.stick_range.x * fp->lr);
     f32 angle_d;
     f32 range;
 

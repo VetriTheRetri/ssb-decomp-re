@@ -139,7 +139,7 @@ void ftFoxSpecialHiUpdateModelRoll(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->joints[4]->rotate.vec.f.x = (atan2f(fp->physics.vel_air.x, fp->physics.vel_air.y) * fp->lr) - F_CST_DTOR32(90.0F);
+    fp->joints[4]->rotate.vec.f.x = (syUtilsArcTan2(fp->physics.vel_air.x, fp->physics.vel_air.y) * fp->lr) - F_CST_DTOR32(90.0F);
     func_ovl2_800EB528(fp->joints[4]);
 }
 
@@ -198,7 +198,7 @@ void ftFoxSpecialHiProcMap(GObj *fighter_gobj)
 
     if (mpCommonProcFighterOnGround(fighter_gobj, ftFoxSpecialAirHiSetStatus) != FALSE)
     {
-        fp->status_vars.fox.specialhi.angle = atan2f(-fp->coll_data.ground_angle.x * fp->lr, fp->coll_data.ground_angle.y);
+        fp->status_vars.fox.specialhi.angle = syUtilsArcTan2(-fp->coll_data.ground_angle.x * fp->lr, fp->coll_data.ground_angle.y);
     }
 }
 
@@ -261,7 +261,7 @@ void ftFoxSpecialAirHiProcMap(GObj *fighter_gobj)
 
         fp->joints[nFTPartsJointTopN]->rotate.vec.f.y = fp->lr * F_CST_DTOR32(90.0F);
 
-        fp->status_vars.fox.specialhi.angle = atan2f(fp->physics.vel_air.y, fp->physics.vel_air.x * fp->lr);
+        fp->status_vars.fox.specialhi.angle = syUtilsArcTan2(fp->physics.vel_air.y, fp->physics.vel_air.x * fp->lr);
 
         ftFoxSpecialHiUpdateModelRoll(fighter_gobj);
     }
@@ -315,7 +315,7 @@ void ftFoxSpecialHiDecideSetStatus(GObj *fighter_gobj)
             ftFoxSpecialHiInitStatusVars(fp);
 
             fp->physics.vel_ground.x = 115.0F;
-            fp->status_vars.fox.specialhi.angle = atan2f(-fp->coll_data.ground_angle.x * fp->lr, fp->coll_data.ground_angle.y);
+            fp->status_vars.fox.specialhi.angle = syUtilsArcTan2(-fp->coll_data.ground_angle.x * fp->lr, fp->coll_data.ground_angle.y);
             return;
         }
     }
@@ -336,7 +336,7 @@ void ftFoxSpecialAirHiSetStatusFromGround(GObj *fighter_gobj)
         {
             ftParamSetStickLR(fp);
         }
-        fp->status_vars.fox.specialhi.angle = atan2f(fp->input.pl.stick_range.y, fp->input.pl.stick_range.x * fp->lr);
+        fp->status_vars.fox.specialhi.angle = syUtilsArcTan2(fp->input.pl.stick_range.y, fp->input.pl.stick_range.x * fp->lr);
     }
     else fp->status_vars.fox.specialhi.angle = F_CST_DTOR32(90.0F);
     

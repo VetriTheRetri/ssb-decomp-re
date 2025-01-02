@@ -21,43 +21,43 @@ f32 syUtilsTan(f32 angle)
     return __sinf(angle) / __cosf(angle);
 }
 
-f32 syUtilsArcTan(f32 yDivX)
+f32 syUtilsArcTan(f32 div)
 {
-    f32 yDivX2;
+    f32 calc_div;
     f32 result;
-    s32 phi_v0;
+    s32 type;
 
-    if (yDivX == 0.0F)
+    if (div == 0.0F)
     {
         return 0.0F;
     }
-    phi_v0 = 1;
-
-    if (yDivX > 1.0F)
+    else if (div > 1.0F)
     {
-        yDivX = 1.0F / yDivX;
+        div = 1.0F / div;
+        type = 1;
     }
-    else if (yDivX < -1.0F)
+    else if (div < -1.0F)
     {
-        yDivX  = 1.0F / yDivX;
-        phi_v0 = 2;
+        div = 1.0F / div;
+        type = 2;
     }
-    else phi_v0 = 0;
+    else type = 0;
     
-    yDivX2 = yDivX * yDivX;
-    result =
-        (yDivX2
-             / (yDivX2
-                    / (yDivX2
-                           / (yDivX2
-                                  / (yDivX2 / ((yDivX2 / -0.10810675f) + -44.57192f) + -0.1619081f)
-                              + -15.774018f)
-                       + -0.55556977f)
-                + -3.000003f)
-         + 1)
-        * yDivX;
+    calc_div = div * div;
 
-    switch (phi_v0)
+    result =
+        (calc_div
+             / (calc_div
+                    / (calc_div
+                           / (calc_div
+                                  / (calc_div / ((calc_div / -0.10810675F) + -44.57192F) + -0.1619081F)
+                              + -15.774018F)
+                       + -0.55556977F)
+                + -3.000003F)
+         + 1)
+        * div;
+
+    switch (type)
     {
     case 0:
         return result;
@@ -162,7 +162,6 @@ void syUtilsSetRandomSeedPtr(s32 *seedptr)
 u16 syUtilsGetRandomUShort(void)
 {
     s32 step = (*sSYUtilsRandomSeedPtr * 214013) + 2531011;
-
     *sSYUtilsRandomSeedPtr = step;
 
     return step >> 16;
@@ -260,18 +259,18 @@ void syUtilsQSortIntern(u8 *arg0, u8 *arg1)
 }
 
 // 0x80018C14
-void syUtilsQSort2(void *_base, u32 count, u32 itemSize, s32 (*compare)(const void*, const void*))
+void syUtilsQSort2(void *_base, u32 count, u32 item_size, s32 (*compare)(const void*, const void*))
 {
     u8 *curr, *next;
     s32 s0;
-    s32 foundInversion;
+    s32 found_invert;
     s32 nv = 1; // required to match
 
     u8* base = (u8*)_base;
 
     curr = base;
-    next = base + itemSize;
-    foundInversion = FALSE;
+    next = base + item_size;
+    found_invert = FALSE;
 
     if (count)
     {
@@ -283,39 +282,39 @@ void syUtilsQSort2(void *_base, u32 count, u32 itemSize, s32 (*compare)(const vo
             {
                 if (compare(curr, next) > 0)
                 {
-                    foundInversion = TRUE;
+                    found_invert = TRUE;
                     break;
                 }
                 curr = next;
-                next += itemSize;
+                next += item_size;
             }
         }
         while (FALSE);
     }
 
-    if (foundInversion)
+    if (found_invert)
     {
-        sSYUtilsQSortItemSize = itemSize;
+        sSYUtilsQSortItemSize = item_size;
         sSYUtilsQSortFuncCompare = compare;
         syUtilsQSortIntern(base, base + ((count - 1) * sSYUtilsQSortItemSize));
     }
 }
 
 // 0x80018CEC
-u8* find(u8 *value, u8 *array, u32 count, s32 itemSize, s32 (*compare)(u8*, u8*))
+u8* syUtilsFind(u8 *value, u8 *array, u32 count, s32 item_size, s32 (*compare)(u8*, u8*))
 {
-    s32 newvar = (count - 1) * itemSize;
-    u8* low = array;
-    u8* high = array + newvar;
+    s32 newvar = (count - 1) * item_size;
+    u8 *low = array;
+    u8 *high = array + newvar;
 
     while (low <= high)
     {
-        u32 midIndex = count >> 1;
+        u32 mid_id = count >> 1;
         u32 parity = count & 1;
 
-        if (midIndex != 0)
+        if (mid_id != 0)
         {
-            u8 *mid = low + (parity ? midIndex : midIndex - 1) * itemSize;
+            u8 *mid = low + (parity ? mid_id : mid_id - 1) * item_size;
             s32 ret = compare(value, mid);
 
             if (ret == 0)
@@ -324,23 +323,20 @@ u8* find(u8 *value, u8 *array, u32 count, s32 itemSize, s32 (*compare)(u8*, u8*)
             }
             else if (ret < 0)
             {
-                high = mid - itemSize;
-                count = parity ? midIndex : midIndex - 1;
+                high = mid - item_size;
+                count = parity ? mid_id : mid_id - 1;
             }
             else
             {
-                low = mid + itemSize;
-                count = midIndex;
+                low = mid + item_size;
+                count = mid_id;
             }
         }
-        else
+        else if (count == 0)
         {
-            if (count == 0)
-            {
-                break;
-            }
-            return compare(value, low) ? NULL : low;
+            break;
         }
+        else return compare(value, low) ? NULL : low;
     }
     return NULL;
 }

@@ -431,7 +431,7 @@ void ftNessSpecialHiCollideWallPhysics(GObj *fighter_gobj, MPCollData *coll_data
         {
             angle_new -= F_CST_DTOR32(360.0F);
         }
-        angle_new = ((angle_new + F_CST_DTOR32(180.0F)) < angle_old) ? (angle_new + (F_CST_DTOR32(90.0F))) : (angle_new + F_CST_DTOR32(-90.0F));
+        angle_new = ((angle_new + F_CST_DTOR32(180.0F)) < angle_old) ? (angle_new + F_CST_DTOR32(90.0F)) : (angle_new + F_CST_DTOR32(-90.0F));
     }
     syVectorRotate3D(&fp->physics.vel_air, SYVECTOR_AXIS_Z, angle_new - (fp->status_vars.ness.specialhi.pkjibaku_angle * fp->lr));
 

@@ -5,6 +5,7 @@
 #include <sys/video.h>
 #include <lb/library.h>
 
+extern void scManagerFuncDraw();
 
 typedef struct gmResultsTemp
 {
@@ -65,7 +66,7 @@ extern halAudioUnknown* auBGMPlayers;
 
 
 // Forward declarations
-void mnVSResultsInit();
+void mnVSResultsFuncStart();
 void mnVSResultsDrawResults0(s32 arg0);
 void mnVSResultsDrawResults1(s32 arg0);
 void mnVSResultsDrawResults2(s32 arg0);
@@ -238,10 +239,10 @@ s32 D_ovl31_8013A018[12];
 void *gMNVSResultsFiles[8];
 
 // 0x80131B20
-void mnVSResultsFuncLights(Gfx **display_list)
+void mnVSResultsFuncLights(Gfx **dls)
 {
-	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
-	ftDisplayLightsDrawReflect(display_list, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
+	gSPSetGeometryMode(dls[0]++, G_LIGHTING);
+	ftDisplayLightsDrawReflect(dls, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
 }
 
 // 0x80131B78
@@ -2902,36 +2903,8 @@ void mnVSResultsMain(s32 arg0)
 	}
 }
 
-// 0x80139710
-SYVideoSetup D_ovl31_80139710 = {
-
-	&gSYFramebufferSets[0],
-	&gSYFramebufferSets[1],
-	&gSYFramebufferSets[2],
-	0x00000000,
-	0x00000140,
-	0x000000F0,
-	0x00016A99
-};
-
-// 0x8013972C
-SYTaskmanSetup D_ovl31_8013972C = {
-
-	0x00000000, 0x8000A5E4,
-	0x800A26B8, &lOverlay31ArenaLo,
-	0x00000000, 0x00000001, 0x00000002, 0x00004E20, 0x00000400,
-	0x00000000, 0x00000000, 0x00008000, 0x0002, 0x0000C000,
-	mnVSResultsFuncLights, syControllerFuncRead,
-	0x00000000, 0x00000600, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000088, 0x00000000,
-	0x800D5CAC, 0x00000000, 0x00000000, 0x00000000,
-	0x00000000, 0x00000088, 0x00000000, 0x0000006C,
-	0x00000000, 0x00000090,
-	mnVSResultsInit,
-};
-
 // 0x80138B70
-void mnVSResultsInit()
+void mnVSResultsFuncStart(void)
 {
 	LBRelocSetup rl_setup;
 	s32 i;
@@ -2998,14 +2971,63 @@ void mnVSResultsInit()
 		func_800269C0_275C0(0x26D);
 }
 
+// 0x80139710
+SYVideoSetup D_ovl31_80139710 = SYVIDEO_SETUP_DEFAULT();
+
+// 0x8013972C
+SYTaskmanSetup D_ovl31_8013972C =
+{
+    // Task Manager Buffer Setup
+    {
+        0,                          // ???
+        gcRunAll,              		// Update function
+        scManagerFuncDraw,        	// Frame draw function
+        &ovl31_BSS_END,             // Allocatable memory pool start
+        0,                          // Allocatable memory pool size
+        1,                          // ???
+        2,                          // Number of contexts?
+        sizeof(Gfx) * 2500,         // Display List Buffer 0 Size
+        sizeof(Gfx) * 128,          // Display List Buffer 1 Size
+        0,                          // Display List Buffer 2 Size
+        0,                          // Display List Buffer 3 Size
+        0x8000,                     // Graphics Heap Size
+        2,                          // ???
+        0xC000,                     // RDP Output Buffer Size
+        mnVSResultsFuncLights,   	// Pre-render function
+        syControllerFuncRead,       // Controller I/O function
+    },
+
+    0,                              // Number of GObjThreads
+    sizeof(u64) * 192,              // Thread stack size
+    0,                              // Number of thread stacks
+    0,                              // ???
+    0,                              // Number of GObjProcesses
+    0,                              // Number of GObjs
+    sizeof(GObj),                   // GObj size
+    0,                              // Number of XObjs
+    dLBCommonFuncMatrixList,        // Matrix function list
+    NULL,                           // DObjVec eject function
+    0,                              // Number of AObjs
+    0,                              // Number of MObjs
+    0,                              // Number of DObjs
+    sizeof(DObj),                   // DObj size
+    0,                              // Number of SObjs
+    sizeof(SObj),                   // SObj size
+    0,                              // Number of Cameras
+    sizeof(CObj),                 	// CObj size
+    
+    mnVSResultsFuncStart         	// Task start function
+};
+
 // 0x80138E64
-void vs_results_entry()
+void vs_results_entry(void)
 {
 	s32 i;
 
 	D_ovl31_80139710.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&D_ovl31_80139710);
-	D_ovl31_8013972C.buffer_setup.arena_size = (u32) ((uintptr_t)&lOverlay31ArenaHi - (uintptr_t)&lOverlay31ArenaLo);
+
+	D_ovl31_8013972C.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl31_BSS_END);
 	scManagerFuncUpdate(&D_ovl31_8013972C);
 
 	for (i = 0; i < 4; i++)

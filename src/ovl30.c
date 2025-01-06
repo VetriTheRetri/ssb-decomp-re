@@ -6,8 +6,7 @@
 #include <sys/controller.h>
 
 // Externs
-extern intptr_t lOverlay30ArenaLo;  // 0x80134E30
-extern intptr_t lOverlay30ArenaHi;  // 0x803903E0
+
 // Offsets
 extern intptr_t FILE_015_BACKGROUND_IMAGE_OFFSET; // file 0x015 image offset for background tile
 extern intptr_t FILE_01A_TRAINING_BACKGROUND_IMAGE_OFFSET; // also file 0x1B and 0x1C
@@ -182,9 +181,9 @@ void mnStagesAllocateStageModelHeaps()
 }
 
 // 0x80131B88
-void mnStagesSetLighting(Gfx** display_list)
+void mnMapsFuncLights(Gfx **dls)
 {
-	gSPDisplayList(display_list[0]++, &D_ovl30_801345A8);
+	gSPDisplayList(dls[0]++, D_ovl30_801345A8);
 }
 
 // 0x80131BAC
@@ -1340,7 +1339,7 @@ void mnStagesHandleButtonPresses(s32 arg0)
 }
 
 // 0x80134304
-void mnStagesInitSSS()
+void mnMapsFuncStart()
 {
 	s32 foo;
 	s32 bar;
@@ -1381,37 +1380,59 @@ void mnStagesInitSSS()
 }
 
 // 0x8013490C
-SYVideoSetup D_ovl30_8013490C = {
-
-	&gSYFramebufferSets[0],
-	&gSYFramebufferSets[1],
-	&gSYFramebufferSets[2],
-	0x00000000,
-	0x00000140,
-	0x000000F0,
-	0x00016A99,
-};
+SYVideoSetup D_ovl30_8013490C = SYVIDEO_SETUP_DEFAULT();
 
 // 0x80134928
-SYTaskmanSetup D_ovl30_80134928 = {
-	0x00000000, 0x8000A5E4,
-	scManagerFuncDraw, &lOverlay30ArenaLo,
-	0x00000000, 0x00000001, 0x00000002, 0x00004268, 0x00001000,
-	0x00000000, 0x00000000, 0x00008000, 0x0002, 0x00008000,
-	mnStagesSetLighting, syControllerFuncRead,
-	0x00000000, 0x00000200, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000088, 0x00000000,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x00000000, 0x00000088, 0x00000000, 0x0000006C,
-	0x00000000, 0x00000090,
-	mnStagesInitSSS
+SYTaskmanSetup D_ovl30_80134928 =
+{
+    // Task Manager Buffer Setup
+    {
+        0,                          // ???
+        gcRunAll,              		// Update function
+        scManagerFuncDraw,        	// Frame draw function
+        &ovl30_BSS_END,             // Allocatable memory pool start
+        0,                          // Allocatable memory pool size
+        1,                          // ???
+        2,                          // Number of contexts?
+        sizeof(Gfx) * 2125,         // Display List Buffer 0 Size
+        sizeof(Gfx) * 512,          // Display List Buffer 1 Size
+        0,                          // Display List Buffer 2 Size
+        0,                          // Display List Buffer 3 Size
+        0x8000,                     // Graphics Heap Size
+        2,                          // ???
+        0x8000,                     // RDP Output Buffer Size
+        mnMapsFuncLights,   		// Pre-render function
+        syControllerFuncRead,       // Controller I/O function
+    },
+
+    0,                              // Number of GObjThreads
+    sizeof(u64) * 64,              	// Thread stack size
+    0,                              // Number of thread stacks
+    0,                              // ???
+    0,                              // Number of GObjProcesses
+    0,                              // Number of GObjs
+    sizeof(GObj),                   // GObj size
+    0,                              // Number of XObjs
+    NULL,        					// Matrix function list
+    NULL,                           // DObjVec eject function
+    0,                              // Number of AObjs
+    0,                              // Number of MObjs
+    0,                              // Number of DObjs
+    sizeof(DObj),                   // DObj size
+    0,                              // Number of SObjs
+    sizeof(SObj),                   // SObj size
+    0,                              // Number of Cameras
+    sizeof(CObj),                 	// CObj size
+    
+    mnMapsFuncStart         		// Task start function
 };
 
 // 0x8013446C
-void mnStagesStartScene()
+void mnMapsStartScene(void)
 {
 	D_ovl30_8013490C.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&D_ovl30_8013490C);
-	D_ovl30_80134928.buffer_setup.arena_size = (u32) ((uintptr_t)&lOverlay30ArenaHi - (uintptr_t)&lOverlay30ArenaLo);
+
+	D_ovl30_80134928.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl30_BSS_END);
 	scManagerFuncUpdate(&D_ovl30_80134928);
 }

@@ -8,12 +8,8 @@
 #include "character_select.h"
 
 // Externs
-extern intptr_t D_NF_800A5240;      // 0x800A5240
-extern intptr_t lOverlay27ArenaLo;  // 0x801396D0
-extern intptr_t lOverlay27ArenaHi;  // 0x803903E0
 
 extern f32 dSCSubsysFighterScales[12]; // dSCSubsysFighterScales
-
 
 // Offsets
 extern intptr_t FILE_011_START_IMAGE_OFFSET; // Press Start's "Start" texture
@@ -189,10 +185,10 @@ u32 D_ovl27_801392E0[240];
 void *gMN1PFiles[11];
 
 // 0x80131B00
-void mn1PFuncLights(Gfx **display_list)
+void mn1PGamePlayersFuncLights(Gfx **dls)
 {
-	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
-	ftDisplayLightsDrawReflect(display_list, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
+	gSPSetGeometryMode(dls[0]++, G_LIGHTING);
+	ftDisplayLightsDrawReflect(dls, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
 }
 
 // 0x80131B58
@@ -3083,7 +3079,7 @@ void mn1PInitPanel(s32 port_id)
 }
 
 // 0x80138334
-void mn1PInitCSS()
+void mn1PGamePlayersFuncStart(void)
 {
 	s32 bar, baz;
 	LBRelocSetup rl_setup;
@@ -3137,44 +3133,66 @@ void mn1PInitCSS()
 	scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 
 	if (gSCManagerSceneData.scene_prev != nSCKindMaps)
+	{
 		auPlaySong(0, 0xA);
-
+	}
 	func_800269C0_275C0(0x1DFU);
 }
 
 // 0x80138C90
-SYVideoSetup D_ovl27_80138C90 = {
-
-	&gSYFramebufferSets[0],
-	&gSYFramebufferSets[1],
-	&gSYFramebufferSets[2],
-	0x00000000,
-	0x00000140,
-	0x000000F0,
-	0x00016A99
-};
+SYVideoSetup dMN1PPlayersVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
 // 0x80138CAC
-SYTaskmanSetup D_ovl27_80138CAC = {
+SYTaskmanSetup dMN1PPlayersTaskmanSetup =
+{
+    // Task Manager Buffer Setup
+    {
+        0,                          // ???
+        gcRunAll,              		// Update function
+        gcDrawAll,          		// Frame draw function
+        &ovl27_BSS_END,             // Allocatable memory pool start
+        0,                          // Allocatable memory pool size
+        1,                          // ???
+        2,                          // Number of contexts?
+        sizeof(Gfx) * 2375,         // Display List Buffer 0 Size
+        sizeof(Gfx) * 64,          	// Display List Buffer 1 Size
+        0,                          // Display List Buffer 2 Size
+        0,                          // Display List Buffer 3 Size
+        0x8000,                     // Graphics Heap Size
+        2,                          // ???
+        0x8000,                     // RDP Output Buffer Size
+        mn1PGamePlayersFuncLights,   	// Pre-render function
+        syControllerFuncRead,       // Controller I/O function
+    },
 
-	0x00000000, 0x8000A5E4,
-	gcDrawAll, &lOverlay27ArenaLo,
-	0x00000000, 0x00000001, 0x00000002, 0x00004A38, 0x00000200,
-	0x00000000, 0x00000000, 0x00008000, 0x0002, 0x00008000,
-	mn1PFuncLights, syControllerFuncRead,
-	0x00000000, 0x00000100, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000088, 0x00000000,
-	0x800D5CAC, 0x00000000, 0x00000000, 0x00000000,
-	0x00000000, 0x00000088, 0x00000000, 0x0000006C,
-	0x00000000, 0x00000090,
-	mn1PInitCSS
+    0,                              // Number of GObjThreads
+    sizeof(u64) * 32,              	// Thread stack size
+    0,                              // Number of thread stacks
+    0,                              // ???
+    0,                              // Number of GObjProcesses
+    0,                              // Number of GObjs
+    sizeof(GObj),                   // GObj size
+    0,                              // Number of XObjs
+    dLBCommonFuncMatrixList,        // Matrix function list
+    NULL,                           // DObjVec eject function
+    0,                              // Number of AObjs
+    0,                              // Number of MObjs
+    0,                              // Number of DObjs
+    sizeof(DObj),                   // DObj size
+    0,                              // Number of SObjs
+    sizeof(SObj),                   // SObj size
+    0,                              // Number of Cameras
+    sizeof(CObj),                 	// CObj size
+    
+    mn1PGamePlayersFuncStart         	// Task start function
 };
 
 // 0x80138558
-void classic_css_entry()
+void mn1PGamePlayersStartScene(void)
 {
-	D_ovl27_80138C90.zbuffer = syVideoGetZBuffer(6400);
-	syVideoInit(&D_ovl27_80138C90);
-	D_ovl27_80138CAC.buffer_setup.arena_size = (u32) ((uintptr_t)&lOverlay27ArenaHi - (uintptr_t)&lOverlay27ArenaLo);
-	syTaskmanRun(&D_ovl27_80138CAC);
+	dMN1PPlayersVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&dMN1PPlayersVideoSetup);
+
+	dMN1PPlayersTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl27_BSS_END);
+	syTaskmanRun(&dMN1PPlayersTaskmanSetup);
 }

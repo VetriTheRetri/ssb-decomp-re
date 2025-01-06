@@ -216,12 +216,12 @@ typedef enum mnCursorState
 
 } mnCursorState;
 
-typedef enum mnBonusType
+typedef enum mn1PBonusPlayersType
 {
-	mnBonusTypeBTT, // Break the Targets
-	mnBonusTypeBTP  // Board the Platforms
+	mn1PBonusPlayersTypeBTT, // Break the Targets
+	mn1PBonusPlayersTypeBTP  // Board the Platforms
 
-} mnBonusType;
+} mn1PBonusPlayersType;
 
 
 #define IS_BETWEEN(val, min, max) \

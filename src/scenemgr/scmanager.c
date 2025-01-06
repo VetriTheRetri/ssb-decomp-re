@@ -980,13 +980,13 @@ void scManagerRunLoop(sb32 arg)
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[26]);
-				vs_css_entry();
+				mnVSPlayersStartScene();
 				break;
 
 			case nSCKindMaps:
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[30]);
-				mnStagesStartScene();
+				mnMapsStartScene();
 				break;
 
 			case nSCKindVSBattle:
@@ -1150,14 +1150,14 @@ void scManagerRunLoop(sb32 arg)
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[27]);
-				classic_css_entry();
+				mn1PGamePlayersStartScene();
 				break;
 
 			case nSCKind1PTrainingModePlayers:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[28]);
-				training_css_entry();
+				mn1PTrainingPlayersStartScene();
 				break;
 				
 			case nSCKind1PBonus1Players:
@@ -1167,7 +1167,7 @@ void scManagerRunLoop(sb32 arg)
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[29]);
-				bonus_css_entry();
+				mn1PBonusPlayersStartScene();
 				break;
 
 #ifndef DAIRANTOU_OPT0
@@ -1175,7 +1175,7 @@ void scManagerRunLoop(sb32 arg)
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[29]);
-				bonus_css_entry();
+				mn1PBonusPlayersStartScene();
 				break;
 #endif
 			case nSCKindBackupClear:

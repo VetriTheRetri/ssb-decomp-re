@@ -352,6 +352,66 @@ extern uintptr_t ovl25_RODATA_END;
 extern uintptr_t ovl25_BSS_START;
 extern uintptr_t ovl25_BSS_END;
 
+extern uintptr_t ovl26_ROM_START;
+extern uintptr_t ovl26_ROM_END;
+extern uintptr_t ovl26_VRAM;
+extern uintptr_t ovl26_TEXT_START;
+extern uintptr_t ovl26_TEXT_END;
+extern uintptr_t ovl26_DATA_START;
+extern uintptr_t ovl26_RODATA_END;
+extern uintptr_t ovl26_BSS_START;
+extern uintptr_t ovl26_BSS_END;
+
+extern uintptr_t ovl27_ROM_START;
+extern uintptr_t ovl27_ROM_END;
+extern uintptr_t ovl27_VRAM;
+extern uintptr_t ovl27_TEXT_START;
+extern uintptr_t ovl27_TEXT_END;
+extern uintptr_t ovl27_DATA_START;
+extern uintptr_t ovl27_RODATA_END;
+extern uintptr_t ovl27_BSS_START;
+extern uintptr_t ovl27_BSS_END;
+
+extern uintptr_t ovl28_ROM_START;
+extern uintptr_t ovl28_ROM_END;
+extern uintptr_t ovl28_VRAM;
+extern uintptr_t ovl28_TEXT_START;
+extern uintptr_t ovl28_TEXT_END;
+extern uintptr_t ovl28_DATA_START;
+extern uintptr_t ovl28_RODATA_END;
+extern uintptr_t ovl28_BSS_START;
+extern uintptr_t ovl28_BSS_END;
+
+extern uintptr_t ovl29_ROM_START;
+extern uintptr_t ovl29_ROM_END;
+extern uintptr_t ovl29_VRAM;
+extern uintptr_t ovl29_TEXT_START;
+extern uintptr_t ovl29_TEXT_END;
+extern uintptr_t ovl29_DATA_START;
+extern uintptr_t ovl29_RODATA_END;
+extern uintptr_t ovl29_BSS_START;
+extern uintptr_t ovl29_BSS_END;
+
+extern uintptr_t ovl30_ROM_START;
+extern uintptr_t ovl30_ROM_END;
+extern uintptr_t ovl30_VRAM;
+extern uintptr_t ovl30_TEXT_START;
+extern uintptr_t ovl30_TEXT_END;
+extern uintptr_t ovl30_DATA_START;
+extern uintptr_t ovl30_RODATA_END;
+extern uintptr_t ovl30_BSS_START;
+extern uintptr_t ovl30_BSS_END;
+
+extern uintptr_t ovl31_ROM_START;
+extern uintptr_t ovl31_ROM_END;
+extern uintptr_t ovl31_VRAM;
+extern uintptr_t ovl31_TEXT_START;
+extern uintptr_t ovl31_TEXT_END;
+extern uintptr_t ovl31_DATA_START;
+extern uintptr_t ovl31_RODATA_END;
+extern uintptr_t ovl31_BSS_START;
+extern uintptr_t ovl31_BSS_END;
+
 extern uintptr_t ovl32_ROM_START;
 extern uintptr_t ovl32_ROM_END;
 extern uintptr_t ovl32_VRAM;

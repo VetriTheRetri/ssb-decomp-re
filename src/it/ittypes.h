@@ -107,7 +107,7 @@ struct ITAttackColl
 	u16 stat_count;										// Item's status update number
 	s32 attack_count;									// Item's hitbox count, up to two
 	ITAttackPos attack_pos[ITEM_ATKCOLL_NUM_MAX];		// Item hitbox positions
-	GMAttackRecord attack_records[GMATKRECORD_NUM_MAX];	// Item's record of attacked targets
+	GMAttackRecord attack_records[GMATTACKREC_NUM_MAX];	// Item's record of attacked targets
 };
 
 struct ITAttackEvent 	// Miniature hitbox subaction event? Commonly Used by explosions.

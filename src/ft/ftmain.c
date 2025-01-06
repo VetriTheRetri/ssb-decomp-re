@@ -686,9 +686,9 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
     case nFTMotionEventStopRumble:
         if (fp->pkind != nFTPlayerKindDemo)
         {
-            gmRumbleStopRumbleID(fp->player, ftMotionEventCast(ms, FTMotionEventStopRumble)->rumble_id);
+            gmRumbleStopRumbleID(fp->player, ftMotionEventCast(ms, FTMotionEventDefault)->value);
         }
-        ftMotionEventAdvance(ms, FTMotionEventStopRumble);
+        ftMotionEventAdvance(ms, FTMotionEventDefault);
         break;
     }
 }

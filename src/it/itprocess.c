@@ -162,7 +162,6 @@ void itProcessProcItemMain(GObj *item_gobj)
             translate->y += coll_data->pos_speed.y;
             translate->z += coll_data->pos_speed.z;
         }
-
         else if ((ip->ga == nMPKineticsGround) && (ip->coll_data.ground_line_id != -1) && (ip->coll_data.ground_line_id != -2) && (mpCollisionCheckExistLineID(ip->coll_data.ground_line_id) != FALSE))
         {
             mpCollisionGetSpeedLineID(ip->coll_data.ground_line_id, &ip->coll_data.pos_speed);

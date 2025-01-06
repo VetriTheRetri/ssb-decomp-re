@@ -212,9 +212,9 @@ struct FTMotionFlags
 struct FTMotionScript
 {
 	f32 script_wait;
-	u32* p_script;
+	u32 *p_script;
 	s32 script_id;
-	void* p_goto[1];
+	void *p_goto[1];
 	s32 loop_count[4];
 };
 
@@ -625,7 +625,7 @@ struct FTAttackColl
     u16 stat_count;
     Vec3f pos_curr;
     Vec3f pos_prev;
-    GMAttackRecord attack_records[GMATKRECORD_NUM_MAX];
+    GMAttackRecord attack_records[GMATTACKREC_NUM_MAX];
     FTAttackMatrix attack_matrix;
 };
 

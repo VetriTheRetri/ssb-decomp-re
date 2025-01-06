@@ -109,7 +109,7 @@ struct WPAttackColl
     u16 stat_count;                                         // Weapon's status update count
     s32 attack_count;                                       // Weapon's hitbox count
     WPAttackPos attack_pos[WEAPON_ATKCOLL_NUM_MAX];  	    // Weapon's hitbox world positions
-    GMAttackRecord attack_records[GMATKRECORD_NUM_MAX];     // Weapon's record of interacted targets
+    GMAttackRecord attack_records[GMATTACKREC_NUM_MAX];     // Weapon's record of interacted targets
 };
 
 // Main weapon struct

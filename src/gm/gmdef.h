@@ -13,7 +13,7 @@
 #define GMHITCOLLISION_FLAG_ITEM (1 << 2)	 // Can interact with items
 
 #define GMHITCOLLISION_FLAG_ALL (GMHITCOLLISION_FLAG_FIGHTER | GMHITCOLLISION_FLAG_WEAPON | GMHITCOLLISION_FLAG_ITEM)
-#define GMATKRECORD_NUM_MAX 4
+#define GMATTACKREC_NUM_MAX 4
 
 #define GMSTAFFROLL_COLON_PARA_FONT_INDEX              0x34
 #define GMSTAFFROLL_PERIOD_PARA_FONT_INDEX             0x3F
@@ -136,9 +136,8 @@ typedef enum GMHitElement
 	nGMHitElementElectric,
 	nGMHitElementSlash,
 	nGMHitElementCoin,
-	nGMHitElementFreezing,	// This is only speculation. It causes the screen to flash blue if knockback > 160.0
-	nGMHitElementSleep,
-	nGMHitElementUnk2
+	nGMHitElementFreezing,			// This is only speculation. It causes the screen to flash blue if knockback > 160.0
+	nGMHitElementSleep
 
 } GMHitElement;
 

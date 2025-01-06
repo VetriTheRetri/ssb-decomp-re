@@ -29,8 +29,8 @@ ITDesc dITKamexItemDesc =
 
     // DObj transformation struct
     {
-        nGCMatrixKindTraRotRpyR,             // Main matrix transformations
-        nGCMatrixKindNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyR,            // Main matrix transformations
+        nGCMatrixKindNull,                  // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -297,7 +297,7 @@ void itKamexAttackInitVars(GObj *item_gobj, sb32 is_ignore_setup)
 
         if (ip->kind == nITKindKamex)
         {
-            Gfx *dl = (Gfx*)itGetPData(ip, lITKamexDataStart, lITKamexDisplayList);
+            Gfx *dl = (Gfx*) itGetPData(ip, lITKamexDataStart, lITKamexDisplayList);
 
             dobj->dl = dl;
 
@@ -361,7 +361,7 @@ void itKamexCommonFindTargetsSetLR(GObj *item_gobj)
     f32 dist_x;
     Vec3f dist;
     f32 square_xy;
-    s32 ft_count = 0;
+    s32 players = 0;
 
     while (fighter_gobj != NULL)
     {
@@ -371,11 +371,11 @@ void itKamexCommonFindTargetsSetLR(GObj *item_gobj)
         {
             syVectorDiff3D(&dist, &DObjGetStruct(fighter_gobj)->translate.vec.f, &dobj->translate.vec.f);
 
-            if (ft_count == 0)
+            if (players == 0)
             {
                 dist_xy = SQUARE(dist.x) + SQUARE(dist.y);
             }
-            ft_count++;
+            players++;
 
             square_xy = SQUARE(dist.x) + SQUARE(dist.y);
 

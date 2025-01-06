@@ -59,10 +59,10 @@ void ftNessSpecialHiMakePKThunder(GObj *fighter_gobj)
 // 0x80153CFC
 sb32 ftNessSpecialHiCheckCollidePKThunder(GObj *fighter_gobj)
 {
-    f32 fighter_dobj_x;
-    f32 fighter_dobj_y;
-    f32 item_dobj_x;
-    f32 item_dobj_y;
+    f32 ft_pos_x;
+    f32 ft_pos_y;
+    f32 wp_pos_x;
+    f32 wp_pos_y;
     f32 collide_x;
     f32 collide_y;
     GObj *pkthunder_gobj;
@@ -71,23 +71,27 @@ sb32 ftNessSpecialHiCheckCollidePKThunder(GObj *fighter_gobj)
 
     pkthunder_gobj = fp->status_vars.ness.specialhi.pkthunder_gobj;
 
-    if (fp->status_vars.ness.specialhi.pkjibaku_delay != 0) return FALSE;
-
-    if ((fp->passive_vars.ness.is_thunder_destroy & TRUE) || (pkthunder_gobj == NULL)) return FALSE;
-
+    if (fp->status_vars.ness.specialhi.pkjibaku_delay != 0)
+    {
+        return FALSE;
+    }
+    if ((fp->passive_vars.ness.is_thunder_destroy & TRUE) || (pkthunder_gobj == NULL))
+    {
+        return FALSE;
+    }
     ip = wpGetStruct(pkthunder_gobj);
 
-    fighter_dobj_x = DObjGetStruct(fighter_gobj)->translate.vec.f.x;
-    item_dobj_x = DObjGetStruct(pkthunder_gobj)->translate.vec.f.x;
+    ft_pos_x = DObjGetStruct(fighter_gobj)->translate.vec.f.x;
+    wp_pos_x = DObjGetStruct(pkthunder_gobj)->translate.vec.f.x;
 
-    collide_x = (fighter_dobj_x < item_dobj_x) ? -(fighter_dobj_x - item_dobj_x) : (fighter_dobj_x - item_dobj_x);
+    collide_x = (ft_pos_x < wp_pos_x) ? -(ft_pos_x - wp_pos_x) : (ft_pos_x - wp_pos_x);
 
     if (collide_x < FTNESS_PKTHUNDER_COLLIDE_X)
     {
-        fighter_dobj_y = DObjGetStruct(fighter_gobj)->translate.vec.f.y + 150.0F;
-        item_dobj_y = DObjGetStruct(pkthunder_gobj)->translate.vec.f.y;
+        ft_pos_y = DObjGetStruct(fighter_gobj)->translate.vec.f.y + 150.0F;
+        wp_pos_y = DObjGetStruct(pkthunder_gobj)->translate.vec.f.y;
 
-        collide_y = (fighter_dobj_y < item_dobj_y) ? -(fighter_dobj_y - item_dobj_y) : (fighter_dobj_y - item_dobj_y);
+        collide_y = (ft_pos_y < wp_pos_y) ? -(ft_pos_y - wp_pos_y) : (ft_pos_y - wp_pos_y);
 
         if (collide_y < FTNESS_PKTHUNDER_COLLIDE_Y)
         {
@@ -400,37 +404,36 @@ void ftNessSpecialAirHiEndSetStatus(GObj *fighter_gobj)
 void ftNessSpecialHiCollideWallPhysics(GObj *fighter_gobj, MPCollData *coll_data)
 {
     s32 unused;
-    f32 rot, tan;
+    f32 angle_old, angle_new;
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    rot = (fp->lr == +1) ? fp->status_vars.ness.specialhi.pkjibaku_angle : (F_CST_DTOR32(180.0F) - fp->status_vars.ness.specialhi.pkjibaku_angle);
+    angle_old = (fp->lr == +1) ? fp->status_vars.ness.specialhi.pkjibaku_angle : (F_CST_DTOR32(180.0F) - fp->status_vars.ness.specialhi.pkjibaku_angle);
 
-    if (rot > F_CST_DTOR32(360.0F))
+    if (angle_old > F_CST_DTOR32(360.0F))
     {
-        rot -= F_CST_DTOR32(360.0F);
+        angle_old -= F_CST_DTOR32(360.0F);
     }
     if (coll_data->coll_mask_curr & MPCOLL_FLAG_LWALL)
     {
-        tan = syUtilsArcTan2(coll_data->lwall_angle.y, coll_data->lwall_angle.x);
+        angle_new = syUtilsArcTan2(coll_data->lwall_angle.y, coll_data->lwall_angle.x);
 
-        if (tan > F_CST_DTOR32(360.0F))
+        if (angle_new > F_CST_DTOR32(360.0F))
         {
-            tan -= F_CST_DTOR32(360.0F);
+            angle_new -= F_CST_DTOR32(360.0F);
         }
-
-        tan = ((rot + F_CST_DTOR32(180.0F)) < tan) ? (tan + F_CST_DTOR32(90.0F)) : (tan + F_CST_DTOR32(-90.0F)); // To fix Ness's janky left wall collision, compare rotation - PI32
+        angle_new = ((angle_old + F_CST_DTOR32(180.0F)) < angle_new) ? (angle_new + F_CST_DTOR32(90.0F)) : (angle_new + F_CST_DTOR32(-90.0F)); // To fix Ness's janky left wall collision, compare rotation - PI32
     }
     if (coll_data->coll_mask_curr & MPCOLL_FLAG_RWALL)
     {
-        tan = syUtilsArcTan2(coll_data->rwall_angle.y, coll_data->rwall_angle.x);
+        angle_new = syUtilsArcTan2(coll_data->rwall_angle.y, coll_data->rwall_angle.x);
 
-        if (tan > F_CST_DTOR32(360.0F))
+        if (angle_new > F_CST_DTOR32(360.0F))
         {
-            tan -= F_CST_DTOR32(360.0F);
+            angle_new -= F_CST_DTOR32(360.0F);
         }
-        tan = ((tan + F_CST_DTOR32(180.0F)) < rot) ? (tan + (F_CST_DTOR32(90.0F))) : (tan + F_CST_DTOR32(-90.0F));
+        angle_new = ((angle_new + F_CST_DTOR32(180.0F)) < angle_old) ? (angle_new + (F_CST_DTOR32(90.0F))) : (angle_new + F_CST_DTOR32(-90.0F));
     }
-    syVectorRotate3D(&fp->physics.vel_air, SYVECTOR_AXIS_Z, tan - (fp->status_vars.ness.specialhi.pkjibaku_angle * fp->lr));
+    syVectorRotate3D(&fp->physics.vel_air, SYVECTOR_AXIS_Z, angle_new - (fp->status_vars.ness.specialhi.pkjibaku_angle * fp->lr));
 
     fp->status_vars.ness.specialhi.pkjibaku_angle = syUtilsArcTan2(fp->physics.vel_air.y, fp->physics.vel_air.x * fp->lr);
 }
@@ -680,10 +683,14 @@ void ftNessSpecialHiJibakuSetStatus(GObj *fighter_gobj)
 
     angle_diff = syVectorAngleDiff3D(&fp->coll_data.ground_angle, &pos);
 
-    if (angle_diff < F_CST_DTOR32(90.0F)) goto setair;
-    
-    if (angle_diff > F_CST_DTOR32(155.0F)) goto setdown; // 2.3561945F
-        
+    if (angle_diff < F_CST_DTOR32(90.0F))
+    {
+        goto setair;
+    }
+    else if (angle_diff > F_CST_DTOR32(155.0F))
+    {
+        goto setdown; // 2.3561945F
+    }
     fp->lr = (pos.x >= 0) ? +1 : -1;
 
     if (pos.x < 0)
@@ -716,7 +723,7 @@ void ftNessSpecialAirHiJibakuSetStatus(GObj *fighter_gobj)
 
     fp->lr = (dist_x >= 0.0F) ? +1 : -1;
 
-    fp->status_vars.ness.specialhi.pkjibaku_angle  = syUtilsArcTan2(dist_y, fp->lr * dist_x);
+    fp->status_vars.ness.specialhi.pkjibaku_angle = syUtilsArcTan2(dist_y, fp->lr * dist_x);
 
     fp->physics.vel_air.x = (__cosf(fp->status_vars.ness.specialhi.pkjibaku_angle) * FTNESS_PKJIBAKU_VEL * fp->lr);
     fp->physics.vel_air.y = (__sinf(fp->status_vars.ness.specialhi.pkjibaku_angle) * FTNESS_PKJIBAKU_VEL);

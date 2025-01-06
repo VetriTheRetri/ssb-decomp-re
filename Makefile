@@ -228,10 +228,12 @@ toolchain:
 	$(V)bash ./installDependencies.sh
 
 rom: $(ROM)
+	$(V)$(PYTHON) tools/n64crc.py $<
 	@$(PRINT) "$(BLUE)$(TARGET).$(VERSION).z64$(NO_COL): "
 	@cmp $(ROM) $(BASEROM) > /dev/null && \
 	$(PRINT) "$(GREEN)OK$(NO_COL)\n" || \
 	$(PRINT) "$(RED)FAILURE$(NO_COL)\n"
+# $(call print_2,Validating checksums for $<:)
 
 nolink: $(TEXT_SECTION_FILES) $(DATA_SECTION_FILES) $(RODATA_SECTION_FILES)
 	@echo "Comparing object files:"
@@ -268,6 +270,10 @@ expected:
 	mkdir -p expected/build
 	rm -rf expected/build/
 	cp -r build/ expected/build/
+
+validate: $(ROM)
+	$(call print_2,Validating checksums for $<)
+	$(V)$(PYTHON) tools/n64crc.py $<
 
 format:
 	$(PYTHON) tools/formatHelper.py -e
@@ -356,4 +362,4 @@ assets/relocData/%.vpk0: assets/relocData/%.vpk0.bin
 
 -include $(DEP_FILES)
 
-.PHONY: all toolchain rom nolink clean extract init expected format
+.PHONY: all toolchain rom nolink clean extract init expected validate format

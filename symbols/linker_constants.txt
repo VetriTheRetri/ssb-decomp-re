@@ -1,5 +1,3 @@
-gSYFramebufferSets = 0x80392A00;
-
 lOverlay26ArenaLo = 0x8013C4C0;
 lOverlay26ArenaHi = 0x803903E0;
 lOverlay27ArenaLo = 0x801396D0;

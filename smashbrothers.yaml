@@ -1843,6 +1843,14 @@ segments:
       - [0x1AC820, .rodata, db/dbmenu]
       - { start: auto, type: .bss, name: db/dbmenu }
 
+  - name: framebuffer
+    exclusive_ram_id: framebuffers
+    type: code
+    vram: 0x80392A00
+    bss_size: (0x80400000 - 0x80392A00)
+    subsegments:
+    - { type: .bss, name: sys/framebuffer, vram: 0x80392A00 }
+
   - [0x1AC870, bin, relocData]
 
 # Particle banks

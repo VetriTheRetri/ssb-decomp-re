@@ -144,7 +144,7 @@ void wpDisplayDrawZBuffer(void)
 }
 
 // 0x80167520
-void wpDisplayMain(GObj *weapon_gobj, void(*func_display)(GObj*))
+void wpDisplayMain(GObj *weapon_gobj, void (*func_display)(GObj*))
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
 

@@ -205,11 +205,13 @@ if __name__ == "__main__":
 					for i in range((d[1] - d[0] + INSTR_SIZE) // INSTR_SIZE):
 						currentOffset = d[0] + i * INSTR_SIZE
 						segment = parser.findSegmentForRomLocation(currentOffset)
+						if segment['name'] is None:
+							segment['name'] = "unknown"
 						binAFile.seek(currentOffset, 0)
 						binBFile.seek(currentOffset, 0)
 						wordA = binAFile.read(INSTR_SIZE)
 						wordB = binBFile.read(INSTR_SIZE)
-						if "data" in segment['type']:
+						if segment['type'] is None or "data" in segment['type']:
 							diffText = f"\033[91m{wordB.hex()} -- {wordA.hex()}\033[0m"
 						else:
 							asmA = f"{rabbitizer.Instruction(int.from_bytes(wordA, byteorder=BYTE_ORDER))}"

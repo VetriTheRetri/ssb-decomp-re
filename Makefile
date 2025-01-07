@@ -236,12 +236,10 @@ toolchain:
 	$(V)bash ./installDependencies.sh
 
 rom: $(ROM)
-	$(V)$(PYTHON) tools/n64crc.py $<
 	@$(PRINT) "$(BLUE)$(TARGET).$(VERSION).z64$(NO_COL): "
 	@cmp $(ROM) $(BASEROM) > /dev/null && \
 	$(PRINT) "$(GREEN)OK$(NO_COL)\n" || \
 	$(PRINT) "$(RED)FAILURE$(NO_COL)\n"
-# $(call print_2,Validating checksums for $<:)
 
 nolink: $(TEXT_SECTION_FILES) $(DATA_SECTION_FILES) $(RODATA_SECTION_FILES)
 	@echo "Comparing object files:"
@@ -279,10 +277,6 @@ expected:
 	rm -rf expected/build/
 	cp -r build/ expected/build/
 
-validate: $(ROM)
-	$(call print_2,Validating checksums for $<)
-	$(V)$(PYTHON) tools/n64crc.py $<
-
 format:
 	$(PYTHON) tools/formatHelper.py -e
 # 	find include -type f | rg "\.h" | xargs clang-format -i
@@ -295,6 +289,8 @@ format:
 $(ROM): $(ELF)
 	$(call print_3,ELF->ROM:,$<,$@)
 	$(V)$(OBJCOPY) $(OBJCOPYFLAGS) $< $@ -O binary
+	$(call print_2,Patching CRC checksums for,$@,$(BLUE))
+	$(V)$(PYTHON) tools/n64crc.py $@
 
 # Linking
 $(ELF): $(O_FILES) symbols/not_found.txt symbols/linker_constants.txt build/assets/relocData.o

@@ -1831,7 +1831,7 @@ segments:
       - [0x1AB330, data, ovl8/ovl8_32]
       - [0x1AB650, .rodata, ovl8/ovl8_8]
       - [0x1AB6A0, .rodata, ovl8/ovl8_31]
-      - { start: auto, type: bss, vram: 0x8038EE60, name: ovl8/ovl8_4 }
+      - { start: auto, type: bss, name: ovl8/ovl8_bss, vram: 0x8038EE60 }
 
   - name: ovl9
     type: code

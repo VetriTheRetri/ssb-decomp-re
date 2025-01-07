@@ -2,9 +2,9 @@
 #include <sys/develop.h>
 #include <db/debug.h>
 
-extern s16 D_8038F000[];
-extern u16 D_8038F008[];
-extern u16 D_8038F046;
+extern s16 D_8038F000_1AB850[];
+extern u16 D_8038F008_1AB858[];
+extern u16 D_8038F046_1AB896;
 extern GObj* D_ovl8_8038A860;
 
 
@@ -75,13 +75,13 @@ void func_ovl8_8037DD60(DBMenuPosition* pos, char* text)
 	s16 temp_s5;
 	char current;
 
-	temp_s5 = D_8038F000[0];
+	temp_s5 = D_8038F000_1AB850[0];
 	for (current = *text; current != '\0'; text++, current = *text)
 	{
 		if (current == '\n')
 		{
-			D_8038F000[0] = temp_s5;
-			D_8038F000[1] = D_8038F008[2] + D_8038F000[1] + D_8038F046;
+			D_8038F000_1AB850[0] = temp_s5;
+			D_8038F000_1AB850[1] = D_8038F008_1AB858[2] + D_8038F000_1AB850[1] + D_8038F046_1AB896;
 		}
 		else
 			func_ovl8_8037DAA0(pos, current);
@@ -92,8 +92,8 @@ void func_ovl8_8037DD60(DBMenuPosition* pos, char* text)
 
 void func_ovl8_8037DFCC(s16 arg0, s16 arg1)
 {
-	D_8038F000[1] = arg1;
-	D_8038F000[0] = arg0;
+	D_8038F000_1AB850[1] = arg1;
+	D_8038F000_1AB850[0] = arg0;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037DFF8.s")

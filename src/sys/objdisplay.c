@@ -403,7 +403,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 {
                     if (dobj->parent_gobj->frame_draw_last != (u8)dSYTaskmanFrameCount)
                     {
-                        *mtx_store.p = gSYTaskmanGraphicsHeap.ptr;
+                        mtx_store.f = gSYTaskmanGraphicsHeap.ptr;
                         gSYTaskmanGraphicsHeap.ptr = (mtx_store.f = gSYTaskmanGraphicsHeap.ptr) + 1;
                     }
                     else

@@ -185,5 +185,6 @@ extern void sc1PStageClearUpdateResultScore(void);
 extern void sc1PStageClearFuncRun(GObj *gobj);
 extern void sc1PStageClearCopyFramebufToWallpaper(void);
 extern void sc1PStageClearFuncStart(void);
+extern void sc1PStageClearStartScene(void);
 
 #endif

@@ -444,7 +444,7 @@ GObj* wpNessPKThunderTrailMakeWeapon(GObj *head_gobj, Vec3f *pos, s32 trail_inde
 
     trail_wp = wpGetStruct(trail_gobj);
 
-    trail_gobj->func_display = wpDisplayPKThunder;
+    trail_gobj->func_display = wpDisplayPKThunderFuncDisplay;
 
     trail_wp->lifetime = WPPKTHUNDER_LIFETIME;
 
@@ -585,8 +585,8 @@ GObj* wpNessPKReflectHeadMakeWeapon(GObj *old_gobj, Vec3f *pos, f32 angle)
     s32 i;
     GObj *new_gobj;
     WPStruct *wp;
-    Vec3f localvel;
-    f32 unk_vec;
+    Vec3f dist;
+    f32 unused;
 
     new_gobj = wpManagerMakeWeapon(old_gobj, &dWPNessPKReflectHeadWeaponDesc, pos, (WEAPON_FLAG_COLLPROJECT | WEAPON_FLAG_PARENT_WEAPON));
 
@@ -607,14 +607,14 @@ GObj* wpNessPKReflectHeadMakeWeapon(GObj *old_gobj, Vec3f *pos, f32 angle)
         wp->weapon_vars.pkthunder.trail_gobj[i] = NULL;
     }
 
-    localvel.x = DObjGetStruct(new_gobj)->translate.vec.f.x - DObjGetStruct(wp->owner_gobj)->translate.vec.f.x;
-    localvel.y = DObjGetStruct(new_gobj)->translate.vec.f.y - (DObjGetStruct(wp->owner_gobj)->translate.vec.f.y + WPPKTHUNDER_REFLECT_POS_Y_ADD);
-    localvel.z = DObjGetStruct(new_gobj)->translate.vec.f.z - DObjGetStruct(wp->owner_gobj)->translate.vec.f.z;
+    dist.x = DObjGetStruct(new_gobj)->translate.vec.f.x - DObjGetStruct(wp->owner_gobj)->translate.vec.f.x;
+    dist.y = DObjGetStruct(new_gobj)->translate.vec.f.y - (DObjGetStruct(wp->owner_gobj)->translate.vec.f.y + WPPKTHUNDER_REFLECT_POS_Y_ADD);
+    dist.z = DObjGetStruct(new_gobj)->translate.vec.f.z - DObjGetStruct(wp->owner_gobj)->translate.vec.f.z;
 
-    syVectorNorm3D(&localvel);
+    syVectorNorm3D(&dist);
 
-    wp->physics.vel_air.x = (WPPKTHUNDER_VEL * localvel.x);
-    wp->physics.vel_air.y = (WPPKTHUNDER_VEL * localvel.y);
+    wp->physics.vel_air.x = (WPPKTHUNDER_VEL * dist.x);
+    wp->physics.vel_air.y = (WPPKTHUNDER_VEL * dist.y);
     wp->physics.vel_air.z = 0.0F;
 
     DObjGetStruct(new_gobj)->rotate.vec.f.z = syUtilsArcTan2(wp->physics.vel_air.y, wp->physics.vel_air.x);
@@ -680,7 +680,7 @@ GObj* wpNessPKReflectTrailMakeWeapon(GObj *old_gobj, Vec3f *pos, s32 trail_index
     }
     new_wp = wpGetStruct(new_gobj);
 
-    new_gobj->func_display = wpDisplayPKThunder;
+    new_gobj->func_display = wpDisplayPKThunderFuncDisplay;
 
     new_wp->lifetime = WPPKTHUNDER_LIFETIME;
 

@@ -14,5 +14,6 @@ extern void mvOpeningJungleFuncRun(GObj *gobj);
 extern void mvOpeningJungleFuncStart(void);
 extern void mvOpeningJungleFuncLights(Gfx **dls);
 extern void mvOpeningJungleFuncStart(void);
+extern void mvOpeningJungleStartScene(void);
 
 #endif

@@ -65,6 +65,14 @@ INCLUDES := -Iinclude -Isrc
 DEFINES  := -DF3DEX_GBI_2 -D_MIPS_SZLONG=32 -DNDEBUG -DN_MICRO -D_FINALROM
 OPTFLAGS := -O2 -mips2
 
+ifeq ($(NON_MATCHING),1)
+DEFINES += -DNON_MATCHING
+endif
+
+ifeq ($(AVOID_UB),1)
+DEFINES += -DAVOID_UB
+endif
+
 # ----- Output ------
 
 BUILD_DIR := build

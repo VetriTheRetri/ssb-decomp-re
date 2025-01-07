@@ -1,13 +1,13 @@
-#ifndef _WPRENDER_H_
-#define _WPRENDER_H_
+#ifndef _WPDISPLAY_H_
+#define _WPDISPLAY_H_
 
 #include "wptypes.h"
 
 // Display weapon hitboxes
-void wpDisplayHitCollisions(GObj* weapon_gobj);
+void wpDisplayHitCollisions(GObj *weapon_gobj);
 
 // Display map collision diamond
-void wpDisplayMapCollisions(GObj* weapon_gobj);
+void wpDisplayMapCollisions(GObj *weapon_gobj);
 
 // Unknown
 void wpDisplayDrawNormal();
@@ -16,21 +16,21 @@ void wpDisplayDrawNormal();
 void wpDisplayDrawZBuffer();
 
 // Unknown
-void wpDisplayMain(GObj* weapon_gobj, void (*func_display)(GObj*));
+void wpDisplayMain(GObj *weapon_gobj, void (*func_display)(GObj*));
 
 // Unknown
-void wpDisplayDLHead1(GObj* weapon_gobj);
+void wpDisplayDLHead1(GObj *weapon_gobj);
 
 // Unknown
-void wpDisplayDObjDLLinks(GObj* weapon_gobj);
+void wpDisplayDObjDLLinks(GObj *weapon_gobj);
 
 // Unknown
-void func_ovl3_80167618(GObj* weapon_gobj);
+void func_ovl3_80167618(GObj *weapon_gobj);
 
 // Unknown
-void wpDisplayDObjTreeDLLinks(GObj* weapon_gobj);
+void wpDisplayDObjTreeDLLinks(GObj *weapon_gobj);
 
 // Render PK Thunder specifically because life is short
-void wpDisplayPKThunder(GObj* weapon_gobj);
+void wpDisplayPKThunderFuncDisplay(GObj *weapon_gobj);
 
 #endif

@@ -3020,7 +3020,7 @@ SYTaskmanSetup D_ovl31_8013972C =
 };
 
 // 0x80138E64
-void vs_results_entry(void)
+void mnVSResultsStartScene(void)
 {
 	s32 i;
 

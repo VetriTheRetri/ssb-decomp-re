@@ -38,7 +38,7 @@ options:
     - reloc_addrs.txt
 
   undefined_funcs_auto_path: .splat/undefined_funcs_auto.txt
-  undefined_syms_auto_path: .splat/undefined_syms_auto.txt
+  # undefined_syms_auto_path: .splat/undefined_syms_auto.txt
 
   extensions_path: tools/splat_ext
 
@@ -346,10 +346,10 @@ segments:
     start: 0x0406D0
     vram: 0x800A1980
     subsegments:
-      - [0x0406D0, c, scenemgr/scmanager]
-      - [0x041DC0, .data, scenemgr/scmanager]
-      - [0x042F30, .rodata, scenemgr/scmanager]
-      - { start: auto, type: .bss, name: scenemgr/scmanager }
+      - [0x0406D0, c, sc/scmanager]
+      - [0x041DC0, .data, sc/scmanager]
+      - [0x042F30, .rodata, sc/scmanager]
+      - { start: auto, type: .bss, name: sc/scmanager }
 
   - name: ovl0
     type: code
@@ -1767,6 +1767,7 @@ segments:
     type: code
     start: 0x18DCB0
     vram: 0x80371460
+    bss_size: 0x1580
     exclusive_ram_id: overlay_80371460
     subsegments:
       - [0x18DCB0, c, ovl8/ovl8_0]

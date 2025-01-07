@@ -103,15 +103,15 @@
 
 #define SCMANAGER_OVERLAY_DEFINE(OVL_NUM) 		\
 {												\
-	(uintptr_t)&_ovl##OVL_NUM##SegRomStart, 	\
-	(uintptr_t)&_ovl##OVL_NUM##SegRomEnd,		\
-	(uintptr_t)&_ovl##OVL_NUM##SegStart, 		\
-	(uintptr_t)&_ovl##OVL_NUM##TextStart, 		\
-	(uintptr_t)&_ovl##OVL_NUM##TextEnd, 		\
-	(uintptr_t)&_ovl##OVL_NUM##DataStart,		\
-	(uintptr_t)&_ovl##OVL_NUM##DataEnd,			\
-	(uintptr_t)&_ovl##OVL_NUM##SegNoloadStart,	\
-	(uintptr_t)&_ovl##OVL_NUM##SegNoloadEnd		\
+	(uintptr_t)&ovl##OVL_NUM##_ROM_START, 		\
+	(uintptr_t)&ovl##OVL_NUM##_ROM_END,			\
+	(uintptr_t)&ovl##OVL_NUM##_VRAM, 			\
+	(uintptr_t)&ovl##OVL_NUM##_TEXT_START, 		\
+	(uintptr_t)&ovl##OVL_NUM##_TEXT_END, 		\
+	(uintptr_t)&ovl##OVL_NUM##_DATA_START,		\
+	(uintptr_t)&ovl##OVL_NUM##_RODATA_END,		\
+	(uintptr_t)&ovl##OVL_NUM##_BSS_START,		\
+	(uintptr_t)&ovl##OVL_NUM##_BSS_END			\
 }
 
 /*

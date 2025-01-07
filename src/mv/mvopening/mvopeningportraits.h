@@ -34,5 +34,6 @@ extern void mvOpeningPortraitsMakePortraitsCamera(void);
 extern void mvOpeningPortraitsMakeCoverCamera(void);
 extern void mvOpeningPortraitsInitVars(void);
 extern void mvOpeningPortraitsFuncStart(void);
+extern void mvOpeningPortraitsStartScene(void);
 
 #endif

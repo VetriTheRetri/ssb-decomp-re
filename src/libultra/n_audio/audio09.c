@@ -46,9 +46,50 @@ void __postNextSeqEvent(ALSeqPlayer *seqp)
 	alEvtqPostEvent(&seqp->evtq, &evt, deltaTicks * seqp->uspt);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/audio09/__setInstChanState.s")
+/*
+  sct 11/6/95 - Call this whenever a new instrument gets assigned to a channel
+  such as when changing banks or in response to a MIDI program change event.
+  Currently also gets called when changing sequences.
+*/
+// 0x8002DD4C
+void __setInstChanState(ALSeqPlayer *seqp, ALInstrument *inst, s32 chan)
+{
+    seqp->chanState[chan].instrument = inst;
+    seqp->chanState[chan].pan = inst->pan;
+    // seqp->chanState[chan].vol = inst->volume;
+//////// Only in Smash Bros.
+    seqp->chanState[chan].vol = 127;
+////////
+    seqp->chanState[chan].priority = inst->priority;
+    seqp->chanState[chan].bendRange = inst->bendRange;
+//////// Only in Smash Bros.
+    seqp->chanState[chan].vol2 = inst->volume;
+////////
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/audio09/__n_resetPerfChanState.s")
+/*
+  sct 11/6/95 -- Call this whenever a new sequence is to be played or when
+  initializing a sequence player.
+*/
+// 0x8002DDB8
+void __n_resetPerfChanState(ALSeqPlayer *seqp, s32 chan)
+{
+  seqp->chanState[chan].fxId = AL_FX_NONE;
+  seqp->chanState[chan].fxmix = AL_DEFAULT_FXMIX;
+  seqp->chanState[chan].pan = AL_PAN_CENTER;
+//////// Only in Smash Bros.
+  seqp->chanState[chan].vol = 127;
+////////
+  seqp->chanState[chan].priority = AL_DEFAULT_PRIORITY;
+  seqp->chanState[chan].sustain = 0;
+  seqp->chanState[chan].bendRange = 200;
+  seqp->chanState[chan].pitchBend = 1.0f;
+//////// Only in Smash Bros.
+  seqp->chanState[chan].unk_0x12 = 0;
+  seqp->chanState[chan].unk_0x13 = 95;
+  seqp->chanState[chan].unk_0x14 = 0;
+////////
+}
 
 // 0x8002DE68
 void __initFromBank(ALSeqPlayer* seqp, ALBank *b)

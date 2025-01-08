@@ -717,6 +717,11 @@ extern "C"
 		u8 fxmix;				  /* current fx mix for this chan     */
 		u8 sustain;				  /* current sustain pedal state      */
 		f32 pitchBend;			  /* current pitch bend val in cents  */
+        u8 unk_0x10;
+        u8 vol2;
+        u8 unk_0x12;
+        u8 unk_0x13;
+        u8 unk_0x14;
 	} ALChanState;
 
 	typedef struct ALSeq_s

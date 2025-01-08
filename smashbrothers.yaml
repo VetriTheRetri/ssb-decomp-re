@@ -1848,7 +1848,6 @@ segments:
     exclusive_ram_id: framebuffers
     type: code
     vram: 0x80392A00
-    bss_size: (0x80400000 - 0x80392A00)
     subsegments:
     - { type: .bss, name: sys/framebuffer, vram: 0x80392A00 }
 

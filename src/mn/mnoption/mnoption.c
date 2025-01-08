@@ -36,7 +36,7 @@ mnCommonSetOptionChangeWaitN(sMNOptionOptionChangeWait, is_button, stick_range, 
 
 extern uintptr_t D_NF_00000000;
 extern uintptr_t D_NF_00000004;
-extern sb32 auSoundQuality;
+extern sb32 dSYAudioSoundQuality;
 
 // // // // // // // // // // // //
 //                               //
@@ -750,7 +750,7 @@ void mnOptionInitVars(void)
     }
     sMNOptionOptionChangeWait = 0;
 
-    sMNOptionSoundMonoOrStereo = (auSoundQuality == 1) ? 1 : 0;
+    sMNOptionSoundMonoOrStereo = (dSYAudioSoundQuality == 1) ? 1 : 0;
 
     sMNOptionIsScreenFlash = gSCManagerBackupData.is_allow_screenflash;
     sMNOptionTotalTimeTics = 0;

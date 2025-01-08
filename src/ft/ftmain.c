@@ -2235,7 +2235,6 @@ void ftMainUpdateShieldStatWeapon(WPStruct *wp, WPAttackColl *wp_attack_coll, s3
 
         wp->shield_collide_dir.x = 0.0F;
         wp->shield_collide_dir.y = 0.0F;
-
         wp->shield_collide_dir.z = (fp->lr == +1) ? -dir->x : dir->x;
 
         syVectorNorm3D(&wp->shield_collide_dir);
@@ -2416,7 +2415,6 @@ void ftMainUpdateShieldStatItem(ITStruct *ip, ITAttackColl *it_attack_coll, s32 
 
         ip->shield_collide_dir.x = 0.0F;
         ip->shield_collide_dir.y = 0.0F;
-
         ip->shield_collide_dir.z = (fp->lr == +1) ? -vec->x : vec->x;
 
         syVectorNorm3D(&ip->shield_collide_dir);

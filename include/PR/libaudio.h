@@ -847,6 +847,7 @@ extern "C"
 		ALOscInit initOsc;
 		ALOscUpdate updateOsc;
 		ALOscStop stopOsc;
+		s32 unknown2; /* Added by HAL Laboratory? */
 	} ALCSPlayer;
 
 	/*

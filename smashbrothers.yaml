@@ -103,7 +103,7 @@ segments:
       - [0x019AE0, c, sys/vector]
       - [0x01A870, c, sys/matrix]
       - [0x01E210, c, sys/interp]
-      - [0x01F1C0, c, sys/hal_audio]
+      - [0x01F1C0, c, sys/audio]
       - [0x021CC0, c, sys/error]
       - [0x024440, c, unref24440] # One func, that's entirely unreferenced.
       - [0x024470, c, libultra/sp/setattribute]
@@ -259,7 +259,7 @@ segments:
       - [0x03C530, .data, sys/objdisplay]
       - [0x03C540, .data, sys/utils]
       - [0x03C550, .data, sys/sintable]
-      - [0x03D550, data, sys/hal_audio]
+      - [0x03D550, data, sys/audio]
       - [0x03D7B0, .data, sys/error]
       - [0x03DC70, .data, libultra/sp/sprite]
       - [0x03DC80, data, libultra/n_audio/n_env]
@@ -295,7 +295,7 @@ segments:
       - [0x03EF50, .rodata, sys/utils]
       - [0x03EFA0, .rodata, sys/matrix]
       - [0x03EFF0, .rodata, sys/interp]
-      - [0x03F010, .rodata, sys/hal_audio]
+      - [0x03F010, .rodata, sys/audio]
       - [0x03F020, .rodata, sys/error]
       - [0x03F460, .rodata, libultra/sp/sprite]
       - [0x03F470, .rodata, libultra/n_audio/n_env]
@@ -322,7 +322,7 @@ segments:
       - { start: auto, type: .bss, name: sys/rdp,                  vram: 0x800466A0 }
       - { start: auto, type: .bss, name: sys/objmanager,           vram: 0x800466B0 }
       - { start: auto, type: .bss, name: sys/objdisplay,           vram: 0x80046FA0 }
-      - { start: auto, type:  bss, name: sys/hal_audio,            vram: 0x800472D0 }
+      - { start: auto, type:  bss, name: sys/audio,            vram: 0x800472D0 }
       - { start: auto, type: .bss, name: sys/error,                vram: 0x8009DA00 }
       - { start: auto, type: .bss, name: libultra/sp/sprite,       vram: 0x8009EDC0 }
       - { start: auto, type:  bss, name: libultra/n_audio/n_env,   vram: 0x8009EDD0 }

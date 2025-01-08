@@ -23,28 +23,30 @@
 #define TWO_PI 6.2831853f
 #define OSC_STATE_COUNT 44
 
-typedef struct {
-    u8 fxType;
-    u8* heapBase;
-    s32 heapSize;
-    u16 outputRate;
-    u8 maxPVoices;
-    u8 maxVVoices;
-    u8 maxUpdates;
-    u8 maxEvents;
-    u8 numSounds;
-    u8 maxVoices[2];
+typedef struct
+{
+    u8 fx_type;
+    u8 *heap_base;
+    size_t heap_size;
+    u16 output_rate;
+    u8 pvoices_num_max;
+    u8 vvoices_num_max;
+    u8 updates_num_max;
+    u8 events_num_max;
+    u8 sounds_num_max;
+    u8 voices_num_max[2];
     s8 unk_11;
     s8 unk_12;
     u8 unk_13;
-    s32 bank1Start;
-    s32 bank1End;
-    u8* table1Start;
-    s32 bank2Start;
-    s32 bank2End;
-    u8* table2Start;
-    s32 romSbkStart;
-} AuSettings;
+    uintptr_t bank1_start;
+    uintptr_t bank1_end;
+    u8 *table1_start;
+    uintptr_t bank2_start;
+    uintptr_t bank2_end;
+    u8 *table2_start;
+    uintptr_t sbk_start;
+
+} SYAudioSettings;
 
 typedef struct {
     u8 rate;
@@ -87,8 +89,8 @@ typedef struct {
     s32 centsrange;
 } vibASawData;
 
-typedef struct oscData_s {
-    struct oscData_s* next;
+typedef struct SYAudioOsc_s {
+    struct SYAudioOsc_s* next;
     u8 type;
     u8 stateFlags;
     u16 maxCount;
@@ -103,7 +105,7 @@ typedef struct oscData_s {
         vibDSawData vdsaw;
         vibASawData vasaw;
     } data;
-} oscData;
+} SYAudioOsc;
 
 typedef struct {
     u32 addr;
@@ -242,11 +244,11 @@ typedef struct {
 //                               50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50,
 //                               50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50 };
 
-extern s32 auSettingsUpdated;// = 0;
+extern s32 sSYAudioIsSettingsUpdated;// = 0;
 extern s32 nextDMA; // = 0;
 extern s32 auSoundQuality;// = 1;
-extern s32 auCurrentFxType;// = 0;
-extern s32 auRestarting;// = 0;
+extern s32 sSYAudioCurrentFxType;// = 0;
+extern s32 sSYAudioIsRestarting;// = 0;
 // s32 auFrameCounter = 1;
 // s16 auSampleCount[] = { 0, 0, 0, 0 };
 // u8 auGlobalSoundVolume = 127;
@@ -261,10 +263,10 @@ extern ALHeap auHeap;
 extern SCClient auClient;
 extern OSMesgQueue auGameTickQueue;
 extern OSMesgQueue auSPTaskMessageQueue;
-extern OSMesgQueue auDMAMessageQueue;
+extern OSMesgQueue syAudioDmaMessageQueue;
 extern OSMesg auGameTickMessages[1];
 extern OSMesg auSPTaskMessages[1];
-extern OSMesg auDMAMessages[50];
+extern OSMesg syAudioDmaMessages[50];
 extern OSIoMesg audDMAIOMesgBuf[MAX_BUFFERS];
 // ALGlobals auGlobals;
 // s32 auFrequency;
@@ -287,20 +289,20 @@ extern ALBank* D_8009D958_96D58;
 // ALSndPlayer* auSoundPlayer;
 extern ALBank* auSeqBank;
 extern ALSeqFile* auSeqFile;
-extern ALCSPlayer* auBGMPlayers[2];
+extern ALCSPlayer* gSYAudioSongPlayers[2];
 // ALCSeq* auBGMSequences[2];
-extern u8 auGlobalSongPriority;
+extern u8 gSYAudioGlobalSongPriority;
 extern u8* auBGMSeqData[2];
 // u8* auBGMPlayerStatus;
 // s32* auBGMSongId;
 extern s32 auBGMVolTimer[2];
 extern f32 auBGMVolume[2];
 extern f32 auSongVolRate[2];
-extern AuSettings auCurrentSettings;
+extern SYAudioSettings auCurrentSettings;
 // OSTime D_80096968;
-extern oscData* freeOscStateList;
+extern SYAudioOsc* freeOscStateList;
 
-// AuSettings auPublicSettings = {
+// SYAudioSettings auPublicSettings = {
 //     auHeapBuffer,
 //     sizeof(auHeapBuffer),
 //     32000,
@@ -323,20 +325,21 @@ extern oscData* freeOscStateList;
 //     AL_FX_CUSTOM
 // };
 
-static void _bnkfPatchBank(ALBank* bank, s32 offset, s32 table);
-static void _bnkfPatchInst(ALInstrument* i, s32 offset, s32 table);
-static void _bnkfPatchSound(ALSound* s, s32 offset, s32 table);
-static void _bnkfPatchWaveTable(ALWaveTable* w, s32 offset, s32 table);
-
+static void syAudioBnkfPatchBank(ALBank *bank, uintptr_t offset, uintptr_t table);
+static void syAudioBnkfPatchInst(ALInstrument *i, uintptr_t offset, uintptr_t table);
+static void syAudioBnkfPatchSound(ALSound *s, uintptr_t offset, uintptr_t table);
+static void syAudioBnkfPatchWaveTable(ALWaveTable *w, uintptr_t offset, uintptr_t table);
 
 // 0x8001E5C0
-void alHeapInit(ALHeap* hp, u8* base, s32 len) {
-    s32 extraAlign = (AL_CACHE_ALIGN + 1) - ((s32) base & AL_CACHE_ALIGN);
+void alHeapInit(ALHeap *hp, u8 *base, s32 len)
+{
+    s32 extraAlign = (AL_CACHE_ALIGN + 1) - ((intptr_t) base & AL_CACHE_ALIGN);
 
     if (extraAlign != AL_CACHE_ALIGN + 1)
+    {
         hp->base = base + extraAlign;
-    else
-        hp->base = base;
+    }
+    else hp->base = base;
 
     hp->len = len;
     hp->cur = hp->base;
@@ -344,156 +347,188 @@ void alHeapInit(ALHeap* hp, u8* base, s32 len) {
 }
 
 // 0x8001E5F4
-void* alHeapDBAlloc(u8* file, s32 line, ALHeap* hp, s32 num, s32 size) {
-    s32 bytes;
-    u8* ptr = 0;
+void* alHeapDBAlloc(u8 *file, s32 line, ALHeap *hp, s32 num, s32 size)
+{
+    size_t bytes = (num * size + AL_CACHE_ALIGN) & ~AL_CACHE_ALIGN;
+    u8 *ptr = NULL;
 
-    bytes = (num * size + AL_CACHE_ALIGN) & ~AL_CACHE_ALIGN;
-
-    if ((hp->cur + bytes) <= (hp->base + hp->len)) {
+    if ((hp->cur + bytes) <= (hp->base + hp->len))
+    {
         ptr = hp->cur;
         hp->cur += bytes;
     }
-
     return ptr;
 }
 
 // 0x8001E648
-void alSeqFileNew(ALSeqFile* file, u8* base) {
-    s32 offset = (s32) base;
+void alSeqFileNew(ALSeqFile *file, u8 *base)
+{
+    uintptr_t base_ptr = (uintptr_t) base;
     s32 i;
 
     /*
      * patch the file so that offsets are pointers
      */
-    for (i = 0; i < file->seqCount; i++) {
-        file->seqArray[i].offset = (u8*) ((u8*) file->seqArray[i].offset + offset);
+    for (i = 0; i < file->seqCount; i++)
+    {
+        file->seqArray[i].offset = (u8*) ((u8*) file->seqArray[i].offset + base_ptr);
     }
 }
 
 // 0x8001E688
-void alBnkfNew(ALBankFile* file, u8* table) {
-    s32 offset = (s32) file;
-    s32 woffset = (s32) table;
-
+void alBnkfNew(ALBankFile *file, u8 *table)
+{
+    uintptr_t file_base = (uintptr_t) file;
+    uintptr_t table_base = (uintptr_t) table;
     s32 i;
 
     /*
      * patch the file so that offsets are pointers
      */
-    for (i = 0; i < file->bankCount; i++) {
-        file->bankArray[i] = (ALBank*) ((u8*) file->bankArray[i] + offset);
-        if (file->bankArray[i])
-            _bnkfPatchBank(file->bankArray[i], offset, woffset);
+    for (i = 0; i < file->bankCount; i++)
+    {
+        file->bankArray[i] = (ALBank*) ((u8*) file->bankArray[i] + file_base);
+
+        if (file->bankArray[i] != NULL)
+        {
+            syAudioBnkfPatchBank(file->bankArray[i], file_base, table_base);
+        }
     }
 }
 
 // 0x8001E708
-void _bnkfPatchBank(ALBank* bank, s32 offset, s32 table) {
+void syAudioBnkfPatchBank(ALBank *bank, uintptr_t offset, uintptr_t table)
+{
     s32 i;
 
     if (bank->flags)
+    {
         return;
-
+    }
     bank->flags = 1;
 
-    if (bank->percussion) {
+    if (bank->percussion != NULL)
+    {
         bank->percussion = (ALInstrument*) ((u8*) bank->percussion + offset);
-        _bnkfPatchInst(bank->percussion, offset, table);
+        syAudioBnkfPatchInst(bank->percussion, offset, table);
     }
-
-    for (i = 0; i < bank->instCount; i++) {
+    for (i = 0; i < bank->instCount; i++)
+    {
         bank->instArray[i] = (ALInstrument*) ((u8*) bank->instArray[i] + offset);
-        if (bank->instArray[i])
-            _bnkfPatchInst(bank->instArray[i], offset, table);
+
+        if (bank->instArray[i] != NULL)
+        {
+            syAudioBnkfPatchInst(bank->instArray[i], offset, table);
+        }
     }
 }
 
 // 0x8001E7C0
-void _bnkfPatchInst(ALInstrument* inst, s32 offset, s32 table) {
+void syAudioBnkfPatchInst(ALInstrument *inst, uintptr_t offset, uintptr_t table)
+{
     s32 i;
 
     if (inst->flags)
+    {
         return;
-
+    }
     inst->flags = 1;
 
-    for (i = 0; i < inst->soundCount; i++) {
+    for (i = 0; i < inst->soundCount; i++)
+    {
         inst->soundArray[i] = (ALSound*) ((u8*) inst->soundArray[i] + offset);
-        _bnkfPatchSound(inst->soundArray[i], offset, table);
+        syAudioBnkfPatchSound(inst->soundArray[i], offset, table);
     }
 }
 
 // 0x8001E858
-void _bnkfPatchSound(ALSound* s, s32 offset, s32 table) {
+void syAudioBnkfPatchSound(ALSound *s, uintptr_t offset, uintptr_t table)
+{
     if (s->flags)
+    {
         return;
-
+    }
     s->flags = 1;
 
     s->envelope = (ALEnvelope*) ((u8*) s->envelope + offset);
     s->keyMap = (ALKeyMap*) ((u8*) s->keyMap + offset);
 
     s->wavetable = (ALWaveTable*) ((u8*) s->wavetable + offset);
-    _bnkfPatchWaveTable(s->wavetable, offset, table);
+    syAudioBnkfPatchWaveTable(s->wavetable, offset, table);
 }
 
 // 0x8001E8B0
-void _bnkfPatchWaveTable(ALWaveTable* w, s32 offset, s32 table) {
+void syAudioBnkfPatchWaveTable(ALWaveTable *w, uintptr_t offset, uintptr_t table)
+{
     if (w->flags)
+    {
         return;
-
+    }
     w->flags = 1;
 
     w->base += table;
 
-    if (w->type == AL_ADPCM_WAVE) {
+    if (w->type == AL_ADPCM_WAVE)
+    {
         w->waveInfo.adpcmWave.book = (ALADPCMBook*) ((u8*) w->waveInfo.adpcmWave.book + offset);
-        if (w->waveInfo.adpcmWave.loop)
+
+        if (w->waveInfo.adpcmWave.loop != NULL)
+        {
             w->waveInfo.adpcmWave.loop = (ALADPCMloop*) ((u8*) w->waveInfo.adpcmWave.loop + offset);
-    } else if (w->type == AL_RAW16_WAVE) {
-        if (w->waveInfo.rawWave.loop)
+        }
+
+    }
+    else if (w->type == AL_RAW16_WAVE)
+    {
+        if (w->waveInfo.rawWave.loop != NULL)
+        {
             w->waveInfo.rawWave.loop = (ALRawLoop*) ((u8*) w->waveInfo.rawWave.loop + offset);
+        }
     }
 }
 
 // 0x8001E91C
-void auRomRead(u32 romAddr, void* vramAddr, u32 size) {
-    OSIoMesg DmaIoMessage;
+void syAudioReadRom(uintptr_t rom, void *vram, size_t size)
+{
+    OSIoMesg dmaIoMesg;
 
-    osInvalDCache((void*) vramAddr, (s32) size);
+    osInvalDCache(vram, (s32) size);
 
-    DmaIoMessage.hdr.pri = OS_MESG_PRI_NORMAL;
-    DmaIoMessage.hdr.retQueue = &auDMAMessageQueue;
-    DmaIoMessage.dramAddr = vramAddr;
-    DmaIoMessage.devAddr = romAddr;
-    DmaIoMessage.size = size;
+    dmaIoMesg.hdr.pri = OS_MESG_PRI_NORMAL;
+    dmaIoMesg.hdr.retQueue = &syAudioDmaMessageQueue;
+    dmaIoMesg.dramAddr = vram;
+    dmaIoMesg.devAddr = rom;
+    dmaIoMesg.size = size;
 
-    osEPiStartDma(gRomPiHandle, &DmaIoMessage, OS_READ);
-    osRecvMesg(&auDMAMessageQueue, NULL, OS_MESG_BLOCK);
+    osEPiStartDma(gSYDmaRomPiHandle, &dmaIoMesg, OS_READ);
+    osRecvMesg(&syAudioDmaMessageQueue, NULL, OS_MESG_BLOCK);
 }
 
 // 0x8001E99C
-s32 auDMA(s32 addr, s32 len, void* state) {
-    void* freeBuffer;
-    AMDMAState* dState = state;
+s32 syAudioDma(s32 addr, s32 len, void *state)
+{
+    void *freeBuffer;
+    AMDMAState *dState = state;
     s32 delta = 0;
     u32 bStartAddr;
     u32 bEndAddr;
-    AMDMABuffer* dBuff = &dState->buffers[dState->currentBuffer];
+    AMDMABuffer *dBuff = &dState->buffers[dState->currentBuffer];
     OSMesg dummyMesg;
 
     /*
      * Is it in the last buffer
      */
-
     bStartAddr = (u32) dBuff->addr;
     bEndAddr = (u32) bStartAddr + dBuff->len;
 
-    if ((addr >= bStartAddr) && (addr + len <= bEndAddr)) {
+    if ((addr >= bStartAddr) && (addr + len <= bEndAddr))
+    {
         freeBuffer = dBuff->ptr + addr - dBuff->addr;
-    } else {
-        if (++dState->currentBuffer >= dState->nBuffers) {
+    }
+    else
+    {
+        if (++dState->currentBuffer >= dState->nBuffers)
+        {
             dState->currentBuffer = 0;
         }
         dBuff = &dState->buffers[dState->currentBuffer];
@@ -505,56 +540,63 @@ s32 auDMA(s32 addr, s32 len, void* state) {
         dBuff->len = dBuff->size;
 
         audDMAIOMesgBuf[nextDMA].hdr.pri = OS_MESG_PRI_HIGH;
-        audDMAIOMesgBuf[nextDMA].hdr.retQueue = &auDMAMessageQueue;
+        audDMAIOMesgBuf[nextDMA].hdr.retQueue = &syAudioDmaMessageQueue;
         audDMAIOMesgBuf[nextDMA].dramAddr = freeBuffer;
         audDMAIOMesgBuf[nextDMA].devAddr = (u32) addr;
         audDMAIOMesgBuf[nextDMA].size = dBuff->size;
 
-        osEPiStartDma(gRomPiHandle, &audDMAIOMesgBuf[nextDMA++], OS_READ);
+        osEPiStartDma(gSYDmaRomPiHandle, &audDMAIOMesgBuf[nextDMA++], OS_READ);
     }
-    return (int) osVirtualToPhysical(freeBuffer) + delta;
+    return (s32) osVirtualToPhysical(freeBuffer) + delta;
 }
 
 // 0x8001EAC8
-ALDMAproc auDMANew(AMDMAState** state) {
-    int i;
+ALDMAproc syAudioDmaNew(AMDMAState **state)
+{
+    s32 i;
     AMDMAState* dState;
 
     dState = (AMDMAState*) alHeapAlloc(&auHeap, 1, sizeof(AMDMAState));
     dState->currentBuffer = 0;
     dState->nBuffers = NUM_DMA_BUFFERS;
-    for (i = 0; i < NUM_DMA_BUFFERS; i++) {
+
+    for (i = 0; i < NUM_DMA_BUFFERS; i++)
+    {
         dState->buffers[i].ptr = alHeapAlloc(&auHeap, 1, MAX_BUFFER_LENGTH);
         dState->buffers[i].addr = 0;
         dState->buffers[i].len = 0;
         dState->buffers[i].size = MAX_BUFFER_LENGTH;
     }
     *state = (AMDMAState*) dState;
-    return auDMA;
+
+    return syAudioDma;
 }
 
 // 0x8001EB98
-f32 _depth2Cents(u8 depth) {
-    f32 x = 1.03099303;
-    f32 cents = 1.0;
+f32 syAudioDepth2Cents(u8 depth)
+{
+    f32 x = 1.03099303F;
+    f32 cents = 1.0F;
 
-    while (depth) {
+    while (depth)
+    {
         if (depth & 1)
+        {
             cents *= x;
+        }
         x *= x;
         depth >>= 1;
     }
-
-    return (cents);
+    return cents;
 }
 
-
 // 0x8001EBE4
-ALMicroTime initOsc(void** oscState, f32* initVal, u8 oscType, u8 oscRate, u8 oscDepth, u8 oscDelay) {
-    oscData* statePtr;
+ALMicroTime initOsc(void **oscState, f32 *initVal, u8 oscType, u8 oscRate, u8 oscDepth, u8 oscDelay)
+{
+    SYAudioOsc *statePtr;
     ALMicroTime deltaTime = 0;
 
-    if (freeOscStateList) /* yes there are oscStates available */
+    if (freeOscStateList != NULL) /* yes there are oscStates available */
     {
         statePtr = freeOscStateList;
         freeOscStateList = freeOscStateList->next;
@@ -604,52 +646,58 @@ ALMicroTime initOsc(void** oscState, f32* initVal, u8 oscType, u8 oscRate, u8 os
                 break;
 
             case VIBRATO_SIN:
-                statePtr->data.vsin.depthcents = _depth2Cents(oscDepth);
+                statePtr->data.vsin.depthcents = syAudioDepth2Cents(oscDepth);
                 statePtr->curCount = 0;
                 statePtr->maxCount = 259 - oscRate; /* gives values 4-259 */
                 *initVal = 1.0f;                    /* start at unity pitch */
                 break;
 
-            case VIBRATO_SQR: {
+            case VIBRATO_SQR:
+            {
                 s32 cents;
                 statePtr->maxCount = 256 - oscRate; /* values from 1-256 */
                 statePtr->curCount = statePtr->maxCount;
                 statePtr->stateFlags = OSC_HIGH;
-                cents = _depth2Cents(oscDepth);
+                cents = syAudioDepth2Cents(oscDepth);
                 statePtr->data.vsqr.loRatio = alCents2Ratio(-cents);
                 statePtr->data.vsqr.hiRatio = alCents2Ratio(cents);
                 *initVal = statePtr->data.vsqr.hiRatio;
-            } break;
+            }
+            break;
 
-            case VIBRATO_DSC_SAW: {
+            case VIBRATO_DSC_SAW:
+            {
                 s32 cents;
                 statePtr->maxCount = 256 - oscRate; /* values from 1-256 */
                 statePtr->curCount = statePtr->maxCount;
-                cents = _depth2Cents(oscDepth);
+                cents = syAudioDepth2Cents(oscDepth);
                 statePtr->data.vdsaw.hicents = cents;
                 statePtr->data.vdsaw.centsrange = 2 * cents;
                 *initVal = alCents2Ratio(statePtr->data.vdsaw.hicents);
-            } break;
+            }
+            break;
 
-            case VIBRATO_ASC_SAW: {
+            case VIBRATO_ASC_SAW:
+            {
                 s32 cents;
                 statePtr->maxCount = 256 - oscRate; /* values from 1-256 */
                 statePtr->curCount = statePtr->maxCount;
-                cents = _depth2Cents(oscDepth);
+                cents = syAudioDepth2Cents(oscDepth);
                 statePtr->data.vasaw.locents = -cents;
                 statePtr->data.vasaw.centsrange = 2 * cents;
                 *initVal = alCents2Ratio(statePtr->data.vasaw.locents);
-            } break;
+            }
+            break;
         }
     }
-    return (deltaTime); /* if there are no oscStates, return zero, but if
-                           oscState was available, return delay in usecs */
+    return deltaTime; /* if there are no oscStates, return zero, but if oscState was available, return delay in usecs */
 }
 
 // 0x8001EEB8
-ALMicroTime updateOsc(void* oscState, f32* updateVal) {
+ALMicroTime updateOsc(void *oscState, f32 *updateVal)
+{
     f32 tmpFlt;
-    oscData* statePtr = (oscData*) oscState;
+    SYAudioOsc *statePtr = (SYAudioOsc*) oscState;
     ALMicroTime deltaTime = AL_USEC_PER_FRAME; /* in this example callback every */
                                                /* frame, but could be at any interval */
 
@@ -657,8 +705,11 @@ ALMicroTime updateOsc(void* oscState, f32* updateVal) {
     {
         case TREMELO_SIN:
             statePtr->curCount++;
+
             if (statePtr->curCount >= statePtr->maxCount)
+            {
                 statePtr->curCount = 0;
+            }
             tmpFlt = (f32) statePtr->curCount / (f32) statePtr->maxCount;
             tmpFlt = sinf(tmpFlt * TWO_PI);
             tmpFlt = tmpFlt * (f32) statePtr->data.tsin.halfdepth;
@@ -666,10 +717,13 @@ ALMicroTime updateOsc(void* oscState, f32* updateVal) {
             break;
 
         case TREMELO_SQR:
-            if (statePtr->stateFlags == OSC_HIGH) {
+            if (statePtr->stateFlags == OSC_HIGH)
+            {
                 *updateVal = (f32) statePtr->data.tsqr.loVal;
                 statePtr->stateFlags = OSC_LOW;
-            } else {
+            }
+            else
+            {
                 *updateVal = (f32) statePtr->data.tsqr.hiVal;
                 statePtr->stateFlags = OSC_HIGH;
             }
@@ -678,9 +732,11 @@ ALMicroTime updateOsc(void* oscState, f32* updateVal) {
 
         case TREMELO_DSC_SAW:
             statePtr->curCount++;
-            if (statePtr->curCount > statePtr->maxCount)
-                statePtr->curCount = 0;
 
+            if (statePtr->curCount > statePtr->maxCount)
+            {
+                statePtr->curCount = 0;
+            }
             tmpFlt = (f32) statePtr->curCount / (f32) statePtr->maxCount;
             tmpFlt *= (f32) statePtr->data.tsaw.depth;
             *updateVal = (f32) statePtr->data.tsaw.baseVol - tmpFlt;
@@ -688,8 +744,11 @@ ALMicroTime updateOsc(void* oscState, f32* updateVal) {
 
         case TREMELO_ASC_SAW:
             statePtr->curCount++;
+
             if (statePtr->curCount > statePtr->maxCount)
+            {
                 statePtr->curCount = 0;
+            }
             tmpFlt = (f32) statePtr->curCount / (f32) statePtr->maxCount;
             tmpFlt *= (f32) statePtr->data.tsaw.depth;
             *updateVal = (f32) statePtr->data.tsaw.baseVol + tmpFlt;
@@ -698,20 +757,25 @@ ALMicroTime updateOsc(void* oscState, f32* updateVal) {
         case VIBRATO_SIN:
             /* calculate a sin value (from -1 to 1) and multiply it by depthcents.
                Then convert cents to ratio. */
-
             statePtr->curCount++;
+
             if (statePtr->curCount >= statePtr->maxCount)
+            {
                 statePtr->curCount = 0;
+            }
             tmpFlt = (f32) statePtr->curCount / (f32) statePtr->maxCount;
-            tmpFlt = sinf(tmpFlt * TWO_PI) * statePtr->data.vsin.depthcents;
+            tmpFlt = sinf(tmpFlt * F_CST_DTOR32(360.0F)) * statePtr->data.vsin.depthcents;
             *updateVal = alCents2Ratio((s32) tmpFlt);
             break;
 
         case VIBRATO_SQR:
-            if (statePtr->stateFlags == OSC_HIGH) {
+            if (statePtr->stateFlags == OSC_HIGH)
+            {
                 statePtr->stateFlags = OSC_LOW;
                 *updateVal = statePtr->data.vsqr.loRatio;
-            } else {
+            }
+            else
+            {
                 statePtr->stateFlags = OSC_HIGH;
                 *updateVal = statePtr->data.vsqr.hiRatio;
             }
@@ -720,8 +784,11 @@ ALMicroTime updateOsc(void* oscState, f32* updateVal) {
 
         case VIBRATO_DSC_SAW:
             statePtr->curCount++;
+
             if (statePtr->curCount > statePtr->maxCount)
+            {
                 statePtr->curCount = 0;
+            }
             tmpFlt = (f32) statePtr->curCount / (f32) statePtr->maxCount;
             tmpFlt *= (f32) statePtr->data.vdsaw.centsrange;
             tmpFlt = (f32) statePtr->data.vdsaw.hicents - tmpFlt;
@@ -730,173 +797,197 @@ ALMicroTime updateOsc(void* oscState, f32* updateVal) {
 
         case VIBRATO_ASC_SAW:
             statePtr->curCount++;
+
             if (statePtr->curCount > statePtr->maxCount)
+            {
                 statePtr->curCount = 0;
+            }
             tmpFlt = (f32) statePtr->curCount / (f32) statePtr->maxCount;
             tmpFlt *= (f32) statePtr->data.vasaw.centsrange;
             tmpFlt += (f32) statePtr->data.vasaw.locents;
             *updateVal = alCents2Ratio((s32) tmpFlt);
             break;
     }
-
-    return (deltaTime);
+    return deltaTime;
 }
 
 
 // 0x8001F42C
-void stopOsc(void* oscState) {
-    ((oscData*) oscState)->next = freeOscStateList;
-    freeOscStateList = (oscData*) oscState;
+void stopOsc(void *oscState)
+{
+    ((SYAudioOsc*)oscState)->next = freeOscStateList;
+    freeOscStateList = (SYAudioOsc*) oscState;
 }
 
-
 // 0x8001F444
-void auInit(void) {
+void syAudioInit(void)
+{
     scAddClient(&auClient, &auGameTickQueue, auGameTickMessages, 1);
-    osCreateMesgQueue(&auDMAMessageQueue, auDMAMessages, 50);
+    osCreateMesgQueue(&syAudioDmaMessageQueue, syAudioDmaMessages, 50);
     osCreateMesgQueue(&auSPTaskMessageQueue, auSPTaskMessages, 1);
     osSendMesg(&auSPTaskMessageQueue, (OSMesg) NULL, OS_MESG_BLOCK);
 }
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/hal_audio/auLoadAssets.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/audio/auLoadAssets.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/hal_audio/auCreatePlayers.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/audio/auCreatePlayers.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/hal_audio/auThreadMain.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/audio/auThreadMain.s")
 
 
 // 0x80020A18
-void auSetHighSoundQuality(void) {
+void syAudioSetStereo(void)
+{
     auSoundQuality = 1;
 }
 
 // 0x80020A28
-void auSetLowSoundQuality(void) {
+void syAudioSetMono(void)
+{
     auSoundQuality = 0;
 }
 
 // 0x80020A34
-void auSetSoundQuality(s32 quality) {
+void syAudioSetQuality(s32 quality)
+{
+    // 0 = mono, 1 = stereo
     auSoundQuality = quality;
 }
 
 // 0x80020A40
-void auSetReverbType(s32 fxType) {
-    if (fxType != auCurrentFxType) {
-        auRestarting++;
-        auCurrentSettings.fxType = fxType;
+void syAudioSetReverbType(s32 fx_type)
+{
+    if (fx_type != sSYAudioCurrentFxType)
+    {
+        sSYAudioIsRestarting++;
+        auCurrentSettings.fx_type = fx_type;
     }
 }
 
 // 0x80020A74
-void auStopBGM(void) {
+void syAudioStopSongAll(void)
+{
     s32 i;
 
-    for (i = 0; i < 1; i++) {
-        auStopSong(i);
+    for (i = 0; i < 1; i++)
+    {
+        syAudioStopSong(i);
     }
 }
 
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/audio/auPlaySong.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/hal_audio/auPlaySong.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/hal_audio/auStopSong.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/audio/syAudioStopSong.s")
 
 
 // 0x80020B38
-void auSetBGMVolume(s32 playerID, u32 vol) {
-    if (vol > 0x7800) {
-        vol = 0x7800;
+void syAudioSetSongVolumeID(s32 sngplayer, u32 vol)
+{
+    if (vol > 30720)
+    {
+        vol = 30720;
     }
-
-    alCSPSetVol(auBGMPlayers[playerID], vol);
-    auBGMVolume[playerID] = vol;
-    auBGMVolTimer[playerID] = 0;
+    alCSPSetVol(gSYAudioSongPlayers[sngplayer], vol);
+    auBGMVolume[sngplayer] = vol;
+    auBGMVolTimer[sngplayer] = 0;
 }
 
 // 0x80020BC0
-void auSetBGMVolumeSmooth(s32 playerID, u32 vol, u32 time) {
-    if (vol > 0x7800) {
-        vol = 0x7800;
+void syAudioSetSongVolumeSmoothID(s32 sngplayer, u32 vol, u32 time)
+{
+    if (vol > 30720)
+    {
+        vol = 30720;
     }
-
-    if (time != 0) {
-        auBGMVolTimer[playerID] = time;
-        auSongVolRate[playerID] = (vol - auBGMVolume[playerID]) / time;
-    } else {
-        auSetBGMVolume(playerID, vol);
+    if (time != 0)
+    {
+        auBGMVolTimer[sngplayer] = time;
+        auSongVolRate[sngplayer] = (vol - auBGMVolume[sngplayer]) / time;
     }
+    else syAudioSetSongVolumeID(sngplayer, vol);
 }
 
 // 0x80020C5C
-void auSetBGMReverb(s32 playerID, u32 reverb) {
+void syAudioSetSongReverb(s32 sngplayer, u32 reverb)
+{
     s32 i;
 
-    if (reverb > 127) {
+    if (reverb > 127)
+    {
         reverb = 127;
     }
-
-    for (i = 0; i < 16; i++) {
-        alCSPSetChlFXMix(auBGMPlayers[playerID], i, reverb);
+    for (i = 0; i < 16; i++)
+    {
+        alCSPSetChlFXMix(gSYAudioSongPlayers[sngplayer], i, reverb);
     }
 }
 
 // 0x80020CD4
-void auSetBGMPriority(s32 playerID, u8 priority) {
+void syAudioSetSongPriority(s32 sngplayer, u8 priority)
+{
     s32 i;
 
-    if (priority > 127) {
+    if (priority > 127)
+    {
         priority = 127;
     }
-    auGlobalSongPriority = priority;
+    gSYAudioGlobalSongPriority = priority;
 
-    for (i = 0; i < 16; i++) {
-        alCSPSetChlPriority(auBGMPlayers[playerID], i, priority);
+    for (i = 0; i < 16; i++)
+    {
+        alCSPSetChlPriority(gSYAudioSongPlayers[sngplayer], i, priority);
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/hal_audio/auIsBGMPlaying.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/audio/auIsBGMPlaying.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/hal_audio/func_80020D88.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/audio/func_80020D88.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/hal_audio/func_80020E10.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/audio/func_80020E10.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/hal_audio/func_80020E28.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/audio/func_80020E28.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/hal_audio/func_80020E64.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/audio/func_80020E64.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/hal_audio/func_80020EA0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/audio/func_80020EA0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/hal_audio/func_80020EF8.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/audio/func_80020EF8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/hal_audio/func_80020F4C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/audio/func_80020F4C.s")
 
 // 0x80020FA0
-void func_80020FA0_21BA0(s32 arg0, s32 arg1) {}
+void func_80020FA0_21BA0(s32 arg0, s32 arg1)
+{
+    return;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/hal_audio/func_80020FAC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/audio/func_80020FAC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/hal_audio/func_80020FFC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/audio/func_80020FFC.s")
 
 // 0x8002102C
-void func_8002102C(void) {
-    auSettingsUpdated = TRUE;
+void syAudioSetSettingsUpdated(void)
+{
+    sSYAudioIsSettingsUpdated = TRUE;
 }
 
 // 0x8002103C
-s32 func_8002103C(void) {
-    return auSettingsUpdated;
+sb32 syAudioGetSettingsUpdated(void)
+{
+    return sSYAudioIsSettingsUpdated;
 }
 
 // 0x80021048
-s32 func_80021048(void) {
-    return auRestarting;
+sb32 syAudioGetRestarting(void)
+{
+    return sSYAudioIsRestarting;
 }
 
-// 0x80021054
-s32 func_80021054(void) {
-    return auRestarting | auSettingsUpdated;
+// 0x80021054 - Returns (sSYAudioIsRestarting | sSYAudioIsSettingsUpdated)
+sb32 syAudioGetStatus(void)
+{
+    return sSYAudioIsRestarting | sSYAudioIsSettingsUpdated;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/hal_audio/func_8002106C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/audio/func_8002106C.s")

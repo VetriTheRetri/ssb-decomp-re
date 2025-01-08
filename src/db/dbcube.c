@@ -395,14 +395,14 @@ void dbCubePlayCall(void)
 // 0x80131C94
 void dbCubeStopBGM(void)
 {
-	auStopSong(0);
+	syAudioStopSong(0);
 }
 
 // 0x80131CB4
 void dbCubePlayBGM(void)
 {
-	auStopSong(0);
-	auSetReverbType(dDBCubeMenuValueEffect);
+	syAudioStopSong(0);
+	syAudioSetReverbType(dDBCubeMenuValueEffect);
 
 	dDBCubeIsBGMInterrupt = TRUE;
 }
@@ -419,7 +419,7 @@ void dbCubeAudioThreadUpdate(GObj *gobj)
 {
 	while (TRUE)
 	{
-		if ((dDBCubeIsBGMInterrupt != FALSE) && (func_80021048() == 0))
+		if ((dDBCubeIsBGMInterrupt != FALSE) && (syAudioGetRestarting() == 0))
 		{
 			auPlaySong(0, dDBCubeMenuValueBGM);
 

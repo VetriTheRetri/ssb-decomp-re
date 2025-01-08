@@ -2411,7 +2411,7 @@ void mn1PGoBackTo1PMenu()
 	gSCManagerSceneData.scene_curr = nSCKind1PMode;
 
 	mn1PSaveMatchInfo();
-	auStopBGM();
+	syAudioStopSongAll();
 	func_800266A0_272A0();
 	syTaskmanSetLoadScene();
 }

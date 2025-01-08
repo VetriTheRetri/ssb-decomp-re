@@ -62,7 +62,7 @@ extern u8 dIFCommonPlayerTagShadowColorsB[];
 extern u8 dIFCommonPlayerTagSpriteColorsR[];
 extern u8 dIFCommonPlayerTagSpriteColorsG[];
 extern u8 dIFCommonPlayerTagSpriteColorsB[];
-extern halAudioUnknown* auBGMPlayers;
+extern halAudioUnknown* gSYAudioSongPlayers;
 
 
 // Forward declarations
@@ -2443,12 +2443,12 @@ void mnVSResultsLoadMatchInfo()
 // 0x801377C0
 void func_ovl31_801377C0(s32 arg0)
 {
-	while (auBGMPlayers->unk34 == 0)
+	while (gSYAudioSongPlayers->unk34 == 0)
 		gcStopCurrentGObjThread(1);
 
 	while (TRUE)
 	{
-		if (auBGMPlayers->unk34 == 0)
+		if (gSYAudioSongPlayers->unk34 == 0)
 		{
 			auPlaySong(0, 0x16);
 			gcEjectGObj(0);
@@ -2898,7 +2898,7 @@ void mnVSResultsMain(s32 arg0)
 		}
 
 		func_800266A0_272A0();
-		auStopBGM();
+		syAudioStopSongAll();
 		syTaskmanSetLoadScene();
 	}
 }

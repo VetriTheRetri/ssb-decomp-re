@@ -925,7 +925,7 @@ void mnOptionFuncRun(GObj *gobj)
 
                     gcEjectGObj(sMNOptionMenuGObj);
                     mnOptionMakeMenuGObj();
-                    auSetSoundQuality(sMNOptionSoundMonoOrStereo);
+                    syAudioSetQuality(sMNOptionSoundMonoOrStereo);
                 }
             }
             if
@@ -947,7 +947,7 @@ void mnOptionFuncRun(GObj *gobj)
 
                     gcEjectGObj(sMNOptionMenuGObj);
                     mnOptionMakeMenuGObj();
-                    auSetSoundQuality(sMNOptionSoundMonoOrStereo);
+                    syAudioSetQuality(sMNOptionSoundMonoOrStereo);
                 }
             }
             if (scSubsysControllerGetPlayerTapButtons(A_BUTTON) != FALSE)
@@ -964,7 +964,7 @@ void mnOptionFuncRun(GObj *gobj)
                 mnOptionMakeSoundToggle();
                 gcEjectGObj(sMNOptionMenuGObj);
                 mnOptionMakeMenuGObj();
-                auSetSoundQuality(sMNOptionSoundMonoOrStereo);
+                syAudioSetQuality(sMNOptionSoundMonoOrStereo);
             }
         }
     }

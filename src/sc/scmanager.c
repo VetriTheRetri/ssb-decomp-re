@@ -8,7 +8,7 @@
 #include <sys/error.h>
 #include <sys/dma.h>
 #include <sys/taskman.h>
-#include <sys/hal_audio.h>
+#include <sys/audio.h>
 #include <sys/video.h>
 #include <sys/controller.h>
 
@@ -838,15 +838,15 @@ void scManagerRunLoop(sb32 arg)
 	ftManagerSetupFileSize();
 	D_8003CB6D = 72;
 
-	func_8002102C();
+	syAudioSetSettingsUpdated();
 
-	while (func_8002103C() != FALSE)
+	while (syAudioGetSettingsUpdated() != FALSE)
 	{
 		continue;
 	}
-	auSetReverbType(6);
+	syAudioSetReverbType(6);
 
-	while (func_80021048() != FALSE)
+	while (syAudioGetRestarting() != FALSE)
 	{
 		continue;
 	}

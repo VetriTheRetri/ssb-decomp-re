@@ -29,7 +29,7 @@ typedef struct syHuffman
 
 } syHuffman;
 
-extern OSPiHandle *gRomPiHandle;
+extern OSPiHandle *gSYDmaRomPiHandle;
 
 extern void syDmaCreateMesgQueue(void);
 extern void syDmaCopy(OSPiHandle *handle, uintptr_t phys_addr, uintptr_t virtual, size_t size, u8 direction);

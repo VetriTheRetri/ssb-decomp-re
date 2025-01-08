@@ -6,7 +6,7 @@
 #include <sys/video.h>
 
 extern void scManagerFuncDraw();
-extern void auSetBGMVolume(s32 playerID, u32 vol);
+extern void syAudioSetSongVolumeID(s32 playerID, u32 vol);
 
 extern u32 D_NF_000000FE;									// 0x000000FE
 
@@ -210,7 +210,7 @@ void sc1PTrainingModeCheckEnterMenu(void)
 			gSCManagerBattleState->game_status = nSCBattleGameStatusPause;
 
 			func_800269C0_275C0(nSYAudioFGMGamePause);
-			auSetBGMVolume(0, 0x3C00);
+			syAudioSetSongVolumeID(0, 0x3C00);
 
 			sSC1PTrainingModeMenu.is_read_menu_inputs = FALSE;
 		}
@@ -240,7 +240,7 @@ void sc1PTrainingModeCheckLeaveMenu(void)
 
 			fp->input.pl.button_hold |= B_BUTTON;
 		}
-		auSetBGMVolume(0, 0x7800);
+		syAudioSetSongVolumeID(0, 0x7800);
 	}
 }
 
@@ -452,7 +452,7 @@ sb32 sc1PTrainingModeUpdateResetOption(void)
 
 		func_800266A0_272A0();
 		func_800269C0_275C0(nSYAudioFGMTrainingSel2);
-		auSetBGMVolume(0, 0x7800);
+		syAudioSetSongVolumeID(0, 0x7800);
 		syTaskmanSetLoadScene();
 
 		return TRUE;
@@ -1796,13 +1796,13 @@ void sc1PTrainingModeStartScene(void)
 	}
 	while (sSC1PTrainingModeMenu.exit_or_reset != 0);
 
-	auStopBGM();
+	syAudioStopSongAll();
 
 	while (auIsBGMPlaying(0) != FALSE)
 	{
 		continue;
 	}
-	auSetBGMVolume(0, 0x7800);
+	syAudioSetSongVolumeID(0, 0x7800);
 
 	gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 	gSCManagerSceneData.scene_curr = nSCKind1PTrainingModePlayers;

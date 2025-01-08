@@ -2878,7 +2878,7 @@ void mnGoBackToVSMenu()
 
 	mnVSPlayersSaveMatchInfo();
 	mnVSPlayersDestroyCursorAndTokenProcesses();
-	auStopBGM();
+	syAudioStopSongAll();
 	syTaskmanSetLoadScene();
 }
 

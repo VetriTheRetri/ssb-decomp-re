@@ -4,7 +4,7 @@
 #include <sys/error.h>
 #include <sys/dma.h>
 #include <sys/taskman.h>
-#include <sys/hal_audio.h>
+#include <sys/audio.h>
 #include <sys/thread3.h>
 #include <sys/controller.h>
 
@@ -127,7 +127,7 @@ void syMainVerifyStackProbes(void)
 void syMainThread5(UNUSED void *arg) 
 {
     osCreateViManager(OS_PRIORITY_VIMGR);
-    gRomPiHandle = osCartRgcInit();
+    gSYDmaRomPiHandle = osCartRgcInit();
     syDmaSramPiInit();
     osCreatePiManager(OS_PRIORITY_PIMGR, &sSYMainPiCmdQueue, sSYMainPiCmdMesg, ARRAY_COUNT(sSYMainPiCmdMesg));
     syDmaCreateMesgQueue();

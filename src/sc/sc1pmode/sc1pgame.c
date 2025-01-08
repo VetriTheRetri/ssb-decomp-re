@@ -1940,7 +1940,7 @@ void sc1PGameBossDefeatInterfaceProcUpdate(void)
     gcFuncGObjByLink(6, ifCommonBattleInterfaceResumeFuncGObj, 0);
     func_ovl65_801910B0();
     func_800266A0_272A0();
-    auStopBGM();
+    syAudioStopSongAll();
     ifCommonBattleEndPlaySoundQueue();
     func_800269C0_275C0(nSYAudioFGMExplodeL);
     func_800269C0_275C0(nSYAudioVoiceBossDead);
@@ -2852,13 +2852,13 @@ void sc1PGameStartScene(void)
     scManagerFuncUpdate(&dSC1PGameTaskmanSetup);
     
     sc1PGameInitBonusStats();
-    auStopBGM();
+    syAudioStopSongAll();
 
     while (auIsBGMPlaying(0) != FALSE)
     {
         continue;
     }
-    auSetBGMVolume(0, 0x7800);
+    syAudioSetSongVolumeID(0, 0x7800);
     func_800266A0_272A0();
     gmRumbleInitPlayers();
 }

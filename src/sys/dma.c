@@ -11,18 +11,42 @@
 #include <PR/rcp.h>
 #include <PR/ultratypes.h>
 
-OSPiHandle *gRomPiHandle;
-OSPiHandle sSYDmaSramPiHandle; // 0x80045048
-OSMesg sDmaMesg[1];       // 0x800450BC
-OSMesgQueue sDmaMesgQ;    // 0x800450C0
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
 
-void *sVpkBufRamAddr;
-u32 sVpkBufSize;
-u32 sVpkBufRgcAddr;
+// 0x80045040
+OSPiHandle *gSYDmaRomPiHandle;
+
+// 0x80045048
+OSPiHandle sSYDmaSramPiHandle;
+
+// 0x800450BC
+OSMesg sSYDmaMesg[1];
+
+// 0x800450C0
+OSMesgQueue sSYDmaMesgQueue;
+
+// 0x800450D8
+void *sSYDmaVpkBuffer;
+
+// 0x800450DC
+size_t sSYDmaVpkBufferSize;
+
+// 0x800450E0
+u32 sSYDmaVpkDevAddr;
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 void syDmaCreateMesgQueue(void) 
 {
-    osCreateMesgQueue(&sDmaMesgQ, sDmaMesg, OS_MESG_BLOCK);
+    osCreateMesgQueue(&sSYDmaMesgQueue, sSYDmaMesg, OS_MESG_BLOCK);
 }
 
 void syDmaCopy(OSPiHandle *handle, uintptr_t physAddr, uintptr_t virtual, size_t size, u8 direction)
@@ -36,7 +60,7 @@ void syDmaCopy(OSPiHandle *handle, uintptr_t physAddr, uintptr_t virtual, size_t
     else osInvalDCache((void*)virtual, size);
     
     mesg.hdr.pri      = OS_MESG_PRI_NORMAL;
-    mesg.hdr.retQueue = &sDmaMesgQ;
+    mesg.hdr.retQueue = &sSYDmaMesgQueue;
     mesg.size         = 0x10000;
 
     while (size > 0x10000)
@@ -48,7 +72,7 @@ void syDmaCopy(OSPiHandle *handle, uintptr_t physAddr, uintptr_t virtual, size_t
         {
             osEPiStartDma(handle, &mesg, direction);
         }
-        osRecvMesg(&sDmaMesgQ, NULL, OS_MESG_BLOCK);
+        osRecvMesg(&sSYDmaMesgQueue, NULL, OS_MESG_BLOCK);
         size -= 0x10000;
         physAddr += 0x10000;
         virtual += 0x10000;
@@ -63,7 +87,7 @@ void syDmaCopy(OSPiHandle *handle, uintptr_t physAddr, uintptr_t virtual, size_t
         { 
             osEPiStartDma(handle, &mesg, direction);
         }
-        osRecvMesg(&sDmaMesgQ, NULL, OS_MESG_BLOCK);
+        osRecvMesg(&sSYDmaMesgQueue, NULL, OS_MESG_BLOCK);
     }
 }
 
@@ -95,7 +119,7 @@ void syDmaLoadOverlay(struct SYOverlay *ovl)
     {
         syDmaCopy
         (
-            gRomPiHandle,
+            gSYDmaRomPiHandle,
             ovl->rom_start,
             (uintptr_t)ovl->ram_load_start,
             ovl->rom_end - ovl->rom_start,
@@ -115,12 +139,12 @@ void syDmaLoadOverlay(struct SYOverlay *ovl)
 
 void syDmaReadRom(uintptr_t rom_src, void *ram_dst, size_t size) 
 {
-    syDmaCopy(gRomPiHandle, rom_src, (uintptr_t)ram_dst, size, OS_READ);
+    syDmaCopy(gSYDmaRomPiHandle, rom_src, (uintptr_t)ram_dst, size, OS_READ);
 }
 
 void syDmaWriteRom(void *ram_src, uintptr_t rom_dst, size_t size) 
 {
-    syDmaCopy(gRomPiHandle, rom_dst, (uintptr_t)ram_src, size, OS_WRITE);
+    syDmaCopy(gSYDmaRomPiHandle, rom_dst, (uintptr_t)ram_src, size, OS_WRITE);
 }
 
 OSPiHandle* syDmaSramPiInit(void)
@@ -174,10 +198,10 @@ void syDmaDecodeVpk0(u16 *data, size_t size, void (*update_stream)(void), u8 *ou
         VPK0_UPDATE_STREAM(); \
         VPK0_READ_USHORT();   \
     }                         \
-    bits_num -= n;             \
+    bits_num -= n;            \
     var = ((temp_value << ((32 - n) - bits_num)) >> (32 - (u32) (n)));
 
-#define VPK0_INIT_NODE(node)         \
+#define VPK0_INIT_NODE(node)    \
     node = lengths_node;        \
     lengths_node->left = NULL;  \
     lengths_node->right = NULL; \
@@ -387,15 +411,15 @@ void syDmaDecodeVpk0(u16 *data, size_t size, void (*update_stream)(void), u8 *ou
 
 void syDmaInitVpk0Stream(uintptr_t dev_addr, void *ram_addr, size_t size)
 {
-    sVpkBufRgcAddr = dev_addr;
-    sVpkBufRamAddr = ram_addr;
-    sVpkBufSize    = size;
+    sSYDmaVpkDevAddr = dev_addr;
+    sSYDmaVpkBuffer = ram_addr;
+    sSYDmaVpkBufferSize = size;
 }
 
 void syDmaFillVpk0Buf(void)
 {
-    syDmaReadRom(sVpkBufRgcAddr, sVpkBufRamAddr, sVpkBufSize);
-    sVpkBufRgcAddr += sVpkBufSize;
+    syDmaReadRom(sSYDmaVpkDevAddr, sSYDmaVpkBuffer, sSYDmaVpkBufferSize);
+    sSYDmaVpkDevAddr += sSYDmaVpkBufferSize;
 }
 
 void syDmaReadVpk0Buf(uintptr_t dev_addr, void *ram_dst, void *ram_addr, size_t size)
@@ -408,7 +432,7 @@ void syDmaReadVpk0(uintptr_t dev_addr, void *ram_dst)
 {
     u8 buf[0x400];
 
-    syDmaReadVpk0Buf(dev_addr, ram_dst, &buf, ARRAY_COUNT(buf));
+    syDmaReadVpk0Buf(dev_addr, ram_dst, buf, ARRAY_COUNT(buf));
 }
 
 // Best I can do with this is functionally equivalent. Somewhat disappointing, but not a big deal; this function is unreferenced. It's also non-matching in Pokémon Snap.

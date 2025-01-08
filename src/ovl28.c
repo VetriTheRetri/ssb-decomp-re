@@ -1805,7 +1805,7 @@ void mn1PTrainingPlayersGoBackTo1PMenu()
 	gSCManagerSceneData.scene_curr = nSCKind1PMode;
 
 	mn1PTrainingPlayersSaveMatchInfo();
-	auStopBGM();
+	syAudioStopSongAll();
 	func_800266A0_272A0();
 	syTaskmanSetLoadScene();
 }

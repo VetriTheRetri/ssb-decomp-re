@@ -1,7 +1,7 @@
 #include "common.h"
 #include <sys/error.h>
 
-#include <sys/hal_audio.h>
+#include <sys/audio.h>
 #include <sys/main.h>
 #include <sys/obj.h>
 #include <sys/video.h>

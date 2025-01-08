@@ -65,7 +65,7 @@ sb32 lbBackupIsSramValid(void)
 // 0x800D46F4
 void lbBackupApplyOptions(void)
 {
-    auSetSoundQuality(gSCManagerBackupData.sound_mono_or_stereo);
+    syAudioSetQuality(gSCManagerBackupData.sound_mono_or_stereo);
     syVideoSetCenterOffsets
     (
         gSCManagerBackupData.screen_adjust_h, gSCManagerBackupData.screen_adjust_h, 

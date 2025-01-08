@@ -542,13 +542,13 @@ void scVSBattleStartScene(void)
 	dSCVSBattleTaskmanSetup.func_start = scVSBattleStartBattle;
 	scManagerFuncUpdate(&dSCVSBattleTaskmanSetup);
 
-	auStopBGM();
+	syAudioStopSongAll();
 
 	while (auIsBGMPlaying(0) != FALSE)
 	{
 		continue;
 	}
-	auSetBGMVolume(0, 0x7800);
+	syAudioSetSongVolumeID(0, 0x7800);
 	func_800266A0_272A0();
 	gmRumbleInitPlayers();
 
@@ -561,13 +561,13 @@ void scVSBattleStartScene(void)
 		dSCVSBattleTaskmanSetup.func_start = scVSBattleStartSuddenDeath;
 
 		scManagerFuncUpdate(&dSCVSBattleTaskmanSetup);
-		auStopBGM();
+		syAudioStopSongAll();
 
 		while (auIsBGMPlaying(0) != FALSE)
 		{
 			continue;
 		}
-		auSetBGMVolume(0, 0x7800);
+		syAudioSetSongVolumeID(0, 0x7800);
 		func_800266A0_272A0();
 		gmRumbleInitPlayers();
 	}

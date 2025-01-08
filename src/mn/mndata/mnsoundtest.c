@@ -956,11 +956,11 @@ void mnSoundTestUpdateFunctions(void)
         }
         else
         {
-            auStopBGM();
+            syAudioStopSongAll();
             sMNSoundTestFadeOutWait = -1;
         }
     }
-    else auSetBGMVolume(0, 0x7000);
+    else syAudioSetSongVolumeID(0, 0x7000);
 
     if (scSubsysControllerGetPlayerTapButtons(A_BUTTON) != FALSE)
     {
@@ -971,7 +971,7 @@ void mnSoundTestUpdateFunctions(void)
             {
                 sMNSoundTestFadeOutWait = -1;
             }
-            auStopBGM();
+            syAudioStopSongAll();
             auPlaySong(0, dMNSoundTestMusicIDs[sMNSoundTestOptionSelectID[nMNSoundTestOptionMusic]]);
             break;
 
@@ -988,12 +988,12 @@ void mnSoundTestUpdateFunctions(void)
     }
     else if (scSubsysControllerGetPlayerTapButtons(Z_TRIG) != FALSE)
     {
-        auStopBGM();
+        syAudioStopSongAll();
         func_800266A0_272A0();
     }
     else if (scSubsysControllerGetPlayerTapButtons(START_BUTTON) != FALSE)
     {
-        auSetBGMVolumeSmooth(0, 0, 120);
+        syAudioSetSongVolumeSmoothID(0, 0, 120);
         sMNSoundTestFadeOutWait = 120;
         func_800266A0_272A0();
     }
@@ -1009,9 +1009,9 @@ void mnSoundTestFuncRun(GObj *gobj)
         gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
         gSCManagerSceneData.scene_curr = nSCKindData;
 
-        auStopBGM();
+        syAudioStopSongAll();
         func_800266A0_272A0();
-        auSetBGMVolume(0, 0x7000);
+        syAudioSetSongVolumeID(0, 0x7000);
         syTaskmanSetLoadScene();
     }
     mnSoundTestUpdateControllerInputs();

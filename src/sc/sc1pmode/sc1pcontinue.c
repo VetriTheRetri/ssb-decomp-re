@@ -1249,7 +1249,7 @@ void sc1PContinueFuncStart(void)
 
     scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 
-    auStopBGM();
+    syAudioStopSongAll();
     auPlaySong(0, nSYAudioBGM1PGameEndChoice);
 }
 

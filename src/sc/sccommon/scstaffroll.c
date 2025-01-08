@@ -2130,7 +2130,7 @@ void scStaffrollFuncStart(void)
 	scStaffrollMakeScrollGObj();
 	scStaffrollMakeCamera();
 
-	auStopBGM();
+	syAudioStopSongAll();
 	auPlaySong(0, nSYAudioBGMStaffroll);
 }
 
@@ -2171,7 +2171,7 @@ void scStaffrollFuncDraw(void)
 	{
 		gSCManagerSceneData.scene_curr = nSCKindStartup;
 
-		auStopBGM();
+		syAudioStopSongAll();
 		syVideoSetFlags(SYVIDEO_FLAG_BLACKOUT);
 
 		sSCStaffrollStatus = -2;

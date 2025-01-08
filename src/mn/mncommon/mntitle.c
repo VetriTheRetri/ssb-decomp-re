@@ -342,7 +342,7 @@ void mnTitleInitVars(void)
 	}
 	else
 	{
-		auStopBGM();
+		syAudioStopSongAll();
 		func_800266A0_272A0();
 
 		sMNTitleLayout = nMNTitleLayoutAnimate;
@@ -528,7 +528,7 @@ void mnTitleFuncRun(GObj *gobj)
 				sMNTitleLayout = nMNTitleLayoutAnimate;
 
 				mnTitleTransitionFromFireLogo();
-				auStopBGM();
+				syAudioStopSongAll();
 				func_800266A0_272A0();
 				break;
 			}

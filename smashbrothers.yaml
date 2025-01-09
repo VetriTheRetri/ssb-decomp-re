@@ -115,6 +115,8 @@ segments:
       - [0x026BC0, c, libultra/n_audio/cspsetpriority]
       - [0x026C10, c, libultra/n_audio/cspsetfxmix]
       - [0x026C70, c, libultra/n_audio/n_env]
+      - [0x026C70, c, libultra/n_audio/n_cseq] # what is the split??!?!?
+      - [0x029860, c, libultra/n_audio/n_env_split]
       - [0x02E220, c, libultra/n_audio/n_synaddplayer]
       - [0x02E380, c, libultra/n_audio/n_synstopvoice]
       - [0x02E3F0, c, libultra/n_audio/n_synallocvoice]

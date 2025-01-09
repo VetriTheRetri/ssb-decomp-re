@@ -156,7 +156,7 @@ s16 __n_vsVol(ALVoiceState *vs, ALSeqPlayer *seqp)
 
     t1 = (vs->tremelo * vs->velocity * vs->envGain) >> 6;
 //////// Only in Smash Bros.
-    t2 = (vs->sound->sampleVolume * func_8002F6C0_302C0(seqp) * func_8002FDE0_309E0(seqp, vs->channel)) >> 14;
+    t2 = (vs->sound->sampleVolume * func_8002F6C0_302C0(seqp) * alSeqpGetChlVol(seqp, vs->channel)) >> 14;
 ////////
 
     t1 *= t2;
@@ -328,6 +328,7 @@ ALVoiceState* __n_mapVoice(ALSeqPlayer *seqp, u8 key, u8 vel, u8 channel)
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/audio09/__n_lookupSoundQuick.s")
 
 // 0x8002E520
+// __handleMIDIMsg
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/audio09/func_8002E520_2F120.s")
 
 // 0x8002ED54
@@ -384,5 +385,6 @@ void __n_initChanState(ALSeqPlayer *seqp)
     }
 }
 
+// Start csplayer.c?
 // 0x8002F51C
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/audio09/func_8002F51C_3011C.s")

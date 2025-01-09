@@ -1,5 +1,8 @@
 #include "common.h"
 
+// TODO: clean up externs
+extern s16 func_8002F6C0_302C0(s32);                /* extern */
+
 // Equivalent file in pokemon snap: seqplayer.c
 
 /*
@@ -141,11 +144,75 @@ ALMicroTime __n_vsDelta(ALVoiceState *vs, ALMicroTime t)
 		return AL_GAIN_CHANGE_TIME;
 }
 
+/*
+ * __n_vsVol calculates the target volume for the voice based on the
+ * note on velocity, envelope, sampleVolume and controller.
+ */
+// 0x8002DF48
+s16 __n_vsVol(ALVoiceState *vs, ALSeqPlayer *seqp)
+{
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/audio09/__n_vsVol.s")
+    u32     t1,t2;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/audio09/__n_seqpReleaseVoice.s")
+    t1 = (vs->tremelo * vs->velocity * vs->envGain) >> 6;
+//////// Only in Smash Bros.
+    t2 = (vs->sound->sampleVolume * func_8002F6C0_302C0(seqp) * func_8002FDE0_309E0(seqp, vs->channel)) >> 14;
+////////
 
+    t1 *= t2;
+    t1 >>= 15;
+
+    return( (s16)t1 );
+
+}
+
+// 0x8002DFF8
+void __n_seqpReleaseVoice(ALSeqPlayer *seqp, ALVoice *voice, ALMicroTime deltaTime)
+{
+    ALEvent                 evt;
+    ALVoiceState	        *vs = (ALVoiceState *)voice->clientPrivate;
+
+    /*
+     * if in attack phase, remove all pending volume
+     * events for this voice from the queue
+     */
+
+    if (vs->envPhase == AL_PHASE_ATTACK) {
+    	ALLink              *thisNode;
+    	ALLink              *nextNode;
+    	ALEventListItem     *thisItem, *nextItem;
+
+    	thisNode = seqp->evtq.allocList.next;
+    	while( thisNode != 0 ) {
+    	    nextNode = thisNode->next;
+    	    thisItem = (ALEventListItem *)thisNode;
+    	    nextItem = (ALEventListItem *)nextNode;
+    	    if (thisItem->evt.type == AL_SEQP_ENV_EVT) {
+				if(thisItem->evt.msg.vol.voice == voice) {
+					if( nextItem )
+						nextItem->delta += thisItem->delta;
+					alUnlink(thisNode);
+					alLink(thisNode, &seqp->evtq.freeList);
+				}
+    	    }
+    	    thisNode = nextNode;
+    	}
+    }
+
+    vs->velocity = 0;
+    vs->envPhase = AL_PHASE_RELEASE;
+    vs->envGain  = 0;
+    vs->envEndTime = seqp->unkA[0] + deltaTime;
+
+    n_alSynSetPriority(voice, 0); /* make candidate for stealing */
+    n_alSynSetVol(voice, 0, deltaTime);
+    evt.type  = AL_NOTE_END_EVT;
+    evt.msg.note.voice = voice;
+
+    alEvtqPostEvent(&seqp->evtq, &evt, deltaTime);
+}
+
+// 0x8002E11C
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/audio09/func_8002E11C_2ED1C.s")
 
 // 0x8002E1C4
@@ -182,12 +249,38 @@ void __n_unmapVoice(ALSeqPlayer *seqp, ALVoice *voice)
 #endif
 }
 
-
+// 0x8002E234
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/audio09/func_8002E234_2EE34.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/audio09/__n_setInstChanState.s")
+// 0x8002E2AC
+/*
+  sct 11/6/95 - Call this whenever a new instrument gets assigned to a channel
+  such as when changing banks or in response to a MIDI program change event.
+  Currently also gets called when changing sequences.
+*/
+// 0x8002E2AC
+void __n_setInstChanState(ALSeqPlayer *seqp, ALInstrument *inst, s32 chan)
+{
+    seqp->chanState[chan].instrument = inst;
+    // seqp->chanState[chan].pan = inst->pan;
+    // seqp->chanState[chan].vol = inst->volume;
+    seqp->chanState[chan].priority = inst->priority;
+    seqp->chanState[chan].bendRange = inst->bendRange;
+    seqp->chanState[chan].vol2 = inst->volume;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/audio09/__n_vsPan.s")
+// 0x8002E2F8
+ALPan __n_vsPan(ALVoiceState *vs, ALSeqPlayer *seqp)
+{
+    s32 tmp;
+
+    tmp = seqp->chanState[vs->channel].pan - AL_PAN_CENTER +
+        vs->sound->samplePan;
+    tmp = MAX(tmp, AL_PAN_LEFT);
+    tmp = MIN(tmp, AL_PAN_RIGHT);
+
+    return (ALPan) tmp;
+}
 
 // 0x8002E348
 ALVoiceState *__n_lookupVoice(ALSeqPlayer *seqp, u8 key, u8 channel)
@@ -231,11 +324,13 @@ ALVoiceState* __n_mapVoice(ALSeqPlayer *seqp, u8 key, u8 vel, u8 channel)
 	return vs;
 }
 
-
+// 0x8002E41C
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/audio09/__n_lookupSoundQuick.s")
 
+// 0x8002E520
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/audio09/func_8002E520_2F120.s")
 
+// 0x8002ED54
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/audio09/func_8002ED54_2F954.s")
 
 // 0x8002F39C
@@ -271,6 +366,23 @@ void __n_seqpStopOsc(ALSeqPlayer *seqp, ALVoiceState *vs)
 	}
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/audio09/__n_initChanState.s")
+/*
+  sct 11/6/95 - Called only when creating a new sequence player.
+*/
+// 0x8002F4A0
+void __n_initChanState(ALSeqPlayer *seqp)
+{
+    int i;
 
+    for (i = 0; i < seqp->maxChannels; i++)
+    {
+        seqp->chanState[i].instrument = 0;
+//////// Only in Smash Bros.
+        seqp->chanState[i].unk_0x10 = 0;
+////////
+	__n_resetPerfChanState (seqp, i);
+    }
+}
+
+// 0x8002F51C
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/audio09/func_8002F51C_3011C.s")

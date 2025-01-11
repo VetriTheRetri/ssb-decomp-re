@@ -156,7 +156,7 @@ s16 __n_vsVol(ALVoiceState *vs, ALSeqPlayer *seqp)
 
     t1 = (vs->tremelo * vs->velocity * vs->envGain) >> 6;
 //////// Only in Smash Bros.
-    t2 = (vs->sound->sampleVolume * func_8002F6C0_302C0(seqp) * alSeqpGetChlVol(seqp, vs->channel)) >> 14;
+    t2 = (vs->sound->sampleVolume * alSeqpGetVol(seqp) * alSeqpGetChlVol(seqp, vs->channel)) >> 14;
 ////////
 
     t1 *= t2;

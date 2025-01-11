@@ -122,7 +122,7 @@ segments:
       - [0x02E6A0, c, libultra/n_audio/n_synstartvoiceparam]
       - [0x02E870, c, libultra/n_audio/audio09]
       - [0x0302A0, c, libultra/n_audio/n_synsetpriority]
-      - [0x0302C0, asm, libultra/n_audio/audio11]
+      - [0x0302C0, c, libultra/n_audio/seqpgetvol]
       - [0x0302E0, c, libultra/n_audio/seq]
       - [0x030670, c, libultra/n_audio/cspsetseq]
       - [0x0306B0, c, libultra/n_audio/n_synsetpitch]

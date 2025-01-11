@@ -813,9 +813,9 @@ extern "C"
 		ALVoiceState* vAllocHead; /* list head for allocated voices   */
 		ALVoiceState* vAllocTail; /* list tail for allocated voices   */
 		ALVoiceState* vFreeList;  /* list of free voice state structs */
+		u8 masterVol; // ?
 		ALOscInit initOsc;
 		ALOscUpdate updateOsc;
-		s32 unkB;
 		ALOscStop stopOsc;
 		ALSeqMarker* loopStart;
 		ALSeqMarker* loopEnd;

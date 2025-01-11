@@ -873,7 +873,7 @@ void syAudioInit(void)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/audio/auLoadAssets.s")
 
-void auCreatePlayers(void)
+void syAudioMakeSongPlayers(void)
 {
     ALSynConfig synConfig;
     ALSeqpConfig seqpConfig;

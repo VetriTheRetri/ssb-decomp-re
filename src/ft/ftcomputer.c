@@ -5013,7 +5013,7 @@ void ftComputerFollowObjectiveWalk(FTStruct *fp)
         {
             if (mpCollisionCheckLWallLineCollisionSame(&fp->joints[nFTPartsJointTopN]->translate.vec.f, &target_pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
             {
-                mpCollisionGetUDEdgeUnderL(stand_line_id, &ga_last);
+                mpCollisionGetUDEdgeUpperL(stand_line_id, &ga_last);
 
                 com->target_pos.x = ga_last.x + 100.0;
                 com->target_pos.y = ga_last.y + 100.0;
@@ -5030,7 +5030,7 @@ void ftComputerFollowObjectiveWalk(FTStruct *fp)
         }
         else if (mpCollisionCheckRWallLineCollisionSame(&fp->joints[nFTPartsJointTopN]->translate.vec.f, &target_pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
         {
-            mpCollisionGetUDEdgeUnderR(stand_line_id, &ga_last);
+            mpCollisionGetUDEdgeUpperR(stand_line_id, &ga_last);
 
             com->target_pos.x = ga_last.x - 100.0;
             com->target_pos.y = ga_last.y + 100.0;

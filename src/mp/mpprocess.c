@@ -270,7 +270,7 @@ void mpProcessGroundEdgeLeftAdjust(MPCollData *coll_data)
     }
     else
     {
-        mpCollisionGetUDEdgeUnderL(coll_data->ewall_line_id, &sp44);
+        mpCollisionGetUDEdgeUpperL(coll_data->ewall_line_id, &sp44);
 
         sp44.x -= 2.0F;
         sp38.x = sp44.x - (2.0F * map_coll->width);
@@ -347,7 +347,7 @@ void mpProcessGroundEdgeRightAdjust(MPCollData *coll_data)
     }
     else
     {
-        mpCollisionGetUDEdgeUnderR(coll_data->ewall_line_id, &sp44);
+        mpCollisionGetUDEdgeUpperR(coll_data->ewall_line_id, &sp44);
 
         sp44.x += 2.0F;
         sp44.x = sp38.x + (2.0F * map_coll->width);
@@ -594,7 +594,7 @@ void mpProcessRunLWallCollision(MPCollData *coll_data)
     {
         wall_line_id = sMPProcessMultiWallCollideLineIDs[i];
 
-        mpCollisionGetUDEdgeUnderL(wall_line_id, &wall_pos);
+        mpCollisionGetUDEdgeUpperL(wall_line_id, &wall_pos);
 
         if (wall_pos.y < (translate->y + map_coll->bottom))
         {
@@ -605,7 +605,7 @@ void mpProcessRunLWallCollision(MPCollData *coll_data)
         }
         else
         {
-            mpCollisionGetUDEdgeUpperL(wall_line_id, &wall_pos);
+            mpCollisionGetUDEdgeUnderL(wall_line_id, &wall_pos);
 
             if ((translate->y + map_coll->top) < wall_pos.y)
             {
@@ -818,7 +818,7 @@ void mpProcessRunRWallCollision(MPCollData *coll_data)
     {
         wall_line_id = sMPProcessMultiWallCollideLineIDs[i];
 
-        mpCollisionGetUDEdgeUnderR(wall_line_id, &wall_pos);
+        mpCollisionGetUDEdgeUpperR(wall_line_id, &wall_pos);
 
         if (wall_pos.y < (translate->y + map_coll->bottom))
         {
@@ -829,7 +829,7 @@ void mpProcessRunRWallCollision(MPCollData *coll_data)
         }
         else
         {
-            mpCollisionGetUDEdgeUpperR(wall_line_id, &wall_pos);
+            mpCollisionGetUDEdgeUnderR(wall_line_id, &wall_pos);
 
             if ((translate->y + map_coll->top) < wall_pos.y)
             {
@@ -1402,7 +1402,7 @@ void mpProcessRunLWallCollisionAdjNew(MPCollData *coll_data)
     {
         wall_line_id = sMPProcessMultiWallCollideLineIDs[i];
 
-        mpCollisionGetUDEdgeUnderL(wall_line_id, &wall_pos);
+        mpCollisionGetUDEdgeUpperL(wall_line_id, &wall_pos);
 
         if (wall_pos.y < (translate->y + map_coll->bottom))
         {
@@ -1413,7 +1413,7 @@ void mpProcessRunLWallCollisionAdjNew(MPCollData *coll_data)
         }
         else
         {
-            mpCollisionGetUDEdgeUpperL(wall_line_id, &wall_pos);
+            mpCollisionGetUDEdgeUnderL(wall_line_id, &wall_pos);
 
             if ((translate->y + map_coll->top) < wall_pos.y)
             {
@@ -1772,7 +1772,7 @@ void mpProcessRunRWallCollisionAdjNew(MPCollData *coll_data)
     {
         wall_line_id = sMPProcessMultiWallCollideLineIDs[i];
 
-        mpCollisionGetUDEdgeUnderR(wall_line_id, &wall_pos);
+        mpCollisionGetUDEdgeUpperR(wall_line_id, &wall_pos);
 
         if (wall_pos.y < (translate->y + map_coll->bottom))
         {
@@ -1783,7 +1783,7 @@ void mpProcessRunRWallCollisionAdjNew(MPCollData *coll_data)
         }
         else
         {
-            mpCollisionGetUDEdgeUpperR(wall_line_id, &wall_pos);
+            mpCollisionGetUDEdgeUnderR(wall_line_id, &wall_pos);
 
             if ((translate->y + map_coll->top) < wall_pos.y)
             {

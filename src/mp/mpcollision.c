@@ -650,26 +650,26 @@ void mpCollisionGetUDEdge(s32 line_id, Vec3f *object_pos, s32 ud)
     }
 }
 
-// 0x800F4650 - Thunder Jolt: on ground, traveling left -> snap to left wall underneath (line ID)
-void mpCollisionGetUDEdgeUnderL(s32 line_id, Vec3f *object_pos)
+// 0x800F4650 - Get upper edge of left wall
+void mpCollisionGetUDEdgeUpperL(s32 line_id, Vec3f *object_pos)
 {
     mpCollisionGetUDEdge(line_id, object_pos, +1);
 }
 
-// 0x800F4670 - Thunder Jolt: on ground, traveling right -> snap to left wall above (line ID)
-void mpCollisionGetUDEdgeUpperL(s32 line_id, Vec3f *object_pos)
+// 0x800F4670 - Get lower edge of left wall
+void mpCollisionGetUDEdgeUnderL(s32 line_id, Vec3f *object_pos)
 {
     mpCollisionGetUDEdge(line_id, object_pos, -1);
 }
 
-// 0x800F4690 - Thunder Jolt: on ground, traveling right -> snap to right wall underneath (line ID)
-void mpCollisionGetUDEdgeUnderR(s32 line_id, Vec3f *object_pos)
+// 0x800F4690 - Get upper edge of right wall
+void mpCollisionGetUDEdgeUpperR(s32 line_id, Vec3f *object_pos)
 {
     mpCollisionGetUDEdge(line_id, object_pos, +1);
 }
 
-// 0x800F46B0 - Thunder Jolt: on ground, traveling left -> snap to right wall above (line ID)
-void mpCollisionGetUDEdgeUpperR(s32 line_id, Vec3f *object_pos)
+// 0x800F46B0 - Get lower edge of right wall
+void mpCollisionGetUDEdgeUnderR(s32 line_id, Vec3f *object_pos)
 {
     mpCollisionGetUDEdge(line_id, object_pos, -1);
 }
@@ -3214,7 +3214,7 @@ void mpCollisionGetSpeedLineID(s32 line_id, Vec3f *speed)
     *speed = gMPCollisionDynamics[yakumono_id];
 }
 
-// 0x800FA8A4
+// 0x800FA8A4 - Get the direction a line ID pushes outwards
 s32 mpCollisionGetLineTypeID(s32 line_id)
 {
     DObj *yakumono_dobj;
@@ -3242,7 +3242,7 @@ s32 mpCollisionGetLineTypeID(s32 line_id)
     return vertex_info->line_type;
 }
 
-// 0x800FA964 - Get line ID to the lower-right
+// 0x800FA964 - Get line ID connecting to the right edge of a ground
 s32 mpCollisionGetEdgeUnderRLineID(s32 line_id)
 {
     DObj *yakumono_dobj;
@@ -3270,7 +3270,7 @@ s32 mpCollisionGetEdgeUnderRLineID(s32 line_id)
     return vertex_info->edge_next_line_id;
 }
 
-// 0x800FAA24 - Get line ID to the lower-left
+// 0x800FAA24 - Get line ID connecting to the left edge of a ground
 s32 mpCollisionGetEdgeUnderLLineID(s32 line_id)
 {
     DObj *yakumono_dobj;
@@ -3298,7 +3298,7 @@ s32 mpCollisionGetEdgeUnderLLineID(s32 line_id)
     return vertex_info->edge_prev_line_id;
 }
 
-// 0x800FAAE4 - Get line ID to the upper-right
+// 0x800FAAE4 - Get line ID connecting to the right edge of a ceiling
 s32 mpCollisionGetEdgeUpperRLineID(s32 line_id)
 {
     DObj *yakumono_dobj;
@@ -3326,7 +3326,7 @@ s32 mpCollisionGetEdgeUpperRLineID(s32 line_id)
     return vertex_info->edge_next_line_id;
 }
 
-// 0x800FABA4 - Get line ID to the upper-left
+// 0x800FABA4 - Get line ID connecting to the left edge of a ceiling
 s32 mpCollisionGetEdgeUpperLLineID(s32 line_id)
 {
     DObj *yakumono_dobj;
@@ -3354,7 +3354,7 @@ s32 mpCollisionGetEdgeUpperLLineID(s32 line_id)
     return vertex_info->edge_prev_line_id;
 }
 
-// 0x800FAC64 - Get line ID to the upper-right of a left wall
+// 0x800FAC64 - Get line ID connecting to the upper edge of a left wall
 s32 mpCollisionGetEdgeRightULineID(s32 line_id)
 {
     DObj *yakumono_dobj;
@@ -3382,7 +3382,7 @@ s32 mpCollisionGetEdgeRightULineID(s32 line_id)
     return vertex_info->edge_next_line_id;
 }
 
-// 0x800FAD24 - Get line ID to the lower-right of a left wall
+// 0x800FAD24 - Get line ID connecting to the lower edge of a left wall
 s32 mpCollisionGetEdgeRightDLineID(s32 line_id)
 {
     DObj *yakumono_dobj;
@@ -3410,7 +3410,7 @@ s32 mpCollisionGetEdgeRightDLineID(s32 line_id)
     return vertex_info->edge_prev_line_id;
 }
 
-// 0x800FADE4 - Get line ID to the upper-left of a right wall
+// 0x800FADE4 - Get line ID connecting to the upper edge of a right wall
 s32 mpCollisionGetEdgeLeftULineID(s32 line_id)
 {
     DObj *yakumono_dobj;
@@ -3438,7 +3438,7 @@ s32 mpCollisionGetEdgeLeftULineID(s32 line_id)
     return vertex_info->edge_next_line_id;
 }
 
-// 0x800FAEA4 - Get line ID to the lower-left of a right wall
+// 0x800FAEA4 - Get line ID connecting to the lower edge of a right wall
 s32 mpCollisionGetEdgeLeftDLineID(s32 line_id)
 {
     DObj *yakumono_dobj;
@@ -4260,9 +4260,9 @@ void mpCollisionGetLineIDsTypeCount(s32 type, s32 count, s32 *line_ids)
 }
 
 // 0x800FC9C8
-u8 mpCollisionSetLightColorGetAlpha(Gfx **display_list)
+u8 mpCollisionSetLightColorGetAlpha(Gfx **dls)
 {
-    gDPSetEnvColor(display_list[0]++, gMPCollisionLightColor.r, gMPCollisionLightColor.g, gMPCollisionLightColor.b, gMPCollisionLightColor.a);
+    gDPSetEnvColor(dls[0]++, gMPCollisionLightColor.r, gMPCollisionLightColor.g, gMPCollisionLightColor.b, gMPCollisionLightColor.a);
 
     return gMPCollisionLightColor.a;
 }

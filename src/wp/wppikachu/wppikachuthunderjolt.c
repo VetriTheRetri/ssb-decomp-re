@@ -108,13 +108,13 @@ sb32 wpPikachuThunderJoltAirProcMap(GObj *weapon_gobj)
 
     else if (wp->coll_data.coll_mask_curr & MPCOLL_FLAG_LWALL)
     {
-        mpCollisionGetUDEdgeUnderL(wp->coll_data.lwall_line_id, &pos);
+        mpCollisionGetUDEdgeUpperL(wp->coll_data.lwall_line_id, &pos);
 
         if (DObjGetStruct(weapon_gobj)->translate.vec.f.y > pos.y)
         {
             DObjGetStruct(weapon_gobj)->translate.vec.f.y = pos.y;
         }
-        mpCollisionGetUDEdgeUpperL(wp->coll_data.lwall_line_id, &pos);
+        mpCollisionGetUDEdgeUnderL(wp->coll_data.lwall_line_id, &pos);
 
         if (DObjGetStruct(weapon_gobj)->translate.vec.f.y < pos.y)
         {
@@ -127,13 +127,13 @@ sb32 wpPikachuThunderJoltAirProcMap(GObj *weapon_gobj)
 
     else if (wp->coll_data.coll_mask_curr & MPCOLL_FLAG_RWALL)
     {
-        mpCollisionGetUDEdgeUnderR(wp->coll_data.rwall_line_id, &pos);
+        mpCollisionGetUDEdgeUpperR(wp->coll_data.rwall_line_id, &pos);
 
         if (DObjGetStruct(weapon_gobj)->translate.vec.f.y > pos.y)
         {
             DObjGetStruct(weapon_gobj)->translate.vec.f.y = pos.y;
         }
-        mpCollisionGetUDEdgeUpperR(wp->coll_data.rwall_line_id, &pos);
+        mpCollisionGetUDEdgeUnderR(wp->coll_data.rwall_line_id, &pos);
 
         if (DObjGetStruct(weapon_gobj)->translate.vec.f.y < pos.y)
         {
@@ -484,7 +484,7 @@ sb32 wpPikachuThunderJoltGroundProcMap(GObj *weapon_gobj)
                 wp->weapon_vars.thunder_jolt.line_type = coll_type;
                 wp->lr = 2;
 
-                mpCollisionGetUDEdgeUpperL(line_id, &DObjGetStruct(weapon_gobj)->translate.vec.f);
+                mpCollisionGetUDEdgeUnderL(line_id, &DObjGetStruct(weapon_gobj)->translate.vec.f);
 
                 return wpPikachuThunderJoltGroundCheckDestroy(weapon_gobj);
             }
@@ -494,7 +494,7 @@ sb32 wpPikachuThunderJoltGroundProcMap(GObj *weapon_gobj)
                 wp->weapon_vars.thunder_jolt.line_type = coll_type;
                 wp->lr = 3;
 
-                mpCollisionGetUDEdgeUnderR(line_id, &DObjGetStruct(weapon_gobj)->translate.vec.f);
+                mpCollisionGetUDEdgeUpperR(line_id, &DObjGetStruct(weapon_gobj)->translate.vec.f);
 
                 return wpPikachuThunderJoltGroundCheckDestroy(weapon_gobj);
             }
@@ -505,7 +505,7 @@ sb32 wpPikachuThunderJoltGroundProcMap(GObj *weapon_gobj)
             wp->weapon_vars.thunder_jolt.line_type = coll_type;
             wp->lr = 3;
 
-            mpCollisionGetUDEdgeUnderL(line_id, &DObjGetStruct(weapon_gobj)->translate.vec.f);
+            mpCollisionGetUDEdgeUpperL(line_id, &DObjGetStruct(weapon_gobj)->translate.vec.f);
 
             return wpPikachuThunderJoltGroundCheckDestroy(weapon_gobj);
         }
@@ -515,7 +515,7 @@ sb32 wpPikachuThunderJoltGroundProcMap(GObj *weapon_gobj)
             wp->weapon_vars.thunder_jolt.line_type = coll_type;
             wp->lr = 2;
 
-            mpCollisionGetUDEdgeUpperR(line_id, &DObjGetStruct(weapon_gobj)->translate.vec.f);
+            mpCollisionGetUDEdgeUnderR(line_id, &DObjGetStruct(weapon_gobj)->translate.vec.f);
 
             return wpPikachuThunderJoltGroundCheckDestroy(weapon_gobj);
         }

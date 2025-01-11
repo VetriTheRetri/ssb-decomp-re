@@ -24,6 +24,13 @@
 #define OSC_LOW 1
 #define OSC_STATE_COUNT 32
 
+typedef struct SYAudioPackage
+{
+    s32 count;
+    uintptr_t data[1];
+
+} SYAudioPackage;
+
 typedef struct
 {
     u8 *heap_base;
@@ -52,12 +59,13 @@ typedef struct
     u16 unk34;
     u16 unk36;
     s32 unk38;
-    s32 unk3C;
-    s32 unk40;
-    s32 unk44;
+    uintptr_t *unk3C;
+    uintptr_t *unk40;
+    uintptr_t *unk44;
     u16 unk48;
     u16 unk4A;
     u16 unk4C;
+    uintptr_t unk50, unk54, unk58, unk5C, unk60, unk64;
 
 } SYAudioSettings;
 
@@ -345,28 +353,29 @@ extern OSTime D_8009D9F0;
 // 0x8009D9F8
 extern SYAudioOsc *freeOscStateList;
 
-// SYAudioSettings auPublicSettings = {
-//     auHeapBuffer,
-//     sizeof(auHeapBuffer),
-//     32000,
-//     0x16,
-//     0x18,
-//     0x40,
-//     0x40,
-//     10,
-//     { 16, 16 },
-//     0,
-//     50,
-//     100,
-//     (s32) 0xdeadbeef,
-//     (s32) 0xdeadbeef,
-//     0xdeadbeef,
-//     (s32) 0xdeadbeef,
-//     (s32) 0xdeadbeef,
-//     0xdeadbeef,
-//     (s32) 0xdeadbeef,
-//     AL_FX_CUSTOM
-// };
+extern SYAudioSettings auPublicSettings; /* =
+{
+    auHeapBuffer,
+    sizeof(auHeapBuffer),
+    30720,
+    0x16,
+    0x18,
+    0x40,
+    0x40,
+    10,
+    { 16, 16 },
+    0,
+    50,
+    100,
+    0xDEADBEEF,
+    0xDEADBEEF,
+    0xDEADBEEF,
+    0xDEADBEEF,
+    0xDEADBEEF,
+    0xDEADBEEF,
+    0xDEADBEEF,
+    AL_FX_CUSTOM
+}; */
 
 static void syAudioBnkfPatchBank(ALBank *bank, uintptr_t offset, uintptr_t table);
 static void syAudioBnkfPatchInst(ALInstrument *i, uintptr_t offset, uintptr_t table);
@@ -871,7 +880,125 @@ void syAudioInit(void)
     osSendMesg(&sSYAudioSPTaskMesgQueue, (OSMesg) NULL, OS_MESG_BLOCK);
 }
 
+#ifdef NON_MATCHING
+void auLoadAssets(void)
+{
+    void *p;
+    ALBankFile *bnkf;
+    s32 i;
+    s32 len;
+    SYAudioPackage *pkgf3;
+    SYAudioPackage *pkgf2;
+    SYAudioPackage *pkgf1;
+
+    bzero(auCurrentSettings.heap_base, auCurrentSettings.heap_size);
+    alHeapInit(&auHeap, auCurrentSettings.heap_base, auCurrentSettings.heap_size);
+
+    // load sfx bank
+    if (auCurrentSettings.bank2_start >= 0x80000000)
+    {
+        auSeqBank = (ALBank*) auCurrentSettings.bank2_start;
+    }
+    else
+    {
+        len = auCurrentSettings.bank2_end - auCurrentSettings.bank2_start;
+        bnkf = alHeapAlloc(&auHeap, 1, len);
+        syAudioReadRom(auCurrentSettings.bank2_start, bnkf, len);
+        alBnkfNew(bnkf, auCurrentSettings.table2_start);
+        auSeqBank = bnkf->bankArray[0];
+    }
+    if (auCurrentSettings.bank1_start >= 0x80000000)
+    {
+        D_8009D950_96D50 = (ALBank*) auCurrentSettings.bank1_start;
+    }
+    else
+    {
+        len = auCurrentSettings.bank1_end - auCurrentSettings.bank1_start;
+        bnkf = alHeapAlloc(&auHeap, 1, len);
+        syAudioReadRom(auCurrentSettings.bank1_start, bnkf, len);
+        alBnkfNew(bnkf, auCurrentSettings.table1_start);
+        D_8009D950_96D50 = bnkf->bankArray[0];
+    }
+    // load sequnces
+    if (auCurrentSettings.sbk_start >= 0x80000000)
+    {
+        auSeqFile = (ALSeqFile*) auCurrentSettings.sbk_start;
+    }
+    else
+    {
+        auSeqFile = alHeapAlloc(&auHeap, 1, 4);
+        syAudioReadRom(auCurrentSettings.sbk_start, auSeqFile, 4);
+         
+        len = auSeqFile->seqCount * sizeof(ALSeqData) + 4;
+        auSeqFile = alHeapAlloc(&auHeap, 1, auSeqFile->seqCount * sizeof(ALSeqData) + 4);
+        syAudioReadRom(auCurrentSettings.sbk_start, auSeqFile, len); 
+        alSeqFileNew(auSeqFile, (u8*) auCurrentSettings.sbk_start);
+    }
+    // get maximal seq length
+    for (i = 0, len = 0; i < auSeqFile->seqCount; i++)
+    {
+        auSeqFile->seqArray[i].len += (auSeqFile->seqArray[i].len & 1);
+        
+        if (len < auSeqFile->seqArray[i].len)
+        {
+            len = auSeqFile->seqArray[i].len;
+        }
+    }
+    for (i = 0; i < 1; i++)
+    {
+        auBGMSeqData[i] = alHeapAlloc(&auHeap, 1, len);
+    }
+    auCmdListBuffers[0] = alHeapAlloc(&auHeap, 1, 0x8000);
+    auCmdListBuffers[1] = alHeapAlloc(&auHeap, 1, 0x8000);
+
+    auScTasks[0] = alHeapAlloc(&auHeap, 1, 0x68);
+    auScTasks[1] = alHeapAlloc(&auHeap, 1, 0x68);
+
+    auDataBuffers[0] = alHeapAlloc(&auHeap, 1, 0xE60);
+    auDataBuffers[1] = alHeapAlloc(&auHeap, 1, 0xE60);
+    auDataBuffers[2] = alHeapAlloc(&auHeap, 1, 0xE60);
+
+    if (auCurrentSettings.unk50 < 0x80000000)
+    {
+        len = auCurrentSettings.unk54 - auCurrentSettings.unk50;
+        pkgf3 = alHeapAlloc(&auHeap, 1, len);
+        syAudioReadRom(auCurrentSettings.unk50, pkgf3, len);
+        
+        auPublicSettings.unk4C = auCurrentSettings.unk4C = pkgf3->count;
+        auPublicSettings.unk44 = auCurrentSettings.unk44 = pkgf3->data;
+    }
+    if (auCurrentSettings.unk58 < 0x80000000)
+    {
+        len = auCurrentSettings.unk5C - auCurrentSettings.unk58;
+        pkgf2 = alHeapAlloc(&auHeap, 1, len);
+        syAudioReadRom(auCurrentSettings.unk58, pkgf2, len);
+        
+        auPublicSettings.unk4A = auCurrentSettings.unk4A = pkgf2->count;
+        auPublicSettings.unk40 = auCurrentSettings.unk40 = pkgf2->data;
+
+        for (i = 0; i < auCurrentSettings.unk4A; i++)
+        {
+            auCurrentSettings.unk40[i] += (uintptr_t)pkgf2;
+        }
+    }
+    if (auCurrentSettings.unk60 < 0x80000000)
+    {
+        len = auCurrentSettings.unk64 - auCurrentSettings.unk60;
+        pkgf1 = alHeapAlloc(&auHeap, 1, len);
+        syAudioReadRom(auCurrentSettings.unk60, pkgf1, len);
+        
+        auPublicSettings.unk48 = auCurrentSettings.unk48 = pkgf1->count;
+        auPublicSettings.unk3C = auCurrentSettings.unk3C = pkgf1->data;
+
+        for (i = 0; i < auCurrentSettings.unk48; i++)
+        {
+            auCurrentSettings.unk3C[i] += (uintptr_t)pkgf1;
+        }
+    }
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/audio/auLoadAssets.s")
+#endif
 
 void syAudioMakeSongPlayers(void)
 {

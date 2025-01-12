@@ -298,7 +298,7 @@ extern Acmd *sSYAudioAcmdList;
 extern Acmd *sSYAudioAcmdListBuffers[2];
 extern SYTaskAudio *sSYAudioTask;
 extern SYTaskAudio *sSYAudioSchedulerTasks[2];
-extern ALBank *D_8009D950_96D50;
+extern ALBank *sSYAudioSequenceALBank1;
 extern s32 *sSYAudioPlayingSound; // 0x8009D954?
 extern s32 *sSYAudioStartingSound;
 extern s8 *sSYAudioSndpSoundID; // returned by alSndpAllocate
@@ -312,7 +312,7 @@ extern ALInstrument *sSYAudioALInstrument;
 extern ALSndPlayer *sSYAudioALSndPlayer;
 
 // 0x8009D958
-extern ALBank *sSYAudioSequenceALBank;
+extern ALBank *sSYAudioSequenceALBank2;
 
 // 0x8009D95C
 extern ALSeqFile *sSYAudioALSeqFile;
@@ -898,7 +898,7 @@ void syAudioLoadAssets(void)
     // load sfx bank
     if (sSYAudioCurrentSettings.bank2_start >= 0x80000000)
     {
-        sSYAudioSequenceALBank = (ALBank*) sSYAudioCurrentSettings.bank2_start;
+        sSYAudioSequenceALBank2 = (ALBank*) sSYAudioCurrentSettings.bank2_start;
     }
     else
     {
@@ -906,11 +906,11 @@ void syAudioLoadAssets(void)
         bnkf = alHeapAlloc(&sSYAudioALHeap, 1, len);
         syAudioReadRom(sSYAudioCurrentSettings.bank2_start, bnkf, len);
         alBnkfNew(bnkf, sSYAudioCurrentSettings.table2_start);
-        sSYAudioSequenceALBank = bnkf->bankArray[0];
+        sSYAudioSequenceALBank2 = bnkf->bankArray[0];
     }
     if (sSYAudioCurrentSettings.bank1_start >= 0x80000000)
     {
-        D_8009D950_96D50 = (ALBank*) sSYAudioCurrentSettings.bank1_start;
+        sSYAudioSequenceALBank1 = (ALBank*) sSYAudioCurrentSettings.bank1_start;
     }
     else
     {
@@ -918,7 +918,7 @@ void syAudioLoadAssets(void)
         bnkf = alHeapAlloc(&sSYAudioALHeap, 1, len);
         syAudioReadRom(sSYAudioCurrentSettings.bank1_start, bnkf, len);
         alBnkfNew(bnkf, sSYAudioCurrentSettings.table1_start);
-        D_8009D950_96D50 = bnkf->bankArray[0];
+        sSYAudioSequenceALBank1 = bnkf->bankArray[0];
     }
     // load sequnces
     if (sSYAudioCurrentSettings.sbk_start >= 0x80000000)
@@ -1046,8 +1046,8 @@ void syAudioMakeSongPlayers(void)
     }
     else
     {
-        sp94.unk_80026204_0x6 = D_8009D950_96D50->instArray[0]->soundCount;
-        sp94.unk_80026204_0x10 = D_8009D950_96D50->instArray[0]->soundArray;
+        sp94.unk_80026204_0x6 = sSYAudioSequenceALBank1->instArray[0]->soundCount;
+        sp94.unk_80026204_0x10 = sSYAudioSequenceALBank1->instArray[0]->soundArray;
     }
     sp94.unk_80026204_0x14 = sSYAudioCurrentSettings.fgm_ucode_data;
     sp94.unk_80026204_0x18 = sSYAudioCurrentSettings.fgm_table_data;
@@ -1096,7 +1096,7 @@ void syAudioMakeSongPlayers(void)
 
         gSYAudioALCSPlayers[i] = alHeapAlloc(&sSYAudioALHeap, 1, sizeof(*gSYAudioALCSPlayers[i]));
         func_8002C3D0_2CFD0(gSYAudioALCSPlayers[i], &seqpConfig);
-        alCSPSetBank(gSYAudioALCSPlayers[i], sSYAudioSequenceALBank);
+        alCSPSetBank(gSYAudioALCSPlayers[i], sSYAudioSequenceALBank2);
         sSYAudioALCSeqs[i] = alHeapAlloc(&sSYAudioALHeap, 1, sizeof(ALCSeq));
         
         sSYAudioCSPlayerStatuses[i] = 0;

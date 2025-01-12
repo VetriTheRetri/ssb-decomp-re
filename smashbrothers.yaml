@@ -1934,11 +1934,13 @@ segments:
     type: bin
     start: 0xC7B1F0
 
-  - type: bin
+  - type: bin # ???
     start: 0xF573D0
-  - type: bin
+  - name: fgm.tbl
+    type: bin # Sound table (?)
     start: 0xF57BF0
-  - type: bin
+  - name: fgm.ucd
+    type: bin # FGM microcode
     start: 0xF5A9C0
 
 

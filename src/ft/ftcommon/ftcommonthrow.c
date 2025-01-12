@@ -24,7 +24,6 @@ void ftCommonThrowProcUpdate(GObj *fighter_gobj)
     if (fp->motion_vars.flags.flag2 != 0)
     {
         ftCommonThrownProcPhysics(fp->catch_gobj);
-
         ftCommonThrownReleaseThrownUpdateStats(fp->catch_gobj, (fp->motion_vars.flags.flag2 == 1) ? -fp->lr : fp->lr, (fp->status_id == nFTCommonStatusThrowB) ? 1 : 0, TRUE);
 
         fp->motion_vars.flags.flag2 = 0;

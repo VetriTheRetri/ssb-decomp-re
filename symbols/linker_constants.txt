@@ -2299,3 +2299,7 @@ lMNVSRecordMainDigit9Sprite = 0x00000890;
 
 gSYControllerMain = 0x80045470;
 gGCCurrentProcess = 0x80046A60;
+
+dSYAudioPublicSettings = 0x8003CB3C;
+dSYAudioPublicSettings2 = dSYAudioPublicSettings;
+dSYAudioPublicSettings3 = dSYAudioPublicSettings;

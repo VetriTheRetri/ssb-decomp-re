@@ -117,7 +117,7 @@ s32 gMnBonusRule;
 s32 gMnBonusHumanPanelPort;
 
 // 0x801376FC
-GObj* gMnBonusHighscoreGobj;
+GObj* gMnBonusHighscoreGObj;
 
 // 0x80137700
 s32 D_ovl29_80137700[4];
@@ -132,7 +132,7 @@ s32 gMnBonusType;
 GObj* gMnBonusTitleGObj;
 
 // 0x8013771C total time highscore
-GObj* gMnBonusTotalTimeGobj;
+GObj* gMnBonusTotalTimeGObj;
 
 // 0x80137720 flag indicating which bonus chars are available
 u16 gMnBonusCharacterUnlockedMask;
@@ -915,17 +915,17 @@ void mn1PBonusPlayersDrawBestTime()
 	s32 best_time;
 	s32 fkind = mn1PBonusPlayersGetFighterKindFromTokenPositionEvenIfLocked();
 
-	if (gMnBonusHighscoreGobj != NULL)
+	if (gMnBonusHighscoreGObj != NULL)
 	{
-		gcEjectGObj(gMnBonusHighscoreGobj);
-		gMnBonusHighscoreGobj = NULL;
+		gcEjectGObj(gMnBonusHighscoreGObj);
+		gMnBonusHighscoreGObj = NULL;
 	}
 
 	if (fkind != nFTKindNull)
 	{
 		best_time = mn1PBonusPlayersGetBestTime(fkind);
 
-		gMnBonusHighscoreGobj = best_time_gobj = gcMakeGObjSPAfter(0U, NULL, 0x17U, 0x80000000U);
+		gMnBonusHighscoreGObj = best_time_gobj = gcMakeGObjSPAfter(0U, NULL, 0x17U, 0x80000000U);
 		gcAddGObjDisplay(best_time_gobj, lbCommonDrawSObjAttr, 0x1AU, GOBJ_PRIORITY_DEFAULT, ~0);
 
 		temp_v0_2 = lbCommonMakeSObjForGObj(best_time_gobj, lbRelocGetFileData(void*, gMnBonusFiles[5], &FILE_017_BEST_TIME_LABEL_IMAGE_OFFSET));
@@ -994,15 +994,15 @@ void mn1PBonusPlayersDrawBestCount()
 	};
 	s32 fkind = mn1PBonusPlayersGetFighterKindFromTokenPositionEvenIfLocked();
 
-	if (gMnBonusHighscoreGobj != NULL)
+	if (gMnBonusHighscoreGObj != NULL)
 	{
-		gcEjectGObj(gMnBonusHighscoreGobj);
-		gMnBonusHighscoreGobj = NULL;
+		gcEjectGObj(gMnBonusHighscoreGObj);
+		gMnBonusHighscoreGObj = NULL;
 	}
 
 	if (fkind != nFTKindNull)
 	{
-		gMnBonusHighscoreGobj = count_gobj = gcMakeGObjSPAfter(0U, NULL, 0x17U, 0x80000000U);
+		gMnBonusHighscoreGObj = count_gobj = gcMakeGObjSPAfter(0U, NULL, 0x17U, 0x80000000U);
 		gcAddGObjDisplay(count_gobj, lbCommonDrawSObjAttr, 0x1AU, GOBJ_PRIORITY_DEFAULT, ~0);
 
 		if (gMnBonusType == 0)
@@ -1073,7 +1073,7 @@ void mnDrawBonusTotalTime()
 	s32 remainder;
 	s32 seconds;
 
-	gMnBonusTotalTimeGobj = best_time_gobj = gcMakeGObjSPAfter(0U, NULL, 0x17U, 0x80000000U);
+	gMnBonusTotalTimeGObj = best_time_gobj = gcMakeGObjSPAfter(0U, NULL, 0x17U, 0x80000000U);
 	gcAddGObjDisplay(best_time_gobj, lbCommonDrawSObjAttr, 0x1AU, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	temp_v0_2 = lbCommonMakeSObjForGObj(best_time_gobj, lbRelocGetFileData(void*, gMnBonusFiles[5], &FILE_017_TOTAL_BEST_TIME_LABEL_IMAGE_OFFSET));
@@ -1910,10 +1910,10 @@ void mn1PBonusPlayersHandleTitlePress()
 	mn1PBonusPlayersDrawTitleAndBack();
 	mn1PBonusPlayersDrawHighscore();
 
-	if (gMnBonusTotalTimeGobj != NULL)
+	if (gMnBonusTotalTimeGObj != NULL)
 	{
-		gcEjectGObj(gMnBonusTotalTimeGobj);
-		gMnBonusTotalTimeGobj = NULL;
+		gcEjectGObj(gMnBonusTotalTimeGObj);
+		gMnBonusTotalTimeGObj = NULL;
 	}
 
 	if (mn1PBonusPlayersAreAllCompleted())
@@ -2432,7 +2432,7 @@ void mn1PBonusPlayersLoadMatchInfo()
 	D_ovl29_801376D4 = 5;
 	gMnBonusCharSelected = FALSE;
 	gMnBonusHumanPanelPort = gSCManagerSceneData.player;
-	gMnBonusTotalTimeGobj = NULL;
+	gMnBonusTotalTimeGObj = NULL;
 	gMnBonusIsTeamBattle = gSCManager1PGameBattleState.is_team_battle;
 	gMnBonusRule = gSCManager1PGameBattleState.game_rules;
 

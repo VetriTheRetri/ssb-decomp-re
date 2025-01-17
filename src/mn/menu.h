@@ -6,6 +6,37 @@
 
 extern u32 lMNPlayersPortraitsFileID;               // 0x00000013
 extern u32 lMNDataCommonFileID;						// 0x00000020
+extern u32 lMNCommonFontsFileID;					// 0x00000021
+
+extern intptr_t lMNCommonFontsLetterASprite;		// 0x00000040
+extern intptr_t lMNCommonFontsLetterBSprite;		// 0x000000D0
+extern intptr_t lMNCommonFontsLetterCSprite;		// 0x00000160
+extern intptr_t lMNCommonFontsLetterDSprite;		// 0x000001F0
+extern intptr_t lMNCommonFontsLetterESprite;		// 0x00000280
+extern intptr_t lMNCommonFontsLetterFSprite;		// 0x00000310
+extern intptr_t lMNCommonFontsLetterGSprite;		// 0x000003A0
+extern intptr_t lMNCommonFontsLetterHSprite;		// 0x00000430
+extern intptr_t lMNCommonFontsLetterISprite;		// 0x000004C0
+extern intptr_t lMNCommonFontsLetterJSprite;		// 0x00000550
+extern intptr_t lMNCommonFontsLetterKSprite;		// 0x000005E0
+extern intptr_t lMNCommonFontsLetterLSprite;		// 0x00000670
+extern intptr_t lMNCommonFontsLetterMSprite;		// 0x00000700
+extern intptr_t lMNCommonFontsLetterNSprite;		// 0x00000790
+extern intptr_t lMNCommonFontsLetterOSprite;		// 0x00000820
+extern intptr_t lMNCommonFontsLetterPSprite;		// 0x000008B0
+extern intptr_t lMNCommonFontsLetterQSprite;		// 0x00000940
+extern intptr_t lMNCommonFontsLetterRSprite;		// 0x000009D0
+extern intptr_t lMNCommonFontsLetterSSprite;		// 0x00000A60
+extern intptr_t lMNCommonFontsLetterTSprite;		// 0x00000AF0
+extern intptr_t lMNCommonFontsLetterUSprite;		// 0x00000B80
+extern intptr_t lMNCommonFontsLetterVSprite;		// 0x00000C10
+extern intptr_t lMNCommonFontsLetterWSprite;		// 0x00000CA0
+extern intptr_t lMNCommonFontsLetterXSprite;		// 0x00000D30
+extern intptr_t lMNCommonFontsLetterYSprite;		// 0x00000DC0
+extern intptr_t lMNCommonFontsLetterZSprite;		// 0x00000E50
+extern intptr_t lMNCommonFontsSymbolApostropheSprite;	// 0x00000ED0
+extern intptr_t lMNCommonFontsSymbolPercentSprite;  // 0x00000F60
+extern intptr_t lMNCommonFontsSymbolPeriodSprite;	// 0x00000FD0
 
 extern intptr_t lMNCommonOptionTabLeftSprite;       // 0x000001E8
 extern intptr_t lMNCommonOptionTabMiddleSprite;     // 0x00000330

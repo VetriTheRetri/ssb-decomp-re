@@ -41,7 +41,7 @@ u32 dMNVSRecordFileIDs[/* */] =
 	&lMNVSRecordMainFileID,
 	&lMNDataCommonFileID,
 	&lMNPlayersPortraitsFileID,
-	&lMNVSRecordFontsFileID
+	&lMNCommonFontsFileID
 };
 
 // 0x80136660
@@ -337,7 +337,7 @@ void mnVSRecordMakeDigits(GObj *gobj, s32 number, f32 x, f32 y, u32 *colors, sb3
 }
 
 // 0x8013232C
-s32 mnVSRecordGetCharacterID(u8 c)
+s32 mnVSRecordGetCharacterID(const char c)
 {
 	switch (c)
 	{
@@ -434,23 +434,23 @@ void mnVSRecordMakeString(GObj *gobj, const char *str, f32 x, f32 y, u32 *color)
 {
 	intptr_t chars[/* */] =
 	{
-		&lMNVSRecordFontsLetterASprite, &lMNVSRecordFontsLetterBSprite,
-		&lMNVSRecordFontsLetterCSprite, &lMNVSRecordFontsLetterDSprite,
-		&lMNVSRecordFontsLetterESprite, &lMNVSRecordFontsLetterFSprite,
-		&lMNVSRecordFontsLetterGSprite, &lMNVSRecordFontsLetterHSprite,
-		&lMNVSRecordFontsLetterISprite, &lMNVSRecordFontsLetterJSprite,
-		&lMNVSRecordFontsLetterKSprite, &lMNVSRecordFontsLetterLSprite,
-		&lMNVSRecordFontsLetterMSprite, &lMNVSRecordFontsLetterNSprite,
-		&lMNVSRecordFontsLetterOSprite, &lMNVSRecordFontsLetterPSprite,
-		&lMNVSRecordFontsLetterQSprite, &lMNVSRecordFontsLetterRSprite,
-		&lMNVSRecordFontsLetterSSprite, &lMNVSRecordFontsLetterTSprite,
-		&lMNVSRecordFontsLetterUSprite, &lMNVSRecordFontsLetterVSprite,
-		&lMNVSRecordFontsLetterWSprite, &lMNVSRecordFontsLetterXSprite,
-		&lMNVSRecordFontsLetterYSprite, &lMNVSRecordFontsLetterZSprite,
+		&lMNCommonFontsLetterASprite, &lMNCommonFontsLetterBSprite,
+		&lMNCommonFontsLetterCSprite, &lMNCommonFontsLetterDSprite,
+		&lMNCommonFontsLetterESprite, &lMNCommonFontsLetterFSprite,
+		&lMNCommonFontsLetterGSprite, &lMNCommonFontsLetterHSprite,
+		&lMNCommonFontsLetterISprite, &lMNCommonFontsLetterJSprite,
+		&lMNCommonFontsLetterKSprite, &lMNCommonFontsLetterLSprite,
+		&lMNCommonFontsLetterMSprite, &lMNCommonFontsLetterNSprite,
+		&lMNCommonFontsLetterOSprite, &lMNCommonFontsLetterPSprite,
+		&lMNCommonFontsLetterQSprite, &lMNCommonFontsLetterRSprite,
+		&lMNCommonFontsLetterSSprite, &lMNCommonFontsLetterTSprite,
+		&lMNCommonFontsLetterUSprite, &lMNCommonFontsLetterVSprite,
+		&lMNCommonFontsLetterWSprite, &lMNCommonFontsLetterXSprite,
+		&lMNCommonFontsLetterYSprite, &lMNCommonFontsLetterZSprite,
 
-		&lMNVSRecordFontsSymbolApostropheSprite,
-		&lMNVSRecordFontsSymbolPercentSprite,
-		&lMNVSRecordFontsSymbolPeriodSprite,
+		&lMNCommonFontsSymbolApostropheSprite,
+		&lMNCommonFontsSymbolPercentSprite,
+		&lMNCommonFontsSymbolPeriodSprite,
 	};
 	SObj *sobj;
 	f32 start_x = x;

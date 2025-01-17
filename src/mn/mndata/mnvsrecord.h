@@ -7,7 +7,6 @@
 #include <mn/mndef.h>
 
 extern u32 lMNVSRecordMainFileID;						// 0x0000001F
-extern u32 lMNVSRecordFontsFileID;						// 0x00000021
 
 extern intptr_t lMNVSRecordMainDigit0Sprite;			// 0x000002F0
 extern intptr_t lMNVSRecordMainDigit1Sprite;			// 0x00000390
@@ -19,36 +18,6 @@ extern intptr_t lMNVSRecordMainDigit6Sprite;			// 0x000006B0
 extern intptr_t lMNVSRecordMainDigit7Sprite;			// 0x00000750
 extern intptr_t lMNVSRecordMainDigit8Sprite;			// 0x000007F0
 extern intptr_t lMNVSRecordMainDigit9Sprite;			// 0x00000890
-
-extern intptr_t lMNVSRecordFontsLetterASprite;			// 0x00000040
-extern intptr_t lMNVSRecordFontsLetterBSprite;			// 0x000000D0
-extern intptr_t lMNVSRecordFontsLetterCSprite;			// 0x00000160
-extern intptr_t lMNVSRecordFontsLetterDSprite;			// 0x000001F0
-extern intptr_t lMNVSRecordFontsLetterESprite;			// 0x00000280
-extern intptr_t lMNVSRecordFontsLetterFSprite;			// 0x00000310
-extern intptr_t lMNVSRecordFontsLetterGSprite;			// 0x000003A0
-extern intptr_t lMNVSRecordFontsLetterHSprite;			// 0x00000430
-extern intptr_t lMNVSRecordFontsLetterISprite;			// 0x000004C0
-extern intptr_t lMNVSRecordFontsLetterJSprite;			// 0x00000550
-extern intptr_t lMNVSRecordFontsLetterKSprite;			// 0x000005E0
-extern intptr_t lMNVSRecordFontsLetterLSprite;			// 0x00000670
-extern intptr_t lMNVSRecordFontsLetterMSprite;			// 0x00000700
-extern intptr_t lMNVSRecordFontsLetterNSprite;			// 0x00000790
-extern intptr_t lMNVSRecordFontsLetterOSprite;			// 0x00000820
-extern intptr_t lMNVSRecordFontsLetterPSprite;			// 0x000008B0
-extern intptr_t lMNVSRecordFontsLetterQSprite;			// 0x00000940
-extern intptr_t lMNVSRecordFontsLetterRSprite;			// 0x000009D0
-extern intptr_t lMNVSRecordFontsLetterSSprite;			// 0x00000A60
-extern intptr_t lMNVSRecordFontsLetterTSprite;			// 0x00000AF0
-extern intptr_t lMNVSRecordFontsLetterUSprite;			// 0x00000B80
-extern intptr_t lMNVSRecordFontsLetterVSprite;			// 0x00000C10
-extern intptr_t lMNVSRecordFontsLetterWSprite;			// 0x00000CA0
-extern intptr_t lMNVSRecordFontsLetterXSprite;			// 0x00000D30
-extern intptr_t lMNVSRecordFontsLetterYSprite;			// 0x00000DC0
-extern intptr_t lMNVSRecordFontsLetterZSprite;			// 0x00000E50
-extern intptr_t lMNVSRecordFontsSymbolApostropheSprite;	// 0x00000ED0
-extern intptr_t lMNVSRecordFontsSymbolPercentSprite;	// 0x00000F60
-extern intptr_t lMNVSRecordFontsSymbolPeriodSprite;		// 0x00000FD0
 
 extern intptr_t lMNVSRecordMainMarioIconBWSprite;		// 0x00001918
 extern intptr_t lMNVSRecordMainFoxIconBWSprite;			// 0x00001A98
@@ -117,7 +86,7 @@ extern void mnVSRecordMakeDigits
     s32 digit_count_max,
     sb32 is_fixed_digit_count
 );
-extern s32 mnVSRecordGetCharacterID(u8 c);
+extern s32 mnVSRecordGetCharacterID(const char c);
 extern f32 mnVSRecordGetCharacterSpacing(const char *str, s32 c);
 extern void mnVSRecordMakeString(GObj *gobj, const char *str, f32 x, f32 y, u32 *color);
 extern sb32 mnVSRecordCheckHaveFighterKind(s32 fkind);

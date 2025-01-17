@@ -575,13 +575,13 @@ void mpCollisionGetLREdgeUpperL(s32 line_id, Vec3f *object_pos)
     mpCollisionGetLREdge(line_id, object_pos, -1);
 }
 
-// 0x800F4448 - Get left edge of ceiling line ID (!?)
+// 0x800F4448 - Get right edge of ceiling line ID (!?)
 void mpCollisionGetLREdgeUnderR(s32 line_id, Vec3f *object_pos)
 {
     mpCollisionGetLREdge(line_id, object_pos, +1);
 }
 
-// 0x800F4468 - Get right edge of ceiling line ID (!?)
+// 0x800F4468 - Get left edge of ceiling line ID (!?)
 void mpCollisionGetLREdgeUnderL(s32 line_id, Vec3f *object_pos)
 {
     mpCollisionGetLREdge(line_id, object_pos, -1);

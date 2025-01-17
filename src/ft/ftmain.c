@@ -4587,20 +4587,24 @@ void ftMainSetStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
 
         if (motion_desc->anim_desc.flags.is_use_shieldpose)
         {
-            fp->figatree = (void*)((intptr_t)motion_desc->anim_file_id + (uintptr_t)fp->data->p_file_shieldpose);
+            fp->figatree = (void*) ((intptr_t)motion_desc->anim_file_id + (uintptr_t)fp->data->p_file_shieldpose);
         }
         else if (motion_desc->anim_file_id != 0)
         {
-            lbRelocGetForceExternHeapFile(motion_desc->anim_file_id, (void*)fp->figatree_heap);
+            lbRelocGetForceExternHeapFile(motion_desc->anim_file_id, (void*) fp->figatree_heap);
             fp->figatree = fp->figatree_heap;
         }
         else fp->figatree = NULL;
         
         if (fp->figatree != NULL)
         {
-            anim_desc_bak = fp->anim_desc.word & 0xFFFFFFE0;
+            anim_desc_bak =
+            fp->anim_desc.word & ~(FTANIM_FLAG_SUBMOTION_SCRIPT | FTANIM_FLAG_ANIMJOINT | FTANIM_FLAG_TRANSLATE_SCALES | FTANIM_FLAG_SHIELDPOSE | FTANIM_FLAG_ANIMLOCKS);
+            
             fp->anim_desc.word = motion_desc->anim_desc.word;
-            anim_desc_update = fp->anim_desc.word & 0xFFFFFFE0;
+
+            anim_desc_update =
+            fp->anim_desc.word & ~(FTANIM_FLAG_SUBMOTION_SCRIPT | FTANIM_FLAG_ANIMJOINT | FTANIM_FLAG_TRANSLATE_SCALES | FTANIM_FLAG_SHIELDPOSE | FTANIM_FLAG_ANIMLOCKS);
 
             for (i = 0; ((anim_desc_bak != 0) || (anim_desc_update != 0)); i++, anim_desc_update <<= 1, anim_desc_bak <<= 1)
             {
@@ -4617,7 +4621,6 @@ void ftMainSetStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
                 }
                 else ftMainEjectHiddenPartID(fp, i);
             }
-
             dobjdesc = attr->commonparts_container->commonparts[fp->detail_curr - nFTPartsDetailStart].dobjdesc;
 
             for (i = nFTPartsJointCommonStart; dobjdesc->id != DOBJ_ARRAY_MAX; i++, dobjdesc++)

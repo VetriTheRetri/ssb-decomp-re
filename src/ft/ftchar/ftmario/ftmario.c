@@ -52,34 +52,34 @@ FTMotionDesc dFTMarioMotionDescs[/* */] =
     {
         &lFTMarioAnimWaitFileID,            // Animation file ID 
         FTMOTION_SCRIPT_NULL,               // Script offset
-        FTANIM_USE_NONE                     // Animation flags
+        FTANIM_FLAG_NONE                     // Animation flags
     },
 
     // RebirthDown
     {
         &lFTMarioAnimDownBounceDFileID,     // Animation file ID 
         FTMOTION_SCRIPT_NULL,               // Script offset
-        FTANIM_USE_NONE                     // Animation flags
+        FTANIM_FLAG_NONE                     // Animation flags
     },
 
     // RebirthStand
     {
         &lFTMarioAnimDownStandDFileID,      // Animation file ID 
         FTMOTION_SCRIPT_NULL,               // Script offset
-        FTANIM_USE_NONE                     // Animation flags
+        FTANIM_FLAG_NONE                     // Animation flags
     },
 
     // RebirthWait
     {
         &lFTMarioAnimWaitFileID,            // Animation file ID 
         &lFTMarioMotionWaitScript,               // Script offset
-        FTANIM_USE_NONE                     // Animation flags
+        FTANIM_FLAG_NONE                     // Animation flags
     },
 
     // Wait
     {
         &lFTMarioAnimWaitFileID,            // Animation file ID 
         &lFTMarioMotionWaitScript,          // Script offset
-        FTANIM_USE_NONE                     // Animation flags
+        FTANIM_FLAG_NONE                     // Animation flags
     },
 };

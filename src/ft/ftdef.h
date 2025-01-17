@@ -25,15 +25,16 @@
 
 #define FTMOTION_SCRIPT_NULL                0x80000000
 
-#define FTANIM_USE_TRANSN_JOINT             0x80000000
-#define FTANIM_USE_XROTN_JOINT              0x40000000
-#define FTANIM_USE_YROTN_JOINT              0x20000000
+#define FTANIM_FLAG_TRANSN_JOINT            0x80000000
+#define FTANIM_FLAG_XROTN_JOINT             0x40000000
+#define FTANIM_FLAG_YROTN_JOINT             0x20000000
 
-#define FTANIM_USE_SUBMOTION_SCRIPT         0x00000010
-#define FTANIM_USE_TRANSLATE_SCALES         0x00000004
-#define FTANIM_USE_SHIELDPOSE               0x00000002
-#define FTANIM_USE_ANIMLOCKS                0x00000001
-#define FTANIM_USE_NONE                     0x00000000
+#define FTANIM_FLAG_SUBMOTION_SCRIPT        0x00000010
+#define FTANIM_FLAG_ANIMJOINT               0x00000008
+#define FTANIM_FLAG_TRANSLATE_SCALES        0x00000004
+#define FTANIM_FLAG_SHIELDPOSE              0x00000002
+#define FTANIM_FLAG_ANIMLOCKS               0x00000001
+#define FTANIM_FLAG_NONE                    0x00000000
 
 #define FTSTATUS_PRESERVE_NONE              (0)                                     // 0x0 - Just zero
 #define FTSTATUS_PRESERVE_HIT               (1 << nFTStatusPreserveHit)             // 0x1

@@ -149,7 +149,7 @@ typedef enum SCKind
 	nSCKindScreenAdjust,      	  	// Screen adjust
 	nSCKindVSPlayers,          		// VS mode character select
 	nSCKind1PGamePlayers,		  	// 1P game character select
-	nSCKind1PTrainingModePlayers,  	// Training mode character select
+	nSCKind1PTrainingPlayers,  	// Training mode character select
 	nSCKind1PBonus1Players,      	// Bonus 1 practice character select
 	nSCKind1PBonus2Players,      	// Bonus 2 practice character select
 	nSCKindMaps,     	  		  	// Stage select

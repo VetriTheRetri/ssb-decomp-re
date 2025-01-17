@@ -1162,7 +1162,7 @@ void scManagerRunLoop(sb32 arg)
 				mn1PGamePlayersStartScene();
 				break;
 
-			case nSCKind1PTrainingModePlayers:
+			case nSCKind1PTrainingPlayers:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[28]);

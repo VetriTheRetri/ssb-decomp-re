@@ -551,7 +551,7 @@ void mn1PModeInitVars(void)
         sMN1PModeOption = nMN1PModeOption1PGame;
         break;
         
-    case nSCKind1PTrainingModePlayers:
+    case nSCKind1PTrainingPlayers:
         sMN1PModeOption = nMN1PModeOptionTrainingMode;
         break;
         
@@ -645,7 +645,7 @@ void mn1PModeFuncRun(GObj *gobj)
                 mn1PModeSetOptionSpriteColors(sMN1PModeOptionGObjs[nMN1PModeOptionTrainingMode], nMNOptionTabStatusSelected, nMN1PModeOptionTrainingMode);
 
                 gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
-                gSCManagerSceneData.scene_curr = nSCKind1PTrainingModePlayers;
+                gSCManagerSceneData.scene_curr = nSCKind1PTrainingPlayers;
                 gSCManagerSceneData.player = player - 1;
 
                 sMN1PModeIsProceedScene = TRUE;

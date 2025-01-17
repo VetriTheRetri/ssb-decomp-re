@@ -409,8 +409,8 @@ struct SCCommonData
 	u8 training_com_costume;						// Training Mode CPU costume
 	ub8 is_extend_demo_wait;						// Wait longer for auto-demo to start?
 	u8 demo_gkind_order;							// Current index of stage array to pick for auto-demo
-	u8 stages_vsmode_gkind;							// VS Mode stage selected
-	u8 stages_training_gkind;						// Training Mode stage selected
+	u8 maps_vsmode_gkind;							// VS Mode stage selected
+	u8 maps_training_gkind;						// Training Mode stage selected
 	u8 challenger_level_drop;						// Subtract from default CP level
 	ub8 is_title_anim_viewed;						// Has the title screen animation been viewed?
 };

@@ -27,7 +27,7 @@ extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 
 // Forward declarations
-void mnMapsPositionStagePreviewCamera(CObj* stage_preview_cobj, s32 gkind);
+void mnMapsSetPreviewCameraPosition(CObj* cobj, s32 gkind);
 
 
 // Stuff - where does it go?!?
@@ -795,7 +795,7 @@ void mnMapsMakeCursor(void)
 }
 
 // 0x80132B84
-void mnMapsLoadStageFile(s32 gkind, void *heap)
+void mnMapsLoadMapFile(s32 gkind, void *heap)
 {
 	sMNMapsGroundInfo = lbRelocGetFileData
 	(
@@ -806,7 +806,7 @@ void mnMapsLoadStageFile(s32 gkind, void *heap)
 }
 
 // 0x80132BC8
-void mnMapsRenderStagePreviewWallpaper(s32 gobj)
+void mnMapsRenderStagePreviewWallpaper(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
@@ -818,12 +818,13 @@ void mnMapsRenderStagePreviewWallpaper(s32 gobj)
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
+
 	lbCommonClearExternSpriteParams();
 	lbCommonDrawSObjAttr(gobj);
 }
 
 // 0x80132D2C
-GObj* mnMapsCreateStagePreviewWallpaper(s32 gkind)
+GObj* mnMapsMakePreviewWallpaper(s32 gkind)
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -956,13 +957,15 @@ void mnMapsCreateStageGeos(s32 gkind, MPGroundData* stage_info, s32 heap_id)
 		for (next_dobj = stage_dobj = DObjGetStruct(stage_info_array[0]), i = 1; next_dobj != NULL; next_dobj = lbCommonGetTreeDObjNextFromRoot(next_dobj, stage_dobj), i += 1)
 		{
 			if ((i == 0xF) || (i == 0x11))
+			{
 				next_dobj->flags = DOBJ_FLAG_HIDDEN;
+			}
 		}
 	}
 }
 
 // 0x801332DC
-void mnMapsDestroyStagePreview(s32 heap_id)
+void mnMapsDestroyPreview(s32 heap_id)
 {
 	s32 i;
 
@@ -973,7 +976,6 @@ void mnMapsDestroyStagePreview(s32 heap_id)
 			gcEjectGObj(sMNMapsHeap0WallpaperGObj);
 			sMNMapsHeap0WallpaperGObj = NULL;
 		}
-
 		for (i = 0; i < ARRAY_COUNT(sMNMapsHeap0StageInfoArray); i++)
 		{
 			if (sMNMapsHeap0StageInfoArray[i] != NULL)
@@ -990,7 +992,6 @@ void mnMapsDestroyStagePreview(s32 heap_id)
 			gcEjectGObj(sMNMapsHeap1WallpaperGObj);
 			sMNMapsHeap1WallpaperGObj = NULL;
 		}
-
 		for (i = 0; i < ARRAY_COUNT(sMNMapsHeap1StageInfoArray); i++)
 		{
 			if (sMNMapsHeap1StageInfoArray[i] != NULL)
@@ -1003,93 +1004,198 @@ void mnMapsDestroyStagePreview(s32 heap_id)
 }
 
 // 0x801333B4
-void mnMapsCreateStagePreview(s32 gkind)
+void mnMapsMakePreview(s32 gkind)
 {
 	if (gkind != 0xDE)
 	{
 		if (sMNMapsHeapID == 0)
-			mnMapsLoadStageFile(gkind, sMNMapsModelHeap1);
-		else
-			mnMapsLoadStageFile(gkind, sMNMapsModelHeap0);
+		{
+			mnMapsLoadMapFile(gkind, sMNMapsModelHeap1);
+		}
+		else mnMapsLoadMapFile(gkind, sMNMapsModelHeap0);
 	}
-
 	if (sMNMapsHeapID == 0)
-		sMNMapsHeap1WallpaperGObj = mnMapsCreateStagePreviewWallpaper(gkind);
-	else
-		sMNMapsHeap0WallpaperGObj = mnMapsCreateStagePreviewWallpaper(gkind);
+	{
+		sMNMapsHeap1WallpaperGObj = mnMapsMakePreviewWallpaper(gkind);
+	}
+	else sMNMapsHeap0WallpaperGObj = mnMapsMakePreviewWallpaper(gkind);
 
 	if (gkind != 0xDE)
 	{
 		mnMapsCreateStageGeos(gkind, sMNMapsGroundInfo, sMNMapsHeapID);
-		mnMapsPositionStagePreviewCamera(sMNMapsPreviewCObj, gkind);
+		mnMapsSetPreviewCameraPosition(sMNMapsPreviewCObj, gkind);
 	}
-
-	mnMapsDestroyStagePreview(sMNMapsHeapID);
+	mnMapsDestroyPreview(sMNMapsHeapID);
 
 	sMNMapsHeapID = (sMNMapsHeapID == 0) ? 1 : 0;
 }
 
 // 0x801334AC
-void mnMapsMakeWallpaperViewport()
+void mnMapsMakeWallpaperCamera(void)
 {
-	GObj *camera_gobj = gcMakeCameraGObj(0x1, NULL, 0x1, 0x80000000U, lbCommonDrawSprite, 0x50, 0x00000001, -1, 0, 1, 0, 1, 0);
-	CObj *cobj = CObjGetStruct(camera_gobj);
+	GObj *gobj = gcMakeCameraGObj
+	(
+		1,
+		NULL,
+		1,
+		GOBJ_PRIORITY_DEFAULT,
+		lbCommonDrawSprite,
+		80,
+		COBJ_MASK_DLLINK(0),
+		~0,
+		FALSE,
+		nGCProcessKindFunc,
+		NULL,
+		1,
+		FALSE
+	);
+	CObj *cobj = CObjGetStruct(gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x8013354C
-void mnMapsMakePlaqueViewport()
+void mnMapsMakePlaqueViewport(void)
 {
-	GObj *camera_gobj = gcMakeCameraGObj(0x1, NULL, 0x1, 0x80000000U, lbCommonDrawSprite, 0x28, 0x00000040, -1, 0, 1, 0, 1, 0);
-	CObj *cobj = CObjGetStruct(camera_gobj);
+	GObj *gobj = gcMakeCameraGObj
+	(
+		1,
+		NULL,
+		1,
+		GOBJ_PRIORITY_DEFAULT,
+		lbCommonDrawSprite,
+		40,
+		COBJ_MASK_DLLINK(6),
+		~0,
+		FALSE,
+		nGCProcessKindFunc,
+		NULL,
+		1,
+		FALSE
+	);
+	CObj *cobj = CObjGetStruct(gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x801335EC
-void mnMapsCreateStagePreviewWallpaperViewport()
+void mnMapsMakePreviewWallpaperViewport(void)
 {
-	GObj *camera_gobj = gcMakeCameraGObj(0x1, NULL, 0x1, 0x80000000U, lbCommonDrawSprite, 0x46, 0x00000080, -1, 0, 1, 0, 1, 0);
-	CObj *cobj = CObjGetStruct(camera_gobj);
+	GObj *gobj = gcMakeCameraGObj
+	(
+		1,
+		NULL,
+		1,
+		GOBJ_PRIORITY_DEFAULT,
+		lbCommonDrawSprite,
+		70,
+		COBJ_MASK_DLLINK(7),
+		~0,
+		FALSE,
+		nGCProcessKindFunc,
+		NULL,
+		1,
+		FALSE
+	);
+	CObj *cobj = CObjGetStruct(gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x8013368C
-void mnMapsCreateStageSelectGfxViewport()
+void mnMapsCreateStageSelectGfxViewport(void)
 {
-	GObj *camera_gobj = gcMakeCameraGObj(0x1, NULL, 0x1, 0x80000000U, lbCommonDrawSprite, 0x1E, 0x00000010, -1, 0, 1, 0, 1, 0);
-	CObj *cobj = CObjGetStruct(camera_gobj);
+	GObj *gobj = gcMakeCameraGObj
+	(
+		1,
+		NULL,
+		1,
+		GOBJ_PRIORITY_DEFAULT,
+		lbCommonDrawSprite,
+		30,
+		COBJ_MASK_DLLINK(4),
+		~0,
+		FALSE,
+		nGCProcessKindFunc,
+		NULL,
+		1,
+		FALSE
+	);
+	CObj *cobj = CObjGetStruct(gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x8013372C
-void mnMapsMakeIconsSYRdpViewport()
+void mnMapsMakeIconsCamera(void)
 {
-	GObj *camera_gobj = gcMakeCameraGObj(0x1, NULL, 0x1, 0x80000000U, lbCommonDrawSprite, 0x3C, 0x00000002, -1, 0, 1, 0, 1, 0);
-	CObj *cobj = CObjGetStruct(camera_gobj);
+	GObj *gobj = gcMakeCameraGObj
+	(
+		1,
+		NULL,
+		1,
+		GOBJ_PRIORITY_DEFAULT,
+		lbCommonDrawSprite,
+		60,
+		COBJ_MASK_DLLINK(1),
+		~0,
+		FALSE,
+		nGCProcessKindFunc,
+		NULL,
+		1,
+		FALSE
+	);
+	CObj *cobj = CObjGetStruct(gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x801337CC
-void mnMapsMakeNameAndEmblemViewport()
+void mnMapsMakeNameAndEmblemCamera(void)
 {
-	GObj *camera_gobj = gcMakeCameraGObj(0x1, NULL, 0x1, 0x80000000U, lbCommonDrawSprite, 0x14, 0x00000004, -1, 0, 1, 0, 1, 0);
-	CObj *cobj = CObjGetStruct(camera_gobj);
+	GObj *gobj = gcMakeCameraGObj
+	(
+		1,
+		NULL,
+		1,
+		GOBJ_PRIORITY_DEFAULT,
+		lbCommonDrawSprite,
+		20,
+		COBJ_MASK_DLLINK(2),
+		~0,
+		FALSE,
+		nGCProcessKindFunc,
+		NULL,
+		1,
+		FALSE
+	);
+	CObj *cobj = CObjGetStruct(gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x8013386C
-void mnMapsMakeCursorViewport()
+void mnMapsMakeCursorCamera(void)
 {
-	GObj *camera_gobj = gcMakeCameraGObj(0x1, NULL, 0x1, 0x80000000U, lbCommonDrawSprite, 0x32, 0x00000020, -1, 0, 1, 0, 1, 0);
-	CObj *cobj = CObjGetStruct(camera_gobj);
+	GObj *gobj = gcMakeCameraGObj
+	(
+		1,
+		NULL,
+		1,
+		GOBJ_PRIORITY_DEFAULT,
+		lbCommonDrawSprite,
+		50,
+		COBJ_MASK_DLLINK(5),
+		~0,
+		FALSE,
+		nGCProcessKindFunc,
+		NULL,
+		1,
+		FALSE
+	);
+	CObj *cobj = CObjGetStruct(gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x8013390C
-void mnMapsPositionStagePreviewCamera(CObj* stage_preview_cobj, s32 gkind)
+void mnMapsSetPreviewCameraPosition(CObj *cobj, s32 gkind)
 {
-	Vec3f positions[9] = {
-
+	Vec3f positions[/* */] =
+	{
 		{ 1700.0F, 1800.0F, 0.0F },
 		{ 1600.0F, 1600.0F, 0.0F },
 		{ 1600.0F, 1600.0F, 0.0F },
@@ -1105,21 +1211,21 @@ void mnMapsPositionStagePreviewCamera(CObj* stage_preview_cobj, s32 gkind)
 	{
 		gkind = 0;
 	}
-	stage_preview_cobj->vec.eye.x = -3000.0F;
-	stage_preview_cobj->vec.eye.y = 3000.0F;
-	stage_preview_cobj->vec.eye.z = 9000.0F;
-	stage_preview_cobj->vec.up.x = 0.0F;
-	stage_preview_cobj->vec.up.y = 1.0F;
-	stage_preview_cobj->vec.up.z = 0.0F;
-	stage_preview_cobj->vec.at.x = positions[gkind].x;
-	stage_preview_cobj->vec.at.y = positions[gkind].y;
-	stage_preview_cobj->vec.at.z = positions[gkind].z;
+	cobj->vec.eye.x = -3000.0F;
+	cobj->vec.eye.y = 3000.0F;
+	cobj->vec.eye.z = 9000.0F;
+	cobj->vec.up.x = 0.0F;
+	cobj->vec.up.y = 1.0F;
+	cobj->vec.up.z = 0.0F;
+	cobj->vec.at.x = positions[gkind].x;
+	cobj->vec.at.y = positions[gkind].y;
+	cobj->vec.at.z = positions[gkind].z;
 }
 
 // 0x801339C4
-void mnMapsAdjustStagePreviewY(GObj* stage_preview_cobj_gobj)
+void mnMapsPreviewCameraThreadUpdate(GObj *gobj)
 {
-	CObj* cobj = CObjGetStruct(stage_preview_cobj_gobj);
+	CObj* cobj = CObjGetStruct(gobj);
 	f32 y = cobj->vec.at.y;
 	f32 deg = 0.0F;
 
@@ -1134,11 +1240,26 @@ void mnMapsAdjustStagePreviewY(GObj* stage_preview_cobj_gobj)
 }
 
 // 0x80133A88
-void mnMapsCreateStagePreviewViewport()
+void mnMapsMakePreviewCamera(void)
 {
-	int foo;
-	GObj* stage_preview_cobj_gobj = gcMakeCameraGObj(1U, NULL, 1, 0x80000000U, &func_80017DBC, 0x41, 0x00000008, -1, 1, 0, 0, 1, 0);
-	CObj* cobj = CObjGetStruct(stage_preview_cobj_gobj);
+	s32 unused;
+	GObj *gobj = gcMakeCameraGObj
+	(
+		1,
+		NULL,
+		1,
+		GOBJ_PRIORITY_DEFAULT,
+		func_80017DBC,
+		65,
+		COBJ_MASK_DLLINK(3),
+		~0,
+		TRUE,
+		nGCProcessKindThread,
+		NULL,
+		1,
+		FALSE
+	);
+	CObj *cobj = CObjGetStruct(gobj);
 
 	sMNMapsPreviewCObj = cobj;
 
@@ -1146,17 +1267,19 @@ void mnMapsCreateStagePreviewViewport()
 
 	cobj->projection.persp.far = 16384.0F;
 
-	mnMapsPositionStagePreviewCamera(cobj, mnMapsGetGroundKind(sMNMapsCursorSlotID));
+	mnMapsSetPreviewCameraPosition(cobj, mnMapsGetGroundKind(sMNMapsCursorSlotID));
 
-	gcAddGObjProcess(stage_preview_cobj_gobj, mnMapsAdjustStagePreviewY, 0, 1);
+	gcAddGObjProcess(gobj, mnMapsPreviewCameraThreadUpdate, nGCProcessKindThread, 1);
 }
 
 // 0x80133B78
-void mnMapsSaveSceneData()
+void mnMapsSaveSceneData(void)
 {
-	s32 unused[9] = {
-
-	 	6, 3, 0, 8, 2, 1, 5, 7, 4
+	s32 unused[/* */] =
+	{
+		nGRKindPupupu, 	nGRKindZebes,	nGRKindCastle,
+		nGRKindInishie,	nGRKindJungle, 	nGRKindSector,
+		nGRKindYoster, 	nGRKindYamabuki,nGRKindHyrule
 	};
 	s32 gkind;
 
@@ -1165,22 +1288,25 @@ void mnMapsSaveSceneData()
 		do
 		{
 			gkind = syUtilsGetRandomTimeUCharRange(9);
-		} while (mnMapsCheckLocked(gkind) || gkind == gSCManagerSceneData.gkind);
+		}
+		while ((mnMapsCheckLocked(gkind) != FALSE) || (gkind == gSCManagerSceneData.gkind));
 
 		gSCManagerSceneData.gkind = gkind;
 	}
-	else
-		gSCManagerSceneData.gkind = mnMapsGetGroundKind(sMNMapsCursorSlotID);
+	else gSCManagerSceneData.gkind = mnMapsGetGroundKind(sMNMapsCursorSlotID);
 
 	if (sMNMapsIsTrainingMode == FALSE)
-		gSCManagerSceneData.stages_vsmode_gkind = mnMapsGetGroundKind(sMNMapsCursorSlotID);
-
+	{
+		gSCManagerSceneData.maps_vsmode_gkind = mnMapsGetGroundKind(sMNMapsCursorSlotID);
+	}
 	if (sMNMapsIsTrainingMode == TRUE)
-		gSCManagerSceneData.stages_training_gkind = mnMapsGetGroundKind(sMNMapsCursorSlotID);
+	{
+		gSCManagerSceneData.maps_training_gkind = mnMapsGetGroundKind(sMNMapsCursorSlotID);
+	}
 }
 
 // 0x80133C6C
-void mnMapsLoadSceneData()
+void mnMapsInitVars(void)
 {
 	s32 i;
 
@@ -1193,19 +1319,18 @@ void mnMapsLoadSceneData()
 		sMNMapsHeap0StageInfoArray[i] = NULL;
 		sMNMapsHeap1StageInfoArray[i] = NULL;
 	}
-
 	switch (gSCManagerSceneData.scene_prev)
 	{
-		case 0x12:
-			sMNMapsIsTrainingMode = TRUE;
-			sMNMapsCursorSlotID = mnMapsGetSlotID(gSCManagerSceneData.stages_training_gkind);
-			break;
-		case nSCKindVSPlayers:
-			sMNMapsIsTrainingMode = FALSE;
-			sMNMapsCursorSlotID = mnMapsGetSlotID(gSCManagerSceneData.stages_vsmode_gkind);
-			break;
+	case nSCKind1PTrainingPlayers:
+		sMNMapsIsTrainingMode = TRUE;
+		sMNMapsCursorSlotID = mnMapsGetSlotID(gSCManagerSceneData.maps_training_gkind);
+		break;
+		
+	case nSCKindVSPlayers:
+		sMNMapsIsTrainingMode = FALSE;
+		sMNMapsCursorSlotID = mnMapsGetSlotID(gSCManagerSceneData.maps_vsmode_gkind);
+		break;
 	}
-
 	sMNMapsUnlockedMask = gSCManagerBackupData.unlock_mask;
 	sMNMapsHeapID = 1;
 	sMNMapsTotalTimeTics = 0;
@@ -1213,19 +1338,19 @@ void mnMapsLoadSceneData()
 }
 
 // 0x80133D60
-void mnMapsSaveSceneData2()
+void mnMapsSaveSceneData2(void)
 {
 	mnMapsSaveSceneData();
 }
 
 // 0x80133D80
-void mnMapsHandleButtonPresses(s32 arg0)
+void mnMapsFuncRun(GObj *gobj)
 {
 	s32 unused;
 	s32 stick_input;
 	s32 button_input;
 
-	sMNMapsTotalTimeTics += 1;
+	sMNMapsTotalTimeTics++;
 
 	if (sMNMapsTotalTimeTics >= 10)
 	{
@@ -1238,18 +1363,20 @@ void mnMapsHandleButtonPresses(s32 arg0)
 			syTaskmanSetLoadScene();
 			return;
 		}
-
 		if (scSubsysControllerCheckNoInputAll() == FALSE)
+		{
 			sMNMapsMaxTotalTimeTics = sMNMapsTotalTimeTics + I_MIN_TO_TICS(5);
-
+		}
 		if (sMNMapsScrollWait != 0)
-			sMNMapsScrollWait -= 1;
-
-		if (
-			(scSubsysControllerGetPlayerStickInRangeLR(-0x14, 0x14))
-			&& (scSubsysControllerGetPlayerStickInRangeUD(-0x14, 0x14))
-			&& (scSubsysControllerGetPlayerHoldButtons(U_JPAD | R_JPAD | R_TRIG | U_CBUTTONS | R_CBUTTONS) == FALSE)
-			&& (scSubsysControllerGetPlayerHoldButtons(D_JPAD | L_JPAD | L_TRIG | D_CBUTTONS | L_CBUTTONS) == FALSE)
+		{
+			sMNMapsScrollWait--;
+		}
+		if
+		(
+			(scSubsysControllerGetPlayerStickInRangeLR(-20, 20)) &&
+			(scSubsysControllerGetPlayerStickInRangeUD(-20, 20)) &&
+			(scSubsysControllerGetPlayerHoldButtons(U_JPAD | R_JPAD | R_TRIG | U_CBUTTONS | R_CBUTTONS) == FALSE) && 
+			(scSubsysControllerGetPlayerHoldButtons(D_JPAD | L_JPAD | L_TRIG | D_CBUTTONS | L_CBUTTONS) == FALSE)
 		)
 		{
 			sMNMapsScrollWait = 0;
@@ -1270,10 +1397,8 @@ void mnMapsHandleButtonPresses(s32 arg0)
 				gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 				gSCManagerSceneData.scene_curr = nSCKindVSBattle;
 			}
-
 			syTaskmanSetLoadScene();
 		}
-
 		if (scSubsysControllerGetPlayerTapButtons(B_BUTTON))
 		{
 			mnMapsSaveSceneData2();
@@ -1281,22 +1406,20 @@ void mnMapsHandleButtonPresses(s32 arg0)
 			if (sMNMapsIsTrainingMode == TRUE)
 			{
 				gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
-				gSCManagerSceneData.scene_curr = nSCKind1PTrainingModePlayers;
+				gSCManagerSceneData.scene_curr = nSCKind1PTrainingPlayers;
 			}
 			else
 			{
 				gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 				gSCManagerSceneData.scene_curr = nSCKindVSPlayers;
 			}
-
 			syTaskmanSetLoadScene();
 		}
-
 		if (sMNMapsScrollWait == 0)
 		{
 			button_input = scSubsysControllerGetPlayerHoldButtons(U_JPAD | U_CBUTTONS);
 
-			if ((button_input) || (stick_input = scSubsysControllerGetPlayerStickUD(0x14, 1), (stick_input != 0)))
+			if ((button_input != 0) || (stick_input = scSubsysControllerGetPlayerStickUD(20, 1), (stick_input != 0)))
 			{
 				if ((sMNMapsCursorSlotID >= 5) && (mnMapsCheckLocked(mnMapsGetGroundKind(sMNMapsCursorSlotID - 5)) == FALSE))
 				{
@@ -1306,20 +1429,20 @@ void mnMapsHandleButtonPresses(s32 arg0)
 
 					mnMapsMakeNameAndEmblem(sMNMapsCursorSlotID);
 					mnMapsSetCursorPosition(sMNMapsCursorGObj, sMNMapsCursorSlotID);
-					mnMapsCreateStagePreview(mnMapsGetGroundKind(sMNMapsCursorSlotID));
+					mnMapsMakePreview(mnMapsGetGroundKind(sMNMapsCursorSlotID));
 				}
 
-				if (button_input)
+				if (button_input != 0)
+				{
 					sMNMapsScrollWait = 12;
-				else
-					sMNMapsScrollWait = (0xA0 - stick_input) / 7;
+				}
+				else sMNMapsScrollWait = (160 - stick_input) / 7;
 
 				return;
 			}
-
 			button_input = scSubsysControllerGetPlayerHoldButtons(D_JPAD | D_CBUTTONS);
 
-			if ((button_input) || (stick_input = scSubsysControllerGetPlayerStickUD(-0x14, 0), (stick_input != 0)))
+			if ((button_input != 0) || (stick_input = scSubsysControllerGetPlayerStickUD(-20, 0), (stick_input != 0)))
 			{
 				if ((sMNMapsCursorSlotID < 5) && (mnMapsCheckLocked(mnMapsGetGroundKind(sMNMapsCursorSlotID + 5)) == FALSE))
 				{
@@ -1329,73 +1452,78 @@ void mnMapsHandleButtonPresses(s32 arg0)
 
 					mnMapsMakeNameAndEmblem(sMNMapsCursorSlotID);
 					mnMapsSetCursorPosition(sMNMapsCursorGObj, sMNMapsCursorSlotID);
-					mnMapsCreateStagePreview(mnMapsGetGroundKind(sMNMapsCursorSlotID));
+					mnMapsMakePreview(mnMapsGetGroundKind(sMNMapsCursorSlotID));
 				}
-
-				if (button_input)
-					sMNMapsScrollWait = 12;
-				else
-					sMNMapsScrollWait = (stick_input + 0xA0) / 7;
-				return;
-			}
-
-			button_input = scSubsysControllerGetPlayerHoldButtons(L_JPAD | L_TRIG | L_CBUTTONS);
-
-			if ((button_input) || (stick_input = scSubsysControllerGetPlayerStickLR(-0x14, 0), (stick_input)))
-			{
-				switch (sMNMapsCursorSlotID)
-				{
-					case 0:
-						sMNMapsCursorSlotID = (mnMapsCheckLocked(mnMapsGetGroundKind(4))) ? 3 : 4;
-						break;
-					case 5:
-						sMNMapsCursorSlotID = 9;
-						break;
-					default:
-						sMNMapsCursorSlotID -= 1;
-				}
-
-				func_800269C0_275C0(nSYAudioFGMMenuScroll2);
-				mnMapsMakeNameAndEmblem(sMNMapsCursorSlotID);
-				mnMapsSetCursorPosition(sMNMapsCursorGObj, sMNMapsCursorSlotID);
-				mnMapsCreateStagePreview(mnMapsGetGroundKind(sMNMapsCursorSlotID));
-
-				if (button_input)
-					sMNMapsScrollWait = 12;
-				else
-					sMNMapsScrollWait = (stick_input + 0xA0) / 7;
-
-				return;
-			}
-
-			button_input = scSubsysControllerGetPlayerHoldButtons(R_JPAD | R_TRIG | R_CBUTTONS);
-
-			if ((button_input) || (stick_input = scSubsysControllerGetPlayerStickLR(0x14, 1), (stick_input)))
-			{
-				switch (sMNMapsCursorSlotID)
-				{
-					case 3:
-						sMNMapsCursorSlotID = (mnMapsCheckLocked(mnMapsGetGroundKind(4))) ? 0 : 4;
-						break;
-					case 4:
-						sMNMapsCursorSlotID = 0;
-						break;
-					case 9:
-						sMNMapsCursorSlotID = 5;
-						break;
-					default:
-						sMNMapsCursorSlotID += 1;
-				}
-
-				func_800269C0_275C0(nSYAudioFGMMenuScroll2);
-				mnMapsMakeNameAndEmblem(sMNMapsCursorSlotID);
-				mnMapsSetCursorPosition(sMNMapsCursorGObj, sMNMapsCursorSlotID);
-				mnMapsCreateStagePreview(mnMapsGetGroundKind(sMNMapsCursorSlotID));
 
 				if (button_input != 0)
+				{
 					sMNMapsScrollWait = 12;
-				else
-					sMNMapsScrollWait = (0xA0 - stick_input) / 7;
+				}
+				else sMNMapsScrollWait = (stick_input + 160) / 7;
+
+				return;
+			}
+			button_input = scSubsysControllerGetPlayerHoldButtons(L_JPAD | L_TRIG | L_CBUTTONS);
+
+			if ((button_input != 0) || (stick_input = scSubsysControllerGetPlayerStickLR(-20, 0), (stick_input)))
+			{
+				switch (sMNMapsCursorSlotID)
+				{
+				case 0:
+					sMNMapsCursorSlotID = (mnMapsCheckLocked(mnMapsGetGroundKind(4))) ? 3 : 4;
+					break;
+
+				case 5:
+					sMNMapsCursorSlotID = 9;
+					break;
+					
+				default:
+					sMNMapsCursorSlotID--;
+				}
+				func_800269C0_275C0(nSYAudioFGMMenuScroll2);
+				mnMapsMakeNameAndEmblem(sMNMapsCursorSlotID);
+				mnMapsSetCursorPosition(sMNMapsCursorGObj, sMNMapsCursorSlotID);
+				mnMapsMakePreview(mnMapsGetGroundKind(sMNMapsCursorSlotID));
+
+				if (button_input != 0)
+				{
+					sMNMapsScrollWait = 12;
+				}
+				else sMNMapsScrollWait = (stick_input + 160) / 7;
+
+				return;
+			}
+			button_input = scSubsysControllerGetPlayerHoldButtons(R_JPAD | R_TRIG | R_CBUTTONS);
+
+			if ((button_input != 0) || (stick_input = scSubsysControllerGetPlayerStickLR(20, 1), (stick_input)))
+			{
+				switch (sMNMapsCursorSlotID)
+				{
+				case 3:
+					sMNMapsCursorSlotID = (mnMapsCheckLocked(mnMapsGetGroundKind(4))) ? 0 : 4;
+					break;
+					
+				case 4:
+					sMNMapsCursorSlotID = 0;
+					break;
+					
+				case 9:
+					sMNMapsCursorSlotID = 5;
+					break;
+					
+				default:
+					sMNMapsCursorSlotID++;
+				}
+				func_800269C0_275C0(nSYAudioFGMMenuScroll2);
+				mnMapsMakeNameAndEmblem(sMNMapsCursorSlotID);
+				mnMapsSetCursorPosition(sMNMapsCursorGObj, sMNMapsCursorSlotID);
+				mnMapsMakePreview(mnMapsGetGroundKind(sMNMapsCursorSlotID));
+
+				if (button_input != 0)
+				{
+					sMNMapsScrollWait = 12;
+				}
+				else sMNMapsScrollWait = (160 - stick_input) / 7;
 			}
 		}
 	}
@@ -1435,24 +1563,24 @@ void mnMapsFuncStart(void)
 	);
 	mnMapsAllocModelHeaps();
 
-	gcMakeGObjSPAfter(0, mnMapsHandleButtonPresses, 0, GOBJ_PRIORITY_DEFAULT);
+	gcMakeGObjSPAfter(0, mnMapsFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(1, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
-	mnMapsLoadSceneData();
-	mnMapsMakeWallpaperViewport();
+	mnMapsInitVars();
+	mnMapsMakeWallpaperCamera();
 	mnMapsCreateStageSelectGfxViewport();
-	mnMapsMakeIconsSYRdpViewport();
-	mnMapsMakeNameAndEmblemViewport();
-	mnMapsMakeCursorViewport();
-	mnMapsCreateStagePreviewViewport();
+	mnMapsMakeIconsCamera();
+	mnMapsMakeNameAndEmblemCamera();
+	mnMapsMakeCursorCamera();
+	mnMapsMakePreviewCamera();
 	mnMapsMakePlaqueViewport();
-	mnMapsCreateStagePreviewWallpaperViewport();
+	mnMapsMakePreviewWallpaperViewport();
 	mnMapsMakeWallpaper();
 	mnMapsMakePlaque();
 	mnMapsCreateStageSelectGfx();
 	mnMapsMakeIcons();
 	mnMapsMakeNameAndEmblem(sMNMapsCursorSlotID);
 	mnMapsMakeCursor();
-	mnMapsCreateStagePreview(mnMapsGetGroundKind(sMNMapsCursorSlotID));
+	mnMapsMakePreview(mnMapsGetGroundKind(sMNMapsCursorSlotID));
 }
 
 // 0x8013490C

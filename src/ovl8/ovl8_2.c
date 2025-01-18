@@ -24,7 +24,7 @@ void func_ovl8_803717C0(dbUnknownLinkStruct* arg0)
 void* func_ovl8_803717E0(dbUnknownLinkStruct* arg0)
 {
 	void* temp_v0;
-	
+
 	if ((arg0 != NULL) || (temp_v0 = func_ovl8_803717A0(0x5C), arg0 = temp_v0, (temp_v0 != NULL)))
 	{
 		arg0->db_func = &D_ovl8_80388980;
@@ -71,7 +71,13 @@ void func_ovl8_803718C4(dbUnknownLinkStruct* arg0, s32 arg1)
 	}
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_2/func_ovl8_803718FC.s")
+// 0x803718FC
+void func_ovl8_803718FC(dbUnknownLinkStruct* arg0)
+{
+	dbFunction *temp_v0 = arg0->db_func;
+	arg0->unk_dbunkstruct_0x20 = 1;
+	temp_v0[4].unk_dbfunc_0x4(temp_v0[4].unk_dbfunc_0x0 + (uintptr_t)arg0);
+}
 
 void func_ovl8_80371930(dbUnknownLinkStruct* arg0)
 {
@@ -88,7 +94,7 @@ void func_ovl8_80371970(s32 arg0) {}
 
 void func_ovl8_80371978(s32 arg0) {}
 
-void func_ovl8_80371980(dbUnknown16* arg0, dbUnknown16* arg1) 
+void func_ovl8_80371980(dbUnknown16* arg0, dbUnknown16* arg1)
 {
 	arg1->unk_dbunk16_0x0 -= arg0->unk_dbunk16_0x2;
 	arg1->unk_dbunk16_0x2 -= arg0->unk_dbunk16_0x4;
@@ -100,13 +106,13 @@ void func_ovl8_803719A4(dbUnknown16* arg0, dbUnknown16* arg1)
 	arg1->unk_dbunk16_0x2 += arg0->unk_dbunk16_0x4;
 }
 
-void func_ovl8_803719C8(dbUnknownLinkStruct* arg0, s32 arg1) 
+void func_ovl8_803719C8(dbUnknownLinkStruct* arg0, s32 arg1)
 {
 	dbFunction *temp_v0 = arg0->db_func;
-	
+
 	temp_v0[15].unk_dbfunc_0x4(temp_v0[15].unk_dbfunc_0x0 + (u32)arg0, arg1);
-	
-	if (arg0->unk_dbunkstruct_0x4C != 0) 
+
+	if (arg0->unk_dbunkstruct_0x4C != 0)
 	{
 		temp_v0 = arg0->db_func;
 		temp_v0[8].unk_dbfunc_0x4(temp_v0[8].unk_dbfunc_0x0 + (u32)arg0, arg1);
@@ -118,15 +124,15 @@ void func_ovl8_80371A2C(dbUnknownLinkStruct* arg0)
 	dbFunction *temp_v0;
 
 	func_ovl8_80371E58();
-	
+
 	temp_v0 = arg0->db_func;
-	
+
 	if (temp_v0[36].unk_dbfunc_0x4(temp_v0[36].unk_dbfunc_0x0 + (u32)arg0))
 	{
 		temp_v0 = arg0->db_func;
 		temp_v0[24].unk_dbfunc_0x4(temp_v0[24].unk_dbfunc_0x0 + (u32)arg0);
 	}
-	if (arg0->unk_dbunkstruct_0x1C) 
+	if (arg0->unk_dbunkstruct_0x1C)
 	{
 		temp_v0 = arg0->db_func;
 		temp_v0[12].unk_dbfunc_0x4(temp_v0[12].unk_dbfunc_0x0 + (u32)arg0);
@@ -145,7 +151,7 @@ void func_ovl8_80371ACC(s32 arg0, s32 arg1) {}
 void func_ovl8_80371AD8(dbUnknownLinkStruct* arg0, s32 arg1)
 {
 	dbFunction *temp_v0;
-	
+
 	if (arg0->unk_dbunkstruct_0x4C != NULL)
 	{
 		temp_v0 = arg0->unk_dbunkstruct_0x4C->unk_dbunkstruct_0x20->db_func;
@@ -171,25 +177,25 @@ void func_ovl8_80371B98(void *arg0, db4Bytes *arg1)
 	func_ovl8_80377168(*arg1, (u32)arg0 + 2);
 }
 
-sb32 func_ovl8_80371BCC(dbUnknownLinkStruct* arg0, s32 arg1) 
+sb32 func_ovl8_80371BCC(dbUnknownLinkStruct* arg0, s32 arg1)
 {
-	if ((arg0->unk_dbunkstruct_0x1C == NULL) || (arg0->unk_dbunkstruct_0x20 == NULL)) 
+	if ((arg0->unk_dbunkstruct_0x1C == NULL) || (arg0->unk_dbunkstruct_0x20 == NULL))
 		return FALSE;
 
 	return arg0->db_func[19].unk_dbfunc_0x4(arg0->db_func[19].unk_dbfunc_0x0 + (u32)arg0, arg1, arg0);
 }
 
-sb32 func_ovl8_80371C1C(s32 arg0, s32 arg1) 
+sb32 func_ovl8_80371C1C(s32 arg0, s32 arg1)
 {
 	return FALSE;
 }
 
-void func_ovl8_80371C2C(dbUnknownLinkStruct* arg0, dbBytesContainer *arg1) 
+void func_ovl8_80371C2C(dbUnknownLinkStruct* arg0, dbBytesContainer *arg1)
 {
 	arg1->unk_dbbytescont_0x0 = arg0->unk_dbunkstruct_0x2;
 }
 
-void func_ovl8_80371C50(dbUnknownLinkStruct* arg0, dbBytesContainer *arg1) 
+void func_ovl8_80371C50(dbUnknownLinkStruct* arg0, dbBytesContainer *arg1)
 {
 	arg1->unk_dbbytescont_0x0 = arg0->unk_dbunkstruct_0x2;
 
@@ -204,12 +210,12 @@ void func_ovl8_80371C8C(dbUnknownLinkStruct *arg0, dbBytesContainer *arg1)
 }
 
 sb32 func_ovl8_80371CB8(dbUnknownLinkStruct* arg0)
-{    
-	if (arg0->unk_dbunkstruct_0x4C != NULL) 
+{
+	if (arg0->unk_dbunkstruct_0x4C != NULL)
 	{
 		dbFunction *db_func = arg0->unk_dbunkstruct_0x4C->unk_dbunkstruct_0x20->db_func;
 		dbUnknownLinkStruct *temp_v1 = arg0->unk_dbunkstruct_0x4C->unk_dbunkstruct_0x20;
-		
+
 		return db_func[23].unk_dbfunc_0x4(db_func[23].unk_dbfunc_0x0 + (u32)temp_v1);
 	}
 	else
@@ -218,8 +224,8 @@ sb32 func_ovl8_80371CB8(dbUnknownLinkStruct* arg0)
 
 void func_ovl8_80371D00(s32 arg0) {}
 
-void func_ovl8_80371D08(dbUnknownLinkStruct* arg0, s16 arg1, s16 arg2) 
-{    
+void func_ovl8_80371D08(dbUnknownLinkStruct* arg0, s16 arg1, s16 arg2)
+{
 	// Whitespace regswap memes
 	arg0->unk_dbunkstruct_0x2.arr[0] += arg1, arg0->unk_dbunkstruct_0x2.arr[1] += arg2;
 	arg0->db_func[26].unk_dbfunc_0x4(arg0->db_func[26].unk_dbfunc_0x0 + (u32)arg0);
@@ -276,12 +282,12 @@ void func_ovl8_80371E24(s32* arg0, s32 arg1)
 	arg0[0x54/4] = arg1;
 }
 
-void func_ovl8_80371E2C(dbUnknownLinkStruct* arg0) 
+void func_ovl8_80371E2C(dbUnknownLinkStruct* arg0)
 {
 	arg0->db_func[37].unk_dbfunc_0x4(arg0->db_func[37].unk_dbfunc_0x0 + (u32)arg0);
 }
 
-void func_ovl8_80371E58(dbUnknownLinkStruct* arg0) 
+void func_ovl8_80371E58(dbUnknownLinkStruct* arg0)
 {
 	if (arg0->unk_dbunkstruct_0x54 != NULL)
 		arg0->unk_dbunkstruct_0x54();
@@ -289,7 +295,7 @@ void func_ovl8_80371E58(dbUnknownLinkStruct* arg0)
 	arg0->db_func[38].unk_dbfunc_0x4(arg0->db_func[38].unk_dbfunc_0x0 + (u32)arg0, arg0);
 }
 
-void func_ovl8_80371EA0(dbUnknownLinkStruct* arg0) 
+void func_ovl8_80371EA0(dbUnknownLinkStruct* arg0)
 {
 	arg0->unk_dbunkstruct_0x48 = arg0->unk_dbunkstruct_0x4C = NULL;
 	arg0->unk_dbunkstruct_0xC = 'PANE';

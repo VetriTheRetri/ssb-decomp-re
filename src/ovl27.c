@@ -25,7 +25,7 @@ extern intptr_t FILE_013_XBOX_IMAGE_OFFSET; // file 0x013 image offset
 extern intptr_t FILE_013_WHITE_SQUARE; // white square
 extern intptr_t FILE_013_PORTRAIT_QUESTION_MARK_IMAGE_OFFSET; // file 0x013 image offset for portrait question mark image
 extern intptr_t FILE_013_PORTRAIT_FIRE_BG_IMAGE_OFFSET; // file 0x013 image offset for portrait bg (fire) image
-extern intptr_t FILE_015_BACKGROUND_IMAGE_OFFSET; // file 0x015 image offset for background tile
+extern intptr_t lMNSelectCommonWallpaperSprite; // file 0x015 image offset for background tile
 extern intptr_t FILE_016_WHITE_CIRCLE_OFFSET_1; // AObj? for white circle
 extern intptr_t FILE_016_WHITE_CIRCLE_OFFSET_2; // DObjDesc for white circle
 extern intptr_t FILE_017_1_PLAYER_GAME_TITLE_IMAGE_OFFSET;
@@ -946,7 +946,7 @@ void mn1PCreateBackground()
 
 	background_gobj = gcMakeGObjSPAfter(0U, NULL, 0x11U, 0x80000000U);
 	gcAddGObjDisplay(background_gobj, lbCommonDrawSObjAttr, 0x1AU, GOBJ_PRIORITY_DEFAULT, ~0);
-	background_sobj = lbCommonMakeSObjForGObj(background_gobj, lbRelocGetFileData(void*, gMN1PFiles[2], &FILE_015_BACKGROUND_IMAGE_OFFSET));
+	background_sobj = lbCommonMakeSObjForGObj(background_gobj, lbRelocGetFileData(void*, gMN1PFiles[2], &lMNSelectCommonWallpaperSprite));
 	background_sobj->cms = G_TX_WRAP;
 	background_sobj->cmt = G_TX_WRAP;
 	background_sobj->masks = 6;

@@ -528,7 +528,7 @@ void grInishieMakePowerBlock(void)
         gGRCommonStruct.inishie.pblock_pos_ids[i] = pos_ids[i];
     }
     gGRCommonStruct.inishie.pblock_status = nGRInishiePowerBlockStatusWait;
-    gGRCommonStruct.inishie.attack_coll = (GRAttackColl*) (((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRCommonHeaderStart) + (intptr_t)&lGRInishiePowerBlockHit);
+    gGRCommonStruct.inishie.attack_coll = (GRAttackColl*) (((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRCommonMapHeaderStart) + (intptr_t)&lGRInishiePowerBlockHit);
 }
 
 // 0x80109B4C
@@ -564,7 +564,7 @@ sb32 grInishiePowerBlockCheckGetDamageKind(GObj *item_gobj, GObj *fighter_gobj, 
 void grInishieInitHeaders(void)
 {
     gGRCommonStruct.inishie.map_head = (void*) ((uintptr_t)gMPCollisionGroundData->map_nodes - (intptr_t)&lGRInishieMapHead);
-    gGRCommonStruct.inishie.item_head = (void*) ((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRCommonHeaderStart);
+    gGRCommonStruct.inishie.item_head = (void*) ((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRCommonMapHeaderStart);
 }
 
 // 0x80109C0C

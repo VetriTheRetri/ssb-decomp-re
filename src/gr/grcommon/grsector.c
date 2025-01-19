@@ -1111,7 +1111,7 @@ void grSectorInitAll(void)
     gcAddDObjAnimJoint(gGRCommonStruct.sector.map_dobjs[10], lbRelocGetFileData(AObjEvent32*, map_file, &D_NF_00002E74), 0.0F);
     gcPlayAnimAll(map_gobj);
     mpCollisionSetYakumonoOffID(1);
-    gGRCommonStruct.sector.weapon_head = (void*) ((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRCommonHeaderStart);
+    gGRCommonStruct.sector.weapon_head = (void*) ((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRCommonMapHeaderStart);
 }
 
 // 0x80107FCC

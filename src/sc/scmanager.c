@@ -14,7 +14,6 @@
 
 extern void mnVSModeStartScene();
 extern void mnVSPlayersStartScene();
-extern void mnMapsStartScene();
 extern void mnVSResultsStartScene();
 extern void mn1PGamePlayersStartScene();
 extern void mn1PTrainingPlayersStartScene();

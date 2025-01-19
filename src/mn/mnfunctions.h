@@ -7,6 +7,8 @@
 #include <mn/mnvsmode/mnvsitemswitch.h>
 #include <mn/mnvsmode/mnvsmode.h>
 
+#include <mn/mnmaps/mnmaps.h>
+
 #include <mn/mncommon/mntitle.h>
 #include <mn/mncommon/mnnocontroller.h>
 #include <mn/mncommon/mnunusedfighters.h>

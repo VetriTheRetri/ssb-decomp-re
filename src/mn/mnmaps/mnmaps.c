@@ -1,42 +1,13 @@
 #include <mn/menu.h>
+#include <ft/fighter.h>
 #include <gr/ground.h>
-#include <gm/gmsound.h> // temporary, until this finds a proper place
+// #include <gm/gmsound.h> // temporary, until this finds a proper place (included from fighter.h)
 #include <sc/scene.h>
 #include <sys/video.h>
 #include <sys/controller.h>
 
-// Externs
-
-// Offsets
-extern intptr_t FILE_015_BACKGROUND_IMAGE_OFFSET; // file 0x015 image offset for background tile
-extern intptr_t FILE_01A_TRAINING_BACKGROUND_IMAGE_OFFSET; // also file 0x1B and 0x1C
-extern intptr_t FILE_01E_CURSOR_IMAGE_OFFSET; // file 0x1E image offset for cursor
-extern intptr_t FILE_01E_SMASH_LOGO_IMAGE_OFFSET; // file 0x1E image offset for Smash logo
-extern intptr_t FILE_01E_STAGE_SELECT_IMAGE_OFFSET; // file 0x1E image offset for wooden circle
-extern intptr_t FILE_01E_WOODEN_CIRCLE_IMAGE_OFFSET; // file 0x1E image offset for wooden circle
-extern intptr_t FILE_01E_YELLOW_OVAL_RIGHT_IMAGE_OFFSET; // file 0x1E image offset for yellow oval right edge
-extern intptr_t FILE_01E_YELLOW_OVAL_CENTER_IMAGE_OFFSET; // file 0x1E image offset for yellow oval center
-extern intptr_t FILE_01E_YELLOW_OVAL_LEFT_IMAGE_OFFSET; // file 0x1E image offset for yellow oval left edge
-extern intptr_t FILE_01E_STAGE_PREVIEW_PATTERNED_BG_IMAGE_OFFSET; // file 0x1E image offset for patterned stage preview bg texture
-extern intptr_t FILE_01E_RANDOM_IMAGE_OFFSET; // file 0x1E image offset for Random stage image
-extern intptr_t FILE_01E_RANDOM_STAGE_PREVIEW_BG_IMAGE_OFFSET; // file 0x1E image offset for Random stage image
-
 extern void scManagerFuncDraw();
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
-
-
-
-// Forward declarations
-void mnMapsSetPreviewCameraPosition(CObj* cobj, s32 gkind);
-
-
-// Stuff - where does it go?!?
-typedef struct mnMapsFileInfo
-{
-	/* 0x00 */ u32 id;
-	/* 0x04 */ u32 header_size;
-
-} mnMapsFileInfo;
 
 // // // // // // // // // // // //
 //                               //
@@ -47,21 +18,21 @@ typedef struct mnMapsFileInfo
 // 0x801344D0
 u32 dMNMapsFileIDs[/* */] =
 {
-	0x14, 0x15, 0x1E, 0x21, 0x1A
+	&lFTEmblemSpritesFileID, 0x15, &lMNMapsFileID, &lMNCommonFontsFileID, &lGRWallpaperTrainingBlackFileID
 };
 
 // 0x801344E4
-mnMapsFileInfo dMNMapsFileInfoArray[/* */] =
+GRFileInfo dMNMapsFileInfos[/* */] =
 {
-	{ 0x00000103, 0x00000014 },
-	{ 0x00000106, 0x00000014 },
-	{ 0x00000105, 0x00000014 },
-	{ 0x00000101, 0x00000014 },
-	{ 0x00000109, 0x00000014 },
-	{ 0x00000107, 0x00000014 },
-	{ 0x000000FF, 0x00000014 },
-	{ 0x00000108, 0x00000014 },
-	{ 0x00000104, 0x00000014 }
+	{ &lGRCastleMapFileID, 	&lGRCommonMapHeaderStart },
+	{ &lGRSectorMapFileID, 	&lGRCommonMapHeaderStart },
+	{ &lGRJungleMapFileID, 	&lGRCommonMapHeaderStart },
+	{ &lGRZebesMapFileID, 	&lGRCommonMapHeaderStart },
+	{ &lGRHyruleMapFileID, 	&lGRCommonMapHeaderStart },
+	{ &lGRYosterMapFileID, 	&lGRCommonMapHeaderStart },
+	{ &lGRPupupuMapFileID, 	&lGRCommonMapHeaderStart },
+	{ &lGRYamabukiMapFileID,&lGRCommonMapHeaderStart },
+	{ &lGRInishieMapFileID, &lGRCommonMapHeaderStart }
 };
 
 // 0x8013452C
@@ -73,7 +44,7 @@ intptr_t dMNMapsWallpaperOffsets[/* */] =
 };
 
 // 0x80134550
-LBFileNode dMNMapsTrainingModeFileNodes[/* */] =
+GRFileInfo dMNMapsTrainingModeFileInfos[/* */] =
 {
 	{ &lGRWallpaperTrainingBlackFileID, 0x00000000 },
 	{ &lGRWallpaperTrainingYellowFileID,0xEE9E0600 },
@@ -104,7 +75,7 @@ Gfx dMNMapsDisplayList[/* */] =
 s32 sMNMapsPad0x80134BD0[2];
 
 // 0x80134BD8
-s32 sMNMapsCursorSlotID;
+s32 sMNMapsCursorSlot;
 
 // 0x80134BDC
 GObj *sMNMapsCursorGObj;
@@ -119,13 +90,13 @@ GObj *sMNMapsHeap0WallpaperGObj;
 GObj *sMNMapsHeap1WallpaperGObj;
 
 // 0x80134BF0
-GObj *sMNMapsHeap0StageInfoArray[4];
+GObj *sMNMapsHeap0LayerGObjs[4];
 
 // 0x80134C00
-GObj *sMNMapsHeap1StageInfoArray[4];
+GObj *sMNMapsHeap1LayerGObjs[4];
 
 // 0x80134C10
-MPGroundData* sMNMapsGroundInfo;
+MPGroundData *sMNMapsGroundInfo;
 
 // 0x80134C14;
 CObj *sMNMapsPreviewCObj;
@@ -175,9 +146,9 @@ void mnMapsAllocModelHeaps(void)
 	size_t size, max = 0;
 	s32 i;
 
-	for (i = 0; i < ARRAY_COUNT(dMNMapsFileInfoArray); i++)
+	for (i = 0; i < ARRAY_COUNT(dMNMapsFileInfos); i++)
 	{
-		size = lbRelocGetFileSize(dMNMapsFileInfoArray[i].id);
+		size = lbRelocGetFileSize(dMNMapsFileInfos[i].file_id);
 
 		if (max < size)
 		{
@@ -235,12 +206,12 @@ s32 mnMapsGetCharacterID(const char c)
 }
 
 // 0x80131C5C
-f32 mnMapsGetCharacterSpacing(const char *s, s32 c)
+f32 mnMapsGetCharacterSpacing(const char *str, s32 c)
 {
-	switch (s[c])
+	switch (str[c])
 	{
 	case 'A':
-		switch (s[c + 1])
+		switch (str[c + 1])
 		{
 		case 'F':
 		case 'P':
@@ -258,7 +229,7 @@ f32 mnMapsGetCharacterSpacing(const char *s, s32 c)
 	case 'P':
 	case 'V':
 	case 'Y':
-		switch(s[c + 1])
+		switch(str[c + 1])
 		{
 		case 'A':
 		case 'T':
@@ -271,7 +242,7 @@ f32 mnMapsGetCharacterSpacing(const char *s, s32 c)
 
 	case 'Q':
 	case 'T':
-		switch(s[c + 1])
+		switch(str[c + 1])
 		{
 		case '\'':
 		case '.':
@@ -289,7 +260,7 @@ f32 mnMapsGetCharacterSpacing(const char *s, s32 c)
 		return 1.0F;
 
 	default:
-		switch(s[c + 1])
+		switch(str[c + 1])
 		{
 		case 'T':
 			return 0.0F;
@@ -302,7 +273,7 @@ f32 mnMapsGetCharacterSpacing(const char *s, s32 c)
 }
 
 // 0x80131D80 - Unused?
-void mnMapsDrawString(GObj *gobj, const char *str, f32 x, f32 y, u32 *color)
+void mnMapsMakeString(GObj *gobj, const char *str, f32 x, f32 y, u32 *color)
 {
 	intptr_t chars[/* */] =
 	{
@@ -378,7 +349,7 @@ void mnMapsMakeWallpaper(void)
 	gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_PRIORITY_DEFAULT, ~0);
 	
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[1], &FILE_015_BACKGROUND_IMAGE_OFFSET));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[1], &lMNSelectCommonWallpaperSprite));
 
 	sobj->cms = G_TX_WRAP;
 	sobj->cmt = G_TX_WRAP;
@@ -402,7 +373,7 @@ void mnMapsMakePlaque(void)
 	gobj = gcMakeGObjSPAfter(0, NULL, 8, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 6, GOBJ_PRIORITY_DEFAULT, ~0);
 
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &FILE_01E_WOODEN_CIRCLE_IMAGE_OFFSET));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &lMNMapsPlaqueSprite));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 
@@ -411,7 +382,7 @@ void mnMapsMakePlaque(void)
 }
 
 // 0x801320E0
-void mnMapsRenderStageSelectGfx(GObj* stage_select_gobj)
+void mnMapsLabelsFuncDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
@@ -427,65 +398,57 @@ void mnMapsRenderStageSelectGfx(GObj* stage_select_gobj)
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
 
 	lbCommonClearExternSpriteParams();
-	lbCommonDrawSObjAttr(stage_select_gobj);
+	lbCommonDrawSObjAttr(gobj);
 }
 
 // 0x80132288
-void mnMapsCreateStageSelectGfx(void)
+void mnMapsMakeLabels(void)
 {
-	GObj *stage_select_gobj;
-	SObj *stage_select_sobj;
-	SObj *yellow_oval_left_sobj;
-	SObj *yellow_oval_center_sobj;
-	SObj *yellow_oval_right_sobj;
+	GObj *gobj;
+	SObj *sobj;
 	s32 x;
 
-	stage_select_gobj = gcMakeGObjSPAfter(0, NULL, 6, GOBJ_PRIORITY_DEFAULT);
-	gcAddGObjDisplay(stage_select_gobj, mnMapsRenderStageSelectGfx, 4, GOBJ_PRIORITY_DEFAULT, ~0);
+	gobj = gcMakeGObjSPAfter(0, NULL, 6, GOBJ_PRIORITY_DEFAULT);
+	gcAddGObjDisplay(gobj, mnMapsLabelsFuncDisplay, 4, GOBJ_PRIORITY_DEFAULT, ~0);
 
-	// Stage Select texture
-	stage_select_sobj = lbCommonMakeSObjForGObj(stage_select_gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &FILE_01E_STAGE_SELECT_IMAGE_OFFSET));
-	stage_select_sobj->sprite.attr &= ~SP_FASTCOPY;
-	stage_select_sobj->sprite.attr |= SP_TRANSPARENT;
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &lMNMapsStageSelectSprite));
+	sobj->sprite.attr &= ~SP_FASTCOPY;
+	sobj->sprite.attr |= SP_TRANSPARENT;
 
-	stage_select_sobj->envcolor.r = 0x00;
-	stage_select_sobj->envcolor.g = 0x00;
-	stage_select_sobj->envcolor.b = 0x00;
+	sobj->envcolor.r = 0x00;
+	sobj->envcolor.g = 0x00;
+	sobj->envcolor.b = 0x00;
 
-	stage_select_sobj->sprite.red = 0xAF;
-	stage_select_sobj->sprite.green = 0xB1;
-	stage_select_sobj->sprite.blue = 0xCC;
+	sobj->sprite.red = 0xAF;
+	sobj->sprite.green = 0xB1;
+	sobj->sprite.blue = 0xCC;
 
-	stage_select_sobj->pos.x = 172.0F;
-	stage_select_sobj->pos.y = 122.0F;
+	sobj->pos.x = 172.0F;
+	sobj->pos.y = 122.0F;
 
-	// Yellow oval left edge
-	yellow_oval_left_sobj = lbCommonMakeSObjForGObj(stage_select_gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &FILE_01E_YELLOW_OVAL_LEFT_IMAGE_OFFSET));
-	yellow_oval_left_sobj->sprite.attr &= ~SP_FASTCOPY;
-	yellow_oval_left_sobj->sprite.attr |= SP_TRANSPARENT;
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &lMNMapsTabLeftSprite));
+	sobj->sprite.attr &= ~SP_FASTCOPY;
+	sobj->sprite.attr |= SP_TRANSPARENT;
 
-	yellow_oval_left_sobj->pos.x = 174.0F;
-	yellow_oval_left_sobj->pos.y = 191.0F;
+	sobj->pos.x = 174.0F;
+	sobj->pos.y = 191.0F;
 
-	// Yellow oval middle section
-	for (x = 0xBA; x < 0x106; x += 4)
+	for (x = 186; x < 262; x += 4)
 	{
-		yellow_oval_center_sobj = lbCommonMakeSObjForGObj(stage_select_gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &FILE_01E_YELLOW_OVAL_CENTER_IMAGE_OFFSET));
-		yellow_oval_center_sobj->pos.x = x;
-		yellow_oval_center_sobj->pos.y = 191.0F;
+		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &lMNMapsTabMiddleSprite));
+		sobj->pos.x = x;
+		sobj->pos.y = 191.0F;
 	}
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &lMNMapsTabRightSprite));
+	sobj->sprite.attr &= ~SP_FASTCOPY;
+	sobj->sprite.attr |= SP_TRANSPARENT;
 
-	// Yellow oval right edge
-	yellow_oval_right_sobj = lbCommonMakeSObjForGObj(stage_select_gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &FILE_01E_YELLOW_OVAL_RIGHT_IMAGE_OFFSET));
-	yellow_oval_right_sobj->sprite.attr &= ~SP_FASTCOPY;
-	yellow_oval_right_sobj->sprite.attr |= SP_TRANSPARENT;
-
-	yellow_oval_right_sobj->pos.x = 262.0F;
-	yellow_oval_right_sobj->pos.y = 191.0F;
+	sobj->pos.x = 262.0F;
+	sobj->pos.y = 191.0F;
 }
 
 // 0x80132430
-s32 mnMapsGetGroundKind(s32 slot_id)
+s32 mnMapsGetGroundKind(s32 slot)
 {
 	s32 gkinds[/* */] =
 	{
@@ -493,15 +456,15 @@ s32 mnMapsGetGroundKind(s32 slot_id)
 		nGRKindYoster, nGRKindPupupu, nGRKindSector, nGRKindYamabuki, 0xDE
 	};
 
-	if (slot_id == 9)
+	if (slot == 9)
 	{
 		return 0xDE;
 	}
-	return gkinds[slot_id];
+	return gkinds[slot];
 }
 
 // 0x80132498
-s32 mnMapsGetSlotID(s32 gkind)
+s32 mnMapsGetSlot(s32 gkind)
 {
 	switch (gkind)
 	{
@@ -562,7 +525,7 @@ void mnMapsMakeIcons(void)
 
 			if (i == 9)
 			{
-				sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &FILE_01E_RANDOM_IMAGE_OFFSET));
+				sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &lMNMapsRandomIconSprite));
 			}
 			else sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], offsets[mnMapsGetGroundKind(i)]));
 
@@ -600,14 +563,20 @@ void mnMapsSetNamePosition(SObj *sobj, s32 gkind)
 }
 
 // 0x80132738
-void mnMapsCreateStageName(GObj* gobj, s32 gkind)
+void mnMapsMakeName(GObj *gobj, s32 gkind)
 {
 	SObj* sobj;
-	intptr_t offsets[9] =
+	intptr_t offsets[/* */] =
 	{
-		0x000001f8, 0x00000438, 0x00000678,
-		0x000008b8, 0x00000b10, 0x00000d58,
-		0x00001418, 0x00000f98, 0x000011d8
+		&lMNMapsCastleNameSprite,
+		&lMNMapsSectorNameSprite,
+		&lMNMapsJungleNameSprite,
+		&lMNMapsZebesNameSprite,
+		&lMNMapsHyruleNameSprite,
+		&lMNMapsYosterNameSprite,
+		&lMNMapsInishieNameSprite,
+		&lMNMapsYamabukiNameSprite,
+		&lMNMapsPupupuNameSprite
 	};
 
 	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], offsets[gkind]));
@@ -686,7 +655,7 @@ void mnMapsSetLogoPosition(GObj *gobj, s32 gkind)
 		{ 1.0F, 20.0F },
 		{ 1.0F, 20.0F },
 		{ 3.0F, 19.0F },
-		{ 34.0F,20.0F }
+		{34.0F, 20.0F }
 	};
 
 	if (gkind == 0xDE)
@@ -717,7 +686,7 @@ void mnMapsMakeEmblem(GObj *gobj, s32 gkind)
 
 	if (gkind == 0xDE)
 	{
-		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &FILE_01E_SMASH_LOGO_IMAGE_OFFSET));
+		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &lMNMapsLogoSprite));
 
 		sobj->sprite.attr &= ~SP_FASTCOPY;
 		sobj->sprite.attr |= SP_TRANSPARENT;
@@ -740,7 +709,7 @@ void mnMapsMakeEmblem(GObj *gobj, s32 gkind)
 }
 
 // 0x801329AC
-void mnMapsMakeNameAndEmblem(s32 slot_id)
+void mnMapsMakeNameAndEmblem(s32 slot)
 {
 	GObj *gobj;
 
@@ -751,25 +720,25 @@ void mnMapsMakeNameAndEmblem(s32 slot_id)
 	gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
 	sMNMapsNameLogoGObj = gobj;
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, ~0);
-	mnMapsMakeEmblem(sMNMapsNameLogoGObj, mnMapsGetGroundKind(slot_id));
+	mnMapsMakeEmblem(sMNMapsNameLogoGObj, mnMapsGetGroundKind(slot));
 
-	if (slot_id != 9)
+	if (slot != 9)
 	{
-		mnMapsCreateStageName(sMNMapsNameLogoGObj, mnMapsGetGroundKind(slot_id));
+		mnMapsMakeName(sMNMapsNameLogoGObj, mnMapsGetGroundKind(slot));
 	}
 }
 
 // 0x80132A58
-void mnMapsSetCursorPosition(GObj *gobj, s32 slot_id)
+void mnMapsSetCursorPosition(GObj *gobj, s32 slot)
 {
-	if (slot_id < 5)
+	if (slot < 5)
 	{
-		SObjGetStruct(gobj)->pos.x = (slot_id * 50) + 23;
+		SObjGetStruct(gobj)->pos.x = (slot * 50) + 23;
 		SObjGetStruct(gobj)->pos.y = 23.0F;
 	}
 	else
 	{
-		SObjGetStruct(gobj)->pos.x = (slot_id * 50) - 250 + 23;
+		SObjGetStruct(gobj)->pos.x = (slot * 50) - 250 + 23;
 		SObjGetStruct(gobj)->pos.y = 61.0F;
 	}
 }
@@ -783,7 +752,7 @@ void mnMapsMakeCursor(void)
 	sMNMapsCursorGObj = gobj = gcMakeGObjSPAfter(0, NULL, 7, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 5, GOBJ_PRIORITY_DEFAULT, ~0);
 
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &FILE_01E_CURSOR_IMAGE_OFFSET));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &lMNMapsCursorSprite));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 
@@ -791,7 +760,7 @@ void mnMapsMakeCursor(void)
 	sobj->sprite.green = 0x00;
 	sobj->sprite.blue = 0x00;
 
-	mnMapsSetCursorPosition(gobj, sMNMapsCursorSlotID);
+	mnMapsSetCursorPosition(gobj, sMNMapsCursorSlot);
 }
 
 // 0x80132B84
@@ -800,13 +769,17 @@ void mnMapsLoadMapFile(s32 gkind, void *heap)
 	sMNMapsGroundInfo = lbRelocGetFileData
 	(
 		MPGroundData*,
-		lbRelocGetForceExternHeapFile(dMNMapsFileInfoArray[gkind].id, heap),
-		dMNMapsFileInfoArray[gkind].header_size
+		lbRelocGetForceExternHeapFile
+		(
+			dMNMapsFileInfos[gkind].file_id,
+			heap
+		),
+		dMNMapsFileInfos[gkind].offset
 	);
 }
 
 // 0x80132BC8
-void mnMapsRenderStagePreviewWallpaper(GObj *gobj)
+void mnMapsPreviewWallpaperFuncDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
@@ -831,23 +804,22 @@ GObj* mnMapsMakePreviewWallpaper(s32 gkind)
 	s32 x;
 
 	gobj = gcMakeGObjSPAfter(0, NULL, 9, GOBJ_PRIORITY_DEFAULT);
-	gcAddGObjDisplay(gobj, mnMapsRenderStagePreviewWallpaper, 7, GOBJ_PRIORITY_DEFAULT, ~0);
+	gcAddGObjDisplay(gobj, mnMapsPreviewWallpaperFuncDisplay, 7, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	// draw patterned bg
-	for (x = 0x2B; x < 0x9B; x += 0x10)
+	for (x = 43; x < 155; x += 16)
 	{
-		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(void*, sMNMapsFiles[2], &FILE_01E_STAGE_PREVIEW_PATTERNED_BG_IMAGE_OFFSET));
+		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &lMNMapsBoardWallpaperSprite));
 		sobj->pos.x = x;
 		sobj->pos.y = 130.0F;
 
-		if (TRUE); // grrrrrr
+		continue;
 	}
-
 	// Check if Random
 	if (gkind == 0xDE)
 	{
 		// If Random, use Random image
-		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(void*, sMNMapsFiles[2], &FILE_01E_RANDOM_STAGE_PREVIEW_BG_IMAGE_OFFSET));
+		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &lMNMapsRandomWallpaperSprite));
 		sobj->pos.x = 40.0F;
 		sobj->pos.y = 127.0F;
 	}
@@ -857,35 +829,46 @@ GObj* mnMapsMakePreviewWallpaper(s32 gkind)
 		if (sMNMapsIsTrainingMode == TRUE)
 		{
 			// If Training Mode, use Smash logo bg
-			sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(void*, lbRelocGetForceExternHeapFile(dMNMapsTrainingModeFileNodes[dMNMapsTrainingModeWallpaperIDs[gkind]].id, (uintptr_t)sMNMapsGroundInfo->wallpaper - dMNMapsWallpaperOffsets[gkind]), &FILE_01A_TRAINING_BACKGROUND_IMAGE_OFFSET));
+			sobj = lbCommonMakeSObjForGObj
+			(
+				gobj,
+				lbRelocGetFileData
+				(
+					Sprite*,
+					lbRelocGetForceExternHeapFile
+					(
+						dMNMapsTrainingModeFileInfos[dMNMapsTrainingModeWallpaperIDs[gkind]].file_id,
+						(void*) ((uintptr_t)sMNMapsGroundInfo->wallpaper - dMNMapsWallpaperOffsets[gkind])
+					),
+					&lGRWallpaperTrainingBlueSprite
+				)
+			);
 		}
-		else
-		{
-			// Use stage bg
-			sobj = lbCommonMakeSObjForGObj(gobj, sMNMapsGroundInfo->wallpaper);
-		}
-
+		else sobj = lbCommonMakeSObjForGObj(gobj, sMNMapsGroundInfo->wallpaper); // Use stage bg
+		
 		sobj->sprite.attr &= ~SP_FASTCOPY;
+
 		sobj->sprite.scalex = 0.37F;
 		sobj->sprite.scaley = 0.37F;
+
 		sobj->pos.x = 40.0F;
 		sobj->pos.y = 127.0F;
 	}
-
 	return gobj;
 }
 
 // 0x80132EF0
-void mnMapsRenderStagePreviewPrimary(GObj* stage_geo_gobj)
+void mnMapsModelPriFuncDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gSPSetGeometryMode(gSYTaskmanDLHeads[0]++, G_ZBUFFER);
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-	gcDrawDObjTreeForGObj(stage_geo_gobj);
+
+	gcDrawDObjTreeForGObj(gobj);
 }
 
 // 0x80132F70
-void mnMapsRenderStagePreviewSecondary(GObj* stage_geo_gobj)
+void mnMapsModelSecFuncDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gSPSetGeometryMode(gSYTaskmanDLHeads[0]++, G_ZBUFFER);
@@ -893,68 +876,69 @@ void mnMapsRenderStagePreviewSecondary(GObj* stage_geo_gobj)
 	gDPPipeSync(gSYTaskmanDLHeads[1]++);
 	gSPSetGeometryMode(gSYTaskmanDLHeads[1]++, G_ZBUFFER);
 	gDPSetRenderMode(gSYTaskmanDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
-	gcDrawDObjTreeDLLinksForGObj(stage_geo_gobj);
+
+	gcDrawDObjTreeDLLinksForGObj(gobj);
 }
 
 // 0x8013303C
-GObj* mnMapsCreateStageGeo(s32 gkind, MPGroundData* stage_info, MPGroundDesc* stage_geo, s32 stage_geo_id)
+GObj* mnMapsMakeLayer(s32 gkind, MPGroundData *ground_data, MPGroundDesc *ground_desc, s32 id)
 {
-	GObj* stage_geo_gobj;
-	f32 scale[9] = {
-
-		0.50f, 0.20f, 0.60f,
-		0.50f, 0.30f, 0.60f,
-		0.50f, 0.40f, 0.20f
+	GObj *gobj;
+	f32 scales[/* */] =
+	{
+		0.5F, 0.2F, 0.6F,
+		0.5F, 0.3F, 0.6F,
+		0.5F, 0.4F, 0.2F
 	};
 
-	if (stage_geo->dobjdesc == NULL)
+	if (ground_desc->dobjdesc == NULL)
 	{
 		return NULL;
 	}
+	gobj = gcMakeGObjSPAfter(0, NULL, 5, GOBJ_PRIORITY_DEFAULT);
+	gcAddGObjDisplay(gobj, (ground_data->layer_mask & (1 << id)) ? mnMapsModelSecFuncDisplay : mnMapsModelPriFuncDisplay, 3, GOBJ_PRIORITY_DEFAULT, ~0);
+	gcSetupCustomDObjs(gobj, ground_desc->dobjdesc, NULL, nGCMatrixKindTraRotRpyRSca, nGCMatrixKindNull, nGCMatrixKindNull);
 
-	stage_geo_gobj = gcMakeGObjSPAfter(0U, NULL, 5U, GOBJ_PRIORITY_DEFAULT);
-	gcAddGObjDisplay(stage_geo_gobj, (stage_info->layer_mask & (1 << stage_geo_id)) ? mnMapsRenderStagePreviewSecondary : mnMapsRenderStagePreviewPrimary, 3U, GOBJ_PRIORITY_DEFAULT, ~0);
-	gcSetupCustomDObjs(stage_geo_gobj, stage_geo->dobjdesc, NULL, nGCMatrixKindTraRotRpyRSca, nGCMatrixKindNull, nGCMatrixKindNull);
-
-	if (stage_geo->p_mobjsubs != NULL)
+	if (ground_desc->p_mobjsubs != NULL)
 	{
-		gcAddMObjAll(stage_geo_gobj, stage_geo->p_mobjsubs);
+		gcAddMObjAll(gobj, ground_desc->p_mobjsubs);
 	}
-
-	if ((stage_geo->anim_joints != NULL) || (stage_geo->p_matanim_joints != NULL))
+	if ((ground_desc->anim_joints != NULL) || (ground_desc->p_matanim_joints != NULL))
 	{
-		gcAddAnimAll(stage_geo_gobj, stage_geo->anim_joints, stage_geo->p_matanim_joints, 0.0F);
-		gcPlayAnimAll(stage_geo_gobj);
+		gcAddAnimAll(gobj, ground_desc->anim_joints, ground_desc->p_matanim_joints, 0.0F);
+		gcPlayAnimAll(gobj);
 	}
+	DObjGetStruct(gobj)->scale.vec.f.x = scales[gkind];
+	DObjGetStruct(gobj)->scale.vec.f.y = scales[gkind];
+	DObjGetStruct(gobj)->scale.vec.f.z = scales[gkind];
 
-	DObjGetStruct(stage_geo_gobj)->scale.vec.f.x = scale[gkind];
-	DObjGetStruct(stage_geo_gobj)->scale.vec.f.y = scale[gkind];
-	DObjGetStruct(stage_geo_gobj)->scale.vec.f.z = scale[gkind];
-
-	return stage_geo_gobj;
+	return gobj;
 }
 
 // 0x801331AC
-void mnMapsCreateStageGeos(s32 gkind, MPGroundData* stage_info, s32 heap_id)
+void mnMapsMakeModel(s32 gkind, MPGroundData *ground_data, s32 heap_id)
 {
-	DObj* stage_dobj;
-	DObj* next_dobj;
-	GObj** stage_info_array = (heap_id == 0) ? &sMNMapsHeap1StageInfoArray : &sMNMapsHeap0StageInfoArray;
+	DObj *root_dobj, *next_dobj;
+	GObj **gobjs = (heap_id == 0) ? sMNMapsHeap1LayerGObjs : sMNMapsHeap0LayerGObjs;
 	s32 i;
 
-	stage_info_array[0] = mnMapsCreateStageGeo(gkind, stage_info, &stage_info->gr_desc[0], 0);
-	stage_info_array[1] = mnMapsCreateStageGeo(gkind, stage_info, &stage_info->gr_desc[1], 1);
-	stage_info_array[2] = mnMapsCreateStageGeo(gkind, stage_info, &stage_info->gr_desc[2], 2);
-	stage_info_array[3] = mnMapsCreateStageGeo(gkind, stage_info, &stage_info->gr_desc[3], 3);
+	gobjs[0] = mnMapsMakeLayer(gkind, ground_data, &ground_data->gr_desc[0], 0);
+	gobjs[1] = mnMapsMakeLayer(gkind, ground_data, &ground_data->gr_desc[1], 1);
+	gobjs[2] = mnMapsMakeLayer(gkind, ground_data, &ground_data->gr_desc[2], 2);
+	gobjs[3] = mnMapsMakeLayer(gkind, ground_data, &ground_data->gr_desc[3], 3);
 
 	if (gkind == nGRKindYamabuki)
 	{
-		DObjGetChild(DObjGetChild(DObjGetStruct(stage_info_array[3])))->flags = DOBJ_FLAG_HIDDEN;
+		DObjGetChild(DObjGetChild(DObjGetStruct(gobjs[3])))->flags = DOBJ_FLAG_HIDDEN;
 	}
-
 	if (gkind == nGRKindYoster)
 	{
-		for (next_dobj = stage_dobj = DObjGetStruct(stage_info_array[0]), i = 1; next_dobj != NULL; next_dobj = lbCommonGetTreeDObjNextFromRoot(next_dobj, stage_dobj), i += 1)
+		for
+		(
+			next_dobj = root_dobj = DObjGetStruct(gobjs[0]), i = 1;
+			next_dobj != NULL;
+			next_dobj = lbCommonGetTreeDObjNextFromRoot(next_dobj, root_dobj), i++
+		)
 		{
 			if ((i == 0xF) || (i == 0x11))
 			{
@@ -976,12 +960,12 @@ void mnMapsDestroyPreview(s32 heap_id)
 			gcEjectGObj(sMNMapsHeap0WallpaperGObj);
 			sMNMapsHeap0WallpaperGObj = NULL;
 		}
-		for (i = 0; i < ARRAY_COUNT(sMNMapsHeap0StageInfoArray); i++)
+		for (i = 0; i < ARRAY_COUNT(sMNMapsHeap0LayerGObjs); i++)
 		{
-			if (sMNMapsHeap0StageInfoArray[i] != NULL)
+			if (sMNMapsHeap0LayerGObjs[i] != NULL)
 			{
-				gcEjectGObj(sMNMapsHeap0StageInfoArray[i]);
-				sMNMapsHeap0StageInfoArray[i] = NULL;
+				gcEjectGObj(sMNMapsHeap0LayerGObjs[i]);
+				sMNMapsHeap0LayerGObjs[i] = NULL;
 			}
 		}
 	}
@@ -992,12 +976,12 @@ void mnMapsDestroyPreview(s32 heap_id)
 			gcEjectGObj(sMNMapsHeap1WallpaperGObj);
 			sMNMapsHeap1WallpaperGObj = NULL;
 		}
-		for (i = 0; i < ARRAY_COUNT(sMNMapsHeap1StageInfoArray); i++)
+		for (i = 0; i < ARRAY_COUNT(sMNMapsHeap1LayerGObjs); i++)
 		{
-			if (sMNMapsHeap1StageInfoArray[i] != NULL)
+			if (sMNMapsHeap1LayerGObjs[i] != NULL)
 			{
-				gcEjectGObj(sMNMapsHeap1StageInfoArray[i]);
-				sMNMapsHeap1StageInfoArray[i] = NULL;
+				gcEjectGObj(sMNMapsHeap1LayerGObjs[i]);
+				sMNMapsHeap1LayerGObjs[i] = NULL;
 			}
 		}
 	}
@@ -1022,7 +1006,7 @@ void mnMapsMakePreview(s32 gkind)
 
 	if (gkind != 0xDE)
 	{
-		mnMapsCreateStageGeos(gkind, sMNMapsGroundInfo, sMNMapsHeapID);
+		mnMapsMakeModel(gkind, sMNMapsGroundInfo, sMNMapsHeapID);
 		mnMapsSetPreviewCameraPosition(sMNMapsPreviewCObj, gkind);
 	}
 	mnMapsDestroyPreview(sMNMapsHeapID);
@@ -1054,7 +1038,7 @@ void mnMapsMakeWallpaperCamera(void)
 }
 
 // 0x8013354C
-void mnMapsMakePlaqueViewport(void)
+void mnMapsMakePlaqueCamera(void)
 {
 	GObj *gobj = gcMakeCameraGObj
 	(
@@ -1077,7 +1061,7 @@ void mnMapsMakePlaqueViewport(void)
 }
 
 // 0x801335EC
-void mnMapsMakePreviewWallpaperViewport(void)
+void mnMapsMakePreviewWallpaperCamera(void)
 {
 	GObj *gobj = gcMakeCameraGObj
 	(
@@ -1100,7 +1084,7 @@ void mnMapsMakePreviewWallpaperViewport(void)
 }
 
 // 0x8013368C
-void mnMapsCreateStageSelectGfxViewport(void)
+void mnMapsMakeLabelsViewport(void)
 {
 	GObj *gobj = gcMakeCameraGObj
 	(
@@ -1209,7 +1193,7 @@ void mnMapsSetPreviewCameraPosition(CObj *cobj, s32 gkind)
 
 	if (gkind == 0xDE)
 	{
-		gkind = 0;
+		gkind = nGRKindCastle;
 	}
 	cobj->vec.eye.x = -3000.0F;
 	cobj->vec.eye.y = 3000.0F;
@@ -1267,7 +1251,7 @@ void mnMapsMakePreviewCamera(void)
 
 	cobj->projection.persp.far = 16384.0F;
 
-	mnMapsSetPreviewCameraPosition(cobj, mnMapsGetGroundKind(sMNMapsCursorSlotID));
+	mnMapsSetPreviewCameraPosition(cobj, mnMapsGetGroundKind(sMNMapsCursorSlot));
 
 	gcAddGObjProcess(gobj, mnMapsPreviewCameraThreadUpdate, nGCProcessKindThread, 1);
 }
@@ -1283,7 +1267,7 @@ void mnMapsSaveSceneData(void)
 	};
 	s32 gkind;
 
-	if (sMNMapsCursorSlotID == 9)
+	if (sMNMapsCursorSlot == 9)
 	{
 		do
 		{
@@ -1293,15 +1277,15 @@ void mnMapsSaveSceneData(void)
 
 		gSCManagerSceneData.gkind = gkind;
 	}
-	else gSCManagerSceneData.gkind = mnMapsGetGroundKind(sMNMapsCursorSlotID);
+	else gSCManagerSceneData.gkind = mnMapsGetGroundKind(sMNMapsCursorSlot);
 
 	if (sMNMapsIsTrainingMode == FALSE)
 	{
-		gSCManagerSceneData.maps_vsmode_gkind = mnMapsGetGroundKind(sMNMapsCursorSlotID);
+		gSCManagerSceneData.maps_vsmode_gkind = mnMapsGetGroundKind(sMNMapsCursorSlot);
 	}
 	if (sMNMapsIsTrainingMode == TRUE)
 	{
-		gSCManagerSceneData.maps_training_gkind = mnMapsGetGroundKind(sMNMapsCursorSlotID);
+		gSCManagerSceneData.maps_training_gkind = mnMapsGetGroundKind(sMNMapsCursorSlot);
 	}
 }
 
@@ -1314,21 +1298,21 @@ void mnMapsInitVars(void)
 	sMNMapsHeap0WallpaperGObj = NULL;
 	sMNMapsHeap1WallpaperGObj = NULL;
 
-	for (i = 0; i < ARRAY_COUNT(sMNMapsHeap0StageInfoArray); i++)
+	for (i = 0; i < ARRAY_COUNT(sMNMapsHeap0LayerGObjs); i++)
 	{
-		sMNMapsHeap0StageInfoArray[i] = NULL;
-		sMNMapsHeap1StageInfoArray[i] = NULL;
+		sMNMapsHeap0LayerGObjs[i] = NULL;
+		sMNMapsHeap1LayerGObjs[i] = NULL;
 	}
 	switch (gSCManagerSceneData.scene_prev)
 	{
 	case nSCKind1PTrainingPlayers:
 		sMNMapsIsTrainingMode = TRUE;
-		sMNMapsCursorSlotID = mnMapsGetSlotID(gSCManagerSceneData.maps_training_gkind);
+		sMNMapsCursorSlot = mnMapsGetSlot(gSCManagerSceneData.maps_training_gkind);
 		break;
 		
 	case nSCKindVSPlayers:
 		sMNMapsIsTrainingMode = FALSE;
-		sMNMapsCursorSlotID = mnMapsGetSlotID(gSCManagerSceneData.maps_vsmode_gkind);
+		sMNMapsCursorSlot = mnMapsGetSlot(gSCManagerSceneData.maps_vsmode_gkind);
 		break;
 	}
 	sMNMapsUnlockedMask = gSCManagerBackupData.unlock_mask;
@@ -1421,17 +1405,16 @@ void mnMapsFuncRun(GObj *gobj)
 
 			if ((button_input != 0) || (stick_input = scSubsysControllerGetPlayerStickUD(20, 1), (stick_input != 0)))
 			{
-				if ((sMNMapsCursorSlotID >= 5) && (mnMapsCheckLocked(mnMapsGetGroundKind(sMNMapsCursorSlotID - 5)) == FALSE))
+				if ((sMNMapsCursorSlot >= 5) && (mnMapsCheckLocked(mnMapsGetGroundKind(sMNMapsCursorSlot - 5)) == FALSE))
 				{
 					func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 
-					sMNMapsCursorSlotID -= 5;
+					sMNMapsCursorSlot -= 5;
 
-					mnMapsMakeNameAndEmblem(sMNMapsCursorSlotID);
-					mnMapsSetCursorPosition(sMNMapsCursorGObj, sMNMapsCursorSlotID);
-					mnMapsMakePreview(mnMapsGetGroundKind(sMNMapsCursorSlotID));
+					mnMapsMakeNameAndEmblem(sMNMapsCursorSlot);
+					mnMapsSetCursorPosition(sMNMapsCursorGObj, sMNMapsCursorSlot);
+					mnMapsMakePreview(mnMapsGetGroundKind(sMNMapsCursorSlot));
 				}
-
 				if (button_input != 0)
 				{
 					sMNMapsScrollWait = 12;
@@ -1444,17 +1427,16 @@ void mnMapsFuncRun(GObj *gobj)
 
 			if ((button_input != 0) || (stick_input = scSubsysControllerGetPlayerStickUD(-20, 0), (stick_input != 0)))
 			{
-				if ((sMNMapsCursorSlotID < 5) && (mnMapsCheckLocked(mnMapsGetGroundKind(sMNMapsCursorSlotID + 5)) == FALSE))
+				if ((sMNMapsCursorSlot < 5) && (mnMapsCheckLocked(mnMapsGetGroundKind(sMNMapsCursorSlot + 5)) == FALSE))
 				{
 					func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 
-					sMNMapsCursorSlotID += 5;
+					sMNMapsCursorSlot += 5;
 
-					mnMapsMakeNameAndEmblem(sMNMapsCursorSlotID);
-					mnMapsSetCursorPosition(sMNMapsCursorGObj, sMNMapsCursorSlotID);
-					mnMapsMakePreview(mnMapsGetGroundKind(sMNMapsCursorSlotID));
+					mnMapsMakeNameAndEmblem(sMNMapsCursorSlot);
+					mnMapsSetCursorPosition(sMNMapsCursorGObj, sMNMapsCursorSlot);
+					mnMapsMakePreview(mnMapsGetGroundKind(sMNMapsCursorSlot));
 				}
-
 				if (button_input != 0)
 				{
 					sMNMapsScrollWait = 12;
@@ -1467,23 +1449,23 @@ void mnMapsFuncRun(GObj *gobj)
 
 			if ((button_input != 0) || (stick_input = scSubsysControllerGetPlayerStickLR(-20, 0), (stick_input)))
 			{
-				switch (sMNMapsCursorSlotID)
+				switch (sMNMapsCursorSlot)
 				{
 				case 0:
-					sMNMapsCursorSlotID = (mnMapsCheckLocked(mnMapsGetGroundKind(4))) ? 3 : 4;
+					sMNMapsCursorSlot = (mnMapsCheckLocked(mnMapsGetGroundKind(4))) ? 3 : 4;
 					break;
 
 				case 5:
-					sMNMapsCursorSlotID = 9;
+					sMNMapsCursorSlot = 9;
 					break;
 					
 				default:
-					sMNMapsCursorSlotID--;
+					sMNMapsCursorSlot--;
 				}
 				func_800269C0_275C0(nSYAudioFGMMenuScroll2);
-				mnMapsMakeNameAndEmblem(sMNMapsCursorSlotID);
-				mnMapsSetCursorPosition(sMNMapsCursorGObj, sMNMapsCursorSlotID);
-				mnMapsMakePreview(mnMapsGetGroundKind(sMNMapsCursorSlotID));
+				mnMapsMakeNameAndEmblem(sMNMapsCursorSlot);
+				mnMapsSetCursorPosition(sMNMapsCursorGObj, sMNMapsCursorSlot);
+				mnMapsMakePreview(mnMapsGetGroundKind(sMNMapsCursorSlot));
 
 				if (button_input != 0)
 				{
@@ -1497,27 +1479,27 @@ void mnMapsFuncRun(GObj *gobj)
 
 			if ((button_input != 0) || (stick_input = scSubsysControllerGetPlayerStickLR(20, 1), (stick_input)))
 			{
-				switch (sMNMapsCursorSlotID)
+				switch (sMNMapsCursorSlot)
 				{
 				case 3:
-					sMNMapsCursorSlotID = (mnMapsCheckLocked(mnMapsGetGroundKind(4))) ? 0 : 4;
+					sMNMapsCursorSlot = (mnMapsCheckLocked(mnMapsGetGroundKind(4))) ? 0 : 4;
 					break;
 					
 				case 4:
-					sMNMapsCursorSlotID = 0;
+					sMNMapsCursorSlot = 0;
 					break;
 					
 				case 9:
-					sMNMapsCursorSlotID = 5;
+					sMNMapsCursorSlot = 5;
 					break;
 					
 				default:
-					sMNMapsCursorSlotID++;
+					sMNMapsCursorSlot++;
 				}
 				func_800269C0_275C0(nSYAudioFGMMenuScroll2);
-				mnMapsMakeNameAndEmblem(sMNMapsCursorSlotID);
-				mnMapsSetCursorPosition(sMNMapsCursorGObj, sMNMapsCursorSlotID);
-				mnMapsMakePreview(mnMapsGetGroundKind(sMNMapsCursorSlotID));
+				mnMapsMakeNameAndEmblem(sMNMapsCursorSlot);
+				mnMapsSetCursorPosition(sMNMapsCursorGObj, sMNMapsCursorSlot);
+				mnMapsMakePreview(mnMapsGetGroundKind(sMNMapsCursorSlot));
 
 				if (button_input != 0)
 				{
@@ -1567,20 +1549,20 @@ void mnMapsFuncStart(void)
 	gcMakeDefaultCameraGObj(1, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
 	mnMapsInitVars();
 	mnMapsMakeWallpaperCamera();
-	mnMapsCreateStageSelectGfxViewport();
+	mnMapsMakeLabelsViewport();
 	mnMapsMakeIconsCamera();
 	mnMapsMakeNameAndEmblemCamera();
 	mnMapsMakeCursorCamera();
 	mnMapsMakePreviewCamera();
-	mnMapsMakePlaqueViewport();
-	mnMapsMakePreviewWallpaperViewport();
+	mnMapsMakePlaqueCamera();
+	mnMapsMakePreviewWallpaperCamera();
 	mnMapsMakeWallpaper();
 	mnMapsMakePlaque();
-	mnMapsCreateStageSelectGfx();
+	mnMapsMakeLabels();
 	mnMapsMakeIcons();
-	mnMapsMakeNameAndEmblem(sMNMapsCursorSlotID);
+	mnMapsMakeNameAndEmblem(sMNMapsCursorSlot);
 	mnMapsMakeCursor();
-	mnMapsMakePreview(mnMapsGetGroundKind(sMNMapsCursorSlotID));
+	mnMapsMakePreview(mnMapsGetGroundKind(sMNMapsCursorSlot));
 }
 
 // 0x8013490C

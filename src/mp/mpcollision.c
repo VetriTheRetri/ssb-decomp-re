@@ -4,54 +4,6 @@
 
 // // // // // // // // // // // //
 //                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lGRPupupuGroundFileID;              // 0x000000FF
-extern intptr_t lGRPupupuSmallGroundFileID;         // 0x00000100
-extern intptr_t lGRZebesGroundFileID;               // 0x00000101
-extern intptr_t lGRPupupuTestGroundFileID;          // 0x00000102
-extern intptr_t lGRCastleGroundFileID;              // 0x00000103
-extern intptr_t lGRInishieGroundFileID;             // 0x00000104
-extern intptr_t lGRJungleGroundFileID;              // 0x00000105
-extern intptr_t lGRSectorGroundFileID;              // 0x00000106
-extern intptr_t lGRYosterGroundFileID;              // 0x00000107
-extern intptr_t lGRYamabukiGroundFileID;            // 0x00000108
-extern intptr_t lGRHyruleGroundFileID;              // 0x00000109
-extern intptr_t lGRLastGroundFileID;                // 0x0000010A
-extern intptr_t lGRExplainGroundFileID;             // 0x0000010B
-extern intptr_t lGRZakoGroundFileID;                // 0x0000010C
-extern intptr_t lGRMetalGroundFileID;               // 0x0000010D
-extern intptr_t lGRYosterSmallGroundFileID;         // 0x0000010E
-extern intptr_t lGRBonus1MarioGroundFileID;         // 0x0000010F
-extern intptr_t lGRBonus1FoxGroundFileID;           // 0x00000110
-extern intptr_t lGRBonus1DonkeyGroundFileID;        // 0x00000111
-extern intptr_t lGRBonus1SamusGroundFileID;         // 0x00000112
-extern intptr_t lGRBonus1LuigiGroundFileID;         // 0x00000113
-extern intptr_t lGRBonus1LinkGroundFileID;          // 0x00000114
-extern intptr_t lGRBonus1YoshiGroundFileID;         // 0x00000115
-extern intptr_t lGRBonus1CaptainGroundFileID;       // 0x00000116
-extern intptr_t lGRBonus1KirbyGroundFileID;         // 0x00000117
-extern intptr_t lGRBonus1PikachuGroundFileID;       // 0x00000118
-extern intptr_t lGRBonus1PurinGroundFileID;         // 0x00000119
-extern intptr_t lGRBonus1NessGroundFileID;          // 0x0000011A
-extern intptr_t lGRBonus2MarioGroundFileID;         // 0x0000011B
-extern intptr_t lGRBonus2FoxGroundFileID;           // 0x0000011C
-extern intptr_t lGRBonus2DonkeyGroundFileID;        // 0x0000011D
-extern intptr_t lGRBonus2SamusGroundFileID;         // 0x0000011E
-extern intptr_t lGRBonus2LuigiGroundFileID;         // 0x0000011F
-extern intptr_t lGRBonus2LinkGroundFileID;          // 0x00000120
-extern intptr_t lGRBonus2YoshiGroundFileID;         // 0x00000121
-extern intptr_t lGRBonus2CaptainGroundFileID;       // 0x00000122
-extern intptr_t lGRBonus2KirbyGroundFileID;         // 0x00000123
-extern intptr_t lGRBonus2PikachuGroundFileID;       // 0x00000124
-extern intptr_t lGRBonus2PurinGroundFileID;         // 0x00000125
-extern intptr_t lGRBonus2NessGroundFileID;          // 0x00000126
-extern intptr_t lGRBonus3GroundFileID;              // 0x00000127
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -80,47 +32,47 @@ f32 dMPCollisionMaterialFrictions[/* */] =
 // 0x8012C520
 GRFileInfo dMPCollisionGroundFileInfos[/* */] =
 {
-    { &lGRCastleGroundFileID, &lGRCommonHeaderStart },      // Peach's Castle
-    { &lGRSectorGroundFileID, &lGRCommonHeaderStart },      // Sector Z
-    { &lGRJungleGroundFileID, &lGRCommonHeaderStart },      // Kongo Jungle
-    { &lGRZebesGroundFileID, &lGRCommonHeaderStart },       // Planet Zebes
-    { &lGRHyruleGroundFileID, &lGRCommonHeaderStart },      // Hyrule Castle
-    { &lGRYosterGroundFileID, &lGRCommonHeaderStart },      // Yoshi's Island
-    { &lGRPupupuGroundFileID, &lGRCommonHeaderStart },      // Dream Land
-    { &lGRYamabukiGroundFileID, &lGRCommonHeaderStart },    // Saffron City
-    { &lGRInishieGroundFileID, &lGRCommonHeaderStart },     // Mushroom Kingdom
-    { &lGRPupupuSmallGroundFileID, &lGRCommonHeaderStart }, // Beta Dream Land
-    { &lGRPupupuTestGroundFileID, &lGRCommonHeaderStart },  // Test Stage
-    { &lGRExplainGroundFileID, 0x0 },                       // How to Play
-    { &lGRYosterSmallGroundFileID, &lGRCommonHeaderStart }, // Small Yoshi's Island (1P Game)
-    { &lGRMetalGroundFileID, &lGRCommonHeaderStart },       // Meta Crystal
-    { &lGRZakoGroundFileID, &lGRCommonHeaderStart },        // Duel Zone
-    { &lGRBonus3GroundFileID, 0x0 },                        // Race to the Finish
-    { &lGRLastGroundFileID, 0x0 },                          // Final Destination
-    { &lGRBonus1MarioGroundFileID, 0x0 },                   // Break the Targets Mario
-    { &lGRBonus1FoxGroundFileID, 0x0 },                     // Break the Targets Fox
-    { &lGRBonus1DonkeyGroundFileID, 0x0 },                  // Break the Targets Donkey Kong
-    { &lGRBonus1SamusGroundFileID, 0x0 },                   // Break the Targets Samus
-    { &lGRBonus1LuigiGroundFileID, 0x0 },                   // Break the Targets Luigi
-    { &lGRBonus1LinkGroundFileID, 0x0 },                    // Break the Targets Link
-    { &lGRBonus1YoshiGroundFileID, 0x0 },                   // Break the Targets Yoshi
-    { &lGRBonus1CaptainGroundFileID, 0x0 },                 // Break the Targets Captain Falcon
-    { &lGRBonus1KirbyGroundFileID, 0x0 },                   // Break the Targets Kirby
-    { &lGRBonus1PikachuGroundFileID, 0x0 },                 // Break the Targets Pikachu
-    { &lGRBonus1PurinGroundFileID, 0x0 },                   // Break the Targets Jigglypuff
-    { &lGRBonus1NessGroundFileID, 0x0 },                    // Break the Targets Ness
-    { &lGRBonus2MarioGroundFileID, 0x0 },                   // Board the Platforms Mario
-    { &lGRBonus2FoxGroundFileID, 0x0 },                     // Board the Platforms Fox
-    { &lGRBonus2DonkeyGroundFileID, 0x0 },                  // Board the Platforms Donkey Kong
-    { &lGRBonus2SamusGroundFileID, 0x0 },                   // Board the Platforms Samus
-    { &lGRBonus2LuigiGroundFileID, 0x0 },                   // Board the Platforms Luigi
-    { &lGRBonus2LinkGroundFileID, 0x0 },                    // Board the Platforms Link
-    { &lGRBonus2YoshiGroundFileID, 0x0 },                   // Board the Platforms Yoshi
-    { &lGRBonus2CaptainGroundFileID, 0x0 },                 // Board the Platforms Captain Falcon
-    { &lGRBonus2KirbyGroundFileID, 0x0 },                   // Board the Platforms Kirby
-    { &lGRBonus2PikachuGroundFileID, 0x0 },                 // Board the Platforms Pikachu
-    { &lGRBonus2PurinGroundFileID, 0x0 },                   // Board the Platforms Jigglypuff
-    { &lGRBonus2NessGroundFileID, 0x0 }                     // Board the Platforms Ness
+    { &lGRCastleMapFileID,      &lGRCommonMapHeaderStart }, // Peach's Castle
+    { &lGRSectorMapFileID,      &lGRCommonMapHeaderStart }, // Sector Z
+    { &lGRJungleMapFileID,      &lGRCommonMapHeaderStart }, // Kongo Jungle
+    { &lGRZebesMapFileID,       &lGRCommonMapHeaderStart }, // Planet Zebes
+    { &lGRHyruleMapFileID,      &lGRCommonMapHeaderStart }, // Hyrule Castle
+    { &lGRYosterMapFileID,      &lGRCommonMapHeaderStart }, // Yoshi's Island
+    { &lGRPupupuMapFileID,      &lGRCommonMapHeaderStart }, // Dream Land
+    { &lGRYamabukiMapFileID,    &lGRCommonMapHeaderStart }, // Saffron City
+    { &lGRInishieMapFileID,     &lGRCommonMapHeaderStart }, // Mushroom Kingdom
+    { &lGRPupupuSmallMapFileID, &lGRCommonMapHeaderStart }, // Beta Dream Land
+    { &lGRPupupuTestMapFileID,  &lGRCommonMapHeaderStart }, // Test Stage
+    { &lGRExplainMapFileID,     0x0 },                      // How to Play
+    { &lGRYosterSmallMapFileID, &lGRCommonMapHeaderStart }, // Small Yoshi's Island (1P Game)
+    { &lGRMetalMapFileID,       &lGRCommonMapHeaderStart }, // Meta Crystal
+    { &lGRZakoMapFileID,        &lGRCommonMapHeaderStart }, // Duel Zone
+    { &lGRBonus3MapFileID,      0x0 },                      // Race to the Finish
+    { &lGRLastMapFileID,        0x0 },                      // Final Destination
+    { &lGRBonus1MarioMapFileID, 0x0 },                      // Break the Targets Mario
+    { &lGRBonus1FoxMapFileID,   0x0 },                      // Break the Targets Fox
+    { &lGRBonus1DonkeyMapFileID,0x0 },                      // Break the Targets Donkey Kong
+    { &lGRBonus1SamusMapFileID, 0x0 },                      // Break the Targets Samus
+    { &lGRBonus1LuigiMapFileID, 0x0 },                      // Break the Targets Luigi
+    { &lGRBonus1LinkMapFileID,  0x0 },                      // Break the Targets Link
+    { &lGRBonus1YoshiMapFileID, 0x0 },                      // Break the Targets Yoshi
+    {&lGRBonus1CaptainMapFileID,0x0 },                      // Break the Targets Captain Falcon
+    { &lGRBonus1KirbyMapFileID, 0x0 },                      // Break the Targets Kirby
+    {&lGRBonus1PikachuMapFileID,0x0 },                      // Break the Targets Pikachu
+    { &lGRBonus1PurinMapFileID, 0x0 },                      // Break the Targets Jigglypuff
+    { &lGRBonus1NessMapFileID,  0x0 },                      // Break the Targets Ness
+    { &lGRBonus2MarioMapFileID, 0x0 },                      // Board the Platforms Mario
+    { &lGRBonus2FoxMapFileID,   0x0 },                      // Board the Platforms Fox
+    { &lGRBonus2DonkeyMapFileID,0x0 },                      // Board the Platforms Donkey Kong
+    { &lGRBonus2SamusMapFileID, 0x0 },                      // Board the Platforms Samus
+    { &lGRBonus2LuigiMapFileID, 0x0 },                      // Board the Platforms Luigi
+    { &lGRBonus2LinkMapFileID,  0x0 },                      // Board the Platforms Link
+    { &lGRBonus2YoshiMapFileID, 0x0 },                      // Board the Platforms Yoshi
+    {&lGRBonus2CaptainMapFileID,0x0 },                      // Board the Platforms Captain Falcon
+    { &lGRBonus2KirbyMapFileID, 0x0 },                      // Board the Platforms Kirby
+    {&lGRBonus2PikachuMapFileID,0x0 },                      // Board the Platforms Pikachu
+    { &lGRBonus2PurinMapFileID, 0x0 },                      // Board the Platforms Jigglypuff
+    { &lGRBonus2NessMapFileID,  0x0 }                       // Board the Platforms Ness
 };
 
 // 0x8012C668 - I can't for the life of me figure out if these are referenced at all and I'm too lazy to transcribe these if they're not used

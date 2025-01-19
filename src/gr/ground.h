@@ -4,7 +4,49 @@
 #include "grtypes.h"
 #include "grfunctions.h"
 
-extern intptr_t lGRCommonHeaderStart;                       // 0x00000014
+extern intptr_t lGRCommonMapHeaderStart;                    // 0x00000014
+
+extern intptr_t lGRPupupuMapFileID;                         // 0x000000FF
+extern intptr_t lGRPupupuSmallMapFileID;                    // 0x00000100
+extern intptr_t lGRZebesMapFileID;                          // 0x00000101
+extern intptr_t lGRPupupuTestMapFileID;                     // 0x00000102
+extern intptr_t lGRCastleMapFileID;                         // 0x00000103
+extern intptr_t lGRInishieMapFileID;                        // 0x00000104
+extern intptr_t lGRJungleMapFileID;                         // 0x00000105
+extern intptr_t lGRSectorMapFileID;                         // 0x00000106
+extern intptr_t lGRYosterMapFileID;                         // 0x00000107
+extern intptr_t lGRYamabukiMapFileID;                       // 0x00000108
+extern intptr_t lGRHyruleMapFileID;                         // 0x00000109
+extern intptr_t lGRLastMapFileID;                           // 0x0000010A
+extern intptr_t lGRExplainMapFileID;                        // 0x0000010B
+extern intptr_t lGRZakoMapFileID;                           // 0x0000010C
+extern intptr_t lGRMetalMapFileID;                          // 0x0000010D
+extern intptr_t lGRYosterSmallMapFileID;                    // 0x0000010E
+extern intptr_t lGRBonus1MarioMapFileID;                    // 0x0000010F
+extern intptr_t lGRBonus1FoxMapFileID;                      // 0x00000110
+extern intptr_t lGRBonus1DonkeyMapFileID;                   // 0x00000111
+extern intptr_t lGRBonus1SamusMapFileID;                    // 0x00000112
+extern intptr_t lGRBonus1LuigiMapFileID;                    // 0x00000113
+extern intptr_t lGRBonus1LinkMapFileID;                     // 0x00000114
+extern intptr_t lGRBonus1YoshiMapFileID;                    // 0x00000115
+extern intptr_t lGRBonus1CaptainMapFileID;                  // 0x00000116
+extern intptr_t lGRBonus1KirbyMapFileID;                    // 0x00000117
+extern intptr_t lGRBonus1PikachuMapFileID;                  // 0x00000118
+extern intptr_t lGRBonus1PurinMapFileID;                    // 0x00000119
+extern intptr_t lGRBonus1NessMapFileID;                     // 0x0000011A
+extern intptr_t lGRBonus2MarioMapFileID;                    // 0x0000011B
+extern intptr_t lGRBonus2FoxMapFileID;                      // 0x0000011C
+extern intptr_t lGRBonus2DonkeyMapFileID;                   // 0x0000011D
+extern intptr_t lGRBonus2SamusMapFileID;                    // 0x0000011E
+extern intptr_t lGRBonus2LuigiMapFileID;                    // 0x0000011F
+extern intptr_t lGRBonus2LinkMapFileID;                     // 0x00000120
+extern intptr_t lGRBonus2YoshiMapFileID;                    // 0x00000121
+extern intptr_t lGRBonus2CaptainMapFileID;                  // 0x00000122
+extern intptr_t lGRBonus2KirbyMapFileID;                    // 0x00000123
+extern intptr_t lGRBonus2PikachuMapFileID;                  // 0x00000124
+extern intptr_t lGRBonus2PurinMapFileID;                    // 0x00000125
+extern intptr_t lGRBonus2NessMapFileID;                     // 0x00000126
+extern intptr_t lGRBonus3MapFileID;                         // 0x00000127
 
 extern intptr_t lGRBonus1MarioTargetsStart;					// 0x00001EB0
 extern intptr_t lGRBonus1MarioTargetsDObjDesc;				// 0x00002150

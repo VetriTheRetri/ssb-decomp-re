@@ -116,7 +116,7 @@ GObj* grZebesMakeAcid(void)
     gGRCommonStruct.zebes.acid_level_curr = dGRZebesAcidAttributes[ARRAY_COUNT(dGRZebesAcidAttributes) - 1].acid_level;
     gGRCommonStruct.zebes.acid_attr_id = 0;
 
-    gGRCommonStruct.zebes.attack_coll = lbRelocGetFileData(GRAttackColl*, ((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRCommonHeaderStart), &lGRZebesAcidHit);
+    gGRCommonStruct.zebes.attack_coll = lbRelocGetFileData(GRAttackColl*, ((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRCommonMapHeaderStart), &lGRZebesAcidHit);
 
     grZebesAcidSetRandomWait();
 

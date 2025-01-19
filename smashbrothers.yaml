@@ -322,7 +322,7 @@ segments:
       - { start: auto, type: .bss, name: sys/rdp,                  vram: 0x800466A0 }
       - { start: auto, type: .bss, name: sys/objmanager,           vram: 0x800466B0 }
       - { start: auto, type: .bss, name: sys/objdisplay,           vram: 0x80046FA0 }
-      - { start: auto, type:  bss, name: sys/audio,            vram: 0x800472D0 }
+      - { start: auto, type:  bss, name: sys/audio,                vram: 0x800472D0 }
       - { start: auto, type: .bss, name: sys/error,                vram: 0x8009DA00 }
       - { start: auto, type: .bss, name: libultra/sp/sprite,       vram: 0x8009EDC0 }
       - { start: auto, type:  bss, name: libultra/n_audio/n_env,   vram: 0x8009EDD0 }
@@ -1384,10 +1384,10 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x14D670, c, ovl30]
-      - [0x150040, .data, ovl30]
-      - [0x150530, .rodata, ovl30]
-      - { start: auto, type: .bss, vram: 0x80134BD0, name: ovl30 }
+      - [0x14D670, c, mn/mnmaps/mnmaps]
+      - [0x150040, .data, mn/mnmaps/mnmaps]
+      - [0x150530, .rodata, mn/mnmaps/mnmaps]
+      - { start: auto, type: .bss, name: mn/mnmaps/mnmaps }
 
   - name: ovl15
     type: code
@@ -1942,7 +1942,6 @@ segments:
   - name: fgm.ucd
     type: bin # FGM microcode
     start: 0xF5A9C0
-
 
   # - [0xF5F4E0] end of content
   - [0x1000000]

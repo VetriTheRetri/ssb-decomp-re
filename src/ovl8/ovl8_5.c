@@ -2,19 +2,25 @@
 #include <sys/develop.h>
 #include <db/debug.h>
 
+// TODO: move to h file
+typedef struct dbUnknown5
+{
+    u8 dbUnknown5_filler_0x0[0x20];
+    f32 dbUnknown5_20;
+} dbUnknown5;
 
-dbUnknownLinkStruct* func_ovl8_80373350(s32 arg0, s32 arg1) 
+dbUnknownLinkStruct* func_ovl8_80373350(s32 arg0, s32 arg1)
 {
 	dbUnknownLinkStruct *temp_v0;
 	dbUnknownLinkStruct *var_v1;
 
 	temp_v0 = func_ovl8_803717A0(0xA4);
-	if (temp_v0 != NULL) 
+	if (temp_v0 != NULL)
 	{
 		func_ovl8_8037345C(temp_v0, 0, 0, arg1, arg0);
 		var_v1 = temp_v0;
 	}
-	else 
+	else
 		var_v1 = 0;
 
 	return var_v1;
@@ -57,7 +63,11 @@ f32 func_ovl8_8037368C(Vec3f* arg0)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_5/func_ovl8_803737DC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_5/func_ovl8_80373828.s")
+s32 func_ovl8_80373828(dbUnknown5* arg0, s32 arg1)
+{
+    arg0->dbUnknown5_20 = 0.0f;
+    return 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_5/func_ovl8_8037383C.s")
 
@@ -79,7 +89,7 @@ void func_ovl8_80373ABC(s32 arg0) {}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_5/func_ovl8_80373B84.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_5/func_ovl8_80373BC0.s")
+void func_ovl8_80373BC0(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_5/func_ovl8_80373BD4.s")
 

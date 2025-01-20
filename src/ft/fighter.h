@@ -8,6 +8,17 @@
 extern u32 lFTEmblemSpritesFileID;							// 0x00000014
 extern u32 lFTEmblemModelsFileID;							// 0x00000023
 
+extern intptr_t lFTEmblemSpritesMarioSprite;				// 0x00000618
+extern intptr_t lFTEmblemSpritesDonkeySprite;				// 0x00000C78
+extern intptr_t lFTEmblemSpritesFoxSprite;					// 0x00001938
+extern intptr_t lFTEmblemSpritesKirbySprite;				// 0x00001F98
+extern intptr_t lFTEmblemSpritesMetroidSprite;				// 0x000012D8
+extern intptr_t lFTEmblemSpritesZeldaSprite;				// 0x000025F8
+extern intptr_t lFTEmblemSpritesYoshiSprite;				// 0x00002C58
+extern intptr_t lFTEmblemSpritesFZeroSprite;				// 0x000032B8
+extern intptr_t lFTEmblemSpritesPMonstersSprite;			// 0x00003918
+extern intptr_t lFTEmblemSpritesMotherSprite;				// 0x00003F78
+
 extern intptr_t lFTEmblemModelsMarioMObjSub;				// 0x00000000
 extern intptr_t lFTEmblemModelsMarioDObjDesc;				// 0x00000990
 extern intptr_t lFTEmblemModelsMarioMatAnimJoint;			// 0x00000A14

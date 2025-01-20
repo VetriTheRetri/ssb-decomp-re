@@ -18,7 +18,11 @@ extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 // 0x801344D0
 u32 dMNMapsFileIDs[/* */] =
 {
-	&lFTEmblemSpritesFileID, 0x15, &lMNMapsFileID, &lMNCommonFontsFileID, &lGRWallpaperTrainingBlackFileID
+	&lFTEmblemSpritesFileID,
+	&lMNSelectCommonFileID,
+	&lMNMapsFileID,
+	&lMNCommonFontsFileID,
+	&lGRWallpaperTrainingBlackFileID
 };
 
 // 0x801344E4
@@ -126,7 +130,7 @@ LBFileNode sMNMapsStatusBuffer[30];
 LBFileNode sMNMapsForceStatusBuffer[30];
 
 // 0x80134E10
-void *sMNMapsFiles[5];
+void *sMNMapsFiles[ARRAY_COUNT(dMNMapsFileIDs)];
 
 // 0x80134E24
 void *sMNMapsModelHeap0;
@@ -508,8 +512,11 @@ void mnMapsMakeIcons(void)
 
 	intptr_t offsets[/* */] =
 	{
-		0x00004d88, 0x00005b68, 0x00006948, 0x00007728, 0x00008508,
-		0x000092e8, 0x0000bc88, 0x0000a0c8, 0x0000aea8, 0x0000cb10
+		&lMNMapsCastleIconSprite, 	&lMNMapsSectorIconSprite,
+		&lMNMapsJungleIconSprite, 	&lMNMapsZebesIconSprite,
+		&lMNMapsHyruleIconSprite, 	&lMNMapsYosterIconSprite,
+		&lMNMapsPupupuIconSprite,	&lMNMapsYamabukiIconSprite,
+		&lMNMapsInishieIconSprite,	&lMNMapsRandomIconSprite
 	};
 	s32 x;
 	s32 i;

@@ -465,6 +465,7 @@ void sc1PIntroMakeVSName(s32 stage)
         &lSC1PIntroVSNameBossSprite,
         0x0
     };
+
     sSC1PIntroVSNameGObj = gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_PRIORITY_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 27, GOBJ_PRIORITY_DEFAULT, ~0);
     
@@ -703,6 +704,7 @@ f32 sc1PIntroGetFighterVelocityZ(s32 card_anim_frame_id)
         50.0F,
         50.0F
     };
+    
     return vel_z[card_anim_frame_id];
 }
 

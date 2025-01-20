@@ -573,8 +573,8 @@ typedef enum FTCommonStatus
     nFTCommonStatusThrownMarioB,
     nFTCommonStatusThrownCommon,
     nFTCommonStatusThrownFoxF,
-    nFTCommonStatusThrownUnknown,
-    nFTCommonStatusThrownEnd = nFTCommonStatusThrownUnknown,
+    nFTCommonStatusThrownFoxB,
+    nFTCommonStatusThrownEnd = nFTCommonStatusThrownFoxB,
 
     nFTCommonStatusAppeal,
     nFTCommonStatusAttack11,

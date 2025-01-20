@@ -18,6 +18,18 @@ extern intptr_t lMNMapsYosterNameSprite;		// 0x00000D58
 extern intptr_t lMNMapsYamabukiNameSprite;		// 0x00000F98
 extern intptr_t lMNMapsPupupuNameSprite;		// 0x000011D8
 extern intptr_t lMNMapsInishieNameSprite;		// 0x00001418
+
+extern intptr_t lMNMapsCastleIconSprite;		// 0x00004D88
+extern intptr_t lMNMapsSectorIconSprite;		// 0x00005B68
+extern intptr_t lMNMapsJungleIconSprite;		// 0x00006948
+extern intptr_t lMNMapsZebesIconSprite;			// 0x00007728
+extern intptr_t lMNMapsHyruleIconSprite;		// 0x00008508
+extern intptr_t lMNMapsYosterIconSprite;		// 0x000092E8
+extern intptr_t lMNMapsPupupuIconSprite;		// 0x0000BC88
+extern intptr_t lMNMapsYamabukiIconSprite;		// 0x0000A0C8
+extern intptr_t lMNMapsInishieIconSprite;		// 0x0000AEA8
+extern intptr_t lMNMapsRandomIconSprite;		// 0x0000CB10
+
 extern intptr_t lMNMapsCursorSprite; 			// 0x00001AB8
 extern intptr_t lMNMapsLogoSprite; 				// 0x00001DD8
 extern intptr_t lMNMapsStageSelectSprite; 		// 0x000026A0

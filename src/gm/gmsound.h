@@ -40,7 +40,7 @@ typedef enum gmMusicID
 	nSYAudioBGMYoster,						// Yoshi's Island
 	nSYAudioBGMHyrule,						// Hyrule Castle
 	nSYAudioBGMBattleSelect,				// Character / Stage Select
-	nSYAudioBGMUnusedClear,					// Unused fanfare?
+	nSYAudioBGMWinDefault,					// Default victory fanfare? Used in default switch case for results screen winner theme
 	nSYAudioBGMWinMario,					// Mario Victory
 	nSYAudioBGMWinMetroid,					// Samus Victory
 	nSYAudioBGMWinDonkey,					// Donkey Kong Victory
@@ -49,13 +49,13 @@ typedef enum gmMusicID
 	nSYAudioBGMWinMother,					// Ness Victory
 	nSYAudioBGMWinYoshi,					// Yoshi Victory
 	nSYAudioBGMWinFZero,					// Captain Falcon Victory
-	nSYAudioBGMWinMonster,					// Pokémon Victory
+	nSYAudioBGMWinPMonsters,				// Pokémon Victory
 	nSYAudioBGMWinZelda,					// Link Victory
 	nSYAudioBGMResults,						// VS Mode Results Screen
 	nSYAudioBGMBossStage,					// Final Stage Card (VS. Master Hand)
 	nSYAudioBGMBossEntry,					// Master Hand Appears
 	nSYAudioBGMLast,						// Final Destination
-	nSYAudioBGM1PBonusStage,					// Bonus Stage
+	nSYAudioBGM1PBonusStage,				// Bonus Stage
 	nSYAudioBGM1PStageClear,				// 1P Game Stage Cleared
 	nSYAudioBGM1PBonusStageClear,			// Bonus Stage Cleared
 	nSYAudioBGM1PGameClear,					// Final Stage Cleared
@@ -64,7 +64,7 @@ typedef enum gmMusicID
 	nSYAudioBGM1PGameOver,					// Game Over
 	nSYAudioBGMOpening,						// Opening Movie
 	nSYAudioBGMExplain,						// How to Play
-	nSYAudioBGM1PIntro,					// 1P Game Stage Cards
+	nSYAudioBGM1PIntro,						// 1P Game Stage Cards
 	nSYAudioBGMZako,						// Battlefield
 	nSYAudioBGMMetal,						// Meta Crystal
 	nSYAudioBGMEnding,						// Ending Movie

@@ -787,7 +787,7 @@ void mn1PModeFuncStart(void)
     
     if (gSCManagerSceneData.scene_prev != nSCKindModeSelect)
     {
-        auPlaySong(0, nSYAudioBGMModeSelect);
+        syAudioPlaySong(0, nSYAudioBGMModeSelect);
     }
 }
 

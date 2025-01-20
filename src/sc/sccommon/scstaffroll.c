@@ -2131,7 +2131,7 @@ void scStaffrollFuncStart(void)
 	scStaffrollMakeCamera();
 
 	syAudioStopSongAll();
-	auPlaySong(0, nSYAudioBGMStaffroll);
+	syAudioPlaySong(0, nSYAudioBGMStaffroll);
 }
 
 // 0x8013A6C8

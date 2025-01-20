@@ -3134,7 +3134,7 @@ void mn1PGamePlayersFuncStart(void)
 
 	if (gSCManagerSceneData.scene_prev != nSCKindMaps)
 	{
-		auPlaySong(0, 0xA);
+		syAudioPlaySong(0, 0xA);
 	}
 	func_800269C0_275C0(0x1DFU);
 }

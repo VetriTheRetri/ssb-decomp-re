@@ -71,7 +71,7 @@ u32 dMNSoundTestMusicIDs[/* */] =
     nSYAudioBGMWinYoshi,
     nSYAudioBGMWinKirby,
     nSYAudioBGMWinFox,
-    nSYAudioBGMWinMonster,
+    nSYAudioBGMWinPMonsters,
     nSYAudioBGMWinFZero,
     nSYAudioBGMWinMother,
     nSYAudioBGMResults,
@@ -972,7 +972,7 @@ void mnSoundTestUpdateFunctions(void)
                 sMNSoundTestFadeOutWait = -1;
             }
             syAudioStopSongAll();
-            auPlaySong(0, dMNSoundTestMusicIDs[sMNSoundTestOptionSelectID[nMNSoundTestOptionMusic]]);
+            syAudioPlaySong(0, dMNSoundTestMusicIDs[sMNSoundTestOptionSelectID[nMNSoundTestOptionMusic]]);
             break;
 
         case nMNSoundTestOptionSound:

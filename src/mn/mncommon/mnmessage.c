@@ -360,7 +360,7 @@ void mnMessageFuncStart(void)
     mnMessageMakeExclaim();
     mnMessageMakeMessage(sMNMessageUnlockID);
 
-    auPlaySong(0, nSYAudioBGMMessage);
+    syAudioPlaySong(0, nSYAudioBGMMessage);
     func_800269C0_275C0(nSYAudioFGMDeadUpStar);
 }
 

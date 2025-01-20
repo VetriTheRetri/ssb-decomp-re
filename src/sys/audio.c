@@ -1149,7 +1149,7 @@ void syAudioStopSongAll(void)
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/audio/auPlaySong.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/audio/syAudioPlaySong.s")
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/audio/syAudioStopSong.s")
 
 

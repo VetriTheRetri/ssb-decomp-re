@@ -381,7 +381,7 @@ void sc1PChallengerFuncStart(void)
     sc1PChallengerMakeDecals();
     sc1PChallengerMakeFighter(sSC1PChallengerFighterKind);
     
-    auPlaySong(0, nSYAudioBGM1PChallenger);
+    syAudioPlaySong(0, nSYAudioBGM1PChallenger);
     func_800269C0_275C0(nSYAudioFGMDeadUpStar);
 }
 

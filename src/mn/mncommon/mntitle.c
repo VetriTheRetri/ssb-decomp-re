@@ -456,7 +456,7 @@ void mnTitleProceedDemoNext(void)
 	{
 	case nSCKindExplain:
 		gSCManagerSceneData.scene_curr = nSCKindCharacters;
-		auPlaySong(0, nSYAudioBGMExplain);
+		syAudioPlaySong(0, nSYAudioBGMExplain);
 		break;
 
 	case nSCKindModeSelect:

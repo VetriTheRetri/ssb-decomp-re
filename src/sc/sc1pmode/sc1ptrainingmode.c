@@ -1657,7 +1657,7 @@ void sc1PTrainingModeMakeMenuAll(void)
 void sc1PTrainingModeSetPlayDefaultBGM(void)
 {
 	gMPCollisionBGMDefault = nSYAudioBGMTrainingMode;
-	auPlaySong(0, gMPCollisionBGMDefault);
+	syAudioPlaySong(0, gMPCollisionBGMDefault);
 	gMPCollisionBGMCurrent = gMPCollisionBGMDefault;
 }
 

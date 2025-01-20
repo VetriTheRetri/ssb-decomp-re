@@ -2674,7 +2674,7 @@ void mnCharactersFuncStart(void)
 
 	if (gSCManagerSceneData.scene_prev == nSCKindData)
 	{
-		auPlaySong(0, nSYAudioBGMData);
+		syAudioPlaySong(0, nSYAudioBGMData);
 	}
 }
 

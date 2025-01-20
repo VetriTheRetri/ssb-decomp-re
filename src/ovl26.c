@@ -4263,7 +4263,7 @@ void mnVSPlayersFuncStart(void)
 
 	if (gSCManagerSceneData.scene_prev != nSCKindMaps)
 	{
-		auPlaySong(0, nSYAudioBGMBattleSelect);
+		syAudioPlaySong(0, nSYAudioBGMBattleSelect);
 	}
 	if (gSCManagerTransferBattleState.is_team_battle == FALSE)
 	{

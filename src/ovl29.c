@@ -2533,7 +2533,7 @@ void mn1PBonusPlayersFuncStart(void)
 	scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 
 	if (gSCManagerSceneData.scene_prev != nSCKindMaps)
-		auPlaySong(0, 0xA);
+		syAudioPlaySong(0, 0xA);
 }
 
 // 0x80137530

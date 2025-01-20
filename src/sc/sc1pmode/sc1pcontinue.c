@@ -1065,7 +1065,7 @@ void sc1PContinueFuncRun(GObj *gobj)
             sSC1PContinueOptionNoGameOverInputWait = sSC1PContinueTotalTimeTics + I_SEC_TO_TICS(1.5);
             sSC1PContinueOptionNoGameOverAutoWait = sSC1PContinueTotalTimeTics + I_SEC_TO_TICS(30);
 
-			auPlaySong(0, nSYAudioBGM1PGameOver);
+			syAudioPlaySong(0, nSYAudioBGM1PGameOver);
 			func_800269C0_275C0(nSYAudioVoiceAnnounceGameOver);
 		}
         if (sSC1PContinueStatus == 0)
@@ -1112,7 +1112,7 @@ void sc1PContinueFuncRun(GObj *gobj)
                     sSC1PContinueOptionNoGameOverInputWait = sSC1PContinueTotalTimeTics + I_SEC_TO_TICS(1.5);
                     sSC1PContinueOptionNoGameOverAutoWait = sSC1PContinueTotalTimeTics + I_SEC_TO_TICS(30);
 
-                    auPlaySong(0, nSYAudioBGM1PGameOver);
+                    syAudioPlaySong(0, nSYAudioBGM1PGameOver);
                     func_800269C0_275C0(nSYAudioVoiceAnnounceGameOver);
                     break;
                 }
@@ -1250,7 +1250,7 @@ void sc1PContinueFuncStart(void)
     scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 
     syAudioStopSongAll();
-    auPlaySong(0, nSYAudioBGM1PGameEndChoice);
+    syAudioPlaySong(0, nSYAudioBGM1PGameEndChoice);
 }
 
 // 0x80134238

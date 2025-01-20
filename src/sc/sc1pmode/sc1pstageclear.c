@@ -1998,28 +1998,28 @@ void sc1PStageClearFuncStart(void)
 	switch (sSC1PStageClear1PGameStage)
 	{
 	case nSC1PGameStageBoss:
-		auPlaySong(0, nSYAudioBGM1PGameClear);
+		syAudioPlaySong(0, nSYAudioBGM1PGameClear);
 		break;
 
 	case nSC1PGameStageBonus1:
 	case nSC1PGameStageBonus2:
 		if (gSCManagerSceneData.bonus_tasks_complete == 10)
 		{
-			auPlaySong(0, nSYAudioBGM1PBonusStageClear);
+			syAudioPlaySong(0, nSYAudioBGM1PBonusStageClear);
 		}
-		else auPlaySong(0, nSYAudioBGM1PBonusStageFailure);
+		else syAudioPlaySong(0, nSYAudioBGM1PBonusStageFailure);
 		break;
 
 	case nSC1PGameStageBonus3:
 		if (gSCManagerSceneData.spgame_time_remain != 0)
 		{
-			auPlaySong(0, nSYAudioBGM1PBonusStageClear);
+			syAudioPlaySong(0, nSYAudioBGM1PBonusStageClear);
 		}
-		else auPlaySong(0, nSYAudioBGM1PBonusStageFailure);
+		else syAudioPlaySong(0, nSYAudioBGM1PBonusStageFailure);
 		break;
 
 	default:
-		auPlaySong(0, nSYAudioBGM1PStageClear);
+		syAudioPlaySong(0, nSYAudioBGM1PStageClear);
 		break;
 	}
 }

@@ -2784,7 +2784,7 @@ void mn1PTrainingPlayersFuncStart(void)
 	scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 
 	if (gSCManagerSceneData.scene_prev != nSCKindMaps)
-		auPlaySong(0, 0xA);
+		syAudioPlaySong(0, 0xA);
 
 	func_800266A0_272A0();
 	func_800269C0_275C0(0x212U);

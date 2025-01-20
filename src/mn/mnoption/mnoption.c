@@ -1020,7 +1020,7 @@ void mnOptionFuncStart(void)
 
     if (gSCManagerSceneData.scene_prev == nSCKindScreenAdjust)
     {
-        auPlaySong(0, nSYAudioBGMModeSelect);
+        syAudioPlaySong(0, nSYAudioBGMModeSelect);
     }
 }
 

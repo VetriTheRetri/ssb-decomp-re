@@ -813,7 +813,7 @@ void mnDataFuncStart(void)
         (gSCManagerSceneData.scene_prev == nSCKindSoundTest)
     )
     {
-        auPlaySong(0, nSYAudioBGMModeSelect);
+        syAudioPlaySong(0, nSYAudioBGMModeSelect);
     }
 }
 

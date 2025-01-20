@@ -421,7 +421,7 @@ void dbCubeAudioThreadUpdate(GObj *gobj)
 	{
 		if ((dDBCubeIsBGMInterrupt != FALSE) && (syAudioGetRestarting() == 0))
 		{
-			auPlaySong(0, dDBCubeMenuValueBGM);
+			syAudioPlaySong(0, dDBCubeMenuValueBGM);
 
 			dDBCubeIsBGMInterrupt = FALSE;
 		}

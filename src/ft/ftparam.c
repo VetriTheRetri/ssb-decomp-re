@@ -111,7 +111,7 @@ void ftParamTryPlayItemMusic(u32 bgm_id)
 {
     if (ftParamGetItemMusicLength(bgm_id) >= ftParamGetItemMusicLength(gMPCollisionBGMCurrent))
     {
-        auPlaySong(0, bgm_id);
+        syAudioPlaySong(0, bgm_id);
 
         gMPCollisionBGMCurrent = bgm_id;
     }
@@ -149,7 +149,7 @@ void ftParamTryUpdateItemMusic(void)
     }
     if (bgm_play != gMPCollisionBGMCurrent)
     {
-        auPlaySong(0, bgm_play);
+        syAudioPlaySong(0, bgm_play);
         gMPCollisionBGMCurrent = bgm_play;
     }
 }

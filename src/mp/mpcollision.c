@@ -4036,7 +4036,7 @@ void mpCollisionSetPlayBGM(void)
 {
     gMPCollisionBGMDefault = gMPCollisionGroundData->bgm_id;
 
-    auPlaySong(0, gMPCollisionBGMDefault);
+    syAudioPlaySong(0, gMPCollisionBGMDefault);
 
     gMPCollisionBGMCurrent = gMPCollisionBGMDefault;
 }

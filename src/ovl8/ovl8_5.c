@@ -2,11 +2,33 @@
 #include <sys/develop.h>
 #include <db/debug.h>
 
+extern dbUnknownLinkStruct D_ovl8_803890A0;
+extern dbFunction D_ovl8_80389170;
+extern dbUnknownLink D_ovl8_803892C8;
+
 // TODO: move to h file
 typedef struct dbUnknown5
 {
-    u8 dbUnknown5_filler_0x0[0x20];
-    f32 dbUnknown5_20;
+    f32 unk_dbunk5_0x0;
+    f32 unk_dbunk5_0x4;
+    f32 unk_dbunk5_0x8;
+    s8 unk_dbunk5_0xC;
+    u8 filler_0x10[0x8];
+    dbFunction *db_func;
+    u8 filler_0x1C[0x2];
+    s16 unk_dbunk5_0x1E;
+    f32 unk_dbunk5_0x20;
+    s32 unk_dbunk5_0x24;
+    s32 unk_dbunk5_0x28;
+    s32 unk_dbunk5_0x2C;
+    dbUnknownLinkStruct *unk_dbunk5_0x30;
+    dbUnknownLink *unk_dbunk5_0x34;
+    dbUnknownLinkStruct *unk_dbunk5_0x38;
+    dbUnknownLinkStruct *unk_dbunk5_0x3C;
+    u8 filler_0x40[0x8];
+    dbUnknownLinkStruct *unk_dbunk5_0x48;
+    u8 filler_0x4C[0xC];
+    dbUnknownLinkStruct *unk_dbunk5_0x58;
 } dbUnknown5;
 
 typedef struct dbUnknown5_2
@@ -42,10 +64,50 @@ dbUnknownLinkStruct* func_ovl8_80373350(s32 arg0, s32 arg1)
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_5/func_ovl8_8037345C.s")
 
 // 0x8037354C
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_5/func_ovl8_8037354C.s")
+void func_ovl8_8037354C(dbUnknown5 *arg0, s32 arg1)
+{
+    if (arg0 != NULL)
+    {
+        arg0->unk_dbunk5_0x30 = &D_ovl8_803890A0;\
+        arg0->unk_dbunk5_0x38->db_func = &D_ovl8_80389170;
+        arg0->unk_dbunk5_0x34->unk_dbunklink_0x8 = &D_ovl8_803892C8;
+
+        if (arg1 != 0)
+        {
+            func_ovl8_8037C30C(arg0->unk_dbunk5_0x34, 0);
+            func_ovl8_803718C4(arg0->unk_dbunk5_0x38, 0);
+        }
+
+        if (arg1 & 1)
+        {
+            func_ovl8_803717C0(arg0);
+        }
+    }
+}
 
 // 0x803735E4
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_5/func_ovl8_803735E4.s")
+void func_ovl8_803735E4(dbUnknown5 *arg0)
+{
+    dbUnknown5* var_a1;
+
+    arg0->unk_dbunk5_0xC = 0;
+    arg0->unk_dbunk5_0x24 = 0;
+    arg0->unk_dbunk5_0x28 = 0;
+    arg0->unk_dbunk5_0x2C = 0;
+    arg0->unk_dbunk5_0x0 = 0.0f;
+    arg0->unk_dbunk5_0x20 = 0.0f;
+    arg0->unk_dbunk5_0x4 = 0.0f;
+    arg0->unk_dbunk5_0x8 = 1.0f;
+
+    var_a1 = arg0;
+
+    if (arg0 != NULL)
+    {
+        var_a1 = arg0->unk_dbunk5_0x38;
+    }
+
+    func_ovl8_8037C3AC(arg0->unk_dbunk5_0x34, var_a1);
+}
 
 // 0x80373640
 void func_ovl8_80373640(s32 arg0) {}
@@ -54,7 +116,11 @@ void func_ovl8_80373640(s32 arg0) {}
 void func_ovl8_80373648(s32 arg0) {}
 
 // 0x80373650
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_5/func_ovl8_80373650.s")
+void func_ovl8_80373650(dbUnknown5* arg0)
+{
+    dbFunction* temp_v0 = arg0->unk_dbunk5_0x30;
+    temp_v0[13].unk_dbfunc_0x4(temp_v0[13].unk_dbfunc_0x0 + (uintptr_t)arg0);
+}
 
 // 0x8037367C
 f32 func_ovl8_8037367C(f32* arg0)
@@ -89,7 +155,7 @@ f32 func_ovl8_8037368C(Vec3f* arg0)
 // 0x80373828
 s32 func_ovl8_80373828(dbUnknown5* arg0, s32 arg1)
 {
-    arg0->dbUnknown5_20 = 0.0f;
+    arg0->unk_dbunk5_0x20 = 0.0f;
     return 0;
 }
 

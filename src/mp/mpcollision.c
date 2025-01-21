@@ -858,7 +858,7 @@ sb32 mpCollisionCheckGroundLineCollisionSame(Vec3f *position, Vec3f *translate, 
                 }
                 else if (gMPCollisionVertexInfo->vertex_info[line_id].coll_pos_next < vdist1)
                 {
-                    goto lbl_break; // Bruhhhhhhhhhhhhhhh
+                    goto l_break; // Bruhhhhhhhhhhhhhhh
                 }
                 else
                 {
@@ -933,7 +933,7 @@ sb32 mpCollisionCheckGroundLineCollisionSame(Vec3f *position, Vec3f *translate, 
                     }
                 }
             }
-        lbl_break: // BRUHHHHHHHHHHHHHHHHH
+        l_break: // BRUHHHHHHHHHHHHHHHHH
             continue;
         }
     }
@@ -1020,7 +1020,7 @@ sb32 mpCollisionCheckGroundLineCollisionDiff(Vec3f *position, Vec3f *translate, 
                 }
                 if (gMPCollisionVertexInfo->vertex_info[line_id].coll_pos_next < vdist1)
                 {
-                    goto lbl_break; // Bruhhhhhhhhhhhhhhh
+                    goto l_break; // Bruhhhhhhhhhhhhhhh
                 }
                 else
                 {
@@ -1095,7 +1095,7 @@ sb32 mpCollisionCheckGroundLineCollisionDiff(Vec3f *position, Vec3f *translate, 
                     }
                 }
             }
-        lbl_break: // BRUHHHHHHHHHHHHHHHHH
+        l_break: // BRUHHHHHHHHHHHHHHHHH
             continue;
         }
     }
@@ -1362,7 +1362,7 @@ sb32 mpCollisionCheckCeilLineCollisionSame(Vec3f *position, Vec3f *translate, Ve
                 }
                 else if (gMPCollisionVertexInfo->vertex_info[line_id].coll_pos_prev > vdist2)
                 {
-                    goto lbl_break; // Bruhhhhhhhhhhhhhhh
+                    goto l_break; // Bruhhhhhhhhhhhhhhh
                 }
                 else
                 {
@@ -1437,7 +1437,7 @@ sb32 mpCollisionCheckCeilLineCollisionSame(Vec3f *position, Vec3f *translate, Ve
                     }
                 }
             }
-        lbl_break: // BRUHHHHHHHHHHHHHHHHH
+        l_break: // BRUHHHHHHHHHHHHHHHHH
             continue;
         }
     }
@@ -1524,7 +1524,7 @@ sb32 mpCollisionCheckCeilLineCollisionDiff(Vec3f *position, Vec3f *translate, Ve
                 }
                 if (gMPCollisionVertexInfo->vertex_info[line_id].coll_pos_prev > vdist2)
                 {
-                    goto lbl_break; // Bruhhhhhhhhhhhhhhh
+                    goto l_break; // Bruhhhhhhhhhhhhhhh
                 }
                 else
                 {
@@ -1599,7 +1599,7 @@ sb32 mpCollisionCheckCeilLineCollisionDiff(Vec3f *position, Vec3f *translate, Ve
                     }
                 }
             }
-        lbl_break: // BRUHHHHHHHHHHHHHHHHH
+        l_break: // BRUHHHHHHHHHHHHHHHHH
             continue;
         }
     }
@@ -1682,7 +1682,7 @@ sb32 mpCollisionCheckRWallLineCollisionSame(Vec3f *position, Vec3f *translate, V
                 }
                 else if (gMPCollisionVertexInfo->vertex_info[line_id].coll_pos_next < vdist1)
                 {
-                    goto lbl_break; // Bruhhhhhhhhhhhhhhh
+                    goto l_break; // Bruhhhhhhhhhhhhhhh
                 }
                 else
                 {
@@ -1757,7 +1757,7 @@ sb32 mpCollisionCheckRWallLineCollisionSame(Vec3f *position, Vec3f *translate, V
                     }
                 }
             }
-        lbl_break: // BRUHHHHHHHHHHHHHHHHH
+        l_break: // BRUHHHHHHHHHHHHHHHHH
             continue;
         }
     }
@@ -2005,7 +2005,7 @@ sb32 mpCollisionCheckRWallLineCollisionDiff(Vec3f *position, Vec3f *translate, V
                 }
                 else if (gMPCollisionVertexInfo->vertex_info[line_id].coll_pos_next < vdist1)
                 {
-                    goto lbl_break; // Bruhhhhhhhhhhhhhhh
+                    goto l_break; // Bruhhhhhhhhhhhhhhh
                 }
                 else
                 {
@@ -2080,7 +2080,7 @@ sb32 mpCollisionCheckRWallLineCollisionDiff(Vec3f *position, Vec3f *translate, V
                     }
                 }
             }
-        lbl_break: // BRUHHHHHHHHHHHHHHHHH
+        l_break: // BRUHHHHHHHHHHHHHHHHH
             continue;
         }
     }
@@ -2223,7 +2223,7 @@ sb32 mpCollisionCheckLWallLineCollisionSame(Vec3f *position, Vec3f *translate, V
                 }
                 else if (gMPCollisionVertexInfo->vertex_info[line_id].coll_pos_prev > vdist2)
                 {
-                    goto lbl_break; // Bruhhhhhhhhhhhhhhh
+                    goto l_break; // Bruhhhhhhhhhhhhhhh
                 }
                 else
                 {
@@ -2298,7 +2298,7 @@ sb32 mpCollisionCheckLWallLineCollisionSame(Vec3f *position, Vec3f *translate, V
                     }
                 }
             }
-        lbl_break: // BRUHHHHHHHHHHHHHHHHH
+        l_break: // BRUHHHHHHHHHHHHHHHHH
             continue;
         }
     }
@@ -2511,7 +2511,7 @@ sb32 mpCollisionCheckLWallLineCollisionDiff(Vec3f *position, Vec3f *translate, V
                 }
                 else if (gMPCollisionVertexInfo->vertex_info[line_id].coll_pos_prev > vdist2)
                 {
-                    goto lbl_break; // Bruhhhhhhhhhhhhhhh
+                    goto l_break; // Bruhhhhhhhhhhhhhhh
                 }
                 else
                 {
@@ -2586,7 +2586,7 @@ sb32 mpCollisionCheckLWallLineCollisionDiff(Vec3f *position, Vec3f *translate, V
                     }
                 }
             }
-        lbl_break: // BRUHHHHHHHHHHHHHHHHH
+        l_break: // BRUHHHHHHHHHHHHHHHHH
             continue;
         }
     }

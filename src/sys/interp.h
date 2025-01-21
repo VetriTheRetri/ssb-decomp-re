@@ -2,6 +2,7 @@
 #define _SYINTERP_H_
 
 #include <ssb_types.h>
+#include <macros.h>
 #include <PR/ultratypes.h>
 
 typedef struct SYInterpDesc

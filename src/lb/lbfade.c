@@ -78,7 +78,7 @@ void lbFadeMakeActor(u32 id, s32 link, u32 link_priority, SYColorRGBA *color, s3
 {
     GObj *gobj = gcMakeGObjSPAfter(id, NULL, link, GOBJ_PRIORITY_DEFAULT);
 
-    func_80009F74(gobj, lbFadeFuncDisplay, link_priority, 0, -1);
+    func_80009F74(gobj, lbFadeFuncDisplay, link_priority, 0, ~0);
     gcAddGObjProcess(gobj, lbFadeProcUpdate, nGCProcessKindFunc, 0);
     
     sLBFadeColor = *color;

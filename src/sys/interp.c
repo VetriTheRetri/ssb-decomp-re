@@ -1,165 +1,141 @@
-#include "common.h"
-#include "interp.h"
+#include <sys/interp.h>
+#include <PR/gu.h>
 
 // Biquadrate; easier to make a symbol than quartic (QT looks familiar to me)
 #define BIQUAD(x) ((x) * (x) * (x) * (x))
 
 // Catmull-Rom cubic spline
-#ifdef NON_MATCHING
 void syInterpCatromCubicSpline(Vec3f *out, Vec3f *ctrl, f32 s, f32 t)
 {
-    #define BASIS1(t, s) ((-CUBE((t)) + 2.0F * SQUARE((t)) - (t)) * (s))
-    #define BASIS2(t, s) ((2.0F - (s)) * CUBE((t)) + ((s)-3.0F) * SQUARE((t)) + 1.0F)
-    #define BASIS3(t, s) (((s)-2.0F) * CUBE((t)) + (3.0F - 2.0F * (s)) * SQUARE((t)) + (s) * (t))
-    #define BASIS4(t, s) ((CUBE((t)) - SQUARE((t))) * (s))
+    Vec3f *lctrl = ctrl;
+    f32 sqt = SQUARE(t);
+    f32 w0, w1, w2, w3;
+    f32 cbt = sqt * t;
 
-    f32 b1, b2, b3, b4;
+    w0 = (2.0F * sqt - cbt - t) * s;
+    w1 = (2.0F - s) * cbt + (s - 3.0F) * sqt + 1.0F;
+    w2 = (s - 2.0F) * cbt + (3.0F - 2.0F * s) * sqt + s * t;
+    w3 = (cbt - sqt) * s;
 
-    b1 = BASIS1(t, s);
-    b2 = BASIS2(t, s);
-    b3 = BASIS3(t, s);
-    b4 = BASIS4(t, s);
-
-    out->x = ctrl[0].x * BASIS1(t, s) + ctrl[1].x * BASIS2(t, s) + ctrl[2].x * BASIS3(t, s)
-           + ctrl[3].x * BASIS4(t, s);
-
-    out->y = ctrl[0].y * BASIS1(t, s) + ctrl[1].y * BASIS2(t, s) + ctrl[2].y * BASIS3(t, s)
-           + ctrl[3].y * BASIS4(t, s);
-
-    out->z = ctrl[0].z * BASIS1(t, s) + ctrl[1].z * BASIS2(t, s) + ctrl[2].z * BASIS3(t, s)
-           + ctrl[3].z * BASIS4(t, s);
-
-    #undef BASIS1
-    #undef BASIS2
-    #undef BASIS3
-    #undef BASIS4
+    out->x = lctrl[0].x * w0 + lctrl[1].x * w1 + lctrl[2].x * w2 + lctrl[3].x * w3;
+    out->y = lctrl[0].y * w0 + lctrl[1].y * w1 + lctrl[2].y * w2 + lctrl[3].y * w3;
+    out->z = lctrl[0].z * w0 + lctrl[1].z * w1 + lctrl[2].z * w2 + lctrl[3].z * w3;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/interp/syInterpCatromCubicSpline.s")
-#endif
 
 // quadratic spline?
 void syInterpQuadSpline(Vec3f *out, Vec3f *ctrl, f32 s, f32 t)
 {
-    f32 tSq;
-    f32 b2;
-    f32 b3;
-    f32 b1;
+    f32 sqt;
+    f32 w1;
+    f32 w2;
+    f32 w0;
     f32 temp;
-    f32 other;
+    f32 w3;
 
-    tSq = t * t;
-    b1 = ((((-3.0F) * tSq) + (4.0F * t)) - 1.0F) * s;
+    sqt = t * t;
+    w0 = ((((-3.0F) * sqt) + (4.0F * t)) - 1.0F) * s;
     temp = s - 3.0F;
-    other = s;
-    b2 = (((2.0F - other) * 3.0F) * tSq) + ((2.0F * temp) * t);
-    temp = 3.0F - (2.0F * other);
-    b3 = ((((other - 2.0F) * 3.0F) * tSq) + ((2.0F * temp) * t)) + other;
-    other = ((3.0F * tSq) - (2.0F * t)) * other;
+    w3 = s;
+    w1 = (((2.0F - w3) * 3.0F) * sqt) + ((2.0F * temp) * t);
+    temp = 3.0F - (2.0F * w3);
+    w2 = ((((w3 - 2.0F) * 3.0F) * sqt) + ((2.0F * temp) * t)) + w3;
+    w3 = ((3.0F * sqt) - (2.0F * t)) * w3;
 
-    out->x = (ctrl[0].x * b1) + (ctrl[1].x * b2) + (ctrl[2].x * b3) + (ctrl[3].x * other);
-    out->y = (ctrl[0].y * b1) + (ctrl[1].y * b2) + (ctrl[2].y * b3) + (ctrl[3].y * other);
-    out->z = (ctrl[0].z * b1) + (ctrl[1].z * b2) + (ctrl[2].z * b3) + (ctrl[3].z * other);
+    out->x = (ctrl[0].x * w0) + (ctrl[1].x * w1) + (ctrl[2].x * w2) + (ctrl[3].x * w3);
+    out->y = (ctrl[0].y * w0) + (ctrl[1].y * w1) + (ctrl[2].y * w2) + (ctrl[3].y * w3);
+    out->z = (ctrl[0].z * w0) + (ctrl[1].z * w1) + (ctrl[2].z * w2) + (ctrl[3].z * w3);
 }
 
 // some sort of bezier interpolation
-#ifdef NON_MATCHING
 void syInterpBezier3Points(Vec3f *out, Vec3f *ctrl, f32 t)
 {
-    #define BASIS1(t) ((1.0F / 6.0F) * (CUBE(1.0F - t)))
-    #define BASIS2(t) ((1.0F / 6.0F) * (((3.0F * CUBE(t)) - (6.0F * SQUARE(t))) + 4.0F))
-    #define BASIS3(t) ((1.0F / 6.0F) * ((((SQUARE(t) - CUBE(t)) + t) * 3.0F) + 1.0F))
-    #define BASIS4(t) ((1.0F / 6.0F) * CUBE(t))
+    Vec3f *lctrl = ctrl;
+    f32 subt;
+    f32 cbt;
+    f32 w0, w1, w2, w3;
+    f32 sqt;
 
-    f32 b1, b2, b3, b4;
+    subt = 1.0F - t;
+    sqt = SQUARE(t);
+    cbt = sqt * t;
 
-    b4 = BASIS4(t);
-    b1 = BASIS1(t);
-    b2 = BASIS2(t);
-    b3 = BASIS3(t);
+    w0 = (1.0F / 6.0F) * subt * subt * subt;
+    w1 = (1.0F / 6.0F) * (3.0F * cbt - 6.0F * sqt + 4.0F);
+    w2 = (1.0F / 6.0F) * (3.0F * (sqt - cbt + t) + 1.0F);
+    w3 = (1.0F / 6.0F) * cbt;
 
-    out->x = ctrl[0].x * b1 + ctrl[1].x * b2 + ctrl[2].x * b3 + ctrl[3].x * b4;
-    out->y = ctrl[0].y * b1 + ctrl[1].y * b2 + ctrl[2].y * b3 + ctrl[3].y * b4;
-    out->z = ctrl[0].z * b1 + ctrl[1].z * b2 + ctrl[2].z * b3 + ctrl[3].z * b4;
-
-    #undef BASIS1
-    #undef BASIS2
-    #undef BASIS3
-    #undef BASIS4
+    out->x = lctrl[0].x * w0 + lctrl[1].x * w1 + lctrl[2].x * w2 + lctrl[3].x * w3;
+    out->y = lctrl[0].y * w0 + lctrl[1].y * w1 + lctrl[2].y * w2 + lctrl[3].y * w3;
+    out->z = lctrl[0].z * w0 + lctrl[1].z * w1 + lctrl[2].z * w2 + lctrl[3].z * w3;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/interp/syInterpBezier3Points.s")
-#endif
 
 // quadratic bezier with four control points (not three?)
 void syInterpBezier4Points(Vec3f* out, Vec3f* ctrl, f32 t)
 {
-    UNUSED s32 pad[2];
-    f32 tSq;
+    s32 unused[2];
+    f32 sqt;
     f32 mt;
-    f32 b2;
-    f32 b3;
-    f32 b4;
-    f32 b1;
+    f32 w1;
+    f32 w2;
+    f32 w3;
+    f32 w0;
 
-    tSq = t * t;
-    b1 = 1.0F - t;
-    b4 = -0.5f * b1 * b1;
-    mt = ((3.0F * tSq) - (4.0F * t)) * 0.5f;
-    b2 = ((-3.0F * tSq) + (2.0F * t) + 1.0F) * 0.5f;
-    b3 = 0.5f * tSq;
+    sqt = t * t;
+    w0 = 1.0F - t;
+    w3 = -0.5F * w0 * w0;
+    mt = ((3.0F * sqt) - (4.0F * t)) * 0.5F;
+    w1 = ((-3.0F * sqt) + (2.0F * t) + 1.0F) * 0.5F;
+    w2 = 0.5F * sqt;
 
-    out->x = (ctrl[0].x * b4) + (ctrl[1].x * mt) + (ctrl[2].x * b2) + (ctrl[3].x * b3);
-    out->y = (ctrl[0].y * b4) + (ctrl[1].y * mt) + (ctrl[2].y * b2) + (ctrl[3].y * b3);
-    out->z = (ctrl[0].z * b4) + (ctrl[1].z * mt) + (ctrl[2].z * b2) + (ctrl[3].z * b3);
+    out->x = (ctrl[0].x * w3) + (ctrl[1].x * mt) + (ctrl[2].x * w1) + (ctrl[3].x * w2);
+    out->y = (ctrl[0].y * w3) + (ctrl[1].y * mt) + (ctrl[2].y * w1) + (ctrl[3].y * w2);
+    out->z = (ctrl[0].z * w3) + (ctrl[1].z * mt) + (ctrl[2].z * w1) + (ctrl[3].z * w2);
 }
 
 // cubic bezier with scale factor of 3?
-#ifdef NON_MATCHING
 void syInterpCubicBezierScale(Vec3f *out, Vec3f *ctrl, f32 t)
 {
-    f32 mt;
-    f32 tSq;
-    f32 b1;
-    f32 b2;
-    f32 b3;
-    f32 b4;
+    f32 sqt;
+    f32 w1;
+    f32 w2;
+    f32 w3;
+    f32 w0;
+    f32 subt;
+    f32 sqsubt;
 
-    tSq = SQUARE(t);
-    mt  = 1.0F - t;
+    subt = 1.0F - t;
+    sqt = SQUARE(t);
+    sqsubt = SQUARE(subt);
 
-    b4 = CUBE(t);
-    b1 = CUBE(mt);
-    b2 = 3.0F * t * CUBE(mt);
-    b3 = 3.0F * tSq * mt;
+    w0 = sqsubt * subt;
+    w1 = 3.0F * t * sqsubt;
+    w2 = 3.0F * sqt * subt;
+    w3 = sqt * t;
 
-    out->x = (ctrl[3].x * b4) + ((ctrl[0].x * b1) + (ctrl[1].x * b2) + (ctrl[2].x * b3));
-    out->y = (ctrl[3].y * b4) + ((ctrl[0].y * b1) + (ctrl[1].y * b2) + (ctrl[2].y * b3));
-    out->z = (ctrl[3].z * b4) + ((ctrl[0].z * b1) + (ctrl[1].z * b2) + (ctrl[2].z * b3));
+    out->x = ctrl[0].x * w0 + ctrl[1].x * w1 + ctrl[2].x * w2 + ctrl[3].x * w3;
+    out->y = ctrl[0].y * w0 + ctrl[1].y * w1 + ctrl[2].y * w2 + ctrl[3].y * w3;
+    out->z = ctrl[0].z * w0 + ctrl[1].z * w1 + ctrl[2].z * w2 + ctrl[3].z * w3;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/interp/syInterpCubicBezierScale.s")
-#endif
 
 // four point quadratic bezier with scale of 3?
 void syInterpQuadBezier4Points(Vec3f* out, Vec3f* ctrl, f32 t)
 {
     f32 mt;
-    f32 b1;
-    f32 b2;
-    f32 b3;
-    f32 b4;
+    f32 w0;
+    f32 w1;
+    f32 w2;
+    f32 w3;
 
     mt = t - 1.0F;
-    b4 = -3.0F * mt * mt;
-    b1 = SQUARE(t);
-    b1 = 3.0F * b1;
-    b2 = ((1.0F - (4.0F * t)) + b1) * 3.0F;
-    b3 = ((2.0F * t) - b1) * 3.0F;
+    w3 = -3.0F * mt * mt;
+    w0 = SQUARE(t);
+    w0 = 3.0F * w0;
+    w1 = ((1.0F - (4.0F * t)) + w0) * 3.0F;
+    w2 = ((2.0F * t) - w0) * 3.0F;
 
-    out->x = (ctrl[0].x * b4) + (ctrl[1].x * b2) + (ctrl[2].x * b3) + (ctrl[3].x * b1);
-    out->y = (ctrl[0].y * b4) + (ctrl[1].y * b2) + (ctrl[2].y * b3) + (ctrl[3].y * b1);
-    out->z = (ctrl[0].z * b4) + (ctrl[1].z * b2) + (ctrl[2].z * b3) + (ctrl[3].z * b1);
+    out->x = (ctrl[0].x * w3) + (ctrl[1].x * w1) + (ctrl[2].x * w2) + (ctrl[3].x * w0);
+    out->y = (ctrl[0].y * w3) + (ctrl[1].y * w1) + (ctrl[2].y * w2) + (ctrl[3].y * w0);
+    out->z = (ctrl[0].z * w3) + (ctrl[1].z * w1) + (ctrl[2].z * w2) + (ctrl[3].z * w0);
 }
 
 

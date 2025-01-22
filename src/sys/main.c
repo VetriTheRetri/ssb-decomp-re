@@ -35,18 +35,27 @@ void __osSetWatchLo(u32);
 #define THREAD5_PRI 50
 #define THREAD6_PRI 115
 
-// data, fake values for now
+extern uintptr_t scmanager_ROM_START;
+extern uintptr_t scmanager_ROM_END;
+extern uintptr_t scmanager_VRAM;
+extern uintptr_t scmanager_TEXT_START;
+extern uintptr_t scmanager_TEXT_END;
+extern uintptr_t scmanager_DATA_START;
+extern uintptr_t scmanager_RODATA_END;
+extern uintptr_t scmanager_BSS_START;
+extern uintptr_t scmanager_BSS_END;
+
 static struct SYOverlay OverlayManager =
 {
-    (u32)0x000406D0,
-    (u32)0x00043220,
-    (u32)0x800A1980,
-    (u32)0x800A1980,
-    (u32)0x800A3070,
-    (u32)0x800A3070,
-    (u32)0x800A44D0,
-    (u32)0x800A44D0,
-    (u32)0x800A5240};
+    (u32)&scmanager_ROM_START,
+    (u32)&scmanager_ROM_END,
+    (u32)&scmanager_VRAM,
+    (u32)&scmanager_TEXT_START,
+    (u32)&scmanager_TEXT_END,
+    (u32)&scmanager_DATA_START,
+    (u32)&scmanager_RODATA_END,
+    (u32)&scmanager_BSS_START,
+    (u32)&scmanager_BSS_END};
 u32 sNoThread5 = 0;
 
 // bss

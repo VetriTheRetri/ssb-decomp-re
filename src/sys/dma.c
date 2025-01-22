@@ -168,11 +168,13 @@ OSPiHandle* syDmaSramPiInit(void)
     return &sSYDmaSramPiHandle;
 }
 
+// 0x80002DA4
 void syDmaReadSram(uintptr_t rom_src, void *ram_dst, size_t size)
 {
     syDmaCopy(&sSYDmaSramPiHandle, rom_src, (uintptr_t)ram_dst, size, OS_READ);
 }
 
+// 0x80002DE0
 void syDmaWriteSram(void *ram_src, u32 rom_dst, size_t size)
 {
     syDmaCopy(&sSYDmaSramPiHandle, rom_dst, (uintptr_t)ram_src, size, OS_WRITE);

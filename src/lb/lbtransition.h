@@ -5,6 +5,8 @@
 #include <sys/obj.h>
 #include <lb/lbdef.h>
 
+extern LBTransitionDesc dLBTransitionDescs[11];
+
 extern uintptr_t lLBTransitionAeroplaneFileID;          // 0x00000028
 extern intptr_t  lLBTransitionAeroplaneDObjDesc;        // 0x0000B3F8
 extern intptr_t  lLBTransitionAeroplaneAnimJoint;       // 0x0000B710

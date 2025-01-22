@@ -1,7 +1,6 @@
 #include "common.h"
 
-#include <PR/libaudio.h>
-#include <n_audio/n_libaudio.h>
+#include <sys/audio.h>
 #include <sys/thread3.h>
 #include <sys/dma.h>
 

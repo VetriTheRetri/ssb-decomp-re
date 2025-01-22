@@ -2,6 +2,8 @@
 #define SYS_HAL_AUDIO_H
 
 #include <PR/ultratypes.h>
+#include <PR/libaudio.h>
+#include <n_audio/n_libaudio.h>
 
 extern s8 D_8003CB6D;
 extern u32 D_8009D2D0;

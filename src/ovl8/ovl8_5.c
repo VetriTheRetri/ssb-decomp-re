@@ -248,7 +248,16 @@ s32 func_ovl8_80373AC4(dbUnknown5* arg0, db4Bytes arg1)
 }
 
 // 0x80373B28
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_5/func_ovl8_80373B28.s")
+void func_ovl8_80373B28(dbUnknown5* arg0, db4Bytes arg1, s32 arg2)
+{
+    dbFunction* temp_v1;
+    s32 sp20;
+
+    temp_v1 = arg0->unk_dbunk5_0x38->db_func;
+    temp_v1[22].unk_dbfunc_0x4(temp_v1[22].unk_dbfunc_0x0 + (uintptr_t)arg0->unk_dbunk5_0x38, &sp20);
+
+    func_ovl8_80377168(arg1, &sp20);
+}
 
 // 0x80373B84
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_5/func_ovl8_80373B84.s")

@@ -91,6 +91,7 @@ void syDmaCopy(OSPiHandle *handle, uintptr_t physAddr, uintptr_t virtual, size_t
     }
 }
 
+// 0x80002BE4
 void syDmaLoadOverlay(struct SYOverlay *ovl)
 {
     if (((uintptr_t)ovl->ram_text_end - (uintptr_t)ovl->ram_text_start) != 0)
@@ -137,6 +138,7 @@ void syDmaLoadOverlay(struct SYOverlay *ovl)
     }
 }
 
+// 0x80002CA0
 void syDmaReadRom(uintptr_t rom_src, void *ram_dst, size_t size) 
 {
     syDmaCopy(gSYDmaRomPiHandle, rom_src, (uintptr_t)ram_dst, size, OS_READ);

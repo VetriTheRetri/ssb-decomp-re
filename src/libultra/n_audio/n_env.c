@@ -14,8 +14,7 @@ typedef struct alSoundEffect
 	u16 unk_0x16;
 	u16 unk_0x18;
 	u16 unk_0x1A;
-	u16 unk_0x1C;
-	u16 unk_0x1E;
+	s32* unk_0x1C;
 	u16 unk_0x20;
 	u16 unk_0x22;
 	u16 unk_0x24;
@@ -32,6 +31,10 @@ typedef struct Unk8009EE0C {
 	u8 pad2B[0x1C];
 	s16 unk48;
 } Unk8009EE0C;
+
+typedef struct UnkS32Wrapper {
+	s32 value;
+} UnkS32Wrapper;
 
 
 extern alSoundEffect D_8009EDD0_406D0;
@@ -74,7 +77,12 @@ void func_80026070_26C70(u8 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_80026958_27558.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_800269C0_275C0.s")
+s32 func_800269C0_275C0(UnkS32Wrapper arg0) {
+		arg0.value = arg0.value & 0xFFFF;
+		if (arg0.value >= (s32) D_8009EDD0_406D0.sfx_max)
+				return 0;
+		return func_80026958_27558(D_8009EDD0_406D0.unk_0x1C[arg0.value], arg0.value);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_80026A10_27610.s")
 

@@ -133,6 +133,7 @@ void syMainVerifyStackProbes(void)
     if (sThread5Stack[0] != STACK_PROBE_MAGIC) { syMainThreadStackOverflow(5); }
 }
 
+// 0x800005D8
 void syMainThread5(UNUSED void *arg) 
 {
     osCreateViManager(OS_PRIORITY_VIMGR);

@@ -791,7 +791,7 @@ void mnVSRecordDrawIndivGrid(void)
 }
 
 // 0x8013328C
-void mnVSRecordTableGridFuncDisplay(GObj *gobj)
+void mnVSRecordTableGridProcDisplay(GObj *gobj)
 {
 	s32 unused;
 
@@ -825,7 +825,7 @@ void mnVSRecordTableGridFuncDisplay(GObj *gobj)
 void mnVSRecordMakeStatsGrid(void)
 {
 	GObj *gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_PRIORITY_DEFAULT);
-	gcAddGObjDisplay(gobj, mnVSRecordTableGridFuncDisplay, 3, GOBJ_PRIORITY_DEFAULT, ~0);
+	gcAddGObjDisplay(gobj, mnVSRecordTableGridProcDisplay, 3, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
 // 0x80133438
@@ -1303,7 +1303,7 @@ GObj* mnVSRecordMakeBattleScoreTableHeaders(void)
 }
 
 // 0x801346D8
-void mnVSRecordRankingHighlightFuncDisplay(GObj *gobj)
+void mnVSRecordRankingHighlightProcDisplay(GObj *gobj)
 {
 	if (sMNVSRecordStatsKind == nMNVSRecordKindRanking)
 	{
@@ -1324,7 +1324,7 @@ void mnVSRecordRankingHighlightFuncDisplay(GObj *gobj)
 // 0x80134868
 void mnVSRecordMakeRankingHighlight(void)
 {
-	gcAddGObjDisplay(gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT), mnVSRecordRankingHighlightFuncDisplay, 2, GOBJ_PRIORITY_DEFAULT, ~0);
+	gcAddGObjDisplay(gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT), mnVSRecordRankingHighlightProcDisplay, 2, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
 // 0x801348B4
@@ -1931,7 +1931,7 @@ void mnVSRecordRedrawStats(s32 stats_kind)
 }
 
 // 0x80135D98
-void mnVSRecordFuncRun(GObj *gobj)
+void mnVSRecordProcRun(GObj *gobj)
 {
 	s32 unused;
 	s32 stick_range;
@@ -2179,7 +2179,7 @@ void mnVSRecordFuncStart(void)
 			0x10
 		)
 	);
-	gcMakeGObjSPAfter(0, mnVSRecordFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
+	gcMakeGObjSPAfter(0, mnVSRecordProcRun, 0, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 
 	mnVSRecordInitVars();

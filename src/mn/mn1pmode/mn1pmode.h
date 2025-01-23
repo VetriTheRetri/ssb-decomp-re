@@ -23,7 +23,7 @@ extern void mn1PModeMakeBonus1Practice(void);
 extern void mn1PModeMakeBonus2Practice(void);
 extern void func_ovl18_80132208(SObj *sobj);
 extern void func_ovl18_8013223C(void);
-extern void mn1PModeLabelsFuncDisplay(GObj *gobj);
+extern void mn1PModeLabelsProcDisplay(GObj *gobj);
 extern void mn1PModeMakeLabels(void);
 extern void mn1PModeMakeDecals(void);
 extern void mn1PModeMakeLink3Camera(void);
@@ -31,7 +31,7 @@ extern void mn1PModeMakeOptionsCamera(void);
 extern void mn1PModeMakeLabelsCamera(void);
 extern void mn1PModeMakeDecalsCamera(void);
 extern void mn1PModeInitVars(void);
-extern void mn1PModeFuncRun(GObj *gobj);
+extern void mn1PModeProcRun(GObj *gobj);
 extern void mn1PModeFuncStart(void);
 extern void mn1PModeStartScene(void);
 

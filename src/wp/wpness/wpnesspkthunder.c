@@ -444,7 +444,7 @@ GObj* wpNessPKThunderTrailMakeWeapon(GObj *head_gobj, Vec3f *pos, s32 trail_inde
 
     trail_wp = wpGetStruct(trail_gobj);
 
-    trail_gobj->func_display = wpDisplayPKThunderFuncDisplay;
+    trail_gobj->proc_display = wpDisplayPKThunderProcDisplay;
 
     trail_wp->lifetime = WPPKTHUNDER_LIFETIME;
 
@@ -680,7 +680,7 @@ GObj* wpNessPKReflectTrailMakeWeapon(GObj *old_gobj, Vec3f *pos, s32 trail_index
     }
     new_wp = wpGetStruct(new_gobj);
 
-    new_gobj->func_display = wpDisplayPKThunderFuncDisplay;
+    new_gobj->proc_display = wpDisplayPKThunderProcDisplay;
 
     new_wp->lifetime = WPPKTHUNDER_LIFETIME;
 

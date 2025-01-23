@@ -123,7 +123,7 @@ void sc1PChallengerFuncLights(Gfx **dls)
 }
 
 // 0x80131B24
-void sc1PChallengerDecalsFuncDisplay(GObj *gobj)
+void sc1PChallengerDecalsProcDisplay(GObj *gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
@@ -145,7 +145,7 @@ void sc1PChallengerMakeDecals(void)
     SObj *sobj;
 
     gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, sc1PChallengerDecalsFuncDisplay, 0, GOBJ_PRIORITY_DEFAULT, ~0);
+    gcAddGObjDisplay(gobj, sc1PChallengerDecalsProcDisplay, 0, GOBJ_PRIORITY_DEFAULT, ~0);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PChallengerFiles[0], &lSC1PChallengerDecalExclaimSprite));
     
@@ -310,7 +310,7 @@ void func_ovl23_80132110(void)
 }
 
 // 0x80132118
-void sc1PChallengerFuncRun(GObj *gobj)
+void sc1PChallengerProcRun(GObj *gobj)
 {
     sSC1PChallengerTotalTimeTics++;
     
@@ -366,7 +366,7 @@ void sc1PChallengerFuncStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(0, sc1PChallengerFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeGObjSPAfter(0, sc1PChallengerProcRun, 0, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     sc1PChallengerInitVars();
     efParticleInitAll();

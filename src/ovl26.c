@@ -1240,7 +1240,7 @@ sb32 mnVSPlayersIsCostumeInUse(s32 fkind, s32 port_id, s32 costume_id)
 
 // 0x8013473C
 // Gets the first costume not in use by another port
-s32 mnVSPlayersGetAvailableCostumeFFA(s32 fkind, s32 port_id)
+s32 mnVSPlayersGetAvailableCostumeRoyal(s32 fkind, s32 port_id)
 {
 	mnCharPanelBattle* panel_info;
 	s32 i, j, k;
@@ -1277,7 +1277,7 @@ s32 mnVSPlayersGetAvailableCostumeFFA(s32 fkind, s32 port_id)
 s32 mnVSPlayersGetAvailableCostume(s32 fkind, s32 port_id)
 {
 	if (gMnBattleIsTeamBattle == FALSE)
-		return ftParamGetCostumeCommonID(fkind, mnVSPlayersGetAvailableCostumeFFA(fkind, port_id));
+		return ftParamGetCostumeCommonID(fkind, mnVSPlayersGetAvailableCostumeRoyal(fkind, port_id));
 	else if (gMnBattleIsTeamBattle == TRUE)
 		return ftParamGetCostumeTeamID(fkind, gMnBattlePanels[port_id].team);
 }
@@ -1522,7 +1522,7 @@ void mnVSPlayersUpdatePanelsAndFighterCostumes()
 			if (gMnBattlePanels[i].char_id != nFTKindNull)
 			{
 				gMnBattlePanels[i].costume_id = ftParamGetCostumeCommonID(
-					gMnBattlePanels[i].char_id, mnVSPlayersGetAvailableCostumeFFA(gMnBattlePanels[i].char_id, i));
+					gMnBattlePanels[i].char_id, mnVSPlayersGetAvailableCostumeRoyal(gMnBattlePanels[i].char_id, i));
 				gMnBattlePanels[i].shade = mnVSPlayersGetShade(i);
 				ftParamInitAllParts(gMnBattlePanels[i].player, gMnBattlePanels[i].costume_id, gMnBattlePanels[i].shade);
 			}
@@ -1546,7 +1546,7 @@ void mnVSPlayersUpdatePanelsAndFighterCostumes()
 }
 
 // 0x80135270
-s32 mnCheckFFATeamBattleTogglePress(GObj* cursor_gobj)
+s32 mnCheckRoyalTeamBattleTogglePress(GObj* cursor_gobj)
 {
 	f32 current_x, current_y;
 	s32 range_check;
@@ -1570,7 +1570,7 @@ s32 mnCheckFFATeamBattleTogglePress(GObj* cursor_gobj)
 }
 
 // 0x80135334
-void mnHandleFFATeamBattleTogglePress()
+void mnHandleRoyalTeamBattleTogglePress()
 {
 	GObj* title_gobj;
 	SObj* title_sobj;
@@ -2990,8 +2990,8 @@ void mnVSPlayersHandleButtonPresses(GObj* cursor_gobj)
 			}
 			func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 		}
-		else if (mnCheckFFATeamBattleTogglePress(cursor_gobj))
-			mnHandleFFATeamBattleTogglePress();
+		else if (mnCheckRoyalTeamBattleTogglePress(cursor_gobj))
+			mnHandleRoyalTeamBattleTogglePress();
 		else if (mnCheckBackButtonPress(cursor_gobj))
 		{
 			mnGoBackToVSMenu();

@@ -329,7 +329,7 @@ void func_ovl18_8013223C(void)
 }
 
 // 0x8013226C
-void mn1PModeLabelsFuncDisplay(GObj *gobj)
+void mn1PModeLabelsProcDisplay(GObj *gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
@@ -352,7 +352,7 @@ void mn1PModeMakeLabels(void)
     SObj *sobj;
     
     gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, mn1PModeLabelsFuncDisplay, 1, GOBJ_PRIORITY_DEFAULT, ~0);
+    gcAddGObjDisplay(gobj, mn1PModeLabelsProcDisplay, 1, GOBJ_PRIORITY_DEFAULT, ~0);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PModeFiles[0], &lMNCommonSmashLogoSprite));
     
@@ -572,7 +572,7 @@ void mn1PModeInitVars(void)
 }
 
 // 0x801329A8
-void mn1PModeFuncRun(GObj *gobj)
+void mn1PModeProcRun(GObj *gobj)
 {
     s32 unused;
     
@@ -769,7 +769,7 @@ void mn1PModeFuncStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(0, mn1PModeFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeGObjSPAfter(0, mn1PModeProcRun, 0, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, 0, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
     
     mn1PModeInitVars();

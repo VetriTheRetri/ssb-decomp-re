@@ -372,7 +372,7 @@ void mvOpeningRoomMakePulledFighter(s32 fkind)
 }
 
 // 0x80132404
-void mvOpeningRoomLogoWallpaperFuncDisplay(GObj *gobj)
+void mvOpeningRoomLogoWallpaperProcDisplay(GObj *gobj)
 {
 	if (sMVOpeningRoomTotalTimeTics >= 60)
 	{
@@ -403,7 +403,7 @@ void mvOpeningRoomMakeLogoWallpaper(void)
 
 	sMVOpeningRoomOverlayAlpha = 0xFF;
 	sMVOpeningRoomOverlayGObj = gobj = gcMakeGObjSPAfter(0, NULL, 18, GOBJ_PRIORITY_DEFAULT);
-	gcAddGObjDisplay(gobj, mvOpeningRoomLogoWallpaperFuncDisplay, 26, GOBJ_PRIORITY_DEFAULT, ~0);
+	gcAddGObjDisplay(gobj, mvOpeningRoomLogoWallpaperProcDisplay, 26, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
 // 0x801325A4
@@ -525,7 +525,7 @@ void mvOpeningRoomMakeDeskGround(void)
 }
 
 // 0x80132BB8
-void mvOpeningRoomCloseUpOverlayFuncDisplay(GObj *gobj)
+void mvOpeningRoomCloseUpOverlayProcDisplay(GObj *gobj)
 {
 	if (sMVOpeningRoomOverlayAlpha < 0xA0)
 	{
@@ -554,7 +554,7 @@ void mvOpeningRoomMakeCloseUpOverlay(void)
 	sMVOpeningRoomOverlayAlpha = 0x00;
 	sMVOpeningRoomOverlayGObj = gobj = gcMakeGObjSPAfter(0, NULL, 18, GOBJ_PRIORITY_DEFAULT);
 
-	gcAddGObjDisplay(gobj, mvOpeningRoomCloseUpOverlayFuncDisplay, 26, GOBJ_PRIORITY_DEFAULT, ~0);
+	gcAddGObjDisplay(gobj, mvOpeningRoomCloseUpOverlayProcDisplay, 26, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
 // 0x80132D48
@@ -583,7 +583,7 @@ void mvOpeningRoomMakeCloseUpOverlayCamera(void)
 }
 
 // 0x80132DE8
-void mvOpeningRoomWallpaperFuncDisplay(GObj *gobj)
+void mvOpeningRoomWallpaperProcDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
@@ -614,7 +614,7 @@ void mvOpeningRoomMakeWallpaper(void)
 	SObj *sobj;
 
 	sMVOpeningRoomBackgroundGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_PRIORITY_DEFAULT);
-	gcAddGObjDisplay(gobj, mvOpeningRoomWallpaperFuncDisplay, 28, GOBJ_PRIORITY_DEFAULT, ~0);
+	gcAddGObjDisplay(gobj, mvOpeningRoomWallpaperProcDisplay, 28, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMVOpeningRoomFiles[7], &lMVOpeningRoomWallpaperSprite));
 
@@ -1001,7 +1001,7 @@ void mvOpeningRoomMakeLogoCamera(void)
 }
 
 // 0x80133B58
-void mvOpeningRoomTransitionOverlayFuncDisplay(GObj *gobj)
+void mvOpeningRoomTransitionOverlayProcDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
@@ -1019,7 +1019,7 @@ void mvOpeningRoomTransitionOverlayFuncDisplay(GObj *gobj)
 }
 
 // 0x80133CEC
-void mvOpeningRoomTransitionOutlineFuncDisplay(GObj *gobj)
+void mvOpeningRoomTransitionOutlineProcDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
@@ -1049,7 +1049,7 @@ void mvOpeningRoomMakeTransition(void)
 	sMVOpeningTransitionOutlineGObj = gobj = gcMakeGObjSPAfter(0, NULL, 22, GOBJ_PRIORITY_DEFAULT);
 	dobj = gcAddDObjForGObj(gobj, lbRelocGetFileData(void*, sMVOpeningRoomFiles[1], &lMVOpeningRoomTransitionOutlineDisplayList));
 	gcAddXObjForDObjFixed(dobj, nGCMatrixKindTraRotRpyRSca, 0);
-	gcAddGObjDisplay(gobj, mvOpeningRoomTransitionOutlineFuncDisplay, 30, GOBJ_PRIORITY_DEFAULT, ~0);
+	gcAddGObjDisplay(gobj, mvOpeningRoomTransitionOutlineProcDisplay, 30, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddDObjAnimJoint(dobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningRoomFiles[1], &lMVOpeningRoomTransitionOutlineAnimJoint), 0.0F);
 	gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindFunc, 1);
 	gcPlayAnimAll(gobj);
@@ -1057,7 +1057,7 @@ void mvOpeningRoomMakeTransition(void)
 	sMVOpeningTransitionOverlayGObj = gobj = gcMakeGObjSPAfter(0, NULL, 22, GOBJ_PRIORITY_DEFAULT);
 	dobj = gcAddDObjForGObj(gobj, lbRelocGetFileData(void*, sMVOpeningRoomFiles[1], &lMVOpeningRoomTransitionOverlayDisplayList));
 	gcAddXObjForDObjFixed(dobj, nGCMatrixKindTraRotRpyRSca, 0);
-	gcAddGObjDisplay(gobj, mvOpeningRoomTransitionOverlayFuncDisplay, 30, GOBJ_PRIORITY_DEFAULT, ~0);
+	gcAddGObjDisplay(gobj, mvOpeningRoomTransitionOverlayProcDisplay, 30, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddDObjAnimJoint(dobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningRoomFiles[1], &lMVOpeningRoomTransitionOverlayAnimJoint), 0.0F);
 	gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindFunc, 1);
 	gcPlayAnimAll(gobj);
@@ -1195,7 +1195,7 @@ sb32 mvOpeningRoomCheckSetFramebuffer(void *arg)
 }
 
 // 0x80134400
-void mvOpeningRoomFuncRun(GObj *gobj)
+void mvOpeningRoomProcRun(GObj *gobj)
 {
 	sMVOpeningRoomTotalTimeTics++;
 
@@ -1336,7 +1336,7 @@ void mvOpeningRoomFuncStart(void)
 			0x10
 		)
 	);
-	gcMakeGObjSPAfter(0, mvOpeningRoomFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
+	gcMakeGObjSPAfter(0, mvOpeningRoomProcRun, 0, GOBJ_PRIORITY_DEFAULT);
 	sMVOpeningRoomCameraGObj = gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	efParticleInitAll();
 	mvOpeningRoomInitVars();

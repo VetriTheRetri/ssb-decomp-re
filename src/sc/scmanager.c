@@ -1267,7 +1267,7 @@ void scManagerFuncDraw(void)
 }
 
 // 0x800A26D8
-void scManagerMeterFuncDisplay(GObj *gobj)
+void scManagerMeterProcDisplay(GObj *gobj)
 {
 	s32 width;
 	s32 unused;
@@ -1354,7 +1354,7 @@ GObj* scManagerMakeMeterCamera(s32 link, u32 link_priority, u32 dl_link_priority
 		NULL,
 		link,
 		link_priority,
-		scManagerMeterFuncDisplay,
+		scManagerMeterProcDisplay,
 		dl_link_priority,
 		0,
 		0,
@@ -1466,7 +1466,7 @@ void scManagerFuncPrint(void)
 
 		if (gGCCurrentCommon != NULL)
 		{
-			syErrorDebugPrintf("addr:%x\n", gGCCurrentCommon->func_run);
+			syErrorDebugPrintf("addr:%x\n", gGCCurrentCommon->proc_run);
 			scManagerInspectGObj(gGCCurrentCommon);
 		}
 		break;
@@ -1498,7 +1498,7 @@ void scManagerFuncPrint(void)
 
 		if (gGCCurrentCamera != NULL)
 		{
-			syErrorDebugPrintf("addr:%x\n", gGCCurrentCamera->func_display);
+			syErrorDebugPrintf("addr:%x\n", gGCCurrentCamera->proc_display);
 			scManagerInspectGObj(gGCCurrentCamera);
 		}
 		break;
@@ -1508,11 +1508,11 @@ void scManagerFuncPrint(void)
 
 		if (gGCCurrentCamera != NULL)
 		{
-			syErrorDebugPrintf("cam addr:%x\n", gGCCurrentCamera->func_display);
+			syErrorDebugPrintf("cam addr:%x\n", gGCCurrentCamera->proc_display);
 		}
 		if (gGCCurrentDisplay != NULL)
 		{
-			syErrorDebugPrintf("disp addr:%x\n", gGCCurrentDisplay->func_display);
+			syErrorDebugPrintf("disp addr:%x\n", gGCCurrentDisplay->proc_display);
 			scManagerInspectGObj(gGCCurrentDisplay);
 		}
 		break;

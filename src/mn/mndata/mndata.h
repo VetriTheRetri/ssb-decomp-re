@@ -15,7 +15,7 @@ extern void mnDataMakeVSRecord(void);
 extern void mnDataMakeSoundTest(void);
 extern void func_ovl61_801320A0(SObj *sobj);
 extern void mnDataMakeMenuGObj(void);
-extern void mnDataLabelsFuncDisplay(GObj *gobj);
+extern void mnDataLabelsProcDisplay(GObj *gobj);
 extern void mnDataMakeLabels(void);
 extern void mnDataMakeDecals(void);
 extern void mnDataMakeLink3Camera(void);
@@ -23,7 +23,7 @@ extern void mnDataMakeOptionsCamera(void);
 extern void mnDataMakeLabelsCamera(void);
 extern void mnDataMakeDecalsCamera(void);
 extern void mnDataInitVars(void);
-extern void mnDataFuncRun(GObj *gobj);
+extern void mnDataProcRun(GObj *gobj);
 extern void mnDataFuncStart(void);
 extern void mnDataStartScene(void);
 

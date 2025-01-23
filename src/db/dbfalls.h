@@ -8,7 +8,7 @@
 
 extern void dbFallsFuncLights(Gfx **dls);
 extern void dbFallsExit(void);
-extern void dbFallsFuncRun(GObj *gobj);
+extern void dbFallsProcRun(GObj *gobj);
 extern GObj* dbFallsMakeCamera(void (*thread)(GObj*));
 extern void dbFallsFuncStart(void);
 extern void dbFallsStartScene(void);

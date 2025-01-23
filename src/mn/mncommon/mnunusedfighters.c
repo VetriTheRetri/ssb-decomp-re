@@ -152,7 +152,7 @@ void mnUnusedFightersTimeProcUpdate(GObj *gobj)
 }
 
 // 0x800D655C
-void mnUnusedFightersFuncRun(GObj *gobj)
+void mnUnusedFightersProcRun(GObj *gobj)
 {
     if (gSYControllerMain.button_tap & START_BUTTON)
     {
@@ -200,7 +200,7 @@ void mnUnusedFightersFuncStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(0, mnUnusedFightersFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeGObjSPAfter(0, mnUnusedFightersProcRun, 0, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(1, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     
     cobj = CObjGetStruct

@@ -2057,7 +2057,7 @@ void lbCommonDrawDObjScaleX(DObj *dobj)
 }
 
 // 0x800CB4B0
-void lbCommonDObjScaleXFuncDisplay(GObj *gobj)
+void lbCommonDObjScaleXProcDisplay(GObj *gobj)
 {
     gGCScaleX = 1.0F;
     
@@ -2854,10 +2854,10 @@ SObj* lbCommonMakeSObjForGObj(GObj *gobj, Sprite *sprite)
 GObj* lbCommonMakeSpriteGObj
 (
     u32 id,
-    void (*func_run)(GObj*),
+    void (*proc_run)(GObj*),
     s32 link,
     u32 link_priority,
-    void (*func_display)(GObj*),
+    void (*proc_display)(GObj*),
     s32 dl_link,
     u32 dl_link_priority,
     u32 camera_tag,
@@ -2867,13 +2867,13 @@ GObj* lbCommonMakeSpriteGObj
     u32 gobjproc_priority
 )
 {
-    GObj *gobj = gcMakeGObjSPAfter(id, func_run, link, link_priority);
+    GObj *gobj = gcMakeGObjSPAfter(id, proc_run, link, link_priority);
         
     if (gobj == NULL)
     {
         return NULL;
     }
-    gcAddGObjDisplay(gobj, func_display, dl_link, dl_link_priority, camera_tag);
+    gcAddGObjDisplay(gobj, proc_display, dl_link, dl_link_priority, camera_tag);
     
     lbCommonMakeSObjForGObj(gobj, sprite);
         

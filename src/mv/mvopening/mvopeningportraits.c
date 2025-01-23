@@ -181,7 +181,7 @@ void mvOpeningPortraitsBlockPartialRow(s32 row, s32 pos_x)
 }
 
 // 0x80131FC4
-void mvOpeningPortraitsCoverFuncDisplay(GObj *gobj)
+void mvOpeningPortraitsCoverProcDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
@@ -315,7 +315,7 @@ void mvOpeningPortraitsMakeCover(void)
 	SObj *sobj;
 
 	gobj = gcMakeGObjSPAfter(0, NULL, 18, GOBJ_PRIORITY_DEFAULT);
-	gcAddGObjDisplay(gobj, mvOpeningPortraitsCoverFuncDisplay, 28, GOBJ_PRIORITY_DEFAULT, ~0);
+	gcAddGObjDisplay(gobj, mvOpeningPortraitsCoverProcDisplay, 28, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMVOpeningPortraitsFiles[0], &lMVOpeningPortraitsSet1CoverSprite));
 
@@ -390,7 +390,7 @@ void mvOpeningPortraitsInitVars(void)
 }
 
 // 0x80132624
-void mvOpeningPortraitsFuncRun(GObj *gobj)
+void mvOpeningPortraitsProcRun(GObj *gobj)
 {
 	sMVOpeningPortraitsTotalTimeTics++;
 
@@ -459,7 +459,7 @@ void mvOpeningPortraitsFuncStart(void)
 			0x10
 		)
 	);
-	gcMakeGObjSPAfter(0, mvOpeningPortraitsFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
+	gcMakeGObjSPAfter(0, mvOpeningPortraitsProcRun, 0, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	mvOpeningPortraitsInitVars();
 	mvOpeningPortraitsMakePortraitsCamera();

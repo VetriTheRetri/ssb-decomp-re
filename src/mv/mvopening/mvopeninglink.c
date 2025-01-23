@@ -290,7 +290,7 @@ void mvOpeningLinkMakeMotionWindow(void)
 }
 
 // 0x8018D824
-void mvOpeningLinkPosedWallpaperFuncDisplay(GObj *gobj)
+void mvOpeningLinkPosedWallpaperProcDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
@@ -314,7 +314,7 @@ void mvOpeningLinkMakePosedWallpaper(void)
 			19,
 			GOBJ_PRIORITY_DEFAULT
 		),
-		mvOpeningLinkPosedWallpaperFuncDisplay,
+		mvOpeningLinkPosedWallpaperProcDisplay,
 		28,
 		GOBJ_PRIORITY_DEFAULT,
 		~0
@@ -455,7 +455,7 @@ void mvOpeningLinkMakePosedWallpaperCamera(void)
 }
 
 // 0x8018DD80
-void mvOpeningLinkFuncRun(GObj *gobj)
+void mvOpeningLinkProcRun(GObj *gobj)
 {
 	sMVOpeningLinkTotalTimeTics++;
 
@@ -503,7 +503,7 @@ void mvOpeningLinkFuncStart(void)
 	gSCManagerBattleState->players[0].pkind = nFTPlayerKindKey;
 
 	mvOpeningLinkSetupFiles();
-	gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningLinkFuncRun, nGCCommonLinkIDMovie, GOBJ_PRIORITY_DEFAULT);
+	gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningLinkProcRun, nGCCommonLinkIDMovie, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(nGCCommonLinkIDCamera, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	mvOpeningLinkInitVars();
 	efParticleInitAll();

@@ -3185,7 +3185,7 @@ void gcCaptureTaggedGObjs(GObj *camera_gobj, s32 link_id, sb32 is_tag_mask_or_id
                 dGCCurrentStatus = nGCStatusDisplaying;
                 gGCCurrentDisplay = current_gobj;
 
-                current_gobj->func_display(current_gobj);
+                current_gobj->proc_display(current_gobj);
                 dGCCurrentStatus = nGCStatusCapturing;
 
                 current_gobj->frame_draw_last = dSYTaskmanFrameCount;

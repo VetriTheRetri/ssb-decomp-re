@@ -213,36 +213,36 @@ void grPupupuWhispyUpdateSleep(void)
 // 0x80105B18
 void grPupupuWhispyLeavesMakeEffect(void)
 {
-    LBParticle *ptc;
-    LBTransform *tfm;
+    LBParticle *pc;
+    LBTransform *xf;
 
-    tfm = NULL;
-    ptc = lbParticleMakeScriptID(gGRCommonStruct.pupupu.particle_bank_id | LBPARTICLE_MASK_GENLINK(0), 0);
+    xf = NULL;
+    pc = lbParticleMakeScriptID(gGRCommonStruct.pupupu.particle_bank_id | LBPARTICLE_MASK_GENLINK(0), 0);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        tfm = lbParticleAddTransformForStruct(ptc, nLBTransformStatusReady);
+        xf = lbParticleAddTransformForStruct(pc, nLBTransformStatusReady);
 
-        if (tfm == NULL)
+        if (xf == NULL)
         {
-            lbParticleEjectStruct(ptc);
+            lbParticleEjectStruct(pc);
         }
         else
         {
-            LBParticleProcessStruct(ptc);
+            LBParticleProcessStruct(pc);
 
-            if (tfm->users_num == 0)
+            if (xf->users_num == 0)
             {
-                tfm = NULL;
+                xf = NULL;
             }
             else
             {
-                tfm->translate = dGRPupupuWhispyLeavesEffectAttributes[gGRCommonStruct.pupupu.lr_players].pos;
-                tfm->rotate.y = dGRPupupuWhispyLeavesEffectAttributes[gGRCommonStruct.pupupu.lr_players].rotate;
+                xf->translate = dGRPupupuWhispyLeavesEffectAttributes[gGRCommonStruct.pupupu.lr_players].pos;
+                xf->rotate.y = dGRPupupuWhispyLeavesEffectAttributes[gGRCommonStruct.pupupu.lr_players].rotate;
             }
         }
     }
-    gGRCommonStruct.pupupu.leaves_tfm = tfm;
+    gGRCommonStruct.pupupu.leaves_xf = xf;
 }
 
 // 0x80105BE8
@@ -329,9 +329,9 @@ void grPupupuWhispyUpdateBlow(void)
 
         gGRCommonStruct.pupupu.whispy_status = nGRPupupuWhispyWindStatusStop;
 
-        if (gGRCommonStruct.pupupu.leaves_tfm != NULL)
+        if (gGRCommonStruct.pupupu.leaves_xf != NULL)
         {
-            lbParticleEjectStructID(gGRCommonStruct.pupupu.leaves_tfm->generator_id, 1);
+            lbParticleEjectStructID(gGRCommonStruct.pupupu.leaves_xf->generator_id, 1);
         }
     }
     grPupupuWhispyUpdateWindRumble();
@@ -472,37 +472,37 @@ void grPupupuFlowersFrontWindStart(void)
 // 0x801060E0
 void grPupupuWhispyDustMakeEffect(void)
 {
-    LBParticle *ptc;
-    LBTransform *tfm;
+    LBParticle *pc;
+    LBTransform *xf;
 
-    tfm = NULL;
-    ptc = lbParticleMakeScriptID(gGRCommonStruct.pupupu.particle_bank_id | LBPARTICLE_MASK_GENLINK(0), 1);
+    xf = NULL;
+    pc = lbParticleMakeScriptID(gGRCommonStruct.pupupu.particle_bank_id | LBPARTICLE_MASK_GENLINK(0), 1);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        tfm = lbParticleAddTransformForStruct(ptc, nLBTransformStatusReady);
+        xf = lbParticleAddTransformForStruct(pc, nLBTransformStatusReady);
 
-        if (tfm == NULL)
+        if (xf == NULL)
         {
-            lbParticleEjectStruct(ptc);
+            lbParticleEjectStruct(pc);
         }
         else
         {
-            LBParticleProcessStruct(ptc);
+            LBParticleProcessStruct(pc);
 
-            if (tfm->users_num == 0)
+            if (xf->users_num == 0)
             {
-                tfm = NULL;
+                xf = NULL;
             }
             else
             {
-                tfm->translate = dGRPupupuWhispyDustEffectPositions[gGRCommonStruct.pupupu.lr_players];
+                xf->translate = dGRPupupuWhispyDustEffectPositions[gGRCommonStruct.pupupu.lr_players];
 
-                tfm->rotate.y = (gGRCommonStruct.pupupu.lr_players == 1) ? 0.0F : F_CST_DTOR32(180.0F);
+                xf->rotate.y = (gGRCommonStruct.pupupu.lr_players == 1) ? 0.0F : F_CST_DTOR32(180.0F);
             }
         }
     }
-    gGRCommonStruct.pupupu.dust_tfm = tfm;
+    gGRCommonStruct.pupupu.dust_xf = xf;
 }
 
 // 0x801061CC
@@ -529,9 +529,9 @@ void grPupupuFlowersFrontLoopEnd(void)
         gGRCommonStruct.pupupu.flowers_front_status = nGRPupupuFlowerStatusWindStop;
         gGRCommonStruct.pupupu.flowers_front_wait = 22;
 
-        if (gGRCommonStruct.pupupu.dust_tfm != NULL)
+        if (gGRCommonStruct.pupupu.dust_xf != NULL)
         {
-            lbParticleEjectStructID(gGRCommonStruct.pupupu.dust_tfm->generator_id, 1);
+            lbParticleEjectStructID(gGRCommonStruct.pupupu.dust_xf->generator_id, 1);
         }
     }
     else grPupupuWhispySetWindPush();
@@ -633,11 +633,11 @@ void grPupupuProcUpdate(GObj *ground_gobj)
 }
 
 // 0x801064C8
-GObj* grPupupuMakeMapGObj(intptr_t o_dobjdesc, intptr_t o_mobjsub, void (*func_display)(GObj*), u8 dl_link)
+GObj* grPupupuMakeMapGObj(intptr_t o_dobjdesc, intptr_t o_mobjsub, void (*proc_display)(GObj*), u8 dl_link)
 {
     GObj *ground_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(ground_gobj, func_display, dl_link, GOBJ_PRIORITY_DEFAULT, ~0);
+    gcAddGObjDisplay(ground_gobj, proc_display, dl_link, GOBJ_PRIORITY_DEFAULT, ~0);
 
     gcSetupCustomDObjs
     (
@@ -663,10 +663,10 @@ void grPupupuInitAll(void)
 {
     gGRCommonStruct.pupupu.map_head = (void*) ((uintptr_t)gMPCollisionGroundData->map_nodes - (intptr_t)&lGRPupupuMapHead);
 
-    gGRCommonStruct.pupupu.map_gobj[0] = grPupupuMakeMapGObj(&lGRPupupuMapHead, &D_NF_00000F00, grDisplayLayer0PriFuncDisplay, 4);
-    gGRCommonStruct.pupupu.map_gobj[1] = grPupupuMakeMapGObj(&lGRPupupuWhispyMouthTransformKinds, &D_NF_000013B0, grDisplayLayer0PriFuncDisplay, 4);
-    gGRCommonStruct.pupupu.map_gobj[2] = grPupupuMakeMapGObj(&lGRPupupuFlowersBackTrasnformKinds, 0x0, grDisplayLayer0PriFuncDisplay, 4);
-    gGRCommonStruct.pupupu.map_gobj[3] = grPupupuMakeMapGObj(&lGRPupupuFlowersFrontTransformKinds, 0x0, grDisplayLayer3PriFuncDisplay, 16);
+    gGRCommonStruct.pupupu.map_gobj[0] = grPupupuMakeMapGObj(&lGRPupupuMapHead, &D_NF_00000F00, grDisplayLayer0PriProcDisplay, 4);
+    gGRCommonStruct.pupupu.map_gobj[1] = grPupupuMakeMapGObj(&lGRPupupuWhispyMouthTransformKinds, &D_NF_000013B0, grDisplayLayer0PriProcDisplay, 4);
+    gGRCommonStruct.pupupu.map_gobj[2] = grPupupuMakeMapGObj(&lGRPupupuFlowersBackTrasnformKinds, 0x0, grDisplayLayer0PriProcDisplay, 4);
+    gGRCommonStruct.pupupu.map_gobj[3] = grPupupuMakeMapGObj(&lGRPupupuFlowersFrontTransformKinds, 0x0, grDisplayLayer3PriProcDisplay, 16);
 
     gGRCommonStruct.pupupu.whispy_eyes_status   =
     gGRCommonStruct.pupupu.whispy_mouth_status  =

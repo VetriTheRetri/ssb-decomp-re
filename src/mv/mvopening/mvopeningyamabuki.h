@@ -23,7 +23,7 @@ extern void mvOpeningYamabukiMakeMBall(void);
 extern void mvOpeningYamabukiMakeMainCamera(void);
 extern void mvOpeningYamabukiMakeWallpaperCamera(void);
 extern void mvOpeningYamabukiInitTotalTimeTics(void);
-extern void mvOpeningYamabukiFuncRun(GObj *gobj);
+extern void mvOpeningYamabukiProcRun(GObj *gobj);
 extern void mvOpeningYamabukiFuncStart(void);
 extern void mvOpeningYamabukiStartScene(void);
 

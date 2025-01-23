@@ -308,7 +308,7 @@ void mvOpeningSamusMakeMotionWindow(void)
 }
 
 // 0x8018D8B0
-void mvOpeningSamusPosedWallpaperFuncDisplay(GObj *gobj)
+void mvOpeningSamusPosedWallpaperProcDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
@@ -332,7 +332,7 @@ void mvOpeningSamusMakePosedWallpaper(void)
 			19,
 			GOBJ_PRIORITY_DEFAULT
 		),
-		mvOpeningSamusPosedWallpaperFuncDisplay,
+		mvOpeningSamusPosedWallpaperProcDisplay,
 		28,
 		GOBJ_PRIORITY_DEFAULT,
 		~0
@@ -473,7 +473,7 @@ void mvOpeningSamusMakePosedWallpaperCamera(void)
 }
 
 // 0x8018DE08
-void mvOpeningSamusFuncRun(GObj *gobj)
+void mvOpeningSamusProcRun(GObj *gobj)
 {
 	sMVOpeningSamusTotalTimeTics++;
 
@@ -520,7 +520,7 @@ void mvOpeningSamusFuncStart(void)
 	gSCManagerBattleState->players[0].pkind = nFTPlayerKindKey;
 
 	mvOpeningSamusSetupFiles();
-	gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningSamusFuncRun, nGCCommonLinkIDMovie, GOBJ_PRIORITY_DEFAULT);
+	gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningSamusProcRun, nGCCommonLinkIDMovie, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(nGCCommonLinkIDCamera, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	mvOpeningSamusInitVars();
 	efParticleInitAll();

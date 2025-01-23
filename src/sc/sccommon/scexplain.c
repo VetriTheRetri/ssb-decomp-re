@@ -218,7 +218,7 @@ void scExplainMakeCamera(void)
 }
 
 // 0x8018D2D0
-void scExplainWindowFuncDisplay(GObj *gobj)
+void scExplainWindowProcDisplay(GObj *gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetScissor(gSYTaskmanDLHeads[0]++, G_SC_NON_INTERLACE, 10, 160, 310, 230);
@@ -238,7 +238,7 @@ void scExplainMakeWindowCamera(void)
         NULL,
         nGCCommonLinkIDCamera,
         GOBJ_PRIORITY_DEFAULT,
-        scExplainWindowFuncDisplay,
+        scExplainWindowProcDisplay,
         15,
         0,
         0,
@@ -318,7 +318,7 @@ GObj* scExplainMakeControlStickCamera(void)
 }
 
 // 0x8018D5FC
-void scExplainControlStickFuncDisplay(GObj *gobj)
+void scExplainControlStickProcDisplay(GObj *gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[1]++);
     gSPClearGeometryMode(gSYTaskmanDLHeads[1]++, G_ZBUFFER);
@@ -355,7 +355,7 @@ GObj* scExplainMakeControlStickInterface(void)
         nGCCommonLinkIDInterface,
         GOBJ_PRIORITY_DEFAULT
     );
-    gcAddGObjDisplay(interface_gobj, scExplainControlStickFuncDisplay, 27, GOBJ_PRIORITY_DEFAULT, ~0);
+    gcAddGObjDisplay(interface_gobj, scExplainControlStickProcDisplay, 27, GOBJ_PRIORITY_DEFAULT, ~0);
     gcSetupCustomDObjs
     (
         interface_gobj, 
@@ -383,7 +383,7 @@ GObj* scExplainMakeControlStickInterface(void)
 }
 
 // 0x8018D808
-void scExplainTapSparkFuncDisplay(GObj *gobj)
+void scExplainTapSparkProcDisplay(GObj *gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[1]++);
     gSPClearGeometryMode(gSYTaskmanDLHeads[1]++, G_ZBUFFER);
@@ -435,7 +435,7 @@ GObj* scExplainMakeTapSpark(void)
 {
     GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(interface_gobj, scExplainTapSparkFuncDisplay, 27, GOBJ_PRIORITY_DEFAULT, ~0);
+    gcAddGObjDisplay(interface_gobj, scExplainTapSparkProcDisplay, 27, GOBJ_PRIORITY_DEFAULT, ~0);
     gcAddDObjForGObj(interface_gobj, (void*) ((uintptr_t)sSCExplainGraphicsFileHead + (intptr_t)&lSCExplainTapSparkDisplayList));
     gcAddXObjForDObjFixed(DObjGetStruct(interface_gobj), nGCMatrixKindTra, 0);
     gcAddMObjAll(interface_gobj, lbRelocGetFileData(MObjSub***, sSCExplainGraphicsFileHead, &lSCExplainTapSparkMObjSub));
@@ -478,7 +478,7 @@ GObj* scExplainMakeSpecialMoveRGB(void)
         nGCCommonLinkIDInterface,
         GOBJ_PRIORITY_DEFAULT
     );
-    gcAddGObjDisplay(interface_gobj, scExplainTapSparkFuncDisplay, 27, GOBJ_PRIORITY_DEFAULT, ~0);
+    gcAddGObjDisplay(interface_gobj, scExplainTapSparkProcDisplay, 27, GOBJ_PRIORITY_DEFAULT, ~0);
     gcAddDObjForGObj(interface_gobj, lbRelocGetFileData(void*, sSCExplainGraphicsFileHead, &lSCExplainSpecialMoveRGBDisplayList));
     gcAddXObjForDObjFixed(DObjGetStruct(interface_gobj), nGCMatrixKindTra, 0);
 

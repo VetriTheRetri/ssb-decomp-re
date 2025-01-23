@@ -32,7 +32,7 @@ extern void mvOpeningRunInitMainCamera(GObj *camera_gobj);
 extern void mvOpeningRunMakeMainCamera(void);
 extern void mvOpeningRunMakeWallpaperCamera(void);
 extern void mvOpeningRunInitVars(void);
-extern void mvOpeningRunFuncRun(GObj *gobj);
+extern void mvOpeningRunProcRun(GObj *gobj);
 extern void mvOpeningRunFuncStart(void);
 extern void mvOpeningRunStartScene(void);
 

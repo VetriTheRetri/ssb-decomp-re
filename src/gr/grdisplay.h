@@ -5,14 +5,14 @@
 #include <sys/objdef.h>
 #include <gr/grdef.h>
 
-extern void grDisplayLayer0PriFuncDisplay(GObj *ground_gobj);
-extern void grDisplayLayer0SecFuncDisplay(GObj *ground_gobj);
-extern void grDisplayLayer1PriFuncDisplay(GObj *ground_gobj);
-extern void grDisplayLayer1SecFuncDisplay(GObj *ground_gobj);
-extern void grDisplayLayer2PriFuncDisplay(GObj *ground_gobj);
-extern void grDisplayLayer2SecFuncDisplay(GObj *ground_gobj);
-extern void grDisplayLayer3PriFuncDisplay(GObj *ground_gobj);
-extern void grDisplayLayer3SecFuncDisplay(GObj *ground_gobj);
+extern void grDisplayLayer0PriProcDisplay(GObj *ground_gobj);
+extern void grDisplayLayer0SecProcDisplay(GObj *ground_gobj);
+extern void grDisplayLayer1PriProcDisplay(GObj *ground_gobj);
+extern void grDisplayLayer1SecProcDisplay(GObj *ground_gobj);
+extern void grDisplayLayer2PriProcDisplay(GObj *ground_gobj);
+extern void grDisplayLayer2SecProcDisplay(GObj *ground_gobj);
+extern void grDisplayLayer3PriProcDisplay(GObj *ground_gobj);
+extern void grDisplayLayer3SecProcDisplay(GObj *ground_gobj);
 extern void grDisplayDObjSetNoAnimMtx(GObj *ground_gobj, DObjDesc *dobjdesc);
 extern GObj* grDisplayMakeGeometryLayer(MPGroundDesc *gr_desc, s32 gr_desc_id, DObj **dobjs);
 

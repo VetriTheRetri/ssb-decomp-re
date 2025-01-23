@@ -35,11 +35,11 @@ extern void sc1PContinueMakeScoreDigits
 extern void sc1PContinueMakeScoreDisplay(s32 points);
 extern void sc1PContinueSetFighterScale(GObj *gobj, s32 fkind);
 extern void sc1PContinueMakeFighter(s32 fkind);
-extern void sc1PContinueRoomFadeOutFuncDisplay(GObj *gobj);
+extern void sc1PContinueRoomFadeOutProcDisplay(GObj *gobj);
 extern void sc1PContinueMakeRoomFadeOut(void);
-extern void sc1PContinueRoomFadeInFuncDisplay(GObj *gobj);
+extern void sc1PContinueRoomFadeInProcDisplay(GObj *gobj);
 extern void sc1PContinueMakeRoomFadeIn(void);
-extern void sc1PContinueSpotlightFadeFuncDisplay(GObj *gobj);
+extern void sc1PContinueSpotlightFadeProcDisplay(GObj *gobj);
 extern void sc1PContinueMakeSpotlightFade(void);
 extern void sc1PContinueMakeRoom(void);
 extern void sc1PContinueMakeSpotlight(void);
@@ -65,7 +65,7 @@ extern void sc1PContinueMakeSpotlightCamera(void);
 extern void sc1PContinueMakeTextCamera(void);
 extern void sc1PContinueInitVars(void);
 extern void sc1PContinueUnused0x80133990(void);
-extern void sc1PContinueFuncRun(GObj *gobj);
+extern void sc1PContinueProcRun(GObj *gobj);
 extern void sc1PContinueFuncStart(void);
 extern void sc1PContinueStartScene(void);
 

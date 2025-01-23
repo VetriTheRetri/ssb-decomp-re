@@ -111,7 +111,7 @@ typedef struct EFCommonEffectVarsCommon
 {
     Vec3f vel;
     s32 size;
-    LBTransform *tfm;
+    LBTransform *xf;
 
 } EFCommonEffectVarsCommon;
 
@@ -119,7 +119,7 @@ typedef struct EFCommonEffectVarsDustLight
 {
     Vec3f vel1, vel2;
     s32 lifetime;
-    LBTransform *tfm;
+    LBTransform *xf;
 
 } EFCommonEffectVarsDustLight;
 
@@ -128,7 +128,7 @@ typedef struct EFCommonEffectVarsDustHeavy
     Vec3f pos;
     s32 lr;
     s32 anim_frame;
-    LBTransform *tfm;
+    LBTransform *xf;
 
 } EFCommonEffectVarsDustHeavy;
 

@@ -1378,7 +1378,7 @@ void ftParamRunProcEffect(GObj *fighter_gobj, void (*proc)(GObj*, EFStruct*))
 // 0x800E9BE8
 void ftParamStopEffect(GObj *effect_gobj, EFStruct *ep)
 {
-    LBTransform *einfo = ep->tfm;
+    LBTransform *einfo = ep->xf;
 
     if (einfo != NULL)
     {
@@ -1797,7 +1797,7 @@ void* ftParamMakeEffect(GObj *fighter_gobj, s32 effect_id, s32 joint_id, Vec3f *
     Vec3f effect_pos_mod;
     void *effect;
     f32 scale;
-    LBParticle *ptc;
+    LBParticle *pc;
 
     effect = NULL;
 
@@ -2051,11 +2051,11 @@ void* ftParamMakeEffect(GObj *fighter_gobj, s32 effect_id, s32 joint_id, Vec3f *
         break;
 
     case nEFKindChargeSparkle:
-        ptc = efManagerSparkleWhiteScaleMakeEffect(&pos, 0.7F);
+        pc = efManagerSparkleWhiteScaleMakeEffect(&pos, 0.7F);
 
-        if (ptc != NULL)
+        if (pc != NULL)
         {
-            ptc->primcolor.a = 0xC0;
+            pc->primcolor.a = 0xC0;
         }
         break;
 

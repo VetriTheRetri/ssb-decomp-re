@@ -11,32 +11,32 @@ GRDisplayDesc dGRDisplayDescs[/* */] =
 {
     // Layer 0
     {
-        grDisplayLayer0PriFuncDisplay,
-        grDisplayLayer0SecFuncDisplay,
+        grDisplayLayer0PriProcDisplay,
+        grDisplayLayer0SecProcDisplay,
         4,
         gcPlayAnimAll
     },
 
     // Layer 1
     {
-        grDisplayLayer1PriFuncDisplay,
-        grDisplayLayer1SecFuncDisplay,
+        grDisplayLayer1PriProcDisplay,
+        grDisplayLayer1SecProcDisplay,
         6,
         func_ovl2_800FBAD0
     },
 
     // Layer 2
     {
-        grDisplayLayer2PriFuncDisplay,
-        grDisplayLayer2SecFuncDisplay,
+        grDisplayLayer2PriProcDisplay,
+        grDisplayLayer2SecProcDisplay,
         13,
         gcPlayAnimAll
     },
 
     // Layer 3
     {
-        grDisplayLayer3PriFuncDisplay,
-        grDisplayLayer3SecFuncDisplay,
+        grDisplayLayer3PriProcDisplay,
+        grDisplayLayer3SecProcDisplay,
         17,
         gcPlayAnimAll
     }
@@ -49,7 +49,7 @@ GRDisplayDesc dGRDisplayDescs[/* */] =
 // // // // // // // // // // // //
 
 // 0x80104D90
-void grDisplayLayer0PriFuncDisplay(GObj *ground_gobj)
+void grDisplayLayer0PriProcDisplay(GObj *ground_gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gSPClearGeometryMode(gSYTaskmanDLHeads[0]++, G_ZBUFFER);
@@ -63,7 +63,7 @@ void grDisplayLayer0PriFuncDisplay(GObj *ground_gobj)
 }
 
 // 0x80104E70
-void grDisplayLayer0SecFuncDisplay(GObj *ground_gobj)
+void grDisplayLayer0SecProcDisplay(GObj *ground_gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gSPClearGeometryMode(gSYTaskmanDLHeads[0]++, G_ZBUFFER);
@@ -83,7 +83,7 @@ void grDisplayLayer0SecFuncDisplay(GObj *ground_gobj)
 }
 
 // 0x80104FD8
-void grDisplayLayer1PriFuncDisplay(GObj *ground_gobj)
+void grDisplayLayer1PriProcDisplay(GObj *ground_gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gSPSetGeometryMode(gSYTaskmanDLHeads[0]++, G_ZBUFFER);
@@ -95,7 +95,7 @@ void grDisplayLayer1PriFuncDisplay(GObj *ground_gobj)
 }
 
 // 0x80105088
-void grDisplayLayer1SecFuncDisplay(GObj *ground_gobj)
+void grDisplayLayer1SecProcDisplay(GObj *ground_gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gSPSetGeometryMode(gSYTaskmanDLHeads[0]++, G_ZBUFFER);
@@ -108,7 +108,7 @@ void grDisplayLayer1SecFuncDisplay(GObj *ground_gobj)
 }
 
 // 0x80105154
-void grDisplayLayer2PriFuncDisplay(GObj *ground_gobj)
+void grDisplayLayer2PriProcDisplay(GObj *ground_gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gSPClearGeometryMode(gSYTaskmanDLHeads[0]++, G_ZBUFFER);
@@ -118,7 +118,7 @@ void grDisplayLayer2PriFuncDisplay(GObj *ground_gobj)
 }
 
 // 0x801051D0
-void grDisplayLayer2SecFuncDisplay(GObj *ground_gobj)
+void grDisplayLayer2SecProcDisplay(GObj *ground_gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gSPClearGeometryMode(gSYTaskmanDLHeads[0]++, G_ZBUFFER);
@@ -131,7 +131,7 @@ void grDisplayLayer2SecFuncDisplay(GObj *ground_gobj)
 }
 
 // 0x80105290 - Identical to 0x80105154?
-void grDisplayLayer3PriFuncDisplay(GObj *ground_gobj)
+void grDisplayLayer3PriProcDisplay(GObj *ground_gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gSPClearGeometryMode(gSYTaskmanDLHeads[0]++, G_ZBUFFER);
@@ -141,7 +141,7 @@ void grDisplayLayer3PriFuncDisplay(GObj *ground_gobj)
 }
 
 // 0x8010530C - Identical to 0x801051D0?
-void grDisplayLayer3SecFuncDisplay(GObj *ground_gobj)
+void grDisplayLayer3SecProcDisplay(GObj *ground_gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gSPClearGeometryMode(gSYTaskmanDLHeads[0]++, G_ZBUFFER);
@@ -182,7 +182,7 @@ void grDisplayDObjSetNoAnimMtx(GObj *ground_gobj, DObjDesc *dobjdesc)
 GObj* grDisplayMakeGeometryLayer(MPGroundDesc *gr_desc, s32 gr_desc_id, DObj **dobjs)
 {
     GObj *ground_gobj;
-    void (*func_display)(GObj*);
+    void (*proc_display)(GObj*);
 
     if (gr_desc->dobjdesc == NULL)
     {
@@ -192,11 +192,11 @@ GObj* grDisplayMakeGeometryLayer(MPGroundDesc *gr_desc, s32 gr_desc_id, DObj **d
 
     if (gMPCollisionGroundData->layer_mask & (1 << gr_desc_id))
     {
-        func_display = dGRDisplayDescs[gr_desc_id].sec_func_display;
+        proc_display = dGRDisplayDescs[gr_desc_id].sec_proc_display;
     }
-    else func_display = dGRDisplayDescs[gr_desc_id].pri_func_display;
+    else proc_display = dGRDisplayDescs[gr_desc_id].pri_proc_display;
 
-    gcAddGObjDisplay(ground_gobj, func_display, dGRDisplayDescs[gr_desc_id].dl_link, GOBJ_PRIORITY_DEFAULT, ~0);
+    gcAddGObjDisplay(ground_gobj, proc_display, dGRDisplayDescs[gr_desc_id].dl_link, GOBJ_PRIORITY_DEFAULT, ~0);
     gcSetupCustomDObjs(ground_gobj, gr_desc->dobjdesc, dobjs, nGCMatrixKindTraRotRpyRSca, nGCMatrixKindNull, nGCMatrixKindNull);
 
     if (gr_desc->p_mobjsubs != NULL)

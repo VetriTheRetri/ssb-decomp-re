@@ -303,7 +303,7 @@ void mvOpeningKirbyMakeMotionWindow(void)
 }
 
 // 0x8018D870
-void mvOpeningKirbyPosedWallpaperFuncDisplay(GObj *gobj)
+void mvOpeningKirbyPosedWallpaperProcDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
@@ -327,7 +327,7 @@ void mvOpeningKirbyMakePosedWallpaper(void)
 			19,
 			GOBJ_PRIORITY_DEFAULT
 		),
-		mvOpeningKirbyPosedWallpaperFuncDisplay,
+		mvOpeningKirbyPosedWallpaperProcDisplay,
 		28,
 		GOBJ_PRIORITY_DEFAULT,
 		~0
@@ -471,7 +471,7 @@ void mvOpeningKirbyMakePosedWallpaperCamera(void)
 }
 
 // 0x8018DDBC
-void mvOpeningKirbyFuncRun(GObj *gobj)
+void mvOpeningKirbyProcRun(GObj *gobj)
 {
 	sMVOpeningKirbyTotalTimeTics++;
 
@@ -520,7 +520,7 @@ void mvOpeningKirbyFuncStart(void)
 
 	mvOpeningKirbySetupFiles();
 
-	gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningKirbyFuncRun, 13, GOBJ_PRIORITY_DEFAULT);
+	gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningKirbyProcRun, 13, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(nGCCommonLinkIDCamera, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 
 	mvOpeningKirbyInitVars();

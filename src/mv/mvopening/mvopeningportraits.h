@@ -27,7 +27,7 @@ extern void mvOpeningPortraitsBlockRow1(void);
 extern void mvOpeningPortraitsBlockRow2(void);
 extern void mvOpeningPortraitsBlockRow3(void);
 extern void mvOpeningPortraitsBlockPartialRow(s32 row, s32 pos_x);
-extern void mvOpeningPortraitsCoverFuncDisplay(GObj *gobj);
+extern void mvOpeningPortraitsCoverProcDisplay(GObj *gobj);
 extern void mvOpeningPortraitsCoverProcUpdate(GObj *gobj);
 extern void mvOpeningPortraitsMakeCover(void);
 extern void mvOpeningPortraitsMakePortraitsCamera(void);

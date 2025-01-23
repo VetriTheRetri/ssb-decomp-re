@@ -323,7 +323,7 @@ void dbBattleSetDemoFighterKinds(void)
 }
 
 // 0x80131F3C
-void dbBattleFuncRun(GObj *gobj)
+void dbBattleProcRun(GObj *gobj)
 {
 	void **figatree_heap;
 	s32 i;
@@ -450,7 +450,7 @@ GObj* dbBattleMakeCamera(void (*thread)(GObj*))
 	GObj *camera_gobj = gcMakeCameraGObj
 	(
 		nGCCommonKindDebugCamera,
-		gcDefaultFuncRun,
+		gcDefaultProcRun,
 		15,
 		GOBJ_PRIORITY_DEFAULT,
 		func_80017DBC,
@@ -499,7 +499,7 @@ void dbBattleFuncStart(void)
 
 	lbRelocInitSetup(&rl_setup);
 
-	gobj = gcMakeGObjSPAfter(0, dbBattleFuncRun, 15, GOBJ_PRIORITY_DEFAULT);
+	gobj = gcMakeGObjSPAfter(0, dbBattleProcRun, 15, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjProcess(gobj, dbBattleActorProcUpdate, nGCProcessKindFunc, 0);
 
 	gcMakeDefaultCameraGObj(15, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));

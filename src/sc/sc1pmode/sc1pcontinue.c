@@ -363,7 +363,7 @@ void sc1PContinueMakeFighter(s32 fkind)
 }
 
 // 0x801321A8
-void sc1PContinueRoomFadeOutFuncDisplay(GObj *gobj)
+void sc1PContinueRoomFadeOutProcDisplay(GObj *gobj)
 {
     if (sSC1PContinueRoomFadeOutAlpha < 0xFF)
     {
@@ -391,11 +391,11 @@ void sc1PContinueMakeRoomFadeOut(void)
 
     sSC1PContinueRoomFadeOutAlpha = 0x00;
     sSC1PContinueRoomFadeOutGObj = gobj = gcMakeGObjSPAfter(0, NULL, 23, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, sc1PContinueRoomFadeOutFuncDisplay, 32, GOBJ_PRIORITY_DEFAULT, ~0);
+    gcAddGObjDisplay(gobj, sc1PContinueRoomFadeOutProcDisplay, 32, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
 // 0x80132338
-void sc1PContinueRoomFadeInFuncDisplay(GObj *gobj)
+void sc1PContinueRoomFadeInProcDisplay(GObj *gobj)
 {
     if (sSC1PContinueRoomFadeInAlpha > 0x00)
     {
@@ -423,11 +423,11 @@ void sc1PContinueMakeRoomFadeIn(void)
 
     sSC1PContinueRoomFadeInAlpha = 0xFF;
     sSC1PContinueRoomFadeInGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, sc1PContinueRoomFadeInFuncDisplay, 26, GOBJ_PRIORITY_DEFAULT, ~0);
+    gcAddGObjDisplay(gobj, sc1PContinueRoomFadeInProcDisplay, 26, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
 // 0x801324C0
-void sc1PContinueSpotlightFadeFuncDisplay(GObj *gobj)
+void sc1PContinueSpotlightFadeProcDisplay(GObj *gobj)
 {
     if (sSC1PContinueSpotlightFadeAlpha > 0x00)
     {
@@ -455,7 +455,7 @@ void sc1PContinueMakeSpotlightFade(void)
 
     sSC1PContinueSpotlightFadeAlpha = 0xFF;
     sSC1PContinueSpotlightFadeGObj = gobj = gcMakeGObjSPAfter(0, NULL, 22, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, sc1PContinueSpotlightFadeFuncDisplay, 31, GOBJ_PRIORITY_DEFAULT, ~0);
+    gcAddGObjDisplay(gobj, sc1PContinueSpotlightFadeProcDisplay, 31, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
 // 0x80132648
@@ -1014,7 +1014,7 @@ void sc1PContinueUnused0x80133990(void)
 }
 
 // 0x80133998
-void sc1PContinueFuncRun(GObj *gobj)
+void sc1PContinueProcRun(GObj *gobj)
 {
     s32 unused;
     s32 stick_range;
@@ -1227,7 +1227,7 @@ void sc1PContinueFuncStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(0, sc1PContinueFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeGObjSPAfter(0, sc1PContinueProcRun, 0, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     efParticleInitAll();
     sc1PContinueInitVars();

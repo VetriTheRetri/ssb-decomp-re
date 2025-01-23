@@ -725,7 +725,7 @@ GObj* ftManagerMakeFighter(FTDesc *desc) // Create fighter
 
     fighter_gobj = gcMakeGObjSPAfter(nGCCommonKindFighter, NULL, nGCCommonLinkIDFighter, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(fighter_gobj, desc->func_display, FTDISPLAY_DLLINK_DEFAULT, GOBJ_PRIORITY_DEFAULT, ~0);
+    gcAddGObjDisplay(fighter_gobj, desc->proc_display, FTDISPLAY_DLLINK_DEFAULT, GOBJ_PRIORITY_DEFAULT, ~0);
 
     fp = ftManagerGetNextStructAlloc();
 

@@ -127,7 +127,7 @@ void dbFallsExit(void)
 }
 
 // 0x800D64C4
-void dbFallsFuncRun(GObj *gobj)
+void dbFallsProcRun(GObj *gobj)
 {
 	if (gSYControllerMain.button_tap & START_BUTTON)
 	{
@@ -150,7 +150,7 @@ GObj* dbFallsMakeCamera(void (*thread)(GObj*))
 	GObj *camera_gobj = gcMakeCameraGObj
 	(
 		0x10000002,
-		gcDefaultFuncRun,
+		gcDefaultProcRun,
 		0,
 		GOBJ_PRIORITY_DEFAULT,
 		func_80017DBC,
@@ -183,7 +183,7 @@ GObj* dbFallsMakeCamera(void (*thread)(GObj*))
 // 0x800D660C
 void dbFallsFuncStart(void)
 {
-	gcMakeGObjSPAfter(0, dbFallsFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
+	gcMakeGObjSPAfter(0, dbFallsProcRun, 0, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	dbFallsMakeCamera(NULL);
 	dbMenuInitMenu();

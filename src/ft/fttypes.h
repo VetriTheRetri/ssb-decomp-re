@@ -589,7 +589,7 @@ struct FTDesc
     u16 button_mask_z;
     u16 button_mask_l;
     void *figatree_heap;                // Pointer to animation bank?
-    void *func_display;
+    void *proc_display;
 };
 
 struct FTAttackMatrix

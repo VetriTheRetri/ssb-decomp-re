@@ -402,7 +402,7 @@ void mnOptionMakeMenuGObj(void)
 }
 
 // 0x80132248
-void mnOptionLabelsFuncDisplay(GObj *gobj)
+void mnOptionLabelsProcDisplay(GObj *gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
@@ -426,7 +426,7 @@ void mnOptionMakeLabels(void)
 
     gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(gobj, mnOptionLabelsFuncDisplay, 1, GOBJ_PRIORITY_DEFAULT, ~0);
+    gcAddGObjDisplay(gobj, mnOptionLabelsProcDisplay, 1, GOBJ_PRIORITY_DEFAULT, ~0);
 
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNOptionFiles[0], &lMNCommonSmashLogoSprite));
 
@@ -548,7 +548,7 @@ void func_ovl60_801327CC(void)
 }
 
 // 0x801327D4
-void mnOptionSoundUnderlineFuncDisplay(GObj *gobj)
+void mnOptionSoundUnderlineProcDisplay(GObj *gobj)
 {
     // 0x801336AC
     SYRectangle rect[/* */] =
@@ -599,7 +599,7 @@ void mnOptionMakeSoundUnderline(void)
             5,
             GOBJ_PRIORITY_DEFAULT
         ),
-        mnOptionSoundUnderlineFuncDisplay,
+        mnOptionSoundUnderlineProcDisplay,
         3,
         GOBJ_PRIORITY_DEFAULT,
         -1
@@ -769,7 +769,7 @@ void mnOptionWriteBackup(void)
 }
 
 // 0x80132E4C
-void mnOptionFuncRun(GObj *gobj)
+void mnOptionProcRun(GObj *gobj)
 {
     GObj *select_gobj;
     sb32 stick_range;
@@ -1000,7 +1000,7 @@ void mnOptionFuncStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(0, mnOptionFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeGObjSPAfter(0, mnOptionProcRun, 0, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, 0, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
     
     mnOptionInitVars();

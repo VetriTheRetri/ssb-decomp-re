@@ -736,7 +736,7 @@ s32 scStaffrollGetLockOnPositionY(s32 pos_y)
 }
 
 // 0x80132144
-void scStaffrollHighlightFuncDisplay(GObj *gobj)
+void scStaffrollHighlightProcDisplay(GObj *gobj)
 {
 	s32 unused;
 
@@ -808,7 +808,7 @@ void scStaffrollMakeHighlightGObj(GObj *gobj)
 	{
 		highlight_gobj = gcMakeGObjSPAfter(9, NULL, 9, GOBJ_PRIORITY_DEFAULT);
 
-		gcAddGObjDisplay(highlight_gobj, scStaffrollHighlightFuncDisplay, 8, GOBJ_PRIORITY_DEFAULT, ~0);
+		gcAddGObjDisplay(highlight_gobj, scStaffrollHighlightProcDisplay, 8, GOBJ_PRIORITY_DEFAULT, ~0);
 		gcAddGObjProcess(highlight_gobj, scStaffrollHighlightThreadUpdate, nGCProcessKindThread, 1);
 
 		sSCStaffrollHighlightPositionX = sobj->pos.x + 8.0F;
@@ -1307,7 +1307,7 @@ sb32 scStaffrollGetPauseStatusHighlight(void)
 }
 
 // 0x801334E4
-void scStaffrollFuncRun(GObj *gobj)
+void scStaffrollProcRun(GObj *gobj)
 {
 	sb32 is_paused;
 	u16 button_tap;
@@ -1430,7 +1430,7 @@ void SCStaffrollJobAndNameThreadUpdate(GObj *gobj)
 }
 
 // 0x80133854
-void SCStaffrollJobFuncDisplay(GObj *gobj)
+void SCStaffrollJobProcDisplay(GObj *gobj)
 {
 	if (gobj == gGCCommonLinks[4])
 	{
@@ -1444,7 +1444,7 @@ void SCStaffrollJobFuncDisplay(GObj *gobj)
 }
 
 // 0x80133930
-void SCStaffrollNameFuncDisplay(GObj *gobj)
+void SCStaffrollNameProcDisplay(GObj *gobj)
 {
 	if (gobj == gGCCommonLinks[3])
 	{
@@ -1624,7 +1624,7 @@ GObj* scStaffrollMakeJobGObj(SCStaffrollJob *job)
 
 	gobj = gcMakeGObjSPAfter(1, NULL, 4, GOBJ_PRIORITY_DEFAULT);
 
-	gcAddGObjDisplay(gobj, SCStaffrollJobFuncDisplay, 2, GOBJ_PRIORITY_DEFAULT, ~0);
+	gcAddGObjDisplay(gobj, SCStaffrollJobProcDisplay, 2, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	dobj = gcAddDObjForGObj(gobj, NULL);
 
@@ -1661,7 +1661,7 @@ GObj* scStaffrollMakeNameGObjAndDObjs(void)
 
 	gobj = gcMakeGObjSPAfter(1, NULL, 3, GOBJ_PRIORITY_DEFAULT);
 
-	gcAddGObjDisplay(gobj, SCStaffrollNameFuncDisplay, 1, GOBJ_PRIORITY_DEFAULT, ~0);
+	gcAddGObjDisplay(gobj, SCStaffrollNameProcDisplay, 1, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	new_dobj = dobj = gcAddDObjForGObj(gobj, NULL);
 
@@ -2119,7 +2119,7 @@ void scStaffrollMakeCamera(void)
 // 0x8013505C
 void scStaffrollFuncStart(void)
 {
-	gcMakeGObjSPAfter(0, scStaffrollFuncRun, 1, GOBJ_PRIORITY_DEFAULT);
+	gcMakeGObjSPAfter(0, scStaffrollProcRun, 1, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(12, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 
 	SCStaffrollSetupFiles();

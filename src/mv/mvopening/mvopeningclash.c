@@ -128,7 +128,7 @@ void mvOpeningClashMakeFighters(void)
 }
 
 // 0x80131CCC
-void mvOpeningClashVoidFuncDisplay(GObj *gobj)
+void mvOpeningClashVoidProcDisplay(GObj *gobj)
 {
     if (sMVOpeningClashVoidAlpha < 0xFF)
     {
@@ -162,7 +162,7 @@ void mvOpeningClashMakeVoid(void)
             18,
             GOBJ_PRIORITY_DEFAULT
         ),
-        mvOpeningClashVoidFuncDisplay,
+        mvOpeningClashVoidProcDisplay,
         26,
         GOBJ_PRIORITY_DEFAULT,
         -1
@@ -290,7 +290,7 @@ void mvOpeningClashMakeVoidCamera(void)
 }
 
 // 0x801323C8
-void mvOpeningClashWallpaperFuncDisplay(GObj *gobj)
+void mvOpeningClashWallpaperProcDisplay(GObj *gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
@@ -310,7 +310,7 @@ void mvOpeningClashMakeWallpaperCamera(void)
         NULL,
         16,
         GOBJ_PRIORITY_DEFAULT,
-        mvOpeningClashWallpaperFuncDisplay,
+        mvOpeningClashWallpaperProcDisplay,
         90,
         COBJ_MASK_DLLINK(29),
         -1,
@@ -335,7 +335,7 @@ void mvOpeningClashInitTotalTimeTics(void)
 }
 
 // 0x8013255C
-void mvOpeningClashFuncRun(GObj *gobj)
+void mvOpeningClashProcRun(GObj *gobj)
 {
     sMVOpeningClashTotalTimeTics++;
 
@@ -416,7 +416,7 @@ void mvOpeningClashFuncStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(0, mvOpeningClashFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeGObjSPAfter(0, mvOpeningClashProcRun, 0, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 
     efParticleInitAll();

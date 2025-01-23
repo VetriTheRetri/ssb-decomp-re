@@ -1382,7 +1382,7 @@ GObj* efGroundMakeEffect(EFDesc *effect_desc, s32 lr)
     }
     else ep = NULL;
 
-    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, efManagerFuncRun, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, efManagerProcRun, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -1396,13 +1396,13 @@ GObj* efGroundMakeEffect(EFDesc *effect_desc, s32 lr)
 
     ep->effect_vars.ground_effect.lr_bool = ((lr != -3) && (lr != 3)) ? FALSE : TRUE;
 
-    if (effect_desc->func_display == NULL)
+    if (effect_desc->proc_display == NULL)
     {
         return effect_gobj;
     }
     else
     {
-        gcAddGObjDisplay(effect_gobj, effect_desc->func_display, effect_desc->dl_link, 2, -1);
+        gcAddGObjDisplay(effect_gobj, effect_desc->proc_display, effect_desc->dl_link, 2, -1);
         gcMoveGObjDLHead(effect_gobj, effect_desc->dl_link, GOBJ_PRIORITY_DEFAULT);
 
         o_mobsjub = effect_desc->o_mobjsub;

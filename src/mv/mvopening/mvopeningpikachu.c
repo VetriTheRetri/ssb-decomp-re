@@ -292,7 +292,7 @@ void mvOpeningPikachuMakeMotionWindow(void)
 }
 
 // 0x8018D864
-void mvOpeningPikachuPosedWallpaperFuncDisplay(GObj *gobj)
+void mvOpeningPikachuPosedWallpaperProcDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
@@ -316,7 +316,7 @@ void mvOpeningPikachuMakePosedWallpaper(void)
 			19,
 			GOBJ_PRIORITY_DEFAULT
 		),
-		mvOpeningPikachuPosedWallpaperFuncDisplay,
+		mvOpeningPikachuPosedWallpaperProcDisplay,
 		28,
 		GOBJ_PRIORITY_DEFAULT,
 		~0
@@ -458,7 +458,7 @@ void mvOpeningPikachuMakePosedWallpaperCamera(void)
 }
 
 // 0x8018DDC0
-void mvOpeningPikachuFuncRun(GObj *gobj)
+void mvOpeningPikachuProcRun(GObj *gobj)
 {
 	sMVOpeningPikachuTotalTimeTics++;
 
@@ -505,7 +505,7 @@ void mvOpeningPikachuFuncStart(void)
 	gSCManagerBattleState->players[0].pkind = nFTPlayerKindKey;
 
 	mvOpeningPikachuSetupFiles();
-	gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningPikachuFuncRun, nGCCommonLinkIDMovie, GOBJ_PRIORITY_DEFAULT);
+	gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningPikachuProcRun, nGCCommonLinkIDMovie, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(nGCCommonLinkIDCamera, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	mvOpeningPikachuInitVars();
 	efParticleInitAll();

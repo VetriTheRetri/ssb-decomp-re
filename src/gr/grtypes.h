@@ -12,8 +12,8 @@
 
 struct GRDisplayDesc
 {
-	void *pri_func_display;
-	void *sec_func_display;
+	void *pri_proc_display;
+	void *sec_proc_display;
 	u8 dl_link;
 	void *proc_update;
 };

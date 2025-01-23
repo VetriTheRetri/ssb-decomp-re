@@ -231,7 +231,7 @@ s32 sDBMenuOptionsNum;
 s32 sDBMenuCursorID;
 
 // 0x80371418
-void (*sDBMenuActorFuncDisplay)(GObj*);
+void (*sDBMenuActorProcDisplay)(GObj*);
 
 // 0x8037141C
 s32 sDBMenuIsRedrawInterrupt;
@@ -410,7 +410,7 @@ void dbMenuDrawCursor(void* arg0, s32 cursor_id)
 }
 
 // 0x803696D4
-void dbMenuCommonFuncDisplay(GObj *gobj)
+void dbMenuCommonProcDisplay(GObj *gobj)
 {
 	if (sDBMenuIsRedrawInterrupt != FALSE)
 	{
@@ -420,7 +420,7 @@ void dbMenuCommonFuncDisplay(GObj *gobj)
 		dbMenuDrawMenuOptions(D_ovl9_80371404, sDBMenuOptions, sDBMenuOptionsNum);
 		dbMenuDrawCursor(D_ovl9_80371404, sDBMenuCursorID);
 	}
-	sDBMenuActorFuncDisplay(gobj);
+	sDBMenuActorProcDisplay(gobj);
 }
 
 // 0x8036975C
@@ -608,8 +608,8 @@ void dbMenuMakeMenu(s32 x, s32 y, s32 w, DBMenuOption *menu_options, s32 menu_op
 		dbMenuDrawMenuOptions(D_ovl9_80371404, menu_options, menu_options_num);
 		dbMenuDrawCursor(D_ovl9_80371404, sDBMenuCursorID);
 
-		sDBMenuActorFuncDisplay = sDBMenuActorGObj->func_display;
-		sDBMenuActorGObj->func_display = dbMenuCommonFuncDisplay;
+		sDBMenuActorProcDisplay = sDBMenuActorGObj->proc_display;
+		sDBMenuActorGObj->proc_display = dbMenuCommonProcDisplay;
 
 		gcAddGObjProcess(sDBMenuActorGObj, dbMenuActorProcUpdate, nGCProcessKindFunc, 1);
 

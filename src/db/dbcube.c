@@ -451,7 +451,7 @@ void dbCubeAudioThreadUpdate(GObj *gobj)
 }
 
 // 0x80131E00
-void dbCubeFuncRun(GObj *gobj)
+void dbCubeProcRun(GObj *gobj)
 {
 	if (gSYControllerMain.button_tap & START_BUTTON)
 	{
@@ -478,7 +478,7 @@ GObj* dbCubeMakeGObj(void (*thread)(GObj*), void *dvar)
 	GObj *gobj = gcMakeModelGObj
 	(
 		0x10000000,
-		gcDefaultFuncRun,
+		gcDefaultProcRun,
 		0,
 		GOBJ_PRIORITY_DEFAULT,
 		gcDrawDObjDLHead0,
@@ -500,7 +500,7 @@ GObj* dbCubeMakeCamera(void (*thread)(GObj*))
 	GObj *camera_gobj = gcMakeCameraGObj
 	(
 		0x10000002,
-		gcDefaultFuncRun,
+		gcDefaultProcRun,
 		0,
 		GOBJ_PRIORITY_DEFAULT,
 		func_80017DBC,
@@ -541,7 +541,7 @@ void dbCubeFuncStart(void)
 
 	lbRelocInitSetup(&rl_setup);
 
-	gcMakeGObjSPAfter(0, dbCubeFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
+	gcMakeGObjSPAfter(0, dbCubeProcRun, 0, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj
 	(
 		0,
@@ -560,7 +560,7 @@ void dbCubeFuncStart(void)
 	dbCubeMakeGObj(dbCubeModelThreadUpdate, dDBCubeKirbyCubeDisplayList);
 	lbTransitionSetupTransition();
 	lbTransitionMakeCamera(0x20000002, 0, 50, COBJ_MASK_DLLINK(1));
-	gcSetAnimSpeed(lbTransitionMakeTransition(dDBCubeMenuValueTransition, 0x20000000, 0, lbTransitionFuncDisplay, 1, lbTransitionProcUpdate), 0.25F);
+	gcSetAnimSpeed(lbTransitionMakeTransition(dDBCubeMenuValueTransition, 0x20000000, 0, lbTransitionProcDisplay, 1, lbTransitionProcUpdate), 0.25F);
 	gmRumbleMakeActor();
 	dbMenuInitMenu();
 	dbCubeMakeGObj(dbCubeAudioThreadUpdate, NULL);

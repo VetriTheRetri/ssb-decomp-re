@@ -268,7 +268,7 @@ typedef enum AObjTrackKind
 typedef enum GCStatus
 {
     nGCStatusSystem,
-    nGCStatusRunning,               // Processing current GObj's func_run
+    nGCStatusRunning,               // Processing current GObj's proc_run
     nGCStatusProcessing,            // Processing current GObjProcess
     nGCStatusCapturing,             // Processing current CObj's viewport?
     nGCStatusDisplaying             // Processing current CObj and DObj's rendering?

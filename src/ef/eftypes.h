@@ -17,7 +17,7 @@ struct EFDesc
     DObjTransformTypes transform_types1;
     DObjTransformTypes transform_types2;
     void (*proc_update)(GObj*);
-    void (*func_display)(GObj*);
+    void (*proc_display)(GObj*);
     intptr_t o_dobjsetup;
     intptr_t o_mobjsub;
     intptr_t o_anim_joint;
@@ -73,7 +73,7 @@ struct EFStruct
     GObj *fighter_gobj;
 
     u16 bank_id;
-    LBTransform *tfm;
+    LBTransform *xf;
 
     ub32 is_pause_effect : 1;
 

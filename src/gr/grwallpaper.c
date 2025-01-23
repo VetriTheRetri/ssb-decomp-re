@@ -249,7 +249,7 @@ void grWallpaperMakeSector(void)
 }
 
 // 0x80104B58
-void grWallpaperBonus3FuncDisplay(GObj *wallpaper_gobj)
+void grWallpaperBonus3ProcDisplay(GObj *wallpaper_gobj)
 {
     gSPDisplayList(gSYTaskmanDLHeads[0]++, dGRWallpaperDisplayList);
 }
@@ -261,7 +261,7 @@ void grWallpaperMakeBonus3(void)
 
     sGRWallpaperGObj = wallpaper_gobj = gcMakeGObjSPAfter(nGCCommonKindWallpaper, NULL, nGCCommonLinkIDWallpaper, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(wallpaper_gobj, grWallpaperBonus3FuncDisplay, 0, GOBJ_PRIORITY_DEFAULT, ~0);
+    gcAddGObjDisplay(wallpaper_gobj, grWallpaperBonus3ProcDisplay, 0, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
 // 0x80104BDC

@@ -178,17 +178,17 @@ void itLinkBombExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 	s32 unused;
 	DObj *dobj = DObjGetStruct(item_gobj);
 	ITStruct *ip = itGetStruct(item_gobj);
-	LBParticle *ptc;
+	LBParticle *pc;
 
 	itLinkBombCommonSetHitStatusNone(item_gobj);
 
-	ptc = efManagerSparkleWhiteMultiExplodeMakeEffect(&dobj->translate.vec.f);
+	pc = efManagerSparkleWhiteMultiExplodeMakeEffect(&dobj->translate.vec.f);
 
-	if (ptc != NULL)
+	if (pc != NULL)
 	{
-		ptc->tfm->scale.x = ITLINKBOMB_EXPLODE_EFFECT_SCALE;
-		ptc->tfm->scale.y = ITLINKBOMB_EXPLODE_EFFECT_SCALE;
-		ptc->tfm->scale.z = ITLINKBOMB_EXPLODE_EFFECT_SCALE;
+		pc->xf->scale.x = ITLINKBOMB_EXPLODE_EFFECT_SCALE;
+		pc->xf->scale.y = ITLINKBOMB_EXPLODE_EFFECT_SCALE;
+		pc->xf->scale.z = ITLINKBOMB_EXPLODE_EFFECT_SCALE;
 	}
 	efManagerQuakeMakeEffect(1);
 

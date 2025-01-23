@@ -110,7 +110,7 @@ sb32 itKabigonFallProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017E100
-void itKabigonFallFuncDisplay(GObj *item_gobj)
+void itKabigonFallProcDisplay(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
@@ -172,7 +172,7 @@ void itKabigonFallInitVars(GObj *item_gobj)
 
         ip->attack_coll.size *= ITKABIGON_DROP_SIZE_OTHER;
     }
-    item_gobj->func_display = itKabigonFallFuncDisplay;
+    item_gobj->proc_display = itKabigonFallProcDisplay;
 
     gcMoveGObjDLHead(item_gobj, 18, item_gobj->dl_link_priority);
 }
@@ -218,7 +218,7 @@ sb32 itKabigonJumpProcUpdate(GObj *item_gobj)
 }
 
 // 0x8017E4A4
-void itKabigonCommonFuncDisplay(GObj *item_gobj)
+void itKabigonCommonProcDisplay(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
@@ -308,7 +308,7 @@ GObj* itKabigonMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         {
             func_800269C0_275C0(nSYAudioVoiceMBallKabigonAppear);
         }
-        item_gobj->func_display = itKabigonCommonFuncDisplay;
+        item_gobj->proc_display = itKabigonCommonProcDisplay;
     }
     return item_gobj;
 }

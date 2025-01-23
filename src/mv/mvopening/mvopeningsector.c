@@ -280,7 +280,7 @@ void mvOpeningSectorMakeGreatFox(void)
 }
 
 // 0x8013202C
-void mvOpeningSectorCockpitFuncDisplay(GObj *cockpit_gobj)
+void mvOpeningSectorCockpitProcDisplay(GObj *cockpit_gobj)
 {
     SObj* cockpit_sobj = SObjGetStruct(cockpit_gobj);
 
@@ -332,7 +332,7 @@ void mvOpeningSectorMakeCockpit(void)
 
     cockpit_gobj = gcMakeGObjSPAfter(0, NULL, 21, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(cockpit_gobj, mvOpeningSectorCockpitFuncDisplay, 29, GOBJ_PRIORITY_DEFAULT, ~0);
+    gcAddGObjDisplay(cockpit_gobj, mvOpeningSectorCockpitProcDisplay, 29, GOBJ_PRIORITY_DEFAULT, ~0);
     gcAddGObjProcess(cockpit_gobj, mvOpeningSectorCockpitProcUpdate, nGCProcessKindFunc, 1);
 
     cockpit_sobj = lbCommonMakeSObjForGObj
@@ -483,7 +483,7 @@ void mvOpeningSectorInitTotalTimeTics(void)
 }
 
 // 0x8013264C
-void mvOpeningSectorFuncRun(GObj *gobj)
+void mvOpeningSectorProcRun(GObj *gobj)
 {
     sMVOpeningSectorTotalTimeTics++;
 
@@ -553,7 +553,7 @@ void mvOpeningSectorFuncStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(0, mvOpeningSectorFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeGObjSPAfter(0, mvOpeningSectorProcRun, 0, GOBJ_PRIORITY_DEFAULT);
 
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
 

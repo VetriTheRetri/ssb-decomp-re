@@ -386,7 +386,7 @@ void mnMapsMakePlaque(void)
 }
 
 // 0x801320E0
-void mnMapsLabelsFuncDisplay(GObj *gobj)
+void mnMapsLabelsProcDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
@@ -413,7 +413,7 @@ void mnMapsMakeLabels(void)
 	s32 x;
 
 	gobj = gcMakeGObjSPAfter(0, NULL, 6, GOBJ_PRIORITY_DEFAULT);
-	gcAddGObjDisplay(gobj, mnMapsLabelsFuncDisplay, 4, GOBJ_PRIORITY_DEFAULT, ~0);
+	gcAddGObjDisplay(gobj, mnMapsLabelsProcDisplay, 4, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &lMNMapsStageSelectSprite));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -786,7 +786,7 @@ void mnMapsLoadMapFile(s32 gkind, void *heap)
 }
 
 // 0x80132BC8
-void mnMapsPreviewWallpaperFuncDisplay(GObj *gobj)
+void mnMapsPreviewWallpaperProcDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
@@ -811,7 +811,7 @@ GObj* mnMapsMakePreviewWallpaper(s32 gkind)
 	s32 x;
 
 	gobj = gcMakeGObjSPAfter(0, NULL, 9, GOBJ_PRIORITY_DEFAULT);
-	gcAddGObjDisplay(gobj, mnMapsPreviewWallpaperFuncDisplay, 7, GOBJ_PRIORITY_DEFAULT, ~0);
+	gcAddGObjDisplay(gobj, mnMapsPreviewWallpaperProcDisplay, 7, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	// draw patterned bg
 	for (x = 43; x < 155; x += 16)
@@ -865,7 +865,7 @@ GObj* mnMapsMakePreviewWallpaper(s32 gkind)
 }
 
 // 0x80132EF0
-void mnMapsModelPriFuncDisplay(GObj *gobj)
+void mnMapsModelPriProcDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gSPSetGeometryMode(gSYTaskmanDLHeads[0]++, G_ZBUFFER);
@@ -875,7 +875,7 @@ void mnMapsModelPriFuncDisplay(GObj *gobj)
 }
 
 // 0x80132F70
-void mnMapsModelSecFuncDisplay(GObj *gobj)
+void mnMapsModelSecProcDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gSPSetGeometryMode(gSYTaskmanDLHeads[0]++, G_ZBUFFER);
@@ -903,7 +903,7 @@ GObj* mnMapsMakeLayer(s32 gkind, MPGroundData *ground_data, MPGroundDesc *ground
 		return NULL;
 	}
 	gobj = gcMakeGObjSPAfter(0, NULL, 5, GOBJ_PRIORITY_DEFAULT);
-	gcAddGObjDisplay(gobj, (ground_data->layer_mask & (1 << id)) ? mnMapsModelSecFuncDisplay : mnMapsModelPriFuncDisplay, 3, GOBJ_PRIORITY_DEFAULT, ~0);
+	gcAddGObjDisplay(gobj, (ground_data->layer_mask & (1 << id)) ? mnMapsModelSecProcDisplay : mnMapsModelPriProcDisplay, 3, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcSetupCustomDObjs(gobj, ground_desc->dobjdesc, NULL, nGCMatrixKindTraRotRpyRSca, nGCMatrixKindNull, nGCMatrixKindNull);
 
 	if (ground_desc->p_mobjsubs != NULL)
@@ -1335,7 +1335,7 @@ void mnMapsSaveSceneData2(void)
 }
 
 // 0x80133D80
-void mnMapsFuncRun(GObj *gobj)
+void mnMapsProcRun(GObj *gobj)
 {
 	s32 unused;
 	s32 stick_input;
@@ -1552,7 +1552,7 @@ void mnMapsFuncStart(void)
 	);
 	mnMapsAllocModelHeaps();
 
-	gcMakeGObjSPAfter(0, mnMapsFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
+	gcMakeGObjSPAfter(0, mnMapsProcRun, 0, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(1, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
 	mnMapsInitVars();
 	mnMapsMakeWallpaperCamera();

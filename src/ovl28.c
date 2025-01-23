@@ -830,7 +830,7 @@ sb32 mn1PTrainingPlayersIsCostumeInUse(s32 fkind, s32 port_id, s32 costume_id)
 }
 
 // 0x80133408
-s32 mn1PTrainingPlayersGetAvailableCostumeFFA(s32 fkind, s32 port_id)
+s32 mn1PTrainingPlayersGetAvailableCostumeRoyal(s32 fkind, s32 port_id)
 {
 	s32 i, j, k, l;
 	sb32 some_array[4];
@@ -871,7 +871,7 @@ s32 mn1PTrainingPlayersGetAvailableCostumeFFA(s32 fkind, s32 port_id)
 // 0x801335F0
 s32 mn1PTrainingPlayersGetAvailableCostume(s32 fkind, s32 port_id)
 {
-	return ftParamGetCostumeCommonID(fkind, mn1PTrainingPlayersGetAvailableCostumeFFA(fkind, port_id));
+	return ftParamGetCostumeCommonID(fkind, mn1PTrainingPlayersGetAvailableCostumeRoyal(fkind, port_id));
 }
 
 // 0x8013361C

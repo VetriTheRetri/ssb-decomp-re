@@ -425,7 +425,7 @@ void scAutoDemoUpdateFocus(void)
 }
 
 // 0x8018D6DC
-void scAutoDemoFuncRun(GObj *gobj)
+void scAutoDemoProcRun(GObj *gobj)
 {
 	scAutoDemoDetectExit();
 	scAutoDemoUpdateFocus();
@@ -434,7 +434,7 @@ void scAutoDemoFuncRun(GObj *gobj)
 // 0x8018D704
 GObj* scAutoDemoMakeFocusInterface(void)
 {
-	GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, scAutoDemoFuncRun, nGCCommonLinkIDInterfaceActor, GOBJ_PRIORITY_DEFAULT);
+	GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, scAutoDemoProcRun, nGCCommonLinkIDInterfaceActor, GOBJ_PRIORITY_DEFAULT);
 
 	sSCAutoDemoProc = dSCAutoDemoProcList;
 	sSCAutoDemoFocusChangeWait = 0;

@@ -83,7 +83,7 @@ void mnMessageMakeWallpaper(void)
 }
 
 // 0x80131BA4
-void mnMessageTintFuncDisplay(GObj *gobj)
+void mnMessageTintProcDisplay(GObj *gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
@@ -100,7 +100,7 @@ void mnMessageTintFuncDisplay(GObj *gobj)
 // 0x80131CB8
 void mnMessageMakeTint(void)
 {
-    gcAddGObjDisplay(gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT), mnMessageTintFuncDisplay, 2, GOBJ_PRIORITY_DEFAULT, ~0);
+    gcAddGObjDisplay(gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT), mnMessageTintProcDisplay, 2, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
 // 0x80131D04
@@ -295,7 +295,7 @@ void mnMessageApplyUnlock(void)
 }
 
 // 0x8013223C
-void mnMessageFuncRun(GObj *gobj)
+void mnMessageProcRun(GObj *gobj)
 {
     sMNMessageTotalTimeTics++;
     
@@ -347,7 +347,7 @@ void mnMessageFuncStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(0, mnMessageFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeGObjSPAfter(0, mnMessageProcRun, 0, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, 0, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
 
     mnMessageInitVars();

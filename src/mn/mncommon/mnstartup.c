@@ -158,7 +158,7 @@ void mnStartupLogoThreadUpdate(GObj *gobj)
 }
 
 // 0x80131C20
-void mnStartupActorFuncRun(GObj *gobj)
+void mnStartupActorProcRun(GObj *gobj)
 {
 	if (sMNStartupSkipAllowWait != 0)
 	{
@@ -203,7 +203,7 @@ void mnStartupFuncStart(void)
 
 	lbRelocInitSetup(&rl_setup);
 
-	gcMakeGObjSPAfter(0, mnStartupActorFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
+	gcMakeGObjSPAfter(0, mnStartupActorProcRun, 0, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 
 	cobj = CObjGetStruct

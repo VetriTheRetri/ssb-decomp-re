@@ -15,7 +15,7 @@ extern void func_800218E0(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4);
 extern void func_80021908(s32 arg0, s32 arg1, f32 arg2, s32 arg3, s32 arg4, s32 arg5);
 extern void unref_80021958(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4);
 extern void syErrorFillRectangle(Gfx *dl, u32 ulx, u32 uly, u32 lrx, u32 lry);
-extern void syErrorControllerFuncDisplay(GObj *gobj);
+extern void syErrorControllerProcDisplay(GObj *gobj);
 extern GObj* syErrorMakeControllerCamera(s32 link, u32 link_priority, u32 dl_link_priority);
 extern void syErrorFramebufDrawBlackRectangle(s32 ulx, s32 uly, s32 width, s32 height);
 extern void syErrorFramebufWriteGlyph(s32 ulx, s32 uly, s32 char_index);

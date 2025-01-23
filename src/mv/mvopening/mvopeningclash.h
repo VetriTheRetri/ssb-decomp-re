@@ -30,15 +30,15 @@ extern intptr_t lMVOpeningClashWallpaperURAnimJoint;            // 0x00004AA0
 
 extern void mvOpeningClashFuncLights(Gfx **dls);
 extern void mvOpeningClashMakeFighters(void);
-extern void mvOpeningClashVoidFuncDisplay(GObj *gobj);
+extern void mvOpeningClashVoidProcDisplay(GObj *gobj);
 extern void mvOpeningClashMakeVoid(void);
 extern void mvOpeningClashMakeWallpaper(void);
 extern void mvOpeningClashMakeFightersCamera(void);
 extern void mvOpeningClashMakeVoidCamera(void);
-extern void mvOpeningClashWallpaperFuncDisplay(GObj*);
+extern void mvOpeningClashWallpaperProcDisplay(GObj*);
 extern void mvOpeningClashMakeWallpaperCamera(void);
 extern void mvOpeningClashInitTotalTimeTics(void);
-extern void mvOpeningClashFuncRun(GObj *gobj);
+extern void mvOpeningClashProcRun(GObj *gobj);
 extern void mvOpeningClashFuncStart(void);
 extern void mvOpeningClashStartScene(void);
 

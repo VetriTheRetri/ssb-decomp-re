@@ -927,7 +927,7 @@ f32 sc1PIntroGetVSFighterPositionZ(s32 stage, s32 fkind)
 }
 
 // 0x80133170
-void sc1PIntroVSFighterFuncDisplay(GObj *fighter_gobj)
+void sc1PIntroVSFighterProcDisplay(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -943,24 +943,24 @@ void sc1PIntroVSFighterFuncDisplay(GObj *fighter_gobj)
             ftMainSetStatus(fighter_gobj, 0x1000E, 0.0F, 0.0F, FTSTATUS_PRESERVE_NONE);
             gcPlayAnimAll(fighter_gobj);
             gcEndProcessAll(fighter_gobj);
-            ftDisplayMainFuncDisplay(fighter_gobj);
+            ftDisplayMainProcDisplay(fighter_gobj);
         }
         if (((fp->fkind * 2) - 8) < sc1PIntroTotalTimeTics)
         {
             ftMainSetStatus(fighter_gobj, 0x1000E, 1.0F, 0.0F, FTSTATUS_PRESERVE_NONE);
             gcPlayAnimAll(fighter_gobj);
             gcEndProcessAll(fighter_gobj);
-            ftDisplayMainFuncDisplay(fighter_gobj);
+            ftDisplayMainProcDisplay(fighter_gobj);
         }
         if (((fp->fkind * 2) + 12) < sc1PIntroTotalTimeTics)
         {
             ftMainSetStatus(fighter_gobj, 0x1000E, 2.0F, 0.0F, FTSTATUS_PRESERVE_NONE);
             gcPlayAnimAll(fighter_gobj);
             gcEndProcessAll(fighter_gobj);
-            ftDisplayMainFuncDisplay(fighter_gobj);
+            ftDisplayMainProcDisplay(fighter_gobj);
         }
     }
-    else ftDisplayMainFuncDisplay(fighter_gobj);
+    else ftDisplayMainProcDisplay(fighter_gobj);
     
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
@@ -977,7 +977,7 @@ GObj* sc1PIntroMakeVSFighter(s32 fkind, s32 stage, s32 card_anim_frame_id, void 
     desc.fkind = fkind;
     desc.costume = ftParamGetCostumeCommonID(fkind, 0);
     desc.figatree_heap = *figatree;
-    desc.func_display = sc1PIntroVSFighterFuncDisplay;
+    desc.proc_display = sc1PIntroVSFighterProcDisplay;
     desc.player = 0;
     desc.unk_rebirth_0x1C = 4;
     desc.unk_rebirth_0x1D = 4;
@@ -1819,7 +1819,7 @@ void func_ovl24_801348EC(void)
 }
 
 // 0x801348F4
-void sc1PIntroFuncRun(GObj *gobj)
+void sc1PIntroProcRun(GObj *gobj)
 {
     sc1PIntroTotalTimeTics++;
     
@@ -1943,7 +1943,7 @@ void sc1PIntroFuncStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(0, sc1PIntroFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeGObjSPAfter(0, sc1PIntroProcRun, 0, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     sc1PIntroInitVars();
     efParticleInitAll();

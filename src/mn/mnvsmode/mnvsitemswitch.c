@@ -182,7 +182,7 @@ void mnVSItemSwitchMakeToggle(GObj *gobj, f32 pos_x, f32 pos_y)
 }
 
 // 0x80131CA4
-void mnVSItemSwitchLabelsFuncDisplay(GObj *gobj)
+void mnVSItemSwitchLabelsProcDisplay(GObj *gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
@@ -206,7 +206,7 @@ void mnVSItemSwitchMakeLabels(void)
 
     gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(gobj, mnVSItemSwitchLabelsFuncDisplay, 1, GOBJ_PRIORITY_DEFAULT, ~0);
+    gcAddGObjDisplay(gobj, mnVSItemSwitchLabelsProcDisplay, 1, GOBJ_PRIORITY_DEFAULT, ~0);
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSItemSwitchFiles[0], &lMNVSItemSwitchLabelVSOptionsSprite));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -618,7 +618,7 @@ void mnVSItemSwitchUpdateOption(s32 option_id, s32 rate)
 }
 
 // 0x80132AF0
-void mnVSItemSwitchFuncRun(GObj *gobj)
+void mnVSItemSwitchProcRun(GObj *gobj)
 {
     s32 unused;
     s32 stick_range;
@@ -825,7 +825,7 @@ void mnVSItemSwitchFuncStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(0, mnVSItemSwitchFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeGObjSPAfter(0, mnVSItemSwitchProcRun, 0, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     
     mnVSItemSwitchInitVars();

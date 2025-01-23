@@ -129,7 +129,7 @@ extern void mnCharactersMoveFighterCamera(CObj *cobj, f32 angle, s32 unused);
 extern void mnCharactersResetFighterCamera(void);
 extern void mnCharactersUpdateScene(void);
 extern void mnCharactersUpdateSceneDemo(void);
-extern void mnCharactersFuncRun(GObj *gobj);
+extern void mnCharactersProcRun(GObj *gobj);
 extern void mnCharactersFuncStart(void);
 extern void mnCharactersStartScene(void);
 

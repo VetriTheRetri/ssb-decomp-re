@@ -487,7 +487,7 @@ void mnTitleProceedModeSelect(void)
 }
 
 // 0x801320F0
-void mnTitleFuncRun(GObj *gobj)
+void mnTitleProcRun(GObj *gobj)
 {
 	s32 i;
 	u16 buttons;
@@ -614,7 +614,7 @@ void mnTitleSetAllowProceedWait(void)
 }
 
 // 0x80132448
-void mnTitleTransitionsFuncRun(GObj *gobj)
+void mnTitleTransitionsProcRun(GObj *gobj)
 {
 	sMNTitleTransitionTotalTimeTics++;
 
@@ -801,7 +801,7 @@ void mnTitleSetColors(SObj *sobj, s32 kind)
 }
 
 // 0x80132940
-void mnTitleFireFuncDisplay(GObj *fire_gobj)
+void mnTitleFireProcDisplay(GObj *fire_gobj)
 {
 	s32 i;
 	SObj *fire_sobj = SObjGetStruct(fire_gobj);
@@ -821,7 +821,7 @@ void mnTitleFireFuncDisplay(GObj *fire_gobj)
 }
 
 // 0x80132A20
-void mnTitleFireFuncRun(GObj *gobj)
+void mnTitleFireProcRun(GObj *gobj)
 {
 	if (gobj->flags != GOBJ_FLAG_HIDDEN)
 	{
@@ -878,11 +878,11 @@ void mnTitleMakeFire(void)
 	GObj *fire_gobj;
 	SObj *fire_sobj;
 
-	fire_gobj = gcMakeGObjSPAfter(5, mnTitleFireFuncRun, 6, GOBJ_PRIORITY_DEFAULT);
+	fire_gobj = gcMakeGObjSPAfter(5, mnTitleFireProcRun, 6, GOBJ_PRIORITY_DEFAULT);
 
 	if (fire_gobj != NULL)
 	{
-		gcAddGObjDisplay(fire_gobj, mnTitleFireFuncDisplay, 0, GOBJ_PRIORITY_DEFAULT, ~0);
+		gcAddGObjDisplay(fire_gobj, mnTitleFireProcDisplay, 0, GOBJ_PRIORITY_DEFAULT, ~0);
 		gcAddGObjProcess(fire_gobj, mnTitleFireProcUpdate, nGCProcessKindFunc, 1);
 
 		for (i = 0; i < 2; i++)
@@ -948,7 +948,7 @@ void mnTitleLogoProcUpdate(GObj *gobj)
 }
 
 // 0x80132DFC
-void mnTitleLogoFuncDisplay(GObj *gobj)
+void mnTitleLogoProcDisplay(GObj *gobj)
 {
 	SObj *sobj = SObjGetStruct(gobj);
 
@@ -968,7 +968,7 @@ void mnTitleLogoFuncDisplay(GObj *gobj)
 }
 
 // 0x80132EDC
-void mnTitleFadeOutLogoFuncRun(GObj *gobj)
+void mnTitleFadeOutLogoProcRun(GObj *gobj)
 {
 	SObj *sobj = SObjGetStruct(gobj);
 
@@ -996,7 +996,7 @@ void mnTitleMakeLogoNoOpening(void)
 		NULL,
 		10,
 		GOBJ_PRIORITY_DEFAULT,
-		mnTitleLogoFuncDisplay,
+		mnTitleLogoProcDisplay,
 		0,
 		GOBJ_PRIORITY_DEFAULT,
 		-1,
@@ -1067,10 +1067,10 @@ void mnTitleMakeLogo(void)
 		logo_gobj = lbCommonMakeSpriteGObj
 		(
 			11,
-			mnTitleFadeOutLogoFuncRun,
+			mnTitleFadeOutLogoProcRun,
 			10,
 			GOBJ_PRIORITY_DEFAULT,
-			mnTitleLogoFuncDisplay,
+			mnTitleLogoProcDisplay,
 			0,
 			GOBJ_PRIORITY_DEFAULT,
 			-1,
@@ -1359,7 +1359,7 @@ s32 mnTitleMakeCameras(void)
 }
 
 // 0x80133CFC
-void mnTitleLogoFireFuncDisplay(GObj *gobj)
+void mnTitleLogoFireProcDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
@@ -1376,7 +1376,7 @@ void mnTitleLogoFireFuncDisplay(GObj *gobj)
 void mnTitleMakeLogoFire(void)
 {
 	GObj *gobj = gcMakeGObjSPAfter(15, NULL, 4, GOBJ_PRIORITY_DEFAULT);
-	gcAddGObjDisplay(gobj, mnTitleLogoFireFuncDisplay, 3, GOBJ_PRIORITY_DEFAULT, ~0);
+	gcAddGObjDisplay(gobj, mnTitleLogoFireProcDisplay, 3, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	gobj->camera_mask = COBJ_MASK_DLLINK(0);
 
@@ -1387,7 +1387,7 @@ void mnTitleMakeLogoFire(void)
 void mnTitleMakeLogoFireParticles(void)
 {
 	GObj *logo_fire_effect_gobj;
-	LBGenerator *gen;
+	LBGenerator *gn;
 
 	if (gSCManagerSceneData.scene_prev == nSCKindOpeningNewcomers)
 	{
@@ -1398,11 +1398,11 @@ void mnTitleMakeLogoFireParticles(void)
 		gcPlayAnimAll(logo_fire_effect_gobj);
 		gcAddGObjProcess(logo_fire_effect_gobj, gcPlayAnimAll, nGCProcessKindFunc, 1);
 
-		gen = lbParticleMakeGenerator(sMNTitleParticleBankID, 0);
+		gn = lbParticleMakeGenerator(sMNTitleParticleBankID, 0);
 
-		if (gen != NULL)
+		if (gn != NULL)
 		{
-			gen->dobj = DObjGetStruct(logo_fire_effect_gobj)->child->sib_next->child;
+			gn->dobj = DObjGetStruct(logo_fire_effect_gobj)->child->sib_next->child;
 		}
 	}
 }
@@ -1410,8 +1410,8 @@ void mnTitleMakeLogoFireParticles(void)
 // 0x80133F3C
 void mnTitleMakeActors(void)
 {
-	sMNTitleMainGObj = gcMakeGObjSPAfter(0, mnTitleFuncRun, 1, GOBJ_PRIORITY_DEFAULT);
-	sMNTitleTransitionsGObj = gcMakeGObjSPAfter(0, mnTitleTransitionsFuncRun, 15, GOBJ_PRIORITY_DEFAULT);
+	sMNTitleMainGObj = gcMakeGObjSPAfter(0, mnTitleProcRun, 1, GOBJ_PRIORITY_DEFAULT);
+	sMNTitleTransitionsGObj = gcMakeGObjSPAfter(0, mnTitleTransitionsProcRun, 15, GOBJ_PRIORITY_DEFAULT);
 }
 
 // 0x80133F90

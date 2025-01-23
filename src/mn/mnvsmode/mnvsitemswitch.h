@@ -24,7 +24,7 @@ extern intptr_t lMNVSItemSwitchCursorSprite;                // 0x000063A8
 extern void mnVSItemSwitchFuncLights(Gfx **dls);
 extern void mnVSItemSwitchSetToggleSpriteColors(GObj *gobj, s32 status);
 extern void mnVSItemSwitchMakeToggle(GObj *gobj, f32 pos_x, f32 pos_y);
-extern void mnVSItemSwitchLabelsFuncDisplay(GObj *gobj);
+extern void mnVSItemSwitchLabelsProcDisplay(GObj *gobj);
 extern void mnVSItemSwitchMakeLabels(void);
 extern void func_ovl21_80131EFC(SObj *sobj);
 extern void func_ovl21_80131F30(s32 option_id);
@@ -43,7 +43,7 @@ extern void mnVSItemSwitchInitVars(void);
 extern sb32 mnVSItemSwitchCheckAllTogglesOff(void);
 extern void mnVSItemSwitchSetItemToggles(void);
 extern void mnVSItemSwitchUpdateOption(s32 option_id, s32 rate);
-extern void mnVSItemSwitchFuncRun(GObj *gobj);
+extern void mnVSItemSwitchProcRun(GObj *gobj);
 extern void mnVSItemSwitchFuncStart(void);
 extern void mnVSItemSwitchStartScene(void);
 

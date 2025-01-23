@@ -1000,7 +1000,7 @@ void mnSoundTestUpdateFunctions(void)
 }
 
 // 0x80132244
-void mnSoundTestFuncRun(GObj *gobj)
+void mnSoundTestProcRun(GObj *gobj)
 {
     mnSoundTestUpdateOptionColors();
 
@@ -1106,7 +1106,7 @@ void mnSoundTestOptionThreadUpdate(GObj *gobj)
 }
 
 // 0x801324FC
-void mnSoundTestMusicFuncDisplay(GObj *gobj)
+void mnSoundTestMusicProcDisplay(GObj *gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_FILL);
@@ -1154,7 +1154,7 @@ SObj* mnSoundTestMakeMusicSObjs(void)
             3,
             GOBJ_PRIORITY_DEFAULT
         ),
-        mnSoundTestMusicFuncDisplay,
+        mnSoundTestMusicProcDisplay,
         2,
         GOBJ_PRIORITY_DEFAULT,
         -1
@@ -1173,7 +1173,7 @@ SObj* mnSoundTestMakeMusicSObjs(void)
 }
 
 // 0x80132758
-void mnSoundTestSoundFuncDisplay(GObj *gobj)
+void mnSoundTestSoundProcDisplay(GObj *gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_FILL);
@@ -1221,7 +1221,7 @@ SObj* mnSoundTestMakeSoundSObjs(void)
             3,
             GOBJ_PRIORITY_DEFAULT
         ),
-        mnSoundTestSoundFuncDisplay,
+        mnSoundTestSoundProcDisplay,
         2,
         GOBJ_PRIORITY_DEFAULT,
         -1
@@ -1240,7 +1240,7 @@ SObj* mnSoundTestMakeSoundSObjs(void)
 }
 
 // 0x801329B8
-void mnSoundTestVoiceFuncDisplay(GObj *gobj)
+void mnSoundTestVoiceProcDisplay(GObj *gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_FILL);
@@ -1288,7 +1288,7 @@ SObj* mnSoundTestMakeVoiceSObjs(void)
             3,
             GOBJ_PRIORITY_DEFAULT
         ),
-        mnSoundTestVoiceFuncDisplay,
+        mnSoundTestVoiceProcDisplay,
         2,
         GOBJ_PRIORITY_DEFAULT,
         -1
@@ -1741,7 +1741,7 @@ void mnSoundTestInitVars(void)
 // 0x801338F8
 void mnSoundTestFuncStart(void)
 {
-    gcMakeGObjSPAfter(0, mnSoundTestFuncRun, 1, GOBJ_PRIORITY_DEFAULT);
+    gcMakeGObjSPAfter(0, mnSoundTestProcRun, 1, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(4, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     mnSoundTestSetupFiles();
     mnSoundTestInitVars();

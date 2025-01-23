@@ -144,7 +144,7 @@ void wpDisplayDrawZBuffer(void)
 }
 
 // 0x80167520
-void wpDisplayMain(GObj *weapon_gobj, void (*func_display)(GObj*))
+void wpDisplayMain(GObj *weapon_gobj, void (*proc_display)(GObj*))
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -152,7 +152,7 @@ void wpDisplayMain(GObj *weapon_gobj, void (*func_display)(GObj*))
     {
         wpDisplayDrawNormal();
 
-        func_display(weapon_gobj);
+        proc_display(weapon_gobj);
 
         wpDisplayDrawZBuffer();
 
@@ -162,7 +162,7 @@ void wpDisplayMain(GObj *weapon_gobj, void (*func_display)(GObj*))
     {
         wpDisplayDrawNormal();
 
-        func_display(weapon_gobj);
+        proc_display(weapon_gobj);
 
         wpDisplayDrawZBuffer();
     }
@@ -184,7 +184,7 @@ void wpDisplayDObjDLLinks(GObj *weapon_gobj)
 // 0x80167618
 void func_ovl3_80167618(GObj *weapon_gobj)
 {
-    wpDisplayMain(weapon_gobj, lbCommonDObjScaleXFuncDisplay); // Unused?
+    wpDisplayMain(weapon_gobj, lbCommonDObjScaleXProcDisplay); // Unused?
 }
 
 // 0x8016763C
@@ -194,7 +194,7 @@ void wpDisplayDObjTreeDLLinks(GObj *weapon_gobj)
 }
 
 // 0x80167660
-void wpDisplayPKThunderFuncDisplay(GObj *weapon_gobj)
+void wpDisplayPKThunderProcDisplay(GObj *weapon_gobj)
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
     s32 index = wp->weapon_vars.pkthunder_trail.trail_index;

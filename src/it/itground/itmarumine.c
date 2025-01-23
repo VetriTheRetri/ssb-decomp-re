@@ -77,19 +77,19 @@ enum itMarumineStatus
 void itMarumineExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 {
     s32 unused;
-    LBParticle *ptc;
+    LBParticle *pc;
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
     ip->damage_coll.hitstatus = nGMHitStatusNone;
 
-    ptc = efManagerSparkleWhiteMultiExplodeMakeEffect(&dobj->translate.vec.f);
+    pc = efManagerSparkleWhiteMultiExplodeMakeEffect(&dobj->translate.vec.f);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        ptc->tfm->scale.x = ITMARUMINE_EXPLODE_EFFECT_SCALE;
-        ptc->tfm->scale.y = ITMARUMINE_EXPLODE_EFFECT_SCALE;
-        ptc->tfm->scale.z = ITMARUMINE_EXPLODE_EFFECT_SCALE;
+        pc->xf->scale.x = ITMARUMINE_EXPLODE_EFFECT_SCALE;
+        pc->xf->scale.y = ITMARUMINE_EXPLODE_EFFECT_SCALE;
+        pc->xf->scale.z = ITMARUMINE_EXPLODE_EFFECT_SCALE;
     }
     efManagerQuakeMakeEffect(1);
 

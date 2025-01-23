@@ -16,7 +16,7 @@ void wpDisplayDrawNormal();
 void wpDisplayDrawZBuffer();
 
 // Unknown
-void wpDisplayMain(GObj *weapon_gobj, void (*func_display)(GObj*));
+void wpDisplayMain(GObj *weapon_gobj, void (*proc_display)(GObj*));
 
 // Unknown
 void wpDisplayDLHead1(GObj *weapon_gobj);
@@ -31,6 +31,6 @@ void func_ovl3_80167618(GObj *weapon_gobj);
 void wpDisplayDObjTreeDLLinks(GObj *weapon_gobj);
 
 // Render PK Thunder specifically because life is short
-void wpDisplayPKThunderFuncDisplay(GObj *weapon_gobj);
+void wpDisplayPKThunderProcDisplay(GObj *weapon_gobj);
 
 #endif

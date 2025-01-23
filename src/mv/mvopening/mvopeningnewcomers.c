@@ -253,7 +253,7 @@ void mvOpeningNewcomersMakeAll(void)
 }
 
 // 0x80132030
-void mvOpeningNewcomersHideFuncDisplay(GObj *gobj)
+void mvOpeningNewcomersHideProcDisplay(GObj *gobj)
 {
     if (sMVOpeningNewcomersOverlayAlpha < 0xFF)
     {
@@ -287,7 +287,7 @@ void mvOpeningNewcomersMakeHide(void)
             18,
             GOBJ_PRIORITY_DEFAULT
         ),
-        mvOpeningNewcomersHideFuncDisplay,
+        mvOpeningNewcomersHideProcDisplay,
         26,
         GOBJ_PRIORITY_DEFAULT,
         -1
@@ -369,7 +369,7 @@ void mvOpeningNewcomersInitVars(void)
 }
 
 // 0x801323A4
-void mvOpeningNewcomersFuncRun(GObj *gobj)
+void mvOpeningNewcomersProcRun(GObj *gobj)
 {
     s32 unused;
 
@@ -441,7 +441,7 @@ void mvOpeningNewcomersFuncStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(0, mvOpeningNewcomersFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeGObjSPAfter(0, mvOpeningNewcomersProcRun, 0, GOBJ_PRIORITY_DEFAULT);
 
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF));
 

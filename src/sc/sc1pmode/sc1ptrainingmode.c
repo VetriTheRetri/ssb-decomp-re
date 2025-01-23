@@ -710,7 +710,7 @@ void sc1PTrainingModeUpdateDamageDisplay(GObj *interface_gobj, s32 damage)
 }
 
 // 0x8018E138
-void sc1PTrainingModeDamageDisplayFuncDisplay(GObj *interface_gobj)
+void sc1PTrainingModeDamageDisplayProcDisplay(GObj *interface_gobj)
 {
 	s32 damage = gSCManagerBattleState->players[sSC1PTrainingModeMenu.dummy].combo_damage_foe;
 
@@ -786,7 +786,7 @@ void sc1PTrainingModeMakeDamageDisplay(void)
 		nGCCommonLinkIDInterface,
 		GOBJ_PRIORITY_DEFAULT
 	);
-	gcAddGObjDisplay(interface_gobj, sc1PTrainingModeDamageDisplayFuncDisplay, 23, GOBJ_PRIORITY_DEFAULT, ~0);
+	gcAddGObjDisplay(interface_gobj, sc1PTrainingModeDamageDisplayProcDisplay, 23, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddGObjProcess(interface_gobj, sc1PTrainingModeDamageDisplayProcUpdate, nGCProcessKindFunc, 4);
 
 	for (i = 0; i < 3; i++)
@@ -830,7 +830,7 @@ void sc1PTrainingModeComboDisplayProcUpdate(GObj *interface_gobj)
 }
 
 // 0x8018E56C
-void sc1PTrainingModeComboDisplayFuncDisplay(GObj *interface_gobj)
+void sc1PTrainingModeComboDisplayProcDisplay(GObj *interface_gobj)
 {
 	s32 combo = gSCManagerBattleState->players[sSC1PTrainingModeMenu.dummy].combo_count_foe;
 
@@ -869,7 +869,7 @@ void sc1PTrainingModeMakeComboDisplay(void)
 		nGCCommonLinkIDInterface,
 		GOBJ_PRIORITY_DEFAULT
 	);
-	gcAddGObjDisplay(interface_gobj, sc1PTrainingModeComboDisplayFuncDisplay, 23, GOBJ_PRIORITY_DEFAULT, ~0);
+	gcAddGObjDisplay(interface_gobj, sc1PTrainingModeComboDisplayProcDisplay, 23, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddGObjProcess(interface_gobj, sc1PTrainingModeComboDisplayProcUpdate, nGCProcessKindFunc, 4);
 
 	for (i = 0; i < 2; i++)
@@ -953,7 +953,7 @@ void sc1PTrainingModeUpdateItemDisplaySprite(void)
 }
 
 // 0x8018E9AC
-void sc1PTrainingModeItemDisplayFuncDisplay(GObj *interface_gobj)
+void sc1PTrainingModeItemDisplayProcDisplay(GObj *interface_gobj)
 {
 	FTStruct *fp = ftGetStruct(gSCManagerBattleState->players[gSCManagerSceneData.player].fighter_gobj);
 	GObj *item_gobj = fp->item_gobj;
@@ -996,7 +996,7 @@ void sc1PTrainingModeMakeItemDisplay(void)
 		nGCCommonLinkIDInterface,
 		GOBJ_PRIORITY_DEFAULT
 	);
-	gcAddGObjDisplay(interface_gobj, sc1PTrainingModeItemDisplayFuncDisplay, 23, GOBJ_PRIORITY_DEFAULT, ~0);
+	gcAddGObjDisplay(interface_gobj, sc1PTrainingModeItemDisplayProcDisplay, 23, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	sobj = lbCommonMakeSObjForGObj(interface_gobj, sSC1PTrainingModeMenu.display_option_sprites[37]);
 	sobj->pos.x = 292.0F;
@@ -1069,7 +1069,7 @@ void sc1PTrainingModeInitMenuOptionSpriteAttrs(void)
 }
 
 // 0x8018ED2C
-void sc1PTrainingModeMenuFuncDisplay(GObj *interface_gobj)
+void sc1PTrainingModeMenuProcDisplay(GObj *interface_gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
@@ -1092,7 +1092,7 @@ void sc1PTrainingModeMakeMenu(void)
 			nGCCommonLinkIDPauseMenu,
 			GOBJ_PRIORITY_DEFAULT
 		),
-		sc1PTrainingModeMenuFuncDisplay,
+		sc1PTrainingModeMenuProcDisplay,
 		22,
 		GOBJ_PRIORITY_DEFAULT,
 		~0
@@ -1578,7 +1578,7 @@ void sc1PTrainingModeSetVScrollOptionSObjs(void)
 }
 
 // 0x8018FCE0
-void sc1PTrainingModeUnderlineFuncDisplay(GObj *interface_gobj)
+void sc1PTrainingModeUnderlineProcDisplay(GObj *interface_gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_FILL);
@@ -1623,7 +1623,7 @@ void sc1PTrainingModeMakeUnderline(void)
 			nGCCommonLinkIDPauseMenu,
 			GOBJ_PRIORITY_DEFAULT
 		),
-		sc1PTrainingModeUnderlineFuncDisplay,
+		sc1PTrainingModeUnderlineProcDisplay,
 		22,
 		GOBJ_PRIORITY_DEFAULT,
 		~0

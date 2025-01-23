@@ -343,7 +343,7 @@ void itCapsuleExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 
     if (ep != NULL)
     {
-        ep->tfm->scale.x = ep->tfm->scale.y = ep->tfm->scale.z = ITCAPSULE_EXPLODE_SCALE;
+        ep->xf->scale.x = ep->xf->scale.y = ep->xf->scale.z = ITCAPSULE_EXPLODE_SCALE;
     }
     efManagerQuakeMakeEffect(1);
 

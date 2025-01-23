@@ -51,15 +51,15 @@ enum grYosterCloudStatus
 // 0x80108550
 LBGenerator* grYosterCloudVaporMakeEffect(Vec3f *pos)
 {
-    LBGenerator *gen = lbParticleMakeGenerator(gGRCommonStruct.yoster.particle_bank_id, 0);
+    LBGenerator *gn = lbParticleMakeGenerator(gGRCommonStruct.yoster.particle_bank_id, 0);
 
-    if (gen != NULL)
+    if (gn != NULL)
     {
-        gen->pos.x = pos->x;
-        gen->pos.y = pos->y;
-        gen->pos.z = pos->z;
+        gn->pos.x = pos->x;
+        gn->pos.y = pos->y;
+        gn->pos.z = pos->z;
     }
-    return gen;
+    return gn;
 }
 
 // 0x801085A8

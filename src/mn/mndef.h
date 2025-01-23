@@ -243,7 +243,7 @@ typedef enum MNVSRecordRankingKind
 	nMNVSRecordRankingKindStart,
 	nMNVSRecordRankingKindWinPercent = nMNVSRecordRankingKindStart,	// Win %
 	nMNVSRecordRankingKindKOs,              						// KOs
-	nMNVSRecordRankingKindTKO,             							// TKOs
+	nMNVSRecordRankingKindTKO,             							// TKO
 	nMNVSRecordRankingKindSDPercent,     							// SD %
 	nMNVSRecordRankingKindTime,             						// Time
 	nMNVSRecordRankingKindUsePercent,   							// Use %

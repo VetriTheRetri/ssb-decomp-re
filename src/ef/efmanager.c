@@ -142,7 +142,7 @@ EFDesc dEFManagerShockSmallEffectDesc =
     },
 
     efManagerVelAddDestroyAnimEnd,           // Proc Update
-    lbCommonDObjScaleXFuncDisplay,                     // Proc Render
+    lbCommonDObjScaleXProcDisplay,                     // Proc Render
 
     &lEFManagerShockSmallDObjSetup,                // DObj Setup attributes offset (?)
     &lEFManagerShockSmallMObjSub,                  // MObjSub offset
@@ -172,7 +172,7 @@ EFDesc dEFManagerDamageFlyOrbsEffectDesc =
     },
 
     efManagerDamageFlyOrbsProcUpdate,    // Proc Update
-    lbCommonDObjScaleXFuncDisplay,                     // Proc Render
+    lbCommonDObjScaleXProcDisplay,                     // Proc Render
 
     &lEFManagerDamageFlyOrbsDObjSetup,             // DObj Setup attributes offset (?)
     0x0,                                    // MObjSub offset
@@ -232,7 +232,7 @@ EFDesc dEFManagerImpactWaveEffectDesc =
     },
 
     efManagerImpactWaveProcUpdate,       // Proc Update
-    efManagerImpactWaveFuncDisplay,       // Proc Render
+    efManagerImpactWaveProcDisplay,       // Proc Render
 
     &lEFManagerImpactWaveDObjSetup,                // DObj Setup attributes offset (?)
     &lEFManagerImpactWaveMObjSub,                  // MObjSub offset
@@ -262,7 +262,7 @@ EFDesc dEFStarRodSparkEffectDesc =
     },
 
     efManagerStarRodSparkProcUpdate,     // Proc Update
-    lbCommonDObjScaleXFuncDisplay,                     // Proc Render
+    lbCommonDObjScaleXProcDisplay,                     // Proc Render
 
     &lEFManagerCommonSparkDObjSetup,              // DObj Setup attributes offset (?)
     &lEFManagerCommonSparkMObjSub,                // MObjSub offset
@@ -292,7 +292,7 @@ EFDesc dEFManagerDamageFlySparksEffectDesc =
     },
 
     efManagerDamageFlySparksProcUpdate,  // Proc Update
-    lbCommonDObjScaleXFuncDisplay,                     // Proc Render
+    lbCommonDObjScaleXProcDisplay,                     // Proc Render
 
     &lEFManagerCommonSparkDObjSetup,              // DObj Setup attributes offset (?)
     &lEFManagerCommonSparkMObjSub,                // MObjSub offset
@@ -412,7 +412,7 @@ EFDesc dEFFireSparkEffectDesc =
     },
 
     efManagerHaveStructProcUpdate,     // Proc Update
-    lbCommonDObjScaleXFuncDisplay,                     // Proc Render
+    lbCommonDObjScaleXProcDisplay,                     // Proc Render
 
     &lEFManagerFireSparkDObjSetup,                 // DObj Setup attributes offset (?)
     &lEFManagerFireSparkMObjSub,                   // MObjSub offset
@@ -491,7 +491,7 @@ EFDesc dEFManagerShieldEffectDesc =
     },
 
     efManagerShieldProcUpdate,                     // Proc Update
-    efManagerShieldFuncDisplay,                     // Proc Render
+    efManagerShieldProcDisplay,                     // Proc Render
 
     &lEFManagerShieldDObjSetup,                    // DObj Setup attributes offset (?)
     0x0,                                    // MObjSub offset
@@ -521,7 +521,7 @@ EFDesc dEFManagerYoshiShieldEffectDesc =
     },
 
     efManagerShieldProcUpdate,                     // Proc Update
-    efManagerYoshiShieldFuncDisplay,                // Proc Render
+    efManagerYoshiShieldProcDisplay,                // Proc Render
 
     &lEFManagerYoshiShieldDObjSetup,               // DObj Setup attributes offset (?)
     0x0,                                    // MObjSub offset
@@ -671,7 +671,7 @@ EFDesc dEFManagerPikachuThunderTrailEffectDesc =
     },
 
     efManagerPikachuThunderTrailProcUpdate,     // Proc Update
-    efManagerPikachuThunderTrailFuncDisplay,     // Proc Render
+    efManagerPikachuThunderTrailProcDisplay,     // Proc Render
 
     &lEFManagerPikachuThunderTrailDObjSetup,              // DObj Setup attributes offset (?)
     &lEFManagerPikachuThunderTrailMObjSub,                // MObjSub offset
@@ -821,7 +821,7 @@ EFDesc dEFManagerCaptainFalconPunchEffectDesc =
     },
 
     efManagerNoEjectProcUpdate,                     // Proc Update
-    lbCommonDObjScaleXFuncDisplay,                     // Proc Render
+    lbCommonDObjScaleXProcDisplay,                     // Proc Render
 
     &lEFManagerCaptainFalconPunchDObjSetup,               // DObj Setup attributes offset (?)
     &lEFManagerCaptainFalconPunchMObjSub,                 // MObjSub offset
@@ -1073,7 +1073,7 @@ EFDesc dEFManagerNessPKThunderTrailEffectDesc =
     },
 
     efManagerNessPKThunderTrailProcUpdate,   // Proc Update
-    efManagerNessPKThunderTrailFuncDisplay,   // Proc Render
+    efManagerNessPKThunderTrailProcDisplay,   // Proc Render
 
     &lEFManagerNessPKThunderTrailDObjSetup,            // DObj Setup attributes offset (?)
     0x0,                                    // MObjSub offset
@@ -1103,7 +1103,7 @@ EFDesc dEFManagerNessPKReflectTrailEffectDesc =
     },
 
     efManagerNessPKReflectTrailProcUpdate,   // Proc Update
-    efManagerNessPKThunderTrailFuncDisplay,   // Proc Render
+    efManagerNessPKThunderTrailProcDisplay,   // Proc Render
 
     &lEFManagerNessPKThunderTrailDObjSetup,            // DObj Setup attributes offset (?)
     0x0,                                    // MObjSub offset
@@ -1343,7 +1343,7 @@ EFDesc dEFManagerYoshiEntryEggEffectDesc =
     },
 
     efManagerHaveStructProcUpdate,     // Proc Update
-    lbCommonDObjScaleXFuncDisplay,                     // Proc Render
+    lbCommonDObjScaleXProcDisplay,                     // Proc Render
 
     &lEFManagerYoshiEntryEggDObjSetup,             // DObj Setup attributes offset (?)
     &lEFManagerYoshiEntryEggMObjSub,               // MObjSub offset
@@ -1406,7 +1406,7 @@ EFDesc dEFManagerYoshiEggEscapeEffectDesc =
     },
 
     NULL,                                   // Proc Update
-    efManagerYoshiShieldFuncDisplay,                // Proc Render
+    efManagerYoshiShieldProcDisplay,                // Proc Render
 
     &lEFManagerYoshiShieldDObjSetup,               // DObj Setup attributes offset (?)
     0x0,                                    // MObjSub offset
@@ -1619,7 +1619,7 @@ EFDesc dEFCaptureKirbyStarEffectDesc =
     },
 
     efManagerCaptureKirbyStarProcUpdate,    // Proc Update
-    lbCommonDObjScaleXFuncDisplay,                     // Proc Render
+    lbCommonDObjScaleXProcDisplay,                     // Proc Render
 
     &lEFManagerKirbyStarDObjSetup,                 // DObj Setup attributes offset (?)
     0x0,                                    // MObjSub offset
@@ -1649,7 +1649,7 @@ EFDesc dEFManagerLoseKirbyStarEffectDesc =
     },
 
     efManagerLoseKirbyStarProcUpdate,       // Proc Update
-    lbCommonDObjScaleXFuncDisplay,                     // Proc Render
+    lbCommonDObjScaleXProcDisplay,                     // Proc Render
 
     &lEFManagerKirbyStarDObjSetup,                 // DObj Setup attributes offset (?)
     0x0,                                    // MObjSub offset
@@ -1789,7 +1789,7 @@ EFStruct* efManagerGetNextStructAlloc(sb32 is_force_return)
     sEFManagerStructsAllocFree = ep->alloc_next;
 
     ep->fighter_gobj = NULL;
-    ep->tfm = NULL;
+    ep->xf = NULL;
     ep->is_pause_effect = FALSE;
 
     sEFManagerStructsFreeNum--;
@@ -1922,7 +1922,7 @@ void func_ovl2_800FD70C(void)
 }
 
 // 0x800FD714
-void efManagerFuncRun(GObj *effect_gobj)
+void efManagerProcRun(GObj *effect_gobj)
 {
     EFStruct *ep = efGetStruct(effect_gobj);
 
@@ -1935,7 +1935,7 @@ void efManagerFuncRun(GObj *effect_gobj)
     }
     else gcAddGObjProcess(effect_gobj, efManagerNoStructProcUpdate, nGCProcessKindFunc, 3);
 
-    effect_gobj->func_run = NULL;
+    effect_gobj->proc_run = NULL;
 }
 
 // 0x800FD778
@@ -1969,7 +1969,7 @@ GObj* efManagerMakeEffect(EFDesc *effect_desc, sb32 is_force_return)
     }
     else ep = NULL;
 
-    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, efManagerFuncRun, (effect_flags & EFFECT_FLAG_SPECIALLINK) ? nGCCommonLinkIDSpecialEffect : nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, efManagerProcRun, (effect_flags & EFFECT_FLAG_SPECIALLINK) ? nGCCommonLinkIDSpecialEffect : nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -1981,11 +1981,11 @@ GObj* efManagerMakeEffect(EFDesc *effect_desc, sb32 is_force_return)
     }
     effect_gobj->user_data.p = ep;
 
-    if (effect_desc->func_display == NULL)
+    if (effect_desc->proc_display == NULL)
     {
         return effect_gobj;
     }
-    gcAddGObjDisplay(effect_gobj, effect_desc->func_display, effect_desc->dl_link, 2, -1);
+    gcAddGObjDisplay(effect_gobj, effect_desc->proc_display, effect_desc->dl_link, 2, -1);
 
     o_mobjsub = effect_desc->o_mobjsub;
     o_anim_joint = effect_desc->o_anim_joint;
@@ -2080,11 +2080,11 @@ GObj* efManagerMakeEffectForce(EFDesc *effect_desc)
 }
 
 // 0x800FDB3C - Destroy effect GObj and particle too if applicable
-LBParticle* efManagerDestroyParticleGObj(LBParticle *ptc, GObj *effect_gobj)
+LBParticle* efManagerDestroyParticleGObj(LBParticle *pc, GObj *effect_gobj)
 {
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        lbParticleEjectStruct(ptc);
+        lbParticleEjectStruct(pc);
     }
     if (efGetStruct(effect_gobj) != NULL)
     {
@@ -2098,15 +2098,15 @@ LBParticle* efManagerDestroyParticleGObj(LBParticle *ptc, GObj *effect_gobj)
 }
 
 // 0x800FDB88
-void efManagerDefaultProcDead(LBTransform *tfm)
+void efManagerDefaultProcDead(LBTransform *xf)
 {
-    if (efGetStruct(tfm->effect_gobj) != NULL)
+    if (efGetStruct(xf->effect_gobj) != NULL)
     {
-        EFStruct *ep = efGetStruct(tfm->effect_gobj);
+        EFStruct *ep = efGetStruct(xf->effect_gobj);
 
         efManagerSetPrevStructAlloc(ep);
     }
-    gcEjectGObj(tfm->effect_gobj);
+    gcEjectGObj(xf->effect_gobj);
 }
 
 // 0x800FDBCC
@@ -2114,8 +2114,8 @@ void efManagerDefaultProcUpdate(GObj *effect_gobj)
 {
     EFStruct *ep = efGetStruct(effect_gobj);
 
-    ep->effect_vars.common.tfm->translate.x += ep->effect_vars.common.vel.x;
-    ep->effect_vars.common.tfm->translate.y += ep->effect_vars.common.vel.y;
+    ep->effect_vars.common.xf->translate.x += ep->effect_vars.common.vel.x;
+    ep->effect_vars.common.xf->translate.y += ep->effect_vars.common.vel.y;
 }
 
 // 0x800FDBFC - Unused
@@ -2128,8 +2128,8 @@ void func_ovl2_800FDBFC(void)
 LBParticle* efManagerDamageNormalLightMakeEffect(Vec3f *pos, s32 player, s32 size, sb32 is_static)
 {
     GObj *effect_gobj;
-    LBParticle *ptc;
-    LBTransform *tfm;
+    LBParticle *pc;
+    LBTransform *xf;
     EFStruct *ep;
     f32 angle;
     f32 vel;
@@ -2151,28 +2151,28 @@ LBParticle* efManagerDamageNormalLightMakeEffect(Vec3f *pos, s32 player, s32 siz
     }
     effect_gobj->user_data.p = ep;
 
-    ptc = lbParticleMakeScriptID(gEFManagerParticleBankID, dEFManagerDamageNormalLightIDs[player]);
+    pc = lbParticleMakeScriptID(gEFManagerParticleBankID, dEFManagerDamageNormalLightIDs[player]);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        tfm = lbParticleAddTransformForStruct(ptc, nLBTransformStatusDefault);
+        xf = lbParticleAddTransformForStruct(pc, nLBTransformStatusDefault);
 
-        if (tfm != NULL)
+        if (xf != NULL)
         {
-            tfm->effect_gobj = effect_gobj;
-            tfm->proc_dead = efManagerDefaultProcDead;
+            xf->effect_gobj = effect_gobj;
+            xf->proc_dead = efManagerDefaultProcDead;
 
-            LBParticleProcessStruct(ptc);
+            LBParticleProcessStruct(pc);
 
-            if (tfm->users_num == 0)
+            if (xf->users_num == 0)
             {
                 return NULL;
             }
             gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nGCProcessKindFunc, 3);
 
-            ep->effect_vars.common.tfm = tfm;
+            ep->effect_vars.common.xf = xf;
 
-            tfm->translate = *pos;
+            xf->translate = *pos;
 
             vel = (is_static != FALSE) ? 0.0F : ((syUtilsGetRandomFloat() * 38.0F) + 12.0F);
 
@@ -2183,32 +2183,32 @@ LBParticle* efManagerDamageNormalLightMakeEffect(Vec3f *pos, s32 player, s32 siz
 
             scale = (size < 10) ? (((10 - size) * -0.05F) + 1.0F) : (((size - 10) * 0.13F) + 1.0F);
 
-            tfm->scale.x = tfm->scale.y = tfm->scale.z = scale;
+            xf->scale.x = xf->scale.y = xf->scale.z = scale;
         }
-        else ptc = efManagerDestroyParticleGObj(ptc, effect_gobj);
+        else pc = efManagerDestroyParticleGObj(pc, effect_gobj);
     }
     else efManagerDestroyParticleGObj(NULL, effect_gobj);
 
-    return ptc;
+    return pc;
 }
 
 // 0x800FDE3C
-void efManagerDamageNormalHeavyProcDead(LBTransform *tfm)
+void efManagerDamageNormalHeavyProcDead(LBTransform *xf)
 {
-    EFStruct *ep = efGetStruct(tfm->effect_gobj);
-    Vec3f pos = tfm->translate;
+    EFStruct *ep = efGetStruct(xf->effect_gobj);
+    Vec3f pos = xf->translate;
 
     efManagerDamageNormalLightMakeEffect(&pos, ep->effect_vars.damage_normal_heavy.player, ep->effect_vars.damage_normal_heavy.size, FALSE);
-    efManagerSetPrevStructAlloc(efGetStruct(tfm->effect_gobj));
-    gcEjectGObj(tfm->effect_gobj);
+    efManagerSetPrevStructAlloc(efGetStruct(xf->effect_gobj));
+    gcEjectGObj(xf->effect_gobj);
 }
 
 // 0x800FDEAC
 LBParticle* efManagerDamageNormalHeavyMakeEffect(Vec3f *pos, s32 player, s32 size)
 {
     GObj *effect_gobj;
-    LBParticle *ptc;
-    LBTransform *tfm;
+    LBParticle *pc;
+    LBTransform *xf;
     EFStruct *ep;
 
     ep = efManagerGetEffectNoForce();
@@ -2227,53 +2227,53 @@ LBParticle* efManagerDamageNormalHeavyMakeEffect(Vec3f *pos, s32 player, s32 siz
     }
     effect_gobj->user_data.p = ep;
 
-    ptc = lbParticleMakeScriptID(gEFManagerParticleBankID, 0x64);
+    pc = lbParticleMakeScriptID(gEFManagerParticleBankID, 0x64);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        tfm = lbParticleAddTransformForStruct(ptc, nLBTransformStatusDefault);
+        xf = lbParticleAddTransformForStruct(pc, nLBTransformStatusDefault);
 
-        if (tfm != NULL)
+        if (xf != NULL)
         {
-            tfm->effect_gobj = effect_gobj;
-            tfm->proc_dead = efManagerDamageNormalHeavyProcDead;
+            xf->effect_gobj = effect_gobj;
+            xf->proc_dead = efManagerDamageNormalHeavyProcDead;
 
-            LBParticleProcessStruct(ptc);
+            LBParticleProcessStruct(pc);
 
-            if (tfm->users_num == 0)
+            if (xf->users_num == 0)
             {
                 return FALSE;
             }
-            ep->effect_vars.common.tfm = tfm; // WHAT (This overlaps with damage_normal_heavy.size and is eventually overwritten with the correct value)
+            ep->effect_vars.common.xf = xf; // WHAT (This overlaps with damage_normal_heavy.size and is eventually overwritten with the correct value)
 
-            tfm->translate = *pos;
+            xf->translate = *pos;
 
             ep->effect_vars.damage_normal_heavy.pos = *pos;
             ep->effect_vars.damage_normal_heavy.player = player;
             ep->effect_vars.damage_normal_heavy.size = size;
 
-            ptc->primcolor.r = dEFManagerDamageNormalHeavyPrimColorR[player];
-            ptc->primcolor.g = dEFManagerDamageNormalHeavyPrimColorG[player];
-            ptc->primcolor.b = dEFManagerDamageNormalHeavyPrimColorB[player];
-            ptc->primcolor.a = 0xFF;
+            pc->primcolor.r = dEFManagerDamageNormalHeavyPrimColorR[player];
+            pc->primcolor.g = dEFManagerDamageNormalHeavyPrimColorG[player];
+            pc->primcolor.b = dEFManagerDamageNormalHeavyPrimColorB[player];
+            pc->primcolor.a = 0xFF;
 
-            ptc->envcolor.r = dEFManagerDamageNormalHeavyEnvColorR[player];
-            ptc->envcolor.g = dEFManagerDamageNormalHeavyEnvColorG[player];
-            ptc->envcolor.b = dEFManagerDamageNormalHeavyEnvColorB[player];
+            pc->envcolor.r = dEFManagerDamageNormalHeavyEnvColorR[player];
+            pc->envcolor.g = dEFManagerDamageNormalHeavyEnvColorG[player];
+            pc->envcolor.b = dEFManagerDamageNormalHeavyEnvColorB[player];
         }
-        else ptc = efManagerDestroyParticleGObj(ptc, effect_gobj);
+        else pc = efManagerDestroyParticleGObj(pc, effect_gobj);
     }
     else efManagerDestroyParticleGObj(NULL, effect_gobj);
 
-    return ptc;
+    return pc;
 }
 
 // 0x800FE068
 LBParticle* efManagerImpactShockMakeEffect(Vec3f *pos, s32 size)
 {
     GObj *effect_gobj;
-    LBParticle *ptc;
-    LBTransform *tfm;
+    LBParticle *pc;
+    LBTransform *xf;
     EFStruct *ep;
     f32 angle;
     f32 vel;
@@ -2295,28 +2295,28 @@ LBParticle* efManagerImpactShockMakeEffect(Vec3f *pos, s32 size)
     }
     effect_gobj->user_data.p = ep;
 
-    ptc = lbParticleMakeScriptID(gEFManagerParticleBankID, 0x25);
+    pc = lbParticleMakeScriptID(gEFManagerParticleBankID, 0x25);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        tfm = lbParticleAddTransformForStruct(ptc, nLBTransformStatusDefault);
+        xf = lbParticleAddTransformForStruct(pc, nLBTransformStatusDefault);
 
-        if (tfm != NULL)
+        if (xf != NULL)
         {
-            tfm->effect_gobj = effect_gobj;
-            tfm->proc_dead = efManagerDefaultProcDead;
+            xf->effect_gobj = effect_gobj;
+            xf->proc_dead = efManagerDefaultProcDead;
 
-            LBParticleProcessStruct(ptc);
+            LBParticleProcessStruct(pc);
 
-            if (tfm->users_num == 0)
+            if (xf->users_num == 0)
             {
                 return NULL;
             }
             gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nGCProcessKindFunc, 3);
 
-            ep->effect_vars.common.tfm = tfm;
+            ep->effect_vars.common.xf = xf;
 
-            tfm->translate = *pos;
+            xf->translate = *pos;
 
             vel = ((syUtilsGetRandomFloat() * 8.0F) + 2.0F);
 
@@ -2327,13 +2327,13 @@ LBParticle* efManagerImpactShockMakeEffect(Vec3f *pos, s32 size)
 
             scale = (size < 10) ? (((10 - size) * -0.05F) + 1.0F) : (((size - 10) * 0.15F) + 1.0F);
 
-            tfm->scale.x = tfm->scale.y = tfm->scale.z = scale;
+            xf->scale.x = xf->scale.y = xf->scale.z = scale;
         }
-        else ptc = efManagerDestroyParticleGObj(ptc, effect_gobj);
+        else pc = efManagerDestroyParticleGObj(pc, effect_gobj);
     }
     else efManagerDestroyParticleGObj(NULL, effect_gobj);
 
-    return ptc;
+    return pc;
 }
 
 // 0x800FE260
@@ -2360,8 +2360,8 @@ void efManagerVelAddDestroyAnimEnd(GObj *effect_gobj)
 LBParticle* efManagerDamageFireMakeEffect(Vec3f *pos, s32 size)
 {
     GObj *effect_gobj;
-    LBParticle *ptc;
-    LBTransform *tfm;
+    LBParticle *pc;
+    LBTransform *xf;
     EFStruct *ep;
     f32 angle;
     f32 vel;
@@ -2383,28 +2383,28 @@ LBParticle* efManagerDamageFireMakeEffect(Vec3f *pos, s32 size)
     }
     effect_gobj->user_data.p = ep;
 
-    ptc = lbParticleMakeScriptID(gEFManagerParticleBankID, 0x4D);
+    pc = lbParticleMakeScriptID(gEFManagerParticleBankID, 0x4D);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        tfm = lbParticleAddTransformForStruct(ptc, nLBTransformStatusDefault);
+        xf = lbParticleAddTransformForStruct(pc, nLBTransformStatusDefault);
 
-        if (tfm != NULL)
+        if (xf != NULL)
         {
-            tfm->effect_gobj = effect_gobj;
-            tfm->proc_dead = efManagerDefaultProcDead;
+            xf->effect_gobj = effect_gobj;
+            xf->proc_dead = efManagerDefaultProcDead;
 
-            LBParticleProcessStruct(ptc);
+            LBParticleProcessStruct(pc);
 
-            if (tfm->users_num == 0)
+            if (xf->users_num == 0)
             {
                 return NULL;
             }
             gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nGCProcessKindFunc, 3);
 
-            ep->effect_vars.common.tfm = tfm;
+            ep->effect_vars.common.xf = xf;
 
-            tfm->translate = *pos;
+            xf->translate = *pos;
 
             vel = ((syUtilsGetRandomFloat() * 18.0F) + 12.0F);
 
@@ -2415,21 +2415,21 @@ LBParticle* efManagerDamageFireMakeEffect(Vec3f *pos, s32 size)
 
             scale = (size < 10) ? (((10 - size) * -0.05F) + 1.0F) : (((size - 10) * 0.15F) + 1.0F);
 
-            tfm->scale.x = tfm->scale.y = tfm->scale.z = scale;
+            xf->scale.x = xf->scale.y = xf->scale.z = scale;
         }
-        else ptc = efManagerDestroyParticleGObj(ptc, effect_gobj);
+        else pc = efManagerDestroyParticleGObj(pc, effect_gobj);
     }
     else efManagerDestroyParticleGObj(NULL, effect_gobj);
 
-    return ptc;
+    return pc;
 }
 
 // 0x800FE4EC
 LBParticle* efManagerDamageElectricMakeEffect(Vec3f *pos, s32 size)
 {
     GObj *effect_gobj;
-    LBParticle *ptc;
-    LBTransform *tfm;
+    LBParticle *pc;
+    LBTransform *xf;
     EFStruct *ep;
     f32 angle;
     f32 vel;
@@ -2451,28 +2451,28 @@ LBParticle* efManagerDamageElectricMakeEffect(Vec3f *pos, s32 size)
     }
     effect_gobj->user_data.p = ep;
 
-    ptc = lbParticleMakeScriptID(gEFManagerParticleBankID, 0x53);
+    pc = lbParticleMakeScriptID(gEFManagerParticleBankID, 0x53);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        tfm = lbParticleAddTransformForStruct(ptc, nLBTransformStatusDefault);
+        xf = lbParticleAddTransformForStruct(pc, nLBTransformStatusDefault);
 
-        if (tfm != NULL)
+        if (xf != NULL)
         {
-            tfm->effect_gobj = effect_gobj;
-            tfm->proc_dead = efManagerDefaultProcDead;
+            xf->effect_gobj = effect_gobj;
+            xf->proc_dead = efManagerDefaultProcDead;
 
-            LBParticleProcessStruct(ptc);
+            LBParticleProcessStruct(pc);
 
-            if (tfm->users_num == 0)
+            if (xf->users_num == 0)
             {
                 return NULL;
             }
             gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nGCProcessKindFunc, 3);
 
-            ep->effect_vars.common.tfm = tfm;
+            ep->effect_vars.common.xf = xf;
 
-            tfm->translate = *pos;
+            xf->translate = *pos;
 
             vel = (syUtilsGetRandomFloat() * 7.0F) + 3.0F;
 
@@ -2483,13 +2483,13 @@ LBParticle* efManagerDamageElectricMakeEffect(Vec3f *pos, s32 size)
 
             scale = (size < 5) ? (((5 - size) * -0.08F) + 1.0F) : (((size - 5) * 0.15F) + 1.0F);
 
-            tfm->scale.x = tfm->scale.y = tfm->scale.z = scale;
+            xf->scale.x = xf->scale.y = xf->scale.z = scale;
         }
-        else ptc = efManagerDestroyParticleGObj(ptc, effect_gobj);
+        else pc = efManagerDestroyParticleGObj(pc, effect_gobj);
     }
     else efManagerDestroyParticleGObj(NULL, effect_gobj);
 
-    return ptc;
+    return pc;
 }
 
 // 0x800FE6E4
@@ -2522,8 +2522,8 @@ GObj* efManagerDamageSlashMakeEffect(Vec3f *pos, s32 size, f32 rotate)
 LBParticle* efManagerFlameLRMakeEffect(Vec3f *pos, s32 lr)
 {
     GObj *effect_gobj;
-    LBParticle *ptc;
-    LBTransform *tfm;
+    LBParticle *pc;
+    LBTransform *xf;
     EFStruct *ep;
     f32 angle;
     f32 vel;
@@ -2545,52 +2545,52 @@ LBParticle* efManagerFlameLRMakeEffect(Vec3f *pos, s32 lr)
     }
     effect_gobj->user_data.p = ep;
 
-    ptc = lbParticleMakeScriptID(gEFManagerParticleBankID, 0x12);
+    pc = lbParticleMakeScriptID(gEFManagerParticleBankID, 0x12);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        tfm = lbParticleAddTransformForStruct(ptc, nLBTransformStatusDefault);
+        xf = lbParticleAddTransformForStruct(pc, nLBTransformStatusDefault);
 
-        if (tfm != NULL)
+        if (xf != NULL)
         {
-            tfm->effect_gobj = effect_gobj;
-            tfm->proc_dead = efManagerDefaultProcDead;
+            xf->effect_gobj = effect_gobj;
+            xf->proc_dead = efManagerDefaultProcDead;
 
-            LBParticleProcessStruct(ptc);
+            LBParticleProcessStruct(pc);
 
-            if (tfm->users_num == 0)
+            if (xf->users_num == 0)
             {
                 return NULL;
             }
             gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nGCProcessKindFunc, 3);
 
-            ep->effect_vars.common.tfm = tfm;
+            ep->effect_vars.common.xf = xf;
 
-            tfm->translate = *pos;
+            xf->translate = *pos;
 
-            tfm->translate.x += ((syUtilsGetRandomFloat() * EFPART_FLAMELR_OFF_X_BASE) + EFPART_FLAMELR_OFF_X_ADD);
-            tfm->translate.y += ((syUtilsGetRandomFloat() * EFPART_FLAMELR_OFF_Y_BASE) + EFPART_FLAMELR_OFF_Y_ADD);
+            xf->translate.x += ((syUtilsGetRandomFloat() * EFPART_FLAMELR_OFF_X_BASE) + EFPART_FLAMELR_OFF_X_ADD);
+            xf->translate.y += ((syUtilsGetRandomFloat() * EFPART_FLAMELR_OFF_Y_BASE) + EFPART_FLAMELR_OFF_Y_ADD);
 
             angle = syUtilsGetRandomFloat() * F_CLC_DTOR32(90.0F);
 
             ep->effect_vars.common.vel.x = __cosf(angle) * EFPART_FLAMELR_VEL_BASE * -lr;
             ep->effect_vars.common.vel.y = __sinf(angle) * EFPART_FLAMELR_VEL_BASE;
 
-            tfm->scale.x = tfm->scale.y = tfm->scale.z = (syUtilsGetRandomFloat() * 1) + 1.0F;
+            xf->scale.x = xf->scale.y = xf->scale.z = (syUtilsGetRandomFloat() * 1) + 1.0F;
         }
-        else ptc = efManagerDestroyParticleGObj(ptc, effect_gobj);
+        else pc = efManagerDestroyParticleGObj(pc, effect_gobj);
     }
     else efManagerDestroyParticleGObj(NULL, effect_gobj);
 
-    return ptc;
+    return pc;
 }
 
 // 0x800FE9B4
 LBParticle* efManagerFlameRandgcMakeEffect(Vec3f *pos)
 {
     GObj *effect_gobj;
-    LBParticle *ptc;
-    LBTransform *tfm;
+    LBParticle *pc;
+    LBTransform *xf;
     EFStruct *ep;
     f32 angle;
     f32 vel;
@@ -2612,49 +2612,49 @@ LBParticle* efManagerFlameRandgcMakeEffect(Vec3f *pos)
     }
     effect_gobj->user_data.p = ep;
 
-    ptc = lbParticleMakeScriptID(gEFManagerParticleBankID, 0x55);
+    pc = lbParticleMakeScriptID(gEFManagerParticleBankID, 0x55);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        tfm = lbParticleAddTransformForStruct(ptc, nLBTransformStatusDefault);
+        xf = lbParticleAddTransformForStruct(pc, nLBTransformStatusDefault);
 
-        if (tfm != NULL)
+        if (xf != NULL)
         {
-            tfm->effect_gobj = effect_gobj;
-            tfm->proc_dead = efManagerDefaultProcDead;
+            xf->effect_gobj = effect_gobj;
+            xf->proc_dead = efManagerDefaultProcDead;
 
-            LBParticleProcessStruct(ptc);
+            LBParticleProcessStruct(pc);
 
-            if (tfm->users_num == 0)
+            if (xf->users_num == 0)
             {
                 return NULL;
             }
             gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nGCProcessKindFunc, 3);
 
-            ep->effect_vars.common.tfm = tfm;
+            ep->effect_vars.common.xf = xf;
 
-            tfm->translate = *pos;
+            xf->translate = *pos;
 
             angle = (syUtilsGetRandomFloat() * EFPART_FLAMERANDOM_ANGLE_BASE) + EFPART_FLAMERANDOM_ANGLE_ADD;
 
             ep->effect_vars.common.vel.x = __cosf(angle) * EFPART_FLAMERANDOM_VEL_BASE;
             ep->effect_vars.common.vel.y = __sinf(angle) * EFPART_FLAMERANDOM_VEL_BASE;
 
-            tfm->scale.x = tfm->scale.y = tfm->scale.z = (syUtilsGetRandomFloat() * 1) + 1.0F;
+            xf->scale.x = xf->scale.y = xf->scale.z = (syUtilsGetRandomFloat() * 1) + 1.0F;
         }
-        else ptc = efManagerDestroyParticleGObj(ptc, effect_gobj);
+        else pc = efManagerDestroyParticleGObj(pc, effect_gobj);
     }
     else efManagerDestroyParticleGObj(NULL, effect_gobj);
 
-    return ptc;
+    return pc;
 }
 
 // 0x800FEB58
 LBParticle* efManagerFlameStaticMakeEffect(Vec3f *pos)
 {
     GObj *effect_gobj;
-    LBParticle *ptc;
-    LBTransform *tfm;
+    LBParticle *pc;
+    LBTransform *xf;
     EFStruct *ep;
     f32 angle;
     f32 vel;
@@ -2676,47 +2676,47 @@ LBParticle* efManagerFlameStaticMakeEffect(Vec3f *pos)
     }
     effect_gobj->user_data.p = ep;
 
-    ptc = lbParticleMakeScriptID(gEFManagerParticleBankID, 0x55);
+    pc = lbParticleMakeScriptID(gEFManagerParticleBankID, 0x55);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        tfm = lbParticleAddTransformForStruct(ptc, nLBTransformStatusDefault);
+        xf = lbParticleAddTransformForStruct(pc, nLBTransformStatusDefault);
 
-        if (tfm != NULL)
+        if (xf != NULL)
         {
-            tfm->effect_gobj = effect_gobj;
-            tfm->proc_dead = efManagerDefaultProcDead;
+            xf->effect_gobj = effect_gobj;
+            xf->proc_dead = efManagerDefaultProcDead;
 
-            LBParticleProcessStruct(ptc);
+            LBParticleProcessStruct(pc);
 
-            if (tfm->users_num == 0)
+            if (xf->users_num == 0)
             {
                 return NULL;
             }
             gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nGCProcessKindFunc, 3);
 
-            ep->effect_vars.common.tfm = tfm;
+            ep->effect_vars.common.xf = xf;
 
-            tfm->translate = *pos;
+            xf->translate = *pos;
 
             ep->effect_vars.common.vel.x = 0.0F;
             ep->effect_vars.common.vel.y = 0.0F;
 
-            tfm->scale.x = tfm->scale.y = tfm->scale.z = (syUtilsGetRandomFloat() * 1) + 1.0F;
+            xf->scale.x = xf->scale.y = xf->scale.z = (syUtilsGetRandomFloat() * 1) + 1.0F;
         }
-        else ptc = efManagerDestroyParticleGObj(ptc, effect_gobj);
+        else pc = efManagerDestroyParticleGObj(pc, effect_gobj);
     }
     else efManagerDestroyParticleGObj(NULL, effect_gobj);
 
-    return ptc;
+    return pc;
 }
 
 // 0x800FECBC - Called only by Venusaur and Link's Boomerang?
 LBParticle* efManagerDustCollideMakeEffect(Vec3f *pos)
 {
     GObj *effect_gobj;
-    LBParticle *ptc;
-    LBTransform *tfm;
+    LBParticle *pc;
+    LBTransform *xf;
     EFStruct *ep;
     f32 angle;
     f32 vel;
@@ -2738,44 +2738,44 @@ LBParticle* efManagerDustCollideMakeEffect(Vec3f *pos)
     }
     effect_gobj->user_data.p = ep;
 
-    ptc = lbParticleMakeScriptID(gEFManagerParticleBankID, 0x55);
+    pc = lbParticleMakeScriptID(gEFManagerParticleBankID, 0x55);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        tfm = lbParticleAddTransformForStruct(ptc, nLBTransformStatusDefault);
+        xf = lbParticleAddTransformForStruct(pc, nLBTransformStatusDefault);
 
-        if (tfm != NULL)
+        if (xf != NULL)
         {
-            tfm->effect_gobj = effect_gobj;
-            tfm->proc_dead = efManagerDefaultProcDead;
+            xf->effect_gobj = effect_gobj;
+            xf->proc_dead = efManagerDefaultProcDead;
 
-            LBParticleProcessStruct(ptc);
+            LBParticleProcessStruct(pc);
 
-            if (tfm->users_num == 0)
+            if (xf->users_num == 0)
             {
                 return NULL;
             }
             gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nGCProcessKindFunc, 3);
 
-            ep->effect_vars.common.tfm = tfm;
+            ep->effect_vars.common.xf = xf;
 
-            tfm->translate = *pos;
+            xf->translate = *pos;
 
-            tfm->translate.x += ((syUtilsGetRandomFloat() * EFPART_DUSTCOLL_OFF_BASE) + EFPART_DUSTCOLL_OFF_ADD);
-            tfm->translate.y += ((syUtilsGetRandomFloat() * EFPART_DUSTCOLL_OFF_BASE) + EFPART_DUSTCOLL_OFF_ADD);
+            xf->translate.x += ((syUtilsGetRandomFloat() * EFPART_DUSTCOLL_OFF_BASE) + EFPART_DUSTCOLL_OFF_ADD);
+            xf->translate.y += ((syUtilsGetRandomFloat() * EFPART_DUSTCOLL_OFF_BASE) + EFPART_DUSTCOLL_OFF_ADD);
 
             angle = (syUtilsGetRandomFloat() * EFPART_DUSTCOLL_ANGLE_BASE) + EFPART_DUSTCOLL_ANGLE_ADD; // F_CLC_DTOR32(90.0F), QUART_PI32
 
             ep->effect_vars.common.vel.x = __cosf(angle) * EFPART_DUSTCOLL_VEL_BASE;
             ep->effect_vars.common.vel.y = __sinf(angle) * EFPART_DUSTCOLL_VEL_BASE;
 
-            tfm->scale.x = tfm->scale.y = tfm->scale.z = (syUtilsGetRandomFloat() * 1) + 1.0F;
+            xf->scale.x = xf->scale.y = xf->scale.z = (syUtilsGetRandomFloat() * 1) + 1.0F;
         }
-        else ptc = efManagerDestroyParticleGObj(ptc, effect_gobj);
+        else pc = efManagerDestroyParticleGObj(pc, effect_gobj);
     }
     else efManagerDestroyParticleGObj(NULL, effect_gobj);
 
-    return ptc;
+    return pc;
 }
 
 // 0x800FEEB0
@@ -2836,8 +2836,8 @@ void efManagerDustLightProcUpdate(GObj *effect_gobj)
 {
     EFStruct *ep = efGetStruct(effect_gobj);
 
-    ep->effect_vars.dust_light.tfm->translate.x += ep->effect_vars.dust_light.vel1.x;
-    ep->effect_vars.dust_light.tfm->translate.y += ep->effect_vars.dust_light.vel1.y;
+    ep->effect_vars.dust_light.xf->translate.x += ep->effect_vars.dust_light.vel1.x;
+    ep->effect_vars.dust_light.xf->translate.y += ep->effect_vars.dust_light.vel1.y;
 
     if (ep->effect_vars.dust_light.lifetime != 0)
     {
@@ -2852,8 +2852,8 @@ void efManagerDustLightProcUpdate(GObj *effect_gobj)
 LBParticle* efManagerDustLightMakeEffect(Vec3f *pos, s32 lr, f32 f_index)
 {
     GObj *effect_gobj;
-    LBParticle *ptc;
-    LBTransform *tfm;
+    LBParticle *pc;
+    LBTransform *xf;
     EFStruct *ep;
     f32 angle;
     f32 vel;
@@ -2875,32 +2875,32 @@ LBParticle* efManagerDustLightMakeEffect(Vec3f *pos, s32 lr, f32 f_index)
     }
     effect_gobj->user_data.p = ep;
 
-    ptc = (f_index == 2.0F) ? lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(0), 0x56) : lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(0), 0x55);
+    pc = (f_index == 2.0F) ? lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(0), 0x56) : lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(0), 0x55);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        tfm = lbParticleAddTransformForStruct(ptc, nLBTransformStatusDefault);
+        xf = lbParticleAddTransformForStruct(pc, nLBTransformStatusDefault);
 
-        if (tfm != NULL)
+        if (xf != NULL)
         {
-            tfm->effect_gobj = effect_gobj;
-            tfm->proc_dead = efManagerDefaultProcDead;
+            xf->effect_gobj = effect_gobj;
+            xf->proc_dead = efManagerDefaultProcDead;
 
-            LBParticleProcessStruct(ptc);
+            LBParticleProcessStruct(pc);
 
-            if (tfm->users_num == 0)
+            if (xf->users_num == 0)
             {
                 return NULL;
             }
             gcAddGObjProcess(effect_gobj, efManagerDustLightProcUpdate, nGCProcessKindFunc, 3);
 
-            ep->effect_vars.dust_light.tfm = tfm;
+            ep->effect_vars.dust_light.xf = xf;
 
-            tfm->translate = *pos;
+            xf->translate = *pos;
 
-            tfm->translate.y += EFPART_DUSTNORMAL_OFF_Y;
+            xf->translate.y += EFPART_DUSTNORMAL_OFF_Y;
 
-            tfm->rotate.z = syUtilsGetRandomFloat() * F_CLC_DTOR32(360.0F); // F_CLC_DTOR32(360.0F)
+            xf->rotate.z = syUtilsGetRandomFloat() * F_CLC_DTOR32(360.0F); // F_CLC_DTOR32(360.0F)
 
             angle = (syUtilsGetRandomFloat() * EFPART_DUSTNORMAL_ANGLE_BASE) + EFPART_DUSTNORMAL_ANGLE_ADD;
 
@@ -2917,19 +2917,19 @@ LBParticle* efManagerDustLightMakeEffect(Vec3f *pos, s32 lr, f32 f_index)
             ep->effect_vars.dust_light.vel2.x = -ep->effect_vars.dust_light.vel1.x * EFPART_DUSTNORMAL_SCATTER;
             ep->effect_vars.dust_light.vel2.y = -ep->effect_vars.dust_light.vel1.y * EFPART_DUSTNORMAL_SCATTER;
         }
-        else ptc = efManagerDestroyParticleGObj(ptc, effect_gobj);
+        else pc = efManagerDestroyParticleGObj(pc, effect_gobj);
     }
     else efManagerDestroyParticleGObj(NULL, effect_gobj);
 
-    return ptc;
+    return pc;
 }
 
 // 0x800FF278
 LBParticle* efManagerDustHeavyMakeEffect(Vec3f *pos, s32 lr)
 {
     GObj *effect_gobj;
-    LBParticle *ptc;
-    LBTransform *tfm;
+    LBParticle *pc;
+    LBTransform *xf;
     EFStruct *ep;
     f32 angle;
     f32 vel;
@@ -2943,31 +2943,31 @@ LBParticle* efManagerDustHeavyMakeEffect(Vec3f *pos, s32 lr)
     }
     effect_gobj->user_data.p = NULL;
 
-    ptc = lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(0), 0x58);
+    pc = lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(0), 0x58);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        tfm = lbParticleAddTransformForStruct(ptc, nLBTransformStatusDefault);
+        xf = lbParticleAddTransformForStruct(pc, nLBTransformStatusDefault);
 
-        if (tfm != NULL)
+        if (xf != NULL)
         {
-            tfm->effect_gobj = effect_gobj;
+            xf->effect_gobj = effect_gobj;
 
-            tfm->translate = *pos;
+            xf->translate = *pos;
 
-            tfm->translate.y += EFPART_DUSTHEAVY_OFF_Y;
+            xf->translate.y += EFPART_DUSTHEAVY_OFF_Y;
 
             if (lr == -1)
             {
-                tfm->rotate.y = F_CLC_DTOR32(180.0F);
+                xf->rotate.y = F_CLC_DTOR32(180.0F);
             }
-            tfm->proc_dead = efManagerDefaultProcDead;
+            xf->proc_dead = efManagerDefaultProcDead;
         }
-        else ptc = efManagerDestroyParticleGObj(ptc, effect_gobj);
+        else pc = efManagerDestroyParticleGObj(pc, effect_gobj);
     }
     else efManagerDestroyParticleGObj(NULL, effect_gobj);
 
-    return ptc;
+    return pc;
 }
 
 // 0x800FF384
@@ -2980,7 +2980,7 @@ void efManagerDustHeavyDoubleProcUpdate(GObj *effect_gobj)
 
     if (ep->effect_vars.dust_heavy.anim_frame == 2)
     {
-        Vec3f pos = ep->effect_vars.dust_heavy.tfm->translate;
+        Vec3f pos = ep->effect_vars.dust_heavy.xf->translate;
 
         pos.y -= 126.0F;
 
@@ -2992,8 +2992,8 @@ void efManagerDustHeavyDoubleProcUpdate(GObj *effect_gobj)
 LBParticle* efManagerDustHeavyDoubleMakeEffect(Vec3f *pos, s32 lr, f32 f_index)
 {
     GObj *effect_gobj;
-    LBParticle *ptc;
-    LBTransform *tfm;
+    LBParticle *pc;
+    LBTransform *xf;
     EFStruct *ep;
     f32 angle;
     f32 vel;
@@ -3015,23 +3015,23 @@ LBParticle* efManagerDustHeavyDoubleMakeEffect(Vec3f *pos, s32 lr, f32 f_index)
     }
     effect_gobj->user_data.p = ep;
 
-    ptc = (f_index == 1.7F) ? lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(0), 0x59) : lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(0), 0x58); // Why such a specific check when a bool could've worked?
+    pc = (f_index == 1.7F) ? lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(0), 0x59) : lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(0), 0x58); // Why such a specific check when a bool could've worked?
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        tfm = lbParticleAddTransformForStruct(ptc, nLBTransformStatusDefault);
+        xf = lbParticleAddTransformForStruct(pc, nLBTransformStatusDefault);
 
-        if (tfm != NULL)
+        if (xf != NULL)
         {
             gcAddGObjProcess(effect_gobj, efManagerDustHeavyDoubleProcUpdate, nGCProcessKindFunc, 3);
 
-            tfm->effect_gobj = effect_gobj;
+            xf->effect_gobj = effect_gobj;
 
-            ep->effect_vars.dust_heavy.tfm = tfm;
+            ep->effect_vars.dust_heavy.xf = xf;
 
-            tfm->translate = *pos;
+            xf->translate = *pos;
 
-            tfm->translate.y += EFPART_DUSTHEAVY_OFF_Y;
+            xf->translate.y += EFPART_DUSTHEAVY_OFF_Y;
 
             ep->effect_vars.dust_heavy.pos = *pos;
 
@@ -3041,56 +3041,56 @@ LBParticle* efManagerDustHeavyDoubleMakeEffect(Vec3f *pos, s32 lr, f32 f_index)
 
             if (lr == -1)
             {
-                tfm->rotate.y = F_CLC_DTOR32(180.0F);
+                xf->rotate.y = F_CLC_DTOR32(180.0F);
             }
-            tfm->proc_dead = efManagerDefaultProcDead;
+            xf->proc_dead = efManagerDefaultProcDead;
         }
-        else ptc = efManagerDestroyParticleGObj(ptc, effect_gobj);
+        else pc = efManagerDestroyParticleGObj(pc, effect_gobj);
     }
     else efManagerDestroyParticleGObj(NULL, effect_gobj);
 
-    return ptc;
+    return pc;
 }
 
 // 0x800FF590
 LBParticle* efManagerDustExpandLargeMakeEffect(Vec3f *pos)
 {
-    LBParticle *ptc = lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(0), 0x57);
+    LBParticle *pc = lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(0), 0x57);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        LBTransform *tfm = lbParticleAddTransformForStruct(ptc, nLBTransformStatusReady);
+        LBTransform *xf = lbParticleAddTransformForStruct(pc, nLBTransformStatusReady);
 
-        if (tfm != NULL)
+        if (xf != NULL)
         {
-            LBParticleProcessStruct(ptc);
+            LBParticleProcessStruct(pc);
 
-            if (tfm->users_num == 0)
+            if (xf->users_num == 0)
             {
                 return NULL;
             }
-            tfm->translate = *pos;
+            xf->translate = *pos;
 
-            tfm->scale.x = EFPART_DUSTEXPANDLARGE_SCALE;
-            tfm->scale.y = EFPART_DUSTEXPANDLARGE_SCALE;
-            tfm->scale.z = EFPART_DUSTEXPANDLARGE_SCALE;
+            xf->scale.x = EFPART_DUSTEXPANDLARGE_SCALE;
+            xf->scale.y = EFPART_DUSTEXPANDLARGE_SCALE;
+            xf->scale.z = EFPART_DUSTEXPANDLARGE_SCALE;
         }
         else
         {
-            lbParticleEjectStruct(ptc);
+            lbParticleEjectStruct(pc);
 
-            ptc = NULL;
+            pc = NULL;
         }
     }
-    return ptc;
+    return pc;
 }
 
 // 0x800FF648
 LBParticle* efManagerDustExpandSmallMakeEffect(Vec3f *pos, f32 f_index)
 {
     GObj *effect_gobj;
-    LBParticle *ptc;
-    LBTransform *tfm;
+    LBParticle *pc;
+    LBTransform *xf;
     EFStruct *ep;
     f32 angle;
     f32 vel;
@@ -3112,81 +3112,81 @@ LBParticle* efManagerDustExpandSmallMakeEffect(Vec3f *pos, f32 f_index)
     }
     effect_gobj->user_data.p = ep;
 
-    ptc = (f_index == 2.0F) ? lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(0), 0x56) : lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(0), 0x55);
+    pc = (f_index == 2.0F) ? lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(0), 0x56) : lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(0), 0x55);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        tfm = lbParticleAddTransformForStruct(ptc, nLBTransformStatusDefault);
+        xf = lbParticleAddTransformForStruct(pc, nLBTransformStatusDefault);
 
-        if (tfm != NULL)
+        if (xf != NULL)
         {
-            tfm->effect_gobj = effect_gobj;
-            tfm->proc_dead = efManagerDefaultProcDead;
+            xf->effect_gobj = effect_gobj;
+            xf->proc_dead = efManagerDefaultProcDead;
 
-            LBParticleProcessStruct(ptc);
+            LBParticleProcessStruct(pc);
 
-            if (tfm->users_num == 0)
+            if (xf->users_num == 0)
             {
                 return NULL;
             }
             gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nGCProcessKindFunc, 3);
 
-            ep->effect_vars.common.tfm = tfm;
+            ep->effect_vars.common.xf = xf;
 
-            tfm->translate = *pos;
+            xf->translate = *pos;
 
             ep->effect_vars.common.vel.y = EFPART_DUSTEXPANDSMALL_VEL_Y;
             ep->effect_vars.common.vel.x = EFPART_DUSTEXPANDSMALL_VEL_X;
         }
-        else ptc = efManagerDestroyParticleGObj(ptc, effect_gobj);
+        else pc = efManagerDestroyParticleGObj(pc, effect_gobj);
     }
     else efManagerDestroyParticleGObj(NULL, effect_gobj);
 
-    return ptc;
+    return pc;
 }
 
 // 0x800FF7D8
 LBParticle* efManagerDustDashMakeEffect(Vec3f *pos, s32 lr, f32 scale)
 {
-    LBParticle *ptc;
-    LBTransform *tfm;
+    LBParticle *pc;
+    LBTransform *xf;
     EFStruct *ep;
 
-    ptc = lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(0), 0x5A);
+    pc = lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(0), 0x5A);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        tfm = lbParticleAddTransformForStruct(ptc, nLBTransformStatusDefault);
+        xf = lbParticleAddTransformForStruct(pc, nLBTransformStatusDefault);
 
-        if (tfm != NULL)
+        if (xf != NULL)
         {
-            LBParticleProcessStruct(ptc);
+            LBParticleProcessStruct(pc);
 
-            if (tfm->users_num == 0)
+            if (xf->users_num == 0)
             {
                 return NULL;
             }
-            tfm->translate = *pos;
+            xf->translate = *pos;
 
-            tfm->scale.x = scale;
-            tfm->scale.y = scale;
-            tfm->scale.z = scale;
+            xf->scale.x = scale;
+            xf->scale.y = scale;
+            xf->scale.z = scale;
 
-            tfm->translate.y += EFPART_DUSTDASH_OFF_Y;
+            xf->translate.y += EFPART_DUSTDASH_OFF_Y;
 
             if (lr == -1)
             {
-                tfm->rotate.y = F_CLC_DTOR32(180.0F);
+                xf->rotate.y = F_CLC_DTOR32(180.0F);
             }
         }
         else
         {
-            lbParticleEjectStruct(ptc);
+            lbParticleEjectStruct(pc);
 
-            ptc = NULL;
+            pc = NULL;
         }
     }
-    return ptc;
+    return pc;
 }
 
 // 0x800FF8C0
@@ -3288,7 +3288,7 @@ GObj* efManagerDamageSpawnOrbsRandgcMakeEffect(Vec3f *pos)
 }
 
 // 0x800FFB74
-void efManagerImpactWaveFuncDisplay(GObj *effect_gobj)
+void efManagerImpactWaveProcDisplay(GObj *effect_gobj)
 {
     EFStruct *ep = efGetStruct(effect_gobj);
     s32 index = ep->effect_vars.impact_wave.index;
@@ -3616,154 +3616,154 @@ GObj* efManagerDamageSpawnMDustRandgcMakeEffect(Vec3f *pos, s32 lr)
 // 0x80100480
 LBParticle* efManagerSparkleWhiteMakeEffect(Vec3f *pos)
 {
-    LBParticle *ptc = lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(0), 0x73);
+    LBParticle *pc = lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(0), 0x73);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        LBTransform *tfm = lbParticleAddTransformForStruct(ptc, nLBTransformStatusReady);
+        LBTransform *xf = lbParticleAddTransformForStruct(pc, nLBTransformStatusReady);
 
-        if (tfm != NULL)
+        if (xf != NULL)
         {
-            LBParticleProcessStruct(ptc);
+            LBParticleProcessStruct(pc);
 
-            if (tfm->users_num == 0)
+            if (xf->users_num == 0)
             {
                 return NULL;
             }
-            tfm->translate = *pos;
+            xf->translate = *pos;
         }
         else
         {
-            lbParticleEjectStruct(ptc);
+            lbParticleEjectStruct(pc);
 
-            ptc = NULL;
+            pc = NULL;
         }
     }
-    return ptc;
+    return pc;
 }
 
 // 0x80100524
 LBParticle* efManagerSparkleWhiteMultiMakeEffect(Vec3f *pos)
 {
-    LBParticle *ptc = lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(0), 0x1A);
+    LBParticle *pc = lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(0), 0x1A);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        LBTransform *tfm = lbParticleAddTransformForStruct(ptc, nLBTransformStatusReady);
+        LBTransform *xf = lbParticleAddTransformForStruct(pc, nLBTransformStatusReady);
 
-        if (tfm != NULL)
+        if (xf != NULL)
         {
-            LBParticleProcessStruct(ptc);
+            LBParticleProcessStruct(pc);
 
-            if (tfm->users_num == 0)
+            if (xf->users_num == 0)
             {
                 return NULL;
             }
-            tfm->translate = *pos;
+            xf->translate = *pos;
         }
         else
         {
-            lbParticleEjectStruct(ptc);
+            lbParticleEjectStruct(pc);
 
-            ptc = NULL;
+            pc = NULL;
         }
     }
-    return ptc;
+    return pc;
 }
 
 // 0x801005C8
 LBParticle* efManagerSparkleWhiteMultiExplodeMakeEffect(Vec3f *pos)
 {
-    LBParticle *ptc = lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(0), 0x22);
+    LBParticle *pc = lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(0), 0x22);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        LBTransform *tfm = lbParticleAddTransformForStruct(ptc, nLBTransformStatusReady);
+        LBTransform *xf = lbParticleAddTransformForStruct(pc, nLBTransformStatusReady);
 
-        if (tfm != NULL)
+        if (xf != NULL)
         {
-            LBParticleProcessStruct(ptc);
+            LBParticleProcessStruct(pc);
 
-            if (tfm->users_num == 0)
+            if (xf->users_num == 0)
             {
                 return NULL;
             }
-            tfm->translate = *pos;
+            xf->translate = *pos;
         }
         else
         {
-            lbParticleEjectStruct(ptc);
+            lbParticleEjectStruct(pc);
 
-            ptc = NULL;
+            pc = NULL;
         }
     }
-    return ptc;
+    return pc;
 }
 
 // 0x8010066C
 LBParticle* efManagerSparkleWhiteScaleMakeEffect(Vec3f *pos, f32 scale)
 {
-    LBParticle *ptc = lbParticleMakeScriptID(gEFManagerParticleBankID, 0x5B);
+    LBParticle *pc = lbParticleMakeScriptID(gEFManagerParticleBankID, 0x5B);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        LBTransform *tfm = lbParticleAddTransformForStruct(ptc, nLBTransformStatusReady);
+        LBTransform *xf = lbParticleAddTransformForStruct(pc, nLBTransformStatusReady);
 
-        if (tfm != NULL)
+        if (xf != NULL)
         {
-            LBParticleProcessStruct(ptc);
+            LBParticleProcessStruct(pc);
 
-            if (tfm->users_num == 0)
+            if (xf->users_num == 0)
             {
                 return NULL;
             }
-            tfm->translate = *pos;
+            xf->translate = *pos;
 
-            tfm->scale.x = scale;
-            tfm->scale.y = scale;
-            tfm->scale.z = scale;
+            xf->scale.x = scale;
+            xf->scale.y = scale;
+            xf->scale.z = scale;
         }
         else
         {
-            lbParticleEjectStruct(ptc);
+            lbParticleEjectStruct(pc);
 
-            ptc = NULL;
+            pc = NULL;
         }
     }
-    return ptc;
+    return pc;
 }
 
 // 0x80100720 - Plays when a fighter is Star KO'd
 LBParticle* efManagerSparkleWhiteDeadMakeEffect(Vec3f *pos, f32 scale)
 {
-    LBParticle *ptc = lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(1), 0x5C);
+    LBParticle *pc = lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(1), 0x5C);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        LBTransform *tfm = lbParticleAddTransformForStruct(ptc, nLBTransformStatusReady);
+        LBTransform *xf = lbParticleAddTransformForStruct(pc, nLBTransformStatusReady);
 
-        if (tfm != NULL)
+        if (xf != NULL)
         {
-            LBParticleProcessStruct(ptc);
+            LBParticleProcessStruct(pc);
 
-            if (tfm->users_num == 0)
+            if (xf->users_num == 0)
             {
                 return NULL;
             }
-            tfm->translate = *pos;
+            xf->translate = *pos;
 
-            tfm->scale.x = scale;
-            tfm->scale.y = scale;
-            tfm->scale.z = scale;
+            xf->scale.x = scale;
+            xf->scale.y = scale;
+            xf->scale.z = scale;
         }
         else
         {
-            lbParticleEjectStruct(ptc);
+            lbParticleEjectStruct(pc);
 
-            ptc = NULL;
+            pc = NULL;
         }
     }
-    return ptc;
+    return pc;
 }
 
 // 0x801007D8
@@ -3811,13 +3811,13 @@ void efManagerQuakeProcUpdate(GObj *effect_gobj)
 }
 
 // 0x801008B8
-void efManagerQuakeFuncRun(GObj *effect_gobj)
+void efManagerQuakeProcRun(GObj *effect_gobj)
 {
     EFStruct *ep = efGetStruct(effect_gobj);
 
     gcAddGObjProcess(effect_gobj, efManagerQuakeProcUpdate, nGCProcessKindFunc, ep->effect_vars.quake.priority);
 
-    effect_gobj->func_run = NULL;
+    effect_gobj->proc_run = NULL;
 }
 
 // 0x801008F4
@@ -3833,7 +3833,7 @@ GObj* efManagerQuakeMakeEffect(s32 magnitude)
     {
         return NULL;
     }
-    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, efManagerQuakeFuncRun, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, efManagerQuakeProcRun, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -3872,23 +3872,23 @@ GObj* efManagerQuakeMakeEffect(s32 magnitude)
 }
 
 // 0x80100A58
-void efManagerDamageCoinProcDead(LBTransform *tfm)
+void efManagerDamageCoinProcDead(LBTransform *xf)
 {
-    Vec3f pos = tfm->translate;
+    Vec3f pos = xf->translate;
 
     pos.y += 200.0F;
 
     efManagerDustExpandSmallMakeEffect(&pos, 2.0F);
-    efManagerSetPrevStructAlloc(efGetStruct(tfm->effect_gobj));
-    gcEjectGObj(tfm->effect_gobj);
+    efManagerSetPrevStructAlloc(efGetStruct(xf->effect_gobj));
+    gcEjectGObj(xf->effect_gobj);
 }
 
 // 0x80100ACC
 LBParticle* efManagerDamageCoinMakeEffect(Vec3f *pos)
 {
     GObj *effect_gobj;
-    LBParticle *ptc;
-    LBTransform *tfm;
+    LBParticle *pc;
+    LBTransform *xf;
     EFStruct *ep;
     f32 angle;
     f32 vel;
@@ -3911,40 +3911,40 @@ LBParticle* efManagerDamageCoinMakeEffect(Vec3f *pos)
     }
     effect_gobj->user_data.p = ep;
 
-    ptc = lbParticleMakeScriptID(gEFManagerParticleBankID, 0x60);
+    pc = lbParticleMakeScriptID(gEFManagerParticleBankID, 0x60);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        tfm = lbParticleAddTransformForStruct(ptc, nLBTransformStatusDefault);
+        xf = lbParticleAddTransformForStruct(pc, nLBTransformStatusDefault);
 
-        if (tfm != NULL)
+        if (xf != NULL)
         {
-            tfm->effect_gobj = effect_gobj;
-            tfm->proc_dead = efManagerDamageCoinProcDead;
+            xf->effect_gobj = effect_gobj;
+            xf->proc_dead = efManagerDamageCoinProcDead;
 
-            LBParticleProcessStruct(ptc);
+            LBParticleProcessStruct(pc);
 
-            if (tfm->users_num == 0)
+            if (xf->users_num == 0)
             {
                 return NULL;
             }
-            ep->effect_vars.common.tfm = tfm;
+            ep->effect_vars.common.xf = xf;
 
-            tfm->translate = *pos;
+            xf->translate = *pos;
         }
-        else ptc = efManagerDestroyParticleGObj(ptc, effect_gobj);
+        else pc = efManagerDestroyParticleGObj(pc, effect_gobj);
     }
     else efManagerDestroyParticleGObj(NULL, effect_gobj);
 
-    return ptc;
+    return pc;
 }
 
 // 0x80100BF0
 LBParticle* efManagerSetOffMakeEffect(Vec3f *pos, s32 size)
 {
     GObj *effect_gobj;
-    LBParticle *ptc;
-    LBTransform *tfm;
+    LBParticle *pc;
+    LBTransform *xf;
     EFStruct *ep;
     f32 vel;
     f32 angle;
@@ -3966,28 +3966,28 @@ LBParticle* efManagerSetOffMakeEffect(Vec3f *pos, s32 size)
     }
     effect_gobj->user_data.p = ep;
 
-    ptc = lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(0), 0x65);
+    pc = lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(0), 0x65);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        tfm = lbParticleAddTransformForStruct(ptc, nLBTransformStatusReady);
+        xf = lbParticleAddTransformForStruct(pc, nLBTransformStatusReady);
 
-        if (tfm != NULL)
+        if (xf != NULL)
         {
-            tfm->effect_gobj = effect_gobj;
-            tfm->proc_dead = efManagerDefaultProcDead;
+            xf->effect_gobj = effect_gobj;
+            xf->proc_dead = efManagerDefaultProcDead;
 
-            LBParticleProcessStruct(ptc);
+            LBParticleProcessStruct(pc);
 
-            if (tfm->users_num == 0)
+            if (xf->users_num == 0)
             {
                 return NULL;
             }
             gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nGCProcessKindFunc, 3);
 
-            ep->effect_vars.common.tfm = tfm;
+            ep->effect_vars.common.xf = xf;
 
-            tfm->translate = *pos;
+            xf->translate = *pos;
 
             vel = (syUtilsGetRandomFloat() * 18.0F) + 12.0F;
             angle = syUtilsGetRandomFloat() * F_CLC_DTOR32(360.0F); // F_CLC_DTOR32(360.0F)
@@ -3997,13 +3997,13 @@ LBParticle* efManagerSetOffMakeEffect(Vec3f *pos, s32 size)
 
             scale = (size < 10) ? (((10 - size) * -0.05F) + 1.0F) : (((size - 10) * 0.15F) + 1.0F);
 
-            tfm->scale.x = tfm->scale.y = tfm->scale.z = scale;
+            xf->scale.x = xf->scale.y = xf->scale.z = scale;
         }
-        else ptc = efManagerDestroyParticleGObj(ptc, effect_gobj);
+        else pc = efManagerDestroyParticleGObj(pc, effect_gobj);
     }
     else efManagerDestroyParticleGObj(NULL, effect_gobj);
 
-    return ptc;
+    return pc;
 }
 
 // 0x80100DEC
@@ -4115,7 +4115,7 @@ void efManagerShieldProcUpdate(GObj *effect_gobj)
 }
 
 // 0x80101024
-void efManagerShieldFuncDisplay(GObj *effect_gobj)
+void efManagerShieldProcDisplay(GObj *effect_gobj)
 {
     EFStruct *ep = efGetStruct(effect_gobj);
     s32 id = (ep->effect_vars.shield.is_damage_shield != FALSE) ? 4 : ep->effect_vars.shield.player;
@@ -4158,7 +4158,7 @@ GObj* efManagerShieldMakeEffect(GObj *fighter_gobj)
 }
 
 // 0x80101180
-void efManagerYoshiShieldFuncDisplay(GObj *effect_gobj)
+void efManagerYoshiShieldProcDisplay(GObj *effect_gobj)
 {
     EFStruct *ep = efGetStruct(effect_gobj);
     FTStruct *fp = ftGetStruct(ep->fighter_gobj);
@@ -4178,7 +4178,7 @@ void efManagerYoshiShieldFuncDisplay(GObj *effect_gobj)
 
     gcDrawDObjDLHead1(effect_gobj);
 
-    efDisplayCLDFuncDisplay(effect_gobj);
+    efDisplayCLDProcDisplay(effect_gobj);
 }
 
 // 0x80101374
@@ -4214,44 +4214,44 @@ GObj* efManagerYoshiShieldMakeEffect(GObj *fighter_gobj)
 // 0x80101408
 LBParticle* efManagerThunderAmpMakeEffect(Vec3f *pos)
 {
-    LBParticle *ptc = lbParticleMakeScriptID(gEFManagerParticleBankID, 0x74);
+    LBParticle *pc = lbParticleMakeScriptID(gEFManagerParticleBankID, 0x74);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        LBTransform *tfm = lbParticleAddTransformForStruct(ptc, nLBTransformStatusReady);
+        LBTransform *xf = lbParticleAddTransformForStruct(pc, nLBTransformStatusReady);
 
-        if (tfm != NULL)
+        if (xf != NULL)
         {
-            LBParticleProcessStruct(ptc);
+            LBParticleProcessStruct(pc);
 
-            if (tfm->users_num == 0)
+            if (xf->users_num == 0)
             {
                 return NULL;
             }
-            tfm->translate = *pos;
+            xf->translate = *pos;
         }
         else
         {
-            lbParticleEjectStruct(ptc);
+            lbParticleEjectStruct(pc);
 
-            ptc = NULL;
+            pc = NULL;
         }
     }
-    return ptc;
+    return pc;
 }
 
 // 0x801014A8
 LBGenerator* efManagerRippleMakeEffect(Vec3f *pos)
 {
-    LBGenerator *gen = lbParticleMakeGenerator(gEFManagerParticleBankID, 0x61);
+    LBGenerator *gn = lbParticleMakeGenerator(gEFManagerParticleBankID, 0x61);
 
-    if (gen != NULL)
+    if (gn != NULL)
     {
-        gen->pos.x = pos->x;
-        gen->pos.y = pos->y;
-        gen->pos.z = pos->z;
+        gn->pos.x = pos->x;
+        gn->pos.y = pos->y;
+        gn->pos.z = pos->z;
     }
-    return gen;
+    return gn;
 }
 
 // 0x80101500
@@ -4299,85 +4299,85 @@ GObj* efManagerReflectBreakMakeEffect(Vec3f *pos, s32 lr)
 // 0x801015D4
 LBParticle* efManagerFuraSparkleMakeEffect(Vec3f *pos)
 {
-    LBParticle *ptc = lbParticleMakeCommon(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(0), 0);
+    LBParticle *pc = lbParticleMakeCommon(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(0), 0);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        ptc->pos.x = pos->x;
-        ptc->pos.y = pos->y;
-        ptc->pos.z = pos->z;
+        pc->pos.x = pos->x;
+        pc->pos.y = pos->y;
+        pc->pos.z = pos->z;
     }
-    return ptc;
+    return pc;
 }
 
 // 0x80101630
 LBParticle* efManagerPsionicMakeEffect(Vec3f *pos)
 {
-    LBParticle *ptc = lbParticleMakeCommon(gEFManagerParticleBankID, 7);
+    LBParticle *pc = lbParticleMakeCommon(gEFManagerParticleBankID, 7);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        ptc->pos.x = pos->x;
-        ptc->pos.y = pos->y;
-        ptc->pos.z = pos->z;
+        pc->pos.x = pos->x;
+        pc->pos.y = pos->y;
+        pc->pos.z = pos->z;
     }
-    return ptc;
+    return pc;
 }
 
 // 0x80101688
 LBParticle* efManagerFlashSmallMakeEffect(Vec3f *pos)
 {
-    LBParticle *ptc = lbParticleMakeCommon(gEFManagerParticleBankID, 4);
+    LBParticle *pc = lbParticleMakeCommon(gEFManagerParticleBankID, 4);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        ptc->pos.x = pos->x;
-        ptc->pos.y = pos->y;
-        ptc->pos.z = pos->z;
+        pc->pos.x = pos->x;
+        pc->pos.y = pos->y;
+        pc->pos.z = pos->z;
     }
-    return ptc;
+    return pc;
 }
 
 // 0x801016E0
 LBParticle* efManagerFlashMiddleMakeEffect(Vec3f *pos)
 {
-    LBParticle *ptc = lbParticleMakeCommon(gEFManagerParticleBankID, 5);
+    LBParticle *pc = lbParticleMakeCommon(gEFManagerParticleBankID, 5);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        ptc->pos.x = pos->x;
-        ptc->pos.y = pos->y;
-        ptc->pos.z = pos->z;
+        pc->pos.x = pos->x;
+        pc->pos.y = pos->y;
+        pc->pos.z = pos->z;
     }
-    return ptc;
+    return pc;
 }
 
 // 0x80101738
 LBParticle* efManagerFlashLargeMakeEffect(Vec3f *pos)
 {
-    LBParticle *ptc = lbParticleMakeCommon(gEFManagerParticleBankID, 6);
+    LBParticle *pc = lbParticleMakeCommon(gEFManagerParticleBankID, 6);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        ptc->pos.x = pos->x;
-        ptc->pos.y = pos->y;
-        ptc->pos.z = pos->z;
+        pc->pos.x = pos->x;
+        pc->pos.y = pos->y;
+        pc->pos.z = pos->z;
     }
-    return ptc;
+    return pc;
 }
 
 // 0x80101790
 LBGenerator* efManagerShieldBreakMakeEffect(Vec3f *pos)
 {
-    LBGenerator *gen = lbParticleMakeGenerator(gEFManagerParticleBankID, 3);
+    LBGenerator *gn = lbParticleMakeGenerator(gEFManagerParticleBankID, 3);
 
-    if (gen != NULL)
+    if (gn != NULL)
     {
-        gen->pos.x = pos->x;
-        gen->pos.y = pos->y;
-        gen->pos.z = pos->z;
+        gn->pos.x = pos->x;
+        gn->pos.y = pos->y;
+        gn->pos.z = pos->z;
     }
-    return gen;
+    return gn;
 }
 
 // 0x801017E8
@@ -4498,7 +4498,7 @@ void efManagerPikachuThunderTrailProcUpdate(GObj *effect_gobj)
 }
 
 // 0x80101AA8
-void efManagerPikachuThunderTrailFuncDisplay(GObj *effect_gobj)
+void efManagerPikachuThunderTrailProcDisplay(GObj *effect_gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[1]++);
 
@@ -4719,29 +4719,29 @@ GObj* efManagerCaptainFalconPunchMakeEffect(GObj *fighter_gobj)
 // 0x80102018
 LBGenerator* efManagerKirbyStarMakeEffect(Vec3f *pos)
 {
-    LBGenerator *gen = lbParticleMakeGenerator(gEFManagerParticleBankID, 0xF);
+    LBGenerator *gn = lbParticleMakeGenerator(gEFManagerParticleBankID, 0xF);
 
-    if (gen != NULL)
+    if (gn != NULL)
     {
-        gen->pos.x = pos->x;
-        gen->pos.y = pos->y;
-        gen->pos.z = pos->z;
+        gn->pos.x = pos->x;
+        gn->pos.y = pos->y;
+        gn->pos.z = pos->z;
     }
-    return gen;
+    return gn;
 }
 
 // 0x80102070
 LBGenerator* efManagerStarSplashMakeEffect(Vec3f *pos, s32 lr)
 {
-    LBGenerator *gen = (lr == -1) ? lbParticleMakeGenerator(gEFManagerParticleBankID, 0x10) : lbParticleMakeGenerator(gEFManagerParticleBankID, 0x11);
+    LBGenerator *gn = (lr == -1) ? lbParticleMakeGenerator(gEFManagerParticleBankID, 0x10) : lbParticleMakeGenerator(gEFManagerParticleBankID, 0x11);
 
-    if (gen != NULL)
+    if (gn != NULL)
     {
-        gen->pos.x = pos->x;
-        gen->pos.y = pos->y;
-        gen->pos.z = pos->z;
+        gn->pos.x = pos->x;
+        gn->pos.y = pos->y;
+        gn->pos.z = pos->z;
     }
-    return gen;
+    return gn;
 }
 
 // 0x801020F4
@@ -4791,32 +4791,32 @@ GObj* efManagerDeadExplodeMakeEffect(Vec3f *pos, s32 player, u32 type)
 {
     s32 unused[4];
     GObj *effect_gobj;
-    LBParticle *ptc;
-    LBTransform *tfm;
+    LBParticle *pc;
+    LBTransform *xf;
     DObj *dobj;
     DObj *child_dobj;
     DObj *sibling_dobj;
     u8 index = ((type % 2) * GMCOMMON_PLAYERS_MAX) + player; // WARNING: dEFManagerDeadExplodeGenID should be u8[2][GMCOMMON_PLAYERS_MAX], but it will not match this way; UB-risk
 
-    ptc = lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(1), dEFManagerDeadExplodeGenID[index]);
+    pc = lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(1), dEFManagerDeadExplodeGenID[index]);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        tfm = lbParticleAddTransformForStruct(ptc, nLBTransformStatusReady);
+        xf = lbParticleAddTransformForStruct(pc, nLBTransformStatusReady);
 
-        if (tfm != NULL)
+        if (xf != NULL)
         {
-            LBParticleProcessStruct(ptc);
+            LBParticleProcessStruct(pc);
 
-            if (tfm->users_num == 0)
+            if (xf->users_num == 0)
             {
                 return NULL;
             }
-            tfm->translate = *pos;
+            xf->translate = *pos;
 
-            tfm->rotate.z = F_CLC_DTOR32(dEFManagerDeadExplodeRotateD[type]);
+            xf->rotate.z = F_CLC_DTOR32(dEFManagerDeadExplodeRotateD[type]);
         }
-        else lbParticleEjectStruct(ptc);
+        else lbParticleEjectStruct(pc);
     }
     dEFManagerDeadExplodeEffectDesc.o_matanim_joint = dEFManagerDeadExplodeMatAnimJoints[player];
 
@@ -5022,7 +5022,7 @@ void efManagerNessPKThunderTrailProcUpdate(GObj *effect_gobj)
 }
 
 // 0x80102768
-void efManagerNessPKThunderTrailFuncDisplay(GObj *effect_gobj)
+void efManagerNessPKThunderTrailProcDisplay(GObj *effect_gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[1]++);
     gDPSetRenderMode(gSYTaskmanDLHeads[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
@@ -5300,59 +5300,59 @@ GObj* efManagerMBallThrownMakeEffect(Vec3f *pos, s32 lr)
 // 0x80102DEC
 LBParticle* efManagerFireGrindMakeEffect(Vec3f *pos)
 {
-    LBParticle *ptc = lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(0), 0xB);
+    LBParticle *pc = lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(0), 0xB);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        LBTransform *tfm = lbParticleAddTransformForStruct(ptc, nLBTransformStatusReady);
+        LBTransform *xf = lbParticleAddTransformForStruct(pc, nLBTransformStatusReady);
 
-        if (tfm != NULL)
+        if (xf != NULL)
         {
-            LBParticleProcessStruct(ptc);
+            LBParticleProcessStruct(pc);
 
-            if (tfm->users_num == 0)
+            if (xf->users_num == 0)
             {
                 return NULL;
             }
-            tfm->translate = *pos;
+            xf->translate = *pos;
         }
         else
         {
-            lbParticleEjectStruct(ptc);
+            lbParticleEjectStruct(pc);
 
-            ptc = NULL;
+            pc = NULL;
         }
     }
-    return ptc;
+    return pc;
 }
 
 // 0x80102E90
 LBParticle* efManagerHealSparklesMakeEffect(Vec3f *pos)
 {
-    LBParticle *ptc = lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(0), 0xE);
+    LBParticle *pc = lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(0), 0xE);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        LBTransform *tfm = lbParticleAddTransformForStruct(ptc, nLBTransformStatusReady);
+        LBTransform *xf = lbParticleAddTransformForStruct(pc, nLBTransformStatusReady);
 
-        if (tfm != NULL)
+        if (xf != NULL)
         {
-            LBParticleProcessStruct(ptc);
+            LBParticleProcessStruct(pc);
 
-            if (tfm->users_num == 0)
+            if (xf->users_num == 0)
             {
                 return NULL;
             }
-            tfm->translate = *pos;
+            xf->translate = *pos;
         }
         else
         {
-            lbParticleEjectStruct(ptc);
+            lbParticleEjectStruct(pc);
 
-            ptc = NULL;
+            pc = NULL;
         }
     }
-    return ptc;
+    return pc;
 }
 
 // 0x80102F34
@@ -5472,75 +5472,75 @@ GObj* efManagerYoshiEggEscapeMakeEffect(GObj *fighter_gobj)
 // 0x801031E0
 LBParticle* func_ovl2_801031E0(Vec3f *pos)
 {
-    LBParticle *ptc = lbParticleMakeScriptID(gFTDataKirbyParticleBankID, 2);
+    LBParticle *pc = lbParticleMakeScriptID(gFTDataKirbyParticleBankID, 2);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        LBTransform *tfm = lbParticleAddTransformForStruct(ptc, nLBTransformStatusReady);
+        LBTransform *xf = lbParticleAddTransformForStruct(pc, nLBTransformStatusReady);
 
-        if (tfm != NULL)
+        if (xf != NULL)
         {
-            LBParticleProcessStruct(ptc);
+            LBParticleProcessStruct(pc);
 
-            if (tfm->users_num == 0)
+            if (xf->users_num == 0)
             {
                 return NULL;
             }
-            tfm->translate = *pos;
+            xf->translate = *pos;
         }
         else
         {
-            lbParticleEjectStruct(ptc);
+            lbParticleEjectStruct(pc);
 
-            ptc = NULL;
+            pc = NULL;
         }
     }
-    return ptc;
+    return pc;
 }
 
 // 0x80103280
 LBParticle* func_ovl2_80103280(Vec3f *pos)
 {
-    LBParticle *ptc = lbParticleMakeScriptID(gFTDataKirbyParticleBankID, 5);
+    LBParticle *pc = lbParticleMakeScriptID(gFTDataKirbyParticleBankID, 5);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        LBTransform *tfm = lbParticleAddTransformForStruct(ptc, nLBTransformStatusReady);
+        LBTransform *xf = lbParticleAddTransformForStruct(pc, nLBTransformStatusReady);
 
-        if (tfm != NULL)
+        if (xf != NULL)
         {
-            LBParticleProcessStruct(ptc);
+            LBParticleProcessStruct(pc);
 
-            if (tfm->users_num == 0)
+            if (xf->users_num == 0)
             {
                 return NULL;
             }
-            tfm->translate = *pos;
+            xf->translate = *pos;
         }
         else
         {
-            lbParticleEjectStruct(ptc);
+            lbParticleEjectStruct(pc);
 
-            ptc = NULL;
+            pc = NULL;
         }
     }
-    return ptc;
+    return pc;
 }
 
 // 0x80103320
 LBParticle* efManagerFoxBlasterGlowMakeEffect(Vec3f *pos)
 {
-    LBParticle *ptc;
+    LBParticle *pc;
 
-    ptc = lbParticleMakeCommon(gEFManagerParticleBankID, 0x62);
+    pc = lbParticleMakeCommon(gEFManagerParticleBankID, 0x62);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        ptc->pos.x = pos->x;
-        ptc->pos.y = pos->y;
-        ptc->pos.z = pos->z;
+        pc->pos.x = pos->x;
+        pc->pos.y = pos->y;
+        pc->pos.z = pos->z;
     }
-    return ptc;
+    return pc;
 }
 
 // 0x80103378
@@ -5789,63 +5789,63 @@ void func_ovl2_801039B4(f32 arg0, f32 arg1)
 // 0x801039D4
 LBParticle* efManagerMusicNoteMakeEffect(Vec3f *pos)
 {
-    LBParticle *ptc = lbParticleMakeScriptID
+    LBParticle *pc = lbParticleMakeScriptID
     (
         gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(0), 
         dEFManagerMusicNoteGenIDs[syUtilsGetRandomIntRange(ARRAY_COUNT(dEFManagerMusicNoteGenIDs))]
     );
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        LBTransform *tfm = lbParticleAddTransformForStruct(ptc, nLBTransformStatusReady);
+        LBTransform *xf = lbParticleAddTransformForStruct(pc, nLBTransformStatusReady);
 
-        if (tfm != NULL)
+        if (xf != NULL)
         {
-            LBParticleProcessStruct(ptc);
+            LBParticleProcessStruct(pc);
 
-            if (tfm->users_num == 0)
+            if (xf->users_num == 0)
             {
                 return NULL;
             }
-            tfm->translate = *pos;
+            xf->translate = *pos;
         }
         else
         {
-            lbParticleEjectStruct(ptc);
+            lbParticleEjectStruct(pc);
 
-            ptc = NULL;
+            pc = NULL;
         }
     }
-    return ptc;
+    return pc;
 }
 
 // 0x80103A88
 LBParticle* efManagerYoshiEggExplodeMakeEffect(Vec3f *pos)
 {
-    LBParticle *ptc = lbParticleMakeScriptID(gFTDataYoshiParticleBankID, 3);
+    LBParticle *pc = lbParticleMakeScriptID(gFTDataYoshiParticleBankID, 3);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        LBTransform *tfm = lbParticleAddTransformForStruct(ptc, nLBTransformStatusReady);
+        LBTransform *xf = lbParticleAddTransformForStruct(pc, nLBTransformStatusReady);
 
-        if (tfm != NULL)
+        if (xf != NULL)
         {
-            LBParticleProcessStruct(ptc);
+            LBParticleProcessStruct(pc);
 
-            if (tfm->users_num == 0)
+            if (xf->users_num == 0)
             {
                 return NULL;
             }
-            tfm->translate = *pos;
+            xf->translate = *pos;
         }
         else
         {
-            lbParticleEjectStruct(ptc);
+            lbParticleEjectStruct(pc);
 
-            ptc = NULL;
+            pc = NULL;
         }
     }
-    return ptc;
+    return pc;
 }
 
 // 0x80103B28
@@ -6036,77 +6036,77 @@ GObj* efManagerRebirthHaloMakeEffect(GObj *fighter_gobj, f32 scale)
 // 0x801040E0
 LBParticle* efManagerBattleScoreMakeEffect(Vec3f *pos, s32 score)
 {
-    LBParticle *ptc = lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(2), (score > 0) ? 0x43 : 0x44);
+    LBParticle *pc = lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(2), (score > 0) ? 0x43 : 0x44);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        LBTransform *tfm = lbParticleAddTransformForStruct(ptc, nLBTransformStatusReady);
+        LBTransform *xf = lbParticleAddTransformForStruct(pc, nLBTransformStatusReady);
 
-        if (tfm == NULL)
+        if (xf == NULL)
         {
-            lbParticleEjectStruct(ptc);
+            lbParticleEjectStruct(pc);
 
             return NULL;
         }
-        LBParticleProcessStruct(ptc);
+        LBParticleProcessStruct(pc);
 
-        if (tfm->users_num == 0)
+        if (xf->users_num == 0)
         {
             return NULL;
         }
-        tfm->translate = *pos;
+        xf->translate = *pos;
 
-        tfm->scale.y = 0.25F;
+        xf->scale.y = 0.25F;
     }
-    return ptc;
+    return pc;
 }
 
 // 0x801041A0
 LBParticle* efManagerEggBreakMakeEffect(Vec3f *pos)
 {
-    LBParticle *ptc = lbParticleMakeScriptID(gEFManagerParticleBankID, 0x54);
+    LBParticle *pc = lbParticleMakeScriptID(gEFManagerParticleBankID, 0x54);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        LBTransform *tfm = lbParticleAddTransformForStruct(ptc, nLBTransformStatusReady);
+        LBTransform *xf = lbParticleAddTransformForStruct(pc, nLBTransformStatusReady);
 
-        if (tfm != NULL)
+        if (xf != NULL)
         {
-            LBParticleProcessStruct(ptc);
+            LBParticleProcessStruct(pc);
 
-            if (tfm->users_num == 0)
+            if (xf->users_num == 0)
             {
                 return NULL;
             }
-            tfm->translate = *pos;
+            xf->translate = *pos;
         }
         else
         {
-            lbParticleEjectStruct(ptc);
+            lbParticleEjectStruct(pc);
 
-            ptc = NULL;
+            pc = NULL;
         }
     }
-    return ptc;
+    return pc;
 }
 
 // 0x80104240
 void efManagerKirbyInhaleWindProcUpdate(GObj *effect_gobj)
 {
     EFStruct *ep = efGetStruct(effect_gobj);
-    LBTransform *tfm = ep->tfm;
+    LBTransform *xf = ep->xf;
 
-    tfm->translate = DObjGetStruct(ep->fighter_gobj)->translate.vec.f;
+    xf->translate = DObjGetStruct(ep->fighter_gobj)->translate.vec.f;
 
-    tfm->translate.x += ftGetStruct(ep->fighter_gobj)->lr * 800.0F;
-    tfm->translate.y += 230.0F;
+    xf->translate.x += ftGetStruct(ep->fighter_gobj)->lr * 800.0F;
+    xf->translate.y += 230.0F;
 }
 
 // 0x801042B4
 LBParticle* efManagerKirbyInhaleWindMakeEffect(GObj *fighter_gobj)
 {
-    LBParticle *ptc;
-    LBTransform *tfm;
+    LBParticle *pc;
+    LBTransform *xf;
     GObj *effect_gobj;
     EFStruct *ep;
 
@@ -6126,49 +6126,49 @@ LBParticle* efManagerKirbyInhaleWindMakeEffect(GObj *fighter_gobj)
     }
     effect_gobj->user_data.p = ep;
 
-    ptc = lbParticleMakeScriptID(gFTDataKirbyParticleBankID | LBPARTICLE_MASK_GENLINK(0), 0xC);
+    pc = lbParticleMakeScriptID(gFTDataKirbyParticleBankID | LBPARTICLE_MASK_GENLINK(0), 0xC);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        tfm = lbParticleAddTransformForStruct(ptc, nLBTransformStatusDefault);
+        xf = lbParticleAddTransformForStruct(pc, nLBTransformStatusDefault);
 
-        if (tfm != NULL)
+        if (xf != NULL)
         {
-            LBParticleProcessStruct(ptc);
+            LBParticleProcessStruct(pc);
 
-            if (tfm->users_num == 0)
+            if (xf->users_num == 0)
             {
                 return NULL;
             }
-            tfm->translate = DObjGetStruct(fighter_gobj)->translate.vec.f;
+            xf->translate = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
-            tfm->translate.x += ftGetStruct(fighter_gobj)->lr * 800.0F;
-            tfm->translate.y += 230.0F;
+            xf->translate.x += ftGetStruct(fighter_gobj)->lr * 800.0F;
+            xf->translate.y += 230.0F;
 
-            tfm->scale.x = 1.0F;
-            tfm->scale.y = 1.0F;
-            tfm->scale.z = 1.0F;
+            xf->scale.x = 1.0F;
+            xf->scale.y = 1.0F;
+            xf->scale.z = 1.0F;
 
-            tfm->rotate.z = (ftGetStruct(fighter_gobj)->lr == -1) ? F_CLC_DTOR32(90.0F) : F_CLC_DTOR32(-90.0F);
+            xf->rotate.z = (ftGetStruct(fighter_gobj)->lr == -1) ? F_CLC_DTOR32(90.0F) : F_CLC_DTOR32(-90.0F);
 
             effect_gobj->user_data.p = ep; // y u do dis again
 
             gcAddGObjProcess(effect_gobj, efManagerKirbyInhaleWindProcUpdate, nGCProcessKindFunc, 3);
 
-            ep->tfm = ptc->tfm;
+            ep->xf = pc->xf;
 
-            ep->bank_id = ptc->bank_id;
+            ep->bank_id = pc->bank_id;
 
             ep->fighter_gobj = fighter_gobj;
         }
         else
         {
-            lbParticleEjectStruct(ptc);
+            lbParticleEjectStruct(pc);
 
-            ptc = NULL;
+            pc = NULL;
         }
     }
-    return ptc;
+    return pc;
 }
 
 // 0x80104458
@@ -6193,59 +6193,59 @@ GObj* efManagerItemGetSwirlProcUpdate(Vec3f *pos)
 // 0x801044B4
 LBParticle* efManagerItemSpawnSwirlMakeEffect(Vec3f *pos)
 {
-    LBParticle *ptc = lbParticleMakeScriptID(gEFManagerParticleBankID, 0x69);
+    LBParticle *pc = lbParticleMakeScriptID(gEFManagerParticleBankID, 0x69);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        LBTransform *tfm = lbParticleAddTransformForStruct(ptc, nLBTransformStatusReady);
+        LBTransform *xf = lbParticleAddTransformForStruct(pc, nLBTransformStatusReady);
 
-        if (tfm != NULL)
+        if (xf != NULL)
         {
-            LBParticleProcessStruct(ptc);
+            LBParticleProcessStruct(pc);
 
-            if (tfm->users_num == 0)
+            if (xf->users_num == 0)
             {
                 return NULL;
             }
-            tfm->translate = *pos;
+            xf->translate = *pos;
         }
         else
         {
-            lbParticleEjectStruct(ptc);
+            lbParticleEjectStruct(pc);
 
-            ptc = NULL;
+            pc = NULL;
         }
     }
-    return ptc;
+    return pc;
 }
 
 // 0x80104554
 LBParticle* efManagerConfettiMakeEffect(Vec3f *pos, s32 arg1)
 {
-    LBParticle *ptc = (arg1 != 0) ? 
+    LBParticle *pc = (arg1 != 0) ? 
     lbParticleMakeScriptID(gEFManagerParticleBankID, 0x70) :
     lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(3), 0x70);
 
-    if (ptc != NULL)
+    if (pc != NULL)
     {
-        LBTransform *tfm = lbParticleAddTransformForStruct(ptc, nLBTransformStatusReady);
+        LBTransform *xf = lbParticleAddTransformForStruct(pc, nLBTransformStatusReady);
 
-        if (tfm != NULL)
+        if (xf != NULL)
         {
-            LBParticleProcessStruct(ptc);
+            LBParticleProcessStruct(pc);
 
-            if (tfm->users_num == 0)
+            if (xf->users_num == 0)
             {
                 return NULL;
             }
-            tfm->translate = *pos;
+            xf->translate = *pos;
         }
         else
         {
-            lbParticleEjectStruct(ptc);
+            lbParticleEjectStruct(pc);
 
-            ptc = NULL;
+            pc = NULL;
         }
     }
-    return ptc;
+    return pc;
 }

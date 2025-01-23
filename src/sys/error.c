@@ -315,7 +315,7 @@ void syErrorFillRectangle(Gfx *dl, u32 ulx, u32 uly, u32 lrx, u32 lry)
 }
 
 // 0x80021B30
-void syErrorControllerFuncDisplay(GObj *gobj)
+void syErrorControllerProcDisplay(GObj *gobj)
 {
     SYController *controller = &gSYControllerMain;
     s32 offset_x = 60;
@@ -424,10 +424,10 @@ GObj* syErrorMakeControllerCamera(s32 link, u32 link_priority, u32 dl_link_prior
     else return gcMakeCameraGObj
     (
         ~0x1, 
-        gcDefaultFuncRun,
+        gcDefaultProcRun,
         link,
         link_priority,
-        syErrorControllerFuncDisplay,
+        syErrorControllerProcDisplay,
         dl_link_priority,
         0,
         0,

@@ -1,5 +1,5 @@
 func_ovl2_800EDBA4 = 0x800EDBA4; // segment:ovl2
-ftDisplayMainFuncDisplay = 0x800F293C; // segment:ovl2
+ftDisplayMainProcDisplay = 0x800F293C; // segment:ovl2
 
 dFTManagerDataFiles = 0x80116E10; // segment:ovl2 size:0x2C
 D_ovl2_80116E3C = 0x80116E3C; // segment:ovl2 size:0xC

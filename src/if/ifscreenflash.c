@@ -26,7 +26,7 @@ void ifScreenFlashSetColAnimID(s32 colanim_id, s32 colanim_duration)
 }
 
 // 0x80115C20
-void ifScreenFlashFuncDisplay(GObj *gobj)
+void ifScreenFlashProcDisplay(GObj *gobj)
 {
     GMColAnim *ca = &sIFScreenFlashColAnim;
     s32 alpha;
@@ -68,7 +68,7 @@ void ifScreenFlashMakeInterface(u8 alpha)
     {
         GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_PRIORITY_DEFAULT);
 
-        gcAddGObjDisplay(interface_gobj, ifScreenFlashFuncDisplay, 22, GOBJ_PRIORITY_DEFAULT, ~0);
+        gcAddGObjDisplay(interface_gobj, ifScreenFlashProcDisplay, 22, GOBJ_PRIORITY_DEFAULT, ~0);
         gcAddGObjProcess(interface_gobj, ifScreenFlashProcUpdate, nGCProcessKindFunc, 1);
     }
 }

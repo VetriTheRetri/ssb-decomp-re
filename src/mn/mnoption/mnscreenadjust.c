@@ -121,7 +121,7 @@ void mnScreenAdjustFuncLights(Gfx **dls)
 }
 
 // 0x80131B24
-void mnScreenAdjustFrameFuncDisplay(GObj *gobj)
+void mnScreenAdjustFrameProcDisplay(GObj *gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
@@ -144,7 +144,7 @@ void mnScreenAdjustMakeFrame(void)
 {
     GObj *gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_PRIORITY_DEFAULT);
     
-    gcAddGObjDisplay(gobj, mnScreenAdjustFrameFuncDisplay, 0, GOBJ_PRIORITY_DEFAULT, ~0);
+    gcAddGObjDisplay(gobj, mnScreenAdjustFrameProcDisplay, 0, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
 // 0x80131D4C
@@ -262,7 +262,7 @@ void mnScreenAdjustBackupOffsets(void)
 }
 
 // 0x8013209C
-void mnScreenAdjustFuncRun(GObj *gobj)
+void mnScreenAdjustProcRun(GObj *gobj)
 {
     s32 stick_range;
 
@@ -443,7 +443,7 @@ void mnScreenAdjustFuncStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(0, mnScreenAdjustFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeGObjSPAfter(0, mnScreenAdjustProcRun, 0, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     mnScreenAdjustInitVars();
     mnScreenAdjustMakeFrameCamera();

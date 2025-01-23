@@ -258,7 +258,7 @@ void mvEndingMakeFighter(s32 fkind)
 }
 
 // 0x80131FE8
-void mvEndingRoomFadeInFuncDisplay(GObj *gobj)
+void mvEndingRoomFadeInProcDisplay(GObj *gobj)
 {
     if (sMVEndingTotalTimeTics >= 540)
     {
@@ -295,7 +295,7 @@ void mvEndingMakeRoomFadeIn(void)
 
     sMVEndingRoomFadeInGObj = gobj = gcMakeGObjSPAfter(0, NULL, 18, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(gobj, mvEndingRoomFadeInFuncDisplay, 26, GOBJ_PRIORITY_DEFAULT, ~0);
+    gcAddGObjDisplay(gobj, mvEndingRoomFadeInProcDisplay, 26, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
 // 0x801321A4
@@ -324,7 +324,7 @@ void mvEndingMakeRoomFadeInCamera(void)
 }
 
 // 0x80132244
-void mvEndingRoomLightFuncDisplay(GObj *gobj)
+void mvEndingRoomLightProcDisplay(GObj *gobj)
 {
     if ((sMVEndingTotalTimeTics >= 340) && (sMVEndingRoomLightAlpha < 220.0F))
     {
@@ -354,7 +354,7 @@ void mvEndingMakeRoomLight(void)
 
     sMVEndingRoomLightGObj = gobj = gcMakeGObjSPAfter(0, NULL, 21, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(gobj, mvEndingRoomLightFuncDisplay, 30, GOBJ_PRIORITY_DEFAULT, ~0);
+    gcAddGObjDisplay(gobj, mvEndingRoomLightProcDisplay, 30, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
 // 0x8013249C
@@ -465,7 +465,7 @@ void mvEndingInitVars(void)
 }
 
 // 0x801327C8
-void mvEndingFuncRun(GObj *gobj)
+void mvEndingProcRun(GObj *gobj)
 {
     sMVEndingTotalTimeTics++;
 
@@ -535,7 +535,7 @@ void mvEndingFuncStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(0, mvEndingFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeGObjSPAfter(0, mvEndingProcRun, 0, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF));
     efParticleInitAll();
     mvEndingInitVars();

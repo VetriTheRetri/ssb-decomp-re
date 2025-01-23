@@ -297,7 +297,7 @@ void mvOpeningYoshiMakeMotionWindow(void)
 }
 
 // 0x8018D874
-void mvOpeningYoshiPosedWallpaperFuncDisplay(GObj *gobj)
+void mvOpeningYoshiPosedWallpaperProcDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
@@ -321,7 +321,7 @@ void mvOpeningYoshiMakePosedWallpaper(void)
 			19,
 			GOBJ_PRIORITY_DEFAULT
 		),
-		mvOpeningYoshiPosedWallpaperFuncDisplay,
+		mvOpeningYoshiPosedWallpaperProcDisplay,
 		28,
 		GOBJ_PRIORITY_DEFAULT,
 		~0
@@ -462,7 +462,7 @@ void mvOpeningYoshiMakePosedWallpaperCamera(void)
 }
 
 // 0x8018DDC0
-void mvOpeningYoshiFuncRun(GObj *gobj)
+void mvOpeningYoshiProcRun(GObj *gobj)
 {
 	sMVOpeningYoshiTotalTimeTics++;
 
@@ -509,7 +509,7 @@ void mvOpeningYoshiFuncStart(void)
 	gSCManagerBattleState->players[0].pkind = nFTPlayerKindKey;
 
 	mvOpeningYoshiSetupFiles();
-	gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningYoshiFuncRun, nGCCommonLinkIDMovie, GOBJ_PRIORITY_DEFAULT);
+	gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningYoshiProcRun, nGCCommonLinkIDMovie, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(nGCCommonLinkIDCamera, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	mvOpeningYoshiInitVars();
 	efParticleInitAll();

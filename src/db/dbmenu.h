@@ -14,7 +14,7 @@ extern void dbMenuDrawBackground(s32 arg0, u32 color);
 extern void dbMenuDrawMenuOptionLabel(void *arg0, DBMenuOption *menu_option);
 extern void dbMenuDrawMenuOptions(void *arg0, DBMenuOption *menu_option, s32 menu_options_num);
 extern void dbMenuDrawCursor(void* arg0, s32 cursor_id);
-extern void dbMenuCommonFuncDisplay(GObj *gobj);
+extern void dbMenuCommonProcDisplay(GObj *gobj);
 extern void dbMenuActorProcUpdate(GObj *gobj);
 extern void dbMenuMakeMenu(s32 x, s32 y, s32 w, DBMenuOption *menu_options, s32 menu_options_num);
 extern void dbMenuDestroyMenu(void);

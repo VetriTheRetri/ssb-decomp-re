@@ -209,4 +209,44 @@ struct dbUnknownStruct2S18
     u16 unk_0x16;
 };
 
+typedef struct dbUnknown5
+{
+    f32 unk_dbunk5_0x0;
+    f32 unk_dbunk5_0x4;
+    f32 unk_dbunk5_0x8;
+    s8 unk_dbunk5_0xC;
+    u8 filler_0x10[0x8];
+    dbFunction *db_func;
+    u8 filler_0x1C[0x2];
+    s16 unk_dbunk5_0x1E;
+    f32 unk_dbunk5_0x20;
+    s32 unk_dbunk5_0x24;
+    s32 unk_dbunk5_0x28;
+    s32 unk_dbunk5_0x2C;
+    dbUnknownLinkStruct *unk_dbunk5_0x30;
+    dbUnknownLink *unk_dbunk5_0x34;
+    dbUnknownLinkStruct *unk_dbunk5_0x38;
+    dbUnknownLinkStruct *unk_dbunk5_0x3C;
+    dbUnknownLinkStruct *unk_dbunk5_0x40;
+    u8 filler_0x44[0x4];
+    dbUnknownLinkStruct *unk_dbunk5_0x48;
+    dbUnknownLinkStruct *unk_dbunk5_0x4C;
+    u8 filler_0x50[0x8];
+    dbFunction *unk_dbunk5_0x58;
+    u8 filler_0x5C[0x40];
+    dbUnknownLinkStruct *unk_dbunk5_0x9C;
+} dbUnknown5;
+
+typedef struct dbUnknown5_2
+{
+    u8 dbUnknown5_2_filler_0x0[0x4];
+    struct dbUnknown5_2 *dbUnknown5_2_0x4;
+    u8 dbUnknown5_2_filler_0x8[0x4];
+    char dbUnknown5_2_string[0x10];
+    u8 dbUnknown5_2_filler_0x1C[0x14];
+    dbFunction *dbUnknown5_2_db_func;
+    u8 dbUnknown5_2_filler_0x34[0x18];
+    dbUnknown5 *dbUnknown5_2_0x4C;
+} dbUnknown5_2;
+
 #endif

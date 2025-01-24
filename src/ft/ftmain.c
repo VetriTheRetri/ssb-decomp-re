@@ -1799,11 +1799,11 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
     {
         func_800269C0_275C0(nSYAudioFGMAltitudeWarn);
     }
-    if (fp->publicity_knockback != 0)
+    if (fp->public_knockback != 0)
     {
         if ((fp->joints[nFTPartsJointTopN]->translate.vec.f.x > (gMPCollisionEdgeBounds.d2.left + 450.0F)) && (fp->joints[nFTPartsJointTopN]->translate.vec.f.x < (gMPCollisionEdgeBounds.d2.right - 450.0F)))
         {
-            fp->publicity_knockback = 0.0F;
+            fp->public_knockback = 0.0F;
         }
     }
     if (fp->proc_map != NULL)

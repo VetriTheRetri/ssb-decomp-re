@@ -1707,12 +1707,12 @@ void sc1PTrainingModeFuncStart(void)
 	func_ovl2_8010DB00();
 	itManagerInitItems();
 	grCommonSetupInitAll();
-	ftManagerAllocFighter(FTDATA_FLAG_MAINMOTION, 4);
+	ftManagerAllocFighter(FTDATA_FLAG_MAINMOTION, GMCOMMON_PLAYERS_MAX);
 	wpManagerAllocWeapons();
 	efManagerInitEffects();
 	ifScreenFlashMakeInterface(0xFF);
 	gmRumbleMakeActor();
-	ftPublicityMakeActor();
+	ftPublicMakeActor();
 
 	for (player = 0; player < ARRAY_COUNT(gSCManagerBattleState->players); player++)
 	{
@@ -1765,7 +1765,7 @@ void sc1PTrainingModeFuncStart(void)
 	sc1PTrainingModeMakeMenuAll();
 	sc1PTrainingModeSetPlayDefaultBGM();
 	func_800266A0_272A0();
-	func_800269C0_275C0(nSYAudioVoicePublicityExcited);
+	func_800269C0_275C0(nSYAudioVoicePublicExcited);
 
 	color = dSC1PTrainingModeFadeColor;
 

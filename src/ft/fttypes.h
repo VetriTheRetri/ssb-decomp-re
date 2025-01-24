@@ -1232,7 +1232,7 @@ struct FTStruct
     GMStatFlags damage_stat_flags;
     u16 damage_stat_count;
 
-    f32 publicity_knockback;            // Knockback value used for crowd reactions
+    f32 public_knockback;            // Knockback value used for crowd reactions
 
     GObj *search_gobj;                  // GObj this fighter found when searching for grabbable fighters?
     f32 search_gobj_dist;

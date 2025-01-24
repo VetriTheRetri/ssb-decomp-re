@@ -1,5 +1,6 @@
 #include <ft/fighter.h>
 #include <gr/ground.h>
+#include <if/interface.h>
 #include <sc/scene.h>
 #include <sys/video.h>
 
@@ -15,9 +16,6 @@ extern void *gSYSchedulerCurrentFramebuffer;
 
 extern uintptr_t D_NF_00000050;								// 0x00000050
 extern uintptr_t D_NF_00000051;								// 0x00000051
-extern uintptr_t D_NF_000000A4;								// 0x000000A4
-extern uintptr_t D_NF_000000A5;								// 0x000000A5
-extern uintptr_t D_NF_00000024;								// 0x00000024
 extern uintptr_t D_NF_00000097;								// 0x00000097
 
 // // // // // // // // // // // //
@@ -31,9 +29,9 @@ u32 dSC1PStageClearFileIDs[/* */] =
 {
 	&D_NF_00000050,
 	&D_NF_00000051,
-	&D_NF_000000A4,
-	&D_NF_000000A5,
-	&D_NF_00000024,
+	&lIFCommonPlayerDamageFileID,
+	&lIFCommonTimerDigitsFileID,
+	&lIFCommonDigitsFileID,
 	&D_NF_00000097,
 	&lGRWallpaperTrainingBlackFileID
 };

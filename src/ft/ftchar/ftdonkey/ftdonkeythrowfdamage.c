@@ -19,7 +19,7 @@ void ftDonkeyThrowFDamageProcUpdate(GObj *fighter_gobj)
     {
         if (fp->ga == nMPKineticsAir)
         {
-            fp->publicity_knockback = fp->status_vars.common.throwfdamage.publicity_knockback;
+            fp->public_knockback = fp->status_vars.common.throwfdamage.public_knockback;
 
             ftDonkeyThrowFFallSetStatus(fighter_gobj);
         }

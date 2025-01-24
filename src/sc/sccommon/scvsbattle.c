@@ -177,7 +177,7 @@ void scVSBattleStartBattle(void)
 	efManagerInitEffects();
 	ifScreenFlashMakeInterface(0xFF);
 	gmRumbleMakeActor();
-	ftPublicityMakeActor();
+	ftPublicMakeActor();
 
 	for (player = 0; player < ARRAY_COUNT(gSCManagerBattleState->players); player++)
 	{
@@ -228,7 +228,7 @@ void scVSBattleStartBattle(void)
 	ifCommonPlayerStockInitInterface();
 	ifCommonEntryAllMakeInterface();
 	mpCollisionSetPlayBGM();
-	func_800269C0_275C0(nSYAudioVoicePublicityExcited);
+	func_800269C0_275C0(nSYAudioVoicePublicExcited);
 	ifCommonTimerMakeInterface(ifCommonAnnounceTimeUpInitInterface);
 	ifCommonTimerMakeDigits();
 
@@ -449,7 +449,7 @@ void scVSBattleStartSuddenDeath(void)
 	efManagerInitEffects();
 	ifScreenFlashMakeInterface(0xFF);
 	gmRumbleMakeActor();
-	ftPublicityMakeActor();
+	ftPublicMakeActor();
 
 	for (player = 0; player < ARRAY_COUNT(gSCManagerBattleState->players); player++)
 	{
@@ -505,7 +505,7 @@ void scVSBattleStartSuddenDeath(void)
 	ifCommonPlayerStockInitInterface();
 	ifCommonSuddenDeathMakeInterface();
 	mpCollisionSetPlayBGM();
-	func_800269C0_275C0(nSYAudioVoicePublicityExcited);
+	func_800269C0_275C0(nSYAudioVoicePublicExcited);
 	ifCommonTimerMakeInterface(ifCommonAnnounceTimeUpInitInterface);
 	ifCommonTimerMakeDigits();
 

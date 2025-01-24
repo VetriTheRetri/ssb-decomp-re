@@ -198,18 +198,18 @@ u32 dDBCubeCurrentSoundID = 0;
 // 0x80132D54
 u32 dDBCubeCallFGMs[/* */] =
 {
-	nSYAudioVoicePublicityMario,
-	nSYAudioVoicePublicityFox,
-	nSYAudioVoicePublicityDonkey,
-	nSYAudioVoicePublicitySamus,
-	nSYAudioVoicePublicityLuigi,
-	nSYAudioVoicePublicityLink,
-	nSYAudioVoicePublicityYoshi,
-	nSYAudioVoicePublicityCaptain,
-	nSYAudioVoicePublicityKirby,
-	nSYAudioVoicePublicityPikachu,
-	nSYAudioVoicePublicityPurin,
-	nSYAudioVoicePublicityNess
+	nSYAudioVoicePublicMario,
+	nSYAudioVoicePublicFox,
+	nSYAudioVoicePublicDonkey,
+	nSYAudioVoicePublicSamus,
+	nSYAudioVoicePublicLuigi,
+	nSYAudioVoicePublicLink,
+	nSYAudioVoicePublicYoshi,
+	nSYAudioVoicePublicCaptain,
+	nSYAudioVoicePublicKirby,
+	nSYAudioVoicePublicPikachu,
+	nSYAudioVoicePublicPurin,
+	nSYAudioVoicePublicNess
 };
 
 // 0x80132D84

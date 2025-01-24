@@ -423,9 +423,9 @@ void mpCommonSetFighterLandingParams(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->publicity_knockback != 0.0F)
+    if (fp->public_knockback != 0.0F)
     {
-        if (fp->publicity_knockback >= 100.0F)
+        if (fp->public_knockback >= 100.0F)
         {
             if 
             (
@@ -433,10 +433,10 @@ void mpCommonSetFighterLandingParams(GObj *fighter_gobj)
                 (fp->joints[nFTPartsJointTopN]->translate.vec.f.x > (gMPCollisionEdgeBounds.d2.right - 450.0F))
             )
             {
-                ftPublicityPlayCliffReact(fighter_gobj, fp->publicity_knockback);
+                ftPublicPlayCliffReact(fighter_gobj, fp->public_knockback);
             }   
         }
-        fp->publicity_knockback = 0.0F;
+        fp->public_knockback = 0.0F;
     }
     switch (fp->fkind)
     {

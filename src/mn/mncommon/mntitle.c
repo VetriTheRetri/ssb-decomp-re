@@ -651,7 +651,7 @@ void mnTitleTransitionsProcRun(GObj *gobj)
 	case 200:
 		if (sMNTitleLayout == nMNTitleLayoutAnimate)
 		{
-			func_800269C0_275C0(nSYAudioFGMPublicityPrologue);
+			func_800269C0_275C0(nSYAudioFGMPublicPrologue);
 		}
 		break;
 

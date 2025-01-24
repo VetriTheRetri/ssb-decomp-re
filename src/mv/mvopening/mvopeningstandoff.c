@@ -412,7 +412,7 @@ void mvOpeningStandoffMakeLightningFlash(void)
         mvOpeningStandoffLightningFlashProcDisplay,
         28,
         GOBJ_PRIORITY_DEFAULT,
-        -1
+        ~0
     );
 }
 

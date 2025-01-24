@@ -433,7 +433,7 @@ typedef struct ftCommonDamageStatusVars
 {
 	s32 hitstun_tics;
 	s32 dust_effect_int;
-	f32 publicity_knockback;
+	f32 public_knockback;
 	u16 coll_mask_curr;
 	u16 coll_mask_prev;
 	u16 coll_mask_ignore;
@@ -687,7 +687,7 @@ typedef struct ftCommonThrowFDamaageStatusVars
 {
 	s32 hitstun_tics;
 	s32 dust_effect_int;
-	f32 publicity_knockback;
+	f32 public_knockback;
 	u16 coll_mask;
 	u8 filler_0xE[0x28 - 0xE];
 	s32 unk_index;

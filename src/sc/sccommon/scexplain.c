@@ -725,7 +725,7 @@ void scExplainFuncStart(void)
     efManagerInitEffects();
     ifScreenFlashMakeInterface(0xFF);
     gmRumbleMakeActor();
-    ftPublicityMakeActor();
+    ftPublicMakeActor();
 
     for (player = 0; player < ARRAY_COUNT(gSCManagerBattleState->players); player++)
     {

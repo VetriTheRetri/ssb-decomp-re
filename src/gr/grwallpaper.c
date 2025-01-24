@@ -144,7 +144,7 @@ void grWallpaperMakeCommon(void)
         lbCommonDrawSObjAttr,
         0,
         GOBJ_PRIORITY_DEFAULT,
-        -1,
+        ~0,
         gMPCollisionGroundData->wallpaper,
         nGCProcessKindFunc,
         grWallpaperCommonProcUpdate,

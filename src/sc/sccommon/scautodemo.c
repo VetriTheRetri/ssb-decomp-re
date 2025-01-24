@@ -647,7 +647,7 @@ void scAutoDemoFuncStart(void)
 	efManagerInitEffects();
 	ifScreenFlashMakeInterface(0xFF);
 	gmRumbleMakeActor();
-	ftPublicityMakeActor();
+	ftPublicMakeActor();
 
 	for (player = 0; player < ARRAY_COUNT(gSCManagerBattleState->players); player++)
 	{
@@ -700,7 +700,7 @@ void scAutoDemoFuncStart(void)
 	ifCommonPlayerStockInitInterface();
 	scAutoDemoInitSObjs();
 	mpCollisionSetPlayBGM();
-	func_800269C0_275C0(nSYAudioVoicePublicityExcited);
+	func_800269C0_275C0(nSYAudioVoicePublicExcited);
 	scAutoDemoMakeFocusInterface();
 }
 

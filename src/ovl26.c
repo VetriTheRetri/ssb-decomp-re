@@ -3974,7 +3974,7 @@ void mnVSPlayersMain(s32 arg0)
 		{
 			if (mnVSPlayersIsReadyToFight())
 			{
-				func_800269C0_275C0(nSYAudioVoicePublicityCheer);
+				func_800269C0_275C0(nSYAudioVoicePublicCheer);
 				mnSetUnselectedPanelsToNA();
 				gMnBattleStartDelayTimer = 0x1E;
 				gMnBattleIsStartTriggered = TRUE;

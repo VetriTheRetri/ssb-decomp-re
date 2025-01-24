@@ -232,7 +232,7 @@ typedef enum gmFGMVoiceID
 	nSYAudioFGMDairantouPunchS,
 	nSYAudioFGMOpeningSectorAmbient,
 	nSYAudioFGMOpeningNewcomersClash,
-	nSYAudioFGMPublicityPrologue,		// Cheer on Meta Crystal and Duel Zone before the music starts playing
+	nSYAudioFGMPublicPrologue,		// Cheer on Meta Crystal and Duel Zone before the music starts playing
 	nSYAudioFGMOpeningClash,			
 	nSYAudioFGMOpeningBatM,				// Plays on characters clashing scene in opening?
 	nSYAudioFGMAltitudeWarn,			// Bottom map_bound warning sound?
@@ -685,33 +685,33 @@ typedef enum gmFGMVoiceID
 	nSYAudioVoiceYoshiUnkGrunt2,			// "Yoshi!"
 	nSYAudioVoiceYoshiThrow,				// "Hum!"
 	nSYAudioVoiceYoshiUnkVocalize,			// "Yoshiiiiii!"
-	nSYAudioVoicePublicityDonkey,			// 0x25B
-	nSYAudioVoicePublicityCaptain,		  	// 0x25C
-	nSYAudioVoicePublicityFox,			  	// 0x25D
-	nSYAudioVoicePublicityKirby,		  	// 0x25E
-	nSYAudioVoicePublicityLink,		  		// 0x25F
-	nSYAudioVoicePublicityLuigi,			// 0x260
-	nSYAudioVoicePublicityMario,		  	// 0x261
-	nSYAudioVoicePublicityNess,				// 0x262
-	nSYAudioVoicePublicityPikachu,		  	// 0x263
-	nSYAudioVoicePublicityPurin,		 	// 0x264
-	nSYAudioVoicePublicitySamus,		 	// 0x265
-	nSYAudioVoicePublicityYoshi,		  	// 0x266
-	nSYAudioVoicePublicityGaspL,			// Loud audience gasp when fighter recovers successfully
-	nSYAudioVoicePublicityGaspM,			// Medium audience gasp when a fighter recovers successfully
-	nSYAudioVoicePublicityGaspS,			// Slight audience gasp when a fighter recovers successfully
-	nSYAudioVoicePublicityCheer,			// Audience cheer (>= 160 knockback) + pressed start on CSS
-	nSYAudioVoicePublicityAmazed,			// Amazed at player performance (< 160 knockback)
-	nSYAudioVoicePublicityGaspClap,			// Audience gasps, then claps
-	nSYAudioVoicePublicityWin,				// "Static" reaction pre-winner announcement
-	nSYAudioVoicePublicityDamageL,			// React to fighter receiving heavy knockback
-	nSYAudioVoicePublicityDamageM,			// React to fighter receiving medium knockback
-	nSYAudioVoicePublicityNoContest,		// No contest?
-	nSYAudioVoicePublicityDamageS,			// React to fighter receiving light knockback
-	nSYAudioVoicePublicityExcited,			// React to winner announcement after game set / match begin
-	nSYAudioVoicePublicityAbsorb,			// React to fighter absorbing projectiles (Ness)
-	nSYAudioVoicePublicityClapL,			// Louder audience clap
-	nSYAudioVoicePublicityClapS,			// Slight audience clap
+	nSYAudioVoicePublicDonkey,			// 0x25B
+	nSYAudioVoicePublicCaptain,		  	// 0x25C
+	nSYAudioVoicePublicFox,			  	// 0x25D
+	nSYAudioVoicePublicKirby,		  	// 0x25E
+	nSYAudioVoicePublicLink,		  		// 0x25F
+	nSYAudioVoicePublicLuigi,			// 0x260
+	nSYAudioVoicePublicMario,		  	// 0x261
+	nSYAudioVoicePublicNess,				// 0x262
+	nSYAudioVoicePublicPikachu,		  	// 0x263
+	nSYAudioVoicePublicPurin,		 	// 0x264
+	nSYAudioVoicePublicSamus,		 	// 0x265
+	nSYAudioVoicePublicYoshi,		  	// 0x266
+	nSYAudioVoicePublicGaspL,			// Loud audience gasp when fighter recovers successfully
+	nSYAudioVoicePublicGaspM,			// Medium audience gasp when a fighter recovers successfully
+	nSYAudioVoicePublicGaspS,			// Slight audience gasp when a fighter recovers successfully
+	nSYAudioVoicePublicCheer,			// Audience cheer (>= 160 knockback) + pressed start on CSS
+	nSYAudioVoicePublicAmazed,			// Amazed at player performance (< 160 knockback)
+	nSYAudioVoicePublicGaspClap,			// Audience gasps, then claps
+	nSYAudioVoicePublicWin,				// "Static" reaction pre-winner announcement
+	nSYAudioVoicePublicDamageL,			// React to fighter receiving heavy knockback
+	nSYAudioVoicePublicDamageM,			// React to fighter receiving medium knockback
+	nSYAudioVoicePublicNoContest,		// No contest?
+	nSYAudioVoicePublicDamageS,			// React to fighter receiving light knockback
+	nSYAudioVoicePublicExcited,			// React to winner announcement after game set / match begin
+	nSYAudioVoicePublicAbsorb,			// React to fighter absorbing projectiles (Ness)
+	nSYAudioVoicePublicClapL,			// Louder audience clap
+	nSYAudioVoicePublicClapS,			// Slight audience clap
 	nSYAudioFGMCharacterUnkZip1,			// ??? goes repeats for 10 more instances, character-based?
 	nSYAudioFGMCharacterUnkZip2,
 	nSYAudioFGMCharacterUnkZip3,
@@ -732,7 +732,7 @@ typedef enum gmFGMVoiceID
 	nSYAudioVoiceUnkSlashS2,				// Similar to the above
 	nSYAudioVoiceUnkShockL,					// ???
 	nSYAudioVoiceUnkShockM,					// ???
-	nSYAudioVoicePublicityUnkGasp,			// ???
+	nSYAudioVoicePublicUnkGasp,			// ???
 	// Dood I'm not gonna bother with these unless they're really used somehow
 	nSYAudioFGMVoiceEnd = 0x2B7,
 	nSYAudioFGMVoiceEnumCount = nSYAudioFGMVoiceEnd

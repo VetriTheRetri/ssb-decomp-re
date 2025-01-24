@@ -1,4 +1,4 @@
-#include <sys/obj.h>
+#include <if/interface.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -9,8 +9,14 @@
 // 0x80116BD0 - These will be linker variables in the future
 u32 dGMCommonFileIDs[/* */] = 
 { 
-    0x000000A6, 0x00000052, 0x000000A4, 0x000000A5,
-    0x00000024, 0x000000C5, 0x00000026, 0x00000025
+    0x000000A6,
+    &lIFCommonGameStatusFileID,
+    &lIFCommonPlayerDamageFileID,
+    &lIFCommonTimerDigitsFileID,
+    &lIFCommonDigitsFileID,
+    0x000000C5,
+    &lIFCommonPlayerTagsFileID,
+    &lIFCommonAnnounceCommonFileID
 };
 
 // // // // // // // // // // // //
@@ -20,4 +26,4 @@ u32 dGMCommonFileIDs[/* */] =
 // // // // // // // // // // // //
 
 // 0x80130D40
-void *gGMCommonFiles[8];
+void *gGMCommonFiles[ARRAY_COUNT(dGMCommonFileIDs)];

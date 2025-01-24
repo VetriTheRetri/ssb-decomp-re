@@ -82,7 +82,7 @@ void ftCommonDamageUpdateDustEffect(GObj *fighter_gobj)
 }
 
 // 0x801404B8
-void ftCommonDamageDecHitStunSetPublicity(GObj *fighter_gobj)
+void ftCommonDamageDecHitStunSetPublic(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -92,7 +92,7 @@ void ftCommonDamageDecHitStunSetPublicity(GObj *fighter_gobj)
 
         if (fp->status_vars.common.damage.hitstun_tics == 0)
         {
-            fp->publicity_knockback = fp->status_vars.common.damage.publicity_knockback;
+            fp->public_knockback = fp->status_vars.common.damage.public_knockback;
         }
     }
 }
@@ -102,7 +102,7 @@ void ftCommonDamageCommonProcUpdate(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftCommonDamageDecHitStunSetPublicity(fighter_gobj);
+    ftCommonDamageDecHitStunSetPublic(fighter_gobj);
 
     if ((fighter_gobj->anim_frame <= 0.0F) && (fp->status_vars.common.damage.hitstun_tics == 0))
     {
@@ -116,7 +116,7 @@ void ftCommonDamageAirCommonProcUpdate(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftCommonDamageUpdateDustEffect(fighter_gobj);
-    ftCommonDamageDecHitStunSetPublicity(fighter_gobj);
+    ftCommonDamageDecHitStunSetPublic(fighter_gobj);
 
     if ((fighter_gobj->anim_frame <= 0.0F) && (fp->status_vars.common.damage.hitstun_tics == 0))
     {
@@ -333,26 +333,26 @@ s32 ftCommonDamageGetDamageLevel(f32 hitstun)
 }
 
 // 0x80140B00
-void ftCommonDamageSetPublicity(FTStruct *this_fp, f32 knockback, f32 angle)
+void ftCommonDamageSetPublic(FTStruct *this_fp, f32 knockback, f32 angle)
 {
     GObj *attacker_gobj = ftParamGetPlayerNumGObj(this_fp->damage_player_number);
     sb32 is_force_curr_knockback;
 
-    this_fp->status_vars.common.damage.publicity_knockback = knockback;
-    this_fp->publicity_knockback = 0.0F;
+    this_fp->status_vars.common.damage.public_knockback = knockback;
+    this_fp->public_knockback = 0.0F;
 
     // By default, if knockback angle is between 75 and 115 degrees, the crowd is 20% less likely to gasp
     if ((angle > FTCOMMON_DAMAGE_PUBLIC_REACT_GASP_ANGLE_LOW) && (angle < FTCOMMON_DAMAGE_PUBLIC_REACT_GASP_ANGLE_HIGH))
     {
-        this_fp->status_vars.common.damage.publicity_knockback *= FTCOMMON_DAMAGE_PUBLIC_REACT_GASP_KNOCKBACK_MUL;
+        this_fp->status_vars.common.damage.public_knockback *= FTCOMMON_DAMAGE_PUBLIC_REACT_GASP_KNOCKBACK_MUL;
     }
-    if ((attacker_gobj != NULL) && (ftGetStruct(attacker_gobj)->publicity_knockback >= FTCOMMON_DAMAGE_KNOCKBACK_VERYHIGH))
+    if ((attacker_gobj != NULL) && (ftGetStruct(attacker_gobj)->public_knockback >= FTCOMMON_DAMAGE_KNOCKBACK_VERYHIGH))
     {
         is_force_curr_knockback = TRUE;
     }
     else is_force_curr_knockback = FALSE;
 
-    ftPublicityCommonCheck(this_fp->fighter_gobj, this_fp->status_vars.common.damage.publicity_knockback, is_force_curr_knockback);
+    ftPublicCommonCheck(this_fp->fighter_gobj, this_fp->status_vars.common.damage.public_knockback, is_force_curr_knockback);
 }
 
 // 0x80140BCC
@@ -587,7 +587,7 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
     }
     this_fp->damage_player_number = damage_player_number;
 
-    ftCommonDamageSetPublicity(this_fp, knockback, angle_end);
+    ftCommonDamageSetPublic(this_fp, knockback, angle_end);
 
     if (damage != 0)
     {

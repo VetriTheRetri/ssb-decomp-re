@@ -102,7 +102,7 @@ u32 dMNSoundTestSoundIDs[/* */] =
 {
     nSYAudioFGMOpeningSectorAmbient,
     nSYAudioFGMOpeningNewcomersClash,
-    nSYAudioFGMPublicityPrologue,
+    nSYAudioFGMPublicPrologue,
     nSYAudioFGMOpeningBatM,
     nSYAudioFGMAltitudeWarn,
     nSYAudioFGMMapBoundHitL,
@@ -570,29 +570,29 @@ u32 dMNSoundTestVoiceIDs[/* */] =
 
     // AUDIENCE CHANTS
 
-    nSYAudioVoicePublicityDonkey,
-	nSYAudioVoicePublicityCaptain,
-	nSYAudioVoicePublicityFox,
-	nSYAudioVoicePublicityKirby,
-	nSYAudioVoicePublicityLink,
-	nSYAudioVoicePublicityLuigi,
-	nSYAudioVoicePublicityMario,
-	nSYAudioVoicePublicityNess,
-	nSYAudioVoicePublicityPikachu,
-	nSYAudioVoicePublicityPurin,
-	nSYAudioVoicePublicitySamus,
-	nSYAudioVoicePublicityYoshi,
+    nSYAudioVoicePublicDonkey,
+	nSYAudioVoicePublicCaptain,
+	nSYAudioVoicePublicFox,
+	nSYAudioVoicePublicKirby,
+	nSYAudioVoicePublicLink,
+	nSYAudioVoicePublicLuigi,
+	nSYAudioVoicePublicMario,
+	nSYAudioVoicePublicNess,
+	nSYAudioVoicePublicPikachu,
+	nSYAudioVoicePublicPurin,
+	nSYAudioVoicePublicSamus,
+	nSYAudioVoicePublicYoshi,
 
     // AUDIENCE REACTIONS
 
-    nSYAudioVoicePublicityGaspL,
-    nSYAudioVoicePublicityGaspS,
-    nSYAudioVoicePublicityCheer,
-    nSYAudioVoicePublicityGaspClap,
-    nSYAudioVoicePublicityDamageL,
-    nSYAudioVoicePublicityDamageS,
-    nSYAudioVoicePublicityAbsorb,
-    nSYAudioVoicePublicityClapS
+    nSYAudioVoicePublicGaspL,
+    nSYAudioVoicePublicGaspS,
+    nSYAudioVoicePublicCheer,
+    nSYAudioVoicePublicGaspClap,
+    nSYAudioVoicePublicDamageL,
+    nSYAudioVoicePublicDamageS,
+    nSYAudioVoicePublicAbsorb,
+    nSYAudioVoicePublicClapS
 };
 
 // 0x8013416C
@@ -1157,7 +1157,7 @@ SObj* mnSoundTestMakeMusicSObjs(void)
         mnSoundTestMusicProcDisplay,
         2,
         GOBJ_PRIORITY_DEFAULT,
-        -1
+        ~0
     );
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[4], &lMNSoundTestMusicTextSprite));
     sobj->sprite.attr = SP_TRANSPARENT;
@@ -1224,7 +1224,7 @@ SObj* mnSoundTestMakeSoundSObjs(void)
         mnSoundTestSoundProcDisplay,
         2,
         GOBJ_PRIORITY_DEFAULT,
-        -1
+        ~0
     );
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[4], &lMNSoundTestSoundTextSprite));
     sobj->sprite.attr = SP_TRANSPARENT;
@@ -1291,7 +1291,7 @@ SObj* mnSoundTestMakeVoiceSObjs(void)
         mnSoundTestVoiceProcDisplay,
         2,
         GOBJ_PRIORITY_DEFAULT,
-        -1
+        ~0
     );
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[4], &lMNSoundTestVoiceTextSprite));
     sobj->sprite.attr = SP_TRANSPARENT;

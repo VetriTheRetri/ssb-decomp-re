@@ -6,6 +6,7 @@
 #include "ftcommondata.h"
 
 extern u32 lFTEmblemSpritesFileID;							// 0x00000014
+extern u32 lFTStocksZakoFileID;								// 0x00000019
 extern u32 lFTEmblemModelsFileID;							// 0x00000023
 
 extern intptr_t lFTEmblemSpritesMarioSprite;				// 0x00000618

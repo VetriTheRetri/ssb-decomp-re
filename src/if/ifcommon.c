@@ -235,7 +235,7 @@ intptr_t dIFCommonPlayerStockDigitSpriteOffsets[/* */] =
 };
 
 // 0x8012EEF8
-Gfx dIFCommonPlayerArrowsGfx[/* */] =
+Gfx dIFCommonPlayerArrowsDisplayList[/* */] =
 {
     gsSPClearGeometryMode(G_ZBUFFER),
     gsDPPipeSync(),
@@ -1625,7 +1625,7 @@ void ifCommonPlayerMagnifyMakeInterface(void)
         FTStruct *fp = ftGetStruct(fighter_gobj);
         GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDMagnify, GOBJ_PRIORITY_DEFAULT);
 
-        gcAddXObjForDObjFixed(gcAddDObjForGObj(interface_gobj, (Gfx*) ((uintptr_t)gGMCommonFiles[0] + (intptr_t)&lIFCommonPlayerMagnifyDisplayList)), nGCMatrixKindTraRotRpyRSca, 0);
+        gcAddXObjForDObjFixed(gcAddDObjForGObj(interface_gobj, lbRelocGetFileData(void*, gGMCommonFiles[0], &lIFCommonPlayerMagnifyDisplayList)), nGCMatrixKindTraRotRpyRSca, 0);
 
         sIFCommonPlayerMagnifyInterface[fp->player].interface_gobj = interface_gobj;
         sIFCommonPlayerMagnifyInterface[fp->player].color_id = gSCManagerBattleState->players[fp->player].color;
@@ -1656,7 +1656,7 @@ void ifCommonPlayerArrowsRightProcDisplay(GObj *interface_gobj)
 // 0x801115BC
 void ifCommonPlayerArrowsAddAnim(GObj *interface_gobj)
 {
-    gcAddAnimJointAll(interface_gobj, (AObjEvent32**) ((uintptr_t)gGMCommonFiles[0] + (intptr_t)&lIFCommonPlayerArrowsAnimJoint), 0.0F);
+    gcAddAnimJointAll(interface_gobj, lbRelocGetFileData(AObjEvent32**, gGMCommonFiles[0], &lIFCommonPlayerArrowsAnimJoint), 0.0F);
     gcPlayAnimAll(interface_gobj);
 }
 
@@ -1702,11 +1702,11 @@ GObj* ifCommonPlayerArrowsMakeInterface(void (*proc_display)(GObj*), void (*proc
     gcAddGObjDisplay(interface_gobj, proc_display, 8, GOBJ_PRIORITY_DEFAULT, ~0);
     gcSetupCustomDObjs
     (
-        interface_gobj, 
-        (DObjDesc*) ((uintptr_t)gGMCommonFiles[0] + (intptr_t)&lIFCommonPlayerArrowsDObjDesc), 
-        NULL, 
-        nGCMatrixKindTraRotRpyR, 
-        nGCMatrixKindNull, 
+        interface_gobj,
+        lbRelocGetFileData(DObjDesc*, gGMCommonFiles[0], &lIFCommonPlayerArrowsDObjDesc),
+        NULL,
+        nGCMatrixKindTraRotRpyR,
+        nGCMatrixKindNull,
         nGCMatrixKindNull
     );
     gcAddGObjProcess(interface_gobj, proc_update, nGCProcessKindFunc, 5);
@@ -1717,8 +1717,8 @@ GObj* ifCommonPlayerArrowsMakeInterface(void (*proc_display)(GObj*), void (*proc
 // 0x8011171C
 void ifCommonPlayerArrowsProcRun(GObj *interface_gobj)
 {
-    s32 lr_right = FALSE;
-    s32 lr_left = FALSE;
+    sb32 lr_right = FALSE;
+    sb32 lr_left = FALSE;
 
     if (gIFCommonPlayerInterface.is_magnify_display != FALSE)
     {
@@ -1777,7 +1777,7 @@ void ifCommonPlayerArrowsProcRun(GObj *interface_gobj)
 // 0x801118B4
 void ifCommonPlayerArrowsMainProcDisplay(GObj *interface_gobj)
 {
-    gSPDisplayList(gSYTaskmanDLHeads[0]++, &dIFCommonPlayerArrowsGfx);
+    gSPDisplayList(gSYTaskmanDLHeads[0]++, &dIFCommonPlayerArrowsDisplayList);
 }
 
 // 0x801118E4
@@ -1787,11 +1787,11 @@ void ifCommonPlayerArrowsInitInterface(void)
 
     gcAddGObjDisplay
     (
-        gcMakeGObjSPAfter(nGCCommonKindInterface, ifCommonPlayerArrowsProcRun, nGCCommonLinkIDInterface, GOBJ_PRIORITY_DEFAULT), 
+        gcMakeGObjSPAfter(nGCCommonKindInterface, ifCommonPlayerArrowsProcRun, nGCCommonLinkIDInterface, GOBJ_PRIORITY_DEFAULT),
         ifCommonPlayerArrowsMainProcDisplay,
-        8, 
-        GOBJ_PRIORITY_DEFAULT, 
-        -1
+        8,
+        GOBJ_PRIORITY_DEFAULT,
+        ~0
     );
     dobj = DObjGetStruct(ifCommonPlayerArrowsMakeInterface(ifCommonPlayerArrowsLeftProcDisplay, ifCommonPlayerArrowsLeftProcUpdate));
 
@@ -2754,11 +2754,11 @@ void ifCommonBattleUpdateScoreStocks(FTStruct *fp)
     {
         if (fp->pkind == nFTPlayerKindMan)
         {
-            ftPublicityDefeatedAddID(dIFCommonAnnounceDefeatedVoiceIDs[fp->player]);
+            ftPublicDefeatedAddID(dIFCommonAnnounceDefeatedVoiceIDs[fp->player]);
         }
-        else ftPublicityDefeatedAddID(nSYAudioVoiceAnnounceComputerPlayer);
+        else ftPublicDefeatedAddID(nSYAudioVoiceAnnounceComputerPlayer);
 
-        ftPublicityDefeatedAddID(nSYAudioVoiceAnnounceDefeated);
+        ftPublicDefeatedAddID(nSYAudioVoiceAnnounceDefeated);
     }
 }
 

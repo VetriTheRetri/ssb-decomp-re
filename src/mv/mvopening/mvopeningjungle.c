@@ -303,7 +303,7 @@ void mvOpeningJungleMakeFighters(void)
     mvOpeningJungleMakeGroundViewport(spawn_position[1]);
 
     gmRumbleMakeActor();
-    ftPublicityMakeActor();
+    ftPublicMakeActor();
 
     for (i = 0; i < ARRAY_COUNT(gSCManagerBattleState->players); i++)
     {

@@ -602,7 +602,7 @@ void mnOptionMakeSoundUnderline(void)
         mnOptionSoundUnderlineProcDisplay,
         3,
         GOBJ_PRIORITY_DEFAULT,
-        -1
+        ~0
     );
 }
 

@@ -20,7 +20,7 @@ typedef enum GObjKind
     nGCCommonKindMovie = 1015,              // 1015 - Opening movie?
     nGCCommonKindInterface = 1016,          // 1016
     nGCCommonKindRumble,                    // 1017
-    nGCCommonKindPublicity,                 // 1018 - Audience reaction
+    nGCCommonKindPublic,                 // 1018 - Audience reaction
     nGCCommonKindPauseMenu,                 // 1019
     nGCCommonKindShadow,                    // 1020
     nGCCommonKindTransition,                // 1021 - Screen fadeout actor?

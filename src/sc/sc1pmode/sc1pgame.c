@@ -1697,7 +1697,6 @@ void sc1PGameInitTeamStockDisplay(void)
         sSC1PGameEnemyTeamSprites = fp->attr->sprites;
 
         sprite = sSC1PGameEnemyTeamSprites->stock_sprite;
-
         sprite->attr = SP_TEXSHUF | SP_TRANSPARENT;
 
         goto make_gobj;
@@ -1705,10 +1704,10 @@ void sc1PGameInitTeamStockDisplay(void)
     case nSC1PGameStageZako:
         sSC1PGameZakoStockSprite = lbRelocGetExternHeapFile
         (
-            (uintptr_t)&D_NF_00000019, 
+            (u32)&lFTStocksZakoFileID,
             syTaskmanMalloc
             (
-                lbRelocGetFileSize((uintptr_t)&D_NF_00000019), 
+                lbRelocGetFileSize((u32)&lFTStocksZakoFileID),
                 0x10
             )
         );
@@ -2026,7 +2025,7 @@ void sc1PGameFuncStart(void)
     efManagerInitEffects();
     ifScreenFlashMakeInterface(dSC1PGameStageDesc[gSCManagerSceneData.spgame_stage].screenflash_alpha);
     gmRumbleMakeActor();
-    ftPublicityMakeActor();
+    ftPublicMakeActor();
 
     switch (gSCManagerSceneData.spgame_stage)
     {
@@ -2146,12 +2145,12 @@ void sc1PGameFuncStart(void)
     if ((gSCManagerSceneData.spgame_stage == nSC1PGameStageMMario) || (gSCManagerSceneData.spgame_stage == nSC1PGameStageZako))
     {
         mpCollisionSetBGM();
-        func_800269C0_275C0(nSYAudioFGMPublicityPrologue);
+        func_800269C0_275C0(nSYAudioFGMPublicPrologue);
     }
     else
     {
         mpCollisionSetPlayBGM();
-        func_800269C0_275C0(nSYAudioVoicePublicityExcited);
+        func_800269C0_275C0(nSYAudioVoicePublicExcited);
     }
     sc1PGameInitTimeUpMessage();
     ifCommonTimerMakeDigits();

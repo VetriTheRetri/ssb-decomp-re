@@ -184,7 +184,7 @@ void mvUnknownMarioFuncStart(void)
 	itManagerInitItems();
 	efManagerInitEffects();
 	gmRumbleMakeActor();
-	ftPublicityMakeActor();
+	ftPublicMakeActor();
 
 	for (player = 0; player < ARRAY_COUNT(gSCManagerBattleState->players); player++)
 	{

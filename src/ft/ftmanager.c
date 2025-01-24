@@ -556,7 +556,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTDesc *desc)
 
     fp->player_number = gFTManagerPlayersNum++;
 
-    fp->publicity_knockback = 0.0F;
+    fp->public_knockback = 0.0F;
 
     fp->is_hitstun = FALSE;
     fp->is_use_animlocks = FALSE;

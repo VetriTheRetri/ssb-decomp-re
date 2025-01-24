@@ -178,7 +178,7 @@ void ftCommonOttottoWaitSetStatus(GObj* fighter_gobj);
 // Damage
 void ftCommonDamageSetDustGFXInterval(FTStruct* fp);
 void ftCommonDamageUpdateDustEffect(GObj* fighter_gobj);
-void ftCommonDamageDecHitStunSetPublicity(GObj* fighter_gobj);
+void ftCommonDamageDecHitStunSetPublic(GObj* fighter_gobj);
 void ftCommonDamageCommonProcUpdate(GObj* fighter_gobj);
 void ftCommonDamageAirCommonProcUpdate(GObj* fighter_gobj);
 void ftCommonDamageCheckSetInvincible(GObj* fighter_gobj);
@@ -192,7 +192,7 @@ void func_ovl3_80140934();
 void ftCommonDamageAirCommonProcMap(GObj* fighter_gobj);
 f32 ftCommonDamageGetKnockbackAngle(s32 angle_i, s32 ga, f32 knockback);
 s32 ftCommonDamageGetDamageLevel(f32 hitstun);
-void ftCommonDamageSetPublicity(FTStruct* this_fp, f32 knockback, f32 angle);
+void ftCommonDamageSetPublic(FTStruct* this_fp, f32 knockback, f32 angle);
 sb32 ftCommonDamageCheckElementSetColAnim(GObj* fighter_gobj, s32 element, s32 damage_level);
 void ftCommonDamageCheckMakeScreenFlash(f32 knockback, s32 element);
 sb32 ftCommonDamageCheckCatchResist(FTStruct* fp);
@@ -200,7 +200,7 @@ void ftCommonDamageUpdateCatchResist(GObj* fighter_gobj);
 sb32 ftCommonDamageCheckCaptureKeepHold(FTStruct* fp);
 void ftCommonDamageInitDamageVars(GObj* this_gobj, s32 status_id_replace, s32 damage, f32 knockback, s32 angle_start,
 									s32 damage_lr, s32 damage_index, s32 element, s32 damage_player_number, s32 arg9,
-									sb32 unk_bool, sb32 is_publicity);
+									sb32 unk_bool, sb32 is_public);
 void ftCommonDamageGotoDamageStatus(GObj* fighter_gobj);
 void ftCommonDamageUpdateDamageColAnim(GObj* fighter_gobj, f32 knockback, s32 element);
 void ftCommonDamageSetDamageColAnim(GObj* fighter_gobj);

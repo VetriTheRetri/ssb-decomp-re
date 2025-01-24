@@ -229,7 +229,16 @@ lSC1PTrainingModeMenuOptionSprites = 0x0000013C;
 lSC1PBonusStagePlatformSprite = 0x000000C0;
 lSC1PBonusStageTargetSprite = 0x000001D0;
 
+lMNPlayersGameModesFileID = 0x00000012;
+lFTStocksZakoFileID = 0x00000019;
+lMNVSResultsFileID = 0x00000022;
+lIFCommonDigitsFileID = 0x00000024;
 lIFCommonAnnounceCommonFileID = 0x00000025;
+lIFCommonPlayerTagsFileID = 0x00000026;
+lIFCommonGameStatusFileID = 0x00000052;
+lIFCommonPlayerDamageFileID = 0x000000A4;
+lIFCommonTimerDigitsFileID = 0x000000A5;
+lIFCommonPlayerMagnifyFileID = 0x000000A6;
 lMVOpeningCommonFileID = 0x00000041;
 lMNNoControllerFileID = 0x000000A9;
 

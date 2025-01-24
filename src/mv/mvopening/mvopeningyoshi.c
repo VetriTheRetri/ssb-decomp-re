@@ -260,7 +260,7 @@ void mvOpeningYoshiMakeMotionWindow(void)
 
 	mvOpeningYoshiMakeMotionCamera(pos);
 	gmRumbleMakeActor();
-	ftPublicityMakeActor();
+	ftPublicMakeActor();
 
 	for (i = 0; i < ARRAY_COUNT(gSCManagerBattleState->players); i++)
 	{

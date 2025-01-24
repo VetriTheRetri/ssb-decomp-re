@@ -290,7 +290,7 @@ void mvOpeningNewcomersMakeHide(void)
         mvOpeningNewcomersHideProcDisplay,
         26,
         GOBJ_PRIORITY_DEFAULT,
-        -1
+        ~0
     );
 }
 

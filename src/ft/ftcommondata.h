@@ -15,7 +15,7 @@ extern f32 dFTCommonDataHandicapTable[/* */][2];
 extern u16 dFTCommonDataDownBounceSFX[/* */];
 
 // 0x8012C9A8
-extern u16 dFTCommonDataPublicityFighterCallFGMs[/* */];
+extern u16 dFTCommonDataPublicFighterCallFGMs[/* */];
 
 // 0x8012C9E0
 extern FTItemThrow dFTCommonDataItemThrowDescs[/* */];

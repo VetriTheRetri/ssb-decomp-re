@@ -14,6 +14,6 @@
 
 #include "ftshadow.h"
 #include "ftcomputer.h"
-#include "ftpublicity.h"
+#include "ftpublic.h"
 
 #endif

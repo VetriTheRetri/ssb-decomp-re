@@ -1021,7 +1021,7 @@ void sc1PBonusStageFuncStart(void)
 	efManagerInitEffects();
 	ifScreenFlashMakeInterface(0xFF);
 	gmRumbleMakeActor();
-	ftPublicityMakeActor();
+	ftPublicMakeActor();
 
 	for (player = 0, desc = dFTManagerDefaultFighterDesc; player < ARRAY_COUNT(gSCManagerBattleState->players); player++)
 	{
@@ -1065,7 +1065,7 @@ void sc1PBonusStageFuncStart(void)
 	sc1PBonusStageMakeTaskSprites();
 	sc1PBonusStageMakeInterface();
 	mpCollisionSetPlayBGM();
-	func_800269C0_275C0(nSYAudioVoicePublicityExcited);
+	func_800269C0_275C0(nSYAudioVoicePublicExcited);
 	sc1PBonusStageMakeTimer();
 	sc1PBonusStageInitCamera();
 

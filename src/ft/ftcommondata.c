@@ -78,22 +78,22 @@ u16 dFTCommonDataDownBounceSFX[/* */] =
 };
 
 // 0x8012C9A8
-u16 dFTCommonDataPublicityFighterCallFGMs[/* */] =
+u16 dFTCommonDataPublicFighterCallFGMs[/* */] =
 {
-    nSYAudioVoicePublicityMario,
-    nSYAudioVoicePublicityFox,
-    nSYAudioVoicePublicityDonkey,
-    nSYAudioVoicePublicitySamus,
-    nSYAudioVoicePublicityLuigi,
-    nSYAudioVoicePublicityLink,
-    nSYAudioVoicePublicityYoshi,
-    nSYAudioVoicePublicityCaptain,
-    nSYAudioVoicePublicityKirby,
-    nSYAudioVoicePublicityPikachu,
-    nSYAudioVoicePublicityPurin,
-    nSYAudioVoicePublicityNess,
+    nSYAudioVoicePublicMario,
+    nSYAudioVoicePublicFox,
+    nSYAudioVoicePublicDonkey,
+    nSYAudioVoicePublicSamus,
+    nSYAudioVoicePublicLuigi,
+    nSYAudioVoicePublicLink,
+    nSYAudioVoicePublicYoshi,
+    nSYAudioVoicePublicCaptain,
+    nSYAudioVoicePublicKirby,
+    nSYAudioVoicePublicPikachu,
+    nSYAudioVoicePublicPurin,
+    nSYAudioVoicePublicNess,
     nSYAudioFGMVoiceEnd,
-    nSYAudioVoicePublicityMario,
+    nSYAudioVoicePublicMario,
     nSYAudioFGMVoiceEnd,
     nSYAudioFGMVoiceEnd,
     nSYAudioFGMVoiceEnd,

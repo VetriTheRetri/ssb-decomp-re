@@ -8,7 +8,13 @@
 #include <ft/ftdef.h>
 #include <it/itdef.h>
 
-extern u32 lIFCommonAnnounceCommonFileID;             // 0x00000025               
+extern u32 lIFCommonDigitsFileID;                           // 0x00000024
+extern u32 lIFCommonAnnounceCommonFileID;                   // 0x00000025
+extern u32 lIFCommonPlayerTagsFileID;                       // 0x00000026
+extern u32 lIFCommonGameStatusFileID;                       // 0x00000052
+extern u32 lIFCommonPlayerDamageFileID;                     // 0x000000A4
+extern u32 lIFCommonTimerDigitsFileID;                      // 0x000000A5
+extern u32 lIFCommonPlayerMagnifyFileID;                    // 0x000000A6
 
 extern intptr_t lIFCommonPlayerArrowsDObjDesc;              // 0x00000188
 extern intptr_t lIFCommonPlayerArrowsAnimJoint;             // 0x00000270

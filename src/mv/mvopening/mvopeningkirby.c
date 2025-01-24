@@ -266,7 +266,7 @@ void mvOpeningKirbyMakeMotionWindow(void)
 	
 	mvOpeningKirbyMakeMotionCamera(pos);
 	gmRumbleMakeActor();
-	ftPublicityMakeActor();
+	ftPublicMakeActor();
 
 	for (i = 0; i < ARRAY_COUNT(gSCManagerBattleState->players); i++)
 	{

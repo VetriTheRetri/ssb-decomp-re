@@ -255,7 +255,7 @@ void mvOpeningPikachuMakeMotionWindow(void)
 	mpCollisionGetMapObjPositionID(pos_ids[0], &pos);
 	mvOpeningPikachuMakeMotionCamera(pos);
 	gmRumbleMakeActor();
-	ftPublicityMakeActor();
+	ftPublicMakeActor();
 
 	for (i = 0; i < ARRAY_COUNT(gSCManagerBattleState->players); i++)
 	{

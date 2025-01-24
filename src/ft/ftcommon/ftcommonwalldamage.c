@@ -14,7 +14,7 @@ void ftCommonWallDamageProcUpdate(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftCommonDamageUpdateDustEffect(fighter_gobj);
-    ftCommonDamageDecHitStunSetPublicity(fighter_gobj);
+    ftCommonDamageDecHitStunSetPublic(fighter_gobj);
 
     if (fp->status_vars.common.damage.hitstun_tics == 0)
     {

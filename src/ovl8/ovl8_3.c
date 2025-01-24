@@ -12,9 +12,9 @@ void func_ovl8_80372420();
 void func_ovl8_8037277C(s32 arg0);
 void func_ovl8_80377AEC(char* arg0, s32 arg1, s32 arg2, s32 arg3);
 
-dbUnknownLink* func_ovl8_80371FB0(dbUnknownLink *arg0, dbUnknownLinkStruct *arg1) 
-{    
-	if (arg0 != NULL) 
+dbUnknownLink* func_ovl8_80371FB0(dbUnknownLink *arg0, dbUnknownLinkStruct *arg1)
+{
+	if (arg0 != NULL)
 		goto next;
 	else
 		arg0 = func_ovl8_803717A0(0x70);
@@ -23,7 +23,7 @@ dbUnknownLink* func_ovl8_80371FB0(dbUnknownLink *arg0, dbUnknownLinkStruct *arg1
 		goto end;
 
 next:
-	if (arg1 == NULL) 
+	if (arg1 == NULL)
 	{
 		arg1 = &arg0->unk_dbunklink_0x14;
 		func_ovl8_803717E0(&arg0->unk_dbunklink_0x14);
@@ -34,7 +34,7 @@ next:
 	arg1->db_func = D_ovl8_80388B40;
 
 	func_ovl8_80372420(arg0, 0);
-	
+
 end:
 	return arg0;
 }
@@ -67,22 +67,22 @@ end:
 	return arg0;
 }
 
-void func_ovl8_803720D4(dbTestMenu *arg0, u32 arg1) 
+void func_ovl8_803720D4(dbTestMenu *arg0, u32 arg1)
 {
 	if (arg0 != NULL)
 	{
 		// Whitespace memes
 		arg0->db_func = &D_ovl8_80388AE0,
 		arg0->unk_dbtestmenu_0x10->db_func = D_ovl8_80388B40;
-		
-		if (arg0->unk_dbtestmenu_0x0 != NULL) 
+
+		if (arg0->unk_dbtestmenu_0x0 != NULL)
 			gcEjectGObj(arg0->unk_dbtestmenu_0x0);
 
-		if (arg0->unk_dbtestmenu_0x4 != NULL) 
+		if (arg0->unk_dbtestmenu_0x4 != NULL)
 			gcEjectGObj(arg0->unk_dbtestmenu_0x4);
 
-		if (arg1 != 0) 
-			func_ovl8_803718C4(arg0->unk_dbtestmenu_0x10, NULL, arg0);
+		if (arg1 != 0)
+			func_ovl8_803718C4(arg0->unk_dbtestmenu_0x10, 0);
 
 		if (arg1 & 1)
 			func_ovl8_803717C0(arg0);
@@ -98,22 +98,22 @@ void func_ovl8_8037217C(dbUnknownLink *arg0)
 	next = arg0->unk_dbunklink_0x10;
 	gobj = next->unk_dbmenusprite_0x48;
 	sobj = SObjGetStruct(gobj);
-	
+
 	sobj->sprite.rsp_dl_next = gSYTaskmanDLHeads[0];
 
 	spDraw(&sobj->sprite);
-	
+
 	gSYTaskmanDLHeads[0] = sobj->sprite.rsp_dl_next - 1;
-	
+
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 }
 
-void func_ovl8_803721E8(dbTestMenu *arg0, dbUnknownLinkStruct *arg1) 
+void func_ovl8_803721E8(dbTestMenu *arg0, dbUnknownLinkStruct *arg1)
 {
 	arg1->unk_dbunkstruct_0x2.arr[0] = 0;
 	arg1->unk_dbunkstruct_0x0 = 0;
 
-	if (arg0->unk_dbtestmenu_0x8 != NULL) 
+	if (arg0->unk_dbtestmenu_0x8 != NULL)
 	{
 		arg1->unk_dbunkstruct_0x2.arr[1] = arg0->unk_dbtestmenu_0x8->arr[2];
 		arg1->unk_dbunkstruct_0x2.arr[2] = arg0->unk_dbtestmenu_0x8->arr[3];
@@ -125,12 +125,12 @@ void func_ovl8_803721E8(dbTestMenu *arg0, dbUnknownLinkStruct *arg1)
 	}
 }
 
-void func_ovl8_80372224(dbTestMenu *arg0) 
+void func_ovl8_80372224(dbTestMenu *arg0)
 {
 	arg0->db_func[3].unk_dbfunc_0x4(arg0->db_func[3].unk_dbfunc_0x0 + (uintptr_t)arg0);
 }
 
-void func_ovl8_80372250(dbTestMenu* arg0, s32 arg1, s32 arg2, s32 arg3) 
+void func_ovl8_80372250(dbTestMenu* arg0, s32 arg1, s32 arg2, s32 arg3)
 {
 	func_ovl8_80377AEC(arg0->db_func[9].unk_dbfunc_0x4(arg0->db_func[9].unk_dbfunc_0x0 + (uintptr_t)arg0), arg1, arg2, arg3);
 }
@@ -144,20 +144,20 @@ void func_ovl8_803722F0(dbTestMenu *arg0, s32 arg1)
 {
 	dbUnknown2 sp1C;
 	db4Bytes *fbytes = &D_ovl8_80388C98;
-	
+
 	sp1C.unk_dbmorethan_0x0 = *fbytes;
-	
+
 	arg0->db_func[5].unk_dbfunc_0x4(arg0->db_func[5].unk_dbfunc_0x0 + (uintptr_t)arg0, arg1, &sp1C, 1);
 }
 
 void func_ovl8_80372348(s32 arg0, s32 arg1, s32 arg2) {}
 
-dbUnknownLink* func_ovl8_80372358(dbUnknownLink *arg0) 
+dbUnknownLink* func_ovl8_80372358(dbUnknownLink *arg0)
 {
 	return arg0->unk_dbunklink_0x8;
 }
 
-void func_ovl8_80372360(dbMenuSprite *mnsprite, Sprite *arg1) 
+void func_ovl8_80372360(dbMenuSprite *mnsprite, Sprite *arg1)
 {
 	SObj *sobj;
 	mnsprite->sprite = arg1;
@@ -165,13 +165,13 @@ void func_ovl8_80372360(dbMenuSprite *mnsprite, Sprite *arg1)
 	sobj->sprite = *arg1;
 }
 
-void* func_ovl8_803723AC(dbMenuSprite *arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5) 
+void* func_ovl8_803723AC(dbMenuSprite *arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5)
 {
 	dbMenuSprite *mnsprite;
 	SObj *sobj;
 	void *thing = func_ovl8_8037BF68(arg1, arg2, arg3, arg4, arg0, (uintptr_t)arg0 + 4, arg5);
 
-	mnsprite = arg0->unk_dbmenusprite_0x10; 
+	mnsprite = arg0->unk_dbmenusprite_0x10;
 	mnsprite->unk_dbmenusprite_0x48 = arg0->unk_dbmenusprite_0x4;
 	sobj = SObjGetStruct(arg0->unk_dbmenusprite_0x4);
 	arg0->sprite = &sobj->sprite;
@@ -213,7 +213,7 @@ end:
 void* func_ovl8_803724B4(dbUnknownLink *arg0, dbUnknownLinkStruct *arg1, void *arg2, void *arg3, void *arg4)
 {
 	dbUnknownLinkStruct *temp_v1;
-	
+
 	if (arg0 != NULL)
 		goto next;
 	else
@@ -230,12 +230,12 @@ next:
 	func_ovl8_8037203C(arg0, arg1, arg2, arg4);
 
 	arg0->unk_dbunklink_0xC = D_ovl8_80388CA0;
-	
+
 	arg1->db_func = D_ovl8_80388D08;
 
 	// Whitespace memes
 	temp_v1 = (dbUnknownLinkStruct*)arg0->unk_dbunklink_0x10,
-	
+
 	temp_v1->unk_dbunkstruct_0x4C = arg3;
 
 	func_ovl8_8037277C(arg0);
@@ -244,17 +244,17 @@ end:
 	return arg0;
 }
 
-void func_ovl8_80372554(dbUnknownLink *arg0, u32 arg1) 
+void func_ovl8_80372554(dbUnknownLink *arg0, u32 arg1)
 {
-	if (arg0 != NULL) 
+	if (arg0 != NULL)
 	{
 		arg0->unk_dbunklink_0xC = D_ovl8_80388CA0, // Needs to be joined with following statement or else scheduler mismatch
 		((dbUnknownLinkStruct*)arg0->unk_dbunklink_0x10)->db_func = D_ovl8_80388D08;
-		
+
 		func_ovl8_803720D4(arg0, 0);
-		
-		if (arg1 != 0) 
-			func_ovl8_803718C4(arg0->unk_dbunklink_0x10, 0, arg0);
+
+		if (arg1 != 0)
+			func_ovl8_803718C4(arg0->unk_dbunklink_0x10, 0);
 
 		if (arg1 & 1)
 			func_ovl8_803717C0(arg0);
@@ -277,35 +277,35 @@ void func_ovl8_80372554(dbUnknownLink *arg0, u32 arg1)
 
 // 	sprite = (Sprite*) db_func[9].unk_dbfunc_0x4(db_func[9].unk_dbfunc_0x0 + (uintptr_t)arg0);
 
-// 	if (sprite != NULL) 
+// 	if (sprite != NULL)
 // 	{
 // 		db_unk10 = arg0->unk_dbtestmenu_0x10;
 // 		db_unk4C = db_unk10->unk_dbunkstruct_0x4C;
 // 		db_unk20 = db_unk4C->unk_dbunkstruct_0x20;
 
 // 		db_func = db_unk20->db_func;
-		
+
 // 		db_func[20].unk_dbfunc_0x4(db_func[20].unk_dbfunc_0x0 + (uintptr_t)db_unk20, &sp3C);
-		
+
 // 		db_unk20 = arg0->unk_dbtestmenu_0x10;
 
 // 		db_func = db_unk20->db_func;
-		
+
 // 		db_func[20].unk_dbfunc_0x4(db_func[20].unk_dbfunc_0x0 + (uintptr_t)db_unk20, &sp34);
-		
+
 // 		spMove(sprite, sp34.arr[0] + sp3C.arr[0], sp34.arr[1] + sp3C.arr[1]);
-		
+
 // 		sprite->rsp_dl_next = gSYTaskmanDLHeads[0];
-		
+
 // 		spDraw(sprite);
-		
+
 // 		gSYTaskmanDLHeads[0] = sprite->rsp_dl_next - 1;
-		
+
 // 		gDPPipeSync(gSYTaskmanDLHeads[0]++);
 // 	}
 // }
 
-void func_ovl8_803726CC(dbTestMenu *arg0) 
+void func_ovl8_803726CC(dbTestMenu *arg0)
 {
 	dbFunction *db_func;
 	db4Shorts sp2C;
@@ -313,17 +313,17 @@ void func_ovl8_803726CC(dbTestMenu *arg0)
 	dbUnknownLinkStruct *db_unk10;
 	dbUnknownLinkStruct *db_unk4C;
 	dbUnknownLinkStruct *db_unk20;
-	
+
 	db_unk10 = arg0->unk_dbtestmenu_0x10;
 
 	db_unk4C = db_unk10->unk_dbunkstruct_0x4C;
-	
-	if (db_unk4C != NULL) 
+
+	if (db_unk4C != NULL)
 	{
 		db_unk20 = db_unk4C->unk_dbunkstruct_0x20;
 
 		db_func = db_unk20->db_func;
-		
+
 		db_func[20].unk_dbfunc_0x4(db_func[20].unk_dbfunc_0x0 + (uintptr_t)db_unk20, &sp2C);
 
 		db_unk20 = arg0->unk_dbtestmenu_0x10;
@@ -333,7 +333,7 @@ void func_ovl8_803726CC(dbTestMenu *arg0)
 		db_func[20].unk_dbfunc_0x4(db_func[20].unk_dbfunc_0x0 + (uintptr_t)db_unk20, &sp24);
 
 		db_func = arg0->db_func;
-		
+
 		db_func[8].unk_dbfunc_0x4(db_func[8].unk_dbfunc_0x0 + (uintptr_t)arg0, (s16) (sp24.arr[0] + sp2C.arr[0]), (s16) (sp24.arr[1] + sp2C.arr[1]));
 	}
 }

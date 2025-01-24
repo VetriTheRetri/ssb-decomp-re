@@ -12,7 +12,7 @@ extern void scManagerFuncDraw();
 
 typedef struct MNVSResultsScore
 {
-	s32 kos_minus_tkos;
+	s32 score;
 	s32 placement;
 	s32 player;
 
@@ -53,7 +53,7 @@ void mnVSResultsDrawResultsNoContest(GObj *gobj);
 u8 mnVSResultsGetWinningTeam();
 s32 mnVSResultsGetWinPlayer();
 s32 mnVSResultsGetFighterKind(s32 player);
-s32 mnVSResultsGetKOsMinusTKO(s32 player);
+s32 mnVSResultsGetPointsDirect(s32 player);
 s32 mnVSResultsGetPlayerCountByPlace(s32 place);
 
 // // // // // // // // // // // //
@@ -236,17 +236,17 @@ void mnVSResultsFuncLights(Gfx **dls)
 }
 
 // 0x80131B78
-s32 mnVSResultsGetPlayerCount()
+s32 mnVSResultsGetPlayerCount(void)
 {
 	return gSCManagerTransferBattleState.pl_count + gSCManagerTransferBattleState.cp_count;
 }
 
 // 0x80131B90
-void mnVSResultsSaveDataToSRAM()
+void mnVSResultsSaveBackup(void)
 {
-	LBBackupVSRecord* vs_record;
+	LBBackupVSRecord *vs_record;
 	s32 i, j;
-	u8 fkind, opp_fkind;
+	u8 this_fkind, vs_fkind;
 
 	gSCManagerBackupData.vs_total_battles++;
 	gSCManagerBackupData.ground_mask |= (1 << gSCManagerTransferBattleState.gkind);
@@ -255,60 +255,62 @@ void mnVSResultsSaveDataToSRAM()
 	{
 		gSCManagerBackupData.vs_itemswitch_battles++;
 	}
-
-	for (i = 0; i < 4; i++)
+	for (i = 0; i < ARRAY_COUNT(gSCManagerTransferBattleState.players); i++)
 	{
-		if (gSCManagerTransferBattleState.players[i].pkind != 2)
+		if (gSCManagerTransferBattleState.players[i].pkind != nFTPlayerKindNot)
 		{
-			fkind = gSCManagerTransferBattleState.players[i].fkind;
-			vs_record = &gSCManagerBackupData.vs_records[fkind];
+			this_fkind = gSCManagerTransferBattleState.players[i].fkind;
+			vs_record = &gSCManagerBackupData.vs_records[this_fkind];
 
 			vs_record->time_used += (gSCManagerTransferBattleState.time_passed / 60);
 
 			if (vs_record->time_used > I_MIN_TO_TICS(1000) - 1)
+			{
 				vs_record->time_used = I_MIN_TO_TICS(1000) - 1;
-
+			}
 			vs_record->damage_given += gSCManagerTransferBattleState.players[i].total_damage_given;
 
 			if (vs_record->damage_given > 999999)
+			{
 				vs_record->damage_given = 999999;
-
+			}
 			vs_record->damage_taken += gSCManagerTransferBattleState.players[i].total_damage_all;
 
 			if (vs_record->damage_taken > 999999)
+			{
 				vs_record->damage_taken = 999999;
-
+			}
 			vs_record->selfdestructs += gSCManagerTransferBattleState.players[i].total_selfdestructs;
 
 			if (vs_record->selfdestructs > 9999)
+			{
 				vs_record->selfdestructs = 9999;
-
-			vs_record->games_played += 1;
+			}
+			vs_record->games_played++;
 			vs_record->player_count_tally += mnVSResultsGetPlayerCount();
 
-			for (j = 0; j < 4; j++)
+			for (j = 0; j < ARRAY_COUNT(gSCManagerTransferBattleState.players); j++)
 			{
 				if ((i != j) && (gSCManagerTransferBattleState.players[j].pkind != nFTPlayerKindNot))
 				{
-					opp_fkind = gSCManagerTransferBattleState.players[j].fkind;
+					vs_fkind = gSCManagerTransferBattleState.players[j].fkind;
 
-					gSCManagerBackupData.vs_records[fkind].ko_count[opp_fkind] += gSCManagerTransferBattleState.players[i].total_kos_players[j];
+					gSCManagerBackupData.vs_records[this_fkind].ko_count[vs_fkind] += gSCManagerTransferBattleState.players[i].total_kos_players[j];
 
-					if (gSCManagerBackupData.vs_records[fkind].ko_count[opp_fkind] > 9999)
-						gSCManagerBackupData.vs_records[fkind].ko_count[opp_fkind] = 9999;
+					if (gSCManagerBackupData.vs_records[this_fkind].ko_count[vs_fkind] > 9999)
+						gSCManagerBackupData.vs_records[this_fkind].ko_count[vs_fkind] = 9999;
 
-					gSCManagerBackupData.vs_records[fkind].player_count_tallies[opp_fkind] += mnVSResultsGetPlayerCount();
-					gSCManagerBackupData.vs_records[fkind].played_against[opp_fkind] += 1;
+					gSCManagerBackupData.vs_records[this_fkind].player_count_tallies[vs_fkind] += mnVSResultsGetPlayerCount();
+					gSCManagerBackupData.vs_records[this_fkind].played_against[vs_fkind]++;
 				}
 			}
 		}
 	}
-
 	lbBackupWrite();
 }
 
 // 0x80131E18
-sb32 mnVSResultsCheckStartPressed()
+sb32 mnVSResultsCheckExit(void)
 {
 	s32 i;
 
@@ -317,36 +319,37 @@ sb32 mnVSResultsCheckStartPressed()
 		for (i = 0; i < ARRAY_COUNT(gSYControllerDevices); i++)
 		{
 			if (gSYControllerDevices[i].button_tap & START_BUTTON)
+			{
 				return TRUE;
+			}
 		}
 	}
-
 	return FALSE;
 }
 
 // 0x80131EB0
-void mnVSResultsAnnounceWinner()
+void mnVSResultsAnnounceWinner(void)
 {
-	s32 announcer_names[12] = {
-
-		0x1F3,
-		0x1E6,
-		0x1E3,
-		0x201,
-		0x1F2,
-		0x1F1,
-		0x217,
-		0x1E5,
-		0x1F0,
-		0x1FB,
-		0x1FC,
-		0x1F5
+	u32 announcer_names[/* */] =
+	{
+		nSYAudioVoiceAnnounceMario,
+		nSYAudioVoiceAnnounceFox,
+		nSYAudioVoiceAnnounceDonkey,
+		nSYAudioVoiceAnnounceSamus,
+		nSYAudioVoiceAnnounceLuigi,
+		nSYAudioVoiceAnnounceLink,
+		nSYAudioVoiceAnnounceYoshi,
+		nSYAudioVoiceAnnounceCaptain,
+		nSYAudioVoiceAnnounceKirby,
+		nSYAudioVoiceAnnouncePikachu,
+		nSYAudioVoiceAnnouncePurin,
+		nSYAudioVoiceAnnounceNess
 	};
-	s32 announcer_teams[3] = {
-
-		0x1FE,
-		0x1DB,
-		0x1EB
+	u32 announcer_teams[/* */] =
+	{
+		nSYAudioVoiceAnnounceRedTeam,
+		nSYAudioVoiceAnnounceBlueTeam,
+		nSYAudioVoiceAnnounceGreenTeam
 	};
 
 	if (sMNVSResultsGameRule == 4)
@@ -354,28 +357,31 @@ void mnVSResultsAnnounceWinner()
 		// No Contest
 		switch (sMNVSResultsTotalTimeTics)
 		{
-			case 0x2:
-				func_800269C0_275C0(0x1F6U);
-				return;
-			case 0x47:
-				func_800269C0_275C0(0x270U);
-				return;
+		case 2:
+			func_800269C0_275C0(nSYAudioVoiceAnnounceNoContest);
+			break;
+			
+		case 71:
+			func_800269C0_275C0(nSYAudioVoicePublicNoContest);
+			break;
 		}
 	}
-	else if (!sMNVSResultsIsTeamBattle)
+	else if (sMNVSResultsIsTeamBattle == FALSE)
 	{
 		// FFA - "This Game's Winner Is..."
 		switch (sMNVSResultsTotalTimeTics)
 		{
-			case 0x51:
-				func_800269C0_275C0(0x216U);
-				return;
-			case 0xD2:
-				func_800269C0_275C0(announcer_names[mnVSResultsGetFighterKind(mnVSResultsGetWinPlayer())]);
-				return;
-			case 0x10E:
-				func_800269C0_275C0(0x272U);
-				return;
+		case 81:
+			func_800269C0_275C0(nSYAudioVoiceAnnounceWinnerIs);
+			break;
+			
+		case 210:
+			func_800269C0_275C0(announcer_names[mnVSResultsGetFighterKind(mnVSResultsGetWinPlayer())]);
+			break;
+			
+		case 270:
+			func_800269C0_275C0(nSYAudioVoicePublicExcited);
+			break;
 		}
 	}
 	else
@@ -383,124 +389,137 @@ void mnVSResultsAnnounceWinner()
 		// Teams - "Red/Blue/Grean Team Wins!"
 		switch (sMNVSResultsTotalTimeTics)
 		{
-			case 0x51:
-				func_800269C0_275C0(announcer_teams[mnVSResultsGetWinningTeam()]);
-				return;
-			case 0x82:
-				func_800269C0_275C0(0x215U);
-				return;
-			case 0x96:
-				func_800269C0_275C0(0x272U);
-				return;
+		case 81:
+			func_800269C0_275C0(announcer_teams[mnVSResultsGetWinningTeam()]);
+			break;
+			
+		case 130:
+			func_800269C0_275C0(nSYAudioVoiceAnnounceWins);
+			break;
+			
+		case 150:
+			func_800269C0_275C0(nSYAudioVoicePublicExcited);
+			break;
 		}
 	}
 }
 
 // 0x8013205C
-s32 mnVSResultsGetPresentCount()
+s32 mnVSResultsGetPresentCount(void)
 {
 	s32 i, sum = 0;
 
 	for (i = 0; i < ARRAY_COUNT(sMNVSResultsIsPresent); i++)
 	{
 		if (sMNVSResultsIsPresent[i] == TRUE)
-			sum += 1;
+		{
+			sum++;
+		}
 	}
-
 	return sum;
 }
 
 // 0x801320B8
-s32 mnVSResultsGetLowerPortCount(s32 player) {
-	s32 i;
-	s32 sum = 0;
+s32 mnVSResultsGetPresentLowerCount(s32 player)
+{
+	s32 i, sum = 0;
 
 	for (i = 0; i < ARRAY_COUNT(sMNVSResultsIsPresent); i++)
 	{
 		if (player != i)
 		{
 			if (sMNVSResultsIsPresent[i] == TRUE)
-				sum += 1;
+			{
+				sum++;
+			}
 		}
-		else
-			break;
+		else break;
 	}
-
 	return sum;
 }
 
 // 0x80132100
-s32 mnVSResultsGetPortByPlace(s32 place)
+s32 mnVSResultsGetPlacementPlayer(s32 place)
 {
 	s32 i;
 
 	for (i = 0; i < ARRAY_COUNT(sMNVSResultsIsPresent); i++)
 	{
 		if ((sMNVSResultsIsPresent[i]) && (place == sMNVSResultsPlacement[i]))
+		{
 			return i;
+		}
 	}
-
 	return -1;
 }
 
 // 0x801321AC
-s32 func_ovl31_801321AC(s32 player)
+s32 mnVSResultsGetPlayerDistanceID(s32 player)
 {
-	s32 num_opponents;
-	s32 players_num;
-
-	num_opponents = mnVSResultsGetLowerPortCount(player);
+	s32 foes = mnVSResultsGetPresentLowerCount(player);
 
 	if (mnVSResultsGetPlayerCountByPlace(0) == 1)
 	{
 		switch (mnVSResultsGetPresentCount())
 		{
+		case 2:
+			break;
+			
+		case 3:
+			if (sMNVSResultsPlacement[player] == 0)
+			{
+				switch (mnVSResultsGetPresentLowerCount(player))
+				{
+				case 0:
+					foes = 1;
+					break;
+						
+				case 2:
+					foes = 1;
+					break;
+				}
+			}
+			else if (mnVSResultsGetPresentLowerCount(player) == 1)
+			{
+				foes = mnVSResultsGetPresentLowerCount(mnVSResultsGetPlacementPlayer(0));
+			}
+			break;
+
+		default:
+			switch (player)
+			{
+			case 0:
+				if ((sMNVSResultsPlacement[0] == 0) && (sMNVSResultsPlacement[1] != 0))
+				{
+					foes = 1;
+				}
+				break;
+					
+			case 1:
+				if ((sMNVSResultsPlacement[0] == 0) && (sMNVSResultsPlacement[1] != 0))
+				{
+					foes = 0;
+				}
+				break;
+					
 			case 2:
+				if ((sMNVSResultsPlacement[3] == 0) && (sMNVSResultsPlacement[2] != 0))
+				{
+					foes = 3;
+				}
 				break;
+					
 			case 3:
-				if (sMNVSResultsPlacement[player] == 0)
+				if ((sMNVSResultsPlacement[3] == 0) && (sMNVSResultsPlacement[2] != 0))
 				{
-					switch (mnVSResultsGetLowerPortCount(player))
-					{
-						case 0:
-							num_opponents = 1;
-							break;
-						case 2:
-							num_opponents = 1;
-							break;
-					}
-				}
-				else
-				{
-					if (mnVSResultsGetLowerPortCount(player) == 1)
-						num_opponents = mnVSResultsGetLowerPortCount(mnVSResultsGetPortByPlace(0));
+					foes = 2;
 				}
 				break;
-			default:
-				switch (player)
-				{
-					case 0:
-						if ((sMNVSResultsPlacement[0] == 0) && (sMNVSResultsPlacement[1] != 0))
-							num_opponents = 1;
-						break;
-					case 1:
-						if ((sMNVSResultsPlacement[0] == 0) && (sMNVSResultsPlacement[1] != 0))
-							num_opponents = 0;
-						break;
-					case 2:
-						if ((sMNVSResultsPlacement[3] == 0) && (sMNVSResultsPlacement[2] != 0))
-							num_opponents = 3;
-						break;
-					case 3:
-						if ((sMNVSResultsPlacement[3] == 0) && (sMNVSResultsPlacement[2] != 0))
-							num_opponents = 2;
-						break;
-				}
-				break;
+			}
+			break;
 		}
 	}
-
-	return num_opponents;
+	return foes;
 }
 
 // 0x8013234C
@@ -508,11 +527,11 @@ s32 mnVSResultsGetWinPlayer()
 {
 	s32 i;
 	sb32 potential_first_place[4];
-	s32 kos_minus_tkos[4];
+	s32 score[4];
 	s32 winner_player = 0x29A;
 	sb32 multi_winner[4];
 	sb32 is_multi_winner;
-	int foo;
+	s32 unused;
 
 	// If FFA, use place
 	if ((sMNVSResultsGameRule == nSCBattleGameRuleTime) || (sMNVSResultsGameRule == nSCBattleGameRuleStock))
@@ -529,7 +548,7 @@ s32 mnVSResultsGetWinPlayer()
 
 		// Get KOs minus TKO for each port
 		for (i = 0; i < 4; i++)
-			kos_minus_tkos[i] = mnVSResultsGetKOsMinusTKO(i); // gets kos minus tkos
+			score[i] = mnVSResultsGetPointsDirect(i); // gets kos minus tkos
 
 		// Set lowest present port to winner and remember which ports may be the winner
 		for (i = 0; i < 4; i++)
@@ -552,7 +571,7 @@ s32 mnVSResultsGetWinPlayer()
 		// Get the winner port based on highest KOs minus TKO score
 		for (i = winner_player + 1; i < 4; i++)
 		{
-			if ((potential_first_place[i]) && (kos_minus_tkos[winner_player] < kos_minus_tkos[i]))
+			if ((potential_first_place[i]) && (score[winner_player] < score[i]))
 				winner_player = i;
 		}
 
@@ -561,7 +580,7 @@ s32 mnVSResultsGetWinPlayer()
 		// Figure out if any potential winners have the same KOs minus TKO score
 		for (i = winner_player + 1; i < 4; i++)
 		{
-			if ((potential_first_place[i]) && (kos_minus_tkos[winner_player] == kos_minus_tkos[i]))
+			if ((potential_first_place[i]) && (score[winner_player] == score[i]))
 			{
 				multi_winner[winner_player] = multi_winner[i] = TRUE;
 				is_multi_winner = TRUE;
@@ -781,62 +800,65 @@ s32 mnVSResultsGetFighterKind(s32 player)
 }
 
 // 0x8013315C
-void mnVSResultsSetFighterKind()
+void mnVSResultsSetFighterKindAll(void)
 {
 	s32 i;
 
-	for (i = 0; i < ARRAY_COUNT(sMNVSResultsIsPresent); i++)
+	for (i = 0; i < (ARRAY_COUNT(sMNVSResultsIsPresent) + ARRAY_COUNT(sMNVSResultsFighterKinds) + ARRAY_COUNT(gSCManagerTransferBattleState.players)) / 3; i++)
 	{
 		if (sMNVSResultsIsPresent[i])
+		{
 			sMNVSResultsFighterKinds[i] = gSCManagerTransferBattleState.players[i].fkind;
+		}
 	}
 }
 
 // 0x801331DC
 void mnVSResultsSetFighterPosition(GObj* fighter_gobj, s32 player, s32 place)
 {
-	f32 x_positions_2p[2][4] = {
-
-		-150.0, -350.0, -700.0, -1000.0,
-		100.0, 250.0, 600.0, 1000.0
+	f32 pos_x_2p[/* */][4] =
+	{
+		-150.0F, -350.0F, -700.0F, -1000.0F,
+		 100.0F,  250.0F,  600.0F,  1000.0F
 	};
-	f32 x_positions_3p[3][4] = {
-
-		-450.0, -900.0, -2000.0, -3000.0,
-		0.0, 0.0, 0.0, 0.0,
-		400.0, 800.0, 1800.0, 2800.0
+	f32 pos_x_3p[/* */][4] =
+	{
+		-450.0F, -900.0F, -2000.0F, -3000.0F,
+		   0.0F,    0.0F,     0.0F,     0.0F,
+		 400.0F,  800.0F,  1800.0F,  2800.0F
 	};
-	f32 x_positions_4p[4][4] = {
-
-		-450.0, -900.0, -2000.0, -3000.0,
-		-150.0, -350.0, -700.0, -1000.0,
-		150.0, 300.0, 700.0, 1000.0,
-		400.0, 800.0, 1800.0, 2800.0
+	f32 pos_x_4p[/* */][4] =
+	{
+		-450.0F, -900.0F, -2000.0F, -3000.0F,
+		-150.0F, -350.0F,  -700.0F, -1000.0F,
+		 150.0F,  300.0F,   700.0F,  1000.0F,
+		 400.0F,  800.0F,  1800.0F,  2800.0F
 	};
-	Vec2f yz_positions[4] = {
-
-		{ -350.0, 0.0 },
-		{ -450.0, -2000.0 },
-		{ -700.0, -5000.0 },
-		{ -900.0, -9000.0 }
+	f32 pos_yz[/* */][2] =
+	{
+		{ -350.0F, 	   0.0F },
+		{ -450.0F, -2000.0F },
+		{ -700.0F, -5000.0F },
+		{ -900.0F, -9000.0F }
 	};
 
 	switch (mnVSResultsGetPresentCount())
 	{
-		case 2:
-			DObjGetStruct(fighter_gobj)->translate.vec.f.x = x_positions_2p[func_ovl31_801321AC(player)][place];
-			break;
-		case 3:
-			DObjGetStruct(fighter_gobj)->translate.vec.f.x = x_positions_3p[func_ovl31_801321AC(player)][place];
-			break;
-		case 4:
-		default:
-			DObjGetStruct(fighter_gobj)->translate.vec.f.x = x_positions_4p[func_ovl31_801321AC(player)][place];
-			break;
-	}
+	case 2:
+		DObjGetStruct(fighter_gobj)->translate.vec.f.x = pos_x_2p[mnVSResultsGetPlayerDistanceID(player)][place];
+		break;
 
-	DObjGetStruct(fighter_gobj)->translate.vec.f.y = yz_positions[place].x;
-	DObjGetStruct(fighter_gobj)->translate.vec.f.z = yz_positions[place].y;
+	case 3:
+		DObjGetStruct(fighter_gobj)->translate.vec.f.x = pos_x_3p[mnVSResultsGetPlayerDistanceID(player)][place];
+		break;
+
+	case 4:
+	default:
+		DObjGetStruct(fighter_gobj)->translate.vec.f.x = pos_x_4p[mnVSResultsGetPlayerDistanceID(player)][place];
+		break;
+	}
+	DObjGetStruct(fighter_gobj)->translate.vec.f.y = pos_yz[place][0];
+	DObjGetStruct(fighter_gobj)->translate.vec.f.z = pos_yz[place][1];
 }
 
 // 0x801333E4
@@ -846,8 +868,8 @@ void mnVSResultsFaceWinner(GObj *fighter_gobj, s32 player, s32 place)
 
 	if (place != 0)
 	{
-		DObj* fighter_dobj = DObjGetStruct(fighter_gobj);
-		DObj* winner_dobj = DObjGetStruct(sMNVSResultsFighterGObjs[winner_player]);
+		DObj *fighter_dobj = DObjGetStruct(fighter_gobj);
+		DObj *winner_dobj = DObjGetStruct(sMNVSResultsFighterGObjs[winner_player]);
 		f32 x1 = fighter_dobj->translate.vec.f.x;
 		f32 z1 = fighter_dobj->translate.vec.f.z;
 		f32 x2 = winner_dobj->translate.vec.f.x;
@@ -990,30 +1012,30 @@ void mnVSResultsSetIndicatorPosition(GObj* indicator_gobj, s32 player)
 	s32 temp_s0;
 	Vec2f xy_positions_2p[2][4] = {
 
-		115.0, 50.0, 112.0, 75.0,
-		115.0, 96.0, 115.0, 103.0,
-		173.0, 50.0, 177.0, 75.0,
-		183.0, 96.0, 186.0, 103.0
+		115.0F, 50.0F, 112.0F, 75.0F,
+		115.0F, 96.0F, 115.0F, 103.0F,
+		173.0F, 50.0F, 177.0F, 75.0F,
+		183.0F, 96.0F, 186.0F, 103.0
 	};
 	Vec2f xy_positions_3p[3][4] = {
 
-		38.0, 50.0, 50.0, 75.0,
-		38.0, 96.0, 38.0, 103.0,
-		150.0, 50.0, 150.0, 75.0,
-		150.0, 96.0, 150.0, 103.0,
-		245.0, 50.0, 237.0, 75.0,
-		254.0, 96.0, 258.0, 103.0
+		38.0F, 50.0F, 50.0F, 75.0F,
+		38.0F, 96.0F, 38.0F, 103.0F,
+		150.0F, 50.0F, 150.0F, 75.0F,
+		150.0F, 96.0F, 150.0F, 103.0F,
+		245.0F, 50.0F, 237.0F, 75.0F,
+		254.0F, 96.0F, 258.0F, 103.0
 	};
 	Vec2f xy_positions_4p[4][4] = {
 
-		38.0, 50.0, 50.0, 75.0,
-		35.0, 96.0, 35.0, 103.0,
-		115.0, 50.0, 112.0, 75.0,
-		115.0, 96.0, 115.0, 103.0,
-		173.0, 50.0, 177.0, 75.0,
-		188.0, 96.0, 186.0, 103.0,
-		245.0, 50.0, 237.0, 75.0,
-		258.0, 96.0, 258.0, 103.0
+		38.0F, 50.0F, 50.0F, 75.0F,
+		35.0F, 96.0F, 35.0F, 103.0F,
+		115.0F, 50.0F, 112.0F, 75.0F,
+		115.0F, 96.0F, 115.0F, 103.0F,
+		173.0F, 50.0F, 177.0F, 75.0F,
+		188.0F, 96.0F, 186.0F, 103.0F,
+		245.0F, 50.0F, 237.0F, 75.0F,
+		258.0F, 96.0F, 258.0F, 103.0
 	};
 	f32 y_positions_kind[12][4] = {
 
@@ -1023,7 +1045,7 @@ void mnVSResultsSetIndicatorPosition(GObj* indicator_gobj, s32 player)
 	};
 
 	sp214 = mnVSResultsGetSpot(player);
-	temp_s0 = func_ovl31_801321AC(player);
+	temp_s0 = mnVSResultsGetPlayerDistanceID(player);
 
 	switch (mnVSResultsGetPresentCount())
 	{
@@ -1125,8 +1147,8 @@ void mnVSResultsDrawString(const char *str, f32 x, f32 y, s32 color_index, f32 s
 	s32 char_index;
 	f32 widths[28] = {
 
-		35.0, 24.0, 24.0, 28.0, 22.0, 20.0, 31.0, 27.0, 9.0, 20.0, 27.0, 20.0, 37.0, 29.0,
-		34.0, 24.0, 37.0, 27.0, 24.0, 24.0, 26.0, 28.0, 39.0, 31.0, 29.0, 30.0, 10.0, 8.0
+		35.0F, 24.0F, 24.0F, 28.0F, 22.0F, 20.0F, 31.0F, 27.0F, 9.0F, 20.0F, 27.0F, 20.0F, 37.0F, 29.0F,
+		34.0F, 24.0F, 37.0F, 27.0F, 24.0F, 24.0F, 26.0F, 28.0F, 39.0F, 31.0F, 29.0F, 30.0F, 10.0F, 8.0
 	};
 	intptr_t offsets[28] = {
 
@@ -1190,13 +1212,13 @@ void mnVSResultsDrawWinsText(s32 winner_id)
 	char strWins[] = "W1I1N1S1!";
 	f32 x_by_kind[12] = {
 
-		175.0, 160.0, 150.0, 176.0, 163.0, 160.0,
-		170.0, 178.0, 165.0, 172.0, 173.0, 160.0
+		175.0F, 160.0F, 150.0F, 176.0F, 163.0F, 160.0F,
+		170.0F, 178.0F, 165.0F, 172.0F, 173.0F, 160.0
 	};
 	f32 x_by_team[3] = {
 
-		160.0,
-		170.0,
+		160.0F,
+		170.0F,
 		180.0
 	};
 
@@ -1234,13 +1256,13 @@ void mnVSResultsDrawFighterWins()
 	};
 	f32 x_positions[12] = {
 
-		30.0, 60.0, 70.0, 25.0, 50.0, 55.0,
-		30.0, 27.0, 40.0, 30.0, 27.0, 50.0
+		30.0F, 60.0F, 70.0F, 25.0F, 50.0F, 55.0F,
+		30.0F, 27.0F, 40.0F, 30.0F, 27.0F, 50.0
 	};
 	f32 scale[12] = {
 
-		1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
-		1.0, 0.7, 1.0, 0.7, 0.6, 1.0
+		1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F,
+		1.0F, 0.7, 1.0F, 0.7, 0.6, 1.0
 	};
 
 	fkind = mnVSResultsGetWinnerKind();
@@ -1261,9 +1283,9 @@ void mnVSResultsDrawTeamWins()
 	};
 	f32 x_positions[9] = {
 
-		70.0, 60.0, 30.0,
-		0.0, 0.0, 0.0,
-		0.0, 0.0, 0.0
+		70.0F, 60.0F, 30.0F,
+		0.0F, 0.0F, 0.0F,
+		0.0F, 0.0F, 0.0
 	};
 
 	team_id = mnVSResultsGetWinningTeam();
@@ -1590,27 +1612,27 @@ f32 mnVSResultsGetColumnX(s32 player)
 {
 	f32 column_x_2p[2] = {
 
-		135.0, 215.0
+		135.0F, 215.0
 	};
 	f32 column_x_3p[3] = {
 
-		125.0, 175.0, 225.0
+		125.0F, 175.0F, 225.0
 	};
 	f32 column_x_4p[4] = {
 
-		115.0, 155.0, 195.0, 235.0
+		115.0F, 155.0F, 195.0F, 235.0
 	};
 
 	switch (mnVSResultsGetPresentCount())
 	{
 		case 2:
-			return column_x_2p[mnVSResultsGetLowerPortCount(player)];
+			return column_x_2p[mnVSResultsGetPresentLowerCount(player)];
 		case 3:
-			return column_x_3p[mnVSResultsGetLowerPortCount(player)];
+			return column_x_3p[mnVSResultsGetPresentLowerCount(player)];
 		case 4:
 			/* fallthrough */
 		default:
-			return column_x_4p[mnVSResultsGetLowerPortCount(player)];
+			return column_x_4p[mnVSResultsGetPresentLowerCount(player)];
 	}
 }
 
@@ -2214,9 +2236,28 @@ void mnVSResultsCreateLogoViewport()
 }
 
 // 0x801369B4
-void mnVSResultsCreateFighterViewport()
+void mnVSResultsMakeFighterCamera(void)
 {
-	CObj *cobj = CObjGetStruct((GObj*)gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000, func_80017DBC, 0x32, 0x00048600, -1, 1, 1, 0, 1, 0));
+	CObj *cobj = CObjGetStruct
+	(
+		gcMakeCameraGObj
+		(
+			nGCCommonKindSceneCamera,
+			NULL,
+			16,
+			GOBJ_PRIORITY_DEFAULT,
+			func_80017DBC,
+			50,
+			COBJ_MASK_DLLINK(18) | COBJ_MASK_DLLINK(15) |
+			COBJ_MASK_DLLINK(10) | COBJ_MASK_DLLINK(9),
+			~0,
+			TRUE,
+			nGCProcessKindFunc,
+			NULL,
+			1,
+			FALSE
+		)
+	);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
 	cobj->vec.eye.x = 0.0F;
@@ -2231,41 +2272,46 @@ void mnVSResultsCreateFighterViewport()
 }
 
 // 0x80136A9C
-void mnVSResultsSetKOs()
+void mnVSResultsSetKOs(void)
 {
 	s32 i;
 
-	for (i = 0; i < 4; i++)
+	for (i = 0; i < (ARRAY_COUNT(sMNVSResultsIsPresent) + ARRAY_COUNT(sMNVSResultsKOs) + ARRAY_COUNT(gSCManagerTransferBattleState.players)) / 3; i++)
 	{
-		if (sMNVSResultsIsPresent[i])
+		if (sMNVSResultsIsPresent[i] != FALSE)
+		{
 			sMNVSResultsKOs[i] = gSCManagerTransferBattleState.players[i].score;
+		}
 	}
 }
 
 // 0x80136B1C
-void mnVSResultsSetTKO()
+void mnVSResultsSetTKO(void)
 {
 	s32 i;
 
-	for (i = 0; i < 4; i++)
+	for (i = 0; i < (ARRAY_COUNT(sMNVSResultsIsPresent) + ARRAY_COUNT(sMNVSResultsTKO) + ARRAY_COUNT(gSCManagerTransferBattleState.players)) / 3; i++)
 	{
-		if (sMNVSResultsIsPresent[i]) {
+		if (sMNVSResultsIsPresent[i] != FALSE)
+		{
 			sMNVSResultsTKO[i] = gSCManagerTransferBattleState.players[i].falls;
 		}
 	}
 }
 
 // 0x80136B9C
-void mnVSResultsSetPoints()
+void mnVSResultsSetPoints(void)
 {
 	s32 i;
 
-	for (i = 0; i < 4; i++)
+	for (i = 0; i < ARRAY_COUNT(sMNVSResultsPoints); i++)
+	{
 		sMNVSResultsPoints[i] = mnVSResultsGetKOs(i) - mnVSResultsGetTKO(i);
+	}
 }
 
 // 0x80136C08
-s32 mnVSResultsGetKOsMinusTKO(s32 player)
+s32 mnVSResultsGetPointsDirect(s32 player)
 {
 	return sMNVSResultsKOs[player] - sMNVSResultsTKO[player];
 }
@@ -2280,13 +2326,15 @@ void mnVSResultsOrderResults(MNVSResultsScore *results, s32 players_num)
 	{
 		for (j = i + 1; j < players_num; j++)
 		{
-			if ((results[i].kos_minus_tkos < results[j].kos_minus_tkos) ||
+			if
+			(
+				(results[i].score < results[j].score) ||
 				(
-					(gSCManagerSceneData.is_suddendeath) &&
-					(results[i].kos_minus_tkos == results[j].kos_minus_tkos) &&
+					(gSCManagerSceneData.is_suddendeath != FALSE) &&
+					(results[i].score == results[j].score) &&
 					(results[j].placement < results[i].placement)
 				)
-				)
+			)
 			{
 				temp = results[i];
 				results[i] = results[j];
@@ -2297,34 +2345,33 @@ void mnVSResultsOrderResults(MNVSResultsScore *results, s32 players_num)
 }
 
 // 0x80136D28
-void mnVSResultsSetPlacementRoyal(void)
+void mnVSResultsSetRoyalPlacement(void)
 {
-	MNVSResultsScore results[4];
+	MNVSResultsScore results[GMCOMMON_PLAYERS_MAX];
 	s32 place;
 	s32 score;
 	s32 winner;
 	s32 players_num;
 	s32 i;
 
-	for (i = 0, players_num = 0; i < ARRAY_COUNT(sMNVSResultsIsPresent); i++)
+	for (i = 0, players_num = 0; i < (ARRAY_COUNT(sMNVSResultsIsPresent) + ARRAY_COUNT(gSCManagerVSBattleState.players)) / 2; i++)
 	{
 		if (sMNVSResultsIsPresent[i])
 		{
-			results[players_num].kos_minus_tkos = mnVSResultsGetKOsMinusTKO(i);
+			results[players_num].score = mnVSResultsGetPointsDirect(i);
 			results[players_num].placement = gSCManagerVSBattleState.players[i].placement;
 			results[players_num].player = i;
-			players_num += 1;
+			players_num++;
 		}
 	}
-
 	mnVSResultsOrderResults(results, players_num);
 
-	for (i = 0, place = 0, score = results[0].kos_minus_tkos, winner = results[0].placement; i < players_num; i++)
+	for (i = 0, place = 0, score = results[0].score, winner = results[0].placement; i < players_num; i++)
 	{
-		if (score != results[i].kos_minus_tkos || ((gSCManagerSceneData.is_suddendeath) && (winner != results[i].placement)))
+		if (score != results[i].score || ((gSCManagerSceneData.is_suddendeath) && (winner != results[i].placement)))
 		{
-			place += 1;
-			score = results[i].kos_minus_tkos;
+			place++;
+			score = results[i].score;
 			winner = results[i].placement;
 		}
 		sMNVSResultsPlacement[results[i].player] = place;
@@ -2332,77 +2379,80 @@ void mnVSResultsSetPlacementRoyal(void)
 }
 
 // 0x80136FB8
-s32 mnVSResultsGetTeamKOsMinusTKO(s32 team_id)
+s32 mnVSResultsGetTeamTotalPoints(s32 team)
 {
 	s32 i;
 	s32 total = 0;
 
-	for (i = 0; i < ARRAY_COUNT(sMNVSResultsIsPresent); i++)
+	for (i = 0; i < (ARRAY_COUNT(sMNVSResultsIsPresent) + ARRAY_COUNT(gSCManagerTransferBattleState.players)) / 2; i++)
 	{
-		if ((sMNVSResultsIsPresent[i]) && (team_id == gSCManagerTransferBattleState.players[i].team))
-			total += mnVSResultsGetKOsMinusTKO(i);
+		if ((sMNVSResultsIsPresent[i] != FALSE) && (team == gSCManagerTransferBattleState.players[i].team))
+		{
+			total += mnVSResultsGetPointsDirect(i);
+		}
 	}
-
 	return total;
 }
 
 // 0x80137068
-void mnVSResultsSetTeamPlacement(s32 team_index, s32 placement)
+void mnVSResultsSetTeamPlacement(s32 team, s32 placement)
 {
 	s32 i;
 
-	for (i = 0; i < ARRAY_COUNT(sMNVSResultsIsPresent); i++)
+	for (i = 0; i < (ARRAY_COUNT(sMNVSResultsIsPresent) + ARRAY_COUNT(gSCManagerTransferBattleState.players)) / 2; i++)
 	{
-		if ((sMNVSResultsIsPresent[i]) && (team_index == gSCManagerTransferBattleState.players[i].team))
+		if ((sMNVSResultsIsPresent[i] != FALSE) && (team == gSCManagerTransferBattleState.players[i].team))
+		{
 			sMNVSResultsPlacement[i] = placement;
+		}
 	}
 }
 
 // 0x80137108
-s32 mnVSResultsGetFirstPortForTeam(s32 team_id)
+s32 mnVSResultsGetTeamFirstPlayer(s32 team)
 {
 	s32 i;
 
-	for (i = 0; i < 4; i++)
+	for (i = 0; i < ARRAY_COUNT(gSCManagerTransferBattleState.players); i++)
 	{
-		if ((team_id == gSCManagerTransferBattleState.players[i].team) && (gSCManagerTransferBattleState.players[i].pkind != nFTPlayerKindNot))
+		if ((team == gSCManagerTransferBattleState.players[i].team) && (gSCManagerTransferBattleState.players[i].pkind != nFTPlayerKindNot))
+		{
 			return i + 1;
+		}
 	}
-
 	return 0;
 }
 
 // 0x801371B8
-void mnVSResultsSetPlacementTeam()
+void mnVSResultsSetPlacementTeam(void)
 {
-	MNVSResultsScore results[4];
+	MNVSResultsScore results[GMCOMMON_PLAYERS_MAX];
 	s32 place;
 	s32 score;
 	s32 winner;
-	s32 players_num;
+	s32 players;
 	s32 i;
 
-	for (i = 0, players_num = 0; i < 3; i++)
+	for (i = nSCBattleTeamIDBattleStart, players = 0; i <= nSCBattleTeamIDBattleEnd; i++)
 	{
-		s32 j = mnVSResultsGetFirstPortForTeam(i);
+		s32 j = mnVSResultsGetTeamFirstPlayer(i);
 
 		if (j != 0)
 		{
-			results[players_num].kos_minus_tkos = mnVSResultsGetTeamKOsMinusTKO(i);
-			results[players_num].placement = gSCManagerVSBattleState.players[j - 1].placement;
-			results[players_num].player = i;
-			players_num++;
+			results[players].score = mnVSResultsGetTeamTotalPoints(i);
+			results[players].placement = gSCManagerVSBattleState.players[j - 1].placement;
+			results[players].player = i;
+			players++;
 		}
 	}
+	mnVSResultsOrderResults(results, players);
 
-	mnVSResultsOrderResults(results, players_num);
-
-	for (i = 0, place = 0, score = results[0].kos_minus_tkos, winner = results[0].placement; i < players_num; i++)
+	for (i = 0, place = 0, score = results[0].score, winner = results[0].placement; i < players; i++)
 	{
-		if (score != results[i].kos_minus_tkos || ((gSCManagerSceneData.is_suddendeath) && (winner != results[i].placement)))
+		if (score != results[i].score || ((gSCManagerSceneData.is_suddendeath) && (winner != results[i].placement)))
 		{
 			place++;
-			score = results[i].kos_minus_tkos;
+			score = results[i].score;
 			winner = results[i].placement;
 		}
 		mnVSResultsSetTeamPlacement(results[i].player, place);
@@ -2414,7 +2464,7 @@ void mnVSResultsSetPlacementTime(void)
 {
 	if (sMNVSResultsIsTeamBattle == FALSE)
 	{
-		mnVSResultsSetPlacementRoyal();
+		mnVSResultsSetRoyalPlacement();
 	}
 	else mnVSResultsSetPlacementTeam();
 }
@@ -2459,7 +2509,7 @@ void mnVSResultsSetArrays(void)
 			sMNVSResultsPlacement[i] = 0;
 		}
 	}
-	mnVSResultsSetFighterKind();
+	mnVSResultsSetFighterKindAll();
 }
 
 // 0x80137454
@@ -2598,7 +2648,7 @@ void mnVSResultsMakeAudioThread(void)
 // 0x80137898
 void func_ovl31_80137898(GObj *gobj)
 {
-	s32 frame = 0;
+	u32 frame = 0;
 	s32 winner = mnVSResultsGetWinPlayer();
 
 	while (TRUE)
@@ -2613,7 +2663,7 @@ void func_ovl31_80137898(GObj *gobj)
 			gcEjectGObj(NULL);
 			gcStopCurrentGObjThread(1);
 		}
-		if (frame & 1)
+		if (frame % 2)
 		{
 			func_80004474(winner);
 		}
@@ -3000,7 +3050,7 @@ void mnVSResultsProcRun(GObj *gobj)
 		mnVSResultsPlayWinBGM();
 		mnVSResultsMakeAudioThread();
 	}
-	if (mnVSResultsCheckStartPressed())
+	if (mnVSResultsCheckExit())
 	{
 		unlocks_num = 0;
 
@@ -3088,7 +3138,7 @@ void mnVSResultsFuncStart(void)
 	{
 		sMNVSResultsFigatreeHeaps[i] = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
 	}
-	mnVSResultsSaveDataToSRAM();
+	mnVSResultsSaveBackup();
 	mnVSResultsInitVars();
 	mnVSResultsSetIsPresent();
 	mnVSResultsSetArrays();
@@ -3104,7 +3154,7 @@ void mnVSResultsFuncStart(void)
 		lbTransitionMakeTransition(syUtilsGetRandomIntRange(ARRAY_COUNT(dLBTransitionDescs)), 0x20000000, 0, lbTransitionProcDisplay, 32, lbTransitionProcUpdate);
 	}
 	mnVSResultsCreateLogoViewport();
-	mnVSResultsCreateFighterViewport();
+	mnVSResultsMakeFighterCamera();
 	mnVSResultsCreatePlayerIndicatorViewport();
 	mnVSResultsCreateWinnerTextViewport();
 	mnVSResultsCreateOverlayViewport();

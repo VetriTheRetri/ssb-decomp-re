@@ -208,22 +208,25 @@ typedef enum SCBattlePlayerColor
 
 typedef enum SCBattleTeamID
 {
-    nSCBattleTeamIDRed,
+	nSCBattleTeamIDBattleStart,		// Start of Team Battle Team IDs
+    nSCBattleTeamIDRed = nSCBattleTeamIDBattleStart,
     nSCBattleTeamIDBlue,
     nSCBattleTeamIDGreen,
-    nSCBattleTeamIDCom
+	nSCBattleTeamIDBattleEnd = nSCBattleTeamIDGreen, // End of Team Battle Team IDs
+    nSCBattleTeamIDCom,				// Computer Team ID (1P Game / Training Mode / Free for All)
+	nSCBattleTeamIDEnumCount
 
 } SCBattleTeamID;
 
 typedef enum SCBattleGameStatus
 {
-	nSCBattleGameStatusWait,	   // Match not yet started
-	nSCBattleGameStatusGo,		   // Ongoing match
-	nSCBattleGameStatusPause,	   // Player paused
-	nSCBattleGameStatusUnpause,	   // Player unpaused
-	nSCBattleGameStatusEnd = 5,	   // Normal match end
-	nSCBattleGameStatusBossDefeat, // Master Hand defeated
-	nSCBattleGameStatusSet		   // Player has input A + B + Z + R / 1P Game Stage End?
+	nSCBattleGameStatusWait,	   	// Match not yet started
+	nSCBattleGameStatusGo,		   	// Ongoing match
+	nSCBattleGameStatusPause,	   	// Player paused
+	nSCBattleGameStatusUnpause,	   	// Player unpaused
+	nSCBattleGameStatusEnd = 5,	   	// Normal match end
+	nSCBattleGameStatusBossDefeat, 	// Master Hand defeated
+	nSCBattleGameStatusSet		   	// Player has input A + B + Z + R / 1P Game Stage End?
 
 } SCBattleGameStatus;
 

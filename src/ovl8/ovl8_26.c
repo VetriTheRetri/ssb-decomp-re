@@ -63,4 +63,8 @@ void func_ovl8_80385408(s32 arg0)
 }
 
 // 0x80385428
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_26/func_ovl8_80385428.s")
+void func_ovl8_80385428(dbUnknownS38* arg0)
+{
+    dbFunction* temp_v0 = arg0->unk_dbunks38_0x30;
+    temp_v0[2].unk_dbfunc_0x4(temp_v0[2].unk_dbfunc_0x0 + (uintptr_t)arg0);
+}

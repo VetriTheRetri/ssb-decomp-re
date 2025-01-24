@@ -83,10 +83,17 @@ void func_ovl8_803858B0(dbUnknown5* arg0, s32 arg1)
 }
 
 // 0x8038597C
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_28/func_ovl8_8038597C.s")
+void func_ovl8_8038597C(s32 arg0)
+{
+    func_ovl8_803725DC(arg0 + 0x40);
+}
 
 // 0x8038599C
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_28/func_ovl8_8038599C.s")
 
 // 0x80385A1C
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_28/func_ovl8_80385A1C.s")
+void func_ovl8_80385A1C(dbUnknownS38* arg0)
+{
+    dbFunction* temp_v0 = arg0->unk_dbunks38_0x30;
+    temp_v0[2].unk_dbfunc_0x4(temp_v0[2].unk_dbfunc_0x0 + (uintptr_t)arg0);
+}

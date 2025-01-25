@@ -28,7 +28,10 @@ s32 func_ovl8_80385A50(s32 arg0, s32 arg1)
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_29/func_ovl8_80385C70.s")
 
 // 0x80385D34
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_29/func_ovl8_80385D34.s")
+void func_ovl8_80385D34(s32 arg0)
+{
+    func_ovl8_80381308(arg0 + 0xB8);
+}
 
 // 0x80385D54
 void func_ovl8_80385D54(s32 arg0, s32 arg1)
@@ -40,8 +43,8 @@ void func_ovl8_80385D54(s32 arg0, s32 arg1)
 // 0x80385D88
 void func_ovl8_80385D88(dbUnknown5* arg0)
 {
-    s32 var_v0;
-    s32 var_v1;
+    dbUnknownLinkStruct *var_v0;
+    dbUnknownLinkStruct *var_v1;
 
     if ((arg0->unk_dbunk5_0x0 != 0.0f) && ((arg0->unk_dbunk5_0xD0 != 0) || (arg0->unk_dbunk5_0x1E != 0)))
     {

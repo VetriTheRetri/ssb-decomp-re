@@ -298,7 +298,7 @@ extern Acmd *sSYAudioAcmdListBuffers[2];
 extern SYTaskAudio *sSYAudioTask;
 extern SYTaskAudio *sSYAudioSchedulerTasks[2];
 extern ALBank *sSYAudioSequenceALBank1;
-extern s32 *sSYAudioPlayingSound; // 0x8009D954?
+extern void **sSYAudioPlayingSound; // 0x8009D954?
 extern s32 *sSYAudioStartingSound;
 extern s8 *sSYAudioSndpSoundID; // returned by alSndpAllocate
 extern u8 *sSYAudioSoundPriority;
@@ -309,6 +309,12 @@ extern u8 *sSYAudioSoundPan;
 extern u8 *sSYAudioSoundReverbAmt;
 extern ALInstrument *sSYAudioALInstrument;
 extern ALSndPlayer *sSYAudioALSndPlayer;
+
+// 0x8003CB1C
+extern s32 dSYAudioIsSettingsUpdated;
+
+// 0x80044D48
+extern s32 sSYMainThreadingQueue;
 
 // 0x8009D958
 extern ALBank *sSYAudioSequenceALBank2;
@@ -346,6 +352,9 @@ extern f32 sSYAudioSongVolumeRates[1];
 // 0x8009D988
 extern SYAudioSettings sSYAudioCurrentSettings;
 
+// 0x8009D9BB
+extern u8 D_8009D9BB_96DBB;
+
 // 0x8009D9F0
 extern OSTime sSYAudioOSTime;
 
@@ -382,6 +391,11 @@ static void syAudioBnkfPatchBank(ALBank *bank, uintptr_t offset, uintptr_t table
 static void syAudioBnkfPatchInst(ALInstrument *i, uintptr_t offset, uintptr_t table);
 static void syAudioBnkfPatchSound(ALSound *s, uintptr_t offset, uintptr_t table);
 static void syAudioBnkfPatchWaveTable(ALWaveTable *w, uintptr_t offset, uintptr_t table);
+
+extern void func_80026104_26D04(s32, u8);
+extern void func_80026094_26C94(s32, u8);
+
+void syAudioStopSong(s32 arg0);
 
 // 0x8001E5C0
 void alHeapInit(ALHeap *hp, u8 *base, s32 len)
@@ -1069,7 +1083,7 @@ void syAudioMakeSongPlayers(void)
     
     for (i = 0; i < sSYAudioCurrentSettings.unk33; i++)
     {
-        sSYAudioPlayingSound[i] = FALSE;
+        sSYAudioPlayingSound[i] = NULL;
     }
     sSYAudioCSPlayerStatuses = alHeapAlloc(&sSYAudioALHeap, 1, sizeof(*sSYAudioCSPlayerStatuses));
     sSYAudioSongIDs = alHeapAlloc(&sSYAudioALHeap, 1, sizeof(*sSYAudioSongIDs));
@@ -1148,9 +1162,24 @@ void syAudioStopSongAll(void)
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/audio/syAudioPlaySong.s")
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/audio/syAudioStopSong.s")
+// 0x80020AB4
+u32 syAudioPlaySong(s32 arg0, u32 arg1)
+{
+    if (arg1 < sSYAudioALSeqFile->seqCount)
+    {
+        sSYAudioCSPlayerStatuses[arg0] = 1;
+        sSYAudioSongIDs[arg0] = arg1;
+        return arg1;
+    }
+    return ~0U;
+}
 
+// 0x80020B08
+void syAudioStopSong(s32 arg0)
+{
+    sSYAudioCSPlayerStatuses[arg0] = 1;
+    sSYAudioSongIDs[arg0] = -1;
+}
 
 // 0x80020B38
 void syAudioSetSongVolumeID(s32 sngplayer, u32 vol)
@@ -1211,31 +1240,104 @@ void syAudioSetSongPriority(s32 sngplayer, u8 priority)
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/audio/auIsBGMPlaying.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/audio/func_80020D88.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/audio/func_80020E10.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/audio/func_80020E28.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/audio/func_80020E64.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/audio/func_80020EA0.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/audio/func_80020EF8.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/audio/func_80020F4C.s")
-
-// 0x80020FA0
-void func_80020FA0_21BA0(s32 arg0, s32 arg1)
+// 0x80020D58
+s32 auIsBGMPlaying(s32 sngplayer)
 {
-    return;
+    if (gSYAudioALCSPlayers[sngplayer]->state == 0)
+        return 0;
+    return 1;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/audio/func_80020FAC.s")
+// https://decomp.me/scratch/jwM9v
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/audio/func_80020D88.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/audio/func_80020FFC.s")
+s32 func_80020E10(s32 arg0, s32 arg1, s32 arg2, s32 arg3)
+{
+    return -1;
+}
+
+void func_80020E28()
+{
+    s32 var_v0;
+    func_800266A0_272A0();
+    for (var_v0 = 0; var_v0 < D_8009D9BB_96DBB; var_v0++);
+}
+
+void func_80020E64(u32 arg0)
+{
+    s32 var_a0;
+
+    if (arg0 >= 0x7801U)
+        var_a0 = 0x7F;
+    else
+        var_a0 = (arg0 >> 8) & 0xFF;
+
+    func_80026070_26C70(var_a0, arg0);
+}
+
+void func_80020EA0(s32 arg0, u32 arg1)
+{
+    void* sound;
+    u32 var_a2;
+
+    var_a2 = arg1;
+    if (arg1 >= 0x8000U)
+        var_a2 = 0x7FFF;
+
+    sound = sSYAudioPlayingSound[arg0];
+
+    if (sound != 0)
+        func_80026174_26D74(sound, (var_a2 >> 8) & 0xFF, var_a2, arg0);
+}
+
+void func_80020EF8(s32 arg0, s32 arg1)
+{
+    void* sound;
+    u8 var_a2;
+
+    var_a2 = arg1;
+    if (var_a2 >= 0x80)
+        var_a2 = 0x7F;
+
+    sound = sSYAudioPlayingSound[arg0];
+    if (sound != NULL)
+        func_80026104_26D04(sound, var_a2);
+}
+
+void func_80020F4C(s32 arg0, s32 arg1)
+{
+    void* sound;
+    u8 var_a2;
+
+    var_a2 = arg1;
+    if (var_a2 >= 0x80)
+        var_a2 = 0x7F;
+
+    sound = sSYAudioPlayingSound[arg0];
+    if (sound != NULL)
+        func_80026094_26C94(sound, var_a2);
+}
+
+// 0x80020FA0
+void func_80020FA0_21BA0(s32 arg0, s32 arg1) { }
+
+// 0x80020FAC
+void func_80020FAC(s32 arg0)
+{
+    if (sSYAudioPlayingSound[arg0] != 0)
+    {
+        func_80026738_27338(sSYAudioPlayingSound[arg0]);
+        sSYAudioPlayingSound[arg0] = 0;
+    }
+}
+
+// 0x80020FFC
+void func_80020FFC(s32 arg0, u8 arg1)
+{
+    void* sound = sSYAudioPlayingSound[arg0];
+    if (sound != NULL)
+        ((u8*)sound)[0x1f] = arg1;
+}
 
 // 0x8002102C
 void syAudioSetSettingsUpdated(void)
@@ -1261,4 +1363,9 @@ sb32 syAudioGetStatus(void)
     return dSYAudioIsRestarting | dSYAudioIsSettingsUpdated;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/audio/func_8002106C.s")
+void func_8002106C(void)
+{
+    osRecvMesg(&sSYMainThreadingQueue, 0, 0);
+    dSYAudioIsSettingsUpdated = 1;
+    osRecvMesg(&sSYMainThreadingQueue, 0, 1);
+}

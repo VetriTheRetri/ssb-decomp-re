@@ -11,12 +11,23 @@ typedef struct dbUnknownStruct_803864CC
 
 } dbUnknownStruct_803864CC;
 
+extern void* D_ovl8_8038E1E0;
 extern u16 D_ovl8_8038E1E4;
+extern dbUnknownStruct_803864CC D_ovl8_8038E208;
+extern dbUnknownStruct_803864CC D_ovl8_8038E564;
 extern s32 D_803903C0_1ACC10;
 extern s32 D_803903C4_1ACC14;
 extern s32 D_803903C8_1ACC18;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_30/func_ovl8_80385E10.s")
+// 0x80385E10
+void func_ovl8_80385E10(s32 arg0, ...)
+{
+    func_ovl8_803863A4(0x30, 1, &arg0);
+
+    D_ovl8_8038E208 = D_ovl8_8038E564;
+
+    D_803903C0_1ACC10 = func_ovl8_80381C80(&D_ovl8_8038E1E0);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_30/func_ovl8_80385E98.s")
 

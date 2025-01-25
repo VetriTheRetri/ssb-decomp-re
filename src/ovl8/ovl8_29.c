@@ -1,4 +1,5 @@
 #include "common.h"
+#include <sys/develop.h>
 
 // 0x80385A50
 s32 func_ovl8_80385A50(s32 arg0, s32 arg1)
@@ -37,4 +38,22 @@ void func_ovl8_80385D54(s32 arg0, s32 arg1)
 }
 
 // 0x80385D88
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_29/func_ovl8_80385D88.s")
+void func_ovl8_80385D88(dbUnknown5* arg0)
+{
+    s32 var_v0;
+    s32 var_v1;
+
+    if ((arg0->unk_dbunk5_0x0 != 0.0f) && ((arg0->unk_dbunk5_0xD0 != 0) || (arg0->unk_dbunk5_0x1E != 0)))
+    {
+        var_v0 = arg0->unk_dbunk5_0xB0;
+        var_v1 = (var_v0 != 0) ? var_v0 : arg0->unk_dbunk5_0xB4;
+        var_v0 = var_v1;
+    }
+    else
+    {
+        var_v0 = arg0->unk_dbunk5_0xB4;
+    }
+
+    arg0->unk_dbunk5_0x48 = var_v0;
+    func_ovl8_803725DC(&arg0->unk_dbunk5_0x40, arg0);
+}

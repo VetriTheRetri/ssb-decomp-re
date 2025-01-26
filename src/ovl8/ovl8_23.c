@@ -2,6 +2,28 @@
 
 #include <sys/develop.h>
 
+typedef struct {
+	s32 unk0[0x118/4];
+	s16 unk118;
+	u16 unk11A;
+	s32 (*unk11C)(void*, s32, void*);
+} unkStructA;
+
+typedef struct {
+	u8 unk0[0x30];
+	void* unk30;
+	s32 unk34;
+	unkStructA** unk38;
+	u8* unk3C;
+	s16 unk40;
+	s16 unk42;
+	s16 unk44;
+	s32 unk48;
+	s32 unk4C;
+	s32 unk50;
+	s32 unk54;
+} unkStructB;
+
 
 extern dbUnknownLinkStruct D_ovl8_8038CA10;
 extern dbFunction D_ovl8_8038CB58;
@@ -65,15 +87,24 @@ s32 func_ovl8_803835C4(s32* arg0, s32 arg1)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_23/func_ovl8_803837F0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_23/func_ovl8_8038388C.s")
+void func_ovl8_8038388C(unkStructB* arg0)
+{
+	func_ovl8_8037B7F0(arg0->unk3C, arg0->unk42 - 1, arg0);
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_23/func_ovl8_803838B8.s")
+void func_ovl8_803838B8(unkStructB* arg0)
+{
+	func_ovl8_8037B7F0(arg0->unk3C, arg0->unk42, arg0);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_23/func_ovl8_803838E0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_23/func_ovl8_803839D0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_23/func_ovl8_80383A78.s")
+s32 func_ovl8_80383A78(s32* arg0)
+{
+	return arg0[0x3c/4];
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_23/func_ovl8_80383A80.s")
 

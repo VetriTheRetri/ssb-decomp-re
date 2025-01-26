@@ -141,7 +141,9 @@ struct dbUnknown2
 struct dbUnknown3
 {
     s32 unk_dbunk3_0x0;
-    u8 filler_0x4[0x18 - 0x4];
+    s32 unk_dbunk3_0x4;
+    s32 unk_dbunk3_0x8;
+    u8 filler_0xC[0xC];
     dbFunction *unk_dbunk3_0x18;
     void *unk_dbunk3_0x1C;
     dbUnknown3 *unk_dbunk3_0x20;

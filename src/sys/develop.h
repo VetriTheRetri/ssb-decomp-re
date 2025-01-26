@@ -111,8 +111,8 @@ struct dbUnknownLinkStruct
     sb32 unk_dbunkstruct_0x28;
     u16 unk_dbunkstruct_0x2C;
     s32 unk_dbunkstruct_0x30;
-    s32 unk_dbunkstruct_0x34;
-    s32 unk_dbunkstruct_0x38;
+    void** unk_dbunkstruct_0x34;
+    dbUnknownLinkStruct *unk_dbunkstruct_0x38;
     s32 unk_dbunkstruct_0x3C;
     s32 unk_dbunkstruct_0x40;
     s32 unk_dbunkstruct_0x44;

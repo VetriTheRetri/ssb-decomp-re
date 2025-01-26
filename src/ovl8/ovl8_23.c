@@ -108,7 +108,21 @@ s32 func_ovl8_80383A78(s32* arg0)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_23/func_ovl8_80383A80.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_23/func_ovl8_80383B58.s")
+void func_ovl8_80383B58(unkStructB* arg0)
+{
+	dbFunction* db_func;
+	db_func = arg0->unk30;
+	arg0->unk3C = NULL;
+	db_func[25].unk_dbfunc_0x4(db_func[25].unk_dbfunc_0x0 + (uintptr_t)arg0, 0x20, arg0);
+	arg0->unk40 = 0x20;
+	arg0->unk44 = 0;
+	arg0->unk42 = 0;
+	*arg0->unk3C = 0;
+	arg0->unk50 = 0;
+	arg0->unk54 = 0;
+	arg0->unk48 = 0;
+	arg0->unk4C = 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_23/func_ovl8_80383BC4.s")
 
@@ -118,7 +132,16 @@ s32 func_ovl8_80383A78(s32* arg0)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_23/func_ovl8_80383E98.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_23/func_ovl8_80383F74.s")
+void func_ovl8_80383F74(dbUnknownLinkStruct* arg0)
+{
+	dbFunction *db_func;
+	if (arg0->unk_dbunkstruct_0x54 != NULL)
+	{
+		db_func = arg0->unk_dbunkstruct_0x38->db_func;
+		db_func[35].unk_dbfunc_0x4(db_func[35].unk_dbfunc_0x0 + (uintptr_t)arg0->unk_dbunkstruct_0x38, 1);
+		arg0->unk_dbunkstruct_0x54 = NULL;
+	}
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_23/func_ovl8_80383FC8.s")
 

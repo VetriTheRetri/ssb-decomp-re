@@ -19,7 +19,7 @@ typedef struct MNVSResultsScore
 } MNVSResultsScore;
 
 // Externs
-extern f32 dSCSubsysFighterScales[12];           // 0x80390D90
+extern f32 dSCSubsysDemoFighterScales[12];           // 0x80390D90
 
 extern intptr_t FILE_022_TKO_TEXTURE_IMAGE_OFFSET; // file 0x022 image offset for TKO texture
 extern intptr_t FILE_022_PLACE_TEXTURE_IMAGE_OFFSET; // file 0x022 image offset for Place texture
@@ -50,7 +50,7 @@ void mnVSResultsDrawResults1(GObj *gobj);
 void mnVSResultsDrawResults2(GObj *gobj);
 void mnVSResultsDrawResults3(GObj *gobj);
 void mnVSResultsDrawResultsNoContest(GObj *gobj);
-u8 mnVSResultsGetWinningTeam();
+u8 mnVSResultsGetWinTeam();
 s32 mnVSResultsGetWinPlayer();
 s32 mnVSResultsGetFighterKind(s32 player);
 s32 mnVSResultsGetPointsDirect(s32 player);
@@ -390,7 +390,7 @@ void mnVSResultsAnnounceWinner(void)
 		switch (sMNVSResultsTotalTimeTics)
 		{
 		case 81:
-			func_800269C0_275C0(announcer_teams[mnVSResultsGetWinningTeam()]);
+			func_800269C0_275C0(announcer_teams[mnVSResultsGetWinTeam()]);
 			break;
 			
 		case 130:
@@ -616,7 +616,7 @@ s32 mnVSResultsGetWinPlayer()
 }
 
 // 0x80132A2C
-u8 mnVSResultsGetWinningTeam()
+u8 mnVSResultsGetWinTeam(void)
 {
 	return gSCManagerTransferBattleState.players[mnVSResultsGetWinPlayer()].team;
 }
@@ -688,7 +688,7 @@ void mnVSResultsCreateLogo()
 	if (sMNVSResultsIsTeamBattle == TRUE)
 	{
 		winner_char_id = mnVSResultsGetFighterKind(mnVSResultsGetWinPlayer());
-		color = colors[mnVSResultsGetWinningTeam()];
+		color = colors[mnVSResultsGetWinTeam()];
 	}
 
 	logo_gobj = gcMakeGObjSPAfter(0, 0, 0x17, 0x80000000);
@@ -769,7 +769,7 @@ void mnVSResultsCreateBackground()
 			winner_player = mnVSResultsGetWinPlayer();
 
 		if (sMNVSResultsIsTeamBattle == TRUE)
-			winner_player = team_colors[mnVSResultsGetWinningTeam()];
+			winner_player = team_colors[mnVSResultsGetWinTeam()];
 	}
 
 	bg_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
@@ -985,17 +985,17 @@ s32 mnVSResultsGetSpot(s32 player)
 }
 
 // 0x801338EC
-void mnVSResultsSetFighterScale(GObj* fighter_gobj, s32 player, s32 fkind, s32 place)
+void mnVSResultsSetFighterScale(GObj *fighter_gobj, s32 player, s32 fkind, s32 place)
 {
-	DObjGetStruct(fighter_gobj)->scale.vec.f.x = dSCSubsysFighterScales[fkind];
-	DObjGetStruct(fighter_gobj)->scale.vec.f.y = dSCSubsysFighterScales[fkind];
-	DObjGetStruct(fighter_gobj)->scale.vec.f.z = dSCSubsysFighterScales[fkind];
+	DObjGetStruct(fighter_gobj)->scale.vec.f.x = dSCSubsysDemoFighterScales[fkind];
+	DObjGetStruct(fighter_gobj)->scale.vec.f.y = dSCSubsysDemoFighterScales[fkind];
+	DObjGetStruct(fighter_gobj)->scale.vec.f.z = dSCSubsysDemoFighterScales[fkind];
 }
 
 // 0x8013392C
 void mnVSResultsSpawnFighter(s32 player)
 {
-	s32 foo, bar, baz;
+	s32 unused[3];
 	FTDesc desc = dFTManagerDefaultFighterDesc;
 
 	desc.fkind = mnVSResultsGetFighterKind(player);
@@ -1006,7 +1006,7 @@ void mnVSResultsSpawnFighter(s32 player)
 }
 
 // 0x801339F4
-void mnVSResultsSetIndicatorPosition(GObj* indicator_gobj, s32 player)
+void mnVSResultsSetIndicatorPosition(GObj *indicator_gobj, s32 player)
 {
 	s32 sp214;
 	s32 temp_s0;
@@ -1288,7 +1288,7 @@ void mnVSResultsDrawTeamWins()
 		0.0F, 0.0F, 0.0
 	};
 
-	team_id = mnVSResultsGetWinningTeam();
+	team_id = mnVSResultsGetWinTeam();
 
 	mnVSResultsDrawString(team_strings[team_id], x_positions[team_id], 180.0F, team_id, 1.0F);
 	mnVSResultsDrawWinsText(team_id);

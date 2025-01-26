@@ -6,7 +6,7 @@
 #include "scfunctions.h"
 
 extern char dSCManagerBuildDate[/* */];
-extern f32 dSCSubsysFighterScales[/* */];
+extern f32 dSCSubsysDemoFighterScales[/* */];
 
 extern s32 gSCManagerUnkown0x800A50F0;
 extern u32 gSCManagerCIC;

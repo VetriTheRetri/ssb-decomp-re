@@ -9,7 +9,7 @@
 extern void scManagerFuncDraw();
 
 // Externs
-extern f32 dSCSubsysFighterScales[12]; // dSCSubsysFighterScales
+extern f32 dSCSubsysDemoFighterScales[12]; // dSCSubsysDemoFighterScales
 
 // Offsets
 extern intptr_t FILE_000_COLON_IMAGE_OFFSET; // file 0x000 image offset for colon
@@ -1371,9 +1371,9 @@ void mnVSPlayersSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 fkind, s32 cos
 
 		DObjGetStruct(fighter_gobj)->rotate.vec.f.y = initial_y_rotation;
 
-		DObjGetStruct(fighter_gobj)->scale.vec.f.x = dSCSubsysFighterScales[fkind];
-		DObjGetStruct(fighter_gobj)->scale.vec.f.y = dSCSubsysFighterScales[fkind];
-		DObjGetStruct(fighter_gobj)->scale.vec.f.z = dSCSubsysFighterScales[fkind];
+		DObjGetStruct(fighter_gobj)->scale.vec.f.x = dSCSubsysDemoFighterScales[fkind];
+		DObjGetStruct(fighter_gobj)->scale.vec.f.y = dSCSubsysDemoFighterScales[fkind];
+		DObjGetStruct(fighter_gobj)->scale.vec.f.z = dSCSubsysDemoFighterScales[fkind];
 
 		if (gMnBattlePanels[port_id].player_type == mnPanelTypeCPU)
 			ftParamCheckSetFighterColAnimID(fighter_gobj, 1, 0);

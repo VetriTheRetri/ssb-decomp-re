@@ -222,9 +222,9 @@ void sc1PChallengerMakeFighter(s32 fkind)
     DObjGetStruct(fighter_gobj)->translate.vec.f.y = -550.0F;
     DObjGetStruct(fighter_gobj)->translate.vec.f.z = 0.0F;
     
-    DObjGetStruct(fighter_gobj)->scale.vec.f.x = dSCSubsysFighterScales[fkind];
-    DObjGetStruct(fighter_gobj)->scale.vec.f.y = dSCSubsysFighterScales[fkind];
-    DObjGetStruct(fighter_gobj)->scale.vec.f.z = dSCSubsysFighterScales[fkind];
+    DObjGetStruct(fighter_gobj)->scale.vec.f.x = dSCSubsysDemoFighterScales[fkind];
+    DObjGetStruct(fighter_gobj)->scale.vec.f.y = dSCSubsysDemoFighterScales[fkind];
+    DObjGetStruct(fighter_gobj)->scale.vec.f.z = dSCSubsysDemoFighterScales[fkind];
     
     ftParamCheckSetFighterColAnimID(fighter_gobj, 0x50, 0);
 }

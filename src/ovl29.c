@@ -12,7 +12,7 @@ extern void scManagerFuncDraw();
 
 // Externs
 
-extern f32 dSCSubsysFighterScales[12]; // dSCSubsysFighterScales
+extern f32 dSCSubsysDemoFighterScales[12]; // dSCSubsysDemoFighterScales
 
 // Offsets
 extern intptr_t FILE_011_START_IMAGE_OFFSET; // Press Start's "Start" texture
@@ -1228,9 +1228,9 @@ void mn1PBonusPlayersSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 fkind)
 
 		DObjGetStruct(fighter_gobj)->rotate.vec.f.y = initial_y_rotation;
 
-		DObjGetStruct(fighter_gobj)->scale.vec.f.x = dSCSubsysFighterScales[fkind];
-		DObjGetStruct(fighter_gobj)->scale.vec.f.y = dSCSubsysFighterScales[fkind];
-		DObjGetStruct(fighter_gobj)->scale.vec.f.z = dSCSubsysFighterScales[fkind];
+		DObjGetStruct(fighter_gobj)->scale.vec.f.x = dSCSubsysDemoFighterScales[fkind];
+		DObjGetStruct(fighter_gobj)->scale.vec.f.y = dSCSubsysDemoFighterScales[fkind];
+		DObjGetStruct(fighter_gobj)->scale.vec.f.z = dSCSubsysDemoFighterScales[fkind];
 	}
 }
 

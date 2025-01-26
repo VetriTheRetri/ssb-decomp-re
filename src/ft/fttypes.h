@@ -52,33 +52,10 @@ union FTAnimDesc
 
     struct
     {
-        u32 is_use_xrotn_joint : 1;         // 0x80000000
-        u32 is_use_transn_joint : 1;        // 0x40000000
-        u32 is_use_yrotn_joint : 1;         // 0x20000000
-        u32 x198_flag_b3 : 1;
-        u32 x198_flag_b4 : 1;
-        u32 x198_flag_b5 : 1;
-        u32 x198_flag_b6 : 1;
-        u32 x198_flag_b7 : 1;
-        u32 x199_flag_b0 : 1;
-        u32 x199_flag_b1 : 1;
-        u32 x199_flag_b2 : 1;
-        u32 x199_flag_b3 : 1;
-        u32 x199_flag_b4 : 1;
-        u32 x199_flag_b5 : 1;
-        u32 x199_flag_b6 : 1;
-        u32 x199_flag_b7 : 1;
-        u32 x19A_flag_b0 : 1;
-        u32 x19A_flag_b1 : 1;
-        u32 x19A_flag_b2 : 1;
-        u32 x19A_flag_b3 : 1;
-        u32 x19A_flag_b4 : 1;
-        u32 x19A_flag_b5 : 1;
-        u32 x19A_flag_b6 : 1;
-        u32 x19A_flag_b7 : 1;
-        u32 x19B_flag_b0 : 1;
-        u32 x19B_flag_b1 : 1;
-        u32 x19B_flag_b2 : 1;
+        ub32 is_use_xrotn_joint : 1;        // 0x80000000
+        ub32 is_use_transn_joint : 1;       // 0x40000000
+        ub32 is_use_yrotn_joint : 1;        // 0x20000000
+        ub32 is_enabled_joints : 24;        // 0x10000000 to 0x00000020 - not actually a single variable, but 24 bits per joint ID
         ub32 is_use_submotion_script : 1;   // 0x00000010
         ub32 is_anim_joint : 1;             // 0x00000008 - whether current animation is type Figatree (0) or AnimJoint (1)
         ub32 is_have_translate_scale : 1;   // 0x00000004

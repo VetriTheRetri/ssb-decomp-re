@@ -362,7 +362,7 @@ s32 syVectorDiffDirection3D(Vec3f *sub, Vec3f *a, Vec3f *b)
 }
 
 // gets the magnitude of the difference of 2 vectors
-f32 syVectorMagDiff3D(Vec3f *sub, Vec3f *src)
+f32 syVectorDist3D(Vec3f *sub, Vec3f *src)
 {
     Vec3f res;
 

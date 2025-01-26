@@ -45,7 +45,7 @@ extern Vec3f* unref_80019888(Vec3f *a, Vec3f *b);
 extern s32 syVectorDirection3D(Vec3f *a, Vec3f *b);
 extern Vec3f* syVectorNormCross3D(Vec3f *a, Vec3f *b, Vec3f *dst);
 extern s32 syVectorDiffDirection3D(Vec3f *sub, Vec3f *a, Vec3f *b);
-extern f32 syVectorMagDiff3D(Vec3f *sub, Vec3f *src);
+extern f32 syVectorDist3D(Vec3f *sub, Vec3f *src);
 extern f32 unref_80019B00(Vec3f *arg0, Vec3f *arg1, Vec3f *arg2, Vec3f *arg3);
 
 #endif /* SYS_VEC_H */

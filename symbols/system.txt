@@ -87,7 +87,7 @@ unref_80019888 = 0x80019888;
 syVectorDirection3D = 0x80019914;
 syVectorNormCross3D = 0x80019980;
 syVectorDiffDirection3D = 0x80019A2C;
-syVectorMagDiff3D = 0x80019AB0;
+syVectorDist3D = 0x80019AB0;
 unref_80019B00 = 0x80019B00;
 
 syDmaCreateMesgQueue = 0x80002A60;

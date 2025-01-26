@@ -73,6 +73,9 @@ extern intptr_t lMNDataCommonArrowLeftSprite;           // 0x00000BE0
 extern intptr_t lMNDataCommonArrowRightSprite;          // 0x00000C80
 
 // lMNPlayers is only temporarily here
+extern intptr_t lMNPlayersGameModeRoyalSprite;			// 0x00000280
+extern intptr_t lMNPlayersGameModeTeamBattleSprite;		// 0x000004E0
+
 extern intptr_t lMNPlayersMarioPortraitSprite;		    // 0x00004728
 extern intptr_t lMNPlayersFoxPortraitSprite;		    // 0x0000D068
 extern intptr_t lMNPlayersDonkeyPortraitSprite;		    // 0x00008BC8

@@ -53,6 +53,9 @@ lFTEmblemModelsMotherMObjSub = 0x00004840;
 lFTEmblemModelsMotherDObjDesc = 0x00005A00;
 lFTEmblemModelsMotherMatAnimJoint = 0x00005A84;
 
+lMNPlayersGameModeRoyalSprite = 0x00000280;
+lMNPlayersGameModeTeamBattleSprite = 0x000004E0;
+
 lMNPlayersMarioPortraitSprite = 0x00004728;
 lMNPlayersFoxPortraitSprite = 0x0000D068;
 lMNPlayersDonkeyPortraitSprite = 0x00008BC8;
@@ -2003,6 +2006,11 @@ FILE_017_APOSTROPHE_IMAGE_OFFSET = 0x1F48;
 FILE_017_DOUBLE_QUOTE_IMAGE_OFFSET = 0x1FC8;
 FILE_019_POLYGON_STOCK_ICON_IMAGE_OFFSET = 0x80;
 FILE_01A_TRAINING_BACKGROUND_IMAGE_OFFSET = 0x20718;
+
+lMNVSResults1PArrowSprite = 0x000049E8;
+lMNVSResults2PArrowSprite = 0x00004B08;
+lMNVSResults3PArrowSprite = 0x00004C28;
+lMNVSResults4PArrowSprite = 0x00004D48;
 
 lMNMapsCastleNameSprite = 0x000001F8;
 lMNMapsSectorNameSprite = 0x00000438;

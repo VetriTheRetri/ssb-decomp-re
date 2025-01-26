@@ -10,61 +10,61 @@ extern alSoundEffect* func_800269C0_275C0(u16);
 // // // // // // // // // // // //
 
 // 0x8018CF90
-s32 sFTPublicCommonFramesSince;              // Frames passed since last audience reaction
+s32 sFTPublicCommonTicsPast;                // Frames passed since last audience reaction
 
 // 0x8018CF94
-u32 sFTPublicCommonPlayerNum;                // Can go beyond actual max player num? Also, either this...
+u32 sFTPublicCommonPlayerNum;               // Can go beyond actual max player num? Also, either this...
 
 // 0x8018CF98
-f32 sFTPublicCommonKnockback;                // Last knockback value that prompted audience reaction?
+f32 sFTPublicCommonKnockback;               // Last knockback value that prompted audience reaction?
 
 // 0x8018CF9C
-alSoundEffect *sFTPublicCommonALSound;       // Current common reaction sound struct
+alSoundEffect *sFTPublicCommonALSound;      // Current common reaction sound struct
 
 // 0x8018CFA0
-u16 sFTPublicCommonOrder;                    // Current common reaction's sound effect number
+u16 sFTPublicCommonOrder;                   // Current common reaction's sound effect number
 
 // 0x8018CFA4
-sb32 sFTPublicCallIsInterrupt;               // If TRUE, stop player's crowd chant
+sb32 sFTPublicCallIsInterrupt;              // If TRUE, stop player's crowd chant
 
 // 0x8018CFA8
-s32 sFTPublicCallWait;                       // Wait this much before new audience cheer can occur?
+s32 sFTPublicCallWait;                      // Wait this much before new audience cheer can occur?
 
 // 0x8018CFAC
-s32 sFTPublicCallPlayerNum;                  // ...or this is u32 and the other s32, not entirely sure which
+s32 sFTPublicCallPlayerNum;                 // ...or this is u32 and the other s32, not entirely sure which
 
 // 0x8018CFB0
-alSoundEffect *sFTPublicCallALSound;         // Fighter's chant sound struct
+alSoundEffect *sFTPublicCallALSound;        // Fighter's chant sound struct
 
 // 0x8018CFB4
-u16 sFTPublicCallOrder;                      // Current chant's sound effect number
+u16 sFTPublicCallOrder;                     // Current chant's sound effect number
 
 // 0x8018CFB8
-s32 sFTPublicCallCount;                      // Number of times fighter's name has been chanted
+s32 sFTPublicCallCount;                     // Number of times fighter's name has been chanted
 
 // 0x8018CFBC
-u32 sFTPublicCallID;                         // Sound effect ID of audience chant for fighter
+u32 sFTPublicCallID;                        // Sound effect ID of audience chant for fighter
 
 // 0x8018CFC0
-s32 sFTPublicPlayersDown;                    // Number of players too close to the bottom blast zone
+s32 sFTPublicPlayersDown;                   // Number of players too close to the bottom blast zone
 
 // 0x8018CFC4
-// s32 D_ovl3_8018CFC4;                         // Might be required padding? Not sure
+// s32 D_ovl3_8018CFC4;                     // Might be required padding? Not sure
 
 // 0x8018CFC8                       
-u16 sFTPublicDefeatedVoiceIDs[10];           // Array of announcer voices to play for when a player is defeated  
+u16 sFTPublicDefeatedVoiceIDs[10];          // Array of announcer voices to play for when a player is defeated  
 
 // 0x8018CFDC
-u32 sFTPublicDefeatedQueueCurrent;           // Current array index to play from queued "<player> defeated" announcement voice IDs
+u32 sFTPublicDefeatedQueueCurrent;          // Current array index to play from queued "<player> defeated" announcement voice IDs
 
 // 0x8018CFE0
-u32 sFTPublicDefeatedQueueEnd;               // Last array index of queued "<player> defeated" announcement voice IDs
+u32 sFTPublicDefeatedQueueEnd;              // Last array index of queued "<player> defeated" announcement voice IDs
 
 // 0x8018CFE4
-alSoundEffect *sFTPublicDefeatedALSound;     // "<player> defeated" announcement voice sound struct
+alSoundEffect *sFTPublicDefeatedALSound;    // "<player> defeated" announcement voice sound struct
 
 // 0x8018CFE8
-u16 sFTPublicDefeatedCurrentOrder;           // Current "<player> defeated" announcement's sound effect number
+u16 sFTPublicDefeatedCurrentOrder;          // Current "<player> defeated" announcement's sound effect number
 
 // // // // // // // // // // // //
 //                               //
@@ -197,7 +197,7 @@ void ftPublicDecideCommon(GObj *fighter_gobj, s32 player_number, f32 knockback, 
     {
         ftPublicDecideCall(fighter_gobj, player_number, knockback);
     }
-    else if ((player_number == sFTPublicCommonPlayerNum) && (sFTPublicCommonFramesSince < 60))
+    else if ((player_number == sFTPublicCommonPlayerNum) && (sFTPublicCommonTicsPast < 60))
     {
         ftPublicDecideCall(fighter_gobj, player_number, (knockback > sFTPublicCommonKnockback) ? knockback : sFTPublicCommonKnockback);
     }
@@ -218,7 +218,7 @@ void ftPublicDecideCommon(GObj *fighter_gobj, s32 player_number, f32 knockback, 
     {
         ftPublicPlayCommon(nSYAudioVoicePublicDamageS);
     }
-    sFTPublicCommonFramesSince = 0;
+    sFTPublicCommonTicsPast = 0;
     sFTPublicCommonPlayerNum = player_number;
     sFTPublicCommonKnockback = knockback;
 }
@@ -304,9 +304,9 @@ void ftPublicProcUpdate(GObj *public_gobj)
     GObj *down_gobj;
     GObj *fighter_gobj;
 
-    if (sFTPublicCommonFramesSince < (U16_MAX + 1))
+    if (sFTPublicCommonTicsPast < (U16_MAX + 1))
     {
-        sFTPublicCommonFramesSince++;
+        sFTPublicCommonTicsPast++;
     }
     players_down_bak = sFTPublicPlayersDown;
     sFTPublicPlayersDown = 0;
@@ -405,7 +405,7 @@ void ftPublicMakeActor(void)
         nGCProcessKindFunc, 
         0
     );
-    sFTPublicCommonFramesSince = U16_MAX + 1;
+    sFTPublicCommonTicsPast = U16_MAX + 1;
     sFTPublicCommonPlayerNum = -1;
     sFTPublicCommonKnockback = 0.0F;
     sFTPublicCommonALSound = NULL;

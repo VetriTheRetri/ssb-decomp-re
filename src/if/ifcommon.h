@@ -50,20 +50,25 @@ extern intptr_t lIFCommonAnnounceCommonLetterF;             // 0x00001A00
 extern intptr_t lIFCommonAnnounceCommonLetterG;             // 0x00001F08
 extern intptr_t lIFCommonAnnounceCommonLetterH;             // 0x00002408
 extern intptr_t lIFCommonAnnounceCommonLetterI;             // 0x000026B8
+extern intptr_t lIFCommonAnnounceCommonLetterJ;             // 0x00002A90
 extern intptr_t lIFCommonAnnounceCommonLetterK;             // 0x00002F98
 extern intptr_t lIFCommonAnnounceCommonLetterL;             // 0x00003358
 extern intptr_t lIFCommonAnnounceCommonLetterM;             // 0x00003980
 extern intptr_t lIFCommonAnnounceCommonLetterN;             // 0x00003E88
 extern intptr_t lIFCommonAnnounceCommonLetterO;             // 0x000044B0
 extern intptr_t lIFCommonAnnounceCommonLetterP;             // 0x00004890
+extern intptr_t lIFCommonAnnounceCommonLetterQ;             // 0x00004F10
 extern intptr_t lIFCommonAnnounceCommonLetterR;             // 0x00005418
 extern intptr_t lIFCommonAnnounceCommonLetterS;             // 0x000057F0
 extern intptr_t lIFCommonAnnounceCommonLetterT;             // 0x00005BD0
 extern intptr_t lIFCommonAnnounceCommonLetterU;             // 0x000060D8
 extern intptr_t lIFCommonAnnounceCommonLetterV;             // 0x000065D8
+extern intptr_t lIFCommonAnnounceCommonLetterW;             // 0x00006C00
 extern intptr_t lIFCommonAnnounceCommonLetterX;             // 0x00007108
 extern intptr_t lIFCommonAnnounceCommonLetterY;             // 0x00007608
+extern intptr_t lIFCommonAnnounceCommonLetterZ;             // 0x00007AE8
 extern intptr_t lIFCommonAnnounceCommonSymbolExclaim;       // 0x00007D98
+extern intptr_t lIFCommonAnnounceCommonSymbolPeriod;        // 0x00007E50
 
 extern intptr_t lIFCommonAnnounceTimeUpLetterT;             // 0x0000E4A8
 extern intptr_t lIFCommonAnnounceTimeUpLetterI;             // 0x0000F740

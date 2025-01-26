@@ -288,22 +288,22 @@ u8 dIFCommonPlayerMagnifyColorsG[/* */] = { 0x0D, 0x00, 0xE1, 0xFF, 0xFF };
 u8 dIFCommonPlayerMagnifyColorsB[/* */] = { 0x17, 0xFF, 0x00, 0x00, 0xFF };
 
 // 0x8012EF7C
-u8 dIFCommonPlayerTagSpriteColorsR[/* */] = { 0xED, 0x4E, 0xFF, 0x4E, 0xAC };
+u8 dIFCommonPlayerTagPrimColorsR[/* */] = { 0xED, 0x4E, 0xFF, 0x4E, 0xAC };
 
 // 0x8012EF84
-u8 dIFCommonPlayerTagSpriteColorsG[/* */] = { 0x36, 0x4E, 0xDF, 0xB9, 0xAC };
+u8 dIFCommonPlayerTagPrimColorsG[/* */] = { 0x36, 0x4E, 0xDF, 0xB9, 0xAC };
 
 // 0x8012EF8C
-u8 dIFCommonPlayerTagSpriteColorsB[/* */] = { 0x36, 0xE9, 0x1A, 0x4E, 0xAC };
+u8 dIFCommonPlayerTagPrimColorsB[/* */] = { 0x36, 0xE9, 0x1A, 0x4E, 0xAC };
 
 // 0x8012EF94
-u8 dIFCommonPlayerTagShadowColorsR[/* */] = { 0x00, 0x00, 0x00, 0x00, 0x00 };
+u8 dIFCommonPlayerTagEnvColorsR[/* */] = { 0x00, 0x00, 0x00, 0x00, 0x00 };
 
 // 0x8012EF9C
-u8 dIFCommonPlayerTagShadowColorsG[/* */] = { 0x00, 0x00, 0x00, 0x00, 0x00 };
+u8 dIFCommonPlayerTagEnvColorsG[/* */] = { 0x00, 0x00, 0x00, 0x00, 0x00 };
 
 // 0x8012EFA4
-u8 dIFCommonPlayerTagShadowColorsB[/* */] = { 0x00, 0x00, 0x00, 0x00, 0x00 };
+u8 dIFCommonPlayerTagEnvColorsB[/* */] = { 0x00, 0x00, 0x00, 0x00, 0x00 };
 
 // 0x8012EFAC
 intptr_t dIFCommonPlayerTagSpriteOffsets[/* */] =
@@ -435,7 +435,7 @@ f32 sIFCommonBattlePauseCameraEyeYOrigin;
 Sprite *sIFCommonItemArrowSprite;
 
 // 0x801317F4 - Number of unique teams in-game minus one?
-s32 sIFCommonBattlePlacement;
+s32 sIFCommonBattlePlace;
 
 // 0x801317F8 - Padding?
 s32 sIFCommonPad0x801317F8;
@@ -1878,13 +1878,13 @@ void ifCommonPlayerTagMakeInterface(void)
 
             color_id = gSCManagerBattleState->players[player].color;
 
-            sobj->sprite.red   = dIFCommonPlayerTagSpriteColorsR[color_id];
-            sobj->sprite.green = dIFCommonPlayerTagSpriteColorsG[color_id];
-            sobj->sprite.blue  = dIFCommonPlayerTagSpriteColorsB[color_id];
+            sobj->sprite.red   = dIFCommonPlayerTagPrimColorsR[color_id];
+            sobj->sprite.green = dIFCommonPlayerTagPrimColorsG[color_id];
+            sobj->sprite.blue  = dIFCommonPlayerTagPrimColorsB[color_id];
 
-            sobj->envcolor.r = dIFCommonPlayerTagShadowColorsR[color_id];
-            sobj->envcolor.g = dIFCommonPlayerTagShadowColorsG[color_id];
-            sobj->envcolor.b = dIFCommonPlayerTagShadowColorsB[color_id];
+            sobj->envcolor.r = dIFCommonPlayerTagEnvColorsR[color_id];
+            sobj->envcolor.g = dIFCommonPlayerTagEnvColorsG[color_id];
+            sobj->envcolor.b = dIFCommonPlayerTagEnvColorsB[color_id];
 
             ifSetPlayer(interface_gobj, player);
         }
@@ -2604,7 +2604,7 @@ void ifCommonBattleInitPlacement(void)
             teams++;
         }
     }
-    sIFCommonBattlePlacement = teams - 1;
+    sIFCommonBattlePlace = teams - 1;
 }
 
 // 0x80113638
@@ -2726,7 +2726,7 @@ void ifCommonBattleUpdateScoreStocks(FTStruct *fp)
         switch (gSCManagerBattleState->is_team_battle)
         {
         case FALSE:
-            gSCManagerBattleState->players[team].placement = sIFCommonBattlePlacement;
+            gSCManagerBattleState->players[team].place = sIFCommonBattlePlace;
             break;
 
         case TRUE:
@@ -2738,19 +2738,19 @@ void ifCommonBattleUpdateScoreStocks(FTStruct *fp)
                 }
                 if (gSCManagerBattleState->players[i].team == team)
                 {
-                    gSCManagerBattleState->players[i].placement = sIFCommonBattlePlacement;
+                    gSCManagerBattleState->players[i].place = sIFCommonBattlePlace;
                 }
             }
             break;
         }
-        sIFCommonBattlePlacement--;
+        sIFCommonBattlePlace--;
 
-        if (sIFCommonBattlePlacement == 0)
+        if (sIFCommonBattlePlace == 0)
         {
             ifCommonAnnounceEndMessage();
         }
     }
-    if ((sIFCommonBattlePlacement != 0) && (fp->stock_count == -1))
+    if ((sIFCommonBattlePlace != 0) && (fp->stock_count == -1))
     {
         if (fp->pkind == nFTPlayerKindMan)
         {

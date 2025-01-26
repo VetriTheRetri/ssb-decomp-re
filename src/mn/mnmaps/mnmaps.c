@@ -297,7 +297,7 @@ void mnMapsMakeString(GObj *gobj, const char *str, f32 x, f32 y, u32 *color)
 
 		&lMNCommonFontsSymbolApostropheSprite,
 		&lMNCommonFontsSymbolPercentSprite,
-		&lMNCommonFontsSymbolPeriodSprite,
+		&lMNCommonFontsSymbolPeriodSprite
 	};
 	SObj *sobj;
 	f32 start_x = x;

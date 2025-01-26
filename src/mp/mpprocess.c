@@ -52,7 +52,6 @@ void mpProcessSetMultiWallLineID(s32 line_id)
             return;
         }
     }
-
     if (sMPProcessMultiWallCollidesNum != ARRAY_COUNT(sMPProcessMultiWallCollideLineIDs))
     {
         sMPProcessMultiWallCollideLineIDs[sMPProcessMultiWallCollidesNum] = line_id;

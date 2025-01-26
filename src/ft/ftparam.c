@@ -159,7 +159,7 @@ void ftParamInitPlayerBattleStats(s32 player, GObj *fighter_gobj)
 {
     s32 i;
 
-    gSCManagerBattleState->players[player].placement = 0;
+    gSCManagerBattleState->players[player].place = 0;
     gSCManagerBattleState->players[player].falls = gSCManagerBattleState->players[player].score = 0;
 
     for (i = 0; i < ARRAY_COUNT(gSCManagerBattleState->players); i++)

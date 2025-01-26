@@ -326,7 +326,7 @@ struct SCPlayerData
 	u8 tag;			                        		// Player tag sprite index (i.e. 1P, 2P, 3P, 4P, CP or heart)
 	s8 stock_count;			                        // -1 = player has no stocks
 	ub8 is_spgame_team;		                        // Respawn flag of multi-man enemy teams (Yoshi, Kirby, Fighting Polygons) in 1P mode
-	u8 placement;			                        // Player's placement in battle results
+	u8 place;			                        	// Player's placement in battle results
 	s32 falls;
 	s32 score;								        // Caps at positive 999, crashes if way too low in the negatives
 	s32 total_kos_players[GMCOMMON_PLAYERS_MAX];    // KOs scored on other players

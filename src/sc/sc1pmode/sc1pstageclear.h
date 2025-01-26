@@ -19,30 +19,6 @@ extern intptr_t lSC1PStageClearTimerDamageDigit7;			// 0x0000C1A8
 extern intptr_t lSC1PStageClearTimerDamageDigit8;			// 0x0000C308
 extern intptr_t lSC1PStageClearTimerDamageDigit9;			// 0x0000C468
 
-// Digit sprites used for bonus stat points
-extern intptr_t lSC1PStageClearBonusStatDigit0;				// 0x00000068
-extern intptr_t lSC1PStageClearBonusStatDigit1;				// 0x00000118
-extern intptr_t lSC1PStageClearBonusStatDigit2;				// 0x000001C8
-extern intptr_t lSC1PStageClearBonusStatDigit3;				// 0x00000278
-extern intptr_t lSC1PStageClearBonusStatDigit4;				// 0x00000328
-extern intptr_t lSC1PStageClearBonusStatDigit5;				// 0x000003D8
-extern intptr_t lSC1PStageClearBonusStatDigit6;				// 0x00000488
-extern intptr_t lSC1PStageClearBonusStatDigit7;				// 0x00000538
-extern intptr_t lSC1PStageClearBonusStatDigit8;				// 0x000005E8
-extern intptr_t lSC1PStageClearBonusStatDigit9;				// 0x00000698
-
-// Digit sprites uesd for total score points
-extern intptr_t lSC1PStageClearScoreDigit0;					// 0x00000148
-extern intptr_t lSC1PStageClearScoreDigit1;					// 0x000002D8
-extern intptr_t lSC1PStageClearScoreDigit2;					// 0x00000500
-extern intptr_t lSC1PStageClearScoreDigit3;					// 0x00000698
-extern intptr_t lSC1PStageClearScoreDigit4;					// 0x000008C0
-extern intptr_t lSC1PStageClearScoreDigit5;					// 0x00000A58
-extern intptr_t lSC1PStageClearScoreDigit6;					// 0x00000C80
-extern intptr_t lSC1PStageClearScoreDigit7;					// 0x00000E18
-extern intptr_t lSC1PStageClearScoreDigit8;					// 0x00001040
-extern intptr_t lSC1PStageClearScoreDigit9;					// 0x00001270
-
 extern intptr_t lSC1PStageClearPlatform;            	    // 0x000000C0
 extern intptr_t lSC1PStageClearTarget;                      // 0x000001D0
 extern intptr_t lSC1PStageClearTextScore;                   // 0x00000408

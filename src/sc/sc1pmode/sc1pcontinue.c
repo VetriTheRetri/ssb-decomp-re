@@ -237,16 +237,16 @@ Sprite* sc1PContinueScoreDigitGetSprite(s32 digit)
     // 0x80134534
     intptr_t offsets[/* */] =
     {
-        &lSC1PStageClearScoreDigit0,
-        &lSC1PStageClearScoreDigit1,
-        &lSC1PStageClearScoreDigit2,
-        &lSC1PStageClearScoreDigit3,
-        &lSC1PStageClearScoreDigit4,
-        &lSC1PStageClearScoreDigit5,
-        &lSC1PStageClearScoreDigit6,
-        &lSC1PStageClearScoreDigit7,
-        &lSC1PStageClearScoreDigit8,
-        &lSC1PStageClearScoreDigit9
+        &lIFCommonPlayerDamageDigit0,
+        &lIFCommonPlayerDamageDigit1,
+        &lIFCommonPlayerDamageDigit2,
+        &lIFCommonPlayerDamageDigit3,
+        &lIFCommonPlayerDamageDigit4,
+        &lIFCommonPlayerDamageDigit5,
+        &lIFCommonPlayerDamageDigit6,
+        &lIFCommonPlayerDamageDigit7,
+        &lIFCommonPlayerDamageDigit8,
+        &lIFCommonPlayerDamageDigit9
     };
     return lbRelocGetFileData(Sprite*, sSC1PContinueFiles[3], offsets[digit]);
 }

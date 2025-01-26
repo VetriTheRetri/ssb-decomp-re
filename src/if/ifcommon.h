@@ -84,6 +84,18 @@ extern intptr_t lIFCommonAnnounceGameSetLetterE;            // 0x000144E0
 extern intptr_t lIFCommonAnnounceGameSetLetterS;            // 0x0001B5F8
 extern intptr_t lIFCommonAnnounceGameSetLetterT;            // 0x0000E4A8
 
+// Digit sprites used for bonus stat points
+extern intptr_t lIFCommonDigit0;				            // 0x00000068
+extern intptr_t lIFCommonDigit1;				            // 0x00000118
+extern intptr_t lIFCommonDigit2;				            // 0x000001C8
+extern intptr_t lIFCommonDigit3;				            // 0x00000278
+extern intptr_t lIFCommonDigit4;				            // 0x00000328
+extern intptr_t lIFCommonDigit5;				            // 0x000003D8
+extern intptr_t lIFCommonDigit6;				            // 0x00000488
+extern intptr_t lIFCommonDigit7;				            // 0x00000538
+extern intptr_t lIFCommonDigit8;				            // 0x000005E8
+extern intptr_t lIFCommonDigit9;				            // 0x00000698
+
 extern intptr_t lIFCommonPlayerDamageDigit0;                // 0x00000148
 extern intptr_t lIFCommonPlayerDamageDigit1;                // 0x000002D8
 extern intptr_t lIFCommonPlayerDamageDigit2;                // 0x00000500

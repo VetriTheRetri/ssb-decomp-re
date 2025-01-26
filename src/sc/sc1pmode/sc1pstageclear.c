@@ -470,16 +470,16 @@ Sprite* sc1PStageClearGetScoreDigitSprite(s32 digit_kind, s32 digit)
 	// 0x80135120
 	intptr_t offsets[/* */][3] =
 	{
-		{ &lSC1PStageClearTimerDamageDigit0, &lSC1PStageClearBonusStatDigit0, &lSC1PStageClearScoreDigit0 },
-		{ &lSC1PStageClearTimerDamageDigit1, &lSC1PStageClearBonusStatDigit1, &lSC1PStageClearScoreDigit1 },
-		{ &lSC1PStageClearTimerDamageDigit2, &lSC1PStageClearBonusStatDigit2, &lSC1PStageClearScoreDigit2 },
-		{ &lSC1PStageClearTimerDamageDigit3, &lSC1PStageClearBonusStatDigit3, &lSC1PStageClearScoreDigit3 },
-		{ &lSC1PStageClearTimerDamageDigit4, &lSC1PStageClearBonusStatDigit4, &lSC1PStageClearScoreDigit4 },
-		{ &lSC1PStageClearTimerDamageDigit5, &lSC1PStageClearBonusStatDigit5, &lSC1PStageClearScoreDigit5 },
-		{ &lSC1PStageClearTimerDamageDigit6, &lSC1PStageClearBonusStatDigit6, &lSC1PStageClearScoreDigit6 },
-		{ &lSC1PStageClearTimerDamageDigit7, &lSC1PStageClearBonusStatDigit7, &lSC1PStageClearScoreDigit7 },
-		{ &lSC1PStageClearTimerDamageDigit8, &lSC1PStageClearBonusStatDigit8, &lSC1PStageClearScoreDigit8 },
-		{ &lSC1PStageClearTimerDamageDigit9, &lSC1PStageClearBonusStatDigit9, &lSC1PStageClearScoreDigit9 }
+		{ &lSC1PStageClearTimerDamageDigit0, &lIFCommonDigit0, &lIFCommonPlayerDamageDigit0 },
+		{ &lSC1PStageClearTimerDamageDigit1, &lIFCommonDigit1, &lIFCommonPlayerDamageDigit1 },
+		{ &lSC1PStageClearTimerDamageDigit2, &lIFCommonDigit2, &lIFCommonPlayerDamageDigit2 },
+		{ &lSC1PStageClearTimerDamageDigit3, &lIFCommonDigit3, &lIFCommonPlayerDamageDigit3 },
+		{ &lSC1PStageClearTimerDamageDigit4, &lIFCommonDigit4, &lIFCommonPlayerDamageDigit4 },
+		{ &lSC1PStageClearTimerDamageDigit5, &lIFCommonDigit5, &lIFCommonPlayerDamageDigit5 },
+		{ &lSC1PStageClearTimerDamageDigit6, &lIFCommonDigit6, &lIFCommonPlayerDamageDigit6 },
+		{ &lSC1PStageClearTimerDamageDigit7, &lIFCommonDigit7, &lIFCommonPlayerDamageDigit7 },
+		{ &lSC1PStageClearTimerDamageDigit8, &lIFCommonDigit8, &lIFCommonPlayerDamageDigit8 },
+		{ &lSC1PStageClearTimerDamageDigit9, &lIFCommonDigit9, &lIFCommonPlayerDamageDigit9 }
 	};
 
 	return lbRelocGetFileData

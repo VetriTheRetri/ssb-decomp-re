@@ -11,8 +11,6 @@
 
 // Externs
 
-extern void scManagerFuncDraw();
-
 // ovl1 stuff
 extern f32 dSCSubsysDemoFighterScales[12]; // dSCSubsysDemoFighterScales
 
@@ -44,8 +42,6 @@ extern intptr_t FILE_016_WHITE_CIRCLE_OFFSET_2; // DObjDesc for white circle
 
 extern intptr_t FILE_017_PANEL_IMAGE_OFFSET;
 extern intptr_t FILE_017_CPU_PANEL_LUT_OFFSET; // D_NF_00003238; // CPU panel LUT
-extern void scManagerFuncDraw();
-
 
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 extern void ftDisplayLightsDrawReflect(Gfx**, f32, f32);

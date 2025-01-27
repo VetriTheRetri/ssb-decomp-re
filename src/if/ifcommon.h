@@ -95,6 +95,7 @@ extern intptr_t lIFCommonDigit6;				            // 0x00000488
 extern intptr_t lIFCommonDigit7;				            // 0x00000538
 extern intptr_t lIFCommonDigit8;				            // 0x000005E8
 extern intptr_t lIFCommonDigit9;				            // 0x00000698
+extern intptr_t lIFCommonDigitDash;                         // 0x00000710
 
 extern intptr_t lIFCommonPlayerDamageDigit0;                // 0x00000148
 extern intptr_t lIFCommonPlayerDamageDigit1;                // 0x000002D8
@@ -162,6 +163,12 @@ extern intptr_t lIFCommonBattlePauseDecalRetry;             // 0x00000828
 
 extern u8 dIFCommonPlayerTeamColorIDs[/* */];
 extern intptr_t dIFCommonTimerDigitSpriteOffsets[/* */];
+extern u8 dIFCommonPlayerTagPrimColorsR[/* */];
+extern u8 dIFCommonPlayerTagPrimColorsG[/* */];
+extern u8 dIFCommonPlayerTagPrimColorsB[/* */];
+extern u8 dIFCommonPlayerTagEnvColorsR[/* */];
+extern u8 dIFCommonPlayerTagEnvColorsG[/* */];
+extern u8 dIFCommonPlayerTagEnvColorsB[/* */];
 
 extern void ifCommonPlayerDamageSetShowInterface(void);
 extern s32 ifCommonPlayerDamageGetSpecialArrayID(s32 damage, u8 *digits);

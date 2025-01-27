@@ -15,8 +15,6 @@ extern intptr_t lSYDmemCheckValidNBytes;	// 0x00000030
 
 extern intptr_t D_NF_000000C7;
 
-extern void scManagerFuncDraw();
-
 // // // // // // // // // // // //
 //                               //
 //       INITIALIZED DATA        //

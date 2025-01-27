@@ -4,8 +4,6 @@
 #include <sc/scene.h>
 #include <sys/video.h>
 
-extern void scManagerFuncDraw(void);
-
 // // // // // // // // // // // //
 //                               //
 //       EXTERNAL VARIABLES      //

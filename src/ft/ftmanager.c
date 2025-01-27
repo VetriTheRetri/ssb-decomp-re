@@ -329,7 +329,7 @@ void ftManagerSetupFilesMainKind(s32 fkind)
 
     *data->p_file_main = lbRelocGetExternHeapFile(data->file_main_id, syTaskmanMalloc(lbRelocGetFileSize(data->file_main_id), 0x10));
 
-    if (data->particles_script_lo != 0)
+    if (data->particles_script_lo != 0x0)
     {
         *data->p_particle = efParticleGetLoadBankID
         (
@@ -376,7 +376,7 @@ void ftManagerSetupFilesKind(s32 fkind)
     {
         *data->p_file_special4 = lbRelocGetStatusBufferFile(data->file_special4_id);
     }
-    if (data->particles_script_lo != 0)
+    if (data->particles_script_lo != 0x0)
     {
         *data->p_particle = efParticleGetBankID(data->particles_script_lo);
     }

@@ -5,7 +5,6 @@
 #include <sc/scene.h>
 #include <sys/video.h>
 
-extern void scManagerFuncDraw();
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 extern u32 sySchedulerGetTicCount();
 

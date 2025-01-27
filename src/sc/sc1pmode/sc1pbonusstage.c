@@ -9,8 +9,6 @@ extern intptr_t D_NF_00000088;
 extern intptr_t D_NF_00000097;
 extern intptr_t D_NF_000000FD;
 
-extern void scManagerFuncDraw(void);
-
 // // // // // // // // // // // //
 //                               //
 //       INITIALIZED DATA        //

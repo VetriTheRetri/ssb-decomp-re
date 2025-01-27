@@ -253,9 +253,21 @@ typedef enum MNVSRecordRankingKind
 
 } MNVSRecordRankingKind;
 
+typedef enum MNVSResultsKind
+{
+	nMNVSResultsKindTimeRoyal,
+	nMNVSResultsKindStockRoyal,
+	nMNVSResultsKindTimeTeam,
+	nMNVSResultsKindStockTeam,
+	nMNVSResultsKindNoContest,
+	nMNVSResultsKindEnumCount
+
+} MNVSResultsKind;
+
 typedef struct MNTitleSpriteDesc			MNTitleSpriteDesc;
 typedef struct MNCongraPicture				MNCongraPicture;
 typedef struct MNCharactersMotion			MNCharactersMotion;
 typedef struct MNCharactersSpecialMotion	MNCharactersSpecialMotion;
+typedef struct MNVSResultsScore				MNVSResultsScore;
 
 #endif

@@ -6,6 +6,7 @@
 #include <mn/mnvsmode/mnvsoptions.h>
 #include <mn/mnvsmode/mnvsitemswitch.h>
 #include <mn/mnvsmode/mnvsmode.h>
+#include <mn/mnvsmode/mnvsresults.h>
 
 #include <mn/mnmaps/mnmaps.h>
 

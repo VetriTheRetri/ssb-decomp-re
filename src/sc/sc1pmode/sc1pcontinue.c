@@ -4,7 +4,6 @@
 #include <sc/scene.h>
 #include <sys/video.h>
 
-extern void scManagerFuncDraw();
 extern void syRdpSetViewport(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 
 // // // // // // // // // // // //

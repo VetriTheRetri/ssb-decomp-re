@@ -14,7 +14,6 @@
 
 extern void mnVSModeStartScene();
 extern void mnVSPlayersStartScene();
-extern void mnVSResultsStartScene();
 extern void mn1PGamePlayersStartScene();
 extern void mn1PTrainingPlayersStartScene();
 extern void mn1PBonusPlayersStartScene();
@@ -57,9 +56,6 @@ FTFileSize gSCManagerFighterFileSizes[nFTKindEnumCount];
 
 // 0x800A523C
 s32 sSCManagerUnk0x800A523C;
-
-// Forward declarations
-extern void scManagerFuncPrint();
 
 // // // // // // // // // // // //
 //                               //

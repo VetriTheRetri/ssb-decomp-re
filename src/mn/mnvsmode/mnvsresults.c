@@ -6,60 +6,8 @@
 #include <sys/video.h>
 #include <sys/audio.h>
 
-extern u32 lMNVSResultsFileID;				// 0x00000022
-
-extern void scManagerFuncDraw();
-
-typedef struct MNVSResultsScore
-{
-	s32 score;
-	s32 place;
-	s32 player;
-
-} MNVSResultsScore;
-
-// Externs
-extern f32 dSCSubsysDemoFighterScales[12];           // 0x80390D90
-
-extern intptr_t lMNVSResults1PArrowSprite;			// 0x000049E8
-extern intptr_t lMNVSResults2PArrowSprite;			// 0x00004B08
-extern intptr_t lMNVSResults3PArrowSprite;			// 0x00004C28
-extern intptr_t lMNVSResults4PArrowSprite;			// 0x00004D48
-
-extern intptr_t FILE_022_TKO_TEXTURE_IMAGE_OFFSET; // file 0x022 image offset for TKO texture
-extern intptr_t FILE_022_PLACE_TEXTURE_IMAGE_OFFSET; // file 0x022 image offset for Place texture
-extern intptr_t FILE_022_POINTS_TEXTURE_IMAGE_OFFSET; // file 0x022 image offset for Pts texture
-extern intptr_t FILE_022_KOS_TEXTURE_IMAGE_OFFSET; // file 0x022 image offset for KOs texture
-extern intptr_t FILE_022_BACKGROUND_IMAGE_OFFSET; // file 0x022 image offset for background image
-extern intptr_t FILE_022_FIRST_PLACE_ICON_IMAGE_OFFSET; // file 0x022 image offset for 1st place icon
-extern intptr_t FILE_024_DASH_IMAGE_OFFSET; // file 0x024 image offset for dash
-extern intptr_t FILE_026_INDICATOR_CP_IMAGE_OFFSET; // file 0x026 image offset for CPU player indicator
-extern intptr_t FILE_0A4_1_IMAGE_OFFSET; // file 0x0A4 image offset for number 1
-
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
-
 extern void* func_800269C0_275C0(u16);
-
-extern u8 dIFCommonPlayerTagEnvColorsR[];
-extern u8 dIFCommonPlayerTagEnvColorsG[];
-extern u8 dIFCommonPlayerTagEnvColorsB[];
-extern u8 dIFCommonPlayerTagPrimColorsR[];
-extern u8 dIFCommonPlayerTagPrimColorsG[];
-extern u8 dIFCommonPlayerTagPrimColorsB[];
-extern ALCSPlayer *gSYAudioALCSPlayers;
-
-// Forward declarations
-void mnVSResultsFuncStart();
-void mnVSResultsDrawResults0(GObj *gobj);
-void mnVSResultsDrawResults1(GObj *gobj);
-void mnVSResultsDrawResults2(GObj *gobj);
-void mnVSResultsDrawResults3(GObj *gobj);
-void mnVSResultsDrawResultsNoContest(GObj *gobj);
-u8 mnVSResultsGetWinTeam();
-s32 mnVSResultsGetWinPlayer();
-s32 mnVSResultsGetFighterKind(s32 player);
-s32 mnVSResultsGetPointsDirect(s32 player);
-s32 mnVSResultsGetPlayerCountByPlace(s32 place);
 
 // // // // // // // // // // // //
 //                               //
@@ -156,7 +104,7 @@ s32 sMNVSResultsPad0x801398A0[182];
 s32 sMNVSResultsTotalTimeTics;
 
 // 0x80139B7C
-s32 sMNVSResultsHorizontalLineWidth;
+s32 sMNVSResultsBarWidth;
 
 // 0x80139B80
 s32 sMNVSResultsKOs[GMCOMMON_PLAYERS_MAX];
@@ -192,7 +140,7 @@ s32 sMNVSResultsFighterKinds[GMCOMMON_PLAYERS_MAX];
 void *sMNVSResultsFigatreeHeaps[GMCOMMON_PLAYERS_MAX];
 
 // 0x80139C10
-s32 sMNVSResultsGameRule;
+s32 sMNVSResultsKind;
 
 // 0x80139C14
 ub8 sMNVSResultsIsTeamBattle;
@@ -358,7 +306,7 @@ void mnVSResultsAnnounceWinner(void)
 		nSYAudioVoiceAnnounceGreenTeam
 	};
 
-	if (sMNVSResultsGameRule == 4)
+	if (sMNVSResultsKind == nMNVSResultsKindNoContest)
 	{
 		// No Contest
 		switch (sMNVSResultsTotalTimeTics)
@@ -451,7 +399,7 @@ s32 mnVSResultsGetPlacePlayer(s32 place)
 
 	for (i = 0; i < ARRAY_COUNT(sMNVSResultsIsPresent); i++)
 	{
-		if ((sMNVSResultsIsPresent[i]) && (place == sMNVSResultsPlaces[i]))
+		if ((sMNVSResultsIsPresent[i] != FALSE) && (place == sMNVSResultsPlaces[i]))
 		{
 			return i;
 		}
@@ -464,7 +412,7 @@ s32 mnVSResultsGetPlayerDistanceID(s32 player)
 {
 	s32 foes = mnVSResultsGetPresentLowerCount(player);
 
-	if (mnVSResultsGetPlayerCountByPlace(0) == 1)
+	if (mnVSResultsGetPlayerCountPlace(0) == 1)
 	{
 		switch (mnVSResultsGetPresentCount())
 		{
@@ -540,7 +488,7 @@ s32 mnVSResultsGetWinPlayer(void)
 	s32 unused;
 
 	// If FFA, use place
-	if ((sMNVSResultsGameRule == nSCBattleGameRuleTime) || (sMNVSResultsGameRule == nSCBattleGameRuleStock))
+	if ((sMNVSResultsKind == nSCBattleGameRuleTime) || (sMNVSResultsKind == nSCBattleGameRuleStock))
 	{
 		for (i = 0; i < (ARRAY_COUNT(sMNVSResultsIsPresent) + ARRAY_COUNT(sMNVSResultsPlaces)) / 2; i++)
 		{
@@ -796,7 +744,7 @@ void mnVSResultsMakeWallpaper(void)
 	cobj = CObjGetStruct(camera_gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-	if (sMNVSResultsGameRule == 4)
+	if (sMNVSResultsKind == nMNVSResultsKindNoContest)
 	{
 		win_player = syUtilsGetRandomIntRange(GMCOMMON_PLAYERS_MAX);
 	}
@@ -814,7 +762,7 @@ void mnVSResultsMakeWallpaper(void)
 	gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(gobj, mnVSResultsWallpaperProcDisplay, 26, GOBJ_PRIORITY_DEFAULT, ~0);
 
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSResultsFiles[0], &FILE_022_BACKGROUND_IMAGE_OFFSET));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSResultsFiles[0], &lMNVSResultsWallpaperSprite));
 
 	SObjGetStruct(gobj)->pos.x = 10.0F;
 	SObjGetStruct(gobj)->pos.y = 10.0F;
@@ -944,7 +892,7 @@ s32 mnVSResultsGetStatusLose(s32 fkind)
 // 0x801334DC
 void mnVSResultsSetFighterStatus(GObj *fighter_gobj, s32 player)
 {
-	if (sMNVSResultsGameRule == 4)
+	if (sMNVSResultsKind == nMNVSResultsKindNoContest)
 	{
 		scSubsysFighterSetStatus(fighter_gobj, mnVSResultsGetStatusLose(mnVSResultsGetFighterKind(player)));
 	}
@@ -983,7 +931,7 @@ void mnVSResultsSetFighterStatus(GObj *fighter_gobj, s32 player)
 }
 
 // 0x80133684
-s32 mnVSResultsGetPlayerCountByPlace(s32 place)
+s32 mnVSResultsGetPlayerCountPlace(s32 place)
 {
 	s32 num = 0;
 	s32 i;
@@ -1006,7 +954,7 @@ s32 mnVSResultsGetPlayerCountAhead(s32 player)
 
 	for (i = 0; i < (ARRAY_COUNT(sMNVSResultsIsPresent) + ARRAY_COUNT(sMNVSResultsPlaces)) / 2; i++)
 	{
-		if ((player != i) && (sMNVSResultsIsPresent[i]) && (sMNVSResultsPlaces[i] < sMNVSResultsPlaces[player]))
+		if ((player != i) && (sMNVSResultsIsPresent[i] != FALSE) && (sMNVSResultsPlaces[i] < sMNVSResultsPlaces[player]))
 		{
 			num++;
 		}
@@ -1017,10 +965,10 @@ s32 mnVSResultsGetPlayerCountAhead(s32 player)
 // 0x80133810
 s32 mnVSResultsGetSpot(s32 player)
 {
-	sb32 sp40[/* */] = { 0, 0, 1, 1 };
-	sb32 sp2C[/* */] = { 0, 0, 1, 1, 1 };
+	sb32 aheads[/* */] = { 0, 0, 1, 1 };
+	sb32 places[/* */] = { 0, 0, 1, 1, 1 };
 
-	return sMNVSResultsPlaces[player] + sp40[sMNVSResultsPlaces[player] - mnVSResultsGetPlayerCountAhead(player)] + sp2C[mnVSResultsGetPlayerCountByPlace(sMNVSResultsPlaces[player])];
+	return sMNVSResultsPlaces[player] + aheads[sMNVSResultsPlaces[player] - mnVSResultsGetPlayerCountAhead(player)] + places[mnVSResultsGetPlayerCountPlace(sMNVSResultsPlaces[player])];
 }
 
 // 0x801338EC
@@ -1098,10 +1046,11 @@ void mnVSResultsSetPlayerTagPosition(GObj *gobj, s32 player)
 }
 
 // 0x80133C58
-void mnVSResultsMakePlayerTag(s32 player, s32 color_index)
+void mnVSResultsMakePlayerTag(s32 player, s32 color_id)
 {
 	GObj *gobj;
 	SObj *sobj;
+	
 	SYColorRGBPair colors[/* */] =
 	{
 		{ { 0x00, 0x00, 0x00 }, { 0xED, 0x36, 0x36 } },
@@ -1109,9 +1058,10 @@ void mnVSResultsMakePlayerTag(s32 player, s32 color_index)
 		{ { 0x00, 0x00, 0x00 }, { 0xFF, 0xDF, 0x1A } },
 		{ { 0x00, 0x00, 0x00 }, { 0x4E, 0xB9, 0x4E } }
 	};
-	intptr_t offsets[4] =
+	intptr_t offsets[/* */] =
 	{
-		0x258, 0x4F8, 0x798, 0xA38
+		&lIFCommonPlayerTag1P, &lIFCommonPlayerTag2P,
+		&lIFCommonPlayerTag3P, &lIFCommonPlayerTag4P
 	};
 
 	gobj = gcMakeGObjSPAfter(0, NULL, 18, GOBJ_PRIORITY_DEFAULT);
@@ -1122,24 +1072,24 @@ void mnVSResultsMakePlayerTag(s32 player, s32 color_index)
 		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSResultsFiles[1], offsets[player]));
 		sobj->sprite.attr &= ~SP_FASTCOPY;
 		sobj->sprite.attr |= SP_TRANSPARENT;
-		sobj->envcolor.r = dIFCommonPlayerTagEnvColorsR[color_index];
-		sobj->envcolor.g = dIFCommonPlayerTagEnvColorsG[color_index];
-		sobj->envcolor.b = dIFCommonPlayerTagEnvColorsB[color_index];
-		sobj->sprite.red = dIFCommonPlayerTagPrimColorsR[color_index];
-		sobj->sprite.green = dIFCommonPlayerTagPrimColorsG[color_index];
-		sobj->sprite.blue = dIFCommonPlayerTagPrimColorsB[color_index];
+		sobj->envcolor.r = dIFCommonPlayerTagEnvColorsR[color_id];
+		sobj->envcolor.g = dIFCommonPlayerTagEnvColorsG[color_id];
+		sobj->envcolor.b = dIFCommonPlayerTagEnvColorsB[color_id];
+		sobj->sprite.red = dIFCommonPlayerTagPrimColorsR[color_id];
+		sobj->sprite.green = dIFCommonPlayerTagPrimColorsG[color_id];
+		sobj->sprite.blue = dIFCommonPlayerTagPrimColorsB[color_id];
 	}
 	else
 	{
-		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSResultsFiles[1], &FILE_026_INDICATOR_CP_IMAGE_OFFSET));
+		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSResultsFiles[1], &lIFCommonPlayerTagCP));
 		sobj->sprite.attr &= ~SP_FASTCOPY;
 		sobj->sprite.attr |= SP_TRANSPARENT;
-		sobj->envcolor.r = dIFCommonPlayerTagEnvColorsR[color_index];
-		sobj->envcolor.g = dIFCommonPlayerTagEnvColorsG[color_index];
-		sobj->envcolor.b = dIFCommonPlayerTagEnvColorsB[color_index];
-		sobj->sprite.red = dIFCommonPlayerTagPrimColorsR[color_index];
-		sobj->sprite.green = dIFCommonPlayerTagPrimColorsG[color_index];
-		sobj->sprite.blue = dIFCommonPlayerTagPrimColorsB[color_index];
+		sobj->envcolor.r = dIFCommonPlayerTagEnvColorsR[color_id];
+		sobj->envcolor.g = dIFCommonPlayerTagEnvColorsG[color_id];
+		sobj->envcolor.b = dIFCommonPlayerTagEnvColorsB[color_id];
+		sobj->sprite.red = dIFCommonPlayerTagPrimColorsR[color_id];
+		sobj->sprite.green = dIFCommonPlayerTagPrimColorsG[color_id];
+		sobj->sprite.blue = dIFCommonPlayerTagPrimColorsB[color_id];
 	}
 
 	mnVSResultsSetPlayerTagPosition(gobj, player);
@@ -1190,7 +1140,7 @@ s32 mnVSResultsGetCharacterID(char c)
 }
 
 // 0x80133F6C
-void mnVSResultsMakeString(const char *str, f32 x, f32 y, s32 color_index, f32 scale)
+void mnVSResultsMakeString(const char *str, f32 x, f32 y, s32 color_id, f32 scale)
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -1251,7 +1201,6 @@ void mnVSResultsMakeString(const char *str, f32 x, f32 y, s32 color_index, f32 s
 			}
 			else
 			{
-
 				sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSResultsFiles[6], offsets[char_index]));
 				sobj->sprite.scalex = scale;
 				sobj->pos.x = current_x;
@@ -1264,12 +1213,12 @@ void mnVSResultsMakeString(const char *str, f32 x, f32 y, s32 color_index, f32 s
 
 				sobj->sprite.attr &= ~SP_FASTCOPY;
 				sobj->sprite.attr |= SP_TRANSPARENT;
-				sobj->envcolor.r = colors[color_index].prim.r;
-				sobj->envcolor.g = colors[color_index].prim.g;
-				sobj->envcolor.b = colors[color_index].prim.b;
-				sobj->sprite.red = colors[color_index].env.r;
-				sobj->sprite.green = colors[color_index].env.g;
-				sobj->sprite.blue = colors[color_index].env.b;
+				sobj->envcolor.r = colors[color_id].prim.r;
+				sobj->envcolor.g = colors[color_id].prim.g;
+				sobj->envcolor.b = colors[color_id].prim.b;
+				sobj->sprite.red = colors[color_id].env.r;
+				sobj->sprite.green = colors[color_id].env.g;
+				sobj->sprite.blue = colors[color_id].env.b;
 
 				current_x += widths[char_index] * scale;
 			}
@@ -1387,7 +1336,7 @@ void mnVSResultMakeNoContestText(void)
 // 0x8013457C
 void mnVSResultsMakeResultsText(void)
 {
-	if (sMNVSResultsGameRule == 4)
+	if (sMNVSResultsKind == nMNVSResultsKindNoContest)
 	{
 		mnVSResultMakeNoContestText();
 	}
@@ -1460,7 +1409,7 @@ s32 mnVSResultsGetOnesDigit(s32 number)
 }
 
 // 0x80134770
-void mnVSResultsSetNumberColor(SObj *sobj, s32 color_index)
+void mnVSResultsSetNumberColor(SObj *sobj, s32 color_id)
 {
 	SYColorRGBPair colors[/* */] = 
 	{
@@ -1471,12 +1420,12 @@ void mnVSResultsSetNumberColor(SObj *sobj, s32 color_index)
 		{ { 0x00, 0x00, 0x00 }, { 0xFF, 0xFF, 0xFF } }
 	};
 
-	sobj->envcolor.r = colors[color_index].prim.r;
-	sobj->envcolor.g = colors[color_index].prim.g;
-	sobj->envcolor.b = colors[color_index].prim.b;
-	sobj->sprite.red = colors[color_index].env.r;
-	sobj->sprite.green = colors[color_index].env.g;
-	sobj->sprite.blue = colors[color_index].env.b;
+	sobj->envcolor.r = colors[color_id].prim.r;
+	sobj->envcolor.g = colors[color_id].prim.g;
+	sobj->envcolor.b = colors[color_id].prim.b;
+	sobj->sprite.red = colors[color_id].env.r;
+	sobj->sprite.green = colors[color_id].env.g;
+	sobj->sprite.blue = colors[color_id].env.b;
 }
 
 // 0x80134808
@@ -1490,7 +1439,7 @@ SObj* mnVSResultsMakeDigit(GObj *gobj, s32 digit, s32 color_id)
 		&lIFCommonDigit2, &lIFCommonDigit3,
 		&lIFCommonDigit4, &lIFCommonDigit5,
 		&lIFCommonDigit6, &lIFCommonDigit7,
-		&lIFCommonDigit8, &lIFCommonDigit9,
+		&lIFCommonDigit8, &lIFCommonDigit9
 	};
 	SYColorRGBPair unused_colors[/* */] =
 	{
@@ -1510,7 +1459,7 @@ SObj* mnVSResultsMakeDigit(GObj *gobj, s32 digit, s32 color_id)
 }
 
 // 0x801348F8
-SObj* mnVSResultsMakePlaceNumber(GObj* place_gobj, s32 player, s32 place, s32 color_id)
+SObj* mnVSResultsMakePlaceNumber(GObj *gobj, s32 player, s32 place, s32 color_id)
 {
 	SObj *sobj;
 
@@ -1537,19 +1486,19 @@ SObj* mnVSResultsMakePlaceNumber(GObj* place_gobj, s32 player, s32 place, s32 co
 		{
 			if ((mnVSResultsGetWinPlayer() == player) || (sMNVSResultsIsSharedWinner[player]))
 			{
-				sobj = lbCommonMakeSObjForGObj(place_gobj, lbRelocGetFileData(Sprite*, sMNVSResultsFiles[0], &FILE_022_FIRST_PLACE_ICON_IMAGE_OFFSET));
+				sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSResultsFiles[0], &lMNVSResultsWinnerSprite));
 				sobj->user_data.s = 1;
 			}
 			else
 			{
-				sobj = lbCommonMakeSObjForGObj(place_gobj, lbRelocGetFileData(Sprite*, sMNVSResultsFiles[3], &lIFCommonPlayerDamageDigit1));
+				sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSResultsFiles[3], &lIFCommonPlayerDamageDigit1));
 				sobj->user_data.s = 0;
 				mnVSResultsSetNumberColor(sobj, color_id);
 			}
 		}
 		else
 		{
-			sobj = lbCommonMakeSObjForGObj(place_gobj, lbRelocGetFileData(Sprite*, sMNVSResultsFiles[0], &FILE_022_FIRST_PLACE_ICON_IMAGE_OFFSET));
+			sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSResultsFiles[0], &lMNVSResultsWinnerSprite));
 			sobj->user_data.s = 1;
 		}
 		sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1557,7 +1506,7 @@ SObj* mnVSResultsMakePlaceNumber(GObj* place_gobj, s32 player, s32 place, s32 co
 	}
 	else
 	{
-		sobj = lbCommonMakeSObjForGObj(place_gobj, lbRelocGetFileData(Sprite*, sMNVSResultsFiles[3], offsets[place]));
+		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSResultsFiles[3], offsets[place]));
 		sobj->sprite.attr &= ~SP_FASTCOPY;
 		sobj->sprite.attr |= SP_TRANSPARENT;
 		mnVSResultsSetNumberColor(sobj, color_id);
@@ -1566,7 +1515,7 @@ SObj* mnVSResultsMakePlaceNumber(GObj* place_gobj, s32 player, s32 place, s32 co
 }
 
 // 0x80134AC4
-void mnVSResultsMakeNumber(GObj *gobj, f32 x, f32 y, s32 number, s32 color_id)
+SObj* mnVSResultsMakeNumber(GObj *gobj, f32 x, f32 y, s32 number, s32 color_id)
 {
 	SObj *sobj;
 	s32 hundreds_digit;
@@ -1574,7 +1523,7 @@ void mnVSResultsMakeNumber(GObj *gobj, f32 x, f32 y, s32 number, s32 color_id)
 
 	if (number < 0)
 	{
-		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSResultsFiles[5], &FILE_024_DASH_IMAGE_OFFSET));
+		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSResultsFiles[5], &lIFCommonDigitDash));
 
 		if (mnVSResultsGetHundredsDigit(number) != 0)
 		{
@@ -1611,6 +1560,8 @@ void mnVSResultsMakeNumber(GObj *gobj, f32 x, f32 y, s32 number, s32 color_id)
 	sobj = mnVSResultsMakeDigit(gobj, mnVSResultsGetOnesDigit(number), color_id);
 	sobj->pos.x = x + 24.0F;
 	sobj->pos.y = y;
+
+	return sobj;
 }
 
 // 0x80134C5C
@@ -1873,7 +1824,7 @@ s32 mnVSResultsGetKOs(s32 player)
 }
 
 // 0x8013569C
-void mnVSResultsDrawKOs(s32 y)
+void mnVSResultsMakeKOs(s32 y)
 {
 	GObj *gobj = lbCommonMakeSpriteGObj
 	(
@@ -1889,7 +1840,7 @@ void mnVSResultsDrawKOs(s32 y)
 		(
 			Sprite*,
 			sMNVSResultsFiles[0],
-			&FILE_022_KOS_TEXTURE_IMAGE_OFFSET
+			&lMNVSResultsLabelKOsSprite
 		),
 		nGCProcessKindFunc,
 		NULL,
@@ -1935,10 +1886,9 @@ s32 mnVSResultsGetTKO(s32 player)
 }
 
 // 0x801358F0
-void mnVSResultsDrawTKO(s32 y)
+void mnVSResultsMakeTKO(s32 y)
 {
-	GObj *gobj =
-	lbCommonMakeSpriteGObj
+	GObj *gobj = lbCommonMakeSpriteGObj
 	(
 		0,
 		NULL,
@@ -1952,7 +1902,7 @@ void mnVSResultsDrawTKO(s32 y)
 		(
 			Sprite*,
 			sMNVSResultsFiles[0],
-			&FILE_022_TKO_TEXTURE_IMAGE_OFFSET
+			&lMNVSResultsLabelTKOSprite
 		),
 		nGCProcessKindFunc,
 		NULL,
@@ -1969,9 +1919,9 @@ void mnVSResultsDrawTKO(s32 y)
 	SObjGetStruct(gobj)->sprite.green = 0xFF;
 	SObjGetStruct(gobj)->sprite.blue = 0xFF;
 
-	if (sMNVSResultsGameRule != 4)
+	if (sMNVSResultsKind != nMNVSResultsKindNoContest)
 	{
-		SObj *sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSResultsFiles[5], &FILE_024_DASH_IMAGE_OFFSET));
+		SObj *sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSResultsFiles[5], &lIFCommonDigitDash));
 		sobj->pos.x = 90.0F;
 		sobj->pos.y = y + 3;
 		sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -2000,17 +1950,17 @@ void mnVSResultsBarProcDisplay(GObj *gobj)
 {
 	f32 y = gobj->user_data.s;
 
-	sMNVSResultsHorizontalLineWidth += 10;
+	sMNVSResultsBarWidth += 10;
 
-	if (sMNVSResultsHorizontalLineWidth > 190)
+	if (sMNVSResultsBarWidth > 190)
 	{
-		sMNVSResultsHorizontalLineWidth = 190;
+		sMNVSResultsBarWidth = 190;
 	}
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_FILL);
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
 	gDPSetFillColor(gSYTaskmanDLHeads[0]++, syVideoGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
-	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 87, y, 87 + sMNVSResultsHorizontalLineWidth, y);
+	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 87, y, 87 + sMNVSResultsBarWidth, y);
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
@@ -2032,7 +1982,7 @@ s32 mnVSResultsGetPoints(s32 player)
 }
 
 // 0x80135DCC
-void mnVSResultsDrawPointsRow(void)
+void mnVSResultsMakePointsRow(void)
 {
 	GObj *gobj = lbCommonMakeSpriteGObj
 	(
@@ -2048,7 +1998,7 @@ void mnVSResultsDrawPointsRow(void)
 		(
 			Sprite*,
 			sMNVSResultsFiles[0],
-			&FILE_022_POINTS_TEXTURE_IMAGE_OFFSET
+			&lMNVSResultsLabePointsSprite
 		),
 		nGCProcessKindFunc,
 		NULL,
@@ -2111,7 +2061,7 @@ s32 mnVSResultsGetDisplayPlace(s32 player)
 	(
 		(mnVSResultsGetPresentCount() == GMCOMMON_PLAYERS_MAX) &&
 		(sMNVSResultsIsTeamBattle == FALSE) &&
-		(mnVSResultsGetPlayerCountByPlace(1) == 2) &&
+		(mnVSResultsGetPlayerCountPlace(1) == 2) &&
 		(sMNVSResultsPlaces[player] == 2)
 	)
 	{
@@ -2121,7 +2071,7 @@ s32 mnVSResultsGetDisplayPlace(s32 player)
 }
 
 // 0x80136100
-void mnVSResultsDrawPlaceRow(s32 y)
+void mnVSResultsMakePlaceRow(s32 y)
 {
 	GObj *gobj;
 	s32 i;
@@ -2140,7 +2090,7 @@ void mnVSResultsDrawPlaceRow(s32 y)
 		(
 			Sprite*,
 			sMNVSResultsFiles[0],
-			&FILE_022_PLACE_TEXTURE_IMAGE_OFFSET
+			&lMNVSResultsLabePlaceSprite
 		),
 		nGCProcessKindFunc,
 		NULL,
@@ -2179,7 +2129,7 @@ void mnVSResultsDrawPlaceRow(s32 y)
 }
 
 // 0x80136290
-void mnVSResultsDrawResults0(GObj *gobj)
+void mnVSResultsDrawResultsTimeRoyal(GObj *gobj)
 {
 	if (sMNVSResultsTotalTimeTics == 180)
 	{
@@ -2188,11 +2138,11 @@ void mnVSResultsDrawResults0(GObj *gobj)
 	if (sMNVSResultsTotalTimeTics == 210)
 	{
 		mnVSResultsMakeHeader();
-		mnVSResultsDrawKOs(66);
+		mnVSResultsMakeKOs(66);
 	}
 	if (sMNVSResultsTotalTimeTics == 230)
 	{
-		mnVSResultsDrawTKO(81);
+		mnVSResultsMakeTKO(81);
 	}
 	if (sMNVSResultsTotalTimeTics == 250)
 	{
@@ -2200,16 +2150,16 @@ void mnVSResultsDrawResults0(GObj *gobj)
 	}
 	if (sMNVSResultsTotalTimeTics == 270)
 	{
-		mnVSResultsDrawPointsRow();
+		mnVSResultsMakePointsRow();
 	}
 	if (sMNVSResultsTotalTimeTics == 290)
 	{
-		mnVSResultsDrawPlaceRow(124);
+		mnVSResultsMakePlaceRow(124);
 	}
 }
 
 // 0x80136358
-void mnVSResultsDrawResults1(GObj *gobj)
+void mnVSResultsDrawResultsStockRoyal(GObj *gobj)
 {
 	if (sMNVSResultsTotalTimeTics == 180)
 	{
@@ -2217,7 +2167,7 @@ void mnVSResultsDrawResults1(GObj *gobj)
 	}
 	if (sMNVSResultsTotalTimeTics == 210)
 	{
-		mnVSResultsDrawPlaceRow(66);
+		mnVSResultsMakePlaceRow(66);
 	}
 	if (sMNVSResultsTotalTimeTics == 230)
 	{
@@ -2226,12 +2176,12 @@ void mnVSResultsDrawResults1(GObj *gobj)
 	if (sMNVSResultsTotalTimeTics == 250)
 	{
 		mnVSResultsMakeHeader();
-		mnVSResultsDrawKOs(124);
+		mnVSResultsMakeKOs(124);
 	}
 }
 
 // 0x801363E8
-void mnVSResultsDrawResults2(GObj *gobj)
+void mnVSResultsDrawResultsTimeTeam(GObj *gobj)
 {
 	if (sMNVSResultsTotalTimeTics == 180)
 	{
@@ -2240,11 +2190,11 @@ void mnVSResultsDrawResults2(GObj *gobj)
 	if (sMNVSResultsTotalTimeTics == 210)
 	{
 		mnVSResultsMakeHeader();
-		mnVSResultsDrawKOs(66);
+		mnVSResultsMakeKOs(66);
 	}
 	if (sMNVSResultsTotalTimeTics == 230)
 	{
-		mnVSResultsDrawTKO(81);
+		mnVSResultsMakeTKO(81);
 	}
 	if (sMNVSResultsTotalTimeTics == 250)
 	{
@@ -2252,16 +2202,16 @@ void mnVSResultsDrawResults2(GObj *gobj)
 	}
 	if (sMNVSResultsTotalTimeTics == 270)
 	{
-		mnVSResultsDrawPointsRow();
+		mnVSResultsMakePointsRow();
 	}
 	if (sMNVSResultsTotalTimeTics == 290)
 	{
-		mnVSResultsDrawPlaceRow(124);
+		mnVSResultsMakePlaceRow(124);
 	}
 }
 
 // 0x801364B0
-void mnVSResultsDrawResults3(GObj *gobj)
+void mnVSResultsDrawResultsStockTeam(GObj *gobj)
 {
 	if (sMNVSResultsTotalTimeTics == 180)
 	{
@@ -2269,7 +2219,7 @@ void mnVSResultsDrawResults3(GObj *gobj)
 	}
 	if (sMNVSResultsTotalTimeTics == 210)
 	{
-		mnVSResultsDrawPlaceRow(66);
+		mnVSResultsMakePlaceRow(66);
 	}
 	if (sMNVSResultsTotalTimeTics == 230)
 	{
@@ -2278,7 +2228,7 @@ void mnVSResultsDrawResults3(GObj *gobj)
 	if (sMNVSResultsTotalTimeTics == 250)
 	{
 		mnVSResultsMakeHeader();
-		mnVSResultsDrawKOs(124);
+		mnVSResultsMakeKOs(124);
 	}
 }
 
@@ -2292,11 +2242,11 @@ void mnVSResultsDrawResultsNoContest(GObj *gobj)
 	if (sMNVSResultsTotalTimeTics == 60)
 	{
 		mnVSResultsMakeHeader();
-		mnVSResultsDrawKOs(66);
+		mnVSResultsMakeKOs(66);
 	}
 	if (sMNVSResultsTotalTimeTics == 80)
 	{
-		mnVSResultsDrawTKO(81);
+		mnVSResultsMakeTKO(81);
 	}
 }
 
@@ -2337,10 +2287,10 @@ void mnVSResultsMakeLabel(void)
 	};
 	void (*procs[/* */])(GObj*) =
 	{
-		mnVSResultsDrawResults0,
-		mnVSResultsDrawResults1,
-		mnVSResultsDrawResults2,
-		mnVSResultsDrawResults3,
+		mnVSResultsDrawResultsTimeRoyal,
+		mnVSResultsDrawResultsStockRoyal,
+		mnVSResultsDrawResultsTimeTeam,
+		mnVSResultsDrawResultsStockTeam,
 		mnVSResultsDrawResultsNoContest
 	};
 
@@ -2361,7 +2311,7 @@ void mnVSResultsMakeLabel(void)
 			offsets[mnVSResultsCheckTeamBattle()]
 		),
 		nGCProcessKindFunc,
-		procs[sMNVSResultsGameRule],
+		procs[sMNVSResultsKind],
 		1
 	);
 	SObjGetStruct(gobj)->pos.x = 32.0F;
@@ -2698,7 +2648,7 @@ void mnVSResultsInitRankings(void)
 		mnVSResultsSetPoints();
 		mnVSResultsSetPlaceTime();
 	}
-	if (sMNVSResultsGameRule == 4)
+	if (sMNVSResultsKind == nMNVSResultsKindNoContest)
 	{
 		s32 i;
 
@@ -2756,7 +2706,7 @@ void mnVSResultsInitFightersAll(void)
 	{
 		mnVSResultsInitFighter(3);
 	}
-	if (sMNVSResultsGameRule != 4)
+	if (sMNVSResultsKind != nMNVSResultsKindNoContest)
 	{
 		for (i = 0; i < (ARRAY_COUNT(sMNVSResultsIsPresent) + ARRAY_COUNT(sMNVSResultsFighterGObjs)) / 2; i++)
 		{
@@ -2774,7 +2724,7 @@ void mnVSResultsInitVars(void)
 	s32 i;
 
 	sMNVSResultsTotalTimeTics = 0;
-	sMNVSResultsHorizontalLineWidth = 0;
+	sMNVSResultsBarWidth = 0;
 	sMNVSResultsCharacterAlpha = 0x00;
 	sMNVSResultsIsTeamBattle = gSCManagerTransferBattleState.is_team_battle;
 
@@ -2786,9 +2736,9 @@ void mnVSResultsInitVars(void)
 	{
 		if (sMNVSResultsIsTeamBattle == FALSE)
 		{
-			sMNVSResultsGameRule = 0;
+			sMNVSResultsKind = nMNVSResultsKindTimeRoyal;
 		}
-		else sMNVSResultsGameRule = 2;
+		else sMNVSResultsKind = nMNVSResultsKindTimeTeam;
 
 		sMNVSResultsAllowExitWait = 410;
 	}
@@ -2796,15 +2746,15 @@ void mnVSResultsInitVars(void)
 	{
 		if (sMNVSResultsIsTeamBattle == FALSE)
 		{
-			sMNVSResultsGameRule = 1;
+			sMNVSResultsKind = nMNVSResultsKindStockRoyal;
 		}
-		else sMNVSResultsGameRule = 3;
+		else sMNVSResultsKind = nMNVSResultsKindStockTeam;
 
 		sMNVSResultsAllowExitWait = 370;
 	}
 	if (gSCManagerSceneData.is_reset != FALSE)
 	{
-		sMNVSResultsGameRule = 4;
+		sMNVSResultsKind = nMNVSResultsKindNoContest;
 		sMNVSResultsAllowExitWait = 200;
 
 		sMNVSResultsDrawBackgroundFrame = 1;
@@ -2822,13 +2772,13 @@ void mnVSResultsInitVars(void)
 // 0x801377C0
 void mnVSResultsAudioThreadUpdate(GObj *gobj)
 {
-	while (gSYAudioALCSPlayers->state == AL_STOPPED)
+	while (gSYAudioALCSPlayers[0]->state == AL_STOPPED)
 	{
 		gcStopCurrentGObjThread(1);
 	}
 	while (TRUE)
 	{
-		if (gSYAudioALCSPlayers->state == AL_STOPPED)
+		if (gSYAudioALCSPlayers[0]->state == AL_STOPPED)
 		{
 			syAudioPlaySong(0, nSYAudioBGMResults);
 			gcEjectGObj(NULL);
@@ -2846,14 +2796,14 @@ void mnVSResultsMakeAudioThread(void)
 // 0x80137898
 void func_ovl31_80137898(GObj *gobj)
 {
-	u32 frame = 0;
+	u32 tic = 0;
 	s32 winner = mnVSResultsGetWinPlayer();
 
 	while (TRUE)
 	{
-		frame++;
+		tic++;
 
-		if (frame == 120)
+		if (tic == 120)
 		{
 			func_800044B4(winner);
 			func_80004494(winner);
@@ -2861,7 +2811,7 @@ void func_ovl31_80137898(GObj *gobj)
 			gcEjectGObj(NULL);
 			gcStopCurrentGObjThread(1);
 		}
-		if (frame % 2)
+		if (tic % 2)
 		{
 			func_80004474(winner);
 		}
@@ -3120,7 +3070,7 @@ void mnVSResultsSetAutoHandicaps(s32 best, s32 worst)
 // 0x801386BC
 void mnVSResultsUpdateAutoHandicap(void)
 {
-	if ((sMNVSResultsGameRule != 4) && (mnVSResultsGetManCount() >= 2))
+	if ((sMNVSResultsKind != nMNVSResultsKindNoContest) && (mnVSResultsGetManCount() >= 2))
 	{
 		mnVSResultsSetAutoHandicaps(mnVSResultsGetBestMan(), mnVSResultsGetWorstMan());
 	}
@@ -3207,7 +3157,7 @@ void mnVSResultsProcRun(GObj *gobj)
 
 	if (sMNVSResultsTotalTimeTics == sMNVSResultsDrawBackgroundFrame)
 	{
-		if (sMNVSResultsGameRule != 4)
+		if (sMNVSResultsKind != nMNVSResultsKindNoContest)
 		{
 			mnVSResultsMakeWallpaperTint2();
 		}
@@ -3218,7 +3168,7 @@ void mnVSResultsProcRun(GObj *gobj)
 		mnVSResultsMakeResultsText();
 		mnVSResultsMakeLabel();
 
-		if (sMNVSResultsGameRule != 4)
+		if (sMNVSResultsKind != nMNVSResultsKindNoContest)
 		{
 			mnVSResultsMakeConfetti();
 		}
@@ -3242,12 +3192,12 @@ void mnVSResultsProcRun(GObj *gobj)
 	}
 	mnVSResultsAnnounceWinner();
 
-	if ((sMNVSResultsGameRule != 4) && (sMNVSResultsTotalTimeTics == 120))
+	if ((sMNVSResultsKind != nMNVSResultsKindNoContest) && (sMNVSResultsTotalTimeTics == 120))
 	{
 		mnVSResultsPlayWinBGM();
 		mnVSResultsMakeAudioThread();
 	}
-	if (mnVSResultsCheckExit())
+	if (mnVSResultsCheckExit() != FALSE)
 	{
 		unlocks_num = 0;
 
@@ -3344,7 +3294,7 @@ void mnVSResultsFuncStart(void)
 	{
 		mnVSResultsUpdateAutoHandicap();
 	}
-	if (sMNVSResultsGameRule != 4)
+	if (sMNVSResultsKind != nMNVSResultsKindNoContest)
 	{
 		lbTransitionSetupTransition();
 		lbTransitionMakeCamera(0x20000002, 0, 10, COBJ_MASK_DLLINK(32));
@@ -3359,20 +3309,20 @@ void mnVSResultsFuncStart(void)
 	mnVSResultsMakeWallpaperTintCamera();
 	mnVSResultsMakeWallpaperTint2Camera();
 
-	if (sMNVSResultsGameRule != 4)
+	if (sMNVSResultsKind != nMNVSResultsKindNoContest)
 	{
 		mnVSResultsMakeEmblem();
 	}
 	mnVSResultsMakeWallpaperTint();
 	func_ovl31_8013797C();
 
-	if ((sMNVSResultsGameRule != 4) && (gSCManagerTransferBattleState.players[mnVSResultsGetWinPlayer()].pkind == nFTPlayerKindMan))
+	if ((sMNVSResultsKind != nMNVSResultsKindNoContest) && (gSCManagerTransferBattleState.players[mnVSResultsGetWinPlayer()].pkind == nFTPlayerKindMan))
 	{
 		func_ovl31_80137938();
 	}
 	scSubsysFighterSetLightParams(10.0F, 10.0F, 0xFF, 0xFF, 0xFF, sMNVSResultsCharacterAlpha);
 
-	if (sMNVSResultsGameRule != 4)
+	if (sMNVSResultsKind != nMNVSResultsKindNoContest)
 	{
 		func_800269C0_275C0(nSYAudioVoicePublicWin);
 	}

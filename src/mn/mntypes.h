@@ -34,4 +34,11 @@ struct MNCharactersSpecialMotion
 	MNCharactersMotion motions[3][8];
 };
 
+struct MNVSResultsScore
+{
+	s32 score;
+	s32 place;
+	s32 player;
+};
+
 #endif

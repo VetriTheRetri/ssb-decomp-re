@@ -7,6 +7,7 @@
 
 extern s8 D_8003CB6D;
 extern u32 D_8009D2D0;
+extern ALCSPlayer *gSYAudioALCSPlayers[/* */];
 
 extern void auThreadMain(void *arg);
 extern s32 syAudioGetRestarting(void);

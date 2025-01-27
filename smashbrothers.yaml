@@ -1406,11 +1406,11 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x150CA0, pad, ovl31_nops]
-      - [0x150CC0, c, ovl31]
-      - [0x158090, .data, ovl31]
-      - [0x158960, .rodata, ovl31]
-      - { start: auto, type: .bss, vram: 0x801398A0, name: ovl31 }
+      - [0x150CA0, pad, pad0x150CA0]
+      - [0x150CC0, c, mn/mnvsmode/mnvsresults]
+      - [0x158090, .data, mn/mnvsmode/mnvsresults]
+      - [0x158960, .rodata, mn/mnvsmode/mnvsresults]
+      - { start: auto, type: .bss, name: mn/mnvsmode/mnvsresults }
 
   - name: ovl32
     type: code

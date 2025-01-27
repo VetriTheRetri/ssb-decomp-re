@@ -5,7 +5,6 @@
 #include <sc/scene.h>
 #include <sys/video.h>
 
-extern void scManagerFuncDraw();
 extern void syAudioSetSongVolumeID(s32 playerID, u32 vol);
 
 extern u32 D_NF_000000FE;									// 0x000000FE

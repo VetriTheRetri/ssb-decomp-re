@@ -1,6 +1,9 @@
 #ifndef _SCFUNCTIONS_H_
 #define _SCFUNCTIONS_H_
 
+// Scene manager
+#include <sc/scmanager.h>
+
 // Scene subsystem
 #include <sc/scsubsys/scsubsys.h>
 

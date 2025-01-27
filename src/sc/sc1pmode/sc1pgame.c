@@ -6,8 +6,6 @@
 #include <sys/video.h>
 #include <lb/library.h>
 
-extern void scManagerFuncDraw();
-
 // // // // // // // // // // // //
 //                               //
 //       EXTERNAL VARIABLES      //

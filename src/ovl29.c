@@ -8,8 +8,6 @@
 
 #include "character_select.h"
 
-extern void scManagerFuncDraw();
-
 // Externs
 
 extern f32 dSCSubsysDemoFighterScales[12]; // dSCSubsysDemoFighterScales

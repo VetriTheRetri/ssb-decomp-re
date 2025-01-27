@@ -1,7 +1,11 @@
 #include <sys/develop.h>
 #include <db/debug.h>
 
+extern dbUnknownLinkStruct D_ovl8_8038C790;
+extern dbFunction D_ovl8_8038C890;
+extern dbUnknownLink D_ovl8_8038C9E8;
 
+// 0x80382D90
 s32 func_ovl8_80382D90(s32 arg0, dbUnknown3* arg1)
 {
 	s32 sp24;
@@ -18,20 +22,62 @@ s32 func_ovl8_80382D90(s32 arg0, dbUnknown3* arg1)
 	return sp24;
 }
 
+// 0x80382DF4
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_22/func_ovl8_80382DF4.s")
 
+// 0x80382EA8
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_22/func_ovl8_80382EA8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_22/func_ovl8_80382F70.s")
+// 0x80382F70
+void func_ovl8_80382F70(dbUnknown5* arg0, s32 arg1)
+{
+    if (arg0 != NULL)
+    {
+        arg0->unk_dbunk5_0x30 = &D_ovl8_8038C790,
+        arg0->unk_dbunk5_0x38->db_func = &D_ovl8_8038C890;
+        arg0->unk_dbunk5_0x34->unk_dbunklink_0x8 = &D_ovl8_8038C9E8;
 
+        func_ovl8_80373D88(arg0, 0);
+
+        if (arg1 != 0)
+        {
+            func_ovl8_8037C30C(arg0->unk_dbunk5_0x34, 0);
+            func_ovl8_803718C4(arg0->unk_dbunk5_0x38, 0);
+        }
+        if (arg1 & 1)
+        {
+            func_ovl8_803717C0(arg0);
+        }
+    }
+}
+
+// 0x8038300C
 void func_ovl8_8038300C(s32 arg0) {}
 
+// 0x80383014
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_22/func_ovl8_80383014.s")
 
+// 0x803831C8
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_22/func_ovl8_803831C8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_22/func_ovl8_803832A4.s")
+// 0x803832A4
+void func_ovl8_803832A4(dbUnknownLinkStruct* arg0)
+{
+    dbUnknownLinkStruct* temp_a1;
+    dbUnknownS38* temp_v0;
+    dbFunction* db_func;
 
+    if (arg0->unk_dbunkstruct_0x40 != 0)
+    {
+        temp_a1 = arg0->unk_dbunkstruct_0x38;
+        temp_v0 = (dbUnknownS38*)temp_a1->unk_dbunkstruct_0x4C;
+        db_func = temp_v0->unk_dbunks38_0x18;
+
+        func_8000A2B4(arg0->unk_dbunkstruct_0x40, db_func[6].unk_dbfunc_0x4(db_func[6].unk_dbfunc_0x0 + (uintptr_t)temp_v0, temp_a1, arg0));
+    }
+}
+
+// 0x80383300
 void func_ovl8_80383300(dbUnknownLinkStruct* arg0)
 {
 	s32 temp_v1;
@@ -44,6 +90,7 @@ void func_ovl8_80383300(dbUnknownLinkStruct* arg0)
 		*temp_v0 &= ~1;
 }
 
+// 0x80383344
 void func_ovl8_80383344(dbUnknownLinkStruct* arg0)
 {
 	s32 temp_v1;

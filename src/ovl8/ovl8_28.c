@@ -32,8 +32,8 @@ s32 func_ovl8_80385640(s32 arg0, s32 arg1)
 //     {
 //         if (arg1 == NULL)
 //         {
-//             arg1 = &arg0->unk_dbunk5_0x54;
-//             arg2 = &arg0->unk_dbunk5_0xB4;
+//             arg1 = &arg0->unk_dbunk5_0x54;\
+//             arg2 = &arg0->unk_dbunk5_0xB4;\
 //             func_ovl8_803717E0(arg1);
 //             func_ovl8_8037C2D0(arg2);
 //         }

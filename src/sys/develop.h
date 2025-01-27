@@ -239,16 +239,21 @@ typedef struct dbUnknown5
     u8 filler_0x5C[0x4];
     dbUnknownLinkStruct *unk_dbunk5_0x60;
     dbUnknownLinkStruct *unk_dbunk5_0x64;
-    u8 filler_0x68[0x34];
+    u8 filler_0x68[0x4];
+    dbUnknownLinkStruct *unk_dbunk5_0x6C;
+    u8 filler_0x70[0x2C];
     dbUnknownLinkStruct *unk_dbunk5_0x9C;
     u8 filler_0xA0[0x10];
     s32 unk_dbunk5_0xB0;
     dbUnknownLinkStruct *unk_dbunk5_0xB4;
-    u8 filler_0xB8[0x04];
+    s32 unk_dbunk5_0xB8[1];
     s32 unk_dbunk5_0xBC;
     dbUnknownLink *unk_dbunk5_0xC0;
-    u8 filler_0xC4[0xC];
+    u8 filler_0xC4[0x4];
+    dbUnknownLink *unk_dbunk5_0xC8;
+    u8 filler_0xCC[0x4];
     s32 unk_dbunk5_0xD0;
+    s32 unk_dbunk5_0xD4;
 } dbUnknown5;
 
 typedef struct dbUnknown5_2

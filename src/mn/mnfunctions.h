@@ -2,6 +2,7 @@
 #define _MNFUNCTIONS_H_
 
 #include <mn/mn1pmode/mn1pmode.h>
+#include <mn/mn1pmode/mn1pcontinue.h>
 
 #include <mn/mnvsmode/mnvsoptions.h>
 #include <mn/mnvsmode/mnvsitemswitch.h>

@@ -3,7 +3,6 @@
 
 #include <ssb_types.h>
 #include <sys/obj.h>
-#include <cm/camera.h>
 #include <gm/generic.h>
 
 #include <ef/efdef.h>

@@ -4,7 +4,6 @@
 #include <ssb_types.h>
 #include <macros.h>
 #include <sys/obj.h>
-#include <cm/camera.h>
 #include <ef/effect.h>
 #include <mp/map.h>
 #include <gm/gmsound.h>

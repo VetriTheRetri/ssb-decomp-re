@@ -9,7 +9,6 @@
 #include <sys/controller.h>
 #include <mp/map.h>
 #include <ef/effect.h>
-#include <cm/camera.h>
 #include <gm/generic.h>
 #include <gm/gmsound.h>
 

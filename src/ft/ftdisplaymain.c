@@ -1,6 +1,5 @@
 #include <ft/fighter.h>
 #include <if/interface.h>
-#include <cm/camera.h>
 #include <sc/scene.h>
 #include <sys/malloc.h>
 #include <sys/matrix.h>
@@ -1111,7 +1110,7 @@ void ftDisplayMainProcDisplay(GObj *fighter_gobj)
                 sp128.y += fp->attr->cam_offset_y;
 
             #if defined(AVOID_UB) || defined(NON_MATCHING)
-                syVectorDiff3D(&sp110, &CObjGetStruct(gCMManagerCameraGObj)->vec.at, &sp128);
+                syVectorDiff3D(&sp110, &CObjGetStruct(gGMCameraCameraGObj)->vec.at, &sp128);
 
                 if (fp->attr->cam_offset_y < syVectorMag3D(&sp110))
                 {
@@ -1121,7 +1120,7 @@ void ftDisplayMainProcDisplay(GObj *fighter_gobj)
                 }
             #else
                 // SUPER FAKE. I hope I can fix this in the future. sp128 - 2 should really be sp110, but we get stack issues otherwise.
-                syVectorDiff3D(&sp128 - 2, &CObjGetStruct(gCMManagerCameraGObj)->vec.at, &sp128);
+                syVectorDiff3D(&sp128 - 2, &CObjGetStruct(gGMCameraCameraGObj)->vec.at, &sp128);
 
                 if (fp->attr->cam_offset_y < syVectorMag3D(&sp128 - 2))
                 {
@@ -1131,15 +1130,15 @@ void ftDisplayMainProcDisplay(GObj *fighter_gobj)
                 }
             #endif
 
-                func_ovl2_800EB924(CObjGetStruct(gCMManagerCameraGObj), gCMManagerMatrix, &sp128, &cam_pos_x, &cam_pos_y);
+                func_ovl2_800EB924(CObjGetStruct(gGMCameraCameraGObj), gGMCameraMatrix, &sp128, &cam_pos_x, &cam_pos_y);
 
-                if (cmManagerCheckTargetInBounds(cam_pos_x, cam_pos_y) == FALSE)
+                if (gmCameraCheckTargetInBounds(cam_pos_x, cam_pos_y) == FALSE)
                 {
                     sp128 = fp->joints[nFTPartsJointTopN]->translate.vec.f;
 
                     sp128.y += 300.0F;
 
-                    func_ovl2_800EB924(CObjGetStruct(gCMManagerCameraGObj), gCMManagerMatrix, &sp128, &fp->magnify_pos.x, &fp->magnify_pos.y);
+                    func_ovl2_800EB924(CObjGetStruct(gGMCameraCameraGObj), gGMCameraMatrix, &sp128, &fp->magnify_pos.x, &fp->magnify_pos.y);
 
                     fp->is_show_magnify = TRUE;
 

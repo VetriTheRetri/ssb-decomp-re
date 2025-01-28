@@ -376,13 +376,13 @@ typedef enum SC1PGameBonus
 
 } SC1PGameBonus;
 
-typedef enum SC1PContinueOption
+typedef enum MN1PContinueOption
 {
-    nSC1PContinueOptionYes,
-    nSC1PContinueOptionNo,
-    nSC1PContinueOptionEnumCount
+    nMN1PContinueOptionYes,
+    nMN1PContinueOptionNo,
+    nMN1PContinueOptionEnumCount
 
-} SC1PContinueOption;
+} MN1PContinueOption;
 
 typedef enum SC1PStageClearKind
 {

@@ -120,6 +120,20 @@
 #define gmColCommandSetSkeletonID(skeleton_id)                                                                       \
 	(GC_FIELDSET(nGMColEventSetSkeletonID, 26, 6) | GC_FIELDSET(skeleton_id, 0, 26))
 
+#define CAMERA_FLAG_BOUND_LEFT   (1 << nCMDirectionBoundLeft)
+#define CAMERA_FLAG_BOUND_RIGHT  (1 << nCMDirectionBoundRight)
+#define CAMERA_FLAG_BOUND_BOTTOM (1 << nCMDirectionBoundBottom)
+#define CAMERA_FLAG_BOUND_TOP    (1 << nCMDirectionBoundTop)
+
+typedef enum GMCameraBounds
+{
+    nCMDirectionBoundLeft,
+    nCMDirectionBoundRight,
+    nCMDirectionBoundBottom,
+    nCMDirectionBoundTop
+} 
+GMCameraBounds;
+
 typedef enum GMHitStatus
 {
 	nGMHitStatusNone,		 	// User's hurtboxes are disabled
@@ -232,6 +246,7 @@ typedef enum GMRumbleEvent
 
 } GMRumbleEvent;
 
+typedef struct GMCamera 					GMCamera;
 typedef struct GMHitFlags          			GMHitFlags;
 typedef struct GMAttackRecord               GMAttackRecord;
 typedef union  GMStatFlags                  GMStatFlags;

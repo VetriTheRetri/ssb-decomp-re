@@ -4,11 +4,6 @@
 #include <sys/controller.h>
 
 extern void syInterpCubic(Vec3f*, void*, f32);
-extern void syMatrixTraRotRpyRScaF(Mtx44f mf,f32 dx,f32 dy,f32 dz,f32 r,f32 p,f32 h,f32 sx,f32 sy,f32 sz);
-extern void syMatrixPerspFastF(Mtx44f a, u16* b, f32 c, f32 d, f32 e, f32 f, f32  g);
-extern void syMatrixLookAtF(Mtx44f mf, f32 xEye, f32 yEye, f32 zEye, f32 xAt, f32 yAt, f32 zAt, f32 xUp, f32 yUp, f32 zUp);
-extern void guMtxCatF(Mtx44f a, Mtx44f b, Mtx44f c);
-
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
@@ -593,7 +588,7 @@ void func_ovl59_80131C88(CObj *cobj)
 	Mtx44f m, n;
 
 	syMatrixPerspFastF(n, &cobj->projection.persp.norm, cobj->projection.persp.fovy, cobj->projection.persp.aspect, cobj->projection.persp.near, cobj->projection.persp.far, cobj->projection.persp.scale);
-	syMatrixLookAtF(m, cobj->vec.eye.x, cobj->vec.eye.y, cobj->vec.eye.z, cobj->vec.at.x, cobj->vec.at.y, cobj->vec.at.z, cobj->vec.up.x, cobj->vec.up.y, cobj->vec.up.z);
+	syMatrixLookAtF(&m, cobj->vec.eye.x, cobj->vec.eye.y, cobj->vec.eye.z, cobj->vec.at.x, cobj->vec.at.y, cobj->vec.at.z, cobj->vec.up.x, cobj->vec.up.y, cobj->vec.up.z);
 	guMtxCatF(m, n, sSCStaffrollMatrix);
 }
 
@@ -604,7 +599,7 @@ void func_ovl59_80131D30(DObj *dobj, Vec3f *vec, f32 *width, f32 *height)
 
 	syMatrixTraRotRpyRScaF
 	(
-		m,
+		&m,
 		dobj->translate.vec.f.x,
 		dobj->translate.vec.f.y,
 		dobj->translate.vec.f.z,

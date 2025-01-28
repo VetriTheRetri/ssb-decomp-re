@@ -3,6 +3,7 @@
 
 #include <ssb_types.h>
 #include <sys/objdef.h>
+#include <gm/gmdef.h>
 #include <ft/ftdef.h>
 #include <wp/wpdef.h>
 #include <it/itdef.h>

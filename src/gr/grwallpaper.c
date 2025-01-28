@@ -1,5 +1,4 @@
 #include <gr/ground.h>
-#include <cm/camera.h>
 #include <sc/scene.h>
 
 // // // // // // // // // // // //
@@ -58,7 +57,7 @@ void grWallpaperCalcPersp(SObj *wallpaper_sobj)
     f32 height;
     f32 scale;
 
-    cobj = CObjGetStruct(gCMManagerCameraGObj);
+    cobj = CObjGetStruct(gGMCameraCameraGObj);
 
     syVectorDiff3D(&dist, &cobj->vec.eye, &cobj->vec.at);
 
@@ -199,7 +198,7 @@ void grWallpaperSectorProcUpdate(GObj *wallpaper_gobj)
     f32 temp;
     f32 scale;
 
-    cobj = gCMManagerCameraGObj->obj;
+    cobj = gGMCameraCameraGObj->obj;
 
     syVectorDiff3D(&dist, &cobj->vec.eye, &cobj->vec.at);
 

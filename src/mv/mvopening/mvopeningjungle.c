@@ -420,8 +420,8 @@ void mvOpeningJungleFuncStart(void)
     efParticleInitAll();
     ftParamInitGame();
     mpCollisionInitGroundData();
-    cmManagerSetViewportDimensions(10, 10, 310, 230);
-    cmManagerMakeWallpaperCamera();
+    gmCameraSetViewportDimensions(10, 10, 310, 230);
+    gmCameraMakeWallpaperCamera();
     ftManagerAllocFighter(FTDATA_FLAG_MAINMOTION, 2);
     wpManagerAllocWeapons();
     itManagerInitItems();

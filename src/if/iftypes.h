@@ -4,7 +4,6 @@
 #include <ssb_types.h>
 #include <macros.h>
 #include <sys/obj.h>
-#include <cm/camera.h>
 #include <gm/generic.h>
 
 #include <if/ifdef.h>

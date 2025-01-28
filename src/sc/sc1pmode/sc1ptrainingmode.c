@@ -424,7 +424,7 @@ sb32 sc1PTrainingModeUpdateViewOption(void)
 	{
 		if (sSC1PTrainingModeMenu.view_menu_option == nSC1PTrainingModeMenuViewNormal)
 		{
-			cmManagerSetCameraStatusDefault();
+			gmCameraSetCameraStatusDefault();
 			sSC1PTrainingModeMenu.magnify_wait = 180;
 		}
 		else
@@ -549,7 +549,7 @@ void sc1PTrainingModeUpdateAll(void)
 	{
 		gcRunAll();
 	}
-	else cmManagerRunGlobalFuncCamera(gCMManagerCameraGObj);
+	else gmCameraRunGlobalFuncCamera(gGMCameraCameraGObj);
 
 	ifCommonSetMaxNumGObj();
 }
@@ -1700,8 +1700,8 @@ void sc1PTrainingModeFuncStart(void)
 	efParticleInitAll();
 	ftParamInitGame();
 	mpCollisionInitGroundData();
-	cmManagerSetViewportDimensions(10, 10, 310, 230);
-	cmManagerMakeWallpaperCamera();
+	gmCameraSetViewportDimensions(10, 10, 310, 230);
+	gmCameraMakeWallpaperCamera();
 	grWallpaperMakeDecideKind();
 	func_ovl2_8010DB00();
 	itManagerInitItems();

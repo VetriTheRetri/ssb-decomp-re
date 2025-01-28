@@ -2135,11 +2135,11 @@ sb32 (*dLBCommonFuncMatrixList[/* */])(/* */) =
 	func_ovl0_800CB2F0,
 	lbCommonFighterPartsFuncMatrix,
 	lbCommonFighterPartsFuncMatrix,
-	cmManagerLookAtFuncMatrix,
-	cmManagerPrepLookAtFuncMatrix,
-	cmManagerPlayerMagnifyFuncMatrix,
+	gmCameraLookAtFuncMatrix,
+	gmCameraPrepLookAtFuncMatrix,
+	gmCameraPlayerMagnifyFuncMatrix,
 	NULL,
-	cmManageOrthoLookAtFuncMatrix,
+	gmCameraOrthoLookAtFuncMatrix,
 	NULL,
 	func_ovl0_800C994C,
 	func_ovl0_800C994C,
@@ -2151,8 +2151,8 @@ sb32 (*dLBCommonFuncMatrixList[/* */])(/* */) =
 	func_ovl0_800C9F70,
 	grSectorArwingLaser3DFuncMatrix,
 	grSectorArwingLaser3DFuncMatrix,
-	cmManageOrthoLookAtFuncMatrix,
-	cmManagerPrepProjectionFuncMatrix
+	gmCameraOrthoLookAtFuncMatrix,
+	gmCameraPrepProjectionFuncMatrix
 };
 
 // 0x800CB644

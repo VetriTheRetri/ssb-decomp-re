@@ -11,7 +11,7 @@ void ftBossOkuhikouki2ProcUpdate(GObj *fighter_gobj)
 {
     if (fighter_gobj->anim_frame <= 0.0F)
     {
-        cmManagerSetCameraStatusDefault();
+        gmCameraSetCameraStatusDefault();
         ftBossOkuhikouki3SetStatus(fighter_gobj);
         ftBossCommonSetDisableFogColor(fighter_gobj);
     }

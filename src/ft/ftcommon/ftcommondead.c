@@ -440,14 +440,14 @@ void ftCommonDeadUpFallProcUpdate(GObj *fighter_gobj)
         case 0:
             fp->physics.vel_air.y = (gMPCollisionGroundData->camera_bound_bottom - DObjGetStruct(fighter_gobj)->translate.vec.f.y) / 180.0F;
 
-            DObjGetStruct(fighter_gobj)->translate.vec.f.z = CObjGetStruct(gCMManagerCameraGObj)->vec.eye.z - 3000.0F;
+            DObjGetStruct(fighter_gobj)->translate.vec.f.z = CObjGetStruct(gGMCameraCameraGObj)->vec.eye.z - 3000.0F;
 
             if (DObjGetStruct(fighter_gobj)->translate.vec.f.z < 2000.0F)
             {
                 DObjGetStruct(fighter_gobj)->translate.vec.f.z = 2000.0F;
             }
-            DObjGetStruct(fighter_gobj)->translate.vec.f.x = CObjGetStruct(gCMManagerCameraGObj)->vec.eye.x;
-            DObjGetStruct(fighter_gobj)->translate.vec.f.y = CObjGetStruct(gCMManagerCameraGObj)->vec.eye.y + 3000.0F;
+            DObjGetStruct(fighter_gobj)->translate.vec.f.x = CObjGetStruct(gGMCameraCameraGObj)->vec.eye.x;
+            DObjGetStruct(fighter_gobj)->translate.vec.f.y = CObjGetStruct(gGMCameraCameraGObj)->vec.eye.y + 3000.0F;
 
             if (gMPCollisionGroundData->map_bound_top < DObjGetStruct(fighter_gobj)->translate.vec.f.y)
             {

@@ -1008,8 +1008,8 @@ void sc1PBonusStageFuncStart(void)
 	efParticleInitAll();
 	ftParamInitGame();
 	mpCollisionInitGroundData();
-	cmManagerSetViewportDimensions(10, 10, 310, 230);
-	cmManagerMakeWallpaperCamera();
+	gmCameraSetViewportDimensions(10, 10, 310, 230);
+	gmCameraMakeWallpaperCamera();
 	grWallpaperMakeDecideKind();
 	func_ovl2_8010DB00();
 	itManagerInitItems();

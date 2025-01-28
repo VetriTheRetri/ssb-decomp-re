@@ -1,7 +1,6 @@
 #include <ft/fighter.h>
 #include <gr/ground.h>
 #include <if/interface.h>
-#include <cm/camera.h>
 #include <sc/scene.h>
 #include <sys/video.h>
 #include <lb/library.h>
@@ -1436,7 +1435,7 @@ void sc1PGameWaitStageCommonUpdate(void)
     if (random == 2)
     {
         gcStopCurrentGObjThread(30);
-        cmManagerSetCameraStatusDefault();
+        gmCameraSetCameraStatusDefault();
     }
 }
 
@@ -2012,8 +2011,8 @@ void sc1PGameFuncStart(void)
     efParticleInitAll();
     ftParamInitGame();
     mpCollisionInitGroundData();
-    cmManagerSetViewportDimensions(10, 10, 310, 230);
-    cmManagerMakeWallpaperCamera();
+    gmCameraSetViewportDimensions(10, 10, 310, 230);
+    gmCameraMakeWallpaperCamera();
     grWallpaperMakeDecideKind();
     func_ovl2_8010DB00();
     itManagerInitItems();

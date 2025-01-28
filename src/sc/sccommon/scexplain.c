@@ -210,10 +210,10 @@ void scExplainMakeCamera(void)
     syRdpSetViewport
     (
         &cobj->viewport,
-        gCMManagerCameraStruct.viewport_ulx,
-        gCMManagerCameraStruct.viewport_uly,
-        gCMManagerCameraStruct.viewport_lrx,
-        gCMManagerCameraStruct.viewport_lry
+        gGMCameraCameraStruct.viewport_ulx,
+        gGMCameraCameraStruct.viewport_uly,
+        gGMCameraCameraStruct.viewport_lrx,
+        gGMCameraCameraStruct.viewport_lry
     );
 }
 
@@ -710,12 +710,12 @@ void scExplainFuncStart(void)
     scExplainSetBattleState();
     scExplainSetupFiles();
     scExplainLoadExplainFiles();
-    cmManagerSetViewportDimensions(10, 10, 310, 160);
+    gmCameraSetViewportDimensions(10, 10, 310, 160);
     scExplainMakeCamera();
     efParticleInitAll();
     ftParamInitGame();
     mpCollisionInitGroundData();
-    cmManagerMakeWallpaperCamera();
+    gmCameraMakeWallpaperCamera();
     grWallpaperMakeDecideKind();
     func_ovl2_8010DB00();
     itManagerInitItems();

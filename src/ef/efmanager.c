@@ -2,7 +2,6 @@
 #include <ft/fighter.h>
 #include <it/item.h>
 #include <wp/weapon.h>
-#include <cm/camera.h>
 #include <sc/scene.h>
 #include <lb/library.h>
 
@@ -3784,7 +3783,7 @@ void efManagerQuakeProcUpdate(GObj *effect_gobj)
     }
     else
     {
-        cobj = CObjGetStruct(gCMManagerCameraGObj);
+        cobj = CObjGetStruct(gGMCameraCameraGObj);
 
         dobj = DObjGetStruct(effect_gobj);
 
@@ -3806,7 +3805,7 @@ void efManagerQuakeProcUpdate(GObj *effect_gobj)
         }
         pos.z = 0.0F;
 
-        cmManagerSetAtMove(&pos);
+        gmCameraSetAtMove(&pos);
     }
 }
 

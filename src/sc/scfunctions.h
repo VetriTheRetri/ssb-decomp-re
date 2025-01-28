@@ -19,7 +19,6 @@
 #include <sc/sc1pmode/sc1ptrainingmode.h>
 #include <sc/sc1pmode/sc1pchallenger.h>
 #include <sc/sc1pmode/sc1pintro.h>
-#include <sc/sc1pmode/sc1pcontinue.h>
 #include <sc/sc1pmode/sc1pstageclear.h>
 #include <sc/sc1pmode/sc1pgame.h>
 #include <sc/sc1pmode/sc1pgameboss.h>

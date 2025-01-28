@@ -1200,7 +1200,7 @@ void scManagerRunLoop(sb32 arg)
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[55]);
-				sc1PContinueStartScene();
+				mn1PContinueStartScene();
 				break;
 
 			case nSCKind1PScoreUnk:

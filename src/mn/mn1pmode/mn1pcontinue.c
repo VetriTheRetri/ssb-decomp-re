@@ -24,20 +24,20 @@ extern uintptr_t D_NF_00000025;							// 0x00000025
 //                               //
 // // // // // // // // // // // //
 
-#define sc1PContinueCheckGetOptionButtonInput(is_button, mask) \
-mnCommonCheckGetOptionButtonInput(sSC1PContinueOptionChangeWait, is_button, mask)
+#define mn1PContinueCheckGetOptionButtonInput(is_button, mask) \
+mnCommonCheckGetOptionButtonInput(sMN1PContinueOptionChangeWait, is_button, mask)
 
-#define sc1PContinueCheckGetOptionStickInputUD(stick_range, min, b) \
-mnCommonCheckGetOptionStickInputUD(sSC1PContinueOptionChangeWait, stick_range, min, b)
+#define mn1PContinueCheckGetOptionStickInputUD(stick_range, min, b) \
+mnCommonCheckGetOptionStickInputUD(sMN1PContinueOptionChangeWait, stick_range, min, b)
 
-#define sc1PContinueCheckGetOptionStickInputLR(stick_range, min, b) \
-mnCommonCheckGetOptionStickInputLR(sSC1PContinueOptionChangeWait, stick_range, min, b)
+#define mn1PContinueCheckGetOptionStickInputLR(stick_range, min, b) \
+mnCommonCheckGetOptionStickInputLR(sMN1PContinueOptionChangeWait, stick_range, min, b)
 
-#define sc1PContinueSetOptionChangeWaitP(stick_range) \
-(sSC1PContinueOptionChangeWait = (160 - (stick_range)) / 5)
+#define mn1PContinueSetOptionChangeWaitP(stick_range) \
+(sMN1PContinueOptionChangeWait = (160 - (stick_range)) / 5)
 
-#define sc1PContinueSetOptionChangeWaitN(stick_range) \
-(sSC1PContinueOptionChangeWait = ((stick_range) + 160) / 5)
+#define mn1PContinueSetOptionChangeWaitN(stick_range) \
+(sMN1PContinueOptionChangeWait = ((stick_range) + 160) / 5)
 
 // // // // // // // // // // // //
 //                               //
@@ -46,7 +46,7 @@ mnCommonCheckGetOptionStickInputLR(sSC1PContinueOptionChangeWait, stick_range, m
 // // // // // // // // // // // //
 
 // 0x80134160
-u32 dSC1PContinueFileIDs[/* */] =
+u32 dMN1PContinueFileIDs[/* */] =
 {
     &D_NF_0000004F,
     &D_NF_00000051,
@@ -56,10 +56,10 @@ u32 dSC1PContinueFileIDs[/* */] =
 };
 
 // 0x80134178
-Lights1 dSC1PContinueLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x14, 0x14, 0x14);
+Lights1 dMN1PContinueLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x14, 0x14, 0x14);
 
 // 0x80134190
-Lights1 dSC1PContinueLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x00, 0x14, 0x00);
+Lights1 dMN1PContinueLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x00, 0x14, 0x00);
 
 // // // // // // // // // // // //
 //                               //
@@ -68,100 +68,100 @@ Lights1 dSC1PContinueLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xF
 // // // // // // // // // // // //
 
 // 0x801342F0
-s32 sSC1PContinuePad0x801342F0[2];
+s32 sMN1PContinuePad0x801342F0[2];
 
 // 0x801342F8
-void *sSC1PContinueFigatreeHeap;
+void *sMN1PContinueFigatreeHeap;
 
 // 0x801342FC
-s32 sSC1PContinueTotalTimeTics;
+s32 sMN1PContinueTotalTimeTics;
 
 // 0x80134300
-GObj *sSC1PContinueFighterGObj;
+GObj *sMN1PContinueFighterGObj;
 
 // 0x80134304
-GObj *sSC1PContinueContinueGObj;
+GObj *sMN1PContinueContinueGObj;
 
 // 0x80134308
-GObj *sSC1PContinueShadowGObj;
+GObj *sMN1PContinueShadowGObj;
 
 // 0x8013430C
-GObj *sSC1PContinueSpotlightGObj;
+GObj *sMN1PContinueSpotlightGObj;
 
 // 0x80134310
-GObj *sSC1PContinueCursorGObj;
+GObj *sMN1PContinueCursorGObj;
 
 // 0x80134314
-GObj *sSC1PContinueOptionGObj;
+GObj *sMN1PContinueOptionGObj;
 
 // 0x80134318
-GObj *sSC1PContinueRoomGObj;
+GObj *sMN1PContinueRoomGObj;
 
 // 0x8013431C
-s32 sSC1PContinueRoomFadeInAlpha;
+s32 sMN1PContinueRoomFadeInAlpha;
 
 // 0x80134320
-GObj *sSC1PContinueRoomFadeInGObj;
+GObj *sMN1PContinueRoomFadeInGObj;
 
 // 0x80134324
-s32 sSC1PContinueSpotlightFadeAlpha;
+s32 sMN1PContinueSpotlightFadeAlpha;
 
 // 0x80134328
-GObj *sSC1PContinueSpotlightFadeGObj;
+GObj *sMN1PContinueSpotlightFadeGObj;
 
 // 0x8013432C
-s32 sSC1PContinueRoomFadeOutAlpha;
+s32 sMN1PContinueRoomFadeOutAlpha;
 
 // 0x80134330
-GObj *sSC1PContinueRoomFadeOutGObj;
+GObj *sMN1PContinueRoomFadeOutGObj;
 
 // 0x80134334
-GObj *sSC1PContinueGameOverGObj;
+GObj *sMN1PContinueGameOverGObj;
 
 // 0x80134338
-s32 sSC1PContinueOptionSelect;
+s32 sMN1PContinueOptionSelect;
 
 // 0x8013433C
-s32 sSC1PContinueStatus;
+s32 sMN1PContinueStatus;
 
 // 0x80134340
-f32 sSC1PContinueGameOverFadeOutScale;
+f32 sMN1PContinueGameOverFadeOutScale;
 
 // 0x80134344
-f32 sSC1PContinueGameOverColorStep;
+f32 sMN1PContinueGameOverColorStep;
 
 // 0x80134348
-FTDemoDesc sSC1PContinueFighterDemoDesc;
+FTDemoDesc sMN1PContinueFighterDemoDesc;
 
 // 0x80134354 - ??? set but never used?
-s32 sSC1PContinueUnknown0x80134354;
+s32 sMN1PContinueUnknown0x80134354;
 
 // 0x80134358
-s32 sSC1PContinueOptionNoGameOverInputWait;
+s32 sMN1PContinueOptionNoGameOverInputWait;
 
 // 0x8013435C
-s32 sSC1PContinueOptionYesRetryTic;
+s32 sMN1PContinueOptionYesRetryTic;
 
 // 0x80134360
-s32 sSC1PContinueIsSelectContinue;
+s32 sMN1PContinueIsSelectContinue;
 
 // 0x80134364
-s32 sSC1PContinueOptionNoGameOverAutoWait;
+s32 sMN1PContinueOptionNoGameOverAutoWait;
 
 // 0x80134368
-GObj *sSC1PContinueScoreGObj;
+GObj *sMN1PContinueScoreGObj;
 
 // 0x8013436C
-s32 sSC1PContinueOptionChangeWait;
+s32 sMN1PContinueOptionChangeWait;
 
 // 0x80134370
-LBFileNode sSC1PContinueStatusBuffer[48];
+LBFileNode sMN1PContinueStatusBuffer[48];
 
 // 0x801344F0
-LBFileNode sSC1PContinueForceStatusBuffer[7];
+LBFileNode sMN1PContinueForceStatusBuffer[7];
 
 // 0x80134528
-void *sSC1PContinueFiles[ARRAY_COUNT(dSC1PContinueFileIDs)];
+void *sMN1PContinueFiles[ARRAY_COUNT(dMN1PContinueFileIDs)];
 
 // // // // // // // // // // // //
 //                               //
@@ -170,7 +170,7 @@ void *sSC1PContinueFiles[ARRAY_COUNT(dSC1PContinueFileIDs)];
 // // // // // // // // // // // //
 
 // 0x80131B00
-void sc1PContinueFuncLights(Gfx **dls)
+void mn1PContinueFuncLights(Gfx **dls)
 {
     gSPSetGeometryMode(dls[0]++, G_LIGHTING);
 
@@ -178,7 +178,7 @@ void sc1PContinueFuncLights(Gfx **dls)
 }
 
 // 0x80131B58
-s32 sc1PContinueGetPowerOf(s32 base, s32 exp)
+s32 mn1PContinueGetPowerOf(s32 base, s32 exp)
 {
 	s32 raised = base;
 	s32 i;
@@ -198,7 +198,7 @@ s32 sc1PContinueGetPowerOf(s32 base, s32 exp)
 }
 
 // 0x80131BF8
-void sc1PContinueScoreDigitInitSprite(SObj *sobj)
+void mn1PContinueScoreDigitInitSprite(SObj *sobj)
 {
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -213,13 +213,13 @@ void sc1PContinueScoreDigitInitSprite(SObj *sobj)
 }
 
 // 0x80131C30
-s32 sc1PContinueGetScoreDigitCount(s32 points, s32 digit_count_max)
+s32 mn1PContinueGetScoreDigitCount(s32 points, s32 digit_count_max)
 {
     s32 digit_count_curr = digit_count_max;
 
     while (digit_count_curr > 0)
     {
-        s32 digit = (sc1PContinueGetPowerOf(10, digit_count_curr - 1) != 0) ? points / sc1PContinueGetPowerOf(10, digit_count_curr - 1) : 0;
+        s32 digit = (mn1PContinueGetPowerOf(10, digit_count_curr - 1) != 0) ? points / mn1PContinueGetPowerOf(10, digit_count_curr - 1) : 0;
 
         if (digit != 0)
         {
@@ -231,7 +231,7 @@ s32 sc1PContinueGetScoreDigitCount(s32 points, s32 digit_count_max)
 }
 
 // 0x80131CDC
-Sprite* sc1PContinueScoreDigitGetSprite(s32 digit)
+Sprite* mn1PContinueScoreDigitGetSprite(s32 digit)
 {
     // 0x80134534
     intptr_t offsets[/* */] =
@@ -247,11 +247,11 @@ Sprite* sc1PContinueScoreDigitGetSprite(s32 digit)
         &lIFCommonPlayerDamageDigit8,
         &lIFCommonPlayerDamageDigit9
     };
-    return lbRelocGetFileData(Sprite*, sSC1PContinueFiles[3], offsets[digit]);
+    return lbRelocGetFileData(Sprite*, sMN1PContinueFiles[3], offsets[digit]);
 }
 
 // 0x80131D40
-void sc1PContinueMakeScoreDigits
+void mn1PContinueMakeScoreDigits
 (
     GObj *gobj,
     s32 points,
@@ -272,20 +272,20 @@ void sc1PContinueMakeScoreDigits
     {
         points = 0;
     }
-    sobj = lbCommonMakeSObjForGObj(gobj, sc1PContinueScoreDigitGetSprite(points % 10));
-    sc1PContinueScoreDigitInitSprite(sobj);
+    sobj = lbCommonMakeSObjForGObj(gobj, mn1PContinueScoreDigitGetSprite(points % 10));
+    mn1PContinueScoreDigitInitSprite(sobj);
 
     calc_x = (sub != 0) ? x - sub : x - (sobj->sprite.width + offset_x);
 
     sobj->pos.x = calc_x;
     sobj->pos.y = y;
 
-    for (i = 1; i < ((is_fixed_digit_count != FALSE) ? digit_count : sc1PContinueGetScoreDigitCount(points, digit_count)); i++)
+    for (i = 1; i < ((is_fixed_digit_count != FALSE) ? digit_count : mn1PContinueGetScoreDigitCount(points, digit_count)); i++)
     {
-        digit = (sc1PContinueGetPowerOf(10, i) != 0) ? points / sc1PContinueGetPowerOf(10, i) : 0;
+        digit = (mn1PContinueGetPowerOf(10, i) != 0) ? points / mn1PContinueGetPowerOf(10, i) : 0;
 
-        sobj = lbCommonMakeSObjForGObj(gobj, sc1PContinueScoreDigitGetSprite(digit % 10));
-        sc1PContinueScoreDigitInitSprite(sobj);
+        sobj = lbCommonMakeSObjForGObj(gobj, mn1PContinueScoreDigitGetSprite(digit % 10));
+        mn1PContinueScoreDigitInitSprite(sobj);
 
         calc_x = (sub != 0) ? calc_x - sub : calc_x - (sobj->sprite.width + offset_x);
 
@@ -295,15 +295,15 @@ void sc1PContinueMakeScoreDigits
 }
 
 // 0x80131F98
-void sc1PContinueMakeScoreDisplay(s32 points)
+void mn1PContinueMakeScoreDisplay(s32 points)
 {
     GObj *gobj;
     SObj *sobj;
 
-    sSC1PContinueScoreGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_PRIORITY_DEFAULT);
+    sMN1PContinueScoreGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_PRIORITY_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_PRIORITY_DEFAULT, ~0);
 
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PContinueFiles[1], &lSC1PContinueTextScore));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PContinueFiles[1], &lMN1PContinueTextScore));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -319,7 +319,7 @@ void sc1PContinueMakeScoreDisplay(s32 points)
     sobj->pos.x = 90.0F;
     sobj->pos.y = 200.0F;
 
-    sc1PContinueMakeScoreDigits(gobj, points, 295.0F, 197.0F, 0.0F, 16, 8, TRUE);
+    mn1PContinueMakeScoreDigits(gobj, points, 295.0F, 197.0F, 0.0F, 16, 8, TRUE);
 }
 
 // 0x80132094 - Unused?
@@ -329,7 +329,7 @@ void func_ovl55_80132094(void)
 }
 
 // 0x8013209C
-void sc1PContinueSetFighterScale(GObj *gobj, s32 fkind)
+void mn1PContinueSetFighterScale(GObj *gobj, s32 fkind)
 {
     DObjGetStruct(gobj)->scale.vec.f.x = dSCSubsysDemoFighterScales[fkind];
     DObjGetStruct(gobj)->scale.vec.f.y = dSCSubsysDemoFighterScales[fkind];
@@ -337,7 +337,7 @@ void sc1PContinueSetFighterScale(GObj *gobj, s32 fkind)
 }
 
 // 0x801320D4
-void sc1PContinueMakeFighter(s32 fkind)
+void mn1PContinueMakeFighter(s32 fkind)
 {
     GObj *fighter_gobj;
     FTDesc desc;
@@ -348,34 +348,34 @@ void sc1PContinueMakeFighter(s32 fkind)
 
     desc.pos.x = 90.0F;
 
-    desc.costume = sSC1PContinueFighterDemoDesc.costume;
-    desc.shade = sSC1PContinueFighterDemoDesc.shade;
-    desc.figatree_heap = sSC1PContinueFigatreeHeap;
+    desc.costume = sMN1PContinueFighterDemoDesc.costume;
+    desc.shade = sMN1PContinueFighterDemoDesc.shade;
+    desc.figatree_heap = sMN1PContinueFigatreeHeap;
 
     desc.pos.y = 2070.0F;
     desc.pos.z = 0.0F;
 
-    sSC1PContinueFighterGObj = fighter_gobj = ftManagerMakeFighter(&desc);
+    sMN1PContinueFighterGObj = fighter_gobj = ftManagerMakeFighter(&desc);
 
     scSubsysFighterSetStatus(fighter_gobj, nFTDemoStatusFigureDropped);
-    sc1PContinueSetFighterScale(fighter_gobj, sSC1PContinueFighterDemoDesc.fkind);
+    mn1PContinueSetFighterScale(fighter_gobj, sMN1PContinueFighterDemoDesc.fkind);
 }
 
 // 0x801321A8
-void sc1PContinueRoomFadeOutProcDisplay(GObj *gobj)
+void mn1PContinueRoomFadeOutProcDisplay(GObj *gobj)
 {
-    if (sSC1PContinueRoomFadeOutAlpha < 0xFF)
+    if (sMN1PContinueRoomFadeOutAlpha < 0xFF)
     {
-        sSC1PContinueRoomFadeOutAlpha += 5;
+        sMN1PContinueRoomFadeOutAlpha += 5;
 
-        if (sSC1PContinueRoomFadeOutAlpha > 0xFF)
+        if (sMN1PContinueRoomFadeOutAlpha > 0xFF)
         {
-            sSC1PContinueRoomFadeOutAlpha = 0xFF;
+            sMN1PContinueRoomFadeOutAlpha = 0xFF;
         }
     }
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x00, 0x00, 0x00, sSC1PContinueRoomFadeOutAlpha);
+    gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x00, 0x00, 0x00, sMN1PContinueRoomFadeOutAlpha);
     gDPSetCombineMode(gSYTaskmanDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
     gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
     gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 10, 310, 230);
@@ -384,30 +384,30 @@ void sc1PContinueRoomFadeOutProcDisplay(GObj *gobj)
 }
 
 // 0x801322DC
-void sc1PContinueMakeRoomFadeOut(void)
+void mn1PContinueMakeRoomFadeOut(void)
 {
     GObj *gobj;
 
-    sSC1PContinueRoomFadeOutAlpha = 0x00;
-    sSC1PContinueRoomFadeOutGObj = gobj = gcMakeGObjSPAfter(0, NULL, 23, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, sc1PContinueRoomFadeOutProcDisplay, 32, GOBJ_PRIORITY_DEFAULT, ~0);
+    sMN1PContinueRoomFadeOutAlpha = 0x00;
+    sMN1PContinueRoomFadeOutGObj = gobj = gcMakeGObjSPAfter(0, NULL, 23, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, mn1PContinueRoomFadeOutProcDisplay, 32, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
 // 0x80132338
-void sc1PContinueRoomFadeInProcDisplay(GObj *gobj)
+void mn1PContinueRoomFadeInProcDisplay(GObj *gobj)
 {
-    if (sSC1PContinueRoomFadeInAlpha > 0x00)
+    if (sMN1PContinueRoomFadeInAlpha > 0x00)
     {
-        sSC1PContinueRoomFadeInAlpha -= 0x05;
+        sMN1PContinueRoomFadeInAlpha -= 0x05;
 
-        if (sSC1PContinueRoomFadeInAlpha < 0x00)
+        if (sMN1PContinueRoomFadeInAlpha < 0x00)
         {
-            sSC1PContinueRoomFadeInAlpha = 0x00;
+            sMN1PContinueRoomFadeInAlpha = 0x00;
         }
     }
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x00, 0x00, 0x00, sSC1PContinueRoomFadeInAlpha);
+    gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x00, 0x00, 0x00, sMN1PContinueRoomFadeInAlpha);
     gDPSetCombineMode(gSYTaskmanDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
     gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
     gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 10, 310, 230);
@@ -416,30 +416,30 @@ void sc1PContinueRoomFadeInProcDisplay(GObj *gobj)
 }
 
 // 0x80132460
-void sc1PContinueMakeRoomFadeIn(void)
+void mn1PContinueMakeRoomFadeIn(void)
 {
     GObj *gobj;
 
-    sSC1PContinueRoomFadeInAlpha = 0xFF;
-    sSC1PContinueRoomFadeInGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, sc1PContinueRoomFadeInProcDisplay, 26, GOBJ_PRIORITY_DEFAULT, ~0);
+    sMN1PContinueRoomFadeInAlpha = 0xFF;
+    sMN1PContinueRoomFadeInGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, mn1PContinueRoomFadeInProcDisplay, 26, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
 // 0x801324C0
-void sc1PContinueSpotlightFadeProcDisplay(GObj *gobj)
+void mn1PContinueSpotlightFadeProcDisplay(GObj *gobj)
 {
-    if (sSC1PContinueSpotlightFadeAlpha > 0x00)
+    if (sMN1PContinueSpotlightFadeAlpha > 0x00)
     {
-        sSC1PContinueSpotlightFadeAlpha -= 0x05;
+        sMN1PContinueSpotlightFadeAlpha -= 0x05;
 
-        if (sSC1PContinueSpotlightFadeAlpha < 0x00)
+        if (sMN1PContinueSpotlightFadeAlpha < 0x00)
         {
-            sSC1PContinueSpotlightFadeAlpha = 0x00;
+            sMN1PContinueSpotlightFadeAlpha = 0x00;
         }
     }
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x00, 0x00, 0x00, sSC1PContinueSpotlightFadeAlpha);
+    gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x00, 0x00, 0x00, sMN1PContinueSpotlightFadeAlpha);
     gDPSetCombineMode(gSYTaskmanDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
     gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
     gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 10, 310, 230);
@@ -448,39 +448,39 @@ void sc1PContinueSpotlightFadeProcDisplay(GObj *gobj)
 }
 
 // 0x801325E8
-void sc1PContinueMakeSpotlightFade(void)
+void mn1PContinueMakeSpotlightFade(void)
 {
     GObj *gobj;
 
-    sSC1PContinueSpotlightFadeAlpha = 0xFF;
-    sSC1PContinueSpotlightFadeGObj = gobj = gcMakeGObjSPAfter(0, NULL, 22, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, sc1PContinueSpotlightFadeProcDisplay, 31, GOBJ_PRIORITY_DEFAULT, ~0);
+    sMN1PContinueSpotlightFadeAlpha = 0xFF;
+    sMN1PContinueSpotlightFadeGObj = gobj = gcMakeGObjSPAfter(0, NULL, 22, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, mn1PContinueSpotlightFadeProcDisplay, 31, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
 // 0x80132648
-void sc1PContinueMakeRoom(void)
+void mn1PContinueMakeRoom(void)
 {
     GObj *gobj;
     SObj *sobj;
 
-    sSC1PContinueRoomGObj = gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_PRIORITY_DEFAULT);
+    sMN1PContinueRoomGObj = gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_PRIORITY_DEFAULT);
 
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 29, GOBJ_PRIORITY_DEFAULT, ~0);
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PContinueFiles[0], &lSC1PContinueRoom));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PContinueFiles[0], &lMN1PContinueRoom));
 
     sobj->pos.x = 30.0F;
     sobj->pos.y = 28.0F;
 }
 
 // 0x801326D4
-void sc1PContinueMakeSpotlight(void)
+void mn1PContinueMakeSpotlight(void)
 {
     GObj *gobj;
     SObj *sobj;
 
-    sSC1PContinueShadowGObj = gobj = gcMakeGObjSPAfter(0, NULL, 21, GOBJ_PRIORITY_DEFAULT);
+    sMN1PContinueShadowGObj = gobj = gcMakeGObjSPAfter(0, NULL, 21, GOBJ_PRIORITY_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 30, GOBJ_PRIORITY_DEFAULT, ~0);
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PContinueFiles[0], &lSC1PContinueShadow));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PContinueFiles[0], &lMN1PContinueShadow));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -492,9 +492,9 @@ void sc1PContinueMakeSpotlight(void)
     sobj->pos.x = 80.0F;
     sobj->pos.y = 156.0F;
 
-    sSC1PContinueSpotlightGObj = gobj = gcMakeGObjSPAfter(0, NULL, 21, GOBJ_PRIORITY_DEFAULT);
+    sMN1PContinueSpotlightGObj = gobj = gcMakeGObjSPAfter(0, NULL, 21, GOBJ_PRIORITY_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 30, GOBJ_PRIORITY_DEFAULT, ~0);
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PContinueFiles[0], &lSC1PContinueSpotlight));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PContinueFiles[0], &lMN1PContinueSpotlight));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -508,14 +508,14 @@ void sc1PContinueMakeSpotlight(void)
 }
 
 // 0x80132824
-void sc1PContinueMakeContinue(void)
+void mn1PContinueMakeContinue(void)
 {
     GObj *gobj;
     SObj *sobj;
 
-    sSC1PContinueContinueGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_PRIORITY_DEFAULT);
+    sMN1PContinueContinueGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_PRIORITY_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_PRIORITY_DEFAULT, ~0);
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PContinueFiles[0], &lSC1PContinueTextContinue));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PContinueFiles[0], &lMN1PContinueTextContinue));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -533,7 +533,7 @@ void sc1PContinueMakeContinue(void)
 }
 
 // 0x801328D8
-void SC1PContinueOptionSetHighlightColors(GObj *gobj, s32 option)
+void MN1PContinueOptionSetHighlightColors(GObj *gobj, s32 option)
 {
     SObj *sobj;
 
@@ -547,7 +547,7 @@ void SC1PContinueOptionSetHighlightColors(GObj *gobj, s32 option)
 
     sobj = SObjGetStruct(gobj);
 
-    color = (option == nSC1PContinueOptionYes) ? &not : &highlight;
+    color = (option == nMN1PContinueOptionYes) ? &not : &highlight;
 
     sobj->envcolor.r = color->prim.r;
     sobj->envcolor.g = color->prim.g;
@@ -559,7 +559,7 @@ void SC1PContinueOptionSetHighlightColors(GObj *gobj, s32 option)
 
     sobj = SObjGetStruct(gobj)->next;
 
-    color = (option == nSC1PContinueOptionNo) ? &not : &highlight;
+    color = (option == nMN1PContinueOptionNo) ? &not : &highlight;
 
     sobj->envcolor.r = color->prim.r;
     sobj->envcolor.g = color->prim.g;
@@ -571,22 +571,22 @@ void SC1PContinueOptionSetHighlightColors(GObj *gobj, s32 option)
 }
 
 // 0x801329AC
-void SC1PContinueOptionProcUpdate(GObj *gobj)
+void MN1PContinueOptionProcUpdate(GObj *gobj)
 {
-    SC1PContinueOptionSetHighlightColors(gobj, sSC1PContinueOptionSelect);
+    MN1PContinueOptionSetHighlightColors(gobj, sMN1PContinueOptionSelect);
 }
 
 // 0x801329D0
-void sc1PContinueMakeOptions(void)
+void mn1PContinueMakeOptions(void)
 {
     GObj *gobj;
     SObj *sobj;
 
-    sSC1PContinueOptionGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_PRIORITY_DEFAULT);
+    sMN1PContinueOptionGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_PRIORITY_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_PRIORITY_DEFAULT, ~0);
-    gcAddGObjProcess(gobj, SC1PContinueOptionProcUpdate, nGCProcessKindFunc, 1);
+    gcAddGObjProcess(gobj, MN1PContinueOptionProcUpdate, nGCProcessKindFunc, 1);
 
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PContinueFiles[0], &lSC1PContinueTextYes));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PContinueFiles[0], &lMN1PContinueTextYes));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -594,7 +594,7 @@ void sc1PContinueMakeOptions(void)
     sobj->pos.x = 84.0F;
     sobj->pos.y = 129.0F;
 
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PContinueFiles[0], &lSC1PContinueTextNo));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PContinueFiles[0], &lMN1PContinueTextNo));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -602,15 +602,15 @@ void sc1PContinueMakeOptions(void)
     sobj->pos.x = 189.0F;
     sobj->pos.y = 129.0F;
 
-    SC1PContinueOptionSetHighlightColors(gobj, sSC1PContinueOptionSelect);
+    MN1PContinueOptionSetHighlightColors(gobj, sMN1PContinueOptionSelect);
 }
 
 // 0x80132AE8
-void sc1PContinueCursorSetPosition(GObj *gobj, s32 option)
+void mn1PContinueCursorSetPosition(GObj *gobj, s32 option)
 {
     SObj *sobj = SObjGetStruct(gobj);
 
-    if (option == nSC1PContinueOptionYes)
+    if (option == nMN1PContinueOptionYes)
     {
         sobj->pos.x = 76.0F;
         sobj->pos.y = 120.0F;
@@ -623,22 +623,22 @@ void sc1PContinueCursorSetPosition(GObj *gobj, s32 option)
 }
 
 // 0x80132B2C
-void sc1PContinueCursorProcUpdate(GObj *gobj)
+void mn1PContinueCursorProcUpdate(GObj *gobj)
 {
-    sc1PContinueCursorSetPosition(gobj, sSC1PContinueOptionSelect);
+    mn1PContinueCursorSetPosition(gobj, sMN1PContinueOptionSelect);
 }
 
 // 0x80132B50
-void sc1PContinueMakeCursor(void)
+void mn1PContinueMakeCursor(void)
 {
     GObj *gobj;
     SObj *sobj;
 
-    sSC1PContinueCursorGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_PRIORITY_DEFAULT);
+    sMN1PContinueCursorGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_PRIORITY_DEFAULT);
 
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_PRIORITY_DEFAULT, ~0);
-    gcAddGObjProcess(gobj, sc1PContinueCursorProcUpdate, nGCProcessKindFunc, 1);
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PContinueFiles[0], &lSC1PContinueCursor));
+    gcAddGObjProcess(gobj, mn1PContinueCursorProcUpdate, nGCProcessKindFunc, 1);
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PContinueFiles[0], &lMN1PContinueCursor));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -651,11 +651,11 @@ void sc1PContinueMakeCursor(void)
     sobj->sprite.green = 0x00;
     sobj->sprite.blue = 0x00;
 
-    sc1PContinueCursorSetPosition(gobj, sSC1PContinueOptionSelect);
+    mn1PContinueCursorSetPosition(gobj, sMN1PContinueOptionSelect);
 }
 
 // 0x80132C1C
-void sc1PContinueGameOverInitSprites(SObj *sobj)
+void mn1PContinueGameOverInitSprites(SObj *sobj)
 {
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -670,30 +670,30 @@ void sc1PContinueGameOverInitSprites(SObj *sobj)
 }
 
 // 0x80132C58
-void sc1PContinueGameOverTextStepColors(GObj *gobj)
+void mn1PContinueGameOverTextStepColors(GObj *gobj)
 {
     SObj *sobj = SObjGetStruct(gobj);
 
     // 0x801341E0
     f32 values[/* */] = { 26.0F, 0.0F, 230.0F, 255.0F, 255.0F, 255.0F };
 
-    if (sSC1PContinueGameOverColorStep < 1.0F)
+    if (sMN1PContinueGameOverColorStep < 1.0F)
     {
-        sSC1PContinueGameOverColorStep += F_PCT_TO_DEC(1.0F);
+        sMN1PContinueGameOverColorStep += F_PCT_TO_DEC(1.0F);
 
-        if (sSC1PContinueGameOverColorStep > 1.0F)
+        if (sMN1PContinueGameOverColorStep > 1.0F)
         {
-            sSC1PContinueGameOverColorStep = 1.0F;
+            sMN1PContinueGameOverColorStep = 1.0F;
         }
         while (sobj != NULL)
         {
-            sobj->envcolor.r = values[0] * sSC1PContinueGameOverColorStep;
-            sobj->envcolor.g = values[1] * sSC1PContinueGameOverColorStep;
-            sobj->envcolor.b = values[2] * sSC1PContinueGameOverColorStep;
+            sobj->envcolor.r = values[0] * sMN1PContinueGameOverColorStep;
+            sobj->envcolor.g = values[1] * sMN1PContinueGameOverColorStep;
+            sobj->envcolor.b = values[2] * sMN1PContinueGameOverColorStep;
 
-            sobj->sprite.red = values[3] * sSC1PContinueGameOverColorStep;
-            sobj->sprite.green = values[4] * sSC1PContinueGameOverColorStep;
-            sobj->sprite.blue = values[5] * sSC1PContinueGameOverColorStep;
+            sobj->sprite.red = values[3] * sMN1PContinueGameOverColorStep;
+            sobj->sprite.green = values[4] * sMN1PContinueGameOverColorStep;
+            sobj->sprite.blue = values[5] * sMN1PContinueGameOverColorStep;
 
             sobj = sobj->next;
         }
@@ -701,7 +701,7 @@ void sc1PContinueGameOverTextStepColors(GObj *gobj)
 }
 
 // 0x8013307C
-void sc1PContinueMakeGameOverText(void)
+void mn1PContinueMakeGameOverText(void)
 {
     GObj *gobj;
     SObj *sobj;
@@ -724,63 +724,63 @@ void sc1PContinueMakeGameOverText(void)
 
     s32 i;
 
-    sSC1PContinueGameOverColorStep = 0.0F;
+    sMN1PContinueGameOverColorStep = 0.0F;
 
-    sSC1PContinueGameOverGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_PRIORITY_DEFAULT);
+    sMN1PContinueGameOverGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_PRIORITY_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_PRIORITY_DEFAULT, ~0);
-    gcAddGObjProcess(gobj, sc1PContinueGameOverTextStepColors, nGCProcessKindFunc, 1);
+    gcAddGObjProcess(gobj, mn1PContinueGameOverTextStepColors, nGCProcessKindFunc, 1);
 
     for (i = 0; i < (ARRAY_COUNT(letters) + ARRAY_COUNT(positions_x)) / 2; i++)
     {
-        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PContinueFiles[2], letters[i]));
+        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PContinueFiles[2], letters[i]));
 
         sobj->pos.x = positions_x[i];
         sobj->pos.y = 50.0F;
 
-        sc1PContinueGameOverInitSprites(sobj);
+        mn1PContinueGameOverInitSprites(sobj);
     }
 }
 
 // 0x80133210
-void sc1PContinueGameOverProcUpdate(GObj *gobj)
+void mn1PContinueGameOverProcUpdate(GObj *gobj)
 {
-    SObj *sobj = SObjGetStruct(sSC1PContinueRoomGObj);
+    SObj *sobj = SObjGetStruct(sMN1PContinueRoomGObj);
 
-    if (sSC1PContinueGameOverFadeOutScale > F_PCT_TO_DEC(1.0F))
+    if (sMN1PContinueGameOverFadeOutScale > F_PCT_TO_DEC(1.0F))
     {
-        sSC1PContinueGameOverFadeOutScale -= F_PCT_TO_DEC(1.0F);
+        sMN1PContinueGameOverFadeOutScale -= F_PCT_TO_DEC(1.0F);
 
-        if (sSC1PContinueGameOverFadeOutScale < F_PCT_TO_DEC(1.0F))
+        if (sMN1PContinueGameOverFadeOutScale < F_PCT_TO_DEC(1.0F))
         {
-            sSC1PContinueGameOverFadeOutScale = F_PCT_TO_DEC(1.0F);
+            sMN1PContinueGameOverFadeOutScale = F_PCT_TO_DEC(1.0F);
         }
-        sobj->sprite.scalex = sSC1PContinueGameOverFadeOutScale;
-        sobj->sprite.scaley = sSC1PContinueGameOverFadeOutScale;
+        sobj->sprite.scalex = sMN1PContinueGameOverFadeOutScale;
+        sobj->sprite.scaley = sMN1PContinueGameOverFadeOutScale;
 
-        sobj->pos.x = 160.0F - ((260.0F * sSC1PContinueGameOverFadeOutScale) / 2);
-        sobj->pos.y = 120.0F - ((184.0F * sSC1PContinueGameOverFadeOutScale) / 2);
+        sobj->pos.x = 160.0F - ((260.0F * sMN1PContinueGameOverFadeOutScale) / 2);
+        sobj->pos.y = 120.0F - ((184.0F * sMN1PContinueGameOverFadeOutScale) / 2);
 
-        DObjGetStruct(sSC1PContinueFighterGObj)->translate.vec.f.y += 3.0F;
+        DObjGetStruct(sMN1PContinueFighterGObj)->translate.vec.f.y += 3.0F;
 
-        DObjGetStruct(sSC1PContinueFighterGObj)->scale.vec.f.x = dSCSubsysDemoFighterScales[sSC1PContinueFighterDemoDesc.fkind] * sSC1PContinueGameOverFadeOutScale;
-        DObjGetStruct(sSC1PContinueFighterGObj)->scale.vec.f.y = dSCSubsysDemoFighterScales[sSC1PContinueFighterDemoDesc.fkind] * sSC1PContinueGameOverFadeOutScale;
-        DObjGetStruct(sSC1PContinueFighterGObj)->scale.vec.f.z = dSCSubsysDemoFighterScales[sSC1PContinueFighterDemoDesc.fkind] * sSC1PContinueGameOverFadeOutScale;
+        DObjGetStruct(sMN1PContinueFighterGObj)->scale.vec.f.x = dSCSubsysDemoFighterScales[sMN1PContinueFighterDemoDesc.fkind] * sMN1PContinueGameOverFadeOutScale;
+        DObjGetStruct(sMN1PContinueFighterGObj)->scale.vec.f.y = dSCSubsysDemoFighterScales[sMN1PContinueFighterDemoDesc.fkind] * sMN1PContinueGameOverFadeOutScale;
+        DObjGetStruct(sMN1PContinueFighterGObj)->scale.vec.f.z = dSCSubsysDemoFighterScales[sMN1PContinueFighterDemoDesc.fkind] * sMN1PContinueGameOverFadeOutScale;
     }
 }
 
 // 0x80133368
-void sc1PContinueMakeGameOver(void)
+void mn1PContinueMakeGameOver(void)
 {
     GObj *gobj;
 
-    sSC1PContinueGameOverFadeOutScale = 1.0F;
-    sSC1PContinueGameOverGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_PRIORITY_DEFAULT);
+    sMN1PContinueGameOverFadeOutScale = 1.0F;
+    sMN1PContinueGameOverGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjProcess(gobj, sc1PContinueGameOverProcUpdate, nGCProcessKindFunc, 1);
+    gcAddGObjProcess(gobj, mn1PContinueGameOverProcUpdate, nGCProcessKindFunc, 1);
 }
 
 // 0x801333C4
-void sc1PContinueMakeRoomFadeInCamera(void)
+void mn1PContinueMakeRoomFadeInCamera(void)
 {
     CObj *cobj = CObjGetStruct
     (
@@ -807,7 +807,7 @@ void sc1PContinueMakeRoomFadeInCamera(void)
 }
 
 // 0x80133474
-void sc1PContinueMakeSpotlightFadeCamera(void)
+void mn1PContinueMakeSpotlightFadeCamera(void)
 {
     CObj *cobj = CObjGetStruct
     (
@@ -834,7 +834,7 @@ void sc1PContinueMakeSpotlightFadeCamera(void)
 }
 
 // 0x80133524
-void sc1PContinueMakeRoomFadeOutCamera(void)
+void mn1PContinueMakeRoomFadeOutCamera(void)
 {
     CObj *cobj = CObjGetStruct
     (
@@ -861,7 +861,7 @@ void sc1PContinueMakeRoomFadeOutCamera(void)
 }
 
 // 0x801335D4
-void sc1PContinueSetupCamera(CObj *cobj)
+void mn1PContinueSetupCamera(CObj *cobj)
 {
     syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
@@ -885,7 +885,7 @@ void sc1PContinueSetupCamera(CObj *cobj)
 }
 
 // 0x80133694
-void sc1PContinueMakeMainCamera(void)
+void mn1PContinueMakeMainCamera(void)
 {
     // 0x08048600
     CObj *cobj = CObjGetStruct
@@ -909,11 +909,11 @@ void sc1PContinueMakeMainCamera(void)
             FALSE
         )
     );
-    sc1PContinueSetupCamera(cobj);
+    mn1PContinueSetupCamera(cobj);
 }
 
 // 0x80133718
-void sc1PContinueMakeRoomCamera(void)
+void mn1PContinueMakeRoomCamera(void)
 {
     CObj *cobj = CObjGetStruct
     (
@@ -938,7 +938,7 @@ void sc1PContinueMakeRoomCamera(void)
 }
 
 // 0x801337B8
-void sc1PContinueMakeSpotlightCamera(void)
+void mn1PContinueMakeSpotlightCamera(void)
 {
     CObj *cobj = CObjGetStruct
     (
@@ -965,7 +965,7 @@ void sc1PContinueMakeSpotlightCamera(void)
 }
 
 // 0x80133868
-void sc1PContinueMakeTextCamera(void)
+void mn1PContinueMakeTextCamera(void)
 {
     CObj *cobj = CObjGetStruct
     (
@@ -992,53 +992,53 @@ void sc1PContinueMakeTextCamera(void)
 }
 
 // 0x80133918
-void sc1PContinueInitVars(void)
+void mn1PContinueInitVars(void)
 {
-    sSC1PContinueTotalTimeTics = 0;
+    sMN1PContinueTotalTimeTics = 0;
 
-    sSC1PContinueFighterDemoDesc.fkind = gSCManager1PGameBattleState.players[gSCManagerSceneData.player].fkind;
-    sSC1PContinueFighterDemoDesc.costume = gSCManager1PGameBattleState.players[gSCManagerSceneData.player].costume;
-    sSC1PContinueFighterDemoDesc.shade   = gSCManager1PGameBattleState.players[gSCManagerSceneData.player].shade;
+    sMN1PContinueFighterDemoDesc.fkind = gSCManager1PGameBattleState.players[gSCManagerSceneData.player].fkind;
+    sMN1PContinueFighterDemoDesc.costume = gSCManager1PGameBattleState.players[gSCManagerSceneData.player].costume;
+    sMN1PContinueFighterDemoDesc.shade   = gSCManager1PGameBattleState.players[gSCManagerSceneData.player].shade;
 
-    sSC1PContinueOptionSelect = 0;
-    sSC1PContinueStatus = 0;
-    sSC1PContinueUnknown0x80134354 = 0;
-    sSC1PContinueOptionNoGameOverAutoWait = -1;
+    sMN1PContinueOptionSelect = 0;
+    sMN1PContinueStatus = 0;
+    sMN1PContinueUnknown0x80134354 = 0;
+    sMN1PContinueOptionNoGameOverAutoWait = -1;
 }
 
 // 0x80133990 - real
-void sc1PContinueUnused0x80133990(void)
+void mn1PContinueUnused0x80133990(void)
 {
     return;
 }
 
 // 0x80133998
-void sc1PContinueProcRun(GObj *gobj)
+void mn1PContinueProcRun(GObj *gobj)
 {
     s32 unused;
     s32 stick_range;
 
-    sSC1PContinueTotalTimeTics++;
+    sMN1PContinueTotalTimeTics++;
 
-    if (sSC1PContinueTotalTimeTics >= 10)
+    if (sMN1PContinueTotalTimeTics >= 10)
     {
-        if (sSC1PContinueTotalTimeTics == sSC1PContinueOptionYesRetryTic)
+        if (sMN1PContinueTotalTimeTics == sMN1PContinueOptionYesRetryTic)
         {
             // Why though?
             gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
             gSCManagerSceneData.scene_curr = nSCKindTitle;
 
-            sSC1PContinueIsSelectContinue = TRUE;
+            sMN1PContinueIsSelectContinue = TRUE;
 
             syTaskmanSetLoadScene();
         }
-        if (sSC1PContinueUnknown0x80134354 != 0)
+        if (sMN1PContinueUnknown0x80134354 != 0)
         {
-            sSC1PContinueUnknown0x80134354--;
+            sMN1PContinueUnknown0x80134354--;
         }
-        if (sSC1PContinueOptionChangeWait != 0)
+        if (sMN1PContinueOptionChangeWait != 0)
         {
-            sSC1PContinueOptionChangeWait--;
+            sMN1PContinueOptionChangeWait--;
         }
 		if
         (
@@ -1046,112 +1046,112 @@ void sc1PContinueProcRun(GObj *gobj)
             (scSubsysControllerGetPlayerStickInRangeUD(-15, 15) != FALSE)
         )
 		{
-            sSC1PContinueOptionChangeWait = 0;
+            sMN1PContinueOptionChangeWait = 0;
         }
-        if ((sSC1PContinueTotalTimeTics == I_SEC_TO_TICS(40)) && (sSC1PContinueStatus == 0))
+        if ((sMN1PContinueTotalTimeTics == I_SEC_TO_TICS(40)) && (sMN1PContinueStatus == 0))
         {
-            gcEjectGObj(sSC1PContinueShadowGObj);
-            gcEjectGObj(sSC1PContinueSpotlightGObj);
-            gcEjectGObj(sSC1PContinueContinueGObj);
-            gcEjectGObj(sSC1PContinueOptionGObj);
-            gcEjectGObj(sSC1PContinueCursorGObj);
+            gcEjectGObj(sMN1PContinueShadowGObj);
+            gcEjectGObj(sMN1PContinueSpotlightGObj);
+            gcEjectGObj(sMN1PContinueContinueGObj);
+            gcEjectGObj(sMN1PContinueOptionGObj);
+            gcEjectGObj(sMN1PContinueCursorGObj);
 
-            sc1PContinueMakeRoomFadeOut();
-            sc1PContinueMakeGameOverText();
-            sc1PContinueMakeGameOver();
+            mn1PContinueMakeRoomFadeOut();
+            mn1PContinueMakeGameOverText();
+            mn1PContinueMakeGameOver();
 
-            sSC1PContinueStatus = 2;
-            sSC1PContinueOptionNoGameOverInputWait = sSC1PContinueTotalTimeTics + I_SEC_TO_TICS(1.5);
-            sSC1PContinueOptionNoGameOverAutoWait = sSC1PContinueTotalTimeTics + I_SEC_TO_TICS(30);
+            sMN1PContinueStatus = 2;
+            sMN1PContinueOptionNoGameOverInputWait = sMN1PContinueTotalTimeTics + I_SEC_TO_TICS(1.5);
+            sMN1PContinueOptionNoGameOverAutoWait = sMN1PContinueTotalTimeTics + I_SEC_TO_TICS(30);
 
 			syAudioPlaySong(0, nSYAudioBGM1PGameOver);
 			func_800269C0_275C0(nSYAudioVoiceAnnounceGameOver);
 		}
-        if (sSC1PContinueStatus == 0)
+        if (sMN1PContinueStatus == 0)
         {
             if
             (
-                (sSC1PContinueTotalTimeTics > I_SEC_TO_TICS(2.5)) && 
+                (sMN1PContinueTotalTimeTics > I_SEC_TO_TICS(2.5)) && 
                 (scSubsysControllerGetPlayerTapButtons(A_BUTTON | START_BUTTON) != FALSE)
             )
             {
-                switch (sSC1PContinueOptionSelect)
+                switch (sMN1PContinueOptionSelect)
                 {
-                case nSC1PContinueOptionYes:
-                    gcEjectGObj(sSC1PContinueShadowGObj);
-                    gcEjectGObj(sSC1PContinueSpotlightGObj);
-                    gcEjectGObj(sSC1PContinueContinueGObj);
-                    gcEjectGObj(sSC1PContinueOptionGObj);
-                    gcEjectGObj(sSC1PContinueCursorGObj);
+                case nMN1PContinueOptionYes:
+                    gcEjectGObj(sMN1PContinueShadowGObj);
+                    gcEjectGObj(sMN1PContinueSpotlightGObj);
+                    gcEjectGObj(sMN1PContinueContinueGObj);
+                    gcEjectGObj(sMN1PContinueOptionGObj);
+                    gcEjectGObj(sMN1PContinueCursorGObj);
 
                     gSCManagerSceneData.spgame_score *= 0.5F;
 
-                    gcEjectGObj(sSC1PContinueScoreGObj);
-                    sc1PContinueMakeScoreDisplay(gSCManagerSceneData.spgame_score);
-					scSubsysFighterSetStatus(sSC1PContinueFighterGObj, nFTDemoStatusFigureStand);
+                    gcEjectGObj(sMN1PContinueScoreGObj);
+                    mn1PContinueMakeScoreDisplay(gSCManagerSceneData.spgame_score);
+					scSubsysFighterSetStatus(sMN1PContinueFighterGObj, nFTDemoStatusFigureStand);
 
-					sSC1PContinueStatus = 1;
-                    sSC1PContinueOptionYesRetryTic = sSC1PContinueTotalTimeTics + I_SEC_TO_TICS(4);
+					sMN1PContinueStatus = 1;
+                    sMN1PContinueOptionYesRetryTic = sMN1PContinueTotalTimeTics + I_SEC_TO_TICS(4);
 
 					func_800269C0_275C0(nSYAudioFGM1PGameContinue);
 					break;
 
-                case nSC1PContinueOptionNo:
-                    gcEjectGObj(sSC1PContinueShadowGObj);
-                    gcEjectGObj(sSC1PContinueSpotlightGObj);
-                    gcEjectGObj(sSC1PContinueContinueGObj);
-                    gcEjectGObj(sSC1PContinueOptionGObj);
-                    gcEjectGObj(sSC1PContinueCursorGObj);
+                case nMN1PContinueOptionNo:
+                    gcEjectGObj(sMN1PContinueShadowGObj);
+                    gcEjectGObj(sMN1PContinueSpotlightGObj);
+                    gcEjectGObj(sMN1PContinueContinueGObj);
+                    gcEjectGObj(sMN1PContinueOptionGObj);
+                    gcEjectGObj(sMN1PContinueCursorGObj);
 
-                    sc1PContinueMakeRoomFadeOut();
-                    sc1PContinueMakeGameOverText();
-                    sc1PContinueMakeGameOver();
+                    mn1PContinueMakeRoomFadeOut();
+                    mn1PContinueMakeGameOverText();
+                    mn1PContinueMakeGameOver();
 
-                    sSC1PContinueStatus = 2;
-                    sSC1PContinueOptionNoGameOverInputWait = sSC1PContinueTotalTimeTics + I_SEC_TO_TICS(1.5);
-                    sSC1PContinueOptionNoGameOverAutoWait = sSC1PContinueTotalTimeTics + I_SEC_TO_TICS(30);
+                    sMN1PContinueStatus = 2;
+                    sMN1PContinueOptionNoGameOverInputWait = sMN1PContinueTotalTimeTics + I_SEC_TO_TICS(1.5);
+                    sMN1PContinueOptionNoGameOverAutoWait = sMN1PContinueTotalTimeTics + I_SEC_TO_TICS(30);
 
                     syAudioPlaySong(0, nSYAudioBGM1PGameOver);
                     func_800269C0_275C0(nSYAudioVoiceAnnounceGameOver);
                     break;
                 }
             }
-            if (sSC1PContinueTotalTimeTics > 120)
+            if (sMN1PContinueTotalTimeTics > 120)
             {
                 if
                 (
                     (
                         (scSubsysControllerGetPlayerTapButtons(L_TRIG | L_JPAD | L_CBUTTONS) != FALSE) || 
-                        sc1PContinueCheckGetOptionStickInputLR(stick_range, -15, FALSE)
+                        mn1PContinueCheckGetOptionStickInputLR(stick_range, -15, FALSE)
                     ) 
                     &&
-                    (sSC1PContinueOptionSelect == nSC1PContinueOptionNo)
+                    (sMN1PContinueOptionSelect == nMN1PContinueOptionNo)
                 )
                 {
                     func_800269C0_275C0(nSYAudioFGMMenuScroll1);
-                    sSC1PContinueOptionSelect = nSC1PContinueOptionYes;
-                    sc1PContinueSetOptionChangeWaitN(stick_range);
+                    sMN1PContinueOptionSelect = nMN1PContinueOptionYes;
+                    mn1PContinueSetOptionChangeWaitN(stick_range);
                 }
                 if
                 (
                     (
                         (scSubsysControllerGetPlayerTapButtons(R_TRIG | R_JPAD | R_CBUTTONS) != FALSE) || 
-                        sc1PContinueCheckGetOptionStickInputLR(stick_range, 15, TRUE)
+                        mn1PContinueCheckGetOptionStickInputLR(stick_range, 15, TRUE)
                     )
                     &&
-                    (sSC1PContinueOptionSelect == nSC1PContinueOptionYes)
+                    (sMN1PContinueOptionSelect == nMN1PContinueOptionYes)
                 )
                 {
                     func_800269C0_275C0(nSYAudioFGMMenuScroll1);
-                    sSC1PContinueOptionSelect = nSC1PContinueOptionNo;
-                    sc1PContinueSetOptionChangeWaitP(stick_range);
+                    sMN1PContinueOptionSelect = nMN1PContinueOptionNo;
+                    mn1PContinueSetOptionChangeWaitP(stick_range);
                 }
             }
         }
         if
         (
-            (sSC1PContinueStatus == 2)                                              && 
-            (sSC1PContinueOptionNoGameOverInputWait < sSC1PContinueTotalTimeTics)   && 
+            (sMN1PContinueStatus == 2)                                              && 
+            (sMN1PContinueOptionNoGameOverInputWait < sMN1PContinueTotalTimeTics)   && 
             (scSubsysControllerGetPlayerTapButtons(A_BUTTON | START_BUTTON) != FALSE)
         )
         {
@@ -1159,44 +1159,44 @@ void sc1PContinueProcRun(GObj *gobj)
             gSCManagerSceneData.scene_curr = nSCKindTitle;
 
         #if !defined(DAIRANTOU_OPT0)
-            sc1PContinueUnused0x80133990();
+            mn1PContinueUnused0x80133990();
         #endif
-            sSC1PContinueIsSelectContinue = FALSE;
+            sMN1PContinueIsSelectContinue = FALSE;
             syTaskmanSetLoadScene();
         }
-        if (sSC1PContinueTotalTimeTics == sSC1PContinueOptionNoGameOverAutoWait)
+        if (sMN1PContinueTotalTimeTics == sMN1PContinueOptionNoGameOverAutoWait)
         {
             gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
             gSCManagerSceneData.scene_curr = nSCKindTitle;
 
         #if !defined(DAIRANTOU_OPT0)
-            sc1PContinueUnused0x80133990();
+            mn1PContinueUnused0x80133990();
         #endif
-            sSC1PContinueIsSelectContinue = FALSE;
+            sMN1PContinueIsSelectContinue = FALSE;
             syTaskmanSetLoadScene();
         }
-        if (sSC1PContinueTotalTimeTics == 40)
+        if (sMN1PContinueTotalTimeTics == 40)
         {
-            sc1PContinueMakeSpotlight();
-            sc1PContinueMakeSpotlightFade();
+            mn1PContinueMakeSpotlight();
+            mn1PContinueMakeSpotlightFade();
         }
-        if (sSC1PContinueTotalTimeTics == 60)
+        if (sMN1PContinueTotalTimeTics == 60)
         {
-            sc1PContinueMakeRoomFadeIn();
-            sc1PContinueMakeRoom();
-            sc1PContinueMakeContinue();
+            mn1PContinueMakeRoomFadeIn();
+            mn1PContinueMakeRoom();
+            mn1PContinueMakeContinue();
             func_800269C0_275C0(nSYAudioVoiceAnnounceContinue);
         }
-        if (sSC1PContinueTotalTimeTics == 120)
+        if (sMN1PContinueTotalTimeTics == 120)
         {
-            sc1PContinueMakeOptions();
-            sc1PContinueMakeCursor();
+            mn1PContinueMakeOptions();
+            mn1PContinueMakeCursor();
         }
     }
 }
 
 // 0x80133F58
-void sc1PContinueFuncStart(void)
+void mn1PContinueFuncStart(void)
 {
     s32 unused;
     LBRelocSetup rl_setup;
@@ -1205,46 +1205,46 @@ void sc1PContinueFuncStart(void)
     rl_setup.table_files_num = (u32)&lLBRelocTableFilesNum;
     rl_setup.file_heap = NULL;
     rl_setup.file_heap_size = 0;
-    rl_setup.status_buffer = sSC1PContinueStatusBuffer;
-    rl_setup.status_buffer_size = ARRAY_COUNT(sSC1PContinueStatusBuffer);
-    rl_setup.force_status_buffer = sSC1PContinueForceStatusBuffer;
-    rl_setup.force_status_buffer_size = ARRAY_COUNT(sSC1PContinueForceStatusBuffer);
+    rl_setup.status_buffer = sMN1PContinueStatusBuffer;
+    rl_setup.status_buffer_size = ARRAY_COUNT(sMN1PContinueStatusBuffer);
+    rl_setup.force_status_buffer = sMN1PContinueForceStatusBuffer;
+    rl_setup.force_status_buffer_size = ARRAY_COUNT(sMN1PContinueForceStatusBuffer);
 
     lbRelocInitSetup(&rl_setup);
     lbRelocLoadFilesExtern
     (
-        dSC1PContinueFileIDs,
-        ARRAY_COUNT(dSC1PContinueFileIDs),
-        sSC1PContinueFiles,
+        dMN1PContinueFileIDs,
+        ARRAY_COUNT(dMN1PContinueFileIDs),
+        sMN1PContinueFiles,
         syTaskmanMalloc
         (
             lbRelocGetAllocSize
             (
-                dSC1PContinueFileIDs,
-                ARRAY_COUNT(dSC1PContinueFileIDs)
+                dMN1PContinueFileIDs,
+                ARRAY_COUNT(dMN1PContinueFileIDs)
             ),
             0x10
         )
     );
-    gcMakeGObjSPAfter(0, sc1PContinueProcRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeGObjSPAfter(0, mn1PContinueProcRun, 0, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     efParticleInitAll();
-    sc1PContinueInitVars();
+    mn1PContinueInitVars();
     efManagerInitEffects();
     ftManagerAllocFighter(FTDATA_FLAG_SUBMOTION, 1);
-    ftManagerSetupFilesAllKind(sSC1PContinueFighterDemoDesc.fkind);
+    ftManagerSetupFilesAllKind(sMN1PContinueFighterDemoDesc.fkind);
     
-    sSC1PContinueFigatreeHeap = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
+    sMN1PContinueFigatreeHeap = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
 
-    sc1PContinueMakeMainCamera();
-    sc1PContinueMakeRoomFadeInCamera();
-    sc1PContinueMakeSpotlightFadeCamera();
-    sc1PContinueMakeRoomFadeOutCamera();
-    sc1PContinueMakeRoomCamera();
-    sc1PContinueMakeSpotlightCamera();
-    sc1PContinueMakeTextCamera();
-    sc1PContinueMakeFighter(sSC1PContinueFighterDemoDesc.fkind);
-    sc1PContinueMakeScoreDisplay(gSCManagerSceneData.spgame_score);
+    mn1PContinueMakeMainCamera();
+    mn1PContinueMakeRoomFadeInCamera();
+    mn1PContinueMakeSpotlightFadeCamera();
+    mn1PContinueMakeRoomFadeOutCamera();
+    mn1PContinueMakeRoomCamera();
+    mn1PContinueMakeSpotlightCamera();
+    mn1PContinueMakeTextCamera();
+    mn1PContinueMakeFighter(sMN1PContinueFighterDemoDesc.fkind);
+    mn1PContinueMakeScoreDisplay(gSCManagerSceneData.spgame_score);
 
     scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 
@@ -1253,10 +1253,10 @@ void sc1PContinueFuncStart(void)
 }
 
 // 0x80134238
-SYVideoSetup dSC1PContinueVideoSetup = SYVIDEO_SETUP_DEFAULT();
+SYVideoSetup dMN1PContinueVideoSetup = SYVIDEO_SETUP_DEFAULT();
 
 // 0x80134254
-SYTaskmanSetup dSC1PContinueTaskmanSetup =
+SYTaskmanSetup dMN1PContinueTaskmanSetup =
 {
     // Task Manager Buffer Setup
     {
@@ -1274,7 +1274,7 @@ SYTaskmanSetup dSC1PContinueTaskmanSetup =
         0x8000,                     // Graphics Heap Size
         2,                          // ???
         0xC000,                     // RDP Output Buffer Size
-        sc1PContinueFuncLights,     // Pre-render function
+        mn1PContinueFuncLights,     // Pre-render function
         syControllerFuncRead,       // Controller I/O function
     },
 
@@ -1297,19 +1297,19 @@ SYTaskmanSetup dSC1PContinueTaskmanSetup =
     0,                              // Number of Cameras
     sizeof(CObj),                 	// CObj size
     
-    sc1PContinueFuncStart           // Task start function
+    mn1PContinueFuncStart           // Task start function
 };
 
 // 0x801340FC
-void sc1PContinueStartScene(void)
+void mn1PContinueStartScene(void)
 {
-    dSC1PContinueVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+    dMN1PContinueVideoSetup.zbuffer = syVideoGetZBuffer(6400);
 
-    syVideoInit(&dSC1PContinueVideoSetup);
+    syVideoInit(&dMN1PContinueVideoSetup);
 
-    dSC1PContinueTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl55_BSS_END);
+    dMN1PContinueTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl55_BSS_END);
 
-    scManagerFuncUpdate(&dSC1PContinueTaskmanSetup);
+    scManagerFuncUpdate(&dMN1PContinueTaskmanSetup);
 
-    gSCManagerSceneData.is_continue = sSC1PContinueIsSelectContinue;
+    gSCManagerSceneData.is_continue = sMN1PContinueIsSelectContinue;
 }

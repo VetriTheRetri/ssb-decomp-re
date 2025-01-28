@@ -3,8 +3,7 @@
 
 #include <ssb_types.h>
 #include <sys/obj.h>
-#include <gm/generic.h>
-
+#include <gm/gmdef.h>
 #include <lb/lbdef.h>
 
 struct LBFileNode

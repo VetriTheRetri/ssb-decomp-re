@@ -447,7 +447,7 @@ segments:
       - [0x086B40, c, gr/grcommon/grcastle]
       - [0x086CD0, c, gr/grbonus/grbonus3]
     # Camera manager (in-game?)
-      - [0x087010, c, cm/cmmanager]
+      - [0x087010, c, gm/gmcamera]
     # Common interface (HUD)
       - [0x089E90, c, if/ifcommon]
     # Rumble manager
@@ -499,7 +499,7 @@ segments:
       - [0x0AA350, .data, gr/grcommon/grjungle]
       - [0x0AA360, .data, gr/grcommon/gryamabuki]
     # Camera manager (in-game?)
-      - [0x0AA370, .data, cm/cmmanager]
+      - [0x0AA370, .data, gm/gmcamera]
     # Common interface (HUD)
       - [0x0AA3F0, .data, if/ifcommon]
       - [0x0AA990, pad, pad0x0AA990]
@@ -540,7 +540,7 @@ segments:
       - [0x0AC370, .rodata, gr/grcommon/grhyrule]
       - [0x0AC3B0, .rodata, gr/grbonus/grbonus3]
     # Camera manager (in-game?)
-      - [0x0AC3D0, .rodata, cm/cmmanager]
+      - [0x0AC3D0, .rodata, gm/gmcamera]
     # Common interface (HUD)
       - [0x0AC460, .rodata, if/ifcommon]
     # Rumble manager
@@ -588,7 +588,7 @@ segments:
       - { start: auto, type: .bss, name: ef/efmanager }
       - { start: auto, type: .bss, name: gr/grwallpaper }
       - { start: auto, type: .bss, name: gr/grcommonsetup }
-      - { start: auto, type: .bss, name: cm/cmmanager } # 0x801314B0 + 0x118 padded to 0x80131570
+      - { start: auto, type: .bss, name: gm/gmcamera } # 0x801314B0 + 0x118 padded to 0x80131570
       - { start: auto, type: .bss, name: if/ifcommon } # actual start is 0x80131598, padded from 1570?
       - { start: auto, type: .bss, name: gm/gmrumble }
       - { start: auto, type: .bss, name: ef/efparticle }
@@ -1667,10 +1667,10 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x178560, c, sc/sc1pmode/sc1pcontinue]
-      - [0x17ABC0, .data, sc/sc1pmode/sc1pcontinue]
-      - [0x17AD40, .rodata, sc/sc1pmode/sc1pcontinue]
-      - { start: auto, type: .bss, name: sc/sc1pmode/sc1pcontinue }
+      - [0x178560, c, mn/mn1pmode/mn1pcontinue]
+      - [0x17ABC0, .data, mn/mn1pmode/mn1pcontinue]
+      - [0x17AD40, .rodata, mn/mn1pmode/mn1pcontinue]
+      - { start: auto, type: .bss, name: mn/mn1pmode/mn1pcontinue }
 
   - name: ovl56
     type: code

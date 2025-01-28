@@ -2,7 +2,6 @@
 #include <ef/effect.h>
 #include <ft/fighter.h>
 #include <it/item.h>
-#include <cm/camera.h>
 #include <sc/scene.h>
 #include <sys/video.h>
 
@@ -1328,10 +1327,10 @@ void ifCommonPlayerMagnifyGetPosition(f32 player_pos_x, f32 player_pos_y, Vec2f 
     f32 diag_vt;
     f32 div_xy;
 
-    left = (-gCMManagerCameraStruct.viewport_width / 2) + (20 * gIFCommonPlayerInterface.magnify_scale) + 5;
-    bak_right = right = (+gCMManagerCameraStruct.viewport_width / 2) - (20 * gIFCommonPlayerInterface.magnify_scale) - 5;
-    bak_up = up = (+gCMManagerCameraStruct.viewport_height / 2) - (20 * gIFCommonPlayerInterface.magnify_scale);
-    down = (-gCMManagerCameraStruct.viewport_height / 2) + (20 * gIFCommonPlayerInterface.magnify_scale);
+    left = (-gGMCameraCameraStruct.viewport_width / 2) + (20 * gIFCommonPlayerInterface.magnify_scale) + 5;
+    bak_right = right = (+gGMCameraCameraStruct.viewport_width / 2) - (20 * gIFCommonPlayerInterface.magnify_scale) - 5;
+    bak_up = up = (+gGMCameraCameraStruct.viewport_height / 2) - (20 * gIFCommonPlayerInterface.magnify_scale);
+    down = (-gGMCameraCameraStruct.viewport_height / 2) + (20 * gIFCommonPlayerInterface.magnify_scale);
 
     if (player_pos_x == 0.0F)
     {
@@ -1443,21 +1442,21 @@ void ifCommonPlayerMagnifyUpdateRender(Gfx **dls, s32 color_id, f32 ulx, f32 uly
 
     var_lry = ((uly == var_uly) ? 0 : 1) + (s32)(uly + (32.0F * gIFCommonPlayerInterface.magnify_scale));
 
-    if (var_ulx < gCMManagerCameraStruct.viewport_ulx)
+    if (var_ulx < gGMCameraCameraStruct.viewport_ulx)
     {
-        var_ulx = gCMManagerCameraStruct.viewport_ulx;
+        var_ulx = gGMCameraCameraStruct.viewport_ulx;
     }
-    else if (var_lrx >= gCMManagerCameraStruct.viewport_lrx)
+    else if (var_lrx >= gGMCameraCameraStruct.viewport_lrx)
     {
-        var_lrx = gCMManagerCameraStruct.viewport_lrx - 1;
+        var_lrx = gGMCameraCameraStruct.viewport_lrx - 1;
     }
-    if (var_uly < gCMManagerCameraStruct.viewport_uly)
+    if (var_uly < gGMCameraCameraStruct.viewport_uly)
     {
-        var_uly = gCMManagerCameraStruct.viewport_uly;
+        var_uly = gGMCameraCameraStruct.viewport_uly;
     }
-    else if (var_lry >= gCMManagerCameraStruct.viewport_lry)
+    else if (var_lry >= gGMCameraCameraStruct.viewport_lry)
     {
-        var_lry = gCMManagerCameraStruct.viewport_lry - 1;
+        var_lry = gGMCameraCameraStruct.viewport_lry - 1;
     }
     temp_t0 = ((s32)((var_ulx - ulx) * temp_f0) + 16) >> 5;
     temp_t1 = ((s32)((var_uly - uly) * temp_f0) + 16) >> 5;
@@ -1521,18 +1520,18 @@ void ifCommonPlayerMagnifyUpdateViewport(Gfx **dls, FTStruct *fp)
 
         ifCommonPlayerMagnifyGetPosition(magnify_x, magnify_y, &ifmag->pos);
 
-        magnify_x = ifmag->pos.x + gCMManagerCameraStruct.viewport_center_x;
-        magnify_y = gCMManagerCameraStruct.viewport_center_y - ifmag->pos.y;
+        magnify_x = ifmag->pos.x + gGMCameraCameraStruct.viewport_center_x;
+        magnify_y = gGMCameraCameraStruct.viewport_center_y - ifmag->pos.y;
 
         gSPMatrix(dls[0]++, &CObjGetStruct(gGCCurrentCamera)->xobjs[0]->mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 
         if (gIFCommonPlayerInterface.magnify_mode != 1)
         {
-            cobj = CObjGetStruct(gCMManagerCameraGObj);
+            cobj = CObjGetStruct(gGMCameraCameraGObj);
 
             gSPViewport(dls[0]++, &cobj->viewport);
 
-            gDPSetScissor(dls[0]++, G_SC_NON_INTERLACE, gCMManagerCameraStruct.viewport_ulx, gCMManagerCameraStruct.viewport_uly, gCMManagerCameraStruct.viewport_lrx, gCMManagerCameraStruct.viewport_lry);
+            gDPSetScissor(dls[0]++, G_SC_NON_INTERLACE, gGMCameraCameraStruct.viewport_ulx, gGMCameraCameraStruct.viewport_uly, gGMCameraCameraStruct.viewport_lrx, gGMCameraCameraStruct.viewport_lry);
         }
         else gIFCommonPlayerInterface.magnify_mode = 2;
 
@@ -1556,21 +1555,21 @@ void ifCommonPlayerMagnifyUpdateViewport(Gfx **dls, FTStruct *fp)
         lrx = (ifmag->viewport.vp.vtrans[0] / 4) + (ifmag->viewport.vp.vscale[0] / 4);
         lry = (ifmag->viewport.vp.vtrans[1] / 4) + (ifmag->viewport.vp.vscale[1] / 4);
 
-        if (ulx < gCMManagerCameraStruct.viewport_ulx)
+        if (ulx < gGMCameraCameraStruct.viewport_ulx)
         {
-            ulx = gCMManagerCameraStruct.viewport_ulx;
+            ulx = gGMCameraCameraStruct.viewport_ulx;
         }
-        if (lrx > gCMManagerCameraStruct.viewport_lrx)
+        if (lrx > gGMCameraCameraStruct.viewport_lrx)
         {
-            lrx = gCMManagerCameraStruct.viewport_lrx;
+            lrx = gGMCameraCameraStruct.viewport_lrx;
         }
-        if (uly < gCMManagerCameraStruct.viewport_uly)
+        if (uly < gGMCameraCameraStruct.viewport_uly)
         {
-            uly = gCMManagerCameraStruct.viewport_uly;
+            uly = gGMCameraCameraStruct.viewport_uly;
         }
-        else if (lry > gCMManagerCameraStruct.viewport_lry)
+        else if (lry > gGMCameraCameraStruct.viewport_lry)
         {
-            lry = gCMManagerCameraStruct.viewport_lry;
+            lry = gGMCameraCameraStruct.viewport_lry;
         }
         gDPSetScissor(dl++, G_SC_NON_INTERLACE, ulx, uly, lrx, lry);
 
@@ -1601,10 +1600,10 @@ void ifCommonPlayerMagnifyProcDisplay(FTStruct *fp)
 
         dobj->scale.vec.f.x = dobj->scale.vec.f.y = gIFCommonPlayerInterface.magnify_scale * 0.5F;
 
-        cobj = CObjGetStruct(gCMManagerCameraGObj);
+        cobj = CObjGetStruct(gGMCameraCameraGObj);
 
         gSPViewport(gSYTaskmanDLHeads[0]++, &cobj->viewport);
-        gDPSetScissor(gSYTaskmanDLHeads[0]++, G_SC_NON_INTERLACE, gCMManagerCameraStruct.viewport_ulx, gCMManagerCameraStruct.viewport_uly, gCMManagerCameraStruct.viewport_lrx, gCMManagerCameraStruct.viewport_lry);
+        gDPSetScissor(gSYTaskmanDLHeads[0]++, G_SC_NON_INTERLACE, gGMCameraCameraStruct.viewport_ulx, gGMCameraCameraStruct.viewport_uly, gGMCameraCameraStruct.viewport_lrx, gGMCameraCameraStruct.viewport_lry);
         gSPMatrix(gSYTaskmanDLHeads[0]++, &CObjGetStruct(gGCCurrentCamera)->xobjs[1]->mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
         gSPClearGeometryMode(gSYTaskmanDLHeads[0]++, G_ZBUFFER);
         gDPPipeSync(gSYTaskmanDLHeads[0]++);
@@ -1837,18 +1836,18 @@ void ifCommonPlayerTagProcDisplay(GObj *interface_gobj)
 
     if (!(fp->is_playertag_bossend) && !(fp->is_playertag_hide))
     {
-        if ((fp->playertag_wait == 1) || (CObjGetStruct(gCMManagerCameraGObj)->vec.eye.z > 6000.0F))
+        if ((fp->playertag_wait == 1) || (CObjGetStruct(gGMCameraCameraGObj)->vec.eye.z > 6000.0F))
         {
             pos = fp->joints[nFTPartsJointTopN]->translate.vec.f;
 
             pos.y += fp->attr->camera_zoom_base;
 
-            func_ovl2_800EB924(CObjGetStruct(gCMManagerCameraGObj), gCMManagerMatrix, &pos, &x, &y);
+            func_ovl2_800EB924(CObjGetStruct(gGMCameraCameraGObj), gGMCameraMatrix, &pos, &x, &y);
 
-            if (cmManagerCheckTargetInBounds(x, y) != FALSE)
+            if (gmCameraCheckTargetInBounds(x, y) != FALSE)
             {
-                SObjGetStruct(interface_gobj)->pos.x = (s32) ((gCMManagerCameraStruct.viewport_center_x + x) - (SObjGetStruct(interface_gobj)->sprite.width * 0.5F));
-                SObjGetStruct(interface_gobj)->pos.y = (s32) ((gCMManagerCameraStruct.viewport_center_y - y) - SObjGetStruct(interface_gobj)->sprite.height);
+                SObjGetStruct(interface_gobj)->pos.x = (s32) ((gGMCameraCameraStruct.viewport_center_x + x) - (SObjGetStruct(interface_gobj)->sprite.width * 0.5F));
+                SObjGetStruct(interface_gobj)->pos.y = (s32) ((gGMCameraCameraStruct.viewport_center_y - y) - SObjGetStruct(interface_gobj)->sprite.height);
 
                 lbCommonDrawSObjAttr(interface_gobj);
             }
@@ -1908,12 +1907,12 @@ void ifCommonItemArrowProcDisplay(GObj *interface_gobj)
 
         pos.y += ip->coll_data.map_coll.top + 100.0F;
 
-        func_ovl2_800EB924(CObjGetStruct(gCMManagerCameraGObj), gCMManagerMatrix, &pos, &x, &y);
+        func_ovl2_800EB924(CObjGetStruct(gGMCameraCameraGObj), gGMCameraMatrix, &pos, &x, &y);
 
-        if (cmManagerCheckTargetInBounds(x, y) != FALSE)
+        if (gmCameraCheckTargetInBounds(x, y) != FALSE)
         {
-            sobj->pos.x = (s32) ((gCMManagerCameraStruct.viewport_center_x + x) - (sobj->sprite.width * 0.5F));
-            sobj->pos.y = (s32) ((gCMManagerCameraStruct.viewport_center_y - y) - sobj->sprite.height);
+            sobj->pos.x = (s32) ((gGMCameraCameraStruct.viewport_center_x + x) - (sobj->sprite.width * 0.5F));
+            sobj->pos.y = (s32) ((gGMCameraCameraStruct.viewport_center_y - y) - sobj->sprite.height);
 
             lbCommonDrawSObjAttr(interface_gobj);
         }
@@ -2297,7 +2296,7 @@ void ifCommonEntryFocusThread(GObj *interface_gobj)
     if (index == 2)
     {
         gcStopCurrentGObjThread(30);
-        cmManagerSetCameraStatusDefault();
+        gmCameraSetCameraStatusDefault();
     }
     gcEjectGObj(NULL);
     gcStopCurrentGObjThread(1);
@@ -2948,7 +2947,7 @@ void ifCommonBattleGoUpdateInterface(void)
 
                             sIFCommonBattlePauseKindInterface = nIFPauseKindBonus;
                         }
-                        else if (cmManagerCheckPausePlayerOutBounds(&DObjGetStruct(fighter_gobj)->translate.vec.f) != FALSE)
+                        else if (gmCameraCheckPausePlayerOutBounds(&DObjGetStruct(fighter_gobj)->translate.vec.f) != FALSE)
                         {
                             sIFCommonBattlePauseKindInterface = nIFPauseKindPlayerNA;
                         }
@@ -2956,8 +2955,8 @@ void ifCommonBattleGoUpdateInterface(void)
                         {
                             func_ovl2_8010CF44(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attr->closeup_camera_zoom, 0.1F, 29.0F);
 
-                            sIFCommonBattlePauseCameraEyeXOrigin = gCMManagerPauseCameraEyeX;
-                            sIFCommonBattlePauseCameraEyeYOrigin = gCMManagerPauseCameraEyeY;
+                            sIFCommonBattlePauseCameraEyeXOrigin = gGMCameraPauseCameraEyeX;
+                            sIFCommonBattlePauseCameraEyeYOrigin = gGMCameraPauseCameraEyeY;
 
                             sIFCommonBattlePauseKindInterface = nIFPauseKindDefault;
 
@@ -3004,28 +3003,28 @@ void ifCommonBattlePauseUpdateInterface(void)
 
         if (ABS(stick_x) > 8.0F)
         {
-            gCMManagerPauseCameraEyeX += (stick_x * 0.000333F);
+            gGMCameraPauseCameraEyeX += (stick_x * 0.000333F);
 
-            if (gCMManagerPauseCameraEyeX > F_CLC_DTOR32(50.0F))
+            if (gGMCameraPauseCameraEyeX > F_CLC_DTOR32(50.0F))
             {
-                gCMManagerPauseCameraEyeX = F_CLC_DTOR32(50.0F);
+                gGMCameraPauseCameraEyeX = F_CLC_DTOR32(50.0F);
             }
-            else if (gCMManagerPauseCameraEyeX < F_CLC_DTOR32(-50.0F))
+            else if (gGMCameraPauseCameraEyeX < F_CLC_DTOR32(-50.0F))
             {
-                gCMManagerPauseCameraEyeX = F_CLC_DTOR32(-50.0F);
+                gGMCameraPauseCameraEyeX = F_CLC_DTOR32(-50.0F);
             }
         }
         if (ABS(stick_y) > 8.0F)
         {
-            gCMManagerPauseCameraEyeY -= (stick_y * 0.000333F);
+            gGMCameraPauseCameraEyeY -= (stick_y * 0.000333F);
 
-            if (gCMManagerPauseCameraEyeY > F_CLC_DTOR32(20.0F))
+            if (gGMCameraPauseCameraEyeY > F_CLC_DTOR32(20.0F))
             {
-                gCMManagerPauseCameraEyeY = F_CLC_DTOR32(20.0F);
+                gGMCameraPauseCameraEyeY = F_CLC_DTOR32(20.0F);
             }
-            else if (gCMManagerPauseCameraEyeY < F_CLC_DTOR32(-20.0F))
+            else if (gGMCameraPauseCameraEyeY < F_CLC_DTOR32(-20.0F))
             {
-                gCMManagerPauseCameraEyeY = F_CLC_DTOR32(-20.0F);
+                gGMCameraPauseCameraEyeY = F_CLC_DTOR32(-20.0F);
             }
         }
     }
@@ -3035,7 +3034,7 @@ void ifCommonBattlePauseUpdateInterface(void)
         {
             if (sIFCommonBattlePauseKindInterface != nIFPauseKindPlayerNA)
             {
-                cmManagerSetCameraStatusPrev();
+                gmCameraSetCameraStatusPrev();
 
                 sIFCommonBattlePauseCameraRestoreWait = 20;
             }
@@ -3076,7 +3075,7 @@ void ifCommonBattlePauseUpdateInterface(void)
     }
     if (sIFCommonBattlePauseKindInterface != nIFPauseKindPlayerNA)
     {
-        cmManagerRunGlobalFuncCamera(gCMManagerCameraGObj);
+        gmCameraRunGlobalFuncCamera(gGMCameraCameraGObj);
         grWallpaperRunGObjProcessThreads();
     }
 }
@@ -3088,10 +3087,10 @@ void ifCommonBattlePauseRestoreInterfaceAll(void)
     {
         sIFCommonBattlePauseCameraRestoreWait--;
 
-        gCMManagerPauseCameraEyeX += (sIFCommonBattlePauseCameraEyeXOrigin - gCMManagerPauseCameraEyeX) * 0.1F;
-        gCMManagerPauseCameraEyeY += (sIFCommonBattlePauseCameraEyeYOrigin - gCMManagerPauseCameraEyeY) * 0.1F;
+        gGMCameraPauseCameraEyeX += (sIFCommonBattlePauseCameraEyeXOrigin - gGMCameraPauseCameraEyeX) * 0.1F;
+        gGMCameraPauseCameraEyeY += (sIFCommonBattlePauseCameraEyeYOrigin - gGMCameraPauseCameraEyeY) * 0.1F;
 
-        cmManagerRunGlobalFuncCamera(gCMManagerCameraGObj);
+        gmCameraRunGlobalFuncCamera(gGMCameraCameraGObj);
         grWallpaperRunGObjProcessThreads();
 
         return;
@@ -3104,8 +3103,8 @@ void ifCommonBattlePauseRestoreInterfaceAll(void)
 
     gSCManagerBattleState->game_status = nSCBattleGameStatusGo;
 
-    gCMManagerPauseCameraEyeX = sIFCommonBattlePauseCameraEyeXOrigin;
-    gCMManagerPauseCameraEyeY = sIFCommonBattlePauseCameraEyeYOrigin;
+    gGMCameraPauseCameraEyeX = sIFCommonBattlePauseCameraEyeXOrigin;
+    gGMCameraPauseCameraEyeY = sIFCommonBattlePauseCameraEyeYOrigin;
 
     func_800264A4_270A4();
     syAudioSetSongVolumeID(0, 0x7800);
@@ -3144,7 +3143,7 @@ void ifCommonBattleBossDefeatUpdateInterface(void)
     }
     else
     {
-        cmManagerRunGlobalFuncCamera(gCMManagerCameraGObj);
+        gmCameraRunGlobalFuncCamera(gGMCameraCameraGObj);
         grWallpaperRunGObjProcessThreads();
 
         D_ovl2_8013185A--;

@@ -7,7 +7,6 @@
 #include <ef/effect.h>
 #include <mp/map.h>
 #include <gm/gmsound.h>
-#include <cm/camera.h>
 #include <gm/generic.h>
 
 #include <it/itdef.h>

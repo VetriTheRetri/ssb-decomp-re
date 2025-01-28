@@ -367,7 +367,7 @@ void scAutoDemoResetFocusPlayerAll(void)
 {
 	GObj *p2_gobj = gSCManagerBattleState->players[1].fighter_gobj;
 
-	cmManagerSetCameraStatusDefault();
+	gmCameraSetCameraStatusDefault();
 
 	ftGetStruct(gSCManagerBattleState->players[0].fighter_gobj)->level =
 	ftGetStruct(p2_gobj)->level =
@@ -634,8 +634,8 @@ void scAutoDemoFuncStart(void)
 	efParticleInitAll();
 	ftParamInitGame();
 	mpCollisionInitGroundData();
-	cmManagerSetViewportDimensions(10, 10, 310, 230);
-	cmManagerMakeWallpaperCamera();
+	gmCameraSetViewportDimensions(10, 10, 310, 230);
+	gmCameraMakeWallpaperCamera();
 	grWallpaperMakeDecideKind();
 	func_ovl2_8010DB00();
 	itManagerInitItems();

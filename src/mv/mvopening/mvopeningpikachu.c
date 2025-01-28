@@ -510,8 +510,8 @@ void mvOpeningPikachuFuncStart(void)
 	efParticleInitAll();
 	ftParamInitGame();
 	mpCollisionInitGroundData();
-	cmManagerSetViewportDimensions(10, 10, 310, 230);
-	cmManagerMakeWallpaperCamera();
+	gmCameraSetViewportDimensions(10, 10, 310, 230);
+	gmCameraMakeWallpaperCamera();
 	ftManagerAllocFighter(FTDATA_FLAG_MAINMOTION | FTDATA_FLAG_SUBMOTION, 2);
 	wpManagerAllocWeapons();
 	itManagerInitItems();

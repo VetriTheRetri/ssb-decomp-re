@@ -1,4 +1,4 @@
-#include <lb/library.h>
+#include <sc/scene.h>
 
 // 0x8018F3B0
 LBFileNode sSC1PBonusStageStatusBuffer[100];

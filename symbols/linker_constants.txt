@@ -1654,14 +1654,14 @@ lSCAutoDemoNameNessSprite = 0x00001098;
 lMNCongraArenaLo = 0x80132300;
 lSubSystemArenaLo = 0x80392A00;
 
-lSC1PContinueTextScore = 0x00000408;
-lSC1PContinueTextContinue = 0x000018F0;
-lSC1PContinueTextYes = 0x00001E08;
-lSC1PContinueTextNo = 0x00002318;
-lSC1PContinueCursor = 0x00002DF8;
-lSC1PContinueRoom = 0x0001E3D8;
-lSC1PContinueSpotlight = 0x00021900;
-lSC1PContinueShadow = 0x000224F8;
+lMN1PContinueTextScore = 0x00000408;
+lMN1PContinueTextContinue = 0x000018F0;
+lMN1PContinueTextYes = 0x00001E08;
+lMN1PContinueTextNo = 0x00002318;
+lMN1PContinueCursor = 0x00002DF8;
+lMN1PContinueRoom = 0x0001E3D8;
+lMN1PContinueSpotlight = 0x00021900;
+lMN1PContinueShadow = 0x000224F8;
 
 lSC1PStageClearArenaLo = 0x801355B0;
 lSC1PStageClearArenaHi = 0x803903E0;

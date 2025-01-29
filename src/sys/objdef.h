@@ -25,7 +25,7 @@ typedef enum GObjKind
     nGCCommonKindShadow,                    // 1020
     nGCCommonKindTransition,                // 1021 - Screen fadeout actor?
     nGCCommonKindBossWallpaper = 1023,      // 1023
-    nGCCommonKindDebugCamera,               // 1024
+    nGCCommonKindPlayerSelect,              // 1024
     nGCCommonKindSceneCamera                // 1025
 
 } GObjKind;
@@ -96,6 +96,7 @@ typedef enum GObjLinkID
     nGCCommonLinkIDTransition = 13,     // ID 13: Screen fadeout transition
 
     nGCCommonLinkIDPauseMenu = 14,      // ID 14: Pause menu object?
+    nGCCommonLinkIDPlayerSelect = 15,   // ID 15: Player Select menu?
     nGCCommonLinkIDSceneCamera = 16     // ID 16: Scene camera?
 
 } GObjLinkID;

@@ -449,7 +449,7 @@ GObj* dbBattleMakeCamera(void (*thread)(GObj*))
 {
 	GObj *camera_gobj = gcMakeCameraGObj
 	(
-		nGCCommonKindDebugCamera,
+		nGCCommonKindPlayerSelect,
 		gcDefaultProcRun,
 		15,
 		GOBJ_PRIORITY_DEFAULT,

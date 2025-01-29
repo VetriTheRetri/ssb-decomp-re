@@ -149,7 +149,7 @@ typedef struct mnCharPanelBattle
 
 } mnCharPanelBattle;
 
-typedef struct mnCharPanelBonus
+typedef struct MNBonusPlayerGate
 {
 	GObj *cursor;
 	GObj *token;
@@ -187,7 +187,7 @@ typedef struct mnCharPanelBonus
 	u32 unk_0xB4;
 	s32 b_held_frame_count;
 
-} mnCharPanelBonus;
+} MNBonusPlayerGate;
 
 
 typedef enum mnSelectButton

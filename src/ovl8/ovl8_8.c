@@ -2,6 +2,13 @@
 #include <sys/develop.h>
 #include <db/debug.h>
 
+typedef struct dbUnknown8 {
+    s16 dbUnknown8_0x0;
+    s16 dbUnknown8_0x2;
+    u16 dbUnknown8_0x4;
+    u16 dbUnknown8_0x6;
+} dbUnknown8;
+
 extern s32 D_ovl8_80389F5C;
 extern s32 D_ovl8_80389F60;
 extern s32 D_ovl8_80389F64;
@@ -12,6 +19,7 @@ extern s32 D_ovl8_80389F64;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80376EE0.s")
 
+// 0x80376FB4
 s32 func_ovl8_80376FB4()
 {
 	return 2;
@@ -101,14 +109,34 @@ void stringConcat(char* target, char* source)
 // 	while (b--) { char *csr = a++; *csr = v; }
 // }
 
+// 0x80377134
 void func_ovl8_80377134(s32 arg0, s32 arg1)
 {
 	func_ovl8_80376B60(arg1, arg0, &D_ovl8_80389F64, arg1);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80377168.s")
+// 0x80377168
+s32 func_ovl8_80377168(db2Shorts arg0, dbUnknown8* arg1)
+{
+    if ((arg0.arr[0] >= arg1->dbUnknown8_0x0) && (arg0.arr[0] < (arg1->dbUnknown8_0x0 + arg1->dbUnknown8_0x4)))
+    {
+        if ((arg0.arr[1] >= arg1->dbUnknown8_0x2) && (arg0.arr[1] < (arg1->dbUnknown8_0x2 + arg1->dbUnknown8_0x6)))
+        {
+            return 1;
+        }
+    }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_803771CC.s")
+    return 0;
+}
+
+// 0x803771CC
+void func_ovl8_803771CC(dbUnknown8* arg0, dbUnknown8* arg1)
+{
+    arg1->dbUnknown8_0x0 = arg0->dbUnknown8_0x0;
+    arg1->dbUnknown8_0x2 = arg0->dbUnknown8_0x2;
+    arg1->dbUnknown8_0x4 = arg1->dbUnknown8_0x0 + arg0->dbUnknown8_0x4 - 1;
+    arg1->dbUnknown8_0x6 = arg1->dbUnknown8_0x2 + arg0->dbUnknown8_0x6 - 1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80377208.s")
 

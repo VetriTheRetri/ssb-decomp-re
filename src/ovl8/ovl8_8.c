@@ -37,7 +37,7 @@ void stringCopy(char* target, char* source)
 
 	if (target == NULL || source == NULL)
 		return;
-	
+
 	while (*source != '\0')
 	{
 		targetCurrent = target;
@@ -46,7 +46,7 @@ void stringCopy(char* target, char* source)
 		source += 1;
 		*targetCurrent = *sourceCurrent;
 	}
-	
+
 	*target = '\0';
 }
 
@@ -55,10 +55,10 @@ void stringCopyCount(char* target, char* source, s32 count)
 {
 	char* sourceCurrent;
 	char* targetCurrent;
-	
+
 	if (target == NULL || source == NULL)
 		return;
-	
+
 	while (count != 0 && *source != '\0')
 	{
 		targetCurrent = target;
@@ -68,7 +68,7 @@ void stringCopyCount(char* target, char* source, s32 count)
 		source += 1;
 		*targetCurrent = *sourceCurrent;
 	}
-	
+
 	*target = '\0';
 }
 
@@ -80,7 +80,7 @@ void stringConcat(char* target, char* source)
 
 	if (target == NULL || source == NULL)
 		return;
-	
+
 	target += stringLength(target);
 
 	while (*source != '\0')
@@ -91,7 +91,7 @@ void stringConcat(char* target, char* source)
 		source += 1;
 		*targetCurrent = *sourceCurrent;
 	}
-	
+
 	*target = '\0';
 }
 
@@ -114,7 +114,11 @@ void func_ovl8_80377134(s32 arg0, s32 arg1)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80377244.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037726C.s")
+// 0x8037726C
+void func_ovl8_8037726C(db2Shorts *arg0)
+{
+    func_ovl8_80375BB4(arg0);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037728C.s")
 

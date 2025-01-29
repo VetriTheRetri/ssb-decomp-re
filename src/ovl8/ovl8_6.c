@@ -9,6 +9,13 @@ typedef struct dbUnknownStruct_80375C54
 
 } dbUnknownStruct_80375C54;
 
+// probably part of another struct?
+typedef struct db2ShortsContainer
+{
+    db2Shorts unk_db2shortscont_0x0;
+} db2ShortsContainer;
+
+extern db2ShortsContainer D_8038EFB0_1AB800;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_80374460.s")
 
@@ -148,7 +155,11 @@ void func_ovl8_80375BA0(u16* arg0, u16* arg1, u16* arg2)
 	*arg2 = arg0[0x16/2];
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_80375BB4.s")
+// 0x80375BB4
+void func_ovl8_80375BB4(db2Shorts *arg0)
+{
+    *arg0 = D_8038EFB0_1AB800.unk_db2shortscont_0x0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_80375BD0.s")
 

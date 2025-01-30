@@ -2,14 +2,21 @@
 #include <sys/develop.h>
 #include <db/debug.h>
 
+void func_ovl8_80377F50(char*, db4Shorts*);
+void func_ovl8_80377FE4(char*, db4Shorts*, db4Shorts*);
+void func_ovl8_803780B8(char*, DBMenuPosition*);
+
 extern s32 D_ovl8_80389F5C;
 extern s32 D_ovl8_80389F60;
 extern s32 D_ovl8_80389F64;
 
+// 0x80376B60
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80376B60.s")
 
+// 0x80376C40
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80376C40.s")
 
+// 0x80376EE0
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80376EE0.s")
 
 // 0x80376FB4
@@ -96,6 +103,7 @@ void stringConcat(char* target, char* source)
 	*target = '\0';
 }
 
+// 0x80377108
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80377108.s")
 // void func_ovl8_80377108(char *a, int v, int b)
 // {
@@ -183,38 +191,116 @@ void func_ovl8_80377330(dbUnknown5* arg0, s16 arg1, s16 arg2)
     db_func[10].unk_dbfunc_0x4(db_func[10].unk_dbfunc_0x0 + (uintptr_t)arg0, arg1, arg2);
 }
 
+// 0x80377374
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80377374.s")
 
+// 0x803773CC
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_803773CC.s")
 
 // 0x80377AEC
-void func_ovl8_80377AEC(char* arg0, s32 arg1, s32 arg2, s32 arg3)
+void func_ovl8_80377AEC(char* arg0, db4Shorts* arg1, s32 arg2, s32 arg3)
 {
 	func_ovl8_80376B60(arg0[0x31], arg2, &D_ovl8_80389F5C);
 	D_ovl8_80389F60 = arg3;
 	func_ovl8_80377B40(arg0, arg1);
 }
 
+// 0x80377B40
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80377B40.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80377EFC.s")
+// 0x80377EFC
+void func_ovl8_80377EFC(char* arg0, db4Shorts* arg1, s32 arg2, s32 arg3)
+{
+	func_ovl8_80376B60(arg0[0x31], arg2, &D_ovl8_80389F5C);
+	D_ovl8_80389F60 = arg3;
+	func_ovl8_80377F50(arg0, arg1);
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80377F50.s")
+// 0x80377F50
+void func_ovl8_80377F50(char* arg0, db4Shorts* arg1)
+{
+    db4Shorts sp18;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80377F90.s")
+    sp18.arr[0] = arg1->arr[0];
+    sp18.arr[1] = arg1->arr[1];
+    sp18.arr[2] = sp18.arr[3] = 1;
+    func_ovl8_80377B40(arg0, &sp18);
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80377FE4.s")
+// 0x80377F90
+void func_ovl8_80377F90(char* arg0, db4Shorts* arg1, s32 arg2, s32 arg3, s32 arg4)
+{
+	func_ovl8_80376B60(arg0[0x31], arg3, &D_ovl8_80389F5C);
+	D_ovl8_80389F60 = arg4;
+	func_ovl8_80377FE4(arg0, arg1, arg2);
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80378064.s")
+// 0x80377FE4
+void func_ovl8_80377FE4(char* arg0, db4Shorts* arg1, db4Shorts* arg2)
+{
+    s32 temp_s0;
+    s32 unused[12];
+    db4Shorts sp3C;
+    db4Shorts sp34;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_803780B8.s")
+    func_ovl8_8037AA88(arg1->arr[0], arg1->arr[1], arg2->arr[0], arg2->arr[1], &sp3C);
 
+    do
+    {
+        temp_s0 = func_ovl8_8037ABDC(&sp34, &sp3C);
+        func_ovl8_80377F50(arg0, &sp34);
+    }
+    while (temp_s0 > 0);
+}
+
+// 0x80378064
+void func_ovl8_80378064(char* arg0, db4Shorts* arg1, s32 arg2, s32 arg3)
+{
+	func_ovl8_80376B60(arg0[0x31], arg2, &D_ovl8_80389F5C);
+	D_ovl8_80389F60 = arg3;
+	func_ovl8_803780B8(arg0, arg1);
+}
+
+// 0x803780B8
+void func_ovl8_803780B8(char* arg0, DBMenuPosition* arg1)
+{
+    DBMenuPosition sp20;
+
+    sp20.x = arg1->x;
+    sp20.y = arg1->y;
+    sp20.w = arg1->w;
+    sp20.h = 1;
+    func_ovl8_80377B40(arg0, &sp20);
+
+    sp20.x = arg1->x;
+    sp20.y = arg1->y + arg1->h - 1;
+    sp20.w = arg1->w;
+    sp20.h = 1;
+    func_ovl8_80377B40(arg0, &sp20);
+
+    sp20.x = arg1->x;
+    sp20.y = arg1->y;
+    sp20.w = 1;
+    sp20.h = arg1->h;
+    func_ovl8_80377B40(arg0, &sp20);
+
+    sp20.x = arg1->x + arg1->w - 1;
+    sp20.y = arg1->y;
+    sp20.w = 1;
+    sp20.h = arg1->h;
+    func_ovl8_80377B40(arg0, &sp20);
+}
+
+// 0x803781A4
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_803781A4.s")
 
+// 0x803787C0
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_803787C0.s")
 
+// 0x80379070
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80379070.s")
 
+// 0x803798A0
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_803798A0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80379D74.s")

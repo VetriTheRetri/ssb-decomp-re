@@ -2,13 +2,6 @@
 #include <sys/develop.h>
 #include <db/debug.h>
 
-typedef struct dbUnknown8 {
-    s16 dbUnknown8_0x0;
-    s16 dbUnknown8_0x2;
-    u16 dbUnknown8_0x4;
-    u16 dbUnknown8_0x6;
-} dbUnknown8;
-
 extern s32 D_ovl8_80389F5C;
 extern s32 D_ovl8_80389F60;
 extern s32 D_ovl8_80389F64;
@@ -116,11 +109,11 @@ void func_ovl8_80377134(s32 arg0, s32 arg1)
 }
 
 // 0x80377168
-s32 func_ovl8_80377168(db2Shorts arg0, dbUnknown8* arg1)
+s32 func_ovl8_80377168(db2Shorts arg0, DBMenuPosition* arg1)
 {
-    if ((arg0.arr[0] >= arg1->dbUnknown8_0x0) && (arg0.arr[0] < (arg1->dbUnknown8_0x0 + arg1->dbUnknown8_0x4)))
+    if ((arg0.arr[0] >= arg1->x) && (arg0.arr[0] < (arg1->x + arg1->w)))
     {
-        if ((arg0.arr[1] >= arg1->dbUnknown8_0x2) && (arg0.arr[1] < (arg1->dbUnknown8_0x2 + arg1->dbUnknown8_0x6)))
+        if ((arg0.arr[1] >= arg1->y) && (arg0.arr[1] < (arg1->y + arg1->h)))
         {
             return 1;
         }
@@ -130,17 +123,28 @@ s32 func_ovl8_80377168(db2Shorts arg0, dbUnknown8* arg1)
 }
 
 // 0x803771CC
-void func_ovl8_803771CC(dbUnknown8* arg0, dbUnknown8* arg1)
+void func_ovl8_803771CC(DBMenuPosition* arg0, DBMenuPosition* arg1)
 {
-    arg1->dbUnknown8_0x0 = arg0->dbUnknown8_0x0;
-    arg1->dbUnknown8_0x2 = arg0->dbUnknown8_0x2;
-    arg1->dbUnknown8_0x4 = arg1->dbUnknown8_0x0 + arg0->dbUnknown8_0x4 - 1;
-    arg1->dbUnknown8_0x6 = arg1->dbUnknown8_0x2 + arg0->dbUnknown8_0x6 - 1;
+    arg1->x = arg0->x;
+    arg1->y = arg0->y;
+    arg1->w = arg1->x + arg0->w - 1;
+    arg1->h = arg1->y + arg0->h - 1;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80377208.s")
+// 0x80377208
+void func_ovl8_80377208(DBMenuPosition* arg0, DBMenuPosition* arg1)
+{
+    arg1->x = arg0->x;
+    arg1->y = arg0->y;
+    arg1->w = (s16)arg0->w - arg0->x + 1;
+    arg1->h = (s16)arg0->h - arg0->y + 1;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80377244.s")
+// 0x80377244
+u32 func_ovl8_80377244()
+{
+    return func_ovl8_8037D28C() | gSYControllerMain.button_hold;
+}
 
 // 0x8037726C
 void func_ovl8_8037726C(db2Shorts *arg0)
@@ -148,16 +152,42 @@ void func_ovl8_8037726C(db2Shorts *arg0)
     func_ovl8_80375BB4(arg0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037728C.s")
+// 0x8037728C
+void func_ovl8_8037728C()
+{
+    func_ovl8_80375BD0();
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_803772AC.s")
+// 0x803772AC
+void func_ovl8_803772AC(dbUnknown5* arg0)
+{
+    s32 probably_rest_of_struct[7];
+    s16 arg1, arg2;
+    DBMenuPosition sp20;
+    dbFunction* db_func;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80377330.s")
+    func_ovl8_80374A54(arg0, &sp20);
+
+    db_func = arg0->db_func;
+    arg1 = 0xA0 - (sp20.w / 2);
+    arg2 = 0x78 - (sp20.h / 2);
+    db_func[10].unk_dbfunc_0x4(db_func[10].unk_dbfunc_0x0 + (uintptr_t)arg0, arg1, arg2);
+}
+
+// 0x80377330
+void func_ovl8_80377330(dbUnknown5* arg0, s16 arg1, s16 arg2)
+{
+    dbFunction* db_func;
+
+    db_func = arg0->db_func;
+    db_func[10].unk_dbfunc_0x4(db_func[10].unk_dbfunc_0x0 + (uintptr_t)arg0, arg1, arg2);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80377374.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_803773CC.s")
 
+// 0x80377AEC
 void func_ovl8_80377AEC(char* arg0, s32 arg1, s32 arg2, s32 arg3)
 {
 	func_ovl8_80376B60(arg0[0x31], arg2, &D_ovl8_80389F5C);

@@ -244,7 +244,7 @@ void mvOpeningYosterMakeWallpaperCamera(void)
             lbCommonDrawSprite,
             90,
             COBJ_MASK_DLLINK(28),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,
@@ -397,7 +397,7 @@ SYTaskmanSetup dMVOpeningYosterTaskmanSetup =
     sizeof(DObj),                       // DObj size
     128,                                // Number of SObjs
     sizeof(SObj),                       // SObj size
-    16,                                 // Number of Cameras
+    16,                                 // Number of CObjs
     sizeof(CObj),                       // Camera size
     
     mvOpeningYosterFuncStart            // Task start function

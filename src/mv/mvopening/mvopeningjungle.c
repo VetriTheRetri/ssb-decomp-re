@@ -140,7 +140,7 @@ SYTaskmanSetup dMVOpeningJungleTaskmanSetup =
     sizeof(DObj),                       // DObj size
     0,                                  // Number of SObjs
     sizeof(SObj),                       // SObj size
-    0,                                  // Number of Cameras
+    0,                                  // Number of CObjs
     sizeof(CObj),                       // Camera size
     
     mvOpeningJungleFuncStart            // Task start function

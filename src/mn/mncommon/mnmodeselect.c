@@ -92,7 +92,7 @@ SYTaskmanSetup dMNModeSelectTaskmanSetup =
     sizeof(DObj),                       // DObj size
     0,                                  // Number of SObjs
     sizeof(SObj),                       // SObj size
-    0,                                  // Number of Cameras
+    0,                                  // Number of CObjs
     sizeof(CObj),                       // Camera size
     
     mnModeSelectFuncStart          	    // Task start function
@@ -469,7 +469,7 @@ void mnModeSelectMakeLabelsCamera(void)
             lbCommonDrawSprite,
             60,
             COBJ_MASK_DLLINK(1),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,
@@ -494,7 +494,7 @@ void mnModeSelectMakeDecalsCamera(void)
             lbCommonDrawSprite,
             80,
             COBJ_MASK_DLLINK(0),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,

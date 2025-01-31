@@ -248,8 +248,8 @@ typedef enum gmFGMVoiceID
 	nSYAudioFGMMenuScroll1, 		// Scroll vertically?
 	nSYAudioFGMMenuScroll2, 		// Scroll horizontally / vertically in Training Mode
 	nSYAudioFGMMenuDenied,
-	nSYAudioFGMPlayerGateClose,  	// Plays when player's character portrait is closed on the CSS?
-	nSYAudioFGMPlayerGateWhoosh, 	// Might be unrelated
+	nSYAudioFGMPlayerSlotClose,  	// Plays when player's character portrait is closed on the CSS?
+	nSYAudioFGMPlayerSlotWhoosh, 	// Might be unrelated
 	nSYAudioFGMScoreDisplayBonus,
 	nSYAudioFGMStageClearScoreRegister,
 	nSYAudioFGMStageClearScoreDisplay,

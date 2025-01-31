@@ -50,13 +50,13 @@ extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 
 // Forward declarations
-void mn1PRedrawCursor(GObj* cursor_gobj, s32 port_id, s32 cursor_state);
-void mn1PAnnounceFighter(s32 port_id, s32 panel_id);
+void mn1PRedrawCursor(GObj* cursor_gobj, s32 player, s32 cursor_state);
+void mn1PAnnounceFighter(s32 player, s32 panel_id);
 s32 mn1PGetFighterKindFromTokenPositionEvenIfLocked();
-void mn1PReorderCursorsOnPlacement(s32 port_id);
+void mn1PReorderCursorsOnPlacement(s32 player);
 void mn1PDrawStock(s32 stock, s32 fkind);
-void mn1PCreateWhiteSquare(s32 port_id);
-void mn1PSyncNameAndLogo(s32 port_id);
+void mn1PCreateFlash(s32 player);
+void mn1PSyncNameAndLogo(s32 player);
 s32 mn1PGetPrevTimerValue(s32 arg0);
 s32 mn1PGetNextTimerValue(s32 arg0);
 sb32 mn1PIsReadyToFight();
@@ -425,58 +425,58 @@ void mn1PDrawString(GObj* gobj, const char *str, f32 x, f32 y, s32 color[3])
 }
 
 // 0x80132384
-void mn1PSelectCharWithToken(s32 port_id, s32 select_button)
+void mn1PSelectFighterToken(s32 player, s32 select_button)
 {
-	s32 held_port_id = gMN1PPanel.held_port_id,
-		costume_id = ftParamGetCostumeCommonID(gMN1PPanel.char_id, select_button);
+	s32 held_player = gMN1PPanel.held_player,
+		costume = ftParamGetCostumeCommonID(gMN1PPanel.fkind, select_button);
 
-	ftParamInitAllParts(gMN1PPanel.player, costume_id, 0);
+	ftParamInitAllParts(gMN1PPanel.player, costume, 0);
 
-	gMN1PPanel.costume_id = costume_id;
+	gMN1PPanel.costume = costume;
 	gMN1PPanel.is_selected = TRUE;
-	gMN1PPanel.holder_port_id = 4;
+	gMN1PPanel.holder_player = 4;
 	gMN1PPanel.cursor_state = mnCursorStateNotHoldingToken;
 
-	mn1PRedrawCursor(gMN1PPanel.cursor, port_id, gMN1PPanel.cursor_state);
+	mn1PRedrawCursor(gMN1PPanel.cursor, player, gMN1PPanel.cursor_state);
 
-	gMN1PPanel.held_port_id = -1;
+	gMN1PPanel.held_player = -1;
 	gMN1PPanel.unk_0x88 = TRUE;
 
-	mn1PReorderCursorsOnPlacement(held_port_id);
-	mn1PAnnounceFighter(port_id, held_port_id);
-	mn1PCreateWhiteSquare(held_port_id);
-	mn1PDrawStock(gMN1PStockValue, gMN1PPanel.char_id);
+	mn1PReorderCursorsOnPlacement(held_player);
+	mn1PAnnounceFighter(player, held_player);
+	mn1PCreateFlash(held_player);
+	mn1PDrawStock(gMN1PStockValue, gMN1PPanel.fkind);
 }
 
 // 0x8013243C
-f32 mn1PGetNextPortraitX(s32 portrait_id, f32 current_x_position)
+f32 mn1PGetNextPortraitX(s32 portrait, f32 current_x_position)
 {
-	f32 portrait_x_position[12] = {
+	f32 portrait_pos_x[12] = {
 
 			25.0, 70.0, 115.0, 160.0, 205.0, 250.0,
 			25.0, 70.0, 115.0, 160.0, 205.0, 250.0
 		},
-		portrait_velocity[12] = {
+		portrait_vel[12] = {
 
 			1.9, 3.9, 7.8, -7.8, -3.8, -1.8,
 			1.8, 3.8, 7.8, -7.8, -3.8, -1.8
 	};
 
-	if (current_x_position == portrait_x_position[portrait_id])
+	if (current_x_position == portrait_pos_x[portrait])
 	{
 		return -1.0F;
 	}
-	else if (portrait_x_position[portrait_id] < current_x_position)
+	else if (portrait_pos_x[portrait] < current_x_position)
 	{
-		return (current_x_position + portrait_velocity[portrait_id]) <= portrait_x_position[portrait_id]
-			? portrait_x_position[portrait_id]
-			: current_x_position + portrait_velocity[portrait_id];
+		return (current_x_position + portrait_vel[portrait]) <= portrait_pos_x[portrait]
+			? portrait_pos_x[portrait]
+			: current_x_position + portrait_vel[portrait];
 	}
 	else
 	{
-		return (current_x_position + portrait_velocity[portrait_id]) >= portrait_x_position[portrait_id]
-			? portrait_x_position[portrait_id]
-			: current_x_position + portrait_velocity[portrait_id];
+		return (current_x_position + portrait_vel[portrait]) >= portrait_pos_x[portrait]
+			? portrait_pos_x[portrait]
+			: current_x_position + portrait_vel[portrait];
 	}
 }
 
@@ -501,7 +501,7 @@ void mn1PSetPortraitX(GObj *portrait_gobj)
 }
 
 // 0x801325D8
-void mn1PInitializePortraitBackgroundPosition(SObj *portrait_bg_sobj, s32 portrait_id)
+void mn1PInitializePortraitBackgroundPosition(SObj *portrait_bg_sobj, s32 portrait)
 {
 	Vec2f coordinates[12] = {
 
@@ -509,12 +509,12 @@ void mn1PInitializePortraitBackgroundPosition(SObj *portrait_bg_sobj, s32 portra
 		{ -35.0, 79.0 }, { -35.0, 79.0 }, { -35.0, 79.0 }, { 310.0, 79.0 }, { 310.0, 79.0 }, { 310.0, 79.0 }
 	};
 
-	portrait_bg_sobj->pos.x = coordinates[portrait_id].x;
-	portrait_bg_sobj->pos.y = coordinates[portrait_id].y;
+	portrait_bg_sobj->pos.x = coordinates[portrait].x;
+	portrait_bg_sobj->pos.y = coordinates[portrait].y;
 }
 
 // 0x80132634
-void mn1PAddRedXBoxToPortrait(GObj* portrait_gobj, s32 portrait_id)
+void mn1PAddRedXBoxToPortrait(GObj* portrait_gobj, s32 portrait)
 {
 	SObj* portrait_sobj = SObjGetStruct(portrait_gobj);
 	f32 x = portrait_sobj->pos.x,
@@ -533,9 +533,9 @@ void mn1PAddRedXBoxToPortrait(GObj* portrait_gobj, s32 portrait_id)
 }
 
 // 0x801326C8
-sb32 mn1PGetIsLocked(s32 char_id)
+sb32 mn1PGetIsLocked(s32 fkind)
 {
-	switch (char_id)
+	switch (fkind)
 	{
 		case nFTKindNess:
 			return (gMN1PCharacterUnlockedMask & (1 << nFTKindNess)) ? FALSE : TRUE;
@@ -570,25 +570,25 @@ s32 D_ovl27_80138860[] = {
 void func_ovl27_80132794() {}
 
 // 0x8013279C
-s32 mn1PGetFighterKind(s32 portrait_id)
+s32 mn1PGetFighterKind(s32 portrait)
 {
 	s32 FTKind_order[12] = {
 
 		4, 0, 2, 5, 3, 7, 11, 6, 8, 1, 9, 10
 	};
 
-	return FTKind_order[portrait_id];
+	return FTKind_order[portrait];
 }
 
 // 0x801327EC
 s32 mn1PGetPortraitId(s32 fkind)
 {
-	s32 portrait_id_order[12] = {
+	s32 portrait_order[12] = {
 
 		1, 9, 2, 4, 0, 3, 7, 5, 8, 10, 11, 6
 	};
 
-	return portrait_id_order[fkind];
+	return portrait_order[fkind];
 }
 
 // 0x8013283C
@@ -603,7 +603,7 @@ void mn1PRenderPortraitWithNoise(GObj *portrait_gobj)
 }
 
 // 0x801328FC
-void mn1PCreateLockedPortrait(s32 portrait_id)
+void mn1PCreateLockedPortrait(s32 portrait)
 {
 	GObj* texture_gobj;
 	SObj* texture_sobj;
@@ -619,23 +619,23 @@ void mn1PCreateLockedPortrait(s32 portrait_id)
 	gcAddGObjProcess(texture_gobj, mn1PSetPortraitX, 1, 1);
 
 	texture_sobj = lbCommonMakeSObjForGObj(texture_gobj, lbRelocGetFileData(void*, gMN1PFiles[4], &FILE_013_PORTRAIT_FIRE_BG_IMAGE_OFFSET));
-	texture_sobj->pos.x = (f32) (((portrait_id >= 6 ? portrait_id - 6 : portrait_id) * 0x2D) + 0x19);
-	texture_sobj->pos.y = (f32) (((portrait_id >= 6 ? 1 : 0) * 0x2B) + 0x24);
+	texture_sobj->pos.x = (f32) (((portrait >= 6 ? portrait - 6 : portrait) * 0x2D) + 0x19);
+	texture_sobj->pos.y = (f32) (((portrait >= 6 ? 1 : 0) * 0x2B) + 0x24);
 
-	mn1PInitializePortraitBackgroundPosition(texture_sobj, portrait_id);
-	texture_gobj->user_data.s = portrait_id;
+	mn1PInitializePortraitBackgroundPosition(texture_sobj, portrait);
+	texture_gobj->user_data.s = portrait;
 
 	// portrait
 	texture_gobj = gcMakeGObjSPAfter(0U, NULL, 0x12U, 0x80000000U);
 	gcAddGObjDisplay(texture_gobj, mn1PRenderPortraitWithNoise, 0x1BU, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddGObjProcess(texture_gobj, mn1PSetPortraitX, 1, 1);
 
-	texture_sobj = lbCommonMakeSObjForGObj(texture_gobj, lbRelocGetFileData(void*, gMN1PFiles[4], locked_portrait_offsets[mn1PGetFighterKind(portrait_id)]));
+	texture_sobj = lbCommonMakeSObjForGObj(texture_gobj, lbRelocGetFileData(void*, gMN1PFiles[4], locked_portrait_offsets[mn1PGetFighterKind(portrait)]));
 	texture_sobj->sprite.attr = texture_sobj->sprite.attr & ~SP_FASTCOPY;
 	texture_sobj->sprite.attr = texture_sobj->sprite.attr| SP_TRANSPARENT;
 
-	texture_gobj->user_data.s = portrait_id;
-	mn1PInitializePortraitBackgroundPosition(texture_sobj, portrait_id);
+	texture_gobj->user_data.s = portrait;
+	mn1PInitializePortraitBackgroundPosition(texture_sobj, portrait);
 
 	// question mark
 	texture_gobj = gcMakeGObjSPAfter(0U, NULL, 0x12U, 0x80000000U);
@@ -652,12 +652,12 @@ void mn1PCreateLockedPortrait(s32 portrait_id)
 	texture_sobj->sprite.green = 0xB9;
 	texture_sobj->sprite.blue = 0xA9;
 
-	texture_gobj->user_data.s = portrait_id;
-	mn1PInitializePortraitBackgroundPosition(texture_sobj, portrait_id);
+	texture_gobj->user_data.s = portrait;
+	mn1PInitializePortraitBackgroundPosition(texture_sobj, portrait);
 }
 
 // 0x80132BA4
-void mn1PCreatePortrait(s32 portrait_id)
+void mn1PCreatePortrait(s32 portrait)
 {
 	GObj *portrait_gobj, *portrait_bg_gobj;
 	SObj *texture_sobj;
@@ -668,48 +668,48 @@ void mn1PCreatePortrait(s32 portrait_id)
 	};
 
 	// if locked, render locked portrait instead
-	if (mn1PGetIsLocked(mn1PGetFighterKind(portrait_id)))
-		mn1PCreateLockedPortrait(portrait_id);
+	if (mn1PGetIsLocked(mn1PGetFighterKind(portrait)))
+		mn1PCreateLockedPortrait(portrait);
 	else
 	{
 		// portrait bg (fire)
 		portrait_bg_gobj = gcMakeGObjSPAfter(0U, NULL, 0x19U, 0x80000000U);
 		gcAddGObjDisplay(portrait_bg_gobj, lbCommonDrawSObjAttr, 0x20U, GOBJ_PRIORITY_DEFAULT, ~0);
-		portrait_bg_gobj->user_data.p = portrait_id;
+		portrait_bg_gobj->user_data.p = portrait;
 		gcAddGObjProcess(portrait_bg_gobj, mn1PSetPortraitX, 1, 1);
 
 		texture_sobj = lbCommonMakeSObjForGObj(portrait_bg_gobj, lbRelocGetFileData(void*, gMN1PFiles[4], &FILE_013_PORTRAIT_FIRE_BG_IMAGE_OFFSET));
-		mn1PInitializePortraitBackgroundPosition(texture_sobj, portrait_id);
+		mn1PInitializePortraitBackgroundPosition(texture_sobj, portrait);
 
 		// portrait
 		portrait_gobj = gcMakeGObjSPAfter(0U, NULL, 0x12U, 0x80000000U);
 		gcAddGObjDisplay(portrait_gobj, lbCommonDrawSObjAttr, 0x1BU, GOBJ_PRIORITY_DEFAULT, ~0);
 		gcAddGObjProcess(portrait_gobj, mn1PSetPortraitX, 1, 1);
 
-		texture_sobj = lbCommonMakeSObjForGObj(portrait_gobj, lbRelocGetFileData(void*, gMN1PFiles[4], portrait_offsets[mn1PGetFighterKind(portrait_id)]));
+		texture_sobj = lbCommonMakeSObjForGObj(portrait_gobj, lbRelocGetFileData(void*, gMN1PFiles[4], portrait_offsets[mn1PGetFighterKind(portrait)]));
 		texture_sobj->sprite.attr = texture_sobj->sprite.attr & ~SP_FASTCOPY;
 		texture_sobj->sprite.attr = texture_sobj->sprite.attr| SP_TRANSPARENT;
-		portrait_gobj->user_data.p = portrait_id;
+		portrait_gobj->user_data.p = portrait;
 
 		// this conditionally draws a big red box with an X in it, but this check always fails
-		if (mn1PCheckFighterIsXBoxed(mn1PGetFighterKind(portrait_id)))
-			mn1PAddRedXBoxToPortrait(portrait_gobj, portrait_id);
+		if (mn1PCheckFighterIsXBoxed(mn1PGetFighterKind(portrait)))
+			mn1PAddRedXBoxToPortrait(portrait_gobj, portrait);
 
-		mn1PInitializePortraitBackgroundPosition(texture_sobj, portrait_id);
+		mn1PInitializePortraitBackgroundPosition(texture_sobj, portrait);
 	}
 }
 
 // 0x80132D60
 void mn1PCreatePortraits()
 {
-	s32 portrait_id;
+	s32 portrait;
 
-	for (portrait_id = 0; portrait_id < 12; portrait_id++)
-		mn1PCreatePortrait(portrait_id);
+	for (portrait = 0; portrait < 12; portrait++)
+		mn1PCreatePortrait(portrait);
 }
 
 // 0x80132DA0
-void mn1PSetNameAndLogo(GObj* name_logo_gobj, s32 port_id, s32 fkind)
+void mn1PMakeNameAndEmblem(GObj* name_logo_gobj, s32 player, s32 fkind)
 {
 	SObj* sobj;
 	Vec2f coords[12] = {
@@ -784,7 +784,7 @@ void mn1PCreatePanelViewport()
 }
 
 // 0x8013319C
-void mn1PUpdatePanel(GObj* panel_gobj, s32 port_id)
+void mn1PUpdatePanel(GObj* panel_gobj, s32 player)
 {
 	SObj* panel_sobj;
 	intptr_t offsets[4] = {
@@ -794,11 +794,11 @@ void mn1PUpdatePanel(GObj* panel_gobj, s32 port_id)
 
 	panel_sobj = SObjGetStruct(panel_gobj);
 
-	panel_sobj->sprite.LUT = lbRelocGetFileData(void*, gMN1PFiles[0], offsets[port_id]);
+	panel_sobj->sprite.LUT = lbRelocGetFileData(void*, gMN1PFiles[0], offsets[player]);
 }
 
 // 0x801331F4
-void mn1PCreatePanel(s32 port_id)
+void mn1PCreatePanel(s32 player)
 {
 	GObj* gobj;
 	SObj* type_sobj;
@@ -820,8 +820,8 @@ void mn1PCreatePanel(s32 port_id)
 
 	gMN1PPanel.panel = gobj;
 
-	type_sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(void*, gMN1PFiles[0], type_offsets[port_id]));
-	type_sobj->pos.x = type_x_offsets[port_id] + 25.0F;
+	type_sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(void*, gMN1PFiles[0], type_offsets[player]));
+	type_sobj->pos.x = type_x_offsets[player] + 25.0F;
 	type_sobj->pos.y = 132.0F;
 	type_sobj->sprite.attr &= ~SP_FASTCOPY;
 	type_sobj->sprite.attr |= SP_TRANSPARENT;
@@ -829,14 +829,14 @@ void mn1PCreatePanel(s32 port_id)
 	type_sobj->sprite.green = 0;
 	type_sobj->sprite.blue = 0;
 
-	mn1PUpdatePanel(gobj, port_id);
+	mn1PUpdatePanel(gobj, player);
 
 	// name/logo
 	gobj = gcMakeGObjSPAfter(0U, NULL, 0x16U, 0x80000000U);
 	gMN1PPanel.name_logo = gobj;
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0x1CU, GOBJ_PRIORITY_DEFAULT, ~0);
 
-	mn1PSyncNameAndLogo(port_id);
+	mn1PSyncNameAndLogo(player);
 }
 
 // 0x801333D4
@@ -1006,7 +1006,7 @@ SObj* mn1PGetArrowSObj(GObj* arrow_gobj, s32 direction)
 void mn1PSyncAndBlinkLevelArrows(GObj* arrow_gobj)
 {
 	SObj* arrow_sobj;
-	s32 port_id = arrow_gobj->user_data.s;
+	s32 player = arrow_gobj->user_data.s;
 	s32 blink_duration = 10;
 
 	while (TRUE)
@@ -1113,7 +1113,7 @@ void mn1PCreateLevelAndArrows()
 void mn1PSyncAndBlinkStockArrows(GObj* arrow_gobj)
 {
 	SObj* arrow_sobj;
-	s32 port_id = arrow_gobj->user_data.s;
+	s32 player = arrow_gobj->user_data.s;
 	s32 blink_duration = 10;
 
 	while (TRUE)
@@ -1205,7 +1205,7 @@ void mn1PCreateStockAndArrows()
 	arrows_gobj = gcMakeGObjSPAfter(0U, NULL, 0x17U, 0x80000000U);
 	gcAddGObjDisplay(arrows_gobj, lbCommonDrawSObjAttr, 0x22U, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddGObjProcess(arrows_gobj, mn1PSyncAndBlinkStockArrows, 0, 1);
-	mn1PDrawStock(gMN1PStockValue, gMN1PPanel.char_id);
+	mn1PDrawStock(gMN1PStockValue, gMN1PPanel.fkind);
 }
 
 // 0x801343C8
@@ -1536,7 +1536,7 @@ s32 mn1PGetSelectedAnimation(s32 fkind)
 void mn1PRotateFighter(GObj *fighter_gobj)
 {
 	FTStruct* fp = ftGetStruct(fighter_gobj);
-	s32 port_id = fp->player;
+	s32 player = fp->player;
 
 	if (gMN1PPanel.unk_0x88 == 1)
 	{
@@ -1544,7 +1544,7 @@ void mn1PRotateFighter(GObj *fighter_gobj)
 		{
 			if (!gMN1PPanel.selected_animation_started)
 			{
-				scSubsysFighterSetStatus(gMN1PPanel.player, mn1PGetSelectedAnimation(gMN1PPanel.char_id));
+				scSubsysFighterSetStatus(gMN1PPanel.player, mn1PGetSelectedAnimation(gMN1PPanel.fkind));
 
 				gMN1PPanel.selected_animation_started = TRUE;
 			}
@@ -1557,7 +1557,7 @@ void mn1PRotateFighter(GObj *fighter_gobj)
 			{
 				DObjGetStruct(fighter_gobj)->rotate.vec.f.y = 0.0F;
 
-				scSubsysFighterSetStatus(gMN1PPanel.player, mn1PGetSelectedAnimation(gMN1PPanel.char_id));
+				scSubsysFighterSetStatus(gMN1PPanel.player, mn1PGetSelectedAnimation(gMN1PPanel.fkind));
 
 				gMN1PPanel.selected_animation_started = TRUE;
 			}
@@ -1573,7 +1573,7 @@ void mn1PRotateFighter(GObj *fighter_gobj)
 }
 
 // 0x80135060
-void mn1PSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 fkind, s32 costume_id)
+void mn1PSpawnFighter(GObj* fighter_gobj, s32 player, s32 fkind, s32 costume)
 {
 	f32 initial_y_rotation;
 	FTDesc desc = dFTManagerDefaultFighterDesc;
@@ -1589,10 +1589,10 @@ void mn1PSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 fkind, s32 costume_id
 			initial_y_rotation = 0.0F;
 
 		desc.fkind = fkind;
-		gMN1PPanel.costume_id = desc.costume = costume_id;
+		gMN1PPanel.costume = desc.costume = costume;
 		desc.shade = 0;
 		desc.figatree_heap = gMN1PFigatreeHeap;
-		desc.player = port_id;
+		desc.player = player;
 		gMN1PPanel.player = fighter_gobj = ftManagerMakeFighter(&desc);
 
 		gcAddGObjProcess(fighter_gobj, mn1PRotateFighter, 1, 1);
@@ -1626,7 +1626,7 @@ void mn1PCreateFighterViewport()
 }
 
 // 0x801352BC
-void mn1PRedrawCursor(GObj* cursor_gobj, s32 port_id, s32 cursor_state)
+void mn1PRedrawCursor(GObj* cursor_gobj, s32 player, s32 cursor_state)
 {
 	SObj* cursor_sobj;
 	f32 current_x, current_y;
@@ -1663,17 +1663,17 @@ void mn1PRedrawCursor(GObj* cursor_gobj, s32 port_id, s32 cursor_state)
 	cursor_sobj->sprite.attr &= ~SP_FASTCOPY;
 	cursor_sobj->sprite.attr |= SP_TRANSPARENT;
 
-	cursor_sobj = lbCommonMakeSObjForGObj(cursor_gobj, lbRelocGetFileData(void*, gMN1PFiles[0], type_offsets[port_id]));
+	cursor_sobj = lbCommonMakeSObjForGObj(cursor_gobj, lbRelocGetFileData(void*, gMN1PFiles[0], type_offsets[player]));
 	cursor_sobj->pos.x = SObjGetPrev(cursor_sobj)->pos.x + type_positions[cursor_state].x;
 	cursor_sobj->pos.y = SObjGetPrev(cursor_sobj)->pos.y + type_positions[cursor_state].y;
 	cursor_sobj->sprite.attr &= ~SP_FASTCOPY;
 	cursor_sobj->sprite.attr |= SP_TRANSPARENT;
-	cursor_sobj->sprite.red = type_colors[port_id].prim.r;
-	cursor_sobj->sprite.green = type_colors[port_id].prim.g;
-	cursor_sobj->sprite.blue = type_colors[port_id].prim.b;
-	cursor_sobj->envcolor.r = type_colors[port_id].env.r;
-	cursor_sobj->envcolor.g = type_colors[port_id].env.g;
-	cursor_sobj->envcolor.b = type_colors[port_id].env.b;
+	cursor_sobj->sprite.red = type_colors[player].prim.r;
+	cursor_sobj->sprite.green = type_colors[player].prim.g;
+	cursor_sobj->sprite.blue = type_colors[player].prim.b;
+	cursor_sobj->envcolor.r = type_colors[player].env.r;
+	cursor_sobj->envcolor.g = type_colors[player].env.g;
+	cursor_sobj->envcolor.b = type_colors[player].env.b;
 }
 
 // 0x801354CC
@@ -1749,7 +1749,7 @@ sb32 mn1PCheckBackButtonPress(GObj* cursor_gobj)
 }
 
 // 0x80135724
-sb32 mn1PCheckTokenPickup(GObj* cursor_gobj, s32 cursor_port_id, s32 port_id)
+sb32 mn1PCheckTokenPickup(GObj* cursor_gobj, s32 cursor_player, s32 player)
 {
 	f32 current_x, current_y;
 	s32 range_check;
@@ -1775,22 +1775,22 @@ sb32 mn1PCheckTokenPickup(GObj* cursor_gobj, s32 cursor_port_id, s32 port_id)
 void func_ovl27_801357FC() {}
 
 // 0x80135804
-void mn1PSyncFighterDisplay(s32 port_id)
+void mn1PSyncFighterDisplay(s32 player)
 {
 	s32 var_v0 = 0;
 
-	if ((gMN1PPanel.char_id == nFTKindNull) && !gMN1PPanel.is_selected)
+	if ((gMN1PPanel.fkind == nFTKindNull) && !gMN1PPanel.is_selected)
 	{
 		gMN1PPanel.player->flags = 1;
-		mn1PDrawStock(gMN1PStockValue, gMN1PPanel.char_id);
+		mn1PDrawStock(gMN1PStockValue, gMN1PPanel.fkind);
 		mn1PDrawHighscoreAndBonuses();
 		var_v0 = 1;
 	}
 
 	if (var_v0 == 0)
 	{
-		mn1PSpawnFighter(gMN1PPanel.player, port_id, gMN1PPanel.char_id, mn1PGetAvailableCostume(gMN1PPanel.char_id, 0));
-		mn1PDrawStock(gMN1PStockValue, gMN1PPanel.char_id);
+		mn1PSpawnFighter(gMN1PPanel.player, player, gMN1PPanel.fkind, mn1PGetAvailableCostume(gMN1PPanel.fkind, 0));
+		mn1PDrawStock(gMN1PStockValue, gMN1PPanel.fkind);
 		mn1PDrawHighscoreAndBonuses();
 		gMN1PPanel.player->flags = 0;
 		gMN1PPanel.selected_animation_started = FALSE;
@@ -1801,21 +1801,21 @@ void mn1PSyncFighterDisplay(s32 port_id)
 void func_ovl27_801358BC() {}
 
 // 0x801358C4
-void mn1PSyncNameAndLogo(s32 port_id)
+void mn1PSyncNameAndLogo(s32 player)
 {
-	if ((gMN1PPanel.char_id == nFTKindNull) && !gMN1PPanel.is_selected)
+	if ((gMN1PPanel.fkind == nFTKindNull) && !gMN1PPanel.is_selected)
 	{
 		gMN1PPanel.name_logo->flags = 1;
 	}
 	else
 	{
 		gMN1PPanel.name_logo->flags = 0;
-		mn1PSetNameAndLogo(gMN1PPanel.name_logo, port_id, gMN1PPanel.char_id);
+		mn1PMakeNameAndEmblem(gMN1PPanel.name_logo, player, gMN1PPanel.fkind);
 	}
 }
 
 // 0x80135924
-void mn1PRemoveWhiteSquare(s32 port_id)
+void mn1PRemoveFlash(s32 player)
 {
 	GObj* white_square_gobj;
 
@@ -1828,7 +1828,7 @@ void mn1PRemoveWhiteSquare(s32 port_id)
 }
 
 // 0x8013595C
-void mn1PFlashWhiteSquare(GObj* white_square_gobj)
+void mn1PFlashFlash(GObj* white_square_gobj)
 {
 	s32 duration = 16;
 	s32 frames_to_wait = 1;
@@ -1838,7 +1838,7 @@ void mn1PFlashWhiteSquare(GObj* white_square_gobj)
 		duration--, frames_to_wait--;
 
 		if (duration == 0)
-			mn1PRemoveWhiteSquare(white_square_gobj->user_data.p);
+			mn1PRemoveFlash(white_square_gobj->user_data.p);
 
 		if (frames_to_wait == 0)
 		{
@@ -1851,26 +1851,26 @@ void mn1PFlashWhiteSquare(GObj* white_square_gobj)
 }
 
 // 0x801359FC
-void mn1PCreateWhiteSquare(s32 port_id)
+void mn1PCreateFlash(s32 player)
 {
 	GObj* white_square_gobj;
 	SObj* white_square_sobj;
-	s32 portrait_id = mn1PGetPortraitId(gMN1PPanel.char_id);
+	s32 portrait = mn1PGetPortraitId(gMN1PPanel.fkind);
 
-	mn1PRemoveWhiteSquare(port_id);
+	mn1PRemoveFlash(player);
 
 	gMN1PPanel.white_square = white_square_gobj = gcMakeGObjSPAfter(0U, NULL, 0x1AU, 0x80000000U);
 	gcAddGObjDisplay(white_square_gobj, lbCommonDrawSObjAttr, 0x21U, GOBJ_PRIORITY_DEFAULT, ~0);
-	white_square_gobj->user_data.p = port_id;
-	gcAddGObjProcess(white_square_gobj, mn1PFlashWhiteSquare, 0, 1);
+	white_square_gobj->user_data.p = player;
+	gcAddGObjProcess(white_square_gobj, mn1PFlashFlash, 0, 1);
 
 	white_square_sobj = lbCommonMakeSObjForGObj(white_square_gobj, lbRelocGetFileData(void*, gMN1PFiles[4], &FILE_013_WHITE_SQUARE));
-	white_square_sobj->pos.x = (f32) (((portrait_id >= 6 ? portrait_id - 6 : portrait_id) * 45) + 26);
-	white_square_sobj->pos.y = (f32) (((portrait_id >= 6 ? 1 : 0) * 43) + 37);
+	white_square_sobj->pos.x = (f32) (((portrait >= 6 ? portrait - 6 : portrait) * 45) + 26);
+	white_square_sobj->pos.y = (f32) (((portrait >= 6 ? 1 : 0) * 43) + 37);
 }
 
 // 0x80135B30
-void mn1PAnnounceFighter(s32 port_id, s32 panel_id)
+void mn1PAnnounceFighter(s32 player, s32 panel_id)
 {
 	u16 announcer_fgms[12] = {
 
@@ -1890,7 +1890,7 @@ void mn1PAnnounceFighter(s32 port_id, s32 panel_id)
 
 	func_800269C0_275C0(0x79U);
 
-	gMN1PPanel.p_sfx = func_800269C0_275C0(announcer_fgms[gMN1PPanel.char_id]);
+	gMN1PPanel.p_sfx = func_800269C0_275C0(announcer_fgms[gMN1PPanel.fkind]);
 
 	if (gMN1PPanel.p_sfx != NULL)
 		gMN1PPanel.sfx_id = gMN1PPanel.p_sfx->sfx_id;
@@ -1900,14 +1900,14 @@ void mn1PAnnounceFighter(s32 port_id, s32 panel_id)
 void func_ovl27_80135BFC() {}
 
 // 0x80135C04
-sb32 mn1PSelectChar(GObj* cursor_gobj, s32 port_id, s32 arg2, s32 select_button)
+sb32 mn1PSelectChar(GObj* cursor_gobj, s32 player, s32 arg2, s32 select_button)
 {
 	if (gMN1PPanel.cursor_state != mnCursorStateHoldingToken)
 		return FALSE;
 
-	if (gMN1PPanel.char_id != nFTKindNull)
+	if (gMN1PPanel.fkind != nFTKindNull)
 	{
-		mn1PSelectCharWithToken(port_id, select_button);
+		mn1PSelectFighterToken(player, select_button);
 		gMN1PPanel.min_frames_elapsed_until_recall = gMN1PTotalTimeTics + 0x1E;
 		return TRUE;
 	}
@@ -1917,56 +1917,56 @@ sb32 mn1PSelectChar(GObj* cursor_gobj, s32 port_id, s32 arg2, s32 select_button)
 }
 
 // 0x80135C88
-void mn1PReorderCursorsOnPickup(s32 port_id, s32 token_id)
+void mn1PReorderCursorsOnPickup(s32 player, s32 token_id)
 {
 	s32 display_orders[4] = {
 
 		6, 4, 2, 0
 	};
-	gcMoveGObjDL(gMN1PPanel.token, 0x1E, display_orders[port_id] + 1);
+	gcMoveGObjDL(gMN1PPanel.token, 0x1E, display_orders[player] + 1);
 }
 
 // 0x80135CF4
-void mn1PReorderCursorsOnPlacement(s32 port_id)
+void mn1PReorderCursorsOnPlacement(s32 player)
 {
 	s32 unheld_orders[4] = {
 
 		3, 2, 1, 0
 	};
-	gcMoveGObjDL(gMN1PPanel.token, 0x1F, unheld_orders[port_id]);
+	gcMoveGObjDL(gMN1PPanel.token, 0x1F, unheld_orders[player]);
 }
 
 // 0x80135D58
-void mn1PSetCursorCoordinatesFromToken(s32 port_id)
+void mn1PSetCursorCoordinatesFromToken(s32 player)
 {
 	gMN1PPanel.cursor_pickup_x = SObjGetStruct(gMN1PPanel.token)->pos.x - 11.0F;
 	gMN1PPanel.cursor_pickup_y = SObjGetStruct(gMN1PPanel.token)->pos.y - -14.0F;
 }
 
 // 0x80135D9C
-void mn1PHandleCursorPickup(s32 port_id)
+void mn1PHandleCursorPickup(s32 player)
 {
-	gMN1PPanel.holder_port_id = port_id;
+	gMN1PPanel.holder_player = player;
 	gMN1PPanel.is_selected = FALSE;
 	gMN1PPanel.cursor_state = mnCursorStateHoldingToken;
-	gMN1PPanel.held_port_id = port_id;
+	gMN1PPanel.held_player = player;
 	gMN1PPanel.unk_0x88 = FALSE;
 
-	mn1PSyncFighterDisplay(port_id);
-	mn1PReorderCursorsOnPickup(port_id, port_id);
-	mn1PSetCursorCoordinatesFromToken(port_id);
-	mn1PRedrawCursor(gMN1PPanel.cursor, port_id, gMN1PPanel.cursor_state);
+	mn1PSyncFighterDisplay(player);
+	mn1PReorderCursorsOnPickup(player, player);
+	mn1PSetCursorCoordinatesFromToken(player);
+	mn1PRedrawCursor(gMN1PPanel.cursor, player, gMN1PPanel.cursor_state);
 
 	gMN1PPanel.unk_0xA0 = TRUE;
 
 	func_800269C0_275C0(0x7FU);
 
-	mn1PRemoveWhiteSquare(port_id);
-	mn1PSyncNameAndLogo(port_id);
+	mn1PRemoveFlash(player);
+	mn1PSyncNameAndLogo(player);
 }
 
 // 0x80135E2C
-sb32 mn1PCheckAndHandleTokenPickup(GObj* cursor_gobj, s32 port_id)
+sb32 mn1PCheckAndHandleTokenPickup(GObj* cursor_gobj, s32 player)
 {
 	mnCharPanel1P* panel_info = &gMN1PPanel;
 
@@ -1976,24 +1976,24 @@ sb32 mn1PCheckAndHandleTokenPickup(GObj* cursor_gobj, s32 port_id)
 	else if (gMN1PPanel.cursor_state != mnCursorStateNotHoldingToken)
 		return FALSE;
 
-	if ((gMN1PPanel.holder_port_id == 4) && (mn1PCheckTokenPickup(cursor_gobj, port_id, port_id)))
+	if ((gMN1PPanel.holder_player == 4) && (mn1PCheckTokenPickup(cursor_gobj, player, player)))
 	{
-		gMN1PPanel.holder_port_id = port_id;
+		gMN1PPanel.holder_player = player;
 		gMN1PPanel.is_selected = FALSE;
 		gMN1PPanel.cursor_state = mnCursorStateHoldingToken;
-		panel_info->held_port_id = port_id;
+		panel_info->held_player = player;
 		gMN1PPanel.unk_0x88 = FALSE;
 
-		mn1PSyncFighterDisplay(port_id);
-		mn1PReorderCursorsOnPickup(port_id, port_id);
-		mn1PSetCursorCoordinatesFromToken(port_id);
-		mn1PRedrawCursor(cursor_gobj, port_id, gMN1PPanel.cursor_state);
+		mn1PSyncFighterDisplay(player);
+		mn1PReorderCursorsOnPickup(player, player);
+		mn1PSetCursorCoordinatesFromToken(player);
+		mn1PRedrawCursor(cursor_gobj, player, gMN1PPanel.cursor_state);
 
 		gMN1PPanel.unk_0xA0 = TRUE;
 
 		func_800269C0_275C0(0x7FU);
-		mn1PRemoveWhiteSquare(port_id);
-		mn1PSyncNameAndLogo(port_id);
+		mn1PRemoveFlash(player);
+		mn1PSyncNameAndLogo(player);
 
 		return TRUE;
 	}
@@ -2007,7 +2007,7 @@ s32 mn1PGetFighterKindFromTokenPositionEvenIfLocked()
 	SObj* token_sobj = SObjGetStruct(gMN1PPanel.token);
 	s32 current_y = (s32) token_sobj->pos.x + 13;
 	s32 current_x = (s32) token_sobj->pos.y + 12;
-	s32 char_id;
+	s32 fkind;
 	sb32 is_within_bounds;
 
 	is_within_bounds = (current_x >= 36) && (current_x < 79) ? TRUE : FALSE;
@@ -2033,12 +2033,12 @@ s32 mn1PGetFighterKindFromTokenPositionEvenIfLocked()
 }
 
 // 0x80136050
-s32 mn1PGetFighterKindFromTokenPosition(s32 port_id)
+s32 mn1PGetFighterKindFromTokenPosition(s32 player)
 {
 	SObj* token_sobj = SObjGetStruct(gMN1PPanel.token);
 	s32 current_y = (s32) token_sobj->pos.x + 13;
 	s32 current_x = (s32) token_sobj->pos.y + 12;
-	s32 char_id;
+	s32 fkind;
 	sb32 is_within_bounds;
 
 	is_within_bounds = (current_x >= 36) && (current_x < 79) ? TRUE : FALSE;
@@ -2049,12 +2049,12 @@ s32 mn1PGetFighterKindFromTokenPosition(s32 port_id)
 
 		if (is_within_bounds)
 		{
-			char_id = mn1PGetFighterKind((s32) (current_y - 25) / 45);
+			fkind = mn1PGetFighterKind((s32) (current_y - 25) / 45);
 
-			if ((mn1PCheckFighterIsXBoxed(char_id)) || (mn1PGetIsLocked(char_id)))
+			if ((mn1PCheckFighterIsXBoxed(fkind)) || (mn1PGetIsLocked(fkind)))
 				return nFTKindNull;
 
-			return char_id;
+			return fkind;
 		}
 	}
 
@@ -2066,19 +2066,19 @@ s32 mn1PGetFighterKindFromTokenPosition(s32 port_id)
 
 		if (is_within_bounds)
 		{
-			char_id = mn1PGetFighterKind(((s32) (current_y - 25) / 45) + 6);
+			fkind = mn1PGetFighterKind(((s32) (current_y - 25) / 45) + 6);
 
-			if ((mn1PCheckFighterIsXBoxed(char_id)) || (mn1PGetIsLocked(char_id)))
+			if ((mn1PCheckFighterIsXBoxed(fkind)) || (mn1PGetIsLocked(fkind)))
 				return nFTKindNull;
 
-			return char_id;
+			return fkind;
 		}
 	}
 	return nFTKindNull;
 }
 
 // 0x801361C8
-void mn1PAutoPositionCursor(GObj* cursor_gobj, s32 port_id)
+void mn1PAutoPositionCursor(GObj* cursor_gobj, s32 player)
 {
 	SYController* controller;
 	Vec2i coords[3] = {
@@ -2120,7 +2120,7 @@ void mn1PAutoPositionCursor(GObj* cursor_gobj, s32 port_id)
 	}
 	else if (!gMN1PPanel.is_recalling)
 	{
-		controller = &gSYControllerDevices[port_id];
+		controller = &gSYControllerDevices[player];
 		is_within_bounds = (controller->stick_range.x < -8) || (controller->stick_range.x >= 9) ? TRUE : FALSE;
 
 		if (is_within_bounds != 0)
@@ -2136,7 +2136,7 @@ void mn1PAutoPositionCursor(GObj* cursor_gobj, s32 port_id)
 			}
 		}
 
-		controller = &gSYControllerDevices[port_id];
+		controller = &gSYControllerDevices[player];
 		is_within_bounds = (controller->stick_range.y < -8) || (controller->stick_range.y >= 9) ? TRUE : FALSE;
 
 		if (is_within_bounds != 0)
@@ -2155,7 +2155,7 @@ void mn1PAutoPositionCursor(GObj* cursor_gobj, s32 port_id)
 }
 
 // 0x80136540
-void mn1PSyncCursorDisplay(GObj* cursor_gobj, s32 port_id)
+void mn1PSyncCursorDisplay(GObj* cursor_gobj, s32 player)
 {
 	s32 i;
 
@@ -2163,17 +2163,17 @@ void mn1PSyncCursorDisplay(GObj* cursor_gobj, s32 port_id)
 	{
 		if (gMN1PPanel.cursor_state != mnCursorStatePointer)
 		{
-			mn1PRedrawCursor(cursor_gobj, port_id, mnCursorStatePointer);
+			mn1PRedrawCursor(cursor_gobj, player, mnCursorStatePointer);
 			gMN1PPanel.cursor_state = mnCursorStatePointer;
 		}
 	}
 	else
 	{
-		if (gMN1PPanel.held_port_id == -1)
+		if (gMN1PPanel.held_player == -1)
 		{
 			if (gMN1PPanel.cursor_state != mnCursorStateNotHoldingToken)
 			{
-				mn1PRedrawCursor(cursor_gobj, port_id, mnCursorStateNotHoldingToken);
+				mn1PRedrawCursor(cursor_gobj, player, mnCursorStateNotHoldingToken);
 				gMN1PPanel.cursor_state = mnCursorStateNotHoldingToken;
 			}
 		}
@@ -2181,7 +2181,7 @@ void mn1PSyncCursorDisplay(GObj* cursor_gobj, s32 port_id)
 		{
 			if (gMN1PPanel.cursor_state != mnCursorStateHoldingToken)
 			{
-				mn1PRedrawCursor(cursor_gobj, port_id, mnCursorStateHoldingToken);
+				mn1PRedrawCursor(cursor_gobj, player, mnCursorStateHoldingToken);
 				gMN1PPanel.cursor_state = mnCursorStateHoldingToken;
 			}
 		}
@@ -2191,9 +2191,9 @@ void mn1PSyncCursorDisplay(GObj* cursor_gobj, s32 port_id)
 	{
 		for (i = 0; i < 4; i++)
 		{
-			if (gMN1PPanel.is_selected == 1 && mn1PCheckTokenPickup(cursor_gobj, port_id, i))
+			if (gMN1PPanel.is_selected == 1 && mn1PCheckTokenPickup(cursor_gobj, player, i))
 			{
-				mn1PRedrawCursor(cursor_gobj, port_id, mnCursorStateNotHoldingToken);
+				mn1PRedrawCursor(cursor_gobj, player, mnCursorStateNotHoldingToken);
 				gMN1PPanel.cursor_state = mnCursorStateNotHoldingToken;
 				return;
 			}
@@ -2329,7 +2329,7 @@ sb32 mn1PCheckAnyStockArrowPress(GObj* cursor_gobj)
 		{
 			func_800269C0_275C0(0xA4U);
 
-			mn1PDrawStock(++gMN1PStockValue, gMN1PPanel.char_id);
+			mn1PDrawStock(++gMN1PStockValue, gMN1PPanel.fkind);
 		}
 		return TRUE;
 	}
@@ -2339,7 +2339,7 @@ sb32 mn1PCheckAnyStockArrowPress(GObj* cursor_gobj)
 		{
 			func_800269C0_275C0(0xA4U);
 
-			mn1PDrawStock(--gMN1PStockValue, gMN1PPanel.char_id);
+			mn1PDrawStock(--gMN1PStockValue, gMN1PPanel.fkind);
 		}
 		return TRUE;
 	}
@@ -2349,13 +2349,13 @@ sb32 mn1PCheckAnyStockArrowPress(GObj* cursor_gobj)
 // 0x80136B44
 void mn1PSyncShadeAndCostume(s32 arg0, s32 select_button)
 {
-	s32 costume_id = ftParamGetCostumeCommonID(gMN1PPanel.char_id, select_button);
+	s32 costume = ftParamGetCostumeCommonID(gMN1PPanel.fkind, select_button);
 
-	ftParamInitAllParts(gMN1PPanel.player, costume_id, 0);
+	ftParamInitAllParts(gMN1PPanel.player, costume, 0);
 
-	gMN1PPanel.costume_id = costume_id;
+	gMN1PPanel.costume = costume;
 
-	mn1PDrawStock(gMN1PStockValue, gMN1PPanel.char_id);
+	mn1PDrawStock(gMN1PStockValue, gMN1PPanel.fkind);
 
 	func_800269C0_275C0(0xA4U);
 }
@@ -2371,7 +2371,7 @@ sb32 mn1PIsHumanWithCharacterSelected(s32 arg0)
 }
 
 // 0x80136BD4
-void mn1PRecallToken(s32 port_id)
+void mn1PRecallToken(s32 player)
 {
 	gMN1PPanel.unk_0x88 = FALSE;
 	gMN1PPanel.is_selected = FALSE;
@@ -2417,9 +2417,9 @@ void mn1PGoBackTo1PMenu()
 }
 
 // 0x80136D04
-void mn1PExitIfBButtonPressed(s32 port_id)
+void mn1PExitIfBButtonPressed(s32 player)
 {
-	SYController* controller = &gSYControllerDevices[port_id];
+	SYController* controller = &gSYControllerDevices[player];
 
 	if ((gMN1PTotalTimeTics >= 10) && (controller->button_tap & B_BUTTON))
 	{
@@ -2434,13 +2434,13 @@ void mn1PHandleButtonPresses(GObj* cursor_gobj)
 	SYController* controller = &gSYControllerDevices[cursor_gobj->user_data.s];
 	mnCharPanel1P* panel_info;
 	s32 foo, bar, baz;
-	s32 port_id = cursor_gobj->user_data.s;
+	s32 player = cursor_gobj->user_data.s;
 
-	mn1PAutoPositionCursor(cursor_gobj, port_id);
+	mn1PAutoPositionCursor(cursor_gobj, player);
 
-	if ((gSYControllerDevices[port_id].button_tap & A_BUTTON)
-		&& (!mn1PSelectChar(cursor_gobj, port_id, gMN1PPanel.held_port_id, 0))
-		&& (!mn1PCheckAndHandleTokenPickup(cursor_gobj, port_id)))
+	if ((gSYControllerDevices[player].button_tap & A_BUTTON)
+		&& (!mn1PSelectChar(cursor_gobj, player, gMN1PPanel.held_player, 0))
+		&& (!mn1PCheckAndHandleTokenPickup(cursor_gobj, player)))
 	{
 		if (mn1PCheckPickerRightArrowPress(cursor_gobj))
 		{
@@ -2465,42 +2465,42 @@ void mn1PHandleButtonPresses(GObj* cursor_gobj)
 		}
 	}
 
-	if ((gSYControllerDevices[port_id].button_tap & U_CBUTTONS)
-		&& (!mn1PSelectChar(cursor_gobj, port_id, gMN1PPanel.held_port_id, 0))
+	if ((gSYControllerDevices[player].button_tap & U_CBUTTONS)
+		&& (!mn1PSelectChar(cursor_gobj, player, gMN1PPanel.held_player, 0))
 		&& (gMN1PPanel.unk_0x88))
 	{
-		mn1PSyncShadeAndCostume(port_id, 0);
+		mn1PSyncShadeAndCostume(player, 0);
 	}
-	if ((gSYControllerDevices[port_id].button_tap & R_CBUTTONS)
-		&& (!mn1PSelectChar(cursor_gobj, port_id, gMN1PPanel.held_port_id, 1))
+	if ((gSYControllerDevices[player].button_tap & R_CBUTTONS)
+		&& (!mn1PSelectChar(cursor_gobj, player, gMN1PPanel.held_player, 1))
 		&& (gMN1PPanel.unk_0x88))
 	{
-		mn1PSyncShadeAndCostume(port_id, 1);
+		mn1PSyncShadeAndCostume(player, 1);
 	}
-	if ((gSYControllerDevices[port_id].button_tap & D_CBUTTONS)
-		&& (!mn1PSelectChar(cursor_gobj, port_id, gMN1PPanel.held_port_id, 2))
+	if ((gSYControllerDevices[player].button_tap & D_CBUTTONS)
+		&& (!mn1PSelectChar(cursor_gobj, player, gMN1PPanel.held_player, 2))
 		&& (gMN1PPanel.unk_0x88))
 	{
-		mn1PSyncShadeAndCostume(port_id, 2);
+		mn1PSyncShadeAndCostume(player, 2);
 	}
-	if ((gSYControllerDevices[port_id].button_tap & L_CBUTTONS)
-		&& (!mn1PSelectChar(cursor_gobj, port_id, gMN1PPanel.held_port_id, 3))
+	if ((gSYControllerDevices[player].button_tap & L_CBUTTONS)
+		&& (!mn1PSelectChar(cursor_gobj, player, gMN1PPanel.held_player, 3))
 		&& (gMN1PPanel.unk_0x88))
 	{
-		mn1PSyncShadeAndCostume(port_id, 3);
+		mn1PSyncShadeAndCostume(player, 3);
 	}
 
-	if ((gSYControllerDevices[port_id].button_tap & B_BUTTON) && (mn1PIsHumanWithCharacterSelected(port_id)))
+	if ((gSYControllerDevices[player].button_tap & B_BUTTON) && (mn1PIsHumanWithCharacterSelected(player)))
 	{
-		mn1PRecallToken(port_id);
+		mn1PRecallToken(player);
 	}
 	if (!gMN1PPanel.is_recalling)
 	{
-		mn1PExitIfBButtonPressed(port_id);
+		mn1PExitIfBButtonPressed(player);
 	}
 	if (!gMN1PPanel.is_recalling)
 	{
-		mn1PSyncCursorDisplay(cursor_gobj, port_id);
+		mn1PSyncCursorDisplay(cursor_gobj, player);
 	}
 }
 
@@ -2520,16 +2520,16 @@ void func_ovl27_8013702C() {}
 // 0x80137034
 void mn1PCenterTokenInPortrait(GObj* token_gobj, s32 fkind)
 {
-	s32 portrait_id = mn1PGetPortraitId(fkind);
+	s32 portrait = mn1PGetPortraitId(fkind);
 
-	if (portrait_id >= 6)
+	if (portrait >= 6)
 	{
-		SObjGetStruct(token_gobj)->pos.x = (portrait_id * 45) - (6 * 45) + 36;
+		SObjGetStruct(token_gobj)->pos.x = (portrait * 45) - (6 * 45) + 36;
 		SObjGetStruct(token_gobj)->pos.y = 89.0F;
 	}
 	else
 	{
-		SObjGetStruct(token_gobj)->pos.x = (portrait_id * 45) + 36;
+		SObjGetStruct(token_gobj)->pos.x = (portrait * 45) + 36;
 		SObjGetStruct(token_gobj)->pos.y = 46.0F;
 	}
 }
@@ -2538,7 +2538,7 @@ void mn1PCenterTokenInPortrait(GObj* token_gobj, s32 fkind)
 void func_ovl27_801370E4() {}
 
 // 0x801370EC
-void mn1PMoveToken(s32 port_id)
+void mn1PMoveToken(s32 player)
 {
 	SObjGetStruct(gMN1PPanel.token)->pos.x += gMN1PPanel.token_x_velocity;
 	SObjGetStruct(gMN1PPanel.token)->pos.y += gMN1PPanel.token_y_velocity;
@@ -2548,7 +2548,7 @@ void mn1PMoveToken(s32 port_id)
 void mn1PSyncTokenAndFighter(GObj* token_gobj)
 {
 	s32 fkind;
-	s32 port_id = token_gobj->user_data.s;
+	s32 player = token_gobj->user_data.s;
 
 	if (gMN1PTotalTimeTics < 0x1E)
 	{
@@ -2569,24 +2569,24 @@ void mn1PSyncTokenAndFighter(GObj* token_gobj)
 	}
 
 	if ((!gMN1PPanel.is_selected)
-		&& (gMN1PPanel.holder_port_id != 4)) {
+		&& (gMN1PPanel.holder_player != 4)) {
 		if (!gMN1PPanel.unk_0xA0) {
 			SObjGetStruct(token_gobj)->pos.x = (f32) (SObjGetStruct(gMN1PPanel.cursor)->pos.x + 11.0F);
 			SObjGetStruct(token_gobj)->pos.y = (f32) (SObjGetStruct(gMN1PPanel.cursor)->pos.y + -14.0F);
 		}
 	}
 	else
-		mn1PMoveToken(port_id);
+		mn1PMoveToken(player);
 
-	fkind = mn1PGetFighterKindFromTokenPosition(port_id);
+	fkind = mn1PGetFighterKindFromTokenPosition(player);
 
 	if ((!gMN1PPanel.is_selected)
-		&& (fkind != gMN1PPanel.char_id))
+		&& (fkind != gMN1PPanel.fkind))
 	{
-		gMN1PPanel.char_id = fkind;
+		gMN1PPanel.fkind = fkind;
 
-		mn1PSyncFighterDisplay(port_id);
-		mn1PSyncNameAndLogo(port_id);
+		mn1PSyncFighterDisplay(player);
+		mn1PSyncNameAndLogo(player);
 	}
 	mn1PDrawHighscoreAndBonuses();
 }
@@ -2616,7 +2616,7 @@ void mn1PCreateReadyToFightViewport()
 }
 
 // 0x80137448
-void mn1PCreateCursor(s32 port_id)
+void mn1PCreateCursor(s32 player)
 {
 	GObj* cursor_gobj;
 	s32 unused;
@@ -2632,20 +2632,20 @@ void mn1PCreateCursor(s32 port_id)
 		6, 4, 2, 0
 	};
 
-	cursor_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x13, 0x80000000, lbCommonDrawSObjAttr, 0x1E, cursor_starting_display_orders[port_id], -1, lbRelocGetFileData(void*, gMN1PFiles[0], &FILE_011_CURSOR_POINTER_IMAGE_OFFSET), 1, mn1PHandleButtonPresses, 2);
+	cursor_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x13, 0x80000000, lbCommonDrawSObjAttr, 0x1E, cursor_starting_display_orders[player], -1, lbRelocGetFileData(void*, gMN1PFiles[0], &FILE_011_CURSOR_POINTER_IMAGE_OFFSET), 1, mn1PHandleButtonPresses, 2);
 
-	cursor_gobj->user_data.s = port_id;
+	cursor_gobj->user_data.s = player;
 	gMN1PPanel.cursor = cursor_gobj;
 	SObjGetStruct(cursor_gobj)->pos.x = 60.0F;
 	SObjGetStruct(cursor_gobj)->pos.y = 170.0F;
 	SObjGetStruct(cursor_gobj)->sprite.attr &= ~SP_FASTCOPY;
 	SObjGetStruct(cursor_gobj)->sprite.attr |= SP_TRANSPARENT;
 
-	mn1PRedrawCursor(cursor_gobj, port_id, 0);
+	mn1PRedrawCursor(cursor_gobj, player, 0);
 }
 
 // 0x80137590
-void mn1PCreateToken(s32 port_id)
+void mn1PCreateToken(s32 player)
 {
 	GObj* token_gobj;
 	mnCharPanel1P* panel_info;
@@ -2665,18 +2665,18 @@ void mn1PCreateToken(s32 port_id)
 	};
 	s32 foo;
 
-	token_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x14, 0x80000000, lbCommonDrawSObjAttr, 0x1F, orders1[port_id], -1, lbRelocGetFileData(void*, gMN1PFiles[0], offsets[port_id]), 1, mn1PSyncTokenAndFighter, 1);
+	token_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x14, 0x80000000, lbCommonDrawSObjAttr, 0x1F, orders1[player], -1, lbRelocGetFileData(void*, gMN1PFiles[0], offsets[player]), 1, mn1PSyncTokenAndFighter, 1);
 
-	token_gobj->user_data.s = port_id;
+	token_gobj->user_data.s = player;
 	gMN1PPanel.token = token_gobj;
 
-	if (gMN1PPanel.char_id == nFTKindNull)
+	if (gMN1PPanel.fkind == nFTKindNull)
 	{
 		SObjGetStruct(token_gobj)->pos.x = 51.0F;
 		SObjGetStruct(token_gobj)->pos.y = 161.0F;
 	}
 	else
-		mn1PCenterTokenInPortrait(token_gobj, gMN1PPanel.char_id);
+		mn1PCenterTokenInPortrait(token_gobj, gMN1PPanel.fkind);
 
 	SObjGetStruct(token_gobj)->sprite.attr &= ~SP_FASTCOPY;
 	SObjGetStruct(token_gobj)->sprite.attr |= SP_TRANSPARENT;
@@ -2686,11 +2686,11 @@ void mn1PCreateToken(s32 port_id)
 void func_ovl27_801376F0() {}
 
 // 0x801376F8
-void mn1PAutopositionTokenFromPortraitEdges(s32 port_id)
+void mn1PAutopositionTokenFromPortraitEdges(s32 player)
 {
-	s32 portrait_id = mn1PGetPortraitId(gMN1PPanel.char_id);
-	f32 portrait_edge_x = ((portrait_id >= 6) ? portrait_id - 6 : portrait_id) * 45 + 25;
-	f32 portrait_edge_y = ((portrait_id >= 6) ? 1 : 0) * 43 + 36;
+	s32 portrait = mn1PGetPortraitId(gMN1PPanel.fkind);
+	f32 portrait_edge_x = ((portrait >= 6) ? portrait - 6 : portrait) * 45 + 25;
+	f32 portrait_edge_y = ((portrait >= 6) ? 1 : 0) * 43 + 36;
 	f32 new_pos_x = SObjGetStruct(gMN1PPanel.token)->pos.x + gMN1PPanel.token_x_velocity + 13.0F;
 	f32 new_pos_y = SObjGetStruct(gMN1PPanel.token)->pos.y + gMN1PPanel.token_y_velocity + 12.0F;
 
@@ -2713,13 +2713,13 @@ void mn1PAutopositionTokenFromPortraitEdges(s32 port_id)
 }
 
 // 0x801378A8
-void mn1PAutopositionPlacedToken(s32 port_id)
+void mn1PAutopositionPlacedToken(s32 player)
 {
-	mn1PAutopositionTokenFromPortraitEdges(port_id);
+	mn1PAutopositionTokenFromPortraitEdges(player);
 }
 
 // 0x801378C8
-void mn1PAutopositionRecalledToken(s32 port_id)
+void mn1PAutopositionRecalledToken(s32 player)
 {
 	f32 new_y_velocity, new_x_velocity;
 
@@ -2743,7 +2743,7 @@ void mn1PAutopositionRecalledToken(s32 port_id)
 	}
 	else if (gMN1PPanel.recall_frame_counter == 11)
 	{
-		mn1PHandleCursorPickup(port_id);
+		mn1PHandleCursorPickup(player);
 
 		gMN1PPanel.token_x_velocity = 0.0F;
 		gMN1PPanel.token_y_velocity = 0.0F;
@@ -2754,7 +2754,7 @@ void mn1PAutopositionRecalledToken(s32 port_id)
 }
 
 // 0x8013799C
-void mn1PAutopositionToken(s32 port_id)
+void mn1PAutopositionToken(s32 player)
 {
 	if (gMN1PPanel.is_recalling)
 		mn1PAutopositionRecalledToken(gMN1PHumanPanelPort);
@@ -2778,13 +2778,13 @@ void mn1PSyncWhiteCircleSizeAndDisplay(GObj* white_circle_gobj)
 		1.5, 1.5, 1.5, 1.5, 1.5, 1.5
 	};
 
-	if ((gMN1PPanel.unk_0x88 == 0) && (gMN1PPanel.char_id != nFTKindNull))
+	if ((gMN1PPanel.unk_0x88 == 0) && (gMN1PPanel.fkind != nFTKindNull))
 	{
 		white_circle_gobj->flags = (white_circle_gobj->flags == 1) ? 0 : 1;
 
-		DObjGetStruct(white_circle_gobj)->scale.vec.f.x = sizes[gMN1PPanel.char_id];
-		DObjGetStruct(white_circle_gobj)->scale.vec.f.y = sizes[gMN1PPanel.char_id];
-		DObjGetStruct(white_circle_gobj)->scale.vec.f.y = sizes[gMN1PPanel.char_id];
+		DObjGetStruct(white_circle_gobj)->scale.vec.f.x = sizes[gMN1PPanel.fkind];
+		DObjGetStruct(white_circle_gobj)->scale.vec.f.y = sizes[gMN1PPanel.fkind];
+		DObjGetStruct(white_circle_gobj)->scale.vec.f.y = sizes[gMN1PPanel.fkind];
 	}
 	else
 		white_circle_gobj->flags = 1;
@@ -2929,11 +2929,11 @@ void mn1PSaveMatchInfo()
 	gSCManagerBackupData.spgame_stock_count = gMN1PStockValue;
 
 	if (gMN1PPanel.unk_0x88 != 0)
-		gSCManagerSceneData.fkind = gMN1PPanel.char_id;
+		gSCManagerSceneData.fkind = gMN1PPanel.fkind;
 	else
 		gSCManagerSceneData.fkind = nFTKindNull;
 
-	gSCManagerSceneData.costume = gMN1PPanel.costume_id;
+	gSCManagerSceneData.costume = gMN1PPanel.costume;
 
 	lbBackupWrite();
 }
@@ -3007,19 +3007,19 @@ s32 mn1PGetPrevTimerValue(s32 arg0)
 }
 
 // 0x80138150
-void mn1PInitPort(s32 port_id)
+void mn1PInitPort(s32 player)
 {
 	gMN1PPanel.white_square = NULL;
 	gMN1PPanel.p_sfx = NULL;
 	gMN1PPanel.sfx_id = 0;
 	gMN1PPanel.player = NULL;
-	gMN1PPanel.char_id = gSCManagerSceneData.fkind;
-	gMN1PPanel.costume_id = gSCManagerSceneData.costume;
+	gMN1PPanel.fkind = gSCManagerSceneData.fkind;
+	gMN1PPanel.costume = gSCManagerSceneData.costume;
 
-	if (gMN1PPanel.char_id == nFTKindNull)
+	if (gMN1PPanel.fkind == nFTKindNull)
 	{
-		gMN1PPanel.holder_port_id = port_id;
-		gMN1PPanel.held_port_id = port_id;
+		gMN1PPanel.holder_player = player;
+		gMN1PPanel.held_player = player;
 		gMN1PPanel.unk_0x88 = FALSE;
 		gMN1PPanel.is_selected = FALSE;
 		gMN1PPanel.is_recalling = FALSE;
@@ -3027,8 +3027,8 @@ void mn1PInitPort(s32 port_id)
 	}
 	else
 	{
-		gMN1PPanel.holder_port_id = 4;
-		gMN1PPanel.held_port_id = -1;
+		gMN1PPanel.holder_player = 4;
+		gMN1PPanel.held_player = -1;
 		gMN1PPanel.unk_0x88 = TRUE;
 		gMN1PPanel.is_selected = TRUE;
 		gMN1PPanel.is_recalling = FALSE;
@@ -3065,15 +3065,15 @@ void mn1PLoadMatchInfo()
 }
 
 // 0x801382C8
-void mn1PInitPanel(s32 port_id)
+void mn1PInitPanel(s32 player)
 {
-	mn1PCreateCursor(port_id);
-	mn1PCreateToken(port_id);
-	mn1PCreatePanel(port_id);
+	mn1PCreateCursor(player);
+	mn1PCreateToken(player);
+	mn1PCreatePanel(player);
 
-	if ((gMN1PPanel.is_selected) && (gMN1PPanel.char_id != nFTKindNull))
+	if ((gMN1PPanel.is_selected) && (gMN1PPanel.fkind != nFTKindNull))
 	{
-		mn1PSpawnFighter(gMN1PPanel.player, port_id, gMN1PPanel.char_id, gMN1PPanel.costume_id);
+		mn1PSpawnFighter(gMN1PPanel.player, player, gMN1PPanel.fkind, gMN1PPanel.costume);
 		mn1PDrawHighscoreAndBonuses();
 	}
 }
@@ -3181,7 +3181,7 @@ SYTaskmanSetup dMN1PPlayersTaskmanSetup =
     sizeof(DObj),                   // DObj size
     0,                              // Number of SObjs
     sizeof(SObj),                   // SObj size
-    0,                              // Number of Cameras
+    0,                              // Number of CObjs
     sizeof(CObj),                 	// CObj size
     
     mn1PGamePlayersFuncStart         	// Task start function

@@ -2226,7 +2226,7 @@ SYTaskmanSetup dSCStaffrollTaskmanSetup =
     sizeof(DObj),                   // DObj size
     256,                            // Number of SObjs
     sizeof(SObj),                   // SObj size
-    8,                              // Number of Cameras
+    8,                              // Number of CObjs
     sizeof(CObj),                 	// CObj size
     
     scStaffrollFuncStart            // Task start function

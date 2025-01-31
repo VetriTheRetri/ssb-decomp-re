@@ -451,7 +451,7 @@ void mnBackupClearMakeMainCamera(void)
             COBJ_MASK_DLLINK(2) |
             COBJ_MASK_DLLINK(1) |
             COBJ_MASK_DLLINK(0),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,
@@ -858,7 +858,7 @@ SYTaskmanSetup dMNBackupClearTaskmanSetup =
     sizeof(DObj),                   // DObj size
     0,                              // Number of SObjs
     sizeof(SObj),                   // SObj size
-    0,                              // Number of Cameras
+    0,                              // Number of CObjs
     sizeof(CObj),                 	// CObj size
     
     mnBackupClearFuncStart          // Task start function

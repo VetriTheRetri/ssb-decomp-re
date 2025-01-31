@@ -2200,20 +2200,20 @@ void lbParticleGetPosVelDObj(Vec3f *pos, Vec3f *vel, DObj *dobj)
 			{
 				switch (dobj->vec->kinds[i])
 				{
-				case nGCDrawVecKindNone:
+				case nGCDrawVectorKindNone:
                     break;
 
-				case nGCDrawVecKindTranslate:
+				case nGCDrawVectorKindTranslate:
 					translate = (GCTranslate*)csr;
 					csr += sizeof(*translate);
 					break;
 
-				case nGCDrawVecKindRotate:
+				case nGCDrawVectorKindRotate:
 					rotate = (GCRotate*)csr;
 					csr += sizeof(*rotate);
 					break;
 
-				case nGCDrawVecKindScale:
+				case nGCDrawVectorKindScale:
 					scale = (GCScale*)csr;
 					csr += sizeof(*scale);
 					break;

@@ -847,7 +847,7 @@ void mn1PContinueMakeRoomFadeOutCamera(void)
             lbCommonDrawSprite,
             40,
             COBJ_MASK_DLLINK(32),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,
@@ -926,7 +926,7 @@ void mn1PContinueMakeRoomCamera(void)
             lbCommonDrawSprite,
             90,
             COBJ_MASK_DLLINK(29),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,
@@ -1294,7 +1294,7 @@ SYTaskmanSetup dMN1PContinueTaskmanSetup =
     sizeof(DObj),                   // DObj size
     0,                              // Number of SObjs
     sizeof(SObj),                   // SObj size
-    0,                              // Number of Cameras
+    0,                              // Number of CObjs
     sizeof(CObj),                 	// CObj size
     
     mn1PContinueFuncStart           // Task start function

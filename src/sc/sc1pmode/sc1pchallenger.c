@@ -68,7 +68,7 @@ SYTaskmanSetup dSC1PChallengerTaskmanSetup =
     sizeof(DObj),                   // DObj size
     0,                              // Number of SObjs
     sizeof(SObj),                   // SObj size
-    0,                              // Number of Cameras
+    0,                              // Number of CObjs
     sizeof(CObj),                 	// CObj size
     
     sc1PChallengerFuncStart         // Task start function
@@ -281,7 +281,7 @@ void sc1PChallengerMakeDecalsCamera(void)
             lbCommonDrawSprite,
             70,
             COBJ_MASK_DLLINK(0),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,

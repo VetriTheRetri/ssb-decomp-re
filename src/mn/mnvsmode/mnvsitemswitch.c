@@ -449,7 +449,7 @@ void mnVSItemSwitchMakeCursorCamera(void)
             lbCommonDrawSprite,
             30,
             COBJ_MASK_DLLINK(3),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,
@@ -474,7 +474,7 @@ void mnVSItemSwitchMakeLabelsCamera(void)
             lbCommonDrawSprite,
             40,
             COBJ_MASK_DLLINK(1),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,
@@ -505,7 +505,7 @@ void mnVSItemSwitchMakeDecalCamera(void)
             lbCommonDrawSprite,
             60,
             COBJ_MASK_DLLINK(4),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,
@@ -883,7 +883,7 @@ SYTaskmanSetup dMNVSItemSwitchTaskmanSetup =
     sizeof(DObj),                   // DObj size
     0,                              // Number of SObjs
     sizeof(SObj),                   // SObj size
-    0,                              // Number of Cameras
+    0,                              // Number of CObjs
     sizeof(CObj),                 	// CObj size
     
     mnVSItemSwitchFuncStart         // Task start function

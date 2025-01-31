@@ -1604,7 +1604,7 @@ void sc1PIntroMakeBannersCamera(void)
             lbCommonDrawSprite,
             30,
             COBJ_MASK_DLLINK(28),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,
@@ -1629,7 +1629,7 @@ void sc1PIntroMakeDecalsCamera(void)
             lbCommonDrawSprite,
             20,
             COBJ_MASK_DLLINK(27),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,
@@ -1654,7 +1654,7 @@ void sc1PIntroMakePicturesCamera(void)
             lbCommonDrawSprite,
             80,
             COBJ_MASK_DLLINK(26),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,
@@ -2028,7 +2028,7 @@ SYTaskmanSetup dSC1PIntroTaskmanSetup =
     sizeof(DObj),                   // DObj size
     0,                              // Number of SObjs
     sizeof(SObj),                   // SObj size
-    0,                              // Number of Cameras
+    0,                              // Number of CObjs
     sizeof(CObj),                 	// CObj size
     
     sc1PIntroFuncStart          // Task start function

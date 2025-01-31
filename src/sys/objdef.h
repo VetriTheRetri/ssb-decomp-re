@@ -101,15 +101,15 @@ typedef enum GObjLinkID
 
 } GObjLinkID;
 
-typedef enum DObjVecKind
+typedef enum DObjVectorKind
 {
-    nGCDrawVecKindNone,
-    nGCDrawVecKindTranslate,
-    nGCDrawVecKindRotate,
-    nGCDrawVecKindScale,
-    nGCDrawVecKindEnumCount
+    nGCDrawVectorKindNone,
+    nGCDrawVectorKindTranslate,
+    nGCDrawVectorKindRotate,
+    nGCDrawVectorKindScale,
+    nGCDrawVectorKindEnumCount
 
-} DObjVecKind;
+} DObjVectorKind;
 
 typedef enum XObjTransformKind
 {

@@ -31,7 +31,7 @@ extern intptr_t lMNMapsInishieIconSprite;		// 0x0000AEA8
 extern intptr_t lMNMapsRandomIconSprite;		// 0x0000CB10
 
 extern intptr_t lMNMapsCursorSprite; 			// 0x00001AB8
-extern intptr_t lMNMapsLogoSprite; 				// 0x00001DD8
+extern intptr_t lMNMapsRandomEmblemSprite; 				// 0x00001DD8
 extern intptr_t lMNMapsStageSelectSprite; 		// 0x000026A0
 extern intptr_t lMNMapsPlaqueSprite; 			// 0x00003840
 extern intptr_t lMNMapsTabRightSprite; 			// 0x00003C68

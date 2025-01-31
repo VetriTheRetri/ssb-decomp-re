@@ -73,7 +73,7 @@ SYTaskmanSetup dMVOpeningCliffTaskmanSetup =
     sizeof(DObj),                       // DObj size
     0,                                  // Number of SObjs
     sizeof(SObj),                       // SObj size
-    0,                                  // Number of Cameras
+    0,                                  // Number of CObjs
     sizeof(CObj),                       // Camera size
     
     mvOpeningCliffFuncStart             // Task start function
@@ -415,7 +415,7 @@ void mvOpeningCliffMakeWallpaperCamera(void)
             lbCommonDrawSprite,
             90,
             COBJ_MASK_DLLINK(27),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,

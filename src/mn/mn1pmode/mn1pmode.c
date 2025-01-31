@@ -456,7 +456,7 @@ void mn1PModeMakeLink3Camera(void)
             lbCommonDrawSprite,
             20,
             COBJ_MASK_DLLINK(3),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,
@@ -481,7 +481,7 @@ void mn1PModeMakeOptionsCamera(void)
             lbCommonDrawSprite,
             40,
             COBJ_MASK_DLLINK(2),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,
@@ -506,7 +506,7 @@ void mn1PModeMakeLabelsCamera(void)
             lbCommonDrawSprite,
             60,
             COBJ_MASK_DLLINK(1),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,
@@ -531,7 +531,7 @@ void mn1PModeMakeDecalsCamera(void)
             lbCommonDrawSprite,
             80,
             COBJ_MASK_DLLINK(0),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,
@@ -833,7 +833,7 @@ SYTaskmanSetup dMN1PModeTaskmanSetup =
     sizeof(DObj),                   // DObj size
     0,                              // Number of SObjs
     sizeof(SObj),                   // SObj size
-    0,                              // Number of Cameras
+    0,                              // Number of CObjs
     sizeof(CObj),                 	// CObj size
     
     mn1PModeFuncStart               // Task start function

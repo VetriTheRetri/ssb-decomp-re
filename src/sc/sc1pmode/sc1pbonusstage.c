@@ -305,7 +305,7 @@ SYTaskmanSetup dSC1PBonusStageTaskmanSetup =
     sizeof(DObj),                   // DObj size
     0,                              // Number of SObjs
     sizeof(SObj),                   // SObj size
-    0,                              // Number of Cameras
+    0,                              // Number of CObjs
     sizeof(CObj),                 	// CObj size
     
     sc1PBonusStageFuncStart         // Task start function

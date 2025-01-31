@@ -177,7 +177,7 @@ void mnMessageMakeTintCamera(void)
             lbCommonDrawSprite,
             70,
             COBJ_MASK_DLLINK(2),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,
@@ -202,7 +202,7 @@ void mnMessageMakeMessageCamera(void)
             lbCommonDrawSprite,
             40,
             COBJ_MASK_DLLINK(1),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,
@@ -227,7 +227,7 @@ void mnMessageMakeWallpaperCamera(void)
             lbCommonDrawSprite,
             80,
             COBJ_MASK_DLLINK(0),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,
@@ -252,7 +252,7 @@ void mnMessageMakeExclaimCamera(void)
             lbCommonDrawSprite,
             60,
             COBJ_MASK_DLLINK(3),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,
@@ -406,7 +406,7 @@ SYTaskmanSetup dMNMessageTaskmanSetup =
     sizeof(DObj),                   // DObj size
     0,                              // Number of SObjs
     sizeof(SObj),                   // SObj size
-    0,                              // Number of Cameras
+    0,                              // Number of CObjs
     sizeof(CObj),                 	// Camera size
     
     mnMessageFuncStart              // Task start function

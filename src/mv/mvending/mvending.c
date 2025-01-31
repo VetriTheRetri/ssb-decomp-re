@@ -134,7 +134,7 @@ SYTaskmanSetup dMVEndingTaskmanSetup =
     sizeof(DObj),                   // DObj size
     0,                              // Number of SObjs
     sizeof(SObj),                   // SObj size
-    0,                              // Number of Cameras
+    0,                              // Number of CObjs
     sizeof(CObj),                 	// CObj size
     
     mvEndingFuncStart               // Task start function
@@ -312,7 +312,7 @@ void mvEndingMakeRoomFadeInCamera(void)
             lbCommonDrawSprite,
             60,
             COBJ_MASK_DLLINK(26),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,
@@ -371,7 +371,7 @@ void mvEndingMakeRoomLightCamera(void)
             lbCommonDrawSprite,
             30,
             COBJ_MASK_DLLINK(30),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,

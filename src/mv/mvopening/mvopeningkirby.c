@@ -402,7 +402,7 @@ void mvOpeningKirbyMakeNameCamera(void)
             lbCommonDrawSprite,
             80,
             COBJ_MASK_DLLINK(27),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,
@@ -456,7 +456,7 @@ void mvOpeningKirbyMakePosedWallpaperCamera(void)
             func_80017EC0,
             20,
             COBJ_MASK_DLLINK(28),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,
@@ -596,7 +596,7 @@ SYTaskmanSetup dMVOpeningKirbyTaskmanSetup =
     sizeof(DObj),                       // DObj size
     0,                                  // Number of SObjs
     sizeof(SObj),                       // SObj size
-    0,                                  // Number of Cameras
+    0,                                  // Number of CObjs
     sizeof(CObj),                       // Camera size
     
     mvOpeningKirbyFuncStart            	// Task start function

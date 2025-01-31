@@ -440,7 +440,7 @@ void mvOpeningSectorMakeWallpaperCamera(void)
             lbCommonDrawSprite,
             90,
             COBJ_MASK_DLLINK(28),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL, 
@@ -465,7 +465,7 @@ void mvOpeningSectorMakeCockpitCamera(void)
             lbCommonDrawSprite,
             20,
             COBJ_MASK_DLLINK(29),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL, 
@@ -616,7 +616,7 @@ SYTaskmanSetup mvOpeningSectorTaskmanSetup =
     sizeof(DObj),                       // DObj size
     0,                                  // Number of SObjs
     sizeof(SObj),                       // SObj size
-    0,                                  // Number of Cameras
+    0,                                  // Number of CObjs
     sizeof(CObj),                       // Camera size
     
     mvOpeningSectorFuncStart            // Task start function

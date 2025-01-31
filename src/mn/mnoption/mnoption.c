@@ -620,7 +620,7 @@ void mnOptionMakeSoundUnderlineCamera(void)
             lbCommonDrawSprite,
             20,
             COBJ_MASK_DLLINK(3),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,
@@ -645,7 +645,7 @@ void mnOptionMakeLink4Camera(void)
             lbCommonDrawSprite,
             10,
             COBJ_MASK_DLLINK(4),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,
@@ -670,7 +670,7 @@ void mnOptionMakeOptionsCamera(void)
             lbCommonDrawSprite,
             40,
             COBJ_MASK_DLLINK(2),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,
@@ -695,7 +695,7 @@ void mnOptionMakeLabelsCamera(void)
             lbCommonDrawSprite,
             60,
             COBJ_MASK_DLLINK(1),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,
@@ -720,7 +720,7 @@ void mnOptionMakeDecalsCamera(void)
             lbCommonDrawSprite,
             80,
             COBJ_MASK_DLLINK(0),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,
@@ -1066,7 +1066,7 @@ SYTaskmanSetup dMNOptionTaskmanSetup =
     sizeof(DObj),                   // DObj size
     0,                              // Number of SObjs
     sizeof(SObj),                   // SObj size
-    0,                              // Number of Cameras
+    0,                              // Number of CObjs
     sizeof(CObj),                 	// CObj size
     
     mnOptionFuncStart               // Task start function

@@ -69,7 +69,7 @@ SYTaskmanSetup dMNScreenAdjustTaskmanSetup =
     sizeof(DObj),                   // DObj size
     0,                              // Number of SObjs
     sizeof(SObj),                   // SObj size
-    0,                              // Number of Cameras
+    0,                              // Number of CObjs
     sizeof(CObj),                 	// CObj size
     
     mnScreenAdjustFuncStart         // Task start function
@@ -198,7 +198,7 @@ void mnScreenAdjustMakeFrameCamera(void)
             lbCommonDrawSprite,
             40,
             COBJ_MASK_DLLINK(0),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,
@@ -223,7 +223,7 @@ void mnScreenAdjustMakeSpriteCamera(void)
             lbCommonDrawSprite,
             70,
             COBJ_MASK_DLLINK(1),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,

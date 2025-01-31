@@ -287,8 +287,8 @@ u32 dMNSoundTestSoundIDs[/* */] =
     nSYAudioFGMMenuScroll1,
     nSYAudioFGMMenuScroll2,
     nSYAudioFGMMenuDenied,
-    nSYAudioFGMPlayerGateClose,
-    nSYAudioFGMPlayerGateWhoosh,
+    nSYAudioFGMPlayerSlotClose,
+    nSYAudioFGMPlayerSlotWhoosh,
     nSYAudioFGMScoreDisplayBonus,
     nSYAudioFGMStageClearScoreRegister,
     nSYAudioFGMStageClearScoreDisplay,
@@ -684,7 +684,7 @@ SYTaskmanSetup dMNSoundTestTaskmanSetup =
     sizeof(DObj),                   // DObj size
     256,                            // Number of SObjs
     sizeof(SObj),                   // SObj size
-    8,                              // Number of Cameras
+    8,                              // Number of CObjs
     sizeof(CObj),                 	// CObj size
     
     mnSoundTestFuncStart            // Task start function

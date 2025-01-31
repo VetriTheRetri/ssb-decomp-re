@@ -952,19 +952,19 @@ XObj* gcAddXObjForDObjVar(DObj *dobj, u8 kind, u8 arg2, s32 xobj_id)
 		{
 			switch (dobj->vec->kinds[i])
 			{
-			case nGCDrawVecKindNone: break;
+			case nGCDrawVectorKindNone: break;
 
-			case nGCDrawVecKindTranslate:
+			case nGCDrawVectorKindTranslate:
 				translate = (GCTranslate*)csr;
 				csr += sizeof(GCTranslate);
 				break;
 
-			case nGCDrawVecKindRotate:
+			case nGCDrawVectorKindRotate:
 				rotate = (GCRotate*)csr;
 				csr += sizeof(GCRotate);
 				break;
 
-			case nGCDrawVecKindScale:
+			case nGCDrawVectorKindScale:
 				scale = (GCScale*)csr;
 				csr += sizeof(GCScale);
 				break;

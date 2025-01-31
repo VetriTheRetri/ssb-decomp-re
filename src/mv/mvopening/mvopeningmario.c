@@ -400,7 +400,7 @@ void mvOpeningMarioMakeNameCamera(void)
             lbCommonDrawSprite,
             80,
             COBJ_MASK_DLLINK(27),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,
@@ -454,7 +454,7 @@ void mvOpeningMarioMakePosedWallpaperCamera(void)
             func_80017EC0,
             20,
             COBJ_MASK_DLLINK(28),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,
@@ -594,7 +594,7 @@ SYTaskmanSetup dMVOpeningMarioTaskmanSetup =
     sizeof(DObj),                       // DObj size
     0,                                  // Number of SObjs
     sizeof(SObj),                       // SObj size
-    0,                                  // Number of Cameras
+    0,                                  // Number of CObjs
     sizeof(CObj),                       // Camera size
     
     mvOpeningMarioFuncStart            	// Task start function

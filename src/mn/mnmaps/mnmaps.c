@@ -683,16 +683,16 @@ void mnMapsMakeEmblem(GObj *gobj, s32 gkind)
 
 	intptr_t offsets[/* */] =
 	{
-		0x0618, 0x1938,
-		0x0C78, 0x12D8,
-		0x25F8, 0x2C58,
-		0x1F98, 0x3918,
-		0x0618
+		&lFTEmblemSpritesMarioSprite,	&lFTEmblemSpritesFoxSprite,
+		&lFTEmblemSpritesDonkeySprite, 	&lFTEmblemSpritesMetroidSprite,
+		&lFTEmblemSpritesZeldaSprite, 	&lFTEmblemSpritesYoshiSprite,
+		&lFTEmblemSpritesKirbySprite, 	&lFTEmblemSpritesPMonstersSprite,
+		&lFTEmblemSpritesMarioSprite
 	};
 
 	if (gkind == 0xDE)
 	{
-		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &lMNMapsLogoSprite));
+		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &lMNMapsRandomEmblemSprite));
 
 		sobj->sprite.attr &= ~SP_FASTCOPY;
 		sobj->sprite.attr |= SP_TRANSPARENT;
@@ -1613,7 +1613,7 @@ SYTaskmanSetup dMNMapsTaskmanSetup =
     sizeof(DObj),                   // DObj size
     0,                              // Number of SObjs
     sizeof(SObj),                   // SObj size
-    0,                              // Number of Cameras
+    0,                              // Number of CObjs
     sizeof(CObj),                 	// CObj size
     
     mnMapsFuncStart         		// Task start function

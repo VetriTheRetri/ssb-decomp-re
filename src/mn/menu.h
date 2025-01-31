@@ -76,18 +76,22 @@ extern intptr_t lMNDataCommonArrowRightSprite;          // 0x00000C80
 extern intptr_t lMNPlayersGameModeRoyalSprite;			// 0x00000280
 extern intptr_t lMNPlayersGameModeTeamBattleSprite;		// 0x000004E0
 
-extern intptr_t lMNPlayersMarioPortraitSprite;		    // 0x00004728
-extern intptr_t lMNPlayersFoxPortraitSprite;		    // 0x0000D068
-extern intptr_t lMNPlayersDonkeyPortraitSprite;		    // 0x00008BC8
-extern intptr_t lMNPlayersSamusPortraitSprite;		    // 0x0000AE18
-extern intptr_t lMNPlayersLuigiPortraitSprite;		    // 0x00006978
-extern intptr_t lMNPlayersLinkPortraitSprite;		    // 0x00011508
-extern intptr_t lMNPlayersYoshiPortraitSprite;		    // 0x00013758
-extern intptr_t lMNPlayersCaptainPortraitSprite;	    // 0x00019E48
-extern intptr_t lMNPlayersKirbyPortraitSprite;		    // 0x0000F2B8
-extern intptr_t lMNPlayersPikachuPortraitSprite;	    // 0x000159A8
-extern intptr_t lMNPlayersPurinPortraitSprite;		    // 0x0001C098
-extern intptr_t lMNPlayersNessPortraitSprite;		    // 0x00017BF8
+extern intptr_t lMNPlayersPortraitsMarioSprite;		    // 0x00004728
+extern intptr_t lMNPlayersPortraitsFoxSprite;		    // 0x0000D068
+extern intptr_t lMNPlayersPortraitsDonkeySprite;		// 0x00008BC8
+extern intptr_t lMNPlayersPortraitsSamusSprite;		    // 0x0000AE18
+extern intptr_t lMNPlayersPortraitsLuigiSprite;		    // 0x00006978
+extern intptr_t lMNPlayersPortraitsLinkSprite;		    // 0x00011508
+extern intptr_t lMNPlayersPortraitsYoshiSprite;		    // 0x00013758
+extern intptr_t lMNPlayersPortraitsCaptainSprite;	    // 0x00019E48
+extern intptr_t lMNPlayersPortraitsKirbySprite;		    // 0x0000F2B8
+extern intptr_t lMNPlayersPortraitsPikachuSprite;	    // 0x000159A8
+extern intptr_t lMNPlayersPortraitsPurinSprite;		    // 0x0001C098
+extern intptr_t lMNPlayersPortraitsNessSprite;		    // 0x00017BF8
+extern intptr_t lMNPlayersPortraitsCaptainShadowSprite;	// 0x0001E2E8
+extern intptr_t lMNPlayersPortraitsLuigiShadowSprite;	// 0x00020538
+extern intptr_t lMNPlayersPortraitsNessShadowSprite;	// 0x00022788
+extern intptr_t lMNPlayersPortraitsPurinShadowSprite;	// 0x000249D8
 
 extern intptr_t lMNVSModeVSSprite;                      // 0x00006118
 extern intptr_t lMNVSModeVSStartSprite;                 // 0x000024C8

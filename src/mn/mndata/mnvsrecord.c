@@ -432,7 +432,7 @@ f32 mnVSRecordGetCharacterSpacing(const char *str, s32 c)
 // 0x801324C8
 void mnVSRecordMakeString(GObj *gobj, const char *str, f32 x, f32 y, u32 *color)
 {
-	intptr_t chars[/* */] =
+	intptr_t offsets[/* */] =
 	{
 		&lMNCommonFontsLetterASprite, &lMNCommonFontsLetterBSprite,
 		&lMNCommonFontsLetterCSprite, &lMNCommonFontsLetterDSprite,
@@ -450,13 +450,13 @@ void mnVSRecordMakeString(GObj *gobj, const char *str, f32 x, f32 y, u32 *color)
 
 		&lMNCommonFontsSymbolApostropheSprite,
 		&lMNCommonFontsSymbolPercentSprite,
-		&lMNCommonFontsSymbolPeriodSprite,
+		&lMNCommonFontsSymbolPeriodSprite
 	};
 	SObj *sobj;
 	f32 start_x = x;
 	s32 i;
 
-	for (i = 0; str[i] != 0; i++)
+	for (i = 0; str[i] != '\0'; i++)
 	{
 		if (((((str[i] >= '0') && (str[i] <= '9')) ? TRUE : FALSE)) || (str[i] == ' '))
 		{
@@ -468,7 +468,7 @@ void mnVSRecordMakeString(GObj *gobj, const char *str, f32 x, f32 y, u32 *color)
 		}
 		else
 		{
-			sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSRecordFiles[3], chars[mnVSRecordGetCharacterID(str[i])]));
+			sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSRecordFiles[3], offsets[mnVSRecordGetCharacterID(str[i])]));
 			sobj->pos.x = start_x;
 
 			start_x += sobj->sprite.width + mnVSRecordGetCharacterSpacing(str, i);
@@ -1069,12 +1069,12 @@ void mnVSRecordMakePortraitStats(GObj *gobj, s32 fkind)
 	SObj *sobj;
 	intptr_t offsets[/* */] =
 	{
-		&lMNPlayersMarioPortraitSprite,	&lMNPlayersFoxPortraitSprite,
-		&lMNPlayersDonkeyPortraitSprite,&lMNPlayersSamusPortraitSprite,
-		&lMNPlayersLuigiPortraitSprite,	&lMNPlayersLinkPortraitSprite,
-		&lMNPlayersYoshiPortraitSprite,	&lMNPlayersCaptainPortraitSprite,
-		&lMNPlayersKirbyPortraitSprite,	&lMNPlayersPikachuPortraitSprite,
-		&lMNPlayersPurinPortraitSprite,	&lMNPlayersNessPortraitSprite
+		&lMNPlayersPortraitsMarioSprite,	&lMNPlayersPortraitsFoxSprite,
+		&lMNPlayersPortraitsDonkeySprite,	&lMNPlayersPortraitsSamusSprite,
+		&lMNPlayersPortraitsLuigiSprite,	&lMNPlayersPortraitsLinkSprite,
+		&lMNPlayersPortraitsYoshiSprite,	&lMNPlayersPortraitsCaptainSprite,
+		&lMNPlayersPortraitsKirbySprite,	&lMNPlayersPortraitsPikachuSprite,
+		&lMNPlayersPortraitsPurinSprite,	&lMNPlayersPortraitsNessSprite
 	};
 	u32 string_colors[/* */] = { 0x8A, 0x88, 0x92 };
 	u32 digit_colors[/* */] = { 0x00, 0x00, 0x00, 0x8A, 0x88, 0x92 };
@@ -2242,7 +2242,7 @@ SYTaskmanSetup dMNVSRecordTaskmanSetup =
     sizeof(DObj),                   // DObj size
     0,                              // Number of SObjs
     sizeof(SObj),                   // SObj size
-    0,                              // Number of Cameras
+    0,                              // Number of CObjs
     sizeof(CObj),                 	// CObj size
     
     mnVSRecordFuncStart         	// Task start function

@@ -85,7 +85,7 @@ SYTaskmanSetup dMNUnusedFightersTaskmanSetup =
     sizeof(DObj),                       // DObj size
     32,                                 // Number of SObjs
     sizeof(SObj),                       // SObj size
-    8,                                  // Number of Cameras
+    8,                                  // Number of CObjs
     sizeof(CObj),                       // Camera size
     
     mnUnusedFightersFuncStart           // Task start function
@@ -214,7 +214,7 @@ void mnUnusedFightersFuncStart(void)
             lbCommonDrawSprite,
             50,
             COBJ_MASK_DLLINK(1),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,

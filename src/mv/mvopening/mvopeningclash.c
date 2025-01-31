@@ -275,7 +275,7 @@ void mvOpeningClashMakeVoidCamera(void)
             lbCommonDrawSprite,
             40,
             COBJ_MASK_DLLINK(26),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,
@@ -494,7 +494,7 @@ SYTaskmanSetup dMVOpeningClashTaskmanSetup =
     sizeof(DObj),                       // DObj size
     128,                                // Number of SObjs
     sizeof(SObj),                       // SObj size
-    16,                                 // Number of Cameras
+    16,                                 // Number of CObjs
     sizeof(CObj),                       // Camera size
     
     mvOpeningClashFuncStart             // Task start function

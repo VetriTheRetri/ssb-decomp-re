@@ -12,10 +12,10 @@ void ftPhysicsSetGroundVelTransferAir(GObj *fighter_gobj)
     if 
     (
         (fp->physics.vel_jostle_z > 0.0F)                                                 &&
-        (DObjGetStruct(fighter_gobj)->translate.vec.f.z < 0.0F)                             &&
+        (DObjGetStruct(fighter_gobj)->translate.vec.f.z < 0.0F)                           &&
         ((DObjGetStruct(fighter_gobj)->translate.vec.f.z + fp->physics.vel_air.z) > 0.0F) ||
         (fp->physics.vel_air.z < 0.0F)                                                    &&
-        (DObjGetStruct(fighter_gobj)->translate.vec.f.z > 0.0F)                             &&
+        (DObjGetStruct(fighter_gobj)->translate.vec.f.z > 0.0F)                           &&
         ((DObjGetStruct(fighter_gobj)->translate.vec.f.z + fp->physics.vel_air.z) < 0.0F)
     )
     {

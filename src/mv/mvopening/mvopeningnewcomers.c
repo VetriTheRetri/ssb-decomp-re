@@ -80,7 +80,7 @@ SYTaskmanSetup dMVOpeningNewcomersTaskmanSetup =
     sizeof(DObj),                       // DObj size
     0,                                  // Number of SObjs
     sizeof(SObj),                       // SObj size
-    0,                                  // Number of Cameras
+    0,                                  // Number of CObjs
     sizeof(CObj),                       // Camera size
     
     mvOpeningNewcomersFuncStart         // Task start function
@@ -350,7 +350,7 @@ void mvOpeningNewcomersMakeHideCamera(void)
             lbCommonDrawSprite,
             20,
             COBJ_MASK_DLLINK(26),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL, 

@@ -880,7 +880,7 @@ void mnVSOptionsMakeTintCamera(void)
             lbCommonDrawSprite,
             70,
             COBJ_MASK_DLLINK(3),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,
@@ -905,7 +905,7 @@ void mnVSOptionsMakeOptionCamera(void)
             lbCommonDrawSprite,
             50,
             COBJ_MASK_DLLINK(2),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,
@@ -930,7 +930,7 @@ void mnVSOptionsMakeLabelUnderlineCamera(void)
             lbCommonDrawSprite,
             40,
             COBJ_MASK_DLLINK(1),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,
@@ -955,7 +955,7 @@ void mnVSOptionsMakeWallpaperCamera(void)
             lbCommonDrawSprite,
             80,
             COBJ_MASK_DLLINK(0),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,
@@ -980,7 +980,7 @@ void mnVSOptionsMakeDecalCamera(void)
             lbCommonDrawSprite,
             60,
             COBJ_MASK_DLLINK(4),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,
@@ -1456,7 +1456,7 @@ SYTaskmanSetup dMNVSOptionsTaskmanSetup =
     sizeof(DObj),                   // DObj size
     0,                              // Number of SObjs
     sizeof(SObj),                   // SObj size
-    0,                              // Number of Cameras
+    0,                              // Number of CObjs
     sizeof(CObj),                 	// CObj size
     
     mnVSOptionsFuncStart            // Task start function

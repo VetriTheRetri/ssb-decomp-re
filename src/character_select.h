@@ -14,8 +14,8 @@ typedef struct mnCharPanel1P
 	GObj *panel;
 	GObj *white_square;
 	void* figatree_heap;
-	s32 char_id;
-	u32 costume_id;
+	s32 fkind;
+	u32 costume;
 	s32 cursor_state;
 	sb32 is_selected;
 	sb32 is_recalling;
@@ -26,8 +26,8 @@ typedef struct mnCharPanel1P
 	f32 recall_mid_y;
 	f32 recall_end_y;
 	s32 recall_frame_counter;
-	s32 holder_port_id;
-	s32 held_port_id;
+	s32 holder_player;
+	s32 held_player;
 	sb32 unk_0x88;
 	sb32 selected_animation_started;
 	f32 token_x_velocity;
@@ -64,8 +64,8 @@ typedef struct mnCharPanelTraining
 	u32 handicap;
 	s32 team;
 	u32 unk_0x44;
-	s32 char_id;
-	u32 costume_id;
+	s32 fkind;
+	u32 costume;
 	s32 cursor_state;
 	sb32 is_selected;
 	sb32 is_recalling;
@@ -76,8 +76,8 @@ typedef struct mnCharPanelTraining
 	f32 recall_mid_y;
 	f32 recall_end_y;
 	s32 recall_frame_counter;
-	s32 holder_port_id;
-	s32 held_port_id;
+	s32 holder_player;
+	s32 held_player;
 	s32 player_type;
 	sb32 unk_0x88;
 	sb32 selected_animation_started;
@@ -116,8 +116,8 @@ typedef struct mnCharPanelBattle
 	u32 handicap;
 	s32 team;
 	u32 unk_0x44;
-	s32 char_id;
-	u32 costume_id;
+	s32 fkind;
+	u32 costume;
 	u32 shade;
 	s32 cursor_state;
 	sb32 is_selected;
@@ -129,8 +129,8 @@ typedef struct mnCharPanelBattle
 	f32 recall_mid_y;
 	f32 recall_end_y;
 	s32 recall_frame_counter;
-	s32 holder_port_id;
-	s32 held_port_id;
+	s32 holder_player;
+	s32 held_player;
 	s32 player_type;
 	sb32 unk_0x88;
 	sb32 selected_animation_started;
@@ -149,7 +149,7 @@ typedef struct mnCharPanelBattle
 
 } mnCharPanelBattle;
 
-typedef struct MNBonusPlayerGate
+typedef struct MNBonusPlayerSlot
 {
 	GObj *cursor;
 	GObj *token;
@@ -159,8 +159,8 @@ typedef struct MNBonusPlayerGate
 	GObj *panel;
 	GObj *white_square;
 	void* figatree_heap;
-	s32 char_id;
-	u32 costume_id;
+	s32 fkind;
+	u32 costume;
 	s32 cursor_state;
 	sb32 is_selected;
 	sb32 is_recalling;
@@ -171,8 +171,8 @@ typedef struct MNBonusPlayerGate
 	f32 recall_mid_y;
 	f32 recall_end_y;
 	s32 recall_frame_counter;
-	s32 holder_port_id;
-	s32 held_port_id;
+	s32 holder_player;
+	s32 held_player;
 	sb32 unk_0x88;
 	sb32 selected_animation_started;
 	f32 token_x_velocity;
@@ -187,7 +187,7 @@ typedef struct MNBonusPlayerGate
 	u32 unk_0xB4;
 	s32 b_held_frame_count;
 
-} MNBonusPlayerGate;
+} MNBonusPlayerSlot;
 
 
 typedef enum mnSelectButton

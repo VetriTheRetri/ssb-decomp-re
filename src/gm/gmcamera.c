@@ -1278,7 +1278,7 @@ void func_ovl2_8010DDC4(void)
             func_ovl2_8010DC24,
             20,
             COBJ_MASK_DLLINK(22),
-            -1,
+            ~0,
             FALSE,
             nGCProcessKindFunc,
             NULL,

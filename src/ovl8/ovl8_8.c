@@ -5,7 +5,7 @@
 void func_ovl8_80377F50(char*, db4Shorts*);
 void func_ovl8_80377FE4(char*, db4Shorts*, db4Shorts*);
 void func_ovl8_803780B8(char*, DBMenuPosition*);
-
+void func_ovl8_8037A904(db4Shorts*, db4Shorts*);
 extern s32 D_ovl8_80389F5C;
 extern s32 D_ovl8_80389F60;
 extern s32 D_ovl8_80389F64;
@@ -303,21 +303,105 @@ void func_ovl8_803780B8(char* arg0, DBMenuPosition* arg1)
 // 0x803798A0
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_803798A0.s")
 
+// 0x80379D74
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80379D74.s")
 
+// 0x8037A0FC
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037A0FC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037A5B8.s")
+// 0x8037A5B8
+void func_ovl8_8037A5B8(char* arg0, DBMenuPosition* arg1, s32 arg2)
+{
+    DBMenuPosition sp28;
+    u32 var_a1;
+    u32 sp20;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037A62C.s")
+    sp28.x = arg1->x;
+    sp28.y = arg1->y;
+    sp28.w = sp28.h = 1;
+    func_ovl8_8037A0FC(arg0, &sp28, &sp20);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037A67C.s")
+    var_a1 = sp20;
+    if (arg0[0x31] == 2)
+    {
+        var_a1 = sp20 >> 0x10;
+    }
+    func_ovl8_80376C40(arg0[0x31], var_a1, arg2);
+}
 
+// 0x8037A62C
+void func_ovl8_8037A62C(db4Shorts* arg0, s32 arg1)
+{
+    DBMenuPosition sp20;
+    db2Shorts sp1C;
+
+    sp20.x = 0;
+    sp20.y = arg1;
+    sp20.w = arg0->arr[2];
+    sp20.h = arg0->arr[3] - arg1;
+    sp1C.arr[0] = sp1C.arr[1] = 0;
+    func_ovl8_803787C0(arg0, arg0, &sp20, &sp1C);
+}
+
+// 0x8037A67C
+s32 func_ovl8_8037A67C(void* arg0, void* arg1, s32 arg2)
+{
+    s32 sp30[2];
+    s32 sp28[2];
+    s32 sp20[2];
+    s32 sp1C;
+
+    func_ovl8_8037A9F4(arg0, &sp30);
+    func_ovl8_8037A9F4(arg1, &sp28);
+    sp1C = func_ovl8_8037A6D4(&sp30, &sp28, &sp20);
+    func_ovl8_8037AA28(&sp20, arg2);
+    return sp1C;
+}
+
+// 0x8037A6D4
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037A6D4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037A8BC.s")
+// 0x8037A8BC
+void func_ovl8_8037A8BC(void* arg0, void* arg1)
+{
+    s32 sp20[2];
+    s32 sp18[2];
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037A904.s")
+    func_ovl8_8037A9F4(arg0, &sp20);
+    func_ovl8_8037A9F4(arg1, &sp18);
+    func_ovl8_8037A904(&sp20, &sp18);
+    func_ovl8_8037AA28(&sp18, arg1);
+}
+
+// 0x8037A904
+void func_ovl8_8037A904(db4Shorts* arg0, db4Shorts* arg1)
+{
+    s32 temp_a3;
+
+    temp_a3 = arg0->arr[0] - arg1->arr[0];
+    if (temp_a3 > 0)
+    {
+        func_ovl8_8037A9C0(arg1, temp_a3, 0);
+    }
+
+    temp_a3 = arg0->arr[2] - arg1->arr[2];
+    if (temp_a3 < 0)
+    {
+        func_ovl8_8037A9C0(arg1, temp_a3, 0);
+    }
+
+    temp_a3 = arg0->arr[1] - arg1->arr[1];
+    if (temp_a3 > 0)
+    {
+        func_ovl8_8037A9C0(arg1, 0, temp_a3);
+    }
+
+    temp_a3 = arg0->arr[3] - arg1->arr[3];
+    if (temp_a3 < 0)
+    {
+        func_ovl8_8037A9C0(arg1, 0, temp_a3);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037A9C0.s")
 

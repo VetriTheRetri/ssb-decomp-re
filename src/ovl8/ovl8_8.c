@@ -6,6 +6,10 @@ void func_ovl8_80377F50(char*, db4Shorts*);
 void func_ovl8_80377FE4(char*, db4Shorts*, db4Shorts*);
 void func_ovl8_803780B8(char*, DBMenuPosition*);
 void func_ovl8_8037A904(db4Shorts*, db4Shorts*);
+void func_ovl8_8037A9C0(db4Shorts*, s32, s32);
+void func_ovl8_8037A9F4(DBMenuPosition*, DBMenuPosition*);
+void func_ovl8_8037AA28(db4Shorts*, db4Shorts*);
+s32 func_ovl8_8037AA5C(DBMenuPosition*);
 extern s32 D_ovl8_80389F5C;
 extern s32 D_ovl8_80389F60;
 extern s32 D_ovl8_80389F64;
@@ -403,13 +407,42 @@ void func_ovl8_8037A904(db4Shorts* arg0, db4Shorts* arg1)
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037A9C0.s")
+// 0x8037A9C0
+void func_ovl8_8037A9C0(db4Shorts* arg0, s32 arg1, s32 arg2)
+{
+    arg0->arr[0] = arg0->arr[0] + arg1;\
+    arg0->arr[2] = arg0->arr[2] + arg1;
+    arg0->arr[1] = arg0->arr[1] + arg2;\
+    arg0->arr[3] = arg0->arr[3] + arg2;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037A9F4.s")
+// 0x8037A9F4
+void func_ovl8_8037A9F4(DBMenuPosition* arg0, DBMenuPosition* arg1)
+{
+    arg1->x = arg0->x;
+    arg1->y = arg0->y;
+    arg1->w = arg0->x + arg0->w;
+    arg1->h = arg0->y + arg0->h;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037AA28.s")
+// 0x8037AA28
+void func_ovl8_8037AA28(db4Shorts* arg0, db4Shorts* arg1)
+{
+    arg1->arr[0] = arg0->arr[0];
+    arg1->arr[1] = arg0->arr[1];
+    arg1->arr[2] = arg0->arr[2] - arg0->arr[0];
+    arg1->arr[3] = arg0->arr[3] - arg0->arr[1];
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037AA5C.s")
+// 0x8037AA5C
+s32 func_ovl8_8037AA5C(DBMenuPosition* arg0)
+{
+    if (arg0->w <= 0 || arg0->h <= 0)
+    {
+        return 1;
+    }
+    return 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037AA88.s")
 

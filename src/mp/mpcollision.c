@@ -11,22 +11,14 @@
 // 0x8012C4E0
 f32 dMPCollisionMaterialFrictions[/* */] =
 {
-    4.0F, 
-    3.0F, 
-    3.0F, 
-    1.0F, 
-    2.0F, 
-    2.0F, 
-    4.0F, 
-    4.0F, 
-    4.0F, 
-    4.0F, 
-    4.0F, 
-    4.0F, 
-    4.0F, 
-    4.0F, 
-    4.0F, 
-    4.0F 
+    4.0F, 3.0F,
+    3.0F, 1.0F,
+    2.0F, 2.0F,
+    4.0F, 4.0F,
+    4.0F, 4.0F,
+    4.0F, 4.0F,
+    4.0F, 4.0F,
+    4.0F, 4.0F
 };
 
 // 0x8012C520
@@ -329,7 +321,7 @@ sb32 mpCollisionGetUDCommonUnder(s32 line_id, Vec3f *object_pos, f32 *dist, u32 
 }
 
 // 0x800F3E30
-sb32 mpCollisionGetLRCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *flags, Vec3f *angle, s32 lr)
+sb32 mpCollisionGetLRCommon(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flags, Vec3f *angle, s32 lr)
 {
     MPVertexLinks *vlinks;
     DObj *yakumono_dobj;
@@ -434,9 +426,9 @@ sb32 mpCollisionGetLRCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *flag
     {
         *flags = gMPCollisionVertexData->vpos[pv[0]].vertex_flags;
     }
-    if (arg2 != NULL)
+    if (dist != NULL)
     {
-        *arg2 = mpCollisionGetLineDistanceLR(object_pos_y, v1x, v1y, v2x, v2y) - object_pos_x;
+        *dist = mpCollisionGetLineDistanceLR(object_pos_y, v1x, v1y, v2x, v2y) - object_pos_x;
     }
     if (angle != NULL)
     {
@@ -446,15 +438,15 @@ sb32 mpCollisionGetLRCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *flag
 }
 
 // 0x800F4194
-sb32 mpCollisionGetLRCommonLeft(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *flags, Vec3f *angle)
+sb32 mpCollisionGetLRCommonLeft(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flags, Vec3f *angle)
 {
-    return mpCollisionGetLRCommon(line_id, object_pos, arg2, flags, angle, -1);
+    return mpCollisionGetLRCommon(line_id, object_pos, dist, flags, angle, -1);
 }
 
 // 0x800F41C0
-sb32 mpCollisionGetLRCommonRight(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *flags, Vec3f *angle)
+sb32 mpCollisionGetLRCommonRight(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flags, Vec3f *angle)
 {
-    return mpCollisionGetLRCommon(line_id, object_pos, arg2, flags, angle, +1);
+    return mpCollisionGetLRCommon(line_id, object_pos, dist, flags, angle, +1);
 }
 
 // 0x800F41EC

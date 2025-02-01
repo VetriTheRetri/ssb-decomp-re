@@ -582,7 +582,7 @@ void mnRecreateTypeButton(GObj* type_gobj, s32 player, s32 type_id)
 }
 
 // 0x80132A14
-void mnVSPlayersMakeNameAndEmblem(GObj* name_logo_gobj, s32 player, s32 fkind)
+void mnVSPlayersMakeNameAndEmblem(GObj* name_logo_gobj_gobj, s32 player, s32 fkind)
 {
 	SObj* sobj;
 	Vec2f coords[12] = {
@@ -613,10 +613,10 @@ void mnVSPlayersMakeNameAndEmblem(GObj* name_logo_gobj, s32 player, s32 fkind)
 
 	if (fkind != nFTKindNull)
 	{
-		gcRemoveSObjAll(name_logo_gobj);
+		gcRemoveSObjAll(name_logo_gobj_gobj);
 
 		// logo
-		sobj = lbCommonMakeSObjForGObj(name_logo_gobj, lbRelocGetFileData(void*, gFile014, logo_offsets[fkind]));
+		sobj = lbCommonMakeSObjForGObj(name_logo_gobj_gobj, lbRelocGetFileData(void*, gFile014, logo_offsets[fkind]));
 		sobj->pos.x = (player * 0x45) + 0x18;
 		sobj->pos.y = 143.0F;
 		sobj->sprite.attr = sobj->sprite.attr & ~SP_FASTCOPY;
@@ -636,7 +636,7 @@ void mnVSPlayersMakeNameAndEmblem(GObj* name_logo_gobj, s32 player, s32 fkind)
 		}
 
 		// name
-		sobj = lbCommonMakeSObjForGObj(name_logo_gobj, lbRelocGetFileData(void*, gFile011, name_offsets[fkind]));
+		sobj = lbCommonMakeSObjForGObj(name_logo_gobj_gobj, lbRelocGetFileData(void*, gFile011, name_offsets[fkind]));
 		sobj->pos.x = (player * 0x45) + 0x16;
 		sobj->pos.y = 201.0F;
 		sobj->sprite.attr = sobj->sprite.attr & ~SP_FASTCOPY;
@@ -700,7 +700,7 @@ void mnUpdatePanelDoors(GObj* panel_doors)
 }
 
 // 0x80132D1C
-void mnVSPlayersCreatePortraitViewport()
+void mnVSPlayersCreatePortraitCamera()
 {
 	GObj* camera_gobj
 		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonDrawSprite, 0x46, 0x08000000, -1, 0, 1, 0, 1, 0);
@@ -709,7 +709,7 @@ void mnVSPlayersCreatePortraitViewport()
 }
 
 // 0x80132DBC
-void mnVSPlayersCreatePortraitBackgroundViewport()
+void mnVSPlayersCreatePortraitWallpaperCamera()
 {
 	GObj* camera_gobj
 		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonDrawSprite, 0x4B, 0x1000000000, -1, 0, 1, 0, 1, 0);
@@ -718,7 +718,7 @@ void mnVSPlayersCreatePortraitBackgroundViewport()
 }
 
 // 0x80132E5C
-void mnVSPlayersCreatePortraitWhiteBackgroundViewport()
+void mnVSPlayersCreatePortraitFlashCamera()
 {
 	GObj* camera_gobj
 		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonDrawSprite, 0x49, 0x2000000000, -1, 0, 1, 0, 1, 0);
@@ -727,7 +727,7 @@ void mnVSPlayersCreatePortraitWhiteBackgroundViewport()
 }
 
 // 0x80132EFC
-void mnVSPlayersCreatePanelDoorsSYRdpViewport()
+void mnVSPlayersMakeGateDoorsSYRdpViewport()
 {
 	GObj* camera_gobj
 		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonDrawSprite, 0x28, 0x20000000, -1, 0, 1, 0, 1, 0);
@@ -745,7 +745,7 @@ void mnVSPlayersCreateTypeButtonViewport()
 }
 
 // 0x8013303C
-void mnVSPlayersCreatePanelViewport()
+void mnVSPlayersMakeGateViewport()
 {
 	GObj* camera_gobj
 		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonDrawSprite, 0x32, 0x10000000, -1, 0, 1, 0, 1, 0);
@@ -878,7 +878,7 @@ void mnVSPlayersCreateTypeImage(s32 player)
 }
 
 // 0x8013365C
-void mnVSPlayersCreatePanel(s32 player)
+void mnVSPlayersMakeGate(s32 player)
 {
 	GObj* temp_gobj;
 	SObj* right_door_sobj;
@@ -949,7 +949,7 @@ void mnVSPlayersCreatePanel(s32 player)
 
 	// name/logo
 	temp_gobj = gcMakeGObjSPAfter(0U, NULL, 0x16U, 0x80000000U);
-	gMnBattlePanels[player].name_logo = temp_gobj;
+	gMnBattlePanels[player].name_logo_gobj = temp_gobj;
 	gcAddGObjDisplay(temp_gobj, lbCommonDrawSObjAttr, 0x1CU, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	mnVSPlayersSyncNameAndLogo(player);
@@ -1138,7 +1138,7 @@ void mnDrawStockPicker(s32 num)
 }
 
 // 0x80134284
-void mnVSPlayersCreateBackground()
+void mnVSPlayersMakeWallpaper()
 {
 	GObj* background_gobj;
 	SObj* background_sobj;
@@ -2057,12 +2057,12 @@ void mnVSPlayersSyncNameAndLogo(s32 player)
 	if ((panel_info->player_type == mnPanelTypeNA)
 		|| ((panel_info->fkind == nFTKindNull) && (panel_info->is_selected == FALSE)))
 	{
-		panel_info->name_logo->flags = 1;
+		panel_info->name_logo_gobj->flags = 1;
 	}
 	else
 	{
-		panel_info->name_logo->flags = 0;
-		mnVSPlayersMakeNameAndEmblem(panel_info->name_logo, player, panel_info->fkind);
+		panel_info->name_logo_gobj->flags = 0;
+		mnVSPlayersMakeNameAndEmblem(panel_info->name_logo_gobj, player, panel_info->fkind);
 	}
 }
 
@@ -2079,7 +2079,7 @@ void mnVSPlayersRemoveFlash(s32 player)
 }
 
 // 0x801363DC
-void mnVSPlayersFlashFlash(GObj* white_square_gobj)
+void mnVSPlayersPortraitFlash(GObj* white_square_gobj)
 {
 	s32 duration = 16;
 	s32 frames_to_wait = 1;
@@ -2114,7 +2114,7 @@ void mnVSPlayersCreateFlash(s32 player)
 	gMnBattlePanels[player].white_square = white_square_gobj;
 	gcAddGObjDisplay(white_square_gobj, lbCommonDrawSObjAttr, 0x25U, GOBJ_PRIORITY_DEFAULT, ~0);
 	white_square_gobj->user_data.p = player;
-	gcAddGObjProcess(white_square_gobj, mnVSPlayersFlashFlash, 0, 1);
+	gcAddGObjProcess(white_square_gobj, mnVSPlayersPortraitFlash, 0, 1);
 
 	white_square_sobj
 		= lbCommonMakeSObjForGObj(white_square_gobj, lbRelocGetFileData(void*, gFile013, &FILE_013_WHITE_SQUARE));
@@ -2209,14 +2209,14 @@ void mnVSPlayersAnnounceFighter(s32 player, s32 panel_id)
 // 0x801368C4
 void mnHideFighterName(s32 player)
 {
-	SObj* name_logo_sobj;
+	SObj* name_logo_gobj_sobj;
 	SObj* name_sobj;
 
-	name_logo_sobj = SObjGetStruct(gMnBattlePanels[player].name_logo);
+	name_logo_gobj_sobj = SObjGetStruct(gMnBattlePanels[player].name_logo_gobj);
 
-	if (name_logo_sobj != NULL)
+	if (name_logo_gobj_sobj != NULL)
 	{
-		name_sobj = SObjGetNext(name_logo_sobj);
+		name_sobj = SObjGetNext(name_logo_gobj_sobj);
 
 		if (name_sobj != NULL)
 			name_sobj->sprite.attr |= SP_HIDDEN;
@@ -4177,7 +4177,7 @@ void mnVSPlayersInitPanel(s32 player)
 		gMnBattlePanels[player].cursor = NULL;
 
 	mnVSPlayersCreateToken(player);
-	mnVSPlayersCreatePanel(player);
+	mnVSPlayersMakeGate(player);
 
 	if (gMnBattlePanels[player].is_selected)
 	{
@@ -4234,20 +4234,20 @@ void mnVSPlayersFuncStart(void)
 	for (i = 0; i < 4; i++)
 		gMnBattlePanels[i].figatree_heap = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
 
-	mnVSPlayersCreatePortraitViewport();
+	mnVSPlayersCreatePortraitCamera();
 	mnVSPlayersCreateCursorViewport();
 	mnVSPlayersCreateDroppedTokenViewport();
-	mnVSPlayersCreatePanelViewport();
-	mnVSPlayersCreatePanelDoorsSYRdpViewport();
+	mnVSPlayersMakeGateViewport();
+	mnVSPlayersMakeGateDoorsSYRdpViewport();
 	mnVSPlayersCreateTypeButtonViewport();
 	mnVSPlayersCreateFighterViewport();
 	mnVSPlayersCreateTeamButtonViewPort();
 	mnVSPlayersCreateHandicapCPULevelViewport();
-	mnVSPlayersCreatePortraitBackgroundViewport();
-	mnVSPlayersCreatePortraitWhiteBackgroundViewport();
+	mnVSPlayersCreatePortraitWallpaperCamera();
+	mnVSPlayersCreatePortraitFlashCamera();
 	mnVSPlayersCreateReadyToFightViewport();
 
-	mnVSPlayersCreateBackground();
+	mnVSPlayersMakeWallpaper();
 	mnVSPlayersCreatePortraits();
 	mnVSPlayersInitPanels();
 	mnVSPlayersDrawTitleAndBack();

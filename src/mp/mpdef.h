@@ -43,24 +43,23 @@ typedef enum MPKinetics
 
 typedef enum MPMaterial
 {
-	nMPMaterial0,
-	nMPMaterial1,
-	nMPMaterial2,
-	nMPMaterial3,
-	nMPMaterial4,
-	nMPMaterial5,
-	nMPMaterial6,
-	nMPMaterialFireWeakHz1,
-	nMPMaterialFireStrongVt1,
-	nMPMaterialFireWeakVt1,
-	nMPMaterialSpikeStrongHz1,
-	nMPMaterialFireWeakVt2,
-	nMPMaterialDokanLeft,
-	nMPMaterialDokanRight,
-	nMPMaterialDetect, // Board the Platforms / Race to the Finish
-								 // gate / Saffron City gate
-	nMPMaterialFireWeakVt3,
-	nMPMaterialCustom
+	nMPMaterialCommon,      // Common material, used everywhere
+	nMPMaterial1,           // ???
+	nMPMaterial2,           // ???
+	nMPMaterial3,           // ??? (Presumably ice due to low traction?)
+	nMPMaterial4,           // ???
+	nMPMaterial5,           // ???
+	nMPMaterial6,           // ???
+	nMPMaterialFireWeakS1,  // Weak horizontal fire knockback 1
+	nMPMaterialFireStrongS1,// Strong horizontal fire knockback 1
+	nMPMaterialFireWeakHi1, // Weak vertical fire knockback 1
+	nMPMaterialSpikes,      // Bed of spikes (e.g. Pikachu Board the Platforms)
+	nMPMaterialFireWeakHi2, // Weak vertical fire knockback 2
+	nMPMaterialDokanL,      // Left pipe (Mushroom Kingdom)
+	nMPMaterialDokanR,      // Right pipe (Mushroom Kingdom)
+	nMPMaterialDetect,      // Board the Platforms / Race to the Finish gate / Saffron City gate
+	nMPMaterialFireWeakHi3, // Weak vertical fire knockback 3
+	nMPMaterialEnumCount
 
 } MPMaterial;
 

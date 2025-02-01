@@ -38,7 +38,7 @@ void ftCommonDokanStartProcPhysics(GObj *fighter_gobj)
 
     mpCollisionGetMapObjIDsKind
     (
-        (fp->status_vars.common.dokan.material == nMPMaterialDokanLeft) ? 
+        (fp->status_vars.common.dokan.material == nMPMaterialDokanL) ? 
         nMPMapObjKindDokanL :
         nMPMapObjKindDokanR,
         &ground_line_id
@@ -84,7 +84,7 @@ void ftCommonDokanStartSetStatus(GObj *fighter_gobj, s32 material)
 
     mpCollisionGetMapObjIDsKind
     (
-        (fp->status_vars.common.dokan.material == nMPMaterialDokanLeft) ? 
+        (fp->status_vars.common.dokan.material == nMPMaterialDokanL) ? 
         nMPMapObjKindDokanL : 
         nMPMapObjKindDokanR,
         &new_point_id
@@ -118,7 +118,7 @@ sb32 ftCommonDokanStartCheckInterruptCommon(GObj *fighter_gobj)
 
     if ((fp->input.pl.stick_range.y <= FTCOMMON_DOKAN_STICK_RANGE_MIN) && (fp->tap_stick_y < FTCOMMON_DOKAN_BUFFER_FRAMES_MAX))
     {
-        if ((fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK) == nMPMaterialDokanLeft)
+        if ((fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK) == nMPMaterialDokanL)
         {
             mpCollisionGetMapObjIDsKind(nMPMapObjKindDokanL, &ground_line_id);
             mpCollisionGetMapObjPositionID(ground_line_id, &pos);
@@ -131,12 +131,12 @@ sb32 ftCommonDokanStartCheckInterruptCommon(GObj *fighter_gobj)
 
             if (dist_x <= FTCOMMON_DOKAN_DETECT_WIDTH)
             {
-                ftCommonDokanStartSetStatus(fighter_gobj, nMPMaterialDokanLeft);
+                ftCommonDokanStartSetStatus(fighter_gobj, nMPMaterialDokanL);
 
                 return TRUE;
             }
         }
-        else if ((fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK) == nMPMaterialDokanRight)
+        else if ((fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK) == nMPMaterialDokanR)
         {
             mpCollisionGetMapObjIDsKind(nMPMapObjKindDokanR, &ground_line_id);
             mpCollisionGetMapObjPositionID(ground_line_id, &pos);
@@ -149,7 +149,7 @@ sb32 ftCommonDokanStartCheckInterruptCommon(GObj *fighter_gobj)
 
             if (dist_x <= FTCOMMON_DOKAN_DETECT_WIDTH)
             {
-                ftCommonDokanStartSetStatus(fighter_gobj, nMPMaterialDokanRight);
+                ftCommonDokanStartSetStatus(fighter_gobj, nMPMaterialDokanR);
 
                 return TRUE;
             }
@@ -202,7 +202,7 @@ void ftCommonDokanWaitSetStatus(GObj *fighter_gobj)
 
     fp->is_ignore_training_menu = TRUE;
 
-    if (fp->status_vars.common.dokan.material == nMPMaterialDokanLeft)
+    if (fp->status_vars.common.dokan.material == nMPMaterialDokanL)
     {
         fp->status_vars.common.dokan.mapobj_kind = nMPMapObjKindDokanR;
     }

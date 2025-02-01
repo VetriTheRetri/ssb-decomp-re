@@ -4,6 +4,7 @@
 #include "mntypes.h"
 #include "mnfunctions.h"
 
+extern u32 lMNPlayersCommonFileID;                      // 0x00000011
 extern u32 lMNPlayersGameModesFileID;                   // 0x00000012
 extern u32 lMNPlayersPortraitsFileID;                   // 0x00000013
 extern u32 lMNSelectCommonFileID;                       // 0x00000015
@@ -72,7 +73,42 @@ extern intptr_t lMNDataCommonDataHeaderSprite;          // 0x00000B40
 extern intptr_t lMNDataCommonArrowLeftSprite;           // 0x00000BE0
 extern intptr_t lMNDataCommonArrowRightSprite;          // 0x00000C80
 
-// lMNPlayers is only temporarily here
+extern intptr_t lMNPlayersCommonGate1PSprite;        	// 0x00000878
+extern intptr_t lMNPlayersCommonGate2PSprite;        	// 0x00000A58
+extern intptr_t lMNPlayersCommonGate3PSprite;        	// 0x00000C38
+extern intptr_t lMNPlayersCommonGate4PSprite;        	// 0x00000E18
+
+extern intptr_t lMNPlayersCommonMarioNameSprite;        // 0x00001838
+extern intptr_t lMNPlayersCommonLuigiNameSprite;        // 0x00001B18
+extern intptr_t lMNPlayersCommonDonkeyNameSprite;       // 0x00001FF8
+extern intptr_t lMNPlayersCommonSamusNameSprite;        // 0x00002358
+extern intptr_t lMNPlayersCommonFoxNameSprite;          // 0x000025B8
+extern intptr_t lMNPlayersCommonKirbyNameSprite;        // 0x000028E8
+extern intptr_t lMNPlayersCommonLinkNameSprite;         // 0x00002BA0
+extern intptr_t lMNPlayersCommonYoshiNameSprite;        // 0x00002ED8
+extern intptr_t lMNPlayersCommonPikachuNameSprite;      // 0x000032F8
+extern intptr_t lMNPlayersCommonNessNameSprite;         // 0x000035B0
+extern intptr_t lMNPlayersCommonCaptainNameSprite;      // 0x00003998
+extern intptr_t lMNPlayersCommonPurinNameSprite;        // 0x00003DB8
+extern intptr_t lMNPlayersCommonSymbolInfiniteSprite;   // 0x00003EF0
+extern intptr_t lMNPlayersCommonOptionTimeSprite;       // 0x000048B0
+
+extern intptr_t lMNPlayersCommonDigit0Sprite;        	// 0x00005388
+extern intptr_t lMNPlayersCommonDigit1Sprite;        	// 0x00005440
+extern intptr_t lMNPlayersCommonDigit2Sprite;        	// 0x00005558
+extern intptr_t lMNPlayersCommonDigit3Sprite;        	// 0x00005668
+extern intptr_t lMNPlayersCommonDigit4Sprite;        	// 0x00005778
+extern intptr_t lMNPlayersCommonDigit5Sprite;        	// 0x00005888
+extern intptr_t lMNPlayersCommonDigit6Sprite;        	// 0x00005998
+extern intptr_t lMNPlayersCommonDigit7Sprite;        	// 0x00005AA8
+extern intptr_t lMNPlayersCommonDigit8Sprite;        	// 0x00005BB8
+extern intptr_t lMNPlayersCommonDigit9Sprite;        	// 0x00005CC8
+
+extern intptr_t lMNPlayersCommon1PGateLUT;				// 0x000103F8
+extern intptr_t lMNPlayersCommon2PGateLUT;				// 0x00010420
+extern intptr_t lMNPlayersCommon3PGateLUT;				// 0x00010470
+extern intptr_t lMNPlayersCommon4PGateLUT;				// 0x00010448
+
 extern intptr_t lMNPlayersGameModeRoyalSprite;			// 0x00000280
 extern intptr_t lMNPlayersGameModeTeamBattleSprite;		// 0x000004E0
 

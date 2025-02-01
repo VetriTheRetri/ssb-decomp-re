@@ -55,7 +55,7 @@ void mn1PBonusPlayersRedrawCursor(GObj *cursor_gobj, s32 player, s32 cursor_stat
 // 0x80136F50
 u32 dMN1PBonusPlayersFileIDs[/* */] =
 {
-	0x11,
+	&lMNPlayersCommonFileID,
 	&lFTEmblemSpritesFileID,
 	&lMNSelectCommonFileID,
 	&lMNPlayersGameModesFileID,
@@ -641,8 +641,12 @@ void mn1PBonusPlayersMakeNameAndEmblem(GObj *gobj, s32 player, s32 fkind)
 	};
 	intptr_t name_offsets[/* */] =
 	{
-		0x1838, 0x25B8, 0x1FF8, 0x2358, 0x1B18, 0x2BA0,
-		0x2ED8, 0x3998, 0x28E8, 0x32F8, 0x3DB8, 0x35B0
+		&lMNPlayersCommonMarioNameSprite,	&lMNPlayersCommonFoxNameSprite,
+		&lMNPlayersCommonDonkeyNameSprite,	&lMNPlayersCommonSamusNameSprite,
+		&lMNPlayersCommonLuigiNameSprite,	&lMNPlayersCommonLinkNameSprite,
+		&lMNPlayersCommonYoshiNameSprite,	&lMNPlayersCommonCaptainNameSprite,
+		&lMNPlayersCommonKirbyNameSprite,	&lMNPlayersCommonPikachuNameSprite,
+		&lMNPlayersCommonPurinNameSprite,	&lMNPlayersCommonNessNameSprite
 	};
 
 	if (fkind != nFTKindNull)
@@ -669,148 +673,261 @@ void mn1PBonusPlayersMakeNameAndEmblem(GObj *gobj, s32 player, s32 fkind)
 }
 
 // 0x80132C14
-void mn1PBonusPlayersMakePortraitViewport()
+void mn1PBonusPlayersMakePortraitCamera(void)
 {
-	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonDrawSprite, 0x28, 0x08000000, -1, 0, 1, 0, 1, 0);
-	CObj *cobj = CObjGetStruct(camera_gobj);
+	CObj *cobj = CObjGetStruct
+	(
+		gcMakeCameraGObj
+		(
+			nGCCommonKindSceneCamera,
+			NULL,
+			16,
+			GOBJ_PRIORITY_DEFAULT,
+			lbCommonDrawSprite,
+			40,
+			COBJ_MASK_DLLINK(27),
+			~0,
+			FALSE,
+			nGCProcessKindFunc,
+			NULL,
+			1,
+			FALSE
+		)
+	);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80132CB4
-void mn1PBonusPlayersMakePortraitBackgroundViewport()
+void mn1PBonusPlayersMakePortraitWallpaperCamera(void)
 {
-	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonDrawSprite, 0x3C, 0x100000000, -1, 0, 1, 0, 1, 0);
-	CObj *cobj = CObjGetStruct(camera_gobj);
+	CObj *cobj = CObjGetStruct
+	(
+		gcMakeCameraGObj
+		(
+			nGCCommonKindSceneCamera,
+			NULL,
+			16,
+			GOBJ_PRIORITY_DEFAULT,
+			lbCommonDrawSprite,
+			60,
+			COBJ_MASK_DLLINK(32),
+			~0,
+			FALSE,
+			nGCProcessKindFunc,
+			NULL,
+			1,
+			FALSE
+		)
+	);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80132D54
-void mn1PBonusPlayersMakePortraitWhiteBackgroundViewport()
+void mn1PBonusPlayersMakePortraitFlashCamera(void)
 {
-	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonDrawSprite, 0x32, 0x200000000, -1, 0, 1, 0, 1, 0);
-	CObj *cobj = CObjGetStruct(camera_gobj);
+	CObj *cobj = CObjGetStruct
+	(
+		gcMakeCameraGObj
+		(
+			nGCCommonKindSceneCamera,
+			NULL,
+			16,
+			GOBJ_PRIORITY_DEFAULT,
+			lbCommonDrawSprite,
+			50,
+			COBJ_MASK_DLLINK(33),
+			~0,
+			FALSE,
+			nGCProcessKindFunc,
+			NULL,
+			1,
+			FALSE
+		)
+	);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80132DF4
-void mn1PBonusPlayersCreatePanelViewport()
+void mn1PBonusPlayersMakeGateCamera(void)
 {
-	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonDrawSprite, 0x1E, 0x10000000, -1, 0, 1, 0, 1, 0);
-	CObj *cobj = CObjGetStruct(camera_gobj);
+	CObj *cobj = CObjGetStruct
+	(
+		gcMakeCameraGObj
+		(
+			nGCCommonKindSceneCamera,
+			NULL,
+			16,
+			GOBJ_PRIORITY_DEFAULT,
+			lbCommonDrawSprite,
+			30,
+			COBJ_MASK_DLLINK(28),
+			~0,
+			FALSE,
+			nGCProcessKindFunc,
+			NULL,
+			1,
+			FALSE
+		)
+	);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80132E94
-void mn1PBonusPlayersUpdatePanel(GObj *panel_gobj, s32 player)
+void mn1PBonusPlayersSetGateLUT(GObj *gobj, s32 player)
 {
-	SObj* panel_sobj;
-	intptr_t offsets[4] = {
+	SObj *sobj;
 
-		0x103F8, 0x10420, 0x10470, 0x10448
+	intptr_t offsets[/* */] =
+	{
+		&lMNPlayersCommon1PGateLUT, &lMNPlayersCommon2PGateLUT,
+		&lMNPlayersCommon3PGateLUT, &lMNPlayersCommon4PGateLUT
 	};
 
-	panel_sobj = SObjGetStruct(panel_gobj);
-
-	panel_sobj->sprite.LUT = lbRelocGetFileData(void*, sMN1PBonusPlayersFiles[0], offsets[player]);
+	sobj = SObjGetStruct(gobj);
+	sobj->sprite.LUT = lbRelocGetFileData(int*, sMN1PBonusPlayersFiles[0], offsets[player]);
 }
 
 // 0x80132EEC
-void mn1PBonusPlayersCreatePanel(s32 player)
+void mn1PBonusPlayersMakeGate(s32 player)
 {
 	GObj *gobj;
-	SObj* type_sobj;
-	intptr_t type_offsets[4] = {
+	SObj *sobj;
 
-		0x878, 0xA58, 0xC38, 0xE18
+	intptr_t offsets[/* */] =
+	{
+		&lMNPlayersCommonGate1PSprite, &lMNPlayersCommonGate2PSprite,
+		&lMNPlayersCommonGate3PSprite, &lMNPlayersCommonGate4PSprite
 	};
-	f32 type_x_offsets[4] = {
-
-		8.0F, 5.0F, 5.0F, 5.0
+	f32 pos_x[/* */] =
+	{
+		8.0F, 5.0F, 5.0F, 5.0F
 	};
 
 	// create panel
-	gobj = lbCommonMakeSpriteGObj(0, NULL, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1C, GOBJ_PRIORITY_DEFAULT, ~0, lbRelocGetFileData(void*, sMN1PBonusPlayersFiles[5], &FILE_017_PANEL_IMAGE_OFFSET), 1, NULL, 1);
-	SObjGetStruct(gobj)->pos.x = 58.0f;
-	SObjGetStruct(gobj)->pos.y = 127.0f;
+	gobj = lbCommonMakeSpriteGObj
+	(
+		0,
+		NULL,
+		22,
+		GOBJ_PRIORITY_DEFAULT,
+		lbCommonDrawSObjAttr,
+		28,
+		GOBJ_PRIORITY_DEFAULT,
+		~0,
+		lbRelocGetFileData
+		(
+			Sprite*,
+			sMN1PBonusPlayersFiles[5],
+			&FILE_017_PANEL_IMAGE_OFFSET
+		),
+		nGCProcessKindFunc,
+		NULL,
+		1
+	);
+	SObjGetStruct(gobj)->pos.x = 58.0F;
+	SObjGetStruct(gobj)->pos.y = 127.0F;
 	SObjGetStruct(gobj)->sprite.attr &= ~SP_FASTCOPY;
 	SObjGetStruct(gobj)->sprite.attr |= SP_TRANSPARENT;
 
 	sMN1PBonusPlayersSlot.panel = gobj;
 
-	type_sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(void*, sMN1PBonusPlayersFiles[0], type_offsets[player]));
-	type_sobj->pos.x = type_x_offsets[player] + 58.0F;
-	type_sobj->pos.y = 132.0F;
-	type_sobj->sprite.attr &= ~SP_FASTCOPY;
-	type_sobj->sprite.attr |= SP_TRANSPARENT;
-	type_sobj->sprite.red = 0;
-	type_sobj->sprite.green = 0;
-	type_sobj->sprite.blue = 0;
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PBonusPlayersFiles[0], offsets[player]));
+	sobj->pos.x = pos_x[player] + 58.0F;
+	sobj->pos.y = 132.0F;
+	sobj->sprite.attr &= ~SP_FASTCOPY;
+	sobj->sprite.attr |= SP_TRANSPARENT;
+	sobj->sprite.red = 0x00;
+	sobj->sprite.green = 0x00;
+	sobj->sprite.blue = 0x00;
 
-	mn1PBonusPlayersUpdatePanel(gobj, player);
+	mn1PBonusPlayersSetGateLUT(gobj, player);
 
 	// name/logo
-	gobj = gcMakeGObjSPAfter(0U, NULL, 0x16U, 0x80000000U);
-	sMN1PBonusPlayersSlot.name_logo = gobj;
-	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0x1CU, GOBJ_PRIORITY_DEFAULT, ~0);
+	gobj = gcMakeGObjSPAfter(0, NULL, 22, GOBJ_PRIORITY_DEFAULT);
+	sMN1PBonusPlayersSlot.name_logo_gobj = gobj;
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
 // 0x80137354
-intptr_t dMnBonusNumberOffsets[10] = {
-
-	0x5388,
-	0x5440,
-	0x5558,
-	0x5668,
-	0x5778,
-	0x5888,
-	0x5998,
-	0x5AA8,
-	0x5BB8,
-	0x5CC8
+intptr_t dMN1PBonusPlayersDigitOffsets[/* */] =
+{
+	&lMNPlayersCommonDigit0Sprite,
+	&lMNPlayersCommonDigit1Sprite,
+	&lMNPlayersCommonDigit2Sprite,
+	&lMNPlayersCommonDigit3Sprite,
+	&lMNPlayersCommonDigit4Sprite,
+	&lMNPlayersCommonDigit5Sprite,
+	&lMNPlayersCommonDigit6Sprite,
+	&lMNPlayersCommonDigit7Sprite,
+	&lMNPlayersCommonDigit8Sprite,
+	&lMNPlayersCommonDigit9Sprite
 };
 
 // 0x80138A5C
-f32 dMnBonusNumberWidths[10] = {
-
+f32 dMN1PBonusPlayersDigitWidths[/* */] =
+{
 	8.0F, 6.0F, 9.0F, 8.0F, 8.0F,
-	9.0F, 8.0F, 8.0F, 8.0F, 9.0
+	9.0F, 8.0F, 8.0F, 8.0F, 9.0F
 };
 
 // 0x801330C4 - Unused?
-void func_ovl29_801330C4() {}
+void func_ovl29_801330C4(void)
+{
+	return;
+}
 
 // 0x801330CC
-void mn1PBonusPlayersCreateBackground()
+void mn1PBonusPlayersMakeWallpaper(void)
 {
-	GObj *background_gobj;
-	SObj* background_sobj;
+	GObj *gobj;
+	SObj *sobj;
 
-	background_gobj = gcMakeGObjSPAfter(0U, NULL, 0x11U, 0x80000000U);
-	gcAddGObjDisplay(background_gobj, lbCommonDrawSObjAttr, 0x1AU, GOBJ_PRIORITY_DEFAULT, ~0);
-	background_sobj = lbCommonMakeSObjForGObj(background_gobj, lbRelocGetFileData(void*, sMN1PBonusPlayersFiles[2], &lMNSelectCommonWallpaperSprite));
-	background_sobj->cms = G_TX_WRAP;
-	background_sobj->cmt = G_TX_WRAP;
-	background_sobj->masks = 6;
-	background_sobj->maskt = 5;
-	background_sobj->lrs = 300;
-	background_sobj->lrt = 220;
-	background_sobj->pos.x = 10.0F;
-	background_sobj->pos.y = 10.0F;
+	gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 26, GOBJ_PRIORITY_DEFAULT, ~0);
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PBonusPlayersFiles[2], &lMNSelectCommonWallpaperSprite));
+	sobj->cms = G_TX_WRAP;
+	sobj->cmt = G_TX_WRAP;
+	sobj->masks = 6;
+	sobj->maskt = 5;
+	sobj->lrs = 300;
+	sobj->lrt = 220;
+	sobj->pos.x = 10.0F;
+	sobj->pos.y = 10.0F;
 }
 
 // 0x80133170
-void mn1PBonusPlayersCreateBackgroundViewport()
+void mn1PBonusPlayersMakeWallpaperCamera(void)
 {
-	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonDrawSprite, 0x50, 0x4000000, -1, 0, 1, 0, 1, 0);
-	CObj *cobj = CObjGetStruct(camera_gobj);
+	CObj *cobj = CObjGetStruct
+	(
+		gcMakeCameraGObj
+		(
+			nGCCommonKindSceneCamera,
+			NULL,
+			16,
+			GOBJ_PRIORITY_DEFAULT,
+			lbCommonDrawSprite,
+			80,
+			COBJ_MASK_DLLINK(26),
+			~0,
+			FALSE,
+			nGCProcessKindFunc,
+			NULL,
+			1,
+			FALSE
+		)
+	);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80133210 - Unused?
-void func_ovl29_80133210() {}
+void func_ovl29_80133210(void)
+{
+	return;
+}
 
 // 0x80133218
-void mn1PBonusPlayersDrawTitleAndBack()
+void mn1PBonusPlayersDrawTitleAndBack(void)
 {
 	GObj *title_gobj;
 	SObj* title_sobj;
@@ -1451,12 +1568,12 @@ void mn1PBonusPlayersSyncNameAndLogo(s32 player)
 {
 	if (sMN1PBonusPlayersSlot.fkind == nFTKindNull && !sMN1PBonusPlayersSlot.is_selected)
 	{
-		sMN1PBonusPlayersSlot.name_logo->flags = 1;
+		sMN1PBonusPlayersSlot.name_logo_gobj->flags = 1;
 	}
 	else
 	{
-		sMN1PBonusPlayersSlot.name_logo->flags = 0;
-		mn1PBonusPlayersMakeNameAndEmblem(sMN1PBonusPlayersSlot.name_logo, player, sMN1PBonusPlayersSlot.fkind);
+		sMN1PBonusPlayersSlot.name_logo_gobj->flags = 0;
+		mn1PBonusPlayersMakeNameAndEmblem(sMN1PBonusPlayersSlot.name_logo_gobj, player, sMN1PBonusPlayersSlot.fkind);
 	}
 }
 
@@ -1474,7 +1591,7 @@ void mn1PBonusPlayersRemoveFlash(s32 player)
 }
 
 // 0x80134890
-void mn1PBonusPlayersFlashFlash(GObj *white_square_gobj)
+void mn1PBonusPlayersPortraitFlash(GObj *white_square_gobj)
 {
 	s32 duration = 16;
 	s32 frames_to_wait = 1;
@@ -1507,7 +1624,7 @@ void mn1PBonusPlayersCreateFlash(s32 player)
 	sMN1PBonusPlayersSlot.white_square = white_square_gobj = gcMakeGObjSPAfter(0U, NULL, 0x1AU, 0x80000000U);
 	gcAddGObjDisplay(white_square_gobj, lbCommonDrawSObjAttr, 0x21U, GOBJ_PRIORITY_DEFAULT, ~0);
 	white_square_gobj->user_data.p = player;
-	gcAddGObjProcess(white_square_gobj, mn1PBonusPlayersFlashFlash, 0, 1);
+	gcAddGObjProcess(white_square_gobj, mn1PBonusPlayersPortraitFlash, 0, 1);
 
 	white_square_sobj = lbCommonMakeSObjForGObj(white_square_gobj, lbRelocGetFileData(void*, sMN1PBonusPlayersFiles[4], &FILE_013_WHITE_SQUARE));
 	white_square_sobj->pos.x = (f32) (((portrait >= 6 ? portrait - 6 : portrait) * 45) + 26);
@@ -2532,7 +2649,7 @@ void mn1PBonusPlayersInitPanel(s32 player)
 	else sMN1PBonusPlayersSlot.cursor = NULL;
 
 	mn1PBonusPlayersCreateToken(player);
-	mn1PBonusPlayersCreatePanel(player);
+	mn1PBonusPlayersMakeGate(player);
 	mn1PBonusPlayersResetPort(player);
 }
 
@@ -2603,17 +2720,17 @@ void mn1PBonusPlayersFuncStart(void)
 	sMN1PBonusPlayersFigatreeHeap = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
 
 	mn1PBonusPlayersInitVars();
-	mn1PBonusPlayersMakePortraitViewport();
+	mn1PBonusPlayersMakePortraitCamera();
 	mn1PBonusPlayersCreateCursorViewport();
 	mn1PBonusPlayersCreateDroppedTokenViewport();
-	mn1PBonusPlayersCreatePanelViewport();
+	mn1PBonusPlayersMakeGateCamera();
 	mn1PBonusPlayersCreateFighterViewport();
-	mn1PBonusPlayersMakePortraitBackgroundViewport();
-	mn1PBonusPlayersMakePortraitWhiteBackgroundViewport();
-	mn1PBonusPlayersCreateBackgroundViewport();
+	mn1PBonusPlayersMakePortraitWallpaperCamera();
+	mn1PBonusPlayersMakePortraitFlashCamera();
+	mn1PBonusPlayersMakeWallpaperCamera();
 	mn1PBonusPlayersCreateTitleOptionsAndBackViewport();
 	mn1PBonusPlayersCreateReadyToFightViewport();
-	mn1PBonusPlayersCreateBackground();
+	mn1PBonusPlayersMakeWallpaper();
 	mn1PBonusPlayersMakePortraitAll();
 	mn1PBonusPlayersInitPanel(sMN1PBonusPlayersManPlayer);
 	mn1PBonusPlayersDrawTitleAndBack();

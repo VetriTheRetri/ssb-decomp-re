@@ -709,7 +709,7 @@ void mn1PCreatePortraits()
 }
 
 // 0x80132DA0
-void mn1PMakeNameAndEmblem(GObj* name_logo_gobj, s32 player, s32 fkind)
+void mn1PMakeNameAndEmblem(GObj* name_logo_gobj_gobj, s32 player, s32 fkind)
 {
 	SObj* sobj;
 	Vec2f coords[12] = {
@@ -730,10 +730,10 @@ void mn1PMakeNameAndEmblem(GObj* name_logo_gobj, s32 player, s32 fkind)
 
 	if (fkind != nFTKindNull)
 	{
-		gcRemoveSObjAll(name_logo_gobj);
+		gcRemoveSObjAll(name_logo_gobj_gobj);
 
 		// logo
-		sobj = lbCommonMakeSObjForGObj(name_logo_gobj, lbRelocGetFileData(void*, gMN1PFiles[1], logo_offsets[fkind]));
+		sobj = lbCommonMakeSObjForGObj(name_logo_gobj_gobj, lbRelocGetFileData(void*, gMN1PFiles[1], logo_offsets[fkind]));
 		sobj->sprite.attr = sobj->sprite.attr & ~SP_FASTCOPY;
 		sobj->sprite.attr = sobj->sprite.attr | SP_TRANSPARENT;
 		sobj->sprite.red = 0;
@@ -743,7 +743,7 @@ void mn1PMakeNameAndEmblem(GObj* name_logo_gobj, s32 player, s32 fkind)
 		sobj->pos.y = 144.0F;
 
 		// name
-		sobj = lbCommonMakeSObjForGObj(name_logo_gobj, lbRelocGetFileData(void*, gMN1PFiles[0], name_offsets[fkind]));
+		sobj = lbCommonMakeSObjForGObj(name_logo_gobj_gobj, lbRelocGetFileData(void*, gMN1PFiles[0], name_offsets[fkind]));
 		sobj->sprite.attr = sobj->sprite.attr & ~SP_FASTCOPY;
 		sobj->sprite.attr = sobj->sprite.attr | SP_TRANSPARENT;
 		sobj->pos.x = 33.0F;
@@ -752,15 +752,32 @@ void mn1PMakeNameAndEmblem(GObj* name_logo_gobj, s32 player, s32 fkind)
 }
 
 // 0x80132F1C
-void mn1PCreatePortraitViewport()
+void mn1PCreatePortraitCamera(void)
 {
-	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonDrawSprite, 0x28, 0x08000000, -1, 0, 1, 0, 1, 0);
-	CObj *cobj = CObjGetStruct(camera_gobj);
+	CObj *cobj = CObjGetStruct
+	(
+		gcMakeCameraGObj
+		(
+			nGCCommonKindSceneCamera,
+			NULL,
+			16,
+			GOBJ_PRIORITY_DEFAULT,
+			lbCommonDrawSprite,
+			40,
+			COBJ_MASK_DLLINK(27),
+			~0,
+			FALSE,
+			nGCProcessKindFunc,
+			NULL,
+			1,
+			FALSE
+		)
+	);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80132FBC
-void mn1PCreatePortraitBackgroundViewport()
+void mn1PCreatePortraitWallpaperCamera()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonDrawSprite, 0x3C, 0x100000000, -1, 0, 1, 0, 1, 0);
 	CObj *cobj = CObjGetStruct(camera_gobj);
@@ -768,7 +785,7 @@ void mn1PCreatePortraitBackgroundViewport()
 }
 
 // 0x8013305C
-void mn1PCreatePortraitWhiteBackgroundViewport()
+void mn1PCreatePortraitFlashCamera()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonDrawSprite, 0x32, 0x200000000, -1, 0, 1, 0, 1, 0);
 	CObj *cobj = CObjGetStruct(camera_gobj);
@@ -776,7 +793,7 @@ void mn1PCreatePortraitWhiteBackgroundViewport()
 }
 
 // 0x801330FC
-void mn1PCreatePanelViewport()
+void mn1PMakeGateViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonDrawSprite, 0x1E, 0x10000000, -1, 0, 1, 0, 1, 0);
 	CObj *cobj = CObjGetStruct(camera_gobj);
@@ -798,7 +815,7 @@ void mn1PUpdatePanel(GObj* panel_gobj, s32 player)
 }
 
 // 0x801331F4
-void mn1PCreatePanel(s32 player)
+void mn1PMakeGate(s32 player)
 {
 	GObj* gobj;
 	SObj* type_sobj;
@@ -833,7 +850,7 @@ void mn1PCreatePanel(s32 player)
 
 	// name/logo
 	gobj = gcMakeGObjSPAfter(0U, NULL, 0x16U, 0x80000000U);
-	gMN1PPanel.name_logo = gobj;
+	gMN1PPanel.name_logo_gobj = gobj;
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0x1CU, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	mn1PSyncNameAndLogo(player);
@@ -939,7 +956,7 @@ void mn1PDrawTimerPicker(s32 num)
 }
 
 // 0x801338EC
-void mn1PCreateBackground()
+void mn1PMakeWallpaper()
 {
 	GObj* background_gobj;
 	SObj* background_sobj;
@@ -958,7 +975,7 @@ void mn1PCreateBackground()
 }
 
 // 0x80133990
-void mn1PCreateBackgroundViewport()
+void mn1PMakeWallpaperCamera()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonDrawSprite, 0x50, 0x4000000, -1, 0, 1, 0, 1, 0);
 	CObj *cobj = CObjGetStruct(camera_gobj);
@@ -1805,12 +1822,12 @@ void mn1PSyncNameAndLogo(s32 player)
 {
 	if ((gMN1PPanel.fkind == nFTKindNull) && !gMN1PPanel.is_selected)
 	{
-		gMN1PPanel.name_logo->flags = 1;
+		gMN1PPanel.name_logo_gobj->flags = 1;
 	}
 	else
 	{
-		gMN1PPanel.name_logo->flags = 0;
-		mn1PMakeNameAndEmblem(gMN1PPanel.name_logo, player, gMN1PPanel.fkind);
+		gMN1PPanel.name_logo_gobj->flags = 0;
+		mn1PMakeNameAndEmblem(gMN1PPanel.name_logo_gobj, player, gMN1PPanel.fkind);
 	}
 }
 
@@ -1828,7 +1845,7 @@ void mn1PRemoveFlash(s32 player)
 }
 
 // 0x8013595C
-void mn1PFlashFlash(GObj* white_square_gobj)
+void mn1PPortraitFlash(GObj* white_square_gobj)
 {
 	s32 duration = 16;
 	s32 frames_to_wait = 1;
@@ -1862,7 +1879,7 @@ void mn1PCreateFlash(s32 player)
 	gMN1PPanel.white_square = white_square_gobj = gcMakeGObjSPAfter(0U, NULL, 0x1AU, 0x80000000U);
 	gcAddGObjDisplay(white_square_gobj, lbCommonDrawSObjAttr, 0x21U, GOBJ_PRIORITY_DEFAULT, ~0);
 	white_square_gobj->user_data.p = player;
-	gcAddGObjProcess(white_square_gobj, mn1PFlashFlash, 0, 1);
+	gcAddGObjProcess(white_square_gobj, mn1PPortraitFlash, 0, 1);
 
 	white_square_sobj = lbCommonMakeSObjForGObj(white_square_gobj, lbRelocGetFileData(void*, gMN1PFiles[4], &FILE_013_WHITE_SQUARE));
 	white_square_sobj->pos.x = (f32) (((portrait >= 6 ? portrait - 6 : portrait) * 45) + 26);
@@ -3069,7 +3086,7 @@ void mn1PInitPanel(s32 player)
 {
 	mn1PCreateCursor(player);
 	mn1PCreateToken(player);
-	mn1PCreatePanel(player);
+	mn1PMakeGate(player);
 
 	if ((gMN1PPanel.is_selected) && (gMN1PPanel.fkind != nFTKindNull))
 	{
@@ -3110,17 +3127,17 @@ void mn1PGamePlayersFuncStart(void)
 	gMN1PFigatreeHeap = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10U);
 
 	mn1PLoadMatchInfo();
-	mn1PCreatePortraitViewport();
+	mn1PCreatePortraitCamera();
 	mn1PCreateCursorViewport();
 	mn1PCreateDroppedTokenViewport();
-	mn1PCreatePanelViewport();
+	mn1PMakeGateViewport();
 	mn1PCreateFighterViewport();
-	mn1PCreatePortraitBackgroundViewport();
-	mn1PCreatePortraitWhiteBackgroundViewport();
-	mn1PCreateBackgroundViewport();
+	mn1PCreatePortraitWallpaperCamera();
+	mn1PCreatePortraitFlashCamera();
+	mn1PMakeWallpaperCamera();
 	mn1PCreateTitleOptionsAndBackViewport();
 	mn1PCreateReadyToFightViewport();
-	mn1PCreateBackground();
+	mn1PMakeWallpaper();
 	mn1PCreatePortraits();
 	mn1PInitPanel(gMN1PHumanPanelPort);
 	mn1PDrawPickerOptionsTitleAndBack();

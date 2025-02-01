@@ -3579,27 +3579,27 @@ sb32 ftMainGetGroundHitObstacle(FTStruct *fp, GRAttackColl **p_gr_attack_coll)
     {
         switch (fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK)
         {
-        case nMPMaterialFireWeakHz1:
+        case nMPMaterialFireWeakS1:
             *p_gr_attack_coll = &dFTMainGroundHitCollisionAttributes[0];
             return TRUE;
 
-        case nMPMaterialFireStrongVt1:
+        case nMPMaterialFireStrongS1:
             *p_gr_attack_coll = &dFTMainGroundHitCollisionAttributes[1];
             return TRUE;
 
-        case nMPMaterialFireWeakVt1:
+        case nMPMaterialFireWeakHi1:
             *p_gr_attack_coll = &dFTMainGroundHitCollisionAttributes[2];
             return TRUE;
 
-        case nMPMaterialSpikeStrongHz1:
+        case nMPMaterialSpikes:
             *p_gr_attack_coll = &dFTMainGroundHitCollisionAttributes[3];
             return TRUE;
 
-        case nMPMaterialFireWeakVt2:
+        case nMPMaterialFireWeakHi2:
             *p_gr_attack_coll = &dFTMainGroundHitCollisionAttributes[4];
             return TRUE;
 
-        case nMPMaterialFireWeakVt3:
+        case nMPMaterialFireWeakHi3:
             *p_gr_attack_coll = &dFTMainGroundHitCollisionAttributes[5];
             return TRUE;
 

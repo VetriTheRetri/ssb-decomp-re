@@ -9,7 +9,7 @@ typedef struct mnCharPanel1P
 	GObj *cursor;
 	GObj *token;
 	GObj *player;
-	GObj *name_logo;
+	GObj *name_logo_gobj;
 	GObj *panel_doors;
 	GObj *panel;
 	GObj *white_square;
@@ -50,7 +50,7 @@ typedef struct mnCharPanelTraining
 	GObj *token;
 	GObj *player;
 	GObj *type_button;
-	GObj *name_logo;
+	GObj *name_logo_gobj;
 	GObj *panel_doors;
 	GObj *panel;
 	GObj *team_color_button;
@@ -102,7 +102,7 @@ typedef struct mnCharPanelBattle
 	GObj* token;
 	GObj* player;
 	GObj* type_button;
-	GObj* name_logo;
+	GObj* name_logo_gobj;
 	GObj* panel_doors;
 	GObj* panel;
 	GObj* team_color_button;
@@ -154,7 +154,7 @@ typedef struct MNBonusPlayerSlot
 	GObj *cursor;
 	GObj *token;
 	GObj *player;
-	GObj *name_logo;
+	GObj *name_logo_gobj;
 	GObj *panel_doors;
 	GObj *panel;
 	GObj *white_square;

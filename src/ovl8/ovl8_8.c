@@ -2,6 +2,13 @@
 #include <sys/develop.h>
 #include <db/debug.h>
 
+// TODO: move to h file
+typedef struct dbUnknown8_S28 {
+    s32 dbUnknown8_S28_0x0[6];
+    s32 str;
+    s32 dbUnknown8_S28_0x20[3];
+} dbUnknown8_S28;
+
 void func_ovl8_80377F50(char*, db4Shorts*);
 void func_ovl8_80377FE4(char*, db4Shorts*, db4Shorts*);
 void func_ovl8_803780B8(char*, DBMenuPosition*);
@@ -10,6 +17,10 @@ void func_ovl8_8037A9C0(db4Shorts*, s32, s32);
 void func_ovl8_8037A9F4(DBMenuPosition*, DBMenuPosition*);
 void func_ovl8_8037AA28(db4Shorts*, db4Shorts*);
 s32 func_ovl8_8037AA5C(DBMenuPosition*);
+
+void func_ovl8_8037BEC8();
+void func_ovl8_8037BF34();
+
 extern s32 D_ovl8_80389F5C;
 extern s32 D_ovl8_80389F60;
 extern s32 D_ovl8_80389F64;
@@ -17,6 +28,10 @@ extern void* D_ovl8_80389FB4;
 extern void* D_ovl8_8038A068;
 extern dbTestMenu* D_8038EFC4_1AB814;
 extern dbUnknownLinkStruct* D_8038EFC8_1AB818;
+extern dbUnknown5* D_8038EFCC_1AB81C;
+extern s32 D_ovl8_80387EB8;
+extern dbUnknown8_S28 D_ovl8_8038A144;
+
 
 // 0x80376B60
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80376B60.s")
@@ -594,9 +609,51 @@ void func_ovl8_8037BB78()
     func_ovl8_8037D34C();
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037BBF0.s")
+// 0x8037BBF0
+s32 func_ovl8_8037BBF0(s32 arg0, s32 arg1, u16 arg2, u16 arg3)
+{
+    dbUnknown5 *temp_v0;
+    s32 sp20;
+    dbUnknown5 *var_v1;
 
+    temp_v0 = func_ovl8_803717A0(0x7C);
+
+    if (temp_v0 != NULL)
+    {
+        func_ovl8_803759F0(temp_v0, 0, arg0, arg1);
+        var_v1 = temp_v0;
+    }
+    else
+        var_v1 = NULL;
+
+    D_8038EFCC_1AB81C = var_v1;
+    sp20 = func_ovl8_803723AC(D_8038EFCC_1AB81C, D_8038EFCC_1AB81C, arg1, func_ovl8_8037BEC8, func_ovl8_8037BF34, 0);
+    func_ovl8_80375B8C(D_8038EFCC_1AB81C, arg2, arg3);
+
+    if (sp20 != 0)
+    {
+        return sp20;
+    }
+
+    func_ovl8_80375C54(D_8038EFCC_1AB81C);
+
+    return 0;
+}
+
+// 0x8037BCB8
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037BCB8.s")
+// s32 func_ovl8_8037BCB8()
+// {
+//     dbUnknown8_S28 sp18;
+
+//     if (D_8038EFCC_1AB81C != NULL)
+//         return -1;
+
+//     sp18 = D_ovl8_8038A144;
+//     sp18.str = 'Arow'; // 0x41726F77
+
+//     return func_ovl8_8037BBF0(&sp18, &D_ovl8_80387EB8, 4, 1);
+// }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037BD44.s")
 

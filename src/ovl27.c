@@ -1525,7 +1525,7 @@ s32 mn1PGetAvailableCostume(s32 fkind, s32 select_button)
 }
 
 // 0x80134EE0
-s32 mn1PGetSelectedAnimation(s32 fkind)
+s32 mn1PGetStatusSelected(s32 fkind)
 {
 	switch (fkind)
 	{
@@ -1559,11 +1559,11 @@ void mn1PRotateFighter(GObj *fighter_gobj)
 	{
 		if (DObjGetStruct(fighter_gobj)->rotate.vec.f.y < F_CLC_DTOR32(0.1F))
 		{
-			if (!gMN1PPanel.selected_animation_started)
+			if (!gMN1PPanel.is_fighter_selected)
 			{
-				scSubsysFighterSetStatus(gMN1PPanel.player, mn1PGetSelectedAnimation(gMN1PPanel.fkind));
+				scSubsysFighterSetStatus(gMN1PPanel.player, mn1PGetStatusSelected(gMN1PPanel.fkind));
 
-				gMN1PPanel.selected_animation_started = TRUE;
+				gMN1PPanel.is_fighter_selected = TRUE;
 			}
 		}
 		else
@@ -1574,9 +1574,9 @@ void mn1PRotateFighter(GObj *fighter_gobj)
 			{
 				DObjGetStruct(fighter_gobj)->rotate.vec.f.y = 0.0F;
 
-				scSubsysFighterSetStatus(gMN1PPanel.player, mn1PGetSelectedAnimation(gMN1PPanel.fkind));
+				scSubsysFighterSetStatus(gMN1PPanel.player, mn1PGetStatusSelected(gMN1PPanel.fkind));
 
-				gMN1PPanel.selected_animation_started = TRUE;
+				gMN1PPanel.is_fighter_selected = TRUE;
 			}
 		}
 	}
@@ -1626,7 +1626,7 @@ void mn1PSpawnFighter(GObj* fighter_gobj, s32 player, s32 fkind, s32 costume)
 }
 
 // 0x801351CC
-void mn1PCreateFighterViewport()
+void mn1PMakeFighterCamera()
 {
 	CObj *cobj = CObjGetStruct((GObj*)gcMakeCameraGObj(0x401U, NULL, 0x10, 0x80000000U, func_80017EC0, 0x14, 0x48600, -1, 1, 1, 0, 1, 0));
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
@@ -1810,7 +1810,7 @@ void mn1PSyncFighterDisplay(s32 player)
 		mn1PDrawStock(gMN1PStockValue, gMN1PPanel.fkind);
 		mn1PDrawHighscoreAndBonuses();
 		gMN1PPanel.player->flags = 0;
-		gMN1PPanel.selected_animation_started = FALSE;
+		gMN1PPanel.is_fighter_selected = FALSE;
 	}
 }
 
@@ -3131,7 +3131,7 @@ void mn1PGamePlayersFuncStart(void)
 	mn1PCreateCursorViewport();
 	mn1PCreateDroppedTokenViewport();
 	mn1PMakeGateViewport();
-	mn1PCreateFighterViewport();
+	mn1PMakeFighterCamera();
 	mn1PCreatePortraitWallpaperCamera();
 	mn1PCreatePortraitFlashCamera();
 	mn1PMakeWallpaperCamera();

@@ -185,7 +185,7 @@ void ftCommonDamageCheckSetInvincible(GObj* fighter_gobj);
 void ftCommonDamageSetStatus(GObj* fighter_gobj);
 void ftCommonDamageCommonProcInterrupt(GObj* fighter_gobj);
 void ftCommonDamageAirCommonProcInterrupt(GObj* fighter_gobj);
-void ftCommonDamageFlyRollUpdateModelRoll(GObj* fighter_gobj);
+void ftCommonDamageFlyRollUpdateModelPitch(GObj* fighter_gobj);
 void ftCommonDamageCommonProcPhysics(GObj* fighter_gobj);
 void ftCommonDamageCommonProcLagUpdate(GObj* fighter_gobj);
 void func_ovl3_80140934();

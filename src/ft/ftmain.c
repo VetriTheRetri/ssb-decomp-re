@@ -917,7 +917,7 @@ void ftMainPlayAnim(GObj *fighter_gobj)
         fp->anim_vel = fp->joints[nFTPartsJointTransN]->translate.vec.f;
     }
     ftParamUpdateAnimKeys(fighter_gobj);
-    func_ovl2_800EB648(fp->joints[nFTPartsJointTopN]);
+    ftParamsUpdateFighterPartsTransform(fp->joints[nFTPartsJointTopN]);
 }
 
 // 0x800E0830
@@ -1825,7 +1825,7 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
     {
         fp->proc_slope(fighter_gobj);
     }
-    func_ovl2_800EB528(fp->joints[nFTPartsJointTopN]);
+    ftParamsUpdateFighterPartsTransformAll(fp->joints[nFTPartsJointTopN]);
 
     if (fp->hitlag_tics == 0)
     {

@@ -149,7 +149,7 @@ void ftCommonDamageSetStatus(GObj *fighter_gobj)
 
         if (fp->status_id == nFTCommonStatusDamageFlyRoll)
         {
-            ftCommonDamageFlyRollUpdateModelRoll(fighter_gobj);
+            ftCommonDamageFlyRollUpdateModelPitch(fighter_gobj);
         }
         fp->is_hitstun = TRUE;
 
@@ -201,13 +201,13 @@ void ftCommonDamageAirCommonProcInterrupt(GObj *fighter_gobj)
 }
 
 // 0x80140744
-void ftCommonDamageFlyRollUpdateModelRoll(GObj *fighter_gobj)
+void ftCommonDamageFlyRollUpdateModelPitch(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->joints[4]->rotate.vec.f.x = syUtilsArcTan2(fp->physics.vel_air.x + fp->physics.vel_damage_air.x, fp->physics.vel_air.y + fp->physics.vel_damage_air.y) * fp->lr;
 
-    func_ovl2_800EB528(fp->joints[4]);
+    ftParamsUpdateFighterPartsTransformAll(fp->joints[4]);
 }
 
 // 0x801407A8
@@ -227,7 +227,7 @@ void ftCommonDamageCommonProcPhysics(GObj *fighter_gobj)
     
     if (fp->status_id == nFTCommonStatusDamageFlyRoll)
     {
-        ftCommonDamageFlyRollUpdateModelRoll(fighter_gobj);
+        ftCommonDamageFlyRollUpdateModelPitch(fighter_gobj);
     }
     if ((fp->throw_gobj != NULL) && (syVectorMag3D(&fp->physics.vel_damage_air) < 70.0F))
     {
@@ -627,7 +627,7 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
     }
     if (this_fp->status_id == nFTCommonStatusDamageFlyRoll)
     {
-        ftCommonDamageFlyRollUpdateModelRoll(this_gobj);
+        ftCommonDamageFlyRollUpdateModelPitch(this_gobj);
     }
     ftCommonDamageSetDustEffectInterval(this_fp);
 

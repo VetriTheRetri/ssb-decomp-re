@@ -1281,7 +1281,7 @@ s32 mnVSPlayersGetAvailableCostume(s32 fkind, s32 player)
 }
 
 // 0x801348EC
-s32 mnVSPlayersGetSelectedAnimation(s32 fkind)
+s32 mnVSPlayersGetStatusSelected(s32 fkind)
 {
 	switch (fkind)
 	{
@@ -1311,10 +1311,10 @@ void mnVSPlayersRotateFighter(GObj* fighter_gobj)
 	{
 		if (DObjGetStruct(fighter_gobj)->rotate.vec.f.y < (PI32 / 1800))
 		{
-			if (panel_info->selected_animation_started == FALSE)
+			if (panel_info->is_fighter_selected == FALSE)
 			{
-				scSubsysFighterSetStatus(panel_info->player, mnVSPlayersGetSelectedAnimation(panel_info->fkind));
-				panel_info->selected_animation_started = TRUE;
+				scSubsysFighterSetStatus(panel_info->player, mnVSPlayersGetStatusSelected(panel_info->fkind));
+				panel_info->is_fighter_selected = TRUE;
 			}
 		}
 		else
@@ -1324,8 +1324,8 @@ void mnVSPlayersRotateFighter(GObj* fighter_gobj)
 			if (DObjGetStruct(fighter_gobj)->rotate.vec.f.y > M_DTOR_F(360.0F))
 			{
 				DObjGetStruct(fighter_gobj)->rotate.vec.f.y = 0.0F;
-				scSubsysFighterSetStatus(panel_info->player, mnVSPlayersGetSelectedAnimation(panel_info->fkind));
-				panel_info->selected_animation_started = TRUE;
+				scSubsysFighterSetStatus(panel_info->player, mnVSPlayersGetStatusSelected(panel_info->fkind));
+				panel_info->is_fighter_selected = TRUE;
 			}
 		}
 	}
@@ -1379,7 +1379,7 @@ void mnVSPlayersSpawnFighter(GObj* fighter_gobj, s32 player, s32 fkind, s32 cost
 }
 
 // 0x80134C64
-void mnVSPlayersCreateFighterViewport()
+void mnVSPlayersMakeFighterCamera()
 {
 	CObj* cobj = CObjGetStruct(
 		(GObj*)gcMakeCameraGObj(0x401U, NULL, 0x10, 0x80000000U, func_80017EC0, 0x1E, 0x48600, -1, 1, 1, 0, 1, 0));
@@ -2016,7 +2016,7 @@ void mnVSPlayersSyncFighterDisplay(s32 player)
 		gMnBattlePanels[player].shade = mnVSPlayersGetShade(player);
 		mnVSPlayersSpawnFighter(gMnBattlePanels[player].player, player, gMnBattlePanels[player].fkind,
 							 mnVSPlayersGetAvailableCostume(gMnBattlePanels[player].fkind, player));
-		gMnBattlePanels[player].selected_animation_started = FALSE;
+		gMnBattlePanels[player].is_fighter_selected = FALSE;
 	}
 }
 
@@ -2886,23 +2886,23 @@ void mnExitIfBButtonHeld(s32 player)
 	mnCharPanelBattle* panel_info = &gMnBattlePanels[player];
 	SYController* controller = &gSYControllerDevices[player];
 
-	if (panel_info->is_b_held)
+	if (panel_info->is_hold_b)
 	{
-		if ((panel_info->b_held_frame_count != 0))
+		if ((panel_info->hold_b_tics != 0))
 		{
-			panel_info->b_held_frame_count++;
+			panel_info->hold_b_tics++;
 
-			if ((panel_info->b_held_frame_count < 41))
+			if ((panel_info->hold_b_tics < 41))
 			{
 				if (controller->button_hold & B_BUTTON)
 				{
-					if (panel_info->b_held_frame_count == 40)
+					if (panel_info->hold_b_tics == 40)
 						mnGoBackToVSMenu();
 				}
 				else
 				{
-					panel_info->is_b_held = FALSE;
-					panel_info->b_held_frame_count = 0;
+					panel_info->is_hold_b = FALSE;
+					panel_info->hold_b_tics = 0;
 				}
 			}
 		}
@@ -2910,8 +2910,8 @@ void mnExitIfBButtonHeld(s32 player)
 	else
 	{
 		if (controller->button_tap & B_BUTTON)
-			panel_info->is_b_held = TRUE;
-		panel_info->b_held_frame_count = 1;
+			panel_info->is_hold_b = TRUE;
+		panel_info->hold_b_tics = 1;
 	}
 }
 
@@ -4082,14 +4082,14 @@ void mnVSPlayersInitPort(s32 player)
 		panel_info->unk_0x88 = FALSE;
 		panel_info->is_selected = FALSE;
 		panel_info->is_recalling = FALSE;
-		panel_info->selected_animation_started = FALSE;
+		panel_info->is_fighter_selected = FALSE;
 	}
 	else
 	{
 		panel_info->unk_0x88 = TRUE;
 		panel_info->is_selected = TRUE;
 		panel_info->is_recalling = FALSE;
-		panel_info->selected_animation_started = FALSE;
+		panel_info->is_fighter_selected = FALSE;
 	}
 
 	panel_info->costume = gSCManagerTransferBattleState.players[player].costume;
@@ -4240,7 +4240,7 @@ void mnVSPlayersFuncStart(void)
 	mnVSPlayersMakeGateViewport();
 	mnVSPlayersMakeGateDoorsSYRdpViewport();
 	mnVSPlayersCreateTypeButtonViewport();
-	mnVSPlayersCreateFighterViewport();
+	mnVSPlayersMakeFighterCamera();
 	mnVSPlayersCreateTeamButtonViewPort();
 	mnVSPlayersCreateHandicapCPULevelViewport();
 	mnVSPlayersCreatePortraitWallpaperCamera();

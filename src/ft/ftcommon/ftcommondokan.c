@@ -7,7 +7,7 @@
 // // // // // // // // // // // //
 
 // 0x80141FF0
-void ftCommonDokanStartUpdateModelPitch(FTStruct *fp)
+void ftCommonDokanStartUpdateModelYaw(FTStruct *fp)
 {
     if (fp->status_vars.common.dokan.turn_stop_wait != 0)
     {
@@ -15,7 +15,7 @@ void ftCommonDokanStartUpdateModelPitch(FTStruct *fp)
 
         fp->joints[nFTPartsJointTopN]->rotate.vec.f.y += (-FTCOMMON_DOKAN_TURN_STEP * fp->lr);
 
-        func_ovl2_800EB528(fp->joints[nFTPartsJointTopN]);
+        ftParamsUpdateFighterPartsTransformAll(fp->joints[nFTPartsJointTopN]);
     }
 }
 
@@ -24,7 +24,7 @@ void ftCommonDokanStartProcUpdate(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftCommonDokanStartUpdateModelPitch(fp);
+    ftCommonDokanStartUpdateModelYaw(fp);
     ftAnimEndCheckSetStatus(fighter_gobj, ftCommonDokanWaitSetStatus);
 }
 
@@ -104,7 +104,7 @@ void ftCommonDokanStartSetStatus(GObj *fighter_gobj, s32 material)
     }
     else fp->status_vars.common.dokan.turn_stop_wait = FTCOMMON_DOKAN_TURN_STOP_WAIT_DEFAULT;
 
-    ftCommonDokanStartUpdateModelPitch(fp);
+    ftCommonDokanStartUpdateModelYaw(fp);
     grInishiePakkunSetWaitFighter();
 }
 
@@ -227,7 +227,7 @@ void ftCommonDokanWaitSetStatus(GObj *fighter_gobj)
 }
 
 // 0x801425E4
-void ftCommonDokanEndUpdateModelPitch(GObj *fighter_gobj)
+void ftCommonDokanEndUpdateModelYaw(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -239,7 +239,7 @@ void ftCommonDokanEndUpdateModelPitch(GObj *fighter_gobj)
 
             fp->joints[nFTPartsJointTopN]->rotate.vec.f.y += (FTCOMMON_DOKAN_TURN_STEP * fp->lr);
 
-            func_ovl2_800EB528(fp->joints[nFTPartsJointTopN]);
+            ftParamsUpdateFighterPartsTransformAll(fp->joints[nFTPartsJointTopN]);
         }
     }
 }
@@ -264,7 +264,7 @@ void ftCommonDokanEndUpdatePlayerTag(GObj *fighter_gobj)
 void ftCommonDokanEndProcUpdate(GObj *fighter_gobj)
 {
     ftCommonDokanEndUpdatePlayerTag(fighter_gobj);
-    ftCommonDokanEndUpdateModelPitch(fighter_gobj);
+    ftCommonDokanEndUpdateModelYaw(fighter_gobj);
     ftAnimEndCheckSetStatus(fighter_gobj, mpCommonSetFighterWaitOrFall);
 }
 
@@ -288,7 +288,7 @@ void ftCommonDokanEndSetStatus(GObj *fighter_gobj)
         fp->status_vars.common.dokan.turn_stop_wait = FTCOMMON_DOKAN_TURN_STOP_WAIT_DEFAULT;
         fp->joints[nFTPartsJointTopN]->rotate.vec.f.y = 0.0F;
 
-        func_ovl2_800EB528(fp->joints[nFTPartsJointTopN]);
+        ftParamsUpdateFighterPartsTransformAll(fp->joints[nFTPartsJointTopN]);
     }
     else fp->status_vars.common.dokan.turn_stop_wait = 0;
 

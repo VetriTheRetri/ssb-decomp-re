@@ -7,7 +7,7 @@
 // // // // // // // // // // // //
 
 // 0x80147A70
-void ftCommonHammerTurnUpdateModelPitch(GObj *fighter_gobj)
+void ftCommonHammerTurnUpdateModelYaw(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -21,7 +21,7 @@ void ftCommonHammerTurnUpdateModelPitch(GObj *fighter_gobj)
         }
         fp->joints[nFTPartsJointTopN]->rotate.vec.f.y += FTCOMMON_HAMMER_TURN_ROTATE_STEP;
 
-        func_ovl2_800EB528(fp->joints[nFTPartsJointTopN]);
+        ftParamsUpdateFighterPartsTransformAll(fp->joints[nFTPartsJointTopN]);
     }
 }
 
@@ -30,7 +30,7 @@ void ftCommonHammerTurnProcUpdate(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftCommonHammerTurnUpdateModelPitch(fighter_gobj);
+    ftCommonHammerTurnUpdateModelYaw(fighter_gobj);
 
     if (fp->motion_vars.flags.flag1 == 0)
     {
@@ -53,7 +53,7 @@ void ftCommonHammerTurnSetStatus(GObj *fighter_gobj)
 
     ftMainSetStatus(fighter_gobj, nFTCommonStatusHammerTurn, ftHammerGetAnimFrame(fighter_gobj), 1.0F, ftHammerGetStatUpdateFlags(fighter_gobj));
     ftHammerSetColAnim(fighter_gobj);
-    ftCommonHammerTurnUpdateModelPitch(fighter_gobj);
+    ftCommonHammerTurnUpdateModelYaw(fighter_gobj);
 }
 
 // 0x80147B9C

@@ -8,7 +8,7 @@
 // // // // // // // // // // // //
 
 // 0x801462A0
-void ftCommonItemThrowUpdateModelPitch(GObj *fighter_gobj)
+void ftCommonItemThrowUpdateModelYaw(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -37,7 +37,7 @@ void ftCommonItemThrowUpdateModelPitch(GObj *fighter_gobj)
         }
         fp->joints[nFTPartsJointTopN]->rotate.vec.f.y -= F_CLC_DTOR32(180.0F / fp->status_vars.common.itemthrow.turn_rotate_step);
 
-        func_ovl2_800EB528(fp->joints[nFTPartsJointTopN]);
+        ftParamsUpdateFighterPartsTransformAll(fp->joints[nFTPartsJointTopN]);
     }
 }
 
@@ -52,7 +52,7 @@ void ftCommonItemThrowProcUpdate(GObj *fighter_gobj)
     s32 status_id;
     s32 angle;
 
-    ftCommonItemThrowUpdateModelPitch(fighter_gobj);
+    ftCommonItemThrowUpdateModelYaw(fighter_gobj);
 
     if (fp->motion_vars.flags.flag2 != 0)
     {
@@ -153,7 +153,7 @@ void ftCommonItemThrowSetStatus(GObj *fighter_gobj, s32 status_id)
     ftMainPlayAnimNoEffect(fighter_gobj);
 
     ftCommonItemThrowInitStatusVars(fp);
-    ftCommonItemThrowUpdateModelPitch(fighter_gobj);
+    ftCommonItemThrowUpdateModelYaw(fighter_gobj);
 }
 
 // 0x801466EC

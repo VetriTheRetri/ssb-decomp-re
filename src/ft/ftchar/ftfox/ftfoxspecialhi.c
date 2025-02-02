@@ -135,12 +135,12 @@ void ftFoxSpecialAirHiHoldSetStatus(GObj *fighter_gobj)
 }
 
 // 0x8015C054
-void ftFoxSpecialHiUpdateModelRoll(GObj *fighter_gobj)
+void ftFoxSpecialHiUpdateModelPitch(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->joints[4]->rotate.vec.f.x = (syUtilsArcTan2(fp->physics.vel_air.x, fp->physics.vel_air.y) * fp->lr) - F_CST_DTOR32(90.0F);
-    func_ovl2_800EB528(fp->joints[4]);
+    ftParamsUpdateFighterPartsTransformAll(fp->joints[4]);
 }
 
 // 0x8015C0B4
@@ -186,7 +186,7 @@ void ftFoxSpecialAirHiProcPhysics(GObj *fighter_gobj)
         fp->physics.vel_air.x -= (FTFOX_FIREFOX_DECELERATE_VEL * __cosf(fp->status_vars.fox.specialhi.angle) * fp->lr);
         fp->physics.vel_air.y -= (FTFOX_FIREFOX_DECELERATE_VEL * __sinf(fp->status_vars.fox.specialhi.angle));
     }
-    ftFoxSpecialHiUpdateModelRoll(fighter_gobj);
+    ftFoxSpecialHiUpdateModelPitch(fighter_gobj);
 }
 
 // 0x8015C1F4
@@ -263,7 +263,7 @@ void ftFoxSpecialAirHiProcMap(GObj *fighter_gobj)
 
         fp->status_vars.fox.specialhi.angle = syUtilsArcTan2(fp->physics.vel_air.y, fp->physics.vel_air.x * fp->lr);
 
-        ftFoxSpecialHiUpdateModelRoll(fighter_gobj);
+        ftFoxSpecialHiUpdateModelPitch(fighter_gobj);
     }
 }
 
@@ -346,7 +346,7 @@ void ftFoxSpecialAirHiSetStatusFromGround(GObj *fighter_gobj)
     fp->physics.vel_air.x = (__cosf(fp->status_vars.fox.specialhi.angle) * FTFOX_FIREFOX_VEL_XY * fp->lr);
     fp->physics.vel_air.y = (__sinf(fp->status_vars.fox.specialhi.angle) * FTFOX_FIREFOX_VEL_XY);
 
-    ftFoxSpecialHiUpdateModelRoll(fighter_gobj);
+    ftFoxSpecialHiUpdateModelPitch(fighter_gobj);
 
     fp->jumps_used = attr->jumps_max;
 }

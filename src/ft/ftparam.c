@@ -2152,125 +2152,121 @@ void ftParamKirbyTryMakeMapStarEffect(GObj *fighter_gobj)
 }
 
 // 0x800EB528
-void func_ovl2_800EB528(DObj *arg0)
+void ftParamsUpdateFighterPartsTransformAll(DObj *root_dobj)
 {
-    DObj *temp_a1;
-    DObj *temp_a1_2;
-    DObj *temp_v1_2;
-    DObj *temp_v1_3;
-    DObj *temp_v1_4;
-    DObj *temp_v1_6;
-    DObj *temp_v1_7;
-    DObj *temp_v1_8;
-    DObj *var_v0;
-    DObj *var_v0_2;
-    FTParts *temp_v1;
-    FTParts *temp_v1_5;
+    DObj *parent_sibling;
+    DObj *current_parent_sibling;
+    DObj *child;
+    DObj *sibling;
+    DObj *parent;
+    DObj *current_child;
+    DObj *current_sibling;
+    DObj *current_parent;
+    DObj *origin;
+    DObj *current;
+    FTParts *parts;
+    FTParts *current_parts;
 
-    var_v0 = arg0;
-    temp_v1 = arg0->user_data.p;
+    origin = root_dobj;
+    parts = root_dobj->user_data.p;
 
-    if (temp_v1 != NULL)
+    if (parts != NULL)
     {
-        if (temp_v1->transform_update_mode == 1)
+        if (parts->transform_update_mode == 1)
         {
-            temp_v1->transform_update_mode = 0;
+            parts->transform_update_mode = 0;
         }
-        temp_v1->unk_dobjtrans_word = 0;
+        parts->unk_dobjtrans_word = 0;
     }
-    temp_v1_2 = arg0->child;
+    child = root_dobj->child;
 
-    if (temp_v1_2 != NULL)
+    if (child != NULL)
     {
-        var_v0_2 = temp_v1_2;
+        current = child;
     }
-    else if (var_v0 == arg0)
+    else if (origin == root_dobj)
     {
-        var_v0_2 = NULL;
+        current = NULL;
     }
     else
     {
-        temp_v1_3 = arg0->sib_next;
+        sibling = root_dobj->sib_next;
 
-        if (temp_v1_3 != NULL)
+        if (sibling != NULL)
         {
-            var_v0_2 = temp_v1_3;
+            current = sibling;
         }
-        else
+        else while (TRUE)
         {
-        loop_10:
-            temp_v1_4 = var_v0->parent;
+            parent = origin->parent;
 
-            if (arg0 == temp_v1_4)
+            if (root_dobj == parent)
             {
-                var_v0_2 = NULL;
+                current = NULL;
+
+                break;
             }
             else
             {
-                temp_a1 = temp_v1_4->sib_next;
+                parent_sibling = parent->sib_next;
 
-                if (temp_a1 != NULL)
+                if (parent_sibling != NULL)
                 {
-                    var_v0_2 = temp_a1;
-                }
-                else
-                {
-                    var_v0 = temp_v1_4;
+                    current = parent_sibling;
 
-                    goto loop_10;
+                    break;
                 }
+                else origin = parent;
             }
         }
     }
-    while (var_v0_2 != NULL)
+    while (current != NULL)
     {
-        temp_v1_5 = var_v0_2->user_data.p;
+        current_parts = current->user_data.p;
 
-        if (temp_v1_5 != NULL)
+        if (current_parts != NULL)
         {
-            temp_v1_5->unk_dobjtrans_word = 0;
+            current_parts->unk_dobjtrans_word = 0;
         }
-        temp_v1_6 = var_v0_2->child;
+        current_child = current->child;
 
-        if (temp_v1_6 != NULL)
+        if (current_child != NULL)
         {
-            var_v0_2 = temp_v1_6;
+            current = current_child;
         }
-        else if (var_v0_2 == arg0)
+        else if (current == root_dobj)
         {
-            var_v0_2 = NULL;
+            current = NULL;
         }
         else
         {
-            temp_v1_7 = var_v0_2->sib_next;
+            current_sibling = current->sib_next;
 
-            if (temp_v1_7 != NULL)
+            if (current_sibling != NULL)
             {
-                var_v0_2 = temp_v1_7;
+                current = current_sibling;
             }
-            else
+            else while (TRUE)
             {
-            loop_24:
-                temp_v1_8 = var_v0_2->parent;
+                current_parent = current->parent;
 
-                if (arg0 == temp_v1_8)
+                if (root_dobj == current_parent)
                 {
-                    var_v0_2 = NULL;
+                    current = NULL;
+
+                    break;
                 }
                 else
                 {
-                    temp_a1_2 = temp_v1_8->sib_next;
+                    current_parent_sibling = current_parent->sib_next;
 
-                    if (temp_a1_2 != NULL)
+                    if (current_parent_sibling != NULL)
                     {
-                        var_v0_2 = temp_a1_2;
-                    }
-                    else
-                    {
-                        var_v0_2 = temp_v1_8;
+                        current = current_parent_sibling;
 
-                        goto loop_24;
+                        break;
                     }
+                    else current = current_parent;
                 }
             }
         }
@@ -2278,70 +2274,68 @@ void func_ovl2_800EB528(DObj *arg0)
 }
 
 // 0x800EB648
-void func_ovl2_800EB648(DObj *arg0)
+void ftParamsUpdateFighterPartsTransform(DObj *root_dobj)
 {
-    DObj *temp_a1;
-    DObj *temp_v1_2;
-    DObj *temp_v1_3;
-    DObj *temp_v1_4;
-    DObj *var_v0;
-    FTParts *temp_v1;
+    DObj *parent_sibling;
+    DObj *child;
+    DObj *sibling;
+    DObj *parent;
+    DObj *current;
+    FTParts *parts;
 
-    var_v0 = arg0;
+    current = root_dobj;
 
-    while (var_v0 != NULL)
+    while (current != NULL)
     {
-        temp_v1 = var_v0->user_data.p;
+        parts = current->user_data.p;
 
-        if (temp_v1 != NULL)
+        if (parts != NULL)
         {
-            if (temp_v1->transform_update_mode == 1)
+            if (parts->transform_update_mode == 1)
             {
-                temp_v1->transform_update_mode = 0;
+                parts->transform_update_mode = 0;
             }
-            temp_v1->unk_dobjtrans_word = 0;
+            parts->unk_dobjtrans_word = 0;
         }
-        temp_v1_2 = var_v0->child;
+        child = current->child;
 
-        if (temp_v1_2 != NULL)
+        if (child != NULL)
         {
-            var_v0 = temp_v1_2;
+            current = child;
         }
-        else if (var_v0 == arg0)
+        else if (current == root_dobj)
         {
-            var_v0 = NULL;
+            current = NULL;
         }
         else
         {
-            temp_v1_3 = var_v0->sib_next;
+            sibling = current->sib_next;
 
-            if (temp_v1_3 != NULL)
+            if (sibling != NULL)
             {
-                var_v0 = temp_v1_3;
+                current = sibling;
             }
-            else
+            else while (TRUE)
             {
-            loop_12:
-                temp_v1_4 = var_v0->parent;
+                parent = current->parent;
 
-                if (arg0 == temp_v1_4)
+                if (root_dobj == parent)
                 {
-                    var_v0 = NULL;
+                    current = NULL;
+
+                    break;
                 }
                 else
                 {
-                    temp_a1 = temp_v1_4->sib_next;
+                    parent_sibling = parent->sib_next;
 
-                    if (temp_a1 != NULL)
+                    if (parent_sibling != NULL)
                     {
-                        var_v0 = temp_a1;
-                    }
-                    else
-                    {
-                        var_v0 = temp_v1_4;
+                        current = parent_sibling;
 
-                        goto loop_12;
+                        break;
                     }
+                    else current = parent;
                 }
             }
         }
@@ -2634,8 +2628,8 @@ void func_ovl2_800EBD08(DObj *root_dobj, f32 arg1, Vec3f *vec, f32 arg3)
     }
     child2_dobj->rotate.vec.f.z = syUtilsArcCos(((SQUARE(sqrtxyz) - square_trax) - square_arg1) / (2.0F * trax * arg1));
 
-    func_ovl2_800EB528(child1_dobj);
-    func_ovl2_800EB528(child2_dobj);
+    ftParamsUpdateFighterPartsTransformAll(child1_dobj);
+    ftParamsUpdateFighterPartsTransformAll(child2_dobj);
 }
 
 // 0x800EC0EC

@@ -148,7 +148,7 @@ void ftPikachuSpecialAirHiProcUpdate(GObj *fighter_gobj)
 }
 
 // 0x80152AA0
-void ftPikachuSpecialHiUpdateModelRollScale(GObj *fighter_gobj)
+void ftPikachuSpecialHiUpdateModelPitchScale(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -158,20 +158,20 @@ void ftPikachuSpecialHiUpdateModelRollScale(GObj *fighter_gobj)
     fp->joints[FTPIKACHU_QUICKATTACK_BASE_JOINT]->scale.vec.f.y = FTPIKACHU_QUICKATTACK_SCALE_Y;
     fp->joints[FTPIKACHU_QUICKATTACK_BASE_JOINT]->scale.vec.f.z = FTPIKACHU_QUICKATTACK_SCALE_Z;
 
-    func_ovl2_800EB528(fp->joints[FTPIKACHU_QUICKATTACK_BASE_JOINT]);
+    ftParamsUpdateFighterPartsTransformAll(fp->joints[FTPIKACHU_QUICKATTACK_BASE_JOINT]);
 }
 
 // 0x80152B24
 void ftPikachuSpecialHiProcPhysics(GObj *fighter_gobj)
 {
     ftPhysicsApplyGroundVelTransferAir(fighter_gobj);
-    ftPikachuSpecialHiUpdateModelRollScale(fighter_gobj);
+    ftPikachuSpecialHiUpdateModelPitchScale(fighter_gobj);
 }
 
 // 0x80152B4C
 void ftPikachuSpecialAirHiProcPhysics(GObj *fighter_gobj)
 {
-    ftPikachuSpecialHiUpdateModelRollScale(fighter_gobj);
+    ftPikachuSpecialHiUpdateModelPitchScale(fighter_gobj);
 }
 
 // 0x80152B6C

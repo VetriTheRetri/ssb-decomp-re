@@ -253,7 +253,7 @@ void ftCommonGuardUpdateJoints(GObj *fighter_gobj)
         yrotn_joint->anim_wait = AOBJ_ANIM_NULL;
 
         ftCommonGuardUpdateShieldCollision(fp);
-        func_ovl2_800EB528(fp->joints[nFTPartsJointYRotN]);
+        ftParamsUpdateFighterPartsTransformAll(fp->joints[nFTPartsJointYRotN]);
     }
 }
 
@@ -354,7 +354,7 @@ void ftCommonGuardInitJoints(GObj *fighter_gobj)
         }
     }
     ftCommonGuardUpdateShieldCollision(fp);
-    func_ovl2_800EB648(fp->joints[nFTPartsJointXRotN]);
+    ftParamsUpdateFighterPartsTransform(fp->joints[nFTPartsJointXRotN]);
 }
 
 // 0x80148A88

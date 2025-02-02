@@ -2411,9 +2411,11 @@ void mnVSResultsMakeFighterCamera(void)
 	cobj->vec.eye.x = 0.0F;
 	cobj->vec.eye.y = 0.0F;
 	cobj->vec.eye.z = 1800.0F;
+
 	cobj->vec.at.x = 0.0F;
 	cobj->vec.at.y = 0.0F;
 	cobj->vec.at.z = 0.0F;
+	
 	cobj->vec.up.x = 0.0F;
 	cobj->vec.up.y = 1.0F;
 	cobj->vec.up.z = 0.0F;

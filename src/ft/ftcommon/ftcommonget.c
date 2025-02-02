@@ -288,13 +288,13 @@ void ftCommonLiftWaitSetStatus(GObj *fighter_gobj)
 }
 
 // 0x80146130
-void ftCommonLiftTurnUpdateModelPitch(FTStruct *fp)
+void ftCommonLiftTurnUpdateModelYaw(FTStruct *fp)
 {
     fp->status_vars.common.lift.turn_frames--;
 
     fp->joints[nFTPartsJointTopN]->rotate.vec.f.y += FTCOMMON_LIFT_TURN_STEP;
 
-    func_ovl2_800EB528(fp->joints[nFTPartsJointTopN]);
+    ftParamsUpdateFighterPartsTransformAll(fp->joints[nFTPartsJointTopN]);
 
     if (fp->status_vars.common.lift.turn_frames == (FTCOMMON_LIFT_TURN_FRAMES / 2))
     {
@@ -308,7 +308,7 @@ void ftCommonLiftTurnProcUpdate(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftCommonLiftTurnUpdateModelPitch(fp);
+    ftCommonLiftTurnUpdateModelYaw(fp);
 
     if (fp->status_vars.common.lift.turn_frames == 0)
     {
@@ -333,7 +333,7 @@ void ftCommonLiftTurnSetStatus(GObj *fighter_gobj)
 
     fp->status_vars.common.lift.turn_frames = FTCOMMON_LIFT_TURN_FRAMES;
 
-    ftCommonLiftTurnUpdateModelPitch(fp);
+    ftCommonLiftTurnUpdateModelYaw(fp);
 }
 
 // 0x8014625C

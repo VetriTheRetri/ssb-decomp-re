@@ -19,7 +19,7 @@ f32 dFTPurinJumpAerialFVelocities[/* */] = { 60.0F, 40.0F, 20.0F, 0.0F };
 // // // // // // // // // // // //
 
 // 0x8013FA90
-void ftCommonJumpAerialUpdateModelPitch(FTStruct *fp)
+void ftCommonJumpAerialUpdateModelYaw(FTStruct *fp)
 {
     if (fp->status_vars.common.jumpaerial.turn_frames != 0)
     {
@@ -27,7 +27,7 @@ void ftCommonJumpAerialUpdateModelPitch(FTStruct *fp)
 
         fp->joints[nFTPartsJointTopN]->rotate.vec.f.y += FTCOMMON_JUMPAERIAL_TURN_ROTATE_STEP;
 
-        func_ovl2_800EB528(fp->joints[nFTPartsJointTopN]);
+        ftParamsUpdateFighterPartsTransformAll(fp->joints[nFTPartsJointTopN]);
 
         if (fp->status_vars.common.jumpaerial.turn_frames == (FTCOMMON_JUMPAERIAL_TURN_FRAMES / 2))
         {
@@ -41,7 +41,7 @@ void ftCommonJumpAerialProcUpdate(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftCommonJumpAerialUpdateModelPitch(fp);
+    ftCommonJumpAerialUpdateModelYaw(fp);
     ftAnimEndSetFall(fighter_gobj);
 }
 
@@ -175,7 +175,7 @@ void ftCommonJumpAerialSetStatus(GObj *fighter_gobj, s32 input_source)
     }
     else fp->status_vars.common.jumpaerial.turn_frames = 0;
 
-    ftCommonJumpAerialUpdateModelPitch(fp);
+    ftCommonJumpAerialUpdateModelYaw(fp);
 }
 
 // 0x8013FF38
@@ -247,7 +247,7 @@ void ftCommonJumpAerialMultiSetStatus(GObj *fighter_gobj, s32 input_source)
     }
     else fp->status_vars.common.jumpaerial.turn_frames = 0;
 
-    ftCommonJumpAerialUpdateModelPitch(fp);
+    ftCommonJumpAerialUpdateModelYaw(fp);
 }
 
 // 0x8014012C

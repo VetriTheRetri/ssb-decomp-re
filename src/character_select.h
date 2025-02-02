@@ -29,7 +29,7 @@ typedef struct mnCharPanel1P
 	s32 holder_player;
 	s32 held_player;
 	sb32 unk_0x88;
-	sb32 selected_animation_started;
+	sb32 is_fighter_selected;
 	f32 token_x_velocity;
 	f32 token_y_velocity;
 	f32 cursor_pickup_x;
@@ -38,9 +38,9 @@ typedef struct mnCharPanel1P
 	alSoundEffect *p_sfx;
 	u16 sfx_id;
 	u16 unk_0xAE;
-	sb32 is_b_held;
+	sb32 is_hold_b;
 	u32 unk_0xB4;
-	s32 b_held_frame_count;
+	s32 hold_b_tics;
 
 } mnCharPanel1P;
 
@@ -80,7 +80,7 @@ typedef struct mnCharPanelTraining
 	s32 held_player;
 	s32 player_type;
 	sb32 unk_0x88;
-	sb32 selected_animation_started;
+	sb32 is_fighter_selected;
 	f32 token_x_velocity;
 	f32 token_y_velocity;
 	f32 cursor_pickup_x;
@@ -90,9 +90,9 @@ typedef struct mnCharPanelTraining
 	alSoundEffect *p_sfx;
 	u16 sfx_id;
 	u16 unk_0xAE;
-	sb32 is_b_held;
+	sb32 is_hold_b;
 	u32 unk_0xB4;
-	s32 b_held_frame_count;
+	s32 hold_b_tics;
 
 } mnCharPanelTraining;
 
@@ -133,7 +133,7 @@ typedef struct mnCharPanelBattle
 	s32 held_player;
 	s32 player_type;
 	sb32 unk_0x88;
-	sb32 selected_animation_started;
+	sb32 is_fighter_selected;
 	f32 token_x_velocity;
 	f32 token_y_velocity;
 	f32 cursor_pickup_x;
@@ -143,13 +143,13 @@ typedef struct mnCharPanelBattle
 	alSoundEffect* p_sfx;
 	u16 sfx_id;
 	u16 unk_0xAE;
-	sb32 is_b_held;
+	sb32 is_hold_b;
 	u32 unk_0xB4;
-	s32 b_held_frame_count;
+	s32 hold_b_tics;
 
 } mnCharPanelBattle;
 
-typedef struct MNBonusPlayerSlot
+typedef struct MNPlayersSlotBonus
 {
 	GObj *cursor;
 	GObj *token;
@@ -158,7 +158,7 @@ typedef struct MNBonusPlayerSlot
 	GObj *panel_doors;
 	GObj *panel;
 	GObj *white_square;
-	void* figatree_heap;
+	void *figatree_heap;
 	s32 fkind;
 	u32 costume;
 	s32 cursor_state;
@@ -173,21 +173,20 @@ typedef struct MNBonusPlayerSlot
 	s32 recall_frame_counter;
 	s32 holder_player;
 	s32 held_player;
-	sb32 unk_0x88;
-	sb32 selected_animation_started;
+	sb32 is_fighter_selected;	// Whether fighter has been selected with the puck
+	sb32 is_status_selected;	// Whether "Selected" state has been set
 	f32 token_x_velocity;
 	f32 token_y_velocity;
 	f32 cursor_pickup_x;
 	f32 cursor_pickup_y;
-	sb32 unk_0xA0;
+	sb32 is_cursor_adjusting;	// Whether cursor is auto-positioning to puck
 	alSoundEffect *p_sfx;
 	u16 sfx_id;
-	u16 unk_0xAE;
-	sb32 is_b_held;
-	u32 unk_0xB4;
-	s32 b_held_frame_count;
+	sb32 is_hold_b;
+	u32 unk_0x80;
+	s32 hold_b_tics;
 
-} MNBonusPlayerSlot;
+} MNPlayersSlotBonus;
 
 
 typedef enum mnSelectButton

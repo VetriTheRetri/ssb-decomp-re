@@ -91,8 +91,8 @@ extern void ftParamUpdate1PGameDamageStats(FTStruct *fp, s32 damage_player, s32 
 extern void ftParamGetEffectJointPosition(FTStruct *fp, Vec3f *pos);
 extern void* ftParamMakeEffect(GObj *fighter_gobj, s32 effect_id, s32 joint_id, Vec3f *effect_pos, Vec3f *effect_scatter, s32 lr, sb32 is_scale_pos, u32 arg7);
 extern void ftParamKirbyTryMakeMapStarEffect(GObj *fighter_gobj);
-extern void func_ovl2_800EB528(DObj *arg0);
-extern void func_ovl2_800EB648(DObj *arg0);
+extern void ftParamsUpdateFighterPartsTransformAll(DObj *arg0);
+extern void ftParamsUpdateFighterPartsTransform(DObj *arg0);
 extern void ftParamSetAnimLocks(FTStruct *fp);
 extern void ftParamClearAnimLocks(FTStruct *fp);
 extern void func_ovl2_800EB924(CObj *cobj, Mtx44f mtx, Vec3f *vec, f32 *rx, f32 *ry);

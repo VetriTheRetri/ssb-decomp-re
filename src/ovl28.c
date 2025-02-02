@@ -871,7 +871,7 @@ s32 mn1PTrainingPlayersGetAvailableCostume(s32 fkind, s32 player)
 }
 
 // 0x8013361C
-s32 mn1PTrainingPlayersGetSelectedAnimation(s32 fkind)
+s32 mn1PTrainingPlayersGetStatusSelected(s32 fkind)
 {
 	switch (fkind)
 	{
@@ -906,11 +906,11 @@ void mn1PTrainingPlayersRotateFighter(GObj *fighter_gobj)
 	{
 		if (DObjGetStruct(fighter_gobj)->rotate.vec.f.y < F_CLC_DTOR32(0.1F))
 		{
-			if (!panel_info->selected_animation_started)
+			if (!panel_info->is_fighter_selected)
 			{
-				scSubsysFighterSetStatus(panel_info->player, mn1PTrainingPlayersGetSelectedAnimation(panel_info->fkind));
+				scSubsysFighterSetStatus(panel_info->player, mn1PTrainingPlayersGetStatusSelected(panel_info->fkind));
 
-				panel_info->selected_animation_started = TRUE;
+				panel_info->is_fighter_selected = TRUE;
 			}
 		}
 		else
@@ -921,9 +921,9 @@ void mn1PTrainingPlayersRotateFighter(GObj *fighter_gobj)
 			{
 				DObjGetStruct(fighter_gobj)->rotate.vec.f.y = 0.0F;
 
-				scSubsysFighterSetStatus(panel_info->player, mn1PTrainingPlayersGetSelectedAnimation(panel_info->fkind));
+				scSubsysFighterSetStatus(panel_info->player, mn1PTrainingPlayersGetStatusSelected(panel_info->fkind));
 
-				panel_info->selected_animation_started = TRUE;
+				panel_info->is_fighter_selected = TRUE;
 			}
 		}
 	}
@@ -989,7 +989,7 @@ void mn1PTrainingPlayersSpawnFighter(GObj* fighter_gobj, s32 player, s32 fkind, 
 }
 
 // 0x801339A0
-void mn1PTrainingPlayersCreateFighterViewport()
+void mn1PTrainingPlayersMakeFighterCamera()
 {
 	CObj *cobj = CObjGetStruct((GObj*)gcMakeCameraGObj(0x401U, NULL, 0x10, 0x80000000U, func_80017EC0, 0x1E, 0x48600, -1, 1, 1, 0, 1, 0));
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
@@ -1113,7 +1113,7 @@ void mn1PTrainingPlayersSyncFighterDisplay(s32 player)
 	if (var_v0 == 0)
 	{
 		mn1PTrainingPlayersSpawnFighter(gMNTrainingPanels[player].player, player, gMNTrainingPanels[player].fkind, mn1PTrainingPlayersGetAvailableCostume(gMNTrainingPanels[player].fkind, player));
-		gMNTrainingPanels[player].selected_animation_started = FALSE;
+		gMNTrainingPanels[player].is_fighter_selected = FALSE;
 	}
 }
 
@@ -2762,7 +2762,7 @@ void mn1PTrainingPlayersFuncStart(void)
 	mn1PTrainingPlayersMakeGateViewport();
 	mn1PTrainingPlayersMakeGateDoorsSYRdpViewport();
 	mn1PTrainingPlayersCreateTypeButtonViewport();
-	mn1PTrainingPlayersCreateFighterViewport();
+	mn1PTrainingPlayersMakeFighterCamera();
 	mn1PTrainingPlayersCreateTeamButtonViewPort();
 	mn1PTrainingPlayersCreateHandicapCPULevelViewport();
 	mn1PTrainingPlayersCreatePortraitWallpaperCamera();

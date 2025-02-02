@@ -184,7 +184,7 @@ void ftFoxSpecialLwTurnDecTurnFrames(GObj *fighter_gobj)
     }
     fp->joints[nFTPartsJointTopN]->rotate.vec.f.y += (F_CLC_DTOR32(-(180.0F / (f32)FTFOX_REFLECTOR_TURN_FRAMES)));
 
-    func_ovl2_800EB528(fp->joints[nFTPartsJointTopN]);
+    ftParamsUpdateFighterPartsTransformAll(fp->joints[nFTPartsJointTopN]);
 }
 
 // 0x8015CFC0

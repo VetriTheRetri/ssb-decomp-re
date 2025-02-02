@@ -610,7 +610,7 @@ void func_ovl8_8037BB78()
 }
 
 // 0x8037BBF0
-s32 func_ovl8_8037BBF0(s32 arg0, s32 arg1, u16 arg2, u16 arg3)
+s32 func_ovl8_8037BBF0(dbUnknown8_S28* arg0, s32* arg1, u16 arg2, u16 arg3)
 {
     dbUnknown5 *temp_v0;
     s32 sp20;
@@ -641,19 +641,18 @@ s32 func_ovl8_8037BBF0(s32 arg0, s32 arg1, u16 arg2, u16 arg3)
 }
 
 // 0x8037BCB8
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037BCB8.s")
-// s32 func_ovl8_8037BCB8()
-// {
-//     dbUnknown8_S28 sp18;
+s32 func_ovl8_8037BCB8()
+{
+    dbUnknown8_S28 sp18;
 
-//     if (D_8038EFCC_1AB81C != NULL)
-//         return -1;
+    if (D_8038EFCC_1AB81C != NULL)
+        return -1;
 
-//     sp18 = D_ovl8_8038A144;
-//     sp18.str = 'Arow'; // 0x41726F77
+    sp18 = D_ovl8_8038A144;
+    sp18.str = 'Arow'; // 0x41726F77
 
-//     return func_ovl8_8037BBF0(&sp18, &D_ovl8_80387EB8, 4, 1);
-// }
+    return func_ovl8_8037BBF0(&sp18, &D_ovl8_80387EB8, 4, 1);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037BD44.s")
 

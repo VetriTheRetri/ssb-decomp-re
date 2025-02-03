@@ -30,6 +30,12 @@ extern dbUnknownLinkStruct* D_8038EFC8_1AB818;
 extern dbTestMenu* D_8038EFCC_1AB81C;
 extern s32 D_ovl8_80387EB8;
 extern dbUnknown8_S28 D_ovl8_8038A144;
+extern s16 D_ovl8_80389F30;
+extern s16 D_ovl8_80389F34;
+extern s16 D_ovl8_80389F38;
+extern s16 D_ovl8_80389F3C;
+extern s16 D_ovl8_80389F40;
+extern s16 D_ovl8_80389F44;
 
 // 0x80376B60
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80376B60.s")
@@ -756,12 +762,44 @@ dbUnknownLinkStruct* func_ovl8_8037C0CC()
     return D_8038EFC8_1AB818;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037C0D8.s")
+// 0x8037C0D8
+void func_ovl8_8037C0D8(u16 arg0, u16 arg1, u16 arg2, u16 arg3, s16 arg4, s16 arg5)
+{
+    if (D_8038EFCC_1AB81C != NULL)
+    {
+        D_ovl8_80389F30 = arg0;
+        D_ovl8_80389F34 = arg1;
+        D_ovl8_80389F3C = arg2;
+        D_ovl8_80389F38 = arg3;
+        D_ovl8_80389F40 = arg4;
+        D_ovl8_80389F44 = arg5;
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037C144.s")
+// 0x8037C144
+void func_ovl8_8037C144(s32 arg0)
+{
+    if (D_8038EFCC_1AB81C != NULL)
+    {
+        func_ovl8_80375D44(D_8038EFCC_1AB81C, arg0);
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037C174.s")
+// 0x8037C174
+s32 func_ovl8_8037C174()
+{
+    if (D_8038EFCC_1AB81C == NULL)
+    {
+        return 0;
+    }
+    return func_ovl8_80375D4C(D_8038EFCC_1AB81C);
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037C1AC.s")
+// 0x8037C1AC
+void func_ovl8_8037C1AC(s32 arg0)
+{
+    func_ovl8_80375D54(D_8038EFCC_1AB81C, arg0);
+}
 
+// 0x8037C1D4
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037C1D4.s")

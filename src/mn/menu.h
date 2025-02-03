@@ -104,10 +104,24 @@ extern intptr_t lMNPlayersCommonDigit7Sprite;        	// 0x00005AA8
 extern intptr_t lMNPlayersCommonDigit8Sprite;        	// 0x00005BB8
 extern intptr_t lMNPlayersCommonDigit9Sprite;        	// 0x00005CC8
 
-extern intptr_t lMNPlayersCommon1PGateLUT;				// 0x000103F8
-extern intptr_t lMNPlayersCommon2PGateLUT;				// 0x00010420
-extern intptr_t lMNPlayersCommon3PGateLUT;				// 0x00010470
-extern intptr_t lMNPlayersCommon4PGateLUT;				// 0x00010448
+extern intptr_t lMNPlayersCommonCursorPointSprite;      // 0x00006F88
+extern intptr_t lMNPlayersCommonCursorGrabSprite;      // 0x000076E8
+extern intptr_t lMNPlayersCommonCursorHoverSprite;		// 0x00008168
+
+extern intptr_t lMNPlayersCommonCursorNum1PSprite;      // 0x00008268
+extern intptr_t lMNPlayersCommonCursorNum2PSprite;      // 0x00008368
+extern intptr_t lMNPlayersCommonCursorNum3PSprite;      // 0x00008468
+extern intptr_t lMNPlayersCommonCursorNum4PSprite;      // 0x00008568
+
+extern intptr_t lMNPlayersCommon1PPuckSprite;   		// 0x00009048
+extern intptr_t lMNPlayersCommon2PPuckSprite;   		// 0x00009B28
+extern intptr_t lMNPlayersCommon3PPuckSprite;   		// 0x0000A608
+extern intptr_t lMNPlayersCommon4PPuckSprite;   		// 0x0000B0E8
+
+extern intptr_t lMNPlayersCommonGate1PLUT;				// 0x000103F8
+extern intptr_t lMNPlayersCommonGate2PLUT;				// 0x00010420
+extern intptr_t lMNPlayersCommonGate3PLUT;				// 0x00010470
+extern intptr_t lMNPlayersCommonGate4PLUT;				// 0x00010448
 
 extern intptr_t lMNPlayersGameModeRoyalSprite;			// 0x00000280
 extern intptr_t lMNPlayersGameModeTeamBattleSprite;		// 0x000004E0

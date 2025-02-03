@@ -17,10 +17,9 @@ void func_ovl8_8037A9C0(db4Shorts*, s32, s32);
 void func_ovl8_8037A9F4(DBMenuPosition*, DBMenuPosition*);
 void func_ovl8_8037AA28(db4Shorts*, db4Shorts*);
 s32 func_ovl8_8037AA5C(DBMenuPosition*);
-
+void func_ovl8_8037BD44();
 void func_ovl8_8037BEC8();
 void func_ovl8_8037BF34();
-
 extern s32 D_ovl8_80389F5C;
 extern s32 D_ovl8_80389F60;
 extern s32 D_ovl8_80389F64;
@@ -28,10 +27,9 @@ extern void* D_ovl8_80389FB4;
 extern void* D_ovl8_8038A068;
 extern dbTestMenu* D_8038EFC4_1AB814;
 extern dbUnknownLinkStruct* D_8038EFC8_1AB818;
-extern dbUnknown5* D_8038EFCC_1AB81C;
+extern dbTestMenu* D_8038EFCC_1AB81C;
 extern s32 D_ovl8_80387EB8;
 extern dbUnknown8_S28 D_ovl8_8038A144;
-
 
 // 0x80376B60
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80376B60.s")
@@ -612,9 +610,9 @@ void func_ovl8_8037BB78()
 // 0x8037BBF0
 s32 func_ovl8_8037BBF0(dbUnknown8_S28* arg0, s32* arg1, u16 arg2, u16 arg3)
 {
-    dbUnknown5 *temp_v0;
+    dbTestMenu *temp_v0;
     s32 sp20;
-    dbUnknown5 *var_v1;
+    dbTestMenu *var_v1;
 
     temp_v0 = func_ovl8_803717A0(0x7C);
 
@@ -654,13 +652,62 @@ s32 func_ovl8_8037BCB8()
     return func_ovl8_8037BBF0(&sp18, &D_ovl8_80387EB8, 4, 1);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037BD44.s")
+// 0x8037BD44
+void func_ovl8_8037BD44()
+{
+    dbFunction* temp_v0;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037BD94.s")
+    if (D_8038EFCC_1AB81C != NULL)
+    {
+        if (D_8038EFCC_1AB81C != NULL)
+        {
+            temp_v0 = D_8038EFCC_1AB81C->db_func;
+            temp_v0[1].unk_dbfunc_0x4(temp_v0[1].unk_dbfunc_0x0 + (uintptr_t) D_8038EFCC_1AB81C, 3);
+        }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037BDF4.s")
+        D_8038EFCC_1AB81C = NULL;
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037BE34.s")
+// 0x8037BD94
+void func_ovl8_8037BD94(GObj* arg0)
+{
+    void *temp_s0 = arg0->user_data.p;
+
+    while (TRUE)
+    {
+        func_ovl8_8037C4A4(temp_s0, arg0);
+        gcStopCurrentGObjThread(1);
+    }
+}
+
+// 0x8037BDF4
+void func_ovl8_8037BDF4(GObj* arg0)
+{
+    void *temp_s0 = arg0->user_data.p;
+
+    while (TRUE)
+    {
+        func_ovl8_8037CFAC(temp_s0);
+        gcStopCurrentGObjThread(1);
+    }
+}
+
+// 0x8037BE34
+void func_ovl8_8037BE34(GObj* arg0)
+{
+    dbUnknown5 *temp_s0;
+    dbFunction *temp_v0;
+
+    temp_s0 = arg0->user_data.p;
+
+    while (TRUE)
+    {
+        temp_v0 = temp_s0->db_func;
+        temp_v0[8].unk_dbfunc_0x4(temp_v0[8].unk_dbfunc_0x0 + (uintptr_t)temp_s0, arg0);
+        gcStopCurrentGObjThread(1);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037BE94.s")
 

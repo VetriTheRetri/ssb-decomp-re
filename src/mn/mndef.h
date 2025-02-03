@@ -264,10 +264,32 @@ typedef enum MNVSResultsKind
 
 } MNVSResultsKind;
 
+typedef enum mnSelectButton
+{
+	mnSelect_CU,                // C-Up
+	mnSelect_CR,                // C-Right
+	mnSelect_CD,                // C-Down
+	mnSelect_CL,                // C-Left
+	mnSelect_A                  // A
+
+} mnSelectButton;
+
+typedef enum mnCursorState
+{
+	mnCursorStatePointer,         // Pointer
+	mnCursorStateHoldingPuck,    // Holding puck
+	mnCursorStateNotHoldingPuck  // Not holding puck
+
+} mnCursorState;
+
 typedef struct MNTitleSpriteDesc			MNTitleSpriteDesc;
 typedef struct MNCongraPicture				MNCongraPicture;
 typedef struct MNCharactersMotion			MNCharactersMotion;
 typedef struct MNCharactersSpecialMotion	MNCharactersSpecialMotion;
 typedef struct MNVSResultsScore				MNVSResultsScore;
+typedef struct MNPlayersSlot1PGame			MNPlayersSlot1PGame;
+typedef struct MNPlayersSlotTraining		MNPlayersSlotTraining;
+typedef struct MNPlayersSlotVS				MNPlayersSlotVS;
+typedef struct MNPlayersSlotBonus			MNPlayersSlotBonus;
 
 #endif

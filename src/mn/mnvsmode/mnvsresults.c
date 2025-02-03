@@ -3234,7 +3234,7 @@ void mnVSResultsProcRun(GObj *gobj)
 		else
 		{
 			gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
-			gSCManagerSceneData.scene_curr = nSCKindVSPlayers;
+			gSCManagerSceneData.scene_curr = nSCKindPlayersVS;
 		}
 		func_800266A0_272A0();
 		syAudioStopSongAll();

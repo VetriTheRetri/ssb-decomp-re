@@ -1311,12 +1311,12 @@ void mnMapsInitVars(void)
 	}
 	switch (gSCManagerSceneData.scene_prev)
 	{
-	case nSCKind1PTrainingPlayers:
+	case nSCKindPlayers1PTraining:
 		sMNMapsIsTrainingMode = TRUE;
 		sMNMapsCursorSlot = mnMapsGetSlot(gSCManagerSceneData.maps_training_gkind);
 		break;
 		
-	case nSCKindVSPlayers:
+	case nSCKindPlayersVS:
 		sMNMapsIsTrainingMode = FALSE;
 		sMNMapsCursorSlot = mnMapsGetSlot(gSCManagerSceneData.maps_vsmode_gkind);
 		break;
@@ -1396,12 +1396,12 @@ void mnMapsProcRun(GObj *gobj)
 			if (sMNMapsIsTrainingMode == TRUE)
 			{
 				gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
-				gSCManagerSceneData.scene_curr = nSCKind1PTrainingPlayers;
+				gSCManagerSceneData.scene_curr = nSCKindPlayers1PTraining;
 			}
 			else
 			{
 				gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
-				gSCManagerSceneData.scene_curr = nSCKindVSPlayers;
+				gSCManagerSceneData.scene_curr = nSCKindPlayersVS;
 			}
 			syTaskmanSetLoadScene();
 		}

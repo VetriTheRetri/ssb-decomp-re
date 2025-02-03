@@ -1184,7 +1184,7 @@ void mnVSModeMain(GObj *gobj)
                     sMNVSModeExitInterrupt = TRUE;
 
                     gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
-                    gSCManagerSceneData.scene_curr = nSCKindVSPlayers;
+                    gSCManagerSceneData.scene_curr = nSCKindPlayersVS;
 
                     return;
                 case nMNVSModeOptionOptions:
@@ -1519,7 +1519,7 @@ void mnVSModeFuncStart(void)
     mnVSModeMakeVSOptionsButton();
     mnVSModeMakeUnusedGObj();
 
-    if (gSCManagerSceneData.scene_prev == nSCKindVSPlayers)
+    if (gSCManagerSceneData.scene_prev == nSCKindPlayersVS)
     {
         syAudioPlaySong(0, nSYAudioBGMModeSelect);
     }

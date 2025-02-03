@@ -9,6 +9,8 @@
 #include <mn/mnvsmode/mnvsmode.h>
 #include <mn/mnvsmode/mnvsresults.h>
 
+#include <mn/mnplayers/mnplayers1pbonus.h>
+
 #include <mn/mnmaps/mnmaps.h>
 
 #include <mn/mncommon/mntitle.h>

@@ -1,11 +1,8 @@
-#include <sys/develop.h>
-#include <ft/ftdef.h>
 #include <ft/fighter.h>
+#include <if/interface.h>
+#include <mn/menu.h>
 #include <sc/scene.h>
-#include <lb/library.h>
 #include <sys/video.h>
-
-#include "character_select.h"
 
 // Externs
 
@@ -59,7 +56,7 @@ void mn1PMakePortraitFlash(s32 player);
 void mn1PSyncNameAndLogo(s32 player);
 s32 mn1PGetPrevTimerValue(s32 arg0);
 s32 mn1PGetNextTimerValue(s32 arg0);
-sb32 mn1PIsReadyToFight();
+sb32 mn1PIsReady();
 void mn1PSaveMatchInfo();
 
 
@@ -2617,7 +2614,7 @@ void mn1PMakeCursorViewport()
 }
 
 // 0x80137308
-void mn1PCreateDroppedPuckViewport()
+void mn1PCreatePuckCamera()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonDrawSprite, 0xF, GOBJ_PRIORITY_DEFAULT, ~0, 0, 1, 0, 1, 0);
 	CObj *cobj = CObjGetStruct(camera_gobj);
@@ -2625,7 +2622,7 @@ void mn1PCreateDroppedPuckViewport()
 }
 
 // 0x801373A8
-void mn1PCreateReadyToFightViewport()
+void mn1PCreateReadyViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonDrawSprite, 0xA, 0x800000000, -1, 0, 1, 0, 1, 0);
 	CObj *cobj = CObjGetStruct(camera_gobj);
@@ -2703,7 +2700,7 @@ void mn1PMakePuck(s32 player)
 void func_ovl27_801376F0() {}
 
 // 0x801376F8
-void mn1PAutopositionPuckFromPortraitEdges(s32 player)
+void mn1PPuckActorAdjustPortraitEdge(s32 player)
 {
 	s32 portrait = mn1PGetPortraitId(gMN1PPanel.fkind);
 	f32 portrait_edge_x = ((portrait >= 6) ? portrait - 6 : portrait) * 45 + 25;
@@ -2730,13 +2727,13 @@ void mn1PAutopositionPuckFromPortraitEdges(s32 player)
 }
 
 // 0x801378A8
-void mn1PAutopositionPlacedPuck(s32 player)
+void mn1PPuckActorAdjustPlaced(s32 player)
 {
-	mn1PAutopositionPuckFromPortraitEdges(player);
+	mn1PPuckActorAdjustPortraitEdge(player);
 }
 
 // 0x801378C8
-void mn1PAutopositionRecalledPuck(s32 player)
+void mn1PPuckActorAdjustRecall(s32 player)
 {
 	f32 new_y_velocity, new_x_velocity;
 
@@ -2771,23 +2768,23 @@ void mn1PAutopositionRecalledPuck(s32 player)
 }
 
 // 0x8013799C
-void mn1PAutopositionPuck(s32 player)
+void mn1PPuckActorProcUpdate(s32 player)
 {
 	if (gMN1PPanel.is_recalling)
-		mn1PAutopositionRecalledPuck(gMN1PHumanPanelPort);
+		mn1PPuckActorAdjustRecall(gMN1PHumanPanelPort);
 
 	if (gMN1PPanel.is_selected)
-		mn1PAutopositionPlacedPuck(0);
+		mn1PPuckActorAdjustPlaced(0);
 }
 
 // 0x801379E8
-void mn1PMakePuckAutopositionRoutine()
+void mn1PMakePuckActor()
 {
-	gcAddGObjProcess(gcMakeGObjSPAfter(0U, NULL, 0x18U, 0x80000000U), mn1PAutopositionPuck, 1, 1);
+	gcAddGObjProcess(gcMakeGObjSPAfter(0U, NULL, 0x18U, 0x80000000U), mn1PPuckActorProcUpdate, 1, 1);
 }
 
 // 0x80137A2C
-void mn1PSyncWhiteCircleSizeAndDisplay(GObj* white_circle_gobj)
+void mn1PFighterSpotlightProcUpdate(GObj* white_circle_gobj)
 {
 	f32 sizes[12] = {
 
@@ -2808,7 +2805,7 @@ void mn1PSyncWhiteCircleSizeAndDisplay(GObj* white_circle_gobj)
 }
 
 // 0x80137B04
-void mn1PCreateWhiteCircles()
+void mn1PMakeFighterSpotlight()
 {
 	GObj* white_circle_gobj;
 
@@ -2820,7 +2817,7 @@ void mn1PCreateWhiteCircles()
 
 	gcAddMObjAll(white_circle_gobj, lbRelocGetFileData(void*, gMN1PFiles[10], &FILE_016_WHITE_CIRCLE_OFFSET_1));
 
-	gcAddGObjProcess(white_circle_gobj, mn1PSyncWhiteCircleSizeAndDisplay, 1, 1);
+	gcAddGObjProcess(white_circle_gobj, mn1PFighterSpotlightProcUpdate, 1, 1);
 
 	gcPlayAnimAll(white_circle_gobj);
 
@@ -2830,9 +2827,9 @@ void mn1PCreateWhiteCircles()
 }
 
 // 0x80137BE4
-void mn1PBlinkIfReadyToFight(GObj* gobj)
+void mn1PReadyProcUpdate(GObj* gobj)
 {
-	if (mn1PIsReadyToFight())
+	if (mn1PIsReady())
 	{
 		gMN1PPressStartFlashTimer++;
 
@@ -2851,7 +2848,7 @@ void mn1PBlinkIfReadyToFight(GObj* gobj)
 }
 
 // 0x80137C64
-void mn1PCreateReadyToFightObjects()
+void mn1PMakeReady()
 {
 	GObj* gobj;
 	SObj* sobj;
@@ -2859,7 +2856,7 @@ void mn1PCreateReadyToFightObjects()
 	// Ready to Fight banner
 	gobj = gcMakeGObjSPAfter(0U, NULL, 0x1CU, 0x80000000U);
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0x23U, GOBJ_PRIORITY_DEFAULT, ~0);
-	gcAddGObjProcess(gobj, mn1PBlinkIfReadyToFight, 1, 1);
+	gcAddGObjProcess(gobj, mn1PReadyProcUpdate, 1, 1);
 
 	// Ready to Fight banner bg
 	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(void*, gMN1PFiles[0], &FILE_011_READY_TO_FIGHT_BG_IMAGE_OFFSET));
@@ -2896,7 +2893,7 @@ void mn1PCreateReadyToFightObjects()
 	// Press Start indicator
 	gobj = gcMakeGObjSPAfter(0U, NULL, 0x16U, 0x80000000U);
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0x1CU, GOBJ_PRIORITY_DEFAULT, ~0);
-	gcAddGObjProcess(gobj, mn1PBlinkIfReadyToFight, 1, 1);
+	gcAddGObjProcess(gobj, mn1PReadyProcUpdate, 1, 1);
 
 	// "Press"
 	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(void*, gMN1PFiles[0], &FILE_011_PRESS_IMAGE_OFFSET));
@@ -2926,7 +2923,7 @@ void func_ovl27_80137EE0() {}
 void func_ovl27_80137EE8() {}
 
 // 0x80137EF0
-sb32 mn1PIsReadyToFight()
+sb32 mn1PIsReady()
 {
 	sb32 is_ready = TRUE;
 
@@ -2996,7 +2993,7 @@ void mn1PMain(s32 arg0)
 	}
 	else if ((scSubsysControllerGetPlayerTapButtons(START_BUTTON)) && (gMN1PTotalTimeTics > 60))
 	{
-		if (mn1PIsReadyToFight())
+		if (mn1PIsReady())
 		{
 			func_800269C0_275C0(0x26AU);
 
@@ -3129,14 +3126,14 @@ void mn1PGamePlayersFuncStart(void)
 	mn1PLoadMatchInfo();
 	mn1PCreatePortraitCamera();
 	mn1PMakeCursorViewport();
-	mn1PCreateDroppedPuckViewport();
+	mn1PCreatePuckCamera();
 	mn1PMakeGateViewport();
 	mn1PMakeFighterCamera();
 	mn1PCreatePortraitWallpaperCamera();
 	mn1PCreatePortraitFlashCamera();
 	mn1PMakeWallpaperCamera();
 	mn1PCreateTitleOptionsAndBackViewport();
-	mn1PCreateReadyToFightViewport();
+	mn1PCreateReadyViewport();
 	mn1PMakeWallpaper();
 	mn1PCreatePortraits();
 	mn1PInitPanel(gMN1PHumanPanelPort);
@@ -3144,9 +3141,9 @@ void mn1PGamePlayersFuncStart(void)
 	mn1PDrawTotalHighscoreAndBonuses();
 	mn1PCreateLevelAndArrows();
 	mn1PCreateStockAndArrows();
-	mn1PMakePuckAutopositionRoutine();
-	mn1PCreateWhiteCircles();
-	mn1PCreateReadyToFightObjects();
+	mn1PMakePuckActor();
+	mn1PMakeFighterSpotlight();
+	mn1PMakeReady();
 	scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 
 	if (gSCManagerSceneData.scene_prev != nSCKindMaps)

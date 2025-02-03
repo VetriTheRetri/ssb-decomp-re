@@ -147,9 +147,9 @@ typedef enum SCKind
 	nSCKind1PChallenger,   		  	// Challenger approaching
 	nSCKind1PIntro,       	  		// 1P game "[player] VS [opponent]" screen
 	nSCKindScreenAdjust,      	  	// Screen adjust
-	nSCKindVSPlayers,          		// VS mode character select
+	nSCKindPlayersVS,          		// VS mode character select
 	nSCKind1PGamePlayers,		  	// 1P game character select
-	nSCKind1PTrainingPlayers,  	// Training mode character select
+	nSCKindPlayers1PTraining,  	// Training mode character select
 	nSCKind1PBonus1Players,      	// Bonus 1 practice character select
 	nSCKind1PBonus2Players,      	// Bonus 2 practice character select
 	nSCKindMaps,     	  		  	// Stage select

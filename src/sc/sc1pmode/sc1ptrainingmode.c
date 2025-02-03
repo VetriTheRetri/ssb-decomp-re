@@ -1804,7 +1804,7 @@ void sc1PTrainingModeStartScene(void)
 	syAudioSetSongVolumeID(0, 0x7800);
 
 	gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
-	gSCManagerSceneData.scene_curr = nSCKind1PTrainingPlayers;
+	gSCManagerSceneData.scene_curr = nSCKindPlayers1PTraining;
 }
 
 // 0x801906D0

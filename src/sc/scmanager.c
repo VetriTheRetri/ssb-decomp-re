@@ -13,10 +13,10 @@
 #include <sys/controller.h>
 
 extern void mnVSModeStartScene();
-extern void mnVSPlayersStartScene();
+extern void mnPlayersVSStartScene();
 extern void mn1PGamePlayersStartScene();
-extern void mn1PTrainingPlayersStartScene();
-extern void mn1PBonusPlayersStartScene();
+extern void mnPlayers1PTrainingStartScene();
+extern void mnPlayers1PBonusStartScene();
 
 // // // // // // // // // // // //
 //                               //
@@ -980,11 +980,11 @@ void scManagerRunLoop(sb32 arg)
 				mnScreenAdjustStartScene();
 				break;
 
-			case nSCKindVSPlayers:
+			case nSCKindPlayersVS:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[26]);
-				mnVSPlayersStartScene();
+				mnPlayersVSStartScene();
 				break;
 
 			case nSCKindMaps:
@@ -1157,11 +1157,11 @@ void scManagerRunLoop(sb32 arg)
 				mn1PGamePlayersStartScene();
 				break;
 
-			case nSCKind1PTrainingPlayers:
+			case nSCKindPlayers1PTraining:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[28]);
-				mn1PTrainingPlayersStartScene();
+				mnPlayers1PTrainingStartScene();
 				break;
 				
 			case nSCKind1PBonus1Players:
@@ -1171,7 +1171,7 @@ void scManagerRunLoop(sb32 arg)
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[29]);
-				mn1PBonusPlayersStartScene();
+				mnPlayers1PBonusStartScene();
 				break;
 
 #ifndef DAIRANTOU_OPT0
@@ -1179,7 +1179,7 @@ void scManagerRunLoop(sb32 arg)
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[29]);
-				mn1PBonusPlayersStartScene();
+				mnPlayers1PBonusStartScene();
 				break;
 #endif
 			case nSCKindBackupClear:

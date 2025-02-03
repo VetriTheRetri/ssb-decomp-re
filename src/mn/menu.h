@@ -105,7 +105,7 @@ extern intptr_t lMNPlayersCommonDigit8Sprite;        	// 0x00005BB8
 extern intptr_t lMNPlayersCommonDigit9Sprite;        	// 0x00005CC8
 
 extern intptr_t lMNPlayersCommonCursorPointSprite;      // 0x00006F88
-extern intptr_t lMNPlayersCommonCursorGrabSprite;      // 0x000076E8
+extern intptr_t lMNPlayersCommonCursorGrabSprite;       // 0x000076E8
 extern intptr_t lMNPlayersCommonCursorHoverSprite;		// 0x00008168
 
 extern intptr_t lMNPlayersCommonCursorNum1PSprite;      // 0x00008268
@@ -117,6 +117,7 @@ extern intptr_t lMNPlayersCommon1PPuckSprite;   		// 0x00009048
 extern intptr_t lMNPlayersCommon2PPuckSprite;   		// 0x00009B28
 extern intptr_t lMNPlayersCommon3PPuckSprite;   		// 0x0000A608
 extern intptr_t lMNPlayersCommon4PPuckSprite;   		// 0x0000B0E8
+extern intptr_t lMNPlayersCommonCPPuckSprite;   		// 0x0000BBC8
 
 extern intptr_t lMNPlayersCommonGate1PLUT;				// 0x000103F8
 extern intptr_t lMNPlayersCommonGate2PLUT;				// 0x00010420

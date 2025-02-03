@@ -19,7 +19,7 @@ typedef struct MNPlayersSlot1PGame
 	s32 cursor_state;
 	sb32 is_selected;
 	sb32 is_recalling;
-	s32 recall_wait;
+	s32 recall_end_tic;
 	f32 recall_start_x;
 	f32 recall_end_x;
 	f32 recall_start_y;
@@ -30,8 +30,8 @@ typedef struct MNPlayersSlot1PGame
 	s32 held_player;
 	sb32 unk_0x88;
 	sb32 is_fighter_selected;
-	f32 puck_x_velocity;
-	f32 puck_y_velocity;
+	f32 puck_vel_x;
+	f32 puck_vel_y;
 	f32 cursor_pickup_x;
 	f32 cursor_pickup_y;
 	sb32 is_cursor_adjusting;
@@ -68,7 +68,7 @@ typedef struct MNPlayersSlotTraining
 	s32 cursor_state;
 	sb32 is_selected;
 	sb32 is_recalling;
-	s32 recall_wait;
+	s32 recall_end_tic;
 	f32 recall_start_x;
 	f32 recall_end_x;
 	f32 recall_start_y;
@@ -80,8 +80,8 @@ typedef struct MNPlayersSlotTraining
 	s32 player_type;
 	sb32 unk_0x88;
 	sb32 is_fighter_selected;
-	f32 puck_x_velocity;
-	f32 puck_y_velocity;
+	f32 puck_vel_x;
+	f32 puck_vel_y;
 	f32 cursor_pickup_x;
 	f32 cursor_pickup_y;
 	sb32 is_cursor_adjusting;
@@ -121,7 +121,7 @@ typedef struct MNPlayersSlotVS
 	s32 cursor_state;
 	sb32 is_selected;
 	sb32 is_recalling;
-	s32 recall_wait;
+	s32 recall_end_tic;
 	f32 recall_start_x;
 	f32 recall_end_x;
 	f32 recall_start_y;
@@ -133,8 +133,8 @@ typedef struct MNPlayersSlotVS
 	s32 player_type;
 	sb32 unk_0x88;
 	sb32 is_fighter_selected;
-	f32 puck_x_velocity;
-	f32 puck_y_velocity;
+	f32 puck_vel_x;
+	f32 puck_vel_y;
 	f32 cursor_pickup_x;
 	f32 cursor_pickup_y;
 	sb32 is_cursor_adjusting;
@@ -162,7 +162,7 @@ typedef struct MNPlayersSlotBonus
 	s32 cursor_state;
 	sb32 is_selected;
 	sb32 is_recalling;
-	s32 recall_wait;
+	s32 recall_end_tic;
 	f32 recall_start_x;
 	f32 recall_end_x;
 	f32 recall_start_y;
@@ -173,8 +173,8 @@ typedef struct MNPlayersSlotBonus
 	s32 held_player;
 	sb32 is_fighter_selected;	// Whether fighter has been selected with the puck
 	sb32 is_status_selected;	// Whether "Selected" state has been set
-	f32 puck_x_velocity;
-	f32 puck_y_velocity;
+	f32 puck_vel_x;
+	f32 puck_vel_y;
 	f32 cursor_pickup_x;
 	f32 cursor_pickup_y;
 	sb32 is_cursor_adjusting;	// Whether cursor is auto-positioning to puck

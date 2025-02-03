@@ -289,6 +289,7 @@ lMNPlayersCommon1PPuckSprite = 0x00009048;
 lMNPlayersCommon2PPuckSprite = 0x00009B28;
 lMNPlayersCommon3PPuckSprite = 0x0000A608;
 lMNPlayersCommon4PPuckSprite = 0x0000B0E8;
+lMNPlayersCommonCPPuckSprite = 0x0000BBC8;
 lMNPlayersCommonGate1PLUT = 0x000103F8;
 lMNPlayersCommonGate2PLUT = 0x00010420;
 lMNPlayersCommonGate3PLUT = 0x00010470;

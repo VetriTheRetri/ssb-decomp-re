@@ -2465,7 +2465,7 @@ sb32 mnVSPlayersSelectChar(GObj* cursor_gobj, s32 player, s32 arg2, s32 select_b
 	if (gMnBattlePanels[panel_info->held_player].fkind != nFTKindNull)
 	{
 		mnVSPlayersSelectFighterPuck(player, select_button);
-		panel_info->recall_wait = gMnBattleTotalTimeTics + 0x1E;
+		panel_info->recall_end_tic = gMnBattleTotalTimeTics + 0x1E;
 		return TRUE;
 	}
 
@@ -2600,7 +2600,7 @@ sb32 mnVSPlayersCheckAndHandlePuckGrab(GObj* cursor_gobj, s32 player)
 {
 	s32 i;
 
-	if ((gMnBattleTotalTimeTics < gMnBattlePanels[player].recall_wait)
+	if ((gMnBattleTotalTimeTics < gMnBattlePanels[player].recall_end_tic)
 		|| (gMnBattlePanels[player].is_recalling))
 	{
 		return FALSE;
@@ -2633,7 +2633,7 @@ sb32 mnVSPlayersCheckAndHandlePuckGrab(GObj* cursor_gobj, s32 player)
 }
 
 // 0x8013782C
-s32 mnVSPlayersGetFighterKindFromPuckPosition(s32 player)
+s32 mnVSPlayersGetPuckFighterKind(s32 player)
 {
 	SObj* puck_sobj = SObjGetStruct(gMnBattlePanels[player].puck);
 	s32 current_y = (s32)puck_sobj->pos.x + 13;
@@ -2678,7 +2678,7 @@ s32 mnVSPlayersGetFighterKindFromPuckPosition(s32 player)
 }
 
 // 0x801379B8
-void mnVSPlayersAutoPositionCursor(GObj* cursor_gobj, s32 player)
+void mnVSPlayersAdjustCursor(GObj* cursor_gobj, s32 player)
 {
 	SYController* controller;
 	Vec2i coords[3] = {
@@ -2829,7 +2829,7 @@ void mnTryCostumeChange(s32 player, s32 select_button)
 }
 
 // 0x80137F9C
-sb32 mnIsHumanWithCharacterSelected(s32 player)
+sb32 mnCheckManFighterSelected(s32 player)
 {
 	MNPlayersSlotVS* panel_info = &gMnBattlePanels[player];
 
@@ -2916,7 +2916,7 @@ void mnExitIfBButtonHeld(s32 player)
 }
 
 // 0x80138218
-s32 mnCheckBackButtonPress(GObj* cursor_gobj)
+s32 mnCheckBackInRange(GObj* cursor_gobj)
 {
 	f32 current_x, current_y;
 	s32 range_check;
@@ -2940,14 +2940,14 @@ s32 mnCheckBackButtonPress(GObj* cursor_gobj)
 }
 
 // 0x801382E0
-void mnVSPlayersHandleButtonPresses(GObj* cursor_gobj)
+void mnVSPlayersCursorProcUpdate(GObj* cursor_gobj)
 {
 	SYController* controller;
 	MNPlayersSlotVS* panel_info;
 	s32 foo, bar, baz;
 	s32 player = cursor_gobj->user_data.s;
 
-	mnVSPlayersAutoPositionCursor(cursor_gobj, player);
+	mnVSPlayersAdjustCursor(cursor_gobj, player);
 	controller = &gSYControllerDevices[player];
 
 	if ((controller->button_tap & A_BUTTON) && (mnCheckAndHandleAnyPlayerTypeButtonPress(cursor_gobj, player) == FALSE)
@@ -2990,7 +2990,7 @@ void mnVSPlayersHandleButtonPresses(GObj* cursor_gobj)
 		}
 		else if (mnCheckRoyalTeamBattleTogglePress(cursor_gobj))
 			mnHandleRoyalTeamBattleTogglePress();
-		else if (mnCheckBackButtonPress(cursor_gobj))
+		else if (mnCheckBackInRange(cursor_gobj))
 		{
 			mnGoBackToVSMenu();
 			func_800269C0_275C0(nSYAudioFGMMenuScroll2);
@@ -3030,7 +3030,7 @@ void mnVSPlayersHandleButtonPresses(GObj* cursor_gobj)
 	}
 	else if (controller->button_tap & (U_CBUTTONS | R_CBUTTONS | D_CBUTTONS | L_CBUTTONS))
 		mnVSPlayersSelectChar(cursor_gobj, player, panel_info->held_player, 4);
-	if ((controller->button_tap & B_BUTTON) && (mnIsHumanWithCharacterSelected(player)))
+	if ((controller->button_tap & B_BUTTON) && (mnCheckManFighterSelected(player)))
 		mnRecallPuck(player);
 	if (panel_info->is_recalling == FALSE)
 		mnExitIfBButtonHeld(player);
@@ -3098,8 +3098,8 @@ void mnMovePuck(s32 player)
 {
 	MNPlayersSlotVS* panel_info = &gMnBattlePanels[player];
 
-	SObjGetStruct(panel_info->puck)->pos.x += panel_info->puck_x_velocity;
-	SObjGetStruct(panel_info->puck)->pos.y += panel_info->puck_y_velocity;
+	SObjGetStruct(panel_info->puck)->pos.x += panel_info->puck_vel_x;
+	SObjGetStruct(panel_info->puck)->pos.y += panel_info->puck_vel_y;
 }
 
 // 0x801388F8
@@ -3142,7 +3142,7 @@ void mnVSPlayersSyncPuckAndFighter(GObj* puck_gobj)
 	else
 		mnMovePuck(player);
 
-	fkind = mnVSPlayersGetFighterKindFromPuckPosition(player);
+	fkind = mnVSPlayersGetPuckFighterKind(player);
 
 	switch (gMnBattlePanels[player].player_type)
 	{
@@ -3234,7 +3234,7 @@ void mnVSPlayersMakeCursor(s32 player)
 
 	cursor_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x13, 0x80000000, lbCommonDrawSObjAttr, 0x20, starting_display_orders[player], -1,
 									 lbRelocGetFileData(void*, gFile011, &FILE_011_CURSOR_POINTER_IMAGE_OFFSET), 1,
-									 mnVSPlayersHandleButtonPresses, 2);
+									 mnVSPlayersCursorProcUpdate, 2);
 
 	gMnBattlePanels[player].cursor = cursor_gobj;
 	cursor_gobj->user_data.s = player;
@@ -3326,10 +3326,10 @@ void mnVSPlayersAutopositionOverlappedPucks(s32 player_1, s32 player_2, f32 unus
 
 	if (SObjGetStruct(gMnBattlePanels[player_1].puck)->pos.x
 		== SObjGetStruct(gMnBattlePanels[player_2].puck)->pos.x)
-		gMnBattlePanels[player_1].puck_x_velocity += syUtilsGetRandomIntRange(2) - 1;
+		gMnBattlePanels[player_1].puck_vel_x += syUtilsGetRandomIntRange(2) - 1;
 	else
 	{
-		gMnBattlePanels[player_1].puck_x_velocity += (-1.0F
+		gMnBattlePanels[player_1].puck_vel_x += (-1.0F
 														* (SObjGetStruct(gMnBattlePanels[player_2].puck)->pos.x
 														   - SObjGetStruct(gMnBattlePanels[player_1].puck)->pos.x))
 													   / 10.0F;
@@ -3337,9 +3337,9 @@ void mnVSPlayersAutopositionOverlappedPucks(s32 player_1, s32 player_2, f32 unus
 
 	if (SObjGetStruct(gMnBattlePanels[player_1].puck)->pos.y
 		== SObjGetStruct(gMnBattlePanels[player_2].puck)->pos.y)
-		gMnBattlePanels[player_1].puck_y_velocity += syUtilsGetRandomIntRange(2) - 1;
+		gMnBattlePanels[player_1].puck_vel_y += syUtilsGetRandomIntRange(2) - 1;
 	else
-		gMnBattlePanels[player_1].puck_y_velocity += (-1.0F
+		gMnBattlePanels[player_1].puck_vel_y += (-1.0F
 														* (SObjGetStruct(gMnBattlePanels[player_2].puck)->pos.y
 														   - SObjGetStruct(gMnBattlePanels[player_1].puck)->pos.y))
 													   / 10.0F;
@@ -3352,18 +3352,18 @@ void mnVSPlayersAutopositionPuckFromPortraitEdges(s32 player)
 	f32 portrait_edge_x = ((portrait >= 6) ? portrait - 6 : portrait) * 45 + 25;
 	f32 portrait_edge_y = ((portrait >= 6) ? 1 : 0) * 43 + 36;
 	f32 new_pos_x
-		= SObjGetStruct(gMnBattlePanels[player].puck)->pos.x + gMnBattlePanels[player].puck_x_velocity + 13.0F;
+		= SObjGetStruct(gMnBattlePanels[player].puck)->pos.x + gMnBattlePanels[player].puck_vel_x + 13.0F;
 	f32 new_pos_y
-		= SObjGetStruct(gMnBattlePanels[player].puck)->pos.y + gMnBattlePanels[player].puck_y_velocity + 12.0F;
+		= SObjGetStruct(gMnBattlePanels[player].puck)->pos.y + gMnBattlePanels[player].puck_vel_y + 12.0F;
 
 	if (new_pos_x < (portrait_edge_x + 5.0F))
-		gMnBattlePanels[player].puck_x_velocity = ((portrait_edge_x + 5.0F) - new_pos_x) / 10.0F;
+		gMnBattlePanels[player].puck_vel_x = ((portrait_edge_x + 5.0F) - new_pos_x) / 10.0F;
 	if (((portrait_edge_x + 45.0F) - 5.0F) < new_pos_x)
-		gMnBattlePanels[player].puck_x_velocity = ((new_pos_x - ((portrait_edge_x + 45.0F) - 5.0F)) * -1.0F) / 10.0F;
+		gMnBattlePanels[player].puck_vel_x = ((new_pos_x - ((portrait_edge_x + 45.0F) - 5.0F)) * -1.0F) / 10.0F;
 	if (new_pos_y < (portrait_edge_y + 5.0F))
-		gMnBattlePanels[player].puck_y_velocity = ((portrait_edge_y + 5.0F) - new_pos_y) / 10.0F;
+		gMnBattlePanels[player].puck_vel_y = ((portrait_edge_y + 5.0F) - new_pos_y) / 10.0F;
 	if (((portrait_edge_y + 43.0F) - 5.0F) < new_pos_y)
-		gMnBattlePanels[player].puck_y_velocity = ((new_pos_y - ((portrait_edge_y + 43.0F) - 5.0F)) * -1.0F) / 10.0F;
+		gMnBattlePanels[player].puck_vel_y = ((new_pos_y - ((portrait_edge_y + 43.0F) - 5.0F)) * -1.0F) / 10.0F;
 }
 
 // 0x8013961C
@@ -3384,8 +3384,8 @@ void mnVSPlayersAutopositionPlacedPuck(s32 player)
 			distances[i] = -1.0F;
 	}
 
-	gMnBattlePanels[player].puck_x_velocity = 0.0F;
-	gMnBattlePanels[player].puck_y_velocity = 0.0F;
+	gMnBattlePanels[player].puck_vel_x = 0.0F;
+	gMnBattlePanels[player].puck_vel_y = 0.0F;
 
 	for (i = 0; i < 4; i++)
 	{
@@ -3420,14 +3420,14 @@ void mnVSPlayersAutopositionRecalledPuck(s32 player)
 		else
 			new_y_velocity = (gMnBattlePanels[player].recall_end_y - gMnBattlePanels[player].recall_mid_y) / 5.0F;
 
-		gMnBattlePanels[player].puck_x_velocity = new_x_velocity;
-		gMnBattlePanels[player].puck_y_velocity = new_y_velocity;
+		gMnBattlePanels[player].puck_vel_x = new_x_velocity;
+		gMnBattlePanels[player].puck_vel_y = new_y_velocity;
 	}
 	else if (gMnBattlePanels[player].recall_tics == 11)
 	{
 		mnVSPlayersHandleCursorPickup(player, player);
-		gMnBattlePanels[player].puck_x_velocity = 0.0F;
-		gMnBattlePanels[player].puck_y_velocity = 0.0F;
+		gMnBattlePanels[player].puck_vel_x = 0.0F;
+		gMnBattlePanels[player].puck_vel_y = 0.0F;
 	}
 	if (gMnBattlePanels[player].recall_tics == 30)
 		gMnBattlePanels[player].is_recalling = FALSE;
@@ -4160,7 +4160,7 @@ void mnVSPlayersLoadMatchInfo()
 		else
 			mnVSPlayersInitPort(i);
 
-		gMnBattlePanels[i].recall_wait = 0;
+		gMnBattlePanels[i].recall_end_tic = 0;
 	};
 
 	gMnBattleCharacterUnlockedMask = gSCManagerBackupData.fighter_mask;

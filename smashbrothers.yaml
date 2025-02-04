@@ -346,9 +346,9 @@ segments:
     start: 0x0406D0
     vram: 0x800A1980
     subsegments:
-      - [0x0406D0, c, sc/scmanager]
-      - [0x041DC0, .data, sc/scmanager]
-      - [0x042F30, .rodata, sc/scmanager]
+      - [auto, c, sc/scmanager]
+      - [auto, .data, sc/scmanager]
+      - [auto, .rodata, sc/scmanager]
       - { start: auto, type: .bss, name: sc/scmanager }
 
   - name: ovl0
@@ -357,24 +357,29 @@ segments:
     vram: 0x800C7840
     subsegments:
     # ovl0 text
-      - [0x043220, c, lb/lbcommon]
-      - [0x049000, c, lb/lbreloc]
+      - [auto, c, lb/lbcommon]
+      - [auto, c, lb/lbreloc]
       - [0x049A00, pad, pad0x049A00]
       - [0x049A20, c, lb/lbparticle]
-      - [0x04F860, c, lb/lbfade]
-      - [0x04FB10, c, lb/lbtransition]
-      - [0x04FF00, c, lb/lbbackup]
+      - [auto, c, lb/lbfade]
+      - [auto, c, lb/lbtransition]
+      - [auto, c, lb/lbbackup]
 
     # ovl0 data
-      - [0x050680, .data, lb/lbcommon]
-      - [0x051730, .data, lb/lbparticle]
-      - [0x051740, .data, lb/lbtransition]
+      - [auto, .data, lb/lbcommon]
+      - [auto, .data, lb/lbreloc]
+      - [auto, .data, lb/lbparticle]
+      - [auto, .data, lb/lbfade]
+      - [auto, .data, lb/lbtransition]
+      - [auto, .data, lb/lbbackup]
 
     # ovl0 rodata
       - [0x0517F0, .rodata, lb/lbcommon]
-      - [0x0518C0, .rodata, lb/lbreloc]
+      - [auto, .rodata, lb/lbreloc]
       - [0x0519A0, .rodata, lb/lbparticle]
-      - [0x051C80, .rodata, lb/lbtransition]
+      - [auto, .rodata, lb/lbfade]
+      - [auto, .rodata, lb/lbtransition]
+      - [auto, .rodata, lb/lbbackup]
 
     # ovl0 bss
       - { start: auto, type: .bss, name: lb/lbcommon }
@@ -382,6 +387,7 @@ segments:
       - { start: auto, type: .bss, name: lb/lbparticle}
       - { start: auto, type: .bss, name: lb/lbfade }
       - { start: auto, type: .bss, name: lb/lbtransition }
+      - { start: auto, type: .bss, name: lb/lbbackup }
 
   - name: ovl2
     type: code
@@ -1102,9 +1108,13 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x109FB0, c, sc/sccommon/scvsbattle]
-      - [0x10B220, c, sc/sccommon/scvsbattlefiles]
-      - [0x10B2C0, .data, sc/sccommon/scvsbattle]
+      - [auto, c, sc/sccommon/scvsbattle]
+      - [auto, c, sc/sccommon/scvsbattlefiles]
+      - [auto, .data, sc/sccommon/scvsbattle]
+      - [auto, .data, sc/sccommon/scvsbattlefiles]
+      - [auto, .rodata, sc/sccommon/scvsbattle]
+      - [auto, .rodata, sc/sccommon/scvsbattlefiles]
+      - { start: auto, type: .bss, name: sc/sccommon/scvsbattle }
       - { start: auto, type: .bss, name: sc/sccommon/scvsbattlefiles }
 
   - name: ovl5
@@ -1113,8 +1123,9 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x10B370, c, mv/mvunknownmario]
-      - [0x10B830, .data, mv/mvunknownmario]
+      - [auto, c, mv/mvunknownmario]
+      - [auto, .data, mv/mvunknownmario]
+      - [auto, .rodata, mv/mvunknownmario]
       - { start: auto, type: .bss, name: mv/mvunknownmario }
 
   - name: ovl65
@@ -1124,17 +1135,17 @@ segments:
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
     # Main 1P Game scene stuff
-      - [0x10B920, c, sc/sc1pmode/sc1pgame]
+      - [auto, c, sc/sc1pmode/sc1pgame]
     # Final Destination backgrounds
-      - [0x10F910, c, sc/sc1pmode/sc1pgameboss]
+      - [auto, c, sc/sc1pmode/sc1pgameboss]
     # Main 1P Game scene stuff
-      - [0x111060, .data, sc/sc1pmode/sc1pgame]
+      - [auto, .data, sc/sc1pmode/sc1pgame]
     # Final Destination backgrounds
-      - [0x111420, .data, sc/sc1pmode/sc1pgameboss]
+      - [auto, .data, sc/sc1pmode/sc1pgameboss]
     # Main 1P Game scene stuff
-      - [0x111670, .rodata, sc/sc1pmode/sc1pgame]
+      - [auto, .rodata, sc/sc1pmode/sc1pgame]
     # Final Destination backgrounds
-      - [0x1117D0, .rodata, sc/sc1pmode/sc1pgameboss]
+      - [auto, .rodata, sc/sc1pmode/sc1pgameboss]
     # Main 1P Game scene stuff
       - { start: auto, type: .bss, name: sc/sc1pmode/sc1pgame }
       - { start: auto, type: .bss, name: sc/sc1pmode/sc1pgameboss }
@@ -1145,14 +1156,18 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x111800, c, sc/sc1pmode/sc1pbonusstage]
-      - [0x1134B0, c, sc/sc1pmode/sc1pbonusstagefiles]
-      - [0x113550, c, it/itground/ittarget]
-      - [0x113600, .data, sc/sc1pmode/sc1pbonusstage]
-      - [0x113870, .data, it/itground/ittarget]
-      - [0x1138B0, .rodata, sc/sc1pmode/sc1pbonusstage]
+      - [auto, c, sc/sc1pmode/sc1pbonusstage]
+      - [auto, c, sc/sc1pmode/sc1pbonusstagefiles]
+      - [auto, c, it/itground/ittarget]
+      - [auto, .data, sc/sc1pmode/sc1pbonusstage]
+      - [auto, .data, sc/sc1pmode/sc1pbonusstagefiles]
+      - [auto, .data, it/itground/ittarget]
+      - [auto, .rodata, sc/sc1pmode/sc1pbonusstage]
+      - [auto, .rodata, sc/sc1pmode/sc1pbonusstagefiles]
+      - [auto, .rodata, it/itground/ittarget]
       - { start: auto, type: .bss, name: sc/sc1pmode/sc1pbonusstage }
       - { start: auto, type: .bss, name: sc/sc1pmode/sc1pbonusstagefiles }
+      - { start: auto, type: .bss, name: it/itground/ittarget }
 
   - name: ovl7
     type: code
@@ -1160,9 +1175,9 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x1138E0, c, sc/sc1pmode/sc1ptrainingmode]
-      - [0x116F90, .data, sc/sc1pmode/sc1ptrainingmode]
-      - [0x117140, .rodata, sc/sc1pmode/sc1ptrainingmode]
+      - [auto, c, sc/sc1pmode/sc1ptrainingmode]
+      - [auto, .data, sc/sc1pmode/sc1ptrainingmode]
+      - [auto, .rodata, sc/sc1pmode/sc1ptrainingmode]
       - { start: auto, type: .bss, name: sc/sc1pmode/sc1ptrainingmode }
 
   - name: ovl10
@@ -1171,9 +1186,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x117180, c, mn/mncommon/mntitle]
-      - [0x119860, .data, mn/mncommon/mntitle]
-      - [0x119AB0, .rodata, mn/mncommon/mntitle]
+      - [auto, c, mn/mncommon/mntitle]
+      - [auto, .data, mn/mncommon/mntitle]
+      - [auto, .rodata, mn/mncommon/mntitle]
       - { start: auto, type: .bss, name: mn/mncommon/mntitle }
 
   - name: ovl11
@@ -1182,10 +1197,12 @@ segments:
     vram: 0x800D6490
     exclusive_ram_id: overlay_800D6490
     subsegments:
-      - [0x119AC0, c, mn/mncommon/mnnocontroller]
-      - [0x119C90, c, mn/mncommon/mnnocontrollerfiles]
-      - [0x119D30, .data, mn/mncommon/mnnocontroller]
-      - [0x119DE0, .data, mn/mncommon/mnnocontrollerfiles]
+      - [auto, c, mn/mncommon/mnnocontroller]
+      - [auto, c, mn/mncommon/mnnocontrollerfiles]
+      - [auto, .data, mn/mncommon/mnnocontroller]
+      - [auto, .data, mn/mncommon/mnnocontrollerfiles]
+      - [auto, .rodata, mn/mncommon/mnnocontroller]
+      - [auto, .rodata, mn/mncommon/mnnocontrollerfiles]
       - { start: auto, type: .bss, name: mn/mncommon/mnnocontroller }
       - { start: auto, type: .bss, name: mn/mncommon/mnnocontrollerfiles }
 
@@ -1195,9 +1212,9 @@ segments:
     vram: 0x800D6490
     exclusive_ram_id: overlay_800D6490
     subsegments:
-      - [0x119DF0, c, db/dbmaps]
-      - [0x119FE0, .data, db/dbmaps]
-      - [0x11A170, .rodata, db/dbmaps]
+      - [auto, c, db/dbmaps]
+      - [auto, .data, db/dbmaps]
+      - [auto, .rodata, db/dbmaps]
       - { start: auto, type: .bss, name: db/dbmaps }
 
   - name: ovl13
@@ -1206,9 +1223,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x11A340, c, db/dbcube]
-      - [0x11AA20, .data, db/dbcube]
-      - [0x11B860, .rodata, db/dbcube]
+      - [auto, c, db/dbcube]
+      - [auto, .data, db/dbcube]
+      - [auto, .rodata, db/dbcube]
       - { start: auto, type: .bss, name: db/dbcube }
 
   - name: ovl14
@@ -1217,9 +1234,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x11B970, c, db/dbbattle]
-      - [0x11C500, .data, db/dbbattle]
-      - [0x11C850, .rodata, db/dbbattle]
+      - [auto, c, db/dbbattle]
+      - [auto, .data, db/dbbattle]
+      - [auto, .rodata, db/dbbattle]
       - { start: auto, type: .bss, name: db/dbbattle }
 
   - name: ovl17
@@ -1228,8 +1245,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x11ca90, c, mn/mncommon/mnmodeselect]
-      - [0x11DB20, .data, mn/mncommon/mnmodeselect]
+      - [auto, c, mn/mncommon/mnmodeselect]
+      - [auto, .data, mn/mncommon/mnmodeselect]
+      - [auto, .rodata, mn/mncommon/mnmodeselect]
       - { start: auto, type: .bss, name: mn/mncommon/mnmodeselect }
 
   - name: ovl18
@@ -1238,8 +1256,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x11DC10, c, mn/mn1pmode/mn1pmode]
-      - [0x11F190, .data, mn/mn1pmode/mn1pmode]
+      - [auto, c, mn/mn1pmode/mn1pmode]
+      - [auto, .data, mn/mn1pmode/mn1pmode]
+      - [auto, .rodata, mn/mn1pmode/mn1pmode]
       - { start: auto, type: .bss, name: mn/mn1pmode/mn1pmode }
 
   - name: ovl60
@@ -1248,8 +1267,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x11F2B0, c, mn/mnoption/mnoption]
-      - [0x120DD0, .data, mn/mnoption/mnoption]
+      - [auto, c, mn/mnoption/mnoption]
+      - [auto, .data, mn/mnoption/mnoption]
+      - [auto, .rodata, mn/mnoption/mnoption]
       - { start: auto, type: .bss, name: mn/mnoption/mnoption }
 
   - name: ovl61
@@ -1258,8 +1278,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x120F50, c, mn/mndata/mndata]
-      - [0x122370, .data, mn/mndata/mndata]
+      - [auto, c, mn/mndata/mndata]
+      - [auto, .data, mn/mndata/mndata]
+      - [auto, .rodata, mn/mndata/mndata]
       - { start: auto, type: .bss, name: mn/mndata/mndata }
 
   - name: ovl19
@@ -1268,8 +1289,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x1224b0, c, mn/mnvsmode/mnvsmode]
-      - [0x125160, .data, mn/mnvsmode/mnvsmode]
+      - [auto, c, mn/mnvsmode/mnvsmode]
+      - [auto, .data, mn/mnvsmode/mnvsmode]
+      - [auto, .rodata, mn/mnvsmode/mnvsmode]
       - { start: auto, type: .bss, name: mn/mnvsmode/mnvsmode }
 
   - name: ovl20
@@ -1278,8 +1300,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x1252E0, c, mn/mnvsmode/mnvsoptions]
-      - [0x127EA0, .data, mn/mnvsmode/mnvsoptions]
+      - [auto, c, mn/mnvsmode/mnvsoptions]
+      - [auto, .data, mn/mnvsmode/mnvsoptions]
+      - [auto, .rodata, mn/mnvsmode/mnvsoptions]
       - { start: auto, type: .bss, name: mn/mnvsmode/mnvsoptions }
 
   - name: ovl21
@@ -1288,8 +1311,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x1280A0, c, mn/mnvsmode/mnvsitemswitch]
-      - [0x1297B0, .data, mn/mnvsmode/mnvsitemswitch]
+      - [auto, c, mn/mnvsmode/mnvsitemswitch]
+      - [auto, .data, mn/mnvsmode/mnvsitemswitch]
+      - [auto, .rodata, mn/mnvsmode/mnvsitemswitch]
       - { start: auto, type: .bss, name: mn/mnvsmode/mnvsitemswitch }
 
   - name: ovl22
@@ -1298,8 +1322,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x129970, c, mn/mncommon/mnmessage]
-      - [0x12A370, .data, mn/mncommon/mnmessage]
+      - [auto, c, mn/mncommon/mnmessage]
+      - [auto, .data, mn/mncommon/mnmessage]
+      - [auto, .rodata, mn/mncommon/mnmessage]
       - { start: auto, type: .bss, name: mn/mncommon/mnmessage }
 
   - name: ovl23
@@ -1308,8 +1333,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x12A4C0, c, sc/sc1pmode/sc1pchallenger]
-      - [0x12AD30, .data, sc/sc1pmode/sc1pchallenger]
+      - [auto, c, sc/sc1pmode/sc1pchallenger]
+      - [auto, .data, sc/sc1pmode/sc1pchallenger]
+      - [auto, .rodata, sc/sc1pmode/sc1pchallenger]
       - { start: auto, type: .bss, name: sc/sc1pmode/sc1pchallenger }
 
   - name: ovl24
@@ -1318,9 +1344,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x12AE40, c, sc/sc1pmode/sc1pintro]
-      - [0x12E130, .data, sc/sc1pmode/sc1pintro]
-      - [0x12EF20, .rodata, sc/sc1pmode/sc1pintro]
+      - [auto, c, sc/sc1pmode/sc1pintro]
+      - [auto, .data, sc/sc1pmode/sc1pintro]
+      - [auto, .rodata, sc/sc1pmode/sc1pintro]
       - { start: auto, type: .bss, name: sc/sc1pmode/sc1pintro }
 
   - name: ovl25
@@ -1329,20 +1355,21 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x12EF60, c, mn/mnoption/mnscreenadjust]
-      - [0x12FC90, .data, mn/mnoption/mnscreenadjust]
+      - [auto, c, mn/mnoption/mnscreenadjust]
+      - [auto, .data, mn/mnoption/mnscreenadjust]
+      - [auto, .rodata, mn/mnoption/mnscreenadjust]
       - { start: auto, type: .bss, name: mn/mnoption/mnscreenadjust }
 
   - name: ovl26
     type: code
-    start: 0x12fd80
+    start: 0x12FD80
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x12fd80, pad, ovl26_nops]
+      - [0x12FD80, pad, pad0x12FD80]
       - [0x12FDA0, c, ovl26]
-      - [0x139620, .data, ovl26]
-      - [0x139CB0, .rodata, ovl26]
+      - [auto, .data, ovl26]
+      - [auto, .rodata, ovl26]
       - { start: auto, type: .bss, vram: 0x8013BA80, name: ovl26 }
 
   - name: ovl27
@@ -1351,9 +1378,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x139D00, c, ovl27]
-      - [0x1407B0, .data, ovl27]
-      - [0x140F40, .rodata, ovl27]
+      - [auto, c, ovl27]
+      - [auto, .data, ovl27]
+      - [auto, .rodata, ovl27]
       - { start: auto, type: .bss, vram: 0x80138EE0, name: ovl27 }
 
   - name: ovl28
@@ -1362,9 +1389,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x1410E0, c, ovl28]
-      - [0x147540, .data, ovl28]
-      - [0x147AC0, .rodata, ovl28]
+      - [auto, c, ovl28]
+      - [auto, .data, ovl28]
+      - [auto, .rodata, ovl28]
       - { start: auto, type: .bss, vram: 0x80138550, name: ovl28 }
 
   - name: ovl29
@@ -1373,9 +1400,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x147B30, c, mn/mnplayers/mnplayers1pbonus]
-      - [0x14CF80, .data, mn/mnplayers/mnplayers1pbonus]
-      - [0x14D610, .rodata, mn/mnplayers/mnplayers1pbonus]
+      - [auto, c, mn/mnplayers/mnplayers1pbonus]
+      - [auto, .data, mn/mnplayers/mnplayers1pbonus]
+      - [auto, .rodata, mn/mnplayers/mnplayers1pbonus]
       - { start: auto, type: .bss, name: mn/mnplayers/mnplayers1pbonus }
 
   - name: ovl30
@@ -1384,9 +1411,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x14D670, c, mn/mnmaps/mnmaps]
-      - [0x150040, .data, mn/mnmaps/mnmaps]
-      - [0x150530, .rodata, mn/mnmaps/mnmaps]
+      - [auto, c, mn/mnmaps/mnmaps]
+      - [auto, .data, mn/mnmaps/mnmaps]
+      - [auto, .rodata, mn/mnmaps/mnmaps]
       - { start: auto, type: .bss, name: mn/mnmaps/mnmaps }
 
   - name: ovl15
@@ -1395,9 +1422,9 @@ segments:
     vram: 0x800D6490
     exclusive_ram_id: overlay_800D6490
     subsegments:
-      - [0x150740, c, db/dbfalls]
-      - [0x150990, .data, db/dbfalls]
-      - [0x150C00, .rodata, db/dbfalls]
+      - [auto, c, db/dbfalls]
+      - [auto, .data, db/dbfalls]
+      - [auto, .rodata, db/dbfalls]
       - { start: auto, type: .bss, name: db/dbfalls }
 
   - name: ovl31
@@ -1408,8 +1435,8 @@ segments:
     subsegments:
       - [0x150CA0, pad, pad0x150CA0]
       - [0x150CC0, c, mn/mnvsmode/mnvsresults]
-      - [0x158090, .data, mn/mnvsmode/mnvsresults]
-      - [0x158960, .rodata, mn/mnvsmode/mnvsresults]
+      - [auto, .data, mn/mnvsmode/mnvsresults]
+      - [auto, .rodata, mn/mnvsmode/mnvsresults]
       - { start: auto, type: .bss, name: mn/mnvsmode/mnvsresults }
 
   - name: ovl32
@@ -1418,9 +1445,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x158A40, c, mn/mndata/mnvsrecord]
-      - [0x15D570, .data, mn/mndata/mnvsrecord]
-      - [0x15D9C0, .rodata, mn/mndata/mnvsrecord]
+      - [auto, c, mn/mndata/mnvsrecord]
+      - [auto, .data, mn/mndata/mnvsrecord]
+      - [auto, .rodata, mn/mndata/mnvsrecord]
       - { start: auto, type: .bss, name: mn/mndata/mnvsrecord }
 
   - name: ovl33
@@ -1429,9 +1456,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x15DB50, c, mn/mndata/mncharacters]
-      - [0x160100, .data, mn/mndata/mncharacters]
-      - [0x162600, .rodata, mn/mndata/mncharacters]
+      - [auto, c, mn/mndata/mncharacters]
+      - [auto, .data, mn/mndata/mncharacters]
+      - [auto, .rodata, mn/mndata/mncharacters]
       - { start: auto, type: .bss, name: mn/mndata/mncharacters }
 
   - name: ovl34
@@ -1440,9 +1467,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x162640, c, mv/mvopening/mvopeningroom]
-      - [0x165560, .data, mv/mvopening/mvopeningroom]
-      - [0x1657C0, .rodata, mv/mvopening/mvopeningroom]
+      - [auto, c, mv/mvopening/mvopeningroom]
+      - [auto, .data, mv/mvopening/mvopeningroom]
+      - [auto, .rodata, mv/mvopening/mvopeningroom]
       - { start: auto, type: .bss, name: mv/mvopening/mvopeningroom }
 
   - name: ovl35
@@ -1451,8 +1478,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x165810, c, mv/mvopening/mvopeningportraits]
-      - [0x1665B0, .data, mv/mvopening/mvopeningportraits]
+      - [auto, c, mv/mvopening/mvopeningportraits]
+      - [auto, .data, mv/mvopening/mvopeningportraits]
+      - [auto, .rodata, mv/mvopening/mvopeningportraits]
       - { start: auto, type: .bss, name: mv/mvopening/mvopeningportraits }
 
   - name: ovl36
@@ -1461,9 +1489,9 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x1666F0, c, mv/mvopening/mvopeningmario]
-      - [0x1676C0, .data, mv/mvopening/mvopeningmario]
-      - [0x167800, .rodata, mv/mvopening/mvopeningmario]
+      - [auto, c, mv/mvopening/mvopeningmario]
+      - [auto, .data, mv/mvopening/mvopeningmario]
+      - [auto, .rodata, mv/mvopening/mvopeningmario]
       - { start: auto, type: .bss, name: mv/mvopening/mvopeningmario }
 
   - name: ovl37
@@ -1472,9 +1500,9 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x167830, c, mv/mvopening/mvopeningdonkey]
-      - [0x1687E0, .data, mv/mvopening/mvopeningdonkey]
-      - [0x168900, .rodata, mv/mvopening/mvopeningdonkey]
+      - [auto, c, mv/mvopening/mvopeningdonkey]
+      - [auto, .data, mv/mvopening/mvopeningdonkey]
+      - [auto, .rodata, mv/mvopening/mvopeningdonkey]
       - { start: auto, type: .bss, name: mv/mvopening/mvopeningdonkey }
 
   - name: ovl38
@@ -1483,9 +1511,9 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x168930, c, mv/mvopening/mvopeningsamus]
-      - [0x169990, .data, mv/mvopening/mvopeningsamus]
-      - [0x169AB0, .rodata, mv/mvopening/mvopeningsamus]
+      - [auto, c, mv/mvopening/mvopeningsamus]
+      - [auto, .data, mv/mvopening/mvopeningsamus]
+      - [auto, .rodata, mv/mvopening/mvopeningsamus]
       - { start: auto, type: .bss, name: mv/mvopening/mvopeningsamus }
 
   - name: ovl39
@@ -1494,9 +1522,9 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x169AE0, c, mv/mvopening/mvopeningfox]
-      - [0x16AAB0, .data, mv/mvopening/mvopeningfox]
-      - [0x16ABE0, .rodata, mv/mvopening/mvopeningfox]
+      - [auto, c, mv/mvopening/mvopeningfox]
+      - [auto, .data, mv/mvopening/mvopeningfox]
+      - [auto, .rodata, mv/mvopening/mvopeningfox]
       - { start: auto, type: .bss, name: mv/mvopening/mvopeningfox }
 
   - name: ovl40
@@ -1505,9 +1533,9 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x16AC10, c, mv/mvopening/mvopeninglink]
-      - [0x16BBC0, .data, mv/mvopening/mvopeninglink]
-      - [0x16BCE0, .rodata, mv/mvopening/mvopeninglink]
+      - [auto, c, mv/mvopening/mvopeninglink]
+      - [auto, .data, mv/mvopening/mvopeninglink]
+      - [auto, .rodata, mv/mvopening/mvopeninglink]
       - { start: auto, type: .bss, name: mv/mvopening/mvopeninglink }
 
   - name: ovl41
@@ -1516,9 +1544,9 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x16BD10, c, mv/mvopening/mvopeningyoshi]
-      - [0x16CD10, .data, mv/mvopening/mvopeningyoshi]
-      - [0x16CE40, .rodata, mv/mvopening/mvopeningyoshi]
+      - [auto, c, mv/mvopening/mvopeningyoshi]
+      - [auto, .data, mv/mvopening/mvopeningyoshi]
+      - [auto, .rodata, mv/mvopening/mvopeningyoshi]
       - { start: auto, type: .bss, name: mv/mvopening/mvopeningyoshi }
 
   - name: ovl42
@@ -1527,9 +1555,9 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x16CE70, c, mv/mvopening/mvopeningpikachu]
-      - [0x16DE70, .data, mv/mvopening/mvopeningpikachu]
-      - [0x16DFA0, .rodata, mv/mvopening/mvopeningpikachu]
+      - [auto, c, mv/mvopening/mvopeningpikachu]
+      - [auto, .data, mv/mvopening/mvopeningpikachu]
+      - [auto, .rodata, mv/mvopening/mvopeningpikachu]
       - { start: auto, type: .bss, name: mv/mvopening/mvopeningpikachu }
 
   - name: ovl43
@@ -1538,9 +1566,9 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x16DFD0, c, mv/mvopening/mvopeningkirby]
-      - [0x16EFC0, .data, mv/mvopening/mvopeningkirby]
-      - [0x16F100, .rodata, mv/mvopening/mvopeningkirby]
+      - [auto, c, mv/mvopening/mvopeningkirby]
+      - [auto, .data, mv/mvopening/mvopeningkirby]
+      - [auto, .rodata, mv/mvopening/mvopeningkirby]
       - { start: auto, type: .bss, name: mv/mvopening/mvopeningkirby }
 
   - name: ovl44
@@ -1549,9 +1577,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x16F130, c, mv/mvopening/mvopeningrun]
-      - [0x16FC00, .data, mv/mvopening/mvopeningrun]
-      - [0x16FD30, .rodata, mv/mvopening/mvopeningrun]
+      - [auto, c, mv/mvopening/mvopeningrun]
+      - [auto, .data, mv/mvopening/mvopeningrun]
+      - [auto, .rodata, mv/mvopening/mvopeningrun]
       - { start: auto, type: .bss, name: mv/mvopening/mvopeningrun }
 
   - name: ovl45
@@ -1560,8 +1588,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x16FD40, c, mv/mvopening/mvopeningyoster]
-      - [0x170570, .data, mv/mvopening/mvopeningyoster]
+      - [auto, c, mv/mvopening/mvopeningyoster]
+      - [auto, .data, mv/mvopening/mvopeningyoster]
+      - [auto, .rodata, mv/mvopening/mvopeningyoster]
       - { start: auto, type: .bss, name: mv/mvopening/mvopeningyoster }
 
   - name: ovl46
@@ -1570,9 +1599,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x170660, c, mv/mvopening/mvopeningcliff]
-      - [0x171230, .data, mv/mvopening/mvopeningcliff]
-      - [0x171310, .rodata, mv/mvopening/mvopeningcliff]
+      - [auto, c, mv/mvopening/mvopeningcliff]
+      - [auto, .data, mv/mvopening/mvopeningcliff]
+      - [auto, .rodata, mv/mvopening/mvopeningcliff]
       - { start: auto, type: .bss, name: mv/mvopening/mvopeningcliff }
 
   - name: ovl47
@@ -1581,9 +1610,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x171320, c, mv/mvopening/mvopeningstandoff]
-      - [0x1720F0, .data, mv/mvopening/mvopeningstandoff]
-      - [0x1721D0, .rodata, mv/mvopening/mvopeningstandoff]
+      - [auto, c, mv/mvopening/mvopeningstandoff]
+      - [auto, .data, mv/mvopening/mvopeningstandoff]
+      - [auto, .rodata, mv/mvopening/mvopeningstandoff]
       - { start: auto, type: .bss, name: mv/mvopening/mvopeningstandoff }
 
   - name: ovl48
@@ -1592,8 +1621,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x1721E0, c, mv/mvopening/mvopeningyamabuki]
-      - [0x172A80, .data, mv/mvopening/mvopeningyamabuki]
+      - [auto, c, mv/mvopening/mvopeningyamabuki]
+      - [auto, .data, mv/mvopening/mvopeningyamabuki]
+      - [auto, .rodata, mv/mvopening/mvopeningyamabuki]
       - { start: auto, type: .bss, name: mv/mvopening/mvopeningyamabuki }
 
   - name: ovl49
@@ -1602,8 +1632,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x172B60, c, mv/mvopening/mvopeningclash]
-      - [0x173930, .data, mv/mvopening/mvopeningclash]
+      - [auto, c, mv/mvopening/mvopeningclash]
+      - [auto, .data, mv/mvopening/mvopeningclash]
+      - [auto, .rodata, mv/mvopening/mvopeningclash]
       - { start: auto, type: .bss, name: mv/mvopening/mvopeningclash }
 
   - name: ovl50
@@ -1612,9 +1643,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x173A30, c, mv/mvopening/mvopeningsector]
-      - [0x174820, .data, mv/mvopening/mvopeningsector]
-      - [0x174920, .rodata, mv/mvopening/mvopeningsector]
+      - [auto, c, mv/mvopening/mvopeningsector]
+      - [auto, .data, mv/mvopening/mvopeningsector]
+      - [auto, .rodata, mv/mvopening/mvopeningsector]
       - { start: auto, type: .bss, name: mv/mvopening/mvopeningsector }
 
   - name: ovl51
@@ -1623,9 +1654,9 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x174940, c, mv/mvopening/mvopeningjungle]
-      - [0x1750F0, .data, mv/mvopening/mvopeningjungle]
-      - [0x175270, .rodata, mv/mvopening/mvopeningjungle]
+      - [auto, c, mv/mvopening/mvopeningjungle]
+      - [auto, .data, mv/mvopening/mvopeningjungle]
+      - [auto, .rodata, mv/mvopening/mvopeningjungle]
       - { start: auto, type: .bss, name: mv/mvopening/mvopeningjungle }
 
   - name: ovl52
@@ -1634,9 +1665,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x1752C0, c, mv/mvopening/mvopeningnewcomers]
-      - [0x175E00, .data, mv/mvopening/mvopeningnewcomers]
-      - [0x175EE0, .rodata, mv/mvopening/mvopeningnewcomers]
+      - [auto, c, mv/mvopening/mvopeningnewcomers]
+      - [auto, .data, mv/mvopening/mvopeningnewcomers]
+      - [auto, .rodata, mv/mvopening/mvopeningnewcomers]
       - { start: auto, type: .bss, name: mv/mvopening/mvopeningnewcomers }
 
   - name: ovl53
@@ -1645,9 +1676,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x175F00, c, mn/mnoption/mnbackupclear]
-      - [0x177280, .data, mn/mnoption/mnbackupclear]
-      - [0x177470, .rodata, mn/mnoption/mnbackupclear]
+      - [auto, c, mn/mnoption/mnbackupclear]
+      - [auto, .data, mn/mnoption/mnbackupclear]
+      - [auto, .rodata, mn/mnoption/mnbackupclear]
       - { start: auto, type: .bss, name: mn/mnoption/mnbackupclear }
 
   - name: ovl54
@@ -1656,9 +1687,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x1774A0, c, mv/mvending/mvending]
-      - [0x178470, .data, mv/mvending/mvending]
-      - [0x178550, .rodata, mv/mvending/mvending]
+      - [auto, c, mv/mvending/mvending]
+      - [auto, .data, mv/mvending/mvending]
+      - [auto, .rodata, mv/mvending/mvending]
       - { start: auto, type: .bss, name: mv/mvending/mvending }
 
   - name: ovl55
@@ -1667,9 +1698,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x178560, c, mn/mn1pmode/mn1pcontinue]
-      - [0x17ABC0, .data, mn/mn1pmode/mn1pcontinue]
-      - [0x17AD40, .rodata, mn/mn1pmode/mn1pcontinue]
+      - [auto, c, mn/mn1pmode/mn1pcontinue]
+      - [auto, .data, mn/mn1pmode/mn1pcontinue]
+      - [auto, .rodata, mn/mn1pmode/mn1pcontinue]
       - { start: auto, type: .bss, name: mn/mn1pmode/mn1pcontinue }
 
   - name: ovl56
@@ -1678,9 +1709,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x17AD50, c, sc/sc1pmode/sc1pstageclear]
-      - [0x17E130, .data, sc/sc1pmode/sc1pstageclear]
-      - [0x17E4F0, .rodata, sc/sc1pmode/sc1pstageclear]
+      - [auto, c, sc/sc1pmode/sc1pstageclear]
+      - [auto, .data, sc/sc1pmode/sc1pstageclear]
+      - [auto, .rodata, sc/sc1pmode/sc1pstageclear]
       - { start: auto, type: .bss, name: sc/sc1pmode/sc1pstageclear }
 
   - name: ovl57
@@ -1689,8 +1720,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x17E510, c, mn/mncommon/mncongra]
-      - [0x17EB10, .data, mn/mncommon/mncongra]
+      - [auto, c, mn/mncommon/mncongra]
+      - [auto, .data, mn/mncommon/mncongra]
+      - [auto, .rodata, mn/mncommon/mncongra]
       - { start: auto, type: .bss, name: mn/mncommon/mncongra }
 
   - name: ovl58
@@ -1699,8 +1731,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x17ECC0, c, mn/mncommon/mnstartup]
-      - [0x17F110, .data, mn/mncommon/mnstartup]
+      - [auto, c, mn/mncommon/mnstartup]
+      - [auto, .data, mn/mncommon/mnstartup]
+      - [auto, .rodata, mn/mncommon/mnstartup]
       - { start: auto, type: .bss, name: mn/mncommon/mnstartup }
 
   - name: ovl59
@@ -1709,9 +1742,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x17F200, c, sc/sccommon/scstaffroll]
-      - [0x182960, .data, sc/sccommon/scstaffroll]
-      - [0x187EB0, .rodata, sc/sccommon/scstaffroll]
+      - [auto, c, sc/sccommon/scstaffroll]
+      - [auto, .data, sc/sccommon/scstaffroll]
+      - [auto, .rodata, sc/sccommon/scstaffroll]
       - { start: auto, type: .bss, name: sc/sccommon/scstaffroll }
 
   - name: ovl62
@@ -1720,9 +1753,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x187ED0, c, mn/mndata/mnsoundtest]
-      - [0x189DB0, .data, mn/mndata/mnsoundtest]
-      - [0x18A6C0, .rodata, mn/mndata/mnsoundtest]
+      - [auto, c, mn/mndata/mnsoundtest]
+      - [auto, .data, mn/mndata/mnsoundtest]
+      - [auto, .rodata, mn/mndata/mnsoundtest]
       - { start: auto, type: .bss, name: mn/mndata/mnsoundtest }
 
   - name: ovl63
@@ -1731,13 +1764,14 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x18A6D0, c, sc/sccommon/scexplain]
-      - [0x18BC50, c, sc/sccommon/scexplainfiles]
-      - [0x18BCF0, .data, sc/sccommon/scexplain]
-      - [0x18BDF0, .rodata, sc/sccommon/scexplain]
+      - [auto, c, sc/sccommon/scexplain]
+      - [auto, c, sc/sccommon/scexplainfiles]
+      - [auto, .data, sc/sccommon/scexplain]
+      - [auto, .data, sc/sccommon/scexplainfiles]
+      - [auto, .rodata, sc/sccommon/scexplain]
+      - [auto, .rodata, sc/sccommon/scexplainfiles]
       - { start: auto, type: .bss, name: sc/sccommon/scexplain }
       - { start: auto, type: .bss, name: sc/sccommon/scexplainfiles }
-
 
   - name: ovl64
     type: code
@@ -1745,10 +1779,12 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x18BE00, c, sc/sccommon/scautodemo]
-      - [0x18CE00, c, sc/sccommon/scautodemofiles]
-      - [0x18CEA0, .data, sc/sccommon/scautodemo]
-      - [0x18D020, .rodata, sc/sccommon/scautodemo]
+      - [auto, c, sc/sccommon/scautodemo]
+      - [auto, c, sc/sccommon/scautodemofiles]
+      - [auto, .data, sc/sccommon/scautodemo]
+      - [auto, .data, sc/sccommon/scautodemofiles]
+      - [auto, .rodata, sc/sccommon/scautodemo]
+      - [auto, .rodata, sc/sccommon/scautodemofiles]
       - { start: auto, type: .bss, name: sc/sccommon/scautodemo }
       - { start: auto, type: .bss, name: sc/sccommon/scautodemofiles }
 
@@ -1758,9 +1794,9 @@ segments:
     vram: 0x800D6490
     exclusive_ram_id: overlay_800D6490
     subsegments:
-      - [0x18D030, c, mn/mncommon/mnunusedfighters]
-      - [0x18DBB0, .data, mn/mncommon/mnunusedfighters]
-      - [0x18DCA0, .rodata, mn/mncommon/mnunusedfighters]
+      - [auto, c, mn/mncommon/mnunusedfighters]
+      - [auto, .data, mn/mncommon/mnunusedfighters]
+      - [auto, .rodata, mn/mncommon/mnunusedfighters]
       - { start: auto, type: .bss, name: mn/mncommon/mnunusedfighters }
 
   - name: ovl8
@@ -1840,9 +1876,9 @@ segments:
     vram: 0x80369240
     exclusive_ram_id: overlay_80369240
     subsegments:
-      - [0x1AB6B0, c, db/dbmenu]
-      - [0x1AC3D0, .data, db/dbmenu]
-      - [0x1AC820, .rodata, db/dbmenu]
+      - [auto, c, db/dbmenu]
+      - [auto, .data, db/dbmenu]
+      - [auto, .rodata, db/dbmenu]
       - { start: auto, type: .bss, name: db/dbmenu }
 
   - name: framebuffer

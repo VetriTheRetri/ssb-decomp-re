@@ -3,25 +3,56 @@
 #include <db/debug.h>
 
 
+typedef struct dbUnknownS14 {
+    s32 dbUnknownS14_0x0[5];
+} dbUnknownS14;
+
+extern GObj* D_ovl8_8038A860;
+
+extern Vec3i D_8038EFF0_1AB840;
+extern s32 D_8038EFEC_1AB83C;
+extern Vec3i D_8038EFE0_1AB830;
+extern s16 D_8038EFFC_1AB84C;
+extern s16 D_8038F000_1AB850[];
+extern u16 D_8038F046_1AB896;
 extern DBFont D_8038F008_1AB858;
 extern s16 D_8038F030_1AB880;
 extern f32 D_8038F034_1AB884;
 extern void* D_8038F03C_1AB88C;
-extern void func_ovl8_8037D470();
-extern void func_ovl8_8037D518();
-extern void func_ovl8_8037D5AC();
 
-extern s16 D_8038F000_1AB850[];
-extern u16 D_8038F046_1AB896;
-extern GObj* D_ovl8_8038A860;
+extern dbUnknownS14 D_8038FB90_1AC3E0;
+extern s32 D_8038FB98_1AC3E8;
 
+void func_ovl8_8037D000();
+void func_ovl8_8037D470();
+void func_ovl8_8037D518();
+void func_ovl8_8037D45C();
+void func_ovl8_8037D5AC();
 
+// 0x8037D000
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D000.s")
 
+// 0x8037D28C
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D28C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D2F0.s")
+// 0x8037D2F0
+s32 func_ovl8_8037D2F0()
+{
+    D_ovl8_8038A860 = gcMakeGObjSPAfter(-0x1FA, func_ovl8_8037D000, 0, -1);
 
+    if (D_ovl8_8038A860 == 0)
+    {
+        return -1;
+    }
+
+    func_ovl8_8037D45C();
+
+    D_8038EFFC_1AB84C = 0;
+
+    return 0;
+}
+
+// 0x8037D34C
 void func_ovl8_8037D34C()
 {
 	if (D_ovl8_8038A860 != NULL)
@@ -31,27 +62,69 @@ void func_ovl8_8037D34C()
 	}
 }
 
+// 0x8037D384
+sb32 func_ovl8_8037D384()
+{
+    sb32 var_v1 = D_8038EFE0_1AB830.x != 0;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D384.s")
+    if (var_v1 == FALSE)
+    {
+        var_v1 = D_8038EFE0_1AB830.y != 0;
+    }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D3AC.s")
+    return var_v1;
+}
 
+// 0x8037D3AC
+Vec3i* func_ovl8_8037D3AC(Vec3i* arg0)
+{
+    *arg0 = D_8038EFE0_1AB830;
+    D_8038EFE0_1AB830.x = 0;
+    D_8038EFE0_1AB830.y = 0;
+
+    return arg0;
+}
+
+// 0x8037D3DC
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D3DC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D404.s")
+// 0x8037D404
+void* func_ovl8_8037D404(Vec3i* arg0, s32 arg1)
+{
+    D_8038EFEC_1AB83C = arg1;
+    D_8038EFF0_1AB840 = *arg0;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D434.s")
+    return arg0;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D45C.s")
+// 0x8037D434
+void* func_ovl8_8037D434(Vec3i* arg0)
+{
+    D_8038EFE0_1AB830 = *arg0;
 
+    return arg0;
+}
+
+// 0x8037D45C
+void func_ovl8_8037D45C()
+{
+    D_8038EFE0_1AB830.y = 0;
+    D_8038EFE0_1AB830.x = 0;
+}
+
+// 0x8037D470
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D470.s")
 
+// 0x8037D518
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D518.s")
 
+// 0x8037D5AC
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D5AC.s")
 
+// 0x8037D63C
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D63C.s")
 
+// 0x8037D6D4
 void func_ovl8_8037D6D4(DBFont* dbFont)
 {
 	u16 temp_a1;
@@ -77,17 +150,37 @@ void func_ovl8_8037D6D4(DBFont* dbFont)
 	D_8038F03C_1AB88C = func_ovl8_8037D470;
 }
 
+// 0x8037D7D4
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D7D4.s")
 
+// 0x8037D8CC
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D8CC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D908.s")
+// 0x8037D908
+void func_ovl8_8037D908(dbUnknownS14* arg0)
+{
+    D_8038FB90_1AC3E0 = *arg0;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D95C.s")
+    func_ovl8_8037D9B4(&D_8038FB98_1AC3E8);
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D990.s")
+// 0x8037D95C
+void func_ovl8_8037D95C(dbUnknownS14* arg0)
+{
+    *arg0 = D_8038FB90_1AC3E0;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D99C.s")
+// 0x8037D990
+void func_ovl8_8037D990(s32 arg0)
+{
+    D_8038FB90_1AC3E0.dbUnknownS14_0x0[0] = arg0;
+}
+
+// 0x8037D99C
+void func_ovl8_8037D99C(s32 arg0)
+{
+    D_8038FB90_1AC3E0.dbUnknownS14_0x0[3] = arg0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D9A8.s")
 

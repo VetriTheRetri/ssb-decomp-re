@@ -1820,6 +1820,7 @@ segments:
       - [0x198EB0, c, ovl8/ovl8_11]
       - [0x1992B0, c, ovl8/ovl8_11_1]
       - [0x199690, c, ovl8/ovl8_12]
+      - [0x199840, pad, pad0x199840]
       - [0x199850, c, ovl8/ovl8_13]
       - [0x19B650, c, ovl8/ovl8_14]
       - [0x19BB50, c, ovl8/ovl8_15]

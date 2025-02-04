@@ -116,7 +116,7 @@ struct dbUnknownLinkStruct
     s32 unk_dbunkstruct_0x3C;
     s32 unk_dbunkstruct_0x40;
     s32 unk_dbunkstruct_0x44;
-    dbUnknownLinkStruct *unk_dbunkstruct_0x48;
+    GObj *unk_dbunkstruct_0x48;
     dbUnknownLinkStruct *unk_dbunkstruct_0x4C;
     db4Bytes unk_dbunkstruct_0x50;
     sb32(*unk_dbunkstruct_0x54)();

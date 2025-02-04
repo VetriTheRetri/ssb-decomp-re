@@ -4,30 +4,6 @@
 #include <sc/scene.h>
 #include <sys/video.h>
 
-// Offsets
-extern intptr_t FILE_011_START_IMAGE_OFFSET; // Press Start's "Start" texture
-extern intptr_t FILE_011_PRESS_IMAGE_OFFSET; // Press Start's "Press" texture
-extern intptr_t FILE_011_READY_TO_FIGHT_IMAGE_OFFSET; // Ready to Fight banner text
-extern intptr_t FILE_011_READY_TO_FIGHT_BG_IMAGE_OFFSET; // Ready to Fight banner bg
-extern intptr_t FILE_011_BACK_IMAGE_OFFSET; // file 0x011 image offset for
-extern intptr_t FILE_012_BREAK_THE_TARGETS_TITLE_IMAGE_OFFSET; // file 0x012 image offset for Break The Targets title
-extern intptr_t FILE_012_BOARD_THE_PLATFORMS_TITLE_IMAGE_OFFSET; // file 0x012 image offset for Board the Platforms title
-extern intptr_t FILE_013_XBOX_IMAGE_OFFSET; // file 0x013 image offset
-extern intptr_t FILE_013_PORTRAIT_QUESTION_MARK_IMAGE_OFFSET; // file 0x013 image offset for portrait question mark image
-extern intptr_t FILE_013_PORTRAIT_FIRE_BG_IMAGE_OFFSET; // file 0x013 image offset for portrait bg (fire) image
-extern intptr_t lMNSelectCommonWallpaperSprite; // file 0x015 image offset for background tile
-extern intptr_t FILE_016_WHITE_CIRCLE_OFFSET_1; // AObj? for white circle
-extern intptr_t FILE_016_WHITE_CIRCLE_OFFSET_2; // DObjDesc for white circle
-extern intptr_t FILE_017_BEST_TIME_LABEL_IMAGE_OFFSET;
-extern intptr_t FILE_017_TOTAL_BEST_TIME_LABEL_IMAGE_OFFSET;
-extern intptr_t FILE_017_TARGETS_LABEL_IMAGE_OFFSET;
-extern intptr_t FILE_017_PLATFORMS_LABEL_IMAGE_OFFSET;
-extern intptr_t FILE_017_APOSTROPHE_IMAGE_OFFSET;
-extern intptr_t FILE_017_DOUBLE_QUOTE_IMAGE_OFFSET;
-extern intptr_t FILE_017_PANEL_IMAGE_OFFSET;
-extern intptr_t FILE_013_WHITE_SQUARE;
-extern intptr_t FILE_011_CURSOR_POINTER_IMAGE_OFFSET;
-
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
@@ -44,12 +20,12 @@ u32 dMNPlayers1PBonusFileIDs[/* */] =
 	&lMNSelectCommonFileID,
 	&lMNPlayersGameModesFileID,
 	&lMNPlayersPortraitsFileID,
-	0x17,
-	0x18,
+	&lMNPlayers1PModeFileID,
+	&lMNPlayersDifficultyFileID,
 	&lFTStocksZakoFileID,
 	&lMNCommonFontsFileID,
 	&lIFCommonDigitsFileID,
-	0x16
+	&lMNPlayersSpotlightFileID
 };
 
 // 0x80136F7C
@@ -297,9 +273,9 @@ void mnPlayers1PBonusSelectFighterPuck(s32 player, s32 select_button)
 	sMNPlayers1PBonusSlot.costume = costume;
 	sMNPlayers1PBonusSlot.is_selected = TRUE;
 	sMNPlayers1PBonusSlot.holder_player = GMCOMMON_PLAYERS_MAX;
-	sMNPlayers1PBonusSlot.cursor_state = mnCursorStateNotHoldingPuck;
+	sMNPlayers1PBonusSlot.cursor_status = mnCursorStateNotHoldingPuck;
 
-	mnPlayers1PBonusUpdateCursor(sMNPlayers1PBonusSlot.cursor, player, sMNPlayers1PBonusSlot.cursor_state);
+	mnPlayers1PBonusUpdateCursor(sMNPlayers1PBonusSlot.cursor, player, sMNPlayers1PBonusSlot.cursor_status);
 
 	sMNPlayers1PBonusSlot.held_player = -1;
 	sMNPlayers1PBonusSlot.is_fighter_selected = TRUE;
@@ -389,7 +365,7 @@ void mnPlayers1PBonusPortraitAddCross(GObj *gobj, s32 portrait)
 	f32 x = sobj->pos.x;
 	f32 y = sobj->pos.y;
 
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[4], &FILE_013_XBOX_IMAGE_OFFSET));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[4], &lMNPlayersPortraitsCrossSprite));
 
 	sobj->pos.x = x + 4.0F;
 	sobj->pos.y = y + 12.0F;
@@ -497,7 +473,7 @@ void mnPlayers1PBonusMakePortraitShadow(s32 portrait)
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 27, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddGObjProcess(gobj, mnPlayers1PBonusPortraitProcUpdate, nGCProcessKindFunc, 1);
 
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[4], &FILE_013_PORTRAIT_FIRE_BG_IMAGE_OFFSET));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[4], &lMNPlayersPortraitsWallpaperSprite));
 	sobj->pos.x = (((portrait >= 6) ? portrait - 6 : portrait) * 45) + 25;
 	sobj->pos.y = (((portrait >= 6) ? 1 : 0) * 43) + 36;
 
@@ -521,7 +497,7 @@ void mnPlayers1PBonusMakePortraitShadow(s32 portrait)
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 27, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddGObjProcess(gobj, mnPlayers1PBonusPortraitProcUpdate, nGCProcessKindFunc, 1);
 
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[4], &FILE_013_PORTRAIT_QUESTION_MARK_IMAGE_OFFSET));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[4], &lMNPlayersPortraitsQuestionSprite));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 	sobj->envcolor.r = 0x5B;
@@ -563,7 +539,7 @@ void mnPlayers1PBonusMakePortrait(s32 portrait)
 		wallpaper_gobj->user_data.p = portrait;
 		gcAddGObjProcess(wallpaper_gobj, mnPlayers1PBonusPortraitProcUpdate, nGCProcessKindFunc, 1);
 
-		sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[4], &FILE_013_PORTRAIT_FIRE_BG_IMAGE_OFFSET));
+		sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[4], &lMNPlayersPortraitsWallpaperSprite));
 		sobj->pos.x = (((portrait >= 6) ? portrait - 6 : portrait) * 45) + 25;
 		sobj->pos.y = (((portrait >= 6) ? 1 : 0) * 43) + 36;
 
@@ -802,7 +778,7 @@ void mnPlayers1PBonusMakeGate(s32 player)
 		(
 			Sprite*,
 			sMNPlayers1PBonusFiles[5],
-			&FILE_017_PANEL_IMAGE_OFFSET
+			&lMNPlayers1PModeGateWallpaperSprite
 		),
 		nGCProcessKindFunc,
 		NULL,
@@ -921,9 +897,9 @@ void mnPlayers1PBonusMakeLabels(void)
 
 	if (sMNPlayers1PBonusBonusKind == 0)
 	{
-		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[3], &FILE_012_BREAK_THE_TARGETS_TITLE_IMAGE_OFFSET));
+		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[3], &lMNPlayersGameModesBonus1Sprite));
 	}
-	else sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[3], &FILE_012_BOARD_THE_PLATFORMS_TITLE_IMAGE_OFFSET));
+	else sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[3], &lMNPlayersGameModesBonus2Sprite));
 	
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -939,7 +915,7 @@ void mnPlayers1PBonusMakeLabels(void)
 	}
 	else func_800269C0_275C0(nSYAudioVoiceAnnounceBoardThePlatforms);
 
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[0], &FILE_011_BACK_IMAGE_OFFSET));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[0], &lMNPlayersCommonBackSprite));
 	sobj->pos.x = 244.0F;
 	sobj->pos.y = 23.0F;
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1089,7 +1065,7 @@ void mnPlayers1PBonusMakeBestTime(void)
 		sMNPlayers1PBonusHiScoreGObj = gobj = gcMakeGObjSPAfter(0, NULL, 23, GOBJ_PRIORITY_DEFAULT);
 		gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 26, GOBJ_PRIORITY_DEFAULT, ~0);
 
-		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[5], &FILE_017_BEST_TIME_LABEL_IMAGE_OFFSET));
+		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[5], &lMNPlayers1PModeBestTimeSprite));
 		sobj->pos.x = 177.0F;
 		sobj->pos.y = 198.0F;
 		sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1100,7 +1076,7 @@ void mnPlayers1PBonusMakeBestTime(void)
 
 		mnPlayers1PBonusMakeNumber(gobj, mnPlayers1PBonusGetMins(best_time), 237.0F, 195.0F, colors2, 2, TRUE);
 
-		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[5], &FILE_017_APOSTROPHE_IMAGE_OFFSET));
+		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[5], &lMNPlayers1PModeSecSprite));
 		sobj->pos.x = 239.0F;
 		sobj->pos.y = 195.0F;
 		sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1114,7 +1090,7 @@ void mnPlayers1PBonusMakeBestTime(void)
 
 		mnPlayers1PBonusMakeNumber(gobj, mnPlayers1PBonusGetSec(best_time), 259.0F, 195.0F, colors2, 2, TRUE);
 
-		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[5], &FILE_017_DOUBLE_QUOTE_IMAGE_OFFSET));
+		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[5], &lMNPlayers1PModeCSecSprite));
 		sobj->pos.x = 261.0F;
 		sobj->pos.y = 195.0F;
 		sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1162,9 +1138,9 @@ void mnPlayers1PBonusMakeBestTaskCount(void)
 
 		if (sMNPlayers1PBonusBonusKind == 0)
 		{
-			sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[5], &FILE_017_TARGETS_LABEL_IMAGE_OFFSET));
+			sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[5], &lMNPlayers1PModeTargetsSprite));
 		}
-		else sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[5], &FILE_017_PLATFORMS_LABEL_IMAGE_OFFSET));
+		else sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[5], &lMNPlayers1PModePlatformsSprite));
 		
 		sobj->pos.x = 235.0F;
 		sobj->pos.y = 195.0F;
@@ -1227,7 +1203,7 @@ void mnPlayers1PBonusMakeTotalTime(void)
 	sMNPlayers1PBonusTotalTimeGObj = gobj = gcMakeGObjSPAfter(0, NULL, 23, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 26, GOBJ_PRIORITY_DEFAULT, ~0);
 
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[5], &FILE_017_TOTAL_BEST_TIME_LABEL_IMAGE_OFFSET));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[5], &lMNPlayers1PModeTotalBestTimeSprite));
 	sobj->pos.x = 142.0F;
 	sobj->pos.y = 209.0F;
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1240,7 +1216,7 @@ void mnPlayers1PBonusMakeTotalTime(void)
 	remainder = centiseconds / 100;
 	mnPlayers1PBonusMakeNumber(gobj, centiseconds % 100, 283.0F, 206.0F, colors2, 2, TRUE);
 
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[5], &FILE_017_DOUBLE_QUOTE_IMAGE_OFFSET));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[5], &lMNPlayers1PModeCSecSprite));
 	sobj->pos.x = 261.0F;
 	sobj->pos.y = 206.0F;
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1257,7 +1233,7 @@ void mnPlayers1PBonusMakeTotalTime(void)
 	seconds %= TIME_SEC;
 	mnPlayers1PBonusMakeNumber(gobj, seconds, 259.0F, 206.0F, colors2, 2, TRUE);
 
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[5], &FILE_017_APOSTROPHE_IMAGE_OFFSET));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[5], &lMNPlayers1PModeSecSprite));
 	sobj->pos.x = 239.0F;
 	sobj->pos.y = 206.0F;
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1436,7 +1412,7 @@ void mnPlayers1PBonusMakeFighterCamera(void)
 }
 
 // 0x80134364
-void mnPlayers1PBonusUpdateCursor(GObj *gobj, s32 player, s32 cursor_state)
+void mnPlayers1PBonusUpdateCursor(GObj *gobj, s32 player, s32 cursor_status)
 {
 	SObj *sobj;
 	f32 start_pos_x, start_pos_y;
@@ -1472,15 +1448,15 @@ void mnPlayers1PBonusUpdateCursor(GObj *gobj, s32 player, s32 cursor_state)
 
 	gcRemoveSObjAll(gobj);
 
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[0], cursor_offsets[cursor_state]));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[0], cursor_offsets[cursor_status]));
 	sobj->pos.x = start_pos_x;
 	sobj->pos.y = start_pos_y;
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 
 	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[0], num_offsets[player]));
-	sobj->pos.x = SObjGetPrev(sobj)->pos.x + cursor_pos[cursor_state].x;
-	sobj->pos.y = SObjGetPrev(sobj)->pos.y + cursor_pos[cursor_state].y;
+	sobj->pos.x = SObjGetPrev(sobj)->pos.x + cursor_pos[cursor_status].x;
+	sobj->pos.y = SObjGetPrev(sobj)->pos.y + cursor_pos[cursor_status].y;
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -1661,7 +1637,7 @@ void mnPlayers1PBonusMakePortraitFlash(s32 player)
 	gobj->user_data.p = player;
 	gcAddGObjProcess(gobj, mnPlayers1PBonusPortraitFlashThreadUpdate, nGCProcessKindThread, 1);
 
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[4], &FILE_013_WHITE_SQUARE));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[4], &lMNPlayersPortraitsFlashSprite));
 	sobj->pos.x = ((portrait >= 6 ? portrait - 6 : portrait) * 45) + 26;
 	sobj->pos.y = ((portrait >= 6 ? 1 : 0) * 43) + 37;
 }
@@ -1711,7 +1687,7 @@ void func_ovl29_80134B1C(void)
 // 0x80134B24
 sb32 mnPlayers1PBonusCheckSelectFighter(GObj *gobj, s32 player, s32 unused, s32 select_button)
 {
-	if (sMNPlayers1PBonusSlot.cursor_state != mnCursorStateHoldingPuck)
+	if (sMNPlayers1PBonusSlot.cursor_status != mnCursorStateHoldingPuck)
 	{
 		return FALSE;
 	}
@@ -1757,14 +1733,14 @@ void mnPlayers1PBonusSetCursorGrab(s32 player)
 {
 	sMNPlayers1PBonusSlot.holder_player = player;
 	sMNPlayers1PBonusSlot.is_selected = FALSE;
-	sMNPlayers1PBonusSlot.cursor_state = mnCursorStateHoldingPuck;
+	sMNPlayers1PBonusSlot.cursor_status = mnCursorStateHoldingPuck;
 	sMNPlayers1PBonusSlot.held_player = player;
 	sMNPlayers1PBonusSlot.is_fighter_selected = FALSE;
 
 	mnPlayers1PBonusUpdateFighter(player);
 	mnPlayers1PBonusUpdateCursorGrabDLLinks(player, player);
 	mnPlayers1PBonusSetCursorPuckOffset(player);
-	mnPlayers1PBonusUpdateCursor(sMNPlayers1PBonusSlot.cursor, player, sMNPlayers1PBonusSlot.cursor_state);
+	mnPlayers1PBonusUpdateCursor(sMNPlayers1PBonusSlot.cursor, player, sMNPlayers1PBonusSlot.cursor_status);
 
 	sMNPlayers1PBonusSlot.is_cursor_adjusting = TRUE;
 
@@ -1783,7 +1759,7 @@ sb32 mnPlayers1PBonusCheckCursorPuckGrab(GObj *gobj, s32 player)
 	{
 		return FALSE;
 	}
-	else if (sMNPlayers1PBonusSlot.cursor_state != mnCursorStateNotHoldingPuck)
+	else if (sMNPlayers1PBonusSlot.cursor_status != mnCursorStateNotHoldingPuck)
 	{
 		return FALSE;
 	}
@@ -1791,14 +1767,14 @@ sb32 mnPlayers1PBonusCheckCursorPuckGrab(GObj *gobj, s32 player)
 	{
 		sMNPlayers1PBonusSlot.holder_player = player;
 		sMNPlayers1PBonusSlot.is_selected = FALSE;
-		sMNPlayers1PBonusSlot.cursor_state = mnCursorStateHoldingPuck;
+		sMNPlayers1PBonusSlot.cursor_status = mnCursorStateHoldingPuck;
 		pslot->held_player = player;
 		sMNPlayers1PBonusSlot.is_fighter_selected = FALSE;
 
 		mnPlayers1PBonusUpdateFighter(player);
 		mnPlayers1PBonusUpdateCursorGrabDLLinks(player, player);
 		mnPlayers1PBonusSetCursorPuckOffset(player);
-		mnPlayers1PBonusUpdateCursor(gobj, player, sMNPlayers1PBonusSlot.cursor_state);
+		mnPlayers1PBonusUpdateCursor(gobj, player, sMNPlayers1PBonusSlot.cursor_status);
 
 		sMNPlayers1PBonusSlot.is_cursor_adjusting = TRUE;
 
@@ -1928,8 +1904,8 @@ void mnPlayers1PBonusAdjustCursor(GObj *gobj, s32 player)
 		{
 			sMNPlayers1PBonusSlot.is_cursor_adjusting = FALSE;
 		}
-		SObjGetStruct(gobj)->next->pos.x = SObjGetStruct(gobj)->pos.x + pos[sMNPlayers1PBonusSlot.cursor_state].x;
-		SObjGetStruct(gobj)->next->pos.y = SObjGetStruct(gobj)->pos.y + pos[sMNPlayers1PBonusSlot.cursor_state].y;
+		SObjGetStruct(gobj)->next->pos.x = SObjGetStruct(gobj)->pos.x + pos[sMNPlayers1PBonusSlot.cursor_status].x;
+		SObjGetStruct(gobj)->next->pos.y = SObjGetStruct(gobj)->pos.y + pos[sMNPlayers1PBonusSlot.cursor_status].y;
 	}
 	else if (sMNPlayers1PBonusSlot.is_recalling == FALSE)
 	{
@@ -1944,7 +1920,7 @@ void mnPlayers1PBonusAdjustCursor(GObj *gobj, s32 player)
 			if (is_in_range != FALSE)
 			{
 				SObjGetStruct(gobj)->pos.x = delta;
-				SObjGetStruct(gobj)->next->pos.x = SObjGetStruct(gobj)->pos.x + pos[sMNPlayers1PBonusSlot.cursor_state].x;
+				SObjGetStruct(gobj)->next->pos.x = SObjGetStruct(gobj)->pos.x + pos[sMNPlayers1PBonusSlot.cursor_status].x;
 			}
 		}
 		controller = &gSYControllerDevices[player];
@@ -1958,7 +1934,7 @@ void mnPlayers1PBonusAdjustCursor(GObj *gobj, s32 player)
 			if (is_in_range != FALSE)
 			{
 				SObjGetStruct(gobj)->pos.y = delta;
-				SObjGetStruct(gobj)->next->pos.y = SObjGetStruct(gobj)->pos.y + pos[sMNPlayers1PBonusSlot.cursor_state].y;
+				SObjGetStruct(gobj)->next->pos.y = SObjGetStruct(gobj)->pos.y + pos[sMNPlayers1PBonusSlot.cursor_status].y;
 			}
 		}
 	}
@@ -1971,33 +1947,33 @@ void mnPlayers1PBonusSyncCursorDisplay(GObj *gobj, s32 player)
 
 	if ((SObjGetStruct(gobj)->pos.y > 124.0F) || (SObjGetStruct(gobj)->pos.y < 38.0F))
 	{
-		if (sMNPlayers1PBonusSlot.cursor_state != mnCursorStatePointer)
+		if (sMNPlayers1PBonusSlot.cursor_status != mnCursorStatePointer)
 		{
 			mnPlayers1PBonusUpdateCursor(gobj, player, mnCursorStatePointer);
-			sMNPlayers1PBonusSlot.cursor_state = mnCursorStatePointer;
+			sMNPlayers1PBonusSlot.cursor_status = mnCursorStatePointer;
 		}
 	}
 	else if (sMNPlayers1PBonusSlot.held_player == -1)
 	{
-		if (sMNPlayers1PBonusSlot.cursor_state != mnCursorStateNotHoldingPuck)
+		if (sMNPlayers1PBonusSlot.cursor_status != mnCursorStateNotHoldingPuck)
 		{
 			mnPlayers1PBonusUpdateCursor(gobj, player, mnCursorStateNotHoldingPuck);
-			sMNPlayers1PBonusSlot.cursor_state = mnCursorStateNotHoldingPuck;
+			sMNPlayers1PBonusSlot.cursor_status = mnCursorStateNotHoldingPuck;
 		}
 	}
-	else if (sMNPlayers1PBonusSlot.cursor_state != mnCursorStateHoldingPuck)
+	else if (sMNPlayers1PBonusSlot.cursor_status != mnCursorStateHoldingPuck)
 	{
 		mnPlayers1PBonusUpdateCursor(gobj, player, mnCursorStateHoldingPuck);
-		sMNPlayers1PBonusSlot.cursor_state = mnCursorStateHoldingPuck;
+		sMNPlayers1PBonusSlot.cursor_status = mnCursorStateHoldingPuck;
 	}
-	if ((sMNPlayers1PBonusSlot.cursor_state == mnCursorStatePointer) && (sMNPlayers1PBonusSlot.is_selected != FALSE))
+	if ((sMNPlayers1PBonusSlot.cursor_status == mnCursorStatePointer) && (sMNPlayers1PBonusSlot.is_selected != FALSE))
 	{
 		for (i = 0; i < GMCOMMON_PLAYERS_MAX; i++)
 		{
 			if ((sMNPlayers1PBonusSlot.is_selected == TRUE) && (mnPlayers1PBonusCheckPuckInRange(gobj, player, i) != FALSE))
 			{
 				mnPlayers1PBonusUpdateCursor(gobj, player, mnCursorStateNotHoldingPuck);
-				sMNPlayers1PBonusSlot.cursor_state = mnCursorStateNotHoldingPuck;
+				sMNPlayers1PBonusSlot.cursor_status = mnCursorStateNotHoldingPuck;
 				break;
 			}
 		}
@@ -2246,7 +2222,7 @@ void mnPlayers1PBonusSyncPuckAndFighter(GObj *gobj)
 
 	if
 	(
-		(sMNPlayers1PBonusSlot.cursor_state != mnCursorStatePointer) ||
+		(sMNPlayers1PBonusSlot.cursor_status != mnCursorStatePointer) ||
 		(sMNPlayers1PBonusSlot.is_selected == TRUE) ||
 		(sMNPlayers1PBonusSlot.is_recalling == TRUE)
 	)
@@ -2386,7 +2362,7 @@ void mnPlayers1PBonusMakeCursor(s32 player)
 		(
 			Sprite*,
 			sMNPlayers1PBonusFiles[0],
-			&FILE_011_CURSOR_POINTER_IMAGE_OFFSET
+			&lMNPlayersCommonCursorGrabSprite
 		),
 		nGCProcessKindFunc,
 		mnPlayers1PBonusCursorProcUpdate,
@@ -2547,7 +2523,7 @@ void mnPlayers1PBonusMakePuckActor(void)
 }
 
 // 0x801364E0
-void mnPlayers1PBonusFighterSpotlightProcUpdate(GObj *gobj)
+void mnPlayers1PBonusSpotlightProcUpdate(GObj *gobj)
 {
 	f32 sizes[/* */] =
 	{
@@ -2567,14 +2543,14 @@ void mnPlayers1PBonusFighterSpotlightProcUpdate(GObj *gobj)
 }
 
 // 0x801365B8
-void mnPlayers1PBonusMakeFighterSpotlight(void)
+void mnPlayers1PBonusMakeSpotlight(void)
 {
 	GObj *gobj = gcMakeGObjSPAfter(0, NULL, 21, GOBJ_PRIORITY_DEFAULT);
 
-	gcSetupCommonDObjs(gobj, lbRelocGetFileData(DObjDesc*, sMNPlayers1PBonusFiles[10], &FILE_016_WHITE_CIRCLE_OFFSET_2), NULL);
+	gcSetupCommonDObjs(gobj, lbRelocGetFileData(DObjDesc*, sMNPlayers1PBonusFiles[10], &lMNPlayersSpotlightDObjDesc), NULL);
 	gcAddGObjDisplay(gobj, gcDrawDObjTreeDLLinksForGObj, 9, GOBJ_PRIORITY_DEFAULT, ~0);
-	gcAddMObjAll(gobj, lbRelocGetFileData(MObjSub***, sMNPlayers1PBonusFiles[10], &FILE_016_WHITE_CIRCLE_OFFSET_1));
-	gcAddGObjProcess(gobj, mnPlayers1PBonusFighterSpotlightProcUpdate, nGCProcessKindFunc, 1);
+	gcAddMObjAll(gobj, lbRelocGetFileData(MObjSub***, sMNPlayers1PBonusFiles[10], &lMNPlayersSpotlightMObjSub));
+	gcAddGObjProcess(gobj, mnPlayers1PBonusSpotlightProcUpdate, nGCProcessKindFunc, 1);
 	gcPlayAnimAll(gobj);
 
 	DObjGetStruct(gobj)->translate.vec.f.x = -700.0F;
@@ -2614,7 +2590,7 @@ void mnPlayers1PBonusMakeReady(void)
 	gcAddGObjProcess(gobj, mnPlayers1PBonusReadyProcUpdate, nGCProcessKindFunc, 1);
 
 	// Ready to Fight banner bg
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[0], &FILE_011_READY_TO_FIGHT_BG_IMAGE_OFFSET));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[0], &lMNPlayersCommonReadyBannerSprite));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 	sobj->envcolor.r = 0x00;
@@ -2633,7 +2609,7 @@ void mnPlayers1PBonusMakeReady(void)
 	sobj->pos.y = 71.0F;
 
 	// Ready to Fight banner text
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[0], &FILE_011_READY_TO_FIGHT_IMAGE_OFFSET));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[0], &lMNPlayersCommonReadySprite));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 	sobj->envcolor.r = 0xFF;
@@ -2651,7 +2627,7 @@ void mnPlayers1PBonusMakeReady(void)
 	gcAddGObjProcess(gobj, mnPlayers1PBonusReadyProcUpdate, 1, 1);
 
 	// "Press"
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[0], &FILE_011_PRESS_IMAGE_OFFSET));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[0], &lMNPlayersCommonPressSprite));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 	sobj->sprite.red = 0xD6;
@@ -2661,7 +2637,7 @@ void mnPlayers1PBonusMakeReady(void)
 	sobj->pos.y = 219.0F;
 
 	// "Start"
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[0], &FILE_011_START_IMAGE_OFFSET));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[0], &lMNPlayersCommonStartSprite));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 	sobj->sprite.red = 0xFF;
@@ -2885,12 +2861,12 @@ void mnPlayers1PBonusFuncStart(void)
 	mnPlayers1PBonusInitSlot(sMNPlayers1PBonusManPlayer);
 	mnPlayers1PBonusMakeLabels();
 
-	if (mnPlayers1PBonusCheckBonusCompleteAll())
+	if (mnPlayers1PBonusCheckBonusCompleteAll() != FALSE)
 	{
 		mnPlayers1PBonusMakeTotalTime();
 	}
 	mnPlayers1PBonusMakePuckActor();
-	mnPlayers1PBonusMakeFighterSpotlight();
+	mnPlayers1PBonusMakeSpotlight();
 	mnPlayers1PBonusMakeReady();
 	scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 

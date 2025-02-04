@@ -2283,7 +2283,7 @@ void mnVSResultsMakeLabel(void)
 
 	intptr_t offsets[/* */] =
 	{
-		&lMNPlayersGameModeRoyalSprite, &lMNPlayersGameModeTeamBattleSprite
+		&lMNPlayersGameModesRoyalSprite, &lMNPlayersGameModesTeamBattleSprite
 	};
 	void (*procs[/* */])(GObj*) =
 	{

@@ -8,10 +8,11 @@ extern u32 lMNPlayersCommonFileID;                      // 0x00000011
 extern u32 lMNPlayersGameModesFileID;                   // 0x00000012
 extern u32 lMNPlayersPortraitsFileID;                   // 0x00000013
 extern u32 lMNSelectCommonFileID;                       // 0x00000015
+extern u32 lMNPlayersSpotlightFileID;					// 0x00000016
+extern u32 lMNPlayers1PModeFileID;						// 0x00000017
+extern u32 lMNPlayersDifficultyFileID;					// 0x00000018
 extern u32 lMNDataCommonFileID;						    // 0x00000020
 extern u32 lMNCommonFontsFileID;					    // 0x00000021
-
-extern intptr_t lMNSelectCommonWallpaperSprite;         // 0x00000440
 
 extern intptr_t lMNCommonFontsLetterASprite;		    // 0x00000040
 extern intptr_t lMNCommonFontsLetterBSprite;		    // 0x000000D0
@@ -78,6 +79,9 @@ extern intptr_t lMNPlayersCommonGate2PSprite;        	// 0x00000A58
 extern intptr_t lMNPlayersCommonGate3PSprite;        	// 0x00000C38
 extern intptr_t lMNPlayersCommonGate4PSprite;        	// 0x00000E18
 
+extern intptr_t lMNPlayersCommonStartSprite;            // 0x00001378
+extern intptr_t lMNPlayersCommonPressSprite;            // 0x000014D8
+
 extern intptr_t lMNPlayersCommonMarioNameSprite;        // 0x00001838
 extern intptr_t lMNPlayersCommonLuigiNameSprite;        // 0x00001B18
 extern intptr_t lMNPlayersCommonDonkeyNameSprite;       // 0x00001FF8
@@ -119,13 +123,25 @@ extern intptr_t lMNPlayersCommon3PPuckSprite;   		// 0x0000A608
 extern intptr_t lMNPlayersCommon4PPuckSprite;   		// 0x0000B0E8
 extern intptr_t lMNPlayersCommonCPPuckSprite;   		// 0x0000BBC8
 
+extern intptr_t lMNPlayersCommonReadySprite;            // 0x0000F448
+extern intptr_t lMNPlayersCommonReadyBannerSprite;      // 0x0000F530
+
 extern intptr_t lMNPlayersCommonGate1PLUT;				// 0x000103F8
 extern intptr_t lMNPlayersCommonGate2PLUT;				// 0x00010420
 extern intptr_t lMNPlayersCommonGate3PLUT;				// 0x00010470
 extern intptr_t lMNPlayersCommonGate4PLUT;				// 0x00010448
 
-extern intptr_t lMNPlayersGameModeRoyalSprite;			// 0x00000280
-extern intptr_t lMNPlayersGameModeTeamBattleSprite;		// 0x000004E0
+extern intptr_t lMNPlayersCommonBackSprite;             // 0x000115C8
+
+extern intptr_t lMNPlayersGameModesRoyalSprite;			// 0x00000280
+extern intptr_t lMNPlayersGameModesTeamBattleSprite;    // 0x000004E0
+extern intptr_t lMNPlayersGameModesBonus1Sprite;        // 0x00000BD8
+extern intptr_t lMNPlayersGameModesBonus2Sprite;        // 0x00001058
+
+extern intptr_t lMNPlayersPortraitsCrossSprite;         // 0x000002B8
+extern intptr_t lMNPlayersPortraitsFlashSprite;         // 0x000006F0
+extern intptr_t lMNPlayersPortraitsQuestionSprite;      // 0x00000F68
+extern intptr_t lMNPlayersPortraitsWallpaperSprite;     // 0x000024D0
 
 extern intptr_t lMNPlayersPortraitsMarioSprite;		    // 0x00004728
 extern intptr_t lMNPlayersPortraitsFoxSprite;		    // 0x0000D068
@@ -143,6 +159,19 @@ extern intptr_t lMNPlayersPortraitsCaptainShadowSprite;	// 0x0001E2E8
 extern intptr_t lMNPlayersPortraitsLuigiShadowSprite;	// 0x00020538
 extern intptr_t lMNPlayersPortraitsNessShadowSprite;	// 0x00022788
 extern intptr_t lMNPlayersPortraitsPurinShadowSprite;	// 0x000249D8
+
+extern intptr_t lMNSelectCommonWallpaperSprite;         // 0x00000440
+
+extern intptr_t lMNPlayersSpotlightMObjSub;             // 0x00000408
+extern intptr_t lMNPlayersSpotlightDObjDesc;            // 0x00000568
+
+extern intptr_t lMNPlayers1PModeBestTimeSprite;         // 0x000012E0   
+extern intptr_t lMNPlayers1PModeTotalBestTimeSprite;    // 0x00001410
+extern intptr_t lMNPlayers1PModeTargetsSprite;          // 0x00001658
+extern intptr_t lMNPlayers1PModePlatformsSprite;        // 0x00001898
+extern intptr_t lMNPlayers1PModeSecSprite;              // 0x00001F48
+extern intptr_t lMNPlayers1PModeCSecSprite;             // 0x00001FC8
+extern intptr_t lMNPlayers1PModeGateWallpaperSprite;    // 0x000032A8
 
 extern intptr_t lMNVSModeVSSprite;                      // 0x00006118
 extern intptr_t lMNVSModeVSStartSprite;                 // 0x000024C8

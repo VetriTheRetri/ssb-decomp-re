@@ -53,7 +53,7 @@ struct MNPlayersSlot1PGame
 	void *figatree_heap;
 	s32 fkind;
 	u32 costume;
-	s32 cursor_state;
+	s32 cursor_status;
 	sb32 is_selected;
 	sb32 is_recalling;
 	s32 recall_end_tic;
@@ -101,7 +101,7 @@ struct MNPlayersSlotTraining
 	u32 unk_0x44;
 	s32 fkind;
 	u32 costume;
-	s32 cursor_state;
+	s32 cursor_status;
 	sb32 is_selected;
 	sb32 is_recalling;
 	s32 recall_end_tic;
@@ -153,7 +153,7 @@ struct MNPlayersSlotVS
 	s32 fkind;
 	u32 costume;
 	u32 shade;
-	s32 cursor_state;
+	s32 cursor_status;
 	sb32 is_selected;
 	sb32 is_recalling;
 	s32 recall_end_tic;
@@ -193,7 +193,7 @@ struct MNPlayersSlotBonus
 	void *figatree_heap;
 	s32 fkind;
 	u32 costume;
-	s32 cursor_state;
+	s32 cursor_status;
 	sb32 is_selected;
 	sb32 is_recalling;
 	s32 recall_end_tic;

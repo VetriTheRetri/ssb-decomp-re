@@ -449,7 +449,7 @@ void mnPlayers1PTrainingMakePortraitAll(void)
 
 	for (i = nFTKindPlayableStart; i <= nFTKindPlayableEnd; i++)
 	{
-		mnPlayers1PBonusMakePortrait(i);
+		mnPlayers1PTrainingMakePortrait(i);
 	}
 }
 

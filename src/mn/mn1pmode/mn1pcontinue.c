@@ -331,9 +331,9 @@ void func_ovl55_80132094(void)
 // 0x8013209C
 void mn1PContinueSetFighterScale(GObj *gobj, s32 fkind)
 {
-    DObjGetStruct(gobj)->scale.vec.f.x = dSCSubsysDemoFighterScales[fkind];
-    DObjGetStruct(gobj)->scale.vec.f.y = dSCSubsysDemoFighterScales[fkind];
-    DObjGetStruct(gobj)->scale.vec.f.z = dSCSubsysDemoFighterScales[fkind];
+    DObjGetStruct(gobj)->scale.vec.f.x = dSCSubsysFighterScales[fkind];
+    DObjGetStruct(gobj)->scale.vec.f.y = dSCSubsysFighterScales[fkind];
+    DObjGetStruct(gobj)->scale.vec.f.z = dSCSubsysFighterScales[fkind];
 }
 
 // 0x801320D4
@@ -762,9 +762,9 @@ void mn1PContinueGameOverProcUpdate(GObj *gobj)
 
         DObjGetStruct(sMN1PContinueFighterGObj)->translate.vec.f.y += 3.0F;
 
-        DObjGetStruct(sMN1PContinueFighterGObj)->scale.vec.f.x = dSCSubsysDemoFighterScales[sMN1PContinueFighterDemoDesc.fkind] * sMN1PContinueGameOverFadeOutScale;
-        DObjGetStruct(sMN1PContinueFighterGObj)->scale.vec.f.y = dSCSubsysDemoFighterScales[sMN1PContinueFighterDemoDesc.fkind] * sMN1PContinueGameOverFadeOutScale;
-        DObjGetStruct(sMN1PContinueFighterGObj)->scale.vec.f.z = dSCSubsysDemoFighterScales[sMN1PContinueFighterDemoDesc.fkind] * sMN1PContinueGameOverFadeOutScale;
+        DObjGetStruct(sMN1PContinueFighterGObj)->scale.vec.f.x = dSCSubsysFighterScales[sMN1PContinueFighterDemoDesc.fkind] * sMN1PContinueGameOverFadeOutScale;
+        DObjGetStruct(sMN1PContinueFighterGObj)->scale.vec.f.y = dSCSubsysFighterScales[sMN1PContinueFighterDemoDesc.fkind] * sMN1PContinueGameOverFadeOutScale;
+        DObjGetStruct(sMN1PContinueFighterGObj)->scale.vec.f.z = dSCSubsysFighterScales[sMN1PContinueFighterDemoDesc.fkind] * sMN1PContinueGameOverFadeOutScale;
     }
 }
 

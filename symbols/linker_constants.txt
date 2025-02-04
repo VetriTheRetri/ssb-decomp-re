@@ -1,6 +1,7 @@
 lSYDmemCheckValidFunc = 0x00000000;
 lSYDmemCheckValidNBytes = 0x00000030;
 
+lMNCommonFileID = 0x00000000;
 lMNCharactersFileID = 0x00000010;
 lMNPlayersPortraitsFileID = 0x00000013;
 lFTEmblemSpritesFileID = 0x00000014;

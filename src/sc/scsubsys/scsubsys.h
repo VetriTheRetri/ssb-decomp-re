@@ -6,7 +6,7 @@
 #include <PR/gbi.h>
 #include <sc/scdef.h>
 
-extern f32 dSCSubsysDemoFighterScales[/* */];
+extern f32 dSCSubsysFighterScales[/* */];
 
 extern void scSubsysFighterSetLightParams(f32 light_angle_x, f32 light_angle_y, u8 r, u8 g, u8 b, u8 a);
 extern f32 scSubsysFighterGetLightAngleX(void);

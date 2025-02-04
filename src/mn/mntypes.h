@@ -114,8 +114,8 @@ struct MNPlayersSlotTraining
 	s32 holder_player;
 	s32 held_player;
 	s32 player_type;
-	sb32 unk_0x88;
 	sb32 is_fighter_selected;
+	sb32 is_status_selected;
 	f32 puck_vel_x;
 	f32 puck_vel_y;
 	f32 cursor_pickup_x;

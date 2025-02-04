@@ -4,6 +4,7 @@
 #include "mntypes.h"
 #include "mnfunctions.h"
 
+extern u32 lMNCommonFileID;                             // 0x00000000
 extern u32 lMNPlayersCommonFileID;                      // 0x00000011
 extern u32 lMNPlayersGameModesFileID;                   // 0x00000012
 extern u32 lMNPlayersPortraitsFileID;                   // 0x00000013

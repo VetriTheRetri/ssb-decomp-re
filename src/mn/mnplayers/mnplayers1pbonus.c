@@ -486,8 +486,8 @@ void mnPlayers1PBonusMakePortraitShadow(s32 portrait)
 	gcAddGObjProcess(gobj, mnPlayers1PBonusPortraitProcUpdate, nGCProcessKindFunc, 1);
 
 	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[4], offsets[mnPlayers1PBonusGetFighterKind(portrait)]));
-	sobj->sprite.attr = sobj->sprite.attr & ~SP_FASTCOPY;
-	sobj->sprite.attr = sobj->sprite.attr| SP_TRANSPARENT;
+	sobj->sprite.attr &= ~SP_FASTCOPY;
+	sobj->sprite.attr |= SP_TRANSPARENT;
 
 	gobj->user_data.s = portrait;
 	mnPlayers1PBonusSetPortraitWallpaperPosition(sobj, portrait);
@@ -569,11 +569,11 @@ void mnPlayers1PBonusMakePortrait(s32 portrait)
 // 0x80132A58
 void mnPlayers1PBonusMakePortraitAll(void)
 {
-	s32 portrait;
+	s32 i;
 
-	for (portrait = nFTKindPlayableStart; portrait <= nFTKindPlayableEnd; portrait++)
+	for (i = nFTKindPlayableStart; i <= nFTKindPlayableEnd; i++)
 	{
-		mnPlayers1PBonusMakePortrait(portrait);
+		mnPlayers1PBonusMakePortrait(i);
 	}
 }
 
@@ -1365,9 +1365,9 @@ void mnPlayers1PBonusMakeFighter(GObj *fighter_gobj, s32 player, s32 fkind)
 
 		DObjGetStruct(fighter_gobj)->rotate.vec.f.y = rot_y;
 
-		DObjGetStruct(fighter_gobj)->scale.vec.f.x = dSCSubsysDemoFighterScales[fkind];
-		DObjGetStruct(fighter_gobj)->scale.vec.f.y = dSCSubsysDemoFighterScales[fkind];
-		DObjGetStruct(fighter_gobj)->scale.vec.f.z = dSCSubsysDemoFighterScales[fkind];
+		DObjGetStruct(fighter_gobj)->scale.vec.f.x = dSCSubsysFighterScales[fkind];
+		DObjGetStruct(fighter_gobj)->scale.vec.f.y = dSCSubsysFighterScales[fkind];
+		DObjGetStruct(fighter_gobj)->scale.vec.f.z = dSCSubsysFighterScales[fkind];
 	}
 }
 

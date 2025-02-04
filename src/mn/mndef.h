@@ -266,11 +266,11 @@ typedef enum MNVSResultsKind
 
 typedef enum mnSelectButton
 {
-	mnSelect_CU,                // C-Up
-	mnSelect_CR,                // C-Right
-	mnSelect_CD,                // C-Down
-	mnSelect_CL,                // C-Left
-	mnSelect_A                  // A
+	nMNPlayersSelectButtonCU,                // C-Up
+	nMNPlayersSelectButtonCR,                // C-Right
+	nMNPlayersSelectButtonCD,                // C-Down
+	nMNPlayersSelectButtonCL,                // C-Left
+	nMNPlayersSelectButtonA                  // A
 
 } mnSelectButton;
 

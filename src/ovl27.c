@@ -6,7 +6,7 @@
 
 // Externs
 
-extern f32 dSCSubsysDemoFighterScales[12]; // dSCSubsysDemoFighterScales
+extern f32 dSCSubsysFighterScales[12]; // dSCSubsysFighterScales
 
 // Offsets
 extern intptr_t lMNPlayersCommonStartSprite; // Press Start's "Start" texture
@@ -161,7 +161,7 @@ GObj* gMN1PStockGObj;
 void* gMN1PFigatreeHeap;
 
 // 0x80138FC8 flag indicating which bonus chars are available
-u16 gMN1PCharacterUnlockedMask;
+u16 gMN1PFighterMask;
 
 // 0x80138FCA
 u16 D_ovl27_80138FCA;
@@ -446,7 +446,7 @@ void mn1PSelectFighterPuck(s32 player, s32 select_button)
 }
 
 // 0x8013243C
-f32 mn1PGetNextPortraitX(s32 portrait, f32 current_x_position)
+f32 mn1PGetNextPortraitX(s32 portrait, f32 current_pos_x)
 {
 	f32 portrait_pos_x[12] = {
 
@@ -459,38 +459,38 @@ f32 mn1PGetNextPortraitX(s32 portrait, f32 current_x_position)
 			1.8, 3.8, 7.8, -7.8, -3.8, -1.8
 	};
 
-	if (current_x_position == portrait_pos_x[portrait])
+	if (current_pos_x == portrait_pos_x[portrait])
 	{
 		return -1.0F;
 	}
-	else if (portrait_pos_x[portrait] < current_x_position)
+	else if (portrait_pos_x[portrait] < current_pos_x)
 	{
-		return (current_x_position + portrait_vel[portrait]) <= portrait_pos_x[portrait]
+		return (current_pos_x + portrait_vel[portrait]) <= portrait_pos_x[portrait]
 			? portrait_pos_x[portrait]
-			: current_x_position + portrait_vel[portrait];
+			: current_pos_x + portrait_vel[portrait];
 	}
 	else
 	{
-		return (current_x_position + portrait_vel[portrait]) >= portrait_pos_x[portrait]
+		return (current_pos_x + portrait_vel[portrait]) >= portrait_pos_x[portrait]
 			? portrait_pos_x[portrait]
-			: current_x_position + portrait_vel[portrait];
+			: current_pos_x + portrait_vel[portrait];
 	}
 }
 
 // 0x80132550
-sb32 mn1PCheckFighterIsXBoxed(s32 fkind)
+sb32 mn1PCheckFighterCrossed(s32 fkind)
 {
 	return FALSE;
 }
 
 // 0x8013255C
-void mn1PSetPortraitX(GObj *portrait_gobj)
+void mn1PPortraitProcUpdate(GObj *portrait_gobj)
 {
-	f32 new_portrait_x = mn1PGetNextPortraitX(portrait_gobj->user_data.s, SObjGetStruct(portrait_gobj)->pos.x);
+	f32 new_pos_x = mn1PGetNextPortraitX(portrait_gobj->user_data.s, SObjGetStruct(portrait_gobj)->pos.x);
 
-	if (new_portrait_x != -1.0F)
+	if (new_pos_x != -1.0F)
 	{
-		SObjGetStruct(portrait_gobj)->pos.x = new_portrait_x;
+		SObjGetStruct(portrait_gobj)->pos.x = new_pos_x;
 
 		if (SObjGetStruct(portrait_gobj)->next != NULL)
 			SObjGetStruct(portrait_gobj)->next->pos.x = SObjGetStruct(portrait_gobj)->pos.x + 4.0F;
@@ -498,7 +498,7 @@ void mn1PSetPortraitX(GObj *portrait_gobj)
 }
 
 // 0x801325D8
-void mn1PInitializePortraitBackgroundPosition(SObj *portrait_bg_sobj, s32 portrait)
+void mn1PSetPortraitWallpaperPosition(SObj *sobj, s32 portrait)
 {
 	Vec2f coordinates[12] = {
 
@@ -506,19 +506,19 @@ void mn1PInitializePortraitBackgroundPosition(SObj *portrait_bg_sobj, s32 portra
 		{ -35.0, 79.0 }, { -35.0, 79.0 }, { -35.0, 79.0 }, { 310.0, 79.0 }, { 310.0, 79.0 }, { 310.0, 79.0 }
 	};
 
-	portrait_bg_sobj->pos.x = coordinates[portrait].x;
-	portrait_bg_sobj->pos.y = coordinates[portrait].y;
+	sobj->pos.x = coordinates[portrait].x;
+	sobj->pos.y = coordinates[portrait].y;
 }
 
 // 0x80132634
-void mn1PAddRedXBoxToPortrait(GObj* portrait_gobj, s32 portrait)
+void mn1PPortraitAddCross(GObj* portrait_gobj, s32 portrait)
 {
 	SObj* portrait_sobj = SObjGetStruct(portrait_gobj);
 	f32 x = portrait_sobj->pos.x,
 		y = portrait_sobj->pos.y;
 	s32 xbox_image_offset = &(lMNPlayersPortraitsCrossSprite);
 
-	portrait_sobj = lbCommonMakeSObjForGObj(portrait_gobj, lbRelocGetFileData(void*, gMN1PFiles[4], xbox_image_offset)); // AppendTexture
+	portrait_sobj = lbCommonMakeSObjForGObj(portrait_gobj, lbRelocGetFileData(void*, gMN1PFiles[4], xbox_image_offset));
 
 	portrait_sobj->pos.x = x + 4.0F;
 	portrait_sobj->pos.y = y + 12.0F;
@@ -530,21 +530,21 @@ void mn1PAddRedXBoxToPortrait(GObj* portrait_gobj, s32 portrait)
 }
 
 // 0x801326C8
-sb32 mn1PGetIsLocked(s32 fkind)
+sb32 mn1PCheckFighterLocked(s32 fkind)
 {
 	switch (fkind)
 	{
 		case nFTKindNess:
-			return (gMN1PCharacterUnlockedMask & (1 << nFTKindNess)) ? FALSE : TRUE;
+			return (gMN1PFighterMask & (1 << nFTKindNess)) ? FALSE : TRUE;
 
 		case nFTKindPurin:
-			return (gMN1PCharacterUnlockedMask & (1 << nFTKindPurin)) ? FALSE : TRUE;
+			return (gMN1PFighterMask & (1 << nFTKindPurin)) ? FALSE : TRUE;
 
 		case nFTKindCaptain:
-			return (gMN1PCharacterUnlockedMask & (1 << nFTKindCaptain)) ? FALSE : TRUE;
+			return (gMN1PFighterMask & (1 << nFTKindCaptain)) ? FALSE : TRUE;
 
 		case nFTKindLuigi:
-			return (gMN1PCharacterUnlockedMask & (1 << nFTKindLuigi)) ? FALSE : TRUE;
+			return (gMN1PFighterMask & (1 << nFTKindLuigi)) ? FALSE : TRUE;
 	}
 	return FALSE;
 }
@@ -578,7 +578,7 @@ s32 mn1PGetFighterKind(s32 portrait)
 }
 
 // 0x801327EC
-s32 mn1PGetPortraitId(s32 fkind)
+s32 mn1PGetPortrait(s32 fkind)
 {
 	s32 portrait_order[12] = {
 
@@ -589,7 +589,7 @@ s32 mn1PGetPortraitId(s32 fkind)
 }
 
 // 0x8013283C
-void mn1PRenderPortraitWithNoise(GObj *portrait_gobj)
+void mn1PPortraitProcDisplay(GObj *portrait_gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
@@ -600,7 +600,7 @@ void mn1PRenderPortraitWithNoise(GObj *portrait_gobj)
 }
 
 // 0x801328FC
-void mn1PCreateLockedPortrait(s32 portrait)
+void mn1PMakePortraitShadow(s32 portrait)
 {
 	GObj* texture_gobj;
 	SObj* texture_sobj;
@@ -613,31 +613,31 @@ void mn1PCreateLockedPortrait(s32 portrait)
 	// portrait bg (fire)
 	texture_gobj = gcMakeGObjSPAfter(0U, NULL, 0x12U, 0x80000000U);
 	gcAddGObjDisplay(texture_gobj, lbCommonDrawSObjAttr, 0x1BU, GOBJ_PRIORITY_DEFAULT, ~0);
-	gcAddGObjProcess(texture_gobj, mn1PSetPortraitX, 1, 1);
+	gcAddGObjProcess(texture_gobj, mn1PPortraitProcUpdate, 1, 1);
 
 	texture_sobj = lbCommonMakeSObjForGObj(texture_gobj, lbRelocGetFileData(void*, gMN1PFiles[4], &lMNPlayersPortraitsWallpaperSprite));
 	texture_sobj->pos.x = (f32) (((portrait >= 6 ? portrait - 6 : portrait) * 0x2D) + 0x19);
 	texture_sobj->pos.y = (f32) (((portrait >= 6 ? 1 : 0) * 0x2B) + 0x24);
 
-	mn1PInitializePortraitBackgroundPosition(texture_sobj, portrait);
+	mn1PSetPortraitWallpaperPosition(texture_sobj, portrait);
 	texture_gobj->user_data.s = portrait;
 
 	// portrait
 	texture_gobj = gcMakeGObjSPAfter(0U, NULL, 0x12U, 0x80000000U);
-	gcAddGObjDisplay(texture_gobj, mn1PRenderPortraitWithNoise, 0x1BU, GOBJ_PRIORITY_DEFAULT, ~0);
-	gcAddGObjProcess(texture_gobj, mn1PSetPortraitX, 1, 1);
+	gcAddGObjDisplay(texture_gobj, mn1PPortraitProcDisplay, 0x1BU, GOBJ_PRIORITY_DEFAULT, ~0);
+	gcAddGObjProcess(texture_gobj, mn1PPortraitProcUpdate, 1, 1);
 
 	texture_sobj = lbCommonMakeSObjForGObj(texture_gobj, lbRelocGetFileData(void*, gMN1PFiles[4], locked_portrait_offsets[mn1PGetFighterKind(portrait)]));
 	texture_sobj->sprite.attr = texture_sobj->sprite.attr & ~SP_FASTCOPY;
 	texture_sobj->sprite.attr = texture_sobj->sprite.attr| SP_TRANSPARENT;
 
 	texture_gobj->user_data.s = portrait;
-	mn1PInitializePortraitBackgroundPosition(texture_sobj, portrait);
+	mn1PSetPortraitWallpaperPosition(texture_sobj, portrait);
 
 	// question mark
 	texture_gobj = gcMakeGObjSPAfter(0U, NULL, 0x12U, 0x80000000U);
 	gcAddGObjDisplay(texture_gobj, lbCommonDrawSObjAttr, 0x1BU, GOBJ_PRIORITY_DEFAULT, ~0);
-	gcAddGObjProcess(texture_gobj, mn1PSetPortraitX, 1, 1);
+	gcAddGObjProcess(texture_gobj, mn1PPortraitProcUpdate, 1, 1);
 
 	texture_sobj = lbCommonMakeSObjForGObj(texture_gobj, lbRelocGetFileData(void*, gMN1PFiles[4], &lMNPlayersPortraitsQuestionSprite));
 	texture_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -650,11 +650,11 @@ void mn1PCreateLockedPortrait(s32 portrait)
 	texture_sobj->sprite.blue = 0xA9;
 
 	texture_gobj->user_data.s = portrait;
-	mn1PInitializePortraitBackgroundPosition(texture_sobj, portrait);
+	mn1PSetPortraitWallpaperPosition(texture_sobj, portrait);
 }
 
 // 0x80132BA4
-void mn1PCreatePortrait(s32 portrait)
+void mn1PMakePortrait(s32 portrait)
 {
 	GObj *portrait_gobj, *portrait_bg_gobj;
 	SObj *texture_sobj;
@@ -665,23 +665,23 @@ void mn1PCreatePortrait(s32 portrait)
 	};
 
 	// if locked, render locked portrait instead
-	if (mn1PGetIsLocked(mn1PGetFighterKind(portrait)))
-		mn1PCreateLockedPortrait(portrait);
+	if (mn1PCheckFighterLocked(mn1PGetFighterKind(portrait)))
+		mn1PMakePortraitShadow(portrait);
 	else
 	{
 		// portrait bg (fire)
 		portrait_bg_gobj = gcMakeGObjSPAfter(0U, NULL, 0x19U, 0x80000000U);
 		gcAddGObjDisplay(portrait_bg_gobj, lbCommonDrawSObjAttr, 0x20U, GOBJ_PRIORITY_DEFAULT, ~0);
 		portrait_bg_gobj->user_data.p = portrait;
-		gcAddGObjProcess(portrait_bg_gobj, mn1PSetPortraitX, 1, 1);
+		gcAddGObjProcess(portrait_bg_gobj, mn1PPortraitProcUpdate, 1, 1);
 
 		texture_sobj = lbCommonMakeSObjForGObj(portrait_bg_gobj, lbRelocGetFileData(void*, gMN1PFiles[4], &lMNPlayersPortraitsWallpaperSprite));
-		mn1PInitializePortraitBackgroundPosition(texture_sobj, portrait);
+		mn1PSetPortraitWallpaperPosition(texture_sobj, portrait);
 
 		// portrait
 		portrait_gobj = gcMakeGObjSPAfter(0U, NULL, 0x12U, 0x80000000U);
 		gcAddGObjDisplay(portrait_gobj, lbCommonDrawSObjAttr, 0x1BU, GOBJ_PRIORITY_DEFAULT, ~0);
-		gcAddGObjProcess(portrait_gobj, mn1PSetPortraitX, 1, 1);
+		gcAddGObjProcess(portrait_gobj, mn1PPortraitProcUpdate, 1, 1);
 
 		texture_sobj = lbCommonMakeSObjForGObj(portrait_gobj, lbRelocGetFileData(void*, gMN1PFiles[4], portrait_offsets[mn1PGetFighterKind(portrait)]));
 		texture_sobj->sprite.attr = texture_sobj->sprite.attr & ~SP_FASTCOPY;
@@ -689,20 +689,20 @@ void mn1PCreatePortrait(s32 portrait)
 		portrait_gobj->user_data.p = portrait;
 
 		// this conditionally draws a big red box with an X in it, but this check always fails
-		if (mn1PCheckFighterIsXBoxed(mn1PGetFighterKind(portrait)))
-			mn1PAddRedXBoxToPortrait(portrait_gobj, portrait);
+		if (mn1PCheckFighterCrossed(mn1PGetFighterKind(portrait)))
+			mn1PPortraitAddCross(portrait_gobj, portrait);
 
-		mn1PInitializePortraitBackgroundPosition(texture_sobj, portrait);
+		mn1PSetPortraitWallpaperPosition(texture_sobj, portrait);
 	}
 }
 
 // 0x80132D60
-void mn1PCreatePortraits()
+void mn1PMakePortraits()
 {
 	s32 portrait;
 
 	for (portrait = 0; portrait < 12; portrait++)
-		mn1PCreatePortrait(portrait);
+		mn1PMakePortrait(portrait);
 }
 
 // 0x80132DA0
@@ -731,7 +731,7 @@ void mn1PMakeNameAndEmblem(GObj* name_logo_gobj_gobj, s32 player, s32 fkind)
 
 		// logo
 		sobj = lbCommonMakeSObjForGObj(name_logo_gobj_gobj, lbRelocGetFileData(void*, gMN1PFiles[1], logo_offsets[fkind]));
-		sobj->sprite.attr = sobj->sprite.attr & ~SP_FASTCOPY;
+		sobj->sprite.attr &= ~SP_FASTCOPY;
 		sobj->sprite.attr = sobj->sprite.attr | SP_TRANSPARENT;
 		sobj->sprite.red = 0;
 		sobj->sprite.green = 0;
@@ -741,7 +741,7 @@ void mn1PMakeNameAndEmblem(GObj* name_logo_gobj_gobj, s32 player, s32 fkind)
 
 		// name
 		sobj = lbCommonMakeSObjForGObj(name_logo_gobj_gobj, lbRelocGetFileData(void*, gMN1PFiles[0], name_offsets[fkind]));
-		sobj->sprite.attr = sobj->sprite.attr & ~SP_FASTCOPY;
+		sobj->sprite.attr &= ~SP_FASTCOPY;
 		sobj->sprite.attr = sobj->sprite.attr | SP_TRANSPARENT;
 		sobj->pos.x = 33.0F;
 		sobj->pos.y = 202.0F;
@@ -749,7 +749,7 @@ void mn1PMakeNameAndEmblem(GObj* name_logo_gobj_gobj, s32 player, s32 fkind)
 }
 
 // 0x80132F1C
-void mn1PCreatePortraitCamera(void)
+void mn1PMakePortraitCamera(void)
 {
 	CObj *cobj = CObjGetStruct
 	(
@@ -774,7 +774,7 @@ void mn1PCreatePortraitCamera(void)
 }
 
 // 0x80132FBC
-void mn1PCreatePortraitWallpaperCamera()
+void mn1PMakePortraitWallpaperCamera()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonDrawSprite, 0x3C, 0x100000000, -1, 0, 1, 0, 1, 0);
 	CObj *cobj = CObjGetStruct(camera_gobj);
@@ -782,7 +782,7 @@ void mn1PCreatePortraitWallpaperCamera()
 }
 
 // 0x8013305C
-void mn1PCreatePortraitFlashCamera()
+void mn1PMakePortraitFlashCamera()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonDrawSprite, 0x32, 0x200000000, -1, 0, 1, 0, 1, 0);
 	CObj *cobj = CObjGetStruct(camera_gobj);
@@ -1616,9 +1616,9 @@ void mn1PSpawnFighter(GObj* fighter_gobj, s32 player, s32 fkind, s32 costume)
 
 		DObjGetStruct(fighter_gobj)->rotate.vec.f.y = initial_y_rotation;
 
-		DObjGetStruct(fighter_gobj)->scale.vec.f.x = dSCSubsysDemoFighterScales[fkind];
-		DObjGetStruct(fighter_gobj)->scale.vec.f.y = dSCSubsysDemoFighterScales[fkind];
-		DObjGetStruct(fighter_gobj)->scale.vec.f.z = dSCSubsysDemoFighterScales[fkind];
+		DObjGetStruct(fighter_gobj)->scale.vec.f.x = dSCSubsysFighterScales[fkind];
+		DObjGetStruct(fighter_gobj)->scale.vec.f.y = dSCSubsysFighterScales[fkind];
+		DObjGetStruct(fighter_gobj)->scale.vec.f.z = dSCSubsysFighterScales[fkind];
 	}
 }
 
@@ -1869,7 +1869,7 @@ void mn1PMakePortraitFlash(s32 player)
 {
 	GObj* flash_gobj;
 	SObj* flash_sobj;
-	s32 portrait = mn1PGetPortraitId(gMN1PPanel.fkind);
+	s32 portrait = mn1PGetPortrait(gMN1PPanel.fkind);
 
 	mn1PDestroyFlash(player);
 
@@ -1982,7 +1982,7 @@ void mn1PHandleCursorPickup(s32 player)
 // 0x80135E2C
 sb32 mn1PCheckAndHandlePuckGrab(GObj* cursor_gobj, s32 player)
 {
-	MNPlayersSlot1PGame* panel_info = &gMN1PPanel;
+	MNPlayersSlot1PGame* pslot = &gMN1PPanel;
 
 	if ((gMN1PTotalTimeTics < gMN1PPanel.recall_end_tic) || (gMN1PPanel.is_recalling))
 		return FALSE;
@@ -1995,7 +1995,7 @@ sb32 mn1PCheckAndHandlePuckGrab(GObj* cursor_gobj, s32 player)
 		gMN1PPanel.holder_player = player;
 		gMN1PPanel.is_selected = FALSE;
 		gMN1PPanel.cursor_status = mnCursorStateHoldingPuck;
-		panel_info->held_player = player;
+		pslot->held_player = player;
 		gMN1PPanel.unk_0x88 = FALSE;
 
 		mn1PSyncFighterDisplay(player);
@@ -2065,7 +2065,7 @@ s32 mn1PGetPuckFighterKind(s32 player)
 		{
 			fkind = mn1PGetFighterKind((s32) (current_y - 25) / 45);
 
-			if ((mn1PCheckFighterIsXBoxed(fkind)) || (mn1PGetIsLocked(fkind)))
+			if ((mn1PCheckFighterCrossed(fkind)) || (mn1PCheckFighterLocked(fkind)))
 				return nFTKindNull;
 
 			return fkind;
@@ -2082,7 +2082,7 @@ s32 mn1PGetPuckFighterKind(s32 player)
 		{
 			fkind = mn1PGetFighterKind(((s32) (current_y - 25) / 45) + 6);
 
-			if ((mn1PCheckFighterIsXBoxed(fkind)) || (mn1PGetIsLocked(fkind)))
+			if ((mn1PCheckFighterCrossed(fkind)) || (mn1PCheckFighterLocked(fkind)))
 				return nFTKindNull;
 
 			return fkind;
@@ -2446,7 +2446,7 @@ void mn1PDetectBack(s32 player)
 void mn1PCursorProcUpdate(GObj* cursor_gobj)
 {
 	SYController* controller = &gSYControllerDevices[cursor_gobj->user_data.s];
-	MNPlayersSlot1PGame* panel_info;
+	MNPlayersSlot1PGame* pslot;
 	s32 foo, bar, baz;
 	s32 player = cursor_gobj->user_data.s;
 
@@ -2534,7 +2534,7 @@ void func_ovl27_8013702C() {}
 // 0x80137034
 void mn1PCenterPuckInPortrait(GObj* puck_gobj, s32 fkind)
 {
-	s32 portrait = mn1PGetPortraitId(fkind);
+	s32 portrait = mn1PGetPortrait(fkind);
 
 	if (portrait >= 6)
 	{
@@ -2662,7 +2662,7 @@ void mn1PMakeCursor(s32 player)
 void mn1PMakePuck(s32 player)
 {
 	GObj* puck_gobj;
-	MNPlayersSlot1PGame* panel_info;
+	MNPlayersSlot1PGame* pslot;
 
 	// puck offsets not including cpu
 	intptr_t offsets[4] = {
@@ -2702,7 +2702,7 @@ void func_ovl27_801376F0() {}
 // 0x801376F8
 void mn1PPuckActorAdjustPortraitEdge(s32 player)
 {
-	s32 portrait = mn1PGetPortraitId(gMN1PPanel.fkind);
+	s32 portrait = mn1PGetPortrait(gMN1PPanel.fkind);
 	f32 portrait_edge_x = ((portrait >= 6) ? portrait - 6 : portrait) * 45 + 25;
 	f32 portrait_edge_y = ((portrait >= 6) ? 1 : 0) * 43 + 36;
 	f32 new_pos_x = SObjGetStruct(gMN1PPanel.puck)->pos.x + gMN1PPanel.puck_vel_x + 13.0F;
@@ -3075,7 +3075,7 @@ void mn1PLoadMatchInfo()
 	mn1PInitPort(gMN1PHumanPanelPort);
 
 	gMN1PPanel.recall_end_tic = 0;
-	gMN1PCharacterUnlockedMask = gSCManagerBackupData.fighter_mask;
+	gMN1PFighterMask = gSCManagerBackupData.fighter_mask;
 }
 
 // 0x801382C8
@@ -3124,18 +3124,18 @@ void mn1PGamePlayersFuncStart(void)
 	gMN1PFigatreeHeap = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10U);
 
 	mn1PLoadMatchInfo();
-	mn1PCreatePortraitCamera();
+	mn1PMakePortraitCamera();
 	mn1PMakeCursorViewport();
 	mn1PCreatePuckCamera();
 	mn1PMakeGateViewport();
 	mn1PMakeFighterCamera();
-	mn1PCreatePortraitWallpaperCamera();
-	mn1PCreatePortraitFlashCamera();
+	mn1PMakePortraitWallpaperCamera();
+	mn1PMakePortraitFlashCamera();
 	mn1PMakeWallpaperCamera();
 	mn1PCreateTitleOptionsAndBackViewport();
 	mn1PCreateReadyViewport();
 	mn1PMakeWallpaper();
-	mn1PCreatePortraits();
+	mn1PMakePortraits();
 	mn1PInitPanel(gMN1PHumanPanelPort);
 	mn1PDrawPickerOptionsTitleAndBack();
 	mn1PDrawTotalHighscoreAndBonuses();

@@ -75,28 +75,14 @@ s32 D_ovl27_801385B0[] = {
 };
 
 // 0x80138630
-u32 D_ovl27_80138630[11] = {
+u32 gMN1PFileIDs[11] = {
 
 	0x11, 0x14, 0x15, 0x12, 0x13, 0x17, 0x18, 0x19, 0x21, 0x24, 0x16
 };
 
 // 0x80138660
-s32 D_ovl27_80138660[] = {
-
-	0x00000000,
-	0x20202000,
-	0x20202000,
-	0xFFFFFF00,
-	0xFFFFFF00,
-	0x14141400,
-	0x00000000,
-	0x20202000,
-	0x20202000,
-	0xFFFFFF00,
-	0xFFFFFF00,
-	0x00EC0000,
-	0x00000000
-};
+Lights1 gMN1PLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x14, 0x14, 0x14);
+Lights1 gMN1PLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x00, 0xEC, 0x00);
 
 
 // BSS
@@ -3110,7 +3096,21 @@ void mn1PGamePlayersFuncStart(void)
 	rl_setup.force_status_buffer = (LBFileNode*) &D_ovl27_801392A8;
 	rl_setup.force_status_buffer_size = 7;
 	lbRelocInitSetup(&rl_setup);
-	lbRelocLoadFilesExtern(D_ovl27_80138630, 11U, gMN1PFiles, syTaskmanMalloc(lbRelocGetAllocSize(D_ovl27_80138630, 11U), 0x10U));
+	lbRelocLoadFilesExtern
+	(
+		gMN1PFileIDs,
+		ARRAY_COUNT(gMN1PFileIDs),
+		gMN1PFiles,
+		syTaskmanMalloc
+		(
+			lbRelocGetAllocSize
+			(
+				gMN1PFileIDs,
+				ARRAY_COUNT(gMN1PFileIDs)
+			),
+			0x10
+		)
+	);
 
 	gcMakeGObjSPAfter(0x400U, &mn1PMain, 0xFU, 0x80000000U);
 	gcMakeDefaultCameraGObj(0x10, 0x80000000U, 0x64, 1, 0);

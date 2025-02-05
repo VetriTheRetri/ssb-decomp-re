@@ -65,14 +65,14 @@ sb32 mnIsHandicap();
 
 // Data
 // 0x8013B3A0
-u32 D_ovl26_8013B3A0[20] = {
+u32 gMnBattleFileIDs[7] = {
 
-	0x00000011, 0x00000000, 0x00000014, 0x00000015,
-	0x00000012, 0x00000013, 0x00000016, 0x00000000,
-	0x20202000, 0x20202000, 0xFFFFFF00, 0xFFFFFF00,
-	0x14141400, 0x00000000, 0x20202000, 0x20202000,
-	0xFFFFFF00, 0xFFFFFF00, 0x00EC0000, 0x00000000
+	0x11, 0x00, 0x14, 0x15,	0x12, 0x13, 0x16
 };
+
+// 0x8013B3BC
+Lights1 gMnBattleLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x14, 0x14, 0x14);
+Lights1 gMnBattleLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x00, 0xEC, 0x00);
 
 
 // BSS
@@ -4213,8 +4213,21 @@ void mnPlayersVSFuncStart(void)
 	rl_setup.force_status_buffer_size = 7;
 
 	lbRelocInitSetup(&rl_setup);
-	lbRelocLoadFilesExtern(D_ovl26_8013B3A0, 7U, gMnBattleFiles,
-						 syTaskmanMalloc(lbRelocGetAllocSize(D_ovl26_8013B3A0, 7U), 0x10U));
+	lbRelocLoadFilesExtern
+	(
+		gMnBattleFileIDs,
+		ARRAY_COUNT(gMnBattleFileIDs),
+		gMnBattleFiles,
+		syTaskmanMalloc
+		(
+			lbRelocGetAllocSize
+			(
+				gMnBattleFileIDs,
+				ARRAY_COUNT(gMnBattleFileIDs)
+			),
+			0x10
+		)
+	);
 
 	gcMakeGObjSPAfter(0x400U, mnPlayersVSMain, 0xFU, 0x80000000U);
 

@@ -4,7 +4,11 @@
 
 
 typedef struct dbUnknownS14 {
-    s32 dbUnknownS14_0x0[5];
+    s32 dbUnknownS14_0x0;
+    db4Bytes dbUnknownS14_0x4;
+    db4Bytes dbUnknownS14_0x8;
+    s32 dbUnknownS14_0xC;
+    s32 dbUnknownS14_0x10;
 } dbUnknownS14;
 
 extern GObj* D_ovl8_8038A860;
@@ -21,13 +25,14 @@ extern f32 D_8038F034_1AB884;
 extern void* D_8038F03C_1AB88C;
 
 extern dbUnknownS14 D_8038FB90_1AC3E0;
-extern s32 D_8038FB98_1AC3E8;
+extern db4Bytes D_8038FB98_1AC3E8;
 
 void func_ovl8_8037D000();
 void func_ovl8_8037D470();
 void func_ovl8_8037D518();
 void func_ovl8_8037D45C();
 void func_ovl8_8037D5AC();
+void func_ovl8_8037D9B4(db4Bytes*);
 
 // 0x8037D000
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D000.s")
@@ -173,25 +178,40 @@ void func_ovl8_8037D95C(dbUnknownS14* arg0)
 // 0x8037D990
 void func_ovl8_8037D990(s32 arg0)
 {
-    D_8038FB90_1AC3E0.dbUnknownS14_0x0[0] = arg0;
+    D_8038FB90_1AC3E0.dbUnknownS14_0x0 = arg0;
 }
 
 // 0x8037D99C
 void func_ovl8_8037D99C(s32 arg0)
 {
-    D_8038FB90_1AC3E0.dbUnknownS14_0x0[3] = arg0;
+    D_8038FB90_1AC3E0.dbUnknownS14_0xC = arg0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D9A8.s")
+// 0x8037D9A8
+void func_ovl8_8037D9A8(s32 arg0)
+{
+    D_8038FB90_1AC3E0.dbUnknownS14_0x10 = arg0;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D9B4.s")
+// 0x8037D9B4
+void func_ovl8_8037D9B4(db4Bytes* arg0)
+{
+    D_8038FB90_1AC3E0.dbUnknownS14_0x8 = *arg0;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D9D0.s")
+// 0x8037D9D0
+void func_ovl8_8037D9D0(db4Bytes* arg0)
+{
+    D_8038FB90_1AC3E0.dbUnknownS14_0x4 = *arg0;
+}
 
+// 0x8037D9EC
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D9EC.s")
 
+// 0x8037DA08
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037DA08.s")
 
+// 0x8037DAA0
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037DAA0.s")
 
 void func_ovl8_8037DD60(DBMenuPosition* pos, char* text)
@@ -212,6 +232,7 @@ void func_ovl8_8037DD60(DBMenuPosition* pos, char* text)
 	}
 }
 
+// 0x8037DE1C
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037DE1C.s")
 
 void func_ovl8_8037DFCC(s16 arg0, s16 arg1)
@@ -220,6 +241,7 @@ void func_ovl8_8037DFCC(s16 arg0, s16 arg1)
 	D_8038F000_1AB850[0] = arg0;
 }
 
+// 0x8037DFF8
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037DFF8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037E6F4.s")

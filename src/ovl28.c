@@ -14,7 +14,6 @@ extern intptr_t FILE_011_ARROW_L_IMAGE_OFFSET; // file 0x011 image offset for le
 extern intptr_t FILE_011_ARROW_R_IMAGE_OFFSET; // file 0x011 image offset for right arrow
 
 extern intptr_t lMNPlayersGameModesTrainingModeSprite; // file 0x012 image offset for Training Mode title image
-extern intptr_t FILE_017_CPU_PANEL_LUT_OFFSET; // D_NF_00003238; // CPU panel LUT
 
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 

@@ -13,8 +13,8 @@ extern intptr_t lMNPlayersCommonStartSprite; // Press Start's "Start" texture
 extern intptr_t lMNPlayersCommonPressSprite; // Press Start's "Press" texture
 extern intptr_t FILE_011_INFINITY_IMAGE_OFFSET; // file 0x011 image offset for infinity symbol
 extern intptr_t FILE_011_PICKER_TIME_IMAGE_OFFSET; // file 0x011 image offset for Time picker texture
-extern intptr_t FILE_011_ARROW_L_IMAGE_OFFSET; // file 0x011 image offset for left arrow
-extern intptr_t FILE_011_ARROW_R_IMAGE_OFFSET; // file 0x011 image offset for right arrow
+extern intptr_t lMNPlayersCommonArrowLeftSprite; // file 0x011 image offset for left arrow
+extern intptr_t lMNPlayersCommonArrowRightSprite; // file 0x011 image offset for right arrow
 extern intptr_t lMNPlayersCommonReadySprite; // Ready to Fight banner text
 extern intptr_t lMNPlayersCommonReadyBannerSprite; // Ready to Fight banner bg
 extern intptr_t lMNPlayersCommonBackSprite; // file 0x011 image offset for
@@ -1028,7 +1028,7 @@ void mn1PSyncAndBlinkLevelArrows(GObj* arrow_gobj)
 		}
 		else if (mn1PGetArrowSObj(arrow_gobj, 0) == NULL)
 		{
-			arrow_sobj = lbCommonMakeSObjForGObj(arrow_gobj, lbRelocGetFileData(void*, gMN1PFiles[0], &FILE_011_ARROW_L_IMAGE_OFFSET));
+			arrow_sobj = lbCommonMakeSObjForGObj(arrow_gobj, lbRelocGetFileData(void*, gMN1PFiles[0], &lMNPlayersCommonArrowLeftSprite));
 			arrow_sobj->pos.x = 194.0F;
 			arrow_sobj->pos.y = 158.0F;
 			arrow_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1045,7 +1045,7 @@ void mn1PSyncAndBlinkLevelArrows(GObj* arrow_gobj)
 		}
 		else if (mn1PGetArrowSObj(arrow_gobj, 1) == NULL)
 		{
-			arrow_sobj = lbCommonMakeSObjForGObj(arrow_gobj, lbRelocGetFileData(void*, gMN1PFiles[0], &FILE_011_ARROW_R_IMAGE_OFFSET));
+			arrow_sobj = lbCommonMakeSObjForGObj(arrow_gobj, lbRelocGetFileData(void*, gMN1PFiles[0], &lMNPlayersCommonArrowRightSprite));
 			arrow_sobj->pos.x = 269.0F;
 			arrow_sobj->pos.y = 158.0F;
 			arrow_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1135,7 +1135,7 @@ void mn1PSyncAndBlinkStockArrows(GObj* arrow_gobj)
 		}
 		else if (mn1PGetArrowSObj(arrow_gobj, 0) == NULL)
 		{
-			arrow_sobj = lbCommonMakeSObjForGObj(arrow_gobj, lbRelocGetFileData(void*, gMN1PFiles[0], &FILE_011_ARROW_L_IMAGE_OFFSET));
+			arrow_sobj = lbCommonMakeSObjForGObj(arrow_gobj, lbRelocGetFileData(void*, gMN1PFiles[0], &lMNPlayersCommonArrowLeftSprite));
 			arrow_sobj->pos.x = 194.0F;
 			arrow_sobj->pos.y = 178.0F;
 			arrow_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1152,7 +1152,7 @@ void mn1PSyncAndBlinkStockArrows(GObj* arrow_gobj)
 		}
 		else if (mn1PGetArrowSObj(arrow_gobj, 1) == NULL)
 		{
-			arrow_sobj = lbCommonMakeSObjForGObj(arrow_gobj, lbRelocGetFileData(void*, gMN1PFiles[0], &FILE_011_ARROW_R_IMAGE_OFFSET));
+			arrow_sobj = lbCommonMakeSObjForGObj(arrow_gobj, lbRelocGetFileData(void*, gMN1PFiles[0], &lMNPlayersCommonArrowRightSprite));
 			arrow_sobj->pos.x = 269.0F;
 			arrow_sobj->pos.y = 178.0F;
 			arrow_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -2155,7 +2155,7 @@ void mn1PAdjustCursor(GObj* cursor_gobj, s32 player)
 }
 
 // 0x80136540
-void mn1PSyncCursorDisplay(GObj* cursor_gobj, s32 player)
+void mn1PUpdateCursorDisplay(GObj* cursor_gobj, s32 player)
 {
 	s32 i;
 
@@ -2500,7 +2500,7 @@ void mn1PCursorProcUpdate(GObj* cursor_gobj)
 	}
 	if (!gMN1PPanel.is_recalling)
 	{
-		mn1PSyncCursorDisplay(cursor_gobj, player);
+		mn1PUpdateCursorDisplay(cursor_gobj, player);
 	}
 }
 

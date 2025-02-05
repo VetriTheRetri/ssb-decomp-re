@@ -1389,10 +1389,10 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, ovl28]
-      - [auto, .data, ovl28]
-      - [auto, .rodata, ovl28]
-      - { start: auto, type: .bss, vram: 0x80138550, name: ovl28 }
+      - [auto, c, mn/mnplayers/mnplayers1ptraining]
+      - [auto, .data, mn/mnplayers/mnplayers1ptraining]
+      - [auto, .rodata, mn/mnplayers/mnplayers1ptraining]
+      - { start: auto, type: .bss, name: mn/mnplayers/mnplayers1ptraining }
 
   - name: ovl29
     type: code

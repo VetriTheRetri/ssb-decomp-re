@@ -1925,7 +1925,7 @@ void mnPlayers1PBonusAdjustCursor(GObj *gobj, s32 player)
 }
 
 // 0x8013545C
-void mnPlayers1PBonusSyncCursorDisplay(GObj *gobj, s32 player)
+void mnPlayers1PBonusUpdateCursorDisplay(GObj *gobj, s32 player)
 {
 	s32 i;
 
@@ -2161,7 +2161,7 @@ void mnPlayers1PBonusCursorProcUpdate(GObj *gobj)
 	}
 	if (sMNPlayers1PBonusSlot.is_recalling == FALSE)
 	{
-		mnPlayers1PBonusSyncCursorDisplay(gobj, player);
+		mnPlayers1PBonusUpdateCursorDisplay(gobj, player);
 	}
 }
 

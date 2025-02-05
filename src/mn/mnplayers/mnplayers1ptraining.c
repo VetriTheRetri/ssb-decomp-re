@@ -4,28 +4,7 @@
 #include <sc/scene.h>
 #include <sys/video.h>
 
-extern intptr_t FILE_000_COLON_IMAGE_OFFSET; // file 0x000 image offset for colon
-
-extern intptr_t lMNPlayersCommonGateCPSprite; // file 0x011 image offset for CP type image
-extern intptr_t FILE_011_HANDICAP_IMAGE_OFFSET; // file 0x011 image offset for Handicap image
-extern intptr_t FILE_011_CPU_LEVEL_IMAGE_OFFSET; // file 0x011 image offset for CPU Level image
-extern intptr_t FILE_011_CURSOR_POINTER_IMAGE_OFFSET; // file 0x011 image offset for pointer cursor
-extern intptr_t FILE_011_ARROW_L_IMAGE_OFFSET; // file 0x011 image offset for left arrow
-extern intptr_t FILE_011_ARROW_R_IMAGE_OFFSET; // file 0x011 image offset for right arrow
-
-extern intptr_t lMNPlayersGameModesTrainingModeSprite; // file 0x012 image offset for Training Mode title image
-
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
-
-// Forward declarations
-void mnPlayers1PTrainingMakePortraitFlash(s32 player);
-void mnPlayers1PTrainingUpdateNameAndEmblem(s32 player);
-sb32 mnPlayers1PTrainingCheckCostumeUsed(s32 fkind, s32 player, s32 costume);
-void mnPlayers1PTrainingAnnounceFighter(s32 player, s32 panel_id);
-void mnPlayers1PTrainingUpdateCursor(GObj* gobj, s32 player, s32 cursor_status);
-void mnPlayers1PTrainingMakeHandicapLevel(s32 player);
-void mnPlayers1PTrainingUpdateCursorPlacementDLLinks(s32 player, s32 held_puck_id);
-void mnPlayers1PTrainingSetSceneData();
 
 // // // // // // // // // // // //
 //                               //
@@ -48,6 +27,8 @@ u32 dMNPlayers1PTrainingFileIDs[/* */] =
 
 // 0x80137F80
 Lights1 dMNPlayers1PTrainingLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x14, 0x14, 0x14);
+
+// 0x80137F98
 Lights1 dMNPlayers1PTrainingLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x00, 0xEC, 0x00);
 
 // // // // // // // // // // // //
@@ -204,17 +185,17 @@ sb32 mnPlayers1PTrainingCheckFighterCrossed(s32 fkind)
 }
 
 // 0x80131D90
-void mnPlayers1PTrainingPortraitProcUpdate(GObj *portrait_gobj)
+void mnPlayers1PTrainingPortraitProcUpdate(GObj *gobj)
 {
-	f32 new_pos_x = mnPlayers1PTrainingGetNextPortraitX(portrait_gobj->user_data.s, SObjGetStruct(portrait_gobj)->pos.x);
+	f32 new_pos_x = mnPlayers1PTrainingGetNextPortraitX(gobj->user_data.s, SObjGetStruct(gobj)->pos.x);
 
 	if (new_pos_x != -1.0F)
 	{
-		SObjGetStruct(portrait_gobj)->pos.x = new_pos_x;
+		SObjGetStruct(gobj)->pos.x = new_pos_x;
 
-		if (SObjGetStruct(portrait_gobj)->next != NULL)
+		if (SObjGetStruct(gobj)->next != NULL)
 		{
-			SObjGetStruct(portrait_gobj)->next->pos.x = SObjGetStruct(portrait_gobj)->pos.x + 4.0F;
+			SObjGetStruct(gobj)->next->pos.x = SObjGetStruct(gobj)->pos.x + 4.0F;
 		}
 	}
 }
@@ -409,7 +390,7 @@ void mnPlayers1PTrainingMakePortrait(s32 portrait)
 	{
 		wallpaper_gobj = gcMakeGObjSPAfter(0, NULL, 29, GOBJ_PRIORITY_DEFAULT);
 		gcAddGObjDisplay(wallpaper_gobj, lbCommonDrawSObjAttr, 36, GOBJ_PRIORITY_DEFAULT, ~0);
-		wallpaper_gobj->user_data.p = portrait;
+		wallpaper_gobj->user_data.s = portrait;
 		gcAddGObjProcess(wallpaper_gobj, mnPlayers1PTrainingPortraitProcUpdate, nGCProcessKindFunc, 1);
 
 		sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PTrainingFiles[6], &lMNPlayersPortraitsWallpaperSprite));
@@ -793,7 +774,6 @@ void mnPlayers1PTrainingMakeGate(s32 player)
 		SObjGetStruct(gobj)->pos.x = 185.0F;
 		SObjGetStruct(gobj)->pos.y = 127.0F;
 	}
-
 	mnPlayers1PTrainingSetGateLUT(gobj, player);
 	mnPlayers1PTrainingMakePlayerKindButton(player);
 
@@ -1097,17 +1077,16 @@ void mnPlayers1PTrainingFighterProcUpdate(GObj *fighter_gobj)
 {
 	FTStruct *fp = ftGetStruct(fighter_gobj);
 	s32 player = fp->player;
-	MNPlayersSlotTraining *pslot = &sMNPlayers1PTrainingSlots[player];
 
-	if (pslot->is_fighter_selected == TRUE)
+	if (sMNPlayers1PTrainingSlots[player].is_fighter_selected == TRUE)
 	{
 		if (DObjGetStruct(fighter_gobj)->rotate.vec.f.y < F_CLC_DTOR32(0.1F))
 		{
-			if (pslot->is_status_selected == FALSE)
+			if (sMNPlayers1PTrainingSlots[player].is_status_selected == FALSE)
 			{
-				scSubsysFighterSetStatus(pslot->player, mnPlayers1PTrainingGetStatusSelected(pslot->fkind));
+				scSubsysFighterSetStatus(sMNPlayers1PTrainingSlots[player].player, mnPlayers1PTrainingGetStatusSelected(sMNPlayers1PTrainingSlots[player].fkind));
 
-				pslot->is_status_selected = TRUE;
+				sMNPlayers1PTrainingSlots[player].is_status_selected = TRUE;
 			}
 		}
 		else
@@ -1118,9 +1097,9 @@ void mnPlayers1PTrainingFighterProcUpdate(GObj *fighter_gobj)
 			{
 				DObjGetStruct(fighter_gobj)->rotate.vec.f.y = 0.0F;
 
-				scSubsysFighterSetStatus(pslot->player, mnPlayers1PTrainingGetStatusSelected(pslot->fkind));
+				scSubsysFighterSetStatus(sMNPlayers1PTrainingSlots[player].player, mnPlayers1PTrainingGetStatusSelected(sMNPlayers1PTrainingSlots[player].fkind));
 
-				pslot->is_status_selected = TRUE;
+				sMNPlayers1PTrainingSlots[player].is_status_selected = TRUE;
 			}
 		}
 	}
@@ -1535,7 +1514,7 @@ void mnPlayers1PTrainingArrowThreadUpdate(GObj *gobj)
 		}
 		else if (mnPlayers1PTrainingGetArrowSObj(gobj, 0) == NULL)
 		{
-			sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PTrainingFiles[0], &FILE_011_ARROW_L_IMAGE_OFFSET));
+			sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PTrainingFiles[0], &lMNPlayersCommonArrowLeftSprite));
 			sobj->pos.x = (player * 69) + 25;
 			sobj->pos.y = 201.0F;
 			sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1553,7 +1532,7 @@ void mnPlayers1PTrainingArrowThreadUpdate(GObj *gobj)
 		}
 		else if (mnPlayers1PTrainingGetArrowSObj(gobj, 1) == NULL)
 		{
-			sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PTrainingFiles[0], &FILE_011_ARROW_R_IMAGE_OFFSET));
+			sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PTrainingFiles[0], &lMNPlayersCommonArrowRightSprite));
 			sobj->pos.x = (player * 69) + 79;
 			sobj->pos.y = 201.0F;
 			sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1598,13 +1577,13 @@ void mnPlayers1PTrainingMakeHandicapLevel(s32 player)
 
 	if (sMNPlayers1PTrainingSlots[player].pkind == nFTPlayerKindMan)
 	{
-		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PTrainingFiles[0], &FILE_011_HANDICAP_IMAGE_OFFSET));
+		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PTrainingFiles[0], &lMNPlayersCommonHandicapSprite));
 		sobj->pos.x = (player * 69) + 35;
 		sobj->user_data.s = 0;
 	}
 	else
 	{
-		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PTrainingFiles[0], &FILE_011_CPU_LEVEL_IMAGE_OFFSET));
+		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PTrainingFiles[0], &lMNPlayersCommonLevelSprite));
 		sobj->pos.x = (player * 69) + 34;
 		sobj->user_data.s = 1;
 	}
@@ -1615,7 +1594,7 @@ void mnPlayers1PTrainingMakeHandicapLevel(s32 player)
 	sobj->sprite.attr |= SP_TRANSPARENT;
 	sobj->pos.y = 201.0F;
 
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PTrainingFiles[2], &FILE_000_COLON_IMAGE_OFFSET));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PTrainingFiles[2], &lMNCommonColonSprite));
 	sobj->pos.x = (player * 69) + 61;
 	sobj->pos.y = 202.0F;
 	sobj->sprite.red = 0xFF;
@@ -1626,8 +1605,8 @@ void mnPlayers1PTrainingMakeHandicapLevel(s32 player)
 }
 
 // 0x80138328
-s32 D_ovl28_80138328[10] = {
-
+intptr_t dMNPlayers1PTrainingUnused0x80138328[/* */] =
+{
 	0xD310,
 	0xD3E0,
 	0xD4B0,
@@ -1710,20 +1689,20 @@ void mnPlayers1PTrainingUpdateCursorPlacementDLLinks(s32 player, s32 puck)
 	s32	unheld_orders[/* */] = { 6, 4, 2, 0 };
 	s32 unused;
 	s32 unheld_id;
-	sb32 puck_held[GMCOMMON_PLAYERS_MAX];
+	sb32 is_held[GMCOMMON_PLAYERS_MAX];
 	s32 i;
 
-	for (i = 0; i < (ARRAY_COUNT(sMNPlayers1PTrainingSlots) + ARRAY_COUNT(puck_held)) / 2; i++)
+	for (i = 0; i < (ARRAY_COUNT(sMNPlayers1PTrainingSlots) + ARRAY_COUNT(is_held)) / 2; i++)
 	{
 		if (sMNPlayers1PTrainingSlots[i].held_player == -1)
 		{
-			puck_held[i] = FALSE;
+			is_held[i] = FALSE;
 		}
-		else puck_held[i] = TRUE;
+		else is_held[i] = TRUE;
 	}
-	for (i = 0, unheld_id = ARRAY_COUNT(unheld_orders) - 1; i < (ARRAY_COUNT(puck_held) + ARRAY_COUNT(unheld_orders)) / 2; i++)
+	for (i = 0, unheld_id = ARRAY_COUNT(unheld_orders) - 1; i < (ARRAY_COUNT(is_held) + ARRAY_COUNT(unheld_orders)) / 2; i++)
 	{
-		if ((i != player) && (puck_held[i] != FALSE))
+		if ((i != player) && (is_held[i] != FALSE))
 		{
 			if (sMNPlayers1PTrainingSlots[i].cursor != NULL)
 			{
@@ -1741,9 +1720,9 @@ void mnPlayers1PTrainingUpdateCursorPlacementDLLinks(s32 player, s32 puck)
 
 	unheld_id--;
 
-	for (i = 0; i < (ARRAY_COUNT(puck_held) + ARRAY_COUNT(unheld_orders)) / 2; i++)
+	for (i = 0; i < (ARRAY_COUNT(is_held) + ARRAY_COUNT(unheld_orders)) / 2; i++)
 	{
-		if ((i != player) && (puck_held[i] == FALSE))
+		if ((i != player) && (is_held[i] == FALSE))
 		{
 			if (sMNPlayers1PTrainingSlots[i].cursor != NULL)
 			{
@@ -1961,7 +1940,7 @@ void mnPlayers1PTrainingAdjustCursor(GObj *gobj, s32 player)
 }
 
 // 0x80135430
-void mnPlayers1PTrainingSyncCursorDisplay(GObj *gobj, s32 player)
+void mnPlayers1PTrainingUpdateCursorDisplay(GObj *gobj, s32 player)
 {
 	s32 i;
 
@@ -2003,7 +1982,7 @@ void mnPlayers1PTrainingSyncCursorDisplay(GObj *gobj, s32 player)
 // 0x801355E0
 void mnPlayers1PTrainingUpdateCostume(s32 player, s32 select_button)
 {
-	u32 costume = ftParamGetCostumeCommonID(sMNPlayers1PTrainingSlots[player].fkind, select_button);
+	s32 costume = ftParamGetCostumeCommonID(sMNPlayers1PTrainingSlots[player].fkind, select_button);
 
 	if (mnPlayers1PTrainingCheckCostumeUsed(sMNPlayers1PTrainingSlots[player].fkind, player, costume) != FALSE)
 	{
@@ -2084,7 +2063,7 @@ void mnPlayers1PTrainingDetectBack(s32 player)
 }
 
 // 0x8013586C
-sb32 mnPlayers1PTrainingCheckBackInRange(GObj* gobj)
+sb32 mnPlayers1PTrainingCheckBackInRange(GObj *gobj)
 {
 	f32 pos_x, pos_y;
 	sb32 is_in_range;
@@ -2112,7 +2091,7 @@ sb32 mnPlayers1PTrainingCheckBackInRange(GObj* gobj)
 }
 
 // 0x80135934
-void mnPlayers1PTrainingCursorProcUpdate(GObj* gobj)
+void mnPlayers1PTrainingCursorProcUpdate(GObj *gobj)
 {
 	s32 unused[5];
 	s32 player = gobj->user_data.s;
@@ -2180,7 +2159,7 @@ void mnPlayers1PTrainingCursorProcUpdate(GObj* gobj)
 	}
 	if (sMNPlayers1PTrainingSlots[player].is_recalling == FALSE)
 	{
-		mnPlayers1PTrainingSyncCursorDisplay(gobj, player);
+		mnPlayers1PTrainingUpdateCursorDisplay(gobj, player);
 	}
 }
 
@@ -2766,21 +2745,21 @@ void mnPlayers1PTrainingSpotlightProcUpdate(GObj *gobj)
 // 0x801370BC
 void mnPlayers1PTrainingMakeSpotlight(void)
 {
-	s32 player;
+	s32 i;
 
-	for (player = 0; player < ARRAY_COUNT(sMNPlayers1PTrainingSlots); player++)
+	for (i = 0; i < ARRAY_COUNT(sMNPlayers1PTrainingSlots); i++)
 	{
 		GObj *gobj = gcMakeGObjSPAfter(0, NULL, 21, GOBJ_PRIORITY_DEFAULT);
 		gcSetupCommonDObjs(gobj, lbRelocGetFileData(DObjDesc*, sMNPlayers1PTrainingFiles[7], &lMNPlayersSpotlightDObjDesc), 0);
 		gcAddGObjDisplay(gobj, gcDrawDObjTreeDLLinksForGObj, 9, GOBJ_PRIORITY_DEFAULT, ~0);
 
-		gobj->user_data.s = player;
+		gobj->user_data.s = i;
 
 		gcAddMObjAll(gobj, lbRelocGetFileData(MObjSub***, sMNPlayers1PTrainingFiles[7], &lMNPlayersSpotlightMObjSub));
 		gcAddGObjProcess(gobj, mnPlayers1PTrainingSpotlightProcUpdate, nGCProcessKindFunc, 1);
 		gcPlayAnimAll(gobj);
 
-		if (player == sMNPlayers1PTrainingManPlayer)
+		if (i == sMNPlayers1PTrainingManPlayer)
 		{
 			DObjGetStruct(gobj)->translate.vec.f.x = -830.0F;
 			DObjGetStruct(gobj)->translate.vec.f.y = -870.0F;

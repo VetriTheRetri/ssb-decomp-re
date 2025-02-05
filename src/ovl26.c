@@ -8,10 +8,10 @@
 extern f32 dSCSubsysFighterScales[12]; // dSCSubsysFighterScales
 
 // Offsets
-extern intptr_t FILE_000_COLON_IMAGE_OFFSET; // file 0x000 image offset for colon
+extern intptr_t lMNCommonColonSprite; // file 0x000 image offset for colon
 extern intptr_t lMNPlayersCommonGateCPSprite;		  // file 0x011 image offset for CP type image
-extern intptr_t FILE_011_HANDICAP_IMAGE_OFFSET;		  // file 0x011 image offset for Handicap image
-extern intptr_t FILE_011_CPU_LEVEL_IMAGE_OFFSET;	  // file 0x011 image offset for CPU Level image
+extern intptr_t lMNPlayersCommonHandicapSprite;		  // file 0x011 image offset for Handicap image
+extern intptr_t lMNPlayersCommonLevelSprite;	  // file 0x011 image offset for CPU Level image
 extern intptr_t lMNPlayersCommonStartSprite;		  // Press Start's "Start" texture
 extern intptr_t lMNPlayersCommonPressSprite;		  // Press Start's "Press" texture
 extern intptr_t FILE_011_INFINITY_IMAGE_OFFSET;		  // file 0x011 image offset for infinity symbol
@@ -20,8 +20,8 @@ extern intptr_t FILE_011_PICKER_STOCK_IMAGE_OFFSET;	  // file 0x011 image offset
 extern intptr_t FILE_011_CURSOR_POINTER_IMAGE_OFFSET; // file 0x011 image offset for pointer cursor
 extern intptr_t FILE_011_PANEL_DOOR_L_IMAGE_OFFSET;
 extern intptr_t FILE_011_PANEL_DOOR_R_IMAGE_OFFSET;
-extern intptr_t FILE_011_ARROW_L_IMAGE_OFFSET;			 // file 0x011 image offset for left arrow
-extern intptr_t FILE_011_ARROW_R_IMAGE_OFFSET;			 // file 0x011 image offset for right arrow
+extern intptr_t lMNPlayersCommonArrowLeftSprite;			 // file 0x011 image offset for left arrow
+extern intptr_t lMNPlayersCommonArrowRightSprite;			 // file 0x011 image offset for right arrow
 extern intptr_t lMNPlayersCommonReadySprite;	 // Ready to Fight banner text
 extern intptr_t lMNPlayersCommonReadyBannerSprite; // Ready to Fight banner bg
 extern intptr_t FILE_011_PANEL_IMAGE_OFFSET;
@@ -2286,7 +2286,7 @@ void mnPlayersVSArrowThreadUpdate(GObj* arrow_gobj)
 		else if (mnPlayersVSGetArrowSObj(arrow_gobj, 0) == NULL)
 		{
 			arrow_sobj
-				= lbCommonMakeSObjForGObj(arrow_gobj, lbRelocGetFileData(void*, gFile011, &FILE_011_ARROW_L_IMAGE_OFFSET));
+				= lbCommonMakeSObjForGObj(arrow_gobj, lbRelocGetFileData(void*, gFile011, &lMNPlayersCommonArrowLeftSprite));
 			arrow_sobj->pos.x = (player * 0x45) + 0x19;
 			arrow_sobj->pos.y = 201.0F;
 			arrow_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -2304,7 +2304,7 @@ void mnPlayersVSArrowThreadUpdate(GObj* arrow_gobj)
 		else if (mnPlayersVSGetArrowSObj(arrow_gobj, 1) == NULL)
 		{
 			arrow_sobj
-				= lbCommonMakeSObjForGObj(arrow_gobj, lbRelocGetFileData(void*, gFile011, &FILE_011_ARROW_R_IMAGE_OFFSET));
+				= lbCommonMakeSObjForGObj(arrow_gobj, lbRelocGetFileData(void*, gFile011, &lMNPlayersCommonArrowRightSprite));
 			arrow_sobj->pos.x = (player * 0x45) + 0x4F;
 			arrow_sobj->pos.y = 201.0F;
 			arrow_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -2347,14 +2347,14 @@ void mnPlayersVSMakeHandicapLevel(s32 player)
 	if (gMnBattlePanels[player].pkind == 0)
 	{
 		handicap_cpu_level_sobj = lbCommonMakeSObjForGObj(
-			handicap_cpu_level_gobj, lbRelocGetFileData(void*, gMnBattleFiles[0], &FILE_011_HANDICAP_IMAGE_OFFSET));
+			handicap_cpu_level_gobj, lbRelocGetFileData(void*, gMnBattleFiles[0], &lMNPlayersCommonHandicapSprite));
 		handicap_cpu_level_sobj->pos.x = (player * 0x45) + 0x23;
 		handicap_cpu_level_sobj->user_data.p = NULL;
 	}
 	else
 	{
 		handicap_cpu_level_sobj = lbCommonMakeSObjForGObj(
-			handicap_cpu_level_gobj, lbRelocGetFileData(void*, gMnBattleFiles[0], &FILE_011_CPU_LEVEL_IMAGE_OFFSET));
+			handicap_cpu_level_gobj, lbRelocGetFileData(void*, gMnBattleFiles[0], &lMNPlayersCommonLevelSprite));
 		handicap_cpu_level_sobj->pos.x = (player * 0x45) + 0x22;
 		handicap_cpu_level_sobj->user_data.p = 1;
 	}
@@ -2367,7 +2367,7 @@ void mnPlayersVSMakeHandicapLevel(s32 player)
 	handicap_cpu_level_sobj->pos.y = 201.0F;
 
 	handicap_cpu_level_sobj = lbCommonMakeSObjForGObj(
-		handicap_cpu_level_gobj, lbRelocGetFileData(void*, gMnBattleFiles[1], &FILE_000_COLON_IMAGE_OFFSET));
+		handicap_cpu_level_gobj, lbRelocGetFileData(void*, gMnBattleFiles[1], &lMNCommonColonSprite));
 	handicap_cpu_level_sobj->sprite.red = 0xFF;
 	handicap_cpu_level_sobj->sprite.green = 0xFF;
 	handicap_cpu_level_sobj->pos.x = (player * 0x45) + 0x3D;
@@ -2760,7 +2760,7 @@ void mnPlayersVSAdjustCursor(GObj* cursor_gobj, s32 player)
 }
 
 // 0x80137D4C
-void mnPlayersVSSyncCursorDisplay(GObj* cursor_gobj, s32 player)
+void mnPlayersVSUpdateCursorDisplay(GObj* cursor_gobj, s32 player)
 {
 	MNPlayersSlotVS* pslot = &gMnBattlePanels[player];
 	s32 i;
@@ -3033,7 +3033,7 @@ void mnPlayersVSCursorProcUpdate(GObj* cursor_gobj)
 	if (pslot->is_recalling == FALSE)
 		mnExitIfBButtonHeld(player);
 	if (pslot->is_recalling == FALSE)
-		mnPlayersVSSyncCursorDisplay(cursor_gobj, player);
+		mnPlayersVSUpdateCursorDisplay(cursor_gobj, player);
 }
 
 // 0x801386E4

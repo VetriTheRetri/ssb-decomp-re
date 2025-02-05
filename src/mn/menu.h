@@ -66,6 +66,7 @@ extern intptr_t lMNCommonDigit8Sprite;                  // 0x0000D990
 extern intptr_t lMNCommonDigit9Sprite;                  // 0x0000DA60
 extern intptr_t lMNCommonSymbolPercentSprite;           // 0x0000DB30
 extern intptr_t lMNCommonInfinitySprite;                // 0x0000DC48
+extern intptr_t lMNCommonColonSprite;                   // 0x0000DCF0
 extern intptr_t lMNCommonRightArrowSprite;              // 0x0000DD90
 extern intptr_t lMNCommonLeftArrowSprite;               // 0x0000DE30
 extern intptr_t lMNCommonTextAutoSprite;                // 0x0000DF48
@@ -80,6 +81,9 @@ extern intptr_t lMNPlayersCommonGate2PSprite;        	// 0x00000A58
 extern intptr_t lMNPlayersCommonGate3PSprite;        	// 0x00000C38
 extern intptr_t lMNPlayersCommonGate4PSprite;        	// 0x00000E18
 extern intptr_t lMNPlayersCommonGateCPSprite;           // 0x00000FF8
+
+extern intptr_t lMNPlayersCommonHandicapSprite;         // 0x00001108
+extern intptr_t lMNPlayersCommonLevelSprite;            // 0x00001218
 
 extern intptr_t lMNPlayersCommonStartSprite;            // 0x00001378
 extern intptr_t lMNPlayersCommonPressSprite;            // 0x000014D8
@@ -125,6 +129,9 @@ extern intptr_t lMNPlayersCommon3PPuckSprite;   		// 0x0000A608
 extern intptr_t lMNPlayersCommon4PPuckSprite;   		// 0x0000B0E8
 extern intptr_t lMNPlayersCommonCPPuckSprite;   		// 0x0000BBC8
 
+extern intptr_t lMNPlayersCommonArrowLeftSprite;        // 0x0000ECE8
+extern intptr_t lMNPlayersCommonArrowRightSprite;       // 0x0000EDC8
+
 extern intptr_t lMNPlayersCommonReadySprite;            // 0x0000F448
 extern intptr_t lMNPlayersCommonReadyBannerSprite;      // 0x0000F530
 
@@ -137,6 +144,7 @@ extern intptr_t lMNPlayersCommonBackSprite;             // 0x000115C8
 
 extern intptr_t lMNPlayersGameModesRoyalSprite;			// 0x00000280
 extern intptr_t lMNPlayersGameModesTeamBattleSprite;    // 0x000004E0
+extern intptr_t lMNPlayersGameModesTrainingModeSprite;  // 0x00000758
 extern intptr_t lMNPlayersGameModesBonus1Sprite;        // 0x00000BD8
 extern intptr_t lMNPlayersGameModesBonus2Sprite;        // 0x00001058
 

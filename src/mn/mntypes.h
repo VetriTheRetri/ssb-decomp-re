@@ -113,7 +113,7 @@ struct MNPlayersSlotTraining
 	s32 recall_tics;
 	s32 holder_player;
 	s32 held_player;
-	s32 player_type;
+	s32 pkind;
 	sb32 is_fighter_selected;
 	sb32 is_status_selected;
 	f32 puck_vel_x;
@@ -165,7 +165,7 @@ struct MNPlayersSlotVS
 	s32 recall_tics;
 	s32 holder_player;
 	s32 held_player;
-	s32 player_type;
+	s32 pkind;
 	sb32 unk_0x88;
 	sb32 is_fighter_selected;
 	f32 puck_vel_x;

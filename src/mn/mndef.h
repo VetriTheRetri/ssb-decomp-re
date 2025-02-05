@@ -274,13 +274,13 @@ typedef enum mnSelectButton
 
 } mnSelectButton;
 
-typedef enum mnCursorState
+typedef enum nMNPlayersCursorStatus
 {
-	mnCursorStatePointer,         // Pointer
-	mnCursorStateHoldingPuck,    // Holding puck
-	mnCursorStateNotHoldingPuck  // Not holding puck
+	nMNPlayersCursorStatusPointer,         // Pointer
+	nMNPlayersCursorStatusGrab,    // Holding puck
+	nMNPlayersCursorStatusHover  // Not holding puck
 
-} mnCursorState;
+} nMNPlayersCursorStatus;
 
 typedef struct MNTitleSpriteDesc			MNTitleSpriteDesc;
 typedef struct MNCongraPicture				MNCongraPicture;

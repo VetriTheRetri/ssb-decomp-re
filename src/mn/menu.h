@@ -79,6 +79,7 @@ extern intptr_t lMNPlayersCommonGate1PSprite;        	// 0x00000878
 extern intptr_t lMNPlayersCommonGate2PSprite;        	// 0x00000A58
 extern intptr_t lMNPlayersCommonGate3PSprite;        	// 0x00000C38
 extern intptr_t lMNPlayersCommonGate4PSprite;        	// 0x00000E18
+extern intptr_t lMNPlayersCommonGateCPSprite;           // 0x00000FF8
 
 extern intptr_t lMNPlayersCommonStartSprite;            // 0x00001378
 extern intptr_t lMNPlayersCommonPressSprite;            // 0x000014D8
@@ -172,6 +173,7 @@ extern intptr_t lMNPlayers1PModeTargetsSprite;          // 0x00001658
 extern intptr_t lMNPlayers1PModePlatformsSprite;        // 0x00001898
 extern intptr_t lMNPlayers1PModeSecSprite;              // 0x00001F48
 extern intptr_t lMNPlayers1PModeCSecSprite;             // 0x00001FC8
+extern intptr_t lMNPlayers1PModeGateCPLUT;              // 0x00003238
 extern intptr_t lMNPlayers1PModeGateWallpaperSprite;    // 0x000032A8
 
 extern intptr_t lMNVSModeVSSprite;                      // 0x00006118

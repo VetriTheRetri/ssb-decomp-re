@@ -2195,7 +2195,7 @@ void mnPlayers1PBonusMovePuck(s32 player)
 }
 
 // 0x80135BF4
-void mnPlayers1PBonusSyncPuckAndFighter(GObj *gobj)
+void mnPlayers1PBonusPuckProcUpdate(GObj *gobj)
 {
 	s32 fkind;
 	s32 player = gobj->user_data.s;
@@ -2393,7 +2393,7 @@ void mnPlayers1PBonusMakePuck(s32 player)
 			offsets[player]
 		),
 		nGCProcessKindFunc,
-		mnPlayers1PBonusSyncPuckAndFighter,
+		mnPlayers1PBonusPuckProcUpdate,
 		1
 	);
 	gobj->user_data.s = player;
@@ -2418,7 +2418,7 @@ void func_ovl29_801361A4(void)
 }
 
 // 0x801361AC
-void mnPlayers1PBonusPuckActorAdjustPortraitEdge(GObj *gobj)
+void mnPlayers1PBonusPuckAdjustPortraitEdge(GObj *gobj)
 {
 	s32 portrait = mnPlayers1PBonusGetPortrait(sMNPlayers1PBonusSlot.fkind);
 	f32 portrait_edge_x = ((portrait >= 6) ? portrait - 6 : portrait) * 45 + 25;
@@ -2445,13 +2445,13 @@ void mnPlayers1PBonusPuckActorAdjustPortraitEdge(GObj *gobj)
 }
 
 // 0x8013635C
-void mnPlayers1PBonusPuckActorAdjustPlaced(s32 player)
+void mnPlayers1PBonusPuckAdjustPlaced(s32 player)
 {
-	mnPlayers1PBonusPuckActorAdjustPortraitEdge(player);
+	mnPlayers1PBonusPuckAdjustPortraitEdge(player);
 }
 
 // 0x8013637C
-void mnPlayers1PBonusPuckActorAdjustRecall(s32 player)
+void mnPlayers1PBonusPuckAdjustRecall(s32 player)
 {
 	f32 vel_y, vel_x;
 
@@ -2484,22 +2484,22 @@ void mnPlayers1PBonusPuckActorAdjustRecall(s32 player)
 }
 
 // 0x80136450
-void mnPlayers1PBonusPuckActorProcUpdate(GObj *gobj)
+void mnPlayers1PBonusPuckAdjustProcUpdate(GObj *gobj)
 {
 	if (sMNPlayers1PBonusSlot.is_recalling != FALSE)
 	{
-		mnPlayers1PBonusPuckActorAdjustRecall(sMNPlayers1PBonusManPlayer);
+		mnPlayers1PBonusPuckAdjustRecall(sMNPlayers1PBonusManPlayer);
 	}
 	if (sMNPlayers1PBonusSlot.is_selected != FALSE)
 	{
-		mnPlayers1PBonusPuckActorAdjustPlaced(0);
+		mnPlayers1PBonusPuckAdjustPlaced(0);
 	}
 }
 
 // 0x8013649C
-void mnPlayers1PBonusMakePuckActor(void)
+void mnPlayers1PBonusMakePuckAdjust(void)
 {
-	gcAddGObjProcess(gcMakeGObjSPAfter(0, NULL, 24, GOBJ_PRIORITY_DEFAULT), mnPlayers1PBonusPuckActorProcUpdate, nGCProcessKindFunc, 1);
+	gcAddGObjProcess(gcMakeGObjSPAfter(0, NULL, 24, GOBJ_PRIORITY_DEFAULT), mnPlayers1PBonusPuckAdjustProcUpdate, nGCProcessKindFunc, 1);
 }
 
 // 0x801364E0
@@ -2564,12 +2564,10 @@ void mnPlayers1PBonusMakeReady(void)
 	GObj *gobj;
 	SObj *sobj;
 
-	// Ready to Fight banner
 	gobj = gcMakeGObjSPAfter(0, NULL, 28, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 35, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddGObjProcess(gobj, mnPlayers1PBonusReadyProcUpdate, nGCProcessKindFunc, 1);
 
-	// Ready to Fight banner bg
 	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[0], &lMNPlayersCommonReadyBannerSprite));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -2588,7 +2586,6 @@ void mnPlayers1PBonusMakeReady(void)
 	sobj->pos.x = 0.0F;
 	sobj->pos.y = 71.0F;
 
-	// Ready to Fight banner text
 	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[0], &lMNPlayersCommonReadySprite));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -2601,12 +2598,10 @@ void mnPlayers1PBonusMakeReady(void)
 	sobj->pos.x = 50.0F;
 	sobj->pos.y = 76.0F;
 
-	// Press Start indicator
-	gobj = gcMakeGObjSPAfter(0U, NULL, 0x16U, 0x80000000U);
-	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0x1CU, GOBJ_PRIORITY_DEFAULT, ~0);
-	gcAddGObjProcess(gobj, mnPlayers1PBonusReadyProcUpdate, 1, 1);
+	gobj = gcMakeGObjSPAfter(0, NULL, 22, GOBJ_PRIORITY_DEFAULT);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_PRIORITY_DEFAULT, ~0);
+	gcAddGObjProcess(gobj, mnPlayers1PBonusReadyProcUpdate, nGCProcessKindFunc, 1);
 
-	// "Press"
 	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[0], &lMNPlayersCommonPressSprite));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -2616,7 +2611,6 @@ void mnPlayers1PBonusMakeReady(void)
 	sobj->pos.x = 133.0F;
 	sobj->pos.y = 219.0F;
 
-	// "Start"
 	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[0], &lMNPlayersCommonStartSprite));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -2845,7 +2839,7 @@ void mnPlayers1PBonusFuncStart(void)
 	{
 		mnPlayers1PBonusMakeTotalTime();
 	}
-	mnPlayers1PBonusMakePuckActor();
+	mnPlayers1PBonusMakePuckAdjust();
 	mnPlayers1PBonusMakeSpotlight();
 	mnPlayers1PBonusMakeReady();
 	scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);

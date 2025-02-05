@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import os
+import re
 import sys
 import json
 import subprocess
@@ -147,13 +148,34 @@ def relocateFile(inputBinaryPath, outputBinaryPath, relocInternOffset, relocExte
 			print(f"{hex(currentOffsetInBytes)} -> {hex(bytesNum)}")
 
 
+def generateHeader(relocFileDescriptionsFilePath, outputHeaderFilePath, outputLinkerFilePath):
+	with open(relocFileDescriptionsFilePath, 'r') as relocFileDescriptionsFile:
+		lines = relocFileDescriptionsFile.read().split('\n')
+	with open(outputHeaderFilePath, 'w') as outputHeaderFile, open(outputLinkerFilePath, 'w') as outputLinkerFile:
+		for line in lines:
+			if len(line) == 0:
+				continue
+			m = re.match(r"\[([^.]+)\..*\]", line);
+			if m is not None:
+				currentFile = m.group(1)
+				outputHeaderFile.write('\n')
+				outputLinkerFile.write('\n')
+				continue
+			blockType, blockName, blockOffset = line.split(' ')
+			symbolName = f"relocFile{currentFile}{blockName}{blockType.title()}Offset"
+			outputHeaderFile.write(f"extern int {symbolName}; // {blockOffset}\n")
+			outputLinkerFile.write(f"{symbolName} = {blockOffset};\n")
+
+
+
 if __name__ == "__main__":
 	if len(sys.argv) < 2:
 		print("Usage:")
-		print("Extract:  relocData extractAll")
-		print("Compress: relocData compress <binInputPath> <vpk0OutputPath>")
-		print("Relocate: relocData relocate <binInputPath> <binOutputPath> <relocInternOffset> <relocExternOffset>")
-		print("Make bin: relocData makeBin")
+		print("Extract:         relocData extractAll")
+		print("Compress:        relocData compress <binInputPath> <vpk0OutputPath>")
+		print("Relocate:        relocData relocate <binInputPath> <binOutputPath> <relocInternOffset> <relocExternOffset>")
+		print("Make bin:        relocData makeBin")
+		print("Generate header: relocData genHeader <relocFileDescriptionsFilePath> <headerOutputPath> <linkerFileOutputPath>")
 		sys.exit(1)
 
 	if sys.argv[1] == 'extractAll':
@@ -164,3 +186,5 @@ if __name__ == "__main__":
 		relocateFile(sys.argv[2], sys.argv[3], eval(sys.argv[4]), eval(sys.argv[5]))
 	elif sys.argv[1] == 'makeBin':
 		makeBin()
+	elif sys.argv[1] == 'genHeader':
+		generateHeader(sys.argv[2], sys.argv[3], sys.argv[4])

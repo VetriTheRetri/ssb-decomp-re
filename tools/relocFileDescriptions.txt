@@ -1,152 +1,152 @@
 [0.vpk0.bin]
-sprite BUBBLE_LEFT 0x1e8
-sprite BLACK_MIDDLE 0x330
-sprite BUBBLE_RIGHT 0x568
-sprite FRAME 0x1420
-sprite ON_TEXT_JAP 0x15c0
-sprite OFF_TEXT_JAP 0x1760
-sprite AUTO_TEXT_JAP 0x1968
-sprite DECAL_PAPER 0x2a30
-sprite SMASH_LOGO 0x31f8
-sprite FIGHT_BACKGROUND 0xb6d0
-sprite ON_TEXT 0xb818
-sprite OFF_TEXT 0xb958
-sprite SLASH 0xba28
-sprite GAME_MODE_TEXT 0xd240
-sprite ZERO 0xd310
-sprite ONE 0xd3e0
-sprite TWO 0xd4b0
-sprite THREE 0xd580
-sprite FOUR 0xd650
-sprite FIVE 0xd720
-sprite SIX 0xd7f0
-sprite SEVEN 0xd8c0
-sprite EIGHT 0xd990
-sprite NINE 0xda60
-sprite PERCENTAGE 0xdb30
-sprite INFINITY 0xdc48
-sprite COLON 0xdcf0
-sprite ARROW_RIGHT 0xdd90
-sprite ARROW_LEFT 0xde30
-sprite AUTO_TEXT 0xdf48
-sprite SMASH_BROS_COLLAGE 0x18000
+sprite BubbleLeft 0x1e8
+sprite BlackMiddle 0x330
+sprite BubbleRight 0x568
+sprite Frame 0x1420
+sprite OnTextJap 0x15c0
+sprite OffTextJap 0x1760
+sprite AutoTextJap 0x1968
+sprite DecalPaper 0x2a30
+sprite SmashLogo 0x31f8
+sprite FightBackground 0xb6d0
+sprite OnText 0xb818
+sprite OffText 0xb958
+sprite Slash 0xba28
+sprite GameModeText 0xd240
+sprite Zero 0xd310
+sprite One 0xd3e0
+sprite Two 0xd4b0
+sprite Three 0xd580
+sprite Four 0xd650
+sprite Five 0xd720
+sprite Six 0xd7f0
+sprite Seven 0xd8c0
+sprite Eight 0xd990
+sprite Nine 0xda60
+sprite Percentage 0xdb30
+sprite Infinity 0xdc48
+sprite Colon 0xdcf0
+sprite ArrowRight 0xdd90
+sprite ArrowLeft 0xde30
+sprite AutoText 0xdf48
+sprite SmashBrosCollage 0x18000
 
 [1.vpk0.bin]
-sprite 1P_MODE_TEXT_JAP 0x4c8
-sprite VS_MODE_TEXT_JAP 0x960
-sprite DATA_TEXT_JAP 0xe00
-sprite CONTROLLER_ICON 0x1990
-sprite CONSOLE_ICON 0x2520
-sprite DATA_ICON 0x30b0
-sprite MODE_SELECT_TEXT 0x40f0
-sprite SETTINGS_ICON 0x4c80
-sprite OPTION_TEXT_JAP 0x5300
-sprite 1P_MODE_TEXT 0x5570
-sprite VS_MODE_TEXT 0x57e0
-sprite DATA_TEXT 0x5980
-sprite CONTROLLER_ICON_DARK 0x6048
-sprite CONSOLE_ICON_DARK 0x6708
-sprite DATA_ICON_DARK 0x6dc8
-sprite DECAL_BAR_EDGE 0x72e8
-sprite SMASH_LOGO 0x7aa8
-sprite DECAL_BAR_MIDDLE 0x7c38
-sprite SETTINGS_ICON_DARK 0x82f8
-sprite OPTION_TEXT 0x84f8
+sprite 1PModeTextJap 0x4c8
+sprite VsModeTextJap 0x960
+sprite DataTextJap 0xe00
+sprite ControllerIcon 0x1990
+sprite ConsoleIcon 0x2520
+sprite DataIcon 0x30b0
+sprite ModeSelectText 0x40f0
+sprite SettingsIcon 0x4c80
+sprite OptionTextJap 0x5300
+sprite 1PModeText 0x5570
+sprite VsModeText 0x57e0
+sprite DataText 0x5980
+sprite ControllerIconDark 0x6048
+sprite ConsoleIconDark 0x6708
+sprite DataIconDark 0x6dc8
+sprite DecalBarEdge 0x72e8
+sprite SmashLogo 0x7aa8
+sprite DecalBarMiddle 0x7c38
+sprite SettingsIconDark 0x82f8
+sprite OptionText 0x84f8
 
 [2.vpk0.bin]
-sprite 1P_GAME_TEXT_JAP 0x4c8
-sprite OPTION_TAB 0x1108
-sprite TRAINING_MODE_TEXT_JAP 0x1618
-sprite BONUS1_PRACTICE_TEXT_JAP 0x1df8
-sprite BONUS2_PRACTICE_TEXT_JAP 0x25d8
-sprite 1P_GAME_TEXT 0x2a28
-sprite CONTROLLER_ICON_DARK 0x50f8
-sprite 1P_TEXT 0x5338
-sprite TRAINING_MODE_TEXT 0x5ac8
-sprite BONUS1_PRACTICE_TEXT 0x5f28
-sprite BONUS2_PRACTICE_TEXT 0x6388
+sprite 1PGameTextJap 0x4c8
+sprite OptionTab 0x1108
+sprite TrainingModeTextJap 0x1618
+sprite Bonus1PracticeTextJap 0x1df8
+sprite Bonus2PracticeTextJap 0x25d8
+sprite 1PGameText 0x2a28
+sprite ControllerIconDark 0x50f8
+sprite 1PText 0x5338
+sprite TrainingModeText 0x5ac8
+sprite Bonus1PracticeText 0x5f28
+sprite Bonus2PracticeText 0x6388
 
 [3.vpk0.bin]
-sprite BUBBLE_LEFT 0xf0
-sprite BUBBLE_MIDDLE 0x230
-sprite BUBBLE_RIGHT 0x370
-sprite CHARACTERS_TEXT_JAP 0xa68
-sprite VS_RECORD_TEXT_JAP 0xe88
-sprite SOUND_TEXT_JAP 0x12a8
-sprite SOUND_TEST_TEXT_JAP 0x18a8
-sprite SCREEN_ADJUST_TEXT_JAP 0x1cc8
-sprite INDEX_TEXT 0x27a0
-sprite CHARACTERS_TEXT 0x2bc0
-sprite VS_RECORD_TEXT 0x2fe0
-sprite SOUND_TEXT 0x32f0
-sprite TEST_TEXT 0x34f0
-sprite SCREEN_ADJUST_TEXT 0x3b88
-sprite DATA_ICON_DARK 0x6258
+sprite BubbleLeft 0xf0
+sprite BubbleMiddle 0x230
+sprite BubbleRight 0x370
+sprite CharactersTextJap 0xa68
+sprite VsRecordTextJap 0xe88
+sprite SoundTextJap 0x12a8
+sprite SoundTestTextJap 0x18a8
+sprite ScreenAdjustTextJap 0x1cc8
+sprite IndexText 0x27a0
+sprite CharactersText 0x2bc0
+sprite VsRecordText 0x2fe0
+sprite SoundText 0x32f0
+sprite TestText 0x34f0
+sprite ScreenAdjustText 0x3b88
+sprite DataIconDark 0x6258
 
 [4.vpk0.bin]
-sprite 0x3d8 0x3d8
-sprite 0x6a8 0x6a8
-sprite 0x978 0x978
-sprite 0xff0 0xff0
-sprite 0x1580 0x1580
-sprite 0x1cf0 0x1cf0
-sprite 0x21b8 0x21b8
-sprite 0x68b0 0x68b0
-sprite 0x6fd8 0x6fd8
-sprite 0x71f8 0x71f8
-sprite 0x73a8 0x73a8
-sprite 0x7628 0x7628
-sprite 0x7aa8 0x7aa8
-sprite 0x8138 0x8138
-sprite 0x8780 0x8780
-sprite 0x9288 0x9288
-sprite 0xb958 0xb958
+sprite SoundTextJap 0x3d8
+sprite StereoTextJap 0x6a8
+sprite MonoTextJap 0x978
+sprite FlashingTextJap 0xff0
+sprite ScreenAdjustTextJap 0x1580
+sprite BackupClearTextJap 0x1cf0
+sprite WarningText 0x21b8
+sprite PhotosensitivityWarningTextJap 0x68b0
+sprite WarningIcon 0x6fd8
+sprite StereoText 0x71f8
+sprite MonoText 0x73a8
+sprite SoundText 0x7628
+sprite FlashingText 0x7aa8
+sprite ScreenAdjustText 0x8138
+sprite BackupClearText 0x8780
+sprite OptionText 0x9288
+sprite SettingsIconDark 0xb958
 
 [5.vpk0.bin]
-sprite 0x6a8 0x6a8
-sprite 0xac8 0xac8
-sprite 0x10c8 0x10c8
-sprite 0x14e0 0x14e0
-sprite 0x1900 0x1900
-sprite 0x1d20 0x1d20
-sprite 0x23a8 0x23a8
-sprite 0x4a78 0x4a78
+sprite CharactersTextJap 0x6a8
+sprite VSRecordTextJap 0xac8
+sprite SoundTestTextJap 0x10c8
+sprite CharactersText 0x14e0
+sprite VSRecordText 0x1900
+sprite SoundTestText 0x1d20
+sprite DataText 0x23a8
+sprite DataIconDark 0x4a78
 
 [6.vpk0.bin]
-sprite 0x540 0x540
-sprite 0x800 0x800
-sprite 0xb38 0xb38
-sprite 0xee0 0xee0
-sprite 0x11a0 0x11a0
-sprite 0x1550 0x1550
-sprite 0x19f0 0x19f0
-sprite 0x2070 0x2070
-sprite 0x24c8 0x24c8
-sprite 0x2748 0x2748
-sprite 0x28e0 0x28e0
-sprite 0x2a80 0x2a80
-sprite 0x2c20 0x2c20
-sprite 0x2ec8 0x2ec8
-sprite 0x2fc8 0x2fc8
-sprite 0x3248 0x3248
-sprite 0x3828 0x3828
-sprite 0x5eb0 0x5eb0
-sprite 0x6118 0x6118
+sprite VSStartTextJap 0x540
+sprite BattleTextJap 0x800
+sprite TimeBasedTextJap 0xb38
+sprite StockTextJap 0xee0
+sprite TeamTextJap 0x11a0
+sprite TimeLimitTextJap 0x1550
+sprite RemaningPlayersTextJap 0x19f0
+sprite MatchOptionsTextJap 0x2070
+sprite VSStartText 0x24c8
+sprite RulePeriodText 0x2748
+sprite TimeText 0x28e0
+sprite StockText 0x2a80
+sprite TeamText 0x2c20
+sprite TimePeriodText 0x2ec8
+sprite MinText 0x2fc8
+sprite StockPeriodText 0x3248
+sprite VSOptionsText 0x3828
+sprite ConsoleIconDark 0x5eb0
+sprite VSText 0x6118
 
 [7.vpk0.bin]
-sprite 0x360 0x360
-sprite 0x9e0 0x9e0
-sprite 0xf70 0xf70
-sprite 0x15f0 0x15f0
-sprite 0x1c70 0x1c70
-sprite 0x2668 0x2668
-sprite 0x33d8 0x33d8
-sprite 0x3690 0x3690
-sprite 0x3968 0x3968
-sprite 0x3cf8 0x3cf8
-sprite 0x3fc8 0x3fc8
-sprite 0x4228 0x4228
-sprite 0x5f60 0x5f60
+sprite HandicapTextJap 0x360
+sprite TeamAttackTextJap 0x9e0
+sprite StageSelectTextJap 0xf70
+sprite DamageTextJap 0x15f0
+sprite ItemSwitchTextJap 0x1c70
+sprite VSOptionsText 0x2668
+sprite Bubble 0x33d8
+sprite HandicapText 0x3690
+sprite TeamAttackText 0x3968
+sprite StageSelectText 0x3cf8
+sprite ItemSwitchText 0x3fc8
+sprite DamageText 0x4228
+sprite ConsoleIconDark 0x5f60
 
 [8.vpk0.bin]
 sprite 0x9a8 0x9a8
@@ -444,27 +444,27 @@ sprite 0xbd8 0xbd8
 sprite 0x1058 0x1058
 
 [19.vpk0.bin]
-sprite X_BOX 0x2B8
-sprite WHITE_SQUARE 0x6F0
-sprite PORTRAIT_QUESTION_MARK_IMAGE 0xF68
-sprite BLACK_SQUARE 0x13d0
-sprite PORTRAIT_FIRE_BG_IMAGE 0x24D0
-sprite MARIO 0x4728
-sprite LUIGI 0x6978
-sprite DONKEY 0x8bc8
-sprite SAMUS 0xae18
-sprite FOX 0xd068
-sprite KIRBY 0xf2b8
-sprite LINK 0x11508
-sprite YOSHI 0x13758
-sprite PIKACHU 0x159a8
-sprite NESS 0x17bf8
-sprite CAPTAIN 0x19e48
-sprite JIGGLYPUFF 0x1c098
-sprite CAPTAIN_SHADOW 0x1e2e8
-sprite LUIGI_SHADOW 0x20538
-sprite NESS_SHADOW 0x22788
-sprite JIGGLYPUFF_SHADOW 0x249d8
+sprite XBox 0x2B8
+sprite WhiteSquare 0x6F0
+sprite PortraitQuestionMarkImage 0xF68
+sprite BlackSquare 0x13d0
+sprite PortraitFireBgImage 0x24D0
+sprite Mario 0x4728
+sprite Luigi 0x6978
+sprite Donkey 0x8bc8
+sprite Samus 0xae18
+sprite Fox 0xd068
+sprite Kirby 0xf2b8
+sprite Link 0x11508
+sprite Yoshi 0x13758
+sprite Pikachu 0x159a8
+sprite Ness 0x17bf8
+sprite Captain 0x19e48
+sprite Jigglypuff 0x1c098
+sprite CaptainShadow 0x1e2e8
+sprite LuigiShadow 0x20538
+sprite NessShadow 0x22788
+sprite JigglypuffShadow 0x249d8
 
 [20.vpk0.bin]
 sprite 0x618 0x618
@@ -509,7 +509,7 @@ sprite 0x598 0x598
 sprite 0x80 0x80
 
 [26.vpk0.bin]
-sprite SMASH_LOGO 0x20718
+sprite SmashLogo 0x20718
 
 [27.vpk0.bin]
 sprite 0x20718 0x20718
@@ -638,34 +638,34 @@ sprite 0x14088 0x14088
 sprite 0x141a8 0x141a8
 
 [30.vpk0.bin]
-sprite PEACHS_CASTLE_TEXT 0x1f8
-sprite SECTOR_Z_TEXT 0x438
-sprite CONGO_JUNGLE_TEXT 0x678
-sprite PLANET_ZEBES_TEXT 0x8b8
-sprite HYRULE_CASTLE_TEXT 0xb10
-sprite YOSHIS_ISLAND_TEXT 0xd58
-sprite SAFFRON_CITY_TEXT 0xf98
-sprite MUSHROOM_KINGDOM_TEXT 0x11d8
-sprite DREAM_LAND_TEXT 0x1418
-sprite CURSOR 0x1ab8
-sprite QUESTION_MARK 0x1dd8
-sprite STAGE_SELECT_TEXT 0x26a0
-sprite WOODEN_CIRCLE 0x3840
-sprite PLATE_RIGHT 0x3c68
-sprite PLATE_MIDDLE 0x3d68
-sprite PLATE_LEFT 0x3fa8
-sprite PEACHS_CASTLE 0x4d88
-sprite SECTOR_Z 0x5b68
-sprite CONGO_JUNGLE 0x6948
-sprite PLANET_ZEBES 0x7728
-sprite HYRULE_CASTLE 0x8508
-sprite YOSHIS_ISLAND 0x92e8
-sprite SAFFRON_CITY 0xa0c8
-sprite MUSHROOM_KINGDOM 0xaea8
-sprite DREAM_LAND 0xbc88
-sprite TILES 0xc728
-sprite RANDOM_SMALL 0xcb10
-sprite RANDOM_BIG 0xde30
+sprite PeachsCastleText 0x1f8
+sprite SectorZText 0x438
+sprite CongoJungleText 0x678
+sprite PlanetZebesText 0x8b8
+sprite HyruleCastleText 0xb10
+sprite YoshisIslandText 0xd58
+sprite SaffronCityText 0xf98
+sprite MushroomKingdomText 0x11d8
+sprite DreamLandText 0x1418
+sprite Cursor 0x1ab8
+sprite QuestionMark 0x1dd8
+sprite StageSelectText 0x26a0
+sprite WoodenCircle 0x3840
+sprite PlateRight 0x3c68
+sprite PlateMiddle 0x3d68
+sprite PlateLeft 0x3fa8
+sprite PeachsCastle 0x4d88
+sprite SectorZ 0x5b68
+sprite CongoJungle 0x6948
+sprite PlanetZebes 0x7728
+sprite HyruleCastle 0x8508
+sprite YoshisIsland 0x92e8
+sprite SaffronCity 0xa0c8
+sprite MushroomKingdom 0xaea8
+sprite DreamLand 0xbc88
+sprite Tiles 0xc728
+sprite RandomSmall 0xcb10
+sprite RandomBig 0xde30
 
 [31.vpk0.bin]
 sprite 0x70 0x70
@@ -761,17 +761,17 @@ sprite 0xf60 0xf60
 sprite 0xfd0 0xfd0
 
 [34.vpk0.bin]
-sprite FIGHT_RESULTS_TKO_TEXT 0x358
-sprite FIGHT_RESULTS_PLACE_TEXT 0x990
-sprite FIGHT_RESULTS_KOS_TEXT 0xd38
-sprite FIGHT_RESULTS_PTS_TEXT 0x10d8
-sprite FIGHT_RESULTS_0x48c8 0x48c8
-sprite FIGHT_RESULTS_1P_TEXT 0x49e8
-sprite FIGHT_RESULTS_2P_TEXT 0x4b08
-sprite FIGHT_RESULTS_3P_TEXT 0x4c28
-sprite FIGHT_RESULTS_4P_TEXT 0x4d48
-sprite FIGHT_RESULTS_BACKGROUND 0xd5c8
-sprite FIGHT_RESULTS_FIRST_PLACE 0xe2a0
+sprite FightResultsTkoText 0x358
+sprite FightResultsPlaceText 0x990
+sprite FightResultsKosText 0xd38
+sprite FightResultsPtsText 0x10d8
+sprite FightResults0x48c8 0x48c8
+sprite FightResults1PText 0x49e8
+sprite FightResults2PText 0x4b08
+sprite FightResults3PText 0x4c28
+sprite FightResults4PText 0x4d48
+sprite FightResultsBackground 0xd5c8
+sprite FightResultsFirstPlace 0xe2a0
 
 [36.vpk0.bin]
 sprite 0x68 0x68
@@ -824,7 +824,7 @@ sprite 2P 0x4f8
 sprite 3P 0x798
 sprite 4P 0xa38
 sprite CP 0xcd8
-sprite ALLY 0xeb8
+sprite Ally 0xeb8
 
 [53.vpk0.bin]
 sprite 0x9960 0x9960
@@ -1085,20 +1085,20 @@ sprite 0x1140 0x1140
 sprite 0x1238 0x1238
 
 [167.vpk0.bin]
-sprite OPENING_CIRCLE_MASK 0x8fc8
-sprite OPENING_0x97e8 0x97e8
-sprite OPENING_0x9b48 0x9b48
-sprite OPENING_SMASH_BALL 0xbbb0
-sprite OPENING_DARK_REGIONS 0xc208
-sprite OPENING_GRADIENT 0xf278
-sprite OPENING_TM_TEXT 0xf398
-sprite OPENING_SMASH_POLYGON 0x11988
-sprite OPENING_TM_TEXT_DUPLICATE 0x11aa8
-sprite OPENING_SIGNATURE 0x15320
-sprite OPENING_PRESS_START_TEXT 0x15a48
-sprite OPENING_SUPER_TEXT 0x16728
-sprite OPENING_SMASH_TEXT 0x245c8
-sprite OPENING_BROS_TEXT 0x25188
+sprite OpeningCircleMask 0x8fc8
+sprite Opening0x97e8 0x97e8
+sprite Opening0x9b48 0x9b48
+sprite OpeningSmashBall 0xbbb0
+sprite OpeningDarkRegions 0xc208
+sprite OpeningGradient 0xf278
+sprite OpeningTmText 0xf398
+sprite OpeningSmashPolygon 0x11988
+sprite OpeningTmTextDuplicate 0x11aa8
+sprite OpeningSignature 0x15320
+sprite OpeningPressStartText 0x15a48
+sprite OpeningSuperText 0x16728
+sprite OpeningSmashText 0x245c8
+sprite OpeningBrosText 0x25188
 
 [168.vpk0.bin]
 sprite 0x1018 0x1018
@@ -1347,57 +1347,57 @@ sprite 0x1df58 0x1df58
 sprite 0x1e018 0x1e018
 
 [296.vpk0.bin]
-sprite MARIO_SMALL_ICON 0x72d0
-sprite MARIO_GAME_ICON 0x74c8
+sprite MarioSmallIcon 0x72d0
+sprite MarioGameIcon 0x74c8
 
 [300.vpk0.bin]
-sprite METAL_MARIO_SMALL_ICON 0x2d00
-sprite METAL_MARIO_GAME_ICON 0x2ef8
+sprite MetalMarioSmallIcon 0x2d00
+sprite MetalMarioGameIcon 0x2ef8
 
 [313.vpk0.bin]
-sprite FOX_SMALL_ICON 0x7c28
-sprite FOX_GAME_ICON 0x7e08
+sprite FoxSmallIcon 0x7c28
+sprite FoxGameIcon 0x7e08
 
 [319.vpk0.bin]
-sprite DK_SMALL_ICON 0x130
-sprite DK_GAME_ICON 0x2f8
+sprite DkSmallIcon 0x130
+sprite DkGameIcon 0x2f8
 
 [320.vpk0.bin]
-sprite SAMUS_SMALL_ICON 0xe2f0
-sprite SAMUS_GAME_ICON 0xe508
+sprite SamusSmallIcon 0xe2f0
+sprite SamusGameIcon 0xe508
 
 [323.vpk0.bin]
-sprite LUIGI_SMALL_ICON 0x7cd8
-sprite LUIGI_GAME_ICON 0x7ec8
+sprite LuigiSmallIcon 0x7cd8
+sprite LuigiGameIcon 0x7ec8
 
 [324.vpk0.bin]
-sprite LINK_SMALL_ICON 0x11d48
-sprite LINK_GAME_ICON 0x11f28
+sprite LinkSmallIcon 0x11d48
+sprite LinkGameIcon 0x11f28
 
 [328.vpk0.bin]
-sprite KIRBY_SMALL_ICON 0x1d5e0
-sprite KIRBY_GAME_ICON 0x1d7d8
+sprite KirbySmallIcon 0x1d5e0
+sprite KirbyGameIcon 0x1d7d8
 
 [330.vpk0.bin]
-sprite JIGGLYPUFF_SMALL_ICON 0x7bb0
-sprite JIGGLYPUFF_GAME_ICON 0x7d98
+sprite JigglypuffSmallIcon 0x7bb0
+sprite JigglypuffGameIcon 0x7d98
 
 [332.vpk0.bin]
-sprite CAPTAIN_SMALL_ICON 0xc6a8
-sprite CAPTAIN_GAME_ICON 0xc848
+sprite CaptainSmallIcon 0xc6a8
+sprite CaptainGameIcon 0xc848
 
 [335.vpk0.bin]
-sprite NESS_SMALL_ICON 0xc188
-sprite NESS_GAME_ICON 0xc378
+sprite NessSmallIcon 0xc188
+sprite NessGameIcon 0xc378
 
 [338.vpk0.bin]
-sprite YOSHI_SMALL_ICON 0xaaa8
-sprite YOSHI_GAME_ICON 0xac98
+sprite YoshiSmallIcon 0xaaa8
+sprite YoshiGameIcon 0xac98
 
 [341.vpk0.bin]
-sprite PIKACHU_SMALL_ICON 0x9a00
-sprite PIKACHU_GAME_ICON 0x9be8
+sprite PikachuSmallIcon 0x9a00
+sprite PikachuGameIcon 0x9be8
 
 [345.vpk0.bin]
-sprite MASTER_HAND_SMALL_ICON 0xc0
-sprite MASTER_HAND_GAME_ICON 0x2b8
+sprite MasterHandSmallIcon 0xc0
+sprite MasterHandGameIcon 0x2b8

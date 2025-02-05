@@ -2273,8 +2273,9 @@ void mnPlayersVSArrowThreadUpdate(GObj* arrow_gobj)
 			arrow_gobj->flags = arrow_gobj->flags == GOBJ_FLAG_HIDDEN ? GOBJ_FLAG_NONE : GOBJ_FLAG_HIDDEN;
 		}
 
-		value = (gMnBattlePanels[player].pkind == 0) ? gMnBattlePanels[player].handicap
-															: gMnBattlePanels[player].cpu_level;
+		value = gMnBattlePanels[player].pkind == 0 ?
+			gMnBattlePanels[player].handicap :
+			gMnBattlePanels[player].cpu_level;
 
 		if (value == 1)
 		{

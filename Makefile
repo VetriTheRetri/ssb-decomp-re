@@ -91,7 +91,7 @@ OBJDUMP         := $(BINUTILS_PREFIX)-objdump
 ASM_PROC        := $(PYTHON) tools/asm-processor/build.py
 CCFLAGS         := -c -G 0 -non_shared -Xfullwarn -Xcpluscomm $(INCLUDES) $(DEFINES) -Wab,-r4300_mul -woff 649,838,712,516,624,568
 ASFLAGS         := -EB -I include -march=vr4300 -mabi=32
-LDFLAGS         := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt -T symbols/not_found.txt -T symbols/linker_constants.txt -T .splat/smashbrothers.ld
+LDFLAGS         := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt -T symbols/not_found.txt -T symbols/linker_constants.txt -T symbols/reloc_data_symbols.txt -T .splat/smashbrothers.ld
 OBJCOPYFLAGS    := --pad-to=0xC00000 --gap-fill=0xFF
 ASM_PROC_FLAGS  := --input-enc=utf-8 --output-enc=euc-jp --convert-statics=global-with-filename
 
@@ -324,6 +324,10 @@ $(BUILD_DIR)/%.o: %.c
 	$(V)$(CC) $(CCFLAGS) $(OPTFLAGS) -o $@ $< 2>&1 | $(PYTHON) tools/colorizeIDO.py
 # patch object files compiled with mips3 to be able to link them
 	$(V)$(PYTHON) tools/patchMips3Objects.py $@
+
+include/reloc_data.h: ./tools/relocFileDescriptions.txt
+	$(call print_2,Generating reloc data header and symbol file from:,$<,$(BLUE))
+	$(V)$(PYTHON) tools/relocData.py genHeader ./tools/relocFileDescriptions.txt ./include/reloc_data.h ./symbols/reloc_data_symbols.txt
 
 # Staff roll specific
 src/sc/sccommon/scstaffroll.c: src/credits/staff.credits.encoded src/credits/titles.credits.encoded src/credits/info.credits.encoded src/credits/companies.credits.encoded

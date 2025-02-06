@@ -3,39 +3,12 @@
 #include <mn/menu.h>
 #include <sc/scene.h>
 #include <sys/video.h>
+#include <reloc_data.h>
 
 // Externs
 extern f32 dSCSubsysFighterScales[12]; // dSCSubsysFighterScales
 
-// Offsets
-extern intptr_t lMNCommonColonSprite; // file 0x000 image offset for colon
-extern intptr_t lMNPlayersCommonGateCPSprite;		  // file 0x011 image offset for CP type image
-extern intptr_t lMNPlayersCommonHandicapSprite;		  // file 0x011 image offset for Handicap image
-extern intptr_t lMNPlayersCommonLevelSprite;	  // file 0x011 image offset for CPU Level image
-extern intptr_t lMNPlayersCommonStartSprite;		  // Press Start's "Start" texture
-extern intptr_t lMNPlayersCommonPressSprite;		  // Press Start's "Press" texture
-extern intptr_t FILE_011_INFINITY_IMAGE_OFFSET;		  // file 0x011 image offset for infinity symbol
-extern intptr_t FILE_011_PICKER_TIME_IMAGE_OFFSET;	  // file 0x011 image offset for Time picker texture
-extern intptr_t FILE_011_PICKER_STOCK_IMAGE_OFFSET;	  // file 0x011 image offset for Stock picker texture
-extern intptr_t FILE_011_CURSOR_POINTER_IMAGE_OFFSET; // file 0x011 image offset for pointer cursor
-extern intptr_t FILE_011_PANEL_DOOR_L_IMAGE_OFFSET;
-extern intptr_t FILE_011_PANEL_DOOR_R_IMAGE_OFFSET;
-extern intptr_t lMNPlayersCommonArrowLeftSprite;			 // file 0x011 image offset for left arrow
-extern intptr_t lMNPlayersCommonArrowRightSprite;			 // file 0x011 image offset for right arrow
-extern intptr_t lMNPlayersCommonReadySprite;	 // Ready to Fight banner text
-extern intptr_t lMNPlayersCommonReadyBannerSprite; // Ready to Fight banner bg
-extern intptr_t FILE_011_PANEL_IMAGE_OFFSET;
-extern intptr_t lMNPlayersCommonBackSprite; // file 0x011 image offset for
-extern intptr_t lMNPlayersPortraitsCrossSprite;					 // file 0x013 image offset
-extern intptr_t lMNPlayersPortraitsFlashSprite;					 // white square
-extern intptr_t lMNPlayersPortraitsQuestionSprite; // file 0x013 image offset for portrait question mark image
-extern intptr_t lMNPlayersPortraitsWallpaperSprite;		 // file 0x013 image offset for portrait bg (fire) image
-extern intptr_t lMNSelectCommonWallpaperSprite; // file 0x015 image offset for background tile
-extern intptr_t lMNPlayersSpotlightMObjSub; // AObj? for white circle
-extern intptr_t lMNPlayersSpotlightDObjDesc; // DObjDesc for white circle
-
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
-
 // Forward declarations
 sb32 mnPlayersVSCheckCostumeUsed(s32 fkind, s32 player, s32 costume);
 void mnPlayersVSUpdateCursor(GObj* cursor_gobj, s32 player, s32 cursor_status);
@@ -319,7 +292,7 @@ void mnPlayersVSPortraitAddCross(GObj* portrait_gobj, s32 portrait)
 {
 	SObj* portrait_sobj = SObjGetStruct(portrait_gobj);
 	f32 x = portrait_sobj->pos.x, y = portrait_sobj->pos.y;
-	s32 xbox_image_offset = &(lMNPlayersPortraitsCrossSprite);
+	s32 xbox_image_offset = &(relocFile19XBoxSpriteOffset);
 
 	portrait_sobj = lbCommonMakeSObjForGObj(portrait_gobj, lbRelocGetFileData(void*, gFile013, xbox_image_offset));
 
@@ -404,7 +377,7 @@ void mnPlayersVSMakePortraitShadow(s32 portrait)
 	gcAddGObjDisplay(texture_gobj, lbCommonDrawSObjAttr, 0x1BU, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddGObjProcess(texture_gobj, mnPlayersVSPortraitProcUpdate, 1, 1);
 
-	texture_sobj = lbCommonMakeSObjForGObj(texture_gobj, lbRelocGetFileData(void*, gFile013, &lMNPlayersPortraitsWallpaperSprite));
+	texture_sobj = lbCommonMakeSObjForGObj(texture_gobj, lbRelocGetFileData(void*, gFile013, &relocFile19PortraitFireBgSpriteOffset));
 	texture_sobj->pos.x = (f32)(((portrait >= 6 ? portrait - 6 : portrait) * 0x2D) + 0x19);
 	texture_sobj->pos.y = (f32)(((portrait >= 6 ? 1 : 0) * 0x2B) + 0x24);
 
@@ -430,7 +403,7 @@ void mnPlayersVSMakePortraitShadow(s32 portrait)
 	gcAddGObjProcess(texture_gobj, mnPlayersVSPortraitProcUpdate, 1, 1);
 
 	texture_sobj
-		= lbCommonMakeSObjForGObj(texture_gobj, lbRelocGetFileData(void*, gFile013, &lMNPlayersPortraitsQuestionSprite));
+		= lbCommonMakeSObjForGObj(texture_gobj, lbRelocGetFileData(void*, gFile013, &relocFile19PortraitQuestionMarkSpriteOffset));
 	texture_sobj->sprite.attr = texture_sobj->sprite.attr & ~SP_FASTCOPY;
 	texture_sobj->sprite.attr = texture_sobj->sprite.attr | SP_TRANSPARENT;
 	texture_sobj->envcolor.r = 0x5B;
@@ -467,7 +440,7 @@ void mnPlayersVSMakePortrait(s32 portrait)
 		gcAddGObjProcess(portrait_bg_gobj, mnPlayersVSPortraitProcUpdate, 1, 1);
 
 		texture_sobj
-			= lbCommonMakeSObjForGObj(portrait_bg_gobj, lbRelocGetFileData(void*, gFile013, &lMNPlayersPortraitsWallpaperSprite));
+			= lbCommonMakeSObjForGObj(portrait_bg_gobj, lbRelocGetFileData(void*, gFile013, &relocFile19PortraitFireBgSpriteOffset));
 		mnPlayersVSSetPortraitWallpaperPosition(texture_sobj, portrait);
 
 		// portrait
@@ -859,7 +832,7 @@ void mnPlayersVSCreateTypeImage(s32 player)
 
 	if (gMnBattlePanels[player].pkind == nFTPlayerKindCom)
 	{
-		type_sobj = lbCommonMakeSObjForGObj(type_gobj, lbRelocGetFileData(void*, gFile011, &lMNPlayersCommonGateCPSprite));
+		type_sobj = lbCommonMakeSObjForGObj(type_gobj, lbRelocGetFileData(void*, gFile011, &relocFile17CPTextSpriteOffset));
 		type_sobj->pos.x = (f32)((player * 0x45) + 0x1A);
 	}
 	else
@@ -904,7 +877,7 @@ void mnPlayersVSMakeGate(s32 player)
 
 	// create panel
 	temp_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1C, GOBJ_PRIORITY_DEFAULT, ~0,
-								   lbRelocGetFileData(void*, gFile011, &FILE_011_PANEL_IMAGE_OFFSET), 1, NULL, 1);
+								   lbRelocGetFileData(void*, gFile011, &relocFile17RedCardSpriteOffset), 1, NULL, 1);
 	gMnBattlePanels[player].panel = temp_gobj;
 	start_x = player * 0x45;
 	SObjGetStruct(temp_gobj)->pos.x = (f32)(start_x + 0x16);
@@ -925,7 +898,7 @@ void mnPlayersVSMakeGate(s32 player)
 
 	// create panel doors
 	temp_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x17, 0x80000000, panelRenderRoutines[player], 0x1D, GOBJ_PRIORITY_DEFAULT, ~0,
-								   lbRelocGetFileData(void*, gFile011, &FILE_011_PANEL_DOOR_L_IMAGE_OFFSET), 1,
+								   lbRelocGetFileData(void*, gFile011, &relocFile17SmashLogoCardLeftSpriteOffset), 1,
 								   mnUpdatePanelDoors, 1);
 	temp_gobj->user_data.p = player;
 	SObjGetStruct(temp_gobj)->pos.x = (f32)(start_x - 0x13);
@@ -935,7 +908,7 @@ void mnPlayersVSMakeGate(s32 player)
 	gMnBattlePanels[player].panel_doors = temp_gobj;
 
 	right_door_sobj
-		= lbCommonMakeSObjForGObj(temp_gobj, lbRelocGetFileData(void*, gFile011, &FILE_011_PANEL_DOOR_R_IMAGE_OFFSET));
+		= lbCommonMakeSObjForGObj(temp_gobj, lbRelocGetFileData(void*, gFile011, &relocFile17SmashLogoCardRightSpriteOffset));
 	right_door_sobj->pos.x = (f32)(start_x + 0x58);
 	right_door_sobj->pos.y = 126.0F;
 	right_door_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1053,7 +1026,7 @@ void mnDrawTimerValue(s32 num)
 	if (num == 100)
 	{
 		infinity_sobj = lbCommonMakeSObjForGObj(gMnBattlePickerGObj,
-											   lbRelocGetFileData(void*, gFile011, &FILE_011_INFINITY_IMAGE_OFFSET));
+											   lbRelocGetFileData(void*, gFile011, &relocFile17InfinityDarkSpriteOffset));
 		infinity_sobj->pos.x = 194.0F;
 		infinity_sobj->pos.y = 24.0F;
 		infinity_sobj->envcolor.r = colors[0];
@@ -1082,7 +1055,7 @@ void mnMakeTimeSelect(s32 num)
 		gcEjectGObj(gMnBattlePickerGObj);
 
 	picker_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x19, 0x80000000, lbCommonDrawSObjAttr, 0x1A, GOBJ_PRIORITY_DEFAULT, ~0,
-									 lbRelocGetFileData(void*, gFile011, &FILE_011_PICKER_TIME_IMAGE_OFFSET), 1, NULL, 1);
+									 lbRelocGetFileData(void*, gFile011, &relocFile17TimeSelectorSpriteOffset), 1, NULL, 1);
 	gMnBattlePickerGObj = picker_gobj;
 
 	SObjGetStruct(picker_gobj)->pos.x = 140.0F;
@@ -1116,7 +1089,7 @@ void mnDrawStockPicker(s32 num)
 		gcEjectGObj(gMnBattlePickerGObj);
 
 	picker_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x19, 0x80000000, lbCommonDrawSObjAttr, 0x1A, GOBJ_PRIORITY_DEFAULT, ~0,
-									 lbRelocGetFileData(void*, gFile011, &FILE_011_PICKER_STOCK_IMAGE_OFFSET), 1, NULL, 1);
+									 lbRelocGetFileData(void*, gFile011, &relocFile17StockSelectorSpriteOffset), 1, NULL, 1);
 	gMnBattlePickerGObj = picker_gobj;
 
 	SObjGetStruct(picker_gobj)->pos.x = 140.0F;
@@ -1141,7 +1114,7 @@ void mnPlayersVSMakeWallpaper()
 	background_gobj = gcMakeGObjSPAfter(0U, NULL, 0x11U, 0x80000000U);
 	gcAddGObjDisplay(background_gobj, lbCommonDrawSObjAttr, 0x1AU, GOBJ_PRIORITY_DEFAULT, ~0);
 	background_sobj
-		= lbCommonMakeSObjForGObj(background_gobj, lbRelocGetFileData(void*, gFile015, &lMNSelectCommonWallpaperSprite));
+		= lbCommonMakeSObjForGObj(background_gobj, lbRelocGetFileData(void*, gFile015, &relocFile21StoneBackgroundSpriteOffset));
 	background_sobj->cms = G_TX_WRAP;
 	background_sobj->cmt = G_TX_WRAP;
 	background_sobj->masks = 6;
@@ -1183,7 +1156,7 @@ void mnPlayersVSDrawTitleAndBack()
 											 : mnDrawStockPicker(gMnBattleStockValue);
 
 	back_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x19, 0x80000000, lbCommonDrawSObjAttr, 0x1A, GOBJ_PRIORITY_DEFAULT, ~0,
-								   lbRelocGetFileData(void*, gFile011, &lMNPlayersCommonBackSprite), 1, NULL, 1);
+								   lbRelocGetFileData(void*, gFile011, &relocFile17BackButtonSpriteOffset), 1, NULL, 1);
 	SObjGetStruct(back_gobj)->pos.x = 244.0F;
 	SObjGetStruct(back_gobj)->pos.y = 23.0F;
 	SObjGetStruct(back_gobj)->sprite.attr &= ~SP_FASTCOPY;
@@ -2107,7 +2080,7 @@ void mnPlayersVSMakePortraitFlash(s32 player)
 	gcAddGObjProcess(flash_gobj, mnPlayersVSPortraitFlash, 0, 1);
 
 	flash_sobj
-		= lbCommonMakeSObjForGObj(flash_gobj, lbRelocGetFileData(void*, gFile013, &lMNPlayersPortraitsFlashSprite));
+		= lbCommonMakeSObjForGObj(flash_gobj, lbRelocGetFileData(void*, gFile013, &relocFile19WhiteSquareSpriteOffset));
 	flash_sobj->pos.x = (f32)(((portrait >= 6 ? portrait - 6 : portrait) * 45) + 26);
 	flash_sobj->pos.y = (f32)(((portrait >= 6 ? 1 : 0) * 43) + 37);
 }
@@ -2279,7 +2252,7 @@ void mnPlayersVSArrowThreadUpdate(GObj* arrow_gobj)
 		else if (mnPlayersVSGetArrowSObj(arrow_gobj, 0) == NULL)
 		{
 			arrow_sobj
-				= lbCommonMakeSObjForGObj(arrow_gobj, lbRelocGetFileData(void*, gFile011, &lMNPlayersCommonArrowLeftSprite));
+				= lbCommonMakeSObjForGObj(arrow_gobj, lbRelocGetFileData(void*, gFile011, &relocFile17ArrowLeftSpriteOffset));
 			arrow_sobj->pos.x = (player * 0x45) + 0x19;
 			arrow_sobj->pos.y = 201.0F;
 			arrow_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -2297,7 +2270,7 @@ void mnPlayersVSArrowThreadUpdate(GObj* arrow_gobj)
 		else if (mnPlayersVSGetArrowSObj(arrow_gobj, 1) == NULL)
 		{
 			arrow_sobj
-				= lbCommonMakeSObjForGObj(arrow_gobj, lbRelocGetFileData(void*, gFile011, &lMNPlayersCommonArrowRightSprite));
+				= lbCommonMakeSObjForGObj(arrow_gobj, lbRelocGetFileData(void*, gFile011, &relocFile17ArrowRightSpriteOffset));
 			arrow_sobj->pos.x = (player * 0x45) + 0x4F;
 			arrow_sobj->pos.y = 201.0F;
 			arrow_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -2340,14 +2313,14 @@ void mnPlayersVSMakeHandicapLevel(s32 player)
 	if (gMnBattlePanels[player].pkind == 0)
 	{
 		handicap_cpu_level_sobj = lbCommonMakeSObjForGObj(
-			handicap_cpu_level_gobj, lbRelocGetFileData(void*, gMnBattleFiles[0], &lMNPlayersCommonHandicapSprite));
+			handicap_cpu_level_gobj, lbRelocGetFileData(void*, gFile011, &relocFile17HandicapTextSpriteOffset));
 		handicap_cpu_level_sobj->pos.x = (player * 0x45) + 0x23;
 		handicap_cpu_level_sobj->user_data.p = NULL;
 	}
 	else
 	{
 		handicap_cpu_level_sobj = lbCommonMakeSObjForGObj(
-			handicap_cpu_level_gobj, lbRelocGetFileData(void*, gMnBattleFiles[0], &lMNPlayersCommonLevelSprite));
+			handicap_cpu_level_gobj, lbRelocGetFileData(void*, gFile011, &relocFile17CPLevelTextSpriteOffset));
 		handicap_cpu_level_sobj->pos.x = (player * 0x45) + 0x22;
 		handicap_cpu_level_sobj->user_data.p = 1;
 	}
@@ -2360,7 +2333,7 @@ void mnPlayersVSMakeHandicapLevel(s32 player)
 	handicap_cpu_level_sobj->pos.y = 201.0F;
 
 	handicap_cpu_level_sobj = lbCommonMakeSObjForGObj(
-		handicap_cpu_level_gobj, lbRelocGetFileData(void*, gMnBattleFiles[1], &lMNCommonColonSprite));
+		handicap_cpu_level_gobj, lbRelocGetFileData(void*, gFile000, &relocFile0ColonSpriteOffset));
 	handicap_cpu_level_sobj->sprite.red = 0xFF;
 	handicap_cpu_level_sobj->sprite.green = 0xFF;
 	handicap_cpu_level_sobj->pos.x = (player * 0x45) + 0x3D;
@@ -3224,7 +3197,7 @@ void mnPlayersVSMakeCursor(s32 player)
 	};
 
 	cursor_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x13, 0x80000000, lbCommonDrawSObjAttr, 0x20, starting_display_orders[player], -1,
-									 lbRelocGetFileData(void*, gFile011, &FILE_011_CURSOR_POINTER_IMAGE_OFFSET), 1,
+									 lbRelocGetFileData(void*, gFile011, &relocFile17CursorHandDragSpriteOffset), 1,
 									 mnPlayersVSCursorProcUpdate, 2);
 
 	gMnBattlePanels[player].cursor = cursor_gobj;
@@ -3554,14 +3527,14 @@ void mnPlayersVSMakeSpotlight()
 	{
 		white_circle_gobj = gcMakeGObjSPAfter(0U, NULL, 0x15U, 0x80000000U);
 
-		gcSetupCommonDObjs(white_circle_gobj, lbRelocGetFileData(void*, gMnBattleFiles[6], &lMNPlayersSpotlightDObjDesc),
+		gcSetupCommonDObjs(white_circle_gobj, lbRelocGetFileData(void*, gFile016, &relocFile21PlayersSpotlightDobjdescOffset),
 					  0);
 
 		gcAddGObjDisplay(white_circle_gobj, gcDrawDObjTreeDLLinksForGObj, 9U, GOBJ_PRIORITY_DEFAULT, ~0);
 
 		white_circle_gobj->user_data.s = i;
 
-		gcAddMObjAll(white_circle_gobj, lbRelocGetFileData(void*, gMnBattleFiles[6], &lMNPlayersSpotlightMObjSub));
+		gcAddMObjAll(white_circle_gobj, lbRelocGetFileData(void*, gFile016, &relocFile21PlayersSpotlightMobjsubOffset));
 
 		gcAddGObjProcess(white_circle_gobj, mnPlayersVSSpotlightProcUpdate, 1, 1);
 
@@ -3607,7 +3580,7 @@ void mnPlayersVSMakeReady()
 	gcAddGObjProcess(gobj, mnPlayersVSReadyProcUpdate, 1, 1);
 
 	// Ready to Fight banner bg
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(void*, gFile011, &lMNPlayersCommonReadyBannerSprite));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(void*, gFile011, &relocFile17ReadyBannerSpriteOffset));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 	sobj->envcolor.r = 0;
@@ -3626,7 +3599,7 @@ void mnPlayersVSMakeReady()
 	sobj->pos.y = 71.0f;
 
 	// Ready to Fight banner text
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(void*, gFile011, &lMNPlayersCommonReadySprite));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(void*, gFile011, &relocFile17ReadyToFightTextSpriteOffset));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 	sobj->envcolor.r = 0xFF;
@@ -3644,7 +3617,7 @@ void mnPlayersVSMakeReady()
 	gcAddGObjProcess(gobj, mnPlayersVSReadyProcUpdate, 1, 1);
 
 	// "Press"
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(void*, gFile011, &lMNPlayersCommonPressSprite));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(void*, gFile011, &relocFile17PressTextSpriteOffset));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 	sobj->sprite.red = 0xD6;
@@ -3654,7 +3627,7 @@ void mnPlayersVSMakeReady()
 	sobj->pos.y = 219.0f;
 
 	// "Start"
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(void*, gFile011, &lMNPlayersCommonStartSprite));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(void*, gFile011, &relocFile17StartTextSpriteOffset));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 	sobj->sprite.red = 0xFF;

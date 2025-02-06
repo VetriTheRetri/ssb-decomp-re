@@ -20,15 +20,15 @@ extern intptr_t FILE_011_CURSOR_POINTER_IMAGE_OFFSET;
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 // Forward declarations
-void mnPlayers1PGameUpdateCursor(GObj* cursor_gobj, s32 player, s32 cursor_status);
+void mnPlayers1PGameUpdateCursor(GObj* gobj, s32 player, s32 cursor_status);
 void mnPlayers1PGameAnnounceFighter(s32 player, s32 panel_id);
 s32 mnPlayers1PGameGetForcePuckFighterKind();
 void mnPlayers1PGameUpdateCursorPlacementDLLinks(s32 player);
 void mnPlayers1PGameMakeStock(s32 stock, s32 fkind);
 void mnPlayers1PGameMakePortraitFlash(s32 player);
 void mnPlayers1PGameUpdateNameAndEmblem(s32 player);
-s32 mnPlayers1PGameGetPrevTimerValue(s32 arg0);
-s32 mnPlayers1PGameGetNextTimerValue(s32 arg0);
+s32 mnPlayers1PGameGetPrevTimeValue(s32 arg0);
+s32 mnPlayers1PGameGetNextTimeValue(s32 arg0);
 sb32 mnPlayers1PGameCheckReady();
 void mnPlayers1PGameSetSceneData();
 
@@ -953,7 +953,7 @@ void mnPlayers1PGameMakeGate(s32 player)
 	mnPlayers1PGameSetGateLUT(gobj, player);
 
 	gobj = gcMakeGObjSPAfter(0, NULL, 22, GOBJ_PRIORITY_DEFAULT);
-	sMNPlayers1PGameSlot.name_logo_gobj = gobj;
+	sMNPlayers1PGameSlot.name_emblem_gobj = gobj;
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	mnPlayers1PGameUpdateNameAndEmblem(player);
@@ -1843,226 +1843,251 @@ void mnPlayers1PGameMakeFighterCamera(void)
 }
 
 // 0x801352BC
-void mnPlayers1PGameUpdateCursor(GObj* cursor_gobj, s32 player, s32 cursor_status)
+void mnPlayers1PGameUpdateCursor(GObj *gobj, s32 player, s32 cursor_status)
 {
-	SObj* cursor_sobj;
-	f32 current_x, current_y;
-	SYColorRGBPair type_colors[4] = {
-
+	SObj *sobj;
+	f32 start_pos_x, start_pos_y;
+	SYColorRGBPair colors[/* */] =
+	{
 		{ { 0xE0, 0x15, 0x15 }, { 0x5B, 0x00, 0x00 } },
 		{ { 0x00, 0x00, 0xFB }, { 0x00, 0x00, 0x52 } },
 		{ { 0xCA, 0x94, 0x08 }, { 0x62, 0x3C, 0x00 } },
 		{ { 0x00, 0x91, 0x00 }, { 0x00, 0x4F, 0x00 } }
 	};
-	intptr_t type_offsets[4] = {
-
-		0x8268, 0x8368, 0x8468, 0x8568
+	intptr_t num_offsets[/* */] =
+	{
+		&lMNPlayersCommonCursorNum1PSprite,
+		&lMNPlayersCommonCursorNum2PSprite,
+		&lMNPlayersCommonCursorNum3PSprite,
+		&lMNPlayersCommonCursorNum4PSprite
 	};
-	intptr_t cursor_offsets[3] = {
-
-		0x6F88, 0x76E8, 0x8168
+	intptr_t cursor_offsets[/* */] =
+	{
+		&lMNPlayersCommonCursorPointSprite,
+		&lMNPlayersCommonCursorGrabSprite,
+		&lMNPlayersCommonCursorHoverSprite
 	};
-	Vec2i type_positions[3] = {
-
-		{ 0x7, 0xF },
-		{ 0x9, 0xA },
-		{ 0x9, 0xF }
+	Vec2i pos[/* */] =
+	{
+		{ 7, 15 },
+		{ 9, 10 },
+		{ 9, 15 }
 	};
 
-	current_x = SObjGetStruct(cursor_gobj)->pos.x;
-	current_y = SObjGetStruct(cursor_gobj)->pos.y;
+	start_pos_x = SObjGetStruct(gobj)->pos.x;
+	start_pos_y = SObjGetStruct(gobj)->pos.y;
 
-	gcRemoveSObjAll(cursor_gobj);
+	gcRemoveSObjAll(gobj);
 
-	cursor_sobj = lbCommonMakeSObjForGObj(cursor_gobj, lbRelocGetFileData(void*, sMNPlayers1PGameFiles[0], cursor_offsets[cursor_status]));
-	cursor_sobj->pos.x = current_x;
-	cursor_sobj->pos.y = current_y;
-	cursor_sobj->sprite.attr &= ~SP_FASTCOPY;
-	cursor_sobj->sprite.attr |= SP_TRANSPARENT;
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PGameFiles[0], cursor_offsets[cursor_status]));
+	sobj->pos.x = start_pos_x;
+	sobj->pos.y = start_pos_y;
+	sobj->sprite.attr &= ~SP_FASTCOPY;
+	sobj->sprite.attr |= SP_TRANSPARENT;
 
-	cursor_sobj = lbCommonMakeSObjForGObj(cursor_gobj, lbRelocGetFileData(void*, sMNPlayers1PGameFiles[0], type_offsets[player]));
-	cursor_sobj->pos.x = SObjGetPrev(cursor_sobj)->pos.x + type_positions[cursor_status].x;
-	cursor_sobj->pos.y = SObjGetPrev(cursor_sobj)->pos.y + type_positions[cursor_status].y;
-	cursor_sobj->sprite.attr &= ~SP_FASTCOPY;
-	cursor_sobj->sprite.attr |= SP_TRANSPARENT;
-	cursor_sobj->sprite.red = type_colors[player].prim.r;
-	cursor_sobj->sprite.green = type_colors[player].prim.g;
-	cursor_sobj->sprite.blue = type_colors[player].prim.b;
-	cursor_sobj->envcolor.r = type_colors[player].env.r;
-	cursor_sobj->envcolor.g = type_colors[player].env.g;
-	cursor_sobj->envcolor.b = type_colors[player].env.b;
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PGameFiles[0], num_offsets[player]));
+	sobj->pos.x = sobj->prev->pos.x + pos[cursor_status].x;
+	sobj->pos.y = sobj->prev->pos.y + pos[cursor_status].y;
+
+	sobj->sprite.attr &= ~SP_FASTCOPY;
+	sobj->sprite.attr |= SP_TRANSPARENT;
+
+	sobj->sprite.red = colors[player].prim.r;
+	sobj->sprite.green = colors[player].prim.g;
+	sobj->sprite.blue = colors[player].prim.b;
+
+	sobj->envcolor.r = colors[player].env.r;
+	sobj->envcolor.g = colors[player].env.g;
+	sobj->envcolor.b = colors[player].env.b;
 }
 
 // 0x801354CC
-sb32 mnPlayers1PGameCheckPickerRightArrowPress(GObj* cursor_gobj)
+sb32 mnPlayers1PGameCheckTimeArrowRightInRange(GObj *gobj)
 {
-	f32 current_x, current_y;
-	s32 range_check;
-	SObj* cursor_sobj;
+	f32 pos_x, pos_y;
+	sb32 is_in_range;
+	SObj *sobj;
 
-	cursor_sobj = SObjGetStruct(cursor_gobj);
+	sobj = SObjGetStruct(gobj);
 
-	current_y = cursor_sobj->pos.y + 3.0F;
+	pos_y = sobj->pos.y + 3.0F;
 
-	range_check = (current_y < 12.0F) || (current_y > 35.0F) ? TRUE : FALSE;
-	if (range_check)
+	is_in_range = ((pos_y < 12.0F) || (pos_y > 35.0F)) ? TRUE : FALSE;
+
+	if (is_in_range != FALSE)
+	{
 		return FALSE;
+	}
+	pos_x = sobj->pos.x + 20.0F;
 
-	current_x = cursor_sobj->pos.x + 20.0F;
+	is_in_range = ((pos_x >= 210.0F) && (pos_x <= 230.0F)) ? TRUE : FALSE;
 
-	range_check = (current_x >= 210.0F) && (current_x <= 230.0F) ? TRUE : FALSE;
-	if (range_check)
+	if (is_in_range != FALSE)
+	{
 		return TRUE;
-
-	return FALSE;
+	}
+	else return FALSE;
 }
 
 // 0x80135594
-sb32 mnPlayers1PGameCheckPickerLeftArrowPress(GObj* cursor_gobj)
+sb32 mnPlayers1PGameCheckTimeArrowLeftInRange(GObj *gobj)
 {
-	f32 current_x, current_y;
-	s32 range_check;
-	SObj* cursor_sobj;
+	f32 pos_x, pos_y;
+	sb32 is_in_range;
+	SObj *sobj;
 
-	cursor_sobj = SObjGetStruct(cursor_gobj);
+	sobj = SObjGetStruct(gobj);
 
-	current_y = cursor_sobj->pos.y + 3.0F;
+	pos_y = sobj->pos.y + 3.0F;
 
-	range_check = (current_y < 12.0F) || (current_y > 35.0F) ? TRUE : FALSE;
-	if (range_check)
+	is_in_range = ((pos_y < 12.0F) || (pos_y > 35.0F)) ? TRUE : FALSE;
+
+	if (is_in_range != FALSE)
+	{
 		return FALSE;
+	}
+	pos_x = sobj->pos.x + 20.0F;
 
-	current_x = cursor_sobj->pos.x + 20.0F;
+	is_in_range = ((pos_x >= 140.0F) && (pos_x <= 160.0F)) ? TRUE : FALSE;
 
-	range_check = (current_x >= 140.0F) && (current_x <= 160.0F) ? TRUE : FALSE;
-	if (range_check)
+	if (is_in_range != FALSE)
+	{
 		return TRUE;
-
-	return FALSE;
+	}
+	else return FALSE;
 }
 
 // 0x8013565C
-sb32 mnPlayers1PGameCheckBackInRange(GObj* cursor_gobj)
+sb32 mnPlayers1PGameCheckBackInRange(GObj *gobj)
 {
-	f32 current_x, current_y;
-	s32 range_check;
-	SObj* cursor_sobj;
+	f32 pos_x, pos_y;
+	sb32 is_in_range;
+	SObj *sobj;
 
-	cursor_sobj = SObjGetStruct(cursor_gobj);
+	sobj = SObjGetStruct(gobj);
 
-	current_y = cursor_sobj->pos.y + 3.0F;
+	pos_y = sobj->pos.y + 3.0F;
 
-	range_check = (current_y < 13.0F) || (current_y > 34.0F) ? TRUE : FALSE;
-	if (range_check)
+	is_in_range = ((pos_y < 13.0F) || (pos_y > 34.0F)) ? TRUE : FALSE;
+
+	if (is_in_range != FALSE)
+	{
 		return FALSE;
+	}
+	pos_x = sobj->pos.x + 20.0F;
 
-	current_x = cursor_sobj->pos.x + 20.0F;
+	is_in_range = ((pos_x >= 244.0F) && (pos_x <= 292.0F)) ? TRUE : FALSE;
 
-	range_check = (current_x >= 244.0F) && (current_x <= 292.0F) ? TRUE : FALSE;
-	if (range_check)
+	if (is_in_range != FALSE)
+	{
 		return TRUE;
-
-	return FALSE;
+	}
+	else return FALSE;
 }
 
 // 0x80135724
-sb32 mnPlayers1PGameCheckPuckInRange(GObj* cursor_gobj, s32 cursor_player, s32 player)
+sb32 mnPlayers1PGameCheckPuckInRange(GObj *gobj, s32 cursor_player, s32 player)
 {
-	f32 current_x, current_y;
-	s32 range_check;
-	SObj* cursor_sobj = SObjGetStruct(cursor_gobj);
-	SObj* puck_sobj = SObjGetStruct(sMNPlayers1PGameSlot.puck);
+	f32 pos_x, pos_y;
+	sb32 is_in_range;
+	SObj *sobj = SObjGetStruct(gobj);
+	SObj *puck_sobj = SObjGetStruct(sMNPlayers1PGameSlot.puck);
 
-	current_x = cursor_sobj->pos.x + 25.0F;
+	pos_x = sobj->pos.x + 25.0F;
+	is_in_range = ((pos_x >= puck_sobj->pos.x) && (pos_x <= puck_sobj->pos.x + 26.0F)) ? TRUE : FALSE;
 
-	range_check = (current_x >= puck_sobj->pos.x) && (current_x <= puck_sobj->pos.x + 26.0F) ? TRUE : FALSE;
-
-	if (range_check)
+	if (is_in_range != FALSE)
 	{
-		current_y = cursor_sobj->pos.y + 3.0F;
+		pos_y = sobj->pos.y + 3.0F;
+		is_in_range = ((pos_y >= puck_sobj->pos.y) && (pos_y <= puck_sobj->pos.y + 24.0F)) ? TRUE : FALSE;
 
-		range_check = (current_y >= puck_sobj->pos.y) && (current_y <= puck_sobj->pos.y + 24.0F) ? TRUE : FALSE;
-		if (range_check)
+		if (is_in_range != FALSE)
+		{
 			return TRUE;
+		}
 	}
 	return FALSE;
 }
 
 // 0x801357FC - Unused?
-void func_ovl27_801357FC() {}
+void func_ovl27_801357FC(void)
+{
+	return;
+}
 
 // 0x80135804
 void mnPlayers1PGameUpdateFighter(s32 player)
 {
-	s32 var_v0 = 0;
+	s32 is_skip_fighter = FALSE;
 
-	if ((sMNPlayers1PGameSlot.fkind == nFTKindNull) && !sMNPlayers1PGameSlot.is_selected)
+	if ((sMNPlayers1PGameSlot.fkind == nFTKindNull) && (sMNPlayers1PGameSlot.is_selected == FALSE))
 	{
-		sMNPlayers1PGameSlot.player->flags = 1;
+		sMNPlayers1PGameSlot.player->flags = GOBJ_FLAG_HIDDEN;
 		mnPlayers1PGameMakeStock(sMNPlayers1PGameStockValue, sMNPlayers1PGameSlot.fkind);
 		mnPlayers1PGameMakeFighterRecord();
-		var_v0 = 1;
+		is_skip_fighter = TRUE;
 	}
-
-	if (var_v0 == 0)
+	if (is_skip_fighter == FALSE)
 	{
 		mnPlayers1PGameMakeFighter(sMNPlayers1PGameSlot.player, player, sMNPlayers1PGameSlot.fkind, mnPlayers1PGameGetFreeCostume(sMNPlayers1PGameSlot.fkind, 0));
 		mnPlayers1PGameMakeStock(sMNPlayers1PGameStockValue, sMNPlayers1PGameSlot.fkind);
 		mnPlayers1PGameMakeFighterRecord();
-		sMNPlayers1PGameSlot.player->flags = 0;
+		sMNPlayers1PGameSlot.player->flags = GOBJ_FLAG_NONE;
 		sMNPlayers1PGameSlot.is_status_selected = FALSE;
 	}
 }
 
 // 0x801358BC - Unused?
-void func_ovl27_801358BC() {}
+void func_ovl27_801358BC(void)
+{
+	return;
+}
 
 // 0x801358C4
 void mnPlayers1PGameUpdateNameAndEmblem(s32 player)
 {
-	if ((sMNPlayers1PGameSlot.fkind == nFTKindNull) && !sMNPlayers1PGameSlot.is_selected)
+	if ((sMNPlayers1PGameSlot.fkind == nFTKindNull) && (sMNPlayers1PGameSlot.is_selected == FALSE))
 	{
-		sMNPlayers1PGameSlot.name_logo_gobj->flags = 1;
+		sMNPlayers1PGameSlot.name_emblem_gobj->flags = GOBJ_FLAG_HIDDEN;
 	}
 	else
 	{
-		sMNPlayers1PGameSlot.name_logo_gobj->flags = 0;
-		mnPlayers1PGameMakeNameAndEmblem(sMNPlayers1PGameSlot.name_logo_gobj, player, sMNPlayers1PGameSlot.fkind);
+		sMNPlayers1PGameSlot.name_emblem_gobj->flags = GOBJ_FLAG_NONE;
+		mnPlayers1PGameMakeNameAndEmblem(sMNPlayers1PGameSlot.name_emblem_gobj, player, sMNPlayers1PGameSlot.fkind);
 	}
 }
 
 // 0x80135924
 void mnPlayers1PGameDestroyPortraitFlash(s32 player)
 {
-	GObj* flash_gobj;
+	GObj *gobj = sMNPlayers1PGameSlot.flash;
 
-	flash_gobj = sMNPlayers1PGameSlot.flash;
-	if (flash_gobj != NULL)
+	if (gobj != NULL)
 	{
 		sMNPlayers1PGameSlot.flash = NULL;
-		gcEjectGObj(flash_gobj);
+		gcEjectGObj(gobj);
 	}
 }
 
 // 0x8013595C
-void mnPlayers1PGamePortraitFlash(GObj* flash_gobj)
+void mnPlayers1PGamePortraitFlashThreadUpdate(GObj *gobj)
 {
-	s32 duration = 16;
-	s32 frames_to_wait = 1;
+	s32 length = 16;
+	s32 wait_tics = 1;
 
 	while (TRUE)
 	{
-		duration--, frames_to_wait--;
+		length--, wait_tics--;
 
-		if (duration == 0)
-			mnPlayers1PGameDestroyPortraitFlash(flash_gobj->user_data.p);
-
-		if (frames_to_wait == 0)
+		if (length == 0)
 		{
-			frames_to_wait = 1;
-			flash_gobj->flags = (flash_gobj->flags == 1) ? 0 : 1;
+			mnPlayers1PGameDestroyPortraitFlash(gobj->user_data.s);
 		}
-
+		if (wait_tics == 0)
+		{
+			wait_tics = 1;
+			gobj->flags = (gobj->flags == GOBJ_FLAG_HIDDEN) ? GOBJ_FLAG_NONE : GOBJ_FLAG_HIDDEN;
+		}
 		gcStopCurrentGObjThread(1);
 	}
 }
@@ -2070,87 +2095,97 @@ void mnPlayers1PGamePortraitFlash(GObj* flash_gobj)
 // 0x801359FC
 void mnPlayers1PGameMakePortraitFlash(s32 player)
 {
-	GObj* flash_gobj;
-	SObj* flash_sobj;
+	GObj *gobj;
+	SObj *sobj;
 	s32 portrait = mnPlayers1PGameGetPortrait(sMNPlayers1PGameSlot.fkind);
 
 	mnPlayers1PGameDestroyPortraitFlash(player);
 
-	sMNPlayers1PGameSlot.flash = flash_gobj = gcMakeGObjSPAfter(0U, NULL, 0x1AU, 0x80000000U);
-	gcAddGObjDisplay(flash_gobj, lbCommonDrawSObjAttr, 0x21U, GOBJ_PRIORITY_DEFAULT, ~0);
-	flash_gobj->user_data.p = player;
-	gcAddGObjProcess(flash_gobj, mnPlayers1PGamePortraitFlash, 0, 1);
+	sMNPlayers1PGameSlot.flash = gobj = gcMakeGObjSPAfter(0, NULL, 26, GOBJ_PRIORITY_DEFAULT);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 33, GOBJ_PRIORITY_DEFAULT, ~0);
+	gobj->user_data.s = player;
+	gcAddGObjProcess(gobj, mnPlayers1PGamePortraitFlashThreadUpdate, nGCProcessKindThread, 1);
 
-	flash_sobj = lbCommonMakeSObjForGObj(flash_gobj, lbRelocGetFileData(void*, sMNPlayers1PGameFiles[4], &lMNPlayersPortraitsFlashSprite));
-	flash_sobj->pos.x = (f32) (((portrait >= 6 ? portrait - 6 : portrait) * 45) + 26);
-	flash_sobj->pos.y = (f32) (((portrait >= 6 ? 1 : 0) * 43) + 37);
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PGameFiles[4], &lMNPlayersPortraitsFlashSprite));
+	sobj->pos.x = ((portrait >= 6 ? portrait - 6 : portrait) * 45) + 26;
+	sobj->pos.y = ((portrait >= 6 ? 1 : 0) * 43) + 37;
 }
 
 // 0x80135B30
-void mnPlayers1PGameAnnounceFighter(s32 player, s32 panel_id)
+void mnPlayers1PGameAnnounceFighter(s32 player, s32 slot)
 {
-	u16 announcer_fgms[12] = {
-
-		0x01F3, 0x01E6,
-		0x01E3, 0x0201,
-		0x01F2, 0x01F1,
-		0x0217, 0x01E5,
-		0x01F0, 0x01FB,
-		0x01FC, 0x01F5
+	u16 announcer_names[/* */] =
+	{
+		nSYAudioVoiceAnnounceMario,
+		nSYAudioVoiceAnnounceFox,
+		nSYAudioVoiceAnnounceDonkey,
+		nSYAudioVoiceAnnounceSamus,
+		nSYAudioVoiceAnnounceLuigi,
+		nSYAudioVoiceAnnounceLink,
+		nSYAudioVoiceAnnounceYoshi,
+		nSYAudioVoiceAnnounceCaptain,
+		nSYAudioVoiceAnnounceKirby,
+		nSYAudioVoiceAnnouncePikachu,
+		nSYAudioVoiceAnnouncePurin,
+		nSYAudioVoiceAnnounceNess
 	};
 
 	if (sMNPlayers1PGameSlot.p_sfx != NULL)
 	{
 		if ((sMNPlayers1PGameSlot.p_sfx->sfx_id != 0) && (sMNPlayers1PGameSlot.p_sfx->sfx_id == sMNPlayers1PGameSlot.sfx_id))
+		{
 			func_80026738_27338(sMNPlayers1PGameSlot.p_sfx);
+		}
 	}
+	func_800269C0_275C0(nSYAudioFGMMarioDash);
 
-	func_800269C0_275C0(0x79U);
-
-	sMNPlayers1PGameSlot.p_sfx = func_800269C0_275C0(announcer_fgms[sMNPlayers1PGameSlot.fkind]);
+	sMNPlayers1PGameSlot.p_sfx = func_800269C0_275C0(announcer_names[sMNPlayers1PGameSlot.fkind]);
 
 	if (sMNPlayers1PGameSlot.p_sfx != NULL)
+	{
 		sMNPlayers1PGameSlot.sfx_id = sMNPlayers1PGameSlot.p_sfx->sfx_id;
+	}
 }
 
 // 0x80135BFC - Unused?
-void func_ovl27_80135BFC() {}
+void func_ovl27_80135BFC(void)
+{
+	return;
+}
 
 // 0x80135C04
-sb32 mnPlayers1PGameSelectChar(GObj* cursor_gobj, s32 player, s32 arg2, s32 select_button)
+sb32 mnPlayers1PGameSelectChar(GObj *gobj, s32 player, s32 unused, s32 select_button)
 {
 	if (sMNPlayers1PGameSlot.cursor_status != nMNPlayersCursorStatusGrab)
+	{
 		return FALSE;
-
-	if (sMNPlayers1PGameSlot.fkind != nFTKindNull)
+	}
+	else if (sMNPlayers1PGameSlot.fkind != nFTKindNull)
 	{
 		mnPlayers1PGameSelectFighterPuck(player, select_button);
-		sMNPlayers1PGameSlot.recall_end_tic = sMNPlayers1PGameTotalTimeTics + 0x1E;
+		sMNPlayers1PGameSlot.recall_end_tic = sMNPlayers1PGameTotalTimeTics + 30;
+
 		return TRUE;
 	}
+	else func_800269C0_275C0(nSYAudioFGMMenuDenied);
 
-	func_800269C0_275C0(0xA5U);
 	return FALSE;
 }
 
 // 0x80135C88
 void mnPlayers1PGameUpdateCursorGrabDLLinks(s32 player, s32 puck_id)
 {
-	s32 display_orders[4] = {
+	u32 priorities[/* */] = { 6, 4, 2, 0 };
 
-		6, 4, 2, 0
-	};
-	gcMoveGObjDL(sMNPlayers1PGameSlot.puck, 0x1E, display_orders[player] + 1);
+	gcMoveGObjDL(sMNPlayers1PGameSlot.puck, 30, priorities[player] + 1);
 }
 
 // 0x80135CF4
 void mnPlayers1PGameUpdateCursorPlacementDLLinks(s32 player)
 {
-	s32 unheld_orders[4] = {
+	u32 priorities[/* */] = { 3, 2, 1, 0 };
 
-		3, 2, 1, 0
-	};
-	gcMoveGObjDL(sMNPlayers1PGameSlot.puck, 0x1F, unheld_orders[player]);
+	gcMoveGObjDL(sMNPlayers1PGameSlot.puck, 31, priorities[player]);
 }
 
 // 0x80135D58
@@ -2176,24 +2211,26 @@ void mnPlayers1PGameSetCursorGrab(s32 player)
 
 	sMNPlayers1PGameSlot.is_cursor_adjusting = TRUE;
 
-	func_800269C0_275C0(0x7FU);
+	func_800269C0_275C0(nSYAudioFGMSamusDash);
 
 	mnPlayers1PGameDestroyPortraitFlash(player);
 	mnPlayers1PGameUpdateNameAndEmblem(player);
 }
 
 // 0x80135E2C
-sb32 mnPlayers1PGameCheckCursorPuckGrab(GObj* cursor_gobj, s32 player)
+sb32 mnPlayers1PGameCheckCursorPuckGrab(GObj *gobj, s32 player)
 {
-	MNPlayersSlot1PGame* pslot = &sMNPlayers1PGameSlot;
+	MNPlayersSlot1PGame *pslot = &sMNPlayers1PGameSlot;
 
-	if ((sMNPlayers1PGameTotalTimeTics < sMNPlayers1PGameSlot.recall_end_tic) || (sMNPlayers1PGameSlot.is_recalling))
+	if ((sMNPlayers1PGameTotalTimeTics < sMNPlayers1PGameSlot.recall_end_tic) || (sMNPlayers1PGameSlot.is_recalling != FALSE))
+	{
 		return FALSE;
-
+	}
 	else if (sMNPlayers1PGameSlot.cursor_status != nMNPlayersCursorStatusHover)
+	{
 		return FALSE;
-
-	if ((sMNPlayers1PGameSlot.holder_player == 4) && (mnPlayers1PGameCheckPuckInRange(cursor_gobj, player, player)))
+	}
+	else if ((sMNPlayers1PGameSlot.holder_player == GMCOMMON_PLAYERS_MAX) && (mnPlayers1PGameCheckPuckInRange(gobj, player, player) != FALSE))
 	{
 		sMNPlayers1PGameSlot.holder_player = player;
 		sMNPlayers1PGameSlot.is_selected = FALSE;
@@ -2204,47 +2241,48 @@ sb32 mnPlayers1PGameCheckCursorPuckGrab(GObj* cursor_gobj, s32 player)
 		mnPlayers1PGameUpdateFighter(player);
 		mnPlayers1PGameUpdateCursorGrabDLLinks(player, player);
 		mnPlayers1PGameSetCursorPuckOffset(player);
-		mnPlayers1PGameUpdateCursor(cursor_gobj, player, sMNPlayers1PGameSlot.cursor_status);
+		mnPlayers1PGameUpdateCursor(gobj, player, sMNPlayers1PGameSlot.cursor_status);
 
 		sMNPlayers1PGameSlot.is_cursor_adjusting = TRUE;
 
-		func_800269C0_275C0(0x7FU);
+		func_800269C0_275C0(nSYAudioFGMSamusDash);
+
 		mnPlayers1PGameDestroyPortraitFlash(player);
 		mnPlayers1PGameUpdateNameAndEmblem(player);
 
 		return TRUE;
 	}
-
-	return FALSE;
+	else return FALSE;
 }
 
 // 0x80135F34
-s32 mnPlayers1PGameGetForcePuckFighterKind()
+s32 mnPlayers1PGameGetForcePuckFighterKind(void)
 {
-	SObj* puck_sobj = SObjGetStruct(sMNPlayers1PGameSlot.puck);
-	s32 current_y = (s32) puck_sobj->pos.x + 13;
-	s32 current_x = (s32) puck_sobj->pos.y + 12;
+	SObj *sobj = SObjGetStruct(sMNPlayers1PGameSlot.puck);
+	s32 pos_x = (s32) sobj->pos.x + 13;
+	s32 pos_y = (s32) sobj->pos.y + 12;
 	s32 fkind;
-	sb32 is_within_bounds;
+	sb32 is_in_range = ((pos_y > 35) && (pos_y < 79)) ? TRUE : FALSE;
 
-	is_within_bounds = (current_x >= 36) && (current_x < 79) ? TRUE : FALSE;
-
-	if (is_within_bounds)
+	if (is_in_range != FALSE)
 	{
-		is_within_bounds = (current_y >= 25) && (current_y < 295) ? TRUE : FALSE;
+		is_in_range = ((pos_x > 24) && (pos_x < 295)) ? TRUE : FALSE;
 
-		if (is_within_bounds)
-			return mnPlayers1PGameGetFighterKind((s32) (current_y - 25) / 45);
+		if (is_in_range != FALSE)
+		{
+			return mnPlayers1PGameGetFighterKind((pos_x - 25) / 45);
+		}
 	}
+	is_in_range = ((pos_y > 78) && (pos_y < 122)) ? TRUE : FALSE;
 
-	is_within_bounds = (current_x >= 79) && (current_x < 122) ? TRUE : FALSE;
-
-	if (is_within_bounds)
+	if (is_in_range != FALSE)
 	{
-		is_within_bounds = (current_y >= 25) && (current_y < 295) ? TRUE : FALSE;
+		is_in_range = ((pos_x > 24) && (pos_x < 295)) ? TRUE : FALSE;
 
-		if (is_within_bounds)
-			return mnPlayers1PGameGetFighterKind(((s32) (current_y - 25) / 45) + 6);
+		if (is_in_range != FALSE)
+		{
+			return mnPlayers1PGameGetFighterKind(((pos_x - 25) / 45) + 6);
+		}
 	}
 	return nFTKindNull;
 }
@@ -2252,319 +2290,325 @@ s32 mnPlayers1PGameGetForcePuckFighterKind()
 // 0x80136050
 s32 mnPlayers1PGameGetPuckFighterKind(s32 player)
 {
-	SObj* puck_sobj = SObjGetStruct(sMNPlayers1PGameSlot.puck);
-	s32 current_y = (s32) puck_sobj->pos.x + 13;
-	s32 current_x = (s32) puck_sobj->pos.y + 12;
+	SObj *sobj = SObjGetStruct(sMNPlayers1PGameSlot.puck);
+	s32 pos_x = (s32) sobj->pos.x + 13;
+	s32 pos_y = (s32) sobj->pos.y + 12;
 	s32 fkind;
-	sb32 is_within_bounds;
+	sb32 is_in_range = ((pos_y > 35) && (pos_y < 79)) ? TRUE : FALSE;
 
-	is_within_bounds = (current_x >= 36) && (current_x < 79) ? TRUE : FALSE;
-
-	if (is_within_bounds)
+	if (is_in_range != FALSE)
 	{
-		is_within_bounds = (current_y >= 25) && (current_y < 295) ? TRUE : FALSE;
+		is_in_range = ((pos_x > 24) && (pos_x < 295)) ? TRUE : FALSE;
 
-		if (is_within_bounds)
+		if (is_in_range != FALSE)
 		{
-			fkind = mnPlayers1PGameGetFighterKind((s32) (current_y - 25) / 45);
+			fkind = mnPlayers1PGameGetFighterKind((pos_x - 25) / 45);
 
-			if ((mnPlayers1PGameCheckFighterCrossed(fkind)) || (mnPlayers1PGameCheckFighterLocked(fkind)))
+			if ((mnPlayers1PGameCheckFighterCrossed(fkind) != FALSE) || (mnPlayers1PGameCheckFighterLocked(fkind) != FALSE))
+			{
 				return nFTKindNull;
-
-			return fkind;
+			}
+			else return fkind;
 		}
 	}
+	is_in_range = ((pos_y > 78) && (pos_y < 122)) ? TRUE : FALSE;
 
-	is_within_bounds = (current_x >= 79) && (current_x < 122) ? TRUE : FALSE;
-
-	if (is_within_bounds)
+	if (is_in_range != FALSE)
 	{
-		is_within_bounds = (current_y >= 25) && (current_y < 295) ? TRUE : FALSE;
+		is_in_range = ((pos_x > 24) && (pos_x < 295)) ? TRUE : FALSE;
 
-		if (is_within_bounds)
+		if (is_in_range != FALSE)
 		{
-			fkind = mnPlayers1PGameGetFighterKind(((s32) (current_y - 25) / 45) + 6);
+			fkind = mnPlayers1PGameGetFighterKind(((pos_x - 25) / 45) + 6);
 
-			if ((mnPlayers1PGameCheckFighterCrossed(fkind)) || (mnPlayers1PGameCheckFighterLocked(fkind)))
+			if ((mnPlayers1PGameCheckFighterCrossed(fkind) != FALSE) || (mnPlayers1PGameCheckFighterLocked(fkind) != FALSE))
+			{
 				return nFTKindNull;
-
-			return fkind;
+			}
+			else return fkind;
 		}
 	}
 	return nFTKindNull;
 }
 
 // 0x801361C8
-void mnPlayers1PGameAdjustCursor(GObj* cursor_gobj, s32 player)
+void mnPlayers1PGameAdjustCursor(GObj *gobj, s32 player)
 {
-	SYController* controller;
-	Vec2i coords[3] = {
-
-		{ 0x7, 0xF },
-		{ 0x9, 0xA },
-		{ 0x9, 0xF }
+	s32 unused;
+	Vec2i pos[/* */] =
+	{
+		{ 7, 15 },
+		{ 9, 10 },
+		{ 9, 15 }
 	};
 	f32 delta;
-	sb32 is_within_bounds;
+	sb32 is_in_range;
 
-	if (sMNPlayers1PGameSlot.is_cursor_adjusting)
+	if (sMNPlayers1PGameSlot.is_cursor_adjusting != FALSE)
 	{
 		delta = (sMNPlayers1PGameSlot.cursor_pickup_x - SObjGetStruct(sMNPlayers1PGameSlot.cursor)->pos.x) / 5.0F;
+		is_in_range = ((delta >= -1.0F) && (delta <= 1.0F)) ? TRUE : FALSE;
 
-		is_within_bounds = (delta >= -1.0F) && (delta <= 1.0F) ? TRUE : FALSE;
-
-		if (is_within_bounds != 0)
+		if (is_in_range != FALSE)
+		{
 			SObjGetStruct(sMNPlayers1PGameSlot.cursor)->pos.x = sMNPlayers1PGameSlot.cursor_pickup_x;
-		else
-			SObjGetStruct(sMNPlayers1PGameSlot.cursor)->pos.x += delta;
+		}
+		else SObjGetStruct(sMNPlayers1PGameSlot.cursor)->pos.x += delta;
 
 		delta = (sMNPlayers1PGameSlot.cursor_pickup_y - SObjGetStruct(sMNPlayers1PGameSlot.cursor)->pos.y) / 5.0F;
+		is_in_range = ((delta >= -1.0F) && (delta <= 1.0F)) ? TRUE : FALSE;
 
-		is_within_bounds = (delta >= -1.0F) && (delta <= 1.0F) ? TRUE : FALSE;
-
-		if (is_within_bounds != 0)
+		if (is_in_range != FALSE)
+		{
 			SObjGetStruct(sMNPlayers1PGameSlot.cursor)->pos.y = sMNPlayers1PGameSlot.cursor_pickup_y;
-		else
-			SObjGetStruct(sMNPlayers1PGameSlot.cursor)->pos.y += delta;
+		}
+		else SObjGetStruct(sMNPlayers1PGameSlot.cursor)->pos.y += delta;
 
-		if ((SObjGetStruct(sMNPlayers1PGameSlot.cursor)->pos.x == sMNPlayers1PGameSlot.cursor_pickup_x) && (SObjGetStruct(sMNPlayers1PGameSlot.cursor)->pos.y == sMNPlayers1PGameSlot.cursor_pickup_y))
+		if
+		(
+			(SObjGetStruct(sMNPlayers1PGameSlot.cursor)->pos.x == sMNPlayers1PGameSlot.cursor_pickup_x) &&
+			(SObjGetStruct(sMNPlayers1PGameSlot.cursor)->pos.y == sMNPlayers1PGameSlot.cursor_pickup_y)
+		)
 		{
 			sMNPlayers1PGameSlot.is_cursor_adjusting = FALSE;
 		}
-
-		SObjGetNext(SObjGetStruct(cursor_gobj))->pos.x = (f32) ((f32) coords[sMNPlayers1PGameSlot.cursor_status].x + SObjGetStruct(cursor_gobj)->pos.x);
-		SObjGetNext(SObjGetStruct(cursor_gobj))->pos.y = (f32) ((f32) coords[sMNPlayers1PGameSlot.cursor_status].y + SObjGetStruct(cursor_gobj)->pos.y);
+		SObjGetStruct(gobj)->next->pos.x = SObjGetStruct(gobj)->pos.x + pos[sMNPlayers1PGameSlot.cursor_status].x;
+		SObjGetStruct(gobj)->next->pos.y = SObjGetStruct(gobj)->pos.y + pos[sMNPlayers1PGameSlot.cursor_status].y;
 	}
-	else if (!sMNPlayers1PGameSlot.is_recalling)
+	else if (sMNPlayers1PGameSlot.is_recalling == FALSE)
 	{
-		controller = &gSYControllerDevices[player];
-		is_within_bounds = (controller->stick_range.x < -8) || (controller->stick_range.x >= 9) ? TRUE : FALSE;
+		is_in_range = ((gSYControllerDevices[player].stick_range.x < -8) || (gSYControllerDevices[player].stick_range.x > 8)) ? TRUE : FALSE;
 
-		if (is_within_bounds != 0)
+		if (is_in_range != FALSE)
 		{
-			delta = ((f32) controller->stick_range.x / 20.0F) + SObjGetStruct(cursor_gobj)->pos.x;
+			delta = (gSYControllerDevices[player].stick_range.x / 20.0F) + SObjGetStruct(gobj)->pos.x;
+			is_in_range = ((delta >= 0.0F) && (delta <= 280.0F)) ? TRUE : FALSE;
 
-			is_within_bounds = (delta >= 0.0F) && (delta <= 280.0F) ? TRUE : FALSE;
-
-			if (is_within_bounds != 0)
+			if (is_in_range != FALSE)
 			{
-				SObjGetStruct(cursor_gobj)->pos.x = delta;
-				SObjGetNext(SObjGetStruct(cursor_gobj))->pos.x = SObjGetStruct(cursor_gobj)->pos.x + coords[sMNPlayers1PGameSlot.cursor_status].x;
+				SObjGetStruct(gobj)->pos.x = delta;
+				SObjGetStruct(gobj)->next->pos.x = SObjGetStruct(gobj)->pos.x + pos[sMNPlayers1PGameSlot.cursor_status].x;
 			}
 		}
+		is_in_range = ((gSYControllerDevices[player].stick_range.y < -8) || (gSYControllerDevices[player].stick_range.y > 8)) ? TRUE : FALSE;
 
-		controller = &gSYControllerDevices[player];
-		is_within_bounds = (controller->stick_range.y < -8) || (controller->stick_range.y >= 9) ? TRUE : FALSE;
-
-		if (is_within_bounds != 0)
+		if (is_in_range != FALSE)
 		{
-			delta = ((f32) controller->stick_range.y / -20.0F) + SObjGetStruct(cursor_gobj)->pos.y;
+			delta = (gSYControllerDevices[player].stick_range.y / -20.0F) + SObjGetStruct(gobj)->pos.y;
+			is_in_range = ((delta >= 10.0F) && (delta <= 205.0F)) ? TRUE : FALSE;
 
-			is_within_bounds = (delta >= 10.0F) && (delta <= 205.0F) ? TRUE : FALSE;
-
-			if (is_within_bounds != 0)
+			if (is_in_range != FALSE)
 			{
-				SObjGetStruct(cursor_gobj)->pos.y = delta;
-				SObjGetNext(SObjGetStruct(cursor_gobj))->pos.y = SObjGetStruct(cursor_gobj)->pos.y + coords[sMNPlayers1PGameSlot.cursor_status].y;
+				SObjGetStruct(gobj)->pos.y = delta;
+				SObjGetStruct(gobj)->next->pos.y = SObjGetStruct(gobj)->pos.y + pos[sMNPlayers1PGameSlot.cursor_status].y;
 			}
 		}
 	}
 }
 
 // 0x80136540
-void mnPlayers1PGameUpdateCursorDisplay(GObj* cursor_gobj, s32 player)
+void mnPlayers1PGameUpdateCursorDisplay(GObj *gobj, s32 player)
 {
 	s32 i;
 
-	if (SObjGetStruct(cursor_gobj)->pos.y > 124.0F || SObjGetStruct(cursor_gobj)->pos.y < 38.0F)
+	if ((SObjGetStruct(gobj)->pos.y > 124.0F) || (SObjGetStruct(gobj)->pos.y < 38.0F))
 	{
 		if (sMNPlayers1PGameSlot.cursor_status != nMNPlayersCursorStatusPointer)
 		{
-			mnPlayers1PGameUpdateCursor(cursor_gobj, player, nMNPlayersCursorStatusPointer);
+			mnPlayers1PGameUpdateCursor(gobj, player, nMNPlayersCursorStatusPointer);
 			sMNPlayers1PGameSlot.cursor_status = nMNPlayersCursorStatusPointer;
 		}
 	}
-	else
+	else if (sMNPlayers1PGameSlot.held_player == -1)
 	{
-		if (sMNPlayers1PGameSlot.held_player == -1)
+		if (sMNPlayers1PGameSlot.cursor_status != nMNPlayersCursorStatusHover)
 		{
-			if (sMNPlayers1PGameSlot.cursor_status != nMNPlayersCursorStatusHover)
-			{
-				mnPlayers1PGameUpdateCursor(cursor_gobj, player, nMNPlayersCursorStatusHover);
-				sMNPlayers1PGameSlot.cursor_status = nMNPlayersCursorStatusHover;
-			}
-		}
-		else
-		{
-			if (sMNPlayers1PGameSlot.cursor_status != nMNPlayersCursorStatusGrab)
-			{
-				mnPlayers1PGameUpdateCursor(cursor_gobj, player, nMNPlayersCursorStatusGrab);
-				sMNPlayers1PGameSlot.cursor_status = nMNPlayersCursorStatusGrab;
-			}
+			mnPlayers1PGameUpdateCursor(gobj, player, nMNPlayersCursorStatusHover);
+			sMNPlayers1PGameSlot.cursor_status = nMNPlayersCursorStatusHover;
 		}
 	}
-
-	if (sMNPlayers1PGameSlot.cursor_status == nMNPlayersCursorStatusPointer && sMNPlayers1PGameSlot.is_selected)
+	else if (sMNPlayers1PGameSlot.cursor_status != nMNPlayersCursorStatusGrab)
 	{
-		for (i = 0; i < 4; i++)
+		mnPlayers1PGameUpdateCursor(gobj, player, nMNPlayersCursorStatusGrab);
+		sMNPlayers1PGameSlot.cursor_status = nMNPlayersCursorStatusGrab;
+	}
+	if ((sMNPlayers1PGameSlot.cursor_status == nMNPlayersCursorStatusPointer) && (sMNPlayers1PGameSlot.is_selected != FALSE))
+	{
+		for (i = 0; i < GMCOMMON_PLAYERS_MAX; i++)
 		{
-			if (sMNPlayers1PGameSlot.is_selected == 1 && mnPlayers1PGameCheckPuckInRange(cursor_gobj, player, i))
+			if ((sMNPlayers1PGameSlot.is_selected == TRUE) && (mnPlayers1PGameCheckPuckInRange(gobj, player, i) != FALSE))
 			{
-				mnPlayers1PGameUpdateCursor(cursor_gobj, player, nMNPlayersCursorStatusHover);
+				mnPlayers1PGameUpdateCursor(gobj, player, nMNPlayersCursorStatusHover);
 				sMNPlayers1PGameSlot.cursor_status = nMNPlayersCursorStatusHover;
-				return;
+
+				break;
 			}
 		}
 	}
 }
 
 // 0x801366C4
-sb32 mnPlayers1PGameCheckLevelRightArrowPress(GObj* cursor_gobj)
+sb32 mnPlayers1PGameCheckLevelArrowRightInRange(GObj *gobj)
 {
-	f32 current_x, current_y;
-	s32 range_check;
-	SObj* cursor_sobj;
+	f32 pos_x, pos_y;
+	s32 is_in_range;
+	SObj *sobj;
 
-	cursor_sobj = SObjGetStruct(cursor_gobj);
+	sobj = SObjGetStruct(gobj);
 
-	current_x = cursor_sobj->pos.x + 20.0F;
+	pos_x = sobj->pos.x + 20.0F;
 
-	range_check = (current_x >= 258.0F) && (current_x <= 280.0F) ? TRUE : FALSE;
+	is_in_range = (pos_x >= 258.0F) && (pos_x <= 280.0F) ? TRUE : FALSE;
 
-	if (range_check)
+	if (is_in_range != FALSE)
 	{
-		current_y = cursor_sobj->pos.y + 3.0F;
+		pos_y = sobj->pos.y + 3.0F;
 
-		range_check = (current_y >= 155.0F) && (current_y <= 174.0F) ? TRUE : FALSE;
-		if (range_check) return TRUE;
+		is_in_range = (pos_y >= 155.0F) && (pos_y <= 174.0F) ? TRUE : FALSE;
+
+		if (is_in_range != FALSE)
+		{
+			return TRUE;
+		}
 	}
 	return FALSE;
 }
 
 // 0x80136788
-sb32 mnPlayers1PGameCheckLevelLeftArrowPress(GObj* cursor_gobj)
+sb32 mnPlayers1PGameCheckLevelArrowLeftInRange(GObj *gobj)
 {
-	f32 current_x, current_y;
-	s32 range_check;
-	SObj* cursor_sobj;
+	f32 pos_x, pos_y;
+	s32 is_in_range;
+	SObj *sobj;
 
-	cursor_sobj = SObjGetStruct(cursor_gobj);
+	sobj = SObjGetStruct(gobj);
 
-	current_x = cursor_sobj->pos.x + 20.0F;
+	pos_x = sobj->pos.x + 20.0F;
 
-	range_check = (current_x >= 190.0F) && (current_x <= 212.0F) ? TRUE : FALSE;
+	is_in_range = (pos_x >= 190.0F) && (pos_x <= 212.0F) ? TRUE : FALSE;
 
-	if (range_check)
+	if (is_in_range != FALSE)
 	{
-		current_y = cursor_sobj->pos.y + 3.0F;
+		pos_y = sobj->pos.y + 3.0F;
 
-		range_check = (current_y >= 155.0F) && (current_y <= 174.0F) ? TRUE : FALSE;
-		if (range_check) return TRUE;
+		is_in_range = (pos_y >= 155.0F) && (pos_y <= 174.0F) ? TRUE : FALSE;
+
+		if (is_in_range != FALSE)
+		{
+			return TRUE;
+		}
 	}
 	return FALSE;
 }
 
 // 0x8013684C
-sb32 mnPlayers1PGameCheckAnyLevelArrowPress(GObj* cursor_gobj)
+sb32 mnPlayers1PGameCheckLevelArrowPress(GObj *gobj)
 {
-	if (mnPlayers1PGameCheckLevelRightArrowPress(cursor_gobj))
+	if (mnPlayers1PGameCheckLevelArrowRightInRange(gobj) != FALSE)
 	{
-		if (sMNPlayers1PGameLevelValue < 4)
+		if (sMNPlayers1PGameLevelValue < nSC1PGameDifficultyVeryHard)
 		{
-			func_800269C0_275C0(0xA4U);
+			func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 
 			mnPlayers1PGameMakeLevel(++sMNPlayers1PGameLevelValue);
 		}
 		return TRUE;
 	}
-	if (mnPlayers1PGameCheckLevelLeftArrowPress(cursor_gobj))
+	else if (mnPlayers1PGameCheckLevelArrowLeftInRange(gobj) != FALSE)
 	{
-		if (sMNPlayers1PGameLevelValue > 0)
+		if (sMNPlayers1PGameLevelValue > nSC1PGameDifficultyVeryEasy)
 		{
-			func_800269C0_275C0(0xA4U);
+			func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 
 			mnPlayers1PGameMakeLevel(--sMNPlayers1PGameLevelValue);
 		}
 		return TRUE;
 	}
-	return FALSE;
+	else return FALSE;
 }
 
 // 0x801368FC
-sb32 mnPlayers1PGameCheckStockRightArrowPress(GObj* cursor_gobj)
+sb32 mnPlayers1PGameCheckStockArrowRightInRange(GObj *gobj)
 {
-	f32 current_x, current_y;
-	s32 range_check;
-	SObj* cursor_sobj;
+	f32 pos_x, pos_y;
+	s32 is_in_range;
+	SObj *sobj;
 
-	cursor_sobj = SObjGetStruct(cursor_gobj);
+	sobj = SObjGetStruct(gobj);
 
-	current_x = cursor_sobj->pos.x + 20.0F;
+	pos_x = sobj->pos.x + 20.0F;
 
-	range_check = (current_x >= 258.0F) && (current_x <= 280.0F) ? TRUE : FALSE;
+	is_in_range = (pos_x >= 258.0F) && (pos_x <= 280.0F) ? TRUE : FALSE;
 
-	if (range_check)
+	if (is_in_range != FALSE)
 	{
-		current_y = cursor_sobj->pos.y + 3.0F;
+		pos_y = sobj->pos.y + 3.0F;
 
-		range_check = (current_y >= 175.0F) && (current_y <= 194.0F) ? TRUE : FALSE;
-		if (range_check) return TRUE;
+		is_in_range = (pos_y >= 175.0F) && (pos_y <= 194.0F) ? TRUE : FALSE;
+
+		if (is_in_range != FALSE)
+		{
+			return TRUE;
+		}
 	}
 	return FALSE;
 }
 
 // 0x801369C0
-sb32 mnPlayers1PGameCheckStockLeftArrowPress(GObj* cursor_gobj)
+sb32 mnPlayers1PGameCheckStockArrowLeftInRange(GObj *gobj)
 {
-	f32 current_x, current_y;
-	s32 range_check;
-	SObj* cursor_sobj;
+	f32 pos_x, pos_y;
+	s32 is_in_range;
+	SObj *sobj;
 
-	cursor_sobj = SObjGetStruct(cursor_gobj);
+	sobj = SObjGetStruct(gobj);
 
-	current_x = cursor_sobj->pos.x + 20.0F;
+	pos_x = sobj->pos.x + 20.0F;
 
-	range_check = (current_x >= 190.0F) && (current_x <= 212.0F) ? TRUE : FALSE;
+	is_in_range = (pos_x >= 190.0F) && (pos_x <= 212.0F) ? TRUE : FALSE;
 
-	if (range_check)
+	if (is_in_range != FALSE)
 	{
-		current_y = cursor_sobj->pos.y + 3.0F;
+		pos_y = sobj->pos.y + 3.0F;
 
-		range_check = (current_y >= 175.0F) && (current_y <= 194.0F) ? TRUE : FALSE;
-		if (range_check)
+		is_in_range = (pos_y >= 175.0F) && (pos_y <= 194.0F) ? TRUE : FALSE;
+
+		if (is_in_range != FALSE)
+		{
 			return TRUE;
+		}
 	}
 	return FALSE;
 }
 
 // 0x80136A84
-sb32 mnPlayers1PGameCheckAnyStockArrowPress(GObj* cursor_gobj)
+sb32 mnPlayers1PGameCheckStockArrowPress(GObj *gobj)
 {
-	if (mnPlayers1PGameCheckStockRightArrowPress(cursor_gobj))
+	if (mnPlayers1PGameCheckStockArrowRightInRange(gobj))
 	{
 		if (sMNPlayers1PGameStockValue < 4)
 		{
-			func_800269C0_275C0(0xA4U);
+			func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 
 			mnPlayers1PGameMakeStock(++sMNPlayers1PGameStockValue, sMNPlayers1PGameSlot.fkind);
 		}
 		return TRUE;
 	}
-	if (mnPlayers1PGameCheckStockLeftArrowPress(cursor_gobj))
+	else if (mnPlayers1PGameCheckStockArrowLeftInRange(gobj))
 	{
 		if (sMNPlayers1PGameStockValue > 0)
 		{
-			func_800269C0_275C0(0xA4U);
+			func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 
 			mnPlayers1PGameMakeStock(--sMNPlayers1PGameStockValue, sMNPlayers1PGameSlot.fkind);
 		}
 		return TRUE;
 	}
-	return FALSE;
+	else return FALSE;
 }
 
 // 0x80136B44
-void mnPlayers1PGameCostumeSync(s32 arg0, s32 select_button)
+void mnPlayers1PGameUpdateCostume(s32 player, s32 select_button)
 {
 	s32 costume = ftParamGetCostumeCommonID(sMNPlayers1PGameSlot.fkind, select_button);
 
@@ -2574,17 +2618,17 @@ void mnPlayers1PGameCostumeSync(s32 arg0, s32 select_button)
 
 	mnPlayers1PGameMakeStock(sMNPlayers1PGameStockValue, sMNPlayers1PGameSlot.fkind);
 
-	func_800269C0_275C0(0xA4U);
+	func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 }
 
 // 0x80136BAC
-sb32 mnPlayers1PGameCheckManFighterSelected(s32 arg0)
+sb32 mnPlayers1PGameCheckManFighterSelected(s32 player)
 {
 	if (sMNPlayers1PGameSlot.is_selected)
 	{
 		return TRUE;
 	}
-	return FALSE;
+	else return FALSE;
 }
 
 // 0x80136BD4
@@ -2603,26 +2647,21 @@ void mnPlayers1PGameRecallPuck(s32 player)
 	{
 		sMNPlayers1PGameSlot.recall_end_x = 280.0F;
 	}
-
 	sMNPlayers1PGameSlot.recall_end_y = SObjGetStruct(sMNPlayers1PGameSlot.cursor)->pos.y + -15.0F;
 
 	if (sMNPlayers1PGameSlot.recall_end_y < 10.0F)
 	{
 		sMNPlayers1PGameSlot.recall_end_y = 10.0F;
 	}
-
 	if (sMNPlayers1PGameSlot.recall_end_y < sMNPlayers1PGameSlot.recall_start_y)
 	{
 		sMNPlayers1PGameSlot.recall_mid_y = sMNPlayers1PGameSlot.recall_end_y - 20.0F;
 	}
-	else
-	{
-		sMNPlayers1PGameSlot.recall_mid_y = sMNPlayers1PGameSlot.recall_start_y - 20.0F;
-	}
+	else sMNPlayers1PGameSlot.recall_mid_y = sMNPlayers1PGameSlot.recall_start_y - 20.0F;
 }
 
 // 0x80136CB8
-void mnPlayers1PGameBackTo1PMode()
+void mnPlayers1PGameBackTo1PMode(void)
 {
 	gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 	gSCManagerSceneData.scene_curr = nSCKind1PMode;
@@ -2636,123 +2675,137 @@ void mnPlayers1PGameBackTo1PMode()
 // 0x80136D04
 void mnPlayers1PGameDetectBack(s32 player)
 {
-	SYController* controller = &gSYControllerDevices[player];
-
-	if ((sMNPlayers1PGameTotalTimeTics >= 10) && (controller->button_tap & B_BUTTON))
+	if ((sMNPlayers1PGameTotalTimeTics >= 10) && (gSYControllerDevices[player].button_tap & B_BUTTON))
 	{
 		mnPlayers1PGameBackTo1PMode();
 	}
 }
 
-
 // 0x80136D58
-void mnPlayers1PGameCursorProcUpdate(GObj* cursor_gobj)
+void mnPlayers1PGameCursorProcUpdate(GObj *gobj)
 {
-	SYController* controller = &gSYControllerDevices[cursor_gobj->user_data.s];
-	MNPlayersSlot1PGame* pslot;
-	s32 foo, bar, baz;
-	s32 player = cursor_gobj->user_data.s;
+	s32 unused[5];
+	s32 player = gobj->user_data.s;
 
-	mnPlayers1PGameAdjustCursor(cursor_gobj, player);
+	mnPlayers1PGameAdjustCursor(gobj, player);
 
-	if ((gSYControllerDevices[player].button_tap & A_BUTTON)
-		&& (!mnPlayers1PGameSelectChar(cursor_gobj, player, sMNPlayers1PGameSlot.held_player, 0))
-		&& (!mnPlayers1PGameCheckCursorPuckGrab(cursor_gobj, player)))
+	if
+	(
+		(gSYControllerDevices[player].button_tap & A_BUTTON) &&
+		(mnPlayers1PGameSelectChar(gobj, player, sMNPlayers1PGameSlot.held_player, 0) == FALSE) &&
+		(mnPlayers1PGameCheckCursorPuckGrab(gobj, player) == FALSE)
+	)
 	{
-		if (mnPlayers1PGameCheckPickerRightArrowPress(cursor_gobj))
+		if (mnPlayers1PGameCheckTimeArrowRightInRange(gobj) != FALSE)
 		{
-			sMNPlayers1PGameTimeSetting = mnPlayers1PGameGetNextTimerValue(sMNPlayers1PGameTimeSetting);
+			sMNPlayers1PGameTimeSetting = mnPlayers1PGameGetNextTimeValue(sMNPlayers1PGameTimeSetting);
 			mnPlayers1PGameMakeTimeSelect(sMNPlayers1PGameTimeSetting);
-			func_800269C0_275C0(0xA4U);
+			func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 		}
-		else if (mnPlayers1PGameCheckPickerLeftArrowPress(cursor_gobj))
+		else if (mnPlayers1PGameCheckTimeArrowLeftInRange(gobj) != FALSE)
 		{
-			sMNPlayers1PGameTimeSetting = mnPlayers1PGameGetPrevTimerValue(sMNPlayers1PGameTimeSetting);
+			sMNPlayers1PGameTimeSetting = mnPlayers1PGameGetPrevTimeValue(sMNPlayers1PGameTimeSetting);
 			mnPlayers1PGameMakeTimeSelect(sMNPlayers1PGameTimeSetting);
-			func_800269C0_275C0(0xA4U);
+			func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 		}
-		else if (mnPlayers1PGameCheckBackInRange(cursor_gobj))
+		else if (mnPlayers1PGameCheckBackInRange(gobj) != FALSE)
 		{
-				mnPlayers1PGameBackTo1PMode();
-				func_800269C0_275C0(0xA4U);
+			mnPlayers1PGameBackTo1PMode();
+			func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 		}
-		else if (!mnPlayers1PGameCheckAnyLevelArrowPress(cursor_gobj))
+		else if (!mnPlayers1PGameCheckLevelArrowPress(gobj))
 		{
-			mnPlayers1PGameCheckAnyStockArrowPress(cursor_gobj);
+			mnPlayers1PGameCheckStockArrowPress(gobj);
 		}
 	}
-
-	if ((gSYControllerDevices[player].button_tap & U_CBUTTONS)
-		&& (!mnPlayers1PGameSelectChar(cursor_gobj, player, sMNPlayers1PGameSlot.held_player, 0))
-		&& (sMNPlayers1PGameSlot.is_fighter_selected))
+	if
+	(
+		(gSYControllerDevices[player].button_tap & U_CBUTTONS) &&
+		(mnPlayers1PGameSelectChar(gobj, player, sMNPlayers1PGameSlot.held_player, 0) == FALSE) &&
+		(sMNPlayers1PGameSlot.is_fighter_selected != FALSE)
+	)
 	{
-		mnPlayers1PGameCostumeSync(player, 0);
+		mnPlayers1PGameUpdateCostume(player, 0);
 	}
-	if ((gSYControllerDevices[player].button_tap & R_CBUTTONS)
-		&& (!mnPlayers1PGameSelectChar(cursor_gobj, player, sMNPlayers1PGameSlot.held_player, 1))
-		&& (sMNPlayers1PGameSlot.is_fighter_selected))
+	if
+	(
+		(gSYControllerDevices[player].button_tap & R_CBUTTONS) &&
+		(mnPlayers1PGameSelectChar(gobj, player, sMNPlayers1PGameSlot.held_player, 1) == FALSE) &&
+		(sMNPlayers1PGameSlot.is_fighter_selected != FALSE)
+	)
 	{
-		mnPlayers1PGameCostumeSync(player, 1);
+		mnPlayers1PGameUpdateCostume(player, 1);
 	}
-	if ((gSYControllerDevices[player].button_tap & D_CBUTTONS)
-		&& (!mnPlayers1PGameSelectChar(cursor_gobj, player, sMNPlayers1PGameSlot.held_player, 2))
-		&& (sMNPlayers1PGameSlot.is_fighter_selected))
+	if
+	(
+		(gSYControllerDevices[player].button_tap & D_CBUTTONS) &&
+		(mnPlayers1PGameSelectChar(gobj, player, sMNPlayers1PGameSlot.held_player, 2) == FALSE) &&
+		(sMNPlayers1PGameSlot.is_fighter_selected != FALSE)
+	)
 	{
-		mnPlayers1PGameCostumeSync(player, 2);
+		mnPlayers1PGameUpdateCostume(player, 2);
 	}
-	if ((gSYControllerDevices[player].button_tap & L_CBUTTONS)
-		&& (!mnPlayers1PGameSelectChar(cursor_gobj, player, sMNPlayers1PGameSlot.held_player, 3))
-		&& (sMNPlayers1PGameSlot.is_fighter_selected))
+	if
+	(
+		(gSYControllerDevices[player].button_tap & L_CBUTTONS) &&
+		(mnPlayers1PGameSelectChar(gobj, player, sMNPlayers1PGameSlot.held_player, 3) == FALSE) &&
+		(sMNPlayers1PGameSlot.is_fighter_selected != FALSE)
+	)
 	{
-		mnPlayers1PGameCostumeSync(player, 3);
+		mnPlayers1PGameUpdateCostume(player, 3);
 	}
-
-	if ((gSYControllerDevices[player].button_tap & B_BUTTON) && (mnPlayers1PGameCheckManFighterSelected(player)))
+	if ((gSYControllerDevices[player].button_tap & B_BUTTON) && (mnPlayers1PGameCheckManFighterSelected(player) != FALSE))
 	{
 		mnPlayers1PGameRecallPuck(player);
 	}
-	if (!sMNPlayers1PGameSlot.is_recalling)
+	if (sMNPlayers1PGameSlot.is_recalling == FALSE)
 	{
 		mnPlayers1PGameDetectBack(player);
 	}
-	if (!sMNPlayers1PGameSlot.is_recalling)
+	if (sMNPlayers1PGameSlot.is_recalling == FALSE)
 	{
-		mnPlayers1PGameUpdateCursorDisplay(cursor_gobj, player);
+		mnPlayers1PGameUpdateCursorDisplay(gobj, player);
 	}
 }
 
 // 0x80138C0C
-s32 D_ovl27_80138C0C[] = {
-
-	0x00009048,
-	0x00009B28,
-	0x0000A608,
-	0x0000B0E8,
-	0x0000BBC8
+intptr_t dMNPlayers1PGamePuckSpriteOffsets[/* */] =
+{
+	&lMNPlayersCommon1PPuckSprite,
+	&lMNPlayersCommon2PPuckSprite,
+	&lMNPlayersCommon3PPuckSprite,
+	&lMNPlayersCommon4PPuckSprite,
+	&lMNPlayersCommonCPPuckSprite
 };
 
 // 0x8013702C - Unused?
-void func_ovl27_8013702C() {}
+void func_ovl27_8013702C(void)
+{
+	return;
+}
 
 // 0x80137034
-void mnPlayers1PGameCenterPuckInPortrait(GObj* puck_gobj, s32 fkind)
+void mnPlayers1PGameCenterPuckInPortrait(GObj *gobj, s32 fkind)
 {
 	s32 portrait = mnPlayers1PGameGetPortrait(fkind);
 
 	if (portrait >= 6)
 	{
-		SObjGetStruct(puck_gobj)->pos.x = (portrait * 45) - (6 * 45) + 36;
-		SObjGetStruct(puck_gobj)->pos.y = 89.0F;
+		SObjGetStruct(gobj)->pos.x = (portrait * 45) - (6 * 45) + 36;
+		SObjGetStruct(gobj)->pos.y = 89.0F;
 	}
 	else
 	{
-		SObjGetStruct(puck_gobj)->pos.x = (portrait * 45) + 36;
-		SObjGetStruct(puck_gobj)->pos.y = 46.0F;
+		SObjGetStruct(gobj)->pos.x = (portrait * 45) + 36;
+		SObjGetStruct(gobj)->pos.y = 46.0F;
 	}
 }
 
 // 0x801370E4 - Unused?
-void func_ovl27_801370E4() {}
+void func_ovl27_801370E4(void)
+{
+	return;
+}
 
 // 0x801370EC
 void mnPlayers1PGameMovePuck(s32 player)
@@ -2762,43 +2815,39 @@ void mnPlayers1PGameMovePuck(s32 player)
 }
 
 // 0x8013712C
-void mnPlayers1PGamePuckProcUpdate(GObj* puck_gobj)
+void mnPlayers1PGamePuckProcUpdate(GObj *gobj)
 {
 	s32 fkind;
-	s32 player = puck_gobj->user_data.s;
+	s32 player = gobj->user_data.s;
 
-	if (sMNPlayers1PGameTotalTimeTics < 0x1E)
+	if (sMNPlayers1PGameTotalTimeTics < 30)
 	{
-		puck_gobj->flags = 1;
+		gobj->flags = GOBJ_FLAG_HIDDEN;
 	}
-	else
+	else if
+	(
+		(sMNPlayers1PGameSlot.cursor_status != nMNPlayersCursorStatusPointer) ||
+		(sMNPlayers1PGameSlot.is_selected == TRUE) ||
+		(sMNPlayers1PGameSlot.is_recalling == TRUE)
+	)
 	{
-		if ((sMNPlayers1PGameSlot.cursor_status != nMNPlayersCursorStatusPointer)
-			|| (sMNPlayers1PGameSlot.is_selected == TRUE)
-			|| (sMNPlayers1PGameSlot.is_recalling == TRUE))
-		{
-			puck_gobj->flags = 0;
-		}
-		else
-		{
-			puck_gobj->flags = 1;
-		}
+		gobj->flags = GOBJ_FLAG_NONE;
 	}
+	else gobj->flags = GOBJ_FLAG_HIDDEN;
 
-	if ((!sMNPlayers1PGameSlot.is_selected)
-		&& (sMNPlayers1PGameSlot.holder_player != 4)) {
-		if (!sMNPlayers1PGameSlot.is_cursor_adjusting) {
-			SObjGetStruct(puck_gobj)->pos.x = (f32) (SObjGetStruct(sMNPlayers1PGameSlot.cursor)->pos.x + 11.0F);
-			SObjGetStruct(puck_gobj)->pos.y = (f32) (SObjGetStruct(sMNPlayers1PGameSlot.cursor)->pos.y + -14.0F);
+	if ((sMNPlayers1PGameSlot.is_selected == FALSE) && (sMNPlayers1PGameSlot.holder_player != GMCOMMON_PLAYERS_MAX))
+	{
+		if (sMNPlayers1PGameSlot.is_cursor_adjusting == FALSE)
+		{
+			SObjGetStruct(gobj)->pos.x = SObjGetStruct(sMNPlayers1PGameSlot.cursor)->pos.x + 11.0F;
+			SObjGetStruct(gobj)->pos.y = SObjGetStruct(sMNPlayers1PGameSlot.cursor)->pos.y + -14.0F;
 		}
 	}
-	else
-		mnPlayers1PGameMovePuck(player);
+	else mnPlayers1PGameMovePuck(player);
 
 	fkind = mnPlayers1PGameGetPuckFighterKind(player);
 
-	if ((!sMNPlayers1PGameSlot.is_selected)
-		&& (fkind != sMNPlayers1PGameSlot.fkind))
+	if ((sMNPlayers1PGameSlot.is_selected == FALSE) && (fkind != sMNPlayers1PGameSlot.fkind))
 	{
 		sMNPlayers1PGameSlot.fkind = fkind;
 
@@ -2809,98 +2858,182 @@ void mnPlayers1PGamePuckProcUpdate(GObj* puck_gobj)
 }
 
 // 0x80137268
-void mnPlayers1PGameMakeCursorCamera()
+void mnPlayers1PGameMakeCursorCamera(void)
 {
-	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonDrawSprite, 0xD, 0x40000000, -1, 0, 1, 0, 1, 0);
-	CObj *cobj = CObjGetStruct(camera_gobj);
+	CObj *cobj = CObjGetStruct
+	(
+		gcMakeCameraGObj
+		(
+			nGCCommonKindSceneCamera,
+			NULL,
+			16,
+			GOBJ_PRIORITY_DEFAULT,
+			lbCommonDrawSprite,
+			13,
+			COBJ_MASK_DLLINK(30),
+			~0,
+			FALSE,
+			nGCProcessKindFunc,
+			NULL,
+			1,
+			FALSE
+		)
+	);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80137308
-void mnPlayers1PGameMakePuckCamera()
+void mnPlayers1PGameMakePuckCamera(void)
 {
-	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonDrawSprite, 0xF, GOBJ_PRIORITY_DEFAULT, ~0, 0, 1, 0, 1, 0);
-	CObj *cobj = CObjGetStruct(camera_gobj);
+	CObj *cobj = CObjGetStruct
+	(
+		gcMakeCameraGObj
+		(
+			nGCCommonKindSceneCamera,
+			NULL,
+			16,
+			GOBJ_PRIORITY_DEFAULT,
+			lbCommonDrawSprite,
+			15,
+			COBJ_MASK_DLLINK(31),
+			~0,
+			FALSE,
+			nGCProcessKindFunc,
+			NULL,
+			1,
+			FALSE
+		)
+	);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x801373A8
-void mnPlayers1PGameMakeReadyCamera()
+void mnPlayers1PGameMakeReadyCamera(void)
 {
-	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonDrawSprite, 0xA, 0x800000000, -1, 0, 1, 0, 1, 0);
-	CObj *cobj = CObjGetStruct(camera_gobj);
+	CObj *cobj = CObjGetStruct
+	(
+		gcMakeCameraGObj
+		(
+			nGCCommonKindSceneCamera,
+			NULL,
+			16,
+			GOBJ_PRIORITY_DEFAULT,
+			lbCommonDrawSprite,
+			10,
+			COBJ_MASK_DLLINK(35),
+			~0,
+			FALSE,
+			nGCProcessKindFunc,
+			NULL,
+			1,
+			FALSE
+		)
+	);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80137448
 void mnPlayers1PGameMakeCursor(s32 player)
 {
-	GObj* cursor_gobj;
+	GObj *gobj;
 	s32 unused;
-	intptr_t cursor_type_offsets_unused[4] = {
 
-		0x8268,
-		0x8368,
-		0x8468,
-		0x8568
+	// ???
+	intptr_t unused_offsets[/* */] =
+	{
+		&lMNPlayersCommonCursorNum1PSprite,
+		&lMNPlayersCommonCursorNum2PSprite,
+		&lMNPlayersCommonCursorNum3PSprite,
+		&lMNPlayersCommonCursorNum4PSprite
 	};
-	s32 cursor_starting_display_orders[4] = {
+	u32 priorities[/* */] = { 6, 4, 2, 0 };
 
-		6, 4, 2, 0
-	};
+	gobj = lbCommonMakeSpriteGObj
+	(
+		0,
+		NULL,
+		19,
+		GOBJ_PRIORITY_DEFAULT,
+		lbCommonDrawSObjAttr,
+		30,
+		priorities[player],
+		~0,
+		lbRelocGetFileData
+		(
+			Sprite*,
+			sMNPlayers1PGameFiles[0],
+			&lMNPlayersCommonCursorGrabSprite
+		),
+		nGCProcessKindFunc,
+		mnPlayers1PGameCursorProcUpdate,
+		2
+	);
+	gobj->user_data.s = player;
+	sMNPlayers1PGameSlot.cursor = gobj;
+	SObjGetStruct(gobj)->pos.x = 60.0F;
+	SObjGetStruct(gobj)->pos.y = 170.0F;
+	SObjGetStruct(gobj)->sprite.attr &= ~SP_FASTCOPY;
+	SObjGetStruct(gobj)->sprite.attr |= SP_TRANSPARENT;
 
-	cursor_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x13, 0x80000000, lbCommonDrawSObjAttr, 0x1E, cursor_starting_display_orders[player], -1, lbRelocGetFileData(void*, sMNPlayers1PGameFiles[0], &FILE_011_CURSOR_POINTER_IMAGE_OFFSET), 1, mnPlayers1PGameCursorProcUpdate, 2);
-
-	cursor_gobj->user_data.s = player;
-	sMNPlayers1PGameSlot.cursor = cursor_gobj;
-	SObjGetStruct(cursor_gobj)->pos.x = 60.0F;
-	SObjGetStruct(cursor_gobj)->pos.y = 170.0F;
-	SObjGetStruct(cursor_gobj)->sprite.attr &= ~SP_FASTCOPY;
-	SObjGetStruct(cursor_gobj)->sprite.attr |= SP_TRANSPARENT;
-
-	mnPlayers1PGameUpdateCursor(cursor_gobj, player, 0);
+	mnPlayers1PGameUpdateCursor(gobj, player, nMNPlayersCursorStatusPointer);
 }
 
 // 0x80137590
 void mnPlayers1PGameMakePuck(s32 player)
 {
-	GObj* puck_gobj;
-	MNPlayersSlot1PGame* pslot;
+	GObj *gobj;
+	MNPlayersSlot1PGame *pslot;
 
-	// puck offsets not including cpu
-	intptr_t offsets[4] = {
-
-		0x9048,
-		0x9B28,
-		0xA608,
-		0xB0E8
+	intptr_t offsets[/* */] =
+	{
+		&lMNPlayersCommon1PPuckSprite,
+		&lMNPlayersCommon2PPuckSprite,
+		&lMNPlayersCommon3PPuckSprite,
+		&lMNPlayersCommon4PPuckSprite
 	};
-	// display orders for pucks on initial load
-	s32 orders1[4] = {
 
-		3, 2, 1, 0
-	};
-	s32 foo;
+	u32 priorities[/* */] = { 3, 2, 1, 0 };
+	s32 unused;
 
-	puck_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x14, 0x80000000, lbCommonDrawSObjAttr, 0x1F, orders1[player], -1, lbRelocGetFileData(void*, sMNPlayers1PGameFiles[0], offsets[player]), 1, mnPlayers1PGamePuckProcUpdate, 1);
-
-	puck_gobj->user_data.s = player;
-	sMNPlayers1PGameSlot.puck = puck_gobj;
+	gobj = lbCommonMakeSpriteGObj
+	(
+		0,
+		NULL,
+		20,
+		GOBJ_PRIORITY_DEFAULT,
+		lbCommonDrawSObjAttr,
+		31,
+		priorities[player],
+		~0,
+		lbRelocGetFileData
+		(
+			Sprite*,
+			sMNPlayers1PGameFiles[0],
+			offsets[player]
+		),
+		nGCProcessKindFunc,
+		mnPlayers1PGamePuckProcUpdate,
+		1
+	);
+	gobj->user_data.s = player;
+	sMNPlayers1PGameSlot.puck = gobj;
 
 	if (sMNPlayers1PGameSlot.fkind == nFTKindNull)
 	{
-		SObjGetStruct(puck_gobj)->pos.x = 51.0F;
-		SObjGetStruct(puck_gobj)->pos.y = 161.0F;
+		SObjGetStruct(gobj)->pos.x = 51.0F;
+		SObjGetStruct(gobj)->pos.y = 161.0F;
 	}
-	else
-		mnPlayers1PGameCenterPuckInPortrait(puck_gobj, sMNPlayers1PGameSlot.fkind);
+	else mnPlayers1PGameCenterPuckInPortrait(gobj, sMNPlayers1PGameSlot.fkind);
 
-	SObjGetStruct(puck_gobj)->sprite.attr &= ~SP_FASTCOPY;
-	SObjGetStruct(puck_gobj)->sprite.attr |= SP_TRANSPARENT;
+	SObjGetStruct(gobj)->sprite.attr &= ~SP_FASTCOPY;
+	SObjGetStruct(gobj)->sprite.attr |= SP_TRANSPARENT;
 }
 
 // 0x801376F0 - Unused?
-void func_ovl27_801376F0() {}
+void func_ovl27_801376F0(void)
+{
+	return;
+}
 
 // 0x801376F8
 void mnPlayers1PGamePuckAdjustPortraitEdge(s32 player)
@@ -2938,25 +3071,22 @@ void mnPlayers1PGamePuckAdjustPlaced(s32 player)
 // 0x801378C8
 void mnPlayers1PGamePuckAdjustRecall(s32 player)
 {
-	f32 new_y_velocity, new_x_velocity;
+	f32 vel_y, vel_x;
 
-	sMNPlayers1PGameSlot.recall_tics += 1;
+	sMNPlayers1PGameSlot.recall_tics++;
 
 	if (sMNPlayers1PGameSlot.recall_tics < 11)
 	{
-		new_x_velocity = (sMNPlayers1PGameSlot.recall_end_x - sMNPlayers1PGameSlot.recall_start_x) / 10.0F;
+		vel_x = (sMNPlayers1PGameSlot.recall_end_x - sMNPlayers1PGameSlot.recall_start_x) / 10.0F;
 
 		if (sMNPlayers1PGameSlot.recall_tics < 6)
 		{
-			new_y_velocity = (sMNPlayers1PGameSlot.recall_mid_y - sMNPlayers1PGameSlot.recall_start_y) / 5.0F;
+			vel_y = (sMNPlayers1PGameSlot.recall_mid_y - sMNPlayers1PGameSlot.recall_start_y) / 5.0F;
 		}
-		else
-		{
-			new_y_velocity = (sMNPlayers1PGameSlot.recall_end_y - sMNPlayers1PGameSlot.recall_mid_y) / 5.0F;
-		}
-
-		sMNPlayers1PGameSlot.puck_vel_x = new_x_velocity;
-		sMNPlayers1PGameSlot.puck_vel_y = new_y_velocity;
+		else vel_y = (sMNPlayers1PGameSlot.recall_end_y - sMNPlayers1PGameSlot.recall_mid_y) / 5.0F;
+		
+		sMNPlayers1PGameSlot.puck_vel_x = vel_x;
+		sMNPlayers1PGameSlot.puck_vel_y = vel_y;
 	}
 	else if (sMNPlayers1PGameSlot.recall_tics == 11)
 	{
@@ -2965,9 +3095,10 @@ void mnPlayers1PGamePuckAdjustRecall(s32 player)
 		sMNPlayers1PGameSlot.puck_vel_x = 0.0F;
 		sMNPlayers1PGameSlot.puck_vel_y = 0.0F;
 	}
-
 	if (sMNPlayers1PGameSlot.recall_tics == 30)
+	{
 		sMNPlayers1PGameSlot.is_recalling = FALSE;
+	}
 }
 
 // 0x8013799C
@@ -2990,52 +3121,45 @@ void mnPlayers1PGameMakePuckAdjust(void)
 }
 
 // 0x80137A2C
-void mnPlayers1PGameSpotlightProcUpdate(GObj* white_circle_gobj)
+void mnPlayers1PGameSpotlightProcUpdate(GObj *gobj)
 {
-	f32 sizes[12] = {
-
-		1.5, 1.5, 2.0, 1.5, 1.5, 1.5,
-		1.5, 1.5, 1.5, 1.5, 1.5, 1.5
+	f32 sizes[/* */] =
+	{
+		1.5F, 1.5F, 2.0F, 1.5F, 1.5F, 1.5F,
+		1.5F, 1.5F, 1.5F, 1.5F, 1.5F, 1.5F
 	};
 
-	if ((sMNPlayers1PGameSlot.is_fighter_selected == 0) && (sMNPlayers1PGameSlot.fkind != nFTKindNull))
+	if ((sMNPlayers1PGameSlot.is_fighter_selected == FALSE) && (sMNPlayers1PGameSlot.fkind != nFTKindNull))
 	{
-		white_circle_gobj->flags = (white_circle_gobj->flags == 1) ? 0 : 1;
+		gobj->flags = (gobj->flags == GOBJ_FLAG_HIDDEN) ? GOBJ_FLAG_NONE : GOBJ_FLAG_HIDDEN;
 
-		DObjGetStruct(white_circle_gobj)->scale.vec.f.x = sizes[sMNPlayers1PGameSlot.fkind];
-		DObjGetStruct(white_circle_gobj)->scale.vec.f.y = sizes[sMNPlayers1PGameSlot.fkind];
-		DObjGetStruct(white_circle_gobj)->scale.vec.f.y = sizes[sMNPlayers1PGameSlot.fkind];
+		DObjGetStruct(gobj)->scale.vec.f.x = sizes[sMNPlayers1PGameSlot.fkind];
+		DObjGetStruct(gobj)->scale.vec.f.y = sizes[sMNPlayers1PGameSlot.fkind];
+		DObjGetStruct(gobj)->scale.vec.f.y = sizes[sMNPlayers1PGameSlot.fkind];
 	}
-	else
-		white_circle_gobj->flags = 1;
+	else gobj->flags = GOBJ_FLAG_HIDDEN;
 }
 
 // 0x80137B04
-void mnPlayers1PGameMakeSpotlight()
+void mnPlayers1PGameMakeSpotlight(void)
 {
-	GObj* white_circle_gobj;
+	GObj *gobj = gcMakeGObjSPAfter(0, NULL, 21, GOBJ_PRIORITY_DEFAULT);
 
-	white_circle_gobj = gcMakeGObjSPAfter(0U, NULL, 0x15U, 0x80000000U);
+	gcSetupCommonDObjs(gobj, lbRelocGetFileData(DObjDesc*, sMNPlayers1PGameFiles[10], &lMNPlayersSpotlightDObjDesc), NULL);
+	gcAddGObjDisplay(gobj, gcDrawDObjTreeDLLinksForGObj, 9, GOBJ_PRIORITY_DEFAULT, ~0);
+	gcAddMObjAll(gobj, lbRelocGetFileData(MObjSub***, sMNPlayers1PGameFiles[10], &lMNPlayersSpotlightMObjSub));
+	gcAddGObjProcess(gobj, mnPlayers1PGameSpotlightProcUpdate, nGCProcessKindFunc, 1);
+	gcPlayAnimAll(gobj);
 
-	gcSetupCommonDObjs(white_circle_gobj, lbRelocGetFileData(void*, sMNPlayers1PGameFiles[10], &lMNPlayersSpotlightDObjDesc), 0);
-
-	gcAddGObjDisplay(white_circle_gobj, gcDrawDObjTreeDLLinksForGObj, 9U, GOBJ_PRIORITY_DEFAULT, ~0);
-
-	gcAddMObjAll(white_circle_gobj, lbRelocGetFileData(void*, sMNPlayers1PGameFiles[10], &lMNPlayersSpotlightMObjSub));
-
-	gcAddGObjProcess(white_circle_gobj, mnPlayers1PGameSpotlightProcUpdate, 1, 1);
-
-	gcPlayAnimAll(white_circle_gobj);
-
-	DObjGetStruct(white_circle_gobj)->translate.vec.f.x = -1100.0F;
-	DObjGetStruct(white_circle_gobj)->translate.vec.f.y = -850.0F;
-	DObjGetStruct(white_circle_gobj)->translate.vec.f.z = 0.0F;
+	DObjGetStruct(gobj)->translate.vec.f.x = -1100.0F;
+	DObjGetStruct(gobj)->translate.vec.f.y = -850.0F;
+	DObjGetStruct(gobj)->translate.vec.f.z = 0.0F;
 }
 
 // 0x80137BE4
-void mnPlayers1PGameReadyProcUpdate(GObj* gobj)
+void mnPlayers1PGameReadyProcUpdate(GObj *gobj)
 {
-	if (mnPlayers1PGameCheckReady())
+	if (mnPlayers1PGameCheckReady() != FALSE)
 	{
 		sMNPlayers1PGameReadyBlinkWait++;
 
@@ -3043,7 +3167,6 @@ void mnPlayers1PGameReadyProcUpdate(GObj* gobj)
 		{
 			sMNPlayers1PGameReadyBlinkWait = 0;
 		}
-
 		gobj->flags = (sMNPlayers1PGameReadyBlinkWait < 30) ? GOBJ_FLAG_NONE : GOBJ_FLAG_HIDDEN;
 	}
 	else
@@ -3054,23 +3177,21 @@ void mnPlayers1PGameReadyProcUpdate(GObj* gobj)
 }
 
 // 0x80137C64
-void mnPlayers1PGameMakeReady()
+void mnPlayers1PGameMakeReady(void)
 {
-	GObj* gobj;
-	SObj* sobj;
+	GObj *gobj;
+	SObj *sobj;
 
-	// Ready to Fight banner
-	gobj = gcMakeGObjSPAfter(0U, NULL, 0x1CU, 0x80000000U);
-	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0x23U, GOBJ_PRIORITY_DEFAULT, ~0);
-	gcAddGObjProcess(gobj, mnPlayers1PGameReadyProcUpdate, 1, 1);
+	gobj = gcMakeGObjSPAfter(0, NULL, 28, GOBJ_PRIORITY_DEFAULT);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 35, GOBJ_PRIORITY_DEFAULT, ~0);
+	gcAddGObjProcess(gobj, mnPlayers1PGameReadyProcUpdate, nGCProcessKindFunc, 1);
 
-	// Ready to Fight banner bg
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(void*, sMNPlayers1PGameFiles[0], &lMNPlayersCommonReadyBannerSprite));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PGameFiles[0], &lMNPlayersCommonReadyBannerSprite));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
-	sobj->envcolor.r = 0;
-	sobj->envcolor.g = 0;
-	sobj->envcolor.b = 0;
+	sobj->envcolor.r = 0x00;
+	sobj->envcolor.g = 0x00;
+	sobj->envcolor.b = 0x00;
 	sobj->sprite.red = 0xF4;
 	sobj->sprite.green = 0x56;
 	sobj->sprite.blue = 0x7F;
@@ -3078,13 +3199,12 @@ void mnPlayers1PGameMakeReady()
 	sobj->cmt = 0;
 	sobj->masks = 3;
 	sobj->maskt = 0;
-	sobj->lrs = 0x140;
-	sobj->lrt = 0x11;
+	sobj->lrs = 320;
+	sobj->lrt = 17;
 	sobj->pos.x = 0.0F;
 	sobj->pos.y = 71.0F;
 
-	// Ready to Fight banner text
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(void*, sMNPlayers1PGameFiles[0], &lMNPlayersCommonReadySprite));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PGameFiles[0], &lMNPlayersCommonReadySprite));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 	sobj->envcolor.r = 0xFF;
@@ -3096,13 +3216,11 @@ void mnPlayers1PGameMakeReady()
 	sobj->pos.x = 50.0F;
 	sobj->pos.y = 76.0F;
 
-	// Press Start indicator
-	gobj = gcMakeGObjSPAfter(0U, NULL, 0x16U, 0x80000000U);
-	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0x1CU, GOBJ_PRIORITY_DEFAULT, ~0);
-	gcAddGObjProcess(gobj, mnPlayers1PGameReadyProcUpdate, 1, 1);
+	gobj = gcMakeGObjSPAfter(0, NULL, 22, GOBJ_PRIORITY_DEFAULT);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_PRIORITY_DEFAULT, ~0);
+	gcAddGObjProcess(gobj, mnPlayers1PGameReadyProcUpdate, nGCProcessKindFunc, 1);
 
-	// "Press"
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(void*, sMNPlayers1PGameFiles[0], &lMNPlayersCommonPressSprite));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PGameFiles[0], &lMNPlayersCommonPressSprite));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 	sobj->sprite.red = 0xD6;
@@ -3111,8 +3229,7 @@ void mnPlayers1PGameMakeReady()
 	sobj->pos.x = 133.0F;
 	sobj->pos.y = 219.0F;
 
-	// "Start"
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(void*, sMNPlayers1PGameFiles[0], &lMNPlayersCommonStartSprite));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PGameFiles[0], &lMNPlayersCommonStartSprite));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 	sobj->sprite.red = 0xFF;
@@ -3123,24 +3240,31 @@ void mnPlayers1PGameMakeReady()
 }
 
 // 0x80137EE0 - Unused?
-void func_ovl27_80137EE0() {}
+void func_ovl27_80137EE0(void)
+{
+	return;
+}
 
 // 0x80137EE8 - Unused?
-void func_ovl27_80137EE8() {}
+void func_ovl27_80137EE8(void)
+{
+	return;
+}
 
 // 0x80137EF0
-sb32 mnPlayers1PGameCheckReady()
+sb32 mnPlayers1PGameCheckReady(void)
 {
 	sb32 is_ready = TRUE;
 
 	if (!sMNPlayers1PGameSlot.is_fighter_selected)
+	{
 		is_ready = FALSE;
-
+	}
 	return is_ready;
 }
 
 // 0x80137F10
-void mnPlayers1PGameSetSceneData()
+void mnPlayers1PGameSetSceneData(void)
 {
 	gSCManagerSceneData.spgame_time_limit = sMNPlayers1PGameTimeSetting;
 	gSCManagerSceneData.player = sMNPlayers1PGameManPlayer;
@@ -3148,10 +3272,11 @@ void mnPlayers1PGameSetSceneData()
 	gSCManagerSceneData.spgame_stage = 0;
 	gSCManagerBackupData.spgame_stock_count = sMNPlayers1PGameStockValue;
 
-	if (sMNPlayers1PGameSlot.is_fighter_selected != 0)
+	if (sMNPlayers1PGameSlot.is_fighter_selected != FALSE)
+	{
 		gSCManagerSceneData.fkind = sMNPlayers1PGameSlot.fkind;
-	else
-		gSCManagerSceneData.fkind = nFTKindNull;
+	}
+	else gSCManagerSceneData.fkind = nFTKindNull;
 
 	gSCManagerSceneData.costume = sMNPlayers1PGameSlot.costume;
 
@@ -3159,10 +3284,12 @@ void mnPlayers1PGameSetSceneData()
 }
 
 // 0x80137F9C
-void mnPlayers1PGamePauseSlotProcesses()
+void mnPlayers1PGamePauseSlotProcesses(void)
 {
 	if (sMNPlayers1PGameSlot.cursor != NULL)
+	{
 		gcPauseGObjProcess(sMNPlayers1PGameSlot.cursor->gobjproc_head);
+	}
 }
 
 // 0x80137FCC
@@ -3177,50 +3304,52 @@ void mnPlayers1PGameProcRun(GObj *gobj)
 
 		mnPlayers1PGameSetSceneData();
 		syTaskmanSetLoadScene();
-		return;
 	}
-	if (scSubsysControllerCheckNoInputAll() == FALSE)
+	else
 	{
-		sMNPlayers1PGameReturnTic = sMNPlayers1PGameTotalTimeTics + I_MIN_TO_TICS(5);
-	}
-	if (sMNPlayers1PGameIsStart != FALSE)
-	{
-		sMNPlayers1PGameStartProceedWait--;
-
-		if (sMNPlayers1PGameStartProceedWait == 0)
+		if (scSubsysControllerCheckNoInputAll() == FALSE)
 		{
-			gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
-			gSCManagerSceneData.scene_curr = nSCKind1PGame;
-
-			mnPlayers1PGameSetSceneData();
-			syTaskmanSetLoadScene();
+			sMNPlayers1PGameReturnTic = sMNPlayers1PGameTotalTimeTics + I_MIN_TO_TICS(5);
 		}
-	}
-	else if ((scSubsysControllerGetPlayerTapButtons(START_BUTTON)) && (sMNPlayers1PGameTotalTimeTics > 60))
-	{
-		if (mnPlayers1PGameCheckReady() != FALSE)
+		if (sMNPlayers1PGameIsStart != FALSE)
 		{
-			func_800269C0_275C0(nSYAudioVoicePublicCheer);
+			sMNPlayers1PGameStartProceedWait--;
 
-			sMNPlayers1PGameStartProceedWait = 30;
-			sMNPlayers1PGameIsStart = TRUE;
+			if (sMNPlayers1PGameStartProceedWait == 0)
+			{
+				gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+				gSCManagerSceneData.scene_curr = nSCKind1PGame;
 
-			mnPlayers1PGamePauseSlotProcesses();
+				mnPlayers1PGameSetSceneData();
+				syTaskmanSetLoadScene();
+			}
 		}
-		else func_800269C0_275C0(nSYAudioFGMMenuDenied);
+		else if ((scSubsysControllerGetPlayerTapButtons(START_BUTTON)) && (sMNPlayers1PGameTotalTimeTics > 60))
+		{
+			if (mnPlayers1PGameCheckReady() != FALSE)
+			{
+				func_800269C0_275C0(nSYAudioVoicePublicCheer);
+
+				sMNPlayers1PGameStartProceedWait = 30;
+				sMNPlayers1PGameIsStart = TRUE;
+
+				mnPlayers1PGamePauseSlotProcesses();
+			}
+			else func_800269C0_275C0(nSYAudioFGMMenuDenied);
+		}
 	}
 }
 
 // 0x80138118
-s32 mnPlayers1PGameGetNextTimerValue(s32 arg0)
+s32 mnPlayers1PGameGetNextTimeValue(s32 value)
 {
-	return (arg0 == 5) ? 0x64 : 5;
+	return (value == 5) ? SCBATTLE_TIMELIMIT_INFINITE : 5;
 }
 
 // 0x80138134
-s32 mnPlayers1PGameGetPrevTimerValue(s32 arg0)
+s32 mnPlayers1PGameGetPrevTimeValue(s32 value)
 {
-	return (arg0 == 5) ? 0x64 : 5;
+	return (value == 5) ? SCBATTLE_TIMELIMIT_INFINITE : 5;
 }
 
 // 0x80138150
@@ -3254,10 +3383,13 @@ void mnPlayers1PGameInitPlayer(s32 player)
 }
 
 // 0x801381D0 - Unused?
-void func_ovl27_801381D0() {}
+void func_ovl27_801381D0(void)
+{
+	return;
+}
 
 // 0x801381D8
-void mnPlayers1PGameLoadMatchInfo()
+void mnPlayers1PGameInitVars(void)
 {
 	sMNPlayers1PGameTotalTimeTics = 0;
 	sMNPlayers1PGameReturnTic = sMNPlayers1PGameTotalTimeTics + I_MIN_TO_TICS(5);
@@ -3288,7 +3420,7 @@ void mnPlayers1PGameInitSlot(s32 player)
 	mnPlayers1PGameMakePuck(player);
 	mnPlayers1PGameMakeGate(player);
 
-	if ((sMNPlayers1PGameSlot.is_selected) && (sMNPlayers1PGameSlot.fkind != nFTKindNull))
+	if ((sMNPlayers1PGameSlot.is_selected != FALSE) && (sMNPlayers1PGameSlot.fkind != nFTKindNull))
 	{
 		mnPlayers1PGameMakeFighter(sMNPlayers1PGameSlot.player, player, sMNPlayers1PGameSlot.fkind, sMNPlayers1PGameSlot.costume);
 		mnPlayers1PGameMakeFighterRecord();
@@ -3329,8 +3461,8 @@ void mnPlayers1PGameFuncStart(void)
 		)
 	);
 
-	gcMakeGObjSPAfter(0x400U, &mnPlayers1PGameProcRun, 0xFU, 0x80000000U);
-	gcMakeDefaultCameraGObj(0x10, 0x80000000U, 0x64, 1, 0);
+	gcMakeGObjSPAfter(nGCCommonKindPlayerSelect, mnPlayers1PGameProcRun, 15, GOBJ_PRIORITY_DEFAULT);
+	gcMakeDefaultCameraGObj(16, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
 	efParticleInitAll();
 	efManagerInitEffects();
 	ftManagerAllocFighter(FTDATA_FLAG_SUBMOTION, 1);
@@ -3341,7 +3473,7 @@ void mnPlayers1PGameFuncStart(void)
 	}
 	sMNPlayers1PGameFigatreeHeap = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
 
-	mnPlayers1PGameLoadMatchInfo();
+	mnPlayers1PGameInitVars();
 	mnPlayers1PGameMakePortraitCamera();
 	mnPlayers1PGameMakeCursorCamera();
 	mnPlayers1PGameMakePuckCamera();
@@ -3420,7 +3552,7 @@ SYTaskmanSetup dMN1PPlayersTaskmanSetup =
 };
 
 // 0x80138558
-void mnPlayers1PGameGamePlayersStartScene(void)
+void mnPlayers1PGameStartScene(void)
 {
 	dMN1PPlayersVideoSetup.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&dMN1PPlayersVideoSetup);

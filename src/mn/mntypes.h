@@ -46,7 +46,7 @@ struct MNPlayersSlot1PGame
 	GObj *cursor;
 	GObj *puck;
 	GObj *player;
-	GObj *name_logo_gobj;
+	GObj *name_emblem_gobj;
 	GObj *panel_doors;
 	GObj *panel;
 	GObj *flash;
@@ -85,7 +85,7 @@ struct MNPlayersSlotTraining
 	GObj *puck;
 	GObj *player;
 	GObj *type_button;
-	GObj *name_logo_gobj;
+	GObj *name_emblem_gobj;
 	GObj *panel_doors;
 	GObj *panel;
 	GObj *team_color_button;
@@ -136,7 +136,7 @@ struct MNPlayersSlotVS
 	GObj *puck;
 	GObj *player;
 	GObj *type_button;
-	GObj *name_logo_gobj;
+	GObj *name_emblem_gobj;
 	GObj *panel_doors;
 	GObj *panel;
 	GObj *team_color_button;
@@ -186,7 +186,7 @@ struct MNPlayersSlotBonus
 	GObj *cursor;
 	GObj *puck;
 	GObj *player;
-	GObj *name_logo_gobj;
+	GObj *name_emblem_gobj;
 	GObj *panel_doors;
 	GObj *panel;
 	GObj *flash;

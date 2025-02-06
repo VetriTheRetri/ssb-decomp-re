@@ -790,7 +790,7 @@ void mnPlayers1PBonusMakeGate(s32 player)
 	mnPlayers1PBonusSetGateLUT(gobj, player);
 
 	gobj = gcMakeGObjSPAfter(0, NULL, 22, GOBJ_PRIORITY_DEFAULT);
-	sMNPlayers1PBonusSlot.name_logo_gobj = gobj;
+	sMNPlayers1PBonusSlot.name_emblem_gobj = gobj;
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
@@ -1422,7 +1422,7 @@ void mnPlayers1PBonusUpdateCursor(GObj *gobj, s32 player, s32 cursor_status)
 		&lMNPlayersCommonCursorGrabSprite,
 		&lMNPlayersCommonCursorHoverSprite
 	};
-	Vec2i cursor_pos[/* */] =
+	Vec2i pos[/* */] =
 	{
 		{ 7, 15 },
 		{ 9, 10 },
@@ -1441,8 +1441,8 @@ void mnPlayers1PBonusUpdateCursor(GObj *gobj, s32 player, s32 cursor_status)
 	sobj->sprite.attr |= SP_TRANSPARENT;
 
 	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[0], num_offsets[player]));
-	sobj->pos.x = SObjGetPrev(sobj)->pos.x + cursor_pos[cursor_status].x;
-	sobj->pos.y = SObjGetPrev(sobj)->pos.y + cursor_pos[cursor_status].y;
+	sobj->pos.x = SObjGetPrev(sobj)->pos.x + pos[cursor_status].x;
+	sobj->pos.y = SObjGetPrev(sobj)->pos.y + pos[cursor_status].y;
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -1457,13 +1457,13 @@ void mnPlayers1PBonusUpdateCursor(GObj *gobj, s32 player, s32 cursor_status)
 }
 
 // 0x80134574 - Unused?
-void mnPlayers1PBonusCheckPickerRightArrowPress(void)
+void mnPlayers1PBonusCheckTimeArrowRightInRange(void)
 {
 	return;
 }
 
 // 0x8013457C - Unused?
-void mnPlayers1PBonusCheckPickerLeftArrowPress(void)
+void mnPlayers1PBonusCheckTimeArrowLeftInRange(void)
 {
 	return;
 }
@@ -1565,12 +1565,12 @@ void mnPlayers1PBonusUpdateNameAndEmblem(s32 player)
 {
 	if ((sMNPlayers1PBonusSlot.fkind == nFTKindNull) && (sMNPlayers1PBonusSlot.is_selected == FALSE))
 	{
-		sMNPlayers1PBonusSlot.name_logo_gobj->flags = GOBJ_FLAG_HIDDEN;
+		sMNPlayers1PBonusSlot.name_emblem_gobj->flags = GOBJ_FLAG_HIDDEN;
 	}
 	else
 	{
-		sMNPlayers1PBonusSlot.name_logo_gobj->flags = GOBJ_FLAG_NONE;
-		mnPlayers1PBonusMakeNameAndEmblem(sMNPlayers1PBonusSlot.name_logo_gobj, player, sMNPlayers1PBonusSlot.fkind);
+		sMNPlayers1PBonusSlot.name_emblem_gobj->flags = GOBJ_FLAG_NONE;
+		mnPlayers1PBonusMakeNameAndEmblem(sMNPlayers1PBonusSlot.name_emblem_gobj, player, sMNPlayers1PBonusSlot.fkind);
 	}
 }
 
@@ -1682,6 +1682,7 @@ sb32 mnPlayers1PBonusCheckSelectFighter(GObj *gobj, s32 player, s32 unused, s32 
 		mnPlayers1PBonusSelectFighterPuck(player, select_button);
 		sMNPlayers1PBonusSlot.recall_end_tic = sMNPlayers1PBonusTotalTimeTics + 30;
 		func_800269C0_275C0(nSYAudioFGMStageSelect);
+
 		return TRUE;
 	}
 	else func_800269C0_275C0(nSYAudioFGMMenuDenied);
@@ -1693,18 +1694,18 @@ sb32 mnPlayers1PBonusCheckSelectFighter(GObj *gobj, s32 player, s32 unused, s32 
 void mnPlayers1PBonusUpdateCursorGrabDLLinks(s32 player, s32 puck)
 {
 	// Display orders for cursors on puck pickup
-	s32 dl_links[/* */] = { 6, 4, 2, 0 };
+	u32 priorities[/* */] = { 6, 4, 2, 0 };
 
-	gcMoveGObjDL(sMNPlayers1PBonusSlot.puck, 30, dl_links[player] + 1);
+	gcMoveGObjDL(sMNPlayers1PBonusSlot.puck, 30, priorities[player] + 1);
 }
 
 // 0x80134C1C
 void mnPlayers1PBonusUpdateCursorPlacementDLLinks(s32 player)
 {
 	// Display orders for cursors not holding pucks on puck placement
-	s32 dl_links[/* */] = { 3, 2, 1, 0 };
+	u32 priorities[/* */] = { 3, 2, 1, 0 };
 
-	gcMoveGObjDL(sMNPlayers1PBonusSlot.puck, 31, dl_links[player]);
+	gcMoveGObjDL(sMNPlayers1PBonusSlot.puck, 31, priorities[player]);
 }
 
 // 0x80134C80
@@ -1958,6 +1959,7 @@ void mnPlayers1PBonusUpdateCursorDisplay(GObj *gobj, s32 player)
 			{
 				mnPlayers1PBonusUpdateCursor(gobj, player, nMNPlayersCursorStatusHover);
 				sMNPlayers1PBonusSlot.cursor_status = nMNPlayersCursorStatusHover;
+
 				break;
 			}
 		}
@@ -2326,7 +2328,7 @@ void mnPlayers1PBonusMakeCursor(s32 player)
 		&lMNPlayersCommonCursorNum3PSprite,
 		&lMNPlayersCommonCursorNum4PSprite
 	};
-	s32 dl_links[/* */] = { 6, 4, 2, 0 };
+	u32 priorities[/* */] = { 6, 4, 2, 0 };
 
 	gobj = lbCommonMakeSpriteGObj
 	(
@@ -2336,7 +2338,7 @@ void mnPlayers1PBonusMakeCursor(s32 player)
 		GOBJ_PRIORITY_DEFAULT,
 		lbCommonDrawSObjAttr,
 		30,
-		dl_links[player],
+		priorities[player],
 		~0,
 		lbRelocGetFileData
 		(
@@ -2374,7 +2376,7 @@ void mnPlayers1PBonusMakePuck(s32 player)
 	};
 
 	// Display orders for pucks on initial load
-	s32 dl_links[/* */] = { 3, 2, 1, 0 };
+	u32 priorities[/* */] = { 3, 2, 1, 0 };
 
 	gobj = lbCommonMakeSpriteGObj
 	(
@@ -2384,7 +2386,7 @@ void mnPlayers1PBonusMakePuck(s32 player)
 		GOBJ_PRIORITY_DEFAULT,
 		lbCommonDrawSObjAttr,
 		31,
-		dl_links[player],
+		priorities[player],
 		~0,
 		lbRelocGetFileData
 		(
@@ -2665,29 +2667,30 @@ void mnPlayers1PBonusProcRun(GObj *gobj)
 
 		mnPlayers1PBonusSetSceneData();
 		syTaskmanSetLoadScene();
-
-		return;
 	}
-	if (scSubsysControllerCheckNoInputAll() == FALSE)
+	else
 	{
-		sMNPlayers1PBonusReturnTic = sMNPlayers1PBonusTotalTimeTics + I_MIN_TO_TICS(5);
-	}
-	if ((sMNPlayers1PBonusIsSelected != FALSE) && (sMNPlayers1PBonusSlot.is_fighter_selected == FALSE))
-	{
-		sMNPlayers1PBonusIsSelected = FALSE;
-	}
-	if ((sMNPlayers1PBonusIsSelected != FALSE) && ((--sMNPlayers1PBonusStartWait == 0) || (gSYControllerDevices[sMNPlayers1PBonusManPlayer].button_tap & START_BUTTON)))
-	{
-		if (sMNPlayers1PBonusBonusKind == 0)
+		if (scSubsysControllerCheckNoInputAll() == FALSE)
 		{
-			gSCManagerSceneData.scene_prev = nSCKind1PBonus1Players;
+			sMNPlayers1PBonusReturnTic = sMNPlayers1PBonusTotalTimeTics + I_MIN_TO_TICS(5);
 		}
-		else gSCManagerSceneData.scene_prev = nSCKind1PBonus2Players;
+		if ((sMNPlayers1PBonusIsSelected != FALSE) && (sMNPlayers1PBonusSlot.is_fighter_selected == FALSE))
+		{
+			sMNPlayers1PBonusIsSelected = FALSE;
+		}
+		if ((sMNPlayers1PBonusIsSelected != FALSE) && ((--sMNPlayers1PBonusStartWait == 0) || (gSYControllerDevices[sMNPlayers1PBonusManPlayer].button_tap & START_BUTTON)))
+		{
+			if (sMNPlayers1PBonusBonusKind == 0)
+			{
+				gSCManagerSceneData.scene_prev = nSCKind1PBonus1Players;
+			}
+			else gSCManagerSceneData.scene_prev = nSCKind1PBonus2Players;
 
-		gSCManagerSceneData.scene_curr = nSCKind1PBonusStage;
+			gSCManagerSceneData.scene_curr = nSCKind1PBonusStage;
 
-		mnPlayers1PBonusSetSceneData();
-		syTaskmanSetLoadScene();
+			mnPlayers1PBonusSetSceneData();
+			syTaskmanSetLoadScene();
+		}
 	}
 }
 

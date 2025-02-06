@@ -580,7 +580,7 @@ void mnRecreateTypeButton(GObj* type_gobj, s32 player, s32 type_id)
 }
 
 // 0x80132A14
-void mnPlayersVSMakeNameAndEmblem(GObj* name_logo_gobj_gobj, s32 player, s32 fkind)
+void mnPlayersVSMakeNameAndEmblem(GObj* name_emblem_gobj_gobj, s32 player, s32 fkind)
 {
 	SObj* sobj;
 	Vec2f coords[12] = {
@@ -611,10 +611,10 @@ void mnPlayersVSMakeNameAndEmblem(GObj* name_logo_gobj_gobj, s32 player, s32 fki
 
 	if (fkind != nFTKindNull)
 	{
-		gcRemoveSObjAll(name_logo_gobj_gobj);
+		gcRemoveSObjAll(name_emblem_gobj_gobj);
 
 		// logo
-		sobj = lbCommonMakeSObjForGObj(name_logo_gobj_gobj, lbRelocGetFileData(void*, gFile014, logo_offsets[fkind]));
+		sobj = lbCommonMakeSObjForGObj(name_emblem_gobj_gobj, lbRelocGetFileData(void*, gFile014, logo_offsets[fkind]));
 		sobj->pos.x = (player * 0x45) + 0x18;
 		sobj->pos.y = 143.0F;
 		sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -634,7 +634,7 @@ void mnPlayersVSMakeNameAndEmblem(GObj* name_logo_gobj_gobj, s32 player, s32 fki
 		}
 
 		// name
-		sobj = lbCommonMakeSObjForGObj(name_logo_gobj_gobj, lbRelocGetFileData(void*, gFile011, name_offsets[fkind]));
+		sobj = lbCommonMakeSObjForGObj(name_emblem_gobj_gobj, lbRelocGetFileData(void*, gFile011, name_offsets[fkind]));
 		sobj->pos.x = (player * 0x45) + 0x16;
 		sobj->pos.y = 201.0F;
 		sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -947,7 +947,7 @@ void mnPlayersVSMakeGate(s32 player)
 
 	// name/logo
 	temp_gobj = gcMakeGObjSPAfter(0U, NULL, 0x16U, 0x80000000U);
-	gMnBattlePanels[player].name_logo_gobj = temp_gobj;
+	gMnBattlePanels[player].name_emblem_gobj = temp_gobj;
 	gcAddGObjDisplay(temp_gobj, lbCommonDrawSObjAttr, 0x1CU, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	mnPlayersVSUpdateNameAndEmblem(player);
@@ -1439,7 +1439,7 @@ void mnPlayersVSUpdateCursor(GObj* cursor_gobj, s32 player, s32 cursor_status)
 }
 
 // 0x80134F64
-sb32 mnCheckPickerRightArrowPress(GObj* cursor_gobj)
+sb32 mnCheckTimeArrowRightInRange(GObj* cursor_gobj)
 {
 	f32 current_y;
 	f32 current_x;
@@ -1467,7 +1467,7 @@ sb32 mnCheckPickerRightArrowPress(GObj* cursor_gobj)
 }
 
 // 0x8013502C
-s32 mnCheckPickerLeftArrowPress(GObj* cursor_gobj)
+s32 mnCheckTimeArrowLeftInRange(GObj* cursor_gobj)
 {
 	f32 current_x, current_y;
 	s32 range_check;
@@ -2047,12 +2047,12 @@ void mnPlayersVSUpdateNameAndEmblem(s32 player)
 	if ((pslot->pkind == nFTPlayerKindNot)
 		|| ((pslot->fkind == nFTKindNull) && (pslot->is_selected == FALSE)))
 	{
-		pslot->name_logo_gobj->flags = 1;
+		pslot->name_emblem_gobj->flags = 1;
 	}
 	else
 	{
-		pslot->name_logo_gobj->flags = 0;
-		mnPlayersVSMakeNameAndEmblem(pslot->name_logo_gobj, player, pslot->fkind);
+		pslot->name_emblem_gobj->flags = 0;
+		mnPlayersVSMakeNameAndEmblem(pslot->name_emblem_gobj, player, pslot->fkind);
 	}
 }
 
@@ -2199,14 +2199,14 @@ void mnPlayersVSAnnounceFighter(s32 player, s32 panel_id)
 // 0x801368C4
 void mnHideFighterName(s32 player)
 {
-	SObj* name_logo_gobj_sobj;
+	SObj* name_emblem_gobj_sobj;
 	SObj* name_sobj;
 
-	name_logo_gobj_sobj = SObjGetStruct(gMnBattlePanels[player].name_logo_gobj);
+	name_emblem_gobj_sobj = SObjGetStruct(gMnBattlePanels[player].name_emblem_gobj);
 
-	if (name_logo_gobj_sobj != NULL)
+	if (name_emblem_gobj_sobj != NULL)
 	{
-		name_sobj = SObjGetNext(name_logo_gobj_sobj);
+		name_sobj = SObjGetNext(name_emblem_gobj_sobj);
 
 		if (name_sobj != NULL)
 			name_sobj->sprite.attr |= SP_HIDDEN;
@@ -2945,7 +2945,7 @@ void mnPlayersVSCursorProcUpdate(GObj* cursor_gobj)
 		&& (mnPlayersVSSelectChar(cursor_gobj, player, gMnBattlePanels[player].held_player, 4) == FALSE)
 		&& (mnPlayersVSCheckCursorPuckGrab(cursor_gobj, player) == FALSE))
 	{
-		if (mnCheckPickerRightArrowPress(cursor_gobj))
+		if (mnCheckTimeArrowRightInRange(cursor_gobj))
 		{
 			if (gMnBattleRule == SCBATTLE_GAMERULE_TIME)
 			{
@@ -2962,7 +2962,7 @@ void mnPlayersVSCursorProcUpdate(GObj* cursor_gobj)
 			}
 			func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 		}
-		else if (mnCheckPickerLeftArrowPress(cursor_gobj))
+		else if (mnCheckTimeArrowLeftInRange(cursor_gobj))
 		{
 			if (gMnBattleRule == SCBATTLE_GAMERULE_TIME)
 			{

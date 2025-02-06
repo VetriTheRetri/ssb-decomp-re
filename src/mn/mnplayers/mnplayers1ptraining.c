@@ -779,7 +779,7 @@ void mnPlayers1PTrainingMakeGate(s32 player)
 	mnPlayers1PTrainingMakePlayerKindButton(player);
 
 	gobj = gcMakeGObjSPAfter(0, NULL, 22, GOBJ_PRIORITY_DEFAULT);
-	sMNPlayers1PTrainingSlots[player].name_logo_gobj = gobj;
+	sMNPlayers1PTrainingSlots[player].name_emblem_gobj = gobj;
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	mnPlayers1PTrainingUpdateNameAndEmblem(player);
@@ -1229,7 +1229,7 @@ void mnPlayers1PTrainingUpdateCursor(GObj *gobj, s32 player, s32 cursor_status)
 		&lMNPlayersCommonCursorGrabSprite,
 		&lMNPlayersCommonCursorHoverSprite
 	};
-	Vec2i cursor_pos[/* */] =
+	Vec2i pos[/* */] =
 	{
 		{ 7, 15 },
 		{ 9, 10 },
@@ -1248,8 +1248,8 @@ void mnPlayers1PTrainingUpdateCursor(GObj *gobj, s32 player, s32 cursor_status)
 	sobj->sprite.attr |= SP_TRANSPARENT;
 
 	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PTrainingFiles[0], num_offsets[player]));
-	sobj->pos.x = sobj->prev->pos.x + cursor_pos[cursor_status].x;
-	sobj->pos.y = sobj->prev->pos.y + cursor_pos[cursor_status].y;
+	sobj->pos.x = sobj->prev->pos.x + pos[cursor_status].x;
+	sobj->pos.y = sobj->prev->pos.y + pos[cursor_status].y;
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 	sobj->sprite.red = colors[player].prim.r;
@@ -1342,12 +1342,12 @@ void mnPlayers1PTrainingUpdateNameAndEmblem(s32 player)
 		(sMNPlayers1PTrainingSlots[player].is_selected == FALSE)
 	)
 	{
-		sMNPlayers1PTrainingSlots[player].name_logo_gobj->flags = GOBJ_FLAG_HIDDEN;
+		sMNPlayers1PTrainingSlots[player].name_emblem_gobj->flags = GOBJ_FLAG_HIDDEN;
 	}
 	else
 	{
-		sMNPlayers1PTrainingSlots[player].name_logo_gobj->flags = GOBJ_FLAG_NONE;
-		mnPlayers1PTrainingMakeNameAndEmblem(sMNPlayers1PTrainingSlots[player].name_logo_gobj, player, sMNPlayers1PTrainingSlots[player].fkind);
+		sMNPlayers1PTrainingSlots[player].name_emblem_gobj->flags = GOBJ_FLAG_NONE;
+		mnPlayers1PTrainingMakeNameAndEmblem(sMNPlayers1PTrainingSlots[player].name_emblem_gobj, player, sMNPlayers1PTrainingSlots[player].fkind);
 	}
 }
 
@@ -1661,23 +1661,23 @@ sb32 mnPlayers1PTrainingSelectFighter(GObj *gobj, s32 player, s32 unused, s32 se
 // 0x801348F0
 void mnPlayers1PTrainingUpdateCursorGrabDLLinks(s32 player, s32 puck)
 {
-	s32 dl_links[/* */] = { 6, 4, 2, 0 };
+	u32 priorities[/* */] = { 6, 4, 2, 0 };
 	s32 i, order;
 
-	gcMoveGObjDL(sMNPlayers1PTrainingSlots[player].cursor, 32, dl_links[ARRAY_COUNT(dl_links) - 1]);
-	gcMoveGObjDL(sMNPlayers1PTrainingSlots[puck].puck, 32, dl_links[ARRAY_COUNT(dl_links) - 1] + 1);
+	gcMoveGObjDL(sMNPlayers1PTrainingSlots[player].cursor, 32, priorities[ARRAY_COUNT(priorities) - 1]);
+	gcMoveGObjDL(sMNPlayers1PTrainingSlots[puck].puck, 32, priorities[ARRAY_COUNT(priorities) - 1] + 1);
 
-	for (i = 0, order = ARRAY_COUNT(dl_links) - 1; i < ARRAY_COUNT(dl_links); i++, order--)
+	for (i = 0, order = ARRAY_COUNT(priorities) - 1; i < ARRAY_COUNT(priorities); i++, order--)
 	{
 		if (i != player)
 		{
 			if (sMNPlayers1PTrainingSlots[i].cursor != NULL)
 			{
-				gcMoveGObjDL(sMNPlayers1PTrainingSlots[i].cursor, 32, dl_links[order]);
+				gcMoveGObjDL(sMNPlayers1PTrainingSlots[i].cursor, 32, priorities[order]);
 			}
 			if (sMNPlayers1PTrainingSlots[i].held_player != -1)
 			{
-				gcMoveGObjDL(sMNPlayers1PTrainingSlots[sMNPlayers1PTrainingSlots[i].held_player].puck, 32, dl_links[order] + 1);
+				gcMoveGObjDL(sMNPlayers1PTrainingSlots[sMNPlayers1PTrainingSlots[i].held_player].puck, 32, priorities[order] + 1);
 			}
 		}
 	}
@@ -1686,8 +1686,8 @@ void mnPlayers1PTrainingUpdateCursorGrabDLLinks(s32 player, s32 puck)
 // 0x80134A4C
 void mnPlayers1PTrainingUpdateCursorPlacementDLLinks(s32 player, s32 puck)
 {
-	s32 held_orders[/* */] = { 3, 2, 1, 0 };
-	s32	unheld_orders[/* */] = { 6, 4, 2, 0 };
+	s32 held_priorities[/* */] = { 3, 2, 1, 0 };
+	s32	unheld_priorities[/* */] = { 6, 4, 2, 0 };
 	s32 unused;
 	s32 unheld_id;
 	sb32 is_held[GMCOMMON_PLAYERS_MAX];
@@ -1701,33 +1701,33 @@ void mnPlayers1PTrainingUpdateCursorPlacementDLLinks(s32 player, s32 puck)
 		}
 		else is_held[i] = TRUE;
 	}
-	for (i = 0, unheld_id = ARRAY_COUNT(unheld_orders) - 1; i < (ARRAY_COUNT(is_held) + ARRAY_COUNT(unheld_orders)) / 2; i++)
+	for (i = 0, unheld_id = ARRAY_COUNT(unheld_priorities) - 1; i < (ARRAY_COUNT(is_held) + ARRAY_COUNT(unheld_priorities)) / 2; i++)
 	{
 		if ((i != player) && (is_held[i] != FALSE))
 		{
 			if (sMNPlayers1PTrainingSlots[i].cursor != NULL)
 			{
-				gcMoveGObjDL(sMNPlayers1PTrainingSlots[i].cursor, 32, unheld_orders[unheld_id]);
+				gcMoveGObjDL(sMNPlayers1PTrainingSlots[i].cursor, 32, unheld_priorities[unheld_id]);
 			}
-			gcMoveGObjDL(sMNPlayers1PTrainingSlots[sMNPlayers1PTrainingSlots[i].held_player].puck, 32, unheld_orders[unheld_id] + 1);
+			gcMoveGObjDL(sMNPlayers1PTrainingSlots[sMNPlayers1PTrainingSlots[i].held_player].puck, 32, unheld_priorities[unheld_id] + 1);
 			unheld_id--;
 		}
 	}
 	if (player != GMCOMMON_PLAYERS_MAX)
 	{
-		gcMoveGObjDL(sMNPlayers1PTrainingSlots[player].cursor, 32, unheld_orders[unheld_id]);
+		gcMoveGObjDL(sMNPlayers1PTrainingSlots[player].cursor, 32, unheld_priorities[unheld_id]);
 	}
-	gcMoveGObjDL(sMNPlayers1PTrainingSlots[puck].puck, 33, unheld_orders[unheld_id] + 1);
+	gcMoveGObjDL(sMNPlayers1PTrainingSlots[puck].puck, 33, unheld_priorities[unheld_id] + 1);
 
 	unheld_id--;
 
-	for (i = 0; i < (ARRAY_COUNT(is_held) + ARRAY_COUNT(unheld_orders)) / 2; i++)
+	for (i = 0; i < (ARRAY_COUNT(is_held) + ARRAY_COUNT(unheld_priorities)) / 2; i++)
 	{
 		if ((i != player) && (is_held[i] == FALSE))
 		{
 			if (sMNPlayers1PTrainingSlots[i].cursor != NULL)
 			{
-				gcMoveGObjDL(sMNPlayers1PTrainingSlots[i].cursor, 32, unheld_orders[unheld_id]);
+				gcMoveGObjDL(sMNPlayers1PTrainingSlots[i].cursor, 32, unheld_priorities[unheld_id]);
 			}
 			unheld_id--;
 		}
@@ -1974,6 +1974,7 @@ void mnPlayers1PTrainingUpdateCursorDisplay(GObj *gobj, s32 player)
 			{
 				mnPlayers1PTrainingUpdateCursor(gobj, player, nMNPlayersCursorStatusHover);
 				sMNPlayers1PTrainingSlots[player].cursor_status = nMNPlayersCursorStatusHover;
+				
 				break;
 			}
 		}
@@ -2397,7 +2398,7 @@ void mnPlayers1PTrainingMakeCursor(s32 player)
 		&lMNPlayersCommonCursorNum3PSprite,
 		&lMNPlayersCommonCursorNum4PSprite
 	};
-	s32 dl_links[/* */] = { 6, 4, 2, 0 };
+	u32 priorities[/* */] = { 6, 4, 2, 0 };
 
 	gobj = lbCommonMakeSpriteGObj
 	(
@@ -2407,7 +2408,7 @@ void mnPlayers1PTrainingMakeCursor(s32 player)
 		GOBJ_PRIORITY_DEFAULT,
 		lbCommonDrawSObjAttr,
 		32,
-		dl_links[player],
+		priorities[player],
 		~0,
 		lbRelocGetFileData
 		(
@@ -2463,8 +2464,8 @@ void mnPlayers1PTrainingMakePuck(s32 player)
 		&lMNPlayersCommon4PPuckSprite
 	};
 
-	s32 dropped_dl_links[/* */] = { 3, 2, 1, 0 };
-	s32 held_dl_links[/* */] = { 6, 4, 2, 0 };
+	s32 dropped_priorities[/* */] = { 3, 2, 1, 0 };
+	s32 held_priorities[/* */] = { 6, 4, 2, 0 };
 
 	sMNPlayers1PTrainingSlots[player].puck = gobj = lbCommonMakeSpriteGObj
 	(
@@ -2474,7 +2475,7 @@ void mnPlayers1PTrainingMakePuck(s32 player)
 		GOBJ_PRIORITY_DEFAULT,
 		mnPlayers1PTrainingPuckProcDisplay,
 		33,
-		dropped_dl_links[player],
+		dropped_priorities[player],
 		~0,
 		lbRelocGetFileData
 		(
@@ -2494,7 +2495,7 @@ void mnPlayers1PTrainingMakePuck(s32 player)
 	}
 	if ((sMNPlayers1PTrainingSlots[player].pkind == nFTPlayerKindMan) && (sMNPlayers1PTrainingSlots[player].held_player != -1))
 	{
-		gcMoveGObjDL(sMNPlayers1PTrainingSlots[player].puck, 32, held_dl_links[player] + 1);
+		gcMoveGObjDL(sMNPlayers1PTrainingSlots[player].puck, 32, held_priorities[player] + 1);
 	}
 	if (sMNPlayers1PTrainingSlots[player].fkind == nFTKindNull)
 	{

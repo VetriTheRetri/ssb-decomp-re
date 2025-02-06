@@ -14,7 +14,7 @@
 
 extern void mnVSModeStartScene();
 extern void mnPlayersVSStartScene();
-extern void mnPlayers1PGameGamePlayersStartScene();
+extern void mnPlayers1PGameStartScene();
 
 // // // // // // // // // // // //
 //                               //
@@ -1152,7 +1152,7 @@ void scManagerRunLoop(sb32 arg)
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[27]);
-				mnPlayers1PGameGamePlayersStartScene();
+				mnPlayers1PGameStartScene();
 				break;
 
 			case nSCKindPlayers1PTraining:

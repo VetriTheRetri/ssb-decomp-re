@@ -264,7 +264,7 @@ typedef enum MNVSResultsKind
 
 } MNVSResultsKind;
 
-typedef enum mnSelectButton
+typedef enum MNPlayersSelectButton
 {
 	nMNPlayersSelectButtonCU,                // C-Up
 	nMNPlayersSelectButtonCR,                // C-Right
@@ -272,9 +272,9 @@ typedef enum mnSelectButton
 	nMNPlayersSelectButtonCL,                // C-Left
 	nMNPlayersSelectButtonA                  // A
 
-} mnSelectButton;
+} MNPlayersSelectButton;
 
-typedef enum nMNPlayersCursorStatus
+typedef enum MNPlayersCursorStatus
 {
 	nMNPlayersCursorStatusPointer,         // Pointer
 	nMNPlayersCursorStatusGrab,    // Holding puck

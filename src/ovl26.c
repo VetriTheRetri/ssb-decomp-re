@@ -1074,7 +1074,7 @@ void mnDrawTimerValue(s32 num)
 }
 
 // 0x80133FAC
-void mnDrawTimerPicker(s32 num)
+void mnMakeTimeSelect(s32 num)
 {
 	GObj* picker_gobj;
 
@@ -1179,7 +1179,7 @@ void mnPlayersVSDrawTitleAndBack()
 	SObjGetStruct(title_gobj)->sprite.blue = title_colors[gMnBattleIsTeamBattle].b;
 	gMnBattleTitleGObj = title_gobj;
 
-	(gMnBattleRule == SCBATTLE_GAMERULE_TIME) ? mnDrawTimerPicker(gMnBattleTimerValue)
+	(gMnBattleRule == SCBATTLE_GAMERULE_TIME) ? mnMakeTimeSelect(gMnBattleTimerValue)
 											 : mnDrawStockPicker(gMnBattleStockValue);
 
 	back_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x19, 0x80000000, lbCommonDrawSObjAttr, 0x1A, GOBJ_PRIORITY_DEFAULT, ~0,
@@ -2950,7 +2950,7 @@ void mnPlayersVSCursorProcUpdate(GObj* cursor_gobj)
 			if (gMnBattleRule == SCBATTLE_GAMERULE_TIME)
 			{
 				gMnBattleTimerValue = mnPlayersVSGetNextTimerValue(gMnBattleTimerValue);
-				mnDrawTimerPicker(gMnBattleTimerValue);
+				mnMakeTimeSelect(gMnBattleTimerValue);
 			}
 			else
 			{
@@ -2967,7 +2967,7 @@ void mnPlayersVSCursorProcUpdate(GObj* cursor_gobj)
 			if (gMnBattleRule == SCBATTLE_GAMERULE_TIME)
 			{
 				gMnBattleTimerValue = mnPlayersVSGetPrevTimerValue(gMnBattleTimerValue);
-				mnDrawTimerPicker(gMnBattleTimerValue);
+				mnMakeTimeSelect(gMnBattleTimerValue);
 			}
 			else
 			{

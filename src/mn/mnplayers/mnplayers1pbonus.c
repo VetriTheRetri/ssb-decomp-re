@@ -873,7 +873,7 @@ void func_ovl29_80133210(void)
 }
 
 // 0x80133218
-void mnPlayers1PBonusMakeButtons(void)
+void mnPlayers1PBonusMakeLabels(void)
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -909,7 +909,7 @@ void mnPlayers1PBonusMakeButtons(void)
 }
 
 // 0x80133370
-void mnPlayers1PBonusMakeButtonsCamera(void)
+void mnPlayers1PBonusMakeLabelsCamera(void)
 {
 	CObj *cobj = CObjGetStruct
 	(
@@ -2076,7 +2076,7 @@ void mnPlayers1PBonusPressGameMode(void)
 	else sMNPlayers1PBonusBonusKind = 0;
 
 	gcEjectGObj(sMNPlayers1PBonusTitleGObj);
-	mnPlayers1PBonusMakeButtons();
+	mnPlayers1PBonusMakeLabels();
 	mnPlayers1PBonusMakeHiScore();
 
 	if (sMNPlayers1PBonusTotalTimeGObj != NULL)
@@ -2828,12 +2828,12 @@ void mnPlayers1PBonusFuncStart(void)
 	mnPlayers1PBonusMakePortraitWallpaperCamera();
 	mnPlayers1PBonusMakePortraitFlashCamera();
 	mnPlayers1PBonusMakeWallpaperCamera();
-	mnPlayers1PBonusMakeButtonsCamera();
+	mnPlayers1PBonusMakeLabelsCamera();
 	mnPlayers1PBonusMakeReadyCamera();
 	mnPlayers1PBonusMakeWallpaper();
 	mnPlayers1PBonusMakePortraitAll();
 	mnPlayers1PBonusInitSlot(sMNPlayers1PBonusManPlayer);
-	mnPlayers1PBonusMakeButtons();
+	mnPlayers1PBonusMakeLabels();
 
 	if (mnPlayers1PBonusCheckBonusCompleteAll() != FALSE)
 	{

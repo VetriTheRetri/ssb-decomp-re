@@ -223,7 +223,7 @@ struct LBBackup1PRecord
 {
 	u32 spgame_hiscore;
 	u32 spgame_continues;
-	u32 spgame_bonuses;
+	u32 spgame_total_bonuses;
 	u8 spgame_best_difficulty;
 	u32 bonus1_time;	        // Break the Targets high score
 	u8 bonus1_task_count;       // Targets broken

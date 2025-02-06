@@ -1484,7 +1484,7 @@ SObj* mnVSResultsMakePlaceNumber(GObj *gobj, s32 player, s32 place, s32 color_id
 	{
 		if (sMNVSResultsIsTeamBattle == TRUE)
 		{
-			if ((mnVSResultsGetWinPlayer() == player) || (sMNVSResultsIsSharedWinner[player]))
+			if ((mnVSResultsGetWinPlayer() == player) || (sMNVSResultsIsSharedWinner[player] != FALSE))
 			{
 				sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSResultsFiles[0], &lMNVSResultsWinnerSprite));
 				sobj->user_data.s = 1;

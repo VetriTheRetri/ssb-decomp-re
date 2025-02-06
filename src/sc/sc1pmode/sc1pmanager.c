@@ -218,7 +218,7 @@ void sc1PManagerTrySaveBackup(sb32 is_complete_spgame)
     {
         gSCManagerBackupData.spgame_records[gSCManagerSceneData.fkind].spgame_hiscore   = gSCManagerSceneData.spgame_score;
         gSCManagerBackupData.spgame_records[gSCManagerSceneData.fkind].spgame_continues = gSCManagerSceneData.continues_used;
-        gSCManagerBackupData.spgame_records[gSCManagerSceneData.fkind].spgame_bonuses   = gSCManagerSceneData.bonus_count;
+        gSCManagerBackupData.spgame_records[gSCManagerSceneData.fkind].spgame_total_bonuses   = gSCManagerSceneData.bonus_count;
 
         if (is_complete_spgame != FALSE)
         {

@@ -2058,6 +2058,12 @@ lMNPlayers1PModeCSecSprite = 0x1FC8;
 FILE_019_POLYGON_STOCK_ICON_IMAGE_OFFSET = 0x80;
 FILE_01A_TRAINING_BACKGROUND_IMAGE_OFFSET = 0x20718;
 
+lMNPlayersDifficultyEasySprite = 0x00000098;
+lMNPlayersDifficultyHardSprite = 0x00000178;
+lMNPlayersDifficultyNormalSprite = 0x000002D8;
+lMNPlayersDifficultyVeryEasySprite = 0x00000438;
+lMNPlayersDifficultyVeryHardSprite = 0x00000598;
+
 lMNVSResults1PArrowSprite = 0x000049E8;
 lMNVSResults2PArrowSprite = 0x00004B08;
 lMNVSResults3PArrowSprite = 0x00004C28;

@@ -184,6 +184,12 @@ extern intptr_t lMNPlayers1PModeCSecSprite;             // 0x00001FC8
 extern intptr_t lMNPlayers1PModeGateCPLUT;              // 0x00003238
 extern intptr_t lMNPlayers1PModeGateWallpaperSprite;    // 0x000032A8
 
+extern intptr_t lMNPlayersDifficultyEasySprite;			// 0x00000098
+extern intptr_t lMNPlayersDifficultyHardSprite;			// 0x00000178
+extern intptr_t lMNPlayersDifficultyNormalSprite;		// 0x000002D8
+extern intptr_t lMNPlayersDifficultyVeryEasySprite;		// 0x00000438
+extern intptr_t lMNPlayersDifficultyVeryHardSprite;		// 0x00000598
+
 extern intptr_t lMNVSModeVSSprite;                      // 0x00006118
 extern intptr_t lMNVSModeVSStartSprite;                 // 0x000024C8
 extern intptr_t lMNVSModeSmallStockSprite;              // 0x00002A80

@@ -32,7 +32,7 @@ extern void mnPlayers1PTrainingSetGateLUT(GObj *gobj, s32 player);
 extern void mnPlayers1PTrainingMakePlayerKindButton(s32 player);
 extern void mnPlayers1PTrainingMakeGate(s32 player);
 extern void mnPlayers1PTrainingMakeWallpaper(void);
-extern void mnPlayers1PTrainingMakeButtons(void);
+extern void mnPlayers1PTrainingMakeLabels(void);
 extern s32 mnPlayers1PTrainingGetFighterKindCount(s32 fkind);
 extern sb32 mnPlayers1PTrainingCheckCostumeUsed(s32 fkind, s32 player, s32 costume);
 extern s32 mnPlayers1PTrainingGetFreeCostumeRoyal(s32 fkind, s32 player);

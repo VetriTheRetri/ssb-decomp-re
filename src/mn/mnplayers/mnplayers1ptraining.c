@@ -309,7 +309,7 @@ void mnPlayers1PTrainingPortraitProcDisplay(GObj *gobj)
 	gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x30, 0x30, 0x30, 0xFF);
 	gDPSetCombineLERP(gSYTaskmanDLHeads[0]++, NOISE, TEXEL0, PRIMITIVE, TEXEL0, 0, 0, 0, TEXEL0, NOISE, TEXEL0, PRIMITIVE, TEXEL0,  0, 0, 0, TEXEL0);
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-	
+
 	lbCommonDrawSObjNoAttr(gobj);
 }
 
@@ -850,7 +850,7 @@ void mnPlayers1PTrainingMakeWallpaper(void)
 }
 
 // 0x80133140
-void mnPlayers1PTrainingMakeButtons(void)
+void mnPlayers1PTrainingMakeLabels(void)
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -1128,7 +1128,7 @@ void mnPlayers1PTrainingMakeFighter(GObj *fighter_gobj, s32 player, s32 fkind, s
 			rot_y = DObjGetStruct(fighter_gobj)->rotate.vec.f.y;
 			ftManagerDestroyFighter(fighter_gobj);
 		}
-		else rot_y = 0.0F;
+		else rot_y = F_CST_DTOR32(0.0F);
 		
 		desc.fkind = fkind;
 		sMNPlayers1PTrainingSlots[player].costume = desc.costume = costume;
@@ -3184,7 +3184,7 @@ void mnPlayers1PTrainingFuncStart(void)
 	mnPlayers1PTrainingMakeWallpaper();
 	mnPlayers1PTrainingMakePortraitAll();
 	mnPlayers1PTrainingInitSlotAll();
-	mnPlayers1PTrainingMakeButtons();
+	mnPlayers1PTrainingMakeLabels();
 	mnPlayers1PTrainingMakePuckAdjust();
 	mnPlayers1PTrainingMakePuckGlow();
 	mnPlayers1PTrainingMakeCostumeSync();

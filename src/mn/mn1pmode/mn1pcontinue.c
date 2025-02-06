@@ -24,19 +24,19 @@ extern uintptr_t D_NF_00000025;							// 0x00000025
 //                               //
 // // // // // // // // // // // //
 
-#define mn1PContinueCheckGetOptionButtonInput(is_button, mask) \
+#define mnPlayers1PGameContinueCheckGetOptionButtonInput(is_button, mask) \
 mnCommonCheckGetOptionButtonInput(sMN1PContinueOptionChangeWait, is_button, mask)
 
-#define mn1PContinueCheckGetOptionStickInputUD(stick_range, min, b) \
+#define mnPlayers1PGameContinueCheckGetOptionStickInputUD(stick_range, min, b) \
 mnCommonCheckGetOptionStickInputUD(sMN1PContinueOptionChangeWait, stick_range, min, b)
 
-#define mn1PContinueCheckGetOptionStickInputLR(stick_range, min, b) \
+#define mnPlayers1PGameContinueCheckGetOptionStickInputLR(stick_range, min, b) \
 mnCommonCheckGetOptionStickInputLR(sMN1PContinueOptionChangeWait, stick_range, min, b)
 
-#define mn1PContinueSetOptionChangeWaitP(stick_range) \
+#define mnPlayers1PGameContinueSetOptionChangeWaitP(stick_range) \
 (sMN1PContinueOptionChangeWait = (160 - (stick_range)) / 5)
 
-#define mn1PContinueSetOptionChangeWaitN(stick_range) \
+#define mnPlayers1PGameContinueSetOptionChangeWaitN(stick_range) \
 (sMN1PContinueOptionChangeWait = ((stick_range) + 160) / 5)
 
 // // // // // // // // // // // //
@@ -170,7 +170,7 @@ void *sMN1PContinueFiles[ARRAY_COUNT(dMN1PContinueFileIDs)];
 // // // // // // // // // // // //
 
 // 0x80131B00
-void mn1PContinueFuncLights(Gfx **dls)
+void mnPlayers1PGameContinueFuncLights(Gfx **dls)
 {
     gSPSetGeometryMode(dls[0]++, G_LIGHTING);
 
@@ -178,7 +178,7 @@ void mn1PContinueFuncLights(Gfx **dls)
 }
 
 // 0x80131B58
-s32 mn1PContinueGetPowerOf(s32 base, s32 exp)
+s32 mnPlayers1PGameContinueGetPowerOf(s32 base, s32 exp)
 {
 	s32 raised = base;
 	s32 i;
@@ -198,7 +198,7 @@ s32 mn1PContinueGetPowerOf(s32 base, s32 exp)
 }
 
 // 0x80131BF8
-void mn1PContinueScoreDigitInitSprite(SObj *sobj)
+void mnPlayers1PGameContinueScoreDigitInitSprite(SObj *sobj)
 {
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -213,13 +213,13 @@ void mn1PContinueScoreDigitInitSprite(SObj *sobj)
 }
 
 // 0x80131C30
-s32 mn1PContinueGetScoreDigitCount(s32 points, s32 digit_count_max)
+s32 mnPlayers1PGameContinueGetScoreDigitCount(s32 points, s32 digit_count_max)
 {
     s32 digit_count_curr = digit_count_max;
 
     while (digit_count_curr > 0)
     {
-        s32 digit = (mn1PContinueGetPowerOf(10, digit_count_curr - 1) != 0) ? points / mn1PContinueGetPowerOf(10, digit_count_curr - 1) : 0;
+        s32 digit = (mnPlayers1PGameContinueGetPowerOf(10, digit_count_curr - 1) != 0) ? points / mnPlayers1PGameContinueGetPowerOf(10, digit_count_curr - 1) : 0;
 
         if (digit != 0)
         {
@@ -231,7 +231,7 @@ s32 mn1PContinueGetScoreDigitCount(s32 points, s32 digit_count_max)
 }
 
 // 0x80131CDC
-Sprite* mn1PContinueScoreDigitGetSprite(s32 digit)
+Sprite* mnPlayers1PGameContinueScoreDigitGetSprite(s32 digit)
 {
     // 0x80134534
     intptr_t offsets[/* */] =
@@ -251,7 +251,7 @@ Sprite* mn1PContinueScoreDigitGetSprite(s32 digit)
 }
 
 // 0x80131D40
-void mn1PContinueMakeScoreDigits
+void mnPlayers1PGameContinueMakeScoreDigits
 (
     GObj *gobj,
     s32 points,
@@ -272,20 +272,20 @@ void mn1PContinueMakeScoreDigits
     {
         points = 0;
     }
-    sobj = lbCommonMakeSObjForGObj(gobj, mn1PContinueScoreDigitGetSprite(points % 10));
-    mn1PContinueScoreDigitInitSprite(sobj);
+    sobj = lbCommonMakeSObjForGObj(gobj, mnPlayers1PGameContinueScoreDigitGetSprite(points % 10));
+    mnPlayers1PGameContinueScoreDigitInitSprite(sobj);
 
     calc_x = (sub != 0) ? x - sub : x - (sobj->sprite.width + offset_x);
 
     sobj->pos.x = calc_x;
     sobj->pos.y = y;
 
-    for (i = 1; i < ((is_fixed_digit_count != FALSE) ? digit_count : mn1PContinueGetScoreDigitCount(points, digit_count)); i++)
+    for (i = 1; i < ((is_fixed_digit_count != FALSE) ? digit_count : mnPlayers1PGameContinueGetScoreDigitCount(points, digit_count)); i++)
     {
-        digit = (mn1PContinueGetPowerOf(10, i) != 0) ? points / mn1PContinueGetPowerOf(10, i) : 0;
+        digit = (mnPlayers1PGameContinueGetPowerOf(10, i) != 0) ? points / mnPlayers1PGameContinueGetPowerOf(10, i) : 0;
 
-        sobj = lbCommonMakeSObjForGObj(gobj, mn1PContinueScoreDigitGetSprite(digit % 10));
-        mn1PContinueScoreDigitInitSprite(sobj);
+        sobj = lbCommonMakeSObjForGObj(gobj, mnPlayers1PGameContinueScoreDigitGetSprite(digit % 10));
+        mnPlayers1PGameContinueScoreDigitInitSprite(sobj);
 
         calc_x = (sub != 0) ? calc_x - sub : calc_x - (sobj->sprite.width + offset_x);
 
@@ -295,7 +295,7 @@ void mn1PContinueMakeScoreDigits
 }
 
 // 0x80131F98
-void mn1PContinueMakeScoreDisplay(s32 points)
+void mnPlayers1PGameContinueMakeScoreDisplay(s32 points)
 {
     GObj *gobj;
     SObj *sobj;
@@ -319,7 +319,7 @@ void mn1PContinueMakeScoreDisplay(s32 points)
     sobj->pos.x = 90.0F;
     sobj->pos.y = 200.0F;
 
-    mn1PContinueMakeScoreDigits(gobj, points, 295.0F, 197.0F, 0.0F, 16, 8, TRUE);
+    mnPlayers1PGameContinueMakeScoreDigits(gobj, points, 295.0F, 197.0F, 0.0F, 16, 8, TRUE);
 }
 
 // 0x80132094 - Unused?
@@ -329,7 +329,7 @@ void func_ovl55_80132094(void)
 }
 
 // 0x8013209C
-void mn1PContinueSetFighterScale(GObj *gobj, s32 fkind)
+void mnPlayers1PGameContinueSetFighterScale(GObj *gobj, s32 fkind)
 {
     DObjGetStruct(gobj)->scale.vec.f.x = dSCSubsysFighterScales[fkind];
     DObjGetStruct(gobj)->scale.vec.f.y = dSCSubsysFighterScales[fkind];
@@ -337,7 +337,7 @@ void mn1PContinueSetFighterScale(GObj *gobj, s32 fkind)
 }
 
 // 0x801320D4
-void mn1PContinueMakeFighter(s32 fkind)
+void mnPlayers1PGameContinueMakeFighter(s32 fkind)
 {
     GObj *fighter_gobj;
     FTDesc desc;
@@ -358,11 +358,11 @@ void mn1PContinueMakeFighter(s32 fkind)
     sMN1PContinueFighterGObj = fighter_gobj = ftManagerMakeFighter(&desc);
 
     scSubsysFighterSetStatus(fighter_gobj, nFTDemoStatusFigureDropped);
-    mn1PContinueSetFighterScale(fighter_gobj, sMN1PContinueFighterDemoDesc.fkind);
+    mnPlayers1PGameContinueSetFighterScale(fighter_gobj, sMN1PContinueFighterDemoDesc.fkind);
 }
 
 // 0x801321A8
-void mn1PContinueRoomFadeOutProcDisplay(GObj *gobj)
+void mnPlayers1PGameContinueRoomFadeOutProcDisplay(GObj *gobj)
 {
     if (sMN1PContinueRoomFadeOutAlpha < 0xFF)
     {
@@ -384,17 +384,17 @@ void mn1PContinueRoomFadeOutProcDisplay(GObj *gobj)
 }
 
 // 0x801322DC
-void mn1PContinueMakeRoomFadeOut(void)
+void mnPlayers1PGameContinueMakeRoomFadeOut(void)
 {
     GObj *gobj;
 
     sMN1PContinueRoomFadeOutAlpha = 0x00;
     sMN1PContinueRoomFadeOutGObj = gobj = gcMakeGObjSPAfter(0, NULL, 23, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, mn1PContinueRoomFadeOutProcDisplay, 32, GOBJ_PRIORITY_DEFAULT, ~0);
+    gcAddGObjDisplay(gobj, mnPlayers1PGameContinueRoomFadeOutProcDisplay, 32, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
 // 0x80132338
-void mn1PContinueRoomFadeInProcDisplay(GObj *gobj)
+void mnPlayers1PGameContinueRoomFadeInProcDisplay(GObj *gobj)
 {
     if (sMN1PContinueRoomFadeInAlpha > 0x00)
     {
@@ -416,17 +416,17 @@ void mn1PContinueRoomFadeInProcDisplay(GObj *gobj)
 }
 
 // 0x80132460
-void mn1PContinueMakeRoomFadeIn(void)
+void mnPlayers1PGameContinueMakeRoomFadeIn(void)
 {
     GObj *gobj;
 
     sMN1PContinueRoomFadeInAlpha = 0xFF;
     sMN1PContinueRoomFadeInGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, mn1PContinueRoomFadeInProcDisplay, 26, GOBJ_PRIORITY_DEFAULT, ~0);
+    gcAddGObjDisplay(gobj, mnPlayers1PGameContinueRoomFadeInProcDisplay, 26, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
 // 0x801324C0
-void mn1PContinueSpotlightFadeProcDisplay(GObj *gobj)
+void mnPlayers1PGameContinueSpotlightFadeProcDisplay(GObj *gobj)
 {
     if (sMN1PContinueSpotlightFadeAlpha > 0x00)
     {
@@ -448,17 +448,17 @@ void mn1PContinueSpotlightFadeProcDisplay(GObj *gobj)
 }
 
 // 0x801325E8
-void mn1PContinueMakeSpotlightFade(void)
+void mnPlayers1PGameContinueMakeSpotlightFade(void)
 {
     GObj *gobj;
 
     sMN1PContinueSpotlightFadeAlpha = 0xFF;
     sMN1PContinueSpotlightFadeGObj = gobj = gcMakeGObjSPAfter(0, NULL, 22, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, mn1PContinueSpotlightFadeProcDisplay, 31, GOBJ_PRIORITY_DEFAULT, ~0);
+    gcAddGObjDisplay(gobj, mnPlayers1PGameContinueSpotlightFadeProcDisplay, 31, GOBJ_PRIORITY_DEFAULT, ~0);
 }
 
 // 0x80132648
-void mn1PContinueMakeRoom(void)
+void mnPlayers1PGameContinueMakeRoom(void)
 {
     GObj *gobj;
     SObj *sobj;
@@ -473,7 +473,7 @@ void mn1PContinueMakeRoom(void)
 }
 
 // 0x801326D4
-void mn1PContinueMakeSpotlight(void)
+void mnPlayers1PGameContinueMakeSpotlight(void)
 {
     GObj *gobj;
     SObj *sobj;
@@ -508,7 +508,7 @@ void mn1PContinueMakeSpotlight(void)
 }
 
 // 0x80132824
-void mn1PContinueMakeContinue(void)
+void mnPlayers1PGameContinueMakeContinue(void)
 {
     GObj *gobj;
     SObj *sobj;
@@ -577,7 +577,7 @@ void MN1PContinueOptionProcUpdate(GObj *gobj)
 }
 
 // 0x801329D0
-void mn1PContinueMakeOptions(void)
+void mnPlayers1PGameContinueMakeOptions(void)
 {
     GObj *gobj;
     SObj *sobj;
@@ -606,7 +606,7 @@ void mn1PContinueMakeOptions(void)
 }
 
 // 0x80132AE8
-void mn1PContinueCursorSetPosition(GObj *gobj, s32 option)
+void mnPlayers1PGameContinueCursorSetPosition(GObj *gobj, s32 option)
 {
     SObj *sobj = SObjGetStruct(gobj);
 
@@ -623,13 +623,13 @@ void mn1PContinueCursorSetPosition(GObj *gobj, s32 option)
 }
 
 // 0x80132B2C
-void mn1PContinueCursorProcUpdate(GObj *gobj)
+void mnPlayers1PGameContinueCursorProcUpdate(GObj *gobj)
 {
-    mn1PContinueCursorSetPosition(gobj, sMN1PContinueOptionSelect);
+    mnPlayers1PGameContinueCursorSetPosition(gobj, sMN1PContinueOptionSelect);
 }
 
 // 0x80132B50
-void mn1PContinueMakeCursor(void)
+void mnPlayers1PGameContinueMakeCursor(void)
 {
     GObj *gobj;
     SObj *sobj;
@@ -637,7 +637,7 @@ void mn1PContinueMakeCursor(void)
     sMN1PContinueCursorGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_PRIORITY_DEFAULT);
 
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_PRIORITY_DEFAULT, ~0);
-    gcAddGObjProcess(gobj, mn1PContinueCursorProcUpdate, nGCProcessKindFunc, 1);
+    gcAddGObjProcess(gobj, mnPlayers1PGameContinueCursorProcUpdate, nGCProcessKindFunc, 1);
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PContinueFiles[0], &lMN1PContinueCursor));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -651,11 +651,11 @@ void mn1PContinueMakeCursor(void)
     sobj->sprite.green = 0x00;
     sobj->sprite.blue = 0x00;
 
-    mn1PContinueCursorSetPosition(gobj, sMN1PContinueOptionSelect);
+    mnPlayers1PGameContinueCursorSetPosition(gobj, sMN1PContinueOptionSelect);
 }
 
 // 0x80132C1C
-void mn1PContinueGameOverInitSprites(SObj *sobj)
+void mnPlayers1PGameContinueGameOverInitSprites(SObj *sobj)
 {
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -670,7 +670,7 @@ void mn1PContinueGameOverInitSprites(SObj *sobj)
 }
 
 // 0x80132C58
-void mn1PContinueGameOverTextStepColors(GObj *gobj)
+void mnPlayers1PGameContinueGameOverTextStepColors(GObj *gobj)
 {
     SObj *sobj = SObjGetStruct(gobj);
 
@@ -701,7 +701,7 @@ void mn1PContinueGameOverTextStepColors(GObj *gobj)
 }
 
 // 0x8013307C
-void mn1PContinueMakeGameOverText(void)
+void mnPlayers1PGameContinueMakeGameOverText(void)
 {
     GObj *gobj;
     SObj *sobj;
@@ -728,7 +728,7 @@ void mn1PContinueMakeGameOverText(void)
 
     sMN1PContinueGameOverGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_PRIORITY_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_PRIORITY_DEFAULT, ~0);
-    gcAddGObjProcess(gobj, mn1PContinueGameOverTextStepColors, nGCProcessKindFunc, 1);
+    gcAddGObjProcess(gobj, mnPlayers1PGameContinueGameOverTextStepColors, nGCProcessKindFunc, 1);
 
     for (i = 0; i < (ARRAY_COUNT(letters) + ARRAY_COUNT(positions_x)) / 2; i++)
     {
@@ -737,12 +737,12 @@ void mn1PContinueMakeGameOverText(void)
         sobj->pos.x = positions_x[i];
         sobj->pos.y = 50.0F;
 
-        mn1PContinueGameOverInitSprites(sobj);
+        mnPlayers1PGameContinueGameOverInitSprites(sobj);
     }
 }
 
 // 0x80133210
-void mn1PContinueGameOverProcUpdate(GObj *gobj)
+void mnPlayers1PGameContinueGameOverProcUpdate(GObj *gobj)
 {
     SObj *sobj = SObjGetStruct(sMN1PContinueRoomGObj);
 
@@ -769,18 +769,18 @@ void mn1PContinueGameOverProcUpdate(GObj *gobj)
 }
 
 // 0x80133368
-void mn1PContinueMakeGameOver(void)
+void mnPlayers1PGameContinueMakeGameOver(void)
 {
     GObj *gobj;
 
     sMN1PContinueGameOverFadeOutScale = 1.0F;
     sMN1PContinueGameOverGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjProcess(gobj, mn1PContinueGameOverProcUpdate, nGCProcessKindFunc, 1);
+    gcAddGObjProcess(gobj, mnPlayers1PGameContinueGameOverProcUpdate, nGCProcessKindFunc, 1);
 }
 
 // 0x801333C4
-void mn1PContinueMakeRoomFadeInCamera(void)
+void mnPlayers1PGameContinueMakeRoomFadeInCamera(void)
 {
     CObj *cobj = CObjGetStruct
     (
@@ -807,7 +807,7 @@ void mn1PContinueMakeRoomFadeInCamera(void)
 }
 
 // 0x80133474
-void mn1PContinueMakeSpotlightFadeCamera(void)
+void mnPlayers1PGameContinueMakeSpotlightFadeCamera(void)
 {
     CObj *cobj = CObjGetStruct
     (
@@ -834,7 +834,7 @@ void mn1PContinueMakeSpotlightFadeCamera(void)
 }
 
 // 0x80133524
-void mn1PContinueMakeRoomFadeOutCamera(void)
+void mnPlayers1PGameContinueMakeRoomFadeOutCamera(void)
 {
     CObj *cobj = CObjGetStruct
     (
@@ -861,7 +861,7 @@ void mn1PContinueMakeRoomFadeOutCamera(void)
 }
 
 // 0x801335D4
-void mn1PContinueSetupCamera(CObj *cobj)
+void mnPlayers1PGameContinueSetupCamera(CObj *cobj)
 {
     syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
@@ -885,7 +885,7 @@ void mn1PContinueSetupCamera(CObj *cobj)
 }
 
 // 0x80133694
-void mn1PContinueMakeMainCamera(void)
+void mnPlayers1PGameContinueMakeMainCamera(void)
 {
     // 0x08048600
     CObj *cobj = CObjGetStruct
@@ -909,11 +909,11 @@ void mn1PContinueMakeMainCamera(void)
             FALSE
         )
     );
-    mn1PContinueSetupCamera(cobj);
+    mnPlayers1PGameContinueSetupCamera(cobj);
 }
 
 // 0x80133718
-void mn1PContinueMakeRoomCamera(void)
+void mnPlayers1PGameContinueMakeRoomCamera(void)
 {
     CObj *cobj = CObjGetStruct
     (
@@ -938,7 +938,7 @@ void mn1PContinueMakeRoomCamera(void)
 }
 
 // 0x801337B8
-void mn1PContinueMakeSpotlightCamera(void)
+void mnPlayers1PGameContinueMakeSpotlightCamera(void)
 {
     CObj *cobj = CObjGetStruct
     (
@@ -965,7 +965,7 @@ void mn1PContinueMakeSpotlightCamera(void)
 }
 
 // 0x80133868
-void mn1PContinueMakeTextCamera(void)
+void mnPlayers1PGameContinueMakeTextCamera(void)
 {
     CObj *cobj = CObjGetStruct
     (
@@ -992,7 +992,7 @@ void mn1PContinueMakeTextCamera(void)
 }
 
 // 0x80133918
-void mn1PContinueInitVars(void)
+void mnPlayers1PGameContinueInitVars(void)
 {
     sMN1PContinueTotalTimeTics = 0;
 
@@ -1007,13 +1007,13 @@ void mn1PContinueInitVars(void)
 }
 
 // 0x80133990 - real
-void mn1PContinueUnused0x80133990(void)
+void mnPlayers1PGameContinueUnused0x80133990(void)
 {
     return;
 }
 
 // 0x80133998
-void mn1PContinueProcRun(GObj *gobj)
+void mnPlayers1PGameContinueProcRun(GObj *gobj)
 {
     s32 unused;
     s32 stick_range;
@@ -1056,9 +1056,9 @@ void mn1PContinueProcRun(GObj *gobj)
             gcEjectGObj(sMN1PContinueOptionGObj);
             gcEjectGObj(sMN1PContinueCursorGObj);
 
-            mn1PContinueMakeRoomFadeOut();
-            mn1PContinueMakeGameOverText();
-            mn1PContinueMakeGameOver();
+            mnPlayers1PGameContinueMakeRoomFadeOut();
+            mnPlayers1PGameContinueMakeGameOverText();
+            mnPlayers1PGameContinueMakeGameOver();
 
             sMN1PContinueStatus = 2;
             sMN1PContinueOptionNoGameOverInputWait = sMN1PContinueTotalTimeTics + I_SEC_TO_TICS(1.5);
@@ -1087,7 +1087,7 @@ void mn1PContinueProcRun(GObj *gobj)
                     gSCManagerSceneData.spgame_score *= 0.5F;
 
                     gcEjectGObj(sMN1PContinueScoreGObj);
-                    mn1PContinueMakeScoreDisplay(gSCManagerSceneData.spgame_score);
+                    mnPlayers1PGameContinueMakeScoreDisplay(gSCManagerSceneData.spgame_score);
 					scSubsysFighterSetStatus(sMN1PContinueFighterGObj, nFTDemoStatusFigureStand);
 
 					sMN1PContinueStatus = 1;
@@ -1103,9 +1103,9 @@ void mn1PContinueProcRun(GObj *gobj)
                     gcEjectGObj(sMN1PContinueOptionGObj);
                     gcEjectGObj(sMN1PContinueCursorGObj);
 
-                    mn1PContinueMakeRoomFadeOut();
-                    mn1PContinueMakeGameOverText();
-                    mn1PContinueMakeGameOver();
+                    mnPlayers1PGameContinueMakeRoomFadeOut();
+                    mnPlayers1PGameContinueMakeGameOverText();
+                    mnPlayers1PGameContinueMakeGameOver();
 
                     sMN1PContinueStatus = 2;
                     sMN1PContinueOptionNoGameOverInputWait = sMN1PContinueTotalTimeTics + I_SEC_TO_TICS(1.5);
@@ -1122,7 +1122,7 @@ void mn1PContinueProcRun(GObj *gobj)
                 (
                     (
                         (scSubsysControllerGetPlayerTapButtons(L_TRIG | L_JPAD | L_CBUTTONS) != FALSE) || 
-                        mn1PContinueCheckGetOptionStickInputLR(stick_range, -15, FALSE)
+                        mnPlayers1PGameContinueCheckGetOptionStickInputLR(stick_range, -15, FALSE)
                     ) 
                     &&
                     (sMN1PContinueOptionSelect == nMN1PContinueOptionNo)
@@ -1130,13 +1130,13 @@ void mn1PContinueProcRun(GObj *gobj)
                 {
                     func_800269C0_275C0(nSYAudioFGMMenuScroll1);
                     sMN1PContinueOptionSelect = nMN1PContinueOptionYes;
-                    mn1PContinueSetOptionChangeWaitN(stick_range);
+                    mnPlayers1PGameContinueSetOptionChangeWaitN(stick_range);
                 }
                 if
                 (
                     (
                         (scSubsysControllerGetPlayerTapButtons(R_TRIG | R_JPAD | R_CBUTTONS) != FALSE) || 
-                        mn1PContinueCheckGetOptionStickInputLR(stick_range, 15, TRUE)
+                        mnPlayers1PGameContinueCheckGetOptionStickInputLR(stick_range, 15, TRUE)
                     )
                     &&
                     (sMN1PContinueOptionSelect == nMN1PContinueOptionYes)
@@ -1144,7 +1144,7 @@ void mn1PContinueProcRun(GObj *gobj)
                 {
                     func_800269C0_275C0(nSYAudioFGMMenuScroll1);
                     sMN1PContinueOptionSelect = nMN1PContinueOptionNo;
-                    mn1PContinueSetOptionChangeWaitP(stick_range);
+                    mnPlayers1PGameContinueSetOptionChangeWaitP(stick_range);
                 }
             }
         }
@@ -1159,7 +1159,7 @@ void mn1PContinueProcRun(GObj *gobj)
             gSCManagerSceneData.scene_curr = nSCKindTitle;
 
         #if !defined(DAIRANTOU_OPT0)
-            mn1PContinueUnused0x80133990();
+            mnPlayers1PGameContinueUnused0x80133990();
         #endif
             sMN1PContinueIsSelectContinue = FALSE;
             syTaskmanSetLoadScene();
@@ -1170,33 +1170,33 @@ void mn1PContinueProcRun(GObj *gobj)
             gSCManagerSceneData.scene_curr = nSCKindTitle;
 
         #if !defined(DAIRANTOU_OPT0)
-            mn1PContinueUnused0x80133990();
+            mnPlayers1PGameContinueUnused0x80133990();
         #endif
             sMN1PContinueIsSelectContinue = FALSE;
             syTaskmanSetLoadScene();
         }
         if (sMN1PContinueTotalTimeTics == 40)
         {
-            mn1PContinueMakeSpotlight();
-            mn1PContinueMakeSpotlightFade();
+            mnPlayers1PGameContinueMakeSpotlight();
+            mnPlayers1PGameContinueMakeSpotlightFade();
         }
         if (sMN1PContinueTotalTimeTics == 60)
         {
-            mn1PContinueMakeRoomFadeIn();
-            mn1PContinueMakeRoom();
-            mn1PContinueMakeContinue();
+            mnPlayers1PGameContinueMakeRoomFadeIn();
+            mnPlayers1PGameContinueMakeRoom();
+            mnPlayers1PGameContinueMakeContinue();
             func_800269C0_275C0(nSYAudioVoiceAnnounceContinue);
         }
         if (sMN1PContinueTotalTimeTics == 120)
         {
-            mn1PContinueMakeOptions();
-            mn1PContinueMakeCursor();
+            mnPlayers1PGameContinueMakeOptions();
+            mnPlayers1PGameContinueMakeCursor();
         }
     }
 }
 
 // 0x80133F58
-void mn1PContinueFuncStart(void)
+void mnPlayers1PGameContinueFuncStart(void)
 {
     s32 unused;
     LBRelocSetup rl_setup;
@@ -1226,25 +1226,25 @@ void mn1PContinueFuncStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(0, mn1PContinueProcRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeGObjSPAfter(0, mnPlayers1PGameContinueProcRun, 0, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     efParticleInitAll();
-    mn1PContinueInitVars();
+    mnPlayers1PGameContinueInitVars();
     efManagerInitEffects();
     ftManagerAllocFighter(FTDATA_FLAG_SUBMOTION, 1);
     ftManagerSetupFilesAllKind(sMN1PContinueFighterDemoDesc.fkind);
     
     sMN1PContinueFigatreeHeap = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
 
-    mn1PContinueMakeMainCamera();
-    mn1PContinueMakeRoomFadeInCamera();
-    mn1PContinueMakeSpotlightFadeCamera();
-    mn1PContinueMakeRoomFadeOutCamera();
-    mn1PContinueMakeRoomCamera();
-    mn1PContinueMakeSpotlightCamera();
-    mn1PContinueMakeTextCamera();
-    mn1PContinueMakeFighter(sMN1PContinueFighterDemoDesc.fkind);
-    mn1PContinueMakeScoreDisplay(gSCManagerSceneData.spgame_score);
+    mnPlayers1PGameContinueMakeMainCamera();
+    mnPlayers1PGameContinueMakeRoomFadeInCamera();
+    mnPlayers1PGameContinueMakeSpotlightFadeCamera();
+    mnPlayers1PGameContinueMakeRoomFadeOutCamera();
+    mnPlayers1PGameContinueMakeRoomCamera();
+    mnPlayers1PGameContinueMakeSpotlightCamera();
+    mnPlayers1PGameContinueMakeTextCamera();
+    mnPlayers1PGameContinueMakeFighter(sMN1PContinueFighterDemoDesc.fkind);
+    mnPlayers1PGameContinueMakeScoreDisplay(gSCManagerSceneData.spgame_score);
 
     scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 
@@ -1274,7 +1274,7 @@ SYTaskmanSetup dMN1PContinueTaskmanSetup =
         0x8000,                     // Graphics Heap Size
         2,                          // ???
         0xC000,                     // RDP Output Buffer Size
-        mn1PContinueFuncLights,     // Pre-render function
+        mnPlayers1PGameContinueFuncLights,     // Pre-render function
         syControllerFuncRead,       // Controller I/O function
     },
 
@@ -1297,11 +1297,11 @@ SYTaskmanSetup dMN1PContinueTaskmanSetup =
     0,                              // Number of CObjs
     sizeof(CObj),                 	// CObj size
     
-    mn1PContinueFuncStart           // Task start function
+    mnPlayers1PGameContinueFuncStart           // Task start function
 };
 
 // 0x801340FC
-void mn1PContinueStartScene(void)
+void mnPlayers1PGameContinueStartScene(void)
 {
     dMN1PContinueVideoSetup.zbuffer = syVideoGetZBuffer(6400);
 

@@ -20,6 +20,8 @@ extern intptr_t lFTEmblemSpritesFZeroSprite;				// 0x000032B8
 extern intptr_t lFTEmblemSpritesPMonstersSprite;			// 0x00003918
 extern intptr_t lFTEmblemSpritesMotherSprite;				// 0x00003F78
 
+extern intptr_t lFTStocksZakoSprite;						// 0x00000080
+
 extern intptr_t lFTEmblemModelsMarioMObjSub;				// 0x00000000
 extern intptr_t lFTEmblemModelsMarioDObjDesc;				// 0x00000990
 extern intptr_t lFTEmblemModelsMarioMatAnimJoint;			// 0x00000A14

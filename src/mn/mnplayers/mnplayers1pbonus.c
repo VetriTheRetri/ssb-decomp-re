@@ -146,7 +146,7 @@ s32 mnPlayers1PBonusGetPowerOf(s32 base, s32 exp)
 }
 
 // 0x80131BF8
-void mnPlayers1PBonusSetTextureColors(SObj *sobj, u32 *colors)
+void mnPlayers1PBonusSetDigitColors(SObj *sobj, u32 *colors)
 {
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -165,7 +165,7 @@ s32 mnPlayers1PBonusGetNumberDigitCount(s32 num, s32 digit_count_max)
 
     while (digit_count_curr > 0)
     {
-        s32 digit = (mn1PContinueGetPowerOf(10, digit_count_curr - 1) != 0) ? num / mn1PContinueGetPowerOf(10, digit_count_curr - 1) : 0;
+        s32 digit = (mnPlayers1PBonusGetPowerOf(10, digit_count_curr - 1) != 0) ? num / mnPlayers1PBonusGetPowerOf(10, digit_count_curr - 1) : 0;
 
         if (digit != 0)
         {
@@ -198,7 +198,7 @@ void mnPlayers1PBonusMakeNumber(GObj *gobj, s32 number, f32 x, f32 y, u32 *color
 		number = 0;
 	}
 	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[9], offsets[number % 10]));
-	mnPlayers1PBonusSetTextureColors(sobj, colors);
+	mnPlayers1PBonusSetDigitColors(sobj, colors);
 	left_x -= 8;
 	sobj->pos.x = left_x;
 	sobj->pos.y = y;
@@ -208,7 +208,7 @@ void mnPlayers1PBonusMakeNumber(GObj *gobj, s32 number, f32 x, f32 y, u32 *color
 		digit = (mnPlayers1PBonusGetPowerOf(10, i) != 0) ? number / mnPlayers1PBonusGetPowerOf(10, i) : 0;
 
 		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[9], offsets[digit % 10]));
-		mnPlayers1PBonusSetTextureColors(sobj, colors);
+		mnPlayers1PBonusSetDigitColors(sobj, colors);
 		left_x -= 8;
 		sobj->pos.x = left_x;
 		sobj->pos.y = y;
@@ -316,7 +316,6 @@ f32 mnPlayers1PBonusGetNextPortraitX(s32 portrait, f32 current_pos_x)
 	else return (current_pos_x + portrait_vel[portrait]) >= portrait_pos_x[portrait] ?
 	portrait_pos_x[portrait] :
 	current_pos_x + portrait_vel[portrait];
-	
 }
 
 // 0x80132144 - bruh
@@ -450,6 +449,7 @@ void mnPlayers1PBonusPortraitProcDisplay(GObj *gobj)
 	gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x30, 0x30, 0x30, 0xFF);
 	gDPSetCombineLERP(gSYTaskmanDLHeads[0]++, NOISE, TEXEL0, PRIMITIVE, TEXEL0, 0, 0, 0, TEXEL0, NOISE, TEXEL0, PRIMITIVE, TEXEL0,  0, 0, 0, TEXEL0);
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+
 	lbCommonDrawSObjNoAttr(gobj);
 }
 
@@ -531,7 +531,7 @@ void mnPlayers1PBonusMakePortrait(s32 portrait)
 	{
 		wallpaper_gobj = gcMakeGObjSPAfter(0, NULL, 25, GOBJ_PRIORITY_DEFAULT);
 		gcAddGObjDisplay(wallpaper_gobj, lbCommonDrawSObjAttr, 32, GOBJ_PRIORITY_DEFAULT, ~0);
-		wallpaper_gobj->user_data.p = portrait;
+		wallpaper_gobj->user_data.s = portrait;
 		gcAddGObjProcess(wallpaper_gobj, mnPlayers1PBonusPortraitProcUpdate, nGCProcessKindFunc, 1);
 
 		sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[4], &lMNPlayersPortraitsWallpaperSprite));

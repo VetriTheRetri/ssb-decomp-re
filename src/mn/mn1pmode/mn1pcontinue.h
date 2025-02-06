@@ -16,12 +16,12 @@ extern intptr_t lMN1PContinueRoom;                      // 0x0001E3D8
 extern intptr_t lMN1PContinueSpotlight;                 // 0x00021900
 extern intptr_t lMN1PContinueShadow;                    // 0x000224F8
 
-extern void mn1PContinueFuncLights(Gfx **dls);
-extern s32 mn1PContinueGetPowerOf(s32 base, s32 exp);
-extern void mn1PContinueScoreDigitInitSprite(SObj *sobj);
-extern s32 mn1PContinueGetScoreDigitCount(s32 points, s32 digit_count_max);
-extern Sprite* mn1PContinueScoreDigitGetSprite(s32 digit);
-extern void mn1PContinueMakeScoreDigits
+extern void mnPlayers1PGameContinueFuncLights(Gfx **dls);
+extern s32 mnPlayers1PGameContinueGetPowerOf(s32 base, s32 exp);
+extern void mnPlayers1PGameContinueScoreDigitInitSprite(SObj *sobj);
+extern s32 mnPlayers1PGameContinueGetScoreDigitCount(s32 points, s32 digit_count_max);
+extern Sprite* mnPlayers1PGameContinueScoreDigitGetSprite(s32 digit);
+extern void mnPlayers1PGameContinueMakeScoreDigits
 (
     GObj *gobj,
     s32 points,
@@ -32,41 +32,41 @@ extern void mn1PContinueMakeScoreDigits
     s32 digit_count,
     sb32 is_fixed_digit_count
 );
-extern void mn1PContinueMakeScoreDisplay(s32 points);
-extern void mn1PContinueSetFighterScale(GObj *gobj, s32 fkind);
-extern void mn1PContinueMakeFighter(s32 fkind);
-extern void mn1PContinueRoomFadeOutProcDisplay(GObj *gobj);
-extern void mn1PContinueMakeRoomFadeOut(void);
-extern void mn1PContinueRoomFadeInProcDisplay(GObj *gobj);
-extern void mn1PContinueMakeRoomFadeIn(void);
-extern void mn1PContinueSpotlightFadeProcDisplay(GObj *gobj);
-extern void mn1PContinueMakeSpotlightFade(void);
-extern void mn1PContinueMakeRoom(void);
-extern void mn1PContinueMakeSpotlight(void);
-extern void mn1PContinueMakeContinue(void);
+extern void mnPlayers1PGameContinueMakeScoreDisplay(s32 points);
+extern void mnPlayers1PGameContinueSetFighterScale(GObj *gobj, s32 fkind);
+extern void mnPlayers1PGameContinueMakeFighter(s32 fkind);
+extern void mnPlayers1PGameContinueRoomFadeOutProcDisplay(GObj *gobj);
+extern void mnPlayers1PGameContinueMakeRoomFadeOut(void);
+extern void mnPlayers1PGameContinueRoomFadeInProcDisplay(GObj *gobj);
+extern void mnPlayers1PGameContinueMakeRoomFadeIn(void);
+extern void mnPlayers1PGameContinueSpotlightFadeProcDisplay(GObj *gobj);
+extern void mnPlayers1PGameContinueMakeSpotlightFade(void);
+extern void mnPlayers1PGameContinueMakeRoom(void);
+extern void mnPlayers1PGameContinueMakeSpotlight(void);
+extern void mnPlayers1PGameContinueMakeContinue(void);
 extern void MN1PContinueOptionSetHighlightColors(GObj *gobj, s32 option);
 extern void MN1PContinueOptionProcUpdate(GObj *gobj);
-extern void mn1PContinueMakeOptions(void);
-extern void mn1PContinueCursorSetPosition(GObj *gobj, s32 option);
-extern void mn1PContinueCursorProcUpdate(GObj *gobj);
-extern void mn1PContinueMakeCursor(void);
-extern void mn1PContinueGameOverInitSprites(SObj *sobj);
-extern void mn1PContinueGameOverTextStepColors(GObj *gobj);
-extern void mn1PContinueMakeGameOverText(void);
-extern void mn1PContinueGameOverProcUpdate(GObj *gobj);
-extern void mn1PContinueMakeGameOver(void);
-extern void mn1PContinueMakeRoomFadeInCamera(void);
-extern void mn1PContinueMakeSpotlightFadeCamera(void);
-extern void mn1PContinueMakeRoomFadeOutCamera(void);
-extern void mn1PContinueSetupCamera(CObj *cobj);
-extern void mn1PContinueMakeMainCamera(void);
-extern void mn1PContinueMakeRoomCamera(void);
-extern void mn1PContinueMakeSpotlightCamera(void);
-extern void mn1PContinueMakeTextCamera(void);
-extern void mn1PContinueInitVars(void);
-extern void mn1PContinueUnused0x80133990(void);
-extern void mn1PContinueProcRun(GObj *gobj);
-extern void mn1PContinueFuncStart(void);
-extern void mn1PContinueStartScene(void);
+extern void mnPlayers1PGameContinueMakeOptions(void);
+extern void mnPlayers1PGameContinueCursorSetPosition(GObj *gobj, s32 option);
+extern void mnPlayers1PGameContinueCursorProcUpdate(GObj *gobj);
+extern void mnPlayers1PGameContinueMakeCursor(void);
+extern void mnPlayers1PGameContinueGameOverInitSprites(SObj *sobj);
+extern void mnPlayers1PGameContinueGameOverTextStepColors(GObj *gobj);
+extern void mnPlayers1PGameContinueMakeGameOverText(void);
+extern void mnPlayers1PGameContinueGameOverProcUpdate(GObj *gobj);
+extern void mnPlayers1PGameContinueMakeGameOver(void);
+extern void mnPlayers1PGameContinueMakeRoomFadeInCamera(void);
+extern void mnPlayers1PGameContinueMakeSpotlightFadeCamera(void);
+extern void mnPlayers1PGameContinueMakeRoomFadeOutCamera(void);
+extern void mnPlayers1PGameContinueSetupCamera(CObj *cobj);
+extern void mnPlayers1PGameContinueMakeMainCamera(void);
+extern void mnPlayers1PGameContinueMakeRoomCamera(void);
+extern void mnPlayers1PGameContinueMakeSpotlightCamera(void);
+extern void mnPlayers1PGameContinueMakeTextCamera(void);
+extern void mnPlayers1PGameContinueInitVars(void);
+extern void mnPlayers1PGameContinueUnused0x80133990(void);
+extern void mnPlayers1PGameContinueProcRun(GObj *gobj);
+extern void mnPlayers1PGameContinueFuncStart(void);
+extern void mnPlayers1PGameContinueStartScene(void);
 
 #endif

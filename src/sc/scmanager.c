@@ -14,9 +14,7 @@
 
 extern void mnVSModeStartScene();
 extern void mnPlayersVSStartScene();
-extern void mn1PGamePlayersStartScene();
-extern void mnPlayers1PTrainingStartScene();
-extern void mnPlayers1PBonusStartScene();
+extern void mnPlayers1PGameGamePlayersStartScene();
 
 // // // // // // // // // // // //
 //                               //
@@ -919,7 +917,7 @@ void scManagerRunLoop(sb32 arg)
 			case 8:
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[18]);
-				mn1PModeStartScene();
+				mnPlayers1PGameModeStartScene();
 				break;
 
 			case nSCKindOption:
@@ -1154,7 +1152,7 @@ void scManagerRunLoop(sb32 arg)
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[27]);
-				mn1PGamePlayersStartScene();
+				mnPlayers1PGameGamePlayersStartScene();
 				break;
 
 			case nSCKindPlayers1PTraining:
@@ -1200,7 +1198,7 @@ void scManagerRunLoop(sb32 arg)
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[55]);
-				mn1PContinueStartScene();
+				mnPlayers1PGameContinueStartScene();
 				break;
 
 			case nSCKind1PScoreUnk:

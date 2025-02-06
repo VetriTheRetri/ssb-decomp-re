@@ -98,7 +98,7 @@ u8 D_ovl26_8013BD84[8];
 s32 gMnBattleControllerOrderArray[4];
 
 // 0x8013BDA0 when start is pressed when ready to fight, timer counts down to delay leaving CSS
-s32 gMnBattleStartDelayTimer;
+s32 gMnBattleStartProceedWait;
 
 // 0x8013BDA4;
 sb32 gMnBattleIsStart;
@@ -134,7 +134,7 @@ s32 D_ovl26_8013BDC8;
 s32 gMnBattleTotalTimeTics;
 
 // 0x8013BDD0 frames to wait until exiting the CSS
-s32 gMnBattleMaxTotalTimeTics;
+s32 gMnBattleReturnTic;
 
 // 0x8013BDD4
 u8 D_ovl26_8013BDD4[0x2d0];
@@ -409,7 +409,7 @@ void mnPlayersVSMakePortraitShadow(s32 portrait)
 	texture_sobj->pos.y = (f32)(((portrait >= 6 ? 1 : 0) * 0x2B) + 0x24);
 
 	mnPlayersVSSetPortraitWallpaperPosition(texture_sobj, portrait);
-	texture_gobj->user_data.p = portrait;
+	texture_gobj->user_data.s = portrait;
 
 	// portrait
 	texture_gobj = gcMakeGObjSPAfter(0U, NULL, 0x12U, 0x80000000U);
@@ -421,7 +421,7 @@ void mnPlayersVSMakePortraitShadow(s32 portrait)
 	texture_sobj->sprite.attr = texture_sobj->sprite.attr & ~SP_FASTCOPY;
 	texture_sobj->sprite.attr = texture_sobj->sprite.attr | SP_TRANSPARENT;
 
-	texture_gobj->user_data.p = portrait;
+	texture_gobj->user_data.s = portrait;
 	mnPlayersVSSetPortraitWallpaperPosition(texture_sobj, portrait);
 
 	// question mark
@@ -440,7 +440,7 @@ void mnPlayersVSMakePortraitShadow(s32 portrait)
 	texture_sobj->sprite.green = 0xB9;
 	texture_sobj->sprite.blue = 0xA9;
 
-	texture_gobj->user_data.p = portrait;
+	texture_gobj->user_data.s = portrait;
 	mnPlayersVSSetPortraitWallpaperPosition(texture_sobj, portrait);
 }
 
@@ -463,7 +463,7 @@ void mnPlayersVSMakePortrait(s32 portrait)
 		// portrait bg (fire)
 		portrait_bg_gobj = gcMakeGObjSPAfter(0U, NULL, 0x1DU, 0x80000000U);
 		gcAddGObjDisplay(portrait_bg_gobj, lbCommonDrawSObjAttr, 0x24U, GOBJ_PRIORITY_DEFAULT, ~0);
-		portrait_bg_gobj->user_data.p = portrait;
+		portrait_bg_gobj->user_data.s = portrait;
 		gcAddGObjProcess(portrait_bg_gobj, mnPlayersVSPortraitProcUpdate, 1, 1);
 
 		texture_sobj
@@ -479,7 +479,7 @@ void mnPlayersVSMakePortrait(s32 portrait)
 			= lbCommonMakeSObjForGObj(portrait_gobj, lbRelocGetFileData(void*, gFile013, portrait_offsets[mnPlayersVSGetFighterKind(portrait)]));
 		texture_sobj->sprite.attr = texture_sobj->sprite.attr & ~SP_FASTCOPY;
 		texture_sobj->sprite.attr = texture_sobj->sprite.attr | SP_TRANSPARENT;
-		portrait_gobj->user_data.p = portrait;
+		portrait_gobj->user_data.s = portrait;
 
 		// this conditionally draws a big red box with an X in it, but this
 		// check always fails
@@ -979,7 +979,7 @@ s32 mnPow(s32 num, s32 pow)
 }
 
 // 0x80133ABC
-void mnSetTextureColors(SObj* sobj, u32 colors[])
+void mnSetTextureColors(SObj* sobj, u32 *colors)
 {
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -1006,7 +1006,7 @@ s32 mnGetNumberOfDigits(s32 num, s32 maxDigits)
 }
 
 // 0x80133BB0
-void mnCreateNumber(GObj* number_gobj, s32 num, f32 x, f32 y, s32 colors[], s32 maxDigits, sb32 pad)
+void mnCreateNumber(GObj* number_gobj, s32 num, f32 x, f32 y, u32 *colors, s32 maxDigits, sb32 pad)
 {
 	intptr_t number_offsets[10] = {
 
@@ -1044,11 +1044,7 @@ void mnCreateNumber(GObj* number_gobj, s32 num, f32 x, f32 y, s32 colors[], s32 
 // 0x80133E28
 void mnDrawTimerValue(s32 num)
 {
-	s32 colors[6] = {
-
-		0x00000032, 0x0000001C, 0x0000000E,
-		0x000000FF, 0x000000FF, 0x000000FF
-	};
+	u32 colors[/* */] = { 0x32, 0x1C, 0x0E, 0xFF, 0xFF, 0xFF };
 	SObj* infinity_sobj;
 
 	while (SObjGetStruct(gMnBattlePickerGObj)->next != NULL)
@@ -1100,11 +1096,7 @@ void mnDrawTimerPicker(s32 num)
 // 0x80134094
 void mnDrawStockValue(s32 num)
 {
-	s32 colors[6] = {
-
-		0x00000032, 0x0000001C, 0x0000000E,
-		0x000000FF, 0x000000FF, 0x000000FF
-	};
+	u32 colors[/* */] = { 0x32, 0x1C, 0x0E, 0xFF, 0xFF, 0xFF };
 
 	while (SObjGetStruct(gMnBattlePickerGObj)->next != NULL)
 		gcEjectSObj(SObjGetStruct(gMnBattlePickerGObj)->next);
@@ -3916,7 +3908,7 @@ void mnPlayersVSPauseSlotProcesses()
 }
 
 // 0x8013A920
-void mnPlayersVSMain(s32 arg0)
+void mnPlayersVSMain(GObj *gobj)
 {
 	s32 max_stage_id;
 	s32 i;
@@ -3925,7 +3917,7 @@ void mnPlayersVSMain(s32 arg0)
 	gMnBattleTotalTimeTics += 1;
 	mnSyncControllerOrderArray();
 
-	if (gMnBattleTotalTimeTics == gMnBattleMaxTotalTimeTics)
+	if (gMnBattleTotalTimeTics == gMnBattleReturnTic)
 	{
 		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 		gSCManagerSceneData.scene_curr = 1;
@@ -3937,13 +3929,13 @@ void mnPlayersVSMain(s32 arg0)
 	}
 
 	if (scSubsysControllerCheckNoInputAll() == 0)
-		gMnBattleMaxTotalTimeTics = gMnBattleTotalTimeTics + 0x4650;
+		gMnBattleReturnTic = gMnBattleTotalTimeTics + 0x4650;
 
 	if (gMnBattleIsStart)
 	{
-		gMnBattleStartDelayTimer--;
+		gMnBattleStartProceedWait--;
 
-		if (gMnBattleStartDelayTimer == 0)
+		if (gMnBattleStartProceedWait == 0)
 		{
 			gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 
@@ -3973,7 +3965,7 @@ void mnPlayersVSMain(s32 arg0)
 			{
 				func_800269C0_275C0(nSYAudioVoicePublicCheer);
 				mnSetUnselectedPanelsToNA();
-				gMnBattleStartDelayTimer = 0x1E;
+				gMnBattleStartProceedWait = 0x1E;
 				gMnBattleIsStart = TRUE;
 				mnPlayersVSPauseSlotProcesses();
 			}
@@ -4141,7 +4133,7 @@ void mnPlayersVSLoadMatchInfo()
 	s32 i;
 
 	gMnBattleTotalTimeTics = 0;
-	gMnBattleMaxTotalTimeTics = gMnBattleTotalTimeTics + 0x4650;
+	gMnBattleReturnTic = gMnBattleTotalTimeTics + I_MIN_TO_TICS(5);
 	gMnBattleTimerValue = gSCManagerTransferBattleState.time_limit;
 	gMnBattleStockValue = gSCManagerTransferBattleState.stocks;
 	gMnBattleIsStart = FALSE;

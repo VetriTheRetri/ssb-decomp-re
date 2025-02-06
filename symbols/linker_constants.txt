@@ -23,6 +23,8 @@ lFTEmblemSpritesFZeroSprite = 0x000032B8;
 lFTEmblemSpritesPMonstersSprite = 0x00003918;
 lFTEmblemSpritesMotherSprite = 0x00003F78;
 
+lFTStocksZakoSprite = 0x00000080;
+
 lFTEmblemModelsMarioMObjSub = 0x00000000;
 lFTEmblemModelsMarioDObjDesc = 0x00000990;
 lFTEmblemModelsMarioMatAnimJoint = 0x00000A14;

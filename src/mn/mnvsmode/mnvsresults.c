@@ -1146,7 +1146,7 @@ void mnVSResultsMakeString(const char *str, f32 x, f32 y, s32 color_id, f32 scal
 	SObj *sobj;
 	s32 i;
 	f32 current_x;
-	s32 char_index;
+	s32 char_id;
 
 	f32 widths[/* */] =
 	{
@@ -1193,19 +1193,19 @@ void mnVSResultsMakeString(const char *str, f32 x, f32 y, s32 color_id, f32 scal
 		}
 		else
 		{
-			char_index = mnVSResultsGetCharacterID(str[i]);
+			char_id = mnVSResultsGetCharacterID(str[i]);
 
-			if (char_index == 0x1C) // space
+			if (char_id == 0x1C) // space
 			{
 				current_x += 10.0F * scale;
 			}
 			else
 			{
-				sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSResultsFiles[6], offsets[char_index]));
+				sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSResultsFiles[6], offsets[char_id]));
 				sobj->sprite.scalex = scale;
 				sobj->pos.x = current_x;
 
-				if (char_index == 0x1B) // .
+				if (char_id == 0x1B) // .
 				{
 					sobj->pos.y = y + 26.0F;
 				}
@@ -1220,7 +1220,7 @@ void mnVSResultsMakeString(const char *str, f32 x, f32 y, s32 color_id, f32 scal
 				sobj->sprite.green = colors[color_id].env.g;
 				sobj->sprite.blue = colors[color_id].env.b;
 
-				current_x += widths[char_index] * scale;
+				current_x += widths[char_id] * scale;
 			}
 		}
 	}

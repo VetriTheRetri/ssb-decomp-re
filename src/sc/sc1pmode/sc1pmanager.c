@@ -396,7 +396,7 @@ void sc1PManagerUpdateScene(void)
                 syDmaLoadOverlay(&dSC1PManagerSubsysOverlay);
                 syDmaLoadOverlay(&dSC1PManager1PContinueOverlay);
 
-                mn1PContinueStartScene();
+                mnPlayers1PGameContinueStartScene();
 
                 if (gSCManagerSceneData.is_continue != FALSE)
                 {

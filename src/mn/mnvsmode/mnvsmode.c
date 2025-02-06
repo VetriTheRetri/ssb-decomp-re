@@ -105,7 +105,7 @@ s32 sMNVSModeChangeWait;
 s32 sMNVSModeTotalTimeTics;
 
 // 0x80134984
-s32 sMNVSModeMaxTotalTimeTics;
+s32 sMNVSModeReturnTic;
 
 // 0x80134988
 LBFileNode sMNVSModeStatusBuffer[24];
@@ -988,7 +988,7 @@ void mnVSModeFuncStartVars()
     sMNVSModeInputDirection = nMNVSModeInputDirectionNone;
     sMNVSModeTotalTimeTics = 0;
     sMNVSModeExitInterrupt = 0;
-    sMNVSModeMaxTotalTimeTics = sMNVSModeTotalTimeTics + I_MIN_TO_TICS(5);
+    sMNVSModeReturnTic = sMNVSModeTotalTimeTics + I_MIN_TO_TICS(5);
     sMNVSModeTimeStockArrowBlinkTimer = 0;
     sMNVSModeRuleArrowBlinkTimer = 0;
 }
@@ -1139,7 +1139,7 @@ void mnVSModeMain(GObj *gobj)
 
     if (sMNVSModeTotalTimeTics >= 10)
     {
-        if (sMNVSModeTotalTimeTics == sMNVSModeMaxTotalTimeTics)
+        if (sMNVSModeTotalTimeTics == sMNVSModeReturnTic)
         {
             gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
             gSCManagerSceneData.scene_curr = nSCKindTitle;
@@ -1151,7 +1151,7 @@ void mnVSModeMain(GObj *gobj)
         }
         if (scSubsysControllerCheckNoInputAll() == FALSE)
         {
-            sMNVSModeMaxTotalTimeTics = sMNVSModeTotalTimeTics + I_MIN_TO_TICS(5);
+            sMNVSModeReturnTic = sMNVSModeTotalTimeTics + I_MIN_TO_TICS(5);
         }
         if (sMNVSModeExitInterrupt != 0)
         {

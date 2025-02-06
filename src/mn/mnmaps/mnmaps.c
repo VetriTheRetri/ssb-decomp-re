@@ -120,7 +120,7 @@ s32 sMNMapsTotalTimeTics;
 s32 sMNMapsScrollWait;
 
 // 0x80134C2C - Frames to wait until exiting Stage Select
-s32 sMNMapsMaxTotalTimeTics;
+s32 sMNMapsReturnTic;
 
 // 0x80134C30
 LBFileNode sMNMapsStatusBuffer[30];
@@ -1324,7 +1324,7 @@ void mnMapsInitVars(void)
 	sMNMapsUnlockedMask = gSCManagerBackupData.unlock_mask;
 	sMNMapsHeapID = 1;
 	sMNMapsTotalTimeTics = 0;
-	sMNMapsMaxTotalTimeTics = sMNMapsTotalTimeTics + I_MIN_TO_TICS(5);
+	sMNMapsReturnTic = sMNMapsTotalTimeTics + I_MIN_TO_TICS(5);
 }
 
 // 0x80133D60
@@ -1344,7 +1344,7 @@ void mnMapsProcRun(GObj *gobj)
 
 	if (sMNMapsTotalTimeTics >= 10)
 	{
-		if (sMNMapsTotalTimeTics == sMNMapsMaxTotalTimeTics)
+		if (sMNMapsTotalTimeTics == sMNMapsReturnTic)
 		{
 			gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 			gSCManagerSceneData.scene_curr = nSCKindTitle;
@@ -1355,7 +1355,7 @@ void mnMapsProcRun(GObj *gobj)
 		}
 		if (scSubsysControllerCheckNoInputAll() == FALSE)
 		{
-			sMNMapsMaxTotalTimeTics = sMNMapsTotalTimeTics + I_MIN_TO_TICS(5);
+			sMNMapsReturnTic = sMNMapsTotalTimeTics + I_MIN_TO_TICS(5);
 		}
 		if (sMNMapsScrollWait != 0)
 		{

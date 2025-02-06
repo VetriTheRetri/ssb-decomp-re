@@ -8,7 +8,7 @@
 
 extern void mnPlayers1PBonusFuncLights(Gfx **dls);
 extern s32 mnPlayers1PBonusGetPowerOf(s32 base, s32 exp);
-extern void mnPlayers1PBonusSetTextureColors(SObj *sobj, u32 *colors);
+extern void mnPlayers1PBonusSetDigitColors(SObj *sobj, u32 *colors);
 extern s32 mnPlayers1PBonusGetNumberDigitCount(s32 num, s32 digit_count_max);
 extern void mnPlayers1PBonusMakeNumber(GObj *gobj, s32 number, f32 x, f32 y, u32 *colors, s32 digit_count_max, sb32 is_fixed_digit_count);
 extern void mnPlayers1PBonusSelectFighterPuck(s32 player, s32 select_button);

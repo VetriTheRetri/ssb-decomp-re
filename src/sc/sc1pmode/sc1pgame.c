@@ -19,7 +19,6 @@ extern intptr_t D_NF_000000C8;
 extern intptr_t D_NF_000000E6;
 extern intptr_t D_NF_00000019;
 extern intptr_t D_NF_00000068;
-extern intptr_t D_NF_00000080;
 extern intptr_t D_NF_00004D48;
 extern intptr_t D_NF_00006010;
 extern intptr_t D_NF_00006450;
@@ -617,7 +616,7 @@ SC1PGameFighter sSC1PGamePlayerSetups[GMCOMMON_PLAYERS_MAX];
 s32 sSC1PGameEnemyKirbyCostume;
 
 // 0x80193064 - Base of Fighting Polygon Team stock sprite file?
-void *sSC1PGameZakoStockSprite;
+void *sSC1PGameZakoStockFile;
 
 // 0x80193068
 LBFileNode sSC1PGameStatusBuffer[100];
@@ -1651,7 +1650,7 @@ void sc1PGameTeamStockDisplayProcDisplay(GObj *interface_gobj)
                         break;
 
                     case nSC1PGameStageZako:
-                        sobj->sprite = *lbRelocGetFileData(Sprite*, sSC1PGameZakoStockSprite, &D_NF_00000080);
+                        sobj->sprite = *lbRelocGetFileData(Sprite*, sSC1PGameZakoStockFile, &lFTStocksZakoSprite);
                         break;
                     }
                     sobj->sprite.attr &= ~SP_HIDDEN;
@@ -1699,7 +1698,7 @@ void sc1PGameInitTeamStockDisplay(void)
         goto make_gobj;
 
     case nSC1PGameStageZako:
-        sSC1PGameZakoStockSprite = lbRelocGetExternHeapFile
+        sSC1PGameZakoStockFile = lbRelocGetExternHeapFile
         (
             (u32)&lFTStocksZakoFileID,
             syTaskmanMalloc
@@ -1708,7 +1707,7 @@ void sc1PGameInitTeamStockDisplay(void)
                 0x10
             )
         );
-        sprite = lbRelocGetFileData(Sprite*, sSC1PGameZakoStockSprite, &D_NF_00000080);
+        sprite = lbRelocGetFileData(Sprite*, sSC1PGameZakoStockFile, &lFTStocksZakoSprite);
 
         sprite->attr = SP_TEXSHUF | SP_TRANSPARENT;
 

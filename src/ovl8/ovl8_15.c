@@ -56,18 +56,71 @@ void func_ovl8_8037F4F4(dbUnknown5* arg0, s32 arg1)
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_15/func_ovl8_8037F590.s")
+// 0x8037F590
+void func_ovl8_8037F590(dbUnknown5* arg0)
+{
+    s16 sp38[3];
+    s16 sp30[3];
+    s32 sp2C;
+    dbUnknownLinkStruct* temp_a2;
+    dbFunction* temp_v1;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_15/func_ovl8_8037F654.s")
+    temp_a2 = arg0->unk_dbunk5_0x38;
+    temp_v1 = temp_a2->db_func;
+    sp2C = temp_v1[23].unk_dbfunc_0x4(temp_v1[23].unk_dbfunc_0x0 + (uintptr_t)temp_a2);
 
+    temp_a2 = arg0->unk_dbunk5_0x38;
+    temp_v1 = temp_a2->db_func;
+    temp_v1[21].unk_dbfunc_0x4(temp_v1[21].unk_dbfunc_0x0 + (uintptr_t)temp_a2, &sp38);
+
+    func_ovl8_8037B46C(sp2C, &sp38, arg0->unk_dbunk5_0x48, &arg0->unk_dbunk5_0x38->unk_dbunkstruct_0x18);
+
+    temp_v1 = arg0->unk_dbunk5_0x30;
+    temp_v1[26].unk_dbfunc_0x4(temp_v1[26].unk_dbfunc_0x0 + (uintptr_t)arg0, &sp30);
+
+    sp30[0] += sp38[0];
+    sp30[1] += sp38[1];
+
+    func_ovl8_8037B46C(sp2C, &sp30, arg0->unk_dbunk5_0x44, &arg0->unk_dbunk5_0x38->unk_dbunkstruct_0x18);
+}
+
+// 0x8037F654
+void func_ovl8_8037F654(dbTestMenu* arg0, s16 arg1)
+{
+    arg0->unk_dbtestmenu_0x14.unk_dbunkstruct_0x2C = arg1;
+}
+
+// 0x8037F668
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_15/func_ovl8_8037F668.s")
 
+// 0x8037F784
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_15/func_ovl8_8037F784.s")
 
+// 0x8037F80C
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_15/func_ovl8_8037F80C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_15/func_ovl8_8037FBC0.s")
+// 0x8037FBC0
+s32 func_ovl8_8037FBC0(s32 arg0, s32 arg1)
+{
+    s32 temp_v0;
+    s32 var_v1;
 
+    temp_v0 = func_ovl8_803717A0(0xCC);
+
+    if (temp_v0 != 0)
+    {
+        func_ovl8_8037FCD8(temp_v0, 0, 0, arg1, arg0);
+        var_v1 = temp_v0;
+    }
+    else
+    {
+        var_v1 = 0;
+    }
+
+    return var_v1;
+}
+
+// 0x8037FC1C
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_15/func_ovl8_8037FC1C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_15/func_ovl8_8037FCD8.s")

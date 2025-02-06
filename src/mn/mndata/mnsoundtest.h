@@ -21,7 +21,7 @@ extern intptr_t lMNSoundTestAButtonSprite;           // 0x00000958
 extern intptr_t lMNSoundTestSoundTextSprite;         // 0x000009C0
 extern intptr_t lMNSoundTestBButtonSprite;           // 0x00000A88
 extern intptr_t lMNSoundTestVoiceTextSprite;         // 0x00000E48
-extern intptr_t lMNSoundTestOptionRoundCorner;       // 0x00001138
+extern intptr_t lMNSoundTestOptionOutline;       // 0x00001138
 extern intptr_t lMNSoundTestBFunctionTextSprite;     // 0x00001208
 extern intptr_t lMNSoundTestStartFunctionTextSprite; // 0x00001348
 extern intptr_t lMNSoundTestAFunctionTextSprite;     // 0x00001450

@@ -8,14 +8,41 @@
 // Externs
 extern f32 dSCSubsysFighterScales[12]; // dSCSubsysFighterScales
 
+// Offsets
+extern intptr_t lMNCommonColonSprite; // file 0x000 image offset for colon
+extern intptr_t lMNPlayersCommonGateCPSprite;		  // file 0x011 image offset for CP type image
+extern intptr_t lMNPlayersCommonHandicapSprite;		  // file 0x011 image offset for Handicap image
+extern intptr_t lMNPlayersCommonLevelSprite;	  // file 0x011 image offset for CPU Level image
+extern intptr_t lMNPlayersCommonStartSprite;		  // Press Start's "Start" texture
+extern intptr_t lMNPlayersCommonPressSprite;		  // Press Start's "Press" texture
+extern intptr_t lMNPlayersCommonSymbolInfiniteSprite;		  // file 0x011 image offset for infinity symbol
+extern intptr_t lMNPlayersCommonGameRuleTimeSprite;	  // file 0x011 image offset for Time picker texture
+extern intptr_t FILE_011_PICKER_STOCK_IMAGE_OFFSET;	  // file 0x011 image offset for Stock picker texture
+extern intptr_t FILE_011_CURSOR_POINTER_IMAGE_OFFSET; // file 0x011 image offset for pointer cursor
+extern intptr_t FILE_011_PANEL_DOOR_L_IMAGE_OFFSET;
+extern intptr_t FILE_011_PANEL_DOOR_R_IMAGE_OFFSET;
+extern intptr_t lMNPlayersCommonArrowLeftSprite;			 // file 0x011 image offset for left arrow
+extern intptr_t lMNPlayersCommonArrowRightSprite;			 // file 0x011 image offset for right arrow
+extern intptr_t lMNPlayersCommonReadySprite;	 // Ready to Fight banner text
+extern intptr_t lMNPlayersCommonReadyBannerSprite; // Ready to Fight banner bg
+extern intptr_t FILE_011_PANEL_IMAGE_OFFSET;
+extern intptr_t lMNPlayersCommonBackSprite; // file 0x011 image offset for
+extern intptr_t lMNPlayersPortraitsCrossSprite;					 // file 0x013 image offset
+extern intptr_t lMNPlayersPortraitsFlashSprite;					 // white square
+extern intptr_t lMNPlayersPortraitsQuestionSprite; // file 0x013 image offset for portrait question mark image
+extern intptr_t lMNPlayersPortraitsWallpaperSprite;		 // file 0x013 image offset for portrait bg (fire) image
+extern intptr_t lMNSelectCommonWallpaperSprite; // file 0x015 image offset for background tile
+extern intptr_t lMNPlayersSpotlightMObjSub; // AObj? for white circle
+extern intptr_t lMNPlayersSpotlightDObjDesc; // DObjDesc for white circle
+
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 // Forward declarations
 sb32 mnPlayersVSCheckCostumeUsed(s32 fkind, s32 player, s32 costume);
 void mnPlayersVSUpdateCursor(GObj* cursor_gobj, s32 player, s32 cursor_status);
-s32 mnPlayersVSUpdateCursorPlacementDLLinks(s32 player, s32 held_puck_id); // doesn't actually return anything but required to match
+s32 mnPlayersVSUpdateCursorPlacementPriorities(s32 player, s32 held_puck_id); // doesn't actually return anything but required to match
 s32 mnCheckCPUHandicapRightArrowPress(GObj* cursor_gobj, s32 player);
 s32 mnCheckCPUHandicapLeftArrowPress(GObj* cursor_gobj, s32 player);
-void mnPlayersVSUpdateCursorGrabDLLinks(s32 player, s32 puck_id);
+void mnPlayersVSUpdateCursorGrabPriorities(s32 player, s32 puck_id);
 void mnPlayersVSUpdatePuck(GObj* puck_gobj, s32 puck_index);
 void mnReplaceFighterNameWithHandicapCPULevel(s32 player);
 void mnPlayersVSAnnounceFighter(s32 player, s32 panel_id);
@@ -197,7 +224,7 @@ void mnPlayersVSSelectFighterPuck(s32 player, s32 select_button)
 
 	gMnBattlePanels[held_player].is_selected = TRUE;
 
-	mnPlayersVSUpdateCursorPlacementDLLinks(player, held_player);
+	mnPlayersVSUpdateCursorPlacementPriorities(player, held_player);
 
 	gMnBattlePanels[held_player].holder_player = 4;
 	gMnBattlePanels[player].cursor_status = nMNPlayersCursorStatusHover;
@@ -1026,7 +1053,7 @@ void mnDrawTimerValue(s32 num)
 	if (num == 100)
 	{
 		infinity_sobj = lbCommonMakeSObjForGObj(gMnBattlePickerGObj,
-											   lbRelocGetFileData(void*, gFile011, &relocFile17InfinityDarkSpriteOffset));
+											   lbRelocGetFileData(void*, gFile011, &lMNPlayersCommonSymbolInfiniteSprite));
 		infinity_sobj->pos.x = 194.0F;
 		infinity_sobj->pos.y = 24.0F;
 		infinity_sobj->envcolor.r = colors[0];
@@ -1055,7 +1082,7 @@ void mnMakeTimeSelect(s32 num)
 		gcEjectGObj(gMnBattlePickerGObj);
 
 	picker_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x19, 0x80000000, lbCommonDrawSObjAttr, 0x1A, GOBJ_PRIORITY_DEFAULT, ~0,
-									 lbRelocGetFileData(void*, gFile011, &relocFile17TimeSelectorSpriteOffset), 1, NULL, 1);
+									 lbRelocGetFileData(void*, gFile011, &lMNPlayersCommonGameRuleTimeSprite), 1, NULL, 1);
 	gMnBattlePickerGObj = picker_gobj;
 
 	SObjGetStruct(picker_gobj)->pos.x = 140.0F;
@@ -1809,7 +1836,7 @@ void mnHandlePlayerTypeButtonPress(s32 player)
 			gMnBattlePanels[gMnBattlePanels[player].held_player].is_selected = TRUE;
 			gMnBattlePanels[gMnBattlePanels[player].held_player].unk_0x88 = TRUE;
 
-			mnPlayersVSUpdateCursorPlacementDLLinks(player, gMnBattlePanels[player].held_player);
+			mnPlayersVSUpdateCursorPlacementPriorities(player, gMnBattlePanels[player].held_player);
 			mnReplaceFighterNameWithHandicapCPULevel(gMnBattlePanels[player].held_player);
 			mnPlayersVSMakePortraitFlash(gMnBattlePanels[player].held_player);
 		}
@@ -1820,7 +1847,7 @@ void mnHandlePlayerTypeButtonPress(s32 player)
 		gMnBattlePanels[player].holder_player = player;
 		gMnBattlePanels[player].held_player = player;
 
-		mnPlayersVSUpdateCursorGrabDLLinks(player, player);
+		mnPlayersVSUpdateCursorGrabPriorities(player, player);
 
 		gMnBattlePanels[player].is_cursor_adjusting = FALSE;
 
@@ -1847,7 +1874,7 @@ void mnHandlePlayerTypeButtonPress(s32 player)
 			gMnBattlePanels[gMnBattlePanels[player].held_player].is_selected = TRUE;
 			gMnBattlePanels[gMnBattlePanels[player].held_player].unk_0x88 = TRUE;
 
-			mnPlayersVSUpdateCursorPlacementDLLinks(player, gMnBattlePanels[player].held_player);
+			mnPlayersVSUpdateCursorPlacementPriorities(player, gMnBattlePanels[player].held_player);
 			mnReplaceFighterNameWithHandicapCPULevel(gMnBattlePanels[player].held_player);
 			mnPlayersVSMakePortraitFlash(gMnBattlePanels[player].held_player);
 		}
@@ -1856,7 +1883,7 @@ void mnHandlePlayerTypeButtonPress(s32 player)
 		gMnBattlePanels[player].holder_player = 4;
 		gMnBattlePanels[player].held_player = -1;
 
-		mnPlayersVSUpdateCursorPlacementDLLinks(4U, player);
+		mnPlayersVSUpdateCursorPlacementPriorities(4U, player);
 
 		gMnBattlePanels[player].unk_0x88 = TRUE;
 
@@ -1900,7 +1927,7 @@ void mnHandlePlayerTypeButtonPress(s32 player)
 			gMnBattlePanels[gMnBattlePanels[player].held_player].holder_player = 4;
 			gMnBattlePanels[gMnBattlePanels[player].held_player].is_selected = TRUE;
 			gMnBattlePanels[gMnBattlePanels[player].held_player].unk_0x88 = TRUE;
-			mnPlayersVSUpdateCursorPlacementDLLinks(player, gMnBattlePanels[player].held_player);
+			mnPlayersVSUpdateCursorPlacementPriorities(player, gMnBattlePanels[player].held_player);
 			mnReplaceFighterNameWithHandicapCPULevel(gMnBattlePanels[player].held_player);
 			mnPlayersVSMakePortraitFlash(gMnBattlePanels[player].held_player);
 		}
@@ -2438,7 +2465,7 @@ sb32 mnPlayersVSSelectChar(GObj* cursor_gobj, s32 player, s32 arg2, s32 select_b
 }
 
 // 0x80137234
-void mnPlayersVSUpdateCursorGrabDLLinks(s32 player, s32 puck_id)
+void mnPlayersVSUpdateCursorGrabPriorities(s32 player, s32 puck_id)
 {
 	s32 diplay_orders[4] = {
 
@@ -2465,7 +2492,7 @@ void mnPlayersVSUpdateCursorGrabDLLinks(s32 player, s32 puck_id)
 }
 
 // 0x80137390
-s32 mnPlayersVSUpdateCursorPlacementDLLinks(s32 player, s32 held_puck_id)
+s32 mnPlayersVSUpdateCursorPlacementPriorities(s32 player, s32 held_puck_id)
 {
 	s32 held_orders[4] = {
 
@@ -2546,7 +2573,7 @@ void mnPlayersVSSetCursorGrab(s32 player, s32 held_player)
 	held_puck_pslot->unk_0x88 = FALSE;
 
 	mnPlayersVSUpdateFighter(held_player);
-	mnPlayersVSUpdateCursorGrabDLLinks(player, held_player);
+	mnPlayersVSUpdateCursorGrabPriorities(player, held_player);
 	mnPlayersVSSetCursorPuckOffset(player);
 	mnPlayersVSUpdateCursor(pslot->cursor, player, pslot->cursor_status);
 

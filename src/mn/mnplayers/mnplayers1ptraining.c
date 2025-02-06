@@ -132,7 +132,7 @@ void mnPlayers1PTrainingSelectFighterPuck(s32 player, s32 select_button)
 	}
 	sMNPlayers1PTrainingSlots[held_player].is_selected = TRUE;
 
-	mnPlayers1PTrainingUpdateCursorPlacementDLLinks(player, held_player);
+	mnPlayers1PTrainingUpdateCursorPlacementPriorities(player, held_player);
 
 	sMNPlayers1PTrainingSlots[held_player].holder_player = GMCOMMON_PLAYERS_MAX;
 	sMNPlayers1PTrainingSlots[player].cursor_status = nMNPlayersCursorStatusHover;
@@ -1659,7 +1659,7 @@ sb32 mnPlayers1PTrainingSelectFighter(GObj *gobj, s32 player, s32 unused, s32 se
 }
 
 // 0x801348F0
-void mnPlayers1PTrainingUpdateCursorGrabDLLinks(s32 player, s32 puck)
+void mnPlayers1PTrainingUpdateCursorGrabPriorities(s32 player, s32 puck)
 {
 	u32 priorities[/* */] = { 6, 4, 2, 0 };
 	s32 i, order;
@@ -1684,7 +1684,7 @@ void mnPlayers1PTrainingUpdateCursorGrabDLLinks(s32 player, s32 puck)
 }
 
 // 0x80134A4C
-void mnPlayers1PTrainingUpdateCursorPlacementDLLinks(s32 player, s32 puck)
+void mnPlayers1PTrainingUpdateCursorPlacementPriorities(s32 player, s32 puck)
 {
 	s32 held_priorities[/* */] = { 3, 2, 1, 0 };
 	s32	unheld_priorities[/* */] = { 6, 4, 2, 0 };
@@ -1756,7 +1756,7 @@ void mnPlayers1PTrainingSetCursorGrab(s32 player, s32 held_player)
 	sMNPlayers1PTrainingSlots[held_player].is_fighter_selected = FALSE;
 
 	mnPlayers1PTrainingUpdateFighter(held_player);
-	mnPlayers1PTrainingUpdateCursorGrabDLLinks(player, held_player);
+	mnPlayers1PTrainingUpdateCursorGrabPriorities(player, held_player);
 	mnPlayers1PTrainingSetCursorPuckOffset(player);
 	mnPlayers1PTrainingUpdateCursor(sMNPlayers1PTrainingSlots[player].cursor, player, sMNPlayers1PTrainingSlots[player].cursor_status);
 

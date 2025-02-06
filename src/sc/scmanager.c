@@ -14,7 +14,6 @@
 
 extern void mnVSModeStartScene();
 extern void mnPlayersVSStartScene();
-extern void mnPlayers1PGameStartScene();
 
 // // // // // // // // // // // //
 //                               //

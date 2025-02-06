@@ -280,7 +280,7 @@ void mnPlayers1PBonusSelectFighterPuck(s32 player, s32 select_button)
 	sMNPlayers1PBonusSlot.held_player = -1;
 	sMNPlayers1PBonusSlot.is_fighter_selected = TRUE;
 
-	mnPlayers1PBonusUpdateCursorPlacementDLLinks(held_player);
+	mnPlayers1PBonusUpdateCursorPlacementPriorities(held_player);
 	mnPlayers1PBonusAnnounceFighter(player, held_player);
 	mnPlayers1PBonusMakePortraitFlash(held_player);
 
@@ -1529,7 +1529,7 @@ void mnPlayers1PBonusResetPlayer(s32 player)
 	sMNPlayers1PBonusSlot.held_player = player;
 	sMNPlayers1PBonusSlot.is_fighter_selected = FALSE;
 
-	mnPlayers1PBonusUpdateCursorGrabDLLinks(player, player);
+	mnPlayers1PBonusUpdateCursorGrabPriorities(player, player);
 
 	sMNPlayers1PBonusSlot.is_cursor_adjusting = FALSE;
 }
@@ -1691,7 +1691,7 @@ sb32 mnPlayers1PBonusCheckSelectFighter(GObj *gobj, s32 player, s32 unused, s32 
 }
 
 // 0x80134BB0
-void mnPlayers1PBonusUpdateCursorGrabDLLinks(s32 player, s32 puck)
+void mnPlayers1PBonusUpdateCursorGrabPriorities(s32 player, s32 puck)
 {
 	// Display orders for cursors on puck pickup
 	u32 priorities[/* */] = { 6, 4, 2, 0 };
@@ -1700,7 +1700,7 @@ void mnPlayers1PBonusUpdateCursorGrabDLLinks(s32 player, s32 puck)
 }
 
 // 0x80134C1C
-void mnPlayers1PBonusUpdateCursorPlacementDLLinks(s32 player)
+void mnPlayers1PBonusUpdateCursorPlacementPriorities(s32 player)
 {
 	// Display orders for cursors not holding pucks on puck placement
 	u32 priorities[/* */] = { 3, 2, 1, 0 };
@@ -1725,7 +1725,7 @@ void mnPlayers1PBonusSetCursorGrab(s32 player)
 	sMNPlayers1PBonusSlot.is_fighter_selected = FALSE;
 
 	mnPlayers1PBonusUpdateFighter(player);
-	mnPlayers1PBonusUpdateCursorGrabDLLinks(player, player);
+	mnPlayers1PBonusUpdateCursorGrabPriorities(player, player);
 	mnPlayers1PBonusSetCursorPuckOffset(player);
 	mnPlayers1PBonusUpdateCursor(sMNPlayers1PBonusSlot.cursor, player, sMNPlayers1PBonusSlot.cursor_status);
 
@@ -1759,7 +1759,7 @@ sb32 mnPlayers1PBonusCheckCursorPuckGrab(GObj *gobj, s32 player)
 		sMNPlayers1PBonusSlot.is_fighter_selected = FALSE;
 
 		mnPlayers1PBonusUpdateFighter(player);
-		mnPlayers1PBonusUpdateCursorGrabDLLinks(player, player);
+		mnPlayers1PBonusUpdateCursorGrabPriorities(player, player);
 		mnPlayers1PBonusSetCursorPuckOffset(player);
 		mnPlayers1PBonusUpdateCursor(gobj, player, sMNPlayers1PBonusSlot.cursor_status);
 

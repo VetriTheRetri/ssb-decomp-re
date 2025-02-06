@@ -654,7 +654,7 @@ void mnVSModeMakeTimeStockValue()
 
     if (value == SCBATTLE_TIMELIMIT_INFINITE)
     {
-        time_stock_value_sobj = lbCommonMakeSObjForGObj(time_stock_value_gobj, lbRelocGetFileData(Sprite*, sMNVSModeFiles[0], &lMNCommonInfinitySprite));
+        time_stock_value_sobj = lbCommonMakeSObjForGObj(time_stock_value_gobj, lbRelocGetFileData(Sprite*, sMNVSModeFiles[0], &lMNCommonInfiniteSprite));
         time_stock_value_sobj->sprite.attr &= ~SP_FASTCOPY;
         time_stock_value_sobj->sprite.attr |= SP_TRANSPARENT;
         time_stock_value_sobj->pos.x = 162.0F;

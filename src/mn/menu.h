@@ -65,7 +65,7 @@ extern intptr_t lMNCommonDigit7Sprite;                  // 0x0000D8C0
 extern intptr_t lMNCommonDigit8Sprite;                  // 0x0000D990
 extern intptr_t lMNCommonDigit9Sprite;                  // 0x0000DA60
 extern intptr_t lMNCommonSymbolPercentSprite;           // 0x0000DB30
-extern intptr_t lMNCommonInfinitySprite;                // 0x0000DC48
+extern intptr_t lMNCommonInfiniteSprite;                // 0x0000DC48
 extern intptr_t lMNCommonColonSprite;                   // 0x0000DCF0
 extern intptr_t lMNCommonRightArrowSprite;              // 0x0000DD90
 extern intptr_t lMNCommonLeftArrowSprite;               // 0x0000DE30
@@ -100,8 +100,9 @@ extern intptr_t lMNPlayersCommonPikachuNameSprite;      // 0x000032F8
 extern intptr_t lMNPlayersCommonNessNameSprite;         // 0x000035B0
 extern intptr_t lMNPlayersCommonCaptainNameSprite;      // 0x00003998
 extern intptr_t lMNPlayersCommonPurinNameSprite;        // 0x00003DB8
+
 extern intptr_t lMNPlayersCommonSymbolInfiniteSprite;   // 0x00003EF0
-extern intptr_t lMNPlayersCommonOptionTimeSprite;       // 0x000048B0
+extern intptr_t lMNPlayersCommonGameRuleTimeSprite;     // 0x000048B0
 
 extern intptr_t lMNPlayersCommonDigit0Sprite;        	// 0x00005388
 extern intptr_t lMNPlayersCommonDigit1Sprite;        	// 0x00005440
@@ -175,10 +176,18 @@ extern intptr_t lMNSelectCommonWallpaperSprite;         // 0x00000440
 extern intptr_t lMNPlayersSpotlightMObjSub;             // 0x00000408
 extern intptr_t lMNPlayersSpotlightDObjDesc;            // 0x00000568
 
+extern intptr_t lMNPlayers1PMode1PGameSprite;           // 0x00000228
+extern intptr_t lMNPlayers1PModeBracketRSprite;         // 0x000002C8
+extern intptr_t lMNPlayers1PModeBracketLSprite;         // 0x00000368
+extern intptr_t lMNPlayers1PModeLevelSprite;            // 0x00000488
+extern intptr_t lMNPlayers1PModeStockSprite;            // 0x000005A8
+extern intptr_t lMNPlayers1PModeOptionOutlineSprite;    // 0x00001208
 extern intptr_t lMNPlayers1PModeBestTimeSprite;         // 0x000012E0   
 extern intptr_t lMNPlayers1PModeTotalBestTimeSprite;    // 0x00001410
 extern intptr_t lMNPlayers1PModeTargetsSprite;          // 0x00001658
 extern intptr_t lMNPlayers1PModePlatformsSprite;        // 0x00001898
+extern intptr_t lMNPlayers1PModeSmashLogoSprite;        // 0x00001950
+extern intptr_t lMNPlayers1PModeOptionSprite;           // 0x00001EC8
 extern intptr_t lMNPlayers1PModeSecSprite;              // 0x00001F48
 extern intptr_t lMNPlayers1PModeCSecSprite;             // 0x00001FC8
 extern intptr_t lMNPlayers1PModeGateCPLUT;              // 0x00003238

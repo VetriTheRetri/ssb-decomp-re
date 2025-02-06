@@ -1164,7 +1164,7 @@ SObj* mnSoundTestMakeMusicSObjs(void)
     sobj->pos.x = 55.0F;
     sobj->pos.y = 61.0F;
 
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[4], &lMNSoundTestOptionRoundCorner));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[4], &lMNSoundTestOptionOutline));
     sobj->sprite.attr = SP_TRANSPARENT;
     sobj->pos.x = 112.0F;
     sobj->pos.y = 56.0F;
@@ -1231,7 +1231,7 @@ SObj* mnSoundTestMakeSoundSObjs(void)
     sobj->pos.x = 64.0F;
     sobj->pos.y = 108.0F;
 
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[4], &lMNSoundTestOptionRoundCorner));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[4], &lMNSoundTestOptionOutline));
     sobj->sprite.attr = SP_TRANSPARENT;
     sobj->pos.x = 132.0F;
     sobj->pos.y = 104.0F;
@@ -1298,7 +1298,7 @@ SObj* mnSoundTestMakeVoiceSObjs(void)
     sobj->pos.x = 94.0F;
     sobj->pos.y = 156.0F;
 
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[4], &lMNSoundTestOptionRoundCorner));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[4], &lMNSoundTestOptionOutline));
     sobj->sprite.attr = SP_TRANSPARENT;
     sobj->pos.x = 152.0F;
     sobj->pos.y = 152.0F;

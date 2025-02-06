@@ -13,7 +13,7 @@ extern intptr_t lMNPlayersCommonSamusNameSprite;             // 0x00002358
 extern intptr_t lMNPlayersCommonPikachuNameSprite;           // 0x000032F8
 extern intptr_t lMNPlayersCommonSymbolInfiniteSprite;        // 0x00003EF0
 extern intptr_t D_NF_00004728;                          // 0x00004728
-extern intptr_t lMNPlayersCommonOptionTimeSprite;            // 0x000048B0
+extern intptr_t lMNPlayersCommonGameRuleTimeSprite;            // 0x000048B0
 extern intptr_t D_NF_00006978;                          // 0x00006978
 extern intptr_t D_NF_00008BC8;                          // 0x00008BC8
 extern intptr_t D_NF_0000AE18;                          // 0x0000AE18
@@ -526,7 +526,7 @@ void mnUnusedFightersFuncStart(void)
         1,
         GOBJ_PRIORITY_DEFAULT,
         ~0,
-        lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &lMNPlayersCommonOptionTimeSprite),
+        lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &lMNPlayersCommonGameRuleTimeSprite),
         nGCProcessKindFunc,
         mnUnusedFightersTimeProcUpdate,
         1

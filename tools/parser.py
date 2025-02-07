@@ -154,7 +154,7 @@ def instructionCountFromAssembly(filePathList):
 	for filePath in filePathList:
 		with open(filePath, 'r') as file:
 			lines = textSectionLinesFromAssembly(file.read())
-			instructionCount += sum([1 if re.match(r"^/\* \w+ \w+ \w+ \*/.*$", line) else 0 for line in lines])
+			instructionCount += sum([1 if re.match(r"^\s*/\* \w+ \w+ \w+ \*/.*$", line) else 0 for line in lines])
 	return instructionCount
 
 

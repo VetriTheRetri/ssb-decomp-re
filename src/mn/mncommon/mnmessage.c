@@ -332,21 +332,7 @@ void mnMessageFuncStart(void)
     rl_setup.force_status_buffer_size = 0;
     
     lbRelocInitSetup(&rl_setup);
-    lbRelocLoadFilesExtern
-    (
-        dMNMessageFileIDs,
-        ARRAY_COUNT(dMNMessageFileIDs),
-        sMNMessageFiles,
-        syTaskmanMalloc
-        (
-            lbRelocGetAllocSize
-            (
-                dMNMessageFileIDs,
-                ARRAY_COUNT(dMNMessageFileIDs)
-            ),
-            0x10
-        )
-    );
+    LOAD_EXTERN_FILES(dMNMessageFileIDs, sMNMessageFiles);
     gcMakeGObjSPAfter(0, mnMessageProcRun, 0, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, 0, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
 

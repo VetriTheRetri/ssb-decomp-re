@@ -2164,21 +2164,7 @@ void mnVSRecordFuncStart(void)
 	rl_setup.force_status_buffer_size = 0;
 
 	lbRelocInitSetup(&rl_setup);
-	lbRelocLoadFilesExtern
-	(
-		dMNVSRecordFileIDs,
-		ARRAY_COUNT(dMNVSRecordFileIDs),
-		sMNVSRecordFiles,
-		syTaskmanMalloc
-		(
-			lbRelocGetAllocSize
-			(
-				dMNVSRecordFileIDs,
-				ARRAY_COUNT(dMNVSRecordFileIDs)
-			),
-			0x10
-		)
-	);
+	LOAD_EXTERN_FILES(dMNVSRecordFileIDs, sMNVSRecordFiles);
 	gcMakeGObjSPAfter(0, mnVSRecordProcRun, 0, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 

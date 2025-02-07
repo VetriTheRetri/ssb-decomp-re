@@ -212,21 +212,7 @@ void mvOpeningJungleSetupFiles(void)
     rl_setup.force_status_buffer_size = ARRAY_COUNT(sMVOpeningJungleForceStatusBuffer);
 
     lbRelocInitSetup(&rl_setup);
-    lbRelocLoadFilesExtern
-    (
-        dMVOpeningJungleFileIDs,
-        ARRAY_COUNT(dMVOpeningJungleFileIDs),
-        sMVOpeningJungleFiles,
-        syTaskmanMalloc
-        (
-            lbRelocGetAllocSize
-            (
-                dMVOpeningJungleFileIDs, 
-                ARRAY_COUNT(dMVOpeningJungleFileIDs)
-            ),
-            0x10
-        )
-    );
+    LOAD_EXTERN_FILES(dMVOpeningJungleFileIDs, sMVOpeningJungleFiles);
 }
 
 // 0x8018D160 - Unused?

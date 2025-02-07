@@ -45,19 +45,5 @@ void mnNoControllerSetupFiles(void)
 	rl_setup.force_status_buffer_size = ARRAY_COUNT(sMNNoControllerForceStatusBuffer);
 
 	lbRelocInitSetup(&rl_setup);
-	lbRelocLoadFilesExtern
-	(
-		dMNNoControllerFileIDs,
-		ARRAY_COUNT(dMNNoControllerFileIDs),
-		gMNNoControllerFiles,
-		syTaskmanMalloc
-		(
-			lbRelocGetAllocSize
-			(
-				dMNNoControllerFileIDs,
-				ARRAY_COUNT(dMNNoControllerFileIDs)
-			),
-			0x10
-		)
-	);
+	LOAD_EXTERN_FILES(dMNNoControllerFileIDs, gMNNoControllerFiles);
 }

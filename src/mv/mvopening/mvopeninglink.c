@@ -102,21 +102,7 @@ void mvOpeningLinkSetupFiles(void)
 	rl_setup.force_status_buffer_size = ARRAY_COUNT(sMVOpeningLinkForceStatusBuffer);
 
 	lbRelocInitSetup(&rl_setup);
-	lbRelocLoadFilesExtern
-	(
-		dMVOpeningLinkFileIDs,
-		ARRAY_COUNT(dMVOpeningLinkFileIDs),
-		sMVOpeningLinkFiles,
-		syTaskmanMalloc
-		(
-			lbRelocGetAllocSize
-			(
-				dMVOpeningLinkFileIDs,
-				ARRAY_COUNT(dMVOpeningLinkFileIDs)
-			),
-			0x10
-		)
-	);
+	LOAD_EXTERN_FILES(dMVOpeningLinkFileIDs, sMVOpeningLinkFiles);
 }
 
 // 0x8018D160

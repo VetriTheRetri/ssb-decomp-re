@@ -2625,21 +2625,7 @@ void mnCharactersFuncStart(void)
 	rl_setup.force_status_buffer_size = ARRAY_COUNT(sMNCharactersForceStatusBuffer);
 
 	lbRelocInitSetup(&rl_setup);
-	lbRelocLoadFilesExtern
-	(
-		dMNCharactersFileIDs,
-		ARRAY_COUNT(dMNCharactersFileIDs),
-		sMNCharactersFiles,
-		syTaskmanMalloc
-		(
-			lbRelocGetAllocSize
-			(
-				dMNCharactersFileIDs,
-				ARRAY_COUNT(dMNCharactersFileIDs)
-			),
-			0x10
-		)
-	);
+	LOAD_EXTERN_FILES(dMNCharactersFileIDs, sMNCharactersFiles);
 	gcMakeGObjSPAfter(0, mnCharactersProcRun, 0, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	efParticleInitAll();

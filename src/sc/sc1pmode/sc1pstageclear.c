@@ -1968,21 +1968,7 @@ void sc1PStageClearFuncStart(void)
 	rl_setup.force_status_buffer_size = ARRAY_COUNT(sSC1PStageClearForceStatusBuffer);
 
 	lbRelocInitSetup(&rl_setup);
-	lbRelocLoadFilesExtern
-	(
-		dSC1PStageClearFileIDs,
-		ARRAY_COUNT(dSC1PStageClearFileIDs),
-		sSC1PStageClearFiles,
-		syTaskmanMalloc
-		(
-			lbRelocGetAllocSize
-			(
-				dSC1PStageClearFileIDs,
-				ARRAY_COUNT(dSC1PStageClearFileIDs)
-			),
-			0x10
-		)
-	);
+	LOAD_EXTERN_FILES(dSC1PStageClearFileIDs, sSC1PStageClearFiles);
 	gcMakeGObjSPAfter(0, sc1PStageClearProcRun, 0, GOBJ_PRIORITY_DEFAULT);
 	sc1PStageClearCopyFramebufToWallpaper();
 	gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, 0, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));

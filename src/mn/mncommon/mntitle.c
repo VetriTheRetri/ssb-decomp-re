@@ -1488,19 +1488,5 @@ void mnTitleLoadFiles(void)
 	rl_setup.force_status_buffer_size = 0;
 
 	lbRelocInitSetup(&rl_setup);
-	lbRelocLoadFilesExtern
-	(
-		dMNTitleFileIDs,
-		ARRAY_COUNT(dMNTitleFileIDs),
-		sMNTitleFiles,
-		syTaskmanMalloc
-		(
-			lbRelocGetAllocSize
-			(
-				dMNTitleFileIDs,
-				ARRAY_COUNT(dMNTitleFileIDs)
-			),
-			0x10
-		)
-	);
+	LOAD_EXTERN_FILES(dMNTitleFileIDs, sMNTitleFiles);
 }

@@ -106,21 +106,7 @@ void mvOpeningFoxSetupFiles(void)
 	rl_setup.force_status_buffer_size = ARRAY_COUNT(sMVOpeningFoxForceStatusBuffer);
 
 	lbRelocInitSetup(&rl_setup);
-	lbRelocLoadFilesExtern
-	(
-		dMVOpeningFoxFileIDs,
-		ARRAY_COUNT(dMVOpeningFoxFileIDs),
-		sMVOpeningFoxFiles,
-		syTaskmanMalloc
-		(
-			lbRelocGetAllocSize
-			(
-				dMVOpeningFoxFileIDs,
-				ARRAY_COUNT(dMVOpeningFoxFileIDs)
-			),
-			0x10
-		)
-	);
+	LOAD_EXTERN_FILES(dMVOpeningFoxFileIDs, sMVOpeningFoxFiles);
 }
 
 // 0x8018D160

@@ -103,21 +103,7 @@ void mvOpeningKirbySetupFiles(void)
 	rl_setup.force_status_buffer_size = ARRAY_COUNT(sMVOpeningKirbyForceStatusBuffer);
 
 	lbRelocInitSetup(&rl_setup);
-	lbRelocLoadFilesExtern
-	(
-		dMVOpeningKirbyFileIDs,
-		ARRAY_COUNT(dMVOpeningKirbyFileIDs),
-		sMVOpeningKirbyFiles,
-		syTaskmanMalloc
-		(
-			lbRelocGetAllocSize
-			(
-				dMVOpeningKirbyFileIDs,
-				ARRAY_COUNT(dMVOpeningKirbyFileIDs)
-			),
-			0x10
-		)
-	);
+	LOAD_EXTERN_FILES(dMVOpeningKirbyFileIDs, sMVOpeningKirbyFiles);
 }
 
 // 0x8018D160

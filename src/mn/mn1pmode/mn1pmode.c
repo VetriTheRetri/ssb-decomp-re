@@ -754,21 +754,8 @@ void mnPlayers1PGameModeFuncStart(void)
     {
         gSCManagerBackupData.error_flags |= LBBACKUP_ERROR_HALFSTICKRANGE;
     }
-    lbRelocLoadFilesExtern
-    (
-        dMN1PModeFileIDs,
-        ARRAY_COUNT(dMN1PModeFileIDs),
-        sMN1PModeFiles,
-        syTaskmanMalloc
-        (
-            lbRelocGetAllocSize
-            (
-                dMN1PModeFileIDs,
-                ARRAY_COUNT(dMN1PModeFileIDs)
-            ),
-            0x10
-        )
-    );
+
+    LOAD_EXTERN_FILES(dMN1PModeFileIDs, sMN1PModeFiles);
     gcMakeGObjSPAfter(0, mnPlayers1PGameModeProcRun, 0, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, 0, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
     

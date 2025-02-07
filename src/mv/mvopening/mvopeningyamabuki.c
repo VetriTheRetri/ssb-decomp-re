@@ -411,21 +411,7 @@ void mvOpeningYamabukiFuncStart(void)
     rl_setup.force_status_buffer_size = ARRAY_COUNT(sMVOpeningYamabukiForceStatusBuffer);
 
     lbRelocInitSetup(&rl_setup);
-    lbRelocLoadFilesExtern
-    (
-        dMVOpeningYamabukiFileIDs,
-        ARRAY_COUNT(dMVOpeningYamabukiFileIDs),
-        sMVOpeningYamabukiFiles,
-        syTaskmanMalloc
-        (
-            lbRelocGetAllocSize
-            (
-                dMVOpeningYamabukiFileIDs,
-                ARRAY_COUNT(dMVOpeningYamabukiFileIDs)
-            ),
-            0x10
-        )
-    );
+    LOAD_EXTERN_FILES(dMVOpeningYamabukiFileIDs, sMVOpeningYamabukiFiles);
     gcMakeGObjSPAfter(0, mvOpeningYamabukiProcRun, 0, GOBJ_PRIORITY_DEFAULT);
 
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));

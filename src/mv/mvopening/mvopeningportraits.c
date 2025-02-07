@@ -444,21 +444,7 @@ void mvOpeningPortraitsFuncStart(void)
 	rl_setup.force_status_buffer_size = ARRAY_COUNT(sMVOpeningPortraitsForceStatusBuffer);
 
 	lbRelocInitSetup(&rl_setup);
-	lbRelocLoadFilesExtern
-	(
-		dMVOpeningPortraitsFileIDs,
-		ARRAY_COUNT(dMVOpeningPortraitsFileIDs),
-		sMVOpeningPortraitsFiles,
-		syTaskmanMalloc
-		(
-			lbRelocGetAllocSize
-			(
-				dMVOpeningPortraitsFileIDs,
-				ARRAY_COUNT(dMVOpeningPortraitsFileIDs)
-			),
-			0x10
-		)
-	);
+	LOAD_EXTERN_FILES(dMVOpeningPortraitsFileIDs, sMVOpeningPortraitsFiles);
 	gcMakeGObjSPAfter(0, mvOpeningPortraitsProcRun, 0, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	mvOpeningPortraitsInitVars();

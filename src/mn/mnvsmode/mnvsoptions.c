@@ -1372,21 +1372,7 @@ void mnVSOptionsFuncStart(void)
     rl_setup.force_status_buffer_size = 0;
     
     lbRelocInitSetup(&rl_setup);
-    lbRelocLoadFilesExtern
-    (
-        dMNVSOptionsFileIDs,
-        ARRAY_COUNT(dMNVSOptionsFileIDs),
-        sMNVSOptionsFiles,
-        syTaskmanMalloc
-        (
-            lbRelocGetAllocSize
-            (
-                dMNVSOptionsFileIDs,
-                ARRAY_COUNT(dMNVSOptionsFileIDs)
-            ),
-            0x10
-        )
-    );
+    LOAD_EXTERN_FILES(dMNVSOptionsFileIDs, sMNVSOptionsFiles);
     gcMakeGObjSPAfter(0, mnVSOptionsProcRun, 0, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, 0, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
     

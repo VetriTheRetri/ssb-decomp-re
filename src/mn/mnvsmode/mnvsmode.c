@@ -1486,21 +1486,7 @@ void mnVSModeFuncStart(void)
     {
         gSCManagerBackupData.error_flags |= LBBACKUP_ERROR_RANDOMKNOCKBACK;
     }
-    lbRelocLoadFilesExtern
-    (
-        dMNVSModeFileIDs,
-        ARRAY_COUNT(dMNVSModeFileIDs),
-        sMNVSModeFiles,
-        syTaskmanMalloc
-        (
-            lbRelocGetAllocSize
-            (
-                dMNVSModeFileIDs,
-                ARRAY_COUNT(dMNVSModeFileIDs)
-            ),
-            0x10
-        )
-    );
+    LOAD_EXTERN_FILES(dMNVSModeFileIDs, sMNVSModeFiles);
     gcMakeGObjSPAfter(0, mnVSModeMain, 0, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, 0, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
 

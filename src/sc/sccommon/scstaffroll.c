@@ -1975,7 +1975,7 @@ void SCStaffrollSetupFiles(void)
 	rl_setup.force_status_buffer_size = 0;
 
 	lbRelocInitSetup(&rl_setup);
-	lbRelocLoadFilesExtern(dSCStaffrollFileIDs, ARRAY_COUNT(dSCStaffrollFileIDs), sSCStaffrollFiles, syTaskmanMalloc(lbRelocGetAllocSize(dSCStaffrollFileIDs, ARRAY_COUNT(dSCStaffrollFileIDs)), 0x10));
+	LOAD_EXTERN_FILES(dSCStaffrollFileIDs, sSCStaffrollFiles);
 }
 
 // 0x80134A70

@@ -1928,20 +1928,7 @@ void sc1PIntroFuncStart(void)
     rl_setup.force_status_buffer_size = ARRAY_COUNT(sSC1PIntroForceStatusBuffer);
     
     lbRelocInitSetup(&rl_setup);
-    lbRelocLoadFilesExtern
-    (
-        dSC1PIntroFileIDs,
-        ARRAY_COUNT(dSC1PIntroFileIDs),
-        sSC1PIntroFiles,
-        syTaskmanMalloc
-        (
-            lbRelocGetAllocSize
-            (    dSC1PIntroFileIDs,
-                ARRAY_COUNT(dSC1PIntroFileIDs)
-            ),
-            0x10
-        )
-    );
+    LOAD_EXTERN_FILES(dSC1PIntroFileIDs, sSC1PIntroFiles);
     gcMakeGObjSPAfter(0, sc1PIntroProcRun, 0, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     sc1PIntroInitVars();

@@ -185,21 +185,7 @@ void mnUnusedFightersFuncStart(void)
     rl_setup.force_status_buffer_size = 0;
     
     lbRelocInitSetup(&rl_setup);
-    lbRelocLoadFilesExtern
-    (
-        dMNUnusedFightersFileIDs,
-        ARRAY_COUNT(dMNUnusedFightersFileIDs),
-        sMNUnusedFightersFiles,
-        syTaskmanMalloc
-        (
-            lbRelocGetAllocSize
-            (
-                dMNUnusedFightersFileIDs,
-                ARRAY_COUNT(dMNUnusedFightersFileIDs)
-            ),
-            0x10
-        )
-    );
+    LOAD_EXTERN_FILES(dMNUnusedFightersFileIDs, sMNUnusedFightersFiles);
     gcMakeGObjSPAfter(0, mnUnusedFightersProcRun, 0, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(1, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     

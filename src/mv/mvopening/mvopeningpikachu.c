@@ -101,21 +101,7 @@ void mvOpeningPikachuSetupFiles(void)
 	rl_setup.force_status_buffer_size = ARRAY_COUNT(sMVOpeningPikachuForceStatusBuffer);
 
 	lbRelocInitSetup(&rl_setup);
-	lbRelocLoadFilesExtern
-	(
-		dMVOpeningPikachuFileIDs,
-		ARRAY_COUNT(dMVOpeningPikachuFileIDs),
-		sMVOpeningPikachuFiles,
-		syTaskmanMalloc
-		(
-			lbRelocGetAllocSize
-			(
-				dMVOpeningPikachuFileIDs,
-				ARRAY_COUNT(dMVOpeningPikachuFileIDs)
-			),
-			0x10
-		)
-	);
+	LOAD_EXTERN_FILES(dMVOpeningPikachuFileIDs, sMVOpeningPikachuFiles);
 }
 
 // 0x8018D160

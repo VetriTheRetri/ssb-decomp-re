@@ -1211,21 +1211,8 @@ void mnPlayers1PGameContinueFuncStart(void)
     rl_setup.force_status_buffer_size = ARRAY_COUNT(sMN1PContinueForceStatusBuffer);
 
     lbRelocInitSetup(&rl_setup);
-    lbRelocLoadFilesExtern
-    (
-        dMN1PContinueFileIDs,
-        ARRAY_COUNT(dMN1PContinueFileIDs),
-        sMN1PContinueFiles,
-        syTaskmanMalloc
-        (
-            lbRelocGetAllocSize
-            (
-                dMN1PContinueFileIDs,
-                ARRAY_COUNT(dMN1PContinueFileIDs)
-            ),
-            0x10
-        )
-    );
+    LOAD_EXTERN_FILES(dMN1PContinueFileIDs, sMN1PContinueFiles);
+    
     gcMakeGObjSPAfter(0, mnPlayers1PGameContinueProcRun, 0, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     efParticleInitAll();

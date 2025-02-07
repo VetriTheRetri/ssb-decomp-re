@@ -3258,21 +3258,7 @@ void mnVSResultsFuncStart(void)
 	rl_setup.force_status_buffer_size = ARRAY_COUNT(sMNVSResultsForceStatusBuffer);
 
 	lbRelocInitSetup(&rl_setup);
-	lbRelocLoadFilesExtern
-	(
-		dMNVSResultsFileIDs,
-		ARRAY_COUNT(dMNVSResultsFileIDs),
-		sMNVSResultsFiles,
-		syTaskmanMalloc
-		(
-			lbRelocGetAllocSize
-			(
-				dMNVSResultsFileIDs,
-				ARRAY_COUNT(dMNVSResultsFileIDs)
-			),
-			0x10
-		)
-	);
+	LOAD_EXTERN_FILES(dMNVSResultsFileIDs, sMNVSResultsFiles);
 	gcMakeGObjSPAfter(0, mnVSResultsProcRun, 0, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	efParticleInitAll();

@@ -810,21 +810,7 @@ void mnVSItemSwitchFuncStart(void)
     rl_setup.force_status_buffer_size = 0;
     
     lbRelocInitSetup(&rl_setup);
-    lbRelocLoadFilesExtern
-    (
-        dMNVSItemSwitchFileIDs,
-        ARRAY_COUNT(dMNVSItemSwitchFileIDs),
-        sMNVSItemSwitchFiles,
-        syTaskmanMalloc
-        (
-            lbRelocGetAllocSize
-            (
-                dMNVSItemSwitchFileIDs,
-                ARRAY_COUNT(dMNVSItemSwitchFileIDs)
-            ),
-            0x10
-        )
-    );
+    LOAD_EXTERN_FILES(dMNVSItemSwitchFileIDs, sMNVSItemSwitchFiles);
     gcMakeGObjSPAfter(0, mnVSItemSwitchProcRun, 0, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     

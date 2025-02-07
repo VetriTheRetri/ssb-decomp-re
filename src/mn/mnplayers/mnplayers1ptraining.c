@@ -3140,21 +3140,7 @@ void mnPlayers1PTrainingFuncStart(void)
 	rl_setup.force_status_buffer_size = ARRAY_COUNT(sMNPlayers1PTrainingForceStatusBuffer);
 
 	lbRelocInitSetup(&rl_setup);
-	lbRelocLoadFilesExtern
-	(
-		dMNPlayers1PTrainingFileIDs,
-		ARRAY_COUNT(dMNPlayers1PTrainingFileIDs),
-		sMNPlayers1PTrainingFiles,
-		syTaskmanMalloc
-		(
-			lbRelocGetAllocSize
-			(
-				dMNPlayers1PTrainingFileIDs,
-				ARRAY_COUNT(dMNPlayers1PTrainingFileIDs)
-			),
-			0x10
-		)
-	);
+	LOAD_EXTERN_FILES(dMNPlayers1PTrainingFileIDs, sMNPlayers1PTrainingFiles);
 	gcMakeGObjSPAfter(nGCCommonKindPlayerSelect, mnPlayers1PTrainingProcRun, 15, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(16, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
 	efParticleInitAll();

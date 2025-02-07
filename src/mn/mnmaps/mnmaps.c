@@ -1534,21 +1534,7 @@ void mnMapsFuncStart(void)
 	rl_setup.force_status_buffer_size = ARRAY_COUNT(sMNMapsForceStatusBuffer);
 
 	lbRelocInitSetup(&rl_setup);
-	lbRelocLoadFilesExtern
-	(
-		dMNMapsFileIDs,
-		ARRAY_COUNT(dMNMapsFileIDs),
-		sMNMapsFiles,
-		syTaskmanMalloc
-		(
-			lbRelocGetAllocSize
-			(
-				dMNMapsFileIDs,
-				ARRAY_COUNT(dMNMapsFileIDs)
-			),
-			0x10
-		)
-	);
+	LOAD_EXTERN_FILES(dMNMapsFileIDs, sMNMapsFiles);
 	mnMapsAllocModelHeaps();
 
 	gcMakeGObjSPAfter(0, mnMapsProcRun, 0, GOBJ_PRIORITY_DEFAULT);

@@ -105,21 +105,7 @@ void mvOpeningDonkeySetupFiles(void)
 	rl_setup.force_status_buffer_size = ARRAY_COUNT(sMVOpeningDonkeyForceStatusBuffer);
 
 	lbRelocInitSetup(&rl_setup);
-	lbRelocLoadFilesExtern
-	(
-		dMVOpeningDonkeyFileIDs,
-		ARRAY_COUNT(dMVOpeningDonkeyFileIDs),
-		sMVOpeningDonkeyFiles,
-		syTaskmanMalloc
-		(
-			lbRelocGetAllocSize
-			(
-				dMVOpeningDonkeyFileIDs,
-				ARRAY_COUNT(dMVOpeningDonkeyFileIDs)
-			),
-			0x10
-		)
-	);
+	LOAD_EXTERN_FILES(dMVOpeningDonkeyFileIDs, sMVOpeningDonkeyFiles);
 }
 
 // 0x8018D160

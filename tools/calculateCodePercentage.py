@@ -1,10 +1,23 @@
 #!/usr/bin/python3
+import os
 import sys
 import parser
+import subprocess
 
+BUILD_FOLDER_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../", "build")
 
 def filesInFolderRec(folder):
 	return [os.path.join(dp, f).replace('\\', '/') for dp, dn, filenames in os.walk(folder) for f in filenames]
+
+def computeCodeBlockSize(codeBlock):
+	objectFilePath = f"{BUILD_FOLDER_PATH}/{codeBlock['type'] if codeBlock['type'] != 'c' else 'src'}/{codeBlock['name']}.o"
+	tempTextSectionFilePath = f"/tmp/ccp/{codeBlock['name']}"
+	tempTextSectionFolderPath = os.path.dirname(os.path.abspath(tempTextSectionFilePath))
+	os.makedirs(tempTextSectionFolderPath, exist_ok=True)
+	subprocess.run(["mips-linux-gnu-objcopy", "-O", "binary", "--only-section=.text", objectFilePath, tempTextSectionFilePath])
+	blockSize = os.path.getsize(tempTextSectionFilePath)
+	os.remove(tempTextSectionFilePath)
+	codeBlock['size'] = blockSize
 
 
 def calculateCodePercentage(excludeLibultra = False):
@@ -22,11 +35,11 @@ def calculateCodePercentage(excludeLibultra = False):
 	maxNameLength = max([len(x['name']) for x in codeBlocks])
 	maxTypeLength = len('asm')
 	for block in codeBlocks:
-		print(f"{block['name'] + ' '*((maxNameLength)-len(block['name']))} {block['type'] + ' '*((maxTypeLength)-len(block['type']))} block: {block['begin']:#0{HEX_PADDING}x} -> {block['end']:#0{HEX_PADDING}x}  ({block['end'] - block['begin']} bytes)")
+		computeCodeBlockSize(block)
+		print(f"{block['name'] + ' '*((maxNameLength)-len(block['name']))} {block['type'] + ' '*((maxTypeLength)-len(block['type']))} size: {block['size']} bytes")
 
-	# stats
-	cByteCount = sum([x['end'] - x['begin'] for x in codeBlocks if x['type'] == 'c'])
-	asmByteCount = sum([x['end'] - x['begin'] for x in codeBlocks if x['type'] == 'asm'])
+	cByteCount = sum([x['size'] for x in codeBlocks if x['type'] == 'c'])
+	asmByteCount = sum([x['size'] for x in codeBlocks if x['type'] == 'asm'])
 	totalByteCount = cByteCount + asmByteCount
 
 	cByteCount -= 4 * embeddedAssemblyInstructionCount

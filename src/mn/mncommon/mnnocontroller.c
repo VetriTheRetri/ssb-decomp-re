@@ -130,6 +130,6 @@ void mnNoControllerStartScene(void)
 	dMNNoControllerVideoSetup.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&dMNNoControllerVideoSetup);
 
-	dMNNoControllerTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSYFramebufferSets - (uintptr_t)&ovl11_BSS_END);
-	syTaskmanRun(&dMNNoControllerTaskmanSetup);
+	dMNNoControllerTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&gSYFramebufferSets - (uintptr_t)&ovl11_BSS_END);
+	syTaskmanStartTask(&dMNNoControllerTaskmanSetup);
 }

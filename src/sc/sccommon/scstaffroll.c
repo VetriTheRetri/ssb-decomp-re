@@ -2255,8 +2255,8 @@ void scStaffrollStartScene(void)
 	dSCStaffrollVideoSetup.zbuffer = syVideoGetZBuffer(12800);
 	syVideoInit(&dSCStaffrollVideoSetup);
 
-	dSCStaffrollTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)SYVIDEO_DEFINE_FRAMEBUFFER_ADDR(640, 480, 0, 0, u16, 0) - (uintptr_t)&ovl59_BSS_END);
-	syTaskmanRun(&dSCStaffrollTaskmanSetup);
+	dSCStaffrollTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)SYVIDEO_DEFINE_FRAMEBUFFER_ADDR(640, 480, 0, 0, u16, 0) - (uintptr_t)&ovl59_BSS_END);
+	syTaskmanStartTask(&dSCStaffrollTaskmanSetup);
 
 	fb16 = (u16*) gSYFramebufferSets;
 

@@ -1164,10 +1164,10 @@ void sc1PBonusStageStartScene(void)
 	dSC1PBonusStageVideoSetup.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&dSC1PBonusStageVideoSetup);
 
-	dSC1PBonusStageTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSYFramebufferSets - (uintptr_t)&ovl6_BSS_END);
+	dSC1PBonusStageTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&gSYFramebufferSets - (uintptr_t)&ovl6_BSS_END);
 	dSC1PBonusStageTaskmanSetup.func_start = sc1PBonusStageFuncStart;
 
-	syTaskmanRun(&dSC1PBonusStageTaskmanSetup);
+	syTaskmanStartTask(&dSC1PBonusStageTaskmanSetup);
 	syAudioStopSongAll();
 
 	while (auIsBGMPlaying(0) != FALSE)

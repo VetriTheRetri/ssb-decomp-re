@@ -532,7 +532,7 @@ struct GCSetup
     GObjStack *gobjthreadstacks;
     u32 gobjthreadstacks_num;
 
-    s32 unk_omsetup_0x14;
+    s32 unk_gcsetup_0x14;
 
     GObjProcess *gobjprocs;
     s32 gobjprocs_num;
@@ -561,8 +561,8 @@ struct GCSetup
     size_t sobj_size;
 
     CObj *cameras;
-    s32 cameras_num;
-    size_t camera_size;
+    s32 cobjs_num;
+    size_t cobj_size;
 };
 
 #endif

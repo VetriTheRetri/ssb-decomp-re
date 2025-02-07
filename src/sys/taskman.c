@@ -18,34 +18,26 @@
 #include <PR/ucode.h>
 #include <PR/ultratypes.h>
 
-typedef enum syTaskmanStatus
-{
-	nSYTaskmanStatusDefault,
-	nSYTaskmanStatusLoadScene,
-	nSYTaskmanStatusUnk2
-
-} syTaskmanStatus;
-
 // externs
 extern void syTaskmanCheckBufferLengths();
 
 // structures
-typedef struct gsUcode
+typedef struct SYTaskmanUcode
 {
 	/* 0x00 */ u64 *text;
 	/* 0x04 */ u64 *data;
 
-} gsUcode;
+} SYTaskmanUcode;
 
-typedef struct FnBundle
+typedef struct SYTaskFunction
 {
-	/* 0x00 */ u16 unk00;
-	/* 0x04 */ void (*fn04)();
-	/* 0x08 */ void (*func_update)(struct FnBundle *);
-	/* 0x0C */ void (*fn0C)();
-	/* 0x10 */ void (*func_draw)(struct FnBundle *);
+	/* 0x00 */ u16 flags;
+	/* 0x04 */ void (*scene_update)();
+	/* 0x08 */ void (*task_update)(struct SYTaskFunction*);
+	/* 0x0C */ void (*scene_draw)();
+	/* 0x10 */ void (*task_draw)(struct SYTaskFunction*);
 
-} FnBundle; // size == 0x14 (D_800465F8)
+} SYTaskFunction; // size == 0x14 (sSYTaskmanDefaultFunction)
 
 // // // // // // // // // // // //
 //                               //
@@ -54,7 +46,7 @@ typedef struct FnBundle
 // // // // // // // // // // // //
 
 // 0x8003B6E0
-s32 D_8003B6E0 = 0;
+s32 dSYTaskmanRdpOutputBufferKind = 0;
 
 // 0x8003B6E4 - Total number of game updates
 u32 dSYTaskmanUpdateCount = 0;
@@ -62,15 +54,8 @@ u32 dSYTaskmanUpdateCount = 0;
 // 0x8003B6E8 - Total number of drawn frames
 u32 dSYTaskmanFrameCount = 0;
 
-// match Nintendo's name to make the text and data symbols
-#define NewUcodeInfo(ucode) \
-	{ (u64*)ucode##TextStart, (u64*)ucode##DataStart }
-#define NullUcodeInfo \
-	{ NULL, NULL }
-#define EndUncodeInfoArray NullUcodeInfo
-
 // Ten total ucodes + a terminator?
-gsUcode D_8003B6EC[/* */] =
+SYTaskmanUcode dSYTaskmanUcodes[/* */] =
 {
 	NewUcodeInfo(gspF3DEX2_fifo),
 	NullUcodeInfo,
@@ -82,7 +67,7 @@ gsUcode D_8003B6EC[/* */] =
 	NullUcodeInfo,
 	NullUcodeInfo,
 	NullUcodeInfo,
-	EndUncodeInfoArray,
+	EndUncodeInfoArray
 };
 
 // // // // // // // // // // // //
@@ -122,12 +107,12 @@ SCClient sSYTaskmanClient;
 unsigned int *sSYTaskmanSegmentFBase; // pointer to Gfx.w1 (segment base addr?)
 
 // 0x800454F0
-OSMesg D_800454F0[3];
+OSMesg sSYTaskmanContextMesgs[3];
 
 // 0x80045500
-OSMesgQueue D_80045500; // sctask end? or for all tasks?
+OSMesgQueue sSYTaskmanContextMesgQueue; // sctask end? or for all tasks?
 
-// 0x800045518
+// 0x80045518
 OSMesg sSYTaskmanResetMesgs[1];
 
 // 0x80045520
@@ -155,7 +140,7 @@ SYTaskGfxEnd *sSYTaskmanGfxEndBuffers[2];
 SYTaskVi *sSYTaskmanViBuffers[2];
 
 // 0x80046570
-syTaskmanDLBuffer sSYTaskmanDLBuffers[2][4];
+SYTaskmanDLBuffer sSYTaskmanDLBuffers[2][4];
 
 // 0x800465B0
 Gfx *gSYTaskmanDLHeads[4];
@@ -167,7 +152,7 @@ Gfx *sSYTaskmanDLBranches[4];
 s32 sSYTaskmanStatus;
 
 // 0x800465D4
-s32 D_800465D4;
+s32 sSYTaskmanFramebufferID;
 
 // 0x800465D8
 SYMallocRegion gSYTaskmanGraphicsHeap;
@@ -176,7 +161,7 @@ SYMallocRegion gSYTaskmanGraphicsHeap;
 SYMallocRegion gSYTaskmanGeneralHeap;
 
 // 0x800465F8
-FnBundle D_800465F8;
+SYTaskFunction sSYTaskmanDefaultFunction;
 
 // 0x8004660C
 u32 sSYTaskmanTimeStart;
@@ -227,7 +212,7 @@ UNUSED s32 unref80046644;
 SYMallocRegion sSYTaskmanDefaultGraphicsHeap[2];
 
 // 0x80046668
-void (*D_80046668)(void *); // takes function bundle struct?
+void (*sSYTaskmanFuncController)(void);
 
 // 0x8004666C
 SYTaskCallback D_8004666C;  // function pointer?
@@ -292,7 +277,7 @@ void syTaskmanResetGraphicsHeap(void) // reset gSYTaskmanGraphicsHeap allocator
 }
 
 // 0x80004A0C
-void syTaskmanSetDLBuffer(syTaskmanDLBuffer (*src)[4])
+void syTaskmanSetDLBuffer(SYTaskmanDLBuffer (*src)[4])
 {
 	s32 i;
 
@@ -341,7 +326,6 @@ void syTaskmanCheckBufferLengths(void)
 			while (TRUE);
 		}
 	}
-
 	if ((uintptr_t)gSYTaskmanGraphicsHeap.end < (uintptr_t)gSYTaskmanGraphicsHeap.ptr)
 	{
 		syErrorPrintf("gtl : DynamicBuffer over flow !  %d byte\n", (uintptr_t)gSYTaskmanGraphicsHeap.ptr - (uintptr_t)gSYTaskmanGraphicsHeap.start);
@@ -350,17 +334,17 @@ void syTaskmanCheckBufferLengths(void)
 }
 
 // 0x80004C5C
-void func_80004C5C(void *arg0, u32 buffer_size)
+void syTaskmanMakeRdpBufferTask(void *buffer, size_t buffer_size)
 {
 	SYTaskRdpBuffer t;
 
 	t.info.type     = nSYTaskTypeRdpBuffer;
 	t.info.priority = 50;
-	t.buffer        = arg0;
+	t.buffer        = buffer;
 	t.size          = buffer_size;
 	func_80000970(&t.info);
 
-	if ((uintptr_t)&sSYSchedulerRdpCache & 7)
+	if ((uintptr_t)&sSYSchedulerRdpCache % 8)
 	{
 		syErrorPrintf("bad addr sc_rdp_output_len = %x\n", &sSYSchedulerRdpCache);
 		while (TRUE);
@@ -368,13 +352,13 @@ void func_80004C5C(void *arg0, u32 buffer_size)
 }
 
 // 0x80004CB4
-void func_80004CB4(s32 arg0, void *arg1, u32 buffer_size)
+void syTaskmanSetRdpOutputBuffer(s32 kind, void *buffer, size_t buffer_size)
 {
-	D_8003B6E0 = arg0;
-	sSYTaskmanRdpOutputBuffer = arg1;
+	dSYTaskmanRdpOutputBufferKind = kind;
+	sSYTaskmanRdpOutputBuffer = buffer;
 	sSYTaskmanRdpOutputBufferSize = buffer_size;
 
-	if (arg0 == 2 || arg0 == 1)
+	if (kind == 2 || kind == 1)
 	{
 		if (buffer_size == 0)
 		{
@@ -382,10 +366,9 @@ void func_80004CB4(s32 arg0, void *arg1, u32 buffer_size)
 			while (TRUE);
 		}
 	}
-
-	if (arg0 == 1)
+	if (kind == 1)
 	{
-		func_80004C5C(arg1, buffer_size);
+		syTaskmanMakeRdpBufferTask(buffer, buffer_size);
 	}
 }
 
@@ -399,13 +382,11 @@ SYTaskGfx* func_80004D2C(void)
 		syErrorPrintf("gtl : not defined SCTaskGfx\n");
 		while (TRUE);
 	}
-
 	if (sSYTaskmanGfxBuffersCurrent[gSYTaskmanTaskID] == sSYTaskmanGfxBuffersEnd[gSYTaskmanTaskID])
 	{
 		syErrorPrintf("gtl : couldn\'t get SCTaskGfx\n");
 		while (TRUE);
 	}
-
 	temp = sSYTaskmanGfxBuffersCurrent[gSYTaskmanTaskID]++;
 
 	return temp;
@@ -451,7 +432,7 @@ void func_80004EFC()
 		syErrorPrintf("gtl : not defined SCTaskGfxEnd\n");
 		while (TRUE);
 	}
-	syTaskmanScheduleGfxEnd(mesg, (void*)-1, gSYTaskmanTaskID, &D_80045500);
+	syTaskmanScheduleGfxEnd(mesg, (void*)-1, gSYTaskmanTaskID, &sSYTaskmanContextMesgQueue);
 	sSYTaskmanGfxBuffersCurrent[gSYTaskmanTaskID] = sSYTaskmanGfxBuffersStart[gSYTaskmanTaskID];
 }
 
@@ -476,9 +457,7 @@ void func_80004F78(void)
 // 0x80005018
 void func_80005018(SYTaskGfx *t, s32 *arg1, u32 ucode_id, s32 arg3, u64 *arg4, u64 *arg5, u32 arg6)
 {
-	gsUcode *ucode;
-	// ...why?
-	s32 two = 2;
+	SYTaskmanUcode *ucode;
 
 	t->info.type = nSYTaskTypeGfx;
 	t->info.priority = 50;
@@ -486,26 +465,26 @@ void func_80005018(SYTaskGfx *t, s32 *arg1, u32 ucode_id, s32 arg3, u64 *arg4, u
 	if (sSYTaskmanSegmentFBase != NULL)
 	{
 		t->info.fnCheck = D_8004666C;
-		t->unk68     = (void*)sSYTaskmanSegmentFBase;
-		sSYTaskmanSegmentFBase   = NULL;
+		t->unk68 = (void*)sSYTaskmanSegmentFBase;
+		sSYTaskmanSegmentFBase = NULL;
 	}
 	else
 	{
 		t->info.fnCheck = NULL;
-		t->unk68     = NULL;
+		t->unk68 = NULL;
 	}
 	t->fb = arg1;
-	t->framebuffer_id = D_800465D4;
+	t->framebuffer_id = sSYTaskmanFramebufferID;
 
 	if (arg1 != 0)
 	{
-		t->info.mq = &D_80045500;
+		t->info.mq = &sSYTaskmanContextMesgQueue;
 		t->info.retVal = arg3;
 	}
 	else
 		t->info.mq = NULL;
 
-	t->info.unk18 = two;
+	t->info.unk18 = 2;
 	t->task_id    = gSYTaskmanTaskID;
 	t->unk7C      = 0;
 
@@ -514,7 +493,7 @@ void func_80005018(SYTaskGfx *t, s32 *arg1, u32 ucode_id, s32 arg3, u64 *arg4, u
 	t->task.t.ucode_boot      = gSYMainRspBootCode;
 	t->task.t.ucode_boot_size = sizeof(gSYMainRspBootCode);
 
-	ucode = &D_8003B6EC[ucode_id];
+	ucode = &dSYTaskmanUcodes[ucode_id];
 
 	if (ucode->text == NULL)
 	{
@@ -538,7 +517,7 @@ void func_80005018(SYTaskGfx *t, s32 *arg1, u32 ucode_id, s32 arg3, u64 *arg4, u
 		// FIFO microcodes..?
 		t->task.t.output_buffer = arg5;
 		t->task.t.output_buffer_size = (u64*) ((uintptr_t)arg5 + arg6);
-		t->unk74 = two;
+		t->unk74 = 2;
 		break;
 
 	case 1:
@@ -858,12 +837,12 @@ void syTaskmanUpdateDLBuffers(void)
 }
 
 // 0x80005AE4
-u32 syTaskmanSwitchContext(s32 arg0)
+sb32 syTaskmanSwitchContext(s32 arg0)
 {
 	s32 msg;
 	s32 i;
 
-	while (osRecvMesg(&D_80045500, (OSMesg*)&msg, OS_MESG_NOBLOCK) != -1)
+	while (osRecvMesg(&sSYTaskmanContextMesgQueue, (OSMesg*)&msg, OS_MESG_NOBLOCK) != -1)
 	{
 		D_80046638[msg] = 0;
 	}
@@ -880,7 +859,7 @@ u32 syTaskmanSwitchContext(s32 arg0)
 		}
 		if (arg0 == 0)
 		{
-			osRecvMesg(&D_80045500, (OSMesg*)&msg, OS_MESG_BLOCK);
+			osRecvMesg(&sSYTaskmanContextMesgQueue, (OSMesg*)&msg, OS_MESG_BLOCK);
 			D_80046638[msg] = 0;
 		}
 	}
@@ -917,7 +896,7 @@ void syTaskmanSetLoadScene(void)
 void unref_80005C84(s32 arg0)
 {
 	sSYTaskmanStatus = nSYTaskmanStatusUnk2;
-	D_800465D4 = arg0;
+	sSYTaskmanFramebufferID = arg0;
 }
 
 // 0x80005C9C
@@ -939,7 +918,7 @@ sb32 syTaskmanCheckBreakLoop(void)
 
 			return TRUE;
 		}
-		else return FALSE; // return 0;
+		else return FALSE;
 
 	default:
 		return FALSE;
@@ -962,12 +941,12 @@ void func_80005D10()
 }
 
 // 0x80005DA0
-void func_80005DA0(FnBundle *arg0)
+void syTaskmanRunTask(SYTaskFunction *tfunc)
 {
 	s32 i;
 	D_800454BC = 0;
 
-	while (osRecvMesg(&D_80045500, NULL, OS_MESG_NOBLOCK) != -1)
+	while (osRecvMesg(&sSYTaskmanContextMesgQueue, NULL, OS_MESG_NOBLOCK) != -1)
 	{
 		continue;
 	}
@@ -980,7 +959,7 @@ void func_80005DA0(FnBundle *arg0)
 		continue;
 	}
 	sSYTaskmanStatus = nSYTaskmanStatusDefault;
-	D_800465D4 = -1;
+	sSYTaskmanFramebufferID = -1;
 	gSYTaskmanTaskID = 1;
 	D_80044FA4_407B4 = 0;
 
@@ -988,7 +967,7 @@ void func_80005DA0(FnBundle *arg0)
 	{
 		D_80046638[i] = 0;
 	}
-	if (arg0->unk00 & 1)
+	if (tfunc->flags & 1)
 	{
 		while (TRUE)
 		{
@@ -1005,7 +984,7 @@ void func_80005DA0(FnBundle *arg0)
 			}
 			sSYTaskmanTimeStart = osGetCount();
 
-			arg0->func_update(arg0);
+			tfunc->task_update(tfunc);
 
 			dSYTaskmanUpdateCount++;
 			sSYTaskmanUpdateTimeDelta = (osGetCount() - sSYTaskmanTimeStart) / 2971; // what is this constant?
@@ -1019,7 +998,7 @@ void func_80005DA0(FnBundle *arg0)
 				syTaskmanSwitchContext(0);
 				sSYTaskmanTimeStart = osGetCount();
 
-				arg0->func_draw(arg0);
+				tfunc->task_draw(tfunc);
 
 				dSYTaskmanFrameCount++;
 				sSYTaskmanFrameTimeDelta = (osGetCount() - sSYTaskmanTimeStart) / 2971;
@@ -1030,85 +1009,89 @@ void func_80005DA0(FnBundle *arg0)
 				}
 			}
 		}
-		// unconditional loop back
 	}
-	else
+	else while (TRUE)
 	{
-		while (TRUE)
-		{
-			func_80005D10();
-			syMainVerifyStackProbes();
+		func_80005D10();
+		syMainVerifyStackProbes();
 
-			for (i = 0; i < sSYTaskmanUpdateInterval; i++)
-			{
-				osRecvMesg(&sSYTaskmanGameTicMesgQueue, NULL, OS_MESG_BLOCK);
-			}
-			while (osRecvMesg(&sSYTaskmanGameTicMesgQueue, NULL, OS_MESG_NOBLOCK) != -1)
-			{
-				continue;
-			}
+		for (i = 0; i < sSYTaskmanUpdateInterval; i++)
+		{
+			osRecvMesg(&sSYTaskmanGameTicMesgQueue, NULL, OS_MESG_BLOCK);
+		}
+		while (osRecvMesg(&sSYTaskmanGameTicMesgQueue, NULL, OS_MESG_NOBLOCK) != -1)
+		{
+			continue;
+		}
+		sSYTaskmanTimeStart = osGetCount();
+
+		tfunc->task_update(tfunc);
+
+		dSYTaskmanUpdateCount++;
+		sSYTaskmanUpdateTimeDelta = (osGetCount() - sSYTaskmanTimeStart) / 2971;
+
+		if (syTaskmanCheckBreakLoop() != FALSE)
+		{
+			break;
+		}
+		if ((dSYTaskmanUpdateCount % sSYTaskmanFrameInterval == 0) && (syTaskmanSwitchContext(1) != FALSE))
+		{
 			sSYTaskmanTimeStart = osGetCount();
 
-			arg0->func_update(arg0);
+			tfunc->task_draw(tfunc);
 
-			dSYTaskmanUpdateCount++;
-
-			sSYTaskmanUpdateTimeDelta = (osGetCount() - sSYTaskmanTimeStart) / 2971;
+			dSYTaskmanFrameCount++;
+			sSYTaskmanFrameTimeDelta = (osGetCount() - sSYTaskmanTimeStart) / 2971;
 
 			if (syTaskmanCheckBreakLoop() != FALSE)
 			{
 				break;
 			}
-			if ((dSYTaskmanUpdateCount % sSYTaskmanFrameInterval == 0) && (syTaskmanSwitchContext(1) != FALSE))
-			{
-				sSYTaskmanTimeStart = osGetCount();
-
-				arg0->func_draw(arg0);
-
-				dSYTaskmanFrameCount++;
-				sSYTaskmanFrameTimeDelta = (osGetCount() - sSYTaskmanTimeStart) / 2971;
-
-				if (syTaskmanCheckBreakLoop() != FALSE)
-				{
-					break;
-				}
-			}
 		}
 	}
 	func_80005BFC();
-	while (osRecvMesg(&D_80045500, NULL, OS_MESG_NOBLOCK) != -1)
+
+	while (osRecvMesg(&sSYTaskmanContextMesgQueue, NULL, OS_MESG_NOBLOCK) != -1)
+	{
 		continue;
+	}
 	while (osRecvMesg(&sSYTaskmanResetMesgQueue, NULL, OS_MESG_NOBLOCK) != -1)
+	{
 		continue;
+	}
 	while (osRecvMesg(&sSYTaskmanGameTicMesgQueue, NULL, OS_MESG_NOBLOCK) != -1)
+	{
 		continue;
+	}
 	syRdpSetFuncLights(NULL);
 	D_800454BC = 2;
 }
 
 // 0x800062B4
-void func_800062B4(FnBundle *self)
+void func_800062B4(SYTaskFunction *tfunc)
 {
-	D_80046668(self);
-	self->fn04();
+	sSYTaskmanFuncController();
+	tfunc->scene_update();
 }
 
 // 0x800062EC
-void func_800062EC(FnBundle *self)
+void func_800062EC(SYTaskFunction *tfunc)
 {
 	syTaskmanResetGraphicsHeap();
 	func_80004AB0();
-	self->fn0C();
+
+	tfunc->scene_draw();
+
 	func_800053CC();
 	syVideoApplySettingsNoBlock(sSYTaskmanViBuffers[gSYTaskmanTaskID]);
 	func_80004EFC();
 }
 
 // 0x80006350
-void func_80006350(FnBundle *self)
+void syTaskmanCommonTaskUpdate(SYTaskFunction *tfunc)
 {
-	D_80046668(self);
-	self->fn04();
+	sSYTaskmanFuncController();
+	tfunc->scene_update();
 
 	if (syTaskmanCheckBreakLoop() != FALSE)
 	{
@@ -1117,12 +1100,12 @@ void func_80006350(FnBundle *self)
 }
 
 // 0x800063A0
-void func_800063A0(FnBundle *self)
+void syTaskmanCommonTaskDraw(SYTaskFunction *tfunc)
 {
 	syTaskmanResetGraphicsHeap();
 	func_80004AB0();
 
-	self->fn0C();
+	tfunc->scene_draw();
 
 	func_800053CC();
 	syVideoApplySettingsNoBlock(sSYTaskmanViBuffers[gSYTaskmanTaskID]);
@@ -1137,13 +1120,15 @@ void func_800063A0(FnBundle *self)
 // 0x8000641C
 void unref_8000641C(GObj *gobj)
 {
-	s32 idx;
+	s32 id;
 	SYTaskGfxEnd *task;
 
 	syTaskmanSwitchContext(0);
 	syTaskmanResetGraphicsHeap();
 	func_80004AB0();
+
 	gobj->proc_display(gobj);
+
 	func_800053CC();
 
 	task = sSYTaskmanGfxEndBuffers[gSYTaskmanTaskID];
@@ -1153,13 +1138,13 @@ void unref_8000641C(GObj *gobj)
 		syErrorPrintf("gtl : not defined SCTaskGfxEnd\n");
 		while (TRUE);
 	}
-	syTaskmanScheduleGfxEnd(task, NULL, gSYTaskmanTaskID, &D_80045500);
+	syTaskmanScheduleGfxEnd(task, NULL, gSYTaskmanTaskID, &sSYTaskmanContextMesgQueue);
 	sSYTaskmanGfxBuffersCurrent[gSYTaskmanTaskID] = sSYTaskmanGfxBuffersStart[gSYTaskmanTaskID];
 
 	do
 	{
-		osRecvMesg(&D_80045500, (OSMesg*)&idx, OS_MESG_BLOCK);
-		D_80046638[idx] = 0;
+		osRecvMesg(&sSYTaskmanContextMesgQueue, (OSMesg*)&id, OS_MESG_BLOCK);
+		D_80046638[id] = 0;
 	}
 	while (D_80046638[gSYTaskmanTaskID] != 0);
 
@@ -1167,134 +1152,134 @@ void unref_8000641C(GObj *gobj)
 }
 
 // 0x80006548
-void func_80006548(syTaskmanBufferSetup *arg0, void (*arg1)())
+void syTaskmanLoadScene(SYTaskmanSceneSetup *tscene, void (*func_start)(void))
 {
 	s32 i;
-	syTaskmanDLBuffer sp44[2][4];
+	SYTaskmanDLBuffer dl_buffers[2][4];
 
-	gSYTaskmanTaskCount = arg0->contexts_num;
-	D_800465F8.unk00 = arg0->unk00;
-	D_800465F8.fn04  = arg0->func_update;
-	D_800465F8.fn0C  = arg0->func_draw;
+	gSYTaskmanTaskCount = tscene->contexts_num;
+	sSYTaskmanDefaultFunction.flags = tscene->flags;
+	sSYTaskmanDefaultFunction.scene_update = tscene->func_update;
+	sSYTaskmanDefaultFunction.scene_draw = tscene->func_draw;
 
 	func_80004DB4
 	(
-		syTaskmanMalloc(arg0->unk14 * sizeof(DObj) * gSYTaskmanTaskCount, 0x8),
-		arg0->unk14,
+		syTaskmanMalloc(tscene->taskgfx_num * sizeof(SYTaskGfx) * gSYTaskmanTaskCount, 0x8),
+		tscene->taskgfx_num,
 		syTaskmanMalloc(sizeof(SYTaskGfxEnd) * gSYTaskmanTaskCount, 0x8),
 		syTaskmanMalloc(sizeof(SYTaskVi) * gSYTaskmanTaskCount, 0x8)
 	);
 	for (i = 0; i < gSYTaskmanTaskCount; i++)
 	{
-		sp44[i][0].start  = syTaskmanMalloc(arg0->dl_buffer0_size, 0x8);
-		sp44[i][0].length = arg0->dl_buffer0_size;
-		sp44[i][1].start  = syTaskmanMalloc(arg0->dl_buffer1_size, 0x8);
-		sp44[i][1].length = arg0->dl_buffer1_size;
-		sp44[i][2].start  = syTaskmanMalloc(arg0->dl_buffer2_size, 0x8);
-		sp44[i][2].length = arg0->dl_buffer2_size;
-		sp44[i][3].start  = syTaskmanMalloc(arg0->dl_buffer3_size, 0x8);
-		sp44[i][3].length = arg0->dl_buffer3_size;
+		dl_buffers[i][0].start = syTaskmanMalloc(tscene->dl_buffer0_size, 0x8);
+		dl_buffers[i][0].length = tscene->dl_buffer0_size;
+		dl_buffers[i][1].start = syTaskmanMalloc(tscene->dl_buffer1_size, 0x8);
+		dl_buffers[i][1].length = tscene->dl_buffer1_size;
+		dl_buffers[i][2].start = syTaskmanMalloc(tscene->dl_buffer2_size, 0x8);
+		dl_buffers[i][2].length = tscene->dl_buffer2_size;
+		dl_buffers[i][3].start = syTaskmanMalloc(tscene->dl_buffer3_size, 0x8);
+		dl_buffers[i][3].length = tscene->dl_buffer3_size;
 	}
-	syTaskmanSetDLBuffer(sp44);
+	syTaskmanSetDLBuffer(dl_buffers);
 
 	for (i = 0; i < gSYTaskmanTaskCount; i++)
 	{
-		syMallocInit(&gSYTaskmanGraphicsHeap, 0x10002, syTaskmanMalloc(arg0->graphics_arena_size, 0x8), arg0->graphics_arena_size);
+		syMallocInit(&gSYTaskmanGraphicsHeap, 0x10002, syTaskmanMalloc(tscene->graphics_arena_size, 0x8), tscene->graphics_arena_size);
 		sSYTaskmanDefaultGraphicsHeap[i].id    = gSYTaskmanGraphicsHeap.id;
 		sSYTaskmanDefaultGraphicsHeap[i].start = gSYTaskmanGraphicsHeap.start;
 		sSYTaskmanDefaultGraphicsHeap[i].end   = gSYTaskmanGraphicsHeap.end;
 		sSYTaskmanDefaultGraphicsHeap[i].ptr   = gSYTaskmanGraphicsHeap.ptr;
 	}
-	arg0->unk30 = 2;
+	tscene->rdp_output_buffer_kind = 2;
 
-	if (arg0->rdp_output_buffer_size == 0)
+	if (tscene->rdp_output_buffer_size == 0)
 	{
-		arg0->rdp_output_buffer_size = 0x1000;
+		tscene->rdp_output_buffer_size = 0x1000;
 	}
-	func_80004CB4(arg0->unk30, syTaskmanMalloc(arg0->rdp_output_buffer_size, 0x10), arg0->rdp_output_buffer_size);
-	syRdpSetFuncLights(arg0->func_lights);
-	D_80046668 = arg0->func_controller;
-	syControllerSetAutoRead((uintptr_t)syControllerScheduleRead != (uintptr_t)D_80046668 ? TRUE : FALSE);
+	syTaskmanSetRdpOutputBuffer(tscene->rdp_output_buffer_kind, syTaskmanMalloc(tscene->rdp_output_buffer_size, 0x10), tscene->rdp_output_buffer_size);
+	syRdpSetFuncLights(tscene->func_lights);
+	sSYTaskmanFuncController = tscene->func_controller;
+	syControllerSetAutoRead((syControllerScheduleRead != sSYTaskmanFuncController) ? TRUE : FALSE);
 
 	dSYTaskmanUpdateCount = dSYTaskmanFrameCount = 0;
 
-	if (arg1 != NULL)
-		arg1();
-
-	// L800067B4
-	func_80005DA0(&D_800465F8);
+	if (func_start != NULL)
+	{
+		func_start();
+	}
+	syTaskmanRunTask(&sSYTaskmanDefaultFunction);
 }
 
 // 0x800067E4
-void unref_800067E4(syTaskmanBufferSetup *arg)
+void unref_800067E4(SYTaskmanSceneSetup *tscene)
 {
-	syTaskmanInitGeneralHeap(arg->arena_start, arg->arena_size);
-	D_800465F8.func_update = func_800062B4;
-	D_800465F8.func_draw = func_800062EC;
-	func_80006548(arg, NULL);
+	syTaskmanInitGeneralHeap(tscene->arena_start, tscene->arena_size);
+	sSYTaskmanDefaultFunction.task_update = func_800062B4;
+	sSYTaskmanDefaultFunction.task_draw = func_800062EC;
+	syTaskmanLoadScene(tscene, NULL);
 }
 
 // 0x8000683C
-void syTaskmanRun(SYTaskmanSetup *ts)
+void syTaskmanStartTask(SYTaskmanSetup *tsetup)
 {
-	GCSetup omsetup;
+	GCSetup gcsetup;
 
-	syTaskmanInitGeneralHeap(ts->buffer_setup.arena_start, ts->buffer_setup.arena_size);
+	syTaskmanInitGeneralHeap(tsetup->scene_setup.arena_start, tsetup->scene_setup.arena_size);
 
-	omsetup.gobjthreads      = syTaskmanMalloc(sizeof(GObjThread) * ts->gobjthreads_num, 0x8);
-	omsetup.gobjthreads_num  = ts->gobjthreads_num;
-	omsetup.gobjthreadstack_size = ts->gobjthreadstack_size;
+	gcsetup.gobjthreads = syTaskmanMalloc(sizeof(GObjThread) * tsetup->gobjthreads_num, 0x8);
+	gcsetup.gobjthreads_num = tsetup->gobjthreads_num;
+	gcsetup.gobjthreadstack_size = tsetup->gobjthreadstack_size;
 
-	if (ts->gobjthreadstack_size != 0)
+	if (tsetup->gobjthreadstack_size != 0)
 	{
-		omsetup.gobjthreadstacks = syTaskmanMalloc((ts->gobjthreadstack_size + offsetof(GObjStack, stack)) * ts->gobjthreadstacks_num, 0x8);
+		gcsetup.gobjthreadstacks = syTaskmanMalloc((tsetup->gobjthreadstack_size + offsetof(GObjStack, stack)) * tsetup->gobjthreadstacks_num, 0x8);
 	}
-	else omsetup.gobjthreadstacks = NULL;
+	else gcsetup.gobjthreadstacks = NULL;
 	
-	omsetup.gobjthreadstacks_num = ts->gobjthreadstacks_num;
-	omsetup.unk_omsetup_0x14 = ts->unk4C;
+	gcsetup.gobjthreadstacks_num = tsetup->gobjthreadstacks_num;
+	gcsetup.unk_gcsetup_0x14 = tsetup->unk4C;
 
-	omsetup.gobjprocs     = syTaskmanMalloc(sizeof(GObjProcess) * ts->gobjprocs_num, 0x4);
-	omsetup.gobjprocs_num = ts->gobjprocs_num;
+	gcsetup.gobjprocs = syTaskmanMalloc(sizeof(GObjProcess) * tsetup->gobjprocs_num, 0x4);
+	gcsetup.gobjprocs_num = tsetup->gobjprocs_num;
 
-	omsetup.gobjs     = syTaskmanMalloc(ts->gobj_size * ts->gobjs_num, 0x8);
-	omsetup.gobjs_num = ts->gobjs_num;
-	omsetup.gobj_size = ts->gobj_size;
+	gcsetup.gobjs = syTaskmanMalloc(tsetup->gobj_size * tsetup->gobjs_num, 0x8);
+	gcsetup.gobjs_num = tsetup->gobjs_num;
+	gcsetup.gobj_size = tsetup->gobj_size;
 
-	omsetup.xobjs     = syTaskmanMalloc(sizeof(XObj) * ts->xobjs_num, 0x8);
-	omsetup.xobjs_num = ts->xobjs_num;
+	gcsetup.xobjs = syTaskmanMalloc(sizeof(XObj) * tsetup->xobjs_num, 0x8);
+	gcsetup.xobjs_num = tsetup->xobjs_num;
 
-	gcSetMatrixProcess(ts->unk60);
-	omsetup.func_eject = ts->func_eject;
+	gcSetMatrixFuncList(tsetup->matrix_func_list);
+	gcsetup.func_eject = tsetup->func_eject;
 
-	omsetup.aobjs     = syTaskmanMalloc(sizeof(AObj) * ts->aobjs_num, 0x4);
-	omsetup.aobjs_num = ts->aobjs_num;
+	gcsetup.aobjs = syTaskmanMalloc(sizeof(AObj) * tsetup->aobjs_num, 0x4);
+	gcsetup.aobjs_num = tsetup->aobjs_num;
 
-	omsetup.mobjs     = syTaskmanMalloc(sizeof(MObj) * ts->mobjs_num, 0x4);
-	omsetup.mobjs_num = ts->mobjs_num;
+	gcsetup.mobjs = syTaskmanMalloc(sizeof(MObj) * tsetup->mobjs_num, 0x4);
+	gcsetup.mobjs_num = tsetup->mobjs_num;
 
-	omsetup.dobjs     = syTaskmanMalloc(ts->dobj_size * ts->dobjs_num, 0x8);
-	omsetup.dobjs_num = ts->dobjs_num;
-	omsetup.dobj_size = ts->dobj_size;
+	gcsetup.dobjs = syTaskmanMalloc(tsetup->dobj_size * tsetup->dobjs_num, 0x8);
+	gcsetup.dobjs_num = tsetup->dobjs_num;
+	gcsetup.dobj_size = tsetup->dobj_size;
 
-	omsetup.sobjs     = syTaskmanMalloc(ts->sobj_size * ts->sobjs_num, 0x8);
-	omsetup.sobjs_num = ts->sobjs_num;
-	omsetup.sobj_size = ts->sobj_size;
+	gcsetup.sobjs = syTaskmanMalloc(tsetup->sobj_size * tsetup->sobjs_num, 0x8);
+	gcsetup.sobjs_num = tsetup->sobjs_num;
+	gcsetup.sobj_size = tsetup->sobj_size;
 
-	omsetup.cameras     = syTaskmanMalloc(ts->camera_size * ts->cameras_num, 0x8);
-	omsetup.cameras_num = ts->cameras_num;
-	omsetup.camera_size = ts->camera_size;
+	gcsetup.cameras = syTaskmanMalloc(tsetup->cobj_size * tsetup->cobjs_num, 0x8);
+	gcsetup.cobjs_num = tsetup->cobjs_num;
+	gcsetup.cobj_size = tsetup->cobj_size;
 
-	gcSetupObjectManager(&omsetup);
+	gcSetupObjectManager(&gcsetup);
 
-	D_800465F8.func_update = func_80006350;
-	D_800465F8.func_draw = func_800063A0;
+	sSYTaskmanDefaultFunction.task_update = syTaskmanCommonTaskUpdate;
+	sSYTaskmanDefaultFunction.task_draw = syTaskmanCommonTaskDraw;
 
-	func_80006548(&ts->buffer_setup, ts->func_start);
+	syTaskmanLoadScene(&tsetup->scene_setup, tsetup->func_start);
 }
 
 // 0x80006A8C
-void syTaskmanSetLogicIntervals(u16 update, u16 framedraw)
+void syTaskmanSetIntervals(u16 update, u16 framedraw)
 {
 	sSYTaskmanUpdateInterval = update;
 	sSYTaskmanFrameInterval = framedraw;
@@ -1341,12 +1326,20 @@ s32 unref_80006B44(s32 arg0)
 }
 
 // 0x80006B80
-void func_80006B80()
+void func_80006B80(void)
 {
-	s32 i;
-	s32 j;
+	s32 i, j;
 
-	for (i = 0; i < 2; i++)
+	for
+	(
+		i = 0;
+		i <
+		(
+			ARRAY_COUNT(sSYTaskmanGfxEndBuffers) + ARRAY_COUNT(sSYTaskmanGfxBuffersStart) +
+			ARRAY_COUNT(sSYTaskmanGfxBuffersCurrent) + ARRAY_COUNT(sSYTaskmanGfxBuffersEnd)
+		) / 4;
+		i++
+	)
 	{
 		sSYTaskmanGfxBuffersEnd[i] = NULL;
 		sSYTaskmanGfxBuffersCurrent[i] = NULL;
@@ -1356,9 +1349,9 @@ void func_80006B80()
 	sSYTaskmanIsNoNearClipping = FALSE;
 	D_80046624 = D_80046626 = 0;
 
-	for (i = 0; i < 2; i++)
+	for (i = 0; i < ARRAY_COUNT(sSYTaskmanDLBuffers); i++)
 	{
-		for (j = 0; j < 4; j++)
+		for (j = 0; j < ARRAY_COUNT(sSYTaskmanDLBuffers[0]); j++)
 		{
 			sSYTaskmanDLBuffers[i][j].start  = NULL;
 			sSYTaskmanDLBuffers[i][j].length = 0;
@@ -1368,7 +1361,7 @@ void func_80006B80()
 	func_800048D0(NULL);
 
 	scAddClient(&sSYTaskmanClient, &sSYTaskmanGameTicMesgQueue, sSYTaskmanGameTicMesgs, ARRAY_COUNT(sSYTaskmanGameTicMesgs));
-	osCreateMesgQueue(&D_80045500, D_800454F0, ARRAY_COUNT(D_800454F0));
+	osCreateMesgQueue(&sSYTaskmanContextMesgQueue, sSYTaskmanContextMesgs, ARRAY_COUNT(sSYTaskmanContextMesgs));
 	osCreateMesgQueue(&sSYTaskmanResetMesgQueue, sSYTaskmanResetMesgs, ARRAY_COUNT(sSYTaskmanResetMesgs));
 	sSYTaskmanUpdateInterval = sSYTaskmanFrameInterval = 1;
 	osCreateMesgQueue(&D_800454C8, D_800454C0, ARRAY_COUNT(D_800454C0));

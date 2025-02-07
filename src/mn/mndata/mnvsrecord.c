@@ -2240,6 +2240,6 @@ void mnVSRecordStartScene(void)
 	dMNVSRecordVideoSetup.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&dMNVSRecordVideoSetup);
 
-	dMNVSRecordTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl32_BSS_END);
-	syTaskmanRun(&dMNVSRecordTaskmanSetup);
+	dMNVSRecordTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl32_BSS_END);
+	syTaskmanStartTask(&dMNVSRecordTaskmanSetup);
 }

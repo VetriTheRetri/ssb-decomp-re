@@ -2828,7 +2828,7 @@ void sc1PGameStartScene(void)
     dSC1PGameVideoSetup.zbuffer = syVideoGetZBuffer(6400);
     syVideoInit(&dSC1PGameVideoSetup);
 
-    dSC1PGameTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSYFramebufferSets - (uintptr_t)&ovl65_BSS_END);
+    dSC1PGameTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&gSYFramebufferSets - (uintptr_t)&ovl65_BSS_END);
     dSC1PGameTaskmanSetup.func_start = sc1PGameFuncStart;
     scManagerFuncUpdate(&dSC1PGameTaskmanSetup);
     

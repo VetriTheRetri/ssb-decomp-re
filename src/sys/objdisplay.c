@@ -44,7 +44,7 @@ Mtx44f D_80047068;
 s32 sGCCameraMatrixMode;
 
 // 0x800470AC
-syMtxProcess *sGCMatrixProcess;
+syMtxProcess *sGCMatrixFuncList;
 
 // 0x800470B0
 Gfx *D_800470B0;
@@ -99,9 +99,9 @@ void gcSetCameraScissor(s32 top, s32 bottom, s32 left, s32 right)
     dGCCameraScissorRight = right;
 }
 
-void gcSetMatrixProcess(syMtxProcess *proc_mtx)
+void gcSetMatrixFuncList(syMtxProcess *proc_mtx)
 {
-    sGCMatrixProcess = proc_mtx;
+    sGCMatrixFuncList = proc_mtx;
 }
 
 void unref_80010740(void)
@@ -1157,9 +1157,9 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 default:
                     if (xobj->kind >= 66)
                     {
-                        if (sGCMatrixProcess != NULL)
+                        if (sGCMatrixFuncList != NULL)
                         {
-                            sb32(*proc)(Mtx*, DObj*, Gfx**) = (dobj->parent_gobj->frame_draw_last != (u8)dSYTaskmanFrameCount) ? sGCMatrixProcess[xobj->kind - 66].proc_diff : sGCMatrixProcess[xobj->kind - 66].proc_same;
+                            sb32(*proc)(Mtx*, DObj*, Gfx**) = (dobj->parent_gobj->frame_draw_last != (u8)dSYTaskmanFrameCount) ? sGCMatrixFuncList[xobj->kind - 66].proc_diff : sGCMatrixFuncList[xobj->kind - 66].proc_same;
 
                             // If proc's return value uses up a GPR and is assigned to a variable, IDO refuses to free up v0 later down.
                             ret = proc(mtx_store.gbi, dobj, &current_dl);
@@ -2985,11 +2985,11 @@ void gcPrepCameraMatrix(Gfx **dls, CObj *cobj)
                         break;
 
                     default:
-                        if ((xobj->kind >= 66) && (sGCMatrixProcess != NULL))
+                        if ((xobj->kind >= 66) && (sGCMatrixFuncList != NULL))
                         {
-                            if (sGCMatrixProcess[xobj->kind - 66].proc_diff != NULL)
+                            if (sGCMatrixFuncList[xobj->kind - 66].proc_diff != NULL)
                             {
-                                sGCMatrixProcess[xobj->kind - 66].proc_diff(mtx_store.gbi, cobj, &dl);
+                                sGCMatrixFuncList[xobj->kind - 66].proc_diff(mtx_store.gbi, cobj, &dl);
                             }
                         }
                         break;
@@ -3042,11 +3042,11 @@ void gcPrepCameraMatrix(Gfx **dls, CObj *cobj)
                     break;
 
                 default:
-                    if ((xobj->kind >= 66) && (sGCMatrixProcess != NULL))
+                    if ((xobj->kind >= 66) && (sGCMatrixFuncList != NULL))
                     {
-                        if (sGCMatrixProcess[xobj->kind - 66].proc_same != NULL)
+                        if (sGCMatrixFuncList[xobj->kind - 66].proc_same != NULL)
                         {
-                            sGCMatrixProcess[xobj->kind - 66].proc_same(mtx_store.gbi, cobj, &dl);
+                            sGCMatrixFuncList[xobj->kind - 66].proc_same(mtx_store.gbi, cobj, &dl);
                         }
                     }
                     break;

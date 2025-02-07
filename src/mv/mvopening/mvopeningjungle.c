@@ -434,6 +434,6 @@ void mvOpeningJungleStartScene(void)
     dMVOpeningJungleVideoSetup.zbuffer = syVideoGetZBuffer(6400);
     syVideoInit(&dMVOpeningJungleVideoSetup);
 
-    dMVOpeningJungleTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl51_BSS_END);
-    syTaskmanRun(&dMVOpeningJungleTaskmanSetup);
+    dMVOpeningJungleTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl51_BSS_END);
+    syTaskmanStartTask(&dMVOpeningJungleTaskmanSetup);
 }

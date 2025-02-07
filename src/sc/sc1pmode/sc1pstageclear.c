@@ -2062,6 +2062,6 @@ void sc1PStageClearStartScene(void)
 	dGM1PStageClearVideoSetup.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&dGM1PStageClearVideoSetup);
 
-	dGM1PStageClearTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl56_BSS_END);
-	syTaskmanRun(&dGM1PStageClearTaskmanSetup);
+	dGM1PStageClearTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl56_BSS_END);
+	syTaskmanStartTask(&dGM1PStageClearTaskmanSetup);
 }

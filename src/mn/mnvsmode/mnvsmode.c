@@ -1,7 +1,6 @@
 #include <mn/menu.h>
 #include <gm/gmsound.h>
 #include <sc/scene.h>
-#include <lb/library.h>
 #include <sys/video.h>
 #include <sys/controller.h>
 
@@ -14,9 +13,8 @@ extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 //                               //
 // // // // // // // // // // // //
 
-extern uintptr_t D_NF_00000000;
 extern uintptr_t D_NF_00000006;
-extern u8 gSYMainIsSPImemOK;
+extern ub8 gSYMainImemOK;
 
 // // // // // // // // // // // //
 //                               //
@@ -25,7 +23,7 @@ extern u8 gSYMainIsSPImemOK;
 // // // // // // // // // // // //
 
 // 0x801347B0
-u32 dMNVSModeFileIDs[/* */] = { &D_NF_00000000, &D_NF_00000006 };
+u32 dMNVSModeFileIDs[/* */] = { &lMNCommonFileID, &D_NF_00000006 };
 
 // 0x801347B8
 Lights1 dMNVSModeLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x3C, 0x3C, 0x3C);
@@ -1477,12 +1475,7 @@ void mnVSModeFuncStart(void)
 
     lbRelocInitSetup(&rl_setup);
 
-    if
-    (
-        !(gSCManagerBackupData.error_flags & LBBACKUP_ERROR_RANDOMKNOCKBACK) && 
-        (gSCManagerBackupData.boot >= 22)                                    && 
-        (gSYMainIsSPImemOK == FALSE)
-    )
+    if (!(gSCManagerBackupData.error_flags & LBBACKUP_ERROR_RANDOMKNOCKBACK) && (gSCManagerBackupData.boot > 21) && (gSYMainImemOK == FALSE))
     {
         gSCManagerBackupData.error_flags |= LBBACKUP_ERROR_RANDOMKNOCKBACK;
     }
@@ -1565,6 +1558,6 @@ void mnVSModeStartScene(void)
     dMNVSModeVideoSetup.zbuffer = syVideoGetZBuffer(6400);
     syVideoInit(&dMNVSModeVideoSetup);
 
-    dMNVSModeTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl19_BSS_END);
-    syTaskmanRun(&dMNVSModeTaskmanSetup);
+    dMNVSModeTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl19_BSS_END);
+    syTaskmanStartTask(&dMNVSModeTaskmanSetup);
 }

@@ -3372,7 +3372,7 @@ void mnVSResultsStartScene(void)
 	dMNVSResultsVideoSetup.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&dMNVSResultsVideoSetup);
 
-	dMNVSResultsTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl31_BSS_END);
+	dMNVSResultsTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl31_BSS_END);
 	scManagerFuncUpdate(&dMNVSResultsTaskmanSetup);
 
 	for (i = 0; i < GMCOMMON_PLAYERS_MAX; i++)

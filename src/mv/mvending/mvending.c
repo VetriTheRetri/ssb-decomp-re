@@ -554,7 +554,7 @@ void mvEndingStartScene(void)
 
     syVideoInit(&dMVEndingVideoSetup);
 
-    dMVEndingTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl54_BSS_END);
+    dMVEndingTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl54_BSS_END);
 
-    syTaskmanRun(&dMVEndingTaskmanSetup);
+    syTaskmanStartTask(&dMVEndingTaskmanSetup);
 }

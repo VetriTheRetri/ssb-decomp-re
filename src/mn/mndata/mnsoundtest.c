@@ -1747,6 +1747,6 @@ void mnSoundTestStartScene(void)
     dMNSoundTestVideoSetup.zbuffer = syVideoGetZBuffer(6400);
     syVideoInit(&dMNSoundTestVideoSetup);
 
-    dMNSoundTestTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl62_BSS_END);
-    syTaskmanRun(&dMNSoundTestTaskmanSetup);
+    dMNSoundTestTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl62_BSS_END);
+    syTaskmanStartTask(&dMNSoundTestTaskmanSetup);
 }

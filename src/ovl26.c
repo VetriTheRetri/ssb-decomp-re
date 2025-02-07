@@ -4314,6 +4314,6 @@ void mnPlayersVSStartScene(void)
 	dMNPlayersVSVideoSetup.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&dMNPlayersVSVideoSetup);
 
-	dMNPlayersVSTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl26_BSS_END);
+	dMNPlayersVSTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl26_BSS_END);
 	scManagerFuncUpdate(&dMNPlayersVSTaskmanSetup);
 }

@@ -14,25 +14,25 @@ extern intptr_t lMN1PModeTextTraningModeSprite;             // 0x00005AC8
 extern intptr_t lMN1PModeTextBonus1PracticeSprite;          // 0x00005F28
 extern intptr_t lMN1PModeTextBonus2PracticeSprite;          // 0x00006388
 
-extern void mnPlayers1PGameModeFuncLights(Gfx **dls);
-extern void mnPlayers1PGameModeSetOptionSpriteColors(GObj *gobj, s32 status, s32 option_id);
-extern void mnPlayers1PGameModeMakeOptionTab(GObj *gobj, f32 pos_x, f32 pos_y, s32 lrs);
-extern void mnPlayers1PGameModeMake1PGame(void);
-extern void mnPlayers1PGameModeMakeTrainingMode(void);
-extern void mnPlayers1PGameModeMakeBonus1Practice(void);
-extern void mnPlayers1PGameModeMakeBonus2Practice(void);
+extern void mn1PModeFuncLights(Gfx **dls);
+extern void mn1PModeSetOptionSpriteColors(GObj *gobj, s32 status, s32 option_id);
+extern void mn1PModeMakeOptionTab(GObj *gobj, f32 pos_x, f32 pos_y, s32 lrs);
+extern void mn1PModeMake1PGame(void);
+extern void mn1PModeMakeTrainingMode(void);
+extern void mn1PModeMakeBonus1Practice(void);
+extern void mn1PModeMakeBonus2Practice(void);
 extern void func_ovl18_80132208(SObj *sobj);
 extern void func_ovl18_8013223C(void);
-extern void mnPlayers1PGameModeLabelsProcDisplay(GObj *gobj);
-extern void mnPlayers1PGameModeMakeLabels(void);
-extern void mnPlayers1PGameModeMakeDecals(void);
-extern void mnPlayers1PGameModeMakeLink3Camera(void);
-extern void mnPlayers1PGameModeMakeOptionsCamera(void);
-extern void mnPlayers1PGameModeMakeLabelsCamera(void);
-extern void mnPlayers1PGameModeMakeDecalsCamera(void);
-extern void mnPlayers1PGameModeInitVars(void);
-extern void mnPlayers1PGameModeProcRun(GObj *gobj);
-extern void mnPlayers1PGameModeFuncStart(void);
-extern void mnPlayers1PGameModeStartScene(void);
+extern void mn1PModeLabelsProcDisplay(GObj *gobj);
+extern void mn1PModeMakeLabels(void);
+extern void mn1PModeMakeDecals(void);
+extern void mn1PModeMakeLink3Camera(void);
+extern void mn1PModeMakeOptionsCamera(void);
+extern void mn1PModeMakeLabelsCamera(void);
+extern void mn1PModeMakeDecalsCamera(void);
+extern void mn1PModeInitVars(void);
+extern void mn1PModeProcRun(GObj *gobj);
+extern void mn1PModeFuncStart(void);
+extern void mn1PModeStartScene(void);
 
 #endif

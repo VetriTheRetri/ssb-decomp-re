@@ -916,7 +916,7 @@ void scManagerRunLoop(sb32 arg)
 			case 8:
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[18]);
-				mnPlayers1PGameModeStartScene();
+				mn1PModeStartScene();
 				break;
 
 			case nSCKindOption:
@@ -1250,7 +1250,7 @@ void scManagerRunLoop(sb32 arg)
 // 0x800A2698
 void scManagerFuncUpdate(SYTaskmanSetup *arg)
 {
-	syTaskmanRun(arg);
+	syTaskmanStartTask(arg);
 }
 
 // 0x800A26B8

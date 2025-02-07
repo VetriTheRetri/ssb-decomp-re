@@ -576,6 +576,6 @@ void mvOpeningLinkStartScene(void)
 	dMVOpeningLinkVideoSetup.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&dMVOpeningLinkVideoSetup);
 
-	dMVOpeningLinkTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl40_BSS_END);
-	syTaskmanRun(&dMVOpeningLinkTaskmanSetup);
+	dMVOpeningLinkTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl40_BSS_END);
+	syTaskmanStartTask(&dMVOpeningLinkTaskmanSetup);
 }

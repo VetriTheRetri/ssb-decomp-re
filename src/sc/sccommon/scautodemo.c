@@ -717,7 +717,7 @@ void scAutoDemoStartScene(void)
 
 	syVideoInit(&dSCAutoDemoVideoSetup);
 
-	dSCAutoDemoTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSYFramebufferSets - (uintptr_t)&ovl64_BSS_END);
+	dSCAutoDemoTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&gSYFramebufferSets - (uintptr_t)&ovl64_BSS_END);
 	dSCAutoDemoTaskmanSetup.func_start = scAutoDemoFuncStart;
 
 	scManagerFuncUpdate(&dSCAutoDemoTaskmanSetup);

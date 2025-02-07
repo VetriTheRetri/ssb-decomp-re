@@ -196,6 +196,6 @@ void dbFallsStartScene(void)
 	dDBFallsVideoSetup.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&dDBFallsVideoSetup);
 
-	dDBFallsTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSYFramebufferSets - (uintptr_t)&ovl15_BSS_END);
-	syTaskmanRun(&dDBFallsTaskmanSetup);
+	dDBFallsTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&gSYFramebufferSets - (uintptr_t)&ovl15_BSS_END);
+	syTaskmanStartTask(&dDBFallsTaskmanSetup);
 }

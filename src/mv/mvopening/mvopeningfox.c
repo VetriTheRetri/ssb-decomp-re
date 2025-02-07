@@ -580,6 +580,6 @@ void mvOpeningFoxStartScene(void)
 	dMVOpeningFoxVideoSetup.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&dMVOpeningFoxVideoSetup);
 
-	dMVOpeningFoxTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl39_BSS_END);
-	syTaskmanRun(&dMVOpeningFoxTaskmanSetup);
+	dMVOpeningFoxTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl39_BSS_END);
+	syTaskmanStartTask(&dMVOpeningFoxTaskmanSetup);
 }

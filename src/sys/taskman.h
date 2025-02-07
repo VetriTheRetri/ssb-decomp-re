@@ -8,56 +8,71 @@
 #include <PR/mbi.h>
 #include <PR/ultratypes.h>
 
-typedef struct syTaskmanDLBuffer
+// match Nintendo's name to make the text and data symbols
+#define NewUcodeInfo(ucode) \
+	{ (u64*)ucode##TextStart, (u64*)ucode##DataStart }
+#define NullUcodeInfo \
+	{ NULL, NULL }
+#define EndUncodeInfoArray NullUcodeInfo
+
+typedef enum SYTaskmanStatus
 {
-	/* 0x00 */ Gfx *start;
-	/* 0x04 */ u32 length;
+	nSYTaskmanStatusDefault,
+	nSYTaskmanStatusLoadScene,
+	nSYTaskmanStatusUnk2
 
-} syTaskmanDLBuffer; // size = 0x08
+} SYTaskmanStatus;
 
-typedef struct syTaskmanBufferSetup
+typedef struct SYTaskmanDLBuffer
 {
-	/* 0x00 */ u16 unk00;
-	/* 0x04 */ void (*func_update)(void);
-	/* 0x08 */ void (*func_draw)(void);
-	/* 0x0C */ void *arena_start;           // Start of allocatable memory pool
-	/* 0x10 */ size_t arena_size;           // Size of allocatable memory pool for heap; usually from end of last overlay's .bss section to start of subsys (ovl1)
-	/* 0x14 */ u32 unk14; 					// Count?
-	/* 0x18 */ s32 contexts_num;            // Number of contexts? (what even is a task?)
-	/* 0x1C */ size_t dl_buffer0_size;
-	/* 0x20 */ size_t dl_buffer1_size;
-	/* 0x24 */ size_t dl_buffer2_size;
-	/* 0x28 */ size_t dl_buffer3_size;
-	/* 0x2C */ size_t graphics_arena_size;	// Graphics memory pool size
-	/* 0x30 */ u16 unk30;
-	/* 0x34 */ s32 rdp_output_buffer_size;
-	/* 0x38 */ void (*func_lights)(Gfx**); 	// Lighting callback?
-	/* 0x3C */ void (*func_controller)(); 	// Controller read callback?
+	Gfx *start;
+	u32 length;
 
-} syTaskmanBufferSetup; // size == 0x40
+} SYTaskmanDLBuffer; // size = 0x08
+
+typedef struct SYTaskmanSceneSetup
+{
+	u16 flags;
+	void (*func_update)(void);
+	void (*func_draw)(void);
+	void *arena_start;          	// Start of allocatable memory pool
+	size_t arena_size;          	// Size of allocatable memory pool for heap; usually from end of last overlay's .bss section to start of subsys (ovl1)
+	s32 taskgfx_num; 				// Number of SYTaskGfx structs?
+	s32 contexts_num;           	// Number of contexts? (what even is a task?)
+	size_t dl_buffer0_size;
+	size_t dl_buffer1_size;
+	size_t dl_buffer2_size;
+	size_t dl_buffer3_size;
+	size_t graphics_arena_size;		// Graphics memory pool size
+	u16 rdp_output_buffer_kind;
+	s32 rdp_output_buffer_size;
+	void (*func_lights)(Gfx**); 	// Lighting callback?
+	void (*func_controller)(void); 	// Controller read callback?
+
+} SYTaskmanSceneSetup; // size == 0x40
 
 typedef struct SYTaskmanSetup
 {
-	/* 0x00 */ syTaskmanBufferSetup buffer_setup;
-	/* 0x40 */ u32 gobjthreads_num;
-	/* 0x44 */ u32 gobjthreadstack_size;
-	/* 0x48 */ u32 gobjthreadstacks_num;
-	/* 0x4C */ s32 unk4C;
-	/* 0x50 */ u32 gobjprocs_num;
-	/* 0x54 */ u32 gobjs_num;
-	/* 0x58 */ u32 gobj_size;
-	/* 0x5C */ u32 xobjs_num;
-	/* 0x60 */ void *unk60;
-	/* 0x64 */ void (*func_eject)(DObjVec*); 	// fn pointer void(*)(struct DObjVec *)
-	/* 0x68 */ u32 aobjs_num;
-	/* 0x6C */ u32 mobjs_num;
-	/* 0x70 */ u32 dobjs_num;
-	/* 0x74 */ u32 dobj_size;
-	/* 0x78 */ u32 sobjs_num;
-	/* 0x7C */ u32 sobj_size;
-	/* 0x80 */ u32 cameras_num;
-	/* 0x84 */ u32 camera_size;
-	/* 0x88 */ void (*func_start)(void);	// Scene start function
+	SYTaskmanSceneSetup scene_setup;
+	u32 gobjthreads_num;
+	size_t gobjthreadstack_size;
+	u32 gobjthreadstacks_num;
+	s32 unk4C;
+	u32 gobjprocs_num;
+	u32 gobjs_num;
+	size_t gobj_size;
+	u32 xobjs_num;
+	void *matrix_func_list;
+	void (*func_eject)(DObjVec*); 	// fn pointer void(*)(struct DObjVec *)
+	u32 aobjs_num;
+	u32 mobjs_num;
+	u32 dobjs_num;
+	size_t dobj_size;
+	u32 sobjs_num;
+	size_t sobj_size;
+	u32 cobjs_num;
+	size_t cobj_size;
+	void (*func_start)(void);	// Scene start function
 
 } SYTaskmanSetup; // size >= 0x8C
 
@@ -84,7 +99,7 @@ extern void syTaskmanAppendGfxUcodeLoad(Gfx **dlist, u32 ucodeIdx);
 extern void func_800053CC(void);
 extern void syTaskmanUpdateDLBuffers(void);
 extern void syTaskmanSetLoadScene(void);
-extern void syTaskmanRun(SYTaskmanSetup *arg);
+extern void syTaskmanStartTask(SYTaskmanSetup *arg);
 extern void func_80006B80(void);
 
 #endif

@@ -20,10 +20,10 @@ typedef struct syMtxProcess
 extern Mtx *sGCMatrixProjectL;
 extern f32 gGCScaleX;
 extern Mtx44f gGCMatrixPerspF;
-extern syMtxProcess *sGCMatrixProcess;
+extern syMtxProcess *sGCMatrixFuncList;
 
 extern void gcSetCameraScissor(s32 top, s32 bottom, s32 left, s32 right);
-extern void gcSetMatrixProcess(syMtxProcess *proc_mtx);
+extern void gcSetMatrixFuncList(syMtxProcess *proc_mtx);
 extern void unref_80010740(void);
 extern void func_80010748(Mtx *mtx_l, DObj *dobj, sb32 is_translate);
 extern void func_80010918(Mtx *mtx_l, DObj *dobj, sb32 is_translate);

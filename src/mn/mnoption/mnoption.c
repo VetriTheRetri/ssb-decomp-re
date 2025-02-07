@@ -1064,6 +1064,6 @@ void mnOptionStartScene(void)
     dMNOptionVideoSetup.zbuffer = syVideoGetZBuffer(6400);
     syVideoInit(&dMNOptionVideoSetup);
 
-    dMNOptionTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl60_BSS_END);
-    syTaskmanRun(&dMNOptionTaskmanSetup);
+    dMNOptionTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl60_BSS_END);
+    syTaskmanStartTask(&dMNOptionTaskmanSetup);
 }

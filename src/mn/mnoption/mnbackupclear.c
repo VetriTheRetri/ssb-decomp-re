@@ -856,6 +856,6 @@ void mnBackupClearStartScene(void)
     dMNBackupClearVideoSetup.zbuffer = syVideoGetZBuffer(6400);
     syVideoInit(&dMNBackupClearVideoSetup);
     
-    dMNBackupClearTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl53_BSS_END);
-    syTaskmanRun(&dMNBackupClearTaskmanSetup);
+    dMNBackupClearTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl53_BSS_END);
+    syTaskmanStartTask(&dMNBackupClearTaskmanSetup);
 }

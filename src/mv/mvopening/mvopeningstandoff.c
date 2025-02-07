@@ -609,6 +609,6 @@ void mvOpeningStandoffStartScene(void)
     dMVOpeningStandoffVideoSetup.zbuffer = syVideoGetZBuffer(6400);
     syVideoInit(&dMVOpeningStandoffVideoSetup);
 
-    dMVOpeningStandoffTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl47_BSS_END);
-    syTaskmanRun(&dMVOpeningStandoffTaskmanSetup);
+    dMVOpeningStandoffTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl47_BSS_END);
+    syTaskmanStartTask(&dMVOpeningStandoffTaskmanSetup);
 }

@@ -1413,7 +1413,7 @@ void mvOpeningRoomStartScene(void)
 	dMVOpeningRoomVideoSetup.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&dMVOpeningRoomVideoSetup);
 
-	dMVOpeningRoomTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl34_BSS_END);
+	dMVOpeningRoomTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl34_BSS_END);
 	scManagerFuncUpdate(&dMVOpeningRoomTaskmanSetup);
 
 	func_800048D0(NULL);

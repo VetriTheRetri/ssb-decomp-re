@@ -592,6 +592,6 @@ void mvOpeningMarioStartScene(void)
 	dMVOpeningMarioVideoSetup.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&dMVOpeningMarioVideoSetup);
 
-	dMVOpeningMarioTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl36_BSS_END);
-	syTaskmanRun(&dMVOpeningMarioTaskmanSetup);
+	dMVOpeningMarioTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl36_BSS_END);
+	syTaskmanStartTask(&dMVOpeningMarioTaskmanSetup);
 }

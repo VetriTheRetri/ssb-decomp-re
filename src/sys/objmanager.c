@@ -2242,7 +2242,7 @@ void gcSetupObjectManager(GCSetup *setup)
 	s32 i;
 
 	sGCThreadStackSize = setup->gobjthreadstack_size;
-	sUnkUnusedSetup = setup->unk_omsetup_0x14;
+	sUnkUnusedSetup = setup->unk_gcsetup_0x14;
 
 	if (setup->gobjthreads_num != 0)
 	{
@@ -2395,21 +2395,21 @@ void gcSetupObjectManager(GCSetup *setup)
 
 	sGCSpriteSize = setup->sobj_size;
 
-	if (setup->cameras_num != 0)
+	if (setup->cobjs_num != 0)
 	{
 		CObj *current_cobj;
 		sGCCameraHead = current_cobj = setup->cameras;
 
-		for (i = 0; i < setup->cameras_num - 1; i++)
+		for (i = 0; i < setup->cobjs_num - 1; i++)
 		{
-			current_cobj->next = (CObj*) ((uintptr_t)current_cobj + setup->camera_size);
+			current_cobj->next = (CObj*) ((uintptr_t)current_cobj + setup->cobj_size);
 			current_cobj = current_cobj->next;
 		}
 		current_cobj->next = NULL;
 	}
 	else sGCCameraHead = NULL;
 
-	sGCCameraSize = setup->camera_size;
+	sGCCameraSize = setup->cobj_size;
 
 	for (i = 0; i < (ARRAY_COUNT(sGCCommonLinks) + ARRAY_COUNT(gGCCommonLinks)) / 2; i++)
 	{

@@ -582,6 +582,6 @@ void mvOpeningYoshiStartScene(void)
 	dMVOpeningYoshiVideoSetup.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&dMVOpeningYoshiVideoSetup);
 
-	dMVOpeningYoshiTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl41_BSS_END);
-	syTaskmanRun(&dMVOpeningYoshiTaskmanSetup);
+	dMVOpeningYoshiTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl41_BSS_END);
+	syTaskmanStartTask(&dMVOpeningYoshiTaskmanSetup);
 }

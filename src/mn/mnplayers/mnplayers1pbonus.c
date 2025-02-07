@@ -2893,6 +2893,6 @@ void mnPlayers1PBonusStartScene(void)
 	dMNPlayers1PBonusVideoSetup.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&dMNPlayers1PBonusVideoSetup);
 
-	dMNPlayers1PBonusTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl29_BSS_END);
-	syTaskmanRun(&dMNPlayers1PBonusTaskmanSetup);
+	dMNPlayers1PBonusTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl29_BSS_END);
+	syTaskmanStartTask(&dMNPlayers1PBonusTaskmanSetup);
 }

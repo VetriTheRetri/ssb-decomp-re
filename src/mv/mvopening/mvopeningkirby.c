@@ -594,6 +594,6 @@ void mvOpeningKirbyStartScene(void)
 	dMVOpeningKirbyVideoSetup.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&dMVOpeningKirbyVideoSetup);
 
-	dMVOpeningKirbyTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl43_BSS_END);
-	syTaskmanRun(&dMVOpeningKirbyTaskmanSetup);
+	dMVOpeningKirbyTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl43_BSS_END);
+	syTaskmanStartTask(&dMVOpeningKirbyTaskmanSetup);
 }

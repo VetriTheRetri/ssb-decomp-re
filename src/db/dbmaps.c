@@ -202,6 +202,6 @@ void dbMapsStartScene(void)
 	dDBMapsVideoSetup.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&dDBMapsVideoSetup);
 
-	dDBMapsTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl9_VRAM - (uintptr_t)&ovl12_BSS_END);
-	syTaskmanRun(&dDBMapsTaskmanSetup);
+	dDBMapsTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl9_VRAM - (uintptr_t)&ovl12_BSS_END);
+	syTaskmanStartTask(&dDBMapsTaskmanSetup);
 }

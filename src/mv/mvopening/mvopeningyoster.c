@@ -395,6 +395,6 @@ void mvOpeningYosterStartScene(void)
     dMVOpeningYosterVideoSetup.zbuffer = syVideoGetZBuffer(6400);
     syVideoInit(&dMVOpeningYosterVideoSetup);
 
-    dMVOpeningYosterTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl45_BSS_END);
-    syTaskmanRun(&dMVOpeningYosterTaskmanSetup);
+    dMVOpeningYosterTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl45_BSS_END);
+    syTaskmanStartTask(&dMVOpeningYosterTaskmanSetup);
 }

@@ -3241,6 +3241,6 @@ void mnPlayers1PTrainingStartScene(void)
 	dMNPlayers1PTrainingVideoSetup.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&dMNPlayers1PTrainingVideoSetup);
 
-	dMNPlayers1PTrainingTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl28_BSS_END);
+	dMNPlayers1PTrainingTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl28_BSS_END);
 	scManagerFuncUpdate(&dMNPlayers1PTrainingTaskmanSetup);
 }

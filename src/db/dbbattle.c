@@ -543,6 +543,6 @@ void dbBattleStartScene(void)
 	dDBBattleVideoSetup.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&dDBBattleVideoSetup);
 
-	dDBBattleTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl9_VRAM - (uintptr_t)&ovl14_BSS_END);
-	syTaskmanRun(&dDBBattleTaskmanSetup);
+	dDBBattleTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl9_VRAM - (uintptr_t)&ovl14_BSS_END);
+	syTaskmanStartTask(&dDBBattleTaskmanSetup);
 }

@@ -6,7 +6,7 @@
 
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
-extern ub8 gSYMainIsDmemOK;
+extern ub8 gSYMainDmemOK;
 
 extern uintptr_t D_NF_00000000;
 extern uintptr_t D_NF_00000002;
@@ -17,19 +17,19 @@ extern uintptr_t D_NF_00000002;
 //                               //
 // // // // // // // // // // // //
 
-#define mnPlayers1PGameModeCheckGetOptionButtonInput(is_button, mask) \
+#define mn1PModeCheckGetOptionButtonInput(is_button, mask) \
 mnCommonCheckGetOptionButtonInput(sMN1PModeOptionChangeWait, is_button, mask)
 
-#define mnPlayers1PGameModeCheckGetOptionStickInputUD(stick_range, min, b) \
+#define mn1PModeCheckGetOptionStickInputUD(stick_range, min, b) \
 mnCommonCheckGetOptionStickInputUD(sMN1PModeOptionChangeWait, stick_range, min, b)
 
-#define mnPlayers1PGameModeCheckGetOptionStickInputLR(stick_range, min, b) \
+#define mn1PModeCheckGetOptionStickInputLR(stick_range, min, b) \
 mnCommonCheckGetOptionStickInputLR(sMN1PModeOptionChangeWait, stick_range, min, b)
 
-#define mnPlayers1PGameModeSetOptionChangeWaitP(is_button, stick_range, div) \
+#define mn1PModeSetOptionChangeWaitP(is_button, stick_range, div) \
 mnCommonSetOptionChangeWaitP(sMN1PModeOptionChangeWait, is_button, stick_range, div)
 
-#define mnPlayers1PGameModeSetOptionChangeWaitN(is_button, stick_range, div) \
+#define mn1PModeSetOptionChangeWaitN(is_button, stick_range, div) \
 mnCommonSetOptionChangeWaitN(sMN1PModeOptionChangeWait, is_button, stick_range, div)
 
 // // // // // // // // // // // //
@@ -95,13 +95,13 @@ void *sMN1PModeFiles[ARRAY_COUNT(dMN1PModeFileIDs)];
 // // // // // // // // // // // //
 
 // 0x80131B00
-void mnPlayers1PGameModeFuncLights(Gfx **dls)
+void mn1PModeFuncLights(Gfx **dls)
 {
     gSPDisplayList(dls[0]++, dMN1PModeDisplayList);
 }
 
 // 0x80131B24
-void mnPlayers1PGameModeSetOptionSpriteColors(GObj *gobj, s32 status, s32 option_id)
+void mn1PModeSetOptionSpriteColors(GObj *gobj, s32 status, s32 option_id)
 {
     // 0x801330C8
     SYColorRGBPair selcolors = { { 0x00, 0x00, 0x00 }, { 0xFF, 0xFF, 0xFF } };
@@ -159,7 +159,7 @@ void mnPlayers1PGameModeSetOptionSpriteColors(GObj *gobj, s32 status, s32 option
 }
 
 // 0x80131D04
-void mnPlayers1PGameModeMakeOptionTab(GObj *gobj, f32 pos_x, f32 pos_y, s32 lrs)
+void mn1PModeMakeOptionTab(GObj *gobj, f32 pos_x, f32 pos_y, s32 lrs)
 {
     SObj  *sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PModeFiles[0], &lMNCommonOptionTabLeftSprite));
 
@@ -196,7 +196,7 @@ void mnPlayers1PGameModeMakeOptionTab(GObj *gobj, f32 pos_x, f32 pos_y, s32 lrs)
 }
 
 // 0x80131E34
-void mnPlayers1PGameModeMake1PGame(void)
+void mn1PModeMake1PGame(void)
 {
     GObj *gobj;
     SObj *sobj;
@@ -204,8 +204,8 @@ void mnPlayers1PGameModeMake1PGame(void)
     sMN1PModeOptionGObjs[nMN1PModeOption1PGame] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, ~0);
     
-    mnPlayers1PGameModeMakeOptionTab(gobj, 124.0F, 42.0F, 16);
-    mnPlayers1PGameModeSetOptionSpriteColors(gobj, sMN1PModeOption == nMN1PModeOption1PGame, nMN1PModeOption1PGame);
+    mn1PModeMakeOptionTab(gobj, 124.0F, 42.0F, 16);
+    mn1PModeSetOptionSpriteColors(gobj, sMN1PModeOption == nMN1PModeOption1PGame, nMN1PModeOption1PGame);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PModeFiles[1], &lMN1PModeText1PGameSprite));
     
@@ -221,7 +221,7 @@ void mnPlayers1PGameModeMake1PGame(void)
 }
 
 // 0x80131F0C
-void mnPlayers1PGameModeMakeTrainingMode(void)
+void mn1PModeMakeTrainingMode(void)
 {
     GObj *gobj;
     SObj *sobj;
@@ -229,8 +229,8 @@ void mnPlayers1PGameModeMakeTrainingMode(void)
     sMN1PModeOptionGObjs[nMN1PModeOptionTrainingMode] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, ~0);
     
-    mnPlayers1PGameModeMakeOptionTab(gobj, 99.0F, 84.0F, 16);
-    mnPlayers1PGameModeSetOptionSpriteColors(gobj, sMN1PModeOption == nMN1PModeOptionTrainingMode, nMN1PModeOptionTrainingMode);
+    mn1PModeMakeOptionTab(gobj, 99.0F, 84.0F, 16);
+    mn1PModeSetOptionSpriteColors(gobj, sMN1PModeOption == nMN1PModeOptionTrainingMode, nMN1PModeOptionTrainingMode);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PModeFiles[1], &lMN1PModeTextTraningModeSprite));
 
@@ -246,7 +246,7 @@ void mnPlayers1PGameModeMakeTrainingMode(void)
 }
 
 // 0x80131FE8
-void mnPlayers1PGameModeMakeBonus1Practice(void)
+void mn1PModeMakeBonus1Practice(void)
 {
     GObj *gobj;
     SObj *sobj;
@@ -262,7 +262,7 @@ void mnPlayers1PGameModeMakeBonus1Practice(void)
     sobj->pos.x = 78.0F;
     sobj->pos.y = 126.0F;
     
-    mnPlayers1PGameModeSetOptionSpriteColors(gobj, sMN1PModeOption == nMN1PModeOptionBonus1Practice, nMN1PModeOptionBonus1Practice);
+    mn1PModeSetOptionSpriteColors(gobj, sMN1PModeOption == nMN1PModeOptionBonus1Practice, nMN1PModeOptionBonus1Practice);
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PModeFiles[1], &lMN1PModeTextBonus1PracticeSprite));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -277,7 +277,7 @@ void mnPlayers1PGameModeMakeBonus1Practice(void)
 }
 
 // 0x801320F8
-void mnPlayers1PGameModeMakeBonus2Practice(void)
+void mn1PModeMakeBonus2Practice(void)
 {
     GObj *gobj;
     SObj *sobj;
@@ -293,7 +293,7 @@ void mnPlayers1PGameModeMakeBonus2Practice(void)
     sobj->pos.x = 67.0F;
     sobj->pos.y = 148.0F;
     
-    mnPlayers1PGameModeSetOptionSpriteColors(gobj, sMN1PModeOption == nMN1PModeOptionBonus2Practice, nMN1PModeOptionBonus2Practice);
+    mn1PModeSetOptionSpriteColors(gobj, sMN1PModeOption == nMN1PModeOptionBonus2Practice, nMN1PModeOptionBonus2Practice);
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PModeFiles[1], &lMN1PModeTextBonus2PracticeSprite));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -329,7 +329,7 @@ void func_ovl18_8013223C(void)
 }
 
 // 0x8013226C
-void mnPlayers1PGameModeLabelsProcDisplay(GObj *gobj)
+void mn1PModeLabelsProcDisplay(GObj *gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
@@ -346,13 +346,13 @@ void mnPlayers1PGameModeLabelsProcDisplay(GObj *gobj)
 }
 
 // 0x801323B0
-void mnPlayers1PGameModeMakeLabels(void)
+void mn1PModeMakeLabels(void)
 {
     GObj *gobj;
     SObj *sobj;
     
     gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, mnPlayers1PGameModeLabelsProcDisplay, 1, GOBJ_PRIORITY_DEFAULT, ~0);
+    gcAddGObjDisplay(gobj, mn1PModeLabelsProcDisplay, 1, GOBJ_PRIORITY_DEFAULT, ~0);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PModeFiles[0], &lMNCommonSmashLogoSprite));
     
@@ -392,7 +392,7 @@ void mnPlayers1PGameModeMakeLabels(void)
 }
 
 // 0x801324FC
-void mnPlayers1PGameModeMakeDecals(void)
+void mn1PModeMakeDecals(void)
 {
     GObj *gobj;
     SObj *sobj;
@@ -443,7 +443,7 @@ void mnPlayers1PGameModeMakeDecals(void)
 }
 
 // 0x80132690
-void mnPlayers1PGameModeMakeLink3Camera(void)
+void mn1PModeMakeLink3Camera(void)
 {
     CObj *cobj = CObjGetStruct
     (
@@ -468,7 +468,7 @@ void mnPlayers1PGameModeMakeLink3Camera(void)
 }
 
 // 0x80132730
-void mnPlayers1PGameModeMakeOptionsCamera(void)
+void mn1PModeMakeOptionsCamera(void)
 {
     CObj *cobj = CObjGetStruct
     (
@@ -493,7 +493,7 @@ void mnPlayers1PGameModeMakeOptionsCamera(void)
 }
 
 // 0x801327D0
-void mnPlayers1PGameModeMakeLabelsCamera(void)
+void mn1PModeMakeLabelsCamera(void)
 {
     CObj *cobj = CObjGetStruct
     (
@@ -518,7 +518,7 @@ void mnPlayers1PGameModeMakeLabelsCamera(void)
 }
 
 // 0x80132870
-void mnPlayers1PGameModeMakeDecalsCamera(void)
+void mn1PModeMakeDecalsCamera(void)
 {
     CObj *cobj = CObjGetStruct
     (
@@ -543,7 +543,7 @@ void mnPlayers1PGameModeMakeDecalsCamera(void)
 }
 
 // 0x80132910
-void mnPlayers1PGameModeInitVars(void)
+void mn1PModeInitVars(void)
 {
     switch (gSCManagerSceneData.scene_prev)
     {
@@ -572,7 +572,7 @@ void mnPlayers1PGameModeInitVars(void)
 }
 
 // 0x801329A8
-void mnPlayers1PGameModeProcRun(GObj *gobj)
+void mn1PModeProcRun(GObj *gobj)
 {
     s32 unused;
     
@@ -631,7 +631,7 @@ void mnPlayers1PGameModeProcRun(GObj *gobj)
             {
             case nMN1PModeOption1PGame:
                 func_800269C0_275C0(nSYAudioFGMMenuSelect);
-                mnPlayers1PGameModeSetOptionSpriteColors(sMN1PModeOptionGObjs[nMN1PModeOption1PGame], nMNOptionTabStatusSelected, nMN1PModeOption1PGame);
+                mn1PModeSetOptionSpriteColors(sMN1PModeOptionGObjs[nMN1PModeOption1PGame], nMNOptionTabStatusSelected, nMN1PModeOption1PGame);
 
                 gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
                 gSCManagerSceneData.scene_curr = nSCKind1PGamePlayers;
@@ -642,7 +642,7 @@ void mnPlayers1PGameModeProcRun(GObj *gobj)
 
             case nMN1PModeOptionTrainingMode:
                 func_800269C0_275C0(nSYAudioFGMMenuSelect);
-                mnPlayers1PGameModeSetOptionSpriteColors(sMN1PModeOptionGObjs[nMN1PModeOptionTrainingMode], nMNOptionTabStatusSelected, nMN1PModeOptionTrainingMode);
+                mn1PModeSetOptionSpriteColors(sMN1PModeOptionGObjs[nMN1PModeOptionTrainingMode], nMNOptionTabStatusSelected, nMN1PModeOptionTrainingMode);
 
                 gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
                 gSCManagerSceneData.scene_curr = nSCKindPlayers1PTraining;
@@ -653,7 +653,7 @@ void mnPlayers1PGameModeProcRun(GObj *gobj)
 
             case nMN1PModeOptionBonus1Practice:
                 func_800269C0_275C0(nSYAudioFGMMenuSelect);
-                mnPlayers1PGameModeSetOptionSpriteColors(sMN1PModeOptionGObjs[nMN1PModeOptionBonus1Practice], nMNOptionTabStatusSelected, nMN1PModeOptionBonus1Practice);
+                mn1PModeSetOptionSpriteColors(sMN1PModeOptionGObjs[nMN1PModeOptionBonus1Practice], nMNOptionTabStatusSelected, nMN1PModeOptionBonus1Practice);
 
                 gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
                 gSCManagerSceneData.scene_curr = nSCKind1PBonus1Players;
@@ -664,7 +664,7 @@ void mnPlayers1PGameModeProcRun(GObj *gobj)
 
             case nMN1PModeOptionBonus2Practice:
                 func_800269C0_275C0(nSYAudioFGMMenuSelect);
-                mnPlayers1PGameModeSetOptionSpriteColors(sMN1PModeOptionGObjs[nMN1PModeOptionBonus2Practice], nMNOptionTabStatusSelected, nMN1PModeOptionBonus2Practice);
+                mn1PModeSetOptionSpriteColors(sMN1PModeOptionGObjs[nMN1PModeOptionBonus2Practice], nMNOptionTabStatusSelected, nMN1PModeOptionBonus2Practice);
 
                 gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
                 gSCManagerSceneData.scene_curr = nSCKind1PBonus2Players;
@@ -683,14 +683,14 @@ void mnPlayers1PGameModeProcRun(GObj *gobj)
         }
         if
         (
-            mnPlayers1PGameModeCheckGetOptionButtonInput(is_button, U_JPAD | U_CBUTTONS) ||
-            mnPlayers1PGameModeCheckGetOptionStickInputUD(stick_range, 20, 1)
+            mn1PModeCheckGetOptionButtonInput(is_button, U_JPAD | U_CBUTTONS) ||
+            mn1PModeCheckGetOptionStickInputUD(stick_range, 20, 1)
         )
         {
             func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 
-            mnPlayers1PGameModeSetOptionChangeWaitP(is_button, stick_range, 7);
-            mnPlayers1PGameModeSetOptionSpriteColors(*option_gobjs[sMN1PModeOption], nMNOptionTabStatusNot, sMN1PModeOption);
+            mn1PModeSetOptionChangeWaitP(is_button, stick_range, 7);
+            mn1PModeSetOptionSpriteColors(*option_gobjs[sMN1PModeOption], nMNOptionTabStatusNot, sMN1PModeOption);
 
             if (sMN1PModeOption == nMN1PModeOptionStart)
             {
@@ -702,20 +702,20 @@ void mnPlayers1PGameModeProcRun(GObj *gobj)
             {
                 sMN1PModeOptionChangeWait += 8;
             }
-            mnPlayers1PGameModeSetOptionSpriteColors(*option_gobjs[sMN1PModeOption], nMNOptionTabStatusHighlight, sMN1PModeOption);
+            mn1PModeSetOptionSpriteColors(*option_gobjs[sMN1PModeOption], nMNOptionTabStatusHighlight, sMN1PModeOption);
             gcEjectGObj(D_801331BC_11F2CC);
             func_ovl18_8013223C();
         }
         if
         (
-            mnPlayers1PGameModeCheckGetOptionButtonInput(is_button, D_JPAD | D_CBUTTONS) ||
-            mnPlayers1PGameModeCheckGetOptionStickInputUD(stick_range, -20, 0)
+            mn1PModeCheckGetOptionButtonInput(is_button, D_JPAD | D_CBUTTONS) ||
+            mn1PModeCheckGetOptionStickInputUD(stick_range, -20, 0)
         )
         {
             func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 
-            mnPlayers1PGameModeSetOptionChangeWaitN(is_button, stick_range, 7);
-            mnPlayers1PGameModeSetOptionSpriteColors(*option_gobjs[sMN1PModeOption], nMNOptionTabStatusNot, sMN1PModeOption);
+            mn1PModeSetOptionChangeWaitN(is_button, stick_range, 7);
+            mn1PModeSetOptionSpriteColors(*option_gobjs[sMN1PModeOption], nMNOptionTabStatusNot, sMN1PModeOption);
 
             if (sMN1PModeOption == nMN1PModeOptionEnd)
             {
@@ -727,7 +727,7 @@ void mnPlayers1PGameModeProcRun(GObj *gobj)
             {
                 sMN1PModeOptionChangeWait += 8;
             }
-            mnPlayers1PGameModeSetOptionSpriteColors(*option_gobjs[sMN1PModeOption], nMNOptionTabStatusHighlight, sMN1PModeOption);
+            mn1PModeSetOptionSpriteColors(*option_gobjs[sMN1PModeOption], nMNOptionTabStatusHighlight, sMN1PModeOption);
             gcEjectGObj(D_801331BC_11F2CC);
             func_ovl18_8013223C();
         }
@@ -735,7 +735,7 @@ void mnPlayers1PGameModeProcRun(GObj *gobj)
 }
 
 // 0x80132E9C
-void mnPlayers1PGameModeFuncStart(void)
+void mn1PModeFuncStart(void)
 {
     LBRelocSetup rl_setup;
     
@@ -750,26 +750,39 @@ void mnPlayers1PGameModeFuncStart(void)
     
     lbRelocInitSetup(&rl_setup);
     
-    if (!(gSCManagerBackupData.error_flags & LBBACKUP_ERROR_HALFSTICKRANGE) && (gSCManagerBackupData.boot > 42) && (gSYMainIsDmemOK == FALSE))
+    if (!(gSCManagerBackupData.error_flags & LBBACKUP_ERROR_HALFSTICKRANGE) && (gSCManagerBackupData.boot > 42) && (gSYMainDmemOK == FALSE))
     {
         gSCManagerBackupData.error_flags |= LBBACKUP_ERROR_HALFSTICKRANGE;
     }
-
-    LOAD_EXTERN_FILES(dMN1PModeFileIDs, sMN1PModeFiles);
-    gcMakeGObjSPAfter(0, mnPlayers1PGameModeProcRun, 0, GOBJ_PRIORITY_DEFAULT);
+    lbRelocLoadFilesExtern
+    (
+        dMN1PModeFileIDs,
+        ARRAY_COUNT(dMN1PModeFileIDs),
+        sMN1PModeFiles,
+        syTaskmanMalloc
+        (
+            lbRelocGetAllocSize
+            (
+                dMN1PModeFileIDs,
+                ARRAY_COUNT(dMN1PModeFileIDs)
+            ),
+            0x10
+        )
+    );
+    gcMakeGObjSPAfter(0, mn1PModeProcRun, 0, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, 0, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
     
-    mnPlayers1PGameModeInitVars();
-    mnPlayers1PGameModeMakeDecalsCamera();
-    mnPlayers1PGameModeMakeLabelsCamera();
-    mnPlayers1PGameModeMakeOptionsCamera();
-    mnPlayers1PGameModeMakeLink3Camera();
-    mnPlayers1PGameModeMakeDecals();
-    mnPlayers1PGameModeMakeLabels();
-    mnPlayers1PGameModeMake1PGame();
-    mnPlayers1PGameModeMakeTrainingMode();
-    mnPlayers1PGameModeMakeBonus1Practice();
-    mnPlayers1PGameModeMakeBonus2Practice();
+    mn1PModeInitVars();
+    mn1PModeMakeDecalsCamera();
+    mn1PModeMakeLabelsCamera();
+    mn1PModeMakeOptionsCamera();
+    mn1PModeMakeLink3Camera();
+    mn1PModeMakeDecals();
+    mn1PModeMakeLabels();
+    mn1PModeMake1PGame();
+    mn1PModeMakeTrainingMode();
+    mn1PModeMakeBonus1Practice();
+    mn1PModeMakeBonus2Practice();
     func_ovl18_8013223C();
     
     if (gSCManagerSceneData.scene_prev != nSCKindModeSelect)
@@ -800,7 +813,7 @@ SYTaskmanSetup dMN1PModeTaskmanSetup =
         0x8000,                     // Graphics Heap Size
         2,                          // ???
         0xC000,                     // RDP Output Buffer Size
-        mnPlayers1PGameModeFuncLights,         // Pre-render function
+        mn1PModeFuncLights,         // Pre-render function
         syControllerFuncRead,       // Controller I/O function
     },
 
@@ -823,15 +836,15 @@ SYTaskmanSetup dMN1PModeTaskmanSetup =
     0,                              // Number of CObjs
     sizeof(CObj),                 	// CObj size
     
-    mnPlayers1PGameModeFuncStart               // Task start function
+    mn1PModeFuncStart               // Task start function
 };
 
 // 0x80133020
-void mnPlayers1PGameModeStartScene(void)
+void mn1PModeStartScene(void)
 {
     dMN1PModeVideoSetup.zbuffer = syVideoGetZBuffer(6400);
     syVideoInit(&dMN1PModeVideoSetup);
     
-    dMN1PModeTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl18_BSS_END);
-    syTaskmanRun(&dMN1PModeTaskmanSetup);
+    dMN1PModeTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl18_BSS_END);
+    syTaskmanStartTask(&dMN1PModeTaskmanSetup);
 }

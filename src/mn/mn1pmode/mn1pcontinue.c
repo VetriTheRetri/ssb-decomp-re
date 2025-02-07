@@ -1294,7 +1294,7 @@ void mnPlayers1PGameContinueStartScene(void)
 
     syVideoInit(&dMN1PContinueVideoSetup);
 
-    dMN1PContinueTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl55_BSS_END);
+    dMN1PContinueTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl55_BSS_END);
 
     scManagerFuncUpdate(&dMN1PContinueTaskmanSetup);
 

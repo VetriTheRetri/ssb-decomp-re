@@ -577,6 +577,6 @@ void mvOpeningDonkeyStartScene(void)
 	dMVOpeningDonkeyVideoSetup.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&dMVOpeningDonkeyVideoSetup);
 
-	dMVOpeningDonkeyTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl37_BSS_END);
-	syTaskmanRun(&dMVOpeningDonkeyTaskmanSetup);
+	dMVOpeningDonkeyTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl37_BSS_END);
+	syTaskmanStartTask(&dMVOpeningDonkeyTaskmanSetup);
 }

@@ -572,14 +572,14 @@ void dbCubeStartScene(void)
 	dDBCubeVideoSetup.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&dDBCubeVideoSetup);
 
-	dDBCubeTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl9_VRAM - (uintptr_t)&ovl13_BSS_END);
+	dDBCubeTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl9_VRAM - (uintptr_t)&ovl13_BSS_END);
 
 	do
 	{
 		sDBCubeIsExitInterrupt = FALSE;
 		sDBCubeIsTransitionInterrupt = FALSE;
 
-		syTaskmanRun(&dDBCubeTaskmanSetup);
+		syTaskmanStartTask(&dDBCubeTaskmanSetup);
 	}
 	while (sDBCubeIsTransitionInterrupt != FALSE);
 }

@@ -405,7 +405,7 @@ void mnMessageStartScene(void)
     
     syVideoInit(&dMNMessageVideoSetup);
     
-    dMNMessageTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl22_BSS_END);
+    dMNMessageTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl22_BSS_END);
 
     for
     (
@@ -414,7 +414,7 @@ void mnMessageStartScene(void)
         sMNMessageQueueID++
     )
     {
-        syTaskmanRun(&dMNMessageTaskmanSetup);
+        syTaskmanStartTask(&dMNMessageTaskmanSetup);
     }
     if (gSCManagerSceneData.scene_prev == nSCKindVSResults)
     {

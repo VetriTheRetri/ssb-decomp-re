@@ -536,7 +536,7 @@ void scVSBattleStartScene(void)
 	dSCVSBattleVideoSetup.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&dSCVSBattleVideoSetup);
 
-	dSCVSBattleTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSYFramebufferSets - (uintptr_t)&ovl4_BSS_END);
+	dSCVSBattleTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&gSYFramebufferSets - (uintptr_t)&ovl4_BSS_END);
 	dSCVSBattleTaskmanSetup.func_start = scVSBattleStartBattle;
 	scManagerFuncUpdate(&dSCVSBattleTaskmanSetup);
 

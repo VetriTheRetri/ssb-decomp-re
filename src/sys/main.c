@@ -45,17 +45,19 @@ extern uintptr_t scmanager_RODATA_END;
 extern uintptr_t scmanager_BSS_START;
 extern uintptr_t scmanager_BSS_END;
 
-static struct SYOverlay OverlayManager =
+static struct SYOverlay dSYMainSceneManagerOverlay =
 {
-    (u32)&scmanager_ROM_START,
-    (u32)&scmanager_ROM_END,
-    (u32)&scmanager_VRAM,
-    (u32)&scmanager_TEXT_START,
-    (u32)&scmanager_TEXT_END,
-    (u32)&scmanager_DATA_START,
-    (u32)&scmanager_RODATA_END,
-    (u32)&scmanager_BSS_START,
-    (u32)&scmanager_BSS_END};
+    (uintptr_t)&scmanager_ROM_START,
+    (uintptr_t)&scmanager_ROM_END,
+    (uintptr_t)&scmanager_VRAM,
+    (uintptr_t)&scmanager_TEXT_START,
+    (uintptr_t)&scmanager_TEXT_END,
+    (uintptr_t)&scmanager_DATA_START,
+    (uintptr_t)&scmanager_RODATA_END,
+    (uintptr_t)&scmanager_BSS_START,
+    (uintptr_t)&scmanager_BSS_END
+};
+
 u32 sNoThread5 = 0;
 
 // bss
@@ -77,8 +79,8 @@ OSThread gSYMainThread6;
 u8 sUnref8004440[56];
 u64 gSYMainThread6Stack[THREAD6_STACK_SIZE];
 u64 gSYMainRspBootCode[0x20]; // IP3 font?
-sb8 gSYMainIsSPImemOK;
-sb8 gSYMainIsDmemOK;
+sb8 gSYMainImemOK;
+sb8 gSYMainDmemOK;
 OSMesg sSYMainBlockMesg[1];
 OSMesgQueue sSYMainThreadingQueue;
 OSMesg sSYMainPiCmdMesg[50];
@@ -100,22 +102,22 @@ void* unref_80000478(void)
     return (void*)(0x00003400);
 }
 
-void syMainCheckSPImemOK(void)
+void syMainSetImemStatus(void)
 {
-    if (IO_READ(SP_IMEM_START) == 6103) 
+    if (IO_READ(SP_IMEM_START) == 6103)
     {
-        gSYMainIsSPImemOK = TRUE;
+        gSYMainImemOK = TRUE;
     }
-    else gSYMainIsSPImemOK = FALSE;
+    else gSYMainImemOK = FALSE;
 }
 
-void syMainCheckSPDmemOK(void) 
+void syMainSetDmemStatus(void)
 {
     if (IO_READ(SP_DMEM_START) == -1)
     {
-        gSYMainIsDmemOK = TRUE;
+        gSYMainDmemOK = TRUE;
     } 
-    else gSYMainIsDmemOK = FALSE;
+    else gSYMainDmemOK = FALSE;
 }
 
 void syMainThreadStackOverflow(s32 tid)
@@ -127,10 +129,22 @@ void syMainThreadStackOverflow(s32 tid)
 
 void syMainVerifyStackProbes(void) 
 {
-    if (gSYMainThread0Stack[0] != STACK_PROBE_MAGIC) { syMainThreadStackOverflow(0); }
-    if (sSYMainThread1Stack[0] != STACK_PROBE_MAGIC) { syMainThreadStackOverflow(1); }
-    if (sSYMainThread3Stack[0] != STACK_PROBE_MAGIC) { syMainThreadStackOverflow(3); }
-    if (sThread5Stack[0] != STACK_PROBE_MAGIC) { syMainThreadStackOverflow(5); }
+    if (gSYMainThread0Stack[0] != STACK_PROBE_MAGIC)
+    {
+        syMainThreadStackOverflow(0);
+    }
+    if (sSYMainThread1Stack[0] != STACK_PROBE_MAGIC)
+    {
+        syMainThreadStackOverflow(1);
+    }
+    if (sSYMainThread3Stack[0] != STACK_PROBE_MAGIC)
+    {
+        syMainThreadStackOverflow(3);
+    }
+    if (sThread5Stack[0] != STACK_PROBE_MAGIC)
+    {
+        syMainThreadStackOverflow(5);
+    }
 }
 
 // 0x800005D8
@@ -143,8 +157,8 @@ void syMainThread5(UNUSED void *arg)
     syDmaCreateMesgQueue();
 
     syDmaReadRom(PHYSICAL_TO_ROM(0xB70), gSYMainRspBootCode, sizeof(gSYMainRspBootCode));
-    syMainCheckSPImemOK();
-    syMainCheckSPDmemOK();
+    syMainSetImemStatus();
+    syMainSetDmemStatus();
     osCreateMesgQueue(&sSYMainThreadingQueue, sSYMainBlockMesg, ARRAY_COUNT(sSYMainBlockMesg));
 
     osCreateThread(&sSYMainThread3, 3, &thread3_scheduler, NULL, sSYMainThread3Stack + THREAD3_STACK_SIZE, THREAD3_PRI);
@@ -160,7 +174,7 @@ void syMainThread5(UNUSED void *arg)
     osRecvMesg(&sSYMainThreadingQueue, NULL, OS_MESG_BLOCK);
 
     func_80006B80();
-    syDmaLoadOverlay(&OverlayManager);
+    syDmaLoadOverlay(&dSYMainSceneManagerOverlay);
     scManagerRunLoop(0);
 }
 

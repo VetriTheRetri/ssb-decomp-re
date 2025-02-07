@@ -2027,6 +2027,6 @@ void sc1PIntroStartScene(void)
     dSC1PIntroVideoSetup.zbuffer = syVideoGetZBuffer(6400);
     syVideoInit(&dSC1PIntroVideoSetup);
     
-    dSC1PIntroTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl24_BSS_END);
+    dSC1PIntroTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl24_BSS_END);
     scManagerFuncUpdate(&dSC1PIntroTaskmanSetup);
 }

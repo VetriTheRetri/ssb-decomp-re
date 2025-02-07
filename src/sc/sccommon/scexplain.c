@@ -844,7 +844,7 @@ void scExplainStartScene(void)
 
     syUtilsSetRandomSeedPtr(&dSCExplainRandomSeed1);
 
-    dSCExplainTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSYFramebufferSets - (uintptr_t)&ovl63_BSS_END);
+    dSCExplainTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&gSYFramebufferSets - (uintptr_t)&ovl63_BSS_END);
     dSCExplainTaskmanSetup.func_start = scExplainFuncStart;
 
     scManagerFuncUpdate(&dSCExplainTaskmanSetup);

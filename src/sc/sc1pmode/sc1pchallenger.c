@@ -377,6 +377,6 @@ void sc1PChallengerStartScene(void)
     dSC1PChallengerVideoSetup.zbuffer = syVideoGetZBuffer(6400);
     syVideoInit(&dSC1PChallengerVideoSetup);
     
-    dSC1PChallengerTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl23_BSS_END);
-    syTaskmanRun(&dSC1PChallengerTaskmanSetup);
+    dSC1PChallengerTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl23_BSS_END);
+    syTaskmanStartTask(&dSC1PChallengerTaskmanSetup);
 }

@@ -145,7 +145,7 @@ struct dbUnknown3
     s32 unk_dbunk3_0x8;
     u8 filler_0xC[0xC];
     dbFunction *unk_dbunk3_0x18;
-    void *unk_dbunk3_0x1C;
+    dbUnknownLink *unk_dbunk3_0x1C;
     dbUnknown3 *unk_dbunk3_0x20;
     dbUnknown3 *unk_dbunk3_0x24;
     dbUnknown3 *unk_dbunk3_0x28;
@@ -156,6 +156,10 @@ struct dbUnknown3
     u8 filler_0x3C[0x44 - 0x3C];
     dbUnknown3 *unk_dbunk3_0x44;
     dbUnknown3 *unk_dbunk3_0x48;
+    void *unk_dbunk3_0x4C;
+    void *unk_dbunk3_0x50;
+    void *unk_dbunk3_0x54;
+    void *unk_dbunk3_0x58;
 };
 
 struct dbUnknownLink

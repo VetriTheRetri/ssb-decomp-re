@@ -1033,7 +1033,7 @@ void mnSoundTestSetupFiles(void)
     rl_setup.force_status_buffer_size = 0;
 
     lbRelocInitSetup(&rl_setup);
-    LOAD_EXTERN_FILES(dMNSoundTestFileIDs, sMNSoundTestFiles);
+    lbRelocLoadFilesListed(dMNSoundTestFileIDs, sMNSoundTestFiles);
 }
 
 // 0x8013234C

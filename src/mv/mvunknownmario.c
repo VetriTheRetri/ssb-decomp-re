@@ -121,7 +121,7 @@ void mvUnknownMarioSetupFiles(void)
 	rl_setup.force_status_buffer_size = ARRAY_COUNT(sMVUnkownMarioForceStatusBuffer);
 
 	lbRelocInitSetup(&rl_setup);
-	LOAD_EXTERN_FILES(dGMCommonFileIDs, gGMCommonFiles);
+	lbRelocLoadFilesListed(dGMCommonFileIDs, gGMCommonFiles);
 }
 
 // 0x8018D160

@@ -426,7 +426,7 @@ void mvOpeningNewcomersFuncStart(void)
     rl_setup.force_status_buffer_size = ARRAY_COUNT(dMVOpeningNewcomersForceStatusBuffer);
 
     lbRelocInitSetup(&rl_setup);
-    LOAD_EXTERN_FILES(dMVOpeningNewcomersFileIDs, sMVOpeningNewcomersFiles);
+    lbRelocLoadFilesListed(dMVOpeningNewcomersFileIDs, sMVOpeningNewcomersFiles);
     gcMakeGObjSPAfter(0, mvOpeningNewcomersProcRun, 0, GOBJ_PRIORITY_DEFAULT);
 
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF));

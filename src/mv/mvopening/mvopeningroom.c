@@ -1320,7 +1320,7 @@ void mvOpeningRoomFuncStart(void)
 	rl_setup.force_status_buffer_size = ARRAY_COUNT(sMVOpeningRoomForceStatusBuffer);
 
 	lbRelocInitSetup(&rl_setup);
-	LOAD_EXTERN_FILES(dMVOpeningRoomFileIDs, sMVOpeningRoomFiles);
+	lbRelocLoadFilesListed(dMVOpeningRoomFileIDs, sMVOpeningRoomFiles);
 	gcMakeGObjSPAfter(0, mvOpeningRoomProcRun, 0, GOBJ_PRIORITY_DEFAULT);
 	sMVOpeningRoomCameraGObj = gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	efParticleInitAll();

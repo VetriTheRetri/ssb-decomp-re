@@ -2795,7 +2795,7 @@ void mnPlayers1PBonusFuncStart(void)
 	rl_setup.force_status_buffer_size = ARRAY_COUNT(sMNPlayers1PBonusForceStatusBuffer);
 
 	lbRelocInitSetup(&rl_setup);
-	LOAD_EXTERN_FILES(dMNPlayers1PBonusFileIDs, sMNPlayers1PBonusFiles);
+	lbRelocLoadFilesListed(dMNPlayers1PBonusFileIDs, sMNPlayers1PBonusFiles);
 	gcMakeGObjSPAfter(nGCCommonKindPlayerSelect, mnPlayers1PBonusProcRun, nGCCommonLinkIDPlayerSelect, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(16, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
 	efParticleInitAll();

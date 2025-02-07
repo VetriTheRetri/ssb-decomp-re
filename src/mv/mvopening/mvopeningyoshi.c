@@ -104,7 +104,7 @@ void mvOpeningYoshiSetupFiles(void)
 	rl_setup.force_status_buffer_size = ARRAY_COUNT(sMVOpeningYoshiForceStatusBuffer);
 
 	lbRelocInitSetup(&rl_setup);
-	LOAD_EXTERN_FILES(dMVOpeningYoshiFileIDs, sMVOpeningYoshiFiles);
+	lbRelocLoadFilesListed(dMVOpeningYoshiFileIDs, sMVOpeningYoshiFiles);
 }
 
 // 0x8018D160

@@ -1822,5 +1822,5 @@ void sc1PTrainingModeSetupFiles(void)
 	rl_setup.force_status_buffer_size = ARRAY_COUNT(sSC1PTrainingModeForceStatusBuffer);
 
 	lbRelocInitSetup(&rl_setup);
-	LOAD_EXTERN_FILES(dGMCommonFileIDs, gGMCommonFiles);
+	lbRelocLoadFilesListed(dGMCommonFileIDs, gGMCommonFiles);
 }

@@ -103,7 +103,7 @@ void mvOpeningSamusSetupFiles(void)
 	rl_setup.force_status_buffer_size = ARRAY_COUNT(sMVOpeningSamusForceStatusBuffer);
 
 	lbRelocInitSetup(&rl_setup);
-	LOAD_EXTERN_FILES(dMVOpeningSamusFileIDs, sMVOpeningSamusFiles);
+	lbRelocLoadFilesListed(dMVOpeningSamusFileIDs, sMVOpeningSamusFiles);
 }
 
 // 0x8018D160

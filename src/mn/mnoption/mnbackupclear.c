@@ -789,7 +789,7 @@ void mnBackupClearFuncStart(void)
     rl_setup.force_status_buffer_size = 0;
     
     lbRelocInitSetup(&rl_setup);
-    LOAD_EXTERN_FILES(dMNBackupClearFileIDs, sMNBackupClearFiles);
+    lbRelocLoadFilesListed(dMNBackupClearFileIDs, sMNBackupClearFiles);
     gcMakeGObjSPAfter(0, mnBackupClearProcRun, 0, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     mnBackupClearInitVars();

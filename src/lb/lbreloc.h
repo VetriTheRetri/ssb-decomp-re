@@ -36,19 +36,22 @@
 }
 */
 
-#define LOAD_EXTERN_FILES(file_ids, out_pointers) \
-    lbRelocLoadFilesExtern( \
-        file_ids, \
-        ARRAY_COUNT(file_ids), \
-        out_pointers, \
-        syTaskmanMalloc( \
-                lbRelocGetAllocSize( \
-                    file_ids, \
-                    ARRAY_COUNT(file_ids) \
-                    ), \
-                0x10 \
-            ) \
-        )
+#define lbRelocLoadFilesListed(file_ids, ptrs)  \
+lbRelocLoadFilesExtern                          \
+(                                               \
+    file_ids,                                   \
+    ARRAY_COUNT(file_ids),                      \
+    ptrs,                                       \
+    syTaskmanMalloc                             \
+    (                                           \
+        lbRelocGetAllocSize                     \
+        (                                       \
+            file_ids,                           \
+            ARRAY_COUNT(file_ids)               \
+        ),                                      \
+        0x10                                    \
+    )                                           \
+)
 
 extern uintptr_t lLBRelocTableFilesNum;     // 0x00000854
 extern uintptr_t lLBRelocTableAddr;         // 0x001AC870

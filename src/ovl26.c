@@ -4206,7 +4206,7 @@ void mnPlayersVSFuncStart(void)
 	rl_setup.force_status_buffer_size = 7;
 
 	lbRelocInitSetup(&rl_setup);
-	LOAD_EXTERN_FILES(gMnBattleFileIDs, gMnBattleFiles);
+	lbRelocLoadFilesListed(gMnBattleFileIDs, gMnBattleFiles);
 
 	gcMakeGObjSPAfter(0x400U, mnPlayersVSMain, 0xFU, 0x80000000U);
 

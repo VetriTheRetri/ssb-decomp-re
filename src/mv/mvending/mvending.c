@@ -520,7 +520,7 @@ void mvEndingFuncStart(void)
     rl_setup.force_status_buffer_size = ARRAY_COUNT(sMVEndingForceStatusBuffer);
 
     lbRelocInitSetup(&rl_setup);
-    LOAD_EXTERN_FILES(dMVEndingFileIDs, sMVEndingFiles);
+    lbRelocLoadFilesListed(dMVEndingFileIDs, sMVEndingFiles);
     gcMakeGObjSPAfter(0, mvEndingProcRun, 0, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF));
     efParticleInitAll();

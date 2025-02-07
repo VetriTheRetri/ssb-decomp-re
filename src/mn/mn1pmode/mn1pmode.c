@@ -754,21 +754,8 @@ void mn1PModeFuncStart(void)
     {
         gSCManagerBackupData.error_flags |= LBBACKUP_ERROR_HALFSTICKRANGE;
     }
-    lbRelocLoadFilesExtern
-    (
-        dMN1PModeFileIDs,
-        ARRAY_COUNT(dMN1PModeFileIDs),
-        sMN1PModeFiles,
-        syTaskmanMalloc
-        (
-            lbRelocGetAllocSize
-            (
-                dMN1PModeFileIDs,
-                ARRAY_COUNT(dMN1PModeFileIDs)
-            ),
-            0x10
-        )
-    );
+    lbRelocLoadFilesListed(dMN1PModeFileIDs, sMN1PModeFiles);
+
     gcMakeGObjSPAfter(0, mn1PModeProcRun, 0, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, 0, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
     

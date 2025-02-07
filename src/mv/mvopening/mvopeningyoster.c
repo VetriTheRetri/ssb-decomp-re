@@ -313,7 +313,7 @@ void mvOpeningYosterFuncStart(void)
     rl_setup.force_status_buffer_size = ARRAY_COUNT(sMVOpeningYosterForceStatusBuffer);
 
     lbRelocInitSetup(&rl_setup);
-    LOAD_EXTERN_FILES(dMVOpeningYosterFileIDs, sMVOpeningYosterFiles);
+    lbRelocLoadFilesListed(dMVOpeningYosterFileIDs, sMVOpeningYosterFiles);
     gcMakeGObjSPAfter(0, mvOpeningYosterMainProc, 0, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
 

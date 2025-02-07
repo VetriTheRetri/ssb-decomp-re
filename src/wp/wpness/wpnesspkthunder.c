@@ -441,7 +441,6 @@ GObj* wpNessPKThunderTrailMakeWeapon(GObj *head_gobj, Vec3f *pos, s32 trail_inde
     {
         return NULL;
     }
-
     trail_wp = wpGetStruct(trail_gobj);
 
     trail_gobj->proc_display = wpDisplayPKThunderProcDisplay;
@@ -463,14 +462,12 @@ GObj* wpNessPKThunderTrailMakeWeapon(GObj *head_gobj, Vec3f *pos, s32 trail_inde
         head_gobj = head_wp->weapon_vars.pkthunder_trail.head_gobj;
         head_wp = wpGetStruct(head_gobj);
     }
-
     trail_wp->weapon_vars.pkthunder_trail.head_gobj = head_gobj;
 
     for (i = 0; i < ARRAY_COUNT(head_wp->weapon_vars.pkthunder.trail_gobj); i++)
     {
         head_wp->weapon_vars.pkthunder.trail_gobj[trail_index] = trail_gobj;
     }
-
     return trail_gobj;
 }
 

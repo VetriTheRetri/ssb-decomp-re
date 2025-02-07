@@ -290,7 +290,7 @@ FTItemThrow dFTCommonDataItemThrowDescs[/* */] =
 };
 
 // 0x8012CA38
-FTItemSwing dFTCommonDataItemSwingAnimRates[/* */] =
+FTItemSwing dFTCommonDataItemSwingAnimSpeeds[/* */] =
 {
     100,        // SwordSwing1
     100,        // SwordSwing3

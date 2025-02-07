@@ -209,7 +209,7 @@ extern void ftKirbyCopyDonkeySpecialNLoopProcUpdate(GObj* fighter_gobj);
 extern void ftKirbyCopyDonkeySpecialNLoopProcInterrupt(GObj* fighter_gobj);
 extern void ftKirbyCopyDonkeySpecialNLoopProcMap(GObj* fighter_gobj);
 extern void ftKirbyCopyDonkeySpecialAirNLoopProcMap(GObj* fighter_gobj);
-extern void ftKirbyCopyDonkeySpecialNLoopSetProcDamageAnimRate(GObj* fighter_gobj);
+extern void ftKirbyCopyDonkeySpecialNLoopSetProcDamageAnimSpeed(GObj* fighter_gobj);
 extern void ftKirbyCopyDonkeySpecialAirNLoopSwitchStatusGround(GObj* fighter_gobj);
 extern void ftKirbyCopyDonkeySpecialNLoopSwitchStatusAir(GObj* fighter_gobj);
 extern void ftKirbyCopyDonkeySpecialNLoopSetStatus(GObj* fighter_gobj);

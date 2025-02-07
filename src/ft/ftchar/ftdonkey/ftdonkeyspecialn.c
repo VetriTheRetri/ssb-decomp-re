@@ -143,7 +143,7 @@ void ftDonkeySpecialAirNLoopProcMap(GObj *fighter_gobj)
 }
 
 // 0x8015B244
-void ftDonkeySpecialNLoopSetProcDamageAnimRate(GObj *fighter_gobj)
+void ftDonkeySpecialNLoopSetProcDamageAnimSpeed(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -160,7 +160,7 @@ void ftDonkeySpecialAirNLoopSwitchStatusGround(GObj *fighter_gobj)
 {
     mpCommonSetFighterGround(ftGetStruct(fighter_gobj));
     ftMainSetStatus(fighter_gobj, nFTDonkeyStatusSpecialNLoop, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_RUMBLE | FTSTATUS_PRESERVE_COLANIM));
-    ftDonkeySpecialNLoopSetProcDamageAnimRate(fighter_gobj);
+    ftDonkeySpecialNLoopSetProcDamageAnimSpeed(fighter_gobj);
 }
 
 // 0x8015B2CC
@@ -170,7 +170,7 @@ void ftDonkeySpecialNLoopSwitchStatusAir(GObj *fighter_gobj)
 
     mpCommonSetFighterAir(fp);
     ftMainSetStatus(fighter_gobj, nFTDonkeyStatusSpecialAirNLoop, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_RUMBLE | FTSTATUS_PRESERVE_COLANIM));
-    ftDonkeySpecialNLoopSetProcDamageAnimRate(fighter_gobj);
+    ftDonkeySpecialNLoopSetProcDamageAnimSpeed(fighter_gobj);
     ftPhysicsClampAirVelXMax(fp);
 }
 
@@ -178,14 +178,14 @@ void ftDonkeySpecialNLoopSwitchStatusAir(GObj *fighter_gobj)
 void ftDonkeySpecialNLoopSetStatus(GObj *fighter_gobj)
 {
     ftMainSetStatus(fighter_gobj, nFTDonkeyStatusSpecialNLoop, 0.0F, 1.0F, FTSTATUS_PRESERVE_COLANIM);
-    ftDonkeySpecialNLoopSetProcDamageAnimRate(fighter_gobj);
+    ftDonkeySpecialNLoopSetProcDamageAnimSpeed(fighter_gobj);
 }
 
 // 0x8015B35C
 void ftDonkeySpecialAirNLoopSetStatus(GObj *fighter_gobj)
 {
     ftMainSetStatus(fighter_gobj, nFTDonkeyStatusSpecialAirNLoop, 0.0F, 1.0F, (FTSTATUS_PRESERVE_FASTFALL | FTSTATUS_PRESERVE_COLANIM));
-    ftDonkeySpecialNLoopSetProcDamageAnimRate(fighter_gobj);
+    ftDonkeySpecialNLoopSetProcDamageAnimSpeed(fighter_gobj);
 }
 
 // 0x8015B398

@@ -363,9 +363,9 @@ struct SCBattleState
 	u8 handicap; 									// 0 = OFF, 1 = ON, 2 = AUTO
 	ub8 is_team_attack;	 							// 0 = OFF, 1 = ON
 	ub8 is_stage_select; 							// 0 = OFF, 1 = ON
-	u8 damage_ratio;
+	u8 damage_ratio;								// From 50% to 200%
 	u32 item_toggles; 								// Bits = item's on/off switch from match settings
-	u8 unk_0x10;
+	ub8 is_reset_players;							// Reset player slots when entering VS Mode character select screen
 	u8 game_status;
 	u32 time_remain;								// Tics remaining until timeout
 	u32 time_passed; 								// Current match tic, counts up from 0

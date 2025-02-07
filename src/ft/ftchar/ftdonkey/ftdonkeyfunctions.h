@@ -18,7 +18,7 @@ extern void ftDonkeySpecialNLoopProcUpdate(GObj* fighter_gobj);
 extern void ftDonkeySpecialNLoopProcInterrupt(GObj* fighter_gobj);
 extern void ftDonkeySpecialNLoopProcMap(GObj* fighter_gobj);
 extern void ftDonkeySpecialAirNLoopProcMap(GObj* fighter_gobj);
-extern void ftDonkeySpecialNLoopSetProcDamageAnimRate(GObj* fighter_gobj);
+extern void ftDonkeySpecialNLoopSetProcDamageAnimSpeed(GObj* fighter_gobj);
 extern void ftDonkeySpecialAirNLoopSwitchStatusGround(GObj* fighter_gobj);
 extern void ftDonkeySpecialNLoopSwitchStatusAir(GObj* fighter_gobj);
 extern void ftDonkeySpecialNLoopSetStatus(GObj* fighter_gobj);

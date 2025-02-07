@@ -21,7 +21,7 @@ extern u16 dFTCommonDataPublicFighterCallFGMs[/* */];
 extern FTItemThrow dFTCommonDataItemThrowDescs[/* */];
 
 // 0x8012CA38
-extern FTItemSwing dFTCommonDataItemSwingAnimRates[/* */];
+extern FTItemSwing dFTCommonDataItemSwingAnimSpeeds[/* */];
 
 // 0x8012CA78
 extern SYColorRGBA dFTCommonDataShadowColorDefault;

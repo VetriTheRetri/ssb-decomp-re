@@ -143,7 +143,7 @@ void ftKirbyCopyDonkeySpecialAirNLoopProcMap(GObj *fighter_gobj)
 }
 
 // 0x80157AD4
-void ftKirbyCopyDonkeySpecialNLoopSetProcDamageAnimRate(GObj *fighter_gobj)
+void ftKirbyCopyDonkeySpecialNLoopSetProcDamageAnimSpeed(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -160,7 +160,7 @@ void ftKirbyCopyDonkeySpecialAirNLoopSwitchStatusGround(GObj *fighter_gobj)
 {
     mpCommonSetFighterGround(ftGetStruct(fighter_gobj));
     ftMainSetStatus(fighter_gobj, nFTKirbyStatusCopyDonkeySpecialNLoop, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_RUMBLE | FTSTATUS_PRESERVE_COLANIM));
-    ftKirbyCopyDonkeySpecialNLoopSetProcDamageAnimRate(fighter_gobj);
+    ftKirbyCopyDonkeySpecialNLoopSetProcDamageAnimSpeed(fighter_gobj);
 }
 
 // 0x80157B5C
@@ -170,7 +170,7 @@ void ftKirbyCopyDonkeySpecialNLoopSwitchStatusAir(GObj *fighter_gobj)
 
     mpCommonSetFighterAir(fp);
     ftMainSetStatus(fighter_gobj, nFTKirbyStatusCopyDonkeySpecialAirNLoop, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_RUMBLE | FTSTATUS_PRESERVE_COLANIM));
-    ftKirbyCopyDonkeySpecialNLoopSetProcDamageAnimRate(fighter_gobj);
+    ftKirbyCopyDonkeySpecialNLoopSetProcDamageAnimSpeed(fighter_gobj);
     ftPhysicsClampAirVelXMax(fp);
 }
 
@@ -178,14 +178,14 @@ void ftKirbyCopyDonkeySpecialNLoopSwitchStatusAir(GObj *fighter_gobj)
 void ftKirbyCopyDonkeySpecialNLoopSetStatus(GObj *fighter_gobj)
 {
     ftMainSetStatus(fighter_gobj, nFTKirbyStatusCopyDonkeySpecialNLoop, 0.0F, 1.0F, FTSTATUS_PRESERVE_COLANIM);
-    ftKirbyCopyDonkeySpecialNLoopSetProcDamageAnimRate(fighter_gobj);
+    ftKirbyCopyDonkeySpecialNLoopSetProcDamageAnimSpeed(fighter_gobj);
 }
 
 // 0x80157BEC
 void ftKirbyCopyDonkeySpecialAirNLoopSetStatus(GObj *fighter_gobj)
 {
     ftMainSetStatus(fighter_gobj, nFTKirbyStatusCopyDonkeySpecialAirNLoop, 0.0F, 1.0F, (FTSTATUS_PRESERVE_FASTFALL | FTSTATUS_PRESERVE_COLANIM));
-    ftKirbyCopyDonkeySpecialNLoopSetProcDamageAnimRate(fighter_gobj);
+    ftKirbyCopyDonkeySpecialNLoopSetProcDamageAnimSpeed(fighter_gobj);
 }
 
 // 0x80157C28

@@ -573,7 +573,7 @@ SCBattleState dSCManagerDefaultBattleState =
 	TRUE,											// Is stage select enabled?
 	100,											// Damage ratio
 	~0,												// Item Switch mask
-	TRUE,											// ???
+	TRUE,											// Reset players when first entering VS Mode character select screen?
 	nSCBattleGameStatusWait,						// Status of current match
 	0,												// Time remaining (in tics)
 	0,												// Time passed (in tics)

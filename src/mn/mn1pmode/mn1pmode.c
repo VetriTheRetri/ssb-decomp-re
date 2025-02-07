@@ -68,7 +68,7 @@ s32 sMN1PModePad0x801331B4[2];
 s32 sMN1PModeOption;
 
 // 0x801331BC
-GObj *D_801331BC_11F2CC;
+GObj *sMN1PModeSubtitleGObj;
 
 // 0x801331C0
 sb32 sMN1PModeIsProceedScene;
@@ -325,7 +325,7 @@ void func_ovl18_80132208(SObj *sobj)
 // 0x8013223C
 void func_ovl18_8013223C(void)
 {
-    D_801331BC_11F2CC = gcMakeGObjSPAfter(0, NULL, 5, GOBJ_PRIORITY_DEFAULT);
+    sMN1PModeSubtitleGObj = gcMakeGObjSPAfter(0, NULL, 5, GOBJ_PRIORITY_DEFAULT);
 }
 
 // 0x8013226C
@@ -703,7 +703,7 @@ void mn1PModeProcRun(GObj *gobj)
                 sMN1PModeOptionChangeWait += 8;
             }
             mn1PModeSetOptionSpriteColors(*option_gobjs[sMN1PModeOption], nMNOptionTabStatusHighlight, sMN1PModeOption);
-            gcEjectGObj(D_801331BC_11F2CC);
+            gcEjectGObj(sMN1PModeSubtitleGObj);
             func_ovl18_8013223C();
         }
         if
@@ -728,7 +728,7 @@ void mn1PModeProcRun(GObj *gobj)
                 sMN1PModeOptionChangeWait += 8;
             }
             mn1PModeSetOptionSpriteColors(*option_gobjs[sMN1PModeOption], nMNOptionTabStatusHighlight, sMN1PModeOption);
-            gcEjectGObj(D_801331BC_11F2CC);
+            gcEjectGObj(sMN1PModeSubtitleGObj);
             func_ovl18_8013223C();
         }
     }

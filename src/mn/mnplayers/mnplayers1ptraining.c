@@ -175,7 +175,6 @@ f32 mnPlayers1PTrainingGetNextPortraitX(s32 portrait, f32 current_pos_x)
 	else return ((current_pos_x + portrait_vel[portrait]) >= portrait_pos_x[portrait]) ?
 	portrait_pos_x[portrait] :
 	current_pos_x + portrait_vel[portrait];
-	
 }
 
 // 0x80131D84

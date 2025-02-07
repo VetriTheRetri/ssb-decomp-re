@@ -138,7 +138,7 @@ void ftCommonItemSwingSetStatus(GObj *fighter_gobj, s32 swing_type)
         break;
     }
     status_id = dFTCommonItemSwingStatusIDs[swing_item][swing_type];
-    anim_speed = F_PCT_TO_DEC(dFTCommonDataItemSwingAnimRates[status_id - nFTCommonStatusItemSwingStart].anim_speed);
+    anim_speed = F_PCT_TO_DEC(dFTCommonDataItemSwingAnimSpeeds[status_id - nFTCommonStatusItemSwingStart].anim_speed);
 
     fp->motion_vars.flags.flag0 = 0;
 

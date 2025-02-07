@@ -94,7 +94,7 @@ struct MNPlayersSlotTraining
 	GObj *handicap_cpu_level_value;
 	GObj *flash;
 	GObj *type;
-	void* figatree_heap;
+	void *figatree_heap;
 	u32 cpu_level;
 	u32 handicap;
 	s32 team;
@@ -145,7 +145,7 @@ struct MNPlayersSlotVS
 	GObj *handicap_cpu_level_value;
 	GObj *flash;
 	GObj *type;
-	void* figatree_heap;
+	void *figatree_heap;
 	u32 cpu_level;
 	u32 handicap;
 	s32 team;
@@ -166,15 +166,15 @@ struct MNPlayersSlotVS
 	s32 holder_player;
 	s32 held_player;
 	s32 pkind;
-	sb32 unk_0x88;
 	sb32 is_fighter_selected;
+	sb32 is_status_selected;
 	f32 puck_vel_x;
 	f32 puck_vel_y;
 	f32 cursor_pickup_x;
 	f32 cursor_pickup_y;
 	sb32 is_cursor_adjusting;
 	s32 door_offset;
-	alSoundEffect* p_sfx;
+	alSoundEffect *p_sfx;
 	u16 sfx_id;
 	sb32 is_hold_b;
 	u32 unk_0xB4;

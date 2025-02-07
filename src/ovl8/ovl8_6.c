@@ -25,7 +25,26 @@ extern db2ShortsContainer D_8038EFB0_1AB800;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_803745BC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_80374624.s")
+// 0x80374624
+s32 func_ovl8_80374624(s32 arg0, s32 arg1)
+{
+    s32 temp_v0;
+    s32 var_v1;
+
+    temp_v0 = func_ovl8_803717A0(0xCC);
+
+    if (temp_v0 != 0)
+    {
+        func_ovl8_8037FCD8(temp_v0, 0, 0, arg1, arg0);
+        var_v1 = temp_v0;
+    }
+    else
+    {
+        var_v1 = 0;
+    }
+
+    return var_v1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_80374680.s")
 

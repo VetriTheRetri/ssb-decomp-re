@@ -1240,7 +1240,7 @@ void mnPlayers1PTrainingUpdateCursor(GObj *gobj, s32 player, s32 cursor_status)
 
 	gcRemoveSObjAll(gobj);
 
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(void*, sMNPlayers1PTrainingFiles[0], cursor_offsets[cursor_status]));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PTrainingFiles[0], cursor_offsets[cursor_status]));
 	sobj->pos.x = start_pos_x;
 	sobj->pos.y = start_pos_y;
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1394,21 +1394,20 @@ void mnPlayers1PTrainingMakePortraitFlash(s32 player)
 
 	mnPlayers1PTrainingDestroyPortraitFlash(player);
 
-	gobj = gcMakeGObjSPAfter(0, NULL, 30, GOBJ_PRIORITY_DEFAULT);
-	sMNPlayers1PTrainingSlots[player].flash = gobj;
+	sMNPlayers1PTrainingSlots[player].flash = gobj = gcMakeGObjSPAfter(0, NULL, 30, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 37, GOBJ_PRIORITY_DEFAULT, ~0);
 	gobj->user_data.s = player;
 	gcAddGObjProcess(gobj, mnPlayers1PTrainingPortraitFlashThreadUpdate, nGCProcessKindThread, 1);
 
 	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PTrainingFiles[6], &lMNPlayersPortraitsFlashSprite));
-	sobj->pos.x = ((portrait >= 6 ? portrait - 6 : portrait) * 45) + 26;
-	sobj->pos.y = ((portrait >= 6 ? 1 : 0) * 43) + 37;
+	sobj->pos.x = (((portrait >= 6) ? portrait - 6 : portrait) * 45) + 26;
+	sobj->pos.y = (((portrait >= 6) ? 1 : 0) * 43) + 37;
 }
 
 // 0x801341B0
 void mnPlayers1PTrainingAnnounceFighter(s32 player, s32 slot)
 {
-	u16 announcer_names[/* */] =
+	u16 announce_names[/* */] =
 	{
 		nSYAudioVoiceAnnounceMario,
 		nSYAudioVoiceAnnounceFox,
@@ -1433,7 +1432,7 @@ void mnPlayers1PTrainingAnnounceFighter(s32 player, s32 slot)
 	}
 	func_800269C0_275C0(nSYAudioFGMMarioDash);
 
-	sMNPlayers1PTrainingSlots[player].p_sfx = func_800269C0_275C0(announcer_names[sMNPlayers1PTrainingSlots[slot].fkind]);
+	sMNPlayers1PTrainingSlots[player].p_sfx = func_800269C0_275C0(announce_names[sMNPlayers1PTrainingSlots[slot].fkind]);
 
 	if (sMNPlayers1PTrainingSlots[player].p_sfx != NULL)
 	{
@@ -1514,7 +1513,7 @@ void mnPlayers1PTrainingArrowThreadUpdate(GObj *gobj)
 		}
 		else if (mnPlayers1PTrainingGetArrowSObj(gobj, 0) == NULL)
 		{
-			sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PTrainingFiles[0], &lMNPlayersCommonArrowLeftSprite));
+			sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PTrainingFiles[0], &lMNPlayersCommonArrowLSprite));
 			sobj->pos.x = (player * 69) + 25;
 			sobj->pos.y = 201.0F;
 			sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1532,7 +1531,7 @@ void mnPlayers1PTrainingArrowThreadUpdate(GObj *gobj)
 		}
 		else if (mnPlayers1PTrainingGetArrowSObj(gobj, 1) == NULL)
 		{
-			sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PTrainingFiles[0], &lMNPlayersCommonArrowRightSprite));
+			sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PTrainingFiles[0], &lMNPlayersCommonArrowRSprite));
 			sobj->pos.x = (player * 69) + 79;
 			sobj->pos.y = 201.0F;
 			sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1940,7 +1939,7 @@ void mnPlayers1PTrainingAdjustCursor(GObj *gobj, s32 player)
 }
 
 // 0x80135430
-void mnPlayers1PTrainingUpdateCursorDisplay(GObj *gobj, s32 player)
+void mnPlayers1PTrainingUpdateCursorNoRecall(GObj *gobj, s32 player)
 {
 	s32 i;
 
@@ -2160,7 +2159,7 @@ void mnPlayers1PTrainingCursorProcUpdate(GObj *gobj)
 	}
 	if (sMNPlayers1PTrainingSlots[player].is_recalling == FALSE)
 	{
-		mnPlayers1PTrainingUpdateCursorDisplay(gobj, player);
+		mnPlayers1PTrainingUpdateCursorNoRecall(gobj, player);
 	}
 }
 

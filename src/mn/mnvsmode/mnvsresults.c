@@ -284,7 +284,7 @@ sb32 mnVSResultsCheckExit(void)
 // 0x80131EB0
 void mnVSResultsAnnounceWinner(void)
 {
-	u32 announcer_names[/* */] =
+	u32 announce_names[/* */] =
 	{
 		nSYAudioVoiceAnnounceMario,
 		nSYAudioVoiceAnnounceFox,
@@ -330,7 +330,7 @@ void mnVSResultsAnnounceWinner(void)
 			break;
 			
 		case 210:
-			func_800269C0_275C0(announcer_names[mnVSResultsGetFighterKind(mnVSResultsGetWinPlayer())]);
+			func_800269C0_275C0(announce_names[mnVSResultsGetFighterKind(mnVSResultsGetWinPlayer())]);
 			break;
 			
 		case 270:

@@ -26,8 +26,8 @@ extern int relocFile0NineSpriteOffset; // 0xda60
 extern int relocFile0PercentageSpriteOffset; // 0xdb30
 extern int relocFile0InfinitySpriteOffset; // 0xdc48
 extern int relocFile0ColonSpriteOffset; // 0xdcf0
-extern int relocFile0ArrowRightSpriteOffset; // 0xdd90
-extern int relocFile0ArrowLeftSpriteOffset; // 0xde30
+extern int relocFile0ArrowRSpriteOffset; // 0xdd90
+extern int relocFile0ArrowLSpriteOffset; // 0xde30
 extern int relocFile0AutoTextSpriteOffset; // 0xdf48
 extern int relocFile0SmashBrosCollageSpriteOffset; // 0x18000
 
@@ -411,8 +411,8 @@ extern int relocFile17SmashLogoCardRightSpriteOffset; // 0xdfa0
 extern int relocFile17RedLabelSpriteOffset; // 0xe3c8
 extern int relocFile17GreenLabelSpriteOffset; // 0xe7e8
 extern int relocFile17BlueLabelSpriteOffset; // 0xec08
-extern int relocFile17ArrowLeftSpriteOffset; // 0xece8
-extern int relocFile17ArrowRightSpriteOffset; // 0xedc8
+extern int relocFile17ArrowLSpriteOffset; // 0xece8
+extern int relocFile17ArrowRSpriteOffset; // 0xedc8
 extern int relocFile17ReadyToFightTextSpriteOffset; // 0xf448
 extern int relocFile17ReadyBannerSpriteOffset; // 0xf530
 extern int relocFile17RedCardSpriteOffset; // 0x104b0
@@ -574,8 +574,8 @@ extern int relocFile29BoxTopSpriteOffset; // 0xfb10
 extern int relocFile29BoxLeftSpriteOffset; // 0x10060
 extern int relocFile29BoxRightSpriteOffset; // 0x105b0
 extern int relocFile29BoxBottomSpriteOffset; // 0x107e0
-extern int relocFile29ArrowLeftSpriteOffset; // 0x10890
-extern int relocFile29ArrowRightSpriteOffset; // 0x10940
+extern int relocFile29ArrowLSpriteOffset; // 0x10890
+extern int relocFile29ArrowRSpriteOffset; // 0x10940
 extern int relocFile29NoneTextJapSpriteOffset; // 0x10a68
 extern int relocFile29MaximTomatoTextJapSpriteOffset; // 0x10ca8
 extern int relocFile29HeartTextJapSpriteOffset; // 0x10ee8

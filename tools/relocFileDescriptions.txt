@@ -26,8 +26,8 @@ sprite Nine 0xda60
 sprite Percentage 0xdb30
 sprite Infinity 0xdc48
 sprite Colon 0xdcf0
-sprite ArrowRight 0xdd90
-sprite ArrowLeft 0xde30
+sprite ArrowR 0xdd90
+sprite ArrowL 0xde30
 sprite AutoText 0xdf48
 sprite SmashBrosCollage 0x18000
 
@@ -428,8 +428,8 @@ sprite SmashLogoCardRight 0xdfa0
 sprite RedLabel 0xe3c8
 sprite GreenLabel 0xe7e8
 sprite BlueLabel 0xec08
-sprite ArrowLeft 0xece8
-sprite ArrowRight 0xedc8
+sprite ArrowL 0xece8
+sprite ArrowR 0xedc8
 sprite ReadyToFightText 0xf448
 sprite ReadyBanner 0xf530
 sprite RedCard 0x104b0
@@ -602,8 +602,8 @@ sprite BoxTop 0xfb10
 sprite BoxLeft 0x10060
 sprite BoxRight 0x105b0
 sprite BoxBottom 0x107e0
-sprite ArrowLeft 0x10890
-sprite ArrowRight 0x10940
+sprite ArrowL 0x10890
+sprite ArrowR 0x10940
 sprite NoneTextJap 0x10a68
 sprite MaximTomatoTextJap 0x10ca8
 sprite HeartTextJap 0x10ee8

@@ -83,7 +83,7 @@ void *sMNPlayers1PBonusFigatreeHeap;
 s32 sMNPlayers1PBonusBonusKind;
 
 // 0x80137718 - title and back button
-GObj *sMNPlayers1PBonusTitleGObj;
+GObj *sMNPlayers1PBonusGameModeGObj;
 
 // 0x8013771C - total time highscore
 GObj *sMNPlayers1PBonusTotalTimeGObj;
@@ -878,7 +878,7 @@ void mnPlayers1PBonusMakeLabels(void)
 	GObj *gobj;
 	SObj *sobj;
 
-	sMNPlayers1PBonusTitleGObj = gobj = gcMakeGObjSPAfter(0, NULL, 23, GOBJ_PRIORITY_DEFAULT);
+	sMNPlayers1PBonusGameModeGObj = gobj = gcMakeGObjSPAfter(0, NULL, 23, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 34, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	if (sMNPlayers1PBonusBonusKind == 0)
@@ -1457,13 +1457,13 @@ void mnPlayers1PBonusUpdateCursor(GObj *gobj, s32 player, s32 cursor_status)
 }
 
 // 0x80134574 - Unused?
-void mnPlayers1PBonusCheckTimeArrowRightInRange(void)
+void mnPlayers1PBonusCheckTimeArrowRInRange(void)
 {
 	return;
 }
 
 // 0x8013457C - Unused?
-void mnPlayers1PBonusCheckTimeArrowLeftInRange(void)
+void mnPlayers1PBonusCheckTimeArrowLInRange(void)
 {
 	return;
 }
@@ -1624,14 +1624,14 @@ void mnPlayers1PBonusMakePortraitFlash(s32 player)
 	gcAddGObjProcess(gobj, mnPlayers1PBonusPortraitFlashThreadUpdate, nGCProcessKindThread, 1);
 
 	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[4], &lMNPlayersPortraitsFlashSprite));
-	sobj->pos.x = ((portrait >= 6 ? portrait - 6 : portrait) * 45) + 26;
-	sobj->pos.y = ((portrait >= 6 ? 1 : 0) * 43) + 37;
+	sobj->pos.x = (((portrait >= 6) ? portrait - 6 : portrait) * 45) + 26;
+	sobj->pos.y = (((portrait >= 6) ? 1 : 0) * 43) + 37;
 }
 
 // 0x80134A50
 void mnPlayers1PBonusAnnounceFighter(s32 player, s32 slot)
 {
-	u16 announcer_names[/* */] =
+	u16 announce_names[/* */] =
 	{
 		nSYAudioVoiceAnnounceMario,
 		nSYAudioVoiceAnnounceFox,
@@ -1656,7 +1656,7 @@ void mnPlayers1PBonusAnnounceFighter(s32 player, s32 slot)
 	}
 	func_800269C0_275C0(nSYAudioFGMMarioDash);
 
-	sMNPlayers1PBonusSlot.p_sfx = func_800269C0_275C0(announcer_names[sMNPlayers1PBonusSlot.fkind]);
+	sMNPlayers1PBonusSlot.p_sfx = func_800269C0_275C0(announce_names[sMNPlayers1PBonusSlot.fkind]);
 
 	if (sMNPlayers1PBonusSlot.p_sfx != NULL)
 	{
@@ -1926,7 +1926,7 @@ void mnPlayers1PBonusAdjustCursor(GObj *gobj, s32 player)
 }
 
 // 0x8013545C
-void mnPlayers1PBonusUpdateCursorDisplay(GObj *gobj, s32 player)
+void mnPlayers1PBonusUpdateCursorNoRecall(GObj *gobj, s32 player)
 {
 	s32 i;
 
@@ -2069,7 +2069,7 @@ sb32 mnPlayers1PBonusCheckGameModeInRange(GObj *gobj)
 }
 
 // 0x801358C4
-void mnPlayers1PBonusPressGameMode(void)
+void mnPlayers1PBonusUpdateGameMode(void)
 {
 	if (sMNPlayers1PBonusBonusKind == 0)
 	{
@@ -2077,7 +2077,7 @@ void mnPlayers1PBonusPressGameMode(void)
 	}
 	else sMNPlayers1PBonusBonusKind = 0;
 
-	gcEjectGObj(sMNPlayers1PBonusTitleGObj);
+	gcEjectGObj(sMNPlayers1PBonusGameModeGObj);
 	mnPlayers1PBonusMakeLabels();
 	mnPlayers1PBonusMakeHiScore();
 
@@ -2109,7 +2109,7 @@ void mnPlayers1PBonusCursorProcUpdate(GObj *gobj)
 	{
 		if (mnPlayers1PBonusCheckGameModeInRange(gobj) != FALSE)
 		{
-			mnPlayers1PBonusPressGameMode();
+			mnPlayers1PBonusUpdateGameMode();
 		}
 		else if (mnPlayers1PBonusCheckBackInRange(gobj) != FALSE)
 		{
@@ -2163,7 +2163,7 @@ void mnPlayers1PBonusCursorProcUpdate(GObj *gobj)
 	}
 	if (sMNPlayers1PBonusSlot.is_recalling == FALSE)
 	{
-		mnPlayers1PBonusUpdateCursorDisplay(gobj, player);
+		mnPlayers1PBonusUpdateCursorNoRecall(gobj, player);
 	}
 }
 

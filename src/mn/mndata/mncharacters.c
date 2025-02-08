@@ -1462,7 +1462,7 @@ void mnCharactersMakeDecals(void)
 	sobj->envcolor.g = 0x00;
 	sobj->envcolor.b = 0x00;
 
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNCharactersFiles[1], &lMNDataCommonArrowLeftSprite));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNCharactersFiles[1], &lMNDataCommonArrowLSprite));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -1474,7 +1474,7 @@ void mnCharactersMakeDecals(void)
 	sobj->sprite.green = 0x7D;
 	sobj->sprite.blue = 0x0C;
 
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNCharactersFiles[1], &lMNDataCommonArrowRightSprite));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNCharactersFiles[1], &lMNDataCommonArrowRSprite));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;

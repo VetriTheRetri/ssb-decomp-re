@@ -73,8 +73,8 @@ extern intptr_t lMNCommonTextAutoSprite;                // 0x0000DF48
 extern intptr_t lMNCommonWallpaperSprite;               // 0x00018000
 
 extern intptr_t lMNDataCommonDataHeaderSprite;          // 0x00000B40
-extern intptr_t lMNDataCommonArrowLeftSprite;           // 0x00000BE0
-extern intptr_t lMNDataCommonArrowRightSprite;          // 0x00000C80
+extern intptr_t lMNDataCommonArrowLSprite;           // 0x00000BE0
+extern intptr_t lMNDataCommonArrowRSprite;          // 0x00000C80
 
 extern intptr_t lMNPlayersCommonGate1PSprite;           // 0x00000878
 extern intptr_t lMNPlayersCommonGate2PSprite;           // 0x00000A58
@@ -102,7 +102,9 @@ extern intptr_t lMNPlayersCommonCaptainNameSprite;      // 0x00003998
 extern intptr_t lMNPlayersCommonPurinNameSprite;        // 0x00003DB8
 
 extern intptr_t lMNPlayersCommonSymbolInfiniteSprite;   // 0x00003EF0
+
 extern intptr_t lMNPlayersCommonGameRuleTimeSprite;     // 0x000048B0
+extern intptr_t lMNPlayersCommonGameRuleStockSprite;    // 0x00005270
 
 extern intptr_t lMNPlayersCommonDigit0Sprite;        	// 0x00005388
 extern intptr_t lMNPlayersCommonDigit1Sprite;        	// 0x00005440
@@ -134,12 +136,15 @@ extern intptr_t lMNPlayersCommon3PPuckSprite;   		// 0x0000A608
 extern intptr_t lMNPlayersCommon4PPuckSprite;   		// 0x0000B0E8
 extern intptr_t lMNPlayersCommonCPPuckSprite;   		// 0x0000BBC8
 
+extern intptr_t lMNPlayersCommonShutterLSprite;   		// 0x0000CDB0
+extern intptr_t lMNPlayersCommonShutterRSprite;         // 0x0000DFA0
+
 extern intptr_t lMNPlayersCommonTeamRedSprite;        	// 0x0000E3C8
 extern intptr_t lMNPlayersCommonTeamGreenSprite;        // 0x0000EC08
 extern intptr_t lMNPlayersCommonTeamBlueSprite;        	// 0x0000E7E8
 
-extern intptr_t lMNPlayersCommonArrowLeftSprite;        // 0x0000ECE8
-extern intptr_t lMNPlayersCommonArrowRightSprite;       // 0x0000EDC8
+extern intptr_t lMNPlayersCommonArrowLSprite;           // 0x0000ECE8
+extern intptr_t lMNPlayersCommonArrowRSprite;           // 0x0000EDC8
 
 extern intptr_t lMNPlayersCommonReadySprite;            // 0x0000F448
 extern intptr_t lMNPlayersCommonReadyBannerSprite;      // 0x0000F530
@@ -148,6 +153,9 @@ extern intptr_t lMNPlayersCommonGateMan1PLUT;			// 0x000103F8
 extern intptr_t lMNPlayersCommonGateMan2PLUT;			// 0x00010420
 extern intptr_t lMNPlayersCommonGateMan3PLUT;			// 0x00010470
 extern intptr_t lMNPlayersCommonGateMan4PLUT;			// 0x00010448
+
+extern intptr_t lMNPlayersCommonGateManWallpaperSprite; // 0x000104B0
+extern intptr_t lMNPlayersCommonGateComWallpaperSprite; // 0x00011430
 
 extern intptr_t lMNPlayersCommonGateCom1PLUT;           // 0x00011378
 extern intptr_t lMNPlayersCommonGateCom2PLUT;           // 0x000113A0

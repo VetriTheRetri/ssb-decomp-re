@@ -1158,7 +1158,7 @@ void mnPlayers1PGameLevelThreadUpdate(GObj *gobj)
 		}
 		else if (mnPlayers1PGameGetArrowSObj(gobj, 0) == NULL)
 		{
-			sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PGameFiles[0], &lMNPlayersCommonArrowLeftSprite));
+			sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PGameFiles[0], &lMNPlayersCommonArrowLSprite));
 			sobj->pos.x = 194.0F;
 			sobj->pos.y = 158.0F;
 			sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1176,7 +1176,7 @@ void mnPlayers1PGameLevelThreadUpdate(GObj *gobj)
 		}
 		else if (mnPlayers1PGameGetArrowSObj(gobj, 1) == NULL)
 		{
-			sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PGameFiles[0], &lMNPlayersCommonArrowRightSprite));
+			sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PGameFiles[0], &lMNPlayersCommonArrowRSprite));
 			sobj->pos.x = 269.0F;
 			sobj->pos.y = 158.0F;
 			sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1272,7 +1272,7 @@ void mnPlayers1PGameStockThreadUpdate(GObj *gobj)
 		}
 		else if (mnPlayers1PGameGetArrowSObj(gobj, 0) == NULL)
 		{
-			sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PGameFiles[0], &lMNPlayersCommonArrowLeftSprite));
+			sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PGameFiles[0], &lMNPlayersCommonArrowLSprite));
 			sobj->pos.x = 194.0F;
 			sobj->pos.y = 178.0F;
 			sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1290,7 +1290,7 @@ void mnPlayers1PGameStockThreadUpdate(GObj *gobj)
 		}
 		else if (mnPlayers1PGameGetArrowSObj(gobj, 1) == NULL)
 		{
-			sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PGameFiles[0], &lMNPlayersCommonArrowRightSprite));
+			sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PGameFiles[0], &lMNPlayersCommonArrowRSprite));
 			sobj->pos.x = 269.0F;
 			sobj->pos.y = 178.0F;
 			sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1872,7 +1872,7 @@ void mnPlayers1PGameUpdateCursor(GObj *gobj, s32 player, s32 cursor_status)
 }
 
 // 0x801354CC
-sb32 mnPlayers1PGameCheckTimeArrowRightInRange(GObj *gobj)
+sb32 mnPlayers1PGameCheckTimeArrowRInRange(GObj *gobj)
 {
 	f32 pos_x, pos_y;
 	sb32 is_in_range;
@@ -1900,7 +1900,7 @@ sb32 mnPlayers1PGameCheckTimeArrowRightInRange(GObj *gobj)
 }
 
 // 0x80135594
-sb32 mnPlayers1PGameCheckTimeArrowLeftInRange(GObj *gobj)
+sb32 mnPlayers1PGameCheckTimeArrowLInRange(GObj *gobj)
 {
 	f32 pos_x, pos_y;
 	sb32 is_in_range;
@@ -2077,14 +2077,14 @@ void mnPlayers1PGameMakePortraitFlash(s32 player)
 	gcAddGObjProcess(gobj, mnPlayers1PGamePortraitFlashThreadUpdate, nGCProcessKindThread, 1);
 
 	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PGameFiles[4], &lMNPlayersPortraitsFlashSprite));
-	sobj->pos.x = ((portrait >= 6 ? portrait - 6 : portrait) * 45) + 26;
-	sobj->pos.y = ((portrait >= 6 ? 1 : 0) * 43) + 37;
+	sobj->pos.x = (((portrait >= 6) ? portrait - 6 : portrait) * 45) + 26;
+	sobj->pos.y = (((portrait >= 6) ? 1 : 0) * 43) + 37;
 }
 
 // 0x80135B30
 void mnPlayers1PGameAnnounceFighter(s32 player, s32 slot)
 {
-	u16 announcer_names[/* */] =
+	u16 announce_names[/* */] =
 	{
 		nSYAudioVoiceAnnounceMario,
 		nSYAudioVoiceAnnounceFox,
@@ -2109,7 +2109,7 @@ void mnPlayers1PGameAnnounceFighter(s32 player, s32 slot)
 	}
 	func_800269C0_275C0(nSYAudioFGMMarioDash);
 
-	sMNPlayers1PGameSlot.p_sfx = func_800269C0_275C0(announcer_names[sMNPlayers1PGameSlot.fkind]);
+	sMNPlayers1PGameSlot.p_sfx = func_800269C0_275C0(announce_names[sMNPlayers1PGameSlot.fkind]);
 
 	if (sMNPlayers1PGameSlot.p_sfx != NULL)
 	{
@@ -2377,7 +2377,7 @@ void mnPlayers1PGameAdjustCursor(GObj *gobj, s32 player)
 }
 
 // 0x80136540
-void mnPlayers1PGameUpdateCursorDisplay(GObj *gobj, s32 player)
+void mnPlayers1PGameUpdateCursorNoRecall(GObj *gobj, s32 player)
 {
 	s32 i;
 
@@ -2418,7 +2418,7 @@ void mnPlayers1PGameUpdateCursorDisplay(GObj *gobj, s32 player)
 }
 
 // 0x801366C4
-sb32 mnPlayers1PGameCheckLevelArrowRightInRange(GObj *gobj)
+sb32 mnPlayers1PGameCheckLevelArrowRInRange(GObj *gobj)
 {
 	f32 pos_x, pos_y;
 	s32 is_in_range;
@@ -2445,7 +2445,7 @@ sb32 mnPlayers1PGameCheckLevelArrowRightInRange(GObj *gobj)
 }
 
 // 0x80136788
-sb32 mnPlayers1PGameCheckLevelArrowLeftInRange(GObj *gobj)
+sb32 mnPlayers1PGameCheckLevelArrowLInRange(GObj *gobj)
 {
 	f32 pos_x, pos_y;
 	s32 is_in_range;
@@ -2474,7 +2474,7 @@ sb32 mnPlayers1PGameCheckLevelArrowLeftInRange(GObj *gobj)
 // 0x8013684C
 sb32 mnPlayers1PGameCheckLevelArrowPress(GObj *gobj)
 {
-	if (mnPlayers1PGameCheckLevelArrowRightInRange(gobj) != FALSE)
+	if (mnPlayers1PGameCheckLevelArrowRInRange(gobj) != FALSE)
 	{
 		if (sMNPlayers1PGameLevelValue < nSC1PGameDifficultyVeryHard)
 		{
@@ -2484,7 +2484,7 @@ sb32 mnPlayers1PGameCheckLevelArrowPress(GObj *gobj)
 		}
 		return TRUE;
 	}
-	else if (mnPlayers1PGameCheckLevelArrowLeftInRange(gobj) != FALSE)
+	else if (mnPlayers1PGameCheckLevelArrowLInRange(gobj) != FALSE)
 	{
 		if (sMNPlayers1PGameLevelValue > nSC1PGameDifficultyVeryEasy)
 		{
@@ -2498,7 +2498,7 @@ sb32 mnPlayers1PGameCheckLevelArrowPress(GObj *gobj)
 }
 
 // 0x801368FC
-sb32 mnPlayers1PGameCheckStockArrowRightInRange(GObj *gobj)
+sb32 mnPlayers1PGameCheckStockArrowRInRange(GObj *gobj)
 {
 	f32 pos_x, pos_y;
 	s32 is_in_range;
@@ -2525,7 +2525,7 @@ sb32 mnPlayers1PGameCheckStockArrowRightInRange(GObj *gobj)
 }
 
 // 0x801369C0
-sb32 mnPlayers1PGameCheckStockArrowLeftInRange(GObj *gobj)
+sb32 mnPlayers1PGameCheckStockArrowLInRange(GObj *gobj)
 {
 	f32 pos_x, pos_y;
 	s32 is_in_range;
@@ -2554,7 +2554,7 @@ sb32 mnPlayers1PGameCheckStockArrowLeftInRange(GObj *gobj)
 // 0x80136A84
 sb32 mnPlayers1PGameCheckStockArrowPress(GObj *gobj)
 {
-	if (mnPlayers1PGameCheckStockArrowRightInRange(gobj))
+	if (mnPlayers1PGameCheckStockArrowRInRange(gobj))
 	{
 		if (sMNPlayers1PGameStockValue < 4)
 		{
@@ -2564,7 +2564,7 @@ sb32 mnPlayers1PGameCheckStockArrowPress(GObj *gobj)
 		}
 		return TRUE;
 	}
-	else if (mnPlayers1PGameCheckStockArrowLeftInRange(gobj))
+	else if (mnPlayers1PGameCheckStockArrowLInRange(gobj))
 	{
 		if (sMNPlayers1PGameStockValue > 0)
 		{
@@ -2666,13 +2666,13 @@ void mnPlayers1PGameCursorProcUpdate(GObj *gobj)
 		(mnPlayers1PGameCheckCursorPuckGrab(gobj, player) == FALSE)
 	)
 	{
-		if (mnPlayers1PGameCheckTimeArrowRightInRange(gobj) != FALSE)
+		if (mnPlayers1PGameCheckTimeArrowRInRange(gobj) != FALSE)
 		{
 			sMNPlayers1PGameTimeSetting = mnPlayers1PGameGetNextTimeValue(sMNPlayers1PGameTimeSetting);
 			mnPlayers1PGameMakeTimeSelect(sMNPlayers1PGameTimeSetting);
 			func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 		}
-		else if (mnPlayers1PGameCheckTimeArrowLeftInRange(gobj) != FALSE)
+		else if (mnPlayers1PGameCheckTimeArrowLInRange(gobj) != FALSE)
 		{
 			sMNPlayers1PGameTimeSetting = mnPlayers1PGameGetPrevTimeValue(sMNPlayers1PGameTimeSetting);
 			mnPlayers1PGameMakeTimeSelect(sMNPlayers1PGameTimeSetting);
@@ -2734,7 +2734,7 @@ void mnPlayers1PGameCursorProcUpdate(GObj *gobj)
 	}
 	if (sMNPlayers1PGameSlot.is_recalling == FALSE)
 	{
-		mnPlayers1PGameUpdateCursorDisplay(gobj, player);
+		mnPlayers1PGameUpdateCursorNoRecall(gobj, player);
 	}
 }
 

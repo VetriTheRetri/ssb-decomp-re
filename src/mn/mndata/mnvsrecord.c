@@ -626,7 +626,7 @@ void mnVSRecordMakePortraitStatsArrows(void)
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddGObjProcess(gobj, mnVSRecordPortraitArrowsProcUpdate, nGCProcessKindFunc, 1);
 
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSRecordFiles[1], &lMNDataCommonArrowLeftSprite));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSRecordFiles[1], &lMNDataCommonArrowLSprite));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -638,7 +638,7 @@ void mnVSRecordMakePortraitStatsArrows(void)
 	sobj->pos.x = 40.0F;
 	sobj->pos.y = 78.0F;
 
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSRecordFiles[1], &lMNDataCommonArrowRightSprite));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSRecordFiles[1], &lMNDataCommonArrowRSprite));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;

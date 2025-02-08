@@ -63,7 +63,7 @@ extern void mnPlayers1PTrainingSetCursorGrab(s32 player, s32 held_player);
 extern sb32 mnPlayers1PTrainingCheckCursorPuckGrab(GObj *gobj, s32 player);
 extern s32 mnPlayers1PTrainingGetPuckFighterKind(s32 player);
 extern void mnPlayers1PTrainingAdjustCursor(GObj *gobj, s32 player);
-extern void mnPlayers1PTrainingUpdateCursorDisplay(GObj *gobj, s32 player);
+extern void mnPlayers1PTrainingUpdateCursorNoRecall(GObj *gobj, s32 player);
 extern void mnPlayers1PTrainingUpdateCostume(s32 player, s32 select_button);
 extern sb32 mnPlayers1PTrainingCheckManFighterSelected(s32 player);
 extern void mnPlayers1PTrainingRecallPuck(s32 player);

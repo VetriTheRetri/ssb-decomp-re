@@ -2683,7 +2683,7 @@ void mnPlayers1PGameCursorProcUpdate(GObj *gobj)
 			mnPlayers1PGameBackTo1PMode();
 			func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 		}
-		else if (!mnPlayers1PGameCheckLevelArrowPress(gobj))
+		else if (mnPlayers1PGameCheckLevelArrowPress(gobj) == FALSE)
 		{
 			mnPlayers1PGameCheckStockArrowPress(gobj);
 		}
@@ -2940,6 +2940,7 @@ void mnPlayers1PGameMakeCursor(s32 player)
 	);
 	gobj->user_data.s = player;
 	sMNPlayers1PGameSlot.cursor = gobj;
+	
 	SObjGetStruct(gobj)->pos.x = 60.0F;
 	SObjGetStruct(gobj)->pos.y = 170.0F;
 	SObjGetStruct(gobj)->sprite.attr &= ~SP_FASTCOPY;

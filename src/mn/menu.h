@@ -73,8 +73,8 @@ extern intptr_t lMNCommonTextAutoSprite;                // 0x0000DF48
 extern intptr_t lMNCommonWallpaperSprite;               // 0x00018000
 
 extern intptr_t lMNDataCommonDataHeaderSprite;          // 0x00000B40
-extern intptr_t lMNDataCommonArrowLSprite;           // 0x00000BE0
-extern intptr_t lMNDataCommonArrowRSprite;          // 0x00000C80
+extern intptr_t lMNDataCommonArrowLSprite;              // 0x00000BE0
+extern intptr_t lMNDataCommonArrowRSprite;              // 0x00000C80
 
 extern intptr_t lMNPlayersCommonGate1PSprite;           // 0x00000878
 extern intptr_t lMNPlayersCommonGate2PSprite;           // 0x00000A58

@@ -2352,6 +2352,7 @@ void mnPlayers1PBonusMakeCursor(s32 player)
 	);
 	gobj->user_data.s = player;
 	sMNPlayers1PBonusSlot.cursor = gobj;
+
 	SObjGetStruct(gobj)->pos.x = 80.0F;
 	SObjGetStruct(gobj)->pos.y = 170.0F;
 	SObjGetStruct(gobj)->sprite.attr &= ~SP_FASTCOPY;

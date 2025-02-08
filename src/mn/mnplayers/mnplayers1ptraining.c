@@ -1467,15 +1467,15 @@ void mnPlayers1PTrainingDestroyHandicapLevel(s32 player)
 }
 
 // 0x80134340
-SObj* mnPlayers1PTrainingGetArrowSObj(GObj *gobj, s32 direction)
+SObj* mnPlayers1PTrainingGetArrowSObj(GObj *gobj, sb32 left_or_right)
 {
 	if (SObjGetStruct(gobj) != NULL)
 	{
-		if (direction == SObjGetStruct(gobj)->user_data.s)
+		if (left_or_right == SObjGetStruct(gobj)->user_data.s)
 		{
 			return SObjGetStruct(gobj);
 		}
-		if ((SObjGetStruct(gobj)->next != NULL) && (direction == SObjGetStruct(gobj)->next->user_data.s))
+		if ((SObjGetStruct(gobj)->next != NULL) && (left_or_right == SObjGetStruct(gobj)->next->user_data.s))
 		{
 			return SObjGetStruct(gobj)->next;
 		}
@@ -1568,8 +1568,7 @@ void mnPlayers1PTrainingMakeHandicapLevel(s32 player)
 		gcEjectGObj(sMNPlayers1PTrainingSlots[player].handicap_cpu_level);
 		sMNPlayers1PTrainingSlots[player].handicap_cpu_level = NULL;
 	}
-	gobj = gcMakeGObjSPAfter(0, NULL, 28, GOBJ_PRIORITY_DEFAULT);
-	sMNPlayers1PTrainingSlots[player].handicap_cpu_level = gobj;
+	sMNPlayers1PTrainingSlots[player].handicap_cpu_level = gobj = gcMakeGObjSPAfter(0, NULL, 28, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 35, GOBJ_PRIORITY_DEFAULT, ~0);
 	gobj->user_data.s = player;
 	gcAddGObjProcess(gobj, mnPlayers1PTrainingHandicapLevelProcUpdate, nGCProcessKindFunc, 1);
@@ -1578,20 +1577,20 @@ void mnPlayers1PTrainingMakeHandicapLevel(s32 player)
 	{
 		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PTrainingFiles[0], &lMNPlayersCommonHandicapSprite));
 		sobj->pos.x = (player * 69) + 35;
-		sobj->user_data.s = 0;
+		sobj->user_data.s = nFTPlayerKindMan;
 	}
 	else
 	{
 		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PTrainingFiles[0], &lMNPlayersCommonLevelSprite));
 		sobj->pos.x = (player * 69) + 34;
-		sobj->user_data.s = 1;
+		sobj->user_data.s = nFTPlayerKindCom;
 	}
+	sobj->pos.y = 201.0F;
 	sobj->sprite.red = 0xC2;
 	sobj->sprite.green = 0xBD;
 	sobj->sprite.blue = 0xAD;
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
-	sobj->pos.y = 201.0F;
 
 	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PTrainingFiles[2], &lMNCommonColonSprite));
 	sobj->pos.x = (player * 69) + 61;
@@ -1649,6 +1648,7 @@ sb32 mnPlayers1PTrainingSelectFighter(GObj *gobj, s32 player, s32 unused, s32 se
 	{
 		mnPlayers1PTrainingSelectFighterPuck(player, select_button);
 		sMNPlayers1PTrainingSlots[player].recall_end_tic = sMNPlayers1PTrainingTotalTimeTics + 30;
+		
 		return TRUE;
 	}
 	else func_800269C0_275C0(nSYAudioFGMMenuDenied);
@@ -2101,7 +2101,7 @@ void mnPlayers1PTrainingCursorProcUpdate(GObj *gobj)
 	if
 	(
 		(gSYControllerDevices[sMNPlayers1PTrainingManPlayer].button_tap & A_BUTTON) &&
-		(mnPlayers1PTrainingSelectFighter(gobj, player, sMNPlayers1PTrainingSlots[player].held_player, 4) == FALSE) &&
+		(mnPlayers1PTrainingSelectFighter(gobj, player, sMNPlayers1PTrainingSlots[player].held_player, nMNPlayersSelectButtonA) == FALSE) &&
 		(mnPlayers1PTrainingCheckCursorPuckGrab(gobj, player) == FALSE) &&
 		(mnPlayers1PTrainingCheckBackInRange(gobj) != FALSE)
 	)
@@ -2398,7 +2398,7 @@ void mnPlayers1PTrainingMakeCursor(s32 player)
 	};
 	u32 priorities[/* */] = { 6, 4, 2, 0 };
 
-	gobj = lbCommonMakeSpriteGObj
+	sMNPlayers1PTrainingSlots[player].cursor = gobj = lbCommonMakeSpriteGObj
 	(
 		0,
 		NULL,
@@ -2418,8 +2418,8 @@ void mnPlayers1PTrainingMakeCursor(s32 player)
 		mnPlayers1PTrainingCursorProcUpdate,
 		2
 	);
-	sMNPlayers1PTrainingSlots[player].cursor = gobj;
 	gobj->user_data.s = player;
+
 	SObjGetStruct(gobj)->pos.x = 70.0F;
 	SObjGetStruct(gobj)->pos.y = 170.0F;
 	SObjGetStruct(gobj)->sprite.attr &= ~SP_FASTCOPY;

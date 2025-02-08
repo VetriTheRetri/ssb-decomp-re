@@ -2025,8 +2025,6 @@ lMNPlayersCommonHandicapSprite = 0x1108;
 lMNPlayersCommonLevelSprite = 0x1218;
 lMNPlayersCommonStartSprite = 0x1378;
 lMNPlayersCommonPressSprite = 0x14D8;
-FILE_011_PICKER_STOCK_IMAGE_OFFSET = 0x5270;
-FILE_011_CURSOR_POINTER_IMAGE_OFFSET = 0x76E8;
 lMNPlayersCommonShutterLSprite = 0x0000CDB0;
 lMNPlayersCommonShutterRSprite = 0x0000DFA0;
 lMNPlayersCommonTeamRedSprite = 0x0000E3C8;
@@ -2036,7 +2034,6 @@ lMNPlayersCommonArrowLSprite = 0xECE8;
 lMNPlayersCommonArrowRSprite = 0xEDC8;
 lMNPlayersCommonReadySprite = 0xF448;
 lMNPlayersCommonReadyBannerSprite = 0xF530;
-FILE_011_PANEL_IMAGE_OFFSET = 0x104B0;
 lMNPlayersCommonGateManWallpaperSprite = 0x000104B0;
 lMNPlayersCommonGateComWallpaperSprite = 0x00011430;
 lMNPlayersCommonBackSprite = 0x115C8;
@@ -2196,7 +2193,6 @@ lMNVSRecordMainLabelUsePercentSprite = 0x00000F08;
 lMNVSRecordMainLabelAvgSprite = 0x00001008;
 lMNVSRecordMainLabelKOdSprite = 0x00001140;
 
-FILE_020_DATA_HEADER_IMAGE_OFFSET = 0xB40;
 lMNDataCommonArrowLSprite = 0xBE0;
 lMNDataCommonArrowRSprite = 0xC80;
 lMNVSResultsLabelTKOSprite = 0x358;
@@ -2205,10 +2201,6 @@ lMNVSResultsLabePointsSprite = 0x10D8;
 lMNVSResultsLabelKOsSprite = 0xD38;
 lMNVSResultsWallpaperSprite = 0xD5C8;
 lMNVSResultsWinnerSprite = 0xE2A0;
-FILE_024_DASH_IMAGE_OFFSET = 0x710;
-FILE_026_INDICATOR_CP_IMAGE_OFFSET = 0xCD8;
-
-FILE_0A4_1_IMAGE_OFFSET = 0x2D8;
 
 lMNTitleLogoAnimJoint = 0x251D0;
 lMNTitleLogoDObjDesc = 0x26020;
@@ -2225,19 +2217,7 @@ lMNLogoFireAnimJoint = 0x29010;
 
 lMNNoControllerImageSprite = 0x8460;
 
-FILE_034_ROOM_OFFSET_1 = 0x42F8;
-FILE_034_ROOM_OFFSET_2 = 0x7E98;
-FILE_034_ROOM_OFFSET_3 = 0x8788;
-FILE_034_DESK_OBJECT_OFFSET = 0x8DF8;
 lMVCommonRoomHazeDisplayList = 0x98F8;
-FILE_034_BOOKS_OBJECT_OFFSET_1 = 0xA6F8;
-FILE_034_BOOKS_OBJECT_OFFSET_2 = 0xA7B0;
-FILE_034_PENCIL_HOLDER_OBJECT_OFFSET_1 = 0xAEB8;
-FILE_034_PENCIL_HOLDER_OBJECT_OFFSET_2 = 0xAF70;
-FILE_034_LAMP_OBJECT_OFFSET_1 = 0xBDC0;
-FILE_034_LAMP_OBJECT_OFFSET_2 = 0xBEA0;
-FILE_034_TISSUE_BOX_OBJECT_OFFSET_1 = 0xC690;
-FILE_034_TISSUE_BOX_OBJECT_OFFSET_2 = 0xC884;
 lMVCommonRoomLogoMObjSub = 0x1BC60;
 lMVCommonRoomLogoDObjDesc = 0x1C4A8;
 lMVCommonRoomLogoMatAnimJoint = 0x1C52C;
@@ -2293,9 +2273,6 @@ lMNVSRecordMainDigit6Sprite = 0x000006B0;
 lMNVSRecordMainDigit7Sprite = 0x00000750;
 lMNVSRecordMainDigit8Sprite = 0x000007F0;
 lMNVSRecordMainDigit9Sprite = 0x00000890;
-
-gSYControllerMain = 0x80045470;
-gGCCurrentProcess = 0x80046A60;
 
 dSYAudioPublicSettings = 0x8003CB3C;
 dSYAudioPublicSettings2 = dSYAudioPublicSettings;

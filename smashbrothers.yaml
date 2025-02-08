@@ -105,7 +105,7 @@ segments:
       - [0x01E210, c, sys/interp]
       - [0x01F1C0, c, sys/audio]
       - [0x021CC0, c, sys/error]
-      - [0x024440, c, unref24440] # One func, that's entirely unreferenced.
+      - [0x024440, c, sys/unref] # One func, that's entirely unreferenced.
       - [0x024470, c, libultra/sp/setattribute]
       - [0x024480, c, libultra/sp/sprite]
       - [0x026AF0, c, libultra/sp/clearattribute]
@@ -1230,7 +1230,7 @@ segments:
 
   - name: ovl14
     type: code
-    start: 0x11b970
+    start: 0x11B970
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
@@ -1285,7 +1285,7 @@ segments:
 
   - name: ovl19
     type: code
-    start: 0x1224b0
+    start: 0x1224B0
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:

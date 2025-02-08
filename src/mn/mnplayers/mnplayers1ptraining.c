@@ -598,7 +598,7 @@ void mnPlayers1PTrainingMakeGateCamera(void)
 }
 
 // 0x80132A44
-void mnPlayers1PTrainingMakePlayerKindButtonCamera(void)
+void mnPlayers1PTrainingMakePlayerKindSelectCamera(void)
 {
 	CObj *cobj = CObjGetStruct
 	(
@@ -648,7 +648,7 @@ void mnPlayers1PTrainingMakePlayerKindCamera(void)
 }
 
 // 0x80132B84
-void mnPlayers1PTrainingMakeTeamButtonCamera(void)
+void mnPlayers1PTrainingMakeTeamSelectCamera(void)
 {
 	CObj *cobj = CObjGetStruct
 	(
@@ -679,8 +679,8 @@ void mnPlayers1PTrainingSetGateLUT(GObj *gobj, s32 player)
 
 	intptr_t offsets[/* */] =
 	{
-		&lMNPlayersCommonGate1PLUT, &lMNPlayersCommonGate2PLUT,
-		&lMNPlayersCommonGate3PLUT, &lMNPlayersCommonGate4PLUT
+		&lMNPlayersCommonGateMan1PLUT, &lMNPlayersCommonGateMan2PLUT,
+		&lMNPlayersCommonGateMan3PLUT, &lMNPlayersCommonGateMan4PLUT
 	};
 
 	sobj = SObjGetStruct(gobj);
@@ -693,7 +693,7 @@ void mnPlayers1PTrainingSetGateLUT(GObj *gobj, s32 player)
 }
 
 // 0x80132CA4
-void mnPlayers1PTrainingMakePlayerKindButton(s32 player)
+void mnPlayers1PTrainingMakePlayerKind(s32 player)
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -775,7 +775,7 @@ void mnPlayers1PTrainingMakeGate(s32 player)
 		SObjGetStruct(gobj)->pos.y = 127.0F;
 	}
 	mnPlayers1PTrainingSetGateLUT(gobj, player);
-	mnPlayers1PTrainingMakePlayerKindButton(player);
+	mnPlayers1PTrainingMakePlayerKind(player);
 
 	gobj = gcMakeGObjSPAfter(0, NULL, 22, GOBJ_PRIORITY_DEFAULT);
 	sMNPlayers1PTrainingSlots[player].name_emblem_gobj = gobj;
@@ -3160,9 +3160,9 @@ void mnPlayers1PTrainingFuncStart(void)
 	mnPlayers1PTrainingMakePuckCamera();
 	mnPlayers1PTrainingMakePlayerKindCamera();
 	mnPlayers1PTrainingMakeGateCamera();
-	mnPlayers1PTrainingMakePlayerKindButtonCamera();
+	mnPlayers1PTrainingMakePlayerKindSelectCamera();
 	mnPlayers1PTrainingMakeFighterCamera();
-	mnPlayers1PTrainingMakeTeamButtonCamera();
+	mnPlayers1PTrainingMakeTeamSelectCamera();
 	mnPlayers1PTrainingMakeHandicapLevelCamera();
 	mnPlayers1PTrainingMakePortraitWallpaperCamera();
 	mnPlayers1PTrainingMakePortraitFlashCamera();

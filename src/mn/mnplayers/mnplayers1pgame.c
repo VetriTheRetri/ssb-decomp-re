@@ -867,8 +867,8 @@ void mnPlayers1PGameSetGateLUT(GObj *gobj, s32 player)
 
 	intptr_t offsets[/* */] =
 	{
-		&lMNPlayersCommonGate1PLUT, &lMNPlayersCommonGate2PLUT,
-		&lMNPlayersCommonGate3PLUT, &lMNPlayersCommonGate4PLUT
+		&lMNPlayersCommonGateMan1PLUT, &lMNPlayersCommonGateMan2PLUT,
+		&lMNPlayersCommonGateMan3PLUT, &lMNPlayersCommonGateMan4PLUT
 	};
 
 	sobj = SObjGetStruct(gobj);

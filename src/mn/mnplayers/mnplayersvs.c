@@ -3,34 +3,8 @@
 #include <mn/menu.h>
 #include <sc/scene.h>
 #include <sys/video.h>
-#include <reloc_data.h>
 
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
-// Forward declarations
-sb32 mnPlayersVSCheckCostumeUsed(s32 fkind, s32 player, s32 costume);
-void mnPlayersVSUpdateCursor(GObj* cursor_gobj, s32 player, s32 cursor_status);
-s32 mnPlayersVSUpdateCursorPlacementPriorities(s32 player, s32 held_puck_id); // doesn't actually return anything but required to match
-s32 mnPlayersVSCheckHandicapArrowRInRange(GObj* cursor_gobj, s32 player);
-s32 mnPlayersVSCheckHandicapArrowLInRange(GObj* cursor_gobj, s32 player);
-void mnPlayersVSUpdateCursorGrabPriorities(s32 player, s32 puck_id);
-void mnPlayersVSUpdatePuck(GObj* puck_gobj, s32 puck_index);
-void mnReplaceFighterNameWithHandicapCPULevel(s32 player);
-void mnPlayersVSAnnounceFighter(s32 player, s32 slot);
-void mnPlayersVSFuncLights(Gfx** display_list);
-s32 mnPlayersVSGetNextTimeValue(s32 current_value);
-s32 mnPlayersVSGetPrevTimeValue(s32 current_value);
-void mnPlayersVSMakeHandicapLevel(s32 player);
-void mnPlayersVSPauseSlotProcesses();
-void mnMakeHandicapLevelValue(s32 player);
-void mnPlayersVSMakePortraitFlash(s32 player);
-s32 mnPlayersVSGetRandomFighterKind(GObj* puck_gobj);
-void mnPlayersVSUpdateNameAndEmblem(s32 player);
-sb32 mnPlayersVSCheckReady();
-void mnPlayersVSSetSceneData();
-sb32 mnPlayersVSCheckHandicapAuto();
-void mnPlayersVSFuncStart();
-sb32 mnPlayersVSCheckHandicapOn();
-sb32 mnPlayersVSCheckHandicap();
 
 // // // // // // // // // // // //
 //                               //
@@ -221,7 +195,7 @@ void mnPlayersVSSelectFighterPuck(s32 player, s32 select_button)
 
 	if ((mnPlayersVSCheckHandicap() != FALSE) || (sMNPlayersVSSlots[held_player].pkind == nFTPlayerKindCom))
 	{
-		mnReplaceFighterNameWithHandicapCPULevel(held_player);
+		mnPlayersVSUpdateHandicapLevel(held_player);
 	}
 	mnPlayersVSMakePortraitFlash(held_player);
 }
@@ -590,6 +564,7 @@ void mnPlayersVSUpdatePlayerKindSelect(GObj *gobj, s32 player, s32 pkind)
 	};
 
 	gcRemoveSObjAll(gobj);
+
 	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayersVSFiles[0], offsets[pkind]));
 	sobj->pos.x = x;
 	sobj->pos.y = y;
@@ -660,7 +635,7 @@ void mnPlayersVSMakeNameAndEmblem(GObj *gobj, s32 player, s32 fkind)
 }
 
 // 0x80132BF4
-void mnPlayersVSUpdateShutters(s32 player)
+void mnPlayersVSUpdateShutter(s32 player)
 {
 	// Left door
 	SObjGetStruct(sMNPlayersVSSlots[player].panel_doors)->pos.x = ((player * 69) - 19) + sMNPlayersVSSlots[player].door_offset;
@@ -670,7 +645,7 @@ void mnPlayersVSUpdateShutters(s32 player)
 }
 
 // 0x80132C6C
-void mnPlayersVSShuttersProcUpdate(GObj *gobj)
+void mnPlayersVSShutterProcUpdate(GObj *gobj)
 {
 	s32 player = gobj->user_data.s;
 	s32 delta = 2, max = 41, min = 0;
@@ -679,7 +654,7 @@ void mnPlayersVSShuttersProcUpdate(GObj *gobj)
 	{
 		if (sMNPlayersVSSlots[player].door_offset == delta)
 		{
-			// left over check
+			/* leftover check */
 		}
 		if (sMNPlayersVSSlots[player].door_offset < max)
 		{
@@ -690,14 +665,14 @@ void mnPlayersVSShuttersProcUpdate(GObj *gobj)
 				sMNPlayersVSSlots[player].door_offset = max;
 				func_800269C0_275C0(nSYAudioFGMPlayerSlotClose);
 			}
-			mnPlayersVSUpdateShutters(player);
+			mnPlayersVSUpdateShutter(player);
 		}
 	}
 	else
 	{
 		if (sMNPlayersVSSlots[player].door_offset == min)
 		{
-			// left over check
+			/* leftover check */
 		}
 		if (sMNPlayersVSSlots[player].door_offset > min)
 		{
@@ -707,7 +682,7 @@ void mnPlayersVSShuttersProcUpdate(GObj *gobj)
 			{
 				sMNPlayersVSSlots[player].door_offset = min;
 			}
-			mnPlayersVSUpdateShutters(player);
+			mnPlayersVSUpdateShutter(player);
 		}
 	}
 }
@@ -1107,7 +1082,7 @@ void mnPlayersVSMakeGate(s32 player)
 			&lMNPlayersCommonShutterLSprite
 		),
 		nGCProcessKindFunc,
-		mnPlayersVSShuttersProcUpdate,
+		mnPlayersVSShutterProcUpdate,
 		1
 	);
 	gobj->user_data.s = player;
@@ -1127,7 +1102,7 @@ void mnPlayersVSMakeGate(s32 player)
 
 	sMNPlayersVSSlots[player].door_offset = 41;
 
-	mnPlayersVSUpdateShutters(player);
+	mnPlayersVSUpdateShutter(player);
 	mnPlayersVSMakePlayerKindSelect(player);
 
 	sMNPlayersVSSlots[player].name_emblem_gobj = gobj = gcMakeGObjSPAfter(0, NULL, 22, GOBJ_PRIORITY_DEFAULT);
@@ -1137,7 +1112,7 @@ void mnPlayersVSMakeGate(s32 player)
 
 	if ((mnPlayersVSCheckHandicap() != FALSE) || (sMNPlayersVSSlots[player].pkind == nFTPlayerKindCom))
 	{
-		mnReplaceFighterNameWithHandicapCPULevel(player);
+		mnPlayersVSUpdateHandicapLevel(player);
 	}
 	if (sMNPlayersVSIsTeamBattle == TRUE)
 	{
@@ -1602,7 +1577,7 @@ s32 mnPlayersVSGetStatusSelected(s32 fkind)
 }
 
 // 0x8013494C
-void mnPlayersVSFighterProcUpdate(GObj* fighter_gobj)
+void mnPlayersVSFighterProcUpdate(GObj *fighter_gobj)
 {
 	FTStruct *fp = ftGetStruct(fighter_gobj);
 	s32 player = fp->player;
@@ -2017,7 +1992,7 @@ sb32 mnPlayersVSCheckTeamSelectInRangeAll(GObj *gobj, s32 cursor_player)
 		nSYAudioVoiceAnnounceGreenTeam
 	};
 
-	u32 shade;
+	s32 shade;
 
 	if (sMNPlayersVSIsTeamBattle != TRUE)
 	{
@@ -2076,7 +2051,7 @@ sb32 mnPlayersVSCheckHandicapArrowInRangeAll(GObj *gobj, s32 cursor_player)
 				{
 					func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 					*value += 1;
-					mnMakeHandicapLevelValue(player);
+					mnPlayersVSMakeHandicapLevelValue(player);
 				}
 				return TRUE;
 			}
@@ -2086,7 +2061,7 @@ sb32 mnPlayersVSCheckHandicapArrowInRangeAll(GObj *gobj, s32 cursor_player)
 				{
 					func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 					*value -= 1;
-					mnMakeHandicapLevelValue(player);
+					mnPlayersVSMakeHandicapLevelValue(player);
 				}
 				return TRUE;
 			}
@@ -2213,7 +2188,7 @@ void mnPlayersVSUpdatePlayerKind(s32 player)
 			sMNPlayersVSSlots[sMNPlayersVSSlots[player].held_player].is_fighter_selected = TRUE;
 
 			mnPlayersVSUpdateCursorPlacementPriorities(player, sMNPlayersVSSlots[player].held_player);
-			mnReplaceFighterNameWithHandicapCPULevel(sMNPlayersVSSlots[player].held_player);
+			mnPlayersVSUpdateHandicapLevel(sMNPlayersVSSlots[player].held_player);
 			mnPlayersVSMakePortraitFlash(sMNPlayersVSSlots[player].held_player);
 		}
 		sMNPlayersVSSlots[player].is_selected = FALSE;
@@ -2251,7 +2226,7 @@ void mnPlayersVSUpdatePlayerKind(s32 player)
 			sMNPlayersVSSlots[sMNPlayersVSSlots[player].held_player].is_fighter_selected = TRUE;
 
 			mnPlayersVSUpdateCursorPlacementPriorities(player, sMNPlayersVSSlots[player].held_player);
-			mnReplaceFighterNameWithHandicapCPULevel(sMNPlayersVSSlots[player].held_player);
+			mnPlayersVSUpdateHandicapLevel(sMNPlayersVSSlots[player].held_player);
 			mnPlayersVSMakePortraitFlash(sMNPlayersVSSlots[player].held_player);
 		}
 		sMNPlayersVSSlots[player].is_selected = TRUE;
@@ -2309,7 +2284,7 @@ void mnPlayersVSUpdatePlayerKind(s32 player)
 			sMNPlayersVSSlots[sMNPlayersVSSlots[player].held_player].is_fighter_selected = TRUE;
 
 			mnPlayersVSUpdateCursorPlacementPriorities(player, sMNPlayersVSSlots[player].held_player);
-			mnReplaceFighterNameWithHandicapCPULevel(sMNPlayersVSSlots[player].held_player);
+			mnPlayersVSUpdateHandicapLevel(sMNPlayersVSSlots[player].held_player);
 			mnPlayersVSMakePortraitFlash(sMNPlayersVSSlots[player].held_player);
 		}
 		sMNPlayersVSSlots[player].is_selected = FALSE;
@@ -2525,7 +2500,7 @@ sb32 mnPlayersVSCheckPlayerKindSelect(GObj *gobj, s32 player, s32 select_player)
 		case nFTPlayerKindCom:
 			sMNPlayersVSSlots[select_player].holder_player = GMCOMMON_PLAYERS_MAX;
 			mnPlayersVSAnnounceFighter(player, select_player);
-			mnReplaceFighterNameWithHandicapCPULevel(select_player);
+			mnPlayersVSUpdateHandicapLevel(select_player);
 			mnPlayersVSMakePortraitFlash(select_player);
 			break;
 
@@ -2705,7 +2680,7 @@ void mnPlayersVSArrowThreadUpdate(GObj *gobj)
 }
 
 // 0x80136C18
-void mnPlayersVSHandicapLevelProcUpdate(GObj* gobj)
+void mnPlayersVSHandicapLevelProcUpdate(GObj *gobj)
 {
 	s32 player = gobj->user_data.s;
 
@@ -2765,57 +2740,61 @@ void mnPlayersVSMakeHandicapLevel(s32 player)
 }
 
 // 0x80136E90
-void mnMakeHandicapLevelValue(s32 player)
+void mnPlayersVSMakeHandicapLevelValue(s32 player)
 {
-	intptr_t offsets[10] = {
+	intptr_t offsets[/* */] =
+	{
+        &lMNCommonDigit0Sprite,
+        &lMNCommonDigit1Sprite,
+        &lMNCommonDigit2Sprite,
+        &lMNCommonDigit3Sprite,
+        &lMNCommonDigit4Sprite,
+        &lMNCommonDigit5Sprite,
+        &lMNCommonDigit6Sprite,
+        &lMNCommonDigit7Sprite,
+        &lMNCommonDigit8Sprite,
+        &lMNCommonDigit9Sprite
+    };
 
-		0x0000D310, 0x0000D3E0, 0x0000D4B0, 0x0000D580, 0x0000D650,
-		0x0000D720, 0x0000D7F0, 0x0000D8C0, 0x0000D990, 0x0000DA60
-	};
-	GObj* gobj;
-	SObj* sobj;
-	u32 value = (sMNPlayersVSSlots[player].pkind == 0) ? sMNPlayersVSSlots[player].handicap
-															: sMNPlayersVSSlots[player].cpu_level;
+	GObj *gobj;
+	SObj *sobj;
+	s32 value = (sMNPlayersVSSlots[player].pkind == nFTPlayerKindMan) ? sMNPlayersVSSlots[player].handicap : sMNPlayersVSSlots[player].cpu_level;
 
 	if (sMNPlayersVSSlots[player].handicap_cpu_level_value != NULL)
 	{
 		gcEjectGObj(sMNPlayersVSSlots[player].handicap_cpu_level_value);
 		sMNPlayersVSSlots[player].handicap_cpu_level_value = NULL;
 	}
+	sMNPlayersVSSlots[player].handicap_cpu_level_value = gobj = gcMakeGObjSPAfter(0, NULL, 28, GOBJ_PRIORITY_DEFAULT);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 35, GOBJ_PRIORITY_DEFAULT, ~0);
 
-	gobj = gcMakeGObjSPAfter(0U, NULL, 0x1CU, 0x80000000U);
-	sMNPlayersVSSlots[player].handicap_cpu_level_value = gobj;
-	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0x23U, GOBJ_PRIORITY_DEFAULT, ~0);
-
-	sobj
-		= lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(void*, sMNPlayersVSFiles[1], offsets[value]));
-	sobj->pos.x = (player * 0x45) + 0x43;
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayersVSFiles[1], offsets[value]));
+	sobj->pos.x = (player * 69) + 67;
+	sobj->pos.y = 200.0F;
 	sobj->sprite.red = 0xFF;
 	sobj->sprite.green = 0xFF;
 	sobj->sprite.blue = 0xFF;
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
-	sobj->pos.y = 200.0F;
 }
 
 // 0x80137004
-void mnReplaceFighterNameWithHandicapCPULevel(s32 player)
+void mnPlayersVSUpdateHandicapLevel(s32 player)
 {
-	GObj* arrow_gobj;
+	GObj *gobj;
 
 	mnPlayersVSHideFighterName(player);
 	mnPlayersVSDestroyHandicapLevel(player);
 	mnPlayersVSMakeHandicapLevel(player);
 
-	if ((mnPlayersVSCheckHandicapAuto() == FALSE) || (sMNPlayersVSSlots[player].pkind == 1))
+	if ((mnPlayersVSCheckHandicapAuto() == FALSE) || (sMNPlayersVSSlots[player].pkind == nFTPlayerKindCom))
 	{
-		arrow_gobj = gcMakeGObjSPAfter(0U, NULL, 0x1CU, 0x80000000U);
-		sMNPlayersVSSlots[player].arrows = arrow_gobj;
-		gcAddGObjDisplay(arrow_gobj, lbCommonDrawSObjAttr, 0x23U, GOBJ_PRIORITY_DEFAULT, ~0);
-		arrow_gobj->user_data.s = player;
-		gcAddGObjProcess(arrow_gobj, mnPlayersVSArrowThreadUpdate, 0, 1);
+		sMNPlayersVSSlots[player].arrows = gobj = gcMakeGObjSPAfter(0, NULL, 28, GOBJ_PRIORITY_DEFAULT);
+		gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 35, GOBJ_PRIORITY_DEFAULT, ~0);
+		gobj->user_data.s = player;
+		gcAddGObjProcess(gobj, mnPlayersVSArrowThreadUpdate, nGCProcessKindThread, 1);
 	}
-	mnMakeHandicapLevelValue(player);
+	mnPlayersVSMakeHandicapLevelValue(player);
 }
 
 // 0x801370F8
@@ -3206,7 +3185,7 @@ void mnPlayersVSUpdateCostume(s32 player, s32 select_button)
 // 0x80137F9C
 sb32 mnPlayersVSCheckManFighterSelected(s32 player)
 {
-	if ((sMNPlayersVSSlots[player].is_selected) && (sMNPlayersVSSlots[player].held_player == -1) && (sMNPlayersVSSlots[player].pkind == nFTPlayerKindMan))
+	if ((sMNPlayersVSSlots[player].is_selected != FALSE) && (sMNPlayersVSSlots[player].held_player == -1) && (sMNPlayersVSSlots[player].pkind == nFTPlayerKindMan))
 	{
 		return TRUE;
 	}

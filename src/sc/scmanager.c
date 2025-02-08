@@ -13,7 +13,6 @@
 #include <sys/controller.h>
 
 extern void mnVSModeStartScene();
-extern void mnPlayersVSStartScene();
 
 // // // // // // // // // // // //
 //                               //

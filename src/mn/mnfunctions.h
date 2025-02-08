@@ -9,6 +9,7 @@
 #include <mn/mnvsmode/mnvsmode.h>
 #include <mn/mnvsmode/mnvsresults.h>
 
+#include <mn/mnplayers/mnplayersvs.h>
 #include <mn/mnplayers/mnplayers1pgame.h>
 #include <mn/mnplayers/mnplayers1ptraining.h>
 #include <mn/mnplayers/mnplayers1pbonus.h>

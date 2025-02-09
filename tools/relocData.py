@@ -5,6 +5,7 @@ import sys
 import json
 import subprocess
 
+COMPRESSED_FILE_COUNT = 499
 ENDIANNESS = "big"
 EXTRACTED_FILES_PATH = "assets/relocData"
 VPK0_EXCESS_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "vpk0_excess_bytes.txt")
@@ -115,7 +116,7 @@ def makeBin():
 				targetFile.write(relocFile.read())
 
 def printExcess(fileSuffix=".manually_compressed"):
-	for i in range(499):
+	for i in range(COMPRESSED_FILE_COUNT):
 		filePath = f"{EXTRACTED_FILES_PATH}/{i}.vpk0"
 		vpkManuallyCompressed = filePath + fileSuffix
 		with open(vpkManuallyCompressed, 'rb') as f:
@@ -151,18 +152,32 @@ def relocateFile(inputBinaryPath, outputBinaryPath, relocInternOffset, relocExte
 def generateHeader(relocFileDescriptionsFilePath, outputHeaderFilePath, outputLinkerFilePath):
 	with open(relocFileDescriptionsFilePath, 'r') as relocFileDescriptionsFile:
 		lines = relocFileDescriptionsFile.read().split('\n')
+	fileIdToNameDict = {}
 	with open(outputHeaderFilePath, 'w') as outputHeaderFile, open(outputLinkerFilePath, 'w') as outputLinkerFile:
 		for line in lines:
-			if len(line) == 0:
+			if len(line) == 0 or line[0] == '#':
 				continue
-			m = re.match(r"\[([^.]+)\..*\]", line);
+			if line[0] == '-':
+				fileId = int(line[1:4])
+				assert(fileId not in fileIdToNameDict.keys())
+				fileName = line[6:]
+				fileIdToNameDict[fileId] = fileName
+				symbolName = f"ll{fileName}FileID"
+				outputHeaderFile.write(f"extern int {symbolName}; // {fileId}\n")
+				outputLinkerFile.write(f"{symbolName} = {hex(fileId)};\n")
+				continue
+			m = re.match(r"\[(\d+)]", line);
 			if m is not None:
-				currentFile = m.group(1)
+				currentFileId = int(m.group(1))
+				currentFileName = fileIdToNameDict[currentFileId] if currentFileId in fileIdToNameDict.keys() else f"_{currentFileId}_"
 				outputHeaderFile.write('\n')
 				outputLinkerFile.write('\n')
 				continue
 			blockType, blockName, blockOffset = line.split(' ')
-			symbolName = f"l{currentFile}{blockName}{blockType.title()}"
+			if blockName == '-':
+				symbolName = f"ll{currentFileName}{blockType}"
+			else:
+				symbolName = f"ll{currentFileName}{blockName}{blockType}"
 			outputHeaderFile.write(f"extern int {symbolName}; // {blockOffset}\n")
 			outputLinkerFile.write(f"{symbolName} = {blockOffset};\n")
 

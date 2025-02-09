@@ -36,21 +36,21 @@
 }
 */
 
-#define lbRelocLoadFilesListed(file_ids, ptrs)  \
-lbRelocLoadFilesExtern                          \
-(                                               \
-    file_ids,                                   \
-    ARRAY_COUNT(file_ids),                      \
-    ptrs,                                       \
-    syTaskmanMalloc                             \
-    (                                           \
-        lbRelocGetAllocSize                     \
-        (                                       \
-            file_ids,                           \
-            ARRAY_COUNT(file_ids)               \
-        ),                                      \
-        0x10                                    \
-    )                                           \
+#define lbRelocLoadFilesListed(file_ids, out_ptrs)  \
+lbRelocLoadFilesExtern                              \
+(                                                   \
+    file_ids,                                       \
+    ARRAY_COUNT(file_ids),                          \
+    out_ptrs,                                       \
+    syTaskmanMalloc                                 \
+    (                                               \
+        lbRelocGetAllocSize                         \
+        (                                           \
+            file_ids,                               \
+            ARRAY_COUNT(file_ids)                   \
+        ),                                          \
+        0x10                                        \
+    )                                               \
 )
 
 extern uintptr_t lLBRelocTableFilesNum;     // 0x00000854

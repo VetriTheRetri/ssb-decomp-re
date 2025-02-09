@@ -1,5 +1,10 @@
-lSYDmemCheckValidFunc = 0x00000000;
-lSYDmemCheckValidNBytes = 0x00000030;
+lSYKseg1ValidateFileID = 0x000000C7;
+lSYKseg1ValidateFunc = 0x00000000;
+lSYKseg1ValidateNBytes = 0x00000030;
+
+lSYSignValidateFileID = 0x000000C8;
+lSYSignValidateFunc = 0x00000000;
+lSYSignValidateNBytes = 0x00000040;
 
 lMNCommonFileID = 0x00000000;
 lMNCharactersFileID = 0x00000010;

@@ -6,17 +6,6 @@
 
 // // // // // // // // // // // //
 //                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lSYDmemCheckValidFunc;		// 0x00000000
-extern intptr_t lSYDmemCheckValidNBytes;	// 0x00000030
-
-extern intptr_t D_NF_000000C7;
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -136,7 +125,7 @@ void scVSBattleStartBattle(void)
 {
 	s32 unused[4];
 	s32 player;
-	sb32 (*func_dmem)(void);
+	sb32 (*func_kseg1)(void);
 	void *file;
 	FTDesc desc;
 	SYColorRGBA color;
@@ -146,16 +135,15 @@ void scVSBattleStartBattle(void)
 
 	scVSBattleSetupFiles();
 
-	if (!(gSCManagerBackupData.error_flags & LBBACKUP_ERROR_1PGAMEMARIO) && (gSCManagerBackupData.boot >= 69))
+	if (!(gSCManagerBackupData.error_flags & LBBACKUP_ERROR_1PGAMEMARIO) && (gSCManagerBackupData.boot > 68))
 	{
-		file = lbRelocGetExternHeapFile((u32)&D_NF_000000C7, syTaskmanMalloc(lbRelocGetFileSize((u32)&D_NF_000000C7), 0x10));
+		file = lbRelocGetExternHeapFile((u32)&lSYKseg1ValidateFileID, syTaskmanMalloc(lbRelocGetFileSize((u32)&lSYKseg1ValidateFileID), 0x10));
+		func_kseg1 = lbRelocGetFileData(sb32 (*)(void), file, &lSYKseg1ValidateFunc);
 
-		func_dmem = lbRelocGetFileData(sb32 (*)(void), file, &lSYDmemCheckValidFunc);
+		osWritebackDCache(func_kseg1, *lbRelocGetFileData(s32*, file, &lSYKseg1ValidateNBytes));
+		osInvalICache(func_kseg1, *lbRelocGetFileData(s32*, file, &lSYKseg1ValidateNBytes));
 
-		osWritebackDCache(func_dmem, *lbRelocGetFileData(s32*, file, &lSYDmemCheckValidNBytes));
-		osInvalICache(func_dmem, *lbRelocGetFileData(s32*, file, &lSYDmemCheckValidNBytes));
-
-		if (func_dmem() == FALSE)
+		if (func_kseg1() == FALSE)
 		{
 			gSCManagerBackupData.error_flags |= LBBACKUP_ERROR_1PGAMEMARIO;
 		}

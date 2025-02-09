@@ -162,7 +162,7 @@ def generateHeader(relocFileDescriptionsFilePath, outputHeaderFilePath, outputLi
 				outputLinkerFile.write('\n')
 				continue
 			blockType, blockName, blockOffset = line.split(' ')
-			symbolName = f"relocFile{currentFile}{blockName}{blockType.title()}Offset"
+			symbolName = f"l{currentFile}{blockName}{blockType.title()}"
 			outputHeaderFile.write(f"extern int {symbolName}; // {blockOffset}\n")
 			outputLinkerFile.write(f"{symbolName} = {blockOffset};\n")
 

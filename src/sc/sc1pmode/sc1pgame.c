@@ -3,7 +3,7 @@
 #include <if/interface.h>
 #include <sc/scene.h>
 #include <sys/video.h>
-#include <lb/library.h>
+#include <sys/dma.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -1964,11 +1964,11 @@ void sc1PGameFuncStart(void)
 {
     GObj *fighter_gobj;
     FTData *plns;
-    u32 largest_size;
+    size_t largest_size;
     FTStruct *fp;
-    sb32(*proc)(void*);
-    void *addr;
-    u8 spA0[0x10];
+    sb32 (*func_sign)(void*);
+    void *file;
+    u8 signature[0x10];
     s32 i;
     FTDesc desc;
     SYColorRGBA color;
@@ -1976,23 +1976,22 @@ void sc1PGameFuncStart(void)
     sc1PGameSetupStageAll();
     sc1PGameSetupFiles();
 
-    if (!(gSCManagerBackupData.error_flags & LBBACKUP_ERROR_VSBATTLECASTLE) && (gSCManagerBackupData.boot > 0x5C))
+    if (!(gSCManagerBackupData.error_flags & LBBACKUP_ERROR_VSBATTLECASTLE) && (gSCManagerBackupData.boot > 92))
     {
-        syDmaReadRom(0xF10, spA0, ARRAY_COUNT(spA0));
+        syDmaReadRom(0xF10, signature, ARRAY_COUNT(signature));
 
-        addr = lbRelocGetExternHeapFile((uintptr_t)&D_NF_000000C8, syTaskmanMalloc(lbRelocGetFileSize((uintptr_t)&D_NF_000000C8), 0x10));
+        file = lbRelocGetExternHeapFile((u32)&lSYSignValidateFileID, syTaskmanMalloc(lbRelocGetFileSize((u32)&lSYSignValidateFileID), 0x10));
+        func_sign = lbRelocGetFileData(sb32 (*)(void), file, &lSYSignValidateFunc);
 
-        proc = (sb32(*)(void*)) ((uintptr_t)addr + (intptr_t)&D_NF_00000000);
+        osWritebackDCache(func_sign, *lbRelocGetFileData(s32*, file, &lSYSignValidateNBytes));
+        osInvalICache(func_sign, *lbRelocGetFileData(s32*, file, &lSYSignValidateNBytes));
 
-        osWritebackDCache(proc, *(s32*) ((uintptr_t)addr + (intptr_t)&D_NF_00000040));
-        osInvalICache(proc, *(s32*) ((uintptr_t)addr + (intptr_t)&D_NF_00000040));
-
-        if (proc(spA0) == FALSE)
+        if (func_sign(signature) == FALSE)
         {
             gSCManagerBackupData.error_flags |= LBBACKUP_ERROR_VSBATTLECASTLE;
         }
     }
-    gcMakeDefaultCameraGObj(nGCCommonLinkIDCamera, 0x80000000, 0x64, 1, 0xFF);
+    gcMakeDefaultCameraGObj(nGCCommonLinkIDCamera, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     efParticleInitAll();
     ftParamInitGame();
     mpCollisionInitGroundData();

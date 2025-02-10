@@ -258,7 +258,7 @@ void mnOptionMakeSoundToggle(void)
     sMNOptionSoundOptionGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, ~0);
 
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNOptionFiles[1], &lMNOptionMonoTextSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNOptionFiles[1], &lMNOptionStereoTextSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -266,7 +266,7 @@ void mnOptionMakeSoundToggle(void)
     sobj->pos.x = 179.0F;
     sobj->pos.y = 48.0F;
 
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNOptionFiles[1], &lMNOptionStereoTextSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNOptionFiles[1], &lMNOptionMonoTextSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;

@@ -238,8 +238,8 @@ extern int lMNOptionBackupClearTextJapSprite; // 0x1cf0
 extern int lMNOptionWarningTextSprite; // 0x21b8
 extern int lMNOptionPhotosensitivityWarningTextJapSprite; // 0x68b0
 extern int lMNOptionWarningIconSprite; // 0x6fd8
-extern int lMNOptionStereoTextSprite; // 0x73a8
-extern int lMNOptionMonoTextSprite; // 0x71f8
+extern int lMNOptionStereoTextSprite; // 0x71f8
+extern int lMNOptionMonoTextSprite; // 0x73a8
 extern int lMNOptionSoundTextSprite; // 0x7628
 extern int lMNOptionFlashingTextSprite; // 0x7aa8
 extern int lMNOptionScreenAdjustTextSprite; // 0x8138

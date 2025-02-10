@@ -493,6 +493,10 @@ lGRBonus2BoardedPlatformMediumAnimJoint = 0x00005C30;
 lGRBonus2BoardedPlatformLargeDObjDesc = 0x000061E0;
 lGRBonus2BoardedPlatformLargeAnimJoint = 0x00006290;
 
+lEFCommonEffects1FileID = 0x000053;
+lEFCommonEffects2FileID = 0x000054;
+lEFCommonEffects3FileID = 0x000055;
+
 lITCommonDataFileID = 0x0000FB;
 lGRPupupuMapFileID = 0x0000FF;
 lGRPupupuSmallMapFileID = 0x000100;

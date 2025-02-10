@@ -227,7 +227,7 @@ DEP_FILES := $(O_FILES:.o=.d)
 $(shell mkdir -p $(BUILD_DIR)/asm)
 $(shell mkdir -p $(BUILD_DIR)/src)
 $(shell mkdir -p $(BUILD_DIR)/assets)
-$(shell [ -f include/reloc_data.h ] || touch -d "2000 hours ago" include/reloc_data.h) # set file as old, so it gets regenerated
+$(shell [ -f include/reloc_data.h ] || $(PYTHON) tools/relocData.py genHeader ./tools/relocFileDescriptions.txt ./include/reloc_data.h ./symbols/reloc_data_symbols.txt) # generate if not there
 
 # ----- Targets ------
 

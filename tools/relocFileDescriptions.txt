@@ -155,9 +155,9 @@
 # FILE CONTENTS
 
 [0]
-Sprite BubbleLeft 0x1e8
-Sprite BlackMiddle 0x330
-Sprite BubbleRight 0x568
+Sprite OptionTabLeft 0x1e8
+Sprite OptionTabMiddle 0x330
+Sprite OptionTabRight 0x568
 Sprite Frame 0x1420
 Sprite OnTextJap 0x15c0
 Sprite OffTextJap 0x1760

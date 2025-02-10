@@ -162,7 +162,7 @@ def generateHeader(relocFileDescriptionsFilePath, outputHeaderFilePath, outputLi
 				assert(fileId not in fileIdToNameDict.keys())
 				fileName = line[6:]
 				fileIdToNameDict[fileId] = fileName
-				symbolName = f"l{fileName}FileID"
+				symbolName = f"ll{fileName}FileID"
 				outputHeaderFile.write(f"extern int {symbolName}; // {fileId}\n")
 				outputLinkerFile.write(f"{symbolName} = {hex(fileId)};\n")
 				continue
@@ -175,9 +175,9 @@ def generateHeader(relocFileDescriptionsFilePath, outputHeaderFilePath, outputLi
 				continue
 			blockType, blockName, blockOffset = line.split(' ')
 			if blockName == '-':
-				symbolName = f"l{currentFileName}{blockType}"
+				symbolName = f"ll{currentFileName}{blockType}"
 			else:
-				symbolName = f"l{currentFileName}{blockName}{blockType}"
+				symbolName = f"ll{currentFileName}{blockName}{blockType}"
 			outputHeaderFile.write(f"extern int {symbolName}; // {blockOffset}\n")
 			outputLinkerFile.write(f"{symbolName} = {blockOffset};\n")
 

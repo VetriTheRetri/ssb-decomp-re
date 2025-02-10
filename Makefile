@@ -227,6 +227,7 @@ DEP_FILES := $(O_FILES:.o=.d)
 $(shell mkdir -p $(BUILD_DIR)/asm)
 $(shell mkdir -p $(BUILD_DIR)/src)
 $(shell mkdir -p $(BUILD_DIR)/assets)
+$(shell [ -f include/reloc_data.h ] || touch -d "2000 hours ago" include/reloc_data.h) # set file as old, so it gets regenerated
 
 # ----- Targets ------
 
@@ -254,7 +255,7 @@ clean:
 	rm -f src/credits/titles.credits.encoded src/credits/titles.credits.metadata
 	rm -f src/credits/info.credits.encoded src/credits/info.credits.metadata
 	rm -f src/credits/companies.credits.encoded src/credits/companies.credits.metadata
-	rm -f assets/relocData.bin
+	rm -f assets/relocData.bin include/reloc_data.h symbols/reloc_data_symbols.txt
 	@echo removing vpk0 files
 	@rm -f $(VPK0_FILES)
 

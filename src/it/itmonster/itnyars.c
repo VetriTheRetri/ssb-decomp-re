@@ -23,7 +23,7 @@ extern intptr_t lITNyarsAnimJoint;          // 0x0000C130
 ITDesc dITNyarsItemDesc =
 {
     nITKindNyars,                           // Item Kind
-    &gITManagerFileData,                    // Pointer to item file data?
+    &gITManagerCommonData,                    // Pointer to item file data?
     &lITNyarsItemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct
@@ -65,7 +65,7 @@ WPDesc dITNyarsWeaponCoinWeaponDesc =
 {
     0x01,                                   // Render flags?
     nWPKindNyarsCoin,                       // Weapon Kind
-    &gITManagerFileData,                    // Pointer to character's loaded files?
+    &gITManagerCommonData,                    // Pointer to character's loaded files?
     &lITNyarsWeaponCoinWeaponAttributes,    // Offset of weapon attributes in loaded files
 
     // DObj transformation struct

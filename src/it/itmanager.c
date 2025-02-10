@@ -11,7 +11,6 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t D_NF_000000FB;
 extern intptr_t lITManagerParticleScriptBankLo;        // 0x00B1BCA0
 extern intptr_t lITManagerParticleScriptBankHi;        // 0x00B1BDE0
 extern intptr_t lITManagerParticleTextureBankLo;       // 0x00B1BDE0
@@ -23,7 +22,7 @@ extern intptr_t lITManagerParticleTextureBankHi;       // 0x00B1E640
 //                               //
 // // // // // // // // // // // //
 
-// 0x80189450 - 0 spawns random, non-0 spawns item ID of dITManagerForceMonsterKind + (nITMBallMonsterStart - 1)
+// 0x80189450 - 0 spawns random, non-0 spawns Pokémon item ID of dITManagerForceMonsterKind + (nITMBallMonsterStart - 1)
 s32 dITManagerForceMonsterKind = 0;
 
 // 0x80189454
@@ -114,7 +113,7 @@ GObj* (*dITManagerProcMakeList[/* */])(GObj*, Vec3f*, Vec3f*, u32) =
 // // // // // // // // // // // //
 
 // 0x8018D040
-void *gITManagerFileData;
+void *gITManagerCommonData;
 
 // 0x8018D044
 s32 gITManagerParticleBankID;
@@ -156,7 +155,7 @@ void itManagerInitItems(void) // Many linker things here
     {
         ip[i].alloc_next = NULL;
     }
-    gITManagerFileData = (void*) lbRelocGetExternHeapFile(&D_NF_000000FB, syTaskmanMalloc(lbRelocGetFileSize(&D_NF_000000FB), 0x10));
+    gITManagerCommonData = lbRelocGetExternHeapFile((u32)&lITCommonDataFileID, syTaskmanMalloc(lbRelocGetFileSize((u32)&lITCommonDataFileID), 0x10));
 
     gITManagerParticleBankID = efParticleGetLoadBankID
     (

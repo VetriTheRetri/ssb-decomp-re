@@ -1883,7 +1883,7 @@ void sc1PGameBossAddBossInterface(GObj *fighter_gobj, u32 unused)
 
     if (fp->fkind == nFTKindBoss)
     {
-        ifCommonPlayerInterfaceAddToViewport(fp);
+        ifCommonPlayerStockMakeStockSnap(fp);
     }
 }
 
@@ -1981,7 +1981,7 @@ void sc1PGameFuncStart(void)
         syDmaReadRom(0xF10, signature, ARRAY_COUNT(signature));
 
         file = lbRelocGetExternHeapFile((u32)&lSYSignValidateFileID, syTaskmanMalloc(lbRelocGetFileSize((u32)&lSYSignValidateFileID), 0x10));
-        func_sign = lbRelocGetFileData(sb32 (*)(void), file, &lSYSignValidateFunc);
+        func_sign = lbRelocGetFileData(sb32 (*)(void*), file, &lSYSignValidateFunc);
 
         osWritebackDCache(func_sign, *lbRelocGetFileData(s32*, file, &lSYSignValidateNBytes));
         osInvalICache(func_sign, *lbRelocGetFileData(s32*, file, &lSYSignValidateNBytes));

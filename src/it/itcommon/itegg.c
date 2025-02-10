@@ -19,7 +19,7 @@ extern intptr_t lITEggAttackEvents;            // 0x00000B14
 ITDesc dITEggItemDesc =
 {
     nITKindEgg,                             // Item Kind
-    &gITManagerFileData,                    // Pointer to item file data?
+    &gITManagerCommonData,                    // Pointer to item file data?
     &lITEggItemAttributes,                  // Offset of item attributes in file?
 
     // DObj transformation struct

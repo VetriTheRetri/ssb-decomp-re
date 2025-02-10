@@ -20,7 +20,7 @@ extern intptr_t lITMSBombAttackEvents;         // 0x00000404
 ITDesc dITMSBombItemDesc =
 {
     nITKindMSBomb,                          // Item Kind
-    &gITManagerFileData,                    // Pointer to item file data?
+    &gITManagerCommonData,                    // Pointer to item file data?
     &lITMSBombItemAttributes,               // Offset of item attributes in file?
 
     // DObj transformation struct

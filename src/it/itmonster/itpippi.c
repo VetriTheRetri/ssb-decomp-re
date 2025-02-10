@@ -38,7 +38,7 @@ void (*dITPippiStatusProcList[/* */])(GObj*) =
 ITDesc dITPippiItemDesc = 
 {
     nITKindPippi,                           // Item Kind
-    &gITManagerFileData,                    // Pointer to item file data?
+    &gITManagerCommonData,                    // Pointer to item file data?
     &lITPippiItemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct

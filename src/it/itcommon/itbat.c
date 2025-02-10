@@ -18,7 +18,7 @@ extern intptr_t lITBatItemAttributes;       // 0x000001D8
 ITDesc dITBatItemDesc =
 {
     nITKindBat,                             // Item Kind
-    &gITManagerFileData,                    // Pointer to item file data?
+    &gITManagerCommonData,                    // Pointer to item file data?
     &lITBatItemAttributes,                  // Offset of item attributes in file?
 
     // DObj transformation struct

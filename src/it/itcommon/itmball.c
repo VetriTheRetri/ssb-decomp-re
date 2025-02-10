@@ -21,7 +21,7 @@ extern intptr_t lITMBallMatAnimJoint;       // 0x00009520
 ITDesc dITMBallItemDesc =
 {
     nITKindMBall,                           // Item Kind
-    &gITManagerFileData,                    // Pointer to item file data?
+    &gITManagerCommonData,                    // Pointer to item file data?
     &lITMBallITemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct

@@ -263,7 +263,7 @@ extern void ifCommonBattleSetUpdateInterface(void);
 extern void ifCommonSetMaxNumGObj(void);
 extern void ifCommonBattleUpdateInterfaceAll(void);
 extern void ifCommonBattleSetGameStatusWait(void);
-extern void ifCommonPlayerInterfaceAddToViewport(FTStruct *fp);
+extern void ifCommonPlayerStockMakeStockSnap(FTStruct *fp);
 extern void ifCommonPlayerScoreMakeEffect(FTStruct *fp, s32 score);
 extern GObj* ifCommonAnnounceFailureMakeInterface(void);
 extern GObj* ifCommonAnnounceCompleteMakeInterface(void);

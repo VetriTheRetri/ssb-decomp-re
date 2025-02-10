@@ -1295,7 +1295,7 @@ EFDesc dEFManagerMBallThrownEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA,             // Flags
     20,                                     // DL Link
-    &gITManagerFileData,                           // Texture file
+    &gITManagerCommonData,                           // Texture file
 
     // DObj transformation struct 1
     {
@@ -1594,14 +1594,14 @@ EFDesc dEFManagerFoxEntryArwingEffectDesc =
 };
 
 // 0x8012E71C
-u8 dEFManagerMusicNoteGenIDs[/* */] = { 0x40, 0x41, 0x42 };
+u8 dEFManagerMusicNoteScriptIDs[/* */] = { 0x40, 0x41, 0x42 };
 
 // 0x8012E720
 EFDesc dEFCaptureKirbyStarEffectDesc =
 {
     EFFECT_FLAG_USERDATA | 0x1,             // Flags
     15,                                     // DL Link
-    &gITManagerFileData,                           // Texture file
+    &gITManagerCommonData,                           // Texture file
 
     // DObj transformation struct 1
     {
@@ -1631,7 +1631,7 @@ EFDesc dEFManagerLoseKirbyStarEffectDesc =
 {
     EFFECT_FLAG_USERDATA | 0x1,             // Flags
     15,                                     // DL Link
-    &gITManagerFileData,                           // Texture file
+    &gITManagerCommonData,                           // Texture file
 
     // DObj transformation struct 1
     {
@@ -3293,9 +3293,7 @@ void efManagerImpactWaveProcDisplay(GObj *effect_gobj)
     s32 index = ep->effect_vars.impact_wave.index;
 
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
-
     gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
-
     gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, dEFManagerImpactWavePrimColorR[index], dEFManagerImpactWavePrimColorG[index], dEFManagerImpactWavePrimColorB[index], (s32)ep->effect_vars.impact_wave.alpha);
 
     // The following EnvColor RGB key arrays are all zeroes, so using them (and even having them occupy space in the .data section) is completely unnecessary.
@@ -4031,7 +4029,7 @@ GObj* efManagerFireSparkMakeEffect(GObj *fighter_gobj) // I really have no idea 
     dobj->translate.vec.f.y = 160.0F;
     dobj->user_data.p = fp->joints[16];
 
-    lbCommonSetDObjTransformsForTreeDObjs(dobj->child, (uintptr_t)gEFManagerFiles[1] + (intptr_t)&lEFManagerFireSparkDObjSetup);
+    lbCommonSetDObjTransformsForTreeDObjs(dobj->child, lbRelocGetFileData(DObjDesc*, gEFManagerFiles[1], &lEFManagerFireSparkDObjSetup));
 
     return effect_gobj;
 }
@@ -4120,7 +4118,6 @@ void efManagerShieldProcDisplay(GObj *effect_gobj)
     s32 id = (ep->effect_vars.shield.is_damage_shield != FALSE) ? 4 : ep->effect_vars.shield.player;
 
     gDPPipeSync(gSYTaskmanDLHeads[1]++);
-
     gDPSetPrimColor(gSYTaskmanDLHeads[1]++, 0, 0, dEFManagerShieldColors[id].prim.r, dEFManagerShieldColors[id].prim.g, dEFManagerShieldColors[id].prim.b, 0xC0);
     gDPSetEnvColor(gSYTaskmanDLHeads[1]++, dEFManagerShieldColors[id].env.r, dEFManagerShieldColors[id].env.g, dEFManagerShieldColors[id].env.b, 0xC0);
 
@@ -4168,12 +4165,12 @@ void efManagerYoshiShieldProcDisplay(GObj *effect_gobj)
     {
         blend = 0.0F;
     }
-    color[nSYColorRGBAIndexR] = 0xAE * blend;
-    color[nSYColorRGBAIndexG] = 0xD6 * blend;
-    color[nSYColorRGBAIndexB] = 0xD6 * blend;
+    color[0] = 0xAE * blend;
+    color[1] = 0xD6 * blend;
+    color[2] = 0xD6 * blend;
 
     gDPPipeSync(gSYTaskmanDLHeads[1]++);
-    gDPSetEnvColor(gSYTaskmanDLHeads[1]++, color[nSYColorRGBAIndexR], color[nSYColorRGBAIndexG], color[nSYColorRGBAIndexB], 0x00);
+    gDPSetEnvColor(gSYTaskmanDLHeads[1]++, color[0], color[1], color[2], 0x00);
 
     gcDrawDObjDLHead1(effect_gobj);
 
@@ -5267,8 +5264,7 @@ GObj* efManagerMBallThrownMakeEffect(Vec3f *pos, s32 lr)
 
     dEFManagerMBallThrownEffectDesc.file_head = &file;
 
-    p_file = (void**)((uintptr_t)gITManagerFileData + (intptr_t)&lEFManagerMBallThrownFileHead);
-
+    p_file = lbRelocGetFileData(void**, gITManagerCommonData, &lEFManagerMBallThrownFileHead);
     file = ((uintptr_t)*p_file - (intptr_t)&lEFManagerMBallThrownDObjSetup);
 
     if (lr == +1)
@@ -5380,7 +5376,7 @@ void efManagerYoshiEggLaySetAnim(GObj *effect_gobj, s32 index)
 
     ep->effect_vars.yoshi_egg_lay.index = index;
 
-    lbCommonAddDObjAnimJointAll(DObjGetStruct(effect_gobj)->child, (uintptr_t)gFTDataYoshiSpecial3 + dEFManagerYoshiEggLayAnimJoints[index], 1.0F);
+    lbCommonAddDObjAnimJointAll(DObjGetStruct(effect_gobj)->child, lbRelocGetFileData(AObjEvent32**, gFTDataYoshiSpecial3, dEFManagerYoshiEggLayAnimJoints[index]), 1.0F);
 }
 
 // 0x80102FE4
@@ -5430,7 +5426,7 @@ GObj* efManagerYoshiEggLayMakeEffect(GObj *fighter_gobj)
     dobj->child->child->xobjs[0]->kind = nGCMatrixKindTra;
 
     gcAddXObjForDObjFixed(dobj->child->child, 0x2E, 0);
-    lbCommonSetDObjTransformsForTreeDObjs(dobj->child, (uintptr_t)gFTDataYoshiSpecial3 + (intptr_t)&lEFManagerYoshiEggLayDObjSetup);
+    lbCommonSetDObjTransformsForTreeDObjs(dobj->child, lbRelocGetFileData(DObjDesc*, gFTDataYoshiSpecial3, &lEFManagerYoshiEggLayDObjSetup));
 
     return effect_gobj;
 }
@@ -5654,7 +5650,6 @@ GObj* efManagerCaptainEntryCarMakeEffect(Vec3f *pos, s32 lr)
     for (i = nFTPartsJointCommonStart; i > 0; i--)
     {
         gcAddXObjForDObjFixed(node_dobj, nGCMatrixKindRecalcRotRpyRSca, 0);
-
         gcAddDObjAnimJoint(node_dobj, lbRelocGetFileData(AObjEvent32*, gFTDataCaptainSpecial2, &D_NF_00006518), 0.0F);
 
         node_dobj = node_dobj->sib_next;
@@ -5745,9 +5740,9 @@ GObj* efManagerFoxEntryArwingMakeEffect(Vec3f *pos, s32 lr)
 
     if (lr == +1)
     {
-        lbCommonAddDObjAnimJointAll(dobj->child, (uintptr_t)gFTDataFoxSpecial2 + (intptr_t)&D_NF_000009E0, 0.0F);
+        lbCommonAddDObjAnimJointAll(dobj->child, lbRelocGetFileData(AObjEvent32**, gFTDataFoxSpecial2, &lEFManagerFoxEntryArwingRAnimJoint), 0.0F);
     }
-    else lbCommonAddDObjAnimJointAll(dobj->child, (uintptr_t)gFTDataFoxSpecial2 + (intptr_t)&D_NF_00000590, 0.0F);
+    else lbCommonAddDObjAnimJointAll(dobj->child, lbRelocGetFileData(AObjEvent32**, gFTDataFoxSpecial2, &lEFManagerFoxEntryArwingLAnimJoint), 0.0F);
 
     gcPlayAnimAll(effect_gobj);
 
@@ -5759,30 +5754,30 @@ GObj* efManagerFoxEntryArwingMakeEffect(Vec3f *pos, s32 lr)
 }
 
 // 0x80103918
-void func_ovl2_80103918(f32 arg0, f32 arg1, s32 arg2)
+void efManagerStockCommonMakeEffectID(f32 pos_x, f32 pos_y, s32 script_id)
 {
-    arg0 *= 4.0F;
-    arg1 *= 4.0F;
+    pos_x *= 4.0F;
+    pos_y *= 4.0F;
 
-    lbParticleMakePosVel(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(2), arg2, arg0, arg1, 0.0F, 0.0F, 0.0F, 0.0F);
+    lbParticleMakePosVel(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(2), script_id, pos_x, pos_y, 0.0F, 0.0F, 0.0F, 0.0F);
 }
 
 // 0x80103974
-void func_ovl2_80103974(f32 arg0, f32 arg1)
+void efManagerStockSnapMakeEffect(f32 pos_x, f32 pos_y)
 {
-    func_ovl2_80103918(arg0, arg1, 0x26);
+    efManagerStockCommonMakeEffectID(pos_x, pos_y, 0x26);
 }
 
 // 0x80103994
-void func_ovl2_80103994(f32 arg0, f32 arg1)
+void efManagerStockStealStartMakeEffect(f32 pos_x, f32 pos_y)
 {
-    func_ovl2_80103918(arg0, arg1, 0x75);
+    efManagerStockCommonMakeEffectID(pos_x, pos_y, 0x75);
 }
 
 // 0x801039B4
-void func_ovl2_801039B4(f32 arg0, f32 arg1)
+void efManagerStockStealEndMakeEffect(f32 pos_x, f32 pos_y)
 {
-    func_ovl2_80103918(arg0, arg1, 0x76);
+    efManagerStockCommonMakeEffectID(pos_x, pos_y, 0x76);
 }
 
 // 0x801039D4
@@ -5790,8 +5785,8 @@ LBParticle* efManagerMusicNoteMakeEffect(Vec3f *pos)
 {
     LBParticle *pc = lbParticleMakeScriptID
     (
-        gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(0), 
-        dEFManagerMusicNoteGenIDs[syUtilsGetRandomIntRange(ARRAY_COUNT(dEFManagerMusicNoteGenIDs))]
+        gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(0),
+        dEFManagerMusicNoteScriptIDs[syUtilsGetRandomIntRange(ARRAY_COUNT(dEFManagerMusicNoteScriptIDs))]
     );
 
     if (pc != NULL)
@@ -5903,9 +5898,8 @@ GObj* efManagerCaptureKirbyStarMakeEffect(GObj *fighter_gobj)
 
     dEFCaptureKirbyStarEffectDesc.file_head = &addr;
 
-    p_addr = (void**) ((uintptr_t)gITManagerFileData + (intptr_t)&D_NF_000004D4);
-
-    addr = ((uintptr_t)*p_addr - (intptr_t)&lEFManagerKirbyStarDObjSetup);
+    p_addr = lbRelocGetFileData(void**, gITManagerCommonData, &D_NF_000004D4);
+    addr = (void*) ((uintptr_t)*p_addr - (intptr_t)&lEFManagerKirbyStarDObjSetup);
 
     effect_gobj = efManagerMakeEffectNoForce(&dEFCaptureKirbyStarEffectDesc);
 
@@ -5973,15 +5967,14 @@ GObj* efManagerLoseKirbyStarMakeEffect(GObj *fighter_gobj)
 {
     GObj *effect_gobj;
     EFStruct *ep;
-    void *aobj;
-    void **p_aobj;
+    void *addr;
+    void **p_addr;
     DObj *dobj;
 
-    dEFManagerLoseKirbyStarEffectDesc.file_head = &aobj;
+    dEFManagerLoseKirbyStarEffectDesc.file_head = &addr;
 
-    p_aobj = (void**)((uintptr_t)gITManagerFileData + (intptr_t)&D_NF_000004D4);
-
-    aobj = ((uintptr_t)*p_aobj - (intptr_t)&lEFManagerKirbyStarDObjSetup);
+    p_addr = lbRelocGetFileData(void**, gITManagerCommonData, &D_NF_000004D4);
+    addr = ((uintptr_t)*p_addr - (intptr_t)&lEFManagerKirbyStarDObjSetup);
 
     effect_gobj = efManagerMakeEffectNoForce(&dEFManagerLoseKirbyStarEffectDesc);
 
@@ -6219,9 +6212,9 @@ LBParticle* efManagerItemSpawnSwirlMakeEffect(Vec3f *pos)
 }
 
 // 0x80104554
-LBParticle* efManagerConfettiMakeEffect(Vec3f *pos, s32 arg1)
+LBParticle* efManagerConfettiMakeEffect(Vec3f *pos, sb32 is_genlink_mask)
 {
-    LBParticle *pc = (arg1 != 0) ? 
+    LBParticle *pc = (is_genlink_mask != FALSE) ?
     lbParticleMakeScriptID(gEFManagerParticleBankID, 0x70) :
     lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_GENLINK(3), 0x70);
 

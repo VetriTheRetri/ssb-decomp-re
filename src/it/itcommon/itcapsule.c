@@ -18,7 +18,7 @@ extern intptr_t lITCapsuleAttackEvents;        // 0x00000098
 ITDesc dITCapsuleItemDesc = 
 {
     nITKindCapsule,                         // Item Kind
-    &gITManagerFileData,                    // Pointer to item file data?
+    &gITManagerCommonData,                    // Pointer to item file data?
     &lITCapsuleItemAttributes,              // Offset of item attributes in file?
     
     // DObj transformation struct

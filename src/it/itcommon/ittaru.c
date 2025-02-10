@@ -18,7 +18,7 @@ extern intptr_t lITTaruAttackEvents;           // 0x0000067C
 ITDesc dITTaruItemDesc =
 {
     nITKindTaru,                            // Item Kind
-    &gITManagerFileData,                    // Pointer to item file data?
+    &gITManagerCommonData,                    // Pointer to item file data?
     &lITTaruItemAttributes,                 // Offset of item attributes in file?
 
     // DObj transformation struct

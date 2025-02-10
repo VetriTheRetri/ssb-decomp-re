@@ -20,7 +20,7 @@ extern intptr_t lITKabigonAnimJoint;        // 0x0000B158
 ITDesc dITKabigonItemDesc = 
 {
     nITKindKabigon,                         // Item Kind
-    &gITManagerFileData,                    // Pointer to item file data?
+    &gITManagerCommonData,                    // Pointer to item file data?
     &lITKabigonItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct

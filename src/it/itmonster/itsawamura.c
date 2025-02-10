@@ -22,7 +22,7 @@ extern intptr_t lITSawamuraDisplayList;     // 0x00012340
 ITDesc dITSawamuraItemDesc =
 {
     nITKindSawamura,                        // Item Kind
-    &gITManagerFileData,                    // Pointer to item file data?
+    &gITManagerCommonData,                    // Pointer to item file data?
     &lITSawamuraItemAttributes,             // Offset of item attributes in file?
 
     // DObj transformation struct

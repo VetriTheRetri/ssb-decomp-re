@@ -7,7 +7,7 @@
 // Global variables declared here as extern for easy access
 
 // 0x8018D040
-extern void *gITManagerFileData;
+extern void *gITManagerCommonData;
 
 // 0x8018D044
 extern s32 gITManagerParticleBankID;

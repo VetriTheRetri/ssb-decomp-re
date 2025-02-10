@@ -1218,7 +1218,7 @@ void ifCommonPlayerStockStealProcUpdate(GObj *interface_gobj)
 
     if (s_steal->anim_frames == 0)
     {
-        func_ovl2_801039B4
+        efManagerStockStealEndMakeEffect
         (
             gIFCommonPlayerInterface.player_pos_x[ifGetPlayer(interface_gobj)] + 
             dIFCommonPlayerStocksIconOffsetsX[ifGetPlayer(interface_gobj)], 
@@ -1284,7 +1284,7 @@ void ifCommonPlayerStockStealMakeInterface(s32 thief, s32 stolen)
 
             ifSetPlayer(interface_gobj, thief);
 
-            func_ovl2_80103994(gIFCommonPlayerInterface.player_pos_x[stolen] + dIFCommonPlayerStocksIconOffsetsX[stolen], gIFCommonPlayerInterface.player_pos_y - 20);
+            efManagerStockStealStartMakeEffect(gIFCommonPlayerInterface.player_pos_x[stolen] + dIFCommonPlayerStocksIconOffsetsX[stolen], gIFCommonPlayerInterface.player_pos_y - 20);
         }
     }
 }
@@ -3227,9 +3227,9 @@ void ifCommonBattleSetGameStatusWait(void)
 }
 
 // 0x80114968
-void ifCommonPlayerInterfaceAddToViewport(FTStruct *fp)
+void ifCommonPlayerStockMakeStockSnap(FTStruct *fp)
 {
-    func_ovl2_80103974(gIFCommonPlayerInterface.player_pos_x[fp->player], gIFCommonPlayerInterface.player_pos_y);
+    efManagerStockSnapMakeEffect(gIFCommonPlayerInterface.player_pos_x[fp->player], gIFCommonPlayerInterface.player_pos_y);
 }
 
 // 0x801149CC

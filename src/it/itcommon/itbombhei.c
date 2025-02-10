@@ -30,7 +30,7 @@ intptr_t dITBombHeiDisplayListOffsets[/* */] =
 ITDesc dITBombHeiItemDesc =
 {
     nITKindBombHei,                         // Item Kind
-    &gITManagerFileData,                    // Pointer to item file data?
+    &gITManagerCommonData,                    // Pointer to item file data?
     &lITBombHeiItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct

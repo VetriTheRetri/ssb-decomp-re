@@ -592,7 +592,7 @@ sb32 itMainMakeContainerItem(GObj *parent_gobj)
         {
             vel.x = 0.0F;
             // Quite ridiculous especially since lITMainContainerVelocitiesY is 0
-            vel.y = *(f32*) ((intptr_t)&lITMainContainerVelocitiesY + ((uintptr_t) &((f32*)gITManagerFileData)[item_kind]));
+            vel.y = *(f32*) ((intptr_t)&lITMainContainerVelocitiesY + ((uintptr_t) &((f32*)gITManagerCommonData)[item_kind]));
             vel.z = 0;
 
             if (itManagerMakeItemSetupCommon(parent_gobj, item_kind, &DObjGetStruct(parent_gobj)->translate.vec.f, &vel, (ITEM_FLAG_COLLPROJECT | ITEM_FLAG_PARENT_ITEM)) != NULL)

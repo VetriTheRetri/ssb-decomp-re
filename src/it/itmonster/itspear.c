@@ -28,7 +28,7 @@ extern intptr_t lITSpearMatAnimJoint;       // 0x0000E12C
 ITDesc dITSpearItemDesc =
 {
     nITKindSpear,                           // Item Kind
-    &gITManagerFileData,                    // Pointer to item file data?
+    &gITManagerCommonData,                    // Pointer to item file data?
     &lITSpearItemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct
@@ -82,7 +82,7 @@ WPDesc dITSpearWeaponSwarmWeaponDesc =
 {
     0x01,                                   // Render flags?
     nWPKindSpearSwarm,                      // Weapon Kind
-    &gITManagerFileData,                    // Pointer to character's loaded files?
+    &gITManagerCommonData,                    // Pointer to character's loaded files?
     &lITSpearWeaponSwarmWeaponAttributes,   // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
@@ -107,7 +107,7 @@ WPDesc dITPippiWeaponSwarmWeaponDesc =
 {
     0x01,                                   // Render flags?
     nWPKindSpearSwarm,                      // Weapon Kind
-    &gITManagerFileData,                    // Pointer to character's loaded files?
+    &gITManagerCommonData,                    // Pointer to character's loaded files?
     &lITPippiWeaponSwarmWeaponAttributes,   // Offset of weapon attributes in loaded files
 
     // DObj transformation struct

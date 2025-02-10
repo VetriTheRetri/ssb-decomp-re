@@ -17,7 +17,7 @@ extern intptr_t lITHammerItemAttributes;    // 0x00000374
 ITDesc dITHammerItemDesc =
 {
     nITKindHammer,                          // Item Kind
-    &gITManagerFileData,                    // Pointer to item file data?
+    &gITManagerCommonData,                    // Pointer to item file data?
     &lITHammerItemAttributes,               // Offset of item attributes in file?
 
     // DObj transformation struct

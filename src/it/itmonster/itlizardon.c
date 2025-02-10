@@ -29,7 +29,7 @@ lITLizardonMatAnimJoint;                    // 0x0000D688
 ITDesc dITLizardonItemDesc = 
 {
     nITKindLizardon,                        // Item Kind
-    &gITManagerFileData,                    // Pointer to item file data?
+    &gITManagerCommonData,                    // Pointer to item file data?
     &lITLizardonItemAttributes,             // Offset of item attributes in file?
 
     // DObj transformation struct
@@ -95,7 +95,7 @@ WPDesc dITLizardonWeaponFlameWeaponDesc =
 {
     0x00,                                   // Render flags?
     nWPKindLizardonFlame,                   // Weapon Kind
-    &gITManagerFileData,                    // Pointer to character's loaded files?
+    &gITManagerCommonData,                    // Pointer to character's loaded files?
     &lITLizardonWeaponFlameWeaponAttributes,// Offset of weapon attributes in loaded files
 
     // DObj transformation struct

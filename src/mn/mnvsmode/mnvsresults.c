@@ -3138,8 +3138,8 @@ void mnVSResultsMakeConfetti(void)
 	Vec3f pos0 = { 0.0F, 1000.0F, -1000.0F };
 	s32 unused;
 
-	efManagerConfettiMakeEffect(&pos0, 0);
-	efManagerConfettiMakeEffect(&pos1, 1);
+	efManagerConfettiMakeEffect(&pos0, FALSE);
+	efManagerConfettiMakeEffect(&pos1, TRUE);
 }
 
 // 0x801388A4 - Unused?

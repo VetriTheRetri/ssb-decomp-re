@@ -33,7 +33,7 @@ Vec2f dITBoxItemSpawnVelocities[/* */] =
 ITDesc dITBoxItemDesc = 
 {
     nITKindBox,                             // Item Kind
-    &gITManagerFileData,                    // Pointer to item file data?
+    &gITManagerCommonData,                    // Pointer to item file data?
     &lITBoxItemAttributes,                  // Offset of item attributes in file?
 
     // DObj transformation struct

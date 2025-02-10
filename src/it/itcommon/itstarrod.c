@@ -23,7 +23,7 @@ lITStarRodWeaponStarSmashAttributes;        // 0x00000508
 ITDesc dITStarRodItemDesc =
 {
     nITKindStarRod,                         // Item Kind
-    &gITManagerFileData,                    // Pointer to item file data?
+    &gITManagerCommonData,                    // Pointer to item file data?
     &lITStarRodItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct
@@ -111,7 +111,7 @@ WPDesc dITStarRodWeaponStarWeaponDesc =
 {
     0x00,                                   // Render flags?
     nWPKindStarRodStar,                     // Weapon Kind
-    &gITManagerFileData,                    // Pointer to character's loaded files?
+    &gITManagerCommonData,                    // Pointer to character's loaded files?
     &lITStarRodWeaponStarWeaponAttributes,  // Offset of weapon attributes in loaded files
 
     // DObj transformation struct

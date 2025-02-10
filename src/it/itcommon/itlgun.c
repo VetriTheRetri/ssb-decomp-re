@@ -21,7 +21,7 @@ lITLGunWeaponAmmoWeaponAttributes;          // 0x000002B0
 ITDesc dITLGunItemDesc =
 {
     nITKindLGun,                            // Item Kind
-    &gITManagerFileData,                    // Pointer to item file data?
+    &gITManagerCommonData,                    // Pointer to item file data?
     &lITLGunItemAttributes,                 // Offset of item attributes in file?
 
     // DObj transformation struct
@@ -109,7 +109,7 @@ WPDesc lITLGunWeaponAmmoWeaponDesc =
 {
     0x00,                                   // Render flags?
     nWPKindLGunAmmo,                        // Weapon Kind
-    &gITManagerFileData,                    // Pointer to character's loaded files?
+    &gITManagerCommonData,                    // Pointer to character's loaded files?
     &lITLGunWeaponAmmoWeaponAttributes,     // Offset of weapon attributes in loaded files
 
     // DObj transformation struct

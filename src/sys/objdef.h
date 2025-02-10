@@ -11,16 +11,16 @@ typedef enum GObjKind
     nGCCommonKindUnkCamera1,                // 1005 - ???
     nGCCommonKindUnkCamera2,                // 1006 - ???
     nGCCommonKindUnkCamera3,                // 1007
-    nGCCommonKindWallpaper = 1008,          // 1008 - Stage background?
+    nGCCommonKindWallpaper,                 // 1008 - Stage background?
     nGCCommonKindGroundDisplay,             // 1009 - Stage renderer?
     nGCCommonKindGround,                    // 1010
     nGCCommonKindEffect,                    // 1011
     nGCCommonKindWeapon,                    // 1012
     nGCCommonKindItem,                      // 1013
     nGCCommonKindMovie = 1015,              // 1015 - Opening movie?
-    nGCCommonKindInterface = 1016,          // 1016
+    nGCCommonKindInterface,                 // 1016
     nGCCommonKindRumble,                    // 1017
-    nGCCommonKindPublic,                 // 1018 - Audience reaction
+    nGCCommonKindPublic,                    // 1018 - Audience reaction
     nGCCommonKindPauseMenu,                 // 1019
     nGCCommonKindShadow,                    // 1020
     nGCCommonKindTransition,                // 1021 - Screen fadeout actor?

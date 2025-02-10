@@ -24,7 +24,7 @@ intptr_t dITHarisenAnimJoint[/* */] =
 ITDesc dITHarisenItemDesc =
 {
     nITKindHarisen,                         // Item Kind
-    &gITManagerFileData,                    // Pointer to item file data?
+    &gITManagerCommonData,                    // Pointer to item file data?
     &lITHarisenItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct

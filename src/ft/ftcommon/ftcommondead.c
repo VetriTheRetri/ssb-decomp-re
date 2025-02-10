@@ -48,7 +48,7 @@ void ftCommonDeadUpdateRumble(FTStruct *this_fp)
 void ftCommonDeadUpdateScore(FTStruct *this_fp)
 {
     ifCommonPlayerDamageStartBreakAnim(this_fp);
-    ifCommonPlayerInterfaceAddToViewport(this_fp);
+    ifCommonPlayerStockMakeStockSnap(this_fp);
 
     gSCManagerBattleState->players[this_fp->player].falls++;
 

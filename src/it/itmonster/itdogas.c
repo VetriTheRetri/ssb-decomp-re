@@ -23,7 +23,7 @@ extern intptr_t lITDogasAnimJoint;          // 0x000128DC
 ITDesc dITDogasItemDesc =
 {
     nITKindDogas,                           // Item Kind
-    &gITManagerFileData,                    // Pointer to item file data?
+    &gITManagerCommonData,                    // Pointer to item file data?
     &lITDogasItemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct
@@ -77,7 +77,7 @@ WPDesc dITDogasWeaponSmogWeaponDesc =
 {
     0x03,                                   // Render flags?
     nWPKindDogasSmog,                       // Weapon Kind
-    &gITManagerFileData,                    // Pointer to weapon's loaded files?
+    &gITManagerCommonData,                    // Pointer to weapon's loaded files?
     &lITDogasWeaponSmogWeaponAttributes,    // Offset of weapon attributes in loaded files
 
     // DObj transformation struct

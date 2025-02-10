@@ -21,7 +21,7 @@ extern intptr_t lITLuckyAnimJoint;          // 0x000100BC
 ITDesc dITMLuckyItemDesc = 
 {
     nITKindMLucky,                          // Item Kind
-    &gITManagerFileData,                    // Pointer to item file data?
+    &gITManagerCommonData,                    // Pointer to item file data?
     &lITMLuckyItemAttributes,               // Offset of item attributes in file?
 
     // DObj transformation struct

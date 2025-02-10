@@ -8,7 +8,6 @@ extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 extern ub8 gSYMainDmemOK;
 
-extern uintptr_t D_NF_00000000;
 extern uintptr_t D_NF_00000002;
 
 // // // // // // // // // // // //
@@ -39,7 +38,7 @@ mnCommonSetOptionChangeWaitN(sMN1PModeOptionChangeWait, is_button, stick_range, 
 // // // // // // // // // // // //
 
 // 0x80133080
-u32 dMN1PModeFileIDs[/* */] = { &D_NF_00000000, &D_NF_00000002 };
+u32 dMN1PModeFileIDs[/* */] = { &lMNCommonFileID, &D_NF_00000002 };
 
 // 0x80133088
 Lights1 dMN1PModeLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x3C, 0x3C, 0x3C);

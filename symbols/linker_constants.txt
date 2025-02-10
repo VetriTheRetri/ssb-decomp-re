@@ -1935,8 +1935,8 @@ lMNVSModeStockSprite = 0x00003248;
 lMNVSModeVSOptionsSprite = 0x00003828;
 lMNVSModeN64ConsoleSprite = 0x00005EB0;
 
-lMNOptionMonoTextSprite = 0x000071F8;
-lMNOptionStereoTextSprite = 0x000073A8;
+lMNOptionStereoTextSprite = 0x000071F8;
+lMNOptionMonoTextSprite = 0x000073A8;
 lMNOptionSoundTextSprite = 0x00007628;
 lMNOptionScreenAdjustTextSprite = 0x00008138;
 lMNOptionBackupClearTextSprite = 0x00008780;

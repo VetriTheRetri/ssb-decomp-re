@@ -627,7 +627,7 @@ sb32 grSectorArwingWeaponLaser2DProcHop(GObj *weapon_gobj)
     WPStruct *wp = wpGetStruct(weapon_gobj);
     Vec3f vel;
 
-    func_80019438(&wp->physics.vel_air, &wp->shield_collide_dir, wp->shield_collide_angle * 2);
+    syVectorRotateAbout3D(&wp->physics.vel_air, &wp->shield_collide_dir, wp->shield_collide_angle * 2);
 
     vel = wp->physics.vel_air;
 

@@ -314,7 +314,7 @@ void grWallpaperResumePerspUpdate(void)
 }
 
 // 0x80104CD0 - New file?
-void grWallpaperRunGObjProcessThreads(void)
+void grWallpaperRunProcessAll(void)
 {
     GObjProcess *gobjproc = sGRWallpaperGObj->gobjproc_head;
 
@@ -332,7 +332,7 @@ void grWallpaperRunGObjProcessThreads(void)
 }
 
 // 0x80104D30
-void grWallpaperResumeAll(void)
+void grWallpaperResumeProcessAll(void)
 {
     GObj *gobj = gGCCommonLinks[nGCCommonLinkIDWallpaper];
 

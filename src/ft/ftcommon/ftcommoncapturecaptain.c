@@ -23,7 +23,7 @@ void ftCommonCaptureCaptainUpdatePositions(GObj *fighter_gobj, GObj *capture_gob
 
     FTStruct *this_fp = ftGetStruct(fighter_gobj);
     FTStruct *capture_fp = ftGetStruct(capture_gobj);
-    Vec2h *offset_add = (Vec2h*) ((uintptr_t)gFTDataCaptainMainMotion + (intptr_t)&lFTCaptainSpecialHiOffset);
+    Vec2h *offset_add = lbRelocGetFileData(Vec2h*, gFTDataCaptainMainMotion, &lFTCaptainSpecialHiOffset);
     s32 unused;
 
     pos->x = 0.0F;
@@ -43,7 +43,7 @@ void ftCommonCaptureCaptainUpdatePositions(GObj *fighter_gobj, GObj *capture_gob
 void ftCommonCaptureCaptainProcPhysics(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    Vec3f offset;
+    Vec3f pos;
 
     if (fp->status_vars.common.capturecaptain.capture_flag & FTCOMMON_CAPTURECAPTAIN_MASK_THROW)
     {
@@ -51,14 +51,14 @@ void ftCommonCaptureCaptainProcPhysics(GObj *fighter_gobj)
     }
     else if (!(fp->status_vars.common.capturecaptain.capture_flag & FTCOMMON_CAPTURECAPTAIN_MASK_NOUPDATE))
     {
-        ftCommonCaptureCaptainUpdatePositions(fp->capture_gobj, fighter_gobj, &offset);
+        ftCommonCaptureCaptainUpdatePositions(fp->capture_gobj, fighter_gobj, &pos);
 
-        if (syVectorMag3D(&offset) > 180.0F)
+        if (syVectorMag3D(&pos) > 180.0F)
         {
-            syVectorNorm3D(&offset);
-            syVectorScale3D(&offset, 180.0F);
+            syVectorNorm3D(&pos);
+            syVectorScale3D(&pos, 180.0F);
         }
-        syVectorAdd3D(&DObjGetStruct(fighter_gobj)->translate.vec.f, &offset);
+        syVectorAdd3D(&DObjGetStruct(fighter_gobj)->translate.vec.f, &pos);
     }
 }
 
@@ -91,7 +91,6 @@ void ftCommonCaptureCaptainProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
     if (this_fp->ga != nMPKineticsAir)
     {
         this_fp->status_vars.common.capturecaptain.capture_flag |= FTCOMMON_CAPTURECAPTAIN_MASK_NOUPDATE;
-
         this_fp->unk_ft_0x192_b3 = TRUE;
     }
     else this_fp->unk_ft_0x192_b3 = FALSE;

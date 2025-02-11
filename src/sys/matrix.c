@@ -190,7 +190,7 @@ void syMatrixLookAt
     syMatrixF2L(&mf, m);
 }
 
-// Modified version of guLookAtF that takes an extra f32 argument and calls func_80019438
+// Modified version of guLookAtF that takes an extra f32 argument and calls syVectorRotateAbout3D
 void syMatrixModLookAtF
 (
     Mtx44f *mf,
@@ -230,7 +230,7 @@ void syMatrixModLookAtF
     right.y *= len;
     right.z *= len;
 
-    func_80019438(&right, &look, roll);
+    syVectorRotateAbout3D(&right, &look, roll);
     up_x = (look.y * right.z) - (look.z * right.y);
     up_y = (look.z * right.x) - (look.x * right.z);
     up_z = (look.x * right.y) - (look.y * right.x);
@@ -443,7 +443,7 @@ void syMatrixModLookAtReflectF
 
     /* Up = Look x Right */
 
-    func_80019438(&right, &look, roll);
+    syVectorRotateAbout3D(&right, &look, roll);
     up_x = look.y * right.z - look.z * right.y;
     up_y = look.z * right.x - look.x * right.z;
     up_z = look.x * right.y - look.y * right.x;

@@ -24,7 +24,7 @@ extern void grWallpaperMakeBonus3(void);
 extern void grWallpaperMakeDecideKind(void);
 extern void grWallpaperPausePerspUpdate(void);
 extern void grWallpaperResumePerspUpdate(void);
-extern void grWallpaperRunGObjProcessThreads(void);
-extern void grWallpaperResumeAll(void);
+extern void grWallpaperRunProcessAll(void);
+extern void grWallpaperResumeProcessAll(void);
 
 #endif

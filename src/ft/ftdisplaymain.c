@@ -546,7 +546,7 @@ void ftDisplayMainDrawAfterImage(FTStruct *fp)
                         n_ai_y += vtx_y;
                         n_ai_z += vtx_z;
 
-                        func_80019438(&spAC, &spC8, f_angle_diff);
+                        syVectorRotateAbout3D(&spAC, &spC8, f_angle_diff);
 
                         alpha += alphainc;
 

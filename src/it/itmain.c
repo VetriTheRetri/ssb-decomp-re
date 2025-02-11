@@ -693,7 +693,7 @@ sb32 itMainCommonProcHop(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    func_80019438(&ip->physics.vel_air, &ip->shield_collide_dir, ip->shield_collide_angle * 2);
+    syVectorRotateAbout3D(&ip->physics.vel_air, &ip->shield_collide_dir, ip->shield_collide_angle * 2);
     itMainVelSetRotateStepLR(item_gobj);
 
     return FALSE;

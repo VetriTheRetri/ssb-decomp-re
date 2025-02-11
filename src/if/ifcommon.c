@@ -2,6 +2,7 @@
 #include <ef/effect.h>
 #include <ft/fighter.h>
 #include <it/item.h>
+#include <gr/ground.h>
 #include <sc/scene.h>
 #include <sys/video.h>
 
@@ -385,6 +386,9 @@ u16 dIFCommonAnnounceDefeatedVoiceIDs[/* */] =
     nSYAudioVoiceAnnouncePlayer4
 };
 
+// 0x8012F190
+s32 dIFCommonPad0x8012F190[/* */] = { 0, 0, 0, 0 };
+
 // // // // // // // // // // // //
 //                               //
 //   GLOBAL / STATIC VARIABLES   //
@@ -440,7 +444,7 @@ s32 sIFCommonBattlePlace;
 s32 sIFCommonPad0x801317F8;
 
 // 0x801317FC
-u32 D_ovl2_801317FC;
+u32 sIFCommonTimerDelta;
 
 // 0x80131800
 u32 sIFCommonTimerIsStarted; // Confirmed u32 by ifCommonBattleUpdateInterfaceAll
@@ -473,10 +477,10 @@ IFPlayerSteal sIFCommonPlayerStealInterface[GMCOMMON_PLAYERS_MAX];
 u8 sIFCommonPlayerMagnifySoundWait;
 
 // 0x80131859
-u8 D_ovl2_80131859;
+u8 dIFCommonBattleBossUpdateInterval;
 
 // 0x8013185A
-u8 D_ovl2_8013185A;
+u8 dIFCommonBattleBossUpdateWait;
 
 // 0x8013185C - Whether each second in the 5-second countdown before time-up has been announced
 ub8 sIFCommonIsAnnouncedSecond[5];
@@ -2485,12 +2489,11 @@ void ifCommonTimerProcRun(GObj *interface_gobj)
     if (sIFCommonTimerIsStarted != FALSE)
     {
         temp = sySchedulerGetTicCount();
-        time_update = temp - D_ovl2_801317FC;
+        time_update = temp - sIFCommonTimerDelta;
 
         if (time_update != 0)
         {
-            D_ovl2_801317FC = temp;
-
+            sIFCommonTimerDelta = temp;
             gSCManagerBattleState->time_passed += time_update;
 
             if ((gSCManagerBattleState->game_rules & SCBATTLE_GAMERULE_TIME) && (gSCManagerBattleState->time_limit != SCBATTLE_TIMELIMIT_INFINITE))
@@ -2878,13 +2881,13 @@ void ifCommonInterfaceSetGObjFlagsAll(u32 flags)
 // 0x80113F9C
 void ifCommonBattlePauseSetGObjFlagsAll(u32 flags)
 {
-    GObj *pausemenu_gobj = gGCCommonLinks[nGCCommonLinkIDPauseMenu];
+    GObj *gobj = gGCCommonLinks[nGCCommonLinkIDPauseMenu];
 
-    while (pausemenu_gobj != NULL)
+    while (gobj != NULL)
     {
-        pausemenu_gobj->flags = flags;
+        gobj->flags = flags;
 
-        pausemenu_gobj = pausemenu_gobj->link_next;
+        gobj = gobj->link_next;
     }
 }
 
@@ -3076,7 +3079,7 @@ void ifCommonBattlePauseUpdateInterface(void)
     if (sIFCommonBattlePauseKindInterface != nIFPauseKindPlayerNA)
     {
         gmCameraRunGlobalFuncCamera(gGMCameraCameraGObj);
-        grWallpaperRunGObjProcessThreads();
+        grWallpaperRunProcessAll();
     }
 }
 
@@ -3091,7 +3094,7 @@ void ifCommonBattlePauseRestoreInterfaceAll(void)
         gGMCameraPauseCameraEyeY += (sIFCommonBattlePauseCameraEyeYOrigin - gGMCameraPauseCameraEyeY) * 0.1F;
 
         gmCameraRunGlobalFuncCamera(gGMCameraCameraGObj);
-        grWallpaperRunGObjProcessThreads();
+        grWallpaperRunProcessAll();
 
         return;
     }
@@ -3123,7 +3126,7 @@ void ifCommonBattleEndUpdateInterface(void)
 
     gSCManagerBattleState->game_status = nSCBattleGameStatusBossDefeat;
 
-    D_ovl2_80131859 = D_ovl2_8013185A = 0;
+    dIFCommonBattleBossUpdateInterval = dIFCommonBattleBossUpdateWait = 0;
 }
 
 // 0x80114724
@@ -3135,18 +3138,18 @@ void ifCommonBattleBossDefeatUpdateInterface(void)
     }
     else sIFCommonBattleInterfaceProcSet();
 
-    if (D_ovl2_8013185A == 0)
+    if (dIFCommonBattleBossUpdateWait == 0)
     {
         gcRunAll();
 
-        D_ovl2_8013185A = D_ovl2_80131859;
+        dIFCommonBattleBossUpdateWait = dIFCommonBattleBossUpdateInterval;
     }
     else
     {
         gmCameraRunGlobalFuncCamera(gGMCameraCameraGObj);
-        grWallpaperRunGObjProcessThreads();
+        grWallpaperRunProcessAll();
 
-        D_ovl2_8013185A--;
+        dIFCommonBattleBossUpdateWait--;
     }
 }
 
@@ -3183,7 +3186,7 @@ void ifCommonBattleUpdateInterfaceAll(void)
     else if (sIFCommonTimerIsStarted == FALSE)
     {
         sIFCommonTimerIsStarted = TRUE;
-        D_ovl2_801317FC = 0;
+        sIFCommonTimerDelta = 0;
 
         sySchedulerSetTicCount(0);
     }
@@ -3302,14 +3305,14 @@ void ifCommonBattleBossDefeatSetGameStatus(void)
     sIFCommonBattlePauseCameraRestoreWait = -1;
 
     sIFCommonBattleInterfaceProcSet = ifCommonBattleInterfaceProcSet;
-    D_ovl2_80131859 = 2;
+    dIFCommonBattleBossUpdateInterval = 2;
 }
 
 // 0x80114C20
 void ifCommon1PGameInterfaceProcSet(void)
 {
     gcFuncGObjByLink(9, ifCommonBattleInterfaceResumeFuncGObj, 0);
-    grWallpaperResumeAll();
+    grWallpaperResumeProcessAll();
     ifCommonInterfaceSetGObjFlagsAll(GOBJ_FLAG_HIDDEN);
 
     gSCManagerBattleState->game_status = nSCBattleGameStatusSet;

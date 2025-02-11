@@ -1,9 +1,6 @@
 #include "video.h"
-
-#include <sys/scheduler.h>
-
 #include <PR/mbi.h>
-#include <PR/os.h>
+#include <sys/scheduler.h>
 
 // // // // // // // // // // // //
 //                               //

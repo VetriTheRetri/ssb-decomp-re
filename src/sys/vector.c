@@ -1,15 +1,7 @@
-#include "common.h"
 #include "vector.h"
-
 #include "macros.h"
-#include <sys/utils.h>
-
-#include <ssb_types.h>
-
 #include <PR/gu.h>
-#include <PR/mbi.h>
-
-#define VEC_DOT(v, w) ((v->x * w->x) + (v->y * w->y) + (v->z * w->z))
+#include <sys/utils.h>
 
 f32 syVectorNorm3D(Vec3f *dst)
 {
@@ -115,7 +107,7 @@ f32 syVectorAngleDiff3D(Vec3f *a, Vec3f *b)
 
     if (mag != 0.0F)
     {
-        f32 cos_diff = VEC_DOT(a, b) / mag;
+        f32 cos_diff = SYVECTOR_DOT_3D(a, b) / mag;
 
         // limit result to -1 < x < 1
         if (cos_diff > 1.0F)
@@ -135,8 +127,8 @@ f32 syVectorAngleDiff3D(Vec3f *a, Vec3f *b)
 Vec3f* syVectorRotate3D(Vec3f *dst, s32 axis, f32 angle)
 {
     f32 x, y, z;
-    f32 sin = __sinf(angle);
-    f32 cos = __cosf(angle);
+    f32 sin = sinf(angle);
+    f32 cos = cosf(angle);
 
     switch (axis)
     {
@@ -174,54 +166,59 @@ Vec3f* syVectorNeg3D(Vec3f *dst)
     return dst;
 }
 
-#ifdef NON_MATCHING
-Vec3f *func_80019438(Vec3f *arg0, Vec3f *arg1, f32 arg2) {
-    f32 sp3C;
-    f32 sp38; // only set when sp3C != 0
-    f32 sp34; // only set when sp3C != 0
-    f32 sp30; // cosX
-    f32 sp2C; // sinX
-    f32 phiF18;
-    f32 phiF20;
-    f32 resX, resY, resZ;
+Vec3f* syVectorRotateAbout3D(Vec3f *dst, Vec3f *dir, f32 angle)
+{
+    f32 mag_yz;
+    f32 ratio_z;
+    f32 ratio_y;
+    f32 rot_x;
+    f32 sin;
+    f32 cos;
+    f32 rot_y;
+    f32 intermediate_x;
+    f32 intermediate_z;
+    f32 rot_z;
 
-    sp3C = sqrtf(SQUARE(arg1->y) + SQUARE(arg1->z));
-    sp2C = __sinf(arg2);
-    sp30 = __cosf(arg2);
+    mag_yz = sqrtf(SQUARE(dir->y) + SQUARE(dir->z));
+    sin = sinf(angle);
+    cos = cosf(angle);
 
-    if (sp3C != 0.0f) {
-        sp34 = arg1->y / sp3C;
-        sp38 = arg1->z / sp3C;
-
-        phiF20 = (arg0->y * sp38) - (arg0->z * sp34);
-        phiF18 = (arg0->y * sp34) + (arg0->z * sp38);
-    } else {
-        phiF20 = arg0->y;
-        phiF18 = arg0->z;
+    if (mag_yz != 0.0F)
+    {
+        ratio_z = dir->z / mag_yz;
+        ratio_y = dir->y / mag_yz;
+        rot_x = dst->x;
+        rot_y = dst->y * ratio_z - dst->z * ratio_y;
+        rot_z = dst->y * ratio_y + dst->z * ratio_z;
     }
-    // L800194F8
-    resX = (((((arg0->x * sp3C) - (phiF18 * arg1->x)) * sp30) - (phiF20 * sp2C)) * sp3C)
-         + (((arg1->x * arg0->x) + (phiF18 * sp3C)) * arg1->x);
-    resY = (((arg0->x * sp3C) - (phiF18 * arg1->x)) * sp2C) + (phiF20 * sp30);
-    resZ = (-((((arg0->x * sp3C) - (phiF18 * arg1->x)) * sp30) - (phiF20 * sp2C)) * arg1->x)
-         + (((arg1->x * arg0->x) + (phiF18 * sp3C)) * sp3C);
-
-    if (sp3C != 0.0f) {
-        arg0->x = resX;
-        arg0->y = phiF20 * sp38 + resY * sp34;
-        arg0->z = -phiF20 * sp34 + resZ * sp38;
-    } else {
-        arg0->x = resX;
-        arg0->y = resY;
-        arg0->z = resZ;
+    else
+    {
+        rot_x = rot_z = dst->x;
+        rot_y = dst->y;
+        rot_z = dst->z;
     }
+    intermediate_z = rot_x * mag_yz - rot_z * dir->x;
+    intermediate_x = rot_x * dir->x + rot_z * mag_yz;
+    rot_x = intermediate_z * cos - rot_y * sin;
+    
+    rot_y = intermediate_z * sin + rot_y * cos;
+    intermediate_z = rot_x * mag_yz + intermediate_x * dir->x;
+    intermediate_x = -rot_x * dir->x + intermediate_x * mag_yz;
 
-    return arg0;
+    if (mag_yz != 0.0F)
+    {
+        dst->x = intermediate_z;
+        dst->y = rot_y * ratio_z + intermediate_x * ratio_y;
+        dst->z = -rot_y * ratio_y + intermediate_x * ratio_z;
+    }
+    else
+    {
+        dst->x = intermediate_z;
+        dst->y = rot_y;
+        dst->z = intermediate_x;
+    }
+    return dst;
 }
-
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/vector/func_80019438.s")
-#endif
 
 Vec3f* syVectorAxisNeg3D(Vec3f *dst, u32 flags)
 {
@@ -240,8 +237,8 @@ Vec3f* syVectorAxisNeg3D(Vec3f *dst, u32 flags)
     return dst;
 }
 
-// _super_ granularly negates components of a vector
-Vec3f* unref_80019608(Vec3f *dst, u32 flags)
+// Granularly negates components of a vector
+Vec3f* syVectorGranularNeg3D(Vec3f *dst, u32 flags)
 {
     if (flags & SYVECTOR_INV_SWAP)
     {
@@ -300,30 +297,30 @@ Vec3f* unref_80019608(Vec3f *dst, u32 flags)
     return dst;
 }
 
-Vec3f* unref_80019818(Vec3f *a, Vec3f *b)
+Vec3f* syVectorReflectAcross3D(Vec3f *dst, Vec3f *src)
 {
-    f32 dot = VEC_DOT(b, a) * -2.0F;
+    f32 dot = SYVECTOR_DOT_3D(src, dst) * -2.0F;
 
-    a->x += (b->x * dot);
-    a->y += (b->y * dot);
-    a->z += (b->z * dot);
+    dst->x += (src->x * dot);
+    dst->y += (src->y * dot);
+    dst->z += (src->z * dot);
 
-    return a;
+    return dst;
 }
 
-Vec3f* unref_80019888(Vec3f *a, Vec3f *b)
+Vec3f* syVectorReflectFacing3D(Vec3f *dst, Vec3f *src)
 {
-    f32 dot = VEC_DOT(b, a);
+    f32 dot = SYVECTOR_DOT_3D(src, dst);
 
     if (dot < 0.0F)
     {
         dot *= -2.0F;
 
-        a->x += (b->x * dot);
-        a->y += (b->y * dot);
-        a->z += (b->z * dot);
+        dst->x += (src->x * dot);
+        dst->y += (src->y * dot);
+        dst->z += (src->z * dot);
     }
-    return a;
+    return dst;
 }
 
 // Returns 1 if the two vectors are less than 180 degrees apart,
@@ -331,7 +328,7 @@ Vec3f* unref_80019888(Vec3f *a, Vec3f *b)
 // and 0 if they are perpendicular.
 s32 syVectorDirection3D(Vec3f *a, Vec3f *b)
 {
-    f32 dot = VEC_DOT(b, a);
+    f32 dot = SYVECTOR_DOT_3D(b, a);
 
     if (dot != 0.0F)
     {
@@ -373,37 +370,33 @@ f32 syVectorDist3D(Vec3f *sub, Vec3f *src)
     return syVectorMag3D(&res);
 }
 
-// Takes the cross product of (arg1 - arg0) and (arg2 - arg0), then
-// does the difference of cross dot arg3 and cross dot arg0, then
+// Takes the cross product of (b - arg0) and (c - arg0), then
+// does the difference of cross dot point and cross dot arg0, then
 // takes the absolute value of that difference and divides by the magnitude of the cross product
-f32 unref_80019B00(Vec3f *arg0, Vec3f *arg1, Vec3f *arg2, Vec3f *arg3)
+f32 syVectorDistPlaneToPoint3D(Vec3f *plane_a, Vec3f *plane_b, Vec3f *plane_c, Vec3f *point)
 {
-    f32 dz1;
-    f32 dy1;
-    f32 dx1;
-    f32 dz2;
-    f32 dy2;
-    f32 dx2;
-    f32 crossx;
-    f32 crossy;
-    f32 crossz;
-    f32 crossdotarg0_neg;
+    Vec3f dist_ab;
+    Vec3f dist_ac;
+    f32 normal_x;
+    f32 normal_y;
+    f32 normal_z;
+    f32 cross_neg;
     f32 numerator;
 
-    dx1 = (arg1->x - arg0->x);
-    dy1 = (arg1->y - arg0->y);
-    dz1 = (arg1->z - arg0->z);
+    dist_ab.x = (plane_b->x - plane_a->x);
+    dist_ab.y = (plane_b->y - plane_a->y);
+    dist_ab.z = (plane_b->z - plane_a->z);
 
-    dx2 = (arg2->x - arg0->x);
-    dy2 = (arg2->y - arg0->y);
-    dz2 = (arg2->z - arg0->z);
+    dist_ac.x = (plane_c->x - plane_a->x);
+    dist_ac.y = (plane_c->y - plane_a->y);
+    dist_ac.z = (plane_c->z - plane_a->z);
 
-    crossx = (dy1 * dz2) - (dz1 * dy2);
-    crossy = (dz1 * dx2) - (dx1 * dz2);
-    crossz = (dx1 * dy2) - (dy1 * dx2);
+    normal_x = (dist_ab.y * dist_ac.z) - (dist_ab.z * dist_ac.y);
+    normal_y = (dist_ab.z * dist_ac.x) - (dist_ab.x * dist_ac.z);
+    normal_z = (dist_ab.x * dist_ac.y) - (dist_ab.y * dist_ac.x);
 
-    crossdotarg0_neg = -((arg0->x * crossx) + (crossy * arg0->y) + (crossz * arg0->z));
-    numerator = ABSF(((arg3->x * crossx) + (crossy * arg3->y) + (crossz * arg3->z)) + crossdotarg0_neg);
+    cross_neg = -((normal_x * plane_a->x) + (normal_y * plane_a->y) + (normal_z * plane_a->z));
+    numerator = ABSF(((normal_x * point->x) + (normal_y * point->y) + (normal_z * point->z)) + cross_neg);
 
-    return numerator / sqrtf((crossx * crossx) + (crossy * crossy) + (crossz * crossz));
+    return numerator / sqrtf(SQUARE(normal_x) + SQUARE(normal_y) + SQUARE(normal_z));
 }

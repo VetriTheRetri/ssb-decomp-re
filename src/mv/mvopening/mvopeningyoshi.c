@@ -579,7 +579,7 @@ SYTaskmanSetup dMVOpeningYoshiTaskmanSetup =
 // 0x8018E05C
 void mvOpeningYoshiStartScene(void)
 {
-	dMVOpeningYoshiVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+	dMVOpeningYoshiVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
 	syVideoInit(&dMVOpeningYoshiVideoSetup);
 
 	dMVOpeningYoshiTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl41_BSS_END);

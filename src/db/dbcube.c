@@ -569,7 +569,7 @@ void dbCubeFuncStart(void)
 // 0x8013214C
 void dbCubeStartScene(void)
 {
-	dDBCubeVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+	dDBCubeVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
 	syVideoInit(&dDBCubeVideoSetup);
 
 	dDBCubeTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl9_VRAM - (uintptr_t)&ovl13_BSS_END);

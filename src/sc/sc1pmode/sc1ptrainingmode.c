@@ -1781,7 +1781,7 @@ void sc1PTrainingModeFuncLights(Gfx **dls)
 // 0x801905F4
 void sc1PTrainingModeStartScene(void)
 {
-	dSC1PTrainingModeVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+	dSC1PTrainingModeVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
 
 	syVideoInit(&dSC1PTrainingModeVideoSetup);
 

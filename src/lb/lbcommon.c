@@ -2655,7 +2655,7 @@ void lbCommonPrepSObjDraw(Gfx **dls, SObj *sobj)
     s32 tempft;
     s32 unused[3];
     f32 scaley;
-    f32 posx, posy;
+    f32 pos_x, pos_y;
     
     sprite = &sobj->sprite;
     
@@ -2671,10 +2671,10 @@ void lbCommonPrepSObjDraw(Gfx **dls, SObj *sobj)
     
     if (bitmap != NULL)
     {
-        posx = sobj->pos.x;
-        x = (posx < 0.0F) ? (posx - 0.9999F) : (posx);
+        pos_x = sobj->pos.x;
+        x = (pos_x < 0.0F) ? (pos_x - 0.9999F) : (pos_x);
 
-        posy = sobj->pos.y;
+        pos_y = sobj->pos.y;
         tempy = (sobj->pos.y < 0.0F) ? (sobj->pos.y - 0.9999F) : (sobj->pos.y);
         
         if ((x < sLBCommonScissorXMax) && (tempy < sLBCommonScissorYMax))
@@ -2684,7 +2684,7 @@ void lbCommonPrepSObjDraw(Gfx **dls, SObj *sobj)
             
             if (sprite->attr & SP_FASTCOPY)
             {
-                xx = posx + tempxx;
+                xx = pos_x + tempxx;
                 
                 y = tempy;
                 
@@ -2711,22 +2711,22 @@ void lbCommonPrepSObjDraw(Gfx **dls, SObj *sobj)
                 s32 n;
                 f32 scalex = sprite->scalex;
                 
-                xx = (posx + (tempxx * scalex)) + 0.9999F;
+                xx = (pos_x + (tempxx * scalex)) + 0.9999F;
                 
                 if (xx >= sLBCommonScissorXMin)
                 {
-                    f32 fposx = posx - x;
-                    f32 fposy = sobj->pos.y - tempy;
+                    f32 fpos_x = pos_x - x;
+                    f32 fpos_y = sobj->pos.y - tempy;
                     
                     scaley = sprite->scaley;
                     
                     if (sprite->nbitmaps == 1)
                     {
                         sx = (1024.0F / scalex) + 0.5F;
-                        fs = ((sx * fposx) + 16) / 32;
+                        fs = ((sx * fpos_x) + 16) / 32;
                         
                         sy = (1024.0F / scaley) + 0.5F;
-                        ft = ((sy * fposy) + 16) / 32;
+                        ft = ((sy * fpos_y) + 16) / 32;
                         
                         y = (sobj->pos.y + (yy * scaley)) + 0.9999F;
                         
@@ -2740,8 +2740,8 @@ void lbCommonPrepSObjDraw(Gfx **dls, SObj *sobj)
                         sx = (1024.0F / scalex) + 0.5F;
                         sy = (1024.0F / scaley) + 0.5F;
                         
-                        fs = ((sx * fposx) + 16) / 32;
-                        ft = ((sy * fposy) + 16) / 32;
+                        fs = ((sx * fpos_x) + 16) / 32;
+                        ft = ((sy * fpos_y) + 16) / 32;
                         
                         lbCommonDrawSObjBitmap(dls, sobj, sprite, bitmap, x, tempy, xx, y, (s16)-fs, (s16)-ft, sx, sy);
                         

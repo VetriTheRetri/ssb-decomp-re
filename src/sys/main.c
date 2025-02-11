@@ -5,7 +5,7 @@
 #include <sys/dma.h>
 #include <sys/taskman.h>
 #include <sys/audio.h>
-#include <sys/thread3.h>
+#include <sys/scheduler.h>
 #include <sys/controller.h>
 
 // #include <linkersegs.h>
@@ -184,7 +184,7 @@ void syMainThread5(void *arg)
     syMainSetDmemStatus();
     osCreateMesgQueue(&sSYMainThreadingQueue, sSYMainBlockMesg, ARRAY_COUNT(sSYMainBlockMesg));
 
-    osCreateThread(&sSYMainThread3, 3, thread3_scheduler, NULL, sSYMainThread3Stack + ARRAY_COUNT(sSYMainThread3Stack), THREAD3_PRI);
+    osCreateThread(&sSYMainThread3, 3, scheduler_scheduler, NULL, sSYMainThread3Stack + ARRAY_COUNT(sSYMainThread3Stack), THREAD3_PRI);
     sSYMainThread3Stack[0] = STACK_PROBE_MAGIC; osStartThread(&sSYMainThread3);
     osRecvMesg(&sSYMainThreadingQueue, NULL, OS_MESG_BLOCK);
 

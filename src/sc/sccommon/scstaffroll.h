@@ -157,8 +157,8 @@ extern void func_ovl59_80131E70(Vec3f *arg0, f32 arg1, f32 arg2, f32 arg3, f32 a
 extern sb32 scStaffrollCheckCursorNameOverlap(Vec3f *vec);
 extern void func_ovl59_80131F34(GObj *arg0);
 extern void func_ovl59_8013202C(GObj *arg0);
-extern s32 scStaffrollGetLockOnPositionX(s32 posx);
-extern s32 scStaffrollGetLockOnPositionY(s32 posy);
+extern s32 scStaffrollGetLockOnPositionX(s32 pos_x);
+extern s32 scStaffrollGetLockOnPositionY(s32 pos_y);
 extern void scStaffrollHighlightProcDisplay(GObj *gobj);
 extern void scStaffrollHighlightThreadUpdate(GObj *gobj);
 extern void scStaffrollMakeHighlightGObj(GObj *gobj);

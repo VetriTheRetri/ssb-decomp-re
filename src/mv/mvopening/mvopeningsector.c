@@ -611,7 +611,7 @@ SYTaskmanSetup mvOpeningSectorTaskmanSetup =
 // 0x80132898
 void mvOpeningSectorStartScene(void)
 {
-    dMVOpeningSectorVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+    dMVOpeningSectorVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
     syVideoInit(&dMVOpeningSectorVideoSetup);
 
     mvOpeningSectorTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl50_BSS_END);

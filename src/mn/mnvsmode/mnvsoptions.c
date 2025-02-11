@@ -1062,7 +1062,7 @@ void mnVSOptionsProcRun(GObj *gobj)
     s32 unused;
 
     // 0x801347FC
-    GObj **option_gobjs[/* */] =
+    GObj **option_gobjss[/* */] =
     {
         &sMNVSOptionsOptionGObjs[nMNVSOptionsOptionHandicap],
         &sMNVSOptionsOptionGObjs[nMNVSOptionsOptionTeamAttack],
@@ -1133,7 +1133,7 @@ void mnVSOptionsProcRun(GObj *gobj)
         
             mnVSOptionsSetOptionChangeWaitP(is_button, stick_range, 7);
                 
-            mnVSOptionsSetOptionSpriteColors(*option_gobjs[sMNVSOptionsOption], nMNOptionTabStatusNot);
+            mnVSOptionsSetOptionSpriteColors(*option_gobjss[sMNVSOptionsOption], nMNOptionTabStatusNot);
         
             if (sMNVSOptionsOption == sMNVSOptionsFirstAvailableOption)
             {
@@ -1141,7 +1141,7 @@ void mnVSOptionsProcRun(GObj *gobj)
             }
             else sMNVSOptionsOption--;
                 
-            mnVSOptionsSetOptionSpriteColors(*option_gobjs[sMNVSOptionsOption], nMNOptionTabStatusHighlight);
+            mnVSOptionsSetOptionSpriteColors(*option_gobjss[sMNVSOptionsOption], nMNOptionTabStatusHighlight);
         
             if (sMNVSOptionsOption == sMNVSOptionsFirstAvailableOption)
             {
@@ -1160,7 +1160,7 @@ void mnVSOptionsProcRun(GObj *gobj)
         
             mnVSOptionsSetOptionChangeWaitN(is_button, stick_range, 7);
                 
-            mnVSOptionsSetOptionSpriteColors(*option_gobjs[sMNVSOptionsOption], nMNOptionTabStatusNot);
+            mnVSOptionsSetOptionSpriteColors(*option_gobjss[sMNVSOptionsOption], nMNOptionTabStatusNot);
         
             if (sMNVSOptionsOption == sMNVSOptionsLastAvailableOption)
             {
@@ -1168,7 +1168,7 @@ void mnVSOptionsProcRun(GObj *gobj)
             }
             else sMNVSOptionsOption++;
                 
-            mnVSOptionsSetOptionSpriteColors(*option_gobjs[sMNVSOptionsOption], nMNOptionTabStatusHighlight);
+            mnVSOptionsSetOptionSpriteColors(*option_gobjss[sMNVSOptionsOption], nMNOptionTabStatusHighlight);
         
             if (sMNVSOptionsOption == sMNVSOptionsLastAvailableOption)
             {
@@ -1451,7 +1451,7 @@ SYTaskmanSetup dMNVSOptionsTaskmanSetup =
 // 0x80134668
 void mnVSOptionsStartScene(void)
 {
-    dMNVSOptionsVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+    dMNVSOptionsVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
     syVideoInit(&dMNVSOptionsVideoSetup);
     
     dMNVSOptionsTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl20_BSS_END);

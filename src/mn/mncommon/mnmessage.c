@@ -401,7 +401,7 @@ SYTaskmanSetup dMNMessageTaskmanSetup =
 // 0x801323F8
 void mnMessageStartScene(void)
 {
-    dMNMessageVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+    dMNMessageVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
     
     syVideoInit(&dMNMessageVideoSetup);
     

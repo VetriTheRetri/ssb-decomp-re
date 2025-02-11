@@ -87,7 +87,7 @@ segments:
     subsegments:
       - [0x001060, c, sys/main]
       - [0x001510, pad, padding_1510]
-      - [0x001520, c, sys/thread3]
+      - [0x001520, c, sys/scheduler]
       - [0x003660, c, sys/dma]
       - [0x004800, c, sys/controller]
       - [0x0054D0, c, sys/taskman]
@@ -283,7 +283,7 @@ segments:
       - [0x03E220, .data, libultra/io/vimgr]
       - [0x03E240, .data, libultra/io/aisetnextbuf]
       - [0x03E250, .rodata, sys/main]
-      - [0x03E270, .rodata, sys/thread3]
+      - [0x03E270, .rodata, sys/scheduler]
       - [0x03E2D0, .rodata, sys/controller]
       - [0x03E2F0, .rodata, sys/taskman]
       - [0x03E510, .rodata, sys/malloc]
@@ -313,7 +313,7 @@ segments:
       - { start: 0x040000, type: databin, name: rsp/n_aspmain,      linker_section_order: .rodata }
       - { start: 0x0402B0, type: databin, name: rsp/gspF3DEX2_fifo, linker_section_order: .rodata }
       - { start: auto, type: .bss, name: sys/main,                 vram: 0x8003FAD0 }
-      - { start: auto, type: .bss, name: sys/thread3,              vram: 0x80044EC0 }
+      - { start: auto, type: .bss, name: sys/scheduler,              vram: 0x80044EC0 }
       - { start: auto, type: .bss, name: sys/dma,                  vram: 0x80045040 }
       - { start: auto, type: .bss, name: sys/controller,           vram: 0x800450F0 }
       - { start: auto, type: .bss, name: sys/maindevice,           vram: 0x80045470 }
@@ -350,6 +350,13 @@ segments:
       - [auto, .data, sc/scmanager]
       - [auto, .rodata, sc/scmanager]
       - { start: auto, type: .bss, name: sc/scmanager }
+
+  - name: zbuffer
+    exclusive_ram_id: zbuffers
+    type: code
+    vram: 0x800A5240
+    subsegments:
+    - { type: .bss, name: sys/zbuffer, vram: 0x800A5240 }
 
   - name: ovl0
     type: code

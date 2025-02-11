@@ -1,6 +1,6 @@
 #include "common.h"
 #include <sys/dma.h>
-#include <sys/thread3.h>
+#include <sys/scheduler.h>
 
 #include <macros.h>
 #include <ssb_types.h>

@@ -1290,7 +1290,7 @@ SYTaskmanSetup dMN1PContinueTaskmanSetup =
 // 0x801340FC
 void mnPlayers1PGameContinueStartScene(void)
 {
-    dMN1PContinueVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+    dMN1PContinueVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
 
     syVideoInit(&dMN1PContinueVideoSetup);
 

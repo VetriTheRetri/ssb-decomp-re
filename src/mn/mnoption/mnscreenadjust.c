@@ -443,7 +443,7 @@ void mnScreenAdjustFuncStart(void)
 // 0x801327D8
 void mnScreenAdjustStartScene(void)
 {
-    dMNScreenAdjustVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+    dMNScreenAdjustVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
     syVideoInit(&dMNScreenAdjustVideoSetup);
     
     dMNScreenAdjustTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl25_BSS_END);

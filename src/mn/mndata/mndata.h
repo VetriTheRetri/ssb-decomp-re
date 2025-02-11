@@ -9,7 +9,7 @@
 extern void mnDataFuncLights(Gfx **dls);
 extern sb32 mnDataCheckSoundTestUnlocked(void);
 extern void mnDataSetOptionSpriteColors(GObj *gobj, s32 status);
-extern void mnDataMakeOptionTab(GObj *gobj, f32 posx, f32 posy, s32 lrs);
+extern void mnDataMakeOptionTab(GObj *gobj, f32 pos_x, f32 pos_y, s32 lrs);
 extern void mnDataMakeCharacters(void);
 extern void mnDataMakeVSRecord(void);
 extern void mnDataMakeSoundTest(void);

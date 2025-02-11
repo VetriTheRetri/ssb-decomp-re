@@ -515,7 +515,7 @@ void mvOpeningCliffFuncStart(void)
 // 0x80132674
 void mvOpeningCliffStartScene(void)
 {
-    dMVOpeningCliffVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+    dMVOpeningCliffVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
     syVideoInit(&dMVOpeningCliffVideoSetup);
 
     dMVOpeningCliffTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl46_BSS_END);

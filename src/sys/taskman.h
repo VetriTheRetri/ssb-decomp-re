@@ -2,7 +2,7 @@
 #define _SYTASKMAN_H_
 
 #include <sys/malloc.h>
-#include <sys/thread3.h>
+#include <sys/scheduler.h>
 #include <sys/objdef.h>
 
 #include <PR/mbi.h>

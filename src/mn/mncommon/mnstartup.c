@@ -272,7 +272,7 @@ void mnStartupStartScene(void)
 {
 	syAudioStopSongAll();
 	
-	dMNStartupVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+	dMNStartupVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
 	syVideoInit(&dMNStartupVideoSetup);
 
 	dMNStartupTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl58_BSS_END);

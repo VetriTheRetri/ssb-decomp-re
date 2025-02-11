@@ -2714,7 +2714,7 @@ SYTaskmanSetup dMNCharactersTaskmanSetup =
 // 0x80134050
 void mnCharactersStartScene(void)
 {
-	dMNCharactersVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+	dMNCharactersVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
 	syVideoInit(&dMNCharactersVideoSetup);
 
 	dMNCharactersTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl33_BSS_END);

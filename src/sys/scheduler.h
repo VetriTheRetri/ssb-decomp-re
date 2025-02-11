@@ -47,7 +47,7 @@ typedef sb32 (*SYTaskCallback)(struct SYTaskInfo*);
 typedef sb32 (*SYTaskGfxCallback)(struct SYTaskGfx*);
 
 // This may be the real form of `struct SpMqInfo`, but I'll have to double check
-// thread3.c to see if I can replace all forms...
+// scheduler.c to see if I can replace all forms...
 typedef struct SYTaskInfo {
     /* 0x00 */ s32 type; // SYTaskType
     /* 0x04 */ s32 priority;
@@ -153,7 +153,7 @@ extern u32 gSYSchedulerFramebufferSetTimestamp;
 extern void func_80000970(SYTaskInfo *arg0);
 extern void scAddClient(SCClient *arg0, OSMesgQueue *mq, OSMesg *msg, u32 count);
 extern s32 scCheckGfxTaskDefault(SYTaskGfx *t);
-extern void thread3_scheduler(void *arg);
+extern void scheduler_scheduler(void *arg);
 extern s32 func_80000B54(UNUSED SYTaskInfo *t);
 
 #endif /* SYS_THREAD_3_H */

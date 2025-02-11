@@ -7,7 +7,7 @@
 #include <sys/obj.h>
 #include <sys/rdp.h>
 #include <sys/video.h>
-#include <sys/thread3.h>
+#include <sys/scheduler.h>
 #include <sys/controller.h>
 
 #include <macros.h>

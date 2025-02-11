@@ -557,7 +557,7 @@ void mnUnusedFightersFuncStart(void)
 // 0x800D6FB0
 void mnUnusedFightersStartScene(void)
 {
-    dMNUnusedFightersVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+    dMNUnusedFightersVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
     syVideoInit(&dMNUnusedFightersVideoSetup);
 
     dMNUnusedFightersTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&gSYFramebufferSets - (uintptr_t)&ovl16_BSS_END);

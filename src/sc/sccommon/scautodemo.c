@@ -713,7 +713,7 @@ void scAutoDemoFuncLights(Gfx **dls)
 // 0x8018E014
 void scAutoDemoStartScene(void)
 {
-	dSCAutoDemoVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+	dSCAutoDemoVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
 
 	syVideoInit(&dSCAutoDemoVideoSetup);
 

@@ -199,7 +199,7 @@ void dbMapsFuncStart(void)
 // 0x800D6620
 void dbMapsStartScene(void)
 {
-	dDBMapsVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+	dDBMapsVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
 	syVideoInit(&dDBMapsVideoSetup);
 
 	dDBMapsTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl9_VRAM - (uintptr_t)&ovl12_BSS_END);

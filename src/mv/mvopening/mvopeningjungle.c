@@ -431,7 +431,7 @@ void mvOpeningJungleFuncLights(Gfx **dls)
 // 0x8018D818
 void mvOpeningJungleStartScene(void)
 {
-    dMVOpeningJungleVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+    dMVOpeningJungleVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
     syVideoInit(&dMVOpeningJungleVideoSetup);
 
     dMVOpeningJungleTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl51_BSS_END);

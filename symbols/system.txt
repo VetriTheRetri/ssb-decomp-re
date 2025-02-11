@@ -551,7 +551,7 @@ func_8000205C = 0x8000205C;
 scHandleSPTaskDone = 0x800020D0;
 func_80002340 = 0x80002340;
 func_800024EC = 0x800024EC;
-thread3_scheduler = 0x80002518;
+scheduler_scheduler = 0x80002518;
 func_800029D8 = 0x800029D8;
 unref_80002A50 = 0x80002A50;
 
@@ -739,7 +739,7 @@ gSYVideoOffsetRight = 0x80046696;
 gSYVideoOffsetTop = 0x80046698;
 gSYVideoOffsetBottom = 0x8004669A;
 
-sSYRdpViewport = 0x800466A0;
+gSYRdpViewport = 0x800466A0;
 dSYRdpFuncLights = 0x8003B750;
 dSYRdpIdentityMatrix = 0x8003B758;
 sSYRdpResetDisplayList = 0x8003B798;

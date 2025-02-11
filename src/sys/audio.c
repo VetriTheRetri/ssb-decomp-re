@@ -1,7 +1,7 @@
 #include "common.h"
 
 #include <sys/audio.h>
-#include <sys/thread3.h>
+#include <sys/scheduler.h>
 #include <sys/dma.h>
 
 #define AL_CACHE_ALIGN  15

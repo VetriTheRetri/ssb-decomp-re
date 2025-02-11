@@ -2059,7 +2059,7 @@ SYTaskmanSetup dGM1PStageClearTaskmanSetup =
 // 0x80134E84
 void sc1PStageClearStartScene(void)
 {
-	dGM1PStageClearVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+	dGM1PStageClearVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
 	syVideoInit(&dGM1PStageClearVideoSetup);
 
 	dGM1PStageClearTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl56_BSS_END);

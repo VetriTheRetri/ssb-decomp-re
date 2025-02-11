@@ -2,7 +2,7 @@
 #define _SYVIDEO_H_
 
 #include <ssb_types.h>
-#include <sys/thread3.h>
+#include <sys/scheduler.h>
 
 #define SYVIDEO_FLAG_NONE           0x0
 #define SYVIDEO_FLAG_SERRATE        0x4
@@ -48,25 +48,23 @@
     0x1                                                         \
 }
 
-#define syVideoGetZBuffer(start) ((u16*) ((uintptr_t)&scmanager_BSS_END - (start)))
+#define syVideoGetZBuffer(width, height, w_border, h_border, type) \
+((u16*) ((uintptr_t)gSYZBuffer - (((width * height) - ((width - w_border) * (height - h_border))) * sizeof(type))))
 
 /*
  * Seems to deal with setting the screen size and zbuffer?
  */
 typedef struct SYVideoSetup
 {
-    /* 0x00 */ void *framebuf0;
-    /* 0x04 */ void *framebuf1;
-    /* 0x08 */ void *framebuf2;
-    /* 0x0C */ u16 *zbuffer;
-    /* 0x10 */ u32 width;
-    /* 0x14 */ u32 height;
-    /* 0x18 */ u32 flags;
+    void *framebuffers[3];
+    u16 *zbuffer;
+    u32 width;
+    u32 height;
+    u32 flags;
 
 } SYVideoSetup; // size >= 0x18
 
-extern uintptr_t scmanager_BSS_END;         // Z-Buffer pointer = this - 6400 (or 12800 in ovl59)
-
+extern u16 gSYZBuffer[(320 * 240) - (((320 * 240) - (320 * 230)) * sizeof(u16))];         // Z-Buffer pointer = this - 6400 (or 12800 in ovl59)
 extern u16 gSYFramebufferSets[3][230][320];
 
 extern u16 *gSYVideoZBuffer;

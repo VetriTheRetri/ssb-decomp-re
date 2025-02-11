@@ -591,7 +591,7 @@ SYTaskmanSetup dMVOpeningSamusTaskmanSetup =
 // 0x8018E0C8
 void mvOpeningSamusStartScene(void)
 {
-	dMVOpeningSamusVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+	dMVOpeningSamusVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
 	syVideoInit(&dMVOpeningSamusVideoSetup);
 
 	dMVOpeningSamusTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl38_BSS_END);

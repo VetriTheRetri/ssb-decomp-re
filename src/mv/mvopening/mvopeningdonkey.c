@@ -574,7 +574,7 @@ SYTaskmanSetup dMVOpeningDonkeyTaskmanSetup =
 // 0x8018E018
 void mvOpeningDonkeyStartScene(void)
 {
-	dMVOpeningDonkeyVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+	dMVOpeningDonkeyVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
 	syVideoInit(&dMVOpeningDonkeyVideoSetup);
 
 	dMVOpeningDonkeyTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl37_BSS_END);

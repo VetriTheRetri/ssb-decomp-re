@@ -8,7 +8,7 @@
 
 extern void mnOptionFuncLights(Gfx **dls);
 extern void mnOptionSetOptionSpriteColors(GObj *gobj, s32 status);
-extern void mnOptionMakeOptionTabs(GObj *gobj, f32 posx, f32 posy, s32 lrs);
+extern void mnOptionMakeOptionTabs(GObj *gobj, f32 pos_x, f32 pos_y, s32 lrs);
 extern void mnOptionSetSoundToggleSpriteColors(GObj *gobj, sb32 mono_or_stereo);
 extern void mnOptionMakeSoundToggle(void);
 extern void mnOptionMakeSound(void);

@@ -489,7 +489,7 @@ SYTaskmanSetup dMVOpeningClashTaskmanSetup =
 // 0x80132874
 void mvOpeningClashStartScene(void)
 {
-    dMVOpeningClashVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+    dMVOpeningClashVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
     syVideoInit(&dMVOpeningClashVideoSetup);
 
     dMVOpeningClashTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl49_BSS_END);

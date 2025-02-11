@@ -421,7 +421,7 @@ void mnCongraStartScene(void)
 		sMNCongraFighterKind = gSCManagerTransferBattleState.players[0].fkind;
 		break;
 	}
-	dMNCongraVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+	dMNCongraVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
 	syVideoInit(&dMNCongraVideoSetup);
 
 	dMNCongraTaskmanSetup.scene_setup.arena_size = (size_t) (SYVIDEO_DEFINE_FRAMEBUFFER_ADDR(320, 230, 0, 10, u32, 0) - (uintptr_t)&ovl57_BSS_END);

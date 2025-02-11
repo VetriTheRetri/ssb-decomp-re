@@ -33,7 +33,7 @@ extern void mnVSModeMakeUnusedGObj(void);
 extern void mnVSModeRenderMenuName(GObj* menu_name_gobj);
 extern void mnVSModeMakeMenuName(void);
 extern void mnVSModeMakeBackground(void);
-extern void mnVSModeMakeButtonValuesSYRdpViewport(void);
+extern void mnVSModeMakeButtonValuegSYRdpViewport(void);
 extern void mnVSModeMakeButtonViewport(void);
 extern void mnVSModeMakeMenuNameViewport(void);
 extern void mnVSModeMakeBackgroundViewport(void);

@@ -576,7 +576,7 @@ void mn1PModeProcRun(GObj *gobj)
     s32 unused;
     
     // 0x801330E0
-    GObj **option_gobjs[/* */] =
+    GObj **option_gobjss[/* */] =
     {
         &sMN1PModeOptionGObjs[nMN1PModeOption1PGame],
         &sMN1PModeOptionGObjs[nMN1PModeOptionTrainingMode],
@@ -689,7 +689,7 @@ void mn1PModeProcRun(GObj *gobj)
             func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 
             mn1PModeSetOptionChangeWaitP(is_button, stick_range, 7);
-            mn1PModeSetOptionSpriteColors(*option_gobjs[sMN1PModeOption], nMNOptionTabStatusNot, sMN1PModeOption);
+            mn1PModeSetOptionSpriteColors(*option_gobjss[sMN1PModeOption], nMNOptionTabStatusNot, sMN1PModeOption);
 
             if (sMN1PModeOption == nMN1PModeOptionStart)
             {
@@ -701,7 +701,7 @@ void mn1PModeProcRun(GObj *gobj)
             {
                 sMN1PModeOptionChangeWait += 8;
             }
-            mn1PModeSetOptionSpriteColors(*option_gobjs[sMN1PModeOption], nMNOptionTabStatusHighlight, sMN1PModeOption);
+            mn1PModeSetOptionSpriteColors(*option_gobjss[sMN1PModeOption], nMNOptionTabStatusHighlight, sMN1PModeOption);
             gcEjectGObj(sMN1PModeSubtitleGObj);
             func_ovl18_8013223C();
         }
@@ -714,7 +714,7 @@ void mn1PModeProcRun(GObj *gobj)
             func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 
             mn1PModeSetOptionChangeWaitN(is_button, stick_range, 7);
-            mn1PModeSetOptionSpriteColors(*option_gobjs[sMN1PModeOption], nMNOptionTabStatusNot, sMN1PModeOption);
+            mn1PModeSetOptionSpriteColors(*option_gobjss[sMN1PModeOption], nMNOptionTabStatusNot, sMN1PModeOption);
 
             if (sMN1PModeOption == nMN1PModeOptionEnd)
             {
@@ -726,7 +726,7 @@ void mn1PModeProcRun(GObj *gobj)
             {
                 sMN1PModeOptionChangeWait += 8;
             }
-            mn1PModeSetOptionSpriteColors(*option_gobjs[sMN1PModeOption], nMNOptionTabStatusHighlight, sMN1PModeOption);
+            mn1PModeSetOptionSpriteColors(*option_gobjss[sMN1PModeOption], nMNOptionTabStatusHighlight, sMN1PModeOption);
             gcEjectGObj(sMN1PModeSubtitleGObj);
             func_ovl18_8013223C();
         }
@@ -828,7 +828,7 @@ SYTaskmanSetup dMN1PModeTaskmanSetup =
 // 0x80133020
 void mn1PModeStartScene(void)
 {
-    dMN1PModeVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+    dMN1PModeVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
     syVideoInit(&dMN1PModeVideoSetup);
     
     dMN1PModeTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl18_BSS_END);

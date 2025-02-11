@@ -3,10 +3,12 @@
 #include "config.h"
 #include <sys/video.h>
 
-// bss
-Vp sSYRdpViewport;
+// // // // // // // // // // // //
+//                               //
+//       INITIALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
 
-// data
 void (*dSYRdpFuncLights)(Gfx**) = NULL;
 
 Mtx dSYRdpIdentityMatrix = 
@@ -24,7 +26,7 @@ Mtx dSYRdpIdentityMatrix =
 Gfx sSYRdpResetDisplayList[/* */] = 
 {
     gsDPPipeSync(),
-    gsSPViewport(&sSYRdpViewport),
+    gsSPViewport(&gSYRdpViewport),
     gsSPClearGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BOTH | G_FOG | G_LIGHTING | G_TEXTURE_GEN | G_TEXTURE_GEN_LINEAR | G_LOD | G_SHADING_SMOOTH),
     gsSPClipRatio(FRUSTRATIO_1),
     gsSPTexture(0, 0, 0, G_TX_RENDERTILE, G_OFF),
@@ -47,6 +49,20 @@ Gfx sSYRdpResetDisplayList[/* */] =
     gsDPPipeSync(),
     gsSPEndDisplayList()
 };
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+Vp gSYRdpViewport;
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 #ifdef NON_MATCHING
 void syRdpSetViewport(Vp *viewport, f32 ulx, f32 uly, f32 lrx, f32 lry)
@@ -85,7 +101,7 @@ void syRdpResetSettings(Gfx **dls)
     gSPSegment(dl++, G_MWO_SEGMENT_0, 0x00000000);
     syTaskmanInitSegmentF(&dl);
     gDPSetDepthImage(dl++, gSYVideoZBuffer);
-    syRdpSetDefaultViewport(&sSYRdpViewport);
+    syRdpSetDefaultViewport(&gSYRdpViewport);
     gSPDisplayList(dl++, sSYRdpResetDisplayList);
 
     gDPSetScissor

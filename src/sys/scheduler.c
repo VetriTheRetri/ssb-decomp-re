@@ -1,5 +1,5 @@
 #include "common.h"
-#include "thread3.h"
+#include "scheduler.h"
 
 #include <sys/error.h>
 #include <sys/main.h>
@@ -602,7 +602,7 @@ void func_80000F30(u32 arg0, u32 arg1, s32 arg2, s16 arg3, s16 arg4, s16 arg5, s
     D_80044F88_40798[0]               = 1;
 }
 #else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/thread3/func_80000F30.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/scheduler/func_80000F30.s")
 #endif /* NON_MATCHING */
 
 void func_800016D8(void) {
@@ -1082,7 +1082,7 @@ void func_800029D8(void);
 #define INTR_DP_FULL_SYNC 3
 #define INTR_SOFT_RESET   99
 
-void thread3_scheduler(UNUSED void *arg) {
+void scheduler_scheduler(UNUSED void *arg) {
     OSMesg intrMsg;
     UNUSED u32 pad;
     OSViMode mode;

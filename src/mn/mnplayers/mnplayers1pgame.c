@@ -3511,7 +3511,7 @@ SYTaskmanSetup dMNPlayers1PGameTaskmanSetup =
 // 0x80138558
 void mnPlayers1PGameStartScene(void)
 {
-	dMNPlayers1PGameVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+	dMNPlayers1PGameVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
 	syVideoInit(&dMNPlayers1PGameVideoSetup);
 
 	dMNPlayers1PGameTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl27_BSS_END);

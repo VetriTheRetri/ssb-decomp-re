@@ -838,7 +838,7 @@ void scExplainFuncDraw(void)
 // 0x8018E5C0
 void scExplainStartScene(void)
 {
-    dSCExplainVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+    dSCExplainVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
 
     syVideoInit(&dSCExplainVideoSetup);
 

@@ -252,7 +252,7 @@ void mnBackupClearSetOptionSpriteColors(void)
     SObj *sobj;
 
     // 0x80132F40
-    GObj **option_gobj[/* */] =
+    GObj **option_gobjs[/* */] =
     {
         &sMNBackupClearOptionNewcomersGObj,
         &sMNBackupClearOption1PHighScoreGObj,
@@ -286,9 +286,9 @@ void mnBackupClearSetOptionSpriteColors(void)
 
     s32 i;
 
-    for (i = 0; i < (ARRAY_COUNT(option_gobj) + ARRAY_COUNT(offsets) + ARRAY_COUNT(pos)) / 3; i++)
+    for (i = 0; i < (ARRAY_COUNT(option_gobjs) + ARRAY_COUNT(offsets) + ARRAY_COUNT(pos)) / 3; i++)
     {
-        *option_gobj[i] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
+        *option_gobjs[i] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
 
         gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, ~0);
         
@@ -521,7 +521,7 @@ void mnBackupClearUpdateOptionMainMenu(void)
     s32 stick_range;
 
     // 0x80132FA0
-    GObj **option_gobj[/* */] =
+    GObj **option_gobjs[/* */] =
     {
         &sMNBackupClearOptionNewcomersGObj,
         &sMNBackupClearOption1PHighScoreGObj,
@@ -572,7 +572,7 @@ void mnBackupClearUpdateOptionMainMenu(void)
         func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 
         mnBackupClearSetOptionChangeWaitP(is_button, stick_range, 7);
-        mnBackupClearUpdateOptionTabColors(*option_gobj[sMNBackupClearOption], nMNOptionTabStatusNot);
+        mnBackupClearUpdateOptionTabColors(*option_gobjs[sMNBackupClearOption], nMNOptionTabStatusNot);
 
         if (sMNBackupClearOption == nMNBackupClearOptionStart)
         {
@@ -586,7 +586,7 @@ void mnBackupClearUpdateOptionMainMenu(void)
         }
         gcEjectGObj(sMNBackupClearUnusedGObj);
         mnBackupClearMakeUnused(sMNBackupClearOption);
-        mnBackupClearUpdateOptionTabColors(*option_gobj[sMNBackupClearOption], nMNOptionTabStatusHighlight);
+        mnBackupClearUpdateOptionTabColors(*option_gobjs[sMNBackupClearOption], nMNOptionTabStatusHighlight);
     }
     else if
     (
@@ -597,7 +597,7 @@ void mnBackupClearUpdateOptionMainMenu(void)
         func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 
         mnBackupClearSetOptionChangeWaitN(is_button, stick_range, 7);
-        mnBackupClearUpdateOptionTabColors(*option_gobj[sMNBackupClearOption], nMNOptionTabStatusNot);
+        mnBackupClearUpdateOptionTabColors(*option_gobjs[sMNBackupClearOption], nMNOptionTabStatusNot);
 
         if (sMNBackupClearOption == nMNBackupClearOptionEnd)
         {
@@ -611,7 +611,7 @@ void mnBackupClearUpdateOptionMainMenu(void)
         }
         gcEjectGObj(sMNBackupClearUnusedGObj);
         mnBackupClearMakeUnused(sMNBackupClearOption);
-        mnBackupClearUpdateOptionTabColors(*option_gobj[sMNBackupClearOption], nMNOptionTabStatusHighlight);
+        mnBackupClearUpdateOptionTabColors(*option_gobjs[sMNBackupClearOption], nMNOptionTabStatusHighlight);
     }
 }
 
@@ -853,7 +853,7 @@ SYTaskmanSetup dMNBackupClearTaskmanSetup =
 // 0x80132E28
 void mnBackupClearStartScene(void)
 {
-    dMNBackupClearVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+    dMNBackupClearVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
     syVideoInit(&dMNBackupClearVideoSetup);
     
     dMNBackupClearTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl53_BSS_END);

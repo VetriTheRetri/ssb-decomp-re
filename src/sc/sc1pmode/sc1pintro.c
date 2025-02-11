@@ -2024,7 +2024,7 @@ SYTaskmanSetup dSC1PIntroTaskmanSetup =
 // 0x80134D98
 void sc1PIntroStartScene(void)
 {
-    dSC1PIntroVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+    dSC1PIntroVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
     syVideoInit(&dSC1PIntroVideoSetup);
     
     dSC1PIntroTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl24_BSS_END);

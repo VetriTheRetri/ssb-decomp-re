@@ -5,7 +5,7 @@
 #include <sys/main.h>
 #include <sys/obj.h>
 #include <sys/video.h>
-#include <sys/thread3.h>
+#include <sys/scheduler.h>
 #include <sys/controller.h>
 
 // #include <macros.h> // (included in obj.h)

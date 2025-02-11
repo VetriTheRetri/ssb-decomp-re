@@ -46,7 +46,7 @@ extern sb32 dSYAudioSoundQuality;
 // // // // // // // // // // // //
 
 // 0x80133620
-u32 dMNOptionFileIDs[/* */] = { &D_NF_00000000, &D_NF_00000004 };
+u32 dMNOptionFileIDs[/* */] = { &lMNCommonFileID, &D_NF_00000004 };
 
 // 0x80133628
 Lights1 dMNOptionLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x3C, 0x3C, 0x3C);
@@ -74,7 +74,7 @@ GObj *sMNOptionOptionScreenAdjustGObj;
 // 0x801337A8
 GObj *sMNOptionOptionBackupClearGObj;
 
-// 0x801337B0 - Padding?
+// 0x801337B0
 s32 sMNOptionPad0x801337B0[2];
 
 // 0x801337B8
@@ -187,23 +187,23 @@ void mnOptionSetOptionSpriteColors(GObj *gobj, s32 status)
 }
 
 // 0x80131BFC
-void mnOptionMakeOptionTabs(GObj *gobj, f32 posx, f32 posy, s32 lrs)
+void mnOptionMakeOptionTabs(GObj *gobj, f32 pos_x, f32 pos_y, s32 lrs)
 {
     SObj *sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNOptionFiles[0], &llMNCommonOptionTabLeftSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
 
-    sobj->pos.x = posx;
-    sobj->pos.y = posy;
+    sobj->pos.x = pos_x;
+    sobj->pos.y = pos_y;
 
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNOptionFiles[0], &llMNCommonOptionTabMiddleSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
 
-    sobj->pos.x = posx + 16.0F;
-    sobj->pos.y = posy;
+    sobj->pos.x = pos_x + 16.0F;
+    sobj->pos.y = pos_y;
 
     sobj->cms = 0;
     sobj->cmt = 0;
@@ -219,8 +219,8 @@ void mnOptionMakeOptionTabs(GObj *gobj, f32 posx, f32 posy, s32 lrs)
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
 
-    sobj->pos.x = posx + 16.0F + (lrs * 8);
-    sobj->pos.y = posy;
+    sobj->pos.x = pos_x + 16.0F + (lrs * 8);
+    sobj->pos.y = pos_y;
 }
 
 // 0x80131D2C
@@ -776,7 +776,7 @@ void mnOptionProcRun(GObj *gobj)
     sb32 stick_range;
 
     // 0x801336EC
-    GObj **option_gobj[/* */] = { &sMNOptionOptionSoundGObj, &sMNOptionOptionScreenAdjustGObj, &sMNOptionOptionBackupClearGObj };
+    GObj **option_gobjs[/* */] = { &sMNOptionOptionSoundGObj, &sMNOptionOptionScreenAdjustGObj, &sMNOptionOptionBackupClearGObj };
 
     s32 is_button;
 
@@ -790,8 +790,8 @@ void mnOptionProcRun(GObj *gobj)
             gSCManagerSceneData.scene_curr = nSCKindTitle;
 
             mnOptionWriteBackup();
-
             syTaskmanSetLoadScene();
+
             return;
         }
         if (scSubsysControllerCheckNoInputAll() == FALSE)
@@ -825,7 +825,7 @@ void mnOptionProcRun(GObj *gobj)
 
                 func_800269C0_275C0(nSYAudioFGMMenuSelect);
 
-                mnOptionSetOptionSpriteColors(*option_gobj[sMNOptionOption], nMNOptionTabStatusSelected);
+                mnOptionSetOptionSpriteColors(*option_gobjs[sMNOptionOption], nMNOptionTabStatusSelected);
 
                 gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
                 gSCManagerSceneData.scene_curr = nSCKindScreenAdjust;
@@ -838,7 +838,7 @@ void mnOptionProcRun(GObj *gobj)
 
                 func_800269C0_275C0(nSYAudioFGMMenuSelect);
 
-                mnOptionSetOptionSpriteColors(*option_gobj[sMNOptionOption], nMNOptionTabStatusSelected);
+                mnOptionSetOptionSpriteColors(*option_gobjs[sMNOptionOption], nMNOptionTabStatusSelected);
 
                 gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
                 gSCManagerSceneData.scene_curr = nSCKindBackupClear;
@@ -847,7 +847,6 @@ void mnOptionProcRun(GObj *gobj)
                 return;
             }
         }
-
         if (scSubsysControllerGetPlayerTapButtons(B_BUTTON) != FALSE)
         {
             mnOptionWriteBackup();
@@ -867,7 +866,7 @@ void mnOptionProcRun(GObj *gobj)
 
             mnOptionSetOptionChangeWaitP(is_button, stick_range, 7);
 
-            mnOptionSetOptionSpriteColors(*option_gobj[sMNOptionOption], nMNOptionTabStatusNot);
+            mnOptionSetOptionSpriteColors(*option_gobjs[sMNOptionOption], nMNOptionTabStatusNot);
 
             if (sMNOptionOption == nMNOptionOptionStart)
             {
@@ -875,7 +874,7 @@ void mnOptionProcRun(GObj *gobj)
             }
             else sMNOptionOption--;
 
-            mnOptionSetOptionSpriteColors(*option_gobj[sMNOptionOption], nMNOptionTabStatusHighlight);
+            mnOptionSetOptionSpriteColors(*option_gobjs[sMNOptionOption], nMNOptionTabStatusHighlight);
             gcEjectGObj(sMNOptionMenuGObj);
             mnOptionMakeMenuGObj();
         }
@@ -893,7 +892,7 @@ void mnOptionProcRun(GObj *gobj)
             {
                 sMNOptionOptionChangeWait += 8;
             }
-            mnOptionSetOptionSpriteColors(*option_gobj[sMNOptionOption], nMNOptionTabStatusNot);
+            mnOptionSetOptionSpriteColors(*option_gobjs[sMNOptionOption], nMNOptionTabStatusNot);
 
             if (sMNOptionOption == nMNOptionOptionEnd)
             {
@@ -901,7 +900,7 @@ void mnOptionProcRun(GObj *gobj)
             }
             else sMNOptionOption++;
 
-            mnOptionSetOptionSpriteColors(*option_gobj[sMNOptionOption], nMNOptionTabStatusHighlight);
+            mnOptionSetOptionSpriteColors(*option_gobjs[sMNOptionOption], nMNOptionTabStatusHighlight);
             gcEjectGObj(sMNOptionMenuGObj);
             mnOptionMakeMenuGObj();
         }
@@ -1062,7 +1061,7 @@ SYTaskmanSetup dMNOptionTaskmanSetup =
 // 0x801335C0
 void mnOptionStartScene(void)
 {
-    dMNOptionVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+    dMNOptionVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
     syVideoInit(&dMNOptionVideoSetup);
 
     dMNOptionTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl60_BSS_END);

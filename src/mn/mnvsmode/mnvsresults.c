@@ -3369,7 +3369,7 @@ void mnVSResultsStartScene(void)
 {
 	s32 i;
 
-	dMNVSResultsVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+	dMNVSResultsVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
 	syVideoInit(&dMNVSResultsVideoSetup);
 
 	dMNVSResultsTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl31_BSS_END);

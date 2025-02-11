@@ -589,7 +589,7 @@ SYTaskmanSetup dMVOpeningMarioTaskmanSetup =
 // 0x8018E030
 void mvOpeningMarioStartScene(void)
 {
-	dMVOpeningMarioVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+	dMVOpeningMarioVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
 	syVideoInit(&dMVOpeningMarioVideoSetup);
 
 	dMVOpeningMarioTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl36_BSS_END);

@@ -613,7 +613,7 @@ void mnDataProcRun(GObj *gobj)
     s32 stick_range;
 
     // 0x8013F2A4
-    GObj **option_gobj[/* */] = { &sMNDataOptionCharactersGObj, &sMNDataOptionVSRecordGObj, &sMNDataOptionSoundTestGObj };
+    GObj **option_gobjs[/* */] = { &sMNDataOptionCharactersGObj, &sMNDataOptionVSRecordGObj, &sMNDataOptionSoundTestGObj };
 
     sb32 is_button;
 
@@ -660,7 +660,7 @@ void mnDataProcRun(GObj *gobj)
             {
             case nMNDataOptionCharacters:
                 func_800269C0_275C0(nSYAudioFGMMenuSelect);
-                mnDataSetOptionSpriteColors(*option_gobj[sMNDataOption], nMNOptionTabStatusSelected);
+                mnDataSetOptionSpriteColors(*option_gobjs[sMNDataOption], nMNOptionTabStatusSelected);
                 syAudioStopSongAll();
 
                 gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
@@ -670,7 +670,7 @@ void mnDataProcRun(GObj *gobj)
 
             case nMNDataOptionVSRecord:
                 func_800269C0_275C0(nSYAudioFGMMenuSelect);
-                mnDataSetOptionSpriteColors(*option_gobj[sMNDataOption], nMNOptionTabStatusSelected);
+                mnDataSetOptionSpriteColors(*option_gobjs[sMNDataOption], nMNOptionTabStatusSelected);
                 syAudioStopSongAll();
 
                 gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
@@ -680,7 +680,7 @@ void mnDataProcRun(GObj *gobj)
 
             case nMNDataOptionSoundTest:
                 func_800269C0_275C0(nSYAudioFGMMenuSelect);
-                mnDataSetOptionSpriteColors(*option_gobj[sMNDataOption], nMNOptionTabStatusSelected);
+                mnDataSetOptionSpriteColors(*option_gobjs[sMNDataOption], nMNOptionTabStatusSelected);
                 syAudioStopSongAll();
 
                 gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
@@ -708,7 +708,7 @@ void mnDataProcRun(GObj *gobj)
 
             mnDataSetOptionChangeWaitP(is_button, stick_range, 7);
 
-            mnDataSetOptionSpriteColors(*option_gobj[sMNDataOption], nMNOptionTabStatusNot);
+            mnDataSetOptionSpriteColors(*option_gobjs[sMNDataOption], nMNOptionTabStatusNot);
 
             if (sMNDataOption == sMNDataFirstAvailableOption)
             {
@@ -716,7 +716,7 @@ void mnDataProcRun(GObj *gobj)
             }
             else sMNDataOption--;
 
-            mnDataSetOptionSpriteColors(*option_gobj[sMNDataOption], nMNOptionTabStatusHighlight);
+            mnDataSetOptionSpriteColors(*option_gobjs[sMNDataOption], nMNOptionTabStatusHighlight);
 
             if (sMNDataOption == sMNDataFirstAvailableOption)
             {
@@ -736,7 +736,7 @@ void mnDataProcRun(GObj *gobj)
 
             mnDataSetOptionChangeWaitN(is_button, stick_range, 7);
 
-            mnDataSetOptionSpriteColors(*option_gobj[sMNDataOption], nMNOptionTabStatusNot);
+            mnDataSetOptionSpriteColors(*option_gobjs[sMNDataOption], nMNOptionTabStatusNot);
 
             if (sMNDataOption == sMNDataLastAvailableOption)
             {
@@ -744,7 +744,7 @@ void mnDataProcRun(GObj *gobj)
             }
             else sMNDataOption++;
 
-            mnDataSetOptionSpriteColors(*option_gobj[sMNDataOption], nMNOptionTabStatusHighlight);
+            mnDataSetOptionSpriteColors(*option_gobjs[sMNDataOption], nMNOptionTabStatusHighlight);
 
             if (sMNDataOption == sMNDataLastAvailableOption)
             {
@@ -854,7 +854,7 @@ SYTaskmanSetup dMNDataTaskmanSetup =
 // 0x80132EC0
 void mnDataStartScene(void)
 {
-    dMNDataVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+    dMNDataVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
     syVideoInit(&dMNDataVideoSetup);
 
     dMNDataTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl61_BSS_END);

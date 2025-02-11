@@ -4824,7 +4824,7 @@ SYTaskmanSetup dMNPlayersVSTaskmanSetup =
 // 0x8013B33C
 void mnPlayersVSStartScene(void)
 {
-	dMNPlayersVSVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+	dMNPlayersVSVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
 	syVideoInit(&dMNPlayersVSVideoSetup);
 
 	dMNPlayersVSTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl26_BSS_END);

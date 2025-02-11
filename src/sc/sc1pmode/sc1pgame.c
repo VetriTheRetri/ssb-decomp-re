@@ -2824,7 +2824,7 @@ void sc1PGameStartScene(void)
     gSCManagerBattleState = &gSCManager1PGameBattleState;
     gSCManagerBattleState->game_type = nSCBattleGameType1PGame;
 
-    dSC1PGameVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+    dSC1PGameVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
     syVideoInit(&dSC1PGameVideoSetup);
 
     dSC1PGameTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&gSYFramebufferSets - (uintptr_t)&ovl65_BSS_END);

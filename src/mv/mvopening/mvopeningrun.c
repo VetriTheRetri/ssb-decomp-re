@@ -436,7 +436,7 @@ SYTaskmanSetup dMVOpeningRunTaskmanSetup =
 // 0x8013256C
 void mvOpeningRunStartScene(void)
 {
-	dMVOpeningRunVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+	dMVOpeningRunVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
 	syVideoInit(&dMVOpeningRunVideoSetup);
 
 	dMVOpeningRunTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl44_BSS_END);

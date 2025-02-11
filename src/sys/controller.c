@@ -1,7 +1,7 @@
 #include "controller.h"
 
 #include <sys/main.h>
-#include <sys/thread3.h>
+#include <sys/scheduler.h>
 #include <missing_libultra.h>
 #include <PR/os.h>
 

@@ -1,6 +1,6 @@
 #include "video.h"
 
-#include <sys/thread3.h>
+#include <sys/scheduler.h>
 
 #include <PR/mbi.h>
 #include <PR/os.h>
@@ -171,7 +171,7 @@ void syVideoSetScreenSettings(s32 width, s32 height, u32 flags)
 // Apply video setup
 void syVideoInit(SYVideoSetup *video_setup)
 {
-    syVideoSetFramebuffers(video_setup->framebuf0, video_setup->framebuf1, video_setup->framebuf2);
+    syVideoSetFramebuffers(video_setup->framebuffers[0], video_setup->framebuffers[1], video_setup->framebuffers[2]);
     gSYVideoZBuffer = video_setup->zbuffer;
     syVideoSetScreenSettings(video_setup->width, video_setup->height, video_setup->flags);
 }

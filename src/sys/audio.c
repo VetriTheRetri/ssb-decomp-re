@@ -140,7 +140,7 @@ typedef struct {
     AMDMABuffer buffers[NUM_DMA_BUFFERS];
 } AMDMAState;
 
-typedef struct N_ALUnk80026204
+typedef struct SYAudioConfig
 {
     u16 unk_80026204_0x0;
     u16 unk_80026204_0x2;
@@ -162,7 +162,7 @@ typedef struct N_ALUnk80026204
     u16 unk_80026204_0x2E;
     u16 unk_80026204_0x30;
 
-} N_ALUnk80026204;
+} SYAudioConfig;
 
 // s32 auCustomFXParams1[] = {
 //     8,
@@ -403,11 +403,11 @@ void syAudioStopBGM(s32 sngplayer);
 // 0x8001E5C0
 void alHeapInit(ALHeap *hp, u8 *base, s32 len)
 {
-    s32 extraAlign = (AL_CACHE_ALIGN + 1) - ((intptr_t) base & AL_CACHE_ALIGN);
+    s32 align = (AL_CACHE_ALIGN + 1) - ((intptr_t) base & AL_CACHE_ALIGN);
 
-    if (extraAlign != AL_CACHE_ALIGN + 1)
+    if (align != AL_CACHE_ALIGN + 1)
     {
-        hp->base = base + extraAlign;
+        hp->base = base + align;
     }
     else hp->base = base;
 
@@ -441,7 +441,7 @@ void alSeqFileNew(ALSeqFile *file, u8 *base)
      */
     for (i = 0; i < file->seqCount; i++)
     {
-        file->seqArray[i].offset = (u8*) ((u8*) file->seqArray[i].offset + base_ptr);
+        file->seqArray[i].offset = (u8*) ((uintptr_t)file->seqArray[i].offset + base_ptr);
     }
 }
 
@@ -457,7 +457,7 @@ void alBnkfNew(ALBankFile *file, u8 *table)
      */
     for (i = 0; i < file->bankCount; i++)
     {
-        file->bankArray[i] = (ALBank*) ((u8*) file->bankArray[i] + file_base);
+        file->bankArray[i] = (ALBank*) ((uintptr_t)file->bankArray[i] + file_base);
 
         if (file->bankArray[i] != NULL)
         {
@@ -479,12 +479,12 @@ void syAudioBnkfPatchBank(ALBank *bank, uintptr_t offset, uintptr_t table)
 
     if (bank->percussion != NULL)
     {
-        bank->percussion = (ALInstrument*) ((u8*) bank->percussion + offset);
+        bank->percussion = (ALInstrument*) ((uintptr_t)bank->percussion + offset);
         syAudioBnkfPatchInst(bank->percussion, offset, table);
     }
     for (i = 0; i < bank->instCount; i++)
     {
-        bank->instArray[i] = (ALInstrument*) ((u8*) bank->instArray[i] + offset);
+        bank->instArray[i] = (ALInstrument*) ((uintptr_t)bank->instArray[i] + offset);
 
         if (bank->instArray[i] != NULL)
         {
@@ -506,7 +506,7 @@ void syAudioBnkfPatchInst(ALInstrument *inst, uintptr_t offset, uintptr_t table)
 
     for (i = 0; i < inst->soundCount; i++)
     {
-        inst->soundArray[i] = (ALSound*) ((u8*) inst->soundArray[i] + offset);
+        inst->soundArray[i] = (ALSound*) ((uintptr_t)inst->soundArray[i] + offset);
         syAudioBnkfPatchSound(inst->soundArray[i], offset, table);
     }
 }
@@ -520,10 +520,10 @@ void syAudioBnkfPatchSound(ALSound *s, uintptr_t offset, uintptr_t table)
     }
     s->flags = 1;
 
-    s->envelope = (ALEnvelope*) ((u8*) s->envelope + offset);
-    s->keyMap = (ALKeyMap*) ((u8*) s->keyMap + offset);
+    s->envelope = (ALEnvelope*) ((uintptr_t)s->envelope + offset);
+    s->keyMap = (ALKeyMap*) ((uintptr_t)s->keyMap + offset);
 
-    s->wavetable = (ALWaveTable*) ((u8*) s->wavetable + offset);
+    s->wavetable = (ALWaveTable*) ((uintptr_t)s->wavetable + offset);
     syAudioBnkfPatchWaveTable(s->wavetable, offset, table);
 }
 
@@ -540,11 +540,11 @@ void syAudioBnkfPatchWaveTable(ALWaveTable *w, uintptr_t offset, uintptr_t table
 
     if (w->type == AL_ADPCM_WAVE)
     {
-        w->waveInfo.adpcmWave.book = (ALADPCMBook*) ((u8*) w->waveInfo.adpcmWave.book + offset);
+        w->waveInfo.adpcmWave.book = (ALADPCMBook*) ((uintptr_t)w->waveInfo.adpcmWave.book + offset);
 
         if (w->waveInfo.adpcmWave.loop != NULL)
         {
-            w->waveInfo.adpcmWave.loop = (ALADPCMloop*) ((u8*) w->waveInfo.adpcmWave.loop + offset);
+            w->waveInfo.adpcmWave.loop = (ALADPCMloop*) ((uintptr_t)w->waveInfo.adpcmWave.loop + offset);
         }
 
     }
@@ -552,7 +552,7 @@ void syAudioBnkfPatchWaveTable(ALWaveTable *w, uintptr_t offset, uintptr_t table
     {
         if (w->waveInfo.rawWave.loop != NULL)
         {
-            w->waveInfo.rawWave.loop = (ALRawLoop*) ((u8*) w->waveInfo.rawWave.loop + offset);
+            w->waveInfo.rawWave.loop = (ALRawLoop*) ((uintptr_t)w->waveInfo.rawWave.loop + offset);
         }
     }
 }
@@ -949,7 +949,7 @@ void syAudioLoadAssets(void)
         len = sSYAudioALSeqFile->seqCount * sizeof(ALSeqData) + 4;
         sSYAudioALSeqFile = alHeapAlloc(&sSYAudioALHeap, 1, sSYAudioALSeqFile->seqCount * sizeof(ALSeqData) + 4);
         syAudioReadRom(sSYAudioCurrentSettings.sbk_start, sSYAudioALSeqFile, len); 
-        alSeqFileNew(sSYAudioALSeqFile, (u8*) sSYAudioCurrentSettings.sbk_start);
+        alSeqFileNew(sSYAudioALSeqFile, (uintptr_t)sSYAudioCurrentSettings.sbk_start);
     }
     // get maximal seq length
     for (i = 0, len = 0; i < sSYAudioALSeqFile->seqCount; i++)
@@ -1018,69 +1018,69 @@ void syAudioLoadAssets(void)
 
 void syAudioMakeBGMPlayers(void)
 {
-    ALSynConfig synConfig;
-    ALSeqpConfig seqpConfig;
-    N_ALUnk80026204 audioSetup;
+    ALSynConfig syn_config;
+    ALSeqpConfig seqp_config;
+    SYAudioConfig audio_config;
     s32 i, j;
     s32 unused;
 
     sSYAudioALHeapBase = sSYAudioALHeap.cur;
     sSYAudioALHeapSize = sSYAudioALHeap.count;
     
-    synConfig.maxVVoices = sSYAudioCurrentSettings.vvoices_num_max;
-    synConfig.maxPVoices = sSYAudioCurrentSettings.pvoices_num_max;
-    synConfig.maxUpdates = sSYAudioCurrentSettings.updates_num_max;
-    synConfig.dmaproc = syAudioDmaNew;
-    synConfig.outputRate = osAiSetFrequency(sSYAudioCurrentSettings.output_rate);
-    synConfig.heap = &sSYAudioALHeap;
+    syn_config.maxVVoices = sSYAudioCurrentSettings.vvoices_num_max;
+    syn_config.maxPVoices = sSYAudioCurrentSettings.pvoices_num_max;
+    syn_config.maxUpdates = sSYAudioCurrentSettings.updates_num_max;
+    syn_config.dmaproc = syAudioDmaNew;
+    syn_config.outputRate = osAiSetFrequency(sSYAudioCurrentSettings.output_rate);
+    syn_config.heap = &sSYAudioALHeap;
 
     dSYAudioCurrentFxType = sSYAudioCurrentSettings.fx_type;
 
     if (dSYAudioCurrentFxType < AL_FX_CUSTOM)
     {
-        synConfig.fxType = dSYAudioCurrentFxType;
+        syn_config.fxType = dSYAudioCurrentFxType;
     }
     else
     {
-        synConfig.fxType = AL_FX_CUSTOM;
-        synConfig.params = auCustomFXParamsTable[dSYAudioCurrentFxType];
+        syn_config.fxType = AL_FX_CUSTOM;
+        syn_config.params = auCustomFXParamsTable[dSYAudioCurrentFxType];
     }
-    n_alInit(&sSYAudioALGlobals, &synConfig);
+    n_alInit(&sSYAudioALGlobals, &syn_config);
     
-    sSYAudioFrequency = (synConfig.outputRate / 60.0F);
+    sSYAudioFrequency = (syn_config.outputRate / 60.0F);
     sSYAudioFrequency = ((sSYAudioFrequency / 184) * 184) + 184;
     D_8009D920_96D20 = sSYAudioFrequency - 184;
     
-    audioSetup.unk_80026204_0x0 = sSYAudioCurrentSettings.unk31;
-    audioSetup.unk_80026204_0x2 = sSYAudioCurrentSettings.unk32;
-    audioSetup.unk_80026204_0x4 = sSYAudioCurrentSettings.unk33;
+    audio_config.unk_80026204_0x0 = sSYAudioCurrentSettings.unk31;
+    audio_config.unk_80026204_0x2 = sSYAudioCurrentSettings.unk32;
+    audio_config.unk_80026204_0x4 = sSYAudioCurrentSettings.unk33;
     
     if (sSYAudioCurrentSettings.unk34 != 0)
     {
-        audioSetup.inst_sound_count = sSYAudioCurrentSettings.unk34;
-        audioSetup.inst_sound_array = sSYAudioCurrentSettings.unk38;
+        audio_config.inst_sound_count = sSYAudioCurrentSettings.unk34;
+        audio_config.inst_sound_array = sSYAudioCurrentSettings.unk38;
     }
     else
     {
-        audioSetup.inst_sound_count = sSYAudioSequenceALBank1->instArray[0]->soundCount;
-        audioSetup.inst_sound_array = sSYAudioSequenceALBank1->instArray[0]->soundArray;
+        audio_config.inst_sound_count = sSYAudioSequenceALBank1->instArray[0]->soundCount;
+        audio_config.inst_sound_array = sSYAudioSequenceALBank1->instArray[0]->soundArray;
     }
-    audioSetup.fgm_ucode_data = sSYAudioCurrentSettings.fgm_ucode_data;
-    audioSetup.fgm_table_data = sSYAudioCurrentSettings.fgm_table_data;
-    audioSetup.unk_80026204_0x1C = sSYAudioCurrentSettings.unk44;
-    audioSetup.fgm_ucode_count = sSYAudioCurrentSettings.fgm_ucode_count;
-    audioSetup.fgm_table_count = sSYAudioCurrentSettings.fgm_table_count;
-    audioSetup.unk_80026204_0xC = sSYAudioCurrentSettings.unk4C;
-    audioSetup.heap = &sSYAudioALHeap;
-    audioSetup.unk_80026204_0x24 = sSYAudioCurrentSettings.unk12;
-    audioSetup.unk_80026204_0x26 = 10;
-    audioSetup.unk_80026204_0x28 = 20;
-    audioSetup.unk_80026204_0x2A = 30;
-    audioSetup.unk_80026204_0x2C = 40;
-    audioSetup.unk_80026204_0x2E = 50;
-    audioSetup.unk_80026204_0x30 = 60;
+    audio_config.fgm_ucode_data = sSYAudioCurrentSettings.fgm_ucode_data;
+    audio_config.fgm_table_data = sSYAudioCurrentSettings.fgm_table_data;
+    audio_config.unk_80026204_0x1C = sSYAudioCurrentSettings.unk44;
+    audio_config.fgm_ucode_count = sSYAudioCurrentSettings.fgm_ucode_count;
+    audio_config.fgm_table_count = sSYAudioCurrentSettings.fgm_table_count;
+    audio_config.unk_80026204_0xC = sSYAudioCurrentSettings.unk4C;
+    audio_config.heap = &sSYAudioALHeap;
+    audio_config.unk_80026204_0x24 = sSYAudioCurrentSettings.unk12;
+    audio_config.unk_80026204_0x26 = 10;
+    audio_config.unk_80026204_0x28 = 20;
+    audio_config.unk_80026204_0x2A = 30;
+    audio_config.unk_80026204_0x2C = 40;
+    audio_config.unk_80026204_0x2E = 50;
+    audio_config.unk_80026204_0x30 = 60;
     
-    func_80026204_26E04(&audioSetup);
+    func_80026204_26E04(&audio_config);
 
     sSYAudioSoundPlayers = alHeapAlloc(&sSYAudioALHeap, 1, sSYAudioCurrentSettings.unk33 * sizeof(*sSYAudioSoundPlayers));
     
@@ -1102,16 +1102,16 @@ void syAudioMakeBGMPlayers(void)
     
     for (i = 0; i < 1; i++)
     {
-        seqpConfig.maxVoices = sSYAudioCurrentSettings.voices_num_max[i];
-        seqpConfig.maxEvents = sSYAudioCurrentSettings.events_num_max;
-        seqpConfig.maxChannels = 16;
-        seqpConfig.heap = &sSYAudioALHeap;
-        seqpConfig.initOsc = initOsc;
-        seqpConfig.updateOsc = updateOsc;
-        seqpConfig.stopOsc = stopOsc;
+        seqp_config.maxVoices = sSYAudioCurrentSettings.voices_num_max[i];
+        seqp_config.maxEvents = sSYAudioCurrentSettings.events_num_max;
+        seqp_config.maxChannels = 16;
+        seqp_config.heap = &sSYAudioALHeap;
+        seqp_config.initOsc = initOsc;
+        seqp_config.updateOsc = updateOsc;
+        seqp_config.stopOsc = stopOsc;
 
         gSYAudioALCSPlayers[i] = alHeapAlloc(&sSYAudioALHeap, 1, sizeof(*gSYAudioALCSPlayers[i]));
-        func_8002C3D0_2CFD0(gSYAudioALCSPlayers[i], &seqpConfig);
+        func_8002C3D0_2CFD0(gSYAudioALCSPlayers[i], &seqp_config);
         alCSPSetBank(gSYAudioALCSPlayers[i], sSYAudioSequenceALBank2);
         sSYAudioALCSeqs[i] = alHeapAlloc(&sSYAudioALHeap, 1, sizeof(ALCSeq));
         
@@ -1335,7 +1335,7 @@ void func_80020F4C(s32 sndplayer, s32 arg1)
 }
 
 // 0x80020FA0
-void func_80020FA0_21BA0(s32 arg0, s32 arg1)
+void func_80020FA0_21BA0(s32 sndplayer, s32 arg1)
 {
     return;
 }

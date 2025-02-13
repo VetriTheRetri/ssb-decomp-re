@@ -1351,11 +1351,12 @@ void syAudioStopFGM(s32 sndplayer)
 }
 
 // 0x80020FFC
-void func_80020FFC(s32 arg0, u8 arg1)
+void func_80020FFC(s32 sndplayer, u8 arg1)
 {
-    void* sound = sSYAudioSoundPlayers[arg0];
-    if (sound != NULL)
-        ((u8*)sound)[0x1f] = arg1;
+    if (sSYAudioSoundPlayers[sndplayer] != NULL)
+    {
+        ((u8*)sSYAudioSoundPlayers[sndplayer])[0x1F] = arg1;
+    }
 }
 
 // 0x8002102C

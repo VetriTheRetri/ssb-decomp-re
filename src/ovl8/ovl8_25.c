@@ -16,6 +16,7 @@ extern dbUnknownLink D_ovl8_8038D370;
 extern dbUnknownLinkStruct D_ovl8_8038D3A0;
 extern dbFunction D_ovl8_8038D4C0;
 extern dbUnknownLink D_ovl8_8038D618;
+extern SYColorRGBA D_ovl8_8038D640; // = { 0xFF, 0x00, 0x00, 0xFF };
 
 // 0x80384460
 s32 func_ovl8_80384460(s32 arg0, dbUnknown3* arg1)
@@ -195,25 +196,70 @@ s32 func_ovl8_80384B90(dbUnknownThing* arg0, s32 arg1)
     return 1;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_25/func_ovl8_80384BD4.s")
+// 0x80384BD4
+void func_ovl8_80384BD4(dbUnknownS38* arg0)
+{
+    dbFunction* temp_v0;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_25/func_ovl8_80384C0C.s")
+    temp_v0 = arg0->unk_dbunks38_0x30;
+    temp_v0[26].unk_dbfunc_0x4(temp_v0[26].unk_dbfunc_0x0 + (uintptr_t)arg0, arg0->unk_dbunks38_0x38.unk_dbunkstruct_0x2.arr[1] + 1);
+}
 
+// 0x80384C0C
+void func_ovl8_80384C0C(dbUnknownS38* arg0)
+{
+    dbFunction* temp_v0;
+
+    temp_v0 = arg0->unk_dbunks38_0x30;
+    temp_v0[26].unk_dbfunc_0x4(temp_v0[26].unk_dbfunc_0x0 + (uintptr_t)arg0, arg0->unk_dbunks38_0x38.unk_dbunkstruct_0x2.arr[1] - 1);
+}
+
+// 0x80384C44
 s16 func_ovl8_80384C44(s16* arg0)
 {
 	return arg0[0x3c/2];
 }
 
+// 0x80384C4C
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_25/func_ovl8_80384C4C.s")
 
+// 0x80384D58
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_25/func_ovl8_80384D58.s")
 
+// 0x80384DC4
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_25/func_ovl8_80384DC4.s")
 
+// 0x80384E30
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_25/func_ovl8_80384E30.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_25/func_ovl8_80384F3C.s")
+// 0x80384F3C
+void func_ovl8_80384F3C(s32 arg0, s32 arg1, s32 arg2, s32 arg3)
+{
+    SYColorRGBA colors;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_25/func_ovl8_80384F90.s")
+    *(SYColorRGBA*)&colors = *(SYColorRGBA*)&D_ovl8_8038D640;
 
+    func_ovl8_80378064(arg1, arg2, &colors, 4);
+}
+
+// 0x80384F90
+s32 func_ovl8_80384F90(dbUnknown5* arg0, s16 arg1)
+{
+    s32 var_v1;
+    db4Shorts sp24;
+    dbFunction* temp_v0;
+
+    temp_v0 = arg0->unk_dbunk5_0x38->db_func;
+    temp_v0[22].unk_dbfunc_0x4(temp_v0[22].unk_dbfunc_0x0 + (uintptr_t)arg0->unk_dbunk5_0x38, &sp24, arg0);
+
+    var_v1 = (arg1 / arg0->unk_dbunk5_0x44.s_16) + arg0->unk_dbunk5_0x3C.s_16;
+
+    if (arg1 < sp24.arr[1])
+    {
+        var_v1 -= 1;
+    }
+    return var_v1;
+}
+
+// 0x80385024
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_25/func_ovl8_80385024.s")

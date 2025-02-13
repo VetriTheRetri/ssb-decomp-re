@@ -30,7 +30,7 @@ extern void stringCopy(char* target, char* source);
 //         arg0->unk_dbunk5_0x30 = &D_ovl8_8038BD20;
 //         arg1->db_func = &D_ovl8_8038BDF0;
 //         arg2->unk_dbunklink_0x8 = &D_ovl8_8038BF48;
-//         arg0->unk_dbunk5_0x3C = 0;
+//         arg0->unk_dbunk5_0x3C.ls = 0;
 //     }
 
 //     return arg0;
@@ -55,7 +55,7 @@ extern void stringCopy(char* target, char* source);
 //         arg0->unk_dbunk5_0x30 = &D_ovl8_8038BD20;
 //         arg1->db_func = &D_ovl8_8038BDF0;
 //         arg2->unk_dbunklink_0x8 = &D_ovl8_8038BF48;
-//         arg0->unk_dbunk5_0x3C = 0;
+//         arg0->unk_dbunk5_0x3C.ls = 0;
 
 //         func_ovl8_803822D8(arg0, arg5);
 //     }
@@ -72,9 +72,9 @@ void func_ovl8_80382224(dbUnknown5* arg0, s32 arg1)
         arg0->unk_dbunk5_0x38->db_func = &D_ovl8_8038BDF0;
         arg0->unk_dbunk5_0x34->unk_dbunklink_0x8 = &D_ovl8_8038BF48;
 
-        if (arg0->unk_dbunk5_0x3C != 0)
+        if (arg0->unk_dbunk5_0x3C.ls != 0)
         {
-            func_ovl8_80371764(arg0->unk_dbunk5_0x3C);
+            func_ovl8_80371764(arg0->unk_dbunk5_0x3C.ls);
         }
 
         func_ovl8_8037354C(arg0, 0);

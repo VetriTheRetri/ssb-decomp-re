@@ -45,7 +45,7 @@ void func_ovl8_80383510(dbUnknown5* arg0, s32 arg1)
 
 	arg0->unk_dbunk5_0x30 = &D_ovl8_8038CA10, arg0->unk_dbunk5_0x38->db_func = &D_ovl8_8038CB58;
 	arg0->unk_dbunk5_0x34->unk_dbunklink_0x8 = &D_ovl8_8038CCB0;
-	temp_a0 = arg0->unk_dbunk5_0x3C;
+	temp_a0 = arg0->unk_dbunk5_0x3C.ls;
 
 	if (temp_a0 != NULL)
 		func_ovl8_80371764(temp_a0);

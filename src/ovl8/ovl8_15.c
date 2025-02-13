@@ -90,7 +90,7 @@ void func_ovl8_8037F590(dbUnknown5* arg0)
     sp30[0] += sp38[0];
     sp30[1] += sp38[1];
 
-    func_ovl8_8037B46C(sp2C, &sp30, arg0->unk_dbunk5_0x44, &arg0->unk_dbunk5_0x38->unk_dbunkstruct_0x18);
+    func_ovl8_8037B46C(sp2C, &sp30, arg0->unk_dbunk5_0x44.ls, &arg0->unk_dbunk5_0x38->unk_dbunkstruct_0x18);
 }
 
 // 0x8037F654

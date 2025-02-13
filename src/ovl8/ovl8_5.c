@@ -36,7 +36,7 @@ dbUnknownLinkStruct* func_ovl8_80373350(s32 arg0, s32 arg1)
 //         if (arg1 == NULL)
 //         {
 //             arg1 = &arg0->unk_dbunk5_0x48;
-//             arg2 = &arg0->unk_dbunk5_0x3C;
+//             arg2 = &arg0->unk_dbunk5_0x3C.ls;
 //             func_ovl8_803717E0(arg1);
 //             func_ovl8_8037C2D0(arg2);
 //         }
@@ -64,7 +64,7 @@ dbUnknownLinkStruct* func_ovl8_80373350(s32 arg0, s32 arg1)
 //         if (arg1 == NULL)
 //         {
 //             arg1 = &arg0->unk_dbunk5_0x48;
-//             arg2 = &arg0->unk_dbunk5_0x3C;
+//             arg2 = &arg0->unk_dbunk5_0x3C.ls;
 //             func_ovl8_803717E0(arg1);
 //             func_ovl8_8037C2D0(arg2);
 //         }

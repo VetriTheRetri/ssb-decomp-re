@@ -769,7 +769,7 @@ void SC1PGameBossWallpaper3ProcUpdate1(GObj *gobj)
                 else if (gobj->proc_display == sc1PGameBossProcDisplayFadeColor)
                 {
                     ifCommonBattleEndSetBossDefeat();
-                    gcFuncGObjAll(ifCommonBattleInterfacePauseFuncGObj, 0);
+                    gcFuncGObjAll(ifCommonBattleInterfacePauseGObj, 0);
                 }
             }
         }

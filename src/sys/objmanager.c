@@ -2214,7 +2214,7 @@ void gcRunAll(void)
 
 		while (gobj != NULL)
 		{
-			if (!(gobj->flags & GOBJ_FLAG_NOFUNC) && (gobj->proc_run != NULL))
+			if (!(gobj->flags & GOBJ_FLAG_NORUN) && (gobj->proc_run != NULL))
 			{
 				gobj = gcRunGObj(gobj);
 			}

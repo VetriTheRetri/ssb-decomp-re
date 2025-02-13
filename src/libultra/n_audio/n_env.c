@@ -32,11 +32,6 @@ typedef struct Unk8009EE0C {
 	s16 unk48;
 } Unk8009EE0C;
 
-typedef struct UnkS32Wrapper {
-	s32 value;
-} UnkS32Wrapper;
-
-
 extern alSoundEffect D_8009EDD0_406D0;
 extern Unk8009EE0C* D_8009EE0C_4070C;
 //extern D_8009EE10_40710;
@@ -46,9 +41,11 @@ extern u8 unref8009EE22[0x8];
 extern u8 D_8009EE2A_4072A;
 extern u16 D_8003D31C_3DF1C;
 
-void func_80026070_26C70(u8 arg0) {
-	if (arg0 > 0x7F) {
-		arg0 = 0x7F;
+void func_80026070_26C70(u8 arg0)
+{
+	if (arg0 > 127)
+	{
+		arg0 = 127;
 	}
 	D_8009EE2A_4072A = arg0;
 }
@@ -77,11 +74,13 @@ void func_80026070_26C70(u8 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_80026958_27558.s")
 
-s32 func_800269C0_275C0(UnkS32Wrapper arg0) {
-		arg0.value = arg0.value & 0xFFFF;
-		if (arg0.value >= (s32) D_8009EDD0_406D0.sfx_max)
-				return 0;
-		return func_80026958_27558(D_8009EDD0_406D0.unk_0x1C[arg0.value], arg0.value);
+alSoundEffect* func_800269C0_275C0(u16 id)
+{
+	if (id >= D_8009EDD0_406D0.sfx_max)
+	{
+		return NULL;
+	}
+	else return func_80026958_27558(D_8009EDD0_406D0.unk_0x1C[id]);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_80026A10_27610.s")

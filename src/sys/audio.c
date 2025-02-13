@@ -146,12 +146,12 @@ typedef struct N_ALUnk80026204
     u16 unk_80026204_0x2;
     u16 unk_80026204_0x4;
     u16 unk_80026204_0x6;
-    u16 unk_80026204_0x8;
-    u16 unk_80026204_0xA;
+    u16 fgm_ucode_count;
+    u16 fgm_table_count;
     u16 unk_80026204_0xC;
     void *unk_80026204_0x10;
-    s32 unk_80026204_0x14;
-    s32 unk_80026204_0x18;
+    void *fgm_ucode_data;
+    void *fgm_table_data;
     s32 unk_80026204_0x1C;
     ALHeap *heap;
     u8 unk_80026204_0x24;
@@ -1062,11 +1062,11 @@ void syAudioMakeSongPlayers(void)
         sp94.unk_80026204_0x6 = sSYAudioSequenceALBank1->instArray[0]->soundCount;
         sp94.unk_80026204_0x10 = sSYAudioSequenceALBank1->instArray[0]->soundArray;
     }
-    sp94.unk_80026204_0x14 = sSYAudioCurrentSettings.fgm_ucode_data;
-    sp94.unk_80026204_0x18 = sSYAudioCurrentSettings.fgm_table_data;
+    sp94.fgm_ucode_data = sSYAudioCurrentSettings.fgm_ucode_data;
+    sp94.fgm_table_data = sSYAudioCurrentSettings.fgm_table_data;
     sp94.unk_80026204_0x1C = sSYAudioCurrentSettings.unk44;
-    sp94.unk_80026204_0x8 = sSYAudioCurrentSettings.fgm_ucode_count;
-    sp94.unk_80026204_0xA = sSYAudioCurrentSettings.fgm_table_count;
+    sp94.fgm_ucode_count = sSYAudioCurrentSettings.fgm_ucode_count;
+    sp94.fgm_table_count = sSYAudioCurrentSettings.fgm_table_count;
     sp94.unk_80026204_0xC = sSYAudioCurrentSettings.unk4C;
     sp94.heap = &sSYAudioALHeap;
     sp94.unk_80026204_0x24 = sSYAudioCurrentSettings.unk12;
@@ -1243,9 +1243,11 @@ void syAudioSetSongPriority(s32 sngplayer, u8 priority)
 // 0x80020D58
 s32 auIsBGMPlaying(s32 sngplayer)
 {
-    if (gSYAudioALCSPlayers[sngplayer]->state == 0)
-        return 0;
-    return 1;
+    if (gSYAudioALCSPlayers[sngplayer]->state == AL_STOPPED)
+    {
+        return FALSE;
+    }
+    else return TRUE;
 }
 
 // https://decomp.me/scratch/jwM9v

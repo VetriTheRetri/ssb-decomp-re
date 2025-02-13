@@ -444,7 +444,7 @@ s32 sIFCommonBattlePlace;
 s32 sIFCommonPad0x801317F8;
 
 // 0x801317FC
-u32 sIFCommonTimerDelta;
+u32 sIFCommonTimerStamp;
 
 // 0x80131800
 u32 sIFCommonTimerIsStarted; // Confirmed u32 by ifCommonBattleUpdateInterfaceAll
@@ -453,13 +453,13 @@ u32 sIFCommonTimerIsStarted; // Confirmed u32 by ifCommonBattleUpdateInterfaceAl
 s32 sIFCommonPad0x80131804;
 
 // 0x80131808 - Array of sound effect IDs to play on game end
-u16 sIFCommonBattleEndSoundQueue[16];
+u16 sIFCommonBattleEndSoundsQueue[16];
 
 // 0x80131828 - What kind of pause menu to display
 u8 sIFCommonBattlePauseKindInterface;
 
 // 0x80131829 - Number of sound effects queued to play on game end
-u8 sIFCommonBattleEndSoundNum;
+u8 sIFCommonBattleEndSoundsNum;
 
 // 0x8013182C
 void (*sIFCommonBattleInterfaceProcUpdate)();
@@ -2482,29 +2482,29 @@ SObj* ifCommonTimerMakeDigits(void)
 // 0x80113104
 void ifCommonTimerProcRun(GObj *interface_gobj)
 {
+    u32 time_delta;
     u32 time_update;
-    u32 temp;
     s32 i;
 
     if (sIFCommonTimerIsStarted != FALSE)
     {
-        temp = sySchedulerGetTicCount();
-        time_update = temp - sIFCommonTimerDelta;
+        time_update = sySchedulerGetTicCount();
+        time_delta = time_update - sIFCommonTimerStamp;
 
-        if (time_update != 0)
+        if (time_delta != 0)
         {
-            sIFCommonTimerDelta = temp;
-            gSCManagerBattleState->time_passed += time_update;
+            sIFCommonTimerStamp = time_update;
+            gSCManagerBattleState->time_passed += time_delta;
 
             if ((gSCManagerBattleState->game_rules & SCBATTLE_GAMERULE_TIME) && (gSCManagerBattleState->time_limit != SCBATTLE_TIMELIMIT_INFINITE))
             {
                 if (gSCManagerBattleState->time_remain != 0)
                 {
-                    if (gSCManagerBattleState->time_remain < time_update)
+                    if (gSCManagerBattleState->time_remain < time_delta)
                     {
                         gSCManagerBattleState->time_remain = 0;
                     }
-                    else gSCManagerBattleState->time_remain -= time_update;
+                    else gSCManagerBattleState->time_remain -= time_delta;
 
                     if
                     (
@@ -2514,7 +2514,6 @@ void ifCommonTimerProcRun(GObj *interface_gobj)
                     )
                     {
                         gMPCollisionBGMDefault = nSYAudioBGMInishieHurry;
-
                         ftParamTryUpdateItemMusic();
                     }
                     if (gSCManagerBattleState->time_remain <= I_SEC_TO_TICS(5))
@@ -2610,31 +2609,31 @@ void ifCommonBattleInitPlacement(void)
 }
 
 // 0x80113638
-void ifCommonBattleInterfacePauseFuncGObj(GObj *interface_gobj, u32 unused)
+void ifCommonBattleInterfacePauseGObj(GObj *interface_gobj, u32 unused)
 {
     gcPauseGObjProcessAll(interface_gobj);
 
-    interface_gobj->flags |= GOBJ_FLAG_NOFUNC;
+    interface_gobj->flags |= GOBJ_FLAG_NORUN;
 }
 
 // 0x8011366C
-void ifCommonBattleInterfaceResumeFuncGObj(GObj *interface_gobj, u32 unused)
+void ifCommonBattleInterfaceResumeGObj(GObj *interface_gobj, u32 unused)
 {
     gcResumeGObjProcessAll(interface_gobj);
 
-    interface_gobj->flags &= ~GOBJ_FLAG_NOFUNC;
+    interface_gobj->flags &= ~GOBJ_FLAG_NORUN;
 }
 
 // 0x801136A4
 void ifCommonBattleInterfaceProcUpdate(void)
 {
-    gcFuncGObjAll(ifCommonBattleInterfacePauseFuncGObj, 0);
+    gcFuncGObjAll(ifCommonBattleInterfacePauseGObj, 0);
 
-    gcFuncGObjByLink(nGCCommonLinkIDSpecialEffect, ifCommonBattleInterfaceResumeFuncGObj, 0);
-    gcFuncGObjByLink(nGCCommonLinkIDInterface, ifCommonBattleInterfaceResumeFuncGObj, 0);
+    gcFuncGObjByLink(nGCCommonLinkIDSpecialEffect, ifCommonBattleInterfaceResumeGObj, 0);
+    gcFuncGObjByLink(nGCCommonLinkIDInterface, ifCommonBattleInterfaceResumeGObj, 0);
     gmRumbleResumeProcessAll();
-    ifCommonBattleInterfaceResumeFuncGObj(gEFParticleStructsGObj, 0);
-    ifCommonBattleInterfaceResumeFuncGObj(gEFParticleGeneratorsGObj, 0);
+    ifCommonBattleInterfaceResumeGObj(gEFParticleStructsGObj, 0);
+    ifCommonBattleInterfaceResumeGObj(gEFParticleGeneratorsGObj, 0);
     efParticleGObjSetSkipAll();
     efParticleGObjClearSkipID(2);
     efParticleGObjClearSkipID(3);
@@ -2651,14 +2650,14 @@ void func_ovl2_80113744(GObj *fighter_gobj, u32 unused)
     {
         gcResumeGObjProcessAll(fighter_gobj);
         
-        fighter_gobj->flags &= ~GOBJ_FLAG_NOFUNC;
+        fighter_gobj->flags &= ~GOBJ_FLAG_NORUN;
     }
 }
 
 // 0x80113790
 void ifCommonBattleEndInitSoundNum(void)
 {
-    sIFCommonBattleEndSoundNum = 0;
+    sIFCommonBattleEndSoundsNum = 0;
 }
 
 // 0x8011379C
@@ -2666,20 +2665,19 @@ void ifCommonBattleEndPlaySoundQueue(void)
 {
     s32 i;
 
-    for (i = 0; i < sIFCommonBattleEndSoundNum; i++)
+    for (i = 0; i < sIFCommonBattleEndSoundsNum; i++)
     {
-        func_800269C0_275C0(sIFCommonBattleEndSoundQueue[i]);
+        func_800269C0_275C0(sIFCommonBattleEndSoundsQueue[i]);
     }
 }
 
 // 0x80113804
 void ifCommonBattleEndAddSoundQueueID(u16 sfx_id)
 {
-    if ((gSCManagerBattleState->game_status == nSCBattleGameStatusEnd) && (sIFCommonBattleEndSoundNum < ARRAY_COUNT(sIFCommonBattleEndSoundQueue)))
+    if ((gSCManagerBattleState->game_status == nSCBattleGameStatusEnd) && (sIFCommonBattleEndSoundsNum < ARRAY_COUNT(sIFCommonBattleEndSoundsQueue)))
     {
-        sIFCommonBattleEndSoundQueue[sIFCommonBattleEndSoundNum] = sfx_id;
-
-        sIFCommonBattleEndSoundNum++;
+        sIFCommonBattleEndSoundsQueue[sIFCommonBattleEndSoundsNum] = sfx_id;
+        sIFCommonBattleEndSoundsNum++;
     }
 }
 
@@ -3059,7 +3057,7 @@ void ifCommonBattlePauseUpdateInterface(void)
         {
             gSCManagerSceneData.is_reset = TRUE;
 
-            gcFuncGObjAll(ifCommonBattleInterfacePauseFuncGObj, 0);
+            gcFuncGObjAll(ifCommonBattleInterfacePauseGObj, 0);
             func_800266A0_272A0();
             gmRumbleInitPlayers();
             ifCommonBattlePauseSetGObjFlagsAll(GOBJ_FLAG_HIDDEN);
@@ -3186,7 +3184,7 @@ void ifCommonBattleUpdateInterfaceAll(void)
     else if (sIFCommonTimerIsStarted == FALSE)
     {
         sIFCommonTimerIsStarted = TRUE;
-        sIFCommonTimerDelta = 0;
+        sIFCommonTimerStamp = 0;
 
         sySchedulerSetTicCount(0);
     }
@@ -3274,7 +3272,7 @@ GObj* ifCommonAnnounceCompleteMakeInterface(void)
 // 0x80114B40
 void ifCommonBonusInterfaceProcUpdate(void)
 {
-    gcFuncGObjAll(ifCommonBattleInterfacePauseFuncGObj, 0);
+    gcFuncGObjAll(ifCommonBattleInterfacePauseGObj, 0);
     gmRumbleInitPlayers();
     func_800266A0_272A0();
     ifCommonBattleEndPlaySoundQueue();
@@ -3311,7 +3309,7 @@ void ifCommonBattleBossDefeatSetGameStatus(void)
 // 0x80114C20
 void ifCommon1PGameInterfaceProcSet(void)
 {
-    gcFuncGObjByLink(9, ifCommonBattleInterfaceResumeFuncGObj, 0);
+    gcFuncGObjByLink(nGCCommonLinkIDCamera, ifCommonBattleInterfaceResumeGObj, 0);
     grWallpaperResumeProcessAll();
     ifCommonInterfaceSetGObjFlagsAll(GOBJ_FLAG_HIDDEN);
 
@@ -3329,16 +3327,16 @@ void ifCommonAnnounceEndMessage(void)
 {
     if (gSCManagerBattleState->gkind >= nGRKindBonusStageStart)
     {
-        ifCommonBattleSetInterface(ifCommonBattleInterfaceProcUpdate, ifCommonBattleInterfaceProcSet, 0x1CC, 90);
+        ifCommonBattleSetInterface(ifCommonBattleInterfaceProcUpdate, ifCommonBattleInterfaceProcSet, nSYAudioVoiceAnnounceFailure, 90);
         ifCommonAnnounceFailureMakeInterface();
     }
     else
     {
         if ((gSCManagerBattleState->game_type == nSCBattleGameType1PGame) && (gSCManagerBattleState->players[gSCManagerSceneData.player].stock_count != -1))
         {
-            ifCommonBattleSetInterface(ifCommonBattleInterfaceProcUpdate, ifCommon1PGameInterfaceProcSet, 0x1E8, 90);
+            ifCommonBattleSetInterface(ifCommonBattleInterfaceProcUpdate, ifCommon1PGameInterfaceProcSet, nSYAudioVoiceAnnounceGameSet, 90);
         }
-        else ifCommonBattleSetInterface(ifCommonBattleInterfaceProcUpdate, ifCommonBattleInterfaceProcSet, 0x1E8, 90);
+        else ifCommonBattleSetInterface(ifCommonBattleInterfaceProcUpdate, ifCommonBattleInterfaceProcSet, nSYAudioVoiceAnnounceGameSet, 90);
 
         ifCommonAnnounceGameSetMakeInterface();
     }

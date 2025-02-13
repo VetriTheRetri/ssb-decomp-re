@@ -59,15 +59,10 @@ void __setInstChanState(ALSeqPlayer *seqp, ALInstrument *inst, s32 chan)
 {
     seqp->chanState[chan].instrument = inst;
     seqp->chanState[chan].pan = inst->pan;
-    // seqp->chanState[chan].vol = inst->volume;
-//////// Only in Smash Bros.
     seqp->chanState[chan].vol = 127;
-////////
     seqp->chanState[chan].priority = inst->priority;
     seqp->chanState[chan].bendRange = inst->bendRange;
-//////// Only in Smash Bros.
     seqp->chanState[chan].vol2 = inst->volume;
-////////
 }
 
 /*
@@ -80,18 +75,14 @@ void __n_resetPerfChanState(ALSeqPlayer *seqp, s32 chan)
   seqp->chanState[chan].fxId = AL_FX_NONE;
   seqp->chanState[chan].fxmix = AL_DEFAULT_FXMIX;
   seqp->chanState[chan].pan = AL_PAN_CENTER;
-//////// Only in Smash Bros.
   seqp->chanState[chan].vol = 127;
-////////
   seqp->chanState[chan].priority = AL_DEFAULT_PRIORITY;
   seqp->chanState[chan].sustain = 0;
   seqp->chanState[chan].bendRange = 200;
-  seqp->chanState[chan].pitchBend = 1.0f;
-//////// Only in Smash Bros.
+  seqp->chanState[chan].pitchBend = 1.0F;
   seqp->chanState[chan].unk_0x12 = 0;
   seqp->chanState[chan].unk_0x13 = 95;
   seqp->chanState[chan].unk_0x14 = 0;
-////////
 }
 
 // 0x8002DE68
@@ -124,7 +115,10 @@ void __initFromBank(ALSeqPlayer* seqp, ALBank *b)
 }
 
 
-void func_8002DF1C_2EB1C() {}
+void func_8002DF1C_2EB1C(void)
+{
+	return;
+}
 
 // 0x8002DF24
 ALMicroTime __n_vsDelta(ALVoiceState *vs, ALMicroTime t)
@@ -155,9 +149,7 @@ s16 __n_vsVol(ALVoiceState *vs, ALSeqPlayer *seqp)
     u32     t1,t2;
 
     t1 = (vs->tremelo * vs->velocity * vs->envGain) >> 6;
-//////// Only in Smash Bros.
     t2 = (vs->sound->sampleVolume * alSeqpGetVol(seqp) * alSeqpGetChlVol(seqp, vs->channel)) >> 14;
-////////
 
     t1 *= t2;
     t1 >>= 15;

@@ -1913,12 +1913,12 @@ void sc1PGameBossDefeatInterfaceProcUpdate(void)
     gcFuncGObjByLink(nGCCommonLinkIDFighter, sc1PGameBossAddBossInterface, 0);
     gcFuncGObjByLink(nGCCommonLinkIDFighter, sc1PGameBossLockPlayerControl, 0);
     gcFuncGObjByLink(nGCCommonLinkIDFighter, sc1PGameBossSetIgnorePlayerMapBounds, 0);
-    gcFuncGObjAll(ifCommonBattleInterfacePauseFuncGObj, 0);
+    gcFuncGObjAll(ifCommonBattleInterfacePauseGObj, 0);
 
-    gcFuncGObjByLink(9, ifCommonBattleInterfaceResumeFuncGObj, 0);
+    gcFuncGObjByLink(nGCCommonLinkIDCamera, ifCommonBattleInterfaceResumeGObj, 0);
     gmRumbleResumeProcessAll();
-    gcFuncGObjByLink(0xB, ifCommonBattleInterfaceResumeFuncGObj, 0);
-    gcFuncGObjByLink(6, ifCommonBattleInterfaceResumeFuncGObj, 0);
+    gcFuncGObjByLink(nGCCommonLinkIDInterface, ifCommonBattleInterfaceResumeGObj, 0);
+    gcFuncGObjByLink(nGCCommonLinkIDEffect, ifCommonBattleInterfaceResumeGObj, 0);
     func_ovl65_801910B0();
     func_800266A0_272A0();
     syAudioStopSongAll();
@@ -1940,7 +1940,7 @@ void func_ovl65_8018F6DC(void)
 // 0x8018F6F0
 void sc1PGameBossDefeatInterfaceProcSet(void)
 {
-    gcFuncGObjAll(ifCommonBattleInterfaceResumeFuncGObj, 0);
+    gcFuncGObjAll(ifCommonBattleInterfaceResumeGObj, 0);
     sc1PGameBossSetChangeWallpaper();
     func_ovl2_8010D030((void*) (((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobjdesc - (intptr_t)&D_NF_00004D48) + (intptr_t)&D_NF_00006450), 0.0F, &sSC1PGameBossDefeatZoomPosition);
     ifCommonBattleBossDefeatSetGameStatus();

@@ -86,7 +86,7 @@ segments:
     bss_size: 0x61EA0
     subsegments:
       - [0x001060, c, sys/main]
-      - [0x001510, pad, padding_1510]
+      - [0x001510, pad, pad0x001510]
       - [0x001520, c, sys/scheduler]
       - [0x003660, c, sys/dma]
       - [0x004800, c, sys/controller]
@@ -156,7 +156,7 @@ segments:
       - [0x032DD0, hasm, libultra/os/writebackdcache]
       - [0x032E50, c, libultra/os/initialize]
       - [0x0331B0, c, libultra/io/pirawread]
-      - [0x033210, pad, padding_33210]
+      - [0x033210, pad, pad0x033210]
       - [0x033270, hasm, libultra/os/setsr]
       - [0x033280, hasm, libultra/os/getsr]
       - [0x033290, c, libultra/io/vigetnextframebuf]
@@ -171,7 +171,7 @@ segments:
       - [0x033820, hasm, libultra/os/probetlb]
       - [0x0338E0, c, libultra/io/pimgr]
       - [0x033A50, c, libultra/io/piacs]
-      - [0x033B10, pad, padding_33B10]
+      - [0x033B10, pad, padding0x033B10]
       - [0x033B20, c, libultra/io/devmgr]
       - [0x033FB0, c, libultra/io/pirawdma]
       - [0x034090, hasm, libultra/os/getcount]
@@ -354,9 +354,9 @@ segments:
   - name: zbuffer
     exclusive_ram_id: zbuffers
     type: code
-    vram: 0x800A5240
+    follows_vram: scmanager
     subsegments:
-    - { type: .bss, name: sys/zbuffer, vram: 0x800A5240 }
+    - { start: auto, type: .bss, name: sys/zbuffer }
 
   - name: ovl0
     type: code
@@ -1710,19 +1710,12 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-    # Main 1P Game scene stuff
       - [auto, c, sc/sc1pmode/sc1pgame]
-    # Final Destination backgrounds
       - [auto, c, sc/sc1pmode/sc1pgameboss]
-    # Main 1P Game scene stuff
       - [auto, .data, sc/sc1pmode/sc1pgame]
-    # Final Destination backgrounds
       - [auto, .data, sc/sc1pmode/sc1pgameboss]
-    # Main 1P Game scene stuff
       - [auto, .rodata, sc/sc1pmode/sc1pgame]
-    # Final Destination backgrounds
       - [auto, .rodata, sc/sc1pmode/sc1pgameboss]
-    # Main 1P Game scene stuff
       - { start: auto, type: .bss, name: sc/sc1pmode/sc1pgame }
       - { start: auto, type: .bss, name: sc/sc1pmode/sc1pgameboss }
 
@@ -2461,9 +2454,9 @@ segments:
   - name: framebuffer
     exclusive_ram_id: framebuffers
     type: code
-    vram: 0x80392A00
+    follows_vram: ovl1
     subsegments:
-    - { type: .bss, name: sys/framebuffer, vram: 0x80392A00 }
+    - { start: auto, type: .bss, name: sys/framebuffer }
 
   - [0x1AC870, bin, relocData]
 

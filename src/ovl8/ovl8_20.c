@@ -10,6 +10,7 @@ extern s32 D_ovl8_8038C488;
 // 0x80382710
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_20/func_ovl8_80382710.s")
 
+// 0x803827A8
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_20/func_ovl8_803827A8.s")
 // void* func_ovl8_803827A8(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2)
 // {

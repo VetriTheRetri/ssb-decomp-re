@@ -7,7 +7,7 @@
 // // // // // // // // // // // //
 
 extern intptr_t lITBombHeiItemAttributes;       // 0x00000424
-extern intptr_t lITBombHeiAttackEvents;            // 0x0000046C
+extern intptr_t lITBombHeiAttackEvents;         // 0x0000046C
 extern intptr_t lITBombHeiDataStart;            // 0x000033F8
 extern intptr_t lITBombHeiWalkRightDisplayList; // 0x00003310
 extern intptr_t lITBombHeiWalkLeftDisplayList;  // 0x000034C0         
@@ -199,7 +199,7 @@ void itBombHeiCommonSetExplode(GObj *item_gobj, u8 unused_arg)
 
     itBombHeiCommonSetHitStatusNone(item_gobj);
 
-    pc = efManagerSparkleWhiteMultiExplodeMakeEffect(&dobj->translate.vec.f); // WARNING: Actually some sprite struct
+    pc = efManagerSparkleWhiteMultiExplodeMakeEffect(&dobj->translate.vec.f);
 
     if (pc != NULL)
     {

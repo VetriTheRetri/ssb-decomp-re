@@ -1353,7 +1353,7 @@ void mvOpeningRoomFuncStart(void)
 	mvOpeningRoomMakeBossShadow();
 	scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 	func_800266A0_272A0();
-	syAudioPlaySong(0, nSYAudioBGMOpening);
+	syAudioPlayBGM(0, nSYAudioBGMOpening);
 	sySchedulerSetTicCount(0);
 
 	gSCManagerUnkown0x800A50F0 = 0;

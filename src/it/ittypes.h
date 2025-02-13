@@ -201,7 +201,7 @@ struct ITStruct 					// Common items, stage hazards, fighter items and Pokémon
 	u8 team;				 		// Item's team
 	u8 player;				 		// Item's port index
 	u8 handicap;			 		// Item's handicap
-	s32 player_number;		 		// Item's player number
+	s32 player_num;		 		// Item's player number
 	s32 percent_damage;		 		// Item's damage
 	u32 hitlag_tics;		 		// Item's hitlag
 	s32 lr;					 		// Item's facing direction
@@ -241,7 +241,7 @@ struct ITStruct 					// Common items, stage hazards, fighter items and Pokémon
 	GObj *damage_gobj;		  		// GObj that last dealt damage to this item?
 	u8 damage_team;			  		// Team of attacker
 	u8 damage_port;			  		// Controller port of attacker
-	s32 damage_player_number; 		// Player number of attacker
+	s32 damage_player_num; 		// Player number of attacker
 	u8 damage_handicap;		  		// Handicap of attacker
 	s32 damage_display_mode;  		// Display mode of attacker which the item takes on
 	s32 damage_lag;			  		// Used to calculate hitlag?

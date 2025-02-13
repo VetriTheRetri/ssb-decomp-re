@@ -342,7 +342,7 @@ void mnTitleInitVars(void)
 	}
 	else
 	{
-		syAudioStopSongAll();
+		syAudioStopBGMAll();
 		func_800266A0_272A0();
 
 		sMNTitleLayout = nMNTitleLayoutAnimate;
@@ -456,7 +456,7 @@ void mnTitleProceedDemoNext(void)
 	{
 	case nSCKindExplain:
 		gSCManagerSceneData.scene_curr = nSCKindCharacters;
-		syAudioPlaySong(0, nSYAudioBGMExplain);
+		syAudioPlayBGM(0, nSYAudioBGMExplain);
 		break;
 
 	case nSCKindModeSelect:
@@ -528,7 +528,7 @@ void mnTitleProcRun(GObj *gobj)
 				sMNTitleLayout = nMNTitleLayoutAnimate;
 
 				mnTitleTransitionFromFireLogo();
-				syAudioStopSongAll();
+				syAudioStopBGMAll();
 				func_800266A0_272A0();
 				break;
 			}
@@ -1364,7 +1364,7 @@ void mnTitleLogoFireProcDisplay(GObj *gobj)
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
-	LBParticleDrawTextures(gobj);
+	lbParticleDrawTextures(gobj);
 
 	gDPSetTexturePersp(gSYTaskmanDLHeads[0]++, G_TP_PERSP);
 	gDPSetDepthSource(gSYTaskmanDLHeads[0]++, G_ZS_PIXEL);

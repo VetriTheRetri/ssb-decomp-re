@@ -335,7 +335,7 @@ s32 ftCommonDamageGetDamageLevel(f32 hitstun)
 // 0x80140B00
 void ftCommonDamageSetPublic(FTStruct *this_fp, f32 knockback, f32 angle)
 {
-    GObj *attacker_gobj = ftParamGetPlayerNumGObj(this_fp->damage_player_number);
+    GObj *attacker_gobj = ftParamGetPlayerNumGObj(this_fp->damage_player_num);
     sb32 is_force_curr_knockback;
 
     this_fp->status_vars.common.damage.public_knockback = knockback;
@@ -472,7 +472,7 @@ sb32 ftCommonDamageCheckCaptureKeepHold(FTStruct *fp)
 
 // 0x80140EE4
 void ftCommonDamageInitDamageVars(GObj *this_gobj, s32 status_id_replace, s32 damage, f32 knockback, s32 angle_start, s32 damage_lr,
-s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is_force_damage_sfx, sb32 is_allow_losecopy)
+s32 damage_index, s32 element, s32 damage_player_num, sb32 is_rumble, sb32 is_force_damage_sfx, sb32 is_allow_losecopy)
 {
     FTStruct *this_fp = ftGetStruct(this_gobj);
     GObj *attacker_gobj;
@@ -585,7 +585,7 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
 
         status_id_set = (damage_level == 3) ? nFTCommonStatusDamageE2 : nFTCommonStatusDamageE1;
     }
-    this_fp->damage_player_number = damage_player_number;
+    this_fp->damage_player_num = damage_player_num;
 
     ftCommonDamageSetPublic(this_fp, knockback, angle_end);
 
@@ -649,7 +649,7 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
     }
     this_fp->status_vars.common.damage.coll_mask_curr = 0;
 
-    attacker_gobj = ftParamGetPlayerNumGObj(damage_player_number);
+    attacker_gobj = ftParamGetPlayerNumGObj(damage_player_num);
 
     if (attacker_gobj != NULL)
     {
@@ -673,7 +673,7 @@ void ftCommonDamageGotoDamageStatus(GObj *fighter_gobj)
     {
         ftCommonFuraSleepSetStatus(fighter_gobj);
     }
-    else ftCommonDamageInitDamageVars(fighter_gobj, -1, fp->damage_queue, fp->damage_knockback, fp->damage_angle, fp->damage_lr, fp->damage_index, fp->damage_element, fp->damage_player_number, FALSE, FALSE, TRUE);
+    else ftCommonDamageInitDamageVars(fighter_gobj, -1, fp->damage_queue, fp->damage_knockback, fp->damage_angle, fp->damage_lr, fp->damage_index, fp->damage_element, fp->damage_player_num, FALSE, FALSE, TRUE);
 }
 
 // 0x801415F8

@@ -5,7 +5,7 @@
 #include <sys/video.h>
 #include <sys/controller.h>
 
-extern void syAudioStopSongAll();
+extern void syAudioStopBGMAll();
 extern void* func_800269C0_275C0(u16);
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
@@ -661,7 +661,7 @@ void mnDataProcRun(GObj *gobj)
             case nMNDataOptionCharacters:
                 func_800269C0_275C0(nSYAudioFGMMenuSelect);
                 mnDataSetOptionSpriteColors(*option_gobjs[sMNDataOption], nMNOptionTabStatusSelected);
-                syAudioStopSongAll();
+                syAudioStopBGMAll();
 
                 gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
                 gSCManagerSceneData.scene_curr = nSCKindCharacters;
@@ -671,7 +671,7 @@ void mnDataProcRun(GObj *gobj)
             case nMNDataOptionVSRecord:
                 func_800269C0_275C0(nSYAudioFGMMenuSelect);
                 mnDataSetOptionSpriteColors(*option_gobjs[sMNDataOption], nMNOptionTabStatusSelected);
-                syAudioStopSongAll();
+                syAudioStopBGMAll();
 
                 gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
                 gSCManagerSceneData.scene_curr = nSCKindVSRecord;
@@ -681,7 +681,7 @@ void mnDataProcRun(GObj *gobj)
             case nMNDataOptionSoundTest:
                 func_800269C0_275C0(nSYAudioFGMMenuSelect);
                 mnDataSetOptionSpriteColors(*option_gobjs[sMNDataOption], nMNOptionTabStatusSelected);
-                syAudioStopSongAll();
+                syAudioStopBGMAll();
 
                 gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
                 gSCManagerSceneData.scene_curr = nSCKindSoundTest;
@@ -799,7 +799,7 @@ void mnDataFuncStart(void)
         (gSCManagerSceneData.scene_prev == nSCKindSoundTest)
     )
     {
-        syAudioPlaySong(0, nSYAudioBGMModeSelect);
+        syAudioPlayBGM(0, nSYAudioBGMModeSelect);
     }
 }
 

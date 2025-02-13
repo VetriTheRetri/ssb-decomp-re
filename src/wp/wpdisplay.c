@@ -197,7 +197,7 @@ void wpDisplayDObjTreeDLLinks(GObj *weapon_gobj)
 void wpDisplayPKThunderProcDisplay(GObj *weapon_gobj)
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
-    s32 index = wp->weapon_vars.pkthunder_trail.trail_index;
+    s32 index = wp->weapon_vars.pkthunder_trail.trail_id;
 
     if (wp->display_mode == nDBDisplayModeMapCollision)
     {

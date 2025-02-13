@@ -881,9 +881,9 @@ void lbCommonAddDObjAnimAll(DObj *root_dobj, AObjEvent32 **anim_joints, AObjEven
 }
 
 // 0x800C89BC
-void lbCommonInitDObjTriTransform(DObj *dobj, u8 tk1, u8 tk2, u8 tk3)
+void lbCommonInitDObj3Transforms(DObj *dobj, u8 tk1, u8 tk2, u8 tk3)
 {
-    gcAddDObjTriTransformKind(dobj, tk1, tk2, tk3);
+    gcAddDObj3TransformsKind(dobj, tk1, tk2, tk3);
     
     dobj->translate.vec = dGCTranslateDefault.vec;
     dobj->rotate.vec = dGCRotateDefaultRpy.vec;
@@ -935,9 +935,9 @@ void lbCommonSetupTreeDObjs(DObj *root_dobj, DObjDesc *dobjdesc, DObj **dobjs, u
         
         if (dobjdesc->id & 0xF000) 
         {
-            gcDecideDObjTriTransformKind(current_dobj, tk1, tk2, tk3, dobjdesc->id & 0xF000);
+            gcDecideDObj3TransformsKind(current_dobj, tk1, tk2, tk3, dobjdesc->id & 0xF000);
         } 
-        else gcAddDObjTriTransformKind(current_dobj, tk1, tk2, tk3);
+        else gcAddDObj3TransformsKind(current_dobj, tk1, tk2, tk3);
         
         current_dobj->translate.vec.f = dobjdesc->translate;
         current_dobj->rotate.vec.f = dobjdesc->rotate;
@@ -1066,7 +1066,7 @@ void lbCommonSetupFighterPartsDObjs
             );
             if (dobjdesc->id & 0x8000)
             {
-                gcDecideDObjTriTransformKind(current_dobj, tk1, tk2, tk3, 0x8000);
+                gcDecideDObj3TransformsKind(current_dobj, tk1, tk2, tk3, 0x8000);
             }
             else lbCommonInitDObj(current_dobj, tk1, tk2, tk3, arg9);
 
@@ -1133,9 +1133,9 @@ void lbCommonSetupCustomTreeDObjsWithMObj
         
         if (dobjdesc->id & 0x8000) 
         {
-            gcDecideDObjTriTransformKind(dobj, tk1, tk2, tk3, 0x8000);
+            gcDecideDObj3TransformsKind(dobj, tk1, tk2, tk3, 0x8000);
         } 
-        else gcAddDObjTriTransformKind(dobj, tk1, tk2, tk3);
+        else gcAddDObj3TransformsKind(dobj, tk1, tk2, tk3);
         
         dobj->translate.vec.f = dobjdesc->translate;
         dobj->rotate.vec.f = dobjdesc->rotate;

@@ -201,7 +201,7 @@ void itMainResetPlayerVars(GObj *item_gobj)
     ip->team = ITEM_TEAM_DEFAULT;
     ip->player = ITEM_PORT_DEFAULT;
     ip->handicap = ITEM_HANDICAP_DEFAULT;
-    ip->player_number = 0;
+    ip->player_num = 0;
     ip->attack_coll.throw_mul = ITEM_THROW_DEFAULT;
 
     ip->display_mode = gITManagerDisplayMode;
@@ -258,7 +258,7 @@ void itMainCopyDamageStats(GObj *item_gobj)
     ip->owner_gobj = ip->damage_gobj;
     ip->team = ip->damage_team;
     ip->player = ip->damage_port;
-    ip->player_number = ip->player_number; // Could potentially cause a bug? Didn't they mean damage_player_number?
+    ip->player_num = ip->player_num; // Could potentially cause a bug? Didn't they mean damage_player_num?
     ip->handicap = ip->damage_handicap;
     ip->display_mode = ip->damage_display_mode;
 }
@@ -427,7 +427,7 @@ void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
     ip->team = fp->team;
     ip->player = fp->player;
     ip->handicap = fp->handicap;
-    ip->player_number = fp->player_number;
+    ip->player_num = fp->player_num;
 
     ip->physics.vel_air.x = 0.0F;
     ip->physics.vel_air.y = 0.0F;
@@ -674,7 +674,7 @@ GObj* itMainMakeMonster(GObj *item_gobj)
         mp->team = ip->team;
         mp->player = ip->player;
         mp->handicap = ip->handicap;
-        mp->player_number = ip->player_number;
+        mp->player_num = ip->player_num;
         mp->display_mode = ip->display_mode;
 
         if (gSCManagerBattleState->game_type == nSCBattleGameType1PGame)

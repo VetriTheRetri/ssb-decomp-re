@@ -4,7 +4,7 @@
 #include <PR/os.h>
 #include <PR/ultratypes.h>
 
-extern OSMesgQueue sSYMainThreadingQueue;
+extern OSMesgQueue gSYMainThreadingQueue;
 extern u64 gSYMainRspBootCode[0x20];
 extern OSThread gSYMainThread5;
 

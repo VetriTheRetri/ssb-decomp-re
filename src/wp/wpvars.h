@@ -42,31 +42,23 @@
 #define WPPIKACHUJOLT_COLL_CEIL 2		   // ID of Thunder Jolt collision type
 #define WPPIKACHUJOLT_COLL_LWALL 3		   // ID of Thunder Jolt collision type
 
-#define WPPIKACHUTHUNDER_TEXTURE_COUNT 4   // Number of textures Thunder contains
+#define WPPIKACHUTHUNDER_TEXTURES_NUM 4    // Number of textures Thunder contains
 #define WPPIKACHUTHUNDER_SPAWN_LIFETIME 40 // Duration of inital Thunder projectile?
 #define WPPIKACHUTHUNDER_TRAIL_LIFETIME 10 // Duration of subsequent Thunder segments?
-#define WPPIKACHUTHUNDER_EXPIRE                                                                                        \
-	6 // Thunder can no longer damage opponents once its lifetime has dipped
-	  // below this number
+#define WPPIKACHUTHUNDER_EXPIRE 6 // Thunder can no longer damage opponents once its lifetime has dipped below this number
 
 #define WPPKFIRE_LIFETIME 20
 #define WPPKFIRE_POS_MUL 160.0F
 
 #define WPPKTHUNDER_LIFETIME 160
-#define WPPKTHUNDER_SPAWN_TRAIL_FRAME                                                                                  \
-	(WPPKTHUNDER_LIFETIME - 2)				// Subtracted from PK Thunder's maximum lifetime
-											// to determine when to begin spawning trails
+#define WPPKTHUNDER_SPAWN_TRAIL_FRAME (WPPKTHUNDER_LIFETIME - 2) // Subtracted from PK Thunder's maximum lifetime to determine when to begin spawning trails
 #define WPPKTHUNDER_TURN_STICK_THRESHOLD 45 // Minimum stick range required to steer PK Thunder
-#define WPPKTHUNDER_ANGLE_STEP                                                                                         \
-	0.10471976F // If there is a difference between PK Thunder and the control
-				// stick's current angle, step this amount
-#define WPPKTHUNDER_ANGLE_DIV                                                                                          \
-	7.5F // Divide angle difference then add to current PK Thunder angle if
-		 // less than quarter pi
+#define WPPKTHUNDER_ANGLE_STEP 0.10471976F // If there is a difference between PK Thunder and the control stick's current angle, step this amount
+#define WPPKTHUNDER_ANGLE_DIV 7.5F // Divide angle difference then add to current PK Thunder angle if less than 45 degrees
 #define WPPKTHUNDER_VEL 60.0F
 #define WPPKTHUNDER_REFLECT_POS_Y_ADD 250.0F // Added to Y position when PK Thunder is reflected
 #define WPPKTHUNDER_PARTS_COUNT 5
-#define WPPKTHUNDER_TEXTURE_COUNT 4
+#define WPPKTHUNDER_TEXTURES_NUM 4
 
 #define WPFINALCUTTER_LIFETIME 20
 #define WPFINALCUTTER_VEL 100.0F
@@ -214,7 +206,7 @@ typedef struct _wpNessWeaponVarsPKThunder
 typedef struct _wpNessWeaponVarsPKThunderTrail
 {
 	s32 status;
-	s32 trail_index;  // Also key of RGB struct to use to set color of PK
+	s32 trail_id;  // Also key of RGB struct to use to set color of PK
 					  // Thunder trails?
 	GObj* parent_gobj; // Original owner?
 	GObj* head_gobj;

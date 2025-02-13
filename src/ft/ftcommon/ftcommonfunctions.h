@@ -199,7 +199,7 @@ sb32 ftCommonDamageCheckCatchResist(FTStruct* fp);
 void ftCommonDamageUpdateCatchResist(GObj* fighter_gobj);
 sb32 ftCommonDamageCheckCaptureKeepHold(FTStruct* fp);
 void ftCommonDamageInitDamageVars(GObj* this_gobj, s32 status_id_replace, s32 damage, f32 knockback, s32 angle_start,
-									s32 damage_lr, s32 damage_index, s32 element, s32 damage_player_number, s32 arg9,
+									s32 damage_lr, s32 damage_index, s32 element, s32 damage_player_num, s32 arg9,
 									sb32 unk_bool, sb32 is_public);
 void ftCommonDamageGotoDamageStatus(GObj* fighter_gobj);
 void ftCommonDamageUpdateDamageColAnim(GObj* fighter_gobj, f32 knockback, s32 element);

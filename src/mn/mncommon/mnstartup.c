@@ -270,7 +270,7 @@ void mnStartupFuncLights(Gfx **dls)
 // 0x80131EF0
 void mnStartupStartScene(void)
 {
-	syAudioStopSongAll();
+	syAudioStopBGMAll();
 	
 	dMNStartupVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
 	syVideoInit(&dMNStartupVideoSetup);

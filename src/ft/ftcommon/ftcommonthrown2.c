@@ -162,7 +162,7 @@ void ftCommonThrownReleaseThrownUpdateStats(GObj *fighter_gobj, s32 lr, s32 scri
     {
         this_fp->proc_status = ftCommonThrownProcStatus;
     }
-    ftCommonDamageInitDamageVars(fighter_gobj, ft_throw->status_id, damage, knockback_final, ft_throw->angle, lr, 1, ft_throw->element, capture_fp->player_number, TRUE, TRUE, TRUE);
+    ftCommonDamageInitDamageVars(fighter_gobj, ft_throw->status_id, damage, knockback_final, ft_throw->angle, lr, 1, ft_throw->element, capture_fp->player_num, TRUE, TRUE, TRUE);
     ftParamUpdate1PGameDamageStats(this_fp, capture_fp->player, nFTHitLogObjectFighter, capture_fp->fkind, capture_fp->stat_flags.halfword, capture_fp->stat_count);
 
     if (damage != 0)
@@ -245,7 +245,7 @@ void ftCommonThrownSetStatusDamageRelease(GObj *fighter_gobj)
     {
         damage = 0;
     }
-    ftCommonDamageInitDamageVars(fighter_gobj, ft_throw->status_id, damage, knockback_final, ft_throw->angle, lr, 1, nGMHitElementNormal, capture_fp->player_number, FALSE, FALSE, TRUE);
+    ftCommonDamageInitDamageVars(fighter_gobj, ft_throw->status_id, damage, knockback_final, ft_throw->angle, lr, 1, nGMHitElementNormal, capture_fp->player_num, FALSE, FALSE, TRUE);
     ftParamUpdate1PGameDamageStats(this_fp, capture_fp->player, nFTHitLogObjectFighter, capture_fp->fkind, capture_fp->stat_flags.halfword, capture_fp->stat_count);
 
     if (damage != 0)

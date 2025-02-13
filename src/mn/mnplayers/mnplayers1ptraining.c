@@ -2048,7 +2048,7 @@ void mnPlayers1PTrainingBackTo1PMode(void)
 	gSCManagerSceneData.scene_curr = nSCKind1PMode;
 
 	mnPlayers1PTrainingSetSceneData();
-	syAudioStopSongAll();
+	syAudioStopBGMAll();
 	func_800266A0_272A0();
 	syTaskmanSetLoadScene();
 }
@@ -3179,7 +3179,7 @@ void mnPlayers1PTrainingFuncStart(void)
 
 	if (gSCManagerSceneData.scene_prev != nSCKindMaps)
 	{
-		syAudioPlaySong(0, nSYAudioBGMBattleSelect);
+		syAudioPlayBGM(0, nSYAudioBGMBattleSelect);
 	}
 	func_800266A0_272A0();
 	func_800269C0_275C0(nSYAudioVoiceAnnounceTrainingMode);

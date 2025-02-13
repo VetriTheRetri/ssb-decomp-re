@@ -269,7 +269,7 @@ GObj* itNessPKFireMakeItem(GObj *weapon_gobj, Vec3f *pos, Vec3f *vel)
     ip->team = wp->team;
     ip->player = wp->player;
     ip->handicap = wp->handicap;
-    ip->player_number = wp->player_number;
+    ip->player_num = wp->player_num;
 
     ip->attack_coll.can_rehit_shield = TRUE;
 

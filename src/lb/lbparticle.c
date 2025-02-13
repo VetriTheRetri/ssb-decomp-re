@@ -1450,7 +1450,7 @@ void lbParticleStructProcRun(GObj *gobj)
  */
 
 // 0x800D0D34
-void LBParticleDrawTextures(GObj *gobj)
+void lbParticleDrawTextures(GObj *gobj)
 {
     LBParticle *pc;
     void *prev_image, *prev_palette;
@@ -2104,7 +2104,6 @@ void LBParticleDrawTextures(GObj *gobj)
                                 prev_ac = ac;
                             }
                             gDPSetPrimDepth(gSYTaskmanDLHeads[0]++, (s32) (tz * 32.0F), 0);
-                
                             gSPScisTextureRectangle(gSYTaskmanDLHeads[0]++, xl, yl, xh, yh, G_TX_RENDERTILE, s, t, dsdx, dtdy);
                         }
                     }
@@ -2118,7 +2117,7 @@ void LBParticleDrawTextures(GObj *gobj)
     }
 }
 #else
-#pragma GLOBAL_ASM("asm/nonmatchings/lb/lbparticle/LBParticleDrawTextures.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/lb/lbparticle/lbParticleDrawTextures.s")
 #endif
 
 // 0x800D2720

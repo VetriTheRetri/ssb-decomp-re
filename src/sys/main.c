@@ -99,7 +99,7 @@ u64 gSYMainRspBootCode[0x20]; // IP3 font?
 sb8 gSYMainImemOK;
 sb8 gSYMainDmemOK;
 OSMesg sSYMainBlockMesg[1];
-OSMesgQueue sSYMainThreadingQueue;
+OSMesgQueue gSYMainThreadingQueue;
 OSMesg sSYMainPiCmdMesg[50];
 OSMesgQueue sSYMainPiCmdQueue;
 u8 sSYMainThreadArgBuf[0x80];
@@ -182,19 +182,19 @@ void syMainThread5(void *arg)
     syDmaReadRom(PHYSICAL_TO_ROM(0xB70), gSYMainRspBootCode, sizeof(gSYMainRspBootCode));
     syMainSetImemStatus();
     syMainSetDmemStatus();
-    osCreateMesgQueue(&sSYMainThreadingQueue, sSYMainBlockMesg, ARRAY_COUNT(sSYMainBlockMesg));
+    osCreateMesgQueue(&gSYMainThreadingQueue, sSYMainBlockMesg, ARRAY_COUNT(sSYMainBlockMesg));
 
     osCreateThread(&sSYMainThread3, 3, scheduler_scheduler, NULL, sSYMainThread3Stack + ARRAY_COUNT(sSYMainThread3Stack), THREAD3_PRI);
     sSYMainThread3Stack[0] = STACK_PROBE_MAGIC; osStartThread(&sSYMainThread3);
-    osRecvMesg(&sSYMainThreadingQueue, NULL, OS_MESG_BLOCK);
+    osRecvMesg(&gSYMainThreadingQueue, NULL, OS_MESG_BLOCK);
 
     osCreateThread(&sSYMainThread4, 4, auThreadMain, NULL, sSYMainThread4Stack + ARRAY_COUNT(sSYMainThread4Stack), THREAD4_PRI);
     sSYMainThread4Stack[0] = STACK_PROBE_MAGIC; osStartThread(&sSYMainThread4);
-    osRecvMesg(&sSYMainThreadingQueue, NULL, OS_MESG_BLOCK);
+    osRecvMesg(&gSYMainThreadingQueue, NULL, OS_MESG_BLOCK);
 
     osCreateThread(&gSYMainThread6, 6, syControllerThreadMain, NULL, sSYMainThread6Stack + ARRAY_COUNT(sSYMainThread6Stack), THREAD6_PRI);
     sSYMainThread6Stack[0] = STACK_PROBE_MAGIC; osStartThread(&gSYMainThread6);
-    osRecvMesg(&sSYMainThreadingQueue, NULL, OS_MESG_BLOCK);
+    osRecvMesg(&gSYMainThreadingQueue, NULL, OS_MESG_BLOCK);
 
     func_80006B80();
     syDmaLoadOverlay(&dSYMainSceneManagerOverlay);

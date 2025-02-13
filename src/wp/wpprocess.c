@@ -64,7 +64,6 @@ void wpProcessUpdateHitPositions(GObj *weapon_gobj) // Update hitbox(es?)
 
         case nGMAttackStateInterpolate:
             positions->pos_prev = positions->pos_curr;
-
             positions->pos_curr = *offset;
 
             if ((offset->x == 0.0F) && (offset->y == 0.0F) && (offset->z == 0.0F))
@@ -148,7 +147,13 @@ void wpProcessProcWeaponMain(GObj *weapon_gobj) // Run item logic pass 1 (animat
         wp->coll_data.pos_correct.y = translate->y - wp->coll_data.pos_curr.y;
         wp->coll_data.pos_correct.z = translate->z - wp->coll_data.pos_curr.z;
 
-        if ((wp->ga == nMPKineticsGround) && (wp->coll_data.ground_line_id != -1) && (wp->coll_data.ground_line_id != -2) && (mpCollisionCheckExistLineID(wp->coll_data.ground_line_id) != FALSE))
+        if
+        (
+            (wp->ga == nMPKineticsGround) &&
+            (wp->coll_data.ground_line_id != -1) &&
+            (wp->coll_data.ground_line_id != -2) &&
+            (mpCollisionCheckExistLineID(wp->coll_data.ground_line_id) != FALSE)
+        )
         {
             mpCollisionGetSpeedLineID(wp->coll_data.ground_line_id, &wp->coll_data.pos_speed);
 
@@ -160,11 +165,11 @@ void wpProcessProcWeaponMain(GObj *weapon_gobj) // Run item logic pass 1 (animat
 
         if 
         (
-            (translate->y < gMPCollisionGroundData->map_bound_bottom)  || 
-            (translate->x > gMPCollisionGroundData->map_bound_right)   || 
-            (translate->x < gMPCollisionGroundData->map_bound_left)    || 
-            (translate->y > gMPCollisionGroundData->map_bound_top)     || 
-            (translate->z < -20000.0F)                      ||
+            (translate->y < gMPCollisionGroundData->map_bound_bottom) ||
+            (translate->x > gMPCollisionGroundData->map_bound_right)  ||
+            (translate->x < gMPCollisionGroundData->map_bound_left)   ||
+            (translate->y > gMPCollisionGroundData->map_bound_top)    ||
+            (translate->z < -20000.0F)                                ||
             (translate->z > 20000.0F)
         )
         {
@@ -194,7 +199,7 @@ void wpProcessProcWeaponMain(GObj *weapon_gobj) // Run item logic pass 1 (animat
 }
 
 // 0x80166594
-void wpProcessSetHitInteractStats(WPAttackColl *attack_coll, GObj *victim_gobj, s32 attack_type, u32 group_id)
+void wpProcessSetHitInteractStats(WPAttackColl *attack_coll, GObj *victim_gobj, s32 attack_type, u32 attack_group_id)
 {
     s32 i;
 
@@ -227,7 +232,7 @@ void wpProcessSetHitInteractStats(WPAttackColl *attack_coll, GObj *victim_gobj, 
                 break;
 
             case nGMHitTypeAttack:
-                attack_coll->attack_records[i].victim_flags.group_id = group_id;
+                attack_coll->attack_records[i].victim_flags.group_id = attack_group_id;
                 break;
 
             case nGMHitTypeDamageRehit:
@@ -245,11 +250,15 @@ void wpProcessSetHitInteractStats(WPAttackColl *attack_coll, GObj *victim_gobj, 
     {
         for (i = 0; i < ARRAY_COUNT(attack_coll->attack_records); i++) // Reset hit count and increment until there is an empty slot
         {
-            if (attack_coll->attack_records[i].victim_gobj == NULL) break;
+            if (attack_coll->attack_records[i].victim_gobj == NULL)
+            {
+                break;
+            }
         }
-
-        if (i == ARRAY_COUNT(attack_coll->attack_records)) i = 0; // Reset hit count again if all victim slots are full
-
+        if (i == ARRAY_COUNT(attack_coll->attack_records))
+        {
+            i = 0; // Reset hit count again if all victim slots are full
+        }
         attack_coll->attack_records[i].victim_gobj = victim_gobj; // Store victim's pointer to slot
 
         switch (attack_type)
@@ -277,7 +286,7 @@ void wpProcessSetHitInteractStats(WPAttackColl *attack_coll, GObj *victim_gobj, 
             break;
 
         case nGMHitTypeAttack:
-            attack_coll->attack_records[i].victim_flags.group_id = group_id;
+            attack_coll->attack_records[i].victim_flags.group_id = attack_group_id;
             break;
 
         case nGMHitTypeDamageRehit:
@@ -292,59 +301,69 @@ void wpProcessSetHitInteractStats(WPAttackColl *attack_coll, GObj *victim_gobj, 
 }
 
 // 0x8016679C
-void wpProcessUpdateHitInteractStatsGroupID(WPStruct *this_wp, WPAttackColl *attack_coll, GObj *target_gobj, s32 attack_type, u32 interact_mask)
+void wpProcessUpdateHitInteractStats(WPStruct *this_wp, WPAttackColl *attack_coll, GObj *victim_gobj, s32 attack_type, u32 attack_group_id)
 {
     if (this_wp->group_id != 0)
     {
-        GObj *victim_gobj = gGCCommonLinks[nGCCommonLinkIDWeapon];
+        GObj *other_gobj = gGCCommonLinks[nGCCommonLinkIDWeapon];
 
-        while (victim_gobj != NULL)
+        while (other_gobj != NULL)
         {
-            WPStruct *victim_wp = wpGetStruct(victim_gobj);
+            WPStruct *other_wp = wpGetStruct(other_gobj);
 
-            if (victim_wp->group_id == this_wp->group_id)
+            if (other_wp->group_id == this_wp->group_id)
             {
-                wpProcessSetHitInteractStats(&victim_wp->attack_coll, target_gobj, attack_type, interact_mask);
+                wpProcessSetHitInteractStats(&other_wp->attack_coll, victim_gobj, attack_type, attack_group_id);
             }
-            victim_gobj = victim_gobj->link_next;
+            other_gobj = other_gobj->link_next;
         }
     }
-    else wpProcessSetHitInteractStats(attack_coll, target_gobj, attack_type, interact_mask);
+    else wpProcessSetHitInteractStats(attack_coll, victim_gobj, attack_type, attack_group_id);
 }
 
 // 0x80166854
-void wpProcessUpdateAttackStatWeapon(WPStruct *this_wp, WPAttackColl *this_hit, s32 this_attack_id, WPStruct *victim_wp, WPAttackColl *victim_hit, s32 victim_attack_id, GObj *this_gobj, GObj *victim_gobj)
+void wpProcessUpdateAttackStatWeapon
+(
+    WPStruct *this_wp,
+    WPAttackColl *this_attack_coll,
+    s32 this_attack_id,
+    WPStruct *victim_wp,
+    WPAttackColl *victim_attack_coll,
+    s32 victim_attack_id,
+    GObj *this_gobj,
+    GObj *victim_gobj
+)
 {
-    s32 this_hit_damage = wpMainGetStaledDamage(this_wp);
-    s32 victim_hit_damage = wpMainGetStaledDamage(victim_wp);
+    s32 this_attack_coll_damage = wpMainGetStaledDamage(this_wp);
+    s32 victim_attack_coll_damage = wpMainGetStaledDamage(victim_wp);
     Vec3f pos;
     s32 priority_high;
 
-    gmCollisionGetWeaponAttacksPosition(&pos, victim_hit, victim_attack_id, this_hit, this_attack_id);
+    gmCollisionGetWeaponAttacksPosition(&pos, victim_attack_coll, victim_attack_id, this_attack_coll, this_attack_id);
 
-    priority_high = this_hit->priority;
+    priority_high = this_attack_coll->priority;
 
-    if (victim_hit->priority <= priority_high)
+    if (victim_attack_coll->priority <= priority_high)
     {
-        wpProcessUpdateHitInteractStatsGroupID(victim_wp, victim_hit, this_gobj, nGMHitTypeAttack, 0);
+        wpProcessUpdateHitInteractStats(victim_wp, victim_attack_coll, this_gobj, nGMHitTypeAttack, 0);
 
-        if (victim_wp->hit_attack_damage < victim_hit_damage)
+        if (victim_wp->hit_attack_damage < victim_attack_coll_damage)
         {
-            victim_wp->hit_attack_damage = victim_hit_damage;
+            victim_wp->hit_attack_damage = victim_attack_coll_damage;
         }
-        efManagerSetOffMakeEffect(&pos, victim_hit_damage);
+        efManagerSetOffMakeEffect(&pos, victim_attack_coll_damage);
     }
-    priority_high = victim_hit->priority;
+    priority_high = victim_attack_coll->priority;
 
-    if (this_hit->priority <= priority_high)
+    if (this_attack_coll->priority <= priority_high)
     {
-        wpProcessUpdateHitInteractStatsGroupID(this_wp, this_hit, victim_gobj, nGMHitTypeAttack, 0);
+        wpProcessUpdateHitInteractStats(this_wp, this_attack_coll, victim_gobj, nGMHitTypeAttack, 0);
 
-        if (this_wp->hit_attack_damage < this_hit_damage)
+        if (this_wp->hit_attack_damage < this_attack_coll_damage)
         {
-            this_wp->hit_attack_damage = this_hit_damage;
+            this_wp->hit_attack_damage = this_attack_coll_damage;
         }
-        efManagerSetOffMakeEffect(&pos, this_hit_damage);
+        efManagerSetOffMakeEffect(&pos, this_attack_coll_damage);
     }
 }
 
@@ -353,15 +372,15 @@ void wpProcessProcSearchHitWeapon(GObj *this_gobj) // Scan for hitbox collision 
 {
     GObj *other_gobj;
     WPStruct *this_wp, *other_wp;
-    WPAttackColl *other_hit, *this_hit;
+    WPAttackColl *other_hit, *this_attack_coll;
     GMHitFlags these_flags, those_flags;
     s32 m, n, i, j;
     sb32 is_check_self;
 
     this_wp = wpGetStruct(this_gobj);
-    this_hit = &this_wp->attack_coll;
+    this_attack_coll = &this_wp->attack_coll;
 
-    if ((this_hit->can_setoff) && (this_hit->attack_state != nGMAttackStateOff) && (this_hit->interact_mask & GMHITCOLLISION_FLAG_WEAPON))
+    if ((this_attack_coll->can_setoff) && (this_attack_coll->attack_state != nGMAttackStateOff) && (this_attack_coll->interact_mask & GMHITCOLLISION_FLAG_WEAPON))
     {
         other_gobj = gGCCommonLinks[nGCCommonLinkIDWeapon];
 
@@ -405,11 +424,11 @@ void wpProcessProcSearchHitWeapon(GObj *this_gobj) // Scan for hitbox collision 
                         {
                             these_flags.group_id = 7;
 
-                            for (n = 0; n < ARRAY_COUNT(this_hit->attack_records); n++)
+                            for (n = 0; n < ARRAY_COUNT(this_attack_coll->attack_records); n++)
                             {
-                                if (other_gobj == this_hit->attack_records[n].victim_gobj)
+                                if (other_gobj == this_attack_coll->attack_records[n].victim_gobj)
                                 {
-                                    these_flags = this_hit->attack_records[n].victim_flags;
+                                    these_flags = this_attack_coll->attack_records[n].victim_flags;
 
                                     break;
                                 }
@@ -418,11 +437,11 @@ void wpProcessProcSearchHitWeapon(GObj *this_gobj) // Scan for hitbox collision 
                             {
                                 for (i = 0; i < other_hit->attack_count; i++)
                                 {
-                                    for (j = 0; j < this_hit->attack_count; j++)
+                                    for (j = 0; j < this_attack_coll->attack_count; j++)
                                     {
-                                        if (gmCollisionCheckWeaponAttacksCollide(other_hit, i, this_hit, j) != FALSE)
+                                        if (gmCollisionCheckWeaponAttacksCollide(other_hit, i, this_attack_coll, j) != FALSE)
                                         {
-                                            wpProcessUpdateAttackStatWeapon(other_wp, other_hit, i, this_wp, this_hit, j, other_gobj, this_gobj);
+                                            wpProcessUpdateAttackStatWeapon(other_wp, other_hit, i, this_wp, this_attack_coll, j, other_gobj, this_gobj);
 
                                             goto next_gobj;
                                         }
@@ -510,7 +529,7 @@ next_check:
         wp->team = fp->team;
         wp->player = fp->player;
         wp->display_mode = fp->display_mode;
-        wp->player_number = fp->player_number;
+        wp->player_num = fp->player_num;
         wp->handicap = fp->handicap;
         wp->attack_coll.stat_flags = wp->reflect_stat_flags;
         wp->attack_coll.stat_count = wp->reflect_stat_count;

@@ -319,7 +319,7 @@ void itProcessUpdateDamageStatFighter(FTStruct *fp, FTAttackColl *attack_coll, I
             ip->damage_gobj = fighter_gobj;
             ip->damage_team = fp->team;
             ip->damage_port = fp->player;
-            ip->damage_player_number = fp->player_number;
+            ip->damage_player_num = fp->player_num;
             ip->damage_handicap = fp->handicap;
             ip->damage_display_mode = fp->display_mode;
         }
@@ -432,7 +432,7 @@ void itProcessUpdateAttackStatWeapon(WPStruct *wp, WPAttackColl *wp_attack_coll,
 
     if (wp_attack_coll->priority <= highest_priority)
     {
-        wpProcessUpdateHitInteractStatsGroupID(wp, wp_attack_coll, item_gobj, nGMHitTypeAttack, 0);
+        wpProcessUpdateHitInteractStats(wp, wp_attack_coll, item_gobj, nGMHitTypeAttack, 0);
 
         if (wp->hit_attack_damage < wp_attack_coll_damage)
         {
@@ -507,7 +507,7 @@ void itProcessUpdateDamageStatItem(ITStruct *attack_ip, ITAttackColl *attack_col
             defend_ip->damage_gobj          = attack_ip->owner_gobj;
             defend_ip->damage_team          = attack_ip->team;
             defend_ip->damage_port          = attack_ip->player;
-            defend_ip->damage_player_number = attack_ip->player_number;
+            defend_ip->damage_player_num = attack_ip->player_num;
             defend_ip->damage_handicap      = attack_ip->handicap;
             defend_ip->damage_display_mode  = attack_ip->display_mode;
         }
@@ -570,7 +570,7 @@ void itProcessUpdateDamageStatWeapon(WPStruct *wp, WPAttackColl *attack_coll, s3
 
     is_rehit = ((ip->type == nITTypeDamage) && (attack_coll->can_rehit_item)) ? TRUE : FALSE;
 
-    wpProcessUpdateHitInteractStatsGroupID(wp, attack_coll, item_gobj, ((is_rehit != FALSE) ? nGMHitTypeDamageRehit : nGMHitTypeDamage), 0);
+    wpProcessUpdateHitInteractStats(wp, attack_coll, item_gobj, ((is_rehit != FALSE) ? nGMHitTypeDamageRehit : nGMHitTypeDamage), 0);
 
     if (is_rehit != FALSE)
     {
@@ -608,7 +608,7 @@ void itProcessUpdateDamageStatWeapon(WPStruct *wp, WPAttackColl *attack_coll, s3
             ip->damage_gobj          = wp->owner_gobj;
             ip->damage_team          = wp->team;
             ip->damage_port          = wp->player;
-            ip->damage_player_number = wp->player_number;
+            ip->damage_player_num = wp->player_num;
             ip->damage_handicap      = wp->handicap;
             ip->damage_display_mode  = wp->display_mode;
         }
@@ -1090,7 +1090,7 @@ next_check:
 
         ip->team = fp->team;
         ip->player = fp->player;
-        ip->player_number = fp->player_number;
+        ip->player_num = fp->player_num;
         ip->handicap = fp->handicap;
         ip->attack_coll.stat_flags = ip->reflect_stat_flags;
         ip->attack_coll.stat_count = ip->reflect_stat_count;

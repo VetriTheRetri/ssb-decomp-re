@@ -147,7 +147,7 @@ void wpNessPKThunderHeadSetDestroyTrails(GObj *weapon_gobj, sb32 is_destroy)
     {
         fp = ftGetStruct(head_wp->owner_gobj);
 
-        if (fp->player_number == head_wp->player_number)
+        if (fp->player_num == head_wp->player_num)
         {
             fp->passive_vars.ness.is_thunder_destroy |= is_destroy;
         }
@@ -180,21 +180,21 @@ void wpNessPKThunderTrailUpdatePositions(GObj *weapon_gobj)
     WPStruct *wp = wpGetStruct(weapon_gobj);
     FTStruct *fp = ftGetStruct(wp->owner_gobj);
 
-    if (fp->player_number == wp->player_number)
+    if (fp->player_num == wp->player_num)
     {
-        s32 trail_pos_id = fp->passive_vars.ness.pkthunder_trail_id - 1;
+        s32 trail_id = fp->passive_vars.ness.pkthunder_trail_id - 1;
 
-        if (trail_pos_id < 0)
+        if (trail_id < 0)
         {
-            trail_pos_id += FTNESS_PKTHUNDER_TRAIL_POS_COUNT;
+            trail_id += FTNESS_PKTHUNDER_TRAIL_POS_COUNT;
         }
-        fp->passive_vars.ness.pkthunder_trail_x[trail_pos_id] = DObjGetStruct(weapon_gobj)->translate.vec.f.x;
-        fp->passive_vars.ness.pkthunder_trail_y[trail_pos_id] = DObjGetStruct(weapon_gobj)->translate.vec.f.y;
+        fp->passive_vars.ness.pkthunder_trail_x[trail_id] = DObjGetStruct(weapon_gobj)->translate.vec.f.x;
+        fp->passive_vars.ness.pkthunder_trail_y[trail_id] = DObjGetStruct(weapon_gobj)->translate.vec.f.y;
     }
 }
 
 // 0x8016AE64
-void wpNessPKThunderHeadMakeTrail(GObj *weapon_gobj, s32 trail_index)
+void wpNessPKThunderHeadMakeTrail(GObj *weapon_gobj, s32 trail_id)
 {
     DObj *dobj = DObjGetStruct(weapon_gobj);
     Vec3f pos;
@@ -203,7 +203,7 @@ void wpNessPKThunderHeadMakeTrail(GObj *weapon_gobj, s32 trail_index)
     pos.y = DObjGetStruct(weapon_gobj)->translate.vec.f.y;
     pos.z = 0.0F;
 
-    wpNessPKThunderTrailMakeWeapon(weapon_gobj, &pos, trail_index);
+    wpNessPKThunderTrailMakeWeapon(weapon_gobj, &pos, trail_id);
 }
 
 // 0x8016AEA68
@@ -222,7 +222,6 @@ sb32 wpNessPKThunderHeadProcUpdate(GObj *weapon_gobj)
 
         return TRUE;
     }
-
     fp = ftGetStruct(wp->owner_gobj);
 
     if (wp->weapon_vars.pkthunder.status & nWPNessPKThunderStatusCollide)
@@ -232,12 +231,10 @@ sb32 wpNessPKThunderHeadProcUpdate(GObj *weapon_gobj)
 
         return TRUE;
     }
-
     if (wp->lifetime == WPPKTHUNDER_SPAWN_TRAIL_FRAME)
     {
         wpNessPKThunderHeadMakeTrail(weapon_gobj, 0);
     }
-
     if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
         efManagerDustExpandSmallMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
@@ -261,11 +258,13 @@ sb32 wpNessPKThunderHeadProcUpdate(GObj *weapon_gobj)
 
             if (angle_diff >= F_CST_DTOR32(45.0F))
             {
-                wp->weapon_vars.pkthunder.angle = (thunder_angle.z > 0.0F) ? (wp->weapon_vars.pkthunder.angle + WPPKTHUNDER_ANGLE_STEP) : (wp->weapon_vars.pkthunder.angle - WPPKTHUNDER_ANGLE_STEP);
+                wp->weapon_vars.pkthunder.angle =
+                (thunder_angle.z > 0.0F) ? (wp->weapon_vars.pkthunder.angle + WPPKTHUNDER_ANGLE_STEP) : (wp->weapon_vars.pkthunder.angle - WPPKTHUNDER_ANGLE_STEP);
             }
             if (angle_diff < F_CST_DTOR32(45.0F)) 
             {
-                wp->weapon_vars.pkthunder.angle = (thunder_angle.z > 0.0F) ? (wp->weapon_vars.pkthunder.angle + (angle_diff / WPPKTHUNDER_ANGLE_DIV)) : (wp->weapon_vars.pkthunder.angle - (angle_diff / WPPKTHUNDER_ANGLE_DIV));
+                wp->weapon_vars.pkthunder.angle =
+                (thunder_angle.z > 0.0F) ? (wp->weapon_vars.pkthunder.angle + (angle_diff / WPPKTHUNDER_ANGLE_DIV)) : (wp->weapon_vars.pkthunder.angle - (angle_diff / WPPKTHUNDER_ANGLE_DIV));
             }
             wp->physics.vel_air.x = __cosf(wp->weapon_vars.pkthunder.angle) * WPPKTHUNDER_VEL;
             wp->physics.vel_air.y = __sinf(wp->weapon_vars.pkthunder.angle) * WPPKTHUNDER_VEL;
@@ -321,7 +320,7 @@ sb32 wpNessPKThunderHeadProcReflector(GObj *weapon_gobj)
 
     fp = ftGetStruct(wp->weapon_vars.pkthunder.parent_gobj);
 
-    wp->player_number = fp->player_number;
+    wp->player_num = fp->player_num;
 
     wpNessPKThunderHeadSetDestroyTrails(weapon_gobj, TRUE);
 
@@ -374,7 +373,7 @@ GObj* wpNessPKThunderHeadMakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel)
 sb32 wpNessPKThunderTrailProcUpdate(GObj *weapon_gobj)
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
-    s32 index;
+    s32 trail_id;
     FTStruct *fp;
 
     if (wp->weapon_vars.pkthunder_trail.status & nWPNessPKThunderStatusDestroy)
@@ -383,36 +382,44 @@ sb32 wpNessPKThunderTrailProcUpdate(GObj *weapon_gobj)
     }
     fp = ftGetStruct(wp->owner_gobj);
 
-    index = (fp->passive_vars.ness.pkthunder_trail_id - (wp->weapon_vars.pkthunder_trail.trail_index * 2)) - 2;
+    trail_id = (fp->passive_vars.ness.pkthunder_trail_id - (wp->weapon_vars.pkthunder_trail.trail_id * 2)) - 2;
 
-    if (index < 0)
+    if (trail_id < 0)
     {
-        index += FTNESS_PKTHUNDER_TRAIL_POS_COUNT;
+        trail_id += FTNESS_PKTHUNDER_TRAIL_POS_COUNT;
     }
-    DObjGetStruct(weapon_gobj)->translate.vec.f.x = fp->passive_vars.ness.pkthunder_trail_x[index];
-    DObjGetStruct(weapon_gobj)->translate.vec.f.y = fp->passive_vars.ness.pkthunder_trail_y[index];
+    DObjGetStruct(weapon_gobj)->translate.vec.f.x = fp->passive_vars.ness.pkthunder_trail_x[trail_id];
+    DObjGetStruct(weapon_gobj)->translate.vec.f.y = fp->passive_vars.ness.pkthunder_trail_y[trail_id];
 
-    if (index > 0)
+    if (trail_id > 0)
     {
-        DObjGetStruct(weapon_gobj)->rotate.vec.f.z = syUtilsArcTan2((fp->passive_vars.ness.pkthunder_trail_y[index] - fp->passive_vars.ness.pkthunder_trail_y[index - 1]), (fp->passive_vars.ness.pkthunder_trail_x[index] - fp->passive_vars.ness.pkthunder_trail_x[index - 1]));
+        DObjGetStruct(weapon_gobj)->rotate.vec.f.z = syUtilsArcTan2
+        (
+            (fp->passive_vars.ness.pkthunder_trail_y[trail_id] - fp->passive_vars.ness.pkthunder_trail_y[trail_id - 1]),
+            (fp->passive_vars.ness.pkthunder_trail_x[trail_id] - fp->passive_vars.ness.pkthunder_trail_x[trail_id - 1])
+        );
     }
     else
     {
-        DObjGetStruct(weapon_gobj)->rotate.vec.f.z = syUtilsArcTan2((fp->passive_vars.ness.pkthunder_trail_y[index] - fp->passive_vars.ness.pkthunder_trail_y[FTNESS_PKTHUNDER_TRAIL_POS_COUNT - 1]), (fp->passive_vars.ness.pkthunder_trail_x[index] - fp->passive_vars.ness.pkthunder_trail_x[FTNESS_PKTHUNDER_TRAIL_POS_COUNT - 1]));
+        DObjGetStruct(weapon_gobj)->rotate.vec.f.z = syUtilsArcTan2
+        (
+            (fp->passive_vars.ness.pkthunder_trail_y[trail_id] - fp->passive_vars.ness.pkthunder_trail_y[FTNESS_PKTHUNDER_TRAIL_POS_COUNT - 1]),
+            (fp->passive_vars.ness.pkthunder_trail_x[trail_id] - fp->passive_vars.ness.pkthunder_trail_x[FTNESS_PKTHUNDER_TRAIL_POS_COUNT - 1])
+        );
     }
     DObjGetStruct(weapon_gobj)->rotate.vec.f.z -= F_CST_DTOR32(90.0F);
 
-    if ((wp->weapon_vars.pkthunder_trail.trail_index < (WPPKTHUNDER_PARTS_COUNT - 2)) && (wp->lifetime == WPPKTHUNDER_SPAWN_TRAIL_FRAME))
+    if ((wp->weapon_vars.pkthunder_trail.trail_id < (WPPKTHUNDER_PARTS_COUNT - 2)) && (wp->lifetime == WPPKTHUNDER_SPAWN_TRAIL_FRAME))
     {
-        wpNessPKThunderHeadMakeTrail(weapon_gobj, wp->weapon_vars.pkthunder_trail.trail_index + 1);
+        wpNessPKThunderHeadMakeTrail(weapon_gobj, wp->weapon_vars.pkthunder_trail.trail_id + 1);
     }
-    if ((wp->weapon_vars.pkthunder_trail.trail_index == (WPPKTHUNDER_PARTS_COUNT - 2)) && (wp->lifetime == WPPKTHUNDER_SPAWN_TRAIL_FRAME))
+    if ((wp->weapon_vars.pkthunder_trail.trail_id == (WPPKTHUNDER_PARTS_COUNT - 2)) && (wp->lifetime == WPPKTHUNDER_SPAWN_TRAIL_FRAME))
     {
         efManagerNessPKThunderTrailMakeEffect(wp->owner_gobj);
     }
     wpMainDecLifeCheckExpire(wp);
 
-    DObjGetStruct(weapon_gobj)->mobj->texture_id_curr = syUtilsGetRandomIntRange(WPPKTHUNDER_TEXTURE_COUNT - 1);
+    DObjGetStruct(weapon_gobj)->mobj->texture_id_curr = syUtilsGetRandomIntRange(WPPKTHUNDER_TEXTURES_NUM - 1);
 
     return FALSE;
 }
@@ -428,7 +435,7 @@ sb32 wpNessPKThunderTrailProcHit(GObj *weapon_gobj)
 }
 
 // 0x8016B580
-GObj* wpNessPKThunderTrailMakeWeapon(GObj *head_gobj, Vec3f *pos, s32 trail_index)
+GObj* wpNessPKThunderTrailMakeWeapon(GObj *head_gobj, Vec3f *pos, s32 trail_id)
 {
     GObj *trail_gobj;
     WPStruct *trail_wp;
@@ -447,17 +454,17 @@ GObj* wpNessPKThunderTrailMakeWeapon(GObj *head_gobj, Vec3f *pos, s32 trail_inde
 
     trail_wp->lifetime = WPPKTHUNDER_LIFETIME;
 
-    if (trail_index == 0)
+    if (trail_id == 0)
     {
         trail_wp->group_id = wpManagerGetGroupID(head_gobj, trail_gobj); // Bruh this doesn't any take arguments but it doesn't match otherwise
     }
     else trail_wp->group_id = head_wp->group_id;
 
     trail_wp->weapon_vars.pkthunder_trail.status = nWPNessPKThunderStatusActive;
-    trail_wp->weapon_vars.pkthunder_trail.trail_index = trail_index;
+    trail_wp->weapon_vars.pkthunder_trail.trail_id = trail_id;
     trail_wp->weapon_vars.pkthunder_trail.parent_gobj = head_gobj;
 
-    if (trail_index != 0)
+    if (trail_id != 0)
     {
         head_gobj = head_wp->weapon_vars.pkthunder_trail.head_gobj;
         head_wp = wpGetStruct(head_gobj);
@@ -466,13 +473,13 @@ GObj* wpNessPKThunderTrailMakeWeapon(GObj *head_gobj, Vec3f *pos, s32 trail_inde
 
     for (i = 0; i < ARRAY_COUNT(head_wp->weapon_vars.pkthunder.trail_gobj); i++)
     {
-        head_wp->weapon_vars.pkthunder.trail_gobj[trail_index] = trail_gobj;
+        head_wp->weapon_vars.pkthunder.trail_gobj[trail_id] = trail_gobj;
     }
     return trail_gobj;
 }
 
 // 0x8016B65C
-void wpNessPKReflectHeadMakeTrail(GObj *weapon_gobj, s32 trail_index)
+void wpNessPKReflectHeadMakeTrail(GObj *weapon_gobj, s32 trail_id)
 {
     Vec3f pos;
 
@@ -480,7 +487,7 @@ void wpNessPKReflectHeadMakeTrail(GObj *weapon_gobj, s32 trail_index)
     pos.y = DObjGetStruct(weapon_gobj)->translate.vec.f.y;
     pos.z = 0.0F;
 
-    wpNessPKReflectTrailMakeWeapon(weapon_gobj, &pos, trail_index);
+    wpNessPKReflectTrailMakeWeapon(weapon_gobj, &pos, trail_id);
 }
 
 // 0x8016B6A0
@@ -519,7 +526,6 @@ sb32 wpNessPKReflectHeadProcUpdate(GObj *weapon_gobj)
     {
         wpNessPKReflectHeadMakeTrail(weapon_gobj, 0);
     }
-
     if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
         efManagerDustExpandSmallMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
@@ -603,7 +609,6 @@ GObj* wpNessPKReflectHeadMakeWeapon(GObj *old_gobj, Vec3f *pos, f32 angle)
     {
         wp->weapon_vars.pkthunder.trail_gobj[i] = NULL;
     }
-
     dist.x = DObjGetStruct(new_gobj)->translate.vec.f.x - DObjGetStruct(wp->owner_gobj)->translate.vec.f.x;
     dist.y = DObjGetStruct(new_gobj)->translate.vec.f.y - (DObjGetStruct(wp->owner_gobj)->translate.vec.f.y + WPPKTHUNDER_REFLECT_POS_Y_ADD);
     dist.z = DObjGetStruct(new_gobj)->translate.vec.f.z - DObjGetStruct(wp->owner_gobj)->translate.vec.f.z;
@@ -631,21 +636,23 @@ sb32 wpNessPKReflectTrailProcUpdate(GObj *weapon_gobj)
     // Game hangs on the following line when PK Thunder crash occurs (DObjGetStruct returns NULL)
     // This happens because the program loses the reference to the old PK Thunder trail objects which are still accessing the head's DObj even after it's ejected
 
-    DObjGetStruct(weapon_gobj)->translate.vec.f.x = (DObjGetStruct(wp->weapon_vars.pkthunder_trail.head_gobj)->translate.vec.f.x - (wp->physics.vel_air.x * (wp->weapon_vars.pkthunder_trail.trail_index + 1.5) * 2.0F));
-    DObjGetStruct(weapon_gobj)->translate.vec.f.y = (DObjGetStruct(wp->weapon_vars.pkthunder_trail.head_gobj)->translate.vec.f.y - (wp->physics.vel_air.y * (wp->weapon_vars.pkthunder_trail.trail_index + 1.5) * 2.0F));
+    DObjGetStruct(weapon_gobj)->translate.vec.f.x =
+    (DObjGetStruct(wp->weapon_vars.pkthunder_trail.head_gobj)->translate.vec.f.x - (wp->physics.vel_air.x * (wp->weapon_vars.pkthunder_trail.trail_id + 1.5) * 2.0F));
+    
+    DObjGetStruct(weapon_gobj)->translate.vec.f.y =
+    (DObjGetStruct(wp->weapon_vars.pkthunder_trail.head_gobj)->translate.vec.f.y - (wp->physics.vel_air.y * (wp->weapon_vars.pkthunder_trail.trail_id + 1.5) * 2.0F));
 
-    if ((wp->weapon_vars.pkthunder_trail.trail_index < (WPPKTHUNDER_PARTS_COUNT - 2)) && (wp->lifetime == WPPKTHUNDER_SPAWN_TRAIL_FRAME))
+    if ((wp->weapon_vars.pkthunder_trail.trail_id < (WPPKTHUNDER_PARTS_COUNT - 2)) && (wp->lifetime == WPPKTHUNDER_SPAWN_TRAIL_FRAME))
     {
-        wpNessPKReflectHeadMakeTrail(weapon_gobj, wp->weapon_vars.pkthunder_trail.trail_index + 1);
+        wpNessPKReflectHeadMakeTrail(weapon_gobj, wp->weapon_vars.pkthunder_trail.trail_id + 1);
     }
-    if ((wp->weapon_vars.pkthunder_trail.trail_index == (WPPKTHUNDER_PARTS_COUNT - 2)) && (wp->lifetime == WPPKTHUNDER_SPAWN_TRAIL_FRAME))
+    if ((wp->weapon_vars.pkthunder_trail.trail_id == (WPPKTHUNDER_PARTS_COUNT - 2)) && (wp->lifetime == WPPKTHUNDER_SPAWN_TRAIL_FRAME))
     {
         efManagerNessPKReflectTrailMakeEffect(wp->weapon_vars.pkthunder_trail.head_gobj);
     }
-
     wpMainDecLifeCheckExpire(wp);
 
-    DObjGetStruct(weapon_gobj)->mobj->texture_id_curr = syUtilsGetRandomIntRange(WPPKTHUNDER_TEXTURE_COUNT - 1);
+    DObjGetStruct(weapon_gobj)->mobj->texture_id_curr = syUtilsGetRandomIntRange(WPPKTHUNDER_TEXTURES_NUM - 1);
 
     return FALSE;
 }
@@ -661,7 +668,7 @@ sb32 wpNessPKReflectTrailProcHit(GObj *weapon_gobj)
 }
 
 // 0x8016BB6C
-GObj* wpNessPKReflectTrailMakeWeapon(GObj *old_gobj, Vec3f *pos, s32 trail_index)
+GObj* wpNessPKReflectTrailMakeWeapon(GObj *old_gobj, Vec3f *pos, s32 trail_id)
 {
     GObj *new_gobj;
     s32 unused;
@@ -684,12 +691,12 @@ GObj* wpNessPKReflectTrailMakeWeapon(GObj *old_gobj, Vec3f *pos, s32 trail_index
     new_wp->group_id = old_wp->group_id;
 
     new_wp->weapon_vars.pkthunder_trail.status = nWPNessPKThunderStatusActive;
-    new_wp->weapon_vars.pkthunder_trail.trail_index = trail_index;
+    new_wp->weapon_vars.pkthunder_trail.trail_id = trail_id;
     new_wp->weapon_vars.pkthunder_trail.parent_gobj = old_gobj;
 
-    if (trail_index != 0)
+    if (trail_id != 0)
     {
-        // WARNING: old_gobj belongs to trails on non-zero indexes, but the code below treats it as a head object and accesses the head's weapon vars
+        // WARNING: old_gobj belongs to trails on non-zero trail_ides, but the code below treats it as a head object and accesses the head's weapon vars
 
         old_gobj = old_wp->weapon_vars.pkthunder_trail.head_gobj;
         old_wp = wpGetStruct(old_gobj);
@@ -697,7 +704,7 @@ GObj* wpNessPKReflectTrailMakeWeapon(GObj *old_gobj, Vec3f *pos, s32 trail_index
 
     new_wp->weapon_vars.pkthunder_trail.head_gobj = old_gobj;
 
-    old_wp->weapon_vars.pkthunder.trail_gobj[trail_index] = new_gobj;
+    old_wp->weapon_vars.pkthunder.trail_gobj[trail_id] = new_gobj;
 
     new_wp->physics.vel_air.x = old_wp->physics.vel_air.x;
     new_wp->physics.vel_air.y = old_wp->physics.vel_air.y;

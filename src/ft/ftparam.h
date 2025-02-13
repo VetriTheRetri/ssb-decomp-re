@@ -10,7 +10,7 @@ extern s32 ftParamGetItemMusicLength(u32 bgm_id);
 extern void ftParamTryPlayItemMusic(u32 bgm_id);
 extern void ftParamTryUpdateItemMusic(void);
 extern void ftParamInitPlayerBattleStats(s32 player, GObj *fighter_gobj);
-extern GObj* ftParamGetPlayerNumGObj(s32 player_number);
+extern GObj* ftParamGetPlayerNumGObj(s32 player_num);
 extern void ftParamLockPlayerControl(GObj *fighter_gobj);
 extern void ftParamUnlockPlayerControl(GObj *fighter_gobj);
 extern void ftParamSetPlayerTagWait(GObj *fighter_gobj, s32 playertag_wait);

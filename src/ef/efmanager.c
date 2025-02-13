@@ -1984,7 +1984,7 @@ GObj* efManagerMakeEffect(EFDesc *effect_desc, sb32 is_force_return)
     {
         main_dobj = gcAddDObjForGObj(effect_gobj, NULL);
 
-        lbCommonInitDObjTriTransform(main_dobj, transform_types1->tk1, transform_types1->tk2, transform_types1->tk3);
+        lbCommonInitDObj3Transforms(main_dobj, transform_types1->tk1, transform_types1->tk2, transform_types1->tk3);
 
         transform_types2 = &effect_desc->transform_types2;
 
@@ -1998,7 +1998,7 @@ GObj* efManagerMakeEffect(EFDesc *effect_desc, sb32 is_force_return)
         {
             main_dobj = gcAddChildForDObj(main_dobj, (void*) (addr + effect_desc->o_dobjsetup));
 
-            lbCommonInitDObjTriTransform(main_dobj, transform_types2->tk1, transform_types2->tk2, transform_types2->tk3);
+            lbCommonInitDObj3Transforms(main_dobj, transform_types2->tk1, transform_types2->tk2, transform_types2->tk3);
         }
         if (o_mobjsub != 0)
         {
@@ -2020,7 +2020,7 @@ GObj* efManagerMakeEffect(EFDesc *effect_desc, sb32 is_force_return)
 
             other_dobj = DObjGetStruct(effect_gobj);
 
-            gcAddDObjTriTransformKind(other_dobj, transform_types1->tk1, transform_types1->tk2, transform_types1->tk3);
+            gcAddDObj3TransformsKind(other_dobj, transform_types1->tk1, transform_types1->tk2, transform_types1->tk3);
 
             transform_types2 = &effect_desc->transform_types2;
 
@@ -2028,7 +2028,7 @@ GObj* efManagerMakeEffect(EFDesc *effect_desc, sb32 is_force_return)
 
             while (main_dobj != NULL)
             {
-                gcAddDObjTriTransformKind(main_dobj, transform_types2->tk1, transform_types2->tk2, transform_types2->tk3);
+                gcAddDObj3TransformsKind(main_dobj, transform_types2->tk1, transform_types2->tk2, transform_types2->tk3);
 
                 main_dobj = lbCommonGetTreeDObjNextFromRoot(main_dobj, other_dobj);
             }
@@ -2038,7 +2038,7 @@ GObj* efManagerMakeEffect(EFDesc *effect_desc, sb32 is_force_return)
         {
             transform_types1 = &effect_desc->transform_types1;
 
-            lbCommonInitDObjTriTransform(gcAddDObjForGObj(effect_gobj, (void*) (addr + effect_desc->o_dobjsetup)), transform_types1->tk1, transform_types1->tk2, transform_types1->tk3);
+            lbCommonInitDObj3Transforms(gcAddDObjForGObj(effect_gobj, (void*) (addr + effect_desc->o_dobjsetup)), transform_types1->tk1, transform_types1->tk2, transform_types1->tk3);
         }
         if (o_mobjsub != 0)
         {

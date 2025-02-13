@@ -637,7 +637,7 @@ void mnModeSelectProcRun(GObj *gobj)
         {
             if (scSubsysControllerGetPlayerTapButtons(B_BUTTON) != FALSE)
             {
-                syAudioStopSongAll();
+                syAudioStopBGMAll();
 
                 gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
                 gSCManagerSceneData.scene_curr = nSCKindTitle;
@@ -752,7 +752,7 @@ void mnModeSelectFuncStart(void)
         (gSCManagerSceneData.scene_prev != nSCKindData)
     )
     {
-        syAudioPlaySong(0, nSYAudioBGMModeSelect);
+        syAudioPlayBGM(0, nSYAudioBGMModeSelect);
     }
 }
 

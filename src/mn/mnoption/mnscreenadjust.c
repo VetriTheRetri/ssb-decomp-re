@@ -437,7 +437,7 @@ void mnScreenAdjustFuncStart(void)
     mnScreenAdjustMakeGuide();
     mnScreenAdjustMakeFrame();
     mnScreenAdjustMakeInstruction();
-    syAudioStopSongAll();
+    syAudioStopBGMAll();
 }
 
 // 0x801327D8

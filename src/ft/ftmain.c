@@ -2125,7 +2125,7 @@ void ftMainUpdateDamageStatFighter(FTStruct *attacker_fp, FTAttackColl *attack_c
 {
     s32 damage;
     s32 attacker_player;
-    s32 attacker_player_number;
+    s32 attacker_player_num;
     s32 unused;
     Vec3f impact_pos;
 
@@ -2150,12 +2150,12 @@ void ftMainUpdateDamageStatFighter(FTStruct *attacker_fp, FTAttackColl *attack_c
             if (attacker_fp->throw_gobj != NULL)
             {
                 attacker_player = attacker_fp->throw_player;
-                attacker_player_number = attacker_fp->throw_player_number;
+                attacker_player_num = attacker_fp->throw_player_num;
             }
             else
             {
                 attacker_player = attacker_fp->player;
-                attacker_player_number = attacker_fp->player_number;
+                attacker_player_num = attacker_fp->player_num;
             }
             if (sFTMainHitLogID < ARRAY_COUNT(sFTMainHitLogs))
             {
@@ -2166,7 +2166,7 @@ void ftMainUpdateDamageStatFighter(FTStruct *attacker_fp, FTAttackColl *attack_c
                 hitlog->attacker_gobj = attacker_gobj;
                 hitlog->damage_coll = damage_coll;
                 hitlog->attacker_player = attacker_player;
-                hitlog->attacker_player_number = attacker_player_number;
+                hitlog->attacker_player_num = attacker_player_num;
 
                 sFTMainHitLogID++;
             }
@@ -2204,7 +2204,7 @@ void ftMainUpdateAttackStatWeapon(WPStruct *ip, WPAttackColl *wp_attack_coll, s3
 
     if ((damage - 10) < ft_attack_coll->damage)
     {
-        wpProcessUpdateHitInteractStatsGroupID(ip, wp_attack_coll, fighter_gobj, nGMHitTypeAttack, ft_attack_coll->group_id);
+        wpProcessUpdateHitInteractStats(ip, wp_attack_coll, fighter_gobj, nGMHitTypeAttack, ft_attack_coll->group_id);
 
         if (ip->hit_attack_damage < damage)
         {
@@ -2225,7 +2225,7 @@ void ftMainUpdateShieldStatWeapon(WPStruct *wp, WPAttackColl *wp_attack_coll, s3
     s32 damage = wpMainGetStaledDamage(wp);
     Vec3f impact_pos;
 
-    wpProcessUpdateHitInteractStatsGroupID(wp, wp_attack_coll, fighter_gobj, (wp_attack_coll->can_rehit_shield) ? nGMHitTypeShieldRehit : nGMHitTypeShield, 0);
+    wpProcessUpdateHitInteractStats(wp, wp_attack_coll, fighter_gobj, (wp_attack_coll->can_rehit_shield) ? nGMHitTypeShieldRehit : nGMHitTypeShield, 0);
 
     if (wp->hit_shield_damage < damage)
     {
@@ -2258,7 +2258,7 @@ void ftMainUpdateReflectorStatWeapon(WPStruct *wp, WPAttackColl *wp_attack_coll,
 {
     s32 damage = wpMainGetStaledDamage(wp);
 
-    wpProcessUpdateHitInteractStatsGroupID(wp, wp_attack_coll, fighter_gobj, nGMHitTypeReflect, 0);
+    wpProcessUpdateHitInteractStats(wp, wp_attack_coll, fighter_gobj, nGMHitTypeReflect, 0);
 
     if (fp->special_coll->damage_resist < damage)
     {
@@ -2300,7 +2300,7 @@ void ftMainUpdateAbsorbStatWeapon(WPStruct *wp, WPAttackColl *wp_attack_coll, FT
 {
     s32 damage = wpMainGetStaledDamage(wp);
 
-    wpProcessUpdateHitInteractStatsGroupID(wp, wp_attack_coll, fighter_gobj, nGMHitTypeAbsorb, 0);
+    wpProcessUpdateHitInteractStats(wp, wp_attack_coll, fighter_gobj, nGMHitTypeAbsorb, 0);
 
     wp->absorb_gobj = fighter_gobj;
 
@@ -2324,7 +2324,7 @@ void ftMainUpdateDamageStatWeapon(WPStruct *wp, WPAttackColl *wp_attack_coll, s3
     s32 temp_damage = wpMainGetStaledDamage(wp);
     s32 damage;
 
-    wpProcessUpdateHitInteractStatsGroupID(wp, wp_attack_coll, fighter_gobj, (wp_attack_coll->can_rehit_fighter) ? nGMHitTypeDamageRehit : nGMHitTypeDamage, 0);
+    wpProcessUpdateHitInteractStats(wp, wp_attack_coll, fighter_gobj, (wp_attack_coll->can_rehit_fighter) ? nGMHitTypeDamageRehit : nGMHitTypeDamage, 0);
 
     damage = ftParamGetCapturedDamage(fp, temp_damage);
 
@@ -2358,7 +2358,7 @@ void ftMainUpdateDamageStatWeapon(WPStruct *wp, WPAttackColl *wp_attack_coll, s3
             hitlog->attacker_gobj = weapon_gobj;
             hitlog->damage_coll = damage_coll;
             hitlog->attacker_player = wp->player;
-            hitlog->attacker_player_number = wp->player_number;
+            hitlog->attacker_player_num = wp->player_num;
 
             sFTMainHitLogID++;
         }
@@ -2551,7 +2551,7 @@ void ftMainUpdateDamageStatItem(ITStruct *ip, ITAttackColl *it_attack_coll, s32 
                 hitlog->attacker_gobj = item_gobj;
                 hitlog->damage_coll = damage_coll;
                 hitlog->attacker_player = ip->player;
-                hitlog->attacker_player_number = ip->player_number;
+                hitlog->attacker_player_num = ip->player_num;
 
                 sFTMainHitLogID++;
             }
@@ -2835,7 +2835,7 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
 
         this_fp->damage_lr = (DObjGetStruct(fighter_gobj)->translate.vec.f.x < DObjGetStruct(attacker_gobj)->translate.vec.f.x) ? +1 : -1;
 
-        this_fp->damage_player_number = hitlog->attacker_player_number;
+        this_fp->damage_player_num = hitlog->attacker_player_num;
 
         ftParamUpdate1PGameDamageStats(this_fp, hitlog->attacker_player, hitlog->attacker_object_class, attacker_fp->fkind, attacker_fp->stat_flags.halfword & ~0x400, attacker_fp->stat_count);
 
@@ -2866,13 +2866,13 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
         }
         if (this_fp->player == hitlog->attacker_player)
         {
-            this_fp->damage_player_number = 0;
+            this_fp->damage_player_num = 0;
 
             ftParamUpdate1PGameDamageStats(this_fp, GMCOMMON_PLAYERS_MAX, hitlog->attacker_object_class, wp->kind, 0, 0);
         }
         else
         {
-            this_fp->damage_player_number = hitlog->attacker_player_number;
+            this_fp->damage_player_num = hitlog->attacker_player_num;
 
             ftParamUpdate1PGameDamageStats(this_fp, hitlog->attacker_player, hitlog->attacker_object_class, wp->kind, wp_attack_coll->stat_flags.halfword, wp_attack_coll->stat_count);
         }
@@ -2902,13 +2902,13 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
 
         if (this_fp->player == hitlog->attacker_player)
         {
-            this_fp->damage_player_number = 0;
+            this_fp->damage_player_num = 0;
 
             ftParamUpdate1PGameDamageStats(this_fp, GMCOMMON_PLAYERS_MAX, hitlog->attacker_object_class, ip->kind, 0, 0);
         }
         else
         {
-            this_fp->damage_player_number = hitlog->attacker_player_number;
+            this_fp->damage_player_num = hitlog->attacker_player_num;
             ftParamUpdate1PGameDamageStats(this_fp, hitlog->attacker_player, hitlog->attacker_object_class, ip->kind, it_attack_coll->stat_flags.halfword, it_attack_coll->stat_count);
         }
         this_fp->damage_joint_id = hitlog->damage_coll->joint_id;
@@ -2928,7 +2928,7 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
         switch (gr_attack_coll->kind)
         {
         case nGMHitEnvironmentAcid:
-            this_fp->damage_player_number = 0;
+            this_fp->damage_player_num = 0;
 
             if (this_fp->damage_player == -1)
             {
@@ -2940,14 +2940,14 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
         case nGMHitEnvironmentPowerBlock:
             ip = itGetStruct(attacker_gobj);
 
-            this_fp->damage_player_number = ip->damage_player_number;
+            this_fp->damage_player_num = ip->damage_player_num;
 
             ftParamUpdate1PGameDamageStats(this_fp, ip->damage_port, hitlog->attacker_object_class, gr_attack_coll->kind, 0, 0);
 
             break;
 
         default:
-            this_fp->damage_player_number = 0;
+            this_fp->damage_player_num = 0;
 
             ftParamUpdate1PGameDamageStats(this_fp, GMCOMMON_PLAYERS_MAX, hitlog->attacker_object_class, gr_attack_coll->kind, 0, 0);
             break;

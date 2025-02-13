@@ -2183,7 +2183,7 @@ void mnVSRecordFuncStart(void)
 	mnVSRecordMakeStats(sMNVSRecordStatsKind);
 	mnVSRecordMakeRankingHighlight();
 
-	syAudioPlaySong(0, nSYAudioBGMData);
+	syAudioPlayBGM(0, nSYAudioBGMData);
 }
 
 // 0x801369CC

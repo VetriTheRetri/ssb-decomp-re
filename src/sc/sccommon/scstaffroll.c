@@ -2125,8 +2125,8 @@ void scStaffrollFuncStart(void)
 	scStaffrollMakeScrollGObj();
 	scStaffrollMakeCamera();
 
-	syAudioStopSongAll();
-	syAudioPlaySong(0, nSYAudioBGMStaffroll);
+	syAudioStopBGMAll();
+	syAudioPlayBGM(0, nSYAudioBGMStaffroll);
 }
 
 // 0x8013A6C8
@@ -2166,7 +2166,7 @@ void scStaffrollFuncDraw(void)
 	{
 		gSCManagerSceneData.scene_curr = nSCKindStartup;
 
-		syAudioStopSongAll();
+		syAudioStopBGMAll();
 		syVideoSetFlags(SYVIDEO_FLAG_BLACKOUT);
 
 		sSCStaffrollStatus = -2;

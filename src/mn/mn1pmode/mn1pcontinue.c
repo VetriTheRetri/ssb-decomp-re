@@ -1064,7 +1064,7 @@ void mnPlayers1PGameContinueProcRun(GObj *gobj)
             sMN1PContinueOptionNoGameOverInputWait = sMN1PContinueTotalTimeTics + I_SEC_TO_TICS(1.5);
             sMN1PContinueOptionNoGameOverAutoWait = sMN1PContinueTotalTimeTics + I_SEC_TO_TICS(30);
 
-			syAudioPlaySong(0, nSYAudioBGM1PGameOver);
+			syAudioPlayBGM(0, nSYAudioBGM1PGameOver);
 			func_800269C0_275C0(nSYAudioVoiceAnnounceGameOver);
 		}
         if (sMN1PContinueStatus == 0)
@@ -1111,7 +1111,7 @@ void mnPlayers1PGameContinueProcRun(GObj *gobj)
                     sMN1PContinueOptionNoGameOverInputWait = sMN1PContinueTotalTimeTics + I_SEC_TO_TICS(1.5);
                     sMN1PContinueOptionNoGameOverAutoWait = sMN1PContinueTotalTimeTics + I_SEC_TO_TICS(30);
 
-                    syAudioPlaySong(0, nSYAudioBGM1PGameOver);
+                    syAudioPlayBGM(0, nSYAudioBGM1PGameOver);
                     func_800269C0_275C0(nSYAudioVoiceAnnounceGameOver);
                     break;
                 }
@@ -1235,8 +1235,8 @@ void mnPlayers1PGameContinueFuncStart(void)
 
     scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 
-    syAudioStopSongAll();
-    syAudioPlaySong(0, nSYAudioBGM1PGameEndChoice);
+    syAudioStopBGMAll();
+    syAudioPlayBGM(0, nSYAudioBGM1PGameEndChoice);
 }
 
 // 0x80134238

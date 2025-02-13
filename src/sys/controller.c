@@ -453,7 +453,7 @@ void syControllerThreadMain(void *unused)
 
     syControllerInitDevices();
     scAddClient(&sSYControllerClient, &sSYControllerEventMesgQueue, sSYControllerEventMesgs, ARRAY_COUNT(sSYControllerEventMesgs));
-    osSendMesg(&sSYMainThreadingQueue, (OSMesg)1, OS_MESG_NOBLOCK);
+    osSendMesg(&gSYMainThreadingQueue, (OSMesg)1, OS_MESG_NOBLOCK);
 
     while (TRUE)
     {

@@ -8,7 +8,7 @@
 
 extern alSoundEffect* func_800269C0_275C0(u16);
 
-extern void syAudioSetSongVolumeID(u32, u32);
+extern void syAudioSetBGMVolume(u32, u32);
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
@@ -2533,7 +2533,7 @@ void ifCommonTimerProcRun(GObj *interface_gobj)
                                 sIFCommonIsAnnouncedSecond[i] = TRUE;
                             }
                         }
-                        syAudioSetSongVolumeID(0, ((gSCManagerBattleState->time_remain / F_SEC_TO_TICS(5)) * 20480.0F) + 10240.0F);
+                        syAudioSetBGMVolume(0, ((gSCManagerBattleState->time_remain / F_SEC_TO_TICS(5)) * 20480.0F) + 10240.0F);
                     }
                 }
             }
@@ -2903,7 +2903,7 @@ void ifCommonBattlePauseInitInterface(s32 player)
 
     func_80026594_27194();
     func_800269C0_275C0(nSYAudioFGMGamePause);
-    syAudioSetSongVolumeID(0, 0x3C00);
+    syAudioSetBGMVolume(0, 0x3C00);
     ifCommonBattlePauseMakeInterface(player);
 }
 
@@ -3108,7 +3108,7 @@ void ifCommonBattlePauseRestoreInterfaceAll(void)
     gGMCameraPauseCameraEyeY = sIFCommonBattlePauseCameraEyeYOrigin;
 
     func_800264A4_270A4();
-    syAudioSetSongVolumeID(0, 0x7800);
+    syAudioSetBGMVolume(0, 0x7800);
 
     if (sIFCommonBattlePauseKindInterface == nIFPauseKindDefault)
     {

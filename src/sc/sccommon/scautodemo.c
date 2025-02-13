@@ -721,14 +721,14 @@ void scAutoDemoStartScene(void)
 	dSCAutoDemoTaskmanSetup.func_start = scAutoDemoFuncStart;
 
 	scManagerFuncUpdate(&dSCAutoDemoTaskmanSetup);
-	syAudioStopSongAll();
+	syAudioStopBGMAll();
 
-	while (auIsBGMPlaying(0) != FALSE)
+	while (syAudioCheckBGMPlaying(0) != FALSE)
 	{
 		continue;
 	}
 
-	syAudioSetSongVolumeID(0, 0x7800);
+	syAudioSetBGMVolume(0, 0x7800);
 	func_800266A0_272A0();
 	gmRumbleInitPlayers();
 }

@@ -69,7 +69,7 @@ extern void lbParticleSetDistVelDObj(LBParticle *pc, DObj *dobj);
 extern void lbParticleAddDistVelMagDObj(LBParticle *pc, DObj *dobj, f32 magnitude);
 extern LBParticle* lbParticleUpdateStruct(LBParticle *this_pc, LBParticle *other_pc, s32 bank_id);
 extern void lbParticleStructProcRun(GObj *gobj);
-extern void LBParticleDrawTextures(GObj *gobj);
+extern void lbParticleDrawTextures(GObj *gobj);
 extern void lbParticleAddAttachDObj(s32 bank_id, DObj *dobj);
 extern void lbParticleSetDitherModes(s32 colordither_mode, s32 alphadither_mode);
 extern GObj* lbParticleAllocGenerators(s32 num);

@@ -1139,7 +1139,7 @@ void scheduler_scheduler(UNUSED void *arg) {
     osSetEventMesg(OS_EVENT_DP, &scTaskQueue, (OSMesg)INTR_DP_FULL_SYNC);
     osSetEventMesg(OS_EVENT_PRENMI, &scTaskQueue, (OSMesg)INTR_SOFT_RESET);
 
-    osSendMesg(&sSYMainThreadingQueue, (OSMesg)1, OS_MESG_NOBLOCK);
+    osSendMesg(&gSYMainThreadingQueue, (OSMesg)1, OS_MESG_NOBLOCK);
 
     while (TRUE) {
         osRecvMesg(&scTaskQueue, &intrMsg, OS_MESG_BLOCK);

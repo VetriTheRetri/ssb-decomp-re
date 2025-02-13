@@ -554,7 +554,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTDesc *desc)
 
     fp->is_fastfall = FALSE;
 
-    fp->player_number = gFTManagerPlayersNum++;
+    fp->player_num = gFTManagerPlayersNum++;
 
     fp->public_knockback = 0.0F;
 
@@ -803,7 +803,7 @@ GObj* ftManagerMakeFighter(FTDesc *desc) // Create fighter
     topn_joint = gcAddDObjForGObj(fighter_gobj, NULL);
     fp->joints[nFTPartsJointTopN] = topn_joint;
 
-    lbCommonInitDObjTriTransform(topn_joint, 0x4B, nGCMatrixKindNull, nGCMatrixKindNull);
+    lbCommonInitDObj3Transforms(topn_joint, 0x4B, nGCMatrixKindNull, nGCMatrixKindNull);
 
     fp->joints[nFTPartsJointTopN]->xobjs[0]->unk05 = desc->unk_rebirth_0x1D;
 

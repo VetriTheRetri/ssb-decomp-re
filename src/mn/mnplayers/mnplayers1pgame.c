@@ -2637,7 +2637,7 @@ void mnPlayers1PGameBackTo1PMode(void)
 	gSCManagerSceneData.scene_curr = nSCKind1PMode;
 
 	mnPlayers1PGameSetSceneData();
-	syAudioStopSongAll();
+	syAudioStopBGMAll();
 	func_800266A0_272A0();
 	syTaskmanSetLoadScene();
 }
@@ -3455,7 +3455,7 @@ void mnPlayers1PGameFuncStart(void)
 
 	if (gSCManagerSceneData.scene_prev != nSCKindMaps)
 	{
-		syAudioPlaySong(0, nSYAudioBGMBattleSelect);
+		syAudioPlayBGM(0, nSYAudioBGMBattleSelect);
 	}
 	func_800269C0_275C0(nSYAudioVoiceAnnounceSelectPlayer);
 }

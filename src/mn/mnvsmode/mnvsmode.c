@@ -1500,7 +1500,7 @@ void mnVSModeFuncStart(void)
 
     if (gSCManagerSceneData.scene_prev == nSCKindPlayersVS)
     {
-        syAudioPlaySong(0, nSYAudioBGMModeSelect);
+        syAudioPlayBGM(0, nSYAudioBGMModeSelect);
     }
 }
 

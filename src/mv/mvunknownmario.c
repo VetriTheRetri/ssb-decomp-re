@@ -225,7 +225,7 @@ void mvUnknownMarioStartScene(void)
 	dMVUnknownMarioTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl5_BSS_END);
 	scManagerFuncUpdate(&dMVUnknownMarioTaskmanSetup);
 
-	syAudioStopSongAll();
+	syAudioStopBGMAll();
 
 	gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 	gSCManagerSceneData.scene_curr = nSCKindTitle;

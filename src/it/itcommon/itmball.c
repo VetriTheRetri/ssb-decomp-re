@@ -293,7 +293,7 @@ sb32 itMBallCommonProcReflector(GObj *item_gobj)
 
     ip->team = fp->team;
     ip->player = fp->player;
-    ip->player_number = fp->player_number;
+    ip->player_num = fp->player_num;
     ip->handicap = fp->handicap;
 
     return FALSE;
@@ -342,7 +342,7 @@ sb32 itMBallOpenProcUpdate(GObj *mball_gobj)
             monster_ip->team = mball_ip->team;
             monster_ip->player = mball_ip->player;
             monster_ip->handicap = mball_ip->handicap;
-            monster_ip->player_number = mball_ip->player_number;
+            monster_ip->player_num = mball_ip->player_num;
             monster_ip->display_mode = mball_ip->display_mode;
         }
         return TRUE;
@@ -450,7 +450,7 @@ sb32 itMBallOpenAirProcUpdate(GObj *mball_gobj)
             monster_ip->team = mball_ip->team;
             monster_ip->player = mball_ip->player;
             monster_ip->handicap = mball_ip->handicap;
-            monster_ip->player_number = mball_ip->player_number;
+            monster_ip->player_num = mball_ip->player_num;
             monster_ip->display_mode = mball_ip->display_mode;
         }
         return TRUE;

@@ -2205,7 +2205,7 @@ void gcSetupCommonDObjs(GObj *gobj, DObjDesc *dobjdesc, DObj **dobjs)
     }
 }
 
-void gcAddDObjTriTransformKind(DObj *dobj, u8 tk1, u8 tk2, u8 tk3)
+void gcAddDObj3TransformsKind(DObj *dobj, u8 tk1, u8 tk2, u8 tk3)
 {
     if (tk1 != nGCMatrixKindNull) 
     {
@@ -2221,7 +2221,7 @@ void gcAddDObjTriTransformKind(DObj *dobj, u8 tk1, u8 tk2, u8 tk3)
     }
 }
 
-void gcDecideDObjTriTransformKind(DObj *dobj, u8 tk1, u8 tk2, u8 tk3, s32 flags)
+void gcDecideDObj3TransformsKind(DObj *dobj, u8 tk1, u8 tk2, u8 tk3, s32 flags)
 {
     s32 tra_mode = 0;
     s32 sca_mode = 0;
@@ -2352,9 +2352,9 @@ void gcSetupCustomDObjs(GObj *gobj, DObjDesc *dobjdesc, DObj **dobjs, u8 tk1, u8
         
         if (dobjdesc->id & 0xF000) 
         {
-            gcDecideDObjTriTransformKind(dobj, tk1, tk2, tk3, dobjdesc->id & 0xF000);
+            gcDecideDObj3TransformsKind(dobj, tk1, tk2, tk3, dobjdesc->id & 0xF000);
         } 
-        else gcAddDObjTriTransformKind(dobj, tk1, tk2, tk3);
+        else gcAddDObj3TransformsKind(dobj, tk1, tk2, tk3);
         
         dobj->translate.vec.f = dobjdesc->translate;
         dobj->rotate.vec.f = dobjdesc->rotate;
@@ -2392,9 +2392,9 @@ void gcSetupCustomDObjsWithMObj(GObj *gobj, DObjDesc *dobjdesc, MObjSub ***p_mob
         
         if (dobjdesc->id & 0xF000) 
         {
-            gcDecideDObjTriTransformKind(dobj, tk1, tk2, tk3, dobjdesc->id & 0xF000);
+            gcDecideDObj3TransformsKind(dobj, tk1, tk2, tk3, dobjdesc->id & 0xF000);
         } 
-        else gcAddDObjTriTransformKind(dobj, tk1, tk2, tk3);
+        else gcAddDObj3TransformsKind(dobj, tk1, tk2, tk3);
         
         dobj->translate.vec.f = dobjdesc->translate;
         dobj->rotate.vec.f = dobjdesc->rotate;

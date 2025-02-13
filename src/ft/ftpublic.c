@@ -73,10 +73,10 @@ u16 sFTPublicDefeatedCurrentOrder;          // Current "<player> defeated" annou
 // // // // // // // // // // // //
 
 // 0x80164AB0
-sb32 ftPublicTryStartCall(GObj *gobj, f32 knockback, s32 player_number)
+sb32 ftPublicTryStartCall(GObj *gobj, f32 knockback, s32 player_num)
 {
     FTStruct *fp;
-    GObj *fighter_gobj = ftParamGetPlayerNumGObj(player_number);
+    GObj *fighter_gobj = ftParamGetPlayerNumGObj(player_num);
     u16 sfx_id;
 
     if (fighter_gobj == NULL)
@@ -87,7 +87,7 @@ sb32 ftPublicTryStartCall(GObj *gobj, f32 knockback, s32 player_number)
     {
         return FALSE;
     }
-    else if (player_number == sFTPublicCallPlayerNum)
+    else if (player_num == sFTPublicCallPlayerNum)
     {
         return FALSE;
     }
@@ -111,7 +111,7 @@ sb32 ftPublicTryStartCall(GObj *gobj, f32 knockback, s32 player_number)
     if (sFTPublicCallALSound != NULL)
     {
         sFTPublicCallOrder = sFTPublicCallALSound->sfx_id;
-        sFTPublicCallPlayerNum = player_number;
+        sFTPublicCallPlayerNum = player_num;
         sFTPublicCallCount = 0;
 
         return TRUE;
@@ -191,15 +191,15 @@ void ftPublicDecideCall(GObj *gobj, s32 player_num, f32 knockback)
 }
 
 // 0x80164DED4
-void ftPublicDecideCommon(GObj *fighter_gobj, s32 player_number, f32 knockback, sb32 is_force_curr_knockback)
+void ftPublicDecideCommon(GObj *fighter_gobj, s32 player_num, f32 knockback, sb32 is_force_curr_knockback)
 {
     if (is_force_curr_knockback != FALSE)
     {
-        ftPublicDecideCall(fighter_gobj, player_number, knockback);
+        ftPublicDecideCall(fighter_gobj, player_num, knockback);
     }
-    else if ((player_number == sFTPublicCommonPlayerNum) && (sFTPublicCommonTicsPast < 60))
+    else if ((player_num == sFTPublicCommonPlayerNum) && (sFTPublicCommonTicsPast < 60))
     {
-        ftPublicDecideCall(fighter_gobj, player_number, (knockback > sFTPublicCommonKnockback) ? knockback : sFTPublicCommonKnockback);
+        ftPublicDecideCall(fighter_gobj, player_num, (knockback > sFTPublicCommonKnockback) ? knockback : sFTPublicCommonKnockback);
     }
     else if (knockback >= 160.0F)
     {
@@ -208,7 +208,7 @@ void ftPublicDecideCommon(GObj *fighter_gobj, s32 player_number, f32 knockback, 
     }
     else if (knockback >= 130.0F)
     {
-        if (player_number == sFTPublicCallPlayerNum)
+        if (player_num == sFTPublicCallPlayerNum)
         {
             ftPublicTryInterruptCall();
         }
@@ -219,7 +219,7 @@ void ftPublicDecideCommon(GObj *fighter_gobj, s32 player_number, f32 knockback, 
         ftPublicPlayCommon(nSYAudioVoicePublicDamageS);
     }
     sFTPublicCommonTicsPast = 0;
-    sFTPublicCommonPlayerNum = player_number;
+    sFTPublicCommonPlayerNum = player_num;
     sFTPublicCommonKnockback = knockback;
 }
 
@@ -230,7 +230,7 @@ void ftPublicCommonCheck(GObj *fighter_gobj, f32 knockback, sb32 is_force_curr_k
 
     if (knockback >= 100.0F) // Check if knockback is over 100 units
     {
-        ftPublicDecideCommon(fighter_gobj, fp->damage_player_number, knockback, is_force_curr_knockback); // Play crowd SFX
+        ftPublicDecideCommon(fighter_gobj, fp->damage_player_num, knockback, is_force_curr_knockback); // Play crowd SFX
     }
 }
 
@@ -239,7 +239,7 @@ void ftPublicPlayCliffReact(GObj *fighter_gobj, f32 knockback)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (sFTPublicCallPlayerNum == fp->player_number)
+    if (sFTPublicCallPlayerNum == fp->player_num)
     {
         ftPublicTryInterruptCall();
     }
@@ -277,7 +277,7 @@ void ftPublicTryPlayFallSpecialReact(GObj *fighter_gobj)
     }
     else ftPublicPlayCommon(nSYAudioVoicePublicGaspS);
 
-    if (sFTPublicCallPlayerNum == fp->player_number)
+    if (sFTPublicCallPlayerNum == fp->player_num)
     {
         ftPublicTryInterruptCall();
     }
@@ -332,7 +332,7 @@ void ftPublicProcUpdate(GObj *public_gobj)
     {
         ftPublicPlayCommon(nSYAudioVoicePublicGaspL);
 
-        if ((down_gobj != NULL) && (sFTPublicCallPlayerNum == ftGetStruct(down_gobj)->player_number))
+        if ((down_gobj != NULL) && (sFTPublicCallPlayerNum == ftGetStruct(down_gobj)->player_num))
         {
             ftPublicTryInterruptCall();
         }

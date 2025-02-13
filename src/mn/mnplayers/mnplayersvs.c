@@ -3229,7 +3229,7 @@ void mnPlayersVSBackToVSMode(void)
 
 	mnPlayersVSSetSceneData();
 	mnPlayersVSPauseSlotProcesses();
-	syAudioStopSongAll();
+	syAudioStopBGMAll();
 	syTaskmanSetLoadScene();
 }
 
@@ -4764,7 +4764,7 @@ void mnPlayersVSFuncStart(void)
 
 	if (gSCManagerSceneData.scene_prev != nSCKindMaps)
 	{
-		syAudioPlaySong(0, nSYAudioBGMBattleSelect);
+		syAudioPlayBGM(0, nSYAudioBGMBattleSelect);
 	}
 	if (gSCManagerTransferBattleState.is_team_battle == FALSE)
 	{

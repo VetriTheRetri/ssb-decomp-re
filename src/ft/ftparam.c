@@ -111,7 +111,7 @@ void ftParamTryPlayItemMusic(u32 bgm_id)
 {
     if (ftParamGetItemMusicLength(bgm_id) >= ftParamGetItemMusicLength(gMPCollisionBGMCurrent))
     {
-        syAudioPlaySong(0, bgm_id);
+        syAudioPlayBGM(0, bgm_id);
 
         gMPCollisionBGMCurrent = bgm_id;
     }
@@ -149,7 +149,7 @@ void ftParamTryUpdateItemMusic(void)
     }
     if (bgm_play != gMPCollisionBGMCurrent)
     {
-        syAudioPlaySong(0, bgm_play);
+        syAudioPlayBGM(0, bgm_play);
         gMPCollisionBGMCurrent = bgm_play;
     }
 }
@@ -183,7 +183,7 @@ void ftParamInitPlayerBattleStats(s32 player, GObj *fighter_gobj)
 }
 
 // 0x800E7ED4 - Get fighter GObj with player number
-GObj* ftParamGetPlayerNumGObj(s32 player_number)
+GObj* ftParamGetPlayerNumGObj(s32 player_num)
 {
     GObj *fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
 
@@ -191,7 +191,7 @@ GObj* ftParamGetPlayerNumGObj(s32 player_number)
     {
         FTStruct *fp = ftGetStruct(fighter_gobj);
 
-        if (player_number == fp->player_number)
+        if (player_num == fp->player_num)
         {
             return fighter_gobj;
         }
@@ -286,7 +286,7 @@ void ftParamSetThrowParams(FTStruct *this_fp, GObj *throw_gobj)
     this_fp->throw_gobj = throw_gobj;
     this_fp->throw_fkind = throw_fp->fkind;
     this_fp->throw_player = throw_fp->player;
-    this_fp->throw_player_number = throw_fp->player_number;
+    this_fp->throw_player_num = throw_fp->player_num;
     this_fp->throw_team = throw_fp->team;
 }
 

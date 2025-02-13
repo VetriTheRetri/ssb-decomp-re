@@ -39,7 +39,7 @@ void ftDonkeyThrowFDamageSetStatus(GObj *fighter_gobj)
     {
         this_fp->damage_knockback = 0.0F;
     }
-    ftCommonDamageInitDamageVars(fighter_gobj, nFTDonkeyStatusThrowFDamage, this_fp->damage_queue, this_fp->damage_knockback, this_fp->damage_angle, this_fp->damage_lr, this_fp->damage_index, this_fp->damage_element, this_fp->damage_player_number, FALSE, FALSE, TRUE);
+    ftCommonDamageInitDamageVars(fighter_gobj, nFTDonkeyStatusThrowFDamage, this_fp->damage_queue, this_fp->damage_knockback, this_fp->damage_angle, this_fp->damage_lr, this_fp->damage_index, this_fp->damage_element, this_fp->damage_player_num, FALSE, FALSE, TRUE);
 
     if (this_fp->catch_gobj != NULL)
     {

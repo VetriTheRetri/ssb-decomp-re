@@ -1168,14 +1168,14 @@ void sc1PBonusStageStartScene(void)
 	dSC1PBonusStageTaskmanSetup.func_start = sc1PBonusStageFuncStart;
 
 	syTaskmanStartTask(&dSC1PBonusStageTaskmanSetup);
-	syAudioStopSongAll();
+	syAudioStopBGMAll();
 
-	while (auIsBGMPlaying(0) != FALSE)
+	while (syAudioCheckBGMPlaying(0) != FALSE)
 	{
 		continue;
 	}
 
-	syAudioSetSongVolumeID(0, 0x7800);
+	syAudioSetBGMVolume(0, 0x7800);
 	func_800266A0_272A0();
 	gmRumbleInitPlayers();
 

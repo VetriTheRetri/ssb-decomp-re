@@ -145,11 +145,11 @@ typedef struct N_ALUnk80026204
     u16 unk_80026204_0x0;
     u16 unk_80026204_0x2;
     u16 unk_80026204_0x4;
-    u16 unk_80026204_0x6;
+    u16 inst_sound_count;
     u16 fgm_ucode_count;
     u16 fgm_table_count;
     u16 unk_80026204_0xC;
-    void *unk_80026204_0x10;
+    void *inst_sound_array;
     void *fgm_ucode_data;
     void *fgm_table_data;
     s32 unk_80026204_0x1C;
@@ -298,7 +298,7 @@ extern Acmd *sSYAudioAcmdListBuffers[2];
 extern SYTaskAudio *sSYAudioTask;
 extern SYTaskAudio *sSYAudioSchedulerTasks[2];
 extern ALBank *sSYAudioSequenceALBank1;
-extern void **sSYAudioPlayingSound; // 0x8009D954?
+extern void **sSYAudioSoundPlayers; // 0x8009D954?
 extern s32 *sSYAudioStartingSound;
 extern s8 *sSYAudioSndpSoundID; // returned by alSndpAllocate
 extern u8 *sSYAudioSoundPriority;
@@ -314,7 +314,7 @@ extern ALSndPlayer *sSYAudioALSndPlayer;
 extern s32 dSYAudioIsSettingsUpdated;
 
 // 0x80044D48
-extern s32 sSYMainThreadingQueue;
+extern OSMesgQueue gSYMainThreadingQueue;
 
 // 0x8009D958
 extern ALBank *sSYAudioSequenceALBank2;
@@ -329,31 +329,31 @@ extern ALCSPlayer *gSYAudioALCSPlayers[1];
 extern ALCSeq *sSYAudioALCSeqs[1];
 
 // 0x8009D968
-extern u8 gSYAudioGlobalSongPriority;
+extern u8 gSYAudioGlobalBGMPriority;
 
 // 0x8009D96C
-extern u8 *sSYAudioSongSequenceDatas[1];
+extern u8 *sSYAudioBGMSequenceDatas[1];
 
 // 0x8009D970
 extern u8 *sSYAudioCSPlayerStatuses;
 
 // 0x8009D974
-extern s32 *sSYAudioSongIDs;
+extern s32 *sSYAudioBGMPlayingIDs;
 
 // 0x8009D978
-extern s32 sSYAudioSongVolumeTimers[1];
+extern s32 sSYAudioBGMVolumeTimers[1];
 
 // 0x8009D97C
-extern f32 sSYAudioSongVolumes[1];
+extern f32 sSYAudioBGMVolumes[1];
 
 // 0x8009D980
-extern f32 sSYAudioSongVolumeRates[1];
+extern f32 sSYAudioBGMVolumeRates[1];
 
 // 0x8009D988
 extern SYAudioSettings sSYAudioCurrentSettings;
 
 // 0x8009D9BB
-extern u8 D_8009D9BB_96DBB;
+extern u8 sSYAudioSoundPlayersNum;
 
 // 0x8009D9F0
 extern OSTime sSYAudioOSTime;
@@ -392,10 +392,13 @@ static void syAudioBnkfPatchInst(ALInstrument *i, uintptr_t offset, uintptr_t ta
 static void syAudioBnkfPatchSound(ALSound *s, uintptr_t offset, uintptr_t table);
 static void syAudioBnkfPatchWaveTable(ALWaveTable *w, uintptr_t offset, uintptr_t table);
 
-extern void func_80026104_26D04(s32, u8);
-extern void func_80026094_26C94(s32, u8);
+extern void func_80026104_26D04(void*, u8);
+extern void func_80026094_26C94(void*, u8);
+extern void* func_800269C0_275C0(u16);
+extern void func_80026070_26C70(u8);
+extern void func_80026174_26D74(void*, u8);
 
-void syAudioStopSong(s32 arg0);
+void syAudioStopBGM(s32 sngplayer);
 
 // 0x8001E5C0
 void alHeapInit(ALHeap *hp, u8 *base, s32 len)
@@ -958,9 +961,9 @@ void syAudioLoadAssets(void)
             len = sSYAudioALSeqFile->seqArray[i].len;
         }
     }
-    for (i = 0; i < ARRAY_COUNT(sSYAudioSongSequenceDatas); i++)
+    for (i = 0; i < ARRAY_COUNT(sSYAudioBGMSequenceDatas); i++)
     {
-        sSYAudioSongSequenceDatas[i] = alHeapAlloc(&sSYAudioALHeap, 1, len);
+        sSYAudioBGMSequenceDatas[i] = alHeapAlloc(&sSYAudioALHeap, 1, len);
     }
     sSYAudioAcmdListBuffers[0] = alHeapAlloc(&sSYAudioALHeap, 1, 0x8000);
     sSYAudioAcmdListBuffers[1] = alHeapAlloc(&sSYAudioALHeap, 1, 0x8000);
@@ -1013,11 +1016,11 @@ void syAudioLoadAssets(void)
     }
 }
 
-void syAudioMakeSongPlayers(void)
+void syAudioMakeBGMPlayers(void)
 {
     ALSynConfig synConfig;
     ALSeqpConfig seqpConfig;
-    N_ALUnk80026204 sp94;
+    N_ALUnk80026204 audioSetup;
     s32 i, j;
     s32 unused;
 
@@ -1048,46 +1051,46 @@ void syAudioMakeSongPlayers(void)
     sSYAudioFrequency = ((sSYAudioFrequency / 184) * 184) + 184;
     D_8009D920_96D20 = sSYAudioFrequency - 184;
     
-    sp94.unk_80026204_0x0 = sSYAudioCurrentSettings.unk31;
-    sp94.unk_80026204_0x2 = sSYAudioCurrentSettings.unk32;
-    sp94.unk_80026204_0x4 = sSYAudioCurrentSettings.unk33;
+    audioSetup.unk_80026204_0x0 = sSYAudioCurrentSettings.unk31;
+    audioSetup.unk_80026204_0x2 = sSYAudioCurrentSettings.unk32;
+    audioSetup.unk_80026204_0x4 = sSYAudioCurrentSettings.unk33;
     
     if (sSYAudioCurrentSettings.unk34 != 0)
     {
-        sp94.unk_80026204_0x6 = sSYAudioCurrentSettings.unk34;
-        sp94.unk_80026204_0x10 = sSYAudioCurrentSettings.unk38;
+        audioSetup.inst_sound_count = sSYAudioCurrentSettings.unk34;
+        audioSetup.inst_sound_array = sSYAudioCurrentSettings.unk38;
     }
     else
     {
-        sp94.unk_80026204_0x6 = sSYAudioSequenceALBank1->instArray[0]->soundCount;
-        sp94.unk_80026204_0x10 = sSYAudioSequenceALBank1->instArray[0]->soundArray;
+        audioSetup.inst_sound_count = sSYAudioSequenceALBank1->instArray[0]->soundCount;
+        audioSetup.inst_sound_array = sSYAudioSequenceALBank1->instArray[0]->soundArray;
     }
-    sp94.fgm_ucode_data = sSYAudioCurrentSettings.fgm_ucode_data;
-    sp94.fgm_table_data = sSYAudioCurrentSettings.fgm_table_data;
-    sp94.unk_80026204_0x1C = sSYAudioCurrentSettings.unk44;
-    sp94.fgm_ucode_count = sSYAudioCurrentSettings.fgm_ucode_count;
-    sp94.fgm_table_count = sSYAudioCurrentSettings.fgm_table_count;
-    sp94.unk_80026204_0xC = sSYAudioCurrentSettings.unk4C;
-    sp94.heap = &sSYAudioALHeap;
-    sp94.unk_80026204_0x24 = sSYAudioCurrentSettings.unk12;
-    sp94.unk_80026204_0x26 = 10;
-    sp94.unk_80026204_0x28 = 20;
-    sp94.unk_80026204_0x2A = 30;
-    sp94.unk_80026204_0x2C = 40;
-    sp94.unk_80026204_0x2E = 50;
-    sp94.unk_80026204_0x30 = 60;
+    audioSetup.fgm_ucode_data = sSYAudioCurrentSettings.fgm_ucode_data;
+    audioSetup.fgm_table_data = sSYAudioCurrentSettings.fgm_table_data;
+    audioSetup.unk_80026204_0x1C = sSYAudioCurrentSettings.unk44;
+    audioSetup.fgm_ucode_count = sSYAudioCurrentSettings.fgm_ucode_count;
+    audioSetup.fgm_table_count = sSYAudioCurrentSettings.fgm_table_count;
+    audioSetup.unk_80026204_0xC = sSYAudioCurrentSettings.unk4C;
+    audioSetup.heap = &sSYAudioALHeap;
+    audioSetup.unk_80026204_0x24 = sSYAudioCurrentSettings.unk12;
+    audioSetup.unk_80026204_0x26 = 10;
+    audioSetup.unk_80026204_0x28 = 20;
+    audioSetup.unk_80026204_0x2A = 30;
+    audioSetup.unk_80026204_0x2C = 40;
+    audioSetup.unk_80026204_0x2E = 50;
+    audioSetup.unk_80026204_0x30 = 60;
     
-    func_80026204_26E04(&sp94);
+    func_80026204_26E04(&audioSetup);
 
-    sSYAudioPlayingSound = alHeapAlloc(&sSYAudioALHeap, 1, sSYAudioCurrentSettings.unk33 * sizeof(*sSYAudioPlayingSound));
+    sSYAudioSoundPlayers = alHeapAlloc(&sSYAudioALHeap, 1, sSYAudioCurrentSettings.unk33 * sizeof(*sSYAudioSoundPlayers));
     
     for (i = 0; i < sSYAudioCurrentSettings.unk33; i++)
     {
-        sSYAudioPlayingSound[i] = NULL;
+        sSYAudioSoundPlayers[i] = NULL;
     }
     sSYAudioCSPlayerStatuses = alHeapAlloc(&sSYAudioALHeap, 1, sizeof(*sSYAudioCSPlayerStatuses));
-    sSYAudioSongIDs = alHeapAlloc(&sSYAudioALHeap, 1, sizeof(*sSYAudioSongIDs));
-    gSYAudioGlobalSongPriority = sSYAudioCurrentSettings.unk13;
+    sSYAudioBGMPlayingIDs = alHeapAlloc(&sSYAudioALHeap, 1, sizeof(*sSYAudioBGMPlayingIDs));
+    gSYAudioGlobalBGMPriority = sSYAudioCurrentSettings.unk13;
     
     sSYAudioOscStatesAllocFree = alHeapAlloc(&sSYAudioALHeap, sizeof(*sSYAudioOscStatesAllocFree), OSC_STATE_COUNT);
 
@@ -1113,10 +1116,10 @@ void syAudioMakeSongPlayers(void)
         sSYAudioALCSeqs[i] = alHeapAlloc(&sSYAudioALHeap, 1, sizeof(ALCSeq));
         
         sSYAudioCSPlayerStatuses[i] = 0;
-        sSYAudioSongIDs[i] = -1;
-        sSYAudioSongVolumeTimers[i] = 0;
-        sSYAudioSongVolumes[i] = 30720.0F;
-        sSYAudioSongVolumeRates[i] = 0.0F;
+        sSYAudioBGMPlayingIDs[i] = -1;
+        sSYAudioBGMVolumeTimers[i] = 0;
+        sSYAudioBGMVolumes[i] = 30720.0F;
+        sSYAudioBGMVolumeRates[i] = 0.0F;
     }
 }
 
@@ -1152,49 +1155,50 @@ void syAudioSetReverbType(s32 fx_type)
 }
 
 // 0x80020A74
-void syAudioStopSongAll(void)
+void syAudioStopBGMAll(void)
 {
     s32 i;
 
     for (i = 0; i < 1; i++)
     {
-        syAudioStopSong(i);
+        syAudioStopBGM(i);
     }
 }
 
 // 0x80020AB4
-u32 syAudioPlaySong(s32 arg0, u32 arg1)
+s32 syAudioPlayBGM(s32 sngplayer, u32 bgm)
 {
-    if (arg1 < sSYAudioALSeqFile->seqCount)
+    if (bgm < sSYAudioALSeqFile->seqCount)
     {
-        sSYAudioCSPlayerStatuses[arg0] = 1;
-        sSYAudioSongIDs[arg0] = arg1;
-        return arg1;
+        sSYAudioCSPlayerStatuses[sngplayer] = AL_PLAYING;
+        sSYAudioBGMPlayingIDs[sngplayer] = bgm;
+
+        return bgm;
     }
-    return ~0U;
+    else return -1;
 }
 
 // 0x80020B08
-void syAudioStopSong(s32 arg0)
+void syAudioStopBGM(s32 sngplayer)
 {
-    sSYAudioCSPlayerStatuses[arg0] = 1;
-    sSYAudioSongIDs[arg0] = -1;
+    sSYAudioCSPlayerStatuses[sngplayer] = AL_PLAYING;
+    sSYAudioBGMPlayingIDs[sngplayer] = -1;
 }
 
 // 0x80020B38
-void syAudioSetSongVolumeID(s32 sngplayer, u32 vol)
+void syAudioSetBGMVolume(s32 sngplayer, u32 vol)
 {
     if (vol > 30720)
     {
         vol = 30720;
     }
     alCSPSetVol(gSYAudioALCSPlayers[sngplayer], vol);
-    sSYAudioSongVolumes[sngplayer] = vol;
-    sSYAudioSongVolumeTimers[sngplayer] = 0;
+    sSYAudioBGMVolumes[sngplayer] = vol;
+    sSYAudioBGMVolumeTimers[sngplayer] = 0;
 }
 
 // 0x80020BC0
-void syAudioSetSongVolumeSmoothID(s32 sngplayer, u32 vol, u32 time)
+void syAudioSetBGMVolumeFade(s32 sngplayer, u32 vol, u32 time)
 {
     if (vol > 30720)
     {
@@ -1202,14 +1206,14 @@ void syAudioSetSongVolumeSmoothID(s32 sngplayer, u32 vol, u32 time)
     }
     if (time != 0)
     {
-        sSYAudioSongVolumeTimers[sngplayer] = time;
-        sSYAudioSongVolumeRates[sngplayer] = (vol - sSYAudioSongVolumes[sngplayer]) / time;
+        sSYAudioBGMVolumeTimers[sngplayer] = time;
+        sSYAudioBGMVolumeRates[sngplayer] = (vol - sSYAudioBGMVolumes[sngplayer]) / time;
     }
-    else syAudioSetSongVolumeID(sngplayer, vol);
+    else syAudioSetBGMVolume(sngplayer, vol);
 }
 
 // 0x80020C5C
-void syAudioSetSongReverb(s32 sngplayer, u32 reverb)
+void syAudioSetBGMReverb(s32 sngplayer, u32 reverb)
 {
     s32 i;
 
@@ -1217,31 +1221,31 @@ void syAudioSetSongReverb(s32 sngplayer, u32 reverb)
     {
         reverb = 127;
     }
-    for (i = 0; i < 16; i++)
+    for (i = 0; i < AL_MAX_CHANNELS; i++)
     {
         alCSPSetChlFXMix(gSYAudioALCSPlayers[sngplayer], i, reverb);
     }
 }
 
 // 0x80020CD4
-void syAudioSetSongPriority(s32 sngplayer, u8 priority)
+void syAudioSetBGMPriority(s32 sngplayer, u8 priority)
 {
     s32 i;
 
-    if (priority > 127)
+    if (priority > AL_MAX_PRIORITY)
     {
-        priority = 127;
+        priority = AL_MAX_PRIORITY;
     }
-    gSYAudioGlobalSongPriority = priority;
+    gSYAudioGlobalBGMPriority = priority;
 
-    for (i = 0; i < 16; i++)
+    for (i = 0; i < AL_MAX_CHANNELS; i++)
     {
         alCSPSetChlPriority(gSYAudioALCSPlayers[sngplayer], i, priority);
     }
 }
 
 // 0x80020D58
-s32 auIsBGMPlaying(s32 sngplayer)
+s32 syAudioCheckBGMPlaying(s32 sngplayer)
 {
     if (gSYAudioALCSPlayers[sngplayer]->state == AL_STOPPED)
     {
@@ -1250,93 +1254,106 @@ s32 auIsBGMPlaying(s32 sngplayer)
     else return TRUE;
 }
 
-// https://decomp.me/scratch/jwM9v
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/audio/func_80020D88.s")
+s32 syAudioPlayFGM(u32 fgm)
+{
+    s32 i;
+    
+    for (i = 0; i < sSYAudioSoundPlayersNum; i++)
+    {
+        if (sSYAudioSoundPlayers[i] == NULL)
+        {
+            sSYAudioSoundPlayers[i] = func_800269C0_275C0(fgm);
+            return i;
+        }
+    }
+    return -1;
+}
 
 s32 func_80020E10(s32 arg0, s32 arg1, s32 arg2, s32 arg3)
 {
     return -1;
 }
 
-void func_80020E28()
+void func_80020E28(void)
 {
-    s32 var_v0;
+    s32 i;
+
     func_800266A0_272A0();
-    for (var_v0 = 0; var_v0 < D_8009D9BB_96DBB; var_v0++);
+
+    // ??????
+    for (i = 0; i < sSYAudioSoundPlayersNum; i++)
+    {
+        continue;
+    }
 }
 
-void func_80020E64(u32 arg0)
+void func_80020E64(u32 volume)
 {
-    s32 var_a0;
+    u8 vol = (volume > 30720) ? AL_VOL_FULL : volume >> 8;
 
-    if (arg0 >= 0x7801U)
-        var_a0 = 0x7F;
-    else
-        var_a0 = (arg0 >> 8) & 0xFF;
-
-    func_80026070_26C70(var_a0, arg0);
+    func_80026070_26C70(vol);
 }
 
-void func_80020EA0(s32 arg0, u32 arg1)
+void func_80020EA0(s32 sndplayer, u32 arg1)
 {
-    void* sound;
-    u32 var_a2;
-
-    var_a2 = arg1;
-    if (arg1 >= 0x8000U)
-        var_a2 = 0x7FFF;
-
-    sound = sSYAudioPlayingSound[arg0];
-
-    if (sound != 0)
-        func_80026174_26D74(sound, (var_a2 >> 8) & 0xFF, var_a2, arg0);
+    if (arg1 > 32767)
+    {
+        arg1 = 32767;
+    }
+    if (sSYAudioSoundPlayers[sndplayer] != NULL)
+    {
+        func_80026174_26D74(sSYAudioSoundPlayers[sndplayer], arg1 >> 8);
+    }
 }
 
-void func_80020EF8(s32 arg0, s32 arg1)
+void func_80020EF8(s32 sndplayer, s32 arg1)
 {
-    void* sound;
-    u8 var_a2;
+    u8 var = arg1;
 
-    var_a2 = arg1;
-    if (var_a2 >= 0x80)
-        var_a2 = 0x7F;
-
-    sound = sSYAudioPlayingSound[arg0];
-    if (sound != NULL)
-        func_80026104_26D04(sound, var_a2);
+    if (var > 127)
+    {
+        var = 127;
+    }
+    if (sSYAudioSoundPlayers[sndplayer] != NULL)
+    {
+        func_80026104_26D04(sSYAudioSoundPlayers[sndplayer], var);
+    }
 }
 
-void func_80020F4C(s32 arg0, s32 arg1)
+void func_80020F4C(s32 sndplayer, s32 arg1)
 {
-    void* sound;
-    u8 var_a2;
+    u8 var = arg1;
 
-    var_a2 = arg1;
-    if (var_a2 >= 0x80)
-        var_a2 = 0x7F;
-
-    sound = sSYAudioPlayingSound[arg0];
-    if (sound != NULL)
-        func_80026094_26C94(sound, var_a2);
+    if (var > 127)
+    {
+        var = 127;
+    }
+    if (sSYAudioSoundPlayers[sndplayer] != NULL)
+    {
+        func_80026094_26C94(sSYAudioSoundPlayers[sndplayer], var);
+    }
 }
 
 // 0x80020FA0
-void func_80020FA0_21BA0(s32 arg0, s32 arg1) { }
+void func_80020FA0_21BA0(s32 arg0, s32 arg1)
+{
+    return;
+}
 
 // 0x80020FAC
-void func_80020FAC(s32 arg0)
+void syAudioStopFGM(s32 sndplayer)
 {
-    if (sSYAudioPlayingSound[arg0] != 0)
+    if (sSYAudioSoundPlayers[sndplayer] != NULL)
     {
-        func_80026738_27338(sSYAudioPlayingSound[arg0]);
-        sSYAudioPlayingSound[arg0] = 0;
+        func_80026738_27338(sSYAudioSoundPlayers[sndplayer]);
+        sSYAudioSoundPlayers[sndplayer] = NULL;
     }
 }
 
 // 0x80020FFC
 void func_80020FFC(s32 arg0, u8 arg1)
 {
-    void* sound = sSYAudioPlayingSound[arg0];
+    void* sound = sSYAudioSoundPlayers[arg0];
     if (sound != NULL)
         ((u8*)sound)[0x1f] = arg1;
 }
@@ -1365,9 +1382,10 @@ sb32 syAudioGetStatus(void)
     return dSYAudioIsRestarting | dSYAudioIsSettingsUpdated;
 }
 
-void func_8002106C(void)
+// 0x8002106C - unreferenced?
+void syAudioUpdateMesgQueue(void)
 {
-    osRecvMesg(&sSYMainThreadingQueue, 0, 0);
+    osRecvMesg(&gSYMainThreadingQueue, NULL, OS_MESG_NOBLOCK);
     dSYAudioIsSettingsUpdated = 1;
-    osRecvMesg(&sSYMainThreadingQueue, 0, 1);
+    osRecvMesg(&gSYMainThreadingQueue, NULL, OS_MESG_BLOCK);
 }

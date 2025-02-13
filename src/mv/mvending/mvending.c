@@ -544,7 +544,7 @@ void mvEndingFuncStart(void)
     mvEndingMakeRoomFadeIn();
 
     scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
-    syAudioPlaySong(0, nSYAudioBGMEnding);
+    syAudioPlayBGM(0, nSYAudioBGMEnding);
 }
 
 // 0x80132A78

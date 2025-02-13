@@ -1966,9 +1966,9 @@ void sc1PIntroFuncStart(void)
     
     if (sSC1PIntroStage == nSC1PGameStageBoss)
     {
-        syAudioPlaySong(0, nSYAudioBGMBossStage);
+        syAudioPlayBGM(0, nSYAudioBGMBossStage);
     }
-    else syAudioPlaySong(0, nSYAudioBGM1PIntro);
+    else syAudioPlayBGM(0, nSYAudioBGM1PIntro);
     
     sySchedulerSetTicCount(0);
 }

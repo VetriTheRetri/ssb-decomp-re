@@ -2782,7 +2782,7 @@ void mnVSResultsAudioThreadUpdate(GObj *gobj)
 	{
 		if (gSYAudioALCSPlayers[0]->state == AL_STOPPED)
 		{
-			syAudioPlaySong(0, nSYAudioBGMResults);
+			syAudioPlayBGM(0, nSYAudioBGMResults);
 			gcEjectGObj(NULL);
 		}
 		gcStopCurrentGObjThread(1);
@@ -3085,48 +3085,48 @@ void mnVSResultsPlayWinBGM(void)
 	{
 	case nFTKindMario:
 	case nFTKindLuigi:
-		syAudioPlaySong(0, nSYAudioBGMWinMario);
+		syAudioPlayBGM(0, nSYAudioBGMWinMario);
 		break;
 
 	case nFTKindFox:
-		syAudioPlaySong(0, nSYAudioBGMWinFox);
+		syAudioPlayBGM(0, nSYAudioBGMWinFox);
 		break;
 
 	case nFTKindDonkey:
-		syAudioPlaySong(0, nSYAudioBGMWinDonkey);
+		syAudioPlayBGM(0, nSYAudioBGMWinDonkey);
 		break;
 
 	case nFTKindSamus:
-		syAudioPlaySong(0, nSYAudioBGMWinMetroid);
+		syAudioPlayBGM(0, nSYAudioBGMWinMetroid);
 		break;
 
 	case nFTKindLink:
-		syAudioPlaySong(0, nSYAudioBGMWinZelda);
+		syAudioPlayBGM(0, nSYAudioBGMWinZelda);
 		break;
 
 	case nFTKindYoshi:
-		syAudioPlaySong(0, nSYAudioBGMWinYoshi);
+		syAudioPlayBGM(0, nSYAudioBGMWinYoshi);
 		break;
 
 	case nFTKindCaptain:
-		syAudioPlaySong(0, nSYAudioBGMWinFZero);
+		syAudioPlayBGM(0, nSYAudioBGMWinFZero);
 		break;
 
 	case nFTKindPikachu:
 	case nFTKindPurin:
-		syAudioPlaySong(0, nSYAudioBGMWinPMonsters);
+		syAudioPlayBGM(0, nSYAudioBGMWinPMonsters);
 		break;
 
 	case nFTKindKirby:
-		syAudioPlaySong(0, nSYAudioBGMWinKirby);
+		syAudioPlayBGM(0, nSYAudioBGMWinKirby);
 		break;
 
 	case nFTKindNess:
-		syAudioPlaySong(0, nSYAudioBGMWinMother);
+		syAudioPlayBGM(0, nSYAudioBGMWinMother);
 		break;
 
 	default:
-		syAudioPlaySong(0, nSYAudioBGMWinDefault);
+		syAudioPlayBGM(0, nSYAudioBGMWinDefault);
 		break;
 	}
 }
@@ -3237,7 +3237,7 @@ void mnVSResultsProcRun(GObj *gobj)
 			gSCManagerSceneData.scene_curr = nSCKindPlayersVS;
 		}
 		func_800266A0_272A0();
-		syAudioStopSongAll();
+		syAudioStopBGMAll();
 		syTaskmanSetLoadScene();
 	}
 }

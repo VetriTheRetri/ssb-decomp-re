@@ -129,10 +129,10 @@ extern DObj* gcAddChildForDObjTraRotSca(DObj *dobj, void *dvar);
 extern void gcSetupCommonDObjs(GObj *gobj, DObjDesc *dobjdesc, DObj **dobjs);
 
 // Add three XObjes of transformation kind for specific DObj
-extern void gcAddDObjTriTransformKind(DObj *dobj, u8 tk1, u8 tk2, u8 tk3);
+extern void gcAddDObj3TransformsKind(DObj *dobj, u8 tk1, u8 tk2, u8 tk3);
 
 // Decide what transformation XObjes to add to specific DObj based on tk1, tk2, tk3 and flags
-extern void gcDecideDObjTriTransformKind(DObj *dobj, u8 tk1, u8 tk2, u8 tk3, s32 flags);
+extern void gcDecideDObj3TransformsKind(DObj *dobj, u8 tk1, u8 tk2, u8 tk3, s32 flags);
 
 // Set up DObj node tree with custom XObj transformations for GObj
 extern void gcSetupCustomDObjs(GObj *gobj, DObjDesc *dobjdesc, DObj **dobjs, u8 tk1, u8 tk2, u8 tk3);

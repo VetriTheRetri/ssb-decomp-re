@@ -81,7 +81,7 @@ void wpPikachuThunderHeadSetDestroy(GObj *weapon_gobj, sb32 is_destroy)
     {
         FTStruct *fp = ftGetStruct(wp->owner_gobj);
 
-        if (fp->player_number == wp->player_number) // Check number of player that spawned Thunder
+        if (fp->player_num == wp->player_num) // Check number of player that spawned Thunder
         {
             fp->passive_vars.pikachu.is_thunder_destroy |= is_destroy;
         }
@@ -203,7 +203,7 @@ sb32 wpPikachuThunderTrailProcUpdate(GObj *weapon_gobj)
 
         return TRUE;
     }
-    else DObjGetStruct(weapon_gobj)->mobj->texture_id_curr = syUtilsGetRandomIntRange(WPPIKACHUTHUNDER_TEXTURE_COUNT - 1);
+    else DObjGetStruct(weapon_gobj)->mobj->texture_id_curr = syUtilsGetRandomIntRange(WPPIKACHUTHUNDER_TEXTURES_NUM - 1);
 
     return FALSE;
 }

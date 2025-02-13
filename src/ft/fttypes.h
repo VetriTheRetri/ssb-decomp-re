@@ -633,7 +633,7 @@ struct FTHitLog
     GObj *attacker_gobj;
     FTDamageColl *damage_coll; // Victim fighter's hurtbox
     u8 attacker_player;
-    s32 attacker_player_number;
+    s32 attacker_player_num;
 };
 
 struct FTItemThrow
@@ -990,7 +990,7 @@ struct FTStruct
     s8 stock_count;
     u8 team_order;              // Order number if this fighter is a "VS *character* Team" member; used to check for bonuses such as Yoshi Rainbow
     u8 dl_link;
-    s32 player_number;          // Player's number? (Note: NOT player port, e.g. if players 2 and 4 are in a match,
+    s32 player_num;          // Player's number? (Note: NOT player port, e.g. if players 2 and 4 are in a match,
                                 // player 2 will be number 1 and player 4 will be number 2; used to match fighters and items?)
 
     u32 status_total_tics;      // Frames spent in this action state
@@ -1151,7 +1151,7 @@ struct FTStruct
     s32 throw_fkind;                    // Kind of opponent that threw this fighter
     u8 throw_team;                      // Team of opponent that threw this fighter
     u8 throw_player;                    // Port of opponent that threw this fighter
-    s32 throw_player_number;            // Player number of opponent that threw this fighter
+    s32 throw_player_num;            // Player number of opponent that threw this fighter
 
     u32 motion_attack_id;               // Used to group status_ids for the stale queue
     u16 motion_count;                   // This is used to tell the game not to stale multihit attacks...
@@ -1197,7 +1197,7 @@ struct FTStruct
     s32 damage_lr;
     s32 damage_index;
     s32 damage_joint_id;
-    s32 damage_player_number;
+    s32 damage_player_num;
     s32 damage_player;                  // Port index of damaging fighter
     u16 damage_count;                   // Number of times fighter has taken damage; initialized to 0 and incremented, but never used?
     s32 damage_kind;

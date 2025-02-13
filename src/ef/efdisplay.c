@@ -56,7 +56,7 @@ void efDisplayZPerspXLUProcDisplay(GObj *effect_gobj)
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
 
-    LBParticleDrawTextures(effect_gobj);
+    lbParticleDrawTextures(effect_gobj);
 
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetTexturePersp(gSYTaskmanDLHeads[0]++, G_TP_PERSP);
@@ -70,7 +70,7 @@ void efDisplayZPerspCLDProcDisplay(GObj *effect_gobj)
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
 
-    LBParticleDrawTextures(effect_gobj);
+    lbParticleDrawTextures(effect_gobj);
 
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetTexturePersp(gSYTaskmanDLHeads[0]++, G_TP_PERSP);
@@ -84,7 +84,7 @@ void efDisplayZPerspAAXLUProcDisplay(GObj *effect_gobj)
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
-    LBParticleDrawTextures(effect_gobj);
+    lbParticleDrawTextures(effect_gobj);
 
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetTexturePersp(gSYTaskmanDLHeads[0]++, G_TP_PERSP);

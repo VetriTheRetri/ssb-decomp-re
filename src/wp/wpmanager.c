@@ -121,7 +121,7 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPDesc *wp_desc, Vec3f *spawn_pos, 
         wp->team = fp->team;
         wp->player = fp->player;
         wp->handicap = fp->handicap;
-        wp->player_number = fp->player_number;
+        wp->player_num = fp->player_num;
         wp->lr = fp->lr;
 
         wp->display_mode = fp->display_mode;
@@ -139,7 +139,7 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPDesc *wp_desc, Vec3f *spawn_pos, 
         wp->team = owner_wp->team;
         wp->player = owner_wp->player;
         wp->handicap = owner_wp->handicap;
-        wp->player_number = owner_wp->player_number;
+        wp->player_num = owner_wp->player_num;
         wp->lr = owner_wp->lr;
 
         wp->display_mode = owner_wp->display_mode;
@@ -157,7 +157,7 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPDesc *wp_desc, Vec3f *spawn_pos, 
         wp->team = ip->team;
         wp->player = ip->player;
         wp->handicap = ip->handicap;
-        wp->player_number = ip->player_number;
+        wp->player_num = ip->player_num;
         wp->lr = ip->lr;
 
         wp->display_mode = ip->display_mode;
@@ -175,7 +175,7 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPDesc *wp_desc, Vec3f *spawn_pos, 
         wp->team = WEAPON_TEAM_DEFAULT;
         wp->player = WEAPON_PORT_DEFAULT;
         wp->handicap = WEAPON_HANDICAP_DEFAULT;
-        wp->player_number = 0;
+        wp->player_num = 0;
         wp->lr = +1;
 
         wp->display_mode = sWPManagerDisplayMode;
@@ -191,11 +191,9 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPDesc *wp_desc, Vec3f *spawn_pos, 
     wp->attack_coll.attack_state = nGMAttackStateNew;
     
     wp->physics.vel_air.x = wp->physics.vel_air.y = wp->physics.vel_air.z = 0.0F;
-
     wp->physics.vel_ground = 0.0F;
 
     wp->attack_coll.damage = attr->damage;
-
     wp->attack_coll.element = attr->element;
 
     wp->attack_coll.offsets[0].x = attr->attack_offsets[0].x;
@@ -267,7 +265,7 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPDesc *wp_desc, Vec3f *spawn_pos, 
     }
     else
     {
-        lbCommonInitDObjTriTransform(gcAddDObjForGObj(weapon_gobj, attr->dobj_setup), wp_desc->transform_types.tk1, wp_desc->transform_types.tk2, wp_desc->transform_types.tk3);
+        lbCommonInitDObj3Transforms(gcAddDObjForGObj(weapon_gobj, attr->dobj_setup), wp_desc->transform_types.tk1, wp_desc->transform_types.tk2, wp_desc->transform_types.tk3);
 
         proc_display = (wp_desc->flags & WEAPON_FLAG_DOBJLINKS) ? wpDisplayDObjDLLinks : wpDisplayDLHead1;
     }

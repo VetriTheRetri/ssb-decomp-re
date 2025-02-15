@@ -188,7 +188,7 @@ void syMainThread5(void *arg)
     sSYMainThread3Stack[0] = STACK_PROBE_MAGIC; osStartThread(&sSYMainThread3);
     osRecvMesg(&gSYMainThreadingQueue, NULL, OS_MESG_BLOCK);
 
-    osCreateThread(&sSYMainThread4, 4, auThreadMain, NULL, sSYMainThread4Stack + ARRAY_COUNT(sSYMainThread4Stack), THREAD4_PRI);
+    osCreateThread(&sSYMainThread4, 4, syAudioThreadMain, NULL, sSYMainThread4Stack + ARRAY_COUNT(sSYMainThread4Stack), THREAD4_PRI);
     sSYMainThread4Stack[0] = STACK_PROBE_MAGIC; osStartThread(&sSYMainThread4);
     osRecvMesg(&gSYMainThreadingQueue, NULL, OS_MESG_BLOCK);
 

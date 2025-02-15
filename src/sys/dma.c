@@ -9,7 +9,6 @@
 #include <PR/os.h>
 #include <PR/sp.h>
 #include <PR/rcp.h>
-#include <PR/ultratypes.h>
 
 // // // // // // // // // // // //
 //                               //

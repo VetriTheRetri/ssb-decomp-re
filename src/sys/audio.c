@@ -3,11 +3,9 @@
 #include <sys/audio.h>
 #include <sys/scheduler.h>
 #include <sys/dma.h>
+#include <sys/main.h>
 
-extern u64 gSYMainRspBootCode[/* */];
-
-// 0x80044D48
-extern OSMesgQueue gSYMainThreadingQueue;
+extern SYAudioSettings dSYAudioPublicSettings2, dSYAudioPublicSettings3;
 
 #define AL_CACHE_ALIGN  15
 
@@ -42,7 +40,8 @@ typedef struct alSoundEffect
 	u16 unk_0x18;
 	u16 unk_0x1A;
 	u16 unk_0x1C;
-	u16 unk_0x1E;
+	u8 unk_0x1E;
+    u8 unk_0x1F;
 	u16 unk_0x20;
 	u16 unk_0x22;
 	u16 unk_0x24;
@@ -112,19 +111,6 @@ typedef struct SYAudioOsc_s {
     } data;
 } SYAudioOsc;
 
-typedef struct {
-    u32 addr;
-    u32 len;
-    u32 size;
-    char* ptr;
-} AMDMABuffer;
-
-typedef struct {
-    u32 nBuffers;
-    u32 currentBuffer;
-    AMDMABuffer buffers[NUM_DMA_BUFFERS];
-} AMDMAState;
-
 typedef struct SYAudioConfig
 {
     u16 unk_80026204_0x0;
@@ -148,6 +134,12 @@ typedef struct SYAudioConfig
     u16 unk_80026204_0x30;
 
 } SYAudioConfig;
+
+// // // // // // // // // // // //
+//                               //
+//       INITIALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
 
 // 0x8003C950
 s32 dSYAudioCustomFXParams[/* */] =
@@ -228,6 +220,12 @@ SYAudioSettings dSYAudioPublicSettings =
     0xF5F4E0        // ROM address
 };
 
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
 // 0x800472D0
 u8 gSYAudioHeapBuffer[0x56000];
 
@@ -280,13 +278,13 @@ s32 D_8009D920_96D20;
 s16 *sSYAudioDataBuffers[3];
 
 // 0x8009D934
-Acmd *D_8009D934_96D34;
+Acmd *sSYAudioCurrentAcmdListBuffer;
 
 // 0x8009D938
 Acmd *sSYAudioAcmdListBuffers[2];
 
 // 0x8009D940 - sSYAudioCurrentTask
-SYTaskAudio *D_8009D940_96D40;
+SYTaskAudio *sSYAudioCurrentTask;
 
 // 0x8009D948
 SYTaskAudio *sSYAudioSchedulerTasks[2];
@@ -339,23 +337,17 @@ OSTime sSYAudioTimeStamp;
 // 0x8009D9F8
 SYAudioOsc *sSYAudioOscStatesAllocFree;
 
-extern SYAudioSettings dSYAudioPublicSettings2, dSYAudioPublicSettings3;
-
-static void syAudioBnkfPatchBank(ALBank *bank, uintptr_t offset, uintptr_t table);
-static void syAudioBnkfPatchInst(ALInstrument *i, uintptr_t offset, uintptr_t table);
-static void syAudioBnkfPatchSound(ALSound *s, uintptr_t offset, uintptr_t table);
-static void syAudioBnkfPatchWaveTable(ALWaveTable *w, uintptr_t offset, uintptr_t table);
-
 extern void func_80026104_26D04(void*, u8);
 extern void func_80026094_26C94(void*, u8);
 extern void* func_800269C0_275C0(u16);
 extern void func_80026070_26C70(u8);
 extern void func_80026174_26D74(void*, u8);
 
-void func_80020E28(void);
-void syAudioStopBGMAll(void);
-void syAudioStopBGM(s32 sngplayer);
-void syAudioReadRom(uintptr_t, void*, size_t);
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 // 0x8001E5C0
 void alHeapInit(ALHeap *hp, u8 *base, s32 len)
@@ -618,7 +610,7 @@ f32 syAudioDepth2Cents(u8 depth)
 }
 
 // 0x8001EBE4
-ALMicroTime initOsc(void **oscState, f32 *initVal, u8 oscType, u8 oscRate, u8 oscDepth, u8 oscDelay)
+ALMicroTime syAudioInitOsc(void **oscState, f32 *initVal, u8 oscType, u8 oscRate, u8 oscDepth, u8 oscDelay)
 {
     SYAudioOsc *statePtr;
     ALMicroTime deltaTime = 0;
@@ -721,7 +713,7 @@ ALMicroTime initOsc(void **oscState, f32 *initVal, u8 oscType, u8 oscRate, u8 os
 }
 
 // 0x8001EEB8
-ALMicroTime updateOsc(void *oscState, f32 *updateVal)
+ALMicroTime syAudioUpdateOsc(void *oscState, f32 *updateVal)
 {
     f32 tmpFlt;
     SYAudioOsc *statePtr = (SYAudioOsc*) oscState;
@@ -840,7 +832,7 @@ ALMicroTime updateOsc(void *oscState, f32 *updateVal)
 
 
 // 0x8001F42C
-void stopOsc(void *oscState)
+void syAudioStopOsc(void *oscState)
 {
     ((SYAudioOsc*)oscState)->next = sSYAudioOscStatesAllocFree;
     sSYAudioOscStatesAllocFree = (SYAudioOsc*) oscState;
@@ -849,9 +841,9 @@ void stopOsc(void *oscState)
 // 0x8001F444
 void syAudioInit(void)
 {
-    scAddClient(&sSYAudioClient, &sSYAudioTicMesgQueue, sSYAudioTicMesgs, 1);
-    osCreateMesgQueue(&sSYAudioDmaMesgQueue, sSYAudioDmaMesgs, 50);
-    osCreateMesgQueue(&sSYAudioSPTaskMesgQueue, sSYAudioSPTaskMesgs, 1);
+    scAddClient(&sSYAudioClient, &sSYAudioTicMesgQueue, sSYAudioTicMesgs, ARRAY_COUNT(sSYAudioTicMesgs));
+    osCreateMesgQueue(&sSYAudioDmaMesgQueue, sSYAudioDmaMesgs, ARRAY_COUNT(sSYAudioDmaMesgs));
+    osCreateMesgQueue(&sSYAudioSPTaskMesgQueue, sSYAudioSPTaskMesgs, ARRAY_COUNT(sSYAudioSPTaskMesgs));
     osSendMesg(&sSYAudioSPTaskMesgQueue, (OSMesg)NULL, OS_MESG_BLOCK);
 }
 
@@ -861,9 +853,7 @@ void syAudioLoadAssets(void)
     ALBankFile *bnkf;
     s32 i;
     s32 len;
-    SYAudioPackage *pkgf3;
-    SYAudioPackage *pkgf2;
-    SYAudioPackage *pkgf1;
+    SYAudioPackage *pkgf3, *pkgf2, *pkgf1;
 
     bzero(sSYAudioCurrentSettings.heap_base, sSYAudioCurrentSettings.heap_size);
     alHeapInit(&sSYAudioALHeap, sSYAudioCurrentSettings.heap_base, sSYAudioCurrentSettings.heap_size);
@@ -1066,9 +1056,9 @@ void syAudioMakeBGMPlayers(void)
         seqp_config.maxEvents = sSYAudioCurrentSettings.events_num_max;
         seqp_config.maxChannels = AL_MAX_CHANNELS;
         seqp_config.heap = &sSYAudioALHeap;
-        seqp_config.initOsc = initOsc;
-        seqp_config.updateOsc = updateOsc;
-        seqp_config.stopOsc = stopOsc;
+        seqp_config.initOsc = syAudioInitOsc;
+        seqp_config.updateOsc = syAudioUpdateOsc;
+        seqp_config.stopOsc = syAudioStopOsc;
 
         gSYAudioALCSPlayers[i] = alHeapAlloc(&sSYAudioALHeap, 1, sizeof(*gSYAudioALCSPlayers[i]));
         func_8002C3D0_2CFD0(gSYAudioALCSPlayers[i], &seqp_config);
@@ -1083,7 +1073,7 @@ void syAudioMakeBGMPlayers(void)
     }
 }
 
-void auThreadMain(void *arg)
+void syAudioThreadMain(void *arg)
 {
     s32 unused;
     s32 sp80;
@@ -1111,8 +1101,8 @@ void auThreadMain(void *arg)
     {
         count_start = osGetCount();
         i = dSYAudioCurrentTic & 1;
-        D_8009D940_96D40 = sSYAudioSchedulerTasks[i];
-        D_8009D934_96D34 = sSYAudioAcmdListBuffers[i];
+        sSYAudioCurrentTask = sSYAudioSchedulerTasks[i];
+        sSYAudioCurrentAcmdListBuffer = sSYAudioAcmdListBuffers[i];
         id_mod3 = dSYAudioCurrentTic % 3;
 
         if (((ai_len > 368) && (sp73 != 2)) || ((ai_len > 184) && (sp73 == 0)))
@@ -1131,30 +1121,30 @@ void auThreadMain(void *arg)
         }
         sSYAudioTimeStamp = osGetTime();
         
-        D_8009D934_96D34 = func_8002C708_2D308(D_8009D934_96D34, &sp80, osVirtualToPhysical(sSYAudioDataBuffers[id_mod3]), dSYAudioSampleCounts[id_mod3]);
+        sSYAudioCurrentAcmdListBuffer = func_8002C708_2D308(sSYAudioCurrentAcmdListBuffer, &sp80, osVirtualToPhysical(sSYAudioDataBuffers[id_mod3]), dSYAudioSampleCounts[id_mod3]);
 
-        D_8009D940_96D40->info.type = 2;
-        D_8009D940_96D40->info.priority = 80;
-        D_8009D940_96D40->info.fnCheck = NULL;
-        D_8009D940_96D40->info.unk18 = 1;
-        D_8009D940_96D40->info.retVal = 0;
-        D_8009D940_96D40->info.mq = &sSYAudioSPTaskMesgQueue;
-        D_8009D940_96D40->task.t.type = 2;
-        D_8009D940_96D40->task.t.flags = 0;
-        D_8009D940_96D40->task.t.data_ptr = (u64*) sSYAudioAcmdListBuffers[i];
-        D_8009D940_96D40->task.t.data_size = ((D_8009D934_96D34 - sSYAudioAcmdListBuffers[i]) * 8);
-        D_8009D940_96D40->task.t.ucode_boot = (u64*) gSYMainRspBootCode;
-        D_8009D940_96D40->task.t.ucode_boot_size = 0x100;
-        D_8009D940_96D40->task.t.ucode = (u64*) n_aspMainTextStart;
-        D_8009D940_96D40->task.t.ucode_size = 0x1000;
-        D_8009D940_96D40->task.t.ucode_data = (u64*) n_aspMainDataStart;
-        D_8009D940_96D40->task.t.ucode_data_size = 0x800;
-        D_8009D940_96D40->task.t.dram_stack = NULL;
-        D_8009D940_96D40->task.t.dram_stack_size = 0;
-        D_8009D940_96D40->task.t.yield_data_ptr = NULL;
-        D_8009D940_96D40->task.t.yield_data_size = 0;
-        D_8009D940_96D40->task.t.output_buffer = NULL;
-        D_8009D940_96D40->task.t.output_buffer_size = 0;
+        sSYAudioCurrentTask->info.type = nSYTaskTypeAudio;
+        sSYAudioCurrentTask->info.priority = 80;
+        sSYAudioCurrentTask->info.fnCheck = NULL;
+        sSYAudioCurrentTask->info.unk18 = 1;
+        sSYAudioCurrentTask->info.retVal = 0;
+        sSYAudioCurrentTask->info.mq = &sSYAudioSPTaskMesgQueue;
+        sSYAudioCurrentTask->task.t.type = nSYTaskTypeAudio;
+        sSYAudioCurrentTask->task.t.flags = 0;
+        sSYAudioCurrentTask->task.t.data_ptr = (u64*) sSYAudioAcmdListBuffers[i];
+        sSYAudioCurrentTask->task.t.data_size = ((sSYAudioCurrentAcmdListBuffer - sSYAudioAcmdListBuffers[i]) * 8);
+        sSYAudioCurrentTask->task.t.ucode_boot = (u64*) gSYMainRspBootCode;
+        sSYAudioCurrentTask->task.t.ucode_boot_size = 0x100;
+        sSYAudioCurrentTask->task.t.ucode = (u64*) n_aspMainTextStart;
+        sSYAudioCurrentTask->task.t.ucode_size = 0x1000;
+        sSYAudioCurrentTask->task.t.ucode_data = (u64*) n_aspMainDataStart;
+        sSYAudioCurrentTask->task.t.ucode_data_size = 0x800;
+        sSYAudioCurrentTask->task.t.dram_stack = NULL;
+        sSYAudioCurrentTask->task.t.dram_stack_size = 0;
+        sSYAudioCurrentTask->task.t.yield_data_ptr = NULL;
+        sSYAudioCurrentTask->task.t.yield_data_size = 0;
+        sSYAudioCurrentTask->task.t.output_buffer = NULL;
+        sSYAudioCurrentTask->task.t.output_buffer_size = 0;
         
         gSYAudioThreadTimeDelta = (osGetCount() - count_start) / 2971;
         osRecvMesg(&sSYAudioTicMesgQueue, NULL, OS_MESG_BLOCK);
@@ -1180,7 +1170,7 @@ void auThreadMain(void *arg)
             osRecvMesg(&sSYAudioDmaMesgQueue, NULL, OS_MESG_NOBLOCK);
         }
         osWritebackDCacheAll();
-        osSendMesg(&scTaskQueue, (OSMesg)D_8009D940_96D40, OS_MESG_NOBLOCK);
+        osSendMesg(&scTaskQueue, (OSMesg)sSYAudioCurrentTask, OS_MESG_NOBLOCK);
         
         dSYAudioCurrentTic++;
         dSYAudioNextDma = 0;
@@ -1565,7 +1555,7 @@ void func_80020FFC(s32 sndplayer, u8 arg1)
 {
     if (sSYAudioSoundPlayers[sndplayer] != NULL)
     {
-        ((u8*)sSYAudioSoundPlayers[sndplayer])[0x1F] = arg1;
+        sSYAudioSoundPlayers[sndplayer]->unk_0x1F = arg1;
     }
 }
 
@@ -1597,6 +1587,6 @@ sb32 syAudioGetStatus(void)
 void syAudioUpdateMesgQueue(void)
 {
     osRecvMesg(&gSYMainThreadingQueue, NULL, OS_MESG_NOBLOCK);
-    dSYAudioIsSettingsUpdated = 1;
+    dSYAudioIsSettingsUpdated = TRUE;
     osRecvMesg(&gSYMainThreadingQueue, NULL, OS_MESG_BLOCK);
 }

@@ -4,6 +4,7 @@
 #include <lb/library.h>
 #include <sys/video.h>
 #include <sys/controller.h>
+#include <reloc_data.h>
 
 extern void* func_800269C0_275C0(u16);
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
@@ -15,9 +16,6 @@ extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 // // // // // // // // // // // //
 
 extern uintptr_t D_NF_000000C5;
-extern uintptr_t D_NF_000000A4;
-extern uintptr_t D_NF_00000020;
-extern uintptr_t D_NF_00000000;
 extern uintptr_t D_NF_000000C4;
 
 // // // // // // // // // // // //
@@ -599,9 +597,9 @@ u32 dMNSoundTestVoiceIDs[/* */] =
 u32 dMNSoundTestFileIDs[/* */] =
 {
     &D_NF_000000C5,
-    &D_NF_000000A4,
-    &D_NF_00000020,
-    &D_NF_00000000,
+    &llIFCommonPlayerDamageFileID,
+    &llMNDataCommonFileID,
+    &llMNCommonFileID,
     &D_NF_000000C4
 };
 
@@ -1046,7 +1044,7 @@ SObj* mnSoundTestMakeHeaderSObjs(void)
 
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
 
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[2], &lMNDataCommonDataHeaderSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[2], &llMNDataCommonDataHeaderSprite));
 
     sobj->sprite.attr = SP_TRANSPARENT;
 
@@ -1622,7 +1620,7 @@ void mnSoundTestMakeArrowSObjs(void)
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
     gcAddGObjProcess(gobj, mnSoundTestArrowsThreadUpdate, nGCProcessKindThread, 1);
 
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[3], &lMNCommonLeftArrowSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[3], &llMNCommonArrowLSprite));
 
     sobj->sprite.attr = SP_TRANSPARENT;
 
@@ -1633,7 +1631,7 @@ void mnSoundTestMakeArrowSObjs(void)
     sobj->sprite.green = 0xC3;
     sobj->sprite.blue  = 0x26;
 
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[3], &lMNCommonRightArrowSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[3], &llMNCommonArrowRSprite));
 
     sobj->sprite.attr = SP_TRANSPARENT;
 

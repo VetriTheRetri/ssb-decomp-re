@@ -5,6 +5,7 @@
 #include <sc/scene.h>
 #include <sys/video.h>
 #include <sys/controller.h>
+#include <reloc_data.h>
 
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
@@ -17,25 +18,25 @@ extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 // 0x801344D0
 u32 dMNMapsFileIDs[/* */] =
 {
-	&lFTEmblemSpritesFileID,
-	&lMNSelectCommonFileID,
-	&lMNMapsFileID,
-	&lMNCommonFontsFileID,
-	&lGRWallpaperTrainingBlackFileID
+	&llFTEmblemSpritesFileID,
+	&llMNSelectCommonFileID,
+	&llMNMapsFileID,
+	&llMNCommonFontsFileID,
+	&llGRWallpaperTrainingBlackFileID
 };
 
 // 0x801344E4
 GRFileInfo dMNMapsFileInfos[/* */] =
 {
-	{ &lGRCastleMapFileID, 	&lGRCommonMapHeaderStart },
-	{ &lGRSectorMapFileID, 	&lGRCommonMapHeaderStart },
-	{ &lGRJungleMapFileID, 	&lGRCommonMapHeaderStart },
-	{ &lGRZebesMapFileID, 	&lGRCommonMapHeaderStart },
-	{ &lGRHyruleMapFileID, 	&lGRCommonMapHeaderStart },
-	{ &lGRYosterMapFileID, 	&lGRCommonMapHeaderStart },
-	{ &lGRPupupuMapFileID, 	&lGRCommonMapHeaderStart },
-	{ &lGRYamabukiMapFileID,&lGRCommonMapHeaderStart },
-	{ &lGRInishieMapFileID, &lGRCommonMapHeaderStart }
+	{ &llGRCastleMapFileID,   &lGRCommonMapHeaderStart },
+	{ &llGRSectorMapFileID,   &lGRCommonMapHeaderStart },
+	{ &llGRJungleMapFileID,   &lGRCommonMapHeaderStart },
+	{ &llGRZebesMapFileID,    &lGRCommonMapHeaderStart },
+	{ &llGRHyruleMapFileID,   &lGRCommonMapHeaderStart },
+	{ &llGRYosterMapFileID,   &lGRCommonMapHeaderStart },
+	{ &llGRPupupuMapFileID,   &lGRCommonMapHeaderStart },
+	{ &llGRYamabukiMapFileID, &lGRCommonMapHeaderStart },
+	{ &llGRInishieMapFileID,  &lGRCommonMapHeaderStart }
 };
 
 // 0x8013452C
@@ -49,9 +50,9 @@ intptr_t dMNMapsWallpaperOffsets[/* */] =
 // 0x80134550
 GRFileInfo dMNMapsTrainingModeFileInfos[/* */] =
 {
-	{ &lGRWallpaperTrainingBlackFileID, 0x00000000 },
-	{ &lGRWallpaperTrainingYellowFileID,0xEE9E0600 },
-	{ &lGRWallpaperTrainingBlueFileID, 	0xAFF5FF00 }
+	{ &llGRWallpaperTrainingBlackFileID, 0x00000000 },
+	{ &llGRWallpaperTrainingYellowFileID,0xEE9E0600 },
+	{ &llGRWallpaperTrainingBlueFileID, 	0xAFF5FF00 }
 };
 
 // 0x80134568
@@ -280,23 +281,23 @@ void mnMapsMakeString(GObj *gobj, const char *str, f32 x, f32 y, u32 *color)
 {
 	intptr_t chars[/* */] =
 	{
-		&lMNCommonFontsLetterASprite, &lMNCommonFontsLetterBSprite,
-		&lMNCommonFontsLetterCSprite, &lMNCommonFontsLetterDSprite,
-		&lMNCommonFontsLetterESprite, &lMNCommonFontsLetterFSprite,
-		&lMNCommonFontsLetterGSprite, &lMNCommonFontsLetterHSprite,
-		&lMNCommonFontsLetterISprite, &lMNCommonFontsLetterJSprite,
-		&lMNCommonFontsLetterKSprite, &lMNCommonFontsLetterLSprite,
-		&lMNCommonFontsLetterMSprite, &lMNCommonFontsLetterNSprite,
-		&lMNCommonFontsLetterOSprite, &lMNCommonFontsLetterPSprite,
-		&lMNCommonFontsLetterQSprite, &lMNCommonFontsLetterRSprite,
-		&lMNCommonFontsLetterSSprite, &lMNCommonFontsLetterTSprite,
-		&lMNCommonFontsLetterUSprite, &lMNCommonFontsLetterVSprite,
-		&lMNCommonFontsLetterWSprite, &lMNCommonFontsLetterXSprite,
-		&lMNCommonFontsLetterYSprite, &lMNCommonFontsLetterZSprite,
+		&llMNCommonFontsLetterASprite, &llMNCommonFontsLetterBSprite,
+		&llMNCommonFontsLetterCSprite, &llMNCommonFontsLetterDSprite,
+		&llMNCommonFontsLetterESprite, &llMNCommonFontsLetterFSprite,
+		&llMNCommonFontsLetterGSprite, &llMNCommonFontsLetterHSprite,
+		&llMNCommonFontsLetterISprite, &llMNCommonFontsLetterJSprite,
+		&llMNCommonFontsLetterKSprite, &llMNCommonFontsLetterLSprite,
+		&llMNCommonFontsLetterMSprite, &llMNCommonFontsLetterNSprite,
+		&llMNCommonFontsLetterOSprite, &llMNCommonFontsLetterPSprite,
+		&llMNCommonFontsLetterQSprite, &llMNCommonFontsLetterRSprite,
+		&llMNCommonFontsLetterSSprite, &llMNCommonFontsLetterTSprite,
+		&llMNCommonFontsLetterUSprite, &llMNCommonFontsLetterVSprite,
+		&llMNCommonFontsLetterWSprite, &llMNCommonFontsLetterXSprite,
+		&llMNCommonFontsLetterYSprite, &llMNCommonFontsLetterZSprite,
 
-		&lMNCommonFontsSymbolApostropheSprite,
-		&lMNCommonFontsSymbolPercentSprite,
-		&lMNCommonFontsSymbolPeriodSprite
+		&llMNCommonFontsSymbolApostropheSprite,
+		&llMNCommonFontsSymbolPercentSprite,
+		&llMNCommonFontsSymbolPeriodSprite
 	};
 	SObj *sobj;
 	f32 start_x = x;
@@ -352,7 +353,7 @@ void mnMapsMakeWallpaper(void)
 	gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_PRIORITY_DEFAULT, ~0);
 	
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[1], &lMNSelectCommonWallpaperSprite));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[1], &llMNSelectCommonStoneBackgroundSprite));
 
 	sobj->cms = G_TX_WRAP;
 	sobj->cmt = G_TX_WRAP;

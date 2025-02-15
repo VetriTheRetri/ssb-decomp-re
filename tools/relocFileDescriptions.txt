@@ -169,16 +169,16 @@ Sprite OnText 0xb818
 Sprite OffText 0xb958
 Sprite Slash 0xba28
 Sprite GameModeText 0xd240
-Sprite Zero 0xd310
-Sprite One 0xd3e0
-Sprite Two 0xd4b0
-Sprite Three 0xd580
-Sprite Four 0xd650
-Sprite Five 0xd720
-Sprite Six 0xd7f0
-Sprite Seven 0xd8c0
-Sprite Eight 0xd990
-Sprite Nine 0xda60
+Sprite Digit0 0xd310
+Sprite Digit1 0xd3e0
+Sprite Digit2 0xd4b0
+Sprite Digit3 0xd580
+Sprite Digit4 0xd650
+Sprite Digit5 0xd720
+Sprite Digit6 0xd7f0
+Sprite Digit7 0xd8c0
+Sprite Digit8 0xd990
+Sprite Digit9 0xda60
 Sprite Percentage 0xdb30
 Sprite Infinity 0xdc48
 Sprite Colon 0xdcf0
@@ -568,8 +568,8 @@ Sprite HmnLabel 0x6048
 Sprite CPLabel 0x63c8
 Sprite NALabel 0x6748
 Sprite CursorHandPoint 0x6f88
-Sprite CursorHandDrag 0x76e8
-Sprite CursorHandOpen 0x8168
+Sprite CursorHandGrab 0x76e8
+Sprite CursorHandHover 0x8168
 Sprite 1PTextGradient 0x8268
 Sprite 2PTextGradient 0x8368
 Sprite 3PTextGradient 0x8468
@@ -588,6 +588,14 @@ Sprite ArrowL 0xece8
 Sprite ArrowR 0xedc8
 Sprite ReadyToFightText 0xf448
 Sprite ReadyBanner 0xf530
+LUT GateMan1P 0x103F8
+LUT GateMan2P 0x10420
+LUT GateMan4P 0x10448
+LUT GateMan3P 0x10470
+LUT GateCom1P 0x11378
+LUT GateCom2P 0x113A0
+LUT GateCom4P 0x113C8
+LUT GateCom3P 0x113F0
 Sprite RedCard 0x104b0
 Sprite GrayCard 0x11430
 Sprite BackButton 0x115c8
@@ -600,7 +608,7 @@ Sprite Bonus1BreakTheTargetsText 0xbd8
 Sprite Bonus2BoardThePlatformsText 0x1058
 
 [19]
-Sprite XBox 0x2B8
+Sprite Cross 0x2B8
 Sprite WhiteSquare 0x6F0
 Sprite PortraitQuestionMark 0xF68
 Sprite BlackSquare 0x13d0
@@ -616,11 +624,11 @@ Sprite Yoshi 0x13758
 Sprite Pikachu 0x159a8
 Sprite Ness 0x17bf8
 Sprite Captain 0x19e48
-Sprite Jigglypuff 0x1c098
+Sprite Purin 0x1c098
 Sprite CaptainShadow 0x1e2e8
 Sprite LuigiShadow 0x20538
 Sprite NessShadow 0x22788
-Sprite JigglypuffShadow 0x249d8
+Sprite PurinShadow 0x249d8
 
 [20]
 Sprite SuperMarioIcon 0x618
@@ -639,21 +647,26 @@ MObjSub PlayersSpotlight 0x408
 Sprite StoneBackground 0x440
 DObjDesc PlayersSpotlight 0x568
 
+[22]
+MObjSub - 0x408
+DObjDesc - 0x568
+
 [23]
 Sprite 1PlayerGameText 0x228
 Sprite ClosingParenthesis 0x2c8
 Sprite OpeningParenthesis 0x368
 Sprite LevelColonText 0x488
 Sprite StockColonText 0x5a8
-Sprite QuarterCapsule 0x1208
+Sprite OptionOutline 0x1208
 Sprite BestTimeText 0x12e0
 Sprite TotalBestTimeText 0x1410
 Sprite TargetsText 0x1658
 Sprite PlatformsText 0x1898
 Sprite SmashLogo 0x1950
 Sprite OptionText 0x1ec8
-Sprite OneRectangle 0x1f48
-Sprite TwoRectangles 0x1fc8
+Sprite Sec 0x1f48
+Sprite CSec 0x1fc8
+LUT GateCP 0x3238
 Sprite RedCard 0x32a8
 
 [24]
@@ -883,40 +896,40 @@ Sprite 0x5428 0x5428
 Sprite 0x54c0 0x54c0
 
 [32]
-Sprite 0xb40 0xb40
-Sprite 0xbe0 0xbe0
-Sprite 0xc80 0xc80
+Sprite DataHeader 0xb40
+Sprite ArrowL 0xbe0
+Sprite ArrowR 0xc80
 
 [33]
-Sprite 0x40 0x40
-Sprite 0xd0 0xd0
-Sprite 0x160 0x160
-Sprite 0x1f0 0x1f0
-Sprite 0x280 0x280
-Sprite 0x310 0x310
-Sprite 0x3a0 0x3a0
-Sprite 0x430 0x430
-Sprite 0x4c0 0x4c0
-Sprite 0x550 0x550
-Sprite 0x5e0 0x5e0
-Sprite 0x670 0x670
-Sprite 0x700 0x700
-Sprite 0x790 0x790
-Sprite 0x820 0x820
-Sprite 0x8b0 0x8b0
-Sprite 0x940 0x940
-Sprite 0x9d0 0x9d0
-Sprite 0xa60 0xa60
-Sprite 0xaf0 0xaf0
-Sprite 0xb80 0xb80
-Sprite 0xc10 0xc10
-Sprite 0xca0 0xca0
-Sprite 0xd30 0xd30
-Sprite 0xdc0 0xdc0
-Sprite 0xe50 0xe50
-Sprite 0xed0 0xed0
-Sprite 0xf60 0xf60
-Sprite 0xfd0 0xfd0
+Sprite LetterA 0x40
+Sprite LetterB 0xd0
+Sprite LetterC 0x160
+Sprite LetterD 0x1f0
+Sprite LetterE 0x280
+Sprite LetterF 0x310
+Sprite LetterG 0x3a0
+Sprite LetterH 0x430
+Sprite LetterI 0x4c0
+Sprite LetterJ 0x550
+Sprite LetterK 0x5e0
+Sprite LetterL 0x670
+Sprite LetterM 0x700
+Sprite LetterN 0x790
+Sprite LetterO 0x820
+Sprite LetterP 0x8b0
+Sprite LetterQ 0x940
+Sprite LetterR 0x9d0
+Sprite LetterS 0xa60
+Sprite LetterT 0xaf0
+Sprite LetterU 0xb80
+Sprite LetterV 0xc10
+Sprite LetterW 0xca0
+Sprite LetterX 0xd30
+Sprite LetterY 0xdc0
+Sprite LetterZ 0xe50
+Sprite SymbolApostrophe 0xed0
+Sprite SymbolPercent 0xf60
+Sprite SymbolPeriod 0xfd0
 
 [34]
 Sprite FightResultsTkoText 0x358

@@ -5,6 +5,7 @@
 #include <sc/scene.h>
 #include <sys/video.h>
 #include <sys/audio.h>
+#include <reloc_data.h>
 
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 extern void* func_800269C0_275C0(u16);
@@ -72,7 +73,7 @@ u32 dMNVSResultsFileIDs[/* */] =
 {
 	&lMNVSResultsFileID,
 	&lIFCommonPlayerTagsFileID,
-	&lMNPlayersGameModesFileID,
+	&llMNPlayersGameModesFileID,
 	&lIFCommonPlayerDamageFileID,
 	&lFTEmblemModelsFileID,
 	&lIFCommonDigitsFileID,
@@ -2283,7 +2284,7 @@ void mnVSResultsMakeLabel(void)
 
 	intptr_t offsets[/* */] =
 	{
-		&lMNPlayersGameModesRoyalSprite, &lMNPlayersGameModesTeamBattleSprite
+		&llMNPlayersGameModesFreeForAllTextSprite, &llMNPlayersGameModesTeamBattleTextSprite
 	};
 	void (*procs[/* */])(GObj*) =
 	{

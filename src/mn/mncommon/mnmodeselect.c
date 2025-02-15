@@ -3,11 +3,9 @@
 #include <gm/gmsound.h>
 #include <sys/controller.h>
 #include <sys/video.h>
+#include <reloc_data.h>
 
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
-
-extern uintptr_t D_NF_00000000;
-extern uintptr_t D_NF_00000001;
 
 // // // // // // // // // // // //
 //                               //
@@ -37,7 +35,7 @@ mnCommonSetOptionChangeWaitN(sMNModeSelectOptionChangeWait, is_button, stick_ran
 // // // // // // // // // // // //
 
 // 0x80132B90
-u32 dMNModeSelectFileIDs[/* */] = { &D_NF_00000000, &D_NF_00000001 };
+u32 dMNModeSelectFileIDs[/* */] = { &llMNCommonFileID, &llMNMainFileID };
 
 // 0x80133088
 Lights1 dMNModeSelectLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x3C, 0x3C, 0x3C);
@@ -388,7 +386,7 @@ void mnModeSelectMakeDecals(void)
     gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_PRIORITY_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_PRIORITY_DEFAULT, ~0);
     
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNModeSelectFiles[0], &lMNCommonWallpaperSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNModeSelectFiles[0], &llMNCommonSmashBrosCollageSprite));
     
     sobj->pos.x = 10.0F;
     sobj->pos.y = 10.0F;

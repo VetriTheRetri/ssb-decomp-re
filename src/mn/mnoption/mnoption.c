@@ -35,8 +35,6 @@ mnCommonSetOptionChangeWaitN(sMNOptionOptionChangeWait, is_button, stick_range, 
 //                               //
 // // // // // // // // // // // //
 
-extern uintptr_t D_NF_00000000;
-extern uintptr_t D_NF_00000004;
 extern sb32 dSYAudioSoundQuality;
 
 // // // // // // // // // // // //
@@ -46,7 +44,7 @@ extern sb32 dSYAudioSoundQuality;
 // // // // // // // // // // // //
 
 // 0x80133620
-u32 dMNOptionFileIDs[/* */] = { &lMNCommonFileID, &D_NF_00000004 };
+u32 dMNOptionFileIDs[/* */] = { &llMNCommonFileID, &llMNOptionFileID };
 
 // 0x80133628
 Lights1 dMNOptionLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x3C, 0x3C, 0x3C);

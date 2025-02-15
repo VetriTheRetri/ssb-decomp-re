@@ -2,6 +2,7 @@
 #include <sc/scene.h>
 #include <mn/menu.h>
 #include <sys/video.h>
+#include <reloc_data.h>
 
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
@@ -1208,10 +1209,10 @@ MNCharactersMotion dMNCharactersAttack1MotionDescs[/* */][8] =
 // 0x80136228
 u32 dMNCharactersFileIDs[/* */] =
 {
-	&lMNCharactersFileID,
-	&lMNDataCommonFileID,
-	&lFTEmblemSpritesFileID,
-	&lFTEmblemModelsFileID
+	&llMNCharactersFileID,
+	&llMNDataCommonFileID,
+	&llFTEmblemSpritesFileID,
+	&llFTEmblemModelsFileID
 };
 
 // 0x80136238
@@ -1434,7 +1435,7 @@ void mnCharactersMakeDecals(void)
 	gobj = gcMakeGObjSPAfter(0, NULL, 18, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 27, GOBJ_PRIORITY_DEFAULT, ~0);
 
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNCharactersFiles[1], &lMNDataCommonDataHeaderSprite));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNCharactersFiles[1], &llMNDataCommonDataHeaderSprite));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -1462,7 +1463,7 @@ void mnCharactersMakeDecals(void)
 	sobj->envcolor.g = 0x00;
 	sobj->envcolor.b = 0x00;
 
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNCharactersFiles[1], &lMNDataCommonArrowLSprite));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNCharactersFiles[1], &llMNDataCommonArrowLSprite));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -1474,7 +1475,7 @@ void mnCharactersMakeDecals(void)
 	sobj->sprite.green = 0x7D;
 	sobj->sprite.blue = 0x0C;
 
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNCharactersFiles[1], &lMNDataCommonArrowRSprite));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNCharactersFiles[1], &llMNDataCommonArrowRSprite));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;

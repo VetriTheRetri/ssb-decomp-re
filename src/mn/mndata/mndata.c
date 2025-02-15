@@ -4,6 +4,7 @@
 #include <lb/library.h>
 #include <sys/video.h>
 #include <sys/controller.h>
+#include <reloc_data.h>
 
 extern void syAudioStopBGMAll();
 extern void* func_800269C0_275C0(u16);
@@ -32,21 +33,12 @@ mnCommonSetOptionChangeWaitN(sMNDataOptionChangeWait, is_button, stick_range, di
 
 // // // // // // // // // // // //
 //                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern uintptr_t D_NF_00000000;
-extern uintptr_t D_NF_00000005;
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
 // 0x80132F20
-u32 dMNDataFileIDs[/* */] = { &D_NF_00000000, &D_NF_00000005 };
+u32 dMNDataFileIDs[/* */] = { &llMNCommonFileID, &llMNDataFileID };
 
 // 0x80132F28
 Lights1 dMNDataLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x3C, 0x3C, 0x3C);
@@ -187,7 +179,7 @@ void mnDataSetOptionSpriteColors(GObj *gobj, s32 status)
 // 0x80131C24
 void mnDataMakeOptionTab(GObj *gobj, f32 pos_x, f32 pos_y, s32 lrs)
 {
-    SObj *sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNDataFiles[0], &lMNCommonOptionTabLeftSprite));
+    SObj *sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNDataFiles[0], &llMNCommonOptionTabLeftSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -195,7 +187,7 @@ void mnDataMakeOptionTab(GObj *gobj, f32 pos_x, f32 pos_y, s32 lrs)
     sobj->pos.x = pos_x;
     sobj->pos.y = pos_y;
 
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNDataFiles[0], &lMNCommonOptionTabMiddleSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNDataFiles[0], &llMNCommonOptionTabMiddleSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -212,7 +204,7 @@ void mnDataMakeOptionTab(GObj *gobj, f32 pos_x, f32 pos_y, s32 lrs)
     sobj->lrs = lrs * 8;
     sobj->lrt = 29;
 
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNDataFiles[0], &lMNCommonOptionTabRightSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNDataFiles[0], &llMNCommonOptionTabRightSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -254,7 +246,7 @@ void mnDataMakeCharacters(void)
 
     mnDataSetOptionSpriteColors(gobj, sMNDataOption == nMNDataOptionCharacters);
 
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNDataFiles[1], &lMNDataCharactersOptionSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNDataFiles[1], &llMNDataCharactersTextSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -294,7 +286,7 @@ void mnDataMakeVSRecord(void)
 
     mnDataSetOptionSpriteColors(gobj, sMNDataOption == nMNDataOptionVSRecord);
 
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNDataFiles[1], &lMNDataVSRecordOptionSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNDataFiles[1], &llMNDataVSRecordTextSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -321,7 +313,7 @@ void mnDataMakeSoundTest(void)
 
     mnDataSetOptionSpriteColors(gobj, sMNDataOption == nMNDataOptionSoundTest);
 
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNDataFiles[1], &lMNDataSoundTestOptionSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNDataFiles[1], &llMNDataSoundTestTextSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -395,7 +387,7 @@ void mnDataMakeLabels(void)
 
     gcAddGObjDisplay(gobj, mnDataLabelsProcDisplay, 1, GOBJ_PRIORITY_DEFAULT, ~0);
 
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNDataFiles[0], &lMNCommonSmashLogoSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNDataFiles[0], &llMNCommonSmashLogoSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -407,7 +399,7 @@ void mnDataMakeLabels(void)
     sobj->pos.x = 235.0F;
     sobj->pos.y = 158.0F;
 
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNDataFiles[1], &lMNDataHeaderTextSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNDataFiles[1], &llMNDataDataTextSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -429,12 +421,12 @@ void mnDataMakeDecals(void)
     gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_PRIORITY_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_PRIORITY_DEFAULT, ~0);
 
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNDataFiles[0], &lMNCommonWallpaperSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNDataFiles[0], &llMNCommonSmashBrosCollageSprite));
 
     sobj->pos.x = 10.0F;
     sobj->pos.y = 10.0F;
 
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNDataFiles[0], &lMNCommonDecalPaperSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNDataFiles[0], &llMNCommonDecalPaperSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -446,7 +438,7 @@ void mnDataMakeDecals(void)
     sobj->pos.x = 140.0F;
     sobj->pos.y = 143.0F;
 
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNDataFiles[0], &lMNCommonDecalPaperSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNDataFiles[0], &llMNCommonDecalPaperSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -458,7 +450,7 @@ void mnDataMakeDecals(void)
     sobj->pos.x = 225.0F;
     sobj->pos.y = 56.0F;
 
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNDataFiles[1], &lMNDataDecalNotebookSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNDataFiles[1], &llMNDataDataIconDarkSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;

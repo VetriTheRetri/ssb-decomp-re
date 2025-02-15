@@ -2,6 +2,7 @@
 #include <sc/scene.h>
 #include <mn/menu.h>
 #include <sys/video.h>
+#include <reloc_data.h>
 
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
@@ -38,10 +39,10 @@ s32 dMNVSRecordRankingColumnWidths[/* */] = { 33, 33, 33, 33, 46, 35, 34 };
 // 0x8013664C
 u32 dMNVSRecordFileIDs[/* */] =
 {
-	&lMNVSRecordMainFileID,
-	&lMNDataCommonFileID,
-	&lMNPlayersPortraitsFileID,
-	&lMNCommonFontsFileID
+	&llMNVSRecordMainFileID,
+	&llMNDataCommonFileID,
+	&llMNPlayersPortraitsFileID,
+	&llMNCommonFontsFileID
 };
 
 // 0x80136660
@@ -434,23 +435,23 @@ void mnVSRecordMakeString(GObj *gobj, const char *str, f32 x, f32 y, u32 *color)
 {
 	intptr_t offsets[/* */] =
 	{
-		&lMNCommonFontsLetterASprite, &lMNCommonFontsLetterBSprite,
-		&lMNCommonFontsLetterCSprite, &lMNCommonFontsLetterDSprite,
-		&lMNCommonFontsLetterESprite, &lMNCommonFontsLetterFSprite,
-		&lMNCommonFontsLetterGSprite, &lMNCommonFontsLetterHSprite,
-		&lMNCommonFontsLetterISprite, &lMNCommonFontsLetterJSprite,
-		&lMNCommonFontsLetterKSprite, &lMNCommonFontsLetterLSprite,
-		&lMNCommonFontsLetterMSprite, &lMNCommonFontsLetterNSprite,
-		&lMNCommonFontsLetterOSprite, &lMNCommonFontsLetterPSprite,
-		&lMNCommonFontsLetterQSprite, &lMNCommonFontsLetterRSprite,
-		&lMNCommonFontsLetterSSprite, &lMNCommonFontsLetterTSprite,
-		&lMNCommonFontsLetterUSprite, &lMNCommonFontsLetterVSprite,
-		&lMNCommonFontsLetterWSprite, &lMNCommonFontsLetterXSprite,
-		&lMNCommonFontsLetterYSprite, &lMNCommonFontsLetterZSprite,
+		&llMNCommonFontsLetterASprite, &llMNCommonFontsLetterBSprite,
+		&llMNCommonFontsLetterCSprite, &llMNCommonFontsLetterDSprite,
+		&llMNCommonFontsLetterESprite, &llMNCommonFontsLetterFSprite,
+		&llMNCommonFontsLetterGSprite, &llMNCommonFontsLetterHSprite,
+		&llMNCommonFontsLetterISprite, &llMNCommonFontsLetterJSprite,
+		&llMNCommonFontsLetterKSprite, &llMNCommonFontsLetterLSprite,
+		&llMNCommonFontsLetterMSprite, &llMNCommonFontsLetterNSprite,
+		&llMNCommonFontsLetterOSprite, &llMNCommonFontsLetterPSprite,
+		&llMNCommonFontsLetterQSprite, &llMNCommonFontsLetterRSprite,
+		&llMNCommonFontsLetterSSprite, &llMNCommonFontsLetterTSprite,
+		&llMNCommonFontsLetterUSprite, &llMNCommonFontsLetterVSprite,
+		&llMNCommonFontsLetterWSprite, &llMNCommonFontsLetterXSprite,
+		&llMNCommonFontsLetterYSprite, &llMNCommonFontsLetterZSprite,
 
-		&lMNCommonFontsSymbolApostropheSprite,
-		&lMNCommonFontsSymbolPercentSprite,
-		&lMNCommonFontsSymbolPeriodSprite
+		&llMNCommonFontsSymbolApostropheSprite,
+		&llMNCommonFontsSymbolPercentSprite,
+		&llMNCommonFontsSymbolPeriodSprite
 	};
 	SObj *sobj;
 	f32 start_x = x;
@@ -528,7 +529,7 @@ void mnVSRecordMakeLabels(void)
 	gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
 
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSRecordFiles[1], &lMNDataCommonDataHeaderSprite));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSRecordFiles[1], &llMNDataCommonDataHeaderSprite));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -626,7 +627,7 @@ void mnVSRecordMakePortraitStatsArrows(void)
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddGObjProcess(gobj, mnVSRecordPortraitArrowsProcUpdate, nGCProcessKindFunc, 1);
 
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSRecordFiles[1], &lMNDataCommonArrowLSprite));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSRecordFiles[1], &llMNDataCommonArrowLSprite));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -638,7 +639,7 @@ void mnVSRecordMakePortraitStatsArrows(void)
 	sobj->pos.x = 40.0F;
 	sobj->pos.y = 78.0F;
 
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSRecordFiles[1], &lMNDataCommonArrowRSprite));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSRecordFiles[1], &llMNDataCommonArrowRSprite));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -1069,12 +1070,12 @@ void mnVSRecordMakePortraitStats(GObj *gobj, s32 fkind)
 	SObj *sobj;
 	intptr_t offsets[/* */] =
 	{
-		&lMNPlayersPortraitsMarioSprite,	&lMNPlayersPortraitsFoxSprite,
-		&lMNPlayersPortraitsDonkeySprite,	&lMNPlayersPortraitsSamusSprite,
-		&lMNPlayersPortraitsLuigiSprite,	&lMNPlayersPortraitsLinkSprite,
-		&lMNPlayersPortraitsYoshiSprite,	&lMNPlayersPortraitsCaptainSprite,
-		&lMNPlayersPortraitsKirbySprite,	&lMNPlayersPortraitsPikachuSprite,
-		&lMNPlayersPortraitsPurinSprite,	&lMNPlayersPortraitsNessSprite
+		&llMNPlayersPortraitsMarioSprite,   &llMNPlayersPortraitsFoxSprite,
+		&llMNPlayersPortraitsDonkeySprite,  &llMNPlayersPortraitsSamusSprite,
+		&llMNPlayersPortraitsLuigiSprite,   &llMNPlayersPortraitsLinkSprite,
+		&llMNPlayersPortraitsYoshiSprite,   &llMNPlayersPortraitsCaptainSprite,
+		&llMNPlayersPortraitsKirbySprite,   &llMNPlayersPortraitsPikachuSprite,
+		&llMNPlayersPortraitsPurinSprite,   &llMNPlayersPortraitsNessSprite
 	};
 	u32 string_colors[/* */] = { 0x8A, 0x88, 0x92 };
 	u32 digit_colors[/* */] = { 0x00, 0x00, 0x00, 0x8A, 0x88, 0x92 };

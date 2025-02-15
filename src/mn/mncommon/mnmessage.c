@@ -2,10 +2,10 @@
 #include <mn/menu.h>
 #include <sc/scene.h>
 #include <sys/video.h>
+#include <reloc_data.h>
 
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
-extern uintptr_t D_NF_00000000;                             // 0x00000000
 extern uintptr_t D_NF_00000009;                             // 0x00000009
 
 // // // // // // // // // // // //
@@ -15,7 +15,7 @@ extern uintptr_t D_NF_00000009;                             // 0x00000009
 // // // // // // // // // // // //
 
 // 0x80132500
-u32 dMNMessageFileIDs[/* */] = { &D_NF_00000000, &D_NF_00000009 };
+u32 dMNMessageFileIDs[/* */] = { &llMNCommonFileID, &D_NF_00000009 };
 
 // 0x80132508
 Lights1 dMNMessageLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x3C, 0x3C, 0x3C);
@@ -76,7 +76,7 @@ void mnMessageMakeWallpaper(void)
     gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_PRIORITY_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_PRIORITY_DEFAULT, ~0);
     
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMessageFiles[0], &lMNCommonWallpaperSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMessageFiles[0], &llMNCommonSmashBrosCollageSprite));
     
     sobj->pos.x = 10.0F;
     sobj->pos.y = 10.0F;

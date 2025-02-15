@@ -11,23 +11,23 @@ typedef struct SYOverlay
 {
     uintptr_t rom_start;
     uintptr_t rom_end;
-    void *ram_load_start;
-    void *ram_text_start;
-    void *ram_text_end;
-    void *ram_data_start;
-    void *ram_data_end;
-    void *ram_noload_start;
-    void *ram_noload_end;
+    uintptr_t ram_load_start;
+    uintptr_t ram_text_start;
+    uintptr_t ram_text_end;
+    uintptr_t ram_data_start;
+    uintptr_t ram_data_end;
+    uintptr_t ram_noload_start;
+    uintptr_t ram_noload_end;
 
 } SYOverlay;
 
-typedef struct syHuffman
+typedef struct SYHuffmanNode
 {
-    struct syHuffman *left;
-    struct syHuffman *right;
+    struct SYHuffmanNode *left;
+    struct SYHuffmanNode *right;
     s32 value;
 
-} syHuffman;
+} SYHuffmanNode;
 
 extern OSPiHandle *gSYDmaRomPiHandle;
 
@@ -38,7 +38,7 @@ extern void syDmaReadRom(uintptr_t rom_src, void *ram_src, size_t size);
 extern void syDmaWriteRom(void *ram_src, uintptr_t rom_dst, size_t size);
 extern OSPiHandle* syDmaSramPiInit(void);
 extern void syDmaReadSram(uintptr_t rom_src, void *ram_dst, size_t size);
-extern void syDmaWriteSram(void *ram_src, u32 rom_dst, size_t size);
+extern void syDmaWriteSram(void *ram_src, uintptr_t rom_dst, size_t size);
 extern void syDmaDecodeVpk0(u16* data, size_t size, void (*update_stream)(void), u8* out_buf);
 extern void syDmaInitVpk0Stream(uintptr_t dev_addr, void *ram_addr, size_t size);
 extern void syDmaFillVpk0Buf(void);

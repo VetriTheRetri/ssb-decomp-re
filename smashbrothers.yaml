@@ -322,7 +322,7 @@ segments:
       - { start: auto, type: .bss, name: sys/rdp,                  vram: 0x800466A0 }
       - { start: auto, type: .bss, name: sys/objmanager,           vram: 0x800466B0 }
       - { start: auto, type: .bss, name: sys/objdisplay,           vram: 0x80046FA0 }
-      - { start: auto, type:  bss, name: sys/audio,                vram: 0x800472D0 }
+      - { start: auto, type: .bss, name: sys/audio,                vram: 0x800472D0 }
       - { start: auto, type: .bss, name: sys/error,                vram: 0x8009DA00 }
       - { start: auto, type: .bss, name: libultra/sp/sprite,       vram: 0x8009EDC0 }
       - { start: auto, type:  bss, name: libultra/n_audio/n_env,   vram: 0x8009EDD0 }

@@ -24,7 +24,7 @@ OSPiHandle *gSYDmaRomPiHandle;
 OSPiHandle sSYDmaSramPiHandle;
 
 // 0x800450BC
-OSMesg sSYDmaMesg[1];
+OSMesg sSYDmaMesg;
 
 // 0x800450C0
 OSMesgQueue sSYDmaMesgQueue;
@@ -36,7 +36,7 @@ void *sSYDmaVpkBuffer;
 size_t sSYDmaVpkBufferSize;
 
 // 0x800450E0
-u32 sSYDmaVpkDevAddr;
+uintptr_t sSYDmaVpkDevAddr;
 
 // // // // // // // // // // // //
 //                               //
@@ -46,10 +46,10 @@ u32 sSYDmaVpkDevAddr;
 
 void syDmaCreateMesgQueue(void) 
 {
-    osCreateMesgQueue(&sSYDmaMesgQueue, sSYDmaMesg, OS_MESG_BLOCK);
+    osCreateMesgQueue(&sSYDmaMesgQueue, &sSYDmaMesg, OS_MESG_BLOCK);
 }
 
-void syDmaCopy(OSPiHandle *handle, uintptr_t physAddr, uintptr_t virtual, size_t size, u8 direction)
+void syDmaCopy(OSPiHandle *handle, uintptr_t phys, uintptr_t virtual, size_t size, u8 direction)
 {
     OSIoMesg mesg;
 
@@ -66,7 +66,7 @@ void syDmaCopy(OSPiHandle *handle, uintptr_t physAddr, uintptr_t virtual, size_t
     while (size > 0x10000)
     {
         mesg.dramAddr = (void*)virtual;
-        mesg.devAddr  = physAddr;
+        mesg.devAddr  = phys;
 
         if (!(D_80045020_40830))
         {
@@ -74,13 +74,13 @@ void syDmaCopy(OSPiHandle *handle, uintptr_t physAddr, uintptr_t virtual, size_t
         }
         osRecvMesg(&sSYDmaMesgQueue, NULL, OS_MESG_BLOCK);
         size -= 0x10000;
-        physAddr += 0x10000;
+        phys += 0x10000;
         virtual += 0x10000;
     }
     if (size != 0) 
     {
         mesg.dramAddr = (void*)virtual;
-        mesg.devAddr  = physAddr;
+        mesg.devAddr  = phys;
         mesg.size     = size;
 
         if (!(D_80045020_40830)) 
@@ -92,49 +92,24 @@ void syDmaCopy(OSPiHandle *handle, uintptr_t physAddr, uintptr_t virtual, size_t
 }
 
 // 0x80002BE4
-void syDmaLoadOverlay(struct SYOverlay *ovl)
+void syDmaLoadOverlay(SYOverlay *ovl)
 {
-    if (((uintptr_t)ovl->ram_text_end - (uintptr_t)ovl->ram_text_start) != 0)
+    if ((ovl->ram_text_end - ovl->ram_text_start) != 0)
     {
-        osInvalICache
-        (
-            (void*)(u32)ovl->ram_text_start,
-            (uintptr_t)ovl->ram_text_end - (uintptr_t)ovl->ram_text_start
-        );
-        osInvalDCache
-        (
-            (void*)(u32)ovl->ram_text_start,
-            (uintptr_t)ovl->ram_text_end - (uintptr_t)ovl->ram_text_start
-        );
+        osInvalICache((void*) ovl->ram_text_start, ovl->ram_text_end - ovl->ram_text_start);
+        osInvalDCache((void*) ovl->ram_text_start, ovl->ram_text_end - ovl->ram_text_start);
     }
-
-    if (((uintptr_t)ovl->ram_data_end - (uintptr_t)ovl->ram_data_start) != 0)
+    if ((ovl->ram_data_end - ovl->ram_data_start) != 0)
     {
-        osInvalDCache
-        (
-            (void*)(u32)ovl->ram_data_start,
-            (uintptr_t)ovl->ram_data_end - (uintptr_t)ovl->ram_data_start
-        );
+        osInvalDCache((void*) ovl->ram_data_start, ovl->ram_data_end - ovl->ram_data_start);
     }
     if ((ovl->rom_end - ovl->rom_start) != 0)
     {
-        syDmaCopy
-        (
-            gSYDmaRomPiHandle,
-            ovl->rom_start,
-            (uintptr_t)ovl->ram_load_start,
-            ovl->rom_end - ovl->rom_start,
-            OS_READ
-        );
+        syDmaCopy(gSYDmaRomPiHandle, ovl->rom_start, ovl->ram_load_start, ovl->rom_end - ovl->rom_start, OS_READ);
     }
-
-    if (((uintptr_t)ovl->ram_noload_end - (uintptr_t)ovl->ram_noload_start) != 0)
+    if ((ovl->ram_noload_end - ovl->ram_noload_start) != 0)
     {
-        bzero
-        (
-            (uintptr_t)ovl->ram_noload_start,
-            (uintptr_t)ovl->ram_noload_end - (uintptr_t)ovl->ram_noload_start
-        );
+        bzero((void*) ovl->ram_noload_start, ovl->ram_noload_end - ovl->ram_noload_start);
     }
 }
 
@@ -177,7 +152,7 @@ void syDmaReadSram(uintptr_t rom_src, void *ram_dst, size_t size)
 }
 
 // 0x80002DE0
-void syDmaWriteSram(void *ram_src, u32 rom_dst, size_t size)
+void syDmaWriteSram(void *ram_src, uintptr_t rom_dst, size_t size)
 {
     syDmaCopy(&sSYDmaSramPiHandle, rom_dst, (uintptr_t)ram_src, size, OS_WRITE);
 }
@@ -213,24 +188,24 @@ void syDmaDecodeVpk0(u16 *data, size_t size, void (*update_stream)(void), u8 *ou
     lengths_node++;
 
     uintptr_t bound = (uintptr_t) ((uintptr_t)data + size);
-    syHuffman *sample1_node;
-    syHuffman *lengths_node;
-    syHuffman sp14C[64];
+    SYHuffmanNode *sample1_node;
+    SYHuffmanNode *lengths_node;
+    SYHuffmanNode sp14C[64];
     u8* out_ptr;
-    syHuffman *offsets_tree;
-    syHuffman *lengths_tree;
+    SYHuffmanNode *offsets_tree;
+    SYHuffmanNode *lengths_tree;
     u8* copy_src;
     void* out_buf_end;
     u32 sample_method;
-    syHuffman *off_stack[20];
+    SYHuffmanNode *off_stack[20];
     s32 off_stack_size;
     s32 value;
-    syHuffman *offsets_node;
-    syHuffman *off_node;
-    syHuffman *lengths_stack[20];
+    SYHuffmanNode *offsets_node;
+    SYHuffmanNode *off_node;
+    SYHuffmanNode *lengths_stack[20];
     s32 lengths_stack_size;
     s32 unused2[2];
-    syHuffman *length_node;
+    SYHuffmanNode *length_node;
     s32 unused3[3];
     s32 sp64;
     s32 unused;
@@ -254,7 +229,8 @@ void syDmaDecodeVpk0(u16 *data, size_t size, void (*update_stream)(void), u8 *ou
 
     // read size of decompressed data
     // clang-format off
-    VPK0_UPDATE_STREAM(); VPK0_READ_USHORT(); VPK0_UPDATE_STREAM(); VPK0_READ_USHORT(); bits_num -= 32; out_buf_end = ((temp_value << ((32 - 32) - bits_num)) >> (32 - (u32) (32))) + out_buf;
+    VPK0_UPDATE_STREAM(); VPK0_READ_USHORT(); VPK0_UPDATE_STREAM(); VPK0_READ_USHORT(); \
+    bits_num -= 32; out_buf_end = ((temp_value << ((32 - 32) - bits_num)) >> (32 - (u32) (32))) + out_buf;
     // clang-format on
 
     // read sample method

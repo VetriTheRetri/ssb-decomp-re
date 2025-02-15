@@ -632,7 +632,7 @@ syAudioUpdateMesgQueue = 0x8002106C; // func_8002311C in Snap
 
 
 sSYAudioHeapBuffer = 0x800472D0; // size:0x56000
-D_8009D2D0 = 0x8009D2D0; // D_80096250 in Snap
+sSYAudioThreadTimeDelta = 0x8009D2D0; // D_80096250 in Snap
 sSYAudioALHeap = 0x8009D2D8;
 sSYAudioALHeapBase = 0x8009D2E8;
 sSYAudioALHeapSize = 0x8009D2EC;

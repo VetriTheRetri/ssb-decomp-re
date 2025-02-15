@@ -351,7 +351,7 @@ void syErrorControllerProcDisplay(GObj *gobj)
     );
     offset_x += 70;
 
-    func_80021908(offset_x, 195, D_8009D2D0 * (1.0F / 256.0F), 5, 2, TRUE);
+    func_80021908(offset_x, 195, sSYAudioThreadTimeDelta * (1.0F / 256.0F), 5, 2, TRUE);
     offset_x += 35;
 
     func_80021908(offset_x, 195, scTimeSpentAudio * (1.0F / 256.0F), 5, 2, TRUE);
@@ -373,7 +373,7 @@ void syErrorControllerProcDisplay(GObj *gobj)
 
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetFillColor(gSYTaskmanDLHeads[0]++, syVideoGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0x00, 0xFF)));
-    syErrorFillRectangle(gSYTaskmanDLHeads[0]++, 30, offset_y, ((D_8009D2D0 / 4 > 256) ? 256 : D_8009D2D0 / 4) + 30, offset_y + 1);
+    syErrorFillRectangle(gSYTaskmanDLHeads[0]++, 30, offset_y, ((sSYAudioThreadTimeDelta / 4 > 256) ? 256 : sSYAudioThreadTimeDelta / 4) + 30, offset_y + 1);
     offset_y += 2;
 
     gDPPipeSync(gSYTaskmanDLHeads[0]++);

@@ -254,7 +254,9 @@ typedef struct dbUnknown5
     dbUnknownLinkStruct *unk_dbunk5_0x6C;
     u8 filler_0x70[0x2C];
     dbUnknownLinkStruct *unk_dbunk5_0x9C;
-    u8 filler_0xA0[0x10];
+    u8 filler_0xA0[0x8];
+    s32 unk_dbunk5_0xA8;
+    dbUnknownS38 *unk_dbunk5_0xAC;
     s32 unk_dbunk5_0xB0;
     dbUnknownLinkStruct *unk_dbunk5_0xB4;
     s32 unk_dbunk5_0xB8[1];

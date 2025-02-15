@@ -259,7 +259,7 @@ segments:
       - [0x03C530, .data, sys/objdisplay]
       - [0x03C540, .data, sys/utils]
       - [0x03C550, .data, sys/sintable]
-      - [0x03D550, data, sys/audio]
+      - [0x03D550, .data, sys/audio]
       - [0x03D7B0, .data, sys/error]
       - [0x03DC70, .data, libultra/sp/sprite]
       - [0x03DC80, data, libultra/n_audio/n_env]

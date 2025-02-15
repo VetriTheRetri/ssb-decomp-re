@@ -827,7 +827,7 @@ void scManagerRunLoop(sb32 arg)
 	gSCManagerVSBattleState       = dSCManagerDefaultBattleState;
 
 	ftManagerSetupFileSize();
-	D_8003CB6D = 72;
+	dSYAudioPublicSettings.unk31 = 72;
 
 	syAudioSetSettingsUpdated();
 

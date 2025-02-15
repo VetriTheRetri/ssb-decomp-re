@@ -4,6 +4,11 @@
 #include <sys/scheduler.h>
 #include <sys/dma.h>
 
+extern u64 gSYMainRspBootCode[/* */];
+
+// 0x80044D48
+extern OSMesgQueue gSYMainThreadingQueue;
+
 #define AL_CACHE_ALIGN  15
 
 #define NUM_DMA_BUFFERS 4
@@ -22,13 +27,6 @@
 #define OSC_HIGH 0
 #define OSC_LOW 1
 #define OSC_STATE_COUNT 32
-
-typedef struct SYAudioPackage
-{
-    s32 count;
-    uintptr_t data[1];
-
-} SYAudioPackage;
 
 // only temporarily here...
 typedef struct alSoundEffect
@@ -54,49 +52,6 @@ typedef struct alSoundEffect
 	u8 balance;
 
 } alSoundEffect;
-
-typedef struct
-{
-    u8 *heap_base;
-    size_t heap_size;
-    u16 output_rate;
-    u8 pvoices_num_max;
-    u8 vvoices_num_max;
-    u8 updates_num_max;
-    u8 events_num_max;
-    u8 sounds_num_max;
-    u8 voices_num_max[2];
-    u8 unk11;
-    u8 unk12;
-    u8 unk13;
-    uintptr_t bank1_start;
-    uintptr_t bank1_end;
-    u8 *table1_start;
-    uintptr_t bank2_start;
-    uintptr_t bank2_end;
-    u8 *table2_start;
-    uintptr_t sbk_start;
-    u8 fx_type;
-    u8 unk31;
-    u8 unk32;
-    u8 unk33;
-    u16 unk34;
-    u16 unk36;
-    s32 unk38;
-    uintptr_t *fgm_ucode_data;
-    uintptr_t *fgm_table_data;
-    uintptr_t *unk44;
-    u16 fgm_ucode_count;
-    u16 fgm_table_count;
-    u16 unk4C;
-    uintptr_t unk50;
-    uintptr_t unk54;
-    uintptr_t fgm_table_start;
-    uintptr_t fgm_table_end;
-    uintptr_t fgm_ucode_start;
-    uintptr_t fgm_ucode_end;
-
-} SYAudioSettings;
 
 typedef struct {
     u8 rate;
@@ -194,131 +149,90 @@ typedef struct SYAudioConfig
 
 } SYAudioConfig;
 
-// s32 auCustomFXParams1[] = {
-//     8,
-//     0x28a0,
-//     0,
-//     0x100,
-//     9830,
-//     -9830,
-//     0,
-//     0,
-//     0,
-//     0,
-//     0x100,
-//     0x180,
-//     9830,
-//     -9830,
-//     11140,
-//     0,
-//     0,
-//     0x5000,
-//     0x520,
-//     0x1000,
-//     16384,
-//     -16384,
-//     4587,
-//     0,
-//     0,
-//     0,
-//     0x5a0,
-//     0xce0,
-//     8192,
-//     -8192,
-//     0,
-//     0,
-//     0,
-//     0,
-//     0x1440,
-//     0x2340,
-//     16384,
-//     -16384,
-//     4587,
-//     0,
-//     0,
-//     0x6000,
-//     0x14c0,
-//     0x1dc0,
-//     8192,
-//     -8192,
-//     0,
-//     0,
-//     0,
-//     0,
-//     0x1dc0,
-//     0x2180,
-//     8192,
-//     -8192,
-//     0,
-//     0,
-//     0,
-//     0,
-//     0,
-//     0x2560,
-//     18000,
-//     0,
-//     0,
-//     0,
-//     0,
-//     0x7000,
-// };
+// 0x8003C950
+s32 dSYAudioCustomFXParams[/* */] =
+{ 
+    14, 0x4b00, 0, 0x280, 9830, -9830, 0, 0, 0, 0, 0x3c0, 0x500, 3276, -3276, 8191, 0,
+    0, 0, 0x780, 0xa00, 3276, -3276, 5631, 0, 0, 0, 0xa00, 0xdc0, 3276, -3276, 4351, 0,
+    0, 0, 0xc80, 0x12c0, 3276, -3276, 4351, 0, 0, 0, 0xf00, 0x1900, 3276, -3276, 4095, 0,
+    0, 0, 0x1680, 0x1e00, 3276, -3276, 4095, 0, 0, 0, 0x1f40, 0x2580, 3276, -3276, 2559, 0,
+    0, 0, 0x2580, 0x2bc0, 3276, -3276, 2559, 0, 0, 0, 0x2bc0, 0x3200, 3276, -3276, 1535, 0,
+    0, 0, 0x3200, 0x3840, 3276, -3276, 1535, 0, 0, 0, 0x3840, 0x3e80, 3276, -3276, 255, 0,
+    0, 0, 0x3e80, 0x44c0, 3276, -3276, 255, 0, 0, 0, 0, 0x2580, 5000, 0, 0, 0, 0, 0x5000
+};
 
-// s32 auCustomFXParams2[] = { 14, 0x4b00, 0, 0x280, 9830, -9830, 0, 0, 0, 0, 0x3c0, 0x500, 3276, -3276, 8191, 0,
-//                             0, 0, 0x780, 0xa00, 3276, -3276, 5631, 0, 0, 0, 0xa00, 0xdc0, 3276, -3276, 4351, 0,
-//                             0, 0, 0xc80, 0x12c0, 3276, -3276, 4351, 0, 0, 0, 0xf00, 0x1900, 3276, -3276, 4095, 0,
-//                             0, 0, 0x1680, 0x1e00, 3276, -3276, 4095, 0, 0, 0, 0x1f40, 0x2580, 3276, -3276, 2559, 0,
-//                             0, 0, 0x2580, 0x2bc0, 3276, -3276, 2559, 0, 0, 0, 0x2bc0, 0x3200, 3276, -3276, 1535, 0,
-//                             0, 0, 0x3200, 0x3840, 3276, -3276, 1535, 0, 0, 0, 0x3840, 0x3e80, 3276, -3276, 255, 0,
-//                             0, 0, 0x3e80, 0x44c0, 3276, -3276, 255, 0, 0, 0, 0, 0x2580, 5000, 0, 0, 0,
-//                             0, 0x5000 };
-
-extern s32 *auCustomFXParamsTable[2]; // = { auCustomFXParams1, auCustomFXParams2 };
-
-// u8 auSoundPriorities[400] = { 50, 50, 50, 50, 50, 50, 50, 50, 30, 30, 50, 50, 50, 50, 90, 90, 50, 50, 50, 50,
-//                               90, 90, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 100, 100, 100, 100, 100, 100, 100, 100,
-//                               100, 100, 100, 100, 100, 100, 100, 100, 80, 80, 100, 100, 100, 100, 100, 100, 100, 100, 100, 80,
-//                               100, 100, 100, 100, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40,
-//                               40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40,
-//                               40, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50,
-//                               50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50,
-//                               50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50,
-//                               110, 110, 110, 110, 110, 110, 110, 110, 110, 110, 110, 110, 110, 110, 110, 110, 110, 110, 110, 110,
-//                               50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50,
-//                               50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50,
-//                               50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50,
-//                               50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50,
-//                               50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50,
-//                               50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50,
-//                               50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50,
-//                               50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50,
-//                               50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50,
-//                               50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50,
-//                               50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50 };
-
-extern sb32 dSYAudioIsSettingsUpdated;// = 0;
-extern s32 dSYAudioNextDma; // = 0;
-extern sb32 dSYAudioSoundQuality;// = 1;
-extern s32 dSYAudioCurrentFxType;// = 0;
-extern s32 dSYAudioIsRestarting;// = 0;
-extern s32 auFrameCounter;
-extern s16 auSampleCount[];
-// u8 auGlobalSoundVolume = 127;
-// u8 auGlobalSoundReverbAmt = 0;
-// u32 D_800423E0 = 0x7F00;
-
-extern u64 gSYMainRspBootCode[/* */];
+// 0x8003CB18
+s32 *dSYAudioCustomFXTables[/* */] = { dSYAudioCustomFXParams };
 
 // 0x8003CB1C
-extern s32 dSYAudioIsSettingsUpdated;
+sb32 dSYAudioIsSettingsUpdated = FALSE;
 
-// 0x80044D48
-extern OSMesgQueue gSYMainThreadingQueue;
+// 0x8003CB20
+s32 dSYAudioNextDma = 0;
+
+// 0x8003CB24
+sb32 dSYAudioSoundQuality = 1;
+
+// 0x8003CB28
+s32 dSYAudioCurrentFxType = 0;
+
+// 0x8003CB2C
+s32 dSYAudioIsRestarting = FALSE;
+
+// 0x8003CB30
+s32 dSYAudioCurrentTic = 1;
+
+// 0x8003CB34
+s16 dSYAudioSampleCounts[/* */] = { 0, 0, 0, 0 };
+
+// 0x8003CB3C - HAL did some dumb $h17 and now we have 3 of these just to make one function match, hypers
+SYAudioSettings dSYAudioPublicSettings =
+{
+    gSYAudioHeapBuffer,
+    ARRAY_COUNT(gSYAudioHeapBuffer),
+    32000,
+    16,
+    24,
+    128,
+    64,
+    24,
+    { 24, 0 },
+    0,
+    50,
+    20,
+    0xC6B650,       // ROM address
+    0xC7B1F0,       // ROM address
+    0xC7B1F0,       // ROM address
+    0xB4E5C0,       // ROM address
+    0xB54CE0,       // ROM address
+    0xB54CE0,       // ROM address
+    0xB277B0,       // ROM address
+    AL_FX_NONE,     // FX type
+    48,             // ???
+    24,             // ???
+    24,             // ???
+    0,
+    0,
+    0,
+    NULL,           // 0x3C
+    NULL,           // 0x40
+    NULL,           // 0x44
+    0,              // 0x48
+    0,              // 0x4A
+    0,              // 0x4C
+    0xF573D0,       // ROM address
+    0xF57BF0,       // ROM address
+    0xF57BF0,       // ROM address
+    0xF5A9C0,       // ROM address
+    0xF5A9C0,       // ROM address
+    0xF5F4E0        // ROM address
+};
 
 // 0x800472D0
-u8 sSYAudioHeapBuffer[0x56000];
+u8 gSYAudioHeapBuffer[0x56000];
 
 // 0x8009D2D0
-u32 sSYAudioThreadTimeDelta;
+u32 gSYAudioThreadTimeDelta;
 
 // 0x8009D2D8
 ALHeap sSYAudioALHeap;
@@ -420,35 +334,10 @@ f32 sSYAudioBGMVolumeRates[1];
 SYAudioSettings sSYAudioCurrentSettings;
 
 // 0x8009D9F0
-OSTime sSYAudioOSTime;
+OSTime sSYAudioTimeStamp;
 
 // 0x8009D9F8
 SYAudioOsc *sSYAudioOscStatesAllocFree;
-
-// HAL did some dumb $h17 and now we have 3 of these just to make one function match, hypers
-SYAudioSettings dSYAudioPublicSettings =
-{
-    sSYAudioHeapBuffer,
-    sizeof(sSYAudioHeapBuffer),
-    30720,
-    0x16,
-    0x18,
-    0x40,
-    0x40,
-    10,
-    { 16, 16 },
-    0,
-    50,
-    100,
-    0xDEADBEEF,
-    0xDEADBEEF,
-    0xDEADBEEF,
-    0xDEADBEEF,
-    0xDEADBEEF,
-    0xDEADBEEF,
-    0xDEADBEEF,
-    AL_FX_CUSTOM
-};
 
 extern SYAudioSettings dSYAudioPublicSettings2, dSYAudioPublicSettings3;
 
@@ -1092,6 +981,9 @@ void syAudioMakeBGMPlayers(void)
     s32 i, j;
     s32 unused;
 
+    // 8003CB00 expected
+    // 8003CB18 current
+
     sSYAudioALHeapBase = sSYAudioALHeap.cur;
     sSYAudioALHeapSize = sSYAudioALHeap.count;
     
@@ -1111,7 +1003,7 @@ void syAudioMakeBGMPlayers(void)
     else
     {
         syn_config.fxType = AL_FX_CUSTOM;
-        syn_config.params = auCustomFXParamsTable[dSYAudioCurrentFxType];
+        syn_config.params = dSYAudioCustomFXTables[dSYAudioCurrentFxType - AL_FX_CUSTOM];
     }
     n_alInit(&sSYAudioALGlobals, &syn_config);
     
@@ -1121,7 +1013,7 @@ void syAudioMakeBGMPlayers(void)
     
     audio_config.unk_80026204_0x0 = sSYAudioCurrentSettings.unk31;
     audio_config.unk_80026204_0x2 = sSYAudioCurrentSettings.unk32;
-    audio_config.unk_80026204_0x4 = sSYAudioCurrentSettings.unk33;
+    audio_config.unk_80026204_0x4 = sSYAudioCurrentSettings.sndplayers_num;
     
     if (sSYAudioCurrentSettings.unk34 != 0)
     {
@@ -1150,15 +1042,15 @@ void syAudioMakeBGMPlayers(void)
     
     func_80026204_26E04(&audio_config);
 
-    sSYAudioSoundPlayers = alHeapAlloc(&sSYAudioALHeap, 1, sSYAudioCurrentSettings.unk33 * sizeof(*sSYAudioSoundPlayers));
+    sSYAudioSoundPlayers = alHeapAlloc(&sSYAudioALHeap, 1, sSYAudioCurrentSettings.sndplayers_num * sizeof(*sSYAudioSoundPlayers));
     
-    for (i = 0; i < sSYAudioCurrentSettings.unk33; i++)
+    for (i = 0; i < sSYAudioCurrentSettings.sndplayers_num; i++)
     {
         sSYAudioSoundPlayers[i] = NULL;
     }
     sSYAudioCSPlayerStatuses = alHeapAlloc(&sSYAudioALHeap, 1, sizeof(*sSYAudioCSPlayerStatuses));
     sSYAudioBGMPlayingIDs = alHeapAlloc(&sSYAudioALHeap, 1, sizeof(*sSYAudioBGMPlayingIDs));
-    gSYAudioGlobalBGMPriority = sSYAudioCurrentSettings.unk13;
+    gSYAudioGlobalBGMPriority = sSYAudioCurrentSettings.priority;
     
     sSYAudioOscStatesAllocFree = alHeapAlloc(&sSYAudioALHeap, sizeof(*sSYAudioOscStatesAllocFree), OSC_STATE_COUNT);
 
@@ -1218,28 +1110,28 @@ void auThreadMain(void *arg)
     while (TRUE)
     {
         count_start = osGetCount();
-        i = auFrameCounter & 1;
+        i = dSYAudioCurrentTic & 1;
         D_8009D940_96D40 = sSYAudioSchedulerTasks[i];
         D_8009D934_96D34 = sSYAudioAcmdListBuffers[i];
-        id_mod3 = auFrameCounter % 3;
+        id_mod3 = dSYAudioCurrentTic % 3;
 
         if (((ai_len > 368) && (sp73 != 2)) || ((ai_len > 184) && (sp73 == 0)))
         {
-            auSampleCount[id_mod3] = D_8009D920_96D20;
+            dSYAudioSampleCounts[id_mod3] = D_8009D920_96D20;
             sp73 = 2;
         }
         else
         {
-            auSampleCount[id_mod3] = sSYAudioFrequency;
+            dSYAudioSampleCounts[id_mod3] = sSYAudioFrequency;
         
             if (sp73 != 0)
             {
                 sp73--;
             }
         }
-        sSYAudioOSTime = osGetTime();
+        sSYAudioTimeStamp = osGetTime();
         
-        D_8009D934_96D34 = func_8002C708_2D308(D_8009D934_96D34, &sp80, osVirtualToPhysical(sSYAudioDataBuffers[id_mod3]), auSampleCount[id_mod3]);
+        D_8009D934_96D34 = func_8002C708_2D308(D_8009D934_96D34, &sp80, osVirtualToPhysical(sSYAudioDataBuffers[id_mod3]), dSYAudioSampleCounts[id_mod3]);
 
         D_8009D940_96D40->info.type = 2;
         D_8009D940_96D40->info.priority = 80;
@@ -1264,16 +1156,16 @@ void auThreadMain(void *arg)
         D_8009D940_96D40->task.t.output_buffer = NULL;
         D_8009D940_96D40->task.t.output_buffer_size = 0;
         
-        sSYAudioThreadTimeDelta = (osGetCount() - count_start) / 2971;
+        gSYAudioThreadTimeDelta = (osGetCount() - count_start) / 2971;
         osRecvMesg(&sSYAudioTicMesgQueue, NULL, OS_MESG_BLOCK);
         ai_len = IO_READ(AI_LEN_REG) >> 2;
         osRecvMesg(&sSYAudioSPTaskMesgQueue, NULL, OS_MESG_BLOCK);
 
-        id_mod3 = (auFrameCounter - 1) % 3;
+        id_mod3 = (dSYAudioCurrentTic - 1) % 3;
         
         if (dSYAudioSoundQuality == 0)
         {
-            for (i = 0; i < auSampleCount[id_mod3] * 2; i += 2)
+            for (i = 0; i < dSYAudioSampleCounts[id_mod3] * 2; i += 2)
             {
                 sp80 = (sSYAudioDataBuffers[id_mod3][i] + sSYAudioDataBuffers[id_mod3][i + 1]) / 2;
                 sSYAudioDataBuffers[id_mod3][i] = sp80;
@@ -1281,7 +1173,7 @@ void auThreadMain(void *arg)
             }
         }
         osWritebackDCacheAll();
-        osAiSetNextBuffer(sSYAudioDataBuffers[id_mod3], auSampleCount[id_mod3] * 4);
+        osAiSetNextBuffer(sSYAudioDataBuffers[id_mod3], dSYAudioSampleCounts[id_mod3] * 4);
     
         for (i = 0; i < dSYAudioNextDma; i++)
         {
@@ -1290,10 +1182,10 @@ void auThreadMain(void *arg)
         osWritebackDCacheAll();
         osSendMesg(&scTaskQueue, (OSMesg)D_8009D940_96D40, OS_MESG_NOBLOCK);
         
-        auFrameCounter++;
+        dSYAudioCurrentTic++;
         dSYAudioNextDma = 0;
     
-        for (i = 0; i < sSYAudioCurrentSettings.unk33; i++)
+        for (i = 0; i < sSYAudioCurrentSettings.sndplayers_num; i++)
         {
             if ((sSYAudioSoundPlayers[i] != NULL) && (sSYAudioSoundPlayers[i]->unk_0x10 == 0))
             {
@@ -1365,9 +1257,9 @@ void auThreadMain(void *arg)
         }
         if (dSYAudioIsSettingsUpdated != FALSE)
         {
-            sp80 = sSYAudioCurrentSettings.unk33 + 1;
+            sp80 = sSYAudioCurrentSettings.sndplayers_num + 1;
             
-            for (i = 0; i < sSYAudioCurrentSettings.unk33; i++)
+            for (i = 0; i < sSYAudioCurrentSettings.sndplayers_num; i++)
             {
                 if (sSYAudioSoundPlayers[i] == NULL)
                 {
@@ -1406,9 +1298,9 @@ void auThreadMain(void *arg)
         }
         if (dSYAudioIsRestarting != FALSE)
         {
-            sp80 = sSYAudioCurrentSettings.unk33 + 1;
+            sp80 = sSYAudioCurrentSettings.sndplayers_num + 1;
             
-            for (i = 0; i < sSYAudioCurrentSettings.unk33; i++)
+            for (i = 0; i < sSYAudioCurrentSettings.sndplayers_num; i++)
             {
                 if (sSYAudioSoundPlayers[i] == NULL)
                 {
@@ -1576,7 +1468,7 @@ s32 syAudioPlayFGM(u32 fgm)
 {
     s32 i;
     
-    for (i = 0; i < sSYAudioCurrentSettings.unk33; i++)
+    for (i = 0; i < sSYAudioCurrentSettings.sndplayers_num; i++)
     {
         if (sSYAudioSoundPlayers[i] == NULL)
         {
@@ -1599,7 +1491,7 @@ void func_80020E28(void)
     func_800266A0_272A0();
 
     // ??????
-    for (i = 0; i < sSYAudioCurrentSettings.unk33; i++)
+    for (i = 0; i < sSYAudioCurrentSettings.sndplayers_num; i++)
     {
         continue;
     }

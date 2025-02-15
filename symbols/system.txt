@@ -631,8 +631,8 @@ syAudioGetStatus = 0x80021054; // func_80023104 in Snap
 syAudioUpdateMesgQueue = 0x8002106C; // func_8002311C in Snap
 
 
-sSYAudioHeapBuffer = 0x800472D0; // size:0x56000
-sSYAudioThreadTimeDelta = 0x8009D2D0; // D_80096250 in Snap
+gSYAudioHeapBuffer = 0x800472D0; // size:0x56000
+gSYAudioThreadTimeDelta = 0x8009D2D0; // D_80096250 in Snap
 sSYAudioALHeap = 0x8009D2D8;
 sSYAudioALHeapBase = 0x8009D2E8;
 sSYAudioALHeapSize = 0x8009D2EC;
@@ -664,18 +664,18 @@ sSYAudioBGMVolumes = 0x8009D97C;
 sSYAudioBGMVolumeRates = 0x8009D980;
 sSYAudioCurrentSettings = 0x8009D988; // Or is this 0x8009D988?
 sSYAudioSoundPlayersNum = 0x8009D9BB;
-sSYAudioOSTime = 0x8009D9F0; // type:u64 D_80096968 in Snap
+sSYAudioTimeStamp = 0x8009D9F0; // type:u64 D_80096968 in Snap
 sSYAudioOscStatesAllocFree = 0x8009D9F8;
 
-auCustomFXParams2 = 0x8003C950;
-auCustomFXParamsTable = 0x8003CB00;
+dSYAudioCustomFXParams = 0x8003C950;
+dSYAudioCustomFXTables = 0x8003CB00;
 dSYAudioIsSettingsUpdated = 0x8003CB1C;
 dSYAudioNextDma = 0x8003CB20;
 dSYAudioSoundQuality = 0x8003CB24;
 dSYAudioCurrentFxType = 0x8003CB28;
 dSYAudioIsRestarting = 0x8003CB2C;
-auFrameCounter = 0x8003CB30;
-auSampleCount = 0x8003CB34;
+dSYAudioCurrentTic = 0x8003CB30;
+dSYAudioSampleCounts = 0x8003CB34;
 
 osInitialize = 0x80032250;
 osCartRgcInit = 0x80035EE0;

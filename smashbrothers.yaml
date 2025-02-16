@@ -2541,7 +2541,8 @@ segments:
     type: bin
     start: 0xC7B1F0
 
-  - type: bin # ???
+  - name: fgm.unk # ???
+    type: bin
     start: 0xF573D0
   - name: fgm.tbl
     type: bin # Sound table (?)
@@ -2549,6 +2550,8 @@ segments:
   - name: fgm.ucd
     type: bin # FGM microcode
     start: 0xF5A9C0
+  - name: rom_pad
+    type: bin
+    start: 0xF5F4E0
 
-  # - [0xF5F4E0] end of content
   - [0x1000000]

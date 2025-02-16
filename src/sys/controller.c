@@ -322,13 +322,13 @@ void func_800043C0(s32 arg0, s32 arg1)
     }
     if (i == MAXCONTROLLERS)
     {
-        osRecvMesg(&sSYControllerDeviceMesgQueue, (OSMesg*)&i, OS_MESG_BLOCK);
+        osRecvMesg(&sSYControllerDeviceMesgQueue, (OSMesg)&i, OS_MESG_BLOCK);
     }
     else D_80045268[i].unk00 = 1;
     
     D_80045268[i].unk10 = arg0;
     D_80045268[i].unk14 = arg1;
-    osSendMesg(&sSYControllerEventMesgQueue, (OSMesg *)&D_80045268[i].unk04, OS_MESG_NOBLOCK);
+    osSendMesg(&sSYControllerEventMesgQueue, (OSMesg)&D_80045268[i].unk04, OS_MESG_NOBLOCK);
 }
 
 // 0x80004474

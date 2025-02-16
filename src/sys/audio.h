@@ -1,9 +1,26 @@
 #ifndef _SYAUDIO_H_
 #define _SYAUDIO_H_
 
-#include <PR/ultratypes.h>
-#include <PR/libaudio.h>
+#include <ssb_types.h>
 #include <n_audio/n_libaudio.h>
+#include <n_audio/synthInternals.h>
+
+#define NUM_DMA_BUFFERS 4
+#define MAX_BUFFERS 50
+#define MAX_BUFFER_LENGTH 1024
+#define AUDIO_EXTRA_SAMPLES 80
+
+#define TREMELO_SIN 1
+#define TREMELO_SQR 2
+#define TREMELO_DSC_SAW 3
+#define TREMELO_ASC_SAW 4
+#define VIBRATO_SIN 128
+#define VIBRATO_SQR 129
+#define VIBRATO_DSC_SAW 130
+#define VIBRATO_ASC_SAW 131
+#define OSC_HIGH 0
+#define OSC_LOW 1
+#define OSC_STATE_COUNT 32
 
 typedef struct {
     u32 addr;
@@ -41,10 +58,10 @@ typedef struct SYAudioSettings
     u8 priority;
     uintptr_t bank1_start;
     uintptr_t bank1_end;
-    u8 *table1_start;
+    void *table1_start;
     uintptr_t bank2_start;
     uintptr_t bank2_end;
-    u8 *table2_start;
+    void *table2_start;
     uintptr_t sbk_start;
     u8 fx_type;
     u8 unk31;
@@ -67,6 +84,93 @@ typedef struct SYAudioSettings
     uintptr_t fgm_ucode_end;
 
 } SYAudioSettings;
+
+typedef struct SYAudioOsc_s
+{
+    struct SYAudioOsc_s *next;
+    u8 type;
+    u8 stateFlags;
+    u16 maxCount;
+    u16 curCount;
+
+    union SYOscDataUnion
+    {
+        struct SYOscDef
+        {
+            u8 rate;
+            u8 depth;
+            u8 oscCount;
+        } def;
+
+        struct SYOscTremSin
+        {
+            u8 halfdepth;
+            u8 baseVol;
+        } tsin;
+
+        struct SYOscTremSqr
+        {
+            u8 curVal;
+            u8 hiVal;
+            u8 loVal;
+        } tsqr;
+
+        struct SYOscTremSaw
+        {
+            u8 baseVol;
+            u8 depth;
+        } tsaw;
+
+        struct SYOscVibSin
+        {  
+            f32 depthcents;
+        } vsin;
+
+        struct SYOscVibSqr
+        {
+            f32 loRatio;
+            f32 hiRatio;
+        } vsqr;
+
+        struct SYOscVibDSaw
+        {
+            s32 hicents;
+            s32 centsrange;
+        } vdsaw;
+
+        struct SYOscVibASaw
+        {
+            s32 locents;
+            s32 centsrange;
+        } vasaw;
+
+    } data;
+
+} SYAudioOsc;
+
+typedef struct SYAudioConfig
+{
+    u16 unk_80026204_0x0;
+    u16 unk_80026204_0x2;
+    u16 unk_80026204_0x4;
+    u16 inst_sound_count;
+    u16 fgm_ucode_count;
+    u16 fgm_table_count;
+    u16 unk_80026204_0xC;
+    void *inst_sound_array;
+    void *fgm_ucode_data;
+    void *fgm_table_data;
+    s32 unk_80026204_0x1C;
+    ALHeap *heap;
+    u8 unk_80026204_0x24;
+    u16 unk_80026204_0x26;
+    u16 unk_80026204_0x28;
+    u16 unk_80026204_0x2A;
+    u16 unk_80026204_0x2C;
+    u16 unk_80026204_0x2E;
+    u16 unk_80026204_0x30;
+
+} SYAudioConfig;
 
 extern SYAudioSettings dSYAudioPublicSettings;
 extern u8 gSYAudioHeapBuffer[0x56000];

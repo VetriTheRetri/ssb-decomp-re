@@ -42,7 +42,7 @@
 -048: LBTransitionBlock
 -049: LBTransitionRotScale
 -050: LBTransitionCurtain
--052: MVCommonFileID
+-052: MVCommon
 -053: MVOpeningPortraitsSet1
 -054: MVOpeningPortraitsSet2
 -056: MVOpeningRoomScene1
@@ -50,7 +50,7 @@
 -058: MVOpeningRoomScene3
 -059: MVOpeningRoomScene4
 -063: MVOpeningRoomTransition
--065: MVOpeningCommonFileID
+-065: MVOpeningCommon
 -082: IFCommonGameStatus
 -090: MVOpeningRoomWallpaper
 -075: MVOpeningRunCrash

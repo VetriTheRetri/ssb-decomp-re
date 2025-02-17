@@ -2,6 +2,7 @@
 #include <mv/movie.h>
 #include <sc/scene.h>
 #include <sys/video.h>
+#include <reloc_data.h>
 
 extern void syRdpSetViewport(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 
@@ -84,7 +85,7 @@ void *sMVEndingFiles[2];
 // // // // // // // // // // // //
 
 // 0x80132AD0
-u32 dMVEndingFileIDs[/* */] = { &D_NF_00000034, &D_NF_0000004C };
+u32 dMVEndingFileIDs[/* */] = { &llMVCommonFileID, &D_NF_0000004C };
 
 // 0x80132AD8
 Lights1 dMVEndingLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x14, 0x14, 0x14);

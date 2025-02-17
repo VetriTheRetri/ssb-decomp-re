@@ -4,6 +4,7 @@
 #include <mv/movie.h>
 #include <sc/scene.h>
 #include <sys/video.h>
+#include <reloc_data.h>
 
 extern u32 sySchedulerGetTicCount();
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
@@ -29,7 +30,7 @@ FTKeyEvent dMVOpeningKirbyKeyEvents[/* */] =
 };
 
 // 0x8018E0F4
-u32 dMVOpeningKirbyFileIDs[/* */] = { &lIFCommonAnnounceCommonFileID, &lMVOpeningCommonFileID };
+u32 dMVOpeningKirbyFileIDs[/* */] = { &lIFCommonAnnounceCommonFileID, &llMVOpeningCommonFileID };
 
 // // // // // // // // // // // //
 //                               //

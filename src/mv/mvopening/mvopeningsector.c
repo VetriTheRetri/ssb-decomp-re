@@ -2,6 +2,7 @@
 #include <sc/scene.h>
 #include <mv/movie.h>
 #include <sys/video.h>
+#include <reloc_data.h>
 
 extern u32 sySchedulerGetTicCount();
 extern void syRdpSetViewport(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);

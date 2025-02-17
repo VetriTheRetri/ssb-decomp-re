@@ -3,6 +3,7 @@
 #include <mv/movie.h>
 #include <sc/scene.h>
 #include <sys/video.h>
+#include <reloc_data.h>
 
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
@@ -15,7 +16,7 @@ extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 // 0x80134A20
 u32 dMVOpeningRoomFileIDs[/* */] =
 {
-	&lMVCommonFileID,
+	&llMVCommonFileID,
 	&lMVOpeningRoomTransitionFileID,
 	&lMVOpeningRoomScene1FileID,
 	&lMVOpeningRoomScene2FileID,

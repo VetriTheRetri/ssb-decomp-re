@@ -2,6 +2,7 @@
 #include <sc/scene.h>
 #include <sys/video.h>
 #include <sys/controller.h>
+#include <reloc_data.h>
 
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
@@ -109,7 +110,7 @@ void mnNoControllerMakeImage(void)
 	gobj = gcMakeGObjSPAfter(1001, NULL, 1, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_PRIORITY_DEFAULT, ~0);
 
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, gMNNoControllerFiles[0], &lMNNoControllerImageSprite));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, gMNNoControllerFiles[0], &llMNNoControllerSprite));
 
 	sobj->pos.x = 10.0F;
 	sobj->pos.y = 10.0F;

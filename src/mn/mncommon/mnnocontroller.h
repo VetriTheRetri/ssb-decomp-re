@@ -5,9 +5,6 @@
 #include <sys/objdef.h>
 #include <mn/mndef.h>
 
-extern u32 lMNNoControllerFileID;                                   // 0x000000A9
-extern intptr_t lMNNoControllerImageSprite; 				        // 0x00008460
-
 extern void *gMNNoControllerFiles[/* */];
 
 extern GObj* mnNoControllerMakeCamera(void);

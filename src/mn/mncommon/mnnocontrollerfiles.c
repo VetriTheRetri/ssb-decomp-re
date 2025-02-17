@@ -1,4 +1,5 @@
 #include <mn/menu.h>
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -7,7 +8,7 @@
 // // // // // // // // // // // //
 
 // 0x800D67B0
-u32 dMNNoControllerFileIDs[/* */] = { &lMNNoControllerFileID };
+u32 dMNNoControllerFileIDs[/* */] = { &llMNNoControllerFileID };
 
 // // // // // // // // // // // //
 //                               //

@@ -932,17 +932,17 @@ Sprite SymbolPercent 0xf60
 Sprite SymbolPeriod 0xfd0
 
 [34]
-Sprite FightResultsTkoText 0x358
-Sprite FightResultsPlaceText 0x990
-Sprite FightResultsKosText 0xd38
-Sprite FightResultsPtsText 0x10d8
-Sprite FightResults0x48c8 0x48c8
-Sprite FightResults1PText 0x49e8
-Sprite FightResults2PText 0x4b08
-Sprite FightResults3PText 0x4c28
-Sprite FightResults4PText 0x4d48
-Sprite FightResultsBackground 0xd5c8
-Sprite FightResultsFirstPlace 0xe2a0
+Sprite TKOText 0x358
+Sprite PlaceText 0x990
+Sprite KOsText 0xd38
+Sprite PtsText 0x10d8
+Sprite 0x48c8 0x48c8
+Sprite 1PArrow 0x49e8
+Sprite 2PArrow 0x4b08
+Sprite 3PArrow 0x4c28
+Sprite 4PArrow 0x4d48
+Sprite Wallpaper 0xd5c8
+Sprite Winner 0xe2a0
 
 [35]
 MObjSub Mario 0x0000

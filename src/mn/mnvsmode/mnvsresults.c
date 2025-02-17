@@ -71,7 +71,7 @@ s32 dMNVSResultsUnused0x80138F50[/* */] =
 // 0x80138F70
 u32 dMNVSResultsFileIDs[/* */] =
 {
-	&lMNVSResultsFileID,
+	&llMNVSResultsFileID,
 	&lIFCommonPlayerTagsFileID,
 	&llMNPlayersGameModesFileID,
 	&lIFCommonPlayerDamageFileID,
@@ -763,7 +763,7 @@ void mnVSResultsMakeWallpaper(void)
 	gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(gobj, mnVSResultsWallpaperProcDisplay, 26, GOBJ_PRIORITY_DEFAULT, ~0);
 
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSResultsFiles[0], &lMNVSResultsWallpaperSprite));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSResultsFiles[0], &llMNVSResultsWallpaperSprite));
 
 	SObjGetStruct(gobj)->pos.x = 10.0F;
 	SObjGetStruct(gobj)->pos.y = 10.0F;
@@ -1487,7 +1487,7 @@ SObj* mnVSResultsMakePlaceNumber(GObj *gobj, s32 player, s32 place, s32 color_id
 		{
 			if ((mnVSResultsGetWinPlayer() == player) || (sMNVSResultsIsSharedWinner[player] != FALSE))
 			{
-				sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSResultsFiles[0], &lMNVSResultsWinnerSprite));
+				sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSResultsFiles[0], &llMNVSResultsWinnerSprite));
 				sobj->user_data.s = 1;
 			}
 			else
@@ -1499,7 +1499,7 @@ SObj* mnVSResultsMakePlaceNumber(GObj *gobj, s32 player, s32 place, s32 color_id
 		}
 		else
 		{
-			sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSResultsFiles[0], &lMNVSResultsWinnerSprite));
+			sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSResultsFiles[0], &llMNVSResultsWinnerSprite));
 			sobj->user_data.s = 1;
 		}
 		sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1784,8 +1784,8 @@ void mnVSResultsMakeHeader(void)
 
 	intptr_t offsets[/* */] =
 	{
-		&lMNVSResults1PArrowSprite, &lMNVSResults2PArrowSprite,
-		&lMNVSResults3PArrowSprite, &lMNVSResults4PArrowSprite
+		&llMNVSResults1PArrowSprite, &llMNVSResults2PArrowSprite,
+		&llMNVSResults3PArrowSprite, &llMNVSResults4PArrowSprite
 	};
 	s32 i;
 	FTStruct *fp;
@@ -1841,7 +1841,7 @@ void mnVSResultsMakeKOs(s32 y)
 		(
 			Sprite*,
 			sMNVSResultsFiles[0],
-			&lMNVSResultsLabelKOsSprite
+			&llMNVSResultsKOsTextSprite
 		),
 		nGCProcessKindFunc,
 		NULL,
@@ -1903,7 +1903,7 @@ void mnVSResultsMakeTKO(s32 y)
 		(
 			Sprite*,
 			sMNVSResultsFiles[0],
-			&lMNVSResultsLabelTKOSprite
+			&llMNVSResultsTKOTextSprite
 		),
 		nGCProcessKindFunc,
 		NULL,
@@ -1999,7 +1999,7 @@ void mnVSResultsMakePointsRow(void)
 		(
 			Sprite*,
 			sMNVSResultsFiles[0],
-			&lMNVSResultsLabePointsSprite
+			&llMNVSResultsPtsTextSprite
 		),
 		nGCProcessKindFunc,
 		NULL,
@@ -2091,7 +2091,7 @@ void mnVSResultsMakePlaceRow(s32 y)
 		(
 			Sprite*,
 			sMNVSResultsFiles[0],
-			&lMNVSResultsLabePlaceSprite
+			&llMNVSResultsPlaceTextSprite
 		),
 		nGCProcessKindFunc,
 		NULL,

@@ -6,19 +6,6 @@
 #include <PR/gbi.h>
 #include <mn/mndef.h>
 
-extern u32 lMNVSResultsFileID;						// 0x00000022
-
-extern intptr_t lMNVSResultsLabelTKOSprite;         // 0x00000358
-extern intptr_t lMNVSResultsLabePlaceSprite;        // 0x00000990
-extern intptr_t lMNVSResultsLabelKOsSprite;         // 0x00000D38
-extern intptr_t lMNVSResultsLabePointsSprite;       // 0x000010D8
-extern intptr_t lMNVSResults1PArrowSprite;			// 0x000049E8
-extern intptr_t lMNVSResults2PArrowSprite;			// 0x00004B08
-extern intptr_t lMNVSResults3PArrowSprite;			// 0x00004C28
-extern intptr_t lMNVSResults4PArrowSprite;			// 0x00004D48
-extern intptr_t lMNVSResultsWallpaperSprite;        // 0x0000D5C8
-extern intptr_t lMNVSResultsWinnerSprite;           // 0x0000E2A0
-
 extern void mnVSResultsFuncLights(Gfx **dls);
 extern s32 mnVSResultsGetPlayerCount(void);
 extern void mnVSResultsSaveBackup(void);

@@ -17,13 +17,77 @@ typedef struct db2ShortsContainer
 
 extern db2ShortsContainer D_8038EFB0_1AB800;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_80374460.s")
+// 0x80374460
+s32 func_ovl8_80374460(s32 arg0, s32 arg1, s32 arg2, s32 arg3)
+{
+    dbUnknownLinkStruct *temp_v0;
+    dbUnknownLinkStruct *var_v1;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_803744D4.s")
+    temp_v0 = func_ovl8_803717A0(0xC4);
+    if (temp_v0 != NULL)
+    {
+        func_ovl8_8037C7D4(temp_v0, 0, 0, arg1, arg2, arg3, arg0);
+        var_v1 = temp_v0;
+    }
+    else
+        var_v1 = 0;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_80374548.s")
+    return var_v1;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_803745BC.s")
+// 0x803744D4
+s32 func_ovl8_803744D4(s32 arg0, s32 arg1, s32 arg2, s32 arg3)
+{
+    dbUnknownLinkStruct *temp_v0;
+    dbUnknownLinkStruct *var_v1;
+
+    temp_v0 = func_ovl8_803717A0(0xB8);
+    if (temp_v0 != NULL)
+    {
+        func_ovl8_8037CBA0(temp_v0, 0, 0, arg1, arg2, arg3, arg0);
+        var_v1 = temp_v0;
+    }
+    else
+        var_v1 = 0;
+
+    return var_v1;
+}
+
+// 0x80374548
+s32 func_ovl8_80374548(s32 arg0, s32 arg1, s32 arg2, s32 arg3)
+{
+    dbUnknownLinkStruct *temp_v0;
+    dbUnknownLinkStruct *var_v1;
+
+    temp_v0 = func_ovl8_803717A0(0x120);
+    if (temp_v0 != NULL)
+    {
+        func_ovl8_8037E97C(temp_v0, 0, 0, arg1, arg2, arg3, arg0);
+        var_v1 = temp_v0;
+    }
+    else
+        var_v1 = 0;
+
+    return var_v1;
+}
+
+// 0x803745BC
+s32 func_ovl8_803745BC(s32 arg0, s32 arg1, s32 arg2)
+{
+    dbUnknownLinkStruct *temp_v0;
+    dbUnknownLinkStruct *var_v1;
+
+    temp_v0 = func_ovl8_803717A0(0xA8);
+    if (temp_v0 != NULL)
+    {
+        func_ovl8_8037EF0C(temp_v0, 0, 0, arg1, arg2, arg0);
+        var_v1 = temp_v0;
+    }
+    else
+        var_v1 = 0;
+
+    return var_v1;
+}
 
 // 0x80374624
 s32 func_ovl8_80374624(s32 arg0, s32 arg1)
@@ -46,13 +110,77 @@ s32 func_ovl8_80374624(s32 arg0, s32 arg1)
     return var_v1;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_80374680.s")
+// 0x80374680
+s32 func_ovl8_80374680(s32 arg0, s32 arg1)
+{
+    dbUnknownLinkStruct *temp_v0;
+    dbUnknownLinkStruct *var_v1;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_803746DC.s")
+    temp_v0 = func_ovl8_803717A0(0xB4);
+    if (temp_v0 != NULL)
+    {
+        func_ovl8_80380FC4(temp_v0, 0, 0, arg1, arg0);
+        var_v1 = temp_v0;
+    }
+    else
+        var_v1 = 0;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_80374750.s")
+    return var_v1;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_803747B8.s")
+// 0x803746DC
+s32 func_ovl8_803746DC(s32 arg0, s32 arg1, s32 arg2, s32 arg3)
+{
+    dbUnknownLinkStruct *temp_v0;
+    dbUnknownLinkStruct *var_v1;
+
+    temp_v0 = func_ovl8_803717A0(0x140);
+    if (temp_v0 != NULL)
+    {
+        func_ovl8_80382870(temp_v0, 0, 0, arg1, arg2, arg3, arg0);
+        var_v1 = temp_v0;
+    }
+    else
+        var_v1 = 0;
+
+    return var_v1;
+}
+
+// 0x80374750
+s32 func_ovl8_80374750(s32 arg0, s32 arg1, s32 arg2)
+{
+    dbUnknownLinkStruct *temp_v0;
+    dbUnknownLinkStruct *var_v1;
+
+    temp_v0 = func_ovl8_803717A0(0xC8);
+    if (temp_v0 != NULL)
+    {
+        func_ovl8_80382B44(temp_v0, 0, 0, arg1, arg2, arg0);
+        var_v1 = temp_v0;
+    }
+    else
+        var_v1 = 0;
+
+    return var_v1;
+}
+
+// 0x803747B8
+s32 func_ovl8_803747B8(s32 arg0, dbUnknown5 *arg1)
+{
+    dbUnknownLinkStruct *temp_v0;
+    dbUnknownLinkStruct *var_v1;
+
+    temp_v0 = func_ovl8_803717A0(0xA8);
+    if (temp_v0 != NULL)
+    {
+        func_ovl8_8038259C(temp_v0, 0, 0, arg1, arg0, arg1->unk_dbunk5_0x24);
+        var_v1 = temp_v0;
+    }
+    else
+        var_v1 = 0;
+
+    return var_v1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_8037481C.s")
 

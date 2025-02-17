@@ -4,6 +4,7 @@
 #include <sc/scene.h>
 #include <sys/video.h>
 #include <sys/dma.h>
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -1636,7 +1637,7 @@ void sc1PGameTeamStockDisplayProcDisplay(GObj *interface_gobj)
                         break;
 
                     case nSC1PGameStageZako:
-                        sobj->sprite = *lbRelocGetFileData(Sprite*, sSC1PGameZakoStockFile, &lFTStocksZakoSprite);
+                        sobj->sprite = *lbRelocGetFileData(Sprite*, sSC1PGameZakoStockFile, &llFTStocksZakoSprite);
                         break;
                     }
                     sobj->sprite.attr &= ~SP_HIDDEN;
@@ -1686,14 +1687,14 @@ void sc1PGameInitTeamStockDisplay(void)
     case nSC1PGameStageZako:
         sSC1PGameZakoStockFile = lbRelocGetExternHeapFile
         (
-            (u32)&lFTStocksZakoFileID,
+            (u32)&llFTStocksZakoFileID,
             syTaskmanMalloc
             (
-                lbRelocGetFileSize((u32)&lFTStocksZakoFileID),
+                lbRelocGetFileSize((u32)&llFTStocksZakoFileID),
                 0x10
             )
         );
-        sprite = lbRelocGetFileData(Sprite*, sSC1PGameZakoStockFile, &lFTStocksZakoSprite);
+        sprite = lbRelocGetFileData(Sprite*, sSC1PGameZakoStockFile, &llFTStocksZakoSprite);
 
         sprite->attr = SP_TEXSHUF | SP_TRANSPARENT;
 

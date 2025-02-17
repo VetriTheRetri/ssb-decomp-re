@@ -440,12 +440,12 @@ void mnPlayers1PTrainingMakeNameAndEmblem(GObj *gobj, s32 player, s32 fkind)
 	};
 	intptr_t emblem_offsets[/* */] =
 	{
-		&lFTEmblemSpritesMarioSprite,     &lFTEmblemSpritesFoxSprite,
-		&lFTEmblemSpritesDonkeySprite,    &lFTEmblemSpritesMetroidSprite,
-		&lFTEmblemSpritesMarioSprite,     &lFTEmblemSpritesZeldaSprite,
-		&lFTEmblemSpritesYoshiSprite,     &lFTEmblemSpritesFZeroSprite,
-		&lFTEmblemSpritesKirbySprite,     &lFTEmblemSpritesPMonstersSprite,
-		&lFTEmblemSpritesPMonstersSprite, &lFTEmblemSpritesMotherSprite
+		&llFTEmblemSpritesMarioSprite,     &llFTEmblemSpritesFoxSprite,
+		&llFTEmblemSpritesDonkeySprite,    &llFTEmblemSpritesMetroidSprite,
+		&llFTEmblemSpritesMarioSprite,     &llFTEmblemSpritesZeldaSprite,
+		&llFTEmblemSpritesYoshiSprite,     &llFTEmblemSpritesFZeroSprite,
+		&llFTEmblemSpritesKirbySprite,     &llFTEmblemSpritesPMonstersSprite,
+		&llFTEmblemSpritesPMonstersSprite, &llFTEmblemSpritesMotherSprite
 	};
 	intptr_t name_offsets[/* */] =
 	{

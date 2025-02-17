@@ -631,16 +631,16 @@ Sprite NessShadow 0x22788
 Sprite PurinShadow 0x249d8
 
 [20]
-Sprite SuperMarioIcon 0x618
-Sprite DonkeyKongIcon 0xc78
-Sprite MetroidIcon 0x12d8
-Sprite StarFoxIcon 0x1938
-Sprite KirbyIcon 0x1f98
-Sprite ZeldaIcon 0x25f8
-Sprite YoshiIcon 0x2c58
-Sprite CaptainFalconIcon 0x32b8
-Sprite PokemonIcon 0x3918
-Sprite EarthBoundIcon 0x3f78
+Sprite Mario 0x618
+Sprite Donkey 0xc78
+Sprite Metroid 0x12d8
+Sprite Fox 0x1938
+Sprite Kirby 0x1f98
+Sprite Zelda 0x25f8
+Sprite Yoshi 0x2c58
+Sprite FZero 0x32b8
+Sprite PMonsters 0x3918
+Sprite Mother 0x3f78
 
 [21]
 MObjSub PlayersSpotlight 0x408
@@ -677,7 +677,7 @@ Sprite VeryEasyText 0x438
 Sprite VeryHardText 0x598
 
 [25]
-Sprite Circle 0x80
+Sprite - 0x80
 
 [26]
 Sprite - 0x20718
@@ -943,6 +943,38 @@ Sprite FightResults3PText 0x4c28
 Sprite FightResults4PText 0x4d48
 Sprite FightResultsBackground 0xd5c8
 Sprite FightResultsFirstPlace 0xe2a0
+
+[35]
+MObjSub Mario 0x0000
+DObjDesc Mario 0x0990
+MatAnimJoint Mario 0x0A14
+MObjSub Fox 0x1940
+DObjDesc Fox 0x21D0
+MatAnimJoint Fox 0x2254
+MObjSub Donkey 0x0B00
+DObjDesc Donkey 0x1348
+MatAnimJoint Donkey 0x13CC
+MObjSub Metroid 0x1470
+DObjDesc Metroid 0x1860
+MatAnimJoint Metroid 0x18E4
+MObjSub Zelda 0x22B0
+DObjDesc Zelda 0x2520
+MatAnimJoint Zelda 0x25A4
+MObjSub Yoshi 0x2690
+DObjDesc Yoshi 0x2F10
+MatAnimJoint Yoshi 0x2F94
+MObjSub FZero 0x2FF0
+DObjDesc FZero 0x3828
+MatAnimJoint FZero 0x38AC
+MObjSub Kirby 0x3900
+DObjDesc Kirby 0x3E68
+MatAnimJoint Kirby 0x3EEC
+MObjSub PMonsters 0x3F40
+DObjDesc PMonsters 0x4710
+MatAnimJoint PMonsters 0x4794
+MObjSub Mother 0x4840
+DObjDesc Mother 0x5A00
+MatAnimJoint Mother 0x5A84
 
 [36]
 Sprite 0x68 0x68

@@ -723,12 +723,12 @@ void mnPlayers1PGameMakeNameAndEmblem(GObj *gobj, s32 player, s32 fkind)
 	};
 	intptr_t emblem_offsets[/* */] =
 	{
-		&lFTEmblemSpritesMarioSprite,     &lFTEmblemSpritesFoxSprite,
-		&lFTEmblemSpritesDonkeySprite,    &lFTEmblemSpritesMetroidSprite,
-		&lFTEmblemSpritesMarioSprite,     &lFTEmblemSpritesZeldaSprite,
-		&lFTEmblemSpritesYoshiSprite,     &lFTEmblemSpritesFZeroSprite,
-		&lFTEmblemSpritesKirbySprite,     &lFTEmblemSpritesPMonstersSprite,
-		&lFTEmblemSpritesPMonstersSprite, &lFTEmblemSpritesMotherSprite
+		&llFTEmblemSpritesMarioSprite,     &llFTEmblemSpritesFoxSprite,
+		&llFTEmblemSpritesDonkeySprite,    &llFTEmblemSpritesMetroidSprite,
+		&llFTEmblemSpritesMarioSprite,     &llFTEmblemSpritesZeldaSprite,
+		&llFTEmblemSpritesYoshiSprite,     &llFTEmblemSpritesFZeroSprite,
+		&llFTEmblemSpritesKirbySprite,     &llFTEmblemSpritesPMonstersSprite,
+		&llFTEmblemSpritesPMonstersSprite, &llFTEmblemSpritesMotherSprite
 	};
 	intptr_t name_offsets[/* */] =
 	{
@@ -1320,7 +1320,7 @@ void mnPlayers1PGameMakeStock(s32 stock, s32 fkind)
 
 		if (fkind == nFTKindNull)
 		{
-			sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PGameFiles[7], &lFTStocksZakoSprite));
+			sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PGameFiles[7], &llFTStocksZakoSprite));
 			sobj->pos.y = 179.0F;
 		}
 		else

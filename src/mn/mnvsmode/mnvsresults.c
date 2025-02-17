@@ -75,10 +75,10 @@ u32 dMNVSResultsFileIDs[/* */] =
 	&lIFCommonPlayerTagsFileID,
 	&llMNPlayersGameModesFileID,
 	&lIFCommonPlayerDamageFileID,
-	&lFTEmblemModelsFileID,
+	&llFTEmblemModelsFileID,
 	&lIFCommonDigitsFileID,
 	&lIFCommonAnnounceCommonFileID,
-	&lFTStocksZakoFileID
+	&llFTStocksZakoFileID
 };
 
 // 0x80138F90
@@ -623,30 +623,30 @@ void mnVSResultsMakeEmblem(void)
 
 	intptr_t dobjdescs[/* */] =
 	{
-		&lFTEmblemModelsMarioDObjDesc, 			&lFTEmblemModelsFoxDObjDesc,
-		&lFTEmblemModelsDonkeyDObjDesc, 		&lFTEmblemModelsMetroidDObjDesc,
-		&lFTEmblemModelsMarioDObjDesc,			&lFTEmblemModelsZeldaDObjDesc,
-		&lFTEmblemModelsYoshiDObjDesc, 			&lFTEmblemModelsFZeroDObjDesc,
-		&lFTEmblemModelsKirbyDObjDesc, 	 		&lFTEmblemModelsPMonstersDObjDesc,
-		&lFTEmblemModelsPMonstersDObjDesc,		&lFTEmblemModelsMotherDObjDesc
+		&llFTEmblemModelsMarioDObjDesc,     &llFTEmblemModelsFoxDObjDesc,
+		&llFTEmblemModelsDonkeyDObjDesc,    &llFTEmblemModelsMetroidDObjDesc,
+		&llFTEmblemModelsMarioDObjDesc,     &llFTEmblemModelsZeldaDObjDesc,
+		&llFTEmblemModelsYoshiDObjDesc,     &llFTEmblemModelsFZeroDObjDesc,
+		&llFTEmblemModelsKirbyDObjDesc,     &llFTEmblemModelsPMonstersDObjDesc,
+		&llFTEmblemModelsPMonstersDObjDesc, &llFTEmblemModelsMotherDObjDesc
 	};
 	intptr_t mobjsubs[/* */] =
 	{
-		&lFTEmblemModelsMarioMObjSub, 			&lFTEmblemModelsFoxMObjSub,
-		&lFTEmblemModelsDonkeyMObjSub, 			&lFTEmblemModelsMetroidMObjSub,
-		&lFTEmblemModelsMarioMObjSub,			&lFTEmblemModelsZeldaMObjSub,
-		&lFTEmblemModelsYoshiMObjSub, 			&lFTEmblemModelsFZeroMObjSub,
-		&lFTEmblemModelsKirbyMObjSub, 	 		&lFTEmblemModelsPMonstersMObjSub,
-		&lFTEmblemModelsPMonstersMObjSub,		&lFTEmblemModelsMotherMObjSub
+		&llFTEmblemModelsMarioMObjSub,     &llFTEmblemModelsFoxMObjSub,
+		&llFTEmblemModelsDonkeyMObjSub,    &llFTEmblemModelsMetroidMObjSub,
+		&llFTEmblemModelsMarioMObjSub,     &llFTEmblemModelsZeldaMObjSub,
+		&llFTEmblemModelsYoshiMObjSub,     &llFTEmblemModelsFZeroMObjSub,
+		&llFTEmblemModelsKirbyMObjSub,     &llFTEmblemModelsPMonstersMObjSub,
+		&llFTEmblemModelsPMonstersMObjSub, &llFTEmblemModelsMotherMObjSub
 	};
 	intptr_t matanim_joints[/* */] =
 	{
-		&lFTEmblemModelsMarioMatAnimJoint, 		&lFTEmblemModelsFoxMatAnimJoint,
-		&lFTEmblemModelsDonkeyMatAnimJoint, 	&lFTEmblemModelsMetroidMatAnimJoint,
-		&lFTEmblemModelsMarioMatAnimJoint,		&lFTEmblemModelsZeldaMatAnimJoint,
-		&lFTEmblemModelsYoshiMatAnimJoint, 		&lFTEmblemModelsFZeroMatAnimJoint,
-		&lFTEmblemModelsKirbyMatAnimJoint, 	 	&lFTEmblemModelsPMonstersMatAnimJoint,
-		&lFTEmblemModelsPMonstersMatAnimJoint,	&lFTEmblemModelsMotherMatAnimJoint
+		&llFTEmblemModelsMarioMatAnimJoint,     &llFTEmblemModelsFoxMatAnimJoint,
+		&llFTEmblemModelsDonkeyMatAnimJoint,    &llFTEmblemModelsMetroidMatAnimJoint,
+		&llFTEmblemModelsMarioMatAnimJoint,     &llFTEmblemModelsZeldaMatAnimJoint,
+		&llFTEmblemModelsYoshiMatAnimJoint,     &llFTEmblemModelsFZeroMatAnimJoint,
+		&llFTEmblemModelsKirbyMatAnimJoint,     &llFTEmblemModelsPMonstersMatAnimJoint,
+		&llFTEmblemModelsPMonstersMatAnimJoint, &llFTEmblemModelsMotherMatAnimJoint
 	};
 	s32 colors[/* */] = { 0, 1, 3 };
 

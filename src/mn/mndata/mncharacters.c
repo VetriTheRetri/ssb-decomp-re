@@ -1495,30 +1495,30 @@ void mnCharactersMakeEmblem(s32 fkind)
 
 	intptr_t dobjdescs[/* */] =
 	{
-		&lFTEmblemModelsMarioDObjDesc, 			&lFTEmblemModelsFoxDObjDesc,
-		&lFTEmblemModelsDonkeyDObjDesc, 		&lFTEmblemModelsMetroidDObjDesc,
-		&lFTEmblemModelsMarioDObjDesc,			&lFTEmblemModelsZeldaDObjDesc,
-		&lFTEmblemModelsYoshiDObjDesc, 			&lFTEmblemModelsFZeroDObjDesc,
-		&lFTEmblemModelsKirbyDObjDesc, 	 		&lFTEmblemModelsPMonstersDObjDesc,
-		&lFTEmblemModelsPMonstersDObjDesc,		&lFTEmblemModelsMotherDObjDesc
+		&llFTEmblemModelsMarioDObjDesc,     &llFTEmblemModelsFoxDObjDesc,
+		&llFTEmblemModelsDonkeyDObjDesc,    &llFTEmblemModelsMetroidDObjDesc,
+		&llFTEmblemModelsMarioDObjDesc,     &llFTEmblemModelsZeldaDObjDesc,
+		&llFTEmblemModelsYoshiDObjDesc,     &llFTEmblemModelsFZeroDObjDesc,
+		&llFTEmblemModelsKirbyDObjDesc,     &llFTEmblemModelsPMonstersDObjDesc,
+		&llFTEmblemModelsPMonstersDObjDesc, &llFTEmblemModelsMotherDObjDesc
 	};
 	intptr_t mobjsubs[/* */] =
 	{
-		&lFTEmblemModelsMarioMObjSub, 			&lFTEmblemModelsFoxMObjSub,
-		&lFTEmblemModelsDonkeyMObjSub, 			&lFTEmblemModelsMetroidMObjSub,
-		&lFTEmblemModelsMarioMObjSub,			&lFTEmblemModelsZeldaMObjSub,
-		&lFTEmblemModelsYoshiMObjSub, 			&lFTEmblemModelsFZeroMObjSub,
-		&lFTEmblemModelsKirbyMObjSub, 	 		&lFTEmblemModelsPMonstersMObjSub,
-		&lFTEmblemModelsPMonstersMObjSub,		&lFTEmblemModelsMotherMObjSub
+		&llFTEmblemModelsMarioMObjSub,     &llFTEmblemModelsFoxMObjSub,
+		&llFTEmblemModelsDonkeyMObjSub,    &llFTEmblemModelsMetroidMObjSub,
+		&llFTEmblemModelsMarioMObjSub,     &llFTEmblemModelsZeldaMObjSub,
+		&llFTEmblemModelsYoshiMObjSub,     &llFTEmblemModelsFZeroMObjSub,
+		&llFTEmblemModelsKirbyMObjSub,     &llFTEmblemModelsPMonstersMObjSub,
+		&llFTEmblemModelsPMonstersMObjSub, &llFTEmblemModelsMotherMObjSub
 	};
 	intptr_t matanim_joints[/* */] =
 	{
-		&lFTEmblemModelsMarioMatAnimJoint, 		&lFTEmblemModelsFoxMatAnimJoint,
-		&lFTEmblemModelsDonkeyMatAnimJoint, 	&lFTEmblemModelsMetroidMatAnimJoint,
-		&lFTEmblemModelsMarioMatAnimJoint,		&lFTEmblemModelsZeldaMatAnimJoint,
-		&lFTEmblemModelsYoshiMatAnimJoint, 		&lFTEmblemModelsFZeroMatAnimJoint,
-		&lFTEmblemModelsKirbyMatAnimJoint, 	 	&lFTEmblemModelsPMonstersMatAnimJoint,
-		&lFTEmblemModelsPMonstersMatAnimJoint,	&lFTEmblemModelsMotherMatAnimJoint
+		&llFTEmblemModelsMarioMatAnimJoint,     &llFTEmblemModelsFoxMatAnimJoint,
+		&llFTEmblemModelsDonkeyMatAnimJoint,    &llFTEmblemModelsMetroidMatAnimJoint,
+		&llFTEmblemModelsMarioMatAnimJoint,     &llFTEmblemModelsZeldaMatAnimJoint,
+		&llFTEmblemModelsYoshiMatAnimJoint,     &llFTEmblemModelsFZeroMatAnimJoint,
+		&llFTEmblemModelsKirbyMatAnimJoint,     &llFTEmblemModelsPMonstersMatAnimJoint,
+		&llFTEmblemModelsPMonstersMatAnimJoint, &llFTEmblemModelsMotherMatAnimJoint
 	};
 
 	sMNCharactersEmblemGObj = gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_PRIORITY_DEFAULT);

@@ -684,11 +684,11 @@ void mnMapsMakeEmblem(GObj *gobj, s32 gkind)
 
 	intptr_t offsets[/* */] =
 	{
-		&lFTEmblemSpritesMarioSprite,	&lFTEmblemSpritesFoxSprite,
-		&lFTEmblemSpritesDonkeySprite, 	&lFTEmblemSpritesMetroidSprite,
-		&lFTEmblemSpritesZeldaSprite, 	&lFTEmblemSpritesYoshiSprite,
-		&lFTEmblemSpritesKirbySprite, 	&lFTEmblemSpritesPMonstersSprite,
-		&lFTEmblemSpritesMarioSprite
+		&llFTEmblemSpritesMarioSprite,	&llFTEmblemSpritesFoxSprite,
+		&llFTEmblemSpritesDonkeySprite, 	&llFTEmblemSpritesMetroidSprite,
+		&llFTEmblemSpritesZeldaSprite, 	&llFTEmblemSpritesYoshiSprite,
+		&llFTEmblemSpritesKirbySprite, 	&llFTEmblemSpritesPMonstersSprite,
+		&llFTEmblemSpritesMarioSprite
 	};
 
 	if (gkind == 0xDE)

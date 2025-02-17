@@ -3,6 +3,7 @@
 #include <sc/scene.h> // includes sys/obj.h
 #include <sys/video.h>
 #include <sys/controller.h>
+#include <reloc_data.h>
 
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 extern void* func_800269C0_275C0(u16);
@@ -18,74 +19,74 @@ MNCongraPicture dMNCongraPictures[/* */] =
 {
 	// Mario
 	{ 
-		&lMNCongraMarioBottomFileID, 	&lMNCongraMarioBottomSprite, 
-		&lMNCongraMarioTopFileID, 	 	&lMNCongraMarioTopSprite 
+		&llMNCongraMarioBottomFileID,         &llMNCongraMarioBottomSprite, 
+		&llMNCongraMarioTopFileID,         &llMNCongraMarioTopSprite 
 	},
 
 	// Fox
 	{ 
-		&lMNCongraFoxBottomFileID,		&lMNCongraFoxBottomSprite,
-		&lMNCongraFoxTopFileID,    		&lMNCongraFoxTopSprite
+		&llMNCongraFoxBottomFileID, &llMNCongraFoxBottomSprite,
+		&llMNCongraFoxTopFileID,    &llMNCongraFoxTopSprite
 	},
 
 	// Donkey Kong
 	{ 
-		&lMNCongraDonkeyBottomFileID, 	&lMNCongraDonkeyBottomSprite,
-		&lMNCongraDonkeyTopFileID, 	  	&lMNCongraDonkeyTopSprite
+		&llMNCongraDonkeyBottomFileID, &llMNCongraDonkeyBottomSprite,
+		&llMNCongraDonkeyTopFileID,    &llMNCongraDonkeyTopSprite
 	},
 
 	// Samus
 	{ 
-		&lMNCongraSamusBottomFileID, 	&lMNCongraSamusBottomSprite,
-		&lMNCongraSamusTopFileID, 	 	&lMNCongraSamusTopSprite
+		&llMNCongraSamusBottomFileID, &llMNCongraSamusBottomSprite,
+		&llMNCongraSamusTopFileID,    &llMNCongraSamusTopSprite
 	},
 
 	// Luigi
 	{ 
-		&lMNCongraLuigiBottomFileID, 	&lMNCongraLuigiBottomSprite,
-		&lMNCongraLuigiTopFileID, 		&lMNCongraLuigiTopSprite
+		&llMNCongraLuigiBottomFileID, &llMNCongraLuigiBottomSprite,
+		&llMNCongraLuigiTopFileID,    &llMNCongraLuigiTopSprite
 	},
 
 	// Link
 	{
-		&lMNCongraLinkBottomFileID, 	&lMNCongraLinkBottomSprite,
-		&lMNCongraLinkTopFileID, 		&lMNCongraLinkTopSprite
+		&llMNCongraLinkBottomFileID, &llMNCongraLinkBottomSprite,
+		&llMNCongraLinkTopFileID,    &llMNCongraLinkTopSprite
 	},
 
 	// Yoshi
 	{
-		&lMNCongraYoshiBottomFileID, 	&lMNCongraYoshiBottomSprite,
-		&lMNCongraYoshiTopFileID, 		&lMNCongraYoshiTopSprite
+		&llMNCongraYoshiBottomFileID, &llMNCongraYoshiBottomSprite,
+		&llMNCongraYoshiTopFileID,    &llMNCongraYoshiTopSprite
 	},
 
 	// Captain Falcon
 	{ 
-		&lMNCongraCaptainBottomFileID, 	&lMNCongraCaptainBottomSprite,
-		&lMNCongraCaptainTopFileID, 	&lMNCongraCaptainTopSprite
+		&llMNCongraCaptainBottomFileID, &llMNCongraCaptainBottomSprite,
+		&llMNCongraCaptainTopFileID,    &llMNCongraCaptainTopSprite
 	},
 
 	// Kirby
 	{
-		&lMNCongraKirbyBottomFileID, 	&lMNCongraKirbyBottomSprite,
-		&lMNCongraKirbyTopFileID, 		&lMNCongraKirbyTopSprite
+		&llMNCongraKirbyBottomFileID, &llMNCongraKirbyBottomSprite,
+		&llMNCongraKirbyTopFileID,    &llMNCongraKirbyTopSprite
 	},
 
 	// Pikachu
 	{
-		&lMNCongraPikachuBottomFileID,	&lMNCongraPikachuBottomSprite,
-		&lMNCongraPikachuTopFileID, 	&lMNCongraPikachuTopSprite
+		&llMNCongraPikachuBottomFileID, &llMNCongraPikachuBottomSprite,
+		&llMNCongraPikachuTopFileID,    &llMNCongraPikachuTopSprite
 	},
 
 	// Jigglypuff
 	{
-		&lMNCongraPurinBottomFileID, 	&lMNCongraPurinBottomSprite,
-		&lMNCongraPurinTopFileID, 		&lMNCongraPurinTopSprite
+		&llMNCongraPurinBottomFileID, &llMNCongraPurinBottomSprite,
+		&llMNCongraPurinTopFileID,    &llMNCongraPurinTopSprite
 	},
 
 	// Ness
 	{
-		&lMNCongraNessBottomFileID, 	&lMNCongraNessBottomSprite,
-		&lMNCongraNessTopFileID, 		&lMNCongraNessTopSprite
+		&llMNCongraNessBottomFileID, &llMNCongraNessBottomSprite,
+		&llMNCongraNessTopFileID,    &llMNCongraNessTopSprite
 	}
 };
 

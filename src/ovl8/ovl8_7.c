@@ -2,6 +2,12 @@
 #include <sys/develop.h>
 #include <db/debug.h>
 
+typedef struct dbUnknownSpriteHolder
+{
+    u8 dbUnknownSpriteHolder_0x0[0x40];
+    Sprite *dbUnknownSpriteHolder_0x40;
+} dbUnknownSpriteHolder;
+
 // 0x80376530
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_7/func_ovl8_80376530.s")
 
@@ -64,8 +70,35 @@ void func_ovl8_80376A04(dbUnknown5* arg0)
     temp_v0[16].unk_dbfunc_0x4(temp_v0[16].unk_dbfunc_0x0 + (uintptr_t)arg0);
 }
 
+// 0x80376A48
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_7/func_ovl8_80376A48.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_7/func_ovl8_80376AA4.s")
+// 0x80376AA4
+void func_ovl8_80376AA4(dbUnknownSpriteHolder* arg0, s16 arg1, s16 arg2)
+{
+    spMove(arg0->dbUnknownSpriteHolder_0x40, arg1, arg2);
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_7/func_ovl8_80376ADC.s")
+// 0x80376ADC
+void func_ovl8_80376ADC(dbUnknownS38* arg0)
+{
+    dbUnknown3* temp_v0;
+    dbFunction* temp_v0_2;
+
+    temp_v0 = func_ovl8_80373160(arg0);
+
+    if (temp_v0 != NULL)
+    {
+        while (temp_v0 != NULL)
+        {
+            temp_v0_2 = temp_v0->unk_dbunk3_0x38->db_func;
+
+            if (temp_v0_2[36].unk_dbfunc_0x4(temp_v0_2[36].unk_dbfunc_0x0 + (uintptr_t)temp_v0->unk_dbunk3_0x38) != 0)
+            {
+                temp_v0_2 = temp_v0->unk_dbunk3_0x38->db_func;
+                temp_v0_2[11].unk_dbfunc_0x4(temp_v0_2[11].unk_dbfunc_0x0 + (uintptr_t)temp_v0->unk_dbunk3_0x38);
+            }
+            temp_v0 = temp_v0->unk_dbunk3_0x28;
+        }
+    }
+}

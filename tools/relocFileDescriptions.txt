@@ -1029,6 +1029,44 @@ Sprite 4P 0xa38
 Sprite CP 0xcd8
 Sprite Ally 0xeb8
 
+[52]
+MObjSub RoomBackground 0x042F8
+DObjDesc RoomBackground 0x07E98
+MatAnimJoint RoomBackground 0x08788
+DObjDesc RoomDesk 0x08DF8
+DisplayList RoomHaze 0x098F8
+DObjDesc RoomBooks 0x0A6F8
+AnimJoint RoomBooks 0x0A7B0
+DObjDesc RoomPencils 0x0AEB8
+AnimJoint RoomPencils 0x0AF70
+DObjDesc RoomLamp 0x0BDC0
+AnimJoint RoomLamp 0x0BEA0
+DisplayList RoomTissues 0x0C690
+AnimJoint RoomTissues 0x0C884
+MObjSub RoomLogo 0x1BC60
+DObjDesc RoomLogo 0x1C4A8
+MatAnimJoint RoomLogo 0x1C52C
+DObjDesc RoomSnap 0x1CA68
+AnimJoint RoomSnap 0x1CAF0
+MObjSub RoomCloseUpEffectAir 0x1DCA0
+DObjDesc RoomCloseUpEffectAir 0x1DF28
+MatAnimJoint RoomCloseUpEffectAir 0x1DFD8
+AnimJoint RoomCloseUpEffectAir 0x1E010
+MObjSub RoomCloseUpEffectGround 0x1F0F8
+DObjDesc RoomCloseUpEffectGround 0x1F270
+MatAnimJoint RoomCloseUpEffectGround 0x1F2F4
+AnimJoint RoomCloseUpEffectGround 0x1F330
+DisplayList RoomBossShadow 0x1F790
+AnimJoint RoomBossShadow 0x1F924
+MObjSub RoomDeskGround 0x20480
+DObjDesc RoomDeskGround 0x22440
+MatAnimJoint RoomDeskGround 0x225CC
+MObjSub RoomSpotlight 0x22C90
+DisplayList RoomSpotlight 0x22E18
+MatAnimJoint RoomSpotlight 0x22F10
+DisplayList RoomOutside 0x24200
+DisplayList RoomSunlight 0x24708
+
 [53]
 Sprite 0x9960 0x9960
 Sprite 0x13310 0x13310

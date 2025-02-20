@@ -5,22 +5,6 @@
 #include <sys/objdef.h>
 #include <PR/gbi.h>
 
-extern intptr_t lMVOpeningNewcomersPurinShowDisplayList;        // 0x00005C28
-extern intptr_t lMVOpeningNewcomersPurinAnimJoint;              // 0x00005E44
-extern intptr_t lMVOpeningNewcomersPurinHiddenDisplayList;      // 0x000203A8
-
-extern intptr_t lMVOpeningNewcomersLuigiShowDisplayList;        // 0x0001C838
-extern intptr_t lMVOpeningNewcomersLuigiAnimJoint;              // 0x0001CE94
-extern intptr_t lMVOpeningNewcomersLuigiHiddenDisplayList;      // 0x00028C28
-
-extern intptr_t lMVOpeningNewcomersCaptainShowDisplayList;      // 0x0002C238
-extern intptr_t lMVOpeningNewcomersCaptainAnimJoint;            // 0x0002C9D4
-extern intptr_t lMVOpeningNewcomersCaptainHiddenDisplayList;    // 0x000355C0
-
-extern intptr_t lMVOpeningNewcomersNessShowDisplayList;         // 0x0002A448
-extern intptr_t lMVOpeningNewcomersNessAnimJoint;               // 0x0002A864
-extern intptr_t lMVOpeningNewcomersNessHiddenDisplayList;       // 0x0003BAF8
-
 extern void mvOpeningNewcomersFuncLights(Gfx **dls);
 extern sb32 mvOpeningNewcomersCheckLocked(s32 fkind);
 extern void mvOpeningNewcomersMakePurin(void);

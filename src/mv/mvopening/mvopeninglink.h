@@ -5,8 +5,6 @@
 #include <sys/objdef.h>
 #include <PR/gbi.h>
 
-extern intptr_t lMVOpeningLinkCamAnimJoint; 					// 0x000000C0
-
 extern void mvOpeningLinkSetupFiles(void);
 extern void mvOpeningLinkInitName(SObj *sobj);
 extern void mvOpeningLinkMakeName(void);

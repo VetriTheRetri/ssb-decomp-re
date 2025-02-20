@@ -2,18 +2,11 @@
 #include <mv/movie.h>
 #include <sc/scene.h>
 #include <sys/video.h>
+#include <reloc_data.h>
 
 extern void syTaskmanSetLoadScene();
 extern u32 sySchedulerGetTicCount();
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern uintptr_t D_NF_00000047;
 
 // // // // // // // // // // // //
 //                               //
@@ -22,7 +15,7 @@ extern uintptr_t D_NF_00000047;
 // // // // // // // // // // // //
 
 // 0x801323A0
-u32 dMVOpeningYamabukiFileIDs[/* */] = { &D_NF_00000047 };
+u32 dMVOpeningYamabukiFileIDs[/* */] = { &llMVOpeningYamabukiFileID };
 
 // 0x801323A8
 Lights1 dMVOpeningYamabukiLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x14, 0x14, 0x14);
@@ -143,7 +136,7 @@ void mvOpeningYamabukiMakeWallpaper(void)
         (
             Sprite*,
             sMVOpeningYamabukiFiles[0],
-            &lMVOpeningYamabukiWallpaperSprite
+            &llMVOpeningYamabukiWallpaperSprite
         )
     );
     sobj->pos.x = 0.0F;
@@ -184,7 +177,7 @@ void mvOpeningYamabukiMakeLegs(void)
         (
             DObjDesc*,
             sMVOpeningYamabukiFiles[0],
-            &lMVOpeningYamabukiLegsDObjDesc
+            &llMVOpeningYamabukiLegsDObjDesc
         ),
         NULL,
         nGCMatrixKindTraRotRpyRSca,
@@ -204,7 +197,7 @@ void mvOpeningYamabukiMakeLegs(void)
         (
             AObjEvent32**,
             sMVOpeningYamabukiFiles[0],
-            &lMVOpeningYamabukiLegsAnimJoint
+            &llMVOpeningYamabukiLegsAnimJoint
         ),
         0.0F
     );
@@ -222,7 +215,7 @@ void mvOpeningYamabukiMakeLegsShadow(void)
         (
             void*,
             sMVOpeningYamabukiFiles[0],
-            &lMVOpeningYamabukiLegsShadowDObjDesc
+            &llMVOpeningYamabukiLegsShadowDObjDesc
         ),
         NULL,
         nGCMatrixKindTraRotRpyRSca,
@@ -242,7 +235,7 @@ void mvOpeningYamabukiMakeLegsShadow(void)
         (
             AObjEvent32**,
             sMVOpeningYamabukiFiles[0],
-            &lMVOpeningYamabukiLegsShadowAnimJoint
+            &llMVOpeningYamabukiLegsShadowAnimJoint
         ),
         0.0F
     );
@@ -260,7 +253,7 @@ void mvOpeningYamabukiMakeMBall(void)
         (
             DObjDesc*,
             sMVOpeningYamabukiFiles[0],
-            &lMVOpeningYamabukiMBallDObjDesc
+            &llMVOpeningYamabukiMBallDObjDesc
         ),
         NULL,
         nGCMatrixKindTraRotRpyRSca,
@@ -280,7 +273,7 @@ void mvOpeningYamabukiMakeMBall(void)
         (
             AObjEvent32**,
             sMVOpeningYamabukiFiles[0],
-            &lMVOpeningYamabukiMBallAnimJoint
+            &llMVOpeningYamabukiMBallAnimJoint
         ),
         0.0F
     );
@@ -321,7 +314,7 @@ void mvOpeningYamabukiMakeMainCamera(void)
         (
             AObjEvent32*,
             sMVOpeningYamabukiFiles[0],
-            &lMVOpeningYamabukiCamAnimJoint
+            &llMVOpeningYamabukiCamAnimJoint
         ),
         0.0F
     );

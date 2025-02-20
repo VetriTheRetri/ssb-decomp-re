@@ -9,22 +9,12 @@ extern void syRdpSetViewport(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 
 // // // // // // // // // // // //
 //                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern uintptr_t D_NF_00000049;
-extern uintptr_t D_NF_000000A1;
-extern uintptr_t D_NF_0000004A;
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
 // 0x801328F0
-u32 dMVOpeningSectorFileIDs[/* */] = { &D_NF_00000049, &D_NF_000000A1, &D_NF_0000004A };
+u32 dMVOpeningSectorFileIDs[/* */] = { &llMVOpeningSectorFileID, &llMVOpeningSectorArwingFileID, &llMVOpeningSectorWallpaperFileID };
 
 // 0x80132900
 Lights1 dMVOpeningSectorLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x14, 0x14, 0x14);
@@ -185,7 +175,7 @@ void mvOpeningSectorMakeWallpaper(void)
         (
             Sprite*,
             sMVOpeningSectorFiles[2],
-            &lMVOpeningSectorWallpaperSprite
+            &llMVOpeningSectorWallpaperSprite
         )
     );
     wallpaper_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -200,7 +190,7 @@ void mvOpeningSectorMakeWallpaper(void)
         (
             Sprite*,
             sMVOpeningSectorFiles[2],
-            &lMVOpeningSectorWallpaperSprite
+            &llMVOpeningSectorWallpaperSprite
         )
     );
     wallpaper_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -215,7 +205,7 @@ void mvOpeningSectorMakeWallpaper(void)
         (
             Sprite*,
             sMVOpeningSectorFiles[2],
-            &lMVOpeningSectorWallpaperSprite
+            &llMVOpeningSectorWallpaperSprite
         )
     );
     wallpaper_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -230,7 +220,7 @@ void mvOpeningSectorMakeWallpaper(void)
         (
             Sprite*,
             sMVOpeningSectorFiles[2],
-            &lMVOpeningSectorWallpaperSprite
+            &llMVOpeningSectorWallpaperSprite
         )
     );
     wallpaper_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -253,7 +243,7 @@ void mvOpeningSectorMakeGreatFox(void)
         (
             DObjDesc*,
             sMVOpeningSectorFiles[0],
-            &lMVOpeningSectorGreatFoxDObjDesc
+            &llMVOpeningSectorGreatFoxDObjDesc
         ),
         NULL,
         nGCMatrixKindTraRotRpyRSca,
@@ -273,7 +263,7 @@ void mvOpeningSectorMakeGreatFox(void)
         (
             AObjEvent32**,
             sMVOpeningSectorFiles[0],
-            &lMVOpeningSectorGreatFoxAnimJoint
+            &llMVOpeningSectorGreatFoxAnimJoint
         ),
         0.0F
     );
@@ -343,7 +333,7 @@ void mvOpeningSectorMakeCockpit(void)
         (
             Sprite*,
             sMVOpeningSectorFiles[0],
-            &lMVOpeningSectorCockpitSprite
+            &llMVOpeningSectorCockpitSprite
         )
     );
     cockpit_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -361,9 +351,9 @@ void mvOpeningSectorMakeArwings(void)
     // 0x80132930
     intptr_t anim_joints[/* */] =
     {
-        &lMVOpeningSectorArwing0AnimJoint,
-        &lMVOpeningSectorArwing1AnimJoint,
-        &lMVOpeningSectorArwing2AnimJoint
+        &llMVOpeningSectorArwing0AnimJoint,
+        &llMVOpeningSectorArwing1AnimJoint,
+        &llMVOpeningSectorArwing2AnimJoint
     };
 
     s32 i;
@@ -378,7 +368,7 @@ void mvOpeningSectorMakeArwings(void)
             (
                 DObjDesc*,
                 sMVOpeningSectorFiles[1],
-                &lMVOpeningSectorArwingDObjDesc
+                &llMVOpeningSectorArwingDObjDesc
             ),
             NULL,
             nGCMatrixKindTraRotRpyRSca,
@@ -423,7 +413,7 @@ void mvOpeningSectorMakeMainCamera(void)
     cobj->projection.persp.near = 128.0F;
     cobj->projection.persp.far = 30000.0F;
 
-    gcAddCObjCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningSectorFiles[0], &lMVOpeningSectorCamAnimJoint), 0.0F);
+    gcAddCObjCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningSectorFiles[0], &llMVOpeningSectorCamAnimJoint), 0.0F);
     gcAddGObjProcess(camera_gobj, mvOpeningSectorCameraProcUpdate, nGCProcessKindFunc, 1);
 }
 

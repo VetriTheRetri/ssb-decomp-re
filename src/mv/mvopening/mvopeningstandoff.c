@@ -2,19 +2,11 @@
 #include <mv/movie.h>
 #include <sc/scene.h>
 #include <sys/video.h>
+#include <reloc_data.h>
 
 extern void syTaskmanSetLoadScene();
 extern u32 sySchedulerGetTicCount();
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern uintptr_t D_NF_00000045;
-extern uintptr_t D_NF_00000046;
 
 // // // // // // // // // // // //
 //                               //
@@ -23,7 +15,7 @@ extern uintptr_t D_NF_00000046;
 // // // // // // // // // // // //
 
 // 0x801328D0
-u32 dMVOpeningStandoffFileIDs[/* */] = { &D_NF_00000045, &D_NF_00000046 };
+u32 dMVOpeningStandoffFileIDs[/* */] = { &llMVOpeningStandoffFileID, &llMVOpeningStandoffWallpaperFileID };
 
 // 0x801328D8
 Lights1 dMVOpeningStandoffLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x14, 0x14, 0x14);
@@ -132,7 +124,7 @@ void mvOpeningStandoffFuncLights(Gfx **dls)
 void mvOpeningStandoffMakeGround(void)
 {
     GObj *gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
-    gcAddDObjForGObj(gobj, lbRelocGetFileData(void*, sMVOpeningStandoffFiles[0], &lMVOpeningStandoffGroundDisplayList));
+    gcAddDObjForGObj(gobj, lbRelocGetFileData(void*, sMVOpeningStandoffFiles[0], &llMVOpeningStandoffGroundDisplayList));
     gcAddXObjForDObjFixed(DObjGetStruct(gobj), nGCMatrixKindTraRotRpyRSca, 0);
     gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 26, GOBJ_PRIORITY_DEFAULT, ~0);
 
@@ -287,7 +279,7 @@ void mvOpeningStandoffMakeWallpaper(void)
     gcAddGObjDisplay(wallpaper_gobj, lbCommonDrawSObjAttr, 27, GOBJ_PRIORITY_DEFAULT, ~0);
     gcAddGObjProcess(wallpaper_gobj, mvOpeningStandoffWallpaperProcUpdate, nGCProcessKindFunc, 1);
 
-    wallpaper_sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, lbRelocGetFileData(Sprite*, sMVOpeningStandoffFiles[1], &lMVOpeningStandoffWallpaperSprite));
+    wallpaper_sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, lbRelocGetFileData(Sprite*, sMVOpeningStandoffFiles[1], &llMVOpeningStandoffWallpaperSprite));
     wallpaper_sobj->sprite.attr &= ~SP_FASTCOPY;
 
     wallpaper_sobj->sprite.scalex = 2.0F;
@@ -296,7 +288,7 @@ void mvOpeningStandoffMakeWallpaper(void)
     wallpaper_sobj->pos.x = 0.0F;
     wallpaper_sobj->pos.y = 0.0F;
 
-    wallpaper_sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, lbRelocGetFileData(Sprite*, sMVOpeningStandoffFiles[1], &lMVOpeningStandoffWallpaperSprite));
+    wallpaper_sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, lbRelocGetFileData(Sprite*, sMVOpeningStandoffFiles[1], &llMVOpeningStandoffWallpaperSprite));
     wallpaper_sobj->sprite.attr &= ~SP_FASTCOPY;
 
     wallpaper_sobj->sprite.scalex = 2.0F;
@@ -319,7 +311,7 @@ void mvOpeningStandoffMakeLightning(void)
         (
             DObjDesc*,
             sMVOpeningStandoffFiles[0],
-            &lMVOpeningStandoffLightningDObjDesc
+            &llMVOpeningStandoffLightningDObjDesc
         ),
         NULL,
         nGCMatrixKindTraRotRpyRSca,
@@ -333,7 +325,7 @@ void mvOpeningStandoffMakeLightning(void)
         (
             MObjSub***,
             sMVOpeningStandoffFiles[0],
-            &lMVOpeningStandoffLightningMObjSub
+            &llMVOpeningStandoffLightningMObjSub
         )
     );
     gcAddMatAnimJointAll
@@ -343,7 +335,7 @@ void mvOpeningStandoffMakeLightning(void)
         (
             AObjEvent32***,
             sMVOpeningStandoffFiles[0],
-            &lMVOpeningStandoffLightningMatAnimJoint
+            &llMVOpeningStandoffLightningMatAnimJoint
         ),
         0.0F
     );
@@ -360,7 +352,7 @@ void mvOpeningStandoffMakeLightning(void)
         (
             AObjEvent32**,
             sMVOpeningStandoffFiles[0],
-            &lMVOpeningStandoffLightningAnimJoint
+            &llMVOpeningStandoffLightningAnimJoint
         ),
         0.0F
     );
@@ -481,7 +473,7 @@ void mvOpeningStandoffMakeMainCamera(void)
         (
             AObjEvent32*,
             sMVOpeningStandoffFiles[0],
-            &lMVOpeningStandoffCamAnimJoint
+            &llMVOpeningStandoffCamAnimJoint
         ),
         0.0F
     );

@@ -5,20 +5,6 @@
 #include <sys/objdef.h>
 #include <PR/gbi.h>
 
-extern intptr_t lMVOpeningSectorGreatFoxDObjDesc;   // 0x0000D820
-extern intptr_t lMVOpeningSectorGreatFoxAnimJoint;  // 0x0000DA10
-
-extern intptr_t lMVOpeningSectorCamAnimJoint;       // 0x0000F9A0
-
-extern intptr_t lMVOpeningSectorCockpitSprite;      // 0x0003CC90
-
-extern intptr_t lMVOpeningSectorArwingDObjDesc;     // 0x00002C30
-extern intptr_t lMVOpeningSectorArwing0AnimJoint;   // 0x0000E110
-extern intptr_t lMVOpeningSectorArwing1AnimJoint;   // 0x0000E910
-extern intptr_t lMVOpeningSectorArwing2AnimJoint;   // 0x0000F1C0
-
-extern intptr_t lMVOpeningSectorWallpaperSprite;    // 0x00026C88
-
 extern void mvOpeningSectorFuncLights(Gfx **dls);
 extern void mvOpeningSectorWallpaperProcUpdate(GObj* wallpaper_gobj);
 extern void mvOpeningSectorMakeWallpaper(void);

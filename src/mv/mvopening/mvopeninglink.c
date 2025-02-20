@@ -410,7 +410,7 @@ void mvOpeningLinkMakePosedFighterCamera(void)
 	
 	cobj->projection.persp.aspect = 26.25F / 7.0F;
 
-	gcAddCObjCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningLinkFiles[1], &lMVOpeningLinkCamAnimJoint), 0.0F);
+	gcAddCObjCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningLinkFiles[1], &llMVOpeningCommonLinkCamAnimJoint), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindFunc, 1);
 }
 

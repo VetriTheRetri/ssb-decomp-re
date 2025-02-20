@@ -5,8 +5,6 @@
 #include <sys/objdef.h>
 #include <PR/gbi.h>
 
-extern intptr_t lMVEndingOperatorCamAnimJoint;          // 0x00000000
-
 extern void mvEndingFuncLights(Gfx **dls);
 extern void mvEndingMakeRoomBackground(void);
 extern void mvEndingMakeRoomDesk(void);

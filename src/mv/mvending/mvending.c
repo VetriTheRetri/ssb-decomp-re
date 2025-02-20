@@ -85,7 +85,7 @@ void *sMVEndingFiles[2];
 // // // // // // // // // // // //
 
 // 0x80132AD0
-u32 dMVEndingFileIDs[/* */] = { &llMVCommonFileID, &D_NF_0000004C };
+u32 dMVEndingFileIDs[/* */] = { &llMVCommonFileID, &llMVEndingFileID };
 
 // 0x80132AD8
 Lights1 dMVEndingLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x14, 0x14, 0x14);
@@ -403,7 +403,7 @@ void mvEndingSetupOperatorCamera(GObj *gobj)
     cobj->projection.persp.near = 128.0F;
     cobj->projection.persp.far = 16384.0F;
 
-    gcAddCObjCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVEndingFiles[1], &lMVEndingOperatorCamAnimJoint), 0.0F);
+    gcAddCObjCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVEndingFiles[1], &llMVEndingOperatorCamAnimJoint), 0.0F);
     gcAddGObjProcess(gobj, gcPlayCamAnim, nGCProcessKindFunc, 1);
 }
 

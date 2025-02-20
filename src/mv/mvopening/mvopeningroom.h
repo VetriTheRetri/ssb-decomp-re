@@ -5,23 +5,6 @@
 #include <sys/objdef.h>
 #include <PR/gbi.h>
 
-extern u32 lMVOpeningRoomScene1FileID;			            // 0x00000038
-extern u32 lMVOpeningRoomScene2FileID;			            // 0x00000039
-extern u32 lMVOpeningRoomScene3FileID;			            // 0x0000003A
-extern u32 lMVOpeningRoomScene4FileID;			            // 0x0000003B
-extern u32 lMVOpeningRoomTransitionFileID;		            // 0x0000003F
-extern u32 lMVOpeningRoomWallpaperFileID;		            // 0x0000005A
-
-extern intptr_t lMVOpeningRoomScene1CamAnimJoint;           // file 0x038 offset for camera parameters for scene 1
-extern intptr_t lMVOpeningRoomScene2CamAnimJoint;           // file 0x039 offset for camera parameters for scene 2
-extern intptr_t lMVOpeningRoomScene3CamAnimJoint;           // file 0x03A offset for camera parameters for scene 3
-extern intptr_t lMVOpeningRoomScene4CamAnimJoint;           // file 0x03B offset for camera parameters for scene 4
-extern intptr_t lMVOpeningRoomTransitionOverlayDisplayList; // file 0x03F offset for First Destination transition gfx shaded overlay
-extern intptr_t lMVOpeningRoomTransitionOverlayAnimJoint;   // file 0x03F offset for First Destination transition gfx shaded overlay
-extern intptr_t lMVOpeningRoomTransitionOutlineDisplayList; // file 0x03F offset for First Destination transition gfx red outline
-extern intptr_t lMVOpeningRoomTransitionOutlineAnimJoint;   // file 0x03F offset for First Destination transition gfx red outline
-extern intptr_t lMVOpeningRoomWallpaperSprite;              // file 0x05A offset for background image footer
-
 extern void mvOpeningRoomFuncLights(Gfx **dls);
 extern void mvOpeningRoomBackgroundProcUpdate(GObj *gobj);
 extern void mvOpeningRoomMakeBackground(void);

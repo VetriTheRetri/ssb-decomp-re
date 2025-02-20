@@ -2,6 +2,7 @@
 #include <mv/movie.h>
 #include <sc/scene.h>
 #include <sys/video.h>
+#include <reloc_data.h>
 
 extern u32 sySchedulerGetTicCount();
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
@@ -13,7 +14,7 @@ extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 // // // // // // // // // // // //
 
 // 0x801328A0
-u32 dMVOpeningPortraitsFileIDs[/* */] = { &lMVOpeningPortraitsSet1FileID, &lMVOpeningPortraitsSet2FileID };
+u32 dMVOpeningPortraitsFileIDs[/* */] = { &llMVOpeningPortraitsSet1FileID, &llMVOpeningPortraitsSet2FileID };
 
 // 0x801328A8
 Lights1 dMVOpeningPortraitsLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x14, 0x14, 0x14);
@@ -73,10 +74,10 @@ void mvOpeningPortraitsMakeSet1(void)
 
 	intptr_t offsets[/* */] =
 	{
-		&lMVOpeningPortraitsSet1SamusSprite,
-		&lMVOpeningPortraitsSet1MarioSprite,
-		&lMVOpeningPortraitsSet1FoxSprite,
-		&lMVOpeningPortraitsSet1PikachuSprite
+		&llMVOpeningPortraitsSet1SamusSprite,
+		&llMVOpeningPortraitsSet1MarioSprite,
+		&llMVOpeningPortraitsSet1FoxSprite,
+		&llMVOpeningPortraitsSet1PikachuSprite
 	};
 	Vec2f pos[/* */] =
 	{
@@ -109,10 +110,10 @@ void mvOpeningPortraitsMakeSet2(void)
 
 	intptr_t offsets[/* */] =
 	{
-		&lMVOpeningPortraitsSet2LinkSprite,
-		&lMVOpeningPortraitsSet2KirbySprite,
-		&lMVOpeningPortraitsSet2DonkeySprite,
-		&lMVOpeningPortraitsSet2YoshiSprite
+		&llMVOpeningPortraitsSet2LinkSprite,
+		&llMVOpeningPortraitsSet2KirbySprite,
+		&llMVOpeningPortraitsSet2DonkeySprite,
+		&llMVOpeningPortraitsSet2YoshiSprite
 	};
 	Vec2f pos[/* */] =
 	{
@@ -317,7 +318,7 @@ void mvOpeningPortraitsMakeCover(void)
 	gobj = gcMakeGObjSPAfter(0, NULL, 18, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(gobj, mvOpeningPortraitsCoverProcDisplay, 28, GOBJ_PRIORITY_DEFAULT, ~0);
 
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMVOpeningPortraitsFiles[0], &lMVOpeningPortraitsSet1CoverSprite));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMVOpeningPortraitsFiles[0], &llMVOpeningPortraitsSet1CoverSprite));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;

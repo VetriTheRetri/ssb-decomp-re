@@ -3,6 +3,4 @@
 
 #include "mvfunctions.h"
 
-extern intptr_t D_NF_0000004C; // 0x0000004C
-
 #endif

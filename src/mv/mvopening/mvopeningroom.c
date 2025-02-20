@@ -17,13 +17,13 @@ extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 u32 dMVOpeningRoomFileIDs[/* */] =
 {
 	&llMVCommonFileID,
-	&lMVOpeningRoomTransitionFileID,
-	&lMVOpeningRoomScene1FileID,
-	&lMVOpeningRoomScene2FileID,
-	&lMVOpeningRoomScene3FileID,
-	&lMVOpeningRoomScene4FileID,
-	&lMVOpeningRunCrashFileID,
-	&lMVOpeningRoomWallpaperFileID
+	&llMVOpeningRoomTransitionFileID,
+	&llMVOpeningRoomScene1FileID,
+	&llMVOpeningRoomScene2FileID,
+	&llMVOpeningRoomScene3FileID,
+	&llMVOpeningRoomScene4FileID,
+	&llMVOpeningRunCrashFileID,
+	&llMVOpeningRoomWallpaperFileID
 };
 
 // 0x80134A40
@@ -616,7 +616,7 @@ void mvOpeningRoomMakeWallpaper(void)
 	sMVOpeningRoomBackgroundGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(gobj, mvOpeningRoomWallpaperProcDisplay, 28, GOBJ_PRIORITY_DEFAULT, ~0);
 
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMVOpeningRoomFiles[7], &lMVOpeningRoomWallpaperSprite));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMVOpeningRoomFiles[7], &llMVOpeningRoomWallpaperSprite));
 
 	sobj->pos.x = 10.0F;
 	sobj->pos.y = 10.0F;
@@ -702,7 +702,7 @@ void mvOpeningRoomInitScene1Cameras(GObj *gobj)
 	cobj->projection.persp.near = 80.0F;
 	cobj->projection.persp.far = 15000.0F;
 
-	gcAddCObjCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningRoomFiles[2], &lMVOpeningRoomScene1CamAnimJoint), 0.0F);
+	gcAddCObjCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningRoomFiles[2], &llMVOpeningRoomScene1CamAnimJoint), 0.0F);
 	gcAddGObjProcess(gobj, gcPlayCamAnim, nGCProcessKindFunc, 1);
 
 	cobj->flags |= COBJ_FLAG_DLBUFFERS;
@@ -758,7 +758,7 @@ void mvOpeningRoomInitScene2Cameras(GObj *gobj)
 	CObj *cobj = CObjGetStruct(gobj);
 
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
-	gcAddCObjCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningRoomFiles[3], &lMVOpeningRoomScene2CamAnimJoint), 0.0F);
+	gcAddCObjCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningRoomFiles[3], &llMVOpeningRoomScene2CamAnimJoint), 0.0F);
 	gcAddGObjProcess(gobj, gcPlayCamAnim, nGCProcessKindFunc, 1);
 
 	cobj->flags |= COBJ_FLAG_DLBUFFERS;
@@ -827,7 +827,7 @@ void mvOpeningRoomInitScene3Cameras(GObj *gobj)
 	cobj->projection.persp.near = 128.0F;
 	cobj->projection.persp.far = 16384.0F;
 
-	gcAddCObjCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningRoomFiles[4], &lMVOpeningRoomScene3CamAnimJoint), 0.0F);
+	gcAddCObjCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningRoomFiles[4], &llMVOpeningRoomScene3CamAnimJoint), 0.0F);
 	gcAddGObjProcess(gobj, gcPlayCamAnim, nGCProcessKindFunc, 1);
 
 	cobj->flags |= COBJ_FLAG_DLBUFFERS;
@@ -899,7 +899,7 @@ void mvOpeningRoomInitScene4Cameras(GObj *gobj)
 	cobj->projection.persp.near = 128.0F;
 	cobj->projection.persp.far = 16384.0F;
 
-	gcAddCObjCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningRoomFiles[5], &lMVOpeningRoomScene4CamAnimJoint), 0.0F);
+	gcAddCObjCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningRoomFiles[5], &llMVOpeningRoomScene4CamAnimJoint), 0.0F);
 	gcAddGObjProcess(gobj, gcPlayCamAnim, nGCProcessKindFunc, 1);
 }
 
@@ -996,7 +996,7 @@ void mvOpeningRoomMakeLogoCamera(void)
 	cobj = CObjGetStruct(gobj);
 
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
-	gcAddCObjCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningRoomFiles[2], &lMVOpeningRoomScene1CamAnimJoint), 0.0F);
+	gcAddCObjCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningRoomFiles[2], &llMVOpeningRoomScene1CamAnimJoint), 0.0F);
 	gcAddGObjProcess(gobj, gcPlayCamAnim, nGCProcessKindFunc, 1);
 }
 
@@ -1047,18 +1047,18 @@ void mvOpeningRoomMakeTransition(void)
 	DObj *dobj;
 
 	sMVOpeningTransitionOutlineGObj = gobj = gcMakeGObjSPAfter(0, NULL, 22, GOBJ_PRIORITY_DEFAULT);
-	dobj = gcAddDObjForGObj(gobj, lbRelocGetFileData(void*, sMVOpeningRoomFiles[1], &lMVOpeningRoomTransitionOutlineDisplayList));
+	dobj = gcAddDObjForGObj(gobj, lbRelocGetFileData(void*, sMVOpeningRoomFiles[1], &llMVOpeningRoomTransitionOutlineDisplayList));
 	gcAddXObjForDObjFixed(dobj, nGCMatrixKindTraRotRpyRSca, 0);
 	gcAddGObjDisplay(gobj, mvOpeningRoomTransitionOutlineProcDisplay, 30, GOBJ_PRIORITY_DEFAULT, ~0);
-	gcAddDObjAnimJoint(dobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningRoomFiles[1], &lMVOpeningRoomTransitionOutlineAnimJoint), 0.0F);
+	gcAddDObjAnimJoint(dobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningRoomFiles[1], &llMVOpeningRoomTransitionOutlineAnimJoint), 0.0F);
 	gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindFunc, 1);
 	gcPlayAnimAll(gobj);
 
 	sMVOpeningTransitionOverlayGObj = gobj = gcMakeGObjSPAfter(0, NULL, 22, GOBJ_PRIORITY_DEFAULT);
-	dobj = gcAddDObjForGObj(gobj, lbRelocGetFileData(void*, sMVOpeningRoomFiles[1], &lMVOpeningRoomTransitionOverlayDisplayList));
+	dobj = gcAddDObjForGObj(gobj, lbRelocGetFileData(void*, sMVOpeningRoomFiles[1], &llMVOpeningRoomTransitionOverlayDisplayList));
 	gcAddXObjForDObjFixed(dobj, nGCMatrixKindTraRotRpyRSca, 0);
 	gcAddGObjDisplay(gobj, mvOpeningRoomTransitionOverlayProcDisplay, 30, GOBJ_PRIORITY_DEFAULT, ~0);
-	gcAddDObjAnimJoint(dobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningRoomFiles[1], &lMVOpeningRoomTransitionOverlayAnimJoint), 0.0F);
+	gcAddDObjAnimJoint(dobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningRoomFiles[1], &llMVOpeningRoomTransitionOverlayAnimJoint), 0.0F);
 	gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindFunc, 1);
 	gcPlayAnimAll(gobj);
 }

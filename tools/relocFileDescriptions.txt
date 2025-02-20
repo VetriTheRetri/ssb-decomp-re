@@ -45,15 +45,28 @@
 -052: MVCommon
 -053: MVOpeningPortraitsSet1
 -054: MVOpeningPortraitsSet2
+-055: MVOpeningRun
 -056: MVOpeningRoomScene1
 -057: MVOpeningRoomScene2
 -058: MVOpeningRoomScene3
 -059: MVOpeningRoomScene4
+-060: MVOpeningRunMain
+-061: MVOpeningNewcomers1
+-062: MVOpeningNewcomers2
 -063: MVOpeningRoomTransition
 -065: MVOpeningCommon
+-066: MVOpeningClashWallpaper
+-068: MVOpeningCliff
+-069: MVOpeningStandoff
+-070: MVOpeningStandoffWallpaper
+-071: MVOpeningYamabuki
+-072: MVOpeningClashFighters
+-073: MVOpeningSector
+-074: MVOpeningSectorWallpaper
+-075: MVOpeningRunCrash
+-076: MVEnding
 -082: IFCommonGameStatus
 -090: MVOpeningRoomWallpaper
--075: MVOpeningRunCrash
 -088: StageDreamLand
 -089: StageZebes
 -092: StageJungle
@@ -61,6 +74,7 @@
 -094: StagePokemon
 -095: StageCastle
 -099: StageSector
+-161: MVOpeningSectorArwing
 -164: IFCommonPlayerDamage
 -165: IFCommonTimerDigits
 -166: IFCommonPlayerMagnify
@@ -1068,32 +1082,137 @@ DisplayList RoomOutside 0x24200
 DisplayList RoomSunlight 0x24708
 
 [53]
-Sprite 0x9960 0x9960
-Sprite 0x13310 0x13310
-Sprite 0x1ccc0 0x1ccc0
-Sprite 0x26670 0x26670
-Sprite 0x2b2d0 0x2b2d0
+Sprite Samus 0x9960
+Sprite Mario 0x13310
+Sprite Fox 0x1ccc0
+Sprite Pikachu 0x26670
+Sprite Cover 0x2b2d0
 
 [54]
-Sprite 0x9960 0x9960
-Sprite 0x13310 0x13310
-Sprite 0x1ccc0 0x1ccc0
-Sprite 0x26670 0x26670
+Sprite Link 0x9960
+Sprite Kirby 0x13310
+Sprite Donkey 0x1ccc0
+Sprite Yoshi 0x26670
 
 [55]
-Sprite 0x58a0 0x58a0
+AnimJoint Mario 0x0004
+AnimJoint Fox 0x00B4
+AnimJoint Donkey 0x0124
+AnimJoint Samus 0x0184
+AnimJoint Link 0x0224
+AnimJoint Yoshi 0x0334
+AnimJoint Kirby 0x03A4
+AnimJoint Pikachu 0x0484
+Sprite Wallpaper 0x58a0
+
+[56]
+AnimJoint Cam 0x0
+
+[57]
+AnimJoint Cam 0x0
+
+[58]
+AnimJoint Cam 0x0
+
+[59]
+AnimJoint Cam 0x0
+
+[60]
+AnimJoint Cam 0x0
+
+[61]
+DisplayList PurinShow 0x05C28
+AnimJoint Purin 0x05E44
+DisplayList LuigiShow 0x1C838
+AnimJoint Luigi 0x1CE94
+DisplayList PurinHidden 0x203A8
+DisplayList LuigiHidden 0x28C28
+
+[62]
+DisplayList CaptainShow 0x1C238
+AnimJoint Captain 0x1C9D4
+DisplayList NessShow 0x2A448
+AnimJoint Ness 0x2A864
+DisplayList CaptainHidden 0x355C0
+DisplayList NessHidden 0x3BAF8
+
+[63]
+DisplayList Overlay 0x5A0
+AnimJoint Overlay 0x714
+DisplayList Outline 0xF40
+AnimJoint Outline 0x11C4
+
+[65]
+AnimJoint LinkCam 0xC0
+
+[66]
+AnimJoint Cam 0x4AB0
+MObjSub LL 0x3050
+DisplayList LL 0x32A8
+MatAnimJoint LL 0x3458
+AnimJoint LL 0x36D0
+MObjSub LR 0x36E0
+DisplayList LR 0x3938
+MatAnimJoint LR 0x3AE8
+AnimJoint LR 0x3D60
+MObjSub UL 0x3D70
+DisplayList UL 0x3FC8
+MatAnimJoint UL 0x4180
+AnimJoint UL 0x4400
+MObjSub UR 0x4410
+DisplayList UR 0x4668
+MatAnimJoint UR 0x4820
+AnimJoint UR 0x4AA0
+
+[68]
+DObjDesc Hills 0x37A0
+DObjDesc Ocarina 0x67A0
+AnimJoint Ocarina 0x6850
+AnimJoint Cam 0x8910
+
+[69]
+DisplayList Ground 0x1C10
+MObjSub Lightning 0x6140
+DObjDesc Lightning 0x6950
+MatAnimJoint Lightning 0x6BB8
+AnimJoint Lightning 0x6D60
+AnimJoint Cam 0x7250
 
 [70]
-Sprite 0xb500 0xb500
+Sprite - 0xb500
 
 [71]
-Sprite 0x3ee58 0x3ee58
+DObjDesc Legs 0x09548
+AnimJoint Legs 0x098c0
+DObjDesc LegsShadow 0x0b2b0
+AnimJoint LegsShadow 0x0b390
+DObjDesc MBall 0x0c9e0
+AnimJoint MBall 0x0cac0
+AnimJoint Cam 0x0d330
+Sprite Wallpaper 0x3ee58
+
+[72]
+AnimJoint Cam 0x1440
 
 [73]
-Sprite 0x3cc90 0x3cc90
+DObjDesc GreatFox 0xD820
+AnimJoint GreatFox 0xDA10
+AnimJoint Cam 0xF9A0
+AnimJoint Arwing0 0xE110
+AnimJoint Arwing1 0xE910
+AnimJoint Arwing2 0xF1C0
+Sprite Cockpit 0x3cc90
 
 [74]
-Sprite 0x26c88 0x26c88
+Sprite - 0x26c88
+
+[75]
+MObjSub - 0x2AA8
+DObjDesc - 0x35F8
+MatAnimJoint - 0x3700
+
+[76]
+AnimJoint OperatorCam 0x0
 
 [77]
 Sprite 0xb60 0xb60
@@ -1258,7 +1377,7 @@ Sprite - 0x26c88
 Sprite - 0x26c88
 
 [90]
-Sprite 0x26c88 0x26c88
+Sprite - 0x26c88
 
 [91]
 Sprite 0x26c88 0x26c88
@@ -1293,6 +1412,9 @@ Sprite 0x26c88 0x26c88
 [151]
 Sprite 0xc0 0xc0
 Sprite 0x1d0 0x1d0
+
+[161]
+DObjDesc - 0x2C30
 
 [164]
 Sprite 0x148 0x148

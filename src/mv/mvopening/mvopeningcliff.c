@@ -2,19 +2,11 @@
 #include <mv/movie.h>
 #include <sc/scene.h>
 #include <sys/video.h>
+#include <reloc_data.h>
 
 extern void syTaskmanSetLoadScene();
 extern u32 sySchedulerGetTicCount();
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern uintptr_t D_NF_00000044;
-extern uintptr_t D_NF_00000046;
 
 // // // // // // // // // // // //
 //                               //
@@ -23,7 +15,7 @@ extern uintptr_t D_NF_00000046;
 // // // // // // // // // // // //
 
 // 0x801326D0
-u32 dMVOpeningCliffFileIDs[/* */] = { &D_NF_00000044, &D_NF_00000046 };
+u32 dMVOpeningCliffFileIDs[/* */] = { &llMVOpeningCliffFileID, &llMVOpeningStandoffWallpaperFileID };
 
 // 0x801326D8
 Lights1 dMVOpeningCliffLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x14, 0x14, 0x14);
@@ -153,7 +145,7 @@ void mvOpeningCliffMakeHills(void)
         (
             DObjDesc*,
             sMVOpeningCliffFiles[0],
-            &lMVOpeningCliffHillsDObjDesc
+            &llMVOpeningCliffHillsDObjDesc
         ),
         NULL
     );
@@ -252,7 +244,7 @@ void mvOpeningCliffMakeWallpaper(void)
     gcAddGObjDisplay(wallpaper_gobj, lbCommonDrawSObjAttr, 27, GOBJ_PRIORITY_DEFAULT, ~0);
     gcAddGObjProcess(wallpaper_gobj, mvOpeningCliffWallpaperProcDisplay, nGCProcessKindFunc, 1);
 
-    wallpaper_sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, lbRelocGetFileData(Sprite*, sMVOpeningCliffFiles[1], &lMVOpeningCliffWallpaperSprite));
+    wallpaper_sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, lbRelocGetFileData(Sprite*, sMVOpeningCliffFiles[1], &llMVOpeningStandoffWallpaperSprite));
     wallpaper_sobj->sprite.attr &= ~SP_FASTCOPY;
 
     wallpaper_sobj->sprite.scalex = 2.0F;
@@ -261,7 +253,7 @@ void mvOpeningCliffMakeWallpaper(void)
     wallpaper_sobj->pos.x = 0.0F;
     wallpaper_sobj->pos.y = 0.0F;
 
-    wallpaper_sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, lbRelocGetFileData(Sprite*, sMVOpeningCliffFiles[1], &lMVOpeningCliffWallpaperSprite));
+    wallpaper_sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, lbRelocGetFileData(Sprite*, sMVOpeningCliffFiles[1], &llMVOpeningStandoffWallpaperSprite));
     wallpaper_sobj->sprite.attr &= ~SP_FASTCOPY;
 
     wallpaper_sobj->sprite.scalex = 2.0F;
@@ -284,7 +276,7 @@ void mvOpeningCliffMakeOcarina(void)
         (
             DObjDesc*,
             sMVOpeningCliffFiles[0],
-            &lMVOpeningCliffOcarinaDObjDesc
+            &llMVOpeningCliffOcarinaDObjDesc
         ),
         NULL,
         nGCMatrixKindTraRotRpyRSca,
@@ -304,7 +296,7 @@ void mvOpeningCliffMakeOcarina(void)
         (
             AObjEvent32**,
             sMVOpeningCliffFiles[0],
-            &lMVOpeningCliffOcarinaAnimJoint
+            &llMVOpeningCliffOcarinaAnimJoint
         ),
         0.0F
     );
@@ -355,7 +347,7 @@ void mvOpeningCliffMakeMainCamera(void)
         (
             AObjEvent32*,
             sMVOpeningCliffFiles[0],
-            &lMVOpeningCliffCamAnimJoint
+            &llMVOpeningCliffCamAnimJoint
         ),
         0.0F
     );
@@ -394,7 +386,7 @@ void mvOpeningCliffMakeMainCamera(void)
         (
             AObjEvent32*,
             sMVOpeningCliffFiles[0],
-            &lMVOpeningCliffCamAnimJoint
+            &llMVOpeningCliffCamAnimJoint
         ),
         0.0F
     );

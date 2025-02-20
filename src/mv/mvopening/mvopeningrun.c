@@ -8,10 +8,6 @@
 extern u32 sySchedulerGetTicCount();
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
-// extern uintptr_t D_NF_00000037;
-// extern uintptr_t D_NF_0000003C;
-// extern uintptr_t D_NF_0000004B;
-
 // // // // // // // // // // // //
 //                               //
 //       INITIALIZED DATA        //

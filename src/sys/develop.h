@@ -121,6 +121,8 @@ struct dbUnknownLinkStruct
     db4Bytes unk_dbunkstruct_0x50;
     sb32(*unk_dbunkstruct_0x54)();
     dbFunction *db_func;                            // Points to a whole bunch of function pointers?
+    db4Shorts unk_dbunkstruct_0x5C;
+    s32 unk_dbunkstruct_0x64;
 };
 
 struct dbTestMenu

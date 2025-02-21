@@ -72,12 +72,12 @@ s32 dMNVSResultsUnused0x80138F50[/* */] =
 u32 dMNVSResultsFileIDs[/* */] =
 {
 	&llMNVSResultsFileID,
-	&lIFCommonPlayerTagsFileID,
+	&llIFCommonPlayerTagsFileID,
 	&llMNPlayersGameModesFileID,
-	&lIFCommonPlayerDamageFileID,
+	&llIFCommonPlayerDamageFileID,
 	&llFTEmblemModelsFileID,
-	&lIFCommonDigitsFileID,
-	&lIFCommonAnnounceCommonFileID,
+	&llIFCommonDigitsFileID,
+	&llIFCommonAnnounceCommonFileID,
 	&llFTStocksZakoFileID
 };
 
@@ -1061,8 +1061,8 @@ void mnVSResultsMakePlayerTag(s32 player, s32 color_id)
 	};
 	intptr_t offsets[/* */] =
 	{
-		&lIFCommonPlayerTag1P, &lIFCommonPlayerTag2P,
-		&lIFCommonPlayerTag3P, &lIFCommonPlayerTag4P
+		&llIFCommonPlayerTags1PSprite, &llIFCommonPlayerTags2PSprite,
+		&llIFCommonPlayerTags3PSprite, &llIFCommonPlayerTags4PSprite
 	};
 
 	gobj = gcMakeGObjSPAfter(0, NULL, 18, GOBJ_PRIORITY_DEFAULT);
@@ -1082,7 +1082,7 @@ void mnVSResultsMakePlayerTag(s32 player, s32 color_id)
 	}
 	else
 	{
-		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSResultsFiles[1], &lIFCommonPlayerTagCP));
+		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSResultsFiles[1], &llIFCommonPlayerTagsCPSprite));
 		sobj->sprite.attr &= ~SP_FASTCOPY;
 		sobj->sprite.attr |= SP_TRANSPARENT;
 		sobj->envcolor.r = dIFCommonPlayerTagEnvColorsR[color_id];
@@ -1156,22 +1156,22 @@ void mnVSResultsMakeString(const char *str, f32 x, f32 y, s32 color_id, f32 scal
 	};
 	intptr_t offsets[/* */] =
 	{
-		&lIFCommonAnnounceCommonLetterA, &lIFCommonAnnounceCommonLetterB,
-		&lIFCommonAnnounceCommonLetterC, &lIFCommonAnnounceCommonLetterD,
-		&lIFCommonAnnounceCommonLetterE, &lIFCommonAnnounceCommonLetterF,
-		&lIFCommonAnnounceCommonLetterG, &lIFCommonAnnounceCommonLetterH,
-		&lIFCommonAnnounceCommonLetterI, &lIFCommonAnnounceCommonLetterJ,
-		&lIFCommonAnnounceCommonLetterK, &lIFCommonAnnounceCommonLetterL,
-		&lIFCommonAnnounceCommonLetterM, &lIFCommonAnnounceCommonLetterN,
-		&lIFCommonAnnounceCommonLetterO, &lIFCommonAnnounceCommonLetterP,
-		&lIFCommonAnnounceCommonLetterQ, &lIFCommonAnnounceCommonLetterR,
-		&lIFCommonAnnounceCommonLetterS, &lIFCommonAnnounceCommonLetterT,
-		&lIFCommonAnnounceCommonLetterU, &lIFCommonAnnounceCommonLetterV,
-		&lIFCommonAnnounceCommonLetterW, &lIFCommonAnnounceCommonLetterX,
-		&lIFCommonAnnounceCommonLetterY, &lIFCommonAnnounceCommonLetterZ,
+		&llIFCommonAnnounceCommonLetterASprite, &llIFCommonAnnounceCommonLetterBSprite,
+		&llIFCommonAnnounceCommonLetterCSprite, &llIFCommonAnnounceCommonLetterDSprite,
+		&llIFCommonAnnounceCommonLetterESprite, &llIFCommonAnnounceCommonLetterFSprite,
+		&llIFCommonAnnounceCommonLetterGSprite, &llIFCommonAnnounceCommonLetterHSprite,
+		&llIFCommonAnnounceCommonLetterISprite, &llIFCommonAnnounceCommonLetterJSprite,
+		&llIFCommonAnnounceCommonLetterKSprite, &llIFCommonAnnounceCommonLetterLSprite,
+		&llIFCommonAnnounceCommonLetterMSprite, &llIFCommonAnnounceCommonLetterNSprite,
+		&llIFCommonAnnounceCommonLetterOSprite, &llIFCommonAnnounceCommonLetterPSprite,
+		&llIFCommonAnnounceCommonLetterQSprite, &llIFCommonAnnounceCommonLetterRSprite,
+		&llIFCommonAnnounceCommonLetterSSprite, &llIFCommonAnnounceCommonLetterTSprite,
+		&llIFCommonAnnounceCommonLetterUSprite, &llIFCommonAnnounceCommonLetterVSprite,
+		&llIFCommonAnnounceCommonLetterWSprite, &llIFCommonAnnounceCommonLetterXSprite,
+		&llIFCommonAnnounceCommonLetterYSprite, &llIFCommonAnnounceCommonLetterZSprite,
 
-		&lIFCommonAnnounceCommonSymbolExclaim,
-		&lIFCommonAnnounceCommonSymbolPeriod
+		&llIFCommonAnnounceCommonSymbolExclaimSprite,
+		&llIFCommonAnnounceCommonSymbolPeriodSprite
 	};
 	SYColorRGBPair colors[/* */] =
 	{
@@ -1436,11 +1436,11 @@ SObj* mnVSResultsMakeDigit(GObj *gobj, s32 digit, s32 color_id)
 
 	intptr_t offsets[/* */] =
 	{
-		&lIFCommonDigit0, &lIFCommonDigit1,
-		&lIFCommonDigit2, &lIFCommonDigit3,
-		&lIFCommonDigit4, &lIFCommonDigit5,
-		&lIFCommonDigit6, &lIFCommonDigit7,
-		&lIFCommonDigit8, &lIFCommonDigit9
+		&llIFCommonDigits0Sprite, &llIFCommonDigits1Sprite,
+		&llIFCommonDigits2Sprite, &llIFCommonDigits3Sprite,
+		&llIFCommonDigits4Sprite, &llIFCommonDigits5Sprite,
+		&llIFCommonDigits6Sprite, &llIFCommonDigits7Sprite,
+		&llIFCommonDigits8Sprite, &llIFCommonDigits9Sprite
 	};
 	SYColorRGBPair unused_colors[/* */] =
 	{
@@ -1466,11 +1466,11 @@ SObj* mnVSResultsMakePlaceNumber(GObj *gobj, s32 player, s32 place, s32 color_id
 
 	intptr_t offsets[/* */] =
 	{
-		&lIFCommonPlayerDamageDigit0, &lIFCommonPlayerDamageDigit1,
-		&lIFCommonPlayerDamageDigit2, &lIFCommonPlayerDamageDigit3,
-		&lIFCommonPlayerDamageDigit4, &lIFCommonPlayerDamageDigit5,
-		&lIFCommonPlayerDamageDigit6, &lIFCommonPlayerDamageDigit7,
-		&lIFCommonPlayerDamageDigit8, &lIFCommonPlayerDamageDigit9
+		&llIFCommonPlayerDamageDigit0Sprite, &llIFCommonPlayerDamageDigit1Sprite,
+		&llIFCommonPlayerDamageDigit2Sprite, &llIFCommonPlayerDamageDigit3Sprite,
+		&llIFCommonPlayerDamageDigit4Sprite, &llIFCommonPlayerDamageDigit5Sprite,
+		&llIFCommonPlayerDamageDigit6Sprite, &llIFCommonPlayerDamageDigit7Sprite,
+		&llIFCommonPlayerDamageDigit8Sprite, &llIFCommonPlayerDamageDigit9Sprite
 	};
 	SYColorRGBPair unused_colors[/* */] =
 	{
@@ -1492,7 +1492,7 @@ SObj* mnVSResultsMakePlaceNumber(GObj *gobj, s32 player, s32 place, s32 color_id
 			}
 			else
 			{
-				sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSResultsFiles[3], &lIFCommonPlayerDamageDigit1));
+				sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSResultsFiles[3], &llIFCommonPlayerDamageDigit1Sprite));
 				sobj->user_data.s = 0;
 				mnVSResultsSetNumberColor(sobj, color_id);
 			}
@@ -1524,7 +1524,7 @@ SObj* mnVSResultsMakeNumber(GObj *gobj, f32 x, f32 y, s32 number, s32 color_id)
 
 	if (number < 0)
 	{
-		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSResultsFiles[5], &lIFCommonDigitDash));
+		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSResultsFiles[5], &llIFCommonDigitsDashSprite));
 
 		if (mnVSResultsGetHundredsDigit(number) != 0)
 		{
@@ -1922,7 +1922,7 @@ void mnVSResultsMakeTKO(s32 y)
 
 	if (sMNVSResultsKind != nMNVSResultsKindNoContest)
 	{
-		SObj *sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSResultsFiles[5], &lIFCommonDigitDash));
+		SObj *sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSResultsFiles[5], &llIFCommonDigitsDashSprite));
 		sobj->pos.x = 90.0F;
 		sobj->pos.y = y + 3;
 		sobj->sprite.attr &= ~SP_FASTCOPY;

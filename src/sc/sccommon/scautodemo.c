@@ -3,6 +3,7 @@
 #include <if/interface.h>
 #include <sc/scene.h>
 #include <sys/video.h>
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -112,18 +113,18 @@ f32 D_ovl64_8018E1EC[/* */] = { 2.0F, 0.0F, -6.0F, -9.0F, -30.0F };
 // 0x8018E200
 intptr_t dSCAutoDemoFighterNameSpriteOffsets[/* */] =
 {
-	&lSCAutoDemoNameMarioSprite,      // Mario
-	&lSCAutoDemoNameFoxSprite,        // Fox
-	&lSCAutoDemoNameDonkeySprite,     // Donkey Kong
-	&lSCAutoDemoNameSamusSprite,      // Samus
-	&lSCAutoDemoNameLuigiSprite,      // Luigi
-	&lSCAutoDemoNameLinkSprite,       // Link
-	&lSCAutoDemoNameYoshiSprite,      // Yoshi
-	&lSCAutoDemoNameCaptainSprite,    // Captain Falcon
-	&lSCAutoDemoNameKirbySprite,      // Kirby
-	&lSCAutoDemoNamePikachuSprite,    // Pikachu
-	&lSCAutoDemoNamePurinSprite,      // Jigglypuff
-	&lSCAutoDemoNameNessSprite        // Ness
+	&llSCAutoDemoNameMarioSprite,      // Mario
+	&llSCAutoDemoNameFoxSprite,        // Fox
+	&llSCAutoDemoNameDonkeySprite,     // Donkey Kong
+	&llSCAutoDemoNameSamusSprite,      // Samus
+	&llSCAutoDemoNameLuigiSprite,      // Luigi
+	&llSCAutoDemoNameLinkSprite,       // Link
+	&llSCAutoDemoNameYoshiSprite,      // Yoshi
+	&llSCAutoDemoNameCaptainSprite,    // Captain Falcon
+	&llSCAutoDemoNameKirbySprite,      // Kirby
+	&llSCAutoDemoNamePikachuSprite,    // Pikachu
+	&llSCAutoDemoNamePurinSprite,      // Jigglypuff
+	&llSCAutoDemoNameNessSprite        // Ness
 };
 
 // 0x8018E230

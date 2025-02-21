@@ -5,19 +5,12 @@
 #include <gr/ground.h>
 #include <sc/scene.h>
 #include <sys/video.h>
+#include <reloc_data.h>
 
 extern alSoundEffect* func_800269C0_275C0(u16);
 
 extern void syAudioSetBGMVolume(u32, u32);
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t D_NF_00000057;                              // 0x00000057
 
 // // // // // // // // // // // //
 //                               //
@@ -113,34 +106,34 @@ IFTraffic dIFCommonTrafficSpriteData[/* */] =
 // 0x8012ED40
 intptr_t dIFCommonTrafficSpriteOffsets[/* */] =
 {
-    &lIFCommonTrafficLampRedDim,     &lIFCommonTrafficLampYellowDim,     &lIFCommonTrafficLampBlueDim,
-    &lIFCommonTrafficLampRedContour, &lIFCommonTrafficLampYellowContour, &lIFCommonTrafficLampBlueContour,
-    &lIFCommonTrafficLampRedLight,   &lIFCommonTrafficLampYellowLight,   &lIFCommonTrafficLampBlueLight
+    &llIFCommonGameStatusLampRedDimSprite,     &llIFCommonGameStatusLampYellowDimSprite,     &llIFCommonGameStatusLampBlueDimSprite,
+    &llIFCommonGameStatusLampRedContourSprite, &llIFCommonGameStatusLampYellowContourSprite, &llIFCommonGameStatusLampBlueContourSprite,
+    &llIFCommonGameStatusLampRedLightSprite,   &llIFCommonGameStatusLampYellowLightSprite,   &llIFCommonGameStatusLampBlueLightSprite
 };
 
 // 0x8012ED64 - Announcer text: "GO!"
 IFACharacter dIFCommonAnnounceGoSpriteData[/* */] =
 {
-    {  82, 93, &lIFCommonAnnounceGoLetterG       },
-    { 144, 93, &lIFCommonAnnounceGoLetterO       },
-    { 214, 93, &lIFCommonAnnounceGoSymbolExclaim }
+    {  82, 93, &llIFCommonGameStatusOrangeLetterGSprite         },
+    { 144, 93, &llIFCommonGameStatusOrangeLetterOSprite         },
+    { 214, 93, &llIFCommonGameStatusOrangeExclamationMarkSprite }
 };
 
 // 0x8012ED7C
 IFACharacter dIFCommonAnnounceSuddenDeathSpriteData[/* */] =
 {
-    {  74,  67, &lIFCommonAnnounceCommonLetterS       },
-    { 102,  67, &lIFCommonAnnounceCommonLetterU       },
-    { 132,  67, &lIFCommonAnnounceCommonLetterD       },
-    { 163,  67, &lIFCommonAnnounceCommonLetterD       },
-    { 193,  67, &lIFCommonAnnounceCommonLetterE       },
-    { 217,  67, &lIFCommonAnnounceCommonLetterN       },
-    {  83, 113, &lIFCommonAnnounceCommonLetterD       },
-    { 113, 113, &lIFCommonAnnounceCommonLetterE       },
-    { 135, 113, &lIFCommonAnnounceCommonLetterA       },
-    { 165, 113, &lIFCommonAnnounceCommonLetterT       },
-    { 192, 113, &lIFCommonAnnounceCommonLetterH       },
-    { 227, 113, &lIFCommonAnnounceCommonSymbolExclaim }
+    {  74,  67, &llIFCommonAnnounceCommonLetterSSprite       },
+    { 102,  67, &llIFCommonAnnounceCommonLetterUSprite       },
+    { 132,  67, &llIFCommonAnnounceCommonLetterDSprite       },
+    { 163,  67, &llIFCommonAnnounceCommonLetterDSprite       },
+    { 193,  67, &llIFCommonAnnounceCommonLetterESprite       },
+    { 217,  67, &llIFCommonAnnounceCommonLetterNSprite       },
+    {  83, 113, &llIFCommonAnnounceCommonLetterDSprite       },
+    { 113, 113, &llIFCommonAnnounceCommonLetterESprite       },
+    { 135, 113, &llIFCommonAnnounceCommonLetterASprite       },
+    { 165, 113, &llIFCommonAnnounceCommonLetterTSprite       },
+    { 192, 113, &llIFCommonAnnounceCommonLetterHSprite       },
+    { 227, 113, &llIFCommonAnnounceCommonSymbolExclaimSprite }
 };
 
 // 0x8012EDDC
@@ -149,24 +142,24 @@ SYColorRGBPair dIFCommonAnnounceSuddenDeathSpriteColors = { { 0xFF, 0xFF, 0xFF }
 // 0x8012EDE4
 IFACharacter dIFCommonAnnounceTimeUpSpriteData[/* */] =
 {
-    {  45, 95, &lIFCommonAnnounceTimeUpLetterT },
-    {  82, 95, &lIFCommonAnnounceTimeUpLetterI },
-    { 100, 95, &lIFCommonAnnounceTimeUpLetterM },
-    { 151, 95, &lIFCommonAnnounceTimeUpLetterE },
-    { 195, 95, &lIFCommonAnnounceTimeUpLetterU },
-    { 238, 95, &lIFCommonAnnounceTimeUpLetterP }
+    {  45, 95, &llIFCommonGameStatusBlueLetterTSprite },
+    {  82, 95, &llIFCommonGameStatusBlueLetterISprite },
+    { 100, 95, &llIFCommonGameStatusBlueLetterMSprite },
+    { 151, 95, &llIFCommonGameStatusBlueLetterESprite },
+    { 195, 95, &llIFCommonGameStatusBlueLetterUSprite },
+    { 238, 95, &llIFCommonGameStatusBlueLetterPSprite }
 };
 
 // 0x8012EE14
 IFACharacter dIFCommonAnnounceGameSetSpriteData[/* */] =
 {
-    {  22, 95, &lIFCommonAnnounceGameSetLetterG },
-    {  62, 95, &lIFCommonAnnounceGameSetLetterA },
-    { 104, 95, &lIFCommonAnnounceGameSetLetterM },
-    { 154, 95, &lIFCommonAnnounceGameSetLetterE },
-    { 191, 95, &lIFCommonAnnounceGameSetLetterS },
-    { 230, 95, &lIFCommonAnnounceGameSetLetterE },
-    { 262, 95, &lIFCommonAnnounceGameSetLetterT }
+    {  22, 95, &llIFCommonGameStatusBlueLetterGSprite },
+    {  62, 95, &llIFCommonGameStatusBlueLetterASprite },
+    { 104, 95, &llIFCommonGameStatusBlueLetterMSprite },
+    { 154, 95, &llIFCommonGameStatusBlueLetterESprite },
+    { 191, 95, &llIFCommonGameStatusBlueLetterSSprite },
+    { 230, 95, &llIFCommonGameStatusBlueLetterESprite },
+    { 262, 95, &llIFCommonGameStatusBlueLetterTSprite }
 };
 
 // 0x8012EE4C
@@ -186,52 +179,52 @@ s32 dIFCommonTimerDigitsSpritePositionsX[/* */] =
 // 0x8012EE64 - Offset of twelve digits: numbers 0 through 9, % sign and H.P. text
 intptr_t dIFCommonPlayerDamageDigitSpriteOffsets[/* */] =
 {
-    &lIFCommonPlayerDamageDigit0,
-    &lIFCommonPlayerDamageDigit1,
-    &lIFCommonPlayerDamageDigit2,
-    &lIFCommonPlayerDamageDigit3,
-    &lIFCommonPlayerDamageDigit4,
-    &lIFCommonPlayerDamageDigit5,
-    &lIFCommonPlayerDamageDigit6,
-    &lIFCommonPlayerDamageDigit7,
-    &lIFCommonPlayerDamageDigit8,
-    &lIFCommonPlayerDamageDigit9,
-    &lIFCommonPlayerDamageSymbolPercent,
-    &lIFCommonPlayerDamageSymbolHP
+    &llIFCommonPlayerDamageDigit0Sprite,
+    &llIFCommonPlayerDamageDigit1Sprite,
+    &llIFCommonPlayerDamageDigit2Sprite,
+    &llIFCommonPlayerDamageDigit3Sprite,
+    &llIFCommonPlayerDamageDigit4Sprite,
+    &llIFCommonPlayerDamageDigit5Sprite,
+    &llIFCommonPlayerDamageDigit6Sprite,
+    &llIFCommonPlayerDamageDigit7Sprite,
+    &llIFCommonPlayerDamageDigit8Sprite,
+    &llIFCommonPlayerDamageDigit9Sprite,
+    &llIFCommonPlayerDamageSymbolPercentSprite,
+    &llIFCommonPlayerDamageSymbolHPSprite
 };
 
 // 0x8012EE94
 intptr_t dIFCommonTimerDigitSpriteOffsets[/* */] =
 {
-    &lIFCommonTimerDigit0, 
-    &lIFCommonTimerDigit1,
-    &lIFCommonTimerDigit2, 
-    &lIFCommonTimerDigit3,
-    &lIFCommonTimerDigit4, 
-    &lIFCommonTimerDigit5,
-    &lIFCommonTimerDigit6, 
-    &lIFCommonTimerDigit7,
-    &lIFCommonTimerDigit8, 
-    &lIFCommonTimerDigit9,
-    &lIFCommonTimerSymbolColon, 
-    &lIFCommonTimerSymbolSec,
-    &lIFCommonTimerSymbolCSec
+    &llIFCommonTimerDigit0Sprite,
+    &llIFCommonTimerDigit1Sprite,
+    &llIFCommonTimerDigit2Sprite,
+    &llIFCommonTimerDigit3Sprite,
+    &llIFCommonTimerDigit4Sprite,
+    &llIFCommonTimerDigit5Sprite,
+    &llIFCommonTimerDigit6Sprite,
+    &llIFCommonTimerDigit7Sprite,
+    &llIFCommonTimerDigit8Sprite,
+    &llIFCommonTimerDigit9Sprite,
+    &llIFCommonTimerSymbolColonSprite,
+    &llIFCommonTimerSymbolSecSprite,
+    &llIFCommonTimerSymbolCSecSprite
 };
 
 // 0x8012EEC8
 intptr_t dIFCommonPlayerStockDigitSpriteOffsets[/* */] =
 {
-    &lIFCommonPlayerStockDigit0, 
-    &lIFCommonPlayerStockDigit1, 
-    &lIFCommonPlayerStockDigit2, 
-    &lIFCommonPlayerStockDigit3,
-    &lIFCommonPlayerStockDigit4, 
-    &lIFCommonPlayerStockDigit5, 
-    &lIFCommonPlayerStockDigit6, 
-    &lIFCommonPlayerStockDigit7,
-    &lIFCommonPlayerStockDigit8, 
-    &lIFCommonPlayerStockDigit9, 
-    &lIFCommonPlayerStockSymbolX
+    &llIFCommonDigits0Sprite,
+    &llIFCommonDigits1Sprite,
+    &llIFCommonDigits2Sprite,
+    &llIFCommonDigits3Sprite,
+    &llIFCommonDigits4Sprite,
+    &llIFCommonDigits5Sprite,
+    &llIFCommonDigits6Sprite,
+    &llIFCommonDigits7Sprite,
+    &llIFCommonDigits8Sprite,
+    &llIFCommonDigits9Sprite,
+    &llIFCommonDigitsCrossSprite
 };
 
 // 0x8012EEF8
@@ -272,10 +265,10 @@ u16 dIFCommonAnnounceTimerVoiceIDs[/* */] =
 // 0x8012EF54
 intptr_t dIFCommonBattlePausePlayerNumSpriteOffsets[/* */] =
 {
-    &lIFCommonBattlePausePlayerNum1P,
-    &lIFCommonBattlePausePlayerNum2P,
-    &lIFCommonBattlePausePlayerNum3P,
-    &lIFCommonBattlePausePlayerNum4P
+    &llIFCommonBattlePausePlayerNum1PSprite,
+    &llIFCommonBattlePausePlayerNum2PSprite,
+    &llIFCommonBattlePausePlayerNum3PSprite,
+    &llIFCommonBattlePausePlayerNum4PSprite
 };
 
 // 0x8012EF64
@@ -308,31 +301,31 @@ u8 dIFCommonPlayerTagEnvColorsB[/* */] = { 0x00, 0x00, 0x00, 0x00, 0x00 };
 // 0x8012EFAC
 intptr_t dIFCommonPlayerTagSpriteOffsets[/* */] =
 {
-    &lIFCommonPlayerTag1P, 
-    &lIFCommonPlayerTag2P,
-    &lIFCommonPlayerTag3P, 
-    &lIFCommonPlayerTag4P,
-    &lIFCommonPlayerTagCP, 
-    &lIFCommonPlayerTagAlly
+    &llIFCommonPlayerTags1PSprite,
+    &llIFCommonPlayerTags2PSprite,
+    &llIFCommonPlayerTags3PSprite,
+    &llIFCommonPlayerTags4PSprite,
+    &llIFCommonPlayerTagsCPSprite,
+    &llIFCommonPlayerTagsAllySprite
 };
 
 // 0x8012EFC4
 IFPauseDecal dIFCommonBattlePauseDecalsSpriteData[/* */] =
 {
-    { &lIFCommonBattlePauseDecalPause,          { 232, 191 }, { { 0xFF, 0xFF, 0xFF }, { 0x00, 0x00, 0x00 } } },
-    { &lIFCommonBattlePauseDecalAButton,        {  99, 203 }, { { 0x00, 0x95, 0xFF }, { 0x00, 0x05, 0xC7 } } },
-    { &lIFCommonBattlePauseDecalBButton,        { 122, 203 }, { { 0x36, 0xBF, 0x00 }, { 0x00, 0x30, 0x00 } } },
-    { &lIFCommonBattlePauseDecalZTrigger,       { 145, 202 }, { { 0x80, 0x80, 0x80 }, { 0x21, 0x21, 0x21 } } },
-    { &lIFCommonBattlePauseDecalRTrigger,       { 164, 203 }, { { 0x80, 0x80, 0x80 }, { 0x21, 0x21, 0x21 } } },
-    { &lIFCommonBattlePauseDecalPlus,           { 113, 206 }, { { 0xFF, 0xFF, 0xFF }, { 0x00, 0x00, 0x00 } } },
-    { &lIFCommonBattlePauseDecalPlus,           { 136, 206 }, { { 0xFF, 0xFF, 0xFF }, { 0x00, 0x00, 0x00 } } },
-    { &lIFCommonBattlePauseDecalPlus,           { 155, 206 }, { { 0xFF, 0xFF, 0xFF }, { 0x00, 0x00, 0x00 } } },
-    { &lIFCommonBattlePauseDecalReset,          { 182, 205 }, { { 0xFF, 0xFF, 0xFF }, { 0x00, 0x00, 0x00 } } },
-    { &lIFCommonBattlePauseDecalSmashBall,      { 198, 191 }, { { 0xFF, 0xFF, 0xFF }, { 0x00, 0x00, 0x00 } } },
-    { &lIFCommonBattlePauseDecalArrows,         {  21,  19 }, { { 0xFF, 0x00, 0x00 }, { 0x00, 0x00, 0x00 } } },
-    { &lIFCommonBattlePauseDecalControlStick,   {  31,  29 }, { { 0xFF, 0xFF, 0xFF }, { 0x14, 0x18, 0x11 } } },
-    { &lIFCommonBattlePauseDecalLTrigger,       {  34, 203 }, { { 0x80, 0x80, 0x80 }, { 0x21, 0x21, 0x21 } } },
-    { &lIFCommonBattlePauseDecalRetry,          {  51, 205 }, { { 0xFF, 0xFF, 0xFF }, { 0x00, 0x00, 0x00 } } }
+    { &llIFCommonBattlePauseDecalPauseSprite,          { 232, 191 }, { { 0xFF, 0xFF, 0xFF }, { 0x00, 0x00, 0x00 } } },
+    { &llIFCommonBattlePauseDecalAButtonSprite,        {  99, 203 }, { { 0x00, 0x95, 0xFF }, { 0x00, 0x05, 0xC7 } } },
+    { &llIFCommonBattlePauseDecalBButtonSprite,        { 122, 203 }, { { 0x36, 0xBF, 0x00 }, { 0x00, 0x30, 0x00 } } },
+    { &llIFCommonBattlePauseDecalZTriggerSprite,       { 145, 202 }, { { 0x80, 0x80, 0x80 }, { 0x21, 0x21, 0x21 } } },
+    { &llIFCommonBattlePauseDecalRTriggerSprite,       { 164, 203 }, { { 0x80, 0x80, 0x80 }, { 0x21, 0x21, 0x21 } } },
+    { &llIFCommonBattlePauseDecalPlusSprite,           { 113, 206 }, { { 0xFF, 0xFF, 0xFF }, { 0x00, 0x00, 0x00 } } },
+    { &llIFCommonBattlePauseDecalPlusSprite,           { 136, 206 }, { { 0xFF, 0xFF, 0xFF }, { 0x00, 0x00, 0x00 } } },
+    { &llIFCommonBattlePauseDecalPlusSprite,           { 155, 206 }, { { 0xFF, 0xFF, 0xFF }, { 0x00, 0x00, 0x00 } } },
+    { &llIFCommonBattlePauseDecalResetSprite,          { 182, 205 }, { { 0xFF, 0xFF, 0xFF }, { 0x00, 0x00, 0x00 } } },
+    { &llIFCommonBattlePauseDecalSmashBallSprite,      { 198, 191 }, { { 0xFF, 0xFF, 0xFF }, { 0x00, 0x00, 0x00 } } },
+    { &llIFCommonBattlePauseDecalArrowsSprite,         {  21,  19 }, { { 0xFF, 0x00, 0x00 }, { 0x00, 0x00, 0x00 } } },
+    { &llIFCommonBattlePauseDecalControlStickSprite,   {  31,  29 }, { { 0xFF, 0xFF, 0xFF }, { 0x14, 0x18, 0x11 } } },
+    { &llIFCommonBattlePauseDecalLTriggerSprite,       {  34, 203 }, { { 0x80, 0x80, 0x80 }, { 0x21, 0x21, 0x21 } } },
+    { &llIFCommonBattlePauseDecalRetrySprite,          {  51, 205 }, { { 0xFF, 0xFF, 0xFF }, { 0x00, 0x00, 0x00 } } }
 };
 
 // 0x8012F0A4
@@ -348,13 +341,13 @@ SYRectangle dIFCommonBattlePauseBorderRectangle[/* */] =
 // 0x8012F0F4
 IFACharacter dIFCommonAnnounceFailureSpriteData[/* */] =
 {
-    {  77, 101, &lIFCommonAnnounceCommonLetterF },
-    {  97, 101, &lIFCommonAnnounceCommonLetterA },
-    { 130, 101, &lIFCommonAnnounceCommonLetterI },
-    { 145, 101, &lIFCommonAnnounceCommonLetterL },
-    { 167, 101, &lIFCommonAnnounceCommonLetterU },
-    { 197, 101, &lIFCommonAnnounceCommonLetterR },
-    { 225, 101, &lIFCommonAnnounceCommonLetterE }
+    {  77, 101, &llIFCommonAnnounceCommonLetterFSprite },
+    {  97, 101, &llIFCommonAnnounceCommonLetterASprite },
+    { 130, 101, &llIFCommonAnnounceCommonLetterISprite },
+    { 145, 101, &llIFCommonAnnounceCommonLetterLSprite },
+    { 167, 101, &llIFCommonAnnounceCommonLetterUSprite },
+    { 197, 101, &llIFCommonAnnounceCommonLetterRSprite },
+    { 225, 101, &llIFCommonAnnounceCommonLetterESprite }
 };
 
 // 0x8012F12C
@@ -363,15 +356,15 @@ SYColorRGBPair dIFCommonAnnounceFailureSpriteColors = { { 0xFF, 0xFF, 0xFF }, { 
 // 0x8012F134
 IFACharacter dIFCommonAnnounceCompleteSpriteData[/* */] =
 {
-    {  46, 101, &lIFCommonAnnounceCommonLetterC       },
-    {  71, 101, &lIFCommonAnnounceCommonLetterO       },
-    { 104, 100, &lIFCommonAnnounceCommonLetterM       },
-    { 143, 101, &lIFCommonAnnounceCommonLetterP       },
-    { 168, 101, &lIFCommonAnnounceCommonLetterL       },
-    { 189, 101, &lIFCommonAnnounceCommonLetterE       },
-    { 212, 101, &lIFCommonAnnounceCommonLetterT       },
-    { 237, 101, &lIFCommonAnnounceCommonLetterE       },
-    { 267, 101, &lIFCommonAnnounceCommonSymbolExclaim }
+    {  46, 101, &llIFCommonAnnounceCommonLetterCSprite       },
+    {  71, 101, &llIFCommonAnnounceCommonLetterOSprite       },
+    { 104, 100, &llIFCommonAnnounceCommonLetterMSprite       },
+    { 143, 101, &llIFCommonAnnounceCommonLetterPSprite       },
+    { 168, 101, &llIFCommonAnnounceCommonLetterLSprite       },
+    { 189, 101, &llIFCommonAnnounceCommonLetterESprite       },
+    { 212, 101, &llIFCommonAnnounceCommonLetterTSprite       },
+    { 237, 101, &llIFCommonAnnounceCommonLetterESprite       },
+    { 267, 101, &llIFCommonAnnounceCommonSymbolExclaimSprite }
 };
 
 // 0x8012F17C
@@ -965,10 +958,10 @@ void ifCommonPlayerDamageInitInterface(void)
             {
                 gcAddSObjForGObj(interface_gobj, NULL)->sprite.attr = SP_HIDDEN;
             }
-            lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[2], &lIFCommonPlayerDamageDigit0))->user_data.p = &sIFCommonPlayerDamageInterface[player].chars[0];
-            lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[2], &lIFCommonPlayerDamageDigit0))->user_data.p = &sIFCommonPlayerDamageInterface[player].chars[1];
-            lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[2], &lIFCommonPlayerDamageDigit0))->user_data.p = &sIFCommonPlayerDamageInterface[player].chars[2];
-            lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[2], &lIFCommonPlayerDamageDigit0))->user_data.p = &sIFCommonPlayerDamageInterface[player].chars[3];
+            lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[2], &llIFCommonPlayerDamageDigit0Sprite))->user_data.p = &sIFCommonPlayerDamageInterface[player].chars[0];
+            lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[2], &llIFCommonPlayerDamageDigit0Sprite))->user_data.p = &sIFCommonPlayerDamageInterface[player].chars[1];
+            lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[2], &llIFCommonPlayerDamageDigit0Sprite))->user_data.p = &sIFCommonPlayerDamageInterface[player].chars[2];
+            lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[2], &llIFCommonPlayerDamageDigit0Sprite))->user_data.p = &sIFCommonPlayerDamageInterface[player].chars[3];
 
             // The above functions should all return SObj*
 
@@ -1150,12 +1143,12 @@ void ifCommonPlayerStockMultiMakeInterface(s32 player)
         GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_PRIORITY_DEFAULT);
         gcAddGObjDisplay(interface_gobj, ifCommonPlayerStockMultiProcDisplay, 23, GOBJ_PRIORITY_DEFAULT, ~0);
 
-        lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[4], &lIFCommonPlayerStockDigit0));
-        lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[4], &lIFCommonPlayerStockDigit0));
-        lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[4], &lIFCommonPlayerStockDigit0));
-        lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[4], &lIFCommonPlayerStockDigit0));
-        lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[4], &lIFCommonPlayerStockDigit0));
-        lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[4], &lIFCommonPlayerStockDigit0));
+        lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[4], &llIFCommonDigits0Sprite));
+        lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[4], &llIFCommonDigits0Sprite));
+        lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[4], &llIFCommonDigits0Sprite));
+        lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[4], &llIFCommonDigits0Sprite));
+        lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[4], &llIFCommonDigits0Sprite));
+        lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[4], &llIFCommonDigits0Sprite));
 
         sIFCommonPlayerStocksNum[player] = S8_MAX;
 
@@ -1425,7 +1418,7 @@ void ifCommonPlayerMagnifyUpdateRender(Gfx **dls, s32 color_id, f32 ulx, f32 uly
     gSPClearGeometryMode(dl++, G_ZBUFFER);
 
     // This is a compound macro but I cannot find anything that would correspond to this
-    gDPSetTextureImage(dl++, G_IM_FMT_IA, G_IM_SIZ_16b, 1, lbRelocGetFileData(Sprite*, gGMCommonFiles[0], &lIFCommonPlayerMagnifyFrame));
+    gDPSetTextureImage(dl++, G_IM_FMT_IA, G_IM_SIZ_16b, 1, lbRelocGetFileData(Sprite*, gGMCommonFiles[0], &llIFCommonPlayerMagnifyFrameSprite));
 
     // NEEDS TO BE ALL ON THE SAME LINE OR GLUED, OTHERWISE IT DOESN'T MATCH
     gDPSetTile(dl++, G_IM_FMT_IA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_MIRROR | G_TX_WRAP, 4, G_TX_NOLOD, G_TX_MIRROR | G_TX_WRAP, 4, G_TX_NOLOD);\
@@ -1628,7 +1621,7 @@ void ifCommonPlayerMagnifyMakeInterface(void)
         FTStruct *fp = ftGetStruct(fighter_gobj);
         GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDMagnify, GOBJ_PRIORITY_DEFAULT);
 
-        gcAddXObjForDObjFixed(gcAddDObjForGObj(interface_gobj, lbRelocGetFileData(void*, gGMCommonFiles[0], &lIFCommonPlayerMagnifyDisplayList)), nGCMatrixKindTraRotRpyRSca, 0);
+        gcAddXObjForDObjFixed(gcAddDObjForGObj(interface_gobj, lbRelocGetFileData(void*, gGMCommonFiles[0], &llIFCommonPlayerMagnifyDisplayList)), nGCMatrixKindTraRotRpyRSca, 0);
 
         sIFCommonPlayerMagnifyInterface[fp->player].interface_gobj = interface_gobj;
         sIFCommonPlayerMagnifyInterface[fp->player].color_id = gSCManagerBattleState->players[fp->player].color;
@@ -1659,7 +1652,7 @@ void ifCommonPlayerArrowsRightProcDisplay(GObj *interface_gobj)
 // 0x801115BC
 void ifCommonPlayerArrowsAddAnim(GObj *interface_gobj)
 {
-    gcAddAnimJointAll(interface_gobj, lbRelocGetFileData(AObjEvent32**, gGMCommonFiles[0], &lIFCommonPlayerArrowsAnimJoint), 0.0F);
+    gcAddAnimJointAll(interface_gobj, lbRelocGetFileData(AObjEvent32**, gGMCommonFiles[0], &llIFCommonPlayerArrowsAnimJoint), 0.0F);
     gcPlayAnimAll(interface_gobj);
 }
 
@@ -1706,7 +1699,7 @@ GObj* ifCommonPlayerArrowsMakeInterface(void (*proc_display)(GObj*), void (*proc
     gcSetupCustomDObjs
     (
         interface_gobj,
-        lbRelocGetFileData(DObjDesc*, gGMCommonFiles[0], &lIFCommonPlayerArrowsDObjDesc),
+        lbRelocGetFileData(DObjDesc*, gGMCommonFiles[0], &llIFCommonPlayerArrowsDObjDesc),
         NULL,
         nGCMatrixKindTraRotRpyR,
         nGCMatrixKindNull,
@@ -1952,7 +1945,7 @@ void ifCommonItemArrowSetAttr(void)
 {
     Sprite *sprite = sIFCommonItemArrowSprite =
 
-    lbRelocGetFileData(Sprite*, lbRelocGetExternHeapFile((intptr_t)&D_NF_00000057, syTaskmanMalloc(lbRelocGetFileSize((intptr_t)&D_NF_00000057), 0x10)), &lIFCommonItemArrow);
+    lbRelocGetFileData(Sprite*, lbRelocGetExternHeapFile((intptr_t)&llIFCommonItemFileID, syTaskmanMalloc(lbRelocGetFileSize((intptr_t)&llIFCommonItemFileID), 0x10)), &llIFCommonItemArrowSprite);
 
     sprite->attr = SP_TEXSHUF | SP_TRANSPARENT;
 
@@ -2211,14 +2204,14 @@ SObj* ifCommonCountdownMakeInterface(void)
     gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_PRIORITY_DEFAULT, ~0);
     gcAddGObjProcess(interface_gobj, ifCommonCountdownThread, nGCProcessKindThread, 5);
 
-    sobj = lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[1], &lIFCommonTrafficRod));
+    sobj = lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[1], &llIFCommonGameStatusRodSprite));
 
     sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
 
     sobj->pos.x = 103.0F;
     sobj->pos.y = -57.0F;
 
-    sobj = lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[1], &lIFCommonTrafficFrame));
+    sobj = lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[1], &llIFCommonGameStatusFrameSprite));
 
     sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
 
@@ -2233,7 +2226,7 @@ SObj* ifCommonCountdownMakeInterface(void)
 
     ifCommonTrafficMakeSObj(interface_gobj, 10);
 
-    sobj = lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[1], &lIFCommonTrafficRodShadow));
+    sobj = lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[1], &llIFCommonGameStatusRodShadowSprite));
 
     sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
 
@@ -2464,12 +2457,12 @@ SObj* ifCommonTimerMakeDigits(void)
 
     gcAddGObjDisplay(interface_gobj, ifCommonTimerProcDisplay, 23, GOBJ_PRIORITY_DEFAULT, ~0);
 
-    lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[3], (intptr_t)&lIFCommonTimerDigit0));
-    lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[3], (intptr_t)&lIFCommonTimerDigit0));
-    lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[3], (intptr_t)&lIFCommonTimerDigit0));
-    lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[3], (intptr_t)&lIFCommonTimerDigit0));
+    lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[3], (intptr_t)&llIFCommonTimerDigit0Sprite));
+    lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[3], (intptr_t)&llIFCommonTimerDigit0Sprite));
+    lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[3], (intptr_t)&llIFCommonTimerDigit0Sprite));
+    lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[3], (intptr_t)&llIFCommonTimerDigit0Sprite));
 
-    sobj = lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[3], &lIFCommonTimerSymbolColon));
+    sobj = lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[3], &llIFCommonTimerSymbolColonSprite));
 
     sobj->pos.x = (s32)(260.0F - (sobj->sprite.width * 0.5F));
     sobj->pos.y = (s32)(30.0F - (sobj->sprite.height * 0.5F));

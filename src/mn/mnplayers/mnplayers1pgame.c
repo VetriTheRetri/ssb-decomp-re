@@ -204,11 +204,11 @@ void mnPlayers1PGameMakeNumber(GObj *gobj, s32 number, f32 x, f32 y, u32 *colors
 {
 	intptr_t offsets[/* */] =
 	{
-		&lIFCommonDigit0, &lIFCommonDigit1,
-		&lIFCommonDigit2, &lIFCommonDigit3,
-		&lIFCommonDigit4, &lIFCommonDigit5,
-		&lIFCommonDigit6, &lIFCommonDigit7,
-		&lIFCommonDigit8, &lIFCommonDigit9
+		&llIFCommonDigits0Sprite, &llIFCommonDigits1Sprite,
+		&llIFCommonDigits2Sprite, &llIFCommonDigits3Sprite,
+		&llIFCommonDigits4Sprite, &llIFCommonDigits5Sprite,
+		&llIFCommonDigits6Sprite, &llIFCommonDigits7Sprite,
+		&llIFCommonDigits8Sprite, &llIFCommonDigits9Sprite
 	};
 	SObj *sobj;
 	f32 left_x = x;

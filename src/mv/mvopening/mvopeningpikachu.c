@@ -28,7 +28,7 @@ FTKeyEvent dMVOpeningPikachuKeyEvents[/* */] =
 };
 
 // 0x8018E0FC
-u32 dMVOpeningPikachuFileIDs[/* */] = { &lIFCommonAnnounceCommonFileID, &llMVOpeningCommonFileID };
+u32 dMVOpeningPikachuFileIDs[/* */] = { &llIFCommonAnnounceCommonFileID, &llMVOpeningCommonFileID };
 
 // // // // // // // // // // // //
 //                               //
@@ -128,13 +128,13 @@ void mvOpeningPikachuMakeName(void)
 
 	intptr_t offsets[/* */] =
 	{
-		&lIFCommonAnnounceCommonLetterP,
-		&lIFCommonAnnounceCommonLetterI,
-		&lIFCommonAnnounceCommonLetterK,
-		&lIFCommonAnnounceCommonLetterA,
-		&lIFCommonAnnounceCommonLetterC,
-		&lIFCommonAnnounceCommonLetterH,
-		&lIFCommonAnnounceCommonLetterU,
+		&llIFCommonAnnounceCommonLetterPSprite,
+		&llIFCommonAnnounceCommonLetterISprite,
+		&llIFCommonAnnounceCommonLetterKSprite,
+		&llIFCommonAnnounceCommonLetterASprite,
+		&llIFCommonAnnounceCommonLetterCSprite,
+		&llIFCommonAnnounceCommonLetterHSprite,
+		&llIFCommonAnnounceCommonLetterUSprite,
 		0x0
 	};
 	f32 pos_x[/* */] =

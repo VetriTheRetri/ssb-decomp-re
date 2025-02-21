@@ -3,6 +3,7 @@
 #include <mn/menu.h>
 #include <sc/scene.h>
 #include <sys/video.h>
+#include <reloc_data.h>
 
 extern void syRdpSetViewport(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 
@@ -49,10 +50,10 @@ mnCommonCheckGetOptionStickInputLR(sMN1PContinueOptionChangeWait, stick_range, m
 u32 dMN1PContinueFileIDs[/* */] =
 {
     &D_NF_0000004F,
-    &D_NF_00000051,
-    &D_NF_00000025,
-    &D_NF_000000A4,
-    &D_NF_00000050
+    &llSC1PStageClear2FileID,
+    &llIFCommonAnnounceCommonFileID,
+    &llIFCommonPlayerDamageFileID,
+    &llSC1PStageClear1FileID
 };
 
 // 0x80134178
@@ -236,16 +237,16 @@ Sprite* mnPlayers1PGameContinueScoreDigitGetSprite(s32 digit)
     // 0x80134534
     intptr_t offsets[/* */] =
     {
-        &lIFCommonPlayerDamageDigit0,
-        &lIFCommonPlayerDamageDigit1,
-        &lIFCommonPlayerDamageDigit2,
-        &lIFCommonPlayerDamageDigit3,
-        &lIFCommonPlayerDamageDigit4,
-        &lIFCommonPlayerDamageDigit5,
-        &lIFCommonPlayerDamageDigit6,
-        &lIFCommonPlayerDamageDigit7,
-        &lIFCommonPlayerDamageDigit8,
-        &lIFCommonPlayerDamageDigit9
+        &llIFCommonPlayerDamageDigit0Sprite,
+        &llIFCommonPlayerDamageDigit1Sprite,
+        &llIFCommonPlayerDamageDigit2Sprite,
+        &llIFCommonPlayerDamageDigit3Sprite,
+        &llIFCommonPlayerDamageDigit4Sprite,
+        &llIFCommonPlayerDamageDigit5Sprite,
+        &llIFCommonPlayerDamageDigit6Sprite,
+        &llIFCommonPlayerDamageDigit7Sprite,
+        &llIFCommonPlayerDamageDigit8Sprite,
+        &llIFCommonPlayerDamageDigit9Sprite
     };
     return lbRelocGetFileData(Sprite*, sMN1PContinueFiles[3], offsets[digit]);
 }
@@ -709,14 +710,14 @@ void mnPlayers1PGameContinueMakeGameOverText(void)
     // 0x801341F8
     intptr_t letters[/* */] =
     { 
-        &lIFCommonAnnounceCommonLetterG,
-        &lIFCommonAnnounceCommonLetterA,
-        &lIFCommonAnnounceCommonLetterM,
-        &lIFCommonAnnounceCommonLetterE,
-        &lIFCommonAnnounceCommonLetterO,
-        &lIFCommonAnnounceCommonLetterV,
-        &lIFCommonAnnounceCommonLetterE,
-        &lIFCommonAnnounceCommonLetterR
+        &llIFCommonAnnounceCommonLetterGSprite,
+        &llIFCommonAnnounceCommonLetterASprite,
+        &llIFCommonAnnounceCommonLetterMSprite,
+        &llIFCommonAnnounceCommonLetterESprite,
+        &llIFCommonAnnounceCommonLetterOSprite,
+        &llIFCommonAnnounceCommonLetterVSprite,
+        &llIFCommonAnnounceCommonLetterESprite,
+        &llIFCommonAnnounceCommonLetterRSprite
     };
 
     // 0x80134218

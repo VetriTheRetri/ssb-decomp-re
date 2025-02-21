@@ -32,7 +32,7 @@ FTKeyEvent dMVOpeningDonkeyKeyEvents[/* */] =
 };
 
 // 0x8018E0BC
-u32 dMVOpeningDonkeyFileIDs[/* */] = { &lIFCommonAnnounceCommonFileID, &llMVOpeningCommonFileID };
+u32 dMVOpeningDonkeyFileIDs[/* */] = { &llIFCommonAnnounceCommonFileID, &llMVOpeningCommonFileID };
 
 // // // // // // // // // // // //
 //                               //
@@ -132,8 +132,8 @@ void mvOpeningDonkeyMakeName(void)
 
 	intptr_t offsets[/* */] =
 	{
-		&lIFCommonAnnounceCommonLetterD,
-		&lIFCommonAnnounceCommonLetterK,
+		&llIFCommonAnnounceCommonLetterDSprite,
+		&llIFCommonAnnounceCommonLetterKSprite,
 		0x0
 	};
 	Vec2f pos[/* */] =

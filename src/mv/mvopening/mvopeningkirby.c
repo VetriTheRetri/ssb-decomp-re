@@ -30,7 +30,7 @@ FTKeyEvent dMVOpeningKirbyKeyEvents[/* */] =
 };
 
 // 0x8018E0F4
-u32 dMVOpeningKirbyFileIDs[/* */] = { &lIFCommonAnnounceCommonFileID, &llMVOpeningCommonFileID };
+u32 dMVOpeningKirbyFileIDs[/* */] = { &llIFCommonAnnounceCommonFileID, &llMVOpeningCommonFileID };
 
 // // // // // // // // // // // //
 //                               //
@@ -131,11 +131,11 @@ void mvOpeningKirbyMakeName(void)
 	// 0x8018E0FC
 	intptr_t offsets[/* */] =
 	{
-		&lIFCommonAnnounceCommonLetterK,
-		&lIFCommonAnnounceCommonLetterI,
-		&lIFCommonAnnounceCommonLetterR,
-		&lIFCommonAnnounceCommonLetterB,
-		&lIFCommonAnnounceCommonLetterY,
+		&llIFCommonAnnounceCommonLetterKSprite,
+		&llIFCommonAnnounceCommonLetterISprite,
+		&llIFCommonAnnounceCommonLetterRSprite,
+		&llIFCommonAnnounceCommonLetterBSprite,
+		&llIFCommonAnnounceCommonLetterYSprite,
 		0x0
 	};
 

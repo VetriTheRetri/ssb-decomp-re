@@ -1,4 +1,5 @@
 #include <if/interface.h>
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -9,14 +10,14 @@
 // 0x80116BD0 - These will be linker variables in the future
 u32 dGMCommonFileIDs[/* */] = 
 { 
-    0x000000A6,
-    &lIFCommonGameStatusFileID,
-    &lIFCommonPlayerDamageFileID,
-    &lIFCommonTimerDigitsFileID,
-    &lIFCommonDigitsFileID,
-    0x000000C5,
-    &lIFCommonPlayerTagsFileID,
-    &lIFCommonAnnounceCommonFileID
+    &llIFCommonPlayerFileID,
+    &llIFCommonGameStatusFileID,
+    &llIFCommonPlayerDamageFileID,
+    &llIFCommonTimerFileID,
+    &llIFCommonDigitsFileID,
+    &llIFCommonBattlePauseFileID,
+    &llIFCommonPlayerTagsFileID,
+    &llIFCommonAnnounceCommonFileID
 };
 
 // // // // // // // // // // // //

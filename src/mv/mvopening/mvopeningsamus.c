@@ -30,7 +30,7 @@ FTKeyEvent dMVOpeningSamusKeyEvents[/* */] =
 };
 
 // 0x8018E164
-u32 dMVOpeningSamusFileIDs[/* */] = { &lIFCommonAnnounceCommonFileID, &llMVOpeningCommonFileID };
+u32 dMVOpeningSamusFileIDs[/* */] = { &llIFCommonAnnounceCommonFileID, &llMVOpeningCommonFileID };
 
 // // // // // // // // // // // //
 //                               //
@@ -130,11 +130,11 @@ void mvOpeningSamusMakeName(void)
 
 	intptr_t offsets[/* */] =
 	{
-		&lIFCommonAnnounceCommonLetterS,
-		&lIFCommonAnnounceCommonLetterA,
-		&lIFCommonAnnounceCommonLetterM,
-		&lIFCommonAnnounceCommonLetterU,
-		&lIFCommonAnnounceCommonLetterS,
+		&llIFCommonAnnounceCommonLetterSSprite,
+		&llIFCommonAnnounceCommonLetterASprite,
+		&llIFCommonAnnounceCommonLetterMSprite,
+		&llIFCommonAnnounceCommonLetterUSprite,
+		&llIFCommonAnnounceCommonLetterSSprite,
 		0x0
 	};
 	f32 pos_x[/* */] =

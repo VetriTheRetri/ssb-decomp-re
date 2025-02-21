@@ -35,7 +35,7 @@ FTKeyEvent dMVOpeningMarioKeyEvents[/* */] =
 };
 
 // 0x8018E0E8
-u32 dMVOpeningMarioFileIDs[/* */] = { &lIFCommonAnnounceCommonFileID, &llMVOpeningCommonFileID };
+u32 dMVOpeningMarioFileIDs[/* */] = { &llIFCommonAnnounceCommonFileID, &llMVOpeningCommonFileID };
 
 // // // // // // // // // // // //
 //                               //
@@ -136,11 +136,11 @@ void mvOpeningMarioMakeName(void)
 	// 0x8018E0F0
 	intptr_t offsets[/* */] =
 	{
-		&lIFCommonAnnounceCommonLetterM,
-		&lIFCommonAnnounceCommonLetterA,
-		&lIFCommonAnnounceCommonLetterR,
-		&lIFCommonAnnounceCommonLetterI,
-		&lIFCommonAnnounceCommonLetterO,
+		&llIFCommonAnnounceCommonLetterMSprite,
+		&llIFCommonAnnounceCommonLetterASprite,
+		&llIFCommonAnnounceCommonLetterRSprite,
+		&llIFCommonAnnounceCommonLetterISprite,
+		&llIFCommonAnnounceCommonLetterOSprite,
 		0x0
 	};
 

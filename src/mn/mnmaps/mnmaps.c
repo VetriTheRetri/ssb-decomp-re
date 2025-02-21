@@ -377,7 +377,7 @@ void mnMapsMakePlaque(void)
 	gobj = gcMakeGObjSPAfter(0, NULL, 8, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 6, GOBJ_PRIORITY_DEFAULT, ~0);
 
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &lMNMapsPlaqueSprite));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &llMNMapsWoodenCircleSprite));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 
@@ -415,7 +415,7 @@ void mnMapsMakeLabels(void)
 	gobj = gcMakeGObjSPAfter(0, NULL, 6, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(gobj, mnMapsLabelsProcDisplay, 4, GOBJ_PRIORITY_DEFAULT, ~0);
 
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &lMNMapsStageSelectSprite));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &llMNMapsStageSelectTextSprite));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 
@@ -430,7 +430,7 @@ void mnMapsMakeLabels(void)
 	sobj->pos.x = 172.0F;
 	sobj->pos.y = 122.0F;
 
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &lMNMapsTabLeftSprite));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &llMNMapsPlateLeftSprite));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 
@@ -439,11 +439,11 @@ void mnMapsMakeLabels(void)
 
 	for (x = 186; x < 262; x += 4)
 	{
-		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &lMNMapsTabMiddleSprite));
+		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &llMNMapsPlateMiddleSprite));
 		sobj->pos.x = x;
 		sobj->pos.y = 191.0F;
 	}
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &lMNMapsTabRightSprite));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &llMNMapsPlateRightSprite));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 
@@ -512,11 +512,11 @@ void mnMapsMakeIcons(void)
 
 	intptr_t offsets[/* */] =
 	{
-		&lMNMapsCastleIconSprite, 	&lMNMapsSectorIconSprite,
-		&lMNMapsJungleIconSprite, 	&lMNMapsZebesIconSprite,
-		&lMNMapsHyruleIconSprite, 	&lMNMapsYosterIconSprite,
-		&lMNMapsPupupuIconSprite,	&lMNMapsYamabukiIconSprite,
-		&lMNMapsInishieIconSprite,	&lMNMapsRandomIconSprite
+		&llMNMapsPeachsCastleSprite, 	&llMNMapsSectorZSprite,
+		&llMNMapsCongoJungleSprite, 	&llMNMapsPlanetZebesSprite,
+		&llMNMapsHyruleCastleSprite, 	&llMNMapsYoshisIslandSprite,
+		&llMNMapsDreamLandSprite,	&llMNMapsSaffronCitySprite,
+		&llMNMapsMushroomKingdomSprite,	&llMNMapsRandomSmallSprite
 	};
 	s32 x;
 	s32 i;
@@ -532,7 +532,7 @@ void mnMapsMakeIcons(void)
 
 			if (i == 9)
 			{
-				sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &lMNMapsRandomIconSprite));
+				sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &llMNMapsRandomSmallSprite));
 			}
 			else sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], offsets[mnMapsGetGroundKind(i)]));
 
@@ -575,15 +575,15 @@ void mnMapsMakeName(GObj *gobj, s32 gkind)
 	SObj* sobj;
 	intptr_t offsets[/* */] =
 	{
-		&lMNMapsCastleNameSprite,
-		&lMNMapsSectorNameSprite,
-		&lMNMapsJungleNameSprite,
-		&lMNMapsZebesNameSprite,
-		&lMNMapsHyruleNameSprite,
-		&lMNMapsYosterNameSprite,
-		&lMNMapsInishieNameSprite,
-		&lMNMapsYamabukiNameSprite,
-		&lMNMapsPupupuNameSprite
+		&llMNMapsPeachsCastleTextSprite,
+		&llMNMapsSectorZTextSprite,
+		&llMNMapsCongoJungleTextSprite,
+		&llMNMapsPlanetZebesTextSprite,
+		&llMNMapsHyruleCastleTextSprite,
+		&llMNMapsYoshisIslandTextSprite,
+		&llMNMapsDreamLandTextSprite,
+		&llMNMapsSaffronCityTextSprite,
+		&llMNMapsMushroomKingdomTextSprite
 	};
 
 	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], offsets[gkind]));
@@ -693,7 +693,7 @@ void mnMapsMakeEmblem(GObj *gobj, s32 gkind)
 
 	if (gkind == 0xDE)
 	{
-		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &lMNMapsRandomEmblemSprite));
+		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &llMNMapsQuestionMarkSprite));
 
 		sobj->sprite.attr &= ~SP_FASTCOPY;
 		sobj->sprite.attr |= SP_TRANSPARENT;
@@ -759,7 +759,7 @@ void mnMapsMakeCursor(void)
 	sMNMapsCursorGObj = gobj = gcMakeGObjSPAfter(0, NULL, 7, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 5, GOBJ_PRIORITY_DEFAULT, ~0);
 
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &lMNMapsCursorSprite));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &llMNMapsCursorSprite));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 
@@ -816,7 +816,7 @@ GObj* mnMapsMakePreviewWallpaper(s32 gkind)
 	// draw patterned bg
 	for (x = 43; x < 155; x += 16)
 	{
-		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &lMNMapsBoardWallpaperSprite));
+		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &llMNMapsTilesSprite));
 		sobj->pos.x = x;
 		sobj->pos.y = 130.0F;
 
@@ -826,7 +826,7 @@ GObj* mnMapsMakePreviewWallpaper(s32 gkind)
 	if (gkind == 0xDE)
 	{
 		// If Random, use Random image
-		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &lMNMapsRandomWallpaperSprite));
+		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMapsFiles[2], &llMNMapsRandomBigSprite));
 		sobj->pos.x = 40.0F;
 		sobj->pos.y = 127.0F;
 	}
@@ -847,7 +847,7 @@ GObj* mnMapsMakePreviewWallpaper(s32 gkind)
 						dMNMapsTrainingModeFileInfos[dMNMapsTrainingModeWallpaperIDs[gkind]].file_id,
 						(void*) ((uintptr_t)sMNMapsGroundInfo->wallpaper - dMNMapsWallpaperOffsets[gkind])
 					),
-					&lGRWallpaperTrainingBlueSprite
+					&llGRWallpaperTrainingBlueSprite
 				)
 			);
 		}

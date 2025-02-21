@@ -4,6 +4,7 @@
 #include <if/interface.h>
 #include <sc/scene.h>
 #include <sys/video.h>
+#include <reloc_data.h>
 
 extern intptr_t D_NF_00000088;
 extern intptr_t D_NF_00000097;
@@ -956,7 +957,7 @@ void sc1PBonusStageMakeTimer(void)
 
 		for (i = 0; i < ARRAY_COUNT(sSC1PBonusStageTimerDigits); i++)
 		{
-			sobj = lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[3], &lIFCommonTimerDigit0));
+			sobj = lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[3], &llIFCommonTimerDigit0Sprite));
 
 			sobj->pos.x = dSC1PBonusStageTimerDigitPositions[i] - (sobj->sprite.width * 0.5F);
 			sobj->pos.y = 30.0F - (sobj->sprite.height * 0.5F);
@@ -967,11 +968,11 @@ void sc1PBonusStageMakeTimer(void)
 
 		sobj->sprite.attr |= SP_HIDDEN;
 
-		sobj = lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[3], &lIFCommonTimerSymbolSec));
+		sobj = lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[3], &llIFCommonTimerSymbolSecSprite));
 		sobj->pos.x = (s32) (231.0F - (sobj->sprite.width * 0.5F));
 		sobj->pos.y = (s32) (20.0F - (sobj->sprite.height * 0.5F));
 
-		sobj = lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[3], &lIFCommonTimerSymbolCSec));
+		sobj = lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[3], &llIFCommonTimerSymbolCSecSprite));
 		sobj->pos.x = (s32) (264.0F - (sobj->sprite.width * 0.5F));
 		sobj->pos.y = (s32) (20.0F - (sobj->sprite.height * 0.5F));
 

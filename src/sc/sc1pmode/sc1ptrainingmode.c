@@ -4,6 +4,7 @@
 #include <if/interface.h>
 #include <sc/scene.h>
 #include <sys/video.h>
+#include <reloc_data.h>
 
 extern void syAudioSetBGMVolume(s32 playerID, u32 vol);
 
@@ -79,9 +80,9 @@ u8 dSC1PTrainingModeLagIntervals[/* */][2] =
 // 0x80190824
 SC1PTrainingModeFiles dSC1PTrainingModeWallpaperDescs[/* */] =
 {
-	{ &lGRWallpaperTrainingBlackFileID,	&lGRWallpaperTrainingBlackSprite,   { 0x00, 0x00, 0x00 } },
-	{ &lGRWallpaperTrainingYellowFileID,&lGRWallpaperTrainingYellowSprite,  { 0xEE, 0x9E, 0x06 } },
-	{ &lGRWallpaperTrainingBlueFileID, 	&lGRWallpaperTrainingBlueSprite,    { 0xAF, 0xF5, 0xFF } }
+	{ &llGRWallpaperTrainingBlackFileID,  &llGRWallpaperTrainingBlackSprite,  { 0x00, 0x00, 0x00 } },
+	{ &llGRWallpaperTrainingYellowFileID, &llGRWallpaperTrainingYellowSprite, { 0xEE, 0x9E, 0x06 } },
+	{ &llGRWallpaperTrainingBlueFileID,   &llGRWallpaperTrainingBlueSprite,   { 0xAF, 0xF5, 0xFF } }
 };
 
 // 0x80190848

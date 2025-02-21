@@ -33,7 +33,7 @@ FTKeyEvent dMVOpeningFoxKeyEvents[/* */] =
 };
 
 // 0x8018E0E0
-u32 dMVOpeningFoxFileIDs[/* */] = { &lIFCommonAnnounceCommonFileID, &llMVOpeningCommonFileID };
+u32 dMVOpeningFoxFileIDs[/* */] = { &llIFCommonAnnounceCommonFileID, &llMVOpeningCommonFileID };
 
 // // // // // // // // // // // //
 //                               //
@@ -133,9 +133,9 @@ void mvOpeningFoxMakeName(void)
 
 	intptr_t offsets[/* */] =
 	{
-		&lIFCommonAnnounceCommonLetterF,
-		&lIFCommonAnnounceCommonLetterO,
-		&lIFCommonAnnounceCommonLetterX,
+		&llIFCommonAnnounceCommonLetterFSprite,
+		&llIFCommonAnnounceCommonLetterOSprite,
+		&llIFCommonAnnounceCommonLetterXSprite,
 		0x0
 	};
 	Vec2f pos[/* */] =

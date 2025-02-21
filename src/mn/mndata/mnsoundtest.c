@@ -596,7 +596,7 @@ u32 dMNSoundTestVoiceIDs[/* */] =
 // 0x8013416C
 u32 dMNSoundTestFileIDs[/* */] =
 {
-    &D_NF_000000C5,
+    &llIFCommonBattlePauseFileID,
     &llIFCommonPlayerDamageFileID,
     &llMNDataCommonFileID,
     &llMNCommonFileID,

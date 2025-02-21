@@ -31,7 +31,7 @@ FTKeyEvent dMVOpeningYoshiKeyEvents[/* */] =
 };
 
 // 0x8018E108
-u32 dMVOpeningYoshiFileIDs[/* */] = { &lIFCommonAnnounceCommonFileID, &llMVOpeningCommonFileID };
+u32 dMVOpeningYoshiFileIDs[/* */] = { &llIFCommonAnnounceCommonFileID, &llMVOpeningCommonFileID };
 
 // // // // // // // // // // // //
 //                               //
@@ -131,11 +131,11 @@ void mvOpeningYoshiMakeName(void)
 
 	intptr_t offsets[/* */] =
 	{
-		&lIFCommonAnnounceCommonLetterY,
-		&lIFCommonAnnounceCommonLetterO,
-		&lIFCommonAnnounceCommonLetterS,
-		&lIFCommonAnnounceCommonLetterH,
-		&lIFCommonAnnounceCommonLetterI,
+		&llIFCommonAnnounceCommonLetterYSprite,
+		&llIFCommonAnnounceCommonLetterOSprite,
+		&llIFCommonAnnounceCommonLetterSSprite,
+		&llIFCommonAnnounceCommonLetterHSprite,
+		&llIFCommonAnnounceCommonLetterISprite,
 		0x0
 	};
 	f32 pos_x[/* */] =

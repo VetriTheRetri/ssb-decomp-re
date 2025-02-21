@@ -6,65 +6,6 @@
 #include <PR/gbi.h>
 #include <mn/mndef.h>
 
-extern u32 lMNVSRecordMainFileID;						// 0x0000001F
-
-extern intptr_t lMNVSRecordMainDigit0Sprite;			// 0x000002F0
-extern intptr_t lMNVSRecordMainDigit1Sprite;			// 0x00000390
-extern intptr_t lMNVSRecordMainDigit2Sprite;			// 0x00000430
-extern intptr_t lMNVSRecordMainDigit3Sprite;			// 0x000004D0
-extern intptr_t lMNVSRecordMainDigit4Sprite;			// 0x00000570
-extern intptr_t lMNVSRecordMainDigit5Sprite;			// 0x00000610
-extern intptr_t lMNVSRecordMainDigit6Sprite;			// 0x000006B0
-extern intptr_t lMNVSRecordMainDigit7Sprite;			// 0x00000750
-extern intptr_t lMNVSRecordMainDigit8Sprite;			// 0x000007F0
-extern intptr_t lMNVSRecordMainDigit9Sprite;			// 0x00000890
-
-extern intptr_t lMNVSRecordMainMarioIconBWSprite;		// 0x00001918
-extern intptr_t lMNVSRecordMainFoxIconBWSprite;			// 0x00001A98
-extern intptr_t lMNVSRecordMainDonkeyIconBWSprite;		// 0x00001CA8
-extern intptr_t lMNVSRecordMainSamusIconBWSprite;		// 0x00001E88
-extern intptr_t lMNVSRecordMainLuigiIconBWSprite;		// 0x00002008
-extern intptr_t lMNVSRecordMainLinkIconBWSprite;		// 0x00002370
-extern intptr_t lMNVSRecordMainYoshiIconBWSprite;		// 0x00002178
-extern intptr_t lMNVSRecordMainCaptainIconBWSprite;		// 0x00002540
-extern intptr_t lMNVSRecordMainKirbyIconBWSprite;		// 0x00002930
-extern intptr_t lMNVSRecordMainPikachuIconBWSprite;		// 0x00002B30
-extern intptr_t lMNVSRecordMainPurinIconBWSprite;		// 0x000027C8
-extern intptr_t lMNVSRecordMainNessIconBWSprite;		// 0x00002698
-
-extern intptr_t lMNVSRecordMainMarioIconColorSprite;	// 0x00002D18
-extern intptr_t lMNVSRecordMainFoxIconColorSprite;		// 0x00002EF8
-extern intptr_t lMNVSRecordMainDonkeyIconColorSprite;	// 0x00003198
-extern intptr_t lMNVSRecordMainSamusIconColorSprite;	// 0x00003438
-extern intptr_t lMNVSRecordMainLuigiIconColorSprite;	// 0x00003618
-extern intptr_t lMNVSRecordMainLinkIconColorSprite;		// 0x00003A38
-extern intptr_t lMNVSRecordMainYoshiIconColorSprite;	// 0x000037F8
-extern intptr_t lMNVSRecordMainCaptainIconColorSprite;	// 0x00003CD8
-extern intptr_t lMNVSRecordMainKirbyIconColorSprite;	// 0x00004308
-extern intptr_t lMNVSRecordMainPikachuIconColorSprite;	// 0x000045A8
-extern intptr_t lMNVSRecordMainPurinIconColorSprite;	// 0x00004098
-extern intptr_t lMNVSRecordMainNessIconColorSprite;		// 0x00003EB8
-
-extern intptr_t lMNVSRecordMainLabelWinPercentSprite;	// 0x00000A08
-extern intptr_t lMNVSRecordMainLabelKOsSprite;			// 0x00000AF8
-extern intptr_t lMNVSRecordMainLabelTKOSprite;			// 0x00000BE8
-extern intptr_t lMNVSRecordMainLabelSDPercentSprite;	// 0x00000CD8
-extern intptr_t lMNVSRecordMainLabelTimeSprite;			// 0x00000E10
-extern intptr_t lMNVSRecordMainLabelUsePercentSprite;	// 0x00000F08
-extern intptr_t lMNVSRecordMainLabelAvgSprite;			// 0x00001008
-extern intptr_t lMNVSRecordMainLabelKOdSprite;			// 0x00001140
-
-extern intptr_t lMNVSRecordMainQuestionSprite;          // 0x00000070
-extern intptr_t lMNVSRecordMainLabelTotalSprite;        // 0x00000258
-extern intptr_t lMNVSRecordMainSymbolPointSprite;       // 0x00000910
-extern intptr_t lMNVSRecordMainSymbolSlashSprite;       // 0x000011D0
-extern intptr_t lMNVSRecordMainBattleScoreSprite;       // 0x000015D0
-extern intptr_t lMNVSRecordMainDownArrowsSprite;        // 0x00001668
-extern intptr_t lMNVSRecordMainSideArrowsSprite;        // 0x000017A8
-extern intptr_t lMNVSRecordMainPortraitWallpaperSprite; // 0x00004D30
-extern intptr_t lMNVSRecordMainLabelSprite;				// 0x00005428
-extern intptr_t lMNVSRecordMainSymbolColonSprite;       // 0x000054C0
-
 extern void mnVSRecordFuncLights(Gfx **dls);
 extern s32 mnVSRecordGetFighterKindByIndex(s32 index);
 extern s32 mnVSRecordGetKOs(s32 fkind);

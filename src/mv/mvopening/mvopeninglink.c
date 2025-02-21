@@ -29,7 +29,7 @@ FTKeyEvent dMVOpeningLinkKeyEvents[/* */] =
 };
 
 // 0x8018E0B0
-u32 dMVOpeningLinkFileIDs[/* */] = { &lIFCommonAnnounceCommonFileID, &llMVOpeningCommonFileID };
+u32 dMVOpeningLinkFileIDs[/* */] = { &llIFCommonAnnounceCommonFileID, &llMVOpeningCommonFileID };
 
 // // // // // // // // // // // //
 //                               //
@@ -129,10 +129,10 @@ void mvOpeningLinkMakeName(void)
 
 	intptr_t offsets[/* */] =
 	{
-		&lIFCommonAnnounceCommonLetterL,
-		&lIFCommonAnnounceCommonLetterI,
-		&lIFCommonAnnounceCommonLetterN,
-		&lIFCommonAnnounceCommonLetterK,
+		&llIFCommonAnnounceCommonLetterLSprite,
+		&llIFCommonAnnounceCommonLetterISprite,
+		&llIFCommonAnnounceCommonLetterNSprite,
+		&llIFCommonAnnounceCommonLetterKSprite,
 		0x0
 	};
 	f32 pos_x[/* */] =

@@ -11,15 +11,6 @@ extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
 //                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern uintptr_t D_NF_000000C5;
-extern uintptr_t D_NF_000000C4;
-
-// // // // // // // // // // // //
-//                               //
 //             MACROS            //
 //                               //
 // // // // // // // // // // // //
@@ -600,7 +591,7 @@ u32 dMNSoundTestFileIDs[/* */] =
     &llIFCommonPlayerDamageFileID,
     &llMNDataCommonFileID,
     &llMNCommonFileID,
-    &D_NF_000000C4
+    &llMNSoundTestFileID
 };
 
 // 0x80134180
@@ -614,16 +605,16 @@ f32 dMNSoundTestArrowSpritePositions[/* */] =
 // 0x801341A4
 intptr_t dMNSoundTestDigitSpriteOffsets[/* */] =
 {
-    &lMNSoundTestDigit0Sprite,
-    &lMNSoundTestDigit1Sprite,
-    &lMNSoundTestDigit2Sprite,
-    &lMNSoundTestDigit3Sprite,
-    &lMNSoundTestDigit4Sprite,
-    &lMNSoundTestDigit5Sprite,
-    &lMNSoundTestDigit6Sprite,
-    &lMNSoundTestDigit7Sprite,
-    &lMNSoundTestDigit8Sprite,
-    &lMNSoundTestDigit9Sprite
+    &llIFCommonPlayerDamageDigit0Sprite,
+    &llIFCommonPlayerDamageDigit1Sprite,
+    &llIFCommonPlayerDamageDigit2Sprite,
+    &llIFCommonPlayerDamageDigit3Sprite,
+    &llIFCommonPlayerDamageDigit4Sprite,
+    &llIFCommonPlayerDamageDigit5Sprite,
+    &llIFCommonPlayerDamageDigit6Sprite,
+    &llIFCommonPlayerDamageDigit7Sprite,
+    &llIFCommonPlayerDamageDigit8Sprite,
+    &llIFCommonPlayerDamageDigit9Sprite
 };
 
 // 0x801341CC
@@ -1055,7 +1046,7 @@ SObj* mnSoundTestMakeHeaderSObjs(void)
     sobj->pos.x = 23.0F;
     sobj->pos.y = 17.0F;
 
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[4], &lMNSoundTestHeaderTextSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[4], &llMNSoundTestSoundTestTextSprite));
 
     sobj->sprite.attr = SP_TRANSPARENT;
 
@@ -1143,12 +1134,12 @@ SObj* mnSoundTestMakeMusicSObjs(void)
         GOBJ_PRIORITY_DEFAULT,
         ~0
     );
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[4], &lMNSoundTestMusicTextSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[4], &llMNSoundTestMusicTextSprite));
     sobj->sprite.attr = SP_TRANSPARENT;
     sobj->pos.x = 55.0F;
     sobj->pos.y = 61.0F;
 
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[4], &lMNSoundTestOptionOutline));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[4], &llMNSoundTestCapsuleRightSprite));
     sobj->sprite.attr = SP_TRANSPARENT;
     sobj->pos.x = 112.0F;
     sobj->pos.y = 56.0F;
@@ -1210,12 +1201,12 @@ SObj* mnSoundTestMakeSoundSObjs(void)
         GOBJ_PRIORITY_DEFAULT,
         ~0
     );
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[4], &lMNSoundTestSoundTextSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[4], &llMNSoundTestSoundTextSprite));
     sobj->sprite.attr = SP_TRANSPARENT;
     sobj->pos.x = 64.0F;
     sobj->pos.y = 108.0F;
 
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[4], &lMNSoundTestOptionOutline));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[4], &llMNSoundTestCapsuleRightSprite));
     sobj->sprite.attr = SP_TRANSPARENT;
     sobj->pos.x = 132.0F;
     sobj->pos.y = 104.0F;
@@ -1277,12 +1268,12 @@ SObj* mnSoundTestMakeVoiceSObjs(void)
         GOBJ_PRIORITY_DEFAULT,
         ~0
     );
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[4], &lMNSoundTestVoiceTextSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[4], &llMNSoundTestVoiceTextSprite));
     sobj->sprite.attr = SP_TRANSPARENT;
     sobj->pos.x = 94.0F;
     sobj->pos.y = 156.0F;
 
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[4], &lMNSoundTestOptionOutline));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[4], &llMNSoundTestCapsuleRightSprite));
     sobj->sprite.attr = SP_TRANSPARENT;
     sobj->pos.x = 152.0F;
     sobj->pos.y = 152.0F;
@@ -1293,7 +1284,7 @@ SObj* mnSoundTestMakeVoiceSObjs(void)
 // 0x80132C10
 SObj* mnSoundTestMakeAButtonSObj(GObj *gobj)
 {
-    SObj *sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[0], &lMNSoundTestAButtonSprite));
+    SObj *sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[0], &llIFCommonBattlePauseDecalAButtonSprite));
 
     sobj->sprite.attr = SP_TRANSPARENT;
 
@@ -1314,7 +1305,7 @@ SObj* mnSoundTestMakeAButtonSObj(GObj *gobj)
 // 0x80132C90
 SObj* mnSoundTestMakeBButtonSObj(GObj *gobj)
 {
-    SObj *sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[0], &lMNSoundTestBButtonSprite));
+    SObj *sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[0], &llIFCommonBattlePauseDecalBButtonSprite));
 
     sobj->sprite.attr = SP_TRANSPARENT;
 
@@ -1335,7 +1326,7 @@ SObj* mnSoundTestMakeBButtonSObj(GObj *gobj)
 // 0x80132D10
 SObj* mnSoundTestMakeStartButtonSObj(GObj *gobj)
 {
-    SObj *sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[4], &lMNSoundTestStartButtonSprite));
+    SObj *sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[4], &llMNSoundTestStartButtonSprite));
 
     sobj->sprite.attr = SP_TRANSPARENT;
 
@@ -1356,7 +1347,7 @@ SObj* mnSoundTestMakeStartButtonSObj(GObj *gobj)
 // 0x80132D90
 SObj* mnSoundTestMakeAFunctionSObj(GObj *gobj)
 {
-    SObj *sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[4], &lMNSoundTestAFunctionTextSprite));
+    SObj *sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[4], &llMNSoundTestColonPlayTextSprite));
 
     sobj->sprite.attr = SP_TRANSPARENT;
 
@@ -1373,7 +1364,7 @@ SObj* mnSoundTestMakeAFunctionSObj(GObj *gobj)
 // 0x80132DF8
 SObj* mnSoundTestMakeStartFunctionSObj(GObj *gobj)
 {
-    SObj *sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[4], &lMNSoundTestStartFunctionTextSprite));
+    SObj *sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[4], &llMNSoundTestColonFadeOutTextSprite));
 
     sobj->sprite.attr = SP_TRANSPARENT;
 
@@ -1390,7 +1381,7 @@ SObj* mnSoundTestMakeStartFunctionSObj(GObj *gobj)
 // 0x80132E60
 SObj* mnSoundTestMakeBFunctionSObj(GObj *gobj)
 {
-    SObj *sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[4], &lMNSoundTestBFunctionTextSprite));
+    SObj *sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNSoundTestFiles[4], &llMNSoundTestColonExitTextSprite));
 
     sobj->sprite.attr = SP_TRANSPARENT;
 

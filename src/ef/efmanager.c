@@ -3,6 +3,7 @@
 #include <it/item.h>
 #include <wp/weapon.h>
 #include <sc/scene.h>
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -1750,9 +1751,9 @@ void efManagerInitEffects(void)
     efDisplayMakeCLD();
     efDisplayMakeXLU();
 
-    gEFManagerFiles[0] = lbRelocGetExternHeapFile(&lEFCommonEffects1FileID, syTaskmanMalloc(lbRelocGetFileSize(&lEFCommonEffects1FileID), 0x10));
-    gEFManagerFiles[1] = lbRelocGetExternHeapFile(&lEFCommonEffects2FileID, syTaskmanMalloc(lbRelocGetFileSize(&lEFCommonEffects2FileID), 0x10));
-    gEFManagerFiles[2] = lbRelocGetExternHeapFile(&lEFCommonEffects3FileID, syTaskmanMalloc(lbRelocGetFileSize(&lEFCommonEffects3FileID), 0x10));
+    gEFManagerFiles[0] = lbRelocGetExternHeapFile(&llEFCommonEffects1FileID, syTaskmanMalloc(lbRelocGetFileSize(&llEFCommonEffects1FileID), 0x10));
+    gEFManagerFiles[1] = lbRelocGetExternHeapFile(&llEFCommonEffects2FileID, syTaskmanMalloc(lbRelocGetFileSize(&llEFCommonEffects2FileID), 0x10));
+    gEFManagerFiles[2] = lbRelocGetExternHeapFile(&llEFCommonEffects3FileID, syTaskmanMalloc(lbRelocGetFileSize(&llEFCommonEffects3FileID), 0x10));
 
     efDisplayInitAll();
 }

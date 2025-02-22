@@ -2,16 +2,9 @@
 #include <sc/scene.h>
 #include <sys/controller.h>
 #include <sys/video.h>
+#include <reloc_data.h>
 
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern uintptr_t D_NF_000000C2;
 
 // // // // // // // // // // // //
 //                               //
@@ -237,17 +230,17 @@ void mnStartupFuncStart(void)
 		Sprite*,
 		lbRelocGetExternHeapFile
 		(
-			&D_NF_000000C2,
+			&llN64LogoFileID,
 			syTaskmanMalloc
 			(
 				lbRelocGetFileSize
 				(
-					&D_NF_000000C2
+					&llN64LogoFileID
 				),
 				0x10
 			)
 		),
-		&lMNStartupN64Sprite
+		&llN64LogoSprite
 	);
 	sobj = lbCommonMakeSObjForGObj(gobj, sprite);
 

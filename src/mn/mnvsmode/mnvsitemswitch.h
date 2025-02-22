@@ -6,21 +6,6 @@
 #include <PR/gbi.h>
 #include <mn/mndef.h>
 
-extern intptr_t lMNVSItemSwitchAppearanceNoneSprite;        // 0x00000CE8
-extern intptr_t lMNVSItemSwitchAppearanceVeryLowSprite;     // 0x00000EA8
-extern intptr_t lMNVSItemSwitchAppearanceLowSprite;         // 0x00000F98
-extern intptr_t lMNVSItemSwitchAppearanceMiddleSprite;      // 0x000010D0
-extern intptr_t lMNVSItemSwitchAppearanceHighSprite;        // 0x000011E8
-extern intptr_t lMNVSItemSwitchAppearanceVeryHighSprite;    // 0x000013A8
-extern intptr_t lMNVSItemSwitchLabelVSOptionsSprite;        // 0x000009A8
-extern intptr_t lMNVSItemSwitchLabelItemSwitchSprite;       // 0x00000B20
-extern intptr_t lMNVSItemSwitchToggleOnSprite;              // 0x00001488
-extern intptr_t lMNVSItemSwitchToggleOffSprite;             // 0x00001568
-extern intptr_t lMNVSItemSwitchToggleSlashSprite;           // 0x00001608
-extern intptr_t lMNVSItemSwitchDecalButtonSprite;           // 0x00003430
-extern intptr_t lMNVSItemSwitchItemListSprite;              // 0x00005E60
-extern intptr_t lMNVSItemSwitchCursorSprite;                // 0x000063A8
-
 extern void mnVSItemSwitchFuncLights(Gfx **dls);
 extern void mnVSItemSwitchSetToggleSpriteColors(GObj *gobj, s32 status);
 extern void mnVSItemSwitchMakeToggle(GObj *gobj, f32 pos_x, f32 pos_y);

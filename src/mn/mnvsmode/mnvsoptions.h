@@ -6,15 +6,6 @@
 #include <PR/gbi.h>
 #include <mn/mndef.h>
 
-extern intptr_t lMNVSOptionsLabelVSOptionsSprite;           // 0x00002668
-extern intptr_t lMNVSOptionsOptionTabSprite;                // 0x000033D8
-extern intptr_t lMNVSOptionsTextHandicapSprite;             // 0x00003690
-extern intptr_t lMNVSOptionsTextTeamAttackSprite;           // 0x00003968
-extern intptr_t lMNVSOptionsTextStageSelectSprite;          // 0x00003CF8
-extern intptr_t lMNVSOptionsTextItemSwitchSprite;           // 0x00003FC8
-extern intptr_t lMNVSOptionsTextDamageSprite;               // 0x00004228
-extern intptr_t lMNVSOptionsDecalN64Sprite;                 // 0x00005F60
-
 extern void mnVSOptionsFuncLights(Gfx **dls);
 extern s32 mnVSOptionsGetPowerOf(s32 base, s32 exp);
 extern void mnVSOptionsSetDamageDigitSpriteColors(SObj *sobj, u32 *colors);

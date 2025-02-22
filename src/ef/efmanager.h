@@ -5,10 +5,6 @@
 #include <sys/objdef.h>
 #include <ef/efdef.h>
 
-extern intptr_t lEFCommonEffects1FileID;                        // 0x00000053
-extern intptr_t lEFCommonEffects2FileID;                        // 0x00000054
-extern intptr_t lEFCommonEffects3FileID;                        // 0x00000055
-
 extern intptr_t lEFManagerShieldDObjSetup;                      // 0x00000300
 
 extern intptr_t lEFManagerYoshiShieldDObjSetup;                 // 0x0000A860

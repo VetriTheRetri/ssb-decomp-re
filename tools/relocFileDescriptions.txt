@@ -10,7 +10,10 @@
 -007: MNVSOptions
 -008: MNVSItemSwitch
 -009: MNMessage
--012: SCAutoDemoName
+-011: SC1PIntro
+-012: CharacterNames
+-013: BonusPicture
+-014: BonusPicturePlatform
 -016: MNCharacters
 -017: MNPlayersCommon
 -018: MNPlayersGameModes
@@ -67,10 +70,16 @@
 -074: MVOpeningSectorWallpaper
 -075: MVOpeningRunCrash
 -076: MVEnding
+-077: MNBackupClear
+-078: MNBackupClearHeaderOption
+-079: MN1PContinue
 -080: SC1PStageClear1
 -081: SC1PStageClear2
 -082: IFCommonGameStatus
 -090: MVOpeningRoomWallpaper
+-083: EFCommonEffects1
+-084: EFCommonEffects2
+-085: EFCommonEffects3
 -087: IFCommonItem
 -088: StageDreamLand
 -089: StageZebes
@@ -113,6 +122,7 @@
 -193: MNCongraNessTop
 -194: N64Logo
 -195: SCStaffroll
+-196: MNSoundTest
 -197: IFCommonBattlePause
 -251: ITCommonData
 -255: GRPupupuMap
@@ -328,21 +338,21 @@ Sprite DamageText 0x4228
 Sprite ConsoleIconDark 0x5f60
 
 [8]
-Sprite 0x9a8 0x9a8
-Sprite 0xb20 0xb20
-Sprite 0xce8 0xce8
-Sprite 0xea8 0xea8
-Sprite 0xf98 0xf98
-Sprite 0x10d0 0x10d0
-Sprite 0x11e8 0x11e8
-Sprite 0x13a8 0x13a8
-Sprite 0x1488 0x1488
-Sprite 0x1568 0x1568
-Sprite 0x1608 0x1608
-Sprite 0x3430 0x3430
-Sprite 0x3948 0x3948
-Sprite 0x5e60 0x5e60
-Sprite 0x63a8 0x63a8
+Sprite LabelVSOptions 0x9a8
+Sprite LabelItemSwitch 0xb20
+Sprite AppearanceNone 0xce8
+Sprite AppearanceVeryLow 0xea8
+Sprite AppearanceLow 0xf98
+Sprite AppearanceMiddle 0x10d0
+Sprite AppearanceHigh 0x11e8
+Sprite AppearanceVeryHigh 0x13a8
+Sprite ToggleOn 0x1488
+Sprite ToggleOff 0x1568
+Sprite ToggleSlash 0x1608
+Sprite DecalButton 0x3430
+Sprite Frame 0x3948
+Sprite ItemList 0x5e60
+Sprite Cursor 0x63a8
 Sprite 0x65c0 0x65c0
 Sprite 0x67e0 0x67e0
 Sprite 0x6a00 0x6a00
@@ -385,53 +395,76 @@ Sprite 0x968 0x968
 Sprite 0xdb0 0xdb0
 
 [11]
-Sprite 0x1f10 0x1f10
-Sprite 0x2018 0x2018
-Sprite 0x2118 0x2118
-Sprite 0x2218 0x2218
-Sprite 0x2318 0x2318
-Sprite 0x2418 0x2418
-Sprite 0x2518 0x2518
-Sprite 0x2618 0x2618
-Sprite 0x2718 0x2718
-Sprite 0x2818 0x2818
-Sprite 0x29b8 0x29b8
-Sprite 0x2b58 0x2b58
-Sprite 0x2e38 0x2e38
-Sprite 0x30f8 0x30f8
-Sprite 0x3320 0x3320
-Sprite 0x3b08 0x3b08
-Sprite 0x4388 0x4388
-Sprite 0x4ac8 0x4ac8
+Sprite VSDecal 0x1f10
+Sprite Number1 0x2018
+Sprite Number2 0x2118
+Sprite Number3 0x2218
+Sprite Number4 0x2318
+Sprite Number5 0x2418
+Sprite Number6 0x2518
+Sprite Number7 0x2618
+Sprite Number8 0x2718
+Sprite Number9 0x2818
+Sprite Number10 0x29b8
+Sprite Cross 0x2b58
+Sprite StageText 0x2e38
+Sprite BonusText 0x30f8
+Sprite FinalText 0x3320
+Sprite BreakTheTargetsText 0x3b08
+Sprite BoardThePlatformsText 0x4388
+Sprite RaceToTheFinishText 0x4ac8
 Sprite 0x5028 0x5028
-Sprite 0x50e8 0x50e8
-Sprite 0x5328 0x5328
-Sprite 0x5568 0x5568
-Sprite 0x5748 0x5748
-Sprite 0x5988 0x5988
-Sprite 0x5c88 0x5c88
-Sprite 0x5ec8 0x5ec8
-Sprite 0x63f8 0x63f8
-Sprite 0x6638 0x6638
-Sprite 0x6938 0x6938
-Sprite 0x69f8 0x69f8
-Sprite 0x6b18 0x6b18
-Sprite 0x6c38 0x6c38
-Sprite 0x71d0 0x71d0
-Sprite 0x7320 0x7320
-Sprite 0x7470 0x7470
-Sprite 0x75c0 0x75c0
-Sprite 0x7710 0x7710
-Sprite 0x7860 0x7860
-Sprite 0x79b0 0x79b0
-Sprite 0x7b00 0x7b00
-Sprite 0x7c50 0x7c50
-Sprite 0x7d60 0x7d60
-Sprite 0x7e70 0x7e70
-Sprite 0x7f40 0x7f40
-Sprite 0xc898 0xc898
-Sprite 0xed00 0xed00
-Sprite 0x14bf0 0x14bf0
+Sprite Dash 0x50e8
+Sprite MetalMarioText 0x5328
+Sprite MasterHandText 0x5568
+Sprite GiantDKText 0x5748
+Sprite FoxMcCloudText 0x5988
+Sprite KirbyTeamVS8Text 0x5c88
+Sprite MarioBrosText 0x5ec8
+Sprite FightingPolygonTeamVS30Text 0x63f8
+Sprite SamusAranText 0x6638
+Sprite YoshiTeamVS18Text 0x6938
+Sprite VSText 0x69f8
+Sprite AllyText 0x6b18
+Sprite AllyText2 0x6c38
+AnimJoint FighterMarioCam 0x6c80
+AnimJoint FighterFoxCam 0x6cb0
+AnimJoint FighterDonkeyCam 0x6ce0
+AnimJoint FighterSamusCam 0x6d10
+AnimJoint FighterLuigiCam 0x6d40
+AnimJoint FighterLinkCam 0x6d70
+AnimJoint FighterYoshiCam 0x6da0
+AnimJoint FighterCaptainCam 0x6dd0
+AnimJoint FighterKirbyCam 0x6e00
+AnimJoint FighterPikachuCam 0x6e30
+AnimJoint FighterPurinCam 0x6e60
+AnimJoint FighterNessCam 0x6e90
+AnimJoint StageKirbyCam 0x6ec0
+AnimJoint StageSamusCam 0x6f50
+AnimJoint StageFoxCam 0x6f80
+AnimJoint StagePikachuCam 0x6fb0
+AnimJoint StageLinkCam 0x6fe0
+AnimJoint StageYoshiCam 0x6ef0
+AnimJoint StageBossCam 0x6f20
+AnimJoint StageDonkeyCam 0x7010
+AnimJoint StageMarioCam 0x7040
+AnimJoint StageMMarioCam 0x7070
+AnimJoint StageZakoCam 0x70a0
+Sprite LinkMarker 0x71d0
+Sprite YoshiMarker 0x7320
+Sprite FoxMarker 0x7470
+Sprite MarioBrosMarker 0x75c0
+Sprite PikachuMarker 0x7710
+Sprite DKMarker 0x7860
+Sprite KirbyMarker 0x79b0
+Sprite SamusMarker 0x7b00
+Sprite MarioMarker 0x7c50
+Sprite ExclamationMark 0x7d60
+Sprite BossMarker 0x7e70
+Sprite BonusMarker 0x7f40
+Sprite BannerTop 0xc898
+Sprite BannerBottom 0xed00
+Sprite Sky 0x14bf0
 
 [12]
 Sprite Mario 0x138
@@ -448,11 +481,11 @@ Sprite Purin 0xf78
 Sprite Ness 0x1098
 
 [13]
-Sprite 0xe980 0xe980
-Sprite 0x1a658 0x1a658
+Sprite Target 0xe980
+Sprite Race 0x1a658
 
 [14]
-Sprite 0x27388 0x27388
+Sprite - 0x27388
 
 [15]
 Sprite 0x918 0x918
@@ -1224,7 +1257,7 @@ MatAnimJoint - 0x3700
 AnimJoint OperatorCam 0x0
 
 [77]
-Sprite 0xb60 0xb60
+Sprite HeaderBackupClear 0xb60
 Sprite 0x11e0 0x11e0
 Sprite 0x1770 0x1770
 Sprite 0x1b98 0x1b98
@@ -1232,30 +1265,35 @@ Sprite 0x2300 0x2300
 Sprite 0x2890 0x2890
 Sprite 0x2d30 0x2d30
 Sprite 0x33b0 0x33b0
-Sprite 0x3a00 0x3a00
-Sprite 0x4050 0x4050
-Sprite 0x46a0 0x46a0
+Sprite OptionNewcomers 0x3a00
+Sprite Option1PHighScore 0x4050
+Sprite OptionVSRecord 0x46a0
 Sprite 0x4cf0 0x4cf0
-Sprite 0x5340 0x5340
-Sprite 0x5990 0x5990
-Sprite 0x5db8 0x5db8
-Sprite 0x63c8 0x63c8
-Sprite 0x69d8 0x69d8
-Sprite 0x7020 0x7020
-Sprite 0x7580 0x7580
-Sprite 0x7ab8 0x7ab8
+Sprite OptionPrize 0x5340
+Sprite OptionAllDataClear 0x5990
+Sprite OptionCircle 0x5db8
+Sprite IsOkayText 0x63c8
+Sprite AreYouSureText 0x69d8
+Sprite OptionBonusStageTime 0x7020
+Palette OptionYesHighlight 0x7500
+Palette OptionYesNot 0x7528
+Palette OptionConfirm 0x7550
+Sprite OptionYes 0x7580
+Palette OptionNoHighlight 0x7a60
+Palette OptionNoNot 0x7a88
+Sprite OptionNo 0x7ab8
 
 [78]
-Sprite 0xb40 0xb40
+Sprite - 0xb40
 
 [79]
-Sprite 0x18f0 0x18f0
-Sprite 0x1e08 0x1e08
-Sprite 0x2318 0x2318
-Sprite 0x2df8 0x2df8
-Sprite 0x1e3d8 0x1e3d8
-Sprite 0x21900 0x21900
-Sprite 0x224f8 0x224f8
+Sprite ContinueText 0x18f0
+Sprite YesText 0x1e08
+Sprite NoText 0x2318
+Sprite Cursor 0x2df8
+Sprite Room 0x1e3d8
+Sprite Spotlight 0x21900
+Sprite Shadow 0x224f8
 
 [80]
 Sprite StageText 0x9d8

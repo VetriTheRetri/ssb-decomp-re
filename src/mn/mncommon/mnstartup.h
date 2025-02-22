@@ -6,8 +6,6 @@
 #include <PR/gbi.h>
 #include <mn/mndef.h>
 
-extern intptr_t lMNStartupN64Sprite;			// 0x000073C0
-
 extern void mnStartupLogoThreadUpdate(GObj *gobj);
 extern void mnStartupActorProcRun(GObj *gobj);
 extern void mnStartupFuncStart(void);

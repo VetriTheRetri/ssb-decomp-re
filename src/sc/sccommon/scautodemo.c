@@ -113,18 +113,18 @@ f32 D_ovl64_8018E1EC[/* */] = { 2.0F, 0.0F, -6.0F, -9.0F, -30.0F };
 // 0x8018E200
 intptr_t dSCAutoDemoFighterNameSpriteOffsets[/* */] =
 {
-	&llSCAutoDemoNameMarioSprite,      // Mario
-	&llSCAutoDemoNameFoxSprite,        // Fox
-	&llSCAutoDemoNameDonkeySprite,     // Donkey Kong
-	&llSCAutoDemoNameSamusSprite,      // Samus
-	&llSCAutoDemoNameLuigiSprite,      // Luigi
-	&llSCAutoDemoNameLinkSprite,       // Link
-	&llSCAutoDemoNameYoshiSprite,      // Yoshi
-	&llSCAutoDemoNameCaptainSprite,    // Captain Falcon
-	&llSCAutoDemoNameKirbySprite,      // Kirby
-	&llSCAutoDemoNamePikachuSprite,    // Pikachu
-	&llSCAutoDemoNamePurinSprite,      // Jigglypuff
-	&llSCAutoDemoNameNessSprite        // Ness
+	&llCharacterNamesMarioSprite,      // Mario
+	&llCharacterNamesFoxSprite,        // Fox
+	&llCharacterNamesDonkeySprite,     // Donkey Kong
+	&llCharacterNamesSamusSprite,      // Samus
+	&llCharacterNamesLuigiSprite,      // Luigi
+	&llCharacterNamesLinkSprite,       // Link
+	&llCharacterNamesYoshiSprite,      // Yoshi
+	&llCharacterNamesCaptainSprite,    // Captain Falcon
+	&llCharacterNamesKirbySprite,      // Kirby
+	&llCharacterNamesPikachuSprite,    // Pikachu
+	&llCharacterNamesPurinSprite,      // Jigglypuff
+	&llCharacterNamesNessSprite        // Ness
 };
 
 // 0x8018E230

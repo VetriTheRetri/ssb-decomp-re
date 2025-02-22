@@ -1418,7 +1418,7 @@ void ifCommonPlayerMagnifyUpdateRender(Gfx **dls, s32 color_id, f32 ulx, f32 uly
     gSPClearGeometryMode(dl++, G_ZBUFFER);
 
     // This is a compound macro but I cannot find anything that would correspond to this
-    gDPSetTextureImage(dl++, G_IM_FMT_IA, G_IM_SIZ_16b, 1, lbRelocGetFileData(Sprite*, gGMCommonFiles[0], &llIFCommonPlayerMagnifyFrameSprite));
+    gDPSetTextureImage(dl++, G_IM_FMT_IA, G_IM_SIZ_16b, 1, lbRelocGetFileData(Sprite*, gGMCommonFiles[0], &llIFCommonPlayerMagnifyFrameImage));
 
     // NEEDS TO BE ALL ON THE SAME LINE OR GLUED, OTHERWISE IT DOESN'T MATCH
     gDPSetTile(dl++, G_IM_FMT_IA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_MIRROR | G_TX_WRAP, 4, G_TX_NOLOD, G_TX_MIRROR | G_TX_WRAP, 4, G_TX_NOLOD);\

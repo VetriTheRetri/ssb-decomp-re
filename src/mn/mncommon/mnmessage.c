@@ -112,7 +112,7 @@ void mnMessageMakeExclaim(void)
     gobj = gcMakeGObjSPAfter(0, NULL, 5, GOBJ_PRIORITY_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 3, GOBJ_PRIORITY_DEFAULT, ~0);
     
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMessageFiles[1], &lMNMessageDecalExclaimSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNMessageFiles[1], &llMNMessageDecalExclaimSprite));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -130,13 +130,13 @@ void mnMessageMakeMessage(s32 message)
     // 0x80132548
     intptr_t message_offsets[/* */] =
     {
-        &lMNMessageUnlockLuigiSprite,
-        &lMNMessageUnlockNessSprite,
-        &lMNMessageUnlockCaptainSprite,
-        &lMNMessageUnlockPurinSprite,
-        &lMNMessageUnlockInishieSprite,
-        &lMNMessageUnlockSoundTestSprite,
-        &lMNMessageUnlockItemSwitchSprite
+        &llMNMessageUnlockLuigiSprite,
+        &llMNMessageUnlockNessSprite,
+        &llMNMessageUnlockCaptainSprite,
+        &llMNMessageUnlockPurinSprite,
+        &llMNMessageUnlockInishieSprite,
+        &llMNMessageUnlockSoundTestSprite,
+        &llMNMessageUnlockItemSwitchSprite
     };
 
     // 0x80132564

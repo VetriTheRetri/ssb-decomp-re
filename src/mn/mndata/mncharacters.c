@@ -1384,24 +1384,24 @@ void mnCharactersMakeStory(s32 fkind)
 
 	intptr_t offsets[/* */] =
 	{
-		&lMNCharactersMarioStorySprite,
-		&lMNCharactersFoxStorySprite,
-		&lMNCharactersDonkeyStorySprite,
-		&lMNCharactersSamusStorySprite,
-		&lMNCharactersLuigiStorySprite,
-		&lMNCharactersLinkStorySprite,
-		&lMNCharactersYoshiStorySprite,
-		&lMNCharactersCaptainStorySprite,
-		&lMNCharactersKirbyStorySprite,
-		&lMNCharactersPikachuStorySprite,
-		&lMNCharactersPurinStorySprite,
-		&lMNCharactersNessStorySprite,
+		&llMNCharactersMarioStorySprite,
+		&llMNCharactersFoxStorySprite,
+		&llMNCharactersDonkeyStorySprite,
+		&llMNCharactersSamusStorySprite,
+		&llMNCharactersLuigiStorySprite,
+		&llMNCharactersLinkStorySprite,
+		&llMNCharactersYoshiStorySprite,
+		&llMNCharactersCaptainStorySprite,
+		&llMNCharactersKirbyStorySprite,
+		&llMNCharactersPikachuStorySprite,
+		&llMNCharactersPurinStorySprite,
+		&llMNCharactersNessStorySprite,
 	};
 
 	sMNCharactersStoryGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 26, GOBJ_PRIORITY_DEFAULT, ~0);
 
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNCharactersFiles[0], &lMNCharactersStoryWallpaperSprite));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNCharactersFiles[0], &llMNCharactersStoryWallpaperSprite));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -1447,7 +1447,7 @@ void mnCharactersMakeDecals(void)
 	sobj->sprite.green = 0x58;
 	sobj->sprite.blue = 0x46;
 
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNCharactersFiles[0], &lMNCharactersLabelSprite));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNCharactersFiles[0], &llMNCharactersLabelSprite));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -1558,12 +1558,12 @@ void mnCharactersMakeName(s32 fkind)
 	};
 	intptr_t offsets[/* */] =
 	{
-		&lMNCharactersMarioNameSprite, 	&lMNCharactersFoxNameSprite,
-		&lMNCharactersDonkeyNameSprite, &lMNCharactersSamusNameSprite,
-		&lMNCharactersLuigiNameSprite, 	&lMNCharactersLinkNameSprite,
-		&lMNCharactersYoshiNameSprite, 	&lMNCharactersCaptainNameSprite,
-		&lMNCharactersKirbyNameSprite, 	&lMNCharactersPikachuNameSprite,
-		&lMNCharactersPurinNameSprite, 	&lMNCharactersNessNameSprite
+		&llMNCharactersMarioNameSprite,  &llMNCharactersFoxNameSprite,
+		&llMNCharactersDonkeyNameSprite, &llMNCharactersSamusNameSprite,
+		&llMNCharactersLuigiNameSprite,  &llMNCharactersLinkNameSprite,
+		&llMNCharactersYoshiNameSprite,  &llMNCharactersCaptainNameSprite,
+		&llMNCharactersKirbyNameSprite,  &llMNCharactersPikachuNameSprite,
+		&llMNCharactersPurinNameSprite,  &llMNCharactersNessNameSprite
 	};
 
 	sMNCharactersNameGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_PRIORITY_DEFAULT);
@@ -1571,7 +1571,7 @@ void mnCharactersMakeName(s32 fkind)
 
 	if ((fkind == nFTKindPurin) || (fkind == nFTKindCaptain))
 	{
-		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNCharactersFiles[0], &lMNCharactersNameTagTallSprite));
+		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNCharactersFiles[0], &llMNCharactersNameTagTallSprite));
 		
 		sobj->sprite.attr &= ~SP_FASTCOPY;
 		sobj->sprite.attr |= SP_TRANSPARENT;
@@ -1585,7 +1585,7 @@ void mnCharactersMakeName(s32 fkind)
 	}
 	else
 	{
-		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNCharactersFiles[0], &lMNCharactersNameTagDefaultSprite));
+		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNCharactersFiles[0], &llMNCharactersNameTagDefaultSprite));
 
 		sobj->sprite.attr &= ~SP_FASTCOPY;
 		sobj->sprite.attr |= SP_TRANSPARENT;
@@ -1619,7 +1619,7 @@ void mnCharactersMakeWorksWallpaper(void)
 	gobj = gcMakeGObjSPAfter(0, NULL, 21, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 30, GOBJ_PRIORITY_DEFAULT, ~0);
 
-	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNCharactersFiles[0], &lMNCharactersWorksWallpaperSprite));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNCharactersFiles[0], &llMNCharactersWorksWallpaperSprite));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -1640,18 +1640,18 @@ void mnCharactersMakeWorks(s32 fkind)
 
 	intptr_t offsets[/* */] =
 	{
-		&lMNCharactersMarioWorksSprite,
-		&lMNCharactersFoxWorksSprite,
-		&lMNCharactersDonkeyWorksSprite,
-		&lMNCharactersSamusWorksSprite,
-		&lMNCharactersLuigiWorksSprite,
-		&lMNCharactersLinkWorksSprite,
-		&lMNCharactersYoshiWorksSprite,
-		&lMNCharactersCaptainWorksSprite,
-		&lMNCharactersKirbyWorksSprite,
-		&lMNCharactersPikachuWorksSprite,
-		&lMNCharactersPurinWorksSprite,
-		&lMNCharactersNessWorksSprite,
+		&llMNCharactersMarioWorksSprite,
+		&llMNCharactersFoxWorksSprite,
+		&llMNCharactersDonkeyWorksSprite,
+		&llMNCharactersSamusWorksSprite,
+		&llMNCharactersLuigiWorksSprite,
+		&llMNCharactersLinkWorksSprite,
+		&llMNCharactersYoshiWorksSprite,
+		&llMNCharactersCaptainWorksSprite,
+		&llMNCharactersKirbyWorksSprite,
+		&llMNCharactersPikachuWorksSprite,
+		&llMNCharactersPurinWorksSprite,
+		&llMNCharactersNessWorksSprite,
 	};
 
 	sMNCharactersWorksGObj = gobj = gcMakeGObjSPAfter(0, NULL, 22, GOBJ_PRIORITY_DEFAULT);
@@ -2048,26 +2048,26 @@ void mnCharactersUpdateMotionName(GObj *gobj)
 	// Move name offsets
 	intptr_t motion_names[/* */][3] =
 	{
-		{ &lMNCharactersMarioSpecialHiNameSprite, 	&lMNCharactersMarioSpecialNNameSprite, 	&lMNCharactersMarioSpecialLwNameSprite 	},
-		{ &lMNCharactersFoxSpecialHiNameSprite, 	&lMNCharactersFoxSpecialNNameSprite, 	&lMNCharactersFoxSpecialLwNameSprite 	},
-		{ &lMNCharactersDonkeySpecialHiNameSprite, 	&lMNCharactersDonkeySpecialNNameSprite, &lMNCharactersDonkeySpecialLwNameSprite },
-		{ &lMNCharactersSamusSpecialHiNameSprite, 	&lMNCharactersSamusSpecialNNameSprite, 	&lMNCharactersSamusSpecialLwNameSprite 	},
-		{ &lMNCharactersMarioSpecialHiNameSprite, 	&lMNCharactersMarioSpecialNNameSprite, 	&lMNCharactersLuigiSpecialLwNameSprite 	},
-		{ &lMNCharactersLinkSpecialHiNameSprite, 	&lMNCharactersLinkSpecialNNameSprite, 	&lMNCharactersLinkSpecialLwNameSprite 	},
-		{ &lMNCharactersYoshiSpecialHiNameSprite, 	&lMNCharactersYoshiSpecialNNameSprite, 	&lMNCharactersYoshiSpecialLwNameSprite 	},
-		{ &lMNCharactersCaptainSpecialHiNameSprite, &lMNCharactersCaptainSpecialNNameSprite,&lMNCharactersCaptainSpecialLwNameSprite},
-		{ &lMNCharactersKirbySpecialHiNameSprite, 	&lMNCharactersKirbySpecialNNameSprite, 	&lMNCharactersKirbySpecialLwNameSprite 	},
-		{ &lMNCharactersPikachuSpecialHiNameSprite, &lMNCharactersPikachuSpecialNNameSprite,&lMNCharactersPikachuSpecialLwNameSprite},
-		{ &lMNCharactersPurinSpecialHiNameSprite, 	&lMNCharactersPurinSpecialNNameSprite, 	&lMNCharactersPurinSpecialLwNameSprite 	},
-		{ &lMNCharactersNessSpecialHiNameSprite, 	&lMNCharactersNessSpecialNNameSprite, 	&lMNCharactersNessSpecialLwNameSprite 	}
+		{ &llMNCharactersMarioSpecialHiNameSprite,   &llMNCharactersMarioSpecialNNameSprite,   &llMNCharactersMarioSpecialLwNameSprite 	},
+		{ &llMNCharactersFoxSpecialHiNameSprite,     &llMNCharactersFoxSpecialNNameSprite,     &llMNCharactersFoxSpecialLwNameSprite 	},
+		{ &llMNCharactersDonkeySpecialHiNameSprite,  &llMNCharactersDonkeySpecialNNameSprite,  &llMNCharactersDonkeySpecialLwNameSprite },
+		{ &llMNCharactersSamusSpecialHiNameSprite,   &llMNCharactersSamusSpecialNNameSprite,   &llMNCharactersSamusSpecialLwNameSprite 	},
+		{ &llMNCharactersMarioSpecialHiNameSprite,   &llMNCharactersMarioSpecialNNameSprite,   &llMNCharactersLuigiSpecialLwNameSprite 	},
+		{ &llMNCharactersLinkSpecialHiNameSprite,    &llMNCharactersLinkSpecialNNameSprite,    &llMNCharactersLinkSpecialLwNameSprite 	},
+		{ &llMNCharactersYoshiSpecialHiNameSprite,   &llMNCharactersYoshiSpecialNNameSprite,   &llMNCharactersYoshiSpecialLwNameSprite 	},
+		{ &llMNCharactersCaptainSpecialHiNameSprite, &llMNCharactersCaptainSpecialNNameSprite, &llMNCharactersCaptainSpecialLwNameSprite},
+		{ &llMNCharactersKirbySpecialHiNameSprite,   &llMNCharactersKirbySpecialNNameSprite,   &llMNCharactersKirbySpecialLwNameSprite 	},
+		{ &llMNCharactersPikachuSpecialHiNameSprite, &llMNCharactersPikachuSpecialNNameSprite, &llMNCharactersPikachuSpecialLwNameSprite},
+		{ &llMNCharactersPurinSpecialHiNameSprite,   &llMNCharactersPurinSpecialNNameSprite,   &llMNCharactersPurinSpecialLwNameSprite 	},
+		{ &llMNCharactersNessSpecialHiNameSprite,    &llMNCharactersNessSpecialNNameSprite,    &llMNCharactersNessSpecialLwNameSprite 	}
 	};
 
 	// Input combination text offsets
 	intptr_t motion_inputs[/* */] =
 	{
-		&lMNCharactersMotionSpecialHiInputSprite,
-		&lMNCharactersMotionSpecialNInputSprite,
-		&lMNCharactersMotionSpecialLwInputSprite
+		&llMNCharactersMotionSpecialHiInputSprite,
+		&llMNCharactersMotionSpecialNInputSprite,
+		&llMNCharactersMotionSpecialLwInputSprite
 	};
 
 	s32 motion_kind = mnCharactersGetMotionKind();

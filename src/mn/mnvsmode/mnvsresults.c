@@ -198,9 +198,8 @@ s32 mnVSResultsGetPlayerCount(void)
 // 0x80131B90
 void mnVSResultsSaveBackup(void)
 {
-	LBBackupVSRecord *vs_record;
 	s32 i, j;
-	u8 this_fkind, vs_fkind;
+	s32 unused;
 
 	gSCManagerBackupData.vs_total_battles++;
 	gSCManagerBackupData.ground_mask |= (1 << gSCManagerTransferBattleState.gkind);
@@ -213,41 +212,40 @@ void mnVSResultsSaveBackup(void)
 	{
 		if (gSCManagerTransferBattleState.players[i].pkind != nFTPlayerKindNot)
 		{
-			this_fkind = gSCManagerTransferBattleState.players[i].fkind;
-			vs_record = &gSCManagerBackupData.vs_records[this_fkind];
+			u8 this_fkind = gSCManagerTransferBattleState.players[i].fkind;
 
-			vs_record->time_used += (gSCManagerTransferBattleState.time_passed / UPDATE_INTERVAL);
+			gSCManagerBackupData.vs_records[this_fkind].time_used += (gSCManagerTransferBattleState.time_passed / UPDATE_INTERVAL);
 
-			if (vs_record->time_used > I_MIN_TO_TICS(1000) - 1)
+			if (gSCManagerBackupData.vs_records[this_fkind].time_used > I_MIN_TO_TICS(1000) - 1)
 			{
-				vs_record->time_used = I_MIN_TO_TICS(1000) - 1;
+				gSCManagerBackupData.vs_records[this_fkind].time_used = I_MIN_TO_TICS(1000) - 1;
 			}
-			vs_record->damage_given += gSCManagerTransferBattleState.players[i].total_damage_given;
+			gSCManagerBackupData.vs_records[this_fkind].damage_given += gSCManagerTransferBattleState.players[i].total_damage_given;
 
-			if (vs_record->damage_given > 999999)
+			if (gSCManagerBackupData.vs_records[this_fkind].damage_given > 999999)
 			{
-				vs_record->damage_given = 999999;
+				gSCManagerBackupData.vs_records[this_fkind].damage_given = 999999;
 			}
-			vs_record->damage_taken += gSCManagerTransferBattleState.players[i].total_damage_all;
+			gSCManagerBackupData.vs_records[this_fkind].damage_taken += gSCManagerTransferBattleState.players[i].total_damage_all;
 
-			if (vs_record->damage_taken > 999999)
+			if (gSCManagerBackupData.vs_records[this_fkind].damage_taken > 999999)
 			{
-				vs_record->damage_taken = 999999;
+				gSCManagerBackupData.vs_records[this_fkind].damage_taken = 999999;
 			}
-			vs_record->selfdestructs += gSCManagerTransferBattleState.players[i].total_selfdestructs;
+			gSCManagerBackupData.vs_records[this_fkind].selfdestructs += gSCManagerTransferBattleState.players[i].total_selfdestructs;
 
-			if (vs_record->selfdestructs > 9999)
+			if (gSCManagerBackupData.vs_records[this_fkind].selfdestructs > 9999)
 			{
-				vs_record->selfdestructs = 9999;
+				gSCManagerBackupData.vs_records[this_fkind].selfdestructs = 9999;
 			}
-			vs_record->games_played++;
-			vs_record->player_count_tally += mnVSResultsGetPlayerCount();
+			gSCManagerBackupData.vs_records[this_fkind].games_played++;
+			gSCManagerBackupData.vs_records[this_fkind].player_count_tally += mnVSResultsGetPlayerCount();
 
 			for (j = 0; j < ARRAY_COUNT(gSCManagerTransferBattleState.players); j++)
 			{
 				if ((i != j) && (gSCManagerTransferBattleState.players[j].pkind != nFTPlayerKindNot))
 				{
-					vs_fkind = gSCManagerTransferBattleState.players[j].fkind;
+					u8 vs_fkind = gSCManagerTransferBattleState.players[j].fkind;
 
 					gSCManagerBackupData.vs_records[this_fkind].ko_count[vs_fkind] += gSCManagerTransferBattleState.players[i].total_kos_players[j];
 
@@ -1821,7 +1819,7 @@ s32 mnVSResultsGetKOs(s32 player)
 	{
 		return 999;
 	}
-	return sMNVSResultsKOs[player];
+	else return sMNVSResultsKOs[player];
 }
 
 // 0x8013569C
@@ -1883,7 +1881,7 @@ s32 mnVSResultsGetTKO(s32 player)
 	{
 		return 999;
 	}
-	return sMNVSResultsTKO[player];
+	else return sMNVSResultsTKO[player];
 }
 
 // 0x801358F0

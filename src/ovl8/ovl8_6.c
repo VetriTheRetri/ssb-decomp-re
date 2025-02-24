@@ -15,6 +15,35 @@ typedef struct db2ShortsContainer
     db2Shorts unk_db2shortscont_0x0;
 } db2ShortsContainer;
 
+typedef struct dbUnknown6 {
+    s32 unk_dbunk3_0x0;
+    s32 unk_dbunk3_0x4;
+    s32 unk_dbunk3_0x8;
+    s32 unk_dbunk3_0xC;
+    s32 unk_dbunk3_0x10;
+    s32 unk_dbunk3_0x14;
+    s32 unk_dbunk3_0x18;
+} dbUnknown6;
+
+typedef struct dbUnknown6_2 dbUnknown6_2;
+struct dbUnknown6_2 {
+    u8 unk_dbunk3_0x0[0x20];
+    dbUnknown6_2* unk_dbunk3_0x20;
+    s32 unk_dbunk3_0x24;
+    s32 unk_dbunk3_0x28;
+    dbUnknown6 unk_dbunk3_0x2C;
+};
+
+typedef struct dbUnknown6_3 dbUnknown6_3;
+struct dbUnknown6_3 {
+    u8 unk_dbunk3_0x0[0x20];
+    dbUnknown6_2* unk_dbunk3_0x20;
+    u8 unk_dbunk3_0x24[0x38 - 0x24];
+    dbUnknown6_2* unk_dbunk3_0x38;
+};
+
+extern s16 D_ovl8_8038A864;
+
 extern db2ShortsContainer D_8038EFB0_1AB800;
 extern dbTestMenu* D_8038EFC4_1AB814;
 extern dbUnknownLinkStruct* D_8038EFC8_1AB818;
@@ -475,29 +504,56 @@ void func_ovl8_80374F84(s16 arg0, s16 arg1, u16 arg2, u16 arg3)
     temp_v0->unk_dbunkstruct_0x5C.arr[3] = arg3;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_80374FD0.s")
+// 0x80374FD0
+void func_ovl8_80374FD0(dbUnknown6_3* arg0, dbUnknown6* arg1)
+{
+    arg0->unk_dbunk3_0x20->unk_dbunk3_0x2C = *arg1;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_80375010.s")
+// 0x80375010
+void func_ovl8_80375010(dbUnknown6_3* arg0, dbUnknown6* arg1)
+{
+    arg0->unk_dbunk3_0x38->unk_dbunk3_0x2C = *arg1;
+}
 
+// 0x80375050
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_80375050.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_803750CC.s")
+// 0x803750CC
+void func_ovl8_803750CC(s16 arg0)
+{
+    D_ovl8_8038A864 = arg0;
+}
 
+// 0x803750E4
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_803750E4.s")
 
+// 0x80375118
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_80375118.s")
 
+// 0x803751C0
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_803751C0.s")
 
+// 0x80375270
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_80375270.s")
 
+// 0x80375354
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_80375354.s")
 
+// 0x80375528
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_80375528.s")
 
+// 0x803755C4
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_803755C4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_80375864.s")
+// 0x80375864
+void func_ovl8_80375864(dbUnknown6* arg0, s32* arg1, s32* arg2, s32* arg3, s32* arg4)
+{
+    *arg1 = arg0->unk_dbunk3_0x8;
+    *arg2 = arg0->unk_dbunk3_0x14;
+    *arg3 = arg0->unk_dbunk3_0x10;
+    *arg4 = arg0->unk_dbunk3_0xC;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_8037588C.s")
 

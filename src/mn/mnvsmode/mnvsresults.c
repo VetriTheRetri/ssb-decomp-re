@@ -159,13 +159,13 @@ sb32 sMNVSResultsPad0x80139C30[GMCOMMON_PLAYERS_MAX];
 s32 sMNVSResultsCharacterAlpha;
 
 // 0x80139C44
-s32 sMNVSResultsDrawBackgroundFrame;
+s32 sMNVSResultsDrawWallpaperTic;
 
 // 0x80139C48
-s32 smnVSResultsMakeResultsTextFrame;
+s32 sMNVSResultsMakeResultsTic;
 
 // 0x80139C4C
-s32 smnVSResultsInitFightersAllFrame;
+s32 sMNVSResultsInitFightersAllTic;
 
 // 0x80139C50
 LBFileNode sMNVSResultsStatusBuffer[120];
@@ -2517,7 +2517,7 @@ void mnVSResultsSetRoyalPlace(void)
 
 	for (i = 0, place = 0, score = results[0].score, winner = results[0].place; i < players_num; i++)
 	{
-		if (score != results[i].score || ((gSCManagerSceneData.is_suddendeath) && (winner != results[i].place)))
+		if ((score != results[i].score) || (gSCManagerSceneData.is_suddendeath) && (winner != results[i].place))
 		{
 			place++;
 			score = results[i].score;
@@ -2758,15 +2758,15 @@ void mnVSResultsInitVars(void)
 		sMNVSResultsKind = nMNVSResultsKindNoContest;
 		sMNVSResultsAllowExitWait = 200;
 
-		sMNVSResultsDrawBackgroundFrame = 1;
-		smnVSResultsMakeResultsTextFrame = 1;
-		smnVSResultsInitFightersAllFrame = 1;
+		sMNVSResultsDrawWallpaperTic = 1;
+		sMNVSResultsMakeResultsTic = 1;
+		sMNVSResultsInitFightersAllTic = 1;
 	}
 	else
 	{
-		sMNVSResultsDrawBackgroundFrame = 80;
-		smnVSResultsMakeResultsTextFrame = 120;
-		smnVSResultsInitFightersAllFrame = 120;
+		sMNVSResultsDrawWallpaperTic = 80;
+		sMNVSResultsMakeResultsTic = 120;
+		sMNVSResultsInitFightersAllTic = 120;
 	}
 }
 
@@ -2806,17 +2806,17 @@ void func_ovl31_80137898(GObj *gobj)
 
 		if (tic == 120)
 		{
-			func_800044B4(winner);
-			func_80004494(winner);
+			syControllerInitRumble(winner);
+			syControllerStopRumble(winner);
 
 			gcEjectGObj(NULL);
 			gcStopCurrentGObjThread(1);
 		}
 		if (tic % 2)
 		{
-			func_80004474(winner);
+			syControllerStartRumble(winner);
 		}
-		else func_80004494(winner);
+		else syControllerStopRumble(winner);
 
 		gcStopCurrentGObjThread(1);
 	}
@@ -2835,8 +2835,8 @@ void func_ovl31_8013797C(void)
 
 	for (i = 0; i < GMCOMMON_PLAYERS_MAX; i++)
 	{
-		func_800044B4(i);
-		func_80004494(i);
+		syControllerInitRumble(i);
+		syControllerStopRumble(i);
 	}
 }
 
@@ -3156,7 +3156,7 @@ void mnVSResultsProcRun(GObj *gobj)
 
 	sMNVSResultsTotalTimeTics++;
 
-	if (sMNVSResultsTotalTimeTics == sMNVSResultsDrawBackgroundFrame)
+	if (sMNVSResultsTotalTimeTics == sMNVSResultsDrawWallpaperTic)
 	{
 		if (sMNVSResultsKind != nMNVSResultsKindNoContest)
 		{
@@ -3164,7 +3164,7 @@ void mnVSResultsProcRun(GObj *gobj)
 		}
 		mnVSResultsMakeWallpaper();
 	}
-	if (sMNVSResultsTotalTimeTics == smnVSResultsMakeResultsTextFrame)
+	if (sMNVSResultsTotalTimeTics == sMNVSResultsMakeResultsTic)
 	{
 		mnVSResultsMakeResultsText();
 		mnVSResultsMakeLabel();
@@ -3174,11 +3174,11 @@ void mnVSResultsProcRun(GObj *gobj)
 			mnVSResultsMakeConfetti();
 		}
 	}
-	if (sMNVSResultsTotalTimeTics == smnVSResultsInitFightersAllFrame)
+	if (sMNVSResultsTotalTimeTics == sMNVSResultsInitFightersAllTic)
 	{
 		mnVSResultsInitFightersAll();
 	}
-	if (smnVSResultsInitFightersAllFrame < sMNVSResultsTotalTimeTics)
+	if (sMNVSResultsInitFightersAllTic < sMNVSResultsTotalTimeTics)
 	{
 		if (sMNVSResultsCharacterAlpha < 0xFF)
 		{
@@ -3376,7 +3376,7 @@ void mnVSResultsStartScene(void)
 
 	for (i = 0; i < GMCOMMON_PLAYERS_MAX; i++)
 	{
-		func_800044B4(i);
-		func_80004494(i);
+		syControllerInitRumble(i);
+		syControllerStopRumble(i);
 	}
 }

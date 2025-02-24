@@ -123,9 +123,9 @@ extern void syControllerScheduleRead(void);
 extern void syControllerFuncRead(void);
 extern void syControllerSetAutoRead(s32 shouldSchedule);
 extern void syControllerSetStatusDelay(s32 delay);
-extern void func_80004474(s32 arg0);
-extern void func_80004494(s32 arg0);
-extern void func_800044B4(s32 arg0);
+extern void syControllerStartRumble(s32 arg0);
+extern void syControllerStopRumble(s32 arg0);
+extern void syControllerInitRumble(s32 arg0);
 extern void syControllerThreadMain(void *arg);
 
 #endif /* SYS_THREAD_6_H */

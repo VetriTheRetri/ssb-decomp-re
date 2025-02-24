@@ -169,7 +169,7 @@ sb32 gmRumbleUpdateEventExecute(ub8 *is_active, GMRumbleScript *p_script, s32 pl
 
             if (*is_active == FALSE)
             {
-                func_80004474(player);
+                syControllerStartRumble(player);
 
                 *is_active = p_script->is_rumble_active = TRUE;
             }
@@ -182,7 +182,7 @@ sb32 gmRumbleUpdateEventExecute(ub8 *is_active, GMRumbleScript *p_script, s32 pl
 
             if (*is_active != FALSE)
             {
-                func_80004494(player);
+                syControllerStopRumble(player);
 
                 *is_active = p_script->is_rumble_active = FALSE;
             }
@@ -340,8 +340,8 @@ sb32 gmRumbleGetMotorUpdateStatus(ub8 *is_active, GMRumbleScript *p_script, s32 
 {
     if (p_script->p_event == NULL)
     {
-        func_800044B4(player);
-        func_80004494(player);
+        syControllerInitRumble(player);
+        syControllerStopRumble(player);
 
         if (*is_active != FALSE)
         {
@@ -353,13 +353,13 @@ sb32 gmRumbleGetMotorUpdateStatus(ub8 *is_active, GMRumbleScript *p_script, s32 
     {
         if (*is_active != FALSE)
         {
-            func_80004494(player);
+            syControllerStopRumble(player);
 
             *is_active = FALSE;
         }
         else
         {
-            func_80004474(player);
+            syControllerStartRumble(player);
 
             *is_active = TRUE;
         }
@@ -548,8 +548,8 @@ void func_ovl2_801155C4(s32 player)
 {
     GMRumbleLink *rlink;
 
-    func_800044B4(player);
-    func_80004494(player);
+    syControllerInitRumble(player);
+    syControllerStopRumble(player);
 
     if (sGMRumblePlayers[player].is_active != FALSE)
     {
@@ -683,8 +683,8 @@ void gmRumbleInitPlayers(void)
 
     for (player = 0; player < GMCOMMON_PLAYERS_MAX; player++)
     {
-        func_800044B4(player);
-        func_80004494(player);
+        syControllerInitRumble(player);
+        syControllerStopRumble(player);
     }
 }
 

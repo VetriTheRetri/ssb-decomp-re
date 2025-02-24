@@ -1421,7 +1421,7 @@ void mnTitleFuncStart(void)
 
 	for (i = 0; i < ARRAY_COUNT(gSYControllerDevices); i++)
 	{
-		func_80004494(i);
+		syControllerStopRumble(i);
 	}
 	mnTitleLoadFiles();
 	mnTitleMakeActors();

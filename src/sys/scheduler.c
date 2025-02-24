@@ -1171,8 +1171,8 @@ void func_800029D8(void) {
     osViBlack(TRUE);
 
     for (i = 0; i < 4; i++) {
-        func_800044B4(i);
-        func_80004494(i);
+        syControllerInitRumble(i);
+        syControllerStopRumble(i);
     }
 
     D_80045024_40834 = osAfterPreNMI();

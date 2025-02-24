@@ -57,7 +57,7 @@ sb32 sSYControllerIsReadDeviceData; // If TRUE, always update controller data wh
 s32 sSYControllerStatusUpdateWait;
 
 // 0x80045260 - Remaining count of controller events (or tics) until OSContStatus update
-s32 sSYControllerEventsRemain;
+s32 sSYControllerEventsRemainNum;
 
 // 0x80045268
 Unk80045268 D_80045268[MAXCONTROLLERS];
@@ -245,7 +245,7 @@ void syControllerInitDevices(void)
     sSYControllerIsUpdateData    = FALSE;
     sSYControllerWaitUpdate = NULL;
     sSYControllerIsReadDeviceData      = TRUE;
-    sSYControllerEventsRemain = sSYControllerStatusUpdateWait = 1;
+    sSYControllerEventsRemainNum = sSYControllerStatusUpdateWait = 1;
 }
 
 // 0x80004284
@@ -309,7 +309,7 @@ void syControllerSetStatusDelay(s32 delay)
 }
 
 // 0x800043C0
-void func_800043C0(s32 arg0, s32 arg1)
+void syControllerUpdateRumbleEvent(s32 port, s32 ev_kind)
 {
     s32 i;
 
@@ -326,27 +326,27 @@ void func_800043C0(s32 arg0, s32 arg1)
     }
     else D_80045268[i].unk00 = 1;
     
-    D_80045268[i].unk10 = arg0;
-    D_80045268[i].unk14 = arg1;
+    D_80045268[i].unk10 = port;
+    D_80045268[i].unk14 = ev_kind;
     osSendMesg(&sSYControllerEventMesgQueue, (OSMesg)&D_80045268[i].unk04, OS_MESG_NOBLOCK);
 }
 
 // 0x80004474
-void func_80004474(s32 arg0)
+void syControllerStartRumble(s32 port)
 {
-    func_800043C0(arg0, 1);
+    syControllerUpdateRumbleEvent(port, 1);
 }
 
 // 0x80004494
-void func_80004494(s32 arg0)
+void syControllerStopRumble(s32 port)
 {
-    func_800043C0(arg0, 2);
+    syControllerUpdateRumbleEvent(port, 2);
 }
 
 // 0x800044B4
-void func_800044B4(s32 arg0)
+void syControllerInitRumble(s32 port)
 {
-    func_800043C0(arg0, 0);
+    syControllerUpdateRumbleEvent(port, 0);
 }
 
 // 0x800044D4
@@ -358,6 +358,7 @@ void syControllerParseEvent(ControllerEvent *evt)
         {
             syControllerReadDeviceData();
             syControllerUpdateGlobalData();
+
             if (evt->cbQueue != NULL)
             {
                 osSendMesg(evt->cbQueue, evt->mesg, OS_MESG_NOBLOCK);
@@ -461,14 +462,14 @@ void syControllerThreadMain(void *unused)
 
         if ((intptr_t)mesg == 1)
         {
-            if (sSYControllerEventsRemain != 0)
+            if (sSYControllerEventsRemainNum != 0)
             {
-                sSYControllerEventsRemain--;
+                sSYControllerEventsRemainNum--;
             }
-            if (sSYControllerEventsRemain == 0)
+            if (sSYControllerEventsRemainNum == 0)
             {
                 syControllerUpdateDeviceStatuses();
-                sSYControllerEventsRemain = sSYControllerStatusUpdateWait;
+                sSYControllerEventsRemainNum = sSYControllerStatusUpdateWait;
             }
             if (sSYControllerIsReadDeviceData == FALSE)
             {
@@ -488,6 +489,6 @@ void syControllerThreadMain(void *unused)
             }
             sSYControllerWaitUpdate = NULL;
         }
-        else syControllerParseEvent((ControllerEvent *)mesg);
+        else syControllerParseEvent((ControllerEvent*)mesg);
     }
 }

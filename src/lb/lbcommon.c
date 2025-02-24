@@ -1954,7 +1954,7 @@ sb32 func_ovl0_800CB140(Mtx *mtx, DObj *dobj, Gfx **dls)
     {
         while (TRUE)
         {
-            syErrorPrintf("FPE : 0 div (adfDMatrixDirecXBillboardSca) \n");
+            syDebugPrintf("FPE : 0 div (adfDMatrixDirecXBillboardSca) \n");
             scManagerRunPrintGObjStatus();
         }
     }
@@ -2229,7 +2229,7 @@ void lbCommonDrawSObjBitmap
     {
         while (TRUE)
         {
-            syErrorPrintf("drawBitMap: no bitmap data!\n");
+            syDebugPrintf("drawBitMap: no bitmap data!\n");
             scManagerRunPrintGObjStatus();
         }
     }

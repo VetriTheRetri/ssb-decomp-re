@@ -436,7 +436,7 @@ void mvOpeningYamabukiFuncStart(void)
 // 0x80132344
 void mvOpeningYamabukiStartScene(void)
 {
-    dMVOpeningYamabukiVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
+    dMVOpeningYamabukiVideoSetup.zbuffer = SYVIDEO_ZBUFFER_START(320, 240, 0, 10, u16);
     syVideoInit(&dMVOpeningYamabukiVideoSetup);
 
     dMVOpeningYamabukiTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl48_BSS_END);

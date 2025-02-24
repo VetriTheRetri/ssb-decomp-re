@@ -104,7 +104,7 @@ segments:
       - [0x01A870, c, sys/matrix]
       - [0x01E210, c, sys/interp]
       - [0x01F1C0, c, sys/audio]
-      - [0x021CC0, c, sys/error]
+      - [0x021CC0, c, sys/debug]
       - [0x024440, c, sys/unref] # One func, that's entirely unreferenced.
       - [0x024470, c, libultra/sp/setattribute]
       - [0x024480, c, libultra/sp/sprite]
@@ -260,7 +260,7 @@ segments:
       - [0x03C540, .data, sys/utils]
       - [0x03C550, .data, sys/sintable]
       - [0x03D550, .data, sys/audio]
-      - [0x03D7B0, .data, sys/error]
+      - [0x03D7B0, .data, sys/debug]
       - [0x03DC70, .data, libultra/sp/sprite]
       - [0x03DC80, data, libultra/n_audio/n_env]
       - [0x03DF30, data, libultra/io/vimodepallan1] # osViModePalLan1
@@ -296,7 +296,7 @@ segments:
       - [0x03EFA0, .rodata, sys/matrix]
       - [0x03EFF0, .rodata, sys/interp]
       - [0x03F010, .rodata, sys/audio]
-      - [0x03F020, .rodata, sys/error]
+      - [0x03F020, .rodata, sys/debug]
       - [0x03F460, .rodata, libultra/sp/sprite]
       - [0x03F470, .rodata, libultra/n_audio/n_env]
       - [0x03FAA0, .rodata, libultra/n_audio/audio09]
@@ -323,7 +323,7 @@ segments:
       - { start: auto, type: .bss, name: sys/objmanager,           vram: 0x800466B0 }
       - { start: auto, type: .bss, name: sys/objdisplay,           vram: 0x80046FA0 }
       - { start: auto, type: .bss, name: sys/audio,                vram: 0x800472D0 }
-      - { start: auto, type: .bss, name: sys/error,                vram: 0x8009DA00 }
+      - { start: auto, type: .bss, name: sys/debug,                vram: 0x8009DA00 }
       - { start: auto, type: .bss, name: libultra/sp/sprite,       vram: 0x8009EDC0 }
       - { start: auto, type:  bss, name: libultra/n_audio/n_env,   vram: 0x8009EDD0 }
       - { start: auto, type: .bss, name: libultra/io/sptask,       vram: 0x8009EE40 }

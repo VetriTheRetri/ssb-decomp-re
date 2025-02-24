@@ -134,7 +134,7 @@ void gcStopCurrentGObjThread(s32 tics)
 {
     if (gGCCurrentProcess->exec.gobjthread->stack[7] != 0xFEDCBA98)
     {
-        syErrorPrintf("gobjthread stack over  gobjid = %d\n", gGCCurrentProcess->parent_gobj->id);
+        syDebugPrintf("gobjthread stack over  gobjid = %d\n", gGCCurrentProcess->parent_gobj->id);
     }
     while (tics != 0)
     {

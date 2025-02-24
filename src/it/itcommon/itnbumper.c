@@ -340,7 +340,7 @@ void itNBumperDroppedSetStatus(GObj *item_gobj)
 }
 
 // 0x8017B874
-void itNBumperAttachedSetModelYaw(GObj *item_gobj)
+void itNBumperAttachedSetModelPitch(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
     s32 unused;
@@ -384,7 +384,7 @@ void itNBumperAttachedInitVars(GObj *item_gobj)
     ip->coll_data.map_coll.top = ITBUMPER_COLL_SIZE;
     ip->coll_data.map_coll.bottom = -ITBUMPER_COLL_SIZE;
 
-    itNBumperAttachedSetModelYaw(item_gobj);
+    itNBumperAttachedSetModelPitch(item_gobj);
 
     ip->is_attach_surface = TRUE;
 
@@ -450,7 +450,7 @@ sb32 itNBumperAttachedProcUpdate(GObj *item_gobj)
             }
         }
     }
-    if (ip->multi < ITBUMPER_RESETVEL_TIMER)
+    if (ip->multi < ITBUMPER_STOPVEL_WAIT)
     {
         ip->physics.vel_air.x = 0.0F;
     }
@@ -491,7 +491,7 @@ sb32 itNBumperAttachedProcMap(GObj *item_gobj)
         }
         else if (ip->multi == 0)
         {
-            itNBumperAttachedSetModelYaw(item_gobj);
+            itNBumperAttachedSetModelPitch(item_gobj);
         }
     }
     return FALSE;

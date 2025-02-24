@@ -857,7 +857,7 @@ void sc1PGameGetSpawnPosition(Vec3f *mapobj_pos, s32 mapobj_kind)
     {
         while (TRUE)
         {
-            syErrorPrintf("getMapObjPos:mpGetMapObjNumId(%d) = %d\n", mapobj_kind, mpCollisionGetMapObjCountKind(mapobj_kind));
+            syDebugPrintf("getMapObjPos:mpGetMapObjNumId(%d) = %d\n", mapobj_kind, mpCollisionGetMapObjCountKind(mapobj_kind));
             scManagerRunPrintGObjStatus();
         }
     }
@@ -875,7 +875,7 @@ void sc1PGameGetRandomSpawnPosition(Vec3f *mapobj_pos, s32 mapobj_kind)
     {
         while (TRUE)
         {
-            syErrorPrintf("getMapObjPosRandom:mpGetMapObjNumId(%d) = 0\n", mapobj_kind);
+            syDebugPrintf("getMapObjPosRandom:mpGetMapObjNumId(%d) = 0\n", mapobj_kind);
             scManagerRunPrintGObjStatus();
         }
     }
@@ -2825,7 +2825,7 @@ void sc1PGameStartScene(void)
     gSCManagerBattleState = &gSCManager1PGameBattleState;
     gSCManagerBattleState->game_type = nSCBattleGameType1PGame;
 
-    dSC1PGameVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
+    dSC1PGameVideoSetup.zbuffer = SYVIDEO_ZBUFFER_START(320, 240, 0, 10, u16);
     syVideoInit(&dSC1PGameVideoSetup);
 
     dSC1PGameTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&gSYFramebufferSets - (uintptr_t)&ovl65_BSS_END);

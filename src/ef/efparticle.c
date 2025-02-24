@@ -84,7 +84,7 @@ s32 efParticleGetLoadBankID(uintptr_t scripts_lo, uintptr_t scripts_hi, uintptr_
     {
         while (TRUE)
         {
-            syErrorPrintf("Particle Bank is over\n");
+            syDebugPrintf("Particle Bank is over\n");
             scManagerRunPrintGObjStatus();
         }
     }

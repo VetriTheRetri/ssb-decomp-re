@@ -199,7 +199,7 @@
 #define ITBUMPER_DESPAWN_TIMER                                                                                         \
 	60 // Bumper's lifetime is reset to this value; there is no hitbox during
 	   // this state, and it vanishes for good once it runs out
-#define ITBUMPER_RESETVEL_TIMER                                                                                       \
+#define ITBUMPER_STOPVEL_WAIT                                                                                       \
 	4 // Bumper's X-velocity is reset to 0.0 when multi is less than this
 	  // value
 #define ITBUMPER_DAMAGE_ALL_WAIT 16

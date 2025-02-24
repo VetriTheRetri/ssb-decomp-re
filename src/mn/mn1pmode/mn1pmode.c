@@ -829,7 +829,7 @@ SYTaskmanSetup dMN1PModeTaskmanSetup =
 // 0x80133020
 void mn1PModeStartScene(void)
 {
-    dMN1PModeVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
+    dMN1PModeVideoSetup.zbuffer = SYVIDEO_ZBUFFER_START(320, 240, 0, 10, u16);
     syVideoInit(&dMN1PModeVideoSetup);
     
     dMN1PModeTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl18_BSS_END);

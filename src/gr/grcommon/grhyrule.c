@@ -395,7 +395,7 @@ void grHyruleTwisterInitVars(void)
     {
         while (TRUE)
         {
-            syErrorPrintf("Twister positions are error!\n");
+            syDebugPrintf("Twister positions are error!\n");
             scManagerRunPrintGObjStatus();
         }
     }

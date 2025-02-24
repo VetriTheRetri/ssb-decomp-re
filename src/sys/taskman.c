@@ -1,7 +1,7 @@
 #include "common.h"
 #include <sys/taskman.h>
 
-#include <sys/error.h>
+#include <sys/debug.h>
 #include <sys/main.h>
 #include <sys/malloc.h>
 #include <sys/obj.h>
@@ -322,13 +322,13 @@ void syTaskmanCheckBufferLengths(void)
 	{
 		if (sSYTaskmanDLBuffers[gSYTaskmanTaskID][i].length + (uintptr_t)sSYTaskmanDLBuffers[gSYTaskmanTaskID][i].start < (uintptr_t)gSYTaskmanDLHeads[i])
 		{
-			syErrorPrintf("gtl : DLBuffer over flow !  kind = %d  vol = %d byte\n", i, (uintptr_t)gSYTaskmanDLHeads[i] - (uintptr_t)sSYTaskmanDLBuffers[gSYTaskmanTaskID][i].start);
+			syDebugPrintf("gtl : DLBuffer over flow !  kind = %d  vol = %d byte\n", i, (uintptr_t)gSYTaskmanDLHeads[i] - (uintptr_t)sSYTaskmanDLBuffers[gSYTaskmanTaskID][i].start);
 			while (TRUE);
 		}
 	}
 	if ((uintptr_t)gSYTaskmanGraphicsHeap.end < (uintptr_t)gSYTaskmanGraphicsHeap.ptr)
 	{
-		syErrorPrintf("gtl : DynamicBuffer over flow !  %d byte\n", (uintptr_t)gSYTaskmanGraphicsHeap.ptr - (uintptr_t)gSYTaskmanGraphicsHeap.start);
+		syDebugPrintf("gtl : DynamicBuffer over flow !  %d byte\n", (uintptr_t)gSYTaskmanGraphicsHeap.ptr - (uintptr_t)gSYTaskmanGraphicsHeap.start);
 		while (TRUE);
 	}
 }
@@ -346,7 +346,7 @@ void syTaskmanMakeRdpBufferTask(void *buffer, size_t buffer_size)
 
 	if ((uintptr_t)&sSYSchedulerRdpCache % 8)
 	{
-		syErrorPrintf("bad addr sc_rdp_output_len = %x\n", &sSYSchedulerRdpCache);
+		syDebugPrintf("bad addr sc_rdp_output_len = %x\n", &sSYSchedulerRdpCache);
 		while (TRUE);
 	}
 }
@@ -362,7 +362,7 @@ void syTaskmanSetRdpOutputBuffer(s32 kind, void *buffer, size_t buffer_size)
 	{
 		if (buffer_size == 0)
 		{
-			syErrorPrintf("gtl : Buffer size for RDP is zero !!\n");
+			syDebugPrintf("gtl : Buffer size for RDP is zero !!\n");
 			while (TRUE);
 		}
 	}
@@ -379,12 +379,12 @@ SYTaskGfx* func_80004D2C(void)
 
 	if (sSYTaskmanGfxBuffersStart[gSYTaskmanTaskID] == NULL)
 	{
-		syErrorPrintf("gtl : not defined SCTaskGfx\n");
+		syDebugPrintf("gtl : not defined SCTaskGfx\n");
 		while (TRUE);
 	}
 	if (sSYTaskmanGfxBuffersCurrent[gSYTaskmanTaskID] == sSYTaskmanGfxBuffersEnd[gSYTaskmanTaskID])
 	{
-		syErrorPrintf("gtl : couldn\'t get SCTaskGfx\n");
+		syDebugPrintf("gtl : couldn\'t get SCTaskGfx\n");
 		while (TRUE);
 	}
 	temp = sSYTaskmanGfxBuffersCurrent[gSYTaskmanTaskID]++;
@@ -429,7 +429,7 @@ void func_80004EFC()
 
 	if (mesg == NULL)
 	{
-		syErrorPrintf("gtl : not defined SCTaskGfxEnd\n");
+		syDebugPrintf("gtl : not defined SCTaskGfxEnd\n");
 		while (TRUE);
 	}
 	syTaskmanScheduleGfxEnd(mesg, (void*)-1, gSYTaskmanTaskID, &sSYTaskmanContextMesgQueue);
@@ -444,7 +444,7 @@ void func_80004F78(void)
 
 	if (mesg == NULL)
 	{
-		syErrorPrintf("gtl : not defined SCTaskGfxEnd\n");
+		syDebugPrintf("gtl : not defined SCTaskGfxEnd\n");
 		while (TRUE);
 	}
 	syTaskmanScheduleGfxEnd(mesg, NULL, gSYTaskmanTaskID, &sSYTaskmanResetMesgQueue);
@@ -497,7 +497,7 @@ void func_80005018(SYTaskGfx *t, s32 *arg1, u32 ucode_id, s32 arg3, u64 *arg4, u
 
 	if (ucode->text == NULL)
 	{
-		syErrorPrintf("gtl : ucode isn\'t included  kind = %d\n", ucode_id);
+		syDebugPrintf("gtl : ucode isn\'t included  kind = %d\n", ucode_id);
 		while (TRUE);
 	}
 	t->task.t.ucode           = ucode->text;
@@ -1135,7 +1135,7 @@ void unref_8000641C(GObj *gobj)
 
 	if (task == NULL)
 	{
-		syErrorPrintf("gtl : not defined SCTaskGfxEnd\n");
+		syDebugPrintf("gtl : not defined SCTaskGfxEnd\n");
 		while (TRUE);
 	}
 	syTaskmanScheduleGfxEnd(task, NULL, gSYTaskmanTaskID, &sSYTaskmanContextMesgQueue);

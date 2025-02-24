@@ -464,7 +464,7 @@ void sc1PBonusStageMakeTargets(void)
 	}
 	if (gGRCommonStruct.bonus1.target_count != SCBATTLE_BONUSGAME_TASK_MAX)
 	{
-		syErrorPrintf("Error : not %d targets!\n", SCBATTLE_BONUSGAME_TASK_MAX);
+		syDebugPrintf("Error : not %d targets!\n", SCBATTLE_BONUSGAME_TASK_MAX);
 
 		while (TRUE);
 	}
@@ -1162,7 +1162,7 @@ void sc1PBonusStageStartScene(void)
 	u32 tasks_complete;
 	s32 i;
 
-	dSC1PBonusStageVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
+	dSC1PBonusStageVideoSetup.zbuffer = SYVIDEO_ZBUFFER_START(320, 240, 0, 10, u16);
 	syVideoInit(&dSC1PBonusStageVideoSetup);
 
 	dSC1PBonusStageTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&gSYFramebufferSets - (uintptr_t)&ovl6_BSS_END);

@@ -193,7 +193,7 @@ void dbFallsFuncStart(void)
 // 0x800D6688
 void dbFallsStartScene(void)
 {
-	dDBFallsVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
+	dDBFallsVideoSetup.zbuffer = SYVIDEO_ZBUFFER_START(320, 240, 0, 10, u16);
 	syVideoInit(&dDBFallsVideoSetup);
 
 	dDBFallsTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&gSYFramebufferSets - (uintptr_t)&ovl15_BSS_END);

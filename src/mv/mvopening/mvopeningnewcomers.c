@@ -442,7 +442,7 @@ void mvOpeningNewcomersFuncStart(void)
 // 0x801325E0
 void mvOpeningNewcomersStartScene(void)
 {
-    dMVOpeningNewcomersVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
+    dMVOpeningNewcomersVideoSetup.zbuffer = SYVIDEO_ZBUFFER_START(320, 240, 0, 10, u16);
     syVideoInit(&dMVOpeningNewcomersVideoSetup);
 
     dMVOpeningNewcomersTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl52_BSS_END);

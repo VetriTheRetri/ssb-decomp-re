@@ -171,7 +171,7 @@ struct SC1PTrainingModeMenu
 	u8 damage_reset_wait;	 // Wait this many frames before resetting combo damage
 	u8 combo_reset_wait;	 // Wait this many frames before resetting combo count
 	ub8 exit_or_reset;		 // 0 = exit, 1 = reset
-	u8 lagframe_wait;		 // Wait this many frames before duplicate/lag frame is
+	u8 lagtic_wait;		 // Wait this many frames before duplicate/lag frame is
 							 // applied? Used for 2/3 speed with a setting of 1
 	u8 frameadvance_wait;	 // Wait this many frames before advancing to the next
 							 // frame

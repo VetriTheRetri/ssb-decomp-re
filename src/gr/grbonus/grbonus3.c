@@ -82,7 +82,7 @@ void grBonus3TaruBombMakeActor(void)
     {
         while (TRUE)
         {
-            syErrorPrintf("Too many barrels!\n");
+            syDebugPrintf("Too many barrels!\n");
             scManagerRunPrintGObjStatus();
         }
     }

@@ -5,6 +5,7 @@
 #include <n_audio/n_libaudio.h>
 #include <n_audio/synthInternals.h>
 
+#define SYAUDIO_BGMPLAYERS_NUM 1
 #define NUM_DMA_BUFFERS 4
 #define MAX_BUFFERS 50
 #define MAX_BUFFER_LENGTH 1024
@@ -20,7 +21,7 @@
 #define VIBRATO_ASC_SAW 131
 #define OSC_HIGH 0
 #define OSC_LOW 1
-#define OSC_STATE_COUNT 32
+#define SYAUDIO_OSC_STATES_NUM 32
 
 typedef struct {
     u32 addr;
@@ -175,7 +176,7 @@ typedef struct SYAudioConfig
 extern SYAudioSettings dSYAudioPublicSettings;
 extern u8 gSYAudioHeapBuffer[0x56000];
 extern u32 gSYAudioThreadTimeDelta;
-extern ALCSPlayer *gSYAudioALCSPlayers[/* */];
+extern ALCSPlayer *gSYAudioCSPlayers[/* */];
 
 extern void alHeapInit(ALHeap *hp, u8 *base, s32 len);
 extern void* alHeapDBAlloc(u8 *file, s32 line, ALHeap *hp, s32 num, s32 size);
@@ -183,8 +184,8 @@ extern void alSeqFileNew(ALSeqFile *file, u8 *base);
 extern void alBnkfNew(ALBankFile *file, u8 *table);
 extern void syAudioBnkfPatchBank(ALBank *bank, uintptr_t offset, uintptr_t table);
 extern void syAudioBnkfPatchInst(ALInstrument *inst, uintptr_t offset, uintptr_t table);
-extern void syAudioBnkfPatchSound(ALSound *s, uintptr_t offset, uintptr_t table);
-extern void syAudioBnkfPatchWaveTable(ALWaveTable *w, uintptr_t offset, uintptr_t table);
+extern void syAudioBnkfPatchSound(ALSound *sound, uintptr_t offset, uintptr_t table);
+extern void syAudioBnkfPatchWaveTable(ALWaveTable *wav, uintptr_t offset, uintptr_t table);
 extern void syAudioReadRom(uintptr_t rom, void *vram, size_t size);
 extern s32 syAudioDma(s32 addr, s32 len, void *state);
 extern ALDMAproc syAudioDmaNew(AMDMAState **state);
@@ -199,7 +200,7 @@ extern void syAudioThreadMain(void *arg);
 extern void syAudioSetStereo(void);
 extern void syAudioSetMono(void);
 extern void syAudioSetQuality(s32 quality);
-extern void syAudioSetReverbType(s32 fx_type);
+extern void syAudioSetFXType(s32 fx_type);
 extern void syAudioStopBGMAll(void);
 extern s32 syAudioPlayBGM(s32 sngplayer, u32 bgm);
 extern void syAudioStopBGM(s32 sngplayer);

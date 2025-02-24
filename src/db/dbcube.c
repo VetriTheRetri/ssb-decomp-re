@@ -3,7 +3,7 @@
 #include <gr/ground.h>
 #include <sc/scene.h>
 #include <gm/gmsound.h>
-#include <sys/error.h>
+#include <sys/debug.h>
 #include <sys/video.h>
 
 extern void* func_800269C0_275C0(u16);
@@ -402,7 +402,7 @@ void dbCubeStopBGM(void)
 void dbCubePlayBGM(void)
 {
 	syAudioStopBGM(0);
-	syAudioSetReverbType(dDBCubeMenuValueEffect);
+	syAudioSetFXType(dDBCubeMenuValueEffect);
 
 	dDBCubeIsBGMInterrupt = TRUE;
 }
@@ -419,7 +419,7 @@ void dbCubeAudioThreadUpdate(GObj *gobj)
 {
 	while (TRUE)
 	{
-		if ((dDBCubeIsBGMInterrupt != FALSE) && (syAudioGetRestarting() == 0))
+		if ((dDBCubeIsBGMInterrupt != FALSE) && (syAudioGetRestarting() == FALSE))
 		{
 			syAudioPlayBGM(0, dDBCubeMenuValueBGM);
 
@@ -428,8 +428,8 @@ void dbCubeAudioThreadUpdate(GObj *gobj)
 		if
 		(
 			(
-				(dDBCubeSFX == NULL) 						||
-				(dDBCubeSFX->sfx_id == 0) 					||
+				(dDBCubeSFX == NULL) ||
+				(dDBCubeSFX->sfx_id == 0) ||
 				(dDBCubeCurrentSoundID != dDBCubeSFX->sfx_id)
 			)
 			&&
@@ -459,7 +459,7 @@ void dbCubeProcRun(GObj *gobj)
 	}
 	if (gSYControllerMain.button_tap & Z_TRIG)
 	{
-		syErrorMakeControllerCamera(0, GOBJ_PRIORITY_DEFAULT, 0);
+		syDebugMakeMeterCamera(0, GOBJ_PRIORITY_DEFAULT, 0);
 	}
 	if (sDBCubeIsExitInterrupt != FALSE)
 	{
@@ -569,7 +569,7 @@ void dbCubeFuncStart(void)
 // 0x8013214C
 void dbCubeStartScene(void)
 {
-	dDBCubeVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
+	dDBCubeVideoSetup.zbuffer = SYVIDEO_ZBUFFER_START(320, 240, 0, 10, u16);
 	syVideoInit(&dDBCubeVideoSetup);
 
 	dDBCubeTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl9_VRAM - (uintptr_t)&ovl13_BSS_END);

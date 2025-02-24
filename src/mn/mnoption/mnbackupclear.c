@@ -853,7 +853,7 @@ SYTaskmanSetup dMNBackupClearTaskmanSetup =
 // 0x80132E28
 void mnBackupClearStartScene(void)
 {
-    dMNBackupClearVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
+    dMNBackupClearVideoSetup.zbuffer = SYVIDEO_ZBUFFER_START(320, 240, 0, 10, u16);
     syVideoInit(&dMNBackupClearVideoSetup);
     
     dMNBackupClearTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl53_BSS_END);

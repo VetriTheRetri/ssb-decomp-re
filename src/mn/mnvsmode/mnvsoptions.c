@@ -1452,7 +1452,7 @@ SYTaskmanSetup dMNVSOptionsTaskmanSetup =
 // 0x80134668
 void mnVSOptionsStartScene(void)
 {
-    dMNVSOptionsVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
+    dMNVSOptionsVideoSetup.zbuffer = SYVIDEO_ZBUFFER_START(320, 240, 0, 10, u16);
     syVideoInit(&dMNVSOptionsVideoSetup);
     
     dMNVSOptionsTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl20_BSS_END);

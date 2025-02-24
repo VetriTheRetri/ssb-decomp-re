@@ -521,7 +521,7 @@ void scVSBattleStartScene(void)
 	{
 		gSCManagerBattleState->gkind = nGRKindCastle;
 	}
-	dSCVSBattleVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
+	dSCVSBattleVideoSetup.zbuffer = SYVIDEO_ZBUFFER_START(320, 240, 0, 10, u16);
 	syVideoInit(&dSCVSBattleVideoSetup);
 
 	dSCVSBattleTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&gSYFramebufferSets - (uintptr_t)&ovl4_BSS_END);

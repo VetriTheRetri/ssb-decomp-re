@@ -115,13 +115,14 @@ f32 randFloat1(void) {
 	return ((sRandomSeed2 >> 16) & 0xFFFF) / 65536.0f;
 }
 
-
 f32 randFloat2(void) {
 	sRandomSeed1 = (sRandomSeed1 * 0x343FD) + 0x269EC3;
 	return ((sRandomSeed1 >> 16) & 0xFFFF) / 65536.0f;
 }
 
-void func_80027458_28058(void) {
+void func_80027458_28058(void)
+{
+	
 }
 
 //split 0x28060?

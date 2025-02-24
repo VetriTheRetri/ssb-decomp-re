@@ -1411,7 +1411,7 @@ SYTaskmanSetup dMVOpeningRoomTaskmanSetup =
 // 0x801349BC
 void mvOpeningRoomStartScene(void)
 {
-	dMVOpeningRoomVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
+	dMVOpeningRoomVideoSetup.zbuffer = SYVIDEO_ZBUFFER_START(320, 240, 0, 10, u16);
 	syVideoInit(&dMVOpeningRoomVideoSetup);
 
 	dMVOpeningRoomTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl34_BSS_END);

@@ -2252,7 +2252,7 @@ void scStaffrollStartScene(void)
 
 	while ((uintptr_t)fb32 < 0x80400000) { *fb32++ = 0x00000000; }
 
-	dSCStaffrollVideoSetup.zbuffer = syVideoGetZBuffer(640, 480, 0, 10, u16);
+	dSCStaffrollVideoSetup.zbuffer = SYVIDEO_ZBUFFER_START(640, 480, 0, 10, u16);
 	syVideoInit(&dSCStaffrollVideoSetup);
 
 	dSCStaffrollTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)SYVIDEO_DEFINE_FRAMEBUFFER_ADDR(640, 480, 0, 0, u16, 0) - (uintptr_t)&ovl59_BSS_END);

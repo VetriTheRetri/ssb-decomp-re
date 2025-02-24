@@ -266,7 +266,7 @@ FTStruct* ftManagerGetNextStructAlloc(void)
     {
         while (TRUE)
         {
-            syErrorPrintf("couldn\'t get Fighter struct.\n");
+            syDebugPrintf("couldn\'t get Fighter struct.\n");
             scManagerRunPrintGObjStatus();
         }
     }
@@ -296,7 +296,7 @@ FTParts* ftManagerGetNextPartsAlloc(void)
     {
         while (TRUE)
         {
-            syErrorPrintf("couldn\'t get FighterParts struct.\n");
+            syDebugPrintf("couldn\'t get FighterParts struct.\n");
             scManagerRunPrintGObjStatus();
         }
     }

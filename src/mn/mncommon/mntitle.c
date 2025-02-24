@@ -1461,7 +1461,7 @@ void mnTitleFuncUpdate(void)
 // 0x801340B8
 void mnTitleStartScene(void)
 {
-	dMNTitleVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
+	dMNTitleVideoSetup.zbuffer = SYVIDEO_ZBUFFER_START(320, 240, 0, 10, u16);
 	syVideoInit(&dMNTitleVideoSetup);
 
 	if ((!gSCManagerSceneData.is_title_anim_viewed) && (gSCManagerBackupData.boot <= U8_MAX))

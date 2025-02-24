@@ -55,13 +55,12 @@ extern uintptr_t fgm_ucd_ROM_END;
 // 0x8003C950
 s32 dSYAudioCustomFXParams[/* */] =
 { 
-    14, 0x4b00, 0, 0x280, 9830, -9830, 0, 0, 0, 0, 0x3c0, 0x500, 3276, -3276, 8191, 0,
-    0, 0, 0x780, 0xa00, 3276, -3276, 5631, 0, 0, 0, 0xa00, 0xdc0, 3276, -3276, 4351, 0,
-    0, 0, 0xc80, 0x12c0, 3276, -3276, 4351, 0, 0, 0, 0xf00, 0x1900, 3276, -3276, 4095, 0,
-    0, 0, 0x1680, 0x1e00, 3276, -3276, 4095, 0, 0, 0, 0x1f40, 0x2580, 3276, -3276, 2559, 0,
-    0, 0, 0x2580, 0x2bc0, 3276, -3276, 2559, 0, 0, 0, 0x2bc0, 0x3200, 3276, -3276, 1535, 0,
-    0, 0, 0x3200, 0x3840, 3276, -3276, 1535, 0, 0, 0, 0x3840, 0x3e80, 3276, -3276, 255, 0,
-    0, 0, 0x3e80, 0x44c0, 3276, -3276, 255, 0, 0, 0, 0, 0x2580, 5000, 0, 0, 0, 0, 0x5000
+      14, 19200,     0,   640,  9830, -9830,     0,     0,    0,     0,   960, 1280,  3276, -3276,  8191,     0,    0,     0,  1920, 
+    2560,  3276, -3276,  5631,     0,     0,     0,  2560, 3520,  3276, -3276, 4351,     0,     0,     0,  3200, 4800,  3276, -3276,
+    4351,     0,     0,     0,  3840,  6400,  3276, -3276, 4095,     0,     0,    0,  5760,  7680,  3276, -3276, 4095,     0,     0,
+       0,  8000,  9600,  3276, -3276,  2559,     0,     0,    0,  9600, 11200, 3276, -3276,  2559,     0,     0,    0, 11200, 12800,
+    3276, -3276,  1535,     0,     0,     0, 12800, 14400, 3276, -3276,  1535,    0,     0,     0, 14400, 16000, 3276, -3276,   255,
+       0,     0,     0, 16000, 17600,  3276, -3276,   255,    0,     0,     0,    0,  9600,  5000,     0,     0,    0,     0, 20480
 };
 
 // 0x8003CB18
@@ -144,13 +143,13 @@ u8 gSYAudioHeapBuffer[0x56000];
 u32 gSYAudioThreadTimeDelta;
 
 // 0x8009D2D8
-ALHeap sSYAudioALHeap;
+ALHeap sSYAudioHeap;
 
 // 0x8009D2E8
-void *sSYAudioALHeapBase;
+void *sSYAudioHeapBase;
 
 // 0x8009D2EC
-s32 sSYAudioALHeapSize;
+s32 sSYAudioHeapSize;
 
 // 0x8009D2F0
 SCClient sSYAudioClient;
@@ -177,7 +176,7 @@ OSMesg sSYAudioDmaMesgs[50];
 OSIoMesg audDMAIOMesgBuf[MAX_BUFFERS];
 
 // 0x8009D8C0
-N_ALGlobals sSYAudioALGlobals;
+N_ALGlobals sSYAudioGlobals;
 
 // 0x8009D91C
 s32 sSYAudioFrequency;
@@ -201,28 +200,28 @@ SYTaskAudio *sSYAudioCurrentTask;
 SYTaskAudio *sSYAudioSchedulerTasks[2];
 
 // 0x8009D950
-ALBank *sSYAudioSequenceALBank1;
+ALBank *sSYAudioSequenceBank1;
 
 // 0x8009D954
 alSoundEffect **sSYAudioSoundPlayers;
 
 // 0x8009D958
-ALBank *sSYAudioSequenceALBank2;
+ALBank *sSYAudioSequenceBank2;
 
 // 0x8009D95C
-ALSeqFile *sSYAudioALSeqFile;
+ALSeqFile *sSYAudioSeqFile;
 
 // 0x8009D960
-ALCSPlayer *gSYAudioALCSPlayers[1];
+ALCSPlayer *gSYAudioCSPlayers[SYAUDIO_BGMPLAYERS_NUM];
 
 // 0x8009D964
-ALCSeq *sSYAudioALCSeqs[1];
+ALCSeq *sSYAudioCSeqs[SYAUDIO_BGMPLAYERS_NUM];
 
 // 0x8009D968
 u8 gSYAudioGlobalBGMPriority;
 
 // 0x8009D96C
-u8 *sSYAudioBGMSequenceDatas[1];
+u8 *sSYAudioBGMSequenceDatas[SYAUDIO_BGMPLAYERS_NUM];
 
 // 0x8009D970
 u8 *sSYAudioCSPlayerStatuses;
@@ -231,13 +230,13 @@ u8 *sSYAudioCSPlayerStatuses;
 s32 *sSYAudioBGMPlayingIDs;
 
 // 0x8009D978
-s32 sSYAudioBGMVolumeTimers[1];
+s32 sSYAudioBGMVolumeTimers[SYAUDIO_BGMPLAYERS_NUM];
 
 // 0x8009D97C
-f32 sSYAudioBGMVolumes[1];
+f32 sSYAudioBGMVolumes[SYAUDIO_BGMPLAYERS_NUM];
 
 // 0x8009D980
-f32 sSYAudioBGMVolumeRates[1];
+f32 sSYAudioBGMVolumeRates[SYAUDIO_BGMPLAYERS_NUM];
 
 // 0x8009D988
 SYAudioSettings sSYAudioCurrentSettings;
@@ -372,47 +371,47 @@ void syAudioBnkfPatchInst(ALInstrument *inst, uintptr_t offset, uintptr_t table)
 }
 
 // 0x8001E858
-void syAudioBnkfPatchSound(ALSound *s, uintptr_t offset, uintptr_t table)
+void syAudioBnkfPatchSound(ALSound *sound, uintptr_t offset, uintptr_t table)
 {
-    if (s->flags)
+    if (sound->flags)
     {
         return;
     }
-    s->flags = 1;
+    sound->flags = 1;
 
-    s->envelope = (ALEnvelope*) ((uintptr_t)s->envelope + offset);
-    s->keyMap = (ALKeyMap*) ((uintptr_t)s->keyMap + offset);
+    sound->envelope = (ALEnvelope*) ((uintptr_t)sound->envelope + offset);
+    sound->keyMap = (ALKeyMap*) ((uintptr_t)sound->keyMap + offset);
 
-    s->wavetable = (ALWaveTable*) ((uintptr_t)s->wavetable + offset);
-    syAudioBnkfPatchWaveTable(s->wavetable, offset, table);
+    sound->wavetable = (ALWaveTable*) ((uintptr_t)sound->wavetable + offset);
+    syAudioBnkfPatchWaveTable(sound->wavetable, offset, table);
 }
 
 // 0x8001E8B0
-void syAudioBnkfPatchWaveTable(ALWaveTable *w, uintptr_t offset, uintptr_t table)
+void syAudioBnkfPatchWaveTable(ALWaveTable *wav, uintptr_t offset, uintptr_t table)
 {
-    if (w->flags)
+    if (wav->flags)
     {
         return;
     }
-    w->flags = 1;
+    wav->flags = 1;
 
-    w->base += table;
+    wav->base += table;
 
-    if (w->type == AL_ADPCM_WAVE)
+    if (wav->type == AL_ADPCM_WAVE)
     {
-        w->waveInfo.adpcmWave.book = (ALADPCMBook*) ((uintptr_t)w->waveInfo.adpcmWave.book + offset);
+        wav->waveInfo.adpcmWave.book = (ALADPCMBook*) ((uintptr_t)wav->waveInfo.adpcmWave.book + offset);
 
-        if (w->waveInfo.adpcmWave.loop != NULL)
+        if (wav->waveInfo.adpcmWave.loop != NULL)
         {
-            w->waveInfo.adpcmWave.loop = (ALADPCMloop*) ((uintptr_t)w->waveInfo.adpcmWave.loop + offset);
+            wav->waveInfo.adpcmWave.loop = (ALADPCMloop*) ((uintptr_t)wav->waveInfo.adpcmWave.loop + offset);
         }
 
     }
-    else if (w->type == AL_RAW16_WAVE)
+    else if (wav->type == AL_RAW16_WAVE)
     {
-        if (w->waveInfo.rawWave.loop != NULL)
+        if (wav->waveInfo.rawWave.loop != NULL)
         {
-            w->waveInfo.rawWave.loop = (ALRawLoop*) ((uintptr_t)w->waveInfo.rawWave.loop + offset);
+            wav->waveInfo.rawWave.loop = (ALRawLoop*) ((uintptr_t)wav->waveInfo.rawWave.loop + offset);
         }
     }
 }
@@ -486,13 +485,13 @@ ALDMAproc syAudioDmaNew(AMDMAState **state)
     s32 i;
     AMDMAState* dState;
 
-    dState = (AMDMAState*) alHeapAlloc(&sSYAudioALHeap, 1, sizeof(AMDMAState));
+    dState = (AMDMAState*) alHeapAlloc(&sSYAudioHeap, 1, sizeof(AMDMAState));
     dState->currentBuffer = 0;
     dState->nBuffers = NUM_DMA_BUFFERS;
 
     for (i = 0; i < NUM_DMA_BUFFERS; i++)
     {
-        dState->buffers[i].ptr = alHeapAlloc(&sSYAudioALHeap, 1, MAX_BUFFER_LENGTH);
+        dState->buffers[i].ptr = alHeapAlloc(&sSYAudioHeap, 1, MAX_BUFFER_LENGTH);
         dState->buffers[i].addr = 0;
         dState->buffers[i].len = 0;
         dState->buffers[i].size = MAX_BUFFER_LENGTH;
@@ -767,76 +766,76 @@ void syAudioLoadAssets(void)
     SYAudioPackage *pkgf3, *pkgf2, *pkgf1;
 
     bzero(sSYAudioCurrentSettings.heap_base, sSYAudioCurrentSettings.heap_size);
-    alHeapInit(&sSYAudioALHeap, sSYAudioCurrentSettings.heap_base, sSYAudioCurrentSettings.heap_size);
+    alHeapInit(&sSYAudioHeap, sSYAudioCurrentSettings.heap_base, sSYAudioCurrentSettings.heap_size);
 
     // load sfx bank
     if (sSYAudioCurrentSettings.bank2_start >= 0x80000000)
     {
-        sSYAudioSequenceALBank2 = (ALBank*) sSYAudioCurrentSettings.bank2_start;
+        sSYAudioSequenceBank2 = (ALBank*) sSYAudioCurrentSettings.bank2_start;
     }
     else
     {
         len = sSYAudioCurrentSettings.bank2_end - sSYAudioCurrentSettings.bank2_start;
-        bnkf = alHeapAlloc(&sSYAudioALHeap, 1, len);
+        bnkf = alHeapAlloc(&sSYAudioHeap, 1, len);
         syAudioReadRom(sSYAudioCurrentSettings.bank2_start, bnkf, len);
         alBnkfNew(bnkf, sSYAudioCurrentSettings.table2_start);
-        sSYAudioSequenceALBank2 = bnkf->bankArray[0];
+        sSYAudioSequenceBank2 = bnkf->bankArray[0];
     }
     if (sSYAudioCurrentSettings.bank1_start >= 0x80000000)
     {
-        sSYAudioSequenceALBank1 = (ALBank*) sSYAudioCurrentSettings.bank1_start;
+        sSYAudioSequenceBank1 = (ALBank*) sSYAudioCurrentSettings.bank1_start;
     }
     else
     {
         len = sSYAudioCurrentSettings.bank1_end - sSYAudioCurrentSettings.bank1_start;
-        bnkf = alHeapAlloc(&sSYAudioALHeap, 1, len);
+        bnkf = alHeapAlloc(&sSYAudioHeap, 1, len);
         syAudioReadRom(sSYAudioCurrentSettings.bank1_start, bnkf, len);
         alBnkfNew(bnkf, sSYAudioCurrentSettings.table1_start);
-        sSYAudioSequenceALBank1 = bnkf->bankArray[0];
+        sSYAudioSequenceBank1 = bnkf->bankArray[0];
     }
     // load sequnces
     if (sSYAudioCurrentSettings.sbk_start >= 0x80000000)
     {
-        sSYAudioALSeqFile = (ALSeqFile*) sSYAudioCurrentSettings.sbk_start;
+        sSYAudioSeqFile = (ALSeqFile*) sSYAudioCurrentSettings.sbk_start;
     }
     else
     {
-        sSYAudioALSeqFile = alHeapAlloc(&sSYAudioALHeap, 1, 4);
-        syAudioReadRom(sSYAudioCurrentSettings.sbk_start, sSYAudioALSeqFile, 4);
+        sSYAudioSeqFile = alHeapAlloc(&sSYAudioHeap, 1, 4);
+        syAudioReadRom(sSYAudioCurrentSettings.sbk_start, sSYAudioSeqFile, 4);
          
-        len = sSYAudioALSeqFile->seqCount * sizeof(ALSeqData) + 4;
-        sSYAudioALSeqFile = alHeapAlloc(&sSYAudioALHeap, 1, sSYAudioALSeqFile->seqCount * sizeof(ALSeqData) + 4);
-        syAudioReadRom(sSYAudioCurrentSettings.sbk_start, sSYAudioALSeqFile, len); 
-        alSeqFileNew(sSYAudioALSeqFile, (uintptr_t)sSYAudioCurrentSettings.sbk_start);
+        len = sSYAudioSeqFile->seqCount * sizeof(ALSeqData) + 4;
+        sSYAudioSeqFile = alHeapAlloc(&sSYAudioHeap, 1, sSYAudioSeqFile->seqCount * sizeof(ALSeqData) + 4);
+        syAudioReadRom(sSYAudioCurrentSettings.sbk_start, sSYAudioSeqFile, len); 
+        alSeqFileNew(sSYAudioSeqFile, (uintptr_t)sSYAudioCurrentSettings.sbk_start);
     }
     // get maximal seq length
-    for (i = 0, len = 0; i < sSYAudioALSeqFile->seqCount; i++)
+    for (i = 0, len = 0; i < sSYAudioSeqFile->seqCount; i++)
     {
-        sSYAudioALSeqFile->seqArray[i].len += (sSYAudioALSeqFile->seqArray[i].len & 1);
+        sSYAudioSeqFile->seqArray[i].len += (sSYAudioSeqFile->seqArray[i].len & 1);
         
-        if (len < sSYAudioALSeqFile->seqArray[i].len)
+        if (len < sSYAudioSeqFile->seqArray[i].len)
         {
-            len = sSYAudioALSeqFile->seqArray[i].len;
+            len = sSYAudioSeqFile->seqArray[i].len;
         }
     }
     for (i = 0; i < ARRAY_COUNT(sSYAudioBGMSequenceDatas); i++)
     {
-        sSYAudioBGMSequenceDatas[i] = alHeapAlloc(&sSYAudioALHeap, 1, len);
+        sSYAudioBGMSequenceDatas[i] = alHeapAlloc(&sSYAudioHeap, 1, len);
     }
-    sSYAudioAcmdListBuffers[0] = alHeapAlloc(&sSYAudioALHeap, 1, 0x8000);
-    sSYAudioAcmdListBuffers[1] = alHeapAlloc(&sSYAudioALHeap, 1, 0x8000);
+    sSYAudioAcmdListBuffers[0] = alHeapAlloc(&sSYAudioHeap, 1, 0x8000);
+    sSYAudioAcmdListBuffers[1] = alHeapAlloc(&sSYAudioHeap, 1, 0x8000);
 
-    sSYAudioSchedulerTasks[0] = alHeapAlloc(&sSYAudioALHeap, 1, sizeof(SYTaskAudio));
-    sSYAudioSchedulerTasks[1] = alHeapAlloc(&sSYAudioALHeap, 1, sizeof(SYTaskAudio));
+    sSYAudioSchedulerTasks[0] = alHeapAlloc(&sSYAudioHeap, 1, sizeof(SYTaskAudio));
+    sSYAudioSchedulerTasks[1] = alHeapAlloc(&sSYAudioHeap, 1, sizeof(SYTaskAudio));
 
-    sSYAudioDataBuffers[0] = alHeapAlloc(&sSYAudioALHeap, 1, 0xE60);
-    sSYAudioDataBuffers[1] = alHeapAlloc(&sSYAudioALHeap, 1, 0xE60);
-    sSYAudioDataBuffers[2] = alHeapAlloc(&sSYAudioALHeap, 1, 0xE60);
+    sSYAudioDataBuffers[0] = alHeapAlloc(&sSYAudioHeap, 1, 0xE60);
+    sSYAudioDataBuffers[1] = alHeapAlloc(&sSYAudioHeap, 1, 0xE60);
+    sSYAudioDataBuffers[2] = alHeapAlloc(&sSYAudioHeap, 1, 0xE60);
 
     if (sSYAudioCurrentSettings.unk50 < 0x80000000)
     {
         len = sSYAudioCurrentSettings.unk54 - sSYAudioCurrentSettings.unk50;
-        pkgf3 = alHeapAlloc(&sSYAudioALHeap, 1, len);
+        pkgf3 = alHeapAlloc(&sSYAudioHeap, 1, len);
         syAudioReadRom(sSYAudioCurrentSettings.unk50, pkgf3, len);
         
         dSYAudioPublicSettings.unk4C = sSYAudioCurrentSettings.unk4C = pkgf3->count;
@@ -845,7 +844,7 @@ void syAudioLoadAssets(void)
     if (sSYAudioCurrentSettings.fgm_table_start < 0x80000000)
     {
         len = sSYAudioCurrentSettings.fgm_table_end - sSYAudioCurrentSettings.fgm_table_start;
-        pkgf2 = alHeapAlloc(&sSYAudioALHeap, 1, len);
+        pkgf2 = alHeapAlloc(&sSYAudioHeap, 1, len);
         syAudioReadRom(sSYAudioCurrentSettings.fgm_table_start, pkgf2, len);
         
         // Have to use the symbol of dSYAudioPublicSettings2 (same address as dSYAudioPublicSettings) for this to match...
@@ -860,7 +859,7 @@ void syAudioLoadAssets(void)
     if (sSYAudioCurrentSettings.fgm_ucode_start < 0x80000000)
     {
         len = sSYAudioCurrentSettings.fgm_ucode_end - sSYAudioCurrentSettings.fgm_ucode_start;
-        pkgf1 = alHeapAlloc(&sSYAudioALHeap, 1, len);
+        pkgf1 = alHeapAlloc(&sSYAudioHeap, 1, len);
         syAudioReadRom(sSYAudioCurrentSettings.fgm_ucode_start, pkgf1, len);
         
         // ...and dSYAudioPublicSettings3 for this. Why!?
@@ -885,15 +884,15 @@ void syAudioMakeBGMPlayers(void)
     // 8003CB00 expected
     // 8003CB18 current
 
-    sSYAudioALHeapBase = sSYAudioALHeap.cur;
-    sSYAudioALHeapSize = sSYAudioALHeap.count;
+    sSYAudioHeapBase = sSYAudioHeap.cur;
+    sSYAudioHeapSize = sSYAudioHeap.count;
     
     syn_config.maxVVoices = sSYAudioCurrentSettings.vvoices_num_max;
     syn_config.maxPVoices = sSYAudioCurrentSettings.pvoices_num_max;
     syn_config.maxUpdates = sSYAudioCurrentSettings.updates_num_max;
     syn_config.dmaproc = syAudioDmaNew;
     syn_config.outputRate = osAiSetFrequency(sSYAudioCurrentSettings.output_rate);
-    syn_config.heap = &sSYAudioALHeap;
+    syn_config.heap = &sSYAudioHeap;
 
     dSYAudioCurrentFxType = sSYAudioCurrentSettings.fx_type;
 
@@ -906,7 +905,7 @@ void syAudioMakeBGMPlayers(void)
         syn_config.fxType = AL_FX_CUSTOM;
         syn_config.params = dSYAudioCustomFXTables[dSYAudioCurrentFxType - AL_FX_CUSTOM];
     }
-    n_alInit(&sSYAudioALGlobals, &syn_config);
+    n_alInit(&sSYAudioGlobals, &syn_config);
     
     sSYAudioFrequency = (syn_config.outputRate / 60.0F);
     sSYAudioFrequency = ((sSYAudioFrequency / 184) * 184) + 184;
@@ -923,8 +922,8 @@ void syAudioMakeBGMPlayers(void)
     }
     else
     {
-        audio_config.inst_sound_count = sSYAudioSequenceALBank1->instArray[0]->soundCount;
-        audio_config.inst_sound_array = sSYAudioSequenceALBank1->instArray[0]->soundArray;
+        audio_config.inst_sound_count = sSYAudioSequenceBank1->instArray[0]->soundCount;
+        audio_config.inst_sound_array = sSYAudioSequenceBank1->instArray[0]->soundArray;
     }
     audio_config.fgm_ucode_data = sSYAudioCurrentSettings.fgm_ucode_data;
     audio_config.fgm_table_data = sSYAudioCurrentSettings.fgm_table_data;
@@ -932,7 +931,7 @@ void syAudioMakeBGMPlayers(void)
     audio_config.fgm_ucode_count = sSYAudioCurrentSettings.fgm_ucode_count;
     audio_config.fgm_table_count = sSYAudioCurrentSettings.fgm_table_count;
     audio_config.unk_80026204_0xC = sSYAudioCurrentSettings.unk4C;
-    audio_config.heap = &sSYAudioALHeap;
+    audio_config.heap = &sSYAudioHeap;
     audio_config.unk_80026204_0x24 = sSYAudioCurrentSettings.unk12;
     audio_config.unk_80026204_0x26 = 10;
     audio_config.unk_80026204_0x28 = 20;
@@ -943,38 +942,38 @@ void syAudioMakeBGMPlayers(void)
     
     func_80026204_26E04(&audio_config);
 
-    sSYAudioSoundPlayers = alHeapAlloc(&sSYAudioALHeap, 1, sSYAudioCurrentSettings.sndplayers_num * sizeof(*sSYAudioSoundPlayers));
+    sSYAudioSoundPlayers = alHeapAlloc(&sSYAudioHeap, 1, sSYAudioCurrentSettings.sndplayers_num * sizeof(*sSYAudioSoundPlayers));
     
     for (i = 0; i < sSYAudioCurrentSettings.sndplayers_num; i++)
     {
         sSYAudioSoundPlayers[i] = NULL;
     }
-    sSYAudioCSPlayerStatuses = alHeapAlloc(&sSYAudioALHeap, 1, sizeof(*sSYAudioCSPlayerStatuses));
-    sSYAudioBGMPlayingIDs = alHeapAlloc(&sSYAudioALHeap, 1, sizeof(*sSYAudioBGMPlayingIDs));
+    sSYAudioCSPlayerStatuses = alHeapAlloc(&sSYAudioHeap, 1, sizeof(*sSYAudioCSPlayerStatuses));
+    sSYAudioBGMPlayingIDs = alHeapAlloc(&sSYAudioHeap, 1, sizeof(*sSYAudioBGMPlayingIDs));
     gSYAudioGlobalBGMPriority = sSYAudioCurrentSettings.priority;
     
-    sSYAudioOscStatesAllocFree = alHeapAlloc(&sSYAudioALHeap, sizeof(*sSYAudioOscStatesAllocFree), OSC_STATE_COUNT);
+    sSYAudioOscStatesAllocFree = alHeapAlloc(&sSYAudioHeap, sizeof(*sSYAudioOscStatesAllocFree), SYAUDIO_OSC_STATES_NUM);
 
-    for (j = 0; j < OSC_STATE_COUNT - 1; j++)
+    for (j = 0; j < SYAUDIO_OSC_STATES_NUM - 1; j++)
     {
         sSYAudioOscStatesAllocFree[j].next = &sSYAudioOscStatesAllocFree[j + 1];
     }
     sSYAudioOscStatesAllocFree[j].next = NULL;
     
-    for (i = 0; i < 1; i++)
+    for (i = 0; i < SYAUDIO_BGMPLAYERS_NUM; i++)
     {
         seqp_config.maxVoices = sSYAudioCurrentSettings.voices_num_max[i];
         seqp_config.maxEvents = sSYAudioCurrentSettings.events_num_max;
         seqp_config.maxChannels = AL_MAX_CHANNELS;
-        seqp_config.heap = &sSYAudioALHeap;
+        seqp_config.heap = &sSYAudioHeap;
         seqp_config.initOsc = syAudioInitOsc;
         seqp_config.updateOsc = syAudioUpdateOsc;
         seqp_config.stopOsc = syAudioStopOsc;
 
-        gSYAudioALCSPlayers[i] = alHeapAlloc(&sSYAudioALHeap, 1, sizeof(*gSYAudioALCSPlayers[i]));
-        func_8002C3D0_2CFD0(gSYAudioALCSPlayers[i], &seqp_config);
-        alCSPSetBank(gSYAudioALCSPlayers[i], sSYAudioSequenceALBank2);
-        sSYAudioALCSeqs[i] = alHeapAlloc(&sSYAudioALHeap, 1, sizeof(*sSYAudioALCSeqs[i]));
+        gSYAudioCSPlayers[i] = alHeapAlloc(&sSYAudioHeap, 1, sizeof(*gSYAudioCSPlayers[i]));
+        func_8002C3D0_2CFD0(gSYAudioCSPlayers[i], &seqp_config);
+        alCSPSetBank(gSYAudioCSPlayers[i], sSYAudioSequenceBank2);
+        sSYAudioCSeqs[i] = alHeapAlloc(&sSYAudioHeap, 1, sizeof(*sSYAudioCSeqs[i]));
         
         sSYAudioCSPlayerStatuses[i] = 0;
         sSYAudioBGMPlayingIDs[i] = -1;
@@ -1093,14 +1092,14 @@ void syAudioThreadMain(void *arg)
                 sSYAudioSoundPlayers[i] = NULL;
             }
         }    
-        for (i = 0; i < 1; i++)
+        for (i = 0; i < SYAUDIO_BGMPLAYERS_NUM; i++)
         {
             switch (sSYAudioCSPlayerStatuses[i])
             {
             case 1:
-                if (gSYAudioALCSPlayers[i]->state != AL_STOPPED)
+                if (gSYAudioCSPlayers[i]->state != AL_STOPPED)
                 {
-                    alCSPStop(gSYAudioALCSPlayers[i]);
+                    alCSPStop(gSYAudioCSPlayers[i]);
                     continue;
                 }
                 else if (sSYAudioBGMPlayingIDs[i] < 0)
@@ -1110,26 +1109,26 @@ void syAudioThreadMain(void *arg)
                 }
                 else
                 {
-                    syAudioReadRom(sSYAudioALSeqFile->seqArray[sSYAudioBGMPlayingIDs[i]].offset, sSYAudioBGMSequenceDatas[i], sSYAudioALSeqFile->seqArray[sSYAudioBGMPlayingIDs[i]].len);
+                    syAudioReadRom(sSYAudioSeqFile->seqArray[sSYAudioBGMPlayingIDs[i]].offset, sSYAudioBGMSequenceDatas[i], sSYAudioSeqFile->seqArray[sSYAudioBGMPlayingIDs[i]].len);
                     sSYAudioCSPlayerStatuses[i]++;
                     continue;
                 }
                 break;
                 
             case 2:
-                n_alCSeqNew(sSYAudioALCSeqs[i], sSYAudioBGMSequenceDatas[i]);
-                alCSPSetSeq(gSYAudioALCSPlayers[i], sSYAudioALCSeqs[i]);
-                alCSPPlay(gSYAudioALCSPlayers[i]);
+                n_alCSeqNew(sSYAudioCSeqs[i], sSYAudioBGMSequenceDatas[i]);
+                alCSPSetSeq(gSYAudioCSPlayers[i], sSYAudioCSeqs[i]);
+                alCSPPlay(gSYAudioCSPlayers[i]);
 
                 for (sp80 = 0; sp80 < AL_MAX_CHANNELS; sp80++)
                 {
-                    alCSPSetChlPriority(gSYAudioALCSPlayers[i], sp80, gSYAudioGlobalBGMPriority);
+                    alCSPSetChlPriority(gSYAudioCSPlayers[i], sp80, gSYAudioGlobalBGMPriority);
                 }
                 sSYAudioCSPlayerStatuses[i]++;
                 break;
                 
             case 3:
-                if (gSYAudioALCSPlayers[i]->state == AL_STOPPED)
+                if (gSYAudioCSPlayers[i]->state == AL_STOPPED)
                 {
                     sSYAudioCSPlayerStatuses[i] = AL_STOPPED;
                     sSYAudioBGMPlayingIDs[i] = -1;
@@ -1153,7 +1152,7 @@ void syAudioThreadMain(void *arg)
                 {
                     sSYAudioBGMVolumes[i] = 30720.0F;
                 }
-                alCSPSetVol(gSYAudioALCSPlayers[i], sSYAudioBGMVolumes[i]);
+                alCSPSetVol(gSYAudioCSPlayers[i], sSYAudioBGMVolumes[i]);
             }
         }
         if (dSYAudioIsSettingsUpdated != FALSE)
@@ -1167,7 +1166,7 @@ void syAudioThreadMain(void *arg)
                     sp80--;
                 }
             }
-            for (i = 0; i < 1; i++)
+            for (i = 0; i < SYAUDIO_BGMPLAYERS_NUM; i++)
             {
                 if (sSYAudioCSPlayerStatuses[i] == AL_STOPPED)
                 {
@@ -1178,7 +1177,7 @@ void syAudioThreadMain(void *arg)
             {
                 osRecvMesg(&sSYAudioSPTaskMesgQueue, NULL, OS_MESG_BLOCK);
                 osSendMesg(&sSYAudioSPTaskMesgQueue, NULL, OS_MESG_BLOCK);
-                n_alClose(&sSYAudioALGlobals);
+                n_alClose(&sSYAudioGlobals);
             
                 sSYAudioCurrentSettings = dSYAudioPublicSettings;
             
@@ -1208,7 +1207,7 @@ void syAudioThreadMain(void *arg)
                     sp80--;
                 }
             }
-            for (i = 0; i < 1; i++)
+            for (i = 0; i < SYAUDIO_BGMPLAYERS_NUM; i++)
             {
                 if (sSYAudioCSPlayerStatuses[i] == AL_STOPPED)
                 {
@@ -1219,9 +1218,9 @@ void syAudioThreadMain(void *arg)
             {
                 osRecvMesg(&sSYAudioSPTaskMesgQueue, NULL, OS_MESG_BLOCK);
                 osSendMesg(&sSYAudioSPTaskMesgQueue, NULL, OS_MESG_BLOCK);
-                n_alClose(&sSYAudioALGlobals);
-                sSYAudioALHeap.cur = sSYAudioALHeapBase;
-                sSYAudioALHeap.count = sSYAudioALHeapSize;
+                n_alClose(&sSYAudioGlobals);
+                sSYAudioHeap.cur = sSYAudioHeapBase;
+                sSYAudioHeap.count = sSYAudioHeapSize;
                 syAudioMakeBGMPlayers();
                 dSYAudioPublicSettings = sSYAudioCurrentSettings;
                 dSYAudioIsRestarting = FALSE;
@@ -1256,7 +1255,7 @@ void syAudioSetQuality(s32 quality)
 }
 
 // 0x80020A40
-void syAudioSetReverbType(s32 fx_type)
+void syAudioSetFXType(s32 fx_type)
 {
     if (fx_type != dSYAudioCurrentFxType)
     {
@@ -1270,7 +1269,7 @@ void syAudioStopBGMAll(void)
 {
     s32 i;
 
-    for (i = 0; i < 1; i++)
+    for (i = 0; i < SYAUDIO_BGMPLAYERS_NUM; i++)
     {
         syAudioStopBGM(i);
     }
@@ -1279,7 +1278,7 @@ void syAudioStopBGMAll(void)
 // 0x80020AB4
 s32 syAudioPlayBGM(s32 sngplayer, u32 bgm)
 {
-    if (bgm < sSYAudioALSeqFile->seqCount)
+    if (bgm < sSYAudioSeqFile->seqCount)
     {
         sSYAudioCSPlayerStatuses[sngplayer] = AL_PLAYING;
         sSYAudioBGMPlayingIDs[sngplayer] = bgm;
@@ -1303,7 +1302,7 @@ void syAudioSetBGMVolume(s32 sngplayer, u32 vol)
     {
         vol = 30720;
     }
-    alCSPSetVol(gSYAudioALCSPlayers[sngplayer], vol);
+    alCSPSetVol(gSYAudioCSPlayers[sngplayer], vol);
     sSYAudioBGMVolumes[sngplayer] = vol;
     sSYAudioBGMVolumeTimers[sngplayer] = 0;
 }
@@ -1334,7 +1333,7 @@ void syAudioSetBGMReverb(s32 sngplayer, u32 reverb)
     }
     for (i = 0; i < AL_MAX_CHANNELS; i++)
     {
-        alCSPSetChlFXMix(gSYAudioALCSPlayers[sngplayer], i, reverb);
+        alCSPSetChlFXMix(gSYAudioCSPlayers[sngplayer], i, reverb);
     }
 }
 
@@ -1351,14 +1350,14 @@ void syAudioSetBGMPriority(s32 sngplayer, u8 priority)
 
     for (i = 0; i < AL_MAX_CHANNELS; i++)
     {
-        alCSPSetChlPriority(gSYAudioALCSPlayers[sngplayer], i, priority);
+        alCSPSetChlPriority(gSYAudioCSPlayers[sngplayer], i, priority);
     }
 }
 
 // 0x80020D58
 s32 syAudioCheckBGMPlaying(s32 sngplayer)
 {
-    if (gSYAudioALCSPlayers[sngplayer]->state == AL_STOPPED)
+    if (gSYAudioCSPlayers[sngplayer]->state == AL_STOPPED)
     {
         return FALSE;
     }

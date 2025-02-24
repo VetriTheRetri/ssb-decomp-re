@@ -2892,7 +2892,7 @@ SYTaskmanSetup dMNPlayers1PBonusTaskmanSetup =
 // 0x80136EF4
 void mnPlayers1PBonusStartScene(void)
 {
-	dMNPlayers1PBonusVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
+	dMNPlayers1PBonusVideoSetup.zbuffer = SYVIDEO_ZBUFFER_START(320, 240, 0, 10, u16);
 	syVideoInit(&dMNPlayers1PBonusVideoSetup);
 
 	dMNPlayers1PBonusTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl29_BSS_END);

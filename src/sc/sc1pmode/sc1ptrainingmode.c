@@ -409,7 +409,7 @@ sb32 sc1PTrainingModeUpdateSpeedOption(void)
 {
 	if (sc1PTrainingModeCheckUpdateOptionID(&sSC1PTrainingModeMenu.speed_menu_option, nSC1PTrainingModeMenuSpeedEnumStart, nSC1PTrainingModeMenuSpeedEnumCount) != FALSE)
 	{
-		sSC1PTrainingModeMenu.lagframe_wait = sSC1PTrainingModeMenu.frameadvance_wait = 0;
+		sSC1PTrainingModeMenu.lagtic_wait = sSC1PTrainingModeMenu.frameadvance_wait = 0;
 
 		sc1PTrainingModeUpdateSpeedDisplaySprite();
 		sc1PTrainingModeUpdateSpeedOptionSprite();
@@ -509,13 +509,13 @@ void sc1PTrainingModeUpdateMenu(void)
 }
 
 // 0x8018D974
-sb32 sc1PTrainingModeCheckLagFrame(void)
+sb32 sc1PTrainingModeCheckLagTic(void)
 {
-	if (sSC1PTrainingModeMenu.lagframe_wait == 0)
+	if (sSC1PTrainingModeMenu.lagtic_wait == 0)
 	{
 		if (sSC1PTrainingModeMenu.frameadvance_wait == 0)
 		{
-			sSC1PTrainingModeMenu.lagframe_wait = dSC1PTrainingModeLagIntervals[sSC1PTrainingModeMenu.speed_menu_option][0];
+			sSC1PTrainingModeMenu.lagtic_wait = dSC1PTrainingModeLagIntervals[sSC1PTrainingModeMenu.speed_menu_option][0];
 		}
 		else
 		{
@@ -524,9 +524,9 @@ sb32 sc1PTrainingModeCheckLagFrame(void)
 			return TRUE;
 		}
 	}
-	else sSC1PTrainingModeMenu.lagframe_wait--;
+	else sSC1PTrainingModeMenu.lagtic_wait--;
 
-	if (sSC1PTrainingModeMenu.lagframe_wait == 0)
+	if (sSC1PTrainingModeMenu.lagtic_wait == 0)
 	{
 		sSC1PTrainingModeMenu.frameadvance_wait = dSC1PTrainingModeLagIntervals[sSC1PTrainingModeMenu.speed_menu_option][1];
 	}
@@ -546,7 +546,7 @@ void sc1PTrainingModeUpdateAll(void)
 		sc1PTrainingModeUpdateMenu();
 		break;
 	}
-	if (sc1PTrainingModeCheckLagFrame() == FALSE)
+	if (sc1PTrainingModeCheckLagTic() == FALSE)
 	{
 		gcRunAll();
 	}
@@ -607,7 +607,7 @@ void sc1PTrainingModeInitVars(void)
 	sSC1PTrainingModeMenu.cp_menu_option = nSC1PTrainingModeMenuCPStand;
 	sSC1PTrainingModeMenu.speed_menu_option = nSC1PTrainingModeMenuSpeedFull;
 	sSC1PTrainingModeMenu.view_menu_option = nSC1PTrainingModeMenuViewNormal;
-	sSC1PTrainingModeMenu.lagframe_wait = 0;
+	sSC1PTrainingModeMenu.lagtic_wait = 0;
 	sSC1PTrainingModeMenu.frameadvance_wait = 0;
 	sSC1PTrainingModeMenu.item_spawn_wait = 0;
 	sSC1PTrainingModeMenu.item_menu_option = nSC1PTrainingModeMenuItemNone;
@@ -967,7 +967,7 @@ void sc1PTrainingModeItemDisplayProcDisplay(GObj *interface_gobj)
 		{
 			while (TRUE)
 			{
-				syErrorPrintf("Error : wrong item! %d\n", ip->kind);
+				syDebugPrintf("Error : wrong item! %d\n", ip->kind);
 				scManagerRunPrintGObjStatus();
 			}
 		}
@@ -1782,7 +1782,7 @@ void sc1PTrainingModeFuncLights(Gfx **dls)
 // 0x801905F4
 void sc1PTrainingModeStartScene(void)
 {
-	dSC1PTrainingModeVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
+	dSC1PTrainingModeVideoSetup.zbuffer = SYVIDEO_ZBUFFER_START(320, 240, 0, 10, u16);
 
 	syVideoInit(&dSC1PTrainingModeVideoSetup);
 

@@ -2775,13 +2775,13 @@ void mnVSResultsInitVars(void)
 // 0x801377C0
 void mnVSResultsAudioThreadUpdate(GObj *gobj)
 {
-	while (gSYAudioALCSPlayers[0]->state == AL_STOPPED)
+	while (gSYAudioCSPlayers[0]->state == AL_STOPPED)
 	{
 		gcStopCurrentGObjThread(1);
 	}
 	while (TRUE)
 	{
-		if (gSYAudioALCSPlayers[0]->state == AL_STOPPED)
+		if (gSYAudioCSPlayers[0]->state == AL_STOPPED)
 		{
 			syAudioPlayBGM(0, nSYAudioBGMResults);
 			gcEjectGObj(NULL);
@@ -3370,7 +3370,7 @@ void mnVSResultsStartScene(void)
 {
 	s32 i;
 
-	dMNVSResultsVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
+	dMNVSResultsVideoSetup.zbuffer = SYVIDEO_ZBUFFER_START(320, 240, 0, 10, u16);
 	syVideoInit(&dMNVSResultsVideoSetup);
 
 	dMNVSResultsTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl31_BSS_END);

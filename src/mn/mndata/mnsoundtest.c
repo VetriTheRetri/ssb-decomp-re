@@ -1742,7 +1742,7 @@ void mnSoundTestFuncLights(Gfx **dls)
 // 0x80133988
 void mnSoundTestStartScene(void)
 {
-    dMNSoundTestVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
+    dMNSoundTestVideoSetup.zbuffer = SYVIDEO_ZBUFFER_START(320, 240, 0, 10, u16);
     syVideoInit(&dMNSoundTestVideoSetup);
 
     dMNSoundTestTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl62_BSS_END);

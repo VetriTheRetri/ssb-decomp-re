@@ -1,6 +1,6 @@
 #include "malloc.h"
 
-#include <sys/error.h>
+#include <sys/debug.h>
 #include <ssb_types.h>
 #include <PR/ultratypes.h>
 
@@ -25,7 +25,7 @@ void* syMallocSet(SYMallocRegion *bp, size_t size, u32 alignment)
 
     if (bp->end < bp->ptr)
     {
-        syErrorPrintf("ml : alloc overflow #%d\n", bp->id);
+        syDebugPrintf("ml : alloc overflow #%d\n", bp->id);
 
         while (TRUE);
     }

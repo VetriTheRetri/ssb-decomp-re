@@ -5,7 +5,7 @@
 #include <mn/menu.h>
 #include <sc/scene.h>
 #include <db/debug.h>
-#include <sys/error.h>
+#include <sys/debug.h>
 #include <sys/dma.h>
 #include <sys/taskman.h>
 #include <sys/audio.h>
@@ -812,8 +812,8 @@ void scManagerRunLoop(sb32 arg)
 
 	syControllerSetStatusDelay(60);
 
-	syErrorSetFuncPrint(scManagerFuncPrint);
-	syErrorStartRmonThread5Hang();
+	syDebugSetFuncPrint(scManagerFuncPrint);
+	syDebugStartRmonThread5Hang();
 
 	syDmaLoadOverlay(&dSCManagerOverlays[0]);
 	syDmaLoadOverlay(&dSCManagerOverlays[2]);
@@ -835,7 +835,7 @@ void scManagerRunLoop(sb32 arg)
 	{
 		continue;
 	}
-	syAudioSetReverbType(6);
+	syAudioSetFXType(AL_FX_CUSTOM);
 
 	while (syAudioGetRestarting() != FALSE)
 	{
@@ -1367,7 +1367,7 @@ void scManagerMakeDebugCameras(s32 link, u32 link_priority, s32 dl_link_priority
 	{
 		gcEjectGObj(gobj);
 	}
-	else syErrorMakeControllerCamera(link, link_priority, dl_link_priority);
+	else syDebugMakeMeterCamera(link, link_priority, dl_link_priority);
 
 	gobj = gcFindGObjByID(~0x10000000);
 
@@ -1386,43 +1386,43 @@ void scManagerInspectGObj(GObj *gobj)
     ITStruct *ip;
     EFStruct *ep;
 
-    syErrorDebugPrintf("gobj id:%d:", gobj->id);
+    syDebugDebugPrintf("gobj id:%d:", gobj->id);
 
     switch (gobj->id)
     {
     case nGCCommonKindFighter:
         fp = ftGetStruct(gobj);
 
-        syErrorDebugPrintf("fighter\n");
-        syErrorDebugPrintf("kind:%d, player:%d, pkind:%d\n", fp->fkind, fp->player, fp->pkind);
-        syErrorDebugPrintf("stat:%d, mstat:%d\n", fp->status_id, fp->motion_id);
-        syErrorDebugPrintf("ga:%d\n", fp->ga);
+        syDebugDebugPrintf("fighter\n");
+        syDebugDebugPrintf("kind:%d, player:%d, pkind:%d\n", fp->fkind, fp->player, fp->pkind);
+        syDebugDebugPrintf("stat:%d, mstat:%d\n", fp->status_id, fp->motion_id);
+        syDebugDebugPrintf("ga:%d\n", fp->ga);
         break;
 
     case nGCCommonKindWeapon:
         wp = wpGetStruct(gobj);
 
-        syErrorDebugPrintf("weapon\n");
-        syErrorDebugPrintf("kind:%d, player:%d\n", wp->kind, wp->player);
-        syErrorDebugPrintf("atk stat:%d\n", wp->attack_coll.attack_state);
-        syErrorDebugPrintf("ga:%d\n", wp->ga);
+        syDebugDebugPrintf("weapon\n");
+        syDebugDebugPrintf("kind:%d, player:%d\n", wp->kind, wp->player);
+        syDebugDebugPrintf("atk stat:%d\n", wp->attack_coll.attack_state);
+        syDebugDebugPrintf("ga:%d\n", wp->ga);
         break;
 
     case nGCCommonKindItem:
         ip = itGetStruct(gobj);
 
-        syErrorDebugPrintf("item\n");
-        syErrorDebugPrintf("kind:%d, player:%d\n", ip->kind, ip->player);
-        syErrorDebugPrintf("atk stat:%d\n", ip->attack_coll.attack_state);
-        syErrorDebugPrintf("ga:%d\n", ip->ga);
-        syErrorDebugPrintf("proc update:%x\n", ip->proc_update);
-        syErrorDebugPrintf("proc map:%x\n", ip->proc_map);
-        syErrorDebugPrintf("proc hit:%x\n", ip->proc_hit);
-        syErrorDebugPrintf("proc shield:%x\n", ip->proc_shield);
-        syErrorDebugPrintf("proc hop:%x\n", ip->proc_hop);
-        syErrorDebugPrintf("proc setoff:%x\n", ip->proc_setoff);
-        syErrorDebugPrintf("proc reflector:%x\n", ip->proc_reflector);
-        syErrorDebugPrintf("proc damage:%x\n", ip->proc_damage);
+        syDebugDebugPrintf("item\n");
+        syDebugDebugPrintf("kind:%d, player:%d\n", ip->kind, ip->player);
+        syDebugDebugPrintf("atk stat:%d\n", ip->attack_coll.attack_state);
+        syDebugDebugPrintf("ga:%d\n", ip->ga);
+        syDebugDebugPrintf("proc update:%x\n", ip->proc_update);
+        syDebugDebugPrintf("proc map:%x\n", ip->proc_map);
+        syDebugDebugPrintf("proc hit:%x\n", ip->proc_hit);
+        syDebugDebugPrintf("proc shield:%x\n", ip->proc_shield);
+        syDebugDebugPrintf("proc hop:%x\n", ip->proc_hop);
+        syDebugDebugPrintf("proc setoff:%x\n", ip->proc_setoff);
+        syDebugDebugPrintf("proc reflector:%x\n", ip->proc_reflector);
+        syDebugDebugPrintf("proc damage:%x\n", ip->proc_damage);
         break;
 
     case nGCCommonKindEffect:
@@ -1431,15 +1431,15 @@ void scManagerInspectGObj(GObj *gobj)
         // Check if address is within base RDRAM + expansion pak bounds (why though!?)
         if (((uintptr_t)ep >= 0x80000000) && ((uintptr_t)ep < 0x80800000))
         {
-            syErrorDebugPrintf("effect\n");
-            syErrorDebugPrintf("fgobj:%x", ep->fighter_gobj);
-            syErrorDebugPrintf("proc func:%x\n", ep->proc_update);
+            syDebugDebugPrintf("effect\n");
+            syDebugDebugPrintf("fgobj:%x", ep->fighter_gobj);
+            syDebugDebugPrintf("proc func:%x\n", ep->proc_update);
         }
-        else syErrorDebugPrintf("\n");
+        else syDebugDebugPrintf("\n");
         break;
 
     default:
-        syErrorDebugPrintf("\n");
+        syDebugDebugPrintf("\n");
         break;
     }
 }
@@ -1450,21 +1450,21 @@ void scManagerFuncPrint(void)
 	switch (dGCCurrentStatus)
 	{
 	case nGCStatusSystem:
-		syErrorDebugPrintf("SYS\n");
+		syDebugDebugPrintf("SYS\n");
 		break;
 
 	case nGCStatusRunning:
-		syErrorDebugPrintf("BF\n");
+		syDebugDebugPrintf("BF\n");
 
 		if (gGCCurrentCommon != NULL)
 		{
-			syErrorDebugPrintf("addr:%x\n", gGCCurrentCommon->proc_run);
+			syDebugDebugPrintf("addr:%x\n", gGCCurrentCommon->proc_run);
 			scManagerInspectGObj(gGCCurrentCommon);
 		}
 		break;
 
 	case nGCStatusProcessing:
-		syErrorDebugPrintf("GP\n");
+		syDebugDebugPrintf("GP\n");
 
 		if (gGCCurrentCommon != NULL)
 		{
@@ -1473,11 +1473,11 @@ void scManagerFuncPrint(void)
 				switch (gGCCurrentProcess->kind)
 				{
 				case nGCProcessKindThread:
-					syErrorDebugPrintf("thread:%x\n", gGCCurrentProcess->exec.gobjthread->thread.context.pc);
+					syDebugDebugPrintf("thread:%x\n", gGCCurrentProcess->exec.gobjthread->thread.context.pc);
 					break;
 
 				case nGCProcessKindFunc:
-					syErrorDebugPrintf("func:%x\n", gGCCurrentProcess->exec.func);
+					syDebugDebugPrintf("func:%x\n", gGCCurrentProcess->exec.func);
 					break;
 				}
 			}
@@ -1486,25 +1486,25 @@ void scManagerFuncPrint(void)
 		break;
 
 	case nGCStatusCapturing:
-		syErrorDebugPrintf("DFC\n");
+		syDebugDebugPrintf("DFC\n");
 
 		if (gGCCurrentCamera != NULL)
 		{
-			syErrorDebugPrintf("addr:%x\n", gGCCurrentCamera->proc_display);
+			syDebugDebugPrintf("addr:%x\n", gGCCurrentCamera->proc_display);
 			scManagerInspectGObj(gGCCurrentCamera);
 		}
 		break;
 		
 	case nGCStatusDisplaying:
-		syErrorDebugPrintf("DFO\n");
+		syDebugDebugPrintf("DFO\n");
 
 		if (gGCCurrentCamera != NULL)
 		{
-			syErrorDebugPrintf("cam addr:%x\n", gGCCurrentCamera->proc_display);
+			syDebugDebugPrintf("cam addr:%x\n", gGCCurrentCamera->proc_display);
 		}
 		if (gGCCurrentDisplay != NULL)
 		{
-			syErrorDebugPrintf("disp addr:%x\n", gGCCurrentDisplay->proc_display);
+			syDebugDebugPrintf("disp addr:%x\n", gGCCurrentDisplay->proc_display);
 			scManagerInspectGObj(gGCCurrentDisplay);
 		}
 		break;
@@ -1514,5 +1514,5 @@ void scManagerFuncPrint(void)
 // 0x800A3040
 void scManagerRunPrintGObjStatus(void)
 {
-	syErrorRunFuncPrint(scManagerFuncPrint);
+	syDebugRunFuncPrint(scManagerFuncPrint);
 }

@@ -846,7 +846,7 @@ SYTaskmanSetup dMNDataTaskmanSetup =
 // 0x80132EC0
 void mnDataStartScene(void)
 {
-    dMNDataVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
+    dMNDataVideoSetup.zbuffer = SYVIDEO_ZBUFFER_START(320, 240, 0, 10, u16);
     syVideoInit(&dMNDataVideoSetup);
 
     dMNDataTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl61_BSS_END);

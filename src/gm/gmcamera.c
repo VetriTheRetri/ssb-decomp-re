@@ -275,7 +275,7 @@ void gmCameraUpdateInterests(Vec3f *vec, f32 *hz, f32 *vt)
             {
                 while (TRUE)
                 {
-                    syErrorPrintf("Player Num is Over for Camera!\n");
+                    syDebugPrintf("Player Num is Over for Camera!\n");
                     scManagerRunPrintGObjStatus();
                 }
             }

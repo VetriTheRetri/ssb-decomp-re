@@ -128,7 +128,7 @@ void mnNoControllerFuncStart(void)
 // 0x800D6604
 void mnNoControllerStartScene(void)
 {
-	dMNNoControllerVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
+	dMNNoControllerVideoSetup.zbuffer = SYVIDEO_ZBUFFER_START(320, 240, 0, 10, u16);
 	syVideoInit(&dMNNoControllerVideoSetup);
 
 	dMNNoControllerTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&gSYFramebufferSets - (uintptr_t)&ovl11_BSS_END);

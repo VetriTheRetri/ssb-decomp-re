@@ -28,7 +28,7 @@ extern sb32 sc1PTrainingModeUpdateResetOption(void);
 extern sb32 sc1PTrainingModeUpdateExitOption(void);
 extern void sc1PTrainingModeUpdateMainOption(void);
 extern void sc1PTrainingModeUpdateMenu(void);
-extern sb32 sc1PTrainingModeCheckLagFrame(void);
+extern sb32 sc1PTrainingModeCheckLagTic(void);
 extern void sc1PTrainingModeUpdateAll(void);
 extern void sc1PTrainingModeFuncUpdate(void);
 extern void sc1PTrainingModeInitVars(void);

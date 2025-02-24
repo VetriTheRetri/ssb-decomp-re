@@ -48,7 +48,7 @@
     0x1                                                         \
 }
 
-#define syVideoGetZBuffer(width, height, w_border, h_border, type) \
+#define SYVIDEO_ZBUFFER_START(width, height, w_border, h_border, type) \
 ((u16*) ((uintptr_t)gSYZBuffer - (((width * height) - ((width - w_border) * (height - h_border))) * sizeof(type))))
 
 /*

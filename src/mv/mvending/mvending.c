@@ -551,7 +551,7 @@ void mvEndingFuncStart(void)
 // 0x80132A78
 void mvEndingStartScene(void)
 {
-    dMVEndingVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
+    dMVEndingVideoSetup.zbuffer = SYVIDEO_ZBUFFER_START(320, 240, 0, 10, u16);
 
     syVideoInit(&dMVEndingVideoSetup);
 

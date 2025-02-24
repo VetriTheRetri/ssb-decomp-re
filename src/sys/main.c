@@ -1,7 +1,7 @@
 #include "main.h"
 
 // #include "scenemgr/scene_manager.h"
-#include <sys/error.h>
+#include <sys/debug.h>
 #include <sys/dma.h>
 #include <sys/taskman.h>
 #include <sys/audio.h>
@@ -145,7 +145,7 @@ void syMainSetDmemStatus(void)
 
 void syMainThreadStackOverflow(s32 tid)
 {
-    syErrorPrintf("thread stack overflow  id = %d\n", tid);
+    syDebugPrintf("thread stack overflow  id = %d\n", tid);
 
     while (TRUE);
 }
@@ -203,7 +203,7 @@ void syMainThread5(void *arg)
 
 void syMainThread1Idle(void *arg) 
 {
-    syErrorStartRmonThread8();
+    syDebugStartRmonThread8();
     osCreateThread(&gSYMainThread5, 5, syMainThread5, arg, sSYMainThread5Stack + THREAD5_STACK_SIZE, THREAD5_PRI);
     sSYMainThread5Stack[0] = STACK_PROBE_MAGIC;
 

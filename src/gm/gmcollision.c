@@ -144,7 +144,7 @@ void gmCollisionSetMatrixNcs(DObj *dobj, FTParts *parts, Mtx44f mtx, Vec3f *scal
             {
                 while (TRUE)
                 {
-                    syErrorPrintf("zero div x in gcSetMatrixNcs()\n");
+                    syDebugPrintf("zero div x in gcSetMatrixNcs()\n");
                     scManagerRunPrintGObjStatus();
                 }
             }
@@ -160,7 +160,7 @@ void gmCollisionSetMatrixNcs(DObj *dobj, FTParts *parts, Mtx44f mtx, Vec3f *scal
             {
                 while (TRUE)
                 {
-                    syErrorPrintf("zero div y in gcSetMatrixNcs()\n");
+                    syDebugPrintf("zero div y in gcSetMatrixNcs()\n");
                     scManagerRunPrintGObjStatus();
                 }
             }
@@ -176,7 +176,7 @@ void gmCollisionSetMatrixNcs(DObj *dobj, FTParts *parts, Mtx44f mtx, Vec3f *scal
             {
                 while (TRUE)
                 {
-                    syErrorPrintf("zero div z in gcSetMatrixNcs()\n");
+                    syDebugPrintf("zero div z in gcSetMatrixNcs()\n");
                     scManagerRunPrintGObjStatus();
                 }
             }
@@ -257,7 +257,7 @@ void gmCollisionSetInvertMatrix(Mtx44f dst, Mtx44f src)
     {
         while (TRUE)
         {
-            syErrorPrintf("zero div in gcSetInvMatrix()\n");
+            syDebugPrintf("zero div in gcSetInvMatrix()\n");
             scManagerRunPrintGObjStatus();
         }
     }
@@ -891,7 +891,7 @@ sb32 gmCollisionTestSphere(Vec3f *pos_curr, Vec3f *pos_prev, f32 hitsize, s32 at
                 {
                     while (TRUE)
                     {
-                        syErrorPrintf("zero div 1 in gcColSphere()\n");
+                        syDebugPrintf("zero div 1 in gcColSphere()\n");
                         scManagerRunPrintGObjStatus();
                     }
                 }
@@ -909,7 +909,7 @@ sb32 gmCollisionTestSphere(Vec3f *pos_curr, Vec3f *pos_prev, f32 hitsize, s32 at
                 {
                     while (TRUE)
                     {
-                        syErrorPrintf("zero div 2 in gcColSphere()\n");
+                        syDebugPrintf("zero div 2 in gcColSphere()\n");
                         scManagerRunPrintGObjStatus();
                     }
                 }

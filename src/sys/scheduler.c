@@ -1,7 +1,7 @@
 #include "common.h"
 #include "scheduler.h"
 
-#include <sys/error.h>
+#include <sys/debug.h>
 #include <sys/main.h>
 #include <sys/controller.h>
 
@@ -1001,7 +1001,7 @@ void scHandleSPTaskDone(void) {
             scRDPOutputBufferUsed += (s32) sSYSchedulerRdpCache;
             scRDPOutputBufferUsed = OS_DCACHE_ROUNDUP_SIZE(scRDPOutputBufferUsed);
             if (scRDPOutputBufferUsed < sSYSchedulerRdpCache) {
-                syErrorPrintf("rdp_output_buff over !! size = %d\n byte", scRDPOutputBufferUsed);
+                syDebugPrintf("rdp_output_buff over !! size = %d\n byte", scRDPOutputBufferUsed);
                 while (TRUE);
             }
 

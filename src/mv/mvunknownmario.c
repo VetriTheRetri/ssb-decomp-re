@@ -219,7 +219,7 @@ void mvUnknownMarioFuncLights(Gfx **dls)
 // 0x8018D508
 void mvUnknownMarioStartScene(void)
 {
-	dMVUnknownMarioVideoSetup.zbuffer = syVideoGetZBuffer(320, 240, 0, 10, u16);
+	dMVUnknownMarioVideoSetup.zbuffer = SYVIDEO_ZBUFFER_START(320, 240, 0, 10, u16);
 	syVideoInit(&dMVUnknownMarioVideoSetup);
 
 	dMVUnknownMarioTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl5_BSS_END);

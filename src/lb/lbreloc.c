@@ -1,5 +1,5 @@
 #include <lb/library.h>
-#include <sys/error.h>
+#include <sys/debug.h>
 #include <sys/dma.h>
 
 // // // // // // // // // // // //
@@ -96,7 +96,7 @@ void lbRelocAddStatusBufferFile(u32 id, void *addr)
     {
         while (TRUE)
         {
-            syErrorPrintf("Relocatable Data Manager: Status Buffer is full !!\n");
+            syDebugPrintf("Relocatable Data Manager: Status Buffer is full !!\n");
             scManagerRunPrintGObjStatus();
         }
     }
@@ -114,7 +114,7 @@ void lbRelocAddForceStatusBufferFile(u32 id, void *addr)
     {
         while (TRUE)
         {
-            syErrorPrintf("Relocatable Data Manager: Force Status Buffer is full !!\n");
+            syDebugPrintf("Relocatable Data Manager: Force Status Buffer is full !!\n");
             scManagerRunPrintGObjStatus();
         }
     }
@@ -234,7 +234,7 @@ size_t lbRelocGetExternBytesNum(u32 file_id)
     {
         while (TRUE)
         {
-            syErrorPrintf("Relocatable Data Manager: External Data is over %d!!\n", sLBRelocExternFileIDsMax);
+            syDebugPrintf("Relocatable Data Manager: External Data is over %d!!\n", sLBRelocExternFileIDsMax);
             scManagerRunPrintGObjStatus();
         }
     }
@@ -327,7 +327,7 @@ void* lbRelocGetInternBufferFile(u32 id)
     {
         while (TRUE)
         {
-            syErrorPrintf("Relocatable Data Manager: Buffer is full !!\n");
+            syDebugPrintf("Relocatable Data Manager: Buffer is full !!\n");
             scManagerRunPrintGObjStatus();
         }
     }

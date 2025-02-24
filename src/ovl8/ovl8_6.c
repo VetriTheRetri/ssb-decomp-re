@@ -5,8 +5,7 @@
 typedef struct dbUnknownStruct_80375C54
 {
 	GObj* unk0;
-	s32* unk4;
-
+	GObj* unk4;
 } dbUnknownStruct_80375C54;
 
 // probably part of another struct?
@@ -16,33 +15,37 @@ typedef struct db2ShortsContainer
 } db2ShortsContainer;
 
 typedef struct dbUnknown6 {
-    s32 unk_dbunk3_0x0;
-    s32 unk_dbunk3_0x4;
-    s32 unk_dbunk3_0x8;
-    s32 unk_dbunk3_0xC;
-    s32 unk_dbunk3_0x10;
-    s32 unk_dbunk3_0x14;
-    s32 unk_dbunk3_0x18;
+    s32 unk_dbunk6_0x0;
+    s32 unk_dbunk6_0x4;
+    s32 unk_dbunk6_0x8;
+    s32 unk_dbunk6_0xC;
+    s32 unk_dbunk6_0x10;
+    s32 unk_dbunk6_0x14;
+    s32 unk_dbunk6_0x18;
 } dbUnknown6;
 
 typedef struct dbUnknown6_2 dbUnknown6_2;
 struct dbUnknown6_2 {
-    u8 unk_dbunk3_0x0[0x20];
-    dbUnknown6_2* unk_dbunk3_0x20;
-    s32 unk_dbunk3_0x24;
-    s32 unk_dbunk3_0x28;
-    dbUnknown6 unk_dbunk3_0x2C;
+    u8 unk_dbunk6_0x0[0x20];
+    dbUnknown6_2* unk_dbunk6_0x20;
+    s32 unk_dbunk6_0x24;
+    s32 unk_dbunk6_0x28;
+    dbUnknown6 unk_dbunk6_0x2C;
 };
 
 typedef struct dbUnknown6_3 dbUnknown6_3;
 struct dbUnknown6_3 {
-    u8 unk_dbunk3_0x0[0x20];
-    dbUnknown6_2* unk_dbunk3_0x20;
-    u8 unk_dbunk3_0x24[0x38 - 0x24];
-    dbUnknown6_2* unk_dbunk3_0x38;
+    u8 unk_dbunk6_0x0[0x20];
+    dbUnknown6_2* unk_dbunk6_0x20;
+    u8 unk_dbunk6_0x24[0x38 - 0x24];
+    dbUnknown6_2* unk_dbunk6_0x38;
 };
 
 extern s16 D_ovl8_8038A864;
+extern s32 D_ovl8_8038A878;
+extern s32 D_ovl8_8038A87C;
+extern s32 D_ovl8_8038A880;
+extern s32 D_ovl8_8038A884;
 
 extern db2ShortsContainer D_8038EFB0_1AB800;
 extern dbTestMenu* D_8038EFC4_1AB814;
@@ -507,13 +510,13 @@ void func_ovl8_80374F84(s16 arg0, s16 arg1, u16 arg2, u16 arg3)
 // 0x80374FD0
 void func_ovl8_80374FD0(dbUnknown6_3* arg0, dbUnknown6* arg1)
 {
-    arg0->unk_dbunk3_0x20->unk_dbunk3_0x2C = *arg1;
+    arg0->unk_dbunk6_0x20->unk_dbunk6_0x2C = *arg1;
 }
 
 // 0x80375010
 void func_ovl8_80375010(dbUnknown6_3* arg0, dbUnknown6* arg1)
 {
-    arg0->unk_dbunk3_0x38->unk_dbunk3_0x2C = *arg1;
+    arg0->unk_dbunk6_0x38->unk_dbunk6_0x2C = *arg1;
 }
 
 // 0x80375050
@@ -526,7 +529,13 @@ void func_ovl8_803750CC(s16 arg0)
 }
 
 // 0x803750E4
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_803750E4.s")
+void func_ovl8_803750E4(dbUnkStruct arg0)
+{
+    D_ovl8_8038A878 = arg0.unk0;
+    D_ovl8_8038A87C = arg0.unk4;
+    D_ovl8_8038A880 = arg0.unk8;
+    D_ovl8_8038A884 = arg0.unkC;
+}
 
 // 0x80375118
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_80375118.s")
@@ -549,13 +558,23 @@ void func_ovl8_803750CC(s16 arg0)
 // 0x80375864
 void func_ovl8_80375864(dbUnknown6* arg0, s32* arg1, s32* arg2, s32* arg3, s32* arg4)
 {
-    *arg1 = arg0->unk_dbunk3_0x8;
-    *arg2 = arg0->unk_dbunk3_0x14;
-    *arg3 = arg0->unk_dbunk3_0x10;
-    *arg4 = arg0->unk_dbunk3_0xC;
+    *arg1 = arg0->unk_dbunk6_0x8;
+    *arg2 = arg0->unk_dbunk6_0x14;
+    *arg3 = arg0->unk_dbunk6_0x10;
+    *arg4 = arg0->unk_dbunk6_0xC;
 }
 
+// 0x8037588C
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_8037588C.s")
+// void func_ovl8_8037588C(dbUnknown6* arg0)
+// {
+//     arg0->unk_dbunk6_0x14 = 0;
+//     arg0->unk_dbunk6_0x10 = 0;
+//     arg0->unk_dbunk6_0xC = 0;
+//     arg0->unk_dbunk6_0x8 = 0;
+//     arg0->unk_dbunk6_0x0 = 4;
+//     arg0->unk_dbunk6_0x4 = 4;
+// }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_803758B0.s")
 
@@ -598,7 +617,7 @@ void func_ovl8_80375C54(dbUnknownStruct_80375C54* arg0)
 	{
 		// unk4 is supposed to be GObj* but set to 32 to match
 		func_80009C90(arg0->unk4, 0, -1);
-		*arg0->unk4 = -0x1FE;
+		arg0->unk4->id = -0x1FE;
 	}
 }
 

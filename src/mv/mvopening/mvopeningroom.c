@@ -1157,7 +1157,7 @@ void mvOpeningRoomInitVars(void)
 }
 
 // 0x80134318
-sb32 mvOpeningRoomCheckSetFramebuffer(void *arg)
+sb32 mvOpeningRoomCheckSetFramebuffer(SYTaskGfx *arg)
 {
 	s32 i;
 	s32 unused;

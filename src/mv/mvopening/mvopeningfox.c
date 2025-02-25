@@ -415,7 +415,7 @@ void mvOpeningFoxMakePosedFighterCamera(void)
 	
 	cobj->projection.persp.aspect = 5.0F / 11.0F;
 
-	gcAddCObjCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningFoxFiles[1], &lMVOpeningFoxCamAnimJoint), 0.0F);
+	gcAddCObjCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningFoxFiles[1], &llMVOpeningCommonFoxCamAnimJoint), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindFunc, 1);
 }
 

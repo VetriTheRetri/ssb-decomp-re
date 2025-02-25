@@ -5,11 +5,6 @@
 #include <sys/objdef.h>
 #include <PR/gbi.h>
 
-extern intptr_t lMVOpeningYosterNestDObjDesc;       // 0x00009808
-extern intptr_t lMVOpeningYosterGroundDObjDesc;     // 0x0000B990
-extern intptr_t lMVOpeningYosterGroundAnimJoint;    // 0x0000BF70
-extern intptr_t lMVOpeningYosterCamAnimJoint;       // 0x0000C940
-
 extern void mvOpeningYosterFuncLights(Gfx **dls);
 extern void mvOpeningYosterMakeNest(void);
 extern void mvOpeningYosterMakeFighters(void);

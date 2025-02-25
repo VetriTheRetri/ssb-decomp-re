@@ -3,19 +3,11 @@
 #include <mv/movie.h>
 #include <sc/scene.h>
 #include <sys/video.h>
+#include <reloc_data.h>
 
 extern void syTaskmanSetLoadScene();
 extern u32 sySchedulerGetTicCount();
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern uintptr_t D_NF_00000043;
-extern uintptr_t D_NF_0000005D;
 
 // // // // // // // // // // // //
 //                               //
@@ -24,7 +16,7 @@ extern uintptr_t D_NF_0000005D;
 // // // // // // // // // // // //
 
 // 0x80132330
-u32 dMVOpeningYosterFileIDs[/* */] = { &D_NF_00000043, &D_NF_0000005D };
+u32 dMVOpeningYosterFileIDs[/* */] = { &llMVOpeningYosterFileID, &llStageYoshiFileID };
 
 // 0x80132338
 Lights1 dMVOpeningYosterLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x14, 0x14, 0x14);
@@ -83,7 +75,7 @@ void mvOpeningYosterMakeNest(void)
         (
             DObjDesc*,
             sMVOpeningYosterFiles[0],
-            &lMVOpeningYosterNestDObjDesc
+            &llMVOpeningYosterNestDObjDesc
         ),
         NULL
     );
@@ -163,7 +155,7 @@ void mvOpeningYosterMakeGround(void)
         (
             DObjDesc*,
             sMVOpeningYosterFiles[0],
-            &lMVOpeningYosterGroundDObjDesc
+            &llMVOpeningYosterGroundDObjDesc
         ),
         NULL
     );
@@ -180,7 +172,7 @@ void mvOpeningYosterMakeGround(void)
         (
             AObjEvent32**,
             sMVOpeningYosterFiles[0],
-            &lMVOpeningYosterGroundAnimJoint
+            &llMVOpeningYosterGroundAnimJoint
         ),
         0.0F
     );
@@ -222,7 +214,7 @@ void mvOpeningYosterMakeMainCamera(void)
         (
             AObjEvent32*,
             sMVOpeningYosterFiles[0],
-            &lMVOpeningYosterCamAnimJoint
+            &llMVOpeningYosterCamAnimJoint
         ),
         0.0F
     );

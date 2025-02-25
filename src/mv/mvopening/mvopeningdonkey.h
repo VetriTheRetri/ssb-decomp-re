@@ -5,8 +5,6 @@
 #include <sys/objdef.h>
 #include <PR/gbi.h>
 
-extern intptr_t lMVOpeningDonkeyCamAnimJoint; 					// 0x00000030
-
 extern void mvOpeningDonkeySetupFiles(void);
 extern void mvOpeningDonkeyInitName(SObj *sobj);
 extern void mvOpeningDonkeyMakeName(void);

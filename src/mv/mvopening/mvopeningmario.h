@@ -5,8 +5,6 @@
 #include <sys/objdef.h>
 #include <PR/gbi.h>
 
-extern intptr_t lMVOpeningMarioCamAnimJoint;                    // 0x00000150
-
 extern void mvOpeningMarioSetupFiles(void);
 extern void mvOpeningMarioInitName(SObj *sobj);
 extern void mvOpeningMarioMakeName(void);

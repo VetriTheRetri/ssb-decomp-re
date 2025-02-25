@@ -59,8 +59,10 @@
 -061: MVOpeningNewcomers1
 -062: MVOpeningNewcomers2
 -063: MVOpeningRoomTransition
+-064: MVOpeningJungle
 -065: MVOpeningCommon
 -066: MVOpeningClashWallpaper
+-067: MVOpeningYoster
 -068: MVOpeningCliff
 -069: MVOpeningStandoff
 -070: MVOpeningStandoffWallpaper
@@ -1184,8 +1186,18 @@ AnimJoint Overlay 0x714
 DisplayList Outline 0xF40
 AnimJoint Outline 0x11C4
 
+[64]
+AnimJoint Cam 0x0
+
 [65]
+AnimJoint MarioCam 0x0
+AnimJoint DonkeyCam 0x30
+AnimJoint SamusCam 0x60
+AnimJoint FoxCam 0x90
 AnimJoint LinkCam 0xC0
+AnimJoint YoshiCam 0xF0
+AnimJoint PikachuCam 0x120
+AnimJoint KirbyCam 0x150
 
 [66]
 AnimJoint Cam 0x4AB0
@@ -1205,6 +1217,12 @@ MObjSub UR 0x4410
 DisplayList UR 0x4668
 MatAnimJoint UR 0x4820
 AnimJoint UR 0x4AA0
+
+[67]
+DObjDesc Nest 0x9808
+DObjDesc Ground 0xb990
+AnimJoint Ground 0xbf70
+AnimJoint Cam 0xc940
 
 [68]
 DObjDesc Hills 0x37A0

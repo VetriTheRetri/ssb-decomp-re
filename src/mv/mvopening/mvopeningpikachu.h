@@ -5,8 +5,6 @@
 #include <sys/objdef.h>
 #include <PR/gbi.h>
 
-extern intptr_t lMVOpeningPikachuCamAnimJoint; 					// 0x00000120
-
 extern void mvOpeningPikachuSetupFiles(void);
 extern void mvOpeningPikachuInitName(SObj *sobj);
 extern void mvOpeningPikachuMakeName(void);

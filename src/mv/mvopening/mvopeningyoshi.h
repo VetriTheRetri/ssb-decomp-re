@@ -5,8 +5,6 @@
 #include <sys/objdef.h>
 #include <PR/gbi.h>
 
-extern intptr_t lMVOpeningYoshiCamAnimJoint; 					// 0x000000F0
-
 extern void mvOpeningYoshiSetupFiles(void);
 extern void mvOpeningYoshiInitName(SObj *sobj);
 extern void mvOpeningYoshiMakeName(void);

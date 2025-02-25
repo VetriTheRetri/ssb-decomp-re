@@ -5,8 +5,6 @@
 #include <sys/objdef.h>
 #include <PR/gbi.h>
 
-extern intptr_t lMVOpeningFoxCamAnimJoint; 					    // 0x000000C0
-
 extern void mvOpeningFoxSetupFiles(void);
 extern void mvOpeningFoxInitName(SObj *sobj);
 extern void mvOpeningFoxMakeName(void);

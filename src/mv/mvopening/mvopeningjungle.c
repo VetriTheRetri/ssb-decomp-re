@@ -4,19 +4,11 @@
 #include <mv/movie.h>
 #include <sc/scene.h>
 #include <sys/video.h>
+#include <reloc_data.h>
 
 extern void syTaskmanSetLoadScene();
 extern u32 sySchedulerGetTicCount();
 extern void syRdpSetViewport(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern uintptr_t D_NF_00000025;
-extern uintptr_t D_NF_00000040;
 
 // // // // // // // // // // // //
 //                               //
@@ -96,7 +88,7 @@ FTKeyEvent dMVOpeningJungleSamusKeyEvents[/* */] =
 };
 
 // 0x8018D934
-u32 dMVOpeningJungleFileIDs[/* */] = { &D_NF_00000025, &D_NF_00000040 };
+u32 dMVOpeningJungleFileIDs[/* */] = { &llIFCommonAnnounceCommonFileID, &llMVOpeningJungleFileID };
 
 // 0x8018D93C
 SYVideoSetup dMVOpeningJungleVideoSetup = SYVIDEO_SETUP_DEFAULT();
@@ -242,7 +234,7 @@ void mvOpeningJungleMakeGroundViewport(Vec3f unused)
     cobj->projection.persp.near = 50.0F;
     cobj->projection.persp.far = 15000.0F;
 
-    gcAddCObjCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningJungleFiles[1], &lMVOpeningJungleCamAnimJoint), 0.0F);
+    gcAddCObjCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningJungleFiles[1], &llMVOpeningJungleCamAnimJoint), 0.0F);
     gcAddGObjProcess(sMVOpeningJungleStageCameraGObj, gcPlayCamAnim, nGCProcessKindFunc, 1);
 
     gcPlayCamAnim(sMVOpeningJungleStageCameraGObj);

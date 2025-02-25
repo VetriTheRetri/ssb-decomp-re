@@ -5,8 +5,6 @@
 #include <sys/objdef.h>
 #include <PR/gbi.h>
 
-extern intptr_t lMVOpeningJungleCamAnimJoint;                    // 0x00000000
-
 extern void mvOpeningJungleSetupFiles(void);
 extern void mvOpeningJungleMakeGroundViewport(Vec3f unused);
 extern void mvOpeningJungleMakeFighters(void);

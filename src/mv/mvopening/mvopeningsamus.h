@@ -5,8 +5,6 @@
 #include <sys/objdef.h>
 #include <PR/gbi.h>
 
-extern intptr_t lMVOpeningSamusCamAnimJoint;                    // 0x00000060
-
 extern void mvOpeningSamusSetupFiles(void);
 extern void mvOpeningSamusInitName(SObj *sobj);
 extern void mvOpeningSamusMakeName(void);

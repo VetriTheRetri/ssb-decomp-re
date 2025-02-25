@@ -413,7 +413,7 @@ void mvOpeningPikachuMakePosedFighterCamera(void)
 
 	cobj->projection.persp.aspect = 5.0F / 11.0F;
 
-	gcAddCObjCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningPikachuFiles[1], &lMVOpeningPikachuCamAnimJoint), 0.0F);
+	gcAddCObjCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningPikachuFiles[1], &llMVOpeningCommonPikachuCamAnimJoint), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindFunc, 1);
 }
 

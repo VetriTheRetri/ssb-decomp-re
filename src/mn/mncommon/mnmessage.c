@@ -6,8 +6,6 @@
 
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
-extern uintptr_t D_NF_00000009;                             // 0x00000009
-
 // // // // // // // // // // // //
 //                               //
 //       INITIALIZED DATA        //
@@ -15,7 +13,7 @@ extern uintptr_t D_NF_00000009;                             // 0x00000009
 // // // // // // // // // // // //
 
 // 0x80132500
-u32 dMNMessageFileIDs[/* */] = { &llMNCommonFileID, &D_NF_00000009 };
+u32 dMNMessageFileIDs[/* */] = { &llMNCommonFileID, &llMNMessageFileID };
 
 // 0x80132508
 Lights1 dMNMessageLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x3C, 0x3C, 0x3C);

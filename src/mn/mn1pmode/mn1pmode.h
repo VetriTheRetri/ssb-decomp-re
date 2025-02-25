@@ -6,14 +6,6 @@
 #include <PR/gbi.h>
 #include <mn/mndef.h>
 
-extern intptr_t lMN1PModeOptionTabSprite;                   // 0x00001108
-extern intptr_t lMN1PModeText1PGameSprite;                  // 0x00002A28
-extern intptr_t lMN1PModeDecalControllerSprite;             // 0x000050F8
-extern intptr_t lMN1PModeLabel1PSprite;                     // 0x00005338
-extern intptr_t lMN1PModeTextTraningModeSprite;             // 0x00005AC8
-extern intptr_t lMN1PModeTextBonus1PracticeSprite;          // 0x00005F28
-extern intptr_t lMN1PModeTextBonus2PracticeSprite;          // 0x00006388
-
 extern void mn1PModeFuncLights(Gfx **dls);
 extern void mn1PModeSetOptionSpriteColors(GObj *gobj, s32 status, s32 option_id);
 extern void mn1PModeMakeOptionTab(GObj *gobj, f32 pos_x, f32 pos_y, s32 lrs);

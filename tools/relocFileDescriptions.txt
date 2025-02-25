@@ -14,6 +14,7 @@
 -012: CharacterNames
 -013: BonusPicture
 -014: BonusPicturePlatform
+-015: MNScreenAdjust
 -016: MNCharacters
 -017: MNPlayersCommon
 -018: MNPlayersGameModes
@@ -490,8 +491,8 @@ Sprite Race 0x1a658
 Sprite - 0x27388
 
 [15]
-Sprite 0x918 0x918
-Sprite 0x98a0 0x98a0
+Sprite Instruction 0x918
+Sprite Guide 0x98a0
 
 [16]
 Sprite Label 0x630

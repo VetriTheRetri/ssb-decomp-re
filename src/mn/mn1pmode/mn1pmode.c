@@ -9,8 +9,6 @@ extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 extern ub8 gSYMainDmemOK;
 
-extern uintptr_t D_NF_00000002;
-
 // // // // // // // // // // // //
 //                               //
 //             MACROS            //

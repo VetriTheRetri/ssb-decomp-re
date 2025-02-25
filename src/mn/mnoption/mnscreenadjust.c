@@ -3,9 +3,9 @@
 #include <gm/gmsound.h>
 #include <sys/controller.h>
 #include <sys/video.h>
+#include <reloc_data.h>
 
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
-extern uintptr_t D_NF_0000000F;                             // 0x0000000F
 
 // // // // // // // // // // // //
 //                               //
@@ -14,7 +14,7 @@ extern uintptr_t D_NF_0000000F;                             // 0x0000000F
 // // // // // // // // // // // //
 
 // 0x80132830
-u32 dMNScreenAdjustFileIDs[/* */] = { &D_NF_0000000F };
+u32 dMNScreenAdjustFileIDs[/* */] = { &llMNScreenAdjustFileID };
 
 // 0x80132838
 Lights1 dMNScreenAdjustLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x3C, 0x3C, 0x3C);
@@ -156,7 +156,7 @@ void mnScreenAdjustMakeGuide(void)
     gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT);
 
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNScreenAdjustFiles[0], &lMNScreenAdjustGuideSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNScreenAdjustFiles[0], &llMNScreenAdjustGuideSprite));
     
     sobj->pos.x = 10.0F;
     sobj->pos.y = 10.0F;
@@ -171,7 +171,7 @@ void mnScreenAdjustMakeInstruction(void)
     gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT);
 
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNScreenAdjustFiles[0], &lMNScreenAdjustInstructionSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNScreenAdjustFiles[0], &llMNScreenAdjustInstructionSprite));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;

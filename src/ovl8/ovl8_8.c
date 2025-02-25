@@ -796,7 +796,7 @@ s32 func_ovl8_8037C174()
 }
 
 // 0x8037C1AC
-void func_ovl8_8037C1AC(s32 arg0)
+void func_ovl8_8037C1AC(db4Shorts *arg0)
 {
     func_ovl8_80375D54(D_8038EFCC_1AB81C, arg0);
 }

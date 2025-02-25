@@ -2382,6 +2382,7 @@ segments:
       - [0x18EFE0, c, ovl8/ovl8_4]
       - [0x18FBA0, c, ovl8/ovl8_5]
       - [0x190CB0, c, ovl8/ovl8_6]
+      - [0x192100, c, ovl8/ovl8_6_1]
       - [0x192D80, c, ovl8/ovl8_7]
       - [0x1933B0, c, ovl8/ovl8_8]
       - [0x198B20, c, ovl8/ovl8_9]

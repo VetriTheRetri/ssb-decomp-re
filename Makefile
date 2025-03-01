@@ -6,6 +6,7 @@ SHELL = /bin/bash
 # ----- Defaults ------
 
 FULL_DISASM ?= 0
+RELOC_DATA ?= 1
 
 # Whether to colorize build messages
 COLOR ?= 1
@@ -358,6 +359,7 @@ assets/%.bin: assets/%.png
 	$(call print_3,Converting Image:,$<,$@)
 	$(V)$(PYTHON) tools/image_converter.py $< $@
 
+ifeq ($(RELOC_DATA),1)
 # Reloc data
 assets/relocData.bin: $(VPK0_FILES)
 	$(call print_2,Making reloc data binary:,relocData.bin,$(BLUE))
@@ -368,6 +370,7 @@ assets/relocData.bin: $(VPK0_FILES)
 assets/relocData/%.vpk0: assets/relocData/%.vpk0.bin
 	$(call print_3,Compressing File:,$<,$@)
 	$(V)$(PYTHON) tools/relocData.py compress $< $@
+endif
 
 -include $(DEP_FILES)
 

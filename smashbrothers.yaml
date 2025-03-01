@@ -477,8 +477,8 @@ segments:
     # ovl2 data
       - [auto, .data, gm/gmcommon]
       - [auto, .data, sc/sc1pmode/sc1pmanager]
-      - [0x0925D0, data, ftmanagertemp]
-      - [0x0A4500, .data, ft/ftphysics]
+      - [auto, .data, ft/ftmanager]
+      - [auto, .data, ft/ftphysics]
       - [auto, .data, ft/ftanimend]
       - [auto, .data, mp/mpprocess]
       - [auto, .data, mp/mpcommon]

@@ -19,6 +19,7 @@ extern void mvOpeningRoomMakeLamp(void);
 extern void mvOpeningRoomTissuesProcUpdate(GObj *gobj);
 extern void mvOpeningRoomMakeTissues(void);
 extern void mvOpeningRoomMakeBoss(void);
+extern void mvOpeningFighterProcUpdate(GObj *gobj);
 extern void mvOpeningRoomMakePulledFighter(s32 fkind);
 extern void mvOpeningRoomLogoWallpaperProcDisplay(GObj *gobj);
 extern void mvOpeningRoomMakeLogoWallpaper(void);

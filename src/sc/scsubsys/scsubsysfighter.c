@@ -77,7 +77,7 @@ void scSubsysFighterSetStatus(GObj *fighter_gobj, s32 status_id)
 }
 
 // 0x803905F4 - Is this to attach models to Master Hand in the opening movie?
-void func_ovl1_803905F4(GObj *this_gobj, GObj *other_gobj)
+void scSubsysFighterOpeningProcUpdate(GObj *this_gobj, GObj *other_gobj)
 {
     FTStruct *fp = ftGetStruct(this_gobj);
     s32 unused;

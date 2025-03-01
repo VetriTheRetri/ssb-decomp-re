@@ -14,7 +14,7 @@ extern f32 scSubsysFighterGetLightAngleY(void);
 extern u8 scSubsysFighterDrawLightColorGetAlpha(Gfx **dls);
 extern void scSubsysFighterProcUpdate(GObj *fighter_gobj);
 extern void scSubsysFighterSetStatus(GObj *fighter_gobj, s32 status_id);
-extern void func_ovl1_803905F4(GObj *this_gobj, GObj *other_gobj);
+extern void scSubsysFighterOpeningProcUpdate(GObj *this_gobj, GObj *other_gobj);
 extern void scSubsysFighterApplyVelTransN(GObj *fighter_gobj);
 
 extern sb32 scSubsysControllerCheckConnected(s32 status);

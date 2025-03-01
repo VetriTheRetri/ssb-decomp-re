@@ -315,10 +315,10 @@ void mvOpeningRoomMakeBoss(void)
 	scSubsysFighterSetStatus(fighter_gobj, 0x1000F);
 }
 
-// 0x801322A0 - Unused?
-void func_ovl34_801322A0(GObj *fighter_gobj)
+// 0x801322A0 - Referenced from scsubsysdata
+void mvOpeningFighterProcUpdate(GObj *fighter_gobj)
 {
-	func_ovl1_803905F4(sMVOpeningRoomBossGObj, fighter_gobj);
+	scSubsysFighterOpeningProcUpdate(sMVOpeningRoomBossGObj, fighter_gobj);
 }
 
 // 0x801322C8 - Unused?

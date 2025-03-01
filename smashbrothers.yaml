@@ -1673,7 +1673,7 @@ segments:
       - [auto, c, sc/scsubsys/scsubsysunused]
       - [auto, c, sc/scsubsys/scsubsysfighter]
       - [auto, c, sc/scsubsys/scsubsyscontroller]
-      - [0x1081C0, data, ovl1]
+      - [auto, .data, sc/scsubsys/scsubsysdata]
       - { start: auto, type: .bss, name: sc/scsubsys/scsubsysunused }
       - { start: auto, type: .bss, name: sc/scsubsys/scsubsysfighter }
       - { start: auto, type: .bss, name: sc/scsubsys/scsubsyscontroller }

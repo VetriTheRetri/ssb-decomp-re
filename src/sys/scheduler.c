@@ -60,7 +60,7 @@ SCClient *scClientList;
 SYTaskInfo *scMainQueueHead; // largest priority/unk04?
 SYTaskInfo *D_80044EC8_406D8; // smallest priority/unk04?
 SYTaskGfx *scCurrentGfxTask;  // actually a pointer to SYTaskGfx?
-SYTaskGfx *scCurrentAudioTask;  // largest priority queue 2
+SYTaskAudio *scCurrentAudioTask;  // largest priority queue 2
 SYTaskGfx *scPausedQueueHead;  // smallest priority queue 2
 SYTaskGfx *D_80044ED8_406E8;  // largest priority queue 3
 SYTaskGfx *scQueue3Head;  // smallest priority queue 3
@@ -685,7 +685,7 @@ void scExecuteGfxTask(SYTaskGfx *arg0) {
 }
 
 // 0x80001968
-void scExecuteAudioTask(SYTaskGfx *arg0) {
+void scExecuteAudioTask(SYTaskAudio *arg0) {
     gSYSchedulerAudioStartTimestamp = osGetCount();
 
     if ((scCurrentGfxTask != NULL) && (scCurrentGfxTask->info.state == 2)) {

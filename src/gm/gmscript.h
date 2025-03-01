@@ -249,66 +249,6 @@ typedef union GMColEventAll
 
 // // Next: 8012CB20
 
-// // 0x8012CA90 - ColAnim Script 1
-// uintptr_t GMColEventScript1[/* */] =
-// {
-//     gmColCommandSetColor1S1(),
-//     gmColCommandSetColor1S2(0xFF, 0xFF, 0xFF, 0x30),
-//     gmColCommandWaitS1(65535),
-//     gmColCommandGotoS1(),
-//     gmColCommandGotoS2(GMColEventScript1)
-// };
-
-// // 0x8012CAA4 - ColAnim Script 2
-// uintptr_t GMColEventScript2[/* */] =
-// {
-//     gmColCommandToggleColorOffS1(),
-//     gmColCommandEndS1()
-// };
-
-// // 0x8012CAAC - ColAnim Script 3
-// uintptr_t GMColEventScript3[/* */] =
-// {
-//     gmColCommandSetColor1S1(),
-//     gmColCommandSetColor1S2(0xFF, 0xFF, 0xFF, 0x82),
-//     gmColCommandBlendColor1S1(3),
-//     gmColCommandBlendColor1S2(0xFF, 0xFF, 0xFF, 0x32),
-//     gmColCommandWaitS1(3),
-//     gmColCommandToggleColorOffS1(),
-//     gmColCommandWaitS1(1),
-//     gmColCommandGotoS1(),
-//     gmColCommandGotoS2(GMColEventScript3)
-// };
-
-// // 0x8012CAD0 - ColAnim Script 4
-// uintptr_t GMColEventScript4[/* */] =
-// {
-//     gmColCommandSetColor1S1(),
-//     gmColCommandSetColor1S2(0x80, 0xFF, 0x80, 0x50),
-//     gmColCommandBlendColor1S1(3),
-//     gmColCommandBlendColor1S2(0x80, 0xFF, 0x80, 0x14),
-//     gmColCommandWaitS1(3),
-//     gmColCommandToggleColorOffS1(),
-//     gmColCommandWaitS1(1),
-//     gmColCommandGotoS1(),
-//     gmColCommandGotoS2(GMColEventScript4)
-// };
-
-// // 0x8012CAF4 - ColAnim Script 5
-// uintptr_t GMColEventScript5[/* */] =
-// {
-//     gmColCommandSetLightS1(90, 0),
-//     gmColCommandToggleColorOffS1(),
-//     gmColCommandWaitS1(1),
-//     gmColCommandSetColor1S1(),
-//     gmColCommandSetColor1S2(0xFF, 0xFF, 0xFF, 0xE6),
-//     gmColCommandWaitS1(1),
-//     gmColCommandBlendColor1S1(6),
-//     gmColCommandBlendColor1S2(0xFF, 0xFF, 0xFF, 0x1E),
-//     gmColCommandWaitS1(6),
-//     gmColCommandToggleColorOffS1(),
-//     gmColCommandEndS1()
-// };
 
 typedef struct GMRumbleEventDefault
 {

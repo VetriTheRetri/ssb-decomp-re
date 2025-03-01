@@ -127,7 +127,9 @@
 -195: SCStaffroll
 -196: MNSoundTest
 -197: IFCommonBattlePause
+-198: SCExplainGraphics
 -251: ITCommonData
+-252: SCExplainMain
 -255: GRPupupuMap
 -256: GRPupupuSmallMap
 -257: GRZebesMap
@@ -1825,6 +1827,17 @@ Sprite DecalControlStick 0x17a8
 Sprite DecalLTrigger 0x18c8
 
 [198]
+MObjSub Stick 0x5028
+DObjDesc Stick 0x5300
+MatAnimJoint StickNeutral 0x5390
+MatAnimJoint StickHoldUp 0x53C0
+MatAnimJoint StickTapUp 0x53F0
+MatAnimJoint StickHoldForward 0x5430
+MatAnimJoint StickTapForward 0x5450
+MObjSub TapSpark 0x5A98
+DisplayList TapSpark 0x5B68
+MatAnimJoint TapSpark 0x5C20
+DisplayList SpecialMoveRGB 0x5E40
 Sprite 0x6c58 0x6c58
 Sprite 0x72d8 0x72d8
 Sprite 0x7c38 0x7c38
@@ -1851,6 +1864,13 @@ Sprite 0x1d338 0x1d338
 Sprite 0x1d948 0x1d948
 Sprite 0x1df58 0x1df58
 Sprite 0x1e018 0x1e018
+
+[252]
+KeyEvent 0 0x0
+KeyEvent 1 0x9D4
+KeyEvent 2 0x13FC
+KeyEvent 3 0x1400
+ExplainPhase - 0x1404
 
 [296]
 Sprite Stock 0x72d0

@@ -3,6 +3,7 @@
 #include <if/interface.h>
 #include <sc/scene.h>
 #include <sys/video.h>
+#include <reloc_data.h>
 
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
@@ -12,8 +13,6 @@ extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t D_NF_000000C6;
-extern intptr_t D_NF_000000FC;
 extern intptr_t D_NF_00009628;
 extern intptr_t D_NF_00011F60;
 extern intptr_t D_NF_0001D338;
@@ -37,21 +36,21 @@ s32 dSCExplainPad0x8018E6F0 = 0;
 intptr_t dSCExplainStickMatAnimJoints[/* */] = 
 {
     0x0, 
-    &lSCExplainStickNeutralMatAnimJoint, 
-    &lSCExplainStickNeutralMatAnimJoint, 
-    &lSCExplainStickHoldUpMatAnimJoint, 
-    &lSCExplainStickTapUpMatAnimJoint, 
-    &lSCExplainStickHoldForwardMatAnimJoint, 
-    &lSCExplainStickTapForwardMatAnimJoint 
+    &llSCExplainGraphicsStickNeutralMatAnimJoint,
+    &llSCExplainGraphicsStickNeutralMatAnimJoint,
+    &llSCExplainGraphicsStickHoldUpMatAnimJoint,
+    &llSCExplainGraphicsStickTapUpMatAnimJoint,
+    &llSCExplainGraphicsStickHoldForwardMatAnimJoint,
+    &llSCExplainGraphicsStickTapForwardMatAnimJoint
 };
 
 // 0x8018E710
 intptr_t dSCExplainKeyKeyEventss[/* */] = 
 {
-    &lSCExplainKeyKeyEvents0,
-    &lSCExplainKeyKeyEvents1,
-    &lSCExplainKeyKeyEvents2,
-    &lSCExplainKeyKeyEvents3
+    &llSCExplainMain0KeyEvent,
+    &llSCExplainMain1KeyEvent,
+    &llSCExplainMain2KeyEvent,
+    &llSCExplainMain3KeyEvent
 };
 
 // 0x8018E720
@@ -143,23 +142,23 @@ void scExplainLoadExplainFiles(void)
 {
     sSCExplainGraphicsFileHead = lbRelocGetExternHeapFile
     (
-        (u32)&D_NF_000000C6,
+        (u32)&llSCExplainGraphicsFileID,
         syTaskmanMalloc
         (
-            lbRelocGetFileSize((u32)&D_NF_000000C6),
+            lbRelocGetFileSize((u32)&llSCExplainGraphicsFileID),
             0x10
         )
     );
     sSCExplainMainFileHead = lbRelocGetExternHeapFile
     (
-        (u32)&D_NF_000000FC,
+        (u32)&llSCExplainMainFileID,
         syTaskmanMalloc
         (
-            lbRelocGetFileSize((u32)&D_NF_000000FC),
+            lbRelocGetFileSize((u32)&llSCExplainMainFileID),
             0x10
         )
     );
-    sSCExplainPhase = lbRelocGetFileData(SCExplainPhase*, sSCExplainMainFileHead, &lSCExplainPhases);
+    sSCExplainPhase = lbRelocGetFileData(SCExplainPhase*, sSCExplainMainFileHead, &llSCExplainMainExplainPhase);
 }
 
 // 0x8018D14C
@@ -359,10 +358,10 @@ GObj* scExplainMakeControlStickInterface(void)
     gcSetupCustomDObjs
     (
         interface_gobj, 
-        ((uintptr_t)sSCExplainGraphicsFileHead + (intptr_t)&lSCExplainStickDObjDesc), 
-        NULL, 
-        nGCMatrixKindTra, 
-        nGCMatrixKindNull, 
+        ((uintptr_t)sSCExplainGraphicsFileHead + (intptr_t)&llSCExplainGraphicsStickDObjDesc),
+        NULL,
+        nGCMatrixKindTra,
+        nGCMatrixKindNull,
         nGCMatrixKindNull
     );
     gcAddMObjAll
@@ -372,7 +371,7 @@ GObj* scExplainMakeControlStickInterface(void)
         (
             MObjSub***, 
             sSCExplainGraphicsFileHead, 
-            &lSCExplainStickMObjSub
+            &llSCExplainGraphicsStickMObjSub
         )
     );
     gcAddGObjProcess(interface_gobj, scExplainProcUpdateControlStickSprite, nGCProcessKindFunc, 5);
@@ -413,7 +412,7 @@ void scExplainUpdateTapSparkEffect(void)
         dobj->translate.vec.f.x = pos->x + 15.0F;
         dobj->translate.vec.f.y = pos->y + 5.0F;
     }
-    gcAddAnimAll(gobj, NULL, lbRelocGetFileData(AObjEvent32***, sSCExplainGraphicsFileHead, &lSCExplainTapSparkMatAnimJoint), 0.0F);
+    gcAddAnimAll(gobj, NULL, lbRelocGetFileData(AObjEvent32***, sSCExplainGraphicsFileHead, &llSCExplainGraphicsTapSparkMatAnimJoint), 0.0F);
     gcPlayAnimAll(gobj);
 
     gobj->flags = GOBJ_FLAG_NONE;
@@ -436,9 +435,9 @@ GObj* scExplainMakeTapSpark(void)
     GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_PRIORITY_DEFAULT);
 
     gcAddGObjDisplay(interface_gobj, scExplainTapSparkProcDisplay, 27, GOBJ_PRIORITY_DEFAULT, ~0);
-    gcAddDObjForGObj(interface_gobj, (void*) ((uintptr_t)sSCExplainGraphicsFileHead + (intptr_t)&lSCExplainTapSparkDisplayList));
+    gcAddDObjForGObj(interface_gobj, (void*) ((uintptr_t)sSCExplainGraphicsFileHead + (intptr_t)&llSCExplainGraphicsTapSparkDisplayList));
     gcAddXObjForDObjFixed(DObjGetStruct(interface_gobj), nGCMatrixKindTra, 0);
-    gcAddMObjAll(interface_gobj, lbRelocGetFileData(MObjSub***, sSCExplainGraphicsFileHead, &lSCExplainTapSparkMObjSub));
+    gcAddMObjAll(interface_gobj, lbRelocGetFileData(MObjSub***, sSCExplainGraphicsFileHead, &llSCExplainGraphicsTapSparkMObjSub));
     gcAddGObjProcess(interface_gobj, scExplainTapSparkProcUpdate, nGCProcessKindFunc, 5);
 
     interface_gobj->flags = GOBJ_FLAG_HIDDEN;
@@ -479,7 +478,7 @@ GObj* scExplainMakeSpecialMoveRGB(void)
         GOBJ_PRIORITY_DEFAULT
     );
     gcAddGObjDisplay(interface_gobj, scExplainTapSparkProcDisplay, 27, GOBJ_PRIORITY_DEFAULT, ~0);
-    gcAddDObjForGObj(interface_gobj, lbRelocGetFileData(void*, sSCExplainGraphicsFileHead, &lSCExplainSpecialMoveRGBDisplayList));
+    gcAddDObjForGObj(interface_gobj, lbRelocGetFileData(void*, sSCExplainGraphicsFileHead, &llSCExplainGraphicsSpecialMoveRGBDisplayList));
     gcAddXObjForDObjFixed(DObjGetStruct(interface_gobj), nGCMatrixKindTra, 0);
 
     interface_gobj->flags = GOBJ_FLAG_HIDDEN;

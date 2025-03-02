@@ -1997,7 +1997,7 @@ sb32 func_ovl0_800CB140(Mtx *mtx, DObj *dobj, Gfx **dls)
 #else
 #pragma GLOBAL_ASM("asm/nonmatchings/lb/lbcommon/func_ovl0_800CB140.s")
 #pragma GLOBAL_ASM("asm/nonmatchings/lb/lbcommon/D_ovl0_800D5E10.s")
-#endif
+#endif /* NON_MATCHING */
 
 // 0x800CB2F0
 sb32 func_ovl0_800CB2F0(Mtx *mtx, DObj *dobj, Gfx **dls)
@@ -2774,7 +2774,7 @@ void lbCommonPrepSObjDraw(Gfx **dls, SObj *sobj)
 }
 #else
 #pragma GLOBAL_ASM("asm/nonmatchings/lb/lbcommon/lbCommonPrepSObjDraw.s")
-#endif
+#endif /* NON_MATCHING */
 
 // 0x800CCEAC
 void lbCommonClearExternSpriteParams(void)

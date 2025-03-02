@@ -3,6 +3,7 @@
 
 #include <sys/debug.h>
 #include <sys/main.h>
+#include <sys/video.h>
 #include <sys/controller.h>
 
 #include <config.h>
@@ -12,6 +13,7 @@
 
 #include <PR/os.h>
 #include <PR/rcp.h>
+#include <PR/viint.h>
 #include <PR/sptask.h>
 #include <PR/ultratypes.h>
 

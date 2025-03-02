@@ -55,6 +55,7 @@ u32 dSYTaskmanUpdateCount = 0;
 u32 dSYTaskmanFrameCount = 0;
 
 // Ten total ucodes + a terminator?
+// 0x8003B6EC
 SYTaskmanUcode dSYTaskmanUcodes[/* */] =
 {
 	NewUcodeInfo(gspF3DEX2_fifo),

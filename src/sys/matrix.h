@@ -10,6 +10,7 @@ typedef union SYMatrixHub
 {
     Mtx *gbi;
     Mtx44f *f;
+    void **p;
 
 } SYMatrixHub;
 

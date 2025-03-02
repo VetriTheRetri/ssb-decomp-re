@@ -64,6 +64,7 @@ Vp gSYRdpViewport;
 //                               //
 // // // // // // // // // // // //
 
+// 0x80007080
 #ifdef NON_MATCHING
 void syRdpSetViewport(Vp *viewport, f32 ulx, f32 uly, f32 lrx, f32 lry)
 {
@@ -80,7 +81,7 @@ void syRdpSetViewport(Vp *viewport, f32 ulx, f32 uly, f32 lrx, f32 lry)
 }
 #else
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/rdp/syRdpSetViewport.s")
-#endif
+#endif /* NON_MATCHING */
 
 void syRdpSetDefaultViewport(Vp *vp)
 {

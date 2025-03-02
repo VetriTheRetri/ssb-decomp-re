@@ -7,6 +7,7 @@ SHELL = /bin/bash
 
 FULL_DISASM ?= 0
 RELOC_DATA ?= 1
+NON_MATCHING ?= 0
 
 # Whether to colorize build messages
 COLOR ?= 1

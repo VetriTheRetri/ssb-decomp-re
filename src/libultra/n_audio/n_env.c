@@ -495,7 +495,7 @@ char __alCSeqNextDelta(ALCSeq *seq, s32 *pDeltaTicks)
 }
 #else
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/__alCSeqNextDelta.s")
-#endif
+#endif /* NON_MATCHING */
 
 //split 0x29860
 
@@ -604,7 +604,7 @@ ALMicroTime alEvtqNextEvent(ALEventQueue *evtq, ALEvent *evt)
 }
 #else
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/alEvtqNextEvent.s")
-#endif
+#endif /* NON_MATCHING */
 
 //0x29B70
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/alEvtqNew.s")
@@ -680,7 +680,7 @@ static void __CSPHandleMetaMsg(ALCSPlayer *seqp, ALEvent *event);
 // 0x29FA8
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_800293A8_29FA8.s")
 
-#if 0
+#ifdef NON_MATCHING
 // Close to matching, but not quite
 //static
 s16 __n_getRate(f32 vol, f32 tgt, s32 count, u16* ratel)
@@ -728,7 +728,7 @@ s16 __n_getRate(f32 vol, f32 tgt, s32 count, u16* ratel)
 }
 #else
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/__n_getRate.s")
-#endif
+#endif /* NON_MATCHING */
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/_decodeChunk.s")
 
@@ -775,7 +775,7 @@ s16 __n_getVol(s16 ivol, s32 samples, s16 ratem, u16 ratel)
 }
 #else
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/__n_getVol.s")
-#endif
+#endif /* NON_MATCHING */
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/n_alEnvmixerPull.s")
 

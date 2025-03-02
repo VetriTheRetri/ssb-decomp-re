@@ -1,5 +1,6 @@
 #include <lb/library.h>
 #include <sys/matrix.h>
+#include <ef/efdef.h>
 
 extern u16 gSYSinTable[0x800];
 
@@ -876,7 +877,7 @@ LBParticle* lbParticleUpdateStruct(LBParticle *this_pc, LBParticle *other_pc, s3
                             current_pc->pos.y = this_pc->pos.y;
                             current_pc->pos.z = this_pc->pos.z;
                             current_pc->generator_id = this_pc->generator_id;
-                            current_pc->gen = this_pc->gen;
+                            current_pc->gn = this_pc->gn;
                             current_pc->xf = this_pc->xf;
                                 
                             if (current_pc->xf != NULL)
@@ -967,7 +968,7 @@ LBParticle* lbParticleUpdateStruct(LBParticle *this_pc, LBParticle *other_pc, s3
                             current_pc->pos.y = this_pc->pos.y;
                             current_pc->pos.z = this_pc->pos.z;
                             current_pc->generator_id = this_pc->generator_id;
-                            current_pc->gen = this_pc->gen;
+                            current_pc->gn = this_pc->gn;
                             current_pc->xf = this_pc->xf;
 
                             if (current_pc->xf != NULL)
@@ -978,7 +979,7 @@ LBParticle* lbParticleUpdateStruct(LBParticle *this_pc, LBParticle *other_pc, s3
                         }
                         break;
                         
-                    case LBPARTICLE_OPCODE_MULVEL: 
+                    case LBPARTICLE_OPCODE_MULVELUFORM: 
                         csr = lbParticleReadFloatBigEnd(csr, &fvar1);
                             
                         this_pc->vel.x *= fvar1;
@@ -1069,7 +1070,7 @@ LBParticle* lbParticleUpdateStruct(LBParticle *this_pc, LBParticle *other_pc, s3
                             current_pc->vel.y = this_pc->vel.y;
                             current_pc->vel.z = this_pc->vel.z;
                             current_pc->generator_id = this_pc->generator_id;
-                            current_pc->gen = this_pc->gen;
+                            current_pc->gn = this_pc->gn;
                             current_pc->xf = this_pc->xf;
                                 
                             if (current_pc->xf != NULL)
@@ -1334,7 +1335,7 @@ LBParticle* lbParticleUpdateStruct(LBParticle *this_pc, LBParticle *other_pc, s3
     }
     if (this_pc->flags & 4)
     {
-        gen = this_pc->gen;
+        gn = this_pc->gn;
 
         syGetSinCosUShort(sx1, cx1, this_pc->gravity, angle_id);
         syGetSinCosUShort(sx2, cx2, this_pc->friction, angle_id);
@@ -1406,7 +1407,7 @@ LBParticle* lbParticleUpdateStruct(LBParticle *this_pc, LBParticle *other_pc, s3
 }
 #else
 #pragma GLOBAL_ASM("asm/nonmatchings/lb/lbparticle/lbParticleUpdateStruct.s")
-#endif
+#endif /* NON_MATCHING */
 
 // 0x800D0C74
 void lbParticleStructProcRun(GObj *gobj)
@@ -2118,7 +2119,7 @@ void lbParticleDrawTextures(GObj *gobj)
 }
 #else
 #pragma GLOBAL_ASM("asm/nonmatchings/lb/lbparticle/lbParticleDrawTextures.s")
-#endif
+#endif /* NON_MATCHING */
 
 // 0x800D2720
 void lbParticleAddAttachDObj(s32 bank_id, DObj *dobj)
@@ -2301,7 +2302,7 @@ void lbParticleGeneratorProcRun(GObj *gobj)
     f32 spB8;
     f32 vmag;
     
-    gen = sLBParticleGeneratorsQueued;
+    gn = sLBParticleGeneratorsQueued;
     sLBParticleGeneratorsLastProcessed = NULL;
     
     while (gn != NULL)
@@ -2310,7 +2311,7 @@ void lbParticleGeneratorProcRun(GObj *gobj)
             {
                 sLBParticleGeneratorsLastProcessed = gn;
 
-                gen = gn->next;
+                gn = gn->next;
 
                 continue;
             }
@@ -2318,7 +2319,7 @@ void lbParticleGeneratorProcRun(GObj *gobj)
             {
                 sLBParticleGeneratorsLastProcessed = gn;
 
-                gen = gn->next;
+                gn = gn->next;
 
                 continue;
             }
@@ -2446,7 +2447,7 @@ void lbParticleGeneratorProcRun(GObj *gobj)
                             gn->gravity,
                             gn->friction,
                             0,
-                            gen
+                            gn
                         );
                         break;
                         
@@ -2478,7 +2479,7 @@ void lbParticleGeneratorProcRun(GObj *gobj)
                             gn->gravity,
                             gn->friction,
                             0,
-                            gen
+                            gn
                         );
                         break;
                         
@@ -2520,7 +2521,7 @@ void lbParticleGeneratorProcRun(GObj *gobj)
                                 angle1,
                                 angle2,
                                 0,
-                                gen
+                                gn
                             ) != NULL
                         )
                         {
@@ -2532,7 +2533,7 @@ void lbParticleGeneratorProcRun(GObj *gobj)
                         // OK seriously this order swap is ridiculous
                         if (sLBParticleGeneratorFuncDefault != NULL)
                         {
-                            sLBParticleGeneratorFuncDefault(gen, &vel);
+                            sLBParticleGeneratorFuncDefault(gn, &vel);
                         }
                         break;
                     }
@@ -2573,7 +2574,7 @@ void lbParticleGeneratorProcRun(GObj *gobj)
                         gn->next = sLBParticleGeneratorsAllocFree;
                         sLBParticleGeneratorsAllocFree = gn;
                 
-                        gen = next_gn;
+                        gn = next_gn;
                 
                         gLBParticleGeneratorsUsedNum--;
 
@@ -2583,13 +2584,13 @@ void lbParticleGeneratorProcRun(GObj *gobj)
             }
             sLBParticleGeneratorsLastProcessed = gn;
 
-            gen = gn->next;
+            gn = gn->next;
         }
     
 }
 #else
 #pragma GLOBAL_ASM("asm/nonmatchings/lb/lbparticle/lbParticleGeneratorProcRun.s")
-#endif
+#endif /* NON_MATCHING */
 
 // 0x800D353C
 LBGenerator* lbParticleGetGenerator(void)

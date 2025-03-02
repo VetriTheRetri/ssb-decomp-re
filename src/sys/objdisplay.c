@@ -323,6 +323,7 @@ void func_80010C2C(Mtx *mtx_l, DObj *dobj, sb32 is_translate)
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunknown-pragmas"
 
+// 0x80010D70
 #ifdef NON_MATCHING
 s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
 {
@@ -1199,7 +1200,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
 }
 #else
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/objdisplay/gcPrepDObjMatrix.s")
-#endif
+#endif /* NON_MATCHING */
 
 // 0x80012D90
 void gcDrawMObjForDObj(DObj *dobj, Gfx **dl_head)
@@ -2603,8 +2604,8 @@ void unref_80015F6C(GObj *gobj)
                         }
                     }
                     else continue;
-    }
-}
+                }
+            }
             if (dobj->sib_prev == NULL)
             {
                 current_dobj = dobj->sib_next;

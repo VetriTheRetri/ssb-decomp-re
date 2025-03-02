@@ -2287,3 +2287,5 @@ lMNVSRecordMainDigit9Sprite = 0x00000890;
 dSYAudioPublicSettings = 0x8003CB3C;
 dSYAudioPublicSettings2 = dSYAudioPublicSettings;
 dSYAudioPublicSettings3 = dSYAudioPublicSettings;
+
+D_8003B6EB_3C2EB = dSYTaskmanFrameCount + 3; /* u32 to u8 cast causing assembly in objdisplay to use this symbol */

@@ -3,24 +3,37 @@
 #include <sys/objtypes.h>
 
 typedef struct unkdata1 {
-  s32 unk0[0x21];
-  s32 unk84;
+	s32 unk0[0x21];
+	s32 unk84;
 } unkdata1;
 
 typedef struct unkdata0 {
-  s32 unk0;
-  s32 unk4;
-  unkdata1* unk8;
+	s32 unk0;
+	s32 unk4;
+	unkdata1* unk8;
 } unkdata0;
+
+
+// DATA
+s32 D_ovl8_8038A1A0[] =
+{
+	0x00000000, 0x00000000, 0x00000000, 0x8037C440,
+	0x00000000, 0x00000000
+};
+
+s32 D_ovl8_8038A1B8 = 0;
+
+s32 D_ovl8_8038A1BC = 0;
+
+s32 D_ovl8_8038A1C0 = 0;
+
+GObj* D_ovl8_8038A1C4 = NULL;
+
+GObj* D_ovl8_8038A1C8 = NULL;
 
 extern u8 D_8038EFD0_1AB820;
 extern s32 D_8038EFD4_1AB824;
-extern s32 D_ovl8_8038A1B8;
-extern s32 D_ovl8_8038A1A0;
-extern s32 D_ovl8_8038A1BC;
-extern s32 D_ovl8_8038A1C0;
-extern GObj* D_ovl8_8038A1C4;
-extern GObj* D_ovl8_8038A1C8;
+
 void func_ovl8_803717C0(void*);
 
 void* func_ovl8_8037C3C0(s32* arg0)

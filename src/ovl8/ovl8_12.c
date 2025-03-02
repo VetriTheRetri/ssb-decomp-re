@@ -2,7 +2,95 @@
 
 #include <sys/develop.h>
 
-extern dbFunction D_ovl8_8038A700;
+extern void func_ovl8_8037CEE8(void*);
+extern void func_ovl8_803718FC(void*);
+extern void func_ovl8_80371930(void*);
+extern void func_ovl8_80371960(void*);
+extern void func_ovl8_80371968(void*);
+extern void func_ovl8_80371970(void*);
+extern void func_ovl8_80371978(void*);
+extern void func_ovl8_80371980(void*);
+extern void func_ovl8_803719A4(void*);
+extern void func_ovl8_803719C8(void*);
+extern void func_ovl8_80371A2C(void*);
+extern void func_ovl8_80371ABC(void*);
+extern void func_ovl8_80371AC4(void*);
+extern void func_ovl8_80371ACC(void*);
+extern void func_ovl8_80371AD8(void*);
+extern void func_ovl8_80371B34(void*);
+extern void func_ovl8_80371B98(void*);
+extern void func_ovl8_80371BCC(void*);
+extern void func_ovl8_80371C1C(void*);
+extern void func_ovl8_80371C2C(void*);
+extern void func_ovl8_80371C50(void*);
+extern void func_ovl8_80371C8C(void*);
+extern void func_ovl8_80371CB8(void*);
+extern void func_ovl8_80371D00(void*);
+extern void func_ovl8_80371D08(void*);
+extern void func_ovl8_80371D64(void*);
+extern void func_ovl8_80371D74(void*);
+extern void func_ovl8_80371DC0(void*);
+extern void func_ovl8_80371DD0(void*);
+extern void func_ovl8_80371DDC(void*);
+extern void func_ovl8_80371DE4(void*);
+extern void func_ovl8_80371DEC(void*);
+extern void func_ovl8_80371DF4(void*);
+extern void func_ovl8_80371DFC(void*);
+extern void func_ovl8_80371E04(void*);
+extern void func_ovl8_80371E0C(void*);
+extern void func_ovl8_80371E14(void*);
+extern void func_ovl8_80371E1C(void*);
+extern void func_ovl8_80371E24(void*);
+extern void func_ovl8_80371E2C(void*);
+extern void func_ovl8_80371E58(void*);
+
+dbFunction D_ovl8_8038A700[] =
+{
+	0x0000, NULL,
+	0x0000, func_ovl8_8037CEE8,
+	0x0000, func_ovl8_803718FC,
+	0x0000, func_ovl8_80371930,
+	0x0000, func_ovl8_80371960,
+	0x0000, func_ovl8_80371968,
+	0x0000, func_ovl8_80371970,
+	0x0000, func_ovl8_80371978,
+	0x0000, func_ovl8_80371980,
+	0x0000, func_ovl8_803719A4,
+	0x0000, func_ovl8_803719C8,
+	0x0000, func_ovl8_80371A2C,
+	0x0000, func_ovl8_80371ABC,
+	0x0000, func_ovl8_80371AC4,
+	0x0000, func_ovl8_80371ACC,
+	0x0000, func_ovl8_80371AD8,
+	0x0000, func_ovl8_80371B34,
+	0x0000, func_ovl8_80371B98,
+	0x0000, func_ovl8_80371BCC,
+	0x0000, func_ovl8_80371C1C,
+	0x0000, func_ovl8_80371C2C,
+	0x0000, func_ovl8_80371C50,
+	0x0000, func_ovl8_80371C8C,
+	0x0000, func_ovl8_80371CB8,
+	0x0000, func_ovl8_80371D00,
+	0x0000, func_ovl8_80371D08,
+	0x0000, func_ovl8_80371D64,
+	0x0000, func_ovl8_80371D74,
+	0x0000, func_ovl8_80371DC0,
+	0x0000, func_ovl8_80371DD0,
+	0x0000, func_ovl8_80371DDC,
+	0x0000, func_ovl8_80371DE4,
+	0x0000, func_ovl8_80371DEC,
+	0x0000, func_ovl8_80371DF4,
+	0x0000, func_ovl8_80371DFC,
+	0x0000, func_ovl8_80371E04,
+	0x0000, func_ovl8_80371E0C,
+	0x0000, func_ovl8_80371E14,
+	0x0000, func_ovl8_80371E1C,
+	0x0000, func_ovl8_80371E24,
+	0x0000, func_ovl8_80371E2C,
+	0x0000, func_ovl8_80371E58,
+	0x0000, NULL,
+	0x0000, NULL
+};
 
 // 0x8037CE40
 void* func_ovl8_8037CE40(dbUnknownLinkStruct* arg0)

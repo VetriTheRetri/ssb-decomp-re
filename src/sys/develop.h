@@ -285,4 +285,15 @@ typedef struct dbUnknown5_2
     dbUnknown5 *dbUnknown5_2_0x4C;
 } dbUnknown5_2;
 
+typedef struct dbBytesCopy2
+{
+    db4Shorts unk_dbbytescopy_0x0;
+    db4Bytes unk_dbbytescopy_0x8;
+    db4Bytes unk_dbbytescopy_0xC;
+    u16 unk_dbbytescopy_0x10;
+    s32 unk_dbbytescopy_0x14;
+    s32 unk_dbbytescopy_0x18;
+    s16 unk_dbbytescopy_0x1C;
+} dbBytesCopy2;
+
 #endif

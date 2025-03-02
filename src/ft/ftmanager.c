@@ -2,6 +2,7 @@
 #include <sc/scene.h>
 #include <sys/develop.h>
 #include <lb/library.h>
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -11,7 +12,6 @@
 
 extern FTFileSize gSCManagerFighterFileSizes[nFTKindEnumCount];
 
-extern intptr_t D_NF_000000A3;
 extern intptr_t D_NF_000000C9;
 
 // // // // // // // // // // // //
@@ -5055,7 +5055,7 @@ void ftManagerAllocFighter(u32 data_flags, s32 allocs_num)
     gFTManagerMotionCount = 1;
     gFTManagerStatUpdateCount = 1;
 
-    gFTManagerCommonFile = lbRelocGetExternHeapFile((u32)&D_NF_000000A3, syTaskmanMalloc(lbRelocGetFileSize((u32)&D_NF_000000A3), 0x10));
+    gFTManagerCommonFile = lbRelocGetExternHeapFile((u32)&llFTManagerCommonFileID, syTaskmanMalloc(lbRelocGetFileSize((u32)&llFTManagerCommonFileID), 0x10));
 
     lbRelocGetExternHeapFile((u32)&D_NF_000000C9, syTaskmanMalloc(lbRelocGetFileSize((u32)&D_NF_000000C9), 0x10));
 

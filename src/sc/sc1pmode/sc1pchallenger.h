@@ -6,11 +6,6 @@
 #include <PR/gbi.h>
 #include <sc/scdef.h>
 
-extern intptr_t lSC1PChallengerTextChallengerSprite;            // 0x000001F8
-extern intptr_t lSC1PChallengerTextApproachingSprite;           // 0x00000488
-extern intptr_t lSC1PChallengerTextWarningSprite;               // 0x00000968
-extern intptr_t lSC1PChallengerDecalExclaimSprite;              // 0x00000DB0
-
 extern void sc1PChallengerFuncLights(Gfx **dls);
 extern void sc1PChallengerDecalsProcDisplay(GObj *gobj);
 extern void sc1PChallengerMakeDecals(void);

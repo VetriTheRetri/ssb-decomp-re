@@ -10,6 +10,7 @@
 -007: MNVSOptions
 -008: MNVSItemSwitch
 -009: MNMessage
+-010: SC1PChallenger
 -011: SC1PIntro
 -012: CharacterNames
 -013: BonusPicture
@@ -93,6 +94,8 @@
 -099: StageSector
 -151: SC1PStageClear3
 -161: MVOpeningSectorArwing
+# FTManagerCommon contains dobj, mobjsub, and animjoint for effects
+-163: FTManagerCommon
 -164: IFCommonPlayerDamage
 -165: IFCommonTimer
 -166: IFCommonPlayer
@@ -394,10 +397,10 @@ Sprite UnlockItemSwitch 0x4eb0
 Sprite DecalExclaim 0x5300
 
 [10]
-Sprite 0x1f8 0x1f8
-Sprite 0x488 0x488
-Sprite 0x968 0x968
-Sprite 0xdb0 0xdb0
+Sprite ChallengerText 0x1f8
+Sprite ApproachingText 0x488
+Sprite WarningText 0x968
+Sprite DecalExclaim 0xdb0
 
 [11]
 Sprite VSDecal 0x1f10

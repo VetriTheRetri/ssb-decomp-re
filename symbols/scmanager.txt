@@ -1,0 +1,1 @@
+scManagerRunPrintGObjStatus = 0x800A3040; // segment:scmanager

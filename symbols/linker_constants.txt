@@ -1,3 +1,6 @@
+lEFManagerFoxEntryArwingLAnimJoint = 0x000590;
+lEFManagerFoxEntryArwingRAnimJoint = 0x0009E0;
+
 lSYKseg1ValidateFileID = 0x000000C7;
 lSYKseg1ValidateFunc = 0x00000000;
 lSYKseg1ValidateNBytes = 0x00000030;

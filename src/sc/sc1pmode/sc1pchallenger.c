@@ -1,10 +1,9 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
 #include <sys/video.h>
+#include <reloc_data.h>
 
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
-
-extern uintptr_t D_NF_0000000A;                                 // 0x0000000A
 
 // // // // // // // // // // // //
 //                               //
@@ -13,7 +12,7 @@ extern uintptr_t D_NF_0000000A;                                 // 0x0000000A
 // // // // // // // // // // // //
 
 // 0x80132370
-u32 dSC1PChallengerFileIDs[/* */] = { &D_NF_0000000A };
+u32 dSC1PChallengerFileIDs[/* */] = { &llSC1PChallengerFileID };
 
 // 0x80132378
 Lights1 dSC1PChallengerLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x3C, 0x3C, 0x3C);
@@ -147,7 +146,7 @@ void sc1PChallengerMakeDecals(void)
     gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_PRIORITY_DEFAULT);
     gcAddGObjDisplay(gobj, sc1PChallengerDecalsProcDisplay, 0, GOBJ_PRIORITY_DEFAULT, ~0);
     
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PChallengerFiles[0], &lSC1PChallengerDecalExclaimSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PChallengerFiles[0], &llSC1PChallengerDecalExclaimSprite));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -155,7 +154,7 @@ void sc1PChallengerMakeDecals(void)
     sobj->pos.x = 139.0F;
     sobj->pos.y = 22.0F;
     
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PChallengerFiles[0], &lSC1PChallengerTextWarningSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PChallengerFiles[0], &llSC1PChallengerWarningTextSprite));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -167,7 +166,7 @@ void sc1PChallengerMakeDecals(void)
     sobj->pos.x = 100.0F;
     sobj->pos.y = 63.0F;
     
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PChallengerFiles[0], &lSC1PChallengerTextChallengerSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PChallengerFiles[0], &llSC1PChallengerChallengerTextSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -179,7 +178,7 @@ void sc1PChallengerMakeDecals(void)
     sobj->pos.x = 55.0F;
     sobj->pos.y = 127.0F;
     
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PChallengerFiles[0], &lSC1PChallengerTextApproachingSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PChallengerFiles[0], &llSC1PChallengerApproachingTextSprite));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;

@@ -91,7 +91,7 @@ uintptr_t D_ovl2_8012CB60[] =
 	0x20000000,
 	0x04000002,
 	0x08000000,
-	0x8012CB60
+	gmColCommandGotoS2(D_ovl2_8012CB60)
 };
 
 uintptr_t D_ovl2_8012CB7C[] =

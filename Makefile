@@ -6,7 +6,7 @@ SHELL = /bin/bash
 # ----- Defaults ------
 
 FULL_DISASM ?= 0
-RELOC_DATA ?= 1
+RELOC_DATA ?= 0
 NON_MATCHING ?= 0
 
 # Whether to colorize build messages
@@ -257,7 +257,7 @@ clean:
 	rm -f src/credits/titles.credits.encoded src/credits/titles.credits.metadata
 	rm -f src/credits/info.credits.encoded src/credits/info.credits.metadata
 	rm -f src/credits/companies.credits.encoded src/credits/companies.credits.metadata
-	rm -f assets/relocData.bin include/reloc_data.h symbols/reloc_data_symbols.txt
+	rm -f include/reloc_data.h symbols/reloc_data_symbols.txt
 	@echo removing vpk0 files
 	@rm -f $(VPK0_FILES)
 

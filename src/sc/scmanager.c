@@ -912,7 +912,7 @@ void scManagerRunLoop(sb32 arg)
 				mnModeSelectStartScene();
 				break;
 
-			case 8:
+			case nSCKind1PMode:
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[18]);
 				mn1PModeStartScene();

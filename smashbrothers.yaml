@@ -347,9 +347,9 @@ segments:
     start: 0x0406D0
     vram: 0x800A1980
     subsegments:
-      - [auto, c, sc/scmanager]
-      - [auto, .data, sc/scmanager]
-      - [auto, .rodata, sc/scmanager]
+      - [0x0406D0, c, sc/scmanager]
+      - [0x041DC0, .data, sc/scmanager]
+      - [0x042F30, .rodata, sc/scmanager]
       - { start: auto, type: .bss, name: sc/scmanager }
 
   - name: zbuffer
@@ -365,29 +365,24 @@ segments:
     vram: 0x800C7840
     subsegments:
     # ovl0 text
-      - [auto, c, lb/lbcommon]
-      - [auto, c, lb/lbreloc]
+      - [0x043220, c, lb/lbcommon]
+      - [0x049000, c, lb/lbreloc]
       - [0x049A00, pad, pad0x049A00]
       - [0x049A20, c, lb/lbparticle]
-      - [auto, c, lb/lbfade]
-      - [auto, c, lb/lbtransition]
-      - [auto, c, lb/lbbackup]
+      - [0x04F860, c, lb/lbfade]
+      - [0x04FB10, c, lb/lbtransition]
+      - [0x04FF00, c, lb/lbbackup]
 
     # ovl0 data
-      - [auto, .data, lb/lbcommon]
-      - [auto, .data, lb/lbreloc]
-      - [auto, .data, lb/lbparticle]
-      - [auto, .data, lb/lbfade]
-      - [auto, .data, lb/lbtransition]
-      - [auto, .data, lb/lbbackup]
+      - [0x050680, .data, lb/lbcommon]
+      - [0x051730, .data, lb/lbparticle]
+      - [0x051740, .data, lb/lbtransition]
 
     # ovl0 rodata
       - [0x0517F0, .rodata, lb/lbcommon]
-      - [auto, .rodata, lb/lbreloc]
+      - [0x0518C0, .rodata, lb/lbreloc]
       - [0x0519A0, .rodata, lb/lbparticle]
-      - [auto, .rodata, lb/lbfade]
-      - [auto, .rodata, lb/lbtransition]
-      - [auto, .rodata, lb/lbbackup]
+      - [0x051C80, .rodata, lb/lbtransition]
 
     # ovl0 bss
       - { start: auto, type: .bss, name: lb/lbcommon }
@@ -395,7 +390,6 @@ segments:
       - { start: auto, type: .bss, name: lb/lbparticle}
       - { start: auto, type: .bss, name: lb/lbfade }
       - { start: auto, type: .bss, name: lb/lbtransition }
-      - { start: auto, type: .bss, name: lb/lbbackup }
 
   - name: ovl2
     type: code
@@ -404,222 +398,105 @@ segments:
     exclusive_ram_id: overlay_800D6490
     subsegments:
     # ovl2 text
-      - [auto, c, gm/gmcommon]
-      - [auto, c, sc/sc1pmode/sc1pmanager]
-      - [auto, c, ft/ftmanager]
-      - [auto, c, ft/ftphysics]
-      - [auto, c, ft/ftanimend]
-      - [auto, c, mp/mpprocess]
-      - [auto, c, mp/mpcommon]
-      - [auto, c, ft/ftchar/ftmario/ftmario]
-      - [auto, c, ft/ftchar/ftmmario/ftmmario]
-      - [auto, c, ft/ftchar/ftnmario/ftnmario]
-      - [auto, c, ft/ftchar/ftfox/ftfox]
-      - [auto, c, ft/ftchar/ftnfox/ftnfox]
-      - [auto, c, ft/ftchar/ftdonkey/ftdonkey]
-      - [auto, c, ft/ftchar/ftndonkey/ftndonkey]
-      - [auto, c, ft/ftchar/ftgdonkey/ftgdonkey]
-      - [auto, c, ft/ftchar/ftsamus/ftsamus]
-      - [auto, c, ft/ftchar/ftnsamus/ftnsamus]
-      - [auto, c, ft/ftchar/ftluigi/ftluigi]
-      - [auto, c, ft/ftchar/ftnluigi/ftnluigi]
-      - [auto, c, ft/ftchar/ftlink/ftlink]
-      - [auto, c, ft/ftchar/ftnlink/ftnlink]
-      - [auto, c, ft/ftchar/ftyoshi/ftyoshi]
-      - [auto, c, ft/ftchar/ftnyoshi/ftnyoshi]
-      - [auto, c, ft/ftchar/ftcaptain/ftcaptain]
-      - [auto, c, ft/ftchar/ftncaptain/ftncaptain]
-      - [auto, c, ft/ftchar/ftkirby/ftkirby]
-      - [auto, c, ft/ftchar/ftnkirby/ftnkirby]
-      - [auto, c, ft/ftchar/ftpikachu/ftpikachu]
-      - [auto, c, ft/ftchar/ftnpikachu/ftnpikachu]
-      - [auto, c, ft/ftchar/ftpurin/ftpurin]
-      - [auto, c, ft/ftchar/ftnpurin/ftnpurin]
-      - [auto, c, ft/ftchar/ftness/ftness]
-      - [auto, c, ft/ftchar/ftnness/ftnness]
-      - [auto, c, ft/ftchar/ftboss/ftboss]
+      - [0x051C90, c, sc/sc1pmode/sc1pmanager]
+      - [0x0527E0, c, ft/ftmanager]
+      - [0x053FD0, c, ft/ftphysics]
+      - [0x054C80, c, ft/ftanimend]
+      - [0x054D10, c, mp/mpprocess]
+      - [0x059020, c, mp/mpcommon]
       - [0x05A8E0, pad, pad0x05A8E0]
       - [0x05A8F0, c, ft/ftmain]
       - [0x0632C0, pad, pad0x0632C0]
       - [0x0632D0, c, ft/ftparam]
-      - [auto, c, ft/ftanim]
-      - [auto, c, gm/gmcollision]
-      - [auto, c, ft/ftdisplaymain]
-      - [auto, c, ft/fthammer]
-      - [auto, c, mp/mpcollision]
-      - [auto, c, ft/ftcommondata]
-      - [auto, c, ft/ftdisplaylights]
-      - [auto, c, ef/efdisplay]
-      - [auto, c, ef/efmanager]
-      - [auto, c, gr/grwallpaper]
-      - [auto, c, gr/grdisplay]
-      - [auto, c, gr/grcommonsetup]
-      - [auto, c, gr/grmainsetup]
-      - [auto, c, gr/grmodelsetup]
+      - [0x067960, c, ft/ftanim]
+      - [0x068580, c, gm/gmcollision]
+      - [0x06C820, c, ft/ftdisplaymain]
+      - [0x06EEE0, c, ft/fthammer]
+      - [0x06F1F0, c, mp/mpcollision]
+      - [0x078370, c, ft/ftdisplaylights]
+      - [0x0784C0, c, ef/efdisplay]
+      - [0x078B00, c, ef/efmanager]
+      - [0x07FE20, c, gr/grwallpaper]
+      - [0x080590, c, gr/grdisplay]
+      - [0x080E00, c, gr/grcommonsetup]
+      - [0x080EC0, c, gr/grmainsetup]
+      - [0x080F60, c, gr/grmodelsetup]
       - [0x0810D0, pad, pad0x0810D0]
       - [0x0810E0, c, gr/grcommon/grpupupu]
-      - [auto, c, gr/grcommon/grsector]
-      - [auto, c, gr/grcommon/grzebes]
-      - [auto, c, gr/grcommon/gryoster]
-      - [auto, c, gr/grcommon/grinishie]
-      - [auto, c, gr/grcommon/grjungle]
-      - [auto, c, gr/grcommon/grhyrule]
-      - [auto, c, gr/grcommon/gryamabuki]
-      - [auto, c, gr/grcommon/grcastle]
-      - [auto, c, gr/grbonus/grbonus3]
-      - [auto, c, gm/gmcamera]
-      - [auto, c, if/ifcommon]
-      - [auto, c, gm/gmrumble]
-      - [auto, c, ef/efparticle]
-      - [auto, c, ft/ftkey]
-      - [auto, c, if/ifscreenflash]
-      - [auto, c, ef/efground]
+      - [0x081F30, c, gr/grcommon/grsector]
+      - [0x083820, c, gr/grcommon/grzebes]
+      - [0x083D50, c, gr/grcommon/gryoster]
+      - [0x0844D0, c, gr/grcommon/grinishie]
+      - [0x0854B0, c, gr/grcommon/grjungle]
+      - [0x085940, c, gr/grcommon/grhyrule]
+      - [0x0864D0, c, gr/grcommon/gryamabuki]
+      - [0x086B40, c, gr/grcommon/grcastle]
+      - [0x086CD0, c, gr/grbonus/grbonus3]
+      - [0x087010, c, gm/gmcamera]
+      - [0x089E90, c, if/ifcommon]
+      - [0x090630, c, gm/gmrumble]
+      - [0x091090, c, ef/efparticle]
+      - [0x091310, c, ft/ftkey]
+      - [0x0913F0, c, if/ifscreenflash]
+      - [0x091680, c, ef/efground]
 
     # ovl2 data
-      - [auto, .data, gm/gmcommon]
-      - [auto, .data, sc/sc1pmode/sc1pmanager]
-      - [auto, .data, ft/ftmanager]
-      - [auto, .data, ft/ftphysics]
-      - [auto, .data, ft/ftanimend]
-      - [auto, .data, mp/mpprocess]
-      - [auto, .data, mp/mpcommon]
-      - [auto, .data, ft/ftchar/ftmario/ftmario]
-      - [auto, .data, ft/ftchar/ftmmario/ftmmario]
-      - [auto, .data, ft/ftchar/ftnmario/ftnmario]
-      - [auto, .data, ft/ftchar/ftfox/ftfox]
-      - [auto, .data, ft/ftchar/ftnfox/ftnfox]
-      - [auto, .data, ft/ftchar/ftdonkey/ftdonkey]
-      - [auto, .data, ft/ftchar/ftndonkey/ftndonkey]
-      - [auto, .data, ft/ftchar/ftgdonkey/ftgdonkey]
-      - [auto, .data, ft/ftchar/ftsamus/ftsamus]
-      - [auto, .data, ft/ftchar/ftnsamus/ftnsamus]
-      - [auto, .data, ft/ftchar/ftluigi/ftluigi]
-      - [auto, .data, ft/ftchar/ftnluigi/ftnluigi]
-      - [auto, .data, ft/ftchar/ftlink/ftlink]
-      - [auto, .data, ft/ftchar/ftnlink/ftnlink]
-      - [auto, .data, ft/ftchar/ftyoshi/ftyoshi]
-      - [auto, .data, ft/ftchar/ftnyoshi/ftnyoshi]
-      - [auto, .data, ft/ftchar/ftcaptain/ftcaptain]
-      - [auto, .data, ft/ftchar/ftncaptain/ftncaptain]
-      - [auto, .data, ft/ftchar/ftkirby/ftkirby]
-      - [auto, .data, ft/ftchar/ftnkirby/ftnkirby]
-      - [auto, .data, ft/ftchar/ftpikachu/ftpikachu]
-      - [auto, .data, ft/ftchar/ftnpikachu/ftnpikachu]
-      - [auto, .data, ft/ftchar/ftpurin/ftpurin]
-      - [auto, .data, ft/ftchar/ftnpurin/ftnpurin]
-      - [auto, .data, ft/ftchar/ftness/ftness]
-      - [auto, .data, ft/ftchar/ftnness/ftnness]
-      - [auto, .data, ft/ftchar/ftboss/ftboss]
-      - [auto, .data, ft/ftmain]
-      - [auto, .data, ft/ftparam]
-      - [auto, .data, ft/ftanim]
-      - [auto, .data, gm/gmcollision]
-      - [auto, .data, ft/ftdisplaymain]
-      - [auto, .data, ft/fthammer]
-      - [auto, .data, mp/mpcollision]
-      - [auto, .data, ft/ftcommondata]
-      - [auto, .data, colanimdata]
-      - [auto, .data, ft/ftdisplaylights]
-      - [auto, .data, ef/efdisplay]
-      - [auto, .data, ef/efmanager]
-      - [auto, .data, gr/grwallpaper]
-      - [auto, .data, gr/grdisplay]
-      - [auto, .data, gr/grcommonsetup]
-      - [auto, .data, gr/grmainsetup]
-      - [auto, .data, gr/grmodelsetup]
-      - [auto, .data, gr/grcommon/grpupupu]
-      - [auto, .data, gr/grcommon/grsector]
-      - [auto, .data, gr/grcommon/grzebes]
-      - [auto, .data, gr/grcommon/gryoster]
-      - [auto, .data, gr/grcommon/grinishie]
-      - [auto, .data, gr/grcommon/grjungle]
-      - [auto, .data, gr/grcommon/grhyrule]
-      - [auto, .data, gr/grcommon/gryamabuki]
-      - [auto, .data, gr/grcommon/grcastle]
-      - [auto, .data, gr/grbonus/grbonus3]
-      - [auto, .data, gm/gmcamera]
-      - [auto, .data, if/ifcommon]
-      - [auto, .data, gm/gmrumble]
-      - [auto, .data, ef/efparticle]
-      - [auto, .data, ft/ftkey]
-      - [auto, .data, if/ifscreenflash]
-      - [auto, .data, ef/efground]
+      - [0x0923D0, .data, gm/gmcommon]
+      - [0x0923F0, .data, sc/sc1pmode/sc1pmanager]
+      - [0x0925D0, .data, ft/ftmanager]
+      - [0x0A4500, .data, ft/ftmain]
+      - [0x0A6FB0, .data, ft/ftparam]
+      - [0x0A7110, .data, ft/ftanim]
+      - [0x0A7130, .data, ft/ftdisplaymain]
+      - [0x0A7CE0, .data, mp/mpcollision]
+      - [0x0A8030, .data, ft/ftcommondata]
+      - [0x0A8290, .data, colanimdata]
+      - [0x0A9680, .data, ef/efmanager]
+      - [0x0A9FC0, .data, gr/grwallpaper]
+      - [0x0AA000, .data, gr/grdisplay]
+      - [0x0AA040, .data, gr/grcommonsetup]
+      - [0x0AA070, .data, gr/grcommon/grpupupu]
+      - [0x0AA140, .data, gr/grcommon/grsector]
+      - [0x0AA260, .data, gr/grcommon/grzebes]
+      - [0x0AA320, .data, gr/grcommon/gryoster]
+      - [0x0AA330, .data, gr/grcommon/grinishie]
+      - [0x0AA350, .data, gr/grcommon/grjungle]
+      - [0x0AA360, .data, gr/grcommon/gryamabuki]
+      - [0x0AA370, .data, gm/gmcamera]
+      - [0x0AA3F0, .data, if/ifcommon]
+      - [0x0AA990, pad, pad0x0AA990]
+      - [0x0AA9A0, .data, gm/gmrumble]
+      - [0x0AAA40, .data, ef/efground]
 
     # ovl2 read-only data
-      - [auto, .rodata, gm/gmcommon]
-      - [auto, .rodata, sc/sc1pmode/sc1pmanager]
-      - [auto, .rodata, ft/ftmanager]
-      - [auto, .rodata, ft/ftphysics]
-      - [auto, .rodata, ft/ftanimend]
-      - [auto, .rodata, mp/mpprocess]
-      - [auto, .rodata, mp/mpcommon]
-      - [auto, .rodata, ft/ftchar/ftmario/ftmario]
-      - [auto, .rodata, ft/ftchar/ftmmario/ftmmario]
-      - [auto, .rodata, ft/ftchar/ftnmario/ftnmario]
-      - [auto, .rodata, ft/ftchar/ftfox/ftfox]
-      - [auto, .rodata, ft/ftchar/ftnfox/ftnfox]
-      - [auto, .rodata, ft/ftchar/ftdonkey/ftdonkey]
-      - [auto, .rodata, ft/ftchar/ftndonkey/ftndonkey]
-      - [auto, .rodata, ft/ftchar/ftgdonkey/ftgdonkey]
-      - [auto, .rodata, ft/ftchar/ftsamus/ftsamus]
-      - [auto, .rodata, ft/ftchar/ftnsamus/ftnsamus]
-      - [auto, .rodata, ft/ftchar/ftluigi/ftluigi]
-      - [auto, .rodata, ft/ftchar/ftnluigi/ftnluigi]
-      - [auto, .rodata, ft/ftchar/ftlink/ftlink]
-      - [auto, .rodata, ft/ftchar/ftnlink/ftnlink]
-      - [auto, .rodata, ft/ftchar/ftyoshi/ftyoshi]
-      - [auto, .rodata, ft/ftchar/ftnyoshi/ftnyoshi]
-      - [auto, .rodata, ft/ftchar/ftcaptain/ftcaptain]
-      - [auto, .rodata, ft/ftchar/ftncaptain/ftncaptain]
-      - [auto, .rodata, ft/ftchar/ftkirby/ftkirby]
-      - [auto, .rodata, ft/ftchar/ftnkirby/ftnkirby]
-      - [auto, .rodata, ft/ftchar/ftpikachu/ftpikachu]
-      - [auto, .rodata, ft/ftchar/ftnpikachu/ftnpikachu]
-      - [auto, .rodata, ft/ftchar/ftpurin/ftpurin]
-      - [auto, .rodata, ft/ftchar/ftnpurin/ftnpurin]
-      - [auto, .rodata, ft/ftchar/ftness/ftness]
-      - [auto, .rodata, ft/ftchar/ftnness/ftnness]
-      - [auto, .rodata, ft/ftchar/ftboss/ftboss]
-      - [auto, .rodata, ft/ftmain]
-      - [auto, .rodata, ft/ftparam]
-      - [auto, .rodata, ft/ftanim]
-      - [auto, .rodata, gm/gmcollision]
-      - [auto, .rodata, ft/ftdisplaymain]
-      - [auto, .rodata, ft/fthammer]
-      - [auto, .rodata, mp/mpcollision]
-      - [auto, .rodata, ft/ftcommondata]
-      - [auto, .rodata, ft/ftdisplaylights]
-      - [auto, .rodata, ef/efdisplay]
-      - [auto, .rodata, ef/efmanager]
-      - [auto, .rodata, gr/grwallpaper]
-      - [auto, .rodata, gr/grdisplay]
-      - [auto, .rodata, gr/grcommonsetup]
-      - [auto, .rodata, gr/grmainsetup]
-      - [auto, .rodata, gr/grmodelsetup]
-      - [auto, .rodata, gr/grcommon/grpupupu]
-      - [auto, .rodata, gr/grcommon/grsector]
-      - [auto, .rodata, gr/grcommon/grzebes]
-      - [auto, .rodata, gr/grcommon/gryoster]
-      - [auto, .rodata, gr/grcommon/grinishie]
-      - [auto, .rodata, gr/grcommon/grjungle]
-      - [auto, .rodata, gr/grcommon/grhyrule]
-      - [auto, .rodata, gr/grcommon/gryamabuki]
-      - [auto, .rodata, gr/grcommon/grcastle]
-      - [auto, .rodata, gr/grbonus/grbonus3]
-      - [auto, .rodata, gm/gmcamera]
-      - [auto, .rodata, if/ifcommon]
-      - [auto, .rodata, gm/gmrumble]
-      - [auto, .rodata, ef/efparticle]
-      - [auto, .rodata, ft/ftkey]
-      - [auto, .rodata, if/ifscreenflash]
-      - [auto, .rodata, ef/efground]
+      - [0x0AB250, .rodata, ft/ftmanager]
+      - [0x0AB300, .rodata, mp/mpcommon]
+      - [0x0AB380, .rodata, ft/ftmain]
+      - [0x0AB6A0, .rodata, ft/ftparam]
+      - [0x0AB900, .rodata, ft/ftanim]
+      - [0x0AB980, .rodata, gm/gmcollision]
+      - [0x0ABA60, .rodata, ft/ftdisplaymain]
+      - [0x0ABA70, .rodata, mp/mpcollision]
+      - [0x0AC110, .rodata, ft/ftdisplaylights]
+      - [0x0AC120, .rodata, ef/efmanager]
+      - [0x0AC230, .rodata, gr/grwallpaper]
+      - [0x0AC290, .rodata, gr/grcommon/grpupupu]
+      - [0x0AC2C0, .rodata, gr/grcommon/grsector]
+      - [0x0AC300, .rodata, gr/grcommon/gryoster]
+      - [0x0AC310, .rodata, gr/grcommon/grinishie]
+      - [0x0AC360, .rodata, gr/grcommon/grjungle]
+      - [0x0AC370, .rodata, gr/grcommon/grhyrule]
+      - [0x0AC3B0, .rodata, gr/grbonus/grbonus3]
+      - [0x0AC3D0, .rodata, gm/gmcamera]
+      - [0x0AC460, .rodata, if/ifcommon]
+      - [0x0AC4D0, .rodata, gm/gmrumble]
+      - [0x0AC510, .rodata, ef/efparticle]
+      - [0x0AC530, .rodata, ef/efground]
 
     # ovl2 bss
       - { start: auto, type: .bss, name: gm/gmcommon }
       - { start: auto, type: .bss, name: sc/sc1pmode/sc1pmanager }
       - { start: auto, type: .bss, name: ft/ftmanager }
-      - { start: auto, type: .bss, name: ft/ftphysics }
-      - { start: auto, type: .bss, name: ft/ftanimend }
       - { start: auto, type: .bss, name: mp/mpprocess }
       - { start: auto, type: .bss, name: mp/mpcommon }
       - { start: auto, type: .bss, name: ft/ftchar/ftmario/ftmario }
@@ -650,36 +527,15 @@ segments:
       - { start: auto, type: .bss, name: ft/ftchar/ftnness/ftnness }
       - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftboss }
       - { start: auto, type: .bss, name: ft/ftmain }
-      - { start: auto, type: .bss, name: ft/ftparam }
-      - { start: auto, type: .bss, name: ft/ftanim }
-      - { start: auto, type: .bss, name: gm/gmcollision }
       - { start: auto, type: .bss, name: ft/ftdisplaymain }
-      - { start: auto, type: .bss, name: ft/fthammer }
       - { start: auto, type: .bss, name: mp/mpcollision }
-      - { start: auto, type: .bss, name: ft/ftcommondata }
-      - { start: auto, type: .bss, name: ft/ftdisplaylights }
-      - { start: auto, type: .bss, name: ef/efdisplay }
       - { start: auto, type: .bss, name: ef/efmanager }
       - { start: auto, type: .bss, name: gr/grwallpaper }
-      - { start: auto, type: .bss, name: gr/grdisplay }
       - { start: auto, type: .bss, name: gr/grcommonsetup }
-      - { start: auto, type: .bss, name: gr/grmainsetup }
-      - { start: auto, type: .bss, name: gr/grmodelsetup }
-      - { start: auto, type: .bss, name: gr/grcommon/grpupupu }
-      - { start: auto, type: .bss, name: gr/grcommon/grsector }
-      - { start: auto, type: .bss, name: gr/grcommon/grzebes }
-      - { start: auto, type: .bss, name: gr/grcommon/gryoster }
-      - { start: auto, type: .bss, name: gr/grcommon/grinishie }
-      - { start: auto, type: .bss, name: gr/grcommon/grjungle }
-      - { start: auto, type: .bss, name: gr/grcommon/grhyrule }
-      - { start: auto, type: .bss, name: gr/grcommon/gryamabuki }
-      - { start: auto, type: .bss, name: gr/grcommon/grcastle }
-      - { start: auto, type: .bss, name: gr/grbonus/grbonus3 }
       - { start: auto, type: .bss, name: gm/gmcamera }
       - { start: auto, type: .bss, name: if/ifcommon }
       - { start: auto, type: .bss, name: gm/gmrumble }
       - { start: auto, type: .bss, name: ef/efparticle }
-      - { start: auto, type: .bss, name: ft/ftkey }
       - { start: auto, type: .bss, name: if/ifscreenflash }
       - { start: auto, type: .bss, name: ef/efground }
 
@@ -690,980 +546,463 @@ segments:
     exclusive_ram_id: overlay_80131B00
     subsegments:
     # ovl3 text
-      - [auto, c, ft/ftcomputer]
-      - [auto, c, ft/ftshadow]
-      - [auto, c, ft/ftcommon/ftcommondead]
-      - [auto, c, ft/ftcommon/ftcommonrebirth]
-      - [auto, c, ft/ftcommon/ftcommonsleep]
-      - [auto, c, ft/ftcommon/ftcommonentry]
-      - [auto, c, ft/ftcommon/ftcommonwait]
-      - [auto, c, ft/ftcommon/ftcommonwalk]
-      - [auto, c, ft/ftcommon/ftcommonturn]
-      - [auto, c, ft/ftcommon/ftcommondash]
-      - [auto, c, ft/ftcommon/ftcommonrun]
-      - [auto, c, ft/ftcommon/ftcommonrunbrake]
-      - [auto, c, ft/ftcommon/ftcommonturnrun]
-      - [auto, c, ft/ftcommon/ftcommonkneebend]
-      - [auto, c, ft/ftcommon/ftcommonjump]
-      - [auto, c, ft/ftcommon/ftcommonfall]
-      - [auto, c, ft/ftcommon/ftcommonjumpaerial]
-      - [auto, c, ft/ftcommon/ftcommondamage]
-      - [auto, c, ft/ftcommon/ftcommonwalldamage]
-      - [auto, c, ft/ftcommon/ftcommonpass]
-      - [auto, c, ft/ftcommon/ftcommondokan]
-      - [auto, c, ft/ftcommon/ftcommonottotto]
-      - [auto, c, ft/ftcommon/ftcommonlanding]
-      - [auto, c, ft/ftcommon/ftcommonsquat]
-      - [auto, c, ft/ftcommon/ftcommondamagefall]
-      - [auto, c, ft/ftcommon/ftcommonfallspecial]
-      - [auto, c, ft/ftcommon/ftcommontwister]
-      - [auto, c, ft/ftcommon/ftcommontarucann]
-      - [auto, c, ft/ftcommon/ftcommonstopceil]
-      - [auto, c, ft/ftcommon/ftcommondownwaitbounce]
-      - [auto, c, ft/ftcommon/ftcommondownstand]
-      - [auto, c, ft/ftcommon/ftcommonpassive]
-      - [auto, c, ft/ftcommon/ftcommonpassivestand]
-      - [auto, c, ft/ftcommon/ftcommondownforwardback]
-      - [auto, c, ft/ftcommon/ftcommondownattack]
-      - [auto, c, ft/ftcommon/ftcommonrebound]
-      - [auto, c, ft/ftcommon/ftcommoncliffcatchwait]
-      - [auto, c, ft/ftcommon/ftcommoncliffclimb]
-      - [auto, c, ft/ftcommon/ftcommoncliffattack]
-      - [auto, c, ft/ftcommon/ftcommoncliffescape]
-      - [auto, c, ft/ftcommon/ftcommonget]
-      - [auto, c, ft/ftcommon/ftcommonitemthrow]
-      - [auto, c, ft/ftcommon/ftcommonitemswing]
-      - [auto, c, ft/ftcommon/ftcommonitemshoot]
-      - [auto, c, ft/ftcommon/ftcommonhammerwalk]
-      - [auto, c, ft/ftcommon/ftcommonhammerturn]
-      - [auto, c, ft/ftcommon/ftcommonhammerfall]
-      - [auto, c, ft/ftcommon/ftcommonhammerkneebend]
-      - [auto, c, ft/ftcommon/ftcommonhammerlanding]
-      - [auto, c, ft/ftcommon/ftcommonguard1]
-      - [auto, c, ft/ftcommon/ftcommonguard2]
-      - [auto, c, ft/ftcommon/ftcommonescape]
-      - [auto, c, ft/ftcommon/ftcommonshieldbreakfly]
-      - [auto, c, ft/ftcommon/ftcommonshieldbreakdown]
-      - [auto, c, ft/ftcommon/ftcommonshieldbreakfall]
-      - [auto, c, ft/ftcommon/ftcommonshieldbreakstand]
-      - [auto, c, ft/ftcommon/ftcommonfurafura]
-      - [auto, c, ft/ftcommon/ftcommonfurasleep]
-      - [auto, c, ft/ftcommon/ftcommoncatch1]
-      - [auto, c, ft/ftcommon/ftcommoncatch2]
-      - [auto, c, ft/ftcommon/ftcommonthrow]
-      - [auto, c, ft/ftchar/ftkirby/ftkirbythrowf]
-      - [auto, c, ft/ftcommon/ftcommoncapturepulled]
-      - [auto, c, ft/ftcommon/ftcommoncapturewait]
-      - [auto, c, ft/ftcommon/ftcommonthrown1]
-      - [auto, c, ft/ftcommon/ftcommonthrown2]
+      - [0x0AC540, c, ft/ftcomputer]
+      - [0x0B5850, c, ft/ftshadow]
+      - [0x0B66A0, c, ft/ftcommon/ftcommondead]
+      - [0x0B79A0, c, ft/ftcommon/ftcommonrebirth]
+      - [0x0B7FC0, c, ft/ftcommon/ftcommonsleep]
+      - [0x0B8370, c, ft/ftcommon/ftcommonentry]
+      - [0x0B8AB0, c, ft/ftcommon/ftcommonwait]
+      - [0x0B8D20, c, ft/ftcommon/ftcommonwalk]
+      - [0x0B90D0, c, ft/ftcommon/ftcommonturn]
+      - [0x0B9480, c, ft/ftcommon/ftcommondash]
+      - [0x0B9890, c, ft/ftcommon/ftcommonrun]
+      - [0x0B99F0, c, ft/ftcommon/ftcommonrunbrake]
+      - [0x0B9BB0, c, ft/ftcommon/ftcommonturnrun]
+      - [0x0B9CE0, c, ft/ftcommon/ftcommonkneebend]
+      - [0x0BA0A0, c, ft/ftcommon/ftcommonjump]
+      - [0x0BA3E0, c, ft/ftcommon/ftcommonfall]
+      - [0x0BA4D0, c, ft/ftcommon/ftcommonjumpaerial]
+      - [0x0BAD80, c, ft/ftcommon/ftcommondamage]
+      - [0x0BC500, c, ft/ftcommon/ftcommonwalldamage]
+      - [0x0BC7A0, c, ft/ftcommon/ftcommonpass]
+      - [0x0BCA30, c, ft/ftcommon/ftcommondokan]
+      - [0x0BD290, c, ft/ftcommon/ftcommonottotto]
+      - [0x0BD5B0, c, ft/ftcommon/ftcommonlanding]
+      - [0x0BD8B0, c, ft/ftcommon/ftcommonsquat]
+      - [0x0BDFA0, c, ft/ftcommon/ftcommondamagefall]
+      - [0x0BE170, c, ft/ftcommon/ftcommonfallspecial]
+      - [0x0BE410, c, ft/ftcommon/ftcommontwister]
+      - [0x0BE850, c, ft/ftcommon/ftcommontarucann]
+      - [0x0BEC00, c, ft/ftcommon/ftcommonstopceil]
+      - [0x0BEC60, c, ft/ftcommon/ftcommondownwaitbounce]
+      - [0x0BEF70, c, ft/ftcommon/ftcommondownstand]
+      - [0x0BF0A0, c, ft/ftcommon/ftcommonpassive]
+      - [0x0BF140, c, ft/ftcommon/ftcommonpassivestand]
+      - [0x0BF220, c, ft/ftcommon/ftcommondownforwardback]
+      - [0x0BF350, c, ft/ftcommon/ftcommondownattack]
+      - [0x0BF450, c, ft/ftcommon/ftcommonrebound]
+      - [0x0BF570, c, ft/ftcommon/ftcommoncliffcatchwait]
+      - [0x0BF920, c, ft/ftcommon/ftcommoncliffclimb]
+      - [0x0C0060, c, ft/ftcommon/ftcommoncliffattack]
+      - [0x0C0220, c, ft/ftcommon/ftcommoncliffescape]
+      - [0x0C03D0, c, ft/ftcommon/ftcommonget]
+      - [0x0C0CE0, c, ft/ftcommon/ftcommonitemthrow]
+      - [0x0C1680, c, ft/ftcommon/ftcommonitemswing]
+      - [0x0C19F0, c, ft/ftcommon/ftcommonitemshoot]
+      - [0x0C23E0, c, ft/ftcommon/ftcommonhammerwalk]
+      - [0x0C24B0, c, ft/ftcommon/ftcommonhammerturn]
+      - [0x0C2620, c, ft/ftcommon/ftcommonhammerfall]
+      - [0x0C2900, c, ft/ftcommon/ftcommonhammerkneebend]
+      - [0x0C2A90, c, ft/ftcommon/ftcommonhammerlanding]
+      - [0x0C2B60, c, ft/ftcommon/ftcommonguard1]
+      - [0x0C3870, c, ft/ftcommon/ftcommonguard2]
+      - [0x0C3C10, c, ft/ftcommon/ftcommonescape]
+      - [0x0C3E80, c, ft/ftcommon/ftcommonshieldbreakfly]
+      - [0x0C40C0, c, ft/ftcommon/ftcommonshieldbreakdown]
+      - [0x0C4160, c, ft/ftcommon/ftcommonshieldbreakfall]
+      - [0x0C41E0, c, ft/ftcommon/ftcommonshieldbreakstand]
+      - [0x0C4250, c, ft/ftcommon/ftcommonfurafura]
+      - [0x0C4380, c, ft/ftcommon/ftcommonfurasleep]
+      - [0x0C4450, c, ft/ftcommon/ftcommoncatch1]
+      - [0x0C4900, c, ft/ftcommon/ftcommoncatch2]
+      - [0x0C4B00, c, ft/ftcommon/ftcommonthrow]
+      - [0x0C4E70, c, ft/ftchar/ftkirby/ftkirbythrowf]
+      - [0x0C5030, c, ft/ftcommon/ftcommoncapturepulled]
+      - [0x0C53C0, c, ft/ftcommon/ftcommoncapturewait]
+      - [0x0C5530, c, ft/ftcommon/ftcommonthrown1]
+      - [0x0C57F0, c, ft/ftcommon/ftcommonthrown2]
       - [0x0C6130, pad, pad0x0C6130]
       - [0x0C6140, c, ft/ftcommon/ftcommoncapturekirby]
-      - [auto, c, ft/ftcommon/ftcommoncaptureyoshi]
-      - [auto, c, ft/ftcommon/ftcommoncapturecaptain]
-      - [auto, c, ft/ftchar/ftdonkey/ftdonkeythrowfwait]
-      - [auto, c, ft/ftchar/ftdonkey/ftdonkeythrowfwalk]
-      - [auto, c, ft/ftchar/ftdonkey/ftdonkeythrowfturn]
-      - [auto, c, ft/ftchar/ftdonkey/ftdonkeythrowfkneebend]
-      - [auto, c, ft/ftchar/ftdonkey/ftdonkeythrowffall]
-      - [auto, c, ft/ftchar/ftdonkey/ftdonkeythrowflanding]
-      - [auto, c, ft/ftchar/ftdonkey/ftdonkeythrowff]
-      - [auto, c, ft/ftchar/ftdonkey/ftdonkeythrowfdamage]
-      - [auto, c, ft/ftcommon/ftcommoncapture]
-      - [auto, c, ft/ftcommon/ftcommonappeal]
-      - [auto, c, ft/ftcommon/ftcommonattack1]
-      - [auto, c, ft/ftcommon/ftcommonattack100]
-      - [auto, c, ft/ftcommon/ftcommonattackdash]
-      - [auto, c, ft/ftcommon/ftcommonattacks3]
-      - [auto, c, ft/ftcommon/ftcommonattackhi3]
-      - [auto, c, ft/ftcommon/ftcommonattacklw3]
-      - [auto, c, ft/ftcommon/ftcommonattacks4]
-      - [auto, c, ft/ftcommon/ftcommonattackhi4]
-      - [auto, c, ft/ftcommon/ftcommonattacklw4]
-      - [auto, c, ft/ftcommon/ftcommonattackair]
-      - [auto, c, ft/ftcommon/ftcommonlandingair]
-      - [auto, c, ft/ftcommon/ftcommonspecialair]
-      - [auto, c, ft/ftcommon/ftcommonspecialn]
-      - [auto, c, ft/ftcommon/ftcommonspecialhi]
-      - [auto, c, ft/ftcommon/ftcommonspeciallw]
-      - [auto, c, ft/ftchar/ftpurin/ftpurinspecialn]
-      - [auto, c, ft/ftchar/ftpurin/ftpurinspecialhi]
-      - [auto, c, ft/ftchar/ftpurin/ftpurinspeciallw]
-      - [auto, c, ft/ftchar/ftkirby/ftkirbycopypurinspecialn]
-      - [auto, c, ft/ftchar/ftpikachu/ftpikachuspecialn]
-      - [auto, c, ft/ftchar/ftpikachu/ftpikachuspeciallw]
-      - [auto, c, ft/ftchar/ftpikachu/ftpikachuspecialhi]
-      - [auto, c, ft/ftchar/ftkirby/ftkirbycopypikachuspecialn]
-      - [auto, c, ft/ftchar/ftness/ftnessspecialn]
-      - [auto, c, ft/ftchar/ftness/ftnessspecialhi]
-      - [auto, c, ft/ftchar/ftness/ftnessspeciallw]
-      - [auto, c, ft/ftchar/ftkirby/ftkirbycopynessspecialn]
-      - [auto, c, ft/ftchar/ftmario/ftmariospecialn]
-      - [auto, c, ft/ftchar/ftmario/ftmariospecialhi]
-      - [auto, c, ft/ftchar/ftmario/ftmariospeciallw]
-      - [auto, c, ft/ftchar/ftkirby/ftkirbycopymariospecialn]
-      - [auto, c, ft/ftchar/ftkirby/ftkirbycopyfoxspecialn]
-      - [auto, c, ft/ftchar/ftkirby/ftkirbycopysamusspecialn]
-      - [auto, c, ft/ftchar/ftkirby/ftkirbycopydonkeyspecialn]
-      - [auto, c, ft/ftchar/ftboss/ftbosscommon]
-      - [auto, c, ft/ftchar/ftboss/ftbossdefault]
-      - [auto, c, ft/ftchar/ftboss/ftbosswait]
-      - [auto, c, ft/ftchar/ftboss/ftbossmove]
-      - [auto, c, ft/ftchar/ftboss/ftbosshippataku]
-      - [auto, c, ft/ftchar/ftboss/ftbossharau]
-      - [auto, c, ft/ftchar/ftboss/ftbossokuhikouki1]
-      - [auto, c, ft/ftchar/ftboss/ftbossokuhikouki2]
-      - [auto, c, ft/ftchar/ftboss/ftbossokuhikouki3]
-      - [auto, c, ft/ftchar/ftboss/ftbosswalk]
-      - [auto, c, ft/ftchar/ftboss/ftbosswalkloop]
-      - [auto, c, ft/ftchar/ftboss/ftbosswalkwait]
-      - [auto, c, ft/ftchar/ftboss/ftbosswalkshoot]
+      - [0x0C71B0, c, ft/ftcommon/ftcommoncaptureyoshi]
+      - [0x0C7B30, c, ft/ftcommon/ftcommoncapturecaptain]
+      - [0x0C7E40, c, ft/ftchar/ftdonkey/ftdonkeythrowfwait]
+      - [0x0C7F70, c, ft/ftchar/ftdonkey/ftdonkeythrowfwalk]
+      - [0x0C8180, c, ft/ftchar/ftdonkey/ftdonkeythrowfturn]
+      - [0x0C8290, c, ft/ftchar/ftdonkey/ftdonkeythrowfkneebend]
+      - [0x0C8440, c, ft/ftchar/ftdonkey/ftdonkeythrowffall]
+      - [0x0C8690, c, ft/ftchar/ftdonkey/ftdonkeythrowflanding]
+      - [0x0C8740, c, ft/ftchar/ftdonkey/ftdonkeythrowff]
+      - [0x0C8A90, c, ft/ftchar/ftdonkey/ftdonkeythrowfdamage]
+      - [0x0C8C10, c, ft/ftcommon/ftcommoncapture]
+      - [0x0C90E0, c, ft/ftcommon/ftcommonappeal]
+      - [0x0C91F0, c, ft/ftcommon/ftcommonattack1]
+      - [0x0C9B10, c, ft/ftcommon/ftcommonattack100]
+      - [0x0CA0B0, c, ft/ftcommon/ftcommonattackdash]
+      - [0x0CA1A0, c, ft/ftcommon/ftcommonattacks3]
+      - [0x0CA490, c, ft/ftcommon/ftcommonattackhi3]
+      - [0x0CA630, c, ft/ftcommon/ftcommonattacklw3]
+      - [0x0CA880, c, ft/ftcommon/ftcommonattacks4]
+      - [0x0CB030, c, ft/ftcommon/ftcommonattackhi4]
+      - [0x0CB1A0, c, ft/ftcommon/ftcommonattacklw4]
+      - [0x0CB320, c, ft/ftcommon/ftcommonattackair]
+      - [0x0CB8C0, c, ft/ftcommon/ftcommonlandingair]
+      - [0x0CB910, c, ft/ftcommon/ftcommonspecialair]
+      - [0x0CBAA0, c, ft/ftcommon/ftcommonspecialn]
+      - [0x0CBBA0, c, ft/ftcommon/ftcommonspecialhi]
+      - [0x0CBC20, c, ft/ftcommon/ftcommonspeciallw]
+      - [0x0CBCA0, c, ft/ftchar/ftpurin/ftpurinspecialn]
+      - [0x0CBF90, c, ft/ftchar/ftpurin/ftpurinspecialhi]
+      - [0x0CC150, c, ft/ftchar/ftpurin/ftpurinspeciallw]
+      - [0x0CC2A0, c, ft/ftchar/ftkirby/ftkirbycopypurinspecialn]
+      - [0x0CC590, c, ft/ftchar/ftpikachu/ftpikachuspecialn]
+      - [0x0CC7F0, c, ft/ftchar/ftpikachu/ftpikachuspeciallw]
+      - [0x0CD1F0, c, ft/ftchar/ftpikachu/ftpikachuspecialhi]
+      - [0x0CE100, c, ft/ftchar/ftkirby/ftkirbycopypikachuspecialn]
+      - [0x0CE390, c, ft/ftchar/ftness/ftnessspecialn]
+      - [0x0CE690, c, ft/ftchar/ftness/ftnessspecialhi]
+      - [0x0CFC20, c, ft/ftchar/ftness/ftnessspeciallw]
+      - [0x0D0580, c, ft/ftchar/ftkirby/ftkirbycopynessspecialn]
+      - [0x0D0880, c, ft/ftchar/ftmario/ftmariospecialn]
+      - [0x0D0AE0, c, ft/ftchar/ftmario/ftmariospecialhi]
+      - [0x0D0F30, c, ft/ftchar/ftmario/ftmariospeciallw]
+      - [0x0D13F0, c, ft/ftchar/ftkirby/ftkirbycopymariospecialn]
+      - [0x0D16F0, c, ft/ftchar/ftkirby/ftkirbycopyfoxspecialn]
+      - [0x0D18A0, c, ft/ftchar/ftkirby/ftkirbycopysamusspecialn]
+      - [0x0D21E0, c, ft/ftchar/ftkirby/ftkirbycopydonkeyspecialn]
+      - [0x0D29A0, c, ft/ftchar/ftboss/ftbosscommon]
+      - [0x0D3190, c, ft/ftchar/ftboss/ftbossdefault]
+      - [0x0D31F0, c, ft/ftchar/ftboss/ftbosswait]
+      - [0x0D3BE0, c, ft/ftchar/ftboss/ftbossmove]
+      - [0x0D3DC0, c, ft/ftchar/ftboss/ftbosshippataku]
+      - [0x0D3E20, c, ft/ftchar/ftboss/ftbossharau]
+      - [0x0D3F40, c, ft/ftchar/ftboss/ftbossokuhikouki1]
+      - [0x0D3FE0, c, ft/ftchar/ftboss/ftbossokuhikouki2]
+      - [0x0D41C0, c, ft/ftchar/ftboss/ftbossokuhikouki3]
+      - [0x0D4270, c, ft/ftchar/ftboss/ftbosswalk]
+      - [0x0D4300, c, ft/ftchar/ftboss/ftbosswalkloop]
+      - [0x0D4470, c, ft/ftchar/ftboss/ftbosswalkwait]
+      - [0x0D44E0, c, ft/ftchar/ftboss/ftbosswalkshoot]
       - [0x0D4530, pad, pad0x0D4530]
       - [0x0D4540, c, ft/ftchar/ftboss/ftbossgootsubusuup]
-      - [auto, c, ft/ftchar/ftboss/ftbossgootsubusuwait]
-      - [auto, c, ft/ftchar/ftboss/ftbossgootsubusuend]
-      - [auto, c, ft/ftchar/ftboss/ftbossgootsubusudown]
-      - [auto, c, ft/ftchar/ftboss/ftbosstsutsuku1]
-      - [auto, c, ft/ftchar/ftboss/ftbosstsutsuku3]
-      - [auto, c, ft/ftchar/ftboss/ftbosstsutsuku2]
-      - [auto, c, ft/ftchar/ftboss/ftbossdrill]
-      - [auto, c, ft/ftchar/ftboss/ftbossokukouki]
-      - [auto, c, ft/ftchar/ftboss/ftbossyubideppou1]
-      - [auto, c, ft/ftchar/ftboss/ftbossyubideppou3]
-      - [auto, c, ft/ftchar/ftboss/ftbossyubideppou2]
-      - [auto, c, ft/ftchar/ftboss/ftbossokupunch1]
-      - [auto, c, ft/ftchar/ftboss/ftbossokupunch2]
-      - [auto, c, ft/ftchar/ftboss/ftbossokupunch3]
-      - [auto, c, ft/ftchar/ftboss/ftbossokutsubushi]
-      - [auto, c, ft/ftchar/ftboss/ftbossokutsubushistart]
-      - [auto, c, ft/ftchar/ftboss/ftbossdeadleft]
-      - [auto, c, ft/ftchar/ftboss/ftbossdeadcenter]
-      - [auto, c, ft/ftchar/ftboss/ftbossdeadright]
-      - [auto, c, ft/ftchar/ftboss/ftbossappear]
-      - [auto, c, ft/ftchar/ftdonkey/ftdonkeyspecialn]
-      - [auto, c, ft/ftchar/ftdonkey/ftdonkeyspecialhi]
-      - [auto, c, ft/ftchar/ftdonkey/ftdonkeyspeciallw]
-      - [auto, c, ft/ftchar/ftfox/ftfoxspecialn]
-      - [auto, c, ft/ftchar/ftfox/ftfoxspecialhi]
-      - [auto, c, ft/ftchar/ftfox/ftfoxspeciallw]
-      - [auto, c, ft/ftchar/ftsamus/ftsamusspecialn]
-      - [auto, c, ft/ftchar/ftsamus/ftsamusspecialhi]
-      - [auto, c, ft/ftchar/ftsamus/ftsamusspeciallw]
-      - [auto, c, ft/ftchar/ftyoshi/ftyoshispecialn]
-      - [auto, c, ft/ftchar/ftyoshi/ftyoshispecialhi]
-      - [auto, c, ft/ftchar/ftyoshi/ftyoshispeciallw]
-      - [auto, c, ft/ftchar/ftkirby/ftkirbycopyyoshispecialn]
-      - [auto, c, ft/ftchar/ftcaptain/ftcaptainspecialn]
-      - [auto, c, ft/ftchar/ftcaptain/ftcaptainspeciallw]
-      - [auto, c, ft/ftchar/ftcaptain/ftcaptainspecialhi]
-      - [auto, c, ft/ftchar/ftkirby/ftkirbycopycaptainspecialn]
-      - [auto, c, ft/ftchar/ftkirby/ftkirbyspecialhi]
-      - [auto, c, ft/ftchar/ftkirby/ftkirbyspeciallw]
-      - [auto, c, ft/ftchar/ftkirby/ftkirbyspecialn]
-      - [auto, c, ft/ftchar/ftlink/ftlinkspecialn]
-      - [auto, c, ft/ftchar/ftlink/ftlinkspecialhi]
-      - [auto, c, ft/ftchar/ftlink/ftlinkspeciallw]
-      - [auto, c, ft/ftchar/ftkirby/ftkirbycopylinkspecialn]
-      - [auto, c, ft/ftpublic]
-      - [auto, c, wp/wpmanager]
-      - [auto, c, wp/wpprocess]
-      - [auto, c, wp/wpdisplay]
-      - [auto, c, wp/wpmap]
-      - [auto, c, wp/wpmain]
-      - [auto, c, wp/wpmario/wpmariofireball]
-      - [auto, c, wp/wpfox/wpfoxblaster]
-      - [auto, c, wp/wpsamus/wpsamuschargeshot]
-      - [auto, c, wp/wpsamus/wpsamusbomb]
-      - [auto, c, wp/wppikachu/wppikachuthunderjolt]
-      - [auto, c, wp/wppikachu/wppikachuthunder]
-      - [auto, c, wp/wpness/wpnesspkfire]
-      - [auto, c, wp/wpness/wpnesspkthunder]
-      - [auto, c, wp/wpkirby/wpkirbycutter]
-      - [auto, c, wp/wpyoshi/wpyoshieggthrow]
-      - [auto, c, wp/wpyoshi/wpyoshistar]
-      - [auto, c, wp/wplink/wplinkspinattack]
+      - [0x0D4610, c, ft/ftchar/ftboss/ftbossgootsubusuwait]
+      - [0x0D47F0, c, ft/ftchar/ftboss/ftbossgootsubusuend]
+      - [0x0D4860, c, ft/ftchar/ftboss/ftbossgootsubusudown]
+      - [0x0D48E0, c, ft/ftchar/ftboss/ftbosstsutsuku1]
+      - [0x0D4930, c, ft/ftchar/ftboss/ftbosstsutsuku3]
+      - [0x0D4980, c, ft/ftchar/ftboss/ftbosstsutsuku2]
+      - [0x0D4B00, c, ft/ftchar/ftboss/ftbossdrill]
+      - [0x0D4D30, c, ft/ftchar/ftboss/ftbossokukouki]
+      - [0x0D4D90, c, ft/ftchar/ftboss/ftbossyubideppou1]
+      - [0x0D4E00, c, ft/ftchar/ftboss/ftbossyubideppou3]
+      - [0x0D5040, c, ft/ftchar/ftboss/ftbossyubideppou2]
+      - [0x0D51E0, c, ft/ftchar/ftboss/ftbossokupunch1]
+      - [0x0D5280, c, ft/ftchar/ftboss/ftbossokupunch2]
+      - [0x0D5450, c, ft/ftchar/ftboss/ftbossokupunch3]
+      - [0x0D54F0, c, ft/ftchar/ftboss/ftbossokutsubushi]
+      - [0x0D56F0, c, ft/ftchar/ftboss/ftbossokutsubushistart]
+      - [0x0D5790, c, ft/ftchar/ftboss/ftbossdeadleft]
+      - [0x0D5800, c, ft/ftchar/ftboss/ftbossdeadcenter]
+      - [0x0D58C0, c, ft/ftchar/ftboss/ftbossdeadright]
+      - [0x0D5920, c, ft/ftchar/ftboss/ftbossappear]
+      - [0x0D5950, c, ft/ftchar/ftdonkey/ftdonkeyspecialn]
+      - [0x0D6110, c, ft/ftchar/ftdonkey/ftdonkeyspecialhi]
+      - [0x0D6430, c, ft/ftchar/ftdonkey/ftdonkeyspeciallw]
+      - [0x0D6590, c, ft/ftchar/ftfox/ftfoxspecialn]
+      - [0x0D6740, c, ft/ftchar/ftfox/ftfoxspecialhi]
+      - [0x0D75C0, c, ft/ftchar/ftfox/ftfoxspeciallw]
+      - [0x0D7D40, c, ft/ftchar/ftsamus/ftsamusspecialn]
+      - [0x0D8680, c, ft/ftchar/ftsamus/ftsamusspecialhi]
+      - [0x0D8940, c, ft/ftchar/ftsamus/ftsamusspeciallw]
+      - [0x0D8D50, c, ft/ftchar/ftyoshi/ftyoshispecialn]
+      - [0x0D93C0, c, ft/ftchar/ftyoshi/ftyoshispecialhi]
+      - [0x0D9800, c, ft/ftchar/ftyoshi/ftyoshispeciallw]
+      - [0x0D9BC0, c, ft/ftchar/ftkirby/ftkirbycopyyoshispecialn]
+      - [0x0DA230, c, ft/ftchar/ftcaptain/ftcaptainspecialn]
+      - [0x0DA670, c, ft/ftchar/ftcaptain/ftcaptainspeciallw]
+      - [0x0DACC0, c, ft/ftchar/ftcaptain/ftcaptainspecialhi]
+      - [0x0DB250, c, ft/ftchar/ftkirby/ftkirbycopycaptainspecialn]
+      - [0x0DB5F0, c, ft/ftchar/ftkirby/ftkirbyspecialhi]
+      - [0x0DBDA0, c, ft/ftchar/ftkirby/ftkirbyspeciallw]
+      - [0x0DC6E0, c, ft/ftchar/ftkirby/ftkirbyspecialn]
+      - [0x0DE110, c, ft/ftchar/ftlink/ftlinkspecialn]
+      - [0x0DE580, c, ft/ftchar/ftlink/ftlinkspecialhi]
+      - [0x0DEE10, c, ft/ftchar/ftlink/ftlinkspeciallw]
+      - [0x0DF090, c, ft/ftchar/ftkirby/ftkirbycopylinkspecialn]
+      - [0x0DF4F0, c, ft/ftpublic]
+      - [0x0DFEF0, c, wp/wpmanager]
+      - [0x0E0910, c, wp/wpprocess]
+      - [0x0E18C0, c, wp/wpdisplay]
+      - [0x0E22C0, c, wp/wpmap]
+      - [0x0E28F0, c, wp/wpmain]
+      - [0x0E2F80, c, wp/wpmario/wpmariofireball]
+      - [0x0E3310, c, wp/wpfox/wpfoxblaster]
+      - [0x0E3540, c, wp/wpsamus/wpsamuschargeshot]
+      - [0x0E3940, c, wp/wpsamus/wpsamusbomb]
+      - [0x0E3DD0, c, wp/wppikachu/wppikachuthunderjolt]
+      - [0x0E5080, c, wp/wppikachu/wppikachuthunder]
+      - [0x0E5480, c, wp/wpness/wpnesspkfire]
+      - [0x0E5770, c, wp/wpness/wpnesspkthunder]
+      - [0x0E6690, c, wp/wpkirby/wpkirbycutter]
+      - [0x0E6990, c, wp/wpyoshi/wpyoshieggthrow]
+      - [0x0E6F80, c, wp/wpyoshi/wpyoshistar]
+      - [0x0E73E0, c, wp/wplink/wplinkspinattack]
       - [0x0E7680, pad, pad0x0E7680]
       - [0x0E7690, c, wp/wplink/wplinkboomerang]
-      - [auto, c, wp/wpboss/wpbossbullet]
-      - [auto, c, it/itmanager]
-      - [auto, c, it/itprocess]
-      - [auto, c, it/itvisuals]
-      - [auto, c, it/itdisplay]
-      - [auto, c, it/itmain]
-      - [auto, c, it/itmap]
-      - [auto, c, it/itcommon/itcapsule]
-      - [auto, c, it/itcommon/ittomato]
-      - [auto, c, it/itcommon/itheart]
-      - [auto, c, it/itcommon/itstar]
-      - [auto, c, it/itcommon/itsword]
-      - [auto, c, it/itcommon/itbat]
-      - [auto, c, it/itcommon/itharisen]
-      - [auto, c, it/itcommon/itlgun]
-      - [auto, c, it/itcommon/itfflower]
-      - [auto, c, it/itcommon/ithammer]
-      - [auto, c, it/itcommon/itmsbomb]
-      - [auto, c, it/itcommon/itbombhei]
-      - [auto, c, it/itcommon/itstarrod]
-      - [auto, c, it/itcommon/itgshell]
-      - [auto, c, it/itcommon/itbox]
-      - [auto, c, it/itcommon/ittaru]
-      - [auto, c, it/itcommon/itrshell]
+      - [0x0E8640, c, wp/wpboss/wpbossbullet]
+      - [0x0E88E0, c, it/itmanager]
+      - [0x0E9CC0, c, it/itprocess]
+      - [0x0EBDF0, c, it/itvisuals]
+      - [0x0EBE50, c, it/itdisplay]
+      - [0x0ECD50, c, it/itmain]
+      - [0x0EDEC0, c, it/itmap]
+      - [0x0EE9D0, c, it/itcommon/itcapsule]
+      - [0x0EEF00, c, it/itcommon/ittomato]
+      - [0x0EF130, c, it/itcommon/itheart]
+      - [0x0EF370, c, it/itcommon/itstar]
+      - [0x0EF590, c, it/itcommon/itsword]
+      - [0x0EF870, c, it/itcommon/itbat]
+      - [0x0EFB80, c, it/itcommon/itharisen]
+      - [0x0EFF30, c, it/itcommon/itlgun]
+      - [0x0F0560, c, it/itcommon/itfflower]
+      - [0x0F0B50, c, it/itcommon/ithammer]
+      - [0x0F0E90, c, it/itcommon/itmsbomb]
+      - [0x0F1AA0, c, it/itcommon/itbombhei]
+      - [0x0F28C0, c, it/itcommon/itstarrod]
+      - [0x0F3020, c, it/itcommon/itgshell]
+      - [0x0F3B60, c, it/itcommon/itbox]
+      - [0x0F45E0, c, it/itcommon/ittaru]
+      - [0x0F4DE0, c, it/itcommon/itrshell]
       - [0x0F5E60, pad, pad0x0F5E60]
       - [0x0F5E70, c, it/itcommon/itnbumper]
-      - [auto, c, it/itground/itpowerblock]
-      - [auto, c, it/itground/itglucky]
-      - [auto, c, it/itcommon/itmball]
-      - [auto, c, it/itground/itpakkun]
-      - [auto, c, it/itground/itgbumper]
-      - [auto, c, it/itmonster/itiwark]
-      - [auto, c, it/itmonster/itkabigon]
-      - [auto, c, it/itmonster/ittosakinto]
-      - [auto, c, it/itmonster/itmew]
-      - [auto, c, it/itmonster/itnyars]
-      - [auto, c, it/itmonster/itlizardon]
-      - [auto, c, it/itmonster/itspear]
-      - [auto, c, it/itmonster/itkamex]
-      - [auto, c, it/itmonster/itmlucky]
-      - [auto, c, it/itcommon/itegg]
-      - [auto, c, it/itmonster/itstarmie]
-      - [auto, c, it/itmonster/itsawamura]
-      - [auto, c, it/itmonster/itdogas]
-      - [auto, c, it/itmonster/itpippi]
-      - [auto, c, it/itground/itmarumine]
-      - [auto, c, it/itground/itporygon]
-      - [auto, c, it/itground/ithitokage]
-      - [auto, c, it/itground/itfushigibana]
-      - [auto, c, it/itground/ittarubomb]
-      - [auto, c, it/itfighter/itnesspkfire]
-      - [auto, c, it/itfighter/itlinkbomb]
+      - [0x0F6AD0, c, it/itground/itpowerblock]
+      - [0x0F6C80, c, it/itground/itglucky]
+      - [0x0F70D0, c, it/itcommon/itmball]
+      - [0x0F7960, c, it/itground/itpakkun]
+      - [0x0F7FD0, c, it/itground/itgbumper]
+      - [0x0F8180, c, it/itmonster/itiwark]
+      - [0x0F8AB0, c, it/itmonster/itkabigon]
+      - [0x0F91E0, c, it/itmonster/ittosakinto]
+      - [0x0F9620, c, it/itmonster/itmew]
+      - [0x0F98F0, c, it/itmonster/itnyars]
+      - [0x0F9EB0, c, it/itmonster/itlizardon]
+      - [0x0FA800, c, it/itmonster/itspear]
+      - [0x0FB070, c, it/itmonster/itkamex]
+      - [0x0FBA00, c, it/itmonster/itmlucky]
+      - [0x0FC000, c, it/itcommon/itegg]
+      - [0x0FC660, c, it/itmonster/itstarmie]
+      - [0x0FD070, c, it/itmonster/itsawamura]
+      - [0x0FD6C0, c, it/itmonster/itdogas]
+      - [0x0FDC50, c, it/itmonster/itpippi]
+      - [0x0FE1E0, c, it/itground/itmarumine]
+      - [0x0FE550, c, it/itground/itporygon]
+      - [0x0FE7E0, c, it/itground/ithitokage]
+      - [0x0FEE80, c, it/itground/itfushigibana]
+      - [0x0FF4B0, c, it/itground/ittarubomb]
+      - [0x0FFD90, c, it/itfighter/itnesspkfire]
+      - [0x100400, c, it/itfighter/itlinkbomb]
 
     # ovl3 data
-      - [auto, .data, ft/ftcomputer]
-      - [auto, .data, ft/ftshadow]
-      - [auto, .data, ft/ftcommon/ftcommondead]
-      - [auto, .data, ft/ftcommon/ftcommonrebirth]
-      - [auto, .data, ft/ftcommon/ftcommonsleep]
-      - [auto, .data, ft/ftcommon/ftcommonentry]
-      - [auto, .data, ft/ftcommon/ftcommonwait]
-      - [auto, .data, ft/ftcommon/ftcommonwalk]
-      - [auto, .data, ft/ftcommon/ftcommonturn]
-      - [auto, .data, ft/ftcommon/ftcommondash]
-      - [auto, .data, ft/ftcommon/ftcommonrun]
-      - [auto, .data, ft/ftcommon/ftcommonrunbrake]
-      - [auto, .data, ft/ftcommon/ftcommonturnrun]
-      - [auto, .data, ft/ftcommon/ftcommonkneebend]
-      - [auto, .data, ft/ftcommon/ftcommonjump]
-      - [auto, .data, ft/ftcommon/ftcommonfall]
-      - [auto, .data, ft/ftcommon/ftcommonjumpaerial]
-      - [auto, .data, ft/ftcommon/ftcommondamage]
-      - [auto, .data, ft/ftcommon/ftcommonwalldamage]
-      - [auto, .data, ft/ftcommon/ftcommonpass]
-      - [auto, .data, ft/ftcommon/ftcommondokan]
-      - [auto, .data, ft/ftcommon/ftcommonottotto]
-      - [auto, .data, ft/ftcommon/ftcommonlanding]
-      - [auto, .data, ft/ftcommon/ftcommonsquat]
-      - [auto, .data, ft/ftcommon/ftcommondamagefall]
-      - [auto, .data, ft/ftcommon/ftcommonfallspecial]
-      - [auto, .data, ft/ftcommon/ftcommontwister]
-      - [auto, .data, ft/ftcommon/ftcommontarucann]
-      - [auto, .data, ft/ftcommon/ftcommonstopceil]
-      - [auto, .data, ft/ftcommon/ftcommondownwaitbounce]
-      - [auto, .data, ft/ftcommon/ftcommondownstand]
-      - [auto, .data, ft/ftcommon/ftcommonpassive]
-      - [auto, .data, ft/ftcommon/ftcommonpassivestand]
-      - [auto, .data, ft/ftcommon/ftcommondownforwardback]
-      - [auto, .data, ft/ftcommon/ftcommondownattack]
-      - [auto, .data, ft/ftcommon/ftcommonrebound]
-      - [auto, .data, ft/ftcommon/ftcommoncliffcatchwait]
-      - [auto, .data, ft/ftcommon/ftcommoncliffclimb]
-      - [auto, .data, ft/ftcommon/ftcommoncliffattack]
-      - [auto, .data, ft/ftcommon/ftcommoncliffescape]
-      - [auto, .data, ft/ftcommon/ftcommonget]
-      - [auto, .data, ft/ftcommon/ftcommonitemthrow]
-      - [auto, .data, ft/ftcommon/ftcommonitemswing]
-      - [auto, .data, ft/ftcommon/ftcommonitemshoot]
-      - [auto, .data, ft/ftcommon/ftcommonhammerwalk]
-      - [auto, .data, ft/ftcommon/ftcommonhammerturn]
-      - [auto, .data, ft/ftcommon/ftcommonhammerfall]
-      - [auto, .data, ft/ftcommon/ftcommonhammerkneebend]
-      - [auto, .data, ft/ftcommon/ftcommonhammerlanding]
-      - [auto, .data, ft/ftcommon/ftcommonguard1]
-      - [auto, .data, ft/ftcommon/ftcommonguard2]
-      - [auto, .data, ft/ftcommon/ftcommonescape]
-      - [auto, .data, ft/ftcommon/ftcommonshieldbreakfly]
-      - [auto, .data, ft/ftcommon/ftcommonshieldbreakdown]
-      - [auto, .data, ft/ftcommon/ftcommonshieldbreakfall]
-      - [auto, .data, ft/ftcommon/ftcommonshieldbreakstand]
-      - [auto, .data, ft/ftcommon/ftcommonfurafura]
-      - [auto, .data, ft/ftcommon/ftcommonfurasleep]
-      - [auto, .data, ft/ftcommon/ftcommoncatch1]
-      - [auto, .data, ft/ftcommon/ftcommoncatch2]
-      - [auto, .data, ft/ftcommon/ftcommonthrow]
-      - [auto, .data, ft/ftchar/ftkirby/ftkirbythrowf]
-      - [auto, .data, ft/ftcommon/ftcommoncapturepulled]
-      - [auto, .data, ft/ftcommon/ftcommoncapturewait]
-      - [auto, .data, ft/ftcommon/ftcommonthrown1]
-      - [auto, .data, ft/ftcommon/ftcommonthrown2]
-      - [auto, .data, ft/ftcommon/ftcommoncapturekirby]
-      - [auto, .data, ft/ftcommon/ftcommoncaptureyoshi]
-      - [auto, .data, ft/ftcommon/ftcommoncapturecaptain]
-      - [auto, .data, ft/ftchar/ftdonkey/ftdonkeythrowfwait]
-      - [auto, .data, ft/ftchar/ftdonkey/ftdonkeythrowfwalk]
-      - [auto, .data, ft/ftchar/ftdonkey/ftdonkeythrowfturn]
-      - [auto, .data, ft/ftchar/ftdonkey/ftdonkeythrowfkneebend]
-      - [auto, .data, ft/ftchar/ftdonkey/ftdonkeythrowffall]
-      - [auto, .data, ft/ftchar/ftdonkey/ftdonkeythrowflanding]
-      - [auto, .data, ft/ftchar/ftdonkey/ftdonkeythrowff]
-      - [auto, .data, ft/ftchar/ftdonkey/ftdonkeythrowfdamage]
-      - [auto, .data, ft/ftcommon/ftcommoncapture]
-      - [auto, .data, ft/ftcommon/ftcommonappeal]
-      - [auto, .data, ft/ftcommon/ftcommonattack1]
-      - [auto, .data, ft/ftcommon/ftcommonattack100]
-      - [auto, .data, ft/ftcommon/ftcommonattackdash]
-      - [auto, .data, ft/ftcommon/ftcommonattacks3]
-      - [auto, .data, ft/ftcommon/ftcommonattackhi3]
-      - [auto, .data, ft/ftcommon/ftcommonattacklw3]
-      - [auto, .data, ft/ftcommon/ftcommonattacks4]
-      - [auto, .data, ft/ftcommon/ftcommonattackhi4]
-      - [auto, .data, ft/ftcommon/ftcommonattacklw4]
-      - [auto, .data, ft/ftcommon/ftcommonattackair]
-      - [auto, .data, ft/ftcommon/ftcommonlandingair]
-      - [auto, .data, ft/ftcommon/ftcommonspecialair]
-      - [auto, .data, ft/ftcommon/ftcommonspecialn]
-      - [auto, .data, ft/ftcommon/ftcommonspecialhi]
-      - [auto, .data, ft/ftcommon/ftcommonspeciallw]
-      - [auto, .data, ft/ftchar/ftpurin/ftpurinspecialn]
-      - [auto, .data, ft/ftchar/ftpurin/ftpurinspecialhi]
-      - [auto, .data, ft/ftchar/ftpurin/ftpurinspeciallw]
-      - [auto, .data, ft/ftchar/ftkirby/ftkirbycopypurinspecialn]
-      - [auto, .data, ft/ftchar/ftpikachu/ftpikachuspecialn]
-      - [auto, .data, ft/ftchar/ftpikachu/ftpikachuspeciallw]
-      - [auto, .data, ft/ftchar/ftpikachu/ftpikachuspecialhi]
-      - [auto, .data, ft/ftchar/ftkirby/ftkirbycopypikachuspecialn]
-      - [auto, .data, ft/ftchar/ftness/ftnessspecialn]
-      - [auto, .data, ft/ftchar/ftness/ftnessspecialhi]
-      - [auto, .data, ft/ftchar/ftness/ftnessspeciallw]
-      - [auto, .data, ft/ftchar/ftkirby/ftkirbycopynessspecialn]
-      - [auto, .data, ft/ftchar/ftmario/ftmariospecialn]
-      - [auto, .data, ft/ftchar/ftmario/ftmariospecialhi]
-      - [auto, .data, ft/ftchar/ftmario/ftmariospeciallw]
-      - [auto, .data, ft/ftchar/ftkirby/ftkirbycopymariospecialn]
-      - [auto, .data, ft/ftchar/ftkirby/ftkirbycopyfoxspecialn]
-      - [auto, .data, ft/ftchar/ftkirby/ftkirbycopysamusspecialn]
-      - [auto, .data, ft/ftchar/ftkirby/ftkirbycopydonkeyspecialn]
-      - [auto, .data, ft/ftchar/ftboss/ftbosscommon]
-      - [auto, .data, ft/ftchar/ftboss/ftbossdefault]
-      - [auto, .data, ft/ftchar/ftboss/ftbosswait]
-      - [auto, .data, ft/ftchar/ftboss/ftbossmove]
-      - [auto, .data, ft/ftchar/ftboss/ftbosshippataku]
-      - [auto, .data, ft/ftchar/ftboss/ftbossharau]
-      - [auto, .data, ft/ftchar/ftboss/ftbossokuhikouki1]
-      - [auto, .data, ft/ftchar/ftboss/ftbossokuhikouki2]
-      - [auto, .data, ft/ftchar/ftboss/ftbossokuhikouki3]
-      - [auto, .data, ft/ftchar/ftboss/ftbosswalk]
-      - [auto, .data, ft/ftchar/ftboss/ftbosswalkloop]
-      - [auto, .data, ft/ftchar/ftboss/ftbosswalkwait]
-      - [auto, .data, ft/ftchar/ftboss/ftbosswalkshoot]
-      - [auto, .data, ft/ftchar/ftboss/ftbossgootsubusuup]
-      - [auto, .data, ft/ftchar/ftboss/ftbossgootsubusuwait]
-      - [auto, .data, ft/ftchar/ftboss/ftbossgootsubusuend]
-      - [auto, .data, ft/ftchar/ftboss/ftbossgootsubusudown]
-      - [auto, .data, ft/ftchar/ftboss/ftbosstsutsuku1]
-      - [auto, .data, ft/ftchar/ftboss/ftbosstsutsuku3]
-      - [auto, .data, ft/ftchar/ftboss/ftbosstsutsuku2]
-      - [auto, .data, ft/ftchar/ftboss/ftbossdrill]
-      - [auto, .data, ft/ftchar/ftboss/ftbossokukouki]
-      - [auto, .data, ft/ftchar/ftboss/ftbossyubideppou1]
-      - [auto, .data, ft/ftchar/ftboss/ftbossyubideppou3]
-      - [auto, .data, ft/ftchar/ftboss/ftbossyubideppou2]
-      - [auto, .data, ft/ftchar/ftboss/ftbossokupunch1]
-      - [auto, .data, ft/ftchar/ftboss/ftbossokupunch2]
-      - [auto, .data, ft/ftchar/ftboss/ftbossokupunch3]
-      - [auto, .data, ft/ftchar/ftboss/ftbossokutsubushi]
-      - [auto, .data, ft/ftchar/ftboss/ftbossokutsubushistart]
-      - [auto, .data, ft/ftchar/ftboss/ftbossdeadleft]
-      - [auto, .data, ft/ftchar/ftboss/ftbossdeadcenter]
-      - [auto, .data, ft/ftchar/ftboss/ftbossdeadright]
-      - [auto, .data, ft/ftchar/ftboss/ftbossappear]
-      - [auto, .data, ft/ftchar/ftdonkey/ftdonkeyspecialn]
-      - [auto, .data, ft/ftchar/ftdonkey/ftdonkeyspecialhi]
-      - [auto, .data, ft/ftchar/ftdonkey/ftdonkeyspeciallw]
-      - [auto, .data, ft/ftchar/ftfox/ftfoxspecialn]
-      - [auto, .data, ft/ftchar/ftfox/ftfoxspecialhi]
-      - [auto, .data, ft/ftchar/ftfox/ftfoxspeciallw]
-      - [auto, .data, ft/ftchar/ftsamus/ftsamusspecialn]
-      - [auto, .data, ft/ftchar/ftsamus/ftsamusspecialhi]
-      - [auto, .data, ft/ftchar/ftsamus/ftsamusspeciallw]
-      - [auto, .data, ft/ftchar/ftyoshi/ftyoshispecialn]
-      - [auto, .data, ft/ftchar/ftyoshi/ftyoshispecialhi]
-      - [auto, .data, ft/ftchar/ftyoshi/ftyoshispeciallw]
-      - [auto, .data, ft/ftchar/ftkirby/ftkirbycopyyoshispecialn]
-      - [auto, .data, ft/ftchar/ftcaptain/ftcaptainspecialn]
-      - [auto, .data, ft/ftchar/ftcaptain/ftcaptainspeciallw]
-      - [auto, .data, ft/ftchar/ftcaptain/ftcaptainspecialhi]
-      - [auto, .data, ft/ftchar/ftkirby/ftkirbycopycaptainspecialn]
-      - [auto, .data, ft/ftchar/ftkirby/ftkirbyspecialhi]
-      - [auto, .data, ft/ftchar/ftkirby/ftkirbyspeciallw]
-      - [auto, .data, ft/ftchar/ftkirby/ftkirbyspecialn]
-      - [auto, .data, ft/ftchar/ftlink/ftlinkspecialn]
-      - [auto, .data, ft/ftchar/ftlink/ftlinkspecialhi]
-      - [auto, .data, ft/ftchar/ftlink/ftlinkspeciallw]
-      - [auto, .data, ft/ftchar/ftkirby/ftkirbycopylinkspecialn]
-      - [auto, .data, ft/ftpublic]
-      - [auto, .data, wp/wpmanager]
-      - [auto, .data, wp/wpprocess]
-      - [auto, .data, wp/wpdisplay]
-      - [auto, .data, wp/wpmap]
-      - [auto, .data, wp/wpmain]
-      - [auto, .data, wp/wpmario/wpmariofireball]
-      - [auto, .data, wp/wpfox/wpfoxblaster]
-      - [auto, .data, wp/wpsamus/wpsamuschargeshot]
-      - [auto, .data, wp/wpsamus/wpsamusbomb]
-      - [auto, .data, wp/wppikachu/wppikachuthunderjolt]
-      - [auto, .data, wp/wppikachu/wppikachuthunder]
-      - [auto, .data, wp/wpness/wpnesspkfire]
-      - [auto, .data, wp/wpness/wpnesspkthunder]
-      - [auto, .data, wp/wpkirby/wpkirbycutter]
-      - [auto, .data, wp/wpyoshi/wpyoshieggthrow]
-      - [auto, .data, wp/wpyoshi/wpyoshistar]
-      - [auto, .data, wp/wplink/wplinkspinattack]
-      - [auto, .data, wp/wplink/wplinkboomerang]
-      - [auto, .data, wp/wpboss/wpbossbullet]
-      - [auto, .data, it/itmanager]
-      - [auto, .data, it/itprocess]
-      - [auto, .data, it/itvisuals]
-      - [auto, .data, it/itdisplay]
-      - [auto, .data, it/itmain]
-      - [auto, .data, it/itmap]
-      - [auto, .data, it/itcommon/itcapsule]
-      - [auto, .data, it/itcommon/ittomato]
-      - [auto, .data, it/itcommon/itheart]
-      - [auto, .data, it/itcommon/itstar]
-      - [auto, .data, it/itcommon/itsword]
-      - [auto, .data, it/itcommon/itbat]
-      - [auto, .data, it/itcommon/itharisen]
-      - [auto, .data, it/itcommon/itlgun]
-      - [auto, .data, it/itcommon/itfflower]
-      - [auto, .data, it/itcommon/ithammer]
-      - [auto, .data, it/itcommon/itmsbomb]
-      - [auto, .data, it/itcommon/itbombhei]
-      - [auto, .data, it/itcommon/itstarrod]
-      - [auto, .data, it/itcommon/itgshell]
-      - [auto, .data, it/itcommon/itbox]
-      - [auto, .data, it/itcommon/ittaru]
-      - [auto, .data, it/itcommon/itrshell]
-      - [auto, .data, it/itcommon/itnbumper]
-      - [auto, .data, it/itground/itpowerblock]
-      - [auto, .data, it/itground/itglucky]
-      - [auto, .data, it/itcommon/itmball]
-      - [auto, .data, it/itground/itpakkun]
-      - [auto, .data, it/itground/itgbumper]
-      - [auto, .data, it/itmonster/itiwark]
-      - [auto, .data, it/itmonster/itkabigon]
-      - [auto, .data, it/itmonster/ittosakinto]
-      - [auto, .data, it/itmonster/itmew]
-      - [auto, .data, it/itmonster/itnyars]
-      - [auto, .data, it/itmonster/itlizardon]
-      - [auto, .data, it/itmonster/itspear]
-      - [auto, .data, it/itmonster/itkamex]
-      - [auto, .data, it/itmonster/itmlucky]
-      - [auto, .data, it/itcommon/itegg]
-      - [auto, .data, it/itmonster/itstarmie]
-      - [auto, .data, it/itmonster/itsawamura]
-      - [auto, .data, it/itmonster/itdogas]
-      - [auto, .data, it/itmonster/itpippi]
-      - [auto, .data, it/itground/itmarumine]
-      - [auto, .data, it/itground/itporygon]
-      - [auto, .data, it/itground/ithitokage]
-      - [auto, .data, it/itground/itfushigibana]
-      - [auto, .data, it/itground/ittarubomb]
-      - [auto, .data, it/itfighter/itnesspkfire]
-      - [auto, .data, it/itfighter/itlinkbomb]
+      - [0x1010A0, .data, ft/ftcomputer]
+      - [0x102E50, .data, ft/ftshadow]
+      - [0x102ED0, .data, ft/ftcommon/ftcommonrebirth]
+      - [0x102EE0, .data, ft/ftcommon/ftcommonentry]
+      - [0x102FC0, .data, ft/ftcommon/ftcommonjumpaerial]
+      - [0x102FE0, .data, ft/ftcommon/ftcommondamage]
+      - [0x103040, .data, ft/ftcommon/ftcommonitemswing]
+      - [0x1030A0, .data, ft/ftcommon/ftcommonitemshoot]
+      - [0x103100, .data, ft/ftcommon/ftcommonguard1]
+      - [0x103110, .data, ft/ftcommon/ftcommoncatch2]
+      - [0x103120, .data, ft/ftcommon/ftcommonthrown2]
+      - [0x103140, .data, ft/ftcommon/ftcommoncapturekirby]
+      - [0x103160, .data, ft/ftcommon/ftcommoncaptureyoshi]
+      - [0x103460, .data, ft/ftcommon/ftcommoncapturecaptain]
+      - [0x103470, .data, ft/ftcommon/ftcommoncapture]
+      - [0x103490, .data, ft/ftcommon/ftcommonspecialair]
+      - [0x103640, .data, ft/ftcommon/ftcommonspecialn]
+      - [0x103720, .data, ft/ftcommon/ftcommonspecialhi]
+      - [0x103790, .data, ft/ftcommon/ftcommonspeciallw]
+      - [0x103800, .data, ft/ftchar/ftboss/ftbosswait]
+      - [0x103840, .data, ft/ftchar/ftkirby/ftkirbyspecialn]
+      - [0x103850, .data, wp/wpdisplay]
+      - [0x103870, .data, wp/wpmario/wpmariofireball]
+      - [0x103910, .data, wp/wpfox/wpfoxblaster]
+      - [0x103950, .data, wp/wpsamus/wpsamuschargeshot]
+      - [0x103AB0, .data, wp/wpsamus/wpsamusbomb]
+      - [0x103AF0, .data, wp/wppikachu/wppikachuthunderjolt]
+      - [0x103B60, .data, wp/wppikachu/wppikachuthunder]
+      - [0x103BD0, .data, wp/wpness/wpnesspkfire]
+      - [0x103C10, .data, wp/wpness/wpnesspkthunder]
+      - [0x103CE0, .data, wp/wpkirby/wpkirbycutter]
+      - [0x103D20, .data, wp/wpyoshi/wpyoshieggthrow]
+      - [0x103D60, .data, wp/wpyoshi/wpyoshistar]
+      - [0x103DA0, .data, wp/wplink/wplinkspinattack]
+      - [0x103DE0, .data, wp/wplink/wplinkboomerang]
+      - [0x103E20, .data, wp/wpboss/wpbossbullet]
+      - [0x103E90, .data, it/itmanager]
+      - [0x103F60, .data, it/itmain]
+      - [0x104070, .data, it/itcommon/itcapsule]
+      - [0x104170, .data, it/itcommon/ittomato]
+      - [0x104210, .data, it/itcommon/itheart]
+      - [0x1042B0, .data, it/itcommon/itstar]
+      - [0x1042F0, .data, it/itcommon/itsword]
+      - [0x1043D0, .data, it/itcommon/itbat]
+      - [0x1044B0, .data, it/itcommon/itharisen]
+      - [0x104590, .data, it/itcommon/itlgun]
+      - [0x1046A0, .data, it/itcommon/itfflower]
+      - [0x1047B0, .data, it/itcommon/ithammer]
+      - [0x104890, .data, it/itcommon/itmsbomb]
+      - [0x1049D0, .data, it/itcommon/itbombhei]
+      - [0x104B30, .data, it/itcommon/itstarrod]
+      - [0x104C40, .data, it/itcommon/itgshell]
+      - [0x104D60, .data, it/itcommon/itbox]
+      - [0x104E90, .data, it/itcommon/ittaru]
+      - [0x104FB0, .data, it/itcommon/itrshell]
+      - [0x1050D0, .data, it/itcommon/itnbumper]
+      - [0x105210, .data, it/itground/itpowerblock]
+      - [0x105270, .data, it/itground/itglucky]
+      - [0x1052D0, .data, it/itcommon/itmball]
+      - [0x1053F0, .data, it/itground/itpakkun]
+      - [0x105490, .data, it/itground/itgbumper]
+      - [0x1054D0, .data, it/itmonster/itiwark]
+      - [0x105580, .data, it/itmonster/itkabigon]
+      - [0x105600, .data, it/itmonster/ittosakinto]
+      - [0x105680, .data, it/itmonster/itmew]
+      - [0x1056E0, .data, it/itmonster/itnyars]
+      - [0x105770, .data, it/itmonster/itlizardon]
+      - [0x105840, .data, it/itmonster/itspear]
+      - [0x105920, .data, it/itmonster/itkamex]
+      - [0x1059F0, .data, it/itmonster/itmlucky]
+      - [0x105AB0, .data, it/itcommon/itegg]
+      - [0x105BB0, .data, it/itmonster/itstarmie]
+      - [0x105C60, .data, it/itmonster/itsawamura]
+      - [0x105D00, .data, it/itmonster/itdogas]
+      - [0x105DB0, .data, it/itmonster/itpippi]
+      - [0x105E40, .data, it/itground/itmarumine]
+      - [0x105EA0, .data, it/itground/itporygon]
+      - [0x105EE0, .data, it/itground/ithitokage]
+      - [0x105F70, .data, it/itground/itfushigibana]
+      - [0x105FE0, .data, it/itground/ittarubomb]
+      - [0x106080, .data, it/itfighter/itnesspkfire]
+      - [0x106100, .data, it/itfighter/itlinkbomb]
 
     # ovl3 read-only data
-      - [auto, .rodata, ft/ftcomputer]
-      - [auto, .rodata, ft/ftshadow]
-      - [auto, .rodata, ft/ftcommon/ftcommondead]
-      - [auto, .rodata, ft/ftcommon/ftcommonrebirth]
-      - [auto, .rodata, ft/ftcommon/ftcommonsleep]
-      - [auto, .rodata, ft/ftcommon/ftcommonentry]
-      - [auto, .rodata, ft/ftcommon/ftcommonwait]
-      - [auto, .rodata, ft/ftcommon/ftcommonwalk]
-      - [auto, .rodata, ft/ftcommon/ftcommonturn]
-      - [auto, .rodata, ft/ftcommon/ftcommondash]
-      - [auto, .rodata, ft/ftcommon/ftcommonrun]
-      - [auto, .rodata, ft/ftcommon/ftcommonrunbrake]
-      - [auto, .rodata, ft/ftcommon/ftcommonturnrun]
-      - [auto, .rodata, ft/ftcommon/ftcommonkneebend]
-      - [auto, .rodata, ft/ftcommon/ftcommonjump]
-      - [auto, .rodata, ft/ftcommon/ftcommonfall]
-      - [auto, .rodata, ft/ftcommon/ftcommonjumpaerial]
-      - [auto, .rodata, ft/ftcommon/ftcommondamage]
-      - [auto, .rodata, ft/ftcommon/ftcommonwalldamage]
-      - [auto, .rodata, ft/ftcommon/ftcommonpass]
-      - [auto, .rodata, ft/ftcommon/ftcommondokan]
-      - [auto, .rodata, ft/ftcommon/ftcommonottotto]
-      - [auto, .rodata, ft/ftcommon/ftcommonlanding]
-      - [auto, .rodata, ft/ftcommon/ftcommonsquat]
-      - [auto, .rodata, ft/ftcommon/ftcommondamagefall]
-      - [auto, .rodata, ft/ftcommon/ftcommonfallspecial]
-      - [auto, .rodata, ft/ftcommon/ftcommontwister]
-      - [auto, .rodata, ft/ftcommon/ftcommontarucann]
-      - [auto, .rodata, ft/ftcommon/ftcommonstopceil]
-      - [auto, .rodata, ft/ftcommon/ftcommondownwaitbounce]
-      - [auto, .rodata, ft/ftcommon/ftcommondownstand]
-      - [auto, .rodata, ft/ftcommon/ftcommonpassive]
-      - [auto, .rodata, ft/ftcommon/ftcommonpassivestand]
-      - [auto, .rodata, ft/ftcommon/ftcommondownforwardback]
-      - [auto, .rodata, ft/ftcommon/ftcommondownattack]
-      - [auto, .rodata, ft/ftcommon/ftcommonrebound]
-      - [auto, .rodata, ft/ftcommon/ftcommoncliffcatchwait]
-      - [auto, .rodata, ft/ftcommon/ftcommoncliffclimb]
-      - [auto, .rodata, ft/ftcommon/ftcommoncliffattack]
-      - [auto, .rodata, ft/ftcommon/ftcommoncliffescape]
-      - [auto, .rodata, ft/ftcommon/ftcommonget]
-      - [auto, .rodata, ft/ftcommon/ftcommonitemthrow]
-      - [auto, .rodata, ft/ftcommon/ftcommonitemswing]
-      - [auto, .rodata, ft/ftcommon/ftcommonitemshoot]
-      - [auto, .rodata, ft/ftcommon/ftcommonhammerwalk]
-      - [auto, .rodata, ft/ftcommon/ftcommonhammerturn]
-      - [auto, .rodata, ft/ftcommon/ftcommonhammerfall]
-      - [auto, .rodata, ft/ftcommon/ftcommonhammerkneebend]
-      - [auto, .rodata, ft/ftcommon/ftcommonhammerlanding]
-      - [auto, .rodata, ft/ftcommon/ftcommonguard1]
-      - [auto, .rodata, ft/ftcommon/ftcommonguard2]
-      - [auto, .rodata, ft/ftcommon/ftcommonescape]
-      - [auto, .rodata, ft/ftcommon/ftcommonshieldbreakfly]
-      - [auto, .rodata, ft/ftcommon/ftcommonshieldbreakdown]
-      - [auto, .rodata, ft/ftcommon/ftcommonshieldbreakfall]
-      - [auto, .rodata, ft/ftcommon/ftcommonshieldbreakstand]
-      - [auto, .rodata, ft/ftcommon/ftcommonfurafura]
-      - [auto, .rodata, ft/ftcommon/ftcommonfurasleep]
-      - [auto, .rodata, ft/ftcommon/ftcommoncatch1]
-      - [auto, .rodata, ft/ftcommon/ftcommoncatch2]
-      - [auto, .rodata, ft/ftcommon/ftcommonthrow]
-      - [auto, .rodata, ft/ftchar/ftkirby/ftkirbythrowf]
-      - [auto, .rodata, ft/ftcommon/ftcommoncapturepulled]
-      - [auto, .rodata, ft/ftcommon/ftcommoncapturewait]
-      - [auto, .rodata, ft/ftcommon/ftcommonthrown1]
-      - [auto, .rodata, ft/ftcommon/ftcommonthrown2]
-      - [auto, .rodata, ft/ftcommon/ftcommoncapturekirby]
-      - [auto, .rodata, ft/ftcommon/ftcommoncaptureyoshi]
-      - [auto, .rodata, ft/ftcommon/ftcommoncapturecaptain]
-      - [auto, .rodata, ft/ftchar/ftdonkey/ftdonkeythrowfwait]
-      - [auto, .rodata, ft/ftchar/ftdonkey/ftdonkeythrowfwalk]
-      - [auto, .rodata, ft/ftchar/ftdonkey/ftdonkeythrowfturn]
-      - [auto, .rodata, ft/ftchar/ftdonkey/ftdonkeythrowfkneebend]
-      - [auto, .rodata, ft/ftchar/ftdonkey/ftdonkeythrowffall]
-      - [auto, .rodata, ft/ftchar/ftdonkey/ftdonkeythrowflanding]
-      - [auto, .rodata, ft/ftchar/ftdonkey/ftdonkeythrowff]
-      - [auto, .rodata, ft/ftchar/ftdonkey/ftdonkeythrowfdamage]
-      - [auto, .rodata, ft/ftcommon/ftcommoncapture]
-      - [auto, .rodata, ft/ftcommon/ftcommonappeal]
-      - [auto, .rodata, ft/ftcommon/ftcommonattack1]
-      - [auto, .rodata, ft/ftcommon/ftcommonattack100]
-      - [auto, .rodata, ft/ftcommon/ftcommonattackdash]
-      - [auto, .rodata, ft/ftcommon/ftcommonattacks3]
-      - [auto, .rodata, ft/ftcommon/ftcommonattackhi3]
-      - [auto, .rodata, ft/ftcommon/ftcommonattacklw3]
-      - [auto, .rodata, ft/ftcommon/ftcommonattacks4]
-      - [auto, .rodata, ft/ftcommon/ftcommonattackhi4]
-      - [auto, .rodata, ft/ftcommon/ftcommonattacklw4]
-      - [auto, .rodata, ft/ftcommon/ftcommonattackair]
-      - [auto, .rodata, ft/ftcommon/ftcommonlandingair]
-      - [auto, .rodata, ft/ftcommon/ftcommonspecialair]
-      - [auto, .rodata, ft/ftcommon/ftcommonspecialn]
-      - [auto, .rodata, ft/ftcommon/ftcommonspecialhi]
-      - [auto, .rodata, ft/ftcommon/ftcommonspeciallw]
-      - [auto, .rodata, ft/ftchar/ftpurin/ftpurinspecialn]
-      - [auto, .rodata, ft/ftchar/ftpurin/ftpurinspecialhi]
-      - [auto, .rodata, ft/ftchar/ftpurin/ftpurinspeciallw]
-      - [auto, .rodata, ft/ftchar/ftkirby/ftkirbycopypurinspecialn]
-      - [auto, .rodata, ft/ftchar/ftpikachu/ftpikachuspecialn]
-      - [auto, .rodata, ft/ftchar/ftpikachu/ftpikachuspeciallw]
-      - [auto, .rodata, ft/ftchar/ftpikachu/ftpikachuspecialhi]
-      - [auto, .rodata, ft/ftchar/ftkirby/ftkirbycopypikachuspecialn]
-      - [auto, .rodata, ft/ftchar/ftness/ftnessspecialn]
-      - [auto, .rodata, ft/ftchar/ftness/ftnessspecialhi]
-      - [auto, .rodata, ft/ftchar/ftness/ftnessspeciallw]
-      - [auto, .rodata, ft/ftchar/ftkirby/ftkirbycopynessspecialn]
-      - [auto, .rodata, ft/ftchar/ftmario/ftmariospecialn]
-      - [auto, .rodata, ft/ftchar/ftmario/ftmariospecialhi]
-      - [auto, .rodata, ft/ftchar/ftmario/ftmariospeciallw]
-      - [auto, .rodata, ft/ftchar/ftkirby/ftkirbycopymariospecialn]
-      - [auto, .rodata, ft/ftchar/ftkirby/ftkirbycopyfoxspecialn]
-      - [auto, .rodata, ft/ftchar/ftkirby/ftkirbycopysamusspecialn]
-      - [auto, .rodata, ft/ftchar/ftkirby/ftkirbycopydonkeyspecialn]
-      - [auto, .rodata, ft/ftchar/ftboss/ftbosscommon]
-      - [auto, .rodata, ft/ftchar/ftboss/ftbossdefault]
-      - [auto, .rodata, ft/ftchar/ftboss/ftbosswait]
-      - [auto, .rodata, ft/ftchar/ftboss/ftbossmove]
-      - [auto, .rodata, ft/ftchar/ftboss/ftbosshippataku]
-      - [auto, .rodata, ft/ftchar/ftboss/ftbossharau]
-      - [auto, .rodata, ft/ftchar/ftboss/ftbossokuhikouki1]
-      - [auto, .rodata, ft/ftchar/ftboss/ftbossokuhikouki2]
-      - [auto, .rodata, ft/ftchar/ftboss/ftbossokuhikouki3]
-      - [auto, .rodata, ft/ftchar/ftboss/ftbosswalk]
-      - [auto, .rodata, ft/ftchar/ftboss/ftbosswalkloop]
-      - [auto, .rodata, ft/ftchar/ftboss/ftbosswalkwait]
-      - [auto, .rodata, ft/ftchar/ftboss/ftbosswalkshoot]
-      - [auto, .rodata, ft/ftchar/ftboss/ftbossgootsubusuup]
-      - [auto, .rodata, ft/ftchar/ftboss/ftbossgootsubusuwait]
-      - [auto, .rodata, ft/ftchar/ftboss/ftbossgootsubusuend]
-      - [auto, .rodata, ft/ftchar/ftboss/ftbossgootsubusudown]
-      - [auto, .rodata, ft/ftchar/ftboss/ftbosstsutsuku1]
-      - [auto, .rodata, ft/ftchar/ftboss/ftbosstsutsuku3]
-      - [auto, .rodata, ft/ftchar/ftboss/ftbosstsutsuku2]
-      - [auto, .rodata, ft/ftchar/ftboss/ftbossdrill]
-      - [auto, .rodata, ft/ftchar/ftboss/ftbossokukouki]
-      - [auto, .rodata, ft/ftchar/ftboss/ftbossyubideppou1]
-      - [auto, .rodata, ft/ftchar/ftboss/ftbossyubideppou3]
-      - [auto, .rodata, ft/ftchar/ftboss/ftbossyubideppou2]
-      - [auto, .rodata, ft/ftchar/ftboss/ftbossokupunch1]
-      - [auto, .rodata, ft/ftchar/ftboss/ftbossokupunch2]
-      - [auto, .rodata, ft/ftchar/ftboss/ftbossokupunch3]
-      - [auto, .rodata, ft/ftchar/ftboss/ftbossokutsubushi]
-      - [auto, .rodata, ft/ftchar/ftboss/ftbossokutsubushistart]
-      - [auto, .rodata, ft/ftchar/ftboss/ftbossdeadleft]
-      - [auto, .rodata, ft/ftchar/ftboss/ftbossdeadcenter]
-      - [auto, .rodata, ft/ftchar/ftboss/ftbossdeadright]
-      - [auto, .rodata, ft/ftchar/ftboss/ftbossappear]
-      - [auto, .rodata, ft/ftchar/ftdonkey/ftdonkeyspecialn]
-      - [auto, .rodata, ft/ftchar/ftdonkey/ftdonkeyspecialhi]
-      - [auto, .rodata, ft/ftchar/ftdonkey/ftdonkeyspeciallw]
-      - [auto, .rodata, ft/ftchar/ftfox/ftfoxspecialn]
-      - [auto, .rodata, ft/ftchar/ftfox/ftfoxspecialhi]
-      - [auto, .rodata, ft/ftchar/ftfox/ftfoxspeciallw]
-      - [auto, .rodata, ft/ftchar/ftsamus/ftsamusspecialn]
-      - [auto, .rodata, ft/ftchar/ftsamus/ftsamusspecialhi]
-      - [auto, .rodata, ft/ftchar/ftsamus/ftsamusspeciallw]
-      - [auto, .rodata, ft/ftchar/ftyoshi/ftyoshispecialn]
-      - [auto, .rodata, ft/ftchar/ftyoshi/ftyoshispecialhi]
-      - [auto, .rodata, ft/ftchar/ftyoshi/ftyoshispeciallw]
-      - [auto, .rodata, ft/ftchar/ftkirby/ftkirbycopyyoshispecialn]
-      - [auto, .rodata, ft/ftchar/ftcaptain/ftcaptainspecialn]
-      - [auto, .rodata, ft/ftchar/ftcaptain/ftcaptainspeciallw]
-      - [auto, .rodata, ft/ftchar/ftcaptain/ftcaptainspecialhi]
-      - [auto, .rodata, ft/ftchar/ftkirby/ftkirbycopycaptainspecialn]
-      - [auto, .rodata, ft/ftchar/ftkirby/ftkirbyspecialhi]
-      - [auto, .rodata, ft/ftchar/ftkirby/ftkirbyspeciallw]
-      - [auto, .rodata, ft/ftchar/ftkirby/ftkirbyspecialn]
-      - [auto, .rodata, ft/ftchar/ftlink/ftlinkspecialn]
-      - [auto, .rodata, ft/ftchar/ftlink/ftlinkspecialhi]
-      - [auto, .rodata, ft/ftchar/ftlink/ftlinkspeciallw]
-      - [auto, .rodata, ft/ftchar/ftkirby/ftkirbycopylinkspecialn]
-      - [auto, .rodata, ft/ftpublic]
-      - [auto, .rodata, wp/wpmanager]
-      - [auto, .rodata, wp/wpprocess]
-      - [auto, .rodata, wp/wpdisplay]
-      - [auto, .rodata, wp/wpmap]
-      - [auto, .rodata, wp/wpmain]
-      - [auto, .rodata, wp/wpmario/wpmariofireball]
-      - [auto, .rodata, wp/wpfox/wpfoxblaster]
-      - [auto, .rodata, wp/wpsamus/wpsamuschargeshot]
-      - [auto, .rodata, wp/wpsamus/wpsamusbomb]
-      - [auto, .rodata, wp/wppikachu/wppikachuthunderjolt]
-      - [auto, .rodata, wp/wppikachu/wppikachuthunder]
-      - [auto, .rodata, wp/wpness/wpnesspkfire]
-      - [auto, .rodata, wp/wpness/wpnesspkthunder]
-      - [auto, .rodata, wp/wpkirby/wpkirbycutter]
-      - [auto, .rodata, wp/wpyoshi/wpyoshieggthrow]
-      - [auto, .rodata, wp/wpyoshi/wpyoshistar]
-      - [auto, .rodata, wp/wplink/wplinkspinattack]
-      - [auto, .rodata, wp/wplink/wplinkboomerang]
-      - [auto, .rodata, wp/wpboss/wpbossbullet]
-      - [auto, .rodata, it/itmanager]
-      - [auto, .rodata, it/itprocess]
-      - [auto, .rodata, it/itvisuals]
-      - [auto, .rodata, it/itdisplay]
-      - [auto, .rodata, it/itmain]
-      - [auto, .rodata, it/itmap]
-      - [auto, .rodata, it/itcommon/itcapsule]
-      - [auto, .rodata, it/itcommon/ittomato]
-      - [auto, .rodata, it/itcommon/itheart]
-      - [auto, .rodata, it/itcommon/itstar]
-      - [auto, .rodata, it/itcommon/itsword]
-      - [auto, .rodata, it/itcommon/itbat]
-      - [auto, .rodata, it/itcommon/itharisen]
-      - [auto, .rodata, it/itcommon/itlgun]
-      - [auto, .rodata, it/itcommon/itfflower]
-      - [auto, .rodata, it/itcommon/ithammer]
-      - [auto, .rodata, it/itcommon/itmsbomb]
-      - [auto, .rodata, it/itcommon/itbombhei]
-      - [auto, .rodata, it/itcommon/itstarrod]
-      - [auto, .rodata, it/itcommon/itgshell]
-      - [auto, .rodata, it/itcommon/itbox]
-      - [auto, .rodata, it/itcommon/ittaru]
-      - [auto, .rodata, it/itcommon/itrshell]
-      - [auto, .rodata, it/itcommon/itnbumper]
-      - [auto, .rodata, it/itground/itpowerblock]
-      - [auto, .rodata, it/itground/itglucky]
-      - [auto, .rodata, it/itcommon/itmball]
-      - [auto, .rodata, it/itground/itpakkun]
-      - [auto, .rodata, it/itground/itgbumper]
-      - [auto, .rodata, it/itmonster/itiwark]
-      - [auto, .rodata, it/itmonster/itkabigon]
-      - [auto, .rodata, it/itmonster/ittosakinto]
-      - [auto, .rodata, it/itmonster/itmew]
-      - [auto, .rodata, it/itmonster/itnyars]
-      - [auto, .rodata, it/itmonster/itlizardon]
-      - [auto, .rodata, it/itmonster/itspear]
-      - [auto, .rodata, it/itmonster/itkamex]
-      - [auto, .rodata, it/itmonster/itmlucky]
-      - [auto, .rodata, it/itcommon/itegg]
-      - [auto, .rodata, it/itmonster/itstarmie]
-      - [auto, .rodata, it/itmonster/itsawamura]
-      - [auto, .rodata, it/itmonster/itdogas]
-      - [auto, .rodata, it/itmonster/itpippi]
-      - [auto, .rodata, it/itground/itmarumine]
-      - [auto, .rodata, it/itground/itporygon]
-      - [auto, .rodata, it/itground/ithitokage]
-      - [auto, .rodata, it/itground/itfushigibana]
-      - [auto, .rodata, it/itground/ittarubomb]
-      - [auto, .rodata, it/itfighter/itnesspkfire]
-      - [auto, .rodata, it/itfighter/itlinkbomb]
+      - [0x106200, .rodata, ft/ftcomputer]
+      - [0x106A70, .rodata, ft/ftcommon/ftcommondead]
+      - [0x106A90, .rodata, ft/ftcommon/ftcommonrebirth]
+      - [0x106AA0, .rodata, ft/ftcommon/ftcommonentry]
+      - [0x106B10, .rodata, ft/ftcommon/ftcommonjumpaerial]
+      - [0x106B20, .rodata, ft/ftcommon/ftcommondamage]
+      - [0x106B60, .rodata, ft/ftcommon/ftcommondokan]
+      - [0x106B70, .rodata, ft/ftcommon/ftcommontwister]
+      - [0x106B80, .rodata, ft/ftcommon/ftcommontarucann]
+      - [0x106B90, .rodata, ft/ftcommon/ftcommondownwaitbounce]
+      - [0x106BA0, .rodata, ft/ftcommon/ftcommondownstand]
+      - [0x106BB0, .rodata, ft/ftcommon/ftcommondownforwardback]
+      - [0x106BC0, .rodata, ft/ftcommon/ftcommoncliffclimb]
+      - [0x106BD0, .rodata, ft/ftcommon/ftcommonget]
+      - [0x106BE0, .rodata, ft/ftcommon/ftcommonitemthrow]
+      - [0x106C00, .rodata, ft/ftcommon/ftcommonitemswing]
+      - [0x106C10, .rodata, ft/ftcommon/ftcommonhammerturn]
+      - [0x106C20, .rodata, ft/ftcommon/ftcommonguard1]
+      - [0x106C40, .rodata, ft/ftcommon/ftcommonguard2]
+      - [0x106C50, .rodata, ft/ftcommon/ftcommonthrown2]
+      - [0x106C60, .rodata, ft/ftcommon/ftcommoncapturekirby]
+      - [0x106C70, .rodata, ft/ftchar/ftdonkey/ftdonkeythrowff]
+      - [0x106C80, .rodata, ft/ftcommon/ftcommoncapture]
+      - [0x106C90, .rodata, ft/ftcommon/ftcommonattack1]
+      - [0x106D60, .rodata, ft/ftcommon/ftcommonattack100]
+      - [0x106EE0, .rodata, ft/ftcommon/ftcommonattacks3]
+      - [0x106F00, .rodata, ft/ftcommon/ftcommonattackhi3]
+      - [0x106F10, .rodata, ft/ftcommon/ftcommonattacklw3]
+      - [0x106F20, .rodata, ft/ftcommon/ftcommonattacks4]
+      - [0x106F40, .rodata, ft/ftcommon/ftcommonattackair]
+      - [0x106F60, .rodata, ft/ftchar/ftpurin/ftpurinspecialn]
+      - [0x106F70, .rodata, ft/ftchar/ftkirby/ftkirbycopypurinspecialn]
+      - [0x106F80, .rodata, ft/ftchar/ftpikachu/ftpikachuspecialn]
+      - [0x106F90, .rodata, ft/ftchar/ftpikachu/ftpikachuspecialhi]
+      - [0x106FD0, .rodata, ft/ftchar/ftkirby/ftkirbycopypikachuspecialn]
+      - [0x106FE0, .rodata, ft/ftchar/ftness/ftnessspecialn]
+      - [0x106FF0, .rodata, ft/ftchar/ftness/ftnessspecialhi]
+      - [0x107050, .rodata, ft/ftchar/ftness/ftnessspeciallw]
+      - [0x107060, .rodata, ft/ftchar/ftkirby/ftkirbycopynessspecialn]
+      - [0x107070, .rodata, ft/ftchar/ftmario/ftmariospecialn]
+      - [0x1070C0, .rodata, ft/ftchar/ftmario/ftmariospecialhi]
+      - [0x1070E0, .rodata, ft/ftchar/ftkirby/ftkirbycopymariospecialn]
+      - [0x107130, .rodata, ft/ftchar/ftkirby/ftkirbycopysamusspecialn]
+      - [0x107140, .rodata, ft/ftchar/ftboss/ftbosscommon]
+      - [0x107170, .rodata, ft/ftchar/ftboss/ftbosswait]
+      - [0x107200, .rodata, ft/ftchar/ftboss/ftbossmove]
+      - [0x107210, .rodata, ft/ftchar/ftboss/ftbossokuhikouki2]
+      - [0x107220, .rodata, ft/ftchar/ftboss/ftbossokuhikouki3]
+      - [0x107230, .rodata, ft/ftchar/ftboss/ftbossgootsubusuup]
+      - [0x107240, .rodata, ft/ftchar/ftboss/ftbossgootsubusuwait]
+      - [0x107250, .rodata, ft/ftchar/ftboss/ftbosstsutsuku2]
+      - [0x107260, .rodata, ft/ftchar/ftboss/ftbossyubideppou2]
+      - [0x107270, .rodata, ft/ftchar/ftboss/ftbossokupunch2]
+      - [0x107280, .rodata, ft/ftchar/ftboss/ftbossokupunch3]
+      - [0x107290, .rodata, ft/ftchar/ftboss/ftbossokutsubushi]
+      - [0x1072A0, .rodata, ft/ftchar/ftboss/ftbossdeadcenter]
+      - [0x1072B0, .rodata, ft/ftchar/ftdonkey/ftdonkeyspecialhi]
+      - [0x1072C0, .rodata, ft/ftchar/ftfox/ftfoxspecialhi]
+      - [0x1072F0, .rodata, ft/ftchar/ftfox/ftfoxspeciallw]
+      - [0x107300, .rodata, ft/ftchar/ftsamus/ftsamusspecialn]
+      - [0x107310, .rodata, ft/ftchar/ftsamus/ftsamusspecialhi]
+      - [0x107320, .rodata, ft/ftchar/ftsamus/ftsamusspeciallw]
+      - [0x107330, .rodata, ft/ftchar/ftcaptain/ftcaptainspecialn]
+      - [0x107340, .rodata, ft/ftchar/ftcaptain/ftcaptainspecialhi]
+      - [0x107360, .rodata, ft/ftchar/ftkirby/ftkirbycopycaptainspecialn]
+      - [0x107370, .rodata, ft/ftchar/ftkirby/ftkirbyspecialhi]
+      - [0x107410, .rodata, ft/ftchar/ftkirby/ftkirbyspeciallw]
+      - [0x107420, .rodata, ft/ftchar/ftkirby/ftkirbyspecialn]
+      - [0x107430, .rodata, ft/ftchar/ftlink/ftlinkspecialhi]
+      - [0x107470, .rodata, wp/wpprocess]
+      - [0x1074C0, .rodata, wp/wpmain]
+      - [0x1074E0, .rodata, wp/wpfox/wpfoxblaster]
+      - [0x1074F0, .rodata, wp/wpsamus/wpsamuschargeshot]
+      - [0x107500, .rodata, wp/wpsamus/wpsamusbomb]
+      - [0x107510, .rodata, wp/wppikachu/wppikachuthunderjolt]
+      - [0x107530, .rodata, wp/wpness/wpnesspkfire]
+      - [0x107540, .rodata, wp/wpness/wpnesspkthunder]
+      - [0x107560, .rodata, wp/wpyoshi/wpyoshieggthrow]
+      - [0x107580, .rodata, wp/wpyoshi/wpyoshistar]
+      - [0x1075A0, .rodata, wp/wplink/wplinkspinattack]
+      - [0x1075B0, .rodata, wp/wplink/wplinkboomerang]
+      - [0x107620, .rodata, it/itmanager]
+      - [0x107660, .rodata, it/itprocess]
+      - [0x1076B0, .rodata, it/itmain]
+      - [0x1076F0, .rodata, it/itcommon/itcapsule]
+      - [0x107700, .rodata, it/itcommon/itsword]
+      - [0x107710, .rodata, it/itcommon/itbat]
+      - [0x107720, .rodata, it/itcommon/itharisen]
+      - [0x107730, .rodata, it/itcommon/itlgun]
+      - [0x107750, .rodata, it/itcommon/ithammer]
+      - [0x107760, .rodata, it/itcommon/itmsbomb]
+      - [0x107770, .rodata, it/itcommon/itbombhei]
+      - [0x107780, .rodata, it/itcommon/itstarrod]
+      - [0x107790, .rodata, it/itcommon/itgshell]
+      - [0x1077A0, .rodata, it/itcommon/itbox]
+      - [0x1077C0, .rodata, it/itcommon/ittaru]
+      - [0x1077E0, .rodata, it/itcommon/itrshell]
+      - [0x1077F0, .rodata, it/itcommon/itnbumper]
+      - [0x107810, .rodata, it/itground/itpowerblock]
+      - [0x107820, .rodata, it/itground/itglucky]
+      - [0x107830, .rodata, it/itcommon/itmball]
+      - [0x107840, .rodata, it/itground/itpakkun]
+      - [0x107860, .rodata, it/itground/itgbumper]
+      - [0x107870, .rodata, it/itmonster/itiwark]
+      - [0x107880, .rodata, it/itmonster/itkabigon]
+      - [0x107890, .rodata, it/itmonster/itmew]
+      - [0x1078A0, .rodata, it/itmonster/itnyars]
+      - [0x1078B0, .rodata, it/itmonster/itlizardon]
+      - [0x1078C0, .rodata, it/itmonster/itspear]
+      - [0x1078D0, .rodata, it/itmonster/itkamex]
+      - [0x1078F0, .rodata, it/itcommon/itegg]
+      - [0x107900, .rodata, it/itmonster/itstarmie]
+      - [0x107910, .rodata, it/itmonster/itsawamura]
+      - [0x107920, .rodata, it/itmonster/itpippi]
+      - [0x107930, .rodata, it/itground/itmarumine]
+      - [0x107940, .rodata, it/itground/itporygon]
+      - [0x107950, .rodata, it/itground/ithitokage]
+      - [0x107970, .rodata, it/itground/itfushigibana]
+      - [0x107980, .rodata, it/itground/ittarubomb]
+      - [0x1079B0, .rodata, it/itfighter/itlinkbomb]
 
     # ovl3 bss
-      - { start: auto, type: .bss, name: ft/ftcomputer }
-      - { start: auto, type: .bss, name: ft/ftshadow }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommondead }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonrebirth }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonsleep }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonentry }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonwait }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonwalk }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonturn }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommondash }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonrun }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonrunbrake }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonturnrun }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonkneebend }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonjump }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonfall }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonjumpaerial }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommondamage }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonwalldamage }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonpass }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommondokan }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonottotto }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonlanding }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonsquat }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommondamagefall }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonfallspecial }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommontwister }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommontarucann }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonstopceil }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommondownwaitbounce }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommondownstand }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonpassive }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonpassivestand }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommondownforwardback }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommondownattack }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonrebound }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommoncliffcatchwait }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommoncliffclimb }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommoncliffattack }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommoncliffescape }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonget }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonitemthrow }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonitemswing }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonitemshoot }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonhammerwalk }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonhammerturn }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonhammerfall }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonhammerkneebend }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonhammerlanding }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonguard1 }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonguard2 }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonescape }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonshieldbreakfly }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonshieldbreakdown }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonshieldbreakfall }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonshieldbreakstand }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonfurafura }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonfurasleep }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommoncatch1 }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommoncatch2 }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonthrow }
-      - { start: auto, type: .bss, name: ft/ftchar/ftkirby/ftkirbythrowf }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommoncapturepulled }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommoncapturewait }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonthrown1 }
       - { start: auto, type: .bss, name: ft/ftcommon/ftcommonthrown2 }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommoncapturekirby }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommoncaptureyoshi }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommoncapturecaptain }
-      - { start: auto, type: .bss, name: ft/ftchar/ftdonkey/ftdonkeythrowfwait }
-      - { start: auto, type: .bss, name: ft/ftchar/ftdonkey/ftdonkeythrowfwalk }
-      - { start: auto, type: .bss, name: ft/ftchar/ftdonkey/ftdonkeythrowfturn }
-      - { start: auto, type: .bss, name: ft/ftchar/ftdonkey/ftdonkeythrowfkneebend }
-      - { start: auto, type: .bss, name: ft/ftchar/ftdonkey/ftdonkeythrowffall }
-      - { start: auto, type: .bss, name: ft/ftchar/ftdonkey/ftdonkeythrowflanding }
-      - { start: auto, type: .bss, name: ft/ftchar/ftdonkey/ftdonkeythrowff }
-      - { start: auto, type: .bss, name: ft/ftchar/ftdonkey/ftdonkeythrowfdamage }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommoncapture }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonappeal }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonattack1 }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonattack100 }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonattackdash }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonattacks3 }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonattackhi3 }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonattacklw3 }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonattacks4 }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonattackhi4 }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonattacklw4 }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonattackair }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonlandingair }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonspecialair }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonspecialn }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonspecialhi }
-      - { start: auto, type: .bss, name: ft/ftcommon/ftcommonspeciallw }
-      - { start: auto, type: .bss, name: ft/ftchar/ftpurin/ftpurinspecialn }
-      - { start: auto, type: .bss, name: ft/ftchar/ftpurin/ftpurinspecialhi }
-      - { start: auto, type: .bss, name: ft/ftchar/ftpurin/ftpurinspeciallw }
-      - { start: auto, type: .bss, name: ft/ftchar/ftkirby/ftkirbycopypurinspecialn }
-      - { start: auto, type: .bss, name: ft/ftchar/ftpikachu/ftpikachuspecialn }
-      - { start: auto, type: .bss, name: ft/ftchar/ftpikachu/ftpikachuspeciallw }
-      - { start: auto, type: .bss, name: ft/ftchar/ftpikachu/ftpikachuspecialhi }
-      - { start: auto, type: .bss, name: ft/ftchar/ftkirby/ftkirbycopypikachuspecialn }
-      - { start: auto, type: .bss, name: ft/ftchar/ftness/ftnessspecialn }
-      - { start: auto, type: .bss, name: ft/ftchar/ftness/ftnessspecialhi }
-      - { start: auto, type: .bss, name: ft/ftchar/ftness/ftnessspeciallw }
-      - { start: auto, type: .bss, name: ft/ftchar/ftkirby/ftkirbycopynessspecialn }
-      - { start: auto, type: .bss, name: ft/ftchar/ftmario/ftmariospecialn }
-      - { start: auto, type: .bss, name: ft/ftchar/ftmario/ftmariospecialhi }
-      - { start: auto, type: .bss, name: ft/ftchar/ftmario/ftmariospeciallw }
-      - { start: auto, type: .bss, name: ft/ftchar/ftkirby/ftkirbycopymariospecialn }
-      - { start: auto, type: .bss, name: ft/ftchar/ftkirby/ftkirbycopyfoxspecialn }
-      - { start: auto, type: .bss, name: ft/ftchar/ftkirby/ftkirbycopysamusspecialn }
-      - { start: auto, type: .bss, name: ft/ftchar/ftkirby/ftkirbycopydonkeyspecialn }
-      - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftbosscommon }
-      - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftbossdefault }
-      - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftbosswait }
-      - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftbossmove }
-      - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftbosshippataku }
-      - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftbossharau }
-      - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftbossokuhikouki1 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftbossokuhikouki2 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftbossokuhikouki3 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftbosswalk }
-      - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftbosswalkloop }
-      - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftbosswalkwait }
-      - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftbosswalkshoot }
-      - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftbossgootsubusuup }
-      - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftbossgootsubusuwait }
-      - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftbossgootsubusuend }
-      - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftbossgootsubusudown }
-      - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftbosstsutsuku1 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftbosstsutsuku3 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftbosstsutsuku2 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftbossdrill }
-      - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftbossokukouki }
-      - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftbossyubideppou1 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftbossyubideppou3 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftbossyubideppou2 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftbossokupunch1 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftbossokupunch2 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftbossokupunch3 }
-      - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftbossokutsubushi }
-      - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftbossokutsubushistart }
-      - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftbossdeadleft }
-      - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftbossdeadcenter }
-      - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftbossdeadright }
-      - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftbossappear }
-      - { start: auto, type: .bss, name: ft/ftchar/ftdonkey/ftdonkeyspecialn }
-      - { start: auto, type: .bss, name: ft/ftchar/ftdonkey/ftdonkeyspecialhi }
-      - { start: auto, type: .bss, name: ft/ftchar/ftdonkey/ftdonkeyspeciallw }
-      - { start: auto, type: .bss, name: ft/ftchar/ftfox/ftfoxspecialn }
-      - { start: auto, type: .bss, name: ft/ftchar/ftfox/ftfoxspecialhi }
-      - { start: auto, type: .bss, name: ft/ftchar/ftfox/ftfoxspeciallw }
-      - { start: auto, type: .bss, name: ft/ftchar/ftsamus/ftsamusspecialn }
-      - { start: auto, type: .bss, name: ft/ftchar/ftsamus/ftsamusspecialhi }
-      - { start: auto, type: .bss, name: ft/ftchar/ftsamus/ftsamusspeciallw }
-      - { start: auto, type: .bss, name: ft/ftchar/ftyoshi/ftyoshispecialn }
-      - { start: auto, type: .bss, name: ft/ftchar/ftyoshi/ftyoshispecialhi }
-      - { start: auto, type: .bss, name: ft/ftchar/ftyoshi/ftyoshispeciallw }
-      - { start: auto, type: .bss, name: ft/ftchar/ftkirby/ftkirbycopyyoshispecialn }
-      - { start: auto, type: .bss, name: ft/ftchar/ftcaptain/ftcaptainspecialn }
-      - { start: auto, type: .bss, name: ft/ftchar/ftcaptain/ftcaptainspeciallw }
-      - { start: auto, type: .bss, name: ft/ftchar/ftcaptain/ftcaptainspecialhi }
-      - { start: auto, type: .bss, name: ft/ftchar/ftkirby/ftkirbycopycaptainspecialn }
-      - { start: auto, type: .bss, name: ft/ftchar/ftkirby/ftkirbyspecialhi }
-      - { start: auto, type: .bss, name: ft/ftchar/ftkirby/ftkirbyspeciallw }
-      - { start: auto, type: .bss, name: ft/ftchar/ftkirby/ftkirbyspecialn }
-      - { start: auto, type: .bss, name: ft/ftchar/ftlink/ftlinkspecialn }
-      - { start: auto, type: .bss, name: ft/ftchar/ftlink/ftlinkspecialhi }
-      - { start: auto, type: .bss, name: ft/ftchar/ftlink/ftlinkspeciallw }
-      - { start: auto, type: .bss, name: ft/ftchar/ftkirby/ftkirbycopylinkspecialn }
       - { start: auto, type: .bss, name: ft/ftpublic }
       - { start: auto, type: .bss, name: wp/wpmanager }
-      - { start: auto, type: .bss, name: wp/wpprocess }
-      - { start: auto, type: .bss, name: wp/wpdisplay }
-      - { start: auto, type: .bss, name: wp/wpmap }
-      - { start: auto, type: .bss, name: wp/wpmain }
-      - { start: auto, type: .bss, name: wp/wpmario/wpmariofireball }
-      - { start: auto, type: .bss, name: wp/wpfox/wpfoxblaster }
-      - { start: auto, type: .bss, name: wp/wpsamus/wpsamuschargeshot }
-      - { start: auto, type: .bss, name: wp/wpsamus/wpsamusbomb }
-      - { start: auto, type: .bss, name: wp/wppikachu/wppikachuthunderjolt }
-      - { start: auto, type: .bss, name: wp/wppikachu/wppikachuthunder }
-      - { start: auto, type: .bss, name: wp/wpness/wpnesspkfire }
-      - { start: auto, type: .bss, name: wp/wpness/wpnesspkthunder }
-      - { start: auto, type: .bss, name: wp/wpkirby/wpkirbycutter }
-      - { start: auto, type: .bss, name: wp/wpyoshi/wpyoshieggthrow }
-      - { start: auto, type: .bss, name: wp/wpyoshi/wpyoshistar }
-      - { start: auto, type: .bss, name: wp/wplink/wplinkspinattack }
-      - { start: auto, type: .bss, name: wp/wplink/wplinkboomerang }
-      - { start: auto, type: .bss, name: wp/wpboss/wpbossbullet }
       - { start: auto, type: .bss, name: it/itmanager }
-      - { start: auto, type: .bss, name: it/itprocess }
-      - { start: auto, type: .bss, name: it/itvisuals }
-      - { start: auto, type: .bss, name: it/itdisplay }
-      - { start: auto, type: .bss, name: it/itmain }
-      - { start: auto, type: .bss, name: it/itmap }
-      - { start: auto, type: .bss, name: it/itcommon/itcapsule }
-      - { start: auto, type: .bss, name: it/itcommon/ittomato }
-      - { start: auto, type: .bss, name: it/itcommon/itheart }
-      - { start: auto, type: .bss, name: it/itcommon/itstar }
-      - { start: auto, type: .bss, name: it/itcommon/itsword }
-      - { start: auto, type: .bss, name: it/itcommon/itbat }
-      - { start: auto, type: .bss, name: it/itcommon/itharisen }
-      - { start: auto, type: .bss, name: it/itcommon/itlgun }
-      - { start: auto, type: .bss, name: it/itcommon/itfflower }
-      - { start: auto, type: .bss, name: it/itcommon/ithammer }
-      - { start: auto, type: .bss, name: it/itcommon/itmsbomb }
-      - { start: auto, type: .bss, name: it/itcommon/itbombhei }
-      - { start: auto, type: .bss, name: it/itcommon/itstarrod }
-      - { start: auto, type: .bss, name: it/itcommon/itgshell }
-      - { start: auto, type: .bss, name: it/itcommon/itbox }
-      - { start: auto, type: .bss, name: it/itcommon/ittaru }
-      - { start: auto, type: .bss, name: it/itcommon/itrshell }
-      - { start: auto, type: .bss, name: it/itcommon/itnbumper }
-      - { start: auto, type: .bss, name: it/itground/itpowerblock }
-      - { start: auto, type: .bss, name: it/itground/itglucky }
-      - { start: auto, type: .bss, name: it/itcommon/itmball }
-      - { start: auto, type: .bss, name: it/itground/itpakkun }
-      - { start: auto, type: .bss, name: it/itground/itgbumper }
-      - { start: auto, type: .bss, name: it/itmonster/itiwark }
-      - { start: auto, type: .bss, name: it/itmonster/itkabigon }
-      - { start: auto, type: .bss, name: it/itmonster/ittosakinto }
-      - { start: auto, type: .bss, name: it/itmonster/itmew }
-      - { start: auto, type: .bss, name: it/itmonster/itnyars }
-      - { start: auto, type: .bss, name: it/itmonster/itlizardon }
-      - { start: auto, type: .bss, name: it/itmonster/itspear }
-      - { start: auto, type: .bss, name: it/itmonster/itkamex }
-      - { start: auto, type: .bss, name: it/itmonster/itmlucky }
-      - { start: auto, type: .bss, name: it/itcommon/itegg }
-      - { start: auto, type: .bss, name: it/itmonster/itstarmie }
-      - { start: auto, type: .bss, name: it/itmonster/itsawamura }
-      - { start: auto, type: .bss, name: it/itmonster/itdogas }
-      - { start: auto, type: .bss, name: it/itmonster/itpippi }
-      - { start: auto, type: .bss, name: it/itground/itmarumine }
-      - { start: auto, type: .bss, name: it/itground/itporygon }
-      - { start: auto, type: .bss, name: it/itground/ithitokage }
-      - { start: auto, type: .bss, name: it/itground/itfushigibana }
-      - { start: auto, type: .bss, name: it/itground/ittarubomb }
-      - { start: auto, type: .bss, name: it/itfighter/itnesspkfire }
-      - { start: auto, type: .bss, name: it/itfighter/itlinkbomb }
 
   - name: ovl1
     type: code
@@ -1671,10 +1010,10 @@ segments:
     vram: 0x803903E0
     exclusive_ram_id: overlay_803903E0
     subsegments:
-      - [auto, c, sc/scsubsys/scsubsysunused]
-      - [auto, c, sc/scsubsys/scsubsysfighter]
-      - [auto, c, sc/scsubsys/scsubsyscontroller]
-      - [auto, .data, sc/scsubsys/scsubsysdata]
+      - [0x1079C0, c, sc/scsubsys/scsubsysunused]
+      - [0x107AC0, c, sc/scsubsys/scsubsysfighter]
+      - [0x107CE0, c, sc/scsubsys/scsubsyscontroller]
+      - [0x1081C0, .data, sc/scsubsys/scsubsysdata]
       - { start: auto, type: .bss, name: sc/scsubsys/scsubsysunused }
       - { start: auto, type: .bss, name: sc/scsubsys/scsubsysfighter }
       - { start: auto, type: .bss, name: sc/scsubsys/scsubsyscontroller }
@@ -1685,13 +1024,9 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [auto, c, sc/sccommon/scvsbattle]
-      - [auto, c, sc/sccommon/scvsbattlefiles]
-      - [auto, .data, sc/sccommon/scvsbattle]
-      - [auto, .data, sc/sccommon/scvsbattlefiles]
-      - [auto, .rodata, sc/sccommon/scvsbattle]
-      - [auto, .rodata, sc/sccommon/scvsbattlefiles]
-      - { start: auto, type: .bss, name: sc/sccommon/scvsbattle }
+      - [0x109FB0, c, sc/sccommon/scvsbattle]
+      - [0x10B220, c, sc/sccommon/scvsbattlefiles]
+      - [0x10B2C0, .data, sc/sccommon/scvsbattle]
       - { start: auto, type: .bss, name: sc/sccommon/scvsbattlefiles }
 
   - name: ovl5
@@ -1700,9 +1035,8 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [auto, c, mv/mvunknownmario]
-      - [auto, .data, mv/mvunknownmario]
-      - [auto, .rodata, mv/mvunknownmario]
+      - [0x10B370, c, mv/mvunknownmario]
+      - [0x10B830, .data, mv/mvunknownmario]
       - { start: auto, type: .bss, name: mv/mvunknownmario }
 
   - name: ovl65
@@ -1711,12 +1045,19 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [auto, c, sc/sc1pmode/sc1pgame]
-      - [auto, c, sc/sc1pmode/sc1pgameboss]
-      - [auto, .data, sc/sc1pmode/sc1pgame]
-      - [auto, .data, sc/sc1pmode/sc1pgameboss]
-      - [auto, .rodata, sc/sc1pmode/sc1pgame]
-      - [auto, .rodata, sc/sc1pmode/sc1pgameboss]
+    # Main 1P Game scene stuff
+      - [0x10B920, c, sc/sc1pmode/sc1pgame]
+    # Final Destination backgrounds
+      - [0x10F910, c, sc/sc1pmode/sc1pgameboss]
+    # Main 1P Game scene stuff
+      - [0x111060, .data, sc/sc1pmode/sc1pgame]
+    # Final Destination backgrounds
+      - [0x111420, .data, sc/sc1pmode/sc1pgameboss]
+    # Main 1P Game scene stuff
+      - [0x111670, .rodata, sc/sc1pmode/sc1pgame]
+    # Final Destination backgrounds
+      - [0x1117D0, .rodata, sc/sc1pmode/sc1pgameboss]
+    # Main 1P Game scene stuff
       - { start: auto, type: .bss, name: sc/sc1pmode/sc1pgame }
       - { start: auto, type: .bss, name: sc/sc1pmode/sc1pgameboss }
 
@@ -1726,18 +1067,14 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [auto, c, sc/sc1pmode/sc1pbonusstage]
-      - [auto, c, sc/sc1pmode/sc1pbonusstagefiles]
-      - [auto, c, it/itground/ittarget]
-      - [auto, .data, sc/sc1pmode/sc1pbonusstage]
-      - [auto, .data, sc/sc1pmode/sc1pbonusstagefiles]
-      - [auto, .data, it/itground/ittarget]
-      - [auto, .rodata, sc/sc1pmode/sc1pbonusstage]
-      - [auto, .rodata, sc/sc1pmode/sc1pbonusstagefiles]
-      - [auto, .rodata, it/itground/ittarget]
+      - [0x111800, c, sc/sc1pmode/sc1pbonusstage]
+      - [0x1134B0, c, sc/sc1pmode/sc1pbonusstagefiles]
+      - [0x113550, c, it/itground/ittarget]
+      - [0x113600, .data, sc/sc1pmode/sc1pbonusstage]
+      - [0x113870, .data, it/itground/ittarget]
+      - [0x1138B0, .rodata, sc/sc1pmode/sc1pbonusstage]
       - { start: auto, type: .bss, name: sc/sc1pmode/sc1pbonusstage }
       - { start: auto, type: .bss, name: sc/sc1pmode/sc1pbonusstagefiles }
-      - { start: auto, type: .bss, name: it/itground/ittarget }
 
   - name: ovl7
     type: code
@@ -1745,9 +1082,9 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [auto, c, sc/sc1pmode/sc1ptrainingmode]
-      - [auto, .data, sc/sc1pmode/sc1ptrainingmode]
-      - [auto, .rodata, sc/sc1pmode/sc1ptrainingmode]
+      - [0x1138E0, c, sc/sc1pmode/sc1ptrainingmode]
+      - [0x116F90, .data, sc/sc1pmode/sc1ptrainingmode]
+      - [0x117140, .rodata, sc/sc1pmode/sc1ptrainingmode]
       - { start: auto, type: .bss, name: sc/sc1pmode/sc1ptrainingmode }
 
   - name: ovl10
@@ -1756,9 +1093,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, mn/mncommon/mntitle]
-      - [auto, .data, mn/mncommon/mntitle]
-      - [auto, .rodata, mn/mncommon/mntitle]
+      - [0x117180, c, mn/mncommon/mntitle]
+      - [0x119860, .data, mn/mncommon/mntitle]
+      - [0x119AB0, .rodata, mn/mncommon/mntitle]
       - { start: auto, type: .bss, name: mn/mncommon/mntitle }
 
   - name: ovl11
@@ -1767,12 +1104,10 @@ segments:
     vram: 0x800D6490
     exclusive_ram_id: overlay_800D6490
     subsegments:
-      - [auto, c, mn/mncommon/mnnocontroller]
-      - [auto, c, mn/mncommon/mnnocontrollerfiles]
-      - [auto, .data, mn/mncommon/mnnocontroller]
-      - [auto, .data, mn/mncommon/mnnocontrollerfiles]
-      - [auto, .rodata, mn/mncommon/mnnocontroller]
-      - [auto, .rodata, mn/mncommon/mnnocontrollerfiles]
+      - [0x119AC0, c, mn/mncommon/mnnocontroller]
+      - [0x119C90, c, mn/mncommon/mnnocontrollerfiles]
+      - [0x119D30, .data, mn/mncommon/mnnocontroller]
+      - [0x119DE0, .data, mn/mncommon/mnnocontrollerfiles]
       - { start: auto, type: .bss, name: mn/mncommon/mnnocontroller }
       - { start: auto, type: .bss, name: mn/mncommon/mnnocontrollerfiles }
 
@@ -1782,9 +1117,9 @@ segments:
     vram: 0x800D6490
     exclusive_ram_id: overlay_800D6490
     subsegments:
-      - [auto, c, db/dbmaps]
-      - [auto, .data, db/dbmaps]
-      - [auto, .rodata, db/dbmaps]
+      - [0x119DF0, c, db/dbmaps]
+      - [0x119FE0, .data, db/dbmaps]
+      - [0x11A170, .rodata, db/dbmaps]
       - { start: auto, type: .bss, name: db/dbmaps }
 
   - name: ovl13
@@ -1793,9 +1128,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, db/dbcube]
-      - [auto, .data, db/dbcube]
-      - [auto, .rodata, db/dbcube]
+      - [0x11A340, c, db/dbcube]
+      - [0x11AA20, .data, db/dbcube]
+      - [0x11B860, .rodata, db/dbcube]
       - { start: auto, type: .bss, name: db/dbcube }
 
   - name: ovl14
@@ -1804,9 +1139,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, db/dbbattle]
-      - [auto, .data, db/dbbattle]
-      - [auto, .rodata, db/dbbattle]
+      - [0x11B970, c, db/dbbattle]
+      - [0x11C500, .data, db/dbbattle]
+      - [0x11C850, .rodata, db/dbbattle]
       - { start: auto, type: .bss, name: db/dbbattle }
 
   - name: ovl17
@@ -1815,9 +1150,8 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, mn/mncommon/mnmodeselect]
-      - [auto, .data, mn/mncommon/mnmodeselect]
-      - [auto, .rodata, mn/mncommon/mnmodeselect]
+      - [0x11ca90, c, mn/mncommon/mnmodeselect]
+      - [0x11DB20, .data, mn/mncommon/mnmodeselect]
       - { start: auto, type: .bss, name: mn/mncommon/mnmodeselect }
 
   - name: ovl18
@@ -1826,9 +1160,8 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, mn/mn1pmode/mn1pmode]
-      - [auto, .data, mn/mn1pmode/mn1pmode]
-      - [auto, .rodata, mn/mn1pmode/mn1pmode]
+      - [0x11DC10, c, mn/mn1pmode/mn1pmode]
+      - [0x11F190, .data, mn/mn1pmode/mn1pmode]
       - { start: auto, type: .bss, name: mn/mn1pmode/mn1pmode }
 
   - name: ovl60
@@ -1837,9 +1170,8 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, mn/mnoption/mnoption]
-      - [auto, .data, mn/mnoption/mnoption]
-      - [auto, .rodata, mn/mnoption/mnoption]
+      - [0x11F2B0, c, mn/mnoption/mnoption]
+      - [0x120DD0, .data, mn/mnoption/mnoption]
       - { start: auto, type: .bss, name: mn/mnoption/mnoption }
 
   - name: ovl61
@@ -1848,9 +1180,8 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, mn/mndata/mndata]
-      - [auto, .data, mn/mndata/mndata]
-      - [auto, .rodata, mn/mndata/mndata]
+      - [0x120F50, c, mn/mndata/mndata]
+      - [0x122370, .data, mn/mndata/mndata]
       - { start: auto, type: .bss, name: mn/mndata/mndata }
 
   - name: ovl19
@@ -1859,9 +1190,8 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, mn/mnvsmode/mnvsmode]
-      - [auto, .data, mn/mnvsmode/mnvsmode]
-      - [auto, .rodata, mn/mnvsmode/mnvsmode]
+      - [0x1224b0, c, mn/mnvsmode/mnvsmode]
+      - [0x125160, .data, mn/mnvsmode/mnvsmode]
       - { start: auto, type: .bss, name: mn/mnvsmode/mnvsmode }
 
   - name: ovl20
@@ -1870,9 +1200,8 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, mn/mnvsmode/mnvsoptions]
-      - [auto, .data, mn/mnvsmode/mnvsoptions]
-      - [auto, .rodata, mn/mnvsmode/mnvsoptions]
+      - [0x1252E0, c, mn/mnvsmode/mnvsoptions]
+      - [0x127EA0, .data, mn/mnvsmode/mnvsoptions]
       - { start: auto, type: .bss, name: mn/mnvsmode/mnvsoptions }
 
   - name: ovl21
@@ -1881,9 +1210,8 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, mn/mnvsmode/mnvsitemswitch]
-      - [auto, .data, mn/mnvsmode/mnvsitemswitch]
-      - [auto, .rodata, mn/mnvsmode/mnvsitemswitch]
+      - [0x1280A0, c, mn/mnvsmode/mnvsitemswitch]
+      - [0x1297B0, .data, mn/mnvsmode/mnvsitemswitch]
       - { start: auto, type: .bss, name: mn/mnvsmode/mnvsitemswitch }
 
   - name: ovl22
@@ -1892,9 +1220,8 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, mn/mncommon/mnmessage]
-      - [auto, .data, mn/mncommon/mnmessage]
-      - [auto, .rodata, mn/mncommon/mnmessage]
+      - [0x129970, c, mn/mncommon/mnmessage]
+      - [0x12A370, .data, mn/mncommon/mnmessage]
       - { start: auto, type: .bss, name: mn/mncommon/mnmessage }
 
   - name: ovl23
@@ -1903,9 +1230,8 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, sc/sc1pmode/sc1pchallenger]
-      - [auto, .data, sc/sc1pmode/sc1pchallenger]
-      - [auto, .rodata, sc/sc1pmode/sc1pchallenger]
+      - [0x12A4C0, c, sc/sc1pmode/sc1pchallenger]
+      - [0x12AD30, .data, sc/sc1pmode/sc1pchallenger]
       - { start: auto, type: .bss, name: sc/sc1pmode/sc1pchallenger }
 
   - name: ovl24
@@ -1914,9 +1240,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, sc/sc1pmode/sc1pintro]
-      - [auto, .data, sc/sc1pmode/sc1pintro]
-      - [auto, .rodata, sc/sc1pmode/sc1pintro]
+      - [0x12AE40, c, sc/sc1pmode/sc1pintro]
+      - [0x12E130, .data, sc/sc1pmode/sc1pintro]
+      - [0x12EF20, .rodata, sc/sc1pmode/sc1pintro]
       - { start: auto, type: .bss, name: sc/sc1pmode/sc1pintro }
 
   - name: ovl25
@@ -1925,22 +1251,21 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, mn/mnoption/mnscreenadjust]
-      - [auto, .data, mn/mnoption/mnscreenadjust]
-      - [auto, .rodata, mn/mnoption/mnscreenadjust]
+      - [0x12EF60, c, mn/mnoption/mnscreenadjust]
+      - [0x12FC90, .data, mn/mnoption/mnscreenadjust]
       - { start: auto, type: .bss, name: mn/mnoption/mnscreenadjust }
 
   - name: ovl26
     type: code
-    start: 0x12FD80
+    start: 0x12fd80
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x12FD80, pad, pad0x12FD80]
+      - [0x12fd80, pad, pad0x12FD80]
       - [0x12FDA0, c, mn/mnplayers/mnplayersvs]
-      - [auto, .data, mn/mnplayers/mnplayersvs]
-      - [auto, .rodata, mn/mnplayers/mnplayersvs]
-      - { start: auto, type: .bss, name: mn/mnplayers/mnplayersvs }
+      - [0x139620, .data, mn/mnplayers/mnplayersvs]
+      - [0x139CB0, .rodata, mn/mnplayers/mnplayersvs]
+      - { start: auto, type: .bss, vram: 0x8013BA80, name: mn/mnplayers/mnplayersvs }
 
   - name: ovl27
     type: code
@@ -1948,10 +1273,10 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, mn/mnplayers/mnplayers1pgame]
-      - [auto, .data, mn/mnplayers/mnplayers1pgame]
-      - [auto, .rodata, mn/mnplayers/mnplayers1pgame]
-      - { start: auto, type: .bss, name: mn/mnplayers/mnplayers1pgame }
+      - [0x139D00, c, mn/mnplayers/mnplayers1pgame]
+      - [0x1407B0, .data, mn/mnplayers/mnplayers1pgame]
+      - [0x140F40, .rodata, mn/mnplayers/mnplayers1pgame]
+      - { start: auto, type: .bss, vram: 0x80138EE0, name: mn/mnplayers/mnplayers1pgame }
 
   - name: ovl28
     type: code
@@ -1959,10 +1284,10 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, mn/mnplayers/mnplayers1ptraining]
-      - [auto, .data, mn/mnplayers/mnplayers1ptraining]
-      - [auto, .rodata, mn/mnplayers/mnplayers1ptraining]
-      - { start: auto, type: .bss, name: mn/mnplayers/mnplayers1ptraining }
+      - [0x1410E0, c, mn/mnplayers/mnplayers1ptraining]
+      - [0x147540, .data, mn/mnplayers/mnplayers1ptraining]
+      - [0x147AC0, .rodata, mn/mnplayers/mnplayers1ptraining]
+      - { start: auto, type: .bss, vram: 0x80138550, name: mn/mnplayers/mnplayers1ptraining }
 
   - name: ovl29
     type: code
@@ -1970,9 +1295,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, mn/mnplayers/mnplayers1pbonus]
-      - [auto, .data, mn/mnplayers/mnplayers1pbonus]
-      - [auto, .rodata, mn/mnplayers/mnplayers1pbonus]
+      - [0x147B30, c, mn/mnplayers/mnplayers1pbonus]
+      - [0x14CF80, .data, mn/mnplayers/mnplayers1pbonus]
+      - [0x14D610, .rodata, mn/mnplayers/mnplayers1pbonus]
       - { start: auto, type: .bss, name: mn/mnplayers/mnplayers1pbonus }
 
   - name: ovl30
@@ -1981,9 +1306,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, mn/mnmaps/mnmaps]
-      - [auto, .data, mn/mnmaps/mnmaps]
-      - [auto, .rodata, mn/mnmaps/mnmaps]
+      - [0x14D670, c, mn/mnmaps/mnmaps]
+      - [0x150040, .data, mn/mnmaps/mnmaps]
+      - [0x150530, .rodata, mn/mnmaps/mnmaps]
       - { start: auto, type: .bss, name: mn/mnmaps/mnmaps }
 
   - name: ovl15
@@ -1992,9 +1317,9 @@ segments:
     vram: 0x800D6490
     exclusive_ram_id: overlay_800D6490
     subsegments:
-      - [auto, c, db/dbfalls]
-      - [auto, .data, db/dbfalls]
-      - [auto, .rodata, db/dbfalls]
+      - [0x150740, c, db/dbfalls]
+      - [0x150990, .data, db/dbfalls]
+      - [0x150C00, .rodata, db/dbfalls]
       - { start: auto, type: .bss, name: db/dbfalls }
 
   - name: ovl31
@@ -2005,8 +1330,8 @@ segments:
     subsegments:
       - [0x150CA0, pad, pad0x150CA0]
       - [0x150CC0, c, mn/mnvsmode/mnvsresults]
-      - [auto, .data, mn/mnvsmode/mnvsresults]
-      - [auto, .rodata, mn/mnvsmode/mnvsresults]
+      - [0x158090, .data, mn/mnvsmode/mnvsresults]
+      - [0x158960, .rodata, mn/mnvsmode/mnvsresults]
       - { start: auto, type: .bss, name: mn/mnvsmode/mnvsresults }
 
   - name: ovl32
@@ -2015,9 +1340,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, mn/mndata/mnvsrecord]
-      - [auto, .data, mn/mndata/mnvsrecord]
-      - [auto, .rodata, mn/mndata/mnvsrecord]
+      - [0x158A40, c, mn/mndata/mnvsrecord]
+      - [0x15D570, .data, mn/mndata/mnvsrecord]
+      - [0x15D9C0, .rodata, mn/mndata/mnvsrecord]
       - { start: auto, type: .bss, name: mn/mndata/mnvsrecord }
 
   - name: ovl33
@@ -2026,9 +1351,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, mn/mndata/mncharacters]
-      - [auto, .data, mn/mndata/mncharacters]
-      - [auto, .rodata, mn/mndata/mncharacters]
+      - [0x15DB50, c, mn/mndata/mncharacters]
+      - [0x160100, .data, mn/mndata/mncharacters]
+      - [0x162600, .rodata, mn/mndata/mncharacters]
       - { start: auto, type: .bss, name: mn/mndata/mncharacters }
 
   - name: ovl34
@@ -2037,9 +1362,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, mv/mvopening/mvopeningroom]
-      - [auto, .data, mv/mvopening/mvopeningroom]
-      - [auto, .rodata, mv/mvopening/mvopeningroom]
+      - [0x162640, c, mv/mvopening/mvopeningroom]
+      - [0x165560, .data, mv/mvopening/mvopeningroom]
+      - [0x1657C0, .rodata, mv/mvopening/mvopeningroom]
       - { start: auto, type: .bss, name: mv/mvopening/mvopeningroom }
 
   - name: ovl35
@@ -2048,9 +1373,8 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, mv/mvopening/mvopeningportraits]
-      - [auto, .data, mv/mvopening/mvopeningportraits]
-      - [auto, .rodata, mv/mvopening/mvopeningportraits]
+      - [0x165810, c, mv/mvopening/mvopeningportraits]
+      - [0x1665B0, .data, mv/mvopening/mvopeningportraits]
       - { start: auto, type: .bss, name: mv/mvopening/mvopeningportraits }
 
   - name: ovl36
@@ -2059,9 +1383,9 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [auto, c, mv/mvopening/mvopeningmario]
-      - [auto, .data, mv/mvopening/mvopeningmario]
-      - [auto, .rodata, mv/mvopening/mvopeningmario]
+      - [0x1666F0, c, mv/mvopening/mvopeningmario]
+      - [0x1676C0, .data, mv/mvopening/mvopeningmario]
+      - [0x167800, .rodata, mv/mvopening/mvopeningmario]
       - { start: auto, type: .bss, name: mv/mvopening/mvopeningmario }
 
   - name: ovl37
@@ -2070,9 +1394,9 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [auto, c, mv/mvopening/mvopeningdonkey]
-      - [auto, .data, mv/mvopening/mvopeningdonkey]
-      - [auto, .rodata, mv/mvopening/mvopeningdonkey]
+      - [0x167830, c, mv/mvopening/mvopeningdonkey]
+      - [0x1687E0, .data, mv/mvopening/mvopeningdonkey]
+      - [0x168900, .rodata, mv/mvopening/mvopeningdonkey]
       - { start: auto, type: .bss, name: mv/mvopening/mvopeningdonkey }
 
   - name: ovl38
@@ -2081,9 +1405,9 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [auto, c, mv/mvopening/mvopeningsamus]
-      - [auto, .data, mv/mvopening/mvopeningsamus]
-      - [auto, .rodata, mv/mvopening/mvopeningsamus]
+      - [0x168930, c, mv/mvopening/mvopeningsamus]
+      - [0x169990, .data, mv/mvopening/mvopeningsamus]
+      - [0x169AB0, .rodata, mv/mvopening/mvopeningsamus]
       - { start: auto, type: .bss, name: mv/mvopening/mvopeningsamus }
 
   - name: ovl39
@@ -2092,9 +1416,9 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [auto, c, mv/mvopening/mvopeningfox]
-      - [auto, .data, mv/mvopening/mvopeningfox]
-      - [auto, .rodata, mv/mvopening/mvopeningfox]
+      - [0x169AE0, c, mv/mvopening/mvopeningfox]
+      - [0x16AAB0, .data, mv/mvopening/mvopeningfox]
+      - [0x16ABE0, .rodata, mv/mvopening/mvopeningfox]
       - { start: auto, type: .bss, name: mv/mvopening/mvopeningfox }
 
   - name: ovl40
@@ -2103,9 +1427,9 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [auto, c, mv/mvopening/mvopeninglink]
-      - [auto, .data, mv/mvopening/mvopeninglink]
-      - [auto, .rodata, mv/mvopening/mvopeninglink]
+      - [0x16AC10, c, mv/mvopening/mvopeninglink]
+      - [0x16BBC0, .data, mv/mvopening/mvopeninglink]
+      - [0x16BCE0, .rodata, mv/mvopening/mvopeninglink]
       - { start: auto, type: .bss, name: mv/mvopening/mvopeninglink }
 
   - name: ovl41
@@ -2114,9 +1438,9 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [auto, c, mv/mvopening/mvopeningyoshi]
-      - [auto, .data, mv/mvopening/mvopeningyoshi]
-      - [auto, .rodata, mv/mvopening/mvopeningyoshi]
+      - [0x16BD10, c, mv/mvopening/mvopeningyoshi]
+      - [0x16CD10, .data, mv/mvopening/mvopeningyoshi]
+      - [0x16CE40, .rodata, mv/mvopening/mvopeningyoshi]
       - { start: auto, type: .bss, name: mv/mvopening/mvopeningyoshi }
 
   - name: ovl42
@@ -2125,9 +1449,9 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [auto, c, mv/mvopening/mvopeningpikachu]
-      - [auto, .data, mv/mvopening/mvopeningpikachu]
-      - [auto, .rodata, mv/mvopening/mvopeningpikachu]
+      - [0x16CE70, c, mv/mvopening/mvopeningpikachu]
+      - [0x16DE70, .data, mv/mvopening/mvopeningpikachu]
+      - [0x16DFA0, .rodata, mv/mvopening/mvopeningpikachu]
       - { start: auto, type: .bss, name: mv/mvopening/mvopeningpikachu }
 
   - name: ovl43
@@ -2136,9 +1460,9 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [auto, c, mv/mvopening/mvopeningkirby]
-      - [auto, .data, mv/mvopening/mvopeningkirby]
-      - [auto, .rodata, mv/mvopening/mvopeningkirby]
+      - [0x16DFD0, c, mv/mvopening/mvopeningkirby]
+      - [0x16EFC0, .data, mv/mvopening/mvopeningkirby]
+      - [0x16F100, .rodata, mv/mvopening/mvopeningkirby]
       - { start: auto, type: .bss, name: mv/mvopening/mvopeningkirby }
 
   - name: ovl44
@@ -2147,9 +1471,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, mv/mvopening/mvopeningrun]
-      - [auto, .data, mv/mvopening/mvopeningrun]
-      - [auto, .rodata, mv/mvopening/mvopeningrun]
+      - [0x16F130, c, mv/mvopening/mvopeningrun]
+      - [0x16FC00, .data, mv/mvopening/mvopeningrun]
+      - [0x16FD30, .rodata, mv/mvopening/mvopeningrun]
       - { start: auto, type: .bss, name: mv/mvopening/mvopeningrun }
 
   - name: ovl45
@@ -2158,9 +1482,8 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, mv/mvopening/mvopeningyoster]
-      - [auto, .data, mv/mvopening/mvopeningyoster]
-      - [auto, .rodata, mv/mvopening/mvopeningyoster]
+      - [0x16FD40, c, mv/mvopening/mvopeningyoster]
+      - [0x170570, .data, mv/mvopening/mvopeningyoster]
       - { start: auto, type: .bss, name: mv/mvopening/mvopeningyoster }
 
   - name: ovl46
@@ -2169,9 +1492,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, mv/mvopening/mvopeningcliff]
-      - [auto, .data, mv/mvopening/mvopeningcliff]
-      - [auto, .rodata, mv/mvopening/mvopeningcliff]
+      - [0x170660, c, mv/mvopening/mvopeningcliff]
+      - [0x171230, .data, mv/mvopening/mvopeningcliff]
+      - [0x171310, .rodata, mv/mvopening/mvopeningcliff]
       - { start: auto, type: .bss, name: mv/mvopening/mvopeningcliff }
 
   - name: ovl47
@@ -2180,9 +1503,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, mv/mvopening/mvopeningstandoff]
-      - [auto, .data, mv/mvopening/mvopeningstandoff]
-      - [auto, .rodata, mv/mvopening/mvopeningstandoff]
+      - [0x171320, c, mv/mvopening/mvopeningstandoff]
+      - [0x1720F0, .data, mv/mvopening/mvopeningstandoff]
+      - [0x1721D0, .rodata, mv/mvopening/mvopeningstandoff]
       - { start: auto, type: .bss, name: mv/mvopening/mvopeningstandoff }
 
   - name: ovl48
@@ -2191,9 +1514,8 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, mv/mvopening/mvopeningyamabuki]
-      - [auto, .data, mv/mvopening/mvopeningyamabuki]
-      - [auto, .rodata, mv/mvopening/mvopeningyamabuki]
+      - [0x1721E0, c, mv/mvopening/mvopeningyamabuki]
+      - [0x172A80, .data, mv/mvopening/mvopeningyamabuki]
       - { start: auto, type: .bss, name: mv/mvopening/mvopeningyamabuki }
 
   - name: ovl49
@@ -2202,9 +1524,8 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, mv/mvopening/mvopeningclash]
-      - [auto, .data, mv/mvopening/mvopeningclash]
-      - [auto, .rodata, mv/mvopening/mvopeningclash]
+      - [0x172B60, c, mv/mvopening/mvopeningclash]
+      - [0x173930, .data, mv/mvopening/mvopeningclash]
       - { start: auto, type: .bss, name: mv/mvopening/mvopeningclash }
 
   - name: ovl50
@@ -2213,9 +1534,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, mv/mvopening/mvopeningsector]
-      - [auto, .data, mv/mvopening/mvopeningsector]
-      - [auto, .rodata, mv/mvopening/mvopeningsector]
+      - [0x173A30, c, mv/mvopening/mvopeningsector]
+      - [0x174820, .data, mv/mvopening/mvopeningsector]
+      - [0x174920, .rodata, mv/mvopening/mvopeningsector]
       - { start: auto, type: .bss, name: mv/mvopening/mvopeningsector }
 
   - name: ovl51
@@ -2224,9 +1545,9 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [auto, c, mv/mvopening/mvopeningjungle]
-      - [auto, .data, mv/mvopening/mvopeningjungle]
-      - [auto, .rodata, mv/mvopening/mvopeningjungle]
+      - [0x174940, c, mv/mvopening/mvopeningjungle]
+      - [0x1750F0, .data, mv/mvopening/mvopeningjungle]
+      - [0x175270, .rodata, mv/mvopening/mvopeningjungle]
       - { start: auto, type: .bss, name: mv/mvopening/mvopeningjungle }
 
   - name: ovl52
@@ -2235,9 +1556,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, mv/mvopening/mvopeningnewcomers]
-      - [auto, .data, mv/mvopening/mvopeningnewcomers]
-      - [auto, .rodata, mv/mvopening/mvopeningnewcomers]
+      - [0x1752C0, c, mv/mvopening/mvopeningnewcomers]
+      - [0x175E00, .data, mv/mvopening/mvopeningnewcomers]
+      - [0x175EE0, .rodata, mv/mvopening/mvopeningnewcomers]
       - { start: auto, type: .bss, name: mv/mvopening/mvopeningnewcomers }
 
   - name: ovl53
@@ -2246,9 +1567,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, mn/mnoption/mnbackupclear]
-      - [auto, .data, mn/mnoption/mnbackupclear]
-      - [auto, .rodata, mn/mnoption/mnbackupclear]
+      - [0x175F00, c, mn/mnoption/mnbackupclear]
+      - [0x177280, .data, mn/mnoption/mnbackupclear]
+      - [0x177470, .rodata, mn/mnoption/mnbackupclear]
       - { start: auto, type: .bss, name: mn/mnoption/mnbackupclear }
 
   - name: ovl54
@@ -2257,9 +1578,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, mv/mvending/mvending]
-      - [auto, .data, mv/mvending/mvending]
-      - [auto, .rodata, mv/mvending/mvending]
+      - [0x1774A0, c, mv/mvending/mvending]
+      - [0x178470, .data, mv/mvending/mvending]
+      - [0x178550, .rodata, mv/mvending/mvending]
       - { start: auto, type: .bss, name: mv/mvending/mvending }
 
   - name: ovl55
@@ -2268,9 +1589,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, mn/mn1pmode/mn1pcontinue]
-      - [auto, .data, mn/mn1pmode/mn1pcontinue]
-      - [auto, .rodata, mn/mn1pmode/mn1pcontinue]
+      - [0x178560, c, mn/mn1pmode/mn1pcontinue]
+      - [0x17ABC0, .data, mn/mn1pmode/mn1pcontinue]
+      - [0x17AD40, .rodata, mn/mn1pmode/mn1pcontinue]
       - { start: auto, type: .bss, name: mn/mn1pmode/mn1pcontinue }
 
   - name: ovl56
@@ -2279,9 +1600,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, sc/sc1pmode/sc1pstageclear]
-      - [auto, .data, sc/sc1pmode/sc1pstageclear]
-      - [auto, .rodata, sc/sc1pmode/sc1pstageclear]
+      - [0x17AD50, c, sc/sc1pmode/sc1pstageclear]
+      - [0x17E130, .data, sc/sc1pmode/sc1pstageclear]
+      - [0x17E4F0, .rodata, sc/sc1pmode/sc1pstageclear]
       - { start: auto, type: .bss, name: sc/sc1pmode/sc1pstageclear }
 
   - name: ovl57
@@ -2290,9 +1611,8 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, mn/mncommon/mncongra]
-      - [auto, .data, mn/mncommon/mncongra]
-      - [auto, .rodata, mn/mncommon/mncongra]
+      - [0x17E510, c, mn/mncommon/mncongra]
+      - [0x17EB10, .data, mn/mncommon/mncongra]
       - { start: auto, type: .bss, name: mn/mncommon/mncongra }
 
   - name: ovl58
@@ -2301,9 +1621,8 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, mn/mncommon/mnstartup]
-      - [auto, .data, mn/mncommon/mnstartup]
-      - [auto, .rodata, mn/mncommon/mnstartup]
+      - [0x17ECC0, c, mn/mncommon/mnstartup]
+      - [0x17F110, .data, mn/mncommon/mnstartup]
       - { start: auto, type: .bss, name: mn/mncommon/mnstartup }
 
   - name: ovl59
@@ -2312,9 +1631,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, sc/sccommon/scstaffroll]
-      - [auto, .data, sc/sccommon/scstaffroll]
-      - [auto, .rodata, sc/sccommon/scstaffroll]
+      - [0x17F200, c, sc/sccommon/scstaffroll]
+      - [0x182960, .data, sc/sccommon/scstaffroll]
+      - [0x187EB0, .rodata, sc/sccommon/scstaffroll]
       - { start: auto, type: .bss, name: sc/sccommon/scstaffroll }
 
   - name: ovl62
@@ -2323,9 +1642,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [auto, c, mn/mndata/mnsoundtest]
-      - [auto, .data, mn/mndata/mnsoundtest]
-      - [auto, .rodata, mn/mndata/mnsoundtest]
+      - [0x187ED0, c, mn/mndata/mnsoundtest]
+      - [0x189DB0, .data, mn/mndata/mnsoundtest]
+      - [0x18A6C0, .rodata, mn/mndata/mnsoundtest]
       - { start: auto, type: .bss, name: mn/mndata/mnsoundtest }
 
   - name: ovl63
@@ -2334,14 +1653,13 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [auto, c, sc/sccommon/scexplain]
-      - [auto, c, sc/sccommon/scexplainfiles]
-      - [auto, .data, sc/sccommon/scexplain]
-      - [auto, .data, sc/sccommon/scexplainfiles]
-      - [auto, .rodata, sc/sccommon/scexplain]
-      - [auto, .rodata, sc/sccommon/scexplainfiles]
+      - [0x18A6D0, c, sc/sccommon/scexplain]
+      - [0x18BC50, c, sc/sccommon/scexplainfiles]
+      - [0x18BCF0, .data, sc/sccommon/scexplain]
+      - [0x18BDF0, .rodata, sc/sccommon/scexplain]
       - { start: auto, type: .bss, name: sc/sccommon/scexplain }
       - { start: auto, type: .bss, name: sc/sccommon/scexplainfiles }
+
 
   - name: ovl64
     type: code
@@ -2349,12 +1667,10 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [auto, c, sc/sccommon/scautodemo]
-      - [auto, c, sc/sccommon/scautodemofiles]
-      - [auto, .data, sc/sccommon/scautodemo]
-      - [auto, .data, sc/sccommon/scautodemofiles]
-      - [auto, .rodata, sc/sccommon/scautodemo]
-      - [auto, .rodata, sc/sccommon/scautodemofiles]
+      - [0x18BE00, c, sc/sccommon/scautodemo]
+      - [0x18CE00, c, sc/sccommon/scautodemofiles]
+      - [0x18CEA0, .data, sc/sccommon/scautodemo]
+      - [0x18D020, .rodata, sc/sccommon/scautodemo]
       - { start: auto, type: .bss, name: sc/sccommon/scautodemo }
       - { start: auto, type: .bss, name: sc/sccommon/scautodemofiles }
 
@@ -2364,9 +1680,9 @@ segments:
     vram: 0x800D6490
     exclusive_ram_id: overlay_800D6490
     subsegments:
-      - [auto, c, mn/mncommon/mnunusedfighters]
-      - [auto, .data, mn/mncommon/mnunusedfighters]
-      - [auto, .rodata, mn/mncommon/mnunusedfighters]
+      - [0x18D030, c, mn/mncommon/mnunusedfighters]
+      - [0x18DBB0, .data, mn/mncommon/mnunusedfighters]
+      - [0x18DCA0, .rodata, mn/mncommon/mnunusedfighters]
       - { start: auto, type: .bss, name: mn/mncommon/mnunusedfighters }
 
   - name: ovl8
@@ -2448,9 +1764,9 @@ segments:
     vram: 0x80369240
     exclusive_ram_id: overlay_80369240
     subsegments:
-      - [auto, c, db/dbmenu]
-      - [auto, .data, db/dbmenu]
-      - [auto, .rodata, db/dbmenu]
+      - [0x1AB6B0, c, db/dbmenu]
+      - [0x1AC3D0, .data, db/dbmenu]
+      - [0x1AC820, .rodata, db/dbmenu]
       - { start: auto, type: .bss, name: db/dbmenu }
 
   - name: framebuffer

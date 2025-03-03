@@ -379,9 +379,6 @@ u16 dIFCommonAnnounceDefeatedVoiceIDs[/* */] =
     nSYAudioVoiceAnnouncePlayer4
 };
 
-// 0x8012F190
-s32 dIFCommonPad0x8012F190[/* */] = { 0, 0, 0, 0 };
-
 // // // // // // // // // // // //
 //                               //
 //   GLOBAL / STATIC VARIABLES   //

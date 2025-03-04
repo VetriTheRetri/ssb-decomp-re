@@ -1095,6 +1095,50 @@ Sprite 4P 0xa38
 Sprite CP 0xcd8
 Sprite Ally 0xeb8
 
+[40]
+DObjDesc - 0xB3F8
+AnimJoint - 0xB710
+
+[41]
+DObjDesc - 0x3E80
+AnimJoint - 0x4038
+
+[42]
+DObjDesc - 0x0F98
+AnimJoint - 0x101C
+
+[43]
+DObjDesc - 0x1F00
+AnimJoint - 0x1FB0
+
+[44]
+DObjDesc - 0x2450
+AnimJoint - 0x24D4
+
+[45]
+DObjDesc - 0x74A8
+AnimJoint - 0x7660
+
+[46]
+DObjDesc - 0x3EA0
+AnimJoint - 0x3F50
+
+[48]
+DObjDesc - 0x4E18
+AnimJoint - 0x536C
+
+[49]
+DObjDesc - 0x0F98
+AnimJoint - 0x101C
+
+[50]
+DObjDesc - 0x7AE0
+AnimJoint - 0x7C98
+
+[51]
+DObjDesc - 0x3F90
+AnimJoint - 0x4148
+
 [52]
 MObjSub RoomBackground 0x042F8
 DObjDesc RoomBackground 0x07E98

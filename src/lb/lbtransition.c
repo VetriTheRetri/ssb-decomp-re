@@ -17,88 +17,88 @@ LBTransitionDesc dLBTransitionDescs[/* */] =
     // Paper Plane
     {
         &llLBTransitionAeroplaneFileID,
-        &lLBTransitionAeroplaneDObjDesc,
-        &lLBTransitionAeroplaneAnimJoint,
+        &llLBTransitionAeroplaneDObjDesc,
+        &llLBTransitionAeroplaneAnimJoint,
         0
     },
 
     // Checkered Board
     {
         &llLBTransitionCheckFileID,
-        &lLBTransitionCheckDObjDesc,
-        &lLBTransitionCheckAnimJoint,
+        &llLBTransitionCheckDObjDesc,
+        &llLBTransitionCheckAnimJoint,
         0
     },
 
     // Falling Board
     {
         &llLBTransitionGakubuthiFileID,
-        &lLBTransitionGakubuthiDObjDesc,
-        &lLBTransitionGakubuthiAnimJoint,
+        &llLBTransitionGakubuthiDObjDesc,
+        &llLBTransitionGakubuthiAnimJoint,
         0
     },
 
     // Doors
     {
         &llLBTransitionKannonFileID,
-        &lLBTransitionKannonDObjDesc,
-        &lLBTransitionKannonAnimJoint,
+        &llLBTransitionKannonDObjDesc,
+        &llLBTransitionKannonAnimJoint,
         0
     },
 
     // Star
     {
         &llLBTransitionStarFileID,
-        &lLBTransitionStarDObjDesc,
-        &lLBTransitionStarAnimJoint,
+        &llLBTransitionStarDObjDesc,
+        &llLBTransitionStarAnimJoint,
         0
     },
 
     // Vertical Lines
     {
         &llLBTransitionSudare1FileID,
-        &lLBTransitionSudare1DObjDesc,
-        &lLBTransitionSudare1AnimJoint,
+        &llLBTransitionSudare1DObjDesc,
+        &llLBTransitionSudare1AnimJoint,
         0
     },
 
     // Diagonal Lines
     {
         &llLBTransitionSudare2FileID,
-        &lLBTransitionSudare2DObjDesc,
-        &lLBTransitionSudare2AnimJoint,
+        &llLBTransitionSudare2DObjDesc,
+        &llLBTransitionSudare2AnimJoint,
         0
     },
 
     // Camera Shutter
     {
         &llLBTransitionCameraFileID,
-        &lLBTransitionCameraDObjDesc,
-        &lLBTransitionCameraAnimJoint,
+        &llLBTransitionCameraDObjDesc,
+        &llLBTransitionCameraAnimJoint,
         0
     },
 
     // Collapsing Blocks
     {
         &llLBTransitionBlockFileID,
-        &lLBTransitionBlockDObjDesc,
-        &lLBTransitionBlockAnimJoint,
+        &llLBTransitionBlockDObjDesc,
+        &llLBTransitionBlockAnimJoint,
         0
     },
 
     // Rotating Frame Zooming Out
     {
         &llLBTransitionRotScaleFileID,
-        &lLBTransitionRotScaleDObjDesc,
-        &lLBTransitionRotScaleAnimJoint,
+        &llLBTransitionRotScaleDObjDesc,
+        &llLBTransitionRotScaleAnimJoint,
         0
     },
 
     // Curtain
     {
         &llLBTransitionCurtainFileID,
-        &lLBTransitionCurtainDObjDesc,
-        &lLBTransitionCurtainAnimJoint,
+        &llLBTransitionCurtainDObjDesc,
+        &llLBTransitionCurtainAnimJoint,
         0
     }
 };

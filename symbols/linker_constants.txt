@@ -7,39 +7,6 @@ lSYKseg1ValidateNBytes = 0x00000030;
 lSYSignValidateFunc = 0x00000000;
 lSYSignValidateNBytes = 0x00000040;
 
-lLBTransitionAeroplaneDObjDesc = 0x0000B3F8;
-lLBTransitionAeroplaneAnimJoint = 0x0000B710;
-
-lLBTransitionCheckDObjDesc = 0x00003E80;
-lLBTransitionCheckAnimJoint = 0x00004038;
-
-lLBTransitionGakubuthiDObjDesc = 0x00000F98;
-lLBTransitionGakubuthiAnimJoint = 0x0000101C;
-
-lLBTransitionKannonDObjDesc = 0x00001F00;
-lLBTransitionKannonAnimJoint = 0x00001FB0;
-
-lLBTransitionStarDObjDesc = 0x00002450;
-lLBTransitionStarAnimJoint = 0x000024D4;
-
-lLBTransitionSudare1DObjDesc = 0x000074A8;
-lLBTransitionSudare1AnimJoint = 0x00007660;
-
-lLBTransitionSudare2DObjDesc = 0x00003EA0;
-lLBTransitionSudare2AnimJoint = 0x00003F50;
-
-lLBTransitionCameraDObjDesc = 0x00003F90;
-lLBTransitionCameraAnimJoint = 0x00004148;
-
-lLBTransitionBlockDObjDesc = 0x00004E18;
-lLBTransitionBlockAnimJoint = 0x0000536C;
-
-lLBTransitionRotScaleDObjDesc = 0x00000F98;
-lLBTransitionRotScaleAnimJoint = 0x0000101C;
-
-lLBTransitionCurtainDObjDesc = 0x00007AE0;
-lLBTransitionCurtainAnimJoint = 0x00007C98;
-
 lSC1PTrainingModeDisplayLabelSprites = 0x00000000;
 lSC1PTrainingModeDisplayOptionSprites = 0x00000020;
 lSC1PTrainingModeMenuLabelSprites = 0x000000BC;

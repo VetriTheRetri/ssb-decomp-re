@@ -108,7 +108,7 @@ endif
 CC := $(ASM_PROC) $(ASM_PROC_FLAGS) $(IDO7) -- $(AS) $(ASFLAGS) --
 
 C_FILES        := $(shell find src -type f | grep \\.c$)
-S_TEXT_FILES   := $(shell find asm -type f | grep \\.s$ | grep -v nonmatchings | grep -v \\.rodata\\.s | grep -v \\.data\\.s | grep -v \\.bss\\.s)
+S_TEXT_FILES   := $(shell find asm -type f | grep \\.s$ | grep -v /nonmatchings/ | grep -v /matchings/ | grep -v \\.rodata\\.s | grep -v \\.data\\.s | grep -v \\.bss\\.s)
 S_DATA_FILES   := $(shell find asm -type f | grep \\.data\\.s$)
 S_RODATA_FILES := $(shell find asm -type f | grep \\.rodata\\.s$)
 S_BSS_FILES    := $(shell find asm -type f | grep \\.bss\\.s$)

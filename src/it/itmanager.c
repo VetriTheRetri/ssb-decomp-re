@@ -4,6 +4,7 @@
 #include <gr/ground.h>
 #include <sc/scene.h>
 #include <lb/library.h>
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -155,7 +156,7 @@ void itManagerInitItems(void) // Many linker things here
     {
         ip[i].alloc_next = NULL;
     }
-    gITManagerCommonData = lbRelocGetExternHeapFile((u32)&lITCommonDataFileID, syTaskmanMalloc(lbRelocGetFileSize((u32)&lITCommonDataFileID), 0x10));
+    gITManagerCommonData = lbRelocGetExternHeapFile((u32)&llITCommonDataFileID, syTaskmanMalloc(lbRelocGetFileSize((u32)&llITCommonDataFileID), 0x10));
 
     gITManagerParticleBankID = efParticleGetLoadBankID
     (

@@ -5,8 +5,6 @@
 #include <wp/wptypes.h>
 #include <ft/fttypes.h>
 
-extern u32 lITCommonDataFileID;
-
 // Allocate memory for item structs and initialize global item-related data
 void itManagerInitItems();
 

@@ -45,10 +45,10 @@
 -044: LBTransitionStar
 -045: LBTransitionSudare1
 -046: LBTransitionSudare2
--051: LBTransitionCamera
 -048: LBTransitionBlock
 -049: LBTransitionRotScale
 -050: LBTransitionCurtain
+-051: LBTransitionCamera
 -052: MVCommon
 -053: MVOpeningPortraitsSet1
 -054: MVOpeningPortraitsSet2
@@ -131,6 +131,8 @@
 -196: MNSoundTest
 -197: IFCommonBattlePause
 -198: SCExplainGraphics
+-199: SYKseg1Validate
+-200: SYSignValidate
 -251: ITCommonData
 -252: SCExplainMain
 -255: GRPupupuMap

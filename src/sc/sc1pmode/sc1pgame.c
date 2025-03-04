@@ -1981,7 +1981,7 @@ void sc1PGameFuncStart(void)
     {
         syDmaReadRom(0xF10, signature, ARRAY_COUNT(signature));
 
-        file = lbRelocGetExternHeapFile((u32)&lSYSignValidateFileID, syTaskmanMalloc(lbRelocGetFileSize((u32)&lSYSignValidateFileID), 0x10));
+        file = lbRelocGetExternHeapFile((u32)&llSYSignValidateFileID, syTaskmanMalloc(lbRelocGetFileSize((u32)&llSYSignValidateFileID), 0x10));
         func_sign = lbRelocGetFileData(sb32 (*)(void*), file, &lSYSignValidateFunc);
 
         osWritebackDCache(func_sign, *lbRelocGetFileData(s32*, file, &lSYSignValidateNBytes));

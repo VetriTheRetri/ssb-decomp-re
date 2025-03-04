@@ -3,6 +3,7 @@
 #include <gr/ground.h>
 #include <sc/scene.h>
 #include <sys/video.h>
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -137,7 +138,7 @@ void scVSBattleStartBattle(void)
 
 	if (!(gSCManagerBackupData.error_flags & LBBACKUP_ERROR_1PGAMEMARIO) && (gSCManagerBackupData.boot > 68))
 	{
-		file = lbRelocGetExternHeapFile((u32)&lSYKseg1ValidateFileID, syTaskmanMalloc(lbRelocGetFileSize((u32)&lSYKseg1ValidateFileID), 0x10));
+		file = lbRelocGetExternHeapFile((u32)&llSYKseg1ValidateFileID, syTaskmanMalloc(lbRelocGetFileSize((u32)&llSYKseg1ValidateFileID), 0x10));
 		func_kseg1 = lbRelocGetFileData(sb32 (*)(void), file, &lSYKseg1ValidateFunc);
 
 		osWritebackDCache(func_kseg1, *lbRelocGetFileData(s32*, file, &lSYKseg1ValidateNBytes));

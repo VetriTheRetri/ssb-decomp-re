@@ -1,5 +1,6 @@
 #include <lb/library.h>
 #include <sys/video.h>
+#include <reloc_data.h>
 
 extern void *gSYSchedulerCurrentFramebuffer;
 extern syRdpSetViewport(void*, f32, f32, f32, f32);
@@ -15,7 +16,7 @@ LBTransitionDesc dLBTransitionDescs[/* */] =
 {
     // Paper Plane
     {
-        &lLBTransitionAeroplaneFileID,
+        &llLBTransitionAeroplaneFileID,
         &lLBTransitionAeroplaneDObjDesc,
         &lLBTransitionAeroplaneAnimJoint,
         0
@@ -23,7 +24,7 @@ LBTransitionDesc dLBTransitionDescs[/* */] =
 
     // Checkered Board
     {
-        &lLBTransitionCheckFileID,
+        &llLBTransitionCheckFileID,
         &lLBTransitionCheckDObjDesc,
         &lLBTransitionCheckAnimJoint,
         0
@@ -31,7 +32,7 @@ LBTransitionDesc dLBTransitionDescs[/* */] =
 
     // Falling Board
     {
-        &lLBTransitionGakubuthiFileID,
+        &llLBTransitionGakubuthiFileID,
         &lLBTransitionGakubuthiDObjDesc,
         &lLBTransitionGakubuthiAnimJoint,
         0
@@ -39,7 +40,7 @@ LBTransitionDesc dLBTransitionDescs[/* */] =
 
     // Doors
     {
-        &lLBTransitionKannonFileID,
+        &llLBTransitionKannonFileID,
         &lLBTransitionKannonDObjDesc,
         &lLBTransitionKannonAnimJoint,
         0
@@ -47,7 +48,7 @@ LBTransitionDesc dLBTransitionDescs[/* */] =
 
     // Star
     {
-        &lLBTransitionStarFileID,
+        &llLBTransitionStarFileID,
         &lLBTransitionStarDObjDesc,
         &lLBTransitionStarAnimJoint,
         0
@@ -55,7 +56,7 @@ LBTransitionDesc dLBTransitionDescs[/* */] =
 
     // Vertical Lines
     {
-        &lLBTransitionSudare1FileID,
+        &llLBTransitionSudare1FileID,
         &lLBTransitionSudare1DObjDesc,
         &lLBTransitionSudare1AnimJoint,
         0
@@ -63,7 +64,7 @@ LBTransitionDesc dLBTransitionDescs[/* */] =
 
     // Diagonal Lines
     {
-        &lLBTransitionSudare2FileID,
+        &llLBTransitionSudare2FileID,
         &lLBTransitionSudare2DObjDesc,
         &lLBTransitionSudare2AnimJoint,
         0
@@ -71,7 +72,7 @@ LBTransitionDesc dLBTransitionDescs[/* */] =
 
     // Camera Shutter
     {
-        &lLBTransitionCameraFileID,
+        &llLBTransitionCameraFileID,
         &lLBTransitionCameraDObjDesc,
         &lLBTransitionCameraAnimJoint,
         0
@@ -79,7 +80,7 @@ LBTransitionDesc dLBTransitionDescs[/* */] =
 
     // Collapsing Blocks
     {
-        &lLBTransitionBlockFileID,
+        &llLBTransitionBlockFileID,
         &lLBTransitionBlockDObjDesc,
         &lLBTransitionBlockAnimJoint,
         0
@@ -87,7 +88,7 @@ LBTransitionDesc dLBTransitionDescs[/* */] =
 
     // Rotating Frame Zooming Out
     {
-        &lLBTransitionRotScaleFileID,
+        &llLBTransitionRotScaleFileID,
         &lLBTransitionRotScaleDObjDesc,
         &lLBTransitionRotScaleAnimJoint,
         0
@@ -95,7 +96,7 @@ LBTransitionDesc dLBTransitionDescs[/* */] =
 
     // Curtain
     {
-        &lLBTransitionCurtainFileID,
+        &llLBTransitionCurtainFileID,
         &lLBTransitionCurtainDObjDesc,
         &lLBTransitionCurtainAnimJoint,
         0

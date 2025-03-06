@@ -1265,7 +1265,7 @@ segments:
       - [0x12FDA0, c, mn/mnplayers/mnplayersvs]
       - [0x139620, .data, mn/mnplayers/mnplayersvs]
       - [0x139CB0, .rodata, mn/mnplayers/mnplayersvs]
-      - { start: auto, type: .bss, vram: 0x8013BA80, name: mn/mnplayers/mnplayersvs }
+      - { start: auto, type: .bss, name: mn/mnplayers/mnplayersvs }
 
   - name: ovl27
     type: code
@@ -1276,7 +1276,7 @@ segments:
       - [0x139D00, c, mn/mnplayers/mnplayers1pgame]
       - [0x1407B0, .data, mn/mnplayers/mnplayers1pgame]
       - [0x140F40, .rodata, mn/mnplayers/mnplayers1pgame]
-      - { start: auto, type: .bss, vram: 0x80138EE0, name: mn/mnplayers/mnplayers1pgame }
+      - { start: auto, type: .bss, name: mn/mnplayers/mnplayers1pgame }
 
   - name: ovl28
     type: code
@@ -1287,7 +1287,7 @@ segments:
       - [0x1410E0, c, mn/mnplayers/mnplayers1ptraining]
       - [0x147540, .data, mn/mnplayers/mnplayers1ptraining]
       - [0x147AC0, .rodata, mn/mnplayers/mnplayers1ptraining]
-      - { start: auto, type: .bss, vram: 0x80138550, name: mn/mnplayers/mnplayers1ptraining }
+      - { start: auto, type: .bss, name: mn/mnplayers/mnplayers1ptraining }
 
   - name: ovl29
     type: code

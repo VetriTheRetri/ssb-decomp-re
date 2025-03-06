@@ -25,7 +25,7 @@ s32 lbBackupCreateChecksum(LBBackupData *backup)
 // 0x800D45A4
 sb32 lbBackupIsChecksumValid(void)
 {
-    if ((lbBackupCreateChecksum(&gSCManagerBackupData) == gSCManagerBackupData.checksum) && (gSCManagerBackupData.unk5E4 == 666)) // :otstare:
+    if ((lbBackupCreateChecksum(&gSCManagerBackupData) == gSCManagerBackupData.checksum) && (gSCManagerBackupData.signature == 666)) // :otstare:
     {
         return TRUE;
     }

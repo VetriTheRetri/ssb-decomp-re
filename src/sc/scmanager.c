@@ -475,11 +475,9 @@ LBBackupData dSCManagerDefaultBackupData =
 	0,												// Mask of unique stages played in VS Mode (for Mushroom Kingdom)
 	0,												// Number of games played in VS Mode to unlock Item Switch
 	0,												// Total number of games played in VS Mode
-	0,												// Memory corruption mask? This is where the "penalties" are stored
-	0,												// ???
-	666,											// ???
-	0,												// ???
-	0,												// ???
+	0,												// Anti-Piracy measures mask; this is where the "penalties" are stored
+	0,												// Boot count
+	0x29A,											// Signature?
 	0												// Checksum of all previous save data struct members' values
 };
 

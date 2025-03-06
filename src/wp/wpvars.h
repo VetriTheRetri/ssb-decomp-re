@@ -53,8 +53,8 @@
 #define WPPKTHUNDER_LIFETIME 160
 #define WPPKTHUNDER_SPAWN_TRAIL_FRAME (WPPKTHUNDER_LIFETIME - 2) // Subtracted from PK Thunder's maximum lifetime to determine when to begin spawning trails
 #define WPPKTHUNDER_TURN_STICK_THRESHOLD 45 // Minimum stick range required to steer PK Thunder
-#define WPPKTHUNDER_ANGLE_STEP 0.10471976F // If there is a difference between PK Thunder and the control stick's current angle, step this amount
-#define WPPKTHUNDER_ANGLE_DIV 7.5F // Divide angle difference then add to current PK Thunder angle if less than 45 degrees
+#define WPPKTHUNDER_ANGLE_STEP F_CLC_DTOR32(6.0F) // If there is a difference between PK Thunder and the control stick's current angle, step this amount
+#define WPPKTHUNDER_ANGLE_DIV (45.0F / 6.0F) // Divide angle difference then add to current PK Thunder angle if less than 45 degrees
 #define WPPKTHUNDER_VEL 60.0F
 #define WPPKTHUNDER_REFLECT_POS_Y_ADD 250.0F // Added to Y position when PK Thunder is reflected
 #define WPPKTHUNDER_PARTS_COUNT 5

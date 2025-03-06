@@ -1868,6 +1868,7 @@ segments:
   - name: fgm.ucd
     type: bin # FGM microcode
     start: 0xF5A9C0
+
   - name: rom_pad
     type: bin
     start: 0xF5F4E0

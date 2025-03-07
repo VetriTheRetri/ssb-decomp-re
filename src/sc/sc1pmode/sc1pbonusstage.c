@@ -6,10 +6,6 @@
 #include <sys/video.h>
 #include <reloc_data.h>
 
-extern intptr_t D_NF_00000088;
-extern intptr_t D_NF_00000097;
-extern intptr_t D_NF_000000FD;
-
 // // // // // // // // // // // //
 //                               //
 //       INITIALIZED DATA        //
@@ -431,7 +427,7 @@ void sc1PBonusStageInitVars(void)
 // 0x8018D330
 void sc1PBonusStageBonus1LoadFile(void)
 {
-	gSC1PBonusStageItemFile = lbRelocGetExternHeapFile((u32)&D_NF_000000FD, syTaskmanMalloc(lbRelocGetFileSize((u32)&D_NF_000000FD), 0x10));
+	gSC1PBonusStageItemFile = lbRelocGetExternHeapFile((u32)&ll_253_FileID, syTaskmanMalloc(lbRelocGetFileSize((u32)&ll_253_FileID), 0x10));
 }
 
 // 0x8018D374
@@ -516,7 +512,7 @@ void sc1PBonusStageMakeBonus1Ground(void)
 // 0x8018D5E8
 void sc1PBonusStageBonus2LoadFile(void)
 {
-	gGRCommonStruct.bonus2.file = lbRelocGetExternHeapFile((u32)&D_NF_00000088, syTaskmanMalloc(lbRelocGetFileSize((u32)&D_NF_00000088), 0x10));
+	gGRCommonStruct.bonus2.file = lbRelocGetExternHeapFile((u32)&ll_136_FileID, syTaskmanMalloc(lbRelocGetFileSize((u32)&ll_136_FileID), 0x10));
 }
 
 // 0x8018D62C
@@ -802,7 +798,7 @@ void sc1PBonusStageMakeTargetSprites(void)
 	void *file;
 	s32 i;
 
-	file = lbRelocGetExternHeapFile(&D_NF_00000097, syTaskmanMalloc(lbRelocGetFileSize(&D_NF_00000097), 0x10));
+	file = lbRelocGetExternHeapFile(&llSC1PStageClear3FileID, syTaskmanMalloc(lbRelocGetFileSize(&llSC1PStageClear3FileID), 0x10));
 
 	gGRCommonStruct.bonus1.interface_gobj = interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_PRIORITY_DEFAULT, ~0);
@@ -825,7 +821,7 @@ void sc1PBonusStageMakePlatformSprites(void)
 	void *file;
 	s32 i;
 
-	file = lbRelocGetExternHeapFile(&D_NF_00000097, syTaskmanMalloc(lbRelocGetFileSize(&D_NF_00000097), 0x10));
+	file = lbRelocGetExternHeapFile(&llSC1PStageClear3FileID, syTaskmanMalloc(lbRelocGetFileSize(&llSC1PStageClear3FileID), 0x10));
 
 	gGRCommonStruct.bonus2.interface_gobj = interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_PRIORITY_DEFAULT, ~0);

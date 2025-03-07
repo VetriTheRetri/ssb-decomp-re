@@ -135,6 +135,7 @@
 -200: SYSignValidate
 -251: ITCommonData
 -252: SCExplainMain
+-254: SC1PTrainingMode
 -255: GRPupupuMap
 -256: GRPupupuSmallMap
 -257: GRZebesMap
@@ -1338,7 +1339,7 @@ Sprite 0x33b0 0x33b0
 Sprite OptionNewcomers 0x3a00
 Sprite Option1PHighScore 0x4050
 Sprite OptionVSRecord 0x46a0
-Sprite 0x4cf0 0x4cf0
+Sprite OptionSubjectMode 0x4cf0
 Sprite OptionPrize 0x5340
 Sprite OptionAllDataClear 0x5990
 Sprite OptionCircle 0x5db8
@@ -1531,7 +1532,11 @@ Sprite Platform 0xc0
 Sprite Target 0x1d0
 
 [161]
+AnimJoint 1B34 0x1B34
+AnimJoint 1B84 0x1B84
 DObjDesc - 0x2C30
+AnimJoint 2E74 0x2E74
+AnimJoint 2EB4 0x2EB4
 
 [164]
 Sprite Digit0 0x148
@@ -1887,32 +1892,32 @@ MObjSub TapSpark 0x5A98
 DisplayList TapSpark 0x5B68
 MatAnimJoint TapSpark 0x5C20
 DisplayList SpecialMoveRGB 0x5E40
-Sprite 0x6c58 0x6c58
-Sprite 0x72d8 0x72d8
-Sprite 0x7c38 0x7c38
-Sprite 0x8218 0x8218
-Sprite 0x8c78 0x8c78
-Sprite 0x91a8 0x91a8
-Sprite 0x9628 0x9628
-Sprite 0x10260 0x10260
-Sprite 0x11f60 0x11f60
-Sprite 0x12b60 0x12b60
-Sprite 0x13658 0x13658
-Sprite 0x139f0 0x139f0
-Sprite 0x14448 0x14448
-Sprite 0x14e30 0x14e30
-Sprite 0x15c40 0x15c40
-Sprite 0x17fe0 0x17fe0
-Sprite 0x1a440 0x1a440
-Sprite 0x1aa10 0x1aa10
-Sprite 0x1b468 0x1b468
-Sprite 0x1b950 0x1b950
-Sprite 0x1beb0 0x1beb0
-Sprite 0x1cd20 0x1cd20
-Sprite 0x1d338 0x1d338
-Sprite 0x1d948 0x1d948
-Sprite 0x1df58 0x1df58
-Sprite 0x1e018 0x1e018
+Sprite Damage1 0x6c58
+Sprite Damage2 0x72d8
+Sprite Damage3 0x7c38
+Sprite Shield 0x8218
+Sprite StartFighting 0x8c78
+Sprite PlayerCount 0x91a8
+Sprite HereText 0x9628
+Sprite Banner 0x10260
+Sprite TapTheStick 0x11f60
+Sprite Jump 0x12b60
+Sprite MidairJump 0x13658
+Sprite Attack 0x139f0
+Sprite PowerAttack 0x14448
+Sprite SmashAttack 0x14e30
+Sprite KnockThemOff 0x15c40
+Sprite BUpGetBack 0x17fe0
+Sprite SpecialMoves 0x1a440
+Sprite Dodge 0x1aa10
+Sprite ThrowEnemy 0x1b468
+Sprite GrabItems 0x1b950
+Sprite UseItems 0x1beb0
+Sprite ThrowItems 0x1cd20
+Sprite AButton 0x1d338
+Sprite BButton 0x1d948
+Sprite ZButton 0x1df58
+Sprite PlusSymbol 0x1e018
 
 [252]
 KeyEvent 0 0x0
@@ -1920,6 +1925,14 @@ KeyEvent 1 0x9D4
 KeyEvent 2 0x13FC
 KeyEvent 3 0x1400
 ExplainPhase - 0x1404
+
+[254]
+PosSpriteArray DisplayLabel 0x000
+SpriteArray DisplayOption 0x020
+PosSpriteArray MenuLabel 0x0BC
+SpriteArray MenuOption 0x13C
+PosSpriteArray 0x10C 0x10C
+PosSpriteArray 0x1B8 0x1B8
 
 [296]
 Sprite Stock 0x72d0

@@ -5,6 +5,7 @@ import sys
 import json
 import subprocess
 
+FILE_COUNT = 2132
 COMPRESSED_FILE_COUNT = 499
 ENDIANNESS = "big"
 EXTRACTED_FILES_PATH = "assets/relocData"
@@ -154,17 +155,28 @@ def generateHeader(relocFileDescriptionsFilePath, outputHeaderFilePath, outputLi
 		lines = relocFileDescriptionsFile.read().split('\n')
 	fileIdToNameDict = {}
 	with open(outputHeaderFilePath, 'w') as outputHeaderFile, open(outputLinkerFilePath, 'w') as outputLinkerFile:
+
+		# File ID symbols
 		for line in lines:
-			if len(line) == 0 or line[0] == '#':
+			if len(line) == 0 or line[0] != '-':
 				continue
-			if line[0] == '-':
-				fileId = int(line[1:4])
-				assert(fileId not in fileIdToNameDict.keys())
-				fileName = line[6:]
-				fileIdToNameDict[fileId] = fileName
+			fileId = int(line[1:4])
+			assert(fileId not in fileIdToNameDict.keys())
+			fileName = line[6:]
+			fileIdToNameDict[fileId] = fileName
+
+		for fileId in range(FILE_COUNT):
+			if fileId in fileIdToNameDict.keys():
+				fileName = fileIdToNameDict[fileId]
 				symbolName = f"ll{fileName}FileID"
-				outputHeaderFile.write(f"extern int {symbolName}; // {fileId}\n")
-				outputLinkerFile.write(f"{symbolName} = {hex(fileId)};\n")
+			else:
+				symbolName = f"ll_{fileId}_FileID"
+			outputHeaderFile.write(f"extern int {symbolName}; // {fileId}\n")
+			outputLinkerFile.write(f"{symbolName} = {hex(fileId)};\n")
+
+		# File offset symbols
+		for line in lines:
+			if len(line) == 0 or line[0] == '#' or line[0] == '-':
 				continue
 			m = re.match(r"\[(\d+)]", line);
 			if m is not None:

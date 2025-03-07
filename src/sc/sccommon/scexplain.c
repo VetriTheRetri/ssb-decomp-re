@@ -9,19 +9,6 @@ extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
 //                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t D_NF_00009628;
-extern intptr_t D_NF_00011F60;
-extern intptr_t D_NF_0001D338;
-extern intptr_t D_NF_0001D948;
-extern intptr_t D_NF_0001DF58;
-extern intptr_t D_NF_0001E018;
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -519,13 +506,13 @@ SObj* scExplainMakeSObjOffset(intptr_t offset)
 // 0x8018DC84
 void scExplainSetPhaseSObjs(void)
 {
-    sSCExplainStruct.textbox_sobj= scExplainMakeSObjOffset((intptr_t)&D_NF_00011F60);
-    sSCExplainStruct.phase_sobj0 = scExplainMakeSObjOffset((intptr_t)&D_NF_0001D338);
-    sSCExplainStruct.phase_sobj1 = scExplainMakeSObjOffset((intptr_t)&D_NF_0001D948);
-    sSCExplainStruct.phase_sobj2 = scExplainMakeSObjOffset((intptr_t)&D_NF_0001DF58);
-    sSCExplainStruct.phase_sobj3 = scExplainMakeSObjOffset((intptr_t)&D_NF_00009628);
-    sSCExplainStruct.phase_sobj4 = scExplainMakeSObjOffset((intptr_t)&D_NF_0001E018);
-    sSCExplainStruct.phase_sobj5 = scExplainMakeSObjOffset((intptr_t)&D_NF_0001E018);
+    sSCExplainStruct.textbox_sobj = scExplainMakeSObjOffset(&llSCExplainGraphicsTapTheStickSprite);
+    sSCExplainStruct.phase_sobj0 = scExplainMakeSObjOffset(&llSCExplainGraphicsAButtonSprite);
+    sSCExplainStruct.phase_sobj1 = scExplainMakeSObjOffset(&llSCExplainGraphicsBButtonSprite);
+    sSCExplainStruct.phase_sobj2 = scExplainMakeSObjOffset(&llSCExplainGraphicsZButtonSprite);
+    sSCExplainStruct.phase_sobj3 = scExplainMakeSObjOffset(&llSCExplainGraphicsHereTextSprite);
+    sSCExplainStruct.phase_sobj4 = scExplainMakeSObjOffset(&llSCExplainGraphicsPlusSymbolSprite);
+    sSCExplainStruct.phase_sobj5 = scExplainMakeSObjOffset(&llSCExplainGraphicsPlusSymbolSprite);
 }
 
 // 0x8018DD18

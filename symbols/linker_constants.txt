@@ -7,11 +7,6 @@ lSYKseg1ValidateNBytes = 0x00000030;
 lSYSignValidateFunc = 0x00000000;
 lSYSignValidateNBytes = 0x00000040;
 
-lSC1PTrainingModeDisplayLabelSprites = 0x00000000;
-lSC1PTrainingModeDisplayOptionSprites = 0x00000020;
-lSC1PTrainingModeMenuLabelSprites = 0x000000BC;
-lSC1PTrainingModeMenuOptionSprites = 0x0000013C;
-
 lSC1PBonusStagePlatformSprite = 0x000000C0;
 lSC1PBonusStageTargetSprite = 0x000001D0;
 

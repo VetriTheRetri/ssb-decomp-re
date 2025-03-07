@@ -13,11 +13,12 @@ typedef struct unkdata0 {
 	unkdata1* unk8;
 } unkdata0;
 
+void func_ovl8_8037C440(s32* arg0, s32 arg1);
 
 // DATA
 s32 D_ovl8_8038A1A0[] =
 {
-	0x00000000, 0x00000000, 0x00000000, 0x8037C440,
+	0x00000000, 0x00000000, 0x00000000, func_ovl8_8037C440,
 	0x00000000, 0x00000000
 };
 

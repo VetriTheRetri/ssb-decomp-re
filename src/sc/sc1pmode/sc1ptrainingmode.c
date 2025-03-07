@@ -8,8 +8,6 @@
 
 extern void syAudioSetBGMVolume(s32 playerID, u32 vol);
 
-extern u32 D_NF_000000FE;									// 0x000000FE
-
 // // // // // // // // // // // //
 //                               //
 //       INITIALIZED DATA        //
@@ -624,14 +622,14 @@ void sc1PTrainingModeInitVars(void)
 // 0x8018DD0C
 void sc1PTrainingModeLoadSprites(void)
 {
-	void *file = lbRelocGetExternHeapFile((u32)&D_NF_000000FE, syTaskmanMalloc(lbRelocGetFileSize((u32)&D_NF_000000FE), 0x10));
+	void *file = lbRelocGetExternHeapFile((u32)&llSC1PTrainingModeFileID, syTaskmanMalloc(lbRelocGetFileSize((u32)&llSC1PTrainingModeFileID), 0x10));
 
-	sSC1PTrainingModeMenu.display_label_sprites = lbRelocGetFileData(SC1PTrainingModeSprites*, file, &lSC1PTrainingModeDisplayLabelSprites);
-	sSC1PTrainingModeMenu.display_option_sprites = lbRelocGetFileData(Sprite**, file, &lSC1PTrainingModeDisplayOptionSprites);
-	sSC1PTrainingModeMenu.menu_label_sprites = lbRelocGetFileData(SC1PTrainingModeSprites*, file, &lSC1PTrainingModeMenuLabelSprites);
-	sSC1PTrainingModeMenu.menu_option_sprites = lbRelocGetFileData(Sprite**, file, &lSC1PTrainingModeMenuOptionSprites);
-	sSC1PTrainingModeMenu.unk_trainmenu_0x34 = lbRelocGetFileData(SC1PTrainingModeSprites*, file, &D_NF_0000010C);
-	sSC1PTrainingModeMenu.unk_trainmenu_0x38 = lbRelocGetFileData(SC1PTrainingModeSprites*, file, &D_NF_000001B8);
+	sSC1PTrainingModeMenu.display_label_sprites = lbRelocGetFileData(SC1PTrainingModeSprites*, file, &llSC1PTrainingModeDisplayLabelPosSpriteArray);
+	sSC1PTrainingModeMenu.display_option_sprites = lbRelocGetFileData(Sprite**, file, &llSC1PTrainingModeDisplayOptionSpriteArray);
+	sSC1PTrainingModeMenu.menu_label_sprites = lbRelocGetFileData(SC1PTrainingModeSprites*, file, &llSC1PTrainingModeMenuLabelPosSpriteArray);
+	sSC1PTrainingModeMenu.menu_option_sprites = lbRelocGetFileData(Sprite**, file, &llSC1PTrainingModeMenuOptionSpriteArray);
+	sSC1PTrainingModeMenu.unk_trainmenu_0x34 = lbRelocGetFileData(SC1PTrainingModeSprites*, file, &llSC1PTrainingMode0x10CPosSpriteArray);
+	sSC1PTrainingModeMenu.unk_trainmenu_0x38 = lbRelocGetFileData(SC1PTrainingModeSprites*, file, &llSC1PTrainingMode0x1B8PosSpriteArray);
 }
 
 // 0x8018DDB0

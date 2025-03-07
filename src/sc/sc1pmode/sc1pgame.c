@@ -14,12 +14,6 @@
 
 extern alSoundEffect D_8009EDD0_406D0;
 
-extern intptr_t D_NF_00000000;
-extern intptr_t D_NF_00000040;
-extern intptr_t D_NF_000000C8;
-extern intptr_t D_NF_000000E6;
-extern intptr_t D_NF_00000019;
-extern intptr_t D_NF_00000068;
 extern intptr_t D_NF_00004D48;
 extern intptr_t D_NF_00006010;
 extern intptr_t D_NF_00006450;
@@ -1705,7 +1699,7 @@ void sc1PGameInitTeamStockDisplay(void)
 
         for (i = 0; i < sSC1PGameEnemyStocksRemaining; i++)
         {
-            lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[4], &D_NF_00000068));
+            lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[4], &ll_104_FileID));
         }
         sSC1PGameEnemyStocksDisplay = sSC1PGameEnemyStocksRemaining + 1;
 
@@ -2015,7 +2009,7 @@ void sc1PGameFuncStart(void)
         // Need to load PK Fire graphics from Ness' file
         plns = dFTManagerDataFiles[nFTKindNess];
 
-        lbRelocGetExternHeapFile((uintptr_t)&D_NF_000000E6, syTaskmanMalloc(lbRelocGetFileSize((uintptr_t)&D_NF_000000E6), 0x10));
+        lbRelocGetExternHeapFile((uintptr_t)&ll_230_FileID, syTaskmanMalloc(lbRelocGetFileSize((uintptr_t)&ll_230_FileID), 0x10));
         efParticleGetLoadBankID
         (
             plns->particles_script_lo, 

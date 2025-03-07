@@ -2,6 +2,7 @@
 #include <ft/fighter.h>
 #include <wp/weapon.h>
 #include <sc/scene.h>
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -454,7 +455,7 @@ void func_ovl2_80106D00(void)
         gGRCommonStruct.sector.map_dobjs[9]->anim_wait = AOBJ_ANIM_NULL;
         gGRCommonStruct.sector.map_dobjs[9]->flags = DOBJ_FLAG_HIDDEN;
 
-        grSectorArwingAddAnim(gGRCommonStruct.sector.map_dobjs[8], lbRelocGetFileData(AObjEvent32*, gGRCommonStruct.sector.map_file, &D_NF_00002EB4), 0.0F);
+        grSectorArwingAddAnim(gGRCommonStruct.sector.map_dobjs[8], lbRelocGetFileData(AObjEvent32*, gGRCommonStruct.sector.map_file, &llMVOpeningSectorArwing2EB4AnimJoint), 0.0F);
     }
     else if (gGRCommonStruct.sector.map_dobjs[8]->anim_wait == AOBJ_ANIM_NULL)
     {
@@ -942,8 +943,8 @@ void func_ovl2_80107958(void)
             {
                 mh1 = gGRCommonStruct.sector.map_head;
 
-                grSectorArwingAddAnim(gGRCommonStruct.sector.map_dobjs[4], lbRelocGetFileData(AObjEvent32*, mh1, &D_NF_00001B84), 0.0F);
-                grSectorArwingAddAnim(gGRCommonStruct.sector.map_dobjs[5], lbRelocGetFileData(AObjEvent32*, mh1, &D_NF_00001B84), 0.0F);
+                grSectorArwingAddAnim(gGRCommonStruct.sector.map_dobjs[4], lbRelocGetFileData(AObjEvent32*, mh1, &llMVOpeningSectorArwing1B84AnimJoint), 0.0F);
+                grSectorArwingAddAnim(gGRCommonStruct.sector.map_dobjs[5], lbRelocGetFileData(AObjEvent32*, mh1, &llMVOpeningSectorArwing1B84AnimJoint), 0.0F);
 
                 gGRCommonStruct.sector.unk_sector_0x52++;
             }
@@ -953,8 +954,8 @@ void func_ovl2_80107958(void)
 
                 func_ovl2_80107910();
 
-                grSectorArwingAddAnim(gGRCommonStruct.sector.map_dobjs[2], lbRelocGetFileData(AObjEvent32*, mh2, &D_NF_00001B34), 0.0F);
-                grSectorArwingAddAnim(gGRCommonStruct.sector.map_dobjs[3], lbRelocGetFileData(AObjEvent32*, mh2, &D_NF_00001B34), 0.0F);
+                grSectorArwingAddAnim(gGRCommonStruct.sector.map_dobjs[2], lbRelocGetFileData(AObjEvent32*, mh2, &llMVOpeningSectorArwing1B34AnimJoint), 0.0F);
+                grSectorArwingAddAnim(gGRCommonStruct.sector.map_dobjs[3], lbRelocGetFileData(AObjEvent32*, mh2, &llMVOpeningSectorArwing1B34AnimJoint), 0.0F);
 
                 gGRCommonStruct.sector.arwing_laser_timer = 30;
                 gGRCommonStruct.sector.arwing_laser_ammo--;
@@ -976,7 +977,7 @@ void func_ovl2_80107B30(void)
 {
     if ((gGRCommonStruct.sector.map_dobjs[8]->anim_wait == AOBJ_ANIM_NULL) && (gGRCommonStruct.sector.map_dobjs[7]->flags == DOBJ_FLAG_NONE))
     {
-        grSectorArwingAddAnim(gGRCommonStruct.sector.map_dobjs[8], lbRelocGetFileData(AObjEvent32*, gGRCommonStruct.sector.map_file, &D_NF_00002EB4), 0.0F);
+        grSectorArwingAddAnim(gGRCommonStruct.sector.map_dobjs[8], lbRelocGetFileData(AObjEvent32*, gGRCommonStruct.sector.map_file, &llMVOpeningSectorArwing2EB4AnimJoint), 0.0F);
 
         func_800269C0_275C0(nSYAudioFGMSectorAmbient2);
     }
@@ -1086,7 +1087,7 @@ void grSectorInitAll(void)
 
     gGRCommonStruct.sector.map_head = (void*) ((uintptr_t)gMPCollisionGroundData->map_nodes - (intptr_t)&lGRSectorMapHead);
 
-    map_file = lbRelocGetForceStatusBufferFile((intptr_t)&D_NF_000000A1);
+    map_file = lbRelocGetForceStatusBufferFile((intptr_t)&llMVOpeningSectorArwingFileID);
 
     gGRCommonStruct.sector.map_file = map_file;
 
@@ -1095,7 +1096,7 @@ void grSectorInitAll(void)
     gGRCommonStruct.sector.map_gobj = map_gobj;
 
     gcAddGObjDisplay(map_gobj, gcDrawDObjTreeDLLinksForGObj, 6, GOBJ_PRIORITY_DEFAULT, ~0);
-    grModelSetupGroundDObjs(map_gobj, lbRelocGetFileData(DObjDesc*, map_file, &D_NF_00002C30), gGRCommonStruct.sector.map_dobjs, dGRSectorArwingTransformKinds);
+    grModelSetupGroundDObjs(map_gobj, lbRelocGetFileData(DObjDesc*, map_file, &llMVOpeningSectorArwingDObjDesc), gGRCommonStruct.sector.map_dobjs, dGRSectorArwingTransformKinds);
     gcAddGObjProcess(map_gobj, gcPlayAnimAll, nGCProcessKindFunc, 5);
 
     gGRCommonStruct.sector.arwing_status = 0;
@@ -1108,7 +1109,7 @@ void grSectorInitAll(void)
 
     map_gobj->flags = GOBJ_FLAG_HIDDEN;
 
-    gcAddDObjAnimJoint(gGRCommonStruct.sector.map_dobjs[10], lbRelocGetFileData(AObjEvent32*, map_file, &D_NF_00002E74), 0.0F);
+    gcAddDObjAnimJoint(gGRCommonStruct.sector.map_dobjs[10], lbRelocGetFileData(AObjEvent32*, map_file, &llMVOpeningSectorArwing2E74AnimJoint), 0.0F);
     gcPlayAnimAll(map_gobj);
     mpCollisionSetYakumonoOffID(1);
     gGRCommonStruct.sector.weapon_head = (void*) ((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRCommonMapHeaderStart);

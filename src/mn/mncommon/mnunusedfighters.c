@@ -6,16 +6,6 @@
 
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
-extern intptr_t D_NF_00004728;                          // 0x00004728
-extern intptr_t D_NF_00006978;                          // 0x00006978
-extern intptr_t D_NF_00008BC8;                          // 0x00008BC8
-extern intptr_t D_NF_0000AE18;                          // 0x0000AE18
-extern intptr_t D_NF_0000D068;                          // 0x0000D068
-extern intptr_t D_NF_0000F2B8;                          // 0x0000F2B8
-extern intptr_t D_NF_00011508;                          // 0x00011508
-extern intptr_t D_NF_00013758;                          // 0x00013758
-extern intptr_t D_NF_000159A8;                          // 0x000159A8
-
 // // // // // // // // // // // //
 //                               //
 //       INITIALIZED DATA        //
@@ -246,7 +236,7 @@ void mnUnusedFightersFuncStart(void)
         1,
         GOBJ_PRIORITY_DEFAULT,
         ~0,
-        lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &D_NF_00004728),
+        lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &llMNPlayersPortraitsMarioSprite),
         nGCProcessKindFunc,
         NULL,
         1
@@ -265,7 +255,7 @@ void mnUnusedFightersFuncStart(void)
         1,
         GOBJ_PRIORITY_DEFAULT,
         ~0,
-        lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &D_NF_00006978),
+        lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &llMNPlayersPortraitsLuigiSprite),
         nGCProcessKindFunc,
         NULL,
         1
@@ -284,7 +274,7 @@ void mnUnusedFightersFuncStart(void)
         1,
         GOBJ_PRIORITY_DEFAULT,
         ~0,
-        lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &D_NF_00008BC8),
+        lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &llMNPlayersPortraitsDonkeySprite),
         nGCProcessKindFunc,
         NULL,
         1
@@ -303,7 +293,7 @@ void mnUnusedFightersFuncStart(void)
         1,
         GOBJ_PRIORITY_DEFAULT,
         ~0,
-        lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &D_NF_0000AE18),
+        lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &llMNPlayersPortraitsSamusSprite),
         nGCProcessKindFunc,
         NULL,
         1
@@ -322,7 +312,7 @@ void mnUnusedFightersFuncStart(void)
         1,
         GOBJ_PRIORITY_DEFAULT,
         ~0,
-        lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &D_NF_0000D068),
+        lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &llMNPlayersPortraitsFoxSprite),
         nGCProcessKindFunc,
         NULL,
         1
@@ -341,7 +331,7 @@ void mnUnusedFightersFuncStart(void)
         1,
         GOBJ_PRIORITY_DEFAULT,
         ~0,
-        lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &D_NF_0000F2B8),
+        lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &llMNPlayersPortraitsKirbySprite),
         nGCProcessKindFunc,
         NULL,
         1
@@ -360,7 +350,7 @@ void mnUnusedFightersFuncStart(void)
         1,
         GOBJ_PRIORITY_DEFAULT,
         ~0,
-        lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &D_NF_00011508),
+        lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &llMNPlayersPortraitsLinkSprite),
         nGCProcessKindFunc,
         NULL,
         1
@@ -379,7 +369,7 @@ void mnUnusedFightersFuncStart(void)
         1,
         GOBJ_PRIORITY_DEFAULT,
         ~0,
-        lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &D_NF_00013758),
+        lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &llMNPlayersPortraitsYoshiSprite),
         nGCProcessKindFunc,
         NULL,
         1
@@ -398,7 +388,7 @@ void mnUnusedFightersFuncStart(void)
         1,
         GOBJ_PRIORITY_DEFAULT,
         ~0,
-        lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &D_NF_000159A8),
+        lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &llMNPlayersPortraitsPikachuSprite),
         nGCProcessKindFunc,
         NULL,
         1

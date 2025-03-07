@@ -25,13 +25,6 @@ extern intptr_t lGRSectorArwing3AnimJoint;                  // 0x00001DC4
 extern intptr_t lGRSectorArwing4AnimJoint;                  // 0x00001D54
 extern intptr_t lGRSectorArwing5AnimJoint;                  // 0x00001DE4
 
-extern intptr_t D_NF_000000A1;                              // 0x000000A1
-extern intptr_t D_NF_00002C30;                              // 0x00002C30
-extern intptr_t D_NF_00002E74;                              // 0x00002E74
-extern intptr_t D_NF_00001B34;                              // 0x00001B34
-extern intptr_t D_NF_00001B84;                              // 0x00001B84
-extern intptr_t D_NF_00002EB4;                              // 0x00002EB4
-
 extern void func_ovl2_80106730(DObj *arg0, Vec3f *vec1, Vec3f *vec2, Vec3f *vec3);
 extern sb32 grSectorArwingLaser3DFuncMatrix(Mtx *mtx, DObj *dobj, Gfx **dls);
 extern void grSectorArwingAddAnim(DObj *dobj, AObjEvent32 *anim_joint, f32 unused);

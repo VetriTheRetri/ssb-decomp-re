@@ -7,14 +7,6 @@
 
 // // // // // // // // // // // //
 //                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern uintptr_t D_NF_0000000C;
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
@@ -591,10 +583,10 @@ void scAutoDemoInitSObjs(void)
 
 	file = lbRelocGetExternHeapFile
 	(
-		(uintptr_t)&D_NF_0000000C, 
+		(uintptr_t)&llCharacterNamesFileID,
 		syTaskmanMalloc
 		(
-			lbRelocGetFileSize((uintptr_t)&D_NF_0000000C), 
+			lbRelocGetFileSize((uintptr_t)&llCharacterNamesFileID),
 			0x10
 		)
 	);

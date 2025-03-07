@@ -6,8 +6,6 @@
 #include <PR/gbi.h>
 #include <sc/scdef.h>
 
-// There's more linker constants currently in the C file for the How to Play tutorial?
-
 extern void scExplainLoadExplainFiles(void);
 extern void scExplainSetBattleState(void);
 extern void scExplainStartBattle(void);

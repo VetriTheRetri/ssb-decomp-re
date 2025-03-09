@@ -443,7 +443,7 @@ segments:
     # ovl2 data
       - [0x0923D0, .data, gm/gmcommon]
       - [0x0923F0, .data, sc/sc1pmode/sc1pmanager]
-      - [0x0925D0, .data, ft/ftmanager]
+      - [0x0925D0, .data, ft/ftdata]
       - [0x0A4500, .data, ft/ftmain]
       - [0x0A6FB0, .data, ft/ftparam]
       - [0x0A7110, .data, ft/ftanim]

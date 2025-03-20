@@ -11,7 +11,6 @@
 extern intptr_t lITMainContainerVelocitiesY;  // 0x00000000
 
 extern alSoundEffect* func_800269C0_275C0(u16);
-extern void gcSetDObjTransformsForGObj();
 
 // // // // // // // // // // // //
 //                               //
@@ -479,7 +478,6 @@ void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
     {
         func_800269C0_275C0(fp->attr->heavyget_sfx);
     }
-    
     ftParamMakeRumble(fp, 6, 0);
 
     ip->pickup_wait = ITEM_PICKUP_WAIT_DEFAULT;

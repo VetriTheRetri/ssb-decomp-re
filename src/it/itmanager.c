@@ -318,38 +318,38 @@ GObj* itManagerMakeItem(GObj *parent_gobj, ITDesc *item_desc, Vec3f *pos, Vec3f 
     ip->arrow_gobj          = NULL;
     ip->arrow_timer         = 0;
 
-    ip->attack_coll.attack_state         = item_desc->attack_state;
-    ip->attack_coll.damage            = attr->damage;
-    ip->attack_coll.throw_mul         = 1.0F;
-    ip->attack_coll.stale             = 1.0F;
-    ip->attack_coll.element           = attr->element;
-    ip->attack_coll.offsets[0].x       = attr->attack_offset0_x;
-    ip->attack_coll.offsets[0].y       = attr->attack_offset0_y;
-    ip->attack_coll.offsets[0].z       = attr->attack_offset0_z;
-    ip->attack_coll.offsets[1].x       = attr->attack_offset1_x;
-    ip->attack_coll.offsets[1].y       = attr->attack_offset1_y;
-    ip->attack_coll.offsets[1].z       = attr->attack_offset1_z;
-    ip->attack_coll.size              = attr->size * 0.5F;
-    ip->attack_coll.angle             = attr->angle;
-    ip->attack_coll.knockback_scale   = attr->knockback_scale;
-    ip->attack_coll.knockback_weight  = attr->knockback_weight;
-    ip->attack_coll.knockback_base    = attr->knockback_base;
-    ip->attack_coll.can_setoff        = attr->can_setoff;
-    ip->attack_coll.shield_damage     = attr->shield_damage;
+    ip->attack_coll.attack_state     = item_desc->attack_state;
+    ip->attack_coll.damage           = attr->damage;
+    ip->attack_coll.throw_mul        = 1.0F;
+    ip->attack_coll.stale            = 1.0F;
+    ip->attack_coll.element          = attr->element;
+    ip->attack_coll.offsets[0].x     = attr->attack_offset0_x;
+    ip->attack_coll.offsets[0].y     = attr->attack_offset0_y;
+    ip->attack_coll.offsets[0].z     = attr->attack_offset0_z;
+    ip->attack_coll.offsets[1].x     = attr->attack_offset1_x;
+    ip->attack_coll.offsets[1].y     = attr->attack_offset1_y;
+    ip->attack_coll.offsets[1].z     = attr->attack_offset1_z;
+    ip->attack_coll.size             = attr->size * 0.5F;
+    ip->attack_coll.angle            = attr->angle;
+    ip->attack_coll.knockback_scale  = attr->knockback_scale;
+    ip->attack_coll.knockback_weight = attr->knockback_weight;
+    ip->attack_coll.knockback_base   = attr->knockback_base;
+    ip->attack_coll.can_setoff       = attr->can_setoff;
+    ip->attack_coll.shield_damage    = attr->shield_damage;
     ip->attack_coll.fgm_id           = attr->hit_sfx;
-    ip->attack_coll.priority          = attr->priority;
-    ip->attack_coll.can_rehit_item    = attr->can_rehit_item;
-    ip->attack_coll.can_rehit_fighter = attr->can_rehit_fighter;
-    ip->attack_coll.can_rehit_shield  = FALSE;
-    ip->attack_coll.can_hop           = attr->can_hop;
-    ip->attack_coll.can_reflect       = attr->can_reflect;
-    ip->attack_coll.can_shield        = attr->can_shield;
-    ip->attack_coll.attack_count         = attr->attack_count;
-    ip->attack_coll.interact_mask     = GMHITCOLLISION_FLAG_ALL;
+    ip->attack_coll.priority         = attr->priority;
+    ip->attack_coll.can_rehit_item   = attr->can_rehit_item;
+    ip->attack_coll.can_rehit_fighter= attr->can_rehit_fighter;
+    ip->attack_coll.can_rehit_shield = FALSE;
+    ip->attack_coll.can_hop          = attr->can_hop;
+    ip->attack_coll.can_reflect      = attr->can_reflect;
+    ip->attack_coll.can_shield       = attr->can_shield;
+    ip->attack_coll.attack_count     = attr->attack_count;
+    ip->attack_coll.interact_mask    = GMHITCOLLISION_FLAG_ALL;
 
-    ip->attack_coll.motion_attack_id                  = nFTMotionAttackIDNone;
+    ip->attack_coll.motion_attack_id           = nFTMotionAttackIDNone;
     ip->attack_coll.motion_count               = ftParamGetMotionCount();
-    ip->attack_coll.stat_flags.attack_id  = nFTStatusAttackIDNull;
+    ip->attack_coll.stat_flags.attack_id       = nFTStatusAttackIDNull;
     ip->attack_coll.stat_flags.is_smash_attack = ip->attack_coll.stat_flags.ga = ip->attack_coll.stat_flags.is_projectile = 0;
     ip->attack_coll.stat_count                 = ftParamGetStatUpdateCount();
 
@@ -380,7 +380,16 @@ GObj* itManagerMakeItem(GObj *parent_gobj, ITDesc *item_desc, Vec3f *pos, Vec3f 
     {
         if (!(attr->is_item_dobjs))
         {
-            gcSetupCustomDObjsWithMObj(item_gobj, attr->dobj_setup, attr->p_mobjsubs, NULL, item_desc->transform_types.tk1, item_desc->transform_types.tk2, item_desc->transform_types.tk3);
+            gcSetupCustomDObjsWithMObj
+            (
+                item_gobj,
+                attr->dobj_setup,
+                attr->p_mobjsubs,
+                NULL,
+                item_desc->transform_types.tk1,
+                item_desc->transform_types.tk2,
+                item_desc->transform_types.tk3
+            );
         }
         else
         {
@@ -408,8 +417,8 @@ GObj* itManagerMakeItem(GObj *parent_gobj, ITDesc *item_desc, Vec3f *pos, Vec3f 
     ip->coll_data.map_coll.width    = attr->map_coll_width;
     ip->coll_data.p_map_coll        = &ip->coll_data.map_coll;
     ip->coll_data.ignore_line_id    = -1;
-    ip->coll_data.coll_update_tic = gMPCollisionUpdateTic;
-    ip->coll_data.coll_mask_curr = 0;
+    ip->coll_data.coll_update_tic   = gMPCollisionUpdateTic;
+    ip->coll_data.coll_mask_curr    = 0;
     ip->coll_data.vel_push.x        = 0.0F;
     ip->coll_data.vel_push.y        = 0.0F;
     ip->coll_data.vel_push.z        = 0.0F;
@@ -489,7 +498,10 @@ void itManagerSetItemSpawnWait(void)
 {
     gITManagerSpawnActor.item_spawn_wait = 
     dITManagerAppearanceRatesMin[gSCManagerBattleState->item_appearance_rate] + 
-    syUtilsGetRandomIntRange(dITManagerAppearanceRatesMax[gSCManagerBattleState->item_appearance_rate] - dITManagerAppearanceRatesMin[gSCManagerBattleState->item_appearance_rate]);
+    syUtilsGetRandomIntRange
+    (
+        dITManagerAppearanceRatesMax[gSCManagerBattleState->item_appearance_rate] - dITManagerAppearanceRatesMin[gSCManagerBattleState->item_appearance_rate]
+    );
 }
 
 // 0x8016EB78

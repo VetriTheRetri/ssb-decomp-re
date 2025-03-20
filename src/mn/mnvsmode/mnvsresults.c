@@ -146,7 +146,7 @@ s32 sMNVSResultsKind;
 // 0x80139C14
 ub8 sMNVSResultsIsTeamBattle;
 
-// 0x80139C18 frames to wait until pressing start will exit the Results screen
+// 0x80139C18 - frames to wait until pressing start will exit the Results screen
 s32 sMNVSResultsAllowExitWait;
 
 // 0x80139C20

@@ -52,19 +52,19 @@ struct ITStatusDesc
 
 struct ITRandomWeights          // Random item drop struct?
 {
-    u8 filler_0x0[0x8];
-    u8 item_count;              // Maximum number of items that can be spawned
-    u8 *item_kinds;             // Array of item IDs that can be spawned
-    u16 item_num;               // Randomizer weight?
-    u16 *item_totals;           // Consecutive sum of item quantities? This is pretty weird
+    u8 unused[0x8];				// ???
+    u8 valids_num;             	// Maximum number of items that can be spawned (item is toggled ON && randomizer weight is non-zero)
+    u8 *kinds;             		// Array of item IDs that can be spawned
+    u16 weights_sum;     		// Sum of all toggled items' randomizer weights
+    u16 *blocks;          		// Item block sizes
 };
 
 struct ITSpawnActor
 {
-    u8 item_mapobj_count;       // Maximum number of item spawn points
-    u8 *item_mapobjs;           // Pointer to array of item map object IDs
-    u32 item_spawn_wait;        // Spawn a random new item when this reaches 0
-    ITRandomWeights weights;    // Randomizer struct
+    u8 mapobjs_num;       		// Maximum number of item spawn points
+    u8 *mapobjs;           		// Pointer to array of item map object IDs
+    u32 spawn_wait;        		// Spawn a random new item when this reaches 0
+    ITRandomWeights weights;	// Randomizer struct
 };
 
 struct ITAttackPos

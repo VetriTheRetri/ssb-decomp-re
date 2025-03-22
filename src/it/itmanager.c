@@ -496,7 +496,7 @@ ITStruct* itManagerGetCurrentAlloc(void)
 // 0x8016EB0C
 void itManagerSetItemSpawnWait(void)
 {
-    gITManagerSpawnActor.item_spawn_wait = 
+    gITManagerSpawnActor.spawn_wait = 
     dITManagerAppearanceRatesMin[gSCManagerBattleState->item_appearance_rate] + 
     syUtilsGetRandomIntRange
     (
@@ -505,7 +505,7 @@ void itManagerSetItemSpawnWait(void)
 }
 
 // 0x8016EB78
-void itManagerMakeRandomItem(GObj *item_gobj)
+void itManagerSpawnActorProcUpdate(GObj *item_gobj)
 {
     s32 unused;
     s32 index;
@@ -514,9 +514,9 @@ void itManagerMakeRandomItem(GObj *item_gobj)
 
     if (gSCManagerBattleState->game_status != nSCBattleGameStatusWait)
     {
-        if (gITManagerSpawnActor.item_spawn_wait > 0)
+        if (gITManagerSpawnActor.spawn_wait > 0)
         {
-            gITManagerSpawnActor.item_spawn_wait--;
+            gITManagerSpawnActor.spawn_wait--;
 
             return;
         }
@@ -524,7 +524,7 @@ void itManagerMakeRandomItem(GObj *item_gobj)
         {
             index = itMainGetWeightedItemKind(&gITManagerSpawnActor.weights);
 
-            mpCollisionGetMapObjPositionID(gITManagerSpawnActor.item_mapobjs[syUtilsGetRandomIntRange(gITManagerSpawnActor.item_mapobj_count)], &pos);
+            mpCollisionGetMapObjPositionID(gITManagerSpawnActor.mapobjs[syUtilsGetRandomIntRange(gITManagerSpawnActor.mapobjs_num)], &pos);
 
             vel.x = vel.y = vel.z = 0.0F;
 
@@ -537,53 +537,52 @@ void itManagerMakeRandomItem(GObj *item_gobj)
 }
 
 // 0x8016EC40 - create item spawner GObj
-GObj* itManagerMakeItemSpawnActor(void)
+GObj* itManagerMakeSpawnActor(void)
 {
     GObj *gobj;
     s32 i;
-    s32 item_count;
-    MPItemWeights *item_count_qty;
-    s32 item_weights;
-    s32 item_mapobj_count;
+    s32 item_any_weights;   // Sum of all toggled item weights of ANY value
+    MPItemWeights *p_any_weights;
+    s32 weights_sum;
+    s32 mapobjs_num;
     s32 item_mapobj_ids[30];
-    u32 item_count_toggles;
-    s32 j;
-    u32 item_id_toggles;
-    MPItemWeights *item_weight_qty;
-    u32 item_num_toggles;
+    s32 unused;
+    s32 item_valid_weights; // Sum of all toggled NON-ZERO item weights
+    u32 item_valid_toggles;
+    MPItemWeights *p_valid_weights;
+    u32 item_any_toggles;
 
     if (gSCManagerBattleState->item_appearance_rate != nSCBattleItemSwitchNone)
     {
         if (gSCManagerBattleState->item_toggles != 0)
         {
-            if (gMPCollisionGroundData->item_weights != NULL)
+            if (gMPCollisionGroundData->blocks != NULL)
             {
-                item_count_qty = gMPCollisionGroundData->item_weights;
+                p_any_weights = gMPCollisionGroundData->blocks;
+                item_any_toggles = gSCManagerBattleState->item_toggles;
 
-                item_num_toggles = gSCManagerBattleState->item_toggles;
+                item_any_weights = 0;
 
-                item_count = 0;
-
-                for (i = 0; i <= nITKindCommonEnd; i++, item_num_toggles >>= 1)
+                for (i = nITKindCommonStart; i <= nITKindCommonEnd; i++, item_any_toggles >>= 1)
                 {
-                    if (item_num_toggles & 1)
+                    if (item_any_toggles & 1)
                     {
-                        item_count += item_count_qty->item_quantities[i];
+                        item_any_weights += p_any_weights->values[i];
                     }
                 }
-                if (item_count == 0)
+                if (item_any_weights == 0)
                 {
                     return NULL;
                 }
-                gITManagerSpawnActor.weights.item_num = item_count;
+                gITManagerSpawnActor.weights.weights_sum = item_any_weights;
 
-                item_mapobj_count = mpCollisionGetMapObjCountKind(nMPMapObjKindItemSpawn);
+                mapobjs_num = mpCollisionGetMapObjCountKind(nMPMapObjKindItemSpawn);
 
-                if (item_mapobj_count == 0)
+                if (mapobjs_num == 0)
                 {
                     return NULL;
                 }
-                if (item_mapobj_count > ARRAY_COUNT(item_mapobj_ids))
+                if (mapobjs_num > ARRAY_COUNT(item_mapobj_ids))
                 {
                     while (TRUE)
                     {
@@ -591,47 +590,45 @@ GObj* itManagerMakeItemSpawnActor(void)
                         scManagerRunPrintGObjStatus();
                     }
                 }
-                gITManagerSpawnActor.item_mapobj_count = item_mapobj_count;
-                gITManagerSpawnActor.item_mapobjs = (u8*)syTaskmanMalloc(item_mapobj_count * sizeof(*gITManagerSpawnActor.item_mapobjs), 0);
+                gITManagerSpawnActor.mapobjs_num = mapobjs_num;
+                gITManagerSpawnActor.mapobjs = (u8*) syTaskmanMalloc(mapobjs_num * sizeof(*gITManagerSpawnActor.mapobjs), 0);
 
                 mpCollisionGetMapObjIDsKind(nMPMapObjKindItemSpawn, item_mapobj_ids);
 
-                for (i = 0; i < item_mapobj_count; i++)
+                for (i = 0; i < mapobjs_num; i++)
                 {
-                    gITManagerSpawnActor.item_mapobjs[i] = item_mapobj_ids[i];
+                    gITManagerSpawnActor.mapobjs[i] = item_mapobj_ids[i];
                 }
                 gobj = gcMakeGObjSPAfter(nGCCommonKindItem, NULL, nGCCommonLinkIDItemActor, GOBJ_PRIORITY_DEFAULT);
 
-                gcAddGObjProcess(gobj, itManagerMakeRandomItem, nGCProcessKindFunc, 3);
+                gcAddGObjProcess(gobj, itManagerSpawnActorProcUpdate, nGCProcessKindFunc, 3);
 
-                item_count_toggles = gSCManagerBattleState->item_toggles;
+                item_valid_toggles = gSCManagerBattleState->item_toggles;
+                p_valid_weights = gMPCollisionGroundData->blocks;
 
-                item_weight_qty = gMPCollisionGroundData->item_weights;
-
-                for (i = nITKindCommonStart, j = 0; i <= nITKindCommonEnd; i++, item_count_toggles >>= 1)
+                for (i = nITKindCommonStart, item_valid_weights = 0; i <= nITKindCommonEnd; i++, item_valid_toggles >>= 1)
                 {
-                    if ((item_count_toggles & 1) && (item_weight_qty->item_quantities[i] != 0))
+                    if ((item_valid_toggles & 1) && (p_valid_weights->values[i] != 0))
                     {
-                        j++;
+                        item_valid_weights++;
                     }
                 }
-                gITManagerSpawnActor.weights.item_count = j;
-                gITManagerSpawnActor.weights.item_kinds = (u8*) syTaskmanMalloc(j * sizeof(*gITManagerSpawnActor.weights.item_kinds), 0x0);
-                gITManagerSpawnActor.weights.item_totals = (u16*) syTaskmanMalloc(j * sizeof(*gITManagerSpawnActor.weights.item_totals), 0x2);
+                gITManagerSpawnActor.weights.valids_num = item_valid_weights;
+                gITManagerSpawnActor.weights.kinds = (u8*) syTaskmanMalloc(item_valid_weights * sizeof(*gITManagerSpawnActor.weights.kinds), 0x0);
+                gITManagerSpawnActor.weights.blocks = (u16*) syTaskmanMalloc(item_valid_weights * sizeof(*gITManagerSpawnActor.weights.blocks), 0x2);
 
-                item_id_toggles = gSCManagerBattleState->item_toggles;
+                item_valid_toggles = gSCManagerBattleState->item_toggles;
+                weights_sum = 0;
 
-                item_weights = 0;
-
-                for (i = nITKindCommonStart, j = 0; i <= nITKindCommonEnd; i++, item_id_toggles >>= 1)
+                for (i = nITKindCommonStart, item_valid_weights = 0; i <= nITKindCommonEnd; i++, item_valid_toggles >>= 1)
                 {
-                    if ((item_id_toggles & 1) && (item_weight_qty->item_quantities[i] != 0))
+                    if ((item_valid_toggles & 1) && (p_valid_weights->values[i] != 0))
                     {
-                        gITManagerSpawnActor.weights.item_kinds[j] = i;
-                        gITManagerSpawnActor.weights.item_totals[j] = item_weights;
-                        item_weights += item_weight_qty->item_quantities[i];
+                        gITManagerSpawnActor.weights.kinds[item_valid_weights] = i;
+                        gITManagerSpawnActor.weights.blocks[item_valid_weights] = weights_sum;
+                        weights_sum += p_valid_weights->values[i];
 
-                        j++;
+                        item_valid_weights++;
                     }
                 }
                 itManagerSetItemSpawnWait();
@@ -646,69 +643,67 @@ GObj* itManagerMakeItemSpawnActor(void)
 // 0x8016EF40
 void itManagerSetupContainerDrops(void)
 {
-    s32 item_tenth_floor;
-    s32 item_count;
-    u32 item_num_toggles;
-    u32 item_id_toggles;
-    s32 i;
-    s32 j;
-    s32 item_weights;
-    MPItemWeights *item_count_qty;
-    MPItemWeights *item_weight_qty;
     s32 item_tenth_round;
+    s32 item_tenth_floor;
+    s32 item_any_weights;   // Sum of all toggled item weights of ANY value
+    u32 item_any_toggles;
+    u32 item_valid_toggles;
+    s32 item_valid_weights; // Sum of all toggled NON-ZERO item weights
+    s32 weights_sum;
+    MPItemWeights *p_any_weights;
+    MPItemWeights *p_valid_weights;
+    s32 i;
 
-    if ((gSCManagerBattleState->item_appearance_rate != nSCBattleItemSwitchNone) && (gSCManagerBattleState->item_toggles != 0) && (gMPCollisionGroundData->item_weights != NULL))
+    if ((gSCManagerBattleState->item_appearance_rate != nSCBattleItemSwitchNone) && (gSCManagerBattleState->item_toggles != 0) && (gMPCollisionGroundData->blocks != NULL))
     {
-        item_num_toggles = gSCManagerBattleState->item_toggles >> nITKindUtilityStart;
-        item_count_qty = gMPCollisionGroundData->item_weights;
+        item_any_toggles = gSCManagerBattleState->item_toggles >> nITKindUtilityStart;
+        p_any_weights = gMPCollisionGroundData->blocks;
 
-        item_count = 0;
+        item_any_weights = 0;
 
-        for (i = nITKindUtilityStart; i <= nITKindUtilityEnd; i++, item_num_toggles >>= 1)
+        for (i = nITKindUtilityStart; i <= nITKindUtilityEnd; i++, item_any_toggles >>= 1)
         {
-            if (item_num_toggles & 1)
+            if (item_any_toggles & 1)
             {
-                item_count += item_count_qty->item_quantities[i];
+                item_any_weights += p_any_weights->values[i];
             }
         }
-        gITManagerRandomWeights.item_num = item_count;
+        gITManagerRandomWeights.weights_sum = item_any_weights;
 
-        if (item_count != 0)
+        if (item_any_weights != 0)
         {
-            item_id_toggles = gSCManagerBattleState->item_toggles >> nITKindUtilityStart;
-            item_weight_qty = gMPCollisionGroundData->item_weights;
+            item_valid_toggles = gSCManagerBattleState->item_toggles >> nITKindUtilityStart;
+            p_valid_weights = gMPCollisionGroundData->blocks;
 
-            for (j = 0, i = nITKindUtilityStart; i <= nITKindUtilityEnd; i++, item_id_toggles >>= 1)
+            for (item_valid_weights = 0, i = nITKindUtilityStart; i <= nITKindUtilityEnd; i++, item_valid_toggles >>= 1)
             {
-                if ((item_id_toggles & 1) && (item_weight_qty->item_quantities[i] != 0))
+                if ((item_valid_toggles & 1) && (p_valid_weights->values[i] != 0))
                 {
-                    j++;
+                    item_valid_weights++;
                 }
             }
-            j++;
+            gITManagerRandomWeights.valids_num = ++item_valid_weights;
+            gITManagerRandomWeights.kinds = (u8*) syTaskmanMalloc(item_valid_weights * sizeof(*gITManagerRandomWeights.kinds), 0x0);
+            gITManagerRandomWeights.blocks = (u16*) syTaskmanMalloc(item_valid_weights * sizeof(*gITManagerRandomWeights.blocks), 0x2);
 
-            gITManagerRandomWeights.item_count = j;
-            gITManagerRandomWeights.item_kinds = (u8*) syTaskmanMalloc(j * sizeof(*gITManagerRandomWeights.item_kinds), 0x0);
-            gITManagerRandomWeights.item_totals = (u16*) syTaskmanMalloc(j * sizeof(*gITManagerRandomWeights.item_totals), 0x2);
+            item_valid_toggles = gSCManagerBattleState->item_toggles >> nITKindUtilityStart;
+            weights_sum = 0;
 
-            item_id_toggles = gSCManagerBattleState->item_toggles >> nITKindUtilityStart;
-            item_weights = 0;
-
-            for (j = 0, i = nITKindUtilityStart; i <= nITKindUtilityEnd; i++, item_id_toggles >>= 1)
+            for (item_valid_weights = 0, i = nITKindUtilityStart; i <= nITKindUtilityEnd; i++, item_valid_toggles >>= 1)
             {
-                if ((item_id_toggles & 1) && (item_weight_qty->item_quantities[i] != 0))
+                if ((item_valid_toggles & 1) && (p_valid_weights->values[i] != 0))
                 {
-                    gITManagerRandomWeights.item_kinds[j] = i;
-                    gITManagerRandomWeights.item_totals[j] = item_weights;
+                    gITManagerRandomWeights.kinds[item_valid_weights] = i;
+                    gITManagerRandomWeights.blocks[item_valid_weights] = weights_sum;
 
-                    item_weights += item_weight_qty->item_quantities[i];
-                    j++;
+                    weights_sum += p_valid_weights->values[i];
+                    item_valid_weights++;
                 }
             }
-            gITManagerRandomWeights.item_kinds[j] = nITKindMBallMonsterStart;
-            gITManagerRandomWeights.item_totals[j] = item_weights;
+            gITManagerRandomWeights.kinds[item_valid_weights] = nITKindMBallMonsterStart;
+            gITManagerRandomWeights.blocks[item_valid_weights] = weights_sum;
 
-            item_tenth_round = (gITManagerRandomWeights.item_num * 0.1F);
+            item_tenth_round = (gITManagerRandomWeights.weights_sum * 0.1F);
 
             if (item_tenth_round != 0)
             {
@@ -716,10 +711,10 @@ void itManagerSetupContainerDrops(void)
             }
             else item_tenth_floor = 1;
 
-            gITManagerRandomWeights.item_num += item_tenth_floor;
+            gITManagerRandomWeights.weights_sum += item_tenth_floor;
         }
     }
-    else gITManagerRandomWeights.item_num = 0;
+    else gITManagerRandomWeights.weights_sum = 0;
 }
 
 // 0x8016F218

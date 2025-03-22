@@ -242,7 +242,7 @@ sb32 itBoxCommonCheckSpawnItems(GObj *item_gobj)
 
     itBoxContainerSmashMakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
 
-    if (gITManagerRandomWeights.item_num != 0)
+    if (gITManagerRandomWeights.weights_sum != 0)
     {
         index = itMainGetWeightedItemKind(&gITManagerRandomWeights);
 
@@ -282,11 +282,11 @@ sb32 itBoxCommonCheckSpawnItems(GObj *item_gobj)
             }
             else
             {
-                bak = gITManagerRandomWeights.item_num;
-                item_count = gITManagerRandomWeights.item_count - 1;
+                bak = gITManagerRandomWeights.weights_sum;
+                item_count = gITManagerRandomWeights.valids_num - 1;
 
-                gITManagerRandomWeights.item_num = gITManagerRandomWeights.item_totals[item_count];
-                gITManagerRandomWeights.item_count--;
+                gITManagerRandomWeights.weights_sum = gITManagerRandomWeights.blocks[item_count];
+                gITManagerRandomWeights.valids_num--;
 
                 vel_different.z = 0.0F;
 
@@ -301,8 +301,8 @@ sb32 itBoxCommonCheckSpawnItems(GObj *item_gobj)
 
                     itManagerMakeItemSetupCommon(item_gobj, index, &DObjGetStruct(item_gobj)->translate.vec.f, &vel_different, (ITEM_FLAG_COLLPROJECT | ITEM_FLAG_PARENT_ITEM));
                 }
-                gITManagerRandomWeights.item_count++;
-                gITManagerRandomWeights.item_num = bak;
+                gITManagerRandomWeights.valids_num++;
+                gITManagerRandomWeights.weights_sum = bak;
             }
             func_800269C0_275C0(nSYAudioFGMFireFlowerShoot);
 

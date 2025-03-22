@@ -548,31 +548,32 @@ void itMainVelSetRebound(GObj *item_gobj)
 }
 
 // 0x8017301C - Binary search function to get item ID for container drop?
-s32 itMainSearchWeightedItemKind(s32 random, ITRandomWeights *weights, u32 min, u32 max) // Recursive!
+s32 itMainSearchRandomWeight(s32 random, ITRandomWeights *weights, u32 min, u32 max) // Recursive!
 {
-    s32 avg;
-
     if (max == (min + 1))
     {
         return min;
     }
-    avg = (s32) (min + max) / 2;
+    else
+    {
+        s32 avg = (s32) (min + max) / 2;
 
-    if (random < weights->item_totals[avg])
-    {
-        itMainSearchWeightedItemKind(random, weights, min, avg);
+        if (random < weights->blocks[avg])
+        {
+            itMainSearchRandomWeight(random, weights, min, avg);
+        }
+        else if (random < weights->blocks[avg + 1])
+        {
+            return avg;
+        }
+        else itMainSearchRandomWeight(random, weights, avg, max);
     }
-    else if (random < weights->item_totals[avg + 1])
-    {
-        return avg;
-    }
-    else itMainSearchWeightedItemKind(random, weights, avg, max);
 }
 
 // 0x80173090
 s32 itMainGetWeightedItemKind(ITRandomWeights *weights)
 {
-    return weights->item_kinds[itMainSearchWeightedItemKind(syUtilsGetRandomIntRange(weights->item_num), weights, 0, weights->item_count)];
+    return weights->kinds[itMainSearchRandomWeight(syUtilsGetRandomIntRange(weights->weights_sum), weights, 0, weights->valids_num)];
 }
 
 // 0x801730D4
@@ -582,18 +583,30 @@ sb32 itMainMakeContainerItem(GObj *parent_gobj)
     s32 item_kind;
     Vec3f vel; // Item's spawn velocity when falling out of a container
 
-    if (gITManagerRandomWeights.item_num != 0)
+    if (gITManagerRandomWeights.weights_sum != 0)
     {
         item_kind = itMainGetWeightedItemKind(&gITManagerRandomWeights);
 
         if (item_kind <= nITKindCommonEnd)
         {
             vel.x = 0.0F;
+
             // Quite ridiculous especially since lITMainContainerVelocitiesY is 0
             vel.y = *(f32*) ((intptr_t)&lITMainContainerVelocitiesY + ((uintptr_t) &((f32*)gITManagerCommonData)[item_kind]));
             vel.z = 0;
 
-            if (itManagerMakeItemSetupCommon(parent_gobj, item_kind, &DObjGetStruct(parent_gobj)->translate.vec.f, &vel, (ITEM_FLAG_COLLPROJECT | ITEM_FLAG_PARENT_ITEM)) != NULL)
+            if
+            (
+                itManagerMakeItemSetupCommon
+                (
+                    parent_gobj,
+                    item_kind,
+                    &DObjGetStruct(parent_gobj)->translate.vec.f,
+                    &vel,
+                    (ITEM_FLAG_COLLPROJECT | ITEM_FLAG_PARENT_ITEM)
+                )
+                != NULL
+            )
             {
                 func_ovl3_80172394(parent_gobj, TRUE);
             }
@@ -639,7 +652,13 @@ GObj* itMainMakeMonster(GObj *item_gobj)
     vel.z = 0.0F;
 
     // Is this checking to spawn Mew? Can only spawn once at least one character has been unlocked.
-    if ((gSCManagerBackupData.unlock_mask & LBBACKUP_UNLOCK_MASK_NEWCOMERS) && (syUtilsGetRandomIntRange(151) == 0) && (gITManagerMonsterData.monster_curr != nITKindMew) && (gITManagerMonsterData.monster_prev != nITKindMew))
+    if
+    (
+        (gSCManagerBackupData.unlock_mask & LBBACKUP_UNLOCK_MASK_NEWCOMERS) &&
+        (syUtilsGetRandomIntRange(151) == 0) &&
+        (gITManagerMonsterData.monster_curr != nITKindMew) &&
+        (gITManagerMonsterData.monster_prev != nITKindMew)
+    )
     {
         index = nITKindMew;
     }

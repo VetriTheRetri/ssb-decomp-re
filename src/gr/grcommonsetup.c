@@ -30,6 +30,6 @@ void grCommonSetupInitAll(void) // New file
     mpCollisionClearYakumonoAll();
     grMainSetupMakeGround();
     func_ovl2_800FBD14();
-    itManagerMakeItemSpawnActor();
+    itManagerMakeSpawnActor();
     efGroundMakeEffectSpawnActor();
 }

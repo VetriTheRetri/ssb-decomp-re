@@ -167,7 +167,7 @@ struct MPCollData
 
 struct MPItemWeights
 {
-    u8 item_quantities[1];
+    u8 values[1];
 };
 
 struct MPGroundDesc
@@ -199,7 +199,7 @@ struct MPGroundData
 	s16 map_bound_left;
 	u32 bgm_id;
 	void *map_nodes;
-	MPItemWeights *item_weights; 	// Randomizer weights of items
+	MPItemWeights *blocks; 	// Randomizer weights of items
 	s16 alt_warning;				// Warning whistle plays if a player goes below this altitude
 	s16 camera_bound_team_top;			// 1P Game VS. <character> Team bounds
 	s16 camera_bound_team_bottom;

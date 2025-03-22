@@ -3525,8 +3525,10 @@ void ftMainSearchItemAttack(GObj *fighter_gobj)
                         {
                             for (i = 0; i < it_attack_coll->attack_count; i++)
                             {
-                                if (gFTMainIsDamageDetect[i] == FALSE) continue;
-
+                                if (gFTMainIsDamageDetect[i] == FALSE)
+                                {
+                                    continue;
+                                }
                                 else if (gmCollisionCheckItemAttackShieldCollide(it_attack_coll, i, fighter_gobj, fp->joints[nFTPartsJointYRotN], &angle, &vec) != FALSE)
                                 {
                                     ftMainUpdateShieldStatItem(ip, it_attack_coll, i, fp, item_gobj, fighter_gobj, angle, &vec);

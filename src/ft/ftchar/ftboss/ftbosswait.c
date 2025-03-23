@@ -345,11 +345,11 @@ void ftBossWaitSetStatus(GObj *fighter_gobj)
             ground_line_id = fp->passive_vars.boss.p->default_line_id;
         }
 
-        if (translate->x > gMPCollisionEdgeBounds.d2.right)
+        if (translate->x > gMPCollisionBounds.current.right)
         {
             mpCollisionGetLREdgeUpperR(ground_line_id, &pos);
         }
-        else if (translate->x < gMPCollisionEdgeBounds.d2.left)
+        else if (translate->x < gMPCollisionBounds.current.left)
         {
             mpCollisionGetLREdgeUpperL(ground_line_id, &pos);
         }

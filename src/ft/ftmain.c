@@ -1801,7 +1801,7 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
     }
     if (fp->public_knockback != 0)
     {
-        if ((fp->joints[nFTPartsJointTopN]->translate.vec.f.x > (gMPCollisionEdgeBounds.d2.left + 450.0F)) && (fp->joints[nFTPartsJointTopN]->translate.vec.f.x < (gMPCollisionEdgeBounds.d2.right - 450.0F)))
+        if ((fp->joints[nFTPartsJointTopN]->translate.vec.f.x > (gMPCollisionBounds.current.left + 450.0F)) && (fp->joints[nFTPartsJointTopN]->translate.vec.f.x < (gMPCollisionBounds.current.right - 450.0F)))
         {
             fp->public_knockback = 0.0F;
         }

@@ -3742,9 +3742,9 @@ sb32 ftComputerCheckFindTarget(FTStruct *this_fp)
                     (
                         (
                             (func_ovl2_800F8FFC(&other_fp->joints[nFTPartsJointTopN]->translate.vec.f) != FALSE) &&
-                            (other_pos_x <= gMPCollisionEdgeBounds.d2.right) &&
-                            (gMPCollisionEdgeBounds.d2.left <= other_pos_x) &&
-                            (gMPCollisionEdgeBounds.d2.bottom <= other_pos_y) &&
+                            (other_pos_x <= gMPCollisionBounds.current.right) &&
+                            (other_pos_x >= gMPCollisionBounds.current.left) &&
+                            (other_pos_y >= gMPCollisionBounds.current.bottom) &&
                             (other_pos_y < gMPCollisionGroundData->camera_bound_top)
                         ) 
                         ||
@@ -4162,8 +4162,8 @@ sb32 ftComputerCheckDetectTarget(FTStruct *this_fp, f32 detect_range_base)
             {
                 if
                 (
-                    (this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x < (gMPCollisionEdgeBounds.d2.left + 500.0F)) || 
-                    (this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x > (gMPCollisionEdgeBounds.d2.right - 500.0F))
+                    (this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x < (gMPCollisionBounds.current.left + 500.0F)) || 
+                    (this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x > (gMPCollisionBounds.current.right - 500.0F))
                 )
                 {
                     switch (comattack->input_kind)
@@ -4727,7 +4727,7 @@ void func_ovl3_801346D4(FTStruct *fp)
     {
         range = 0;
     }
-    if (pos.x > gMPCollisionEdgeBounds.d2.right)
+    if (pos.x > gMPCollisionBounds.current.right)
     {
         if (fp->lr > 0)
         {
@@ -4739,7 +4739,7 @@ void func_ovl3_801346D4(FTStruct *fp)
         {
             range = 0.0F;
         }
-        if (((fp->jumps_used < fp->attr->jumps_max) && ((pos.x - gMPCollisionEdgeBounds.d2.right) > 1500.0F)) || ((fp->joints[nFTPartsJointTopN]->translate.vec.f.y + fp->physics.vel_air.y) < (com->cliff_right_pos.y - range)))
+        if (((fp->jumps_used < fp->attr->jumps_max) && ((pos.x - gMPCollisionBounds.current.right) > 1500.0F)) || ((fp->joints[nFTPartsJointTopN]->translate.vec.f.y + fp->physics.vel_air.y) < (com->cliff_right_pos.y - range)))
         {
             com->target_pos.y = pos.y + 1100.0F;
         }
@@ -4762,7 +4762,7 @@ void func_ovl3_801346D4(FTStruct *fp)
             (
                 (fp->jumps_used < fp->attr->jumps_max) && 
                 (
-                    (gMPCollisionEdgeBounds.d2.left - pos.x) > 1500.0F
+                    (gMPCollisionBounds.current.left - pos.x) > 1500.0F
                 )
             ) 
             || 
@@ -4786,7 +4786,7 @@ void func_ovl3_80134964(FTStruct *fp)
     com->target_line_id = -1;
     com->ftcom_flags_0x4A_b1 = FALSE;
 
-    if (!(com->is_within_vertical_bounds) && (pos.x <= gMPCollisionEdgeBounds.d2.right) && (pos.x >= gMPCollisionEdgeBounds.d2.left))
+    if (!(com->is_within_vertical_bounds) && (pos.x <= gMPCollisionBounds.current.right) && (pos.x >= gMPCollisionBounds.current.left))
     {
         if (fp->physics.vel_air.x < 0.0F)
         {
@@ -5565,7 +5565,7 @@ sb32 ftComputerCheckFindItem(FTStruct *fp)
             f32 it_pos_x = DObjGetStruct(item_gobj)->translate.vec.f.x;
             f32 it_pos_y = DObjGetStruct(item_gobj)->translate.vec.f.y;
 
-            if ((it_pos_x <= gMPCollisionEdgeBounds.d2.right) && (it_pos_x >= gMPCollisionEdgeBounds.d2.left) && (it_pos_y >= gMPCollisionEdgeBounds.d2.bottom) && (it_pos_y < gMPCollisionGroundData->camera_bound_top))
+            if ((it_pos_x <= gMPCollisionBounds.current.right) && (it_pos_x >= gMPCollisionBounds.current.left) && (it_pos_y >= gMPCollisionBounds.current.bottom) && (it_pos_y < gMPCollisionGroundData->camera_bound_top))
             {
                 f32 current_dist = SQUARE(ft_pos_x - it_pos_x) + SQUARE(ft_pos_y - it_pos_y);
 
@@ -5684,7 +5684,7 @@ sb32 ftComputerCheckSetEvadeTarget(FTStruct *this_fp)
 
             break;
         }
-        else if ((target_fp->status_id >= nFTCommonStatusWait) && (predict_x <= gMPCollisionEdgeBounds.d2.right) && (predict_x >= gMPCollisionEdgeBounds.d2.left) && (predict_y >= gMPCollisionEdgeBounds.d2.bottom))
+        else if ((target_fp->status_id >= nFTCommonStatusWait) && (predict_x <= gMPCollisionBounds.current.right) && (predict_x >= gMPCollisionBounds.current.left) && (predict_y >= gMPCollisionBounds.current.bottom))
         {
             current_dist = SQUARE(this_pos_x - predict_x) + SQUARE(this_pos_y - predict_y);
 
@@ -7872,7 +7872,7 @@ void ftComputerSetupAll(GObj *fighter_gobj)
                         com->cliff_left_pos.y = edge_pos.y;
                     }
                 }
-                else if (((edge_pos.x - gMPCollisionEdgeBounds.d2.left) < 500.0F) && (com->cliff_left_pos.y > edge_pos.y))
+                else if (((edge_pos.x - gMPCollisionBounds.current.left) < 500.0F) && (com->cliff_left_pos.y > edge_pos.y))
                 {
                     com->cliff_left_pos.x = edge_pos.x;
                     com->cliff_left_pos.y = edge_pos.y;
@@ -7889,7 +7889,7 @@ void ftComputerSetupAll(GObj *fighter_gobj)
                         com->cliff_right_pos.y = edge_pos.y;
                     }
                 }
-                else if (((gMPCollisionEdgeBounds.d2.right - edge_pos.x) < 500.0F) && (com->cliff_right_pos.y > edge_pos.y))
+                else if (((gMPCollisionBounds.current.right - edge_pos.x) < 500.0F) && (com->cliff_right_pos.y > edge_pos.y))
                 {
                     com->cliff_right_pos.x = edge_pos.x;
                     com->cliff_right_pos.y = edge_pos.y;

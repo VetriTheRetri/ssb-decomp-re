@@ -542,7 +542,7 @@ void sc1PBonusStageInitPlatforms(s32 line_id)
 	s32 id;
 
 	id = mpCollisionSetDObjNoID(line_id);
-	dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[id];
+	dobj = gMPCollisionYakumonoDObjs->dobjs[id];
 	id = sc1PBonusStageGetPlatformKind(line_id);
 
 	lbCommonSetupTreeDObjs
@@ -586,7 +586,7 @@ void sc1PBonusStageMakePlatforms(void)
 		{
 			yakumono_id = mpCollisionSetDObjNoID(line_ids[i]);
 
-			if (gMPCollisionYakumonoDObjs->yakumono_dobj[yakumono_id]->anim_joint.event32 == NULL)
+			if (gMPCollisionYakumonoDObjs->dobjs[yakumono_id]->anim_joint.event32 == NULL)
 			{
 				mpCollisionSetYakumonoOnID(yakumono_id);
 			}
@@ -667,7 +667,7 @@ void sc1PBonusStageBonus2ProcUpdate(GObj *ground_gobj)
 
 		if ((fp->ga == nMPKineticsGround) && ((fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK) == nMPMaterialDetect))
 		{
-			DObj *dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[mpCollisionSetDObjNoID(fp->coll_data.ground_line_id)];
+			DObj *dobj = gMPCollisionYakumonoDObjs->dobjs[mpCollisionSetDObjNoID(fp->coll_data.ground_line_id)];
 
 			if (dobj->child->user_data.s != nMPYakumonoStatusNone)
 			{

@@ -143,9 +143,9 @@ typedef enum MPYakumonoStatus // State of collision line?
 {
 	nMPYakumonoStatusNone,
 	nMPYakumonoStatusOn,
-	nMPYakumonoStatusUnk2,
+	nMPYakumonoStatusShow,
 	nMPYakumonoStatusOff,
-    nMPYakumonoStatusUnk4
+    nMPYakumonoStatusHidden
 
 } MPYakumonoStatus;
 
@@ -160,8 +160,8 @@ typedef struct MPVertexPosContainer MPVertexPosContainer;
 typedef struct MPLineData MPLineData;
 typedef struct MPLineInfo MPLineInfo;
 typedef struct MPLineGroup MPLineGroup;
-typedef struct MPDirection MPDirection;
-typedef struct MPEdgeBounds MPEdgeBounds;
+typedef struct MPBounds MPBounds;
+typedef struct MPAllBounds MPAllBounds;
 typedef struct MPGeometryData MPGeometryData;
 typedef struct MPYakumonoDObj MPYakumonoDObj;
 typedef struct MPMapObjData MPMapObjData;

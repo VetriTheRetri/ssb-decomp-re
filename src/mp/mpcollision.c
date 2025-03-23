@@ -124,7 +124,7 @@ MPGroundData *gMPCollisionGroundData;
 MPYakumonoDObj *gMPCollisionYakumonoDObjs;
 
 // 0x80131308
-MPEdgeBounds gMPCollisionEdgeBounds;
+MPAllBounds gMPCollisionBounds;
 
 // 0x80131348
 MPLineGroup gMPCollisionLineGroups[nMPLineKindEnumCount];
@@ -219,7 +219,7 @@ sb32 mpCollisionGetUDCommon(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flag
             scManagerRunPrintGObjStatus();
         }
     }
-    yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[gMPCollisionVertexInfo->vertex_info[line_id].yakumono_id];
+    yakumono_dobj = gMPCollisionYakumonoDObjs->dobjs[gMPCollisionVertexInfo->vertex_info[line_id].yakumono_id];
 
     if (yakumono_dobj->user_data.s >= nMPYakumonoStatusOff)
     {
@@ -348,7 +348,7 @@ sb32 mpCollisionGetLRCommon(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flag
             scManagerRunPrintGObjStatus();
         }
     }
-    yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[gMPCollisionVertexInfo->vertex_info[line_id].yakumono_id];
+    yakumono_dobj = gMPCollisionYakumonoDObjs->dobjs[gMPCollisionVertexInfo->vertex_info[line_id].yakumono_id];
 
     if (yakumono_dobj->user_data.s >= nMPYakumonoStatusOff)
     {
@@ -471,7 +471,7 @@ void mpCollisionGetLREdge(s32 line_id, Vec3f *object_pos, s32 lr)
             scManagerRunPrintGObjStatus();
         }
     }
-    yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[gMPCollisionVertexInfo->vertex_info[line_id].yakumono_id];
+    yakumono_dobj = gMPCollisionYakumonoDObjs->dobjs[gMPCollisionVertexInfo->vertex_info[line_id].yakumono_id];
 
     if (yakumono_dobj->user_data.s >= nMPYakumonoStatusOff)
     {
@@ -555,7 +555,7 @@ void mpCollisionGetUDEdge(s32 line_id, Vec3f *object_pos, s32 ud)
             scManagerRunPrintGObjStatus();
         }
     }
-    yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[gMPCollisionVertexInfo->vertex_info[line_id].yakumono_id];
+    yakumono_dobj = gMPCollisionYakumonoDObjs->dobjs[gMPCollisionVertexInfo->vertex_info[line_id].yakumono_id];
 
     if (yakumono_dobj->user_data.s >= nMPYakumonoStatusOff)
     {
@@ -807,7 +807,7 @@ sb32 mpCollisionCheckGroundLineCollisionSame(Vec3f *position, Vec3f *translate, 
     for (i = 0; i < gMPCollisionGeometry->yakumono_count; i++, line_info++)
     {
         line_data = &line_info->line_data[nMPLineKindGround];
-        yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[line_info->yakumono_id];
+        yakumono_dobj = gMPCollisionYakumonoDObjs->dobjs[line_info->yakumono_id];
 
         if ((line_data->line_count != 0) && (yakumono_dobj->user_data.s < nMPYakumonoStatusOff))
         {
@@ -966,7 +966,7 @@ sb32 mpCollisionCheckGroundLineCollisionDiff(Vec3f *position, Vec3f *translate, 
     for (i = 0; i < gMPCollisionGeometry->yakumono_count; i++, line_info++)
     {
         line_data = &line_info->line_data[nMPLineKindGround];
-        yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[line_info->yakumono_id];
+        yakumono_dobj = gMPCollisionYakumonoDObjs->dobjs[line_info->yakumono_id];
 
         if ((line_data->line_count != 0) && (yakumono_dobj->user_data.s < nMPYakumonoStatusOff))
         {
@@ -1311,7 +1311,7 @@ sb32 mpCollisionCheckCeilLineCollisionSame(Vec3f *position, Vec3f *translate, Ve
     for (i = 0; i < gMPCollisionGeometry->yakumono_count; i++, line_info++)
     {
         line_data = &line_info->line_data[nMPLineKindCeil];
-        yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[line_info->yakumono_id];
+        yakumono_dobj = gMPCollisionYakumonoDObjs->dobjs[line_info->yakumono_id];
 
         if ((line_data->line_count != 0) && (yakumono_dobj->user_data.s < nMPYakumonoStatusOff))
         {
@@ -1470,7 +1470,7 @@ sb32 mpCollisionCheckCeilLineCollisionDiff(Vec3f *position, Vec3f *translate, Ve
     for (i = 0; i < gMPCollisionGeometry->yakumono_count; i++, line_info++)
     {
         line_data = &line_info->line_data[nMPLineKindCeil];
-        yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[line_info->yakumono_id];
+        yakumono_dobj = gMPCollisionYakumonoDObjs->dobjs[line_info->yakumono_id];
 
         if ((line_data->line_count != 0) && (yakumono_dobj->user_data.s < nMPYakumonoStatusOff))
         {
@@ -1631,7 +1631,7 @@ sb32 mpCollisionCheckRWallLineCollisionSame(Vec3f *position, Vec3f *translate, V
     for (i = 0; i < gMPCollisionGeometry->yakumono_count; i++, line_info++)
     {
         line_data = &line_info->line_data[nMPLineKindRWall];
-        yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[line_info->yakumono_id];
+        yakumono_dobj = gMPCollisionYakumonoDObjs->dobjs[line_info->yakumono_id];
 
         if ((line_data->line_count != 0) && (yakumono_dobj->user_data.s < nMPYakumonoStatusOff))
         {
@@ -1951,7 +1951,7 @@ sb32 mpCollisionCheckRWallLineCollisionDiff(Vec3f *position, Vec3f *translate, V
     for (i = 0; i < gMPCollisionGeometry->yakumono_count; i++, line_info++)
     {
         line_data = &line_info->line_data[nMPLineKindRWall];
-        yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[line_info->yakumono_id];
+        yakumono_dobj = gMPCollisionYakumonoDObjs->dobjs[line_info->yakumono_id];
 
         if ((line_data->line_count != 0) && (yakumono_dobj->user_data.s < nMPYakumonoStatusOff))
         {
@@ -2172,7 +2172,7 @@ sb32 mpCollisionCheckLWallLineCollisionSame(Vec3f *position, Vec3f *translate, V
     for (i = 0; i < gMPCollisionGeometry->yakumono_count; i++, line_info++)
     {
         line_data = &line_info->line_data[nMPLineKindLWall];
-        yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[line_info->yakumono_id];
+        yakumono_dobj = gMPCollisionYakumonoDObjs->dobjs[line_info->yakumono_id];
 
         if ((line_data->line_count != 0) && (yakumono_dobj->user_data.s < nMPYakumonoStatusOff))
         {
@@ -2457,7 +2457,7 @@ sb32 mpCollisionCheckLWallLineCollisionDiff(Vec3f *position, Vec3f *translate, V
     for (i = 0; i < gMPCollisionGeometry->yakumono_count; i++, line_info++)
     {
         line_data = &line_info->line_data[nMPLineKindLWall];
-        yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[line_info->yakumono_id];
+        yakumono_dobj = gMPCollisionYakumonoDObjs->dobjs[line_info->yakumono_id];
 
         if ((line_data->line_count != 0) && (yakumono_dobj->user_data.s < nMPYakumonoStatusOff))
         {
@@ -2605,7 +2605,7 @@ sb32 func_ovl2_800F8FFC(Vec3f *position)
     for (i = 0; i < gMPCollisionGeometry->yakumono_count; i++, line_info++)
     {
         line_data = &line_info->line_data[nMPLineKindGround];
-        yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[line_info->yakumono_id];
+        yakumono_dobj = gMPCollisionYakumonoDObjs->dobjs[line_info->yakumono_id];
 
         if ((line_data->line_count != 0) && (yakumono_dobj->user_data.s < nMPYakumonoStatusOff))
         {
@@ -2676,7 +2676,7 @@ sb32 func_ovl2_800F9348(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
     for (i = 0; i < gMPCollisionGeometry->yakumono_count; i++, line_info++)
     {
         line_data = &line_info->line_data[nMPLineKindGround];
-        yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[line_info->yakumono_id];
+        yakumono_dobj = gMPCollisionYakumonoDObjs->dobjs[line_info->yakumono_id];
 
         if ((line_data->line_count != 0) && (yakumono_dobj->user_data.s < nMPYakumonoStatusOff))
         {
@@ -2779,7 +2779,7 @@ sb32 func_ovl2_800F97BC(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
     for (i = 0; i < gMPCollisionGeometry->yakumono_count; i++, line_info++)
     {
         line_data = &line_info->line_data[nMPLineKindCeil];
-        yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[line_info->yakumono_id];
+        yakumono_dobj = gMPCollisionYakumonoDObjs->dobjs[line_info->yakumono_id];
 
         if ((line_data->line_count != 0) && (yakumono_dobj->user_data.s < nMPYakumonoStatusOff))
         {
@@ -2882,7 +2882,7 @@ sb32 func_ovl2_800F9C30(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
     for (i = 0; i < gMPCollisionGeometry->yakumono_count; i++, line_info++)
     {
         line_data = &line_info->line_data[nMPLineKindRWall];
-        yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[line_info->yakumono_id];
+        yakumono_dobj = gMPCollisionYakumonoDObjs->dobjs[line_info->yakumono_id];
 
         if ((line_data->line_count != 0) && (yakumono_dobj->user_data.s < nMPYakumonoStatusOff))
         {
@@ -2985,7 +2985,7 @@ sb32 func_ovl2_800FA0A4(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
     for (i = 0; i < gMPCollisionGeometry->yakumono_count; i++, line_info++)
     {
         line_data = &line_info->line_data[nMPLineKindLWall];
-        yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[line_info->yakumono_id];
+        yakumono_dobj = gMPCollisionYakumonoDObjs->dobjs[line_info->yakumono_id];
 
         if ((line_data->line_count != 0) && (yakumono_dobj->user_data.s < nMPYakumonoStatusOff))
         {
@@ -3082,7 +3082,7 @@ s32 mpCollisionGetVertexCountLineID(s32 line_id)
             scManagerRunPrintGObjStatus();
         }
     }
-    yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[gMPCollisionVertexInfo->vertex_info[line_id].yakumono_id];
+    yakumono_dobj = gMPCollisionYakumonoDObjs->dobjs[gMPCollisionVertexInfo->vertex_info[line_id].yakumono_id];
 
     if (yakumono_dobj->user_data.s >= nMPYakumonoStatusOff)
     {
@@ -3108,7 +3108,7 @@ void mpCollisionGetVertexPositionID(s32 line_id, s32 vertex_id, Vec3f *pos)
             scManagerRunPrintGObjStatus();
         }
     }
-    yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[gMPCollisionVertexInfo->vertex_info[line_id].yakumono_id];
+    yakumono_dobj = gMPCollisionYakumonoDObjs->dobjs[gMPCollisionVertexInfo->vertex_info[line_id].yakumono_id];
 
     if (yakumono_dobj->user_data.s >= nMPYakumonoStatusOff)
     {
@@ -3122,7 +3122,7 @@ void mpCollisionGetVertexPositionID(s32 line_id, s32 vertex_id, Vec3f *pos)
     pos->y = gMPCollisionVertexData->vpos[gMPCollisionVertexIDs->vertex_id[gMPCollisionVertexLinks[line_id].vertex1 + vertex_id]].pos.y;
     pos->z = 0.0F;
 
-    yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[gMPCollisionVertexInfo->vertex_info[line_id].yakumono_id];
+    yakumono_dobj = gMPCollisionYakumonoDObjs->dobjs[gMPCollisionVertexInfo->vertex_info[line_id].yakumono_id];
 
     if ((yakumono_dobj->anim_joint.event32 != NULL) || (yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
     {
@@ -3146,7 +3146,7 @@ void mpCollisionGetSpeedLineID(s32 line_id, Vec3f *speed)
         }
     }
     yakumono_id = gMPCollisionVertexInfo->vertex_info[line_id].yakumono_id;
-    yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[yakumono_id];
+    yakumono_dobj = gMPCollisionYakumonoDObjs->dobjs[yakumono_id];
 
     if (yakumono_dobj->user_data.s >= nMPYakumonoStatusOff)
     {
@@ -3174,7 +3174,7 @@ s32 mpCollisionGetLineTypeID(s32 line_id)
         }
     }
     vertex_info = &gMPCollisionVertexInfo->vertex_info[line_id];
-    yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[vertex_info->yakumono_id];
+    yakumono_dobj = gMPCollisionYakumonoDObjs->dobjs[vertex_info->yakumono_id];
 
     if (yakumono_dobj->user_data.s == nMPYakumonoStatusOff)
     {
@@ -3202,7 +3202,7 @@ s32 mpCollisionGetEdgeUnderRLineID(s32 line_id)
         }
     }
     vertex_info = &gMPCollisionVertexInfo->vertex_info[line_id];
-    yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[vertex_info->yakumono_id];
+    yakumono_dobj = gMPCollisionYakumonoDObjs->dobjs[vertex_info->yakumono_id];
 
     if (yakumono_dobj->user_data.s >= nMPYakumonoStatusOff)
     {
@@ -3230,7 +3230,7 @@ s32 mpCollisionGetEdgeUnderLLineID(s32 line_id)
         }
     }
     vertex_info = &gMPCollisionVertexInfo->vertex_info[line_id];
-    yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[vertex_info->yakumono_id];
+    yakumono_dobj = gMPCollisionYakumonoDObjs->dobjs[vertex_info->yakumono_id];
 
     if (yakumono_dobj->user_data.s >= nMPYakumonoStatusOff)
     {
@@ -3258,7 +3258,7 @@ s32 mpCollisionGetEdgeUpperRLineID(s32 line_id)
         }
     }
     vertex_info = &gMPCollisionVertexInfo->vertex_info[line_id];
-    yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[vertex_info->yakumono_id];
+    yakumono_dobj = gMPCollisionYakumonoDObjs->dobjs[vertex_info->yakumono_id];
 
     if (yakumono_dobj->user_data.s >= nMPYakumonoStatusOff)
     {
@@ -3286,7 +3286,7 @@ s32 mpCollisionGetEdgeUpperLLineID(s32 line_id)
         }
     }
     vertex_info = &gMPCollisionVertexInfo->vertex_info[line_id];
-    yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[vertex_info->yakumono_id];
+    yakumono_dobj = gMPCollisionYakumonoDObjs->dobjs[vertex_info->yakumono_id];
 
     if (yakumono_dobj->user_data.s >= nMPYakumonoStatusOff)
     {
@@ -3314,7 +3314,7 @@ s32 mpCollisionGetEdgeRightULineID(s32 line_id)
         }
     }
     vertex_info = &gMPCollisionVertexInfo->vertex_info[line_id];
-    yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[vertex_info->yakumono_id];
+    yakumono_dobj = gMPCollisionYakumonoDObjs->dobjs[vertex_info->yakumono_id];
 
     if (yakumono_dobj->user_data.s >= nMPYakumonoStatusOff)
     {
@@ -3342,7 +3342,7 @@ s32 mpCollisionGetEdgeRightDLineID(s32 line_id)
         }
     }
     vertex_info = &gMPCollisionVertexInfo->vertex_info[line_id];
-    yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[vertex_info->yakumono_id];
+    yakumono_dobj = gMPCollisionYakumonoDObjs->dobjs[vertex_info->yakumono_id];
 
     if (yakumono_dobj->user_data.s >= nMPYakumonoStatusOff)
     {
@@ -3370,7 +3370,7 @@ s32 mpCollisionGetEdgeLeftULineID(s32 line_id)
         }
     }
     vertex_info = &gMPCollisionVertexInfo->vertex_info[line_id];
-    yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[vertex_info->yakumono_id];
+    yakumono_dobj = gMPCollisionYakumonoDObjs->dobjs[vertex_info->yakumono_id];
 
     if (yakumono_dobj->user_data.s >= nMPYakumonoStatusOff)
     {
@@ -3398,7 +3398,7 @@ s32 mpCollisionGetEdgeLeftDLineID(s32 line_id)
         }
     }
     vertex_info = &gMPCollisionVertexInfo->vertex_info[line_id];
-    yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[vertex_info->yakumono_id];
+    yakumono_dobj = gMPCollisionYakumonoDObjs->dobjs[vertex_info->yakumono_id];
 
     if (yakumono_dobj->user_data.s >= nMPYakumonoStatusOff)
     {
@@ -3623,25 +3623,25 @@ void mpCollisionAllocYakumono(DObjDesc *dobjdesc)
 }
 
 // 0x800FB808
-void func_ovl2_800FB808(void)
+void gMPCollisionUpdateBoundsCurrent(void)
 {
     s32 index;
-    MPDirection dir;
+    MPBounds bounds;
     MPLineData *line_data;
     MPLineInfo *line_info;
     DObj *yakumono_dobj;
     MPVertexLinks *vlinks;
     s32 i, j, k, l;
 
-    dir = gMPCollisionEdgeBounds.d1;
+    bounds = gMPCollisionBounds.stop;
 
     line_info = gMPCollisionGeometry->line_info;
 
     for (i = 0; i < gMPCollisionGeometry->yakumono_count; i++, line_info++)
     {
-        yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[line_info->yakumono_id];
+        yakumono_dobj = gMPCollisionYakumonoDObjs->dobjs[line_info->yakumono_id];
 
-        if ((yakumono_dobj->anim_joint.event32 != NULL) || (yakumono_dobj->user_data.s < nMPYakumonoStatusOff && yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
+        if ((yakumono_dobj->anim_joint.event32 != NULL) || (yakumono_dobj->user_data.s < nMPYakumonoStatusOff) && (yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
         {
             f32 x = yakumono_dobj->translate.vec.f.x, y = yakumono_dobj->translate.vec.f.y;
 
@@ -3658,47 +3658,47 @@ void func_ovl2_800FB808(void)
                         s32 vx = gMPCollisionVertexData->vpos[gMPCollisionVertexIDs->vertex_id[l]].pos.x + x;
                         s32 vy = gMPCollisionVertexData->vpos[gMPCollisionVertexIDs->vertex_id[l]].pos.y + y;
 
-                        if (dir.top < vy)
+                        if (bounds.top < vy)
                         {
-                            dir.top = vy;
+                            bounds.top = vy;
                         }
-                        else if (dir.bottom > vy)
+                        else if (bounds.bottom > vy)
                         {
-                            dir.bottom = vy;
+                            bounds.bottom = vy;
                         }
-                        if (dir.right < vx)
+                        if (bounds.right < vx)
                         {
-                            dir.right = vx;
+                            bounds.right = vx;
                         }
-                        else if (dir.left > vx)
+                        else if (bounds.left > vx)
                         {
-                            dir.left = vx;
+                            bounds.left = vx;
                         }
                     }
                 }
             }
         }
     }
-    gMPCollisionEdgeBounds.d2 = dir;
+    gMPCollisionBounds.current = bounds;
 }
 
 // 0x800FBA84
-void func_ovl2_800FBA84(void)
+void gMPCollisionUpdateBoundsDiff(void)
 {
-    gMPCollisionEdgeBounds.d3.top      =   gMPCollisionEdgeBounds.d2.top      -   gMPCollisionEdgeBounds.d0.top;
-    gMPCollisionEdgeBounds.d3.bottom   =   gMPCollisionEdgeBounds.d2.bottom   -   gMPCollisionEdgeBounds.d0.bottom;
-    gMPCollisionEdgeBounds.d3.right    =   gMPCollisionEdgeBounds.d2.right    -   gMPCollisionEdgeBounds.d0.right;
-    gMPCollisionEdgeBounds.d3.left     =   gMPCollisionEdgeBounds.d2.left     -   gMPCollisionEdgeBounds.d0.left;
+    gMPCollisionBounds.diff.top    = gMPCollisionBounds.current.top    - gMPCollisionBounds.start.top;
+    gMPCollisionBounds.diff.bottom = gMPCollisionBounds.current.bottom - gMPCollisionBounds.start.bottom;
+    gMPCollisionBounds.diff.right  = gMPCollisionBounds.current.right  - gMPCollisionBounds.start.right;
+    gMPCollisionBounds.diff.left   = gMPCollisionBounds.current.left   - gMPCollisionBounds.start.left;
 }
 
 // 0x800FBAD0
-void func_ovl2_800FBAD0(GObj *ground_gobj)
+void mpCollisionPlayYakumonoAnim(GObj *ground_gobj)
 {
     DObj *dobj;
     MObj *mobj;
     s32 i;
     Vec3f translate;
-    u8 temp_s2;
+    u8 flags;
 
     dobj = DObjGetStruct(ground_gobj);
 
@@ -3706,11 +3706,11 @@ void func_ovl2_800FBAD0(GObj *ground_gobj)
 
     while (dobj != NULL)
     {
-        if (dobj == gMPCollisionYakumonoDObjs->yakumono_dobj[i])
+        if (dobj == gMPCollisionYakumonoDObjs->dobjs[i])
         {
             if ((dobj->user_data.s != nMPYakumonoStatusOn) && (dobj->user_data.s != nMPYakumonoStatusOff))
             {
-                temp_s2 = dobj->flags;
+                flags = dobj->flags;
 
                 gcParseDObjAnimJoint(dobj);
 
@@ -3722,16 +3722,16 @@ void func_ovl2_800FBAD0(GObj *ground_gobj)
                 gMPCollisionDynamics[i].y = dobj->translate.vec.f.y - translate.y;
                 gMPCollisionDynamics[i].z = dobj->translate.vec.f.z - translate.z;
 
-                if (temp_s2 == 0)
+                if (flags == DOBJ_FLAG_NONE)
                 {
-                    if (dobj->flags != 0)
+                    if (dobj->flags != DOBJ_FLAG_NONE)
                     {
-                        dobj->user_data.s = nMPYakumonoStatusUnk4;
+                        dobj->user_data.s = nMPYakumonoStatusHidden;
                     }
                 }
-                else if (dobj->flags == 0)
+                else if (dobj->flags == DOBJ_FLAG_NONE)
                 {
-                    dobj->user_data.s = nMPYakumonoStatusUnk2;
+                    dobj->user_data.s = nMPYakumonoStatusShow;
                 }
             }
             if (i < (gMPCollisionYakumonosNum - 1))
@@ -3783,26 +3783,25 @@ void func_ovl2_800FBAD0(GObj *ground_gobj)
             }
         }
     }
-
-    func_ovl2_800FB808();
-    func_ovl2_800FBA84();
+    gMPCollisionUpdateBoundsCurrent();
+    gMPCollisionUpdateBoundsDiff();
 
     gMPCollisionUpdateTic++;
 }
 
 // 0x800FBCF8
-void mpCollisionAdvanceUpdateFrame(GObj *ground_gobj)
+void mpCollisionAdvanceUpdateTic(GObj *ground_gobj)
 {
     gMPCollisionUpdateTic++;
 }
 
 // 0x800FBD14
-void func_ovl2_800FBD14(void)
+void mpCollisionInitYakumonoAll(void)
 {
     s32 index;
     DObj *yakumono_dobj;
-    MPDirection dir1;
-    MPDirection dir2;
+    MPBounds bounds_moved;
+    MPBounds bounds_static;
     s32 vx;
     s32 vy;
     f32 tx;
@@ -3815,18 +3814,19 @@ void func_ovl2_800FBD14(void)
 
     line_info = gMPCollisionGeometry->line_info;
 
-    dir1.top = -65536.0F;
-    dir1.right = -65536.0F;
-    dir2.top = -65536.0F;
-    dir2.right = -65536.0F;
-    dir2.left = 65536.0F;
-    dir2.bottom = 65536.0F;
-    dir1.left = 65536.0F;
-    dir1.bottom = 65536.0F;
+    bounds_moved.top = -65536.0F;
+    bounds_moved.right = -65536.0F;
+    bounds_static.top = -65536.0F;
+    bounds_static.right = -65536.0F;
+
+    bounds_static.left = 65536.0F;
+    bounds_static.bottom = 65536.0F;
+    bounds_moved.left = 65536.0F;
+    bounds_moved.bottom = 65536.0F;
 
     for (i = 0; i < gMPCollisionGeometry->yakumono_count; i++, line_info++)
     {
-        yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[line_info->yakumono_id];
+        yakumono_dobj = gMPCollisionYakumonoDObjs->dobjs[line_info->yakumono_id];
 
         if ((yakumono_dobj->user_data.s != nMPYakumonoStatusOn) && (yakumono_dobj->user_data.s != nMPYakumonoStatusOff))
         {
@@ -3855,41 +3855,41 @@ void func_ovl2_800FBD14(void)
 
                         if (yakumono_dobj->anim_joint.event32 == NULL)
                         {
-                            if (dir2.top < vy)
+                            if (bounds_static.top < vy)
                             {
-                                dir2.top = vy;
+                                bounds_static.top = vy;
                             }
-                            if (dir2.bottom > vy)
+                            if (bounds_static.bottom > vy)
                             {
-                                dir2.bottom = vy;
+                                bounds_static.bottom = vy;
                             }
-                            if (dir2.right < vx)
+                            if (bounds_static.right < vx)
                             {
-                                dir2.right = vx;
+                                bounds_static.right = vx;
                             }
-                            if (dir2.left > vx)
+                            if (bounds_static.left > vx)
                             {
-                                dir2.left = vx;
+                                bounds_static.left = vx;
                             }
                         }
                         vx += tx;
                         vy += ty;
 
-                        if (dir1.top < vy)
+                        if (bounds_moved.top < vy)
                         {
-                            dir1.top = vy;
+                            bounds_moved.top = vy;
                         }
-                        if (dir1.bottom > vy)
+                        if (bounds_moved.bottom > vy)
                         {
-                            dir1.bottom = vy;
+                            bounds_moved.bottom = vy;
                         }
-                        if (dir1.right < vx)
+                        if (bounds_moved.right < vx)
                         {
-                            dir1.right = vx;
+                            bounds_moved.right = vx;
                         }
-                        if (dir1.left > vx)
+                        if (bounds_moved.left > vx)
                         {
-                            dir1.left = vx;
+                            bounds_moved.left = vx;
                         }
                     }
                 }
@@ -3898,10 +3898,10 @@ void func_ovl2_800FBD14(void)
     }
     // Slight WARNING: not sure about this. The member names in the struct don't seem to correspond to their suggested purpose...
     // ...or I just don't understand what is going on. Or both.
-    gMPCollisionEdgeBounds.d0 = dir1;
-    gMPCollisionEdgeBounds.d1 = dir2;
-    gMPCollisionEdgeBounds.d2 = dir1;
-    gMPCollisionEdgeBounds.d3.top = gMPCollisionEdgeBounds.d3.bottom = gMPCollisionEdgeBounds.d3.right = gMPCollisionEdgeBounds.d3.left = 0.0F;
+    gMPCollisionBounds.start = bounds_moved;
+    gMPCollisionBounds.stop = bounds_static;
+    gMPCollisionBounds.current = bounds_moved;
+    gMPCollisionBounds.diff.top = gMPCollisionBounds.diff.bottom = gMPCollisionBounds.diff.right = gMPCollisionBounds.diff.left = 0.0F;
 }
 
 // 0x800FC09C
@@ -3936,7 +3936,7 @@ s32 mpCollisionAllocLinesGetCountTotal(void)
 
         if (line_count[i] != 0)
         {
-            gMPCollisionLineGroups[i].line_id = (u16*) syTaskmanMalloc(line_count[i] * sizeof(*gMPCollisionLineGroups[i].line_id), sizeof(*gMPCollisionLineGroups[i].line_id));
+            gMPCollisionLineGroups[i].line_id = (u16*) syTaskmanMalloc(line_count[i] * sizeof(*gMPCollisionLineGroups[i].line_id), 0x2);
         }
     }
     return line_total;
@@ -4048,7 +4048,7 @@ void mpCollisionClearYakumonoAll(void)
 
     for (i = 0; dobjdesc->id != DOBJ_ARRAY_MAX; i++, dobjdesc++)
     {
-        gMPCollisionYakumonoDObjs->yakumono_dobj[i]->user_data.s = nMPYakumonoStatusNone;
+        gMPCollisionYakumonoDObjs->dobjs[i]->user_data.s = nMPYakumonoStatusNone;
     }
     gMPCollisionUpdateTic = 0;
 }
@@ -4066,7 +4066,7 @@ void mpCollisionSetYakumonoPosID(s32 line_id, Vec3f *yakumono_pos)
             scManagerRunPrintGObjStatus();
         }
     }
-    yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[line_id];
+    yakumono_dobj = gMPCollisionYakumonoDObjs->dobjs[line_id];
 
     gMPCollisionDynamics[line_id].x = yakumono_pos->x - yakumono_dobj->translate.vec.f.x;
     gMPCollisionDynamics[line_id].y = yakumono_pos->y - yakumono_dobj->translate.vec.f.y;
@@ -4088,7 +4088,7 @@ void mpCollisionSetYakumonoOnID(s32 line_id)
             scManagerRunPrintGObjStatus();
         }
     }
-    gMPCollisionYakumonoDObjs->yakumono_dobj[line_id]->user_data.s = nMPYakumonoStatusOn;
+    gMPCollisionYakumonoDObjs->dobjs[line_id]->user_data.s = nMPYakumonoStatusOn;
 }
 
 // 0x800FC604
@@ -4102,7 +4102,7 @@ void mpCollisionSetYakumonoOffID(s32 line_id)
             scManagerRunPrintGObjStatus();
         }
     }
-    gMPCollisionYakumonoDObjs->yakumono_dobj[line_id]->user_data.s = nMPYakumonoStatusOff;
+    gMPCollisionYakumonoDObjs->dobjs[line_id]->user_data.s = nMPYakumonoStatusOff;
 }
 
 // 0x800FC67C
@@ -4120,7 +4120,7 @@ sb32 mpCollisionCheckExistLineID(s32 line_id)
     {
         return FALSE;
     }
-    if (gMPCollisionYakumonoDObjs->yakumono_dobj[gMPCollisionVertexInfo->vertex_info[line_id].yakumono_id]->user_data.s < nMPYakumonoStatusOff)
+    if (gMPCollisionYakumonoDObjs->dobjs[gMPCollisionVertexInfo->vertex_info[line_id].yakumono_id]->user_data.s < nMPYakumonoStatusOff)
     {
         return TRUE;
     }
@@ -4225,7 +4225,7 @@ sb32 mpCollisionCheckExistPlatformLineID(s32 line_id)
             scManagerRunPrintGObjStatus();
         }
     }
-    yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[gMPCollisionVertexInfo->vertex_info[line_id].yakumono_id];
+    yakumono_dobj = gMPCollisionYakumonoDObjs->dobjs[gMPCollisionVertexInfo->vertex_info[line_id].yakumono_id];
 
     if ((yakumono_dobj->user_data.s != nMPYakumonoStatusNone) || (yakumono_dobj->anim_joint.event32 != NULL))
     {

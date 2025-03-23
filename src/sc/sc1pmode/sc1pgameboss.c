@@ -645,10 +645,10 @@ void func_ovl65_80191B44(GObj *gobj)
     sw = 0;
     angle = (syUtilsGetRandomIntRange(2) * 30) + 30;
 
-    lr = ABS(gMPCollisionEdgeBounds.d2.left - 2000.0F) + ABS(gMPCollisionEdgeBounds.d2.right + 2000.0F);
+    lr = ABS(gMPCollisionBounds.current.left - 2000.0F) + ABS(gMPCollisionBounds.current.right + 2000.0F);
     bt = ABS(gMPCollisionGroundData->map_bound_top - 2000.0F) + ABS(gMPCollisionGroundData->map_bound_bottom + 2000.0F);
 
-    dobj->translate.vec.f.x = (syUtilsGetRandomFloat() * lr) + (gMPCollisionEdgeBounds.d2.left - 2000.0F);
+    dobj->translate.vec.f.x = (syUtilsGetRandomFloat() * lr) + (gMPCollisionBounds.current.left - 2000.0F);
     dobj->translate.vec.f.y = (syUtilsGetRandomFloat() * bt) + (gMPCollisionGroundData->map_bound_bottom + 2000.0F);
 
     if (dobj->translate.vec.f.x < 0.0F)

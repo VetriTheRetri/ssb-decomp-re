@@ -104,14 +104,14 @@ void grYamabukiGateMakeMonster(void)
 void grYamabukiGateSetPositionFar(void)
 {
     gGRCommonStruct.yamabuki.gate_pos.x = 1600.0F;
-    gGRCommonStruct.yamabuki.gate_pos.y = gMPCollisionYakumonoDObjs->yakumono_dobj[3]->translate.vec.f.y;
+    gGRCommonStruct.yamabuki.gate_pos.y = gMPCollisionYakumonoDObjs->dobjs[3]->translate.vec.f.y;
 }
 
 // 0x8010AE68
 void grYamabukiGateSetPositionNear(void)
 {
     gGRCommonStruct.yamabuki.gate_pos.x = 960.0F;
-    gGRCommonStruct.yamabuki.gate_pos.y = gMPCollisionYakumonoDObjs->yakumono_dobj[3]->translate.vec.f.y;
+    gGRCommonStruct.yamabuki.gate_pos.y = gMPCollisionYakumonoDObjs->dobjs[3]->translate.vec.f.y;
 }
 
 // 0x8010AE94
@@ -182,7 +182,7 @@ void grYamabukiGateUpdateOpen(void)
         ITStruct *ip = itGetStruct(gGRCommonStruct.yamabuki.monster_gobj);
 
         gGRCommonStruct.yamabuki.gate_pos.x = DObjGetStruct(gGRCommonStruct.yamabuki.monster_gobj)->translate.vec.f.x - ip->coll_data.map_coll.width;
-        gGRCommonStruct.yamabuki.gate_pos.y = gMPCollisionYakumonoDObjs->yakumono_dobj[3]->translate.vec.f.y;
+        gGRCommonStruct.yamabuki.gate_pos.y = gMPCollisionYakumonoDObjs->dobjs[3]->translate.vec.f.y;
 
         if (gGRCommonStruct.yamabuki.gate_pos.x < 960.0F)
         {

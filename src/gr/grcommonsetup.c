@@ -20,16 +20,16 @@ GRStruct gGRCommonStruct;
 // // // // // // // // // // // //
 
 // 0x80105600
-void grCommonSetupInitAll(void) // New file
+void grCommonSetupInitAll(void)
 {
     gGRCommonLayerGObjs[0] = grDisplayMakeGeometryLayer(&gMPCollisionGroundData->gr_desc[0], 0, NULL);
-    gGRCommonLayerGObjs[1] = grDisplayMakeGeometryLayer(&gMPCollisionGroundData->gr_desc[1], 1, gMPCollisionYakumonoDObjs->yakumono_dobj);
+    gGRCommonLayerGObjs[1] = grDisplayMakeGeometryLayer(&gMPCollisionGroundData->gr_desc[1], 1, gMPCollisionYakumonoDObjs->dobjs);
     gGRCommonLayerGObjs[2] = grDisplayMakeGeometryLayer(&gMPCollisionGroundData->gr_desc[2], 2, NULL);
     gGRCommonLayerGObjs[3] = grDisplayMakeGeometryLayer(&gMPCollisionGroundData->gr_desc[3], 3, NULL);
 
     mpCollisionClearYakumonoAll();
     grMainSetupMakeGround();
-    func_ovl2_800FBD14();
+    mpCollisionInitYakumonoAll();
     itManagerMakeSpawnActor();
-    efGroundMakeEffectSpawnActor();
+    efGroundMakeSpawnActor();
 }

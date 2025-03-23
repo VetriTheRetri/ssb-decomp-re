@@ -244,7 +244,7 @@ void grYosterInitAll(void)
         gcAddAnimJointAll(map_gobj, (uintptr_t)map_head + (intptr_t)&D_NF_000001E0, 0);
 
         coll_dobj = DObjGetStruct(map_gobj);
-        coll_dobj->translate.vec.f = gMPCollisionYakumonoDObjs->yakumono_dobj[dGRYosterCloudLineIDs[i]]->translate.vec.f;
+        coll_dobj->translate.vec.f = gMPCollisionYakumonoDObjs->dobjs[dGRYosterCloudLineIDs[i]]->translate.vec.f;
 
         gGRCommonStruct.yoster.clouds[i].altitude = coll_dobj->translate.vec.f.y;
 

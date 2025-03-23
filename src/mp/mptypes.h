@@ -82,7 +82,7 @@ struct MPVertexLinksContainer
 
 struct MPYakumonoDObj
 {
-	DObj *yakumono_dobj[1];
+	DObj *dobjs[1];
 };
 
 struct MPMapObjData
@@ -96,21 +96,22 @@ struct MPMapObjContainer
 	MPMapObjData mapobjs[1];
 };
 
-struct MPLineGroup // This is all getting hard to wrap one's head around, but
-				   // this is basically a group of line types (ground, ceil,
-				   // rwall, lwall)
+struct MPLineGroup // This is all getting hard to wrap one's head around, but this is a group of line types (ground, ceil, rwall, lwall)
 {
 	u16 line_count, *line_id;
 };
 
-struct MPDirection
+struct MPBounds
 {
 	f32 top, bottom, right, left;
 };
 
-struct MPEdgeBounds
+struct MPAllBounds
 {
-	MPDirection d0, d1, d2, d3;
+	MPBounds start;					// Initial bounds of farthest moving (or active?) vertex in each direction
+	MPBounds stop;					// Static bounds of farthest vertex in each direction
+	MPBounds current;				// Current bounds of farthest vertex in each direction
+	MPBounds diff;					// Difference between 'current' and 'start'
 };
 
 struct MPObjectColl

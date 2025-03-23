@@ -22,7 +22,7 @@ GRDisplayDesc dGRDisplayDescs[/* */] =
         grDisplayLayer1PriProcDisplay,
         grDisplayLayer1SecProcDisplay,
         6,
-        func_ovl2_800FBAD0
+        mpCollisionPlayYakumonoAnim
     },
 
     // Layer 2
@@ -211,7 +211,7 @@ GObj* grDisplayMakeGeometryLayer(MPGroundDesc *gr_desc, s32 gr_desc_id, DObj **d
     }
     else if (gr_desc_id == 1)
     {
-        gcAddGObjProcess(ground_gobj, mpCollisionAdvanceUpdateFrame, nGCProcessKindFunc, 4);
+        gcAddGObjProcess(ground_gobj, mpCollisionAdvanceUpdateTic, nGCProcessKindFunc, 4);
     }
     grDisplayDObjSetNoAnimMtx(ground_gobj, gr_desc->dobjdesc);
 

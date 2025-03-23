@@ -6,9 +6,8 @@
 
 extern f32 dMPCollisionMaterialFrictions[/* */];
 
-extern MPGroundData* gMPCollisionGroundData; // TO DO: move this to the correct file (is this the correct
-								  // file? NO, this is Patrick!)
-extern MPEdgeBounds gMPCollisionEdgeBounds;
+extern MPGroundData *gMPCollisionGroundData;
+extern MPAllBounds gMPCollisionBounds;
 extern MPYakumonoDObj *gMPCollisionYakumonoDObjs;
 extern MPLineGroup gMPCollisionLineGroups[/* */];
 extern MPGeometryData *gMPCollisionGeometry;

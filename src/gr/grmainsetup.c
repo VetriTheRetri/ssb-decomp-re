@@ -28,7 +28,7 @@ GObj* (*dGRMainSetupProcMakeList[/* */])(void) =
 // // // // // // // // // // // //
 
 // 0x801056C0
-void grMainSetupMakeGround(void) // New file
+void grMainSetupMakeGround(void)
 {
     if (gSCManagerBattleState->gkind <= nGRKindBattleEnd)
     {

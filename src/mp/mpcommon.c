@@ -429,8 +429,8 @@ void mpCommonSetFighterLandingParams(GObj *fighter_gobj)
         {
             if 
             (
-                (fp->joints[nFTPartsJointTopN]->translate.vec.f.x < (gMPCollisionEdgeBounds.d2.left + 450.0F)) || 
-                (fp->joints[nFTPartsJointTopN]->translate.vec.f.x > (gMPCollisionEdgeBounds.d2.right - 450.0F))
+                (fp->joints[nFTPartsJointTopN]->translate.vec.f.x < (gMPCollisionBounds.current.left + 450.0F)) || 
+                (fp->joints[nFTPartsJointTopN]->translate.vec.f.x > (gMPCollisionBounds.current.right - 450.0F))
             )
             {
                 ftPublicPlayCliffReact(fighter_gobj, fp->public_knockback);

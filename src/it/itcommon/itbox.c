@@ -229,12 +229,12 @@ void itBoxContainerSmashMakeEffect(Vec3f *pos)
 // 0x80179424
 sb32 itBoxCommonCheckSpawnItems(GObj *item_gobj)
 {
-    s32 random, spawn_item_num, index;
+    s32 random, spawn_item_num, kind;
     s32 i, j;
     Vec2f *spawn_pos;
     Vec3f vel_identical;
     s32 unused;
-    s32 bak;
+    s32 weights_sum;
     s32 item_count;
     Vec3f vel_different;
 
@@ -244,9 +244,9 @@ sb32 itBoxCommonCheckSpawnItems(GObj *item_gobj)
 
     if (gITManagerRandomWeights.weights_sum != 0)
     {
-        index = itMainGetWeightedItemKind(&gITManagerRandomWeights);
+        kind = itMainGetWeightedItemKind(&gITManagerRandomWeights);
 
-        if (index <= nITKindCommonEnd)
+        if (kind <= nITKindCommonEnd)
         {
             random = syUtilsGetRandomIntRange(5);
 
@@ -277,12 +277,12 @@ sb32 itBoxCommonCheckSpawnItems(GObj *item_gobj)
                     vel_identical.x = spawn_pos[i].x;
                     vel_identical.y = spawn_pos[i].y;
 
-                    itManagerMakeItemSetupCommon(item_gobj, index, &DObjGetStruct(item_gobj)->translate.vec.f, &vel_identical, (ITEM_FLAG_COLLPROJECT | ITEM_FLAG_PARENT_ITEM));
+                    itManagerMakeItemSetupCommon(item_gobj, kind, &DObjGetStruct(item_gobj)->translate.vec.f, &vel_identical, (ITEM_FLAG_COLLPROJECT | ITEM_FLAG_PARENT_ITEM));
                 }
             }
             else
             {
-                bak = gITManagerRandomWeights.weights_sum;
+                weights_sum = gITManagerRandomWeights.weights_sum;
                 item_count = gITManagerRandomWeights.valids_num - 1;
 
                 gITManagerRandomWeights.weights_sum = gITManagerRandomWeights.blocks[item_count];
@@ -294,15 +294,15 @@ sb32 itBoxCommonCheckSpawnItems(GObj *item_gobj)
                 {
                     if (j != 0)
                     {
-                        index = itMainGetWeightedItemKind(&gITManagerRandomWeights);
+                        kind = itMainGetWeightedItemKind(&gITManagerRandomWeights);
                     }
                     vel_different.x = spawn_pos[j].x;
                     vel_different.y = spawn_pos[j].y;
 
-                    itManagerMakeItemSetupCommon(item_gobj, index, &DObjGetStruct(item_gobj)->translate.vec.f, &vel_different, (ITEM_FLAG_COLLPROJECT | ITEM_FLAG_PARENT_ITEM));
+                    itManagerMakeItemSetupCommon(item_gobj, kind, &DObjGetStruct(item_gobj)->translate.vec.f, &vel_different, (ITEM_FLAG_COLLPROJECT | ITEM_FLAG_PARENT_ITEM));
                 }
                 gITManagerRandomWeights.valids_num++;
-                gITManagerRandomWeights.weights_sum = bak;
+                gITManagerRandomWeights.weights_sum = weights_sum;
             }
             func_800269C0_275C0(nSYAudioFGMFireFlowerShoot);
 

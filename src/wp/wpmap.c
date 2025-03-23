@@ -7,9 +7,9 @@
 // // // // // // // // // // // //
 
 // 0x80167880
-sb32 wpMapProcLRWallCheckGround(MPCollData *coll_data, GObj *weapon_gobj, u32 flags)
+sb32 wpMapProcLRWallCheckFloor(MPCollData *coll_data, GObj *weapon_gobj, u32 flags)
 {
-    s32 ground_line_id = coll_data->ground_line_id;
+    s32 floor_line_id = coll_data->floor_line_id;
     sb32 is_collide_ground = FALSE;
 
     if (mpProcessCheckTestLWallCollision(coll_data) != FALSE)
@@ -35,7 +35,7 @@ sb32 wpMapProcLRWallCheckGround(MPCollData *coll_data, GObj *weapon_gobj, u32 fl
     }
     else coll_data->is_coll_end = TRUE;
     
-    if (mpProcessCheckTestGroundCollision(coll_data, ground_line_id) != FALSE)
+    if (mpProcessCheckTestGroundCollision(coll_data, floor_line_id) != FALSE)
     {
         func_ovl2_800DD59C(coll_data);
 
@@ -51,9 +51,9 @@ sb32 wpMapProcLRWallCheckGround(MPCollData *coll_data, GObj *weapon_gobj, u32 fl
 }
 
 // 0x8016796C
-sb32 wpMapTestLRWallCheckGround(GObj *weapon_gobj)
+sb32 wpMapTestLRWallCheckFloor(GObj *weapon_gobj)
 {
-    return mpProcessUpdateMapProcMain(&wpGetStruct(weapon_gobj)->coll_data, wpMapProcLRWallCheckGround, weapon_gobj, 0);
+    return mpProcessUpdateMapProcMain(&wpGetStruct(weapon_gobj)->coll_data, wpMapProcLRWallCheckFloor, weapon_gobj, 0);
 }
 
 // 0x801679A0
@@ -95,7 +95,7 @@ sb32 wpMapTestAll(GObj *weapon_gobj)
 }
 
 // 0x80167A8C
-sb32 wpMapProcAllCheckGround(MPCollData *coll_data, GObj *weapon_gobj, u32 flags)
+sb32 wpMapProcAllCheckFloor(MPCollData *coll_data, GObj *weapon_gobj, u32 flags)
 {
     if (mpProcessCheckTestLWallCollisionAdjNew(coll_data) != FALSE)
     {
@@ -131,9 +131,9 @@ sb32 wpMapProcAllCheckGround(MPCollData *coll_data, GObj *weapon_gobj, u32 flags
 }
 
 // 0x80167B58
-sb32 wpMapTestAllCheckGround(GObj *weapon_gobj)
+sb32 wpMapTestAllCheckFloor(GObj *weapon_gobj)
 {
-    return mpProcessUpdateMapProcMain(&wpGetStruct(weapon_gobj)->coll_data, wpMapProcAllCheckGround, weapon_gobj, 0);
+    return mpProcessUpdateMapProcMain(&wpGetStruct(weapon_gobj)->coll_data, wpMapProcAllCheckFloor, weapon_gobj, 0);
 }
 
 // 0x80167B8C
@@ -212,11 +212,11 @@ sb32 wpMapCheckAllRebound(GObj *weapon_gobj, u32 check_flags, f32 mod_vel, Vec3f
     }
     if (coll_flags & check_flags & MPCOLL_FLAG_GROUND)
     {
-        if (lbCommonSim2D(&wp->physics.vel_air, &coll_data->ground_angle) < 0.0F)
+        if (lbCommonSim2D(&wp->physics.vel_air, &coll_data->floor_angle) < 0.0F)
         {
             return_bool = TRUE;
 
-            lbCommonReflect2D(&wp->physics.vel_air, &coll_data->ground_angle);
+            lbCommonReflect2D(&wp->physics.vel_air, &coll_data->floor_angle);
 
             mod_pos.x = translate->x;
             mod_pos.y = translate->y + coll_data->map_coll.bottom;

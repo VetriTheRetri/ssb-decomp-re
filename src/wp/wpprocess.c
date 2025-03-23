@@ -150,12 +150,12 @@ void wpProcessProcWeaponMain(GObj *weapon_gobj) // Run item logic pass 1 (animat
         if
         (
             (wp->ga == nMPKineticsGround) &&
-            (wp->coll_data.ground_line_id != -1) &&
-            (wp->coll_data.ground_line_id != -2) &&
-            (mpCollisionCheckExistLineID(wp->coll_data.ground_line_id) != FALSE)
+            (wp->coll_data.floor_line_id != -1) &&
+            (wp->coll_data.floor_line_id != -2) &&
+            (mpCollisionCheckExistLineID(wp->coll_data.floor_line_id) != FALSE)
         )
         {
-            mpCollisionGetSpeedLineID(wp->coll_data.ground_line_id, &wp->coll_data.pos_speed);
+            mpCollisionGetSpeedLineID(wp->coll_data.floor_line_id, &wp->coll_data.pos_speed);
 
             translate->x += wp->coll_data.pos_speed.x;
             translate->y += wp->coll_data.pos_speed.y;

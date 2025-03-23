@@ -70,11 +70,11 @@ loop: // This makes no sense
     ifCommonPlayerDamageStopBreakAnim(this_fp);
     mpCommonSetFighterGround(this_fp);
 
-    this_fp->coll_data.ground_line_id = -2;
-    this_fp->coll_data.ground_flags = MPCOLL_VERTEX_CLL_PASS;
-    this_fp->coll_data.ground_angle.y = 1.0F;
-    this_fp->coll_data.ground_angle.x = 0.0F;
-    this_fp->coll_data.ground_angle.z = 0.0F;
+    this_fp->coll_data.floor_line_id = -2;
+    this_fp->coll_data.floor_flags = MPCOLL_VERTEX_CLL_PASS;
+    this_fp->coll_data.floor_angle.y = 1.0F;
+    this_fp->coll_data.floor_angle.x = 0.0F;
+    this_fp->coll_data.floor_angle.z = 0.0F;
 
     ftMainSetStatus(this_gobj, nFTCommonStatusRebirthDown, 100.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(this_gobj);

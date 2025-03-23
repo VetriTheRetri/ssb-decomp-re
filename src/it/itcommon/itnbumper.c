@@ -344,14 +344,14 @@ void itNBumperAttachedSetModelPitch(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
     s32 unused;
-    Vec3f ground_angle;
+    Vec3f floor_angle;
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    ground_angle = ip->coll_data.ground_angle;
+    floor_angle = ip->coll_data.floor_angle;
 
-    ip->attach_line_id = ip->coll_data.ground_line_id;
+    ip->attach_line_id = ip->coll_data.floor_line_id;
 
-    dobj->rotate.vec.f.z = syUtilsArcTan2(ground_angle.y, ground_angle.x) - F_CLC_DTOR32(90.0F);
+    dobj->rotate.vec.f.z = syUtilsArcTan2(floor_angle.y, floor_angle.x) - F_CLC_DTOR32(90.0F);
 }
 
 // 0x8017B8DC
@@ -429,11 +429,11 @@ sb32 itNBumperAttachedProcUpdate(GObj *item_gobj)
     }
     else ip->item_vars.bumper.hit_anim_length--;
 
-    if (mpCollisionCheckExistLineID(ip->coll_data.ground_line_id) != FALSE)
+    if (mpCollisionCheckExistLineID(ip->coll_data.floor_line_id) != FALSE)
     {
         if (ip->lr == -1)
         {
-            mpCollisionGetLREdgeUpperL(ip->coll_data.ground_line_id, &edge_pos);
+            mpCollisionGetFloorEdgeL(ip->coll_data.floor_line_id, &edge_pos);
 
             if (edge_pos.x >= (dobj->translate.vec.f.x - attr->map_coll_width))
             {
@@ -442,7 +442,7 @@ sb32 itNBumperAttachedProcUpdate(GObj *item_gobj)
         }
         else
         {
-            mpCollisionGetLREdgeUpperR(ip->coll_data.ground_line_id, &edge_pos);
+            mpCollisionGetFloorEdgeR(ip->coll_data.floor_line_id, &edge_pos);
 
             if (edge_pos.x <= (dobj->translate.vec.f.x + attr->map_coll_width))
             {

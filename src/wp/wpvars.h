@@ -265,7 +265,7 @@ typedef struct wpStarRodWeaponVarsStar // Star Rod projectile
 typedef struct wpIwarkWeaponVarsRock
 {
 	s32 unk_0x0; // Unused?
-	s32 ground_line_id;
+	s32 floor_line_id;
 	s32 unk_0x8; // Unused?
 	s32 unk_0xC; // Set but never used?
 	GObj* owner_gobj;

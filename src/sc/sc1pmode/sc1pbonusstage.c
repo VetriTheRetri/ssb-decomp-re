@@ -521,8 +521,8 @@ s32 sc1PBonusStageGetPlatformKind(s32 line_id)
 	Vec3f pos_left;
 	Vec3f pos_right;
 
-	mpCollisionGetLREdgeUpperL(line_id, &pos_left);
-	mpCollisionGetLREdgeUpperR(line_id, &pos_right);
+	mpCollisionGetFloorEdgeL(line_id, &pos_left);
+	mpCollisionGetFloorEdgeR(line_id, &pos_right);
 
 	if ((pos_right.x - pos_left.x) <= 750.0F)
 	{
@@ -576,9 +576,9 @@ void sc1PBonusStageMakePlatforms(void)
 	s32 yakumono_id;
 	s32 i;
 
-	line_count = mpCollisionGetLineCountType(nMPLineKindGround);
+	line_count = mpCollisionGetLineCountType(nMPLineKindFloor);
 	gGRCommonStruct.bonus2.platform_count = 0;
-	mpCollisionGetLineIDsTypeCount(nMPLineKindGround, line_count, line_ids);
+	mpCollisionGetLineIDsTypeCount(nMPLineKindFloor, line_count, line_ids);
 
 	for (i = 0; i < line_count; i++)
 	{
@@ -665,9 +665,9 @@ void sc1PBonusStageBonus2ProcUpdate(GObj *ground_gobj)
 	{
 		FTStruct *fp = ftGetStruct(fighter_gobj);
 
-		if ((fp->ga == nMPKineticsGround) && ((fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK) == nMPMaterialDetect))
+		if ((fp->ga == nMPKineticsGround) && ((fp->coll_data.floor_flags & MPCOLL_VERTEX_MAT_MASK) == nMPMaterialDetect))
 		{
-			DObj *dobj = gMPCollisionYakumonoDObjs->dobjs[mpCollisionSetDObjNoID(fp->coll_data.ground_line_id)];
+			DObj *dobj = gMPCollisionYakumonoDObjs->dobjs[mpCollisionSetDObjNoID(fp->coll_data.floor_line_id)];
 
 			if (dobj->child->user_data.s != nMPYakumonoStatusNone)
 			{
@@ -782,9 +782,9 @@ void sc1PBonusStageInitCamera(void)
 		}
 		if (gSCManagerBattleState->gkind >= nGRKindBonus2Start)
 		{
-			func_ovl2_8010CFA8(gSCManagerBattleState->players[player].fighter_gobj, 0.0F, F_CLC_DTOR32(-15.0F), 9000.0F, 0.3F, 31.5F);
+			gmCameraSetStatusPlayerFollow(gSCManagerBattleState->players[player].fighter_gobj, 0.0F, F_CLC_DTOR32(-15.0F), 9000.0F, 0.3F, 31.5F);
 		}
-		else func_ovl2_8010CFA8(gSCManagerBattleState->players[player].fighter_gobj, 0.0F, F_CLC_DTOR32(-9.0F), 9000.0F, 0.3F, 31.5F);
+		else gmCameraSetStatusPlayerFollow(gSCManagerBattleState->players[player].fighter_gobj, 0.0F, F_CLC_DTOR32(-9.0F), 9000.0F, 0.3F, 31.5F);
 
 		break;
 	}

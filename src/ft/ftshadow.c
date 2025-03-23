@@ -69,7 +69,7 @@ void ftShadowProcDisplay(GObj *shadow_gobj)
     Vtx *sv;
     GObj *fighter_gobj;
     s32 i;
-    s32 ground_line_id;
+    s32 floor_line_id;
     Vec3f vertex_pos0;
     Vec3f vertex_pos1;
     f32 shadow_calc_left;
@@ -110,15 +110,15 @@ void ftShadowProcDisplay(GObj *shadow_gobj)
 
         if (fp->ga == nMPKineticsGround)
         {
-            ground_line_id = fp->coll_data.ground_line_id;
+            floor_line_id = fp->coll_data.floor_line_id;
 
             ga_dist = 0;
         }
-        else if (func_ovl2_800F9348(&DObjGetStruct(fighter_gobj)->translate.vec.f, &ground_line_id, &ga_dist, NULL, NULL) == FALSE)
+        else if (func_ovl2_800F9348(&DObjGetStruct(fighter_gobj)->translate.vec.f, &floor_line_id, &ga_dist, NULL, NULL) == FALSE)
         {
-            ground_line_id = -1;
+            floor_line_id = -1;
         }
-        if ((ground_line_id != -1) && (fp->coll_data.ground_line_id != -2))
+        if ((floor_line_id != -1) && (fp->coll_data.floor_line_id != -2))
         {
             pos_project.x = DObjGetStruct(fighter_gobj)->translate.vec.f.x;
             pos_project.y = DObjGetStruct(fighter_gobj)->translate.vec.f.y - 0x10000U;
@@ -140,8 +140,8 @@ void ftShadowProcDisplay(GObj *shadow_gobj)
                 shadow_size = fp->attr->shadow_size;
                 shadow_calc_left = 0.0F, shadow_calc_right = 1984.0F;
 
-                mpCollisionGetLREdgeUpperL(ground_line_id, &vertex_pos0);
-                mpCollisionGetLREdgeUpperR(ground_line_id, &vertex_pos1);
+                mpCollisionGetFloorEdgeL(floor_line_id, &vertex_pos0);
+                mpCollisionGetFloorEdgeR(floor_line_id, &vertex_pos1);
 
                 shadow_edge_left = shadow_center - shadow_size;
                 shadow_edge_right = shadow_center + shadow_size;
@@ -177,12 +177,12 @@ void ftShadowProcDisplay(GObj *shadow_gobj)
                     }
                 }
                 gfx_vertex_num = 4;
-                coll_vertex_num = mpCollisionGetVertexCountLineID(ground_line_id);
+                coll_vertex_num = mpCollisionGetVertexCountLineID(floor_line_id);
 
                 if (coll_vertex_num >= 3)
                 {
-                    mpCollisionGetVertexPositionID(ground_line_id, 0, &vertex_pos0);
-                    mpCollisionGetVertexPositionID(ground_line_id, 1, &vertex_pos1);
+                    mpCollisionGetVertexPositionID(floor_line_id, 0, &vertex_pos0);
+                    mpCollisionGetVertexPositionID(floor_line_id, 1, &vertex_pos1);
 
                     if (vertex_pos0.x < vertex_pos1.x)
                     {
@@ -190,7 +190,7 @@ void ftShadowProcDisplay(GObj *shadow_gobj)
 
                         for (i = 1; i < coll_vertex_num; i++)
                         {
-                            mpCollisionGetVertexPositionID(ground_line_id, i, &vertex_pos1);
+                            mpCollisionGetVertexPositionID(floor_line_id, i, &vertex_pos1);
 
                             if ((vertex_pos0.x <= shadow_edge_left) && (shadow_edge_left <= vertex_pos1.x))
                             {
@@ -205,7 +205,7 @@ void ftShadowProcDisplay(GObj *shadow_gobj)
                                     gfx_vertex_num = 6;
                                     vertex_pos0 = vertex_pos1;
 
-                                    mpCollisionGetVertexPositionID(ground_line_id, i + 1, &vertex_pos1);
+                                    mpCollisionGetVertexPositionID(floor_line_id, i + 1, &vertex_pos1);
 
                                     spE8 = vertex_pos0.x;
                                     spE4 = vertex_pos0.y;
@@ -220,7 +220,7 @@ void ftShadowProcDisplay(GObj *shadow_gobj)
                                         gfx_vertex_num = 8;
                                         vertex_pos0 = vertex_pos1;
 
-                                        mpCollisionGetVertexPositionID(ground_line_id, i + 2, &vertex_pos1);
+                                        mpCollisionGetVertexPositionID(floor_line_id, i + 2, &vertex_pos1);
                                         shadow_alt_right = ftShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_right);
                                         spE0 = vertex_pos0.x;
                                         spDC = vertex_pos0.y;
@@ -239,7 +239,7 @@ void ftShadowProcDisplay(GObj *shadow_gobj)
 
                         for (i = 1; i < coll_vertex_num; i++)
                         {
-                            mpCollisionGetVertexPositionID(ground_line_id, i, &vertex_pos0);
+                            mpCollisionGetVertexPositionID(floor_line_id, i, &vertex_pos0);
 
                             if ((vertex_pos0.x <= shadow_edge_right) && (shadow_edge_right <= vertex_pos1.x))
                             {
@@ -254,7 +254,7 @@ void ftShadowProcDisplay(GObj *shadow_gobj)
                                     gfx_vertex_num = 6;
                                     vertex_pos1 = vertex_pos0;
 
-                                    mpCollisionGetVertexPositionID(ground_line_id, i + 1, &vertex_pos0);
+                                    mpCollisionGetVertexPositionID(floor_line_id, i + 1, &vertex_pos0);
 
                                     spE8 = vertex_pos1.x;
                                     spE4 = vertex_pos1.y;
@@ -269,7 +269,7 @@ void ftShadowProcDisplay(GObj *shadow_gobj)
                                         gfx_vertex_num = 8;
                                         vertex_pos1 = vertex_pos0;
 
-                                        mpCollisionGetVertexPositionID(ground_line_id, i + 2, &vertex_pos0);
+                                        mpCollisionGetVertexPositionID(floor_line_id, i + 2, &vertex_pos0);
 
                                         shadow_alt_left = ftShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_left);
                                         spE0 = vertex_pos1.x;

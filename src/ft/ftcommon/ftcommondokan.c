@@ -34,16 +34,16 @@ void ftCommonDokanStartProcPhysics(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f dokan_pos;
     Vec3f *translate = &DObjGetStruct(fighter_gobj)->translate.vec.f;
-    s32 ground_line_id;
+    s32 floor_line_id;
 
     mpCollisionGetMapObjIDsKind
     (
         (fp->status_vars.common.dokan.material == nMPMaterialDokanL) ? 
         nMPMapObjKindDokanL :
         nMPMapObjKindDokanR,
-        &ground_line_id
+        &floor_line_id
     );
-    mpCollisionGetMapObjPositionID(ground_line_id, &dokan_pos);
+    mpCollisionGetMapObjPositionID(floor_line_id, &dokan_pos);
 
     if (translate->x > dokan_pos.x)
     {
@@ -113,15 +113,15 @@ sb32 ftCommonDokanStartCheckInterruptCommon(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
-    s32 ground_line_id;
+    s32 floor_line_id;
     f32 dist_x;
 
     if ((fp->input.pl.stick_range.y <= FTCOMMON_DOKAN_STICK_RANGE_MIN) && (fp->tap_stick_y < FTCOMMON_DOKAN_BUFFER_FRAMES_MAX))
     {
-        if ((fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK) == nMPMaterialDokanL)
+        if ((fp->coll_data.floor_flags & MPCOLL_VERTEX_MAT_MASK) == nMPMaterialDokanL)
         {
-            mpCollisionGetMapObjIDsKind(nMPMapObjKindDokanL, &ground_line_id);
-            mpCollisionGetMapObjPositionID(ground_line_id, &pos);
+            mpCollisionGetMapObjIDsKind(nMPMapObjKindDokanL, &floor_line_id);
+            mpCollisionGetMapObjPositionID(floor_line_id, &pos);
 
             if (pos.x < DObjGetStruct(fighter_gobj)->translate.vec.f.x)
             {
@@ -136,10 +136,10 @@ sb32 ftCommonDokanStartCheckInterruptCommon(GObj *fighter_gobj)
                 return TRUE;
             }
         }
-        else if ((fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK) == nMPMaterialDokanR)
+        else if ((fp->coll_data.floor_flags & MPCOLL_VERTEX_MAT_MASK) == nMPMaterialDokanR)
         {
-            mpCollisionGetMapObjIDsKind(nMPMapObjKindDokanR, &ground_line_id);
-            mpCollisionGetMapObjPositionID(ground_line_id, &pos);
+            mpCollisionGetMapObjIDsKind(nMPMapObjKindDokanR, &floor_line_id);
+            mpCollisionGetMapObjPositionID(floor_line_id, &pos);
 
             if (pos.x < DObjGetStruct(fighter_gobj)->translate.vec.f.x)
             {
@@ -278,7 +278,7 @@ void ftCommonDokanEndSetStatus(GObj *fighter_gobj)
 
     DObjGetStruct(fighter_gobj)->translate.vec.f = fp->status_vars.common.dokan.pos_target;
 
-    func_ovl2_800F9348(&DObjGetStruct(fighter_gobj)->translate.vec.f, &fp->coll_data.ground_line_id, &fp->coll_data.ground_dist, &fp->coll_data.ground_flags, &fp->coll_data.ground_angle);
+    func_ovl2_800F9348(&DObjGetStruct(fighter_gobj)->translate.vec.f, &fp->coll_data.floor_line_id, &fp->coll_data.floor_dist, &fp->coll_data.floor_flags, &fp->coll_data.floor_angle);
 
     fp->is_ignore_jostle = TRUE;
     fp->status_vars.common.dokan.playertag_wait = FTCOMMON_DOKAN_PLAYERTAG_WAIT;

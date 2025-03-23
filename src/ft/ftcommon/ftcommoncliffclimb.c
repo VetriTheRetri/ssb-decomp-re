@@ -183,7 +183,7 @@ void ftCommonCliffCommon2ProcPhysics(GObj *fighter_gobj)
 
         pos.x += vel.x;
 
-        if (mpCollisionGetUDCommonUpper(fp->status_vars.common.cliffmotion.cliff_id, &pos, &y, NULL, NULL) != FALSE)
+        if (mpCollisionGetFCCommonGround(fp->status_vars.common.cliffmotion.cliff_id, &pos, &y, NULL, NULL) != FALSE)
         {
             pos.y += y;
 
@@ -240,23 +240,23 @@ void ftCommonCliffCommon2UpdateCollData(GObj *fighter_gobj)
     }
     if (fp->lr == +1)
     {
-        mpCollisionGetLREdgeUpperL(coll_data->cliff_id, translate);
+        mpCollisionGetFloorEdgeL(coll_data->cliff_id, translate);
 
         translate->x += 5.0F;
     }
     else
     {
-        mpCollisionGetLREdgeUpperR(coll_data->cliff_id, translate);
+        mpCollisionGetFloorEdgeR(coll_data->cliff_id, translate);
 
         translate->x -= 5.0F;
     }
-    coll_data->ground_line_id = coll_data->cliff_id;
+    coll_data->floor_line_id = coll_data->cliff_id;
 
-    mpCollisionGetUDCommonUpper(coll_data->ground_line_id, translate, &coll_data->ground_dist, &coll_data->ground_flags, &coll_data->ground_angle);
+    mpCollisionGetFCCommonGround(coll_data->floor_line_id, translate, &coll_data->floor_dist, &coll_data->floor_flags, &coll_data->floor_angle);
 
-    translate->y += coll_data->ground_dist;
+    translate->y += coll_data->floor_dist;
 
-    coll_data->ground_dist = 0.0F;
+    coll_data->floor_dist = 0.0F;
 }
 
 // 0x8014557C

@@ -541,22 +541,22 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTDesc *desc)
         sb32 is_collide_ground = func_ovl2_800F9348
         (
             &DObjGetStruct(fighter_gobj)->translate.vec.f,
-            &fp->coll_data.ground_line_id,
-            &fp->coll_data.ground_dist,
-            &fp->coll_data.ground_flags,
-            &fp->coll_data.ground_angle
+            &fp->coll_data.floor_line_id,
+            &fp->coll_data.floor_dist,
+            &fp->coll_data.floor_flags,
+            &fp->coll_data.floor_angle
         );
         if (is_collide_ground == FALSE)
         {
-            fp->coll_data.ground_line_id = -1;
+            fp->coll_data.floor_line_id = -1;
         }
-        if ((is_collide_ground != FALSE) && (fp->coll_data.ground_dist > -300.0F) && (fp->fkind != nFTKindBoss))
+        if ((is_collide_ground != FALSE) && (fp->coll_data.floor_dist > -300.0F) && (fp->fkind != nFTKindBoss))
         {
             fp->ga = nMPKineticsGround;
 
-            DObjGetStruct(fighter_gobj)->translate.vec.f.y += fp->coll_data.ground_dist;
+            DObjGetStruct(fighter_gobj)->translate.vec.f.y += fp->coll_data.floor_dist;
 
-            fp->coll_data.ground_dist = 0;
+            fp->coll_data.floor_dist = 0;
         }
         else
         {

@@ -488,11 +488,11 @@ void itRShellSpinCheckCollisionEdge(GObj *item_gobj)
     DObj *joint = DObjGetStruct(item_gobj);
     Vec3f pos;
 
-    if (mpCollisionCheckExistLineID(ip->coll_data.ground_line_id) != FALSE)
+    if (mpCollisionCheckExistLineID(ip->coll_data.floor_line_id) != FALSE)
     {
         if (ip->lr == -1)
         {
-            mpCollisionGetLREdgeUpperL(ip->coll_data.ground_line_id, &pos);
+            mpCollisionGetFloorEdgeL(ip->coll_data.floor_line_id, &pos);
 
             if (pos.x >= (joint->translate.vec.f.x - attr->map_coll_width))
             {
@@ -501,7 +501,7 @@ void itRShellSpinCheckCollisionEdge(GObj *item_gobj)
         }
         else
         {
-            mpCollisionGetLREdgeUpperR(ip->coll_data.ground_line_id, &pos);
+            mpCollisionGetFloorEdgeR(ip->coll_data.floor_line_id, &pos);
 
             if (pos.x <= (joint->translate.vec.f.x + attr->map_coll_width))
             {

@@ -21,5 +21,5 @@ void ftBossWalkSetStatus(GObj *fighter_gobj)
     ftBossCommonCheckEdgeInvertLR(fighter_gobj);
 
     fp->physics.vel_air.x = 0.0F;
-    fp->physics.vel_air.y = fp->coll_data.ground_dist / 60.0F;
+    fp->physics.vel_air.y = fp->coll_data.floor_dist / 60.0F;
 }

@@ -49,7 +49,7 @@ GObj* itTargetMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 		ITStruct *ip = itGetStruct(item_gobj);
 
 		ip->ga = nMPKineticsGround;
-		ip->coll_data.ground_line_id = -1;
+		ip->coll_data.floor_line_id = -1;
 	}
 	return item_gobj;
 }

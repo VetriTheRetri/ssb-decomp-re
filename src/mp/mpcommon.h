@@ -6,8 +6,8 @@
 #include <ft/ftdef.h>
 #include <mp/mpdef.h>
 
-extern sb32 mpCommonCheckSetFighterCliffEdge(GObj* fighter_gobj, s32 ground_line_id);
-extern sb32 mpCommonCheckSetFighterEdge(GObj* fighter_gobj, s32 ground_line_id);
+extern sb32 mpCommonCheckSetFighterCliffEdge(GObj* fighter_gobj, s32 floor_line_id);
+extern sb32 mpCommonCheckSetFighterEdge(GObj* fighter_gobj, s32 floor_line_id);
 extern sb32 mpCommonRunFighterAllCollisions(MPCollData* coll_data, GObj* fighter_gobj, u32 flags);
 extern sb32 mpCommonCheckFighterOnGround(GObj* fighter_gobj);
 extern sb32 mpCommonProcFighterOnGround(GObj* fighter_gobj, void (*proc_map)(GObj*));

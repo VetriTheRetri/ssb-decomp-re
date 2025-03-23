@@ -27,15 +27,15 @@ struct GMCamera
     s32 viewport_width;
     s32 viewport_height;
 	f32 fovy;
-	GObj *pl_pause_gobj; // Guess: this is a struct from here...
+	GObj *pzoom_fighter_gobj; // Guess: this is a struct from here...
 	f32 unk_cmstruct_0x48;
 	f32 unk_cmstruct_0x4C;
 	f32 unk_cmstruct_0x50;
 	f32 unk_cmstruct_0x54;
 	f32 unk_cmstruct_0x58;
-	Vec3f unk_cmstruct_0x5C;
-	Vec3f unk_cmstruct_0x68; // ...to here
-	GObj *pl_bonus_gobj;	 // ...and there is an array of it
+	Vec3f zoom_origin_pos;
+	Vec3f zoom_target_pos; // ...to here
+	GObj *pfollow_fighter_gobj;	 // ...and there is an array of it
 	f32 unk_cmstruct_0x78;
 	f32 unk_cmstruct_0x7C;
 	f32 unk_cmstruct_0x80;

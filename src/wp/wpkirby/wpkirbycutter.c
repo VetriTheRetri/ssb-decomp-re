@@ -59,7 +59,7 @@ sb32 wpKirbyCutterProcUpdate(GObj *weapon_gobj)
     }
     else if (wp->ga == nMPKineticsGround)
     {
-        DObjGetStruct(weapon_gobj)->rotate.vec.f.z = -syUtilsArcTan2(wp->coll_data.ground_angle.x, wp->coll_data.ground_angle.y);
+        DObjGetStruct(weapon_gobj)->rotate.vec.f.z = -syUtilsArcTan2(wp->coll_data.floor_angle.x, wp->coll_data.floor_angle.y);
     }
     return FALSE;
 }
@@ -71,12 +71,12 @@ sb32 wpKirbyCutterProcMap(GObj *weapon_gobj)
 
     if (wp->ga == nMPKineticsAir)
     {
-        if (wpMapTestAllCheckGround(weapon_gobj) == TRUE)
+        if (wpMapTestAllCheckFloor(weapon_gobj) == TRUE)
         {
             wpMapSetGround(wp);
         }
     }
-    else if (wpMapTestLRWallCheckGround(weapon_gobj) == FALSE)
+    else if (wpMapTestLRWallCheckFloor(weapon_gobj) == FALSE)
     {
         wpMapSetAir(wp);
 
@@ -154,9 +154,9 @@ GObj* wpKirbyCutterMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 
     wp->physics.vel_air.x = wp->lr * WPFINALCUTTER_VEL;
 
-    if (mpCollisionGetUDCommonUpper(fp->coll_data.ground_line_id, pos, NULL, NULL, &wp->coll_data.ground_angle) != FALSE)
+    if (mpCollisionGetFCCommonGround(fp->coll_data.floor_line_id, pos, NULL, NULL, &wp->coll_data.floor_angle) != FALSE)
     {
-        wp->coll_data.ground_line_id = fp->coll_data.ground_line_id;
+        wp->coll_data.floor_line_id = fp->coll_data.floor_line_id;
 
         wpMapSetGround(wp);
     }

@@ -65,7 +65,7 @@ typedef enum MPMaterial
 
 typedef enum MPLineType
 {
-	nMPLineKindGround,
+	nMPLineKindFloor,
 	nMPLineKindCeil,
 	nMPLineKindRWall,
 	nMPLineKindLWall,
@@ -75,11 +75,12 @@ typedef enum MPLineType
 
 typedef enum MPMapObjKind
 {
-    nMPMapObjKindBattlePlayerStartStart,
-    nMPMapObjKindBattlePlayer1Spawn = nMPMapObjKindBattlePlayerStartStart,                      // 0x0
+    nMPMapObjKindBattlePlayerSpawnStart,
+    nMPMapObjKindBattlePlayer1Spawn = nMPMapObjKindBattlePlayerSpawnStart,                      // 0x0
     nMPMapObjKindBattlePlayer2Spawn,                                                            // 0x1
     nMPMapObjKindBattlePlayer3Spawn,                                                            // 0x2
     nMPMapObjKindBattlePlayer4Spawn,                                                            // 0x3
+    nMPMapObjKindBattlePlayerSpawnEnd = nMPMapObjKindBattlePlayer4Spawn,
     nMPMapObjKindItemSpawn,                                                                     // 0x4
     nMPMapObjKindScaleL,                                                                        // 0x5
     nMPMapObjKindScaleR,                                                                        // 0x6
@@ -139,13 +140,13 @@ typedef enum MPMapObjKind
     
 } MPMapObjKind;
 
-typedef enum MPYakumonoStatus // State of collision line?
+typedef enum MPYakumonoStatus   // States of line collisions + stage elements
 {
-	nMPYakumonoStatusNone,
-	nMPYakumonoStatusOn,
-	nMPYakumonoStatusShow,
-	nMPYakumonoStatusOff,
-    nMPYakumonoStatusHidden
+	nMPYakumonoStatusNone,      // Nada
+	nMPYakumonoStatusOn,        // Turned on
+	nMPYakumonoStatusShow,      // Previously off, recently turned on
+	nMPYakumonoStatusOff,       // Turned off
+    nMPYakumonoStatusHidden     // Previously on, recently turned off
 
 } MPYakumonoStatus;
 

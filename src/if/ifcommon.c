@@ -2280,7 +2280,7 @@ void ifCommonEntryFocusThread(GObj *interface_gobj)
         {
             gcStopCurrentGObjThread(30);
 
-            func_ovl2_8010CF44(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attr->closeup_camera_zoom, 0.1F, 28.0F);
+            gmCameraSetStatusPlayerZoom(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attr->closeup_camera_zoom, 0.1F, 28.0F);
             gcStopCurrentGObjThread(stop_tics - 30);
         }
         else gcStopCurrentGObjThread(stop_tics);
@@ -2290,7 +2290,7 @@ void ifCommonEntryFocusThread(GObj *interface_gobj)
     if (index == 2)
     {
         gcStopCurrentGObjThread(30);
-        gmCameraSetCameraStatusDefault();
+        gmCameraSetStatusDefault();
     }
     gcEjectGObj(NULL);
     gcStopCurrentGObjThread(1);
@@ -2934,7 +2934,7 @@ void ifCommonBattleGoUpdateInterface(void)
                             sp5C.y = gMPCollisionGroundData->unk_groundinfo_0xA0.y;
                             sp5C.z = gMPCollisionGroundData->unk_groundinfo_0xA0.z;
 
-                            func_ovl2_8010D0A4(&sp68, &sp5C);
+                            gmCameraSetStatusMapZoom(&sp68, &sp5C);
 
                             sIFCommonBattlePauseKindInterface = nIFPauseKindBonus;
                         }
@@ -2944,7 +2944,7 @@ void ifCommonBattleGoUpdateInterface(void)
                         }
                         else
                         {
-                            func_ovl2_8010CF44(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attr->closeup_camera_zoom, 0.1F, 29.0F);
+                            gmCameraSetStatusPlayerZoom(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attr->closeup_camera_zoom, 0.1F, 29.0F);
 
                             sIFCommonBattlePauseCameraEyeXOrigin = gGMCameraPauseCameraEyeX;
                             sIFCommonBattlePauseCameraEyeYOrigin = gGMCameraPauseCameraEyeY;
@@ -3025,7 +3025,7 @@ void ifCommonBattlePauseUpdateInterface(void)
         {
             if (sIFCommonBattlePauseKindInterface != nIFPauseKindPlayerNA)
             {
-                gmCameraSetCameraStatusPrev();
+                gmCameraSetStatusPrev();
 
                 sIFCommonBattlePauseCameraRestoreWait = 20;
             }

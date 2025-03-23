@@ -266,7 +266,7 @@ sb32 scAutoDemoCheckStopFocusPlayer(FTStruct *fp)
 // 0x8018D220
 void func_ovl64_8018D220(GObj *fighter_gobj)
 {
-	func_ovl2_8010CF44
+	gmCameraSetStatusPlayerZoom
 	(
 		fighter_gobj,
 		F_CLC_DTOR32(D_ovl64_8018E1D4[syUtilsGetRandomIntRange(ARRAY_COUNT(D_ovl64_8018E1D4))]),
@@ -360,7 +360,7 @@ void scAutoDemoResetFocusPlayerAll(void)
 {
 	GObj *p2_gobj = gSCManagerBattleState->players[1].fighter_gobj;
 
-	gmCameraSetCameraStatusDefault();
+	gmCameraSetStatusDefault();
 
 	ftGetStruct(gSCManagerBattleState->players[0].fighter_gobj)->level =
 	ftGetStruct(p2_gobj)->level =

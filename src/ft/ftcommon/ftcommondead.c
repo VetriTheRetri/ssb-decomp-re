@@ -133,7 +133,7 @@ void ftCommonDeadResetCommonVars(GObj *fighter_gobj)
     ftCommonThrownDecideDeadResult(fighter_gobj);
 
     fp->ga = nMPKineticsAir;
-    fp->coll_data.ground_line_id = -1;
+    fp->coll_data.floor_line_id = -1;
 
     if (fp->item_gobj != NULL)
     {

@@ -242,7 +242,7 @@ void ftCommonTaruCannShootFighter(GObj* fighter_gobj);
 void ftCommonDokanStartUpdateModelYaw(FTStruct* fp);
 void ftCommonDokanStartProcUpdate(GObj* fighter_gobj);
 void ftCommonDokanStartProcPhysics(GObj* fighter_gobj);
-void ftCommonDokanStartSetStatus(GObj* fighter_gobj, s32 ground_line_id);
+void ftCommonDokanStartSetStatus(GObj* fighter_gobj, s32 floor_line_id);
 sb32 ftCommonDokanStartCheckInterruptCommon(GObj* fighter_gobj);
 void ftCommonDokanWaitProcUpdate(GObj* fighter_gobj);
 void ftCommonDokanWaitProcMap(GObj* fighter_gobj);

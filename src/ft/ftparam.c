@@ -1427,7 +1427,7 @@ void ftParamVelDamageTransferGround(FTStruct *fp)
 {
     if (fp->ga == nMPKineticsGround)
     {
-        Vec3f *ground_angle = &fp->coll_data.ground_angle;
+        Vec3f *floor_angle = &fp->coll_data.floor_angle;
 
         if (fp->physics.vel_damage_ground == 0.0F)
         {
@@ -1441,8 +1441,8 @@ void ftParamVelDamageTransferGround(FTStruct *fp)
             {
                 fp->physics.vel_damage_ground = -250.0F;
             }
-            fp->physics.vel_damage_air.x = ground_angle->y * fp->physics.vel_damage_ground;
-            fp->physics.vel_damage_air.y = -ground_angle->x * fp->physics.vel_damage_ground;
+            fp->physics.vel_damage_air.x = floor_angle->y * fp->physics.vel_damage_ground;
+            fp->physics.vel_damage_air.y = -floor_angle->x * fp->physics.vel_damage_ground;
         }
     }
 }
@@ -1958,9 +1958,9 @@ void* ftParamMakeEffect(GObj *fighter_gobj, s32 effect_id, s32 joint_id, Vec3f *
         break;
 
     case nEFKindImpactWave:
-        if ((fp->ga == nMPKineticsGround) && (fp->coll_data.ground_line_id != -1) && (fp->coll_data.ground_line_id != -2))
+        if ((fp->ga == nMPKineticsGround) && (fp->coll_data.floor_line_id != -1) && (fp->coll_data.floor_line_id != -2))
         {
-            effect = efManagerImpactWaveMakeEffect(&pos, 4, syUtilsArcTan2(-fp->coll_data.ground_angle.x, fp->coll_data.ground_angle.y));
+            effect = efManagerImpactWaveMakeEffect(&pos, 4, syUtilsArcTan2(-fp->coll_data.floor_angle.x, fp->coll_data.floor_angle.y));
         }
         else effect = efManagerImpactAirWaveMakeEffect(&pos, 4);
         break;

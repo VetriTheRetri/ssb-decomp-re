@@ -137,7 +137,7 @@ sb32 wpSamusBombProcMap(GObj *weapon_gobj)
 
     if (wp->ga == nMPKineticsAir)
     {
-        is_collide = wpMapTestAllCheckGround(weapon_gobj);
+        is_collide = wpMapTestAllCheckFloor(weapon_gobj);
 
         if (wpMapCheckAllRebound(weapon_gobj, (MPCOLL_FLAG_CEIL | MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL), WPSAMUSBOMB_WAIT_COLLIDE_MOD_VEL, NULL) != FALSE)
         {
@@ -147,7 +147,7 @@ sb32 wpSamusBombProcMap(GObj *weapon_gobj)
         {
             vel = &wp->physics.vel_air;
 
-            lbCommonReflect2D(vel, &wp->coll_data.ground_angle);
+            lbCommonReflect2D(vel, &wp->coll_data.floor_angle);
             lbCommonScale2D(vel, 0.6F);
             wpMainVelSetLR(weapon_gobj);
 
@@ -157,7 +157,7 @@ sb32 wpSamusBombProcMap(GObj *weapon_gobj)
             }
         }
     }
-    else if (wpMapTestLRWallCheckGround(weapon_gobj) == FALSE)
+    else if (wpMapTestLRWallCheckFloor(weapon_gobj) == FALSE)
     {
         wpMapSetAir(wp);
     }

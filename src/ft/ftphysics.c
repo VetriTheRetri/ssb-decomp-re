@@ -5,8 +5,8 @@ void ftPhysicsSetGroundVelTransferAir(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->physics.vel_air.x = ((fp->lr * fp->coll_data.ground_angle.y * fp->physics.vel_ground.x) + fp->physics.vel_jostle_x);
-    fp->physics.vel_air.y = (fp->lr * -fp->coll_data.ground_angle.x * fp->physics.vel_ground.x);
+    fp->physics.vel_air.x = ((fp->lr * fp->coll_data.floor_angle.y * fp->physics.vel_ground.x) + fp->physics.vel_jostle_x);
+    fp->physics.vel_air.y = (fp->lr * -fp->coll_data.floor_angle.x * fp->physics.vel_ground.x);
     fp->physics.vel_air.z = fp->physics.vel_jostle_z;
 
     if 
@@ -160,7 +160,7 @@ void ftPhysicsApplyGroundVelFriction(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     FTAttributes *attr = fp->attr;
 
-    ftPhysicsSetGroundVelFriction(fp, dMPCollisionMaterialFrictions[fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK] * attr->traction);
+    ftPhysicsSetGroundVelFriction(fp, dMPCollisionMaterialFrictions[fp->coll_data.floor_flags & MPCOLL_VERTEX_MAT_MASK] * attr->traction);
     ftPhysicsSetGroundVelTransferAir(fighter_gobj);
 }
 

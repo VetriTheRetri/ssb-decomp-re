@@ -11,7 +11,7 @@ void ftBossOkupunch2ProcUpdate(GObj *fighter_gobj)
 {
     if (fighter_gobj->anim_frame <= 0.0F)
     {
-        gmCameraSetCameraStatusDefault();
+        gmCameraSetStatusDefault();
         ftBossOkupunch3SetStatus(fighter_gobj);
         ftBossCommonSetDisableFogColor(fighter_gobj);
     }
@@ -67,6 +67,6 @@ void ftBossOkupunch2SetStatus(GObj *fighter_gobj)
     sp28.y = 1000.0F;
     sp28.z = 7000.0F;
 
-    func_ovl2_8010D0A4(&sp34, &sp28);
+    gmCameraSetStatusMapZoom(&sp34, &sp28);
     ftBossCommonSetUseFogColor(fighter_gobj);
 }

@@ -55,7 +55,7 @@ void ftCommonThrownReleaseFighterLoseGrip(GObj *fighter_gobj)
 
     if (this_fp->ga == nMPKineticsGround)
     {
-        if ((this_fp->coll_data.ground_line_id == -1) || (this_fp->coll_data.ground_dist != 0.0F))
+        if ((this_fp->coll_data.floor_line_id == -1) || (this_fp->coll_data.floor_dist != 0.0F))
         {
             mpCommonSetFighterAir(this_fp);
         }

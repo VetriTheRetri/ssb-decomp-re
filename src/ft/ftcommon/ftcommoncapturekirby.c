@@ -153,7 +153,7 @@ void ftCommonCaptureWaitKirbyUpdateBreakoutVars(FTStruct *this_fp, FTStruct *cap
                 capture_fp->physics.vel_air.y = FTCOMMON_CAPTUREKIRBY_WIGGLE_VEL_XY;
             }
         }
-        else if ((this_fp->input.pl.stick_range.y <= -FTCOMMON_CAPTUREKIRBY_WIGGLE_STICK_RANGE_MIN) && (this_fp->tap_stick_y < FTCOMMON_CAPTUREKIRBY_WIGGLE_BUFFER_FRAMES_MAX) && (this_fp->coll_data.ground_flags & 0x4000))
+        else if ((this_fp->input.pl.stick_range.y <= -FTCOMMON_CAPTUREKIRBY_WIGGLE_STICK_RANGE_MIN) && (this_fp->tap_stick_y < FTCOMMON_CAPTUREKIRBY_WIGGLE_BUFFER_FRAMES_MAX) && (this_fp->coll_data.floor_flags & 0x4000))
         {
             this_fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
             is_wiggle = TRUE;
@@ -164,7 +164,7 @@ void ftCommonCaptureWaitKirbyUpdateBreakoutVars(FTStruct *this_fp, FTStruct *cap
 
                 is_wiggle = TRUE;
 
-                capture_fp->coll_data.ignore_line_id = capture_fp->coll_data.ground_line_id;
+                capture_fp->coll_data.ignore_line_id = capture_fp->coll_data.floor_line_id;
                 capture_fp->physics.vel_air.y = -FTCOMMON_CAPTUREKIRBY_WIGGLE_VEL_XY;
             }
         }
@@ -403,7 +403,7 @@ void ftCommonThrownCommonStarProcMap(GObj *fighter_gobj)
 
     if (mpCommonCheckFighterLanding(fighter_gobj) != FALSE)
     {
-        angle = &fp->coll_data.ground_angle;
+        angle = &fp->coll_data.floor_angle;
     }
     else if (fp->coll_data.coll_mask_curr & MPCOLL_FLAG_CEIL)
     {

@@ -16,7 +16,7 @@ void ftBossOkupunch1ProcUpdate(GObj *fighter_gobj)
 void ftBossOkupunch1SetStatus(GObj *fighter_gobj)
 {
     FTStruct *boss_fp, *target_fp;
-    s32 ground_line_id;
+    s32 floor_line_id;
     s32 line_id;
 
     ftMainSetStatus(fighter_gobj, nFTBossStatusOkupunch1, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
@@ -25,9 +25,9 @@ void ftBossOkupunch1SetStatus(GObj *fighter_gobj)
 
     target_fp = ftGetStruct(boss_fp->passive_vars.boss.p->target_gobj);
 
-    ground_line_id = target_fp->coll_data.ground_line_id;
+    floor_line_id = target_fp->coll_data.floor_line_id;
 
-    line_id = ((ground_line_id != -1) && ground_line_id != -2) ? ground_line_id : boss_fp->passive_vars.boss.p->default_line_id;
+    line_id = ((floor_line_id != -1) && floor_line_id != -2) ? floor_line_id : boss_fp->passive_vars.boss.p->default_line_id;
 
     ftBossCommonGetPositionCenter(line_id, &boss_fp->status_vars.boss.okupunch.pos);
 }

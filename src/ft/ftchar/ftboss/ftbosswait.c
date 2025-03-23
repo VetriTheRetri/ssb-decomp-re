@@ -109,7 +109,7 @@ void ftBossWaitDecideStatusPlayer(GObj *fighter_gobj)
         }
         else if ((fp->input.pl.stick_range.y <= -20) && (angle < F_CST_DTOR32(-50.0F))) // -0.87266463F
         {
-            if ((target_fp->coll_data.ground_line_id != -1) && (target_fp->coll_data.ground_line_id != -2))
+            if ((target_fp->coll_data.floor_line_id != -1) && (target_fp->coll_data.floor_line_id != -2))
             {
                 ftBossCommonSetPosOffsetY(fighter_gobj, &pos, 800.0F);
                 ftBossMoveSetStatus(fighter_gobj, ftBossGootsubusuUpSetStatus, &pos);
@@ -148,7 +148,7 @@ void ftBossWaitDecideStatusPlayer(GObj *fighter_gobj)
         }
         else if ((fp->input.pl.stick_range.y >= 20) && (F_CST_DTOR32(50.0F) < angle)) // 0.87266463F
         {
-            if ((target_fp->coll_data.ground_line_id != -1) && (target_fp->coll_data.ground_line_id != -2))
+            if ((target_fp->coll_data.floor_line_id != -1) && (target_fp->coll_data.floor_line_id != -2))
             {
                 ftBossCommonSetPosAddVelPlayer(fighter_gobj, &pos, 600.0F, 100.0F);
                 ftBossMoveSetStatus(fighter_gobj, ftBossDrillSetStatus, &pos);
@@ -204,8 +204,8 @@ void ftBossWaitDecideStatusComputer(GObj *fighter_gobj) // Decide Master Hand's 
 
         if 
         (
-            ftGetStruct(fp->passive_vars.boss.p->target_gobj)->coll_data.ground_line_id == -1 ||
-            ftGetStruct(fp->passive_vars.boss.p->target_gobj)->coll_data.ground_line_id == -2
+            ftGetStruct(fp->passive_vars.boss.p->target_gobj)->coll_data.floor_line_id == -1 ||
+            ftGetStruct(fp->passive_vars.boss.p->target_gobj)->coll_data.floor_line_id == -2
         )
         {
             p_random = dFTBossWaitRandomNoGround[var];
@@ -323,7 +323,7 @@ void ftBossWaitSetStatus(GObj *fighter_gobj)
     FTStruct *fp;
     Vec3f *translate;
     Vec3f pos;
-    s32 ground_line_id;
+    s32 floor_line_id;
 
     ftMainSetStatus(fighter_gobj, nFTBossStatusWait, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
@@ -331,29 +331,29 @@ void ftBossWaitSetStatus(GObj *fighter_gobj)
 
     translate = &DObjGetStruct(fighter_gobj)->translate.vec.f;
 
-    if (fp->coll_data.ground_line_id != -1)
+    if (fp->coll_data.floor_line_id != -1)
     {
         fp->status_vars.boss.wait.pos.x = translate->x;
-        fp->status_vars.boss.wait.pos.y = translate->y + fp->coll_data.ground_dist;
+        fp->status_vars.boss.wait.pos.y = translate->y + fp->coll_data.floor_dist;
     }
     else
     {
-        ground_line_id = ftGetStruct(fp->passive_vars.boss.p->target_gobj)->coll_data.ground_line_id;
+        floor_line_id = ftGetStruct(fp->passive_vars.boss.p->target_gobj)->coll_data.floor_line_id;
 
-        if ((ground_line_id == -1) || (ground_line_id == -2))
+        if ((floor_line_id == -1) || (floor_line_id == -2))
         {
-            ground_line_id = fp->passive_vars.boss.p->default_line_id;
+            floor_line_id = fp->passive_vars.boss.p->default_line_id;
         }
 
         if (translate->x > gMPCollisionBounds.current.right)
         {
-            mpCollisionGetLREdgeUpperR(ground_line_id, &pos);
+            mpCollisionGetFloorEdgeR(floor_line_id, &pos);
         }
         else if (translate->x < gMPCollisionBounds.current.left)
         {
-            mpCollisionGetLREdgeUpperL(ground_line_id, &pos);
+            mpCollisionGetFloorEdgeL(floor_line_id, &pos);
         }
-        else ftBossCommonGetPositionCenter(ground_line_id, &pos);
+        else ftBossCommonGetPositionCenter(floor_line_id, &pos);
         
         fp->status_vars.boss.wait.pos.x = pos.x;
         fp->status_vars.boss.wait.pos.y = pos.y;

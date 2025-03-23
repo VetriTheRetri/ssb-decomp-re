@@ -366,7 +366,7 @@ void itBoxWaitSetStatus(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    DObjGetStruct(item_gobj)->rotate.vec.f.z = syUtilsArcTan2(ip->coll_data.ground_angle.y, ip->coll_data.ground_angle.x) - F_CST_DTOR32(90.0F);
+    DObjGetStruct(item_gobj)->rotate.vec.f.z = syUtilsArcTan2(ip->coll_data.floor_angle.y, ip->coll_data.floor_angle.x) - F_CST_DTOR32(90.0F);
 
     itMainSetGroundAllowPickup(item_gobj);
     itMainSetStatus(item_gobj, dITBoxStatusDescs, nITBoxStatusWait);

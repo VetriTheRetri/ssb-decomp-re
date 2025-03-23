@@ -83,8 +83,8 @@ void wpMainVelGroundTransferAir(GObj *weapon_gobj) // Transfer weapon's base gro
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    wp->physics.vel_air.x = wp->lr * wp->coll_data.ground_angle.y * wp->physics.vel_ground;
-    wp->physics.vel_air.y = wp->lr * -wp->coll_data.ground_angle.x * wp->physics.vel_ground;
+    wp->physics.vel_air.x = wp->lr * wp->coll_data.floor_angle.y * wp->physics.vel_ground;
+    wp->physics.vel_air.y = wp->lr * -wp->coll_data.floor_angle.x * wp->physics.vel_ground;
 }
 
 // 0x80168088

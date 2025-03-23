@@ -518,7 +518,7 @@ s32 damage_index, s32 element, s32 damage_player_num, sb32 is_rumble, sb32 is_fo
         vel_damage.y = vel_y;
         vel_damage.z = 0.0F;
 
-        angle_diff = syVectorAngleDiff3D(&this_fp->coll_data.ground_angle, &vel_damage);
+        angle_diff = syVectorAngleDiff3D(&this_fp->coll_data.floor_angle, &vel_damage);
 
         if (angle_diff < F_CST_DTOR32(90.0F))
         {
@@ -557,8 +557,8 @@ s32 damage_index, s32 element, s32 damage_player_num, sb32 is_rumble, sb32 is_fo
             status_id_var = status_id_set = dFTCommonDamageStatusGroundIDs[damage_level][damage_index];
 
             this_fp->physics.vel_damage_ground = (-vel_x * this_fp->lr);
-            this_fp->physics.vel_damage_air.x = this_fp->coll_data.ground_angle.y * (-vel_x * this_fp->lr);
-            this_fp->physics.vel_damage_air.y = -this_fp->coll_data.ground_angle.x * (-vel_x * this_fp->lr);
+            this_fp->physics.vel_damage_air.x = this_fp->coll_data.floor_angle.y * (-vel_x * this_fp->lr);
+            this_fp->physics.vel_damage_air.y = -this_fp->coll_data.floor_angle.x * (-vel_x * this_fp->lr);
         }
     }
     this_fp->physics.vel_air.x = this_fp->physics.vel_air.y = this_fp->physics.vel_air.z = this_fp->physics.vel_ground.x = 0.0F;

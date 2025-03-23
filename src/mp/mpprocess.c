@@ -136,7 +136,7 @@ void mpProcessCeilEdgeAdjustLeft(MPCollData *coll_data)
         object_pos.x = coll_data->line_coll_dist.x - map_coll->width;
         object_pos.y = translate->y + map_coll->top;
 
-        if (mpCollisionGetUDCommonUnder(coll_data->ceil_line_id, &object_pos, &ceil_dist, &coll_data->ceil_flags, &coll_data->ceil_angle) != FALSE)
+        if (mpCollisionGetFCCommonCeil(coll_data->ceil_line_id, &object_pos, &ceil_dist, &coll_data->ceil_flags, &coll_data->ceil_angle) != FALSE)
         {
             translate->y += ceil_dist;
             translate->x = object_pos.x;
@@ -191,7 +191,7 @@ void mpProcessCeilEdgeAdjustRight(MPCollData *coll_data)
         object_pos.x = coll_data->line_coll_dist.x + map_coll->width;
         object_pos.y = translate->y + map_coll->top;
 
-        if (mpCollisionGetUDCommonUnder(coll_data->ceil_line_id, &object_pos, &ceil_dist, &coll_data->ceil_flags, &coll_data->ceil_angle) != FALSE)
+        if (mpCollisionGetFCCommonCeil(coll_data->ceil_line_id, &object_pos, &ceil_dist, &coll_data->ceil_flags, &coll_data->ceil_angle) != FALSE)
         {
             translate->y += ceil_dist;
             translate->x = object_pos.x;
@@ -213,13 +213,13 @@ void mpProcessRunCeilEdgeAdjust(MPCollData *coll_data)
 }
 
 // 0x800D9A00
-sb32 mpProcessCheckGroundEdgeCollisionLeft(MPCollData *coll_data)
+sb32 mpProcessCheckFloorEdgeCollisionLeft(MPCollData *coll_data)
 {
     MPObjectColl *map_coll = &coll_data->map_coll;
     Vec3f *translate = coll_data->p_translate;
     Vec3f b;
     Vec3f a;
-    s32 sp2C = mpCollisionGetEdgeUnderLLineID(coll_data->ground_line_id);
+    s32 sp2C = mpCollisionGetEdgeUnderLLineID(coll_data->floor_line_id);
 
     b.x = translate->x;
     b.y = translate->y + map_coll->bottom;
@@ -245,22 +245,22 @@ void mpProcessGroundEdgeLeftAdjust(MPCollData *coll_data)
     sp38.x = translate->x + map_coll->width;
     sp38.y = translate->y + map_coll->center;
 
-    if (mpCollisionGetLRCommonLeft(coll_data->ewall_line_id, &sp38, NULL, NULL, NULL) != FALSE)
+    if (mpCollisionGetLRCommonLWall(coll_data->ewall_line_id, &sp38, NULL, NULL, NULL) != FALSE)
     {
         sp38.x = translate->x + map_coll->width;
         sp44.x = sp38.x;
         sp38.y = translate->y + map_coll->center;
         sp44.y = sp38.y;
 
-        sp44.x += (2.0F * (-coll_data->ground_angle.y * map_coll->width));
-        sp44.y += (2.0F * (coll_data->ground_angle.x * map_coll->width));
+        sp44.x += (2.0F * (-coll_data->floor_angle.y * map_coll->width));
+        sp44.y += (2.0F * (coll_data->floor_angle.x * map_coll->width));
 
         if (mpCollisionCheckLWallLineCollisionSame(&sp44, &sp38, &coll_data->line_coll_dist, NULL, NULL, NULL) != FALSE)
         {
             sp38.x = coll_data->line_coll_dist.x - map_coll->width;
             sp38.y = translate->y + map_coll->bottom;
 
-            if (mpCollisionGetUDCommonUpper(coll_data->ground_line_id, &sp38, &sp34, &coll_data->ground_flags, &coll_data->ground_angle) != FALSE)
+            if (mpCollisionGetFCCommonGround(coll_data->floor_line_id, &sp38, &sp34, &coll_data->floor_flags, &coll_data->floor_angle) != FALSE)
             {
                 translate->y += sp34;
                 translate->x = sp38.x;
@@ -269,18 +269,18 @@ void mpProcessGroundEdgeLeftAdjust(MPCollData *coll_data)
     }
     else
     {
-        mpCollisionGetUDEdgeUpperL(coll_data->ewall_line_id, &sp44);
+        mpCollisionGetLWallEdgeU(coll_data->ewall_line_id, &sp44);
 
         sp44.x -= 2.0F;
         sp38.x = sp44.x - (2.0F * map_coll->width);
         sp38.y = sp44.y - (2.0F * (map_coll->center - map_coll->bottom));
 
-        if (mpCollisionCheckGroundLineCollisionSame(&sp44, &sp38, &coll_data->line_coll_dist, NULL, NULL, NULL) != FALSE)
+        if (mpCollisionCheckFloorLineCollisionSame(&sp44, &sp38, &coll_data->line_coll_dist, NULL, NULL, NULL) != FALSE)
         {
             sp38.x = coll_data->line_coll_dist.x;
             sp38.y = translate->y;
 
-            if (mpCollisionGetUDCommonUpper(coll_data->ground_line_id, &sp38, &sp34, &coll_data->ground_flags, &coll_data->ground_angle) != FALSE)
+            if (mpCollisionGetFCCommonGround(coll_data->floor_line_id, &sp38, &sp34, &coll_data->floor_flags, &coll_data->floor_angle) != FALSE)
             {
                 translate->y += sp34;
                 translate->x = sp38.x;
@@ -290,13 +290,13 @@ void mpProcessGroundEdgeLeftAdjust(MPCollData *coll_data)
 }
 
 // 0x800D9CC0
-sb32 mpProcessCheckGroundEdgeCollisionRight(MPCollData *coll_data)
+sb32 mpProcessCheckFloorEdgeCollisionRight(MPCollData *coll_data)
 {
     MPObjectColl *map_coll = &coll_data->map_coll;
     Vec3f *translate = coll_data->p_translate;
     Vec3f b;
     Vec3f a;
-    s32 sp2C = mpCollisionGetEdgeUnderRLineID(coll_data->ground_line_id);
+    s32 sp2C = mpCollisionGetEdgeUnderRLineID(coll_data->floor_line_id);
 
     b.x = translate->x;
     b.y = translate->y + map_coll->bottom;
@@ -317,49 +317,49 @@ void mpProcessGroundEdgeRightAdjust(MPCollData *coll_data)
     Vec3f *translate = coll_data->p_translate;
     Vec3f sp44;
     Vec3f sp38;
-    f32 ground_dist;
+    f32 floor_dist;
 
     sp38.x = translate->x - map_coll->width;
     sp38.y = translate->y + map_coll->center;
 
-    if (mpCollisionGetLRCommonRight(coll_data->ewall_line_id, &sp38, NULL, NULL, NULL) != FALSE)
+    if (mpCollisionGetLRCommonRWall(coll_data->ewall_line_id, &sp38, NULL, NULL, NULL) != FALSE)
     {
         sp38.x = translate->x - map_coll->width;
         sp44.x = sp38.x;
         sp38.y = translate->y + map_coll->center;
         sp44.y = sp38.y;
 
-        sp44.x += (2.0F * (coll_data->ground_angle.y * map_coll->width));
-        sp44.y += (2.0F * (-coll_data->ground_angle.x * map_coll->width));
+        sp44.x += (2.0F * (coll_data->floor_angle.y * map_coll->width));
+        sp44.y += (2.0F * (-coll_data->floor_angle.x * map_coll->width));
 
         if (mpCollisionCheckRWallLineCollisionSame(&sp44, &sp38, &coll_data->line_coll_dist, NULL, NULL, NULL) != FALSE)
         {
             sp38.x = coll_data->line_coll_dist.x + map_coll->width;
             sp38.y = translate->y + map_coll->bottom;
 
-            if (mpCollisionGetUDCommonUpper(coll_data->ground_line_id, &sp38, &ground_dist, &coll_data->ground_flags, &coll_data->ground_angle) != FALSE)
+            if (mpCollisionGetFCCommonGround(coll_data->floor_line_id, &sp38, &floor_dist, &coll_data->floor_flags, &coll_data->floor_angle) != FALSE)
             {
-                translate->y += ground_dist;
+                translate->y += floor_dist;
                 translate->x = sp38.x;
             }
         }
     }
     else
     {
-        mpCollisionGetUDEdgeUpperR(coll_data->ewall_line_id, &sp44);
+        mpCollisionGetRWallEdgeU(coll_data->ewall_line_id, &sp44);
 
         sp44.x += 2.0F;
         sp44.x = sp38.x + (2.0F * map_coll->width);
         sp44.y = sp38.y - (2.0F * (map_coll->center - map_coll->bottom));
 
-        if (mpCollisionCheckGroundLineCollisionSame(&sp44, &sp38, &coll_data->line_coll_dist, NULL, NULL, NULL) != FALSE)
+        if (mpCollisionCheckFloorLineCollisionSame(&sp44, &sp38, &coll_data->line_coll_dist, NULL, NULL, NULL) != FALSE)
         {
             sp38.x = coll_data->line_coll_dist.x;
             sp38.y = translate->y;
 
-            if (mpCollisionGetUDCommonUpper(coll_data->ground_line_id, &sp38, &ground_dist, &coll_data->ground_flags, &coll_data->ground_angle) != FALSE)
+            if (mpCollisionGetFCCommonGround(coll_data->floor_line_id, &sp38, &floor_dist, &coll_data->floor_flags, &coll_data->floor_angle) != FALSE)
             {
-                translate->y += ground_dist;
+                translate->y += floor_dist;
                 translate->x = sp38.x;
             }
         }
@@ -369,11 +369,11 @@ void mpProcessGroundEdgeRightAdjust(MPCollData *coll_data)
 // 0x800D9F84
 void mpProcessRunGroundEdgeAdjust(MPCollData *coll_data)
 {
-    if (mpProcessCheckGroundEdgeCollisionLeft(coll_data) != FALSE)
+    if (mpProcessCheckFloorEdgeCollisionLeft(coll_data) != FALSE)
     {
         mpProcessGroundEdgeLeftAdjust(coll_data);
     }
-    if (mpProcessCheckGroundEdgeCollisionRight(coll_data) != FALSE)
+    if (mpProcessCheckFloorEdgeCollisionRight(coll_data) != FALSE)
     {
         mpProcessGroundEdgeRightAdjust(coll_data);
     }
@@ -389,9 +389,9 @@ void mpProcessSetCollProjectGroundID(MPCollData *coll_data) // Check if object i
     sp2C.x = translate->x;
     sp2C.y = translate->y + map_coll->bottom;
 
-    if (func_ovl2_800F9348(&sp2C, &coll_data->ground_line_id, &coll_data->ground_dist, &coll_data->ground_flags, &coll_data->ground_angle) == FALSE)
+    if (func_ovl2_800F9348(&sp2C, &coll_data->floor_line_id, &coll_data->floor_dist, &coll_data->floor_flags, &coll_data->floor_angle) == FALSE)
     {
-        coll_data->ground_line_id = -1;
+        coll_data->floor_line_id = -1;
     }
 }
 
@@ -473,12 +473,12 @@ sb32 mpProcessCheckTestLWallCollision(MPCollData *coll_data)
     Vec3f sp40;
     sb32 is_collide_lwall = FALSE;
     s32 test_line_id;
-    s32 ground_line_id;
+    s32 floor_line_id;
     sb32 wall_collide;
 
     mpProcessResetMultiWallCount();
 
-    ground_line_id = (mpCollisionCheckExistLineID(coll_data->ground_line_id) != FALSE) ? mpCollisionGetEdgeUnderLLineID(coll_data->ground_line_id) : -1;
+    floor_line_id = (mpCollisionCheckExistLineID(coll_data->floor_line_id) != FALSE) ? mpCollisionGetEdgeUnderLLineID(coll_data->floor_line_id) : -1;
 
     sp4C.x = pcurr->x + p_map_coll->width;
     sp4C.y = pcurr->y + p_map_coll->center;
@@ -495,7 +495,7 @@ sb32 mpProcessCheckTestLWallCollision(MPCollData *coll_data)
         
     mpCollisionCheckLWallLineCollisionSame(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL);
 
-    if ((wall_collide != FALSE) && (test_line_id != ground_line_id))
+    if ((wall_collide != FALSE) && (test_line_id != floor_line_id))
     {
         mpProcessSetMultiWallLineID(test_line_id);
 
@@ -516,7 +516,7 @@ sb32 mpProcessCheckTestLWallCollision(MPCollData *coll_data)
 
     mpCollisionCheckLWallLineCollisionSame(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL);
 
-    if ((wall_collide != FALSE) && (test_line_id != ground_line_id))
+    if ((wall_collide != FALSE) && (test_line_id != floor_line_id))
     {
         mpProcessSetMultiWallLineID(test_line_id);
 
@@ -537,7 +537,7 @@ sb32 mpProcessCheckTestLWallCollision(MPCollData *coll_data)
 
     mpCollisionCheckLWallLineCollisionSame(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL);
 
-    if ((wall_collide != FALSE) && (test_line_id != ground_line_id))
+    if ((wall_collide != FALSE) && (test_line_id != floor_line_id))
     {
         mpProcessSetMultiWallLineID(test_line_id);
 
@@ -548,7 +548,7 @@ sb32 mpProcessCheckTestLWallCollision(MPCollData *coll_data)
     sp40.x = translate->x + map_coll->width;
     sp40.y = translate->y + map_coll->center;
 
-    if ((mpCollisionCheckLWallLineCollisionSame(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL) != FALSE) && (test_line_id != ground_line_id))
+    if ((mpCollisionCheckLWallLineCollisionSame(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL) != FALSE) && (test_line_id != floor_line_id))
     {
         mpProcessSetMultiWallLineID(test_line_id);
 
@@ -559,7 +559,7 @@ sb32 mpProcessCheckTestLWallCollision(MPCollData *coll_data)
     sp40.x = translate->x + map_coll->width;
     sp40.y = translate->y + map_coll->center;
 
-    if ((mpCollisionCheckLWallLineCollisionSame(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL) != FALSE) && (test_line_id != ground_line_id))
+    if ((mpCollisionCheckLWallLineCollisionSame(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL) != FALSE) && (test_line_id != floor_line_id))
     {
         mpProcessSetMultiWallLineID(test_line_id);
 
@@ -593,22 +593,22 @@ void mpProcessRunLWallCollision(MPCollData *coll_data)
     {
         wall_line_id = sMPProcessMultiWallCollideLineIDs[i];
 
-        mpCollisionGetUDEdgeUpperL(wall_line_id, &wall_pos);
+        mpCollisionGetLWallEdgeU(wall_line_id, &wall_pos);
 
         if (wall_pos.y < (translate->y + map_coll->bottom))
         {
-            if ((wall_pos.x < sMPProcessLastWallCollidePosition) && (mpCollisionGetLRCommonLeft(wall_line_id, &wall_pos, NULL, &wall_flags, &wall_angle) != FALSE))
+            if ((wall_pos.x < sMPProcessLastWallCollidePosition) && (mpCollisionGetLRCommonLWall(wall_line_id, &wall_pos, NULL, &wall_flags, &wall_angle) != FALSE))
             {
                 mpProcessSetLastWallCollideStats(wall_pos.x, wall_line_id, wall_flags, &wall_angle);
             }
         }
         else
         {
-            mpCollisionGetUDEdgeUnderL(wall_line_id, &wall_pos);
+            mpCollisionGetLWallEdgeD(wall_line_id, &wall_pos);
 
             if ((translate->y + map_coll->top) < wall_pos.y)
             {
-                if ((wall_pos.x < sMPProcessLastWallCollidePosition) && (mpCollisionGetLRCommonLeft(wall_line_id, &wall_pos, NULL, &wall_flags, &wall_angle) != FALSE))
+                if ((wall_pos.x < sMPProcessLastWallCollidePosition) && (mpCollisionGetLRCommonLWall(wall_line_id, &wall_pos, NULL, &wall_flags, &wall_angle) != FALSE))
                 {
                     mpProcessSetLastWallCollideStats(wall_pos.x, wall_line_id, wall_flags, &wall_angle);
                 }
@@ -618,7 +618,7 @@ void mpProcessRunLWallCollision(MPCollData *coll_data)
                 wall_pos.x = translate->x;
                 wall_pos.y = translate->y + map_coll->bottom;
 
-                if (mpCollisionGetLRCommonLeft(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
+                if (mpCollisionGetLRCommonLWall(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
                 {
                     if ((translate->x + last_wall_x) < sMPProcessLastWallCollidePosition)
                     {
@@ -628,7 +628,7 @@ void mpProcessRunLWallCollision(MPCollData *coll_data)
                 wall_pos.x = translate->x + map_coll->width;
                 wall_pos.y = translate->y + map_coll->center;
 
-                if (mpCollisionGetLRCommonLeft(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
+                if (mpCollisionGetLRCommonLWall(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
                 {
                     if ((translate->x + last_wall_x) < sMPProcessLastWallCollidePosition)
                     {
@@ -638,7 +638,7 @@ void mpProcessRunLWallCollision(MPCollData *coll_data)
                 wall_pos.x = translate->x;
                 wall_pos.y = translate->y + map_coll->top;
 
-                if (mpCollisionGetLRCommonLeft(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
+                if (mpCollisionGetLRCommonLWall(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
                 {
                     if ((translate->x + last_wall_x) < sMPProcessLastWallCollidePosition)
                     {
@@ -667,7 +667,7 @@ void mpProcessRunLWallCollision(MPCollData *coll_data)
                             last_wall_x = vertex_pos.x - ((((translate->y + map_coll->top) - vertex_pos.y) * map_coll->width) / (map_coll->top - map_coll->center));
 
                         next:
-                            if ((last_wall_x < sMPProcessLastWallCollidePosition) && (mpCollisionGetLRCommonLeft(wall_line_id, &vertex_pos, NULL, &wall_flags, &wall_angle) != FALSE))
+                            if ((last_wall_x < sMPProcessLastWallCollidePosition) && (mpCollisionGetLRCommonLWall(wall_line_id, &vertex_pos, NULL, &wall_flags, &wall_angle) != FALSE))
                             {
                                 mpProcessSetLastWallCollideStats(last_wall_x, wall_line_id, wall_flags, &wall_angle);
                             }
@@ -697,12 +697,12 @@ sb32 mpProcessCheckTestRWallCollision(MPCollData *coll_data)
     Vec3f sp40;
     sb32 is_collide_rwall = FALSE;
     s32 test_line_id;
-    s32 ground_line_id;
+    s32 floor_line_id;
     sb32 wall_collide;
 
     mpProcessResetMultiWallCount();
 
-    ground_line_id = (mpCollisionCheckExistLineID(coll_data->ground_line_id) != FALSE) ? mpCollisionGetEdgeUnderRLineID(coll_data->ground_line_id) : -1;
+    floor_line_id = (mpCollisionCheckExistLineID(coll_data->floor_line_id) != FALSE) ? mpCollisionGetEdgeUnderRLineID(coll_data->floor_line_id) : -1;
 
     sp4C.x = pcurr->x - p_map_coll->width;
     sp4C.y = pcurr->y + p_map_coll->center;
@@ -719,7 +719,7 @@ sb32 mpProcessCheckTestRWallCollision(MPCollData *coll_data)
 
     mpCollisionCheckRWallLineCollisionSame(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL);
 
-    if ((wall_collide != FALSE) && (test_line_id != ground_line_id))
+    if ((wall_collide != FALSE) && (test_line_id != floor_line_id))
     {
         mpProcessSetMultiWallLineID(test_line_id);
 
@@ -740,7 +740,7 @@ sb32 mpProcessCheckTestRWallCollision(MPCollData *coll_data)
     
     mpCollisionCheckRWallLineCollisionSame(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL);
 
-    if ((wall_collide != FALSE) && (test_line_id != ground_line_id))
+    if ((wall_collide != FALSE) && (test_line_id != floor_line_id))
     {
         mpProcessSetMultiWallLineID(test_line_id);
 
@@ -761,7 +761,7 @@ sb32 mpProcessCheckTestRWallCollision(MPCollData *coll_data)
             
     mpCollisionCheckRWallLineCollisionSame(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL);
 
-    if ((wall_collide != FALSE) && (test_line_id != ground_line_id))
+    if ((wall_collide != FALSE) && (test_line_id != floor_line_id))
     {
         mpProcessSetMultiWallLineID(test_line_id);
 
@@ -772,7 +772,7 @@ sb32 mpProcessCheckTestRWallCollision(MPCollData *coll_data)
     sp40.x = translate->x - map_coll->width;
     sp40.y = translate->y + map_coll->center;
 
-    if ((mpCollisionCheckRWallLineCollisionSame(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL) != FALSE) && (test_line_id != ground_line_id))
+    if ((mpCollisionCheckRWallLineCollisionSame(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL) != FALSE) && (test_line_id != floor_line_id))
     {
         mpProcessSetMultiWallLineID(test_line_id);
 
@@ -783,7 +783,7 @@ sb32 mpProcessCheckTestRWallCollision(MPCollData *coll_data)
     sp40.x = translate->x - map_coll->width;
     sp40.y = translate->y + map_coll->center;
 
-    if ((mpCollisionCheckRWallLineCollisionSame(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL) != FALSE) && (test_line_id != ground_line_id))
+    if ((mpCollisionCheckRWallLineCollisionSame(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL) != FALSE) && (test_line_id != floor_line_id))
     {
         mpProcessSetMultiWallLineID(test_line_id);
 
@@ -817,22 +817,22 @@ void mpProcessRunRWallCollision(MPCollData *coll_data)
     {
         wall_line_id = sMPProcessMultiWallCollideLineIDs[i];
 
-        mpCollisionGetUDEdgeUpperR(wall_line_id, &wall_pos);
+        mpCollisionGetRWallEdgeU(wall_line_id, &wall_pos);
 
         if (wall_pos.y < (translate->y + map_coll->bottom))
         {
-            if ((sMPProcessLastWallCollidePosition < wall_pos.x) && (mpCollisionGetLRCommonRight(wall_line_id, &wall_pos, NULL, &wall_flags, &wall_angle) != FALSE))
+            if ((sMPProcessLastWallCollidePosition < wall_pos.x) && (mpCollisionGetLRCommonRWall(wall_line_id, &wall_pos, NULL, &wall_flags, &wall_angle) != FALSE))
             {
                 mpProcessSetLastWallCollideStats(wall_pos.x, wall_line_id, wall_flags, &wall_angle);
             }
         }
         else
         {
-            mpCollisionGetUDEdgeUnderR(wall_line_id, &wall_pos);
+            mpCollisionGetRWallEdgeD(wall_line_id, &wall_pos);
 
             if ((translate->y + map_coll->top) < wall_pos.y)
             {
-                if ((sMPProcessLastWallCollidePosition < wall_pos.x) && (mpCollisionGetLRCommonRight(wall_line_id, &wall_pos, NULL, &wall_flags, &wall_angle) != FALSE))
+                if ((sMPProcessLastWallCollidePosition < wall_pos.x) && (mpCollisionGetLRCommonRWall(wall_line_id, &wall_pos, NULL, &wall_flags, &wall_angle) != FALSE))
                 {
                     mpProcessSetLastWallCollideStats(wall_pos.x, wall_line_id, wall_flags, &wall_angle);
                 }
@@ -842,7 +842,7 @@ void mpProcessRunRWallCollision(MPCollData *coll_data)
                 wall_pos.x = translate->x;
                 wall_pos.y = translate->y + map_coll->bottom;
 
-                if (mpCollisionGetLRCommonRight(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
+                if (mpCollisionGetLRCommonRWall(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
                 {
                     if ((translate->x + last_wall_x) > sMPProcessLastWallCollidePosition)
                     {
@@ -852,7 +852,7 @@ void mpProcessRunRWallCollision(MPCollData *coll_data)
                 wall_pos.x = translate->x - map_coll->width;
                 wall_pos.y = translate->y + map_coll->center;
 
-                if (mpCollisionGetLRCommonRight(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
+                if (mpCollisionGetLRCommonRWall(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
                 {
                     if ((translate->x + last_wall_x) > sMPProcessLastWallCollidePosition)
                     {
@@ -862,7 +862,7 @@ void mpProcessRunRWallCollision(MPCollData *coll_data)
                 wall_pos.x = translate->x;
                 wall_pos.y = translate->y + map_coll->top;
 
-                if (mpCollisionGetLRCommonRight(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
+                if (mpCollisionGetLRCommonRWall(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
                 {
                     if ((translate->x + last_wall_x) > sMPProcessLastWallCollidePosition)
                     {
@@ -891,7 +891,7 @@ void mpProcessRunRWallCollision(MPCollData *coll_data)
                             last_wall_x = vertex_pos.x + ((((translate->y + map_coll->top) - vertex_pos.y) * map_coll->width) / (map_coll->top - map_coll->center));
 
                         next:
-                            if ((sMPProcessLastWallCollidePosition < last_wall_x) && (mpCollisionGetLRCommonRight(wall_line_id, &vertex_pos, NULL, &wall_flags, &wall_angle) != FALSE))
+                            if ((sMPProcessLastWallCollidePosition < last_wall_x) && (mpCollisionGetLRCommonRWall(wall_line_id, &vertex_pos, NULL, &wall_flags, &wall_angle) != FALSE))
                             {
                                 mpProcessSetLastWallCollideStats(last_wall_x, wall_line_id, wall_flags, &wall_angle);
                             }
@@ -918,35 +918,35 @@ sb32 mpProcessCheckTestGroundCollisionNew(MPCollData *coll_data)
     Vec3f object_pos;
     s32 unused;
     sb32 is_wall_edge;
-    f32 ground_dist;
+    f32 floor_dist;
 
     coll_data->coll_mask_stat &= ~MPCOLL_FLAG_GROUND;
 
     object_pos.x = translate->x;
     object_pos.y = translate->y + coll_data->map_coll.bottom;
 
-    if (mpCollisionCheckExistLineID(coll_data->ground_line_id) == FALSE)
+    if (mpCollisionCheckExistLineID(coll_data->floor_line_id) == FALSE)
     {
         mpProcessSetCollProjectGroundID(coll_data);
 
         return FALSE;
     }
-    if (mpCollisionGetUDCommonUpper(coll_data->ground_line_id, &object_pos, &ground_dist, &coll_data->ground_flags, &coll_data->ground_angle) != FALSE)
+    if (mpCollisionGetFCCommonGround(coll_data->floor_line_id, &object_pos, &floor_dist, &coll_data->floor_flags, &coll_data->floor_angle) != FALSE)
     {
-        translate->y += ground_dist;
+        translate->y += floor_dist;
 
-        coll_data->ground_dist = 0.0F;
+        coll_data->floor_dist = 0.0F;
         coll_data->coll_mask_stat |= MPCOLL_FLAG_GROUND;
 
         return TRUE;
     }
     is_wall_edge = FALSE;
 
-    mpCollisionGetLREdgeUpperL(coll_data->ground_line_id, &object_pos);
+    mpCollisionGetFloorEdgeL(coll_data->floor_line_id, &object_pos);
 
     if (translate->x <= object_pos.x)
     {
-        wall_line_id = mpCollisionGetEdgeUnderLLineID(coll_data->ground_line_id);
+        wall_line_id = mpCollisionGetEdgeUnderLLineID(coll_data->floor_line_id);
 
         if ((wall_line_id != -1) && (mpCollisionGetLineTypeID(wall_line_id) == nMPLineKindRWall))
         {
@@ -955,9 +955,9 @@ sb32 mpProcessCheckTestGroundCollisionNew(MPCollData *coll_data)
     }
     else
     {
-        mpCollisionGetLREdgeUpperR(coll_data->ground_line_id, &object_pos);
+        mpCollisionGetFloorEdgeR(coll_data->floor_line_id, &object_pos);
 
-        wall_line_id = mpCollisionGetEdgeUnderRLineID(coll_data->ground_line_id);
+        wall_line_id = mpCollisionGetEdgeUnderRLineID(coll_data->floor_line_id);
 
         if ((wall_line_id != -1) && (mpCollisionGetLineTypeID(wall_line_id) == nMPLineKindLWall))
         {
@@ -970,10 +970,10 @@ sb32 mpProcessCheckTestGroundCollisionNew(MPCollData *coll_data)
     {
         translate->x = object_pos.x;
 
-        mpCollisionGetUDCommonUpper(coll_data->ground_line_id, &object_pos, NULL, &coll_data->ground_flags, &coll_data->ground_angle);
+        mpCollisionGetFCCommonGround(coll_data->floor_line_id, &object_pos, NULL, &coll_data->floor_flags, &coll_data->floor_angle);
 
         coll_data->coll_mask_stat |= MPCOLL_FLAG_GROUND;
-        coll_data->ground_dist = 0.0F;
+        coll_data->floor_dist = 0.0F;
 
         return TRUE;
     }
@@ -991,9 +991,9 @@ sb32 mpProcessCheckTestGroundCollision(MPCollData *coll_data, s32 line_id)
     s32 is_collide_ground;
     Vec3f sp4C;
     Vec3f sp40;
-    s32 ground_line_id;
-    u32 ground_flags;
-    Vec3f ground_angle;
+    s32 floor_line_id;
+    u32 floor_flags;
+    Vec3f floor_angle;
 
     sp4C.x = coll_data->pos_curr.x;
     sp4C.y = coll_data->pos_curr.y + p_map_coll->bottom;
@@ -1008,18 +1008,18 @@ sb32 mpProcessCheckTestGroundCollision(MPCollData *coll_data, s32 line_id)
 
                             ?
 
-    mpCollisionCheckGroundLineCollisionDiff(&sp4C, &sp40, &coll_data->line_coll_dist, &ground_line_id, &ground_flags, &ground_angle)
+    mpCollisionCheckFloorLineCollisionDiff(&sp4C, &sp40, &coll_data->line_coll_dist, &floor_line_id, &floor_flags, &floor_angle)
 
                             :
 
-    mpCollisionCheckGroundLineCollisionSame(&sp4C, &sp40, &coll_data->line_coll_dist, &ground_line_id, &ground_flags, &ground_angle);
+    mpCollisionCheckFloorLineCollisionSame(&sp4C, &sp40, &coll_data->line_coll_dist, &floor_line_id, &floor_flags, &floor_angle);
 
-    if ((is_collide_ground != FALSE) && (ground_line_id != line_id))
+    if ((is_collide_ground != FALSE) && (floor_line_id != line_id))
     {
         coll_data->coll_mask_curr |= MPCOLL_FLAG_GROUND;
-        coll_data->ground_line_id = ground_line_id;
-        coll_data->ground_flags = ground_flags;
-        coll_data->ground_angle = ground_angle;
+        coll_data->floor_line_id = floor_line_id;
+        coll_data->floor_flags = floor_flags;
+        coll_data->floor_angle = floor_angle;
 
         return TRUE;
     }
@@ -1034,7 +1034,7 @@ sb32 mpProcessCheckTestLCliffCollision(MPCollData *coll_data)
     Vec3f *pcurr = &coll_data->pos_curr;
     Vec3f sp48;
     Vec3f object_pos;
-    u32 ground_flags;
+    u32 floor_flags;
     s32 is_collide_ground;
 
     if (*coll_data->p_lr != +1)
@@ -1055,16 +1055,16 @@ sb32 mpProcessCheckTestLCliffCollision(MPCollData *coll_data)
 
                        ?
 
-    mpCollisionCheckGroundLineCollisionDiff(&sp48, &object_pos, &coll_data->line_coll_dist, &coll_data->cliff_id, &ground_flags, NULL)
+    mpCollisionCheckFloorLineCollisionDiff(&sp48, &object_pos, &coll_data->line_coll_dist, &coll_data->cliff_id, &floor_flags, NULL)
 
                        :
 
-    mpCollisionCheckGroundLineCollisionSame(&sp48, &object_pos, &coll_data->line_coll_dist, &coll_data->cliff_id, &ground_flags, NULL);
+    mpCollisionCheckFloorLineCollisionSame(&sp48, &object_pos, &coll_data->line_coll_dist, &coll_data->cliff_id, &floor_flags, NULL);
 
 
-    if ((is_collide_ground != FALSE) && (ground_flags & MPCOLL_VERTEX_CLL_CLIFF) && ((ground_flags & MPCOLL_VERTEX_MAT_MASK) != nMPMaterial4))
+    if ((is_collide_ground != FALSE) && (floor_flags & MPCOLL_VERTEX_CLL_CLIFF) && ((floor_flags & MPCOLL_VERTEX_MAT_MASK) != nMPMaterial4))
     {
-        mpCollisionGetLREdgeUpperL(coll_data->cliff_id, &object_pos);
+        mpCollisionGetFloorEdgeL(coll_data->cliff_id, &object_pos);
 
         if ((coll_data->line_coll_dist.x - object_pos.x) < 800.0F)
         {
@@ -1085,7 +1085,7 @@ sb32 mpProcessCheckTestRCliffCollision(MPCollData *coll_data)
     Vec3f *pcurr = &coll_data->pos_curr;
     Vec3f sp48;
     Vec3f object_pos;
-    u32 ground_flags;
+    u32 floor_flags;
     s32 is_collide_ground;
 
     if (*coll_data->p_lr != -1)
@@ -1106,15 +1106,15 @@ sb32 mpProcessCheckTestRCliffCollision(MPCollData *coll_data)
 
                        ?
 
-    mpCollisionCheckGroundLineCollisionDiff(&sp48, &object_pos, &coll_data->line_coll_dist, &coll_data->cliff_id, &ground_flags, NULL)
+    mpCollisionCheckFloorLineCollisionDiff(&sp48, &object_pos, &coll_data->line_coll_dist, &coll_data->cliff_id, &floor_flags, NULL)
 
                        :
 
-    mpCollisionCheckGroundLineCollisionSame(&sp48, &object_pos, &coll_data->line_coll_dist, &coll_data->cliff_id, &ground_flags, NULL);
+    mpCollisionCheckFloorLineCollisionSame(&sp48, &object_pos, &coll_data->line_coll_dist, &coll_data->cliff_id, &floor_flags, NULL);
 
-    if ((is_collide_ground != FALSE) && (ground_flags & MPCOLL_VERTEX_CLL_CLIFF))
+    if ((is_collide_ground != FALSE) && (floor_flags & MPCOLL_VERTEX_CLL_CLIFF))
     {
-        mpCollisionGetLREdgeUpperR(coll_data->cliff_id, &object_pos);
+        mpCollisionGetFloorEdgeR(coll_data->cliff_id, &object_pos);
 
         if ((object_pos.x - coll_data->line_coll_dist.x) < 800.0F)
         {
@@ -1140,7 +1140,7 @@ sb32 mpProcessCheckTestLWallCollisionAdjNew(MPCollData *coll_data)
     s32 test_line_id;
     s32 ud_line_id;
     s32 edge_line_id;
-    u32 ground_flags;
+    u32 floor_flags;
     s32 line_collide;
 
     is_collide_lwall = FALSE;
@@ -1323,13 +1323,13 @@ sb32 mpProcessCheckTestLWallCollisionAdjNew(MPCollData *coll_data)
 
                             ?
 
-    mpCollisionCheckGroundLineCollisionDiff(&sp54, &sp48, NULL, &test_line_id, &ground_flags, NULL)
+    mpCollisionCheckFloorLineCollisionDiff(&sp54, &sp48, NULL, &test_line_id, &floor_flags, NULL)
 
                             :
 
-    mpCollisionCheckGroundLineCollisionSame(&sp54, &sp48, NULL, &test_line_id, &ground_flags, NULL);
+    mpCollisionCheckFloorLineCollisionSame(&sp54, &sp48, NULL, &test_line_id, &floor_flags, NULL);
 
-    if ((line_collide != FALSE) && !(ground_flags & MPCOLL_VERTEX_CLL_PASS)) // 0x4000
+    if ((line_collide != FALSE) && !(floor_flags & MPCOLL_VERTEX_CLL_PASS)) // 0x4000
     {
         edge_line_id = mpCollisionGetEdgeUnderLLineID(test_line_id);
 
@@ -1350,11 +1350,11 @@ sb32 mpProcessCheckTestLWallCollisionAdjNew(MPCollData *coll_data)
 
                                     ?
 
-                mpCollisionCheckGroundLineCollisionDiff(&sp54, &sp48, NULL, &ud_line_id, NULL, NULL)
+                mpCollisionCheckFloorLineCollisionDiff(&sp54, &sp48, NULL, &ud_line_id, NULL, NULL)
 
                                     :
 
-                mpCollisionCheckGroundLineCollisionSame(&sp54, &sp48, NULL, &ud_line_id, NULL, NULL);
+                mpCollisionCheckFloorLineCollisionSame(&sp54, &sp48, NULL, &ud_line_id, NULL, NULL);
 
                 if ((line_collide == FALSE) || (test_line_id != ud_line_id))
                 {
@@ -1363,7 +1363,7 @@ sb32 mpProcessCheckTestLWallCollisionAdjNew(MPCollData *coll_data)
                     sp48.x = translate->x + map_coll->width;
                     sp48.y = translate->y + map_coll->center;
 
-                    if ((mpCollisionCheckGroundLineCollisionSame(&sp54, &sp48, NULL, &ud_line_id, NULL, NULL) == FALSE) || (test_line_id != ud_line_id))
+                    if ((mpCollisionCheckFloorLineCollisionSame(&sp54, &sp48, NULL, &ud_line_id, NULL, NULL) == FALSE) || (test_line_id != ud_line_id))
                     {
                         mpProcessSetMultiWallLineID(edge_line_id);
 
@@ -1401,22 +1401,22 @@ void mpProcessRunLWallCollisionAdjNew(MPCollData *coll_data)
     {
         wall_line_id = sMPProcessMultiWallCollideLineIDs[i];
 
-        mpCollisionGetUDEdgeUpperL(wall_line_id, &wall_pos);
+        mpCollisionGetLWallEdgeU(wall_line_id, &wall_pos);
 
         if (wall_pos.y < (translate->y + map_coll->bottom))
         {
-            if ((wall_pos.x < sMPProcessLastWallCollidePosition) && (mpCollisionGetLRCommonLeft(wall_line_id, &wall_pos, NULL, &wall_flags, &wall_angle) != FALSE))
+            if ((wall_pos.x < sMPProcessLastWallCollidePosition) && (mpCollisionGetLRCommonLWall(wall_line_id, &wall_pos, NULL, &wall_flags, &wall_angle) != FALSE))
             {
                 mpProcessSetLastWallCollideStats(wall_pos.x, wall_line_id, wall_flags, &wall_angle);
             }
         }
         else
         {
-            mpCollisionGetUDEdgeUnderL(wall_line_id, &wall_pos);
+            mpCollisionGetLWallEdgeD(wall_line_id, &wall_pos);
 
             if ((translate->y + map_coll->top) < wall_pos.y)
             {
-                if ((wall_pos.x < sMPProcessLastWallCollidePosition) && (mpCollisionGetLRCommonLeft(wall_line_id, &wall_pos, NULL, &wall_flags, &wall_angle) != FALSE))
+                if ((wall_pos.x < sMPProcessLastWallCollidePosition) && (mpCollisionGetLRCommonLWall(wall_line_id, &wall_pos, NULL, &wall_flags, &wall_angle) != FALSE))
                 {
                     mpProcessSetLastWallCollideStats(wall_pos.x, wall_line_id, wall_flags, &wall_angle);
                 }
@@ -1426,7 +1426,7 @@ void mpProcessRunLWallCollisionAdjNew(MPCollData *coll_data)
                 wall_pos.x = translate->x;
                 wall_pos.y = translate->y + map_coll->bottom;
 
-                if (mpCollisionGetLRCommonLeft(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
+                if (mpCollisionGetLRCommonLWall(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
                 {
                     if ((translate->x + last_wall_x) < sMPProcessLastWallCollidePosition)
                     {
@@ -1436,7 +1436,7 @@ void mpProcessRunLWallCollisionAdjNew(MPCollData *coll_data)
                 wall_pos.x = translate->x + map_coll->width;
                 wall_pos.y = translate->y + map_coll->center;
 
-                if (mpCollisionGetLRCommonLeft(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
+                if (mpCollisionGetLRCommonLWall(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
                 {
                     if ((translate->x + last_wall_x) < sMPProcessLastWallCollidePosition)
                     {
@@ -1446,7 +1446,7 @@ void mpProcessRunLWallCollisionAdjNew(MPCollData *coll_data)
                 wall_pos.x = translate->x;
                 wall_pos.y = translate->y + map_coll->top;
 
-                if (mpCollisionGetLRCommonLeft(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
+                if (mpCollisionGetLRCommonLWall(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
                 {
                     if ((translate->x + last_wall_x) < sMPProcessLastWallCollidePosition)
                     {
@@ -1475,7 +1475,7 @@ void mpProcessRunLWallCollisionAdjNew(MPCollData *coll_data)
                             last_wall_x = vertex_pos.x - ((((translate->y + map_coll->top) - vertex_pos.y) * map_coll->width) / (map_coll->top - map_coll->center));
 
                         next:
-                            if ((last_wall_x < sMPProcessLastWallCollidePosition) && (mpCollisionGetLRCommonLeft(wall_line_id, &vertex_pos, NULL, &wall_flags, &wall_angle) != FALSE))
+                            if ((last_wall_x < sMPProcessLastWallCollidePosition) && (mpCollisionGetLRCommonLWall(wall_line_id, &vertex_pos, NULL, &wall_flags, &wall_angle) != FALSE))
                             {
                                 mpProcessSetLastWallCollideStats(last_wall_x, wall_line_id, wall_flags, &wall_angle);
                             }
@@ -1510,7 +1510,7 @@ sb32 mpProcessCheckTestRWallCollisionAdjNew(MPCollData *coll_data)
     s32 test_line_id;
     s32 ud_line_id;
     s32 edge_line_id;
-    u32 ground_flags;
+    u32 floor_flags;
     s32 line_collide;
 
     is_collide_rwall = FALSE;
@@ -1693,13 +1693,13 @@ sb32 mpProcessCheckTestRWallCollisionAdjNew(MPCollData *coll_data)
 
                             ?
 
-    mpCollisionCheckGroundLineCollisionDiff(&sp54, &sp48, NULL, &test_line_id, &ground_flags, NULL)
+    mpCollisionCheckFloorLineCollisionDiff(&sp54, &sp48, NULL, &test_line_id, &floor_flags, NULL)
 
                             :
 
-    mpCollisionCheckGroundLineCollisionSame(&sp54, &sp48, NULL, &test_line_id, &ground_flags, NULL);
+    mpCollisionCheckFloorLineCollisionSame(&sp54, &sp48, NULL, &test_line_id, &floor_flags, NULL);
 
-    if ((line_collide != FALSE) && !(ground_flags & MPCOLL_VERTEX_CLL_PASS))
+    if ((line_collide != FALSE) && !(floor_flags & MPCOLL_VERTEX_CLL_PASS))
     {
         edge_line_id = mpCollisionGetEdgeUnderRLineID(test_line_id);
 
@@ -1720,11 +1720,11 @@ sb32 mpProcessCheckTestRWallCollisionAdjNew(MPCollData *coll_data)
 
                                     ?
 
-                mpCollisionCheckGroundLineCollisionDiff(&sp54, &sp48, NULL, &ud_line_id, NULL, NULL)
+                mpCollisionCheckFloorLineCollisionDiff(&sp54, &sp48, NULL, &ud_line_id, NULL, NULL)
 
                                     :
 
-                mpCollisionCheckGroundLineCollisionSame(&sp54, &sp48, NULL, &ud_line_id, NULL, NULL);
+                mpCollisionCheckFloorLineCollisionSame(&sp54, &sp48, NULL, &ud_line_id, NULL, NULL);
 
                 if ((line_collide == FALSE) || (test_line_id != ud_line_id))
                 {
@@ -1733,7 +1733,7 @@ sb32 mpProcessCheckTestRWallCollisionAdjNew(MPCollData *coll_data)
                     sp48.x = translate->x - map_coll->width;
                     sp48.y = translate->y + map_coll->center;
 
-                    if ((mpCollisionCheckGroundLineCollisionSame(&sp54, &sp48, NULL, &ud_line_id, NULL, NULL) == FALSE) || (test_line_id != ud_line_id))
+                    if ((mpCollisionCheckFloorLineCollisionSame(&sp54, &sp48, NULL, &ud_line_id, NULL, NULL) == FALSE) || (test_line_id != ud_line_id))
                     {
                         mpProcessSetMultiWallLineID(edge_line_id);
 
@@ -1771,22 +1771,22 @@ void mpProcessRunRWallCollisionAdjNew(MPCollData *coll_data)
     {
         wall_line_id = sMPProcessMultiWallCollideLineIDs[i];
 
-        mpCollisionGetUDEdgeUpperR(wall_line_id, &wall_pos);
+        mpCollisionGetRWallEdgeU(wall_line_id, &wall_pos);
 
         if (wall_pos.y < (translate->y + map_coll->bottom))
         {
-            if ((sMPProcessLastWallCollidePosition < wall_pos.x) && (mpCollisionGetLRCommonRight(wall_line_id, &wall_pos, NULL, &wall_flags, &wall_angle) != FALSE))
+            if ((sMPProcessLastWallCollidePosition < wall_pos.x) && (mpCollisionGetLRCommonRWall(wall_line_id, &wall_pos, NULL, &wall_flags, &wall_angle) != FALSE))
             {
                 mpProcessSetLastWallCollideStats(wall_pos.x, wall_line_id, wall_flags, &wall_angle);
             }
         }
         else
         {
-            mpCollisionGetUDEdgeUnderR(wall_line_id, &wall_pos);
+            mpCollisionGetRWallEdgeD(wall_line_id, &wall_pos);
 
             if ((translate->y + map_coll->top) < wall_pos.y)
             {
-                if ((sMPProcessLastWallCollidePosition < wall_pos.x) && (mpCollisionGetLRCommonRight(wall_line_id, &wall_pos, NULL, &wall_flags, &wall_angle) != FALSE))
+                if ((sMPProcessLastWallCollidePosition < wall_pos.x) && (mpCollisionGetLRCommonRWall(wall_line_id, &wall_pos, NULL, &wall_flags, &wall_angle) != FALSE))
                 {
                     mpProcessSetLastWallCollideStats(wall_pos.x, wall_line_id, wall_flags, &wall_angle);
                 }
@@ -1796,7 +1796,7 @@ void mpProcessRunRWallCollisionAdjNew(MPCollData *coll_data)
                 wall_pos.x = translate->x;
                 wall_pos.y = translate->y + map_coll->bottom;
 
-                if (mpCollisionGetLRCommonRight(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
+                if (mpCollisionGetLRCommonRWall(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
                 {
                     if ((translate->x + last_wall_x) > sMPProcessLastWallCollidePosition)
                     {
@@ -1806,7 +1806,7 @@ void mpProcessRunRWallCollisionAdjNew(MPCollData *coll_data)
                 wall_pos.x = translate->x - map_coll->width;
                 wall_pos.y = translate->y + map_coll->center;
 
-                if (mpCollisionGetLRCommonRight(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
+                if (mpCollisionGetLRCommonRWall(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
                 {
                     if ((translate->x + last_wall_x) > sMPProcessLastWallCollidePosition)
                     {
@@ -1816,7 +1816,7 @@ void mpProcessRunRWallCollisionAdjNew(MPCollData *coll_data)
                 wall_pos.x = translate->x;
                 wall_pos.y = translate->y + map_coll->top;
 
-                if (mpCollisionGetLRCommonRight(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
+                if (mpCollisionGetLRCommonRWall(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
                 {
                     if ((translate->x + last_wall_x) > sMPProcessLastWallCollidePosition)
                     {
@@ -1845,7 +1845,7 @@ void mpProcessRunRWallCollisionAdjNew(MPCollData *coll_data)
                             last_wall_x = vertex_pos.x + ((((translate->y + map_coll->top) - vertex_pos.y) * map_coll->width) / (map_coll->top - map_coll->center));
 
                         next:
-                            if ((sMPProcessLastWallCollidePosition < last_wall_x) && (mpCollisionGetLRCommonRight(wall_line_id, &vertex_pos, NULL, &wall_flags, &wall_angle) != FALSE))
+                            if ((sMPProcessLastWallCollidePosition < last_wall_x) && (mpCollisionGetLRCommonRWall(wall_line_id, &vertex_pos, NULL, &wall_flags, &wall_angle) != FALSE))
                             {
                                 mpProcessSetLastWallCollideStats(last_wall_x, wall_line_id, wall_flags, &wall_angle);
                             }
@@ -1911,7 +1911,7 @@ sb32 mpProcessCheckTestCeilCollisionAdjNew(MPCollData *coll_data)
     {
         line_id = mpCollisionGetEdgeRightULineID(coll_data->lwall_line_id);
 
-        if ((line_id != -1) && (mpCollisionGetLineTypeID(line_id) == nMPLineKindCeil) && (mpCollisionGetUDCommonUnder(line_id, &sp40, &ceil_dist, &coll_data->ceil_flags, &coll_data->ceil_angle) != FALSE) && (ceil_dist < 0.0F))
+        if ((line_id != -1) && (mpCollisionGetLineTypeID(line_id) == nMPLineKindCeil) && (mpCollisionGetFCCommonCeil(line_id, &sp40, &ceil_dist, &coll_data->ceil_flags, &coll_data->ceil_angle) != FALSE) && (ceil_dist < 0.0F))
         {
             coll_data->ceil_line_id = line_id;
             coll_data->coll_mask_curr |= MPCOLL_FLAG_CEIL;
@@ -1923,7 +1923,7 @@ sb32 mpProcessCheckTestCeilCollisionAdjNew(MPCollData *coll_data)
     {
         line_id = mpCollisionGetEdgeLeftULineID(coll_data->rwall_line_id);
 
-        if ((line_id != -1) && (mpCollisionGetLineTypeID(line_id) == nMPLineKindCeil) && (mpCollisionGetUDCommonUnder(line_id, &sp40, &ceil_dist, &coll_data->ceil_flags, &coll_data->ceil_angle) != FALSE) && (ceil_dist < 0.0F))
+        if ((line_id != -1) && (mpCollisionGetLineTypeID(line_id) == nMPLineKindCeil) && (mpCollisionGetFCCommonCeil(line_id, &sp40, &ceil_dist, &coll_data->ceil_flags, &coll_data->ceil_angle) != FALSE) && (ceil_dist < 0.0F))
         {
             coll_data->ceil_line_id = line_id;
             coll_data->coll_mask_curr |= MPCOLL_FLAG_CEIL;
@@ -1947,7 +1947,7 @@ void mpProcessRunCeilCollisionAdjNew(MPCollData *coll_data)
     object_pos.x = translate->x;
     object_pos.y = translate->y + map_coll->top;
 
-    if (mpCollisionGetUDCommonUnder(coll_data->ceil_line_id, &object_pos, &ceil_dist, &coll_data->ceil_flags, &coll_data->ceil_angle) != FALSE)
+    if (mpCollisionGetFCCommonCeil(coll_data->ceil_line_id, &object_pos, &ceil_dist, &coll_data->ceil_flags, &coll_data->ceil_angle) != FALSE)
     {
         translate->y += ceil_dist;
         coll_data->coll_mask_stat |= MPCOLL_FLAG_CEIL;
@@ -1956,7 +1956,7 @@ void mpProcessRunCeilCollisionAdjNew(MPCollData *coll_data)
     }
     is_collide_ceil = FALSE;
 
-    mpCollisionGetLREdgeUnderL(coll_data->ceil_line_id, &object_pos);
+    mpCollisionGetCeilEdgeL(coll_data->ceil_line_id, &object_pos);
 
     if (translate->x <= object_pos.x)
     {
@@ -1969,7 +1969,7 @@ void mpProcessRunCeilCollisionAdjNew(MPCollData *coll_data)
     }
     else
     {
-        mpCollisionGetLREdgeUnderR(coll_data->ceil_line_id, &object_pos);
+        mpCollisionGetCeilEdgeR(coll_data->ceil_line_id, &object_pos);
 
         line_id = mpCollisionGetEdgeUpperRLineID(coll_data->ceil_line_id);
 
@@ -1984,7 +1984,7 @@ void mpProcessRunCeilCollisionAdjNew(MPCollData *coll_data)
     {
         translate->x = object_pos.x;
 
-        mpCollisionGetUDCommonUnder(coll_data->ceil_line_id, &object_pos, NULL, &coll_data->ceil_flags, &coll_data->ceil_angle);
+        mpCollisionGetFCCommonCeil(coll_data->ceil_line_id, &object_pos, NULL, &coll_data->ceil_flags, &coll_data->ceil_angle);
 
         coll_data->coll_mask_stat |= MPCOLL_FLAG_CEIL;
     }
@@ -2000,7 +2000,7 @@ sb32 mpProcessCheckTestGroundCollisionAdjNew(MPCollData *coll_data, sb32(*proc_m
     Vec3f sp4C;
     Vec3f sp40;
     s32 line_id;
-    f32 ground_dist;
+    f32 floor_dist;
     s32 var_v0;
 
     coll_data->coll_mask_stat &= ~MPCOLL_FLAG_GROUND;
@@ -2019,13 +2019,13 @@ sb32 mpProcessCheckTestGroundCollisionAdjNew(MPCollData *coll_data, sb32(*proc_m
 
                                                                             ?
 
-    mpCollisionCheckGroundLineCollisionDiff(&sp4C, &sp40, &coll_data->line_coll_dist, &coll_data->ground_line_id, &coll_data->ground_flags, &coll_data->ground_angle)
+    mpCollisionCheckFloorLineCollisionDiff(&sp4C, &sp40, &coll_data->line_coll_dist, &coll_data->floor_line_id, &coll_data->floor_flags, &coll_data->floor_angle)
 
                                                                             :
 
-    mpCollisionCheckGroundLineCollisionSame(&sp4C, &sp40, &coll_data->line_coll_dist, &coll_data->ground_line_id, &coll_data->ground_flags, &coll_data->ground_angle);
+    mpCollisionCheckFloorLineCollisionSame(&sp4C, &sp40, &coll_data->line_coll_dist, &coll_data->floor_line_id, &coll_data->floor_flags, &coll_data->floor_angle);
 
-    if ((var_v0 != 0) && (!(coll_data->ground_flags & MPCOLL_VERTEX_CLL_PASS) || (coll_data->ground_line_id != coll_data->ignore_line_id)) && ((proc_map == NULL) || (proc_map(gobj) != FALSE)))
+    if ((var_v0 != 0) && (!(coll_data->floor_flags & MPCOLL_VERTEX_CLL_PASS) || (coll_data->floor_line_id != coll_data->ignore_line_id)) && ((proc_map == NULL) || (proc_map(gobj) != FALSE)))
     {
         coll_data->coll_mask_curr |= MPCOLL_FLAG_GROUND;
 
@@ -2037,11 +2037,11 @@ sb32 mpProcessCheckTestGroundCollisionAdjNew(MPCollData *coll_data, sb32(*proc_m
 
         if (line_id != -1)
         {
-            if ((mpCollisionGetLineTypeID(line_id) == nMPLineKindGround) && (mpCollisionGetUDCommonUpper(line_id, &sp40, &ground_dist, &coll_data->ground_flags, &coll_data->ground_angle) != 0) && (ground_dist > 0.0F))
+            if ((mpCollisionGetLineTypeID(line_id) == nMPLineKindFloor) && (mpCollisionGetFCCommonGround(line_id, &sp40, &floor_dist, &coll_data->floor_flags, &coll_data->floor_angle) != 0) && (floor_dist > 0.0F))
             {
-                coll_data->ground_line_id = line_id;
+                coll_data->floor_line_id = line_id;
 
-                if (!(coll_data->ground_flags & MPCOLL_VERTEX_CLL_PASS) || (coll_data->ground_line_id != coll_data->ignore_line_id))
+                if (!(coll_data->floor_flags & MPCOLL_VERTEX_CLL_PASS) || (coll_data->floor_line_id != coll_data->ignore_line_id))
                 {
                     if ((proc_map == NULL) || (proc_map(gobj) != FALSE))
                     {
@@ -2059,11 +2059,11 @@ sb32 mpProcessCheckTestGroundCollisionAdjNew(MPCollData *coll_data, sb32(*proc_m
 
         if (line_id != -1)
         {
-            if ((mpCollisionGetLineTypeID(line_id) == nMPLineKindGround) && (mpCollisionGetUDCommonUpper(line_id, &sp40, &ground_dist, &coll_data->ground_flags, &coll_data->ground_angle) != 0) && (ground_dist > 0.0F))
+            if ((mpCollisionGetLineTypeID(line_id) == nMPLineKindFloor) && (mpCollisionGetFCCommonGround(line_id, &sp40, &floor_dist, &coll_data->floor_flags, &coll_data->floor_angle) != 0) && (floor_dist > 0.0F))
             {
-                coll_data->ground_line_id = line_id;
+                coll_data->floor_line_id = line_id;
 
-                if (!(coll_data->ground_flags & MPCOLL_VERTEX_CLL_PASS) || (coll_data->ground_line_id != coll_data->ignore_line_id))
+                if (!(coll_data->floor_flags & MPCOLL_VERTEX_CLL_PASS) || (coll_data->floor_line_id != coll_data->ignore_line_id))
                 {
                     if ((proc_map == NULL) || (proc_map(gobj) != FALSE))
                     {
@@ -2090,30 +2090,30 @@ void func_ovl2_800DD59C(MPCollData *coll_data)
     MPObjectColl *map_coll = &coll_data->map_coll;
     Vec3f *translate = coll_data->p_translate;
     Vec3f object_pos;
-    f32 ground_dist;
+    f32 floor_dist;
 
     object_pos.x = translate->x;
     object_pos.y = translate->y + map_coll->bottom;
 
-    if (mpCollisionGetUDCommonUpper(coll_data->ground_line_id, &object_pos, &ground_dist, &coll_data->ground_flags, &coll_data->ground_angle) != FALSE)
+    if (mpCollisionGetFCCommonGround(coll_data->floor_line_id, &object_pos, &floor_dist, &coll_data->floor_flags, &coll_data->floor_angle) != FALSE)
     {
-        translate->y += ground_dist;
+        translate->y += floor_dist;
     }
     else
     {
-        mpCollisionGetLREdgeUpperL(coll_data->ground_line_id, &object_pos);
+        mpCollisionGetFloorEdgeL(coll_data->floor_line_id, &object_pos);
 
         if (object_pos.x <= translate->x)
         {
-            mpCollisionGetLREdgeUpperR(coll_data->ground_line_id, &object_pos);
+            mpCollisionGetFloorEdgeR(coll_data->floor_line_id, &object_pos);
         }
         translate->y = object_pos.y - map_coll->bottom;
         translate->x = object_pos.x;
 
-        mpCollisionGetUDCommonUpper(coll_data->ground_line_id, &object_pos, NULL, &coll_data->ground_flags, &coll_data->ground_angle);
+        mpCollisionGetFCCommonGround(coll_data->floor_line_id, &object_pos, NULL, &coll_data->floor_flags, &coll_data->floor_angle);
     }
     coll_data->coll_mask_stat |= MPCOLL_FLAG_GROUND;
-    coll_data->ground_dist = 0.0F;
+    coll_data->floor_dist = 0.0F;
 }
 
 // 0x800DD6A8
@@ -2124,27 +2124,27 @@ void func_ovl2_800DD6A8(MPCollData *coll_data)
     Vec3f object_pos;
     s32 edge_line_id;
     s32 is_collide_ground;
-    f32 ground_dist;
+    f32 floor_dist;
 
     object_pos.x = translate->x;
     object_pos.y = translate->y + map_coll->bottom;
 
-    if (mpCollisionGetUDCommonUpper(coll_data->ground_line_id, &object_pos, &ground_dist, &coll_data->ground_flags, &coll_data->ground_angle) != FALSE)
+    if (mpCollisionGetFCCommonGround(coll_data->floor_line_id, &object_pos, &floor_dist, &coll_data->floor_flags, &coll_data->floor_angle) != FALSE)
     {
-        translate->y += ground_dist;
+        translate->y += floor_dist;
 
         coll_data->coll_mask_stat |= MPCOLL_FLAG_GROUND;
-        coll_data->ground_dist = 0.0F;
+        coll_data->floor_dist = 0.0F;
 
         return;
     }
     is_collide_ground = FALSE;
 
-    mpCollisionGetLREdgeUpperL(coll_data->ground_line_id, &object_pos);
+    mpCollisionGetFloorEdgeL(coll_data->floor_line_id, &object_pos);
 
     if (translate->x <= object_pos.x)
     {
-        edge_line_id = mpCollisionGetEdgeUnderLLineID(coll_data->ground_line_id);
+        edge_line_id = mpCollisionGetEdgeUnderLLineID(coll_data->floor_line_id);
 
         if ((edge_line_id != -1) && (mpCollisionGetLineTypeID(edge_line_id) == nMPLineKindRWall))
         {
@@ -2153,9 +2153,9 @@ void func_ovl2_800DD6A8(MPCollData *coll_data)
     }
     else
     {
-        mpCollisionGetLREdgeUpperR(coll_data->ground_line_id, &object_pos);
+        mpCollisionGetFloorEdgeR(coll_data->floor_line_id, &object_pos);
 
-        edge_line_id = mpCollisionGetEdgeUnderRLineID(coll_data->ground_line_id);
+        edge_line_id = mpCollisionGetEdgeUnderRLineID(coll_data->floor_line_id);
 
         if ((edge_line_id != -1) && (mpCollisionGetLineTypeID(edge_line_id) == nMPLineKindLWall))
         {
@@ -2168,9 +2168,9 @@ void func_ovl2_800DD6A8(MPCollData *coll_data)
     {
         translate->x = object_pos.x;
 
-        mpCollisionGetUDCommonUpper(coll_data->ground_line_id, &object_pos, NULL, &coll_data->ground_flags, &coll_data->ground_angle);
+        mpCollisionGetFCCommonGround(coll_data->floor_line_id, &object_pos, NULL, &coll_data->floor_flags, &coll_data->floor_angle);
 
         coll_data->coll_mask_stat |= MPCOLL_FLAG_GROUND;
-        coll_data->ground_dist = 0.0F;
+        coll_data->floor_dist = 0.0F;
     }
 }

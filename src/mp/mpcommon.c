@@ -18,7 +18,7 @@ sb32 (*sMPCommonProcPass)(GObj*);
 // // // // // // // // // // // //
 
 // 0x800DD820 - new file?
-sb32 mpCommonCheckSetFighterCliffEdge(GObj *fighter_gobj, s32 ground_line_id)
+sb32 mpCommonCheckSetFighterCliffEdge(GObj *fighter_gobj, s32 floor_line_id)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     MPObjectColl *map_coll = &fp->coll_data.map_coll;
@@ -27,15 +27,15 @@ sb32 mpCommonCheckSetFighterCliffEdge(GObj *fighter_gobj, s32 ground_line_id)
     Vec3f sp4C;
     Vec3f angle;
     u32 flags;
-    f32 ground_dist;
+    f32 floor_dist;
 
-    if (mpCollisionCheckExistLineID(ground_line_id) == FALSE)
+    if (mpCollisionCheckExistLineID(floor_line_id) == FALSE)
     {
         return FALSE;
     }
     else
     {
-        mpCollisionGetLREdgeUpperL(ground_line_id, &edge_pos);
+        mpCollisionGetFloorEdgeL(floor_line_id, &edge_pos);
 
         if (translate->x <= edge_pos.x)
         {
@@ -43,9 +43,9 @@ sb32 mpCommonCheckSetFighterCliffEdge(GObj *fighter_gobj, s32 ground_line_id)
             {
                 edge_pos.x += 40.0F;
 
-                mpCollisionGetUDCommonUpper(ground_line_id, &edge_pos, &ground_dist, &flags, &angle);
+                mpCollisionGetFCCommonGround(floor_line_id, &edge_pos, &floor_dist, &flags, &angle);
 
-                edge_pos.y += ground_dist;
+                edge_pos.y += floor_dist;
                 sp4C.x = map_coll->width + edge_pos.x;
                 sp4C.y = (map_coll->center + edge_pos.y) - map_coll->bottom;
 
@@ -59,13 +59,13 @@ sb32 mpCommonCheckSetFighterCliffEdge(GObj *fighter_gobj, s32 ground_line_id)
         }
         else if ((fp->lr == +1) && (fp->input.pl.stick_range.x < 60))
         {
-            mpCollisionGetLREdgeUpperR(ground_line_id, &edge_pos);
+            mpCollisionGetFloorEdgeR(floor_line_id, &edge_pos);
 
             edge_pos.x -= 40.0F;
 
-            mpCollisionGetUDCommonUpper(ground_line_id, &edge_pos, &ground_dist, &flags, &angle);
+            mpCollisionGetFCCommonGround(floor_line_id, &edge_pos, &floor_dist, &flags, &angle);
 
-            edge_pos.y += ground_dist;
+            edge_pos.y += floor_dist;
             sp4C.x = edge_pos.x - map_coll->width;
             sp4C.y = (map_coll->center + edge_pos.y) - map_coll->bottom;
 
@@ -82,10 +82,10 @@ sb32 mpCommonCheckSetFighterCliffEdge(GObj *fighter_gobj, s32 ground_line_id)
 setground: // ???
     *translate = edge_pos; // This is what causes the infamous Dream Land teleport
 
-    fp->coll_data.ground_line_id = ground_line_id;
-    fp->coll_data.ground_flags = flags;
-    fp->coll_data.ground_angle = angle;
-    fp->coll_data.ground_dist = 0.0F;
+    fp->coll_data.floor_line_id = floor_line_id;
+    fp->coll_data.floor_flags = flags;
+    fp->coll_data.floor_angle = angle;
+    fp->coll_data.floor_dist = 0.0F;
 
     fp->coll_data.coll_mask_stat |= MPCOLL_VERTEX_CLL_CLIFF;
 
@@ -93,7 +93,7 @@ setground: // ???
 }
 
 // 0x800DDA6C
-sb32 mpCommonCheckSetFighterEdge(GObj *fighter_gobj, s32 ground_line_id)
+sb32 mpCommonCheckSetFighterEdge(GObj *fighter_gobj, s32 floor_line_id)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     MPObjectColl *map_coll = &fp->coll_data.map_coll;
@@ -103,19 +103,19 @@ sb32 mpCommonCheckSetFighterEdge(GObj *fighter_gobj, s32 ground_line_id)
     Vec3f sp40;
     Vec3f angle;
     u32 flags;
-    f32 ground_dist;
+    f32 floor_dist;
 
-    if (mpCollisionCheckExistLineID(ground_line_id) == FALSE)
+    if (mpCollisionCheckExistLineID(floor_line_id) == FALSE)
     {
         return FALSE;
     }
     else
     {
-        mpCollisionGetLREdgeUpperL(ground_line_id, &edge_pos);
+        mpCollisionGetFloorEdgeL(floor_line_id, &edge_pos);
 
         if (translate->x <= edge_pos.x)
         {
-            if (mpCollisionGetUDCommonUpper(ground_line_id, &edge_pos, &ground_dist, &flags, &angle));
+            if (mpCollisionGetFCCommonGround(floor_line_id, &edge_pos, &floor_dist, &flags, &angle));
 
             sp4C.x = edge_pos.x + 1.0F;
             sp4C.y = edge_pos.y + 1.0F;
@@ -130,9 +130,9 @@ sb32 mpCommonCheckSetFighterEdge(GObj *fighter_gobj, s32 ground_line_id)
         }
         else
         {
-            mpCollisionGetLREdgeUpperR(ground_line_id, &edge_pos);
+            mpCollisionGetFloorEdgeR(floor_line_id, &edge_pos);
 
-            if (mpCollisionGetUDCommonUpper(ground_line_id, &edge_pos, &ground_dist, &flags, &angle));
+            if (mpCollisionGetFCCommonGround(floor_line_id, &edge_pos, &floor_dist, &flags, &angle));
 
             sp4C.x = edge_pos.x - 1.0F;
             sp4C.y = edge_pos.y + 1.0F;
@@ -151,10 +151,10 @@ sb32 mpCommonCheckSetFighterEdge(GObj *fighter_gobj, s32 ground_line_id)
 setground: // Absolutely ridiculous match
     *translate = edge_pos;
 
-    fp->coll_data.ground_line_id = ground_line_id;
-    fp->coll_data.ground_flags = flags;
-    fp->coll_data.ground_angle = angle;
-    fp->coll_data.ground_dist = 0.0F;
+    fp->coll_data.floor_line_id = floor_line_id;
+    fp->coll_data.floor_flags = flags;
+    fp->coll_data.floor_angle = angle;
+    fp->coll_data.floor_dist = 0.0F;
 
     return TRUE;
 }
@@ -162,7 +162,7 @@ setground: // Absolutely ridiculous match
 // 0x800DDC50
 sb32 mpCommonRunFighterAllCollisions(MPCollData *coll_data, GObj *fighter_gobj, u32 flags)
 {
-    s32 ground_line_id = coll_data->ground_line_id;
+    s32 floor_line_id = coll_data->floor_line_id;
     sb32 sp20 = FALSE;
 
     if (mpProcessCheckTestLWallCollision(coll_data) != FALSE)
@@ -188,13 +188,13 @@ sb32 mpCommonRunFighterAllCollisions(MPCollData *coll_data, GObj *fighter_gobj, 
     }
     else if (flags & MPCOLL_PROC_TYPE_CLIFFEDGE)
     {
-        mpCommonCheckSetFighterCliffEdge(fighter_gobj, ground_line_id);
+        mpCommonCheckSetFighterCliffEdge(fighter_gobj, floor_line_id);
 
         coll_data->is_coll_end = TRUE;
     }
     else if (flags & MPCOLL_PROC_TYPE_STOPEDGE)
     {
-        if (mpCommonCheckSetFighterEdge(fighter_gobj, ground_line_id) != FALSE)
+        if (mpCommonCheckSetFighterEdge(fighter_gobj, floor_line_id) != FALSE)
         {
             sp20 = TRUE;
         }
@@ -202,7 +202,7 @@ sb32 mpCommonRunFighterAllCollisions(MPCollData *coll_data, GObj *fighter_gobj, 
     }
     else coll_data->is_coll_end = TRUE;
 
-    if (mpProcessCheckTestGroundCollision(coll_data, ground_line_id) != FALSE)
+    if (mpProcessCheckTestGroundCollision(coll_data, floor_line_id) != FALSE)
     {
         func_ovl2_800DD59C(coll_data);
 
@@ -309,17 +309,17 @@ sb32 func_ovl2_800DDF74(GObj *fighter_gobj, FTStruct *fp, FTAttributes *attr, DO
     f32 ternary;
     f32 translate_y;
 
-    if (mpCollisionGetUDCommonUpper(fp->coll_data.ground_line_id, vec, &sp48, &sp3C, &sp64) != FALSE)
+    if (mpCollisionGetFCCommonGround(fp->coll_data.floor_line_id, vec, &sp48, &sp3C, &sp64) != FALSE)
     {
         translate_y = (vec->y + sp48) - DObjGetStruct(fighter_gobj)->translate.vec.f.y;
     }
     else
     {
-        mpCollisionGetLREdgeUpperL(fp->coll_data.ground_line_id, &vec_translate);
+        mpCollisionGetFloorEdgeL(fp->coll_data.floor_line_id, &vec_translate);
 
         if (vec_translate.x < vec->x)
         {
-            mpCollisionGetLREdgeUpperR(fp->coll_data.ground_line_id, &vec_translate);
+            mpCollisionGetFloorEdgeR(fp->coll_data.floor_line_id, &vec_translate);
         }
         translate_y = vec_translate.y - DObjGetStruct(fighter_gobj)->translate.vec.f.y;
     }
@@ -369,7 +369,7 @@ void mpCommonUpdateFighterSlopeContour(GObj *fighter_gobj)
 
     if (fp->ga == nMPKineticsGround)
     {
-        if ((fp->coll_data.ground_line_id != -1) && (fp->coll_data.ground_line_id != -2) && (fp->hitlag_tics <= 0))
+        if ((fp->coll_data.floor_line_id != -1) && (fp->coll_data.floor_line_id != -2) && (fp->hitlag_tics <= 0))
         {
             if (fp->slope_contour & FTSLOPECONTOUR_FLAG_RFOOT)
             {
@@ -397,7 +397,7 @@ void mpCommonUpdateFighterSlopeContour(GObj *fighter_gobj)
             }
             if (fp->slope_contour & FTSLOPECONTOUR_FLAG_FULL)
             {
-                DObjGetStruct(fighter_gobj)->rotate.vec.f.x = (syUtilsArcTan2(fp->coll_data.ground_angle.x, fp->coll_data.ground_angle.y) * fp->lr);
+                DObjGetStruct(fighter_gobj)->rotate.vec.f.x = (syUtilsArcTan2(fp->coll_data.floor_angle.x, fp->coll_data.floor_angle.y) * fp->lr);
             }
         }
     }
@@ -796,7 +796,7 @@ sb32 mpCommonProcFighterDamage(MPCollData *coll_data, GObj *fighter_gobj, u32 fl
         }
         else
         {
-            if (syVectorAngleDiff3D(&coll_data->pos_correct, &coll_data->ground_angle) > F_CLC_DTOR32(110.0F))
+            if (syVectorAngleDiff3D(&coll_data->pos_correct, &coll_data->floor_angle) > F_CLC_DTOR32(110.0F))
             {
                 func_ovl2_800DD59C(coll_data);
                 mpCommonSetFighterLandingParams(fighter_gobj);
@@ -824,7 +824,7 @@ sb32 mpCommonProcFighterDamage(MPCollData *coll_data, GObj *fighter_gobj, u32 fl
                     {
                         fp->status_vars.common.damage.coll_mask_ignore |= MPCOLL_FLAG_GROUND;
 
-                        fp->status_vars.common.damage.wall_collide_angle = coll_data->ground_angle;
+                        fp->status_vars.common.damage.wall_collide_angle = coll_data->floor_angle;
                     }
                 }
                 else mpProcessSetCollProjectGroundID(coll_data);

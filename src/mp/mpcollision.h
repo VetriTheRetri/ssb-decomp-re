@@ -6,33 +6,33 @@
 #include <sys/objdef.h>
 #include <mp/mpdef.h>
 
-extern f32 mpCollisionGetLineDistanceUD(f32 opx, s32 vx1, s32 vy1, s32 vx2, s32 vy2);
+extern f32 mpCollisionGetLineDistanceFC(f32 opx, s32 vx1, s32 vy1, s32 vx2, s32 vy2);
 extern f32 mpCollisionGetLineDistanceLR(f32 opy, s32 vx1, s32 vy1, s32 vx2, s32 vy2);
-extern sb32 mpCollisionGetUDCommon(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flags, Vec3f *angle, s32 ud);
-extern sb32 mpCollisionGetUDCommonUpper(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flags, Vec3f *angle);
-extern sb32 mpCollisionGetUDCommonUnder(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flags, Vec3f *angle);
+extern sb32 mpCollisionGetFCCommon(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flags, Vec3f *angle, s32 ud);
+extern sb32 mpCollisionGetFCCommonGround(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flags, Vec3f *angle);
+extern sb32 mpCollisionGetFCCommonCeil(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flags, Vec3f *angle);
 extern sb32 mpCollisionGetLRCommon(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flags, Vec3f *angle, s32 lr);
-extern sb32 mpCollisionGetLRCommonLeft(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flags, Vec3f *angle);
-extern sb32 mpCollisionGetLRCommonRight(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flags, Vec3f *angle);
+extern sb32 mpCollisionGetLRCommonLWall(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flags, Vec3f *angle);
+extern sb32 mpCollisionGetLRCommonRWall(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flags, Vec3f *angle);
 extern void mpCollisionGetLREdge(s32 line_id, Vec3f *object_pos, s32 lr);
-extern void mpCollisionGetLREdgeUpperR(s32 line_id, Vec3f *object_pos);
-extern void mpCollisionGetLREdgeUpperL(s32 line_id, Vec3f *object_pos);
-extern void mpCollisionGetLREdgeUnderR(s32 line_id, Vec3f *object_pos);
-extern void mpCollisionGetLREdgeUnderL(s32 line_id, Vec3f *object_pos);
-extern void mpCollisionGetUDEdge(s32 line_id, Vec3f *object_pos, s32 ud);
-extern void mpCollisionGetUDEdgeUpperL(s32 line_id, Vec3f *object_pos);
-extern void mpCollisionGetUDEdgeUnderL(s32 line_id, Vec3f *object_pos);
-extern void mpCollisionGetUDEdgeUpperR(s32 line_id, Vec3f *object_pos);
-extern void mpCollisionGetUDEdgeUnderR(s32 line_id, Vec3f *object_pos);
-extern void mpCollisionGetUDAngle(Vec3f *angle, s32 v1x, s32 v1y, s32 v2x, s32 v2y, s32 lr);
-extern sb32 mpCollisionCheckGroundSurfaceTilt(s32 v1x, s32 v1y, s32 v2x, s32 v2y, f32 d1x, f32 d1y, f32 d2x, f32 d2y,
+extern void mpCollisionGetFloorEdgeR(s32 line_id, Vec3f *object_pos);
+extern void mpCollisionGetFloorEdgeL(s32 line_id, Vec3f *object_pos);
+extern void mpCollisionGetCeilEdgeR(s32 line_id, Vec3f *object_pos);
+extern void mpCollisionGetCeilEdgeL(s32 line_id, Vec3f *object_pos);
+extern void mpCollisionGetFCEdge(s32 line_id, Vec3f *object_pos, s32 ud);
+extern void mpCollisionGetLWallEdgeU(s32 line_id, Vec3f *object_pos);
+extern void mpCollisionGetLWallEdgeD(s32 line_id, Vec3f *object_pos);
+extern void mpCollisionGetRWallEdgeU(s32 line_id, Vec3f *object_pos);
+extern void mpCollisionGetRWallEdgeD(s32 line_id, Vec3f *object_pos);
+extern void mpCollisionGetFCAngle(Vec3f *angle, s32 v1x, s32 v1y, s32 v2x, s32 v2y, s32 lr);
+extern sb32 mpCollisionCheckFloorSurfaceTilt(s32 v1x, s32 v1y, s32 v2x, s32 v2y, f32 d1x, f32 d1y, f32 d2x, f32 d2y,
 										f32 *dfx, f32 *dfy);
-extern sb32 mpCollisionCheckGroundLineCollisionSame(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id,
+extern sb32 mpCollisionCheckFloorLineCollisionSame(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id,
 											  u32 *stand_coll_flags, Vec3f *angle);
-extern sb32 mpCollisionCheckGroundLineCollisionDiff(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id,
+extern sb32 mpCollisionCheckFloorLineCollisionDiff(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id,
 											  u32 *stand_coll_flags, Vec3f *angle);
 
-extern sb32 mpCollisionCheckUDSurfaceFlat(s32 v1x, s32 v1y, s32 vpos_y, f32 vpdist_x, f32 vpdist_y, f32 vtdist_x, f32 vtdist_y, f32 *arg7, f32 *arg8);
+extern sb32 mpCollisionCheckFCSurfaceFlat(s32 v1x, s32 v1y, s32 vpos_y, f32 vpdist_x, f32 vpdist_y, f32 vtdist_x, f32 vtdist_y, f32 *arg7, f32 *arg8);
 
 extern sb32 mpCollisionCheckCeilSurfaceTilt(s32 v1x, s32 v1y, s32 v2x, s32 v2y, f32 d1x, f32 d1y, f32 d2x, f32 d2y, f32 *dfx,
 									  f32 *dfy);
@@ -79,8 +79,8 @@ extern void mpCollisionInitLineTypesAll();
 extern void func_ovl2_800FB31C();
 extern void func_ovl2_800FB554();
 extern void mpCollisionAllocYakumono(DObjDesc *dobjdesc);
-extern void gMPCollisionUpdateBoundsCurrent();
-extern void gMPCollisionUpdateBoundsDiff();
+extern void mpCollisionUpdateBoundsCurrent();
+extern void mpCollisionUpdateBoundsDiff();
 extern void mpCollisionPlayYakumonoAnim(GObj *ground_gobj);
 extern void mpCollisionAdvanceUpdateTic(GObj *ground_gobj);
 extern void mpCollisionInitYakumonoAll();

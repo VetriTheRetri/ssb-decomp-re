@@ -4,10 +4,10 @@
 #include "ittypes.h"
 
 // Process for Left/Right Wall collision; check and return whether item collided with ground
-sb32 itMapProcLRWallCheckGround(MPCollData* coll_data, GObj* item_gobj, u32 flags);
+sb32 itMapProcLRWallCheckFloor(MPCollData* coll_data, GObj* item_gobj, u32 flags);
 
 // Test for Left/Right Wall collision; return whether item collided with ground
-sb32 itMapTestLRWallCheckGround(GObj* item_gobj);
+sb32 itMapTestLRWallCheckFloor(GObj* item_gobj);
 
 // Test for Left/Right Wall collision; if item does not collide with ground, run proc_map and return FALSE; if collision
 // with ground occurs, return TRUE; put simply, it checks if the item remains in a grounded state
@@ -29,7 +29,7 @@ sb32 itMapTestAllCollisionFlag(GObj* item_gobj, u32 flag);
 sb32 itMapCheckCollideAllRebound(GObj* item_gobj, u32 check_flags, f32 mod_vel, Vec3f* pos);
 
 // Set recoil velocity when item hits ground
-void itMapSetGroundRebound(Vec3f* vel, Vec3f* ground_angle, f32 ground_rebound);
+void itMapSetGroundRebound(Vec3f* vel, Vec3f* floor_angle, f32 ground_rebound);
 
 // Check if item should be destroyed upon landing after being dropped / thrown
 sb32 itMapCheckDestroyDropped(GObj* item_gobj, f32 common_rebound, f32 ground_rebound,

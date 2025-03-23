@@ -199,7 +199,7 @@ sb32 ftPikachuSpecialHiProcPass(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (!(fp->coll_data.ground_flags & MPCOLL_VERTEX_CLL_PASS) || (fp->status_vars.pikachu.specialhi.pass_timer >= FTPIKACHU_QUICKATTACK_PASS_BUFFER_MAX))
+    if (!(fp->coll_data.floor_flags & MPCOLL_VERTEX_CLL_PASS) || (fp->status_vars.pikachu.specialhi.pass_timer >= FTPIKACHU_QUICKATTACK_PASS_BUFFER_MAX))
     {
         return TRUE;
     }
@@ -220,7 +220,7 @@ void ftPikachuSpecialAirHiProcMap(GObj *fighter_gobj)
             ftCommonCliffCatchSetStatus(fighter_gobj);
 
         }
-        else if (syVectorAngleDiff3D(&fp->coll_data.ground_angle, &fp->physics.vel_air) > FTPIKACHU_QUICKATTACK_HALT_ANGLE)
+        else if (syVectorAngleDiff3D(&fp->coll_data.floor_angle, &fp->physics.vel_air) > FTPIKACHU_QUICKATTACK_HALT_ANGLE)
         {
             mpCommonSetFighterGround(fp);
             ftPikachuSpecialHiEndSetStatus(fighter_gobj);
@@ -289,13 +289,13 @@ void ftPikachuSpecialHiSetStatus(GObj *fighter_gobj)
     {
         sqrt_stick_range = F_CONTROLLER_RANGE_MAX;
     }
-    if (!(sqrt_stick_range < FTPIKACHU_QUICKATTACK_STICK_RANGE_MIN) && !(fp->coll_data.ground_flags & MPCOLL_VERTEX_CLL_PASS))
+    if (!(sqrt_stick_range < FTPIKACHU_QUICKATTACK_STICK_RANGE_MIN) && !(fp->coll_data.floor_flags & MPCOLL_VERTEX_CLL_PASS))
     {
         stick_range.x = fp->input.pl.stick_range.x;
         stick_range.y = fp->input.pl.stick_range.y;
         stick_range.z = 0.0F;
 
-        if (syVectorAngleDiff3D(&fp->coll_data.ground_angle, &stick_range) < F_CST_DTOR32(90.0F)) goto block_end; /* HALF_PI32 */
+        if (syVectorAngleDiff3D(&fp->coll_data.floor_angle, &stick_range) < F_CST_DTOR32(90.0F)) goto block_end; /* HALF_PI32 */
 
         fp->status_vars.pikachu.specialhi.stick_range.x = stick_range.x;
         fp->status_vars.pikachu.specialhi.stick_range.y = stick_range.y;

@@ -296,9 +296,9 @@ void itMSBombAttachedUpdateSurface(GObj *item_gobj)
         }
         if (coll_data->coll_mask_curr & MPCOLL_FLAG_GROUND)
         {
-            angle = coll_data->ground_angle;
+            angle = coll_data->floor_angle;
 
-            ip->attach_line_id = coll_data->ground_line_id;
+            ip->attach_line_id = coll_data->floor_line_id;
         }
     }
     else

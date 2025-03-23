@@ -391,7 +391,7 @@ void itMBallOpenInitVars(GObj *item_gobj)
 
     func_800269C0_275C0(nSYAudioFGMMBallOpen);
 
-    ip->attach_line_id = ip->coll_data.ground_line_id;
+    ip->attach_line_id = ip->coll_data.floor_line_id;
 
     ip->is_attach_surface = TRUE;
 

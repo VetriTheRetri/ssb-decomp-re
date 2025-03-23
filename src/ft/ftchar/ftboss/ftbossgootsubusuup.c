@@ -27,11 +27,11 @@ void ftBossGootsubusuUpProcMap(GObj *fighter_gobj)
 
     fp = ftGetStruct(fighter_gobj);
 
-    if (-fp->coll_data.ground_dist >= 3000.0F)
+    if (-fp->coll_data.floor_dist >= 3000.0F)
     {
         DObj *joint = DObjGetStruct(fighter_gobj);
 
-        joint->translate.vec.f.y += (fp->coll_data.ground_dist + 3000.0F);
+        joint->translate.vec.f.y += (fp->coll_data.floor_dist + 3000.0F);
 
         ftBossGootsubusuWaitSetStatus(fighter_gobj);
     }

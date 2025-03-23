@@ -74,7 +74,7 @@ sb32 grYosterCheckFighterCloudStand(s32 cloud_id)
 
         if (fp->ga == nMPKineticsGround)
         {
-            if ((fp->coll_data.ground_line_id != -2) && (mpCollisionSetDObjNoID(fp->coll_data.ground_line_id) == line_id))
+            if ((fp->coll_data.floor_line_id != -2) && (mpCollisionSetDObjNoID(fp->coll_data.floor_line_id) == line_id))
             {
                 return TRUE;
             }

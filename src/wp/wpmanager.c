@@ -289,7 +289,7 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPDesc *wp_desc, Vec3f *spawn_pos, 
     wp->coll_data.p_map_coll = &wp->coll_data.map_coll;
 
     wp->coll_data.ignore_line_id = -1;
-    wp->coll_data.ground_line_id = -1;
+    wp->coll_data.floor_line_id = -1;
     wp->coll_data.ceil_line_id = -1;
     wp->coll_data.lwall_line_id = -1;
     wp->coll_data.rwall_line_id = -1;

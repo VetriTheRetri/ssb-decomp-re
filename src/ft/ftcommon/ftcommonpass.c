@@ -26,7 +26,7 @@ void ftCommonPassSetStatusParam(GObj *fighter_gobj, s32 status_id, f32 frame_beg
 
     fp->physics.vel_air.y = 0.0F;
 
-    fp->coll_data.ignore_line_id = fp->coll_data.ground_line_id;
+    fp->coll_data.ignore_line_id = fp->coll_data.floor_line_id;
 
     fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
 }
@@ -46,7 +46,7 @@ void ftCommonGuardPassSetStatus(GObj *fighter_gobj)
 // 0x80141E60
 sb32 ftCommonPassCheckInputSuccess(FTStruct *fp)
 {
-    if ((fp->input.pl.stick_range.y <= FTCOMMON_PASS_STICK_RANGE_MIN) && (fp->tap_stick_y < FTCOMMON_PASS_BUFFER_FRAMES_MAX) && (fp->coll_data.ground_flags & MPCOLL_VERTEX_CLL_PASS))
+    if ((fp->input.pl.stick_range.y <= FTCOMMON_PASS_STICK_RANGE_MIN) && (fp->tap_stick_y < FTCOMMON_PASS_BUFFER_FRAMES_MAX) && (fp->coll_data.floor_flags & MPCOLL_VERTEX_CLL_PASS))
     {
         return TRUE;
     }

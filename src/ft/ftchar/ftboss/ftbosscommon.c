@@ -23,9 +23,9 @@ void ftBossCommonCheckEdgeInvertLR(GObj *fighter_gobj)
     Vec3f pos_left;
     Vec3f pos_right;
 
-    mpCollisionGetLREdgeUpperL(fp->passive_vars.boss.p->current_line_id, &pos_left);
+    mpCollisionGetFloorEdgeL(fp->passive_vars.boss.p->current_line_id, &pos_left);
 
-    mpCollisionGetLREdgeUpperR(fp->passive_vars.boss.p->current_line_id, &pos_right);
+    mpCollisionGetFloorEdgeR(fp->passive_vars.boss.p->current_line_id, &pos_right);
 
     if (((((pos_left.x + pos_right.x) * 0.5F) - DObjGetStruct(fighter_gobj)->translate.vec.f.x) * fp->lr) < 0.0F)
     {
@@ -49,9 +49,9 @@ void ftBossCommonGetRandomEdgeLR(s32 line_id, Vec3f *pos)
 {
     if ((syUtilsGetRandomUShort() % 2) != 0)
     {
-        mpCollisionGetLREdgeUpperL(line_id, pos);
+        mpCollisionGetFloorEdgeL(line_id, pos);
     }
-    else mpCollisionGetLREdgeUpperR(line_id, pos);
+    else mpCollisionGetFloorEdgeR(line_id, pos);
 }
 
 // 0x801580E0
@@ -61,15 +61,15 @@ void ftBossCommonGotoTargetEdge(GObj *fighter_gobj, Vec3f *pos)
     FTStruct *player_fp = ftGetStruct(fp->passive_vars.boss.p->target_gobj);
     ftBossInfo *boss = fp->passive_vars.boss.p;
 
-    if ((player_fp->coll_data.ground_line_id != -1) && (player_fp->coll_data.ground_line_id != -2))
+    if ((player_fp->coll_data.floor_line_id != -1) && (player_fp->coll_data.floor_line_id != -2))
     {
-        fp->passive_vars.boss.p->current_line_id = player_fp->coll_data.ground_line_id;
+        fp->passive_vars.boss.p->current_line_id = player_fp->coll_data.floor_line_id;
     }
     else
     {
-        if ((fp->coll_data.ground_line_id != -1) && (player_fp->coll_data.ground_line_id != -2))
+        if ((fp->coll_data.floor_line_id != -1) && (player_fp->coll_data.floor_line_id != -2))
         {
-            fp->passive_vars.boss.p->current_line_id = fp->coll_data.ground_line_id;
+            fp->passive_vars.boss.p->current_line_id = fp->coll_data.floor_line_id;
         }
         else fp->passive_vars.boss.p->current_line_id = fp->passive_vars.boss.p->default_line_id;
     }
@@ -101,7 +101,7 @@ void ftBossCommonSetPosAddVelPlayer(GObj *fighter_gobj, Vec3f *pos, f32 vel_x, f
 
     translate.x += ((syUtilsGetRandomUShort() % 2) != 0) ? vel_x : -vel_x;
 
-    if (mpCollisionGetUDCommonUpper(fp_unk->coll_data.ground_line_id, &translate, &y, NULL, NULL) != FALSE)
+    if (mpCollisionGetFCCommonGround(fp_unk->coll_data.floor_line_id, &translate, &y, NULL, NULL) != FALSE)
     {
         pos->x = translate.x;
     }
@@ -109,7 +109,7 @@ void ftBossCommonSetPosAddVelPlayer(GObj *fighter_gobj, Vec3f *pos, f32 vel_x, f
     {
         translate.x = (x < translate.x) ? x - vel_x : x + vel_x;
 
-        pos->x = (mpCollisionGetUDCommonUpper(fp_unk->coll_data.ground_line_id, &translate, &y, NULL, NULL) != FALSE) ? translate.x : x;
+        pos->x = (mpCollisionGetFCCommonGround(fp_unk->coll_data.floor_line_id, &translate, &y, NULL, NULL) != FALSE) ? translate.x : x;
     }
     pos->y = (translate.y + y + vel_y);
     pos->z = 0.0F;
@@ -135,14 +135,14 @@ void ftBossCommonGetPositionCenter(s32 line_id, Vec3f *pos_input)
     Vec3f pos_right;
     f32 y;
 
-    mpCollisionGetLREdgeUpperL(line_id, &pos_left);
-    mpCollisionGetLREdgeUpperR(line_id, &pos_right);
+    mpCollisionGetFloorEdgeL(line_id, &pos_left);
+    mpCollisionGetFloorEdgeR(line_id, &pos_right);
 
     pos_input->x = (pos_left.x + pos_right.x) * 0.5F;
     pos_input->z = 0.0F;
     pos_input->y = 0.0F;
 
-    mpCollisionGetUDCommonUpper(line_id, pos_input, &y, NULL, NULL);
+    mpCollisionGetFCCommonGround(line_id, pos_input, &y, NULL, NULL);
 
     pos_input->y += y;
 }
@@ -197,7 +197,7 @@ void ftBossCommonSetDefaultLineID(GObj *fighter_gobj)
 {
     FTStruct *fp;
 
-    if (mpCollisionGetLineCountType(nMPLineKindGround) == 0)
+    if (mpCollisionGetLineCountType(nMPLineKindFloor) == 0)
     {
         while (TRUE)
         {
@@ -207,7 +207,7 @@ void ftBossCommonSetDefaultLineID(GObj *fighter_gobj)
     }
     fp = ftGetStruct(fighter_gobj);
 
-    mpCollisionGetLineIDsTypeCount(nMPLineKindGround, 1, &fp->passive_vars.boss.p->default_line_id);
+    mpCollisionGetLineIDsTypeCount(nMPLineKindFloor, 1, &fp->passive_vars.boss.p->default_line_id);
 }
 
 // 0x801586A0

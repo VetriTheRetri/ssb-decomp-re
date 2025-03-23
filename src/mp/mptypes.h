@@ -96,7 +96,7 @@ struct MPMapObjContainer
 	MPMapObjData mapobjs[1];
 };
 
-struct MPLineGroup // This is all getting hard to wrap one's head around, but this is a group of line types (ground, ceil, rwall, lwall)
+struct MPLineGroup 					// This is all getting hard to wrap one's head around, but this is a group of line types (ground, ceil, rwall, lwall)
 {
 	u16 line_count, *line_id;
 };
@@ -116,10 +116,10 @@ struct MPAllBounds
 
 struct MPObjectColl
 {
-	f32 top;
-	f32 center;
-	f32 bottom;
-	f32 width;
+	f32 top;						// Diamond collision top
+	f32 center;						// Diamond collision center
+	f32 bottom;						// Diamond collision bottom
+	f32 width;						// Diamond collision width
 };
 
 struct MPCollData
@@ -136,19 +136,16 @@ struct MPCollData
 	u16 coll_mask_prev;			 	// Previous collision flags?
 	u16 coll_mask_curr;				// Current collision flags
 	u16 coll_mask_unk;			 	// ???
-	u16 coll_mask_stat;			 	// Used exclusively by object to transition between
-								 	// action states? Also, persists unlike the above three.
+	u16 coll_mask_stat;			 	// Used exclusively by object to transition between action states? Also, persists unlike the above three.
 	u16 coll_update_tic;		 	// Updates each frame?
-	s32 ewall_line_id;			 	// Line ID of wall that is right under the ledge the
-								 	// object is standing on?
-	sb32 is_coll_end;			 	// Collision task completion bool? Main collision loop's
-								 	// second condition is that this is FALSE
+	s32 ewall_line_id;			 	// Line ID of wall that is right under the ledge the object is standing on?
+	sb32 is_coll_end;			 	// Collision task completion bool? Main collision loop's second condition is that this is FALSE
 	Vec3f line_coll_dist;	 		// Distance to nearest collision?
 
-	s32 ground_line_id; 			// Ground collision line ID
-	f32 ground_dist;				// Distance to ground collision directly under object
-	u32 ground_flags;				// Ground collision attributes
-	Vec3f ground_angle; 			// Ground collision angle
+	s32 floor_line_id; 				// Floor collision line ID
+	f32 floor_dist;					// Floor to ground collision directly under object
+	u32 floor_flags;				// Floor collision attributes
+	Vec3f floor_angle; 				// Floor collision angle
 
 	s32 ceil_line_id; 				// Ceiling collision line ID
 	u32 ceil_flags;	  				// Ceiling collision attributes

@@ -79,7 +79,7 @@ void ftCommonEntryNullProcUpdate(GObj *fighter_gobj)
 
                 DObjGetStruct(fighter_gobj)->translate.vec.f = fp->entry_pos;
 
-                fp->coll_data.ground_line_id = fp->status_vars.common.entry.ground_line_id;
+                fp->coll_data.floor_line_id = fp->status_vars.common.entry.floor_line_id;
 
                 ftCommonWaitSetStatus(fighter_gobj);
             }
@@ -121,7 +121,7 @@ void ftCommonAppearProcUpdate(GObj *fighter_gobj)
 
         DObjGetStruct(fighter_gobj)->translate.vec.f = fp->entry_pos;
 
-        fp->coll_data.ground_line_id = fp->status_vars.common.entry.ground_line_id;
+        fp->coll_data.floor_line_id = fp->status_vars.common.entry.floor_line_id;
 
         if (fp->fkind == nFTKindBoss)
         {
@@ -185,7 +185,7 @@ void ftCommonAppearSetStatus(GObj *fighter_gobj)
 
     fp->lr = 0;
 
-    fp->status_vars.common.entry.ground_line_id = fp->coll_data.ground_line_id;
+    fp->status_vars.common.entry.floor_line_id = fp->coll_data.floor_line_id;
 
     status_id = dFTCommonEntryAppearStatusIDs[fp->fkind][entry_id];
 

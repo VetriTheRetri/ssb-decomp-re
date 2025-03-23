@@ -26,7 +26,7 @@ GObj* ftCommonGetFindItem(GObj *fighter_gobj, u8 pickup_mask)
 
         if (ip->is_allow_pickup)
         {
-            if (fp->coll_data.ground_line_id == ip->coll_data.ground_line_id)
+            if (fp->coll_data.floor_line_id == ip->coll_data.floor_line_id)
             {
                 Vec3f *ft_translate = &DObjGetStruct(fighter_gobj)->translate.vec.f;
                 Vec3f *it_translate = &DObjGetStruct(item_gobj)->translate.vec.f;

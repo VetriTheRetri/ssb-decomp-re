@@ -50,11 +50,11 @@ void ftBossGootsubusuWaitProcMap(GObj *fighter_gobj)
 
     mpCommonUpdateFighterProjectGround(fighter_gobj);
 
-    var = fp->coll_data.ground_dist + 3000.0F;
+    var = fp->coll_data.floor_dist + 3000.0F;
 
     translate->y -= var;
 
-    fp->coll_data.ground_dist = 3000.0F;
+    fp->coll_data.floor_dist = 3000.0F;
 }
 
 // 0x80159D34
@@ -67,11 +67,11 @@ void ftBossGootsubusuWaitSetStatus(GObj *fighter_gobj)
 
     fp->status_vars.boss.gootsubu.wait_timer = syUtilsGetRandomIntRange(60) + 60;
 
-    mpCollisionGetLREdgeUpperL(fp->coll_data.ground_line_id, &pos);
+    mpCollisionGetFloorEdgeL(fp->coll_data.floor_line_id, &pos);
 
     fp->status_vars.boss.gootsubu.edgeleft_pos_x = pos.x;
 
-    mpCollisionGetLREdgeUpperR(fp->coll_data.ground_line_id, &pos);
+    mpCollisionGetFloorEdgeR(fp->coll_data.floor_line_id, &pos);
 
     fp->status_vars.boss.gootsubu.edgeright_pos_x = pos.x;
 }

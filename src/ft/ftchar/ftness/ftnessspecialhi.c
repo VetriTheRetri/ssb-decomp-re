@@ -525,7 +525,7 @@ sb32 ftNessSpecialHiProcPass(GObj *fighter_gobj) // Check if Ness can pass throu
 {
     FTStruct* fp = ftGetStruct(fighter_gobj);
 
-    if (!(fp->coll_data.ground_flags & MPCOLL_VERTEX_CLL_PASS) || (fp->status_vars.ness.specialhi.pkjibaku_anim_length <= FTNESS_PKJIBAKU_PASS_FRAME_END))
+    if (!(fp->coll_data.floor_flags & MPCOLL_VERTEX_CLL_PASS) || (fp->status_vars.ness.specialhi.pkjibaku_anim_length <= FTNESS_PKJIBAKU_PASS_FRAME_END))
     {
         return TRUE;
     }
@@ -566,7 +566,7 @@ void ftNessSpecialAirHiJibakuProcMap(GObj *fighter_gobj)
         {
             ftCommonCliffCatchSetStatus(fighter_gobj);
         }
-        else if (syVectorAngleDiff3D(&fp->coll_data.ground_angle, &fp->physics.vel_air) > FTNESS_PKJIBAKU_HALT_ANGLE)
+        else if (syVectorAngleDiff3D(&fp->coll_data.floor_angle, &fp->physics.vel_air) > FTNESS_PKJIBAKU_HALT_ANGLE)
         {
             fp->physics.vel_air.x = 0.0F;
             fp->physics.vel_air.y = 0.0F;
@@ -675,13 +675,13 @@ void ftNessSpecialHiJibakuSetStatus(GObj *fighter_gobj)
     s32 unused;
     Vec3f pos;
 
-    if (fp->coll_data.ground_flags & MPCOLL_VERTEX_CLL_PASS) goto setair;
+    if (fp->coll_data.floor_flags & MPCOLL_VERTEX_CLL_PASS) goto setair;
     
     pos.x = DObjGetStruct(fighter_gobj)->translate.vec.f.x - fp->status_vars.ness.specialhi.pkthunder_pos.x;
     pos.y = (DObjGetStruct(fighter_gobj)->translate.vec.f.y + 150.0F) - fp->status_vars.ness.specialhi.pkthunder_pos.y;
     pos.z = 0.0F;
 
-    angle_diff = syVectorAngleDiff3D(&fp->coll_data.ground_angle, &pos);
+    angle_diff = syVectorAngleDiff3D(&fp->coll_data.floor_angle, &pos);
 
     if (angle_diff < F_CST_DTOR32(90.0F))
     {

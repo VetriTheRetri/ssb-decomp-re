@@ -120,19 +120,32 @@
 #define gmColCommandSetSkeletonID(skeleton_id)                                                                       \
 	(GC_FIELDSET(nGMColEventSetSkeletonID, 26, 6) | GC_FIELDSET(skeleton_id, 0, 26))
 
-#define CAMERA_FLAG_BOUND_LEFT   (1 << nCMDirectionBoundLeft)
-#define CAMERA_FLAG_BOUND_RIGHT  (1 << nCMDirectionBoundRight)
-#define CAMERA_FLAG_BOUND_BOTTOM (1 << nCMDirectionBoundBottom)
-#define CAMERA_FLAG_BOUND_TOP    (1 << nCMDirectionBoundTop)
+#define CAMERA_FLAG_BOUND_LEFT   (1 << nGMCameraBoundLeft)
+#define CAMERA_FLAG_BOUND_RIGHT  (1 << nGMCameraBoundRight)
+#define CAMERA_FLAG_BOUND_BOTTOM (1 << nGMCameraBoundBottom)
+#define CAMERA_FLAG_BOUND_TOP    (1 << nGMCameraBoundTop)
 
 typedef enum GMCameraBounds
 {
-    nCMDirectionBoundLeft,
-    nCMDirectionBoundRight,
-    nCMDirectionBoundBottom,
-    nCMDirectionBoundTop
+    nGMCameraBoundLeft,
+    nGMCameraBoundRight,
+    nGMCameraBoundBottom,
+    nGMCameraBoundTop
 } 
 GMCameraBounds;
+
+typedef enum GMCameraStatus
+{
+	nGMCameraStatusDefault,		// Default mode
+	nGMCameraStatusPlayerZoom,	// Zoom-in on player of interest
+	nGMCameraStatusAnim,		// Custom animated camera
+	nGMCameraStatusInishie,		// Exclusive to Mushroom Kingdom, tries to keep scale platforms or stage center in focus (?)
+	nGMCameraStatusMapZoom,		// Zoom-out on stage (most common in bonus stages)
+	nGMCameraStatusPlayerFollow,// Follow player of interest from medium-far distance (most common in bonus stages)
+	nGMCameraStatusZebes,		// Exclusive to Planet Zebes, pan up + pivot down when acid is rising
+	nGMCameraEnumCount
+
+} GMCameraStatus;
 
 typedef enum GMHitStatus
 {

@@ -19,7 +19,7 @@ void ftBossHarauProcUpdate(GObj *fighter_gobj)
     {
         FTStruct *fp = ftGetStruct(fighter_gobj);
 
-        if (fp->coll_data.ground_line_id == -1)
+        if (fp->coll_data.floor_line_id == -1)
         {
             ftBossWaitSetStatus(fighter_gobj);
         }

@@ -815,9 +815,9 @@ struct FTComputer
     f32 target_dist;                        // FLOAT_MAX when offstage
     void *target_user;                      // FTStruct* most of the time, but can be ITStruct* too when looking for nearest item
     Vec2f origin_pos;                       // CPU player's TopN position at creation?
-    Vec2f edge_pos;                         // CPU player's patrol range? (ends at edges of ground_line_id?)
+    Vec2f edge_pos;                         // CPU player's patrol range? (ends at edges of floor_line_id?)
     Vec2f stand_pos;                        // ??? Is this where the CPU player is supposed to stand when idling?
-    s32 ground_line_id;                     // Some kind of collision line ID
+    s32 floor_line_id;                     // Some kind of collision line ID
     f32 dash_predict;                       // CPU player uses this to predict when it's appropriate to dash / run?
     f32 jump_predict;                       // CPU player uses this to predict what jump height to go for?
 };

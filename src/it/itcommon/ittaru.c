@@ -279,7 +279,7 @@ sb32 itTaruThrownProcMap(GObj *item_gobj)
         }
         else
         {
-            lbCommonReflect2D(&ip->physics.vel_air, &ip->coll_data.ground_angle);
+            lbCommonReflect2D(&ip->physics.vel_air, &ip->coll_data.floor_angle);
 
             ip->physics.vel_air.y *= 0.2F;
 
@@ -346,7 +346,7 @@ sb32 itTaruRollProcUpdate(GObj *item_gobj)
     f32 roll_rotate_step;
     f32 sqrt_vel;
 
-    ip->physics.vel_air.x += (-(syUtilsArcTan2(ip->coll_data.ground_angle.y, ip->coll_data.ground_angle.x) - F_CLC_DTOR32(90.0F)) * ITTARU_MUL_VEL_X);
+    ip->physics.vel_air.x += (-(syUtilsArcTan2(ip->coll_data.floor_angle.y, ip->coll_data.floor_angle.x) - F_CLC_DTOR32(90.0F)) * ITTARU_MUL_VEL_X);
 
     ip->lr = (ip->physics.vel_air.x >= 0.0F) ? +1 : -1;
 
@@ -382,7 +382,7 @@ sb32 itTaruRollProcMap(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    if (itMapTestLRWallCheckGround(item_gobj) == FALSE)
+    if (itMapTestLRWallCheckFloor(item_gobj) == FALSE)
     {
         itMainSetStatus(item_gobj, dITTaruStatusDescs, nITTaruStatusDropped);
     }

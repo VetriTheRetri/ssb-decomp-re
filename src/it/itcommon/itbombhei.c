@@ -466,11 +466,11 @@ sb32 itBombHeiWalkProcUpdate(GObj *item_gobj)
 
     itBombHeiWalkUpdateEffect(item_gobj);
 
-    if (mpCollisionCheckExistLineID(ip->coll_data.ground_line_id) != FALSE)
+    if (mpCollisionCheckExistLineID(ip->coll_data.floor_line_id) != FALSE)
     {
         if (ip->lr == -1)
         {
-            mpCollisionGetLREdgeUpperL(ip->coll_data.ground_line_id, &pos);
+            mpCollisionGetFloorEdgeL(ip->coll_data.floor_line_id, &pos);
 
             if (pos.x >= (dobj->translate.vec.f.x - attr->map_coll_width))
             {
@@ -479,7 +479,7 @@ sb32 itBombHeiWalkProcUpdate(GObj *item_gobj)
         }
         else
         {
-            mpCollisionGetLREdgeUpperR(ip->coll_data.ground_line_id, &pos);
+            mpCollisionGetFloorEdgeR(ip->coll_data.floor_line_id, &pos);
 
             if (pos.x <= (dobj->translate.vec.f.x + attr->map_coll_width))
             {
@@ -539,11 +539,11 @@ void itBombHeiWalkInitVars(GObj *item_gobj)
     gcAddMObjMatAnimJoint(dobj->mobj, matanim_joint, 0.0F);
     gcPlayAnimAll(item_gobj);
 
-    if (mpCollisionCheckExistLineID(ip->coll_data.ground_line_id) != FALSE)
+    if (mpCollisionCheckExistLineID(ip->coll_data.floor_line_id) != FALSE)
     {
         if (ip->lr == -1)
         {
-            mpCollisionGetLREdgeUpperL(ip->coll_data.ground_line_id, &pos);
+            mpCollisionGetFloorEdgeL(ip->coll_data.floor_line_id, &pos);
 
             if (pos.x >= (dobj->translate.vec.f.x - attr->map_coll_width))
             {
@@ -552,7 +552,7 @@ void itBombHeiWalkInitVars(GObj *item_gobj)
         }
         else
         {
-            mpCollisionGetLREdgeUpperR(ip->coll_data.ground_line_id, &pos);
+            mpCollisionGetFloorEdgeR(ip->coll_data.floor_line_id, &pos);
 
             if (pos.x <= (dobj->translate.vec.f.x + attr->map_coll_width))
             {

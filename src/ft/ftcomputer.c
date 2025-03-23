@@ -3550,7 +3550,7 @@ void ftComputerUpdateInputs(FTStruct *this_fp)
                         {
                             if (this_fp->status_id != nFTCommonStatusKneeBend)
                             {
-                                if (com->target_line_id == this_fp->coll_data.ground_line_id)
+                                if (com->target_line_id == this_fp->coll_data.floor_line_id)
                                 {
                                     stick_range_y = dist_y = 0.0F;
                                 }
@@ -3792,7 +3792,7 @@ sb32 ftComputerCheckFindTarget(FTStruct *this_fp)
 
     if (ftGetComTargetFighter(com)->ga == nMPKineticsGround)
     {
-        com->target_line_id = ftGetComTargetFighter(com)->coll_data.ground_line_id;
+        com->target_line_id = ftGetComTargetFighter(com)->coll_data.floor_line_id;
     }
     else com->target_line_id = -1;
 
@@ -3936,7 +3936,7 @@ sb32 ftComputerCheckDetectTarget(FTStruct *this_fp, f32 detect_range_base)
 
     if (gSCManagerBattleState->gkind == nGRKindInishie)
     {
-        if ((this_fp->coll_data.ground_line_id >= 0) && (mpCollisionCheckExistPlatformLineID(this_fp->coll_data.ground_line_id) != FALSE))
+        if ((this_fp->coll_data.floor_line_id >= 0) && (mpCollisionCheckExistPlatformLineID(this_fp->coll_data.floor_line_id) != FALSE))
         {
             return FALSE;
         }
@@ -4541,13 +4541,13 @@ sb32 ftComputerCheckSetTargetEdgeRight(FTStruct *fp, sb32 is_find_edge_target)
     {
         edge_offset = 0;
     }
-    line_ids = &gMPCollisionLineGroups[nMPLineKindGround].line_id[0];
+    line_ids = &gMPCollisionLineGroups[nMPLineKindFloor].line_id[0];
 
-    for (i = 0; i < gMPCollisionLineGroups[nMPLineKindGround].line_count; i++)
+    for (i = 0; i < gMPCollisionLineGroups[nMPLineKindFloor].line_count; i++)
     {
         if (mpCollisionCheckExistLineID(line_ids[i]) != FALSE)
         {
-            mpCollisionGetLREdgeUpperR(line_ids[i], &edge_pos);
+            mpCollisionGetFloorEdgeR(line_ids[i], &edge_pos);
 
             if (gSCManagerBattleState->gkind == nGRKindZebes)
             {
@@ -4635,13 +4635,13 @@ sb32 ftComputerCheckSetTargetEdgeLeft(FTStruct *fp, sb32 is_find_edge_target)
     {
         edge_offset = 0;
     }
-    line_ids = &gMPCollisionLineGroups[nMPLineKindGround].line_id[0];
+    line_ids = &gMPCollisionLineGroups[nMPLineKindFloor].line_id[0];
 
-    for (i = 0; i < gMPCollisionLineGroups[nMPLineKindGround].line_count; i++)
+    for (i = 0; i < gMPCollisionLineGroups[nMPLineKindFloor].line_count; i++)
     {
         if (mpCollisionCheckExistLineID(line_ids[i]) != FALSE)
         {
-            mpCollisionGetLREdgeUpperL(line_ids[i], &edge_pos);
+            mpCollisionGetFloorEdgeL(line_ids[i], &edge_pos);
 
             if (gSCManagerBattleState->gkind == nGRKindZebes)
             {
@@ -4970,8 +4970,8 @@ void ftComputerFollowObjectiveWalk(FTStruct *fp)
     {
         if (mpCollisionCheckCeilLineCollisionSame(&fp->joints[nFTPartsJointTopN]->translate.vec.f, &target_pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
         {
-            mpCollisionGetLREdgeUnderL(stand_line_id, &edge_left);
-            mpCollisionGetLREdgeUnderR(stand_line_id, &edge_right);
+            mpCollisionGetCeilEdgeL(stand_line_id, &edge_left);
+            mpCollisionGetCeilEdgeR(stand_line_id, &edge_right);
 
             if (DISTANCE(edge_left.x, fp->joints[nFTPartsJointTopN]->translate.vec.f.x) < DISTANCE(edge_right.x, fp->joints[nFTPartsJointTopN]->translate.vec.f.x))
             {
@@ -4987,14 +4987,14 @@ void ftComputerFollowObjectiveWalk(FTStruct *fp)
     }
     else if
     (
-        !(fp->coll_data.ground_flags & MPCOLL_VERTEX_CLL_PASS) &&
-        (fp->coll_data.ground_line_id >= 0) &&
-        (com->target_pos.y < ((fp->joints[nFTPartsJointTopN]->translate.vec.f.y + fp->coll_data.ground_dist) - 500.0F)) &&
+        !(fp->coll_data.floor_flags & MPCOLL_VERTEX_CLL_PASS) &&
+        (fp->coll_data.floor_line_id >= 0) &&
+        (com->target_pos.y < ((fp->joints[nFTPartsJointTopN]->translate.vec.f.y + fp->coll_data.floor_dist) - 500.0F)) &&
         (DISTANCE(com->target_pos.x, fp->joints[nFTPartsJointTopN]->translate.vec.f.x) < (DISTANCE(com->target_pos.y, fp->joints[nFTPartsJointTopN]->translate.vec.f.y) * 0.2F))
     )
     {
-        mpCollisionGetLREdgeUpperL(fp->coll_data.ground_line_id, &sp9C);
-        mpCollisionGetLREdgeUpperR(fp->coll_data.ground_line_id, &sp90);
+        mpCollisionGetFloorEdgeL(fp->coll_data.floor_line_id, &sp9C);
+        mpCollisionGetFloorEdgeR(fp->coll_data.floor_line_id, &sp90);
 
         if (DISTANCE(sp9C.x, fp->joints[nFTPartsJointTopN]->translate.vec.f.x) < DISTANCE(sp90.x, fp->joints[nFTPartsJointTopN]->translate.vec.f.x))
         {
@@ -5013,7 +5013,7 @@ void ftComputerFollowObjectiveWalk(FTStruct *fp)
         {
             if (mpCollisionCheckLWallLineCollisionSame(&fp->joints[nFTPartsJointTopN]->translate.vec.f, &target_pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
             {
-                mpCollisionGetUDEdgeUpperL(stand_line_id, &ga_last);
+                mpCollisionGetLWallEdgeU(stand_line_id, &ga_last);
 
                 com->target_pos.x = ga_last.x + 100.0;
                 com->target_pos.y = ga_last.y + 100.0;
@@ -5030,7 +5030,7 @@ void ftComputerFollowObjectiveWalk(FTStruct *fp)
         }
         else if (mpCollisionCheckRWallLineCollisionSame(&fp->joints[nFTPartsJointTopN]->translate.vec.f, &target_pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
         {
-            mpCollisionGetUDEdgeUpperR(stand_line_id, &ga_last);
+            mpCollisionGetRWallEdgeU(stand_line_id, &ga_last);
 
             com->target_pos.x = ga_last.x - 100.0;
             com->target_pos.y = ga_last.y + 100.0;
@@ -5213,8 +5213,8 @@ void ftComputerFollowObjectiveWalk(FTStruct *fp)
             {
                 if (com->target_line_id >= 0)
                 {
-                    mpCollisionGetLREdgeUpperL(com->target_line_id, &sp74);
-                    mpCollisionGetLREdgeUpperR(com->target_line_id, &sp68);
+                    mpCollisionGetFloorEdgeL(com->target_line_id, &sp74);
+                    mpCollisionGetFloorEdgeR(com->target_line_id, &sp68);
 
                     if ((sp74.x <= com->target_pos.x) && (sp68.x >= com->target_pos.x))
                     {
@@ -5239,13 +5239,13 @@ void ftComputerFollowObjectiveWalk(FTStruct *fp)
         {
             if (fp->joints[nFTPartsJointTopN]->translate.vec.f.y < com->target_pos.y)
             {
-                if (fp->coll_data.ground_line_id >= 0)
+                if (fp->coll_data.floor_line_id >= 0)
                 {
                     if (fp->physics.vel_air.x < 0.0F)
                     {
-                        mpCollisionGetLREdgeUpperL(fp->coll_data.ground_line_id, &sp58);
+                        mpCollisionGetFloorEdgeL(fp->coll_data.floor_line_id, &sp58);
                     }
-                    else mpCollisionGetLREdgeUpperR(fp->coll_data.ground_line_id, &sp58);
+                    else mpCollisionGetFloorEdgeR(fp->coll_data.floor_line_id, &sp58);
 
                     if (sp58.x < fp->joints[nFTPartsJointTopN]->translate.vec.f.x)
                     {
@@ -5268,7 +5268,7 @@ void ftComputerFollowObjectiveWalk(FTStruct *fp)
         }
         else if (fp->status_id != nFTCommonStatusDash)
         {
-            if (com->target_line_id != fp->coll_data.ground_line_id)
+            if (com->target_line_id != fp->coll_data.floor_line_id)
             {
                 if (fp->joints[nFTPartsJointTopN]->translate.vec.f.y < com->target_pos.y)
                 {
@@ -5277,7 +5277,7 @@ void ftComputerFollowObjectiveWalk(FTStruct *fp)
                         ftComputerSetCommandWaitShort(fp, nFTComputerInputMoveAutoStickTiltHiReleaseZ);
                     }
                 }
-                else if (fp->coll_data.ground_flags & MPCOLL_VERTEX_CLL_PASS)
+                else if (fp->coll_data.floor_flags & MPCOLL_VERTEX_CLL_PASS)
                 {
                     ftComputerSetCommandWaitShort(fp, nFTComputerInputStickND1MoveAutoSmashLw);
                 }
@@ -5591,7 +5591,7 @@ sb32 ftComputerCheckFindItem(FTStruct *fp)
     }
     com->target_dist = sqrtf(nearest_dist);
 
-    com->target_line_id = (ftGetComTargetItem(com)->ga == nMPKineticsGround) ? ftGetComTargetItem(com)->coll_data.ground_line_id : -1;
+    com->target_line_id = (ftGetComTargetItem(com)->ga == nMPKineticsGround) ? ftGetComTargetItem(com)->coll_data.floor_line_id : -1;
 
     return TRUE;
 }
@@ -5713,15 +5713,15 @@ sb32 ftComputerCheckSetEvadeTarget(FTStruct *this_fp)
         predict_x = target_fp->joints[nFTPartsJointTopN]->translate.vec.f.x;
         predict_y = target_fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
 
-        if (this_fp->coll_data.ground_line_id >= 0)
+        if (this_fp->coll_data.floor_line_id >= 0)
         {
-            line_id = this_fp->coll_data.ground_line_id;
+            line_id = this_fp->coll_data.floor_line_id;
 
             if (this_pos_x < predict_x)
             {
-                mpCollisionGetLREdgeUpperL(line_id, &edge_pos);
+                mpCollisionGetFloorEdgeL(line_id, &edge_pos);
             }
-            else mpCollisionGetLREdgeUpperR(line_id, &edge_pos);
+            else mpCollisionGetFloorEdgeR(line_id, &edge_pos);
         }
         else edge_pos = this_fp->joints[nFTPartsJointTopN]->translate.vec.f;
 
@@ -6149,8 +6149,8 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
     (
         (func_ovl2_800F8FFC(&this_fp->joints[nFTPartsJointTopN]->translate.vec.f) == FALSE) ||
         (gSCManagerBattleState->gkind == nGRKindInishie) &&
-        (this_fp->coll_data.ground_line_id >= 0) &&
-        (mpCollisionCheckExistPlatformLineID(this_fp->coll_data.ground_line_id) != FALSE) &&
+        (this_fp->coll_data.floor_line_id >= 0) &&
+        (mpCollisionCheckExistPlatformLineID(this_fp->coll_data.floor_line_id) != FALSE) &&
         (this_fp->joints[nFTPartsJointTopN]->translate.vec.f.y < -100.0F)
     )
     {
@@ -6183,7 +6183,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
     {
         com->objective = nFTComputerObjectiveWalk;
     }
-    if ((this_fp->status_id == nFTCommonStatusDamageFall) && (((this_fp->physics.vel_air.y * 5.0F) + -this_fp->coll_data.ground_dist) <= 0.0F))
+    if ((this_fp->status_id == nFTCommonStatusDamageFall) && (((this_fp->physics.vel_air.y * 5.0F) + -this_fp->coll_data.floor_dist) <= 0.0F))
     {
         if (!(com->ftcom_flags_0x49_b3))
         {
@@ -6218,9 +6218,9 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
 
         if ((gSCManagerBattleState->gkind == nGRKindInishie) || (gSCManagerBattleState->gkind == nGRKindYoster))
         {
-            if (this_fp->coll_data.ground_line_id >= 0)
+            if (this_fp->coll_data.floor_line_id >= 0)
             {
-                if (mpCollisionCheckExistPlatformLineID(this_fp->coll_data.ground_line_id) != FALSE)
+                if (mpCollisionCheckExistPlatformLineID(this_fp->coll_data.floor_line_id) != FALSE)
                 {
                     return -1;
                 }
@@ -6365,7 +6365,7 @@ s32 ftComputerProcStand(GObj *fighter_gobj)
     {
         com->target_pos.x = com->origin_pos.x;
         com->target_pos.y = com->origin_pos.y;
-        com->target_line_id = com->ground_line_id;
+        com->target_line_id = com->floor_line_id;
 
         com->objective = nFTComputerObjectiveWalk;
     }
@@ -6391,20 +6391,20 @@ s32 ftComputerProcWalk(GObj *fighter_gobj)
         return objective_status;
     }
     com->target_pos.y = com->origin_pos.y;
-    com->target_line_id = com->ground_line_id;
+    com->target_line_id = com->floor_line_id;
 
     if (DISTANCE(com->target_pos.x, fp->joints[nFTPartsJointTopN]->translate.vec.f.x) < 100.0F)
     {
         com->target_pos.x = (((2.0 * syUtilsGetRandomFloat()) - 1.0) * 2500.0) + com->origin_pos.x;
 
-        if ((com->ground_line_id < 0) || (mpCollisionCheckExistLineID(com->ground_line_id) == FALSE))
+        if ((com->floor_line_id < 0) || (mpCollisionCheckExistLineID(com->floor_line_id) == FALSE))
         {
             com->target_pos.x = com->origin_pos.x;
         }
         else
         {
-            mpCollisionGetLREdgeUpperL(com->ground_line_id, &edge_left_pos);
-            mpCollisionGetLREdgeUpperR(com->ground_line_id, &edge_right_pos);
+            mpCollisionGetFloorEdgeL(com->floor_line_id, &edge_left_pos);
+            mpCollisionGetFloorEdgeR(com->floor_line_id, &edge_right_pos);
 
             if (com->target_pos.x < edge_left_pos.x)
             {
@@ -6472,7 +6472,7 @@ s32 ftComputerProcJump(GObj *fighter_gobj)
     else
     {
         com->target_pos.y = com->origin_pos.y;
-        com->target_line_id = com->ground_line_id;
+        com->target_line_id = com->floor_line_id;
         com->jump_wait--;
     }
     com->objective = nFTComputerObjectiveWalk;
@@ -6502,7 +6502,7 @@ s32 func_ovl3_80137E70(GObj *fighter_gobj)
     }
     com->target_pos.x = com->origin_pos.x;
     com->target_pos.y = com->origin_pos.y;
-    com->target_line_id = com->ground_line_id;
+    com->target_line_id = com->floor_line_id;
 
     com->objective = nFTComputerObjectiveWalk;
 
@@ -6697,7 +6697,7 @@ s32 func_ovl3_8013837C(FTStruct *this_fp)
 
             if (ftGetComTargetFighter(com)->ga == nMPKineticsGround)
             {
-                com->target_line_id = ftGetComTargetFighter(com)->coll_data.ground_line_id;
+                com->target_line_id = ftGetComTargetFighter(com)->coll_data.floor_line_id;
             }
             else com->target_line_id = -1;
 
@@ -6755,9 +6755,9 @@ void func_ovl3_8013877C(FTStruct *this_fp)
     {
         if (com->walk_stop_wait == 30)
         {
-            if (this_fp->coll_data.ground_line_id >= 0)
+            if (this_fp->coll_data.floor_line_id >= 0)
             {
-                com->ground_line_id = this_fp->coll_data.ground_line_id;
+                com->floor_line_id = this_fp->coll_data.floor_line_id;
 
                 com->edge_pos.x = com->origin_pos.x = this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x;
 
@@ -6765,7 +6765,7 @@ void func_ovl3_8013877C(FTStruct *this_fp)
                 {
                     com->edge_pos.y = com->origin_pos.y = this_fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
                 }
-                else com->edge_pos.y = com->origin_pos.y = this_fp->joints[nFTPartsJointTopN]->translate.vec.f.y + this_fp->coll_data.ground_dist;
+                else com->edge_pos.y = com->origin_pos.y = this_fp->joints[nFTPartsJointTopN]->translate.vec.f.y + this_fp->coll_data.floor_dist;
             }
             else
             {
@@ -6773,7 +6773,7 @@ void func_ovl3_8013877C(FTStruct *this_fp)
                 com->edge_pos.y = com->origin_pos.y;
             }
         }
-        com->target_line_id = com->ground_line_id;
+        com->target_line_id = com->floor_line_id;
 
         if ((com->target_line_id < 0) || (mpCollisionCheckExistLineID(com->target_line_id) == FALSE))
         {
@@ -6788,8 +6788,8 @@ void func_ovl3_8013877C(FTStruct *this_fp)
             {
                 com->edge_pos.x = (((2.0 * syUtilsGetRandomFloat()) - 1.0) * 2500.0) + com->origin_pos.x;
 
-                mpCollisionGetLREdgeUpperL(com->ground_line_id, &edge_left_pos);
-                mpCollisionGetLREdgeUpperR(com->ground_line_id, &edge_right_pos);
+                mpCollisionGetFloorEdgeL(com->floor_line_id, &edge_left_pos);
+                mpCollisionGetFloorEdgeR(com->floor_line_id, &edge_right_pos);
 
                 if (com->edge_pos.x < edge_left_pos.x)
                 {
@@ -6925,7 +6925,7 @@ sb32 func_ovl3_80138AA8(FTStruct *this_fp, sb32 is_delay)
                 {
                     return FALSE;
                 }
-                if (mpCollisionCheckGroundLineCollisionSame(&this_fp->joints[nFTPartsJointTopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
+                if (mpCollisionCheckFloorLineCollisionSame(&this_fp->joints[nFTPartsJointTopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
                 {
                     return FALSE;
                 }
@@ -6938,7 +6938,7 @@ sb32 func_ovl3_80138AA8(FTStruct *this_fp, sb32 is_delay)
             {
                 return FALSE;
             }
-            else if (mpCollisionCheckGroundLineCollisionSame(&this_fp->joints[nFTPartsJointTopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
+            else if (mpCollisionCheckFloorLineCollisionSame(&this_fp->joints[nFTPartsJointTopN]->translate.vec.f, &pos, &ga_last, &stand_line_id, NULL, NULL) != FALSE)
             {
                 return FALSE;
             }
@@ -7047,10 +7047,10 @@ sb32 func_ovl3_80138EE4(FTStruct *fp)
         )
     )
     {
-        if (fp->coll_data.ground_line_id >= 0)
+        if (fp->coll_data.floor_line_id >= 0)
         {
-            mpCollisionGetLREdgeUpperL(fp->coll_data.ground_line_id, &edge_left_pos);
-            mpCollisionGetLREdgeUpperR(fp->coll_data.ground_line_id, &edge_right_pos);
+            mpCollisionGetFloorEdgeL(fp->coll_data.floor_line_id, &edge_left_pos);
+            mpCollisionGetFloorEdgeR(fp->coll_data.floor_line_id, &edge_right_pos);
 
             if (com->target_pos.x < fp->joints[nFTPartsJointTopN]->translate.vec.f.x)
             {
@@ -7811,9 +7811,9 @@ void ftComputerSetupAll(GObj *fighter_gobj)
         {
             com->origin_pos.y = com->target_pos.y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
         }
-        else com->origin_pos.y = com->target_pos.y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y + fp->coll_data.ground_dist;
+        else com->origin_pos.y = com->target_pos.y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y + fp->coll_data.floor_dist;
 
-        com->ground_line_id = fp->coll_data.ground_line_id;
+        com->floor_line_id = fp->coll_data.floor_line_id;
 
         com->proc_com = NULL;
 
@@ -7854,13 +7854,13 @@ void ftComputerSetupAll(GObj *fighter_gobj)
 
         com->cliff_left_pos.y = com->cliff_right_pos.y = 9999.9F;
 
-        line_ids = gMPCollisionLineGroups[nMPLineKindGround].line_id;
+        line_ids = gMPCollisionLineGroups[nMPLineKindFloor].line_id;
 
-        for (i = 0; i < gMPCollisionLineGroups[nMPLineKindGround].line_count; i++)
+        for (i = 0; i < gMPCollisionLineGroups[nMPLineKindFloor].line_count; i++)
         {
             if ((mpCollisionCheckExistLineID(line_ids[i]) != FALSE) && (mpCollisionCheckExistPlatformLineID(line_ids[i]) == FALSE))
             {
-                mpCollisionGetLREdgeUpperL(line_ids[i], &edge_pos);
+                mpCollisionGetFloorEdgeL(line_ids[i], &edge_pos);
 
                 if (edge_left_nearest > edge_pos.x)
                 {
@@ -7877,7 +7877,7 @@ void ftComputerSetupAll(GObj *fighter_gobj)
                     com->cliff_left_pos.x = edge_pos.x;
                     com->cliff_left_pos.y = edge_pos.y;
                 }
-                mpCollisionGetLREdgeUpperR(line_ids[i], &edge_pos);
+                mpCollisionGetFloorEdgeR(line_ids[i], &edge_pos);
 
                 if (edge_right_nearest < edge_pos.x)
                 {

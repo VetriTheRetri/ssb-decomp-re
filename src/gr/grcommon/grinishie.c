@@ -97,7 +97,7 @@ f32 grInishieScaleGetPressure(s32 line_id)
 
         if (fp->ga == nMPKineticsGround)
         {
-            if ((fp->coll_data.ground_line_id != -2) && (mpCollisionSetDObjNoID(fp->coll_data.ground_line_id) == line_id))
+            if ((fp->coll_data.floor_line_id != -2) && (mpCollisionSetDObjNoID(fp->coll_data.floor_line_id) == line_id))
             {
                 f32 weight = (1.0F - fp->attr->weight) + 1.4F;
 

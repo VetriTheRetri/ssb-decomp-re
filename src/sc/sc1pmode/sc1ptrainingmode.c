@@ -423,14 +423,14 @@ sb32 sc1PTrainingModeUpdateViewOption(void)
 	{
 		if (sSC1PTrainingModeMenu.view_menu_option == nSC1PTrainingModeMenuViewNormal)
 		{
-			gmCameraSetCameraStatusDefault();
+			gmCameraSetStatusDefault();
 			sSC1PTrainingModeMenu.magnify_wait = 180;
 		}
 		else
 		{
 			GObj *fighter_gobj = gSCManagerBattleState->players[gSCManagerSceneData.player].fighter_gobj;
 
-			func_ovl2_8010CF44(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attr->closeup_camera_zoom, 0.1F, 28.0F);
+			gmCameraSetStatusPlayerZoom(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attr->closeup_camera_zoom, 0.1F, 28.0F);
 
 			gIFCommonPlayerInterface.is_magnify_display = FALSE;
 			sSC1PTrainingModeMenu.magnify_wait = 0;

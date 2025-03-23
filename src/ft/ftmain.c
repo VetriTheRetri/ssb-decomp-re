@@ -1506,7 +1506,7 @@ void ftMainProcUpdateInterrupt(GObj *fighter_gobj)
 
                 if ((fighter_gobj != other_gobj) && (other_fp->capture_gobj == NULL))
                 {
-                    if ((other_fp->ga == nMPKineticsGround) && (this_fp->coll_data.ground_line_id == other_fp->coll_data.ground_line_id))
+                    if ((other_fp->ga == nMPKineticsGround) && (this_fp->coll_data.floor_line_id == other_fp->coll_data.floor_line_id))
                     {
                         this_attr = this_fp->attr;
                         other_attr = other_fp->attr;
@@ -1722,7 +1722,7 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f *topn_translate = &fp->joints[nFTPartsJointTopN]->translate.vec.f;
     Vec3f *coll_translate = &fp->coll_data.pos_curr;
-    Vec3f *ground_angle = &fp->coll_data.ground_angle;
+    Vec3f *floor_angle = &fp->coll_data.floor_angle;
     Vec3f *vel_damage_air;
     s32 unused[2];
     f32 size_mul;
@@ -1769,10 +1769,10 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
                 {
                     fp->physics.vel_damage_ground = fp->physics.vel_damage_air.x;
                 }
-                ftMainUpdateVelDamageGround(fp, dMPCollisionMaterialFrictions[fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK] * fp->attr->traction * 0.25F);
+                ftMainUpdateVelDamageGround(fp, dMPCollisionMaterialFrictions[fp->coll_data.floor_flags & MPCOLL_VERTEX_MAT_MASK] * fp->attr->traction * 0.25F);
 
-                vel_damage_air->x = (ground_angle->y * fp->physics.vel_damage_ground);
-                vel_damage_air->y = (-ground_angle->x * fp->physics.vel_damage_ground);
+                vel_damage_air->x = (floor_angle->y * fp->physics.vel_damage_ground);
+                vel_damage_air->y = (-floor_angle->x * fp->physics.vel_damage_ground);
             }
         }
         syVectorAdd3D(topn_translate, &fp->physics.vel_air);
@@ -1786,9 +1786,9 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
     }
     syVectorDiff3D(&fp->coll_data.pos_correct, topn_translate, coll_translate);
 
-    if ((fp->ga == nMPKineticsGround) && (fp->coll_data.ground_line_id != -1) && (fp->coll_data.ground_line_id != -2) && (mpCollisionCheckExistLineID(fp->coll_data.ground_line_id) != FALSE))
+    if ((fp->ga == nMPKineticsGround) && (fp->coll_data.floor_line_id != -1) && (fp->coll_data.floor_line_id != -2) && (mpCollisionCheckExistLineID(fp->coll_data.floor_line_id) != FALSE))
     {
-        mpCollisionGetSpeedLineID(fp->coll_data.ground_line_id, &fp->coll_data.pos_speed);
+        mpCollisionGetSpeedLineID(fp->coll_data.floor_line_id, &fp->coll_data.pos_speed);
         syVectorAdd3D(topn_translate, &fp->coll_data.pos_speed);
     }
     else fp->coll_data.pos_speed.x = fp->coll_data.pos_speed.y = fp->coll_data.pos_speed.z = 0.0F;
@@ -3577,9 +3577,9 @@ void ftMainSearchItemAttack(GObj *fighter_gobj)
 // 0x800E5C30
 sb32 ftMainGetGroundHitObstacle(FTStruct *fp, GRAttackColl **p_gr_attack_coll)
 {
-    if ((fp->damagefloor_wait == 0) && (fp->ga == nMPKineticsGround) && (fp->coll_data.ground_line_id != -1) && (fp->coll_data.ground_line_id != -2))
+    if ((fp->damagefloor_wait == 0) && (fp->ga == nMPKineticsGround) && (fp->coll_data.floor_line_id != -1) && (fp->coll_data.floor_line_id != -2))
     {
-        switch (fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK)
+        switch (fp->coll_data.floor_flags & MPCOLL_VERTEX_MAT_MASK)
         {
         case nMPMaterialFireWeakS1:
             *p_gr_attack_coll = &dFTMainGroundHitCollisionAttributes[0];

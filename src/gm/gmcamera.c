@@ -711,9 +711,9 @@ void func_ovl2_8010C960(GObj *camera_gobj)
 
     cobj = CObjGetStruct(camera_gobj);
 
-    sp30 = DObjGetStruct(gGMCameraCameraStruct.pl_pause_gobj)->translate.vec.f;
+    sp30 = DObjGetStruct(gGMCameraCameraStruct.pzoom_fighter_gobj)->translate.vec.f;
 
-    fp = ftGetStruct(gGMCameraCameraStruct.pl_pause_gobj);
+    fp = ftGetStruct(gGMCameraCameraStruct.pzoom_fighter_gobj);
 
     sp30.y += fp->attr->cam_offset_y;
 
@@ -749,7 +749,7 @@ sb32 gmCameraCheckPausePlayerOutBounds(Vec3f *pos)
 // 0x8010CAE0
 void jtgt_ovl2_8010CAE0(GObj *camera_gobj)
 {
-    if (gmCameraCheckPausePlayerOutBounds(&DObjGetStruct(gGMCameraCameraStruct.pl_pause_gobj)->translate.vec.f) != FALSE)
+    if (gmCameraCheckPausePlayerOutBounds(&DObjGetStruct(gGMCameraCameraStruct.pzoom_fighter_gobj)->translate.vec.f) != FALSE)
     {
         dGMCameraProcList[gGMCameraCameraStruct.status_base](camera_gobj);
     }
@@ -803,7 +803,7 @@ void jtgt_ovl2_8010CC74(GObj *camera_gobj)
 
     if (CObjGetStruct(camera_gobj)->anim_wait == AOBJ_ANIM_NULL)
     {
-        gmCameraSetCameraStatusDefault();
+        gmCameraSetStatusDefault();
     }
 }
 
@@ -819,14 +819,14 @@ void jtgt_ovl2_8010CCC0(GObj *camera_gobj)
 
     gmCameraAdjustFOV(38.0F);
 
-    syVectorDiff3D(&sp30, &gGMCameraCameraStruct.unk_cmstruct_0x5C, &cobj->vec.at);
+    syVectorDiff3D(&sp30, &gGMCameraCameraStruct.zoom_origin_pos, &cobj->vec.at);
     sp28 = syVectorMag3D(&sp30);
     sp2C = func_ovl2_8010C4D0() * sp28;
     syVectorNorm3D(&sp30);
     syVectorScale3D(&sp30, sp2C);
     syVectorAdd3D(&cobj->vec.at, &sp30);
 
-    syVectorDiff3D(&sp30, &gGMCameraCameraStruct.unk_cmstruct_0x68, &cobj->vec.eye);
+    syVectorDiff3D(&sp30, &gGMCameraCameraStruct.zoom_target_pos, &cobj->vec.eye);
     sp2C = syVectorMag3D(&sp30) * 0.1F;
     syVectorNorm3D(&sp30);
     syVectorScale3D(&sp30, sp2C);
@@ -848,9 +848,9 @@ void jtgt_ovl2_8010CDAC(GObj *camera_gobj)
     FTStruct *fp;
 
     cobj = CObjGetStruct(camera_gobj);
-    sp30 = DObjGetStruct(gGMCameraCameraStruct.pl_bonus_gobj)->translate.vec.f;
+    sp30 = DObjGetStruct(gGMCameraCameraStruct.pfollow_fighter_gobj)->translate.vec.f;
 
-    fp = ftGetStruct(gGMCameraCameraStruct.pl_bonus_gobj);
+    fp = ftGetStruct(gGMCameraCameraStruct.pfollow_fighter_gobj);
 
     sp30.y += fp->attr->cam_offset_y;
     sp30.z = 0.0F;
@@ -881,7 +881,7 @@ void gmCameraRunGlobalFuncCamera(GObj *camera_gobj)
 }
 
 // 0x8010CEF4
-void gmCameraSetCameraStatusID(s32 status_id)
+void gmCameraSetStatusID(s32 status_id)
 {
     gGMCameraCameraStruct.status_prev = gGMCameraCameraStruct.status_curr;
     gGMCameraCameraStruct.status_curr = status_id;
@@ -890,17 +890,17 @@ void gmCameraSetCameraStatusID(s32 status_id)
 }
 
 // 0x8010CF20
-void gmCameraSetCameraStatusDefault(void)
+void gmCameraSetStatusDefault(void)
 {
-    gmCameraSetCameraStatusID(gGMCameraCameraStruct.status_base);
+    gmCameraSetStatusID(gGMCameraCameraStruct.status_base);
 }
 
 // 0x8010CF44
-void func_ovl2_8010CF44(GObj *fighter_gobj, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5)
+void gmCameraSetStatusPlayerZoom(GObj *fighter_gobj, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5)
 {
-    gmCameraSetCameraStatusID(1);
+    gmCameraSetStatusID(nGMCameraStatusPlayerZoom);
 
-    gGMCameraCameraStruct.pl_pause_gobj = fighter_gobj;
+    gGMCameraCameraStruct.pzoom_fighter_gobj = fighter_gobj;
     gGMCameraCameraStruct.unk_cmstruct_0x48 = arg1;
     gGMCameraCameraStruct.unk_cmstruct_0x4C = arg2;
     gGMCameraCameraStruct.unk_cmstruct_0x50 = arg3;
@@ -909,11 +909,11 @@ void func_ovl2_8010CF44(GObj *fighter_gobj, f32 arg1, f32 arg2, f32 arg3, f32 ar
 }
 
 // 0x8010CFA8
-void func_ovl2_8010CFA8(GObj *fighter_gobj, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5)
+void gmCameraSetStatusPlayerFollow(GObj *fighter_gobj, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5)
 {
-    gmCameraSetCameraStatusID(5);
+    gmCameraSetStatusID(nGMCameraStatusPlayerFollow);
 
-    gGMCameraCameraStruct.pl_bonus_gobj = fighter_gobj;
+    gGMCameraCameraStruct.pfollow_fighter_gobj = fighter_gobj;
     gGMCameraCameraStruct.unk_cmstruct_0x78 = arg1;
     gGMCameraCameraStruct.unk_cmstruct_0x7C = arg2;
     gGMCameraCameraStruct.unk_cmstruct_0x80 = arg3;
@@ -922,15 +922,15 @@ void func_ovl2_8010CFA8(GObj *fighter_gobj, f32 arg1, f32 arg2, f32 arg3, f32 ar
 }
 
 // 0x8010D00C
-void gmCameraSetCameraStatusPrev(void)
+void gmCameraSetStatusPrev(void)
 {
-    gmCameraSetCameraStatusID(gGMCameraCameraStruct.status_prev);
+    gmCameraSetStatusID(gGMCameraCameraStruct.status_prev);
 }
 
 // 0x8010D030
-void func_ovl2_8010D030(AObjEvent32 *camanim_joint, f32 anim_frame, Vec3f *move)
+void gmCameraSetStatusAnim(AObjEvent32 *camanim_joint, f32 anim_frame, Vec3f *move)
 {
-    gmCameraSetCameraStatusID(2);
+    gmCameraSetStatusID(nGMCameraStatusAnim);
 
     gGMCameraCameraStruct.all_move = *move;
 
@@ -939,19 +939,18 @@ void func_ovl2_8010D030(AObjEvent32 *camanim_joint, f32 anim_frame, Vec3f *move)
 }
 
 // 0x8010D0A4
-void func_ovl2_8010D0A4(Vec3f *arg0, Vec3f *arg1)
+void gmCameraSetStatusMapZoom(Vec3f *origin, Vec3f *target)
 {
-    Vec3f sp1C;
+    Vec3f dist;
 
-    gmCameraSetCameraStatusID(4);
+    gmCameraSetStatusID(nGMCameraStatusMapZoom);
 
-    gGMCameraCameraStruct.unk_cmstruct_0x5C = *arg0;
+    gGMCameraCameraStruct.zoom_origin_pos = *origin;
+    gGMCameraCameraStruct.zoom_target_pos = *target;
 
-    gGMCameraCameraStruct.unk_cmstruct_0x68 = *arg1;
+    syVectorDiff3D(&dist, origin, target);
 
-    syVectorDiff3D(&sp1C, arg0, arg1);
-
-    gGMCameraCameraStruct.target_dist = syVectorMag3D(&sp1C);
+    gGMCameraCameraStruct.target_dist = syVectorMag3D(&dist);
 }
 
 // 0x8010D128
@@ -961,13 +960,13 @@ void gmCameraSetAtMove(Vec3f *move)
 }
 
 // 0x8010D14C - Unused?
-void func_ovl2_8010D14C(GObj *gGMCameraCameraGObj)
+void func_ovl2_8010D14C(GObj *gobj)
 {
     return;
 }
 
 // 0x8010D154
-f32 gmCameraGetMtxMaxValue(void)
+f32 gmCameraGetMatrixMax(void)
 {
     f32 ret, abs;
     s32 i, j;
@@ -1009,7 +1008,7 @@ sb32 gmCameraLookAtFuncMatrix(Mtx *mtx, CObj *cobj, Gfx **dls)
     syMatrixLookAtReflectF(&sp5C, &gGMCameraCameraStruct.look_at, cobj->vec.eye.x, cobj->vec.eye.y, cobj->vec.eye.z, cobj->vec.at.x, cobj->vec.at.y, cobj->vec.at.z, cobj->vec.up.x, cobj->vec.up.y, cobj->vec.up.z);
     guMtxCatF(sp5C, gGCMatrixPerspF, gGMCameraMatrix);
 
-    max = gmCameraGetMtxMaxValue();
+    max = gmCameraGetMatrixMax();
 
     if (max > 32000.0F)
     {
@@ -1148,10 +1147,18 @@ GObj* gmCameraMakeBattleCamera(u8 tk1, u8 tk2, void (*proc)(GObj*))
     cobj->projection.persp = dGMCameraPerspDefault;
     cobj->vec = dGMCameraCObjVecDefault;
 
-    syRdpSetViewport(&cobj->viewport, gGMCameraCameraStruct.viewport_ulx, gGMCameraCameraStruct.viewport_uly, gGMCameraCameraStruct.viewport_lrx, gGMCameraCameraStruct.viewport_lry);
+    syRdpSetViewport
+    (
+        &cobj->viewport,
+        gGMCameraCameraStruct.viewport_ulx,
+        gGMCameraCameraStruct.viewport_uly,
+        gGMCameraCameraStruct.viewport_lrx,
+        gGMCameraCameraStruct.viewport_lry
+    );
 
     // This (f32) cast is NECESSARY! scissor_ulx through scissor_lry are signed integers!
-    cobj->projection.persp.aspect = ((f32)(gGMCameraCameraStruct.viewport_lrx - gGMCameraCameraStruct.viewport_ulx) / (f32)(gGMCameraCameraStruct.viewport_lry - gGMCameraCameraStruct.viewport_uly));
+    cobj->projection.persp.aspect =
+    ((f32)(gGMCameraCameraStruct.viewport_lrx - gGMCameraCameraStruct.viewport_ulx) / (f32)(gGMCameraCameraStruct.viewport_lry - gGMCameraCameraStruct.viewport_uly));
 
     cobj->flags |= COBJ_FLAG_DLBUFFERS;
 
@@ -1176,15 +1183,15 @@ GObj* gmCameraMakeBattleCamera(u8 tk1, u8 tk2, void (*proc)(GObj*))
     switch (gSCManagerBattleState->gkind)
     {
     case nGRKindZebes:
-        gGMCameraCameraStruct.status_curr = 6;
+        gGMCameraCameraStruct.status_curr = nGMCameraStatusZebes;
         break;
 
     case nGRKindInishie:
-        gGMCameraCameraStruct.status_curr = 3;
+        gGMCameraCameraStruct.status_curr = nGMCameraStatusInishie;
         break;
 
     default:
-        gGMCameraCameraStruct.status_curr = 0;
+        gGMCameraCameraStruct.status_curr = nGMCameraStatusDefault;
         // No break? Doesn't match otherwise :brainshock:
     }
     gGMCameraCameraStruct.status_base = gGMCameraCameraStruct.status_prev = gGMCameraCameraStruct.status_curr;
@@ -1439,11 +1446,33 @@ void func_ovl2_8010E458(GObj *camera_gobj)
 // 0x8010E498
 GObj* func_ovl2_8010E498(void)
 {
-    GObj *camera_gobj = gcMakeCameraGObj(nGCCommonKindScissorCamera, NULL, nGCCommonLinkIDCamera, GOBJ_PRIORITY_DEFAULT, func_ovl2_8010E458, 15, COBJ_MASK_DLLINK(25), -1, 0, 1, 0, 1, 0);
+    GObj *camera_gobj = gcMakeCameraGObj
+    (
+        nGCCommonKindScissorCamera,
+        NULL,
+        nGCCommonLinkIDCamera,
+        GOBJ_PRIORITY_DEFAULT,
+        func_ovl2_8010E458,
+        15,
+        COBJ_MASK_DLLINK(25),
+        ~0,
+        FALSE,
+        nGCProcessKindFunc,
+        NULL,
+        1,
+        FALSE
+    );
     CObj *cobj = CObjGetStruct(camera_gobj);
 
-    syRdpSetViewport(&cobj->viewport, (f32)gGMCameraCameraStruct.viewport_ulx, (f32)gGMCameraCameraStruct.viewport_uly, (f32)gGMCameraCameraStruct.viewport_lrx, (f32)gGMCameraCameraStruct.viewport_lry);
-    cobj->projection.persp.aspect = ((f32)gGMCameraCameraStruct.viewport_width / (f32)gGMCameraCameraStruct.viewport_height);
+    syRdpSetViewport
+    (
+        &cobj->viewport,
+        gGMCameraCameraStruct.viewport_ulx,
+        gGMCameraCameraStruct.viewport_uly,
+        gGMCameraCameraStruct.viewport_lrx,
+        gGMCameraCameraStruct.viewport_lry
+    );
+    cobj->projection.persp.aspect = (f32) gGMCameraCameraStruct.viewport_width / (f32) gGMCameraCameraStruct.viewport_height;
 
     return camera_gobj;
 }

@@ -1405,7 +1405,7 @@ void sc1PGameWaitStageCommonUpdate(void)
         if (random == 2)
         {
             gcStopCurrentGObjThread(30);
-            func_ovl2_8010CF44(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attr->closeup_camera_zoom, 0.1F, 28.0F);
+            gmCameraSetStatusPlayerZoom(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attr->closeup_camera_zoom, 0.1F, 28.0F);
             gcStopCurrentGObjThread(stop_tics - 30);
         }
         else gcStopCurrentGObjThread(stop_tics);
@@ -1415,7 +1415,7 @@ void sc1PGameWaitStageCommonUpdate(void)
     if (random == 2)
     {
         gcStopCurrentGObjThread(30);
-        gmCameraSetCameraStatusDefault();
+        gmCameraSetStatusDefault();
     }
 }
 
@@ -1452,7 +1452,7 @@ void sc1PGameWaitStageTeamUpdate(void)
 // 0x8018E8F8
 void sc1PGameWaitStageBonus3Update(void)
 {
-    func_ovl2_8010CFA8
+    gmCameraSetStatusPlayerFollow
     (
         gSCManagerBattleState->players[gSCManagerSceneData.player].fighter_gobj, 
         0.0F, 
@@ -1488,7 +1488,7 @@ void sc1PGameWaitStageBossUpdate(void)
     sp20.y = 0.0F;
     sp20.z = 0.0F;
 
-    func_ovl2_8010D030((void*) (((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobjdesc - (intptr_t)&D_NF_00004D48) + (intptr_t)&D_NF_00006010), 0.0F, &sp20);
+    gmCameraSetStatusAnim((void*) (((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobjdesc - (intptr_t)&D_NF_00004D48) + (intptr_t)&D_NF_00006010), 0.0F, &sp20);
 
     for (player = 0; TRUE; player++) // Wut da haeiyll
     {
@@ -1825,7 +1825,7 @@ void func_ovl65_8018F3AC(void)
     GObj *fighter_gobj = gSCManagerBattleState->players[gSCManagerSceneData.player].fighter_gobj;
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    func_ovl2_8010CF44
+    gmCameraSetStatusPlayerZoom
     (
         fighter_gobj,
         F_CLC_DTOR32(D_ovl65_80192808[syUtilsGetRandomIntRange(ARRAY_COUNT(D_ovl65_80192808))]) * fp->lr,
@@ -1853,7 +1853,7 @@ void sc1PGameBossSetZoomCamera(FTStruct *fp)
     zoom.y = world_pos.y;
     zoom.z = world_pos.z + 3000.0F;
 
-    func_ovl2_8010D0A4(&world_pos, &zoom);
+    gmCameraSetStatusMapZoom(&world_pos, &zoom);
 }
 
 // 0x8018F540
@@ -1937,7 +1937,7 @@ void sc1PGameBossDefeatInterfaceProcSet(void)
 {
     gcFuncGObjAll(ifCommonBattleInterfaceResumeGObj, 0);
     sc1PGameBossSetChangeWallpaper();
-    func_ovl2_8010D030((void*) (((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobjdesc - (intptr_t)&D_NF_00004D48) + (intptr_t)&D_NF_00006450), 0.0F, &sSC1PGameBossDefeatZoomPosition);
+    gmCameraSetStatusAnim((void*) (((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobjdesc - (intptr_t)&D_NF_00004D48) + (intptr_t)&D_NF_00006450), 0.0F, &sSC1PGameBossDefeatZoomPosition);
     ifCommonBattleBossDefeatSetGameStatus();
 }
 

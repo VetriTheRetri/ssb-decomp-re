@@ -365,18 +365,18 @@ sb32 itIwarkWeaponRockProcMap(GObj *weapon_gobj)
     ITStruct *ip = itGetStruct(wp->weapon_vars.rock.owner_gobj);
     MPCollData *coll_data = &wp->coll_data;
     Vec3f pos = DObjGetStruct(weapon_gobj)->translate.vec.f;
-    s32 line_id = wp->weapon_vars.rock.ground_line_id;
+    s32 line_id = wp->weapon_vars.rock.floor_line_id;
 
     wpMapTestAllCheckCollEnd(weapon_gobj);
 
     if (coll_data->coll_mask_curr & MPCOLL_FLAG_GROUND)
     {
-        if (line_id != coll_data->ground_line_id)
+        if (line_id != coll_data->floor_line_id)
         {
-            lbCommonReflect2D(&wp->physics.vel_air, &coll_data->ground_angle);
+            lbCommonReflect2D(&wp->physics.vel_air, &coll_data->floor_angle);
             lbCommonScale2D(&wp->physics.vel_air, WPIWARK_ROCK_COLLIDE_MUL_VEL_Y);
 
-            wp->weapon_vars.rock.ground_line_id = coll_data->ground_line_id;
+            wp->weapon_vars.rock.floor_line_id = coll_data->floor_line_id;
 
             func_800269C0_275C0(nSYAudioFGMIwarkRockMake);
 
@@ -442,7 +442,7 @@ GObj* itIwarkWeaponRockMakeWeapon(GObj *parent_gobj, Vec3f *pos, u8 random)
     }
     wp = wpGetStruct(weapon_gobj);
 
-    wp->weapon_vars.rock.ground_line_id = -1;
+    wp->weapon_vars.rock.floor_line_id = -1;
 
     random32 = random;
 

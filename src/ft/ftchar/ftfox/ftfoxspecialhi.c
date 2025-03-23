@@ -198,7 +198,7 @@ void ftFoxSpecialHiProcMap(GObj *fighter_gobj)
 
     if (mpCommonProcFighterOnGround(fighter_gobj, ftFoxSpecialAirHiSetStatus) != FALSE)
     {
-        fp->status_vars.fox.specialhi.angle = syUtilsArcTan2(-fp->coll_data.ground_angle.x * fp->lr, fp->coll_data.ground_angle.y);
+        fp->status_vars.fox.specialhi.angle = syUtilsArcTan2(-fp->coll_data.floor_angle.x * fp->lr, fp->coll_data.floor_angle.y);
     }
 }
 
@@ -207,7 +207,7 @@ sb32 ftFoxSpecialHiProcPass(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (!(fp->coll_data.ground_flags & MPCOLL_VERTEX_CLL_PASS) || (fp->status_vars.fox.specialhi.pass_timer >= 15))
+    if (!(fp->coll_data.floor_flags & MPCOLL_VERTEX_CLL_PASS) || (fp->status_vars.fox.specialhi.pass_timer >= 15))
     {
         return TRUE;
     }
@@ -226,9 +226,9 @@ void ftFoxSpecialAirHiProcMap(GObj *fighter_gobj)
     {
         coll_mask = (fp->coll_data.coll_mask_prev ^ fp->coll_data.coll_mask_curr) & fp->coll_data.coll_mask_curr & MPCOLL_FLAG_GROUND;
 
-        if (!(coll_mask & MPCOLL_FLAG_GROUND) || (lbCommonCheckAdjustSim2D(&fp->physics.vel_air, &fp->coll_data.ground_angle, FTFOX_FIREFOX_BOUND_ANGLE) == FALSE))
+        if (!(coll_mask & MPCOLL_FLAG_GROUND) || (lbCommonCheckAdjustSim2D(&fp->physics.vel_air, &fp->coll_data.floor_angle, FTFOX_FIREFOX_BOUND_ANGLE) == FALSE))
         {
-            if (syVectorAngleDiff3D(&fp->coll_data.ground_angle, &fp->physics.vel_air) > F_CST_DTOR32(110.0F)) // 1.9198622F
+            if (syVectorAngleDiff3D(&fp->coll_data.floor_angle, &fp->physics.vel_air) > F_CST_DTOR32(110.0F)) // 1.9198622F
             {
                 ftFoxSpecialAirHiBoundSetStatus(fighter_gobj);
             }
@@ -297,14 +297,14 @@ void ftFoxSpecialHiDecideSetStatus(GObj *fighter_gobj)
     if
     (
         (ABS(fp->input.pl.stick_range.x) + ABS(fp->input.pl.stick_range.y) >= FTFOX_FIREFOX_ANGLE_STICK_THRESHOLD) &&
-        !(fp->coll_data.ground_flags & MPCOLL_VERTEX_CLL_PASS)
+        !(fp->coll_data.floor_flags & MPCOLL_VERTEX_CLL_PASS)
     )
     {
         angle.x = fp->input.pl.stick_range.x;
         angle.y = fp->input.pl.stick_range.y;
         angle.z = 0.0F;
 
-        if (syVectorAngleDiff3D(&fp->coll_data.ground_angle, &angle) < F_CST_DTOR32(90.0F))
+        if (syVectorAngleDiff3D(&fp->coll_data.floor_angle, &angle) < F_CST_DTOR32(90.0F))
         {
             goto setair;
         }
@@ -315,7 +315,7 @@ void ftFoxSpecialHiDecideSetStatus(GObj *fighter_gobj)
             ftFoxSpecialHiInitStatusVars(fp);
 
             fp->physics.vel_ground.x = 115.0F;
-            fp->status_vars.fox.specialhi.angle = syUtilsArcTan2(-fp->coll_data.ground_angle.x * fp->lr, fp->coll_data.ground_angle.y);
+            fp->status_vars.fox.specialhi.angle = syUtilsArcTan2(-fp->coll_data.floor_angle.x * fp->lr, fp->coll_data.floor_angle.y);
             return;
         }
     }

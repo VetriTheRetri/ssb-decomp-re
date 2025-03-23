@@ -63,7 +63,7 @@ void ftKirbySpecialLwSetDropFallVel(FTStruct *fp)
 // 0x80161478
 f32 ftKirbySpecialLwGetGroundAxisYaw(FTStruct *fp)
 {
-    f32 rot_z = -syUtilsArcTan2(fp->coll_data.ground_angle.x, fp->coll_data.ground_angle.y);
+    f32 rot_z = -syUtilsArcTan2(fp->coll_data.floor_angle.x, fp->coll_data.floor_angle.y);
 
     fp->joints[nFTPartsJointTopN]->rotate.vec.f.z = rot_z;
 
@@ -221,7 +221,7 @@ void ftKirbySpecialLwHoldProcPhysics(GObj *fighter_gobj)
         fp->physics.vel_ground.x = -FTKIRBY_STONE_SLIDE_CLAMP_VEL_X;
     }
 
-    ftPhysicsSetGroundVelFriction(fp, (dMPCollisionMaterialFrictions[fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK] * attr->traction * FTKIRBY_STONE_SLIDE_TRACTION_MUL));
+    ftPhysicsSetGroundVelFriction(fp, (dMPCollisionMaterialFrictions[fp->coll_data.floor_flags & MPCOLL_VERTEX_MAT_MASK] * attr->traction * FTKIRBY_STONE_SLIDE_TRACTION_MUL));
     ftPhysicsSetGroundVelTransferAir(fighter_gobj);
 }
 

@@ -849,7 +849,7 @@ void grSectorArwingWeaponLaser3DMakeWeapon(void)
     }
     fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->coll_data.ground_line_id == -1) || (fp->coll_data.ground_line_id == -2))
+    if ((fp->coll_data.floor_line_id == -1) || (fp->coll_data.floor_line_id == -2))
     {
         ft_pos.x = ft_pos.y = ft_pos.z = 0;
     }
@@ -857,7 +857,7 @@ void grSectorArwingWeaponLaser3DMakeWeapon(void)
     {
         ft_pos = fp->joints[nFTPartsJointTopN]->translate.vec.f;
 
-        ft_pos.y += fp->coll_data.ground_dist;
+        ft_pos.y += fp->coll_data.floor_dist;
     }
     wp_angle.x = ft_pos.x - wp_pos.x;
     wp_angle.y = ft_pos.y - wp_pos.y;

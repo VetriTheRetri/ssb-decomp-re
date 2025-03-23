@@ -56,14 +56,14 @@ LBParticle* grHyruleTwisterMakeEffect(Vec3f *pos, s32 effect_id)
 GObj* grHyruleMakeTwister(Vec3f *pos)
 {
     s32 line_id;
-    f32 ground_dist;
+    f32 floor_dist;
     GObj *twister_gobj;
     DObj *twister_dobj;
     LBParticle *pc;
     Vec3f edge_pos;
     s32 edge_under;
 
-    if (func_ovl2_800F9348(pos, &line_id, &ground_dist, NULL, NULL) == FALSE)
+    if (func_ovl2_800F9348(pos, &line_id, &floor_dist, NULL, NULL) == FALSE)
     {
         return NULL;
     }
@@ -75,7 +75,7 @@ GObj* grHyruleMakeTwister(Vec3f *pos)
 
         twister_dobj->translate.vec.f = *pos;
 
-        twister_dobj->translate.vec.f.y += ground_dist;
+        twister_dobj->translate.vec.f.y += floor_dist;
 
         pc = grHyruleTwisterMakeEffect(&twister_dobj->translate.vec.f, 3);
 
@@ -89,7 +89,7 @@ GObj* grHyruleMakeTwister(Vec3f *pos)
         }
         gGRCommonStruct.hyrule.twister_line_id = line_id;
 
-        mpCollisionGetLREdgeUpperL(line_id, &edge_pos);
+        mpCollisionGetFloorEdgeL(line_id, &edge_pos);
 
         edge_under = mpCollisionGetEdgeUnderLLineID(line_id);
 
@@ -99,7 +99,7 @@ GObj* grHyruleMakeTwister(Vec3f *pos)
         }
         else gGRCommonStruct.hyrule.twister_leftedge_x = edge_pos.x + 300.0F;
         
-        mpCollisionGetLREdgeUpperR(line_id, &edge_pos);
+        mpCollisionGetFloorEdgeR(line_id, &edge_pos);
 
         edge_under = mpCollisionGetEdgeUnderRLineID(line_id);
 
@@ -201,7 +201,7 @@ s32 grHyruleTwisterGetLR(void)
     {
         FTStruct *fp = ftGetStruct(fighter_gobj);
 
-        if ((fp->ga == nMPKineticsGround) && (fp->coll_data.ground_line_id == gGRCommonStruct.hyrule.twister_line_id))
+        if ((fp->ga == nMPKineticsGround) && (fp->coll_data.floor_line_id == gGRCommonStruct.hyrule.twister_line_id))
         {
             if (fp->joints[nFTPartsJointTopN]->translate.vec.f.x > twister_pos_x)
             {
@@ -279,7 +279,7 @@ void grHyruleTwisterUpdateMove(void)
         }
         else pos->x = pos_x;
 
-        mpCollisionGetUDCommonUpper(gGRCommonStruct.hyrule.twister_line_id, pos, &ground_level, NULL, NULL);
+        mpCollisionGetFCCommonGround(gGRCommonStruct.hyrule.twister_line_id, pos, &ground_level, NULL, NULL);
 
         pos->y += ground_level;
 

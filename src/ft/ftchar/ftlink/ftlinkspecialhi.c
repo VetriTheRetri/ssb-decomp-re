@@ -269,7 +269,7 @@ void ftLinkSpecialHiProcMap(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (mpCommonCheckFighterOnGround(fighter_gobj) == FALSE)
+    if (mpCommonCheckFighterOnFloor(fighter_gobj) == FALSE)
     {
         mpCommonSetFighterAir(fp);
         ftMainSetStatus(fighter_gobj, nFTLinkStatusSpecialAirHi, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_HIT));
@@ -283,7 +283,7 @@ void ftLinkSpecialHiProcMap(GObj *fighter_gobj)
 // 0x80164198
 void ftLinkSpecialHiEndProcMap(GObj *fighter_gobj)
 {
-    if (mpCommonProcFighterOnGround(fighter_gobj, ftCommonFallSetStatus) == FALSE)
+    if (mpCommonProcFighterOnFloor(fighter_gobj, ftCommonFallSetStatus) == FALSE)
     {
         ftLinkSpecialHiProcDamage(fighter_gobj);
     }
@@ -302,7 +302,7 @@ void ftLinkSpecialAirHiProcMap(GObj *fighter_gobj)
         {
             ftCommonCliffCatchSetStatus(fighter_gobj);
         }
-        else if (fp->coll_data.coll_mask_stat & MPCOLL_FLAG_GROUND)
+        else if (fp->coll_data.coll_mask_stat & MPCOLL_FLAG_FLOOR)
         {
             mpCommonSetFighterGround(fp);
             ftMainSetStatus(fighter_gobj, nFTLinkStatusSpecialHiEnd, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);

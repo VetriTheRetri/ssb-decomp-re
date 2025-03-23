@@ -215,7 +215,7 @@ void ftKirbySpecialHiProcMap(GObj *fighter_gobj)
             {
                 ftCommonCliffCatchSetStatus(fighter_gobj);
             }
-            else if ((fp->coll_data.coll_mask_stat & MPCOLL_FLAG_GROUND) && (fp->physics.vel_air.y < 0.0F))
+            else if ((fp->coll_data.coll_mask_stat & MPCOLL_FLAG_FLOOR) && (fp->physics.vel_air.y < 0.0F))
             {
                 mpCommonSetFighterGround(fp);
                 ftKirbySpecialHiLandingSetStatus(fighter_gobj);
@@ -231,7 +231,7 @@ void ftKirbySpecialAirHiFallProcMap(GObj *fighter_gobj)
 
     if (mpCommonCheckFighterCeilHeavyCliff(fighter_gobj) != FALSE)
     {
-        if (fp->coll_data.coll_mask_stat & MPCOLL_FLAG_GROUND)
+        if (fp->coll_data.coll_mask_stat & MPCOLL_FLAG_FLOOR)
         {
             mpCommonSetFighterGround(fp);
             ftMainSetStatus(fighter_gobj, nFTKirbyStatusSpecialHiLanding, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);

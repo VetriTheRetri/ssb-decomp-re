@@ -62,7 +62,7 @@ void ftCommonCatchCaptureSetStatusRelease(GObj *fighter_gobj)
 // 0x80149B48
 void func_ovl3_80149B48(GObj *fighter_gobj) // Unused
 {
-    if (mpCommonCheckFighterOnGround(fighter_gobj) == FALSE)
+    if (mpCommonCheckFighterOnFloor(fighter_gobj) == FALSE)
     {
         ftCommonCatchCaptureSetStatusRelease(fighter_gobj);
     }

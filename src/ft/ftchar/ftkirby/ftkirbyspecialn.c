@@ -445,31 +445,31 @@ void ftKirbySpecialAirNWaitProcPhysics(GObj *fighter_gobj)
 // 0x80162750
 void ftKirbySpecialNStartProcMap(GObj *fighter_gobj)
 {
-    mpCommonProcFighterOnGround(fighter_gobj, ftKirbySpecialNStartSwitchStatusAir);
+    mpCommonProcFighterOnFloor(fighter_gobj, ftKirbySpecialNStartSwitchStatusAir);
 }
 
 // 0x80162774
 void ftKirbySpecialNLoopProcMap(GObj *fighter_gobj)
 {
-    mpCommonProcFighterOnGround(fighter_gobj, ftKirbySpecialNLoopSwitchStatusAir);
+    mpCommonProcFighterOnFloor(fighter_gobj, ftKirbySpecialNLoopSwitchStatusAir);
 }
 
 // 0x80162798
 void ftKirbySpecialNEndProcMap(GObj *fighter_gobj)
 {
-    mpCommonProcFighterOnGround(fighter_gobj, ftKirbySpecialNEndSwitchStatusAir);
+    mpCommonProcFighterOnFloor(fighter_gobj, ftKirbySpecialNEndSwitchStatusAir);
 }
 
 // 0x801627BC
 void ftKirbySpecialNCatchProcMap(GObj *fighter_gobj)
 {
-    mpCommonProcFighterOnGround(fighter_gobj, ftKirbySpecialNCatchSwitchStatusAir);
+    mpCommonProcFighterOnFloor(fighter_gobj, ftKirbySpecialNCatchSwitchStatusAir);
 }
 
 // 0x801627E0
 void ftKirbySpecialNEatProcMap(GObj *fighter_gobj)
 {
-    mpCommonProcFighterOnGround(fighter_gobj, ftKirbySpecialNEatSwitchStatusAir);
+    mpCommonProcFighterOnFloor(fighter_gobj, ftKirbySpecialNEatSwitchStatusAir);
 }
 
 // 0x80162804
@@ -481,19 +481,19 @@ void ftKirbySpecialNThrowProcMap(GObj *fighter_gobj)
 // 0x80162828
 void ftKirbySpecialNWaitProcMap(GObj *fighter_gobj)
 {
-    mpCommonProcFighterOnGround(fighter_gobj, ftKirbySpecialNWaitSwitchStatusAir);
+    mpCommonProcFighterOnFloor(fighter_gobj, ftKirbySpecialNWaitSwitchStatusAir);
 }
 
 // 0x8016184C
 void ftKirbySpecialNTurnProcMap(GObj *fighter_gobj)
 {
-    mpCommonProcFighterOnGround(fighter_gobj, ftKirbySpecialNTurnSwitchStatusAir);
+    mpCommonProcFighterOnFloor(fighter_gobj, ftKirbySpecialNTurnSwitchStatusAir);
 }
 
 // 0x80162870
 void ftKirbySpecialNCopyProcMap(GObj *fighter_gobj)
 {
-    mpCommonProcFighterOnGround(fighter_gobj, ftKirbySpecialNCopySwitchStatusAir);
+    mpCommonProcFighterOnFloor(fighter_gobj, ftKirbySpecialNCopySwitchStatusAir);
 }
 
 // 0x80162894

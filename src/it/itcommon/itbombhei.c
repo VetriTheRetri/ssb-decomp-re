@@ -250,7 +250,7 @@ void itBombHeiCommonCheckMakeDustEffect(GObj *item_gobj, u8 override)
     ITAttributes *attr = ip->attr;
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    if ((ip->coll_data.coll_mask_curr & MPCOLL_FLAG_GROUND) || (override != FALSE))
+    if ((ip->coll_data.coll_mask_curr & MPCOLL_FLAG_FLOOR) || (override != FALSE))
     {
         Vec3f pos = dobj->translate.vec.f;
 

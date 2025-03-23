@@ -2140,7 +2140,7 @@ void ftParamKirbyTryMakeMapStarEffect(GObj *fighter_gobj)
 
             efManagerKirbyStarMakeEffect(&pos);
         }
-        if (coll_mask & MPCOLL_FLAG_GROUND)
+        if (coll_mask & MPCOLL_FLAG_FLOOR)
         {
             pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 

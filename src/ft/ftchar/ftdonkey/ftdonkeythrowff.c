@@ -68,7 +68,7 @@ void ftDonkeyThrowFFSwitchStatusAir(GObj *fighter_gobj)
 // 0x8014DECC
 void ftDonkeyThrowFFProcMap(GObj *fighter_gobj)
 {
-    mpCommonProcFighterOnGround(fighter_gobj, ftDonkeyThrowFFSwitchStatusAir);
+    mpCommonProcFighterOnFloor(fighter_gobj, ftDonkeyThrowFFSwitchStatusAir);
 }
 
 // 0x8014DEF0

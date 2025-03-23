@@ -103,7 +103,7 @@ FTStatusDesc dFTLinkSpecialStatusDescs[/* */] =
 		ftCommonAppearProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommonAppearProcPhysics,			// Proc Physics
-		mpCommonUpdateFighterProjectGround				// Proc Map
+		mpCommonUpdateFighterProjectFloor				// Proc Map
 	},
 
 	// Status 225 (0xE1): AppearL
@@ -123,7 +123,7 @@ FTStatusDesc dFTLinkSpecialStatusDescs[/* */] =
 		ftCommonAppearProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommonAppearProcPhysics,			// Proc Physics
-		mpCommonUpdateFighterProjectGround				// Proc Map
+		mpCommonUpdateFighterProjectFloor				// Proc Map
 	},
 
 	// Status 226 (0xE2): SpecialHi

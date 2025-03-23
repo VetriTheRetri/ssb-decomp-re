@@ -9,7 +9,7 @@
 extern f32 mpCollisionGetLineDistanceFC(f32 opx, s32 vx1, s32 vy1, s32 vx2, s32 vy2);
 extern f32 mpCollisionGetLineDistanceLR(f32 opy, s32 vx1, s32 vy1, s32 vx2, s32 vy2);
 extern sb32 mpCollisionGetFCCommon(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flags, Vec3f *angle, s32 ud);
-extern sb32 mpCollisionGetFCCommonGround(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flags, Vec3f *angle);
+extern sb32 mpCollisionGetFCCommonFloor(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flags, Vec3f *angle);
 extern sb32 mpCollisionGetFCCommonCeil(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flags, Vec3f *angle);
 extern sb32 mpCollisionGetLRCommon(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flags, Vec3f *angle, s32 lr);
 extern sb32 mpCollisionGetLRCommonLWall(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flags, Vec3f *angle);

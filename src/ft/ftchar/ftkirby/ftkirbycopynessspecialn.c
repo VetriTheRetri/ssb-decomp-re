@@ -57,7 +57,7 @@ void ftKirbyCopyNessSpecialNProcAccessory(GObj *fighter_gobj)
 // 0x80155CAC
 void ftKirbyCopyNessSpecialNProcMap(GObj *fighter_gobj)
 {
-    mpCommonProcFighterOnGround(fighter_gobj, ftKirbyCopyNessSpecialNSwitchStatusAir);
+    mpCommonProcFighterOnFloor(fighter_gobj, ftKirbyCopyNessSpecialNSwitchStatusAir);
 }
 
 // 0x80155CD0

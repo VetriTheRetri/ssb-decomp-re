@@ -326,7 +326,7 @@ s32 wpPikachuThunderJoltGroundGetStatus(GObj *weapon_gobj)
                 (mpCollisionGetEdgeRightULineID(wp->coll_data.lwall_line_id) != line_id)
             )
             {
-                if (mpCollisionGetFCCommonGround(line_id, &pos, NULL, NULL, &rotate) != FALSE)
+                if (mpCollisionGetFCCommonFloor(line_id, &pos, NULL, NULL, &rotate) != FALSE)
                 {
                     wp->weapon_vars.thunder_jolt.line_type = nMPLineKindFloor;
                     wp->coll_data.floor_line_id = line_id;
@@ -359,7 +359,7 @@ s32 wpPikachuThunderJoltGroundGetStatus(GObj *weapon_gobj)
                 (mpCollisionGetEdgeLeftULineID(wp->coll_data.rwall_line_id) != line_id)
             )
             {
-                if (mpCollisionGetFCCommonGround(line_id, &pos, NULL, NULL, &rotate) != FALSE)
+                if (mpCollisionGetFCCommonFloor(line_id, &pos, NULL, NULL, &rotate) != FALSE)
                 {
                     wp->weapon_vars.thunder_jolt.line_type = nMPLineKindFloor;
                     wp->coll_data.floor_line_id = line_id;
@@ -401,7 +401,7 @@ sb32 wpPikachuThunderJoltGroundCheckDestroy(GObj *weapon_gobj)
     switch (wp->weapon_vars.thunder_jolt.line_type)
     {
     case nMPLineKindFloor:
-        mpCollisionGetFCCommonGround(wp->coll_data.floor_line_id, &DObjGetStruct(weapon_gobj)->translate.vec.f, NULL, NULL, &angle);
+        mpCollisionGetFCCommonFloor(wp->coll_data.floor_line_id, &DObjGetStruct(weapon_gobj)->translate.vec.f, NULL, NULL, &angle);
         break;
 
     case nMPLineKindLWall:
@@ -442,7 +442,7 @@ sb32 wpPikachuThunderJoltGroundProcMap(GObj *weapon_gobj)
             
             return TRUE;
         }
-        if (mpCollisionGetFCCommonGround(wp->coll_data.floor_line_id, &DObjGetStruct(weapon_gobj)->translate.vec.f, &dist, NULL, &wp->weapon_vars.thunder_jolt.rotate) != FALSE)
+        if (mpCollisionGetFCCommonFloor(wp->coll_data.floor_line_id, &DObjGetStruct(weapon_gobj)->translate.vec.f, &dist, NULL, &wp->weapon_vars.thunder_jolt.rotate) != FALSE)
         {
             DObjGetStruct(weapon_gobj)->translate.vec.f.y += dist;
 

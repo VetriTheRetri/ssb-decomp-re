@@ -38,7 +38,7 @@ void ftBossWalkLoopProcPhysics(GObj *fighter_gobj)
 // 0x80159994
 void ftBossWalkLoopProcMap(GObj *fighter_gobj)
 {
-    if (mpCommonCheckFighterOnGround(fighter_gobj) == FALSE)
+    if (mpCommonCheckFighterOnFloor(fighter_gobj) == FALSE)
     {
         ftBossWalkWaitSetStatus(fighter_gobj);
     }

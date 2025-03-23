@@ -101,7 +101,7 @@ void ftBossCommonSetPosAddVelPlayer(GObj *fighter_gobj, Vec3f *pos, f32 vel_x, f
 
     translate.x += ((syUtilsGetRandomUShort() % 2) != 0) ? vel_x : -vel_x;
 
-    if (mpCollisionGetFCCommonGround(fp_unk->coll_data.floor_line_id, &translate, &y, NULL, NULL) != FALSE)
+    if (mpCollisionGetFCCommonFloor(fp_unk->coll_data.floor_line_id, &translate, &y, NULL, NULL) != FALSE)
     {
         pos->x = translate.x;
     }
@@ -109,7 +109,7 @@ void ftBossCommonSetPosAddVelPlayer(GObj *fighter_gobj, Vec3f *pos, f32 vel_x, f
     {
         translate.x = (x < translate.x) ? x - vel_x : x + vel_x;
 
-        pos->x = (mpCollisionGetFCCommonGround(fp_unk->coll_data.floor_line_id, &translate, &y, NULL, NULL) != FALSE) ? translate.x : x;
+        pos->x = (mpCollisionGetFCCommonFloor(fp_unk->coll_data.floor_line_id, &translate, &y, NULL, NULL) != FALSE) ? translate.x : x;
     }
     pos->y = (translate.y + y + vel_y);
     pos->z = 0.0F;
@@ -142,7 +142,7 @@ void ftBossCommonGetPositionCenter(s32 line_id, Vec3f *pos_input)
     pos_input->z = 0.0F;
     pos_input->y = 0.0F;
 
-    mpCollisionGetFCCommonGround(line_id, pos_input, &y, NULL, NULL);
+    mpCollisionGetFCCommonFloor(line_id, pos_input, &y, NULL, NULL);
 
     pos_input->y += y;
 }

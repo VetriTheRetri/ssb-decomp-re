@@ -424,7 +424,7 @@ sb32 wpLinkBoomerangProcMap(GObj *weapon_gobj)
             {
                 is_collide |= wpLinkBoomerangCheckBound(wp, &wp->coll_data.ceil_angle);
             }
-            if (coll_flags & MPCOLL_FLAG_GROUND)
+            if (coll_flags & MPCOLL_FLAG_FLOOR)
             {
                 is_collide |= wpLinkBoomerangCheckBound(wp, &wp->coll_data.floor_angle);
             }

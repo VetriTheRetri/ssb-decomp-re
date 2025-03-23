@@ -85,7 +85,7 @@ void ftKirbyCopyPurinSpecialAirNProcPhysics(GObj *fighter_gobj)
 // 0x801519F0
 void ftKirbyCopyPurinSpecialNProcMap(GObj *fighter_gobj)
 {
-    mpCommonProcFighterOnGround(fighter_gobj, ftKirbyCopyPurinSpecialNSwitchStatusAir);
+    mpCommonProcFighterOnFloor(fighter_gobj, ftKirbyCopyPurinSpecialNSwitchStatusAir);
 }
 
 // 0x80151A14

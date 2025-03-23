@@ -129,7 +129,7 @@ void ftCommonCaptureKirbyProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
     ftParamSetCaptureImmuneMask(this_fp, FTCATCHKIND_MASK_ALL);
     ftPhysicsStopVelAll(fighter_gobj);
     ftCommonCaptureKirbyProcPhysics(fighter_gobj);
-    mpCommonUpdateFighterProjectGround(fighter_gobj);
+    mpCommonUpdateFighterProjectFloor(fighter_gobj);
 }
 
 // 0x8014BA98

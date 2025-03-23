@@ -85,7 +85,7 @@ void ftYoshiSpecialAirNReleaseProcUpdate(GObj *fighter_gobj)
 // 0x8015E4A4
 void ftYoshiSpecialNProcMap(GObj *fighter_gobj)
 {
-    mpCommonProcFighterOnGround(fighter_gobj, ftYoshiSpecialNSwitchStatusAir);
+    mpCommonProcFighterOnFloor(fighter_gobj, ftYoshiSpecialNSwitchStatusAir);
 }
 
 // 0x8015E4C8
@@ -97,7 +97,7 @@ void ftYoshiSpecialAirNProcMap(GObj *fighter_gobj)
 // 0x8015E4EC
 void ftYoshiSpecialNCatchProcMap(GObj *fighter_gobj)
 {
-    mpCommonProcFighterOnGround(fighter_gobj, ftYoshiSpecialNCatchSwitchStatusAir);
+    mpCommonProcFighterOnFloor(fighter_gobj, ftYoshiSpecialNCatchSwitchStatusAir);
 }
 
 // 0x8015E510
@@ -109,7 +109,7 @@ void ftYoshiSpecialAirNCatchProcMap(GObj *fighter_gobj)
 // 0x8015E534
 void ftYoshiSpecialNReleaseProcMap(GObj *fighter_gobj)
 {
-    mpCommonProcFighterOnGround(fighter_gobj, ftYoshiSpecialNReleaseSwitchStatusAir);
+    mpCommonProcFighterOnFloor(fighter_gobj, ftYoshiSpecialNReleaseSwitchStatusAir);
 }
 
 // 0x8015E558

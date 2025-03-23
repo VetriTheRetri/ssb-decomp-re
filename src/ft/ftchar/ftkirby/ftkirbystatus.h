@@ -623,7 +623,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		ftCommonAppearProcUpdate,						// Proc Update
 		NULL,											// Proc Interrupt
 		ftCommonAppearProcPhysics,					// Proc Physics
-		mpCommonUpdateFighterProjectGround						// Proc Map
+		mpCommonUpdateFighterProjectFloor						// Proc Map
 	},
 
 	// Status 251 (0xFB): AppearL
@@ -643,7 +643,7 @@ FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 		ftCommonAppearProcUpdate,						// Proc Update
 		NULL,											// Proc Interrupt
 		ftCommonAppearProcPhysics,					// Proc Physics
-		mpCommonUpdateFighterProjectGround						// Proc Map
+		mpCommonUpdateFighterProjectFloor						// Proc Map
 	},
 
 	// Status 252 (0xFC): CopyPikachuSpecialN

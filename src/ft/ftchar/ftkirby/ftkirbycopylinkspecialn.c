@@ -57,13 +57,13 @@ void ftKirbyCopyLinkSpecialAirNProcUpdate(GObj *fighter_gobj)
 // 0x80164740
 void ftKirbyCopyLinkSpecialNProcMap(GObj *fighter_gobj)
 {
-    mpCommonProcFighterOnGround(fighter_gobj, ftKirbyCopyLinkSpecialNSwitchStatusAir);
+    mpCommonProcFighterOnFloor(fighter_gobj, ftKirbyCopyLinkSpecialNSwitchStatusAir);
 }
 
 // 0x80164764
 void ftKirbyCopyLinkSpecialNEmptyProcMap(GObj *fighter_gobj)
 {
-    mpCommonProcFighterOnGround(fighter_gobj, ftKirbyCopyLinkSpecialNEmptySwitchStatusAir);
+    mpCommonProcFighterOnFloor(fighter_gobj, ftKirbyCopyLinkSpecialNEmptySwitchStatusAir);
 }
 
 // 0x80164788

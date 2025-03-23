@@ -230,7 +230,7 @@ void ftKirbySpecialLwStartProcMap(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (mpCommonCheckFighterOnGround(fighter_gobj) == FALSE)
+    if (mpCommonCheckFighterOnFloor(fighter_gobj) == FALSE)
     {
         mpCommonSetFighterAir(fp);
         ftMainSetStatus(fighter_gobj, nFTKirbyStatusSpecialAirLwStart, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_COLANIM));
@@ -243,7 +243,7 @@ void ftKirbySpecialLwUnkProcMap(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (mpCommonCheckFighterOnGround(fighter_gobj) == FALSE)
+    if (mpCommonCheckFighterOnFloor(fighter_gobj) == FALSE)
     {
         mpCommonSetFighterAir(fp);
         ftMainSetStatus(fighter_gobj, nFTKirbyStatusSpecialAirLwHold, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_COLANIM));
@@ -255,7 +255,7 @@ void ftKirbySpecialLwHoldProcMap(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (mpCommonCheckFighterOnGround(fighter_gobj) == FALSE)
+    if (mpCommonCheckFighterOnFloor(fighter_gobj) == FALSE)
     {
         mpCommonSetFighterAir(fp);
         ftMainSetStatus(fighter_gobj, nFTKirbyStatusSpecialAirLwFall, 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_COLANIM));

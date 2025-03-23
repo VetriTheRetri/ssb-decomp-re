@@ -47,14 +47,14 @@ void ftCommonThrownProcMap(GObj *fighter_gobj)
 
     if (capture_fp->coll_data.floor_line_id != -1)
     {
-        if (mpCollisionGetFCCommonGround(capture_fp->coll_data.floor_line_id, this_pos, &dist_y, &this_fp->coll_data.floor_flags, &this_fp->coll_data.floor_angle) != FALSE)
+        if (mpCollisionGetFCCommonFloor(capture_fp->coll_data.floor_line_id, this_pos, &dist_y, &this_fp->coll_data.floor_flags, &this_fp->coll_data.floor_angle) != FALSE)
         {
             this_fp->coll_data.floor_line_id = capture_fp->coll_data.floor_line_id;
 
             return;
         }
     }
-    mpCommonSetFighterProjectGround(fighter_gobj);
+    mpCommonSetFighterProjectFloor(fighter_gobj);
 }
 
 // 0x8014AC0C

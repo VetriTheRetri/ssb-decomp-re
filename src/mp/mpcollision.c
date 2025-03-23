@@ -310,7 +310,7 @@ sb32 mpCollisionGetFCCommon(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flag
 }
 
 // 0x800F3DD8
-sb32 mpCollisionGetFCCommonGround(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flags, Vec3f *angle)
+sb32 mpCollisionGetFCCommonFloor(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flags, Vec3f *angle)
 {
     return mpCollisionGetFCCommon(line_id, object_pos, dist, flags, angle, +1);
 }

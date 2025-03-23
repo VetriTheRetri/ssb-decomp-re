@@ -61,7 +61,7 @@ void ftCommonOttottoProcMap(GObj *fighter_gobj)
     Vec3f pos;
     f32 dist_x;
 
-    if (mpCommonCheckFighterOnGround(fighter_gobj) == FALSE)
+    if (mpCommonCheckFighterOnFloor(fighter_gobj) == FALSE)
     {
         ftCommonFallSetStatus(fighter_gobj);
     }

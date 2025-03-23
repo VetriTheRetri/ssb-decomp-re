@@ -46,7 +46,7 @@ void ftKirbyCopyPikachuSpecialNProcAccessory(GObj *fighter_gobj)
 // 0x801537B8
 void ftKirbyCopyPikachuSpecialNProcMap(GObj *fighter_gobj)
 {
-    mpCommonProcFighterOnGround(fighter_gobj, ftKirbyCopyPikachuSpecialNSwitchStatusAir);
+    mpCommonProcFighterOnFloor(fighter_gobj, ftKirbyCopyPikachuSpecialNSwitchStatusAir);
 }
 
 // 0x801537DC

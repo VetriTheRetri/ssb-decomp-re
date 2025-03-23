@@ -16,7 +16,7 @@
 // 0x80151710
 void ftPurinSpecialLwProcMap(GObj *fighter_gobj)
 {
-    mpCommonProcFighterOnGround(fighter_gobj, ftPurinSpecialLwSwitchStatusAir);
+    mpCommonProcFighterOnFloor(fighter_gobj, ftPurinSpecialLwSwitchStatusAir);
 }
 
 // 0x80151734

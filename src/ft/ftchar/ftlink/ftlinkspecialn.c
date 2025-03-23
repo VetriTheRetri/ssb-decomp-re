@@ -57,13 +57,13 @@ void ftLinkSpecialAirNProcUpdate(GObj *fighter_gobj)
 // 0x801637C0
 void ftLinkSpecialNProcMap(GObj *fighter_gobj)
 {
-    mpCommonProcFighterOnGround(fighter_gobj, ftLinkSpecialNSwitchStatusAir);
+    mpCommonProcFighterOnFloor(fighter_gobj, ftLinkSpecialNSwitchStatusAir);
 }
 
 // 0x801637E4
 void ftLinkSpecialNEmptyProcMap(GObj *fighter_gobj)
 {
-    mpCommonProcFighterOnGround(fighter_gobj, ftLinkSpecialNEmptySwitchStatusAir);
+    mpCommonProcFighterOnFloor(fighter_gobj, ftLinkSpecialNEmptySwitchStatusAir);
 }
 
 // 0x80163808

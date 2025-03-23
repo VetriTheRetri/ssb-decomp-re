@@ -93,7 +93,7 @@ void ftMarioSpecialAirLwProcPhysics(GObj *fighter_gobj)
 // 0x8015675C
 void ftMarioSpecialLwProcMap(GObj *fighter_gobj)
 {
-    mpCommonProcFighterOnGround(fighter_gobj, ftMarioSpecialLwSwitchStatusAir);
+    mpCommonProcFighterOnFloor(fighter_gobj, ftMarioSpecialLwSwitchStatusAir);
 }
 
 // 0x80156780

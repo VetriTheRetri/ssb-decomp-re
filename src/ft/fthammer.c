@@ -130,7 +130,7 @@ void ftHammerProcInterrupt(GObj *fighter_gobj)
 // 0x800F3914
 void ftHammerProcMap(GObj *fighter_gobj)
 {
-    mpCommonProcFighterOnGround(fighter_gobj, ftCommonHammerFallSetStatus);
+    mpCommonProcFighterOnFloor(fighter_gobj, ftCommonHammerFallSetStatus);
 }
 
 // 0x800F3938

@@ -79,7 +79,7 @@ void ftKirbyCopyYoshiSpecialAirNReleaseProcUpdate(GObj *fighter_gobj)
 // 0x8015F314
 void ftKirbyCopyYoshiSpecialNProcMap(GObj *fighter_gobj)
 {
-    mpCommonProcFighterOnGround(fighter_gobj, ftKirbyCopyYoshiSpecialNSwitchStatusAir);
+    mpCommonProcFighterOnFloor(fighter_gobj, ftKirbyCopyYoshiSpecialNSwitchStatusAir);
 }
 
 // 0x8015F338
@@ -91,7 +91,7 @@ void ftKirbyCopyYoshiSpecialAirNProcMap(GObj *fighter_gobj)
 // 0x8015F35C
 void ftKirbyCopyYoshiSpecialNCatchProcMap(GObj *fighter_gobj)
 {
-    mpCommonProcFighterOnGround(fighter_gobj, ftKirbyCopyYoshiSpecialNCatchSwitchStatusAir);
+    mpCommonProcFighterOnFloor(fighter_gobj, ftKirbyCopyYoshiSpecialNCatchSwitchStatusAir);
 }
 
 // 0x8015F380
@@ -103,7 +103,7 @@ void ftKirbyCopyYoshiSpecialAirNCatchProcMap(GObj *fighter_gobj)
 // 0x8015F3A4
 void ftKirbyCopyYoshiSpecialNReleaseProcMap(GObj *fighter_gobj)
 {
-    mpCommonProcFighterOnGround(fighter_gobj, ftKirbyCopyYoshiSpecialNReleaseSwitchStatusAir);
+    mpCommonProcFighterOnFloor(fighter_gobj, ftKirbyCopyYoshiSpecialNReleaseSwitchStatusAir);
 }
 
 // 0x8015F3C8

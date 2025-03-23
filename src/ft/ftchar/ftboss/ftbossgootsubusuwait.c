@@ -48,7 +48,7 @@ void ftBossGootsubusuWaitProcMap(GObj *fighter_gobj)
         translate->x = fp->status_vars.boss.gootsubu.edgeleft_pos_x;
     }
 
-    mpCommonUpdateFighterProjectGround(fighter_gobj);
+    mpCommonUpdateFighterProjectFloor(fighter_gobj);
 
     var = fp->coll_data.floor_dist + 3000.0F;
 

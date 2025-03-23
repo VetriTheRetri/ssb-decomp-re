@@ -235,7 +235,7 @@ sb32 itTaruThrownCheckMapCollision(GObj *item_gobj, f32 common_rebound)
 {
     s32 unused;
     ITStruct *ip;
-    sb32 is_collide_ground = itMapTestAllCollisionFlag(item_gobj, MPCOLL_FLAG_GROUND);
+    sb32 is_collide_ground = itMapTestAllCollisionFlag(item_gobj, MPCOLL_FLAG_FLOOR);
 
     if (itMapCheckCollideAllRebound(item_gobj, (MPCOLL_FLAG_CEIL | MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL), common_rebound, NULL) != FALSE)
     {

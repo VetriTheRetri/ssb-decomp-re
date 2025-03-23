@@ -121,7 +121,7 @@ void ftShadowProcDisplay(GObj *shadow_gobj)
         if ((floor_line_id != -1) && (fp->coll_data.floor_line_id != -2))
         {
             pos_project.x = DObjGetStruct(fighter_gobj)->translate.vec.f.x;
-            pos_project.y = DObjGetStruct(fighter_gobj)->translate.vec.f.y - 0x10000U;
+            pos_project.y = DObjGetStruct(fighter_gobj)->translate.vec.f.y - 65536;
 
             if 
             (

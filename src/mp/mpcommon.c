@@ -43,7 +43,7 @@ sb32 mpCommonCheckSetFighterCliffEdge(GObj *fighter_gobj, s32 floor_line_id)
             {
                 edge_pos.x += 40.0F;
 
-                mpCollisionGetFCCommonGround(floor_line_id, &edge_pos, &floor_dist, &flags, &angle);
+                mpCollisionGetFCCommonFloor(floor_line_id, &edge_pos, &floor_dist, &flags, &angle);
 
                 edge_pos.y += floor_dist;
                 sp4C.x = map_coll->width + edge_pos.x;
@@ -63,7 +63,7 @@ sb32 mpCommonCheckSetFighterCliffEdge(GObj *fighter_gobj, s32 floor_line_id)
 
             edge_pos.x -= 40.0F;
 
-            mpCollisionGetFCCommonGround(floor_line_id, &edge_pos, &floor_dist, &flags, &angle);
+            mpCollisionGetFCCommonFloor(floor_line_id, &edge_pos, &floor_dist, &flags, &angle);
 
             edge_pos.y += floor_dist;
             sp4C.x = edge_pos.x - map_coll->width;
@@ -115,7 +115,7 @@ sb32 mpCommonCheckSetFighterEdge(GObj *fighter_gobj, s32 floor_line_id)
 
         if (translate->x <= edge_pos.x)
         {
-            if (mpCollisionGetFCCommonGround(floor_line_id, &edge_pos, &floor_dist, &flags, &angle));
+            if (mpCollisionGetFCCommonFloor(floor_line_id, &edge_pos, &floor_dist, &flags, &angle));
 
             sp4C.x = edge_pos.x + 1.0F;
             sp4C.y = edge_pos.y + 1.0F;
@@ -132,7 +132,7 @@ sb32 mpCommonCheckSetFighterEdge(GObj *fighter_gobj, s32 floor_line_id)
         {
             mpCollisionGetFloorEdgeR(floor_line_id, &edge_pos);
 
-            if (mpCollisionGetFCCommonGround(floor_line_id, &edge_pos, &floor_dist, &flags, &angle));
+            if (mpCollisionGetFCCommonFloor(floor_line_id, &edge_pos, &floor_dist, &flags, &angle));
 
             sp4C.x = edge_pos.x - 1.0F;
             sp4C.y = edge_pos.y + 1.0F;
@@ -177,11 +177,11 @@ sb32 mpCommonRunFighterAllCollisions(MPCollData *coll_data, GObj *fighter_gobj, 
 
         coll_data->is_coll_end = TRUE;
     }
-    if (mpProcessCheckTestGroundCollisionNew(coll_data) != FALSE)
+    if (mpProcessCheckTestFloorCollisionNew(coll_data) != FALSE)
     {
-        if (coll_data->coll_mask_stat & MPCOLL_FLAG_GROUND)
+        if (coll_data->coll_mask_stat & MPCOLL_FLAG_FLOOR)
         {
-            mpProcessRunGroundEdgeAdjust(coll_data);
+            mpProcessRunFloorEdgeAdjust(coll_data);
 
             sp20 = TRUE;
         }
@@ -202,13 +202,13 @@ sb32 mpCommonRunFighterAllCollisions(MPCollData *coll_data, GObj *fighter_gobj, 
     }
     else coll_data->is_coll_end = TRUE;
 
-    if (mpProcessCheckTestGroundCollision(coll_data, floor_line_id) != FALSE)
+    if (mpProcessCheckTestFloorCollision(coll_data, floor_line_id) != FALSE)
     {
         func_ovl2_800DD59C(coll_data);
 
-        if (coll_data->coll_mask_stat & MPCOLL_FLAG_GROUND)
+        if (coll_data->coll_mask_stat & MPCOLL_FLAG_FLOOR)
         {
-            mpProcessRunGroundEdgeAdjust(coll_data);
+            mpProcessRunFloorEdgeAdjust(coll_data);
 
             sp20 = TRUE;
         }
@@ -219,7 +219,7 @@ sb32 mpCommonRunFighterAllCollisions(MPCollData *coll_data, GObj *fighter_gobj, 
 }
 
 // 0x800DDDA8
-sb32 mpCommonCheckFighterOnGround(GObj *fighter_gobj)
+sb32 mpCommonCheckFighterOnFloor(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -227,9 +227,9 @@ sb32 mpCommonCheckFighterOnGround(GObj *fighter_gobj)
 }
 
 // 0x800DDDDC
-sb32 mpCommonProcFighterOnGround(GObj *fighter_gobj, void (*proc_map)(GObj*))
+sb32 mpCommonProcFighterOnFloor(GObj *fighter_gobj, void (*proc_map)(GObj*))
 {
-    if (mpCommonCheckFighterOnGround(fighter_gobj) == FALSE)
+    if (mpCommonCheckFighterOnFloor(fighter_gobj) == FALSE)
     {
         proc_map(fighter_gobj);
 
@@ -269,7 +269,7 @@ sb32 mpCommonProcFighterOnEdge(GObj *fighter_gobj, void (*proc_map)(GObj*))
 // 0x800DDEC4
 void mpCommonSetFighterFallOnGroundBreak(GObj *fighter_gobj)
 {
-    mpCommonProcFighterOnGround(fighter_gobj, ftCommonFallSetStatus);
+    mpCommonProcFighterOnFloor(fighter_gobj, ftCommonFallSetStatus);
 }
 
 // 0x800DDEE8
@@ -309,7 +309,7 @@ sb32 func_ovl2_800DDF74(GObj *fighter_gobj, FTStruct *fp, FTAttributes *attr, DO
     f32 ternary;
     f32 translate_y;
 
-    if (mpCollisionGetFCCommonGround(fp->coll_data.floor_line_id, vec, &sp48, &sp3C, &sp64) != FALSE)
+    if (mpCollisionGetFCCommonFloor(fp->coll_data.floor_line_id, vec, &sp48, &sp3C, &sp64) != FALSE)
     {
         translate_y = (vec->y + sp48) - DObjGetStruct(fighter_gobj)->translate.vec.f.y;
     }
@@ -405,17 +405,17 @@ void mpCommonUpdateFighterSlopeContour(GObj *fighter_gobj)
 }
 
 // 0x800DE324
-void mpCommonSetFighterProjectGround(GObj *fighter_gobj)
+void mpCommonSetFighterProjectFloor(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    mpProcessSetCollProjectGroundID(&fp->coll_data);
+    mpProcessSetCollProjectFloorID(&fp->coll_data);
 }
 
 // 0x800DE348
-void mpCommonUpdateFighterProjectGround(GObj *fighter_gobj)
+void mpCommonUpdateFighterProjectFloor(GObj *fighter_gobj)
 {
-    mpCommonSetFighterProjectGround(fighter_gobj);
+    mpCommonSetFighterProjectFloor(fighter_gobj);
 }
 
 // 0x800DE368
@@ -511,11 +511,11 @@ sb32 mpCommonRunFighterSpecialCollisions(MPCollData *coll_data, GObj *fighter_go
 
                                             ? 
         
-    mpProcessCheckTestGroundCollisionAdjNew(coll_data, sMPCommonProcPass, fighter_gobj) 
+    mpProcessCheckTestFloorCollisionAdjNew(coll_data, sMPCommonProcPass, fighter_gobj) 
         
                                             :
         
-                    mpProcessRunGroundCollisionAdjNewNULL(coll_data);
+                    mpProcessRunFloorCollisionAdjNewNULL(coll_data);
 
     if (is_collide != FALSE)
     {
@@ -523,20 +523,20 @@ sb32 mpCommonRunFighterSpecialCollisions(MPCollData *coll_data, GObj *fighter_go
         {
             func_ovl2_800DD6A8(coll_data);
 
-            if (coll_data->coll_mask_stat & MPCOLL_FLAG_GROUND)
+            if (coll_data->coll_mask_stat & MPCOLL_FLAG_FLOOR)
             {
-                mpProcessRunGroundEdgeAdjust(coll_data);
+                mpProcessRunFloorEdgeAdjust(coll_data);
             }
-            else mpProcessSetCollProjectGroundID(coll_data);
+            else mpProcessSetCollProjectFloorID(coll_data);
         }
         else
         {
             func_ovl2_800DD59C(coll_data);
             mpCommonSetFighterLandingParams(fighter_gobj);
 
-            if (coll_data->coll_mask_stat & MPCOLL_FLAG_GROUND)
+            if (coll_data->coll_mask_stat & MPCOLL_FLAG_FLOOR)
             {
-                mpProcessRunGroundEdgeAdjust(coll_data);
+                mpProcessRunFloorEdgeAdjust(coll_data);
 
                 coll_data->is_coll_end = TRUE;
 
@@ -544,7 +544,7 @@ sb32 mpCommonRunFighterSpecialCollisions(MPCollData *coll_data, GObj *fighter_go
             }
         }
     }
-    else mpProcessSetCollProjectGroundID(coll_data);
+    else mpProcessSetCollProjectFloorID(coll_data);
 
     if ((flags & MPCOLL_PROC_TYPE_CLIFF) && (this_fp->cliffcatch_wait == 0))
     {
@@ -700,7 +700,7 @@ void mpCommonProcFighterCliffWaitOrLanding(GObj *fighter_gobj)
 }
 
 // 0x800DE99C
-void mpCommonProcFighterCliffGroundCeil(GObj *fighter_gobj)
+void mpCommonProcFighterCliffFloorCeil(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -710,7 +710,7 @@ void mpCommonProcFighterCliffGroundCeil(GObj *fighter_gobj)
         {
             ftCommonCliffCatchSetStatus(fighter_gobj);
         }
-        else if (fp->coll_data.coll_mask_stat & MPCOLL_FLAG_GROUND)
+        else if (fp->coll_data.coll_mask_stat & MPCOLL_FLAG_FLOOR)
         {
             mpCommonSetFighterWaitOrLanding(fighter_gobj);
         }
@@ -782,17 +782,17 @@ sb32 mpCommonProcFighterDamage(MPCollData *coll_data, GObj *fighter_gobj, u32 fl
             fp->status_vars.common.damage.coll_mask_ignore |= MPCOLL_FLAG_CEIL;
         }
     }
-    if (mpProcessRunGroundCollisionAdjNewNULL(coll_data) != FALSE)
+    if (mpProcessRunFloorCollisionAdjNewNULL(coll_data) != FALSE)
     {
         if (fp->hitlag_tics > 0)
         {
             func_ovl2_800DD6A8(coll_data);
 
-            if (coll_data->coll_mask_stat & MPCOLL_FLAG_GROUND)
+            if (coll_data->coll_mask_stat & MPCOLL_FLAG_FLOOR)
             {
-                mpProcessRunGroundEdgeAdjust(coll_data);
+                mpProcessRunFloorEdgeAdjust(coll_data);
             }
-            else mpProcessSetCollProjectGroundID(coll_data);
+            else mpProcessSetCollProjectFloorID(coll_data);
         }
         else
         {
@@ -801,11 +801,11 @@ sb32 mpCommonProcFighterDamage(MPCollData *coll_data, GObj *fighter_gobj, u32 fl
                 func_ovl2_800DD59C(coll_data);
                 mpCommonSetFighterLandingParams(fighter_gobj);
 
-                if (coll_data->coll_mask_stat & MPCOLL_FLAG_GROUND)
+                if (coll_data->coll_mask_stat & MPCOLL_FLAG_FLOOR)
                 {
-                    mpProcessRunGroundEdgeAdjust(coll_data);
+                    mpProcessRunFloorEdgeAdjust(coll_data);
 
-                    fp->status_vars.common.damage.coll_mask_curr |= MPCOLL_FLAG_GROUND;
+                    fp->status_vars.common.damage.coll_mask_curr |= MPCOLL_FLAG_FLOOR;
 
                     is_collide = TRUE;
 
@@ -816,22 +816,22 @@ sb32 mpCommonProcFighterDamage(MPCollData *coll_data, GObj *fighter_gobj, u32 fl
             {
                 func_ovl2_800DD6A8(coll_data);
 
-                if (coll_data->coll_mask_stat & MPCOLL_FLAG_GROUND)
+                if (coll_data->coll_mask_stat & MPCOLL_FLAG_FLOOR)
                 {
-                    mpProcessRunGroundEdgeAdjust(coll_data);
+                    mpProcessRunFloorEdgeAdjust(coll_data);
 
-                    if (!(coll_data->coll_mask_prev & MPCOLL_FLAG_GROUND))
+                    if (!(coll_data->coll_mask_prev & MPCOLL_FLAG_FLOOR))
                     {
-                        fp->status_vars.common.damage.coll_mask_ignore |= MPCOLL_FLAG_GROUND;
+                        fp->status_vars.common.damage.coll_mask_ignore |= MPCOLL_FLAG_FLOOR;
 
                         fp->status_vars.common.damage.wall_collide_angle = coll_data->floor_angle;
                     }
                 }
-                else mpProcessSetCollProjectGroundID(coll_data);
+                else mpProcessSetCollProjectFloorID(coll_data);
             }
         }
     }
-    else mpProcessSetCollProjectGroundID(coll_data);
+    else mpProcessSetCollProjectFloorID(coll_data);
 
     return is_collide;
 }
@@ -860,7 +860,7 @@ void mpCommonUpdateFighterKinetics(GObj *fighter_gobj)
             mpCommonSetFighterGround(fp);
         }
     }
-    else if (mpCommonCheckFighterOnGround(fighter_gobj) == FALSE)
+    else if (mpCommonCheckFighterOnFloor(fighter_gobj) == FALSE)
     {
         mpCommonSetFighterAir(fp);
     }
@@ -920,16 +920,16 @@ void mpCommonRunDefaultCollision(MPCollData *coll_data, GObj *gobj, u32 flags)
             mpProcessRunCeilEdgeAdjust(coll_data);
         }
     }
-    if (mpProcessRunGroundCollisionAdjNewNULL(coll_data) != FALSE)
+    if (mpProcessRunFloorCollisionAdjNewNULL(coll_data) != FALSE)
     {
         func_ovl2_800DD6A8(coll_data);
 
-        if (coll_data->coll_mask_stat & MPCOLL_FLAG_GROUND)
+        if (coll_data->coll_mask_stat & MPCOLL_FLAG_FLOOR)
         {
-            mpProcessRunGroundEdgeAdjust(coll_data);
+            mpProcessRunFloorEdgeAdjust(coll_data);
         }
     }
-    else mpProcessSetCollProjectGroundID(coll_data);
+    else mpProcessSetCollProjectFloorID(coll_data);
 }
 
 // 0x800DEFBC

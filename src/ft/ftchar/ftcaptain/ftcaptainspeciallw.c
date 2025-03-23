@@ -55,7 +55,7 @@ void ftCaptainSpecialLwDecideMapCollide(GObj *fighter_gobj)
         {
             mpCommonProcFighterOnEdge(fighter_gobj, ftCaptainSpecialLwSetAir);
         }
-        else mpCommonProcFighterOnGround(fighter_gobj, ftCaptainSpecialLwSetAir);
+        else mpCommonProcFighterOnFloor(fighter_gobj, ftCaptainSpecialLwSetAir);
     }
     else mpCommonProcFighterLanding(fighter_gobj, ftCaptainSpecialLwSetGround);
 }

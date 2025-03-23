@@ -106,7 +106,7 @@ sb32 itTosakintoAppearProcMap(GObj *item_gobj)
 
     itMapTestAllCheckCollEnd(item_gobj);
 
-    if (ip->coll_data.coll_mask_curr & MPCOLL_FLAG_GROUND)
+    if (ip->coll_data.coll_mask_curr & MPCOLL_FLAG_FLOOR)
     {
         ip->physics.vel_air.y = ITTOSAKINTO_FLAP_VEL_Y;
 
@@ -154,7 +154,7 @@ sb32 itTosakintoBounceProcMap(GObj *item_gobj)
 
     itMapTestAllCheckCollEnd(item_gobj);
 
-    if (ip->coll_data.coll_mask_curr & MPCOLL_FLAG_GROUND)
+    if (ip->coll_data.coll_mask_curr & MPCOLL_FLAG_FLOOR)
     {
         ip->physics.vel_air.y = ITTOSAKINTO_FLAP_VEL_Y;
 
@@ -223,7 +223,7 @@ sb32 itTosakintoCommonProcMap(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    if (itMapTestAllCollisionFlag(item_gobj, MPCOLL_FLAG_GROUND) != FALSE)
+    if (itMapTestAllCollisionFlag(item_gobj, MPCOLL_FLAG_FLOOR) != FALSE)
     {
         ip->physics.vel_air.y = 0.0F;
     }

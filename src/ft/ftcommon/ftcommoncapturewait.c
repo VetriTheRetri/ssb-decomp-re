@@ -16,7 +16,7 @@ void ftCommonCaptureWaitProcMap(GObj *fighter_gobj)
     Vec3f capture_pos;
     f32 dist_y;
 
-    if (mpCollisionGetFCCommonGround(capture_fp->coll_data.floor_line_id, this_pos, &dist_y, &this_fp->coll_data.floor_flags, &this_fp->coll_data.floor_angle) != FALSE)
+    if (mpCollisionGetFCCommonFloor(capture_fp->coll_data.floor_line_id, this_pos, &dist_y, &this_fp->coll_data.floor_flags, &this_fp->coll_data.floor_angle) != FALSE)
     {
         this_fp->coll_data.floor_line_id = capture_fp->coll_data.floor_line_id;
 
@@ -35,7 +35,7 @@ void ftCommonCaptureWaitProcMap(GObj *fighter_gobj)
 
         this_pos->y = capture_pos.y;
 
-        mpCommonSetFighterProjectGround(fighter_gobj);
+        mpCommonSetFighterProjectFloor(fighter_gobj);
 
         this_fp->ga = nMPKineticsAir;
         this_fp->jumps_used = 1;

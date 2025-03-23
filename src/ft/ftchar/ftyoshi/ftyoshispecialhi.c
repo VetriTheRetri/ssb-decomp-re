@@ -146,7 +146,7 @@ void ftYoshiSpecialHiSwitchStatusAir(GObj *fighter_gobj)
 // 0x8015ECAC
 void ftYoshiSpecialHiProcMap(GObj *fighter_gobj)
 {
-    mpCommonProcFighterOnGround(fighter_gobj, ftYoshiSpecialHiSwitchStatusAir);
+    mpCommonProcFighterOnFloor(fighter_gobj, ftYoshiSpecialHiSwitchStatusAir);
 }
 
 // 0x8015ECD0

@@ -279,7 +279,7 @@ void grHyruleTwisterUpdateMove(void)
         }
         else pos->x = pos_x;
 
-        mpCollisionGetFCCommonGround(gGRCommonStruct.hyrule.twister_line_id, pos, &ground_level, NULL, NULL);
+        mpCollisionGetFCCommonFloor(gGRCommonStruct.hyrule.twister_line_id, pos, &ground_level, NULL, NULL);
 
         pos->y += ground_level;
 

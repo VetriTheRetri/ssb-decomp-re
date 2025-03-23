@@ -467,7 +467,7 @@ FTStatusDesc dFTCommonActionStatusDescs[/* */] =
 		ftAnimEndSetFall,		            	// Proc Update
 		ftCommonJumpProcInterrupt,				// Proc Interrupt
 		ftPhysicsApplyAirVelDriftFastFall,		// Proc Physics
-		mpCommonProcFighterCliffGroundCeil		// Proc Map
+		mpCommonProcFighterCliffFloorCeil		// Proc Map
 	},
 
 	// Status 23 (0x17): JumpB
@@ -487,7 +487,7 @@ FTStatusDesc dFTCommonActionStatusDescs[/* */] =
 		ftAnimEndSetFall,		            	// Proc Update
 		ftCommonJumpProcInterrupt,				// Proc Interrupt
 		ftPhysicsApplyAirVelDriftFastFall,		// Proc Physics
-		mpCommonProcFighterCliffGroundCeil		// Proc Map
+		mpCommonProcFighterCliffFloorCeil		// Proc Map
 	},
 
 	// Status 24 (0x18): JumpAerialF
@@ -507,7 +507,7 @@ FTStatusDesc dFTCommonActionStatusDescs[/* */] =
 		ftCommonJumpAerialProcUpdate,			// Proc Update
 		ftCommonJumpAerialProcInterrupt,		// Proc Interrupt
 		ftPhysicsApplyAirVelDriftFastFall,		// Proc Physics
-		mpCommonProcFighterCliffGroundCeil		// Proc Map
+		mpCommonProcFighterCliffFloorCeil		// Proc Map
 	},
 
 	// Status 25 (0x19): JumpAerialB
@@ -527,7 +527,7 @@ FTStatusDesc dFTCommonActionStatusDescs[/* */] =
 		ftCommonJumpAerialProcUpdate,			// Proc Update
 		ftCommonJumpAerialProcInterrupt,		// Proc Interrupt
 		ftPhysicsApplyAirVelDriftFastFall,		// Proc Physics
-		mpCommonProcFighterCliffGroundCeil		// Proc Map
+		mpCommonProcFighterCliffFloorCeil		// Proc Map
 	},
 
 	// Status 26 (0x1A): Fall
@@ -547,7 +547,7 @@ FTStatusDesc dFTCommonActionStatusDescs[/* */] =
 		NULL,									// Proc Update
 		ftCommonFallProcInterrupt,				// Proc Interrupt
 		ftPhysicsApplyAirVelDriftFastFall,		// Proc Physics
-		mpCommonProcFighterCliffGroundCeil		// Proc Map
+		mpCommonProcFighterCliffFloorCeil		// Proc Map
 	},
 
 	// Status 27 (0x1B): FallAerial
@@ -567,7 +567,7 @@ FTStatusDesc dFTCommonActionStatusDescs[/* */] =
 		NULL,									// Proc Update
 		ftCommonFallProcInterrupt,				// Proc Interrupt
 		ftPhysicsApplyAirVelDriftFastFall,		// Proc Physics
-		mpCommonProcFighterCliffGroundCeil		// Proc Map
+		mpCommonProcFighterCliffFloorCeil		// Proc Map
 	},
 
 	// Status 28 (0x1C): Squat
@@ -687,7 +687,7 @@ FTStatusDesc dFTCommonActionStatusDescs[/* */] =
 		ftAnimEndSetFall,		            	// Proc Update
 		ftCommonPassProcInterrupt,				// Proc Interrupt
 		ftPhysicsApplyAirVelDriftFastFall,		// Proc Physics
-		mpCommonProcFighterCliffGroundCeil		// Proc Map
+		mpCommonProcFighterCliffFloorCeil		// Proc Map
 	},
 
 	// Status 34 (0x22): GuardPass
@@ -707,7 +707,7 @@ FTStatusDesc dFTCommonActionStatusDescs[/* */] =
 		ftAnimEndSetFall,		            	// Proc Update
 		ftCommonPassProcInterrupt,				// Proc Interrupt
 		ftPhysicsApplyAirVelDriftFastFall,		// Proc Physics
-		mpCommonProcFighterCliffGroundCeil		// Proc Map
+		mpCommonProcFighterCliffFloorCeil		// Proc Map
 	},
 
 	// Status 35 (0x23): OttottoWait
@@ -1327,7 +1327,7 @@ FTStatusDesc dFTCommonActionStatusDescs[/* */] =
 		ftCommonDokanEndProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
 		NULL,									// Proc Physics
-		mpCommonUpdateFighterProjectGround				// Proc Map
+		mpCommonUpdateFighterProjectFloor				// Proc Map
 	},
 
 	// Status 66 (0x42): StopCeil
@@ -1347,7 +1347,7 @@ FTStatusDesc dFTCommonActionStatusDescs[/* */] =
 		ftAnimEndSetFall,		            	// Proc Update
 		NULL,									// Proc Interrupt
 		NULL,									// Proc Physics
-		mpCommonProcFighterCliffGroundCeil		// Proc Map
+		mpCommonProcFighterCliffFloorCeil		// Proc Map
 	},
 
 	// Status 67 (0x43): DownBounceD
@@ -3487,7 +3487,7 @@ FTStatusDesc dFTCommonActionStatusDescs[/* */] =
 		NULL,									// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommonCaptureKirbyProcPhysics,		// Proc Physics
-		mpCommonUpdateFighterProjectGround				// Proc Map
+		mpCommonUpdateFighterProjectFloor				// Proc Map
 	},
 
 	// Status 174 (0xAE): CaptureWaitKirby
@@ -3567,7 +3567,7 @@ FTStatusDesc dFTCommonActionStatusDescs[/* */] =
 		NULL,									// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommonCaptureYoshiProcPhysics,		// Proc Physics
-		mpCommonUpdateFighterProjectGround				// Proc Map
+		mpCommonUpdateFighterProjectFloor				// Proc Map
 	},
 
 	// Status 178 (0xB2): YoshiEgg
@@ -3607,7 +3607,7 @@ FTStatusDesc dFTCommonActionStatusDescs[/* */] =
 		NULL,									// Proc Update
 		NULL,									// Proc Interrupt
 		ftCommonCaptureCaptainProcPhysics,		// Proc Physics
-		mpCommonUpdateFighterProjectGround				// Proc Map
+		mpCommonUpdateFighterProjectFloor				// Proc Map
 	},
 
 	// Status 180 (0xB4): ThrownDonkeyUnk

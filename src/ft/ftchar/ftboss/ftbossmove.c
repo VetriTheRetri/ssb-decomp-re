@@ -41,7 +41,7 @@ void ftBossMoveProcMap(GObj *fighter_gobj)
 {
     FTStruct *fp;
 
-    mpCommonSetFighterProjectGround(fighter_gobj);
+    mpCommonSetFighterProjectFloor(fighter_gobj);
 
     fp = ftGetStruct(fighter_gobj);
 

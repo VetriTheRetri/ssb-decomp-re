@@ -119,7 +119,7 @@ void ftCommonCaptureYoshiProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
     ftParamSetCaptureImmuneMask(this_fp, FTCATCHKIND_MASK_ALL);
     ftPhysicsStopVelAll(fighter_gobj);
     ftCommonCaptureYoshiProcPhysics(fighter_gobj);
-    mpCommonUpdateFighterProjectGround(fighter_gobj);
+    mpCommonUpdateFighterProjectFloor(fighter_gobj);
 }
 
 // 0x8014C958
@@ -280,7 +280,7 @@ void ftCommonYoshiEggProcMap(GObj *fighter_gobj)
 
     if (fp->ga == nMPKineticsGround)
     {
-        if (mpCommonCheckFighterOnGround(fighter_gobj) == FALSE)
+        if (mpCommonCheckFighterOnFloor(fighter_gobj) == FALSE)
         {
             fp->ga = nMPKineticsAir;
         }

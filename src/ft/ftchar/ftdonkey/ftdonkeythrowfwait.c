@@ -33,7 +33,7 @@ void ftDonkeyThrowFWaitProcInterrupt(GObj *fighter_gobj)
 // 0x8014D478
 void ftDonkeyThrowFCommonProcMap(GObj *fighter_gobj)
 {
-    mpCommonProcFighterOnGround(fighter_gobj, ftDonkeyThrowFFallSetStatus);
+    mpCommonProcFighterOnFloor(fighter_gobj, ftDonkeyThrowFFallSetStatus);
 }
 
 // 0x8014D49C

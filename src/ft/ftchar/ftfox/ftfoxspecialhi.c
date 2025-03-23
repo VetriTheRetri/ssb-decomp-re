@@ -39,7 +39,7 @@ void ftFoxSpecialAirHiStartProcPhysics(GObj *fighter_gobj)
 // 0x8015BDC0
 void ftFoxSpecialHiStartProcMap(GObj *fighter_gobj)
 {
-    mpCommonProcFighterOnGround(fighter_gobj, ftFoxSpecialHiStartSwitchStatusAir);
+    mpCommonProcFighterOnFloor(fighter_gobj, ftFoxSpecialHiStartSwitchStatusAir);
 }
 
 // 0x8015BDE4
@@ -85,7 +85,7 @@ void ftFoxSpecialHiHoldProcUpdate(GObj *fighter_gobj)
 // 0x8015BEE8
 void ftFoxSpecialHiHoldProcMap(GObj *fighter_gobj)
 {
-    mpCommonProcFighterOnGround(fighter_gobj, ftFoxSpecialHiHoldSwitchStatusAir);
+    mpCommonProcFighterOnFloor(fighter_gobj, ftFoxSpecialHiHoldSwitchStatusAir);
 }
 
 // 0x8015BF0C
@@ -196,7 +196,7 @@ void ftFoxSpecialHiProcMap(GObj *fighter_gobj)
 
     fp->status_vars.fox.specialhi.pass_timer++;
 
-    if (mpCommonProcFighterOnGround(fighter_gobj, ftFoxSpecialAirHiSetStatus) != FALSE)
+    if (mpCommonProcFighterOnFloor(fighter_gobj, ftFoxSpecialAirHiSetStatus) != FALSE)
     {
         fp->status_vars.fox.specialhi.angle = syUtilsArcTan2(-fp->coll_data.floor_angle.x * fp->lr, fp->coll_data.floor_angle.y);
     }
@@ -224,9 +224,9 @@ void ftFoxSpecialAirHiProcMap(GObj *fighter_gobj)
 
     if (mpCommonCheckFighterPass(fighter_gobj, ftFoxSpecialHiProcPass) != FALSE)
     {
-        coll_mask = (fp->coll_data.coll_mask_prev ^ fp->coll_data.coll_mask_curr) & fp->coll_data.coll_mask_curr & MPCOLL_FLAG_GROUND;
+        coll_mask = (fp->coll_data.coll_mask_prev ^ fp->coll_data.coll_mask_curr) & fp->coll_data.coll_mask_curr & MPCOLL_FLAG_FLOOR;
 
-        if (!(coll_mask & MPCOLL_FLAG_GROUND) || (lbCommonCheckAdjustSim2D(&fp->physics.vel_air, &fp->coll_data.floor_angle, FTFOX_FIREFOX_BOUND_ANGLE) == FALSE))
+        if (!(coll_mask & MPCOLL_FLAG_FLOOR) || (lbCommonCheckAdjustSim2D(&fp->physics.vel_air, &fp->coll_data.floor_angle, FTFOX_FIREFOX_BOUND_ANGLE) == FALSE))
         {
             if (syVectorAngleDiff3D(&fp->coll_data.floor_angle, &fp->physics.vel_air) > F_CST_DTOR32(110.0F)) // 1.9198622F
             {

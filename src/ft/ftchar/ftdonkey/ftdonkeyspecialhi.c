@@ -47,7 +47,7 @@ void ftDonkeySpecialAirHiProcPhysics(GObj *fighter_gobj)
 // 0x8015B800
 void ftDonkeySpecialHiProcMap(GObj *fighter_gobj)
 {
-    mpCommonProcFighterOnGround(fighter_gobj, ftDonkeySpecialHiSwitchStatusAir);
+    mpCommonProcFighterOnFloor(fighter_gobj, ftDonkeySpecialHiSwitchStatusAir);
 }
 
 // 0x8015B824

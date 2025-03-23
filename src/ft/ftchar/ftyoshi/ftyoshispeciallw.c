@@ -53,7 +53,7 @@ void ftYoshiSpecialLwStartProcMap(GObj *fighter_gobj)
     {
         if (mpCommonCheckFighterCeilHeavyCliff(fighter_gobj) != FALSE)
         {
-            if (fp->coll_data.coll_mask_stat & MPCOLL_FLAG_GROUND)
+            if (fp->coll_data.coll_mask_stat & MPCOLL_FLAG_FLOOR)
             {
                 mpCommonSetFighterGround(fp);
                 ftMainSetStatus(fighter_gobj, nFTYoshiStatusSpecialLwLanding, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
@@ -77,7 +77,7 @@ void ftYoshiSpecialAirLwLoopProcMap(GObj *fighter_gobj)
 
     if (mpCommonCheckFighterCeilHeavyCliff(fighter_gobj) != FALSE)
     {
-        if (fp->coll_data.coll_mask_stat & MPCOLL_FLAG_GROUND)
+        if (fp->coll_data.coll_mask_stat & MPCOLL_FLAG_FLOOR)
         {
             mpCommonSetFighterGround(fp);
             ftMainSetStatus(fighter_gobj, nFTYoshiStatusSpecialLwLanding, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);

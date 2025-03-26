@@ -183,7 +183,7 @@ void grYosterUpdateCloudAnim(s32 cloud_id)
         {
             DObj *dobj = gGRCommonStruct.yoster.clouds[cloud_id].dobj[i];
 
-            lbCommonAddDObjAnimAll(dobj, NULL, (void*) ((intptr_t)dGRYosterCloudMatAnimJoints[anim_id] + (uintptr_t)map_head), 0.0F);
+            lbCommonAddTreeDObjsAnimAll(dobj, NULL, (void*) ((intptr_t)dGRYosterCloudMatAnimJoints[anim_id] + (uintptr_t)map_head), 0.0F);
             gcPlayDObjAnimJoint(dobj);
         }
         gGRCommonStruct.yoster.clouds[cloud_id].anim_id = -1;

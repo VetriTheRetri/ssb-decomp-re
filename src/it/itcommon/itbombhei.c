@@ -250,7 +250,7 @@ void itBombHeiCommonCheckMakeDustEffect(GObj *item_gobj, u8 override)
     ITAttributes *attr = ip->attr;
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    if ((ip->coll_data.coll_mask_curr & MPCOLL_FLAG_FLOOR) || (override != FALSE))
+    if ((ip->coll_data.coll_mask_curr & MAP_FLAG_FLOOR) || (override != FALSE))
     {
         Vec3f pos = dobj->translate.vec.f;
 
@@ -354,7 +354,7 @@ sb32 itBombHeiWaitProcUpdate(GObj *item_gobj)
 // 0x801773F4
 sb32 itBombHeiWaitProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itBombHeiFallSetStatus);
+    itMapCheckLRWallProcNoFloor(item_gobj, itBombHeiFallSetStatus);
 
     return FALSE;
 }
@@ -503,13 +503,13 @@ sb32 itBombHeiWalkProcMap(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    itMapCheckLRWallProcGround(item_gobj, itBombHeiDroppedSetStatus);
+    itMapCheckLRWallProcNoFloor(item_gobj, itBombHeiDroppedSetStatus);
 
-    if (ip->coll_data.coll_mask_curr & MPCOLL_FLAG_LWALL)
+    if (ip->coll_data.coll_mask_curr & MAP_FLAG_LWALL)
     {
         itBombHeiCommonSetWalkLR(item_gobj, 0);
     }
-    if (ip->coll_data.coll_mask_curr & MPCOLL_FLAG_RWALL)
+    if (ip->coll_data.coll_mask_curr & MAP_FLAG_RWALL)
     {
         itBombHeiCommonSetWalkLR(item_gobj, 1);
     }
@@ -696,7 +696,7 @@ sb32 itBombHeiExplodeWaitProcUpdate(GObj *item_gobj)
 // 0x80177D00
 sb32 itBombHeiExplodeWaitProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itBombHeiDroppedSetStatus);
+    itMapCheckLRWallProcNoFloor(item_gobj, itBombHeiDroppedSetStatus);
 
     return FALSE;
 }

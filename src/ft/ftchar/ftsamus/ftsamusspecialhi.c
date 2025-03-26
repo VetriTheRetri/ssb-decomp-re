@@ -38,7 +38,7 @@ sb32 ftSamusSpecialHiProcPass(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (!(fp->coll_data.floor_flags & MPCOLL_VERTEX_CLL_PASS) || (fp->input.pl.stick_range.y >= FTSAMUS_SCREWATTACK_PASS_STICK_RANGE_MIN))
+    if (!(fp->coll_data.floor_flags & MAP_VERTEX_CLL_PASS) || (fp->input.pl.stick_range.y >= FTSAMUS_SCREWATTACK_PASS_STICK_RANGE_MIN))
     {
         return TRUE;
     }
@@ -58,7 +58,7 @@ void ftSamusSpecialHiProcMap(GObj *fighter_gobj)
         }
         else if (mpCommonCheckFighterPassCliff(fighter_gobj, ftSamusSpecialHiProcPass) != FALSE)
         {
-            if (fp->coll_data.coll_mask_stat & MPCOLL_FLAG_CLIFF_MASK)
+            if (fp->coll_data.coll_mask_stat & MAP_FLAG_CLIFF_MASK)
             {
                 ftCommonCliffCatchSetStatus(fighter_gobj);
             }

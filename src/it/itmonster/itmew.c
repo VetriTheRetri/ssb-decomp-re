@@ -153,7 +153,7 @@ sb32 itMewCommonProcMap(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    if (itMapTestAllCollisionFlag(item_gobj, MPCOLL_FLAG_FLOOR) != FALSE)
+    if (itMapTestAllCollisionFlag(item_gobj, MAP_FLAG_FLOOR) != FALSE)
     {
         ip->physics.vel_air.y = 0.0F;
     }

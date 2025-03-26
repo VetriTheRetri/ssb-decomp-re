@@ -155,7 +155,7 @@ sb32 itEggFallProcUpdate(GObj *item_gobj)
 // 0x80181618
 sb32 itEggWaitProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itEggFallSetStatus);
+    itMapCheckLRWallProcNoFloor(item_gobj, itEggFallSetStatus);
 
     return FALSE;
 }
@@ -237,7 +237,7 @@ sb32 itEggThrownProcUpdate(GObj *item_gobj)
 // 0x801817F8
 sb32 itEggThrownProcMap(GObj *item_gobj)
 {
-    if (itMapTestAllCollisionFlag(item_gobj, MPCOLL_FLAG_MAIN_MASK) != FALSE)
+    if (itMapTestAllCollisionFlag(item_gobj, MAP_FLAG_MAIN_MASK) != FALSE)
     {
         if (itMainMakeContainerItem(item_gobj) != FALSE)
         {

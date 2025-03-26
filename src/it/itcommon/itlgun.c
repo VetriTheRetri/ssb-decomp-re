@@ -165,7 +165,7 @@ sb32 itLGunFallProcUpdate(GObj *item_gobj)
 // 0x80175528
 sb32 itLGunWaitProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itLGunFallSetStatus);
+    itMapCheckLRWallProcNoFloor(item_gobj, itLGunFallSetStatus);
 
     return FALSE;
 }

@@ -46,7 +46,7 @@ void ftCommonGuardPassSetStatus(GObj *fighter_gobj)
 // 0x80141E60
 sb32 ftCommonPassCheckInputSuccess(FTStruct *fp)
 {
-    if ((fp->input.pl.stick_range.y <= FTCOMMON_PASS_STICK_RANGE_MIN) && (fp->tap_stick_y < FTCOMMON_PASS_BUFFER_FRAMES_MAX) && (fp->coll_data.floor_flags & MPCOLL_VERTEX_CLL_PASS))
+    if ((fp->input.pl.stick_range.y <= FTCOMMON_PASS_STICK_RANGE_MIN) && (fp->tap_stick_y < FTCOMMON_PASS_BUFFER_FRAMES_MAX) && (fp->coll_data.floor_flags & MAP_VERTEX_CLL_PASS))
     {
         return TRUE;
     }

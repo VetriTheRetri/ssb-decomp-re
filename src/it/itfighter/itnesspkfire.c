@@ -174,7 +174,7 @@ sb32 itNessPKFireFallProcUpdate(GObj *item_gobj)
 // 0x80185660
 sb32 itNessPKFireWaitProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itNessPKFireFallSetStatus);
+    itMapCheckLRWallProcNoFloor(item_gobj, itNessPKFireFallSetStatus);
 
     return FALSE;
 }

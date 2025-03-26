@@ -556,7 +556,7 @@ void sc1PBonusStageInitPlatforms(s32 line_id)
 	);
 	lbCommonAddMObjForTreeDObjs(dobj->child, lbRelocGetFileData(MObjSub***, gGRCommonStruct.bonus2.file, dSC1PBonusStagePlatformDescs[id][2]));
 
-	lbCommonAddDObjAnimAll
+	lbCommonAddTreeDObjsAnimAll
 	(
 		dobj->child,
 		lbRelocGetFileData(AObjEvent32**, gGRCommonStruct.bonus2.file, dSC1PBonusStagePlatformDescs[id][1]),
@@ -582,7 +582,7 @@ void sc1PBonusStageMakePlatforms(void)
 
 	for (i = 0; i < line_count; i++)
 	{
-		if ((mpCollisionGetVertexFlagsLineID(line_ids[i]) & MPCOLL_VERTEX_MAT_MASK) == nMPMaterialDetect)
+		if ((mpCollisionGetVertexFlagsLineID(line_ids[i]) & MAP_VERTEX_MAT_MASK) == nMPMaterialDetect)
 		{
 			yakumono_id = mpCollisionSetDObjNoID(line_ids[i]);
 
@@ -665,7 +665,7 @@ void sc1PBonusStageBonus2ProcUpdate(GObj *ground_gobj)
 	{
 		FTStruct *fp = ftGetStruct(fighter_gobj);
 
-		if ((fp->ga == nMPKineticsGround) && ((fp->coll_data.floor_flags & MPCOLL_VERTEX_MAT_MASK) == nMPMaterialDetect))
+		if ((fp->ga == nMPKineticsGround) && ((fp->coll_data.floor_flags & MAP_VERTEX_MAT_MASK) == nMPMaterialDetect))
 		{
 			DObj *dobj = gMPCollisionYakumonoDObjs->dobjs[mpCollisionSetDObjNoID(fp->coll_data.floor_line_id)];
 

@@ -533,7 +533,7 @@ void mpCollisionGetCeilEdgeL(s32 line_id, Vec3f *object_pos)
 }
 
 // 0x800F4488
-void mpCollisionGetFCEdge(s32 line_id, Vec3f *object_pos, s32 ud)
+void mpCollisionGetUDEdge(s32 line_id, Vec3f *object_pos, s32 ud)
 {
     MPVertexLinks *vlinks;
     DObj *yakumono_dobj;
@@ -598,25 +598,25 @@ void mpCollisionGetFCEdge(s32 line_id, Vec3f *object_pos, s32 ud)
 // 0x800F4650 - Get upper edge of left wall
 void mpCollisionGetLWallEdgeU(s32 line_id, Vec3f *object_pos)
 {
-    mpCollisionGetFCEdge(line_id, object_pos, +1);
+    mpCollisionGetUDEdge(line_id, object_pos, +1);
 }
 
 // 0x800F4670 - Get lower edge of left wall
 void mpCollisionGetLWallEdgeD(s32 line_id, Vec3f *object_pos)
 {
-    mpCollisionGetFCEdge(line_id, object_pos, -1);
+    mpCollisionGetUDEdge(line_id, object_pos, -1);
 }
 
 // 0x800F4690 - Get upper edge of right wall
 void mpCollisionGetRWallEdgeU(s32 line_id, Vec3f *object_pos)
 {
-    mpCollisionGetFCEdge(line_id, object_pos, +1);
+    mpCollisionGetUDEdge(line_id, object_pos, +1);
 }
 
 // 0x800F46B0 - Get lower edge of right wall
 void mpCollisionGetRWallEdgeD(s32 line_id, Vec3f *object_pos)
 {
-    mpCollisionGetFCEdge(line_id, object_pos, -1);
+    mpCollisionGetUDEdge(line_id, object_pos, -1);
 }
 
 // 0x800F46D0
@@ -653,7 +653,7 @@ void mpCollisionGetFCAngle(Vec3f *angle, s32 v1x, s32 v1y, s32 v2x, s32 v2y, s32
     syVectorNorm3D(angle);
 }
 
-// 0x800F47AC Also calculates angle? Runs whenever character lands directly on a line surface that isn't 0 degrees
+// 0x800F47AC - Also calculates angle? Runs whenever character lands directly on a line surface that isn't 0 degrees
 sb32 mpCollisionCheckFloorSurfaceTilt(s32 v1x, s32 v1y, s32 v2x, s32 v2y, f32 d1x, f32 d1y, f32 d2x, f32 d2y, f32 *dfx, f32 *dfy)
 {
     s32 vfary;

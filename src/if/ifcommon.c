@@ -2926,13 +2926,13 @@ void ifCommonBattleGoUpdateInterface(void)
                     {
                         if (gSCManagerBattleState->game_type == nSCBattleGameTypeBonus)
                         {
-                            sp68.x = gMPCollisionGroundData->unk_groundinfo_0x9A.x;
-                            sp68.y = gMPCollisionGroundData->unk_groundinfo_0x9A.y;
-                            sp68.z = gMPCollisionGroundData->unk_groundinfo_0x9A.z;
+                            sp68.x = gMPCollisionGroundData->zoom_start.x;
+                            sp68.y = gMPCollisionGroundData->zoom_start.y;
+                            sp68.z = gMPCollisionGroundData->zoom_start.z;
 
-                            sp5C.x = gMPCollisionGroundData->unk_groundinfo_0xA0.x;
-                            sp5C.y = gMPCollisionGroundData->unk_groundinfo_0xA0.y;
-                            sp5C.z = gMPCollisionGroundData->unk_groundinfo_0xA0.z;
+                            sp5C.x = gMPCollisionGroundData->zoom_end.x;
+                            sp5C.y = gMPCollisionGroundData->zoom_end.y;
+                            sp5C.z = gMPCollisionGroundData->zoom_end.z;
 
                             gmCameraSetStatusMapZoom(&sp68, &sp5C);
 

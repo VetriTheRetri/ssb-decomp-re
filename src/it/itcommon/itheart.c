@@ -111,7 +111,7 @@ sb32 itHeartFallProcUpdate(GObj *item_gobj)
 // 0x80174728
 sb32 itHeartWaitProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itHeartFallSetStatus);
+    itMapCheckLRWallProcNoFloor(item_gobj, itHeartFallSetStatus);
 
     return FALSE;
 }

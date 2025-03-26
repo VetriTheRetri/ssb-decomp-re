@@ -97,7 +97,7 @@ void grBonus3FinishProcUpdate(GObj *ground_gobj)
 {
     FTStruct *fp = ftGetStruct(gSCManagerBattleState->players[gSCManagerSceneData.player].fighter_gobj);
 
-    if ((fp->ga == nMPKineticsGround) && ((fp->coll_data.floor_flags & MPCOLL_VERTEX_MAT_MASK) == nMPMaterialDetect))
+    if ((fp->ga == nMPKineticsGround) && ((fp->coll_data.floor_flags & MAP_VERTEX_MAT_MASK) == nMPMaterialDetect))
     {
         ifCommonAnnounceCompleteInitInterface(0x1CB);
         ifCommonBattleEndAddSoundQueueID(nSYAudioFGMBonusComplete);

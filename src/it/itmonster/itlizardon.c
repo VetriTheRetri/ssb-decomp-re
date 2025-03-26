@@ -152,7 +152,7 @@ sb32 itLizardonFallUnusedProcMap(GObj *item_gobj)
 
     itMapCheckLanding(item_gobj, ITLIZARDON_MAP_REBOUND_COMMON, ITLIZARDON_MAP_REBOUND_GROUND, itLizardonAttackSetStatus);
 
-    if (ip->coll_data.coll_mask_curr & MPCOLL_FLAG_FLOOR)
+    if (ip->coll_data.coll_mask_curr & MAP_FLAG_FLOOR)
     {
         ip->physics.vel_air.y = 0.0F;
     }
@@ -187,7 +187,7 @@ sb32 itLizardonFallProcMap(GObj *item_gobj)
 
     itMapTestAllCheckCollEnd(item_gobj);
 
-    if (ip->coll_data.coll_mask_curr & MPCOLL_FLAG_FLOOR)
+    if (ip->coll_data.coll_mask_curr & MAP_FLAG_FLOOR)
     {
         ip->physics.vel_air.y = 0.0F;
 
@@ -259,7 +259,7 @@ sb32 itLizardonAttackProcUpdate(GObj *item_gobj)
 // 0x8017F7E8
 sb32 itLizardonAttackProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itLizardonFallSetStatus);
+    itMapCheckLRWallProcNoFloor(item_gobj, itLizardonFallSetStatus);
 
     return FALSE;
 }
@@ -326,7 +326,7 @@ sb32 itLizardonCommonProcMap(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    if (itMapTestAllCollisionFlag(item_gobj, MPCOLL_FLAG_FLOOR) != FALSE)
+    if (itMapTestAllCollisionFlag(item_gobj, MAP_FLAG_FLOOR) != FALSE)
     {
         ip->physics.vel_air.y = 0.0F;
     }

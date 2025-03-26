@@ -567,7 +567,7 @@ sb32 mpProcessCheckTestLWallCollision(MPCollData *coll_data)
     }
     if (is_collide_lwall != FALSE)
     {
-        coll_data->coll_mask_curr |= MPCOLL_FLAG_LWALL;
+        coll_data->coll_mask_curr |= MAP_FLAG_LWALL;
     }
     return is_collide_lwall;
 }
@@ -791,7 +791,7 @@ sb32 mpProcessCheckTestRWallCollision(MPCollData *coll_data)
     }
     if (is_collide_rwall != FALSE)
     {
-        coll_data->coll_mask_curr |= MPCOLL_FLAG_RWALL;
+        coll_data->coll_mask_curr |= MAP_FLAG_RWALL;
     }
     return is_collide_rwall;
 }
@@ -920,7 +920,7 @@ sb32 mpProcessCheckTestFloorCollisionNew(MPCollData *coll_data)
     sb32 is_wall_edge;
     f32 floor_dist;
 
-    coll_data->coll_mask_stat &= ~MPCOLL_FLAG_FLOOR;
+    coll_data->coll_mask_stat &= ~MAP_FLAG_FLOOR;
 
     object_pos.x = translate->x;
     object_pos.y = translate->y + coll_data->map_coll.bottom;
@@ -936,7 +936,7 @@ sb32 mpProcessCheckTestFloorCollisionNew(MPCollData *coll_data)
         translate->y += floor_dist;
 
         coll_data->floor_dist = 0.0F;
-        coll_data->coll_mask_stat |= MPCOLL_FLAG_FLOOR;
+        coll_data->coll_mask_stat |= MAP_FLAG_FLOOR;
 
         return TRUE;
     }
@@ -972,7 +972,7 @@ sb32 mpProcessCheckTestFloorCollisionNew(MPCollData *coll_data)
 
         mpCollisionGetFCCommonFloor(coll_data->floor_line_id, &object_pos, NULL, &coll_data->floor_flags, &coll_data->floor_angle);
 
-        coll_data->coll_mask_stat |= MPCOLL_FLAG_FLOOR;
+        coll_data->coll_mask_stat |= MAP_FLAG_FLOOR;
         coll_data->floor_dist = 0.0F;
 
         return TRUE;
@@ -1016,7 +1016,7 @@ sb32 mpProcessCheckTestFloorCollision(MPCollData *coll_data, s32 line_id)
 
     if ((is_collide_ground != FALSE) && (floor_line_id != line_id))
     {
-        coll_data->coll_mask_curr |= MPCOLL_FLAG_FLOOR;
+        coll_data->coll_mask_curr |= MAP_FLAG_FLOOR;
         coll_data->floor_line_id = floor_line_id;
         coll_data->floor_flags = floor_flags;
         coll_data->floor_angle = floor_angle;
@@ -1062,14 +1062,14 @@ sb32 mpProcessCheckTestLCliffCollision(MPCollData *coll_data)
     mpCollisionCheckFloorLineCollisionSame(&sp48, &object_pos, &coll_data->line_coll_dist, &coll_data->cliff_id, &floor_flags, NULL);
 
 
-    if ((is_collide_ground != FALSE) && (floor_flags & MPCOLL_VERTEX_CLL_CLIFF) && ((floor_flags & MPCOLL_VERTEX_MAT_MASK) != nMPMaterial4))
+    if ((is_collide_ground != FALSE) && (floor_flags & MAP_VERTEX_CLL_CLIFF) && ((floor_flags & MAP_VERTEX_MAT_MASK) != nMPMaterial4))
     {
         mpCollisionGetFloorEdgeL(coll_data->cliff_id, &object_pos);
 
         if ((coll_data->line_coll_dist.x - object_pos.x) < 800.0F)
         {
-            coll_data->coll_mask_curr |= MPCOLL_FLAG_LCLIFF;
-            coll_data->coll_mask_stat |= MPCOLL_FLAG_LCLIFF;
+            coll_data->coll_mask_curr |= MAP_FLAG_LCLIFF;
+            coll_data->coll_mask_stat |= MAP_FLAG_LCLIFF;
 
             return TRUE;
         }
@@ -1112,14 +1112,14 @@ sb32 mpProcessCheckTestRCliffCollision(MPCollData *coll_data)
 
     mpCollisionCheckFloorLineCollisionSame(&sp48, &object_pos, &coll_data->line_coll_dist, &coll_data->cliff_id, &floor_flags, NULL);
 
-    if ((is_collide_ground != FALSE) && (floor_flags & MPCOLL_VERTEX_CLL_CLIFF))
+    if ((is_collide_ground != FALSE) && (floor_flags & MAP_VERTEX_CLL_CLIFF))
     {
         mpCollisionGetFloorEdgeR(coll_data->cliff_id, &object_pos);
 
         if ((object_pos.x - coll_data->line_coll_dist.x) < 800.0F)
         {
-            coll_data->coll_mask_curr |= MPCOLL_FLAG_RCLIFF;
-            coll_data->coll_mask_stat |= MPCOLL_FLAG_RCLIFF;
+            coll_data->coll_mask_curr |= MAP_FLAG_RCLIFF;
+            coll_data->coll_mask_stat |= MAP_FLAG_RCLIFF;
 
             return TRUE;
         }
@@ -1145,8 +1145,8 @@ sb32 mpProcessCheckTestLWallCollisionAdjNew(MPCollData *coll_data)
 
     is_collide_lwall = FALSE;
 
-    coll_data->coll_mask_unk &= ~MPCOLL_FLAG_LWALL;
-    coll_data->coll_mask_stat &= ~MPCOLL_FLAG_LWALL;
+    coll_data->coll_mask_unk &= ~MAP_FLAG_LWALL;
+    coll_data->coll_mask_stat &= ~MAP_FLAG_LWALL;
 
     mpProcessResetMultiWallCount();
 
@@ -1329,7 +1329,7 @@ sb32 mpProcessCheckTestLWallCollisionAdjNew(MPCollData *coll_data)
 
     mpCollisionCheckFloorLineCollisionSame(&sp54, &sp48, NULL, &test_line_id, &floor_flags, NULL);
 
-    if ((line_collide != FALSE) && !(floor_flags & MPCOLL_VERTEX_CLL_PASS)) // 0x4000
+    if ((line_collide != FALSE) && !(floor_flags & MAP_VERTEX_CLL_PASS)) // 0x4000
     {
         edge_line_id = mpCollisionGetEdgeUnderLLineID(test_line_id);
 
@@ -1375,7 +1375,7 @@ sb32 mpProcessCheckTestLWallCollisionAdjNew(MPCollData *coll_data)
     }
     if (is_collide_lwall != FALSE)
     {
-        coll_data->coll_mask_curr |= MPCOLL_FLAG_LWALL;
+        coll_data->coll_mask_curr |= MAP_FLAG_LWALL;
     }
     return is_collide_lwall;
 }
@@ -1492,9 +1492,9 @@ void mpProcessRunLWallCollisionAdjNew(MPCollData *coll_data)
     {
         translate->x = last_wall_x;
 
-        coll_data->coll_mask_stat |= MPCOLL_FLAG_LWALL;
+        coll_data->coll_mask_stat |= MAP_FLAG_LWALL;
     }
-    coll_data->coll_mask_unk |= MPCOLL_FLAG_LWALL;
+    coll_data->coll_mask_unk |= MAP_FLAG_LWALL;
 }
 
 // 0x800DC3C8
@@ -1515,8 +1515,8 @@ sb32 mpProcessCheckTestRWallCollisionAdjNew(MPCollData *coll_data)
 
     is_collide_rwall = FALSE;
 
-    coll_data->coll_mask_unk &= ~MPCOLL_FLAG_RWALL;
-    coll_data->coll_mask_stat &= ~MPCOLL_FLAG_RWALL;
+    coll_data->coll_mask_unk &= ~MAP_FLAG_RWALL;
+    coll_data->coll_mask_stat &= ~MAP_FLAG_RWALL;
 
     mpProcessResetMultiWallCount();
 
@@ -1699,7 +1699,7 @@ sb32 mpProcessCheckTestRWallCollisionAdjNew(MPCollData *coll_data)
 
     mpCollisionCheckFloorLineCollisionSame(&sp54, &sp48, NULL, &test_line_id, &floor_flags, NULL);
 
-    if ((line_collide != FALSE) && !(floor_flags & MPCOLL_VERTEX_CLL_PASS))
+    if ((line_collide != FALSE) && !(floor_flags & MAP_VERTEX_CLL_PASS))
     {
         edge_line_id = mpCollisionGetEdgeUnderRLineID(test_line_id);
 
@@ -1745,7 +1745,7 @@ sb32 mpProcessCheckTestRWallCollisionAdjNew(MPCollData *coll_data)
     }
     if (is_collide_rwall != FALSE)
     {
-        coll_data->coll_mask_curr |= MPCOLL_FLAG_RWALL;
+        coll_data->coll_mask_curr |= MAP_FLAG_RWALL;
     }
     return is_collide_rwall;
 }
@@ -1862,9 +1862,9 @@ void mpProcessRunRWallCollisionAdjNew(MPCollData *coll_data)
     {
         translate->x = last_wall_x;
 
-        coll_data->coll_mask_stat |= MPCOLL_FLAG_RWALL;
+        coll_data->coll_mask_stat |= MAP_FLAG_RWALL;
     }
-    coll_data->coll_mask_unk |= MPCOLL_FLAG_RWALL;
+    coll_data->coll_mask_unk |= MAP_FLAG_RWALL;
 }
 
 // 0x800DCF58
@@ -1880,7 +1880,7 @@ sb32 mpProcessCheckTestCeilCollisionAdjNew(MPCollData *coll_data)
     f32 ceil_dist;
     s32 line_id;
 
-    coll_data->coll_mask_stat &= ~MPCOLL_FLAG_CEIL;
+    coll_data->coll_mask_stat &= ~MAP_FLAG_CEIL;
 
     sp4C.x = coll_data->pos_curr.x;
     sp4C.y = coll_data->pos_curr.y + p_map_coll->top;
@@ -1903,30 +1903,30 @@ sb32 mpProcessCheckTestCeilCollisionAdjNew(MPCollData *coll_data)
 
     if (ceil_collide != FALSE)
     {
-        coll_data->coll_mask_curr |= MPCOLL_FLAG_CEIL;
+        coll_data->coll_mask_curr |= MAP_FLAG_CEIL;
 
         return TRUE;
     }
-    if (coll_data->coll_mask_unk & MPCOLL_FLAG_LWALL)
+    if (coll_data->coll_mask_unk & MAP_FLAG_LWALL)
     {
         line_id = mpCollisionGetEdgeRightULineID(coll_data->lwall_line_id);
 
         if ((line_id != -1) && (mpCollisionGetLineTypeID(line_id) == nMPLineKindCeil) && (mpCollisionGetFCCommonCeil(line_id, &sp40, &ceil_dist, &coll_data->ceil_flags, &coll_data->ceil_angle) != FALSE) && (ceil_dist < 0.0F))
         {
             coll_data->ceil_line_id = line_id;
-            coll_data->coll_mask_curr |= MPCOLL_FLAG_CEIL;
+            coll_data->coll_mask_curr |= MAP_FLAG_CEIL;
 
             return TRUE;
         }
     }
-    else if (coll_data->coll_mask_unk & MPCOLL_FLAG_RWALL)
+    else if (coll_data->coll_mask_unk & MAP_FLAG_RWALL)
     {
         line_id = mpCollisionGetEdgeLeftULineID(coll_data->rwall_line_id);
 
         if ((line_id != -1) && (mpCollisionGetLineTypeID(line_id) == nMPLineKindCeil) && (mpCollisionGetFCCommonCeil(line_id, &sp40, &ceil_dist, &coll_data->ceil_flags, &coll_data->ceil_angle) != FALSE) && (ceil_dist < 0.0F))
         {
             coll_data->ceil_line_id = line_id;
-            coll_data->coll_mask_curr |= MPCOLL_FLAG_CEIL;
+            coll_data->coll_mask_curr |= MAP_FLAG_CEIL;
 
             return TRUE;
         }
@@ -1950,7 +1950,7 @@ void mpProcessRunCeilCollisionAdjNew(MPCollData *coll_data)
     if (mpCollisionGetFCCommonCeil(coll_data->ceil_line_id, &object_pos, &ceil_dist, &coll_data->ceil_flags, &coll_data->ceil_angle) != FALSE)
     {
         translate->y += ceil_dist;
-        coll_data->coll_mask_stat |= MPCOLL_FLAG_CEIL;
+        coll_data->coll_mask_stat |= MAP_FLAG_CEIL;
 
         return;
     }
@@ -1986,7 +1986,7 @@ void mpProcessRunCeilCollisionAdjNew(MPCollData *coll_data)
 
         mpCollisionGetFCCommonCeil(coll_data->ceil_line_id, &object_pos, NULL, &coll_data->ceil_flags, &coll_data->ceil_angle);
 
-        coll_data->coll_mask_stat |= MPCOLL_FLAG_CEIL;
+        coll_data->coll_mask_stat |= MAP_FLAG_CEIL;
     }
 }
 
@@ -2003,7 +2003,7 @@ sb32 mpProcessCheckTestFloorCollisionAdjNew(MPCollData *coll_data, sb32(*proc_ma
     f32 floor_dist;
     s32 var_v0;
 
-    coll_data->coll_mask_stat &= ~MPCOLL_FLAG_FLOOR;
+    coll_data->coll_mask_stat &= ~MAP_FLAG_FLOOR;
 
     sp4C.x = pcurr->x;
     sp4C.y = pcurr->y + p_map_coll->bottom;
@@ -2025,13 +2025,13 @@ sb32 mpProcessCheckTestFloorCollisionAdjNew(MPCollData *coll_data, sb32(*proc_ma
 
     mpCollisionCheckFloorLineCollisionSame(&sp4C, &sp40, &coll_data->line_coll_dist, &coll_data->floor_line_id, &coll_data->floor_flags, &coll_data->floor_angle);
 
-    if ((var_v0 != 0) && (!(coll_data->floor_flags & MPCOLL_VERTEX_CLL_PASS) || (coll_data->floor_line_id != coll_data->ignore_line_id)) && ((proc_map == NULL) || (proc_map(gobj) != FALSE)))
+    if ((var_v0 != 0) && (!(coll_data->floor_flags & MAP_VERTEX_CLL_PASS) || (coll_data->floor_line_id != coll_data->ignore_line_id)) && ((proc_map == NULL) || (proc_map(gobj) != FALSE)))
     {
-        coll_data->coll_mask_curr |= MPCOLL_FLAG_FLOOR;
+        coll_data->coll_mask_curr |= MAP_FLAG_FLOOR;
 
         return TRUE;
     }
-    if (coll_data->coll_mask_unk & MPCOLL_FLAG_LWALL)
+    if (coll_data->coll_mask_unk & MAP_FLAG_LWALL)
     {
         line_id = mpCollisionGetEdgeRightDLineID(coll_data->lwall_line_id);
 
@@ -2041,11 +2041,11 @@ sb32 mpProcessCheckTestFloorCollisionAdjNew(MPCollData *coll_data, sb32(*proc_ma
             {
                 coll_data->floor_line_id = line_id;
 
-                if (!(coll_data->floor_flags & MPCOLL_VERTEX_CLL_PASS) || (coll_data->floor_line_id != coll_data->ignore_line_id))
+                if (!(coll_data->floor_flags & MAP_VERTEX_CLL_PASS) || (coll_data->floor_line_id != coll_data->ignore_line_id))
                 {
                     if ((proc_map == NULL) || (proc_map(gobj) != FALSE))
                     {
-                        coll_data->coll_mask_curr |= MPCOLL_FLAG_FLOOR;
+                        coll_data->coll_mask_curr |= MAP_FLAG_FLOOR;
 
                         return TRUE;
                     }
@@ -2053,7 +2053,7 @@ sb32 mpProcessCheckTestFloorCollisionAdjNew(MPCollData *coll_data, sb32(*proc_ma
             }
         }
     }
-    else if (coll_data->coll_mask_unk & MPCOLL_FLAG_RWALL)
+    else if (coll_data->coll_mask_unk & MAP_FLAG_RWALL)
     {
         line_id = mpCollisionGetEdgeLeftDLineID(coll_data->rwall_line_id);
 
@@ -2063,11 +2063,11 @@ sb32 mpProcessCheckTestFloorCollisionAdjNew(MPCollData *coll_data, sb32(*proc_ma
             {
                 coll_data->floor_line_id = line_id;
 
-                if (!(coll_data->floor_flags & MPCOLL_VERTEX_CLL_PASS) || (coll_data->floor_line_id != coll_data->ignore_line_id))
+                if (!(coll_data->floor_flags & MAP_VERTEX_CLL_PASS) || (coll_data->floor_line_id != coll_data->ignore_line_id))
                 {
                     if ((proc_map == NULL) || (proc_map(gobj) != FALSE))
                     {
-                        coll_data->coll_mask_curr |= MPCOLL_FLAG_FLOOR;
+                        coll_data->coll_mask_curr |= MAP_FLAG_FLOOR;
 
                         return TRUE;
                     }
@@ -2112,7 +2112,7 @@ void func_ovl2_800DD59C(MPCollData *coll_data)
 
         mpCollisionGetFCCommonFloor(coll_data->floor_line_id, &object_pos, NULL, &coll_data->floor_flags, &coll_data->floor_angle);
     }
-    coll_data->coll_mask_stat |= MPCOLL_FLAG_FLOOR;
+    coll_data->coll_mask_stat |= MAP_FLAG_FLOOR;
     coll_data->floor_dist = 0.0F;
 }
 
@@ -2133,7 +2133,7 @@ void func_ovl2_800DD6A8(MPCollData *coll_data)
     {
         translate->y += floor_dist;
 
-        coll_data->coll_mask_stat |= MPCOLL_FLAG_FLOOR;
+        coll_data->coll_mask_stat |= MAP_FLAG_FLOOR;
         coll_data->floor_dist = 0.0F;
 
         return;
@@ -2170,7 +2170,7 @@ void func_ovl2_800DD6A8(MPCollData *coll_data)
 
         mpCollisionGetFCCommonFloor(coll_data->floor_line_id, &object_pos, NULL, &coll_data->floor_flags, &coll_data->floor_angle);
 
-        coll_data->coll_mask_stat |= MPCOLL_FLAG_FLOOR;
+        coll_data->coll_mask_stat |= MAP_FLAG_FLOOR;
         coll_data->floor_dist = 0.0F;
     }
 }

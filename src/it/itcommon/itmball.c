@@ -189,7 +189,7 @@ sb32 itMBallFallProcUpdate(GObj *item_gobj)
 // 0x8017C768
 sb32 itMBallWaitProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itMBallFallSetStatus);
+    itMapCheckLRWallProcNoFloor(item_gobj, itMBallFallSetStatus);
 
     return FALSE;
 }

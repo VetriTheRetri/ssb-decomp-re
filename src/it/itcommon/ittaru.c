@@ -167,7 +167,7 @@ sb32 itTaruFallProcUpdate(GObj *item_gobj)
 // 0x80179BF8
 sb32 itTaruWaitProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itTaruFallSetStatus);
+    itMapCheckLRWallProcNoFloor(item_gobj, itTaruFallSetStatus);
 
     return FALSE;
 }
@@ -235,9 +235,9 @@ sb32 itTaruThrownCheckMapCollision(GObj *item_gobj, f32 common_rebound)
 {
     s32 unused;
     ITStruct *ip;
-    sb32 is_collide_ground = itMapTestAllCollisionFlag(item_gobj, MPCOLL_FLAG_FLOOR);
+    sb32 is_collide_ground = itMapTestAllCollisionFlag(item_gobj, MAP_FLAG_FLOOR);
 
-    if (itMapCheckCollideAllRebound(item_gobj, (MPCOLL_FLAG_CEIL | MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL), common_rebound, NULL) != FALSE)
+    if (itMapCheckCollideAllRebound(item_gobj, (MAP_FLAG_CEIL | MAP_FLAG_RWALL | MAP_FLAG_LWALL), common_rebound, NULL) != FALSE)
     {
         itMainVelSetRotateStepLR(item_gobj);
     }
@@ -386,7 +386,7 @@ sb32 itTaruRollProcMap(GObj *item_gobj)
     {
         itMainSetStatus(item_gobj, dITTaruStatusDescs, nITTaruStatusDropped);
     }
-    else if (ip->coll_data.coll_mask_curr & (MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL))
+    else if (ip->coll_data.coll_mask_curr & (MAP_FLAG_RWALL | MAP_FLAG_LWALL))
     {
         return itTaruCommonProcHit(item_gobj);
     }

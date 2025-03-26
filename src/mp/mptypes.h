@@ -197,9 +197,9 @@ struct MPGroundData
 	s16 map_bound_left;
 	u32 bgm_id;
 	void *map_nodes;
-	MPItemWeights *blocks; 	// Randomizer weights of items
+	MPItemWeights *item_weights; 	// Randomizer weights of items
 	s16 alt_warning;				// Warning whistle plays if a player goes below this altitude
-	s16 camera_bound_team_top;			// 1P Game VS. <character> Team bounds
+	s16 camera_bound_team_top;		// 1P Game VS. <character> Team bounds
 	s16 camera_bound_team_bottom;
 	s16 camera_bound_team_right;
 	s16 camera_bound_team_left;
@@ -207,8 +207,8 @@ struct MPGroundData
 	s16 map_bound_team_bottom;
 	s16 map_bound_team_right;
 	s16 map_bound_team_left;
-	Vec3h unk_groundinfo_0x9A;
-	Vec3h unk_groundinfo_0xA0;
+	Vec3h zoom_start;
+	Vec3h zoom_end;
 };
 
 #endif

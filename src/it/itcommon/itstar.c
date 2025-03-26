@@ -68,9 +68,9 @@ sb32 itStarCommonProcMap(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
     s32 unused;
-    sb32 is_collide_ground = itMapTestAllCollisionFlag(item_gobj, MPCOLL_FLAG_FLOOR);
+    sb32 is_collide_ground = itMapTestAllCollisionFlag(item_gobj, MAP_FLAG_FLOOR);
 
-    if (itMapCheckCollideAllRebound(item_gobj, (MPCOLL_FLAG_CEIL | MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL), ITSTAR_MAP_REBOUND_COMMON, NULL) != FALSE)
+    if (itMapCheckCollideAllRebound(item_gobj, (MAP_FLAG_CEIL | MAP_FLAG_RWALL | MAP_FLAG_LWALL), ITSTAR_MAP_REBOUND_COMMON, NULL) != FALSE)
     {
         itMainVelSetRotateStepLR(item_gobj);
     }

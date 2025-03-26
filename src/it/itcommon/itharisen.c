@@ -152,7 +152,7 @@ sb32 itHarisenFallProcUpdate(GObj *item_gobj)
 // 0x80175198
 sb32 itHarisenWaitProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itHarisenFallSetStatus);
+    itMapCheckLRWallProcNoFloor(item_gobj, itHarisenFallSetStatus);
 
     return FALSE;
 }

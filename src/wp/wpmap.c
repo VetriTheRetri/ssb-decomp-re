@@ -26,7 +26,7 @@ sb32 wpMapProcLRWallCheckFloor(MPCollData *coll_data, GObj *weapon_gobj, u32 fla
     }
     if (mpProcessCheckTestFloorCollisionNew(coll_data) != FALSE)
     {
-        if (coll_data->coll_mask_stat & MPCOLL_FLAG_FLOOR)
+        if (coll_data->coll_mask_stat & MAP_FLAG_FLOOR)
         {
             mpProcessRunFloorEdgeAdjust(coll_data);
 
@@ -39,7 +39,7 @@ sb32 wpMapProcLRWallCheckFloor(MPCollData *coll_data, GObj *weapon_gobj, u32 fla
     {
         func_ovl2_800DD59C(coll_data);
 
-        if (coll_data->coll_mask_stat & MPCOLL_FLAG_FLOOR)
+        if (coll_data->coll_mask_stat & MAP_FLAG_FLOOR)
         {
             mpProcessRunFloorEdgeAdjust(coll_data);
 
@@ -71,7 +71,7 @@ sb32 wpMapProcAll(MPCollData *coll_data, GObj *weapon_gobj, u32 flags)
     {
         mpProcessRunCeilCollisionAdjNew(coll_data);
 
-        if (coll_data->coll_mask_stat & MPCOLL_FLAG_CEIL)
+        if (coll_data->coll_mask_stat & MAP_FLAG_CEIL)
         {
             mpProcessRunCeilEdgeAdjust(coll_data);
         }
@@ -80,7 +80,7 @@ sb32 wpMapProcAll(MPCollData *coll_data, GObj *weapon_gobj, u32 flags)
     {
         func_ovl2_800DD6A8(coll_data);
 
-        if (coll_data->coll_mask_stat & MPCOLL_FLAG_FLOOR)
+        if (coll_data->coll_mask_stat & MAP_FLAG_FLOOR)
         {
             mpProcessRunFloorEdgeAdjust(coll_data);
         }
@@ -109,7 +109,7 @@ sb32 wpMapProcAllCheckFloor(MPCollData *coll_data, GObj *weapon_gobj, u32 flags)
     {
         mpProcessRunCeilCollisionAdjNew(coll_data);
 
-        if (coll_data->coll_mask_stat & MPCOLL_FLAG_CEIL)
+        if (coll_data->coll_mask_stat & MAP_FLAG_CEIL)
         {
             mpProcessRunCeilEdgeAdjust(coll_data);
         }
@@ -118,7 +118,7 @@ sb32 wpMapProcAllCheckFloor(MPCollData *coll_data, GObj *weapon_gobj, u32 flags)
     {
         func_ovl2_800DD59C(coll_data);
 
-        if (coll_data->coll_mask_stat & MPCOLL_FLAG_FLOOR)
+        if (coll_data->coll_mask_stat & MAP_FLAG_FLOOR)
         {
             mpProcessRunFloorEdgeAdjust(coll_data);
 
@@ -171,10 +171,10 @@ sb32 wpMapCheckAllRebound(GObj *weapon_gobj, u32 check_flags, f32 mod_vel, Vec3f
     MPCollData *coll_data = &wp->coll_data;
     sb32 return_bool = FALSE;
     Vec3f mod_pos, *translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
-    u16 coll_flags = (wp->coll_data.coll_mask_prev ^ wp->coll_data.coll_mask_curr) & wp->coll_data.coll_mask_curr & MPCOLL_FLAG_MAIN_MASK;
+    u16 coll_flags = (wp->coll_data.coll_mask_prev ^ wp->coll_data.coll_mask_curr) & wp->coll_data.coll_mask_curr & MAP_FLAG_MAIN_MASK;
     u32 unused;
 
-    if (coll_flags & check_flags & MPCOLL_FLAG_LWALL)
+    if (coll_flags & check_flags & MAP_FLAG_LWALL)
     {
         if (lbCommonSim2D(&wp->physics.vel_air, &coll_data->lwall_angle) < 0.0F)
         {
@@ -186,7 +186,7 @@ sb32 wpMapCheckAllRebound(GObj *weapon_gobj, u32 check_flags, f32 mod_vel, Vec3f
             mod_pos.y = translate->y + coll_data->map_coll.center;
         }
     }
-    if (coll_flags & check_flags & MPCOLL_FLAG_RWALL)
+    if (coll_flags & check_flags & MAP_FLAG_RWALL)
     {
         if (lbCommonSim2D(&wp->physics.vel_air, &coll_data->rwall_angle) < 0.0F)
         {
@@ -198,7 +198,7 @@ sb32 wpMapCheckAllRebound(GObj *weapon_gobj, u32 check_flags, f32 mod_vel, Vec3f
             mod_pos.y = translate->y + coll_data->map_coll.center;
         }
     }
-    if (coll_flags & check_flags & MPCOLL_FLAG_CEIL)
+    if (coll_flags & check_flags & MAP_FLAG_CEIL)
     {
         if (lbCommonSim2D(&wp->physics.vel_air, &coll_data->ceil_angle) < 0.0F)
         {
@@ -210,7 +210,7 @@ sb32 wpMapCheckAllRebound(GObj *weapon_gobj, u32 check_flags, f32 mod_vel, Vec3f
             mod_pos.y = translate->y + coll_data->map_coll.top;
         }
     }
-    if (coll_flags & check_flags & MPCOLL_FLAG_FLOOR)
+    if (coll_flags & check_flags & MAP_FLAG_FLOOR)
     {
         if (lbCommonSim2D(&wp->physics.vel_air, &coll_data->floor_angle) < 0.0F)
         {

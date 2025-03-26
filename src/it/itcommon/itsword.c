@@ -137,7 +137,7 @@ sb32 itSwordFallProcUpdate(GObj *item_gobj)
 // 0x80174B8C
 sb32 itSwordWaitProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itSwordFallSetStatus);
+    itMapCheckLRWallProcNoFloor(item_gobj, itSwordFallSetStatus);
 
     return FALSE;
 }

@@ -11,7 +11,7 @@ sb32 itMapTestLRWallCheckFloor(GObj* item_gobj);
 
 // Test for Left/Right Wall collision; if item does not collide with ground, run proc_map and return FALSE; if collision
 // with ground occurs, return TRUE; put simply, it checks if the item remains in a grounded state
-sb32 itMapCheckLRWallProcGround(GObj* item_gobj, void (*proc_map)(GObj*));
+sb32 itMapCheckLRWallProcNoFloor(GObj* item_gobj, void (*proc_map)(GObj*));
 
 // Process for all collisions; check and return whether all collision tests have ended for current tick (?)
 sb32 itMapProcAllCheckCollEnd(MPCollData* coll_data, GObj* item_gobj, u32 flags);
@@ -52,7 +52,7 @@ sb32 func_ovl3_80173E9C(GObj* item_gobj, void (*proc_map)(GObj*));
 
 // Test for all collisions; if item recoils from collision with ground, run proc_map; otherwise check all other surface
 // types; always returns FALSE
-sb32 itMapCheckMapReboundProcGround(GObj* item_gobj, f32 common_rebound, void (*proc)(GObj*));
+sb32 itMapCheckMapReboundProcNoFloor(GObj* item_gobj, f32 common_rebound, void (*proc)(GObj*));
 
 // Make item grounded
 void itMapSetGround(ITStruct* ip);

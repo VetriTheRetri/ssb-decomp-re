@@ -202,7 +202,7 @@ sb32 itNBumperFallProcUpdate(GObj *item_gobj)
 // 0x8017B520
 sb32 itNBumperWaitProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itNBumperFallSetStatus);
+    itMapCheckLRWallProcNoFloor(item_gobj, itNBumperFallSetStatus);
 
     return FALSE;
 }
@@ -286,7 +286,7 @@ sb32 itNBumperThrownProcUpdate(GObj *item_gobj)
 // 0x8017B720
 sb32 itNBumperThrownProcMap(GObj *item_gobj)
 {
-    return itMapCheckMapReboundProcGround(item_gobj, 0.8F, itNBumperAttachedSetStatus);
+    return itMapCheckMapReboundProcNoFloor(item_gobj, 0.8F, itNBumperAttachedSetStatus);
 }
 
 // 0x8017B74C
@@ -477,7 +477,7 @@ sb32 itNBumperAttachedProcMap(GObj *item_gobj)
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
-    if (itMapCheckLRWallProcGround(item_gobj, itNBumperDroppedSetStatus) != FALSE)
+    if (itMapCheckLRWallProcNoFloor(item_gobj, itNBumperDroppedSetStatus) != FALSE)
     {
         if (mpCollisionCheckExistLineID(ip->attach_line_id) == FALSE)
         {

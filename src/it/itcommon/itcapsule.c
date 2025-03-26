@@ -151,7 +151,7 @@ sb32 itCapsuleFallProcUpdate(GObj *item_gobj)
 // 0x80173FCC
 sb32 itCapsuleWaitProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itCapsuleFallSetStatus);
+    itMapCheckLRWallProcNoFloor(item_gobj, itCapsuleFallSetStatus);
 
     return FALSE;
 }
@@ -217,7 +217,7 @@ sb32 itCapsuleThrownProcUpdate(GObj *item_gobj)
 // 0x80174160
 sb32 itCapsuleThrownProcMap(GObj *item_gobj)
 {
-    if (itMapTestAllCollisionFlag(item_gobj, MPCOLL_FLAG_MAIN_MASK) != FALSE)
+    if (itMapTestAllCollisionFlag(item_gobj, MAP_FLAG_MAIN_MASK) != FALSE)
     {
         if (itMainMakeContainerItem(item_gobj) != FALSE)
         {

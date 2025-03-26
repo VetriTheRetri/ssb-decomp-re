@@ -294,7 +294,7 @@ sb32 itRShellFallProcUpdate(GObj *item_gobj)
 // 0x8017A7C4
 sb32 itRShellWaitProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itRShellFallSetStatus);
+    itMapCheckLRWallProcNoFloor(item_gobj, itRShellFallSetStatus);
 
     return FALSE;
 }
@@ -534,7 +534,7 @@ sb32 itRShellSpinProcMap(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    if ((itMapCheckLRWallProcGround(item_gobj, itRShellSpinAirSetStatus) != FALSE) && (ip->coll_data.coll_mask_curr & (MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL)))
+    if ((itMapCheckLRWallProcNoFloor(item_gobj, itRShellSpinAirSetStatus) != FALSE) && (ip->coll_data.coll_mask_curr & (MAP_FLAG_RWALL | MAP_FLAG_LWALL)))
     {
         ip->physics.vel_air.x = -ip->physics.vel_air.x;
 

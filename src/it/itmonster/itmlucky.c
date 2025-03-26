@@ -150,7 +150,7 @@ sb32 itMLuckyFallProcMap(GObj *item_gobj)
 
     itMapTestAllCheckCollEnd(item_gobj);
 
-    if (ip->coll_data.coll_mask_curr & MPCOLL_FLAG_FLOOR)
+    if (ip->coll_data.coll_mask_curr & MAP_FLAG_FLOOR)
     {
         ip->physics.vel_air.y = 0.0F;
 
@@ -191,7 +191,7 @@ sb32 itMLuckyAppearProcMap(GObj *item_gobj)
 
     itMapTestAllCheckCollEnd(item_gobj);
 
-    if (ip->coll_data.coll_mask_curr & MPCOLL_FLAG_FLOOR)
+    if (ip->coll_data.coll_mask_curr & MAP_FLAG_FLOOR)
     {
         ip->physics.vel_air.y = 0.0F;
 
@@ -273,7 +273,7 @@ sb32 itMLuckyMakeEggProcUpdate(GObj *lucky_gobj)
 // 0x80181368
 sb32 itMLuckyMakeEggProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itMLuckyFallSetStatus);
+    itMapCheckLRWallProcNoFloor(item_gobj, itMLuckyFallSetStatus);
 
     return FALSE;
 }
@@ -341,7 +341,7 @@ sb32 itMLuckyCommonProcMap(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    if (itMapTestAllCollisionFlag(item_gobj, MPCOLL_FLAG_FLOOR) != FALSE)
+    if (itMapTestAllCollisionFlag(item_gobj, MAP_FLAG_FLOOR) != FALSE)
     {
         ip->physics.vel_air.y = 0.0F;
     }

@@ -19,7 +19,7 @@ extern void mpCollisionGetFloorEdgeR(s32 line_id, Vec3f *object_pos);
 extern void mpCollisionGetFloorEdgeL(s32 line_id, Vec3f *object_pos);
 extern void mpCollisionGetCeilEdgeR(s32 line_id, Vec3f *object_pos);
 extern void mpCollisionGetCeilEdgeL(s32 line_id, Vec3f *object_pos);
-extern void mpCollisionGetFCEdge(s32 line_id, Vec3f *object_pos, s32 ud);
+extern void mpCollisionGetUDEdge(s32 line_id, Vec3f *object_pos, s32 ud);
 extern void mpCollisionGetLWallEdgeU(s32 line_id, Vec3f *object_pos);
 extern void mpCollisionGetLWallEdgeD(s32 line_id, Vec3f *object_pos);
 extern void mpCollisionGetRWallEdgeU(s32 line_id, Vec3f *object_pos);

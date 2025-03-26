@@ -166,7 +166,7 @@ sb32 itFFlowerFallProcUpdate(GObj *item_gobj)
 // 0x80175B5C
 sb32 itFFlowerWaitProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itFFlowerFallSetStatus);
+    itMapCheckLRWallProcNoFloor(item_gobj, itFFlowerFallSetStatus);
 
     return FALSE;
 }

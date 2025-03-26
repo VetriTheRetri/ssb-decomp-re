@@ -143,7 +143,7 @@ sb32 itHammerFallProcUpdate(GObj *item_gobj)
 // 0x8017616C
 sb32 itHammerWaitProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itHammerFallSetStatus);
+    itMapCheckLRWallProcNoFloor(item_gobj, itHammerFallSetStatus);
 
     return FALSE;
 }

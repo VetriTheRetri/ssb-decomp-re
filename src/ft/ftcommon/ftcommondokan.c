@@ -118,7 +118,7 @@ sb32 ftCommonDokanStartCheckInterruptCommon(GObj *fighter_gobj)
 
     if ((fp->input.pl.stick_range.y <= FTCOMMON_DOKAN_STICK_RANGE_MIN) && (fp->tap_stick_y < FTCOMMON_DOKAN_BUFFER_FRAMES_MAX))
     {
-        if ((fp->coll_data.floor_flags & MPCOLL_VERTEX_MAT_MASK) == nMPMaterialDokanL)
+        if ((fp->coll_data.floor_flags & MAP_VERTEX_MAT_MASK) == nMPMaterialDokanL)
         {
             mpCollisionGetMapObjIDsKind(nMPMapObjKindDokanL, &floor_line_id);
             mpCollisionGetMapObjPositionID(floor_line_id, &pos);
@@ -136,7 +136,7 @@ sb32 ftCommonDokanStartCheckInterruptCommon(GObj *fighter_gobj)
                 return TRUE;
             }
         }
-        else if ((fp->coll_data.floor_flags & MPCOLL_VERTEX_MAT_MASK) == nMPMaterialDokanR)
+        else if ((fp->coll_data.floor_flags & MAP_VERTEX_MAT_MASK) == nMPMaterialDokanR)
         {
             mpCollisionGetMapObjIDsKind(nMPMapObjKindDokanR, &floor_line_id);
             mpCollisionGetMapObjPositionID(floor_line_id, &pos);

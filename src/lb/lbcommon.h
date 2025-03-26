@@ -44,7 +44,7 @@ extern alSoundEffect* lbCommonMakePositionFGM(u16 fgm, f32 pos);
 extern DObj* lbCommonGetTreeDObjNextFromRoot(DObj *a, DObj *b);
 extern void lbCommonAddDObjAnimJointAll(DObj *root_dobj, AObjEvent32 **anim_joints, f32 anim_frame);
 extern void lbCommonAddFighterPartsFigatree(DObj *root_dobj, void **figatree, f32 anim_frame);
-extern void lbCommonAddDObjAnimAll(DObj *root_dobj, AObjEvent32 **anim_joints, AObjEvent32 ***p_matanim_joints, f32 anim_frame);
+extern void lbCommonAddTreeDObjsAnimAll(DObj *root_dobj, AObjEvent32 **anim_joints, AObjEvent32 ***p_matanim_joints, f32 anim_frame);
 extern void lbCommonInitDObj3Transforms(DObj *dobj, u8 tk1, u8 tk2, u8 tk3);
 extern void lbCommonInitDObj(DObj *dobj, u8 tk1, u8 tk2, u8 tk3, u8 arg4);
 extern void lbCommonSetupTreeDObjs(DObj *root_dobj, DObjDesc *dobjdesc, DObj **dobjs, u8 tk1, u8 tk2, u8 tk3);

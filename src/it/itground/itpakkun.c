@@ -11,9 +11,9 @@
 extern
 intptr_t lITPakkunItemAttributes;           // 0x00000120
 extern 
-intptr_t lITPakkunAppearAnimJoint;         // 0x00000CC8
+intptr_t lITPakkunAppearAnimJoint;          // 0x00000CC8
 extern 
-intptr_t lITPakkunAppearMatAnimJoint;      // 0x00000CF8
+intptr_t lITPakkunAppearMatAnimJoint;       // 0x00000CF8
 extern 
 intptr_t lITPakkunDamagedMatAnimJoint;      // 0x00000E04
 
@@ -112,9 +112,6 @@ void itPakkunWaitSetStatus(GObj *item_gobj)
     itMainSetStatus(item_gobj, dITPakkunStatusDescs, nITPakkunStatusWait);
 
     itGetStruct(item_gobj)->proc_dead = NULL;
-
-    // The Piranha Plant's total damage never resets, so it can be knocked out with even the weakest of attacks past a certain point.
-    // Fix: itGetStruct(item_gobj)->percent_damage = 0;
 }
 
 // 0x8017CF58
@@ -143,7 +140,7 @@ void itPakkunCommonSetWaitFighter(GObj *item_gobj)
 }
 
 // 0x8017CFDC
-sb32 itPakkunCommonCheckNoPlayersNear(GObj *item_gobj)
+sb32 itPakkunCommonCheckNoFighter(GObj *item_gobj)
 {
     if (item_gobj != NULL)
     {
@@ -186,16 +183,14 @@ sb32 itPakkunWaitProcUpdate(GObj *item_gobj)
         ip->multi = ITPAKKUN_APPEAR_WAIT;
         ip->item_vars.pakkun.is_wait_fighter = FALSE;
     }
-    ip->multi--;
-
-    if (ip->multi == 0)
+    if (--ip->multi == 0)
     {
-        if (itPakkunCommonCheckNoPlayersNear(item_gobj) != FALSE)
+        if (itPakkunCommonCheckNoFighter(item_gobj) != FALSE)
         {
             DObj *dobj = DObjGetStruct(item_gobj);
 
-            gcAddDObjAnimJoint(dobj, (uintptr_t)gGRCommonStruct.inishie.map_head + (intptr_t)&lITPakkunAppearAnimJoint, 0.0F);
-            gcAddMObjMatAnimJoint(dobj->mobj, (uintptr_t)gGRCommonStruct.inishie.map_head + (intptr_t)&lITPakkunAppearMatAnimJoint, 0.0F);
+            gcAddDObjAnimJoint(dobj, lbRelocGetFileData(AObjEvent32*, gGRCommonStruct.inishie.map_head, &lITPakkunAppearAnimJoint), 0.0F);
+            gcAddMObjMatAnimJoint(dobj->mobj, lbRelocGetFileData(AObjEvent32*, gGRCommonStruct.inishie.map_head, &lITPakkunAppearMatAnimJoint), 0.0F);
             gcPlayAnimAll(item_gobj);
 
             dobj->translate.vec.f.y += ip->item_vars.pakkun.pos.y;
@@ -300,7 +295,7 @@ sb32 itPakkunAppearProcDamage(GObj *item_gobj)
 
         dobj->anim_wait = AOBJ_ANIM_NULL;
 
-        gcAddMObjMatAnimJoint(dobj->mobj, (uintptr_t)gGRCommonStruct.inishie.map_head + (intptr_t)&lITPakkunDamagedMatAnimJoint, 0.0F);
+        gcAddMObjMatAnimJoint(dobj->mobj, lbRelocGetFileData(AObjEvent32*, gGRCommonStruct.inishie.map_head, &lITPakkunDamagedMatAnimJoint), 0.0F);
         gcPlayAnimAll(item_gobj);
     }
     return FALSE;

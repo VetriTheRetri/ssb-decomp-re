@@ -20,13 +20,13 @@ extern intptr_t lITGShellMatAnimJoint;      // 0x00006048
 ITDesc dITGShellItemDesc =
 {
     nITKindGShell,                          // Item Kind
-    &gITManagerCommonData,                    // Pointer to item file data?
+    &gITManagerCommonData,                  // Pointer to item file data?
     &lITGShellItemAttributes,               // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nGCMatrixKindNull,                   // Main matrix transformations
-        nGCMatrixKindNull,                   // Secondary matrix transformations?
+        nGCMatrixKindNull,                  // Main matrix transformations
+        nGCMatrixKindNull,                  // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -204,7 +204,7 @@ sb32 itGShellFallProcUpdate(GObj *item_gobj)
 // 0x8017874C
 sb32 itGShellWaitProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itGShellFallSetStatus);
+    itMapCheckLRWallProcNoFloor(item_gobj, itGShellFallSetStatus);
 
     return FALSE;
 }
@@ -295,7 +295,7 @@ sb32 itGShellCommonProcDamage(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->physics.vel_air.x = ip->damage_queue * ITGSHELL_DAMAGE_MUL_NORMAL * (-ip->damage_lr);
+    ip->physics.vel_air.x = (ip->damage_queue * ITGSHELL_DAMAGE_MUL_NORMAL * -ip->damage_lr);
 
     if (ABSF(ip->physics.vel_air.x) > ITGSHELL_STOP_VEL_X)
     {
@@ -405,9 +405,15 @@ sb32 itGShellSpinProcUpdate(GObj *item_gobj)
 // 0x80178C10
 sb32 itGShellSpinProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itGShellFallSetStatus);
+    /*
+     * OVERSIGHT (?): This sets the state of the shell to "Fall" when transitioning from the grounded spinning state,
+     * causing the shell's hitbox to deactivate when flying off platforms.
+     * 
+     * Solution: itMapCheckLRWallProcNoFloor(item_gobj, itGShellSpinAirSetStatus);
+     */
+    itMapCheckLRWallProcNoFloor(item_gobj, itGShellFallSetStatus);
 
-    if (itMapCheckCollideAllRebound(item_gobj, (MPCOLL_FLAG_CEIL | MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL), 0.2F, NULL) != FALSE)
+    if (itMapCheckCollideAllRebound(item_gobj, (MAP_FLAG_CEIL | MAP_FLAG_RWALL | MAP_FLAG_LWALL), 0.2F, NULL) != FALSE)
     {
         itMainVelSetRotateStepLR(item_gobj);
         itMainClearOwnerStats(item_gobj);
@@ -449,7 +455,7 @@ sb32 itGShellSpinProcDamage(GObj *item_gobj)
         itProcessUpdateHitPositions(item_gobj);
         itMainCopyDamageStats(item_gobj);
 
-        if (ip->ga != FALSE)
+        if (ip->ga != nMPKineticsGround)
         {
             itGShellSpinAirSetStatus(item_gobj);
         }

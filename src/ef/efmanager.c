@@ -2007,7 +2007,7 @@ GObj* efManagerMakeEffect(EFDesc *effect_desc, sb32 is_force_return)
         }
         if ((o_anim_joint != 0) || (o_matanim_joint != 0))
         {
-            lbCommonAddDObjAnimAll(main_dobj, (o_anim_joint != 0) ? (void*) (addr + o_anim_joint) : NULL, (o_matanim_joint != 0) ? (void*) (addr + o_matanim_joint) : NULL, 0.0F);
+            lbCommonAddTreeDObjsAnimAll(main_dobj, (o_anim_joint != 0) ? (void*) (addr + o_anim_joint) : NULL, (o_matanim_joint != 0) ? (void*) (addr + o_matanim_joint) : NULL, 0.0F);
             gcPlayAnimAll(effect_gobj);
         }
     }

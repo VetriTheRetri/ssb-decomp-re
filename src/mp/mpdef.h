@@ -1,37 +1,37 @@
 #ifndef _MPDEF_H_
 #define _MPDEF_H_
 
-#define MPCOLL_FLAG_LWALL (1 << 0)		// 0x1
-#define MPCOLL_FLAG_RWALL (1 << 5)		// 0x20
-#define MPCOLL_FLAG_CEIL (1 << 10)		// 0x400
-#define MPCOLL_FLAG_FLOOR (1 << 11)	// 0x800
-#define MPCOLL_FLAG_LCLIFF (1 << 12)	// 0x1000
-#define MPCOLL_FLAG_RCLIFF (1 << 13)	// 0x2000
-#define MPCOLL_FLAG_CEILHEAVY (1 << 14) // 0x4000 - hard ceiling, can't pass through
+#define MAP_FLAG_LWALL (1 << 0)		    // 0x1
+#define MAP_FLAG_RWALL (1 << 5)		    // 0x20
+#define MAP_FLAG_CEIL (1 << 10)		    // 0x400
+#define MAP_FLAG_FLOOR (1 << 11)        // 0x800
+#define MAP_FLAG_LCLIFF (1 << 12)	    // 0x1000
+#define MAP_FLAG_RCLIFF (1 << 13)	    // 0x2000
+#define MAP_FLAG_CEILHEAVY (1 << 14)    // 0x4000 - hard ceiling, can't pass through
 
-#define MPCOLL_FLAG_MAIN_MASK (MPCOLL_FLAG_FLOOR | MPCOLL_FLAG_CEIL | MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL) // Mask every main collision flag
-#define MPCOLL_FLAG_CLIFF_MASK (MPCOLL_FLAG_LCLIFF | MPCOLL_FLAG_RCLIFF)			// Mask all ledge flags
+#define MAP_FLAG_MAIN_MASK (MAP_FLAG_FLOOR | MAP_FLAG_CEIL | MAP_FLAG_RWALL | MAP_FLAG_LWALL)   // Mask every main collision flag
+#define MAP_FLAG_CLIFF_MASK (MAP_FLAG_LCLIFF | MAP_FLAG_RCLIFF)			                        // Mask all ledge flags
 
-#define MPCOLL_VERTEX_ATTR_BITS 8
+#define MAP_VERTEX_ATTR_BITS 8
 
-#define MPCOLL_VERTEX_CLL_PASS (1 << 14)  // Line ID can be passed through
-#define MPCOLL_VERTEX_CLL_CLIFF (1 << 15) // 0x8000
+#define MAP_VERTEX_CLL_PASS (1 << 14)   // Line ID can be passed through
+#define MAP_VERTEX_CLL_CLIFF (1 << 15)  // Line ID can be hung onto
 
-#define MPCOLL_VERTEX_CLL_BITS (0xFF << (MPCOLL_VERTEX_ATTR_BITS * 1))
-#define MPCOLL_VERTEX_MAT_BITS (0xFF << (MPCOLL_VERTEX_ATTR_BITS * 0))
+#define MAP_VERTEX_CLL_BITS (0xFF << (MAP_VERTEX_ATTR_BITS * 1))
+#define MAP_VERTEX_MAT_BITS (0xFF << (MAP_VERTEX_ATTR_BITS * 0))
 
-#define MPCOLL_VERTEX_CLL_MASK (~MPCOLL_VERTEX_MAT_BITS) // This is what the game covers when checking flags & 0xFFFF00FF
-#define MPCOLL_VERTEX_MAT_MASK (~MPCOLL_VERTEX_CLL_BITS) // This is what the game looks for when checking 0xFFFF00FF
+#define MAP_VERTEX_CLL_MASK (~MAP_VERTEX_MAT_BITS)  // This is what the game covers when checking flags & 0xFFFF00FF
+#define MAP_VERTEX_MAT_MASK (~MAP_VERTEX_CLL_BITS)  // This is what the game looks for when checking 0xFFFF00FF
 
-#define MPCOLL_VERTEX_ALL_BITS (MPCOLL_VERTEX_CLL_BITS | MPCOLL_VERTEX_MAT_BITS)
+#define MAP_VERTEX_ALL_BITS (MAP_VERTEX_CLL_BITS | MAP_VERTEX_MAT_BITS)
 
-#define MPCOLL_PROC_TYPE_DEFAULT (0)
-#define MPCOLL_PROC_TYPE_CLIFF (1 << 0)
-#define MPCOLL_PROC_TYPE_CLIFFEDGE (1 << 0)
-#define MPCOLL_PROC_TYPE_PROJECT (1 << 1)
-#define MPCOLL_PROC_TYPE_STOPEDGE (1 << 1)
-#define MPCOLL_PROC_TYPE_PASS (1 << 2)
-#define MPCOLL_PROC_TYPE_CEILHEAVY (1 << 3)
+#define MAP_PROC_TYPE_DEFAULT (0)
+#define MAP_PROC_TYPE_CLIFF (1 << 0)
+#define MAP_PROC_TYPE_CLIFFEDGE (1 << 0)
+#define MAP_PROC_TYPE_PROJECT (1 << 1)
+#define MAP_PROC_TYPE_STOPEDGE (1 << 1)
+#define MAP_PROC_TYPE_PASS (1 << 2)
+#define MAP_PROC_TYPE_CEILHEAVY (1 << 3)
 
 typedef enum MPKinetics
 {

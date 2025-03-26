@@ -1769,7 +1769,7 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
                 {
                     fp->physics.vel_damage_ground = fp->physics.vel_damage_air.x;
                 }
-                ftMainUpdateVelDamageGround(fp, dMPCollisionMaterialFrictions[fp->coll_data.floor_flags & MPCOLL_VERTEX_MAT_MASK] * fp->attr->traction * 0.25F);
+                ftMainUpdateVelDamageGround(fp, dMPCollisionMaterialFrictions[fp->coll_data.floor_flags & MAP_VERTEX_MAT_MASK] * fp->attr->traction * 0.25F);
 
                 vel_damage_air->x = (floor_angle->y * fp->physics.vel_damage_ground);
                 vel_damage_air->y = (-floor_angle->x * fp->physics.vel_damage_ground);
@@ -3579,7 +3579,7 @@ sb32 ftMainGetGroundHitObstacle(FTStruct *fp, GRAttackColl **p_gr_attack_coll)
 {
     if ((fp->damagefloor_wait == 0) && (fp->ga == nMPKineticsGround) && (fp->coll_data.floor_line_id != -1) && (fp->coll_data.floor_line_id != -2))
     {
-        switch (fp->coll_data.floor_flags & MPCOLL_VERTEX_MAT_MASK)
+        switch (fp->coll_data.floor_flags & MAP_VERTEX_MAT_MASK)
         {
         case nMPMaterialFireWeakS1:
             *p_gr_attack_coll = &dFTMainGroundHitCollisionAttributes[0];

@@ -167,7 +167,7 @@ sb32 itStarRodFallProcUpdate(GObj *item_gobj)
 // 0x80177EBC
 sb32 itStarRodWaitProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itStarRodFallSetStatus);
+    itMapCheckLRWallProcNoFloor(item_gobj, itStarRodFallSetStatus);
 
     return FALSE;
 }

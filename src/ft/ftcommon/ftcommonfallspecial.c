@@ -42,7 +42,7 @@ sb32 ftCommonFallSpecialProcPass(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->status_vars.common.fallspecial.is_allow_pass == FALSE) || !(fp->coll_data.floor_flags & MPCOLL_VERTEX_CLL_PASS) || (fp->input.pl.stick_range.y >= FTCOMMON_FALLSPECIAL_PASS_STICK_RANGE_MIN))
+    if ((fp->status_vars.common.fallspecial.is_allow_pass == FALSE) || !(fp->coll_data.floor_flags & MAP_VERTEX_CLL_PASS) || (fp->input.pl.stick_range.y >= FTCOMMON_FALLSPECIAL_PASS_STICK_RANGE_MIN))
     {
         return TRUE;
     }
@@ -56,7 +56,7 @@ void ftCommonFallSpecialProcMap(GObj *fighter_gobj)
 
     if (mpCommonCheckFighterPassCliff(fighter_gobj, ftCommonFallSpecialProcPass) != FALSE)
     {
-        if (fp->coll_data.coll_mask_stat & MPCOLL_FLAG_CLIFF_MASK)
+        if (fp->coll_data.coll_mask_stat & MAP_FLAG_CLIFF_MASK)
         {
             ftCommonCliffCatchSetStatus(fighter_gobj);
         }

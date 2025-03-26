@@ -139,7 +139,7 @@ sb32 itBatFallProcUpdate(GObj *item_gobj)
 // 0x80174E68
 sb32 itBatWaitProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itBatFallSetStatus);
+    itMapCheckLRWallProcNoFloor(item_gobj, itBatFallSetStatus);
 
     return FALSE;
 }

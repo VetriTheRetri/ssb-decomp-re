@@ -335,7 +335,7 @@ sb32 itLinkBombWaitProcUpdate(GObj *item_gobj)
 // 0x80185F10
 sb32 itLinkBombWaitProcMap(GObj *item_gobj)
 {
-	itMapCheckLRWallProcGround(item_gobj, itLinkBombFallSetStatus);
+	itMapCheckLRWallProcNoFloor(item_gobj, itLinkBombFallSetStatus);
 
 	return FALSE;
 }

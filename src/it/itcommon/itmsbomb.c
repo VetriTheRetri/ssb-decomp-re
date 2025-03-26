@@ -183,7 +183,7 @@ sb32 itMSBombFallProcUpdate(GObj *item_gobj)
 // 0x801764A8
 sb32 itMSBombWaitProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itMSBombFallSetStatus);
+    itMapCheckLRWallProcNoFloor(item_gobj, itMSBombFallSetStatus);
 
     return FALSE;
 }
@@ -286,15 +286,15 @@ void itMSBombAttachedUpdateSurface(GObj *item_gobj)
     Vec3f angle;
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    if ((coll_data->coll_mask_curr & MPCOLL_FLAG_CEIL) || (coll_data->coll_mask_curr & MPCOLL_FLAG_FLOOR))
+    if ((coll_data->coll_mask_curr & MAP_FLAG_CEIL) || (coll_data->coll_mask_curr & MAP_FLAG_FLOOR))
     {
-        if (coll_data->coll_mask_curr & MPCOLL_FLAG_CEIL)
+        if (coll_data->coll_mask_curr & MAP_FLAG_CEIL)
         {
             angle = coll_data->ceil_angle;
 
             ip->attach_line_id = coll_data->ceil_line_id;
         }
-        if (coll_data->coll_mask_curr & MPCOLL_FLAG_FLOOR)
+        if (coll_data->coll_mask_curr & MAP_FLAG_FLOOR)
         {
             angle = coll_data->floor_angle;
 
@@ -303,13 +303,13 @@ void itMSBombAttachedUpdateSurface(GObj *item_gobj)
     }
     else
     {
-        if (coll_data->coll_mask_curr & MPCOLL_FLAG_LWALL)
+        if (coll_data->coll_mask_curr & MAP_FLAG_LWALL)
         {
             angle = coll_data->lwall_angle;
 
             ip->attach_line_id = coll_data->lwall_line_id;
         }
-        if (coll_data->coll_mask_curr & MPCOLL_FLAG_RWALL)
+        if (coll_data->coll_mask_curr & MAP_FLAG_RWALL)
         {
             angle = coll_data->rwall_angle;
 
@@ -365,7 +365,7 @@ void itMSBombExplodeMakeEffect(GObj *item_gobj)
     DObj *dobj = DObjGetStruct(item_gobj);
     s32 unused[4];
 
-    if (ip->coll_data.coll_mask_curr & MPCOLL_FLAG_FLOOR)
+    if (ip->coll_data.coll_mask_curr & MAP_FLAG_FLOOR)
     {
         Vec3f translate = dobj->translate.vec.f;
 

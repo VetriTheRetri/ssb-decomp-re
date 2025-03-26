@@ -111,7 +111,7 @@ sb32 itTomatoFallProcUpdate(GObj *item_gobj)
 // 0x801744FC
 sb32 itTomatoWaitProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itTomatoFallSetStatus);
+    itMapCheckLRWallProcNoFloor(item_gobj, itTomatoFallSetStatus);
 
     return FALSE;
 }

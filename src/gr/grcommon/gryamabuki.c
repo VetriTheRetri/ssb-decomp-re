@@ -60,7 +60,7 @@ sb32 grYamabukiGateCheckPlayersNear(void)
     {
         FTStruct *fp = ftGetStruct(fighter_gobj);
 
-        if ((fp->ga == nMPKineticsGround) && ((fp->coll_data.floor_flags & MPCOLL_VERTEX_MAT_MASK) == nMPMaterialDetect))
+        if ((fp->ga == nMPKineticsGround) && ((fp->coll_data.floor_flags & MAP_VERTEX_MAT_MASK) == nMPMaterialDetect))
         {
             return TRUE;
         }

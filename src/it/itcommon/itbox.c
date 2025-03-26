@@ -326,7 +326,7 @@ sb32 itBoxFallProcUpdate(GObj *item_gobj)
 // 0x80179674
 sb32 itBoxWaitProcMap(GObj *item_gobj)
 {
-    itMapCheckLRWallProcGround(item_gobj, itBoxFallSetStatus);
+    itMapCheckLRWallProcNoFloor(item_gobj, itBoxFallSetStatus);
 
     return FALSE;
 }
@@ -395,7 +395,7 @@ void itBoxHoldSetStatus(GObj *item_gobj)
 // 0x8017982C
 sb32 itBoxThrownProcMap(GObj *item_gobj)
 {
-    if (itMapTestAllCollisionFlag(item_gobj, MPCOLL_FLAG_MAIN_MASK) != FALSE)
+    if (itMapTestAllCollisionFlag(item_gobj, MAP_FLAG_MAIN_MASK) != FALSE)
     {
         if (itBoxCommonCheckSpawnItems(item_gobj) != FALSE)
         {

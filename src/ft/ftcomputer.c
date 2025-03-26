@@ -4987,7 +4987,7 @@ void ftComputerFollowObjectiveWalk(FTStruct *fp)
     }
     else if
     (
-        !(fp->coll_data.floor_flags & MPCOLL_VERTEX_CLL_PASS) &&
+        !(fp->coll_data.floor_flags & MAP_VERTEX_CLL_PASS) &&
         (fp->coll_data.floor_line_id >= 0) &&
         (com->target_pos.y < ((fp->joints[nFTPartsJointTopN]->translate.vec.f.y + fp->coll_data.floor_dist) - 500.0F)) &&
         (DISTANCE(com->target_pos.x, fp->joints[nFTPartsJointTopN]->translate.vec.f.x) < (DISTANCE(com->target_pos.y, fp->joints[nFTPartsJointTopN]->translate.vec.f.y) * 0.2F))
@@ -5277,7 +5277,7 @@ void ftComputerFollowObjectiveWalk(FTStruct *fp)
                         ftComputerSetCommandWaitShort(fp, nFTComputerInputMoveAutoStickTiltHiReleaseZ);
                     }
                 }
-                else if (fp->coll_data.floor_flags & MPCOLL_VERTEX_CLL_PASS)
+                else if (fp->coll_data.floor_flags & MAP_VERTEX_CLL_PASS)
                 {
                     ftComputerSetCommandWaitShort(fp, nFTComputerInputStickND1MoveAutoSmashLw);
                 }

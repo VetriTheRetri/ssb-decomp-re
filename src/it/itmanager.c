@@ -556,9 +556,9 @@ GObj* itManagerMakeSpawnActor(void)
     {
         if (gSCManagerBattleState->item_toggles != 0)
         {
-            if (gMPCollisionGroundData->blocks != NULL)
+            if (gMPCollisionGroundData->item_weights != NULL)
             {
-                p_any_weights = gMPCollisionGroundData->blocks;
+                p_any_weights = gMPCollisionGroundData->item_weights;
                 item_any_toggles = gSCManagerBattleState->item_toggles;
 
                 item_any_weights = 0;
@@ -604,7 +604,7 @@ GObj* itManagerMakeSpawnActor(void)
                 gcAddGObjProcess(gobj, itManagerSpawnActorProcUpdate, nGCProcessKindFunc, 3);
 
                 item_valid_toggles = gSCManagerBattleState->item_toggles;
-                p_valid_weights = gMPCollisionGroundData->blocks;
+                p_valid_weights = gMPCollisionGroundData->item_weights;
 
                 for (i = nITKindCommonStart, item_valid_weights = 0; i <= nITKindCommonEnd; i++, item_valid_toggles >>= 1)
                 {
@@ -654,10 +654,10 @@ void itManagerSetupContainerDrops(void)
     MPItemWeights *p_valid_weights;
     s32 i;
 
-    if ((gSCManagerBattleState->item_appearance_rate != nSCBattleItemSwitchNone) && (gSCManagerBattleState->item_toggles != 0) && (gMPCollisionGroundData->blocks != NULL))
+    if ((gSCManagerBattleState->item_appearance_rate != nSCBattleItemSwitchNone) && (gSCManagerBattleState->item_toggles != 0) && (gMPCollisionGroundData->item_weights != NULL))
     {
         item_any_toggles = gSCManagerBattleState->item_toggles >> nITKindUtilityStart;
-        p_any_weights = gMPCollisionGroundData->blocks;
+        p_any_weights = gMPCollisionGroundData->item_weights;
 
         item_any_weights = 0;
 
@@ -673,7 +673,7 @@ void itManagerSetupContainerDrops(void)
         if (item_any_weights != 0)
         {
             item_valid_toggles = gSCManagerBattleState->item_toggles >> nITKindUtilityStart;
-            p_valid_weights = gMPCollisionGroundData->blocks;
+            p_valid_weights = gMPCollisionGroundData->item_weights;
 
             for (item_valid_weights = 0, i = nITKindUtilityStart; i <= nITKindUtilityEnd; i++, item_valid_toggles >>= 1)
             {

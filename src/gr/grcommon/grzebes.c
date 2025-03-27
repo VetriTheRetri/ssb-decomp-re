@@ -65,7 +65,7 @@ enum grZebesStatus
 void grZebesAcidSetLevelStep(void)
 {
     gGRCommonStruct.zebes.acid_level_step = 
-    ((dGRZebesAcidAttributes[gGRCommonStruct.zebes.acid_attr_id].acid_level + (syUtilsGetRandomFloat() * 250.0F)) - gGRCommonStruct.zebes.acid_level_curr) / 240.0F;
+    ((dGRZebesAcidAttributes[gGRCommonStruct.zebes.acid_attr_id].acid_level + (syUtilsRandFloat() * 250.0F)) - gGRCommonStruct.zebes.acid_level_curr) / 240.0F;
 }
 
 // 0x80108088
@@ -75,7 +75,7 @@ void grZebesAcidSetRandomWait(void)
 
     gGRCommonStruct.zebes.acid_level_wait = dGRZebesAcidAttributes[index].acid_wait_base +
                                           dGRZebesAcidAttributes[index].acid_random_min +
-                                          syUtilsGetRandomIntRange(dGRZebesAcidAttributes[index].acid_random_max - dGRZebesAcidAttributes[index].acid_random_min);
+                                          syUtilsRandIntRange(dGRZebesAcidAttributes[index].acid_random_max - dGRZebesAcidAttributes[index].acid_random_min);
 }
 
 // 0x801080EC

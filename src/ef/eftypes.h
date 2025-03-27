@@ -68,7 +68,7 @@ typedef struct EFGroundActor
 
 struct EFStruct
 {
-    EFStruct *alloc_next;
+    EFStruct *next;
     GObj *fighter_gobj;
 
     u16 bank_id;

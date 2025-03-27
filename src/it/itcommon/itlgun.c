@@ -269,7 +269,7 @@ GObj* itLGunMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->multi = ITLGUN_AMMO_MAX;
 
-        DObjGetStruct(item_gobj)->rotate.vec.f.y = ((syUtilsGetRandomUShort() % 2) != 0) ? F_CST_DTOR32(90.0F) : F_CST_DTOR32(-90.0F);
+        DObjGetStruct(item_gobj)->rotate.vec.f.y = ((syUtilsRandUShort() % 2) != 0) ? F_CST_DTOR32(90.0F) : F_CST_DTOR32(-90.0F);
 
         ip->is_unused_item_bool = TRUE;
 

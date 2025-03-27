@@ -860,7 +860,7 @@ void sc1PGameGetSpawnPosition(Vec3f *mapobj_pos, s32 mapobj_kind)
 }
 
 // 0x8018D45C
-void sc1PGameGetRandomSpawnPosition(Vec3f *mapobj_pos, s32 mapobj_kind)
+void sc1PGameRandSpawnPosition(Vec3f *mapobj_pos, s32 mapobj_kind)
 {
     s32 mapobj_count = mpCollisionGetMapObjCountKind(mapobj_kind);
     s32 mapobj[10];
@@ -874,7 +874,7 @@ void sc1PGameGetRandomSpawnPosition(Vec3f *mapobj_pos, s32 mapobj_kind)
         }
     }
     mpCollisionGetMapObjIDsKind(mapobj_kind, mapobj);
-    mpCollisionGetMapObjPositionID(mapobj[syUtilsGetRandomIntRange(mapobj_count)], mapobj_pos);
+    mpCollisionGetMapObjPositionID(mapobj[syUtilsRandIntRange(mapobj_count)], mapobj_pos);
 }
 
 // 0x8018D4EC
@@ -1049,7 +1049,7 @@ void sc1PGameSetupStageAll(void)
 
         for (i = 0; i < SC1PGAME_STAGE_YOSHI_VARIATIONS_COUNT; i++)
         {
-            sSC1PGameEnemyVariations[i] = sc1PGameGetFighterKindsNum(flags, syUtilsGetRandomIntRange(variations));
+            sSC1PGameEnemyVariations[i] = sc1PGameGetFighterKindsNum(flags, syUtilsRandIntRange(variations));
 
             flags |= (1 << sSC1PGameEnemyVariations[i]);
 
@@ -1096,7 +1096,7 @@ void sc1PGameSetupStageAll(void)
 
         for (i = 0; i < SC1PGAME_STAGE_MAX_VARIATIONS_COUNT; i++)
         {
-            sSC1PGameEnemyVariations[i] = sc1PGameGetFighterKindsNum(flags, syUtilsGetRandomIntRange(variations));
+            sSC1PGameEnemyVariations[i] = sc1PGameGetFighterKindsNum(flags, syUtilsRandIntRange(variations));
 
             flags |= (1 << sSC1PGameEnemyVariations[i]);
 
@@ -1165,7 +1165,7 @@ void sc1PGameSetupStageAll(void)
 
         for (i = 0; i < SC1PGAME_STAGE_MAX_OPPONENT_COUNT; i++)
         {
-            sSC1PGameEnemyVariations[i] = sc1PGameGetFighterKindsNum(flags, syUtilsGetRandomIntRange(variations));
+            sSC1PGameEnemyVariations[i] = sc1PGameGetFighterKindsNum(flags, syUtilsRandIntRange(variations));
 
             flags |= (1 << sSC1PGameEnemyVariations[i]);
 
@@ -1297,7 +1297,7 @@ void sc1PGameSpawnEnemyTeamNext(GObj *player_gobj)
 
         desc.fkind = gSCManagerBattleState->players[player].fkind;
 
-        sc1PGameGetRandomSpawnPosition(&desc.pos, nMPMapObjKind1PGameEnemyTeamSpawn);
+        sc1PGameRandSpawnPosition(&desc.pos, nMPMapObjKind1PGameEnemyTeamSpawn);
 
         desc.pos.y = (gMPCollisionGroundData->camera_bound_top + gMPCollisionGroundData->map_bound_top) * 0.5F;
 
@@ -1378,7 +1378,7 @@ void sc1PGameWaitStageCommonUpdate(void)
     s32 player;
     s32 i;
 
-    random = syUtilsGetRandomIntRange(ARRAY_COUNT(dSC1PGameStageCommonStopTics));
+    random = syUtilsRandIntRange(ARRAY_COUNT(dSC1PGameStageCommonStopTics));
     gcStopCurrentGObjThread(90);
     ifCommonCountdownMakeInterface();
 
@@ -1828,8 +1828,8 @@ void func_ovl65_8018F3AC(void)
     gmCameraSetStatusPlayerZoom
     (
         fighter_gobj,
-        F_CLC_DTOR32(D_ovl65_80192808[syUtilsGetRandomIntRange(ARRAY_COUNT(D_ovl65_80192808))]) * fp->lr,
-        F_CLC_DTOR32(D_ovl65_80192820[syUtilsGetRandomIntRange(ARRAY_COUNT(D_ovl65_80192820))]),
+        F_CLC_DTOR32(D_ovl65_80192808[syUtilsRandIntRange(ARRAY_COUNT(D_ovl65_80192808))]) * fp->lr,
+        F_CLC_DTOR32(D_ovl65_80192820[syUtilsRandIntRange(ARRAY_COUNT(D_ovl65_80192820))]),
         ftGetStruct(fighter_gobj)->attr->closeup_camera_zoom,
         0.06F,
         28.0F

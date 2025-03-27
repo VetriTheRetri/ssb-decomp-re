@@ -65,7 +65,7 @@ void ftBossGootsubusuWaitSetStatus(GObj *fighter_gobj)
 
     ftMainSetStatus(fighter_gobj, nFTBossStatusGootsubusuWait, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
-    fp->status_vars.boss.gootsubu.wait_timer = syUtilsGetRandomIntRange(60) + 60;
+    fp->status_vars.boss.gootsubu.wait_timer = syUtilsRandIntRange(60) + 60;
 
     mpCollisionGetFloorEdgeL(fp->coll_data.floor_line_id, &pos);
 

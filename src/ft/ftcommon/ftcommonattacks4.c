@@ -19,7 +19,7 @@ void ftCommonAttackS4ProcUpdate(GObj *fighter_gobj)
     case nFTKindNPikachu:
         if ((fp->motion_vars.flags.flag1 != 0) || (fp->motion_vars.flags.flag2 != 0))
         {
-            fp->status_vars.common.attack4.gfx_id += syUtilsGetRandomIntRange((FTCOMMON_ATTACKS4_THUNDERSHOCK_GFX_ID_MAX - 1)) + 1;
+            fp->status_vars.common.attack4.gfx_id += syUtilsRandIntRange((FTCOMMON_ATTACKS4_THUNDERSHOCK_GFX_ID_MAX - 1)) + 1;
 
             if (fp->status_vars.common.attack4.gfx_id >= FTCOMMON_ATTACKS4_THUNDERSHOCK_GFX_ID_MAX)
             {

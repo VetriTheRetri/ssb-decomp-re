@@ -150,7 +150,7 @@ void ftCommonCaptureWaitKirbyUpdateBreakoutVars(FTStruct *this_fp, FTStruct *cap
 
                 is_wiggle = TRUE;
 
-                capture_fp->physics.vel_air.y = FTCOMMON_CAPTUREKIRBY_WIGGLE_VEL_XY;
+                capture_fp->physics.vel_air.y = FTCOMMON_CAPTUREKIRBY_WIGGLE_VEL;
             }
         }
         else if ((this_fp->input.pl.stick_range.y <= -FTCOMMON_CAPTUREKIRBY_WIGGLE_STICK_RANGE_MIN) && (this_fp->tap_stick_y < FTCOMMON_CAPTUREKIRBY_WIGGLE_BUFFER_FRAMES_MAX) && (this_fp->coll_data.floor_flags & 0x4000))
@@ -165,7 +165,7 @@ void ftCommonCaptureWaitKirbyUpdateBreakoutVars(FTStruct *this_fp, FTStruct *cap
                 is_wiggle = TRUE;
 
                 capture_fp->coll_data.ignore_line_id = capture_fp->coll_data.floor_line_id;
-                capture_fp->physics.vel_air.y = -FTCOMMON_CAPTUREKIRBY_WIGGLE_VEL_XY;
+                capture_fp->physics.vel_air.y = -FTCOMMON_CAPTUREKIRBY_WIGGLE_VEL;
             }
         }
         if ((ABS(this_fp->input.pl.stick_range.x) >= (FTCOMMON_CAPTUREKIRBY_WIGGLE_STICK_RANGE_MIN + 3)) && (this_fp->tap_stick_x < (FTCOMMON_CAPTUREKIRBY_WIGGLE_BUFFER_FRAMES_MAX * 2)))
@@ -175,9 +175,9 @@ void ftCommonCaptureWaitKirbyUpdateBreakoutVars(FTStruct *this_fp, FTStruct *cap
 
             if (capture_fp->ga == nMPKineticsGround)
             {
-                capture_fp->physics.vel_ground.x = (((this_fp->input.pl.stick_range.x < 0) ? -1 : 1) * capture_fp->lr) * FTCOMMON_CAPTUREKIRBY_WIGGLE_VEL_XY;
+                capture_fp->physics.vel_ground.x = (((this_fp->input.pl.stick_range.x < 0) ? -1 : 1) * capture_fp->lr) * FTCOMMON_CAPTUREKIRBY_WIGGLE_VEL;
             }
-            else capture_fp->physics.vel_air.x = ((this_fp->input.pl.stick_range.x < 0) ? -1 : 1) * FTCOMMON_CAPTUREKIRBY_WIGGLE_VEL_XY;
+            else capture_fp->physics.vel_air.x = ((this_fp->input.pl.stick_range.x < 0) ? -1 : 1) * FTCOMMON_CAPTUREKIRBY_WIGGLE_VEL;
         }
         if (is_wiggle != FALSE)
         {

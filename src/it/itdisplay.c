@@ -1,7 +1,7 @@
 #include <it/item.h>
 #include <ft/fighter.h>
-#include <sys/malloc.h>
 #include <sys/develop.h>
+#include <sys/malloc.h>
 #include <sys/matrix.h>
 
 extern SYMallocRegion gSYTaskmanGraphicsHeap;

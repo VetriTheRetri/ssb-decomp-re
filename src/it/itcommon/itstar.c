@@ -72,7 +72,7 @@ sb32 itStarCommonProcMap(GObj *item_gobj)
 
     if (itMapCheckCollideAllRebound(item_gobj, (MAP_FLAG_CEIL | MAP_FLAG_RWALL | MAP_FLAG_LWALL), ITSTAR_MAP_REBOUND_COMMON, NULL) != FALSE)
     {
-        itMainVelSetRotateStepLR(item_gobj);
+        itMainSetSpinVelLR(item_gobj);
     }
     if (is_collide_ground != FALSE)
     {

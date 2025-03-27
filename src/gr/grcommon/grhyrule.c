@@ -120,7 +120,7 @@ void grHyruleTwisterUpdateSleep(void)
     if (gSCManagerBattleState->game_status != nSCBattleGameStatusWait)
     {
         gGRCommonStruct.hyrule.twister_status = nGRHyruleTwisterStatusWait;
-        gGRCommonStruct.hyrule.twister_wait = syUtilsGetRandomIntRange(1200) + 1600;
+        gGRCommonStruct.hyrule.twister_wait = syUtilsRandIntRange(1200) + 1600;
     }
 }
 
@@ -134,13 +134,13 @@ void grHyruleTwisterUpdateWait(void)
 
     if (gGRCommonStruct.hyrule.twister_wait == 0)
     {
-        mpCollisionGetMapObjPositionID(gGRCommonStruct.hyrule.twister_pos_ids[syUtilsGetRandomIntRange(gGRCommonStruct.hyrule.twister_pos_count)], &pos);
+        mpCollisionGetMapObjPositionID(gGRCommonStruct.hyrule.twister_pos_ids[syUtilsRandIntRange(gGRCommonStruct.hyrule.twister_pos_count)], &pos);
 
         twister_gobj = grHyruleMakeTwister(&pos);
 
         if (twister_gobj == NULL)
         {
-            gGRCommonStruct.hyrule.twister_wait = syUtilsGetRandomIntRange(1200) + 1600;
+            gGRCommonStruct.hyrule.twister_wait = syUtilsRandIntRange(1200) + 1600;
         }
         else
         {
@@ -161,13 +161,13 @@ void grHyruleTwisterUpdateSummon(void)
     if (gGRCommonStruct.hyrule.twister_wait == 0)
     {
         gGRCommonStruct.hyrule.twister_status = nGRHyruleTwisterStatusMove;
-        gGRCommonStruct.hyrule.twister_wait = syUtilsGetRandomIntRange(600) + 520;
+        gGRCommonStruct.hyrule.twister_wait = syUtilsRandIntRange(600) + 520;
 
-        lr = ((syUtilsGetRandomUShort() % 2) != 0) ? +1 : -1;
+        lr = ((syUtilsRandUShort() % 2) != 0) ? +1 : -1;
 
         gGRCommonStruct.hyrule.twister_turn_wait = 0;
         gGRCommonStruct.hyrule.twister_vel = lr * 10.0F;
-        gGRCommonStruct.hyrule.twister_speed_wait = syUtilsGetRandomIntRange(120) + 180;
+        gGRCommonStruct.hyrule.twister_speed_wait = syUtilsRandIntRange(120) + 180;
 
         ftMainCheckAddGroundObstacle(gGRCommonStruct.hyrule.twister_gobj, grHyruleTwisterCheckGetDamageKind);
 
@@ -215,7 +215,7 @@ s32 grHyruleTwisterGetLR(void)
     {
         if (players_lside == players_rside)
         {
-            return ((syUtilsGetRandomUShort() % 2) != 0) ? -1 : +1;
+            return ((syUtilsRandUShort() % 2) != 0) ? -1 : +1;
         }
         else if (players_rside < players_lside)
         {
@@ -257,9 +257,9 @@ void grHyruleTwisterUpdateMove(void)
             {
                 lr = grHyruleTwisterGetLR();
 
-                if ((lr != 0) && (syUtilsGetRandomIntRange(5) == 0))
+                if ((lr != 0) && (syUtilsRandIntRange(5) == 0))
                 {
-                    gGRCommonStruct.hyrule.twister_turn_wait = syUtilsGetRandomIntRange(180) + 300;
+                    gGRCommonStruct.hyrule.twister_turn_wait = syUtilsRandIntRange(180) + 300;
                     gGRCommonStruct.hyrule.twister_vel = lr * 50.0F;
                 }
             }
@@ -338,7 +338,7 @@ void grHyruleTwisterUpdateSubside(void)
     if (gGRCommonStruct.hyrule.twister_wait == 0)
     {
         gGRCommonStruct.hyrule.twister_status = nGRHyruleTwisterStatusWait;
-        gGRCommonStruct.hyrule.twister_wait = syUtilsGetRandomIntRange(1200) + 1600;
+        gGRCommonStruct.hyrule.twister_wait = syUtilsRandIntRange(1200) + 1600;
 
         if (gGRCommonStruct.hyrule.twister_xf != NULL)
         {

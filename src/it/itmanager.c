@@ -150,11 +150,11 @@ void itManagerInitItems(void) // Many linker things here
 
     for (i = 0; i < (ITEM_ALLOC_MAX - 1); i++)
     {
-        ip[i].alloc_next = &ip[i + 1];
+        ip[i].next = &ip[i + 1];
     }
     if (ip != NULL)
     {
-        ip[i].alloc_next = NULL;
+        ip[i].next = NULL;
     }
     gITManagerCommonData = lbRelocGetExternHeapFile((u32)&llITCommonDataFileID, syTaskmanMalloc(lbRelocGetFileSize((u32)&llITCommonDataFileID), 0x10));
 
@@ -184,7 +184,7 @@ ITStruct* itManagerGetNextStructAlloc(void) // Set global Item user_data link po
     }
     get_item = new_item;
 
-    gITManagerStructsAllocFree = new_item->alloc_next;
+    gITManagerStructsAllocFree = new_item->next;
 
     return get_item;
 }
@@ -192,7 +192,7 @@ ITStruct* itManagerGetNextStructAlloc(void) // Set global Item user_data link po
 // 0x8016DFDC
 void itManagerSetPrevStructAlloc(ITStruct *ip) // Set global Item user_data link pointer to previous member
 {
-    ip->alloc_next = gITManagerStructsAllocFree;
+    ip->next = gITManagerStructsAllocFree;
 
     gITManagerStructsAllocFree = ip;
 }
@@ -280,7 +280,7 @@ GObj* itManagerMakeItem(GObj *parent_gobj, ITDesc *item_desc, Vec3f *pos, Vec3f 
 
     ip->attr = attr;
 
-    itMainVelSetRotateStepLR(item_gobj);
+    itMainSetSpinVelLR(item_gobj);
     itMainResetPlayerVars(item_gobj);
 
     ip->is_allow_pickup     = FALSE;
@@ -313,7 +313,7 @@ GObj* itManagerMakeItem(GObj *parent_gobj, ITDesc *item_desc, Vec3f *pos, Vec3f 
     ip->is_thrown           = FALSE; // Applies magnitude and stale multiplier if TRUE and hitbox is active?
     ip->is_attach_surface   = FALSE;
 
-    ip->rotate_step         = 0.0F;
+    ip->spin_step         = 0.0F;
 
     ip->arrow_gobj          = NULL;
     ip->arrow_timer         = 0;
@@ -376,14 +376,14 @@ GObj* itManagerMakeItem(GObj *parent_gobj, ITDesc *item_desc, Vec3f *pos, Vec3f 
 
     ip->reflect_gobj = NULL;
 
-    if (attr->dobj_setup != NULL)
+    if (attr->data != NULL)
     {
         if (!(attr->is_item_dobjs))
         {
             gcSetupCustomDObjsWithMObj
             (
                 item_gobj,
-                attr->dobj_setup,
+                attr->data,
                 attr->p_mobjsubs,
                 NULL,
                 item_desc->transform_types.tk1,
@@ -393,7 +393,7 @@ GObj* itManagerMakeItem(GObj *parent_gobj, ITDesc *item_desc, Vec3f *pos, Vec3f 
         }
         else
         {
-            itManagerSetupItemDObjs(item_gobj, attr->dobj_setup, NULL, item_desc->transform_types.tk1);
+            itManagerSetupItemDObjs(item_gobj, attr->data, NULL, item_desc->transform_types.tk1);
 
             if (attr->p_mobjsubs != NULL)
             {
@@ -465,7 +465,7 @@ GObj* itManagerMakeItem(GObj *parent_gobj, ITDesc *item_desc, Vec3f *pos, Vec3f 
     }
     ip->ga = nMPKineticsAir;
 
-    itProcessUpdateHitPositions(item_gobj);
+    itProcessUpdateAttackPositions(item_gobj);
     itMainClearColAnim(item_gobj);
 
     return item_gobj;
@@ -481,7 +481,7 @@ GObj* itManagerMakeItemSetupCommon(GObj *parent_gobj, s32 index, Vec3f *pos, Vec
         if (index <= nITKindCommonEnd)
         {
             efManagerItemSpawnSwirlMakeEffect(pos);
-            func_ovl3_80172394(item_gobj, FALSE);
+            itMainSetSpawnSpin(item_gobj, FALSE);
         }
     }
     return item_gobj;
@@ -498,7 +498,7 @@ void itManagerSetItemSpawnWait(void)
 {
     gITManagerSpawnActor.spawn_wait = 
     dITManagerAppearanceRatesMin[gSCManagerBattleState->item_appearance_rate] + 
-    syUtilsGetRandomIntRange
+    syUtilsRandIntRange
     (
         dITManagerAppearanceRatesMax[gSCManagerBattleState->item_appearance_rate] - dITManagerAppearanceRatesMin[gSCManagerBattleState->item_appearance_rate]
     );
@@ -524,7 +524,7 @@ void itManagerSpawnActorProcUpdate(GObj *item_gobj)
         {
             index = itMainGetWeightedItemKind(&gITManagerSpawnActor.weights);
 
-            mpCollisionGetMapObjPositionID(gITManagerSpawnActor.mapobjs[syUtilsGetRandomIntRange(gITManagerSpawnActor.mapobjs_num)], &pos);
+            mpCollisionGetMapObjPositionID(gITManagerSpawnActor.mapobjs[syUtilsRandIntRange(gITManagerSpawnActor.mapobjs_num)], &pos);
 
             vel.x = vel.y = vel.z = 0.0F;
 

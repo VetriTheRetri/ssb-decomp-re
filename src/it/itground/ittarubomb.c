@@ -7,7 +7,7 @@
 //                               //
 // // // // // // // // // // // //
 
-extern f32 syUtilsGetRandomFloat();
+extern f32 syUtilsRandFloat();
 extern f32 syUtilsArcTan2(f32, f32);
 
 extern alSoundEffect *func_800269C0_275C0(u16);
@@ -162,13 +162,13 @@ void itTaruBombContainerSmashMakeEffect(Vec3f *pos)
 
                 dobj->translate.vec.f = *pos;
 
-                dobj->scale.vec.f.x = (syUtilsGetRandomFloat() * 48.0F) + -24.0F;
-                dobj->scale.vec.f.y = (syUtilsGetRandomFloat() * 50.0F) + 10.0F;
-                dobj->scale.vec.f.z = (syUtilsGetRandomFloat() * 32.0F) + -16.0F;
+                dobj->scale.vec.f.x = (syUtilsRandFloat() * 48.0F) + -24.0F;
+                dobj->scale.vec.f.y = (syUtilsRandFloat() * 50.0F) + 10.0F;
+                dobj->scale.vec.f.z = (syUtilsRandFloat() * 32.0F) + -16.0F;
 
-                dobj->anim_wait = F_CLC_DTOR32((syUtilsGetRandomFloat() * 100.0F) + -50.0F);
-                dobj->anim_speed = F_CLC_DTOR32((syUtilsGetRandomFloat() * 100.0F) + -50.0F);
-                dobj->anim_frame = F_CLC_DTOR32((syUtilsGetRandomFloat() * 100.0F) + -50.0F);
+                dobj->anim_wait = F_CLC_DTOR32((syUtilsRandFloat() * 100.0F) + -50.0F);
+                dobj->anim_speed = F_CLC_DTOR32((syUtilsRandFloat() * 100.0F) + -50.0F);
+                dobj->anim_frame = F_CLC_DTOR32((syUtilsRandFloat() * 100.0F) + -50.0F);
             }
             ep->effect_vars.container.lifetime = ITTARUBOMB_GFX_LIFETIME;
 
@@ -234,7 +234,7 @@ sb32 itTaruBombFallCheckCollideGround(GObj *item_gobj, f32 common_rebound)
 
     if (itMapCheckCollideAllRebound(item_gobj, (MAP_FLAG_CEIL | MAP_FLAG_RWALL | MAP_FLAG_LWALL), common_rebound, NULL) != FALSE)
     {
-        itMainVelSetRotateStepLR(item_gobj);
+        itMainSetSpinVelLR(item_gobj);
     }
     if (is_collide_ground != FALSE)
     {
@@ -266,7 +266,7 @@ sb32 itTaruBombFallProcMap(GObj *item_gobj)
 
             ip->physics.vel_air.y *= 0.2F;
 
-            itMainVelSetRotateStepLR(item_gobj);
+            itMainSetSpinVelLR(item_gobj);
         }
         func_800269C0_275C0(nSYAudioFGMTaruBombMap);
         itMainClearOwnerStats(item_gobj);

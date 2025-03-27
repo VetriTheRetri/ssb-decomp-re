@@ -1278,7 +1278,7 @@ void mnMapsSaveSceneData(void)
 	{
 		do
 		{
-			gkind = syUtilsGetRandomTimeUCharRange(9);
+			gkind = syUtilsRandTimeUCharRange(9);
 		}
 		while ((mnMapsCheckLocked(gkind) != FALSE) || (gkind == gSCManagerSceneData.gkind));
 

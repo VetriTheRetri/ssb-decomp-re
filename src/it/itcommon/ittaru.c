@@ -239,7 +239,7 @@ sb32 itTaruThrownCheckMapCollision(GObj *item_gobj, f32 common_rebound)
 
     if (itMapCheckCollideAllRebound(item_gobj, (MAP_FLAG_CEIL | MAP_FLAG_RWALL | MAP_FLAG_LWALL), common_rebound, NULL) != FALSE)
     {
-        itMainVelSetRotateStepLR(item_gobj);
+        itMainSetSpinVelLR(item_gobj);
     }
     if (is_collide_ground != FALSE)
     {
@@ -283,7 +283,7 @@ sb32 itTaruThrownProcMap(GObj *item_gobj)
 
             ip->physics.vel_air.y *= 0.2F;
 
-            itMainVelSetRotateStepLR(item_gobj);
+            itMainSetSpinVelLR(item_gobj);
         }
         itMainClearOwnerStats(item_gobj);
     }
@@ -352,7 +352,7 @@ sb32 itTaruRollProcUpdate(GObj *item_gobj)
 
     sqrt_vel = sqrtf(SQUARE(ip->physics.vel_air.x) + SQUARE(ip->physics.vel_air.y));
 
-    if (sqrt_vel < ITTARU_MIN_VEL_XY)
+    if (sqrt_vel < ITTARU_VEL_MIN)
     {
         ip->lifetime--;
 

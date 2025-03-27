@@ -36,11 +36,11 @@ void wpManagerAllocWeapons(void)
 
     for (i = 0; i < (WEAPON_ALLOC_MAX - 1); i++)
     {
-        wp[i].alloc_next = &wp[i + 1];
+        wp[i].next = &wp[i + 1];
     }
     if (wp != NULL)
     {
-        wp[i].alloc_next = NULL;
+        wp[i].next = NULL;
     }
     sWPManagerGroupID = 1;
     sWPManagerDisplayMode = nDBDisplayModeMaster;
@@ -58,7 +58,7 @@ WPStruct* wpManagerGetNextStructAlloc(void)
     }
     get_weapon = new_weapon;
 
-    sWPManagerStructsAllocFree = new_weapon->alloc_next;
+    sWPManagerStructsAllocFree = new_weapon->next;
 
     return get_weapon;
 }
@@ -66,7 +66,7 @@ WPStruct* wpManagerGetNextStructAlloc(void)
 // 0x80165588
 void wpManagerSetPrevStructAlloc(WPStruct *wp)
 {
-    wp->alloc_next = sWPManagerStructsAllocFree;
+    wp->next = sWPManagerStructsAllocFree;
 
     sWPManagerStructsAllocFree = wp;
 }
@@ -259,13 +259,13 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPDesc *wp_desc, Vec3f *spawn_pos, 
 
     if (wp_desc->flags & WEAPON_FLAG_DOBJDESC)
     {
-        gcSetupCustomDObjs(weapon_gobj, attr->dobj_setup, NULL, wp_desc->transform_types.tk1, wp_desc->transform_types.tk2, wp_desc->transform_types.tk3);
+        gcSetupCustomDObjs(weapon_gobj, attr->data, NULL, wp_desc->transform_types.tk1, wp_desc->transform_types.tk2, wp_desc->transform_types.tk3);
 
         proc_display = (wp_desc->flags & WEAPON_FLAG_DOBJLINKS) ? wpDisplayDObjTreeDLLinks : func_ovl3_80167618;
     }
     else
     {
-        lbCommonInitDObj3Transforms(gcAddDObjForGObj(weapon_gobj, attr->dobj_setup), wp_desc->transform_types.tk1, wp_desc->transform_types.tk2, wp_desc->transform_types.tk3);
+        lbCommonInitDObj3Transforms(gcAddDObjForGObj(weapon_gobj, attr->data), wp_desc->transform_types.tk1, wp_desc->transform_types.tk2, wp_desc->transform_types.tk3);
 
         proc_display = (wp_desc->flags & WEAPON_FLAG_DOBJLINKS) ? wpDisplayDObjDLLinks : wpDisplayDLHead1;
     }

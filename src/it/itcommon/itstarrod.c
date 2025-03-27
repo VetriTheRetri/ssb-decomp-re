@@ -304,7 +304,7 @@ sb32 itStarRodWeaponStarProcUpdate(GObj *weapon_gobj)
     if (wp->weapon_vars.star.lifetime % 2)
     {
         pos.x = DObjGetStruct(weapon_gobj)->translate.vec.f.x;
-        pos.y = syUtilsGetRandomIntRange(250) + (DObjGetStruct(weapon_gobj)->translate.vec.f.y - 125.0F);
+        pos.y = syUtilsRandIntRange(250) + (DObjGetStruct(weapon_gobj)->translate.vec.f.y - 125.0F);
         pos.z = 0.0F;
 
         efManagerStarRodSparkMakeEffect(&pos, wp->lr * -1.0F);

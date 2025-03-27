@@ -150,7 +150,7 @@ void itKamexAttackUpdateHydro(GObj *item_gobj)
         efManagerDamageSpawnSparksMakeEffect(&pos, ip->lr);
         func_800269C0_275C0(nSYAudioFGMKamexHydro);
 
-        ip->item_vars.kamex.hydro_spawn_wait = syUtilsGetRandomIntRange(ITKAMEX_HYDRO_SPAWN_WAIT_RANDOM) + ITKAMEX_HYDRO_SPAWN_WAIT_CONST;
+        ip->item_vars.kamex.hydro_spawn_wait = syUtilsRandIntRange(ITKAMEX_HYDRO_SPAWN_WAIT_RANDOM) + ITKAMEX_HYDRO_SPAWN_WAIT_CONST;
 
         pos = dobj->translate.vec.f;
 

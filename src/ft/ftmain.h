@@ -62,9 +62,9 @@ extern void ftMainUpdateDamageStatGround(GObj* special_gobj, GObj* fighter_gobj,
 								   s32 target_kind);
 extern void ftMainGetBumperDamageAngle(GObj* fighter_gobj, GObj* attacker_gobj);
 extern void ftMainProcessHitCollisionStatsMain(GObj* fighter_gobj);
-extern void ftMainSearchFighterAttack(GObj* this_gobj);
-extern void ftMainSearchWeaponAttack(GObj* fighter_gobj);
-extern void ftMainSearchItemAttack(GObj* fighter_gobj);
+extern void ftMainSearchHitFighter(GObj* this_gobj);
+extern void ftMainSearchHitWeapon(GObj* fighter_gobj);
+extern void ftMainSearchHitItem(GObj* fighter_gobj);
 extern sb32 ftMainGetGroundHitObstacle(FTStruct* fp, GRAttackColl** p_gr_attack_coll);
 extern void ftMainSearchGroundHit(GObj* fighter_gobj);
 extern void ftMainSearchFighterCatch(GObj* this_gobj);

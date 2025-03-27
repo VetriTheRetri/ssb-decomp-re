@@ -251,7 +251,7 @@ void func_ovl3_80175408(GObj *item_gobj, s32 index) // Unused
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    gcAddAnimJointAll(item_gobj, (((uintptr_t)ip->attr->dobj_setup + dITHarisenAnimJoint[index]) - (intptr_t)&lITHarisenDataStart), 0.0F);
+    gcAddAnimJointAll(item_gobj, (((uintptr_t)ip->attr->data + dITHarisenAnimJoint[index]) - (intptr_t)&lITHarisenDataStart), 0.0F);
     gcPlayAnimAll(item_gobj);
 }
 

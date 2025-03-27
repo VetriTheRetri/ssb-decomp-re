@@ -35,7 +35,7 @@ struct WPDesc
 
 struct WPAttributes                         // Moreso hitbox stuff
 {
-    void *dobj_setup;                       // If WEAPON_FLAG_DOBJDESC is true, this is a DObjDesc*; else it's a display list
+    void *data;                             // If WEAPON_FLAG_DOBJDESC is true, this is a DObjDesc*; else it's a display list
     MObjSub ***p_mobjsubs;                  // Triple pointer???
     AObjEvent32 **anim_joints;
     AObjEvent32 ***p_matanim_joints;
@@ -114,14 +114,14 @@ struct WPAttackColl
 // Main weapon struct
 struct WPStruct
 {
-    WPStruct *alloc_next;               // Memory region allocated for next WPStruct
+    WPStruct *next;                     // Memory region allocated for next WPStruct
     GObj *weapon_gobj;                  // Weapon's GObj pointer
     GObj *owner_gobj;                   // Weapon's owner
     s32 kind;                           // Weapon ID
     u8 team;                            // Weapon's team
     u8 player;                          // Weapon's port index
     u8 handicap;                        // Weapon's handicap
-    s32 player_num;                  // Weapon's player number
+    s32 player_num;                     // Weapon's player number
     s32 lr;                             // Weapon's facing direction; -1 = -1, 0 = 0, 1 = +1, 2 = WALL_UP (Thunder Jolt only?), 3 = WALL_DOWN (Thunder Jolt only?)
 
     struct WPPhysics
@@ -186,14 +186,14 @@ struct WPStruct
 
         // Item Weapons
         wpStarRodWeaponVarsStar star;
-        wpIwarkWeaponVarsRock rock; // Onix's Rock Slide
+        wpIwarkWeaponVarsRock rock;     // Onix's Rock Slide
         wpNyarsWeaponVarsCoin coin;
         wpKamexWeaponVarsHydro hydro;
         wpDogasWeaponVarsSmog smog;
 
     } weapon_vars;
 
-    s32 display_mode;                  // Weapon's display mode: 0 = normal, 1 = hit collisions, 2 = opaque hurtboxes + outlined attack hitboxes, 3 = map collisions
+    s32 display_mode;                   // Weapon's display mode: 0 = normal, 1 = hit collisions, 2 = opaque hurtboxes + outlined attack hitboxes, 3 = map collisions
 };
 
 #endif

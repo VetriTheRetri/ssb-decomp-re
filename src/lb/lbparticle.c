@@ -636,7 +636,7 @@ void lbParticleRotateVel(LBParticle *pc, f32 angle)
 	
 	magnitude = sqrtf(SQUARE(vel.x) + SQUARE(vel.y) + SQUARE(vel.z));
 	
-	vel.y = syUtilsGetRandomFloat() * F_CST_DTOR32(360.0F);
+	vel.y = syUtilsRandFloat() * F_CST_DTOR32(360.0F);
 	
 	sin_angle = __sinf(angle) * magnitude;
 	
@@ -919,12 +919,12 @@ LBParticle* lbParticleUpdateStruct(LBParticle *this_pc, LBParticle *other_pc, s3
                         svar2 <<= 8;
                         svar2 += *csr++;
 
-                        this_pc->lifetime = svar1 + (s32) (svar2 * syUtilsGetRandomFloat());
+                        this_pc->lifetime = svar1 + (s32) (svar2 * syUtilsRandFloat());
                         break;
                         
                     case LBPARTICLE_OPCODE_TRYDEADRAND:
                         svar1 = *csr++;
-                        svar2 = syUtilsGetRandomFloat() * 100.0F;
+                        svar2 = syUtilsRandFloat() * 100.0F;
 
                         if (svar1 < svar2)
                         {
@@ -935,13 +935,13 @@ LBParticle* lbParticleUpdateStruct(LBParticle *this_pc, LBParticle *other_pc, s3
                         
                     case LBPARTICLE_OPCODE_ADDVELRAND:    
                         csr = lbParticleReadFloatBigEnd(csr, &fvar1);
-                        this_pc->pos.x += fvar1 * syUtilsGetRandomFloat();
+                        this_pc->pos.x += fvar1 * syUtilsRandFloat();
 
                         csr = lbParticleReadFloatBigEnd(csr, &fvar1);
-                        this_pc->pos.y += fvar1 * syUtilsGetRandomFloat();
+                        this_pc->pos.y += fvar1 * syUtilsRandFloat();
 
                         csr = lbParticleReadFloatBigEnd(csr, &fvar1);
-                        this_pc->pos.z += fvar1 * syUtilsGetRandomFloat();
+                        this_pc->pos.z += fvar1 * syUtilsRandFloat();
                         break;
                         
                     case LBPARTICLE_OPCODE_SETVELANGLE:
@@ -958,7 +958,7 @@ LBParticle* lbParticleUpdateStruct(LBParticle *this_pc, LBParticle *other_pc, s3
                         svar2 <<= 8;
                         svar2 += *csr++;
 
-                        svar1 += (s32) (svar2 * syUtilsGetRandomFloat());
+                        svar1 += (s32) (svar2 * syUtilsRandFloat());
 
                         current_pc = lbParticleMakeChildScriptID(this_pc, this_pc->bank_id, svar1);
                             
@@ -992,7 +992,7 @@ LBParticle* lbParticleUpdateStruct(LBParticle *this_pc, LBParticle *other_pc, s3
                         csr = lbParticleReadFloatBigEnd(csr, &this_pc->size_target);
                         csr = lbParticleReadFloatBigEnd(csr, &fvar1);
                             
-                        this_pc->size_target += fvar1 * syUtilsGetRandomFloat();
+                        this_pc->size_target += fvar1 * syUtilsRandFloat();
                             
                         if (this_pc->size_target_length == 1) 
                         {
@@ -1083,13 +1083,13 @@ LBParticle* lbParticleUpdateStruct(LBParticle *this_pc, LBParticle *other_pc, s3
                         
                     case LBPARTICLE_OPCODE_PRIMBLENDRAND:
                         fvar1 = *csr++;
-                        this_pc->target_primcolor.r += fvar1 * syUtilsGetRandomFloat();
+                        this_pc->target_primcolor.r += fvar1 * syUtilsRandFloat();
                         fvar1 = *csr++;
-                        this_pc->target_primcolor.g += fvar1 * syUtilsGetRandomFloat();
+                        this_pc->target_primcolor.g += fvar1 * syUtilsRandFloat();
                         fvar1 = *csr++;
-                        this_pc->target_primcolor.b += fvar1 * syUtilsGetRandomFloat();
+                        this_pc->target_primcolor.b += fvar1 * syUtilsRandFloat();
                         fvar1 = *csr++;
-                        this_pc->target_primcolor.a += fvar1 * syUtilsGetRandomFloat();
+                        this_pc->target_primcolor.a += fvar1 * syUtilsRandFloat();
                             
                         if (this_pc->target_primcolor_length == 0)
                         {
@@ -1100,13 +1100,13 @@ LBParticle* lbParticleUpdateStruct(LBParticle *this_pc, LBParticle *other_pc, s3
                         
                     case LBPARTICLE_OPCODE_ENVBLENDRAND:
                         fvar1 = *csr++;
-                        this_pc->target_envcolor.r += fvar1 * syUtilsGetRandomFloat();
+                        this_pc->target_envcolor.r += fvar1 * syUtilsRandFloat();
                         fvar1 = *csr++;
-                        this_pc->target_envcolor.g += fvar1 * syUtilsGetRandomFloat();
+                        this_pc->target_envcolor.g += fvar1 * syUtilsRandFloat();
                         fvar1 = *csr++;
-                        this_pc->target_envcolor.b += fvar1 * syUtilsGetRandomFloat();
+                        this_pc->target_envcolor.b += fvar1 * syUtilsRandFloat();
                         fvar1 = *csr++;
-                        this_pc->target_envcolor.a += fvar1 * syUtilsGetRandomFloat();
+                        this_pc->target_envcolor.a += fvar1 * syUtilsRandFloat();
 
                         if (this_pc->target_envcolor_length == 0)
                         {
@@ -1118,14 +1118,14 @@ LBParticle* lbParticleUpdateStruct(LBParticle *this_pc, LBParticle *other_pc, s3
                     case 0xBC:    
                         this_pc->data_id = *csr++;
                         fvar1 = *csr++;
-                        this_pc->data_id += fvar1 * syUtilsGetRandomFloat();
+                        this_pc->data_id += fvar1 * syUtilsRandFloat();
                         break;
                         
                     case LBPARTICLE_OPCODE_SETVELMAG:
                         csr = lbParticleReadFloatBigEnd(csr, &fvar1);
                         csr = lbParticleReadFloatBigEnd(csr, &fvar2);
 
-                        fvar1 += fvar2 * syUtilsGetRandomFloat();
+                        fvar1 += fvar2 * syUtilsRandFloat();
 
                         fvar2 = sqrtf(SQUARE(this_pc->vel.x) + SQUARE(this_pc->vel.y) + SQUARE(this_pc->vel.z));
                         
@@ -2327,7 +2327,7 @@ void lbParticleGeneratorProcRun(GObj *gobj)
             {
                 gn->unk_gn_0x44 -= gn->unk_gn_0x40;
             }
-            else gn->unk_gn_0x44 += (syUtilsGetRandomFloat() * gn->unk_gn_0x40);
+            else gn->unk_gn_0x44 += (syUtilsRandFloat() * gn->unk_gn_0x40);
 
             if (gn->unk_gn_0x44 >= 1.0F)
             {
@@ -2348,12 +2348,12 @@ void lbParticleGeneratorProcRun(GObj *gobj)
                 case 0:
                 case 3:
                 case 4:
-                    pv0 = gn->generator_vars.rotate.base + (syUtilsGetRandomFloat() * (gn->generator_vars.rotate.target - gn->generator_vars.rotate.base));
+                    pv0 = gn->generator_vars.rotate.base + (syUtilsRandFloat() * (gn->generator_vars.rotate.target - gn->generator_vars.rotate.base));
                     spB8 = (gn->generator_vars.rotate.target - gn->generator_vars.rotate.base) / (s32) gn->unk_gn_0x44;
                     break;
 
                 default:
-                    pv0 = F_CST_DTOR32(360.0F) * syUtilsGetRandomFloat();
+                    pv0 = F_CST_DTOR32(360.0F) * syUtilsRandFloat();
                     spB8 = F_CST_DTOR32(360.0F) / (s32) gn->unk_gn_0x44;
                     break;
                 }
@@ -2388,7 +2388,7 @@ void lbParticleGeneratorProcRun(GObj *gobj)
                         }
                         else
                         {
-                            pv1 = vmag = syUtilsGetRandomFloat();
+                            pv1 = vmag = syUtilsRandFloat();
 
                             if (gn->kind != 0)
                             {
@@ -2403,7 +2403,7 @@ void lbParticleGeneratorProcRun(GObj *gobj)
                         }
                         else
                         {
-                            pv0 = gn->generator_vars.rotate.base + (syUtilsGetRandomFloat() * (gn->generator_vars.rotate.target - gn->generator_vars.rotate.base));
+                            pv0 = gn->generator_vars.rotate.base + (syUtilsRandFloat() * (gn->generator_vars.rotate.target - gn->generator_vars.rotate.base));
                             pv1 *= gn->unk_gn_0x3C;
                         }
                         zero = 0.0F;
@@ -2456,7 +2456,7 @@ void lbParticleGeneratorProcRun(GObj *gobj)
                         vel_y = vel.y;
                         vel_z = vel.z;
                         
-                        pos_random = syUtilsGetRandomFloat();
+                        pos_random = syUtilsRandFloat();
 
                         pos_x = gn->pos.x + (pos_random * (gn->generator_vars.move.x - gn->pos.x));
                         pos_y = gn->pos.y + (pos_random * (gn->generator_vars.move.y - gn->pos.y));
@@ -2496,9 +2496,9 @@ void lbParticleGeneratorProcRun(GObj *gobj)
                         
                         magnitude = sqrtf(SQUARE(vel_x) + SQUARE(vel_y) + SQUARE(vel_z));
                         
-                        pv1 = (gn->unk_gn_0x38 < 0.0F) ? 1.0F : syUtilsGetRandomFloat();
+                        pv1 = (gn->unk_gn_0x38 < 0.0F) ? 1.0F : syUtilsRandFloat();
 
-                        pv0 = (gn->unk_gn_0x3C < 0.0F) ? pv0 + spB8 : syUtilsGetRandomFloat() * F_CST_DTOR32(360.0F);
+                        pv0 = (gn->unk_gn_0x3C < 0.0F) ? pv0 + spB8 : syUtilsRandFloat() * F_CST_DTOR32(360.0F);
 
                         gn->generator_vars.unk_gn_vars.f = magnitude;
 

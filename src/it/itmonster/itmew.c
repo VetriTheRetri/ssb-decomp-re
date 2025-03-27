@@ -106,7 +106,7 @@ void itMewFlyInitVars(GObj *item_gobj)
 
     ip->multi = ITMEW_LIFETIME;
 
-    if (syUtilsGetRandomIntRange(2) != 0)
+    if (syUtilsRandIntRange(2) != 0)
     {
         ip->physics.vel_air.x = ITMEW_STARTVEL_X;
     }

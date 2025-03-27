@@ -390,7 +390,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
     case nFTMotionEventPlaySmashVoice:
         if (!(fp->is_muted))
         {
-            ftParamPlayVoice(fp, fp->attr->smash_sfx[syUtilsGetRandomIntRange(ARRAY_COUNT(fp->attr->smash_sfx))]);
+            ftParamPlayVoice(fp, fp->attr->smash_sfx[syUtilsRandIntRange(ARRAY_COUNT(fp->attr->smash_sfx))]);
 
             ftMotionEventAdvance(ms, FTMotionEventDefault);
         }
@@ -2969,7 +2969,7 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
 }
 
 // 0x800E4870 - My brain hurts
-void ftMainSearchFighterAttack(GObj *this_gobj)
+void ftMainSearchHitFighter(GObj *this_gobj)
 {
     GObj *other_gobj;
     FTStruct *this_fp;
@@ -3197,7 +3197,7 @@ void ftMainSearchFighterAttack(GObj *this_gobj)
 }
 
 // 0x800E4ED4
-void ftMainSearchWeaponAttack(GObj *fighter_gobj)
+void ftMainSearchHitWeapon(GObj *fighter_gobj)
 {
     GObj *weapon_gobj;
     s32 i, j, k, l, m, n;
@@ -3394,7 +3394,7 @@ void ftMainSearchWeaponAttack(GObj *fighter_gobj)
 }
 
 // 0x800E55DC
-void ftMainSearchItemAttack(GObj *fighter_gobj)
+void ftMainSearchHitItem(GObj *fighter_gobj)
 {
     GObj *item_gobj;
     s32 i, j, k, l, m, n;
@@ -3773,9 +3773,9 @@ void ftMainProcSearchAllHit(GObj *fighter_gobj)
     {
         sFTMainHitLogID = 0;
 
-        ftMainSearchFighterAttack(fighter_gobj);
-        ftMainSearchItemAttack(fighter_gobj);
-        ftMainSearchWeaponAttack(fighter_gobj);
+        ftMainSearchHitFighter(fighter_gobj);
+        ftMainSearchHitItem(fighter_gobj);
+        ftMainSearchHitWeapon(fighter_gobj);
         ftMainSearchGroundHit(fighter_gobj);
 
         if (sFTMainHitLogID != 0)

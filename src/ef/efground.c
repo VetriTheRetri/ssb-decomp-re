@@ -1268,7 +1268,7 @@ void efGroundUpdatePhysics(GObj *effect_gobj, s32 effect_id)
 
     dobj->translate.vec.f.y =
 
-    ((sEFGroundActor.effect_data->effect_descs[effect_id].alt_high - sEFGroundActor.effect_data->effect_descs[effect_id].alt_low) * syUtilsGetRandomFloat()) +
+    ((sEFGroundActor.effect_data->effect_descs[effect_id].alt_high - sEFGroundActor.effect_data->effect_descs[effect_id].alt_low) * syUtilsRandFloat()) +
 
     sEFGroundActor.effect_data->effect_descs[effect_id].alt_low;
 
@@ -1492,7 +1492,7 @@ void efGroundMakeEffectID(s32 effect_id)
     }
     if (sEFGroundActor.make_queue == 0)
     {
-        sEFGroundActor.make_wait = syUtilsGetRandomIntRange(10000) + 6000;
+        sEFGroundActor.make_wait = syUtilsRandIntRange(10000) + 6000;
     }
     else sEFGroundActor.make_wait = 30;
 }
@@ -1512,7 +1512,7 @@ void EFGroundActorProcUpdate(GObj *gobj)
 
         if (sEFGroundActor.make_queue == 0)
         {
-            param_id = syUtilsGetRandomIntRange(sEFGroundActor.effect_count);
+            param_id = syUtilsRandIntRange(sEFGroundActor.effect_count);
 
             param_id = sEFGroundActor.effect_ids[param_id];
 
@@ -1524,13 +1524,13 @@ void EFGroundActorProcUpdate(GObj *gobj)
 
             if (sEFGroundActor.lr == 0)
             {
-                sEFGroundActor.lr = (syUtilsGetRandomIntRange(2) == 0) ? -1 : +1;
+                sEFGroundActor.lr = (syUtilsRandIntRange(2) == 0) ? -1 : +1;
             }
             sEFGroundActor.make_queue = (param + param_id)->make_queue;
 
             if (sEFGroundActor.make_queue != 0)
             {
-                sEFGroundActor.make_queue += syUtilsGetRandomIntRange(2);
+                sEFGroundActor.make_queue += syUtilsRandIntRange(2);
             }
         }
         else sEFGroundActor.make_queue--;
@@ -1586,7 +1586,7 @@ void efGroundMakeSpawnActor(void)
 
             effect_gobj->user_data.p = &sEFGroundActor;
 
-            sEFGroundActor.make_wait = syUtilsGetRandomIntRange(10000) + 6000;
+            sEFGroundActor.make_wait = syUtilsRandIntRange(10000) + 6000;
             sEFGroundActor.effect_id = 0;
             sEFGroundActor.effect_data = &dEFGroundDatas[gSCManagerBattleState->gkind];
 

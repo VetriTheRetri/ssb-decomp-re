@@ -144,7 +144,7 @@ void syUtilsSetRandomSeed(s32 seed)
     *sSYUtilsRandomSeedPtr = seed;
 }
 
-s32 syUtilsGetRandomSeed(void)
+s32 syUtilsRandSeed(void)
 {
     return *sSYUtilsRandomSeedPtr;
 }
@@ -159,7 +159,7 @@ void syUtilsSetRandomSeedPtr(s32 *seedptr)
     else sSYUtilsRandomSeedPtr = seedptr;
 }
 
-u16 syUtilsGetRandomUShort(void)
+u16 syUtilsRandUShort(void)
 {
     s32 step = (*sSYUtilsRandomSeedPtr * 214013) + 2531011;
     *sSYUtilsRandomSeedPtr = step;
@@ -168,7 +168,7 @@ u16 syUtilsGetRandomUShort(void)
 }
 
 // between 0..1
-f32 syUtilsGetRandomFloat(void)
+f32 syUtilsRandFloat(void)
 {
     s32 step = (*sSYUtilsRandomSeedPtr * 214013) + 2531011;
     *sSYUtilsRandomSeedPtr = step;
@@ -176,22 +176,22 @@ f32 syUtilsGetRandomFloat(void)
     return ((step >> 16) & 0xFFFF) / 65536.0F;
 }
 
-s32 syUtilsGetRandomIntRange(s32 range)
+s32 syUtilsRandIntRange(s32 range)
 {
-    return syUtilsGetRandomUShort() * range / 65536;
+    return syUtilsRandUShort() * range / 65536;
 }
 
-u8 syUtilsGetRandomTimeUChar(void)
+u8 syUtilsRandTimeUChar(void)
 {
     return osGetTime();
 }
 
-f32 syUtilsGetRandomTimeFloat(void)
+f32 syUtilsRandTimeFloat(void)
 {
     return (osGetTime() & 0xFF) / 256.0F;
 }
 
-s32 syUtilsGetRandomTimeUCharRange(s32 range)
+s32 syUtilsRandTimeUCharRange(s32 range)
 {
     return ((s32)(osGetTime() & 0xFF) * range) / 256.0F;
 }

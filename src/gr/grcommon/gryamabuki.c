@@ -47,7 +47,7 @@ void grYamabukiGateUpdateSleep(void)
     if (gSCManagerBattleState->game_status != nSCBattleGameStatusWait)
     {
         gGRCommonStruct.yamabuki.gate_status = nGRYamabukiGateStatusWait;
-        gGRCommonStruct.yamabuki.monster_wait = syUtilsGetRandomIntRange(1000) + 1000;
+        gGRCommonStruct.yamabuki.monster_wait = syUtilsRandIntRange(1000) + 1000;
     }
 }
 
@@ -87,7 +87,7 @@ void grYamabukiGateMakeMonster(void)
 
     if ((dITManagerForceMonsterKind == 0) || (dITManagerForceMonsterKind > (nITKindGroundMonsterEnd - nITKindGroundMonsterStart + 1)))
     {
-        item_id = syUtilsGetRandomIntRange(nITKindGroundMonsterEnd - nITKindGroundMonsterStart + 1);
+        item_id = syUtilsRandIntRange(nITKindGroundMonsterEnd - nITKindGroundMonsterStart + 1);
 
         if (item_id == gGRCommonStruct.yamabuki.monster_id_prev)
         {
@@ -209,7 +209,7 @@ void grYamabukiGateSetClosedWait(void)
     gGRCommonStruct.yamabuki.gate_status = nGRYamabukiGateStatusWait;
     gGRCommonStruct.yamabuki.gate_wait = 1000;
 
-    gGRCommonStruct.yamabuki.monster_wait = syUtilsGetRandomIntRange(1000) + 1000;
+    gGRCommonStruct.yamabuki.monster_wait = syUtilsRandIntRange(1000) + 1000;
 
     grYamabukiGateSetPositionNear();
     grYamabukiGateAddAnimClose();

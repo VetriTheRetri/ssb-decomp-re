@@ -9,7 +9,7 @@
 extern void ftBossCommonInvertLR(GObj* fighter_gobj);
 extern void ftBossCommonCheckEdgeInvertLR(GObj* fighter_gobj);
 extern void ftBossCommonCheckPlayerInvertLR(GObj* fighter_gobj);
-extern void ftBossCommonGetRandomEdgeLR(s32 line_id, Vec3f* pos);
+extern void ftBossCommonRandEdgeLR(s32 line_id, Vec3f* pos);
 extern void ftBossCommonGotoTargetEdge(GObj* fighter_gobj, Vec3f* pos);
 extern void ftBossCommonSetPosOffsetY(GObj* fighter_gobj, Vec3f* pos, f32 off_y);
 extern void ftBossCommonSetPosAddVelPlayer(GObj* fighter_gobj, Vec3f* pos, f32 vel_x, f32 vel_y);

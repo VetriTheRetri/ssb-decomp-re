@@ -294,7 +294,7 @@ void grPupupuWhispyUpdateOpen(void)
 
         gGRCommonStruct.pupupu.flowers_back_status = gGRCommonStruct.pupupu.flowers_front_status = nGRPupupuFlowerStatusWindStart;
 
-        gGRCommonStruct.pupupu.whispy_wind_duration = syUtilsGetRandomIntRange(GRPUPUPU_WHISPY_WIND_DURATION_RANDOM) + GRPUPUPU_WHISPY_WIND_DURATION_BASE;
+        gGRCommonStruct.pupupu.whispy_wind_duration = syUtilsRandIntRange(GRPUPUPU_WHISPY_WIND_DURATION_RANDOM) + GRPUPUPU_WHISPY_WIND_DURATION_BASE;
 
         gGRCommonStruct.pupupu.rumble_wait = 0;
 
@@ -342,7 +342,7 @@ void grPupupuWhispyUpdateStop(void)
 {
     if (gGRCommonStruct.pupupu.map_gobj[1]->anim_frame <= 0.0F)
     {
-        gGRCommonStruct.pupupu.whispy_wind_wait = syUtilsGetRandomIntRange(GRPUPUPU_WHISPY_WAIT_DURATION_RANDOM) + GRPUPUPU_WHISPY_WAIT_DURATION_BASE;
+        gGRCommonStruct.pupupu.whispy_wind_wait = syUtilsRandIntRange(GRPUPUPU_WHISPY_WAIT_DURATION_RANDOM) + GRPUPUPU_WHISPY_WAIT_DURATION_BASE;
         gGRCommonStruct.pupupu.whispy_status = nGRPupupuWhispyWindStatusWait;
     }
 }
@@ -364,7 +364,7 @@ void grPupupuWhispyUpdateBlink(void)
             }
             if (gGRCommonStruct.pupupu.whispy_blink_wait != 0)
             {
-                gGRCommonStruct.pupupu.whispy_blink_wait = syUtilsGetRandomIntRange(GRPUPUPU_WHISPY_BLINK_WAIT_RANDOM) + GRPUPUPU_WHISPY_BLINK_WAIT_BASE;
+                gGRCommonStruct.pupupu.whispy_blink_wait = syUtilsRandIntRange(GRPUPUPU_WHISPY_BLINK_WAIT_RANDOM) + GRPUPUPU_WHISPY_BLINK_WAIT_BASE;
             }
         }
     }
@@ -677,8 +677,8 @@ void grPupupuInitAll(void)
 
     gGRCommonStruct.pupupu.lr_players           = 1;
 
-    gGRCommonStruct.pupupu.whispy_wind_wait     = syUtilsGetRandomIntRange(GRPUPUPU_WHISPY_WAIT_DURATION_RANDOM) + GRPUPUPU_WHISPY_WAIT_DURATION_BASE;
-    gGRCommonStruct.pupupu.whispy_blink_wait    = syUtilsGetRandomIntRange(GRPUPUPU_WHISPY_BLINK_WAIT_RANDOM)    + GRPUPUPU_WHISPY_BLINK_WAIT_BASE;
+    gGRCommonStruct.pupupu.whispy_wind_wait     = syUtilsRandIntRange(GRPUPUPU_WHISPY_WAIT_DURATION_RANDOM) + GRPUPUPU_WHISPY_WAIT_DURATION_BASE;
+    gGRCommonStruct.pupupu.whispy_blink_wait    = syUtilsRandIntRange(GRPUPUPU_WHISPY_BLINK_WAIT_RANDOM)    + GRPUPUPU_WHISPY_BLINK_WAIT_BASE;
 
     gGRCommonStruct.pupupu.flowers_back_status  =
     gGRCommonStruct.pupupu.flowers_front_status = 0;

@@ -23,5 +23,5 @@ void itVisualsUpdateSpin(GObj *item_gobj)
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    dobj->rotate.vec.f.z += ip->rotate_step;
+    dobj->rotate.vec.f.z += ip->spin_step;
 }

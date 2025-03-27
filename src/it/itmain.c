@@ -121,62 +121,62 @@ void (*dITMainProcHoldList[/* */])(GObj*) =
 // // // // // // // // // // // //
 
 // 0x80172310
-void func_ovl3_80172310(GObj *item_gobj)
+void itMainSetCommonSpin(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->rotate_step = (ip->attr->spin_speed != 0) ? (ip->attr->spin_speed * ITEM_SPIN_SPEED_FRACTION_DEFAULT * ITEM_SPIN_SPEED_MUL_DEFAULT) : 0.0F;
+    ip->spin_step = (ip->attr->spin_speed != 0) ? (F_PCT_TO_DEC(ip->attr->spin_speed) * ITEM_SPIN_SPEED_COMMON) : 0.0F;
 
     if (ip->lr == -1)
     {
-        ip->rotate_step = -ip->rotate_step;
+        ip->spin_step = -ip->spin_step;
     }
 }
 
 // 0x80172394
-void func_ovl3_80172394(GObj *item_gobj, sb32 is_prev_spawn)
+void itMainSetSpawnSpin(GObj *item_gobj, sb32 slow_or_fast)
 {
     // is_prev_spawn = whether item is newly spawned or previously spawned; 0 = new, 1 = old
 
     ITStruct *ip = itGetStruct(item_gobj);
 
-    if (is_prev_spawn == FALSE)
+    if (slow_or_fast == 0)
     {
         if (ip->attr->spin_speed != 0)
         {
-            ip->rotate_step = ip->attr->spin_speed * ITEM_SPIN_SPEED_FRACTION_DEFAULT * ITEM_SPIN_SPEED_MUL_NEW_SPAWN;
+            ip->spin_step = F_PCT_TO_DEC(ip->attr->spin_speed) * ITEM_SPIN_SPEED_SPAWN_SLOW;
         }
-        else ip->rotate_step = 0.0F;
+        else ip->spin_step = 0.0F;
     }
     else if (ip->attr->spin_speed != 0)
     {
-        ip->rotate_step = ip->attr->spin_speed * ITEM_SPIN_SPEED_FRACTION_DEFAULT * ITEM_SPIN_SPEED_MUL_PREV_SPAWN;
+        ip->spin_step = F_PCT_TO_DEC(ip->attr->spin_speed) * ITEM_SPIN_SPEED_SPAWN_FAST;
     }
-    else ip->rotate_step = 0.0F;
+    else ip->spin_step = 0.0F;
 }
 
 // 0x8017245C
-void func_ovl3_8017245C(GObj *item_gobj, Vec3f *vel, sb32 is_smash_throw)
+void itMainSetThrownSpin(GObj *item_gobj, Vec3f *vel, sb32 is_smash_throw)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->rotate_step = (is_smash_throw != FALSE) ? ITEM_SPIN_SPEED_SET_SMASH_THROW : ITEM_SPIN_SPEED_SET_NORMAL_THROW;
+    ip->spin_step = (is_smash_throw != FALSE) ? ITEM_SPIN_SPEED_SET_SMASH_THROW : ITEM_SPIN_SPEED_SET_NORMAL_THROW;
 
     if (vel->x < 0) // Facing direction, sort of
     {
-        ip->rotate_step = -ip->rotate_step;
+        ip->spin_step = -ip->spin_step;
     }
-    ip->rotate_step = (ip->attr->spin_speed != 0) ? (ip->attr->spin_speed * ITEM_SPIN_SPEED_FRACTION_DEFAULT * ip->rotate_step) : 0.0F;
+    ip->spin_step = (ip->attr->spin_speed != 0) ? (F_PCT_TO_DEC(ip->attr->spin_speed) * ip->spin_step) : 0.0F;
 }
 
 // 0x80172508
-void itMainVelSetRotateStepLR(GObj *item_gobj)
+void itMainSetSpinVelLR(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
     ip->lr = (ip->physics.vel_air.x >= 0.0F) ? +1 : -1;
 
-    func_ovl3_80172310(item_gobj);
+    itMainSetCommonSpin(item_gobj);
 }
 
 // 0x80172558
@@ -234,7 +234,7 @@ void itMainRefreshAttackColl(GObj *item_gobj)
 
     ip->attack_coll.attack_state = nGMAttackStateNew;
 
-    itProcessUpdateHitPositions(item_gobj);
+    itProcessUpdateAttackPositions(item_gobj);
 }
 
 // 0x8017279C
@@ -404,7 +404,7 @@ void itMainSetFighterThrow(GObj *item_gobj, Vec3f *vel, f32 stale, sb32 is_smash
 
     func_800269C0_275C0((is_smash_throw != FALSE) ? ip->smash_sfx : ip->throw_sfx);
 
-    func_ovl3_8017245C(item_gobj, vel, is_smash_throw);
+    itMainSetThrownSpin(item_gobj, vel, is_smash_throw);
 }
 
 // 0x80172CA4
@@ -460,7 +460,7 @@ void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
 
     efManagerItemGetSwirlProcUpdate(&pos);
 
-    gcSetDObjTransformsForGObj(item_gobj, ip->attr->dobj_setup);
+    gcSetDObjTransformsForGObj(item_gobj, ip->attr->data);
 
     proc_pickup = dITMainProcHoldList[ip->kind];
 
@@ -573,7 +573,7 @@ s32 itMainSearchRandomWeight(s32 random, ITRandomWeights *weights, u32 min, u32 
 // 0x80173090
 s32 itMainGetWeightedItemKind(ITRandomWeights *weights)
 {
-    return weights->kinds[itMainSearchRandomWeight(syUtilsGetRandomIntRange(weights->weights_sum), weights, 0, weights->valids_num)];
+    return weights->kinds[itMainSearchRandomWeight(syUtilsRandIntRange(weights->weights_sum), weights, 0, weights->valids_num)];
 }
 
 // 0x801730D4
@@ -608,7 +608,7 @@ sb32 itMainMakeContainerItem(GObj *parent_gobj)
                 != NULL
             )
             {
-                func_ovl3_80172394(parent_gobj, TRUE);
+                itMainSetSpawnSpin(parent_gobj, TRUE);
             }
             return TRUE;
         }
@@ -655,7 +655,7 @@ GObj* itMainMakeMonster(GObj *item_gobj)
     if
     (
         (gSCManagerBackupData.unlock_mask & LBBACKUP_UNLOCK_MASK_NEWCOMERS) &&
-        (syUtilsGetRandomIntRange(151) == 0) &&
+        (syUtilsRandIntRange(151) == 0) &&
         (gITManagerMonsterData.monster_curr != nITKindMew) &&
         (gITManagerMonsterData.monster_prev != nITKindMew)
     )
@@ -672,7 +672,7 @@ GObj* itMainMakeMonster(GObj *item_gobj)
                 j++;
             }
         }
-        index = gITManagerMonsterData.monster_id[syUtilsGetRandomIntRange(gITManagerMonsterData.monsters_num)];
+        index = gITManagerMonsterData.monster_id[syUtilsRandIntRange(gITManagerMonsterData.monsters_num)];
     }
     if (gITManagerMonsterData.monsters_num != 10)
     {
@@ -711,7 +711,7 @@ sb32 itMainCommonProcHop(GObj *item_gobj)
     ITStruct *ip = itGetStruct(item_gobj);
 
     syVectorRotateAbout3D(&ip->physics.vel_air, &ip->shield_collide_dir, ip->shield_collide_angle * 2);
-    itMainVelSetRotateStepLR(item_gobj);
+    itMainSetSpinVelLR(item_gobj);
 
     return FALSE;
 }

@@ -14,16 +14,16 @@ extern intptr_t lITSwordItemAttributes;     // 0x00000190
 //                               //
 // // // // // // // // // // // //
 
-ITDesc dITSwordITemDesc =
+ITDesc dITSwordItemDesc =
 {
     nITKindSword,                           // Item Kind
-    &gITManagerCommonData,                    // Pointer to item file data?
+    &gITManagerCommonData,                  // Pointer to item file data?
     &lITSwordItemAttributes,                // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nGCMatrixKindTraRotRpyRSca,          // Main matrix transformations
-        nGCMatrixKindNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyRSca,         // Main matrix transformations
+        nGCMatrixKindNull,                  // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -217,7 +217,7 @@ void itSwordDroppedSetStatus(GObj *item_gobj)
 // 0x80174DA0
 GObj* itSwordMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITSwordITemDesc, pos, vel, flags);
+    GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITSwordItemDesc, pos, vel, flags);
 
     if (item_gobj != NULL)
     {

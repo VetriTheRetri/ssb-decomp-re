@@ -2240,7 +2240,7 @@ void mnPlayersVSUpdatePlayerKind(s32 player)
 
 		if (sMNPlayersVSSlots[player].fkind == nFTKindNull)
 		{
-			sMNPlayersVSSlots[player].fkind = mnPlayersVSGetRandomFighterKind(sMNPlayersVSSlots[player].puck);
+			sMNPlayersVSSlots[player].fkind = mnPlayersVSRandFighterKind(sMNPlayersVSSlots[player].puck);
 		}
 		sMNPlayersVSSlots[player].is_cursor_adjusting = FALSE;
 
@@ -3467,7 +3467,7 @@ void mnPlayersVSCenterPuckInPortrait(GObj *gobj, s32 fkind)
 }
 
 // 0x80138848
-s32 mnPlayersVSGetRandomFighterKind(GObj *gobj)
+s32 mnPlayersVSRandFighterKind(GObj *gobj)
 {
 	s32 fkind;
 
@@ -3475,7 +3475,7 @@ s32 mnPlayersVSGetRandomFighterKind(GObj *gobj)
 	{
 		do
 		{
-			fkind = syUtilsGetRandomTimeUCharRange(nFTKindPlayableEnd + 1);
+			fkind = syUtilsRandTimeUCharRange(nFTKindPlayableEnd + 1);
 		}
 		while (mnPlayersVSCheckFighterCrossed(fkind) != FALSE);
 	}
@@ -3813,7 +3813,7 @@ void mnPlayersVSPuckAdjustOverlap(s32 this_player, s32 other_player, f32 unused)
 
 	if (SObjGetStruct(sMNPlayersVSSlots[this_player].puck)->pos.x == SObjGetStruct(sMNPlayersVSSlots[other_player].puck)->pos.x)
 	{
-		sMNPlayersVSSlots[this_player].puck_vel_x += syUtilsGetRandomIntRange(2) - 1;
+		sMNPlayersVSSlots[this_player].puck_vel_x += syUtilsRandIntRange(2) - 1;
 	}
 	else
 	{
@@ -3824,7 +3824,7 @@ void mnPlayersVSPuckAdjustOverlap(s32 this_player, s32 other_player, f32 unused)
 	}
 	if (SObjGetStruct(sMNPlayersVSSlots[this_player].puck)->pos.y == SObjGetStruct(sMNPlayersVSSlots[other_player].puck)->pos.y)
 	{
-		sMNPlayersVSSlots[this_player].puck_vel_y += syUtilsGetRandomIntRange(2) - 1;
+		sMNPlayersVSSlots[this_player].puck_vel_y += syUtilsRandIntRange(2) - 1;
 	}
 	else
 	{
@@ -4202,7 +4202,7 @@ void mnPlayersVSUpdateGate(s32 player)
 		)
 		{
 			held_player = sMNPlayersVSSlots[player].held_player;
-			sMNPlayersVSSlots[held_player].fkind = mnPlayersVSGetRandomFighterKind(sMNPlayersVSSlots[held_player].puck);
+			sMNPlayersVSSlots[held_player].fkind = mnPlayersVSRandFighterKind(sMNPlayersVSSlots[held_player].puck);
 		}
 		gcEjectGObj(sMNPlayersVSSlots[player].cursor);
 		sMNPlayersVSSlots[player].cursor = NULL;
@@ -4477,7 +4477,7 @@ void mnPlayersVSProcRun(GObj *gobj)
 
 				do
 				{
-					gkind = syUtilsGetRandomTimeUCharRange(gkinds_num);
+					gkind = syUtilsRandTimeUCharRange(gkinds_num);
 				}
 				while (gkind == gSCManagerSceneData.gkind);
 

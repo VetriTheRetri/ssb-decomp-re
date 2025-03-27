@@ -147,17 +147,17 @@ void ftManagerAllocFighter(u32 data_flags, s32 allocs_num)
 
     for (i = 0; i < (allocs_num - 1); i++)
     {
-        sFTManagerStructsAllocBuf[i].alloc_next = &sFTManagerStructsAllocBuf[i + 1];
+        sFTManagerStructsAllocBuf[i].next = &sFTManagerStructsAllocBuf[i + 1];
     }
-    sFTManagerStructsAllocBuf[i].alloc_next = NULL;
+    sFTManagerStructsAllocBuf[i].next = NULL;
 
     sFTManagerPartsAllocFree = sFTManagerPartsAllocBuf = syTaskmanMalloc(sizeof(FTParts) * allocs_num * FTPARTS_JOINT_NUM_MAX, 0x8);
 
     for (i = 0; i < ((allocs_num * FTPARTS_JOINT_NUM_MAX) - 1); i++)
     {
-        sFTManagerPartsAllocBuf[i].alloc_next = &sFTManagerPartsAllocBuf[i + 1];
+        sFTManagerPartsAllocBuf[i].next = &sFTManagerPartsAllocBuf[i + 1];
     }
-    sFTManagerPartsAllocBuf[i].alloc_next = NULL;
+    sFTManagerPartsAllocBuf[i].next = NULL;
 
     gFTManagerPlayersNum = 1;
     gFTManagerMotionCount = 1;
@@ -227,7 +227,7 @@ FTStruct* ftManagerGetNextStructAlloc(void)
     }
     else current_fighter = new_fighter;
 
-    sFTManagerStructsAllocFree = new_fighter->alloc_next;
+    sFTManagerStructsAllocFree = new_fighter->next;
 
     return current_fighter;
 }
@@ -235,7 +235,7 @@ FTStruct* ftManagerGetNextStructAlloc(void)
 // 0x800D75EC
 void ftManagerSetPrevStructAlloc(FTStruct *fp)
 {
-    fp->alloc_next = sFTManagerStructsAllocFree;
+    fp->next = sFTManagerStructsAllocFree;
     sFTManagerStructsAllocFree = fp;
 }
 
@@ -257,7 +257,7 @@ FTParts* ftManagerGetNextPartsAlloc(void)
     }
     current_part = new_part;
 
-    sFTManagerPartsAllocFree = new_part->alloc_next;
+    sFTManagerPartsAllocFree = new_part->next;
 
     new_part->transform_update_mode =
     new_part->unk_dobjtrans_0x5 =
@@ -273,7 +273,7 @@ FTParts* ftManagerGetNextPartsAlloc(void)
 // 0x800D767C
 void ftManagerSetPrevPartsAlloc(FTParts *parts)
 {
-    parts->alloc_next = sFTManagerPartsAllocFree;
+    parts->next = sFTManagerPartsAllocFree;
     sFTManagerPartsAllocFree = parts;
 }
 

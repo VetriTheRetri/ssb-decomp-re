@@ -2524,7 +2524,7 @@ void mnPlayers1PTrainingPuckAdjustOverlap(s32 this_player, s32 other_player, f32
 
 	if (SObjGetStruct(sMNPlayers1PTrainingSlots[this_player].puck)->pos.x == SObjGetStruct(sMNPlayers1PTrainingSlots[other_player].puck)->pos.x)
 	{
-		sMNPlayers1PTrainingSlots[this_player].puck_vel_x += syUtilsGetRandomIntRange(2) - 1;
+		sMNPlayers1PTrainingSlots[this_player].puck_vel_x += syUtilsRandIntRange(2) - 1;
 	}
 	else
 	{
@@ -2535,7 +2535,7 @@ void mnPlayers1PTrainingPuckAdjustOverlap(s32 this_player, s32 other_player, f32
 	}
 	if (SObjGetStruct(sMNPlayers1PTrainingSlots[this_player].puck)->pos.y == SObjGetStruct(sMNPlayers1PTrainingSlots[other_player].puck)->pos.y)
 	{
-		sMNPlayers1PTrainingSlots[this_player].puck_vel_y += syUtilsGetRandomIntRange(2) - 1;
+		sMNPlayers1PTrainingSlots[this_player].puck_vel_y += syUtilsRandIntRange(2) - 1;
 	}
 	else
 	{
@@ -3060,7 +3060,7 @@ void mnPlayers1PTrainingInitVars(void)
 		{
 			do
 			{
-				fkind = syUtilsGetRandomTimeUCharRange(nFTKindPlayableEnd + 1);
+				fkind = syUtilsRandTimeUCharRange(nFTKindPlayableEnd + 1);
 			}
 			while (mnPlayers1PTrainingCheckFighterCrossed(fkind) != FALSE);
 		}

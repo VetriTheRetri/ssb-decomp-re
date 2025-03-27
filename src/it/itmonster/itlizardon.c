@@ -240,7 +240,7 @@ sb32 itLizardonAttackProcUpdate(GObj *item_gobj)
 
         pos.y += ip->attr->map_coll_bottom;
 
-        pos.x += (ip->attr->map_coll_width + ITLIZARDON_DUST_GFX_OFF_X) * -ip->lr;
+        pos.x += (ip->attr->map_coll_width + ITLIZARDON_DUST_OFF_X) * -ip->lr;
 
         efManagerDustHeavyMakeEffect(&pos, -ip->lr);
 
@@ -278,17 +278,16 @@ void itLizardonAttackInitVars(GObj *item_gobj)
     pos = dobj->translate.vec.f;
 
     ip->item_vars.lizardon.pos = pos;
-
     ip->item_vars.lizardon.flame_spawn_wait = 0;
 
     ip->lr = -1;
 
     if (ip->kind == nITKindLizardon)
     {
-        addr = (void*) ((uintptr_t)ip->attr->dobj_setup - (intptr_t)&lITLizardonDataStart);
+        addr = (void*) ((uintptr_t)ip->attr->data - (intptr_t)&lITLizardonDataStart);
 
-        gcAddDObjAnimJoint(dobj, (void*) ((uintptr_t)addr + (intptr_t)&lITLizardonAnimJoint), 0.0F);
-        gcAddMObjMatAnimJoint(dobj->mobj, (void*) ((uintptr_t)addr + (intptr_t)&lITLizardonMatAnimJoint), 0.0F);
+        gcAddDObjAnimJoint(dobj, lbRelocGetFileData(AObjEvent32*, addr, &lITLizardonAnimJoint), 0.0F);
+        gcAddMObjMatAnimJoint(dobj->mobj, lbRelocGetFileData(AObjEvent32*, addr, &lITLizardonMatAnimJoint), 0.0F);
         gcPlayAnimAll(item_gobj);
     }
 }
@@ -443,8 +442,8 @@ void itLizardonAttackMakeFlame(GObj *item_gobj, Vec3f *pos, s32 lr)
     ITStruct *ip = itGetStruct(item_gobj);
     Vec3f vel;
 
-    vel.x = __cosf(ITLIZARDON_FLAME_SPAWN_ANGLE) * ITLIZARDON_FLAME_VEL_XY * lr;
-    vel.y = __sinf(ITLIZARDON_FLAME_SPAWN_ANGLE) * ITLIZARDON_FLAME_VEL_XY;
+    vel.x = __cosf(ITLIZARDON_FLAME_ANGLE) * ITLIZARDON_FLAME_VEL * lr;
+    vel.y = __sinf(ITLIZARDON_FLAME_ANGLE) * ITLIZARDON_FLAME_VEL;
     vel.z = 0.0F;
 
     itLizardonWeaponFlameMakeWeapon(item_gobj, pos, &vel);

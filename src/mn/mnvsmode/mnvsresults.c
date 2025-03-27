@@ -745,7 +745,7 @@ void mnVSResultsMakeWallpaper(void)
 
 	if (sMNVSResultsKind == nMNVSResultsKindNoContest)
 	{
-		win_player = syUtilsGetRandomIntRange(GMCOMMON_PLAYERS_MAX);
+		win_player = syUtilsRandIntRange(GMCOMMON_PLAYERS_MAX);
 	}
 	else
 	{
@@ -877,9 +877,9 @@ s32 mnVSResultsGetStatusWin(s32 fkind)
 
 	if (fkind == nFTKindKirby)
 	{
-		return status_ids[syUtilsGetRandomIntRange(2)];
+		return status_ids[syUtilsRandIntRange(2)];
 	}
-	else return status_ids[syUtilsGetRandomIntRange(3)];
+	else return status_ids[syUtilsRandIntRange(3)];
 }
 
 // 0x801334CC - bruh
@@ -3285,7 +3285,7 @@ void mnVSResultsFuncStart(void)
 	{
 		lbTransitionSetupTransition();
 		lbTransitionMakeCamera(0x20000002, 0, 10, COBJ_MASK_DLLINK(32));
-		lbTransitionMakeTransition(syUtilsGetRandomIntRange(ARRAY_COUNT(dLBTransitionDescs)), 0x20000000, 0, lbTransitionProcDisplay, 32, lbTransitionProcUpdate);
+		lbTransitionMakeTransition(syUtilsRandIntRange(ARRAY_COUNT(dLBTransitionDescs)), 0x20000000, 0, lbTransitionProcDisplay, 32, lbTransitionProcUpdate);
 	}
 	mnVSResultsMakeEmblemCamera();
 	mnVSResultsMakeFighterCamera();

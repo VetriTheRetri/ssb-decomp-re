@@ -669,7 +669,7 @@ struct FTParts
         s32 unk_dobjtrans_word;
     };
 
-    FTParts *alloc_next;
+    FTParts *next;
     u8 flags;
     u8 joint_id;
     ub8 is_have_anim;
@@ -976,7 +976,7 @@ struct FTAttributes
 // Main fighter struct
 struct FTStruct
 {
-    FTStruct *alloc_next;
+    FTStruct *next;
     GObj *fighter_gobj;
     s32 fkind;
     u8 team;

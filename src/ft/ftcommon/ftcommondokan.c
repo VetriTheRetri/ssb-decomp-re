@@ -212,7 +212,7 @@ void ftCommonDokanWaitSetStatus(GObj *fighter_gobj)
 
     mpCollisionGetMapObjPositionID(line_id, &fp->status_vars.common.dokan.pos_target);
 
-    if (syUtilsGetRandomFloat() <= 0.25F)
+    if (syUtilsRandFloat() <= 0.25F)
     {
         fp->status_vars.common.dokan.mapobj_kind = nMPMapObjKindDokanWall;
 

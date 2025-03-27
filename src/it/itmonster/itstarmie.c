@@ -138,7 +138,7 @@ void itStarmieAttackUpdateSwift(GObj *item_gobj)
 
         func_800269C0_275C0(nSYAudioFGMMonsterShoot);
 
-        ip->item_vars.starmie.swift_spawn_wait = (syUtilsGetRandomIntRange(ITSTARMIE_SWIFT_SPAWN_WAIT_RANDOM) + ITSTARMIE_SWIFT_SPAWN_WAIT_CONST);
+        ip->item_vars.starmie.swift_spawn_wait = (syUtilsRandIntRange(ITSTARMIE_SWIFT_SPAWN_WAIT_RANDOM) + ITSTARMIE_SWIFT_SPAWN_WAIT_CONST);
 
         ip->physics.vel_air.x = -ip->lr * ITSTARMIE_PUSH_VEL_X;
     }

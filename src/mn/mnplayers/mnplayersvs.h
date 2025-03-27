@@ -116,7 +116,7 @@ extern s32 mnPlayersVSCheckBackInRange(GObj *gobj);
 extern void mnPlayersVSCursorProcUpdate(GObj *gobj);
 extern void mnPlayersVSUpdatePuck(GObj *gobj, s32 puck);
 extern void mnPlayersVSCenterPuckInPortrait(GObj *gobj, s32 fkind);
-extern s32 mnPlayersVSGetRandomFighterKind(GObj *gobj);
+extern s32 mnPlayersVSRandFighterKind(GObj *gobj);
 extern void mnPlayersVSMovePuck(s32 player);
 extern void mnPlayersVSPuckProcUpdate(GObj *gobj);
 extern void mnPlayersVSMakeCursorCamera(void);

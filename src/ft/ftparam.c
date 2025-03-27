@@ -1468,7 +1468,7 @@ f32 ftParamGetCommonKnockback(s32 percent_damage, s32 recent_damage, s32 hit_dam
     }
     if (gSCManagerBackupData.error_flags & LBBACKUP_ERROR_RANDOMKNOCKBACK)
     {
-        knockback = syUtilsGetRandomFloat() * 200.0F;
+        knockback = syUtilsRandFloat() * 200.0F;
     }
     return knockback;
 }
@@ -1494,7 +1494,7 @@ f32 ftParamGetGroundHazardKnockback(s32 percent_damage, s32 recent_damage, s32 h
     }
     if (gSCManagerBackupData.error_flags & LBBACKUP_ERROR_RANDOMKNOCKBACK)
     {
-        knockback = syUtilsGetRandomFloat() * 200.0F;
+        knockback = syUtilsRandFloat() * 200.0F;
     }
     return knockback;
 }
@@ -1538,7 +1538,7 @@ void ftParamUpdateDamage(FTStruct *fp, s32 damage)
 
             if ((ip->weight != nITWeightHeavy) || (fp->fkind != nFTKindDonkey) && (fp->fkind != nFTKindNDonkey) && (fp->fkind != nFTKindGDonkey))
             {
-                if ((damage > syUtilsGetRandomIntRange(60)) || ((itMainCheckShootNoAmmo(fp->item_gobj) != FALSE) && (syUtilsGetRandomIntRange(2) == 0)))
+                if ((damage > syUtilsRandIntRange(60)) || ((itMainCheckShootNoAmmo(fp->item_gobj) != FALSE) && (syUtilsRandIntRange(2) == 0)))
                 {
                     ftSetupDropItem(fp);
                 }
@@ -1862,15 +1862,15 @@ void* ftParamMakeEffect(GObj *fighter_gobj, s32 effect_id, s32 joint_id, Vec3f *
         {
             if (effect_scatter->x != 0)
             {
-                pos.x += (syUtilsGetRandomFloat() - 0.5F) * (effect_scatter->x * 2.0F);
+                pos.x += (syUtilsRandFloat() - 0.5F) * (effect_scatter->x * 2.0F);
             }
             if (effect_scatter->y != 0)
             {
-                pos.y += (syUtilsGetRandomFloat() - 0.5F) * (effect_scatter->y * 2.0F);
+                pos.y += (syUtilsRandFloat() - 0.5F) * (effect_scatter->y * 2.0F);
             }
             if (effect_scatter->z != 0)
             {
-                pos.z += (syUtilsGetRandomFloat() - 0.5F) * (effect_scatter->z * 2.0F);
+                pos.z += (syUtilsRandFloat() - 0.5F) * (effect_scatter->z * 2.0F);
             }
         }
         if (is_scale_pos != FALSE)
@@ -1935,8 +1935,8 @@ void* ftParamMakeEffect(GObj *fighter_gobj, s32 effect_id, s32 joint_id, Vec3f *
         break;
 
     case nEFKindDustExpandLarge:
-        pos.x += ((syUtilsGetRandomFloat() * 160.0F) - 80.0F);
-        pos.y += ((syUtilsGetRandomFloat() * 160.0F) - 80.0F);
+        pos.x += ((syUtilsRandFloat() * 160.0F) - 80.0F);
+        pos.y += ((syUtilsRandFloat() * 160.0F) - 80.0F);
 
         effect = efManagerDustExpandLargeMakeEffect(&pos);
         break;

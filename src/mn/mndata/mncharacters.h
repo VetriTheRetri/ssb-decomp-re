@@ -21,7 +21,7 @@ extern MNCharactersMotion* mnCharactersGetMotion(MNCharactersMotion *motion, s32
 extern sb32 mnCharactersCheckFighterAnimEnd(GObj *fighter_gobj);
 extern void mnCharactersInitRecentMotionKinds(void);
 extern sb32 mnCharactersCheckRecentMotionKind(s32 motion_kind);
-extern s32 mnCharactersGetRandomMotionKind(void);
+extern s32 mnCharactersRandMotionKind(void);
 extern MNCharactersMotion* mnCharactersSetMotion(MNCharactersMotion *motion, s32 motion_kind);
 extern MNCharactersMotion* mnCharactersAdvanceTrack(MNCharactersMotion *motion, s32 unused);
 extern void mnCharactersFighterProcUpdate(GObj *fighter_gobj);

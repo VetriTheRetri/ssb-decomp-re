@@ -191,7 +191,7 @@ void ftBossWaitDecideStatusComputer(GObj *fighter_gobj) // Decide Master Hand's 
         }
         else
         {
-            random = syUtilsGetRandomIntRange(3);
+            random = syUtilsRandIntRange(3);
 
             var = dFTBossWaitRandomArrayLookup[fp->passive_vars.boss.p->status_id * 3 + random];
 
@@ -212,7 +212,7 @@ void ftBossWaitDecideStatusComputer(GObj *fighter_gobj) // Decide Master Hand's 
         }
         else p_random = dFTBossWaitRandomGround[var];
 
-        random = dFTBossWaitRandomStatusLookup[p_random[0] + syUtilsGetRandomIntRange(p_random[1])];
+        random = dFTBossWaitRandomStatusLookup[p_random[0] + syUtilsRandIntRange(p_random[1])];
 
         fp->passive_vars.boss.p->status_id = var;
 

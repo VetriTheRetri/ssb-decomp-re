@@ -159,12 +159,12 @@ void itSpearFlyCallSwarmMember(GObj *item_gobj)
 
         pos.y = ip->item_vars.spear.spear_spawn_pos_y;
 
-        pos.y += (ITSPEAR_SPAWN_OFF_Y_MUL * syUtilsGetRandomFloat()) + ITSPEAR_SPAWN_OFF_Y_ADD;
+        pos.y += (ITSPEAR_SPAWN_OFF_Y_MUL * syUtilsRandFloat()) + ITSPEAR_SPAWN_OFF_Y_ADD;
 
         itSpearFlyMakeSwarm(item_gobj, &pos, ip->kind);
 
         ip->item_vars.spear.spear_spawn_count--;
-        ip->item_vars.spear.spear_spawn_wait = syUtilsGetRandomIntRange(ITSPEAR_SPAWN_WAIT_RANDOM) + ITSPEAR_SPAWN_WAIT_CONST;
+        ip->item_vars.spear.spear_spawn_wait = syUtilsRandIntRange(ITSPEAR_SPAWN_WAIT_RANDOM) + ITSPEAR_SPAWN_WAIT_CONST;
     }
 }
 
@@ -330,7 +330,7 @@ GObj* itSpearMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f = *pos;
 
-        if (syUtilsGetRandomIntRange(2) == 0)
+        if (syUtilsRandIntRange(2) == 0)
         {
             dobj->child->rotate.vec.f.y = F_CST_DTOR32(180.0F);
 

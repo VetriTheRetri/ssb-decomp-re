@@ -150,14 +150,14 @@ void itDogasAttackUpdateSmog(GObj *item_gobj)
 
     if (ip->item_vars.dogas.smog_spawn_wait <= 0)
     {
-        vel.x = ITDOGAS_SMOG_VEL_XY;
-        vel.y = ITDOGAS_SMOG_VEL_XY;
+        vel.x = ITDOGAS_SMOG_VEL;
+        vel.y = ITDOGAS_SMOG_VEL;
         vel.z = 0.0F;
 
         pos = dobj->translate.vec.f;
 
-        pos.x += (syUtilsGetRandomFloat() * ITDOGAS_SMOG_MUL_OFF_X) - ITDOGAS_SMOG_SUB_OFF_X;
-        pos.y += (syUtilsGetRandomFloat() * ITDOGAS_SMOG_MUL_OFF_Y) - ITDGOAS_SMOG_SUB_OFF_Y;
+        pos.x += (syUtilsRandFloat() * ITDOGAS_SMOG_MUL_OFF_X) - ITDOGAS_SMOG_SUB_OFF_X;
+        pos.y += (syUtilsRandFloat() * ITDOGAS_SMOG_MUL_OFF_Y) - ITDGOAS_SMOG_SUB_OFF_Y;
 
         if (pos.x < dobj->translate.vec.f.x)
         {

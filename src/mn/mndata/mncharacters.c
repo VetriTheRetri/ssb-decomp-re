@@ -1797,13 +1797,13 @@ sb32 mnCharactersCheckRecentMotionKind(s32 motion_kind)
 }
 
 // 0x801327FC
-s32 mnCharactersGetRandomMotionKind(void)
+s32 mnCharactersRandMotionKind(void)
 {
 	s32 motion_kind;
 
 	do
 	{
-		motion_kind = syUtilsGetRandomTimeUCharRange(nMNCharactersMotionKindEnumCount);
+		motion_kind = syUtilsRandTimeUCharRange(nMNCharactersMotionKindEnumCount);
 	}
 	while (mnCharactersCheckRecentMotionKind(motion_kind) != FALSE);
 
@@ -1837,7 +1837,7 @@ MNCharactersMotion* mnCharactersSetMotion(MNCharactersMotion *motion, s32 motion
 
 		if (get_motion.anim_length == sMNCharactersCurrentAnimFrame)
 		{
-			sMNCharactersMotionKind = motion_kind = mnCharactersGetRandomMotionKind();
+			sMNCharactersMotionKind = motion_kind = mnCharactersRandMotionKind();
 			sMNCharactersCurrentAnimFrame = 0;
 		}
 		sMNCharactersCurrentMotionTrack = 0;
@@ -1998,7 +1998,7 @@ void mnCharactersMakeFighter(s32 fkind)
 
 	mnCharactersInitRecentMotionKinds();
 
-	sMNCharactersMotionKind = mnCharactersGetRandomMotionKind();
+	sMNCharactersMotionKind = mnCharactersRandMotionKind();
 	sMNCharactersCurrentMotionTrack = 0;
 	sMNCharactersCurrentAnimFrame = 0;
 

@@ -343,8 +343,8 @@ void ftFoxSpecialAirHiSetStatusFromGround(GObj *fighter_gobj)
     ftMainSetStatus(fighter_gobj, nFTFoxStatusSpecialAirHi, 0.0F, 1.0F, FTSTATUS_PRESERVE_COLANIM);
     ftFoxSpecialHiInitStatusVars(fp);
 
-    fp->physics.vel_air.x = (__cosf(fp->status_vars.fox.specialhi.angle) * FTFOX_FIREFOX_VEL_XY * fp->lr);
-    fp->physics.vel_air.y = (__sinf(fp->status_vars.fox.specialhi.angle) * FTFOX_FIREFOX_VEL_XY);
+    fp->physics.vel_air.x = (__cosf(fp->status_vars.fox.specialhi.angle) * FTFOX_FIREFOX_VEL * fp->lr);
+    fp->physics.vel_air.y = (__sinf(fp->status_vars.fox.specialhi.angle) * FTFOX_FIREFOX_VEL);
 
     ftFoxSpecialHiUpdateModelPitch(fighter_gobj);
 

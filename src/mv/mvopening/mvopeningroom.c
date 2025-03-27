@@ -1125,7 +1125,7 @@ s32 mvOpeningRoomGetDroppedFighterKind(void)
 
 	s32 fkind;
 
-	while (fkind = fkinds[syUtilsGetRandomTimeUCharRange(ARRAY_COUNT(fkinds))], fkind == sMVOpeningRoomPulledFighterKind);
+	while (fkind = fkinds[syUtilsRandTimeUCharRange(ARRAY_COUNT(fkinds))], fkind == sMVOpeningRoomPulledFighterKind);
 
 	return fkind;
 }
@@ -1145,7 +1145,7 @@ s32 mvOpeningRoomGetPulledFighterKind(void)
 		nFTKindPikachu
 	};
 
-	return fkinds[syUtilsGetRandomTimeUCharRange(ARRAY_COUNT(fkinds))];
+	return fkinds[syUtilsRandTimeUCharRange(ARRAY_COUNT(fkinds))];
 }
 
 // 0x801342E4

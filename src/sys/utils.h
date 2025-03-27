@@ -15,11 +15,11 @@ extern f32 __sinf(f32);
 extern f32 __cosf(f32);
 
 extern void syUtilsSetRandomSeedPtr(s32 *seedptr);
-extern u16 syUtilsGetRandomUShort(void);
-extern f32 syUtilsGetRandomFloat(void);
-extern s32 syUtilsGetRandomIntRange(s32 range); // Does this actually return u32? Found a function that needs to cast this to s32, and assigning to a variable first would bump the stack
-extern u8 syUtilsGetRandomTimeUChar(void);
-extern f32 syUtilsGetRandomTimeFloat(void);
-extern s32 syUtilsGetRandomTimeUCharRange(s32 range);
+extern u16 syUtilsRandUShort(void);
+extern f32 syUtilsRandFloat(void);
+extern s32 syUtilsRandIntRange(s32 range); // Does this actually return u32? Found a function that needs to cast this to s32, and assigning to a variable first would bump the stack
+extern u8 syUtilsRandTimeUChar(void);
+extern f32 syUtilsRandTimeFloat(void);
+extern s32 syUtilsRandTimeUCharRange(s32 range);
 
 #endif /* SYS_TRIG_RAND_H */

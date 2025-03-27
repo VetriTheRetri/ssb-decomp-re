@@ -63,7 +63,7 @@ void grJungleTaruCannUpdateMove(GObj *ground_gobj)
     {
         gGRCommonStruct.jungle.tarucann_status = nGRJungleTaruCannStatusRotate;
 
-        gGRCommonStruct.jungle.tarucann_rotate_step = ((syUtilsGetRandomUShort() % 2) != 0) ? 0.07F : -0.07F;
+        gGRCommonStruct.jungle.tarucann_rotate_step = ((syUtilsRandUShort() % 2) != 0) ? 0.07F : -0.07F;
 
         gGRCommonStruct.jungle.tarucann_wait = 90;
     }
@@ -80,7 +80,7 @@ void grJungleTaruCannUpdateRotate(GObj *ground_gobj)
     {
         gGRCommonStruct.jungle.tarucann_status = nGRJungleTaruCannStatusMove;
 
-        gGRCommonStruct.jungle.tarucann_wait = syUtilsGetRandomIntRange(180) + 180;
+        gGRCommonStruct.jungle.tarucann_wait = syUtilsRandIntRange(180) + 180;
 
         dobj->rotate.vec.f.z = F_CST_DTOR32(0.0F);
     }
@@ -125,7 +125,7 @@ void grJungleMakeTaruCann(void)
     ftMainCheckAddGroundObstacle(tarucann_gobj, grJungleTaruCannCheckGetDamageKind);
 
     gGRCommonStruct.jungle.tarucann_status = nGRJungleTaruCannStatusMove;
-    gGRCommonStruct.jungle.tarucann_wait = syUtilsGetRandomIntRange(180) + 180;
+    gGRCommonStruct.jungle.tarucann_wait = syUtilsRandIntRange(180) + 180;
     gGRCommonStruct.jungle.tarucann_rotate_step = F_CST_DTOR32(0.0F);
 }
 

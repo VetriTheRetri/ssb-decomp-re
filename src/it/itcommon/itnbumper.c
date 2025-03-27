@@ -370,11 +370,11 @@ void itNBumperAttachedInitVars(GObj *item_gobj)
     ip->physics.vel_air.y = 0.0F;
     ip->physics.vel_air.z = 0.0F;
 
-    dl = itGetPData(ip, lITNBumperDataStart, lITNBumperWaitDisplayList); // (uintptr_t)((uintptr_t)ip->attr->dobj_setup - (intptr_t)&lITNBumperDataStart) + (intptr_t)&lITNBumperWaitDisplayList; Linker thing
+    dl = itGetPData(ip, lITNBumperDataStart, lITNBumperWaitDisplayList); // (uintptr_t)((uintptr_t)ip->attr->data - (intptr_t)&lITNBumperDataStart) + (intptr_t)&lITNBumperWaitDisplayList; Linker thing
 
     dobj->dl = dl;
 
-    mobjsub = itGetPData(ip, lITNBumperDataStart, lITNBumperWaitMObjSub); // ((uintptr_t)((uintptr_t)ip->attr->dobj_setup - (intptr_t)&lITNBumperDataStart) + (intptr_t)&lITNBumperWaitMObjSub);
+    mobjsub = itGetPData(ip, lITNBumperDataStart, lITNBumperWaitMObjSub); // ((uintptr_t)((uintptr_t)ip->attr->data - (intptr_t)&lITNBumperDataStart) + (intptr_t)&lITNBumperWaitMObjSub);
 
     gcRemoveMObjAll(dobj);
     gcAddMObjForDObj(dobj, mobjsub);

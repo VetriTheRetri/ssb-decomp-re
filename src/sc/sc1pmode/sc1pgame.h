@@ -73,7 +73,7 @@ extern void func_ovl65_8018D38C(void);
 extern s32 sc1PGameGetFighterKindsNum(u16 shuf, s32 max);
 extern void func_ovl65_8018D3D0(void);
 extern void sc1PGameGetSpawnPosition(Vec3f *mapobj_pos, s32 mapobj_kind);
-extern void sc1PGameGetRandomSpawnPosition(Vec3f *mapobj_pos, s32 mapobj_kind);
+extern void sc1PGameRandSpawnPosition(Vec3f *mapobj_pos, s32 mapobj_kind);
 extern void sc1PGameSetupEnemyPlayer(SC1PGameStage *stagesetup, SC1PGameComputer *comsetup, s32 player, s32 enemy_player_num);
 extern void sc1PGameSetupStageAll(void);
 extern void sc1PGameSpawnEnemyTeamNext(GObj *player_gobj);

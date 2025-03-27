@@ -10,7 +10,7 @@ void wpProcessUpdateHitOffsets(DObj *dobj, Vec3f *vec);
 void wpProcessUpdateHitPositions(GObj *weapon_gobj);
 
 // Update weapon's record of interacted targets	(Decrement rehit timer if available, clear targets if timer reaches 0)
-void wpProcessUpdateHitRecord(GObj *weapon_gobj);
+void wpProcessUpdateAttackRecords(GObj *weapon_gobj);
 
 // Main weapon logic GObj process (animation, physics, collision, map_bound
 // check)

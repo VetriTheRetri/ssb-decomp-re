@@ -10,7 +10,7 @@
 // // // // // // // // // // // //
 
 // 0x8016F280
-void itProcessUpdateHitPositions(GObj *item_gobj)
+void itProcessUpdateAttackPositions(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
     s32 i;
@@ -51,7 +51,7 @@ void itProcessUpdateHitPositions(GObj *item_gobj)
 }
 
 // 0x8016F3D4
-void itProcessUpdateHitRecord(GObj *item_gobj)
+void itProcessUpdateAttackRecords(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
     GMAttackRecord *record;
@@ -194,14 +194,14 @@ void itProcessProcItemMain(GObj *item_gobj)
                 return;
             }
         }
-        itProcessUpdateHitPositions(item_gobj);
-        itProcessUpdateHitRecord(item_gobj);
+        itProcessUpdateAttackPositions(item_gobj);
+        itProcessUpdateAttackRecords(item_gobj);
     }
     itVisualsUpdateColAnim(item_gobj);
 }
 
 // 0x8016F930
-void itProcessSetHitInteractStats(ITAttackColl *it_attack_coll, GObj *victim_gobj, s32 attack_type, u32 interact_mask)
+void itProcessSetHitInteractStats(ITAttackColl *it_attack_coll, GObj *victim_gobj, s32 attack_type, u32 group_id)
 {
     s32 i;
 
@@ -230,7 +230,7 @@ void itProcessSetHitInteractStats(ITAttackColl *it_attack_coll, GObj *victim_gob
                 break;
 
             case nGMHitTypeAttack:
-                it_attack_coll->attack_records[i].victim_flags.group_id = interact_mask;
+                it_attack_coll->attack_records[i].victim_flags.group_id = group_id;
                 break;
 
             case nGMHitTypeDamageRehit:
@@ -248,10 +248,15 @@ void itProcessSetHitInteractStats(ITAttackColl *it_attack_coll, GObj *victim_gob
     {
         for (i = 0; i < ARRAY_COUNT(it_attack_coll->attack_records); i++) // Reset hit count and increment until there is an empty slot
         {
-            if (it_attack_coll->attack_records[i].victim_gobj == NULL) break;
+            if (it_attack_coll->attack_records[i].victim_gobj == NULL)
+            {
+                break;
+            }
         }
-        if (i == ARRAY_COUNT(it_attack_coll->attack_records)) i = 0; // Reset hit count again if all victim slots are full
-
+        if (i == ARRAY_COUNT(it_attack_coll->attack_records))
+        {
+            i = 0; // Reset hit count again if all victim slots are full
+        }
         it_attack_coll->attack_records[i].victim_gobj = victim_gobj; // Store victim's pointer to slot
 
         switch (attack_type)
@@ -275,7 +280,7 @@ void itProcessSetHitInteractStats(ITAttackColl *it_attack_coll, GObj *victim_gob
             break;
 
         case nGMHitTypeAttack:
-            it_attack_coll->attack_records[i].victim_flags.group_id = interact_mask;
+            it_attack_coll->attack_records[i].victim_flags.group_id = group_id;
             break;
 
         case nGMHitTypeDamageRehit:
@@ -659,7 +664,7 @@ void itProcessUpdateDamageStatWeapon(WPStruct *wp, WPAttackColl *attack_coll, s3
 }
 
 // 0x801705C4
-void itProcessSearchFighterAttack(GObj *item_gobj) // Check fighters for hit detection
+void itProcessSearchHitFighter(GObj *item_gobj) // Check fighters for hit detection
 {
     GObj *fighter_gobj;
     GObj *owner_gobj;
@@ -751,7 +756,7 @@ void itProcessSearchFighterAttack(GObj *item_gobj) // Check fighters for hit det
 }
 
 // 0x8017088C
-void itProcessSearchItemAttack(GObj *this_gobj) // Check other items for hit detection
+void itProcessSearchHitItem(GObj *this_gobj) // Check other items for hit detection
 {
     ITAttackColl *this_hit;
     ITStruct *other_ip;
@@ -871,7 +876,7 @@ void itProcessSearchItemAttack(GObj *this_gobj) // Check other items for hit det
 }
 
 // 0x80170C84
-void itProcessSearchWeaponAttack(GObj *item_gobj) // Check weapons for hit detection
+void itProcessSearchHitWeapon(GObj *item_gobj) // Check weapons for hit detection
 {
     ITAttackColl *it_attack_coll;
     WPStruct *wp;
@@ -995,9 +1000,9 @@ void itProcessProcSearchHitAll(GObj *item_gobj)
 
     if (!(ip->is_hold))
     {
-        itProcessSearchFighterAttack(item_gobj);
-        itProcessSearchItemAttack(item_gobj);
-        itProcessSearchWeaponAttack(item_gobj);
+        itProcessSearchHitFighter(item_gobj);
+        itProcessSearchHitItem(item_gobj);
+        itProcessSearchHitWeapon(item_gobj);
     }
 }
 

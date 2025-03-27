@@ -304,7 +304,7 @@ s32 mnTitleSetDemoFighterKinds(void)
 	}
 	unlocked_count = mnTitleGetFighterKindsNum(unlocked_mask);
 
-	gSCManagerSceneData.demo_fkind[0] = mnTitleGetShuffledFighterKind(unlocked_mask, gSCManagerSceneData.demo_mask_prev, syUtilsGetRandomIntRange(unlocked_count - mnTitleGetFighterKindsNum(gSCManagerSceneData.demo_mask_prev)));
+	gSCManagerSceneData.demo_fkind[0] = mnTitleGetShuffledFighterKind(unlocked_mask, gSCManagerSceneData.demo_mask_prev, syUtilsRandIntRange(unlocked_count - mnTitleGetFighterKindsNum(gSCManagerSceneData.demo_mask_prev)));
 
 	if (!(gSCManagerSceneData.demo_mask_prev))
 	{
@@ -322,7 +322,7 @@ s32 mnTitleSetDemoFighterKinds(void)
 	}
 	else
 	{
-		gSCManagerSceneData.demo_fkind[1] = mnTitleGetShuffledFighterKind(unlocked_mask, gSCManagerSceneData.demo_mask_prev, syUtilsGetRandomIntRange(non_recently_demoed_count));
+		gSCManagerSceneData.demo_fkind[1] = mnTitleGetShuffledFighterKind(unlocked_mask, gSCManagerSceneData.demo_mask_prev, syUtilsRandIntRange(non_recently_demoed_count));
 		gSCManagerSceneData.demo_mask_prev |= LBBACKUP_MASK_FIGHTER(gSCManagerSceneData.demo_fkind[1]);
 	}
 }
@@ -346,7 +346,7 @@ void mnTitleInitVars(void)
 		sMNTitleLayout = nMNTitleLayoutAnimate;
 		sMNTitleTransitionTotalTimeTics = 169;
 
-		color_id = syUtilsGetRandomTimeUCharRange(7);
+		color_id = syUtilsRandTimeUCharRange(7);
 		sMNTitleFireColorID = color_id;
 		sMNTitleFireColorR = dMNTitleFireColorsR[color_id];
 		sMNTitleFireColorG = dMNTitleFireColorsG[color_id];
@@ -537,7 +537,7 @@ void mnTitleProcRun(GObj *gobj)
 // 0x80132210
 void mnTitleUpdateFireVars(void)
 {
-	s32 kind = syUtilsGetRandomTimeUCharRange(7);
+	s32 kind = syUtilsRandTimeUCharRange(7);
 
 	sMNTitleFireColorID = kind;
 
@@ -1258,7 +1258,7 @@ void mnTitleFireCameraProcUpdate(GObj *gobj)
 
 				sMNTitleFireTimer = 260;
 
-				color_id = syUtilsGetRandomTimeUCharRange(7);
+				color_id = syUtilsRandTimeUCharRange(7);
 
 				if (color_id == sMNTitleFireColorID)
 				{

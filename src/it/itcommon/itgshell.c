@@ -250,7 +250,7 @@ void itGShellWaitInitVars(GObj *item_gobj)
     {
         ip->attack_coll.attack_state = nGMAttackStateNew;
 
-        itProcessUpdateHitPositions(item_gobj);
+        itProcessUpdateAttackPositions(item_gobj);
         itGShellSpinSetStatus(item_gobj);
     }
     else
@@ -303,7 +303,7 @@ sb32 itGShellCommonProcDamage(GObj *item_gobj)
 
         ip->attack_coll.attack_state = nGMAttackStateNew;
 
-        itProcessUpdateHitPositions(item_gobj);
+        itProcessUpdateAttackPositions(item_gobj);
 
         ip->damage_coll.hitstatus = nGMHitStatusNone;
 
@@ -415,7 +415,7 @@ sb32 itGShellSpinProcMap(GObj *item_gobj)
 
     if (itMapCheckCollideAllRebound(item_gobj, (MAP_FLAG_CEIL | MAP_FLAG_RWALL | MAP_FLAG_LWALL), 0.2F, NULL) != FALSE)
     {
-        itMainVelSetRotateStepLR(item_gobj);
+        itMainSetSpinVelLR(item_gobj);
         itMainClearOwnerStats(item_gobj);
     }
     return FALSE;
@@ -428,11 +428,11 @@ sb32 itGShellCommonProcHit(GObj *item_gobj)
 
     ip->damage_coll.hitstatus = nGMHitStatusNormal;
 
-    ip->item_vars.shell.health = syUtilsGetRandomIntRange(ITGSHELL_HEALTH_MAX);
+    ip->item_vars.shell.health = syUtilsRandIntRange(ITGSHELL_HEALTH_MAX);
 
     ip->physics.vel_air.y = ITGSHELL_REBOUND_VEL_Y;
 
-    ip->physics.vel_air.x = syUtilsGetRandomFloat() * (-ip->physics.vel_air.x * ITGSHELL_REBOUND_MUL_X);
+    ip->physics.vel_air.x = syUtilsRandFloat() * (-ip->physics.vel_air.x * ITGSHELL_REBOUND_MUL_X);
 
     itMainClearOwnerStats(item_gobj);
     itGShellCommonClearAnim(item_gobj);
@@ -452,7 +452,7 @@ sb32 itGShellSpinProcDamage(GObj *item_gobj)
     {
         ip->attack_coll.attack_state = nGMAttackStateNew;
 
-        itProcessUpdateHitPositions(item_gobj);
+        itProcessUpdateAttackPositions(item_gobj);
         itMainCopyDamageStats(item_gobj);
 
         if (ip->ga != nMPKineticsGround)

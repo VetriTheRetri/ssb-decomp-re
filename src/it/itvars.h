@@ -158,7 +158,7 @@
 #define ITTARU_DESPAWN_FLASH_START 60 // Begin flashing when below this value
 #define ITTARU_HEALTH_MAX 10
 #define ITTARU_MUL_VEL_X 1.4F
-#define ITTARU_MIN_VEL_XY 0.1F		   // Decrement lifetime if Barrel's XY velocity is less than this value
+#define ITTARU_VEL_MIN 0.1F		   // Decrement lifetime if Barrel's XY velocity is less than this value
 #define ITTARU_ROLL_ROTATE_MUL 0.0045F // Multiplies rotation of barrel
 #define ITTARU_EXPLODE_SCALE 1.4F	   // Size of explosion graphics
 #define ITTARU_GRAVITY 4.0F
@@ -335,12 +335,12 @@
 #define ITLIZARDON_FLAME_LIFETIME 30
 #define ITLIZARDON_FLAME_SPAWN_WAIT 8 // Wait this many frames before spawning another flame projectile
 #define ITLIZARDON_TURN_WAIT 26		  // Wait this many frames before flipping Charizard's sprite
-#define ITLIZARDON_FLAME_SPAWN_ANGLE F_CLC_DTOR32(-15.0F) // Angle at which flame projectile spreads (-0.2617994F)
-#define ITLIZARDON_FLAME_VEL_XY 50.0F
+#define ITLIZARDON_FLAME_ANGLE F_CLC_DTOR32(-15.0F) // Angle at which flame projectile spreads (-0.2617994F)
+#define ITLIZARDON_FLAME_VEL 50.0F
 #define ITLIZARDON_LIZARDON_FLAME_OFF_X 180.0F // X-offset of Charizard's flame spawn position
 #define ITLIZARDON_LIZARDON_FLAME_OFF_Y 120.0F // Y-offset of Charizard's flame spawn position
 #define ITLIZARDON_OTHER_FLAME_OFF_X 100.0F	   // X-offset of other flame spawn position (Clefairy)
-#define ITLIZARDON_DUST_GFX_OFF_X (-400.0F)	   // X-offset of dust GFX when turning around
+#define ITLIZARDON_DUST_OFF_X (-400.0F)	   // X-offset of dust GFX when turning around
 #define ITLIZARDON_GRAVITY 1.0F
 #define ITLIZARDON_TVEL 40.0F
 #define ITLIZARDON_MAP_REBOUND_COMMON 0.2F
@@ -427,7 +427,7 @@
 #define ITDOGAS_SMOG_SPAWN_WAIT 8
 #define ITDOGAS_SMOG_SPAWN_COUNT 32 // Spawn this many Smog clouds
 #define ITDOGAS_SMOG_LIFETIME 30
-#define ITDOGAS_SMOG_VEL_XY 18.0F
+#define ITDOGAS_SMOG_VEL 18.0F
 #define ITDOGAS_SMOG_MUL_OFF_X 400.0F // Multiply random spawn position
 #define ITDOGAS_SMOG_SUB_OFF_X 200.0F // Subtracted from multiplied random spawn position
 #define ITDOGAS_SMOG_MUL_OFF_Y 800.0F // Multiply random spawn position
@@ -466,7 +466,7 @@
 #define ITTARUBOMB_EXPLODE_LIFETIME 6
 #define ITTARUBOMB_EXPLODE_EFFECT_SCALE 1.4F
 #define ITTARUBOMB_MUL_VEL_X 1.4F
-#define ITTARUBOMB_MIN_VEL_XY 0.1F			// Decrement lifetime if Barrel's XY velocity is less than this value
+#define ITTARUBOMB_VEL_MIN 0.1F			// Decrement lifetime if Barrel's XY velocity is less than this value
 #define ITTARUBOMB_ROLL_ROTATE_MUL 0.0045F // Multiplies rotation of barrel
 #define ITTARUBOMB_GRAVITY 4.0F
 #define ITTARUBOMB_TVEL 90.0F

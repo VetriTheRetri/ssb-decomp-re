@@ -216,7 +216,7 @@ GObj* itHitokageMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->is_allow_knockback = TRUE;
 
-        ip->item_vars.hitokage.flags = syUtilsGetRandomIntRange(GRYAMABUKI_MONSTER_WEAPON_MAX);
+        ip->item_vars.hitokage.flags = syUtilsRandIntRange(GRYAMABUKI_MONSTER_WEAPON_MAX);
 
         if ((dGRYamabukiMonsterAttackKind == ip->item_vars.hitokage.flags) || (ip->item_vars.hitokage.flags & dGRYamabukiMonsterAttackKind))
         {

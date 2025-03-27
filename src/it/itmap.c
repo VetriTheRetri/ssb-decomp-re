@@ -89,7 +89,7 @@ sb32 itMapProcAllCheckCollEnd(MPCollData *coll_data, GObj *item_gobj, u32 flags)
 
         func_800269C0_275C0(nSYAudioFGMItemMapCollide);
 
-        ip->rotate_step = 0.0F;
+        ip->spin_step = 0.0F;
         joint->rotate.vec.f.z = 0.0F;
     }
     return coll_data->is_coll_end;
@@ -133,7 +133,7 @@ sb32 itMapProcAllCheckCollisionFlag(MPCollData *coll_data, GObj *item_gobj, u32 
             mpProcessRunFloorEdgeAdjust(coll_data);
             func_800269C0_275C0(nSYAudioFGMItemMapCollide);
 
-            ip->rotate_step = 0.0F;
+            ip->spin_step = 0.0F;
             joint->rotate.vec.f.z = 0.0F;
 
             coll_data->is_coll_end = TRUE;
@@ -264,12 +264,12 @@ sb32 itMapCheckDestroyDropped(GObj *item_gobj, f32 common_rebound, f32 ground_re
 
     if (itMapCheckCollideAllRebound(item_gobj, (MAP_FLAG_CEIL | MAP_FLAG_RWALL | MAP_FLAG_LWALL), common_rebound, NULL) != FALSE)
     {
-        itMainVelSetRotateStepLR(item_gobj);
+        itMainSetSpinVelLR(item_gobj);
     }
     if (is_collide_ground != FALSE)
     {
         itMapSetGroundRebound(&ip->physics.vel_air, &ip->coll_data.floor_angle, ground_rebound);
-        itMainVelSetRotateStepLR(item_gobj);
+        itMainSetSpinVelLR(item_gobj);
 
         ip->times_landed++;
 
@@ -282,7 +282,7 @@ sb32 itMapCheckDestroyDropped(GObj *item_gobj, f32 common_rebound, f32 ground_re
                 (
                     (ip->times_thrown == ITEM_THROW_NUM_MAX)            
                     || 
-                    (syUtilsGetRandomIntRange(ITEM_THROW_DESPAWN_RANDOM) == 0)
+                    (syUtilsRandIntRange(ITEM_THROW_DESPAWN_RANDOM) == 0)
                 )
             )
             {
@@ -306,13 +306,13 @@ sb32 itMapCheckLanding(GObj *item_gobj, f32 common_rebound, f32 ground_rebound, 
 
     if (itMapCheckCollideAllRebound(item_gobj, (MAP_FLAG_CEIL | MAP_FLAG_RWALL | MAP_FLAG_LWALL), common_rebound, NULL) != FALSE)
     {
-        itMainVelSetRotateStepLR(item_gobj);
+        itMainSetSpinVelLR(item_gobj);
     }
     if (is_collide_ground != FALSE)
     {
         lbCommonReflect2D(&ip->physics.vel_air, &ip->coll_data.floor_angle);
         lbCommonScale2D(&ip->physics.vel_air, ground_rebound);
-        itMainVelSetRotateStepLR(item_gobj);
+        itMainSetSpinVelLR(item_gobj);
 
         if (proc_map != NULL)
         {
@@ -332,13 +332,13 @@ sb32 itMapCheckMapReboundProcAll(GObj *item_gobj, f32 common_rebound, f32 ground
 
     if (itMapCheckCollideAllRebound(item_gobj, (MAP_FLAG_CEIL | MAP_FLAG_RWALL | MAP_FLAG_LWALL), common_rebound, NULL) != FALSE)
     {
-        itMainVelSetRotateStepLR(item_gobj);
+        itMainSetSpinVelLR(item_gobj);
     }
     if (coll_data->coll_mask_curr & MAP_FLAG_FLOOR)
     {
         lbCommonReflect2D(&ip->physics.vel_air, &coll_data->floor_angle);
         lbCommonScale2D(&ip->physics.vel_air, ground_rebound);
-        itMainVelSetRotateStepLR(item_gobj);
+        itMainSetSpinVelLR(item_gobj);
     }
     if (is_collide_any != FALSE)
     {
@@ -358,7 +358,7 @@ sb32 itMapCheckDestroyLanding(GObj *item_gobj, f32 common_rebound)
 
     if (itMapCheckCollideAllRebound(item_gobj, (MAP_FLAG_CEIL | MAP_FLAG_RWALL | MAP_FLAG_LWALL), common_rebound, NULL) != FALSE)
     {
-        itMainVelSetRotateStepLR(item_gobj);
+        itMainSetSpinVelLR(item_gobj);
     }
     if (is_collide_ground != FALSE)
     {
@@ -400,7 +400,7 @@ sb32 itMapCheckMapReboundProcNoFloor(GObj *item_gobj, f32 common_rebound, void (
     }
     if (itMapCheckCollideAllRebound(item_gobj, (MAP_FLAG_CEIL | MAP_FLAG_RWALL | MAP_FLAG_LWALL), common_rebound, NULL) != FALSE)
     {
-        itMainVelSetRotateStepLR(item_gobj);
+        itMainSetSpinVelLR(item_gobj);
     }
     return FALSE;
 }

@@ -974,7 +974,7 @@ void ftKirbySpecialNDamageCheckLoseCopy(GObj *fighter_gobj)
         )                                                       &&
         (fp->passive_vars.kirby.copy_id != nFTKindKirby)       &&
         (fp->passive_vars.kirby.is_ignore_losecopy == FALSE)    &&
-        (syUtilsGetRandomFloat() < FTKIRBY_COPYDAMAGE_LOSECOPY_RANDOM)
+        (syUtilsRandFloat() < FTKIRBY_COPYDAMAGE_LOSECOPY_RANDOM)
     )
     {
         ftKirbySpecialNLoseCopy(fighter_gobj);

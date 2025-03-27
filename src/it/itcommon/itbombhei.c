@@ -223,8 +223,8 @@ void itBombHeiCommonSetWalkLR(GObj *item_gobj, ub8 lr)
 {
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
-    Gfx *dll = itGetPData(ip, lITBombHeiDataStart, lITBombHeiWalkLeftDisplayList);  // (void*)((uintptr_t)((uintptr_t)ip->attr->dobj_setup - (uintptr_t)&lITBombHeiDataStart) + &lITBombHeiWalkLeftDisplayList);
-    Gfx *dlr = itGetPData(ip, lITBombHeiDataStart, lITBombHeiWalkRightDisplayList); // (void*)((uintptr_t)((uintptr_t)ip->attr->dobj_setup - (uintptr_t)&lITBombHeiDataStart) + &lITBombHeiWalkRightDisplayList);
+    Gfx *dll = itGetPData(ip, lITBombHeiDataStart, lITBombHeiWalkLeftDisplayList);  // (void*)((uintptr_t)((uintptr_t)ip->attr->data - (uintptr_t)&lITBombHeiDataStart) + &lITBombHeiWalkLeftDisplayList);
+    Gfx *dlr = itGetPData(ip, lITBombHeiDataStart, lITBombHeiWalkRightDisplayList); // (void*)((uintptr_t)((uintptr_t)ip->attr->data - (uintptr_t)&lITBombHeiDataStart) + &lITBombHeiWalkRightDisplayList);
 
     if (lr != 0)
     {
@@ -329,7 +329,7 @@ sb32 itBombHeiWaitProcUpdate(GObj *item_gobj)
 
         if (lr == 0)
         {
-            lr = syUtilsGetRandomIntRange(2) - 1;
+            lr = syUtilsRandIntRange(2) - 1;
         }
         if (lr < 0)
         {

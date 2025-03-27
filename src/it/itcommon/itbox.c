@@ -209,13 +209,13 @@ void itBoxContainerSmashMakeEffect(Vec3f *pos)
 
                 dobj->translate.vec.f = *pos;
 
-                dobj->scale.vec.f.x = (syUtilsGetRandomFloat() * 48.0F) + -24.0F;
-                dobj->scale.vec.f.y = (syUtilsGetRandomFloat() * 50.0F) + 10.0F;
-                dobj->scale.vec.f.z = (syUtilsGetRandomFloat() * 32.0F) + -16.0F;
+                dobj->scale.vec.f.x = (syUtilsRandFloat() * 48.0F) + -24.0F;
+                dobj->scale.vec.f.y = (syUtilsRandFloat() * 50.0F) + 10.0F;
+                dobj->scale.vec.f.z = (syUtilsRandFloat() * 32.0F) + -16.0F;
 
-                dobj->anim_wait = F_CLC_DTOR32((syUtilsGetRandomFloat() * 100.0F) + -50.0F);
-                dobj->anim_speed = F_CLC_DTOR32((syUtilsGetRandomFloat() * 100.0F) + -50.0F);
-                dobj->anim_frame = F_CLC_DTOR32((syUtilsGetRandomFloat() * 100.0F) + -50.0F);
+                dobj->anim_wait = F_CLC_DTOR32((syUtilsRandFloat() * 100.0F) + -50.0F);
+                dobj->anim_speed = F_CLC_DTOR32((syUtilsRandFloat() * 100.0F) + -50.0F);
+                dobj->anim_frame = F_CLC_DTOR32((syUtilsRandFloat() * 100.0F) + -50.0F);
             }
             ep->effect_vars.container.lifetime = ITCONTAINER_GFX_LIFETIME;
 
@@ -248,7 +248,7 @@ sb32 itBoxCommonCheckSpawnItems(GObj *item_gobj)
 
         if (kind <= nITKindCommonEnd)
         {
-            random = syUtilsGetRandomIntRange(5);
+            random = syUtilsRandIntRange(5);
 
             if (random < 2)
             {
@@ -268,7 +268,7 @@ sb32 itBoxCommonCheckSpawnItems(GObj *item_gobj)
 
                 spawn_pos = &dITBoxItemSpawnVelocities[3];
             }
-            if (syUtilsGetRandomIntRange(32) == 0) // 1 in 32 chance to spawn identical items
+            if (syUtilsRandIntRange(32) == 0) // 1 in 32 chance to spawn identical items
             {
                 vel_identical.z = 0.0F;
 

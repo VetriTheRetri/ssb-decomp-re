@@ -158,7 +158,7 @@ sb32 itTosakintoBounceProcMap(GObj *item_gobj)
     {
         ip->physics.vel_air.y = ITTOSAKINTO_FLAP_VEL_Y;
 
-        if (syUtilsGetRandomIntRange(2) != 0)
+        if (syUtilsRandIntRange(2) != 0)
         {
             ip->physics.vel_air.x = -ip->physics.vel_air.x;
         }

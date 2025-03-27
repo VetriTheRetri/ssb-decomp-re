@@ -190,7 +190,7 @@ void itRShellSpinUpdateFollowPlayer(GObj *item_gobj, GObj *fighter_gobj)
             {
                 ip->attack_coll.attack_state = nGMAttackStateNew;
 
-                itProcessUpdateHitPositions(item_gobj);
+                itProcessUpdateAttackPositions(item_gobj);
             }
         }
         ip->lr = (ip->physics.vel_air.x < 0.0F) ? -1 : +1;
@@ -339,7 +339,7 @@ void itRShellCommonSetStatusWaitOrSpin(GObj *item_gobj)
     {
         ip->attack_coll.attack_state = nGMAttackStateNew;
 
-        itProcessUpdateHitPositions(item_gobj);
+        itProcessUpdateAttackPositions(item_gobj);
         itRShellSpinSetStatus(item_gobj);
     }
     else
@@ -390,7 +390,7 @@ sb32 itRShellCommonProcDamage(GObj *item_gobj)
 
         ip->attack_coll.attack_state = nGMAttackStateNew;
 
-        itProcessUpdateHitPositions(item_gobj);
+        itProcessUpdateAttackPositions(item_gobj);
         itMainCopyDamageStats(item_gobj);
 
         if (ip->ga != nMPKineticsGround)
@@ -538,7 +538,7 @@ sb32 itRShellSpinProcMap(GObj *item_gobj)
     {
         ip->physics.vel_air.x = -ip->physics.vel_air.x;
 
-        itMainVelSetRotateStepLR(item_gobj);
+        itMainSetSpinVelLR(item_gobj);
         itMainClearOwnerStats(item_gobj);
 
         ip->item_vars.shell.vel_x = -ip->item_vars.shell.vel_x;
@@ -559,7 +559,7 @@ sb32 itRShellCommonProcHit(GObj *item_gobj)
     }
     ip->damage_coll.hitstatus = nGMHitStatusNormal;
 
-    ip->item_vars.shell.health = syUtilsGetRandomIntRange(ITRSHELL_HEALTH_MAX);
+    ip->item_vars.shell.health = syUtilsRandIntRange(ITRSHELL_HEALTH_MAX);
 
     ip->physics.vel_air.x = ((ip->physics.vel_air.x * -1.0F) + (ITRSHELL_RECOIL_VEL_X * ip->attack_lr)) * ITRSHELL_RECOIL_MUL_X;
 
@@ -591,7 +591,7 @@ sb32 itRShellSpinProcDamage(GObj *item_gobj)
     {
         ip->attack_coll.attack_state = nGMAttackStateNew;
 
-        itProcessUpdateHitPositions(item_gobj);
+        itProcessUpdateAttackPositions(item_gobj);
         itMainCopyDamageStats(item_gobj);
         itRShellSpinSetStatus(item_gobj);
     }

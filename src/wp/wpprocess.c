@@ -82,7 +82,7 @@ void wpProcessUpdateHitPositions(GObj *weapon_gobj) // Update hitbox(es?)
 }
 
 // 0x801661E0
-void wpProcessUpdateHitRecord(GObj *weapon_gobj) // Set hitbox victim array
+void wpProcessUpdateAttackRecords(GObj *weapon_gobj) // Set hitbox victim array
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
     GMAttackRecord *record;
@@ -194,7 +194,7 @@ void wpProcessProcWeaponMain(GObj *weapon_gobj) // Run item logic pass 1 (animat
             }
         }
         wpProcessUpdateHitPositions(weapon_gobj);
-        wpProcessUpdateHitRecord(weapon_gobj);
+        wpProcessUpdateAttackRecords(weapon_gobj);
     }
 }
 

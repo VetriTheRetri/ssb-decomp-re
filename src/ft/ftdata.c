@@ -52,44 +52,44 @@ FTDesc dFTManagerDefaultFighterDesc =
 	ftDisplayMainProcDisplay
 };
 
-s32 dFTMarioData[];
-s32 dFTFoxData[];
-s32 dFTDonkeyData[];
-s32 dFTGDonkeyData[];
-s32 dFTSamusData[];
-s32 dFTLuigiData[];
-s32 dFTLinkData[];
-s32 dFTYoshiData[];
-s32 dFTCaptainData[];
-s32 dFTKirbyData[];
-s32 dFTPikachuData[];
-s32 dFTPurinData[];
-s32 dFTNessData[];
-s32 dFTBossData[];
-s32 dFTMMarioData[];
-s32 dFTNMarioData[];
-s32 dFTNFoxData[];
-s32 dFTNDonkeyData[];
-s32 dFTNSamusData[];
-s32 dFTNLuigiData[];
-s32 dFTNLinkData[];
-s32 dFTNYoshiData[];
-s32 dFTNCaptainData[];
-s32 dFTNKirbyData[];
-s32 dFTNPikachuData[];
-s32 dFTNPurinData[];
-s32 dFTNNessData[];
+FTData dFTMarioData;
+FTData dFTFoxData;
+FTData dFTDonkeyData;
+FTData dFTGDonkeyData;
+FTData dFTSamusData;
+FTData dFTLuigiData;
+FTData dFTLinkData;
+FTData dFTYoshiData;
+FTData dFTCaptainData;
+FTData dFTKirbyData;
+FTData dFTPikachuData;
+FTData dFTPurinData;
+FTData dFTNessData;
+FTData dFTBossData;
+FTData dFTMMarioData;
+FTData dFTNMarioData;
+FTData dFTNFoxData;
+FTData dFTNDonkeyData;
+FTData dFTNSamusData;
+FTData dFTNLuigiData;
+FTData dFTNLinkData;
+FTData dFTNYoshiData;
+FTData dFTNCaptainData;
+FTData dFTNKirbyData;
+FTData dFTNPikachuData;
+FTData dFTNPurinData;
+FTData dFTNNessData;
 
 // 0x80116E10
 FTData *dFTManagerDataFiles[nFTKindEnumCount + 1] =
 {
-	dFTMarioData, dFTFoxData, dFTDonkeyData, dFTSamusData,
-	dFTLuigiData, dFTLinkData, dFTYoshiData, dFTCaptainData,
-	dFTKirbyData, dFTPikachuData, dFTPurinData, dFTNessData,
-	dFTBossData, dFTMMarioData, dFTNMarioData, dFTNFoxData,
-	dFTNDonkeyData, dFTNSamusData, dFTNLuigiData, dFTNLinkData,
-	dFTNYoshiData, dFTNCaptainData, dFTNKirbyData, dFTNPikachuData,
-	dFTNPurinData, dFTNNessData, dFTGDonkeyData, NULL
+	&dFTMarioData, &dFTFoxData, &dFTDonkeyData, &dFTSamusData,
+	&dFTLuigiData, &dFTLinkData, &dFTYoshiData, &dFTCaptainData,
+	&dFTKirbyData, &dFTPikachuData, &dFTPurinData, &dFTNessData,
+	&dFTBossData, &dFTMMarioData, &dFTNMarioData, &dFTNFoxData,
+	&dFTNDonkeyData, &dFTNSamusData, &dFTNLuigiData, &dFTNLinkData,
+	&dFTNYoshiData, &dFTNCaptainData, &dFTNKirbyData, &dFTNPikachuData,
+	&dFTNPurinData, &dFTNNessData, &dFTGDonkeyData, NULL
 };
 
 // 0x80116E80
@@ -302,17 +302,41 @@ FTMotionDesc dFTMarioMotionDescs[] =
 };
 
 // 0x80117810
-s32 dFTMarioData[] =
+FTData dFTMarioData =
 {
-	0x000000CB, 0x000000CA, 0x00000000, 0x00000128,
-	0x0000012A, 0x000000CC, 0x00000164, 0x00000129,
-	0x00000000, 0x00000000, &gFTMarioFileMain, &gFTMarioFileMainMotion,
-	0x00000000, &gFTMarioFileModel, 0x00000000, &gFTMarioFileSpecial1,
-	&gFTMarioFileSpecial2, &gFTMarioFileSpecial3, 0x00000000, &gFTMarioParticleBankID,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x00000428, dFTMarioMotionDescs, &D_ovl1_80390E7C[9], 0x000000CC,
-	&D_ovl1_80390E7C[66], 0x00000000, 0x00000000, 0x00000000
+	0x000000CB,
+	0x000000CA,
+	0x00000000,
+	0x00000128,
+	0x0000012A,
+	0x000000CC,
+	0x00000164,
+	0x00000129,
+	0x00000000,
+	0x00000000,
+	&gFTMarioFileMain,
+	&gFTMarioFileMainMotion,
+	0x00000000,
+	&gFTMarioFileModel,
+	0x00000000,
+	&gFTMarioFileSpecial1,
+	&gFTMarioFileSpecial2,
+	&gFTMarioFileSpecial3,
+	0x00000000,
+	&gFTMarioParticleBankID,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000428,
+	dFTMarioMotionDescs,
+	&D_ovl1_80390E7C[9],
+	0x000000CC,
+	&D_ovl1_80390E7C[66],
+	0x00000000
 };
+
+s32 dFTMarioDataEnd[2] = { 0, 0 };
 
 // 0x80117890
 FTMotionDesc dFTMMarioMotionDescs[] = 
@@ -524,17 +548,41 @@ FTMotionDesc dFTMMarioMotionDescs[] =
 };
 
 // 0x80118220
-s32 dFTMMarioData[] =
+FTData dFTMMarioData =
 {
-	0x000000CE, 0x000000CD, 0x000000CA, 0x0000012C,
-	0x0000012A, 0x000000CC, 0x00000164, 0x00000129,
-	0x00000000, 0x00000000, &gFTDataMMarioMain, &gFTDataMMarioMainMotion,
-	&gFTDataMMarioSubMotion, &gFTDataMMarioModel, 0x00000000, &gFTDataMMarioSpecial1,
-	&gFTDataMMarioSpecial2, &gFTDataMMarioSpecial3, 0x00000000, &gFTDataMMarioParticleBankID,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x000002A8, dFTMMarioMotionDescs, &D_ovl1_80390E7C[69], 0x000000CC,
-	&D_ovl1_80390E7C[114], 0x00000000, 0x00000000, 0x00000000
+	0x000000CE,
+	0x000000CD,
+	0x000000CA,
+	0x0000012C,
+	0x0000012A,
+	0x000000CC,
+	0x00000164,
+	0x00000129,
+	0x00000000,
+	0x00000000,
+	&gFTDataMMarioMain,
+	&gFTDataMMarioMainMotion,
+	&gFTDataMMarioSubMotion,
+	&gFTDataMMarioModel,
+	0x00000000,
+	&gFTDataMMarioSpecial1,
+	&gFTDataMMarioSpecial2,
+	&gFTDataMMarioSpecial3,
+	0x00000000,
+	&gFTDataMMarioParticleBankID,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x000002A8,
+	dFTMMarioMotionDescs,
+	&D_ovl1_80390E7C[69],
+	0x000000CC,
+	&D_ovl1_80390E7C[114],
+	0x00000000
 };
+
+s32 dFTMMarioDataEnd[2] = { 0, 0 };
 
 // 0x801182A0
 FTMotionDesc dFTNMarioMotionDescs[] =
@@ -745,17 +793,41 @@ FTMotionDesc dFTNMarioMotionDescs[] =
 	0x0000027F, 0x00001884, 0x00000010
 };
 
-s32 dFTNMarioData[] =
+FTData dFTNMarioData =
 {
-	0x000000CF, 0x00000000, 0x000000CA, 0x0000012D,
-	0x0000012A, 0x00000000, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, &gFTDataNMarioMain, 0x00000000,
-	&gFTDataNMarioSubMotion, &gFTDataNMarioModel, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000000, &gFTDataNMarioParticleBankID,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x00000298, dFTNMarioMotionDescs, &D_ovl1_80390E7C[117], 0x000000CC,
-	&D_ovl1_80390E7C[162], 0x00000000, 0x00000000, 0x00000000
+	0x000000CF,
+	0x00000000,
+	0x000000CA,
+	0x0000012D,
+	0x0000012A,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	&gFTDataNMarioMain,
+	0x00000000,
+	&gFTDataNMarioSubMotion,
+	&gFTDataNMarioModel,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	&gFTDataNMarioParticleBankID,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000298,
+	dFTNMarioMotionDescs,
+	&D_ovl1_80390E7C[117],
+	0x000000CC,
+	&D_ovl1_80390E7C[162],
+	0x00000000
 };
+
+s32 dFTNMarioDataEnd[2] = { 0, 0 };
 
 FTMotionDesc dFTFoxMotionDescs[] =
 {
@@ -980,17 +1052,41 @@ FTMotionDesc dFTFoxMotionDescs[] =
 	0x0000031D, 0x00001A68, 0x00000000
 };
 
-s32 dFTFoxData[] =
+FTData dFTFoxData =
 {
-	0x000000D1, 0x000000D0, 0x00000000, 0x00000139,
-	0x0000013A, 0x000000D2, 0x0000015A, 0x000000A1,
-	0x0000013C, 0x00000000, &gFTDataFoxMain, &gFTDataFoxMainMotion,
-	0x00000000, &gFTDataFoxModel, 0x00000000, &gFTDataFoxSpecial1,
-	&gFTDataFoxSpecial2, &gFTDataFoxSpecial3, &gFTDataFoxSpecial4, &gFTDataFoxParticleBankID,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x0000046C, dFTFoxMotionDescs, &D_ovl1_8039114C[2], 0x000000DB,
-	&D_ovl1_8039114C[74], 0x00000000, 0x00000000
+	0x000000D1,
+	0x000000D0,
+	0x00000000,
+	0x00000139,
+	0x0000013A,
+	0x000000D2,
+	0x0000015A,
+	0x000000A1,
+	0x0000013C,
+	0x00000000,
+	&gFTDataFoxMain,
+	&gFTDataFoxMainMotion,
+	0x00000000,
+	&gFTDataFoxModel,
+	0x00000000,
+	&gFTDataFoxSpecial1,
+	&gFTDataFoxSpecial2,
+	&gFTDataFoxSpecial3,
+	&gFTDataFoxSpecial4,
+	&gFTDataFoxParticleBankID,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x0000046C,
+	dFTFoxMotionDescs,
+	&D_ovl1_8039114C[2],
+	0x000000DB,
+	&D_ovl1_8039114C[74],
+	0x00000000
 };
+
+s32 dFTFoxDataEnd = 0;
 
 FTMotionDesc dFTNFoxMotionDescs[] =
 {
@@ -1215,17 +1311,41 @@ FTMotionDesc dFTNFoxMotionDescs[] =
 	0x0000031D, 0x00001A68, 0x00000010
 };
 
-s32 dFTNFoxData[] =
+FTData dFTNFoxData =
 {
-	0x000000D3, 0x00000000, 0x000000D0, 0x0000012F,
-	0x0000013A, 0x00000000, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, &gFTDataNFoxMain, 0x00000000,
-	&gFTDataNFoxSubMotion, &gFTDataNFoxModel, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000000, &gFTDataNFoxParticleBankID,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x000002A4, dFTNFoxMotionDescs, &D_ovl1_8039114C[77], 0x000000DB,
-	&D_ovl1_8039114C[122], 0x00000000, 0x00000000
+	0x000000D3,
+	0x00000000,
+	0x000000D0,
+	0x0000012F,
+	0x0000013A,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	&gFTDataNFoxMain,
+	0x00000000,
+	&gFTDataNFoxSubMotion,
+	&gFTDataNFoxModel,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	&gFTDataNFoxParticleBankID,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x000002A4,
+	dFTNFoxMotionDescs,
+	&D_ovl1_8039114C[77],
+	0x000000DB,
+	&D_ovl1_8039114C[122],
+	0x00000000
 };
+
+s32 dFTNFoxDataEnd = 0;
 
 FTMotionDesc dFTDonkeyMotionDescs[] =
 {
@@ -1452,18 +1572,41 @@ FTMotionDesc dFTDonkeyMotionDescs[] =
 	0x000003B1, 0x00000D28, 0x10000000
 };
 
-s32 dFTDonkeyData[] =
+FTData dFTDonkeyData =
 {
-	0x000000D5, 0x000000D4, 0x00000000, 0x0000013D,
-	0x0000013E, 0x00000000, 0x00000163, 0x00000000,
-	0x00000000, 0x00000000, &gFTDataDonkeyMain, &gFTDataDonkeyMainMotion,
-	0x00000000, &gFTDataDonkeyModel, 0x00000000, 0x00000000,
-	&gFTDataDonkeySpecial2, 0x00000000, 0x00000000, &gFTDataDonkeyParticleBankID,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x000004A4, dFTDonkeyMotionDescs, &D_ovl1_80391350[3], 0x000000DD,
-	&D_ovl1_80391350[48], 0x00000000, 0x00000000, 0x00000000,
+	0x000000D5,
+	0x000000D4,
+	0x00000000,
+	0x0000013D,
+	0x0000013E,
+	0x00000000,
+	0x00000163,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	&gFTDataDonkeyMain,
+	&gFTDataDonkeyMainMotion,
+	0x00000000,
+	&gFTDataDonkeyModel,
+	0x00000000,
+	0x00000000,
+	&gFTDataDonkeySpecial2,
+	0x00000000,
+	0x00000000,
+	&gFTDataDonkeyParticleBankID,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x000004A4,
+	dFTDonkeyMotionDescs,
+	&D_ovl1_80391350[3],
+	0x000000DD,
+	&D_ovl1_80391350[48],
 	0x00000000
 };
+
+s32 dFTDonkeyDataEnd[3] = { 0, 0, 0 };
 
 FTMotionDesc dFTNDonkeyMotionDescs[] =
 {
@@ -1690,18 +1833,41 @@ FTMotionDesc dFTNDonkeyMotionDescs[] =
 	0x000003B1, 0x00000D28, 0x10000010
 };
 
-s32 dFTNDonkeyData[] =
+FTData dFTNDonkeyData =
 {
-	0x000000D6, 0x00000000, 0x000000D4, 0x00000134,
-	0x0000013E, 0x00000000, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, &gFTDataNDonkeyMain, 0x00000000,
-	&gFTDataNDonkeySubMotion, &gFTDataNDonkeyModel, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000000, &gFTDataNDonkeyParticleBankID,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x00000298, dFTNDonkeyMotionDescs, &D_ovl1_80391350[52], 0x000000DD,
-	&D_ovl1_80391350[97], 0x00000000, 0x00000000, 0x00000000,
+	0x000000D6,
+	0x00000000,
+	0x000000D4,
+	0x00000134,
+	0x0000013E,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	&gFTDataNDonkeyMain,
+	0x00000000,
+	&gFTDataNDonkeySubMotion,
+	&gFTDataNDonkeyModel,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	&gFTDataNDonkeyParticleBankID,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000298,
+	dFTNDonkeyMotionDescs,
+	&D_ovl1_80391350[52],
+	0x000000DD,
+	&D_ovl1_80391350[97],
 	0x00000000
 };
+
+s32 dFTNDonkeyDataEnd[3] = { 0, 0, 0 };
 
 FTMotionDesc dFTGDonkeyMotionDescs[] =
 {
@@ -1928,18 +2094,41 @@ FTMotionDesc dFTGDonkeyMotionDescs[] =
 	0x000003B1, 0x00000D28, 0x10000010
 };
 
-s32 dFTGDonkeyData[] =
+FTData dFTGDonkeyData =
 {
-	0x000000D7, 0x00000000, 0x000000D4, 0x0000013D,
-	0x0000013E, 0x00000000, 0x00000163, 0x00000000,
-	0x00000000, 0x00000000, &gFTDataGDonkeyMain, 0x00000000,
-	&gFTDataGDonkeySubMotion, &gFTDataGDonkeyModel, 0x00000000, 0x00000000,
-	&gFTDataGDonkeySpecial2, 0x00000000, 0x00000000, &gFTDataGDonkeyParticleBankID,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x000003C8, dFTGDonkeyMotionDescs, &D_ovl1_80391350[100], 0x000000DD,
-	&D_ovl1_80391350[103], 0x00000000, 0x00000000, 0x00000000,
+	0x000000D7,
+	0x00000000,
+	0x000000D4,
+	0x0000013D,
+	0x0000013E,
+	0x00000000,
+	0x00000163,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	&gFTDataGDonkeyMain,
+	0x00000000,
+	&gFTDataGDonkeySubMotion,
+	&gFTDataGDonkeyModel,
+	0x00000000,
+	0x00000000,
+	&gFTDataGDonkeySpecial2,
+	0x00000000,
+	0x00000000,
+	&gFTDataGDonkeyParticleBankID,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x000003C8,
+	dFTGDonkeyMotionDescs,
+	&D_ovl1_80391350[100],
+	0x000000DD,
+	&D_ovl1_80391350[103],
 	0x00000000
 };
+
+s32 dFTGDonkeyDataEnd[3] = { 0, 0, 0 };
 
 
 FTMotionDesc dFTSamusMotionDescs[] =
@@ -2152,16 +2341,38 @@ FTMotionDesc dFTSamusMotionDescs[] =
 	0x0000044C, 0x00001E6C, 0x00000000
 };
 
-s32 dFTSamusData[] =
+FTData dFTSamusData =
 {
-	0x000000D9, 0x000000D8, 0x00000000, 0x00000140,
-	0x00000142, 0x000000DA, 0x0000015D, 0x00000141,
-	0x00000000, 0x00000000, &gFTDataSamusMain, &gFTDataSamusMainMotion,
-	0x00000000, &gFTDataSamusModel, 0x00000000, &gFTDataSamusSpecial1,
-	&gFTDataSamusSpecial2, &gFTDataSamusSpecial3, 0x00000000, &gFTDataSamusParticleBankID,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x00000610, dFTSamusMotionDescs, &D_ovl1_80391578[2], 0x000000CE,
-	&D_ovl1_80391578[47], 0x00000000
+	0x000000D9,
+	0x000000D8,
+	0x00000000,
+	0x00000140,
+	0x00000142,
+	0x000000DA,
+	0x0000015D,
+	0x00000141,
+	0x00000000,
+	0x00000000,
+	&gFTDataSamusMain,
+	&gFTDataSamusMainMotion,
+	0x00000000,
+	&gFTDataSamusModel,
+	0x00000000,
+	&gFTDataSamusSpecial1,
+	&gFTDataSamusSpecial2,
+	&gFTDataSamusSpecial3,
+	0x00000000,
+	&gFTDataSamusParticleBankID,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000610,
+	dFTSamusMotionDescs,
+	&D_ovl1_80391578[2],
+	0x000000CE,
+	&D_ovl1_80391578[47],
+	0x00000000
 };
 
 FTMotionDesc dFTNSamusMotionDescs[] =
@@ -2374,16 +2585,38 @@ FTMotionDesc dFTNSamusMotionDescs[] =
 	0x0000044C, 0x00001E6C, 0x00000010
 };
 
-s32 dFTNSamusData[] =
+FTData dFTNSamusData =
 {
-	0x000000DB, 0x00000000, 0x000000D8, 0x00000135,
-	0x00000142, 0x00000000, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, &gFTDataNSamusMain, 0x00000000,
-	&gFTDataNSamusSubMotion, &gFTDataNSamusModel, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000000, &gFTDataNSamusParticleBankID,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x000003BC, dFTNSamusMotionDescs, &D_ovl1_80391578[50], 0x000000CE,
-	&D_ovl1_80391578[95], 0x00000000
+	0x000000DB,
+	0x00000000,
+	0x000000D8,
+	0x00000135,
+	0x00000142,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	&gFTDataNSamusMain,
+	0x00000000,
+	&gFTDataNSamusSubMotion,
+	&gFTDataNSamusModel,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	&gFTDataNSamusParticleBankID,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x000003BC,
+	dFTNSamusMotionDescs,
+	&D_ovl1_80391578[50],
+	0x000000CE,
+	&D_ovl1_80391578[95],
+	0x00000000
 };
 
 FTMotionDesc dFTLuigiMotionDescs[] =
@@ -2594,17 +2827,41 @@ FTMotionDesc dFTLuigiMotionDescs[] =
 	0x0000027F, 0x00001958, 0x00000000
 };
 
-s32 dFTLuigiData[] =
+FTData dFTLuigiData =
 {
-	0x000000DD, 0x000000DC, 0x00000000, 0x00000143,
-	0x0000012A, 0x000000DE, 0x00000164, 0x00000129,
-	0x00000000, 0x00000000, &gFTDataLuigiMain, &gFTDataLuigiMainMotion,
-	0x00000000, &gFTDataLuigiModel, 0x00000000, &gFTDataLuigiSpecial1,
-	&gFTDataLuigiSpecial2, &gFTDataLuigiSpecial3, 0x00000000, &gFTDataLuigiParticleBankID,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x00000580, dFTLuigiMotionDescs, &D_ovl1_803917B4[2], 0x000000CC,
-	&D_ovl1_803917B4[47], 0x00000000, 0x00000000, 0x00000000
+	0x000000DD,
+	0x000000DC,
+	0x00000000,
+	0x00000143,
+	0x0000012A,
+	0x000000DE,
+	0x00000164,
+	0x00000129,
+	0x00000000,
+	0x00000000,
+	&gFTDataLuigiMain,
+	&gFTDataLuigiMainMotion,
+	0x00000000,
+	&gFTDataLuigiModel,
+	0x00000000,
+	&gFTDataLuigiSpecial1,
+	&gFTDataLuigiSpecial2,
+	&gFTDataLuigiSpecial3,
+	0x00000000,
+	&gFTDataLuigiParticleBankID,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000580,
+	dFTLuigiMotionDescs,
+	&D_ovl1_803917B4[2],
+	0x000000CC,
+	&D_ovl1_803917B4[47],
+	0x00000000
 };
+
+s32 dFTLuigiDataEnd[2] = { 0, 0 };
 
 FTMotionDesc dFTNLuigiMotionDescs[] =
 {
@@ -2814,17 +3071,41 @@ FTMotionDesc dFTNLuigiMotionDescs[] =
 	0x0000027F, 0x00001958, 0x00000010
 };
 
-s32 dFTNLuigiData[] =
+FTData dFTNLuigiData =
 {
-	0x000000DF, 0x00000000, 0x000000DC, 0x0000012D,
-	0x0000012A, 0x00000000, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, &gFTDataNLuigiMain, 0x00000000,
-	&gFTDataNLuigiSubMotion, &gFTDataNLuigiModel, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000000, &gFTDataNLuigiParticleBankID,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x00000298, dFTNLuigiMotionDescs, &D_ovl1_803917B4[51], 0x000000CC,
-	&D_ovl1_803917B4[54], 0x00000000, 0x00000000, 0x00000000
+	0x000000DF,
+	0x00000000,
+	0x000000DC,
+	0x0000012D,
+	0x0000012A,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	&gFTDataNLuigiMain,
+	0x00000000,
+	&gFTDataNLuigiSubMotion,
+	&gFTDataNLuigiModel,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	&gFTDataNLuigiParticleBankID,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000298,
+	dFTNLuigiMotionDescs,
+	&D_ovl1_803917B4[51],
+	0x000000CC,
+	&D_ovl1_803917B4[54],
+	0x00000000
 };
+
+s32 dFTNLuigiDataEnd[2] = { 0, 0 };
 
 FTMotionDesc dFTLinkMotionDescs[] =
 {
@@ -3042,17 +3323,41 @@ FTMotionDesc dFTLinkMotionDescs[] =
 	0x000004E8, 0x00001CF8, 0x00000000
 };
 
-s32 dFTLinkData[] =
+FTData dFTLinkData =
 {
-	0x000000E1, 0x000000E0, 0x00000000, 0x00000144,
-	0x00000147, 0x000000E2, 0x00000161, 0x00000145,
-	0x00000000, 0x00000000, &gFTDataLinkMain, &gFTDataLinkMainMotion,
-	0x00000000, &gFTDataLinkModel, 0x00000000, &gFTDataLinkSpecial1,
-	&gFTDataLinkSpecial2, &gFTDataLinkSpecial3, 0x00000000, &gFTDataLinkParticleBankID,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x00000708, dFTLinkMotionDescs, &D_ovl1_803919EC[5], 0x000000D4,
-	&D_ovl1_803919EC[53], 0x00000000, 0x00000000, 0x00000000
+	0x000000E1,
+	0x000000E0,
+	0x00000000,
+	0x00000144,
+	0x00000147,
+	0x000000E2,
+	0x00000161,
+	0x00000145,
+	0x00000000,
+	0x00000000,
+	&gFTDataLinkMain,
+	&gFTDataLinkMainMotion,
+	0x00000000,
+	&gFTDataLinkModel,
+	0x00000000,
+	&gFTDataLinkSpecial1,
+	&gFTDataLinkSpecial2,
+	&gFTDataLinkSpecial3,
+	0x00000000,
+	&gFTDataLinkParticleBankID,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000708,
+	dFTLinkMotionDescs,
+	&D_ovl1_803919EC[5],
+	0x000000D4,
+	&D_ovl1_803919EC[53],
+	0x00000000
 };
+
+s32 dFTLinkDataEnd[2] = { 0, 0 };
 
 FTMotionDesc dFTNLinkMotionDescs[] =
 {
@@ -3270,17 +3575,41 @@ FTMotionDesc dFTNLinkMotionDescs[] =
 	0x000004E8, 0x00001CF8, 0x00000010
 };
 
-s32 dFTNLinkData[] =
+FTData dFTNLinkData =
 {
-	0x000000E3, 0x00000000, 0x000000E0, 0x00000136,
-	0x00000147, 0x00000000, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, &gFTDataNLinkMain, 0x00000000,
-	&gFTDataNLinkSubMotion, &gFTDataNLinkModel, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000000, &gFTDataNLinkParticleBankID,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x000002D8, dFTNLinkMotionDescs, &D_ovl1_803919EC[57], 0x000000D4,
-	&D_ovl1_803919EC[102], 0x00000000, 0x00000000, 0x00000000
+	0x000000E3,
+	0x00000000,
+	0x000000E0,
+	0x00000136,
+	0x00000147,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	&gFTDataNLinkMain,
+	0x00000000,
+	&gFTDataNLinkSubMotion,
+	&gFTDataNLinkModel,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	&gFTDataNLinkParticleBankID,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x000002D8,
+	dFTNLinkMotionDescs,
+	&D_ovl1_803919EC[57],
+	0x000000D4,
+	&D_ovl1_803919EC[102],
+	0x00000000
 };
+
+s32 dFTNLinkDataEnd[2] = { 0, 0 };
 
 FTMotionDesc dFTYoshiMotionDescs[] =
 {
@@ -3494,11 +3823,18 @@ FTMotionDesc dFTYoshiMotionDescs[] =
 	0x000007A0, 0x00001774, 0x18000001
 };
 
-s32 dFTYoshiData[] =
+FTData dFTYoshiData =
 {
-	0x000000F7, 0x000000F6, 0x00000000, 0x00000152,
-	0x00000154, 0x00000000, 0x00000162, 0x00000153,
-	0x00000000, 0x00000000,
+	0x000000F7,
+	0x000000F6,
+	0x00000000,
+	0x00000152,
+	0x00000154,
+	0x00000000,
+	0x00000162,
+	0x00000153,
+	0x00000000,
+	0x00000000,
 	&gFTDataYoshiMain,
 	&gFTDataYoshiMainMotion,
 	0x00000000,
@@ -3517,8 +3853,10 @@ s32 dFTYoshiData[] =
 	&D_ovl1_80391C64[15],
 	0x000000D0,
 	&D_ovl1_80391C64[72],
-	0x00000000, 0x00000000, 0x00000000
+	0x00000000
 };
+
+s32 dFTYoshiDataEnd[2] = { 0, 0 };
 
 FTMotionDesc dFTNYoshiMotionDescs[] =
 {
@@ -3732,17 +4070,41 @@ FTMotionDesc dFTNYoshiMotionDescs[] =
 	0x000007A0, 0x00001774, 0x18000011
 };
 
-s32 dFTNYoshiData[] =
+FTData dFTNYoshiData =
 {
-	0x000000F8, 0x00000000, 0x000000F6, 0x00000130,
-	0x00000154, 0x00000000, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, &gFTDataNYoshiMain, 0x00000000,
-	&gFTDataNYoshiSubMotion, &gFTDataNYoshiModel, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000000, &gFTDataNYoshiParticleBankID,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x000002B8, dFTNYoshiMotionDescs, &D_ovl1_80391C64[75], 0x000000D0,
-	&D_ovl1_80391C64[120], 0x00000000, 0x00000000, 0x00000000
+	0x000000F8,
+	0x00000000,
+	0x000000F6,
+	0x00000130,
+	0x00000154,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	&gFTDataNYoshiMain,
+	0x00000000,
+	&gFTDataNYoshiSubMotion,
+	&gFTDataNYoshiModel,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	&gFTDataNYoshiParticleBankID,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x000002B8,
+	dFTNYoshiMotionDescs,
+	&D_ovl1_80391C64[75],
+	0x000000D0,
+	&D_ovl1_80391C64[120],
+	0x00000000
 };
+
+s32 dFTNYoshiDataEnd[2] = { 0, 0 };
 
 FTMotionDesc dFTCaptainMotionDescs[] =
 {
@@ -3962,16 +4324,38 @@ FTMotionDesc dFTCaptainMotionDescs[] =
 	0x0000067D, 0x00001C8C, 0x40000000
 };
 
-s32 dFTCaptainData[] =
+FTData dFTCaptainData =
 {
-	0x000000EC, 0x000000EB, 0x00000000, 0x0000014C,
-	0x0000014E, 0x00000000, 0x0000015E, 0x0000014D,
-	0x00000000, 0x00000000, &gFTDataCaptainMain, &gFTDataCaptainMainMotion,
-	0x00000000, &gFTDataCaptainModel, 0x00000000, 0x00000000,
-	&gFTDataCaptainSpecial2, &gFTDataCaptainSpecial3, 0x00000000, &gFTDataCaptainParticleBankID,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x00000488, dFTCaptainMotionDescs, &D_ovl1_80391E88[2], 0x000000D6,
-	&D_ovl1_80391E88[47], 0x00000000
+	0x000000EC,
+	0x000000EB,
+	0x00000000,
+	0x0000014C,
+	0x0000014E,
+	0x00000000,
+	0x0000015E,
+	0x0000014D,
+	0x00000000,
+	0x00000000,
+	&gFTDataCaptainMain,
+	&gFTDataCaptainMainMotion,
+	0x00000000,
+	&gFTDataCaptainModel,
+	0x00000000,
+	0x00000000,
+	&gFTDataCaptainSpecial2,
+	&gFTDataCaptainSpecial3,
+	0x00000000,
+	&gFTDataCaptainParticleBankID,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000488,
+	dFTCaptainMotionDescs,
+	&D_ovl1_80391E88[2],
+	0x000000D6,
+	&D_ovl1_80391E88[47],
+	0x00000000
 };
 
 FTMotionDesc dFTNCaptainMotionDescs[] =
@@ -4192,16 +4576,38 @@ FTMotionDesc dFTNCaptainMotionDescs[] =
 	0x0000067D, 0x00001C8C, 0x40000010
 };
 
-s32 dFTNCaptainData[] =
+FTData dFTNCaptainData =
 {
-	0x000000ED, 0x00000000, 0x000000EB, 0x00000137,
-	0x0000014E, 0x00000000, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, &gFTDataNCaptainMain, 0x00000000,
-	&gFTDataNCaptainSubMotion, &gFTDataNCaptainModel, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000000, &gFTDataNCaptainParticleBankID,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x0000029C, dFTNCaptainMotionDescs, &D_ovl1_80391E88[50], 0x000000D6,
-	&D_ovl1_80391E88[95], 0x00000000
+	0x000000ED,
+	0x00000000,
+	0x000000EB,
+	0x00000137,
+	0x0000014E,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	&gFTDataNCaptainMain,
+	0x00000000,
+	&gFTDataNCaptainSubMotion,
+	&gFTDataNCaptainModel,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	&gFTDataNCaptainParticleBankID,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x0000029C,
+	dFTNCaptainMotionDescs,
+	&D_ovl1_80391E88[50],
+	0x000000D6,
+	&D_ovl1_80391E88[95],
+	0x00000000
 };
 
 FTMotionDesc dFTKirbyMotionDescs[] =
@@ -4484,11 +4890,18 @@ FTMotionDesc dFTKirbyMotionDescs[] =
 	0x000005A2, 0x0000222C, 0x1D000000
 };
 
-s32 dFTKirbyData[] =
+FTData dFTKirbyData =
 {
-	0x000000E5, 0x000000E4, 0x00000000, 0x00000148,
-	0x00000149, 0x00000000, 0x0000015C, 0x00000000,
-	0x00000000, 0x00000000,
+	0x000000E5,
+	0x000000E4,
+	0x00000000,
+	0x00000148,
+	0x00000149,
+	0x00000000,
+	0x0000015C,
+	0x00000000,
+	0x00000000,
+	0x00000000,
 	&gFTDataKirbyMain,
 	&gFTDataKirbyMainMotion,
 	0x00000000,
@@ -4506,8 +4919,10 @@ s32 dFTKirbyData[] =
 	&D_ovl1_80392088[11],
 	0x00000114,
 	&D_ovl1_80392088[59],
-	0x00000000, 0x00000000, 0x00000000
+	0x00000000
 };
+
+s32 dFTKirbyDataEnd[2] = { 0, 0 };
 
 FTMotionDesc dFTNKirbyMotionDescs[] =
 {
@@ -4758,18 +5173,41 @@ FTMotionDesc dFTNKirbyMotionDescs[] =
 	0x00000596, 0x00001D44, 0x00000010
 };
 
-s32 dFTNKirbyData[] =
+FTData dFTNKirbyData =
 {
-	0x000000E7, 0x00000000, 0x000000E4, 0x00000131,
-	0x00000149, 0x00000000, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, &gFTDataNKirbyMain, 0x00000000,
-	&gFTDataNKirbySubMotion, &gFTDataNKirbyModel, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000000, &gFTDataNKirbyParticleBankID,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x000002C0, dFTNKirbyMotionDescs, &D_ovl1_80392088[62], 0x000000F5,
-	&D_ovl1_80392088[107], 0x00000000, 0x00000000, 0x00000000,
+	0x000000E7,
+	0x00000000,
+	0x000000E4,
+	0x00000131,
+	0x00000149,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	&gFTDataNKirbyMain,
+	0x00000000,
+	&gFTDataNKirbySubMotion,
+	&gFTDataNKirbyModel,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	&gFTDataNKirbyParticleBankID,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x000002C0,
+	dFTNKirbyMotionDescs,
+	&D_ovl1_80392088[62],
+	0x000000F5,
+	&D_ovl1_80392088[107],
 	0x00000000
 };
+
+s32 dFTNKirbyDataEnd[3] = { 0, 0, 0 };
 
 FTMotionDesc dFTPikachuMotionDescs[] =
 {
@@ -4986,17 +5424,41 @@ FTMotionDesc dFTPikachuMotionDescs[] =
 	0x00000829, 0x00001758, 0x80000000
 };
 
-s32 dFTPikachuData[] =
+FTData dFTPikachuData =
 {
-	0x000000F3, 0x000000F2, 0x00000000, 0x00000155,
-	0x00000157, 0x000000F4, 0x0000015B, 0x00000156,
-	0x00000000, 0x00000000, &gFTDataPikachuMain, &gFTDataPikachuMainMotion,
-	0x00000000, &gFTDataPikachuModel, 0x00000000, &gFTDataPikachuSpecial1,
-	&gFTDataPikachuSpecial2, &gFTDataPikachuSpecial3, 0x00000000, &gFTDataPikachuParticleBankID,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x0000041C, dFTPikachuMotionDescs, &D_ovl1_803922AC[17], 0x000000D3,
-	&D_ovl1_803922AC[65], 0x00000000, 0x00000000
+	0x000000F3,
+	0x000000F2,
+	0x00000000,
+	0x00000155,
+	0x00000157,
+	0x000000F4,
+	0x0000015B,
+	0x00000156,
+	0x00000000,
+	0x00000000,
+	&gFTDataPikachuMain,
+	&gFTDataPikachuMainMotion,
+	0x00000000,
+	&gFTDataPikachuModel,
+	0x00000000,
+	&gFTDataPikachuSpecial1,
+	&gFTDataPikachuSpecial2,
+	&gFTDataPikachuSpecial3,
+	0x00000000,
+	&gFTDataPikachuParticleBankID,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x0000041C,
+	dFTPikachuMotionDescs,
+	&D_ovl1_803922AC[17],
+	0x000000D3,
+	&D_ovl1_803922AC[65],
+	0x00000000
 };
+
+s32 dFTPikachuDataEnd = 0;
 
 FTMotionDesc dFTNPikachuMotionDescs[] =
 {
@@ -5211,18 +5673,41 @@ FTMotionDesc dFTNPikachuMotionDescs[] =
 	0x00000829, 0x00001758, 0x80000010
 };
 
-s32 dFTNPikachuData[] =
+FTData dFTNPikachuData =
 {
-	0x000000F5, 0x00000000, 0x000000F2, 0x00000133,
-	0x00000157, 0x00000000, 0x0000015B, 0x00000000,
-	0x00000000, 0x00000000, &gFTDataNPikachuMain, 0x00000000,
-	&gFTDataNPikachuSubMotion, &gFTDataNPikachuModel, 0x00000000, 0x00000000,
-	&gFTDataNPikachuParticleBankID, 0x00000000, 0x00000000, &gFTDataNPikachuPad0x801310E0,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x000002A8, dFTNPikachuMotionDescs, &D_ovl1_803922AC[69], 0x000000D1,
-	&D_ovl1_803922AC[114], 0x00000000, 0x00000000, 0x00000000,
+	0x000000F5,
+	0x00000000,
+	0x000000F2,
+	0x00000133,
+	0x00000157,
+	0x00000000,
+	0x0000015B,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	&gFTDataNPikachuMain,
+	0x00000000,
+	&gFTDataNPikachuSubMotion,
+	&gFTDataNPikachuModel,
+	0x00000000,
+	0x00000000,
+	&gFTDataNPikachuParticleBankID,
+	0x00000000,
+	0x00000000,
+	&gFTDataNPikachuPad0x801310E0,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x000002A8,
+	dFTNPikachuMotionDescs,
+	&D_ovl1_803922AC[69],
+	0x000000D1,
+	&D_ovl1_803922AC[114],
 	0x00000000
 };
+
+s32 dFTNPikachuDataEnd[3] = { 0, 0, 0 };
 
 FTMotionDesc dFTPurinMotionDescs[] =
 {
@@ -5437,18 +5922,41 @@ FTMotionDesc dFTPurinMotionDescs[] =
 	0x000005DD, 0x000016F4, 0x00000000
 };
 
-s32 dFTPurinData[] =
+FTData dFTPurinData =
 {
-	0x000000E9, 0x000000E8, 0x00000000, 0x0000014A,
-	0x0000014B, 0x00000000, 0x0000015F, 0x00000000,
-	0x00000000, 0x00000000, &gFTDataPurinMain, &gFTDataPurinMainMotion,
-	0x00000000, &gFTDataPurinModel, 0x00000000, 0x00000000,
-	&gFTDataPurinSpecial2, 0x00000000, 0x00000000, &gFTDataPurinParticleBankID,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x00000474, dFTPurinMotionDescs, &D_ovl1_80392584[7], 0x000000D1,
-	&D_ovl1_80392584[52], 0x00000000, 0x00000000, 0x00000000,
+	0x000000E9,
+	0x000000E8,
+	0x00000000,
+	0x0000014A,
+	0x0000014B,
+	0x00000000,
+	0x0000015F,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	&gFTDataPurinMain,
+	&gFTDataPurinMainMotion,
+	0x00000000,
+	&gFTDataPurinModel,
+	0x00000000,
+	0x00000000,
+	&gFTDataPurinSpecial2,
+	0x00000000,
+	0x00000000,
+	&gFTDataPurinParticleBankID,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000474,
+	dFTPurinMotionDescs,
+	&D_ovl1_80392584[7],
+	0x000000D1,
+	&D_ovl1_80392584[52],
 	0x00000000
 };
+
+s32 dFTPurinDataEnd[3] = { 0, 0, 0 };
 
 FTMotionDesc dFTNPurinMotionDescs[] =
 {
@@ -5663,18 +6171,41 @@ FTMotionDesc dFTNPurinMotionDescs[] =
 	0x000005DD, 0x000016F4, 0x00000010
 };
 
-s32 dFTNPurinData[] =
+FTData dFTNPurinData =
 {
-	0x000000EA, 0x00000000, 0x000000E8, 0x00000132,
-	0x0000014B, 0x00000000, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, &gFTDataNPurinMain, 0x00000000,
-	&gFTDataNPurinSubMotion, &gFTDataNPurinModel, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000000, &gFTDataNPurinParticleBankID,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x000002A0, dFTNPurinMotionDescs, &D_ovl1_80392584[55], 0x000000D1,
-	&D_ovl1_80392584[58], 0x00000000, 0x00000000, 0x00000000,
+	0x000000EA,
+	0x00000000,
+	0x000000E8,
+	0x00000132,
+	0x0000014B,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	&gFTDataNPurinMain,
+	0x00000000,
+	&gFTDataNPurinSubMotion,
+	&gFTDataNPurinModel,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	&gFTDataNPurinParticleBankID,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x000002A0,
+	dFTNPurinMotionDescs,
+	&D_ovl1_80392584[55],
+	0x000000D1,
+	&D_ovl1_80392584[58],
 	0x00000000
 };
+
+s32 dFTNPurinDataEnd[3] = { 0, 0, 0 };
 
 FTMotionDesc dFTNessMotionDescs[] =
 {
@@ -5900,11 +6431,18 @@ FTMotionDesc dFTNessMotionDescs[] =
 	0x00000703, 0x000017A0, 0x00000000
 };
 
-s32 dFTNessData[] =
+FTData dFTNessData =
 {
-	0x000000EF, 0x000000EE, 0x00000000, 0x0000014F,
-	0x00000151, 0x000000F0, 0x00000160, 0x00000150,
-	0x00000000, 0x00000000,
+	0x000000EF,
+	0x000000EE,
+	0x00000000,
+	0x0000014F,
+	0x00000151,
+	0x000000F0,
+	0x00000160,
+	0x00000150,
+	0x00000000,
+	0x00000000,
 	&gFTNessFileMain,
 	&gFTNessFileMainMotion,
 	0x00000000,
@@ -5924,8 +6462,10 @@ s32 dFTNessData[] =
 	&D_ovl1_80392754[3],
 	0x000000DC,
 	&D_ovl1_80392754[48],
-	0x00000000, 0x00000000, 0x00000000
+	0x00000000
 };
+
+s32 dFTNessDataEnd[2] = { 0, 0 };
 
 FTMotionDesc dFTNNessMotionDescs[] =
 {
@@ -6151,17 +6691,41 @@ FTMotionDesc dFTNNessMotionDescs[] =
 	0x00000703, 0x000017A0, 0x00000010
 };
 
-s32 dFTNNessData[] =
+FTData dFTNNessData =
 {
-	0x000000F1, 0x00000000, 0x000000EE, 0x00000138,
-	0x00000151, 0x00000000, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, &gFTDataNNessMain, 0x00000000,
-	&gFTDataNNessSubMotion, &gFTDataNNessModel, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000000, &gFTDataNNessParticleBankID,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x000002F0, dFTNNessMotionDescs, &D_ovl1_80392754[51], 0x000000DC,
-	&D_ovl1_80392754[96], 0x00000000, 0x00000000, 0x00000000
+	0x000000F1,
+	0x00000000,
+	0x000000EE,
+	0x00000138,
+	0x00000151,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	&gFTDataNNessMain,
+	0x00000000,
+	&gFTDataNNessSubMotion,
+	&gFTDataNNessModel,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	&gFTDataNNessParticleBankID,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x000002F0,
+	dFTNNessMotionDescs,
+	&D_ovl1_80392754[51],
+	0x000000DC,
+	&D_ovl1_80392754[96],
+	0x00000000
 };
+
+s32 dFTNNessDataEnd[2] = { 0, 0 };
 
 FTMotionDesc dFTBossMotionDescs[] =
 {
@@ -6392,15 +6956,36 @@ FTMotionDesc dFTBossMotionDescs[] =
 	0x00000853, 0x00000970, 0x40000008
 };
 
-s32 dFTBossData[] =
+FTData dFTBossData =
 {
-	0x000000FA, 0x000000F9, 0x00000000, 0x00000158,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, &gFTDataBossMain, &gFTDataBossMainMotion,
-	0x00000000, &gFTDataBossModel, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000000, &gFTDataBossParticleBankID,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x000000E8, dFTBossMotionDescs, &D_ovl1_803928E0[2], 0x000000E1,
-	&D_ovl1_803928E0[56], 0x00000000, 0x00000000, 0x00000000,
+	0x000000FA,
+	0x000000F9,
+	0x00000000,
+	0x00000158,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	&gFTDataBossMain,
+	&gFTDataBossMainMotion,
+	0x00000000,
+	&gFTDataBossModel,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	&gFTDataBossParticleBankID,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x000000E8,
+	dFTBossMotionDescs,
+	&D_ovl1_803928E0[2],
+	0x000000E1,
+	&D_ovl1_803928E0[56],
 	0x00000000
 };

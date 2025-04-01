@@ -298,11 +298,11 @@ void ftLinkSpecialAirHiProcMap(GObj *fighter_gobj)
     {
         ftLinkSpecialHiProcDamage(fighter_gobj);
 
-        if (fp->coll_data.coll_mask_stat & MAP_FLAG_CLIFF_MASK)
+        if (fp->coll_data.mask_stat & MAP_FLAG_CLIFF_MASK)
         {
             ftCommonCliffCatchSetStatus(fighter_gobj);
         }
-        else if (fp->coll_data.coll_mask_stat & MAP_FLAG_FLOOR)
+        else if (fp->coll_data.mask_stat & MAP_FLAG_FLOOR)
         {
             mpCommonSetFighterGround(fp);
             ftMainSetStatus(fighter_gobj, nFTLinkStatusSpecialHiEnd, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);

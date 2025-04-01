@@ -333,7 +333,7 @@ sb32 itTaruBombRollProcMap(GObj *item_gobj)
     {
         itMainSetStatus(item_gobj, dITTaruBombStatusDescs, nITTaruBombStatusFall);
     }
-    else if (ip->coll_data.coll_mask_curr & (MAP_FLAG_RWALL | MAP_FLAG_LWALL))
+    else if (ip->coll_data.mask_curr & (MAP_FLAG_RWALL | MAP_FLAG_LWALL))
     {
         return itTaruBombCommonProcHit(item_gobj);
     }

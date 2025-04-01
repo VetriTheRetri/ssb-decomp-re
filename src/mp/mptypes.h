@@ -126,20 +126,23 @@ struct MPCollData
 {
 	Vec3f *p_translate;			 	// Points to object's TopN translation vector
 	s32 *p_lr;					 	// Points to object's facing direction sign
-	Vec3f pos_curr;					// Main object collision position
-	Vec3f pos_correct;			 	// Unconfirmed
-	Vec3f pos_speed;			 	// Applied from moving collisions
+	Vec3f pos_prev;					// Previous position
+	Vec3f pos_diff;			 		// Distance traveled between collision updates
+	Vec3f vel_speed;			 	// Applied from moving collisions
 	Vec3f vel_push;				 	// Applied from extern stage objects such as Whispy's Wind
 	MPObjectColl map_coll;	 		// Environmental collision box
 	MPObjectColl *p_map_coll; 		// Points back to environmental collision box???
 	Vec2f cliffcatch_coll;		 	// Ledge grab collision box
-	u16 coll_mask_prev;			 	// Previous collision flags?
-	u16 coll_mask_curr;				// Current collision flags
-	u16 coll_mask_unk;			 	// ???
-	u16 coll_mask_stat;			 	// Used exclusively by object to transition between action states? Also, persists unlike the above three.
-	u16 coll_update_tic;		 	// Updates each frame?
+
+	u16 mask_prev;			 		// Previous collision flags?
+	u16 mask_curr;					// Current collision flags
+	u16 mask_unk;			 		// ???
+	u16 mask_stat;			 		// Used exclusively by object to transition between action states? Also, persists unlike the above three
+	
+	u16 update_tic;		 			// Updates on each tic
 	s32 ewall_line_id;			 	// Line ID of wall that is right under the ledge the object is standing on?
 	sb32 is_coll_end;			 	// Collision task completion bool? Main collision loop's second condition is that this is FALSE
+
 	Vec3f line_coll_dist;	 		// Distance to nearest collision?
 
 	s32 floor_line_id; 				// Floor collision line ID
@@ -170,7 +173,7 @@ struct MPItemWeights
 
 struct MPGroundDesc
 {
-	void *dobjdesc;
+	DObjDesc *dobjdesc;
 	AObjEvent32 **anim_joints;
 	MObjSub ***p_mobjsubs;
 	AObjEvent32 ***p_matanim_joints;

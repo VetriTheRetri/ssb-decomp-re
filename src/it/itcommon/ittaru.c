@@ -386,7 +386,7 @@ sb32 itTaruRollProcMap(GObj *item_gobj)
     {
         itMainSetStatus(item_gobj, dITTaruStatusDescs, nITTaruStatusDropped);
     }
-    else if (ip->coll_data.coll_mask_curr & (MAP_FLAG_RWALL | MAP_FLAG_LWALL))
+    else if (ip->coll_data.mask_curr & (MAP_FLAG_RWALL | MAP_FLAG_LWALL))
     {
         return itTaruCommonProcHit(item_gobj);
     }

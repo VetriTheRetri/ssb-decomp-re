@@ -140,7 +140,7 @@ void itProcessProcItemMain(GObj *item_gobj)
     {
         Vec3f *translate = &DObjGetStruct(item_gobj)->translate.vec.f;
 
-        ip->coll_data.pos_curr = *translate;
+        ip->coll_data.pos_prev = *translate;
 
         if (ip->hitlag_tics == 0)
         {
@@ -148,29 +148,29 @@ void itProcessProcItemMain(GObj *item_gobj)
             translate->y += ip->physics.vel_air.y;
             translate->z += ip->physics.vel_air.z;
         }
-        ip->coll_data.pos_correct.x = translate->x - ip->coll_data.pos_curr.x;
-        ip->coll_data.pos_correct.y = translate->y - ip->coll_data.pos_curr.y;
-        ip->coll_data.pos_correct.z = translate->z - ip->coll_data.pos_curr.z;
+        ip->coll_data.pos_diff.x = translate->x - ip->coll_data.pos_prev.x;
+        ip->coll_data.pos_diff.y = translate->y - ip->coll_data.pos_prev.y;
+        ip->coll_data.pos_diff.z = translate->z - ip->coll_data.pos_prev.z;
 
         if ((ip->is_attach_surface) && (mpCollisionCheckExistLineID(ip->attach_line_id) != FALSE))
         {
             MPCollData *coll_data = &ip->coll_data;
 
-            mpCollisionGetSpeedLineID(ip->attach_line_id, &ip->coll_data.pos_speed);
+            mpCollisionGetSpeedLineID(ip->attach_line_id, &ip->coll_data.vel_speed);
 
-            translate->x += coll_data->pos_speed.x;
-            translate->y += coll_data->pos_speed.y;
-            translate->z += coll_data->pos_speed.z;
+            translate->x += coll_data->vel_speed.x;
+            translate->y += coll_data->vel_speed.y;
+            translate->z += coll_data->vel_speed.z;
         }
         else if ((ip->ga == nMPKineticsGround) && (ip->coll_data.floor_line_id != -1) && (ip->coll_data.floor_line_id != -2) && (mpCollisionCheckExistLineID(ip->coll_data.floor_line_id) != FALSE))
         {
-            mpCollisionGetSpeedLineID(ip->coll_data.floor_line_id, &ip->coll_data.pos_speed);
+            mpCollisionGetSpeedLineID(ip->coll_data.floor_line_id, &ip->coll_data.vel_speed);
 
-            translate->x += ip->coll_data.pos_speed.x;
-            translate->y += ip->coll_data.pos_speed.y;
-            translate->z += ip->coll_data.pos_speed.z;
+            translate->x += ip->coll_data.vel_speed.x;
+            translate->y += ip->coll_data.vel_speed.y;
+            translate->z += ip->coll_data.vel_speed.z;
         }
-        else ip->coll_data.pos_speed.x = ip->coll_data.pos_speed.y = ip->coll_data.pos_speed.z = 0.0F;
+        else ip->coll_data.vel_speed.x = ip->coll_data.vel_speed.y = ip->coll_data.vel_speed.z = 0.0F;
 
         if ((translate->y < gMPCollisionGroundData->map_bound_bottom) || (translate->x > gMPCollisionGroundData->map_bound_right) || (translate->x < gMPCollisionGroundData->map_bound_left) || (translate->y > gMPCollisionGroundData->map_bound_top))
         {
@@ -182,11 +182,11 @@ void itProcessProcItemMain(GObj *item_gobj)
         }
         if (ip->proc_map != NULL)
         {
-            ip->coll_data.coll_mask_prev = ip->coll_data.coll_mask_curr;
-            ip->coll_data.coll_mask_curr = 0;
+            ip->coll_data.mask_prev = ip->coll_data.mask_curr;
+            ip->coll_data.mask_curr = 0;
             ip->coll_data.is_coll_end = FALSE;
-            ip->coll_data.coll_mask_stat = 0;
-            ip->coll_data.coll_mask_unk = 0;
+            ip->coll_data.mask_stat = 0;
+            ip->coll_data.mask_unk = 0;
 
             if (ip->proc_map(item_gobj) != FALSE)
             {
@@ -479,13 +479,13 @@ void itProcessUpdateDamageStatItem(ITStruct *attack_ip, ITAttackColl *attack_col
 
     if (vel < 5.0F)
     {
-        attack_ip->attack_lr = lr = (DObjGetStruct(defend_gobj)->translate.vec.f.x < DObjGetStruct(attack_gobj)->translate.vec.f.x) ? -1 : +1;
+        attack_ip->hit_lr = lr = (DObjGetStruct(defend_gobj)->translate.vec.f.x < DObjGetStruct(attack_gobj)->translate.vec.f.x) ? -1 : +1;
     }
     else
     {
         lr = (attack_ip->physics.vel_air.x < 0) ? -1 : +1;
 
-        attack_ip->attack_lr = lr;
+        attack_ip->hit_lr = lr;
     }
     if (damage_coll->hitstatus == nGMHitStatusNormal)
     {

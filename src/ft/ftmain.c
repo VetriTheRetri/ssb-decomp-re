@@ -1721,7 +1721,7 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f *topn_translate = &fp->joints[nFTPartsJointTopN]->translate.vec.f;
-    Vec3f *coll_translate = &fp->coll_data.pos_curr;
+    Vec3f *coll_translate = &fp->coll_data.pos_prev;
     Vec3f *floor_angle = &fp->coll_data.floor_angle;
     Vec3f *vel_damage_air;
     s32 unused[2];
@@ -1784,18 +1784,18 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
     {
         fp->proc_lagupdate(fighter_gobj);
     }
-    syVectorDiff3D(&fp->coll_data.pos_correct, topn_translate, coll_translate);
+    syVectorDiff3D(&fp->coll_data.pos_diff, topn_translate, coll_translate);
 
     if ((fp->ga == nMPKineticsGround) && (fp->coll_data.floor_line_id != -1) && (fp->coll_data.floor_line_id != -2) && (mpCollisionCheckExistLineID(fp->coll_data.floor_line_id) != FALSE))
     {
-        mpCollisionGetSpeedLineID(fp->coll_data.floor_line_id, &fp->coll_data.pos_speed);
-        syVectorAdd3D(topn_translate, &fp->coll_data.pos_speed);
+        mpCollisionGetSpeedLineID(fp->coll_data.floor_line_id, &fp->coll_data.vel_speed);
+        syVectorAdd3D(topn_translate, &fp->coll_data.vel_speed);
     }
-    else fp->coll_data.pos_speed.x = fp->coll_data.pos_speed.y = fp->coll_data.pos_speed.z = 0.0F;
+    else fp->coll_data.vel_speed.x = fp->coll_data.vel_speed.y = fp->coll_data.vel_speed.z = 0.0F;
 
     ftCommonDeadCheckInterruptCommon(fighter_gobj);
 
-    if ((fp->coll_data.pos_curr.y >= gMPCollisionGroundData->alt_warning) && (topn_translate->y < gMPCollisionGroundData->alt_warning) && (fp->fkind != nFTKindBoss))
+    if ((fp->coll_data.pos_prev.y >= gMPCollisionGroundData->alt_warning) && (topn_translate->y < gMPCollisionGroundData->alt_warning) && (fp->fkind != nFTKindBoss))
     {
         func_800269C0_275C0(nSYAudioFGMAltitudeWarn);
     }
@@ -1808,11 +1808,11 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
     }
     if (fp->proc_map != NULL)
     {
-        fp->coll_data.coll_mask_prev = fp->coll_data.coll_mask_curr;
-        fp->coll_data.coll_mask_curr = 0;
+        fp->coll_data.mask_prev = fp->coll_data.mask_curr;
+        fp->coll_data.mask_curr = 0;
         fp->coll_data.is_coll_end = FALSE;
-        fp->coll_data.coll_mask_stat = 0;
-        fp->coll_data.coll_mask_unk = 0;
+        fp->coll_data.mask_stat = 0;
+        fp->coll_data.mask_unk = 0;
 
         fp->proc_map(fighter_gobj);
 
@@ -2000,7 +2000,7 @@ void ftMainSetHitRebound(GObj *attacker_gobj, FTStruct *fp, FTAttackColl *attack
         {
             fp->attack_rebound = (fp->attack_shield_push * 1.62F) + 4.0F;
 
-            fp->attack_lr = (DObjGetStruct(attacker_gobj)->translate.vec.f.x < DObjGetStruct(victim_gobj)->translate.vec.f.x) ? +1 : -1;
+            fp->hit_lr = (DObjGetStruct(attacker_gobj)->translate.vec.f.x < DObjGetStruct(victim_gobj)->translate.vec.f.x) ? +1 : -1;
         }
     }
 }
@@ -2480,7 +2480,7 @@ void ftMainUpdateDamageStatItem(ITStruct *ip, ITAttackColl *it_attack_coll, s32 
 {
     s32 damage_temp = itMainGetDamageOutput(ip);
     s32 damage;
-    s32 attack_lr;
+    s32 hit_lr;
 
     itProcessSetHitInteractStats(it_attack_coll, fighter_gobj, (it_attack_coll->can_rehit_fighter) ? nGMHitTypeDamageRehit : nGMHitTypeDamage, 0);
 
@@ -2524,13 +2524,13 @@ void ftMainUpdateDamageStatItem(ITStruct *ip, ITAttackColl *it_attack_coll, s32 
         }
         if (ABSF(ip->physics.vel_air.x) < 5.0F)
         {
-            ip->attack_lr = attack_lr = (DObjGetStruct(fighter_gobj)->translate.vec.f.x < DObjGetStruct(item_gobj)->translate.vec.f.x) ? -1 : +1;
+            ip->hit_lr = hit_lr = (DObjGetStruct(fighter_gobj)->translate.vec.f.x < DObjGetStruct(item_gobj)->translate.vec.f.x) ? -1 : +1;
         }
         else
         {
-            attack_lr = (ip->physics.vel_air.x < 0) ? -1 : +1;
+            hit_lr = (ip->physics.vel_air.x < 0) ? -1 : +1;
 
-            ip->attack_lr = attack_lr;
+            ip->hit_lr = hit_lr;
         }
         if 
         (

@@ -2109,12 +2109,12 @@ void* ftParamMakeEffect(GObj *fighter_gobj, s32 effect_id, s32 joint_id, Vec3f *
 void ftParamKirbyTryMakeMapStarEffect(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    u16 coll_mask = (fp->coll_data.coll_mask_prev ^ fp->coll_data.coll_mask_curr) & fp->coll_data.coll_mask_curr & MAP_FLAG_MAIN_MASK;
+    u16 mask = (fp->coll_data.mask_prev ^ fp->coll_data.mask_curr) & fp->coll_data.mask_curr & MAP_FLAG_MAIN_MASK;
     Vec3f pos;
 
-    if (coll_mask)
+    if (mask)
     {
-        if (coll_mask & MAP_FLAG_LWALL)
+        if (mask & MAP_FLAG_LWALL)
         {
             pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
@@ -2123,7 +2123,7 @@ void ftParamKirbyTryMakeMapStarEffect(GObj *fighter_gobj)
 
             efManagerKirbyStarMakeEffect(&pos);
         }
-        if (coll_mask & MAP_FLAG_RWALL)
+        if (mask & MAP_FLAG_RWALL)
         {
             pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
@@ -2132,7 +2132,7 @@ void ftParamKirbyTryMakeMapStarEffect(GObj *fighter_gobj)
 
             efManagerKirbyStarMakeEffect(&pos);
         }
-        if (coll_mask & MAP_FLAG_CEIL)
+        if (mask & MAP_FLAG_CEIL)
         {
             pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
@@ -2140,7 +2140,7 @@ void ftParamKirbyTryMakeMapStarEffect(GObj *fighter_gobj)
 
             efManagerKirbyStarMakeEffect(&pos);
         }
-        if (coll_mask & MAP_FLAG_FLOOR)
+        if (mask & MAP_FLAG_FLOOR)
         {
             pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 

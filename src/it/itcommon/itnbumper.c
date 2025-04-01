@@ -227,7 +227,7 @@ sb32 itNBumperThrownProcHit(GObj *item_gobj)
 
     dobj->mobj->palette_id = 1.0F;
 
-    ip->physics.vel_air.x = ITBUMPER_REBOUND_AIR_X * ip->attack_lr;
+    ip->physics.vel_air.x = ITBUMPER_REBOUND_AIR_X * ip->hit_lr;
     ip->physics.vel_air.y = ITBUMPER_REBOUND_AIR_Y;
 
     ip->multi = ITBUMPER_HIT_SCALE;
@@ -406,9 +406,9 @@ sb32 itNBumperAttachedProcHit(GObj *item_gobj)
 
     dobj->mobj->palette_id = 1.0F;
 
-    ip->lr = -ip->attack_lr;
+    ip->lr = -ip->hit_lr;
 
-    ip->physics.vel_air.x = ip->attack_lr * ITBUMPER_REBOUND_VEL_X;
+    ip->physics.vel_air.x = ip->hit_lr * ITBUMPER_REBOUND_VEL_X;
 
     ip->multi = ITBUMPER_HIT_SCALE;
 

@@ -123,7 +123,7 @@ sb32 ftCaptainSpecialLwBoundCheckGoto(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->motion_vars.flags.flag1 == 1) && (fp->coll_data.coll_mask_curr & (MAP_FLAG_RWALL | MAP_FLAG_LWALL)))
+    if ((fp->motion_vars.flags.flag1 == 1) && (fp->coll_data.mask_curr & (MAP_FLAG_RWALL | MAP_FLAG_LWALL)))
     {
         mpCommonSetFighterAir(fp);
         ftMainSetStatus(fighter_gobj, nFTCaptainStatusSpecialLwBound, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);

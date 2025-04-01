@@ -534,7 +534,7 @@ sb32 itRShellSpinProcMap(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    if ((itMapCheckLRWallProcNoFloor(item_gobj, itRShellSpinAirSetStatus) != FALSE) && (ip->coll_data.coll_mask_curr & (MAP_FLAG_RWALL | MAP_FLAG_LWALL)))
+    if ((itMapCheckLRWallProcNoFloor(item_gobj, itRShellSpinAirSetStatus) != FALSE) && (ip->coll_data.mask_curr & (MAP_FLAG_RWALL | MAP_FLAG_LWALL)))
     {
         ip->physics.vel_air.x = -ip->physics.vel_air.x;
 
@@ -561,7 +561,7 @@ sb32 itRShellCommonProcHit(GObj *item_gobj)
 
     ip->item_vars.shell.health = syUtilsRandIntRange(ITRSHELL_HEALTH_MAX);
 
-    ip->physics.vel_air.x = ((ip->physics.vel_air.x * -1.0F) + (ITRSHELL_RECOIL_VEL_X * ip->attack_lr)) * ITRSHELL_RECOIL_MUL_X;
+    ip->physics.vel_air.x = ((ip->physics.vel_air.x * -1.0F) + (ITRSHELL_RECOIL_VEL_X * ip->hit_lr)) * ITRSHELL_RECOIL_MUL_X;
 
     itRShellCommonClearAnim(item_gobj);
 

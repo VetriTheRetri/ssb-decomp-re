@@ -569,7 +569,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTDesc *desc)
         fp->ga = nMPKineticsAir;
         fp->jumps_used = 1;
     }
-    fp->coll_data.pos_curr = DObjGetStruct(fighter_gobj)->translate.vec.f;
+    fp->coll_data.pos_prev = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
     switch (fp->fkind)
     {
@@ -849,8 +849,8 @@ GObj* ftManagerMakeFighter(FTDesc *desc) // Create fighter
     fp->coll_data.p_map_coll = &fp->coll_data.map_coll;
     fp->coll_data.cliffcatch_coll = attr->cliffcatch_coll;
     fp->coll_data.ignore_line_id = -1;
-    fp->coll_data.coll_update_tic = gMPCollisionUpdateTic;
-    fp->coll_data.coll_mask_curr = 0;
+    fp->coll_data.update_tic = gMPCollisionUpdateTic;
+    fp->coll_data.mask_curr = 0;
 
     if (fp->pkind != nFTPlayerKindDemo)
     {

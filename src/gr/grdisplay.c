@@ -155,7 +155,7 @@ void grDisplayLayer3SecProcDisplay(GObj *ground_gobj)
 }
 
 // 0x801053CC
-void grDisplayDObjSetNoAnimMtx(GObj *ground_gobj, DObjDesc *dobjdesc)
+void grDisplayDObjSetNoAnimXObj(GObj *ground_gobj, DObjDesc *dobjdesc)
 {
     DObj *root_dobj;
     DObj *next_dobj;
@@ -213,7 +213,7 @@ GObj* grDisplayMakeGeometryLayer(MPGroundDesc *gr_desc, s32 gr_desc_id, DObj **d
     {
         gcAddGObjProcess(ground_gobj, mpCollisionAdvanceUpdateTic, nGCProcessKindFunc, 4);
     }
-    grDisplayDObjSetNoAnimMtx(ground_gobj, gr_desc->dobjdesc);
+    grDisplayDObjSetNoAnimXObj(ground_gobj, gr_desc->dobjdesc);
 
     return ground_gobj;
 }

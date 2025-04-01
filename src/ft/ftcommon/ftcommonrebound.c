@@ -45,7 +45,7 @@ void ftCommonReboundWaitSetStatus(GObj *fighter_gobj)
 
     fp->status_vars.common.rebound.rebound_timer = fp->attack_rebound;
 
-    if (fp->lr == fp->attack_lr)
+    if (fp->lr == fp->hit_lr)
     {
         lr_rebound = -1;
     }

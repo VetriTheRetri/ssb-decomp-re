@@ -8,6 +8,7 @@
 #define MAP_FLAG_LCLIFF (1 << 12)	    // 0x1000
 #define MAP_FLAG_RCLIFF (1 << 13)	    // 0x2000
 #define MAP_FLAG_CEILHEAVY (1 << 14)    // 0x4000 - hard ceiling, can't pass through
+#define MAP_FLAG_FLOOREDGE (1 << 15)    // 0x8000 - edge of floor collision
 
 #define MAP_FLAG_MAIN_MASK (MAP_FLAG_FLOOR | MAP_FLAG_CEIL | MAP_FLAG_RWALL | MAP_FLAG_LWALL)   // Mask every main collision flag
 #define MAP_FLAG_CLIFF_MASK (MAP_FLAG_LCLIFF | MAP_FLAG_RCLIFF)			                        // Mask all ledge flags

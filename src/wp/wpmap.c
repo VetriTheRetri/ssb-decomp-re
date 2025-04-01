@@ -26,7 +26,7 @@ sb32 wpMapProcLRWallCheckFloor(MPCollData *coll_data, GObj *weapon_gobj, u32 fla
     }
     if (mpProcessCheckTestFloorCollisionNew(coll_data) != FALSE)
     {
-        if (coll_data->coll_mask_stat & MAP_FLAG_FLOOR)
+        if (coll_data->mask_stat & MAP_FLAG_FLOOR)
         {
             mpProcessRunFloorEdgeAdjust(coll_data);
 
@@ -37,9 +37,9 @@ sb32 wpMapProcLRWallCheckFloor(MPCollData *coll_data, GObj *weapon_gobj, u32 fla
     
     if (mpProcessCheckTestFloorCollision(coll_data, floor_line_id) != FALSE)
     {
-        func_ovl2_800DD59C(coll_data);
+        mpProcessSetLandingFloor(coll_data);
 
-        if (coll_data->coll_mask_stat & MAP_FLAG_FLOOR)
+        if (coll_data->mask_stat & MAP_FLAG_FLOOR)
         {
             mpProcessRunFloorEdgeAdjust(coll_data);
 
@@ -53,7 +53,7 @@ sb32 wpMapProcLRWallCheckFloor(MPCollData *coll_data, GObj *weapon_gobj, u32 fla
 // 0x8016796C
 sb32 wpMapTestLRWallCheckFloor(GObj *weapon_gobj)
 {
-    return mpProcessUpdateMapProcMain(&wpGetStruct(weapon_gobj)->coll_data, wpMapProcLRWallCheckFloor, weapon_gobj, 0);
+    return mpProcessUpdateMain(&wpGetStruct(weapon_gobj)->coll_data, wpMapProcLRWallCheckFloor, weapon_gobj, 0);
 }
 
 // 0x801679A0
@@ -71,16 +71,16 @@ sb32 wpMapProcAll(MPCollData *coll_data, GObj *weapon_gobj, u32 flags)
     {
         mpProcessRunCeilCollisionAdjNew(coll_data);
 
-        if (coll_data->coll_mask_stat & MAP_FLAG_CEIL)
+        if (coll_data->mask_stat & MAP_FLAG_CEIL)
         {
             mpProcessRunCeilEdgeAdjust(coll_data);
         }
     }
     if (mpProcessRunFloorCollisionAdjNewNULL(coll_data) != FALSE)
     {
-        func_ovl2_800DD6A8(coll_data);
+        mpProcessSetCollideFloor(coll_data);
 
-        if (coll_data->coll_mask_stat & MAP_FLAG_FLOOR)
+        if (coll_data->mask_stat & MAP_FLAG_FLOOR)
         {
             mpProcessRunFloorEdgeAdjust(coll_data);
         }
@@ -91,7 +91,7 @@ sb32 wpMapProcAll(MPCollData *coll_data, GObj *weapon_gobj, u32 flags)
 // 0x80167A58
 sb32 wpMapTestAll(GObj *weapon_gobj)
 {
-    return mpProcessUpdateMapProcMain(&wpGetStruct(weapon_gobj)->coll_data, wpMapProcAll, weapon_gobj, 0);
+    return mpProcessUpdateMain(&wpGetStruct(weapon_gobj)->coll_data, wpMapProcAll, weapon_gobj, 0);
 }
 
 // 0x80167A8C
@@ -109,16 +109,16 @@ sb32 wpMapProcAllCheckFloor(MPCollData *coll_data, GObj *weapon_gobj, u32 flags)
     {
         mpProcessRunCeilCollisionAdjNew(coll_data);
 
-        if (coll_data->coll_mask_stat & MAP_FLAG_CEIL)
+        if (coll_data->mask_stat & MAP_FLAG_CEIL)
         {
             mpProcessRunCeilEdgeAdjust(coll_data);
         }
     }
     if (mpProcessRunFloorCollisionAdjNewNULL(coll_data) != FALSE)
     {
-        func_ovl2_800DD59C(coll_data);
+        mpProcessSetLandingFloor(coll_data);
 
-        if (coll_data->coll_mask_stat & MAP_FLAG_FLOOR)
+        if (coll_data->mask_stat & MAP_FLAG_FLOOR)
         {
             mpProcessRunFloorEdgeAdjust(coll_data);
 
@@ -133,7 +133,7 @@ sb32 wpMapProcAllCheckFloor(MPCollData *coll_data, GObj *weapon_gobj, u32 flags)
 // 0x80167B58
 sb32 wpMapTestAllCheckFloor(GObj *weapon_gobj)
 {
-    return mpProcessUpdateMapProcMain(&wpGetStruct(weapon_gobj)->coll_data, wpMapProcAllCheckFloor, weapon_gobj, 0);
+    return mpProcessUpdateMain(&wpGetStruct(weapon_gobj)->coll_data, wpMapProcAllCheckFloor, weapon_gobj, 0);
 }
 
 // 0x80167B8C
@@ -161,7 +161,7 @@ sb32 wpMapProcAllCheckCollEnd(MPCollData *coll_data, GObj *weapon_gobj, u32 flag
 // 0x80167C04
 sb32 wpMapTestAllCheckCollEnd(GObj *weapon_gobj)
 {
-    return mpProcessUpdateMapProcMain(&wpGetStruct(weapon_gobj)->coll_data, wpMapProcAllCheckCollEnd, weapon_gobj, 0);
+    return mpProcessUpdateMain(&wpGetStruct(weapon_gobj)->coll_data, wpMapProcAllCheckCollEnd, weapon_gobj, 0);
 }
 
 // 0x80167C38
@@ -171,7 +171,7 @@ sb32 wpMapCheckAllRebound(GObj *weapon_gobj, u32 check_flags, f32 mod_vel, Vec3f
     MPCollData *coll_data = &wp->coll_data;
     sb32 return_bool = FALSE;
     Vec3f mod_pos, *translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
-    u16 coll_flags = (wp->coll_data.coll_mask_prev ^ wp->coll_data.coll_mask_curr) & wp->coll_data.coll_mask_curr & MAP_FLAG_MAIN_MASK;
+    u16 coll_flags = (wp->coll_data.mask_prev ^ wp->coll_data.mask_curr) & wp->coll_data.mask_curr & MAP_FLAG_MAIN_MASK;
     u32 unused;
 
     if (coll_flags & check_flags & MAP_FLAG_LWALL)

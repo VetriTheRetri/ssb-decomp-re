@@ -25,7 +25,7 @@ sb32 itMapProcLRWallCheckFloor(MPCollData *coll_data, GObj *item_gobj, u32 flags
     }
     if (mpProcessCheckTestFloorCollisionNew(coll_data) != FALSE)
     {
-        if (coll_data->coll_mask_stat & MAP_FLAG_FLOOR)
+        if (coll_data->mask_stat & MAP_FLAG_FLOOR)
         {
             mpProcessRunFloorEdgeAdjust(coll_data);
             is_collide_ground = TRUE;
@@ -35,9 +35,9 @@ sb32 itMapProcLRWallCheckFloor(MPCollData *coll_data, GObj *item_gobj, u32 flags
     
     if (mpProcessCheckTestFloorCollision(coll_data, floor_line_id) != FALSE)
     {
-        func_ovl2_800DD59C(coll_data);
+        mpProcessSetLandingFloor(coll_data);
 
-        if (coll_data->coll_mask_stat & MAP_FLAG_FLOOR)
+        if (coll_data->mask_stat & MAP_FLAG_FLOOR)
         {
             mpProcessRunFloorEdgeAdjust(coll_data);
             is_collide_ground = TRUE;
@@ -50,7 +50,7 @@ sb32 itMapProcLRWallCheckFloor(MPCollData *coll_data, GObj *item_gobj, u32 flags
 // 0x8017356C
 sb32 itMapTestLRWallCheckFloor(GObj *item_gobj)
 {
-    return mpProcessUpdateMapProcMain(&itGetStruct(item_gobj)->coll_data, itMapProcLRWallCheckFloor, item_gobj, 0);
+    return mpProcessUpdateMain(&itGetStruct(item_gobj)->coll_data, itMapProcLRWallCheckFloor, item_gobj, 0);
 }
 
 // 0x801735A0
@@ -98,7 +98,7 @@ sb32 itMapProcAllCheckCollEnd(MPCollData *coll_data, GObj *item_gobj, u32 flags)
 // 0x80173680
 sb32 itMapTestAllCheckCollEnd(GObj *item_gobj)
 {
-    return mpProcessUpdateMapProcMain(&itGetStruct(item_gobj)->coll_data, itMapProcAllCheckCollEnd, item_gobj, 0);
+    return mpProcessUpdateMain(&itGetStruct(item_gobj)->coll_data, itMapProcAllCheckCollEnd, item_gobj, 0);
 }
 
 // 0x801736B4
@@ -119,16 +119,16 @@ sb32 itMapProcAllCheckCollisionFlag(MPCollData *coll_data, GObj *item_gobj, u32 
     {
         mpProcessRunCeilCollisionAdjNew(coll_data);
 
-        if (coll_data->coll_mask_stat & MAP_FLAG_CEIL)
+        if (coll_data->mask_stat & MAP_FLAG_CEIL)
         {
             mpProcessRunCeilEdgeAdjust(coll_data);
         }
     }
     if (mpProcessRunFloorCollisionAdjNewNULL(coll_data) != FALSE)
     {
-        func_ovl2_800DD59C(coll_data);
+        mpProcessSetLandingFloor(coll_data);
 
-        if (coll_data->coll_mask_stat & MAP_FLAG_FLOOR)
+        if (coll_data->mask_stat & MAP_FLAG_FLOOR)
         {
             mpProcessRunFloorEdgeAdjust(coll_data);
             func_800269C0_275C0(nSYAudioFGMItemMapCollide);
@@ -139,7 +139,7 @@ sb32 itMapProcAllCheckCollisionFlag(MPCollData *coll_data, GObj *item_gobj, u32 
             coll_data->is_coll_end = TRUE;
         }
     }
-    if (coll_data->coll_mask_curr & coll_flags)
+    if (coll_data->mask_curr & coll_flags)
     {
         return TRUE;
     }
@@ -149,7 +149,7 @@ sb32 itMapProcAllCheckCollisionFlag(MPCollData *coll_data, GObj *item_gobj, u32 
 // 0x801737B8
 sb32 itMapTestAllCollisionFlag(GObj *item_gobj, u32 flag)
 {
-    return mpProcessUpdateMapProcMain(&itGetStruct(item_gobj)->coll_data, itMapProcAllCheckCollisionFlag, item_gobj, flag);
+    return mpProcessUpdateMain(&itGetStruct(item_gobj)->coll_data, itMapProcAllCheckCollisionFlag, item_gobj, flag);
 }
 
 // 0x801737EC
@@ -160,7 +160,7 @@ sb32 itMapCheckCollideAllRebound(GObj *item_gobj, u32 check_flags, f32 mod_vel, 
     Vec3f *translate = &DObjGetStruct(item_gobj)->translate.vec.f;
     Vec3f mod_pos;
     sb32 return_bool = FALSE;
-    u16 coll_flags = (ip->coll_data.coll_mask_prev ^ ip->coll_data.coll_mask_curr) & ip->coll_data.coll_mask_curr & MAP_FLAG_MAIN_MASK;
+    u16 coll_flags = (ip->coll_data.mask_prev ^ ip->coll_data.mask_curr) & ip->coll_data.mask_curr & MAP_FLAG_MAIN_MASK;
 
     if (coll_flags & check_flags & MAP_FLAG_LWALL)
     {
@@ -334,7 +334,7 @@ sb32 itMapCheckMapReboundProcAll(GObj *item_gobj, f32 common_rebound, f32 ground
     {
         itMainSetSpinVelLR(item_gobj);
     }
-    if (coll_data->coll_mask_curr & MAP_FLAG_FLOOR)
+    if (coll_data->mask_curr & MAP_FLAG_FLOOR)
     {
         lbCommonReflect2D(&ip->physics.vel_air, &coll_data->floor_angle);
         lbCommonScale2D(&ip->physics.vel_air, ground_rebound);

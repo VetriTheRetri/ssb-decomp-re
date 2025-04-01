@@ -106,7 +106,7 @@ sb32 itTosakintoAppearProcMap(GObj *item_gobj)
 
     itMapTestAllCheckCollEnd(item_gobj);
 
-    if (ip->coll_data.coll_mask_curr & MAP_FLAG_FLOOR)
+    if (ip->coll_data.mask_curr & MAP_FLAG_FLOOR)
     {
         ip->physics.vel_air.y = ITTOSAKINTO_FLAP_VEL_Y;
 
@@ -154,7 +154,7 @@ sb32 itTosakintoBounceProcMap(GObj *item_gobj)
 
     itMapTestAllCheckCollEnd(item_gobj);
 
-    if (ip->coll_data.coll_mask_curr & MAP_FLAG_FLOOR)
+    if (ip->coll_data.mask_curr & MAP_FLAG_FLOOR)
     {
         ip->physics.vel_air.y = ITTOSAKINTO_FLAP_VEL_Y;
 

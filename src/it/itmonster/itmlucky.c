@@ -150,7 +150,7 @@ sb32 itMLuckyFallProcMap(GObj *item_gobj)
 
     itMapTestAllCheckCollEnd(item_gobj);
 
-    if (ip->coll_data.coll_mask_curr & MAP_FLAG_FLOOR)
+    if (ip->coll_data.mask_curr & MAP_FLAG_FLOOR)
     {
         ip->physics.vel_air.y = 0.0F;
 
@@ -191,7 +191,7 @@ sb32 itMLuckyAppearProcMap(GObj *item_gobj)
 
     itMapTestAllCheckCollEnd(item_gobj);
 
-    if (ip->coll_data.coll_mask_curr & MAP_FLAG_FLOOR)
+    if (ip->coll_data.mask_curr & MAP_FLAG_FLOOR)
     {
         ip->physics.vel_air.y = 0.0F;
 

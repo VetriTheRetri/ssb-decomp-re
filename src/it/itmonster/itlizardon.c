@@ -152,7 +152,7 @@ sb32 itLizardonFallUnusedProcMap(GObj *item_gobj)
 
     itMapCheckLanding(item_gobj, ITLIZARDON_MAP_REBOUND_COMMON, ITLIZARDON_MAP_REBOUND_GROUND, itLizardonAttackSetStatus);
 
-    if (ip->coll_data.coll_mask_curr & MAP_FLAG_FLOOR)
+    if (ip->coll_data.mask_curr & MAP_FLAG_FLOOR)
     {
         ip->physics.vel_air.y = 0.0F;
     }
@@ -187,7 +187,7 @@ sb32 itLizardonFallProcMap(GObj *item_gobj)
 
     itMapTestAllCheckCollEnd(item_gobj);
 
-    if (ip->coll_data.coll_mask_curr & MAP_FLAG_FLOOR)
+    if (ip->coll_data.mask_curr & MAP_FLAG_FLOOR)
     {
         ip->physics.vel_air.y = 0.0F;
 

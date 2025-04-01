@@ -246,9 +246,9 @@ sb32 itLinkBombThrownProcHit(GObj *item_gobj)
 	}
 	else
 	{
-		ip->lr = -ip->attack_lr;
+		ip->lr = -ip->hit_lr;
 
-		ip->physics.vel_air.x = -ip->attack_lr * ITLINKBOMB_HIT_RECOIL_VEL_X;
+		ip->physics.vel_air.x = -ip->hit_lr * ITLINKBOMB_HIT_RECOIL_VEL_X;
 		ip->physics.vel_air.y = ITLINKBOMB_HIT_RECOIL_VEL_Y;
 
 		itLinkBombFallSetStatus(item_gobj);

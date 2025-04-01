@@ -58,7 +58,7 @@ void ftSamusSpecialHiProcMap(GObj *fighter_gobj)
         }
         else if (mpCommonCheckFighterPassCliff(fighter_gobj, ftSamusSpecialHiProcPass) != FALSE)
         {
-            if (fp->coll_data.coll_mask_stat & MAP_FLAG_CLIFF_MASK)
+            if (fp->coll_data.mask_stat & MAP_FLAG_CLIFF_MASK)
             {
                 ftCommonCliffCatchSetStatus(fighter_gobj);
             }

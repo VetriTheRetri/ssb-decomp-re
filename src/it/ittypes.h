@@ -220,7 +220,7 @@ struct ITStruct 						// Common items, stage hazards, fighter items and Pokémon
 	ITDamageColl damage_coll; 			// Item's hurtbox
 
 	s32 hit_normal_damage;				// Damage applied to entity this item has hit
-	s32 attack_lr;						// Direction of outgoing attack?
+	s32 hit_lr;						// Direction of outgoing attack?
 	s32 hit_refresh_damage; 			// Damage applied to entity this item has hit, if rehit is possible?
 	s32 hit_attack_damage;				// Damage item dealt to other attack
 	s32 hit_shield_damage;	 	 		// Damage item dealt to shield

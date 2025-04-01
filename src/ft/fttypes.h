@@ -1180,7 +1180,7 @@ struct FTStruct
     u16 attack_count;                   // Number of times this fighter successfully dealt damage 
     s32 attack_shield_push;             // Used to calculate shield/rebound pushback
     f32 attack_rebound;                 // Actually 2x staled damage?
-    s32 attack_lr;
+    s32 hit_lr;
     s32 shield_damage;
     s32 shield_damage_total;            // shield_damage + hitbox damage + hitbox shield damage, does not persist?
     s32 shield_lr;                      // Direction in which shield knockback is set to occur

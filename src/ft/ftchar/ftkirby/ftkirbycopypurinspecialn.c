@@ -116,7 +116,7 @@ void ftKirbyCopyPurinSpecialNSetStatus(GObj *fighter_gobj)
 {
     ftMainSetStatus(fighter_gobj, nFTKirbyStatusCopyPurinSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftKirbyCopyPurinSpecialNInitStatusVars(fighter_gobj);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 }
 
 // 0x80151B04
@@ -124,5 +124,5 @@ void ftKirbyCopyPurinSpecialAirNSetStatus(GObj *fighter_gobj)
 {
     ftMainSetStatus(fighter_gobj, nFTKirbyStatusCopyPurinSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftKirbyCopyPurinSpecialNInitStatusVars(fighter_gobj);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 }

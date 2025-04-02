@@ -119,7 +119,7 @@ void ftCommonCaptureKirbyProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
 
     mpCommonSetFighterAir(this_fp);
     ftMainSetStatus(fighter_gobj, nFTCommonStatusCaptureKirby, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
     ftParamMakeRumble(this_fp, 7, 0);
 
     this_fp->status_vars.common.capturekirby.is_goto_capturewait = FALSE;

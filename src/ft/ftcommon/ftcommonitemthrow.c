@@ -150,7 +150,7 @@ void ftCommonItemThrowSetStatus(GObj *fighter_gobj, s32 status_id)
     ftCommonItemThrowInitCommandVars(fp);
 
     ftMainSetStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 
     ftCommonItemThrowInitStatusVars(fp);
     ftCommonItemThrowUpdateModelYaw(fighter_gobj);

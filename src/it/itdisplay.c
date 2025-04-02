@@ -19,7 +19,7 @@ void itDisplayHitCollisions(GObj *item_gobj)
     s32 i;
     ITAttackColl *it_attack_coll;
     ITDamageColl *damage_coll;
-    SYMatrixHub mtx_store;
+    Mtx *m;
     Vec3f *translate;
 
     it_attack_coll = &ip->attack_coll;
@@ -44,31 +44,31 @@ void itDisplayHitCollisions(GObj *item_gobj)
             }
             if (it_attack_coll->attack_state == nGMAttackStateInterpolate)
             {
-                syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
+                syMatrixAdvanceW(m, gSYTaskmanGraphicsHeap);
 
-                syMatrixTra(mtx_store.gbi, it_attack_coll->attack_pos[i].pos_prev.x, it_attack_coll->attack_pos[i].pos_prev.y, it_attack_coll->attack_pos[i].pos_prev.z);
+                syMatrixTra(m, it_attack_coll->attack_pos[i].pos_prev.x, it_attack_coll->attack_pos[i].pos_prev.y, it_attack_coll->attack_pos[i].pos_prev.z);
 
-                gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+                gSPMatrix(gSYTaskmanDLHeads[0]++, m, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-                syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
+                syMatrixAdvanceW(m, gSYTaskmanGraphicsHeap);
 
-                syMatrixSca(mtx_store.gbi, it_attack_coll->size / 15.0F, it_attack_coll->size / 15.0F, it_attack_coll->size / 15.0F);
+                syMatrixSca(m, it_attack_coll->size / 15.0F, it_attack_coll->size / 15.0F, it_attack_coll->size / 15.0F);
 
-                gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+                gSPMatrix(gSYTaskmanDLHeads[0]++, m, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
                 gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTDisplayMainHitCollisionEdgeDL);
                 gSPPopMatrix(gSYTaskmanDLHeads[0]++, G_MTX_MODELVIEW);
             }
-            syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
+            syMatrixAdvanceW(m, gSYTaskmanGraphicsHeap);
 
-            syMatrixTra(mtx_store.gbi, it_attack_coll->attack_pos[i].pos_curr.x, it_attack_coll->attack_pos[i].pos_curr.y, it_attack_coll->attack_pos[i].pos_curr.z);
+            syMatrixTra(m, it_attack_coll->attack_pos[i].pos_curr.x, it_attack_coll->attack_pos[i].pos_curr.y, it_attack_coll->attack_pos[i].pos_curr.z);
 
-            gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+            gSPMatrix(gSYTaskmanDLHeads[0]++, m, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-            syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
+            syMatrixAdvanceW(m, gSYTaskmanGraphicsHeap);
 
-            syMatrixSca(mtx_store.gbi, it_attack_coll->size / 15.0F, it_attack_coll->size / 15.0F, it_attack_coll->size / 15.0F);
+            syMatrixSca(m, it_attack_coll->size / 15.0F, it_attack_coll->size / 15.0F, it_attack_coll->size / 15.0F);
 
-            gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+            gSPMatrix(gSYTaskmanDLHeads[0]++, m, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
             if (it_attack_coll->attack_state == nGMAttackStateInterpolate)
             {
@@ -84,17 +84,17 @@ void itDisplayHitCollisions(GObj *item_gobj)
     {
         translate = &DObjGetStruct(item_gobj)->translate.vec.f;
 
-        syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
+        syMatrixAdvanceW(m, gSYTaskmanGraphicsHeap);
 
-        syMatrixTra(mtx_store.gbi, damage_coll->offset.x + translate->x, damage_coll->offset.y + translate->y, damage_coll->offset.z + translate->z);
+        syMatrixTra(m, damage_coll->offset.x + translate->x, damage_coll->offset.y + translate->y, damage_coll->offset.z + translate->z);
 
-        gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+        gSPMatrix(gSYTaskmanDLHeads[0]++, m, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-        syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
+        syMatrixAdvanceW(m, gSYTaskmanGraphicsHeap);
 
-        syMatrixSca(mtx_store.gbi, damage_coll->size.x / 15.0F, damage_coll->size.y / 15.0F, damage_coll->size.z / 15.0F);
+        syMatrixSca(m, damage_coll->size.x / 15.0F, damage_coll->size.y / 15.0F, damage_coll->size.z / 15.0F);
 
-        gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+        gSPMatrix(gSYTaskmanDLHeads[0]++, m, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
         gDPPipeSync(gSYTaskmanDLHeads[0]++);
 
         switch (damage_coll->hitstatus)
@@ -125,35 +125,35 @@ void itDisplayMapCollisions(GObj *item_gobj)
     ITStruct *ip = itGetStruct(item_gobj);
     Vec3f *translate = &DObjGetStruct(item_gobj)->translate.vec.f;
     MPObjectColl *map_coll = &ip->coll_data.map_coll;
-    SYMatrixHub mtx_store;
+    Mtx *m;
 
     gDPPipeSync(gSYTaskmanDLHeads[1]++);
 
-    syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
+    syMatrixAdvanceW(m, gSYTaskmanGraphicsHeap);
 
-    syMatrixTra(mtx_store.gbi, translate->x, translate->y + map_coll->bottom, translate->z);
+    syMatrixTra(m, translate->x, translate->y + map_coll->bottom, translate->z);
 
-    gSPMatrix(gSYTaskmanDLHeads[1]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+    gSPMatrix(gSYTaskmanDLHeads[1]++, m, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-    syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
+    syMatrixAdvanceW(m, gSYTaskmanGraphicsHeap);
 
-    syMatrixSca(mtx_store.gbi, map_coll->width / 30.0F, (map_coll->center - map_coll->bottom) / 30.0F, 1.0F);
+    syMatrixSca(m, map_coll->width / 30.0F, (map_coll->center - map_coll->bottom) / 30.0F, 1.0F);
 
-    gSPMatrix(gSYTaskmanDLHeads[1]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+    gSPMatrix(gSYTaskmanDLHeads[1]++, m, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
     gSPDisplayList(gSYTaskmanDLHeads[1]++, dFTDisplayMainMapCollisionBottomDL);
     gSPPopMatrix(gSYTaskmanDLHeads[1]++, G_MTX_MODELVIEW);
 
-    syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
+    syMatrixAdvanceW(m, gSYTaskmanGraphicsHeap);
 
-    syMatrixTra(mtx_store.gbi, translate->x, translate->y + map_coll->center, translate->z);
+    syMatrixTra(m, translate->x, translate->y + map_coll->center, translate->z);
 
-    gSPMatrix(gSYTaskmanDLHeads[1]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+    gSPMatrix(gSYTaskmanDLHeads[1]++, m, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-    syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
+    syMatrixAdvanceW(m, gSYTaskmanGraphicsHeap);
 
-    syMatrixSca(mtx_store.gbi, map_coll->width / 30.0F, (map_coll->top - map_coll->center) / 30.0F, 1.0F);
+    syMatrixSca(m, map_coll->width / 30.0F, (map_coll->top - map_coll->center) / 30.0F, 1.0F);
 
-    gSPMatrix(gSYTaskmanDLHeads[1]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+    gSPMatrix(gSYTaskmanDLHeads[1]++, m, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
     gSPDisplayList(gSYTaskmanDLHeads[1]++, dFTDisplayMainMapCollisionTopDL);
     gSPPopMatrix(gSYTaskmanDLHeads[1]++, G_MTX_MODELVIEW);
 }
@@ -242,9 +242,9 @@ void itDisplayColAnimOPA(GObj *item_gobj)
     gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_2CYCLE);
     gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_PASS, G_RM_AA_ZB_OPA_SURF2);
 
-    if (ip->colanim.is_use_maincolor)
+    if (ip->colanim.is_use_color1)
     {
-        gDPSetEnvColor(gSYTaskmanDLHeads[0]++, ip->colanim.maincolor.r, ip->colanim.maincolor.g, ip->colanim.maincolor.b, ip->colanim.maincolor.a);
+        gDPSetEnvColor(gSYTaskmanDLHeads[0]++, ip->colanim.color1.r, ip->colanim.color1.g, ip->colanim.color1.b, ip->colanim.color1.a);
     }
     else gDPSetEnvColor(gSYTaskmanDLHeads[0]++, 0x00, 0x00, 0x00, 0x00);
     
@@ -291,10 +291,10 @@ void itDisplayColAnimXLU(GObj *item_gobj)
     gDPSetCycleType(gSYTaskmanDLHeads[1]++, G_CYC_2CYCLE);
     gDPSetRenderMode(gSYTaskmanDLHeads[1]++, G_RM_PASS, G_RM_AA_ZB_XLU_SURF2);
 
-    if (ip->colanim.is_use_maincolor)
+    if (ip->colanim.is_use_color1)
     {
-        gDPSetEnvColor(gSYTaskmanDLHeads[0]++, ip->colanim.maincolor.r, ip->colanim.maincolor.g, ip->colanim.maincolor.b, ip->colanim.maincolor.a);
-        gDPSetEnvColor(gSYTaskmanDLHeads[1]++, ip->colanim.maincolor.r, ip->colanim.maincolor.g, ip->colanim.maincolor.b, ip->colanim.maincolor.a);
+        gDPSetEnvColor(gSYTaskmanDLHeads[0]++, ip->colanim.color1.r, ip->colanim.color1.g, ip->colanim.color1.b, ip->colanim.color1.a);
+        gDPSetEnvColor(gSYTaskmanDLHeads[1]++, ip->colanim.color1.r, ip->colanim.color1.g, ip->colanim.color1.b, ip->colanim.color1.a);
     }
     else
     {

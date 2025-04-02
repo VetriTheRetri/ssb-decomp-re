@@ -178,7 +178,7 @@ void ftYoshiSpecialHiSetStatus(GObj *fighter_gobj)
 {
     ftMainSetStatus(fighter_gobj, nFTYoshiStatusSpecialHi, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftYoshiSpecialHiInitStatusVars(fighter_gobj);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 }
 
 // 0x8015ED7C
@@ -186,5 +186,5 @@ void ftYoshiSpecialAirHiSetStatus(GObj *fighter_gobj)
 {
     ftMainSetStatus(fighter_gobj, nFTYoshiStatusSpecialAirHi, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftYoshiSpecialHiInitStatusVars(fighter_gobj);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 }

@@ -97,13 +97,13 @@ struct GMColAnim
 	GMColScript cs[2];
 	s32 length;
 	s32 colanim_id;
-	GMColKeys maincolor; 		// Used as both PrimColor and EnvColor? Screen flashes use it as Prim and items as Env
+	GMColKeys color1; 		// Used as both PrimColor and EnvColor? Screen flashes use it as Prim and items as Env
 	f32 light_angle_x;
 	f32 light_angle_y;
-	GMColKeys blendcolor;
-	ub8 is_use_maincolor : 1;
+	GMColKeys color2;
+	ub8 is_use_color1 : 1;
 	ub8 is_use_light : 1;
-	ub8 is_use_blendcolor : 1;
+	ub8 is_use_color2 : 1;
 	u8 skeleton_id : 2; 		// ID of skeleton model to use during electric shock ColAnim?
 };
 

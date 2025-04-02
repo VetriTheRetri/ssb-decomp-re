@@ -288,7 +288,7 @@ void ftDonkeySpecialNStartSetStatus(GObj *fighter_gobj)
 
     fp->proc_damage = ftDonkeySpecialNProcDamage;
 
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
     ftDonkeySpecialNInitStatusVars(fighter_gobj);
 }
 
@@ -301,6 +301,6 @@ void ftDonkeySpecialAirNStartSetStatus(GObj *fighter_gobj)
 
     fp->proc_damage = ftDonkeySpecialNProcDamage;
 
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
     ftDonkeySpecialNInitStatusVars(fighter_gobj);
 }

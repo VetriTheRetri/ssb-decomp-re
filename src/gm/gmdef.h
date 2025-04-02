@@ -34,12 +34,12 @@
 // Only paragraph font has all ASCII numbers. Title font has only number 4 at 0x37
 #define GMSTAFFROLL_ASCII_NUMBER_TO_PARA_FONT_INDEX(c) (0x35 + ('9' - (c)))
 
-#define GMColEventAdvance(event, type) ((event) = (void*)((uintptr_t)event + sizeof(type)))
+#define gmColEventAdvance(event, type) ((event) = (void*)((uintptr_t)event + sizeof(type)))
 
-#define GMColEventCast(event, type) ((type*)(event))
+#define gmColEventCast(event, type) ((type*)(event))
 
 // WARNING: Only advances 4 bytes at a time
-#define GMColEventCastAdvance(event, type) ((type*)(event)++)
+#define gmColEventCastAdvance(event, type) ((type*)(event)++)
 
 #define gmRumbleEventAdvance(event, type) ((event) = (void*)((uintptr_t)(event) + (sizeof(type))))
 

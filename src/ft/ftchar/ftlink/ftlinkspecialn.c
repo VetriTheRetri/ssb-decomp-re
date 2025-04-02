@@ -143,7 +143,7 @@ void ftLinkSpecialNSetStatus(GObj *fighter_gobj)
     }
     else ftMainSetStatus(fighter_gobj, nFTLinkStatusSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 }
 
 // 0x80163A4C
@@ -161,7 +161,7 @@ void ftLinkSpecialAirNSetStatus(GObj *fighter_gobj)
     }
     else ftMainSetStatus(fighter_gobj, nFTLinkStatusSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 }
 
 // 0x80163ACC
@@ -175,5 +175,5 @@ void ftLinkSpecialNGetSetStatus(GObj *fighter_gobj)
     }
     else ftMainSetStatus(fighter_gobj, nFTLinkStatusSpecialNGet, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 }

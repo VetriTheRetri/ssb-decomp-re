@@ -137,7 +137,7 @@ void ftNessSpecialLw_InitStatusVars(GObj *fighter_gobj)
 void ftNessSpecialLwStartSetStatus(GObj *fighter_gobj)
 {
     ftMainSetStatus(fighter_gobj, nFTNessStatusSpecialLwStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
     ftNessSpecialLw_InitStatusVars(fighter_gobj);
 }
 
@@ -147,7 +147,7 @@ void ftNessSpecialAirLwStartSetStatus(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetStatus(fighter_gobj, nFTNessStatusSpecialAirLwStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
     ftNessSpecialLw_InitStatusVars(fighter_gobj);
 
     fp->physics.vel_air.x /= 2;
@@ -247,7 +247,7 @@ void ftNessSpecialLwInitVars(GObj *fighter_gobj)
 void ftNessSpecialLwHoldSetStatus(GObj *fighter_gobj)
 {
     ftMainSetStatus(fighter_gobj, nFTNessStatusSpecialLwHold, 0.0F, 1.0F, (FTSTATUS_PRESERVE_LOOPSFX | FTSTATUS_PRESERVE_EFFECT));
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
     ftNessSpecialLwInitVars(fighter_gobj);
 }
 
@@ -255,7 +255,7 @@ void ftNessSpecialLwHoldSetStatus(GObj *fighter_gobj)
 void ftNessSpecialAirLwHoldSetStatus(GObj *fighter_gobj)
 {
     ftMainSetStatus(fighter_gobj, nFTNessStatusSpecialAirLwHold, 0.0F, 1.0F, (FTSTATUS_PRESERVE_LOOPSFX | FTSTATUS_PRESERVE_EFFECT));
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
     ftNessSpecialLwInitVars(fighter_gobj);
 }
 
@@ -327,7 +327,7 @@ void ftNessSpecialLwHitSetAbsorbTrue(GObj *fighter_gobj)
 void ftNessSpecialLwHitSetStatus(GObj *fighter_gobj)
 {
     ftMainSetStatus(fighter_gobj, nFTNessStatusSpecialLwHit, 0.0F, 1.0F, FTSTATUS_PRESERVE_EFFECT);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
     ftNessSpecialLwHitSetAbsorbTrue(fighter_gobj);
 }
 
@@ -335,7 +335,7 @@ void ftNessSpecialLwHitSetStatus(GObj *fighter_gobj)
 void ftNessSpecialAirLwHitSetStatus(GObj *fighter_gobj)
 {
     ftMainSetStatus(fighter_gobj, nFTNessStatusSpecialAirLwHit, 0.0F, 1.0F, FTSTATUS_PRESERVE_EFFECT);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
     ftNessSpecialLwHitSetAbsorbTrue(fighter_gobj);
 }
 
@@ -378,12 +378,12 @@ void ftNessSpecialLwEndSwitchStatusAir(GObj *fighter_gobj)
 void ftNessSpecialLwEndSetStatus(GObj *fighter_gobj)
 {
     ftMainSetStatus(fighter_gobj, nFTNessStatusSpecialLwEnd, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 }
 
 // 0x80155B00
 void ftNessSpecialAirLwEndSetStatus(GObj *fighter_gobj)
 {
     ftMainSetStatus(fighter_gobj, nFTNessStatusSpecialAirLwEnd, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 }

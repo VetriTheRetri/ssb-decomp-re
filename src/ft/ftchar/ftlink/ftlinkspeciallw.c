@@ -100,7 +100,7 @@ void ftLinkSpecialLwSetStatus(GObj *fighter_gobj)
         fp->motion_vars.flags.flag0 = 0;
 
         ftMainSetStatus(fighter_gobj, nFTLinkStatusSpecialLw, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-        ftMainPlayAnimNoEffect(fighter_gobj);
+        ftMainPlayAnimEventsAll(fighter_gobj);
     }
 }
 
@@ -114,6 +114,6 @@ void ftLinkSpecialAirLwSetStatus(GObj *fighter_gobj)
         fp->motion_vars.flags.flag0 = 0;
 
         ftMainSetStatus(fighter_gobj, nFTLinkStatusSpecialAirLw, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-        ftMainPlayAnimNoEffect(fighter_gobj);
+        ftMainPlayAnimEventsAll(fighter_gobj);
     }
 }

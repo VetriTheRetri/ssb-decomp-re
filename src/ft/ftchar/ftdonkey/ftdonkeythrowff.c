@@ -95,7 +95,7 @@ void ftDonkeyThrowFFSetStatus(GObj *fighter_gobj, sb32 is_turn)
         flags = FTSTATUS_PRESERVE_FASTFALL;
     }
     ftMainSetStatus(fighter_gobj, status_id, 0.0F, 1.0F, flags);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
     ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL);
 
     fp->motion_vars.flags.flag2 = 0;

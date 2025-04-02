@@ -320,9 +320,6 @@ void func_80010C2C(Mtx *mtx_l, DObj *dobj, sb32 is_translate)
     syMatrixF2LFixedW(&mtx_f, mtx_l);
 }
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wunknown-pragmas"
-
 // 0x80010D70
 #ifdef NON_MATCHING
 s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
@@ -331,7 +328,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
     XObj *xobj;
     s32 sp2CC;
     s32 ret;
-    SYMatrixHub mtx_store;
+    SYMatrixHub mtx_hub;
     GCTranslate *translate;
     GCRotate *rotate; // fp (s8)
     GCTranslate *scale;
@@ -376,7 +373,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
 
         if (xobj != NULL)
         {
-            mtx_store.gbi = &xobj->mtx;
+            mtx_hub.gbi = &xobj->mtx;
 
             /* 
              * Non-matching part begins here. xobj->unk05 gets forced into v1 instead of v0, and xobj->kind into v0 instead of v1.
@@ -404,8 +401,8 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 {
                     if (dobj->parent_gobj->frame_draw_last != (u8)dSYTaskmanFrameCount)
                     {
-                        mtx_store.f = gSYTaskmanGraphicsHeap.ptr;
-                        gSYTaskmanGraphicsHeap.ptr = (mtx_store.f = gSYTaskmanGraphicsHeap.ptr) + 1;
+                        mtx_hub.f = gSYTaskmanGraphicsHeap.ptr;
+                        gSYTaskmanGraphicsHeap.ptr = (mtx_hub.f = gSYTaskmanGraphicsHeap.ptr) + 1;
                     }
                     else
                     {
@@ -429,17 +426,17 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                         case 48:
                         case 49:
                         case 50:
-                            gSYTaskmanGraphicsHeap.ptr = (mtx_store.gbi = gSYTaskmanGraphicsHeap.ptr) + 1;
+                            gSYTaskmanGraphicsHeap.ptr = (mtx_hub.gbi = gSYTaskmanGraphicsHeap.ptr) + 1;
                             break;
 
                         default:
                             if (xobj->kind >= 66)
                             {
-                                gSYTaskmanGraphicsHeap.ptr = (mtx_store.f = gSYTaskmanGraphicsHeap.ptr) + 1;
+                                gSYTaskmanGraphicsHeap.ptr = (mtx_hub.f = gSYTaskmanGraphicsHeap.ptr) + 1;
                             }
                             else
                             {
-                                mtx_store.p = *mtx_store.p;
+                                mtx_hub.p = *mtx_hub.p;
 
                                 goto check_05;
                             }
@@ -449,7 +446,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 }
                 else if (gSYTaskmanTaskID > 0)
                 {
-                    gSYTaskmanGraphicsHeap.ptr = (mtx_store.f = gSYTaskmanGraphicsHeap.ptr) + 1;
+                    gSYTaskmanGraphicsHeap.ptr = (mtx_hub.f = gSYTaskmanGraphicsHeap.ptr) + 1;
                 }
                 else if (dobj->parent_gobj->frame_draw_last == (u8)dSYTaskmanFrameCount)
                 {
@@ -473,17 +470,17 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     case 48:
                     case 49:
                     case 50:
-                        gSYTaskmanGraphicsHeap.ptr = (mtx_store.gbi = gSYTaskmanGraphicsHeap.ptr) + 1;
+                        gSYTaskmanGraphicsHeap.ptr = (mtx_hub.gbi = gSYTaskmanGraphicsHeap.ptr) + 1;
                         break;
 
                     default:
                         if (xobj->kind >= 66)
                         {
-                            gSYTaskmanGraphicsHeap.ptr = (mtx_store.f = gSYTaskmanGraphicsHeap.ptr) + 1;
+                            gSYTaskmanGraphicsHeap.ptr = (mtx_hub.f = gSYTaskmanGraphicsHeap.ptr) + 1;
                         }
                         else if (xobj->unk05 == 3)
                         {
-                            gSYTaskmanGraphicsHeap.ptr = (mtx_store.f = gSYTaskmanGraphicsHeap.ptr) + 1;
+                            gSYTaskmanGraphicsHeap.ptr = (mtx_hub.f = gSYTaskmanGraphicsHeap.ptr) + 1;
                         }
                         else goto check_05;
 
@@ -504,19 +501,19 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 }
                 case nGCMatrixKindTra:
                 {
-                    syMatrixTra(mtx_store.gbi, dobj->translate.vec.f.x, dobj->translate.vec.f.y, dobj->translate.vec.f.z);
+                    syMatrixTra(mtx_hub.gbi, dobj->translate.vec.f.x, dobj->translate.vec.f.y, dobj->translate.vec.f.z);
                     break;
                 }
                 case nGCMatrixKindRotD:
                 {
-                    syMatrixRotD(mtx_store.gbi, dobj->rotate.a, dobj->rotate.vec.f.x, dobj->rotate.vec.f.y, dobj->rotate.vec.f.z);
+                    syMatrixRotD(mtx_hub.gbi, dobj->rotate.a, dobj->rotate.vec.f.x, dobj->rotate.vec.f.y, dobj->rotate.vec.f.z);
                     break;
                 }
                 case nGCMatrixKindTraRotD:
                 {
                     syMatrixTraRotD
                     (
-                        mtx_store.gbi,
+                        mtx_hub.gbi,
                         dobj->translate.vec.f.x,
                         dobj->translate.vec.f.y,
                         dobj->translate.vec.f.z,
@@ -529,14 +526,14 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 }
                 case nGCMatrixKindRotRpyD:
                 {
-                    syMatrixRotRpyD(mtx_store.gbi, dobj->rotate.vec.f.x, dobj->rotate.vec.f.y, dobj->rotate.vec.f.z);
+                    syMatrixRotRpyD(mtx_hub.gbi, dobj->rotate.vec.f.x, dobj->rotate.vec.f.y, dobj->rotate.vec.f.z);
                     break;
                 }
                 case nGCMatrixKindTraRotRpyD:
                 {
                     syMatrixTraRotRpyD
                     (
-                        mtx_store.gbi,
+                        mtx_hub.gbi,
                         dobj->translate.vec.f.x,
                         dobj->translate.vec.f.y,
                         dobj->translate.vec.f.z,
@@ -550,7 +547,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 {
                     syMatrixRotR
                     (
-                        mtx_store.gbi,
+                        mtx_hub.gbi,
                         dobj->rotate.a,
                         dobj->rotate.vec.f.x,
                         dobj->rotate.vec.f.y,
@@ -562,7 +559,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 {
                     syMatrixTraRotR
                     (
-                        mtx_store.gbi,
+                        mtx_hub.gbi,
                         dobj->translate.vec.f.x,
                         dobj->translate.vec.f.y,
                         dobj->translate.vec.f.z,
@@ -577,7 +574,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 {
                     syMatrixTraRotRSca
                     (
-                        mtx_store.gbi,
+                        mtx_hub.gbi,
                         dobj->translate.vec.f.x,
                         dobj->translate.vec.f.y,
                         dobj->translate.vec.f.z,
@@ -594,14 +591,14 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 }
                 case nGCMatrixKindRotRpyR:
                 {
-                    syMatrixRotRpyR(mtx_store.gbi, dobj->rotate.vec.f.x, dobj->rotate.vec.f.y, dobj->rotate.vec.f.z);
+                    syMatrixRotRpyR(mtx_hub.gbi, dobj->rotate.vec.f.x, dobj->rotate.vec.f.y, dobj->rotate.vec.f.z);
                     break;
                 }
                 case nGCMatrixKindTraRotRpyR:
                 {
                     syMatrixTraRotRpyR
                     (
-                        mtx_store.gbi,
+                        mtx_hub.gbi,
                         dobj->translate.vec.f.x,
                         dobj->translate.vec.f.y,
                         dobj->translate.vec.f.z,
@@ -615,7 +612,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 {
                     syMatrixTraRotRpyRSca
                     (
-                        mtx_store.gbi,
+                        mtx_hub.gbi,
                         dobj->translate.vec.f.x,
                         dobj->translate.vec.f.y,
                         dobj->translate.vec.f.z,
@@ -631,14 +628,14 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 }
                 case nGCMatrixKindRotPyrR:
                 {
-                    syMatrixRotPyrR(mtx_store.gbi, dobj->rotate.vec.f.x, dobj->rotate.vec.f.y, dobj->rotate.vec.f.z);
+                    syMatrixRotPyrR(mtx_hub.gbi, dobj->rotate.vec.f.x, dobj->rotate.vec.f.y, dobj->rotate.vec.f.z);
                     break;
                 }
                 case nGCMatrixKindTraRotPyrR:
                 {
                     syMatrixTraRotPyrR
                     (
-                        mtx_store.gbi,
+                        mtx_hub.gbi,
                         dobj->translate.vec.f.x,
                         dobj->translate.vec.f.y,
                         dobj->translate.vec.f.z,
@@ -652,7 +649,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 {
                     syMatrixTraRotPyrRSca
                     (
-                        mtx_store.gbi,
+                        mtx_hub.gbi,
                         dobj->translate.vec.f.x,
                         dobj->translate.vec.f.y,
                         dobj->translate.vec.f.z,
@@ -668,68 +665,68 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 }
                 case nGCMatrixKindSca:
                 {
-                    syMatrixSca(mtx_store.gbi, dobj->scale.vec.f.x, dobj->scale.vec.f.y, dobj->scale.vec.f.z);
+                    syMatrixSca(mtx_hub.gbi, dobj->scale.vec.f.x, dobj->scale.vec.f.y, dobj->scale.vec.f.z);
                     gGCScaleX *= dobj->scale.vec.f.x;
                     break;
                 }
                 case 33:
                 {
-                    func_80010AE8(mtx_store.f, dobj, FALSE);
+                    func_80010AE8(mtx_hub.f, dobj, FALSE);
                     break;
                 }
                 case 34:
                 {
-                    func_80010AE8(mtx_store.f, dobj, TRUE);
+                    func_80010AE8(mtx_hub.f, dobj, TRUE);
                     break;
                 }
                 case 35:
                 {
-                    func_80010748(mtx_store.f, dobj, FALSE);
+                    func_80010748(mtx_hub.f, dobj, FALSE);
                     break;
                 }
                 case 36:
                 {
-                    func_80010748(mtx_store.f, dobj, TRUE);
+                    func_80010748(mtx_hub.f, dobj, TRUE);
                     break;
                 }
                 case 37:
                 {
-                    func_80010C2C(mtx_store.f, dobj, FALSE);
+                    func_80010C2C(mtx_hub.f, dobj, FALSE);
                     break;
                 }
                 case 38:
                 {
-                    func_80010C2C(mtx_store.f, dobj, TRUE);
+                    func_80010C2C(mtx_hub.f, dobj, TRUE);
                     break;
                 }
                 case 39:
                 {
-                    func_80010918(mtx_store.f, dobj, FALSE);
+                    func_80010918(mtx_hub.f, dobj, FALSE);
                     break;
                 }
                 case 40:
                 {
-                    func_80010918(mtx_store.f, dobj, TRUE);
+                    func_80010918(mtx_hub.f, dobj, TRUE);
                     break;
                 }
                 case nGCMatrixKindVecTra:
                 {
-                    syMatrixTra(mtx_store.gbi, translate->vec.f.x, translate->vec.f.y, translate->vec.f.z);
+                    syMatrixTra(mtx_hub.gbi, translate->vec.f.x, translate->vec.f.y, translate->vec.f.z);
                     break;
                 }
                 case nGCMatrixKindVecRotR:
                 {
-                    syMatrixRotR(mtx_store.gbi, rotate->a, rotate->vec.f.x, rotate->vec.f.y, rotate->vec.f.z);
+                    syMatrixRotR(mtx_hub.gbi, rotate->a, rotate->vec.f.x, rotate->vec.f.y, rotate->vec.f.z);
                     break;
                 }
                 case nGCMatrixKindVecRotRpyR:
                 {
-                    syMatrixRotRpyR(mtx_store.gbi, rotate->vec.f.x, rotate->vec.f.y, rotate->vec.f.z);
+                    syMatrixRotRpyR(mtx_hub.gbi, rotate->vec.f.x, rotate->vec.f.y, rotate->vec.f.z);
                     break;
                 }
                 case nGCMatrixKindVecSca:
                 {
-                    syMatrixSca(mtx_store.gbi, scale->vec.f.x, scale->vec.f.y, scale->vec.f.z);
+                    syMatrixSca(mtx_hub.gbi, scale->vec.f.x, scale->vec.f.y, scale->vec.f.z);
                     gGCScaleX *= scale->vec.f.x;
                     break;
                 }
@@ -737,7 +734,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 {
                     syMatrixTraRotR
                     (
-                        mtx_store.gbi,
+                        mtx_hub.gbi,
                         translate->vec.f.x,
                         translate->vec.f.y,
                         translate->vec.f.z,
@@ -752,7 +749,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 {
                     syMatrixTraRotRSca
                     (
-                        mtx_store.gbi,
+                        mtx_hub.gbi,
                         translate->vec.f.x,
                         translate->vec.f.y,
                         translate->vec.f.z,
@@ -771,7 +768,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 {
                     syMatrixTraRotRpyR
                     (
-                        mtx_store.gbi,
+                        mtx_hub.gbi,
                         translate->vec.f.x,
                         translate->vec.f.y,
                         translate->vec.f.z,
@@ -785,7 +782,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 {
                     syMatrixTraRotRpyRSca
                     (
-                        mtx_store.gbi,
+                        mtx_hub.gbi,
                         translate->vec.f.x,
                         translate->vec.f.y,
                         translate->vec.f.z,
@@ -856,22 +853,22 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     sGCMatrixMvpF[2][0] = 0.0F;
                     sGCMatrixMvpF[2][1] = 0.0F;
 
-                    syMatrixF2L(&sGCMatrixMvpF, mtx_store.gbi);
+                    syMatrixF2L(&sGCMatrixMvpF, mtx_hub.gbi);
 
                     gSPMvpRecalc(current_dl++);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx_store.gbi->m[0][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtx_store.gbi->m[0][1]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtx_store.gbi->m[0][2]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtx_store.gbi->m[0][3]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx_store.gbi->m[1][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtx_store.gbi->m[1][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx_hub.gbi->m[0][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtx_hub.gbi->m[0][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtx_hub.gbi->m[0][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtx_hub.gbi->m[0][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx_hub.gbi->m[1][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtx_hub.gbi->m[1][1]);
 
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtx_store.gbi->m[2][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtx_store.gbi->m[2][1]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtx_store.gbi->m[2][2]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtx_store.gbi->m[2][3]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtx_store.gbi->m[3][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtx_store.gbi->m[3][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtx_hub.gbi->m[2][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtx_hub.gbi->m[2][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtx_hub.gbi->m[2][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtx_hub.gbi->m[2][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtx_hub.gbi->m[3][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtx_hub.gbi->m[3][1]);
 
                     continue;
                 }
@@ -895,22 +892,22 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     sGCMatrixMvpF[2][0] = 0.0F;
                     sGCMatrixMvpF[2][1] = 0.0F;
 
-                    syMatrixF2L(&sGCMatrixMvpF, mtx_store.gbi);
+                    syMatrixF2L(&sGCMatrixMvpF, mtx_hub.gbi);
 
                     gSPMvpRecalc(current_dl++);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx_store.gbi->m[0][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtx_store.gbi->m[0][1]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx_store.gbi->m[0][2]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtx_store.gbi->m[0][3]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtx_store.gbi->m[1][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtx_store.gbi->m[1][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx_hub.gbi->m[0][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtx_hub.gbi->m[0][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx_hub.gbi->m[0][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtx_hub.gbi->m[0][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtx_hub.gbi->m[1][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtx_hub.gbi->m[1][1]);
 
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtx_store.gbi->m[2][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtx_store.gbi->m[2][1]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtx_store.gbi->m[2][2]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtx_store.gbi->m[2][3]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtx_store.gbi->m[3][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtx_store.gbi->m[3][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtx_hub.gbi->m[2][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtx_hub.gbi->m[2][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtx_hub.gbi->m[2][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtx_hub.gbi->m[2][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtx_hub.gbi->m[3][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtx_hub.gbi->m[3][1]);
 
                     continue;
                 }
@@ -940,22 +937,22 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     sGCMatrixMvpF[2][2] = gGCMatrixPerspF[2][2] * gGCScaleX;
                     sGCMatrixMvpF[2][3] = gGCMatrixPerspF[2][3] * gGCScaleX;
 
-                    syMatrixF2L(&sGCMatrixMvpF, mtx_store.gbi);
+                    syMatrixF2L(&sGCMatrixMvpF, mtx_hub.gbi);
 
                     gSPMvpRecalc(current_dl++);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx_store.gbi->m[0][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtx_store.gbi->m[0][1]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx_store.gbi->m[0][2]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtx_store.gbi->m[0][3]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtx_store.gbi->m[1][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtx_store.gbi->m[1][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx_hub.gbi->m[0][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtx_hub.gbi->m[0][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx_hub.gbi->m[0][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtx_hub.gbi->m[0][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtx_hub.gbi->m[1][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtx_hub.gbi->m[1][1]);
 
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtx_store.gbi->m[2][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtx_store.gbi->m[2][1]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtx_store.gbi->m[2][2]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtx_store.gbi->m[2][3]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtx_store.gbi->m[3][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtx_store.gbi->m[3][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtx_hub.gbi->m[2][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtx_hub.gbi->m[2][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtx_hub.gbi->m[2][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtx_hub.gbi->m[2][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtx_hub.gbi->m[3][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtx_hub.gbi->m[3][1]);
 
                     continue;
                 }
@@ -984,22 +981,22 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     sGCMatrixMvpF[2][2] = gGCMatrixPerspF[2][2] * gGCScaleX;
                     sGCMatrixMvpF[2][3] = gGCMatrixPerspF[2][3] * gGCScaleX;
 
-                    syMatrixF2L(&sGCMatrixMvpF, mtx_store.gbi);
+                    syMatrixF2L(&sGCMatrixMvpF, mtx_hub.gbi);
 
                     gSPMvpRecalc(current_dl++);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx_store.gbi->m[0][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtx_store.gbi->m[0][1]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx_store.gbi->m[0][2]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtx_store.gbi->m[0][3]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtx_store.gbi->m[1][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtx_store.gbi->m[1][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx_hub.gbi->m[0][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtx_hub.gbi->m[0][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx_hub.gbi->m[0][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtx_hub.gbi->m[0][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtx_hub.gbi->m[1][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtx_hub.gbi->m[1][1]);
 
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtx_store.gbi->m[2][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtx_store.gbi->m[2][1]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtx_store.gbi->m[2][2]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtx_store.gbi->m[2][3]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtx_store.gbi->m[3][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtx_store.gbi->m[3][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtx_hub.gbi->m[2][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtx_hub.gbi->m[2][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtx_hub.gbi->m[2][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtx_hub.gbi->m[2][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtx_hub.gbi->m[3][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtx_hub.gbi->m[3][1]);
 
                     continue;
                 }
@@ -1022,22 +1019,22 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     sGCMatrixMvpF[2][2] = D_80047028[2][2] * gGCScaleX;
                     sGCMatrixMvpF[2][3] = D_80047028[2][3] * gGCScaleX;
 
-                    syMatrixF2L(&sGCMatrixMvpF, mtx_store.gbi);
+                    syMatrixF2L(&sGCMatrixMvpF, mtx_hub.gbi);
 
                     gSPMvpRecalc(current_dl++);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx_store.gbi->m[0][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtx_store.gbi->m[0][1]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtx_store.gbi->m[0][2]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtx_store.gbi->m[0][3]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx_store.gbi->m[1][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtx_store.gbi->m[1][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx_hub.gbi->m[0][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtx_hub.gbi->m[0][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtx_hub.gbi->m[0][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtx_hub.gbi->m[0][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx_hub.gbi->m[1][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtx_hub.gbi->m[1][1]);
 
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtx_store.gbi->m[2][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtx_store.gbi->m[2][1]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtx_store.gbi->m[2][2]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtx_store.gbi->m[2][3]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtx_store.gbi->m[3][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtx_store.gbi->m[3][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtx_hub.gbi->m[2][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtx_hub.gbi->m[2][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtx_hub.gbi->m[2][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtx_hub.gbi->m[2][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtx_hub.gbi->m[3][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtx_hub.gbi->m[3][1]);
 
                     continue;
                 }
@@ -1060,22 +1057,22 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     sGCMatrixMvpF[2][2] = D_80047028[2][2] * gGCScaleX;
                     sGCMatrixMvpF[2][3] = D_80047028[2][3] * gGCScaleX;
 
-                    syMatrixF2L(&sGCMatrixMvpF, mtx_store.gbi);
+                    syMatrixF2L(&sGCMatrixMvpF, mtx_hub.gbi);
 
                     gSPMvpRecalc(current_dl++);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx_store.gbi->m[0][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtx_store.gbi->m[0][1]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx_store.gbi->m[0][2]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtx_store.gbi->m[0][3]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtx_store.gbi->m[1][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtx_store.gbi->m[1][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx_hub.gbi->m[0][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtx_hub.gbi->m[0][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx_hub.gbi->m[0][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtx_hub.gbi->m[0][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtx_hub.gbi->m[1][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtx_hub.gbi->m[1][1]);
 
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtx_store.gbi->m[2][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtx_store.gbi->m[2][1]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtx_store.gbi->m[2][2]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtx_store.gbi->m[2][3]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtx_store.gbi->m[3][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtx_store.gbi->m[3][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtx_hub.gbi->m[2][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtx_hub.gbi->m[2][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtx_hub.gbi->m[2][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtx_hub.gbi->m[2][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtx_hub.gbi->m[3][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtx_hub.gbi->m[3][1]);
 
                     continue;
                 }
@@ -1098,22 +1095,22 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     sGCMatrixMvpF[2][2] = D_80047068[2][2] * gGCScaleX;
                     sGCMatrixMvpF[2][3] = D_80047068[2][3] * gGCScaleX;
 
-                    syMatrixF2L(&sGCMatrixMvpF, mtx_store.gbi);
+                    syMatrixF2L(&sGCMatrixMvpF, mtx_hub.gbi);
 
                     gSPMvpRecalc(current_dl++);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx_store.gbi->m[0][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtx_store.gbi->m[0][1]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtx_store.gbi->m[0][2]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtx_store.gbi->m[0][3]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx_store.gbi->m[1][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtx_store.gbi->m[1][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx_hub.gbi->m[0][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtx_hub.gbi->m[0][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtx_hub.gbi->m[0][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtx_hub.gbi->m[0][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx_hub.gbi->m[1][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtx_hub.gbi->m[1][1]);
 
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtx_store.gbi->m[2][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtx_store.gbi->m[2][1]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtx_store.gbi->m[2][2]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtx_store.gbi->m[2][3]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtx_store.gbi->m[3][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtx_store.gbi->m[3][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtx_hub.gbi->m[2][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtx_hub.gbi->m[2][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtx_hub.gbi->m[2][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtx_hub.gbi->m[2][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtx_hub.gbi->m[3][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtx_hub.gbi->m[3][1]);
 
                     continue;
                 }
@@ -1136,22 +1133,22 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     sGCMatrixMvpF[2][2] = D_80047068[2][2] * gGCScaleX;
                     sGCMatrixMvpF[2][3] = D_80047068[2][3] * gGCScaleX;
 
-                    syMatrixF2L(&sGCMatrixMvpF, mtx_store.gbi);
+                    syMatrixF2L(&sGCMatrixMvpF, mtx_hub.gbi);
 
                     gSPMvpRecalc(current_dl++);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx_store.gbi->m[0][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtx_store.gbi->m[0][1]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx_store.gbi->m[0][2]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtx_store.gbi->m[0][3]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtx_store.gbi->m[1][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtx_store.gbi->m[1][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx_hub.gbi->m[0][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtx_hub.gbi->m[0][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx_hub.gbi->m[0][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtx_hub.gbi->m[0][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtx_hub.gbi->m[1][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtx_hub.gbi->m[1][1]);
 
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtx_store.gbi->m[2][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtx_store.gbi->m[2][1]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtx_store.gbi->m[2][2]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtx_store.gbi->m[2][3]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtx_store.gbi->m[3][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtx_store.gbi->m[3][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtx_hub.gbi->m[2][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtx_hub.gbi->m[2][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtx_hub.gbi->m[2][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtx_hub.gbi->m[2][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtx_hub.gbi->m[3][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtx_hub.gbi->m[3][1]);
 
                     continue;
                 }
@@ -1163,7 +1160,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                             sb32(*proc)(Mtx*, DObj*, Gfx**) = (dobj->parent_gobj->frame_draw_last != (u8)dSYTaskmanFrameCount) ? sGCMatrixFuncList[xobj->kind - 66].proc_diff : sGCMatrixFuncList[xobj->kind - 66].proc_same;
 
                             // If proc's return value uses up a GPR and is assigned to a variable, IDO refuses to free up v0 later down.
-                            ret = proc(mtx_store.gbi, dobj, &current_dl);
+                            ret = proc(mtx_hub.gbi, dobj, &current_dl);
                         }
                     }
                     if (ret == 1)
@@ -1176,7 +1173,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
             check_05:
                 if (xobj->unk05 == 1)
                 {
-                    if (mtx_store.gbi == &xobj->mtx)
+                    if (mtx_hub.gbi == &xobj->mtx)
                     {
                         xobj->unk05 = 2;
                     }
@@ -1186,9 +1183,9 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
             {
                 if ((sp2CC == 0) && (dobj->parent == DOBJ_PARENT_NULL || dobj->sib_next != NULL))
                 {
-                    gSPMatrix(current_dl++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+                    gSPMatrix(current_dl++, mtx_hub.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
                 }
-                else gSPMatrix(current_dl++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+                else gSPMatrix(current_dl++, mtx_hub.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
                 sp2CC++;
             }
@@ -2841,7 +2838,7 @@ void gcPrepCameraMatrix(Gfx **dls, CObj *cobj)
     Gfx *dl;
     s32 i;
     XObj *xobj;
-    SYMatrixHub mtx_store;
+    SYMatrixHub mtx_hub;
     s32 var_s3;
     s32 spC8;
     LookAt *look_at;
@@ -2858,14 +2855,14 @@ void gcPrepCameraMatrix(Gfx **dls, CObj *cobj)
 
             if (xobj != NULL)
             {
-                mtx_store.gbi = &xobj->mtx;
+                mtx_hub.gbi = &xobj->mtx;
 
                 if (xobj->unk05 != 2)
                 {
                     if (gSYTaskmanTaskID > 0)
                     {
-                        mtx_store.gbi = gSYTaskmanGraphicsHeap.ptr;
-                        gSYTaskmanGraphicsHeap.ptr = mtx_store.gbi + 1;
+                        mtx_hub.gbi = gSYTaskmanGraphicsHeap.ptr;
+                        gSYTaskmanGraphicsHeap.ptr = mtx_hub.gbi + 1;
                     }
                     switch (xobj->kind)
                     {
@@ -2886,8 +2883,8 @@ void gcPrepCameraMatrix(Gfx **dls, CObj *cobj)
                             cobj->projection.persp.far,
                             cobj->projection.persp.scale
                         );
-                        syMatrixF2L(&gGCMatrixPerspF, mtx_store.gbi);
-                        sGCMatrixProjectL = mtx_store.gbi;
+                        syMatrixF2L(&gGCMatrixPerspF, mtx_hub.gbi);
+                        sGCMatrixProjectL = mtx_hub.gbi;
                         break;
 
                     case nGCMatrixKindPerspF:
@@ -2901,14 +2898,14 @@ void gcPrepCameraMatrix(Gfx **dls, CObj *cobj)
                             cobj->projection.persp.far,
                             cobj->projection.persp.scale
                         );
-                        syMatrixF2L(&gGCMatrixPerspF, mtx_store.gbi);
-                        sGCMatrixProjectL = mtx_store.gbi;
+                        syMatrixF2L(&gGCMatrixPerspF, mtx_hub.gbi);
+                        sGCMatrixProjectL = mtx_hub.gbi;
                         break;
 
                     case nGCMatrixKindOrtho:
                         syMatrixOrtho
                         (
-                            mtx_store.gbi,
+                            mtx_hub.gbi,
                             cobj->projection.ortho.l,
                             cobj->projection.ortho.r,
                             cobj->projection.ortho.b,
@@ -2917,14 +2914,14 @@ void gcPrepCameraMatrix(Gfx **dls, CObj *cobj)
                             cobj->projection.ortho.f,
                             cobj->projection.ortho.scale
                         );
-                        sGCMatrixProjectL = mtx_store.gbi;
+                        sGCMatrixProjectL = mtx_hub.gbi;
                         break;
 
                     case 6:
                     case 7:
                         syMatrixLookAt
                         (
-                            mtx_store.gbi,
+                            mtx_hub.gbi,
                             cobj->vec.eye.x,
                             cobj->vec.eye.y,
                             cobj->vec.eye.z,
@@ -2940,13 +2937,13 @@ void gcPrepCameraMatrix(Gfx **dls, CObj *cobj)
 
                     case 8:
                     case 9:
-                        syMatrixModLookAt(mtx_store.gbi, cobj->vec.eye.x, cobj->vec.eye.y, cobj->vec.eye.z, cobj->vec.at.x, cobj->vec.at.y, cobj->vec.at.z, cobj->vec.up.x, 0.0F, 1.0F, 0.0F);
+                        syMatrixModLookAt(mtx_hub.gbi, cobj->vec.eye.x, cobj->vec.eye.y, cobj->vec.eye.z, cobj->vec.at.x, cobj->vec.at.y, cobj->vec.at.z, cobj->vec.up.x, 0.0F, 1.0F, 0.0F);
                         var_s3 = 1;
                         break;
 
                     case 10:
                     case 11:
-                        syMatrixModLookAt(mtx_store.gbi, cobj->vec.eye.x, cobj->vec.eye.y, cobj->vec.eye.z, cobj->vec.at.x, cobj->vec.at.y, cobj->vec.at.z, cobj->vec.up.x, 0.0F, 0.0F, 1.0F);
+                        syMatrixModLookAt(mtx_hub.gbi, cobj->vec.eye.x, cobj->vec.eye.y, cobj->vec.eye.z, cobj->vec.at.x, cobj->vec.at.y, cobj->vec.at.z, cobj->vec.up.x, 0.0F, 0.0F, 1.0F);
                         var_s3 = 2;
                         break;
 
@@ -2955,7 +2952,7 @@ void gcPrepCameraMatrix(Gfx **dls, CObj *cobj)
                         look_at = syMallocSet(&gSYTaskmanGraphicsHeap, sizeof(LookAt), 0x8);
                         syMatrixLookAtReflect
                         (
-                            mtx_store.gbi,
+                            mtx_hub.gbi,
                             look_at,
                             cobj->vec.eye.x,
                             cobj->vec.eye.y,
@@ -2974,7 +2971,7 @@ void gcPrepCameraMatrix(Gfx **dls, CObj *cobj)
                     case 15:
                         look_at = syMallocSet(&gSYTaskmanGraphicsHeap, sizeof(LookAt), 0x8);
                         var_s3 = 1;
-                        syMatrixModLookAtReflect(mtx_store.gbi, look_at, cobj->vec.eye.x, cobj->vec.eye.y, cobj->vec.eye.z, cobj->vec.at.x, cobj->vec.at.y, cobj->vec.at.z, cobj->vec.up.x, 0.0F, 1.0F, 0.0F);
+                        syMatrixModLookAtReflect(mtx_hub.gbi, look_at, cobj->vec.eye.x, cobj->vec.eye.y, cobj->vec.eye.z, cobj->vec.at.x, cobj->vec.at.y, cobj->vec.at.z, cobj->vec.up.x, 0.0F, 1.0F, 0.0F);
                         break;
 
                     case 16:
@@ -2982,7 +2979,7 @@ void gcPrepCameraMatrix(Gfx **dls, CObj *cobj)
                         look_at = syMallocSet(&gSYTaskmanGraphicsHeap, sizeof(LookAt), 0x8);
                         var_s3 = 2;
 
-                        syMatrixModLookAtReflect(mtx_store.gbi, look_at, cobj->vec.eye.x, cobj->vec.eye.y, cobj->vec.eye.z, cobj->vec.at.x, cobj->vec.at.y, cobj->vec.at.z, cobj->vec.up.x, 0.0F, 0.0F, 1.0F);
+                        syMatrixModLookAtReflect(mtx_hub.gbi, look_at, cobj->vec.eye.x, cobj->vec.eye.y, cobj->vec.eye.z, cobj->vec.at.x, cobj->vec.at.y, cobj->vec.at.z, cobj->vec.up.x, 0.0F, 0.0F, 1.0F);
                         break;
 
                     default:
@@ -2990,12 +2987,12 @@ void gcPrepCameraMatrix(Gfx **dls, CObj *cobj)
                         {
                             if (sGCMatrixFuncList[xobj->kind - 66].proc_diff != NULL)
                             {
-                                sGCMatrixFuncList[xobj->kind - 66].proc_diff(mtx_store.gbi, cobj, &dl);
+                                sGCMatrixFuncList[xobj->kind - 66].proc_diff(mtx_hub.gbi, cobj, &dl);
                             }
                         }
                         break;
                     }
-                    if ((xobj->unk05 == 1) && (&xobj->mtx == mtx_store.gbi))
+                    if ((xobj->unk05 == 1) && (&xobj->mtx == mtx_hub.gbi))
                     {
                         xobj->unk05 = 2;
                     }
@@ -3010,12 +3007,12 @@ void gcPrepCameraMatrix(Gfx **dls, CObj *cobj)
 
                 case nGCMatrixKindPerspFastF:
                 case nGCMatrixKindPerspF:
-                    gSPMatrix(dl++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+                    gSPMatrix(dl++, mtx_hub.gbi, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
                     gSPPerspNormalize(dl++, cobj->projection.persp.norm);
                     break;
 
                 case nGCMatrixKindOrtho:
-                    gSPMatrix(dl++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+                    gSPMatrix(dl++, mtx_hub.gbi, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
                     break;
 
                 case 12:
@@ -3027,7 +3024,7 @@ void gcPrepCameraMatrix(Gfx **dls, CObj *cobj)
                 case 6:
                 case 8:
                 case 10:
-                    gSPMatrix(dl++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+                    gSPMatrix(dl++, mtx_hub.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
                     break;
 
                 case 13:
@@ -3039,7 +3036,7 @@ void gcPrepCameraMatrix(Gfx **dls, CObj *cobj)
                 case 7:
                 case 9:
                 case 11:
-                    gSPMatrix(dl++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+                    gSPMatrix(dl++, mtx_hub.gbi, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
                     break;
 
                 default:
@@ -3047,7 +3044,7 @@ void gcPrepCameraMatrix(Gfx **dls, CObj *cobj)
                     {
                         if (sGCMatrixFuncList[xobj->kind - 66].proc_same != NULL)
                         {
-                            sGCMatrixFuncList[xobj->kind - 66].proc_same(mtx_store.gbi, cobj, &dl);
+                            sGCMatrixFuncList[xobj->kind - 66].proc_same(mtx_hub.gbi, cobj, &dl);
                         }
                     }
                     break;

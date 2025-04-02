@@ -262,7 +262,7 @@ void ftKirbySpecialHiSetStatus(GObj *fighter_gobj)
     fp->proc_status = ftKirbySpecialHiProcStatus;
 
     ftMainSetStatus(fighter_gobj, nFTKirbyStatusSpecialHi, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 
     fp->proc_lagstart = ftParamProcPauseEffect;
     fp->proc_lagend = ftParamProcResumeEffect;
@@ -274,7 +274,7 @@ void ftKirbySpecialHiLandingSetStatus(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetStatus(fighter_gobj, nFTKirbyStatusSpecialHiLanding, 0.0F, 1.0F, FTSTATUS_PRESERVE_EFFECT);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 
     fp->proc_lagstart = ftParamProcPauseEffect;
     fp->proc_lagend = ftParamProcResumeEffect;
@@ -288,7 +288,7 @@ void ftKirbySpecialAirHiSetStatus(GObj *fighter_gobj)
     fp->proc_status = ftKirbySpecialHiProcStatus;
 
     ftMainSetStatus(fighter_gobj, nFTKirbyStatusSpecialAirHi, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 
     fp->proc_lagstart = ftParamProcPauseEffect;
     fp->proc_lagend = ftParamProcResumeEffect;
@@ -301,7 +301,7 @@ void ftKirbySpecialAirHiFallSetStatus(GObj *fighter_gobj)
     f32 vel_y_bak = fp->physics.vel_air.y;
 
     ftMainSetStatus(fighter_gobj, nFTKirbyStatusSpecialAirHiFall, 0.0F, 1.0F, FTSTATUS_PRESERVE_EFFECT);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 
     fp->proc_lagstart = ftParamProcPauseEffect;
     fp->proc_lagend = ftParamProcResumeEffect;

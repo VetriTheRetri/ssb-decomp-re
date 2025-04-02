@@ -325,7 +325,7 @@ void ftCommonDeadUpStarProcUpdate(GObj *fighter_gobj)
     switch (fp->motion_vars.flags.flag1)
     {
     case 1:
-        fp->colanim.maincolor.a = 128 - ((fp->status_vars.common.dead.rebirth_wait * 128) / FTCOMMON_DEADUP_REBIRTH_WAIT);
+        fp->colanim.color1.a = 128 - ((fp->status_vars.common.dead.rebirth_wait * 128) / FTCOMMON_DEADUP_REBIRTH_WAIT);
         break;
 
     default:
@@ -343,12 +343,12 @@ void ftCommonDeadUpStarProcUpdate(GObj *fighter_gobj)
             fp->physics.vel_air.y = ((gMPCollisionGroundData->camera_bound_top * 0.6F) - DObjGetStruct(fighter_gobj)->translate.vec.f.y) / 180.0F;
             fp->physics.vel_air.z = FTCOMMON_DEADUPFALL_VEL_Z;
 
-            fp->colanim.is_use_maincolor = TRUE;
+            fp->colanim.is_use_color1 = TRUE;
 
-            fp->colanim.maincolor.r = gMPCollisionGroundData->fog_color.r;
-            fp->colanim.maincolor.g = gMPCollisionGroundData->fog_color.g;
-            fp->colanim.maincolor.b = gMPCollisionGroundData->fog_color.b;
-            fp->colanim.maincolor.a = 0;
+            fp->colanim.color1.r = gMPCollisionGroundData->fog_color.r;
+            fp->colanim.color1.g = gMPCollisionGroundData->fog_color.g;
+            fp->colanim.color1.b = gMPCollisionGroundData->fog_color.b;
+            fp->colanim.color1.a = 0;
 
             fp->status_vars.common.dead.rebirth_wait = FTCOMMON_DEADUP_REBIRTH_WAIT;
 
@@ -366,7 +366,7 @@ void ftCommonDeadUpStarProcUpdate(GObj *fighter_gobj)
             ftCommonDeadAddDeadSFXSoundQueue(nSYAudioFGMDeadUpStar);
 
             fp->is_playertag_hide = TRUE;
-            fp->colanim.is_use_maincolor = FALSE;
+            fp->colanim.is_use_color1 = FALSE;
 
             fp->status_vars.common.dead.rebirth_wait = FTCOMMON_DEAD_REBIRTH_WAIT;
 

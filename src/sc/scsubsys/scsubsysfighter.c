@@ -61,7 +61,7 @@ void scSubsysFighterProcUpdate(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
     ftMainRunUpdateColAnim(fighter_gobj);
         
     if(fp->proc_update != NULL)

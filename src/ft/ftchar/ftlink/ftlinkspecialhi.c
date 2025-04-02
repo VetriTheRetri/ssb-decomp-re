@@ -332,10 +332,10 @@ void ftLinkSpecialHiSetStatus(GObj *fighter_gobj)
     fp->proc_status = ftLinkSpecialHiProcStatus;
 
     ftMainSetStatus(fighter_gobj, nFTLinkStatusSpecialHi, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 
     fp->proc_damage = ftLinkSpecialHiProcDamage;
-    fp->proc_effect = ftLinkSpecialHiProcEffect;
+    fp->proc_passive = ftLinkSpecialHiProcEffect;
 }
 
 // 0x801642EC
@@ -344,10 +344,10 @@ void ftLinkSpecialHiEndSetStatus(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetStatus(fighter_gobj, nFTLinkStatusSpecialHiEnd, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 
     fp->proc_damage = ftLinkSpecialHiProcDamage;
-    fp->proc_effect = ftLinkSpecialHiProcEffect;
+    fp->proc_passive = ftLinkSpecialHiProcEffect;
 }
 
 // 0x80164348
@@ -358,12 +358,12 @@ void ftLinkSpecialAirHiSetStatus(GObj *fighter_gobj)
     fp->proc_status = ftLinkSpecialHiProcStatus;
 
     ftMainSetStatus(fighter_gobj, nFTLinkStatusSpecialAirHi, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 
     fp->physics.vel_air.y = FTLINK_SPINATTACK_AIR_VEL_Y;
 
     fp->jumps_used = fp->attr->jumps_max;
 
     fp->proc_damage = ftLinkSpecialHiProcDamage;
-    fp->proc_effect = ftLinkSpecialHiProcEffect;
+    fp->proc_passive = ftLinkSpecialHiProcEffect;
 }

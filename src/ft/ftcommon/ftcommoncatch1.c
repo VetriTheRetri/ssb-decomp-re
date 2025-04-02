@@ -83,7 +83,7 @@ void ftCommonCatchSetStatus(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetStatus(fighter_gobj, nFTCommonStatusCatch, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 
     fp->motion_vars.flags.flag1 = 1;
     fp->motion_vars.flags.flag2 = 0;

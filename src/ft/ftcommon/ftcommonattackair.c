@@ -197,7 +197,7 @@ sb32 ftCommonAttackAirCheckInterruptCommon(GObj *fighter_gobj)
 
                     fp->status_vars.common.attackair.rehit_timer = 0;
                 }
-                ftMainPlayAnimNoEffect(fighter_gobj);
+                ftMainPlayAnimEventsAll(fighter_gobj);
 
                 fp->tics_since_last_z = FTINPUT_ZTRIGLAST_FRAMES_MAX;
 

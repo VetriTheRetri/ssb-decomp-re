@@ -1205,7 +1205,7 @@ sb32 ftParamCheckSetColAnimID(GMColAnim *colanim, s32 colanim_id, s32 length)
         {
             colanim->cs[i].p_script = NULL;
         }
-        colanim->is_use_maincolor = colanim->is_use_light = colanim->is_use_blendcolor = colanim->skeleton_id = 0;
+        colanim->is_use_color1 = colanim->is_use_light = colanim->is_use_color2 = colanim->skeleton_id = 0;
 
         return TRUE;
     }
@@ -1232,7 +1232,7 @@ void ftParamResetColAnim(GMColAnim *colanim)
     colanim->length = 0;
     colanim->colanim_id = 0;
 
-    colanim->is_use_maincolor = colanim->is_use_light = colanim->is_use_blendcolor = colanim->skeleton_id = 0;
+    colanim->is_use_color1 = colanim->is_use_light = colanim->is_use_color2 = colanim->skeleton_id = 0;
 }
 
 // 0x800E98B0

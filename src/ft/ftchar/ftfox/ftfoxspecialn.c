@@ -62,7 +62,7 @@ void ftFoxSpecialNInitStatusVars(GObj *fighter_gobj)
 void ftFoxSpecialNSetStatus(GObj *fighter_gobj)
 {
     ftMainSetStatus(fighter_gobj, nFTFoxStatusSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
     ftFoxSpecialNInitStatusVars(fighter_gobj);
 }
 
@@ -70,6 +70,6 @@ void ftFoxSpecialNSetStatus(GObj *fighter_gobj)
 void ftFoxSpecialAirNSetStatus(GObj *fighter_gobj)
 {
     ftMainSetStatus(fighter_gobj, nFTFoxStatusSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_FASTFALL);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
     ftFoxSpecialNInitStatusVars(fighter_gobj);
 }

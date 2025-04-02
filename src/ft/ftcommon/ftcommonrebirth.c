@@ -77,7 +77,7 @@ loop: // This makes no sense
     this_fp->coll_data.floor_angle.z = 0.0F;
 
     ftMainSetStatus(this_gobj, nFTCommonStatusRebirthDown, 100.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(this_gobj);
+    ftMainPlayAnimEventsAll(this_gobj);
     ftPhysicsStopVelAll(this_gobj);
 
     this_fp->status_vars.common.rebirth.halo_lower_wait = FTCOMMON_REBIRTH_HALO_LOWER_WAIT;
@@ -159,7 +159,7 @@ void ftCommonRebirthStandSetStatus(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetStatus(fighter_gobj, nFTCommonStatusRebirthStand, 0.0F, 1.0F, (FTSTATUS_PRESERVE_PLAYERTAG | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM));
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 
     fp->is_ignore_training_menu = TRUE;
     fp->is_ghost = TRUE;

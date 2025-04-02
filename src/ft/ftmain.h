@@ -9,11 +9,11 @@
 #include <gm/gmdef.h>
 
 extern void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms, u32 ev_kind);
-extern void ftMainUpdateMotionEventsNoEffect(GObj* fighter_gobj);
-extern void ftMainUpdateMotionEventsDefault(GObj* fighter_gobj);
-extern void ftMainUpdateMotionEventsDefaultEffect(GObj* fighter_gobj);
-extern void ftMainPlayAnimNoEffect(GObj* fighter_gobj);
-extern void ftMainPlayAnimDefault(GObj* fighter_gobj);
+extern void ftMainUpdateMotionEventsAll(GObj* fighter_gobj);
+extern void ftMainUpdateMotionEventsForward(GObj* fighter_gobj);
+extern void ftMainUpdateMotionEventsForwardEffect(GObj* fighter_gobj);
+extern void ftMainPlayAnimEventsAll(GObj* fighter_gobj);
+extern void ftMainPlayAnimEventsForward(GObj* fighter_gobj);
 extern sb32 ftMainUpdateColAnim(GMColAnim* colanim, GObj* fighter_gobj, sb32 is_muted, sb32 is_playing_effect);
 extern void ftMainRunUpdateColAnim(GObj* fighter_gobj);
 extern void ftMainProcUpdateInterrupt(GObj* fighter_gobj);

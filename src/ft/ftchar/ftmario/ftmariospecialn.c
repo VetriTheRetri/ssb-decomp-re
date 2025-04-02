@@ -103,7 +103,7 @@ void ftMarioSpecialNInitStatusVars(GObj *fighter_gobj)
 void ftMarioSpecialNSetStatus(GObj *fighter_gobj)
 {
     ftMainSetStatus(fighter_gobj, nFTMarioStatusSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
     ftMarioSpecialNInitStatusVars(fighter_gobj);
 }
 
@@ -111,6 +111,6 @@ void ftMarioSpecialNSetStatus(GObj *fighter_gobj)
 void ftMarioSpecialAirNSetStatus(GObj *fighter_gobj)
 {
     ftMainSetStatus(fighter_gobj, nFTMarioStatusSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_FASTFALL);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
     ftMarioSpecialNInitStatusVars(fighter_gobj);
 }

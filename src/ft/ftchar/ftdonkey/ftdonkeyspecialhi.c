@@ -83,7 +83,7 @@ void ftDonkeySpecialHiSetStatusFlagGA(GObj *fighter_gobj, sb32 ga)
     FTAttributes *attr = fp->attr;
 
     ftMainSetStatus(fighter_gobj, nFTDonkeyStatusSpecialAirHi, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 
     ftPhysicsClampAirVelX(fp, FTDONKEY_SPINNINGKONG_AIR_VEL_MAX);
 

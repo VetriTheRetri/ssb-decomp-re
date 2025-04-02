@@ -1096,7 +1096,7 @@ struct FTStruct
     ub32 unk_ft_0x190_b5 : 1;           // Never seen this used
     ub32 is_show_item : 1;
     ub32 is_cliff_hold : 1;             // Whether fighter is holding onto a ledge
-    ub32 is_effect_interrupt : 1;       // Is this flag's sole purpose to fast-forward GFX in the moveset event parser?
+    ub32 is_events_forward : 1;       // Is this flag's sole purpose to fast-forward GFX in the moveset event parser?
     ub32 is_ghost : 1;                  // If TRUE, fighter does not check for hit collisions and cannot be KO'd
     ub32 is_damage_resist : 1;
     ub32 is_ignore_training_menu : 1;   // Can't bring up training menu if TRUE? Might be used for some other things
@@ -1241,21 +1241,21 @@ struct FTStruct
     void **figatree;                // Main animation
     void **figatree_heap;           // Extern heap to load animations into
 
-    void (*proc_update)(GObj*);
-    void (*proc_accessory)(GObj*);
-    void (*proc_interrupt)(GObj*);
-    void (*proc_physics)(GObj*);
-    void (*proc_map)(GObj*);
-    void (*proc_slope)(GObj*);      // Slope Contour update
-    void (*proc_damage)(GObj*);
+    void (*proc_update)(GObj*);     // Update process
+    void (*proc_accessory)(GObj*);  // Runs at the beginning of status change if events aren't queued and whenever fighter isn't in hitlag
+    void (*proc_interrupt)(GObj*);  // Interrupt process
+    void (*proc_physics)(GObj*);    // Physics process
+    void (*proc_map)(GObj*);        // Map collisions process
+    void (*proc_slope)(GObj*);      // Slope Contour process
+    void (*proc_damage)(GObj*);     // Runs when fighter is damaged
     void (*proc_trap)(GObj*);       // Used only by Yoshi Egg?
-    void (*proc_shield)(GObj*);
-    void (*proc_hit)(GObj*);
-    void (*proc_effect)(GObj*);
-    void (*proc_lagupdate)(GObj*);
-    void (*proc_lagstart)(GObj*);
-    void (*proc_lagend)(GObj*);
-    void (*proc_status)(GObj*);
+    void (*proc_shield)(GObj*);     // Runs when hitbox contact with a shield is made
+    void (*proc_hit)(GObj*);        // Runs when hitbox contact with a hurtbox is made
+    void (*proc_passive)(GObj*);    // Runs regardless of hitlag during the Update / Interrupt main process
+    void (*proc_lagupdate)(GObj*);  // Runs on every tic when fighter is in hitlag
+    void (*proc_lagstart)(GObj*);   // Runs when fighter enters hitlag
+    void (*proc_lagend)(GObj*);     // Runs when fighter's hitlag is over
+    void (*proc_status)(GObj*);     // Runs only on status change
 
     alSoundEffect *p_sfx;
     u16 sfx_id;

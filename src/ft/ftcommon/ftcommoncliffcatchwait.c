@@ -43,7 +43,7 @@ void ftCommonCliffCatchSetStatus(GObj *fighter_gobj)
 
     mpCommonSetFighterGround(fp);
     ftMainSetStatus(fighter_gobj, nFTCommonStatusCliffCatch, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
     mpCommonSetFighterAir(fp);
     ftPhysicsStopVelAll(fighter_gobj);
 

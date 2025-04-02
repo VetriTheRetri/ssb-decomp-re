@@ -5,6 +5,8 @@
 #include <sys/scheduler.h>
 
 #define SYVIDEO_FLAG_NONE           0x0
+#define SYVIDEO_FLAG_ANTIALIAS      0x1
+#define SYVIDEO_FLAG_NOANTIALIAS    0x2
 #define SYVIDEO_FLAG_SERRATE        0x4
 #define SYVIDEO_FLAG_NOSERRATE      0x8
 #define SYVIDEO_FLAG_COLORDEPTH16   0x10
@@ -45,7 +47,7 @@
     SYVIDEO_FLAG_NOGAMMADITHER  | 0x800                     |   \
     SYVIDEO_FLAG_NOBLACKOUT     | SYVIDEO_FLAG_NOGAMMA      |   \
     SYVIDEO_FLAG_COLORDEPTH16   | SYVIDEO_FLAG_NOSERRATE    |   \
-    0x1                                                         \
+    SYVIDEO_FLAG_ANTIALIAS                                      \
 }
 
 #define SYVIDEO_ZBUFFER_START(width, height, w_border, h_border, type) \

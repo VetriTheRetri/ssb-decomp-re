@@ -27,7 +27,7 @@ void ftCommonShieldBreakFlySetStatus(GObj *fighter_gobj)
 
     mpCommonSetFighterAir(fp);
     ftMainSetStatus(fighter_gobj, nFTCommonStatusShieldBreakFly, 0.0F, 1.0F, FTSTATUS_PRESERVE_DAMAGEPLAYER);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 
     fp->physics.vel_air.x = 0.0F;
     fp->physics.vel_air.y = attr->shield_break_vel_y;

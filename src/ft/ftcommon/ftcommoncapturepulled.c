@@ -119,7 +119,7 @@ void ftCommonCapturePulledProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
     this_fp->lr = -capture_fp->lr;
 
     ftMainSetStatus(fighter_gobj, nFTCommonStatusCapturePulled, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 
     this_fp->status_vars.common.capture.is_goto_pulled_wait = FALSE;
 

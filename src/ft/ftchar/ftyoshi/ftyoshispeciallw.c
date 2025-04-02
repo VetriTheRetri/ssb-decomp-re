@@ -107,7 +107,7 @@ void ftYoshiSpecialLwStartSetStatus(GObj *fighter_gobj)
 
     mpCommonSetFighterAir(fp);
     ftMainSetStatus(fighter_gobj, nFTYoshiStatusSpecialLwStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 
     fp->jumps_used = fp->attr->jumps_max;
 }
@@ -120,7 +120,7 @@ void ftYoshiSpecialAirLwStartSetStatus(GObj *fighter_gobj)
     fp->proc_status = ftYoshiSpecialLwStartProcStatus;
 
     ftMainSetStatus(fighter_gobj, nFTYoshiStatusSpecialAirLwStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 
     fp->jumps_used = fp->attr->jumps_max;
 }
@@ -139,7 +139,7 @@ void ftYoshiSpecialAirLwLoopSetStatus(GObj *fighter_gobj)
     vel_y_bak = fp->physics.vel_air.y;
 
     ftMainSetStatus(fighter_gobj, nFTYoshiStatusSpecialAirLwLoop, fighter_gobj->anim_frame, 0, FTSTATUS_PRESERVE_HIT);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 
     fp->physics.vel_air.y = vel_y_bak;
 

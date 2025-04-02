@@ -66,12 +66,12 @@ void ftPurinSpecialHiSwitchStatusAir(GObj *fighter_gobj)
 void ftPurinSpecialHiSetStatus(GObj *fighter_gobj)
 {
     ftMainSetStatus(fighter_gobj, nFTPurinStatusSpecialHi, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 }
 
 // 0x801516D8
 void ftPurinSpecialAirHiSetStatus(GObj *fighter_gobj)
 {
     ftMainSetStatus(fighter_gobj, nFTPurinStatusSpecialAirHi, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 }

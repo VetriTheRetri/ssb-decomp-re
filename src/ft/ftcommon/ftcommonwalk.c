@@ -109,7 +109,7 @@ void ftCommonWalkSetStatusParam(GObj *fighter_gobj, f32 anim_frame_begin)
     s32 status_id = ftCommonWalkGetWalkStatus(fp->input.pl.stick_range.x);
 
     ftMainSetStatus(fighter_gobj, status_id, anim_frame_begin, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 
     if (status_id != nFTCommonStatusWalkFast)
     {

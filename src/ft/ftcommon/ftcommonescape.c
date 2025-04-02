@@ -50,7 +50,7 @@ void ftCommonEscapeSetStatus(GObj *fighter_gobj, s32 status_id, s32 itemthrow_bu
     fp->proc_status = ftCommonEscapeProcStatus;
 
     ftMainSetStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 
     fp->is_ignore_jostle = TRUE;
 

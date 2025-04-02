@@ -5,8 +5,14 @@
 
 extern Gfx *gSYTaskmanDLHeads[4];
 
-#define syMatrixStoreGbi(mtx_store, mtx_heap) \
-(mtx_store.gbi = mtx_heap.ptr, mtx_heap.ptr = (Mtx*)mtx_heap.ptr + 1) \
+#define syMatrixAdvance(mtx, mtx_heap, type) \
+(mtx = mtx_heap.ptr, mtx_heap.ptr = (void*) ((type*) mtx_heap.ptr + 1))
+
+#define syMatrixAdvanceW(mtx, mtx_heap) \
+syMatrixAdvance(mtx, mtx_heap, Mtx)
+
+#define syMatrixAdvanceF(mtx_hub, mtx_heap) \
+syMatrixAdvance(mtx, mtx_heap, Mtx44f)
 
 // should be a concrete pointer type
 typedef struct syMtxProcess

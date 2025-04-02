@@ -280,7 +280,7 @@ void ftCommonGuardInitJoints(GObj *fighter_gobj)
         attr->shield_anim_joints[fp->status_vars.common.guard.angle_i],
         fp->status_vars.common.guard.angle_f
     );
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 
     if (fp->is_have_translate_scale)
     {
@@ -416,7 +416,7 @@ void ftCommonGuardOnSetStatus(GObj *fighter_gobj, s32 slide_frames)
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetStatus(fighter_gobj, nFTCommonStatusGuardOn, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 
     if (fp->shield_health != 0)
     {

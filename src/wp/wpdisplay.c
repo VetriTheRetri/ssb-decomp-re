@@ -29,7 +29,7 @@ void wpDisplayHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
     WPAttackColl *attack_coll = &wp->attack_coll;
-    SYMatrixHub mtx_store;
+    Mtx *m;
     s32 i;
 
     for (i = 0; i < attack_coll->attack_count; i++)
@@ -52,31 +52,31 @@ void wpDisplayHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
             }
             if (attack_coll->attack_state == nGMAttackStateInterpolate)
             {
-                syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
+                syMatrixAdvanceW(m, gSYTaskmanGraphicsHeap);
 
-                syMatrixTra(mtx_store.gbi, attack_coll->attack_pos[i].pos_prev.x, attack_coll->attack_pos[i].pos_prev.y, attack_coll->attack_pos[i].pos_prev.z);
+                syMatrixTra(m, attack_coll->attack_pos[i].pos_prev.x, attack_coll->attack_pos[i].pos_prev.y, attack_coll->attack_pos[i].pos_prev.z);
 
-                gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+                gSPMatrix(gSYTaskmanDLHeads[0]++, m, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-                syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
+                syMatrixAdvanceW(m, gSYTaskmanGraphicsHeap);
 
-                syMatrixSca(mtx_store.gbi, attack_coll->size / 15.0F, attack_coll->size / 15.0F, attack_coll->size / 15.0F);
+                syMatrixSca(m, attack_coll->size / 15.0F, attack_coll->size / 15.0F, attack_coll->size / 15.0F);
 
-                gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+                gSPMatrix(gSYTaskmanDLHeads[0]++, m, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
                 gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTDisplayMainHitCollisionEdgeDL);
                 gSPPopMatrix(gSYTaskmanDLHeads[0]++, G_MTX_MODELVIEW);
             }
-            syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
+            syMatrixAdvanceW(m, gSYTaskmanGraphicsHeap);
 
-            syMatrixTra(mtx_store.gbi, attack_coll->attack_pos[i].pos_curr.x, attack_coll->attack_pos[i].pos_curr.y, attack_coll->attack_pos[i].pos_curr.z);
+            syMatrixTra(m, attack_coll->attack_pos[i].pos_curr.x, attack_coll->attack_pos[i].pos_curr.y, attack_coll->attack_pos[i].pos_curr.z);
 
-            gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+            gSPMatrix(gSYTaskmanDLHeads[0]++, m, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-            syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
+            syMatrixAdvanceW(m, gSYTaskmanGraphicsHeap);
 
-            syMatrixSca(mtx_store.gbi, attack_coll->size / 15.0F, attack_coll->size / 15.0F, attack_coll->size / 15.0F);
+            syMatrixSca(m, attack_coll->size / 15.0F, attack_coll->size / 15.0F, attack_coll->size / 15.0F);
 
-            gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+            gSPMatrix(gSYTaskmanDLHeads[0]++, m, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
             if (attack_coll->attack_state == nGMAttackStateInterpolate)
             {
@@ -94,35 +94,35 @@ void wpDisplayMapCollisions(GObj *weapon_gobj) // Render weapon ECB?
     WPStruct *wp = wpGetStruct(weapon_gobj);
     Vec3f *translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
     MPObjectColl *map_coll = &wp->coll_data.map_coll;
-    SYMatrixHub mtx_store;
+    Mtx *m;
 
     gDPPipeSync(gSYTaskmanDLHeads[1]++);
 
-    syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
+    syMatrixAdvanceW(m, gSYTaskmanGraphicsHeap);
 
-    syMatrixTra(mtx_store.gbi, translate->x, translate->y + map_coll->bottom, translate->z);
+    syMatrixTra(m, translate->x, translate->y + map_coll->bottom, translate->z);
 
-    gSPMatrix(gSYTaskmanDLHeads[1]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+    gSPMatrix(gSYTaskmanDLHeads[1]++, m, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-    syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
+    syMatrixAdvanceW(m, gSYTaskmanGraphicsHeap);
 
-    syMatrixSca(mtx_store.gbi, map_coll->width / 30.0F, (map_coll->center - map_coll->bottom) / 30.0F, 1.0F);
+    syMatrixSca(m, map_coll->width / 30.0F, (map_coll->center - map_coll->bottom) / 30.0F, 1.0F);
 
-    gSPMatrix(gSYTaskmanDLHeads[1]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+    gSPMatrix(gSYTaskmanDLHeads[1]++, m, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
     gSPDisplayList(gSYTaskmanDLHeads[1]++, dFTDisplayMainMapCollisionBottomDL);
     gSPPopMatrix(gSYTaskmanDLHeads[1]++, G_MTX_MODELVIEW);
 
-    syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
+    syMatrixAdvanceW(m, gSYTaskmanGraphicsHeap);
 
-    syMatrixTra(mtx_store.gbi, translate->x, translate->y + map_coll->center, translate->z);
+    syMatrixTra(m, translate->x, translate->y + map_coll->center, translate->z);
 
-    gSPMatrix(gSYTaskmanDLHeads[1]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+    gSPMatrix(gSYTaskmanDLHeads[1]++, m, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-    syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
+    syMatrixAdvanceW(m, gSYTaskmanGraphicsHeap);
 
-    syMatrixSca(mtx_store.gbi, map_coll->width / 30.0F, (map_coll->top - map_coll->center) / 30.0F, 1.0F);
+    syMatrixSca(m, map_coll->width / 30.0F, (map_coll->top - map_coll->center) / 30.0F, 1.0F);
 
-    gSPMatrix(gSYTaskmanDLHeads[1]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+    gSPMatrix(gSYTaskmanDLHeads[1]++, m, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
     gSPDisplayList(gSYTaskmanDLHeads[1]++, dFTDisplayMainMapCollisionTopDL);
     gSPPopMatrix(gSYTaskmanDLHeads[1]++, G_MTX_MODELVIEW);
 }

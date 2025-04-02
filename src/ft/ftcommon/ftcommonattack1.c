@@ -134,7 +134,7 @@ void ftCommonAttack11SetStatus(GObj *fighter_gobj)
         fp->proc_status = ftCommonAttack11ProcStatus;
 
         ftMainSetStatus(fighter_gobj, nFTCommonStatusAttack11, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-        ftMainPlayAnimNoEffect(fighter_gobj);
+        ftMainPlayAnimEventsAll(fighter_gobj);
 
         fp->motion_vars.flags.flag1 = 0;
 
@@ -156,7 +156,7 @@ void ftCommonAttack12SetStatus(GObj *fighter_gobj)
     if (ftCommonGetCheckInterruptCommon(fighter_gobj) == FALSE)
     {
         ftMainSetStatus(fighter_gobj, nFTCommonStatusAttack12, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-        ftMainPlayAnimNoEffect(fighter_gobj);
+        ftMainPlayAnimEventsAll(fighter_gobj);
 
         fp->motion_vars.flags.flag1 = 0;
 
@@ -232,7 +232,7 @@ void ftCommonAttack13SetStatus(GObj *fighter_gobj)
             break;
         }
         ftMainSetStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-        ftMainPlayAnimNoEffect(fighter_gobj);
+        ftMainPlayAnimEventsAll(fighter_gobj);
 
         fp->motion_vars.flags.flag1 = 0;
 

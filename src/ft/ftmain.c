@@ -497,7 +497,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         break;
 
     case nFTMotionEventLoopBegin:
-        ms->p_goto[ms->script_id] = (void*) ((uintptr_t)ms->p_script + sizeof(FTMotionEventDefault));
+        ms->p_goto[ms->script_id] = lbRelocGetFileData(void*, ms->p_script, sizeof(FTMotionEventDefault));
 
         ms->script_id++;
 
@@ -515,7 +515,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
     case nFTMotionEventSubroutine:
         ftMotionEventAdvance(ms, FTMotionEventSubroutine1);
 
-        ms->p_goto[ms->script_id] = (void*) ((uintptr_t)ms->p_script + sizeof(FTMotionEventSubroutine2));
+        ms->p_goto[ms->script_id] = lbRelocGetFileData(void*, ms->p_script, sizeof(FTMotionEventSubroutine2));
 
         ms->script_id++;
 
@@ -533,7 +533,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
 
             if (p_damage->p_script[fp->status_vars.common.damage.script_id][fkind] != NULL)
             {
-                ms->p_goto[ms->script_id] = (void*) ((uintptr_t)ms->p_script + sizeof(FTMotionEventSetDamageThrown2));
+                ms->p_goto[ms->script_id] = lbRelocGetFileData(void*, ms->p_script, sizeof(FTMotionEventSetDamageThrown2));
 
                 ms->script_id++;
 
@@ -560,9 +560,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         if (fp->motion_scripts[0][1].p_script == NULL)
         {
             fp->motion_scripts[0][1].p_script = fp->motion_scripts[1][1].p_script = ftMotionEventCast(ms, FTMotionEventParallel2)->p_goto;
-
             fp->motion_scripts[0][1].script_wait = fp->motion_scripts[1][1].script_wait = DObjGetStruct(fighter_gobj)->anim_speed - fighter_gobj->anim_frame;
-
             fp->motion_scripts[0][1].script_id = fp->motion_scripts[1][1].script_id = 0;
         }
         ftMotionEventAdvance(ms, FTMotionEventParallel2);
@@ -693,17 +691,18 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
     }
 }
 
-// 0x800E02A8
-void ftMainUpdateMotionEventsNoEffect(GObj *fighter_gobj)
+// 0x800E02A8 - Run all motion events. Effects are parsed only if events aren't queued.
+// If events are not queued, fp->motion_scripts[0][i] is copied to fp->motion_scripts[1][i]
+// for later execution in the Physics / Map update process.
+void ftMainUpdateMotionEventsAll(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTMotionScript *ms;
-    u32 ev_kind;
     s32 i;
 
     for (i = 0; i < ARRAY_COUNT(fp->motion_scripts); i++)
     {
-        ms = &fp->motion_scripts[0][i];
+        FTMotionScript *ms = &fp->motion_scripts[0][i];
+        u32 ev_kind;
 
         if (ms->p_script != NULL)
         {
@@ -711,34 +710,38 @@ void ftMainUpdateMotionEventsNoEffect(GObj *fighter_gobj)
             {
                 ms->script_wait -= DObjGetStruct(fighter_gobj)->anim_speed;
             }
-        loop:
-            if (ms->p_script != NULL)
+            while (TRUE)
             {
-                if (ms->script_wait == F32_MAX)
+                if (ms->p_script == NULL)
                 {
-                    if ((DObjGetStruct(fighter_gobj)->anim_speed <= fighter_gobj->anim_frame)) 
+                    break;
+                }
+                else
+                {
+                    if (ms->script_wait == F32_MAX)
                     {
-                        continue;
+                        if ((DObjGetStruct(fighter_gobj)->anim_speed <= fighter_gobj->anim_frame)) 
+                        {
+                            break;
+                        }
+                        else ms->script_wait = -fighter_gobj->anim_frame;
                     }
-                    else ms->script_wait = -fighter_gobj->anim_frame;
+                    else if (ms->script_wait > 0.0F) 
+                    {
+                        break;
+                    }
+                    ev_kind = ftMotionEventCast(ms, FTMotionEventMakeEffect1)->opcode;
+    
+                    if ((ev_kind == nFTMotionEventEffect || ev_kind == nFTMotionEventEffectScaled) && (fp->is_events_forward))
+                    {
+                        ftMotionEventAdvance(ms, FTMotionEventMakeEffect);
+                    }
+                    else ftMainParseMotionEvent(fighter_gobj, fp, ms, ev_kind);
                 }
-                else if (ms->script_wait > 0.0F) 
-                {
-                    continue;
-                }
-                ev_kind = ftMotionEventCast(ms, FTMotionEventMakeEffect1)->opcode;
-
-                if (((ev_kind == nFTMotionEventEffect) || (ev_kind == nFTMotionEventEffectScaled)) && (fp->is_effect_interrupt))
-                {
-                    ftMotionEventAdvance(ms, FTMotionEventMakeEffect);
-                }
-                else ftMainParseMotionEvent(fighter_gobj, fp, ms, ev_kind);
-
-                goto loop;
             }
         }
     }
-    if (!(fp->is_effect_interrupt))
+    if (!(fp->is_events_forward))
     {
         for (i = 0; i < ARRAY_COUNT(fp->motion_scripts); i++)
         {
@@ -747,17 +750,17 @@ void ftMainUpdateMotionEventsNoEffect(GObj *fighter_gobj)
     }
 }
 
-// 0x800E0478 - Fast forward all fighter-specific events, update only core events (sync timer, async timer, goto, subroutine, etc.)
-void ftMainUpdateMotionEventsDefault(GObj *fighter_gobj)
+// 0x800E0478 - Fast-forward most fighter-specific events and update core events (sync timer, async timer, goto, subroutine, etc.).
+// fp->motion_scripts[0][i] is always moved to fp->motion_scripts[1][i] for later execution in the Physics / Map update process.
+void ftMainUpdateMotionEventsForward(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTMotionScript *ms;
-    u32 ev_kind;
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(fp->motion_scripts); i++)
+    for (i = 0; i < ARRAY_COUNT(fp->motion_scripts[0]); i++)
     {
-        ms = &fp->motion_scripts[0][i];
+        FTMotionScript *ms = &fp->motion_scripts[0][i];
+        u32 ev_kind;
 
         if (ms->p_script != NULL)
         {
@@ -765,86 +768,96 @@ void ftMainUpdateMotionEventsDefault(GObj *fighter_gobj)
             {
                 ms->script_wait -= DObjGetStruct(fighter_gobj)->anim_speed;
             }
-        loop:
-            if (ms->p_script != NULL)
+            while (TRUE)
             {
-                if (ms->script_wait == F32_MAX)
+                if (ms->p_script == NULL)
                 {
-                    if ((DObjGetStruct(fighter_gobj)->anim_speed <= fighter_gobj->anim_frame)) continue;
-
-                    else ms->script_wait = -fighter_gobj->anim_frame;
-                }
-                else if (ms->script_wait > 0.0F) continue;
-
-                ev_kind = ftMotionEventCast(ms, FTMotionEventDefault)->opcode;
-
-                switch (ev_kind)
-                {
-                case nFTMotionEventClearAttackCollID:
-                case nFTMotionEventClearAttackCollAll:
-                case nFTMotionEventSetAttackCollDamage:
-                case nFTMotionEventSetAttackCollSize:
-                case nFTMotionEventSetAttackCollSoundLevel:
-                case nFTMotionEventRefreshAttackCollID:
-                case nFTMotionEventPlaySFX:
-                case nFTMotionEventPlayLoopSFXStoreInfo:
-                case nFTMotionEventStopLoopSFX:
-                case nFTMotionEventPlayVoiceStoreInfo:
-                case nFTMotionEventPlayLoopVoiceStoreInfo:
-                case nFTMotionEventPlaySFXStoreInfo:
-                case nFTMotionEventPlaySmashVoice:
-                case nFTMotionEventSetFlag0:
-                case nFTMotionEventSetFlag1:
-                case nFTMotionEventSetFlag2:
-                case nFTMotionEventSetAirJumpAdd:
-                case nFTMotionEventSetAirJumpMax:
-                case nFTMotionEventSetColAnim:
-                case nFTMotionEventResetColAnim:
-                case nFTMotionEventMakeRumble:
-                case nFTMotionEventStopRumble:
-                case nFTMotionEventSetAfterImage:
-                    ftMotionEventAdvance(ms, FTMotionEventDefault);
-                    break;
-
-                case nFTMotionEventEffect:
-                case nFTMotionEventEffectScaled:
-                    ftMotionEventAdvance(ms, FTMotionEventMakeEffect);
-                    break;
-
-                case nFTMotionEventMakeAttackColl:
-                case nFTMotionEventMakeAttackCollScaled:
-                    ftMotionEventAdvance(ms, FTMotionEventMakeAttack);
-                    break;
-
-                case nFTMotionEventSetAttackCollOffset:
-                    ftMotionEventAdvance(ms, FTMotionEventSetAttackOffset);
-                    break;
-
-                default:
-                    ftMainParseMotionEvent(fighter_gobj, fp, ms, ev_kind);
                     break;
                 }
-                goto loop;
+                else
+                {
+                    if (ms->script_wait == F32_MAX)
+                    {
+                        if ((DObjGetStruct(fighter_gobj)->anim_speed <= fighter_gobj->anim_frame))
+                        {
+                            break;
+                        }
+                        else ms->script_wait = -fighter_gobj->anim_frame;
+                    }
+                    else if (ms->script_wait > 0.0F)
+                    {
+                        break;
+                    }
+                    ev_kind = ftMotionEventCast(ms, FTMotionEventDefault)->opcode;
+
+                    switch (ev_kind)
+                    {
+                    case nFTMotionEventClearAttackCollID:
+                    case nFTMotionEventClearAttackCollAll:
+                    case nFTMotionEventSetAttackCollDamage:
+                    case nFTMotionEventSetAttackCollSize:
+                    case nFTMotionEventSetAttackCollSoundLevel:
+                    case nFTMotionEventRefreshAttackCollID:
+                    case nFTMotionEventPlaySFX:
+                    case nFTMotionEventPlayLoopSFXStoreInfo:
+                    case nFTMotionEventStopLoopSFX:
+                    case nFTMotionEventPlayVoiceStoreInfo:
+                    case nFTMotionEventPlayLoopVoiceStoreInfo:
+                    case nFTMotionEventPlaySFXStoreInfo:
+                    case nFTMotionEventPlaySmashVoice:
+                    case nFTMotionEventSetFlag0:
+                    case nFTMotionEventSetFlag1:
+                    case nFTMotionEventSetFlag2:
+                    case nFTMotionEventSetAirJumpAdd:
+                    case nFTMotionEventSetAirJumpMax:
+                    case nFTMotionEventSetColAnim:
+                    case nFTMotionEventResetColAnim:
+                    case nFTMotionEventMakeRumble:
+                    case nFTMotionEventStopRumble:
+                    case nFTMotionEventSetAfterImage:
+                        ftMotionEventAdvance(ms, FTMotionEventDefault);
+                        break;
+
+                    case nFTMotionEventEffect:
+                    case nFTMotionEventEffectScaled:
+                        ftMotionEventAdvance(ms, FTMotionEventMakeEffect);
+                        break;
+
+                    case nFTMotionEventMakeAttackColl:
+                    case nFTMotionEventMakeAttackCollScaled:
+                        ftMotionEventAdvance(ms, FTMotionEventMakeAttack);
+                        break;
+
+                    case nFTMotionEventSetAttackCollOffset:
+                        ftMotionEventAdvance(ms, FTMotionEventSetAttackOffset);
+                        break;
+
+                    default:
+                        ftMainParseMotionEvent(fighter_gobj, fp, ms, ev_kind);
+                        break;
+                    }
+                }
             }
         }
     }
-    for (i = 0; i < ARRAY_COUNT(fp->motion_scripts); i++)
+    for (i = 0; i < ARRAY_COUNT(fp->motion_scripts[0]); i++)
     {
         fp->motion_scripts[1][i] = fp->motion_scripts[0][i];
     }
 }
 
-// 0x800E0654 - Update only standard events and GFX spawn
-void ftMainUpdateMotionEventsDefaultEffect(GObj *fighter_gobj)
+// 0x800E0654 - Fast-forward all events except core, throw setup and effect spawn events.
+// This makes it so that effects are run last, after all four main processes
+// (proc_update, proc_interrupt, proc_physics, proc_map).
+void ftMainUpdateMotionEventsForwardEffect(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTMotionScript *ms;
-    u32 ev_kind;
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(fp->motion_scripts); i++)
+    for (i = 0; i < ARRAY_COUNT(fp->motion_scripts[1]); i++)
     {
-        ms = &fp->motion_scripts[1][i];
+        FTMotionScript *ms = &fp->motion_scripts[1][i];
+        u32 ev_kind;
 
         if (ms->p_script != NULL)
         {
@@ -852,56 +865,65 @@ void ftMainUpdateMotionEventsDefaultEffect(GObj *fighter_gobj)
             {
                 ms->script_wait -= DObjGetStruct(fighter_gobj)->anim_speed;
             }
-        loop:
-            if (ms->p_script != NULL)
+            while (TRUE)
             {
-                if (ms->script_wait == F32_MAX)
+                if (ms->p_script == NULL)
                 {
-                    if ((DObjGetStruct(fighter_gobj)->anim_speed <= fighter_gobj->anim_frame)) continue;
-
-                    else ms->script_wait = -fighter_gobj->anim_frame;
-                }
-                else if (ms->script_wait > 0.0F) continue;
-
-                ev_kind = ftMotionEventCast(ms, FTMotionEventDefault)->opcode;
-
-                switch (ev_kind)
-                {
-                case nFTMotionEventEnd:
-                case nFTMotionEventSyncWait:
-                case nFTMotionEventAsyncWait:
-                case nFTMotionEventSetDamageThrown:
-                case nFTMotionEventLoopBegin:
-                case nFTMotionEventLoopEnd:
-                case nFTMotionEventSubroutine:
-                case nFTMotionEventReturn:
-                case nFTMotionEventGoto:
-                case nFTMotionEventPauseScript:
-                case nFTMotionEventEffect:
-                case nFTMotionEventEffectScaled:
-                    ftMainParseMotionEvent(fighter_gobj, fp, ms, ev_kind);
-                    break;
-
-                case nFTMotionEventMakeAttackColl:
-                case nFTMotionEventMakeAttackCollScaled:
-                    ftMotionEventAdvance(ms, FTMotionEventMakeAttack);
-                    break;
-
-                case nFTMotionEventSetAttackCollOffset:
-                case nFTMotionEventSetThrow:
-                case nFTMotionEventSetParallelScript:
-                    ftMotionEventAdvance(ms, FTMotionEventDouble);
-                    break;
-
-                case nFTMotionEventSetDamageCollPartID:
-                    ftMotionEventAdvance(ms, FTMotionEventSetDamageCollPartID);
-                    break;
-
-                default:
-                    ftMotionEventAdvance(ms, FTMotionEventDefault);
                     break;
                 }
-                goto loop;
+                else
+                {
+                    if (ms->script_wait == F32_MAX)
+                    {
+                        if (DObjGetStruct(fighter_gobj)->anim_speed <= fighter_gobj->anim_frame)
+                        {
+                            break;
+                        }
+                        else ms->script_wait = -fighter_gobj->anim_frame;
+                    }
+                    else if (ms->script_wait > 0.0F)
+                    {
+                        break;
+                    }
+                    ev_kind = ftMotionEventCast(ms, FTMotionEventDefault)->opcode;
+
+                    switch (ev_kind)
+                    {
+                    case nFTMotionEventEnd:
+                    case nFTMotionEventSyncWait:
+                    case nFTMotionEventAsyncWait:
+                    case nFTMotionEventSetDamageThrown:
+                    case nFTMotionEventLoopBegin:
+                    case nFTMotionEventLoopEnd:
+                    case nFTMotionEventSubroutine:
+                    case nFTMotionEventReturn:
+                    case nFTMotionEventGoto:
+                    case nFTMotionEventPauseScript:
+                    case nFTMotionEventEffect:
+                    case nFTMotionEventEffectScaled:
+                        ftMainParseMotionEvent(fighter_gobj, fp, ms, ev_kind);
+                        break;
+
+                    case nFTMotionEventMakeAttackColl:
+                    case nFTMotionEventMakeAttackCollScaled:
+                        ftMotionEventAdvance(ms, FTMotionEventMakeAttack);
+                        break;
+
+                    case nFTMotionEventSetAttackCollOffset:
+                    case nFTMotionEventSetThrow:
+                    case nFTMotionEventSetParallelScript:
+                        ftMotionEventAdvance(ms, FTMotionEventDouble);
+                        break;
+
+                    case nFTMotionEventSetDamageCollPartID:
+                        ftMotionEventAdvance(ms, FTMotionEventSetDamageCollPartID);
+                        break;
+
+                    default:
+                        ftMotionEventAdvance(ms, FTMotionEventDefault);
+                        break;
+                    }
+                }
             }
         }
     }
@@ -920,18 +942,18 @@ void ftMainPlayAnim(GObj *fighter_gobj)
     ftParamsUpdateFighterPartsTransform(fp->joints[nFTPartsJointTopN]);
 }
 
-// 0x800E0830
-void ftMainPlayAnimNoEffect(GObj *fighter_gobj)
+// 0x800E0830 - Play fighter animation and run motion scripts normally
+void ftMainPlayAnimEventsAll(GObj *fighter_gobj)
 {
     ftMainPlayAnim(fighter_gobj);
-    ftMainUpdateMotionEventsNoEffect(fighter_gobj);
+    ftMainUpdateMotionEventsAll(fighter_gobj);
 }
 
-// 0x800E0858
-void ftMainPlayAnimDefault(GObj *fighter_gobj)
+// 0x800E0858 - Play fighter animation and fast-forward motion scripts to current frame
+void ftMainPlayAnimEventsForward(GObj *fighter_gobj)
 {
     ftMainPlayAnim(fighter_gobj);
-    ftMainUpdateMotionEventsDefault(fighter_gobj);
+    ftMainUpdateMotionEventsForward(fighter_gobj);
 }
 
 // 0x800E0880
@@ -960,16 +982,18 @@ sb32 ftMainUpdateColAnim(GMColAnim *colanim, GObj *fighter_gobj, sb32 is_muted, 
         }
         while ((colanim->cs[i].p_script != NULL) && (cs->color_event_timer == 0))
         {
-            ev_kind = GMColEventCast(colanim->cs[i].p_script, GMColEventDefault)->opcode;
+            ev_kind = gmColEventCast(colanim->cs[i].p_script, GMColEventDefault)->opcode;
 
             switch (ev_kind)
             {
             case nGMColEventEnd:
                 for (j = 0; j < ARRAY_COUNT(colanim->cs); j++)
                 {
-                    if ((j != i) && (colanim->cs[j].p_script != NULL)) break;
+                    if ((j != i) && (colanim->cs[j].p_script != NULL))
+                    {
+                        break;
+                    }
                 }
-
                 if (j == ARRAY_COUNT(colanim->cs))
                 {
                     return TRUE;
@@ -978,18 +1002,19 @@ sb32 ftMainUpdateColAnim(GMColAnim *colanim, GObj *fighter_gobj, sb32 is_muted, 
                 break;
 
             case nGMColEventWait:
-                colanim->cs[i].color_event_timer = GMColEventCast(colanim->cs[i].p_script, GMColEventDefault)->value, GMColEventAdvance(colanim->cs[i].p_script, GMColEventDefault);
+                colanim->cs[i].color_event_timer = gmColEventCast(colanim->cs[i].p_script, GMColEventDefault)->value,
+                gmColEventAdvance(colanim->cs[i].p_script, GMColEventDefault);
                 break;
 
             case nGMColEventGoto:
-                GMColEventAdvance(colanim->cs[i].p_script, GMColEventGoto1);
-
-                colanim->cs[i].p_script = GMColEventCast(colanim->cs[i].p_script, GMColEventGoto2)->p_goto;
+                gmColEventAdvance(colanim->cs[i].p_script, GMColEventGoto1);
+                colanim->cs[i].p_script = gmColEventCast(colanim->cs[i].p_script, GMColEventGoto2)->p_goto;
                 break;
 
             case nGMColEventLoopBegin:
-                colanim->cs[i].p_subroutine[colanim->cs[i].script_id++] = (void*) ((uintptr_t)colanim->cs[i].p_script + sizeof(GMColEventDefault));
-                colanim->cs[i].p_subroutine[colanim->cs[i].script_id++] = GMColEventCast(colanim->cs[i].p_script, GMColEventDefault)->value, GMColEventAdvance(colanim->cs[i].p_script, GMColEventDefault);
+                colanim->cs[i].p_subroutine[colanim->cs[i].script_id++] = lbRelocGetFileData(void*, colanim->cs[i].p_script, sizeof(GMColEventDefault));
+                colanim->cs[i].p_subroutine[colanim->cs[i].script_id++] = gmColEventCast(colanim->cs[i].p_script, GMColEventDefault)->value,
+                gmColEventAdvance(colanim->cs[i].p_script, GMColEventDefault);
                 break;
 
             case nGMColEventLoopEnd:
@@ -997,15 +1022,13 @@ sb32 ftMainUpdateColAnim(GMColAnim *colanim, GObj *fighter_gobj, sb32 is_muted, 
                 {
                     colanim->cs[i].p_script = colanim->cs[i].p_subroutine[colanim->cs[i].script_id - 2];
                 }
-                else GMColEventAdvance(colanim->cs[i].p_script, GMColEventDefault), colanim->cs[i].script_id -= 2;
+                else gmColEventAdvance(colanim->cs[i].p_script, GMColEventDefault), colanim->cs[i].script_id -= 2;
                 break;
 
             case nGMColEventSubroutine:
-                GMColEventAdvance(colanim->cs[i].p_script, GMColEventSubroutine1);
-
-                colanim->cs[i].p_subroutine[colanim->cs[i].script_id++] = (void*) ((uintptr_t)colanim->cs[i].p_script + sizeof(GMColEventSubroutine1));
-
-                colanim->cs[i].p_script = GMColEventCast(colanim->cs[i].p_script, GMColEventSubroutine2)->p_subroutine;
+                gmColEventAdvance(colanim->cs[i].p_script, GMColEventSubroutine1);
+                colanim->cs[i].p_subroutine[colanim->cs[i].script_id++] = lbRelocGetFileData(void*, colanim->cs[i].p_script, sizeof(GMColEventSubroutine1));
+                colanim->cs[i].p_script = gmColEventCast(colanim->cs[i].p_script, GMColEventSubroutine2)->p_subroutine;
                 break;
 
             case nGMColEventReturn:
@@ -1013,77 +1036,77 @@ sb32 ftMainUpdateColAnim(GMColAnim *colanim, GObj *fighter_gobj, sb32 is_muted, 
                 break;
 
             case nGMColEventSetParallelScript:
-                GMColEventAdvance(colanim->cs[i].p_script, GMColEventParallel1);
+                gmColEventAdvance(colanim->cs[i].p_script, GMColEventParallel1);
 
                 if (colanim->cs[1].p_script == NULL)
                 {
-                    colanim->cs[1].p_script = GMColEventCast(colanim->cs[i].p_script, GMColEventParallel2)->p_script;
+                    colanim->cs[1].p_script = gmColEventCast(colanim->cs[i].p_script, GMColEventParallel2)->p_script;
                     colanim->cs[1].color_event_timer = 0;
                     colanim->cs[1].script_id = 0;
                 }
-                GMColEventAdvance(colanim->cs[i].p_script, GMColEventParallel2);
+                gmColEventAdvance(colanim->cs[i].p_script, GMColEventParallel2);
                 break;
 
             case nGMColEventToggleColorOff:
-                colanim->is_use_maincolor = colanim->is_use_blendcolor = colanim->skeleton_id = 0;
+                colanim->is_use_color1 = colanim->is_use_color2 = colanim->skeleton_id = 0;
 
-                GMColEventAdvance(colanim->cs[i].p_script, GMColEventDefault);
+                gmColEventAdvance(colanim->cs[i].p_script, GMColEventDefault);
                 break;
 
             case nGMColEventSetColor1:
-                colanim->is_use_maincolor = TRUE;
+                colanim->is_use_color1 = TRUE;
 
-                GMColEventAdvance(colanim->cs[i].p_script, GMColEventSetRGBA1);
+                gmColEventAdvance(colanim->cs[i].p_script, GMColEventSetRGBA1);
 
-                colanim->maincolor.r = GMColEventCast(colanim->cs[i].p_script, GMColEventSetRGBA2)->r;
-                colanim->maincolor.g = GMColEventCast(colanim->cs[i].p_script, GMColEventSetRGBA2)->g;
-                colanim->maincolor.b = GMColEventCast(colanim->cs[i].p_script, GMColEventSetRGBA2)->b;
-                colanim->maincolor.a = GMColEventCast(colanim->cs[i].p_script, GMColEventSetRGBA2)->a;
+                colanim->color1.r = gmColEventCast(colanim->cs[i].p_script, GMColEventSetRGBA2)->r;
+                colanim->color1.g = gmColEventCast(colanim->cs[i].p_script, GMColEventSetRGBA2)->g;
+                colanim->color1.b = gmColEventCast(colanim->cs[i].p_script, GMColEventSetRGBA2)->b;
+                colanim->color1.a = gmColEventCast(colanim->cs[i].p_script, GMColEventSetRGBA2)->a;
 
-                colanim->maincolor.ir = colanim->maincolor.ig = colanim->maincolor.ib = colanim->maincolor.ia = 0;
+                colanim->color1.ir = colanim->color1.ig = colanim->color1.ib = colanim->color1.ia = 0;
 
-                GMColEventAdvance(colanim->cs[i].p_script, GMColEventSetRGBA2);
+                gmColEventAdvance(colanim->cs[i].p_script, GMColEventSetRGBA2);
                 break;
 
             case nGMColEventSetColor2:
-                colanim->is_use_blendcolor = TRUE;
+                colanim->is_use_color2 = TRUE;
 
-                GMColEventAdvance(colanim->cs[i].p_script, GMColEventSetRGBA1);
+                gmColEventAdvance(colanim->cs[i].p_script, GMColEventSetRGBA1);
 
-                colanim->blendcolor.r = GMColEventCast(colanim->cs[i].p_script, GMColEventSetRGBA2)->r;
-                colanim->blendcolor.g = GMColEventCast(colanim->cs[i].p_script, GMColEventSetRGBA2)->g;
-                colanim->blendcolor.b = GMColEventCast(colanim->cs[i].p_script, GMColEventSetRGBA2)->b;
-                colanim->blendcolor.a = GMColEventCast(colanim->cs[i].p_script, GMColEventSetRGBA2)->a;
+                colanim->color2.r = gmColEventCast(colanim->cs[i].p_script, GMColEventSetRGBA2)->r;
+                colanim->color2.g = gmColEventCast(colanim->cs[i].p_script, GMColEventSetRGBA2)->g;
+                colanim->color2.b = gmColEventCast(colanim->cs[i].p_script, GMColEventSetRGBA2)->b;
+                colanim->color2.a = gmColEventCast(colanim->cs[i].p_script, GMColEventSetRGBA2)->a;
 
-                colanim->blendcolor.ir = colanim->blendcolor.ig = colanim->blendcolor.ib = colanim->blendcolor.ia = 0;
+                colanim->color2.ir = colanim->color2.ig = colanim->color2.ib = colanim->color2.ia = 0;
 
-                GMColEventAdvance(colanim->cs[i].p_script, GMColEventSetRGBA2);
+                gmColEventAdvance(colanim->cs[i].p_script, GMColEventSetRGBA2);
                 break;
 
             case nGMColEventBlendColor1:
-                blend_frames = GMColEventCast(colanim->cs[i].p_script, GMColEventBlendRGBA1)->blend_frames;
+                blend_frames = gmColEventCast(colanim->cs[i].p_script, GMColEventBlendRGBA1)->blend_frames;
 
-                GMColEventAdvance(colanim->cs[i].p_script, GMColEventBlendRGBA1);
+                gmColEventAdvance(colanim->cs[i].p_script, GMColEventBlendRGBA1);
 
-                colanim->maincolor.ir = (s32)(GMColEventCast(colanim->cs[i].p_script, GMColEventBlendRGBA2)->r - colanim->maincolor.r) / blend_frames;
-                colanim->maincolor.ig = (s32)(GMColEventCast(colanim->cs[i].p_script, GMColEventBlendRGBA2)->g - colanim->maincolor.g) / blend_frames;
-                colanim->maincolor.ib = (s32)(GMColEventCast(colanim->cs[i].p_script, GMColEventBlendRGBA2)->b - colanim->maincolor.b) / blend_frames;
-                colanim->maincolor.ia = (s32)(GMColEventCast(colanim->cs[i].p_script, GMColEventBlendRGBA2)->a - colanim->maincolor.a) / blend_frames;
+                colanim->color1.ir = (s32) (gmColEventCast(colanim->cs[i].p_script, GMColEventBlendRGBA2)->r - colanim->color1.r) / blend_frames;
+                colanim->color1.ig = (s32) (gmColEventCast(colanim->cs[i].p_script, GMColEventBlendRGBA2)->g - colanim->color1.g) / blend_frames;
+                colanim->color1.ib = (s32) (gmColEventCast(colanim->cs[i].p_script, GMColEventBlendRGBA2)->b - colanim->color1.b) / blend_frames;
+                colanim->color1.ia = (s32) (gmColEventCast(colanim->cs[i].p_script, GMColEventBlendRGBA2)->a - colanim->color1.a) / blend_frames;
 
-                GMColEventAdvance(colanim->cs[i].p_script, GMColEventBlendRGBA2);
+                gmColEventAdvance(colanim->cs[i].p_script, GMColEventBlendRGBA2);
                 break;
 
             case nGMColEventBlendColor2:
-                blend_frames = GMColEventCast(colanim->cs[i].p_script, GMColEventBlendRGBA1)->blend_frames;
+                blend_frames = gmColEventCast(colanim->cs[i].p_script, GMColEventBlendRGBA1)->blend_frames;
 
-                GMColEventAdvance(colanim->cs[i].p_script, GMColEventBlendRGBA1);
+                gmColEventAdvance(colanim->cs[i].p_script, GMColEventBlendRGBA1);
 
-                colanim->blendcolor.ir = (s32)(GMColEventCast(colanim->cs[i].p_script, GMColEventBlendRGBA2)->r - colanim->blendcolor.r) / blend_frames;
-                colanim->blendcolor.ig = (s32)(GMColEventCast(colanim->cs[i].p_script, GMColEventBlendRGBA2)->g - colanim->blendcolor.g) / blend_frames;
-                colanim->blendcolor.ib = (s32)(GMColEventCast(colanim->cs[i].p_script, GMColEventBlendRGBA2)->b - colanim->blendcolor.b) / blend_frames;
-                colanim->blendcolor.ia = (s32)(GMColEventCast(colanim->cs[i].p_script, GMColEventBlendRGBA2)->a - colanim->blendcolor.a) / blend_frames;
+                colanim->color2.ir = (s32) (gmColEventCast(colanim->cs[i].p_script, GMColEventBlendRGBA2)->r - colanim->color2.r) / blend_frames;
+                colanim->color2.ig = (s32) (gmColEventCast(colanim->cs[i].p_script, GMColEventBlendRGBA2)->g - colanim->color2.g) / blend_frames;
+                colanim->color2.ib = (s32) (gmColEventCast(colanim->cs[i].p_script, GMColEventBlendRGBA2)->b - colanim->color2.b) / blend_frames;
+                colanim->color2.ia = (s32) (gmColEventCast(colanim->cs[i].p_script, GMColEventBlendRGBA2)->a - colanim->color2.a) / blend_frames;
 
-                GMColEventAdvance(colanim->cs[i].p_script, GMColEventBlendRGBA2);
+                gmColEventAdvance(colanim->cs[i].p_script, GMColEventBlendRGBA2);
                 break;
 
             case nGMColEventEffect:
@@ -1092,57 +1115,57 @@ sb32 ftMainUpdateColAnim(GMColAnim *colanim, GObj *fighter_gobj, sb32 is_muted, 
                 {
                     fp = ftGetStruct(fighter_gobj);
 
-                    joint_id = ftParamGetJointID(fp, GMColEventCast(colanim->cs[i].p_script, GMColEventMakeEffect1)->joint_id);
-                    effect_id = GMColEventCast(colanim->cs[i].p_script, GMColEventMakeEffect1)->effect_id;
-                    flag = GMColEventCast(colanim->cs[i].p_script, GMColEventMakeEffect1)->flag;
+                    joint_id = ftParamGetJointID(fp, gmColEventCast(colanim->cs[i].p_script, GMColEventMakeEffect1)->joint_id);
+                    effect_id = gmColEventCast(colanim->cs[i].p_script, GMColEventMakeEffect1)->effect_id;
+                    flag = gmColEventCast(colanim->cs[i].p_script, GMColEventMakeEffect1)->flag;
 
-                    GMColEventAdvance(colanim->cs[i].p_script, GMColEventMakeEffect1);
+                    gmColEventAdvance(colanim->cs[i].p_script, GMColEventMakeEffect1);
 
-                    effect_offset.x = GMColEventCast(colanim->cs[i].p_script, GMColEventMakeEffect2)->off_x;
-                    effect_offset.y = GMColEventCast(colanim->cs[i].p_script, GMColEventMakeEffect2)->off_y;
+                    effect_offset.x = gmColEventCast(colanim->cs[i].p_script, GMColEventMakeEffect2)->off_x;
+                    effect_offset.y = gmColEventCast(colanim->cs[i].p_script, GMColEventMakeEffect2)->off_y;
 
-                    GMColEventAdvance(colanim->cs[i].p_script, GMColEventMakeEffect2);
+                    gmColEventAdvance(colanim->cs[i].p_script, GMColEventMakeEffect2);
 
-                    effect_offset.z = GMColEventCast(colanim->cs[i].p_script, GMColEventMakeEffect3)->off_z;
-                    effect_scatter.x = GMColEventCast(colanim->cs[i].p_script, GMColEventMakeEffect3)->rng_x;
+                    effect_offset.z = gmColEventCast(colanim->cs[i].p_script, GMColEventMakeEffect3)->off_z;
+                    effect_scatter.x = gmColEventCast(colanim->cs[i].p_script, GMColEventMakeEffect3)->rng_x;
 
-                    GMColEventAdvance(colanim->cs[i].p_script, GMColEventMakeEffect3);
+                    gmColEventAdvance(colanim->cs[i].p_script, GMColEventMakeEffect3);
 
-                    effect_scatter.y = GMColEventCast(colanim->cs[i].p_script, GMColEventMakeEffect4)->rng_y;
-                    effect_scatter.z = GMColEventCast(colanim->cs[i].p_script, GMColEventMakeEffect4)->rng_z;
+                    effect_scatter.y = gmColEventCast(colanim->cs[i].p_script, GMColEventMakeEffect4)->rng_y;
+                    effect_scatter.z = gmColEventCast(colanim->cs[i].p_script, GMColEventMakeEffect4)->rng_z;
 
-                    GMColEventAdvance(colanim->cs[i].p_script, GMColEventMakeEffect4);
+                    gmColEventAdvance(colanim->cs[i].p_script, GMColEventMakeEffect4);
 
                     ftParamMakeEffect(fighter_gobj, effect_id, joint_id, &effect_offset, &effect_scatter, fp->lr, (ev_kind == nGMColEventEffectScaleOffset) ? TRUE : FALSE, flag);
                 }
-                else GMColEventAdvance(colanim->cs[i].p_script, GMColEventMakeEffect);
+                else gmColEventAdvance(colanim->cs[i].p_script, GMColEventMakeEffect);
                 break;
 
             case nGMColEventSetLight:
                 colanim->is_use_light = TRUE;
 
-                colanim->light_angle_x = GMColEventCast(colanim->cs[i].p_script, GMColEventSetLight)->light1;
-                colanim->light_angle_y = GMColEventCast(colanim->cs[i].p_script, GMColEventSetLight)->light2;
+                colanim->light_angle_x = gmColEventCast(colanim->cs[i].p_script, GMColEventSetLight)->light1;
+                colanim->light_angle_y = gmColEventCast(colanim->cs[i].p_script, GMColEventSetLight)->light2;
 
-                GMColEventAdvance(colanim->cs[i].p_script, GMColEventSetLight);
+                gmColEventAdvance(colanim->cs[i].p_script, GMColEventSetLight);
                 break;
 
             case nGMColEventToggleLightOff:
                 colanim->is_use_light = FALSE;
 
-                GMColEventAdvance(colanim->cs[i].p_script, GMColEventDefault);
+                gmColEventAdvance(colanim->cs[i].p_script, GMColEventDefault);
                 break;
 
             case nGMColEventPlaySFX:
                 if (is_muted == FALSE)
                 {
-                    func_800269C0_275C0(GMColEventCastAdvance(colanim->cs[i].p_script, GMColEventDefault)->value);
+                    func_800269C0_275C0(gmColEventCastAdvance(colanim->cs[i].p_script, GMColEventDefault)->value);
                 }
-                else GMColEventAdvance(colanim->cs[i].p_script, GMColEventDefault);
+                else gmColEventAdvance(colanim->cs[i].p_script, GMColEventDefault);
                 break;
 
             case nGMColEventSetSkeletonID:
-                colanim->skeleton_id = GMColEventCastAdvance(colanim->cs[i].p_script, GMColEventDefault)->value;
+                colanim->skeleton_id = gmColEventCastAdvance(colanim->cs[i].p_script, GMColEventDefault)->value;
                 break;
 
             default:
@@ -1150,19 +1173,19 @@ sb32 ftMainUpdateColAnim(GMColAnim *colanim, GObj *fighter_gobj, sb32 is_muted, 
             }
         }
     }
-    if (colanim->is_use_maincolor)
+    if (colanim->is_use_color1)
     {
-        colanim->maincolor.r += colanim->maincolor.ir;
-        colanim->maincolor.g += colanim->maincolor.ig;
-        colanim->maincolor.b += colanim->maincolor.ib;
-        colanim->maincolor.a += colanim->maincolor.ia;
+        colanim->color1.r += colanim->color1.ir;
+        colanim->color1.g += colanim->color1.ig;
+        colanim->color1.b += colanim->color1.ib;
+        colanim->color1.a += colanim->color1.ia;
     }
-    if (colanim->is_use_blendcolor)
+    if (colanim->is_use_color2)
     {
-        colanim->blendcolor.r += colanim->blendcolor.ir;
-        colanim->blendcolor.g += colanim->blendcolor.ig;
-        colanim->blendcolor.b += colanim->blendcolor.ib;
-        colanim->blendcolor.a += colanim->blendcolor.ia;
+        colanim->color2.r += colanim->color2.ir;
+        colanim->color2.g += colanim->color2.ig;
+        colanim->color2.b += colanim->color2.ib;
+        colanim->color2.a += colanim->color2.ia;
     }
     if (colanim->length != 0)
     {
@@ -1377,11 +1400,11 @@ void ftMainProcUpdateInterrupt(GObj *fighter_gobj)
             }
         }
     }
-    this_fp->is_effect_interrupt = TRUE;
+    this_fp->is_events_forward = TRUE;
 
     if (this_fp->hitlag_tics == 0)
     {
-        ftMainPlayAnimNoEffect(fighter_gobj);
+        ftMainPlayAnimEventsAll(fighter_gobj);
     }
     ftMainRunUpdateColAnim(fighter_gobj);
 
@@ -1467,9 +1490,9 @@ void ftMainProcUpdateInterrupt(GObj *fighter_gobj)
             this_fp->shuffle_frame_index = 0;
         }
     }
-    if (this_fp->proc_effect != NULL)
+    if (this_fp->proc_passive != NULL)
     {
-        this_fp->proc_effect(fighter_gobj);
+        this_fp->proc_passive(fighter_gobj);
     }
     if (this_fp->hitlag_tics == 0)
     {
@@ -1829,7 +1852,7 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
 
     if (fp->hitlag_tics == 0)
     {
-        ftMainUpdateMotionEventsDefaultEffect(fighter_gobj);
+        ftMainUpdateMotionEventsForwardEffect(fighter_gobj);
     }
     if (fp->hitlag_tics == 0)
     {
@@ -1838,7 +1861,7 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
             fp->proc_accessory(fighter_gobj);
         }
     }
-    fp->is_effect_interrupt = FALSE;
+    fp->is_events_forward = FALSE;
 
     for (i = 0; i < ARRAY_COUNT(fp->attack_colls); i++)
     {
@@ -1900,7 +1923,7 @@ void ftMainProcPhysicsMapDefault(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (((fp->capture_gobj == NULL) || (fp->unk_ft_0x192_b3)) && ((fp->catch_gobj == NULL) || !(fp->unk_ft_0x192_b3)))
+    if ((fp->capture_gobj == NULL || fp->unk_ft_0x192_b3) && (fp->catch_gobj == NULL || !(fp->unk_ft_0x192_b3)))
     {
         ftMainProcPhysicsMap(fighter_gobj);
     }
@@ -1911,7 +1934,7 @@ void ftMainProcPhysicsMapCapture(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (((fp->capture_gobj != NULL) && !(fp->unk_ft_0x192_b3)) || ((fp->catch_gobj != NULL) && (fp->unk_ft_0x192_b3)))
+    if ((fp->capture_gobj != NULL && !(fp->unk_ft_0x192_b3)) || (fp->catch_gobj != NULL && fp->unk_ft_0x192_b3))
     {
         ftMainProcPhysicsMap(fighter_gobj);
     }
@@ -4367,9 +4390,9 @@ void ftMainSetStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
 
     status_flags = fp->stat_flags;
 
-    if (fp->is_effect_interrupt)
+    if (fp->is_events_forward)
     {
-        ftMainUpdateMotionEventsDefaultEffect(fighter_gobj);
+        ftMainUpdateMotionEventsForwardEffect(fighter_gobj);
 
         if (fp->proc_accessory != NULL)
         {
@@ -4725,13 +4748,13 @@ void ftMainSetStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
                 {
                     event_file_head = *fp->data->p_file_submotion;
 
-                    event_script_ptr = (void*)((intptr_t)motion_desc->offset + (intptr_t)event_file_head);
+                    event_script_ptr = (void*) ((intptr_t)motion_desc->offset + (intptr_t)event_file_head);
                 }
                 else
                 {
                     event_file_head = *fp->data->p_file_mainmotion;
 
-                    event_script_ptr = (void*)((intptr_t)motion_desc->offset + (intptr_t)event_file_head);
+                    event_script_ptr = (void*) ((intptr_t)motion_desc->offset + (intptr_t)event_file_head);
                 }
             }
             else event_script_ptr = NULL;
@@ -4742,7 +4765,7 @@ void ftMainSetStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
         {
             if (motion_desc->offset != 0x80000000)
             {
-                event_script_ptr = (void*)motion_desc->offset;
+                event_script_ptr = (void*) motion_desc->offset;
             }
             else event_script_ptr = NULL;
 
@@ -4751,25 +4774,23 @@ void ftMainSetStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
         anim_frame = DObjGetStruct(fighter_gobj)->anim_speed - frame_begin;
 
         fp->motion_scripts[0][0].script_wait = fp->motion_scripts[1][0].script_wait = anim_frame;
-
         fp->motion_scripts[0][0].script_id = fp->motion_scripts[1][0].script_id = 0;
 
-        for (i = 1; i < ARRAY_COUNT(fp->motion_scripts); i++)
+        for (i = 1; i < ARRAY_COUNT(fp->motion_scripts[0]); i++)
         {
             fp->motion_scripts[0][i].p_script = fp->motion_scripts[1][i].p_script = NULL;
         }
-
         if (frame_begin != 0.0F)
         {
-            ftMainPlayAnimDefault(fighter_gobj);
+            ftMainPlayAnimEventsForward(fighter_gobj);
         }
         else
         {
-            ftMainPlayAnimNoEffect(fighter_gobj);
+            ftMainPlayAnimEventsAll(fighter_gobj);
             ftMainRunUpdateColAnim(fighter_gobj);
         }
     }
-    else for (i = 0; i < ARRAY_COUNT(fp->motion_scripts); i++)
+    else for (i = 0; i < ARRAY_COUNT(fp->motion_scripts[0]); i++)
     {
         fp->motion_scripts[0][i].p_script = fp->motion_scripts[1][i].p_script = NULL;
     }
@@ -4785,7 +4806,7 @@ void ftMainSetStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
         fp->proc_trap = NULL;
         fp->proc_hit = NULL;
         fp->proc_shield = NULL;
-        fp->proc_effect = NULL;
+        fp->proc_passive = NULL;
         fp->proc_lagupdate = NULL;
         fp->proc_lagstart = NULL;
         fp->proc_lagend = NULL;

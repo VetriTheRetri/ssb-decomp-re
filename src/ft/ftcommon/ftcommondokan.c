@@ -72,7 +72,7 @@ void ftCommonDokanStartSetStatus(GObj *fighter_gobj, s32 material)
     s32 new_point_id;
 
     ftMainSetStatus(fighter_gobj, nFTCommonStatusDokanStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 
     fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
 

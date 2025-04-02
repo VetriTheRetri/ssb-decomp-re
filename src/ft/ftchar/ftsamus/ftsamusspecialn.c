@@ -342,7 +342,7 @@ void ftSamusSpecialNStartSetStatus(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetStatus(fighter_gobj, nFTSamusStatusSpecialNStart, 0.0F, ftSamusSpecialNStartGetAnimSpeed(fp), FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
     ftSamusSpecialNStartInitStatusVars(fp);
 
     fp->status_vars.samus.specialn.is_release = (fp->passive_vars.samus.charge_level == FTSAMUS_CHARGE_MAX) ? TRUE : FALSE;
@@ -354,7 +354,7 @@ void ftSamusSpecialAirNStartSetStatus(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetStatus(fighter_gobj, nFTSamusStatusSpecialAirNStart, 0.0F, ftSamusSpecialNStartGetAnimSpeed(fp), FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
     ftSamusSpecialNStartInitStatusVars(fp);
 
     fp->status_vars.samus.specialn.is_release = TRUE;

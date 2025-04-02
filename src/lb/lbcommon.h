@@ -39,7 +39,7 @@ extern void lbCommonMatrixTraRotScaInv
     f32 scaz
 );
 extern void lbCommonMatrixRotSca(Mtx *mtx, f32 rotx, f32 roty, f32 rotz, f32 scax, f32 scay, f32 scaz);
-extern void func_ovl0_800C8634(void);
+extern void lbCommonFuncUpdate(void);
 extern alSoundEffect* lbCommonMakePositionFGM(u16 fgm, f32 pos);
 extern DObj* lbCommonGetTreeDObjNextFromRoot(DObj *a, DObj *b);
 extern void lbCommonAddDObjAnimJointAll(DObj *root_dobj, AObjEvent32 **anim_joints, f32 anim_frame);

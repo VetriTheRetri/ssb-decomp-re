@@ -11,7 +11,7 @@
 void ftCommonAttackLw4SetStatus(GObj *fighter_gobj)
 {
     ftMainSetStatus(fighter_gobj, nFTCommonStatusAttackLw4, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 }
 
 // 0x80150798

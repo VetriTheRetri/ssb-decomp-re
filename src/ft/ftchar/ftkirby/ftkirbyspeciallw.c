@@ -298,7 +298,7 @@ void ftKirbySpecialLwStartSetStatus(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetStatus(fighter_gobj, nFTKirbyStatusSpecialLwStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 
     fp->motion_vars.flags.flag2 = 0;
     fp->motion_vars.flags.flag1 = 0;
@@ -312,7 +312,7 @@ void ftKirbySpecialLwUnkSetStatus(GObj *fighter_gobj) // Unused
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetStatus(fighter_gobj, nFTKirbyStatusSpecialLwUnk, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 
     ftKirbySpecialLwUnused(fighter_gobj);
 }
@@ -322,7 +322,7 @@ void ftKirbySpecialLwEndSetStatus(GObj *fighter_gobj)
 {
     mpCommonSetFighterAir(ftGetStruct(fighter_gobj));
     ftMainSetStatus(fighter_gobj, nFTKirbyStatusSpecialLwEnd, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 }
 
 // 0x80161B70
@@ -332,7 +332,7 @@ void ftKirbySpecialAirLwStartSetStatus(GObj *fighter_gobj)
     ub32 is_damage_resist = fp->is_damage_resist;
 
     ftMainSetStatus(fighter_gobj, nFTKirbyStatusSpecialAirLwStart, 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_COLANIM));
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 
     if (fp->is_damage_resist = is_damage_resist & TRUE) // wat
     {
@@ -352,7 +352,7 @@ void ftKirbySpecialAirLwHoldSetStatus(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetStatus(fighter_gobj, nFTKirbyStatusSpecialAirLwHold, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
     ftKirbySpecialLwUnused(fighter_gobj);
     ftKirbySpecialLwSetDropFallVel(fp);
 }
@@ -361,5 +361,5 @@ void ftKirbySpecialAirLwHoldSetStatus(GObj *fighter_gobj)
 void ftKirbySpecialAirLwEndSetStatus(GObj *fighter_gobj)
 {
     ftMainSetStatus(fighter_gobj, nFTKirbyStatusSpecialAirLwEnd, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 }

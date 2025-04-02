@@ -122,7 +122,7 @@ void ftFoxSpecialHiHoldInitStatusVars(GObj *fighter_gobj)
 void ftFoxSpecialHiHoldSetStatus(GObj *fighter_gobj)
 {
     ftMainSetStatus(fighter_gobj, nFTFoxStatusSpecialHiHold, 0.0F, 1.0F, FTSTATUS_PRESERVE_COLANIM);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
     ftFoxSpecialHiHoldInitStatusVars(fighter_gobj);
 }
 
@@ -130,7 +130,7 @@ void ftFoxSpecialHiHoldSetStatus(GObj *fighter_gobj)
 void ftFoxSpecialAirHiHoldSetStatus(GObj *fighter_gobj)
 {
     ftMainSetStatus(fighter_gobj, nFTFoxStatusSpecialAirHiHold, 0.0F, 1.0F, FTSTATUS_PRESERVE_COLANIM);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
     ftFoxSpecialHiHoldInitStatusVars(fighter_gobj);
 }
 
@@ -477,7 +477,7 @@ void ftFoxSpecialHiStartSetStatus(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetStatus(fighter_gobj, nFTFoxStatusSpecialHiStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
     ftFoxSpecialHiStartInitGravity(fp);
 
     fp->physics.vel_ground.x /= 2;
@@ -489,7 +489,7 @@ void ftFoxSpecialAirHiStartSetStatus(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetStatus(fighter_gobj, nFTFoxStatusSpecialAirHiStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
     ftFoxSpecialHiStartInitGravity(fp);
 
     fp->physics.vel_air.y = 0.0F;

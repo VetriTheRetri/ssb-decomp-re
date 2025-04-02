@@ -153,7 +153,7 @@ void ftCaptainSpecialNSetStatus(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetStatus(fighter_gobj, nFTCaptainStatusSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
     ftCaptainSpecialNInitStatusVars(fighter_gobj);
 
     fp->proc_lagstart = ftParamProcPauseEffect;
@@ -166,7 +166,7 @@ void ftCaptainSpecialAirNSetStatus(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetStatus(fighter_gobj, nFTCaptainStatusSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
     ftCaptainSpecialNInitStatusVars(fighter_gobj);
 
     fp->proc_lagstart = ftParamProcPauseEffect;

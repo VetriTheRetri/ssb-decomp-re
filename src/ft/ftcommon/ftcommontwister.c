@@ -89,7 +89,7 @@ void ftCommonTwisterSetStatus(GObj *fighter_gobj, GObj *tornado_gobj)
         mpCommonSetFighterAir(fp);
     }
     ftMainSetStatus(fighter_gobj, nFTCommonStatusTwister, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
     ftPhysicsStopVelAll(fighter_gobj);
 
     fp->status_vars.common.twister.release_wait = 0;

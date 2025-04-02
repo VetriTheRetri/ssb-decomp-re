@@ -716,7 +716,7 @@ void lbCommonMatrixRotSca(Mtx *mtx, f32 rotx, f32 roty, f32 rotz, f32 scax, f32 
 }
 
 // 0x800C8634
-void func_ovl0_800C8634(void)
+void lbCommonFuncUpdate(void)
 {
 	gcRunAll();
 }

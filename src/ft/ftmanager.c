@@ -731,7 +731,7 @@ GObj* ftManagerMakeFighter(FTDesc *desc) // Create fighter
     fp->display_mode = nDBDisplayModeMaster;
 
     fp->is_muted = FALSE;
-    fp->is_effect_interrupt = FALSE;
+    fp->is_events_forward = FALSE;
 
     fp->proc_status = NULL;
 

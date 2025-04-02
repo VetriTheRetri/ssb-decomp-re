@@ -81,11 +81,11 @@ void syVideoSetFlags(u32 flags)
 {
     sSYVideoFlags |= flags;
 
-    if ((flags & SYVIDEO_FLAG_COLORDEPTH32))
+    if (flags & SYVIDEO_FLAG_COLORDEPTH32)
     {
         gSYVideoColorDepth = G_IM_SIZ_32b;
     }
-    if ((flags & SYVIDEO_FLAG_COLORDEPTH16))
+    if (flags & SYVIDEO_FLAG_COLORDEPTH16)
     {
         gSYVideoColorDepth = G_IM_SIZ_16b;
     }

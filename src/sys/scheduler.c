@@ -45,15 +45,15 @@ union CheckedPtr {
 };
 
 struct ViSettings {
-    u8 unk_b80      : 1; // b0 0 80 => unknown game control (arg2 & 0x1) [aa & resamp enabled?]
-    u8 serrate      : 1; // b1 0 40 => serrate enabled (bool)
-    u8 pixelSize32  : 1; // b2   20 => type_32 enabled
-    u8 gamma        : 1; // b3   10 => gamma on
-    u8 blackout     : 1; // b4   08 => unknown game control (arg2 & 0x100) [blackout ?]
-    u8 unk_b04      : 1; // b5   04 => unknown game control (arg2 & 0x400)
-    u8 gammaDither  : 1; // b6   02 => gamma dither on
-    u8 ditherFilter : 1; // b7   01 => dither filter
-    u8 divot        : 1; // b8 1 80 => divot on
+    ub32 antiAlias    : 1; // b0 0 80 => unknown game control (arg2 & 0x1) [aa & resamp enabled?]
+    ub32 serrate      : 1; // b1 0 40 => serrate enabled (bool)
+    ub32 pixelSize32  : 1; // b2   20 => type_32 enabled
+    ub32 gamma        : 1; // b3   10 => gamma on
+    ub32 blackout     : 1; // b4   08 => unknown game control (arg2 & 0x100) [blackout ?]
+    ub32 unk_b04      : 1; // b5   04 => unknown game control (arg2 & 0x400) [custom resolution?]
+    ub32 gammaDither  : 1; // b6   02 => gamma dither on
+    ub32 ditherFilter : 1; // b7   01 => dither filter
+    ub32 divot        : 1; // b8 1 80 => divot on
                          // b9 1 40
 };
 
@@ -67,7 +67,7 @@ SYTaskGfx *scPausedQueueHead;  // smallest priority queue 2
 SYTaskGfx *D_80044ED8_406E8;  // largest priority queue 3
 SYTaskGfx *scQueue3Head;  // smallest priority queue 3
 SYTaskGfx *D_80044EE0_406F0;  // standard linked list head
-SYTaskGfx *scCurrentQueue3Task;  // standdard linked list tail
+SYTaskGfx *scCurrentQueue3Task;  // standard linked list tail
 OSViMode D_80044EE8_406F8;
 OSViMode D_80044F38_40748;
 u32 D_80044F88_40798[2];
@@ -337,25 +337,17 @@ void func_80000EAC(void) {
 // also non matching in snap sys/sched
 void func_80000F30(u32, u32, s32, s16, s16, s16, s16);
 #ifdef NON_MATCHING
-void func_80000F30(u32 arg0, u32 arg1, s32 arg2, s16 arg3, s16 arg4, s16 arg5, s16 arg6)
+void func_80000F30(u32 width, u32 height, u32 arg2, s16 off_left, s16 off_right, s16 off_top, s16 off_bottom)
 {
-    u32 phi_a0; // flag collector
-    s32 phi_v1;
-    s32 phi_t0;
+    sb32 not_phi_v1;
+    sb32 phi_v1;
+    sb32 not_res_in_bounds;
     sb32 is_res_in_bounds;
-    u32 phi_t3;
-    u32 sp00;
-    s32 sp14;
-    s32 sp1C;
-    s32 sp20;
+    s32 vertical;
+    s32 pos1;
+    s32 pos2;
 
-    if (arg0 >= GS_SCREEN_WIDTH_DEFAULT || arg1 >= GS_SCREEN_HEIGHT_DEFAULT)
-    {
-        is_res_in_bounds = FALSE;
-    }
-    else is_res_in_bounds = TRUE;
-
-    // is_res_in_bounds = arg0 >= GS_SCREEN_WIDTH_DEFAULT && arg1 >= GS_SCREEN_HEIGHT_DEFAULT ? 0 : 1;
+    is_res_in_bounds = ((width > GS_SCREEN_WIDTH_DEFAULT) || (height > GS_SCREEN_HEIGHT_DEFAULT)) ? FALSE : TRUE;
 
     if (arg2 & SYVIDEO_FLAG_SERRATE)
     {
@@ -427,181 +419,177 @@ void func_80000F30(u32 arg0, u32 arg1, s32 arg2, s16 arg3, s16 arg4, s16 arg5, s
     {
         D_80044FBC_407CC.blackout = FALSE;
     }
-    if (arg2 & 0x00400) { D_80044FBC_407CC.unk_b04 = TRUE; }
-    if (arg2 & 0x00800) { D_80044FBC_407CC.unk_b04 = FALSE; }
-    if (arg2 & 0x00001) { D_80044FBC_407CC.unk_b80 = TRUE; }
-    if (arg2 & 0x00002) { D_80044FBC_407CC.unk_b80 = FALSE; }
-
+    if (arg2 & 0x400)
+    {
+        D_80044FBC_407CC.unk_b04 = TRUE;
+    }
+    if (arg2 & 0x800)
+    {
+        D_80044FBC_407CC.unk_b04 = FALSE;
+    }
+    if (arg2 & SYVIDEO_FLAG_ANTIALIAS)
+    {
+        D_80044FBC_407CC.antiAlias = TRUE;
+    }
+    if (arg2 & SYVIDEO_FLAG_NOANTIALIAS)
+    {
+        D_80044FBC_407CC.antiAlias = FALSE;
+    }
     D_80044F38_40748.comRegs.ctrl &= ~VI_CTRL_ANTIALIAS_MASK;
 
-    if (D_80044FBC_407CC.unk_b80)
+    if (D_80044FBC_407CC.antiAlias)
     {
-        D_80044F38_40748.comRegs.ctrl |= (D_80044FBC_407CC.ditherFilter ? VI_CTRL_ANTIALIAS_MODE_1 : 0);
+        D_80044F38_40748.comRegs.ctrl |= ((D_80044FBC_407CC.ditherFilter) ? 0 : VI_CTRL_ANTIALIAS_MODE_1);
     }
-    else
+    else if (!(D_80044FBC_407CC.unk_b04) && (D_80044FBC_407CC.pixelSize32 == TRUE))
     {
-        if (!(D_80044FBC_407CC.unk_b04) && (D_80044FBC_407CC.pixelSize32 == TRUE))
-        {
-            D_80044F38_40748.comRegs.ctrl = VI_CTRL_ANTIALIAS_MODE_3; // neither (replicate pixels, no interpolate)
-        }
-        else D_80044F38_40748.comRegs.ctrl = VI_CTRL_ANTIALIAS_MODE_2; // resamp only (treat as all fully covered
+        D_80044F38_40748.comRegs.ctrl |= VI_CTRL_ANTIALIAS_MODE_3; // neither (replicate pixels, no interpolate)
     }
-    // L8000127C
-    phi_t0 = D_80044FBC_407CC.pixelSize32; // tail expression?
-
+    else D_80044F38_40748.comRegs.ctrl |= VI_CTRL_ANTIALIAS_MODE_2; // resamp only (treat as all fully covered)
+    
     if (is_res_in_bounds != FALSE)
     {
-        if (D_80044FBC_407CC.serrate)
-        {
-            phi_v1 = FALSE;
-        }
-        else phi_v1 = TRUE;
+        phi_v1 = (D_80044FBC_407CC.serrate) ? FALSE : TRUE;
     }
-    else if (D_80044FBC_407CC.unk_b04)
-    {
-        phi_v1 = TRUE;
-    }
-    else phi_v1 = FALSE;
+    else phi_v1 = (D_80044FBC_407CC.unk_b04) ? FALSE : TRUE;
 
-    // L800012B0
-    // temp_a1 = arg5 & 0xFFFE;
-    // temp_a2 = arg6 & 0xFFFE;
-    arg5 &= ~1; // a1?
-    arg6 &= ~1; // a2?
-    if (!is_res_in_bounds && !phi_v1) {
-        sp14 = 2;
-    } else {
-        sp14 = 1;
-    }
-    // L800012EC L800012F0 L800012F4
-    if (is_res_in_bounds) {
-        phi_a0 = 1;
-    } else {
-        phi_a0 = 2;
-    }
-    // L80001308
-    // t7 = arg6 - arg5
-    // t8 = t7 + 480
-    // t4 = arg1 << 11
-    // t9 = (u32) t4 / t8
-    // t7 = sp14
-    // t5 = arg0 (sp38)
-    // t6 = t9 / phi_a0
-    // t3 = t6 * t7
-    // L80001348
-    phi_t3 = (((arg1 << 11) / ((arg6 - arg5) + 480)) / phi_a0) * (sp14);
-    if (!is_res_in_bounds && phi_v1) {
-        phi_a0 = 2;
-    } else {
-        phi_a0 = 1;
-    }
-    // L80001368
-    D_80044F38_40748.comRegs.width = phi_a0 * arg0;
-    // TODO: macros
-    switch (osTvType)
+    off_top &= ~1;
+    off_bottom &= ~1;
+
+    not_phi_v1 = !phi_v1;
+    not_res_in_bounds = !is_res_in_bounds;
+    
+    vertical = (((not_res_in_bounds != FALSE) && (not_phi_v1 != FALSE)) ? 2 : 1) *
+    (((height << 11) / ((off_bottom - off_top) + 480)) / ((is_res_in_bounds != FALSE) ? 1 : 2));
+    
+    D_80044F38_40748.comRegs.width = (((not_res_in_bounds != FALSE) && (phi_v1 != FALSE)) ? 2 : 1) * width;
+
+    if (osTvType == OS_TV_NTSC)
     {
-    case OS_TV_NTSC:
         D_80044F38_40748.comRegs.burst     = 0x3E52239;
         D_80044F38_40748.comRegs.vSync     = 0x20C;
         D_80044F38_40748.comRegs.hSync     = 0xC15;
         D_80044F38_40748.comRegs.leap      = 0xC150C15;
         D_80044F38_40748.comRegs.hStart    = 0x6C02EC;
-        D_80044F38_40748.fldRegs[0].vStart = 0x2501FFU;
+        D_80044F38_40748.fldRegs[0].vStart = 0x2501FF;
         D_80044F38_40748.fldRegs[0].vBurst = 0xE0204;
-        break;
-        
-    case OS_TV_MPAL:
+    }
+    if (osTvType == OS_TV_MPAL)
+    {
         D_80044F38_40748.comRegs.burst     = 0x4651E39;
         D_80044F38_40748.comRegs.vSync     = 0x20C;
         D_80044F38_40748.comRegs.hSync     = 0xC10;
         D_80044F38_40748.comRegs.leap      = 0xC1C0C1C;
         D_80044F38_40748.comRegs.hStart    = 0x6C02EC;
-        D_80044F38_40748.fldRegs[0].vStart = 0x2501FFU;
+        D_80044F38_40748.fldRegs[0].vStart = 0x2501FF;
         D_80044F38_40748.fldRegs[0].vBurst = 0xE0204;
-        break;
     }
-    // L80001424
-    sp00                               = D_80044F38_40748.comRegs.hStart;
     D_80044F38_40748.fldRegs[1].vStart = D_80044F38_40748.fldRegs[0].vStart;
-    sp20                               = D_80044F38_40748.comRegs.hStart >> 16;
-    sp1C                               = D_80044F38_40748.comRegs.hStart & 0xFFFF;
+    
+    pos1 = D_80044F38_40748.comRegs.hStart >> 16;
+    pos2 = D_80044F38_40748.comRegs.hStart & 0xFFFF;
 
-    if (sp20 + arg4 < 0) {
-        sp20 = 0;
-    } else {
-        sp20 = sp20 + arg4;
+    pos1 += off_left;
+
+    if (pos1 < 0)
+    {
+        pos1 = 0;
     }
-    // L80001458
-    if (sp1C + arg5 < 0) {
-        sp1C = 0;
-    } else {
-        sp1C = sp1C + arg5;
+    pos2 += off_right;
+
+    if (pos2 < 0)
+    {
+        pos2 = 0;
     }
-    // L80001470
-    D_80044F38_40748.comRegs.hStart = (sp20 << 16) | sp1C;
-    sp00                            = D_80044F38_40748.fldRegs[0].vStart;
-    sp20                            = sp00 >> 16;
-    sp1C                            = sp00 & 0xFFFF;
+    D_80044F38_40748.comRegs.hStart = (pos1 << 16) | pos2;
 
-    sp20 = sp20 + arg5;
-    if (sp20 < 0) { sp20 = 0; }
-    // L800014AC
-    sp1C = sp1C + arg6;
-    if (sp1C < 0) { sp1C = 0; }
-    // L800014C0
-    D_80044F38_40748.fldRegs[0].vStart = (sp20 << 16) | sp1C;
-    sp00                               = D_80044F38_40748.fldRegs[1].vStart;
-    sp20                               = sp00 >> 16;
-    sp1C                               = sp00 & 0xFFFF;
+    pos1 = D_80044F38_40748.fldRegs[0].vStart >> 16;
+    pos2 = D_80044F38_40748.fldRegs[0].vStart & 0xFFFF;
 
-    sp20 = sp20 + arg5;
-    if (sp20 < 0) { sp20 = 0; }
-    // L800014FC
-    sp1C = sp1C + arg6;
-    if (sp1C < 0) { sp1C = 0; }
-    // L80001510
-    D_80044F38_40748.fldRegs[1].vStart = (sp20 << 16) | sp1C;
+    pos1 += off_top;
+
+    if (pos1 < 0)
+    {
+        pos1 = 0;
+    }
+    pos2 += off_bottom;
+
+    if (pos2 < 0)
+    {
+        pos2 = 0;
+    }
+    D_80044F38_40748.fldRegs[0].vStart = (pos1 << 16) | pos2;
+    
+    pos1 = D_80044F38_40748.fldRegs[1].vStart >> 16;
+    pos2 = D_80044F38_40748.fldRegs[1].vStart & 0xFFFF;
+
+    pos1 += off_top;
+
+    if (pos1 < 0)
+    {
+        pos1 = 0;
+    }
+    pos2 += off_bottom;
+
+    if (pos2 < 0)
+    {
+        pos2 = 0;
+    }
+    D_80044F38_40748.fldRegs[1].vStart = (pos1 << 16) | pos2;
+    
     D_80044F38_40748.fldRegs[1].vBurst = D_80044F38_40748.fldRegs[0].vBurst;
 
-    if (is_res_in_bounds && phi_v1)
+    if ((is_res_in_bounds != FALSE) && (phi_v1 != FALSE))
     {
         D_80044F38_40748.comRegs.vSync += 1;
-        if (osTvType == OS_TV_MPAL) { D_80044F38_40748.comRegs.hSync += 0x40001; }
-        if (osTvType == OS_TV_MPAL) { D_80044F38_40748.comRegs.leap += 0xFFFCFFFE; }
-    } else {
-        // L80001580
-        D_80044F38_40748.fldRegs[0].vStart += 0xFFFDFFFE;
-        if (osTvType == OS_TV_MPAL) { D_80044F38_40748.fldRegs[0].vBurst += 0xFFFCFFFE; }
-        if (osTvType == OS_TV_PAL)  { D_80044F38_40748.fldRegs[1].vBurst += 0x2FFFE; }
+        
+        if (osTvType == OS_TV_MPAL)
+        {
+            D_80044F38_40748.comRegs.hSync += 0x40001;
+            
+        }
+        if (osTvType == OS_TV_MPAL)
+        {
+            D_80044F38_40748.comRegs.leap += 0xFFFCFFFE;
+        }
     }
-    // L800015C8
-    D_80044F38_40748.comRegs.vCurrent  = 0;
-    D_80044F38_40748.comRegs.xScale    = (u32)(arg0 << 0xA) / (u32)((arg4 - arg3) + 0x280);
-    phi_a0                       = phi_t0 ? 2 : 1;
-    D_80044F38_40748.fldRegs[0].origin = (phi_a0 * arg0 * 2);
+    else
+    {
+        D_80044F38_40748.fldRegs[0].vStart += 0xFFFDFFFE;
 
-    sp14 = phi_t0 ? 2 : 1;
-    // L8000163C
-    phi_a0 = is_res_in_bounds ? 2 : 1;
-    // L8000164C
-    D_80044F38_40748.fldRegs[0].yScale = phi_t3;
-    D_80044F38_40748.fldRegs[1].yScale = phi_t3;
-    D_80044F38_40748.fldRegs[1].origin = (phi_a0 * arg0 * 2 * sp14);
-    if (D_80044FBC_407CC.unk_b04) {
-        if ((arg1 << 11) < 0xB4000U) {
-            D_80044F38_40748.fldRegs[0].yScale = phi_t3 + 0x3000000;
-            D_80044F38_40748.fldRegs[1].yScale = phi_t3 + 0x1000000;
-        } else {
-            // L8000169C
+        if (osTvType == OS_TV_MPAL)
+        {
+            D_80044F38_40748.fldRegs[0].vBurst += 0xFFFCFFFE;
+        }
+        if (osTvType == OS_TV_PAL) 
+        {
+            D_80044F38_40748.fldRegs[1].vBurst += 0x2FFFE;
+        }
+    }
+    
+    D_80044F38_40748.comRegs.vCurrent  = 0;
+    D_80044F38_40748.comRegs.xScale    = (width << 10) / ((off_right - off_left) + 640);
+    D_80044F38_40748.fldRegs[0].origin = (!(D_80044FBC_407CC.pixelSize32) ? 1 : 2) * width * 2;
+    D_80044F38_40748.fldRegs[1].origin = (!(D_80044FBC_407CC.pixelSize32) ? 1 : 2) * (((is_res_in_bounds != FALSE) ? 1 : 2) * width * 2);
+    D_80044F38_40748.fldRegs[0].yScale = vertical;
+    D_80044F38_40748.fldRegs[1].yScale = vertical;
+
+    if (D_80044FBC_407CC.unk_b04)
+    {
+        if ((height << 11) < 0xB4000)
+        {
+            D_80044F38_40748.fldRegs[0].yScale += 0x3000000;
+            D_80044F38_40748.fldRegs[1].yScale += 0x1000000;
+        }
+        else
+        {
             D_80044F38_40748.fldRegs[0].yScale += 0x2000000;
             D_80044F38_40748.fldRegs[1].yScale += 0x2000000;
         }
-        // L800016B8
     }
-    // L800016BC
     D_80044F38_40748.fldRegs[0].vIntr = 2;
     D_80044F38_40748.fldRegs[1].vIntr = 2;
-    D_80044F88_40798[0]               = 1;
+    D_80044F88_40798 = 1;
 }
 #else
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/scheduler/func_80000F30.s")
@@ -1084,48 +1072,44 @@ void func_800029D8(void);
 #define INTR_DP_FULL_SYNC 3
 #define INTR_SOFT_RESET   99
 
-void scheduler_scheduler(UNUSED void *arg) {
-    OSMesg intrMsg;
-    UNUSED u32 pad;
-    OSViMode mode;
+void scheduler_scheduler(UNUSED void *arg)
+{
+    OSMesg intr_mesg;
 
     // the wonders of matching
-    scClientList= NULL;
+    scClientList = NULL;
     scMainQueueHead = D_80044EC8_406D8 = scCurrentGfxTask = scCurrentAudioTask = scPausedQueueHead = D_80044ED8_406E8 = NULL;
     scCurrentQueue3Task = scQueue3Head = D_80044EE0_406F0 = NULL;
     D_80044F88_40798[0]                                    = 0;
     gSYSchedulerCurrentFramebuffer = gSYSchedulerNextFramebuffer = scUnkFrameBuffer = NULL;
-    scUseCustomSwapBufferFunc                                       = 0;
+    scUseCustomSwapBufferFunc                              = 0;
     D_80045018_40828                                       = func_800029D8;
     D_80045020_40830                                       = 0;
     D_80045024_40834                                       = -1;
-    sSYSchedulerTicCount                                       = 0;
+    sSYSchedulerTicCount                                   = 0;
     D_80045034_40844 = D_80045035_40845 = 0;
 
-    switch (osTvType) {
-        case OS_TV_NTSC:
-            mode             = osViModeNtscLan1;
-            D_80044EE8_406F8 = mode;
-            D_80044F38_40748 = mode;
-            break;
-        case OS_TV_PAL:
-            while (TRUE) { }
-            break;
-        case OS_TV_MPAL:
-            mode             = osViModeMpalLan1;
-            D_80044EE8_406F8 = mode;
-            D_80044F38_40748 = mode;
-            break;
+    switch (osTvType)
+    {
+    case OS_TV_NTSC:
+        D_80044F38_40748 = D_80044EE8_406F8 = osViModeNtscLan1;
+        break;
+        
+    case OS_TV_PAL:
+        while (TRUE);
+        break;
+        
+    case OS_TV_MPAL:
+        D_80044F38_40748 = D_80044EE8_406F8 = osViModeMpalLan1;
+        break;
     }
     // 0x10016
-    D_80044EE8_406F8.comRegs.ctrl =
-        VI_CTRL_TYPE_16 | VI_CTRL_GAMMA_DITHER_ON | VI_CTRL_DIVOT_ON | VI_CTRL_DITHER_FILTER_ON;
-    D_80044F38_40748.comRegs.ctrl =
-        VI_CTRL_TYPE_16 | VI_CTRL_GAMMA_DITHER_ON | VI_CTRL_DIVOT_ON | VI_CTRL_DITHER_FILTER_ON;
+    D_80044EE8_406F8.comRegs.ctrl = VI_CTRL_TYPE_16 | VI_CTRL_GAMMA_DITHER_ON | VI_CTRL_DIVOT_ON | VI_CTRL_DITHER_FILTER_ON;
+    D_80044F38_40748.comRegs.ctrl = VI_CTRL_TYPE_16 | VI_CTRL_GAMMA_DITHER_ON | VI_CTRL_DIVOT_ON | VI_CTRL_DITHER_FILTER_ON;
     osViSetMode(&D_80044EE8_406F8);
     osViBlack(TRUE);
 
-    D_80044FBC_407CC.unk_b80      = TRUE;
+    D_80044FBC_407CC.antiAlias    = TRUE;
     D_80044FBC_407CC.serrate      = FALSE;
     D_80044FBC_407CC.pixelSize32  = FALSE;
     D_80044FBC_407CC.gamma        = FALSE;
@@ -1143,43 +1127,63 @@ void scheduler_scheduler(UNUSED void *arg) {
 
     osSendMesg(&gSYMainThreadingQueue, (OSMesg)1, OS_MESG_NOBLOCK);
 
-    while (TRUE) {
-        osRecvMesg(&scTaskQueue, &intrMsg, OS_MESG_BLOCK);
+    while (TRUE)
+    {
+        osRecvMesg(&scTaskQueue, &intr_mesg, OS_MESG_BLOCK);
 
-        switch ((uintptr_t)intrMsg) {
-            case INTR_VRETRACE: func_8000205C(); break;
-            case INTR_SP_TASK_DONE:
-                scHandleSPTaskDone();
-                if (D_80045020_40830 == 1 && D_80045024_40834 == -1) { D_80045024_40834 = osAfterPreNMI(); }
-                break;
-            case INTR_DP_FULL_SYNC: func_80002340(); break;
-            case INTR_SOFT_RESET:
-                if (D_80045018_40828 != NULL) { D_80045018_40828(); }
-                break;
-            default:
-                if (D_80045020_40830 == 0) {
-                    // is this a pointer to only the info struct?
-                    func_800024EC((SYTaskInfo *)intrMsg);
-                }
+        switch ((u32)intr_mesg)
+        {
+        case INTR_VRETRACE:
+            func_8000205C();
+            break;
+        
+        case INTR_SP_TASK_DONE:
+            scHandleSPTaskDone();
+
+            if ((D_80045020_40830 == 1) && (D_80045024_40834 == -1))
+            {
+                D_80045024_40834 = osAfterPreNMI();
+            }
+            break;
+
+        case INTR_DP_FULL_SYNC:
+            func_80002340();
+            break;
+
+        case INTR_SOFT_RESET:
+            if (D_80045018_40828 != NULL)
+            {
+                D_80045018_40828();
+            }
+            break;
+
+        default:
+            if (D_80045020_40830 == 0)
+            {
+                // is this a pointer to only the info struct?
+                func_800024EC((SYTaskInfo*)intr_mesg);
+            }
         }
     }
 }
 
-void func_800029D8(void) {
+void func_800029D8(void)
+{
     s32 i;
 
     D_80045020_40830 = 1;
     osViSetYScale(1.0);
     osViBlack(TRUE);
 
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < MAXCONTROLLERS; i++)
+    {
         syControllerInitRumble(i);
         syControllerStopRumble(i);
     }
-
     D_80045024_40834 = osAfterPreNMI();
 }
 
-void unref_80002A50(void (*fn)(void)) {
-    D_80045018_40828 = fn;
+void unref_80002A50(void (*func)(void))
+{
+    D_80045018_40828 = func;
 }

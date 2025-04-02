@@ -75,7 +75,7 @@ void ftCommonAttack100StartSetStatus(GObj *fighter_gobj)
             break;
         }
         ftMainSetStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-        ftMainPlayAnimNoEffect(fighter_gobj);
+        ftMainPlayAnimEventsAll(fighter_gobj);
 
         fp->status_vars.common.attack100.is_anim_end = FALSE;
         fp->status_vars.common.attack100.is_goto_loop = FALSE;

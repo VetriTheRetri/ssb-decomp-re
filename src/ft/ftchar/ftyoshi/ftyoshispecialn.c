@@ -192,7 +192,7 @@ void ftYoshiSpecialNSetStatus(GObj *fighter_gobj)
 
     ftMainSetStatus(fighter_gobj, nFTYoshiStatusSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftYoshiSpecialNSetCatchParams(fp, ftYoshiSpecialNCatchProcCatch);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 }
 
 // 0x8015E
@@ -204,7 +204,7 @@ void ftYoshiSpecialAirNSetStatus(GObj *fighter_gobj)
 
     ftMainSetStatus(fighter_gobj, nFTYoshiStatusSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftYoshiSpecialNSetCatchParams(fp, ftYoshiSpecialAirNCatchProcCatch);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 }
 
 // 0x8015E7F8
@@ -222,7 +222,7 @@ void ftYoshiSpecialNCatchInitStatusVars(GObj *fighter_gobj)
 void ftYoshiSpecialNCatchProcCatch(GObj *fighter_gobj)
 {
     ftMainSetStatus(fighter_gobj, nFTYoshiStatusSpecialNCatch, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
     ftYoshiSpecialNCatchInitStatusVars(fighter_gobj);
 }
 
@@ -230,7 +230,7 @@ void ftYoshiSpecialNCatchProcCatch(GObj *fighter_gobj)
 void ftYoshiSpecialAirNCatchProcCatch(GObj *fighter_gobj)
 {
     ftMainSetStatus(fighter_gobj, nFTYoshiStatusSpecialAirNCatch, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
     ftYoshiSpecialNCatchInitStatusVars(fighter_gobj);
 }
 
@@ -249,7 +249,7 @@ void ftYoshiSpecialNReleaseInitStatusVars(GObj *fighter_gobj)
 void ftYoshiSpecialNReleaseSetStatus(GObj *fighter_gobj)
 {
     ftMainSetStatus(fighter_gobj, nFTYoshiStatusSpecialNRelease, 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
     ftYoshiSpecialNReleaseInitStatusVars(fighter_gobj);
 }
 
@@ -257,6 +257,6 @@ void ftYoshiSpecialNReleaseSetStatus(GObj *fighter_gobj)
 void ftYoshiSpecialAirNReleaseSetStatus(GObj *fighter_gobj)
 {
     ftMainSetStatus(fighter_gobj, nFTYoshiStatusSpecialAirNRelease, 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
     ftYoshiSpecialNReleaseInitStatusVars(fighter_gobj);
 }

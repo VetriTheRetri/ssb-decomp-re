@@ -92,7 +92,7 @@ void ftCommonTaruCannSetStatus(GObj *fighter_gobj, GObj *tarucann_gobj)
         ftCommonThrownDecideFighterLoseGrip(fp->capture_gobj, fighter_gobj);
     }
     ftMainSetStatus(fighter_gobj, nFTCommonStatusTaruCann, 0.0F, 0.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
     ftPhysicsStopVelAll(fighter_gobj);
 
     fp->status_vars.common.tarucann.shoot_wait = 0;

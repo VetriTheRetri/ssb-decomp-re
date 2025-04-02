@@ -288,7 +288,7 @@ void ftKirbyCopyDonkeySpecialNStartSetStatus(GObj *fighter_gobj)
 
     fp->proc_damage = ftKirbyCopyDonkeySpecialNProcDamage;
 
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
     ftKirbyCopyDonkeySpecialNInitStatusVars(fighter_gobj);
 }
 
@@ -301,6 +301,6 @@ void ftKirbyCopyDonkeySpecialAirNStartSetStatus(GObj *fighter_gobj)
 
     fp->proc_damage = ftKirbyCopyDonkeySpecialNProcDamage;
 
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
     ftKirbyCopyDonkeySpecialNInitStatusVars(fighter_gobj);
 }

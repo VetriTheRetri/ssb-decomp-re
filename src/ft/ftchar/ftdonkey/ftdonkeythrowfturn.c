@@ -50,7 +50,7 @@ void ftDonkeyThrowFTurnSetStatus(GObj *fighter_gobj)
     fp->motion_vars.flags.flag1 = 0;
 
     ftMainSetStatus(fighter_gobj, nFTDonkeyStatusThrowFTurn, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 }
 
 // 0x8014D810

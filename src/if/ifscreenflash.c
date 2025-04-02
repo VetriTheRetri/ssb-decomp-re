@@ -31,16 +31,16 @@ void ifScreenFlashProcDisplay(GObj *gobj)
     GMColAnim *ca = &sIFScreenFlashColAnim;
     s32 alpha;
 
-    if (ca->is_use_maincolor)
+    if (ca->is_use_color1)
     {
         gDPPipeSync(gSYTaskmanDLHeads[0]++);
         gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
         gDPSetCombineMode(gSYTaskmanDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
         gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
-        alpha = (ca->maincolor.a * sIFScreenFlashAlpha) / 0xFF;
+        alpha = (ca->color1.a * sIFScreenFlashAlpha) / 0xFF;
 
-        gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, ca->maincolor.r, ca->maincolor.g, ca->maincolor.b, alpha);
+        gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, ca->color1.r, ca->color1.g, ca->color1.b, alpha);
         gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 10, 310, 230);
         gDPPipeSync(gSYTaskmanDLHeads[0]++);
         gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);

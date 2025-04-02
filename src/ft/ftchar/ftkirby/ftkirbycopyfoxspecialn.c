@@ -62,7 +62,7 @@ void ftKirbyCopyFoxSpecialNInitStatusVars(GObj *fighter_gobj)
 void ftKirbyCopyFoxSpecialNSetStatus(GObj *fighter_gobj)
 {
     ftMainSetStatus(fighter_gobj, nFTKirbyStatusCopyFoxSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
     ftKirbyCopyFoxSpecialNInitStatusVars(fighter_gobj);
 }
 
@@ -70,6 +70,6 @@ void ftKirbyCopyFoxSpecialNSetStatus(GObj *fighter_gobj)
 void ftKirbyCopyFoxSpecialAirNSetStatus(GObj *fighter_gobj)
 {
     ftMainSetStatus(fighter_gobj, nFTKirbyStatusCopyFoxSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_FASTFALL);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
     ftKirbyCopyFoxSpecialNInitStatusVars(fighter_gobj);
 }

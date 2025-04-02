@@ -111,7 +111,7 @@ void ftCommonCaptureYoshiProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
 
     mpCommonSetFighterAir(this_fp);
     ftMainSetStatus(fighter_gobj, nFTCommonStatusCaptureYoshi, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftMainPlayAnimNoEffect(fighter_gobj);
+    ftMainPlayAnimEventsAll(fighter_gobj);
 
     this_fp->status_vars.common.captureyoshi.stage = 0;
     this_fp->status_vars.common.captureyoshi.breakout_wait = 0;

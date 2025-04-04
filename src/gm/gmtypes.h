@@ -12,12 +12,12 @@
 
 struct GMCamera
 {
-	s32 status_base;
+	s32 status_default;
 	s32 status_curr;
 	s32 status_prev;
 	void (*func_camera)(GObj*);
 	f32 target_dist;
-	Vec3f at_move;
+	Vec3f vel_at;
     s32 viewport_ulx;
     s32 viewport_uly;
     s32 viewport_lrx;
@@ -28,20 +28,20 @@ struct GMCamera
     s32 viewport_height;
 	f32 fovy;
 	GObj *pzoom_fighter_gobj; // Guess: this is a struct from here...
-	f32 unk_cmstruct_0x48;
-	f32 unk_cmstruct_0x4C;
-	f32 unk_cmstruct_0x50;
-	f32 unk_cmstruct_0x54;
-	f32 unk_cmstruct_0x58;
+	f32 pzoom_eye_x;
+	f32 pzoom_eye_y;
+	f32 pzoom_dist;
+	f32 pzoom_pan_scale;
+	f32 pzoom_fov;
 	Vec3f zoom_origin_pos;
 	Vec3f zoom_target_pos; // ...to here
 	GObj *pfollow_fighter_gobj;	 // ...and there is an array of it
-	f32 unk_cmstruct_0x78;
-	f32 unk_cmstruct_0x7C;
-	f32 unk_cmstruct_0x80;
-	f32 unk_cmstruct_0x84;
-	f32 unk_cmstruct_0x88;
-	Vec3f all_move;
+	f32 pfollow_eye_x;
+	f32 pfollow_eye_y;
+	f32 pfollow_dist;
+	f32 pfollow_pan_scale;
+	f32 pfollow_fov;
+	Vec3f vel_all;
 	LookAt look_at;
 };
 

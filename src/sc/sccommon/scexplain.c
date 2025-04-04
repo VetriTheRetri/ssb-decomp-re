@@ -196,10 +196,10 @@ void scExplainMakeCamera(void)
     syRdpSetViewport
     (
         &cobj->viewport,
-        gGMCameraCameraStruct.viewport_ulx,
-        gGMCameraCameraStruct.viewport_uly,
-        gGMCameraCameraStruct.viewport_lrx,
-        gGMCameraCameraStruct.viewport_lry
+        gGMCameraStruct.viewport_ulx,
+        gGMCameraStruct.viewport_uly,
+        gGMCameraStruct.viewport_lrx,
+        gGMCameraStruct.viewport_lry
     );
 }
 
@@ -703,7 +703,7 @@ void scExplainFuncStart(void)
     mpCollisionInitGroundData();
     gmCameraMakeWallpaperCamera();
     grWallpaperMakeDecideKind();
-    func_ovl2_8010DB00();
+    gmCameraMakeBattleCamera();
     itManagerInitItems();
     grCommonSetupInitAll();
     ftManagerAllocFighter(FTDATA_FLAG_MAINMOTION, 2);
@@ -770,9 +770,9 @@ void scExplainFuncStart(void)
         );
     }
     scExplainStartBattle();
-    func_ovl2_8010E2D4();
+    gmCameraMakePlayerArrowsCamera();
     ifCommonPlayerArrowsInitInterface();
-    func_ovl2_8010E1A4();
+    gmCameraMakePlayerMagnifyCamera();
     ifCommonPlayerMagnifyMakeInterface();
 
     gIFCommonPlayerInterface.is_magnify_display = TRUE;

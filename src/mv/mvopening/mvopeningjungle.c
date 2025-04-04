@@ -221,7 +221,7 @@ void mvOpeningJungleMakeGroundViewport(Vec3f unused)
     sMVOpeningJungleUnusedAdjustedStartCObjDesc = dMVOpeningJungleCObjDescStart;
     sMVOpeningJungleUnusedAdjustedEndCObjDesc = dMVOpeningJungleCObjDescEnd;
 
-    sMVOpeningJungleStageCameraGObj = func_ovl2_8010DB2C(NULL);
+    sMVOpeningJungleStageCameraGObj = gmCameraMakeMovieCamera(NULL);
 
     cobj = CObjGetStruct(sMVOpeningJungleStageCameraGObj);
 

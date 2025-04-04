@@ -186,7 +186,7 @@ void mvOpeningYoshiMakeMotionCamera(Vec3f move)
 	sMVOpeningYoshiAdjustedStartCObjDesc = dMVOpeningYoshiCObjDescStart;
 	sMVOpeningYoshiAdjustedEndCObjDesc = dMVOpeningYoshiCObjDescEnd;
 
-	sMVOpeningYoshiStageCameraGObj = func_ovl2_8010DB2C(NULL);
+	sMVOpeningYoshiStageCameraGObj = gmCameraMakeMovieCamera(NULL);
 	cobj = CObjGetStruct(sMVOpeningYoshiStageCameraGObj);
 
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 150.0F);

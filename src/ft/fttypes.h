@@ -990,8 +990,7 @@ struct FTStruct
     s8 stock_count;
     u8 team_order;              // Order number if this fighter is a "VS *character* Team" member; used to check for bonuses such as Yoshi Rainbow
     u8 dl_link;
-    s32 player_num;          // Player's number? (Note: NOT player port, e.g. if players 2 and 4 are in a match,
-                                // player 2 will be number 1 and player 4 will be number 2; used to match fighters and items?)
+    s32 player_num;             // Player's number in the order they were created
 
     u32 status_total_tics;      // Frames spent in this action state
 

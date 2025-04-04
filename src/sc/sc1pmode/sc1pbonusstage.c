@@ -1008,7 +1008,7 @@ void sc1PBonusStageFuncStart(void)
 	gmCameraSetViewportDimensions(10, 10, 310, 230);
 	gmCameraMakeWallpaperCamera();
 	grWallpaperMakeDecideKind();
-	func_ovl2_8010DB00();
+	gmCameraMakeBattleCamera();
 	itManagerInitItems();
 	grCommonSetupInitAll();
 	ftManagerAllocFighter(FTDATA_FLAG_MAINMOTION, 4);

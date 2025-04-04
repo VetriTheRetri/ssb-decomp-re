@@ -193,7 +193,7 @@ void mvOpeningKirbyMakeMotionCamera(Vec3f move)
 	sMVOpeningKirbyAdjustedStartCObjDesc = dMVOpeningKirbyStartCObjDesc;
 	sMVOpeningKirbyAdjustedEndCObjDesc = dMVOpeningKirbyEndCObjDesc;
 
-	sMVOpeningKirbyMotionCameraGObj = func_ovl2_8010DB2C(NULL);
+	sMVOpeningKirbyMotionCameraGObj = gmCameraMakeMovieCamera(NULL);
 	cobj = CObjGetStruct(sMVOpeningKirbyMotionCameraGObj);
 
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 210.0F, 230.0F);

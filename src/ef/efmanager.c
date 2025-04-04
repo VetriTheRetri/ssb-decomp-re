@@ -3791,7 +3791,7 @@ void efManagerQuakeProcUpdate(GObj *effect_gobj)
         }
         pos.z = 0.0F;
 
-        gmCameraSetAtMove(&pos);
+        gmCameraSetVelAt(&pos);
     }
 }
 

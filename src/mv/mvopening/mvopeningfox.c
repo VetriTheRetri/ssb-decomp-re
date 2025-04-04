@@ -188,7 +188,7 @@ void mvOpeningFoxMakeMotionCamera(Vec3f move)
 	sMVOpeningFoxAdjustedStartCObjDesc = dMVOpeningFoxCObjDescStart;
 	sMVOpeningFoxAdjustedEndCObjDesc = dMVOpeningFoxCObjDescEnd;
 
-	sMVOpeningFoxStageCameraGObj = func_ovl2_8010DB2C(NULL);
+	sMVOpeningFoxStageCameraGObj = gmCameraMakeMovieCamera(NULL);
 	cobj = CObjGetStruct(sMVOpeningFoxStageCameraGObj);
 
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 210.0F, 230.0F);

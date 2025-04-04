@@ -1759,7 +1759,7 @@ void sc1PGameTryInitPlayerArrows(void)
 {
     if (gSCManagerSceneData.spgame_stage != nSC1PGameStageBonus3)
     {
-        func_ovl2_8010E2D4();
+        gmCameraMakePlayerArrowsCamera();
         ifCommonPlayerArrowsInitInterface();
     }
 }
@@ -1993,7 +1993,7 @@ void sc1PGameFuncStart(void)
     gmCameraSetViewportDimensions(10, 10, 310, 230);
     gmCameraMakeWallpaperCamera();
     grWallpaperMakeDecideKind();
-    func_ovl2_8010DB00();
+    gmCameraMakeBattleCamera();
     itManagerInitItems();
     grCommonSetupInitAll();
     ftManagerAllocFighter(FTDATA_FLAG_MAINMOTION, 4);
@@ -2106,7 +2106,7 @@ void sc1PGameFuncStart(void)
     ftManagerSetupFilesPlayablesAll();
     ifCommonBattleSetGameStatusWait();
     sc1PGameTryInitPlayerArrows();
-    func_ovl2_8010E1A4();
+    gmCameraMakePlayerMagnifyCamera();
     ifCommonPlayerMagnifyMakeInterface();
     func_ovl2_8010DDC4();
     func_ovl2_8010E374();

@@ -194,7 +194,7 @@ void mvOpeningMarioMakeMotionCamera(Vec3f move)
 	sMVOpeningMarioAdjustedStartCObjDesc = dMVOpeningMarioStartCObjDesc;
 	sMVOpeningMarioAdjustedEndCObjDesc = dMVOpeningMarioEndCObjDesc;
 
-	sMVOpeningMarioMotionCameraGObj = func_ovl2_8010DB2C(NULL);
+	sMVOpeningMarioMotionCameraGObj = gmCameraMakeMovieCamera(NULL);
 	cobj = CObjGetStruct(sMVOpeningMarioMotionCameraGObj);
 
 	syRdpSetViewport(&cobj->viewport, 110.0F, 10.0F, 310.0F, 230.0F);

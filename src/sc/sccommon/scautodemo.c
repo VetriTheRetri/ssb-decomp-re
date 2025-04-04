@@ -630,7 +630,7 @@ void scAutoDemoFuncStart(void)
 	gmCameraSetViewportDimensions(10, 10, 310, 230);
 	gmCameraMakeWallpaperCamera();
 	grWallpaperMakeDecideKind();
-	func_ovl2_8010DB00();
+	gmCameraMakeBattleCamera();
 	itManagerInitItems();
 	grCommonSetupInitAll();
 	ftManagerAllocFighter(FTDATA_FLAG_MAINMOTION, 4);
@@ -674,9 +674,9 @@ void scAutoDemoFuncStart(void)
 	}
 	ftManagerSetupFilesPlayablesAll();
 	scAutoDemoStartBattle();
-	func_ovl2_8010E2D4();
+	gmCameraMakePlayerArrowsCamera();
 	ifCommonPlayerArrowsInitInterface();
-	func_ovl2_8010E1A4();
+	gmCameraMakePlayerMagnifyCamera();
 	ifCommonPlayerMagnifyMakeInterface();
 
 	gIFCommonPlayerInterface.is_magnify_display = TRUE;

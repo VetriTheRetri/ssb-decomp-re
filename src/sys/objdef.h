@@ -8,8 +8,8 @@ typedef enum GObjKind
     nGCCommonKindMainCamera = 1002,         // 1002
     nGCCommonKindWallpaperCamera,           // 1003 - Used to render stage backgrounds?
     nGCCommonKindScissorCamera,             // 1004 - Camera scissor?
-    nGCCommonKindUnkCamera1,                // 1005 - ???
-    nGCCommonKindUnkCamera2,                // 1006 - ???
+    nGCCommonKindPlayerMagnifyCamera,                // 1005 - ???
+    nGCCommonKindPlayerArrowsCamera,                // 1006 - ???
     nGCCommonKindUnkCamera3,                // 1007
     nGCCommonKindWallpaper,                 // 1008 - Stage background?
     nGCCommonKindGroundDisplay,             // 1009 - Stage renderer?

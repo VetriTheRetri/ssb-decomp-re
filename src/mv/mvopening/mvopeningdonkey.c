@@ -185,7 +185,7 @@ void mvOpeningDonkeyMakeMotionCamera(Vec3f move)
 	sMVOpeningDonkeyAdjustedStartCObjDesc = dMVOpeningDonkeyCObjDescStart;
 	sMVOpeningDonkeyAdjustedEndCObjDesc = dMVOpeningDonkeyCObjDescEnd;
 
-	sMVOpeningDonkeyStageCameraGObj = func_ovl2_8010DB2C(NULL);
+	sMVOpeningDonkeyStageCameraGObj = gmCameraMakeMovieCamera(NULL);
 	cobj = CObjGetStruct(sMVOpeningDonkeyStageCameraGObj);
 
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 210.0F, 230.0F);

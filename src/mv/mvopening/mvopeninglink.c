@@ -183,7 +183,7 @@ void mvOpeningLinkMakeMotionCamera(Vec3f move)
 	sMVOpeningLinkAdjustedStartCObjDesc = dMVOpeningLinkCObjDescStart;
 	sMVOpeningLinkAdjustedEndCObjDesc = dMVOpeningLinkCObjDescEnd;
 
-	sMVOpeningLinkStageCameraGObj = func_ovl2_8010DB2C(NULL);
+	sMVOpeningLinkStageCameraGObj = gmCameraMakeMovieCamera(NULL);
 	cobj = CObjGetStruct(sMVOpeningLinkStageCameraGObj);
 
 	syRdpSetViewport(&cobj->viewport, 10.0F, 90.0F, 310.0F, 230.0F);

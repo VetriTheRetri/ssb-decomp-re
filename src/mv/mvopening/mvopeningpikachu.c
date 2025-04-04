@@ -184,7 +184,7 @@ void mvOpeningPikachuMakeMotionCamera(Vec3f move)
 	sMVOpeningPikachuAdjustedStartCObjDesc = dMVOpeningPikachuStartCObjDesc;
 	sMVOpeningPikachuAdjustedEndCObjDesc = dMVOpeningPikachuEndCObjDesc;
 
-	sMVOpeningPikachuMotionCameraGObj = func_ovl2_8010DB2C(NULL);
+	sMVOpeningPikachuMotionCameraGObj = gmCameraMakeMovieCamera(NULL);
 
 	cobj = CObjGetStruct(sMVOpeningPikachuMotionCameraGObj);
 

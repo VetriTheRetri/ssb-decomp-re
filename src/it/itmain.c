@@ -580,19 +580,19 @@ s32 itMainGetWeightedItemKind(ITRandomWeights *weights)
 sb32 itMainMakeContainerItem(GObj *parent_gobj)
 {
     s32 unused;
-    s32 item_kind;
+    s32 kind;
     Vec3f vel; // Item's spawn velocity when falling out of a container
 
     if (gITManagerRandomWeights.weights_sum != 0)
     {
-        item_kind = itMainGetWeightedItemKind(&gITManagerRandomWeights);
+        kind = itMainGetWeightedItemKind(&gITManagerRandomWeights);
 
-        if (item_kind <= nITKindCommonEnd)
+        if (kind <= nITKindCommonEnd)
         {
             vel.x = 0.0F;
 
             // Quite ridiculous especially since lITMainContainerVelocitiesY is 0
-            vel.y = *(f32*) ((intptr_t)&lITMainContainerVelocitiesY + ((uintptr_t) &((f32*)gITManagerCommonData)[item_kind]));
+            vel.y = *(f32*) ((intptr_t)&lITMainContainerVelocitiesY + ((uintptr_t) &((f32*)gITManagerCommonData)[kind]));
             vel.z = 0;
 
             if
@@ -600,7 +600,7 @@ sb32 itMainMakeContainerItem(GObj *parent_gobj)
                 itManagerMakeItemSetupCommon
                 (
                     parent_gobj,
-                    item_kind,
+                    kind,
                     &DObjGetStruct(parent_gobj)->translate.vec.f,
                     &vel,
                     (ITEM_FLAG_COLLPROJECT | ITEM_FLAG_PARENT_ITEM)

@@ -185,7 +185,7 @@ void mvOpeningSamusMakeMotionCamera(Vec3f move)
 	sMVOpeningSamusAdjustedStartCObjDesc = dMVOpeningSamusCObjDescStart;
 	sMVOpeningSamusAdjustedEndCObjDesc = dMVOpeningSamusCObjDescEnd;
 
-	sMVOpeningSamusStageCameraGObj = func_ovl2_8010DB2C(NULL);
+	sMVOpeningSamusStageCameraGObj = gmCameraMakeMovieCamera(NULL);
 	cobj = CObjGetStruct(sMVOpeningSamusStageCameraGObj);
 
 	syRdpSetViewport(&cobj->viewport, 110.0F, 10.0F, 310.0F, 230.0F);

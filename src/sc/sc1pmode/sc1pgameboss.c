@@ -416,9 +416,9 @@ void sc1PGameBossMakeCamera(void)
             FALSE
         )
     );
-    syRdpSetViewport(&cobj->viewport, gGMCameraCameraStruct.viewport_ulx, gGMCameraCameraStruct.viewport_uly, gGMCameraCameraStruct.viewport_lrx, gGMCameraCameraStruct.viewport_lry);
+    syRdpSetViewport(&cobj->viewport, gGMCameraStruct.viewport_ulx, gGMCameraStruct.viewport_uly, gGMCameraStruct.viewport_lrx, gGMCameraStruct.viewport_lry);
 
-    cobj->projection.persp.aspect = (f32)(gGMCameraCameraStruct.viewport_lrx - gGMCameraCameraStruct.viewport_ulx) / (f32)(gGMCameraCameraStruct.viewport_lry - gGMCameraCameraStruct.viewport_uly);
+    cobj->projection.persp.aspect = (f32)(gGMCameraStruct.viewport_lrx - gGMCameraStruct.viewport_ulx) / (f32)(gGMCameraStruct.viewport_lry - gGMCameraStruct.viewport_uly);
 
     cobj->flags |= COBJ_FLAG_DLBUFFERS;
 
@@ -445,9 +445,9 @@ void sc1PGameBossMakeCamera(void)
             FALSE
         )
     );
-    syRdpSetViewport(&cobj->viewport, gGMCameraCameraStruct.viewport_ulx, gGMCameraCameraStruct.viewport_uly, gGMCameraCameraStruct.viewport_lrx, gGMCameraCameraStruct.viewport_lry);
+    syRdpSetViewport(&cobj->viewport, gGMCameraStruct.viewport_ulx, gGMCameraStruct.viewport_uly, gGMCameraStruct.viewport_lrx, gGMCameraStruct.viewport_lry);
 
-    cobj->projection.persp.aspect = (f32)(gGMCameraCameraStruct.viewport_lrx - gGMCameraCameraStruct.viewport_ulx) / (f32)(gGMCameraCameraStruct.viewport_lry - gGMCameraCameraStruct.viewport_uly);
+    cobj->projection.persp.aspect = (f32)(gGMCameraStruct.viewport_lrx - gGMCameraStruct.viewport_ulx) / (f32)(gGMCameraStruct.viewport_lry - gGMCameraStruct.viewport_uly);
 
     cobj->flags |= COBJ_FLAG_DLBUFFERS;
 

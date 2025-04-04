@@ -161,7 +161,7 @@ void mvUnknownMarioFuncStart(void)
 	gmCameraSetViewportDimensions(10, 10, 310, 230);
 	gmCameraMakeWallpaperCamera();
 	grWallpaperMakeDecideKind();
-	func_ovl2_8010DB00();
+	gmCameraMakeBattleCamera();
 	grCommonSetupInitAll();
 	ftManagerAllocFighter(FTDATA_FLAG_MAINMOTION | FTDATA_FLAG_SUBMOTION, 1);
 	wpManagerAllocWeapons();

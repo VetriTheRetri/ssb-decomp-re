@@ -1321,10 +1321,10 @@ void ifCommonPlayerMagnifyGetPosition(f32 player_pos_x, f32 player_pos_y, Vec2f 
     f32 diag_vt;
     f32 div_xy;
 
-    left = (-gGMCameraCameraStruct.viewport_width / 2) + (20 * gIFCommonPlayerInterface.magnify_scale) + 5;
-    bak_right = right = (+gGMCameraCameraStruct.viewport_width / 2) - (20 * gIFCommonPlayerInterface.magnify_scale) - 5;
-    bak_up = up = (+gGMCameraCameraStruct.viewport_height / 2) - (20 * gIFCommonPlayerInterface.magnify_scale);
-    down = (-gGMCameraCameraStruct.viewport_height / 2) + (20 * gIFCommonPlayerInterface.magnify_scale);
+    left = (-gGMCameraStruct.viewport_width / 2) + (20 * gIFCommonPlayerInterface.magnify_scale) + 5;
+    bak_right = right = (+gGMCameraStruct.viewport_width / 2) - (20 * gIFCommonPlayerInterface.magnify_scale) - 5;
+    bak_up = up = (+gGMCameraStruct.viewport_height / 2) - (20 * gIFCommonPlayerInterface.magnify_scale);
+    down = (-gGMCameraStruct.viewport_height / 2) + (20 * gIFCommonPlayerInterface.magnify_scale);
 
     if (player_pos_x == 0.0F)
     {
@@ -1436,21 +1436,21 @@ void ifCommonPlayerMagnifyUpdateRender(Gfx **dls, s32 color_id, f32 ulx, f32 uly
 
     var_lry = ((uly == var_uly) ? 0 : 1) + (s32)(uly + (32.0F * gIFCommonPlayerInterface.magnify_scale));
 
-    if (var_ulx < gGMCameraCameraStruct.viewport_ulx)
+    if (var_ulx < gGMCameraStruct.viewport_ulx)
     {
-        var_ulx = gGMCameraCameraStruct.viewport_ulx;
+        var_ulx = gGMCameraStruct.viewport_ulx;
     }
-    else if (var_lrx >= gGMCameraCameraStruct.viewport_lrx)
+    else if (var_lrx >= gGMCameraStruct.viewport_lrx)
     {
-        var_lrx = gGMCameraCameraStruct.viewport_lrx - 1;
+        var_lrx = gGMCameraStruct.viewport_lrx - 1;
     }
-    if (var_uly < gGMCameraCameraStruct.viewport_uly)
+    if (var_uly < gGMCameraStruct.viewport_uly)
     {
-        var_uly = gGMCameraCameraStruct.viewport_uly;
+        var_uly = gGMCameraStruct.viewport_uly;
     }
-    else if (var_lry >= gGMCameraCameraStruct.viewport_lry)
+    else if (var_lry >= gGMCameraStruct.viewport_lry)
     {
-        var_lry = gGMCameraCameraStruct.viewport_lry - 1;
+        var_lry = gGMCameraStruct.viewport_lry - 1;
     }
     temp_t0 = ((s32)((var_ulx - ulx) * temp_f0) + 16) >> 5;
     temp_t1 = ((s32)((var_uly - uly) * temp_f0) + 16) >> 5;
@@ -1514,8 +1514,8 @@ void ifCommonPlayerMagnifyUpdateViewport(Gfx **dls, FTStruct *fp)
 
         ifCommonPlayerMagnifyGetPosition(magnify_x, magnify_y, &ifmag->pos);
 
-        magnify_x = ifmag->pos.x + gGMCameraCameraStruct.viewport_center_x;
-        magnify_y = gGMCameraCameraStruct.viewport_center_y - ifmag->pos.y;
+        magnify_x = ifmag->pos.x + gGMCameraStruct.viewport_center_x;
+        magnify_y = gGMCameraStruct.viewport_center_y - ifmag->pos.y;
 
         gSPMatrix(dls[0]++, &CObjGetStruct(gGCCurrentCamera)->xobjs[0]->mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 
@@ -1525,7 +1525,7 @@ void ifCommonPlayerMagnifyUpdateViewport(Gfx **dls, FTStruct *fp)
 
             gSPViewport(dls[0]++, &cobj->viewport);
 
-            gDPSetScissor(dls[0]++, G_SC_NON_INTERLACE, gGMCameraCameraStruct.viewport_ulx, gGMCameraCameraStruct.viewport_uly, gGMCameraCameraStruct.viewport_lrx, gGMCameraCameraStruct.viewport_lry);
+            gDPSetScissor(dls[0]++, G_SC_NON_INTERLACE, gGMCameraStruct.viewport_ulx, gGMCameraStruct.viewport_uly, gGMCameraStruct.viewport_lrx, gGMCameraStruct.viewport_lry);
         }
         else gIFCommonPlayerInterface.magnify_mode = 2;
 
@@ -1549,21 +1549,21 @@ void ifCommonPlayerMagnifyUpdateViewport(Gfx **dls, FTStruct *fp)
         lrx = (ifmag->viewport.vp.vtrans[0] / 4) + (ifmag->viewport.vp.vscale[0] / 4);
         lry = (ifmag->viewport.vp.vtrans[1] / 4) + (ifmag->viewport.vp.vscale[1] / 4);
 
-        if (ulx < gGMCameraCameraStruct.viewport_ulx)
+        if (ulx < gGMCameraStruct.viewport_ulx)
         {
-            ulx = gGMCameraCameraStruct.viewport_ulx;
+            ulx = gGMCameraStruct.viewport_ulx;
         }
-        if (lrx > gGMCameraCameraStruct.viewport_lrx)
+        if (lrx > gGMCameraStruct.viewport_lrx)
         {
-            lrx = gGMCameraCameraStruct.viewport_lrx;
+            lrx = gGMCameraStruct.viewport_lrx;
         }
-        if (uly < gGMCameraCameraStruct.viewport_uly)
+        if (uly < gGMCameraStruct.viewport_uly)
         {
-            uly = gGMCameraCameraStruct.viewport_uly;
+            uly = gGMCameraStruct.viewport_uly;
         }
-        else if (lry > gGMCameraCameraStruct.viewport_lry)
+        else if (lry > gGMCameraStruct.viewport_lry)
         {
-            lry = gGMCameraCameraStruct.viewport_lry;
+            lry = gGMCameraStruct.viewport_lry;
         }
         gDPSetScissor(dl++, G_SC_NON_INTERLACE, ulx, uly, lrx, lry);
 
@@ -1597,7 +1597,7 @@ void ifCommonPlayerMagnifyProcDisplay(FTStruct *fp)
         cobj = CObjGetStruct(gGMCameraCameraGObj);
 
         gSPViewport(gSYTaskmanDLHeads[0]++, &cobj->viewport);
-        gDPSetScissor(gSYTaskmanDLHeads[0]++, G_SC_NON_INTERLACE, gGMCameraCameraStruct.viewport_ulx, gGMCameraCameraStruct.viewport_uly, gGMCameraCameraStruct.viewport_lrx, gGMCameraCameraStruct.viewport_lry);
+        gDPSetScissor(gSYTaskmanDLHeads[0]++, G_SC_NON_INTERLACE, gGMCameraStruct.viewport_ulx, gGMCameraStruct.viewport_uly, gGMCameraStruct.viewport_lrx, gGMCameraStruct.viewport_lry);
         gSPMatrix(gSYTaskmanDLHeads[0]++, &CObjGetStruct(gGCCurrentCamera)->xobjs[1]->mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
         gSPClearGeometryMode(gSYTaskmanDLHeads[0]++, G_ZBUFFER);
         gDPPipeSync(gSYTaskmanDLHeads[0]++);
@@ -1840,8 +1840,8 @@ void ifCommonPlayerTagProcDisplay(GObj *interface_gobj)
 
             if (gmCameraCheckTargetInBounds(x, y) != FALSE)
             {
-                SObjGetStruct(interface_gobj)->pos.x = (s32) ((gGMCameraCameraStruct.viewport_center_x + x) - (SObjGetStruct(interface_gobj)->sprite.width * 0.5F));
-                SObjGetStruct(interface_gobj)->pos.y = (s32) ((gGMCameraCameraStruct.viewport_center_y - y) - SObjGetStruct(interface_gobj)->sprite.height);
+                SObjGetStruct(interface_gobj)->pos.x = (s32) ((gGMCameraStruct.viewport_center_x + x) - (SObjGetStruct(interface_gobj)->sprite.width * 0.5F));
+                SObjGetStruct(interface_gobj)->pos.y = (s32) ((gGMCameraStruct.viewport_center_y - y) - SObjGetStruct(interface_gobj)->sprite.height);
 
                 lbCommonDrawSObjAttr(interface_gobj);
             }
@@ -1905,8 +1905,8 @@ void ifCommonItemArrowProcDisplay(GObj *interface_gobj)
 
         if (gmCameraCheckTargetInBounds(x, y) != FALSE)
         {
-            sobj->pos.x = (s32) ((gGMCameraCameraStruct.viewport_center_x + x) - (sobj->sprite.width * 0.5F));
-            sobj->pos.y = (s32) ((gGMCameraCameraStruct.viewport_center_y - y) - sobj->sprite.height);
+            sobj->pos.x = (s32) ((gGMCameraStruct.viewport_center_x + x) - (sobj->sprite.width * 0.5F));
+            sobj->pos.y = (s32) ((gGMCameraStruct.viewport_center_y - y) - sobj->sprite.height);
 
             lbCommonDrawSObjAttr(interface_gobj);
         }

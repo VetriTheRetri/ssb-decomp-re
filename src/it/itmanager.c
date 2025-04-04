@@ -508,7 +508,7 @@ void itManagerSetItemSpawnWait(void)
 void itManagerSpawnActorProcUpdate(GObj *item_gobj)
 {
     s32 unused;
-    s32 index;
+    s32 kind;
     Vec3f pos;
     Vec3f vel;
 
@@ -522,7 +522,7 @@ void itManagerSpawnActorProcUpdate(GObj *item_gobj)
         }
         if (itManagerGetCurrentAlloc() != NULL)
         {
-            index = itMainGetWeightedItemKind(&gITManagerSpawnActor.weights);
+            kind = itMainGetWeightedItemKind(&gITManagerSpawnActor.weights);
 
             mpCollisionGetMapObjPositionID(gITManagerSpawnActor.mapobjs[syUtilsRandIntRange(gITManagerSpawnActor.mapobjs_num)], &pos);
 
@@ -530,7 +530,7 @@ void itManagerSpawnActorProcUpdate(GObj *item_gobj)
 
             func_800269C0_275C0(nSYAudioFGMItemSpawn1);
 
-            itManagerMakeItemSetupCommon(NULL, index, &pos, &vel, ITEM_FLAG_PARENT_DEFAULT);
+            itManagerMakeItemSetupCommon(NULL, kind, &pos, &vel, ITEM_FLAG_PARENT_DEFAULT);
         }
         itManagerSetItemSpawnWait();
     }

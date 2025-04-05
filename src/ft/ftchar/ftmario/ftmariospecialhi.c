@@ -100,7 +100,7 @@ sb32 ftMarioSpecialHiProcPass(GObj *fighter_gobj) // TRUE = no platform pass?
 {
     FTStruct* fp = ftGetStruct(fighter_gobj);
 
-    if (!(fp->coll_data.floor_flags & MAP_VERTEX_CLL_PASS) || (fp->input.pl.stick_range.y >= FTMARIO_SUPERJUMP_STICK_Y_UNK))
+    if (!(fp->coll_data.floor_flags & MAP_VERTEX_COLL_PASS) || (fp->input.pl.stick_range.y >= FTMARIO_SUPERJUMP_STICK_Y_UNK))
     {
         return TRUE;
     }

@@ -235,13 +235,13 @@ sb32 itTaruThrownCheckMapCollision(GObj *item_gobj, f32 common_rebound)
 {
     s32 unused;
     ITStruct *ip;
-    sb32 is_collide_ground = itMapTestAllCollisionFlag(item_gobj, MAP_FLAG_FLOOR);
+    sb32 is_collide_floor = itMapTestAllCollisionFlag(item_gobj, MAP_FLAG_FLOOR);
 
     if (itMapCheckCollideAllRebound(item_gobj, (MAP_FLAG_CEIL | MAP_FLAG_RWALL | MAP_FLAG_LWALL), common_rebound, NULL) != FALSE)
     {
         itMainSetSpinVelLR(item_gobj);
     }
-    if (is_collide_ground != FALSE)
+    if (is_collide_floor != FALSE)
     {
         return TRUE;
     }

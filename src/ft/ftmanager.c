@@ -538,7 +538,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTDesc *desc)
 
     if (fp->pkind != nFTPlayerKindDemo)
     {
-        sb32 is_collide_ground = func_ovl2_800F9348
+        sb32 is_collide_floor = mpCollisionCheckProjectFloor
         (
             &DObjGetStruct(fighter_gobj)->translate.vec.f,
             &fp->coll_data.floor_line_id,
@@ -546,11 +546,12 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTDesc *desc)
             &fp->coll_data.floor_flags,
             &fp->coll_data.floor_angle
         );
-        if (is_collide_ground == FALSE)
+
+        if (is_collide_floor == FALSE)
         {
             fp->coll_data.floor_line_id = -1;
         }
-        if ((is_collide_ground != FALSE) && (fp->coll_data.floor_dist > -300.0F) && (fp->fkind != nFTKindBoss))
+        if ((is_collide_floor != FALSE) && (fp->coll_data.floor_dist > -300.0F) && (fp->fkind != nFTKindBoss))
         {
             fp->ga = nMPKineticsGround;
 
@@ -857,8 +858,8 @@ GObj* ftManagerMakeFighter(FTDesc *desc) // Create fighter
         gcAddGObjProcess(fighter_gobj, ftMainProcUpdateInterrupt, nGCProcessKindFunc, 5);
         gcAddGObjProcess(fighter_gobj, ftMainProcPhysicsMapDefault, nGCProcessKindFunc, 4);
         gcAddGObjProcess(fighter_gobj, ftMainProcPhysicsMapCapture, nGCProcessKindFunc, 3);
-        gcAddGObjProcess(fighter_gobj, ftMainProcSearchAllCatch, nGCProcessKindFunc, 2);
-        gcAddGObjProcess(fighter_gobj, ftMainProcSearchAllHit, nGCProcessKindFunc, 1);
+        gcAddGObjProcess(fighter_gobj, ftMainProcSearchCatch, nGCProcessKindFunc, 2);
+        gcAddGObjProcess(fighter_gobj, ftMainProcSearchHitAll, nGCProcessKindFunc, 1);
         gcAddGObjProcess(fighter_gobj, ftMainProcParams, nGCProcessKindFunc, 0);
     }
     else gcAddGObjProcess(fighter_gobj, scSubsysFighterProcUpdate, nGCProcessKindFunc, 5);

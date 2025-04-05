@@ -199,7 +199,7 @@ sb32 ftPikachuSpecialHiProcPass(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (!(fp->coll_data.floor_flags & MAP_VERTEX_CLL_PASS) || (fp->status_vars.pikachu.specialhi.pass_timer >= FTPIKACHU_QUICKATTACK_PASS_BUFFER_MAX))
+    if (!(fp->coll_data.floor_flags & MAP_VERTEX_COLL_PASS) || (fp->status_vars.pikachu.specialhi.pass_timer >= FTPIKACHU_QUICKATTACK_PASS_BUFFER_MAX))
     {
         return TRUE;
     }
@@ -289,7 +289,7 @@ void ftPikachuSpecialHiSetStatus(GObj *fighter_gobj)
     {
         sqrt_stick_range = F_CONTROLLER_RANGE_MAX;
     }
-    if (!(sqrt_stick_range < FTPIKACHU_QUICKATTACK_STICK_RANGE_MIN) && !(fp->coll_data.floor_flags & MAP_VERTEX_CLL_PASS))
+    if (!(sqrt_stick_range < FTPIKACHU_QUICKATTACK_STICK_RANGE_MIN) && !(fp->coll_data.floor_flags & MAP_VERTEX_COLL_PASS))
     {
         stick_range.x = fp->input.pl.stick_range.x;
         stick_range.y = fp->input.pl.stick_range.y;

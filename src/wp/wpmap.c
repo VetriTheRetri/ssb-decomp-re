@@ -10,7 +10,7 @@
 sb32 wpMapProcLRWallCheckFloor(MPCollData *coll_data, GObj *weapon_gobj, u32 flags)
 {
     s32 floor_line_id = coll_data->floor_line_id;
-    sb32 is_collide_ground = FALSE;
+    sb32 is_collide_floor = FALSE;
 
     if (mpProcessCheckTestLWallCollision(coll_data) != FALSE)
     {
@@ -30,7 +30,7 @@ sb32 wpMapProcLRWallCheckFloor(MPCollData *coll_data, GObj *weapon_gobj, u32 fla
         {
             mpProcessRunFloorEdgeAdjust(coll_data);
 
-            is_collide_ground = TRUE;
+            is_collide_floor = TRUE;
         }
     }
     else coll_data->is_coll_end = TRUE;
@@ -43,11 +43,11 @@ sb32 wpMapProcLRWallCheckFloor(MPCollData *coll_data, GObj *weapon_gobj, u32 fla
         {
             mpProcessRunFloorEdgeAdjust(coll_data);
 
-            is_collide_ground = TRUE;
+            is_collide_floor = TRUE;
         }
         coll_data->is_coll_end = FALSE;
     }
-    return is_collide_ground;
+    return is_collide_floor;
 }
 
 // 0x8016796C

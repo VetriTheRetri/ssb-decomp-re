@@ -3769,7 +3769,7 @@ void ftMainSearchFighterCatch(GObj *this_gobj)
 }
 
 // 0x800E6100
-void ftMainProcSearchAllCatch(GObj *fighter_gobj)
+void ftMainProcSearchCatch(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -3788,7 +3788,7 @@ void ftMainProcSearchAllCatch(GObj *fighter_gobj)
 }
 
 // 0x800E6178
-void ftMainProcSearchAllHit(GObj *fighter_gobj)
+void ftMainProcSearchHitAll(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 

@@ -851,7 +851,7 @@ void sc1PBonusStageGetPlayerStartPosition(Vec3f *pos)
 {
 	s32 mapobj;
 
-	mpCollisionGetMapObjIDsKind(nMPMapObjKind1PGamePlayerStart, &mapobj);
+	mpCollisionGetMapObjIDsKind(nMPMapObjKind1PGamePlayer, &mapobj);
 	mpCollisionGetMapObjPositionID(mapobj, pos);
 }
 

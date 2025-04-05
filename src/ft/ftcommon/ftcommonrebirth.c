@@ -71,7 +71,7 @@ loop: // This makes no sense
     mpCommonSetFighterGround(this_fp);
 
     this_fp->coll_data.floor_line_id = -2;
-    this_fp->coll_data.floor_flags = MAP_VERTEX_CLL_PASS;
+    this_fp->coll_data.floor_flags = MAP_VERTEX_COLL_PASS;
     this_fp->coll_data.floor_angle.y = 1.0F;
     this_fp->coll_data.floor_angle.x = 0.0F;
     this_fp->coll_data.floor_angle.z = 0.0F;

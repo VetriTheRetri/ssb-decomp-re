@@ -459,7 +459,7 @@ typedef struct ftCommonDokanStatusVars
 	s32 material;	 // Vertex material of pipe player entered
 	s32 mapobj_kind; // Map Point type of pipe player will be sent to
 	Vec3f pos_curr;
-	Vec3f pos_target;
+	Vec3f target_pos;
 	s32 pos_adjust_wait;
 	s32 playertag_wait;
 	s32 turn_stop_wait;

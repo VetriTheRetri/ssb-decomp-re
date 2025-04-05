@@ -180,15 +180,15 @@ void ftCommonDokanWaitProcMap(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    DObjGetStruct(fighter_gobj)->translate.vec.f.x = gcGetInterpValueCubic(0.033333335F, fp->status_vars.common.dokan.pos_adjust_wait, fp->status_vars.common.dokan.pos_curr.x, fp->status_vars.common.dokan.pos_target.x, 0.0F, 0.0F);
-    DObjGetStruct(fighter_gobj)->translate.vec.f.y = gcGetInterpValueCubic(0.033333335F, fp->status_vars.common.dokan.pos_adjust_wait, fp->status_vars.common.dokan.pos_curr.y, fp->status_vars.common.dokan.pos_target.y, 0.0F, 0.0F);
+    DObjGetStruct(fighter_gobj)->translate.vec.f.x = gcGetInterpValueCubic(0.033333335F, fp->status_vars.common.dokan.pos_adjust_wait, fp->status_vars.common.dokan.pos_curr.x, fp->status_vars.common.dokan.target_pos.x, 0.0F, 0.0F);
+    DObjGetStruct(fighter_gobj)->translate.vec.f.y = gcGetInterpValueCubic(0.033333335F, fp->status_vars.common.dokan.pos_adjust_wait, fp->status_vars.common.dokan.pos_curr.y, fp->status_vars.common.dokan.target_pos.y, 0.0F, 0.0F);
 }
 
 // 0x801424BC
 void ftCommonDokanWaitSetStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    f32 pos_target_x;
+    f32 target_pos_x;
     s32 line_id;
 
     mpCommonSetFighterAir(fp);
@@ -210,18 +210,18 @@ void ftCommonDokanWaitSetStatus(GObj *fighter_gobj)
 
     mpCollisionGetMapObjIDsKind(fp->status_vars.common.dokan.mapobj_kind, &line_id);
 
-    mpCollisionGetMapObjPositionID(line_id, &fp->status_vars.common.dokan.pos_target);
+    mpCollisionGetMapObjPositionID(line_id, &fp->status_vars.common.dokan.target_pos);
 
     if (syUtilsRandFloat() <= 0.25F)
     {
         fp->status_vars.common.dokan.mapobj_kind = nMPMapObjKindDokanWall;
 
         mpCollisionGetMapObjIDsKind(nMPMapObjKindDokanWall, &line_id);
-        mpCollisionGetMapObjPositionID(line_id, &fp->status_vars.common.dokan.pos_target);
+        mpCollisionGetMapObjPositionID(line_id, &fp->status_vars.common.dokan.target_pos);
 
-        if (func_ovl2_800F9C30(&fp->status_vars.common.dokan.pos_target, NULL, &pos_target_x, NULL, NULL) != FALSE)
+        if (mpCollisionCheckProjectRWall(&fp->status_vars.common.dokan.target_pos, NULL, &target_pos_x, NULL, NULL) != FALSE)
         {
-            fp->status_vars.common.dokan.pos_target.x += pos_target_x + fp->coll_data.map_coll.width;
+            fp->status_vars.common.dokan.target_pos.x += target_pos_x + fp->coll_data.map_coll.width;
         }
     }
 }
@@ -276,9 +276,9 @@ void ftCommonDokanEndSetStatus(GObj *fighter_gobj)
     mpCommonSetFighterGround(fp);
     ftMainSetStatus(fighter_gobj, nFTCommonStatusDokanEnd, 0.0F, 1.0F, FTSTATUS_PRESERVE_HITSTATUS);
 
-    DObjGetStruct(fighter_gobj)->translate.vec.f = fp->status_vars.common.dokan.pos_target;
+    DObjGetStruct(fighter_gobj)->translate.vec.f = fp->status_vars.common.dokan.target_pos;
 
-    func_ovl2_800F9348(&DObjGetStruct(fighter_gobj)->translate.vec.f, &fp->coll_data.floor_line_id, &fp->coll_data.floor_dist, &fp->coll_data.floor_flags, &fp->coll_data.floor_angle);
+    mpCollisionCheckProjectFloor(&DObjGetStruct(fighter_gobj)->translate.vec.f, &fp->coll_data.floor_line_id, &fp->coll_data.floor_dist, &fp->coll_data.floor_flags, &fp->coll_data.floor_angle);
 
     fp->is_ignore_jostle = TRUE;
     fp->status_vars.common.dokan.playertag_wait = FTCOMMON_DOKAN_PLAYERTAG_WAIT;
@@ -306,7 +306,7 @@ void ftCommonDokanWalkSetStatus(GObj *fighter_gobj)
 
     ftMainSetStatus(fighter_gobj, nFTCommonStatusDokanWalk, 0.0F, 1.0F, FTSTATUS_PRESERVE_HITSTATUS);
 
-    DObjGetStruct(fighter_gobj)->translate.vec.f = fp->status_vars.common.dokan.pos_target;
+    DObjGetStruct(fighter_gobj)->translate.vec.f = fp->status_vars.common.dokan.target_pos;
 
     fp->status_vars.common.dokan.playertag_wait = FTCOMMON_DOKAN_PLAYERTAG_WAIT;
 

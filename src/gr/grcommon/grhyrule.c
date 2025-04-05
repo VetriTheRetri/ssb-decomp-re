@@ -63,7 +63,7 @@ GObj* grHyruleMakeTwister(Vec3f *pos)
     Vec3f edge_pos;
     s32 edge_under;
 
-    if (func_ovl2_800F9348(pos, &line_id, &floor_dist, NULL, NULL) == FALSE)
+    if (mpCollisionCheckProjectFloor(pos, &line_id, &floor_dist, NULL, NULL) == FALSE)
     {
         return NULL;
     }

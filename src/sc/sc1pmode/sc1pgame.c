@@ -965,12 +965,12 @@ void sc1PGameSetupStageAll(void)
     if (gSCManagerSceneData.spgame_stage <= nSC1PGameStageCommonEnd)
     {
         gSCManager1PGameBattleState.players[gSCManagerSceneData.player].is_single_stockicon = FALSE;
-        sSC1PGamePlayerSetups[gSCManagerSceneData.player].mapobj_kind = nMPMapObjKind1PGamePlayerStart;
+        sSC1PGamePlayerSetups[gSCManagerSceneData.player].mapobj_kind = nMPMapObjKind1PGamePlayer;
     }
     else
     {
         gSCManager1PGameBattleState.players[gSCManagerSceneData.player].is_single_stockicon = TRUE;
-        sSC1PGamePlayerSetups[gSCManagerSceneData.player].mapobj_kind = nMPMapObjKind1PGameChallengerPlayerStart;
+        sSC1PGamePlayerSetups[gSCManagerSceneData.player].mapobj_kind = nMPMapObjKind1PGameChallengerPlayer;
     }
     switch (gSCManagerSceneData.spgame_stage)
     {
@@ -1013,7 +1013,7 @@ void sc1PGameSetupStageAll(void)
 
             player = gSCManagerSceneData.ally_players[i];
 
-            sSC1PGamePlayerSetups[gSCManagerSceneData.ally_players[i]].mapobj_kind = i + nMPMapObjKind1PGameAllySpawnStart;
+            sSC1PGamePlayerSetups[gSCManagerSceneData.ally_players[i]].mapobj_kind = i + nMPMapObjKind1PGameAllyStart;
             sSC1PGamePlayerSetups[gSCManagerSceneData.ally_players[i]].cp_trait = stagesetup->ally_behavior;
         }
         for (i = 0; i < stagesetup->opponent_count; i++)
@@ -1026,11 +1026,11 @@ void sc1PGameSetupStageAll(void)
 
             if (gSCManagerSceneData.spgame_stage <= nSC1PGameStageCommonEnd)
             {
-                sSC1PGamePlayerSetups[player].mapobj_kind = i + nMPMapObjKind1PGameEnemySpawnStart;
+                sSC1PGamePlayerSetups[player].mapobj_kind = i + nMPMapObjKind1PGameEnemyStart;
             }
             else
             {
-                sSC1PGamePlayerSetups[player].mapobj_kind = i + nMPMapObjKind1PGameChallengerEnemySpawnStart;
+                sSC1PGamePlayerSetups[player].mapobj_kind = i + nMPMapObjKind1PGameChallengerEnemyStart;
 
                 level = gSCManagerBattleState->players[player].level - gSCManagerSceneData.challenger_level_drop;
 
@@ -1081,7 +1081,7 @@ void sc1PGameSetupStageAll(void)
             }
             else gSCManagerBattleState->players[player].shade = 0;
 
-            sSC1PGamePlayerSetups[player].mapobj_kind = i + nMPMapObjKind1PGameEnemySpawnStart;
+            sSC1PGamePlayerSetups[player].mapobj_kind = i + nMPMapObjKind1PGameEnemyStart;
             sSC1PGamePlayerSetups[player].team_order = sSC1PGameCurrentEnemyVariation;
             sSC1PGamePlayerSetups[player].camera_frame_mul = 0.3F;
             sSC1PGamePlayerSetups[player].is_skip_magnify = TRUE;
@@ -1124,7 +1124,7 @@ void sc1PGameSetupStageAll(void)
 
             gSCManagerBattleState->players[player].fkind = sSC1PGameEnemyVariations[sSC1PGameCurrentEnemyVariation];
 
-            sSC1PGamePlayerSetups[player].mapobj_kind = i + nMPMapObjKind1PGameEnemySpawnStart;
+            sSC1PGamePlayerSetups[player].mapobj_kind = i + nMPMapObjKind1PGameEnemyStart;
             sSC1PGamePlayerSetups[player].team_order = sSC1PGameCurrentEnemyVariation;
             sSC1PGamePlayerSetups[player].camera_frame_mul = 0.3F;
             sSC1PGamePlayerSetups[player].is_skip_magnify = TRUE;
@@ -1150,7 +1150,7 @@ void sc1PGameSetupStageAll(void)
 
             sSC1PGamePlayerSetups[player].team_order = sSC1PGameCurrentEnemyVariation;
             sSC1PGamePlayerSetups[player].copy_kind = dSC1PGameKirbyTeamCopyKinds[sSC1PGameCurrentEnemyVariation];
-            sSC1PGamePlayerSetups[player].mapobj_kind = i + nMPMapObjKind1PGameEnemySpawnStart;
+            sSC1PGamePlayerSetups[player].mapobj_kind = i + nMPMapObjKind1PGameEnemyStart;
 
             sSC1PGamePlayerSetups[player].camera_frame_mul = 0.3F;
             sSC1PGamePlayerSetups[player].is_skip_magnify = TRUE;
@@ -1183,7 +1183,7 @@ void sc1PGameSetupStageAll(void)
 
             gSCManagerBattleState->players[player].fkind = sSC1PGameEnemyVariations[sSC1PGameCurrentEnemyVariation];
 
-            sSC1PGamePlayerSetups[player].mapobj_kind = i + nMPMapObjKind1PGameEnemySpawnStart;
+            sSC1PGamePlayerSetups[player].mapobj_kind = i + nMPMapObjKind1PGameEnemyStart;
             sSC1PGamePlayerSetups[player].is_skip_magnify = sSC1PGamePlayerSetups[player].is_skip_entry = TRUE;
 
             sSC1PGameCurrentEnemyVariation++;
@@ -1297,7 +1297,7 @@ void sc1PGameSpawnEnemyTeamNext(GObj *player_gobj)
 
         desc.fkind = gSCManagerBattleState->players[player].fkind;
 
-        sc1PGameGetRandomStartPosition(&desc.pos, nMPMapObjKind1PGameEnemyTeamSpawn);
+        sc1PGameGetRandomStartPosition(&desc.pos, nMPMapObjKind1PGameEnemyTeam);
 
         desc.pos.y = (gMPCollisionGroundData->camera_bound_top + gMPCollisionGroundData->map_bound_top) * 0.5F;
 

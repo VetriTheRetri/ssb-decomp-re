@@ -525,7 +525,7 @@ sb32 ftNessSpecialHiProcPass(GObj *fighter_gobj) // Check if Ness can pass throu
 {
     FTStruct* fp = ftGetStruct(fighter_gobj);
 
-    if (!(fp->coll_data.floor_flags & MAP_VERTEX_CLL_PASS) || (fp->status_vars.ness.specialhi.pkjibaku_anim_length <= FTNESS_PKJIBAKU_PASS_FRAME_END))
+    if (!(fp->coll_data.floor_flags & MAP_VERTEX_COLL_PASS) || (fp->status_vars.ness.specialhi.pkjibaku_anim_length <= FTNESS_PKJIBAKU_PASS_FRAME_END))
     {
         return TRUE;
     }
@@ -675,7 +675,7 @@ void ftNessSpecialHiJibakuSetStatus(GObj *fighter_gobj)
     s32 unused;
     Vec3f pos;
 
-    if (fp->coll_data.floor_flags & MAP_VERTEX_CLL_PASS) goto setair;
+    if (fp->coll_data.floor_flags & MAP_VERTEX_COLL_PASS) goto setair;
     
     pos.x = DObjGetStruct(fighter_gobj)->translate.vec.f.x - fp->status_vars.ness.specialhi.pkthunder_pos.x;
     pos.y = (DObjGetStruct(fighter_gobj)->translate.vec.f.y + 150.0F) - fp->status_vars.ness.specialhi.pkthunder_pos.y;

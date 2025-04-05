@@ -15,16 +15,16 @@
 
 #define MAP_VERTEX_ATTR_BITS 8
 
-#define MAP_VERTEX_CLL_PASS (1 << 14)   // Line ID can be passed through
-#define MAP_VERTEX_CLL_CLIFF (1 << 15)  // Line ID can be hung onto
+#define MAP_VERTEX_COLL_PASS (1 << 14)   // Line ID can be passed through
+#define MAP_VERTEX_COLL_CLIFF (1 << 15)  // Line ID can be hung onto
 
-#define MAP_VERTEX_CLL_BITS (0xFF << (MAP_VERTEX_ATTR_BITS * 1))
+#define MAP_VERTEX_COLL_BITS (0xFF << (MAP_VERTEX_ATTR_BITS * 1))
 #define MAP_VERTEX_MAT_BITS (0xFF << (MAP_VERTEX_ATTR_BITS * 0))
 
-#define MAP_VERTEX_CLL_MASK (~MAP_VERTEX_MAT_BITS)  // This is what the game covers when checking flags & 0xFFFF00FF
-#define MAP_VERTEX_MAT_MASK (~MAP_VERTEX_CLL_BITS)  // This is what the game looks for when checking 0xFFFF00FF
+#define MAP_VERTEX_COLL_MASK (~MAP_VERTEX_MAT_BITS)  // This is what the game covers when checking flags & 0xFFFF00FF
+#define MAP_VERTEX_MAT_MASK (~MAP_VERTEX_COLL_BITS)  // This is what the game looks for when checking 0xFFFF00FF
 
-#define MAP_VERTEX_ALL_BITS (MAP_VERTEX_CLL_BITS | MAP_VERTEX_MAT_BITS)
+#define MAP_VERTEX_ALL_BITS (MAP_VERTEX_COLL_BITS | MAP_VERTEX_MAT_BITS)
 
 #define MAP_PROC_TYPE_DEFAULT (0)
 #define MAP_PROC_TYPE_CLIFF (1 << 0)
@@ -76,68 +76,68 @@ typedef enum MPLineType
 
 typedef enum MPMapObjKind
 {
-    nMPMapObjKindBattlePlayerSpawnStart,
-    nMPMapObjKindBattlePlayer1Spawn = nMPMapObjKindBattlePlayerSpawnStart,                      // 0x0
-    nMPMapObjKindBattlePlayer2Spawn,                                                            // 0x1
-    nMPMapObjKindBattlePlayer3Spawn,                                                            // 0x2
-    nMPMapObjKindBattlePlayer4Spawn,                                                            // 0x3
-    nMPMapObjKindBattlePlayerSpawnEnd = nMPMapObjKindBattlePlayer4Spawn,
-    nMPMapObjKindItemSpawn,                                                                     // 0x4
-    nMPMapObjKindScaleL,                                                                        // 0x5
-    nMPMapObjKindScaleR,                                                                        // 0x6
-    nMPMapObjKindPakkunLSpawn,                                                                  // 0x7
-    nMPMapObjKindPakkunRSpawn,                                                                  // 0x8
-    nMPMapObjKindPowerBlock,                                                                    // 0x9
-    nMPMapObjKindDokanL,                                                                        // 0xA
-    nMPMapObjKindDokanR,                                                                        // 0xB
-    nMPMapObjKindAcid,                                                                          // 0xC
-    nMPMapObjKindTwister,                                                                       // 0xD
-    nMPMapObjKindMonster,                                                                       // 0xE
-    nMPMapObjKindMonsterUnused1,                                                                // 0xF
-    nMPMapObjKindMonsterUnused2,                                                                // 0x10
-    nMPMapObjKindMonsterUnused3,                                                                // 0x11
-    nMPMapObjKindMonsterUnused4,                                                                // 0x12
-    nMPMapObjKindBumper,                                                                        // 0x13
-    nMPMapObjKindDokanWall,                                                                     // 0x14
+    nMPMapObjKindBattlePlayerStart,
+    nMPMapObjKindBattlePlayer1 = nMPMapObjKindBattlePlayerStart,                    // 0x0
+    nMPMapObjKindBattlePlayer2,                                                     // 0x1
+    nMPMapObjKindBattlePlayer3,                                                     // 0x2
+    nMPMapObjKindBattlePlayer4,                                                     // 0x3
+    nMPMapObjKindBattlePlayerEnd = nMPMapObjKindBattlePlayer4,
+    nMPMapObjKindItem,                                                              // 0x4
+    nMPMapObjKindScaleL,                                                            // 0x5
+    nMPMapObjKindScaleR,                                                            // 0x6
+    nMPMapObjKindPakkunL,                                                           // 0x7
+    nMPMapObjKindPakkunR,                                                           // 0x8
+    nMPMapObjKindPowerBlock,                                                        // 0x9
+    nMPMapObjKindDokanL,                                                            // 0xA
+    nMPMapObjKindDokanR,                                                            // 0xB
+    nMPMapObjKindAcid,                                                              // 0xC
+    nMPMapObjKindTwister,                                                           // 0xD
+    nMPMapObjKindMonster,                                                           // 0xE
+    nMPMapObjKindMonsterUnused1,                                                    // 0xF
+    nMPMapObjKindMonsterUnused2,                                                    // 0x10
+    nMPMapObjKindMonsterUnused3,                                                    // 0x11
+    nMPMapObjKindMonsterUnused4,                                                    // 0x12
+    nMPMapObjKindBumper,                                                            // 0x13
+    nMPMapObjKindDokanWall,                                                         // 0x14
 
-    nMPMapObjKindMovieStart1,                                                                   // 0x15
-    nMPMapObjKindMovieStart2,                                                                   // 0x16
-    nMPMapObjKindMovieStart3,                                                                   // 0x17
+    nMPMapObjKindMoviePlayer1,                                                      // 0x15
+    nMPMapObjKindMoviePlayer2,                                                      // 0x16
+    nMPMapObjKindMoviePlayer3,                                                      // 0x17
 
-    nMPMapObjKindAutoDemoSpawn1,                                                                // 0x18
-    nMPMapObjKindAutoDemoSpawn2,                                                                // 0x19
-    nMPMapObjKindAutoDemoSpawn3,                                                                // 0x1A
-    nMPMapObjKindAutoDemoSpawn4,                                                                // 0x1B
-    nMPMapObjKindAutoDemoSpawn5,                                                                // 0x1C
-    nMPMapObjKindAutoDemoSpawn6,                                                                // 0x1D
-    nMPMapObjKindAutoDemoSpawn7,                                                                // 0x1E
-    nMPMapObjKindAutoDemoSpawn8,                                                                // 0x1F
-    nMPMapObjKindRebirth,                                                                       // 0x20
-    nMPMapObjKind1PGamePlayerStart,                                                             // 0x21
+    nMPMapObjKindAutoDemoPlayer1,                                                   // 0x18
+    nMPMapObjKindAutoDemoPlayer2,                                                   // 0x19
+    nMPMapObjKindAutoDemoPlayer3,                                                   // 0x1A
+    nMPMapObjKindAutoDemoPlayer4,                                                   // 0x1B
+    nMPMapObjKindAutoDemoPlayer5,                                                   // 0x1C
+    nMPMapObjKindAutoDemoPlayer6,                                                   // 0x1D
+    nMPMapObjKindAutoDemoPlayer7,                                                   // 0x1E
+    nMPMapObjKindAutoDemoPlayer8,                                                   // 0x1F
+    nMPMapObjKindRebirth,                                                           // 0x20
+    nMPMapObjKind1PGamePlayer,                                                      // 0x21
 
-    nMPMapObjKind1PGameAllySpawnStart,                                                          // 0x22
-    nMPMapObjKind1PGameAlly1Spawn = nMPMapObjKind1PGameAllySpawnStart,                          // 0x22
-    nMPMapObjKind1PGameAlly2Spawn,                                                              // 0x23
-    nMPMapObjKind1PGameAlly3Spawn,                                                              // 0x24
-    nMPMapObjKind1PGameAllySpawnEnd = nMPMapObjKind1PGameAlly3Spawn,                            // 0x24
+    nMPMapObjKind1PGameAllyStart,                                                   // 0x22
+    nMPMapObjKind1PGameAlly1 = nMPMapObjKind1PGameAllyStart,                        // 0x22
+    nMPMapObjKind1PGameAlly2,                                                       // 0x23
+    nMPMapObjKind1PGameAlly3,                                                       // 0x24
+    nMPMapObjKind1PGameAllyEnd = nMPMapObjKind1PGameAlly3,                          // 0x24
 
-    nMPMapObjKind1PGameEnemySpawnStart,                                                         // 0x25
-    nMPMapObjKind1PGameEnemy1Spawn = nMPMapObjKind1PGameEnemySpawnStart,                        // 0x25
-    nMPMapObjKind1PGameEnemy2Spawn,                                                             // 0x26
-    nMPMapObjKind1PGameEnemy3Spawn,                                                             // 0x27
-    nMPMapObjKind1PGameEnemy4Spawn,                                                             // 0x28
-    nMPMapObjKind1PGameEnemySpawnEnd = nMPMapObjKind1PGameEnemy4Spawn,                          // 0x28
+    nMPMapObjKind1PGameEnemyStart,                                                  // 0x25
+    nMPMapObjKind1PGameEnemy1 = nMPMapObjKind1PGameEnemyStart,                      // 0x25
+    nMPMapObjKind1PGameEnemy2,                                                      // 0x26
+    nMPMapObjKind1PGameEnemy3,                                                      // 0x27
+    nMPMapObjKind1PGameEnemy4,                                                      // 0x28
+    nMPMapObjKind1PGameEnemyEnd = nMPMapObjKind1PGameEnemy4,                        // 0x28
 
-    nMPMapObjKind1PGameBonus3TaruBomb,                                                          // 0x29
-    nMPMapObjKind1PGameUnknown,                                                                 // 0x2A
-    nMPMapObjKind1PGameEnemyTeamSpawn,                                                          // 0x2B
-    nMPMapObjKind1PGameChallengerPlayerStart,                                                   // 0x2C
+    nMPMapObjKind1PGameBonus3TaruBomb,                                              // 0x29
+    nMPMapObjKind1PGameUnknown,                                                     // 0x2A
+    nMPMapObjKind1PGameEnemyTeam,                                                   // 0x2B
+    nMPMapObjKind1PGameChallengerPlayer,                                            // 0x2C
 
-    nMPMapObjKind1PGameChallengerEnemySpawnStart,                                               // 0x2D
-    nMPMapObjKind1PGameChallengerEnemySpawn = nMPMapObjKind1PGameChallengerEnemySpawnStart,     // 0x2D
-    nMPMapObjKind1PGameChallengerUnused1Spawn,                                                  // 0x2E
-    nMPMapObjKind1PGameChallengerUnused2Spawn,                                                  // 0x2F
-    nMPMapObjKind1PGameChallengerEnemySpawnEnd = nMPMapObjKind1PGameChallengerUnused2Spawn      // 0x2F
+    nMPMapObjKind1PGameChallengerEnemyStart,                                        // 0x2D
+    nMPMapObjKind1PGameChallengerEnemy1 = nMPMapObjKind1PGameChallengerEnemyStart,  // 0x2D
+    nMPMapObjKind1PGameChallengerEnemy2,                                            // 0x2E
+    nMPMapObjKind1PGameChallengerEnemy3,                                            // 0x2F
+    nMPMapObjKind1PGameChallengerEnemyEnd = nMPMapObjKind1PGameChallengerEnemy3     // 0x2F
     
 } MPMapObjKind;
 

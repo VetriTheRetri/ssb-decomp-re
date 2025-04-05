@@ -26,7 +26,7 @@ DObjTransformTypes dGRInishieScaleTransformKinds[/* */] =
 };
 
 // 0xx8012EB48
-u16 dGRInishiePakkunMapObjKinds[/* */] = { nMPMapObjKindPakkunLSpawn, nMPMapObjKindPakkunRSpawn };
+u16 dGRInishiePakkunMapObjKinds[/* */] = { nMPMapObjKindPakkunL, nMPMapObjKindPakkunR };
 
 // // // // // // // // // // // //
 //                               //

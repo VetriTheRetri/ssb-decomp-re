@@ -56,10 +56,10 @@ extern sb32 mpCollisionCheckLWallSurfaceTilt(s32 v1x, s32 v1y, s32 v2x, s32 v2y,
 extern sb32 mpCollisionCheckLWallLineCollisionDiff(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id,
 											 u32 *stand_coll_flags, Vec3f *angle);
 extern sb32 func_ovl2_800F8FFC(Vec3f *position);
-extern sb32 func_ovl2_800F9348(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32 *stand_coll_flags, Vec3f *angle);
-extern sb32 func_ovl2_800F97BC(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32 *stand_coll_flags, Vec3f *angle);
-extern sb32 func_ovl2_800F9C30(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32 *stand_coll_flags, Vec3f *angle);
-extern sb32 func_ovl2_800FA0A4(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32 *stand_coll_flags, Vec3f *angle);
+extern sb32 mpCollisionCheckProjectFloor(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32 *stand_coll_flags, Vec3f *angle);
+extern sb32 mpCollisionCheckProjectCeil(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32 *stand_coll_flags, Vec3f *angle);
+extern sb32 mpCollisionCheckProjectRWall(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32 *stand_coll_flags, Vec3f *angle);
+extern sb32 mpCollisionCheckProjectLWall(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32 *stand_coll_flags, Vec3f *angle);
 extern s32 mpCollisionGetVertexCountLineID(s32 line_id);
 extern void mpCollisionGetVertexPositionID(s32 line_id, s32 vertex_id, Vec3f *pos);
 extern void mpCollisionGetSpeedLineID(s32 line_id, Vec3f *speed);

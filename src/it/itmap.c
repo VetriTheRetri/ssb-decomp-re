@@ -11,7 +11,7 @@
 sb32 itMapProcLRWallCheckFloor(MPCollData *coll_data, GObj *item_gobj, u32 flags)
 {
     s32 floor_line_id = coll_data->floor_line_id;
-    sb32 is_collide_ground = FALSE;
+    sb32 is_collide_floor = FALSE;
 
     if (mpProcessCheckTestLWallCollision(coll_data) != FALSE)
     {
@@ -28,7 +28,7 @@ sb32 itMapProcLRWallCheckFloor(MPCollData *coll_data, GObj *item_gobj, u32 flags
         if (coll_data->mask_stat & MAP_FLAG_FLOOR)
         {
             mpProcessRunFloorEdgeAdjust(coll_data);
-            is_collide_ground = TRUE;
+            is_collide_floor = TRUE;
         }
     }
     else coll_data->is_coll_end = TRUE;
@@ -40,11 +40,11 @@ sb32 itMapProcLRWallCheckFloor(MPCollData *coll_data, GObj *item_gobj, u32 flags
         if (coll_data->mask_stat & MAP_FLAG_FLOOR)
         {
             mpProcessRunFloorEdgeAdjust(coll_data);
-            is_collide_ground = TRUE;
+            is_collide_floor = TRUE;
         }
         coll_data->is_coll_end = FALSE;
     }
-    return is_collide_ground;
+    return is_collide_floor;
 }
 
 // 0x8017356C
@@ -260,13 +260,13 @@ sb32 itMapCheckDestroyDropped(GObj *item_gobj, f32 common_rebound, f32 ground_re
 {
     ITStruct *ip = itGetStruct(item_gobj);
     s32 unused;
-    sb32 is_collide_ground = itMapTestAllCollisionFlag(item_gobj, MAP_FLAG_FLOOR);
+    sb32 is_collide_floor = itMapTestAllCollisionFlag(item_gobj, MAP_FLAG_FLOOR);
 
     if (itMapCheckCollideAllRebound(item_gobj, (MAP_FLAG_CEIL | MAP_FLAG_RWALL | MAP_FLAG_LWALL), common_rebound, NULL) != FALSE)
     {
         itMainSetSpinVelLR(item_gobj);
     }
-    if (is_collide_ground != FALSE)
+    if (is_collide_floor != FALSE)
     {
         itMapSetGroundRebound(&ip->physics.vel_air, &ip->coll_data.floor_angle, ground_rebound);
         itMainSetSpinVelLR(item_gobj);
@@ -302,13 +302,13 @@ sb32 itMapCheckLanding(GObj *item_gobj, f32 common_rebound, f32 ground_rebound, 
 {
     ITStruct *ip = itGetStruct(item_gobj);
     s32 unused;
-    sb32 is_collide_ground = itMapTestAllCollisionFlag(item_gobj, MAP_FLAG_FLOOR);
+    sb32 is_collide_floor = itMapTestAllCollisionFlag(item_gobj, MAP_FLAG_FLOOR);
 
     if (itMapCheckCollideAllRebound(item_gobj, (MAP_FLAG_CEIL | MAP_FLAG_RWALL | MAP_FLAG_LWALL), common_rebound, NULL) != FALSE)
     {
         itMainSetSpinVelLR(item_gobj);
     }
-    if (is_collide_ground != FALSE)
+    if (is_collide_floor != FALSE)
     {
         lbCommonReflect2D(&ip->physics.vel_air, &ip->coll_data.floor_angle);
         lbCommonScale2D(&ip->physics.vel_air, ground_rebound);
@@ -354,13 +354,13 @@ sb32 itMapCheckMapReboundProcAll(GObj *item_gobj, f32 common_rebound, f32 ground
 // 0x80173DF4
 sb32 itMapCheckDestroyLanding(GObj *item_gobj, f32 common_rebound)
 {
-    sb32 is_collide_ground = itMapTestAllCollisionFlag(item_gobj, MAP_FLAG_FLOOR);
+    sb32 is_collide_floor = itMapTestAllCollisionFlag(item_gobj, MAP_FLAG_FLOOR);
 
     if (itMapCheckCollideAllRebound(item_gobj, (MAP_FLAG_CEIL | MAP_FLAG_RWALL | MAP_FLAG_LWALL), common_rebound, NULL) != FALSE)
     {
         itMainSetSpinVelLR(item_gobj);
     }
-    if (is_collide_ground != FALSE)
+    if (is_collide_floor != FALSE)
     {
         return TRUE;
     }

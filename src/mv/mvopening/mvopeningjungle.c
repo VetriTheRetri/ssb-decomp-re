@@ -253,7 +253,7 @@ void mvOpeningJungleMakeFighters(void)
     grWallpaperMakeDecideKind();
     grCommonSetupInitAll();
 
-    if (mpCollisionGetMapObjCountKind(nMPMapObjKindMovieStart2) != 1)
+    if (mpCollisionGetMapObjCountKind(nMPMapObjKindMoviePlayer2) != 1)
     {
         while (TRUE)
         {
@@ -261,10 +261,10 @@ void mvOpeningJungleMakeFighters(void)
             scManagerRunPrintGObjStatus();
         }
     }
-    mpCollisionGetMapObjIDsKind(nMPMapObjKindMovieStart2, &pos_ids[1]);
+    mpCollisionGetMapObjIDsKind(nMPMapObjKindMoviePlayer2, &pos_ids[1]);
     mpCollisionGetMapObjPositionID(pos_ids[1], &spawn_position[1]);
 
-    if (mpCollisionGetMapObjCountKind(nMPMapObjKindMovieStart3) != 1)
+    if (mpCollisionGetMapObjCountKind(nMPMapObjKindMoviePlayer3) != 1)
     {
         while (TRUE)
         {
@@ -272,7 +272,7 @@ void mvOpeningJungleMakeFighters(void)
             scManagerRunPrintGObjStatus();
         }
     }
-    mpCollisionGetMapObjIDsKind(nMPMapObjKindMovieStart3, &pos_ids[0]);
+    mpCollisionGetMapObjIDsKind(nMPMapObjKindMoviePlayer3, &pos_ids[0]);
     mpCollisionGetMapObjPositionID(pos_ids[0], &spawn_position[0]);
 
     spawn_position[0].x += 1100.0F;

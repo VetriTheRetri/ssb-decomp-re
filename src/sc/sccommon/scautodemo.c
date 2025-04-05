@@ -33,14 +33,14 @@ u8 dSCAutoDemoGroundOrder[/* */] =
 // 0x8018E170
 s16 dSCAutoDemoMapObjKindList[/* */] = 
 {
-	nMPMapObjKindAutoDemoSpawn1,
-	nMPMapObjKindAutoDemoSpawn2,
-	nMPMapObjKindAutoDemoSpawn3,
-	nMPMapObjKindAutoDemoSpawn4,
-	nMPMapObjKindAutoDemoSpawn5,
-	nMPMapObjKindAutoDemoSpawn6,
-	nMPMapObjKindAutoDemoSpawn7,
-	nMPMapObjKindAutoDemoSpawn8
+	nMPMapObjKindAutoDemoPlayer1,
+	nMPMapObjKindAutoDemoPlayer2,
+	nMPMapObjKindAutoDemoPlayer3,
+	nMPMapObjKindAutoDemoPlayer4,
+	nMPMapObjKindAutoDemoPlayer5,
+	nMPMapObjKindAutoDemoPlayer6,
+	nMPMapObjKindAutoDemoPlayer7,
+	nMPMapObjKindAutoDemoPlayer8
 };
 
 // 0x8018E180

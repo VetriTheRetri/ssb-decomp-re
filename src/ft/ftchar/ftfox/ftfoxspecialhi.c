@@ -207,7 +207,7 @@ sb32 ftFoxSpecialHiProcPass(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (!(fp->coll_data.floor_flags & MAP_VERTEX_CLL_PASS) || (fp->status_vars.fox.specialhi.pass_timer >= 15))
+    if (!(fp->coll_data.floor_flags & MAP_VERTEX_COLL_PASS) || (fp->status_vars.fox.specialhi.pass_timer >= 15))
     {
         return TRUE;
     }
@@ -297,7 +297,7 @@ void ftFoxSpecialHiDecideSetStatus(GObj *fighter_gobj)
     if
     (
         (ABS(fp->input.pl.stick_range.x) + ABS(fp->input.pl.stick_range.y) >= FTFOX_FIREFOX_ANGLE_STICK_THRESHOLD) &&
-        !(fp->coll_data.floor_flags & MAP_VERTEX_CLL_PASS)
+        !(fp->coll_data.floor_flags & MAP_VERTEX_COLL_PASS)
     )
     {
         angle.x = fp->input.pl.stick_range.x;

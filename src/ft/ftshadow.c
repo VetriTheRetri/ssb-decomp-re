@@ -114,7 +114,7 @@ void ftShadowProcDisplay(GObj *shadow_gobj)
 
             ga_dist = 0;
         }
-        else if (func_ovl2_800F9348(&DObjGetStruct(fighter_gobj)->translate.vec.f, &floor_line_id, &ga_dist, NULL, NULL) == FALSE)
+        else if (mpCollisionCheckProjectFloor(&DObjGetStruct(fighter_gobj)->translate.vec.f, &floor_line_id, &ga_dist, NULL, NULL) == FALSE)
         {
             floor_line_id = -1;
         }

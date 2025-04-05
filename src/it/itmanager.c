@@ -576,7 +576,7 @@ GObj* itManagerMakeSpawnActor(void)
                 }
                 gITManagerSpawnActor.weights.weights_sum = item_any_weights;
 
-                mapobjs_num = mpCollisionGetMapObjCountKind(nMPMapObjKindItemSpawn);
+                mapobjs_num = mpCollisionGetMapObjCountKind(nMPMapObjKindItem);
 
                 if (mapobjs_num == 0)
                 {
@@ -593,7 +593,7 @@ GObj* itManagerMakeSpawnActor(void)
                 gITManagerSpawnActor.mapobjs_num = mapobjs_num;
                 gITManagerSpawnActor.mapobjs = (u8*) syTaskmanMalloc(mapobjs_num * sizeof(*gITManagerSpawnActor.mapobjs), 0);
 
-                mpCollisionGetMapObjIDsKind(nMPMapObjKindItemSpawn, item_mapobj_ids);
+                mpCollisionGetMapObjIDsKind(nMPMapObjKindItem, item_mapobj_ids);
 
                 for (i = 0; i < mapobjs_num; i++)
                 {

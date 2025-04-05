@@ -237,7 +237,7 @@ void mvOpeningKirbyMakeMotionWindow(void)
 	grWallpaperMakeDecideKind();
 	grCommonSetupInitAll();
 
-	if (mpCollisionGetMapObjCountKind(nMPMapObjKindMovieStart1) != 1)
+	if (mpCollisionGetMapObjCountKind(nMPMapObjKindMoviePlayer1) != 1)
 	{
 		while (TRUE)
 		{
@@ -245,7 +245,7 @@ void mvOpeningKirbyMakeMotionWindow(void)
 			scManagerRunPrintGObjStatus();
 		}
 	}
-	mpCollisionGetMapObjIDsKind(nMPMapObjKindMovieStart1, pos_ids);
+	mpCollisionGetMapObjIDsKind(nMPMapObjKindMoviePlayer1, pos_ids);
 	mpCollisionGetMapObjPositionID(pos_ids[0], &pos);
 
 	pos.y += 30.0F;

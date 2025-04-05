@@ -229,7 +229,7 @@ void mvOpeningDonkeyMakeMotionWindow(void)
 	grWallpaperMakeDecideKind();
 	grCommonSetupInitAll();
 
-	if (mpCollisionGetMapObjCountKind(nMPMapObjKindMovieStart1) != 1)
+	if (mpCollisionGetMapObjCountKind(nMPMapObjKindMoviePlayer1) != 1)
 	{
 		while (TRUE)
 		{
@@ -237,7 +237,7 @@ void mvOpeningDonkeyMakeMotionWindow(void)
 			scManagerRunPrintGObjStatus();
 		}
 	}
-	mpCollisionGetMapObjIDsKind(nMPMapObjKindMovieStart1, pos_ids);
+	mpCollisionGetMapObjIDsKind(nMPMapObjKindMoviePlayer1, pos_ids);
 	mpCollisionGetMapObjPositionID(pos_ids[0], &pos);
 	mvOpeningDonkeyMakeMotionCamera(pos);
 	gmRumbleMakeActor();

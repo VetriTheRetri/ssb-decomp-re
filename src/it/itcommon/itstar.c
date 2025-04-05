@@ -68,13 +68,13 @@ sb32 itStarCommonProcMap(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
     s32 unused;
-    sb32 is_collide_ground = itMapTestAllCollisionFlag(item_gobj, MAP_FLAG_FLOOR);
+    sb32 is_collide_floor = itMapTestAllCollisionFlag(item_gobj, MAP_FLAG_FLOOR);
 
     if (itMapCheckCollideAllRebound(item_gobj, (MAP_FLAG_CEIL | MAP_FLAG_RWALL | MAP_FLAG_LWALL), ITSTAR_MAP_REBOUND_COMMON, NULL) != FALSE)
     {
         itMainSetSpinVelLR(item_gobj);
     }
-    if (is_collide_ground != FALSE)
+    if (is_collide_floor != FALSE)
     {
         ip->physics.vel_air.y = ITSTAR_BOUNCE_Y;
 

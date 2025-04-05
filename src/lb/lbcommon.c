@@ -2007,8 +2007,7 @@ sb32 func_ovl0_800CB2F0(Mtx *mtx, DObj *dobj, Gfx **dls)
     
     func_ovl2_800EDBA4(attach_dobj);
     
-    dobj->rotate.vec.f.z = (ftGetParts(attach_dobj)->mtx_translate[0][2] > 0.0F) ? 
-    
+    dobj->rotate.vec.f.z = (ftGetParts(attach_dobj)->mtx_translate[0][2] > 0.0F) ?
     attach_dobj->rotate.vec.f.x : -attach_dobj->rotate.vec.f.x;
 
     return 1;

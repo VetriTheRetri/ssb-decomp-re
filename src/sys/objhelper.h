@@ -11,7 +11,7 @@ extern GObj* gcGetGObjByID(GObj *gobj, u32 id);
 extern GObj* gcFindGObjByLinkAndID(s32 link, u32 id);
 extern GObj* gcFindGObjByID(u32 id);
 extern void gcDefaultProcRun(GObj *gobj);
-extern void gcStopCurrentGObjThread(s32 tics);
+extern void gcSleepCurrentGObjThread(s32 tics);
 extern void gcPauseGObjProcessAll(GObj *gobj);
 extern void gcResumeGObjProcessAll(GObj *gobj);
 extern void gcPauseGObjProcess(GObjProcess *gobjproc);

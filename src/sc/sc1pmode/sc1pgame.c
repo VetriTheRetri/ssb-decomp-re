@@ -37,10 +37,10 @@ u8 dSC1PGameKirbyTeamCopyKinds[/* */] =
 };
 
 // 0x80192808
-f32 D_ovl65_80192808[/* */] = { -15.0F, 0.0F, 15.0F, 30.0F, 45.0F, 60.0F };
+f32 dSC1PGameZoomEyeX[/* */] = { -15.0F, 0.0F, 15.0F, 30.0F, 45.0F, 60.0F };
 
 // 0x80192820
-f32 D_ovl65_80192820[/* */] = { 1.0F, 2.0F, -8.0F, -30.0F };
+f32 dSC1PGameZoomEyeY[/* */] = { 1.0F, 2.0F, -8.0F, -30.0F };
 
 // 0x80192830
 SC1PGameComputer dSC1PGameComputerDesc[/* */] = 
@@ -518,7 +518,7 @@ s32 *dSC1PGameInterfaceCountPositions[/* */] =
 };
 
 // 0x80192B0C - Some kind of process ID list?
-u16 dSC1PGameStageCommonStopTics[/* */] = { 22, 15, 60 };
+u16 dSC1PGameStageCommonSleepTics[/* */] = { 22, 15, 60 };
 
 // 0x80192B14
 SYColorRGBA dSC1PGameFadeColor = { 0x00, 0x00, 0x00, 0x00 };
@@ -843,7 +843,7 @@ void func_ovl65_8018D3D0(void)
 }
 
 // 0x8018D3D8
-void sc1PGameGetSpawnPosition(Vec3f *mapobj_pos, s32 mapobj_kind)
+void sc1PGameGetStartPosition(Vec3f *mapobj_pos, s32 mapobj_kind)
 {
     s32 mapobj;
 
@@ -860,7 +860,7 @@ void sc1PGameGetSpawnPosition(Vec3f *mapobj_pos, s32 mapobj_kind)
 }
 
 // 0x8018D45C
-void sc1PGameRandSpawnPosition(Vec3f *mapobj_pos, s32 mapobj_kind)
+void sc1PGameGetRandomStartPosition(Vec3f *mapobj_pos, s32 mapobj_kind)
 {
     s32 mapobj_count = mpCollisionGetMapObjCountKind(mapobj_kind);
     s32 mapobj[10];
@@ -898,7 +898,7 @@ void sc1PGameSetupEnemyPlayer(SC1PGameStage *stagesetup, SC1PGameComputer *comse
     gSCManagerBattleState->players[player].tag = nIFPlayerTagKindCP;
     gSCManagerBattleState->players[player].is_single_stockicon = TRUE;
     gSCManagerBattleState->players[player].stock_count = 0;
-    gSCManagerBattleState->players[player].is_spgame_team = TRUE;
+    gSCManagerBattleState->players[player].is_spgame_enemy = TRUE;
     gSCManagerBattleState->players[player].pkind = nFTPlayerKindCom;
 
     sSC1PGamePlayerSetups[player].cp_trait = stagesetup->opponent_behavior;
@@ -1008,7 +1008,7 @@ void sc1PGameSetupStageAll(void)
             gSCManagerBattleState->players[gSCManagerSceneData.ally_players[i]].tag = nIFPlayerTagKindHeart;
             gSCManagerBattleState->players[gSCManagerSceneData.ally_players[i]].is_single_stockicon = TRUE;
             gSCManagerBattleState->players[gSCManagerSceneData.ally_players[i]].stock_count = 0;
-            gSCManagerBattleState->players[gSCManagerSceneData.ally_players[i]].is_spgame_team = FALSE;
+            gSCManagerBattleState->players[gSCManagerSceneData.ally_players[i]].is_spgame_enemy = FALSE;
             gSCManagerBattleState->players[gSCManagerSceneData.ally_players[i]].pkind = nFTPlayerKindCom;
 
             player = gSCManagerSceneData.ally_players[i];
@@ -1297,7 +1297,7 @@ void sc1PGameSpawnEnemyTeamNext(GObj *player_gobj)
 
         desc.fkind = gSCManagerBattleState->players[player].fkind;
 
-        sc1PGameRandSpawnPosition(&desc.pos, nMPMapObjKind1PGameEnemyTeamSpawn);
+        sc1PGameGetRandomStartPosition(&desc.pos, nMPMapObjKind1PGameEnemyTeamSpawn);
 
         desc.pos.y = (gMPCollisionGroundData->camera_bound_top + gMPCollisionGroundData->map_bound_top) * 0.5F;
 
@@ -1374,25 +1374,25 @@ void sc1PGameWaitStageCommonUpdate(void)
     GObj *fighter_gobj;
     s32 random;
     s32 player_count;
-    s32 stop_tics;
+    s32 sleep_tics;
     s32 player;
     s32 i;
 
-    random = syUtilsRandIntRange(ARRAY_COUNT(dSC1PGameStageCommonStopTics));
-    gcStopCurrentGObjThread(90);
+    random = syUtilsRandIntRange(ARRAY_COUNT(dSC1PGameStageCommonSleepTics));
+    gcSleepCurrentGObjThread(90);
     ifCommonCountdownMakeInterface();
 
-    stop_tics = dSC1PGameStageCommonStopTics[random];
+    sleep_tics = dSC1PGameStageCommonSleepTics[random];
 
     if (random == 1)
     {
-        gcStopCurrentGObjThread(90);
+        gcSleepCurrentGObjThread(90);
     }
     player_count = gSCManagerBattleState->pl_count + gSCManagerBattleState->cp_count;
 
     if (player_count < 3)
     {
-        gcStopCurrentGObjThread(stop_tics);
+        gcSleepCurrentGObjThread(sleep_tics);
     }
     player = gSCManagerSceneData.player;
 
@@ -1404,17 +1404,17 @@ void sc1PGameWaitStageCommonUpdate(void)
 
         if (random == 2)
         {
-            gcStopCurrentGObjThread(30);
+            gcSleepCurrentGObjThread(30);
             gmCameraSetStatusPlayerZoom(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attr->closeup_camera_zoom, 0.1F, 28.0F);
-            gcStopCurrentGObjThread(stop_tics - 30);
+            gcSleepCurrentGObjThread(sleep_tics - 30);
         }
-        else gcStopCurrentGObjThread(stop_tics);
+        else gcSleepCurrentGObjThread(sleep_tics);
 
         player = sc1PGameGetNextFreePlayerPort(player);
     }
     if (random == 2)
     {
-        gcStopCurrentGObjThread(30);
+        gcSleepCurrentGObjThread(30);
         gmCameraSetStatusDefault();
     }
 }
@@ -1427,7 +1427,7 @@ void sc1PGameWaitStageTeamUpdate(void)
     s32 player;
     s32 i;
 
-    gcStopCurrentGObjThread(90);
+    gcSleepCurrentGObjThread(90);
     ifCommonCountdownMakeInterface();
 
     player_count = gSCManagerBattleState->pl_count + gSCManagerBattleState->cp_count;
@@ -1443,7 +1443,7 @@ void sc1PGameWaitStageTeamUpdate(void)
         }
         else ftCommonAppearSetPosition(fighter_gobj);
 
-        gcStopCurrentGObjThread(60);
+        gcSleepCurrentGObjThread(60);
 
         player = sc1PGameGetNextFreePlayerPort(player);
     }
@@ -1461,13 +1461,13 @@ void sc1PGameWaitStageBonus3Update(void)
         0.3F, 
         31.5F
     );
-    gcStopCurrentGObjThread(60);
+    gcSleepCurrentGObjThread(60);
     ifCommonAnnounceGoMakeInterface();
     ifCommonPlayerDamageSetShowInterface();
     func_800269C0_275C0(nSYAudioVoiceAnnounceGo);
     ifCommonAnnounceGoSetStatus();
     gcEjectGObj(NULL);
-    gcStopCurrentGObjThread(1);
+    gcSleepCurrentGObjThread(1);
 }
 
 // 0x8018E9A4
@@ -1496,7 +1496,7 @@ void sc1PGameWaitStageBossUpdate(void)
         {
             continue;
         }
-        else if (gSCManagerBattleState->players[player].is_spgame_team == FALSE)
+        else if (gSCManagerBattleState->players[player].is_spgame_enemy == FALSE)
         {
             continue;
         }
@@ -1511,7 +1511,7 @@ void sc1PGameWaitStageBossUpdate(void)
 
     ftCommonAppearSetStatus(com_gobj);
 
-    gcStopCurrentGObjThread(600);
+    gcSleepCurrentGObjThread(600);
 
     ftParamUnlockPlayerControl(player_gobj);
     ftParamUnlockPlayerControl(com_gobj);
@@ -1564,7 +1564,7 @@ void sc1PGameWaitThreadUpdate(GObj *gobj)
         break;
     }
     gcEjectGObj(NULL);
-    gcStopCurrentGObjThread(1);
+    gcSleepCurrentGObjThread(1);
 }
 
 // 0x8018EB68
@@ -1660,7 +1660,7 @@ void sc1PGameInitTeamStockDisplay(void)
             {
                 continue;
             }
-            else if (gSCManagerBattleState->players[i].is_spgame_team == FALSE)
+            else if (gSCManagerBattleState->players[i].is_spgame_enemy == FALSE)
             {
                 continue;
             }
@@ -1723,7 +1723,7 @@ void sc1PGameSetPlayerDefeatStats(s32 player, s32 team_order)
     {
         ifCommonAnnounceEndMessage();
     }
-    else if (gSCManagerBattleState->players[player].is_spgame_team != FALSE)
+    else if (gSCManagerBattleState->players[player].is_spgame_enemy != FALSE)
     {
         sSC1PGameEnemyStocksRemaining--;
         sSC1PGameEnemyStockSpriteFlags |= (1 << team_order);
@@ -1775,7 +1775,7 @@ void sc1PGameInitTimeUpMessage(void)
 }
 
 // 0x8018F240
-s32 sc1PGameGetEnemySpawnLR(s32 target_player)
+s32 sc1PGameGetEnemyStartLR(s32 target_player)
 {
     f32 lr_dist;
     f32 closest_dist;
@@ -1788,7 +1788,7 @@ s32 sc1PGameGetEnemySpawnLR(s32 target_player)
     closest_dist = 65536.0F;
     lr_dist = 0.0F;
 
-    sc1PGameGetSpawnPosition(&target_pos, sSC1PGamePlayerSetups[target_player].mapobj_kind);
+    sc1PGameGetStartPosition(&target_pos, sSC1PGamePlayerSetups[target_player].mapobj_kind);
 
     for (current_player = 0; current_player < (ARRAY_COUNT(gSCManagerBattleState->players) + ARRAY_COUNT(sSC1PGamePlayerSetups)) / 2; current_player++)
     {
@@ -1802,7 +1802,7 @@ s32 sc1PGameGetEnemySpawnLR(s32 target_player)
         }
         else if (gSCManagerBattleState->players[current_player].team != gSCManagerBattleState->players[target_player].team)
         {
-            sc1PGameGetSpawnPosition(&current_pos, sSC1PGamePlayerSetups[current_player].mapobj_kind);
+            sc1PGameGetStartPosition(&current_pos, sSC1PGamePlayerSetups[current_player].mapobj_kind);
 
             current_dist = (current_pos.x < target_pos.x) ? -(current_pos.x - target_pos.x) : (current_pos.x - target_pos.x);
 
@@ -1820,7 +1820,7 @@ s32 sc1PGameGetEnemySpawnLR(s32 target_player)
 }
 
 // 0x8018F3AC
-void func_ovl65_8018F3AC(void)
+void sc1PGameSetCameraZoom(void)
 {
     GObj *fighter_gobj = gSCManagerBattleState->players[gSCManagerSceneData.player].fighter_gobj;
     FTStruct *fp = ftGetStruct(fighter_gobj);
@@ -1828,8 +1828,8 @@ void func_ovl65_8018F3AC(void)
     gmCameraSetStatusPlayerZoom
     (
         fighter_gobj,
-        F_CLC_DTOR32(D_ovl65_80192808[syUtilsRandIntRange(ARRAY_COUNT(D_ovl65_80192808))]) * fp->lr,
-        F_CLC_DTOR32(D_ovl65_80192820[syUtilsRandIntRange(ARRAY_COUNT(D_ovl65_80192820))]),
+        F_CLC_DTOR32(dSC1PGameZoomEyeX[syUtilsRandIntRange(ARRAY_COUNT(dSC1PGameZoomEyeX))]) * fp->lr,
+        F_CLC_DTOR32(dSC1PGameZoomEyeY[syUtilsRandIntRange(ARRAY_COUNT(dSC1PGameZoomEyeY))]),
         ftGetStruct(fighter_gobj)->attr->closeup_camera_zoom,
         0.06F,
         28.0F
@@ -1838,7 +1838,7 @@ void func_ovl65_8018F3AC(void)
 }
 
 // 0x8018F4B0
-void sc1PGameBossSetZoomCamera(FTStruct *fp)
+void sc1PGameBossSetCameraZoom(FTStruct *fp)
 {
     Vec3f world_pos;
     Vec3f zoom;
@@ -1950,7 +1950,7 @@ void sc1PGameBossDefeatInitInterface(GObj *fighter_gobj)
 
     sc1PGameBossHidePlayerTagAll();
     ifCommonPlayerDamageStartBreakAnim(fp);
-    sc1PGameBossSetZoomCamera(fp);
+    sc1PGameBossSetCameraZoom(fp);
     ifCommonBattleSetInterface(sc1PGameBossDefeatInterfaceProcUpdate, sc1PGameBossDefeatInterfaceProcSet, nSYAudioFGMVoiceEnd, 90);
 }
 
@@ -2039,7 +2039,7 @@ void sc1PGameFuncStart(void)
             {
                 continue;
             }
-            else if (gSCManagerBattleState->players[i].is_spgame_team == FALSE)
+            else if (gSCManagerBattleState->players[i].is_spgame_enemy == FALSE)
             {
                 continue;
             }
@@ -2059,9 +2059,9 @@ void sc1PGameFuncStart(void)
 
         desc.fkind = gSCManagerBattleState->players[i].fkind;
 
-        sc1PGameGetSpawnPosition(&desc.pos, sSC1PGamePlayerSetups[i].mapobj_kind);
+        sc1PGameGetStartPosition(&desc.pos, sSC1PGamePlayerSetups[i].mapobj_kind);
 
-        desc.lr = sc1PGameGetEnemySpawnLR(i);
+        desc.lr = sc1PGameGetEnemyStartLR(i);
 
         desc.team = gSCManagerBattleState->players[i].team;
 
@@ -2160,7 +2160,7 @@ void sc1PGameAppendBonusStats(void)
         {
             if
             (
-                (sSC1PGameBonusStatEnemyStats[i].damage_player != gSCManagerSceneData.player)     ||
+                (sSC1PGameBonusStatEnemyStats[i].damage_player != gSCManagerSceneData.player)   ||
                 (sSC1PGameBonusStatEnemyStats[i].damage_status_id != nFTCommonStatusDeadUpStar) &&
                 (sSC1PGameBonusStatEnemyStats[i].damage_status_id != nFTCommonStatusDeadUpFall)
             )

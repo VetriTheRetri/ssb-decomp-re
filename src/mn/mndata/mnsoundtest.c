@@ -1076,7 +1076,7 @@ void mnSoundTestOptionThreadUpdate(GObj *gobj)
         sobj->next->sprite.green = sobj->sprite.green = sMNSoundTestOptionColorG[color_id];
         sobj->next->sprite.blue  = sobj->sprite.blue  = sMNSoundTestOptionColorB[color_id];
 
-        gcStopCurrentGObjThread(1);
+        gcSleepCurrentGObjThread(1);
     }
 }
 
@@ -1538,7 +1538,7 @@ void mnSoundTestSelectIDThreadUpdate(GObj *gobj)
 
             mnSoundTestUpdateNumberSprites(gobj);
         }
-        gcStopCurrentGObjThread(1);
+        gcSleepCurrentGObjThread(1);
     }
 }
 
@@ -1598,7 +1598,7 @@ void mnSoundTestArrowsThreadUpdate(GObj *gobj)
         sobj->next->pos.x = dMNSoundTestArrowSpritePositions[id + 2];
         sobj->next->pos.y = dMNSoundTestArrowSpritePositions[id + 1];
 
-        gcStopCurrentGObjThread(1);
+        gcSleepCurrentGObjThread(1);
     }
 }
 

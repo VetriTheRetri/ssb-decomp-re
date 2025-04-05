@@ -243,7 +243,7 @@ void func_ovl8_80372C00(dbUnknown3 *arg0)
 			*(db2Shorts*)&sp30 = *(db2Shorts*)&sp34;
 		}
 		func_ovl8_8037D45C();
-		gcStopCurrentGObjThread(1);
+		gcSleepCurrentGObjThread(1);
 
 		temp = arg0;
 

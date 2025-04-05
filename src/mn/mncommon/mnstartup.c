@@ -118,7 +118,7 @@ void mnStartupLogoThreadUpdate(GObj *gobj)
 		step = 16 - i;
 		sobj->pos.y = 65.0F - ((-(38.75F / 64.0F) * step) * step);
 
-		gcStopCurrentGObjThread(1);
+		gcSleepCurrentGObjThread(1);
 		
 		i++;
 	}
@@ -128,7 +128,7 @@ void mnStartupLogoThreadUpdate(GObj *gobj)
 
 	while (i < 24)
 	{
-		gcStopCurrentGObjThread(1);
+		gcSleepCurrentGObjThread(1);
 		i++;
 	}
 	color = dMNStartupEndFadeColor;
@@ -139,14 +139,14 @@ void mnStartupLogoThreadUpdate(GObj *gobj)
 
 	while (i < 13)
 	{
-		gcStopCurrentGObjThread(1);
+		gcSleepCurrentGObjThread(1);
 		i++;
 	}
 	sMNStartupIsProceedOpening = TRUE;
 
 	while (TRUE)
 	{
-		gcStopCurrentGObjThread(1);
+		gcSleepCurrentGObjThread(1);
 	}
 }
 

@@ -422,7 +422,7 @@ sb32 mpProcessUpdateMain(MPCollData *coll_data, sb32 (*proc_coll)(MPCollData*, G
 
     if ((diff.x > 250.0F) || (diff.y > 250.0F))
     {
-        // Divide by 1/10th of maximum possible velocity if either difference is greater than it.
+        // Divide by 250.0 if either difference is greater than it (this is essentially 1/10th of maximum knockback velocity, which is 2500.0).
         update_count = (diff.x > diff.y) ? diff.x / 250.0F : diff.y / 250.0F;
         update_count++;
 

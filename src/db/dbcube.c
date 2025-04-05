@@ -346,7 +346,7 @@ void dbCubeModelThreadUpdate(GObj *gobj)
 		dobj->rotate.vec.f.y += dDBCubeRotateStepY;
 		dobj->rotate.vec.f.z += dDBCubeRotateStepZ;
 
-		gcStopCurrentGObjThread(1);
+		gcSleepCurrentGObjThread(1);
 	}
 }
 
@@ -446,7 +446,7 @@ void dbCubeAudioThreadUpdate(GObj *gobj)
 				gDBCubeQueuedFGM = 0;
 			}
 		}
-		gcStopCurrentGObjThread(1);
+		gcSleepCurrentGObjThread(1);
 	}
 }
 

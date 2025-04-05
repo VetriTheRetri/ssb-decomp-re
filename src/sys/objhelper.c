@@ -130,7 +130,7 @@ void gcDefaultProcRun(GObj *gobj)
 }
 
 // 0x8000B1E8
-void gcStopCurrentGObjThread(s32 tics)
+void gcSleepCurrentGObjThread(s32 tics)
 {
     if (gGCCurrentProcess->exec.gobjthread->stack[7] != 0xFEDCBA98)
     {

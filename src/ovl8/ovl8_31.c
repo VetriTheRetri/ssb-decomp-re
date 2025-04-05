@@ -48,7 +48,7 @@ s32 func_ovl8_803865D0(DBMenuPosition* arg0, s32 arg1, char* arg2)
     D_803903D0_1ACC20 = 0;
     while (D_803903D0_1ACC20 == 0)
     {
-        gcStopCurrentGObjThread(1);
+        gcSleepCurrentGObjThread(1);
     }
 
     if (D_803903D4_1ACC24->unk_dbunk5_0xA8 != 0)

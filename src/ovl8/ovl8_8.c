@@ -758,7 +758,7 @@ void func_ovl8_8037BD94(GObj* arg0)
 	while (TRUE)
 	{
 		func_ovl8_8037C4A4(temp_s0, arg0);
-		gcStopCurrentGObjThread(1);
+		gcSleepCurrentGObjThread(1);
 	}
 }
 
@@ -770,7 +770,7 @@ void func_ovl8_8037BDF4(GObj* arg0)
 	while (TRUE)
 	{
 		func_ovl8_8037CFAC(temp_s0);
-		gcStopCurrentGObjThread(1);
+		gcSleepCurrentGObjThread(1);
 	}
 }
 
@@ -786,7 +786,7 @@ void func_ovl8_8037BE34(GObj* arg0)
 	{
 		temp_v0 = temp_s0->db_func;
 		temp_v0[8].unk_dbfunc_0x4(temp_v0[8].unk_dbfunc_0x0 + (uintptr_t)temp_s0, arg0);
-		gcStopCurrentGObjThread(1);
+		gcSleepCurrentGObjThread(1);
 	}
 }
 
@@ -813,7 +813,7 @@ void func_ovl8_8037BEC8(GObj* arg0)
 	{
 		temp_v0 = ((dbUnknownLinkStruct*)temp_s0->unk_dbtestmenu_0x10)->db_func;
 		temp_v0[14].unk_dbfunc_0x4(temp_v0[14].unk_dbfunc_0x0 + (uintptr_t)temp_s0->unk_dbtestmenu_0x10, arg0);
-		gcStopCurrentGObjThread(1);
+		gcSleepCurrentGObjThread(1);
 	}
 }
 

@@ -101,22 +101,19 @@ void ftCommonDeadCheckRebirth(GObj *fighter_gobj)
         if (fp->stock_count == -1)
         {
             ftCommonSleepSetStatus(fighter_gobj);
-
             return;
         }
     }
     else if (gSCManagerBattleState->game_rules & SCBATTLE_GAMERULE_1PGAME)
     {
-        if (gSCManagerBattleState->players[fp->player].is_spgame_team != FALSE)
+        if (gSCManagerBattleState->players[fp->player].is_spgame_enemy != FALSE)
         {
             sc1PGameSpawnEnemyTeamNext(fighter_gobj);
-
             return;
         }
         else if (fp->stock_count == -1)
         {
             ftCommonSleepSetStatus(fighter_gobj);
-
             return;
         }
     }
@@ -142,7 +139,7 @@ void ftCommonDeadResetCommonVars(GObj *fighter_gobj)
 }
 
 // 0x8013C0B0
-void ftCommonDeadClearSpecialStats(GObj *fighter_gobj)
+void ftCommonDeadResetSpecialStats(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -158,9 +155,9 @@ void ftCommonDeadCommonProcUpdate(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->status_vars.common.dead.rebirth_wait--;
+    fp->status_vars.common.dead.wait--;
 
-    if (fp->status_vars.common.dead.rebirth_wait == 0)
+    if (fp->status_vars.common.dead.wait == 0)
     {
         ftCommonDeadCheckRebirth(fighter_gobj);
     }
@@ -171,7 +168,7 @@ void ftCommonDeadInitStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->status_vars.common.dead.rebirth_wait = FTCOMMON_DEAD_REBIRTH_WAIT;
+    fp->status_vars.common.dead.wait = FTCOMMON_DEAD_WAIT;
 
     ftPhysicsStopVelAll(fighter_gobj);
 
@@ -183,13 +180,13 @@ void ftCommonDeadInitStatusVars(GObj *fighter_gobj)
     ftCommonDeadUpdateRumble(fp);
     ftCommonDeadUpdateScore(fp);
 
-    if (fp->attr->dead_sfx[0] != nSYAudioFGMVoiceEnd)
+    if (fp->attr->dead_fgm_ids[0] != nSYAudioFGMVoiceEnd)
     {
-        ftCommonDeadAddDeadSFXSoundQueue(fp->attr->dead_sfx[0]);
+        ftCommonDeadAddDeadSFXSoundQueue(fp->attr->dead_fgm_ids[0]);
     }
-    if (fp->attr->dead_sfx[1] != nSYAudioFGMVoiceEnd)
+    if (fp->attr->dead_fgm_ids[1] != nSYAudioFGMVoiceEnd)
     {
-        ftCommonDeadAddDeadSFXSoundQueue(fp->attr->dead_sfx[1]);
+        ftCommonDeadAddDeadSFXSoundQueue(fp->attr->dead_fgm_ids[1]);
     }
 }
 
@@ -202,7 +199,7 @@ void ftCommonDeadDownSetStatus(GObj *fighter_gobj)
 
     ftCommonDeadResetCommonVars(fighter_gobj);
     ftMainSetStatus(fighter_gobj, nFTCommonStatusDeadDown, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftCommonDeadClearSpecialStats(fighter_gobj);
+    ftCommonDeadResetSpecialStats(fighter_gobj);
     ftCommonDeadInitStatusVars(fighter_gobj);
 
     pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
@@ -243,7 +240,7 @@ void ftCommonDeadRightSetStatus(GObj *fighter_gobj)
 
     ftCommonDeadResetCommonVars(fighter_gobj);
     ftMainSetStatus(fighter_gobj, nFTCommonStatusDeadLeftRight, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftCommonDeadClearSpecialStats(fighter_gobj);
+    ftCommonDeadResetSpecialStats(fighter_gobj);
     ftCommonDeadInitStatusVars(fighter_gobj);
 
     pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
@@ -285,7 +282,7 @@ void ftCommonDeadLeftSetStatus(GObj *fighter_gobj)
 
     ftCommonDeadResetCommonVars(fighter_gobj);
     ftMainSetStatus(fighter_gobj, nFTCommonStatusDeadLeftRight, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftCommonDeadClearSpecialStats(fighter_gobj);
+    ftCommonDeadResetSpecialStats(fighter_gobj);
     ftCommonDeadInitStatusVars(fighter_gobj);
 
     pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
@@ -325,23 +322,23 @@ void ftCommonDeadUpStarProcUpdate(GObj *fighter_gobj)
     switch (fp->motion_vars.flags.flag1)
     {
     case 1:
-        fp->colanim.color1.a = 128 - ((fp->status_vars.common.dead.rebirth_wait * 128) / FTCOMMON_DEADUP_REBIRTH_WAIT);
+        fp->colanim.color1.a = 128 - ((fp->status_vars.common.dead.wait * 128) / FTCOMMON_DEADUP_WAIT);
         break;
 
     default:
         break;
     }
-    if (fp->status_vars.common.dead.rebirth_wait != 0)
+    if (fp->status_vars.common.dead.wait != 0)
     {
-        fp->status_vars.common.dead.rebirth_wait--;
+        fp->status_vars.common.dead.wait--;
     }
-    if (fp->status_vars.common.dead.rebirth_wait == 0)
+    if (fp->status_vars.common.dead.wait == 0)
     {
         switch (fp->motion_vars.flags.flag1)
         {
         case 0:
-            fp->physics.vel_air.y = ((gMPCollisionGroundData->camera_bound_top * 0.6F) - DObjGetStruct(fighter_gobj)->translate.vec.f.y) / 180.0F;
-            fp->physics.vel_air.z = FTCOMMON_DEADUPFALL_VEL_Z;
+            fp->physics.vel_air.y = ((gMPCollisionGroundData->camera_bound_top * 0.6F) - DObjGetStruct(fighter_gobj)->translate.vec.f.y) / FTCOMMON_DEADUP_WAIT;
+            fp->physics.vel_air.z = FTCOMMON_DEADUPSTAR_VEL_Z;
 
             fp->colanim.is_use_color1 = TRUE;
 
@@ -350,7 +347,7 @@ void ftCommonDeadUpStarProcUpdate(GObj *fighter_gobj)
             fp->colanim.color1.b = gMPCollisionGroundData->fog_color.b;
             fp->colanim.color1.a = 0;
 
-            fp->status_vars.common.dead.rebirth_wait = FTCOMMON_DEADUP_REBIRTH_WAIT;
+            fp->status_vars.common.dead.wait = FTCOMMON_DEADUP_WAIT;
 
             fp->motion_vars.flags.flag1++;
             break;
@@ -368,7 +365,7 @@ void ftCommonDeadUpStarProcUpdate(GObj *fighter_gobj)
             fp->is_playertag_hide = TRUE;
             fp->colanim.is_use_color1 = FALSE;
 
-            fp->status_vars.common.dead.rebirth_wait = FTCOMMON_DEAD_REBIRTH_WAIT;
+            fp->status_vars.common.dead.wait = FTCOMMON_DEAD_WAIT;
 
             fp->motion_vars.flags.flag1++;
             break;
@@ -396,11 +393,11 @@ void ftCommonDeadUpStarSetStatus(GObj *fighter_gobj)
 
     fp->camera_mode = nFTCameraModeDeadUp;
 
-    fp->status_vars.common.dead.rebirth_wait = 1;
+    fp->status_vars.common.dead.wait = 1;
 
     fp->motion_vars.flags.flag1 = 0;
 
-    ftCommonDeadClearSpecialStats(fighter_gobj);
+    ftCommonDeadResetSpecialStats(fighter_gobj);
     ftParamSetPlayerTagWait(fighter_gobj, 1);
 
     if (fp->attr->deadup_sfx != nSYAudioFGMVoiceEnd)
@@ -429,16 +426,16 @@ void ftCommonDeadUpFallProcUpdate(GObj *fighter_gobj)
     default:
         break;
     }
-    if (fp->status_vars.common.dead.rebirth_wait != 0)
+    if (fp->status_vars.common.dead.wait != 0)
     {
-        fp->status_vars.common.dead.rebirth_wait--;
+        fp->status_vars.common.dead.wait--;
     }
-    if (fp->status_vars.common.dead.rebirth_wait == 0)
+    if (fp->status_vars.common.dead.wait == 0)
     {
         switch (fp->motion_vars.flags.flag1)
         {
         case 0:
-            fp->physics.vel_air.y = (gMPCollisionGroundData->camera_bound_bottom - DObjGetStruct(fighter_gobj)->translate.vec.f.y) / 180.0F;
+            fp->physics.vel_air.y = (gMPCollisionGroundData->camera_bound_bottom - DObjGetStruct(fighter_gobj)->translate.vec.f.y) / FTCOMMON_DEADUP_WAIT;
 
             DObjGetStruct(fighter_gobj)->translate.vec.f.z = CObjGetStruct(gGMCameraCameraGObj)->vec.eye.z - 3000.0F;
 
@@ -453,7 +450,7 @@ void ftCommonDeadUpFallProcUpdate(GObj *fighter_gobj)
             {
                 DObjGetStruct(fighter_gobj)->translate.vec.f.y = gMPCollisionGroundData->map_bound_top;
             }
-            fp->status_vars.common.dead.rebirth_wait = FTCOMMON_DEADUP_REBIRTH_WAIT;
+            fp->status_vars.common.dead.wait = FTCOMMON_DEADUP_WAIT;
 
             fp->motion_vars.flags.flag1++;
             break;
@@ -482,15 +479,15 @@ void ftCommonDeadUpFallProcUpdate(GObj *fighter_gobj)
 
             ftCommonDeadAddDeadSFXSoundQueue(sfx_id);
 
-            if (fp->attr->dead_sfx[0] != nSYAudioFGMVoiceEnd)
+            if (fp->attr->dead_fgm_ids[0] != nSYAudioFGMVoiceEnd)
             {
-                ftCommonDeadAddDeadSFXSoundQueue(fp->attr->dead_sfx[0]);
+                ftCommonDeadAddDeadSFXSoundQueue(fp->attr->dead_fgm_ids[0]);
             }
-            if (fp->attr->dead_sfx[1] != nSYAudioFGMVoiceEnd)
+            if (fp->attr->dead_fgm_ids[1] != nSYAudioFGMVoiceEnd)
             {
-                ftCommonDeadAddDeadSFXSoundQueue(fp->attr->dead_sfx[1]);
+                ftCommonDeadAddDeadSFXSoundQueue(fp->attr->dead_fgm_ids[1]);
             }
-            fp->status_vars.common.dead.rebirth_wait = FTCOMMON_DEAD_REBIRTH_WAIT;
+            fp->status_vars.common.dead.wait = FTCOMMON_DEAD_WAIT;
             fp->motion_vars.flags.flag1++;
             break;
 
@@ -517,11 +514,11 @@ void ftCommonDeadUpFallSetStatus(GObj *fighter_gobj)
 
     fp->camera_mode = nFTCameraModeDeadUp;
 
-    fp->status_vars.common.dead.rebirth_wait = 1;
+    fp->status_vars.common.dead.wait = 1;
 
     fp->motion_vars.flags.flag1 = 0;
 
-    ftCommonDeadClearSpecialStats(fighter_gobj);
+    ftCommonDeadResetSpecialStats(fighter_gobj);
     ftParamSetPlayerTagWait(fighter_gobj, 1);
 
     if (fp->attr->deadup_sfx != nSYAudioFGMVoiceEnd)
@@ -584,7 +581,7 @@ sb32 ftCommonDeadCheckInterruptCommon(GObj *fighter_gobj)
     }
     else if (!(fp->is_ghost))
     {
-        if ((gSCManagerBattleState->game_type == nSCBattleGameType1PGame) && (gSCManagerBattleState->players[fp->player].is_spgame_team != FALSE))
+        if ((gSCManagerBattleState->game_type == nSCBattleGameType1PGame) && (gSCManagerBattleState->players[fp->player].is_spgame_enemy != FALSE))
         {
             if (pos->y < gMPCollisionGroundData->map_bound_team_bottom)
             {

@@ -97,10 +97,10 @@ SCAutoDemoProc dSCAutoDemoProcList[/* */] =
 };
 
 // 0x8018E1D4
-f32 D_ovl64_8018E1D4[/* */] = { -40.0F, -28.0F, -14.0F, 14.0F, 28.0F, 40.0F };
+f32 dSCAutoDemoZoomEyeX[/* */] = { -40.0F, -28.0F, -14.0F, 14.0F, 28.0F, 40.0F };
 
 // 0x8018E1EC
-f32 D_ovl64_8018E1EC[/* */] = { 2.0F, 0.0F, -6.0F, -9.0F, -30.0F };
+f32 dSCAutoDemoZoomEyeY[/* */] = { 2.0F, 0.0F, -6.0F, -9.0F, -30.0F };
 
 // 0x8018E200
 intptr_t dSCAutoDemoFighterNameSpriteOffsets[/* */] =
@@ -264,13 +264,13 @@ sb32 scAutoDemoCheckStopFocusPlayer(FTStruct *fp)
 }
 
 // 0x8018D220
-void func_ovl64_8018D220(GObj *fighter_gobj)
+void scAutoDemoSetCameraPlayerZoom(GObj *fighter_gobj)
 {
 	gmCameraSetStatusPlayerZoom
 	(
 		fighter_gobj,
-		F_CLC_DTOR32(D_ovl64_8018E1D4[syUtilsRandIntRange(ARRAY_COUNT(D_ovl64_8018E1D4))]),
-		F_CLC_DTOR32(D_ovl64_8018E1EC[syUtilsRandIntRange(ARRAY_COUNT(D_ovl64_8018E1EC))]),
+		F_CLC_DTOR32(dSCAutoDemoZoomEyeX[syUtilsRandIntRange(ARRAY_COUNT(dSCAutoDemoZoomEyeX))]),
+		F_CLC_DTOR32(dSCAutoDemoZoomEyeY[syUtilsRandIntRange(ARRAY_COUNT(dSCAutoDemoZoomEyeY))]),
 		ftGetStruct(fighter_gobj)->attr->closeup_camera_zoom,
 		0.3F,
 		28.0F
@@ -293,7 +293,7 @@ void scAutoDemoSetFocusPlayer1(void)
 		ftGetStruct(gSCManagerBattleState->players[2].fighter_gobj)->level =
 		ftGetStruct(gSCManagerBattleState->players[3].fighter_gobj)->level = 1;
 
-		func_ovl64_8018D220(fighter_gobj);
+		scAutoDemoSetCameraPlayerZoom(fighter_gobj);
 		ftParamSetModelPartDetailAll(fighter_gobj, nFTPartsDetailHigh);
 
 		fp->detail_base = nFTPartsDetailHigh;
@@ -337,7 +337,7 @@ void scAutoDemoSetFocusPlayer2(void)
 		ftGetStruct(gSCManagerBattleState->players[2].fighter_gobj)->level =
 		ftGetStruct(gSCManagerBattleState->players[3].fighter_gobj)->level = 1;
 
-		func_ovl64_8018D220(p2_gobj);
+		scAutoDemoSetCameraPlayerZoom(p2_gobj);
 		ftParamSetModelPartDetailAll(p2_gobj, nFTPartsDetailHigh);
 
 		p2_fp->detail_base = nFTPartsDetailHigh;

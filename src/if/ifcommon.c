@@ -163,7 +163,7 @@ IFACharacter dIFCommonAnnounceGameSetSpriteData[/* */] =
 };
 
 // 0x8012EE4C
-u16 dIFCommonFocusProcessStopTics[/* */] =
+u16 dIFCommonEntryFocusSleepTics[/* */] =
 {
     22,
     15,
@@ -1954,11 +1954,11 @@ void ifCommonItemArrowSetAttr(void)
 // 0x80111FF0
 void ifCommonAnnounceThread(GObj *interface_gobj)
 {
-    gcStopCurrentGObjThread(60);
+    gcSleepCurrentGObjThread(60);
 
     gcEjectGObj(NULL);
 
-    gcStopCurrentGObjThread(1);
+    gcSleepCurrentGObjThread(1);
 }
 
 // 0x80112024
@@ -2065,7 +2065,7 @@ void ifCommonCountdownThread(GObj *interface_gobj)
 
             sobj = sobj->next;
         }
-        gcStopCurrentGObjThread(1);
+        gcSleepCurrentGObjThread(1);
     }
     sobj = ifGetSObj(interface_gobj);
 
@@ -2168,7 +2168,7 @@ void ifCommonCountdownThread(GObj *interface_gobj)
         }
         timer++;
 
-        gcStopCurrentGObjThread(1);
+        gcSleepCurrentGObjThread(1);
 
         main_status = -1;
     }
@@ -2183,10 +2183,10 @@ finish:
 
             sobj = sobj->next;
         }
-        gcStopCurrentGObjThread(1);
+        gcSleepCurrentGObjThread(1);
     }
     gcEjectGObj(NULL);
-    gcStopCurrentGObjThread(1);
+    gcSleepCurrentGObjThread(1);
 }
 
 // 0x80112668
@@ -2256,19 +2256,19 @@ GObj* ifCommonAnnounceTimeUpMakeInterface(void)
 void ifCommonEntryFocusThread(GObj *interface_gobj)
 {
     GObj *fighter_gobj;
-    s32 index = interface_gobj->user_data.s;
-    s32 stop_tics = dIFCommonFocusProcessStopTics[index];
+    s32 id = interface_gobj->user_data.s;
+    s32 sleep_tics = dIFCommonEntryFocusSleepTics[id];
     s32 count;
 
-    if (index == 1)
+    if (id == 1)
     {
-        gcStopCurrentGObjThread(90);
+        gcSleepCurrentGObjThread(90);
     }
     count = gSCManagerBattleState->pl_count + gSCManagerBattleState->cp_count;
 
     if (count < 3)
     {
-        gcStopCurrentGObjThread(stop_tics);
+        gcSleepCurrentGObjThread(sleep_tics);
     }
     fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
 
@@ -2276,24 +2276,23 @@ void ifCommonEntryFocusThread(GObj *interface_gobj)
     {
         ftCommonAppearSetStatus(fighter_gobj);
 
-        if (index == 2)
+        if (id == 2)
         {
-            gcStopCurrentGObjThread(30);
-
+            gcSleepCurrentGObjThread(30);
             gmCameraSetStatusPlayerZoom(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attr->closeup_camera_zoom, 0.1F, 28.0F);
-            gcStopCurrentGObjThread(stop_tics - 30);
+            gcSleepCurrentGObjThread(sleep_tics - 30);
         }
-        else gcStopCurrentGObjThread(stop_tics);
+        else gcSleepCurrentGObjThread(sleep_tics);
 
         fighter_gobj = fighter_gobj->link_next;
     }
-    if (index == 2)
+    if (id == 2)
     {
-        gcStopCurrentGObjThread(30);
+        gcSleepCurrentGObjThread(30);
         gmCameraSetStatusDefault();
     }
     gcEjectGObj(NULL);
-    gcStopCurrentGObjThread(1);
+    gcSleepCurrentGObjThread(1);
 }
 
 // 0x801129DC
@@ -2309,11 +2308,11 @@ void ifCommonEntryFocusMakeInterface(s32 id)
 // 0x80112A34
 void ifCommonEntryAllThread(GObj *interface_gobj)
 {
-    gcStopCurrentGObjThread(90);
+    gcSleepCurrentGObjThread(90);
     ifCommonCountdownMakeInterface();
     ifCommonEntryFocusMakeInterface(syUtilsRandIntRange(3));
     gcEjectGObj(NULL);
-    gcStopCurrentGObjThread(1);
+    gcSleepCurrentGObjThread(1);
 }
 
 // 0x80112A80
@@ -2327,13 +2326,13 @@ void ifCommonEntryAllMakeInterface(void)
 // 0x80112AD0
 void ifCommonSuddenDeathThread(GObj *interface_gobj)
 {
-    gcStopCurrentGObjThread(90);
+    gcSleepCurrentGObjThread(90);
     ifCommonAnnounceGoMakeInterface();
     ifCommonPlayerDamageSetShowInterface();
     ifCommonAnnounceGoSetStatus();
     func_800269C0_275C0(nSYAudioVoiceAnnounceGo);
     gcEjectGObj(NULL);
-    gcStopCurrentGObjThread(1);
+    gcSleepCurrentGObjThread(1);
 }
 
 // 0x80112B24
@@ -3066,7 +3065,7 @@ void ifCommonBattlePauseUpdateInterface(void)
     }
     if (sIFCommonBattlePauseKindInterface != nIFPauseKindPlayerNA)
     {
-        gmCameraRunGlobalFuncCamera(gGMCameraCameraGObj);
+        gmCameraRunFuncCamera(gGMCameraCameraGObj);
         grWallpaperRunProcessAll();
     }
 }
@@ -3081,7 +3080,7 @@ void ifCommonBattlePauseRestoreInterfaceAll(void)
         gGMCameraPauseCameraEyeX += (sIFCommonBattlePauseCameraEyeXOrigin - gGMCameraPauseCameraEyeX) * 0.1F;
         gGMCameraPauseCameraEyeY += (sIFCommonBattlePauseCameraEyeYOrigin - gGMCameraPauseCameraEyeY) * 0.1F;
 
-        gmCameraRunGlobalFuncCamera(gGMCameraCameraGObj);
+        gmCameraRunFuncCamera(gGMCameraCameraGObj);
         grWallpaperRunProcessAll();
 
         return;
@@ -3134,7 +3133,7 @@ void ifCommonBattleBossDefeatUpdateInterface(void)
     }
     else
     {
-        gmCameraRunGlobalFuncCamera(gGMCameraCameraGObj);
+        gmCameraRunFuncCamera(gGMCameraCameraGObj);
         grWallpaperRunProcessAll();
 
         dIFCommonBattleBossUpdateWait--;
@@ -3290,7 +3289,7 @@ void ifCommonBattleBossDefeatSetGameStatus(void)
 {
     gSCManagerBattleState->game_status = nSCBattleGameStatusBossDefeat;
 
-    sIFCommonBattlePauseCameraRestoreWait = -1;
+    sIFCommonBattlePauseCameraRestoreWait = U16_MAX;
 
     sIFCommonBattleInterfaceProcSet = ifCommonBattleInterfaceProcSet;
     dIFCommonBattleBossUpdateInterval = 2;
@@ -3307,7 +3306,7 @@ void ifCommon1PGameInterfaceProcSet(void)
 
     sIFCommonBattlePauseCameraRestoreWait = 45;
 
-    func_ovl65_8018F3AC();
+    sc1PGameSetCameraZoom();
 
     gIFCommonPlayerInterface.is_magnify_display = FALSE;
 }

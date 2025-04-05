@@ -26,7 +26,7 @@ CObjVec dGMCameraCObjVecDefault =
 };
 
 // 0x8012EBB4
-void (*dGMCameraProcList[/* */])(GObj*) =
+void (*dGMCameraFuncList[/* */])(GObj*) =
 {
     gmCameraDefaultFuncCamera,
     gmCameraPlayerZoomFuncCamera,
@@ -298,7 +298,7 @@ void gmCameraUpdateInterests(Vec3f *vec, f32 *hz, f32 *vt)
             }
             cams[players_num].target_pos.y += fp->attr->cam_offset_y;
 
-            if ((gSCManagerBattleState->game_type == nSCBattleGameType1PGame) && (gSCManagerBattleState->players[fp->player].is_spgame_team != FALSE))
+            if ((gSCManagerBattleState->game_type == nSCBattleGameType1PGame) && (gSCManagerBattleState->players[fp->player].is_spgame_enemy != FALSE))
             {
                 switch (fp->camera_mode)
                 {
@@ -745,7 +745,7 @@ void gmCameraPlayerZoomFuncCamera(GObj *camera_gobj)
 {
     if (gmCameraCheckPausePlayerOutBounds(&DObjGetStruct(gGMCameraStruct.pzoom_fighter_gobj)->translate.vec.f) != FALSE)
     {
-        dGMCameraProcList[gGMCameraStruct.status_default](camera_gobj);
+        dGMCameraFuncList[gGMCameraStruct.status_default](camera_gobj);
     }
     else gmCameraUpdatePlayerZoom(camera_gobj);
 }
@@ -869,30 +869,30 @@ void gmCameraPlayerFollowFuncCamera(GObj *camera_gobj)
 }
 
 // 0x8010CECC
-void gmCameraRunGlobalFuncCamera(GObj *camera_gobj)
+void gmCameraRunFuncCamera(GObj *camera_gobj)
 {
     gGMCameraStruct.func_camera(camera_gobj);
 }
 
 // 0x8010CEF4
-void gmCameraSetStatusID(s32 status_id)
+void gmCameraSetStatus(s32 status_id)
 {
     gGMCameraStruct.status_prev = gGMCameraStruct.status_curr;
     gGMCameraStruct.status_curr = status_id;
 
-    gGMCameraStruct.func_camera = dGMCameraProcList[status_id];
+    gGMCameraStruct.func_camera = dGMCameraFuncList[status_id];
 }
 
 // 0x8010CF20
 void gmCameraSetStatusDefault(void)
 {
-    gmCameraSetStatusID(gGMCameraStruct.status_default);
+    gmCameraSetStatus(gGMCameraStruct.status_default);
 }
 
 // 0x8010CF44
 void gmCameraSetStatusPlayerZoom(GObj *fighter_gobj, f32 eye_x, f32 eye_y, f32 dist, f32 pan_scale, f32 fov)
 {
-    gmCameraSetStatusID(nGMCameraStatusPlayerZoom);
+    gmCameraSetStatus(nGMCameraStatusPlayerZoom);
 
     gGMCameraStruct.pzoom_fighter_gobj = fighter_gobj;
     gGMCameraStruct.pzoom_eye_x = eye_x;
@@ -905,7 +905,7 @@ void gmCameraSetStatusPlayerZoom(GObj *fighter_gobj, f32 eye_x, f32 eye_y, f32 d
 // 0x8010CFA8
 void gmCameraSetStatusPlayerFollow(GObj *fighter_gobj, f32 eye_x, f32 eye_y, f32 dist, f32 pan_scale, f32 fov)
 {
-    gmCameraSetStatusID(nGMCameraStatusPlayerFollow);
+    gmCameraSetStatus(nGMCameraStatusPlayerFollow);
 
     gGMCameraStruct.pfollow_fighter_gobj = fighter_gobj;
     gGMCameraStruct.pfollow_eye_x = eye_x;
@@ -918,13 +918,13 @@ void gmCameraSetStatusPlayerFollow(GObj *fighter_gobj, f32 eye_x, f32 eye_y, f32
 // 0x8010D00C
 void gmCameraSetStatusPrev(void)
 {
-    gmCameraSetStatusID(gGMCameraStruct.status_prev);
+    gmCameraSetStatus(gGMCameraStruct.status_prev);
 }
 
 // 0x8010D030
 void gmCameraSetStatusAnim(AObjEvent32 *camanim_joint, f32 anim_frame, Vec3f *vel)
 {
-    gmCameraSetStatusID(nGMCameraStatusAnim);
+    gmCameraSetStatus(nGMCameraStatusAnim);
 
     gGMCameraStruct.vel_all = *vel;
 
@@ -937,7 +937,7 @@ void gmCameraSetStatusMapZoom(Vec3f *origin, Vec3f *target)
 {
     Vec3f dist;
 
-    gmCameraSetStatusID(nGMCameraStatusMapZoom);
+    gmCameraSetStatus(nGMCameraStatusMapZoom);
 
     gGMCameraStruct.zoom_origin_pos = *origin;
     gGMCameraStruct.zoom_target_pos = *target;
@@ -1188,7 +1188,7 @@ GObj* gmCameraMakeDefaultCamera(u8 tk1, u8 tk2, void (*proc)(GObj*))
         // No break? Doesn't match otherwise :brainshock:
     }
     gGMCameraStruct.status_default = gGMCameraStruct.status_prev = gGMCameraStruct.status_curr;
-    gGMCameraStruct.func_camera = dGMCameraProcList[gGMCameraStruct.status_curr];
+    gGMCameraStruct.func_camera = dGMCameraFuncList[gGMCameraStruct.status_curr];
     gGMCameraStruct.fovy = 38.0F;
 
     return camera_gobj;
@@ -1197,7 +1197,7 @@ GObj* gmCameraMakeDefaultCamera(u8 tk1, u8 tk2, void (*proc)(GObj*))
 // 0x8010DB00
 void gmCameraMakeBattleCamera(void)
 {
-    gmCameraMakeDefaultCamera(0x4C, nGCMatrixKindNull, gmCameraRunGlobalFuncCamera);
+    gmCameraMakeDefaultCamera(0x4C, nGCMatrixKindNull, gmCameraRunFuncCamera);
 }
 
 // 0x8010DB2C

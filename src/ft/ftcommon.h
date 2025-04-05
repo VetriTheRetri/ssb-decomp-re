@@ -3,9 +3,9 @@
 
 #include <ft/ftcommon/ftcommonfunctions.h>
 
-#define FTCOMMON_DEAD_REBIRTH_WAIT 45
-#define FTCOMMON_DEADUP_REBIRTH_WAIT 180
-#define FTCOMMON_DEADUPFALL_VEL_Z -83.333336F
+#define FTCOMMON_DEAD_WAIT 45
+#define FTCOMMON_DEADUP_WAIT 180
+#define FTCOMMON_DEADUPSTAR_VEL_Z -83.333336F
 
 #define FTCOMMON_REBIRTH_INVINCIBLE_FRAMES                                                                             \
 	120 // Invincibility frames; setting this to 0 makes invincibility last
@@ -368,7 +368,7 @@ typedef enum ftCommonCliffStatusKind
 
 typedef struct ftCommonDeadStatusVars
 {
-	s32 rebirth_wait;
+	s32 wait;
 	Vec3f pos;
 
 } ftCommonDeadStatusVars;

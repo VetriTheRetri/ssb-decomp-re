@@ -778,11 +778,11 @@ void scStaffrollHighlightThreadUpdate(GObj *gobj)
 		while (sSCStaffrollHighlightSize != 0)
 		{
 			sSCStaffrollHighlightSize--;
-			gcStopCurrentGObjThread(1);
+			gcSleepCurrentGObjThread(1);
 		}
 	}
 	gcEjectGObj(NULL);
-	gcStopCurrentGObjThread(1);
+	gcSleepCurrentGObjThread(1);
 }
 
 // 0x801327A4
@@ -1385,7 +1385,7 @@ void SCStaffrollJobAndNameThreadUpdate(GObj *gobj)
 
 	while (sSCStaffrollStatus != 0)
 	{
-		gcStopCurrentGObjThread(1);
+		gcSleepCurrentGObjThread(1);
 	}
 	gobj->flags = GOBJ_FLAG_NONE;
 
@@ -1406,7 +1406,7 @@ void SCStaffrollJobAndNameThreadUpdate(GObj *gobj)
 			cn->interpolation = 1.0F;
 		}
 		gcPlayAnimAll(gobj);
-		gcStopCurrentGObjThread(1);
+		gcSleepCurrentGObjThread(1);
 	}
 	if (cn->status == -1)
 	{
@@ -1414,7 +1414,7 @@ void SCStaffrollJobAndNameThreadUpdate(GObj *gobj)
 	}
 	SCStaffrollNameSetPrevAlloc(cn);
 	gcEjectGObj(NULL);
-	gcStopCurrentGObjThread(1);
+	gcSleepCurrentGObjThread(1);
 }
 
 // 0x80133854
@@ -1799,7 +1799,7 @@ void scStaffrollCrosshairThreadUpdate(GObj *gobj)
 	{
 		sobj->pos.y += 10.5F;
 
-		gcStopCurrentGObjThread(1);
+		gcSleepCurrentGObjThread(1);
 	} 
 	while (crosshair_center_wait--);
 
@@ -1822,7 +1822,7 @@ void scStaffrollCrosshairThreadUpdate(GObj *gobj)
 		sSCStaffrollCrosshairPositionX = sobj->pos.x - base_x;
 		sSCStaffrollCrosshairPositionY = sobj->pos.y - base_y;
 
-		gcStopCurrentGObjThread(1);
+		gcSleepCurrentGObjThread(1);
 	}
 }
 
@@ -1932,7 +1932,7 @@ void scStaffrollScrollThreadUpdate(GObj *gobj)
 				is_queued_name = TRUE;
 			}
 		}
-		gcStopCurrentGObjThread(1);
+		gcSleepCurrentGObjThread(1);
 	}
 	name = name_gobj->user_data.p;
 	name->status = -1;
@@ -1940,7 +1940,7 @@ void scStaffrollScrollThreadUpdate(GObj *gobj)
 	sSCStaffrollScrollGObj = NULL;
 
 	gcEjectGObj(NULL);
-	gcStopCurrentGObjThread(1);
+	gcSleepCurrentGObjThread(1);
 }
 
 // 0x8013498C

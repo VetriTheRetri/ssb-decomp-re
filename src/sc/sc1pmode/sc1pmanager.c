@@ -275,7 +275,7 @@ void sc1PManagerUpdateScene(void)
     gSCManager1PGameBattleState.players[gSCManagerSceneData.player].fkind = gSCManagerSceneData.fkind;
     gSCManager1PGameBattleState.players[gSCManagerSceneData.player].costume = gSCManagerSceneData.costume;
     gSCManager1PGameBattleState.players[gSCManagerSceneData.player].stock_count = gSCManagerBackupData.spgame_stock_count;
-    gSCManager1PGameBattleState.players[gSCManagerSceneData.player].is_spgame_team = FALSE;
+    gSCManager1PGameBattleState.players[gSCManagerSceneData.player].is_spgame_enemy = FALSE;
 
     gSCManagerSceneData.spgame_score = 0;
     gSCManagerSceneData.continues_used = 0;

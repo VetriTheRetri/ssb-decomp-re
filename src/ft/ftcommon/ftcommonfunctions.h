@@ -12,7 +12,7 @@ void ftCommonDeadUpdateRumble(FTStruct* this_fp);
 void ftCommonDeadUpdateScore(FTStruct* this_fp);
 void ftCommonDeadCheckRebirth(GObj* fighter_gobj);
 void ftCommonDeadResetCommonVars(GObj* fighter_gobj);
-void ftCommonDeadClearSpecialStats(GObj* fighter_gobj);
+void ftCommonDeadResetSpecialStats(GObj* fighter_gobj);
 void ftCommonDeadCommonProcUpdate(GObj* fighter_gobj);
 void ftCommonDeadInitStatusVars(GObj* fighter_gobj);
 void ftCommonDeadDownSetStatus(GObj* fighter_gobj);

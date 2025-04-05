@@ -911,7 +911,7 @@ struct FTAttributes
     f32 camera_zoom_base;
     MPObjectColl map_coll;
     Vec2f cliffcatch_coll; // Ledge grab box
-    u16 dead_sfx[2]; // KO voices
+    u16 dead_fgm_ids[2]; // KO voices
     u16 deadup_sfx;  // Star-KO voice
     u16 damage_sfx;
     u16 smash_sfx[3]; // Random Smash SFX

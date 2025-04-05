@@ -1606,7 +1606,7 @@ void mnPlayers1PBonusPortraitFlashThreadUpdate(GObj *gobj)
 			wait_tics = 1;
 			gobj->flags = (gobj->flags == GOBJ_FLAG_HIDDEN) ? GOBJ_FLAG_NONE : GOBJ_FLAG_HIDDEN;
 		}
-		gcStopCurrentGObjThread(1);
+		gcSleepCurrentGObjThread(1);
 	}
 }
 

@@ -1226,7 +1226,7 @@ void mnMapsPreviewCameraThreadUpdate(GObj *gobj)
 
 		deg = (deg + 2.0F > 360.0F) ? deg + 2.0F - 360.0F : deg + 2.0F;
 
-		gcStopCurrentGObjThread(1);
+		gcSleepCurrentGObjThread(1);
 	}
 }
 

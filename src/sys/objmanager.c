@@ -903,7 +903,7 @@ void gcEndGObjProcess(GObjProcess *gobjproc)
 
 		if (gGCCurrentProcess->kind == nGCProcessKindThread)
 		{
-			gcStopCurrentGObjThread(1);
+			gcSleepCurrentGObjThread(1);
 		}
 		return;
 	}

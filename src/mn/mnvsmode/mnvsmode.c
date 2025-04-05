@@ -515,7 +515,7 @@ void mnVSModeAnimateRuleArrows(GObj* rule_arrows_gobj)
         }
         else rule_arrows_gobj->flags = GOBJ_FLAG_HIDDEN;
 
-        gcStopCurrentGObjThread(1);
+        gcSleepCurrentGObjThread(1);
     }
 }
 
@@ -558,7 +558,7 @@ void mnVSModeAnimateTimeStockArrows(GObj* time_stock_arrows_gobj)
         }
         else time_stock_arrows_gobj->flags = GOBJ_FLAG_HIDDEN;
 
-        gcStopCurrentGObjThread(1);
+        gcSleepCurrentGObjThread(1);
     }
 }
 

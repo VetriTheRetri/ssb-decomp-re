@@ -1184,7 +1184,7 @@ void mnPlayers1PGameLevelThreadUpdate(GObj *gobj)
 			sobj->sprite.attr |= SP_TRANSPARENT;
 			sobj->user_data.s = 1;
 		}
-		gcStopCurrentGObjThread(1);
+		gcSleepCurrentGObjThread(1);
 	}
 }
 
@@ -1298,7 +1298,7 @@ void mnPlayers1PGameStockThreadUpdate(GObj *gobj)
 			sobj->sprite.attr |= SP_TRANSPARENT;
 			sobj->user_data.s = 1;
 		}
-		gcStopCurrentGObjThread(1);
+		gcSleepCurrentGObjThread(1);
 	}
 }
 
@@ -2059,7 +2059,7 @@ void mnPlayers1PGamePortraitFlashThreadUpdate(GObj *gobj)
 			wait_tics = 1;
 			gobj->flags = (gobj->flags == GOBJ_FLAG_HIDDEN) ? GOBJ_FLAG_NONE : GOBJ_FLAG_HIDDEN;
 		}
-		gcStopCurrentGObjThread(1);
+		gcSleepCurrentGObjThread(1);
 	}
 }
 

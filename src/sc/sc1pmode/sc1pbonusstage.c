@@ -741,13 +741,13 @@ void sc1PBonusStageInitBonus2(void)
 // 0x8018DC70
 void sc1PBonusStageInterfaceThreadUpdate(GObj *interface_gobj)
 {
-	gcStopCurrentGObjThread(60);
+	gcSleepCurrentGObjThread(60);
 	ifCommonAnnounceGoMakeInterface();
 	ifCommonPlayerDamageSetShowInterface();
 	func_800269C0_275C0(nSYAudioVoiceAnnounceGo);
 	ifCommonAnnounceGoSetStatus();
 	gcEjectGObj(NULL);
-	gcStopCurrentGObjThread(1);
+	gcSleepCurrentGObjThread(1);
 }
 
 // 0x8018DCC4

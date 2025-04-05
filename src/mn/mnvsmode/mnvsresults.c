@@ -2775,7 +2775,7 @@ void mnVSResultsAudioThreadUpdate(GObj *gobj)
 {
 	while (gSYAudioCSPlayers[0]->state == AL_STOPPED)
 	{
-		gcStopCurrentGObjThread(1);
+		gcSleepCurrentGObjThread(1);
 	}
 	while (TRUE)
 	{
@@ -2784,7 +2784,7 @@ void mnVSResultsAudioThreadUpdate(GObj *gobj)
 			syAudioPlayBGM(0, nSYAudioBGMResults);
 			gcEjectGObj(NULL);
 		}
-		gcStopCurrentGObjThread(1);
+		gcSleepCurrentGObjThread(1);
 	}
 }
 
@@ -2810,7 +2810,7 @@ void func_ovl31_80137898(GObj *gobj)
 			syControllerStopRumble(winner);
 
 			gcEjectGObj(NULL);
-			gcStopCurrentGObjThread(1);
+			gcSleepCurrentGObjThread(1);
 		}
 		if (tic % 2)
 		{
@@ -2818,7 +2818,7 @@ void func_ovl31_80137898(GObj *gobj)
 		}
 		else syControllerStopRumble(winner);
 
-		gcStopCurrentGObjThread(1);
+		gcSleepCurrentGObjThread(1);
 	}
 }
 

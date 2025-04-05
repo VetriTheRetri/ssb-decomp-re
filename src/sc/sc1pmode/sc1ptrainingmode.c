@@ -548,7 +548,7 @@ void sc1PTrainingModeUpdateAll(void)
 	{
 		gcRunAll();
 	}
-	else gmCameraRunGlobalFuncCamera(gGMCameraCameraGObj);
+	else gmCameraRunFuncCamera(gGMCameraCameraGObj);
 
 	ifCommonSetMaxNumGObj();
 }

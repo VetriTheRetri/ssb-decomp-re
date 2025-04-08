@@ -152,7 +152,7 @@ void *sSYAudioHeapBase;
 s32 sSYAudioHeapSize;
 
 // 0x8009D2F0
-SCClient sSYAudioClient;
+SYClient sSYAudioClient;
 
 // 0x8009D2F8
 OSMesgQueue sSYAudioTicMesgQueue;
@@ -751,7 +751,7 @@ void syAudioStopOsc(void *oscState)
 // 0x8001F444
 void syAudioInit(void)
 {
-    scAddClient(&sSYAudioClient, &sSYAudioTicMesgQueue, sSYAudioTicMesgs, ARRAY_COUNT(sSYAudioTicMesgs));
+    sySchedulerAddClient(&sSYAudioClient, &sSYAudioTicMesgQueue, sSYAudioTicMesgs, ARRAY_COUNT(sSYAudioTicMesgs));
     osCreateMesgQueue(&sSYAudioDmaMesgQueue, sSYAudioDmaMesgs, ARRAY_COUNT(sSYAudioDmaMesgs));
     osCreateMesgQueue(&sSYAudioSPTaskMesgQueue, sSYAudioSPTaskMesgs, ARRAY_COUNT(sSYAudioSPTaskMesgs));
     osSendMesg(&sSYAudioSPTaskMesgQueue, (OSMesg)NULL, OS_MESG_BLOCK);
@@ -1005,7 +1005,7 @@ void syAudioThreadMain(void *arg)
     
     dSYAudioPublicSettings = sSYAudioCurrentSettings;
     
-    osSendMesg(&gSYMainThreadingQueue, (OSMesg)1, OS_MESG_NOBLOCK);
+    osSendMesg(&gSYMainThreadingMesgQueue, (OSMesg)1, OS_MESG_NOBLOCK);
 
     while (TRUE)
     {
@@ -1080,7 +1080,7 @@ void syAudioThreadMain(void *arg)
             osRecvMesg(&sSYAudioDmaMesgQueue, NULL, OS_MESG_NOBLOCK);
         }
         osWritebackDCacheAll();
-        osSendMesg(&scTaskQueue, (OSMesg)sSYAudioCurrentTask, OS_MESG_NOBLOCK);
+        osSendMesg(&gSYSchedulerTaskMesgQueue, (OSMesg)sSYAudioCurrentTask, OS_MESG_NOBLOCK);
         
         dSYAudioCurrentTic++;
         dSYAudioNextDma = 0;
@@ -1188,7 +1188,7 @@ void syAudioThreadMain(void *arg)
             
                 dSYAudioIsSettingsUpdated = FALSE;
                 ai_len = 0;
-                osSendMesg(&gSYMainThreadingQueue, (OSMesg*)1, OS_MESG_NOBLOCK);
+                osSendMesg(&gSYMainThreadingMesgQueue, (OSMesg*)1, OS_MESG_NOBLOCK);
             }
             else
             {
@@ -1496,7 +1496,7 @@ sb32 syAudioGetStatus(void)
 // 0x8002106C - unreferenced?
 void syAudioUpdateMesgQueue(void)
 {
-    osRecvMesg(&gSYMainThreadingQueue, NULL, OS_MESG_NOBLOCK);
+    osRecvMesg(&gSYMainThreadingMesgQueue, NULL, OS_MESG_NOBLOCK);
     dSYAudioIsSettingsUpdated = TRUE;
-    osRecvMesg(&gSYMainThreadingQueue, NULL, OS_MESG_BLOCK);
+    osRecvMesg(&gSYMainThreadingMesgQueue, NULL, OS_MESG_BLOCK);
 }

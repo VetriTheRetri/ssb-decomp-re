@@ -1,11 +1,13 @@
-#ifndef SYS_THREAD_3_H
-#define SYS_THREAD_3_H
+#ifndef _SYSCHEDULER_H_
+#define _SYSCHEDULER_H_
 
 #include <macros.h>
 
 #include <PR/os.h>
 #include <PR/sptask.h>
 #include <PR/ultratypes.h>
+
+#define SYSCHEDULER_BUFFER_NULL ((void*)-1)
 
 enum SYTaskType
 {
@@ -25,20 +27,20 @@ enum SYTaskType
 
 enum SYTaskState
 {
-    nSYScheduleStatusDefault,
-    nSYScheduleStatusTaskQueued,
-    nSYScheduleStatusTaskRunning,
-    nSYScheduleStatusTaskPending,
-    nSYScheduleStatusTaskSuspending,
-    nSYScheduleStatusTaskSuspended,
-    nSYScheduleStatusTaskStopped
+    nSYSchedulerStatusDefault,
+    nSYSchedulerStatusTaskQueued,
+    nSYSchedulerStatusTaskRunning,
+    nSYSchedulerStatusTaskPending,
+    nSYSchedulerStatusTaskSuspending,
+    nSYSchedulerStatusTaskSuspended,
+    nSYSchedulerStatusTaskStopped
 };
 
-typedef struct SCClient
+typedef struct SYClient
 {
-    /* 0x00 */ struct SCClient* next;
+    /* 0x00 */ struct SYClient* next;
     /* 0x04 */ OSMesgQueue* mq;
-} SCClient; // size = 0x8
+} SYClient; // size = 0x8
 
 struct SYTaskInfo;
 struct SYTaskGfx;
@@ -122,7 +124,7 @@ typedef struct
 typedef struct
 {
     /* 0x00 */ SYTaskInfo info;
-    /* 0x24 */ SCClient* client;
+    /* 0x24 */ SYClient* client;
 } SYTaskAddClient; // size == 0x28
 
 typedef struct SYTaskGfxEnd
@@ -140,20 +142,20 @@ typedef struct SYTaskType9
 
 } SYTaskType9; // size >= 0x28
 
-extern OSMesgQueue scTaskQueue;
-extern u32 D_80044FA4_407B4;
-extern u32 D_80044FB4_407C4;
-extern u32 scTimeSpentAudio;
+extern OSMesgQueue gSYSchedulerTaskMesgQueue;
+extern sb32 gSYSchedulerIsCustomFramebuffer;
+extern u32 gSYSchedulerFrameTime;
+extern u32 gSYSchedulerAudioTime;
 extern u64 sSYSchedulerRdpCache;
-extern s32 D_80045020_40830;
+extern sb32 gSYSchedulerIsSoftReset;
 extern void *gSYSchedulerNextFramebuffer;
 extern void *gSYSchedulerCurrentFramebuffer;
 extern u32 gSYSchedulerFramebufferSetTimestamp;
 
 extern void func_80000970(SYTaskInfo *arg0);
-extern void scAddClient(SCClient *arg0, OSMesgQueue *mq, OSMesg *msg, u32 count);
+extern void sySchedulerAddClient(SYClient *arg0, OSMesgQueue *mq, OSMesg *msg, u32 count);
 extern s32 scCheckGfxTaskDefault(SYTaskGfx *t);
-extern void scheduler_scheduler(void *arg);
+extern void sySchedulerThreadMain(void *arg);
 extern s32 func_80000B54(UNUSED SYTaskInfo *t);
 
 #endif /* SYS_THREAD_3_H */

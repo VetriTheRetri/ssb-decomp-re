@@ -67,7 +67,7 @@ void syDmaCopy(OSPiHandle *handle, uintptr_t phys, uintptr_t virtual, size_t siz
         mesg.dramAddr = (void*)virtual;
         mesg.devAddr  = phys;
 
-        if (!(D_80045020_40830))
+        if (!(gSYSchedulerIsSoftReset))
         {
             osEPiStartDma(handle, &mesg, direction);
         }
@@ -82,7 +82,7 @@ void syDmaCopy(OSPiHandle *handle, uintptr_t phys, uintptr_t virtual, size_t siz
         mesg.devAddr  = phys;
         mesg.size     = size;
 
-        if (!(D_80045020_40830)) 
+        if (!(gSYSchedulerIsSoftReset)) 
         { 
             osEPiStartDma(handle, &mesg, direction);
         }

@@ -532,8 +532,8 @@ SYTaskmanSetup dSC1PGameTaskmanSetup =
     // Task Manager Buffer Setup
     {
         0,                          // ???
-        sc1PGameFuncUpdate,          // Update function
-        scManagerFuncDraw,              // Frame draw function
+        sc1PGameFuncUpdate,         // Update function
+        scManagerFuncDraw,          // Frame draw function
         &ovl65_BSS_END,             // Allocatable memory pool start
         0,                          // Allocatable memory pool size
         1,                          // ???

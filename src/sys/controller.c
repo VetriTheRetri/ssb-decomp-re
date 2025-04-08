@@ -12,7 +12,7 @@ OSMesgQueue sSYControllerInitMesgQueue; // Queue for OS controller Init, Status,
 OSMesg sSYControllerInitMesg[1]; // Message buffer for OS controller Init, Status, and Read
 
 // 0x80045110
-SCClient sSYControllerClient;
+SYClient sSYControllerClient;
 
 // 0x80045118
 OSMesg sSYControllerEventMesgs[7]; // used in MqList sSYControllerClient
@@ -429,7 +429,7 @@ void syControllerParseEvent(ControllerEvent *evt)
                     break;
 
                 case MOTOR_CMD_START:
-                    if (!D_80045020_40830)
+                    if (!gSYSchedulerIsSoftReset)
                     {
                          osMotorStart(pfs);
                     }
@@ -453,8 +453,8 @@ void syControllerThreadMain(void *unused)
     OSMesg mesg;
 
     syControllerInitDevices();
-    scAddClient(&sSYControllerClient, &sSYControllerEventMesgQueue, sSYControllerEventMesgs, ARRAY_COUNT(sSYControllerEventMesgs));
-    osSendMesg(&gSYMainThreadingQueue, (OSMesg)1, OS_MESG_NOBLOCK);
+    sySchedulerAddClient(&sSYControllerClient, &sSYControllerEventMesgQueue, sSYControllerEventMesgs, ARRAY_COUNT(sSYControllerEventMesgs));
+    osSendMesg(&gSYMainThreadingMesgQueue, (OSMesg)1, OS_MESG_NOBLOCK);
 
     while (TRUE)
     {

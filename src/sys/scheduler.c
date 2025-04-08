@@ -45,12 +45,12 @@ union CheckedPtr {
 };
 
 struct ViSettings {
-    ub32 antiAlias    : 1; // b0 0 80 => unknown game control (arg2 & 0x1) [aa & resamp enabled?]
+    ub32 antiAlias    : 1; // b0 0 80 => unknown game control (flags & 0x1) [aa & resamp enabled?]
     ub32 serrate      : 1; // b1 0 40 => serrate enabled (bool)
     ub32 pixelSize32  : 1; // b2   20 => type_32 enabled
     ub32 gamma        : 1; // b3   10 => gamma on
-    ub32 blackout     : 1; // b4   08 => unknown game control (arg2 & 0x100) [blackout ?]
-    ub32 unk_b04      : 1; // b5   04 => unknown game control (arg2 & 0x400) [custom resolution?]
+    ub32 blackout     : 1; // b4   08 => unknown game control (flags & 0x100) [blackout ?]
+    ub32 unk_b04      : 1; // b5   04 => unknown game control (flags & 0x400) [custom resolution?]
     ub32 gammaDither  : 1; // b6   02 => gamma dither on
     ub32 ditherFilter : 1; // b7   01 => dither filter
     ub32 divot        : 1; // b8 1 80 => divot on
@@ -58,45 +58,51 @@ struct ViSettings {
 };
 
 // bss
-SCClient *scClientList;
-SYTaskInfo *scMainQueueHead; // largest priority/unk04?
-SYTaskInfo *D_80044EC8_406D8; // smallest priority/unk04?
-SYTaskGfx *scCurrentGfxTask;  // actually a pointer to SYTaskGfx?
-SYTaskAudio *scCurrentAudioTask;  // largest priority queue 2
-SYTaskGfx *scPausedQueueHead;  // smallest priority queue 2
-SYTaskGfx *D_80044ED8_406E8;  // largest priority queue 3
+SYClient *sSYSchedulerClients;
+SYTaskInfo *sSYSchedulerMainQueueHead; // largest priority/unk04?
+SYTaskInfo *sSYSchedulerMainQueueTail; // smallest priority/unk04?
+SYTaskGfx *sSYSchedulerCurrentTaskGfx;  // actually a pointer to SYTaskGfx?
+SYTaskAudio *sSYSchedulerCurrentTaskAudio;  // largest priority queue 2
+SYTaskGfx *sSYSchedulerPausedQueueHead;  // smallest priority queue 2
+SYTaskGfx *sSYSchedulerPausedQueueTail;  // largest priority queue 3
 SYTaskGfx *scQueue3Head;  // smallest priority queue 3
 SYTaskGfx *D_80044EE0_406F0;  // standard linked list head
 SYTaskGfx *scCurrentQueue3Task;  // standard linked list tail
-OSViMode D_80044EE8_406F8;
-OSViMode D_80044F38_40748;
-u32 D_80044F88_40798[2];
-void *scFrameBuffers[3];
+OSViMode sSYSchedulerPendingViMode;
+OSViMode sSYSchedulerCurrentViMode;
+sb32 sSYSchedulerIsViModePending;
+void *sSYSchedulerFramebuffers[3];
 void *gSYSchedulerNextFramebuffer;
-void *scUnkFrameBuffer;
-u32 D_80044FA4_407B4;
+void *sSYSchedulerCustomFramebuffer;
+sb32 gSYSchedulerIsCustomFramebuffer;
 void *gSYSchedulerCurrentFramebuffer;
 u32 gSYSchedulerFramebufferSetTimestamp;
 u32 gSYSchedulerAudioStartTimestamp;
-u32 D_80044FB4_407C4;
-u32 scTimeSpentAudio;
-struct ViSettings D_80044FBC_407CC; // bitflags? union?
+
+// 0x80044FB4 - Time taken to process frame
+u32 gSYSchedulerFrameTime;
+
+// 0x80044FB8 - Time taken to process audio
+u32 gSYSchedulerAudioTime;
+
+struct ViSettings sSYSchedulerImageSetup; // bitflags? union?
+
 u64 sSYSchedulerRdpCache;
-s32 scRDPOutputBufferUsed;
-u64 *scRDPBuffer;
-u32 scRDPBufferCapacity; // size of scRDPBuffer
-u8 unref_80044FD4[4];
-OSMesg D_80044FD8_407E8[8];
-OSMesgQueue scTaskQueue;
+
+s32 sSYSchedulerRdpOutputBufferID;
+u64 *sSYSchedulerRdpOutputBuffer;
+size_t sSYSchedulerRdpOutputBufferSize; // size of sSYSchedulerRdpOutputBuffer
+OSMesg sSYSchedulerTaskMesgs[8];
+OSMesgQueue gSYSchedulerTaskMesgQueue;
 sb32 scUseCustomSwapBufferFunc;
 OSMesgQueue *scCustomSwapBufferQueue;
-void (*D_80045018_40828)(void);
+void (*sSYSchedulerFuncReset)(void);
 u32 sSYSchedulerTicCount;
-s32 D_80045020_40830; // gSoftReseting ..?
-s32 D_80045024_40834; // return of osAfterPreNMI
-void *D_80045028_40838[3];
-u8 D_80045034_40844;
-u8 D_80045035_40845;
+sb32 gSYSchedulerIsSoftReset; // gSoftReseting ..?
+s32 sSYSchedulerAfterPreNMI; // return of osAfterPreNMI
+void *sSYSchedulerReadyBuffers[3];
+u8 sSYSchedulerReadyBufferID;
+u8 sSYSchedulerSwapBufferID;
 
 // 0x80000920
 void sySchedulerSetTicCount(u32 tics)
@@ -110,13 +116,13 @@ u32 sySchedulerGetTicCount(void)
     return sSYSchedulerTicCount;
 }
 
-void unref_80000938(void) {
-    SYTaskGfx *i = scCurrentGfxTask, *j = scCurrentQueue3Task, *k = scQueue3Head;
-
-    do {
-    } while (i || j || k);
-
-    return;
+void unref_80000938(void)
+{
+    do
+    {
+        continue;
+    }
+    while ((sSYSchedulerCurrentTaskGfx != NULL) || (scCurrentQueue3Task != NULL) || (scQueue3Head != NULL));
 }
 
 void func_80000970(SYTaskInfo *task) {
@@ -127,176 +133,212 @@ void func_80000970(SYTaskInfo *task) {
     task->fnCheck  = NULL;
     task->retVal = 1;
     task->mq = &mq;
-    osSendMesg(&scTaskQueue, (OSMesg)task, OS_MESG_NOBLOCK);
+    osSendMesg(&gSYSchedulerTaskMesgQueue, (OSMesg)task, OS_MESG_NOBLOCK);
     osRecvMesg(&mq, NULL, OS_MESG_BLOCK);
 }
 
-void scAddClient(SCClient *arg0, OSMesgQueue *mq, OSMesg *msg, u32 count) {
+void sySchedulerAddClient(SYClient *client, OSMesgQueue *mq, OSMesg *msg, u32 count)
+{
     SYTaskAddClient t;
 
     osCreateMesgQueue(mq, msg, count);
-    arg0->mq        = mq;
-    t.info.type     = nSYTaskTypeAddClient;
+
+    client->mq = mq;
+    t.info.type = nSYTaskTypeAddClient;
     t.info.priority = 100;
-    t.client        = arg0;
+    t.client = client;
+
     func_80000970(&t.info);
 }
 
-// 0x80000A34
-// returns true if task can be executed now
-s32 scCheckGfxTaskDefault(SYTaskGfx* t) {
-    s32 idx;
+// 0x80000A34 - Returns true if task can be executed now
+s32 scCheckGfxTaskDefault(SYTaskGfx* t)
+{
+    s32 unused;
     s32 i;
-    void* nextFb;
-    void* curFb;
-    void* fb;
+    void *next, *curr, *free;
 
-    if (gSYSchedulerNextFramebuffer != NULL) {
+    if (gSYSchedulerNextFramebuffer != NULL)
+    {
         return TRUE;
     }
-    if (scUnkFrameBuffer != NULL) {
+    else if (sSYSchedulerCustomFramebuffer != NULL)
+    {
         return FALSE;
     }
+    next = osViGetNextFramebuffer();
+    curr = osViGetCurrentFramebuffer();
 
-    nextFb = osViGetNextFramebuffer();
-    curFb = osViGetCurrentFramebuffer();
+    // Set framebuffer for drawing
+    if (t->framebuffer_id != -1)
+    {
+        free = sSYSchedulerFramebuffers[t->framebuffer_id];
 
-    // set framebuffer for drawing
-    idx = t->framebuffer_id;
-    if (idx != -1) {
-        fb = scFrameBuffers[idx];
-        if (fb != NULL && curFb != fb && nextFb != fb) {
-            scUnkFrameBuffer = gSYSchedulerNextFramebuffer = fb;
-            scRDPOutputBufferUsed = 0;
+        if ((free != NULL) && (curr != free) && (next != free))
+        {
+            sSYSchedulerCustomFramebuffer = gSYSchedulerNextFramebuffer = free;
+            sSYSchedulerRdpOutputBufferID = 0;
             gSYSchedulerFramebufferSetTimestamp = osGetCount();
             return TRUE;
         }
     }
+    // Set any available framebuffer
+    for (i = 0; i < ARRAY_COUNT(sSYSchedulerFramebuffers); i++)
+    {
+        free = sSYSchedulerFramebuffers[i];
 
-    // set any available
-    for (i = 0; i < ARRAY_COUNT(scFrameBuffers); i++) {
-        fb = scFrameBuffers[i];
-        if (fb != NULL && curFb != fb && nextFb != fb) {
-            gSYSchedulerNextFramebuffer = fb;
-            scRDPOutputBufferUsed = 0;
+        if ((free != NULL) && (curr != free) && (next != free))
+        {
+            gSYSchedulerNextFramebuffer = free;
+            sSYSchedulerRdpOutputBufferID = 0;
             gSYSchedulerFramebufferSetTimestamp = osGetCount();
             return TRUE;
         }
     }
-
     return FALSE;
 }
 
-s32 func_80000B54(UNUSED SYTaskInfo *t) {
-    SYTaskInfo *cur;
-    const s32 TYPE_TO_CHECK = nSYTaskTypeGfx;
+s32 func_80000B54(UNUSED SYTaskInfo *t)
+{
+    SYTaskInfo *curr;
 
-    if (scCurrentGfxTask != NULL && scCurrentGfxTask->info.type == TYPE_TO_CHECK) { return 0; }
-
-    cur = &scPausedQueueHead->info;
-    while (cur != NULL) {
-        if (cur->type == TYPE_TO_CHECK) { return 0; }
-        cur = cur->next;
+    if ((sSYSchedulerCurrentTaskGfx != NULL) && (sSYSchedulerCurrentTaskGfx->info.type == nSYTaskTypeGfx))
+    {
+        return FALSE;
     }
+    curr = &sSYSchedulerPausedQueueHead->info;
 
-    cur = scMainQueueHead;
-    while (cur != NULL) {
-        if (cur->type == TYPE_TO_CHECK) { return 0; }
-        cur = cur->next;
+    while (curr != NULL)
+    {
+        if (curr->type == nSYTaskTypeGfx)
+        {
+            return FALSE;
+        }
+        curr = curr->next;
     }
+    curr = sSYSchedulerMainQueueHead;
 
-    if (scCurrentQueue3Task != NULL && scCurrentQueue3Task->info.type == TYPE_TO_CHECK) { return 0; }
-
-    cur = &scQueue3Head->info;
-    while (cur != NULL) {
-        if (cur->type == TYPE_TO_CHECK) { return 0; }
-        cur = cur->next;
+    while (curr != NULL)
+    {
+        if (curr->type == nSYTaskTypeGfx)
+        {
+            return FALSE;
+        }
+        curr = curr->next;
     }
+    if ((scCurrentQueue3Task != NULL) && (scCurrentQueue3Task->info.type == nSYTaskTypeGfx))
+    {
+        return FALSE;
+    }
+    curr = &scQueue3Head->info;
 
-    if (D_80045034_40844 != D_80045035_40845) { return 0; }
-
-    return 1;
+    while (curr != NULL)
+    {
+        if (curr->type == nSYTaskTypeGfx)
+        {
+            return FALSE;
+        }
+        curr = curr->next;
+    }
+    if (sSYSchedulerReadyBufferID != sSYSchedulerSwapBufferID)
+    {
+        return FALSE;
+    }
+    else return TRUE;
 }
 
-// insert into task (command?) priority queue?
-void func_80000C64(SYTaskInfo *newTask) {
-    SYTaskInfo *csr;
+// Insert into task priority queue
+void sySchedulerAddMainQueue(SYTaskInfo *this_info)
+{
+    // Find task with priority higher than this_info
+    SYTaskInfo *curr_info = sSYSchedulerMainQueueTail;
 
-    // find task with priority higher than arg0
-    csr = D_80044EC8_406D8;
-    while (csr != NULL && csr->priority < newTask->priority) { csr = csr->prev; }
-
-    // insert new task into queue
-    newTask->prev = csr;
-    if (csr != NULL) {
-        newTask->next = csr->next;
-        csr->next     = newTask;
-    } else {
-        newTask->next   = scMainQueueHead;
-        scMainQueueHead = newTask;
+    while ((curr_info != NULL) && (curr_info->priority < this_info->priority))
+    {
+        curr_info = curr_info->prev;
     }
+    // Insert new task into queue
+    this_info->prev = curr_info;
 
-    csr = newTask->next;
-    if (csr != NULL) {
-        csr->prev = newTask;
-    } else {
-        D_80044EC8_406D8 = newTask;
+    if (curr_info != NULL)
+    {
+        this_info->next = curr_info->next;
+        curr_info->next = this_info;
     }
+    else
+    {
+        this_info->next = sSYSchedulerMainQueueHead;
+        sSYSchedulerMainQueueHead = this_info;
+    }
+    curr_info = this_info->next;
+
+    if (curr_info != NULL)
+    {
+        curr_info->prev = this_info;
+    }
+    else sSYSchedulerMainQueueTail = this_info;
 }
 
 // 0x80000CF4
-void scMainQueueRemove(SYTaskInfo *task) {
-    if (task->prev != NULL) {
+void sySchedulerRemoveMainQueue(SYTaskInfo *task)
+{
+    if (task->prev != NULL)
+    {
         task->prev->next = task->next;
-    } else {
-        scMainQueueHead = task->next;
     }
-
-    if (task->next != NULL) {
+    else sSYSchedulerMainQueueHead = task->next;
+    
+    if (task->next != NULL)
+    {
         task->next->prev = task->prev;
-    } else {
-        D_80044EC8_406D8 = task->prev;
     }
+    else sSYSchedulerMainQueueTail = task->prev;
 }
 
-// 0x80000D44
-// add to scPausedQueueHead/D_80044ED8_406E8 priorirty queue
-void scPausedQueueAdd(SYTaskGfx *task) {
-    SYTaskInfo *info;
+// 0x80000D44 - Add to sSYSchedulerPausedQueueHead/sSYSchedulerPausedQueueTail priority queue
+void sySchedulerAddPausedQueue(SYTaskInfo *this_info)
+{
+    SYTaskInfo *tail_info = &sSYSchedulerPausedQueueTail->info;
 
-    info = &D_80044ED8_406E8->info;
-    while (info != NULL && info->priority < task->info.priority) { info = info->prev; }
-
-    task->info.prev = info;
-    if (info != NULL) {
-        task->info.next = info->next;
-        info->next   = &task->info;
-    } else {
-        task->info.next = &scPausedQueueHead->info;
-        scPausedQueueHead = task;
+    while ((tail_info != NULL) && (tail_info->priority < this_info->priority))
+    {
+        tail_info = tail_info->prev;
     }
+    this_info->prev = tail_info;
 
-    info = task->info.next;
-    if (info != NULL) {
-        info->prev = &task->info;
-    } else {
-        D_80044ED8_406E8 = task;
+    if (tail_info != NULL)
+    {
+        this_info->next = tail_info->next;
+        tail_info->next = this_info;
     }
+    else
+    {
+        this_info->next = &sSYSchedulerPausedQueueHead->info;
+        sSYSchedulerPausedQueueHead = this_info;
+    }
+    tail_info = this_info->next;
+
+    if (tail_info != NULL)
+    {
+        tail_info->prev = this_info;
+    }
+    else sSYSchedulerPausedQueueTail = this_info;
 }
 
-// remove from scPausedQueueHead/D_80044ED8_406E8 queue
-void func_80000DD4(SYTaskGfx *task) {
-    if (task->info.prev != NULL) {
-        task->info.prev->next = task->info.next;
-    } else {
-        scPausedQueueHead = (void *)task->info.next;
+// remove from sSYSchedulerPausedQueueHead/sSYSchedulerPausedQueueTail queue
+void sySchedulerRemovePausedQueue(SYTaskInfo *this_info)
+{
+    if (this_info->prev != NULL)
+    {
+        this_info->prev->next = this_info->next;
     }
-
-    if (task->info.next != NULL) {
-        task->info.next->prev = task->info.prev;
-    } else {
-        D_80044ED8_406E8 = (void *)task->info.prev;
+    else sSYSchedulerPausedQueueHead = this_info->next;
+    
+    if (this_info->next != NULL)
+    {
+        this_info->next->prev = this_info->prev;
     }
+    else sSYSchedulerPausedQueueTail = this_info->prev;
 }
 
 // scQueue3Add
@@ -327,17 +369,18 @@ void func_80000E5C(SYTaskGfx *task) {
     }
 }
 
-void func_80000EAC(void) {
-    D_80044EE8_406F8 = D_80044F38_40748;
-    osViSetMode(&D_80044EE8_406F8);
-    osViBlack(D_80044FBC_407CC.blackout);
-    D_80044F88_40798[0] = 0;
+void sySchedulerApplyViMode(void)
+{
+    sSYSchedulerPendingViMode = sSYSchedulerCurrentViMode;
+    osViSetMode(&sSYSchedulerPendingViMode);
+    osViBlack(sSYSchedulerImageSetup.blackout);
+    sSYSchedulerIsViModePending = FALSE;
 }
 
 // also non matching in snap sys/sched
-void func_80000F30(u32, u32, s32, s16, s16, s16, s16);
+void sySchedulerUpdateViMode(u32, u32, s32, s16, s16, s16, s16);
 #ifdef NON_MATCHING
-void func_80000F30(u32 width, u32 height, u32 arg2, s16 off_left, s16 off_right, s16 off_top, s16 off_bottom)
+void sySchedulerUpdateViMode(u32 width, u32 height, u32 flags, s16 off_left, s16 off_right, s16 off_top, s16 off_bottom)
 {
     sb32 not_phi_v1;
     sb32 phi_v1;
@@ -349,109 +392,109 @@ void func_80000F30(u32 width, u32 height, u32 arg2, s16 off_left, s16 off_right,
 
     is_res_in_bounds = ((width > GS_SCREEN_WIDTH_DEFAULT) || (height > GS_SCREEN_HEIGHT_DEFAULT)) ? FALSE : TRUE;
 
-    if (arg2 & SYVIDEO_FLAG_SERRATE)
+    if (flags & SYVIDEO_FLAG_SERRATE)
     {
-        D_80044FBC_407CC.serrate = TRUE;
-        D_80044F38_40748.comRegs.ctrl |= VI_CTRL_SERRATE_ON;
+        sSYSchedulerImageSetup.serrate = TRUE;
+        sSYSchedulerCurrentViMode.comRegs.ctrl |= VI_CTRL_SERRATE_ON;
     }
-    if (arg2 & SYVIDEO_FLAG_NOSERRATE)
+    if (flags & SYVIDEO_FLAG_NOSERRATE)
     {
-        D_80044FBC_407CC.serrate = FALSE;
-        D_80044F38_40748.comRegs.ctrl &= ~VI_CTRL_SERRATE_ON;
+        sSYSchedulerImageSetup.serrate = FALSE;
+        sSYSchedulerCurrentViMode.comRegs.ctrl &= ~VI_CTRL_SERRATE_ON;
     }
-    if (arg2 & SYVIDEO_FLAG_COLORDEPTH16)
+    if (flags & SYVIDEO_FLAG_COLORDEPTH16)
     {
-        D_80044FBC_407CC.pixelSize32 = FALSE;
-        D_80044F38_40748.comRegs.ctrl &= ~(VI_CTRL_TYPE_32 | VI_CTRL_TYPE_16);
-        D_80044F38_40748.comRegs.ctrl |= VI_CTRL_TYPE_16;
+        sSYSchedulerImageSetup.pixelSize32 = FALSE;
+        sSYSchedulerCurrentViMode.comRegs.ctrl &= ~(VI_CTRL_TYPE_32 | VI_CTRL_TYPE_16);
+        sSYSchedulerCurrentViMode.comRegs.ctrl |= VI_CTRL_TYPE_16;
     }
-    if (arg2 & SYVIDEO_FLAG_COLORDEPTH32)
+    if (flags & SYVIDEO_FLAG_COLORDEPTH32)
     {
-        D_80044FBC_407CC.pixelSize32 = TRUE;
-        D_80044F38_40748.comRegs.ctrl &= ~(VI_CTRL_TYPE_32 | VI_CTRL_TYPE_16);
-        D_80044F38_40748.comRegs.ctrl |= VI_CTRL_TYPE_32;
+        sSYSchedulerImageSetup.pixelSize32 = TRUE;
+        sSYSchedulerCurrentViMode.comRegs.ctrl &= ~(VI_CTRL_TYPE_32 | VI_CTRL_TYPE_16);
+        sSYSchedulerCurrentViMode.comRegs.ctrl |= VI_CTRL_TYPE_32;
     }
-    if (arg2 & SYVIDEO_FLAG_GAMMA)
+    if (flags & SYVIDEO_FLAG_GAMMA)
     {
-        D_80044FBC_407CC.gamma = TRUE;
-        D_80044F38_40748.comRegs.ctrl |= VI_CTRL_GAMMA_ON;
+        sSYSchedulerImageSetup.gamma = TRUE;
+        sSYSchedulerCurrentViMode.comRegs.ctrl |= VI_CTRL_GAMMA_ON;
     }
-    if (arg2 & SYVIDEO_FLAG_NOGAMMA)
+    if (flags & SYVIDEO_FLAG_NOGAMMA)
     {
-        D_80044FBC_407CC.gamma = FALSE;
-        D_80044F38_40748.comRegs.ctrl &= ~VI_CTRL_GAMMA_ON;
+        sSYSchedulerImageSetup.gamma = FALSE;
+        sSYSchedulerCurrentViMode.comRegs.ctrl &= ~VI_CTRL_GAMMA_ON;
     }
-    if (arg2 & SYVIDEO_FLAG_GAMMADITHER)
+    if (flags & SYVIDEO_FLAG_GAMMADITHER)
     {
-        D_80044FBC_407CC.gammaDither = TRUE;
-        D_80044F38_40748.comRegs.ctrl |= VI_CTRL_GAMMA_DITHER_ON;
+        sSYSchedulerImageSetup.gammaDither = TRUE;
+        sSYSchedulerCurrentViMode.comRegs.ctrl |= VI_CTRL_GAMMA_DITHER_ON;
     }
-    if (arg2 & SYVIDEO_FLAG_NOGAMMADITHER)
+    if (flags & SYVIDEO_FLAG_NOGAMMADITHER)
     {
-        D_80044FBC_407CC.gammaDither = FALSE;
-        D_80044F38_40748.comRegs.ctrl &= ~VI_CTRL_GAMMA_DITHER_ON;
+        sSYSchedulerImageSetup.gammaDither = FALSE;
+        sSYSchedulerCurrentViMode.comRegs.ctrl &= ~VI_CTRL_GAMMA_DITHER_ON;
     }
-    if (arg2 & SYVIDEO_FLAG_DITHERFILTER)
+    if (flags & SYVIDEO_FLAG_DITHERFILTER)
     {
-        D_80044FBC_407CC.ditherFilter = TRUE;
-        D_80044F38_40748.comRegs.ctrl |= VI_CTRL_DITHER_FILTER_ON;
+        sSYSchedulerImageSetup.ditherFilter = TRUE;
+        sSYSchedulerCurrentViMode.comRegs.ctrl |= VI_CTRL_DITHER_FILTER_ON;
     }
-    if (arg2 & SYVIDEO_FLAG_NODITHERFILTER)
+    if (flags & SYVIDEO_FLAG_NODITHERFILTER)
     {
-        D_80044FBC_407CC.ditherFilter = FALSE;
-        D_80044F38_40748.comRegs.ctrl &= ~VI_CTRL_DITHER_FILTER_ON;
+        sSYSchedulerImageSetup.ditherFilter = FALSE;
+        sSYSchedulerCurrentViMode.comRegs.ctrl &= ~VI_CTRL_DITHER_FILTER_ON;
     }
-    if (arg2 & SYVIDEO_FLAG_DIVOT)
+    if (flags & SYVIDEO_FLAG_DIVOT)
     {
-        D_80044FBC_407CC.divot = TRUE;
-        D_80044F38_40748.comRegs.ctrl |= VI_CTRL_DIVOT_ON;
+        sSYSchedulerImageSetup.divot = TRUE;
+        sSYSchedulerCurrentViMode.comRegs.ctrl |= VI_CTRL_DIVOT_ON;
     }
-    if (arg2 & SYVIDEO_FLAG_NODIVOT)
+    if (flags & SYVIDEO_FLAG_NODIVOT)
     {
-        D_80044FBC_407CC.divot = FALSE;
-        D_80044F38_40748.comRegs.ctrl &= ~VI_CTRL_DIVOT_ON;
+        sSYSchedulerImageSetup.divot = FALSE;
+        sSYSchedulerCurrentViMode.comRegs.ctrl &= ~VI_CTRL_DIVOT_ON;
     }
-    if (arg2 & SYVIDEO_FLAG_BLACKOUT)
+    if (flags & SYVIDEO_FLAG_BLACKOUT)
     {
-        D_80044FBC_407CC.blackout = TRUE;
+        sSYSchedulerImageSetup.blackout = TRUE;
     }
-    if (arg2 & SYVIDEO_FLAG_NOBLACKOUT)
+    if (flags & SYVIDEO_FLAG_NOBLACKOUT)
     {
-        D_80044FBC_407CC.blackout = FALSE;
+        sSYSchedulerImageSetup.blackout = FALSE;
     }
-    if (arg2 & 0x400)
+    if (flags & 0x400)
     {
-        D_80044FBC_407CC.unk_b04 = TRUE;
+        sSYSchedulerImageSetup.unk_b04 = TRUE;
     }
-    if (arg2 & 0x800)
+    if (flags & 0x800)
     {
-        D_80044FBC_407CC.unk_b04 = FALSE;
+        sSYSchedulerImageSetup.unk_b04 = FALSE;
     }
-    if (arg2 & SYVIDEO_FLAG_ANTIALIAS)
+    if (flags & SYVIDEO_FLAG_ANTIALIAS)
     {
-        D_80044FBC_407CC.antiAlias = TRUE;
+        sSYSchedulerImageSetup.antiAlias = TRUE;
     }
-    if (arg2 & SYVIDEO_FLAG_NOANTIALIAS)
+    if (flags & SYVIDEO_FLAG_NOANTIALIAS)
     {
-        D_80044FBC_407CC.antiAlias = FALSE;
+        sSYSchedulerImageSetup.antiAlias = FALSE;
     }
-    D_80044F38_40748.comRegs.ctrl &= ~VI_CTRL_ANTIALIAS_MASK;
+    sSYSchedulerCurrentViMode.comRegs.ctrl &= ~VI_CTRL_ANTIALIAS_MASK;
 
-    if (D_80044FBC_407CC.antiAlias)
+    if (sSYSchedulerImageSetup.antiAlias)
     {
-        D_80044F38_40748.comRegs.ctrl |= ((D_80044FBC_407CC.ditherFilter) ? 0 : VI_CTRL_ANTIALIAS_MODE_1);
+        sSYSchedulerCurrentViMode.comRegs.ctrl |= ((sSYSchedulerImageSetup.ditherFilter) ? 0 : VI_CTRL_ANTIALIAS_MODE_1);
     }
-    else if (!(D_80044FBC_407CC.unk_b04) && (D_80044FBC_407CC.pixelSize32 == TRUE))
+    else if (!(sSYSchedulerImageSetup.unk_b04) && (sSYSchedulerImageSetup.pixelSize32 == TRUE))
     {
-        D_80044F38_40748.comRegs.ctrl |= VI_CTRL_ANTIALIAS_MODE_3; // neither (replicate pixels, no interpolate)
+        sSYSchedulerCurrentViMode.comRegs.ctrl |= VI_CTRL_ANTIALIAS_MODE_3; // neither (replicate pixels, no interpolate)
     }
-    else D_80044F38_40748.comRegs.ctrl |= VI_CTRL_ANTIALIAS_MODE_2; // resamp only (treat as all fully covered)
+    else sSYSchedulerCurrentViMode.comRegs.ctrl |= VI_CTRL_ANTIALIAS_MODE_2; // resamp only (treat as all fully covered)
     
     if (is_res_in_bounds != FALSE)
     {
-        phi_v1 = (D_80044FBC_407CC.serrate) ? FALSE : TRUE;
+        phi_v1 = (sSYSchedulerImageSetup.serrate) ? FALSE : TRUE;
     }
-    else phi_v1 = (D_80044FBC_407CC.unk_b04) ? FALSE : TRUE;
+    else phi_v1 = (sSYSchedulerImageSetup.unk_b04) ? FALSE : TRUE;
 
     off_top &= ~1;
     off_bottom &= ~1;
@@ -462,32 +505,32 @@ void func_80000F30(u32 width, u32 height, u32 arg2, s16 off_left, s16 off_right,
     vertical = (((not_res_in_bounds != FALSE) && (not_phi_v1 != FALSE)) ? 2 : 1) *
     (((height << 11) / ((off_bottom - off_top) + 480)) / ((is_res_in_bounds != FALSE) ? 1 : 2));
     
-    D_80044F38_40748.comRegs.width = (((not_res_in_bounds != FALSE) && (phi_v1 != FALSE)) ? 2 : 1) * width;
+    sSYSchedulerCurrentViMode.comRegs.width = (((not_res_in_bounds != FALSE) && (phi_v1 != FALSE)) ? 2 : 1) * width;
 
     if (osTvType == OS_TV_NTSC)
     {
-        D_80044F38_40748.comRegs.burst     = 0x3E52239;
-        D_80044F38_40748.comRegs.vSync     = 0x20C;
-        D_80044F38_40748.comRegs.hSync     = 0xC15;
-        D_80044F38_40748.comRegs.leap      = 0xC150C15;
-        D_80044F38_40748.comRegs.hStart    = 0x6C02EC;
-        D_80044F38_40748.fldRegs[0].vStart = 0x2501FF;
-        D_80044F38_40748.fldRegs[0].vBurst = 0xE0204;
+        sSYSchedulerCurrentViMode.comRegs.burst     = 0x3E52239;
+        sSYSchedulerCurrentViMode.comRegs.vSync     = 0x20C;
+        sSYSchedulerCurrentViMode.comRegs.hSync     = 0xC15;
+        sSYSchedulerCurrentViMode.comRegs.leap      = 0xC150C15;
+        sSYSchedulerCurrentViMode.comRegs.hStart    = 0x6C02EC;
+        sSYSchedulerCurrentViMode.fldRegs[0].vStart = 0x2501FF;
+        sSYSchedulerCurrentViMode.fldRegs[0].vBurst = 0xE0204;
     }
     if (osTvType == OS_TV_MPAL)
     {
-        D_80044F38_40748.comRegs.burst     = 0x4651E39;
-        D_80044F38_40748.comRegs.vSync     = 0x20C;
-        D_80044F38_40748.comRegs.hSync     = 0xC10;
-        D_80044F38_40748.comRegs.leap      = 0xC1C0C1C;
-        D_80044F38_40748.comRegs.hStart    = 0x6C02EC;
-        D_80044F38_40748.fldRegs[0].vStart = 0x2501FF;
-        D_80044F38_40748.fldRegs[0].vBurst = 0xE0204;
+        sSYSchedulerCurrentViMode.comRegs.burst     = 0x4651E39;
+        sSYSchedulerCurrentViMode.comRegs.vSync     = 0x20C;
+        sSYSchedulerCurrentViMode.comRegs.hSync     = 0xC10;
+        sSYSchedulerCurrentViMode.comRegs.leap      = 0xC1C0C1C;
+        sSYSchedulerCurrentViMode.comRegs.hStart    = 0x6C02EC;
+        sSYSchedulerCurrentViMode.fldRegs[0].vStart = 0x2501FF;
+        sSYSchedulerCurrentViMode.fldRegs[0].vBurst = 0xE0204;
     }
-    D_80044F38_40748.fldRegs[1].vStart = D_80044F38_40748.fldRegs[0].vStart;
+    sSYSchedulerCurrentViMode.fldRegs[1].vStart = sSYSchedulerCurrentViMode.fldRegs[0].vStart;
     
-    pos1 = D_80044F38_40748.comRegs.hStart >> 16;
-    pos2 = D_80044F38_40748.comRegs.hStart & 0xFFFF;
+    pos1 = sSYSchedulerCurrentViMode.comRegs.hStart >> 16;
+    pos2 = sSYSchedulerCurrentViMode.comRegs.hStart & 0xFFFF;
 
     pos1 += off_left;
 
@@ -501,27 +544,10 @@ void func_80000F30(u32 width, u32 height, u32 arg2, s16 off_left, s16 off_right,
     {
         pos2 = 0;
     }
-    D_80044F38_40748.comRegs.hStart = (pos1 << 16) | pos2;
+    sSYSchedulerCurrentViMode.comRegs.hStart = (pos1 << 16) | pos2;
 
-    pos1 = D_80044F38_40748.fldRegs[0].vStart >> 16;
-    pos2 = D_80044F38_40748.fldRegs[0].vStart & 0xFFFF;
-
-    pos1 += off_top;
-
-    if (pos1 < 0)
-    {
-        pos1 = 0;
-    }
-    pos2 += off_bottom;
-
-    if (pos2 < 0)
-    {
-        pos2 = 0;
-    }
-    D_80044F38_40748.fldRegs[0].vStart = (pos1 << 16) | pos2;
-    
-    pos1 = D_80044F38_40748.fldRegs[1].vStart >> 16;
-    pos2 = D_80044F38_40748.fldRegs[1].vStart & 0xFFFF;
+    pos1 = sSYSchedulerCurrentViMode.fldRegs[0].vStart >> 16;
+    pos2 = sSYSchedulerCurrentViMode.fldRegs[0].vStart & 0xFFFF;
 
     pos1 += off_top;
 
@@ -535,165 +561,201 @@ void func_80000F30(u32 width, u32 height, u32 arg2, s16 off_left, s16 off_right,
     {
         pos2 = 0;
     }
-    D_80044F38_40748.fldRegs[1].vStart = (pos1 << 16) | pos2;
+    sSYSchedulerCurrentViMode.fldRegs[0].vStart = (pos1 << 16) | pos2;
     
-    D_80044F38_40748.fldRegs[1].vBurst = D_80044F38_40748.fldRegs[0].vBurst;
+    pos1 = sSYSchedulerCurrentViMode.fldRegs[1].vStart >> 16;
+    pos2 = sSYSchedulerCurrentViMode.fldRegs[1].vStart & 0xFFFF;
+
+    pos1 += off_top;
+
+    if (pos1 < 0)
+    {
+        pos1 = 0;
+    }
+    pos2 += off_bottom;
+
+    if (pos2 < 0)
+    {
+        pos2 = 0;
+    }
+    sSYSchedulerCurrentViMode.fldRegs[1].vStart = (pos1 << 16) | pos2;
+    
+    sSYSchedulerCurrentViMode.fldRegs[1].vBurst = sSYSchedulerCurrentViMode.fldRegs[0].vBurst;
 
     if ((is_res_in_bounds != FALSE) && (phi_v1 != FALSE))
     {
-        D_80044F38_40748.comRegs.vSync += 1;
+        sSYSchedulerCurrentViMode.comRegs.vSync += 1;
         
         if (osTvType == OS_TV_MPAL)
         {
-            D_80044F38_40748.comRegs.hSync += 0x40001;
+            sSYSchedulerCurrentViMode.comRegs.hSync += 0x40001;
             
         }
         if (osTvType == OS_TV_MPAL)
         {
-            D_80044F38_40748.comRegs.leap += 0xFFFCFFFE;
+            sSYSchedulerCurrentViMode.comRegs.leap += 0xFFFCFFFE;
         }
     }
     else
     {
-        D_80044F38_40748.fldRegs[0].vStart += 0xFFFDFFFE;
+        sSYSchedulerCurrentViMode.fldRegs[0].vStart += 0xFFFDFFFE;
 
         if (osTvType == OS_TV_MPAL)
         {
-            D_80044F38_40748.fldRegs[0].vBurst += 0xFFFCFFFE;
+            sSYSchedulerCurrentViMode.fldRegs[0].vBurst += 0xFFFCFFFE;
         }
         if (osTvType == OS_TV_PAL) 
         {
-            D_80044F38_40748.fldRegs[1].vBurst += 0x2FFFE;
+            sSYSchedulerCurrentViMode.fldRegs[1].vBurst += 0x2FFFE;
         }
     }
-    
-    D_80044F38_40748.comRegs.vCurrent  = 0;
-    D_80044F38_40748.comRegs.xScale    = (width << 10) / ((off_right - off_left) + 640);
-    D_80044F38_40748.fldRegs[0].origin = (!(D_80044FBC_407CC.pixelSize32) ? 1 : 2) * width * 2;
-    D_80044F38_40748.fldRegs[1].origin = (!(D_80044FBC_407CC.pixelSize32) ? 1 : 2) * (((is_res_in_bounds != FALSE) ? 1 : 2) * width * 2);
-    D_80044F38_40748.fldRegs[0].yScale = vertical;
-    D_80044F38_40748.fldRegs[1].yScale = vertical;
+    sSYSchedulerCurrentViMode.comRegs.vCurrent  = 0;
+    sSYSchedulerCurrentViMode.comRegs.xScale    = (width << 10) / ((off_right - off_left) + 640);
+    sSYSchedulerCurrentViMode.fldRegs[0].origin = (!(sSYSchedulerImageSetup.pixelSize32) ? 1 : 2) * width * 2;
+    sSYSchedulerCurrentViMode.fldRegs[1].origin = (!(sSYSchedulerImageSetup.pixelSize32) ? 1 : 2) * (((is_res_in_bounds != FALSE) ? 1 : 2) * width * 2);
+    sSYSchedulerCurrentViMode.fldRegs[0].yScale = vertical;
+    sSYSchedulerCurrentViMode.fldRegs[1].yScale = vertical;
 
-    if (D_80044FBC_407CC.unk_b04)
+    if (sSYSchedulerImageSetup.unk_b04)
     {
         if ((height << 11) < 0xB4000)
         {
-            D_80044F38_40748.fldRegs[0].yScale += 0x3000000;
-            D_80044F38_40748.fldRegs[1].yScale += 0x1000000;
+            sSYSchedulerCurrentViMode.fldRegs[0].yScale += 0x3000000;
+            sSYSchedulerCurrentViMode.fldRegs[1].yScale += 0x1000000;
         }
         else
         {
-            D_80044F38_40748.fldRegs[0].yScale += 0x2000000;
-            D_80044F38_40748.fldRegs[1].yScale += 0x2000000;
+            sSYSchedulerCurrentViMode.fldRegs[0].yScale += 0x2000000;
+            sSYSchedulerCurrentViMode.fldRegs[1].yScale += 0x2000000;
         }
     }
-    D_80044F38_40748.fldRegs[0].vIntr = 2;
-    D_80044F38_40748.fldRegs[1].vIntr = 2;
-    D_80044F88_40798 = 1;
+    sSYSchedulerCurrentViMode.fldRegs[0].vIntr = 2;
+    sSYSchedulerCurrentViMode.fldRegs[1].vIntr = 2;
+    sSYSchedulerIsViModePending = TRUE;
 }
 #else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/scheduler/func_80000F30.s")
-#endif /* NON_MATCHING */
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/scheduler/sySchedulerUpdateViMode.s")
+#endif
 
-void func_800016D8(void) {
-    void *cur;
-    void *next;
+void sySchedulerSwapBuffer(void)
+{
+    void *curr, *next;
 
-    if (D_80045035_40845 != D_80045034_40844) {
-        next = osViGetNextFramebuffer();
-        cur  = osViGetCurrentFramebuffer();
-        if (next == cur) {
-            osViSwapBuffer(D_80045028_40838[D_80045035_40845]);
-            if (D_80045035_40845 == 2) {
-                D_80045035_40845 = 0;
-            } else {
-                D_80045035_40845 += 1;
+    if (sSYSchedulerSwapBufferID != sSYSchedulerReadyBufferID)
+    {
+        next = osViGetNextFramebuffer(), curr = osViGetCurrentFramebuffer();
+
+        if (next == curr)
+        {
+            osViSwapBuffer(sSYSchedulerReadyBuffers[sSYSchedulerSwapBufferID]);
+
+            if (sSYSchedulerSwapBufferID == (ARRAY_COUNT(sSYSchedulerReadyBuffers) - 1))
+            {
+                sSYSchedulerSwapBufferID = 0;
             }
+            else sSYSchedulerSwapBufferID += 1;
         }
     }
 }
 
-void func_80001764(void *arg0) {
-    D_80045028_40838[D_80045034_40844] = arg0;
-    if (D_80045034_40844 == 2) {
-        D_80045034_40844 = 0;
-    } else {
-        D_80045034_40844 += 1;
+void sySchedulerReadyBuffer(void *framebuffer)
+{
+    sSYSchedulerReadyBuffers[sSYSchedulerReadyBufferID] = framebuffer;
+
+    if (sSYSchedulerReadyBufferID == (ARRAY_COUNT(sSYSchedulerReadyBuffers) - 1))
+    {
+        sSYSchedulerReadyBufferID = 0;
     }
-    func_800016D8();
+    else sSYSchedulerReadyBufferID += 1;
+    
+    sySchedulerSwapBuffer();
 }
 
-// arg0 is frame buffer pointer?
 // 0x800017B8
-void scSetNextFrameBuffer(void *arg0) {
-    void *temp;
-
-    if (D_80044F88_40798[0] != 0) {
-        if (D_80045020_40830 == 0) { func_80000EAC(); }
+void sySchedulerSetNextFramebuffer(void *framebuffer)
+{
+    if (sSYSchedulerIsViModePending != FALSE)
+    {
+        if (gSYSchedulerIsSoftReset == FALSE)
+        {
+            sySchedulerApplyViMode();
+        }
     }
-
-    if (scUseCustomSwapBufferFunc != 0) {
+    if (scUseCustomSwapBufferFunc != 0)
+    {
         osSendMesg(scCustomSwapBufferQueue, (OSMesg)1, OS_MESG_NOBLOCK);
-        if ((intptr_t)arg0 == -1) {
+
+        if (framebuffer == SYSCHEDULER_BUFFER_NULL)
+        {
             gSYSchedulerCurrentFramebuffer = gSYSchedulerNextFramebuffer;
             gSYSchedulerNextFramebuffer = NULL;
-        } else {
-            gSYSchedulerCurrentFramebuffer = arg0;
         }
-    } else {
-        if ((intptr_t)arg0 == -1) {
-            func_80001764(gSYSchedulerNextFramebuffer);
-            // permutater solution
-            // clang-format off
-            temp = gSYSchedulerNextFramebuffer; if (temp == scUnkFrameBuffer) { 
-                D_80044FA4_407B4 = 1; 
+        else gSYSchedulerCurrentFramebuffer = framebuffer;
+    }
+    else
+    {
+        if (framebuffer == SYSCHEDULER_BUFFER_NULL)
+        {
+            sySchedulerReadyBuffer(gSYSchedulerNextFramebuffer);
+
+            if (sSYSchedulerCustomFramebuffer == gSYSchedulerNextFramebuffer)
+            { 
+                gSYSchedulerIsCustomFramebuffer = TRUE;
             }
-            // clang-format on
-            gSYSchedulerCurrentFramebuffer = temp;
+            gSYSchedulerCurrentFramebuffer = gSYSchedulerNextFramebuffer;
             gSYSchedulerNextFramebuffer = NULL;
-        } else {
-            func_80001764((void *)arg0);
-            gSYSchedulerCurrentFramebuffer = arg0;
+        }
+        else
+        {
+            sySchedulerReadyBuffer(framebuffer);
+            gSYSchedulerCurrentFramebuffer = framebuffer;
         }
     }
-    // OS_CYCLES_TO_NSEC?
-    D_80044FB4_407C4 = (u32)((u32)(osGetCount() - gSYSchedulerFramebufferSetTimestamp) / 0xB9BU);
+    gSYSchedulerFrameTime = (osGetCount() - gSYSchedulerFramebufferSetTimestamp) / 2971;
 }
 
 // 0x800018E0
-void scExecuteGfxTask(SYTaskGfx *arg0) {
-    if (scCurrentGfxTask != 0) {
+void sySchedulerExecuteTaskGfx(SYTaskGfx *t)
+{
+    if (sSYSchedulerCurrentTaskGfx != NULL)
+    {
         osSpTaskYield();
-        scCurrentGfxTask->info.state = 4;
-        scPausedQueueAdd(scCurrentGfxTask);
-        arg0->info.state = 3;
-    } else {
-        osSpTaskStart(&arg0->task);
-        arg0->info.state = 2;
+        sSYSchedulerCurrentTaskGfx->info.state = nSYSchedulerStatusTaskSuspending;
+        sySchedulerAddPausedQueue(sSYSchedulerCurrentTaskGfx);
+        t->info.state = nSYSchedulerStatusTaskPending;
     }
-    scCurrentGfxTask = arg0;
+    else
+    {
+        osSpTaskStart(&t->task);
+        t->info.state = nSYSchedulerStatusTaskRunning;
+    }
+    sSYSchedulerCurrentTaskGfx = t;
 }
 
 // 0x80001968
-void scExecuteAudioTask(SYTaskAudio *arg0) {
+void sySchedulerExecuteTaskAudio(SYTaskAudio *t)
+{
     gSYSchedulerAudioStartTimestamp = osGetCount();
 
-    if ((scCurrentGfxTask != NULL) && (scCurrentGfxTask->info.state == 2)) {
+    if ((sSYSchedulerCurrentTaskGfx != NULL) && (sSYSchedulerCurrentTaskGfx->info.state == nSYSchedulerStatusTaskRunning))
+    {
         osSpTaskYield();
-        scCurrentGfxTask->info.state = 4;
-        arg0->info.state       = 3;
-    } else {
-        osSpTaskStart(&arg0->task);
-        arg0->info.state = 2;
+        sSYSchedulerCurrentTaskGfx->info.state = nSYSchedulerStatusTaskSuspending;
+        t->info.state = nSYSchedulerStatusTaskPending;
     }
-    scCurrentAudioTask = arg0;
+    else
+    {
+        osSpTaskStart(&t->task);
+        t->info.state = nSYSchedulerStatusTaskRunning;
+    }
+    sSYSchedulerCurrentTaskAudio = t;
 }
 
 // 0x80001A00
-s32 scExecuteTask(SYTaskInfo* task)
+s32 sySchedulerExecuteTask(SYTaskInfo *task)
 {
     s32 ret = 0;
-     s32 pad[4]; // required to match
+    s32 unused[4]; // required to match
     SYTaskInfo* sp34[2];
 
     switch (task->type) {
@@ -704,14 +766,15 @@ s32 scExecuteTask(SYTaskInfo* task)
                 *t->unk68 |= (uintptr_t) gSYSchedulerNextFramebuffer;
                 osWritebackDCache(t->unk68, sizeof(t->unk68));
             }
-            if ((uintptr_t) t->task.t.output_buffer == (uintptr_t) -1) {
-                t->task.t.output_buffer = (u64*) ((uintptr_t) scRDPBuffer + scRDPOutputBufferUsed);
+            if (t->task.t.output_buffer == SYSCHEDULER_BUFFER_NULL)
+            {
+                t->task.t.output_buffer = (u64*) ((uintptr_t) sSYSchedulerRdpOutputBuffer + sSYSchedulerRdpOutputBufferID);
                 osWritebackDCache(&t->task.t.output_buffer, sizeof(t->task.t.output_buffer));
             }
             if (t->unk74 == 1) {
                 osInvalDCache(&sSYSchedulerRdpCache, sizeof(sSYSchedulerRdpCache));
             }
-            scExecuteGfxTask(t);
+            sySchedulerExecuteTaskGfx(t);
             ret = 1;
             break;
         }
@@ -719,17 +782,17 @@ s32 scExecuteTask(SYTaskInfo* task)
             SYTaskAudio* t = (void*) task;
 
             osWritebackDCacheAll();
-            scExecuteAudioTask(t);
+            sySchedulerExecuteTaskAudio(t);
             ret = 1;
             break;
         }
         case nSYTaskTypeAddClient: {
             SYTaskAddClient* t = (void*) task;
-            SCClient* temp;
+            SYClient* temp;
 
             temp = t->client;
-            temp->next = scClientList;
-            scClientList = temp;
+            temp->next = sSYSchedulerClients;
+            sSYSchedulerClients = temp;
 
             if (t->info.mq != NULL) {
                 osSendMesg(t->info.mq, (OSMesg) t->info.retVal, OS_MESG_NOBLOCK);
@@ -739,7 +802,7 @@ s32 scExecuteTask(SYTaskInfo* task)
         case nSYTaskTypeVi: {
             SYTaskVi* t = (void*) task;
 
-            func_80000F30(t->width, t->height, t->flags, t->edgeOffsetLeft, t->edgeOffsetRight, t->edgeOffsetTop, t->edgeOffsetBottom);
+            sySchedulerUpdateViMode(t->width, t->height, t->flags, t->edgeOffsetLeft, t->edgeOffsetRight, t->edgeOffsetTop, t->edgeOffsetBottom);
 
             if (t->info.mq != NULL) {
                 osSendMesg(t->info.mq, (OSMesg) t->info.retVal, OS_MESG_NOBLOCK);
@@ -751,9 +814,9 @@ s32 scExecuteTask(SYTaskInfo* task)
             SYTaskFramebuffer* t = (void*) task;
             s32 i;
 
-            for (i = 0; i < ARRAY_COUNT(scFrameBuffers); i++)
+            for (i = 0; i < ARRAY_COUNT(sSYSchedulerFramebuffers); i++)
             {
-                scFrameBuffers[i] = t->framebuffers[i];
+                sSYSchedulerFramebuffers[i] = t->framebuffers[i];
             }
 
             if (t->info.mq != NULL) {
@@ -766,11 +829,11 @@ s32 scExecuteTask(SYTaskInfo* task)
             SYTaskGfx* v1 = NULL;
             SYTaskInfo* v0;
 
-            if (scCurrentGfxTask != NULL && scCurrentGfxTask->info.type == nSYTaskTypeGfx && scCurrentGfxTask->task_id == t->task_id) {
-                v1 = scCurrentGfxTask;
+            if (sSYSchedulerCurrentTaskGfx != NULL && sSYSchedulerCurrentTaskGfx->info.type == nSYTaskTypeGfx && sSYSchedulerCurrentTaskGfx->task_id == t->task_id) {
+                v1 = sSYSchedulerCurrentTaskGfx;
             }
 
-            v0 = &scPausedQueueHead->info;
+            v0 = &sSYSchedulerPausedQueueHead->info;
             while (v0 != NULL) {
                 if (v0->type == nSYTaskTypeGfx) {
                     if (((SYTaskGfx*) v0)->task_id == t->task_id) {
@@ -780,7 +843,7 @@ s32 scExecuteTask(SYTaskInfo* task)
                 v0 = v0->next;
             }
 
-            v0 = scMainQueueHead;
+            v0 = sSYSchedulerMainQueueHead;
             while (v0 != NULL) {
                 if (v0->type == nSYTaskTypeGfx) {
                     if (((SYTaskGfx*) v0)->task_id == t->task_id) {
@@ -794,7 +857,7 @@ s32 scExecuteTask(SYTaskInfo* task)
             v0 = &scCurrentQueue3Task->info;
             if (v0 != NULL) {
                 if (v0->type == nSYTaskTypeGfx) {
-                    if (scCurrentGfxTask->task_id == t->task_id) {
+                    if (sSYSchedulerCurrentTaskGfx->task_id == t->task_id) {
                         v1 = (void*) v0;
                     }
                 }
@@ -816,7 +879,7 @@ s32 scExecuteTask(SYTaskInfo* task)
                 v1->fb = t->fb;
             } else {
                 if (t->fb != NULL) {
-                    scSetNextFrameBuffer(t->fb);
+                    sySchedulerSetNextFramebuffer(t->fb);
                 }
 
                 if (t->info.mq != NULL) {
@@ -833,8 +896,8 @@ s32 scExecuteTask(SYTaskInfo* task)
         case nSYTaskTypeRdpBuffer: {
             SYTaskRdpBuffer* t = (void*) task;
 
-            scRDPBuffer = t->buffer;
-            scRDPBufferCapacity = t->size;
+            sSYSchedulerRdpOutputBuffer = t->buffer;
+            sSYSchedulerRdpOutputBufferSize = t->size;
             if (t->info.mq != NULL) {
                 osSendMesg(t->info.mq, (OSMesg) t->info.retVal, OS_MESG_NOBLOCK);
             }
@@ -845,6 +908,7 @@ s32 scExecuteTask(SYTaskInfo* task)
 
             scUseCustomSwapBufferFunc = TRUE;
             scCustomSwapBufferQueue = t->unk24;
+
             if (t->info.mq != NULL)
             {
                 osSendMesg(t->info.mq, (OSMesg) t->info.retVal, OS_MESG_NOBLOCK);
@@ -858,18 +922,18 @@ s32 scExecuteTask(SYTaskInfo* task)
             }
             break;
         case SC_TASK_TYPE_11: {
-            SYTaskInfo* a0 = scMainQueueHead;
+            SYTaskInfo* a0 = sSYSchedulerMainQueueHead;
             while (a0 != NULL) {
                 if (a0->type == nSYTaskTypeGfx || a0->type == nSYTaskTypeVi) {
                     sp34[0] = a0->next;
-                    scMainQueueRemove(a0);
+                    sySchedulerRemoveMainQueue(a0);
                     a0 = sp34[0];
                 } else {
                     a0 = a0->next;
                 }
             }
 
-            scUnkFrameBuffer = NULL;
+            sSYSchedulerCustomFramebuffer = NULL;
             if (task->mq != NULL) {
                 osSendMesg(task->mq, (OSMesg) task->retVal, OS_MESG_NOBLOCK);
             }
@@ -880,62 +944,71 @@ s32 scExecuteTask(SYTaskInfo* task)
 }
 
 // 0x80001E64
-void scExecuteTasks(void) {
-    s32 phi_a0;
-    s32 phi_v0; // cur "priority"
-    s32 phi_v1;
-    SYTaskInfo *phi_s0;  // cur
-    SYTaskInfo *temp_s1; // temp for cur
-    s32 phi_s2 = 0;
-    s32 phi_s4; // "priority" of scPausedQueueHead
-    s32 phi_s7; // "priority" of scCurrentGfxTask or scCurrentAudioTask
+void sySchedulerExecuteTasksAll(void)
+{
+    s32 yield_priority;
+    s32 curr_priority; // cur "priority"
+    sb32 is_task_ready;
+    SYTaskInfo *curr, *next;
+    sb32 is_task_started = FALSE;
+    s32 paused_priority; // "priority" of sSYSchedulerPausedQueueHead
+    s32 av_priority; // "priority" of sSYSchedulerCurrentTaskGfx or sSYSchedulerCurrentTaskAudio
 
-    phi_s7 = scCurrentGfxTask != NULL ? scCurrentGfxTask->info.priority : -1;
+    av_priority = (sSYSchedulerCurrentTaskGfx != NULL) ? sSYSchedulerCurrentTaskGfx->info.priority : -1;
 
-    if (scCurrentAudioTask != NULL) { phi_s7 = scCurrentAudioTask->info.priority; }
+    if (sSYSchedulerCurrentTaskAudio != NULL)
+    {
+        av_priority = sSYSchedulerCurrentTaskAudio->info.priority;
+    }
+    paused_priority = (sSYSchedulerPausedQueueHead != NULL) ? sSYSchedulerPausedQueueHead->info.priority : -1;
 
-    phi_s4 = scPausedQueueHead != NULL ? scPausedQueueHead->info.priority : -1;
+    curr = sSYSchedulerMainQueueHead;
 
-    phi_s0 = scMainQueueHead;
-    while (phi_s2 == 0) {
-        phi_v0 = phi_s0 != NULL ? phi_s0->priority : -1;
+    while (is_task_started == FALSE)
+    {
+        curr_priority = (curr != NULL) ? curr->priority : -1;
 
-        if (phi_s4 >= phi_v0) {
-            phi_v1 = 0;
-            phi_a0 = phi_s4;
-        } else {
-            phi_v1 = 1;
-            phi_a0 = phi_v0;
+        if (paused_priority >= curr_priority)
+        {
+            is_task_ready = FALSE;
+            yield_priority = paused_priority;
         }
-
-        if (phi_s7 >= phi_a0) {
-            phi_s2 = 1;
-        } else {
-            switch (phi_v1) {
-                case 0:
-                    osSpTaskStart(&scPausedQueueHead->task);
-                    phi_s2                       = 1;
-                    scPausedQueueHead->info.state = 2;
-                    scCurrentGfxTask             = scPausedQueueHead;
-                    func_80000DD4(scPausedQueueHead);
-                    break;
-                case 1:
-                    if (phi_s0->fnCheck == NULL || phi_s0->fnCheck(phi_s0) != 0) {
-                        phi_s2  = scExecuteTask(phi_s0);
-                        temp_s1 = phi_s0->next;
-                        scMainQueueRemove(phi_s0);
-                        phi_s0 = temp_s1;
-                    } else {
-                        phi_s0 = phi_s0->next;
-                    }
-                    break;
+        else
+        {
+            is_task_ready = TRUE;
+            yield_priority = curr_priority;
+        }
+        if (av_priority >= yield_priority)
+        {
+            is_task_started = TRUE;
+        }
+        else switch (is_task_ready)
+        {
+        case FALSE:
+            osSpTaskStart(&sSYSchedulerPausedQueueHead->task);
+            is_task_started = TRUE;
+            sSYSchedulerPausedQueueHead->info.state = nSYSchedulerStatusTaskRunning;
+            sSYSchedulerCurrentTaskGfx = sSYSchedulerPausedQueueHead;
+            sySchedulerRemovePausedQueue(sSYSchedulerPausedQueueHead);
+            break;
+                
+        case TRUE:
+            if ((curr->fnCheck == NULL) || (curr->fnCheck(curr) != FALSE))
+            {
+                is_task_started = sySchedulerExecuteTask(curr);
+                next = curr->next;
+                sySchedulerRemoveMainQueue(curr);
+                curr = next;
             }
+            else curr = curr->next;
+            break;
         }
     }
 }
 
 void func_80001FF4(void) {
-    if (scCurrentQueue3Task == NULL && scQueue3Head != NULL) {
+    if ((scCurrentQueue3Task == NULL) && (scQueue3Head != NULL))
+    {
         scCurrentQueue3Task = scQueue3Head;
         func_80000E5C(scQueue3Head);
         scCurrentQueue3Task->info.state = 2;
@@ -943,156 +1016,182 @@ void func_80001FF4(void) {
     }
 }
 
-void func_8000205C(void) {
-    SCClient *cur;
-    // temp usages are needed to match
-    SCClient *temp;
+void sySchedulerVRetrace(void)
+{
+    SYClient *curr, *temp;
 
-    sSYSchedulerTicCount += 1;
-    cur = scClientList;
-    while (cur != NULL) {
-        temp = cur;
-        osSendMesg(temp->mq, (OSMesg)1, 0);
-        cur = cur->next;
+    sSYSchedulerTicCount++;
 
-        if (temp->mq) { }
+    curr = sSYSchedulerClients;
+
+    while (curr != NULL)
+    {
+        temp = curr;
+        osSendMesg(curr->mq, (OSMesg)1, 0);
+        curr = curr->next;
+
+        if (temp);
     }
-
-    func_800016D8();
-    scExecuteTasks();
+    sySchedulerSwapBuffer();
+    sySchedulerExecuteTasksAll();
 }
 
 // 0x800020D0
-void scHandleSPTaskDone(void) {
-    if (scCurrentAudioTask != NULL && scCurrentAudioTask->info.state == nSYScheduleStatusTaskRunning) {
-        osSendMesg(scCurrentAudioTask->info.mq, (OSMesg) 0, OS_MESG_NOBLOCK);
-        scCurrentAudioTask = NULL;
-        scExecuteTasks();
-        scTimeSpentAudio = (osGetCount() - gSYSchedulerAudioStartTimestamp) / 2971;
-        return;
+void sySchedulerSpTaskDone(void)
+{
+    if ((sSYSchedulerCurrentTaskAudio != NULL) && (sSYSchedulerCurrentTaskAudio->info.state == nSYSchedulerStatusTaskRunning))
+    {
+        osSendMesg(sSYSchedulerCurrentTaskAudio->info.mq, (OSMesg)NULL, OS_MESG_NOBLOCK);
+        sSYSchedulerCurrentTaskAudio = NULL;
+        sySchedulerExecuteTasksAll();
+        gSYSchedulerAudioTime = (osGetCount() - gSYSchedulerAudioStartTimestamp) / 2971;
     }
-
-    if (scCurrentGfxTask != NULL && scCurrentGfxTask->info.state == nSYScheduleStatusTaskSuspending) {
-        if (osSpTaskYielded(&scCurrentGfxTask->task) == OS_TASK_YIELDED) {
-            scCurrentGfxTask->info.state = nSYScheduleStatusTaskSuspended;
-            scPausedQueueAdd(scCurrentGfxTask);
-            scCurrentGfxTask = NULL;
-        } else {
-            scCurrentGfxTask->info.state = nSYScheduleStatusTaskStopped;
-        }
-        osSpTaskStart(&scCurrentAudioTask->task);
-        scCurrentAudioTask->info.state = nSYScheduleStatusTaskRunning;
-    }
-
-    if (scCurrentGfxTask != NULL && scCurrentGfxTask->info.unk18 == 1 && scCurrentGfxTask->info.state != nSYScheduleStatusTaskSuspended) {
-        if (scCurrentGfxTask->info.type == nSYTaskTypeGfx && scCurrentGfxTask->unk74 == 1) {
-            osInvalDCache(&sSYSchedulerRdpCache, sizeof(sSYSchedulerRdpCache));
-            scCurrentGfxTask->rdp_buffer_size = sSYSchedulerRdpCache;
-            scRDPOutputBufferUsed += (s32) sSYSchedulerRdpCache;
-            scRDPOutputBufferUsed = OS_DCACHE_ROUNDUP_SIZE(scRDPOutputBufferUsed);
-            if (scRDPOutputBufferUsed < sSYSchedulerRdpCache) {
-                syDebugPrintf("rdp_output_buff over !! size = %d\n byte", scRDPOutputBufferUsed);
-                while (TRUE);
+    else
+    {
+        if (sSYSchedulerCurrentTaskGfx != NULL && sSYSchedulerCurrentTaskGfx->info.state == nSYSchedulerStatusTaskSuspending)
+        {
+            if (osSpTaskYielded(&sSYSchedulerCurrentTaskGfx->task) == OS_TASK_YIELDED)
+            {
+                sSYSchedulerCurrentTaskGfx->info.state = nSYSchedulerStatusTaskSuspended;
+                sySchedulerAddPausedQueue(sSYSchedulerCurrentTaskGfx);
+                sSYSchedulerCurrentTaskGfx = NULL;
             }
-
-            scCurrentGfxTask->info.state = nSYScheduleStatusTaskQueued;
-            func_80000E24(scCurrentGfxTask);
-            func_80001FF4();
+            else sSYSchedulerCurrentTaskGfx->info.state = nSYSchedulerStatusTaskStopped;
+            
+            osSpTaskStart(&sSYSchedulerCurrentTaskAudio->task);
+            sSYSchedulerCurrentTaskAudio->info.state = nSYSchedulerStatusTaskRunning;
         }
-        scCurrentGfxTask = NULL;
-        scExecuteTasks();
-        return;
-    }
-
-    if (scCurrentGfxTask != NULL && scCurrentGfxTask->info.unk18 == 2 && scCurrentGfxTask->info.type == nSYTaskTypeGfx) {
-        scCurrentGfxTask->info.state = nSYScheduleStatusTaskStopped;
-        if (!(scCurrentGfxTask->unk7C & 2)) {
-            scCurrentGfxTask->unk7C |= 1;
+        if ((sSYSchedulerCurrentTaskGfx != NULL) && (sSYSchedulerCurrentTaskGfx->info.unk18 == 1) && (sSYSchedulerCurrentTaskGfx->info.state != nSYSchedulerStatusTaskSuspended))
+        {
+            if ((sSYSchedulerCurrentTaskGfx->info.type == nSYTaskTypeGfx) && (sSYSchedulerCurrentTaskGfx->unk74 == 1))
+            {
+                osInvalDCache(&sSYSchedulerRdpCache, sizeof(sSYSchedulerRdpCache));
+                sSYSchedulerCurrentTaskGfx->rdp_buffer_size = sSYSchedulerRdpCache;
+                sSYSchedulerRdpOutputBufferID += (s32) sSYSchedulerRdpCache;
+                sSYSchedulerRdpOutputBufferID = OS_DCACHE_ROUNDUP_SIZE(sSYSchedulerRdpOutputBufferID);
+    
+                if (sSYSchedulerRdpOutputBufferID < sSYSchedulerRdpCache)
+                {
+                    syDebugPrintf("rdp_output_buff over !! size = %d\n byte", sSYSchedulerRdpOutputBufferID);
+                    while (TRUE);
+                }
+                sSYSchedulerCurrentTaskGfx->info.state = nSYSchedulerStatusTaskQueued;
+                func_80000E24(sSYSchedulerCurrentTaskGfx);
+                func_80001FF4();
+            }
+            sSYSchedulerCurrentTaskGfx = NULL;
+            sySchedulerExecuteTasksAll();
+        }
+        else if ((sSYSchedulerCurrentTaskGfx != NULL) && (sSYSchedulerCurrentTaskGfx->info.unk18 == 2) && (sSYSchedulerCurrentTaskGfx->info.type == nSYTaskTypeGfx))
+        {
+            sSYSchedulerCurrentTaskGfx->info.state = nSYSchedulerStatusTaskStopped;
+    
+            if (!(sSYSchedulerCurrentTaskGfx->unk7C & 2))
+            {
+                sSYSchedulerCurrentTaskGfx->unk7C |= 1;
+            }
         }
     }
 }
 
-void func_80002340(void) {
-    union CheckedPtr checked; // could just be a void *temp
-
-    if (scCurrentGfxTask != NULL && scCurrentGfxTask->info.unk18 == 2) {
-        if (scCurrentGfxTask->info.type == 1) {
-            checked.ptr = scCurrentGfxTask->fb;
-            if (checked.ptr != NULL) { scSetNextFrameBuffer(checked.ptr); }
-
-            if (scCurrentGfxTask->info.mq != NULL) {
-                osSendMesg(scCurrentGfxTask->info.mq, (OSMesg)scCurrentGfxTask->info.retVal, OS_MESG_NOBLOCK);
+void sySchedulerDpFullSync(void)
+{
+    if ((sSYSchedulerCurrentTaskGfx != NULL) && (sSYSchedulerCurrentTaskGfx->info.unk18 == 2))
+    {
+        if (sSYSchedulerCurrentTaskGfx->info.type == nSYTaskTypeGfx)
+        {
+            if (sSYSchedulerCurrentTaskGfx->fb != NULL)
+            {
+                sySchedulerSetNextFramebuffer(sSYSchedulerCurrentTaskGfx->fb);
             }
-
-            if (scCurrentGfxTask->info.state == 4) {
-                osSpTaskStart(&scCurrentAudioTask->task);
-                scCurrentAudioTask->info.state = 2;
+            if (sSYSchedulerCurrentTaskGfx->info.mq != NULL)
+            {
+                osSendMesg(sSYSchedulerCurrentTaskGfx->info.mq, (OSMesg)sSYSchedulerCurrentTaskGfx->info.retVal, OS_MESG_NOBLOCK);
+            }
+            if (sSYSchedulerCurrentTaskGfx->info.state == nSYSchedulerStatusTaskSuspending)
+            {
+                osSpTaskStart(&sSYSchedulerCurrentTaskAudio->task);
+                sSYSchedulerCurrentTaskAudio->info.state = nSYSchedulerStatusTaskRunning;
             }
         }
-
-        scCurrentGfxTask = NULL;
-        scExecuteTasks();
-    } else if (scCurrentQueue3Task != NULL) {
-        checked.ptr = scCurrentQueue3Task->fb;
-        if (checked.ptr != NULL) { scSetNextFrameBuffer(checked.ptr); }
-
-        if (scCurrentQueue3Task->info.mq != NULL) {
+        sSYSchedulerCurrentTaskGfx = NULL;
+        sySchedulerExecuteTasksAll();
+    }
+    else if (scCurrentQueue3Task != NULL)
+    {
+        if (scCurrentQueue3Task->fb != NULL)
+        {
+            sySchedulerSetNextFramebuffer(scCurrentQueue3Task->fb);
+        }
+        if (scCurrentQueue3Task->info.mq != NULL)
+        {
             osSendMesg(scCurrentQueue3Task->info.mq, (OSMesg)scCurrentQueue3Task->info.retVal, OS_MESG_NOBLOCK);
         }
-
         scCurrentQueue3Task = NULL;
         func_80001FF4();
-    } else if (scPausedQueueHead != NULL && scPausedQueueHead->info.unk18 == 2) {
-        if (scPausedQueueHead->info.type == 1) {
-            checked.ptr = scPausedQueueHead->fb;
-            if (checked.ptr != NULL) { scSetNextFrameBuffer(checked.ptr); }
-
-            if (scPausedQueueHead->info.mq != NULL) {
-                osSendMesg(scPausedQueueHead->info.mq, (OSMesg)scPausedQueueHead->info.retVal, OS_MESG_NOBLOCK);
+    }
+    else if ((sSYSchedulerPausedQueueHead != NULL) && (sSYSchedulerPausedQueueHead->info.unk18 == 2))
+    {
+        if (sSYSchedulerPausedQueueHead->info.type == nSYTaskTypeGfx)
+        {
+            if (sSYSchedulerPausedQueueHead->fb != NULL)
+            {
+                sySchedulerSetNextFramebuffer(sSYSchedulerPausedQueueHead->fb);
             }
-
-            func_80000DD4(scPausedQueueHead);
+            if (sSYSchedulerPausedQueueHead->info.mq != NULL)
+            {
+                osSendMesg(sSYSchedulerPausedQueueHead->info.mq, (OSMesg)sSYSchedulerPausedQueueHead->info.retVal, OS_MESG_NOBLOCK);
+            }
+            sySchedulerRemovePausedQueue(sSYSchedulerPausedQueueHead);
         }
-        scExecuteTasks();
+        sySchedulerExecuteTasksAll();
     }
 }
 
-// might only take a struct SpTaskInfo *
-void func_800024EC(SYTaskInfo *task) {
-    task->state = 1;
-    func_80000C64(task);
-    scExecuteTasks();
+void sySchedulerPrepTask(SYTaskInfo *task)
+{
+    task->state = nSYSchedulerStatusTaskQueued;
+
+    sySchedulerAddMainQueue(task);
+    sySchedulerExecuteTasksAll();
 }
 
 // forward dec
-void func_800029D8(void);
+void sySchedulerSoftReset(void);
 
 #define INTR_VRETRACE     1
 #define INTR_SP_TASK_DONE 2
 #define INTR_DP_FULL_SYNC 3
 #define INTR_SOFT_RESET   99
 
-void scheduler_scheduler(UNUSED void *arg)
+void sySchedulerThreadMain(void *arg)
 {
-    OSMesg intr_mesg;
+    OSMesg mesg;
 
     // the wonders of matching
-    scClientList = NULL;
-    scMainQueueHead = D_80044EC8_406D8 = scCurrentGfxTask = scCurrentAudioTask = scPausedQueueHead = D_80044ED8_406E8 = NULL;
+    sSYSchedulerClients = NULL;
+
+    sSYSchedulerMainQueueHead =
+    sSYSchedulerMainQueueTail =
+    sSYSchedulerCurrentTaskGfx =
+    sSYSchedulerCurrentTaskAudio =
+    sSYSchedulerPausedQueueHead =
+    sSYSchedulerPausedQueueTail = NULL;
     scCurrentQueue3Task = scQueue3Head = D_80044EE0_406F0 = NULL;
-    D_80044F88_40798[0]                                    = 0;
-    gSYSchedulerCurrentFramebuffer = gSYSchedulerNextFramebuffer = scUnkFrameBuffer = NULL;
-    scUseCustomSwapBufferFunc                              = 0;
-    D_80045018_40828                                       = func_800029D8;
-    D_80045020_40830                                       = 0;
-    D_80045024_40834                                       = -1;
-    sSYSchedulerTicCount                                   = 0;
-    D_80045034_40844 = D_80045035_40845 = 0;
+
+    sSYSchedulerIsViModePending = FALSE;
+    gSYSchedulerCurrentFramebuffer = gSYSchedulerNextFramebuffer = sSYSchedulerCustomFramebuffer = NULL;
+    scUseCustomSwapBufferFunc = FALSE;
+    sSYSchedulerFuncReset = sySchedulerSoftReset;
+    gSYSchedulerIsSoftReset = FALSE;
+    sSYSchedulerAfterPreNMI = -1;
+    sSYSchedulerTicCount = 0;
+    sSYSchedulerReadyBufferID = sSYSchedulerSwapBufferID = 0;
 
     switch (osTvType)
     {
     case OS_TV_NTSC:
-        D_80044F38_40748 = D_80044EE8_406F8 = osViModeNtscLan1;
+        sSYSchedulerCurrentViMode = sSYSchedulerPendingViMode = osViModeNtscLan1;
         break;
         
     case OS_TV_PAL:
@@ -1100,78 +1199,77 @@ void scheduler_scheduler(UNUSED void *arg)
         break;
         
     case OS_TV_MPAL:
-        D_80044F38_40748 = D_80044EE8_406F8 = osViModeMpalLan1;
+        sSYSchedulerCurrentViMode = sSYSchedulerPendingViMode = osViModeMpalLan1;
         break;
     }
-    // 0x10016
-    D_80044EE8_406F8.comRegs.ctrl = VI_CTRL_TYPE_16 | VI_CTRL_GAMMA_DITHER_ON | VI_CTRL_DIVOT_ON | VI_CTRL_DITHER_FILTER_ON;
-    D_80044F38_40748.comRegs.ctrl = VI_CTRL_TYPE_16 | VI_CTRL_GAMMA_DITHER_ON | VI_CTRL_DIVOT_ON | VI_CTRL_DITHER_FILTER_ON;
-    osViSetMode(&D_80044EE8_406F8);
+    sSYSchedulerPendingViMode.comRegs.ctrl = VI_CTRL_TYPE_16 | VI_CTRL_GAMMA_DITHER_ON | VI_CTRL_DIVOT_ON | VI_CTRL_DITHER_FILTER_ON;
+    sSYSchedulerCurrentViMode.comRegs.ctrl = VI_CTRL_TYPE_16 | VI_CTRL_GAMMA_DITHER_ON | VI_CTRL_DIVOT_ON | VI_CTRL_DITHER_FILTER_ON;
+    osViSetMode(&sSYSchedulerPendingViMode);
     osViBlack(TRUE);
 
-    D_80044FBC_407CC.antiAlias    = TRUE;
-    D_80044FBC_407CC.serrate      = FALSE;
-    D_80044FBC_407CC.pixelSize32  = FALSE;
-    D_80044FBC_407CC.gamma        = FALSE;
-    D_80044FBC_407CC.blackout     = TRUE;
-    D_80044FBC_407CC.unk_b04      = FALSE;
-    D_80044FBC_407CC.gammaDither  = TRUE;
-    D_80044FBC_407CC.ditherFilter = TRUE;
-    D_80044FBC_407CC.divot        = TRUE;
+    sSYSchedulerImageSetup.antiAlias    = TRUE;
+    sSYSchedulerImageSetup.serrate      = FALSE;
+    sSYSchedulerImageSetup.pixelSize32  = FALSE;
+    sSYSchedulerImageSetup.gamma        = FALSE;
+    sSYSchedulerImageSetup.blackout     = TRUE;
+    sSYSchedulerImageSetup.unk_b04      = FALSE;
+    sSYSchedulerImageSetup.gammaDither  = TRUE;
+    sSYSchedulerImageSetup.ditherFilter = TRUE;
+    sSYSchedulerImageSetup.divot        = TRUE;
 
-    osCreateMesgQueue(&scTaskQueue, D_80044FD8_407E8, ARRAY_COUNT(D_80044FD8_407E8));
-    osViSetEvent(&scTaskQueue, (OSMesg)INTR_VRETRACE, 1);
-    osSetEventMesg(OS_EVENT_SP, &scTaskQueue, (OSMesg)INTR_SP_TASK_DONE);
-    osSetEventMesg(OS_EVENT_DP, &scTaskQueue, (OSMesg)INTR_DP_FULL_SYNC);
-    osSetEventMesg(OS_EVENT_PRENMI, &scTaskQueue, (OSMesg)INTR_SOFT_RESET);
+    osCreateMesgQueue(&gSYSchedulerTaskMesgQueue, sSYSchedulerTaskMesgs, ARRAY_COUNT(sSYSchedulerTaskMesgs));
+    osViSetEvent(&gSYSchedulerTaskMesgQueue, (OSMesg)INTR_VRETRACE, 1);
+    osSetEventMesg(OS_EVENT_SP, &gSYSchedulerTaskMesgQueue, (OSMesg)INTR_SP_TASK_DONE);
+    osSetEventMesg(OS_EVENT_DP, &gSYSchedulerTaskMesgQueue, (OSMesg)INTR_DP_FULL_SYNC);
+    osSetEventMesg(OS_EVENT_PRENMI, &gSYSchedulerTaskMesgQueue, (OSMesg)INTR_SOFT_RESET);
 
-    osSendMesg(&gSYMainThreadingQueue, (OSMesg)1, OS_MESG_NOBLOCK);
+    osSendMesg(&gSYMainThreadingMesgQueue, (OSMesg)1, OS_MESG_NOBLOCK);
 
     while (TRUE)
     {
-        osRecvMesg(&scTaskQueue, &intr_mesg, OS_MESG_BLOCK);
+        osRecvMesg(&gSYSchedulerTaskMesgQueue, &mesg, OS_MESG_BLOCK);
 
-        switch ((u32)intr_mesg)
+        switch ((u32)mesg)
         {
         case INTR_VRETRACE:
-            func_8000205C();
+            sySchedulerVRetrace();
             break;
         
         case INTR_SP_TASK_DONE:
-            scHandleSPTaskDone();
+            sySchedulerSpTaskDone();
 
-            if ((D_80045020_40830 == 1) && (D_80045024_40834 == -1))
+            if ((gSYSchedulerIsSoftReset == 1) && (sSYSchedulerAfterPreNMI == -1))
             {
-                D_80045024_40834 = osAfterPreNMI();
+                sSYSchedulerAfterPreNMI = osAfterPreNMI();
             }
             break;
 
         case INTR_DP_FULL_SYNC:
-            func_80002340();
+            sySchedulerDpFullSync();
             break;
 
         case INTR_SOFT_RESET:
-            if (D_80045018_40828 != NULL)
+            if (sSYSchedulerFuncReset != NULL)
             {
-                D_80045018_40828();
+                sSYSchedulerFuncReset();
             }
             break;
 
         default:
-            if (D_80045020_40830 == 0)
+            if (gSYSchedulerIsSoftReset == FALSE)
             {
-                // is this a pointer to only the info struct?
-                func_800024EC((SYTaskInfo*)intr_mesg);
+                sySchedulerPrepTask(mesg);
             }
         }
     }
 }
 
-void func_800029D8(void)
+void sySchedulerSoftReset(void)
 {
     s32 i;
 
-    D_80045020_40830 = 1;
+    gSYSchedulerIsSoftReset = TRUE;
+
     osViSetYScale(1.0);
     osViBlack(TRUE);
 
@@ -1180,10 +1278,10 @@ void func_800029D8(void)
         syControllerInitRumble(i);
         syControllerStopRumble(i);
     }
-    D_80045024_40834 = osAfterPreNMI();
+    sSYSchedulerAfterPreNMI = osAfterPreNMI();
 }
 
 void unref_80002A50(void (*func)(void))
 {
-    D_80045018_40828 = func;
+    sSYSchedulerFuncReset = func;
 }

@@ -142,7 +142,7 @@ void syVideoApplySettingsNoBlock(SYTaskVi *task)
         task->info.fnCheck  = NULL;
         task->info.mq       = NULL;
         syVideoInitViTask(task);
-        osSendMesg(&scTaskQueue, (OSMesg)task, OS_MESG_NOBLOCK);
+        osSendMesg(&gSYSchedulerTaskMesgQueue, (OSMesg)task, OS_MESG_NOBLOCK);
     }
 }
 

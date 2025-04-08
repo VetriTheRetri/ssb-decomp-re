@@ -168,7 +168,7 @@ u32 sUnref8009E3D4;
 
 void (*sSYDebugFuncPrint)(void);
 
-SCClient D_8009E3E0;
+SYClient D_8009E3E0;
 
 OSMesg D_8009E3E8[1];
 
@@ -338,14 +338,14 @@ void syDebugMeterProcDisplay(GObj *gobj)
     func_80021908(offset_x, 195, sSYTaskmanFrameTimeDelta * (1.0F / 256.0F), 5, 2, TRUE);
     offset_x += 35;
 
-    func_80021908(offset_x, 195, D_80044FB4_407C4 * (1.0F / 256.0F), 5, 2, TRUE);
+    func_80021908(offset_x, 195, gSYSchedulerFrameTime * (1.0F / 256.0F), 5, 2, TRUE);
     offset_x += 35;
 
     func_80021908
     (
         offset_x,
         195,
-        (sSYTaskmanUpdateTimeDelta * (1.0F / 256.0F)) + (sSYTaskmanFrameTimeDelta * (1.0F / 256.0F)) + (D_80044FB4_407C4 * (1.0F / 256.0F)),
+        (sSYTaskmanUpdateTimeDelta * (1.0F / 256.0F)) + (sSYTaskmanFrameTimeDelta * (1.0F / 256.0F)) + (gSYSchedulerFrameTime * (1.0F / 256.0F)),
         5,
         2,
         TRUE
@@ -355,7 +355,7 @@ void syDebugMeterProcDisplay(GObj *gobj)
     func_80021908(offset_x, 195, gSYAudioThreadTimeDelta * (1.0F / 256.0F), 5, 2, TRUE);
     offset_x += 35;
 
-    func_80021908(offset_x, 195, scTimeSpentAudio * (1.0F / 256.0F), 5, 2, TRUE);
+    func_80021908(offset_x, 195, gSYSchedulerAudioTime * (1.0F / 256.0F), 5, 2, TRUE);
 
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetFillColor(gSYTaskmanDLHeads[0]++, syVideoGetFillColor(GPACK_RGBA8888(0xFF, 0x00, 0x00, 0xFF)));
@@ -369,7 +369,7 @@ void syDebugMeterProcDisplay(GObj *gobj)
 
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetFillColor(gSYTaskmanDLHeads[0]++, syVideoGetFillColor(GPACK_RGBA8888(0x00, 0xFF, 0x00, 0xFF)));
-    syDebugFillRectangle(gSYTaskmanDLHeads[0]++, 30, offset_y, ((D_80044FB4_407C4 / 4 > 256) ? 256 : D_80044FB4_407C4 / 4) + 30, offset_y + 1);
+    syDebugFillRectangle(gSYTaskmanDLHeads[0]++, 30, offset_y, ((gSYSchedulerFrameTime / 4 > 256) ? 256 : gSYSchedulerFrameTime / 4) + 30, offset_y + 1);
     offset_y += 2;
 
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
@@ -379,7 +379,7 @@ void syDebugMeterProcDisplay(GObj *gobj)
 
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetFillColor(gSYTaskmanDLHeads[0]++, syVideoGetFillColor(GPACK_RGBA8888(0x00, 0xFF, 0xFF, 0xFF)));
-    syDebugFillRectangle(gSYTaskmanDLHeads[0]++, 30, offset_y, ((scTimeSpentAudio / 4 > 256) ? 256 : scTimeSpentAudio / 4) + 30, offset_y + 1);
+    syDebugFillRectangle(gSYTaskmanDLHeads[0]++, 30, offset_y, ((gSYSchedulerAudioTime / 4 > 256) ? 256 : gSYSchedulerAudioTime / 4) + 30, offset_y + 1);
 
     // controller buttons
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
@@ -914,7 +914,7 @@ void syDebugFileLoaderThread8(void *arg)
     count = 0;
 
     mq = &D_8009E3F0;
-    scAddClient(&D_8009E3E0, mq, D_8009E3E8, ARRAY_COUNT(D_8009E3E8));
+    sySchedulerAddClient(&D_8009E3E0, mq, D_8009E3E8, ARRAY_COUNT(D_8009E3E8));
 
     while (TRUE)
     {

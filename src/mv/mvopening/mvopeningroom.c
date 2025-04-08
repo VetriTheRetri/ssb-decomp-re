@@ -1309,7 +1309,7 @@ void mvOpeningRoomFuncStart(void)
 	s32 unused;
 	LBRelocSetup rl_setup;
 
-	func_800048D0(mvOpeningRoomCheckSetFramebuffer);
+	syTaskmanSetFramebufferFuncSwap(mvOpeningRoomCheckSetFramebuffer);
 
 	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
 	rl_setup.table_files_num = (u32)&lLBRelocTableFilesNum;
@@ -1417,5 +1417,5 @@ void mvOpeningRoomStartScene(void)
 	dMVOpeningRoomTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl34_BSS_END);
 	scManagerFuncUpdate(&dMVOpeningRoomTaskmanSetup);
 
-	func_800048D0(NULL);
+	syTaskmanSetFramebufferFuncSwap(NULL);
 }

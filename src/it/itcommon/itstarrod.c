@@ -23,13 +23,13 @@ lITStarRodWeaponStarSmashAttributes;        // 0x00000508
 ITDesc dITStarRodItemDesc =
 {
     nITKindStarRod,                         // Item Kind
-    &gITManagerCommonData,                    // Pointer to item file data?
+    &gITManagerCommonData,                  // Pointer to item file data?
     &lITStarRodItemAttributes,              // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nGCMatrixKindTraRotRpyR,             // Main matrix transformations
-        nGCMatrixKindNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyR,            // Main matrix transformations
+        nGCMatrixKindNull,                  // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -400,7 +400,6 @@ GObj* itStarRodWeaponStarMakeWeapon(GObj *fighter_gobj, Vec3f *pos, ub8 is_smash
     gcAddXObjForDObjFixed(dobj, 0x2E, 0);
 
     dobj->translate.vec.f = *pos;
-
     dobj->translate.vec.f.z = 0.0F;
 
     return weapon_gobj;

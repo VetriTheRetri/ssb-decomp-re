@@ -44,13 +44,13 @@ void itMainDestroyItem(GObj *item_gobj);
 
 // Remove item from player - this is more than likely not included as Link's bomb erroneously calls this without
 // initializing stat_flags and stat_count
-// void itMainSetFighterRelease(GObj *item_gobj, Vec3f *vel, f32 stale, u16 stat_flags, u16 stat_count);
+// void itMainSetFighterRelease(GObj *item_gobj, Vec3f *vel, f32 throw_mul, u16 stat_flags, u16 stat_count);
 
 // Run item's drop routine
-void itMainSetFighterDrop(GObj *item_gobj, Vec3f *vel, f32 stale);
+void itMainSetFighterDrop(GObj *item_gobj, Vec3f *vel, f32 throw_mul);
 
 // Run item's throw routine
-void itMainSetFighterThrow(GObj *item_gobj, Vec3f *vel, f32 stale, sb32 is_smash_throw);
+void itMainSetFighterThrow(GObj *item_gobj, Vec3f *vel, f32 throw_mul, sb32 is_smash_throw);
 
 // Run item's pickup routine
 void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj);

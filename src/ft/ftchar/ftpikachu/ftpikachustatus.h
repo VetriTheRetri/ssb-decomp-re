@@ -12,57 +12,57 @@ FTStatusDesc dFTPikachuSpecialStatusDescs[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTPikachuMotionAppearR,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// Unused
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,					// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonAppearProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommonAppearProcPhysics,			// Proc Physics
-		mpCommonUpdateFighterProjectFloor				// Proc Map
+		ftCommonAppearProcPhysics,				// Proc Physics
+		mpCommonUpdateFighterProjectFloor		// Proc Map
 	},
 
 	// Status 221 (0xDD): AppearL
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTPikachuMotionAppearL,				// Script ID
-		nFTMotionAttackIDNone,				// Motion attack ID
+		nFTMotionAttackIDNone,					// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// Unused
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDNone,				// Status attack ID
+		nFTStatusAttackIDNone,					// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftCommonAppearProcUpdate,				// Proc Update
 		NULL,									// Proc Interrupt
-		ftCommonAppearProcPhysics,			// Proc Physics
-		mpCommonUpdateFighterProjectFloor				// Proc Map
+		ftCommonAppearProcPhysics,				// Proc Physics
+		mpCommonUpdateFighterProjectFloor		// Proc Map
 	},
 
 	// Status 222 (0xDE): SpecialN
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTPikachuMotionSpecialN,				// Script ID
-		nFTMotionAttackIDSpecialN,			// Motion attack ID
+		nFTMotionAttackIDSpecialN,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// Unused
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		TRUE,									// Is projectile?
-		nFTStatusAttackIDSpecialN,			// Status attack ID
+		nFTStatusAttackIDSpecialN,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftAnimEndSetWait,		// Proc Update
+		ftAnimEndSetWait,						// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysicsApplyGroundVelFriction,	    // Proc Physics
 		ftPikachuSpecialNProcMap				// Proc Map
@@ -72,54 +72,54 @@ FTStatusDesc dFTPikachuSpecialStatusDescs[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTPikachuMotionSpecialAirN,			// Script ID
-		nFTMotionAttackIDSpecialN,			// Motion attack ID
+		nFTMotionAttackIDSpecialN,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// Unused
 		FALSE,									// Is Smash attack?
 		nMPKineticsAir,							// Grounded or aerial attack?
 		TRUE,									// Is projectile?
-		nFTStatusAttackIDSpecialN,			// Status attack ID
+		nFTStatusAttackIDSpecialN,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftAnimEndSetFall,		// Proc Update
+		ftAnimEndSetFall,						// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysicsApplyAirVelFriction,			// Proc Physics
-		ftPikachuSpecialAirNProcMap			// Proc Map
+		ftPikachuSpecialAirNProcMap				// Proc Map
 	},
 
 	// Status 224 (0xE0): SpecialLwStart (wrong attack IDs)
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
-		nFTPikachuMotionSpecialLwStart,		// Script ID
-		nFTMotionAttackIDSpecialHi,			// Motion attack ID
+		nFTPikachuMotionSpecialLwStart,			// Script ID
+		nFTMotionAttackIDSpecialHi,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// Unused
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		TRUE,									// Is projectile?
-		nFTStatusAttackIDSpecialHi,			// Status attack ID
+		nFTStatusAttackIDSpecialHi,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftPikachuSpecialLwStartProcUpdate,	// Proc Update
+		ftPikachuSpecialLwStartProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysicsApplyGroundVelFriction,	    // Proc Physics
-		ftPikachuSpecialLwStartProcMap		// Proc Map
+		ftPikachuSpecialLwStartProcMap			// Proc Map
 	},
 
 	// Status 225 (0xE1): SpecialLwLoop (wrong attack IDs)
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTPikachuMotionSpecialLwLoop,			// Script ID
-		nFTMotionAttackIDSpecialHi,			// Motion attack ID
+		nFTMotionAttackIDSpecialHi,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// Unused
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		TRUE,									// Is projectile?
-		nFTStatusAttackIDSpecialHi,			// Status attack ID
+		nFTStatusAttackIDSpecialHi,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftPikachuSpecialLwLoopProcUpdate,		// Proc Update
@@ -132,14 +132,14 @@ FTStatusDesc dFTPikachuSpecialStatusDescs[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTPikachuMotionSpecialLwHit,			// Script ID
-		nFTMotionAttackIDSpecialHi,			// Motion attack ID
+		nFTMotionAttackIDSpecialHi,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// Unused
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		TRUE,									// Is projectile?
-		nFTStatusAttackIDSpecialHi,			// Status attack ID
+		nFTStatusAttackIDSpecialHi,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftPikachuSpecialLwHitProcUpdate,		// Proc Update
@@ -152,14 +152,14 @@ FTStatusDesc dFTPikachuSpecialStatusDescs[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTPikachuMotionSpecialLwEnd,			// Script ID
-		nFTMotionAttackIDSpecialHi,			// Motion attack ID
+		nFTMotionAttackIDSpecialHi,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// Unused
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		TRUE,									// Is projectile?
-		nFTStatusAttackIDSpecialHi,			// Status attack ID
+		nFTStatusAttackIDSpecialHi,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftAnimEndSetWait,		// Proc Update
@@ -172,14 +172,14 @@ FTStatusDesc dFTPikachuSpecialStatusDescs[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTPikachuMotionSpecialAirLwStart,		// Script ID
-		nFTMotionAttackIDSpecialHi,			// Motion attack ID
+		nFTMotionAttackIDSpecialHi,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// Unused
 		FALSE,									// Is Smash attack?
 		nMPKineticsAir,							// Grounded or aerial attack?
 		TRUE,									// Is projectile?
-		nFTStatusAttackIDSpecialHi,			// Status attack ID
+		nFTStatusAttackIDSpecialHi,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftPikachuSpecialAirLwStartProcUpdate,	// Proc Update
@@ -192,14 +192,14 @@ FTStatusDesc dFTPikachuSpecialStatusDescs[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTPikachuMotionSpecialAirLwLoop,		// Script ID
-		nFTMotionAttackIDSpecialHi,			// Motion attack ID
+		nFTMotionAttackIDSpecialHi,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// Unused
 		FALSE,									// Is Smash attack?
 		nMPKineticsAir,							// Grounded or aerial attack?
 		TRUE,									// Is projectile?
-		nFTStatusAttackIDSpecialHi,			// Status attack ID
+		nFTStatusAttackIDSpecialHi,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftPikachuSpecialAirLwLoopProcUpdate,	// Proc Update
@@ -212,79 +212,79 @@ FTStatusDesc dFTPikachuSpecialStatusDescs[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTPikachuMotionSpecialAirLwHit,		// Script ID
-		nFTMotionAttackIDSpecialHi,			// Motion attack ID
+		nFTMotionAttackIDSpecialHi,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// Unused
 		FALSE,									// Is Smash attack?
 		nMPKineticsAir,							// Grounded or aerial attack?
 		TRUE,									// Is projectile?
-		nFTStatusAttackIDSpecialHi,			// Status attack ID
+		nFTStatusAttackIDSpecialHi,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftPikachuSpecialAirLwHitProcUpdate,	// Proc Update
+		ftPikachuSpecialAirLwHitProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPikachuSpecialAirLwHitProcPhysics,	// Proc Physics
-		ftPikachuSpecialAirLwHitProcMap		// Proc Map
+		ftPikachuSpecialAirLwHitProcMap			// Proc Map
 	},
 
 	// Status 231 (0xE7): SpecialAirLwEnd (wrong attack IDs)
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTPikachuMotionSpecialAirLwEnd,		// Script ID
-		nFTMotionAttackIDSpecialHi,			// Motion attack ID
+		nFTMotionAttackIDSpecialHi,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// Unused
 		FALSE,									// Is Smash attack?
 		nMPKineticsAir,							// Grounded or aerial attack?
 		TRUE,									// Is projectile?
-		nFTStatusAttackIDSpecialHi,			// Status attack ID
+		nFTStatusAttackIDSpecialHi,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftPikachuSpecialAirLwEndProcUpdate,	// Proc Update
+		ftPikachuSpecialAirLwEndProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysicsApplyAirVelFriction,			// Proc Physics
-		ftPikachuSpecialAirLwEndProcMap		// Proc Map
+		ftPikachuSpecialAirLwEndProcMap			// Proc Map
 	},
 
 	// Status 232 (0xE8): SpecialHiStart (wrong attack IDs)
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		-1,										// Script ID
-		nFTMotionAttackIDSpecialLw,			// Motion attack ID
+		nFTMotionAttackIDSpecialLw,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// Unused
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDSpecialLw,			// Status attack ID
+		nFTStatusAttackIDSpecialLw,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftPikachuSpecialHiStartProcUpdate,	// Proc Update
+		ftPikachuSpecialHiStartProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPhysicsApplyGroundVelFriction,	    // Proc Physics
-		ftPikachuSpecialHiStartProcMap		// Proc Map
+		ftPikachuSpecialHiStartProcMap			// Proc Map
 	},
 
 	// Status 233 (0xE9): SpecialHi (wrong attack IDs)
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTPikachuMotionSpecialHi,				// Script ID
-		nFTMotionAttackIDSpecialLw,			// Motion attack ID
+		nFTMotionAttackIDSpecialLw,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// Unused
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDSpecialLw,			// Status attack ID
+		nFTStatusAttackIDSpecialLw,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftPikachuSpecialHiProcUpdate,			// Proc Update
 		NULL,									// Proc Interrupt
-		ftPikachuSpecialHiProcPhysics,	    // Proc Physics
+		ftPikachuSpecialHiProcPhysics,	    	// Proc Physics
 		ftPikachuSpecialHiProcMap				// Proc Map
 	},
 
@@ -292,14 +292,14 @@ FTStatusDesc dFTPikachuSpecialStatusDescs[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTPikachuMotionSpecialHiEnd,			// Script ID
-		nFTMotionAttackIDSpecialLw,			// Motion attack ID
+		nFTMotionAttackIDSpecialLw,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// Unused
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDSpecialLw,			// Status attack ID
+		nFTStatusAttackIDSpecialLw,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftPikachuSpecialHiEndProcUpdate,		// Proc Update
@@ -312,19 +312,19 @@ FTStatusDesc dFTPikachuSpecialStatusDescs[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		-1,										// Script ID
-		nFTMotionAttackIDSpecialLw,			// Motion attack ID
+		nFTMotionAttackIDSpecialLw,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// Unused
 		FALSE,									// Is Smash attack?
 		nMPKineticsGround,						// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDSpecialLw,			// Status attack ID
+		nFTStatusAttackIDSpecialLw,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftPikachuSpecialAirHiStartProcUpdate,	// Proc Update
 		NULL,									// Proc Interrupt
-		ftPikachuSpecialAirHiStartProcPhysics,// Proc Physics
+		ftPikachuSpecialAirHiStartProcPhysics,	// Proc Physics
 		ftPikachuSpecialAirHiStartProcMap		// Proc Map
 	},
 
@@ -332,14 +332,14 @@ FTStatusDesc dFTPikachuSpecialStatusDescs[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTPikachuMotionSpecialAirHi,			// Script ID
-		nFTMotionAttackIDSpecialLw,			// Motion attack ID
+		nFTMotionAttackIDSpecialLw,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// Unused
 		FALSE,									// Is Smash attack?
 		nMPKineticsAir,							// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDSpecialLw,			// Status attack ID
+		nFTStatusAttackIDSpecialLw,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
 		ftPikachuSpecialAirHiProcUpdate,		// Proc Update
@@ -352,20 +352,20 @@ FTStatusDesc dFTPikachuSpecialStatusDescs[/* */] =
 	{
 		/////////////////////////// Motion Info ////////////////////////////////
 		nFTPikachuMotionSpecialAirHiEnd,		// Script ID
-		nFTMotionAttackIDSpecialLw,			// Motion attack ID
+		nFTMotionAttackIDSpecialLw,				// Motion attack ID
 
 		/////////////////////////// Status Info ////////////////////////////////
 		0,										// Unused
 		FALSE,									// Is Smash attack?
 		nMPKineticsAir,							// Grounded or aerial attack?
 		FALSE,									// Is projectile?
-		nFTStatusAttackIDSpecialLw,			// Status attack ID
+		nFTStatusAttackIDSpecialLw,				// Status attack ID
 
 		//////////////////////// Process Callbacks /////////////////////////////
-		ftPikachuSpecialAirHiEndProcUpdate,	// Proc Update
+		ftPikachuSpecialAirHiEndProcUpdate,		// Proc Update
 		NULL,									// Proc Interrupt
 		ftPikachuSpecialAirHiEndProcPhysics,	// Proc Physics
-		ftPikachuSpecialAirHiEndProcMap		// Proc Map
+		ftPikachuSpecialAirHiEndProcMap			// Proc Map
 	}
 };
 

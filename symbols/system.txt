@@ -220,7 +220,7 @@ gcGetTreeDObjNext = 0x8000BAA0;
 gcSetAnimSpeed = 0x8000BB04;
 gcSetAllAnimSpeed = 0x8000BB4C;
 
-syTaskmanSetFramebufferFuncSwap = 0x800048D0;
+syTaskmanSetFuncSwapBuffer = 0x800048D0;
 syTaskmanInitSegmentF = 0x800048F8;
 unref_80004928 = 0x80004928;
 unref_80004934 = 0x80004934;
@@ -529,7 +529,7 @@ sySchedulerGetTicCount = 0x8000092C;
 unref_80000938 = 0x80000938;
 func_80000970 = 0x80000970;
 sySchedulerAddClient = 0x800009D8;
-scCheckGfxTaskDefault = 0x80000A34;
+sySchedulerCheckReadyFramebuffer = 0x80000A34;
 func_80000B54 = 0x80000B54;
 sySchedulerAddMainQueue = 0x80000C64;
 sySchedulerRemoveMainQueue = 0x80000CF4;

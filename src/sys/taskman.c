@@ -225,13 +225,13 @@ SYTaskCallback D_8004666C;  // function pointer?
 // // // // // // // // // // // //
 
 // 0x800048D0
-void syTaskmanSetFramebufferFuncSwap(SYTaskGfxCallback arg0)
+void syTaskmanSetFuncSwapBuffer(SYTaskGfxCallback arg0)
 {
 	if (arg0 != NULL)
 	{
 		D_8004666C = (void*)arg0;
 	}
-	else D_8004666C = (void*)scCheckGfxTaskDefault;
+	else D_8004666C = (void*)sySchedulerCheckReadyFramebuffer;
 }
 
 // 0x800048F8
@@ -1360,7 +1360,7 @@ void func_80006B80(void)
 		}
 	}
 	sSYTaskmanSegmentFBase = NULL;
-	syTaskmanSetFramebufferFuncSwap(NULL);
+	syTaskmanSetFuncSwapBuffer(NULL);
 
 	sySchedulerAddClient(&sSYTaskmanClient, &sSYTaskmanGameTicMesgQueue, sSYTaskmanGameTicMesgs, ARRAY_COUNT(sSYTaskmanGameTicMesgs));
 	osCreateMesgQueue(&sSYTaskmanContextMesgQueue, sSYTaskmanContextMesgs, ARRAY_COUNT(sSYTaskmanContextMesgs));

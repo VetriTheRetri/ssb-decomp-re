@@ -91,7 +91,7 @@ extern u16 D_80046626;
 extern u16 D_80046628;
 extern s32 gSYTaskmanTaskID;
 
-extern void syTaskmanSetFramebufferFuncSwap(SYTaskGfxCallback arg0);
+extern void syTaskmanSetFuncSwapBuffer(SYTaskGfxCallback arg0);
 extern void syTaskmanInitSegmentF(Gfx **dl);
 extern void* syTaskmanMalloc(size_t size, u32 align);
 extern void func_80004F78(void);

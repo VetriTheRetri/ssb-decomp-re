@@ -11,7 +11,7 @@
 extern void itMainSetFighterRelease(GObj*, Vec3f*, f32);
 
 extern intptr_t lITLinkBombItemAttributes;	// 0x00000040
-extern intptr_t lITLinkBombAttackEvents;  		// 0x00000088
+extern intptr_t lITLinkBombAttackEvents;  	// 0x00000088
 extern intptr_t lITLinkBombBloatScales; 	// 0x000000A8
 
 // // // // // // // // // // // //
@@ -33,7 +33,7 @@ ITDesc dItLinkBombItemDesc =
 		0					  				// ???
 	},
 
-	nGMAttackStateOff, 					// Hitbox Update State
+	nGMAttackStateOff, 						// Hitbox Update State
 	itLinkBombHoldProcUpdate,				// Proc Update
 	NULL,									// Proc Map
 	NULL,									// Proc Hit

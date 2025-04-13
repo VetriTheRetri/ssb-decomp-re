@@ -84,7 +84,12 @@ void ftCommonItemThrowProcUpdate(GObj *fighter_gobj)
         }
         else status_id = fp->status_id;
 
-        vel_base = dFTCommonDataItemThrowDescs[status_id - nFTCommonStatusLightThrowStart].velocity * fp->status_vars.common.itemthrow.throw_vel * fp->attr->item_throw_vel * 0.01F;
+        vel_base = F_PCT_TO_DEC
+        (
+            dFTCommonDataItemThrowDescs[status_id - nFTCommonStatusLightThrowStart].velocity *
+            fp->status_vars.common.itemthrow.throw_vel *
+            fp->attr->item_throw_vel
+        );
 
         if (fp->status_vars.common.itemthrow.throw_angle == 361)
         {
@@ -92,7 +97,12 @@ void ftCommonItemThrowProcUpdate(GObj *fighter_gobj)
         }
         else angle = fp->status_vars.common.itemthrow.throw_angle;
 
-        damage_mul = dFTCommonDataItemThrowDescs[status_id - nFTCommonStatusLightThrowStart].damage * 0.01F * fp->status_vars.common.itemthrow.throw_damage * fp->attr->item_throw_mul * 0.01F;
+        damage_mul = F_PCT_TO_DEC
+        (
+            F_PCT_TO_DEC(dFTCommonDataItemThrowDescs[status_id - nFTCommonStatusLightThrowStart].damage) *
+            fp->status_vars.common.itemthrow.throw_damage *
+            fp->attr->item_throw_mul
+        );
 
         vel.x = __cosf(F_CLC_DTOR32(angle)) * vel_base * fp->lr;
         vel.y = __sinf(F_CLC_DTOR32(angle)) * vel_base;

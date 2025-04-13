@@ -44,18 +44,19 @@ union CheckedPtr {
     intptr_t tag;
 };
 
-struct ViSettings {
-    ub32 antiAlias    : 1; // b0 0 80 => unknown game control (flags & 0x1) [aa & resamp enabled?]
+typedef struct SYImageSetup
+{
+    ub32 antialias    : 1; // b0 0 80 => unknown game control (flags & 0x1) [aa & resamp enabled?]
     ub32 serrate      : 1; // b1 0 40 => serrate enabled (bool)
-    ub32 pixelSize32  : 1; // b2   20 => type_32 enabled
+    ub32 colordepth32 : 1; // b2  20 => type_32 enabled
     ub32 gamma        : 1; // b3   10 => gamma on
     ub32 blackout     : 1; // b4   08 => unknown game control (flags & 0x100) [blackout ?]
     ub32 unk_b04      : 1; // b5   04 => unknown game control (flags & 0x400) [custom resolution?]
-    ub32 gammaDither  : 1; // b6   02 => gamma dither on
-    ub32 ditherFilter : 1; // b7   01 => dither filter
+    ub32 gammadither  : 1; // b6   02 => gamma dither on
+    ub32 ditherfilter : 1; // b7   01 => dither filter
     ub32 divot        : 1; // b8 1 80 => divot on
-                         // b9 1 40
-};
+
+} SYImageSetup;
 
 // bss
 SYClient *sSYSchedulerClients;
@@ -85,7 +86,7 @@ u32 gSYSchedulerFrameTime;
 // 0x80044FB8 - Time taken to process audio
 u32 gSYSchedulerAudioTime;
 
-struct ViSettings sSYSchedulerImageSetup; // bitflags? union?
+SYImageSetup sSYSchedulerImageSetup;
 
 u64 sSYSchedulerRdpCache;
 
@@ -152,7 +153,7 @@ void sySchedulerAddClient(SYClient *client, OSMesgQueue *mq, OSMesg *msg, u32 co
 }
 
 // 0x80000A34 - Returns true if task can be executed now
-s32 scCheckGfxTaskDefault(SYTaskGfx* t)
+s32 sySchedulerCheckReadyFramebuffer(SYTaskGfx *t)
 {
     s32 unused;
     s32 i;
@@ -404,13 +405,13 @@ void sySchedulerUpdateViMode(u32 width, u32 height, u32 flags, s16 off_left, s16
     }
     if (flags & SYVIDEO_FLAG_COLORDEPTH16)
     {
-        sSYSchedulerImageSetup.pixelSize32 = FALSE;
+        sSYSchedulerImageSetup.colordepth32 = FALSE;
         sSYSchedulerCurrentViMode.comRegs.ctrl &= ~(VI_CTRL_TYPE_32 | VI_CTRL_TYPE_16);
         sSYSchedulerCurrentViMode.comRegs.ctrl |= VI_CTRL_TYPE_16;
     }
     if (flags & SYVIDEO_FLAG_COLORDEPTH32)
     {
-        sSYSchedulerImageSetup.pixelSize32 = TRUE;
+        sSYSchedulerImageSetup.colordepth32 = TRUE;
         sSYSchedulerCurrentViMode.comRegs.ctrl &= ~(VI_CTRL_TYPE_32 | VI_CTRL_TYPE_16);
         sSYSchedulerCurrentViMode.comRegs.ctrl |= VI_CTRL_TYPE_32;
     }
@@ -426,22 +427,22 @@ void sySchedulerUpdateViMode(u32 width, u32 height, u32 flags, s16 off_left, s16
     }
     if (flags & SYVIDEO_FLAG_GAMMADITHER)
     {
-        sSYSchedulerImageSetup.gammaDither = TRUE;
+        sSYSchedulerImageSetup.gammadither = TRUE;
         sSYSchedulerCurrentViMode.comRegs.ctrl |= VI_CTRL_GAMMA_DITHER_ON;
     }
     if (flags & SYVIDEO_FLAG_NOGAMMADITHER)
     {
-        sSYSchedulerImageSetup.gammaDither = FALSE;
+        sSYSchedulerImageSetup.gammadither = FALSE;
         sSYSchedulerCurrentViMode.comRegs.ctrl &= ~VI_CTRL_GAMMA_DITHER_ON;
     }
     if (flags & SYVIDEO_FLAG_DITHERFILTER)
     {
-        sSYSchedulerImageSetup.ditherFilter = TRUE;
+        sSYSchedulerImageSetup.ditherfilter = TRUE;
         sSYSchedulerCurrentViMode.comRegs.ctrl |= VI_CTRL_DITHER_FILTER_ON;
     }
     if (flags & SYVIDEO_FLAG_NODITHERFILTER)
     {
-        sSYSchedulerImageSetup.ditherFilter = FALSE;
+        sSYSchedulerImageSetup.ditherfilter = FALSE;
         sSYSchedulerCurrentViMode.comRegs.ctrl &= ~VI_CTRL_DITHER_FILTER_ON;
     }
     if (flags & SYVIDEO_FLAG_DIVOT)
@@ -472,19 +473,19 @@ void sySchedulerUpdateViMode(u32 width, u32 height, u32 flags, s16 off_left, s16
     }
     if (flags & SYVIDEO_FLAG_ANTIALIAS)
     {
-        sSYSchedulerImageSetup.antiAlias = TRUE;
+        sSYSchedulerImageSetup.antialias = TRUE;
     }
     if (flags & SYVIDEO_FLAG_NOANTIALIAS)
     {
-        sSYSchedulerImageSetup.antiAlias = FALSE;
+        sSYSchedulerImageSetup.antialias = FALSE;
     }
     sSYSchedulerCurrentViMode.comRegs.ctrl &= ~VI_CTRL_ANTIALIAS_MASK;
 
-    if (sSYSchedulerImageSetup.antiAlias)
+    if (sSYSchedulerImageSetup.antialias)
     {
-        sSYSchedulerCurrentViMode.comRegs.ctrl |= ((sSYSchedulerImageSetup.ditherFilter) ? 0 : VI_CTRL_ANTIALIAS_MODE_1);
+        sSYSchedulerCurrentViMode.comRegs.ctrl |= ((sSYSchedulerImageSetup.ditherfilter) ? 0 : VI_CTRL_ANTIALIAS_MODE_1);
     }
-    else if (!(sSYSchedulerImageSetup.unk_b04) && (sSYSchedulerImageSetup.pixelSize32 == TRUE))
+    else if (!(sSYSchedulerImageSetup.unk_b04) && (sSYSchedulerImageSetup.colordepth32 == TRUE))
     {
         sSYSchedulerCurrentViMode.comRegs.ctrl |= VI_CTRL_ANTIALIAS_MODE_3; // neither (replicate pixels, no interpolate)
     }
@@ -611,8 +612,8 @@ void sySchedulerUpdateViMode(u32 width, u32 height, u32 flags, s16 off_left, s16
     }
     sSYSchedulerCurrentViMode.comRegs.vCurrent  = 0;
     sSYSchedulerCurrentViMode.comRegs.xScale    = (width << 10) / ((off_right - off_left) + 640);
-    sSYSchedulerCurrentViMode.fldRegs[0].origin = (!(sSYSchedulerImageSetup.pixelSize32) ? 1 : 2) * width * 2;
-    sSYSchedulerCurrentViMode.fldRegs[1].origin = (!(sSYSchedulerImageSetup.pixelSize32) ? 1 : 2) * (((is_res_in_bounds != FALSE) ? 1 : 2) * width * 2);
+    sSYSchedulerCurrentViMode.fldRegs[0].origin = (!(sSYSchedulerImageSetup.colordepth32) ? 1 : 2) * width * 2;
+    sSYSchedulerCurrentViMode.fldRegs[1].origin = (!(sSYSchedulerImageSetup.colordepth32) ? 1 : 2) * (((is_res_in_bounds != FALSE) ? 1 : 2) * width * 2);
     sSYSchedulerCurrentViMode.fldRegs[0].yScale = vertical;
     sSYSchedulerCurrentViMode.fldRegs[1].yScale = vertical;
 
@@ -1207,14 +1208,14 @@ void sySchedulerThreadMain(void *arg)
     osViSetMode(&sSYSchedulerPendingViMode);
     osViBlack(TRUE);
 
-    sSYSchedulerImageSetup.antiAlias    = TRUE;
+    sSYSchedulerImageSetup.antialias    = TRUE;
     sSYSchedulerImageSetup.serrate      = FALSE;
-    sSYSchedulerImageSetup.pixelSize32  = FALSE;
+    sSYSchedulerImageSetup.colordepth32  = FALSE;
     sSYSchedulerImageSetup.gamma        = FALSE;
     sSYSchedulerImageSetup.blackout     = TRUE;
     sSYSchedulerImageSetup.unk_b04      = FALSE;
-    sSYSchedulerImageSetup.gammaDither  = TRUE;
-    sSYSchedulerImageSetup.ditherFilter = TRUE;
+    sSYSchedulerImageSetup.gammadither  = TRUE;
+    sSYSchedulerImageSetup.ditherfilter = TRUE;
     sSYSchedulerImageSetup.divot        = TRUE;
 
     osCreateMesgQueue(&gSYSchedulerTaskMesgQueue, sSYSchedulerTaskMesgs, ARRAY_COUNT(sSYSchedulerTaskMesgs));

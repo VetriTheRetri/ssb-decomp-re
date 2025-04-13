@@ -315,8 +315,8 @@ void itMainDestroyItem(GObj *item_gobj)
     gcEjectGObj(item_gobj);
 }
 
-// 0x80172984
-void itMainSetFighterRelease(GObj *item_gobj, Vec3f *vel, f32 stale, u16 stat_flags, u16 stat_count) // Very high probability that Link's Bomb erroneously declares this without flag1 and flag2
+// 0x80172984 - Link's Bomb erroneously redeclares this without stat_flags and stat_count
+void itMainSetFighterRelease(GObj *item_gobj, Vec3f *vel, f32 throw_mul, u16 stat_flags, u16 stat_count)
 {
     ITStruct *ip = itGetStruct(item_gobj);
     GObj *fighter_gobj = ip->owner_gobj;
@@ -349,7 +349,7 @@ void itMainSetFighterRelease(GObj *item_gobj, Vec3f *vel, f32 stale, u16 stat_fl
     ip->times_thrown++;
     ip->is_thrown = TRUE;
 
-    ip->attack_coll.throw_mul = stale;
+    ip->attack_coll.throw_mul = throw_mul;
 
     ip->attack_coll.stat_flags = *(GMStatFlags*)&stat_flags;
     ip->attack_coll.stat_count = stat_count;
@@ -359,29 +359,27 @@ void itMainSetFighterRelease(GObj *item_gobj, Vec3f *vel, f32 stale, u16 stat_fl
 }
 
 // 0x80172AEC
-void itMainSetFighterDrop(GObj *item_gobj, Vec3f *vel, f32 stale)
+void itMainSetFighterDrop(GObj *item_gobj, Vec3f *vel, f32 throw_mul)
 {
     ITStruct *ip = itGetStruct(item_gobj);
     GObj *owner_gobj = ip->owner_gobj;
     FTStruct *fp = ftGetStruct(owner_gobj);
-    void (*proc_drop)(GObj*) = dITMainProcDroppedList[ip->kind];
 
-    if (proc_drop != NULL)
+    if (dITMainProcDroppedList[ip->kind] != NULL)
     {
-        proc_drop(item_gobj);
+        dITMainProcDroppedList[ip->kind](item_gobj);
     }
-    itMainSetFighterRelease(item_gobj, vel, stale, nFTStatusAttackIDItemThrow, fp->stat_count);
+    itMainSetFighterRelease(item_gobj, vel, throw_mul, nFTStatusAttackIDItemThrow, fp->stat_count);
 
     func_800269C0_275C0(ip->drop_sfx);
 }
 
 // 0x80172B78
-void itMainSetFighterThrow(GObj *item_gobj, Vec3f *vel, f32 stale, sb32 is_smash_throw)
+void itMainSetFighterThrow(GObj *item_gobj, Vec3f *vel, f32 throw_mul, sb32 is_smash_throw)
 {
     ITStruct *ip = itGetStruct(item_gobj);
     GObj *owner_gobj = ip->owner_gobj;
     FTStruct *fp = ftGetStruct(owner_gobj);
-    void (*proc_throw)(GObj*);
 
     if (ip->weight == nITWeightLight)
     {
@@ -391,14 +389,12 @@ void itMainSetFighterThrow(GObj *item_gobj, Vec3f *vel, f32 stale, sb32 is_smash
         }
     }
     else ftParamMakeRumble(fp, (is_smash_throw != FALSE) ? 9 : 6, 0);
-    
-    proc_throw = dITMainProcThrownList[ip->kind];
 
-    if (proc_throw != NULL)
+    if (dITMainProcThrownList[ip->kind] != NULL)
     {
-        proc_throw(item_gobj);
+        dITMainProcThrownList[ip->kind](item_gobj);
     }
-    itMainSetFighterRelease(item_gobj, vel, stale, fp->stat_flags.halfword, fp->stat_count);
+    itMainSetFighterRelease(item_gobj, vel, throw_mul, fp->stat_flags.halfword, fp->stat_count);
 
     efManagerSparkleWhiteScaleMakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f, 1.0F);
 
@@ -413,7 +409,7 @@ void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
     ITStruct *ip = itGetStruct(item_gobj);
     FTStruct *fp = ftGetStruct(fighter_gobj);
     DObj *joint;
-    void (*proc_pickup)(GObj*);
+    s32 unused;
     Vec3f pos;
     s32 joint_id;
 
@@ -457,16 +453,12 @@ void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
     pos.z = 0.0F;
 
     gmCollisionGetFighterPartsWorldPosition(fp->joints[joint_id], &pos);
-
     efManagerItemGetSwirlProcUpdate(&pos);
-
     gcSetDObjTransformsForGObj(item_gobj, ip->attr->data);
 
-    proc_pickup = dITMainProcHoldList[ip->kind];
-
-    if (proc_pickup != NULL)
+    if (dITMainProcHoldList[ip->kind] != NULL)
     {
-        proc_pickup(item_gobj);
+        dITMainProcHoldList[ip->kind](item_gobj);
     }
     ftParamLinkResetShieldModelParts(fighter_gobj);
 

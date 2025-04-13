@@ -154,7 +154,7 @@ extern u32 gSYSchedulerFramebufferSetTimestamp;
 
 extern void func_80000970(SYTaskInfo *arg0);
 extern void sySchedulerAddClient(SYClient *arg0, OSMesgQueue *mq, OSMesg *msg, u32 count);
-extern s32 scCheckGfxTaskDefault(SYTaskGfx *t);
+extern s32 sySchedulerCheckReadyFramebuffer(SYTaskGfx *t);
 extern void sySchedulerThreadMain(void *arg);
 extern s32 func_80000B54(UNUSED SYTaskInfo *t);
 

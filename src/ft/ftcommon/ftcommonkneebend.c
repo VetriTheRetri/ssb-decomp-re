@@ -18,7 +18,7 @@ void ftCommonKneeBendProcUpdate(GObj *fighter_gobj)
     (
         (fp->status_vars.common.kneebend.input_source == FTCOMMON_KNEEBEND_INPUT_TYPE_BUTTON) &&
         (fp->status_vars.common.kneebend.anim_frame <= FTCOMMON_KNEEBEND_SHORT_HOP_FRAMES)    &&
-        (fp->input.pl.button_tap_prev & (R_CBUTTONS | L_CBUTTONS | D_CBUTTONS | U_CBUTTONS))
+        (fp->input.pl.button_tap_release & (R_CBUTTONS | L_CBUTTONS | D_CBUTTONS | U_CBUTTONS))
     )
     {
         fp->status_vars.common.kneebend.is_short_hop = TRUE;

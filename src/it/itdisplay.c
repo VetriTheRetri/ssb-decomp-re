@@ -174,7 +174,7 @@ sb32 itDisplayCheckItemVisible(ITStruct *ip)
 
     fp = ftGetStruct(ip->owner_gobj);
 
-    if (!(fp->is_show_item))
+    if (!(fp->is_item_show))
     {
         return FALSE;
     }

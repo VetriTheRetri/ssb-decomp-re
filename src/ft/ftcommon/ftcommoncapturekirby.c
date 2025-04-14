@@ -109,7 +109,7 @@ void ftCommonCaptureKirbyProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
     {
         ftCommonThrownDecideFighterLoseGrip(this_fp->capture_gobj, fighter_gobj);
     }
-    this_fp->unk_ft_0x192_b3 = FALSE;
+    this_fp->is_catch_or_capture = FALSE;
 
     this_fp->capture_gobj = capture_gobj;
 
@@ -272,11 +272,11 @@ void ftCommonThrownKirbyStarMakeEffect(GObj *fighter_gobj, f32 arg1, f32 arg2)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (!(fp->is_attach_effect))
+    if (!(fp->is_effect_attach))
     {
         if (efManagerCaptureKirbyStarMakeEffect(fighter_gobj) != NULL)
         {
-            fp->is_attach_effect = TRUE;
+            fp->is_effect_attach = TRUE;
         }
     }
 }
@@ -339,7 +339,7 @@ void ftCommonThrownCommonStarUpdatePhysics(GObj *fighter_gobj, f32 decelerate)
 
             if (efManagerStarSplashMakeEffect(&DObjGetStruct(fighter_gobj)->translate.vec.f, (-fp->physics.vel_air.x < 0.0F) ? -1 : +1) != NULL)
             {
-                fp->is_attach_effect = TRUE;
+                fp->is_effect_attach = TRUE;
             }
         }
         else
@@ -361,7 +361,7 @@ void ftCommonThrownCommonStarUpdatePhysics(GObj *fighter_gobj, f32 decelerate)
 
                 if (efManagerStarSplashMakeEffect(&DObjGetStruct(fighter_gobj)->translate.vec.f, (-fp->physics.vel_air.x < 0.0F) ? -1 : +1) != NULL)
                 {
-                    fp->is_attach_effect = TRUE;
+                    fp->is_effect_attach = TRUE;
                 }
                 fp->is_invisible = FALSE;
 
@@ -504,7 +504,7 @@ void ftCommonThrownKirbyStarSetStatus(GObj *fighter_gobj)
             attack_coll->damage = copy[fp->fkind].star_damage;
         }
     }
-    fp->is_invisible = fp->is_hide_shadow = TRUE;
+    fp->is_invisible = fp->is_shadow_hide = TRUE;
 
     ftParamSetHitStatusAll(fighter_gobj, nGMHitStatusIntangible);
     ftParamSetPlayerTagWait(fighter_gobj, 1);
@@ -549,7 +549,7 @@ void ftCommonThrownCopyStarSetStatus(GObj *fighter_gobj)
     ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL);
 
     fp->proc_hit = ftCommonThrownCommonStarProcHit;
-    fp->is_invisible = fp->is_hide_shadow = TRUE;
+    fp->is_invisible = fp->is_shadow_hide = TRUE;
 
     ftParamSetHitStatusAll(fighter_gobj, nGMHitStatusIntangible);
     ftParamSetPlayerTagWait(fighter_gobj, 1);

@@ -197,7 +197,7 @@ void sc1PTrainingModeCheckEnterMenu(void)
 		GObj *fighter_gobj = gSCManagerBattleState->players[player].fighter_gobj;
 		FTStruct *fp = ftGetStruct(fighter_gobj);
 
-		if (!(fp->is_ignore_training_menu))
+		if (!(fp->is_menu_ignore))
 		{
 			ifCommonInterfaceSetGObjFlagsAll(GOBJ_FLAG_HIDDEN);
 			sc1PTrainingModeSetMenuGObjFlags(GOBJ_FLAG_NONE);

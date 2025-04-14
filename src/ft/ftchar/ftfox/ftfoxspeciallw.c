@@ -287,7 +287,7 @@ void ftFoxSpecialLwStartInitStatusVars(GObj *fighter_gobj)
 
     if (fp->status_vars.fox.speciallw.effect_gobj != NULL)
     {
-        fp->is_attach_effect = TRUE;
+        fp->is_effect_attach = TRUE;
     }
     fp->special_coll = (FTSpecialColl*) ((uintptr_t)gFTDataFoxMainMotion + (intptr_t)&lFTFoxSpecialLwReflector); // Another linker thing
 }

@@ -11,13 +11,13 @@ void ftKirbyCopyCaptainSpecialNUpdateEffect(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (!(fp->is_attach_effect))
+    if (!(fp->is_effect_attach))
     {
         if (fp->motion_vars.flags.flag0 == 1)
         {
             if (efManagerCaptainFalconPunchMakeEffect(fighter_gobj) != FALSE)
             {
-                fp->is_attach_effect = TRUE;
+                fp->is_effect_attach = TRUE;
             }
             fp->motion_vars.flags.flag0 = 0;
         }

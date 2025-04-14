@@ -1721,7 +1721,7 @@ void ifCommonPlayerArrowsProcRun(GObj *interface_gobj)
         {
             FTStruct *fp = ftGetStruct(fighter_gobj);
 
-            if (!(fp->is_skip_magnify) && !(fp->is_rebirth) && (fp->is_show_magnify))
+            if (!(fp->is_magnify_ignore) && !(fp->is_rebirth) && (fp->is_magnify_show))
             {
                 if (ABSF(fp->magnify_pos.x) > ABSF(fp->magnify_pos.y))
                 {
@@ -2921,7 +2921,7 @@ void ifCommonBattleGoUpdateInterface(void)
                     {
                         continue;
                     }
-                    if (!(fp->is_ignore_training_menu))
+                    if (!(fp->is_menu_ignore))
                     {
                         if (gSCManagerBattleState->game_type == nSCBattleGameTypeBonus)
                         {

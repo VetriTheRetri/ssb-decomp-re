@@ -71,13 +71,8 @@ void ftCommonItemThrowProcUpdate(GObj *fighter_gobj)
     {
         if 
         (
-
-            (fp->fkind == nFTKindDonkey || fp->fkind == nFTKindNDonkey || fp->fkind == nFTKindGDonkey)
-
-                                                                    &&
-
+            (fp->fkind == nFTKindDonkey || fp->fkind == nFTKindNDonkey || fp->fkind == nFTKindGDonkey) &&
             (fp->status_id >= nFTDonkeyStatusHeavyThrowStart && fp->status_id <= nFTDonkeyStatusHeavyThrowEnd)
-
         )
         {
             status_id = fp->status_id - nFTCommonStatusHeavyThrow4Start;
@@ -86,9 +81,9 @@ void ftCommonItemThrowProcUpdate(GObj *fighter_gobj)
 
         vel_base = F_PCT_TO_DEC
         (
-            dFTCommonDataItemThrowDescs[status_id - nFTCommonStatusLightThrowStart].velocity *
+            dFTCommonDataItemThrowDescs[status_id - nFTCommonStatusLightThrowStart].vel_scale *
             fp->status_vars.common.itemthrow.throw_vel *
-            fp->attr->item_throw_vel
+            fp->attr->itemthrow_vel_scale
         );
 
         if (fp->status_vars.common.itemthrow.throw_angle == 361)
@@ -99,9 +94,9 @@ void ftCommonItemThrowProcUpdate(GObj *fighter_gobj)
 
         damage_mul = F_PCT_TO_DEC
         (
-            F_PCT_TO_DEC(dFTCommonDataItemThrowDescs[status_id - nFTCommonStatusLightThrowStart].damage) *
+            F_PCT_TO_DEC(dFTCommonDataItemThrowDescs[status_id - nFTCommonStatusLightThrowStart].damage_scale) *
             fp->status_vars.common.itemthrow.throw_damage *
-            fp->attr->item_throw_mul
+            fp->attr->itemthrow_damage_scale
         );
 
         vel.x = __cosf(F_CLC_DTOR32(angle)) * vel_base * fp->lr;

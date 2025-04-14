@@ -374,7 +374,7 @@ void ftManagerDestroyFighter(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 i;
 
-    if (fp->is_attach_effect)
+    if (fp->is_effect_attach)
     {
         ftParamProcStopEffect(fighter_gobj);
     }
@@ -452,8 +452,8 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTDesc *desc)
     fp->is_reflect = FALSE;
     fp->is_absorb = FALSE;
     fp->is_shield = FALSE;
-    fp->is_attach_effect = FALSE;
-    fp->is_ignore_jostle = FALSE;
+    fp->is_effect_attach = FALSE;
+    fp->is_jostle_ignore = FALSE;
 
     fp->cliffcatch_wait = 0;
     fp->tics_since_last_z = 0;
@@ -485,7 +485,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTDesc *desc)
     fp->throw_gobj = NULL;
     fp->catch_gobj = NULL;
     fp->capture_gobj = NULL;
-    fp->unk_ft_0x192_b3 = FALSE;
+    fp->is_catch_or_capture = FALSE;
 
     fp->item_gobj = NULL;
 
@@ -727,7 +727,7 @@ GObj* ftManagerMakeFighter(FTDesc *desc) // Create fighter
     fp->effect_joint_array_id = 0;
 
     fp->is_invisible = FALSE;
-    fp->is_hide_shadow = FALSE;
+    fp->is_shadow_hide = FALSE;
 
     fp->display_mode = nDBDisplayModeMaster;
 
@@ -740,7 +740,7 @@ GObj* ftManagerMakeFighter(FTDesc *desc) // Create fighter
     fp->team_order = desc->team_order;
     fp->dl_link = FTDISPLAY_DLLINK_DEFAULT;
 
-    fp->is_skip_magnify = desc->is_skip_magnify;
+    fp->is_magnify_ignore = desc->is_magnify_ignore;
 
     fp->status_total_tics = 0;
 

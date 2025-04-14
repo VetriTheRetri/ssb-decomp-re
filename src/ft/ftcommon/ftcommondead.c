@@ -145,7 +145,7 @@ void ftCommonDeadResetSpecialStats(GObj *fighter_gobj)
 
     fp->star_invincible_tics = 0;
     fp->is_ghost = TRUE;
-    fp->is_hide_shadow = TRUE;
+    fp->is_shadow_hide = TRUE;
 
     ftParamTryUpdateItemMusic();
 }
@@ -173,7 +173,7 @@ void ftCommonDeadInitStatusVars(GObj *fighter_gobj)
     ftPhysicsStopVelAll(fighter_gobj);
 
     fp->is_invisible = TRUE;
-    fp->is_ignore_training_menu = TRUE;
+    fp->is_menu_ignore = TRUE;
     fp->is_playertag_hide = TRUE;
 
     efManagerQuakeMakeEffect(2);
@@ -357,7 +357,7 @@ void ftCommonDeadUpStarProcUpdate(GObj *fighter_gobj)
             efManagerSparkleWhiteDeadMakeEffect(&fp->joints[nFTPartsJointTopN]->translate.vec.f, 5.0F);
 
             fp->is_invisible = TRUE;
-            fp->is_ignore_training_menu = TRUE;
+            fp->is_menu_ignore = TRUE;
 
             ftCommonDeadUpdateScore(fp);
             ftCommonDeadAddDeadSFXSoundQueue(nSYAudioFGMDeadUpStar);
@@ -463,7 +463,7 @@ void ftCommonDeadUpFallProcUpdate(GObj *fighter_gobj)
 
             fp->is_playertag_hide = TRUE;
             fp->is_invisible = TRUE;
-            fp->is_ignore_training_menu = TRUE;
+            fp->is_menu_ignore = TRUE;
 
             ftCommonDeadUpdateScore(fp);
 

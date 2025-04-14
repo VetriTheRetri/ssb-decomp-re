@@ -72,7 +72,7 @@ void ftCommonCaptureYoshiProcPhysics(GObj *fighter_gobj)
         {
             fp->status_vars.common.captureyoshi.stage = 2;
 
-            fp->is_invisible = fp->is_hide_shadow = TRUE;
+            fp->is_invisible = fp->is_shadow_hide = TRUE;
 
             ftParamSetHitStatusAll(fighter_gobj, nGMHitStatusIntangible);
         }
@@ -101,7 +101,7 @@ void ftCommonCaptureYoshiProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
     {
         ftCommonThrownDecideFighterLoseGrip(this_fp->capture_gobj, fighter_gobj);
     }
-    this_fp->unk_ft_0x192_b3 = FALSE;
+    this_fp->is_catch_or_capture = FALSE;
 
     this_fp->capture_gobj = capture_gobj;
 
@@ -133,7 +133,7 @@ void ftCommonYoshiEggMakeEffect(GObj *fighter_gobj)
 
         if (fp->status_vars.common.captureyoshi.effect_gobj != NULL)
         {
-            fp->is_attach_effect = TRUE;
+            fp->is_effect_attach = TRUE;
         }
     }
 }
@@ -179,7 +179,6 @@ void ftCommonYoshiEggProcUpdate(GObj *fighter_gobj)
     if (is_escape == TRUE)
     {
         Vec3f pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
-
         pos.z = 0.0F;
 
         efManagerYoshiEggExplodeMakeEffect(&pos);
@@ -187,8 +186,7 @@ void ftCommonYoshiEggProcUpdate(GObj *fighter_gobj)
         func_800269C0_275C0(nSYAudioFGMYoshiEggLayShatter);
 
         fp->physics.vel_air.y = FTCOMMON_YOSHIEGG_ESCAPE_VEL_Y;
-        fp->physics.vel_air.z = 0.0F;
-        fp->physics.vel_air.x = 0.0F;
+        fp->physics.vel_air.x = fp->physics.vel_air.z = 0.0F;
 
         DObjGetStruct(fighter_gobj)->translate.vec.f.y += FTCOMMON_YOSHIEGG_ESCAPE_OFF_Y;
 
@@ -333,7 +331,7 @@ void ftCommonYoshiEggSetDamageCollCollisions(GObj *fighter_gobj)
         }
     }
     fp->is_hitstatus_nodamage = TRUE;
-    fp->is_hurtbox_modify = TRUE;
+    fp->is_damage_coll_modify = TRUE;
 }
 
 // 0x8014CF0C

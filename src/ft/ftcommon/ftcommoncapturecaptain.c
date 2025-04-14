@@ -91,9 +91,9 @@ void ftCommonCaptureCaptainProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
     if (this_fp->ga != nMPKineticsAir)
     {
         this_fp->status_vars.common.capturecaptain.capture_flag |= FTCOMMON_CAPTURECAPTAIN_MASK_NOUPDATE;
-        this_fp->unk_ft_0x192_b3 = TRUE;
+        this_fp->is_catch_or_capture = TRUE;
     }
-    else this_fp->unk_ft_0x192_b3 = FALSE;
+    else this_fp->is_catch_or_capture = FALSE;
 
     mpCommonSetFighterAir(this_fp);
     ftMainSetStatus(fighter_gobj, nFTCommonStatusCaptureCaptain, FTCOMMON_CAPTURECAPTAIN_FRAME_BEGIN, FTCOMMON_CAPTURECAPTAIN_ANIM_SPEED, FTSTATUS_PRESERVE_NONE);

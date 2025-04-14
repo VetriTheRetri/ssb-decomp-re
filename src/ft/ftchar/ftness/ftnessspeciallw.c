@@ -229,11 +229,11 @@ void ftNessSpecialLwInitVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (!(fp->is_attach_effect))
+    if (!(fp->is_effect_attach))
     {
         if (efManagerNessPsychicMagnetMakeEffect(fighter_gobj) != NULL)
         {
-            fp->is_attach_effect = TRUE;
+            fp->is_effect_attach = TRUE;
         }
     }
     fp->is_absorb = TRUE;

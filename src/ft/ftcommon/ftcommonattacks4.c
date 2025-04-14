@@ -47,7 +47,7 @@ void ftCommonAttackS4ProcUpdate(GObj *fighter_gobj)
 
             if (efManagerPikachuThunderShockMakeEffect(fighter_gobj, &offset, fp->status_vars.common.attack4.gfx_id) != NULL)
             {
-                fp->is_attach_effect = TRUE;
+                fp->is_effect_attach = TRUE;
             }
         }
         // Fallthrough, should break here for efficiency

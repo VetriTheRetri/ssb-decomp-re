@@ -11,13 +11,13 @@ void ftCaptainSpecialLwUpdateEffect(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (!(fp->is_attach_effect))
+    if (!(fp->is_effect_attach))
     {
         if (fp->motion_vars.flags.flag2 == 1)
         {
             if (efManagerCaptainFalconKickMakeEffect(fighter_gobj) != NULL)
             {
-                fp->is_attach_effect = TRUE;
+                fp->is_effect_attach = TRUE;
             }
             fp->motion_vars.flags.flag2 = 0;
         }

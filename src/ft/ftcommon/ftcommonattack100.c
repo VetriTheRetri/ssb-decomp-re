@@ -146,7 +146,7 @@ void ftCommonAttack100LoopProcInterrupt(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->input.pl.button_tap & fp->input.button_mask_a) || (fp->input.pl.button_tap_prev & fp->input.button_mask_a))
+    if ((fp->input.pl.button_tap & fp->input.button_mask_a) || (fp->input.pl.button_tap_release & fp->input.button_mask_a))
     {
         fp->status_vars.common.attack100.is_goto_loop = TRUE;
     }
@@ -230,13 +230,13 @@ sb32 ftCommonAttack100StartCheckInterruptCommon(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id;
-    s32 inputs_req;
+    s32 inputs_min;
 
     if(!(ftCommonAttack100CheckFighterKind(fp)))
     {
         return FALSE;
     }
-    if ((fp->input.pl.button_tap & fp->input.button_mask_a) || (fp->input.pl.button_tap_prev & fp->input.button_mask_a))
+    if ((fp->input.pl.button_tap & fp->input.button_mask_a) || (fp->input.pl.button_tap_release & fp->input.button_mask_a))
     {
         fp->attack1_input_count++;
 
@@ -244,35 +244,35 @@ sb32 ftCommonAttack100StartCheckInterruptCommon(GObj *fighter_gobj)
         {
         case nFTKindFox:
         case nFTKindNFox:
-            inputs_req = 4;
+            inputs_min = 4;
             status_id = nFTCommonStatusAttack12;
             break;
 
         case nFTKindLink:
         case nFTKindNLink:
-            inputs_req = 5;
+            inputs_min = 5;
             status_id = nFTCommonStatusAttack12;
             break;
 
         case nFTKindKirby:
         case nFTKindNKirby:
-            inputs_req = 4;
+            inputs_min = 4;
             status_id = nFTCommonStatusAttack12;
             break;
 
         case nFTKindPurin:
         case nFTKindNPurin:
-            inputs_req = 4;
+            inputs_min = 4;
             status_id = nFTCommonStatusAttack12;
             break;
 
         case nFTKindCaptain:
         case nFTKindNCaptain:
-            inputs_req = 6;
+            inputs_min = 6;
             status_id = nFTCaptainStatusAttack13;
             break;
         }
-        if (fp->attack1_input_count >= inputs_req)
+        if (fp->attack1_input_count >= inputs_min)
         {
             if ((status_id == fp->status_id) && (fp->motion_vars.flags.flag1 != 0))
             {

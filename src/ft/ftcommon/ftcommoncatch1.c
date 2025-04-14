@@ -97,7 +97,7 @@ void ftCommonCatchSetStatus(GObj *fighter_gobj)
 
     if (((fp->fkind == nFTKindSamus) || (fp->fkind == nFTKindNSamus)) && (efManagerSamusGrappleBeamGlowMakeEffect(fighter_gobj) != NULL))
     {
-        fp->is_attach_effect = TRUE;
+        fp->is_effect_attach = TRUE;
     }
 }
 

@@ -102,7 +102,7 @@ void ftShadowProcDisplay(GObj *shadow_gobj)
 
     fp = ftGetStruct(fighter_gobj);
 
-    if (!(fp->is_invisible) && !(fp->is_hide_shadow))
+    if (!(fp->is_invisible) && !(fp->is_shadow_hide))
     {
         Vec3f ga_last;
         Vec3f pos_project;

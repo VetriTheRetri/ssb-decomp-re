@@ -33,7 +33,7 @@ void ftCommonThrownReleaseFighterLoseGrip(GObj *fighter_gobj)
     FTStruct *interact_fp;
     Vec3f pos;
 
-    if (this_fp->unk_ft_0x192_b3)
+    if (this_fp->is_catch_or_capture)
     {
         interact_gobj = this_fp->catch_gobj;
     }
@@ -68,7 +68,7 @@ void ftCommonThrownDecideFighterLoseGrip(GObj *fighter_gobj, GObj *interact_gobj
     FTStruct *this_fp = ftGetStruct(fighter_gobj);
     FTStruct *interact_fp = ftGetStruct(interact_gobj);
 
-    if (this_fp->unk_ft_0x192_b3)
+    if (this_fp->is_catch_or_capture)
     {
         ftCommonThrownReleaseFighterLoseGrip(fighter_gobj);
     }
@@ -132,7 +132,7 @@ void ftCommonThrownReleaseThrownUpdateStats(GObj *fighter_gobj, s32 lr, s32 scri
     {
         ftParamSetHitStatusAll(fighter_gobj, nGMHitStatusNormal);
     }
-    if (!(this_fp->unk_ft_0x192_b3))
+    if (!(this_fp->is_catch_or_capture))
     {
         ftCommonThrownReleaseFighterLoseGrip(fighter_gobj);
     }
@@ -215,7 +215,7 @@ void ftCommonThrownSetStatusDamageRelease(GObj *fighter_gobj)
     {
         ftParamSetHitStatusAll(fighter_gobj, nGMHitStatusNormal);
     }
-    if (!(this_fp->unk_ft_0x192_b3))
+    if (!(this_fp->is_catch_or_capture))
     {
         ftCommonThrownReleaseFighterLoseGrip(fighter_gobj);
     }

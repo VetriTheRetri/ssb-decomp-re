@@ -87,9 +87,9 @@ loop: // This makes no sense
     this_fp->status_vars.common.rebirth.halo_offset.y = halo_spawn_pos.y;
     this_fp->status_vars.common.rebirth.halo_offset.z = 0.0F;
 
-    this_fp->is_ignore_training_menu = TRUE;
+    this_fp->is_menu_ignore = TRUE;
     this_fp->is_ghost = TRUE;
-    this_fp->is_hide_shadow = TRUE;
+    this_fp->is_shadow_hide = TRUE;
     this_fp->is_rebirth = TRUE;
     this_fp->camera_mode = nFTCameraModeGhost;
 
@@ -99,7 +99,7 @@ loop: // This makes no sense
 
     if (efManagerRebirthHaloMakeEffect(this_gobj, this_fp->attr->halo_size) != NULL)
     {
-        this_fp->is_attach_effect = TRUE;
+        this_fp->is_effect_attach = TRUE;
     }
     ftParamCheckSetFighterColAnimID(this_gobj, 0xB, 0);
     ftParamSetPlayerTagWait(this_gobj, 1);
@@ -161,9 +161,9 @@ void ftCommonRebirthStandSetStatus(GObj *fighter_gobj)
     ftMainSetStatus(fighter_gobj, nFTCommonStatusRebirthStand, 0.0F, 1.0F, (FTSTATUS_PRESERVE_PLAYERTAG | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM));
     ftMainPlayAnimEventsAll(fighter_gobj);
 
-    fp->is_ignore_training_menu = TRUE;
+    fp->is_menu_ignore = TRUE;
     fp->is_ghost = TRUE;
-    fp->is_hide_shadow = TRUE;
+    fp->is_shadow_hide = TRUE;
     fp->is_rebirth = TRUE;
 
     fp->camera_zoom_range = 0.6F;
@@ -202,7 +202,7 @@ void ftCommonRebirthWaitSetStatus(GObj *fighter_gobj)
     ftMainSetStatus(fighter_gobj, nFTCommonStatusRebirthWait, 0.0F, 1.0F, (FTSTATUS_PRESERVE_PLAYERTAG | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM));
 
     fp->is_ghost = TRUE;
-    fp->is_hide_shadow = TRUE;
+    fp->is_shadow_hide = TRUE;
     fp->is_rebirth = TRUE;
 
     fp->camera_zoom_range = 0.6F;

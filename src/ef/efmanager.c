@@ -4007,7 +4007,7 @@ GObj* efManagerFireSparkMakeEffect(GObj *fighter_gobj) // I really have no idea 
     {
         return NULL;
     }
-    fp->is_attach_effect = TRUE;
+    fp->is_effect_attach = TRUE;
 
     ep = efGetStruct(effect_gobj);
     ep->fighter_gobj = fighter_gobj;
@@ -4131,7 +4131,7 @@ GObj* efManagerShieldMakeEffect(GObj *fighter_gobj)
 
     ep->fighter_gobj = fighter_gobj;
 
-    fp->is_attach_effect = TRUE;
+    fp->is_effect_attach = TRUE;
 
     DObjGetStruct(effect_gobj)->user_data.p = fp->joints[nFTPartsJointYRotN];
 
@@ -4184,7 +4184,7 @@ GObj* efManagerYoshiShieldMakeEffect(GObj *fighter_gobj)
 
     ep->fighter_gobj = fighter_gobj;
 
-    fp->is_attach_effect = TRUE;
+    fp->is_effect_attach = TRUE;
 
     DObjGetStruct(effect_gobj)->user_data.p = fp->joints[nFTPartsJointYRotN];
     DObjGetStruct(effect_gobj)->scale.vec.f.x = DObjGetStruct(effect_gobj)->scale.vec.f.y = 1.5F;
@@ -5437,7 +5437,7 @@ GObj* efManagerYoshiEggEscapeMakeEffect(GObj *fighter_gobj)
     }
     ftParamHideModelPartAll(fighter_gobj);
 
-    fp->is_attach_effect = TRUE;
+    fp->is_effect_attach = TRUE;
 
     ep = efGetStruct(effect_gobj);
 

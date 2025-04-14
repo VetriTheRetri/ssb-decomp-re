@@ -315,9 +315,9 @@ void ftNessSpecialHiHoldInitStatusVars(GObj *fighter_gobj)
 
     ftNessSpecialHiMakePKThunder(fighter_gobj);
 
-    if (!(fp->is_attach_effect) && (efManagerNessPKThunderWaveMakeEffect(fighter_gobj) != NULL))
+    if (!(fp->is_effect_attach) && (efManagerNessPKThunderWaveMakeEffect(fighter_gobj) != NULL))
     {
-        fp->is_attach_effect = TRUE;
+        fp->is_effect_attach = TRUE;
     }
     fp->jumps_used = fp->attr->jumps_max;
 }

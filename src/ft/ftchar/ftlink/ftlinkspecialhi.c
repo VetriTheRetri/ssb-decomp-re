@@ -160,7 +160,7 @@ void ftLinkSpecialHiMakeWeapon(GObj *fighter_gobj, sb32 is_skip_gobj)
 
         if (efManagerLinkSpinAttackMakeEffect(fighter_gobj) != NULL)
         {
-            fp->is_attach_effect = TRUE;
+            fp->is_effect_attach = TRUE;
         }
         if (is_skip_gobj == FALSE)
         {

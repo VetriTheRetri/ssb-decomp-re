@@ -211,7 +211,7 @@ void ftParamLockPlayerControl(GObj *fighter_gobj)
 
     fp->tap_stick_x = fp->tap_stick_y = fp->hold_stick_x = fp->hold_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
 
-    fp->is_disable_control = TRUE;
+    fp->is_control_disable = TRUE;
 }
 
 // 0x800E7F68
@@ -219,7 +219,7 @@ void ftParamUnlockPlayerControl(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->is_disable_control = FALSE;
+    fp->is_control_disable = FALSE;
 }
 
 // 0x800E7F7C
@@ -715,7 +715,7 @@ void ftParamResetFighterDamageCollsAll(GObj *fighter_gobj)
             damage_coll->size.z *= 0.5F;
         }
     }
-    fp->is_hurtbox_modify = FALSE;
+    fp->is_damage_coll_modify = FALSE;
 }
 
 // 0x800E8BC8
@@ -737,7 +737,7 @@ void ftParamModifyDamageCollID(GObj *fighter_gobj, s32 joint_id, Vec3f *offset, 
             fp->damage_colls[i].size.y *= 0.5F;
             fp->damage_colls[i].size.z *= 0.5F;
 
-            fp->is_hurtbox_modify = TRUE;
+            fp->is_damage_coll_modify = TRUE;
 
             return; // The same oversight as ftParamSetHitStatusPartID except this time on hurtbox offset and size
         }
@@ -1356,7 +1356,7 @@ void ftParamRunProcEffect(GObj *fighter_gobj, void (*proc)(GObj*, EFStruct*))
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->is_attach_effect)
+    if (fp->is_effect_attach)
     {
         GObj *effect_gobj = gGCCommonLinks[nGCCommonLinkIDEffect];
 
@@ -1395,7 +1395,7 @@ void ftParamProcStopEffect(GObj *fighter_gobj)
 
     ftParamRunProcEffect(fighter_gobj, ftParamStopEffect);
 
-    fp->is_attach_effect = FALSE;
+    fp->is_effect_attach = FALSE;
 }
 
 // 0x800E9C78

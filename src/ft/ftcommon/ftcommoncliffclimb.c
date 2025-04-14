@@ -266,7 +266,7 @@ void ftCommonCliffCommon2InitStatusVars(GObj *fighter_gobj)
 
     if (fp->ga == nMPKineticsGround)
     {
-        fp->is_ignore_jostle = TRUE;
+        fp->is_jostle_ignore = TRUE;
     }
 }
 

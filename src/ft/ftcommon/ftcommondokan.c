@@ -78,7 +78,7 @@ void ftCommonDokanStartSetStatus(GObj *fighter_gobj, s32 material)
 
     ftPhysicsStopVelAll(fighter_gobj);
 
-    fp->is_ignore_jostle = TRUE;
+    fp->is_jostle_ignore = TRUE;
 
     fp->status_vars.common.dokan.material = material;
 
@@ -196,11 +196,11 @@ void ftCommonDokanWaitSetStatus(GObj *fighter_gobj)
 
     fp->is_invisible = TRUE;
     fp->is_playertag_hide = TRUE;
-    fp->is_playing_effect = TRUE;
+    fp->is_effect_skip = TRUE;
 
     fp->status_vars.common.dokan.pos_adjust_wait = 0;
 
-    fp->is_ignore_training_menu = TRUE;
+    fp->is_menu_ignore = TRUE;
 
     if (fp->status_vars.common.dokan.material == nMPMaterialDokanL)
     {
@@ -280,7 +280,7 @@ void ftCommonDokanEndSetStatus(GObj *fighter_gobj)
 
     mpCollisionCheckProjectFloor(&DObjGetStruct(fighter_gobj)->translate.vec.f, &fp->coll_data.floor_line_id, &fp->coll_data.floor_dist, &fp->coll_data.floor_flags, &fp->coll_data.floor_angle);
 
-    fp->is_ignore_jostle = TRUE;
+    fp->is_jostle_ignore = TRUE;
     fp->status_vars.common.dokan.playertag_wait = FTCOMMON_DOKAN_PLAYERTAG_WAIT;
 
     if ((fp->fkind != nFTKindMario) && (fp->fkind != nFTKindMMario) && (fp->fkind != nFTKindNMario) && (fp->fkind != nFTKindLuigi) && (fp->fkind != nFTKindNLuigi))

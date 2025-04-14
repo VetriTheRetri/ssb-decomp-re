@@ -54,7 +54,7 @@ union FTAnimDesc
         ub32 is_use_xrotn_joint : 1;        // 0x80000000
         ub32 is_use_transn_joint : 1;       // 0x40000000
         ub32 is_use_yrotn_joint : 1;        // 0x20000000
-        ub32 is_enabled_joints : 24;        // 0x10000000 to 0x00000020 - not actually a single variable, but 24 bits per joint ID
+        ub32 is_enabled_joints : 24;        // 0x10000000 to 0x00000020 - not actually a single variable, but 24 bits, each corresponding to a joint ID
         ub32 is_use_submotion_script : 1;   // 0x00000010
         ub32 is_anim_joint : 1;             // 0x00000008 - whether current animation is type Figatree (0) or AnimJoint (1)
         ub32 is_have_translate_scale : 1;   // 0x00000004
@@ -555,7 +555,7 @@ struct FTDesc
     u8 team_order;                  // Order number of fighter if member of "VS *character* Team" 
     ub32 is_skip_entry : 1;         // If TRUE, fighter gets spawned in Wait or Fall state, otherwise use entry state
     ub32 is_skip_shadow_setup : 1;  // If TRUE, fighter's shadow is not initialized
-    ub32 is_skip_magnify : 1;       // If TRUE, fighter's magnifying glass is not rendered?
+    ub32 is_magnify_ignore : 1;       // If TRUE, fighter's magnifying glass is not rendered?
     s32 copy_kind;                  // Kirby's copy ID on spawn
     s32 damage;
     s32 pkind;
@@ -639,9 +639,9 @@ struct FTHitLog
 struct FTItemThrow
 {
     sb32 is_smash_throw : 1;
-    s32 velocity : 10;
+    s32 vel_scale : 10;
     s32 angle : 11;
-    u32 damage : 10;
+    u32 damage_scale : 10;
 };
 
 struct FTItemSwing
@@ -649,7 +649,6 @@ struct FTItemSwing
     u32 anim_speed : 10;
 };
 
-// PObj / Polygon object?
 struct FTParts
 {
     s32 transform_update_mode;              // Update mode of DObj's transformations?
@@ -747,7 +746,7 @@ struct FTSprites
 struct FTComputer
 {
     u8 objective;                           // CPU player's current objective
-    u8 objective_base;                   // CPU player's default objective
+    u8 objective_base;                      // CPU player's default objective
     u8 input_kind;                          // Stick + Button combination CPU player is set to execute
     u8 behavior;                            // CPU player's general behavior
     u8 unk_ftcom_0x4;                       // Unused?
@@ -817,7 +816,7 @@ struct FTComputer
     Vec2f origin_pos;                       // CPU player's TopN position at creation?
     Vec2f edge_pos;                         // CPU player's patrol range? (ends at edges of floor_line_id?)
     Vec2f stand_pos;                        // ??? Is this where the CPU player is supposed to stand when idling?
-    s32 floor_line_id;                     // Some kind of collision line ID
+    s32 floor_line_id;                      // Some kind of collision line ID
     f32 dash_predict;                       // CPU player uses this to predict when it's appropriate to dash / run?
     f32 jump_predict;                       // CPU player uses this to predict what jump height to go for?
 };
@@ -835,17 +834,17 @@ struct FTComputerAttack
 
 struct FTPlayerInput
 {
-    u16 button_hold;
-    u16 button_tap;
-    u16 button_tap_prev;
-    Vec2b stick_range;
-    Vec2b stick_prev; // Previous stick range?
+    u16 button_hold;        // Held buttons
+    u16 button_tap;         // Newly pressed buttons
+    u16 button_tap_release; // Buttons tapped on the previous read and immediately released on the next
+    Vec2b stick_range;      // Current stick range
+    Vec2b stick_prev;       // Previous stick range
 };
 
 struct FTComputerInput
 {
-    u16 button_inputs;
-    Vec2b stick_range; // CPU stick input?
+    u16 button_inputs;      // All buttons
+    Vec2b stick_range;      // Computer player stick range
 };
 
 union FTKeyEvent
@@ -870,20 +869,20 @@ struct FTKey
 
 struct FTAttributes
 {
-    f32 size;
-    f32 walkslow_anim_length;
-    f32 walkmiddle_anim_length;
-    f32 walkfast_anim_length;
-    f32 throw_walkslow_anim_length;
-    f32 throw_walkmiddle_anim_length;
-    f32 throw_walkfast_anim_length; // Cargo Throw
-    f32 rebound_anim_length;
+    f32 size;                                       // Model size
+    f32 walkslow_anim_length;                       // Length of slow walk animation
+    f32 walkmiddle_anim_length;                     // Length of medium walk animation
+    f32 walkfast_anim_length;                       // Length of fast walk animation
+    f32 throw_walkslow_anim_length;                 // Length of cargo slow walk animation
+    f32 throw_walkmiddle_anim_length;               // Length of cargo medium walk animation
+    f32 throw_walkfast_anim_length;                 // Length of cargo fast walk animation
+    f32 rebound_anim_length;                        // Length of rebound animation
     f32 walk_speed_mul;
     f32 traction;
     f32 dash_speed;
     f32 dash_decel;
     f32 run_speed;
-    f32 kneebend_anim_length; // Jump squat frames
+    f32 kneebend_anim_length;                       // Jump-squat frames
     f32 jump_vel_x;
     f32 jump_height_mul;
     f32 jump_height_base;
@@ -893,33 +892,33 @@ struct FTAttributes
     f32 air_speed_max_x;
     f32 air_friction;
     f32 gravity;
-    f32 tvel_base;
-    f32 tvel_fast;
-    s32 jumps_max; // Number of jumps
-    f32 weight;
-    f32 attack1_followup_frames; // Jab combo connection frames
-    f32 dash_to_run; // Frames before dash transitions to run?
-    f32 shield_size;
-    f32 shield_break_vel_y;
-    f32 shadow_size;
-    f32 jostle_width; // ???
-    f32 jostle_x;
-    sb32 is_metallic; // So far only seen this used to determine whether the character makes blue sparks or gray metal dust particles when hit; used by Metal Mario and Samus
+    f32 tvel_base;                                  // Normal terminal velocity
+    f32 tvel_fast;                                  // Fast-fall terminal velocity
+    s32 jumps_max;                                  // Number of jumps
+    f32 weight;                                     // Or, rather, "knockback multiplier"
+    f32 attack1_followup_frames;                    // Jab combo connection frames
+    f32 dash_to_run;                                // Frames before dash transitions to run?
+    f32 shield_size;                                // Size of fighter's shield (does not affect shield health)
+    f32 shield_break_vel_y;                         // Y-Velocity of fighter's shield break
+    f32 shadow_size;                                // Size of fighter's shadow
+    f32 jostle_width;                               // ???
+    f32 jostle_x;                                   // ???
+    sb32 is_metallic;                               // Used to determine whether the character makes blue sparks or gray metal dust particles when hit
     f32 cam_offset_y;
     f32 closeup_camera_zoom;
     f32 camera_zoom;
     f32 camera_zoom_base;
-    MPObjectColl map_coll;
-    Vec2f cliffcatch_coll; // Ledge grab box
-    u16 dead_fgm_ids[2]; // KO voices
-    u16 deadup_sfx;  // Star-KO voice
+    MPObjectColl map_coll;                          // Map collision diamond dimensions
+    Vec2f cliffcatch_coll;                          // Ledge grab box dimensions
+    u16 dead_fgm_ids[2];                            // KO voices
+    u16 deadup_sfx;                                 // Star-KO voice
     u16 damage_sfx;
-    u16 smash_sfx[3]; // Random Smash SFX
+    u16 smash_sfx[3];                               // Random Smash SFX
     FTItemPickup item_pickup;
-    u16 item_throw_vel;
-    u16 item_throw_mul;
+    u16 itemthrow_vel_scale;                        // Scale of thrown item velocity in %
+    u16 itemthrow_damage_scale;                     // Scale of thrown item damage in %
     u16 heavyget_sfx;
-    f32 halo_size; // Respawn platform size?
+    f32 halo_size;                                  // Respawn platform size?
     SYColorRGBA shade_color[3];
     SYColorRGBA fog_color;
     ub32 is_have_attack11    : 1;
@@ -941,16 +940,16 @@ struct FTAttributes
     ub32 is_have_specialhi   : 1;
     ub32 is_have_specialairhi: 1;
     ub32 is_have_speciallw   : 1;
-    ub32 is_have_specialairlw: 1;
-    ub32 is_have_catch       : 1;   // Whether fighter has a grab
-    ub32 is_have_voice       : 1;
-    FTDamageCollDesc damage_coll_descs[11];
+    ub32 is_have_specialairlw: 1;                   
+    ub32 is_have_catch       : 1;                   // Whether fighter has a grab
+    ub32 is_have_voice       : 1;                   // Whether fighter can play FGMs marked "voice"
+    FTDamageCollDesc damage_coll_descs[11];         // Hurtbox array setup
     Vec3f hit_detect_range;                         // This is a radius around the fighter within which hitbox detection can occur
     u32 *setup_parts;                               // Pointer to two sets of flags marking joints that should be initialized on fighter creation
     u32 *animlock;                                  // Pointer to two sets of flags marking joints that should not be animated; ignores joints 0 through 3
     s32 effect_joint_ids[5];                        // The game will cycle through these joints when applying certain particles such as electricity and flames
     sb32 cliff_status_ga[5];                        // Bool for whether fighter is grounded or airborne during each cliff state
-    s32 unk_ftattr_0x2CC;                           // ???
+    s32 unused_0x2CC;                               // ???
     FTHiddenPart *hiddenparts;                      // Hidden fighter body parts?
     FTCommonPartContainer *commonparts_container;   // Base fighter body parts
     DObjDesc *dobj_lookup;                          // I don't actually know how this works at the moment
@@ -959,7 +958,7 @@ struct FTAttributes
     f32 joint_rfoot_rotate;                         // Amount of bend applied to right foot on slope contour?
     s32 joint_lfoot_id;                             // Left foot joint
     f32 joint_lfoot_rotate;                         // Amount of bend applied to left foot on slope contour?
-    u8 filler_0x304[0x31C - 0x30C];
+    u8 filler_0x30C[0x31C - 0x30C];
     f32 unk_0x31C;
     f32 unk_0x320;
     Vec3f *translate_scales;                        // A set of scaling vectors to modify the translation vector of a given joint?
@@ -976,58 +975,58 @@ struct FTAttributes
 // Main fighter struct
 struct FTStruct
 {
-    FTStruct *next;
-    GObj *fighter_gobj;
-    s32 fkind;
-    u8 team;
-    u8 player;
-    u8 detail_curr;             // Hi-Poly = 1, Low-Poly = 2
-    u8 detail_base;             // Hi-Poly = 1, Low-Poly = 2
-    u8 costume;
-    u8 shade;                   // i.e. When multiple instances of the same character costume are in-game
-    u8 handicap;
-    u8 level;
-    s8 stock_count;
-    u8 team_order;              // Order number if this fighter is a "VS *character* Team" member; used to check for bonuses such as Yoshi Rainbow
-    u8 dl_link;
-    s32 player_num;             // Player's number in the order they were created
+    FTStruct *next;                     // Next free FTStruct
+    GObj *fighter_gobj;                 // Fighter's GObj
+    s32 fkind;                          // Fighter ID
+    u8 team;                            // Fighter's team
+    u8 player;                          // Controller port assigned to this fighter
+    u8 detail_curr;                     // Hi-Poly = 1, Low-Poly = 2
+    u8 detail_base;                     // Hi-Poly = 1, Low-Poly = 2
+    u8 costume;                         // Costume ID
+    u8 shade;                           // i.e. When multiple instances of the same character costume are in-game
+    u8 handicap;                        // Handicap value
+    u8 level;                           // CPU player difficulty
+    s8 stock_count;                     // Remaining stocks, runs out at -1 for some reason
+    u8 team_order;                      // Order number if this fighter is a "VS *character* Team" member; used to check for bonuses such as Yoshi Rainbow
+    u8 dl_link;                         // Rendering layer in which the fighter is drawn
+    s32 player_num;                     // Player's number in the order they were created
 
-    u32 status_total_tics;      // Frames spent in this action state
+    u32 status_total_tics;              // Tics spent in this action state
 
-    s32 pkind;                  // Control type: 0 = HMN, 1 = COM, 2 = N/A
+    s32 pkind;                          // Control type: 0 = HMN, 1 = CPU, 2 = N/A
 
-    s32 status_id;
-    s32 motion_id;              // Index of moveset command script to use
+    s32 status_id;                      // ID of current status
+    s32 motion_id;                      // ID of motion script to use
 
-    s32 percent_damage;
-    s32 damage_resist;          // Resits a specific amount of % damage before breaking, effectively damage-based armor
-    s32 shield_health;
-    f32 unk_ft_0x38;
-    s32 unk_ft_0x3C;
-    u32 hitlag_tics;
-    s32 lr;                     // Facing direction; -1 = left, 0 = center, 1 = right
+    s32 percent_damage;                 // Fighter's damage
+    s32 damage_resist;                  // Resits a specific amount of % damage before breaking, effectively damage-based armor
+    s32 shield_health;                  // Current shield health
+    f32 unk_ft_0x38;                    // Initialized to 0.0F, but never used
+    s32 unk_ft_0x3C;                    // Initialized to 0, but never used
+    u32 hitlag_tics;                    // Remaining hitlag tics
+    s32 lr;                             // Facing direction; -1 = left, 0 = center, 1 = right
 
     struct FTPhysics
     {
-        Vec3f vel_air;          // Aerial self-induced velocity
-        Vec3f vel_damage_air;   // Aerial knockback velocity
-        Vec3f vel_ground;       // Grounded self-induced velocity
-        f32 vel_damage_ground;
-        f32 vel_jostle_x;
-        f32 vel_jostle_z;
+        Vec3f vel_air;                  // Aerial self-induced velocity
+        Vec3f vel_damage_air;           // Aerial knockback velocity
+        Vec3f vel_ground;               // Grounded self-induced velocity
+        f32 vel_damage_ground;          // Grounded knockback velocity
+        f32 vel_jostle_x;               // X-Velocity from being pushed by another fighter
+        f32 vel_jostle_z;               // Z-Velocity from being pushed by another fighter
 
     } physics;
 
-    MPCollData coll_data;
+    MPCollData coll_data;               // Collision data
 
-    u8 jumps_used;
-    u8 unk_ft_0x149;
-    sb32 ga;
+    u8 jumps_used;                      // Jumps used out of maximum available jumps
+    u8 unk_ft_0x149;                    // ???
+    sb32 ga;                            // Ground / Air bool
 
-    f32 attack1_followup_frames;
-    s32 attack1_status_id;
-    s32 attack1_input_count;
-    s32 cliffcatch_wait;
+    f32 attack1_followup_frames;        // Frames of input window to get the next jab combo
+    s32 attack1_status_id;              // Current jab status ID
+    s32 attack1_input_count;            // Number of A presses required for rapid jab; 1-frame A presses count as 2 inputs
+    s32 cliffcatch_wait;                // Wait this many frames before fighter can grab a ledge again
     s32 tics_since_last_z;              // Frames since last Z-press, resets to 65536 on action state change
     s32 acid_wait;                      // Wait this many frames before fighter can be hurt by Planet Zebes acid again
     s32 twister_wait;                   // Wait this many frames before fighter can be picked up by the Hyrule Tornado again
@@ -1039,6 +1038,7 @@ struct FTStruct
 
     union FTCommandVars
     {
+        // 
         struct FTCommandFlags
         {
             u32 flag0;
@@ -1061,74 +1061,73 @@ struct FTStruct
 
     } motion_vars;
 
-    ub32 is_attack_active : 1;
-    ub32 is_hitstatus_nodamage : 1;
-    ub32 is_hurtbox_modify : 1;
-    ub32 is_modelpart_modify : 1;
-    ub32 is_texturepart_modify : 1;
-    ub32 is_reflect : 1;                // Fighter's reflect box is active
-    s32 reflect_lr : 2;
-    ub32 is_absorb : 1;                 // Fighter's absorb box is active
-    s32 absorb_lr : 2;
-    ub32 is_goto_attack100 : 1;
-    ub32 is_fastfall : 1;
-    ub32 is_show_magnify : 1;
-    ub32 is_limit_map_bounds : 1;       // When Master Hand is defeated, this is set to TRUE so the player cannot die if they are offstage;
-                                        // Effectively keeps the player at the blast zone and ignores the dead action state
-    ub32 is_invisible : 1;
-    ub32 is_hide_shadow : 1;
-    ub32 is_rebirth : 1;
-    ub32 is_skip_magnify : 1;           // Skip rendering magnifying glass if TRUE?
+    ub32 is_attack_active : 1;          // Whether fighter has active hitboxes
+    ub32 is_hitstatus_nodamage : 1;     // Whether fighter's hurtbox state is impervious
+    ub32 is_damage_coll_modify : 1;     // Whether fighter is using custom temporary hurtboxes
+    ub32 is_modelpart_modify : 1;       // Whether fighter is using a specific non-default model part
+    ub32 is_texturepart_modify : 1;     // Whether fighter is using a specific non-default face texture
+    ub32 is_reflect : 1;                // Whether fighter's reflection collision sphere is active
+    s32 reflect_lr : 2;                 // Direction of incoming hitbox subject to reflection
+    ub32 is_absorb : 1;                 // Whether fighter's absorption collision sphere is active
+    s32 absorb_lr : 2;                  // Direction of incoming hitbox subject to absorption
+    ub32 is_goto_attack100 : 1;         // Whether rapid jab follow-up is confirmed
+    ub32 is_fastfall : 1;               // Whether fighter is fast-falling
+    ub32 is_magnify_show : 1;           // Whether fighter's magnifying glass is visible
+    ub32 is_limit_map_bounds : 1;       // Effectively keeps the player at the blast zone and ignores the dead action state if TRUE
+    ub32 is_invisible : 1;              // Whether fighter is invisible
+    ub32 is_shadow_hide : 1;            // Whether fighter's shadow should be hidden
+    ub32 is_rebirth : 1;                // Whether fighter is in any of the revive states after getting KO'd
+    ub32 is_magnify_ignore : 1;         // Skip rendering magnifying glass if TRUE?
     ub32 is_playertag_hide : 1;         // Skip rendering player indicator if TRUE
     ub32 is_playertag_bossend : 1;      // Also skips rendering player indicator? Used only in "Master Hand defeated" cinematic from what I can tell so far
-    ub32 is_playing_effect : 1;
+    ub32 is_effect_skip : 1;            // Toggled ON when fighter enters a pipe on Mushroom Kingdom; prevents particle script events from being executed
     u32 effect_joint_array_id : 4;      // Goes up to 5 by default; index of the array from effect_joint_ids from FTAttributes which houses the actual joint ID
-    ub32 is_shield : 1;                 // Fighter's shield bubble is active
-    ub32 is_attach_effect : 1;          // Destroy GFX on action state change if TRUE, not sure why this and is_playing_effect are different
-    ub32 is_ignore_jostle : 1;
-    ub32 is_have_translate_scale : 1;
-    ub32 is_disable_control : 1;        // Fighter cannot be controlled if TRUE; enabled when training mode menu is up
-    ub32 is_hitstun : 1;
-    u32 slope_contour : 3;
-    ub32 is_use_animlocks : 1;
+    ub32 is_shield : 1;                 // Whether fighter's shield collision sphere is active
+    ub32 is_effect_attach : 1;          // Whether fighter has an effect attached to one of their joints
+    ub32 is_jostle_ignore : 1;          // Whether fighter is immune to jostling
+    ub32 is_have_translate_scale : 1;   // Whether fighter is using translation vector transformation scales for animations
+    ub32 is_control_disable : 1;        // Fighter cannot be controlled if TRUE; enabled when training mode menu is up
+    ub32 is_hitstun : 1;                // Whether fighter is in hitstun
+    u32 slope_contour : 3;              // "Slope Contour" behavior flags: 0x1 = left foot, 0x2 = right foot, 0x4 = full body rotation relative to slanted surfaces
+    ub32 is_use_animlocks : 1;          // If TRUE, fighter will ignore animation of specified joints
     ub32 is_muted : 1;                  // This is set to TRUE only in the Characters menu; prevents motion script sound effects from playing
-    ub32 unk_ft_0x190_b5 : 1;           // Never seen this used
-    ub32 is_show_item : 1;
+    ub32 unk_ft_0x190_b5 : 1;           // Unused
+    ub32 is_item_show : 1;              // Whether fighter's item is visible
     ub32 is_cliff_hold : 1;             // Whether fighter is holding onto a ledge
-    ub32 is_events_forward : 1;       // Is this flag's sole purpose to fast-forward GFX in the moveset event parser?
+    ub32 is_events_forward : 1;         // Is this flag's sole purpose to fast-forward GFX in the moveset event parser?
     ub32 is_ghost : 1;                  // If TRUE, fighter does not check for hit collisions and cannot be KO'd
-    ub32 is_damage_resist : 1;
-    ub32 is_ignore_training_menu : 1;   // Can't bring up training menu if TRUE? Might be used for some other things
-    u32 camera_mode : 4;
+    ub32 is_damage_resist : 1;          // Whether fighter's damage-based armor is active
+    ub32 is_menu_ignore : 1;            // Fighter cannot bring up training or pause menu if TRUE
+    u32 camera_mode : 4;                // Camera behavior for this fighter
     ub32 is_special_interrupt : 1;      // Whether move can be interrupted by Link's boomerang? Have not seen this used anywhere else
     ub32 is_ignore_dead : 1;            // Ignore dead action states altogether
-    ub32 is_catchstatus : 1;
-    ub32 unk_ft_0x192_b3 : 1;           // My brain stops working everytime I try to understand what this does
-    ub32 is_use_fogcolor : 1;
+    ub32 is_catchstatus : 1;            // Whether fighter's current state is marked as a grab
+    ub32 is_catch_or_capture : 1;       // My brain stops working everytime I try to understand what this does
+    ub32 is_use_fogcolor : 1;           // Whether fighter is using fog-based color overlay
     ub32 is_shield_catch : 1;           // Set to TRUE when fighter grabs after getting shield poked; there is a check for this flag that halves throw damage if TRUE
     ub32 is_knockback_paused : 1;       // Whether fighter's knockback is paused until hitlag is over?
 
     u8 capture_immune_mask;             // Fighter is immune to these grab types
     u8 catch_mask;                      // Fighter's current grab type
 
-    FTAnimDesc anim_desc;
-    Vec3f anim_vel;
+    FTAnimDesc anim_desc;               // Fighter's animation flags
+    Vec3f anim_vel;                     // Fighter's animation-induced velocity
 
-    Vec2f magnify_pos;
+    Vec2f magnify_pos;                  // Fighter's magnifying glass position
 
     struct FTInputStruct
     {
-        void *controller;               // Controller inputs?
-        u16 button_mask_a;
-        u16 button_mask_b;
-        u16 button_mask_z;
-        u16 button_mask_l;
-        FTPlayerInput pl;
-        FTComputerInput cp;
+        SYController *controller;       // Controller inputs
+        u16 button_mask_a;              // Button mapped to N64 A-Button
+        u16 button_mask_b;              // Button mapped to N64 B-Button
+        u16 button_mask_z;              // Button mapped to N64 Z-Trigger
+        u16 button_mask_l;              // Button mapped to N64 L-Trigger
+        FTPlayerInput pl;               // Human player inputs
+        FTComputerInput cp;             // Computer player inputs
 
     } input;
 
-    FTComputer computer;                // CPU player struct
+    FTComputer computer;                // Computer player struct
 
     Vec2f damage_coll_size;             // Width and height of fighter's hurtbox; calculated from distance of TopN position to farthest hurtbox multiplied by 0.55
 
@@ -1150,29 +1149,28 @@ struct FTStruct
     s32 throw_fkind;                    // Kind of opponent that threw this fighter
     u8 throw_team;                      // Team of opponent that threw this fighter
     u8 throw_player;                    // Port of opponent that threw this fighter
-    s32 throw_player_num;            // Player number of opponent that threw this fighter
+    s32 throw_player_num;               // Player number of opponent that threw this fighter
 
     u32 motion_attack_id;               // Used to group status_ids for the stale queue
-    u16 motion_count;                   // This is used to tell the game not to stale multihit attacks...
-                                        // ...if motion_attack_id and motion_count are equal to the previous queue entry
+    u16 motion_count;                   // Multihits do not stale if motion_attack_id and motion_count are equal to the previous staling queue entry
     GMStatFlags stat_flags;             // Move statistics for determining what 1P Game bonus stats are awarded
-    u16 stat_count;
+    u16 stat_count;                     // Used to keep track of attacks for 1P Game bonus stats
 
-    FTAttackColl attack_colls[4];
+    FTAttackColl attack_colls[4];       // Fighter's hitboxes
 
-    s32 invincible_tics;
-    s32 intangible_tics;
-    s32 special_hitstatus;
-    s32 star_invincible_tics;
-    s32 star_hitstatus;                 // Enemy CPUs avoid player depending on this?
-    s32 hitstatus;
+    s32 invincible_tics;                // Remaining tics of invincibility
+    s32 intangible_tics;                // Remaining tics of intangibility
+    s32 special_hitstatus;              // Type of custom, timed hit collision state
+    s32 star_invincible_tics;           // Remaining tics of Starman invincibility
+    s32 star_hitstatus;                 // Type of Starman hit collision state
+    s32 hitstatus;                      // Type of passive hit collision state
 
     FTDamageColl damage_colls[11];
 
-    f32 unk_ft_0x7A0;                   // Unused?
-    f32 hitlag_mul;
-    f32 shield_heal_wait;
-    s32 unk_ft_0x7AC;                   // Unused?
+    f32 unk_ft_0x7A0;                   // Unused
+    f32 hitlag_mul;                     // Hitlag multiplier; 1.5x for both attacker and defender if the connecting hitbox's element is electric
+    f32 shield_heal_wait;               // How long before fighter's shield health recovers by 1 unit
+    s32 unk_ft_0x7AC;                   // Unused
 
     s32 attack_damage;
     f32 attack_knockback;
@@ -1207,10 +1205,10 @@ struct FTStruct
     GMStatFlags damage_stat_flags;
     u16 damage_stat_count;
 
-    f32 public_knockback;            // Knockback value used for crowd reactions
+    f32 public_knockback;               // Knockback value used for crowd reactions
 
-    GObj *search_gobj;                  // GObj this fighter found when searching for grabbable fighters?
-    f32 search_gobj_dist;
+    GObj *search_gobj;                  // GObj this fighter found when searching for grabbable fighters
+    f32 search_gobj_dist;               // Distance to found fighter GObj
     void (*proc_catch)(GObj*);          // Run this callback on grabbing attacker
     void (*proc_capture)(GObj*, GObj*); // Run this callback on grabbed victim
     GObj *catch_gobj;                   // GObj this fighter has caught
@@ -1218,24 +1216,26 @@ struct FTStruct
 
     FTThrowHitDesc *throw_desc;         // Pointer to throw description
 
-    GObj *item_gobj;
+    GObj *item_gobj;                    // Item GObj this fighter is holding
 
-    FTSpecialColl *special_coll;
+    FTSpecialColl *special_coll;        // Fighter's special collision (This is a sphere! Not a box!)
 
-    Vec3f entry_pos;
+    Vec3f entry_pos;                    // Fighter's initial spawn position
 
     f32 camera_zoom_frame;              // Maximum size of fighter's camera range?
     f32 camera_zoom_range;              // Multiplier of fighter's camera range?
 
-    FTMotionScript motion_scripts[2][2];
+    FTMotionScript motion_scripts[2][2];// Fighter's move scripts; [i][0] is played before, then [i][1] once all 'proc_whatevers' have been executed 
 
-    DObj *joints[FTPARTS_JOINT_NUM_MAX];
+    DObj *joints[FTPARTS_JOINT_NUM_MAX];// Fighter's joints (DObjs)
 
-    FTModelPartStatus modelpart_status[FTPARTS_JOINT_NUM_MAX - nFTPartsJointCommonStart]; // -1 = hidden, 0 and up = draw model part ID
+    // -1 = hidden, 0 and up = draw model part ID
+    FTModelPartStatus modelpart_status[FTPARTS_JOINT_NUM_MAX - nFTPartsJointCommonStart];
+
     FTTexturePartStatus texturepart_status[2];
 
-    FTData *data;
-    FTAttributes *attr;
+    FTData *data;                   // Fighter's file data setup
+    FTAttributes *attr;             // Fighter's unique attributes
 
     void **figatree;                // Main animation
     void **figatree_heap;           // Extern heap to load animations into

@@ -125,9 +125,9 @@ void ftCommonSleepSetStatus(GObj *fighter_gobj)
     ftMainSetStatus(fighter_gobj, nFTCommonStatusSleep, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
     fp->is_invisible = TRUE;
-    fp->is_hide_shadow = TRUE;
+    fp->is_shadow_hide = TRUE;
     fp->is_ghost = TRUE;
-    fp->is_ignore_training_menu = TRUE;
+    fp->is_menu_ignore = TRUE;
 
     fp->status_vars.common.sleep.stock_steal_wait = 0;
 

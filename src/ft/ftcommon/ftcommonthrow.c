@@ -87,7 +87,7 @@ void ftCommonThrowSetStatus(GObj *fighter_gobj, sb32 is_throwf)
     {
         if (efManagerSamusGrappleBeamGlowMakeEffect(fighter_gobj) != NULL)
         {
-            this_fp->is_attach_effect = TRUE;
+            this_fp->is_effect_attach = TRUE;
         }
     }
     if (thrown_status->status1 != -1)

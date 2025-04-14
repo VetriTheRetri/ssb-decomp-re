@@ -745,7 +745,7 @@ void ftCommonDamageUpdateMain(GObj *fighter_gobj)
             ftParamStopVoiceRunProcDamage(grab_gobj);
             ftCommonThrownSetStatusDamageRelease(grab_gobj);
 
-            if (this_fp->unk_ft_0x192_b3)
+            if (this_fp->is_catch_or_capture)
             {
                 ftCommonThrownReleaseFighterLoseGrip(fighter_gobj);
             }
@@ -788,7 +788,7 @@ void ftCommonDamageUpdateMain(GObj *fighter_gobj)
             {
                 grab_fp->hitlag_tics = ftParamGetHitLag(this_fp->damage_lag, grab_fp->status_id, grab_fp->hitlag_mul);
 
-                this_fp->input.pl.button_tap = this_fp->input.pl.button_tap_prev = 0;
+                this_fp->input.pl.button_tap = this_fp->input.pl.button_tap_release = 0;
 
                 if (this_fp->proc_lagstart != NULL)
                 {

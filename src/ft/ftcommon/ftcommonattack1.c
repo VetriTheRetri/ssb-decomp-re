@@ -6,19 +6,19 @@
 //                               //
 // // // // // // // // // // // //
 
-#define ftCommonAttack13CheckFighterKind(fp)  \
-(                                             \
-    ((fp)->fkind == nFTKindMario)      ||  \
-    ((fp)->fkind == nFTKindMMario) ||  \
-    ((fp)->fkind == nFTKindNMario)  ||  \
-    ((fp)->fkind == nFTKindLuigi)      ||  \
-    ((fp)->fkind == nFTKindNLuigi)  ||  \
-    ((fp)->fkind == nFTKindCaptain)    ||  \
-    ((fp)->fkind == nFTKindNCaptain)||  \
-    ((fp)->fkind == nFTKindLink)       ||  \
-    ((fp)->fkind == nFTKindNLink)   ||  \
-    ((fp)->fkind == nFTKindNess)       ||  \
-    ((fp)->fkind == nFTKindNNess)       \
+#define ftCommonAttack13CheckFighterKind(fp)\
+(                                           \
+    ((fp)->fkind == nFTKindMario)   ||      \
+    ((fp)->fkind == nFTKindMMario)  ||      \
+    ((fp)->fkind == nFTKindNMario)  ||      \
+    ((fp)->fkind == nFTKindLuigi)   ||      \
+    ((fp)->fkind == nFTKindNLuigi)  ||      \
+    ((fp)->fkind == nFTKindCaptain) ||      \
+    ((fp)->fkind == nFTKindNCaptain)||      \
+    ((fp)->fkind == nFTKindLink)    ||      \
+    ((fp)->fkind == nFTKindNLink)   ||      \
+    ((fp)->fkind == nFTKindNess)    ||      \
+    ((fp)->fkind == nFTKindNNess)           \
 )
 
 // // // // // // // // // // // //
@@ -235,9 +235,7 @@ void ftCommonAttack13SetStatus(GObj *fighter_gobj)
         ftMainPlayAnimEventsAll(fighter_gobj);
 
         fp->motion_vars.flags.flag1 = 0;
-
         fp->status_vars.common.attack1.is_goto_followup = FALSE;
-
         fp->attack1_status_id = fp->status_id;
     }
 }
@@ -303,7 +301,7 @@ sb32 ftCommonAttack1CheckInterruptCommon(GObj *fighter_gobj)
                 break;
 
             case nFTCommonStatusAttack12:
-                if(ftCommonAttack13CheckFighterKind(fp))
+                if (ftCommonAttack13CheckFighterKind(fp))
                 {
                     ftCommonAttack13SetStatus(fighter_gobj);
 

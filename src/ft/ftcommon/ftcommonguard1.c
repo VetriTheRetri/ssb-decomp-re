@@ -105,7 +105,7 @@ void ftCommonGuardUpdateShieldVars(GObj *fighter_gobj)
                 ftParamResetModelPartAll(fighter_gobj);
                 ftCommonGuardOffSetHitStatusYoshi(fighter_gobj);
 
-                if (fp->is_attach_effect)
+                if (fp->is_effect_attach)
                 {
                     // 0x801886C0
                     Vec3f egg_effect_offset = { 0.0F, 0.0F, 0.0F };

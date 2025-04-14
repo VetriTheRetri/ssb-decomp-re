@@ -1086,7 +1086,7 @@ void ftDisplayMainProcDisplay(GObj *fighter_gobj)
 
     if ((fp->is_invisible) && (fp->display_mode == nDBDisplayModeMaster))
     {
-        fp->is_show_magnify = FALSE;
+        fp->is_magnify_show = FALSE;
 
         return;
     }
@@ -1098,7 +1098,7 @@ void ftDisplayMainProcDisplay(GObj *fighter_gobj)
             {
             case nFTCommonStatusDeadUpStar:
             case nFTCommonStatusDeadUpFall:
-                fp->is_show_magnify = FALSE;
+                fp->is_magnify_show = FALSE;
                 break;
 
             default:
@@ -1135,11 +1135,11 @@ void ftDisplayMainProcDisplay(GObj *fighter_gobj)
 
                     func_ovl2_800EB924(CObjGetStruct(gGMCameraCameraGObj), gGMCameraMatrix, &ft_pos, &fp->magnify_pos.x, &fp->magnify_pos.y);
 
-                    fp->is_show_magnify = TRUE;
+                    fp->is_magnify_show = TRUE;
 
                     if (gIFCommonPlayerInterface.is_magnify_display != FALSE)
                     {
-                        if (!(fp->is_skip_magnify) && !(fp->is_rebirth))
+                        if (!(fp->is_magnify_ignore) && !(fp->is_rebirth))
                         {
                             gIFCommonPlayerInterface.magnify_mode = 1;
 
@@ -1148,12 +1148,12 @@ void ftDisplayMainProcDisplay(GObj *fighter_gobj)
                     }
                     return;
                 }
-                else fp->is_show_magnify = FALSE;
+                else fp->is_magnify_show = FALSE;
 
                 break;
             }
         }
-        else if (!(fp->is_skip_magnify) && !(fp->is_rebirth) && (fp->is_show_magnify))
+        else if (!(fp->is_magnify_ignore) && !(fp->is_rebirth) && (fp->is_magnify_show))
         {
             ifCommonPlayerMagnifyUpdateViewport(gSYTaskmanDLHeads, fp);
         }
@@ -1385,7 +1385,7 @@ void ftDisplayMainProcDisplay(GObj *fighter_gobj)
     {
         if (gGCCurrentCamera->id != nGCCommonKindMainCamera)
         {
-            if (!(fp->is_skip_magnify) && !(fp->is_rebirth) && (fp->is_show_magnify))
+            if (!(fp->is_magnify_ignore) && !(fp->is_rebirth) && (fp->is_magnify_show))
             {
                 ifCommonPlayerMagnifyProcDisplay(fp);
             }

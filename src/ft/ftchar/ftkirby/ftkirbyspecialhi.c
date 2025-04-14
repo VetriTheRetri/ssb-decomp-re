@@ -17,7 +17,7 @@ void ftKirbySpecialHiUpdateEffect(GObj *fighter_gobj)
         switch (fp->motion_vars.flags.flag1)
         {
         case 1:
-            if (fp->is_attach_effect)
+            if (fp->is_effect_attach)
             {
                 ftParamProcStopEffect(fighter_gobj);
                 fp->motion_vars.flags.flag1 = 0;
@@ -38,7 +38,7 @@ void ftKirbySpecialHiUpdateEffect(GObj *fighter_gobj)
         break;
 
     case 1:
-        if (fp->is_attach_effect)
+        if (fp->is_effect_attach)
         {
             ftParamProcStopEffect(fighter_gobj);
             fp->motion_vars.flags.flag2 = 0;
@@ -48,7 +48,7 @@ void ftKirbySpecialHiUpdateEffect(GObj *fighter_gobj)
     case 2:
         if (efManagerKirbyCutterDrawMakeEffect(fighter_gobj) != NULL)
         {
-            fp->is_attach_effect = TRUE;
+            fp->is_effect_attach = TRUE;
             fp->motion_vars.flags.flag2 = 0;
         }
         break;
@@ -56,7 +56,7 @@ void ftKirbySpecialHiUpdateEffect(GObj *fighter_gobj)
     case 3:
         if (efManagerKirbyCutterUpMakeEffect(fighter_gobj) != NULL)
         {
-            fp->is_attach_effect = TRUE;
+            fp->is_effect_attach = TRUE;
             fp->motion_vars.flags.flag2 = 0;
         }
         break;
@@ -64,7 +64,7 @@ void ftKirbySpecialHiUpdateEffect(GObj *fighter_gobj)
     case 4:
         if (efManagerKirbyCutterDownMakeEffect(fighter_gobj) != NULL)
         {
-            fp->is_attach_effect = TRUE;
+            fp->is_effect_attach = TRUE;
             fp->motion_vars.flags.flag2 = 0;
         }
         break;
@@ -72,7 +72,7 @@ void ftKirbySpecialHiUpdateEffect(GObj *fighter_gobj)
     case 5:
         if (efManagerKirbyCutterTrailMakeEffect(fighter_gobj) != NULL)
         {
-            fp->is_attach_effect = TRUE;
+            fp->is_effect_attach = TRUE;
             fp->motion_vars.flags.flag2 = 0;
         }
         break;

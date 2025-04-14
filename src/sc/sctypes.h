@@ -37,7 +37,7 @@ struct SC1PGameFighter
 	s32 copy_kind;
 	s32 team_order;
 	sb32 is_skip_entry;
-	sb32 is_skip_magnify;
+	sb32 is_magnify_ignore;
 	u8 cp_trait;
 	f32 camera_frame_mul;
 };

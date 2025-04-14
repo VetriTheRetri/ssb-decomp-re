@@ -953,7 +953,7 @@ void sc1PGameSetupStageAll(void)
         sSC1PGamePlayerSetups[i].copy_kind = nFTKindKirby;
         sSC1PGamePlayerSetups[i].team_order = 0;
         sSC1PGamePlayerSetups[i].is_skip_entry = FALSE;
-        sSC1PGamePlayerSetups[i].is_skip_magnify = FALSE;
+        sSC1PGamePlayerSetups[i].is_magnify_ignore = FALSE;
         sSC1PGamePlayerSetups[i].cp_trait = nFTComputerTraitDefault;
         sSC1PGamePlayerSetups[i].camera_frame_mul = 1.0F;
 
@@ -1038,7 +1038,7 @@ void sc1PGameSetupStageAll(void)
             }
             if (gSCManagerSceneData.spgame_stage == nSC1PGameStageBoss)
             {
-                sSC1PGamePlayerSetups[player].is_skip_magnify = TRUE;
+                sSC1PGamePlayerSetups[player].is_magnify_ignore = TRUE;
             }
         }
         break;
@@ -1084,7 +1084,7 @@ void sc1PGameSetupStageAll(void)
             sSC1PGamePlayerSetups[player].mapobj_kind = i + nMPMapObjKind1PGameEnemyStart;
             sSC1PGamePlayerSetups[player].team_order = sSC1PGameCurrentEnemyVariation;
             sSC1PGamePlayerSetups[player].camera_frame_mul = 0.3F;
-            sSC1PGamePlayerSetups[player].is_skip_magnify = TRUE;
+            sSC1PGamePlayerSetups[player].is_magnify_ignore = TRUE;
 
             sSC1PGameCurrentEnemyVariation++;
         }
@@ -1127,7 +1127,7 @@ void sc1PGameSetupStageAll(void)
             sSC1PGamePlayerSetups[player].mapobj_kind = i + nMPMapObjKind1PGameEnemyStart;
             sSC1PGamePlayerSetups[player].team_order = sSC1PGameCurrentEnemyVariation;
             sSC1PGamePlayerSetups[player].camera_frame_mul = 0.3F;
-            sSC1PGamePlayerSetups[player].is_skip_magnify = TRUE;
+            sSC1PGamePlayerSetups[player].is_magnify_ignore = TRUE;
 
             sSC1PGameCurrentEnemyVariation++;
         }
@@ -1153,7 +1153,7 @@ void sc1PGameSetupStageAll(void)
             sSC1PGamePlayerSetups[player].mapobj_kind = i + nMPMapObjKind1PGameEnemyStart;
 
             sSC1PGamePlayerSetups[player].camera_frame_mul = 0.3F;
-            sSC1PGamePlayerSetups[player].is_skip_magnify = TRUE;
+            sSC1PGamePlayerSetups[player].is_magnify_ignore = TRUE;
 
             sSC1PGameCurrentEnemyVariation++;
         }
@@ -1184,7 +1184,7 @@ void sc1PGameSetupStageAll(void)
             gSCManagerBattleState->players[player].fkind = sSC1PGameEnemyVariations[sSC1PGameCurrentEnemyVariation];
 
             sSC1PGamePlayerSetups[player].mapobj_kind = i + nMPMapObjKind1PGameEnemyStart;
-            sSC1PGamePlayerSetups[player].is_skip_magnify = sSC1PGamePlayerSetups[player].is_skip_entry = TRUE;
+            sSC1PGamePlayerSetups[player].is_magnify_ignore = sSC1PGamePlayerSetups[player].is_skip_entry = TRUE;
 
             sSC1PGameCurrentEnemyVariation++;
         }
@@ -1332,7 +1332,7 @@ void sc1PGameSpawnEnemyTeamNext(GObj *player_gobj)
         desc.team_order = sSC1PGamePlayerSetups[player].team_order;
 
         desc.is_skip_entry = TRUE;
-        desc.is_skip_magnify = sSC1PGamePlayerSetups[player].is_skip_magnify;
+        desc.is_magnify_ignore = sSC1PGamePlayerSetups[player].is_magnify_ignore;
         desc.is_skip_shadow_setup = TRUE;
 
         com_gobj = ftManagerMakeFighter(&desc);
@@ -2093,7 +2093,7 @@ void sc1PGameFuncStart(void)
 
         desc.is_skip_entry = sSC1PGamePlayerSetups[i].is_skip_entry;
 
-        desc.is_skip_magnify = sSC1PGamePlayerSetups[i].is_skip_magnify;
+        desc.is_magnify_ignore = sSC1PGamePlayerSetups[i].is_magnify_ignore;
 
         fighter_gobj = ftManagerMakeFighter(&desc), fp = ftGetStruct(fighter_gobj);
 

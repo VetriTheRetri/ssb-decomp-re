@@ -144,7 +144,7 @@ void ftKirbySpecialNStopEffect(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->is_attach_effect == TRUE)
+    if (fp->is_effect_attach == TRUE)
     {
         ftParamProcStopEffect(fighter_gobj);
     }
@@ -161,12 +161,12 @@ void ftKirbySpecialNLoopProcUpdate(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (!(fp->is_attach_effect) && (fp->motion_vars.flags.flag0 == 1))
+    if (!(fp->is_effect_attach) && (fp->motion_vars.flags.flag0 == 1))
     {
         if (efManagerKirbyInhaleWindMakeEffect(fighter_gobj) != NULL)
         {
             fp->motion_vars.flags.flag0 = 0;
-            fp->is_attach_effect = TRUE;
+            fp->is_effect_attach = TRUE;
         }
     }
 }
@@ -781,7 +781,7 @@ void ftKirbySpecialNCatchEatSetStatusParam(GObj *fighter_gobj, s32 status_id)
 
     fp->catch_gobj = fp->search_gobj;
 
-    fp->unk_ft_0x192_b3 = FALSE;
+    fp->is_catch_or_capture = FALSE;
 
     if (fp->proc_slope != NULL)
     {

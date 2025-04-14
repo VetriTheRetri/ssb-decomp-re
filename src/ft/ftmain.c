@@ -421,7 +421,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
 
     case nFTMotionEventEffect:
     case nFTMotionEventEffectScaled:
-        if (!(fp->is_playing_effect))
+        if (!(fp->is_effect_skip))
         {
             joint_id = ftParamGetJointID(fp, ftMotionEventCast(ms, FTMotionEventMakeEffect1)->joint_id);
             effect_id = ftMotionEventCast(ms, FTMotionEventMakeEffect1)->effect_id;
@@ -656,7 +656,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         break;
 
     case nFTMotionEventHideItem:
-        fp->is_show_item = ftMotionEventCast(ms, FTMotionEventDefault)->value;
+        fp->is_item_show = ftMotionEventCast(ms, FTMotionEventDefault)->value;
 
         ftMotionEventAdvance(ms, FTMotionEventDefault);
         break;
@@ -957,7 +957,7 @@ void ftMainPlayAnimEventsForward(GObj *fighter_gobj)
 }
 
 // 0x800E0880
-sb32 ftMainUpdateColAnim(GMColAnim *colanim, GObj *fighter_gobj, sb32 is_muted, sb32 is_playing_effect)
+sb32 ftMainUpdateColAnim(GMColAnim *colanim, GObj *fighter_gobj, sb32 is_muted, sb32 is_effect_skip)
 {
     s32 i, j;
     FTStruct *fp;
@@ -1111,7 +1111,7 @@ sb32 ftMainUpdateColAnim(GMColAnim *colanim, GObj *fighter_gobj, sb32 is_muted, 
 
             case nGMColEventEffect:
             case nGMColEventEffectScaleOffset:
-                if (is_playing_effect == FALSE)
+                if (is_effect_skip == FALSE)
                 {
                     fp = ftGetStruct(fighter_gobj);
 
@@ -1204,7 +1204,7 @@ void ftMainRunUpdateColAnim(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    while (ftMainUpdateColAnim(&fp->colanim, fighter_gobj, fp->is_muted, fp->is_playing_effect) != FALSE)
+    while (ftMainUpdateColAnim(&fp->colanim, fighter_gobj, fp->is_muted, fp->is_effect_skip) != FALSE)
     {
         ftParamResetStatUpdateColAnim(fighter_gobj);
     }
@@ -1230,32 +1230,27 @@ void ftMainProcUpdateInterrupt(GObj *fighter_gobj)
     u16 button_hold_com;
     f32 this_jostle;
 
-    if (!(this_fp->is_disable_control))
+    if (!(this_fp->is_control_disable))
     {
         this_fp->status_total_tics++;
     }
-    if (!(this_fp->is_disable_control))
+    if (!(this_fp->is_control_disable))
     {
-        this_fp->input.pl.stick_prev.x = this_fp->input.pl.stick_range.x;
-        this_fp->input.pl.stick_prev.y = this_fp->input.pl.stick_range.y;
+        pl = &this_fp->input.pl;
+
+        pl->stick_prev.x = pl->stick_range.x;
+        pl->stick_prev.y = pl->stick_range.y;
 
         switch (this_fp->pkind)
         {
-        default:
-            pl = &this_fp->input.pl;
-            break;
-
         case nFTPlayerKindMan:
             controller = this_fp->input.controller;
-            pl = &this_fp->input.pl;
-
             button_hold = controller->button_hold;
 
             if (button_hold & R_TRIG)
             {
                 button_hold |= (A_BUTTON | Z_TRIG);
             }
-
             pl->stick_range.x = controller->stick_range.x;
             pl->stick_range.y = controller->stick_range.y;
 
@@ -1265,7 +1260,7 @@ void ftMainProcUpdateInterrupt(GObj *fighter_gobj)
 
             button_tap_mask = (button_hold ^ pl->button_hold) & pl->button_hold;
 
-            pl->button_tap_prev = (this_fp->hitlag_tics != 0) ? pl->button_tap_prev | button_tap_mask : button_tap_mask;
+            pl->button_tap_release = (this_fp->hitlag_tics != 0) ? pl->button_tap_release | button_tap_mask : button_tap_mask;
 
             pl->button_hold = button_hold;
             break;
@@ -1280,15 +1275,12 @@ void ftMainProcUpdateInterrupt(GObj *fighter_gobj)
 
         next:
             cp = &this_fp->input.cp;
-            pl = &this_fp->input.pl;
-
             button_hold_com = this_fp->input.cp.button_inputs;
 
             if (button_hold_com & R_TRIG)
             {
                 button_hold_com |= (A_BUTTON | Z_TRIG);
             }
-
             pl->stick_range.x = cp->stick_range.x;
             pl->stick_range.y = cp->stick_range.y;
 
@@ -1298,7 +1290,7 @@ void ftMainProcUpdateInterrupt(GObj *fighter_gobj)
 
             button_tap_mask = (button_hold_com ^ pl->button_hold) & pl->button_hold;
 
-            pl->button_tap_prev = (this_fp->hitlag_tics != 0) ? pl->button_tap_prev | button_tap_mask : button_tap_mask;
+            pl->button_tap_release = (this_fp->hitlag_tics != 0) ? pl->button_tap_release | button_tap_mask : button_tap_mask;
 
             pl->button_hold = button_hold_com;
 
@@ -1496,7 +1488,7 @@ void ftMainProcUpdateInterrupt(GObj *fighter_gobj)
     }
     if (this_fp->hitlag_tics == 0)
     {
-        if ((this_fp->playertag_wait > 1) && !(this_fp->is_disable_control))
+        if ((this_fp->playertag_wait > 1) && !(this_fp->is_control_disable))
         {
             this_fp->playertag_wait--;
         }
@@ -1517,7 +1509,7 @@ void ftMainProcUpdateInterrupt(GObj *fighter_gobj)
 
         this_fp->physics.vel_jostle_x = this_fp->physics.vel_jostle_z = 0.0F;
 
-        if ((this_fp->ga == nMPKineticsGround) && !(this_fp->is_ignore_jostle))
+        if ((this_fp->ga == nMPKineticsGround) && !(this_fp->is_jostle_ignore))
         {
             other_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
 
@@ -1923,7 +1915,7 @@ void ftMainProcPhysicsMapDefault(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->capture_gobj == NULL || fp->unk_ft_0x192_b3) && (fp->catch_gobj == NULL || !(fp->unk_ft_0x192_b3)))
+    if ((fp->capture_gobj == NULL || fp->is_catch_or_capture) && (fp->catch_gobj == NULL || !(fp->is_catch_or_capture)))
     {
         ftMainProcPhysicsMap(fighter_gobj);
     }
@@ -1934,7 +1926,7 @@ void ftMainProcPhysicsMapCapture(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->capture_gobj != NULL && !(fp->unk_ft_0x192_b3)) || (fp->catch_gobj != NULL && fp->unk_ft_0x192_b3))
+    if ((fp->capture_gobj != NULL && !(fp->is_catch_or_capture)) || (fp->catch_gobj != NULL && fp->is_catch_or_capture))
     {
         ftMainProcPhysicsMap(fighter_gobj);
     }
@@ -2163,8 +2155,8 @@ void ftMainUpdateDamageStatFighter(FTStruct *attacker_fp, FTAttackColl *attack_c
     if
     (
         (victim_fp->special_hitstatus == nGMHitStatusNormal) &&
-        (victim_fp->star_hitstatus == nGMHitStatusNormal)    &&
-        (victim_fp->hitstatus == nGMHitStatusNormal)         &&
+        (victim_fp->star_hitstatus == nGMHitStatusNormal) &&
+        (victim_fp->hitstatus == nGMHitStatusNormal)      &&
         (damage_coll->hitstatus == nGMHitStatusNormal)
     )
     {
@@ -3987,7 +3979,7 @@ void ftMainProcParams(GObj *fighter_gobj)
         {
             fp->is_knockback_paused = TRUE;
         }
-        fp->input.pl.button_tap = fp->input.pl.button_tap_prev = 0;
+        fp->input.pl.button_tap = fp->input.pl.button_tap_release = 0;
 
         if (fp->proc_lagstart != NULL)
         {
@@ -4045,7 +4037,7 @@ void ftMainProcParams(GObj *fighter_gobj)
             break;
 
         case TRUE:
-            if ((fp->item_gobj != NULL) && (fp->is_show_item) && (itGetStruct(fp->item_gobj)->kind == nITKindSword))
+            if ((fp->item_gobj != NULL) && (fp->is_item_show) && (itGetStruct(fp->item_gobj)->kind == nITKindSword))
             {
                 s32 unused;
                 Mtx44f mtx;
@@ -4426,7 +4418,7 @@ void ftMainSetStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
             ftParamSetHitStatusAll(fighter_gobj, nGMHitStatusNormal);
         }
     }
-    if (fp->is_hurtbox_modify)
+    if (fp->is_damage_coll_modify)
     {
         ftParamResetFighterDamageCollsAll(fighter_gobj);
     }
@@ -4442,7 +4434,7 @@ void ftMainSetStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
     {
         ftParamResetStatUpdateColAnim(fighter_gobj);
     }
-    if (!(flags & FTSTATUS_PRESERVE_EFFECT) && (fp->is_attach_effect))
+    if (!(flags & FTSTATUS_PRESERVE_EFFECT) && (fp->is_effect_attach))
     {
         ftParamProcStopEffect(fighter_gobj);
     }
@@ -4456,10 +4448,10 @@ void ftMainSetStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
     }
 
     fp->is_invisible = FALSE;
-    fp->is_hide_shadow = FALSE;
+    fp->is_shadow_hide = FALSE;
     fp->is_rebirth = FALSE;
     fp->is_playertag_hide = FALSE;
-    fp->is_playing_effect = FALSE; // Not sure exactly what this is, but it prevents certain ColAnim events from running if true?
+    fp->is_effect_skip = FALSE; // Not sure exactly what this is, but it prevents certain ColAnim events from running if true?
 
     if (fp->pkind != nFTPlayerKindDemo)
     {
@@ -4480,7 +4472,7 @@ void ftMainSetStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
         fp->physics.vel_ground.z = 0.0F;
     }
 
-    fp->is_ignore_jostle = FALSE;
+    fp->is_jostle_ignore = FALSE;
     fp->is_hitstun = FALSE;
 
     fp->damage_mul = 1.0F;
@@ -4495,14 +4487,14 @@ void ftMainSetStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
     }
     fp->coll_data.ignore_line_id = -1;
 
-    fp->is_show_item = TRUE;
+    fp->is_item_show = TRUE;
     fp->is_cliff_hold = FALSE;
 
     ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_NONE);
 
     fp->is_ghost = FALSE;
     fp->is_damage_resist = FALSE;
-    fp->is_ignore_training_menu = FALSE;
+    fp->is_menu_ignore = FALSE;
 
     if (fp->camera_mode != nFTCameraModeEntry)
     {

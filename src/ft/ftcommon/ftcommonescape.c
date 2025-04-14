@@ -52,7 +52,7 @@ void ftCommonEscapeSetStatus(GObj *fighter_gobj, s32 status_id, s32 itemthrow_bu
     ftMainSetStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimEventsAll(fighter_gobj);
 
-    fp->is_ignore_jostle = TRUE;
+    fp->is_jostle_ignore = TRUE;
 
     fp->status_vars.common.escape.itemthrow_buffer_frames = itemthrow_buffer_frames;
 }

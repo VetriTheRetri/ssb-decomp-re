@@ -38,7 +38,7 @@ void ftCommonCatchPullProcCatch(GObj *fighter_gobj)
 
     fp->catch_gobj = fp->search_gobj;
 
-    fp->unk_ft_0x192_b3 = FALSE;
+    fp->is_catch_or_capture = FALSE;
 
     ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL);
 

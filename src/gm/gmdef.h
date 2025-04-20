@@ -273,18 +273,53 @@ typedef enum GMColAnimKind
 	nGMColAnimFighterHeal,
 	nGMColAnimFighterNoDamage,
 	nGMColAnimFighterRebirth,
+
 	nGMColAnimFighterDamageFireStart,
 	nGMColAnimFighterDamageFireLow = nGMColAnimFighterDamageFireStart,
 	nGMColAnimFighterDamageFireMid,
 	nGMColAnimFighterDamageFireHigh,
 	nGMColAnimFighterDamageFireAir,
 	nGMColAnimFighterDamageFireEnd = nGMColAnimFighterDamageFireAir,
-	nGMColAnimFighterDamageIceStart = 0x20,
+
+	// Master Hand, Metal Mario, Fighting Polygons and Giant Donkey Kong
+	nGMColAnimFighterDamageElectricCommonStart,
+	nGMColAnimFighterDamageElectricCommonLow = nGMColAnimFighterDamageElectricCommonStart,
+	nGMColAnimFighterDamageElectricCommonMid,
+	nGMColAnimFighterDamageElectricCommonHigh,
+	nGMColAnimFighterDamageElectricCommonAir,
+	nGMColAnimFighterDamageElectricCommonEnd = nGMColAnimFighterDamageElectricCommonAir,
+
+	// Common skeletons
+	nGMColAnimFighterDamageElectricSkeletonStart,
+	nGMColAnimFighterDamageElectricSkeletonLow = nGMColAnimFighterDamageElectricSkeletonStart,
+	nGMColAnimFighterDamageElectricSkeletonMid,
+	nGMColAnimFighterDamageElectricSkeletonHigh,
+	nGMColAnimFighterDamageElectricSkeletonAir,
+	nGMColAnimFighterDamageElectricSkeletonEnd = nGMColAnimFighterDamageElectricSkeletonAir,
+
+	// Kirby and Jigglypuff
+	nGMColAnimFighterDamageElectricBalloonStart,
+	nGMColAnimFighterDamageElectricBalloonLow = nGMColAnimFighterDamageElectricBalloonStart,
+	nGMColAnimFighterDamageElectricBalloonMid,
+	nGMColAnimFighterDamageElectricBalloonHigh,
+	nGMColAnimFighterDamageElectricBalloonAir,
+	nGMColAnimFighterDamageElectricBalloonEnd = nGMColAnimFighterDamageElectricBalloonAir,
+
+	// Samus only
+	nGMColAnimFighterDamageElectricSamusStart,
+	nGMColAnimFighterDamageElectricSamusLow = nGMColAnimFighterDamageElectricSamusStart,
+	nGMColAnimFighterDamageElectricSamusMid,
+	nGMColAnimFighterDamageElectricSamusHigh,
+	nGMColAnimFighterDamageElectricSamusAir,
+	nGMColAnimFighterDamageElectricSamusEnd = nGMColAnimFighterDamageElectricSamusAir,
+
+	nGMColAnimFighterDamageIceStart,
 	nGMColAnimFighterDamageIceLow = nGMColAnimFighterDamageIceStart,
 	nGMColAnimFighterDamageIceMid,
 	nGMColAnimFighterDamageIceHigh,
 	nGMColAnimFighterDamageIceAir,
 	nGMColAnimFighterDamageIceEnd = nGMColAnimFighterDamageIceAir,
+
 	nGMColAnimFighterShieldBreakFly,
 	nGMColAnimFighterFuraFura,
 	nGMColAnimFighterFuraSleep,
@@ -292,7 +327,7 @@ typedef enum GMColAnimKind
 	nGMColAnimFighterMarioAppeal,
 	nGMColAnimFighterDonkeySpecialNLoop,
 	nGMColAnimFighterDonkeySpecialNEnd,
-	nGMColAnimFighterUnused4,
+	nGMColAnimFighterUnknown1,
 	nGMColAnimFighterSamusSpecialNEnd,
 	nGMColAnimFighterSamusSpecialHi,
 	nGMColAnimFighterFoxSpecialLw,
@@ -317,7 +352,12 @@ typedef enum GMColAnimKind
 	nGMColAnimFighterNessSpecialHiHold,
 	nGMColAnimFighterNessSpecialHiJibaku,
 	nGMColAnimFighterNessAppear,
-	nGMColAnimFighterHammer = 0x49,
+	nGMColAnimFighterUnknown2,
+	nGMColAnimFighterBossOkuhikouki,
+	nGMColAnimFighterBossOkupunch,
+	nGMColAnimFighterBossYubideppou2,
+	nGMColAnimFighterBossYubideppou3,
+	nGMColAnimFighterHammer,
 	nGMColAnimFighterStar,
 	nGMColAnimFighterStarRod,
 	nGMColAnimFighterBat,
@@ -325,11 +365,11 @@ typedef enum GMColAnimKind
 	nGMColAnimItemHammerEnd,
 	nGMColAnimItemLinkBombCritical,
 	nGMColAnimFighterChallenger,
-	nGMColAnimFlashDeadExplode,
-	nGMColAnimFlashDamageNormal,
-	nGMColAnimFlashDamageFire,
-	nGMColAnimFlashDamageElectric,
-	nGMColAnimFlashDamageIce
+	nGMColAnimScreenFlashDeadExplode,
+	nGMColAnimScreenFlashDamageNormal,
+	nGMColAnimScreenFlashDamageFire,
+	nGMColAnimScreenFlashDamageElectric,
+	nGMColAnimScreenFlashDamageIce
 
 } GMColAnimKind;
 

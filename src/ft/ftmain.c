@@ -4430,7 +4430,7 @@ void ftMainSetStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
     {
         ftParamResetTexturePartAll(fighter_gobj);
     }
-    if (!(flags & FTSTATUS_PRESERVE_COLANIM) && (dGMColAnimDescs[fp->colanim.colanim_id].is_unlocked != FALSE))
+    if (!(flags & FTSTATUS_PRESERVE_COLANIM) && (dGMColScriptsDescs[fp->colanim.colanim_id].is_unlocked != FALSE))
     {
         ftParamResetStatUpdateColAnim(fighter_gobj);
     }

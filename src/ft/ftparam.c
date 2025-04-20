@@ -17,33 +17,33 @@ u8 dFTParamShuffleFrameIndexMax[/* */] = { 4, 3 };
 // 0x8012B7B4
 s32 dFTParamSkeletonColAnimIDs[/* */] = 
 {
-    0x14,
-    0x14,
-    0x14,
-    0x1C,
-    0x14,
-    0x14,
-    0x14,
-    0x14,
-    0x18,
-    0x14,
-    0x18,
-    0x14,
-    0x10,
-    0x10,
-    0x10,
-    0x10,
-    0x10,
-    0x10,
-    0x10,
-    0x10,
-    0x10,
-    0x10,
-    0x10,
-    0x10,
-    0x10,
-    0x10,
-    0x10
+    0x14,   // Mario
+    0x14,   // Fox
+    0x14,   // Donkey Kong
+    0x1C,   // Samus
+    0x14,   // Luigi
+    0x14,   // Link
+    0x14,   // Yoshi
+    0x14,   // Captain Falcon
+    0x18,   // Kirby
+    0x14,   // Pikachu
+    0x18,   // Jigglypuff
+    0x14,   // Ness
+    0x10,   // Master Hand
+    0x10,   // Metal Mario
+    0x10,   // Poly Mario
+    0x10,   // Poly Fox 
+    0x10,   // Poly Donkey Kong
+    0x10,   // Poly Samus
+    0x10,   // Poly Luigi
+    0x10,   // Poly Link
+    0x10,   // Poly Yoshi
+    0x10,   // Poly Captain Falcon
+    0x10,   // Poly Kirby
+    0x10,   // Poly Pikachu
+    0x10,   // Poly Jigglypuff
+    0x10,   // Poly Ness
+    0x10    // Giant Donkey Kong
 };
 
 // 0x8012B820
@@ -1191,13 +1191,13 @@ void ftParamResetTexturePartAll(GObj *fighter_gobj)
 // 0x800E974C
 sb32 ftParamCheckSetColAnimID(GMColAnim *colanim, s32 colanim_id, s32 length)
 {
-    if (dGMColAnimDescs[colanim_id].priority >= dGMColAnimDescs[colanim->colanim_id].priority)
+    if (dGMColScriptsDescs[colanim_id].priority >= dGMColScriptsDescs[colanim->colanim_id].priority)
     {
         s32 i;
 
         colanim->colanim_id = colanim_id;
         colanim->length = length;
-        colanim->cs[0].p_script = dGMColAnimDescs[colanim_id].p_script;
+        colanim->cs[0].p_script = dGMColScriptsDescs[colanim_id].p_script;
         colanim->cs[0].color_event_timer = 0;
         colanim->cs[0].script_id = 0;
 
@@ -1323,11 +1323,11 @@ void ftParamResetStatUpdateColAnim(GObj *fighter_gobj)
 }
 
 // 0x800E9AF4
-sb32 ftParamCheckSetSkeletonColAnimID(GObj *fighter_gobj, s32 colanim_id)
+sb32 ftParamCheckSetSkeletonColAnimID(GObj *fighter_gobj, s32 damage_level)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    return ftParamCheckSetFighterColAnimID(fighter_gobj, dFTParamSkeletonColAnimIDs[fp->fkind] + colanim_id, 0);
+    return ftParamCheckSetFighterColAnimID(fighter_gobj, dFTParamSkeletonColAnimIDs[fp->fkind] + damage_level, 0);
 }
 
 // 0x800E9B30 - Set automatic input sequence

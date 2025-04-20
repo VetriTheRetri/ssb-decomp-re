@@ -22,7 +22,7 @@ typedef enum ftBossMotion
 	nFTBossMotionDefault = nFTCommonMotionSpecialStart,
 	nFTBossMotionHippataku,	// Horizontal slap
 	nFTBossMotionHarau,		// Sweep
-	nFTBossMotionOkuhikouki1,
+	nFTBossMotionOkuhikouki1, // Finger rocket
 	nFTBossMotionOkuhikouki2,
 	nFTBossMotionOkuhikouki3,
 	nFTBossMotionWalk,

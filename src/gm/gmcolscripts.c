@@ -190,7 +190,7 @@ u32 dGMColScriptsFighterDamageFireHigh[/* */] =
 };
 
 // 0x8012CD4C
-u32 dGMColScriptsFighterComPlayer7[/* */] =
+u32 dGMColScriptsFighterDamageFireAir[/* */] =
 {
 	gmColCommandLoopBegin(24),
 	gmColCommandEffect(-1, nEFKindFlameLR, 0, 0, 0, 0, 0, 0, 0),
@@ -204,7 +204,7 @@ u32 dGMColScriptsFighterComPlayer7[/* */] =
 };
 
 // 0x8012CD90
-u32 dGMColScriptsFighterComPlayer8[/* */] =
+u32 dGMColScriptsFighterDamageElectricCommonSub[/* */] =
 {
 	gmColCommandLoopBegin(2),
 	gmColCommandSetColor1(0x00, 0x00, 0x94, 0x5A),
@@ -216,47 +216,47 @@ u32 dGMColScriptsFighterComPlayer8[/* */] =
 };
 
 // 0x8012CDB4
-u32 dGMColScriptsFighterComPlayer9[/* */] =
+u32 dGMColScriptsFighterDamageElectricCommonLow[/* */] =
 {
 	gmColCommandLoopBegin(4),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
-	gmColCommandSubroutine(dGMColScriptsFighterComPlayer8),
+	gmColCommandSubroutine(dGMColScriptsFighterDamageElectricCommonSub),
 	gmColCommandLoopEnd(),
 	gmColCommandEnd()
 };
 
 // 0x8012CDD8
-u32 dGMColScriptsFighterHitStatusNormal0[/* */] =
+u32 dGMColScriptsFighterDamageElectricCommonMid[/* */] =
 {
 	gmColCommandLoopBegin(8),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
-	gmColCommandSubroutine(dGMColScriptsFighterComPlayer8),
+	gmColCommandSubroutine(dGMColScriptsFighterDamageElectricCommonSub),
 	gmColCommandLoopEnd(),
 	gmColCommandEnd()
 };
 
 // 0x8012CDFC
-u32 dGMColScriptsFighterHitStatusNormal1[/* */] =
+u32 dGMColScriptsFighterDamageElectricCommonHigh[/* */] =
 {
 	gmColCommandLoopBegin(12),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
-	gmColCommandSubroutine(dGMColScriptsFighterComPlayer8),
+	gmColCommandSubroutine(dGMColScriptsFighterDamageElectricCommonSub),
 	gmColCommandLoopEnd(),
 	gmColCommandEnd()
 };
 
 // 0x8012CE20
-u32 dGMColScriptsFighterHitStatusNormal2[/* */] =
+u32 dGMColScriptsFighterDamageElectricCommonAir[/* */] =
 {
 	gmColCommandLoopBegin(16),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
-	gmColCommandSubroutine(dGMColScriptsFighterComPlayer8),
+	gmColCommandSubroutine(dGMColScriptsFighterDamageElectricCommonSub),
 	gmColCommandLoopEnd(),
 	gmColCommandEnd()
 };
 
 // 0x8012CE44
-u32 dGMColScriptsFighterHitStatusNormal3[/* */] =
+u32 dGMColScriptsFighterDamageElectricSkeletonSub[/* */] =
 {
 	gmColCommandLoopBegin(1),
 	gmColCommandSetColor1(0x14, 0x14, 0x14, 0xFF),
@@ -271,63 +271,63 @@ u32 dGMColScriptsFighterHitStatusNormal3[/* */] =
 };
 
 // 0x8012CE70
-u32 dGMColScriptsFighterHitStatusNormal4[/* */] =
+u32 dGMColScriptsFighterDamageElectricSkeletonLow[/* */] =
 {
 	gmColCommandLoopBegin(2),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
-	gmColCommandSubroutine(dGMColScriptsFighterHitStatusNormal3),
+	gmColCommandSubroutine(dGMColScriptsFighterDamageElectricSkeletonSub),
 	gmColCommandLoopEnd(),
 	gmColCommandLoopBegin(2),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
-	gmColCommandSubroutine(dGMColScriptsFighterComPlayer8),
+	gmColCommandSubroutine(dGMColScriptsFighterDamageElectricCommonSub),
 	gmColCommandLoopEnd(),
 	gmColCommandEnd()
 };
 
 // 0x8012CEB4
-u32 dGMColScriptsFighterHitStatusNormal5[/* */] =
+u32 dGMColScriptsFighterDamageElectricSkeletonMid[/* */] =
 {
 	gmColCommandLoopBegin(3),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
-	gmColCommandSubroutine(dGMColScriptsFighterHitStatusNormal3),
+	gmColCommandSubroutine(dGMColScriptsFighterDamageElectricSkeletonSub),
 	gmColCommandLoopEnd(),
 	gmColCommandLoopBegin(5),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
-	gmColCommandSubroutine(dGMColScriptsFighterComPlayer8),
+	gmColCommandSubroutine(dGMColScriptsFighterDamageElectricCommonSub),
 	gmColCommandLoopEnd(),
 	gmColCommandEnd()
 };
 
 // 0x8012CEF8
-u32 dGMColScriptsFighterHitStatusNormal6[/* */] =
+u32 dGMColScriptsFighterDamageElectricSkeletonHigh[/* */] =
 {
 	gmColCommandLoopBegin(4),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
-	gmColCommandSubroutine(dGMColScriptsFighterHitStatusNormal3),
+	gmColCommandSubroutine(dGMColScriptsFighterDamageElectricSkeletonSub),
 	gmColCommandLoopEnd(),
 	gmColCommandLoopBegin(8),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
-	gmColCommandSubroutine(dGMColScriptsFighterComPlayer8),
+	gmColCommandSubroutine(dGMColScriptsFighterDamageElectricCommonSub),
 	gmColCommandLoopEnd(),
 	gmColCommandEnd()
 };
 
 // 0x8012CF3C
-u32 dGMColScriptsFighterHitStatusNormal7[/* */] =
+u32 dGMColScriptsFighterDamageElectricSkeletonAir[/* */] =
 {
 	gmColCommandLoopBegin(5),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
-	gmColCommandSubroutine(dGMColScriptsFighterHitStatusNormal3),
+	gmColCommandSubroutine(dGMColScriptsFighterDamageElectricSkeletonSub),
 	gmColCommandLoopEnd(),
 	gmColCommandLoopBegin(11),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
-	gmColCommandSubroutine(dGMColScriptsFighterComPlayer8),
+	gmColCommandSubroutine(dGMColScriptsFighterDamageElectricCommonSub),
 	gmColCommandLoopEnd(),
 	gmColCommandEnd()
 };
 
 // 0x8012CF80
-u32 dGMColScriptsFighterHitStatusNormal8[/* */] =
+u32 dGMColScriptsFighterDamageElectricBalloonSub[/* */] =
 {
 	gmColCommandLoopBegin(1),
 	gmColCommandSetColor1(0x14, 0x14, 0x14, 0xFF),
@@ -342,63 +342,63 @@ u32 dGMColScriptsFighterHitStatusNormal8[/* */] =
 };
 
 // 0x8012CFAC
-u32 dGMColScriptsFighterHitStatusNormal9[/* */] =
+u32 dGMColScriptsFighterDamageElectricBalloonLow[/* */] =
 {
 	gmColCommandLoopBegin(2),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
-	gmColCommandSubroutine(dGMColScriptsFighterHitStatusNormal8),
+	gmColCommandSubroutine(dGMColScriptsFighterDamageElectricBalloonSub),
 	gmColCommandLoopEnd(),
 	gmColCommandLoopBegin(2),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
-	gmColCommandSubroutine(dGMColScriptsFighterComPlayer8),
+	gmColCommandSubroutine(dGMColScriptsFighterDamageElectricCommonSub),
 	gmColCommandLoopEnd(),
 	gmColCommandEnd()
 };
 
 // 0x8012CFF0
-u32 dGMColScriptsFighterHitStatusIntangible0[/* */] =
+u32 dGMColScriptsFighterDamageElectricBalloonMid[/* */] =
 {
 	gmColCommandLoopBegin(3),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
-	gmColCommandSubroutine(dGMColScriptsFighterHitStatusNormal8),
+	gmColCommandSubroutine(dGMColScriptsFighterDamageElectricBalloonSub),
 	gmColCommandLoopEnd(),
 	gmColCommandLoopBegin(5),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
-	gmColCommandSubroutine(dGMColScriptsFighterComPlayer8),
+	gmColCommandSubroutine(dGMColScriptsFighterDamageElectricCommonSub),
 	gmColCommandLoopEnd(),
 	gmColCommandEnd()
 };
 
 // 0x8012D034
-u32 dGMColScriptsFighterHitStatusIntangible1[/* */] =
+u32 dGMColScriptsFighterDamageElectricBalloonHigh[/* */] =
 {
 	gmColCommandLoopBegin(4),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
-	gmColCommandSubroutine(dGMColScriptsFighterHitStatusNormal8),
+	gmColCommandSubroutine(dGMColScriptsFighterDamageElectricBalloonSub),
 	gmColCommandLoopEnd(),
 	gmColCommandLoopBegin(8),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
-	gmColCommandSubroutine(dGMColScriptsFighterComPlayer8),
+	gmColCommandSubroutine(dGMColScriptsFighterDamageElectricCommonSub),
 	gmColCommandLoopEnd(),
 	gmColCommandEnd()
 };
 
 // 0x8012D078
-u32 dGMColScriptsFighterHitStatusIntangible2[/* */] =
+u32 dGMColScriptsFighterDamageElectricBalloonAir[/* */] =
 {
 	gmColCommandLoopBegin(5),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
-	gmColCommandSubroutine(dGMColScriptsFighterHitStatusNormal8),
+	gmColCommandSubroutine(dGMColScriptsFighterDamageElectricBalloonSub),
 	gmColCommandLoopEnd(),
 	gmColCommandLoopBegin(11),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
-	gmColCommandSubroutine(dGMColScriptsFighterComPlayer8),
+	gmColCommandSubroutine(dGMColScriptsFighterDamageElectricCommonSub),
 	gmColCommandLoopEnd(),
 	gmColCommandEnd()
 };
 
 // 0x8012D0BC
-u32 dGMColScriptsFighterHitStatusIntangible3[/* */] =
+u32 dGMColScriptsFighterDamageElectricSamusSub[/* */] =
 {
 	gmColCommandLoopBegin(1),
 	gmColCommandSetColor1(0x14, 0x14, 0x14, 0xFF),
@@ -414,57 +414,57 @@ u32 dGMColScriptsFighterHitStatusIntangible3[/* */] =
 };
 
 // 0x8012D0EC
-u32 dGMColScriptsFighterHitStatusIntangible4[/* */] =
+u32 dGMColScriptsFighterDamageElectricSamusLow[/* */] =
 {
 	gmColCommandLoopBegin(2),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
-	gmColCommandSubroutine(dGMColScriptsFighterHitStatusIntangible3),
+	gmColCommandSubroutine(dGMColScriptsFighterDamageElectricSamusSub),
 	gmColCommandLoopEnd(),
 	gmColCommandLoopBegin(2),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
-	gmColCommandSubroutine(dGMColScriptsFighterComPlayer8),
+	gmColCommandSubroutine(dGMColScriptsFighterDamageElectricCommonSub),
 	gmColCommandLoopEnd(),
 	gmColCommandEnd()
 };
 
 // 0x8012D130
-u32 dGMColScriptsFighterHitStatusIntangible5[/* */] =
+u32 dGMColScriptsFighterDamageElectricSamusMid[/* */] =
 {
 	gmColCommandLoopBegin(3),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
-	gmColCommandSubroutine(dGMColScriptsFighterHitStatusIntangible3),
+	gmColCommandSubroutine(dGMColScriptsFighterDamageElectricSamusSub),
 	gmColCommandLoopEnd(),
 	gmColCommandLoopBegin(5),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
-	gmColCommandSubroutine(dGMColScriptsFighterComPlayer8),
+	gmColCommandSubroutine(dGMColScriptsFighterDamageElectricCommonSub),
 	gmColCommandLoopEnd(),
 	gmColCommandEnd()
 };
 
 // 0x8012D174
-u32 dGMColScriptsFighterHitStatusIntangible6[/* */] =
+u32 dGMColScriptsFighterDamageElectricSamusHigh[/* */] =
 {
 	gmColCommandLoopBegin(4),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
-	gmColCommandSubroutine(dGMColScriptsFighterHitStatusIntangible3),
+	gmColCommandSubroutine(dGMColScriptsFighterDamageElectricSamusSub),
 	gmColCommandLoopEnd(),
 	gmColCommandLoopBegin(8),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
-	gmColCommandSubroutine(dGMColScriptsFighterComPlayer8),
+	gmColCommandSubroutine(dGMColScriptsFighterDamageElectricCommonSub),
 	gmColCommandLoopEnd(),
 	gmColCommandEnd()
 };
 
 // 0x8012D1B8
-u32 dGMColScriptsFighterHitStatusIntangible7[/* */] =
+u32 dGMColScriptsFighterDamageElectricSamusAir[/* */] =
 {
 	gmColCommandLoopBegin(5),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
-	gmColCommandSubroutine(dGMColScriptsFighterHitStatusIntangible3),
+	gmColCommandSubroutine(dGMColScriptsFighterDamageElectricSamusSub),
 	gmColCommandLoopEnd(),
 	gmColCommandLoopBegin(11),
 	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
-	gmColCommandSubroutine(dGMColScriptsFighterComPlayer8),
+	gmColCommandSubroutine(dGMColScriptsFighterDamageElectricCommonSub),
 	gmColCommandLoopEnd(),
 	gmColCommandEnd()
 };
@@ -588,7 +588,7 @@ u32 dGMColScriptsFighterDonkeySpecialNEnd[/* */] =
 };
 
 // 0x8012D35C
-u32 dGMColScriptsFighterUnused4[/* */] =
+u32 dGMColScriptsFighterUnknown1[/* */] =
 {
 	gmColCommandEnd()
 };
@@ -957,33 +957,33 @@ u32 dGMColScriptsFighterNessAppear[/* */] =
 };
 
 // 0x8012D8EC
-u32 dGMColScriptsFighterFallSpecial6[/* */] =
+u32 dGMColScriptsFighterUnknown2[/* */] =
 {
 	gmColCommandSetColor1(0x00, 0x00, 0x00, 0x96),
 	gmColCommandWait(1),
-	gmColCommandGoto(dGMColScriptsFighterFallSpecial6),
+	gmColCommandGoto(dGMColScriptsFighterUnknown2),
 	gmColCommandEnd()
 };
 
 // 0x8012D904
-u32 dGMColScriptsFighterFallSpecial7[/* */] =
+u32 dGMColScriptsFighterBossOkuhikouki[/* */] =
 {
 	gmColCommandEffect(0, nEFKindSparkleWhite, 0, 0, 0, 0, 180, 180, 180),
 	gmColCommandWait(2),
-	gmColCommandGoto(dGMColScriptsFighterFallSpecial7)
+	gmColCommandGoto(dGMColScriptsFighterBossOkuhikouki)
 };
 
 // 0x8012D920
-u32 dGMColScriptsFighterFallSpecial8[/* */] =
+u32 dGMColScriptsFighterBossOkupunch[/* */] =
 {
 	gmColCommandEffect(0, nEFKindDustExpandLarge, 0, 0, 400, 0, 0, 0, 0),
 	gmColCommandWait(1),
-	gmColCommandGoto(dGMColScriptsFighterFallSpecial8),
+	gmColCommandGoto(dGMColScriptsFighterBossOkupunch),
 	gmColCommandEnd()
 };
 
 // 0x8012D940
-u32 dGMColScriptsFighterFallSpecial9[/* */] =
+u32 dGMColScriptsFighterBossYubideppou2[/* */] =
 {
 	gmColCommandSetLight(90, 0),
 	gmColCommandSetColor1(0x5A, 0x00, 0x00, 0x14),
@@ -995,7 +995,7 @@ u32 dGMColScriptsFighterFallSpecial9[/* */] =
 };
 
 // 0x8012D968
-u32 dGMColScriptsFighterFastFall0[/* */] =
+u32 dGMColScriptsFighterBossYubideppou3[/* */] =
 {
 	gmColCommandSetLight(90, 0),
 	gmColCommandSetColor1(0xFF, 0xFF, 0xFF, 0x28),
@@ -1010,11 +1010,11 @@ u32 dGMColScriptsFighterFastFall0[/* */] =
 };
 
 // 0x8012D9A0
-u32 dGMColScriptsFighterFastFall1[/* */] =
+u32 dGMColScriptsFighterChallenger[/* */] =
 {
 	gmColCommandSetColor1(0x00, 0x00, 0x00, 0xFF),
 	gmColCommandWait(1),
-	gmColCommandGoto(dGMColScriptsFighterFastFall1),
+	gmColCommandGoto(dGMColScriptsFighterChallenger),
 	gmColCommandEnd()
 };
 
@@ -1108,7 +1108,7 @@ u32 dGMColScriptsItemLinkBombCritical[/* */] =
 };
 
 // 0x8012DB48
-u32 dGMColScriptsFighterChallenger[/* */] =
+u32 dGMColScriptsScreenFlashDeadExplode[/* */] =
 {
 	gmColCommandSetColor1(0xFF, 0xFF, 0xFF, 0x00),
 	gmColCommandBlendColor1(6, 0xFF, 0xFF, 0xFF, 0x6E),
@@ -1120,7 +1120,7 @@ u32 dGMColScriptsFighterChallenger[/* */] =
 };
 
 // 0x8012DB70
-u32 dGMColScriptsFlashDamageNormal[/* */] =
+u32 dGMColScriptsScreenFlashDamageNormal[/* */] =
 {
 	gmColCommandSetColor1(0xFF, 0xFF, 0xFF, 0x46),
 	gmColCommandBlendColor1(6, 0xFF, 0xFF, 0xFF, 0x00),
@@ -1129,7 +1129,7 @@ u32 dGMColScriptsFlashDamageNormal[/* */] =
 };
 
 // 0x8012DB88
-u32 dGMColScriptsFlashDamageFire[/* */] =
+u32 dGMColScriptsScreenFlashDamageFire[/* */] =
 {
 	gmColCommandSetColor1(0xFF, 0x8C, 0x78, 0x50),
 	gmColCommandBlendColor1(8, 0xFF, 0x8C, 0x78, 0x00),
@@ -1138,7 +1138,7 @@ u32 dGMColScriptsFlashDamageFire[/* */] =
 };
 
 // 0x8012DBA0
-u32 dGMColScriptsFlashDamageElectric[/* */] =
+u32 dGMColScriptsScreenFlashDamageElectric[/* */] =
 {
 	gmColCommandSetColor1(0x8C, 0x8C, 0xFF, 0x50),
 	gmColCommandBlendColor1(8, 0x8C, 0x8C, 0xFF, 0x00),
@@ -1147,7 +1147,7 @@ u32 dGMColScriptsFlashDamageElectric[/* */] =
 };
 
 // 0x8012DBB8
-u32 dGMColScriptsFlashDamageIce[/* */] =
+u32 dGMColScriptsScreenFlashDamageIce[/* */] =
 {
 	gmColCommandSetColor1(0x00, 0x80, 0xFF, 0x8C),
 	gmColCommandBlendColor1(6, 0x00, 0x80, 0xFF, 0x00),
@@ -1156,92 +1156,92 @@ u32 dGMColScriptsFlashDamageIce[/* */] =
 };
 
 // 0x8012DBD0
-GMColDesc dGMColAnimDescs[/* */] =
+GMColDesc dGMColScriptsDescs[/* */] =
 {
-	{ NULL, 			    					 0, FALSE },
-	{ dGMColScriptsFighterComPlayer,    		 1, FALSE },
-	{ dGMColScriptsFighterHitStatusNormal,   	30, FALSE },
-	{ dGMColScriptsFighterHitStatusIntangible,  30, FALSE },
-	{ dGMColScriptsFighterHitStatusInvincible,  30, FALSE },
-	{ dGMColScriptsFighterDamageCommon,  	   100, FALSE },
-	{ dGMColScriptsFighterCommonSpecialNCharge, 10, FALSE },
-	{ dGMColScriptsFighterFallSpecial,   		60,  TRUE },
-	{ dGMColScriptsFighterFastFall,   			60,  TRUE },
-	{ dGMColScriptsFighterHeal,   				15, FALSE },
-	{ dGMColScriptsFighterNoDamage,  			11, FALSE },
-	{ dGMColScriptsFighterRebirth,  			10,  TRUE },
-	{ dGMColScriptsFighterDamageFireLow, 	   100, FALSE },
-	{ dGMColScriptsFighterDamageFireMid, 	   100, FALSE },
-	{ dGMColScriptsFighterDamageFireHigh, 	   100, FALSE },
-	{ dGMColScriptsFighterComPlayer7, 		   100, FALSE },
-	{ dGMColScriptsFighterComPlayer9, 	 	   100, FALSE },
-	{ dGMColScriptsFighterHitStatusNormal0,    100, FALSE },
-	{ dGMColScriptsFighterHitStatusNormal1,    100, FALSE },
-	{ dGMColScriptsFighterHitStatusNormal2,    100, FALSE },
-	{ dGMColScriptsFighterHitStatusNormal4,    100, FALSE },
-	{ dGMColScriptsFighterHitStatusNormal5,    100, FALSE },
-	{ dGMColScriptsFighterHitStatusNormal6,    100, FALSE },
-	{ dGMColScriptsFighterHitStatusNormal7,    100, FALSE },
-	{ dGMColScriptsFighterHitStatusIntangible4, 100, FALSE },
-	{ dGMColScriptsFighterHitStatusIntangible5, 100, FALSE },
-	{ dGMColScriptsFighterHitStatusIntangible6, 100, FALSE },
-	{ dGMColScriptsFighterHitStatusIntangible7, 100, FALSE },
-	{ dGMColScriptsFighterHitStatusNormal9,     100, FALSE },
-	{ dGMColScriptsFighterHitStatusIntangible0, 100, FALSE },
-	{ dGMColScriptsFighterHitStatusIntangible1, 100, FALSE },
-	{ dGMColScriptsFighterHitStatusIntangible2, 100, FALSE },
-	{ dGMColScriptsFighterDamageIceLow, 100, FALSE },
-	{ dGMColScriptsFighterDamageIceMid, 100, FALSE },
-	{ dGMColScriptsFighterDamageIceHigh, 100, FALSE },
-	{ dGMColScriptsFighterDamageIceAir, 100, FALSE },
-	{ dGMColScriptsFighterShieldBreakFly,  60,  TRUE },
-	{ dGMColScriptsFighterFuraFura,  60,  TRUE },
-	{ dGMColScriptsFighterFuraSleep,  60,  TRUE },
-	{ dGMColScriptsFighterMarioSpecialN,  60,  TRUE },
-	{ dGMColScriptsFighterMarioAppeal,  60,  TRUE },
-	{ dGMColScriptsFighterFoxSpecialLw,  60,  TRUE },
-	{ dGMColScriptsFighterFoxSpecialHiStart,  60,  TRUE },
-	{ dGMColScriptsFighterFoxSpecialHi,  60,  TRUE },
-	{ dGMColScriptsFighterLinkSpecialHi,  60,  TRUE },
-	{ dGMColScriptsFighterSamusSpecialHi,  60,  TRUE },
-	{ dGMColScriptsFighterUnused4,  60,  TRUE },
-	{ dGMColScriptsFighterSamusSpecialNEnd,  60,  TRUE },
-	{ dGMColScriptsFighterDonkeySpecialNLoop,  60,  TRUE },
-	{ dGMColScriptsFighterDonkeySpecialNEnd,  60,  TRUE },
-	{ dGMColScriptsFighterCaptainSpecialN,  60,  TRUE },
-	{ dGMColScriptsFighterKirbySpecialLwHigh,  60,  TRUE },
-	{ dGMColScriptsFighterKirbySpecialLwMid,  60,  TRUE },
-	{ dGMColScriptsFighterKirbySpecialLwLow,  60,  TRUE },
-	{ dGMColScriptsFighterKirbySpecialLwStart,  60,  TRUE },
-	{ dGMColScriptsFighterKirbySpecialLwEnd,  60,  TRUE },
-	{ dGMColScriptsFighterPikachuAttackS4,  60,  TRUE },
-	{ dGMColScriptsFighterPikachuSpecialHiStart,  60,  TRUE },
-	{ dGMColScriptsFighterPikachuSpecialHi,  60,  TRUE },
-	{ dGMColScriptsFighterPikachuSpecialN,  60,  TRUE },
-	{ dGMColScriptsFighterPikachuSpecialLwHit,  60,  TRUE },
-	{ dGMColScriptsFighterPikachuSpecialLwEnd,  60,  TRUE },
-	{ dGMColScriptsFighterCaptainSpecialHi,  60,  TRUE },
-	{ dGMColScriptsFighterNessSpecialLwHold,  60,  TRUE },
-	{ dGMColScriptsFighterNessSpecialLwHit,  60,  TRUE },
-	{ dGMColScriptsFighterNessSpecialHiHold,  60,  TRUE },
-	{ dGMColScriptsFighterNessSpecialHiJibaku,  60,  TRUE },
-	{ dGMColScriptsFighterNessAppear,  60,  TRUE },
-	{ dGMColScriptsFighterFallSpecial6,  60,  TRUE },
-	{ dGMColScriptsFighterFallSpecial7,  60,  TRUE },
-	{ dGMColScriptsFighterFallSpecial8,  60,  TRUE },
-	{ dGMColScriptsFighterFallSpecial9,  60,  TRUE },
-	{ dGMColScriptsFighterFastFall0,  60,  TRUE },
-	{ dGMColScriptsFighterHammer,  12, FALSE },
-	{ dGMColScriptsFighterStar, 100, FALSE },
-	{ dGMColScriptsFighterStarRod,  10,  TRUE },
-	{ dGMColScriptsFighterBat,  60,  TRUE },
-	{ dGMColScriptsItemBombHeiCritical,  60,  TRUE },
-	{ dGMColScriptsItemHammerEnd,  60,  TRUE },
-	{ dGMColScriptsItemLinkBombCritical,  60,  TRUE },
-	{ dGMColScriptsFighterFastFall1,  60,  TRUE },
-	{ dGMColScriptsFighterChallenger,  60,  TRUE },
-	{ dGMColScriptsFlashDamageNormal,  60,  TRUE },
-	{ dGMColScriptsFlashDamageFire,  60,  TRUE },
-	{ dGMColScriptsFlashDamageElectric,  60,  TRUE },
-	{ dGMColScriptsFlashDamageIce,  60,  TRUE }
+	{ NULL, 			    					 	  	  0, FALSE },
+	{ dGMColScriptsFighterComPlayer,    		 	  	  1, FALSE },
+	{ dGMColScriptsFighterHitStatusNormal,   		 	 30, FALSE },
+	{ dGMColScriptsFighterHitStatusIntangible,  	 	 30, FALSE },
+	{ dGMColScriptsFighterHitStatusInvincible,  	 	 30, FALSE },
+	{ dGMColScriptsFighterDamageCommon,  	   			100, FALSE },
+	{ dGMColScriptsFighterCommonSpecialNCharge, 	 	 10, FALSE },
+	{ dGMColScriptsFighterFallSpecial,   			 	 60,  TRUE },
+	{ dGMColScriptsFighterFastFall,   				 	 60,  TRUE },
+	{ dGMColScriptsFighterHeal,   					 	 15, FALSE },
+	{ dGMColScriptsFighterNoDamage,  				 	 11, FALSE },
+	{ dGMColScriptsFighterRebirth,  				 	 10,  TRUE },
+	{ dGMColScriptsFighterDamageFireLow, 	   			100, FALSE },
+	{ dGMColScriptsFighterDamageFireMid, 	   			100, FALSE },
+	{ dGMColScriptsFighterDamageFireHigh, 	   			100, FALSE },
+	{ dGMColScriptsFighterDamageFireAir, 	   			100, FALSE },
+	{ dGMColScriptsFighterDamageElectricCommonLow, 		100, FALSE },
+	{ dGMColScriptsFighterDamageElectricCommonMid,  	100, FALSE },
+	{ dGMColScriptsFighterDamageElectricCommonHigh, 	100, FALSE },
+	{ dGMColScriptsFighterDamageElectricCommonAir,  	100, FALSE },
+	{ dGMColScriptsFighterDamageElectricSkeletonLow,	100, FALSE },
+	{ dGMColScriptsFighterDamageElectricSkeletonMid,    100, FALSE },
+	{ dGMColScriptsFighterDamageElectricSkeletonHigh,	100, FALSE },
+	{ dGMColScriptsFighterDamageElectricSkeletonAir,    100, FALSE },
+	{ dGMColScriptsFighterDamageElectricSamusLow,		100, FALSE },
+	{ dGMColScriptsFighterDamageElectricSamusMid,		100, FALSE },
+	{ dGMColScriptsFighterDamageElectricSamusHigh,		100, FALSE },
+	{ dGMColScriptsFighterDamageElectricSamusAir,		100, FALSE },
+	{ dGMColScriptsFighterDamageElectricBalloonLow,    	100, FALSE },
+	{ dGMColScriptsFighterDamageElectricBalloonMid,		100, FALSE },
+	{ dGMColScriptsFighterDamageElectricBalloonHigh,	100, FALSE },
+	{ dGMColScriptsFighterDamageElectricBalloonAir,		100, FALSE },
+	{ dGMColScriptsFighterDamageIceLow, 	   			100, FALSE },
+	{ dGMColScriptsFighterDamageIceMid, 	   			100, FALSE },
+	{ dGMColScriptsFighterDamageIceHigh, 	   			100, FALSE },
+	{ dGMColScriptsFighterDamageIceAir, 	   			100, FALSE },
+	{ dGMColScriptsFighterShieldBreakFly,  	    		 60,  TRUE },
+	{ dGMColScriptsFighterFuraFura,  		    		 60,  TRUE },
+	{ dGMColScriptsFighterFuraSleep,  		    		 60,  TRUE },
+	{ dGMColScriptsFighterMarioSpecialN,  	    		 60,  TRUE },
+	{ dGMColScriptsFighterMarioAppeal,  	    		 60,  TRUE },
+	{ dGMColScriptsFighterFoxSpecialLw,  	    		 60,  TRUE },
+	{ dGMColScriptsFighterFoxSpecialHiStart,			 60,  TRUE },
+	{ dGMColScriptsFighterFoxSpecialHi,  				 60,  TRUE },
+	{ dGMColScriptsFighterLinkSpecialHi,  	 			 60,  TRUE },
+	{ dGMColScriptsFighterSamusSpecialHi,  				 60,  TRUE },
+	{ dGMColScriptsFighterUnknown1,  					 60,  TRUE },
+	{ dGMColScriptsFighterSamusSpecialNEnd,     		 60,  TRUE },
+	{ dGMColScriptsFighterDonkeySpecialNLoop,  			 60,  TRUE },
+	{ dGMColScriptsFighterDonkeySpecialNEnd,  			 60,  TRUE },
+	{ dGMColScriptsFighterCaptainSpecialN,  			 60,  TRUE },
+	{ dGMColScriptsFighterKirbySpecialLwHigh,  			 60,  TRUE },
+	{ dGMColScriptsFighterKirbySpecialLwMid,  			 60,  TRUE },
+	{ dGMColScriptsFighterKirbySpecialLwLow,  			 60,  TRUE },
+	{ dGMColScriptsFighterKirbySpecialLwStart,  		 60,  TRUE },
+	{ dGMColScriptsFighterKirbySpecialLwEnd,  			 60,  TRUE },
+	{ dGMColScriptsFighterPikachuAttackS4,  			 60,  TRUE },
+	{ dGMColScriptsFighterPikachuSpecialHiStart,		 60,  TRUE },
+	{ dGMColScriptsFighterPikachuSpecialHi,  			 60,  TRUE },
+	{ dGMColScriptsFighterPikachuSpecialN,  			 60,  TRUE },
+	{ dGMColScriptsFighterPikachuSpecialLwHit,  		 60,  TRUE },
+	{ dGMColScriptsFighterPikachuSpecialLwEnd,  		 60,  TRUE },
+	{ dGMColScriptsFighterCaptainSpecialHi,  			 60,  TRUE },
+	{ dGMColScriptsFighterNessSpecialLwHold,  			 60,  TRUE },
+	{ dGMColScriptsFighterNessSpecialLwHit,  			 60,  TRUE },
+	{ dGMColScriptsFighterNessSpecialHiHold,  			 60,  TRUE },
+	{ dGMColScriptsFighterNessSpecialHiJibaku,  		 60,  TRUE },
+	{ dGMColScriptsFighterNessAppear,  					 60,  TRUE },
+	{ dGMColScriptsFighterUnknown2,  					 60,  TRUE },
+	{ dGMColScriptsFighterBossOkuhikouki,  				 60,  TRUE },
+	{ dGMColScriptsFighterBossOkupunch,  				 60,  TRUE },
+	{ dGMColScriptsFighterBossYubideppou2,  			 60,  TRUE },
+	{ dGMColScriptsFighterBossYubideppou3,  			 60,  TRUE },
+	{ dGMColScriptsFighterHammer,  						 12, FALSE },
+	{ dGMColScriptsFighterStar, 			   			100, FALSE },
+	{ dGMColScriptsFighterStarRod,  					 10,  TRUE },
+	{ dGMColScriptsFighterBat,  						 60,  TRUE },
+	{ dGMColScriptsItemBombHeiCritical,  				 60,  TRUE },
+	{ dGMColScriptsItemHammerEnd,  						 60,  TRUE },
+	{ dGMColScriptsItemLinkBombCritical,  				 60,  TRUE },
+	{ dGMColScriptsFighterChallenger,  					 60,  TRUE },
+	{ dGMColScriptsScreenFlashDeadExplode,  			 60,  TRUE },
+	{ dGMColScriptsScreenFlashDamageNormal,  			 60,  TRUE },
+	{ dGMColScriptsScreenFlashDamageFire,  				 60,  TRUE },
+	{ dGMColScriptsScreenFlashDamageElectric,  			 60,  TRUE },
+	{ dGMColScriptsScreenFlashDamageIce,  				 60,  TRUE }
 };

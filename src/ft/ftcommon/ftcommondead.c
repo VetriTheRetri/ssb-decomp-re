@@ -216,7 +216,7 @@ void ftCommonDeadDownSetStatus(GObj *fighter_gobj)
         }
     }
     efManagerDeadExplodeMakeEffect(&pos, fp->player, 0);
-    ifScreenFlashSetColAnimID(0x51, 0);
+    ifScreenFlashSetColAnimID(nGMColAnimScreenFlashDeadExplode, 0);
 
     if 
     (
@@ -258,7 +258,7 @@ void ftCommonDeadRightSetStatus(GObj *fighter_gobj)
         }
     }
     efManagerDeadExplodeMakeEffect(&pos, fp->player, 1);
-    ifScreenFlashSetColAnimID(0x51, 0);
+    ifScreenFlashSetColAnimID(nGMColAnimScreenFlashDeadExplode, 0);
 
     if 
     (
@@ -299,7 +299,7 @@ void ftCommonDeadLeftSetStatus(GObj *fighter_gobj)
         }
     }
     efManagerDeadExplodeMakeEffect(&pos, fp->player, 3);
-    ifScreenFlashSetColAnimID(0x51, 0);
+    ifScreenFlashSetColAnimID(nGMColAnimScreenFlashDeadExplode, 0);
 
     if 
     (
@@ -457,7 +457,7 @@ void ftCommonDeadUpFallProcUpdate(GObj *fighter_gobj)
 
         case 1:
             ftPhysicsStopVelAll(fighter_gobj);
-            ifScreenFlashSetColAnimID(0x51, 0);
+            ifScreenFlashSetColAnimID(nGMColAnimScreenFlashDeadExplode, 0);
             efManagerQuakeMakeEffect(2);
             ftCommonDeadUpdateRumble(fp);
 

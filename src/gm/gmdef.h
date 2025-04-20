@@ -178,17 +178,13 @@ typedef enum GMHitElement
 
 } GMHitElement;
 
-typedef enum GMHitType 				// Hitbox types, this is universal but I don't
-									// know where else to put it so both fighters
-									// and items can see it without redefining it
-									// for each
+typedef enum GMHitType 				// Hitbox types
 {
 	nGMHitTypeDamage,
 	nGMHitTypeShield,
 	nGMHitTypeShieldRehit,
 	nGMHitTypeAttack,
-	nGMHitTypeDamageRehit, 			// Only used for specific articles? e.g.
-								   	// Pirahna Plants dealing damage
+	nGMHitTypeDamageRehit, 			// Only used for specific items? e.g. Pirahna Plants
 	nGMHitTypeAbsorb,
 	nGMHitTypeReflect
 

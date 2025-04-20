@@ -544,9 +544,11 @@ void itProcessUpdateDamageStatItem(ITStruct *attack_ip, ITAttackColl *attack_col
             case nGMHitElementFire:
                 efManagerDamageFireMakeEffect(&pos, damage);
                 break;
+
             case nGMHitElementElectric:
                 efManagerDamageElectricMakeEffect(&pos, damage);
                 break;
+                
             case nGMHitElementCoin:
                 efManagerDamageCoinMakeEffect(&pos);
                 break;
@@ -610,12 +612,12 @@ void itProcessUpdateDamageStatWeapon(WPStruct *wp, WPAttackColl *attack_coll, s3
 
                 ip->damage_lr = lr;
             }
-            ip->damage_gobj          = wp->owner_gobj;
-            ip->damage_team          = wp->team;
-            ip->damage_port          = wp->player;
-            ip->damage_player_num = wp->player_num;
-            ip->damage_handicap      = wp->handicap;
-            ip->damage_display_mode  = wp->display_mode;
+            ip->damage_gobj         = wp->owner_gobj;
+            ip->damage_team         = wp->team;
+            ip->damage_port         = wp->player;
+            ip->damage_player_num   = wp->player_num;
+            ip->damage_handicap     = wp->handicap;
+            ip->damage_display_mode = wp->display_mode;
         }
         if (ip->is_allow_knockback)
         {

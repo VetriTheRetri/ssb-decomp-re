@@ -224,9 +224,9 @@ void ftCommonDeadDownSetStatus(GObj *fighter_gobj)
         ((gSCManagerBattleState->gkind >= nGRKindBonus2Start) && (gSCManagerBattleState->gkind <= nGRKindBonus2End))
     )
     {
-        sfx_id = nSYAudioFGMMapBoundHitS;
+        sfx_id = nSYAudioFGMDeadExplodeS;
     }
-    else sfx_id = nSYAudioFGMMapBoundHitL;
+    else sfx_id = nSYAudioFGMDeadExplodeL;
 
     ftCommonDeadAddDeadSFXSoundQueue(sfx_id);
 }
@@ -266,9 +266,9 @@ void ftCommonDeadRightSetStatus(GObj *fighter_gobj)
         ((gSCManagerBattleState->gkind >= nGRKindBonus2Start) && (gSCManagerBattleState->gkind <= nGRKindBonus2End))
     )
     {
-        sfx_id = nSYAudioFGMMapBoundHitS;
+        sfx_id = nSYAudioFGMDeadExplodeS;
     }
-    else sfx_id = nSYAudioFGMMapBoundHitL;
+    else sfx_id = nSYAudioFGMDeadExplodeL;
 
     ftCommonDeadAddDeadSFXSoundQueue(sfx_id);
 }
@@ -307,9 +307,9 @@ void ftCommonDeadLeftSetStatus(GObj *fighter_gobj)
         ((gSCManagerBattleState->gkind >= nGRKindBonus2Start) && (gSCManagerBattleState->gkind <= nGRKindBonus2End))
     )
     {
-        sfx_id = nSYAudioFGMMapBoundHitS;
+        sfx_id = nSYAudioFGMDeadExplodeS;
     }
-    else sfx_id = nSYAudioFGMMapBoundHitL;
+    else sfx_id = nSYAudioFGMDeadExplodeL;
 
     ftCommonDeadAddDeadSFXSoundQueue(sfx_id);
 }
@@ -473,9 +473,9 @@ void ftCommonDeadUpFallProcUpdate(GObj *fighter_gobj)
                 ((gSCManagerBattleState->gkind >= nGRKindBonus2Start) && (gSCManagerBattleState->gkind <= nGRKindBonus2End))
             )
             {
-                sfx_id = nSYAudioFGMMapBoundHitS;
+                sfx_id = nSYAudioFGMDeadExplodeS;
             }
-            else sfx_id = nSYAudioFGMMapBoundHitL;
+            else sfx_id = nSYAudioFGMDeadExplodeL;
 
             ftCommonDeadAddDeadSFXSoundQueue(sfx_id);
 

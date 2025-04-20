@@ -236,8 +236,8 @@ typedef enum gmFGMVoiceID
 	nSYAudioFGMOpeningClash,			
 	nSYAudioFGMOpeningBatM,				// Plays on characters clashing scene in opening?
 	nSYAudioFGMAltitudeWarn,			// Bottom map_bound warning sound?
-	nSYAudioFGMMapBoundHitL, 			// One of many sounds that play when entering the blast zones
-	nSYAudioFGMMapBoundHitS,
+	nSYAudioFGMDeadExplodeL, 			// One of many sounds that play when entering the blast zones
+	nSYAudioFGMDeadExplodeS,
 	nSYAudioFGMUnkMechanical1, 			// Menu sound?
 	nSYAudioFGMTitlePressStart,
 	nSYAudioFGMMenuSelect,

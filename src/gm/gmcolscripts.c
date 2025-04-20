@@ -1,6 +1,12 @@
 #include <ef/effect.h>
 #include <gm/gmsound.h>
 
+// // // // // // // // // // // //
+//                               //
+//       INITIALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
 // 0x8012CA90
 u32 dGMColScriptsFighterComPlayer[/* */] =
 {

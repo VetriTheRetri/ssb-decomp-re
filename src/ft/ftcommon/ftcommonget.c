@@ -290,13 +290,13 @@ void ftCommonLiftWaitSetStatus(GObj *fighter_gobj)
 // 0x80146130
 void ftCommonLiftTurnUpdateModelYaw(FTStruct *fp)
 {
-    fp->status_vars.common.lift.turn_frames--;
+    fp->status_vars.common.lift.turn_tics--;
 
     fp->joints[nFTPartsJointTopN]->rotate.vec.f.y += FTCOMMON_LIFT_TURN_STEP;
 
     ftParamsUpdateFighterPartsTransformAll(fp->joints[nFTPartsJointTopN]);
 
-    if (fp->status_vars.common.lift.turn_frames == (FTCOMMON_LIFT_TURN_FRAMES / 2))
+    if (fp->status_vars.common.lift.turn_tics == (FTCOMMON_LIFT_TURN_FRAMES / 2))
     {
         fp->lr = -fp->lr;
         fp->physics.vel_ground.x = -fp->physics.vel_ground.x;
@@ -310,7 +310,7 @@ void ftCommonLiftTurnProcUpdate(GObj *fighter_gobj)
 
     ftCommonLiftTurnUpdateModelYaw(fp);
 
-    if (fp->status_vars.common.lift.turn_frames == 0)
+    if (fp->status_vars.common.lift.turn_tics == 0)
     {
         ftCommonLiftWaitSetStatus(fighter_gobj);
     }
@@ -331,7 +331,7 @@ void ftCommonLiftTurnSetStatus(GObj *fighter_gobj)
 
     fp->proc_damage = ftCommonHeavyGetProcDamage;
 
-    fp->status_vars.common.lift.turn_frames = FTCOMMON_LIFT_TURN_FRAMES;
+    fp->status_vars.common.lift.turn_tics = FTCOMMON_LIFT_TURN_FRAMES;
 
     ftCommonLiftTurnUpdateModelYaw(fp);
 }

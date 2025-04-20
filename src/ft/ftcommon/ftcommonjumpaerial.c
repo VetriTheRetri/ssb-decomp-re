@@ -21,15 +21,15 @@ f32 dFTPurinJumpAerialFVelocities[/* */] = { 60.0F, 40.0F, 20.0F, 0.0F };
 // 0x8013FA90
 void ftCommonJumpAerialUpdateModelYaw(FTStruct *fp)
 {
-    if (fp->status_vars.common.jumpaerial.turn_frames != 0)
+    if (fp->status_vars.common.jumpaerial.turn_tics != 0)
     {
-        fp->status_vars.common.jumpaerial.turn_frames--;
+        fp->status_vars.common.jumpaerial.turn_tics--;
 
         fp->joints[nFTPartsJointTopN]->rotate.vec.f.y += FTCOMMON_JUMPAERIAL_TURN_ROTATE_STEP;
 
         ftParamsUpdateFighterPartsTransformAll(fp->joints[nFTPartsJointTopN]);
 
-        if (fp->status_vars.common.jumpaerial.turn_frames == (FTCOMMON_JUMPAERIAL_TURN_FRAMES / 2))
+        if (fp->status_vars.common.jumpaerial.turn_tics == (FTCOMMON_JUMPAERIAL_TURN_FRAMES / 2))
         {
             fp->lr = -fp->lr;
         }
@@ -165,15 +165,15 @@ void ftCommonJumpAerialSetStatus(GObj *fighter_gobj, s32 input_source)
 
     fp->jumps_used++;
 
-    fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
+    fp->tap_stick_y = FTINPUT_STICKBUFFER_TICS_MAX;
 
     fp->is_special_interrupt = TRUE;
 
     if (((fp->fkind == nFTKindYoshi) || (fp->fkind == nFTKindNYoshi)) && ((fp->input.pl.stick_range.x * fp->lr) < FTCOMMON_JUMPAERIAL_TURN_STICK_RANGE_MIN))
     {
-        fp->status_vars.common.jumpaerial.turn_frames = FTCOMMON_JUMPAERIAL_TURN_FRAMES;
+        fp->status_vars.common.jumpaerial.turn_tics = FTCOMMON_JUMPAERIAL_TURN_FRAMES;
     }
-    else fp->status_vars.common.jumpaerial.turn_frames = 0;
+    else fp->status_vars.common.jumpaerial.turn_tics = 0;
 
     ftCommonJumpAerialUpdateModelYaw(fp);
 }
@@ -219,7 +219,7 @@ void ftCommonJumpAerialMultiSetStatus(GObj *fighter_gobj, s32 input_source)
     {
         fp->physics.vel_air.y = (((stick_range_y * attr->jump_height_mul) + attr->jump_height_base) * attr->jumpaerial_height);
 
-        fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
+        fp->tap_stick_y = FTINPUT_STICKBUFFER_TICS_MAX;
     }
     else switch (fp->fkind)
     {
@@ -243,9 +243,9 @@ void ftCommonJumpAerialMultiSetStatus(GObj *fighter_gobj, s32 input_source)
 
     if ((fp->input.pl.stick_range.x * fp->lr) < FTCOMMON_JUMPAERIAL_TURN_STICK_RANGE_MIN)
     {
-        fp->status_vars.common.jumpaerial.turn_frames = FTCOMMON_JUMPAERIAL_TURN_FRAMES;
+        fp->status_vars.common.jumpaerial.turn_tics = FTCOMMON_JUMPAERIAL_TURN_FRAMES;
     }
-    else fp->status_vars.common.jumpaerial.turn_frames = 0;
+    else fp->status_vars.common.jumpaerial.turn_tics = 0;
 
     ftCommonJumpAerialUpdateModelYaw(fp);
 }

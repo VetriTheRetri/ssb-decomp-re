@@ -16,12 +16,12 @@ void ftCommonKneeBendProcUpdate(GObj *fighter_gobj)
 
     if 
     (
-        (fp->status_vars.common.kneebend.input_source == FTCOMMON_KNEEBEND_INPUT_TYPE_BUTTON) &&
-        (fp->status_vars.common.kneebend.anim_frame <= FTCOMMON_KNEEBEND_SHORT_HOP_FRAMES)    &&
-        (fp->input.pl.button_tap_release & (R_CBUTTONS | L_CBUTTONS | D_CBUTTONS | U_CBUTTONS))
+        (fp->status_vars.common.kneebend.input_source == FTCOMMON_KNEEBEND_INPUT_TYPE_BUTTON)&&
+        (fp->status_vars.common.kneebend.anim_frame <= FTCOMMON_KNEEBEND_SHORTHOP_FRAMES)    &&
+        (fp->input.pl.button_release & (R_CBUTTONS | L_CBUTTONS | D_CBUTTONS | U_CBUTTONS))
     )
     {
-        fp->status_vars.common.kneebend.is_short_hop = TRUE;
+        fp->status_vars.common.kneebend.is_shorthop = TRUE;
     }
     if (attr->kneebend_anim_length <= fp->status_vars.common.kneebend.anim_frame) 
     {
@@ -56,7 +56,7 @@ void ftCommonKneeBendSetStatusParam(GObj *fighter_gobj, s32 status_id, s32 input
     fp->status_vars.common.kneebend.jump_force = fp->input.pl.stick_range.y;
     fp->status_vars.common.kneebend.anim_frame = 0.0F;
     fp->status_vars.common.kneebend.input_source = input_source;
-    fp->status_vars.common.kneebend.is_short_hop = FALSE;
+    fp->status_vars.common.kneebend.is_shorthop = FALSE;
 
     fp->is_special_interrupt = TRUE;
 }
@@ -86,7 +86,7 @@ sb32 ftCommonKneeBendCheckButtonTap(FTStruct *fp)
 // 0x8013F474
 s32 ftCommonKneeBendGetInputTypeCommon(FTStruct *fp)
 {
-    if ((fp->input.pl.stick_range.y >= FTCOMMON_KNEEBEND_STICK_RANGE_MIN) && (fp->tap_stick_y <= FTCOMMON_KNEEBEND_BUFFER_FRAMES_MAX))
+    if ((fp->input.pl.stick_range.y >= FTCOMMON_KNEEBEND_STICK_RANGE_MIN) && (fp->tap_stick_y <= FTCOMMON_KNEEBEND_BUFFER_TICS_MAX))
     {
         return FTCOMMON_KNEEBEND_INPUT_TYPE_STICK;
     }
@@ -121,7 +121,7 @@ sb32 ftCommonKneeBendCheckInterruptCommon(GObj *fighter_gobj)
 // 0x8013F53C
 s32 ftCommonKneeBendGetInputTypeRun(FTStruct *fp)
 {
-    if ((fp->input.pl.stick_range.y > FTCOMMON_KNEEBEND_RUN_STICK_RANGE_MIN) && (fp->tap_stick_y <= FTCOMMON_KNEEBEND_BUFFER_FRAMES_MAX))
+    if ((fp->input.pl.stick_range.y > FTCOMMON_KNEEBEND_RUN_STICK_RANGE_MIN) && (fp->tap_stick_y <= FTCOMMON_KNEEBEND_BUFFER_TICS_MAX))
     {
         return FTCOMMON_KNEEBEND_INPUT_TYPE_STICK;
     }

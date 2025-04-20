@@ -411,7 +411,7 @@ void ftCommonGuardCommonProcInterrupt(GObj *fighter_gobj)
 }
 
 // 0x80148BFC
-void ftCommonGuardOnSetStatus(GObj *fighter_gobj, s32 slide_frames)
+void ftCommonGuardOnSetStatus(GObj *fighter_gobj, s32 slide_tics)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -435,20 +435,20 @@ void ftCommonGuardOnSetStatus(GObj *fighter_gobj, s32 slide_frames)
     fp->status_vars.common.guard.release_lag = FTCOMMON_GUARD_RELEASE_LAG;
     fp->status_vars.common.guard.shield_decay_wait = FTCOMMON_GUARD_DECAY_INT;
     fp->status_vars.common.guard.is_release = FALSE;
-    fp->status_vars.common.guard.slide_frames = slide_frames;
+    fp->status_vars.common.guard.slide_tics = slide_tics;
     fp->status_vars.common.guard.is_setoff = FALSE;
 
     func_800269C0_275C0(nSYAudioFGMGuardOn);
 }
 
 // 0x80148CBC
-sb32 ftCommonGuardOnCheckInterruptSuccess(GObj *fighter_gobj, s32 slide_frames)
+sb32 ftCommonGuardOnCheckInterruptSuccess(GObj *fighter_gobj, s32 slide_tics)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if ((fp->input.pl.button_hold & fp->input.button_mask_z) && (fp->shield_health != 0))
     {
-        ftCommonGuardOnSetStatus(fighter_gobj, slide_frames);
+        ftCommonGuardOnSetStatus(fighter_gobj, slide_tics);
 
         return TRUE;
     }
@@ -462,9 +462,9 @@ sb32 ftCommonGuardOnCheckInterruptCommon(GObj *fighter_gobj)
 }
 
 // 0x80148D2C
-sb32 ftCommonGuardOnCheckInterruptDashRun(GObj *fighter_gobj, s32 slide_frames)
+sb32 ftCommonGuardOnCheckInterruptDashRun(GObj *fighter_gobj, s32 slide_tics)
 {
-    return ftCommonGuardOnCheckInterruptSuccess(fighter_gobj, slide_frames);
+    return ftCommonGuardOnCheckInterruptSuccess(fighter_gobj, slide_tics);
 }
 
 // 0x80148D4C

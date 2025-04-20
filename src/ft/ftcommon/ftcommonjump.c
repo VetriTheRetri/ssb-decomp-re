@@ -16,7 +16,7 @@ void ftCommonJumpProcInterrupt(GObj *fighter_gobj)
 }
 
 // 0x8013F6A0
-void ftCommonJumpGetJumpForceButton(s32 stick_range_x, s32 *jump_vel_x, s32 *jump_vel_y, sb32 is_short_hop)
+void ftCommonJumpGetJumpForceButton(s32 stick_range_x, s32 *jump_vel_x, s32 *jump_vel_y, sb32 is_shorthop)
 {
     f32 sqrt_vel_x;
     f32 vel_y;
@@ -26,7 +26,7 @@ void ftCommonJumpGetJumpForceButton(s32 stick_range_x, s32 *jump_vel_x, s32 *jum
 
     sqrt_vel_x = sqrtf(1.0F - SQUARE(vel_x / F_CONTROLLER_RANGE_MAX));
 
-    if (is_short_hop == FALSE)
+    if (is_shorthop == FALSE)
     {
         vel_y = (FTCOMMON_KNEEBEND_BUTTON_LONG_FORCE * sqrt_vel_x) + FTCOMMON_KNEEBEND_BUTTON_LONG_MIN;
 
@@ -78,7 +78,7 @@ void ftCommonJumpSetStatus(GObj *fighter_gobj)
     switch (fp->status_vars.common.kneebend.input_source)
     {
     case FTCOMMON_KNEEBEND_INPUT_TYPE_BUTTON:
-        ftCommonJumpGetJumpForceButton(fp->input.pl.stick_range.x, &vel_x, &vel_y, fp->status_vars.common.kneebend.is_short_hop);
+        ftCommonJumpGetJumpForceButton(fp->input.pl.stick_range.x, &vel_x, &vel_y, fp->status_vars.common.kneebend.is_shorthop);
         break;
 
     case FTCOMMON_KNEEBEND_INPUT_TYPE_STICK:
@@ -95,7 +95,7 @@ void ftCommonJumpSetStatus(GObj *fighter_gobj)
     fp->physics.vel_air.y = (vel_y * attr->jump_height_mul) + attr->jump_height_base;
     fp->physics.vel_air.x = vel_x * attr->jump_vel_x;
 
-    fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
+    fp->tap_stick_y = FTINPUT_STICKBUFFER_TICS_MAX;
 
     fp->is_special_interrupt = TRUE;
 }

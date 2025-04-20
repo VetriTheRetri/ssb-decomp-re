@@ -64,7 +64,7 @@ void scSubsysFighterProcUpdate(GObj *fighter_gobj)
     ftMainPlayAnimEventsAll(fighter_gobj);
     ftMainRunUpdateColAnim(fighter_gobj);
         
-    if(fp->proc_update != NULL)
+    if (fp->proc_update != NULL)
     {
         fp->proc_update(fighter_gobj);
     }

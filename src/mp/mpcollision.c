@@ -3477,7 +3477,6 @@ void func_ovl2_800FB04C(void)
                 for (k = vlinks->vertex1 + 1; k < (vlinks->vertex1 + vlinks->vertex2); k++)
                 {
                     // There are various ways to fake-match this function (e.g. do {} while (0), if(1), if(!gMPCollisionVertexData->vpos) right where this comment is)...
-
                     vp2 = (j < ARRAY_COUNT(line_info->line_data) / 2) ? gMPCollisionVertexData->vpos[gMPCollisionVertexIDs->vertex_id[k]].pos.y:
                                                                         gMPCollisionVertexData->vpos[gMPCollisionVertexIDs->vertex_id[k]].pos.x;
 

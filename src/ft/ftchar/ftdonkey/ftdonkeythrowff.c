@@ -13,15 +13,15 @@ void ftDonkeyThrowFFProcUpdate(GObj *fighter_gobj)
 
     if (fp->status_vars.common.throwff.is_turn != FALSE)
     {
-        fp->status_vars.common.throwff.turn_frames--;
+        fp->status_vars.common.throwff.turn_tics--;
 
         if (fp->lr == +1)
         {
-            DObjGetStruct(fighter_gobj)->rotate.vec.f.y = F_CST_DTOR32(90.0F) - (((f32)fp->status_vars.common.throwff.turn_frames / FTCOMMON_THROWFF_TURN_FRAMES) * F_CST_DTOR32(180.0F));
+            DObjGetStruct(fighter_gobj)->rotate.vec.f.y = F_CST_DTOR32(90.0F) - (((f32)fp->status_vars.common.throwff.turn_tics / FTCOMMON_THROWFF_TURN_FRAMES) * F_CST_DTOR32(180.0F));
         }
-        else DObjGetStruct(fighter_gobj)->rotate.vec.f.y = F_CST_DTOR32(-90.0F) + (((f32)fp->status_vars.common.throwff.turn_frames / FTCOMMON_THROWFF_TURN_FRAMES) * F_CST_DTOR32(180.0F));
+        else DObjGetStruct(fighter_gobj)->rotate.vec.f.y = F_CST_DTOR32(-90.0F) + (((f32)fp->status_vars.common.throwff.turn_tics / FTCOMMON_THROWFF_TURN_FRAMES) * F_CST_DTOR32(180.0F));
         
-        if (fp->status_vars.common.throwff.turn_frames == 0)
+        if (fp->status_vars.common.throwff.turn_tics == 0)
         {
             fp->status_vars.common.throwff.is_turn = FALSE;
         }
@@ -106,7 +106,7 @@ void ftDonkeyThrowFFSetStatus(GObj *fighter_gobj, sb32 is_turn)
     {
         fp->lr = -fp->lr;
 
-        fp->status_vars.common.throwff.turn_frames = FTCOMMON_THROWFF_TURN_FRAMES;
+        fp->status_vars.common.throwff.turn_tics = FTCOMMON_THROWFF_TURN_FRAMES;
     }
 }
 

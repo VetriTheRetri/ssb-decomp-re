@@ -377,7 +377,7 @@ sb32 ftCommonAttack13CheckGoto(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if(!(ftCommonAttack13CheckFighterKind(fp)))
+    if (!(ftCommonAttack13CheckFighterKind(fp)))
     {
         return FALSE;
     }

@@ -118,7 +118,7 @@ sb32 ftCommonGuardKneeBendCheckInterruptGuard(GObj* fighter_gobj);
 
 // Jump
 void ftCommonJumpProcInterrupt(GObj* fighter_gobj);
-void ftCommonJumpGetJumpForceButton(s32 stick_range_x, s32* jump_vel_x, s32* jump_vel_y, sb32 is_short_hop);
+void ftCommonJumpGetJumpForceButton(s32 stick_range_x, s32* jump_vel_x, s32* jump_vel_y, sb32 is_shorthop);
 void ftCommonJumpSetStatus(GObj* fighter_gobj);
 
 // JumpAerial
@@ -438,10 +438,10 @@ void ftCommonGuardUpdateJoints(GObj* fighter_gobj);
 void ftCommonGuardInitJoints(GObj* fighter_gobj);
 void ftCommonGuardOnProcUpdate(GObj* fighter_gobj);
 void ftCommonGuardCommonProcInterrupt(GObj* fighter_gobj);
-void ftCommonGuardOnSetStatus(GObj* fighter_gobj, s32 slide_frames);
-sb32 ftCommonGuardOnCheckInterruptSuccess(GObj* fighter_gobj, s32 slide_frames);
+void ftCommonGuardOnSetStatus(GObj* fighter_gobj, s32 slide_tics);
+sb32 ftCommonGuardOnCheckInterruptSuccess(GObj* fighter_gobj, s32 slide_tics);
 sb32 ftCommonGuardOnCheckInterruptCommon(GObj* fighter_gobj);
-sb32 ftCommonGuardOnCheckInterruptDashRun(GObj* fighter_gobj, s32 slide_frames);
+sb32 ftCommonGuardOnCheckInterruptDashRun(GObj* fighter_gobj, s32 slide_tics);
 void ftCommonGuardProcUpdate(GObj* fighter_gobj);
 void ftCommonGuardSetStatus(GObj* fighter_gobj);
 
@@ -458,8 +458,8 @@ void ftCommonEscapeProcUpdate(GObj* fighter_gobj);
 void ftCommonEscapeProcInterrupt(GObj* fighter_gobj);
 void ftCommonEscapeProcStatus(GObj* fighter_gobj);
 
-// Samus erroneously calls this without specifying itemthrow_buffer_frames; same story as Link's Bomb?
-// void ftCommonEscapeSetStatus(GObj* fighter_gobj, s32 status_id, s32 itemthrow_buffer_frames); 
+// Samus erroneously calls this without specifying itemthrow_buffer_tics; same story as Link's Bomb?
+// void ftCommonEscapeSetStatus(GObj* fighter_gobj, s32 status_id, s32 itemthrow_buffer_tics); 
 s32 ftCommonEscapeGetStatus(FTStruct* fp);
 sb32 ftCommonEscapeCheckInterruptSpecialNDonkey(GObj* fighter_gobj);
 sb32 ftCommonEscapeCheckInterruptDash(GObj* fighter_gobj);

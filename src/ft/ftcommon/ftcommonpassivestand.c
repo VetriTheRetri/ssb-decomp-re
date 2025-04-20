@@ -25,7 +25,7 @@ sb32 ftCommonPassiveStandCheckInterruptDamage(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id;
 
-    if (fp->tics_since_last_z < FTCOMMON_PASSIVE_BUFFER_FRAMES_MAX)
+    if (fp->tics_since_last_z < FTCOMMON_PASSIVE_BUFFER_TICS_MAX)
     {
         if (ABS(fp->input.pl.stick_range.x) >= FTCOMMON_PASSIVE_F_OR_B_RANGE)
         {

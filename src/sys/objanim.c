@@ -1418,7 +1418,7 @@ void gcPlayMObjMatAnim(MObj *mobj)
             }
             aobj = aobj->next;
         }
-        if(mobj->anim_wait == AOBJ_ANIM_END)
+        if (mobj->anim_wait == AOBJ_ANIM_END)
         {
             mobj->anim_wait = AOBJ_ANIM_NULL;
         }

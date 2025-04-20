@@ -1260,7 +1260,7 @@ void ftMainProcUpdateInterrupt(GObj *fighter_gobj)
 
             button_tap_mask = (button_hold ^ pl->button_hold) & pl->button_hold;
 
-            pl->button_tap_release = (this_fp->hitlag_tics != 0) ? pl->button_tap_release | button_tap_mask : button_tap_mask;
+            pl->button_release = (this_fp->hitlag_tics != 0) ? pl->button_release | button_tap_mask : button_tap_mask;
 
             pl->button_hold = button_hold;
             break;
@@ -1290,7 +1290,7 @@ void ftMainProcUpdateInterrupt(GObj *fighter_gobj)
 
             button_tap_mask = (button_hold_com ^ pl->button_hold) & pl->button_hold;
 
-            pl->button_tap_release = (this_fp->hitlag_tics != 0) ? pl->button_tap_release | button_tap_mask : button_tap_mask;
+            pl->button_release = (this_fp->hitlag_tics != 0) ? pl->button_release | button_tap_mask : button_tap_mask;
 
             pl->button_hold = button_hold_com;
 
@@ -1333,15 +1333,15 @@ void ftMainProcUpdateInterrupt(GObj *fighter_gobj)
             }
             else this_fp->tap_stick_x = this_fp->hold_stick_x = 1;
         }
-        else this_fp->tap_stick_x = this_fp->hold_stick_x = FTINPUT_STICKBUFFER_FRAMES_MAX;
+        else this_fp->tap_stick_x = this_fp->hold_stick_x = FTINPUT_STICKBUFFER_TICS_MAX;
 
-        if (this_fp->tap_stick_x > FTINPUT_STICKBUFFER_FRAMES_MAX)
+        if (this_fp->tap_stick_x > FTINPUT_STICKBUFFER_TICS_MAX)
         {
-            this_fp->tap_stick_x = FTINPUT_STICKBUFFER_FRAMES_MAX;
+            this_fp->tap_stick_x = FTINPUT_STICKBUFFER_TICS_MAX;
         }
-        if (this_fp->hold_stick_x > FTINPUT_STICKBUFFER_FRAMES_MAX)
+        if (this_fp->hold_stick_x > FTINPUT_STICKBUFFER_TICS_MAX)
         {
-            this_fp->hold_stick_x = FTINPUT_STICKBUFFER_FRAMES_MAX;
+            this_fp->hold_stick_x = FTINPUT_STICKBUFFER_TICS_MAX;
         }
         if (pl->stick_range.y >= 20)
         {
@@ -1359,18 +1359,18 @@ void ftMainProcUpdateInterrupt(GObj *fighter_gobj)
             }
             else this_fp->tap_stick_y = this_fp->hold_stick_y = 1;
         }
-        else this_fp->tap_stick_y = this_fp->hold_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
+        else this_fp->tap_stick_y = this_fp->hold_stick_y = FTINPUT_STICKBUFFER_TICS_MAX;
 
-        if (this_fp->tap_stick_y > FTINPUT_STICKBUFFER_FRAMES_MAX)
+        if (this_fp->tap_stick_y > FTINPUT_STICKBUFFER_TICS_MAX)
         {
-            this_fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
+            this_fp->tap_stick_y = FTINPUT_STICKBUFFER_TICS_MAX;
         }
-        if (this_fp->hold_stick_y > FTINPUT_STICKBUFFER_FRAMES_MAX)
+        if (this_fp->hold_stick_y > FTINPUT_STICKBUFFER_TICS_MAX)
         {
-            this_fp->hold_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
+            this_fp->hold_stick_y = FTINPUT_STICKBUFFER_TICS_MAX;
         }
     }
-    if (this_fp->tics_since_last_z < FTINPUT_ZTRIGLAST_FRAMES_MAX)
+    if (this_fp->tics_since_last_z < FTINPUT_ZTRIGLAST_TICS_MAX)
     {
         this_fp->tics_since_last_z++;
     }
@@ -3979,7 +3979,7 @@ void ftMainProcParams(GObj *fighter_gobj)
         {
             fp->is_knockback_paused = TRUE;
         }
-        fp->input.pl.button_tap = fp->input.pl.button_tap_release = 0;
+        fp->input.pl.button_tap = fp->input.pl.button_release = 0;
 
         if (fp->proc_lagstart != NULL)
         {
@@ -4430,7 +4430,7 @@ void ftMainSetStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
     {
         ftParamResetTexturePartAll(fighter_gobj);
     }
-    if (!(flags & FTSTATUS_PRESERVE_COLANIM) && (dFTCommonDataColAnimDescs[fp->colanim.colanim_id].is_unlocked != FALSE))
+    if (!(flags & FTSTATUS_PRESERVE_COLANIM) && (dGMColAnimDescs[fp->colanim.colanim_id].is_unlocked != FALSE))
     {
         ftParamResetStatUpdateColAnim(fighter_gobj);
     }

@@ -244,14 +244,14 @@ void ftCommonDamageCommonProcLagUpdate(GObj *fighter_gobj)
     {
         if ((SQUARE(fp->input.pl.stick_range.x) + SQUARE(fp->input.pl.stick_range.y)) >= SQUARE(FTCOMMON_DAMAGE_SMASH_DI_RANGE_MIN))
         {
-            if ((fp->tap_stick_x < FTCOMMON_DAMAGE_SMASH_DI_BUFFER_FRAMES_MAX) || (fp->tap_stick_y < FTCOMMON_DAMAGE_SMASH_DI_BUFFER_FRAMES_MAX))
+            if ((fp->tap_stick_x < FTCOMMON_DAMAGE_SMASH_DI_BUFFER_TICS_MAX) || (fp->tap_stick_y < FTCOMMON_DAMAGE_SMASH_DI_BUFFER_TICS_MAX))
             {
                 Vec3f *translate = &DObjGetStruct(fighter_gobj)->translate.vec.f;
 
                 translate->x += fp->input.pl.stick_range.x * FTCOMMON_DAMAGE_SMASH_DI_RANGE_MUL;
                 translate->y += fp->input.pl.stick_range.y * FTCOMMON_DAMAGE_SMASH_DI_RANGE_MUL;
 
-                fp->tap_stick_x = fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
+                fp->tap_stick_x = fp->tap_stick_y = FTINPUT_STICKBUFFER_TICS_MAX;
             }
         }
     }
@@ -617,7 +617,7 @@ s32 damage_index, s32 element, s32 damage_player_num, sb32 is_rumble, sb32 is_fo
     
     this_fp->proc_lagupdate = ftCommonDamageCommonProcLagUpdate;
 
-    this_fp->tap_stick_x = this_fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
+    this_fp->tap_stick_x = this_fp->tap_stick_y = FTINPUT_STICKBUFFER_TICS_MAX;
 
     this_fp->damage_knockback_stack = knockback;
 
@@ -641,7 +641,7 @@ s32 damage_index, s32 element, s32 damage_player_num, sb32 is_rumble, sb32 is_fo
     }
 
     this_fp->is_hitstun = TRUE;
-    this_fp->tics_since_last_z = FTINPUT_ZTRIGLAST_FRAMES_MAX;
+    this_fp->tics_since_last_z = FTINPUT_ZTRIGLAST_TICS_MAX;
 
     if ((damage_level == 3) && (knockback >= FTCOMMON_DAMAGE_FIGHTER_PLAYERTAG_KNOCKBACK_MIN))
     {
@@ -788,7 +788,7 @@ void ftCommonDamageUpdateMain(GObj *fighter_gobj)
             {
                 grab_fp->hitlag_tics = ftParamGetHitLag(this_fp->damage_lag, grab_fp->status_id, grab_fp->hitlag_mul);
 
-                this_fp->input.pl.button_tap = this_fp->input.pl.button_tap_release = 0;
+                this_fp->input.pl.button_tap = this_fp->input.pl.button_release = 0;
 
                 if (this_fp->proc_lagstart != NULL)
                 {

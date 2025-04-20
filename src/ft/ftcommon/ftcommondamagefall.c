@@ -62,7 +62,7 @@ void ftCommonDamageFallSetStatusFromCliffWait(GObj *fighter_gobj)
     ftMainSetStatus(fighter_gobj, nFTCommonStatusDamageFall, 0.0F, 1.0F, FTSTATUS_PRESERVE_FASTFALL);
     ftCommonDamageFallClampRumble(fighter_gobj);
 
-    fp->tics_since_last_z = FTINPUT_ZTRIGLAST_FRAMES_MAX;
+    fp->tics_since_last_z = FTINPUT_ZTRIGLAST_TICS_MAX;
 }
 
 // 0x801436F0

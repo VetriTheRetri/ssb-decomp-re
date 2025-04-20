@@ -15,16 +15,16 @@ void ftCommonItemThrowUpdateModelYaw(GObj *fighter_gobj)
     if (fp->motion_vars.flags.flag3 != 0)
     {
         fp->status_vars.common.itemthrow.turn_rotate_step =
-        fp->status_vars.common.itemthrow.turn_frames = fp->motion_vars.flags.flag3;
+        fp->status_vars.common.itemthrow.turn_tics = fp->motion_vars.flags.flag3;
 
         fp->status_vars.common.itemthrow.turn_invert_lr_wait = fp->motion_vars.flags.flag3 / 2;
 
         fp->motion_vars.flags.flag3 = 0;
     }
 
-    if (fp->status_vars.common.itemthrow.turn_frames != 0)
+    if (fp->status_vars.common.itemthrow.turn_tics != 0)
     {
-        fp->status_vars.common.itemthrow.turn_frames--;
+        fp->status_vars.common.itemthrow.turn_tics--;
 
         if (fp->status_vars.common.itemthrow.turn_invert_lr_wait != 0)
         {
@@ -141,7 +141,7 @@ void ftCommonItemThrowInitCommandVars(FTStruct *fp)
 // 0x80146670
 void ftCommonItemThrowInitStatusVars(FTStruct *fp)
 {
-    fp->status_vars.common.itemthrow.turn_frames = 0;
+    fp->status_vars.common.itemthrow.turn_tics = 0;
     fp->status_vars.common.itemthrow.throw_angle = 361;
     fp->status_vars.common.itemthrow.throw_vel = 1.0F;
     fp->status_vars.common.itemthrow.throw_damage = 1.0F;
@@ -167,19 +167,27 @@ void ftCommonLightThrowDecideSetStatus(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id;
 
-    if ((ABS(fp->input.pl.stick_range.x) >= FTCOMMON_LIGHTTHROW4_STICK_RANGE_X_MIN) && (fp->hold_stick_x < FTCOMMON_LIGHTTHROW4_F_OR_B_BUFFER_FRAMES_MAX))
+    if ((ABS(fp->input.pl.stick_range.x) >= FTCOMMON_LIGHTTHROW4_STICK_RANGE_X_MIN) && (fp->hold_stick_x < FTCOMMON_LIGHTTHROW4_F_OR_B_BUFFER_TICS_MAX))
     {
         status_id = ((fp->input.pl.stick_range.x * fp->lr) >= 0) ? nFTCommonStatusLightThrowF4 : nFTCommonStatusLightThrowB4;
     }
-    else if ((fp->input.pl.stick_range.y >= FTCOMMON_LIGHTTHROW4_STICK_RANGE_Y_MIN) && (fp->hold_stick_y < (FTCOMMON_LIGHTTHROW4_HI_OR_LW_BUFFER_FRAMES_MAX + fp->attr->kneebend_anim_length)))
+    else if
+    (
+        (fp->input.pl.stick_range.y >= FTCOMMON_LIGHTTHROW4_STICK_RANGE_Y_MIN) &&
+        (fp->hold_stick_y < (FTCOMMON_LIGHTTHROW4_HI_OR_LW_BUFFER_TICS_MAX + fp->attr->kneebend_anim_length))
+    )
     {
         status_id = nFTCommonStatusLightThrowHi4;
     }
-    else if ((fp->input.pl.stick_range.y <= -FTCOMMON_LIGHTTHROW4_STICK_RANGE_Y_MIN) && (fp->hold_stick_y < FTCOMMON_LIGHTTHROW4_HI_OR_LW_BUFFER_FRAMES_MAX))
+    else if ((fp->input.pl.stick_range.y <= -FTCOMMON_LIGHTTHROW4_STICK_RANGE_Y_MIN) && (fp->hold_stick_y < FTCOMMON_LIGHTTHROW4_HI_OR_LW_BUFFER_TICS_MAX))
     {
         status_id = nFTCommonStatusLightThrowLw4;
     }
-    else if ((ABS(fp->input.pl.stick_range.x) >= FTCOMMON_LIGHTTHROW_STICK_RANGE_XY_MIN) && (((ftParamGetStickAngleRads(fp) < 0.0F) ? -ftParamGetStickAngleRads(fp) : ftParamGetStickAngleRads(fp)) <= FTCOMMON_LIGHTTHROW_HI_OR_LW_ANGLE))
+    else if
+    (
+        (ABS(fp->input.pl.stick_range.x) >= FTCOMMON_LIGHTTHROW_STICK_RANGE_XY_MIN) &&
+        (((ftParamGetStickAngleRads(fp) < 0.0F) ? -ftParamGetStickAngleRads(fp) : ftParamGetStickAngleRads(fp)) <= FTCOMMON_LIGHTTHROW_HI_OR_LW_ANGLE)
+    )
     {
         status_id = ((fp->input.pl.stick_range.x * fp->lr) >= 0) ? nFTCommonStatusLightThrowF : nFTCommonStatusLightThrowB;
     }
@@ -202,11 +210,15 @@ void ftCommonHeavyThrowDecideSetStatus(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id;
 
-    if ((ABS(fp->input.pl.stick_range.x) >= FTCOMMON_HEAVYTHROW4_STICK_RANGE_X_MIN) && (fp->hold_stick_x < FTCOMMON_HEAVYTHROW4_F_OR_B_BUFFER_FRAMES_MAX))
+    if ((ABS(fp->input.pl.stick_range.x) >= FTCOMMON_HEAVYTHROW4_STICK_RANGE_X_MIN) && (fp->hold_stick_x < FTCOMMON_HEAVYTHROW4_F_OR_B_BUFFER_TICS_MAX))
     {
         status_id = ((fp->input.pl.stick_range.x * fp->lr) >= 0) ? nFTCommonStatusHeavyThrowF4 : nFTCommonStatusHeavyThrowB4;
     }
-    else if (((ABS(fp->input.pl.stick_range.x) >= FTCOMMON_HEAVYTHROW_STICK_RANGE_XY_MIN) && ((ftParamGetStickAngleRads(fp) < 0.0F) ? -ftParamGetStickAngleRads(fp) : ftParamGetStickAngleRads(fp)) <= FTCOMMON_HEAVYTHROW_HI_OR_LW_ANGLE))
+    else if
+    (
+        ((ABS(fp->input.pl.stick_range.x) >= FTCOMMON_HEAVYTHROW_STICK_RANGE_XY_MIN) &&
+        ((ftParamGetStickAngleRads(fp) < 0.0F) ? -ftParamGetStickAngleRads(fp) : ftParamGetStickAngleRads(fp)) <= FTCOMMON_HEAVYTHROW_HI_OR_LW_ANGLE)
+    )
     {
         status_id = ((fp->input.pl.stick_range.x * fp->lr) >= 0) ? nFTCommonStatusHeavyThrowF : nFTCommonStatusHeavyThrowB;
     }
@@ -244,19 +256,17 @@ sb32 ftCommonLightThrowCheckInterruptGuardOn(GObj *fighter_gobj)
 
     if ((fp->item_gobj != NULL) && (fp->input.pl.button_tap & fp->input.button_mask_a))
     {
-        if (fp->status_vars.common.guard.slide_frames != 0)
+        if (fp->status_vars.common.guard.slide_tics != 0)
         {
             ftCommonItemThrowSetStatus(fighter_gobj, nFTCommonStatusLightThrowDash);
-
-            return TRUE;
         }
         else ftCommonLightThrowDecideSetStatus(fighter_gobj);
 
         return TRUE;
     }
-    if (fp->status_vars.common.guard.slide_frames != 0)
+    if (fp->status_vars.common.guard.slide_tics != 0)
     {
-        fp->status_vars.common.guard.slide_frames--;
+        fp->status_vars.common.guard.slide_tics--;
     }
     return FALSE;
 }
@@ -267,7 +277,7 @@ sb32 ftCommonLightThrowCheckInterruptEscape(GObj *fighter_gobj) // Interrupt ite
     FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id;
 
-    if ((ftCommonLightThrowCheckItemTypeThrow(fp) != FALSE) && (fp->status_vars.common.escape.itemthrow_buffer_frames != 0))
+    if ((ftCommonLightThrowCheckItemTypeThrow(fp) != FALSE) && (fp->status_vars.common.escape.itemthrow_buffer_tics != 0))
     {
         if (fp->status_id == nFTCommonStatusEscapeF)
         {
@@ -279,9 +289,9 @@ sb32 ftCommonLightThrowCheckInterruptEscape(GObj *fighter_gobj) // Interrupt ite
 
         return TRUE;
     }
-    if (fp->status_vars.common.escape.itemthrow_buffer_frames != 0)
+    if (fp->status_vars.common.escape.itemthrow_buffer_tics != 0)
     {
-        fp->status_vars.common.escape.itemthrow_buffer_frames--;
+        fp->status_vars.common.escape.itemthrow_buffer_tics--;
     }
     return FALSE;
 }

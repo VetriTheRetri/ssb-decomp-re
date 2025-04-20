@@ -16,12 +16,12 @@ void ftCommonHammerKneeBendProcUpdate(GObj *fighter_gobj)
 
     if 
     (
-        (fp->status_vars.common.hammer.input_source == FTCOMMON_KNEEBEND_INPUT_TYPE_BUTTON)       &&
-        (fp->status_vars.common.hammer.kneebend_anim_frame <= FTCOMMON_KNEEBEND_SHORT_HOP_FRAMES) &&
-        (fp->input.pl.button_tap_release & (R_CBUTTONS | L_CBUTTONS | D_CBUTTONS | U_CBUTTONS))
+        (fp->status_vars.common.hammer.input_source == FTCOMMON_KNEEBEND_INPUT_TYPE_BUTTON)     &&
+        (fp->status_vars.common.hammer.kneebend_anim_frame <= FTCOMMON_KNEEBEND_SHORTHOP_FRAMES)&&
+        (fp->input.pl.button_release & (R_CBUTTONS | L_CBUTTONS | D_CBUTTONS | U_CBUTTONS))
     )
     {
-        fp->status_vars.common.hammer.is_short_hop = TRUE;
+        fp->status_vars.common.hammer.is_shorthop = TRUE;
     }
     if (fp->status_vars.common.hammer.kneebend_anim_frame >= attr->kneebend_anim_length)
     {
@@ -51,7 +51,7 @@ void ftCommonHammerKneeBendSetStatus(GObj *fighter_gobj, s32 input_source)
     fp->status_vars.common.hammer.jump_force = fp->input.pl.stick_range.y;
     fp->status_vars.common.hammer.kneebend_anim_frame = 0.0F;
     fp->status_vars.common.hammer.input_source = input_source;
-    fp->status_vars.common.hammer.is_short_hop = FALSE;
+    fp->status_vars.common.hammer.is_shorthop = FALSE;
 }
 
 // 0x8014800C

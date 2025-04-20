@@ -43,7 +43,7 @@ void ftCommonEscapeProcStatus(GObj *fighter_gobj)
 }
 
 // 0x80149294
-void ftCommonEscapeSetStatus(GObj *fighter_gobj, s32 status_id, s32 itemthrow_buffer_frames)
+void ftCommonEscapeSetStatus(GObj *fighter_gobj, s32 status_id, s32 itemthrow_buffer_tics)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -54,13 +54,13 @@ void ftCommonEscapeSetStatus(GObj *fighter_gobj, s32 status_id, s32 itemthrow_bu
 
     fp->is_jostle_ignore = TRUE;
 
-    fp->status_vars.common.escape.itemthrow_buffer_frames = itemthrow_buffer_frames;
+    fp->status_vars.common.escape.itemthrow_buffer_tics = itemthrow_buffer_tics;
 }
 
 // 0x801492F8
 s32 ftCommonEscapeGetStatus(FTStruct *fp)
 {
-    if ((ABS(fp->input.pl.stick_range.x) >= FTCOMMON_ESCAPE_STICK_RANGE_MIN) && (fp->tap_stick_x < FTCOMMON_ESCAPE_BUFFER_FRAMES_MAX))
+    if ((ABS(fp->input.pl.stick_range.x) >= FTCOMMON_ESCAPE_STICK_RANGE_MIN) && (fp->tap_stick_x < FTCOMMON_ESCAPE_BUFFER_TICS_MAX))
     {
         return ((fp->input.pl.stick_range.x * fp->lr) >= 0) ? nFTCommonStatusEscapeF : nFTCommonStatusEscapeB;
     }

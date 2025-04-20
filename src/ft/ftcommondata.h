@@ -30,6 +30,6 @@ extern SYColorRGBA dFTCommonDataShadowColorDefault;
 extern SYColorRGBA dFTCommonDataShadowColorTeams[/* */];
 
 // 0x8012DBD0
-extern GMColDesc dFTCommonDataColAnimDescs[/* */]; // 0x8012DBD0
+extern GMColDesc dGMColAnimDescs[/* */]; // 0x8012DBD0
 
 #endif

@@ -398,7 +398,7 @@ void wpProcessProcSearchHitWeapon(GObj *this_gobj) // Scan for hitbox collision 
             }
             else if (is_check_self != FALSE)
             {
-                if(this_wp->owner_gobj == other_wp->owner_gobj)
+                if (this_wp->owner_gobj == other_wp->owner_gobj)
                 {
                     goto next_gobj;
                 }

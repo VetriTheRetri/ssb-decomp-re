@@ -824,7 +824,7 @@ GObj* ftManagerMakeFighter(FTDesc *desc) // Create fighter
     fp->input.button_mask_z = desc->button_mask_z;
     fp->input.button_mask_l = desc->button_mask_l;
 
-    fp->tap_stick_x = fp->tap_stick_y = fp->hold_stick_x = fp->hold_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
+    fp->tap_stick_x = fp->tap_stick_y = fp->hold_stick_x = fp->hold_stick_y = FTINPUT_STICKBUFFER_TICS_MAX;
 
     for (i = 0; i < ARRAY_COUNT(fp->damage_colls); i++)
     {

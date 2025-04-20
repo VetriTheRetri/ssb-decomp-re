@@ -232,11 +232,11 @@ void ftPhysicsApplyFastFall(FTStruct *fp, FTAttributes *attr)
 // 0x800D8DB0
 void ftPhysicsCheckSetFastFall(FTStruct *fp)
 {
-    if (!(fp->is_fastfall) && (fp->physics.vel_air.y < 0.0F) && (fp->input.pl.stick_range.y <= FTCOMMON_FASTFALL_STICK_RANGE_MIN) && (fp->tap_stick_y < FTCOMMON_FASTFALL_BUFFER_FRAMES_MAX))
+    if (!(fp->is_fastfall) && (fp->physics.vel_air.y < 0.0F) && (fp->input.pl.stick_range.y <= FTCOMMON_FASTFALL_STICK_RANGE_MIN) && (fp->tap_stick_y < FTCOMMON_FASTFALL_BUFFER_TICS_MAX))
     {
         fp->is_fastfall = TRUE;
 
-        fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
+        fp->tap_stick_y = FTINPUT_STICKBUFFER_TICS_MAX;
 
         if (ftParamCheckSetFighterColAnimID(fp->fighter_gobj, 8, 0) != FALSE)
         {

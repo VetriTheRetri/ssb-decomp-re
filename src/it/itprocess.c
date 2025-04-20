@@ -930,7 +930,7 @@ void itProcessSearchHitWeapon(GObj *item_gobj) // Check weapons for hit detectio
                         {
                             if (it_attack_coll->attack_state != nGMAttackStateOff)
                             {
-                                if(it_attack_coll->interact_mask & GMHITCOLLISION_FLAG_WEAPON)
+                                if (it_attack_coll->interact_mask & GMHITCOLLISION_FLAG_WEAPON)
                                 {
                                     these_flags.is_interact_hurt = these_flags.is_interact_shield = FALSE;
 

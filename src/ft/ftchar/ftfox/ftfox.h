@@ -114,7 +114,7 @@ typedef struct ftFoxSpecialHiStatusVars
 typedef struct ftFoxSpecialLwStatusVars
 {
     s32 release_lag;
-    s32 turn_frames;
+    s32 turn_tics;
     sb32 is_release;
     GObj *effect_gobj;
     s32 gravity_delay;

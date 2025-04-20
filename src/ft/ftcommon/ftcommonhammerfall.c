@@ -69,7 +69,7 @@ void ftCommonHammerFallSetStatusJump(GObj *fighter_gobj)
     switch (fp->status_vars.common.hammer.input_source)
     {
     case FTCOMMON_KNEEBEND_INPUT_TYPE_BUTTON:
-        ftCommonJumpGetJumpForceButton(fp->input.pl.stick_range.x, &vel_x, &vel_y, fp->status_vars.common.hammer.is_short_hop);
+        ftCommonJumpGetJumpForceButton(fp->input.pl.stick_range.x, &vel_x, &vel_y, fp->status_vars.common.hammer.is_shorthop);
         break;
 
     case FTCOMMON_KNEEBEND_INPUT_TYPE_STICK:
@@ -81,7 +81,7 @@ void ftCommonHammerFallSetStatusJump(GObj *fighter_gobj)
     fp->physics.vel_air.y = (vel_y * attr->jump_height_mul) + attr->jump_height_base;
     fp->physics.vel_air.x = vel_x * attr->jump_vel_x;
 
-    fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
+    fp->tap_stick_y = FTINPUT_STICKBUFFER_TICS_MAX;
 }
 
 // 0x80147E34

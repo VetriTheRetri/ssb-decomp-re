@@ -117,7 +117,7 @@ void ftCommonDashSetStatus(GObj *fighter_gobj, u32 flag)
     ftMainPlayAnimEventsAll(fighter_gobj);
 
     fp->physics.vel_ground.x = fp->attr->dash_speed;
-    fp->tap_stick_x = FTINPUT_STICKBUFFER_FRAMES_MAX;
+    fp->tap_stick_x = FTINPUT_STICKBUFFER_TICS_MAX;
     fp->motion_vars.flags.flag1 = flag;
 }
 
@@ -126,7 +126,7 @@ sb32 ftCommonDashCheckInterruptCommon(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((ABS(fp->input.pl.stick_range.x) >= FTCOMMON_DASH_STICK_RANGE_MIN) && (fp->tap_stick_x < FTCOMMON_DASH_BUFFER_FRAMES_MAX))
+    if ((ABS(fp->input.pl.stick_range.x) >= FTCOMMON_DASH_STICK_RANGE_MIN) && (fp->tap_stick_x < FTCOMMON_DASH_BUFFER_TICS_MAX))
     {
         if ((fp->input.pl.stick_range.x * fp->lr) < 0)
         {
@@ -147,7 +147,7 @@ sb32 ftCommonDashCheckTurn(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (((fp->input.pl.stick_range.x * fp->status_vars.common.turn.lr_turn) >= FTCOMMON_DASH_STICK_RANGE_MIN) && (fp->tap_stick_x < FTCOMMON_DASH_BUFFER_FRAMES_MAX))
+    if (((fp->input.pl.stick_range.x * fp->status_vars.common.turn.lr_turn) >= FTCOMMON_DASH_STICK_RANGE_MIN) && (fp->tap_stick_x < FTCOMMON_DASH_BUFFER_TICS_MAX))
     {
         fp->status_vars.common.turn.lr_dash = fp->status_vars.common.turn.lr_turn;
         fp->status_vars.common.turn.attacks4_buffer = 0;

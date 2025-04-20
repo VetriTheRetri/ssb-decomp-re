@@ -836,7 +836,7 @@ struct FTPlayerInput
 {
     u16 button_hold;        // Held buttons
     u16 button_tap;         // Newly pressed buttons
-    u16 button_tap_release; // Buttons tapped on the previous read and immediately released on the next
+    u16 button_release;     // Newly released buttons
     Vec2b stick_range;      // Current stick range
     Vec2b stick_prev;       // Previous stick range
 };

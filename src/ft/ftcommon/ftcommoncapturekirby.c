@@ -139,9 +139,9 @@ void ftCommonCaptureWaitKirbyUpdateBreakoutVars(FTStruct *this_fp, FTStruct *cap
 
     if ((capture_fp->status_id == nFTKirbyStatusSpecialAirNWait) || (capture_fp->status_id == nFTKirbyStatusSpecialNWait))
     {
-        if ((this_fp->input.pl.stick_range.y >= FTCOMMON_CAPTUREKIRBY_WIGGLE_STICK_RANGE_MIN) && (this_fp->tap_stick_y < FTCOMMON_CAPTUREKIRBY_WIGGLE_BUFFER_FRAMES_MAX))
+        if ((this_fp->input.pl.stick_range.y >= FTCOMMON_CAPTUREKIRBY_WIGGLE_STICK_RANGE_MIN) && (this_fp->tap_stick_y < FTCOMMON_CAPTUREKIRBY_WIGGLE_BUFFER_TICS_MAX))
         {
-            this_fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
+            this_fp->tap_stick_y = FTINPUT_STICKBUFFER_TICS_MAX;
             is_wiggle = TRUE;
 
             if (capture_fp->ga == nMPKineticsGround)
@@ -153,9 +153,9 @@ void ftCommonCaptureWaitKirbyUpdateBreakoutVars(FTStruct *this_fp, FTStruct *cap
                 capture_fp->physics.vel_air.y = FTCOMMON_CAPTUREKIRBY_WIGGLE_VEL;
             }
         }
-        else if ((this_fp->input.pl.stick_range.y <= -FTCOMMON_CAPTUREKIRBY_WIGGLE_STICK_RANGE_MIN) && (this_fp->tap_stick_y < FTCOMMON_CAPTUREKIRBY_WIGGLE_BUFFER_FRAMES_MAX) && (this_fp->coll_data.floor_flags & 0x4000))
+        else if ((this_fp->input.pl.stick_range.y <= -FTCOMMON_CAPTUREKIRBY_WIGGLE_STICK_RANGE_MIN) && (this_fp->tap_stick_y < FTCOMMON_CAPTUREKIRBY_WIGGLE_BUFFER_TICS_MAX) && (this_fp->coll_data.floor_flags & 0x4000))
         {
-            this_fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
+            this_fp->tap_stick_y = FTINPUT_STICKBUFFER_TICS_MAX;
             is_wiggle = TRUE;
 
             if (capture_fp->ga == nMPKineticsGround)
@@ -168,9 +168,9 @@ void ftCommonCaptureWaitKirbyUpdateBreakoutVars(FTStruct *this_fp, FTStruct *cap
                 capture_fp->physics.vel_air.y = -FTCOMMON_CAPTUREKIRBY_WIGGLE_VEL;
             }
         }
-        if ((ABS(this_fp->input.pl.stick_range.x) >= (FTCOMMON_CAPTUREKIRBY_WIGGLE_STICK_RANGE_MIN + 3)) && (this_fp->tap_stick_x < (FTCOMMON_CAPTUREKIRBY_WIGGLE_BUFFER_FRAMES_MAX * 2)))
+        if ((ABS(this_fp->input.pl.stick_range.x) >= (FTCOMMON_CAPTUREKIRBY_WIGGLE_STICK_RANGE_MIN + 3)) && (this_fp->tap_stick_x < (FTCOMMON_CAPTUREKIRBY_WIGGLE_BUFFER_TICS_MAX * 2)))
         {
-            this_fp->tap_stick_x = FTINPUT_STICKBUFFER_FRAMES_MAX;
+            this_fp->tap_stick_x = FTINPUT_STICKBUFFER_TICS_MAX;
             is_wiggle = TRUE;
 
             if (capture_fp->ga == nMPKineticsGround)

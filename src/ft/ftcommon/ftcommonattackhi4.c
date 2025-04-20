@@ -61,7 +61,7 @@ sb32 ftCommonAttackHi4CheckInterruptCommon(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((ftCommonAttackHi4CheckInputSuccess(fp) != FALSE) && (fp->tap_stick_y < FTCOMMON_ATTACKHI4_BUFFER_FRAMES_MAX))
+    if ((ftCommonAttackHi4CheckInputSuccess(fp) != FALSE) && (fp->tap_stick_y < FTCOMMON_ATTACKHI4_BUFFER_TICS_MAX))
     {
         return ftCommonAttackHi4CheckInterruptMain(fp);
     }

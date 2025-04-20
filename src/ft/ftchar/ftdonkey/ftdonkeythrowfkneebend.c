@@ -16,12 +16,12 @@ void ftDonkeyThrowFKneeBendProcUpdate(GObj *fighter_gobj)
 
     if
     (
-        (fp->status_vars.common.throwf.input_source == FTCOMMON_KNEEBEND_INPUT_TYPE_BUTTON)       &&
-        (fp->status_vars.common.throwf.kneebend_anim_frame <= FTCOMMON_KNEEBEND_SHORT_HOP_FRAMES) &&
-        (fp->input.pl.button_tap_release & (R_CBUTTONS | L_CBUTTONS | D_CBUTTONS | U_CBUTTONS))
+        (fp->status_vars.common.throwf.input_source == FTCOMMON_KNEEBEND_INPUT_TYPE_BUTTON)     &&
+        (fp->status_vars.common.throwf.kneebend_anim_frame <= FTCOMMON_KNEEBEND_SHORTHOP_FRAMES)&&
+        (fp->input.pl.button_release & (R_CBUTTONS | L_CBUTTONS | D_CBUTTONS | U_CBUTTONS))
     )
     {
-        fp->status_vars.common.throwf.is_short_hop = TRUE;
+        fp->status_vars.common.throwf.is_shorthop = TRUE;
     }
     if (attr->kneebend_anim_length <= fp->status_vars.common.throwf.kneebend_anim_frame)
     {
@@ -56,7 +56,7 @@ void ftDonkeyThrowFKneeBendSetStatus(GObj *fighter_gobj, s32 input_source)
     fp->status_vars.common.throwf.jump_force = fp->input.pl.stick_range.y;
     fp->status_vars.common.throwf.kneebend_anim_frame = 0.0F;
     fp->status_vars.common.throwf.input_source = input_source;
-    fp->status_vars.common.throwf.is_short_hop = FALSE;
+    fp->status_vars.common.throwf.is_shorthop = FALSE;
 }
 
 // 0x8014D9B8

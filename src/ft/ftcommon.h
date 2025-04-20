@@ -24,7 +24,7 @@
 
 #define FTCOMMON_TURN_STICK_RANGE_MIN (-20)
 
-#define FTCOMMON_DASH_BUFFER_FRAMES_MAX                                                                                \
+#define FTCOMMON_DASH_BUFFER_TICS_MAX                                                                                \
 	3 // Dash will register if stick range is greater than or equal to
 	  // FTCOMMON_DASH_STICK_RANGE_MIN within this window of time
 #define FTCOMMON_DASH_STICK_RANGE_MIN 56
@@ -37,7 +37,7 @@
 #define FTCOMMON_KNEEBEND_INPUT_TYPE_NONE 0
 #define FTCOMMON_KNEEBEND_INPUT_TYPE_STICK 1
 #define FTCOMMON_KNEEBEND_INPUT_TYPE_BUTTON 2
-#define FTCOMMON_KNEEBEND_BUFFER_FRAMES_MAX                                                                            \
+#define FTCOMMON_KNEEBEND_BUFFER_TICS_MAX                                                                            \
 	3 // Jumpsquat will register if stick range is greater than
 	  // FTCOMMON_KNEEBEND_STICK_RANGE_MIN within this window of time
 #define FTCOMMON_KNEEBEND_JUMP_F_OR_B_RANGE                                                                            \
@@ -50,7 +50,7 @@
 #define FTCOMMON_KNEEBEND_BUTTON_SHORT_MIN 36.0F	// Minimum short jump height possible with C-button input
 #define FTCOMMON_KNEEBEND_BUTTON_LONG_MIN 63.0F		// Minimum long jump height possible with C-button input
 #define FTCOMMON_KNEEBEND_BUTTON_HEIGHT_CLAMP 77.0F // Maximum jump height possible with C-button input
-#define FTCOMMON_KNEEBEND_SHORT_HOP_FRAMES                                                                             \
+#define FTCOMMON_KNEEBEND_SHORTHOP_FRAMES                                                                             \
 	3.0F // Universal short hop window, unlike Melee where the user must simply
 		 // not be holding their jump input on the last frame of jumpsquat
 
@@ -68,9 +68,9 @@
 																// during their double jump
 
 #define FTCOMMON_FASTFALL_STICK_RANGE_MIN (-53)
-#define FTCOMMON_FASTFALL_BUFFER_FRAMES_MAX 4
+#define FTCOMMON_FASTFALL_BUFFER_TICS_MAX 4
 
-#define FTCOMMON_DAMAGE_SMASH_DI_BUFFER_FRAMES_MAX 4
+#define FTCOMMON_DAMAGE_SMASH_DI_BUFFER_TICS_MAX 4
 #define FTCOMMON_DAMAGE_SMASH_DI_RANGE_MIN 53
 #define FTCOMMON_DAMAGE_CATCH_RELEASE_THRESHOLD                                                                        \
 	6 // If a grabbed fighter takes more than this much damage in one hit,
@@ -120,14 +120,14 @@
 #define FTCOMMON_WALLDAMAGE_INTANGIBLE_TIMER 15
 
 #define FTCOMMON_PASS_STICK_RANGE_MIN (-53) // Minimum stick Y range required for platform drop to register
-#define FTCOMMON_PASS_BUFFER_FRAMES_MAX 4
+#define FTCOMMON_PASS_BUFFER_TICS_MAX 4
 
 #define FTCOMMON_SQUAT_STICK_RANGE_MIN (-53)
-#define FTCOMMON_SQUAT_BUFFER_FRAMES_MAX 4
+#define FTCOMMON_SQUAT_BUFFER_TICS_MAX 4
 #define FTCOMMON_SQUAT_PASS_WAIT 3
 
 #define FTCOMMON_DOKAN_STICK_RANGE_MIN (-53) // Minimum stick Y range required for pipe enter to register
-#define FTCOMMON_DOKAN_BUFFER_FRAMES_MAX 4
+#define FTCOMMON_DOKAN_BUFFER_TICS_MAX 4
 #define FTCOMMON_DOKAN_PLAYERTAG_WAIT 20
 #define FTCOMMON_DOKAN_TURN_STOP_WAIT_DEFAULT 8
 #define FTCOMMON_DOKAN_TURN_STEP (F_CLC_DTOR32(90.0F) / FTCOMMON_DOKAN_TURN_STOP_WAIT_DEFAULT)
@@ -168,7 +168,7 @@
 
 #define FTCOMMON_DOWN_FORWARD_BACK_RANGE_MIN 20 // Minimum stick X range required for missed tech roll
 
-#define FTCOMMON_PASSIVE_BUFFER_FRAMES_MAX 20 // Tech buffer frames
+#define FTCOMMON_PASSIVE_BUFFER_TICS_MAX 20 // Tech buffer frames
 #define FTCOMMON_PASSIVE_F_OR_B_RANGE 20
 
 #define FTCOMMON_CLIFF_CATCH_WAIT 30 // Frames to wait before fighter can grab ledge again
@@ -190,15 +190,15 @@
 #define FTCOMMON_LIGHTTHROW_STICK_RANGE_XY_MIN 20
 #define FTCOMMON_LIGHTTHROW4_STICK_RANGE_X_MIN 56
 #define FTCOMMON_LIGHTTHROW4_STICK_RANGE_Y_MIN 53
-#define FTCOMMON_LIGHTTHROW4_F_OR_B_BUFFER_FRAMES_MAX 8
-#define FTCOMMON_LIGHTTHROW4_HI_OR_LW_BUFFER_FRAMES_MAX 4
+#define FTCOMMON_LIGHTTHROW4_F_OR_B_BUFFER_TICS_MAX 8
+#define FTCOMMON_LIGHTTHROW4_HI_OR_LW_BUFFER_TICS_MAX 4
 #define FTCOMMON_LIGHTTHROW_HI_OR_LW_ANGLE F_CLC_DTOR32(50.0F) // 0.87266463F
 
 #define FTCOMMON_HEAVYTHROW_STICK_RANGE_XY_MIN 20
 #define FTCOMMON_HEAVYTHROW4_STICK_RANGE_X_MIN 56
 #define FTCOMMON_HEAVYTHROW4_STICK_RANGE_Y_MIN 53
-#define FTCOMMON_HEAVYTHROW4_F_OR_B_BUFFER_FRAMES_MAX 8
-#define FTCOMMON_HEAVYTHROW4_HI_OR_LW_BUFFER_FRAMES_MAX 4
+#define FTCOMMON_HEAVYTHROW4_F_OR_B_BUFFER_TICS_MAX 8
+#define FTCOMMON_HEAVYTHROW4_HI_OR_LW_BUFFER_TICS_MAX 4
 #define FTCOMMON_HEAVYTHROW_HI_OR_LW_ANGLE F_CLC_DTOR32(50.0F) // 0.87266463F
 
 #define FTCOMMON_HARISENSWING_SCALE_RESET_WAIT 2
@@ -234,7 +234,7 @@
 #define FTCOMMON_GUARD_VEL_MUL 2.0F // Multiplies shieldstun frames and turns it into horizontal velocity
 
 #define FTCOMMON_ESCAPE_STICK_RANGE_MIN 56
-#define FTCOMMON_ESCAPE_BUFFER_FRAMES_MAX 4
+#define FTCOMMON_ESCAPE_BUFFER_TICS_MAX 4
 
 #define FTCOMMON_SHIELDBREAK_COLANIM_ID 0x24
 #define FTCOMMON_SHIELDBREAK_COLANIM_LENGTH 0
@@ -255,7 +255,7 @@
 #define FTCOMMON_CAPTURE_MASH_STICK_RANGE_MIN 40
 
 #define FTCOMMON_CAPTUREKIRBY_WIGGLE_STICK_RANGE_MIN 53
-#define FTCOMMON_CAPTUREKIRBY_WIGGLE_BUFFER_FRAMES_MAX 4
+#define FTCOMMON_CAPTUREKIRBY_WIGGLE_BUFFER_TICS_MAX 4
 #define FTCOMMON_CAPTUREKIRBY_MAGNITUDE_MAX 220.0F
 #define FTCOMMON_CAPTUREKIRBY_MAGNITUDE_MUL 0.45F
 #define FTCOMMON_CAPTUREKIRBY_MAGNITUDE_ADD 0.55F
@@ -297,7 +297,7 @@
 #define FTCOMMON_THROWFF_TURN_STICK_RANGE_MIN 20
 #define FTCOMMON_THROWFF_TURN_FRAMES 6
 
-#define FTCOMMON_ATTACK1_INTERRUPT_CATCH_FRAMES_MAX 2
+#define FTCOMMON_ATTACK1_INTERRUPT_CATCH_TICS_MAX 2
 
 #define FTCOMMON_ATTACK1_FOLLOWUP_FRAMES_DEFAULT 24.0F
 
@@ -319,7 +319,7 @@
 #define FTCOMMON_ATTACKS4_THUNDERSHOCK_GFX_OFF_Z 100.0F
 
 #define FTCOMMON_ATTACKS4_STICK_RANGE_MIN 56
-#define FTCOMMON_ATTACKS4_BUFFER_FRAMES_MAX 3
+#define FTCOMMON_ATTACKS4_BUFFER_TICS_MAX 3
 #define FTCOMMON_ATTACKS4_5ANGLE_HI_MIN F_CLC_DTOR32(21.0F)	 // 0.36651915F
 #define FTCOMMON_ATTACKS4_5ANGLE_HIS_MIN F_CLC_DTOR32(7.0F)	 // 0.122173056F
 #define FTCOMMON_ATTACKS4_5ANGLE_LW_MIN F_CLC_DTOR32(-21.0F) // -0.36651915F
@@ -328,16 +328,16 @@
 #define FTCOMMON_ATTACKS4_3ANGLE_LW_MIN F_CLC_DTOR32(-17.0F) // -0.296706F
 
 #define FTCOMMON_ATTACKHI4_STICK_RANGE_MIN 53
-#define FTCOMMON_ATTACKHI4_BUFFER_FRAMES_MAX 4
+#define FTCOMMON_ATTACKHI4_BUFFER_TICS_MAX 4
 
 #define FTCOMMON_ATTACKLW4_STICK_RANGE_MIN (-53)
-#define FTCOMMON_ATTACKLW4_BUFFER_FRAMES_MAX 4
+#define FTCOMMON_ATTACKLW4_BUFFER_TICS_MAX 4
 
 #define FTCOMMON_ATTACKAIR_SMOOTHLANDING_TICS_MAX 10
 #define FTCOMMON_ATTACKAIR_SKIPLANDING_VEL_Y_MAX (-20.0F)
 #define FTCOMMON_ATTACKAIR_DIRECTION_STICK_RANGE_MIN                                                                   \
 	20 // Minimum control stick range required for directional aerial attacks
-#define FTCOMMON_LIGHTTHROWAIR4_BUFFER_FRAMES_MAX 8
+#define FTCOMMON_LIGHTTHROWAIR4_BUFFER_TICS_MAX 8
 
 #define FTCOMMON_ATTACKAIRLW_LINK_REHIT_TIMER 30
 #define FTCOMMON_ATTACKAIRLW_LINK_REHIT_FRAME_BEGIN 35.0F
@@ -417,7 +417,7 @@ typedef struct ftCommonKneeBendStatusVars
 	f32 jump_force;
 	f32 anim_frame;
 	s32 input_source;
-	sb32 is_short_hop;
+	sb32 is_shorthop;
 
 } ftCommonKneeBendStatusVars;
 
@@ -425,7 +425,7 @@ typedef struct ftCommonJumpAerialStatusVars
 {
 	f32 drift;
 	f32 vel_x;
-	s32 turn_frames;
+	s32 turn_tics;
 
 } ftCommonJumpAerialStatusVars;
 
@@ -533,14 +533,14 @@ typedef struct ftCommonCliffMotionStatusVars
 
 typedef struct ftCommonLiftStatusVars
 {
-	s32 turn_frames;
+	s32 turn_tics;
 
 } ftCommonLiftStatusVars;
 
 typedef struct ftCommonItemThrowStatusVars
 {
 	s32 turn_rotate_step;
-	s32 turn_frames;
+	s32 turn_tics;
 	s32 turn_invert_lr_wait;
 	f32 throw_vel;
 	s32 throw_angle;
@@ -574,7 +574,7 @@ typedef struct ftCommonHammerStatusVars
 	};
 	f32 kneebend_anim_frame;
 	s32 input_source;
-	sb32 is_short_hop;
+	sb32 is_shorthop;
 
 } ftCommonHammerStatusVars;
 
@@ -588,7 +588,7 @@ typedef struct ftCommonGuardStatusVars
 	f32 angle_f;
 	f32 shield_rotate_range;
 	f32 setoff_frames; // Shieldstun
-	s32 slide_frames;  // Carried over from dash; also acts as LightThrowDash
+	s32 slide_tics;  // Carried over from dash; also acts as LightThrowDash
 					   // buffer
 	sb32 is_setoff;	   // Set to TRUE if shield is hit, does not reset to FALSE
 					   // until shield is released and put up again
@@ -597,7 +597,7 @@ typedef struct ftCommonGuardStatusVars
 
 typedef struct ftCommonEscapeStatusVars
 {
-	s32 itemthrow_buffer_frames; // Allow interrupt into item throw
+	s32 itemthrow_buffer_tics; // Allow interrupt into item throw
 
 } ftCommonEscapeStatusVars;
 
@@ -671,7 +671,7 @@ typedef struct ftCommonThrowFStatusVars // Cargo Throw
 	};
 	f32 kneebend_anim_frame;
 	s32 input_source;
-	sb32 is_short_hop;
+	sb32 is_shorthop;
 
 } ftCommonThrowFStatusVars;
 
@@ -679,7 +679,7 @@ typedef struct ftCommonThrowFFStatusVars
 {
 	sb32 is_turn; // Used to tell if Donkey Kong is doing "Cargo Back Throw"
 				  // (this is still just Forward Throw but he turns around first)
-	s32 turn_frames;
+	s32 turn_tics;
 
 } ftCommonThrowFFStatusVars;
 

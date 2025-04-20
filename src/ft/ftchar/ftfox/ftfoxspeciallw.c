@@ -175,9 +175,9 @@ void ftFoxSpecialLwTurnDecTurnFrames(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->status_vars.fox.speciallw.turn_frames--;
+    fp->status_vars.fox.speciallw.turn_tics--;
 
-    if ((fp->motion_vars.flags.flag1 == 0) && (fp->status_vars.fox.speciallw.turn_frames <= FTFOX_REFLECTOR_TURN_FRAMES))
+    if ((fp->motion_vars.flags.flag1 == 0) && (fp->status_vars.fox.speciallw.turn_tics <= FTFOX_REFLECTOR_TURN_FRAMES))
     {
         fp->motion_vars.flags.flag1 = 1;
         fp->lr = -fp->lr;
@@ -197,7 +197,7 @@ void ftFoxSpecialLwTurnProcUpdate(GObj *fighter_gobj)
     ftFoxSpecialLwDecReleaseLag(fp);
     ftFoxSpecialLwTurnDecTurnFrames(fighter_gobj);
 
-    if (fp->status_vars.fox.speciallw.turn_frames <= 0)
+    if (fp->status_vars.fox.speciallw.turn_tics <= 0)
     {
         ftFoxSpecialLwHitDecideSetStatus(fighter_gobj);
     }
@@ -209,7 +209,7 @@ void ftFoxSpecialLwTurnInitStatusVars(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->is_reflect = TRUE;
-    fp->status_vars.fox.speciallw.turn_frames = FTFOX_REFLECTOR_TURN_FRAMES;
+    fp->status_vars.fox.speciallw.turn_tics = FTFOX_REFLECTOR_TURN_FRAMES;
     fp->motion_vars.flags.flag1 = 0;
 
     ftFoxSpecialLwTurnDecTurnFrames(fighter_gobj);

@@ -209,7 +209,7 @@ void ftParamLockPlayerControl(GObj *fighter_gobj)
 
     fp->input.pl.stick_range.x = fp->input.pl.stick_range.y = fp->input.pl.stick_prev.x = fp->input.pl.stick_prev.y = fp->input.cp.stick_range.x = fp->input.cp.stick_range.y = 0;
 
-    fp->tap_stick_x = fp->tap_stick_y = fp->hold_stick_x = fp->hold_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
+    fp->tap_stick_x = fp->tap_stick_y = fp->hold_stick_x = fp->hold_stick_y = FTINPUT_STICKBUFFER_TICS_MAX;
 
     fp->is_control_disable = TRUE;
 }
@@ -1191,13 +1191,13 @@ void ftParamResetTexturePartAll(GObj *fighter_gobj)
 // 0x800E974C
 sb32 ftParamCheckSetColAnimID(GMColAnim *colanim, s32 colanim_id, s32 length)
 {
-    if (dFTCommonDataColAnimDescs[colanim_id].priority >= dFTCommonDataColAnimDescs[colanim->colanim_id].priority)
+    if (dGMColAnimDescs[colanim_id].priority >= dGMColAnimDescs[colanim->colanim_id].priority)
     {
         s32 i;
 
         colanim->colanim_id = colanim_id;
         colanim->length = length;
-        colanim->cs[0].p_script = dFTCommonDataColAnimDescs[colanim_id].p_script;
+        colanim->cs[0].p_script = dGMColAnimDescs[colanim_id].p_script;
         colanim->cs[0].color_event_timer = 0;
         colanim->cs[0].script_id = 0;
 

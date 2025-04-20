@@ -58,67 +58,77 @@
 // (https://www.coranac.com/documents/working-with-bits-and-bitfields/)
 
 // Now watch me make dollar store display list commands like a clown
-#define gmColCommandEndS1() GC_FIELDSET(nGMColEventEnd, 26, 6)
+#define gmColCommandEnd() GC_FIELDSET(nGMColEventEnd, 26, 6)
 
-#define gmColCommandWaitS1(frames) (GC_FIELDSET(nGMColEventWait, 26, 6) | GC_FIELDSET(frames, 0, 26))
+#define gmColCommandWait(frames) (GC_FIELDSET(nGMColEventWait, 26, 6) | GC_FIELDSET(frames, 0, 26))
 
 #define gmColCommandGotoS1() GC_FIELDSET(nGMColEventGoto, 26, 6)
 #define gmColCommandGotoS2(addr) ((uintptr_t)addr)
 
-#define gmColCommandLoopBeginS1(count) (GC_FIELDSET(nGMColEventLoopBegin, 26, 6) | GC_FIELDSET(count, 0, 26))
-#define gmColCommandLoopEndS1() GC_FIELDSET(nGMColEventLoopEnd, 26, 6)
+#define gmColCommandGoto(addr) gmColCommandGotoS1(), gmColCommandGotoS2(addr)
+
+#define gmColCommandLoopBegin(count) (GC_FIELDSET(nGMColEventLoopBegin, 26, 6) | GC_FIELDSET(count, 0, 26))
+#define gmColCommandLoopEnd() GC_FIELDSET(nGMColEventLoopEnd, 26, 6)
 
 #define gmColCommandSubroutineS1() GC_FIELDSET(nGMColEventSubroutine, 26, 6)
 #define gmColCommandSubroutineS2(addr) ((uintptr_t)addr)
 
-#define gmColCommandReturnS1() GC_FIELDSET(nGMColEventReturn, 26, 6)
+#define gmColCommandSubroutine(addr) gmColCommandSubroutineS1(), gmColCommandSubroutineS2(addr)
+
+#define gmColCommandReturn() GC_FIELDSET(nGMColEventReturn, 26, 6)
 
 #define gmColCommandParallelS1() GC_FIELDSET(nGMColEventSetParallelScript, 26, 6)
 #define gmColCommandParallelS2(addr) ((uintptr_t)addr)
 
-#define gmColCommandToggleColorOffS1() GC_FIELDSET(nGMColEventToggleColorOff, 26, 6)
+#define gmColCommandParallel(addr) gmColCommandParallelS1, gmColCommandParallelS2(addr)
+
+#define gmColCommandToggleColorOff() GC_FIELDSET(nGMColEventToggleColorOff, 26, 6)
 
 #define gmColCommandSetColor1S1() GC_FIELDSET(nGMColEventSetColor1, 26, 6)
-#define gmColCommandSetColor1S2(r, g, b, a)                                                                          \
-	(GC_FIELDSET(r, 24, 8) | GC_FIELDSET(g, 16, 8) | GC_FIELDSET(b, 8, 8) | GC_FIELDSET(a, 0, 8))
+#define gmColCommandSetColor1S2(r, g, b, a) (GC_FIELDSET(r, 24, 8) | GC_FIELDSET(g, 16, 8) | GC_FIELDSET(b, 8, 8) | GC_FIELDSET(a, 0, 8))
 
-#define gmColCommandBlendColor1S1(frames)                                                                            \
-	(GC_FIELDSET(nGMColEventBlendColor1, 26, 6) | GC_FIELDSET(frames, 0, 26))
-#define gmColCommandBlendColor1S2(r, g, b, a)                                                                        \
-	(GC_FIELDSET(r, 24, 8) | GC_FIELDSET(g, 16, 8) | GC_FIELDSET(b, 8, 8) | GC_FIELDSET(a, 0, 8))
+#define gmColCommandSetColor1(r, g, b, a) gmColCommandSetColor1S1(), gmColCommandSetColor1S2(r, g, b, a)
+
+#define gmColCommandBlendColor1S1(frames) (GC_FIELDSET(nGMColEventBlendColor1, 26, 6) | GC_FIELDSET(frames, 0, 26))
+#define gmColCommandBlendColor1S2(r, g, b, a) (GC_FIELDSET(r, 24, 8) | GC_FIELDSET(g, 16, 8) | GC_FIELDSET(b, 8, 8) | GC_FIELDSET(a, 0, 8))
+
+#define gmColCommandBlendColor1(frames, r, g, b, a) gmColCommandBlendColor1S1(frames), gmColCommandBlendColor1S2(r, g, b, a)
 
 #define gmColCommandSetColor2S1() GC_FIELDSET(nGMColEventSetColor2, 26, 6)
-#define gmColCommandSetColor2S2(r, g, b, a)                                                                          \
-	(GC_FIELDSET(r, 24, 8) | GC_FIELDSET(g, 16, 8) | GC_FIELDSET(b, 8, 8) | GC_FIELDSET(a, 0, 8))
+#define gmColCommandSetColor2S2(r, g, b, a) (GC_FIELDSET(r, 24, 8) | GC_FIELDSET(g, 16, 8) | GC_FIELDSET(b, 8, 8) | GC_FIELDSET(a, 0, 8))
 
-#define gmColCommandBlendColor2S1(frames)                                                                            \
-	(GC_FIELDSET(nGMColEventBlendColor1, 26, 6) | GC_FIELDSET(frames, 0, 26))
-#define gmColCommandBlendColor2S2(r, g, b, a)                                                                        \
-	(GC_FIELDSET(r, 24, 8) | GC_FIELDSET(g, 16, 8) | GC_FIELDSET(b, 8, 8) | GC_FIELDSET(a, 0, 8))
+#define gmColCommandSetColor2(frames, r, g, b, a) gmColCommandSetColor2S1(frames), gmColCommandSetColor2S2(r, g, b, a)
 
-#define gmColCommandEffectS1(joint, effect_id, flag)                                                                    \
-	(GC_FIELDSET(nGMColEventEffect, 26, 6) | GC_FIELDSET(joint, 19, 7) | GC_FIELDSET(effect_id, 10, 9)             \
-	 | GC_FIELDSET(flag, 0, 10))
+#define gmColCommandBlendColor2S1(frames) (GC_FIELDSET(nGMColEventBlendColor1, 26, 6) | GC_FIELDSET(frames, 0, 26))
+#define gmColCommandBlendColor2S2(r, g, b, a) (GC_FIELDSET(r, 24, 8) | GC_FIELDSET(g, 16, 8) | GC_FIELDSET(b, 8, 8) | GC_FIELDSET(a, 0, 8))
+
+#define gmColCommandBlendColor2(frames, r, g, b, a) gmColCommandBlendColor2S1(frames), gmColCommandBlendColor2S2(r, g, b, a)
+
+#define gmColCommandEffectS1(joint, effect_id, flag) \
+(GC_FIELDSET(nGMColEventEffect, 26, 6) | GC_FIELDSET(joint, 19, 7) | GC_FIELDSET(effect_id, 10, 9) | GC_FIELDSET(flag, 0, 10))
+
 #define gmColCommandEffectS2(off_x, off_y) (GC_FIELDSET(off_x, 16, 16) | GC_FIELDSET(off_y, 0, 16))
 #define gmColCommandEffectS3(off_z, rng_x) (GC_FIELDSET(off_z, 16, 16) | GC_FIELDSET(rng_x, 0, 16))
 #define gmColCommandEffectS4(rng_y, rng_z) (GC_FIELDSET(rng_y, 16, 16) | GC_FIELDSET(rng_z, 0, 16))
 
-#define gmColCommandEffectScaleS1(joint, effect_id, flag)                                                               \
-	(GC_FIELDSET(nGMColEventEffectScaleOffset, 26, 6) | GC_FIELDSET(joint, 19, 7) | GC_FIELDSET(effect_id, 10, 9)  \
-	 | GC_FIELDSET(flag, 0, 10))
+#define gmColCommandEffect(joint, effect_id, flag, off_x, off_y, off_z, rng_x, rng_y, rng_z) \
+gmColCommandEffectS1(joint, effect_id, flag), gmColCommandEffectS2(off_x, off_y), gmColCommandEffectS3(off_z, rng_x), gmColCommandEffectS4(rng_y, rng_z)
+
+#define gmColCommandEffectScaleS1(joint, effect_id, flag) \
+(GC_FIELDSET(nGMColEventEffectScaleOffset, 26, 6) | GC_FIELDSET(joint, 19, 7) | GC_FIELDSET(effect_id, 10, 9) | GC_FIELDSET(flag, 0, 10))
+
 #define gmColCommandEffectScaleS2(off_x, off_y) (GC_FIELDSET(off_x, 16, 16) | GC_FIELDSET(off_y, 0, 16))
 #define gmColCommandEffectScaleS3(off_z, rng_x) (GC_FIELDSET(off_z, 16, 16) | GC_FIELDSET(rng_x, 0, 16))
-#define gmColCommandEffectSScale4(rng_y, rng_z) (GC_FIELDSET(rng_y, 16, 16) | GC_FIELDSET(rng_z, 0, 16))
+#define gmColCommandEffectScaleS4(rng_y, rng_z) (GC_FIELDSET(rng_y, 16, 16) | GC_FIELDSET(rng_z, 0, 16))
 
-#define gmColCommandSetLightS1(angle1, angle2)                                                                       \
-	(GC_FIELDSET(nGMColEventSetLight, 26, 6) | GC_FIELDSET(angle1, 13, 13) | GC_FIELDSET(angle2, 0, 13))
+#define gmColCommandEffectScale(joint, effect_id, flag, off_x, off_y, off_z, rng_x, rng_y, rng_z) \
+gmColCommandEffectScaleS1(joint, effect_id, flag), gmColCommandEffectScaleS2(off_x, off_y), gmColCommandEffectScaleS3(off_z, rng_x), gmColCommandEffectScaleS4(rng_y, rng_z)
+
+#define gmColCommandSetLight(angle1, angle2) (GC_FIELDSET(nGMColEventSetLight, 26, 6) | GC_FIELDSET(angle1, 13, 13) | GC_FIELDSET(angle2, 0, 13))
 
 #define gmColCommandToggleLightOff() GC_FIELDSET(nGMColEventToggleLightOff, 26, 6)
-
 #define gmColCommandPlaySFX(sfx_id) (GC_FIELDSET(nGMColEventPlaySFX, 26, 6) | GC_FIELDSET(sfx_id, 0, 26))
-
-#define gmColCommandSetSkeletonID(skeleton_id)                                                                       \
-	(GC_FIELDSET(nGMColEventSetSkeletonID, 26, 6) | GC_FIELDSET(skeleton_id, 0, 26))
+#define gmColCommandSetSkeletonID(skeleton_id) (GC_FIELDSET(nGMColEventSetSkeletonID, 26, 6) | GC_FIELDSET(skeleton_id, 0, 26))
 
 #define CAMERA_FLAG_BOUND_LEFT   (1 << nGMCameraBoundLeft)
 #define CAMERA_FLAG_BOUND_RIGHT  (1 << nGMCameraBoundRight)

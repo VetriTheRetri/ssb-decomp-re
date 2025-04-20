@@ -146,7 +146,7 @@ void ftCommonAttack100LoopProcInterrupt(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->input.pl.button_tap & fp->input.button_mask_a) || (fp->input.pl.button_tap_release & fp->input.button_mask_a))
+    if ((fp->input.pl.button_tap & fp->input.button_mask_a) || (fp->input.pl.button_release & fp->input.button_mask_a))
     {
         fp->status_vars.common.attack100.is_goto_loop = TRUE;
     }
@@ -232,12 +232,17 @@ sb32 ftCommonAttack100StartCheckInterruptCommon(GObj *fighter_gobj)
     s32 status_id;
     s32 inputs_min;
 
-    if(!(ftCommonAttack100CheckFighterKind(fp)))
+    if (!(ftCommonAttack100CheckFighterKind(fp)))
     {
         return FALSE;
     }
-    if ((fp->input.pl.button_tap & fp->input.button_mask_a) || (fp->input.pl.button_tap_release & fp->input.button_mask_a))
+    if ((fp->input.pl.button_tap & fp->input.button_mask_a) || (fp->input.pl.button_release & fp->input.button_mask_a))
     {
+        /*
+         * A frame-perfect A press (tapped on one frame and immediately released on the next)
+         * registers twice due to the way button_release works. 
+         */ 
+
         fp->attack1_input_count++;
 
         switch (fp->fkind)

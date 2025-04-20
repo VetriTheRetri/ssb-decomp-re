@@ -377,7 +377,7 @@ void sc1PManagerUpdateScene(void)
 
                 if (gSCManagerSceneData.spgame_stage != nSC1PGameStageBonus3)
                 {
-                    if((gSCManager1PGameBattleState.players[gSCManagerSceneData.player].stock_count == -1) || (gSCManager1PGameBattleState.time_remain == 0))
+                    if ((gSCManager1PGameBattleState.players[gSCManagerSceneData.player].stock_count == -1) || (gSCManager1PGameBattleState.time_remain == 0))
                     {
                         is_player_lose = TRUE;
                     }

@@ -32,7 +32,7 @@ void ftCommonGuardSetStatusFromEscape(GObj *fighter_gobj)
     fp->status_vars.common.guard.release_lag = FTCOMMON_GUARD_RELEASE_LAG;
     fp->status_vars.common.guard.shield_decay_wait = FTCOMMON_GUARD_DECAY_INT;
     fp->status_vars.common.guard.is_release = FALSE;
-    fp->status_vars.common.guard.slide_frames = 0;
+    fp->status_vars.common.guard.slide_tics = 0;
     fp->status_vars.common.guard.is_setoff = FALSE;
 
     ftMainSetStatus(fighter_gobj, nFTCommonStatusGuard, 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_EFFECT));

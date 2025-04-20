@@ -74,7 +74,7 @@ void ftCommonDokanStartSetStatus(GObj *fighter_gobj, s32 material)
     ftMainSetStatus(fighter_gobj, nFTCommonStatusDokanStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimEventsAll(fighter_gobj);
 
-    fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
+    fp->tap_stick_y = FTINPUT_STICKBUFFER_TICS_MAX;
 
     ftPhysicsStopVelAll(fighter_gobj);
 
@@ -116,7 +116,7 @@ sb32 ftCommonDokanStartCheckInterruptCommon(GObj *fighter_gobj)
     s32 floor_line_id;
     f32 dist_x;
 
-    if ((fp->input.pl.stick_range.y <= FTCOMMON_DOKAN_STICK_RANGE_MIN) && (fp->tap_stick_y < FTCOMMON_DOKAN_BUFFER_FRAMES_MAX))
+    if ((fp->input.pl.stick_range.y <= FTCOMMON_DOKAN_STICK_RANGE_MIN) && (fp->tap_stick_y < FTCOMMON_DOKAN_BUFFER_TICS_MAX))
     {
         if ((fp->coll_data.floor_flags & MAP_VERTEX_MAT_MASK) == nMPMaterialDokanL)
         {

@@ -1,1102 +1,918 @@
-#include <ssb_types.h>
-#include <macros.h>
-#include <gm/gmdef.h>
+#include <ef/effect.h>
 
 // 0x8012CA90 - ColAnim Script 1
-uintptr_t GMColEventScript1[/* */] =
+u32 dGMColAnimScript1[/* */] =
 {
-	gmColCommandSetColor1S1(),
-	gmColCommandSetColor1S2(0xFF, 0xFF, 0xFF, 0x30),
-	gmColCommandWaitS1(65535),
-	gmColCommandGotoS1(),
-	gmColCommandGotoS2(GMColEventScript1)
+	gmColCommandSetColor1(0xFF, 0xFF, 0xFF, 0x30),
+	gmColCommandWait(65535),
+	gmColCommandGoto(dGMColAnimScript1)
 };
 
 // 0x8012CAA4 - ColAnim Script 2
-uintptr_t GMColEventScript2[/* */] =
+u32 dGMColAnimScript2[/* */] =
 {
-	gmColCommandToggleColorOffS1(),
-	gmColCommandEndS1()
+	gmColCommandToggleColorOff(),
+	gmColCommandEnd()
 };
 
 // 0x8012CAAC - ColAnim Script 3
-uintptr_t GMColEventScript3[/* */] =
+u32 dGMColAnimScript3[/* */] =
 {
-	gmColCommandSetColor1S1(),
-	gmColCommandSetColor1S2(0xFF, 0xFF, 0xFF, 0x82),
-	gmColCommandBlendColor1S1(3),
-	gmColCommandBlendColor1S2(0xFF, 0xFF, 0xFF, 0x32),
-	gmColCommandWaitS1(3),
-	gmColCommandToggleColorOffS1(),
-	gmColCommandWaitS1(1),
-	gmColCommandGotoS1(),
-	gmColCommandGotoS2(GMColEventScript3)
+	gmColCommandSetColor1(0xFF, 0xFF, 0xFF, 0x82),
+	gmColCommandBlendColor1(3, 0xFF, 0xFF, 0xFF, 0x32),
+	gmColCommandWait(3),
+	gmColCommandToggleColorOff(),
+	gmColCommandWait(1),
+	gmColCommandGoto(dGMColAnimScript3)
 };
 
 // 0x8012CAD0 - ColAnim Script 4
-uintptr_t GMColEventScript4[/* */] =
+u32 dGMColAnimScript4[/* */] =
 {
-	gmColCommandSetColor1S1(),
-	gmColCommandSetColor1S2(0x80, 0xFF, 0x80, 0x50),
-	gmColCommandBlendColor1S1(3),
-	gmColCommandBlendColor1S2(0x80, 0xFF, 0x80, 0x14),
-	gmColCommandWaitS1(3),
-	gmColCommandToggleColorOffS1(),
-	gmColCommandWaitS1(1),
-	gmColCommandGotoS1(),
-	gmColCommandGotoS2(GMColEventScript4)
+	gmColCommandSetColor1(0x80, 0xFF, 0x80, 0x50),
+	gmColCommandBlendColor1(3, 0x80, 0xFF, 0x80, 0x14),
+	gmColCommandWait(3),
+	gmColCommandToggleColorOff(),
+	gmColCommandWait(1),
+	gmColCommandGoto(dGMColAnimScript4)
 };
 
 // 0x8012CAF4 - ColAnim Script 5
-uintptr_t GMColEventScript5[/* */] =
+u32 dGMColAnimScript5[/* */] =
 {
-	gmColCommandSetLightS1(90, 0),
-	gmColCommandToggleColorOffS1(),
-	gmColCommandWaitS1(1),
-	gmColCommandSetColor1S1(),
-	gmColCommandSetColor1S2(0xFF, 0xFF, 0xFF, 0xE6),
-	gmColCommandWaitS1(1),
-	gmColCommandBlendColor1S1(6),
-	gmColCommandBlendColor1S2(0xFF, 0xFF, 0xFF, 0x1E),
-	gmColCommandWaitS1(6),
-	gmColCommandToggleColorOffS1(),
-	gmColCommandEndS1()
+	gmColCommandSetLight(90, 0),
+	gmColCommandToggleColorOff(),
+	gmColCommandWait(1),
+	gmColCommandSetColor1(0xFF, 0xFF, 0xFF, 0xE6),
+	gmColCommandWait(1),
+	gmColCommandBlendColor1(6, 0xFF, 0xFF, 0xFF, 0x1E),
+	gmColCommandWait(6),
+	gmColCommandToggleColorOff(),
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012CB20[] =
+// 0x8012CB20 - ColAnim Script 6
+u32 dGMColAnimScript6[/* */] =
 {
-	0x34012400,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x0C000002,
-	0x24000000,
-	0xFFFFFF30,
-	0x04000001,
-	0x28000004,
-	0xFFFFFF00,
-	0x04000004,
-	0x20000000,
-	0x04000001,
-	0x10000000,
-	0x08000000,
-	gmColCommandGotoS2(D_ovl2_8012CB20)
+	gmColCommandEffect(0, nEFKindChargeSparkle, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandLoopBegin(2),
+	gmColCommandSetColor1(0xFF, 0xFF, 0xFF, 0x30),
+	gmColCommandWait(1),
+	gmColCommandBlendColor1(4, 0xFF, 0xFF, 0xFF, 0x00),
+	gmColCommandWait(4),
+	gmColCommandToggleColorOff(),
+	gmColCommandWait(1),
+	gmColCommandLoopEnd(),
+	gmColCommandGoto(dGMColAnimScript6)
 };
 
-uintptr_t D_ovl2_8012CB60[] =
+// 0x8012CB60 - ColAnim Script 7
+u32 dGMColAnimScript7[/* */] =
 {
-	gmColCommandSetColor1S1(),
-	0x0000005A,
-	0x04000002,
-	0x20000000,
-	0x04000002,
-	0x08000000,
-	gmColCommandGotoS2(D_ovl2_8012CB60)
+	gmColCommandSetColor1(0x00, 0x00, 0x00, 0x5A),
+	gmColCommandWait(2),
+	gmColCommandToggleColorOff(),
+	gmColCommandWait(2),
+	gmColCommandGoto(dGMColAnimScript7)
 };
 
-uintptr_t D_ovl2_8012CB7C[] =
+// 0x8012CB7C - ColAnim Script 8
+u32 dGMColAnimScript8[/* */] =
 {
-	0x34007C00,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x24000000,
-	0x00000080,
-	0x04000002,
-	0x00000000
+	gmColCommandEffect(0, nEFKindSparkleWhiteScale, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandSetColor1(0x00, 0x00, 0x00, 0x80),
+	gmColCommandWait(2),
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012CB9C[] =
+// 0x8012CB9C
+u32 dGMColAnimScript9[/* */] =
 {
-	gmColCommandSetColor1S1(),
-	0xFFFF4096,
-	0x34012800,
-	0x00000000,
-	0x0000012C,
-	0x012C012C,
-	0x04000002,
-	0x24000000,
-	0xFFFF4014,
-	0x34012800,
-	0x00000000,
-	0x0000012C,
-	0x012C012C,
-	0x04000002,
-	0x08000000,
-	gmColCommandGotoS2(D_ovl2_8012CB9C)
+	gmColCommandSetColor1(0xFF, 0xFF, 0x40, 0x96),
+	gmColCommandEffect(0, nEFKindHealSparkles, 0, 0, 0, 0, 300, 300, 300),
+	gmColCommandWait(2),
+	gmColCommandSetColor1(0xFF, 0xFF, 0x40, 0x14),
+	gmColCommandEffect(0, nEFKindHealSparkles, 0, 0, 0, 0, 300, 300, 300),
+	gmColCommandWait(2),
+	gmColCommandGoto(dGMColAnimScript9)
 };
 
-uintptr_t D_ovl2_8012CBDC[] =
+// 0x8012CBDC
+u32 dGMColAnimScript10[/* */] =
 {
-	gmColCommandSetColor1S1(),
-	0xFFFFFF80,
-	0x04000001,
-	0x28000006,
-	0xFFC8A01E,
-	0x04000006,
-	0x20000000,
-	0x04000001,
-	0x28000003,
-	0xFFFFFFA0,
-	0x04000003,
-	0x08000000,
-	gmColCommandGotoS2(D_ovl2_8012CBDC)
+	gmColCommandSetColor1(0xFF, 0xFF, 0xFF, 0x80),
+	gmColCommandWait(1),
+	gmColCommandBlendColor1(6, 0xFF, 0xC8, 0xA0, 0x1E),
+	gmColCommandWait(6),
+	gmColCommandToggleColorOff(),
+	gmColCommandWait(1),
+	gmColCommandBlendColor1(3, 0xFF, 0xFF, 0xFF, 0xA0),
+	gmColCommandWait(3),
+	gmColCommandGoto(dGMColAnimScript10)
 };
 
-uintptr_t D_ovl2_8012CC10[] =
+// 0x8012CC10
+u32 dGMColAnimScript11[/* */] =
 {
-	0x3C001FBA,
-	0x24000000,
-	0xFFFFFFFF,
-	0x04000002,
-	0x28000024,
-	0xFFFFFF0A,
-	0x04000024,
-	0x28000012,
-	0xFFFFFFB4,
-	0x04000012,
-	0x08000000,
-	gmColCommandGotoS2(D_ovl2_8012CC10)
+	gmColCommandSetLight(0, -70),
+	gmColCommandSetColor1(0xFF, 0xFF, 0xFF, 0xFF),
+	gmColCommandWait(2),
+	gmColCommandBlendColor1(36, 0xFF, 0xFF, 0xFF, 0x0A),
+	gmColCommandWait(36),
+	gmColCommandBlendColor1(18, 0xFF, 0xFF, 0xFF, 0xB4),
+	gmColCommandWait(18),
+	gmColCommandGoto(dGMColAnimScript11)
 };
 
-uintptr_t D_ovl2_8012CC40[] =
+// 0x8012CC40
+u32 dGMColAnimScript12[/* */] =
 {
-	gmColCommandSetColor1S1(),
-	0xFFF078AA,
-	0x04000001,
-	0x24000000,
-	0xDC6E1E96,
-	0x04000001,
-	0x18000000
+	gmColCommandSetColor1(0xFF, 0xF0, 0x78, 0xAA),
+	gmColCommandWait(1),
+	gmColCommandSetColor1(0xDC, 0x6E, 0x1E, 0x96),
+	gmColCommandWait(1),
+	gmColCommandReturn()
 };
 
-uintptr_t D_ovl2_8012CC5C[] =
+// 0x8012CC5C
+u32 dGMColAnimScript13[/* */] =
 {
-	0x0C000002,
-	0x24000000,
-	0xB4640064,
-	0x04000001,
-	0x24000000,
-	0x3C0000D2,
-	0x04000001,
-	0x10000000,
-	0x18000000
+	gmColCommandLoopBegin(2),
+	gmColCommandSetColor1(0xB4, 0x64, 0x00, 0x64),
+	gmColCommandWait(1),
+	gmColCommandSetColor1(0x3C, 0x00, 0x00, 0xD2),
+	gmColCommandWait(1),
+	gmColCommandLoopEnd(),
+	gmColCommandReturn()
 };
 
-uintptr_t D_ovl2_8012CC80[] =
+// 0x8012CC80
+u32 dGMColAnimScript14[/* */] =
 {
-	0x0C000004,
-	0x37F81800,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x14000000,
-	gmColCommandGotoS2(D_ovl2_8012CC40),
-	0x10000000,
-	0x0C000004,
-	0x37F81C00,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x14000000,
-	gmColCommandGotoS2(D_ovl2_8012CC5C),
-	0x10000000,
-	0x00000000
+	gmColCommandLoopBegin(4),
+	gmColCommandEffect(-1, nEFKindFlameLR, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandSubroutine(dGMColAnimScript12),
+	gmColCommandLoopEnd(),
+	gmColCommandLoopBegin(4),
+	gmColCommandEffect(-1, nEFKindFlameRandom, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandSubroutine(dGMColAnimScript13),
+	gmColCommandLoopEnd(),
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012CCC4[] =
+// 0x8012CCC4
+u32 dGMColAnimScript15[/* */] =
 {
-	0x0C000008,
-	0x37F81800,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x14000000,
-	gmColCommandGotoS2(D_ovl2_8012CC40),
-	0x10000000,
-	0x0C000008,
-	0x37F81C00,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x14000000,
-	gmColCommandGotoS2(D_ovl2_8012CC5C),
-	0x10000000,
-	0x00000000
+	gmColCommandLoopBegin(8),
+	gmColCommandEffect(-1, nEFKindFlameLR, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandSubroutine(dGMColAnimScript12),
+	gmColCommandLoopEnd(),
+	gmColCommandLoopBegin(8),
+	gmColCommandEffect(-1, nEFKindFlameRandom, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandSubroutine(dGMColAnimScript13),
+	gmColCommandLoopEnd(),
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012CD08[] =
+// 0x8012CD08
+u32 dGMColAnimScript16[/* */] =
 {
-	0x0C000010,
-	0x37F81800,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x14000000,
-	gmColCommandGotoS2(D_ovl2_8012CC40),
-	0x10000000,
-	0x0C000010,
-	0x37F81C00,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x14000000,
-	gmColCommandGotoS2(D_ovl2_8012CC5C),
-	0x10000000,
-	0x00000000
+	gmColCommandLoopBegin(16),
+	gmColCommandEffect(-1, nEFKindFlameLR, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandSubroutine(dGMColAnimScript12),
+	gmColCommandLoopEnd(),
+	gmColCommandLoopBegin(16),
+	gmColCommandEffect(-1, nEFKindFlameRandom, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandSubroutine(dGMColAnimScript13),
+	gmColCommandLoopEnd(),
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012CD4C[] =
+// 0x8012CD4C
+u32 dGMColAnimScript17[/* */] =
 {
-	0x0C000018,
-	0x37F81800,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x14000000,
-	gmColCommandGotoS2(D_ovl2_8012CC40),
-	0x10000000,
-	0x0C000014,
-	0x37F81C00,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x14000000,
-	gmColCommandGotoS2(D_ovl2_8012CC5C),
-	0x10000000,
-	0x00000000
+	gmColCommandLoopBegin(24),
+	gmColCommandEffect(-1, nEFKindFlameLR, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandSubroutine(dGMColAnimScript12),
+	gmColCommandLoopEnd(),
+	gmColCommandLoopBegin(20),
+	gmColCommandEffect(-1, nEFKindFlameRandom, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandSubroutine(dGMColAnimScript13),
+	gmColCommandLoopEnd(),
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012CD90[] =
+// 0x8012CD90
+u32 dGMColAnimScript18[/* */] =
 {
-	0x0C000002,
-	0x24000000,
-	0x0000945A,
-	0x04000001,
-	0x24000000,
-	0xFFFFFF96,
-	0x04000001,
-	0x10000000,
-	0x18000000
+	gmColCommandLoopBegin(2),
+	gmColCommandSetColor1(0x00, 0x00, 0x94, 0x5A),
+	gmColCommandWait(1),
+	gmColCommandSetColor1(0xFF, 0xFF, 0xFF, 0x96),
+	gmColCommandWait(1),
+	gmColCommandLoopEnd(),
+	gmColCommandReturn()
 };
 
-uintptr_t D_ovl2_8012CDB4[] =
+// 0x8012CDB4
+u32 dGMColAnimScript19[/* */] =
 {
-	0x0C000004,
-	0x37F82800,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x14000000,
-	gmColCommandGotoS2(D_ovl2_8012CD90),
-	0x10000000,
-	0x00000000
+	gmColCommandLoopBegin(4),
+	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandSubroutine(dGMColAnimScript18),
+	gmColCommandLoopEnd(),
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012CDD8[] =
+// 0x8012CDD8
+u32 dGMColAnimScript20[/* */] =
 {
-	0x0C000008,
-	0x37F82800,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x14000000,
-	gmColCommandGotoS2(D_ovl2_8012CD90),
-	0x10000000,
-	0x00000000
+	gmColCommandLoopBegin(8),
+	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandSubroutine(dGMColAnimScript18),
+	gmColCommandLoopEnd(),
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012CDFC[] =
+// 0x8012CDFC
+u32 dGMColAnimScript21[/* */] =
 {
-	0x0C00000C,
-	0x37F82800,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x14000000,
-	gmColCommandGotoS2(D_ovl2_8012CD90),
-	0x10000000,
-	0x00000000
+	gmColCommandLoopBegin(12),
+	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandSubroutine(dGMColAnimScript18),
+	gmColCommandLoopEnd(),
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012CE20[] =
+// 0x8012CE20
+u32 dGMColAnimScript22[/* */] =
 {
-	0x0C000010,
-	0x37F82800,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x14000000,
-	gmColCommandGotoS2(D_ovl2_8012CD90),
-	0x10000000,
-	0x00000000
+	gmColCommandLoopBegin(16),
+	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandSubroutine(dGMColAnimScript18),
+	gmColCommandLoopEnd(),
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012CE44[] =
+// 0x8012CE44
+u32 dGMColAnimScript23[/* */] =
 {
-	0x0C000001,
-	0x24000000,
-	0x141414FF,
-	0x04000002,
-	0x20000000,
-	0x48000001,
-	0x04000002,
-	0x20000000,
-	0x04000001,
-	0x10000000,
-	0x18000000
+	gmColCommandLoopBegin(1),
+	gmColCommandSetColor1(0x14, 0x14, 0x14, 0xFF),
+	gmColCommandWait(2),
+	gmColCommandToggleColorOff(),
+	gmColCommandSetSkeletonID(1),
+	gmColCommandWait(2),
+	gmColCommandToggleColorOff(),
+	gmColCommandWait(1),
+	gmColCommandLoopEnd(),
+	gmColCommandReturn()
 };
 
-uintptr_t D_ovl2_8012CE70[] =
+// 0x8012CE70
+u32 dGMColAnimScript24[/* */] =
 {
-	0x0C000002,
-	0x37F82800,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x14000000,
-	gmColCommandGotoS2(D_ovl2_8012CE44),
-	0x10000000,
-	0x0C000002,
-	0x37F82800,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x14000000,
-	gmColCommandGotoS2(D_ovl2_8012CD90),
-	0x10000000,
-	0x00000000
+	gmColCommandLoopBegin(2),
+	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandSubroutine(dGMColAnimScript23),
+	gmColCommandLoopEnd(),
+	gmColCommandLoopBegin(2),
+	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandSubroutine(dGMColAnimScript18),
+	gmColCommandLoopEnd(),
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012CEB4[] =
+// 0x8012CEB4
+u32 dGMColAnimScript25[/* */] =
 {
-	0x0C000003,
-	0x37F82800,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x14000000,
-	gmColCommandGotoS2(D_ovl2_8012CE44),
-	0x10000000,
-	0x0C000005,
-	0x37F82800,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x14000000,
-	gmColCommandGotoS2(D_ovl2_8012CD90),
-	0x10000000,
-	0x00000000
+	gmColCommandLoopBegin(3),
+	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandSubroutine(dGMColAnimScript23),
+	gmColCommandLoopEnd(),
+	gmColCommandLoopBegin(5),
+	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandSubroutine(dGMColAnimScript18),
+	gmColCommandLoopEnd(),
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012CEF8[] =
+// 0x8012CEF8
+u32 dGMColAnimScript26[/* */] =
 {
-	0x0C000004,
-	0x37F82800,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x14000000,
-	gmColCommandGotoS2(D_ovl2_8012CE44),
-	0x10000000,
-	0x0C000008,
-	0x37F82800,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x14000000,
-	gmColCommandGotoS2(D_ovl2_8012CD90),
-	0x10000000,
-	0x00000000
+	gmColCommandLoopBegin(4),
+	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandSubroutine(dGMColAnimScript23),
+	gmColCommandLoopEnd(),
+	gmColCommandLoopBegin(8),
+	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandSubroutine(dGMColAnimScript18),
+	gmColCommandLoopEnd(),
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012CF3C[] =
+// 0x8012CF3C
+u32 dGMColAnimScript27[/* */] =
 {
-	0x0C000005,
-	0x37F82800,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x14000000,
-	gmColCommandGotoS2(D_ovl2_8012CE44),
-	0x10000000,
-	0x0C00000B,
-	0x37F82800,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x14000000,
-	gmColCommandGotoS2(D_ovl2_8012CD90),
-	0x10000000,
-	0x00000000
+	gmColCommandLoopBegin(5),
+	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandSubroutine(dGMColAnimScript23),
+	gmColCommandLoopEnd(),
+	gmColCommandLoopBegin(11),
+	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandSubroutine(dGMColAnimScript18),
+	gmColCommandLoopEnd(),
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012CF80[] =
+// 0x8012CF80
+u32 dGMColAnimScript28[/* */] =
 {
-	0x0C000001,
-	0x24000000,
-	0x141414FF,
-	0x04000002,
-	0x20000000,
-	0x48000001,
-	0x04000003,
-	0x20000000,
-	0x04000001,
-	0x10000000,
-	0x18000000
+	gmColCommandLoopBegin(1),
+	gmColCommandSetColor1(0x14, 0x14, 0x14, 0xFF),
+	gmColCommandWait(2),
+	gmColCommandToggleColorOff(),
+	gmColCommandSetSkeletonID(1),
+	gmColCommandWait(3),
+	gmColCommandToggleColorOff(),
+	gmColCommandWait(1),
+	gmColCommandLoopEnd(),
+	gmColCommandReturn()
 };
 
-uintptr_t D_ovl2_8012CFAC[] =
+// 0x8012CFAC
+u32 dGMColAnimScript29[/* */] =
 {
-	0x0C000002,
-	0x37F82800,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x14000000,
-	gmColCommandGotoS2(D_ovl2_8012CF80),
-	0x10000000,
-	0x0C000002,
-	0x37F82800,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x14000000,
-	gmColCommandGotoS2(D_ovl2_8012CD90),
-	0x10000000,
-	0x00000000
+	gmColCommandLoopBegin(2),
+	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandSubroutine(dGMColAnimScript28),
+	gmColCommandLoopEnd(),
+	gmColCommandLoopBegin(2),
+	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandSubroutine(dGMColAnimScript18),
+	gmColCommandLoopEnd(),
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012CFF0[] =
+// 0x8012CFF0
+u32 dGMColAnimScript30[/* */] =
 {
-	0x0C000003,
-	0x37F82800,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x14000000,
-	gmColCommandGotoS2(D_ovl2_8012CF80),
-	0x10000000,
-	0x0C000005,
-	0x37F82800,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x14000000,
-	gmColCommandGotoS2(D_ovl2_8012CD90),
-	0x10000000,
-	0x00000000
+	gmColCommandLoopBegin(3),
+	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandSubroutine(dGMColAnimScript28),
+	gmColCommandLoopEnd(),
+	gmColCommandLoopBegin(5),
+	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandSubroutine(dGMColAnimScript18),
+	gmColCommandLoopEnd(),
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012D034[] =
+// 0x8012D034
+u32 dGMColAnimScript31[/* */] =
 {
-	0x0C000004,
-	0x37F82800,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x14000000,
-	gmColCommandGotoS2(D_ovl2_8012CF80),
-	0x10000000,
-	0x0C000008,
-	0x37F82800,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x14000000,
-	gmColCommandGotoS2(D_ovl2_8012CD90),
-	0x10000000,
-	0x00000000
+	gmColCommandLoopBegin(4),
+	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandSubroutine(dGMColAnimScript28),
+	gmColCommandLoopEnd(),
+	gmColCommandLoopBegin(8),
+	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandSubroutine(dGMColAnimScript18),
+	gmColCommandLoopEnd(),
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012D078[] =
+// 0x8012D078
+u32 dGMColAnimScript32[/* */] =
 {
-	0x0C000005,
-	0x37F82800,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x14000000,
-	gmColCommandGotoS2(D_ovl2_8012CF80),
-	0x10000000,
-	0x0C00000B,
-	0x37F82800,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x14000000,
-	gmColCommandGotoS2(D_ovl2_8012CD90),
-	0x10000000,
-	0x00000000
+	gmColCommandLoopBegin(5),
+	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandSubroutine(dGMColAnimScript28),
+	gmColCommandLoopEnd(),
+	gmColCommandLoopBegin(11),
+	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandSubroutine(dGMColAnimScript18),
+	gmColCommandLoopEnd(),
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012D0BC[] =
+// 0x8012D0BC
+u32 dGMColAnimScript33[/* */] =
 {
-	0x0C000001,
-	0x24000000,
-	0x141414FF,
-	0x48000002,
-	0x04000002,
-	0x20000000,
-	0x48000001,
-	0x04000002,
-	0x20000000,
-	0x04000001,
-	0x10000000,
-	0x18000000
+	gmColCommandLoopBegin(1),
+	gmColCommandSetColor1(0x14, 0x14, 0x14, 0xFF),
+	gmColCommandSetSkeletonID(2),
+	gmColCommandWait(2),
+	gmColCommandToggleColorOff(),
+	gmColCommandSetSkeletonID(1),
+	gmColCommandWait(2),
+	gmColCommandToggleColorOff(),
+	gmColCommandWait(1),
+	gmColCommandLoopEnd(),
+	gmColCommandReturn()
 };
 
-uintptr_t D_ovl2_8012D0EC[] =
+// 0x8012D0EC
+u32 dGMColAnimScript34[/* */] =
 {
-	0x0C000002,
-	0x37F82800,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x14000000,
-	gmColCommandGotoS2(D_ovl2_8012D0BC),
-	0x10000000,
-	0x0C000002,
-	0x37F82800,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x14000000,
-	gmColCommandGotoS2(D_ovl2_8012CD90),
-	0x10000000,
-	0x00000000
+	gmColCommandLoopBegin(2),
+	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandSubroutine(dGMColAnimScript33),
+	gmColCommandLoopEnd(),
+	gmColCommandLoopBegin(2),
+	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandSubroutine(dGMColAnimScript18),
+	gmColCommandLoopEnd(),
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012D130[] =
+// 0x8012D130
+u32 dGMColAnimScript35[/* */] =
 {
-	0x0C000003,
-	0x37F82800,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x14000000,
-	gmColCommandGotoS2(D_ovl2_8012D0BC),
-	0x10000000,
-	0x0C000005,
-	0x37F82800,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x14000000,
-	gmColCommandGotoS2(D_ovl2_8012CD90),
-	0x10000000,
-	0x00000000
+	gmColCommandLoopBegin(3),
+	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandSubroutine(dGMColAnimScript33),
+	gmColCommandLoopEnd(),
+	gmColCommandLoopBegin(5),
+	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandSubroutine(dGMColAnimScript18),
+	gmColCommandLoopEnd(),
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012D174[] =
+// 0x8012D174
+u32 dGMColAnimScript36[/* */] =
 {
-	0x0C000004,
-	0x37F82800,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x14000000,
-	gmColCommandGotoS2(D_ovl2_8012D0BC),
-	0x10000000,
-	0x0C000008,
-	0x37F82800,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x14000000,
-	gmColCommandGotoS2(D_ovl2_8012CD90),
-	0x10000000,
-	0x00000000
+	gmColCommandLoopBegin(4),
+	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandSubroutine(dGMColAnimScript33),
+	gmColCommandLoopEnd(),
+	gmColCommandLoopBegin(8),
+	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandSubroutine(dGMColAnimScript18),
+	gmColCommandLoopEnd(),
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012D1B8[] =
+// 0x8012D1B8
+u32 dGMColAnimScript37[/* */] =
 {
-	0x0C000005,
-	0x37F82800,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x14000000,
-	gmColCommandGotoS2(D_ovl2_8012D0BC),
-	0x10000000,
-	0x0C00000B,
-	0x37F82800,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x14000000,
-	gmColCommandGotoS2(D_ovl2_8012CD90),
-	0x10000000,
-	0x00000000
+	gmColCommandLoopBegin(5),
+	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandSubroutine(dGMColAnimScript33),
+	gmColCommandLoopEnd(),
+	gmColCommandLoopBegin(11),
+	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandSubroutine(dGMColAnimScript18),
+	gmColCommandLoopEnd(),
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012D1FC[] =
+// 0x8012D1FC
+u32 dGMColAnimScript38[/* */] =
 {
-	gmColCommandSetColor1S1(),
-	0x0000FF80,
-	0x04000001,
-	0x24000000,
-	0xFFFFFF80,
-	0x04000001,
-	gmColCommandEndS1()
+	gmColCommandSetColor1(0x00, 0x00, 0xFF, 0x80),
+	gmColCommandWait(1),
+	gmColCommandSetColor1(0xFF, 0xFF, 0xFF, 0x80),
+	gmColCommandWait(1),
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012D218[] =
+// 0x8012D1FC
+u32 dGMColAnimScript39[/* */] =
 {
-	gmColCommandEndS1()
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012D21C[] =
+// 0x8012D1FC
+u32 dGMColAnimScript40[/* */] =
 {
-	gmColCommandEndS1()
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012D220[] =
+// 0x8012D1FC
+u32 dGMColAnimScript41[/* */] =
 {
-	gmColCommandEndS1()
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012D224[] =
+// 0x8012D224
+u32 dGMColAnimScript42[/* */] =
 {
-	gmColCommandSetColor1S1(),
-	0x80000080,
-	0x04000002,
-	0x2800000A,
-	0x80000014,
-	0x0400000A,
-	0x20000000,
-	0x04000002,
-	0x08000000,
-	gmColCommandGotoS2(D_ovl2_8012D224)
+	gmColCommandSetColor1(0x80, 0x00, 0x00, 0x80),
+	gmColCommandWait(2),
+	gmColCommandBlendColor1(10, 0x80, 0x00, 0x00, 0x14),
+	gmColCommandWait(10),
+	gmColCommandToggleColorOff(),
+	gmColCommandWait(2),
+	gmColCommandGoto(dGMColAnimScript42)
 };
 
-uintptr_t D_ovl2_8012D24C[] =
+// 0x8012D24C
+u32 dGMColAnimScript43[/* */] =
 {
-	gmColCommandSetColor1S1(),
-	0x80000080,
-	0x04000002,
-	0x2800000C,
-	0x80000014,
-	0x0400000C,
-	0x28000006,
-	0x80000080,
-	0x04000006,
-	0x08000000,
-	gmColCommandGotoS2(D_ovl2_8012D24C)
+	gmColCommandSetColor1(0x80, 0x00, 0x00, 0x80),
+	gmColCommandWait(2),
+	gmColCommandBlendColor1(12, 0x80, 0x00, 0x00, 0x14),
+	gmColCommandWait(12),
+	gmColCommandBlendColor1(6, 0x80, 0x00, 0x00, 0x80),
+	gmColCommandWait(6),
+	gmColCommandGoto(dGMColAnimScript43)
 };
 
-uintptr_t D_ovl2_8012D278[] =
+u32 D_ovl2_8012D278[] =
 {
 	gmColCommandSetColor1S1(),
 	0x80506446,
 	0x2800000C,
 	0xF03C8C82,
-	0x0400000C,
+	gmColCommandWait(12),
 	0x2800000C,
 	0xF03C8C3C,
-	0x0400000C,
-	0x20000000,
-	0x04000006,
-	0x08000000,
-	gmColCommandGotoS2(D_ovl2_8012D278)
+	gmColCommandWait(12),
+	gmColCommandToggleColorOff(),
+	gmColCommandWait(6),
+	gmColCommandGoto(D_ovl2_8012D278)
 };
 
-uintptr_t D_ovl2_8012D2A8[] =
+u32 D_ovl2_8012D2A8[] =
 {
 	0x3C097FF6,
 	0x24000000,
 	0xFF0000FF,
-	0x04000001,
+	gmColCommandWait(1),
 	0x24000000,
 	0xFF000080,
-	0x04000001,
-	0x20000000,
-	0x04000014,
+	gmColCommandWait(1),
+	gmColCommandToggleColorOff(),
+	gmColCommandWait(20),
 	0x40000000,
-	gmColCommandEndS1()
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012D2D4[] =
+u32 D_ovl2_8012D2D4[] =
 {
 	gmColCommandSetColor1S1(),
 	0xFFFF80AA,
-	0x04000001,
+	gmColCommandWait(1),
 	0x28000003,
 	0x5050505A,
-	0x04000003,
+	gmColCommandWait(3),
 	0x28000003,
 	0x50505000,
-	0x04000003,
+	gmColCommandWait(3),
 	0x28000004,
 	0xFFFF80AA,
-	0x04000003,
-	0x08000000,
-	gmColCommandGotoS2(D_ovl2_8012D2D4),
-	gmColCommandEndS1()
+	gmColCommandWait(3),
+	gmColCommandGoto(D_ovl2_8012D2D4),
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012D310[] =
+u32 D_ovl2_8012D310[] =
 {
 	gmColCommandSetColor1S1(),
 	0xFFFF8046,
-	0x04000002,
+	gmColCommandWait(2),
 	0x24000000,
 	0xFFFF8028,
-	0x04000002,
+	gmColCommandWait(2),
 	0x24000000,
 	0x3C3C0064,
-	0x04000002,
-	gmColCommandEndS1()
+	gmColCommandWait(2),
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012D338[] =
+u32 D_ovl2_8012D338[] =
 {
 	gmColCommandSetColor1S1(),
 	0xFFFF80B4,
-	0x04000001,
+	gmColCommandWait(1),
 	0x28000005,
 	0xFFFF8000,
-	0x04000005,
-	0x20000000,
-	0x04000002,
-	gmColCommandEndS1()
+	gmColCommandWait(5),
+	gmColCommandToggleColorOff(),
+	gmColCommandWait(2),
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012D35C[] =
+u32 D_ovl2_8012D35C[] =
 {
-	gmColCommandEndS1()
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012D360[] =
+u32 D_ovl2_8012D360[] =
 {
 	0x3C096000,
 	gmColCommandSetColor1S1(),
 	0xFFFFFF80,
-	0x04000001,
-	0x20000000,
-	0x04000008,
+	gmColCommandWait(1),
+	gmColCommandToggleColorOff(),
+	gmColCommandWait(8),
 	0x40000000,
-	gmColCommandEndS1()
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012D380[] =
+u32 D_ovl2_8012D380[] =
 {
 	gmColCommandSetColor1S1(),
 	0x80FFAABE,
-	0x04000001,
+	gmColCommandWait(1),
 	0x24000000,
 	0x96FFC88C,
-	0x04000001,
+	gmColCommandWait(1),
 	0x24000000,
 	0xFFFFFF64,
-	0x04000002,
-	0x20000000,
-	0x04000001,
-	0x08000000,
-	gmColCommandGotoS2(D_ovl2_8012D380),
-	gmColCommandEndS1()
+	gmColCommandWait(2),
+	gmColCommandToggleColorOff(),
+	gmColCommandWait(1),
+	gmColCommandGoto(D_ovl2_8012D380),
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012D3B8[] =
+u32 D_ovl2_8012D3B8[] =
 {
 	0x3C001FB0,
 	0x24000000,
 	0x00FFFF50,
-	0x04000001,
-	0x20000000,
-	0x04000001,
-	0x08000000,
-	gmColCommandGotoS2(D_ovl2_8012D3B8)
+	gmColCommandWait(1),
+	gmColCommandToggleColorOff(),
+	gmColCommandWait(1),
+	gmColCommandGoto(D_ovl2_8012D3B8)
 };
 
-uintptr_t D_ovl2_8012D3D8[] =
+u32 D_ovl2_8012D3D8[] =
 {
 	0x3C001FB0,
-	0x0C000004,
+	gmColCommandLoopBegin(4),
 	0x24000000,
 	0xFFFFFF1E,
-	0x04000001,
+	gmColCommandWait(1),
 	0x24000000,
 	0xFFFF001E,
-	0x04000001,
-	0x20000000,
-	0x04000001,
-	0x10000000,
-	0x0C000003,
+	gmColCommandWait(1),
+	gmColCommandToggleColorOff(),
+	gmColCommandWait(1),
+	gmColCommandLoopEnd(),
+	gmColCommandLoopBegin(3),
 	0x24000000,
 	0xFFFFFF64,
-	0x04000001,
+	gmColCommandWait(1),
 	0x24000000,
 	0xFFFF0064,
-	0x04000001,
-	0x20000000,
-	0x04000001,
-	0x10000000
+	gmColCommandWait(1),
+	gmColCommandToggleColorOff(),
+	gmColCommandWait(1),
+	gmColCommandLoopEnd()
 };
 
-uintptr_t D_ovl2_8012D42C[] =
+u32 D_ovl2_8012D42C[] =
 {
 	gmColCommandSetColor1S1(),
 	0xFFFFFFB4,
-	0x04000001,
+	gmColCommandWait(1),
 	0x24000000,
 	0xFFFF00B4,
-	0x04000001,
-	0x20000000,
-	0x04000001,
-	0x08000000,
-	gmColCommandGotoS2(D_ovl2_8012D42C)
+	gmColCommandWait(1),
+	gmColCommandToggleColorOff(),
+	gmColCommandWait(1),
+	gmColCommandGoto(D_ovl2_8012D42C)
 };
 
-uintptr_t D_ovl2_8012D454[] =
+u32 D_ovl2_8012D454[] =
 {
 	gmColCommandSetColor1S1(),
 	0xFFFF00DC,
-	0x04000001,
+	gmColCommandWait(1),
 	0x2800001E,
 	0xA03C3C8C,
-	0x0400001E,
+	gmColCommandWait(30),
 	0x28000014,
 	0x80000000,
-	0x04000014,
-	0x20000000,
-	gmColCommandEndS1()
+	gmColCommandWait(20),
+	gmColCommandToggleColorOff(),
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012D480[] =
+u32 D_ovl2_8012D480[] =
 {
 	0x3C001FB0,
 	0x24000000,
 	0xFFAA0046,
-	0x04000004,
+	gmColCommandWait(4),
 	0x24000000,
 	0xD28C0046,
-	0x04000004,
+	gmColCommandWait(4),
 	0x34003400,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x08000000,
-	gmColCommandGotoS2(D_ovl2_8012D480)
+	gmColCommandGoto(D_ovl2_8012D480)
 };
 
-uintptr_t D_ovl2_8012D4B4[] =
+u32 D_ovl2_8012D4B4[] =
 {
 	0x3C001FB0,
-	0x0C000014,
+	gmColCommandLoopBegin(20),
 	0x24000000,
 	0xFFF07878,
-	0x04000001,
+	gmColCommandWait(1),
 	0x24000000,
 	0xDC6E1E50,
-	0x04000001,
-	0x10000000,
-	0x20000000,
+	gmColCommandWait(1),
+	gmColCommandLoopEnd(),
+	gmColCommandToggleColorOff(),
 	0x3C097FF6,
-	0x0C000006,
+	gmColCommandLoopBegin(6),
 	0x37F81800,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x04000004,
-	0x10000000,
+	gmColCommandWait(4),
+	gmColCommandLoopEnd(),
 	0x40000000,
 	0x00000000
 };
 
-uintptr_t D_ovl2_8012D504[] =
+u32 D_ovl2_8012D504[] =
 {
 	gmColCommandSetColor1S1(),
 	0xFFFFFF28,
 	0x28000008,
 	0xFFFFFF00,
-	0x04000008,
+	gmColCommandWait(8),
 	0x28000008,
 	0xFFFFFF28,
-	0x04000008,
-	0x08000000,
-	gmColCommandGotoS2(D_ovl2_8012D504)
+	gmColCommandWait(8),
+	gmColCommandGoto(D_ovl2_8012D504)
 };
 
-uintptr_t D_ovl2_8012D52C[] =
+u32 D_ovl2_8012D52C[] =
 {
 	gmColCommandSetColor1S1(),
 	0xFFFFFF3C,
 	0x28000006,
 	0xFFFFFF0A,
-	0x04000006,
+	gmColCommandWait(6),
 	0x28000006,
 	0xFFFFFF3C,
-	0x04000006,
-	0x08000000,
-	gmColCommandGotoS2(D_ovl2_8012D52C)
+	gmColCommandWait(6),
+	gmColCommandGoto(D_ovl2_8012D52C)
 };
 
-uintptr_t D_ovl2_8012D554[] =
+u32 D_ovl2_8012D554[] =
 {
 	gmColCommandSetColor1S1(),
 	0xFFFFFF5A,
 	0x28000004,
 	0xFFFFFF0A,
-	0x04000004,
+	gmColCommandWait(4),
 	0x28000004,
 	0xFFFFFF5A,
-	0x04000004,
-	0x08000000,
-	gmColCommandGotoS2(D_ovl2_8012D554)
+	gmColCommandWait(4),
+	gmColCommandGoto(D_ovl2_8012D554)
 };
 
-uintptr_t D_ovl2_8012D57C[] =
+u32 D_ovl2_8012D57C[] =
 {
-	0x04000002,
+	gmColCommandWait(2),
 	0x24000000,
 	0xB480640A,
-	0x04000005,
+	gmColCommandWait(5),
 	0x24000000,
 	0x503C2814,
-	0x04000002,
+	gmColCommandWait(2),
 	0x24000000,
 	0xB4806428,
-	0x04000005,
+	gmColCommandWait(5),
 	0x24000000,
 	0x503C283C,
-	0x04000002,
+	gmColCommandWait(2),
 	0x24000000,
 	0xB4806450,
-	0x04000005,
+	gmColCommandWait(5),
 	0x24000000,
 	0x503C2864,
-	0x04000002,
+	gmColCommandWait(2),
 	0x24000000,
 	0xB4806478,
-	0x04000005,
+	gmColCommandWait(5),
 	0x24000000,
 	0x503C288C,
-	0x04000002,
+	gmColCommandWait(2),
 	0x24000000,
 	0xB48064A0,
-	0x04000005,
+	gmColCommandWait(5),
 	0x24000000,
 	0x503C28B4,
 	0x00000000
 };
 
-uintptr_t D_ovl2_8012D5F8[] =
+u32 D_ovl2_8012D5F8[] =
 {
-	0x04000002,
+	gmColCommandWait(2),
 	0x24000000,
 	0xB48064B4,
-	0x04000005,
+	gmColCommandWait(5),
 	0x24000000,
 	0x503C28A0,
-	0x04000002,
+	gmColCommandWait(2),
 	0x24000000,
 	0xB480648C,
-	0x04000005,
+	gmColCommandWait(5),
 	0x24000000,
 	0x503C2878,
-	0x04000002,
+	gmColCommandWait(2),
 	0x24000000,
 	0xB4806464,
-	0x04000005,
+	gmColCommandWait(5),
 	0x24000000,
 	0x503C2850,
-	0x04000002,
+	gmColCommandWait(2),
 	0x24000000,
 	0xB480643C,
-	0x04000005,
+	gmColCommandWait(5),
 	0x24000000,
 	0x503C2828,
-	0x04000002,
+	gmColCommandWait(2),
 	0x24000000,
 	0xB4806414,
-	0x04000005,
+	gmColCommandWait(5),
 	0x24000000,
 	0x503C280A,
-	gmColCommandEndS1()
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012D674[] =
+u32 D_ovl2_8012D674[] =
 {
-	0x0C000004,
+	gmColCommandLoopBegin(4),
 	0x24000000,
 	0xFFFFFF64,
-	0x04000001,
+	gmColCommandWait(1),
 	0x28000006,
 	0x0000FF00,
-	0x04000006,
-	0x37F82800,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x10000000,
-	0x08000000,
-	gmColCommandGotoS2(D_ovl2_8012D674)
+	gmColCommandWait(6),
+	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandLoopEnd(),
+	gmColCommandGoto(D_ovl2_8012D674)
 };
 
-uintptr_t D_ovl2_8012D6AC[] =
+u32 D_ovl2_8012D6AC[] =
 {
 	0x440000E7
 };
 
-uintptr_t D_ovl2_8012D6B0[] =
+u32 D_ovl2_8012D6B0[] =
 {
 	gmColCommandSetColor1S1(),
 	0xFFFFFF40,
-	0x04000001,
+	gmColCommandWait(1),
 	0x24000000,
 	0x00FFFF40,
-	0x04000001,
-	0x08000000,
-	gmColCommandGotoS2(D_ovl2_8012D6B0)
+	gmColCommandWait(1),
+	gmColCommandGoto(D_ovl2_8012D6B0)
 };
 
-uintptr_t D_ovl2_8012D6D0[] =
+u32 D_ovl2_8012D6D0[] =
 {
 	0x37F82800,
 	0x00000000,
 	0x00000096,
 	0x00960096,
-	0x04000002,
-	0x08000000,
-	gmColCommandGotoS2(D_ovl2_8012D6D0)
+	gmColCommandWait(2),
+	gmColCommandGoto(D_ovl2_8012D6D0)
 };
 
-uintptr_t D_ovl2_8012D6EC[] =
+u32 D_ovl2_8012D6EC[] =
 {
-	0x0C000004,
-	0x0C000003,
+	gmColCommandLoopBegin(4),
+	gmColCommandLoopBegin(3),
 	0x24000000,
 	0x0000FF32,
-	0x04000001,
+	gmColCommandWait(1),
 	0x24000000,
 	0xFFFFFF5A,
-	0x04000001,
-	0x20000000,
-	0x04000001,
-	0x10000000,
-	0x37F82800,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x10000000,
-	0x08000000,
-	gmColCommandGotoS2(D_ovl2_8012D6EC)
+	gmColCommandWait(1),
+	gmColCommandToggleColorOff(),
+	gmColCommandWait(1),
+	gmColCommandLoopEnd(),
+	gmColCommandEffect(-1, nEFKindShockSmall, 0, 0, 0, 0, 0, 0, 0),
+	gmColCommandLoopEnd(),
+	gmColCommandGoto(D_ovl2_8012D6EC)
 };
 
-uintptr_t D_ovl2_8012D734[] =
+u32 D_ovl2_8012D734[] =
 {
-	0x0C000004,
-	0x0C000002,
+	gmColCommandLoopBegin(4),
+	gmColCommandLoopBegin(2),
 	0x24000000,
 	0x0000FF5A,
-	0x04000001,
+	gmColCommandWait(1),
 	0x24000000,
 	0xFFFFFF64,
-	0x04000001,
-	0x20000000,
-	0x04000001,
-	0x10000000,
+	gmColCommandWait(1),
+	gmColCommandToggleColorOff(),
+	gmColCommandWait(1),
+	gmColCommandLoopEnd(),
 	0x37F82800,
 	0x00000000,
 	0x00000064,
@@ -1105,92 +921,88 @@ uintptr_t D_ovl2_8012D734[] =
 	0x00000096,
 	0x00000190,
 	0x01900190,
-	0x10000000,
-	0x08000000,
-	gmColCommandGotoS2(D_ovl2_8012D734)
+	gmColCommandLoopEnd(),
+	gmColCommandGoto(D_ovl2_8012D734)
 };
 
-uintptr_t D_ovl2_8012D78C[] =
+u32 D_ovl2_8012D78C[] =
 {
 	gmColCommandSetColor1S1(),
 	0xFFFFFF50,
-	0x04000001,
+	gmColCommandWait(1),
 	0x24000000,
 	0x00000050,
-	0x04000001,
-	0x20000000,
-	0x04000002,
-	0x08000000,
-	gmColCommandGotoS2(D_ovl2_8012D78C)
+	gmColCommandWait(1),
+	gmColCommandToggleColorOff(),
+	gmColCommandWait(2),
+	gmColCommandGoto(D_ovl2_8012D78C)
 };
 
-uintptr_t D_ovl2_8012D7B4[] =
+u32 D_ovl2_8012D7B4[] =
 {
-	0x0C00000B,
+	gmColCommandLoopBegin(11),
 	0x24000000,
 	0xFFFF6464,
-	0x04000001,
+	gmColCommandWait(1),
 	0x24000000,
 	0xFF64005A,
-	0x04000001,
-	0x20000000,
-	0x04000001,
-	0x10000000,
-	gmColCommandEndS1()
+	gmColCommandWait(1),
+	gmColCommandToggleColorOff(),
+	gmColCommandWait(1),
+	gmColCommandLoopEnd(),
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012D7E0[] =
+u32 D_ovl2_8012D7E0[] =
 {
 	gmColCommandSetColor1S1(),
 	0xFFFFFF8C,
-	0x04000001,
+	gmColCommandWait(1),
 	0x24000000,
 	0x00FFFF8C,
-	0x04000001,
-	0x08000000,
-	gmColCommandGotoS2(D_ovl2_8012D7E0)
+	gmColCommandWait(1),
+	gmColCommandGoto(D_ovl2_8012D7E0)
 };
 
-uintptr_t D_ovl2_8012D800[] =
+u32 D_ovl2_8012D800[] =
 {
 	0x3C0B4000,
 	0x24000000,
 	0xFFFFFFFF,
-	0x04000001,
+	gmColCommandWait(1),
 	0x24000000,
 	0x00FFFFFF,
-	0x04000001,
+	gmColCommandWait(1),
 	0x24000000,
 	0x00FFFF8C,
-	0x04000001,
-	0x20000000,
-	0x04000004,
-	gmColCommandEndS1()
+	gmColCommandWait(1),
+	gmColCommandToggleColorOff(),
+	gmColCommandWait(4),
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012D834[] =
+u32 D_ovl2_8012D834[] =
 {
-	0x0C000002,
+	gmColCommandLoopBegin(2),
 	0x24000000,
 	0xFFFFFF30,
-	0x04000002,
+	gmColCommandWait(2),
 	0x24000000,
 	0x00FFFF30,
-	0x04000002,
-	0x10000000,
+	gmColCommandWait(2),
+	gmColCommandLoopEnd(),
 	0x34002800,
 	0x0000005A,
 	0x00000000,
 	0x00000000,
-	0x08000000,
-	gmColCommandGotoS2(D_ovl2_8012D834)
+	gmColCommandGoto(D_ovl2_8012D834)
 };
 
-uintptr_t D_ovl2_8012D86C[] =
+u32 D_ovl2_8012D86C[] =
 {
 	gmColCommandSetColor1S1(),
 	0x7F7F7F50,
-	0x04000002,
+	gmColCommandWait(2),
 	0x34007C00,
 	0x0000005A,
 	0x000000B4,
@@ -1201,7 +1013,7 @@ uintptr_t D_ovl2_8012D86C[] =
 	0x00000000,
 	0x24000000,
 	0x00FF0050,
-	0x04000002,
+	gmColCommandWait(2),
 	0x34007C00,
 	0x0000005A,
 	0x000000B4,
@@ -1210,116 +1022,110 @@ uintptr_t D_ovl2_8012D86C[] =
 	0x0000005A,
 	0x00000000,
 	0x00000000,
-	0x08000000,
-	gmColCommandGotoS2(D_ovl2_8012D86C)
+	gmColCommandGoto(D_ovl2_8012D86C)
 };
 
-uintptr_t D_ovl2_8012D8CC[] =
+u32 D_ovl2_8012D8CC[] =
 {
 	gmColCommandSetColor1S1(),
 	0x000000FF,
-	0x0400001E,
+	gmColCommandWait(30),
 	0x28000028,
 	0x00000000,
-	0x04000028,
-	0x20000000,
+	gmColCommandWait(40),
+	gmColCommandToggleColorOff(),
 	0x00000000
 };
 
-uintptr_t D_ovl2_8012D8EC[] =
+u32 D_ovl2_8012D8EC[] =
 {
 	gmColCommandSetColor1S1(),
 	0x00000096,
-	0x04000001,
-	0x08000000,
-	gmColCommandGotoS2(D_ovl2_8012D8EC),
-	gmColCommandEndS1()
+	gmColCommandWait(1),
+	gmColCommandGoto(D_ovl2_8012D8EC),
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012D904[] =
+u32 D_ovl2_8012D904[] =
 {
 	0x34007000,
 	0x00000000,
 	0x000000B4,
 	0x00B400B4,
-	0x04000002,
-	0x08000000,
-	gmColCommandGotoS2(D_ovl2_8012D904)
+	gmColCommandWait(2),
+	gmColCommandGoto(D_ovl2_8012D904)
 };
 
-uintptr_t D_ovl2_8012D920[] =
+u32 D_ovl2_8012D920[] =
 {
 	0x34004400,
 	0x00000190,
 	0x00000000,
 	0x00000000,
-	0x04000001,
-	0x08000000,
-	gmColCommandGotoS2(D_ovl2_8012D920),
+	gmColCommandWait(1),
+	gmColCommandGoto(D_ovl2_8012D920),
 	0x00000000
 };
 
-uintptr_t D_ovl2_8012D940[] =
+u32 D_ovl2_8012D940[] =
 {
 	0x3C0B4000,
 	0x24000000,
 	0x5A000014,
 	0x2800003C,
 	0x5A0000A0,
-	0x0400003C,
+	gmColCommandWait(60),
 	0x24000000,
 	0x5A0000A0,
 	0x040001F4,
-	gmColCommandEndS1()
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012D968[] =
+u32 D_ovl2_8012D968[] =
 {
 	0x3C0B4000,
 	0x24000000,
 	0xFFFFFF28,
 	0x2C000000,
 	0xFFFFFFFF,
-	0x04000002,
+	gmColCommandWait(2),
 	0x24000000,
 	0x5A0000A0,
 	0x28000028,
 	0x5A00000A,
-	0x04000028,
-	0x20000000,
+	gmColCommandWait(40),
+	gmColCommandToggleColorOff(),
 	0x040001F4,
-	gmColCommandEndS1()
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012D9A0[] =
+u32 D_ovl2_8012D9A0[] =
 {
 	gmColCommandSetColor1S1(),
 	0x000000FF,
-	0x04000001,
-	0x08000000,
-	gmColCommandGotoS2(D_ovl2_8012D9A0),
-	gmColCommandEndS1()
+	gmColCommandWait(1),
+	gmColCommandGoto(D_ovl2_8012D9A0),
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012D9B8[] =
+u32 D_ovl2_8012D9B8[] =
 {
 	gmColCommandSetColor1S1(),
 	0xFF000080,
-	0x04000002,
+	gmColCommandWait(2),
 	0x24000000,
 	0x80FF0064,
-	0x04000002,
-	0x20000000,
-	0x04000002,
-	0x08000000,
-	gmColCommandGotoS2(D_ovl2_8012D9B8)
+	gmColCommandWait(2),
+	gmColCommandToggleColorOff(),
+	gmColCommandWait(2),
+	gmColCommandGoto(D_ovl2_8012D9B8)
 };
 
-uintptr_t D_ovl2_8012D9E0[] =
+u32 D_ovl2_8012D9E0[] =
 {
 	gmColCommandSetColor1S1(),
 	0xFFFFFF64,
-	0x04000001,
+	gmColCommandWait(1),
 	0x3400A400,
 	0x00000064,
 	0x000000B4,
@@ -1330,43 +1136,41 @@ uintptr_t D_ovl2_8012D9E0[] =
 	0x012C012C,
 	0x28000003,
 	0xFFC8A08C,
-	0x04000003,
+	gmColCommandWait(3),
 	0x34012800,
 	0x00000000,
 	0x0000012C,
 	0x012C012C,
 	0x28000003,
 	0x64C8646E,
-	0x04000003,
+	gmColCommandWait(3),
 	0x34012800,
 	0x00000000,
 	0x0000012C,
 	0x012C012C,
 	0x28000003,
 	0x0000288C,
-	0x04000003,
+	gmColCommandWait(3),
 	0x34012800,
 	0x00000000,
 	0x0000012C,
 	0x012C012C,
-	0x20000000,
-	0x04000003,
-	0x08000000,
-	gmColCommandGotoS2(D_ovl2_8012D9E0)
+	gmColCommandToggleColorOff(),
+	gmColCommandWait(3),
+	gmColCommandGoto(D_ovl2_8012D9E0)
 };
 
-uintptr_t D_ovl2_8012DA70[] =
+u32 D_ovl2_8012DA70[] =
 {
 	0x3BF05C00,
 	0x000000FA,
 	0x00000064,
 	0x00640064,
-	0x04000002,
-	0x08000000,
-	gmColCommandGotoS2(D_ovl2_8012DA70)
+	gmColCommandWait(2),
+	gmColCommandGoto(D_ovl2_8012DA70)
 };
 
-uintptr_t D_ovl2_8012DA8C[] =
+u32 D_ovl2_8012DA8C[] =
 {
 	0x3C097FF6,
 	0x3BF07C00,
@@ -1375,200 +1179,196 @@ uintptr_t D_ovl2_8012DA8C[] =
 	0x005A005A,
 	0x24000000,
 	0xFFFF0078,
-	0x04000001,
+	gmColCommandWait(1),
 	0x24000000,
 	0x80000078,
-	0x04000001,
-	0x20000000,
-	0x04000002,
-	0x08000000,
-	gmColCommandGotoS2(D_ovl2_8012DA8C)
+	gmColCommandWait(1),
+	gmColCommandToggleColorOff(),
+	gmColCommandWait(2),
+	gmColCommandGoto(D_ovl2_8012DA8C)
 };
 
-uintptr_t D_ovl2_8012DAC8[] =
+u32 D_ovl2_8012DAC8[] =
 {
 	gmColCommandSetColor1S1(),
 	0xFFFF008C,
 	0x28000008,
 	0x8000008C,
-	0x04000008,
+	gmColCommandWait(8),
 	0x24000000,
 	0x8000008C,
 	0x28000008,
 	0xFFFF008C,
-	0x04000008,
-	0x08000000,
-	gmColCommandGotoS2(D_ovl2_8012DAC8)
+	gmColCommandWait(8),
+	gmColCommandGoto(D_ovl2_8012DAC8)
 };
 
-uintptr_t D_ovl2_8012DAF8[] =
+u32 D_ovl2_8012DAF8[] =
 {
 	gmColCommandSetColor1S1(),
 	0xFFFF008C,
-	0x04000001,
+	gmColCommandWait(1),
 	0x24000000,
 	0x8000008C,
-	0x04000001,
-	0x08000000,
-	gmColCommandGotoS2(D_ovl2_8012DAF8)
+	gmColCommandWait(1),
+	gmColCommandGoto(D_ovl2_8012DAF8)
 };
 
-uintptr_t D_ovl2_8012DB18[] =
+u32 D_ovl2_8012DB18[] =
 {
 	gmColCommandSetColor1S1(),
 	0xFFFF008C,
 	0x28000004,
 	0x8000008C,
-	0x04000004,
+	gmColCommandWait(4),
 	0x24000000,
 	0x8000008C,
 	0x2800000C,
 	0xFFFF008C,
-	0x0400000C,
-	0x08000000,
-	gmColCommandGotoS2(D_ovl2_8012DB18)
+	gmColCommandWait(12),
+	gmColCommandGoto(D_ovl2_8012DB18)
 };
 
-uintptr_t D_ovl2_8012DB48[] =
+u32 D_ovl2_8012DB48[] =
 {
 	gmColCommandSetColor1S1(),
 	0xFFFFFF00,
 	0x28000006,
 	0xFFFFFF6E,
-	0x04000006,
+	gmColCommandWait(6),
 	0x2800001E,
 	0xFFFFFF00,
-	0x0400001E,
-	0x20000000,
-	gmColCommandEndS1()
+	gmColCommandWait(30),
+	gmColCommandToggleColorOff(),
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012DB70[] =
+u32 D_ovl2_8012DB70[] =
 {
 	gmColCommandSetColor1S1(),
 	0xFFFFFF46,
 	0x28000006,
 	0xFFFFFF00,
-	0x04000006,
-	gmColCommandEndS1()
+	gmColCommandWait(6),
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012DB88[] =
+u32 D_ovl2_8012DB88[] =
 {
 	gmColCommandSetColor1S1(),
 	0xFF8C7850,
 	0x28000008,
 	0xFF8C7800,
-	0x04000008,
-	gmColCommandEndS1()
+	gmColCommandWait(8),
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012DBA0[] =
+u32 D_ovl2_8012DBA0[] =
 {
 	gmColCommandSetColor1S1(),
 	0x8C8CFF50,
 	0x28000008,
 	0x8C8CFF00,
-	0x04000008,
-	gmColCommandEndS1()
+	gmColCommandWait(8),
+	gmColCommandEnd()
 };
 
-uintptr_t D_ovl2_8012DBB8[] =
+u32 D_ovl2_8012DBB8[] =
 {
 	gmColCommandSetColor1S1(),
 	0x0080FF8C,
 	0x28000006,
 	0x0080FF00,
-	0x04000006,
-	gmColCommandEndS1()
+	gmColCommandWait(6),
+	gmColCommandEnd()
 };
 
-uintptr_t dFTCommonDataColAnimDescs[] =
+GMColDesc dGMColAnimDescs[/* */] =
 {
-	0x00000000, 0x00000000,
-	GMColEventScript1, 0x01000000,
-	GMColEventScript2, 0x1E000000,
-	GMColEventScript3, 0x1E000000,
-	GMColEventScript4, 0x1E000000,
-	GMColEventScript5, 0x64000000,
-	D_ovl2_8012CB20, 0x0A000000,
-	D_ovl2_8012CB60, 0x3C010000,
-	D_ovl2_8012CB7C, 0x3C010000,
-	D_ovl2_8012CB9C, 0x0F000000,
-	D_ovl2_8012CBDC, 0x0B000000,
-	D_ovl2_8012CC10, 0x0A010000,
-	D_ovl2_8012CC80, 0x64000000,
-	D_ovl2_8012CCC4, 0x64000000,
-	D_ovl2_8012CD08, 0x64000000,
-	D_ovl2_8012CD4C, 0x64000000,
-	D_ovl2_8012CDB4, 0x64000000,
-	D_ovl2_8012CDD8, 0x64000000,
-	D_ovl2_8012CDFC, 0x64000000,
-	D_ovl2_8012CE20, 0x64000000,
-	D_ovl2_8012CE70, 0x64000000,
-	D_ovl2_8012CEB4, 0x64000000,
-	D_ovl2_8012CEF8, 0x64000000,
-	D_ovl2_8012CF3C, 0x64000000,
-	D_ovl2_8012D0EC, 0x64000000,
-	D_ovl2_8012D130, 0x64000000,
-	D_ovl2_8012D174, 0x64000000,
-	D_ovl2_8012D1B8, 0x64000000,
-	D_ovl2_8012CFAC, 0x64000000,
-	D_ovl2_8012CFF0, 0x64000000,
-	D_ovl2_8012D034, 0x64000000,
-	D_ovl2_8012D078, 0x64000000,
-	D_ovl2_8012D1FC, 0x64000000,
-	D_ovl2_8012D218, 0x64000000,
-	D_ovl2_8012D21C, 0x64000000,
-	D_ovl2_8012D220, 0x64000000,
-	D_ovl2_8012D224, 0x3C010000,
-	D_ovl2_8012D24C, 0x3C010000,
-	D_ovl2_8012D278, 0x3C010000,
-	D_ovl2_8012D2A8, 0x3C010000,
-	D_ovl2_8012D2D4, 0x3C010000,
-	D_ovl2_8012D3B8, 0x3C010000,
-	D_ovl2_8012D3D8, 0x3C010000,
-	D_ovl2_8012D454, 0x3C010000,
-	D_ovl2_8012D480, 0x3C010000,
-	D_ovl2_8012D380, 0x3C010000,
-	D_ovl2_8012D35C, 0x3C010000,
-	D_ovl2_8012D360, 0x3C010000,
-	D_ovl2_8012D310, 0x3C010000,
-	D_ovl2_8012D338, 0x3C010000,
-	D_ovl2_8012D4B4, 0x3C010000,
-	D_ovl2_8012D504, 0x3C010000,
-	D_ovl2_8012D52C, 0x3C010000,
-	D_ovl2_8012D554, 0x3C010000,
-	D_ovl2_8012D57C, 0x3C010000,
-	D_ovl2_8012D5F8, 0x3C010000,
-	D_ovl2_8012D674, 0x3C010000,
-	D_ovl2_8012D6AC, 0x3C010000,
-	D_ovl2_8012D6D0, 0x3C010000,
-	D_ovl2_8012D6EC, 0x3C010000,
-	D_ovl2_8012D734, 0x3C010000,
-	D_ovl2_8012D78C, 0x3C010000,
-	D_ovl2_8012D7B4, 0x3C010000,
-	D_ovl2_8012D7E0, 0x3C010000,
-	D_ovl2_8012D800, 0x3C010000,
-	D_ovl2_8012D834, 0x3C010000,
-	D_ovl2_8012D86C, 0x3C010000,
-	D_ovl2_8012D8CC, 0x3C010000,
-	D_ovl2_8012D8EC, 0x3C010000,
-	D_ovl2_8012D904, 0x3C010000,
-	D_ovl2_8012D920, 0x3C010000,
-	D_ovl2_8012D940, 0x3C010000,
-	D_ovl2_8012D968, 0x3C010000,
-	D_ovl2_8012D9B8, 0x0C000000,
-	D_ovl2_8012D9E0, 0x64000000,
-	D_ovl2_8012DA70, 0x0A010000,
-	D_ovl2_8012DA8C, 0x3C010000,
-	D_ovl2_8012DAC8, 0x3C010000,
-	D_ovl2_8012DAF8, 0x3C010000,
-	D_ovl2_8012DB18, 0x3C010000,
-	D_ovl2_8012D9A0, 0x3C010000,
-	D_ovl2_8012DB48, 0x3C010000,
-	D_ovl2_8012DB70, 0x3C010000,
-	D_ovl2_8012DB88, 0x3C010000,
-	D_ovl2_8012DBA0, 0x3C010000,
-	D_ovl2_8012DBB8, 0x3C010000
+	{ NULL, 			    0, FALSE },
+	{ dGMColAnimScript1,    1, FALSE },
+	{ dGMColAnimScript2,   30, FALSE },
+	{ dGMColAnimScript3,   30, FALSE },
+	{ dGMColAnimScript4,   30, FALSE },
+	{ dGMColAnimScript5,  100, FALSE },
+	{ dGMColAnimScript6,   10, FALSE },
+	{ dGMColAnimScript7,   60,  TRUE },
+	{ dGMColAnimScript8,   60,  TRUE },
+	{ dGMColAnimScript9,   15, FALSE },
+	{ dGMColAnimScript10,  11, FALSE },
+	{ dGMColAnimScript11,  10,  TRUE },
+	{ dGMColAnimScript14, 100, FALSE },
+	{ dGMColAnimScript15, 100, FALSE },
+	{ dGMColAnimScript16, 100, FALSE },
+	{ dGMColAnimScript17, 100, FALSE },
+	{ dGMColAnimScript19, 100, FALSE },
+	{ dGMColAnimScript20, 100, FALSE },
+	{ dGMColAnimScript21, 100, FALSE },
+	{ dGMColAnimScript22, 100, FALSE },
+	{ dGMColAnimScript24, 100, FALSE },
+	{ dGMColAnimScript25, 100, FALSE },
+	{ dGMColAnimScript26, 100, FALSE },
+	{ dGMColAnimScript27, 100, FALSE },
+	{ dGMColAnimScript34, 100, FALSE },
+	{ dGMColAnimScript35, 100, FALSE },
+	{ dGMColAnimScript36, 100, FALSE },
+	{ dGMColAnimScript37, 100, FALSE },
+	{ dGMColAnimScript29, 100, FALSE },
+	{ dGMColAnimScript30, 100, FALSE },
+	{ dGMColAnimScript31, 100, FALSE },
+	{ dGMColAnimScript32, 100, FALSE },
+	{ dGMColAnimScript38, 100, FALSE },
+	{ dGMColAnimScript39, 100, FALSE },
+	{ dGMColAnimScript40, 100, FALSE },
+	{ dGMColAnimScript41, 100, FALSE },
+	{ dGMColAnimScript42,     60,  TRUE },
+	{ dGMColAnimScript43,     60,  TRUE },
+	{ D_ovl2_8012D278,     60,  TRUE },
+	{ D_ovl2_8012D2A8,     60,  TRUE },
+	{ D_ovl2_8012D2D4,     60,  TRUE },
+	{ D_ovl2_8012D3B8,     60,  TRUE },
+	{ D_ovl2_8012D3D8,     60,  TRUE },
+	{ D_ovl2_8012D454,     60,  TRUE },
+	{ D_ovl2_8012D480,     60,  TRUE },
+	{ D_ovl2_8012D380,     60,  TRUE },
+	{ D_ovl2_8012D35C,     60,  TRUE },
+	{ D_ovl2_8012D360,     60,  TRUE },
+	{ D_ovl2_8012D310,     60,  TRUE },
+	{ D_ovl2_8012D338,     60,  TRUE },
+	{ D_ovl2_8012D4B4,     60,  TRUE },
+	{ D_ovl2_8012D504,     60,  TRUE },
+	{ D_ovl2_8012D52C,     60,  TRUE },
+	{ D_ovl2_8012D554,     60,  TRUE },
+	{ D_ovl2_8012D57C,     60,  TRUE },
+	{ D_ovl2_8012D5F8,     60,  TRUE },
+	{ D_ovl2_8012D674,     60,  TRUE },
+	{ D_ovl2_8012D6AC,     60,  TRUE },
+	{ D_ovl2_8012D6D0,     60,  TRUE },
+	{ D_ovl2_8012D6EC,     60,  TRUE },
+	{ D_ovl2_8012D734,     60,  TRUE },
+	{ D_ovl2_8012D78C,     60,  TRUE },
+	{ D_ovl2_8012D7B4,     60,  TRUE },
+	{ D_ovl2_8012D7E0,     60,  TRUE },
+	{ D_ovl2_8012D800,     60,  TRUE },
+	{ D_ovl2_8012D834,     60,  TRUE },
+	{ D_ovl2_8012D86C,     60,  TRUE },
+	{ D_ovl2_8012D8CC,     60,  TRUE },
+	{ D_ovl2_8012D8EC,     60,  TRUE },
+	{ D_ovl2_8012D904,     60,  TRUE },
+	{ D_ovl2_8012D920,     60,  TRUE },
+	{ D_ovl2_8012D940,     60,  TRUE },
+	{ D_ovl2_8012D968,     60,  TRUE },
+	{ D_ovl2_8012D9B8,     12, FALSE },
+	{ D_ovl2_8012D9E0, 	  100, FALSE },
+	{ D_ovl2_8012DA70,     10,  TRUE },
+	{ D_ovl2_8012DA8C,     60,  TRUE },
+	{ D_ovl2_8012DAC8,     60,  TRUE },
+	{ D_ovl2_8012DAF8,     60,  TRUE },
+	{ D_ovl2_8012DB18,     60,  TRUE },
+	{ D_ovl2_8012D9A0,     60,  TRUE },
+	{ D_ovl2_8012DB48,     60,  TRUE },
+	{ D_ovl2_8012DB70,     60,  TRUE },
+	{ D_ovl2_8012DB88,     60,  TRUE },
+	{ D_ovl2_8012DBA0,     60,  TRUE },
+	{ D_ovl2_8012DBB8,     60,  TRUE }
 };

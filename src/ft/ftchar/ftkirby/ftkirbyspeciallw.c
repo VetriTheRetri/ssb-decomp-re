@@ -21,22 +21,22 @@ void ftKirbySpecialLwUpdateColAnim(GObj *fighter_gobj)
     {
         if (fp->damage_resist < FTKIRBY_STONE_HEALTH_LOW)
         {
-            if (fp->status_vars.kirby.speciallw.colanim_id != FTKIRBY_STONE_COLANIM_ID_LOW)
+            if (fp->status_vars.kirby.speciallw.colanim_id != nGMColAnimFighterKirbySpeciaLwLow)
             {
-                ftParamCheckSetFighterColAnimID(fighter_gobj, FTKIRBY_STONE_COLANIM_ID_LOW, FTKIRBY_STONE_COLANIM_LENGTH_LOW);
-                fp->status_vars.kirby.speciallw.colanim_id = FTKIRBY_STONE_COLANIM_ID_LOW;
+                ftParamCheckSetFighterColAnimID(fighter_gobj, nGMColAnimFighterKirbySpeciaLwLow, 0);
+                fp->status_vars.kirby.speciallw.colanim_id = nGMColAnimFighterKirbySpeciaLwLow;
             }
         }
-        else if (fp->status_vars.kirby.speciallw.colanim_id != FTKIRBY_STONE_COLANIM_ID_MID)
+        else if (fp->status_vars.kirby.speciallw.colanim_id != nGMColAnimFighterKirbySpeciaLwMid)
         {
-            ftParamCheckSetFighterColAnimID(fighter_gobj, FTKIRBY_STONE_COLANIM_ID_MID, FTKIRBY_STONE_COLANIM_LENGTH_MID);
-            fp->status_vars.kirby.speciallw.colanim_id = FTKIRBY_STONE_COLANIM_ID_MID;
+            ftParamCheckSetFighterColAnimID(fighter_gobj, nGMColAnimFighterKirbySpeciaLwMid, 0);
+            fp->status_vars.kirby.speciallw.colanim_id = nGMColAnimFighterKirbySpeciaLwMid;
         }
     }
-    else if (fp->status_vars.kirby.speciallw.colanim_id != FTKIRBY_STONE_COLANIM_ID_HIGH)
+    else if (fp->status_vars.kirby.speciallw.colanim_id != nGMColAnimFighterKirbySpeciaLwHigh)
     {
-        ftParamCheckSetFighterColAnimID(fighter_gobj, FTKIRBY_STONE_COLANIM_ID_HIGH, FTKIRBY_STONE_COLANIM_LENGTH_HIGH);
-        fp->status_vars.kirby.speciallw.colanim_id = FTKIRBY_STONE_COLANIM_ID_HIGH;
+        ftParamCheckSetFighterColAnimID(fighter_gobj, nGMColAnimFighterKirbySpeciaLwHigh, 0);
+        fp->status_vars.kirby.speciallw.colanim_id = nGMColAnimFighterKirbySpeciaLwHigh;
     }
 }
 
@@ -49,9 +49,9 @@ void ftKirbySpecialLwSetDamageResist(GObj *fighter_gobj)
     fp->damage_resist = FTKIRBY_STONE_HEALTH_MAX;
 
     fp->status_vars.kirby.speciallw.duration = FTKIRBY_STONE_DURATION_MAX;
-    fp->status_vars.kirby.speciallw.colanim_id = FTKIRBY_STONE_COLANIM_ID_HIGH;
+    fp->status_vars.kirby.speciallw.colanim_id = nGMColAnimFighterKirbySpeciaLwHigh;
 
-    ftParamCheckSetFighterColAnimID(fighter_gobj, FTKIRBY_STONE_COLANIM_ID_HIGH, FTKIRBY_STONE_COLANIM_LENGTH_HIGH);
+    ftParamCheckSetFighterColAnimID(fighter_gobj, nGMColAnimFighterKirbySpeciaLwHigh, 0);
 }
 
 // 0x80161468

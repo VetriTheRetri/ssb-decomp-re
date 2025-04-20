@@ -135,7 +135,7 @@ void ftSamusSpecialNLoopProcUpdate(GObj *fighter_gobj)
 
             if (fp->passive_vars.samus.charge_level == FTSAMUS_CHARGE_MAX)
             {
-                ftParamCheckSetFighterColAnimID(fighter_gobj, FTSAMUS_CHARGE_COLANIM_ID, FTSAMUS_CHARGE_COLANIM_LENGTH);
+                ftParamCheckSetFighterColAnimID(fighter_gobj, nGMColAnimFighterCommonSpecialNCharge, 0);
                 ftSamusSpecialNDestroyChargeShot(fp);
                 ftCommonWaitSetStatus(fighter_gobj);
             }

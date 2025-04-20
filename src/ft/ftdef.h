@@ -831,7 +831,7 @@ typedef enum FTMotionEvent
 	nFTMotionEventGoto,
 	nFTMotionEventPauseScript,
 	nFTMotionEventEffect,
-	nFTMotionEventEffectScaled, // ???
+	nFTMotionEventEffectItemHold, // ???
 	nFTMotionEventSetModelPartID,
 	nFTMotionEventResetModelPartAll,
 	nFTMotionEventHideModelPartAll,

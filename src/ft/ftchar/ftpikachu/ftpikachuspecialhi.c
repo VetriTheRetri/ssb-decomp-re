@@ -97,9 +97,7 @@ void ftPikachuSpecialHiStartInitStatusVars(GObj *fighter_gobj)
 void ftPikachuSpecialHiInitMiscVars(GObj *fighter_gobj)
 {
     ftParamSetHitStatusAll(fighter_gobj, nGMHitStatusIntangible); // Set hit status
-
-    ftParamCheckSetFighterColAnimID(fighter_gobj, FTPIKACHU_QUICKATTACK_COLANIM_ID, FTPIKACHU_QUICKATTACK_COLANIM_LENGTH); // Apply color animation
-
+    ftParamCheckSetFighterColAnimID(fighter_gobj, nGMColAnimFighterPikachuSpecialHiStart, 0); // Apply color animation
     gcSetAnimSpeed(fighter_gobj, 0.0F); // Set animation speed (0.0F = freeze)
 }
 

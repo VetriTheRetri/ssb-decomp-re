@@ -238,7 +238,7 @@ void ftPhysicsCheckSetFastFall(FTStruct *fp)
 
         fp->tap_stick_y = FTINPUT_STICKBUFFER_TICS_MAX;
 
-        if (ftParamCheckSetFighterColAnimID(fp->fighter_gobj, 8, 0) != FALSE)
+        if (ftParamCheckSetFighterColAnimID(fp->fighter_gobj, nGMColAnimFighterFastFall, 0) != FALSE)
         {
             ftMainRunUpdateColAnim(fp->fighter_gobj);
         }

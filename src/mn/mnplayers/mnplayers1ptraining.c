@@ -1159,7 +1159,7 @@ void mnPlayers1PTrainingMakeFighter(GObj *fighter_gobj, s32 player, s32 fkind, s
 
 		if (player == sMNPlayers1PTrainingComPlayer)
 		{
-			ftParamCheckSetFighterColAnimID(fighter_gobj, 1, 0);
+			ftParamCheckSetFighterColAnimID(fighter_gobj, nGMColAnimFighterComPlayer, 0);
 		}
 	}
 }

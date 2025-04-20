@@ -420,7 +420,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         break;
 
     case nFTMotionEventEffect:
-    case nFTMotionEventEffectScaled:
+    case nFTMotionEventEffectItemHold:
         if (!(fp->is_effect_skip))
         {
             joint_id = ftParamGetJointID(fp, ftMotionEventCast(ms, FTMotionEventMakeEffect1)->joint_id);
@@ -444,7 +444,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
 
             ftMotionEventAdvance(ms, FTMotionEventMakeEffect4);
 
-            ftParamMakeEffect(fighter_gobj, effect_id, joint_id, &effect_offset, &effect_scatter, fp->lr, (ev_kind == nFTMotionEventEffectScaled) ? TRUE : FALSE, flag);
+            ftParamMakeEffect(fighter_gobj, effect_id, joint_id, &effect_offset, &effect_scatter, fp->lr, (ev_kind == nFTMotionEventEffectItemHold) ? TRUE : FALSE, flag);
         }
         else ftMotionEventAdvance(ms, FTMotionEventMakeEffect);
         break;
@@ -732,7 +732,7 @@ void ftMainUpdateMotionEventsAll(GObj *fighter_gobj)
                     }
                     ev_kind = ftMotionEventCast(ms, FTMotionEventMakeEffect1)->opcode;
     
-                    if ((ev_kind == nFTMotionEventEffect || ev_kind == nFTMotionEventEffectScaled) && (fp->is_events_forward))
+                    if ((ev_kind == nFTMotionEventEffect || ev_kind == nFTMotionEventEffectItemHold) && (fp->is_events_forward))
                     {
                         ftMotionEventAdvance(ms, FTMotionEventMakeEffect);
                     }
@@ -819,7 +819,7 @@ void ftMainUpdateMotionEventsForward(GObj *fighter_gobj)
                         break;
 
                     case nFTMotionEventEffect:
-                    case nFTMotionEventEffectScaled:
+                    case nFTMotionEventEffectItemHold:
                         ftMotionEventAdvance(ms, FTMotionEventMakeEffect);
                         break;
 
@@ -900,7 +900,7 @@ void ftMainUpdateMotionEventsForwardEffect(GObj *fighter_gobj)
                     case nFTMotionEventGoto:
                     case nFTMotionEventPauseScript:
                     case nFTMotionEventEffect:
-                    case nFTMotionEventEffectScaled:
+                    case nFTMotionEventEffectItemHold:
                         ftMainParseMotionEvent(fighter_gobj, fp, ms, ev_kind);
                         break;
 
@@ -1110,7 +1110,7 @@ sb32 ftMainUpdateColAnim(GMColAnim *colanim, GObj *fighter_gobj, sb32 is_muted, 
                 break;
 
             case nGMColEventEffect:
-            case nGMColEventEffectScaleOffset:
+            case nGMColEventEffectItemHoldOffset:
                 if (is_effect_skip == FALSE)
                 {
                     fp = ftGetStruct(fighter_gobj);
@@ -1136,7 +1136,7 @@ sb32 ftMainUpdateColAnim(GMColAnim *colanim, GObj *fighter_gobj, sb32 is_muted, 
 
                     gmColEventAdvance(colanim->cs[i].p_script, GMColEventMakeEffect4);
 
-                    ftParamMakeEffect(fighter_gobj, effect_id, joint_id, &effect_offset, &effect_scatter, fp->lr, (ev_kind == nGMColEventEffectScaleOffset) ? TRUE : FALSE, flag);
+                    ftParamMakeEffect(fighter_gobj, effect_id, joint_id, &effect_offset, &effect_scatter, fp->lr, (ev_kind == nGMColEventEffectItemHoldOffset) ? TRUE : FALSE, flag);
                 }
                 else gmColEventAdvance(colanim->cs[i].p_script, GMColEventMakeEffect);
                 break;
@@ -2598,7 +2598,7 @@ void ftMainUpdateDamageStatGround(GObj *special_gobj, GObj *fighter_gobj, FTStru
     case nGMHitEnvironmentAcid:
         fp->acid_wait = 30;
 
-        func_800269C0_275C0(nSYAudioFGMFloorDamageBurn);
+        func_800269C0_275C0(nSYAudioFGMFloorDamageFire);
         break;
 
     case nGMHitEnvironmentPowerBlock:
@@ -2620,7 +2620,7 @@ void ftMainUpdateDamageStatGround(GObj *special_gobj, GObj *fighter_gobj, FTStru
         {
             func_800269C0_275C0(nSYAudioFGMShockML);
         }
-        else func_800269C0_275C0(nSYAudioFGMFloorDamageBurn);
+        else func_800269C0_275C0(nSYAudioFGMFloorDamageFire);
         break;
 
     default:

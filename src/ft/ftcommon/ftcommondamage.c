@@ -363,7 +363,7 @@ sb32 ftCommonDamageCheckElementSetColAnim(GObj *fighter_gobj, s32 element, s32 d
     switch (element)
     {
     case nGMHitElementFire:
-        is_set_colanim = ftParamCheckSetFighterColAnimID(fighter_gobj, damage_level + 0xC, 0);
+        is_set_colanim = ftParamCheckSetFighterColAnimID(fighter_gobj, damage_level + nGMColAnimFighterDamageFireStart, 0);
         break;
 
     case nGMHitElementElectric:
@@ -371,11 +371,11 @@ sb32 ftCommonDamageCheckElementSetColAnim(GObj *fighter_gobj, s32 element, s32 d
         break;
 
     case nGMHitElementFreezing:
-        is_set_colanim = ftParamCheckSetFighterColAnimID(fighter_gobj, damage_level + 0x20, 0);
+        is_set_colanim = ftParamCheckSetFighterColAnimID(fighter_gobj, damage_level + nGMColAnimFighterDamageIceStart, 0);
         break;
 
     default:
-        is_set_colanim = ftParamCheckSetFighterColAnimID(fighter_gobj, 5, 0);
+        is_set_colanim = ftParamCheckSetFighterColAnimID(fighter_gobj, nGMColAnimFighterDamageCommon, 0);
         break;
     }
     return is_set_colanim;
@@ -384,34 +384,33 @@ sb32 ftCommonDamageCheckElementSetColAnim(GObj *fighter_gobj, s32 element, s32 d
 // 0x80140C50
 void ftCommonDamageCheckMakeScreenFlash(f32 knockback, s32 element)
 {
-    // Actually checking to run white screen flash effect
     switch (element)
     {
     case nGMHitElementFire:
         if (knockback > FTCOMMON_DAMAGE_KNOCKBACK_VERYHIGH) 
         {
-            ifScreenFlashSetColAnimID(0x53, 0);
+            ifScreenFlashSetColAnimID(nGMColAnimFlashDamageFire, 0);
         }
         break;
 
     case nGMHitElementElectric:
         if (knockback > FTCOMMON_DAMAGE_KNOCKBACK_VERYHIGH)
         {
-            ifScreenFlashSetColAnimID(0x54, 0);
+            ifScreenFlashSetColAnimID(nGMColAnimFlashDamageElectric, 0);
         }
         break;
 
     case nGMHitElementFreezing:
         if (knockback > FTCOMMON_DAMAGE_KNOCKBACK_VERYHIGH)
         {
-            ifScreenFlashSetColAnimID(0x55, 0);
+            ifScreenFlashSetColAnimID(nGMColAnimFlashDamageIce, 0);
         }
         break;
 
     default:
         if (knockback > FTCOMMON_DAMAGE_KNOCKBACK_VERYHIGH)
         {
-            ifScreenFlashSetColAnimID(0x52, 0);
+            ifScreenFlashSetColAnimID(nGMColAnimFlashDamageNormal, 0);
         }
         break;
     }

@@ -97,7 +97,7 @@
 #define gmColCommandSetColor2S1() GC_FIELDSET(nGMColEventSetColor2, 26, 6)
 #define gmColCommandSetColor2S2(r, g, b, a) (GC_FIELDSET(r, 24, 8) | GC_FIELDSET(g, 16, 8) | GC_FIELDSET(b, 8, 8) | GC_FIELDSET(a, 0, 8))
 
-#define gmColCommandSetColor2(frames, r, g, b, a) gmColCommandSetColor2S1(frames), gmColCommandSetColor2S2(r, g, b, a)
+#define gmColCommandSetColor2(r, g, b, a) gmColCommandSetColor2S1(), gmColCommandSetColor2S2(r, g, b, a)
 
 #define gmColCommandBlendColor2S1(frames) (GC_FIELDSET(nGMColEventBlendColor1, 26, 6) | GC_FIELDSET(frames, 0, 26))
 #define gmColCommandBlendColor2S2(r, g, b, a) (GC_FIELDSET(r, 24, 8) | GC_FIELDSET(g, 16, 8) | GC_FIELDSET(b, 8, 8) | GC_FIELDSET(a, 0, 8))
@@ -114,15 +114,15 @@
 #define gmColCommandEffect(joint, effect_id, flag, off_x, off_y, off_z, rng_x, rng_y, rng_z) \
 gmColCommandEffectS1(joint, effect_id, flag), gmColCommandEffectS2(off_x, off_y), gmColCommandEffectS3(off_z, rng_x), gmColCommandEffectS4(rng_y, rng_z)
 
-#define gmColCommandEffectScaleS1(joint, effect_id, flag) \
-(GC_FIELDSET(nGMColEventEffectScaleOffset, 26, 6) | GC_FIELDSET(joint, 19, 7) | GC_FIELDSET(effect_id, 10, 9) | GC_FIELDSET(flag, 0, 10))
+#define gmColCommandEffectItemHoldS1(joint, effect_id, flag) \
+(GC_FIELDSET(nGMColEventEffectItemHoldOffset, 26, 6) | GC_FIELDSET(joint, 19, 7) | GC_FIELDSET(effect_id, 10, 9) | GC_FIELDSET(flag, 0, 10))
 
-#define gmColCommandEffectScaleS2(off_x, off_y) (GC_FIELDSET(off_x, 16, 16) | GC_FIELDSET(off_y, 0, 16))
-#define gmColCommandEffectScaleS3(off_z, rng_x) (GC_FIELDSET(off_z, 16, 16) | GC_FIELDSET(rng_x, 0, 16))
-#define gmColCommandEffectScaleS4(rng_y, rng_z) (GC_FIELDSET(rng_y, 16, 16) | GC_FIELDSET(rng_z, 0, 16))
+#define gmColCommandEffectItemHoldS2(off_x, off_y) (GC_FIELDSET(off_x, 16, 16) | GC_FIELDSET(off_y, 0, 16))
+#define gmColCommandEffectItemHoldS3(off_z, rng_x) (GC_FIELDSET(off_z, 16, 16) | GC_FIELDSET(rng_x, 0, 16))
+#define gmColCommandEffectItemHoldS4(rng_y, rng_z) (GC_FIELDSET(rng_y, 16, 16) | GC_FIELDSET(rng_z, 0, 16))
 
-#define gmColCommandEffectScale(joint, effect_id, flag, off_x, off_y, off_z, rng_x, rng_y, rng_z) \
-gmColCommandEffectScaleS1(joint, effect_id, flag), gmColCommandEffectScaleS2(off_x, off_y), gmColCommandEffectScaleS3(off_z, rng_x), gmColCommandEffectScaleS4(rng_y, rng_z)
+#define gmColCommandEffectItemHold(joint, effect_id, flag, off_x, off_y, off_z, rng_x, rng_y, rng_z) \
+gmColCommandEffectItemHoldS1(joint, effect_id, flag), gmColCommandEffectItemHoldS2(off_x, off_y), gmColCommandEffectItemHoldS3(off_z, rng_x), gmColCommandEffectItemHoldS4(rng_y, rng_z)
 
 #define gmColCommandSetLight(angle1, angle2) (GC_FIELDSET(nGMColEventSetLight, 26, 6) | GC_FIELDSET(angle1, 13, 13) | GC_FIELDSET(angle2, 0, 13))
 
@@ -251,13 +251,87 @@ typedef enum GMColEvent
 	nGMColEventSetColor2,
 	nGMColEventBlendColor2,
 	nGMColEventEffect,
-	nGMColEventEffectScaleOffset, // ???
+	nGMColEventEffectItemHoldOffset, // ???
 	nGMColEventSetLight,
 	nGMColEventToggleLightOff,
 	nGMColEventPlaySFX,
 	nGMColEventSetSkeletonID
 
 } GMColEvent;
+
+typedef enum GMColAnimKind
+{
+	nGMColAnimCommonNull,
+	nGMColAnimFighterComPlayer,
+	nGMColAnimFighterHitStatusNormal,
+	nGMColAnimFighterHitStatusIntangible,
+	nGMColAnimFighterHitStatusInvincible,
+	nGMColAnimFighterDamageCommon,
+	nGMColAnimFighterCommonSpecialNCharge,
+	nGMColAnimFighterFallSpecial,
+	nGMColAnimFighterFastFall,
+	nGMColAnimFighterHeal,
+	nGMColAnimFighterNoDamage,
+	nGMColAnimFighterRebirth,
+	nGMColAnimFighterDamageFireStart,
+	nGMColAnimFighterDamageFireLow = nGMColAnimFighterDamageFireStart,
+	nGMColAnimFighterDamageFireMid,
+	nGMColAnimFighterDamageFireHigh,
+	nGMColAnimFighterDamageFireAir,
+	nGMColAnimFighterDamageFireEnd = nGMColAnimFighterDamageFireAir,
+	nGMColAnimFighterDamageIceStart = 0x20,
+	nGMColAnimFighterDamageIceLow = nGMColAnimFighterDamageIceStart,
+	nGMColAnimFighterDamageIceMid,
+	nGMColAnimFighterDamageIceHigh,
+	nGMColAnimFighterDamageIceAir,
+	nGMColAnimFighterDamageIceEnd = nGMColAnimFighterDamageIceAir,
+	nGMColAnimFighterShieldBreakFly,
+	nGMColAnimFighterFuraFura,
+	nGMColAnimFighterFuraSleep,
+	nGMColAnimFighterMarioSpecialN,
+	nGMColAnimFighterMarioAppeal,
+	nGMColAnimFighterDonkeySpecialNLoop,
+	nGMColAnimFighterDonkeySpecialNEnd,
+	nGMColAnimFighterUnused4,
+	nGMColAnimFighterSamusSpecialNEnd,
+	nGMColAnimFighterSamusSpecialHi,
+	nGMColAnimFighterFoxSpecialLw,
+	nGMColAnimFighterFoxSpecialHiStart,
+	nGMColAnimFighterFoxSpecialHi,
+	nGMColAnimFighterLinkSpecialHi,
+	nGMColAnimFighterCaptainSpecialN,
+	nGMColAnimFighterKirbySpeciaLwHigh,
+	nGMColAnimFighterKirbySpeciaLwMid,
+	nGMColAnimFighterKirbySpeciaLwLow,
+	nGMColAnimFighterKirbySpecialLwStart,
+	nGMColAnimFighterKirbySpecialLwEnd,
+	nGMColAnimFighterPikachuAttackS4,
+	nGMColAnimFighterPikachuSpecialHiStart,
+	nGMColAnimFighterPikachuSpecialHi,
+	nGMColAnimFighterPikachuSpecialN,
+	nGMColAnimFighterPikachuSpecialLwHit,
+	nGMColAnimFighterPikachuSpecialLwEnd,
+	nGMColAnimFighterCaptainSpecialHi,
+	nGMColAnimFighterNessSpecialLwHold,
+	nGMColAnimFighterNessSpecialLwHit,
+	nGMColAnimFighterNessSpecialHiHold,
+	nGMColAnimFighterNessSpecialHiJibaku,
+	nGMColAnimFighterNessAppear,
+	nGMColAnimFighterHammer = 0x49,
+	nGMColAnimFighterStar,
+	nGMColAnimFighterStarRod,
+	nGMColAnimFighterBat,
+	nGMColAnimItemBombHeiCritical,
+	nGMColAnimItemHammerEnd,
+	nGMColAnimItemLinkBombCritical,
+	nGMColAnimFighterChallenger,
+	nGMColAnimFlashDeadExplode,
+	nGMColAnimFlashDamageNormal,
+	nGMColAnimFlashDamageFire,
+	nGMColAnimFlashDamageElectric,
+	nGMColAnimFlashDamageIce
+
+} GMColAnimKind;
 
 typedef enum GMRumbleEvent
 {

@@ -571,15 +571,15 @@ void ftParamSetHitStatusColAnim(GObj *fighter_gobj, s32 hitstatus)
     switch (hitstatus)
     {
     case nGMHitStatusNormal:
-        ftParamCheckSetFighterColAnimID(fighter_gobj, 2, 0);
+        ftParamCheckSetFighterColAnimID(fighter_gobj, nGMColAnimFighterHitStatusNormal, 0);
         break;
 
     case nGMHitStatusInvincible:
-        ftParamCheckSetFighterColAnimID(fighter_gobj, 4, 0);
+        ftParamCheckSetFighterColAnimID(fighter_gobj, nGMColAnimFighterHitStatusInvincible, 0);
         break;
 
     case nGMHitStatusIntangible:
-        ftParamCheckSetFighterColAnimID(fighter_gobj, 3, 0);
+        ftParamCheckSetFighterColAnimID(fighter_gobj, nGMColAnimFighterHitStatusIntangible, 0);
         break;
     }
 }
@@ -1253,11 +1253,11 @@ void ftParamResetStatUpdateColAnim(GObj *fighter_gobj)
     switch (ftParamGetBestHitStatusPart(fighter_gobj))
     {
     case nGMHitStatusInvincible:
-        ftParamCheckSetFighterColAnimID(fighter_gobj, 4, 0);
+        ftParamCheckSetFighterColAnimID(fighter_gobj, nGMColAnimFighterHitStatusInvincible, 0);
         break;
 
     case nGMHitStatusIntangible:
-        ftParamCheckSetFighterColAnimID(fighter_gobj, 3, 0);
+        ftParamCheckSetFighterColAnimID(fighter_gobj, nGMColAnimFighterHitStatusIntangible, 0);
         break;
     }
     switch (fp->fkind)
@@ -1267,7 +1267,7 @@ void ftParamResetStatUpdateColAnim(GObj *fighter_gobj)
     case nFTKindGDonkey:
         if (fp->passive_vars.donkey.charge_level == FTDONKEY_GIANTPUNCH_CHARGE_MAX)
         {
-            ftParamCheckSetFighterColAnimID(fighter_gobj, FTDONKEY_GIANTPUNCH_CHARGE_COLANIM_ID, FTDONKEY_GIANTPUNCH_CHARGE_COLANIM_LENGTH);
+            ftParamCheckSetFighterColAnimID(fighter_gobj, nGMColAnimFighterCommonSpecialNCharge, 0);
         }
         break;
 
@@ -1275,7 +1275,7 @@ void ftParamResetStatUpdateColAnim(GObj *fighter_gobj)
     case nFTKindNSamus:
         if (fp->passive_vars.samus.charge_level == FTSAMUS_CHARGE_MAX)
         {
-            ftParamCheckSetFighterColAnimID(fighter_gobj, FTSAMUS_CHARGE_COLANIM_ID, FTSAMUS_CHARGE_COLANIM_LENGTH);
+            ftParamCheckSetFighterColAnimID(fighter_gobj, nGMColAnimFighterCommonSpecialNCharge, 0);
         }
         break;
 
@@ -1284,14 +1284,14 @@ void ftParamResetStatUpdateColAnim(GObj *fighter_gobj)
         {
             if (fp->passive_vars.kirby.copysamus_charge_level == FTKIRBY_COPYSAMUS_CHARGE_MAX)
             {
-                ftParamCheckSetFighterColAnimID(fighter_gobj, FTKIRBY_COPYSAMUS_CHARGE_COLANIM_ID, FTKIRBY_COPYSAMUS_CHARGE_COLANIM_LENGTH);
+                ftParamCheckSetFighterColAnimID(fighter_gobj, nGMColAnimFighterCommonSpecialNCharge, 0);
             }
         }
         if ((fp->passive_vars.kirby.copy_id == nFTKindDonkey) || (fp->passive_vars.kirby.copy_id == nFTKindNDonkey) || (fp->passive_vars.kirby.copy_id == nFTKindGDonkey))
         {
             if (fp->passive_vars.kirby.copydonkey_charge_level == FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_MAX)
             {
-                ftParamCheckSetFighterColAnimID(fighter_gobj, FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_COLANIM_ID, FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_COLANIM_LENGTH);
+                ftParamCheckSetFighterColAnimID(fighter_gobj, nGMColAnimFighterCommonSpecialNCharge, 0);
             }
         }
         break;
@@ -1300,25 +1300,25 @@ void ftParamResetStatUpdateColAnim(GObj *fighter_gobj)
     case nFTKindNNess:
         if (fp->is_absorb)
         {
-            ftParamCheckSetFighterColAnimID(fighter_gobj, FTNESS_PSYCHICMAGNET_COLANIM_ID, FTNESS_PSYCHICMAGNET_COLANIM_LENGTH);
+            ftParamCheckSetFighterColAnimID(fighter_gobj, nGMColAnimFighterNessSpecialLwHold, 0);
         }
         break;
     }
     if (fp->damage_heal != 0)
     {
-        ftParamCheckSetFighterColAnimID(fighter_gobj, 9, 0);
+        ftParamCheckSetFighterColAnimID(fighter_gobj, nGMColAnimFighterHeal, 0);
     }
     if (fp->star_invincible_tics != 0)
     {
-        ftParamCheckSetFighterColAnimID(fighter_gobj, 0x4A, 0);
+        ftParamCheckSetFighterColAnimID(fighter_gobj, nGMColAnimFighterStar, 0);
     }
     if ((fp->invincible_tics != 0) || (fp->intangible_tics != 0))
     {
-        ftParamCheckSetFighterColAnimID(fighter_gobj, 0xA, 0);
+        ftParamCheckSetFighterColAnimID(fighter_gobj, nGMColAnimFighterNoDamage, 0);
     }
-    if (ftHammerCheckStatusHammerAll(fighter_gobj) != 0)
+    if (ftHammerCheckStatusHammerAll(fighter_gobj) != FALSE)
     {
-        ftParamCheckSetFighterColAnimID(fighter_gobj, 0x49, 0);
+        ftParamCheckSetFighterColAnimID(fighter_gobj, nGMColAnimFighterHammer, 0);
     }
 }
 
@@ -1552,7 +1552,7 @@ void ftParamSetHealDamage(FTStruct *fp, s32 heal)
 {
     fp->damage_heal += heal;
 
-    ftParamCheckSetFighterColAnimID(fp->fighter_gobj, 9, 0);
+    ftParamCheckSetFighterColAnimID(fp->fighter_gobj, nGMColAnimFighterHeal, 0);
 }
 
 // 0x800EA40C - If fighter is grabbed, halve damage received
@@ -1703,7 +1703,7 @@ void ftParamSetStarHitStatusInvincible(FTStruct *fp, s32 star_invincible_tics)
     fp->star_hitstatus = nGMHitStatusInvincible;
     fp->star_invincible_tics = star_invincible_tics;
 
-    ftParamCheckSetFighterColAnimID(fp->fighter_gobj, ITSTAR_COLANIM_ID, ITSTAR_COLANIM_LENGTH);
+    ftParamCheckSetFighterColAnimID(fp->fighter_gobj, nGMColAnimFighterStar, 0);
 }
 
 // 0x800EA8EC
@@ -1719,7 +1719,7 @@ void ftParamSetTimedHitStatusInvincible(FTStruct *fp, s32 invincible_tics)
     }
     else fp->special_hitstatus = nGMHitStatusInvincible;
 
-    ftParamCheckSetFighterColAnimID(fp->fighter_gobj, 0xA, 0);
+    ftParamCheckSetFighterColAnimID(fp->fighter_gobj, nGMColAnimFighterNoDamage, 0);
 }
 
 // 0x800EA948
@@ -1731,7 +1731,7 @@ void ftParamSetTimedHitStatusIntangible(FTStruct *fp, s32 intangible_tics)
     }
     fp->special_hitstatus = nGMHitStatusIntangible;
 
-    ftParamCheckSetFighterColAnimID(fp->fighter_gobj, 0xA, 0);
+    ftParamCheckSetFighterColAnimID(fp->fighter_gobj, nGMColAnimFighterNoDamage, 0);
 }
 
 // 0x800EA98C

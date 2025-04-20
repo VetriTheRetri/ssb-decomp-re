@@ -1656,7 +1656,7 @@ void mnPlayersVSMakeFighter(GObj *fighter_gobj, s32 player, s32 fkind, s32 costu
 
 		if (sMNPlayersVSSlots[player].pkind == nFTPlayerKindCom)
 		{
-			ftParamCheckSetFighterColAnimID(fighter_gobj, 1, 0);
+			ftParamCheckSetFighterColAnimID(fighter_gobj, nGMColAnimFighterComPlayer, 0);
 		}
 	}
 }

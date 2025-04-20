@@ -101,7 +101,7 @@ loop: // This makes no sense
     {
         this_fp->is_effect_attach = TRUE;
     }
-    ftParamCheckSetFighterColAnimID(this_gobj, 0xB, 0);
+    ftParamCheckSetFighterColAnimID(this_gobj, nGMColAnimFighterRebirth, 0);
     ftParamSetPlayerTagWait(this_gobj, 1);
 }
 

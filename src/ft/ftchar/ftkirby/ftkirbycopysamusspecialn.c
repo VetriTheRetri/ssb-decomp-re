@@ -135,7 +135,7 @@ void ftKirbyCopySamusSpecialNLoopProcUpdate(GObj *fighter_gobj)
 
             if (fp->passive_vars.kirby.copysamus_charge_level == FTKIRBY_COPYSAMUS_CHARGE_MAX)
             {
-                ftParamCheckSetFighterColAnimID(fighter_gobj, FTKIRBY_COPYSAMUS_CHARGE_COLANIM_ID, FTKIRBY_COPYSAMUS_CHARGE_COLANIM_LENGTH);
+                ftParamCheckSetFighterColAnimID(fighter_gobj, nGMColAnimFighterCommonSpecialNCharge, 0);
                 ftKirbyCopySamusSpecialNDestroyChargeShot(fp);
                 ftCommonWaitSetStatus(fighter_gobj);
             }

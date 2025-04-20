@@ -368,7 +368,7 @@ typedef enum gmFGMVoiceID
 	nSYAudioFGMHyruleTwisterAppear,
 	nSYAudioFGMHyruleTwisterTrapped,
 	nSYAudioFGMPupupuWhispyWind, 			// Despawn?
-	nSYAudioFGMFloorDamageBurn,
+	nSYAudioFGMFloorDamageFire,
 	nSYAudioFGMDonkeyDeadSlam,		  		// 0x11F
 	nSYAudioFGMCaptainDeadSlam,		  		// 0x120
 	nSYAudioFGMFoxDeadSlam,			  		// 0x121

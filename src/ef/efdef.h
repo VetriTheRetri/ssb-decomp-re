@@ -45,7 +45,7 @@ typedef enum efKind
     nEFKindFlashMiddle,                // Other expanding green circle, plays when grabbing ledge
     nEFKindFlashLarge,                 // Large expanding green circle, plays when grabbing Star Man?
     nEFKindBoxSmash = 46,              // Crate / Barrel smash effect
-    nEFKindCrashTheGame,               // Literally crashes the game; this takes an argument which acts as a timer; must be extra specific, during a certain scene
+    nEFKindCrashTheGame,               // Crashes the game; this takes an argument which acts as a timer; probably extra specific, during a certain scene
     nEFKindKirbyStar = 54,             // Can be created manually but this plays when Kirby makes impact with stage collision
     nEFKindThunderAmp = 70,            // Pikachu's Thunder self-hit
     nEFKindRipple,                     // Pikachu's Quick-Attack, Ness's PSI Magnet, Mew spawn, etc.

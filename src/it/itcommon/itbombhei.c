@@ -711,7 +711,7 @@ void itBombHeiExplodeWaitInitVars(GObj *item_gobj)
 
     dobj->mobj->matanim_joint.event32 = NULL;
 
-    itMainCheckSetColAnimID(item_gobj, ITBOMBHEI_EXPLODE_COLANIM_ID, ITBOMBHEI_EXPLODE_COLANIM_DURATION);
+    itMainCheckSetColAnimID(item_gobj, nGMColAnimItemBombHeiCritical, ITBOMBHEI_EXPLODE_COLANIM_DURATION);
 }
 
 // 0x80177D60

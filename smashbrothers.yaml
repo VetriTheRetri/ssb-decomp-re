@@ -450,7 +450,7 @@ segments:
       - [0x0A7130, .data, ft/ftdisplaymain]
       - [0x0A7CE0, .data, mp/mpcollision]
       - [0x0A8030, .data, ft/ftcommondata]
-      - [0x0A8290, .data, colanimdata]
+      - [0x0A8290, .data, gm/gmcolscripts]
       - [0x0A9680, .data, ef/efmanager]
       - [0x0A9FC0, .data, gr/grwallpaper]
       - [0x0AA000, .data, gr/grdisplay]

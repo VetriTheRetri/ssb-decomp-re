@@ -285,7 +285,7 @@ sb32 itLinkBombFallProcUpdate(GObj *item_gobj)
 	}
 	if (ip->lifetime == ITLINKBOMB_BLOAT_BEGIN)
 	{
-		itMainCheckSetColAnimID(item_gobj, ITLINKBOMB_BLOAT_COLANIM_ID, ITLINKBOMB_BLOAT_COLANIM_LENGTH);
+		itMainCheckSetColAnimID(item_gobj, nGMColAnimItemLinkBombCritical, ITLINKBOMB_BLOAT_COLANIM_LENGTH);
 
 		ip->item_vars.linkbomb.scale_id = 1;
 	}
@@ -319,7 +319,7 @@ sb32 itLinkBombWaitProcUpdate(GObj *item_gobj)
 	}
 	if (ip->lifetime == ITLINKBOMB_BLOAT_BEGIN)
 	{
-		itMainCheckSetColAnimID(item_gobj, ITLINKBOMB_BLOAT_COLANIM_ID, ITLINKBOMB_BLOAT_COLANIM_LENGTH);
+		itMainCheckSetColAnimID(item_gobj, nGMColAnimItemLinkBombCritical, ITLINKBOMB_BLOAT_COLANIM_LENGTH);
 
 		ip->item_vars.linkbomb.scale_id = 1;
 	}
@@ -408,7 +408,7 @@ sb32 itLinkBombHoldProcUpdate(GObj *item_gobj)
 		}
 		if (ip->lifetime == ITLINKBOMB_BLOAT_BEGIN)
 		{
-			itMainCheckSetColAnimID(item_gobj, ITLINKBOMB_BLOAT_COLANIM_ID, ITLINKBOMB_BLOAT_COLANIM_LENGTH);
+			itMainCheckSetColAnimID(item_gobj, nGMColAnimItemLinkBombCritical, ITLINKBOMB_BLOAT_COLANIM_LENGTH);
 
 			ip->item_vars.linkbomb.scale_id = 1;
 		}

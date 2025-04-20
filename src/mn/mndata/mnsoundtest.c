@@ -255,7 +255,7 @@ u32 dMNSoundTestSoundIDs[/* */] =
     nSYAudioFGMHyruleTwisterAppear,
     nSYAudioFGMHyruleTwisterTrapped,
     nSYAudioFGMPupupuWhispyWind,
-    nSYAudioFGMFloorDamageBurn,
+    nSYAudioFGMFloorDamageFire,
     nSYAudioFGMDogasSmog,
     nSYAudioFGMIwarkRockMake,
     nSYAudioFGMKabigonFall,

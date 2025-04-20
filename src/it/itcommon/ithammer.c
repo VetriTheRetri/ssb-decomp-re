@@ -126,7 +126,7 @@ enum itHammerStatus
 // 0x80176110
 void itHammerCommonSetColAnim(GObj *item_gobj)
 {
-    itMainCheckSetColAnimID(item_gobj, ITHAMMER_WEAR_COLANIM_ID, ITHAMMER_WEAR_COLANIM_LENGTH);
+    itMainCheckSetColAnimID(item_gobj, nGMColAnimItemHammerEnd, 0);
 }
 
 // 0x80176134

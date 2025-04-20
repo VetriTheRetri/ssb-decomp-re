@@ -36,7 +36,7 @@ void ftPikachuSpecialNProcAccessory(GObj *fighter_gobj)
         vel.z = 0.0F;
 
         wpPikachuThunderJoltAirMakeWeapon(fighter_gobj, &pos, &vel);
-        ftParamCheckSetFighterColAnimID(fighter_gobj, FTPIKACHU_THUNDERJOLT_COLANIM_ID, FTPIKACHU_THUNDERJOLT_COLANIM_LENGTH);
+        ftParamCheckSetFighterColAnimID(fighter_gobj, nGMColAnimFighterPikachuSpecialN, 0);
     }
 }
 

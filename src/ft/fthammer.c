@@ -107,9 +107,9 @@ void ftHammerSetColAnim(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->colanim.colanim_id != FTCOMMON_HAMMER_COLANIM_ID)
+    if (fp->colanim.colanim_id != nGMColAnimFighterHammer)
     {
-        ftParamCheckSetFighterColAnimID(fighter_gobj, FTCOMMON_HAMMER_COLANIM_ID, FTCOMMON_HAMMER_COLANIM_LENGTH);
+        ftParamCheckSetFighterColAnimID(fighter_gobj, nGMColAnimFighterHammer, 0);
     }
 }
 

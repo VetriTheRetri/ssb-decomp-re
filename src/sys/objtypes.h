@@ -401,7 +401,7 @@ struct DObjDistDLLink
 
 struct GCGfxLink
 {
-    u8 id;
+    u8 frame;
     Gfx *dls[4];
 };
 

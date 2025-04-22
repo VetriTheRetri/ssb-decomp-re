@@ -67,7 +67,7 @@ u32 sGCRunStatus;
 OSMesg sGCMesgs[1];
 OSMesgQueue gGCMesgQueue;
 
-GCGfxLink D_80046A88[64];
+GCGfxLink gGCFrameQueueGfxLinks[64];
 u8 D_80046F88[24];
 
 // // // // // // // // // // // //
@@ -744,7 +744,7 @@ void gcSetSObjPrevAlloc(SObj *sobj)
 }
 
 // 0x800080DC
-CObj *gcGetCameraSetNextAlloc(void)
+CObj *gcGetCObjSetNextAlloc(void)
 {
 	CObj *cobj;
 
@@ -768,7 +768,7 @@ CObj *gcGetCameraSetNextAlloc(void)
 }
 
 // 0x8000815C
-void gcSetCameraPrevAlloc(CObj *cobj)
+void gcSetCObjPrevAlloc(CObj *cobj)
 {
 	cobj->next = sGCCameraHead;
 	sGCCamerasActive--;
@@ -1629,7 +1629,7 @@ CObj* gcAddCameraForGObj(GObj *gobj)
 	}
 	gobj->obj_kind = nGCCommonAppendCamera;
 
-	new_cobj = gcGetCameraSetNextAlloc();
+	new_cobj = gcGetCObjSetNextAlloc();
 	gobj->obj = new_cobj;
 	new_cobj->parent_gobj = gobj;
 
@@ -1681,7 +1681,7 @@ void gcEjectCamera(CObj *cobj)
 		gcSetAObjPrevAlloc(current_aobj);
 		current_aobj = next_aobj;
 	}
-	gcSetCameraPrevAlloc(cobj);
+	gcSetCObjPrevAlloc(cobj);
 }
 
 // 0x800098A4
@@ -2091,9 +2091,9 @@ void gcDrawAll(void)
 	gGCCurrentCamera = NULL;
 	gGCCurrentDisplay = NULL;
 
-	for (i = 0, frame_count = dSYTaskmanFrameCount - 1; i < ARRAY_COUNT(D_80046A88); i++)
+	for (i = 0, frame_count = dSYTaskmanFrameCount - 1; i < ARRAY_COUNT(gGCFrameQueueGfxLinks); i++)
 	{
-		D_80046A88[i].id = frame_count;
+		gGCFrameQueueGfxLinks[i].frame = frame_count;
 	}
 	gobj = gGCCommonDLLinks[ARRAY_COUNT(gGCCommonDLLinks) - 1];
 

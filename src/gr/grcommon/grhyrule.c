@@ -407,9 +407,14 @@ void grHyruleTwisterInitVars(void)
     {
         gGRCommonStruct.hyrule.twister_pos_ids[i] = pos_ids[i];
     }
-
     gGRCommonStruct.hyrule.twister_status = nGRHyruleTwisterStatusSleep;
-    gGRCommonStruct.hyrule.particle_bank_id = efParticleGetLoadBankID((intptr_t)&lGRHyruleParticleScriptBankLo, (intptr_t)&lGRHyruleParticleScriptBankHi, (intptr_t)&lGRHyruleParticleTextureBankLo, (intptr_t)&lGRHyruleParticleTextureBankHi);
+    gGRCommonStruct.hyrule.particle_bank_id = efParticleGetLoadBankID
+    (
+        (uintptr_t)&lGRHyruleParticleScriptBankLo,
+        (uintptr_t)&lGRHyruleParticleScriptBankHi,
+        (uintptr_t)&lGRHyruleParticleTextureBankLo,
+        (uintptr_t)&lGRHyruleParticleTextureBankHi
+    );
 }
 
 // 0x8010AB20
@@ -433,7 +438,7 @@ sb32 grHyruleTwisterCheckGetDamageKind(GObj *ground_gobj, GObj *fighter_gobj, s3
     if 
     (
         (fp->twister_wait == 0)                                && 
-        (fp->status_id != nFTCommonStatusTwister) && 
+        (fp->status_id != nFTCommonStatusTwister)              && 
         !(fp->capture_immune_mask & FTCATCHKIND_MASK_TWISTER)  &&
         (ftParamGetBestHitStatusAll(fighter_gobj) == nGMHitStatusNormal)
     )

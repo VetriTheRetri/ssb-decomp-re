@@ -19,7 +19,7 @@ extern GObj *gGCCurrentCamera; // Is this exclusively a camera GObj?
 extern GObj *gGCCurrentDisplay;
 extern GObjProcess *gGCCurrentProcess;
 extern OSMesgQueue gGCMesgQueue;
-extern GCGfxLink D_80046A88[64];
+extern GCGfxLink gGCFrameQueueGfxLinks[64];
 
 // 0x8003B878
 extern GCPersp dGCPerspDefault;
@@ -81,8 +81,8 @@ extern DObj* gcGetDObjSetNextAlloc(void);
 extern void gcSetDObjPrevAlloc(DObj *dobj);
 extern SObj* gcGetSObjSetNextAlloc(void);
 extern void gcSetSObjPrevAlloc(SObj *sobj);
-extern CObj* gcGetCameraSetNextAlloc(void);
-extern void gcSetCameraPrevAlloc(CObj *cobj);
+extern CObj* gcGetCObjSetNextAlloc(void);
+extern void gcSetCObjPrevAlloc(CObj *cobj);
 extern GObjProcess* gcAddGObjProcess(GObj *gobj, void (*proc)(GObj*), u8 kind, u32 pri);
 extern GObjProcess *unref_80008304(GObj *gobj, void (*proc)(GObj*), u32 pri, s32 thread_id, u32 stack_size);
 extern void gcEndGObjProcess(GObjProcess *gobjproc);

@@ -84,7 +84,7 @@ struct LBScript
     Vec3f vel;
     f32 unk_script_0x20;
     f32 unk_script_0x24;
-    f32 unk_script_0x28;
+    f32 update_rate;
     f32 size;
     u8 bytecode[1];         // Particle bytecode
 };
@@ -100,7 +100,7 @@ struct LBTexture
     u32 count;
     s32 fmt, siz;
     s32 width, height;
-    u32 flags;
+    u32 flags;              // Palette flags; if (this value & 1), there is only one palette; otherwise each image has its own palette
     void *data[1];          // Offsets to image, then palette data
 };
 
@@ -122,8 +122,8 @@ struct LBGenerator
     f32 size;
     f32 unk_gn_0x38;
     f32 unk_gn_0x3C;
-    f32 unk_gn_0x40;
-    f32 unk_gn_0x44;
+    f32 update_rate;
+    f32 frame;
     DObj *dobj;
     LBTransform *xf;
 
@@ -137,12 +137,12 @@ struct LBGenerator
 
         Vec3f move;
 
-        struct LBGeneratorUnkVars
+        struct LBGeneratorVortex
         {
             f32 f;
-            u16 halfword;
+            u16 lifetime;
 
-        } unk_gn_vars;
+        } vortex;
 
     } generator_vars;
 };
@@ -171,9 +171,9 @@ struct LBParticle
     u16 generator_id;
     u16 flags;
     u8 bank_id;
-    u8 loop_count;
-    u8 texture_id;
-    u8 data_id;
+    u8 loop_count;              // How many times to loop specific segment of bytecode
+    u8 texture_id;              // Texture series ID
+    u8 frame_id;                // Animation frame of texture series
     ub16 bytecode_timer;        // Wait timer before next bytecode event is parsed
     u16 size_target_length;     // Time to LERP size_target variable
     u16 target_primcolor_length;// Time to LERP target primitive color

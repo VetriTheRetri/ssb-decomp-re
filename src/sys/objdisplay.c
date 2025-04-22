@@ -3211,7 +3211,7 @@ void gcCaptureDoubleBufferGObjs(GObj *camera_gobj, s32 id, sb32 is_tag_mask_or_i
         {
             // Nothing added to this Display List
             gSYTaskmanDLHeads[i] -= 2;
-            D_80046A88[id].dls[i] = NULL;
+            gGCFrameQueueGfxLinks[id].dls[i] = NULL;
         }
         else
         {
@@ -3220,10 +3220,10 @@ void gcCaptureDoubleBufferGObjs(GObj *camera_gobj, s32 id, sb32 is_tag_mask_or_i
             gSPDisplayList(dls[i], dls[i] + 2);
             dls[i]++;
             gSPBranchList(dls[i]++, gSYTaskmanDLHeads[i]);
-            D_80046A88[id].dls[i] = dls[i];
+            gGCFrameQueueGfxLinks[id].dls[i] = dls[i];
         }
     }
-    D_80046A88[id].id = dSYTaskmanFrameCount;
+    gGCFrameQueueGfxLinks[id].frame = dSYTaskmanFrameCount;
 }
 
 // 0x80017AAC
@@ -3233,9 +3233,9 @@ void gcAddLinkedDL(s32 id)
 
     for (i = 0; i < ARRAY_COUNT(gSYTaskmanDLHeads); i++) 
     {
-        if (D_80046A88[id].dls[i] != NULL)
+        if (gGCFrameQueueGfxLinks[id].dls[i] != NULL)
         {
-            gSPDisplayList(gSYTaskmanDLHeads[i]++, D_80046A88[id].dls[i]);
+            gSPDisplayList(gSYTaskmanDLHeads[i]++, gGCFrameQueueGfxLinks[id].dls[i]);
         }
     }
 }
@@ -3243,14 +3243,9 @@ void gcAddLinkedDL(s32 id)
 // 0x80017B80
 void gcCaptureAll(GObj *camera_gobj, sb32 is_tag_mask_or_id)
 {
-    s32 id;
-    u64 camera_mask;
-    u64 buffer_mask;
-
-    camera_mask = camera_gobj->camera_mask;
-    buffer_mask = camera_gobj->buffer_mask;
-
-    id = 0;
+    s32 id = 0;
+    u64 camera_mask = camera_gobj->camera_mask;
+    u64 buffer_mask = camera_gobj->buffer_mask;
 
     while (camera_mask)
     {
@@ -3258,7 +3253,7 @@ void gcCaptureAll(GObj *camera_gobj, sb32 is_tag_mask_or_id)
         {
             if (buffer_mask & 1)
             {
-                if ((u8)dSYTaskmanFrameCount == D_80046A88[id].id)
+                if ((u8)dSYTaskmanFrameCount == gGCFrameQueueGfxLinks[id].frame)
                 {
                     gcAddLinkedDL(id);
                 } 

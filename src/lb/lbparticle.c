@@ -215,13 +215,14 @@ void lbParticleSetupBankID(s32 bank_id, LBScriptDesc *script_desc, LBTextureDesc
 		{
 			if (sLBParticleTextureBanks[bank_id][i]->flags & 1)
 			{
-				// One palette after the images
+				// Single palette after the images
 				j = sLBParticleTextureBanks[bank_id][i]->count;
 
 				sLBParticleTextureBanks[bank_id][i]->data[j] = lbRelocGetFileData(void*, texture_desc, sLBParticleTextureBanks[bank_id][i]->data[j]);
 			}
 			else for (j = sLBParticleTextureBanks[bank_id][i]->count; j < sLBParticleTextureBanks[bank_id][i]->count * 2; j++)
 			{
+                // One palette per image
 				sLBParticleTextureBanks[bank_id][i]->data[j] = lbRelocGetFileData(void*, texture_desc, sLBParticleTextureBanks[bank_id][i]->data[j]);
 			}
 		}
@@ -350,11 +351,11 @@ LBParticle* lbParticleMakeStruct
 
     if (argF != FALSE) 
     { 
-        new_pc->flags |= 0x10;
+        new_pc->flags |= LBPARTICLE_FLAG_SHAREDPAL;
     }
     new_pc->bytecode_timer = (bytecode != NULL) ? 1 : 0;
     
-    new_pc->data_id = 0;
+    new_pc->frame_id = 0;
     
     new_pc->primcolor.r = new_pc->primcolor.g = new_pc->primcolor.b = new_pc->primcolor.a = 0xFF;
     new_pc->envcolor.r = new_pc->envcolor.g = new_pc->envcolor.b = new_pc->envcolor.a = 0x00;
@@ -534,9 +535,9 @@ void lbParticleEjectStruct(LBParticle *this_pc)
 
 			gn = this_pc->gn;
 
-			if ((gn != NULL) && (this_pc->flags & 4) && (gn->kind == 2))
+			if ((gn != NULL) && (this_pc->flags & LBPARTICLE_FLAG_VORTEX) && (gn->kind == nLBParticleKindVortex))
 			{
-				gn->generator_vars.unk_gn_vars.halfword--;
+				gn->generator_vars.vortex.lifetime--;
 			}
 			if (this_pc->xf != NULL)
 			{
@@ -1116,9 +1117,9 @@ LBParticle* lbParticleUpdateStruct(LBParticle *this_pc, LBParticle *other_pc, s3
                         break;
                         
                     case 0xBC:    
-                        this_pc->data_id = *csr++;
+                        this_pc->frame_id = *csr++;
                         fvar1 = *csr++;
-                        this_pc->data_id += fvar1 * syUtilsRandFloat();
+                        this_pc->frame_id += fvar1 * syUtilsRandFloat();
                         break;
                         
                     case LBPARTICLE_OPCODE_SETVELMAG:
@@ -1243,7 +1244,8 @@ LBParticle* lbParticleUpdateStruct(LBParticle *this_pc, LBParticle *other_pc, s3
                     }
                     if ((command & 0xC0) && ((command & 0xC0) == 0x40))
                     {
-                        this_pc->data_id = *csr++;
+                        // Advance 
+                        this_pc->frame_id = *csr++;
                     }
                 }
             }
@@ -1306,9 +1308,9 @@ LBParticle* lbParticleUpdateStruct(LBParticle *this_pc, LBParticle *other_pc, s3
         
         next_pc = this_pc->next;
         
-        if ((this_pc->gn != NULL) && (this_pc->flags & 0x4) && (this_pc->gn->kind == 2))
+        if ((this_pc->gn != NULL) && (this_pc->flags & LBPARTICLE_FLAG_VORTEX) && (this_pc->gn->kind == nLBParticleKindVortex))
         {
-            this_pc->gn->generator_vars.unk_gn_vars.halfword--;
+            this_pc->gn->generator_vars.vortex.lifetime--;
         }
         if (this_pc->xf != NULL) 
         {
@@ -1333,7 +1335,7 @@ LBParticle* lbParticleUpdateStruct(LBParticle *this_pc, LBParticle *other_pc, s3
 
         return next_pc;
     }
-    if (this_pc->flags & 4)
+    if (this_pc->flags & LBPARTICLE_FLAG_VORTEX)
     {
         gn = this_pc->gn;
 
@@ -1345,7 +1347,7 @@ LBParticle* lbParticleUpdateStruct(LBParticle *this_pc, LBParticle *other_pc, s3
         sx2 *= (1.0F / 32768.0F);
         cx2 *= (1.0F / 32768.0F);
 
-        this_pc->vel.z += gn->generator_vars.unk_gn_vars.f;
+        this_pc->vel.z += gn->generator_vars.vortex.f;
 
         sp70 = ABSF(gn->unk_gn_0x38);
         
@@ -1378,11 +1380,11 @@ LBParticle* lbParticleUpdateStruct(LBParticle *this_pc, LBParticle *other_pc, s3
     }
     else
     {
-        if (this_pc->flags & 1)
+        if (this_pc->flags & LBPARTICLE_FLAG_GRAVITY)
         {
             this_pc->vel.y -= this_pc->gravity;
         }
-        if (this_pc->flags & 2)
+        if (this_pc->flags & LBPARTICLE_FLAG_FRICTION)
         {
             this_pc->vel.x *= this_pc->friction;
             this_pc->vel.y *= this_pc->friction;
@@ -1813,13 +1815,13 @@ void lbParticleDrawTextures(GObj *gobj)
                             width = sLBParticleTextureBanks[bank_id][pc->texture_id]->width;
                             height = sLBParticleTextureBanks[bank_id][pc->texture_id]->height;
                             
-                            image = sLBParticleTextureBanks[bank_id][pc->texture_id]->data[pc->data_id];
+                            image = sLBParticleTextureBanks[bank_id][pc->texture_id]->data[pc->frame_id];
                             
                             if (fmt == G_IM_FMT_CI)
                             {
                                 p_palette = &sLBParticleTextureBanks[bank_id][pc->texture_id]->data[sLBParticleTextureBanks[bank_id][pc->texture_id]->count];
                                 
-                                palette = (!(pc->flags & 0x10)) ? p_palette[pc->data_id] : p_palette[0];
+                                palette = (!(pc->flags & LBPARTICLE_FLAG_SHAREDPAL)) ? p_palette[pc->frame_id] : p_palette[0];
                             }
                             dsdx = (width * 4096.0F) / (xh - xl);
                             dtdy = (height * 4096.0F) / (yh - yl);
@@ -2307,286 +2309,284 @@ void lbParticleGeneratorProcRun(GObj *gobj)
     
     while (gn != NULL)
     {
-            if (gobj->flags & (1 << ((gn->bank_id >> 3) + 0x10)))
-            {
-                sLBParticleGeneratorsLastProcessed = gn;
-
-                gn = gn->next;
-
-                continue;
-            }
-            if (gn->flags & LBPARTICLE_FLAG_PAUSE)
-            {
-                sLBParticleGeneratorsLastProcessed = gn;
-
-                gn = gn->next;
-
-                continue;
-            }
-            if (gn->unk_gn_0x40 < 0.0F)
-            {
-                gn->unk_gn_0x44 -= gn->unk_gn_0x40;
-            }
-            else gn->unk_gn_0x44 += (syUtilsRandFloat() * gn->unk_gn_0x40);
-
-            if (gn->unk_gn_0x44 >= 1.0F)
-            {
-                vel.x = gn->vel.x;
-                vel.y = gn->vel.y;
-                vel.z = gn->vel.z;
-
-                if (gn->dobj != NULL)
-                {
-                    lbParticleGetPosVelDObj(&pos, &vel, gn->dobj);
-                    
-                    gn->pos.x = pos.x;
-                    gn->pos.y = pos.y;
-                    gn->pos.z = pos.z;
-                }
-                switch (gn->kind)
-                {
-                case 0:
-                case 3:
-                case 4:
-                    pv0 = gn->generator_vars.rotate.base + (syUtilsRandFloat() * (gn->generator_vars.rotate.target - gn->generator_vars.rotate.base));
-                    spB8 = (gn->generator_vars.rotate.target - gn->generator_vars.rotate.base) / (s32) gn->unk_gn_0x44;
-                    break;
-
-                default:
-                    pv0 = F_CST_DTOR32(360.0F) * syUtilsRandFloat();
-                    spB8 = F_CST_DTOR32(360.0F) / (s32) gn->unk_gn_0x44;
-                    break;
-                }
-            }
-            while (gn->unk_gn_0x44 >= 1.0F)
-            {
-                    switch (gn->kind)
-                    {
-                    case 0:
-                    case 3:
-                    case 4:
-                        vel_x = vel.x;
-                        vel_y = vel.y;
-                        vel_z = vel.z;
-                        
-                        angle1 = syUtilsArcTan2(vel_y, vel_z);
-                        
-                        sin_angle1 = __sinf(angle1); // spFC
-                        cos_angle1 = __cosf(angle1); // spF8
-
-                        angle2 = syUtilsArcTan2(vel_x, (vel_y * sin_angle1) + (vel_z * cos_angle1));
-                        
-                        sin_angle2 = __sinf(angle2); // spF4
-                        cos_angle2 = __cosf(angle2); // spF0
-                        // spFC = sin_angle1;
-                        magnitude = sqrtf(SQUARE(vel_x) + SQUARE(vel_y) + SQUARE(vel_z)); // sp108
-                        
-                        if (gn->unk_gn_0x38 < 0.0F)
-                        {
-                            vmag = pv1 = 1.0F;
-                            var_f20 = -gn->unk_gn_0x38;
-                        }
-                        else
-                        {
-                            pv1 = vmag = syUtilsRandFloat();
-
-                            if (gn->kind != 0)
-                            {
-                                vmag = pv1 = sqrtf(pv1);
-                            }
-                            var_f20 = gn->unk_gn_0x38 * pv1;
-                        }
-                        if (gn->unk_gn_0x3C < 0.0F)
-                        {
-                            pv0 += spB8;
-                            pv1 = -gn->unk_gn_0x3C;
-                        }
-                        else
-                        {
-                            pv0 = gn->generator_vars.rotate.base + (syUtilsRandFloat() * (gn->generator_vars.rotate.target - gn->generator_vars.rotate.base));
-                            pv1 *= gn->unk_gn_0x3C;
-                        }
-                        zero = 0.0F;
-                        
-                        spEC = __cosf(pv0) * var_f20;
-                        temp_f26 = __sinf(pv0) * var_f20;
-                        pm1 = __sinf(pv1) * magnitude;
-
-                        vel_x = __cosf(pv0) * pm1;
-                        vel_y = __sinf(pv0) * pm1;
-                        vel_z = __cosf(pv1) * magnitude;
-
-                        pos_x = (spEC * cos_angle2) + zero + gn->pos.x;
-                        pos_y = (-spEC * sin_angle1 * sin_angle2) + (temp_f26 * cos_angle1) + zero + gn->pos.y;
-                        pos_z = (-spEC * cos_angle1 * sin_angle2) - (temp_f26 * sin_angle1) + zero + gn->pos.z;
-
-                        temp_vel_x = (vel_x * cos_angle2) + (vel_z * sin_angle2);
-                        temp_vel_y = (-vel_x * sin_angle1 * sin_angle2) + (vel_y * cos_angle1) + (vel_z * sin_angle1 * cos_angle2);
-                        temp_vel_z = (-vel_x * cos_angle1 * sin_angle2) - (vel_y * sin_angle1) + (vel_z * cos_angle1 * cos_angle2);
-
-                        if (gn->kind == 3)
-                        {
-                            temp_vel_x *= vmag;
-                            temp_vel_y *= vmag;
-                            temp_vel_z *= vmag;
-                        }
-                        lbParticleMakeParam
-                        (
-                            gn->bank_id,
-                            gn->flags,
-                            gn->texture_id,
-                            gn->bytecode,
-                            gn->particle_lifetime,
-                            pos_x,
-                            pos_y,
-                            pos_z,
-                            temp_vel_x,
-                            temp_vel_y,
-                            temp_vel_z,
-                            gn->size,
-                            gn->gravity,
-                            gn->friction,
-                            0,
-                            gn
-                        );
-                        break;
-                        
-                    case 1:
-                        vel_x = vel.x;
-                        vel_y = vel.y;
-                        vel_z = vel.z;
-                        
-                        pos_random = syUtilsRandFloat();
-
-                        pos_x = gn->pos.x + (pos_random * (gn->generator_vars.move.x - gn->pos.x));
-                        pos_y = gn->pos.y + (pos_random * (gn->generator_vars.move.y - gn->pos.y));
-                        pos_z = gn->pos.z + (pos_random * (gn->generator_vars.move.z - gn->pos.z));
-                        
-                        lbParticleMakeParam
-                        (
-                            gn->bank_id,
-                            gn->flags,
-                            gn->texture_id,
-                            gn->bytecode,
-                            gn->particle_lifetime,
-                            pos_x,
-                            pos_y,
-                            pos_z,
-                            vel.x,
-                            vel.y,
-                            vel.z,
-                            gn->size,
-                            gn->gravity,
-                            gn->friction,
-                            0,
-                            gn
-                        );
-                        break;
-                        
-                    case 2:
-                        vel_x = vel.x;
-                        vel_y = vel.y;
-                        vel_z = vel.z;
-                        
-                        angle1 = syUtilsArcTan2(vel_y, vel_z);
-                        sin_angle1 = __sinf(angle1);
-                        cos_angle1 = __cosf(angle1);
-                        // spF8 = cos_angle1;
-                        angle2 = syUtilsArcTan2(vel_x, (vel_y * sin_angle1) + (vel_z * cos_angle1));
-                        
-                        magnitude = sqrtf(SQUARE(vel_x) + SQUARE(vel_y) + SQUARE(vel_z));
-                        
-                        pv1 = (gn->unk_gn_0x38 < 0.0F) ? 1.0F : syUtilsRandFloat();
-
-                        pv0 = (gn->unk_gn_0x3C < 0.0F) ? pv0 + spB8 : syUtilsRandFloat() * F_CST_DTOR32(360.0F);
-
-                        gn->generator_vars.unk_gn_vars.f = magnitude;
-
-                        if
-                        (
-                            lbParticleMakeParam
-                            (
-                                gn->bank_id,
-                                gn->flags | 0x4,
-                                gn->texture_id,
-                                gn->bytecode,
-                                gn->particle_lifetime,
-                                0,
-                                0,
-                                0,
-                                pv0,
-                                pv1,
-                                0,
-                                gn->size,
-                                angle1,
-                                angle2,
-                                0,
-                                gn
-                            ) != NULL
-                        )
-                        {
-                            gn->generator_vars.unk_gn_vars.halfword++;
-                        }
-                        break;
-                        
-                    default:
-                        // OK seriously this order swap is ridiculous
-                        if (sLBParticleGeneratorFuncDefault != NULL)
-                        {
-                            sLBParticleGeneratorFuncDefault(gn, &vel);
-                        }
-                        break;
-                    }
-                    gn->unk_gn_0x44 -= 1.0F;
-            }
-            if (gn->generator_lifetime != 0)
-            {
-                gn->generator_lifetime--;
-
-                if (gn->generator_vars.rotate.target); // bruh
-    
-                if (gn->generator_lifetime == 0)
-                {
-                    if ((gn->kind == 2) && (gn->generator_vars.unk_gn_vars.halfword != 0))
-                    {
-                        gn->unk_gn_0x40 = 0.0F;
-                        gn->generator_lifetime = 1;
-                    }
-                    else
-                    {
-                        if (sLBParticleGeneratorsLastProcessed == NULL)
-                        {
-                            sLBParticleGeneratorsQueued = gn->next;
-                        }
-                        else sLBParticleGeneratorsLastProcessed->next = gn->next;
-                
-                        next_gn = gn->next;
-                
-                        if (gn->xf != NULL)
-                        {
-                            gn->xf->users_num--;
-                    
-                            if (gn->xf->users_num == 0)
-                            {
-                                lbParticleEjectTransform(gn->xf);
-                            }
-                        }
-                        gn->next = sLBParticleGeneratorsAllocFree;
-                        sLBParticleGeneratorsAllocFree = gn;
-                
-                        gn = next_gn;
-                
-                        gLBParticleGeneratorsUsedNum--;
-
-                        continue;
-                    }
-                }
-            }
+        if (gobj->flags & (1 << ((gn->bank_id >> 3) + 0x10)))
+        {
             sLBParticleGeneratorsLastProcessed = gn;
 
             gn = gn->next;
+
+            continue;
         }
+        if (gn->flags & LBPARTICLE_FLAG_PAUSE)
+        {
+            sLBParticleGeneratorsLastProcessed = gn;
+
+            gn = gn->next;
+
+            continue;
+        }
+        if (gn->update_rate < 0.0F)
+        {
+            gn->frame -= gn->update_rate;
+        }
+        else gn->frame += (syUtilsRandFloat() * gn->update_rate);
+
+        if (gn->frame >= 1.0F)
+        {
+            vel.x = gn->vel.x;
+            vel.y = gn->vel.y;
+            vel.z = gn->vel.z;
+
+            if (gn->dobj != NULL)
+            {
+                lbParticleGetPosVelDObj(&pos, &vel, gn->dobj);
+                    
+                gn->pos.x = pos.x;
+                gn->pos.y = pos.y;
+                gn->pos.z = pos.z;
+            }
+            switch (gn->kind)
+            {
+            case 0:
+            case 3:
+            case 4:
+                pv0 = gn->generator_vars.rotate.base + (syUtilsRandFloat() * (gn->generator_vars.rotate.target - gn->generator_vars.rotate.base));
+                spB8 = (gn->generator_vars.rotate.target - gn->generator_vars.rotate.base) / (s32) gn->frame;
+                break;
+
+            default:
+                pv0 = F_CST_DTOR32(360.0F) * syUtilsRandFloat();
+                spB8 = F_CST_DTOR32(360.0F) / (s32) gn->frame;
+                break;
+            }
+        }
+        while (gn->frame >= 1.0F)
+        {
+            switch (gn->kind)
+            {
+            case 0:
+            case 3:
+            case 4:
+                vel_x = vel.x;
+                vel_y = vel.y;
+                vel_z = vel.z;
+                        
+                angle1 = syUtilsArcTan2(vel_y, vel_z);
+                        
+                sin_angle1 = __sinf(angle1); // spFC
+                cos_angle1 = __cosf(angle1); // spF8
+
+                angle2 = syUtilsArcTan2(vel_x, (vel_y * sin_angle1) + (vel_z * cos_angle1));
+                        
+                sin_angle2 = __sinf(angle2); // spF4
+                cos_angle2 = __cosf(angle2); // spF0
+                // spFC = sin_angle1;
+                magnitude = sqrtf(SQUARE(vel_x) + SQUARE(vel_y) + SQUARE(vel_z)); // sp108
+                        
+                if (gn->unk_gn_0x38 < 0.0F)
+                {
+                    vmag = pv1 = 1.0F;
+                    var_f20 = -gn->unk_gn_0x38;
+                }
+                else
+                {
+                    pv1 = vmag = syUtilsRandFloat();
+
+                    if (gn->kind != 0)
+                    {
+                        vmag = pv1 = sqrtf(pv1);
+                    }
+                    var_f20 = gn->unk_gn_0x38 * pv1;
+                }
+                if (gn->unk_gn_0x3C < 0.0F)
+                {
+                    pv0 += spB8;
+                    pv1 = -gn->unk_gn_0x3C;
+                }
+                else
+                {
+                    pv0 = gn->generator_vars.rotate.base + (syUtilsRandFloat() * (gn->generator_vars.rotate.target - gn->generator_vars.rotate.base));
+                    pv1 *= gn->unk_gn_0x3C;
+                }
+                zero = 0.0F;
+                        
+                spEC = __cosf(pv0) * var_f20;
+                temp_f26 = __sinf(pv0) * var_f20;
+                pm1 = __sinf(pv1) * magnitude;
+
+                vel_x = __cosf(pv0) * pm1;
+                vel_y = __sinf(pv0) * pm1;
+                vel_z = __cosf(pv1) * magnitude;
+
+                pos_x = (spEC * cos_angle2) + zero + gn->pos.x;
+                pos_y = (-spEC * sin_angle1 * sin_angle2) + (temp_f26 * cos_angle1) + zero + gn->pos.y;
+                pos_z = (-spEC * cos_angle1 * sin_angle2) - (temp_f26 * sin_angle1) + zero + gn->pos.z;
+
+                temp_vel_x = (vel_x * cos_angle2) + (vel_z * sin_angle2);
+                temp_vel_y = (-vel_x * sin_angle1 * sin_angle2) + (vel_y * cos_angle1) + (vel_z * sin_angle1 * cos_angle2);
+                temp_vel_z = (-vel_x * cos_angle1 * sin_angle2) - (vel_y * sin_angle1) + (vel_z * cos_angle1 * cos_angle2);
+
+                if (gn->kind == 3)
+                {
+                    temp_vel_x *= vmag;
+                    temp_vel_y *= vmag;
+                    temp_vel_z *= vmag;
+                }
+                lbParticleMakeParam
+                (
+                    gn->bank_id,
+                    gn->flags,
+                    gn->texture_id,
+                    gn->bytecode,
+                    gn->particle_lifetime,
+                    pos_x,
+                    pos_y,
+                    pos_z,
+                    temp_vel_x,
+                    temp_vel_y,
+                    temp_vel_z,
+                    gn->size,
+                    gn->gravity,
+                    gn->friction,
+                    0,
+                    gn
+                );
+                break;
+                        
+            case 1:
+                vel_x = vel.x;
+                vel_y = vel.y;
+                vel_z = vel.z;
+                        
+                pos_random = syUtilsRandFloat();
+
+                pos_x = gn->pos.x + (pos_random * (gn->generator_vars.move.x - gn->pos.x));
+                pos_y = gn->pos.y + (pos_random * (gn->generator_vars.move.y - gn->pos.y));
+                pos_z = gn->pos.z + (pos_random * (gn->generator_vars.move.z - gn->pos.z));
+                        
+                lbParticleMakeParam
+                (
+                    gn->bank_id,
+                    gn->flags,
+                    gn->texture_id,
+                    gn->bytecode,
+                    gn->particle_lifetime,
+                    pos_x,
+                    pos_y,
+                    pos_z,
+                    vel.x,
+                    vel.y,
+                    vel.z,
+                    gn->size,
+                    gn->gravity,
+                    gn->friction,
+                    0,
+                    gn
+                );
+                break;
+                        
+            case 2:
+                vel_x = vel.x;
+                vel_y = vel.y;
+                vel_z = vel.z;
+                        
+                angle1 = syUtilsArcTan2(vel_y, vel_z);
+                sin_angle1 = __sinf(angle1);
+                cos_angle1 = __cosf(angle1);
+                // spF8 = cos_angle1;
+                angle2 = syUtilsArcTan2(vel_x, (vel_y * sin_angle1) + (vel_z * cos_angle1));
+                        
+                magnitude = sqrtf(SQUARE(vel_x) + SQUARE(vel_y) + SQUARE(vel_z));
+                        
+                pv1 = (gn->unk_gn_0x38 < 0.0F) ? 1.0F : syUtilsRandFloat();
+                pv0 = (gn->unk_gn_0x3C < 0.0F) ? pv0 + spB8 : syUtilsRandFloat() * F_CST_DTOR32(360.0F);
+
+                gn->generator_vars.vortex.f = magnitude;
+
+                if
+                (
+                    lbParticleMakeParam
+                    (
+                        gn->bank_id,
+                        gn->flags | LBPARTICLE_FLAG_VORTEX,
+                        gn->texture_id,
+                        gn->bytecode,
+                        gn->particle_lifetime,
+                        0,
+                        0,
+                        0,
+                        pv0,
+                        pv1,
+                        0,
+                        gn->size,
+                        angle1,
+                        angle2,
+                        0,
+                        gn
+                    ) != NULL
+                )
+                {
+                    gn->generator_vars.vortex.lifetime++;
+                }
+                break;
+                        
+            default:
+                // OK seriously this order swap is ridiculous
+                if (sLBParticleGeneratorFuncDefault != NULL)
+                {
+                    sLBParticleGeneratorFuncDefault(gn, &vel);
+                }
+                break;
+            }
+            gn->frame -= 1.0F;
+        }
+        if (gn->generator_lifetime != 0)
+        {
+            gn->generator_lifetime--;
+
+            if (gn->generator_vars.rotate.target); // bruh
     
+            if (gn->generator_lifetime == 0)
+            {
+                if ((gn->kind == nLBParticleKindVortex) && (gn->generator_vars.vortex.lifetime != 0))
+                {
+                    gn->update_rate = 0.0F;
+                    gn->generator_lifetime = 1;
+                }
+                else
+                {
+                    if (sLBParticleGeneratorsLastProcessed == NULL)
+                    {
+                        sLBParticleGeneratorsQueued = gn->next;
+                    }
+                    else sLBParticleGeneratorsLastProcessed->next = gn->next;
+                
+                    next_gn = gn->next;
+                
+                    if (gn->xf != NULL)
+                    {
+                        gn->xf->users_num--;
+                
+                        if (gn->xf->users_num == 0)
+                        {
+                            lbParticleEjectTransform(gn->xf);
+                        }
+                    }
+                    gn->next = sLBParticleGeneratorsAllocFree;
+                    sLBParticleGeneratorsAllocFree = gn;
+                
+                    gn = next_gn;
+                
+                    gLBParticleGeneratorsUsedNum--;
+
+                    continue;
+                }
+            }
+        }
+        sLBParticleGeneratorsLastProcessed = gn;
+
+        gn = gn->next;
+    }
 }
 #else
 #pragma GLOBAL_ASM("asm/nonmatchings/lb/lbparticle/lbParticleGeneratorProcRun.s")
@@ -2663,13 +2663,13 @@ LBGenerator* lbParticleMakeGenerator(s32 bank_id, s32 script_id)
         
         gn->unk_gn_0x38 = sLBParticleScriptBanks[id][script_id]->unk_script_0x20;
         gn->unk_gn_0x3C = sLBParticleScriptBanks[id][script_id]->unk_script_0x24;
-        gn->unk_gn_0x40 = sLBParticleScriptBanks[id][script_id]->unk_script_0x28;
+        gn->update_rate = sLBParticleScriptBanks[id][script_id]->update_rate;
         
-        gn->unk_gn_0x44 = 0.0F;
+        gn->frame = 0.0F;
         
         if (sLBParticleTextureBanks[id][sLBParticleScriptBanks[id][script_id]->texture_id]->flags != 0)
         {
-            gn->flags |= 0x10;
+            gn->flags |= LBPARTICLE_FLAG_SHAREDPAL;
         }
         gn->dobj = NULL;
         
@@ -2689,7 +2689,7 @@ LBGenerator* lbParticleMakeGenerator(s32 bank_id, s32 script_id)
             break;
             
         case 2:
-            gn->generator_vars.unk_gn_vars.halfword = 0;
+            gn->generator_vars.vortex.lifetime = 0;
             break;
             
         default:
@@ -2712,9 +2712,9 @@ void lbParticleEjectGenerator(LBGenerator *this_gn)
     {
         if (current_gn == this_gn)
         {
-            if ((this_gn->kind == 2) && (this_gn->generator_vars.unk_gn_vars.halfword != 0))
+            if ((this_gn->kind == nLBParticleKindVortex) && (this_gn->generator_vars.vortex.lifetime != 0))
             {
-                this_gn->unk_gn_0x40 = 0.0F;
+                this_gn->update_rate = 0.0F;
                 this_gn->generator_lifetime = 1;
                 
                 break;
@@ -2793,9 +2793,9 @@ void lbParticleEjectStructID(u16 generator_id, s32 link_id)
             }
             else prev_pc->next = current_pc->next;
                 
-            if ((current_pc->gn != NULL) && (current_pc->flags & 0x4) && (current_pc->gn->kind == 2))
+            if ((current_pc->gn != NULL) && (current_pc->flags & LBPARTICLE_FLAG_VORTEX) && (current_pc->gn->kind == nLBParticleKindVortex))
             {
-                current_pc->gn->generator_vars.unk_gn_vars.halfword--;
+                current_pc->gn->generator_vars.vortex.lifetime--;
             }
             if (current_pc->xf != NULL)
             {
@@ -2823,9 +2823,9 @@ void lbParticleEjectStructID(u16 generator_id, s32 link_id)
         
         if (current_gn->generator_id == generator_id)
         {
-            if ((current_gn->kind == 2) && (current_gn->generator_vars.unk_gn_vars.halfword != 0))
+            if ((current_gn->kind == nLBParticleKindVortex) && (current_gn->generator_vars.vortex.lifetime != 0))
             {
-                current_gn->unk_gn_0x40 = 0.0F;
+                current_gn->update_rate = 0.0F;
                 current_gn->generator_lifetime = 1;
                 
                 prev_gn = current_gn;

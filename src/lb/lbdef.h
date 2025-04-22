@@ -10,7 +10,8 @@
 
 #define LBPARTICLE_FLAG_GRAVITY         0x1         // Particle has gravity?
 #define LBPARTICLE_FLAG_FRICTION        0x2         // Particle has friction?
-#define LBPARTICLE_FLAG_0x4             0x4         // Some generator lifetime thing
+#define LBPARTICLE_FLAG_VORTEX          0x4         // This description might be wrong... Toggled off, this causes Hyrule tornado particles to stay on the floor like a puddle
+#define LBPARTICLE_FLAG_SHAREDPAL		0x10		// All images in texture series share the same palette
 #define LBPARTICLE_FLAG_MASKS           0x20        // Use S-Axis mask
 #define LBPARTICLE_FLAG_MASKT           0x40        // Use T-Axis mask
 #define LBPARTICLE_FLAG_ENVCOLOR        0x80        // Use environment color
@@ -152,8 +153,8 @@
 #define LBBACKUP_UNLOCK_MASK_NEWCOMERS (LBBACKUP_UNLOCK_MASK_LUIGI | LBBACKUP_UNLOCK_MASK_PURIN | LBBACKUP_UNLOCK_MASK_CAPTAIN | LBBACKUP_UNLOCK_MASK_NESS)
 #define LBBACKUP_UNLOCK_MASK_PRIZE (LBBACKUP_UNLOCK_MASK_ALL & ~LBBACKUP_UNLOCK_MASK_NEWCOMERS)
 
-#define LBBACKUP_GROUND_MASK_ALL 					\
-(													\
+#define LBBACKUP_GROUND_MASK_ALL 			\
+(											\
 	LBBACKUP_MASK_STAGE(nGRKindCastle) 	| 	\
 	LBBACKUP_MASK_STAGE(nGRKindSector) 	|	\
 	LBBACKUP_MASK_STAGE(nGRKindJungle) 	|	\
@@ -169,16 +170,22 @@
 #define LBBACKUP_ERROR_1PGAMEMARIO 	(1 << nLBBackupError1PGameMario) 			// 0x4 - Forces Mario in 1P Game
 #define LBBACKUP_ERROR_VSBATTLECASTLE (1 << nLBBackupErrorVSBattleCastle) 	    // 0x8 - Forces Peach's Castle in VS Mode
 
-typedef enum lbFileLocation
+typedef enum LBParticleKind
+{
+	nLBParticleKindVortex = 2
+
+} LBParticleKind;
+
+typedef enum LBFileLocation
 {
     nLBFileLocationExtern,
     nLBFileLocationDefault,
     nLBFileLocationForce,
 	nLBFileLocationEnumCount
 
-} lbFileLocation;
+} LBFileLocation;
 
-typedef enum lbBackupUnlock
+typedef enum LBBackupUnlock
 {
 	nLBBackupUnlockLuigi,	 			    // Luigi
 	nLBBackupUnlockNess,				    // Ness
@@ -189,16 +196,16 @@ typedef enum lbBackupUnlock
 	nLBBackupUnlockItemSwitch, 			    // Item Switch menu
 	nLBBackupUnlockEnumCount
 
-} lbBackupUnlock;
+} LBBackupUnlock;
 
-typedef enum lbBackupErrors
+typedef enum LBBackupErrors
 {
 	nLBBackupErrorRandomKnockback,
 	nLBBackupErrorHalfStickRange,
 	nLBBackupError1PGameMario,
 	nLBBackupErrorVSBattleCastle
 
-} lbBackupErrors;
+} LBBackupErrors;
 
 typedef struct LBRelocSetup					LBRelocSetup;
 typedef union  LBRelocDesc					LBRelocDesc;

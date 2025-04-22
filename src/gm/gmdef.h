@@ -82,7 +82,7 @@
 
 #define gmColCommandParallel(addr) gmColCommandParallelS1, gmColCommandParallelS2(addr)
 
-#define gmColCommandToggleColorOff() GC_FIELDSET(nGMColEventToggleColorOff, 26, 6)
+#define gmColCommandClearColorAll() GC_FIELDSET(nGMColEventClearColorAll, 26, 6)
 
 #define gmColCommandSetColor1S1() GC_FIELDSET(nGMColEventSetColor1, 26, 6)
 #define gmColCommandSetColor1S2(r, g, b, a) (GC_FIELDSET(r, 24, 8) | GC_FIELDSET(g, 16, 8) | GC_FIELDSET(b, 8, 8) | GC_FIELDSET(a, 0, 8))
@@ -126,8 +126,8 @@ gmColCommandEffectItemHoldS1(joint, effect_id, flag), gmColCommandEffectItemHold
 
 #define gmColCommandSetLight(angle1, angle2) (GC_FIELDSET(nGMColEventSetLight, 26, 6) | GC_FIELDSET(angle1, 13, 13) | GC_FIELDSET(angle2, 0, 13))
 
-#define gmColCommandToggleLightOff() GC_FIELDSET(nGMColEventToggleLightOff, 26, 6)
-#define gmColCommandPlaySFX(sfx_id) (GC_FIELDSET(nGMColEventPlaySFX, 26, 6) | GC_FIELDSET(sfx_id, 0, 26))
+#define gmColCommandClearLight() GC_FIELDSET(nGMColEventClearLight, 26, 6)
+#define gmColCommandPlayFGM(sfx_id) (GC_FIELDSET(nGMColEventPlayFGM, 26, 6) | GC_FIELDSET(sfx_id, 0, 26))
 #define gmColCommandSetSkeletonID(skeleton_id) (GC_FIELDSET(nGMColEventSetSkeletonID, 26, 6) | GC_FIELDSET(skeleton_id, 0, 26))
 
 #define CAMERA_FLAG_BOUND_LEFT   (1 << nGMCameraBoundLeft)
@@ -241,7 +241,7 @@ typedef enum GMColEvent
 	nGMColEventSubroutine,
 	nGMColEventReturn,
 	nGMColEventSetParallelScript,
-	nGMColEventToggleColorOff,
+	nGMColEventClearColorAll,
 	nGMColEventSetColor1,
 	nGMColEventBlendColor1,
 	nGMColEventSetColor2,
@@ -249,8 +249,8 @@ typedef enum GMColEvent
 	nGMColEventEffect,
 	nGMColEventEffectItemHoldOffset, // ???
 	nGMColEventSetLight,
-	nGMColEventToggleLightOff,
-	nGMColEventPlaySFX,
+	nGMColEventClearLight,
+	nGMColEventPlayFGM,
 	nGMColEventSetSkeletonID
 
 } GMColEvent;
@@ -271,50 +271,50 @@ typedef enum GMColAnimKind
 	nGMColAnimFighterRebirth,
 
 	nGMColAnimFighterDamageFireStart,
-	nGMColAnimFighterDamageFireLow = nGMColAnimFighterDamageFireStart,
+	nGMColAnimFighterDamageFireWeak = nGMColAnimFighterDamageFireStart,
 	nGMColAnimFighterDamageFireMid,
-	nGMColAnimFighterDamageFireHigh,
-	nGMColAnimFighterDamageFireAir,
-	nGMColAnimFighterDamageFireEnd = nGMColAnimFighterDamageFireAir,
+	nGMColAnimFighterDamageFireStrong,
+	nGMColAnimFighterDamageFireFly,
+	nGMColAnimFighterDamageFireEnd = nGMColAnimFighterDamageFireFly,
 
 	// Master Hand, Metal Mario, Fighting Polygons and Giant Donkey Kong
 	nGMColAnimFighterDamageElectricCommonStart,
-	nGMColAnimFighterDamageElectricCommonLow = nGMColAnimFighterDamageElectricCommonStart,
+	nGMColAnimFighterDamageElectricCommonWeak = nGMColAnimFighterDamageElectricCommonStart,
 	nGMColAnimFighterDamageElectricCommonMid,
-	nGMColAnimFighterDamageElectricCommonHigh,
-	nGMColAnimFighterDamageElectricCommonAir,
-	nGMColAnimFighterDamageElectricCommonEnd = nGMColAnimFighterDamageElectricCommonAir,
+	nGMColAnimFighterDamageElectricCommonStrong,
+	nGMColAnimFighterDamageElectricCommonFly,
+	nGMColAnimFighterDamageElectricCommonEnd = nGMColAnimFighterDamageElectricCommonFly,
 
 	// Common skeletons
 	nGMColAnimFighterDamageElectricSkeletonStart,
-	nGMColAnimFighterDamageElectricSkeletonLow = nGMColAnimFighterDamageElectricSkeletonStart,
+	nGMColAnimFighterDamageElectricSkeletonWeak = nGMColAnimFighterDamageElectricSkeletonStart,
 	nGMColAnimFighterDamageElectricSkeletonMid,
-	nGMColAnimFighterDamageElectricSkeletonHigh,
-	nGMColAnimFighterDamageElectricSkeletonAir,
-	nGMColAnimFighterDamageElectricSkeletonEnd = nGMColAnimFighterDamageElectricSkeletonAir,
-
-	// Kirby and Jigglypuff
-	nGMColAnimFighterDamageElectricBalloonStart,
-	nGMColAnimFighterDamageElectricBalloonLow = nGMColAnimFighterDamageElectricBalloonStart,
-	nGMColAnimFighterDamageElectricBalloonMid,
-	nGMColAnimFighterDamageElectricBalloonHigh,
-	nGMColAnimFighterDamageElectricBalloonAir,
-	nGMColAnimFighterDamageElectricBalloonEnd = nGMColAnimFighterDamageElectricBalloonAir,
+	nGMColAnimFighterDamageElectricSkeletonStrong,
+	nGMColAnimFighterDamageElectricSkeletonFly,
+	nGMColAnimFighterDamageElectricSkeletonEnd = nGMColAnimFighterDamageElectricSkeletonFly,
 
 	// Samus only
 	nGMColAnimFighterDamageElectricSamusStart,
-	nGMColAnimFighterDamageElectricSamusLow = nGMColAnimFighterDamageElectricSamusStart,
+	nGMColAnimFighterDamageElectricSamusWeak = nGMColAnimFighterDamageElectricSamusStart,
 	nGMColAnimFighterDamageElectricSamusMid,
-	nGMColAnimFighterDamageElectricSamusHigh,
-	nGMColAnimFighterDamageElectricSamusAir,
-	nGMColAnimFighterDamageElectricSamusEnd = nGMColAnimFighterDamageElectricSamusAir,
+	nGMColAnimFighterDamageElectricSamusStrong,
+	nGMColAnimFighterDamageElectricSamusFly,
+	nGMColAnimFighterDamageElectricSamusEnd = nGMColAnimFighterDamageElectricSamusFly,
+
+	// Kirby and Jigglypuff
+	nGMColAnimFighterDamageElectricBalloonStart,
+	nGMColAnimFighterDamageElectricBalloonWeak = nGMColAnimFighterDamageElectricBalloonStart,
+	nGMColAnimFighterDamageElectricBalloonMid,
+	nGMColAnimFighterDamageElectricBalloonStrong,
+	nGMColAnimFighterDamageElectricBalloonFly,
+	nGMColAnimFighterDamageElectricBalloonEnd = nGMColAnimFighterDamageElectricBalloonFly,	
 
 	nGMColAnimFighterDamageIceStart,
-	nGMColAnimFighterDamageIceLow = nGMColAnimFighterDamageIceStart,
+	nGMColAnimFighterDamageIceWeak = nGMColAnimFighterDamageIceStart,
 	nGMColAnimFighterDamageIceMid,
-	nGMColAnimFighterDamageIceHigh,
-	nGMColAnimFighterDamageIceAir,
-	nGMColAnimFighterDamageIceEnd = nGMColAnimFighterDamageIceAir,
+	nGMColAnimFighterDamageIceStrong,
+	nGMColAnimFighterDamageIceFly,
+	nGMColAnimFighterDamageIceEnd = nGMColAnimFighterDamageIceFly,
 
 	nGMColAnimFighterShieldBreakFly,
 	nGMColAnimFighterFuraFura,
@@ -348,7 +348,7 @@ typedef enum GMColAnimKind
 	nGMColAnimFighterNessSpecialHiHold,
 	nGMColAnimFighterNessSpecialHiJibaku,
 	nGMColAnimFighterNessAppear,
-	nGMColAnimFighterUnknown2,
+	nGMColAnimFighterBossDeskArrange,
 	nGMColAnimFighterBossOkuhikouki,
 	nGMColAnimFighterBossOkupunch,
 	nGMColAnimFighterBossYubideppou2,

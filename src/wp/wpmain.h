@@ -5,10 +5,10 @@
 #include <ft/fttypes.h>
 
 // Stop weapon's ongoing sound effect
-void wpMainStopSFX(WPStruct* wp);
+void wpMainStopFGM(WPStruct* wp);
 
 // Play sound effect if applicable
-void wpMainPlaySFX(WPStruct* wp, u16 sfx_id);
+void wpMainPlayFGM(WPStruct* wp, u16 sfx_id);
 
 // Set weapon's facing direction based on velocity
 void wpMainVelSetLR(GObj* weapon_gobj);

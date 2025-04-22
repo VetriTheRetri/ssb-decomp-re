@@ -500,7 +500,6 @@ s32 damage_index, s32 element, s32 damage_player_num, sb32 is_rumble, sb32 is_fo
     {
         damage_level = 3;
     }
-
     this_fp->lr = damage_lr;
 
     if (this_fp->ga == nMPKineticsAir)
@@ -541,8 +540,8 @@ s32 damage_index, s32 element, s32 damage_player_num, sb32 is_rumble, sb32 is_fo
                 this_fp->physics.vel_damage_air.y = -vel_damage.y * 0.8F;
                 this_fp->physics.vel_damage_ground = 0.0F;
 
-                ftParamMakeEffect(this_gobj, nEFKindImpactWave, 0, NULL, NULL, this_fp->lr, 0, 0);
-                ftParamMakeEffect(this_gobj, nEFKindQuakeMag0, 0, NULL, NULL, this_fp->lr, 0, 0);
+                ftParamMakeEffect(this_gobj, nEFKindImpactWave, nFTPartsJointTopN, NULL, NULL, this_fp->lr, 0, 0);
+                ftParamMakeEffect(this_gobj, nEFKindQuakeMag0, nFTPartsJointTopN, NULL, NULL, this_fp->lr, 0, 0);
             }
             else
             {

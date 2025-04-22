@@ -168,12 +168,12 @@ typedef struct GMColEventSetLight
 
 } GMColEventSetLight;
 
-typedef struct GMColEventPlaySFX
+typedef struct GMColEventPlayFGM
 {
 	u32 opcode : 6;
 	u32 sfx_id : 26;
 
-} GMColEventPlaySFX;
+} GMColEventPlayFGM;
 
 typedef union GMColEventAll
 {
@@ -194,7 +194,7 @@ typedef union GMColEventAll
 	GMColEventMakeEffect3 ca_effect3;
 	GMColEventMakeEffect4 ca_effect4;
 	GMColEventSetLight ca_light;
-	GMColEventPlaySFX ca_sfx;
+	GMColEventPlayFGM ca_sfx;
 
 } GMColEventAll;
 
@@ -208,7 +208,7 @@ typedef union GMColEventAll
 
 // // 0x8012CAA4 - ColAnim Script 2
 // GMColEventDefault     GMColEvents_Col2_Ev0 = {
-// nGMColEventToggleColorOff }; GMColEventDefault
+// nGMColEventClearColorAll }; GMColEventDefault
 // GMColEvents_Col2_Ev1 = { nGMColEventEnd };
 
 // // 0x8012CAAC - ColAnim Script 3
@@ -217,7 +217,7 @@ typedef union GMColEventAll
 // GMColEvents_Col3_Ev1 = { nGMColEventBlendColor1, 3, 0xFF, 0xFF,
 // 0xFF, 0x32 }; GMColEventDefault     GMColEvents_Col3_Ev2 = {
 // nGMColEventWait, 3 }; GMColEventDefault     GMColEvents_Col3_Ev3
-// = { nGMColEventToggleColorOff }; GMColEventDefault
+// = { nGMColEventClearColorAll }; GMColEventDefault
 // GMColEvents_Col3_Ev4 = { nGMColEventWait, 1 }; GMColEventGoto
 // GMColEvents_Col3_Ev5 = { nGMColEventGoto, &GMColEvents_Col3_Ev0
 // };
@@ -228,7 +228,7 @@ typedef union GMColEventAll
 // GMColEvents_Col4_Ev1 = { nGMColEventBlendColor1, 3, 0x80, 0xFF,
 // 0x80, 0x14 }; GMColEventDefault     GMColEvents_Col4_Ev2 = {
 // nGMColEventWait, 3 }; GMColEventDefault     GMColEvents_Col4_Ev3
-// = { nGMColEventToggleColorOff }; GMColEventDefault
+// = { nGMColEventClearColorAll }; GMColEventDefault
 // GMColEvents_Col4_Ev4 = { nGMColEventWait, 1 }; GMColEventGoto
 // GMColEvents_Col4_Ev5 = { nGMColEventGoto, &GMColEvents_Col4_Ev0
 // };
@@ -236,7 +236,7 @@ typedef union GMColEventAll
 // // 0x8012CAF4 - ColAnim Script 5
 // GMColEventSetLight    GMColEvents_Col5_Ev0 = {
 // nGMColEventSetLight, 90, 0 }; GMColEventDefault
-// GMColEvents_Col5_Ev1 = { nGMColEventToggleColorOff };
+// GMColEvents_Col5_Ev1 = { nGMColEventClearColorAll };
 // GMColEventDefault     GMColEvents_Col5_Ev2 = { nGMColEventWait, 1
 // }; GMColEventSetRGBA     GMColEvents_Col5_Ev3 = {
 // nGMColEventSetColor1, 0xFF, 0xFF, 0xFF, 0xE6 }; GMColEventDefault
@@ -244,7 +244,7 @@ typedef union GMColEventAll
 // GMColEvents_Col5_Ev5 = { nGMColEventBlendColor1, 6, 0xFF, 0xFF,
 // 0xFF, 0x1E }; GMColEventDefault     GMColEvents_Col5_Ev6 = {
 // nGMColEventWait, 6 }; GMColEventDefault     GMColEvents_Col5_Ev7
-// = { nGMColEventToggleColorOff }; GMColEventDefault
+// = { nGMColEventClearColorAll }; GMColEventDefault
 // GMColEvents_Col5_Ev8 = { nGMColEventEnd };
 
 // // Next: 8012CB20

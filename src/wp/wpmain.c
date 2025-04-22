@@ -11,7 +11,7 @@ extern alSoundEffect* func_800269C0_275C0(u16);
 // // // // // // // // // // // //
 
 // 0x80167EB0
-void wpMainStopSFX(WPStruct *wp) // Stop weapon's ongoing SFX
+void wpMainStopFGM(WPStruct *wp) // Stop weapon's ongoing SFX
 {
     if (wp->p_sfx != NULL)
     {
@@ -25,11 +25,11 @@ void wpMainStopSFX(WPStruct *wp) // Stop weapon's ongoing SFX
 }
 
 // 0x80167F08
-void wpMainPlaySFX(WPStruct *wp, u16 sfx_id) // Play sound effect for weapon
+void wpMainPlayFGM(WPStruct *wp, u16 sfx_id) // Play sound effect for weapon
 {
     if (wp->p_sfx != NULL)
     {
-        wpMainStopSFX(wp);
+        wpMainStopFGM(wp);
     }
     wp->p_sfx = func_800269C0_275C0(sfx_id);
 
@@ -73,7 +73,7 @@ void wpMainDestroyWeapon(GObj *weapon_gobj) // Destroy weapon?
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    wpMainStopSFX(wp);                  // Stop weapon's SFX
+    wpMainStopFGM(wp);                  // Stop weapon's SFX
     wpManagerSetPrevStructAlloc(wp);    // Eject weapon's user_data from memory?
     gcEjectGObj(weapon_gobj);           // Eject GObj from memory?
 }

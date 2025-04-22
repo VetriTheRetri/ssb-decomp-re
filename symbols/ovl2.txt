@@ -1,3 +1,4 @@
+func_ovl2_800EDBA4 = 0x800EDBA4;
 dFTManagerDataFiles = 0x80116E10; // segment:ovl2 size:0x2C
 D_ovl2_80116E3C = 0x80116E3C; // segment:ovl2 size:0xC
 D_ovl2_80116E48 = 0x80116E48; // segment:ovl2 size:0x30

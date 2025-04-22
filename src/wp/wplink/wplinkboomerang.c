@@ -146,7 +146,7 @@ void wpLinkBoomerangSetReturnVars(GObj *weapon_gobj, sb32 angle_max_or_min)
 
     DObjGetStruct(weapon_gobj)->child->child->flags = DOBJ_FLAG_NOTEXTURE;
 
-    wpMainPlaySFX(wp, nSYAudioFGMLinkSpecialNReturn);
+    wpMainPlayFGM(wp, nSYAudioFGMLinkSpecialNReturn);
 }
 
 // 0x8016CE90
@@ -592,7 +592,7 @@ GObj* wpLinkBoomerangMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 
     wp->is_camera_follow = TRUE;
 
-    wpMainPlaySFX(wp, nSYAudioFGMLinkSpecialNShoot);
+    wpMainPlayFGM(wp, nSYAudioFGMLinkSpecialNShoot);
 
     wp->weapon_vars.boomerang.parent_gobj = fighter_gobj;
     wp->weapon_vars.boomerang.flags = WPLINK_BOOMERANG_FLAG_FORWARD;

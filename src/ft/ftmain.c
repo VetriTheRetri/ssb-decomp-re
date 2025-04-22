@@ -341,7 +341,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         ftMotionEventAdvance(ms, FTMotionEventSetThrow2);
         break;
 
-    case nFTMotionEventPlaySFXStoreInfo:
+    case nFTMotionEventPlayFGMStoreInfo:
         if (!(fp->is_muted))
         {
             fp->p_sfx = func_800269C0_275C0(ftMotionEventCastAdvance(ms, FTMotionEventDefault)->value);
@@ -351,7 +351,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         else ftMotionEventAdvance(ms, FTMotionEventDefault);
         break;
 
-    case nFTMotionEventPlaySFX:
+    case nFTMotionEventPlayFGM:
         if (!(fp->is_muted))
         {
             func_800269C0_275C0(ftMotionEventCastAdvance(ms, FTMotionEventDefault)->value);
@@ -798,12 +798,12 @@ void ftMainUpdateMotionEventsForward(GObj *fighter_gobj)
                     case nFTMotionEventSetAttackCollSize:
                     case nFTMotionEventSetAttackCollSoundLevel:
                     case nFTMotionEventRefreshAttackCollID:
-                    case nFTMotionEventPlaySFX:
+                    case nFTMotionEventPlayFGM:
                     case nFTMotionEventPlayLoopSFXStoreInfo:
                     case nFTMotionEventStopLoopSFX:
                     case nFTMotionEventPlayVoiceStoreInfo:
                     case nFTMotionEventPlayLoopVoiceStoreInfo:
-                    case nFTMotionEventPlaySFXStoreInfo:
+                    case nFTMotionEventPlayFGMStoreInfo:
                     case nFTMotionEventPlaySmashVoice:
                     case nFTMotionEventSetFlag0:
                     case nFTMotionEventSetFlag1:
@@ -1047,7 +1047,7 @@ sb32 ftMainUpdateColAnim(GMColAnim *colanim, GObj *fighter_gobj, sb32 is_muted, 
                 gmColEventAdvance(colanim->cs[i].p_script, GMColEventParallel2);
                 break;
 
-            case nGMColEventToggleColorOff:
+            case nGMColEventClearColorAll:
                 colanim->is_use_color1 = colanim->is_use_color2 = colanim->skeleton_id = 0;
 
                 gmColEventAdvance(colanim->cs[i].p_script, GMColEventDefault);
@@ -1150,13 +1150,13 @@ sb32 ftMainUpdateColAnim(GMColAnim *colanim, GObj *fighter_gobj, sb32 is_muted, 
                 gmColEventAdvance(colanim->cs[i].p_script, GMColEventSetLight);
                 break;
 
-            case nGMColEventToggleLightOff:
+            case nGMColEventClearLight:
                 colanim->is_use_light = FALSE;
 
                 gmColEventAdvance(colanim->cs[i].p_script, GMColEventDefault);
                 break;
 
-            case nGMColEventPlaySFX:
+            case nGMColEventPlayFGM:
                 if (is_muted == FALSE)
                 {
                     func_800269C0_275C0(gmColEventCastAdvance(colanim->cs[i].p_script, GMColEventDefault)->value);

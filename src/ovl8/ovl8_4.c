@@ -22,58 +22,62 @@ void func_ovl8_8037C30C(dbUnknownLink*, s32);
 void func_ovl8_8037EB00(dbUnknownS38*, s32);
 void func_ovl8_8038120C(dbUnknownLinkStruct* arg0, s32 arg1);
 
+#ifdef NON_MATCHING
+/*
+ * NONMATCHING: instruction order around func_ovl8_803717E0
+ */
 
+void* func_ovl8_80372790(dbUnknownS38* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2)
+{
+    if (arg0 != NULL || ((arg0 = func_ovl8_803717A0(0xA0)) != NULL))
+	{
+        if (arg1 == NULL)
+		{
+            arg1 = &arg0->unk_dbunks38_0x38;
+            arg2 = &arg0->unk_dbunks38_0x94;
+            func_ovl8_803717E0(arg1);
+            func_ovl8_8037C2D0(arg2);
+        }
+        func_ovl8_803751C0(arg0, arg1, arg2);
+        arg0->unk_dbunks38_0x18 = D_ovl8_80388E60;
+        arg1->db_func = D_ovl8_80388F18;
+        arg2->unk_dbunklink_0x8 = D_ovl8_80389070;
+        func_ovl8_80373308(arg0, NULL);
+    }
+    return arg0;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_4/func_ovl8_80372790.s")
-// void* func_ovl8_80372790(dbUnknownS38* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2)
-// {
-// 	if (arg0 != NULL || ((arg0 = func_ovl8_803717A0(0xA0)) != NULL))
-// 	{
-// 		if (arg1 == NULL)
-// 		{
-// 			arg1 = &arg0->unk_dbunks38_0x38;
-// 			arg2 = &arg0->unk_dbunks38_0x94;
-// 			func_ovl8_803717E0(arg1);
-// 			func_ovl8_8037C2D0(arg2);
-// 		}
-// 		func_ovl8_803751C0(arg0, arg1, arg2);
-// 		arg0->unk_dbunks38_0x18 = D_ovl8_80388E60;
-// 		arg1->db_func = D_ovl8_80388F18;
-// 		arg2->unk_dbunklink_0x8 = D_ovl8_80389070;
-// 		func_ovl8_80373308(arg0, NULL);
-// 	}
-// 	return arg0;
-// }
+#endif /* NON_MATCHING */
 
+#ifdef NON_MATCHING
+/*
+ * NONMATCHING: instruction order around func_ovl8_803717E0
+ */
+
+void* func_ovl8_80372844(dbUnknownS38 *arg0, dbUnknownLinkStruct *arg1, dbUnknownLink *arg2, dbBytesCopy *arg3)
+{
+	if (arg0 != NULL || ((arg0 = func_ovl8_803717A0(0xA0)) != NULL))
+	{
+		if (arg1 == NULL)
+		{
+			arg1 = &arg0->unk_dbunks38_0x38;
+			arg2 = &arg0->unk_dbunks38_0x94;
+			func_ovl8_803717E0(arg1);
+			func_ovl8_8037C2D0(arg2);
+		}
+        func_ovl8_803751C0(arg0, arg1, arg2);
+    	arg0->unk_dbunks38_0x18 = D_ovl8_80388E60;
+    	arg1->db_func = D_ovl8_80388F18;
+    	arg2->unk_dbunklink_0x8 = D_ovl8_80389070;
+    	func_ovl8_80371ECC(arg0->unk_dbunks38_0x20, arg3);
+    	func_ovl8_80373308(arg0, arg3);
+    }
+    return arg0;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_4/func_ovl8_80372844.s")
-// void* func_ovl8_80372844(dbUnknownS38 *arg0, dbUnknownLinkStruct *arg1, dbUnknownLink *arg2, dbBytesCopy *arg3)
-// {
-// 	if (arg0 == NULL)
-// 	{
-// 		arg0 = func_ovl8_803717A0(0xA0);
-
-// 		if (arg0 == NULL)
-// 			goto end;
-// 	}
-// 	if (arg1 == NULL)
-// 	{
-// 		arg1 = &arg0->unk_dbunks38_0x38;
-// 		arg2 = &arg0->unk_dbunks38_0x94;
-
-// 		func_ovl8_803717E0(arg1);
-// 		func_ovl8_8037C2D0(arg2);
-// 	}
-// 	func_ovl8_803751C0(arg0, arg1, arg2);
-
-// 	arg0->unk_dbunks38_0x18 = D_ovl8_80388E60;
-// 	arg1->db_func = D_ovl8_80388F18;
-// 	arg2->unk_dbunklink_0x8 = D_ovl8_80389070;
-
-// 	func_ovl8_80371ECC(arg0->unk_dbunks38_0x20, arg3);
-
-// 	func_ovl8_80373308(arg0, arg3);
-// end:
-// 	return arg0;
-// }
+#endif /* NON_MATCHING */
 
 void* func_ovl8_80372908(void* arg0, void* arg1)
 {

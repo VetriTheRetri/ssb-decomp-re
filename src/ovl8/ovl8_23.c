@@ -189,7 +189,20 @@ void func_ovl8_80383B58(unkStructB* arg0)
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_23/func_ovl8_80383BC4.s")
 
 // 0x80383D4C
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_23/func_ovl8_80383D4C.s")
+// #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_23/func_ovl8_80383D4C.s")
+void func_ovl8_80383D4C(dbUnknown5* arg0)
+{
+    u64 time;
+    dbFunction* db_func;
+
+    time = ((u32)osGetTime() - arg0->unk_dbunk5_0x50) * 64ULL / 3000ULL;
+
+    if (time >= 1000000)
+    {
+        db_func = arg0->unk_dbunk5_0x38->db_func;
+        db_func[35].unk_dbfunc_0x4(db_func[35].unk_dbfunc_0x0 + (uintptr_t)arg0->unk_dbunk5_0x38, 1);
+    }
+}
 
 // 0x80383DD4
 void func_ovl8_80383DD4(dbUnknown5* arg0, DBMenuPosition* arg1, s32 arg2)

@@ -261,49 +261,57 @@ void func_ovl8_80372554(dbUnknownLink *arg0, u32 arg1)
 	}
 }
 
+#ifdef NON_MATCHING
+/*
+ * NONMATCHING: regswap
+ */
+
+void func_ovl8_803725DC(dbTestMenu *arg0)
+{
+    dbUnknownLinkStruct *db_unk10;
+    dbUnknownLinkStruct *db_unk4C;
+    dbUnknownLinkStruct *db_unk20;
+    db4Shorts sp3C;
+    db4Shorts sp34;
+    Sprite *sprite;
+    dbFunction *db_func;
+    dbFunction *db_func_2;
+
+    db_func = arg0->db_func;
+
+    sprite = (Sprite*) db_func[9].unk_dbfunc_0x4(db_func[9].unk_dbfunc_0x0 + (uintptr_t)arg0);
+
+    if (sprite != NULL)
+    {
+        if (db_unk10);
+        db_unk10 = arg0->unk_dbtestmenu_0x10;
+        db_unk4C = db_unk10->unk_dbunkstruct_0x4C;
+        db_unk20 = db_unk4C->unk_dbunkstruct_0x20;
+
+        db_func_2 = db_unk20->db_func;
+
+        db_func_2[20].unk_dbfunc_0x4(db_func_2[20].unk_dbfunc_0x0 + (uintptr_t)db_unk20, &sp3C);
+
+        db_unk20 = arg0->unk_dbtestmenu_0x10;
+
+        db_func = db_unk20->db_func;
+
+        db_func[20].unk_dbfunc_0x4(db_func[20].unk_dbfunc_0x0 + (uintptr_t)db_unk20, &sp34);
+
+        spMove(sprite, sp34.arr[0] + sp3C.arr[0], sp34.arr[1] + sp3C.arr[1]);
+
+        sprite->rsp_dl_next = gDisplayListHead[0];
+
+        spDraw(sprite);
+
+        gDisplayListHead[0] = sprite->rsp_dl_next - 1;
+
+        gDPPipeSync(gDisplayListHead[0]++);
+    }
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_3/func_ovl8_803725DC.s")
-// void func_ovl8_803725DC(dbTestMenu *arg0)
-// {
-// 	dbUnknownLinkStruct *db_unk10;
-// 	dbUnknownLinkStruct *db_unk4C;
-// 	dbUnknownLinkStruct *db_unk20;
-// 	db4Shorts sp3C;
-// 	db4Shorts sp34;
-// 	Sprite *sprite;
-// 	dbFunction *db_func;
-// 	s32 unused;
-
-// 	db_func = arg0->db_func;
-
-// 	sprite = (Sprite*) db_func[9].unk_dbfunc_0x4(db_func[9].unk_dbfunc_0x0 + (uintptr_t)arg0);
-
-// 	if (sprite != NULL)
-// 	{
-// 		db_unk10 = arg0->unk_dbtestmenu_0x10;
-// 		db_unk4C = db_unk10->unk_dbunkstruct_0x4C;
-// 		db_unk20 = db_unk4C->unk_dbunkstruct_0x20;
-
-// 		db_func = db_unk20->db_func;
-
-// 		db_func[20].unk_dbfunc_0x4(db_func[20].unk_dbfunc_0x0 + (uintptr_t)db_unk20, &sp3C);
-
-// 		db_unk20 = arg0->unk_dbtestmenu_0x10;
-
-// 		db_func = db_unk20->db_func;
-
-// 		db_func[20].unk_dbfunc_0x4(db_func[20].unk_dbfunc_0x0 + (uintptr_t)db_unk20, &sp34);
-
-// 		spMove(sprite, sp34.arr[0] + sp3C.arr[0], sp34.arr[1] + sp3C.arr[1]);
-
-// 		sprite->rsp_dl_next = gSYTaskmanDLHeads[0];
-
-// 		spDraw(sprite);
-
-// 		gSYTaskmanDLHeads[0] = sprite->rsp_dl_next - 1;
-
-// 		gDPPipeSync(gSYTaskmanDLHeads[0]++);
-// 	}
-// }
+#endif /* NON_MATCHING */
 
 void func_ovl8_803726CC(dbTestMenu *arg0)
 {

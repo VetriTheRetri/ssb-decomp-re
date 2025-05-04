@@ -32,8 +32,11 @@ dbUnknownLinkStruct* func_ovl8_80373350(s32 arg0, s32 arg1)
 }
 
 // 0x803733AC
-void* func_ovl8_803733AC(dbUnknown5 *arg0, dbUnknownLinkStruct *arg1, dbUnknownLink *arg2);
 #ifdef NON_MATCHING
+/*
+ * NONMATCHING: instruction order around func_ovl8_803717E0
+ */
+
 void* func_ovl8_803733AC(dbUnknown5 *arg0, dbUnknownLinkStruct *arg1, dbUnknownLink *arg2)
 {
     if (arg0 != NULL || ((arg0 = func_ovl8_803717A0(0xA4)) != NULL))
@@ -63,6 +66,10 @@ void* func_ovl8_803733AC(dbUnknown5 *arg0, dbUnknownLinkStruct *arg1, dbUnknownL
 
 // 0x8037345C
 #ifdef NON_MATCHING
+/*
+ * NONMATCHING: instruction order around func_ovl8_803717E0
+ */
+
 void* func_ovl8_8037345C(dbUnknown5 *arg0, dbUnknownLinkStruct *arg1, dbUnknownLink *arg2, dbBytesCopy2* arg3, dbUnknown5* arg4)
 {
     dbFunction *temp_v0;

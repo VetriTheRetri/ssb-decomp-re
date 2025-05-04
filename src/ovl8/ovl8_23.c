@@ -189,7 +189,6 @@ void func_ovl8_80383B58(unkStructB* arg0)
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_23/func_ovl8_80383BC4.s")
 
 // 0x80383D4C
-// #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_23/func_ovl8_80383D4C.s")
 void func_ovl8_80383D4C(dbUnknown5* arg0)
 {
     u64 time;

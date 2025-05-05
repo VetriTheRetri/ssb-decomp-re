@@ -590,7 +590,7 @@ alSeqFileNew = 0x8001E648;
 alBnkfNew = 0x8001E688;
 
 osInitialize = 0x80032250;
-osCartRgcInit = 0x80035EE0;
+osCartRomInit = 0x80035EE0;
 __osSetWatchLo = 0x800396B0;
 gSYDmaRomPiHandle = 0x80045040;
 

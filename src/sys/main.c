@@ -174,7 +174,7 @@ void syMainVerifyStackProbes(void)
 void syMainThread5(void *arg)
 {
     osCreateViManager(OS_PRIORITY_VIMGR);
-    gSYDmaRomPiHandle = osCartRgcInit();
+    gSYDmaRomPiHandle = osCartRomInit();
     syDmaSramPiInit();
     osCreatePiManager(OS_PRIORITY_PIMGR, &sSYMainPiCmdQueue, sSYMainPiCmdMesg, ARRAY_COUNT(sSYMainPiCmdMesg));
     syDmaCreateMesgQueue();

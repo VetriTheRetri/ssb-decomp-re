@@ -7,7 +7,7 @@
 
 OSPiHandle __CartRomHandle; // ALIGNED(8);
 
-OSPiHandle* osCartRgcInit()
+OSPiHandle* osCartRomInit()
 {
 	u32 value = 0;
 	u32 saveMask;

@@ -993,7 +993,7 @@ extern "C"
 
 	/* Enhanced PI interface */
 
-	extern OSPiHandle* osCartRgcInit(void);
+	extern OSPiHandle* osCartRomInit(void);
 	extern OSPiHandle* osLeoDiskInit(void);
 	extern OSPiHandle* osDriveRgcInit(void);
 

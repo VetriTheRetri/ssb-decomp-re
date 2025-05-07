@@ -2892,7 +2892,7 @@ void lbCommonStartSprite(Gfx **dls)
     
     gDPPipeSync(dl++);
     gDPSetCycleType(dl++, G_CYC_1CYCLE);
-    gDPSetBlendColor(dl++, 0x00, 0x00, 0x00, 0x08)
+    gDPSetBlendColor(dl++, 0x00, 0x00, 0x00, 0x08);
     gDPSetAlphaCompare(dl++, G_AC_THRESHOLD);
     gDPSetTexturePersp(dl++, G_TP_NONE);
     gDPSetTextureFilter(dl++, G_TF_BILERP);

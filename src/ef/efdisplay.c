@@ -39,15 +39,15 @@ void efDisplayXLUProcDisplay(GObj *effect_gobj)
 // 0x800FCDEC
 void efDisplayMakeCLD(void)
 {
-    gcAddGObjDisplay(gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT), efDisplayCLDProcDisplay, 15, 3, -1);
-    gcAddGObjDisplay(gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT), efDisplayCLDProcDisplay, 18, 3, -1);
+    gcAddGObjDisplay(gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT), efDisplayCLDProcDisplay, 15, 3, ~0);
+    gcAddGObjDisplay(gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT), efDisplayCLDProcDisplay, 18, 3, ~0);
 }
 
 // 0x800FCE6C
 void efDisplayMakeXLU(void)
 {
-    gcAddGObjDisplay(gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT), efDisplayXLUProcDisplay, 15, 0, -1);
-    gcAddGObjDisplay(gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT), efDisplayXLUProcDisplay, 18, 0, -1);
+    gcAddGObjDisplay(gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT), efDisplayXLUProcDisplay, 15, 0, ~0);
+    gcAddGObjDisplay(gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT), efDisplayXLUProcDisplay, 18, 0, ~0);
 }
 
 // 0x800FCEEC
@@ -98,11 +98,11 @@ void efDisplayInitAll(void)
     GObj *gobj;
 
     gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, efDisplayZPerspCLDProcDisplay, 18, 1, -1);
-    gobj->camera_mask = (COBJ_MASK_DLLINK(2) | COBJ_MASK_DLLINK(0));
+    gcAddGObjDisplay(gobj, efDisplayZPerspCLDProcDisplay, 18, 1, ~0);
+    gobj->camera_mask = COBJ_MASK_DLLINK(2) | COBJ_MASK_DLLINK(0);
 
     gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjDisplay(gobj, efDisplayZPerspCLDProcDisplay, 15, 1, -1);
+    gcAddGObjDisplay(gobj, efDisplayZPerspCLDProcDisplay, 15, 1, ~0);
     gobj->camera_mask = COBJ_MASK_DLLINK(1);
 
     gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_PRIORITY_DEFAULT);

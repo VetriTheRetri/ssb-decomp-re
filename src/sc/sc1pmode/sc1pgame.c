@@ -2108,9 +2108,9 @@ void sc1PGameFuncStart(void)
     sc1PGameTryInitPlayerArrows();
     gmCameraMakePlayerMagnifyCamera();
     ifCommonPlayerMagnifyMakeInterface();
-    func_ovl2_8010DDC4();
-    func_ovl2_8010E374();
-    func_ovl2_8010E498();
+    gmCameraScreenFlashMakeCamera();
+    gmCameraMakeInterfaceCamera();
+    gmCameraMakeEffectCamera();
     ifCommonPlayerTagMakeInterface();
     sc1PGameSetPlayerInterfacePositions();
     ifCommonPlayerDamageInitInterface();

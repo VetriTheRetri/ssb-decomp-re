@@ -280,7 +280,7 @@ LBParticle* lbParticleMakeStruct
 	f32 size,
 	f32 gravity,
 	f32 friction,
-	u32 argF,
+	u32 texture_flags,
 	LBGenerator *gn
 )
 {
@@ -349,7 +349,7 @@ LBParticle* lbParticleMakeStruct
     
     new_pc->bytecode = bytecode;
 
-    if (argF != FALSE) 
+    if (texture_flags != 0)
     { 
         new_pc->flags |= LBPARTICLE_FLAG_SHAREDPAL;
     }
@@ -360,7 +360,7 @@ LBParticle* lbParticleMakeStruct
     new_pc->primcolor.r = new_pc->primcolor.g = new_pc->primcolor.b = new_pc->primcolor.a = 0xFF;
     new_pc->envcolor.r = new_pc->envcolor.g = new_pc->envcolor.b = new_pc->envcolor.a = 0x00;
     
-    new_pc->size_target_length = new_pc->target_primcolor_length = new_pc->target_envcolor_length = 0;
+    new_pc->size_target_length = new_pc->primcolor_target_length = new_pc->envcolor_target_length = 0;
     
     new_pc->gn = gn;
 
@@ -418,7 +418,7 @@ LBParticle* lbParticleMakeParam
 	f32 size,
 	f32 gravity,
 	f32 friction,
-	u32 argE,
+	u32 texture_flags,
 	LBGenerator *gn
 )
 {
@@ -435,7 +435,7 @@ LBParticle* lbParticleMakeParam
 		size,
 		gravity,
 		friction,
-		argE,
+		texture_flags,
 		gn
 	);
 	if (pc != NULL)
@@ -1092,7 +1092,7 @@ LBParticle* lbParticleUpdateStruct(LBParticle *this_pc, LBParticle *other_pc, s3
                         fvar1 = *csr++;
                         this_pc->target_primcolor.a += fvar1 * syUtilsRandFloat();
                             
-                        if (this_pc->target_primcolor_length == 0)
+                        if (this_pc->primcolor_target_length == 0)
                         {
                             // this has lwl and lwr, so maybe it's a struct?
                             this_pc->primcolor = this_pc->target_primcolor;
@@ -1109,7 +1109,7 @@ LBParticle* lbParticleUpdateStruct(LBParticle *this_pc, LBParticle *other_pc, s3
                         fvar1 = *csr++;
                         this_pc->target_envcolor.a += fvar1 * syUtilsRandFloat();
 
-                        if (this_pc->target_envcolor_length == 0)
+                        if (this_pc->envcolor_target_length == 0)
                         {
                             // this has lwl and lwr, so maybe it's a struct?
                             this_pc->envcolor = this_pc->target_envcolor;
@@ -1152,7 +1152,7 @@ LBParticle* lbParticleUpdateStruct(LBParticle *this_pc, LBParticle *other_pc, s3
                         break;
                         
                     case LBPARTICLE_OPCODE_SETPRIMBLEND:
-                        csr  = lbParticleReadUShort(csr, &this_pc->target_primcolor_length);
+                        csr  = lbParticleReadUShort(csr, &this_pc->primcolor_target_length);
                         this_pc->target_primcolor = this_pc->primcolor;
                             
                         if (command & 1)
@@ -1171,16 +1171,16 @@ LBParticle* lbParticleUpdateStruct(LBParticle *this_pc, LBParticle *other_pc, s3
                         {
                             this_pc->target_primcolor.a = *csr++;
                         }
-                        if (this_pc->target_primcolor_length == 1)
+                        if (this_pc->primcolor_target_length == 1)
                         {
                             this_pc->primcolor = this_pc->target_primcolor;
                             
-                            this_pc->target_primcolor_length = 0;
+                            this_pc->primcolor_target_length = 0;
                         }
                         break;
                         
                     case LBPARTICLE_OPCODE_SETENVBLEND:
-                        csr = lbParticleReadUShort(csr, &this_pc->target_envcolor_length);
+                        csr = lbParticleReadUShort(csr, &this_pc->envcolor_target_length);
                         this_pc->target_envcolor = this_pc->envcolor;
                             
                         if (command & 1)
@@ -1199,10 +1199,10 @@ LBParticle* lbParticleUpdateStruct(LBParticle *this_pc, LBParticle *other_pc, s3
                         {
                             this_pc->target_envcolor.a = *csr++;
                         }
-                        if (this_pc->target_envcolor_length == 1)
+                        if (this_pc->envcolor_target_length == 1)
                         {
                             this_pc->envcolor = this_pc->target_envcolor;
-                            this_pc->target_envcolor_length = 0;
+                            this_pc->envcolor_target_length = 0;
                         }
                         break;
                         
@@ -1264,37 +1264,37 @@ LBParticle* lbParticleUpdateStruct(LBParticle *this_pc, LBParticle *other_pc, s3
 
         this_pc->size_target_length--;
     }
-    if (this_pc->target_primcolor_length) 
+    if (this_pc->primcolor_target_length) 
     {
         this_pc->primcolor.r =
-        ((this_pc->primcolor.r << 16) + ((this_pc->target_primcolor.r - this_pc->primcolor.r) * (65536 / this_pc->target_primcolor_length))) >> 16;
+        ((this_pc->primcolor.r << 16) + ((this_pc->target_primcolor.r - this_pc->primcolor.r) * (65536 / this_pc->primcolor_target_length))) >> 16;
 
         this_pc->primcolor.g =
-        ((this_pc->primcolor.g << 16) + ((this_pc->target_primcolor.g - this_pc->primcolor.g) * (65536 / this_pc->target_primcolor_length))) >> 16;
+        ((this_pc->primcolor.g << 16) + ((this_pc->target_primcolor.g - this_pc->primcolor.g) * (65536 / this_pc->primcolor_target_length))) >> 16;
 
         this_pc->primcolor.b =
-        ((this_pc->primcolor.b << 16) + ((this_pc->target_primcolor.b - this_pc->primcolor.b) * (65536 / this_pc->target_primcolor_length))) >> 16;
+        ((this_pc->primcolor.b << 16) + ((this_pc->target_primcolor.b - this_pc->primcolor.b) * (65536 / this_pc->primcolor_target_length))) >> 16;
 
         this_pc->primcolor.a =
-        ((this_pc->primcolor.a << 16) + ((this_pc->target_primcolor.a - this_pc->primcolor.a) * (65536 / this_pc->target_primcolor_length))) >> 16;
+        ((this_pc->primcolor.a << 16) + ((this_pc->target_primcolor.a - this_pc->primcolor.a) * (65536 / this_pc->primcolor_target_length))) >> 16;
 
-        this_pc->target_primcolor_length--;
+        this_pc->primcolor_target_length--;
     }
-    if (this_pc->target_envcolor_length) 
+    if (this_pc->envcolor_target_length) 
     {
         this_pc->envcolor.r =
-        ((this_pc->envcolor.r << 16) + ((this_pc->target_envcolor.r - this_pc->envcolor.r) * (65536 / this_pc->target_envcolor_length))) >> 16;
+        ((this_pc->envcolor.r << 16) + ((this_pc->target_envcolor.r - this_pc->envcolor.r) * (65536 / this_pc->envcolor_target_length))) >> 16;
 
         this_pc->envcolor.g =
-        ((this_pc->envcolor.g << 16) + ((this_pc->target_envcolor.g - this_pc->envcolor.g) * (65536 / this_pc->target_envcolor_length))) >> 16;
+        ((this_pc->envcolor.g << 16) + ((this_pc->target_envcolor.g - this_pc->envcolor.g) * (65536 / this_pc->envcolor_target_length))) >> 16;
 
         this_pc->envcolor.b =
-        ((this_pc->envcolor.b << 16) + ((this_pc->target_envcolor.b - this_pc->envcolor.b) * (65536 / this_pc->target_envcolor_length))) >> 16;
+        ((this_pc->envcolor.b << 16) + ((this_pc->target_envcolor.b - this_pc->envcolor.b) * (65536 / this_pc->envcolor_target_length))) >> 16;
 
         this_pc->envcolor.a =
-        ((this_pc->envcolor.a << 16) + ((this_pc->target_envcolor.a - this_pc->envcolor.a) * (65536 / this_pc->target_envcolor_length))) >> 16;
+        ((this_pc->envcolor.a << 16) + ((this_pc->target_envcolor.a - this_pc->envcolor.a) * (65536 / this_pc->envcolor_target_length))) >> 16;
             
-        this_pc->target_envcolor_length--;        
+        this_pc->envcolor_target_length--;        
     }
     this_pc->lifetime--;
     

@@ -7,7 +7,7 @@
 void itMainSetCommonSpin(GObj *item_gobj);
 
 // Something to do with item spin rotation
-void itMainSetSpawnSpin(GObj *item_gobj, sb32 slow_or_fast);
+void itMainSetAppearSpin(GObj *item_gobj, sb32 slow_or_fast);
 
 // Something to do with item spin rotation
 void itMainSetThrownSpin(GObj *item_gobj, Vec3f *vel, sb32 is_smash_throw);

@@ -26,7 +26,7 @@ extern void sc1PIntroSetNamePositions(s32 stage);
 extern void sc1PIntroMakeNameAll(s32 stage);
 extern void sc1PIntroMakeStageInfo(s32 stage);
 extern f32 sc1PIntroGetFighterVelocityZ(s32 card_anim_frame_id);
-extern void sc1PIntroUpdateFighterPositionZ(GObj *fighter_gobj);
+extern void sc1PIntroFighterProcUpdate(GObj *fighter_gobj);
 extern f32 sc1PIntroGetFighterPositionZ(s32 card_anim_frame_id);
 extern void sc1PIntroMakeFighter(FTDemoDesc fighter, s32 card_anim_frame_id, void **figatree);
 extern void sc1PIntroInitAllyTextParams(SObj *sobj);

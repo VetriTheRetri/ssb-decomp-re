@@ -777,9 +777,9 @@ void scExplainFuncStart(void)
 
     gIFCommonPlayerInterface.is_magnify_display = TRUE;
 
-    func_ovl2_8010DDC4();
-    func_ovl2_8010E374();
-    func_ovl2_8010E498();
+    gmCameraScreenFlashMakeCamera();
+    gmCameraMakeInterfaceCamera();
+    gmCameraMakeEffectCamera();
     ifCommonPlayerTagMakeInterface();
     scExplainSetPlayerInterfacePositions();
     ifCommonPlayerDamageInitInterface();

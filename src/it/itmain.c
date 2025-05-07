@@ -134,9 +134,9 @@ void itMainSetCommonSpin(GObj *item_gobj)
 }
 
 // 0x80172394
-void itMainSetSpawnSpin(GObj *item_gobj, sb32 slow_or_fast)
+void itMainSetAppearSpin(GObj *item_gobj, sb32 slow_or_fast)
 {
-    // is_prev_spawn = whether item is newly spawned or previously spawned; 0 = new, 1 = old
+    // slow_or_fast = 0 if slow, 1 if fast
 
     ITStruct *ip = itGetStruct(item_gobj);
 
@@ -144,13 +144,13 @@ void itMainSetSpawnSpin(GObj *item_gobj, sb32 slow_or_fast)
     {
         if (ip->attr->spin_speed != 0)
         {
-            ip->spin_step = F_PCT_TO_DEC(ip->attr->spin_speed) * ITEM_SPIN_SPEED_SPAWN_SLOW;
+            ip->spin_step = F_PCT_TO_DEC(ip->attr->spin_speed) * ITEM_SPIN_SPEED_APPEAR_SLOW;
         }
         else ip->spin_step = 0.0F;
     }
     else if (ip->attr->spin_speed != 0)
     {
-        ip->spin_step = F_PCT_TO_DEC(ip->attr->spin_speed) * ITEM_SPIN_SPEED_SPAWN_FAST;
+        ip->spin_step = F_PCT_TO_DEC(ip->attr->spin_speed) * ITEM_SPIN_SPEED_APPEAR_FAST;
     }
     else ip->spin_step = 0.0F;
 }
@@ -160,7 +160,7 @@ void itMainSetThrownSpin(GObj *item_gobj, Vec3f *vel, sb32 is_smash_throw)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->spin_step = (is_smash_throw != FALSE) ? ITEM_SPIN_SPEED_SET_SMASH_THROW : ITEM_SPIN_SPEED_SET_NORMAL_THROW;
+    ip->spin_step = (is_smash_throw != FALSE) ? ITEM_SPIN_SPEED_SMASH_THROW : ITEM_SPIN_SPEED_NORMAL_THROW;
 
     if (vel->x < 0) // Facing direction, sort of
     {
@@ -600,7 +600,7 @@ sb32 itMainMakeContainerItem(GObj *parent_gobj)
                 != NULL
             )
             {
-                itMainSetSpawnSpin(parent_gobj, TRUE);
+                itMainSetAppearSpin(parent_gobj, TRUE);
             }
             return TRUE;
         }

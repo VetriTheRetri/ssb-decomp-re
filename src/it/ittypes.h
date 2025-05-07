@@ -59,7 +59,7 @@ struct ITRandomWeights          // Random item drops struct
     u16 *blocks;          		// Item block sizes
 };
 
-struct ITSpawnActor
+struct ITAppearActor
 {
     u8 mapobjs_num;       		// Maximum number of item spawn points
     u8 *mapobjs;           		// Pointer to array of item map object IDs

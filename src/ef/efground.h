@@ -115,6 +115,6 @@ extern GObj* efGroundMakeEffect(EFDesc *effect_desc, s32 lr);
 extern void efGroundMakeEffectID(s32 effect_id);
 extern void EFGroundActorProcUpdate(GObj *gobj);
 extern void efGroundSetupRandomWeights(void);
-extern void efGroundMakeSpawnActor(void);
+extern void efGroundMakeAppearActor(void);
 
 #endif

@@ -206,9 +206,9 @@ void scVSBattleStartBattle(void)
 	ifCommonPlayerArrowsInitInterface();
 	gmCameraMakePlayerMagnifyCamera();
 	ifCommonPlayerMagnifyMakeInterface();
-	func_ovl2_8010DDC4();
-	func_ovl2_8010E374();
-	func_ovl2_8010E498();
+	gmCameraScreenFlashMakeCamera();
+	gmCameraMakeInterfaceCamera();
+	gmCameraMakeEffectCamera();
 	ifCommonPlayerTagMakeInterface();
 	ifCommonPlayerDamageSetDigitPositions();
 	ifCommonPlayerDamageInitInterface();
@@ -483,9 +483,9 @@ void scVSBattleStartSuddenDeath(void)
 	ifCommonPlayerArrowsInitInterface();
 	gmCameraMakePlayerMagnifyCamera();
 	ifCommonPlayerMagnifyMakeInterface();
-	func_ovl2_8010DDC4();
-	func_ovl2_8010E374();
-	func_ovl2_8010E498();
+	gmCameraScreenFlashMakeCamera();
+	gmCameraMakeInterfaceCamera();
+	gmCameraMakeEffectCamera();
 	ifCommonPlayerTagMakeInterface();
 	ifCommonPlayerDamageSetDigitPositions();
 	ifCommonPlayerDamageInitInterface();
@@ -513,9 +513,7 @@ void scVSBattleFuncLights(Gfx **dls)
 void scVSBattleStartScene(void)
 {
 	gSCManagerBattleState = &gSCManagerTransferBattleState;
-
 	gSCManagerBattleState->game_type = nSCBattleGameTypeRoyal;
-
 	gSCManagerBattleState->gkind = gSCManagerSceneData.gkind;
 
 	if (gSCManagerBackupData.error_flags & LBBACKUP_ERROR_VSBATTLECASTLE)

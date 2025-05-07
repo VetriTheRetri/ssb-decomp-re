@@ -30,10 +30,10 @@ ITStruct* itManagerGetCurrentAlloc();
 void itManagerSetItemSpawnWait();
 
 // GObj process for hidden object that randomly spawns items - argument is unused
-void itManagerSpawnActorProcUpdate(GObj* item_gobj);
+void itManagerAppearActorProcUpdate(GObj* item_gobj);
 
 // Set up item spawn positions?
-GObj* itManagerMakeSpawnActor();
+GObj* itManagerMakeAppearActor();
 
 // Set up item spawn positions part 2?
 void itManagerSetupContainerDrops();

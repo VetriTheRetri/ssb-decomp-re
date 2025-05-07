@@ -176,8 +176,8 @@ struct LBParticle
     u8 frame_id;                // Animation frame of texture series
     ub16 bytecode_timer;        // Wait timer before next bytecode event is parsed
     u16 size_target_length;     // Time to LERP size_target variable
-    u16 target_primcolor_length;// Time to LERP target primitive color
-    u16 target_envcolor_length; // Time to LERP target environment color
+    u16 primcolor_target_length;// Time to LERP target primitive color
+    u16 envcolor_target_length; // Time to LERP target environment color
     u8 *bytecode;               // Bytecode base
     u16 bytecode_csr;           // Bytecode cursor
     u16 return_ptr;             // Return to bytecode start + return_ptr on command

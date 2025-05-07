@@ -57,11 +57,11 @@
 #define ITEM_HOP_ANGLE_DEFAULT F_CST_DTOR32(135.0F)
 
 #define ITEM_SPIN_SPEED_COMMON F_CST_DTOR32(18.0F)
-#define ITEM_SPIN_SPEED_SPAWN_SLOW F_CLC_DTOR32(10.0F)
-#define ITEM_SPIN_SPEED_SPAWN_FAST F_CST_DTOR32(16.0F)
+#define ITEM_SPIN_SPEED_APPEAR_SLOW F_CLC_DTOR32(10.0F)
+#define ITEM_SPIN_SPEED_APPEAR_FAST F_CST_DTOR32(16.0F)
 
-#define ITEM_SPIN_SPEED_SET_SMASH_THROW F_CST_DTOR32(-21.0F)
-#define ITEM_SPIN_SPEED_SET_NORMAL_THROW F_CLC_DTOR32(-10.0F)
+#define ITEM_SPIN_SPEED_SMASH_THROW F_CST_DTOR32(-21.0F)
+#define ITEM_SPIN_SPEED_NORMAL_THROW F_CLC_DTOR32(-10.0F)
 
 // Also multiplies spin speed
 #define ITEM_SPIN_SPEED_FRACTION_DEFAULT 0.01F
@@ -190,7 +190,7 @@ typedef struct ITAttributes 	ITAttributes;
 typedef struct ITMonsterData 	ITMonsterData; 	// Info specific to summoning Pokémon
 typedef struct ITDesc 	ITDesc;
 typedef struct ITStatusDesc 	ITStatusDesc;
-typedef struct ITSpawnActor 	ITSpawnActor;
+typedef struct ITAppearActor 	ITAppearActor;
 typedef struct ITRandomWeights 	ITRandomWeights;
 typedef struct ITAttackPos 		ITAttackPos;
 typedef struct ITAttackColl 	ITAttackColl;

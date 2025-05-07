@@ -704,7 +704,7 @@ f32 sc1PIntroGetFighterVelocityZ(s32 card_anim_frame_id)
 }
 
 // 0x80132BD4
-void sc1PIntroUpdateFighterPositionZ(GObj *fighter_gobj)
+void sc1PIntroFighterProcUpdate(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     DObj *dobj = DObjGetStruct(fighter_gobj);
@@ -772,7 +772,7 @@ void sc1PIntroMakeFighter(FTDemoDesc fighter, s32 card_anim_frame_id, void **fig
     fp->card_anim_frame_id = card_anim_frame_id;
     
     gcMoveGObjDL(fighter_gobj, dl_links[card_anim_frame_id], GOBJ_PRIORITY_DEFAULT);
-    gcAddGObjProcess(fighter_gobj, sc1PIntroUpdateFighterPositionZ, nGCProcessKindFunc, 1);
+    gcAddGObjProcess(fighter_gobj, sc1PIntroFighterProcUpdate, nGCProcessKindFunc, 1);
     
     DObjGetStruct(fighter_gobj)->translate.vec.f.x = 0.0F;
     DObjGetStruct(fighter_gobj)->translate.vec.f.y = 0.0F;

@@ -2963,7 +2963,7 @@ void lbCommonDrawSprite(GObj *camera_gobj)
     lbCommonStartSprite(gSYTaskmanDLHeads);
     lbCommonSetSpriteScissor(ulx, lrx, uly, lry);
 
-    gcCaptureAll(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
+    gcCaptureCameraGObj(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
     lbCommonFinishSprite(gSYTaskmanDLHeads);
 }
 

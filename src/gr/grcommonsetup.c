@@ -30,6 +30,6 @@ void grCommonSetupInitAll(void)
     mpCollisionClearYakumonoAll();
     grMainSetupMakeGround();
     mpCollisionInitYakumonoAll();
-    itManagerMakeSpawnActor();
-    efGroundMakeSpawnActor();
+    itManagerMakeAppearActor();
+    efGroundMakeAppearActor();
 }

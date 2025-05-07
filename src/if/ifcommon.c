@@ -2834,9 +2834,9 @@ void ifCommonBattlePauseMakeSObjsAll(GObj *interface_gobj)
 // 0x80113EB4
 void ifCommonBattlePauseMakeInterface(s32 player)
 {
-    GObj *interface_gobj;
+    GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindPauseMenu, NULL, nGCCommonLinkIDPauseMenu, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(gcMakeGObjSPAfter(nGCCommonKindPauseMenu, NULL, nGCCommonLinkIDPauseMenu, GOBJ_PRIORITY_DEFAULT), ifCommonBattlePauseProcDisplay, 24, GOBJ_PRIORITY_DEFAULT, ~0);
+    gcAddGObjDisplay(interface_gobj, ifCommonBattlePauseProcDisplay, 24, GOBJ_PRIORITY_DEFAULT, ~0);
 
     interface_gobj = gcMakeGObjSPAfter(nGCCommonKindPauseMenu, NULL, nGCCommonLinkIDPauseMenu, GOBJ_PRIORITY_DEFAULT);
 

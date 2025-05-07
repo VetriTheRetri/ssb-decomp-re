@@ -1050,9 +1050,9 @@ void sc1PBonusStageFuncStart(void)
 
 	ftManagerSetupFilesPlayablesAll();
 	ifCommonBattleSetGameStatusWait();
-	func_ovl2_8010DDC4();
-	func_ovl2_8010E374();
-	func_ovl2_8010E498();
+	gmCameraScreenFlashMakeCamera();
+	gmCameraMakeInterfaceCamera();
+	gmCameraMakeEffectCamera();
 	ifCommonPlayerTagMakeInterface();
 	sc1PBonusStageSetPlayerInterfacePositions();
 	ifCommonPlayerDamageInitInterface();

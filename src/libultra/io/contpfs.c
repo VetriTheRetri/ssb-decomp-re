@@ -5,7 +5,7 @@
 #include <PR/controller.h>
 
 #if BUILD_VERSION >= VERSION_J
-__OSInode __osPfsInodeCache; // ALIGNED(8);
+__OSInode __osPfsInodeCache ALIGNED(8);
 s32 __osPfsInodeCacheChannel = -1;
 u8 __osPfsInodeCacheBank = 250;
 #endif

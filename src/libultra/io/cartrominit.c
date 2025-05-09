@@ -5,7 +5,7 @@
 #include <PR/rcp.h>
 #include <piint.h>
 
-OSPiHandle __CartRomHandle; // ALIGNED(8);
+OSPiHandle __CartRomHandle ALIGNED(8);
 
 OSPiHandle* osCartRomInit()
 {

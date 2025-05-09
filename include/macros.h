@@ -28,6 +28,9 @@
 #define SINTABLE_RAD_TO_ID(x)      ((s32)((x) * ((f32)ARRAY_COUNT(gSYSinTable) / PI32)))
 #define SINTABLE_MASK_ID (ARRAY_COUNT(gSYSinTable) - 1)
 
+#define ALIGNED(x) __attribute__((aligned(x)))
+#define __attribute__(x)
+
 /* This is very stupid. I cannot find a single PI or DTOR constant that works everywhere.
  * Need to alternate between F_CST_DTOR32 and F_CLC_DTOR32. Use with caution when matching.
  */

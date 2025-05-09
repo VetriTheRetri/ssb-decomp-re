@@ -69,7 +69,7 @@ void lbFadeProcDisplay(GObj *gobj)
     gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, sLBFadeColor.r, sLBFadeColor.g, sLBFadeColor.b, alpha);
     gDPSetCombineMode(gSYTaskmanDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
     gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
-    gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 10, 310, 230);
+    gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 10, GS_SCREEN_WIDTH_DEFAULT - 10, GS_SCREEN_HEIGHT_DEFAULT - 10);
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
 }
 

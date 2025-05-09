@@ -11,13 +11,14 @@ OSDevMgr __osViDevMgr = { 0 };
 u32 __additional_scanline = 0;
 
 static OSThread viThread;
-static unsigned char viThreadStack[OS_VIM_STACKSIZE]; // ALIGNED(16);
-static OSMesgQueue viEventQueue; // ALIGNED(8);
-static OSMesg viEventBuf[5]; // ALIGNED(8);
-static OSIoMesg viRetraceMsg; // ALIGNED(8);
-static OSIoMesg viCounterMsg; // ALIGNED(8);
+static unsigned char viThreadStack[OS_VIM_STACKSIZE] ALIGNED(16);
+static OSMesgQueue viEventQueue ALIGNED(8);
+static OSMesg viEventBuf[5] ALIGNED(8);
+static OSIoMesg viRetraceMsg ALIGNED(8);
+static OSIoMesg viCounterMsg ALIGNED(8);
 
-extern void viMgrMain(void* arg);
+static void viMgrMain(void* arg);
+
 void osCreateViManager(OSPri pri) {
 	u32 savedMask;
 	OSPri oldPri;

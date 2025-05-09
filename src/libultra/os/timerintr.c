@@ -2,7 +2,9 @@
 #include <PR/os_internal.h>
 #include <osint.h>
 
+#ifndef _FINALROM
 #define _FINALROM
+#endif
 
 OSTime __osCurrentTime;
 u32 __osBaseCounter;
@@ -12,7 +14,7 @@ OSTimer __osBaseTimer;
 OSTimer* __osTimerList = &__osBaseTimer;
 
 #ifndef _FINALROM
-OSMesgQueue __osProfTimerQ;// ALIGNED(8);
+OSMesgQueue __osProfTimerQ ALIGNED(8);
 OSProf* __osProfileList;
 OSProf* __osProfileListEnd;
 u32 __osProfileOverflowBin;

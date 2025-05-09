@@ -66,14 +66,9 @@ options:
 segments:
   - [0x000000, header, header]
 
-  - name: boot
-    type: code
-    start: 0x40
-    exclusive_ram_id: boot_A4000040
-    vram: 0xA4000040
-    subsegments:
-      - [0x40, hasm, boot]
-      - [0xB70, data, boot]
+  - name: ipl3 #is this actually ipl3?
+    type: databin
+    start: 0x000040
 
   - name: entry
     type: code

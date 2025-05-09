@@ -12,6 +12,7 @@ options:
 
   ld_script_path: .splat/smashbrothers.ld
   ld_dependencies: True
+  asm_emit_size_directive: True
 
   header_encoding: ASCII
 

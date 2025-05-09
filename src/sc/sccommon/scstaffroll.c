@@ -1369,7 +1369,7 @@ void SCStaffrollNameSetPrevAlloc(SCStaffrollName *cn)
 }
 
 // 0x8013369C
-void SCStaffrollJobAndNameThreadUpdate(GObj *gobj)
+void scStaffrollJobAndNameThreadUpdate(GObj *gobj)
 {
 	SCStaffrollName *cn;
 	Vec3f pos;
@@ -1418,7 +1418,7 @@ void SCStaffrollJobAndNameThreadUpdate(GObj *gobj)
 }
 
 // 0x80133854
-void SCStaffrollJobProcDisplay(GObj *gobj)
+void scStaffrollJobProcDisplay(GObj *gobj)
 {
 	if (gobj == gGCCommonLinks[4])
 	{
@@ -1432,7 +1432,7 @@ void SCStaffrollJobProcDisplay(GObj *gobj)
 }
 
 // 0x80133930
-void SCStaffrollNameProcDisplay(GObj *gobj)
+void scStaffrollNameProcDisplay(GObj *gobj)
 {
 	if (gobj == gGCCommonLinks[3])
 	{
@@ -1446,7 +1446,7 @@ void SCStaffrollNameProcDisplay(GObj *gobj)
 }
 
 // 0x80133A0C
-void SCStaffrollJobAndNameInitStruct(GObj *gobj, DObj *first_dobj, DObj *second_dobj, sb32 job_or_name)
+void scStaffrollJobAndNameInitStruct(GObj *gobj, DObj *first_dobj, DObj *second_dobj, sb32 job_or_name)
 {
 	SCStaffrollName *cn = SCStaffrollNameUpdateAlloc(gobj);
 
@@ -1612,7 +1612,7 @@ GObj* scStaffrollMakeJobGObj(SCStaffrollJob *job)
 
 	gobj = gcMakeGObjSPAfter(1, NULL, 4, GOBJ_PRIORITY_DEFAULT);
 
-	gcAddGObjDisplay(gobj, SCStaffrollJobProcDisplay, 2, GOBJ_PRIORITY_DEFAULT, ~0);
+	gcAddGObjDisplay(gobj, scStaffrollJobProcDisplay, 2, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	dobj = gcAddDObjForGObj(gobj, NULL);
 
@@ -1624,8 +1624,8 @@ GObj* scStaffrollMakeJobGObj(SCStaffrollJob *job)
 		wbase = 16.0F + job_setup.spacing;
 	}
 	scStaffrollMakeJobDObjs(&job_setup, dobj, job->job_id, wbase);
-	SCStaffrollJobAndNameInitStruct(gobj, dobj, job_setup.dobj, 0);
-	gcAddGObjProcess(gobj, SCStaffrollJobAndNameThreadUpdate, nGCProcessKindThread, 1);
+	scStaffrollJobAndNameInitStruct(gobj, dobj, job_setup.dobj, 0);
+	gcAddGObjProcess(gobj, scStaffrollJobAndNameThreadUpdate, nGCProcessKindThread, 1);
 
 	return gobj;
 }
@@ -1649,7 +1649,7 @@ GObj* scStaffrollMakeNameGObjAndDObjs(void)
 
 	gobj = gcMakeGObjSPAfter(1, NULL, 3, GOBJ_PRIORITY_DEFAULT);
 
-	gcAddGObjDisplay(gobj, SCStaffrollNameProcDisplay, 1, GOBJ_PRIORITY_DEFAULT, ~0);
+	gcAddGObjDisplay(gobj, scStaffrollNameProcDisplay, 1, GOBJ_PRIORITY_DEFAULT, ~0);
 
 	new_dobj = dobj = gcAddDObjForGObj(gobj, NULL);
 
@@ -1780,8 +1780,8 @@ GObj* scStaffrollMakeNameGObjAndDObjs(void)
 		}
 
 	}
-	SCStaffrollJobAndNameInitStruct(gobj, dobj, new_dobj, 1);
-	gcAddGObjProcess(gobj, SCStaffrollJobAndNameThreadUpdate, 0, 1);
+	scStaffrollJobAndNameInitStruct(gobj, dobj, new_dobj, 1);
+	gcAddGObjProcess(gobj, scStaffrollJobAndNameThreadUpdate, 0, 1);
 
 	return gobj;
 }
@@ -1954,7 +1954,7 @@ void scStaffrollMakeScrollGObj(void)
 }
 
 // 0x801349DC
-void SCStaffrollSetupFiles(void)
+void scStaffrollSetupFiles(void)
 {
 	LBRelocSetup rl_setup;
 
@@ -2110,7 +2110,7 @@ void scStaffrollFuncStart(void)
 	gcMakeGObjSPAfter(0, scStaffrollProcRun, 1, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(12, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 
-	SCStaffrollSetupFiles();
+	scStaffrollSetupFiles();
 	scStaffrollInitNameAndJobDisplayLists();
 	scStaffrollTryHideUnlocks();
 	scStaffrollInitVars();

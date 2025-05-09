@@ -47,6 +47,8 @@ options:
   rodata_string_guesser_level: 3
   data_string_guesser_level: 3
 
+  hasm_in_src_path: True
+
   # elf_section_list_path: build/smashbrothers.elf
   # asm_path: asm
   # src_path: src

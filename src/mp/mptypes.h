@@ -181,26 +181,26 @@ struct MPGroundDesc
 
 struct MPGroundData
 {
-	MPGroundDesc gr_desc[4];
-	MPGeometryData *map_geometry;
-	u8 layer_mask; // render mask which determines render type for each geo layer (gr_desc) - 0 = primary, 1 = secondary (more alpha control w/2 display lists)
-	Sprite *wallpaper; 								// Background image?
-	SYColorRGB fog_color;
-	u8 fog_alpha;								 	// Unused padding?
-	SYColorRGB emblem_colors[GMCOMMON_PLAYERS_MAX]; 	// What's this doing here?
-	s32 unused;
-	Vec3f light_angle;
-	s16 camera_bound_top;				// Normal bounds
-	s16 camera_bound_bottom;
-	s16 camera_bound_right;
-	s16 camera_bound_left;
-	s16 map_bound_top;
-	s16 map_bound_bottom;
-	s16 map_bound_right;
-	s16 map_bound_left;
-	u32 bgm_id;
-	void *map_nodes;
-	MPItemWeights *item_weights; 	// Randomizer weights of items
+/* 0x00 */ MPGroundDesc gr_desc[4];
+/* 0x40 */ MPGeometryData *map_geometry;
+/* 0x44 */ u8 layer_mask; // render mask which determines render type for each geo layer (gr_desc) - 0 = primary, 1 = secondary (more alpha control w/2 display lists)
+/* 0x48 */ Sprite *wallpaper; 								// Background image?
+/* 0x4C */ SYColorRGB fog_color;
+/* 0x4F */ u8 fog_alpha;								 	// Unused padding?
+/* 0x50 */ SYColorRGB emblem_colors[GMCOMMON_PLAYERS_MAX]; 	// What's this doing here?
+/* 0x5C */ s32 unused;
+/* 0x60 */ Vec3f light_angle;
+/* 0x6C */ s16 camera_bound_top;				// Normal bounds
+/* 0x6E */ s16 camera_bound_bottom;
+/* 0x70 */ s16 camera_bound_right;
+/* 0x72 */ s16 camera_bound_left;
+/* 0x74 */ s16 map_bound_top;
+/* 0x76 */ s16 map_bound_bottom;
+/* 0x78 */ s16 map_bound_right;
+/* 0x7A */ s16 map_bound_left;
+/* 0x7C */ u32 bgm_id;
+/* 0x80 */ void *map_nodes;
+/* 0x84 */ MPItemWeights *item_weights; 	// Randomizer weights of items
 	s16 alt_warning;				// Warning whistle plays if a player goes below this altitude
 	s16 camera_bound_team_top;		// 1P Game VS. <character> Team bounds
 	s16 camera_bound_team_bottom;

@@ -366,6 +366,7 @@ segments:
     type: code
     start: 0x043220
     vram: 0x800C7840
+    follows_vram: zbuffer
     subsegments:
     # ovl0 text
       - [0x043220, c, lb/lbcommon]
@@ -398,6 +399,7 @@ segments:
     type: code
     start: 0x051C90
     vram: 0x800D6490
+    follows_vram: ovl0
     exclusive_ram_id: overlay_800D6490
     subsegments:
     # ovl2 text
@@ -546,6 +548,7 @@ segments:
     type: code
     start: 0x0AC540
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
     # ovl3 text
@@ -1025,6 +1028,7 @@ segments:
     type: code
     start: 0x109FB0
     vram: 0x8018D0C0
+    follows_vram: ovl3
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
       - [0x109FB0, c, sc/sccommon/scvsbattle]
@@ -1036,6 +1040,7 @@ segments:
     type: code
     start: 0x10B370
     vram: 0x8018D0C0
+    follows_vram: ovl3
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
       - [0x10B370, c, mv/mvunknownmario]
@@ -1046,6 +1051,7 @@ segments:
     type: code
     start: 0x10B920
     vram: 0x8018D0C0
+    follows_vram: ovl3
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
     # Main 1P Game scene stuff
@@ -1068,6 +1074,7 @@ segments:
     type: code
     start: 0x111800
     vram: 0x8018D0C0
+    follows_vram: ovl3
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
       - [0x111800, c, sc/sc1pmode/sc1pbonusstage]
@@ -1083,6 +1090,7 @@ segments:
     type: code
     start: 0x1138E0
     vram: 0x8018D0C0
+    follows_vram: ovl3
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
       - [0x1138E0, c, sc/sc1pmode/sc1ptrainingmode]
@@ -1094,6 +1102,7 @@ segments:
     type: code
     start: 0x117180
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x117180, c, mn/mncommon/mntitle]
@@ -1129,6 +1138,7 @@ segments:
     type: code
     start: 0x11A340
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x11A340, c, db/dbcube]
@@ -1140,6 +1150,7 @@ segments:
     type: code
     start: 0x11B970
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x11B970, c, db/dbbattle]
@@ -1151,6 +1162,7 @@ segments:
     type: code
     start: 0x11CA90
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x11ca90, c, mn/mncommon/mnmodeselect]
@@ -1161,6 +1173,7 @@ segments:
     type: code
     start: 0x11DC10
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x11DC10, c, mn/mn1pmode/mn1pmode]
@@ -1171,6 +1184,7 @@ segments:
     type: code
     start: 0x11F2B0
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x11F2B0, c, mn/mnoption/mnoption]
@@ -1181,6 +1195,7 @@ segments:
     type: code
     start: 0x120F50
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x120F50, c, mn/mndata/mndata]
@@ -1191,6 +1206,7 @@ segments:
     type: code
     start: 0x1224B0
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x1224b0, c, mn/mnvsmode/mnvsmode]
@@ -1201,6 +1217,7 @@ segments:
     type: code
     start: 0x1252E0
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x1252E0, c, mn/mnvsmode/mnvsoptions]
@@ -1211,6 +1228,7 @@ segments:
     type: code
     start: 0x1280A0
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x1280A0, c, mn/mnvsmode/mnvsitemswitch]
@@ -1221,6 +1239,7 @@ segments:
     type: code
     start: 0x129970
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x129970, c, mn/mncommon/mnmessage]
@@ -1231,6 +1250,7 @@ segments:
     type: code
     start: 0x12A4C0
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x12A4C0, c, sc/sc1pmode/sc1pchallenger]
@@ -1241,6 +1261,7 @@ segments:
     type: code
     start: 0x12AE40
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x12AE40, c, sc/sc1pmode/sc1pintro]
@@ -1252,6 +1273,7 @@ segments:
     type: code
     start: 0x12EF60
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x12EF60, c, mn/mnoption/mnscreenadjust]
@@ -1262,6 +1284,7 @@ segments:
     type: code
     start: 0x12fd80
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x12fd80, pad, pad0x12FD80]
@@ -1274,6 +1297,7 @@ segments:
     type: code
     start: 0x139D00
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x139D00, c, mn/mnplayers/mnplayers1pgame]
@@ -1285,6 +1309,7 @@ segments:
     type: code
     start: 0x1410E0
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x1410E0, c, mn/mnplayers/mnplayers1ptraining]
@@ -1296,6 +1321,7 @@ segments:
     type: code
     start: 0x147B30
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x147B30, c, mn/mnplayers/mnplayers1pbonus]
@@ -1307,6 +1333,7 @@ segments:
     type: code
     start: 0x14D670
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x14D670, c, mn/mnmaps/mnmaps]
@@ -1329,6 +1356,7 @@ segments:
     type: code
     start: 0x150CA0
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x150CA0, pad, pad0x150CA0]
@@ -1341,6 +1369,7 @@ segments:
     type: code
     start: 0x158A40
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x158A40, c, mn/mndata/mnvsrecord]
@@ -1352,6 +1381,7 @@ segments:
     type: code
     start: 0x15DB50
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x15DB50, c, mn/mndata/mncharacters]
@@ -1363,6 +1393,7 @@ segments:
     type: code
     start: 0x162640
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x162640, c, mv/mvopening/mvopeningroom]
@@ -1374,6 +1405,7 @@ segments:
     type: code
     start: 0x165810
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x165810, c, mv/mvopening/mvopeningportraits]
@@ -1384,6 +1416,7 @@ segments:
     type: code
     start: 0x1666F0
     vram: 0x8018D0C0
+    follows_vram: ovl3
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
       - [0x1666F0, c, mv/mvopening/mvopeningmario]
@@ -1395,6 +1428,7 @@ segments:
     type: code
     start: 0x167830
     vram: 0x8018D0C0
+    follows_vram: ovl3
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
       - [0x167830, c, mv/mvopening/mvopeningdonkey]
@@ -1406,6 +1440,7 @@ segments:
     type: code
     start: 0x168930
     vram: 0x8018D0C0
+    follows_vram: ovl3
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
       - [0x168930, c, mv/mvopening/mvopeningsamus]
@@ -1417,6 +1452,7 @@ segments:
     type: code
     start: 0x169AE0
     vram: 0x8018D0C0
+    follows_vram: ovl3
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
       - [0x169AE0, c, mv/mvopening/mvopeningfox]
@@ -1428,6 +1464,7 @@ segments:
     type: code
     start: 0x16AC10
     vram: 0x8018D0C0
+    follows_vram: ovl3
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
       - [0x16AC10, c, mv/mvopening/mvopeninglink]
@@ -1439,6 +1476,7 @@ segments:
     type: code
     start: 0x16BD10
     vram: 0x8018D0C0
+    follows_vram: ovl3
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
       - [0x16BD10, c, mv/mvopening/mvopeningyoshi]
@@ -1450,6 +1488,7 @@ segments:
     type: code
     start: 0x16CE70
     vram: 0x8018D0C0
+    follows_vram: ovl3
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
       - [0x16CE70, c, mv/mvopening/mvopeningpikachu]
@@ -1461,6 +1500,7 @@ segments:
     type: code
     start: 0x16DFD0
     vram: 0x8018D0C0
+    follows_vram: ovl3
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
       - [0x16DFD0, c, mv/mvopening/mvopeningkirby]
@@ -1472,6 +1512,7 @@ segments:
     type: code
     start: 0x16F130
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x16F130, c, mv/mvopening/mvopeningrun]
@@ -1483,6 +1524,7 @@ segments:
     type: code
     start: 0x16FD40
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x16FD40, c, mv/mvopening/mvopeningyoster]
@@ -1493,6 +1535,7 @@ segments:
     type: code
     start: 0x170660
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x170660, c, mv/mvopening/mvopeningcliff]
@@ -1504,6 +1547,7 @@ segments:
     type: code
     start: 0x171320
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x171320, c, mv/mvopening/mvopeningstandoff]
@@ -1515,6 +1559,7 @@ segments:
     type: code
     start: 0x1721E0
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x1721E0, c, mv/mvopening/mvopeningyamabuki]
@@ -1525,6 +1570,7 @@ segments:
     type: code
     start: 0x172B60
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x172B60, c, mv/mvopening/mvopeningclash]
@@ -1535,6 +1581,7 @@ segments:
     type: code
     start: 0x173A30
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x173A30, c, mv/mvopening/mvopeningsector]
@@ -1546,6 +1593,7 @@ segments:
     type: code
     start: 0x174940
     vram: 0x8018D0C0
+    follows_vram: ovl3
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
       - [0x174940, c, mv/mvopening/mvopeningjungle]
@@ -1557,6 +1605,7 @@ segments:
     type: code
     start: 0x1752C0
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x1752C0, c, mv/mvopening/mvopeningnewcomers]
@@ -1568,6 +1617,7 @@ segments:
     type: code
     start: 0x175F00
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x175F00, c, mn/mnoption/mnbackupclear]
@@ -1579,6 +1629,7 @@ segments:
     type: code
     start: 0x1774A0
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x1774A0, c, mv/mvending/mvending]
@@ -1590,6 +1641,7 @@ segments:
     type: code
     start: 0x178560
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x178560, c, mn/mn1pmode/mn1pcontinue]
@@ -1601,6 +1653,7 @@ segments:
     type: code
     start: 0x17AD50
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x17AD50, c, sc/sc1pmode/sc1pstageclear]
@@ -1612,6 +1665,7 @@ segments:
     type: code
     start: 0x17E510
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x17E510, c, mn/mncommon/mncongra]
@@ -1622,6 +1676,7 @@ segments:
     type: code
     start: 0x17ECC0
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x17ECC0, c, mn/mncommon/mnstartup]
@@ -1632,6 +1687,7 @@ segments:
     type: code
     start: 0x17F200
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x17F200, c, sc/sccommon/scstaffroll]
@@ -1643,6 +1699,7 @@ segments:
     type: code
     start: 0x187ED0
     vram: 0x80131B00
+    follows_vram: ovl2
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x187ED0, c, mn/mndata/mnsoundtest]
@@ -1654,6 +1711,7 @@ segments:
     type: code
     start: 0x18A6D0
     vram: 0x8018D0C0
+    follows_vram: ovl3
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
       - [0x18A6D0, c, sc/sccommon/scexplain]
@@ -1668,6 +1726,7 @@ segments:
     type: code
     start: 0x18BE00
     vram: 0x8018D0C0
+    follows_vram: ovl3
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
       - [0x18BE00, c, sc/sccommon/scautodemo]

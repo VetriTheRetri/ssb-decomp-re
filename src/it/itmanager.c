@@ -132,7 +132,7 @@ s32 gITManagerDisplayMode;
 ITStruct *gITManagerStructsAllocFree;
 
 // 0x8018D098
-ITSpawnActor gITManagerSpawnActor;
+ITAppearActor gITManagerAppearActor;
 
 // // // // // // // // // // // //
 //                               //
@@ -481,7 +481,7 @@ GObj* itManagerMakeItemSetupCommon(GObj *parent_gobj, s32 index, Vec3f *pos, Vec
         if (index <= nITKindCommonEnd)
         {
             efManagerItemSpawnSwirlMakeEffect(pos);
-            itMainSetSpawnSpin(item_gobj, FALSE);
+            itMainSetAppearSpin(item_gobj, FALSE);
         }
     }
     return item_gobj;
@@ -496,7 +496,7 @@ ITStruct* itManagerGetCurrentAlloc(void)
 // 0x8016EB0C
 void itManagerSetItemSpawnWait(void)
 {
-    gITManagerSpawnActor.spawn_wait = 
+    gITManagerAppearActor.spawn_wait = 
     dITManagerAppearanceRatesMin[gSCManagerBattleState->item_appearance_rate] + 
     syUtilsRandIntRange
     (
@@ -505,7 +505,7 @@ void itManagerSetItemSpawnWait(void)
 }
 
 // 0x8016EB78
-void itManagerSpawnActorProcUpdate(GObj *item_gobj)
+void itManagerAppearActorProcUpdate(GObj *item_gobj)
 {
     s32 unused;
     s32 kind;
@@ -514,17 +514,17 @@ void itManagerSpawnActorProcUpdate(GObj *item_gobj)
 
     if (gSCManagerBattleState->game_status != nSCBattleGameStatusWait)
     {
-        if (gITManagerSpawnActor.spawn_wait > 0)
+        if (gITManagerAppearActor.spawn_wait > 0)
         {
-            gITManagerSpawnActor.spawn_wait--;
+            gITManagerAppearActor.spawn_wait--;
 
             return;
         }
         if (itManagerGetCurrentAlloc() != NULL)
         {
-            kind = itMainGetWeightedItemKind(&gITManagerSpawnActor.weights);
+            kind = itMainGetWeightedItemKind(&gITManagerAppearActor.weights);
 
-            mpCollisionGetMapObjPositionID(gITManagerSpawnActor.mapobjs[syUtilsRandIntRange(gITManagerSpawnActor.mapobjs_num)], &pos);
+            mpCollisionGetMapObjPositionID(gITManagerAppearActor.mapobjs[syUtilsRandIntRange(gITManagerAppearActor.mapobjs_num)], &pos);
 
             vel.x = vel.y = vel.z = 0.0F;
 
@@ -537,7 +537,7 @@ void itManagerSpawnActorProcUpdate(GObj *item_gobj)
 }
 
 // 0x8016EC40 - create item spawner GObj
-GObj* itManagerMakeSpawnActor(void)
+GObj* itManagerMakeAppearActor(void)
 {
     GObj *gobj;
     s32 i;
@@ -574,7 +574,7 @@ GObj* itManagerMakeSpawnActor(void)
                 {
                     return NULL;
                 }
-                gITManagerSpawnActor.weights.weights_sum = item_any_weights;
+                gITManagerAppearActor.weights.weights_sum = item_any_weights;
 
                 mapobjs_num = mpCollisionGetMapObjCountKind(nMPMapObjKindItem);
 
@@ -590,18 +590,18 @@ GObj* itManagerMakeSpawnActor(void)
                         scManagerRunPrintGObjStatus();
                     }
                 }
-                gITManagerSpawnActor.mapobjs_num = mapobjs_num;
-                gITManagerSpawnActor.mapobjs = (u8*) syTaskmanMalloc(mapobjs_num * sizeof(*gITManagerSpawnActor.mapobjs), 0);
+                gITManagerAppearActor.mapobjs_num = mapobjs_num;
+                gITManagerAppearActor.mapobjs = (u8*) syTaskmanMalloc(mapobjs_num * sizeof(*gITManagerAppearActor.mapobjs), 0);
 
                 mpCollisionGetMapObjIDsKind(nMPMapObjKindItem, item_mapobj_ids);
 
                 for (i = 0; i < mapobjs_num; i++)
                 {
-                    gITManagerSpawnActor.mapobjs[i] = item_mapobj_ids[i];
+                    gITManagerAppearActor.mapobjs[i] = item_mapobj_ids[i];
                 }
                 gobj = gcMakeGObjSPAfter(nGCCommonKindItem, NULL, nGCCommonLinkIDItemActor, GOBJ_PRIORITY_DEFAULT);
 
-                gcAddGObjProcess(gobj, itManagerSpawnActorProcUpdate, nGCProcessKindFunc, 3);
+                gcAddGObjProcess(gobj, itManagerAppearActorProcUpdate, nGCProcessKindFunc, 3);
 
                 item_valid_toggles = gSCManagerBattleState->item_toggles;
                 p_valid_weights = gMPCollisionGroundData->item_weights;
@@ -613,9 +613,9 @@ GObj* itManagerMakeSpawnActor(void)
                         item_valid_weights++;
                     }
                 }
-                gITManagerSpawnActor.weights.valids_num = item_valid_weights;
-                gITManagerSpawnActor.weights.kinds = (u8*) syTaskmanMalloc(item_valid_weights * sizeof(*gITManagerSpawnActor.weights.kinds), 0x0);
-                gITManagerSpawnActor.weights.blocks = (u16*) syTaskmanMalloc(item_valid_weights * sizeof(*gITManagerSpawnActor.weights.blocks), 0x2);
+                gITManagerAppearActor.weights.valids_num = item_valid_weights;
+                gITManagerAppearActor.weights.kinds = (u8*) syTaskmanMalloc(item_valid_weights * sizeof(*gITManagerAppearActor.weights.kinds), 0x0);
+                gITManagerAppearActor.weights.blocks = (u16*) syTaskmanMalloc(item_valid_weights * sizeof(*gITManagerAppearActor.weights.blocks), 0x2);
 
                 item_valid_toggles = gSCManagerBattleState->item_toggles;
                 weights_sum = 0;
@@ -624,8 +624,8 @@ GObj* itManagerMakeSpawnActor(void)
                 {
                     if ((item_valid_toggles & 1) && (p_valid_weights->values[i] != 0))
                     {
-                        gITManagerSpawnActor.weights.kinds[item_valid_weights] = i;
-                        gITManagerSpawnActor.weights.blocks[item_valid_weights] = weights_sum;
+                        gITManagerAppearActor.weights.kinds[item_valid_weights] = i;
+                        gITManagerAppearActor.weights.blocks[item_valid_weights] = weights_sum;
                         weights_sum += p_valid_weights->values[i];
 
                         item_valid_weights++;

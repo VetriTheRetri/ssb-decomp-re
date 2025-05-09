@@ -1038,7 +1038,7 @@ void func_ovl2_8010D4B0(Mtx *mtx, CObj *cobj, Gfx **dls)
 }
 
 // 0x8010D4C0
-void gmCameraBattleProcDisplay(GObj *camera_gobj)
+void gmCameraDefaultProcDisplay(GObj *camera_gobj)
 {
     CObj *cobj = CObjGetStruct(camera_gobj);
 
@@ -1057,7 +1057,7 @@ void gmCameraBattleProcDisplay(GObj *camera_gobj)
 
     camera_gobj->camera_mask = COBJ_MASK_DLLINK(2) | COBJ_MASK_DLLINK(1);
 
-    gcCaptureAll(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
+    gcCaptureCameraGObj(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
     syTaskmanUpdateDLBuffers();
 
     gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
@@ -1065,7 +1065,7 @@ void gmCameraBattleProcDisplay(GObj *camera_gobj)
 
     camera_gobj->camera_mask = COBJ_MASK_DLLINK(4);
 
-    gcCaptureAll(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
+    gcCaptureCameraGObj(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
     syTaskmanUpdateDLBuffers();
 
     gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
@@ -1075,7 +1075,7 @@ void gmCameraBattleProcDisplay(GObj *camera_gobj)
                                COBJ_MASK_DLLINK(10) | COBJ_MASK_DLLINK(9)  |
                                COBJ_MASK_DLLINK(7)  | COBJ_MASK_DLLINK(6);
 
-    gcCaptureAll(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
+    gcCaptureCameraGObj(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
     syTaskmanUpdateDLBuffers();
 
     gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
@@ -1083,7 +1083,7 @@ void gmCameraBattleProcDisplay(GObj *camera_gobj)
 
     camera_gobj->camera_mask = COBJ_MASK_DLLINK(15) | COBJ_MASK_DLLINK(14) | COBJ_MASK_DLLINK(13);
 
-    gcCaptureAll(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
+    gcCaptureCameraGObj(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
     syTaskmanUpdateDLBuffers();
 
     gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
@@ -1091,7 +1091,7 @@ void gmCameraBattleProcDisplay(GObj *camera_gobj)
 
     camera_gobj->camera_mask = COBJ_MASK_DLLINK(18) | COBJ_MASK_DLLINK(17) | COBJ_MASK_DLLINK(16);
 
-    gcCaptureAll(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
+    gcCaptureCameraGObj(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
     syTaskmanUpdateDLBuffers();
 
     gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
@@ -1099,7 +1099,7 @@ void gmCameraBattleProcDisplay(GObj *camera_gobj)
 
     camera_gobj->camera_mask = COBJ_MASK_DLLINK(20) | COBJ_MASK_DLLINK(19);
 
-    gcCaptureAll(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
+    gcCaptureCameraGObj(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
     syTaskmanUpdateDLBuffers();
 }
 
@@ -1117,7 +1117,7 @@ GObj* gmCameraMakeDefaultCamera(u8 tk1, u8 tk2, void (*proc)(GObj*))
         NULL,
         nGCCommonLinkIDCamera,
         GOBJ_PRIORITY_DEFAULT,
-        gmCameraBattleProcDisplay,
+        gmCameraDefaultProcDisplay,
         50,
         0,
         ~0,
@@ -1239,7 +1239,7 @@ GObj* gmCameraMakeWallpaperCamera(void)
 }
 
 // 0x8010DC24
-void func_ovl2_8010DC24(GObj *camera_gobj)
+void gmCameraScreenFlashProcDisplay(GObj *camera_gobj)
 {
     CObj *cobj = CObjGetStruct(camera_gobj);
 
@@ -1260,12 +1260,12 @@ void func_ovl2_8010DC24(GObj *camera_gobj)
 
         gDPSetScissor(gSYTaskmanDLHeads[0]++, G_SC_NON_INTERLACE, ulx, uly, lrx, lry);
     }
-    gcCaptureAll(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
+    gcCaptureCameraGObj(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
     func_80017CC8(cobj);
 }
 
 // 0x8010DDC4
-void func_ovl2_8010DDC4(void)
+void gmCameraScreenFlashMakeCamera(void)
 {
     CObj *cobj = CObjGetStruct
     (
@@ -1275,7 +1275,7 @@ void func_ovl2_8010DDC4(void)
             NULL,
             nGCCommonLinkIDCamera,
             GOBJ_PRIORITY_DEFAULT,
-            func_ovl2_8010DC24,
+            gmCameraScreenFlashProcDisplay,
             20,
             COBJ_MASK_DLLINK(22),
             ~0,
@@ -1361,7 +1361,7 @@ sb32 gmCameraPrepProjectionFuncMatrix(Mtx *mtx, CObj *cobj, Gfx **dls)
 }
 
 // 0x8010E134
-void gmCameraPlayerMagnifyProcUpdate(GObj *camera_gobj)
+void gmCameraPlayerMagnifyProcDisplay(GObj *camera_gobj)
 {
     if (gIFCommonPlayerInterface.magnify_mode != 0)
     {
@@ -1369,7 +1369,7 @@ void gmCameraPlayerMagnifyProcUpdate(GObj *camera_gobj)
 
         gcPrepCameraMatrix(gSYTaskmanDLHeads, cobj);
 
-        gcCaptureAll(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
+        gcCaptureCameraGObj(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
         func_80017CC8(cobj);
     }
 }
@@ -1385,7 +1385,7 @@ void gmCameraMakePlayerMagnifyCamera(void)
             NULL,
             nGCCommonLinkIDCamera,
             GOBJ_PRIORITY_DEFAULT,
-            gmCameraPlayerMagnifyProcUpdate,
+            gmCameraPlayerMagnifyProcDisplay,
             30,
             COBJ_MASK_DLLINK(9),
             ~0,
@@ -1405,7 +1405,7 @@ void gmCameraMakePlayerMagnifyCamera(void)
 }
 
 // 0x8010E254
-void gmCameraPlayerArrowsProcUpdate(GObj *camera_gobj)
+void gmCameraPlayerArrowsProcDisplay(GObj *camera_gobj)
 {
     gcSetCameraMatrixMode(1);
 
@@ -1415,7 +1415,7 @@ void gmCameraPlayerArrowsProcUpdate(GObj *camera_gobj)
 
         gcPrepCameraMatrix(gSYTaskmanDLHeads, cobj);
 
-        gcCaptureAll(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
+        gcCaptureCameraGObj(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
         func_80017CC8(cobj);
     }
 }
@@ -1431,7 +1431,7 @@ void gmCameraMakePlayerArrowsCamera(void)
             NULL,
             nGCCommonLinkIDCamera,
             GOBJ_PRIORITY_DEFAULT,
-            gmCameraPlayerArrowsProcUpdate,
+            gmCameraPlayerArrowsProcDisplay,
             35,
             COBJ_MASK_DLLINK(8),
             ~0,
@@ -1450,7 +1450,7 @@ void gmCameraMakePlayerArrowsCamera(void)
 }
 
 // 0x8010E374
-GObj* func_ovl2_8010E374(void)
+GObj* gmCameraMakeInterfaceCamera(void)
 {
     GObj *camera_gobj = gcMakeCameraGObj
     (
@@ -1478,15 +1478,15 @@ GObj* func_ovl2_8010E374(void)
 }
 
 // 0x8010E458
-void func_ovl2_8010E458(GObj *camera_gobj)
+void gmCameraEffectProcDisplay(GObj *camera_gobj)
 {
     CObj *cobj = CObjGetStruct(camera_gobj);
 
-    gcCaptureAll(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
+    gcCaptureCameraGObj(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
 }
 
-// 0x8010E498
-GObj* func_ovl2_8010E498(void)
+// 0x8010E498 - Not entirely sure what this does, no apparent effect when it's disabled...
+GObj* gmCameraMakeEffectCamera(void)
 {
     GObj *camera_gobj = gcMakeCameraGObj
     (
@@ -1494,7 +1494,7 @@ GObj* func_ovl2_8010E498(void)
         NULL,
         nGCCommonLinkIDCamera,
         GOBJ_PRIORITY_DEFAULT,
-        func_ovl2_8010E458,
+        gmCameraEffectProcDisplay,
         15,
         COBJ_MASK_DLLINK(25),
         ~0,

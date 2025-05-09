@@ -322,7 +322,7 @@ void syControllerUpdateRumbleEvent(s32 port, s32 ev_kind)
     }
     if (i == MAXCONTROLLERS)
     {
-        osRecvMesg(&sSYControllerDeviceMesgQueue, (OSMesg)&i, OS_MESG_BLOCK);
+        osRecvMesg(&sSYControllerDeviceMesgQueue, (OSMesg*)&i, OS_MESG_BLOCK);
     }
     else D_80045268[i].unk00 = 1;
     

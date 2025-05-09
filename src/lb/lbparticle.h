@@ -33,7 +33,7 @@ extern LBParticle* lbParticleMakeStruct
 	f32 size,
 	f32 gravity,
 	f32 friction,
-	u32 argF,
+	u32 texture_flags,
 	LBGenerator *gn
 );
 extern LBParticle* lbParticleMakeChildScriptID(LBParticle *pc, s32 bank_id, s32 script_id);
@@ -53,7 +53,7 @@ extern LBParticle* lbParticleMakeParam
 	f32 size,
 	f32 gravity,
 	f32 friction,
-	u32 argE,
+	u32 texture_flags,
 	LBGenerator *gn
 );
 extern LBParticle* lbParticleMakeCommon(s32 bank_id, s32 script_id);

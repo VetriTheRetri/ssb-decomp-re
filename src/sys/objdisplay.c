@@ -3241,7 +3241,7 @@ void gcAddLinkedDL(s32 id)
 }
 
 // 0x80017B80
-void gcCaptureAll(GObj *camera_gobj, sb32 is_tag_mask_or_id)
+void gcCaptureCameraGObj(GObj *camera_gobj, sb32 is_tag_mask_or_id)
 {
     s32 id = 0;
     u64 camera_mask = camera_gobj->camera_mask;
@@ -3289,10 +3289,11 @@ void func_80017CC8(CObj *cobj)
 void func_80017D3C(GObj *gobj, Gfx **dls, s32 id)
 {
     CObj *cobj = CObjGetStruct(gobj);
+
     func_8001663C(dls, cobj, id);
     gcPrepCameraMatrix(dls, cobj);
     gcRunFuncCamera(cobj, id);
-    gcCaptureAll(gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? TRUE : FALSE);
+    gcCaptureCameraGObj(gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? TRUE : FALSE);
     func_80017CC8(cobj);
 }
 
@@ -3357,7 +3358,7 @@ void func_80017EC0(GObj *gobj)
     {
         sGCBufferDLs[i] = ++gSYTaskmanDLHeads[i];
     }
-    gcCaptureAll(gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? TRUE : FALSE);
+    gcCaptureCameraGObj(gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? TRUE : FALSE);
 
     for (i = 1; i < (ARRAY_COUNT(gSYTaskmanDLHeads) + ARRAY_COUNT(sGCBufferDLs)) / 2; i++)
     {
@@ -3368,6 +3369,7 @@ void func_80017EC0(GObj *gobj)
         else
         {
             Gfx *start = gSYTaskmanDLHeads[i]++;
+
             gSPDisplayList(sGCBufferDLs[i] - 1, gSYTaskmanDLHeads[i]);
 
             if ((i != 1) || !(cobj->flags & 0x20))
@@ -3458,7 +3460,7 @@ void func_80018300(GObj *gobj)
     func_8001663C(gSYTaskmanDLHeads, cobj, 0);
     spInit(gSYTaskmanDLHeads);
     spScissor(xmin, xmax, ymin, ymax);
-    gcCaptureAll(gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? TRUE : FALSE);
+    gcCaptureCameraGObj(gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? TRUE : FALSE);
     spFinish(gSYTaskmanDLHeads);
 
     gSYTaskmanDLHeads[0]--;

@@ -74,7 +74,7 @@ extern void gcRunFuncCamera(CObj *cobj, s32 arg);
 extern void gcCaptureTaggedGObjs(GObj *camera_gobj, s32 link_id, sb32 is_tag_mask_or_id);
 extern void gcCaptureDoubleBufferGObjs(GObj *camera_gobj, s32 id, sb32 is_tag_mask_or_id);
 extern void gcAddLinkedDL(s32 id);
-extern void gcCaptureAll(GObj *camera_gobj, sb32 is_tag_mask_or_id);
+extern void gcCaptureCameraGObj(GObj *camera_gobj, sb32 is_tag_mask_or_id);
 extern void func_80017CC8(CObj *cobj);
 extern void func_80017D3C(GObj *gobj, Gfx **dls, s32 index);
 extern void func_80017DBC(GObj *gobj);

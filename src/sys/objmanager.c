@@ -2014,8 +2014,10 @@ void gcMoveGObjDLHead(GObj *gobj, u8 dl_link, u32 priority)
 		while (TRUE);
 	}
 	gcRemoveGObjFromDLLinkedList(gobj);
+	
 	gobj->dl_link_id = dl_link;
 	gobj->dl_link_priority = priority;
+
 	gcDLLinkGObjHead(gobj);
 }
 

@@ -25,7 +25,7 @@ extern s32 gITManagerDisplayMode;
 extern ITStruct* gITManagerStructsAllocFree;
 
 // 0x8018D098
-extern ITSpawnActor gITManagerSpawnActor;
+extern ITAppearActor gITManagerAppearActor;
 
 // Global data
 

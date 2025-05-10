@@ -1,17 +1,6 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 #include <ef/effect.h>
-// // // // // // // // // // // //
-//                               //
-//             MACROS            //
-//                               //
-// // // // // // // // // // // //
-
-#define wpNessPKThunderHeadGetTrailIDGObj(wp, i) \
-((wp)->weapon_vars.pkthunder.trail_gobj[(i)])
-
-#define wpNessPKThunderTrailGetTrailIDGObj(wp, i) \
-((wp)->weapon_vars.pkthunder_trail.trail_gobj[(i)])
 
 // // // // // // // // // // // //
 //                               //
@@ -39,7 +28,7 @@ WPDesc dWPNessPKThunderHeadWeaponDesc =
 
     // DObj transformation struct
     {
-        nGCMatrixKindTra,                    // Main matrix transformations
+        nGCMatrixKindTra,                   // Main matrix transformations
         0x2E,                               // Secondary matrix transformations?
         0                                   // ???
     },
@@ -63,8 +52,8 @@ WPDesc dWPNessPKThunderTrailWeaponDesc =
 
     // DObj transformation struct
     {
-        nGCMatrixKindTraRotRpyRSca,          // Main matrix transformations
-        nGCMatrixKindNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyRSca,         // Main matrix transformations
+        nGCMatrixKindNull,                  // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -87,7 +76,7 @@ WPDesc dWPNessPKReflectHeadWeaponDesc =
 
     // DObj transformation struct
     {
-        nGCMatrixKindTra,                    // Main matrix transformations
+        nGCMatrixKindTra,                   // Main matrix transformations
         0x2E,                               // Secondary matrix transformations?
         0                                   // ???
     },
@@ -111,8 +100,8 @@ WPDesc dWPNessPKReflectTrailWeaponDesc =
 
     // DObj transformation struct
     {
-        nGCMatrixKindTraRotRpyRSca,          // Main matrix transformations
-        nGCMatrixKindNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyRSca,         // Main matrix transformations
+        nGCMatrixKindNull,                  // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -164,7 +153,6 @@ void wpNessPKThunderHeadSetDestroyTrails(GObj *weapon_gobj, sb32 is_destroy)
             head_wp->weapon_vars.pkthunder.trail_gobj[i] = NULL;
         }
     }
-
     if (head_wp->weapon_vars.pkthunder.trail_gobj[ARRAY_COUNT(head_wp->weapon_vars.pkthunder.trail_gobj) - 1] != NULL)
     {
         ep = efGetStruct(head_wp->weapon_vars.pkthunder.trail_gobj[ARRAY_COUNT(head_wp->weapon_vars.pkthunder.trail_gobj) - 1]);
@@ -501,17 +489,16 @@ void wpNessPKReflectHeadSetDestroyTrails(GObj *weapon_gobj, s32 unused)
 
     for (i = 0; i < (ARRAY_COUNT(head_wp->weapon_vars.pkthunder.trail_gobj) - 1); i++)
     {
-        if (wpNessPKThunderHeadGetTrailIDGObj(head_wp, i) != NULL)
+        if (head_wp->weapon_vars.pkthunder.trail_gobj[i] != NULL)
         {
-            trail_wp = wpGetStruct(wpNessPKThunderHeadGetTrailIDGObj(head_wp, i));
+            trail_wp = wpGetStruct(head_wp->weapon_vars.pkthunder.trail_gobj[i]);
             trail_wp->weapon_vars.pkthunder_trail.status = nWPNessPKThunderStatusDestroy;
             head_wp->weapon_vars.pkthunder.trail_gobj[i] = NULL;
         }
     }
-
-    if (wpNessPKThunderHeadGetTrailIDGObj(head_wp, ARRAY_COUNT(head_wp->weapon_vars.pkthunder.trail_gobj) - 1) != NULL)
+    if (head_wp->weapon_vars.pkthunder.trail_gobj[ARRAY_COUNT(head_wp->weapon_vars.pkthunder.trail_gobj) - 1] != NULL)
     {
-        ep = efGetStruct(wpNessPKThunderHeadGetTrailIDGObj(head_wp, ARRAY_COUNT(head_wp->weapon_vars.pkthunder.trail_gobj) - 1));
+        ep = efGetStruct(head_wp->weapon_vars.pkthunder.trail_gobj[ARRAY_COUNT(head_wp->weapon_vars.pkthunder.trail_gobj) - 1]);
         ep->effect_vars.pkthunder.status = nWPNessPKThunderStatusDestroy;
         head_wp->weapon_vars.pkthunder.trail_gobj[ARRAY_COUNT(head_wp->weapon_vars.pkthunder.trail_gobj) - 1] = NULL;
     }

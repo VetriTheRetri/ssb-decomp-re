@@ -404,7 +404,8 @@ void ftNessSpecialAirHiEndSetStatus(GObj *fighter_gobj)
 void ftNessSpecialHiCollideWallPhysics(GObj *fighter_gobj, MPCollData *coll_data)
 {
     // The developers overengineered PK Thunder's physics by unnecessarily multiplying vel_air.x and pkjibaku_angle with fp->lr back and forth...
-    // While this function could probably be reimplemented without getting rid of the fp->lr solution, I feel like this is the better way to do it:
+    // While this function could probably be reimplemented without getting rid of the fp->lr solution, I feel like this is the better way to do it.
+    // Not only does this get rid of the need to use fp->lr, but it also fixes the janky wall angle reflections.
     // (shoutouts to ChatGPT)
 
     /*
@@ -482,7 +483,7 @@ void ftNessSpecialHiCollideWallPhysics(GObj *fighter_gobj, MPCollData *coll_data
         {
             angle_new -= F_CST_DTOR32(360.0F);
         }
-        angle_new = ((angle_old + F_CST_DTOR32(180.0F)) < angle_new) ? (angle_new + F_CST_DTOR32(90.0F)) : (angle_new + F_CST_DTOR32(-90.0F)); // To fix Ness's janky left wall collision, compare rotation - PI32
+        angle_new = ((angle_old + F_CST_DTOR32(180.0F)) < angle_new) ? (angle_new + F_CST_DTOR32(90.0F)) : (angle_new + F_CST_DTOR32(-90.0F));
     }
     if (coll_data->mask_curr & MAP_FLAG_RWALL)
     {
@@ -505,14 +506,11 @@ void ftNessSpecialHiUpdateModelPitch(GObj *fighter_gobj) // Update joint's X rot
     FTStruct *fp = ftGetStruct(fighter_gobj);
     
     // PK Thunder's velocity sign can sometimes end up becoming the inverse of the LR sign, causing Ness' model rotation to corrupt.
-
     // Solution:
 
     /* 
-
     fp->joints[4]->rotate.vec.f.x = 
     (syUtilsArcTan2(((fp->physics.vel_air.x * fp->lr) < 0.0F) ? -fp->physics.vel_air.x : fp->physics.vel_air.x, fp->physics.vel_air.y) * fp->lr) - F_CST_DTOR32(90.0F); 
-    
     */
 
     fp->joints[4]->rotate.vec.f.x = (syUtilsArcTan2(fp->physics.vel_air.x, fp->physics.vel_air.y) * fp->lr) - F_CST_DTOR32(90.0F);

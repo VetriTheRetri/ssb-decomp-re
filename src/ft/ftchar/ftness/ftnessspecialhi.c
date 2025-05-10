@@ -403,6 +403,67 @@ void ftNessSpecialAirHiEndSetStatus(GObj *fighter_gobj)
 // 0x80154598
 void ftNessSpecialHiCollideWallPhysics(GObj *fighter_gobj, MPCollData *coll_data)
 {
+    // The developers overengineered PK Thunder's physics by unnecessarily multiplying vel_air.x and pkjibaku_angle with fp->lr back and forth...
+    // While this function could probably be reimplemented without getting rid of the fp->lr solution, I feel like this is the better way to do it:
+    // (shoutouts to ChatGPT)
+
+    /*
+    f32 pkjibaku_angle, wall_angle, angle_diff;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+
+    pkjibaku_angle = fp->status_vars.ness.specialhi.pkjibaku_angle;
+
+    while (pkjibaku_angle > F_CST_DTOR32(180.0F))
+    {
+        pkjibaku_angle -= F_CST_DTOR32(360.0F);
+    }
+    while (pkjibaku_angle < F_CST_DTOR32(-180.0F))
+    {
+        pkjibaku_angle += F_CST_DTOR32(360.0F);
+    }
+    if (coll_data->mask_curr & MAP_FLAG_LWALL)
+    {
+        wall_angle = syUtilsArcTan2(coll_data->lwall_angle.y, coll_data->lwall_angle.x);
+    }
+    else if (coll_data->mask_curr & MAP_FLAG_RWALL)
+    {
+        wall_angle = syUtilsArcTan2(coll_data->rwall_angle.y, coll_data->rwall_angle.x);
+    }
+    else wall_angle = F_CST_DTOR32(0.0F);
+
+    while (wall_angle > F_CST_DTOR32(180.0F))
+    {
+        wall_angle -= F_CST_DTOR32(360.0F);
+    }
+    while (wall_angle < F_CST_DTOR32(-180.0F))
+    {
+        wall_angle += F_CST_DTOR32(360.0F);
+    }
+    angle_diff = pkjibaku_angle - wall_angle;
+
+    while (angle_diff > F_CST_DTOR32(180.0F))
+    {
+        angle_diff -= F_CST_DTOR32(360.0F);
+    }
+    while (angle_diff < F_CST_DTOR32(-180.0F))
+    {
+        angle_diff += F_CST_DTOR32(360.0F);
+    }
+    wall_angle += (angle_diff > 0.0F) ? F_CST_DTOR32(90.0F) : F_CST_DTOR32(-90.0F);
+
+    while (wall_angle > F_CST_DTOR32(180.0F))
+    {
+        wall_angle -= F_CST_DTOR32(360.0F);
+    }
+    while (wall_angle < F_CST_DTOR32(-180.0F))
+    {
+        wall_angle += F_CST_DTOR32(360.0F);
+    }
+    syVectorRotate3D(&fp->physics.vel_air, SYVECTOR_AXIS_Z, wall_angle - fp->status_vars.ness.specialhi.pkjibaku_angle);
+
+    fp->status_vars.ness.specialhi.pkjibaku_angle = syUtilsArcTan2(fp->physics.vel_air.y, fp->physics.vel_air.x);
+    */
+
     s32 unused;
     f32 angle_old, angle_new;
     FTStruct *fp = ftGetStruct(fighter_gobj);

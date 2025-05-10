@@ -20,14 +20,16 @@
 // libultra internal
 void __osSetWatchLo(u32);
 
-#define STACK_PROBE_MAGIC 0xFEDCBA98
+#define STACK_CANARY_OFFSET 7 //this is weird but kirby also does this
+#define STACK_CANARY 0xFEDCBA98
+
 // size of stack in double words (u64, 8 bytes)
-#define THREAD0_STACK_SIZE 57
-#define THREAD1_STACK_SIZE 25
-#define THREAD3_STACK_SIZE 121
-#define THREAD4_STACK_SIZE 185
-#define THREAD5_STACK_SIZE 1657
-#define THREAD6_STACK_SIZE 249
+#define THREAD0_STACK_SIZE 0x200 / sizeof(u64)
+#define THREAD1_STACK_SIZE 0x100 / sizeof(u64)
+#define THREAD3_STACK_SIZE 0x400 / sizeof(u64)
+#define THREAD4_STACK_SIZE 0x600 / sizeof(u64)
+#define THREAD5_STACK_SIZE 0x3400 / sizeof(u64)
+#define THREAD6_STACK_SIZE 0x800 / sizeof(u64)
 
 // Thread Scheduler Priorities
 #define THREAD3_PRI 120
@@ -78,22 +80,16 @@ sb32 dSYMainNoThread5 = FALSE;
 //                               //
 // // // // // // // // // // // //
 
-u8 sUnref8003FAD0[56];
 u64 gSYMainThread0Stack[THREAD0_STACK_SIZE];
 OSThread sSYMainThread1;
-u8 sUnref8003FE80[56];
 u64 sSYMainThread1Stack[THREAD1_STACK_SIZE];
 OSThread sSYMainThread3;
-u8 sUnref80040130[56];
 u64 sSYMainThread3Stack[THREAD3_STACK_SIZE];
 OSThread sSYMainThread4;
-u8 sUnref800406E0[56];
 u64 sSYMainThread4Stack[THREAD4_STACK_SIZE];
 OSThread gSYMainThread5;
-u64 sSYMainUnknown0x80040E90[7];
 u64 sSYMainThread5Stack[THREAD5_STACK_SIZE];
 OSThread gSYMainThread6;
-u8 sUnref8004440[56];
 u64 sSYMainThread6Stack[THREAD6_STACK_SIZE];
 u64 gSYMainRspBootCode[0x20]; // IP3 font?
 sb8 gSYMainImemOK;
@@ -117,7 +113,7 @@ u64* syMainGetThread4StackStart(void)
 
 u64* unref_8000046C(void)
 {
-    return sSYMainUnknown0x80040E90;
+    return &sSYMainThread5Stack[0];
 }
 
 void* unref_80000478(void) 
@@ -152,19 +148,19 @@ void syMainThreadStackOverflow(s32 tid)
 
 void syMainVerifyStackProbes(void) 
 {
-    if (gSYMainThread0Stack[0] != STACK_PROBE_MAGIC)
+    if (gSYMainThread0Stack[STACK_CANARY_OFFSET] != STACK_CANARY)
     {
         syMainThreadStackOverflow(0);
     }
-    if (sSYMainThread1Stack[0] != STACK_PROBE_MAGIC)
+    if (sSYMainThread1Stack[STACK_CANARY_OFFSET] != STACK_CANARY)
     {
         syMainThreadStackOverflow(1);
     }
-    if (sSYMainThread3Stack[0] != STACK_PROBE_MAGIC)
+    if (sSYMainThread3Stack[STACK_CANARY_OFFSET] != STACK_CANARY)
     {
         syMainThreadStackOverflow(3);
     }
-    if (sSYMainThread5Stack[0] != STACK_PROBE_MAGIC)
+    if (sSYMainThread5Stack[STACK_CANARY_OFFSET] != STACK_CANARY)
     {
         syMainThreadStackOverflow(5);
     }
@@ -184,16 +180,16 @@ void syMainThread5(void *arg)
     syMainSetDmemStatus();
     osCreateMesgQueue(&gSYMainThreadingMesgQueue, sSYMainBlockMesg, ARRAY_COUNT(sSYMainBlockMesg));
 
-    osCreateThread(&sSYMainThread3, 3, sySchedulerThreadMain, NULL, sSYMainThread3Stack + ARRAY_COUNT(sSYMainThread3Stack), THREAD3_PRI);
-    sSYMainThread3Stack[0] = STACK_PROBE_MAGIC; osStartThread(&sSYMainThread3);
+    osCreateThread(&sSYMainThread3, 3, sySchedulerThreadMain, NULL, &sSYMainThread3Stack[THREAD3_STACK_SIZE], THREAD3_PRI);
+    sSYMainThread3Stack[STACK_CANARY_OFFSET] = STACK_CANARY; osStartThread(&sSYMainThread3);
     osRecvMesg(&gSYMainThreadingMesgQueue, NULL, OS_MESG_BLOCK);
 
-    osCreateThread(&sSYMainThread4, 4, syAudioThreadMain, NULL, sSYMainThread4Stack + ARRAY_COUNT(sSYMainThread4Stack), THREAD4_PRI);
-    sSYMainThread4Stack[0] = STACK_PROBE_MAGIC; osStartThread(&sSYMainThread4);
+    osCreateThread(&sSYMainThread4, 4, syAudioThreadMain, NULL, &sSYMainThread4Stack[THREAD4_STACK_SIZE], THREAD4_PRI);
+    sSYMainThread4Stack[STACK_CANARY_OFFSET] = STACK_CANARY; osStartThread(&sSYMainThread4);
     osRecvMesg(&gSYMainThreadingMesgQueue, NULL, OS_MESG_BLOCK);
 
-    osCreateThread(&gSYMainThread6, 6, syControllerThreadMain, NULL, sSYMainThread6Stack + ARRAY_COUNT(sSYMainThread6Stack), THREAD6_PRI);
-    sSYMainThread6Stack[0] = STACK_PROBE_MAGIC; osStartThread(&gSYMainThread6);
+    osCreateThread(&gSYMainThread6, 6, syControllerThreadMain, NULL, &sSYMainThread6Stack[THREAD6_STACK_SIZE], THREAD6_PRI);
+    sSYMainThread6Stack[STACK_CANARY_OFFSET] = STACK_CANARY; osStartThread(&gSYMainThread6);
     osRecvMesg(&gSYMainThreadingMesgQueue, NULL, OS_MESG_BLOCK);
 
     func_80006B80();
@@ -204,8 +200,8 @@ void syMainThread5(void *arg)
 void syMainThread1Idle(void *arg) 
 {
     syDebugStartRmonThread8();
-    osCreateThread(&gSYMainThread5, 5, syMainThread5, arg, sSYMainThread5Stack + THREAD5_STACK_SIZE, THREAD5_PRI);
-    sSYMainThread5Stack[0] = STACK_PROBE_MAGIC;
+    osCreateThread(&gSYMainThread5, 5, syMainThread5, arg, &sSYMainThread5Stack[THREAD5_STACK_SIZE], THREAD5_PRI);
+    sSYMainThread5Stack[STACK_CANARY_OFFSET] = STACK_CANARY;
 
     if (dSYMainNoThread5 == FALSE)
     { 
@@ -218,10 +214,10 @@ void syMainThread1Idle(void *arg)
 
 void syMainLoop(void) 
 {
-    gSYMainThread0Stack[0] = STACK_PROBE_MAGIC;
+    gSYMainThread0Stack[STACK_CANARY_OFFSET] = STACK_CANARY;
     __osSetWatchLo(0x04900000 & WATCHLO_ADDRMASK);
     osInitialize();
-    osCreateThread(&sSYMainThread1, 1, syMainThread1Idle, sSYMainThreadArgBuf, sSYMainThread1Stack + ARRAY_COUNT(sSYMainThread1Stack), OS_PRIORITY_APPMAX);
+    osCreateThread(&sSYMainThread1, 1, syMainThread1Idle, sSYMainThreadArgBuf, &sSYMainThread1Stack[THREAD1_STACK_SIZE], OS_PRIORITY_APPMAX);
 
-    sSYMainThread1Stack[0] = STACK_PROBE_MAGIC; osStartThread(&sSYMainThread1);
+    sSYMainThread1Stack[STACK_CANARY_OFFSET] = STACK_CANARY; osStartThread(&sSYMainThread1);
 }

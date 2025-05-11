@@ -2010,6 +2010,20 @@ Sprite BButton 0x1d948
 Sprite ZButton 0x1df58
 Sprite PlusSymbol 0x1e018
 
+[208]
+FTSpecialColl LwReflector 0x19B0
+
+[228]
+FTKirbyCopy SpecialN 0x0
+ftKirbyAttack100Effect - 0x1220
+
+[235]
+Vec2h SpecialHi 0x0
+
+[238]
+FTSpecialColl AttackS4Reflector 0x1114
+FTSpecialColl LwAbsorb 0x16D4
+
 [252]
 KeyEvent 0 0x0
 KeyEvent 1 0x9D4

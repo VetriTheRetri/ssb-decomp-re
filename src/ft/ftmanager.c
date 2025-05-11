@@ -629,7 +629,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTDesc *desc)
 
         if (fp->fkind == nFTKindKirby)
         {
-            FTKirbyCopy *copy = lbRelocGetFileData(FTKirbyCopy*, gFTDataKirbyMainMotion, &lFTKirbySpecialNCopyData);
+            FTKirbyCopy *copy = lbRelocGetFileData(FTKirbyCopy*, gFTDataKirbyMainMotion, &llKirbyMainMotionSpecialNFTKirbyCopy);
 
             ftParamSetModelPartDefaultID(fighter_gobj, FTKIRBY_COPY_MODELPARTS_JOINT, copy[fp->passive_vars.kirby.copy_id].copy_modelpart_id);
         }

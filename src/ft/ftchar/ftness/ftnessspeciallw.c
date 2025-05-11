@@ -1,5 +1,7 @@
 #include <ft/fighter.h>
 #include <wp/weapon.h>
+#include <reloc_data.h>
+
 // // // // // // // // // // // //
 //                               //
 //             MACROS            //
@@ -238,7 +240,7 @@ void ftNessSpecialLwInitVars(GObj *fighter_gobj)
     }
     fp->is_absorb = TRUE;
 
-    fp->special_coll = (FTSpecialColl*) ((uintptr_t)gFTNessFileMainMotion + (intptr_t)&lFTNessSpecialLwAbsorb);
+    fp->special_coll = (FTSpecialColl*) ((uintptr_t)gFTNessFileMainMotion + (intptr_t)&llNessMainMotionLwAbsorbFTSpecialColl);
 
     fp->motion_vars.flags.flag1 = 0;
 }

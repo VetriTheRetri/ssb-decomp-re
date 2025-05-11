@@ -1,5 +1,6 @@
 #include <ft/fighter.h>
 #include <ef/effect.h>
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -289,7 +290,7 @@ void ftFoxSpecialLwStartInitStatusVars(GObj *fighter_gobj)
     {
         fp->is_effect_attach = TRUE;
     }
-    fp->special_coll = (FTSpecialColl*) ((uintptr_t)gFTDataFoxMainMotion + (intptr_t)&lFTFoxSpecialLwReflector); // Another linker thing
+    fp->special_coll = (FTSpecialColl*) ((uintptr_t)gFTDataFoxMainMotion + (intptr_t)&llFoxMainMotionLwReflectorFTSpecialColl);
 }
 
 // 0x8015D250

@@ -1,13 +1,6 @@
 #include <ft/fighter.h>
 #include <it/item.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lFTKirbySpecialNCopyData;           // 0x00000000
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -482,7 +475,7 @@ void ftCommonThrownKirbyStarSetStatus(GObj *fighter_gobj)
 {
     s32 i;
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTKirbyCopy *copy = lbRelocGetFileData(FTKirbyCopy*, gFTDataKirbyMainMotion, &lFTKirbySpecialNCopyData);;
+    FTKirbyCopy *copy = lbRelocGetFileData(FTKirbyCopy*, gFTDataKirbyMainMotion, &llKirbyMainMotionSpecialNFTKirbyCopy);
 
     if (fp->ga == nMPKineticsGround)
     {

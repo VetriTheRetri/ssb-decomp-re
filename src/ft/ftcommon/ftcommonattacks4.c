@@ -1,5 +1,6 @@
 #include <ft/fighter.h>
 #include <it/item.h>
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -121,7 +122,7 @@ void ftCommonAttackS4SetStatus(GObj *fighter_gobj)
 
     case nFTKindNess:
     case nFTKindNNess:
-        fp->special_coll = (FTSpecialColl*) ((uintptr_t)gFTNessFileMainMotion + (intptr_t)&lFTNessAttackS4Reflector);
+        fp->special_coll = (FTSpecialColl*) ((uintptr_t)gFTNessFileMainMotion + (intptr_t)&llNessMainMotionAttackS4ReflectorFTSpecialColl);
         break;
     }
 }

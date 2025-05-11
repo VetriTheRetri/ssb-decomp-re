@@ -39,9 +39,6 @@
 
 extern FTStatusDesc dFTNessSpecialStatusDescs[/* */];
 
-extern intptr_t lFTNessAttackS4Reflector;       // 0x00001114
-extern intptr_t lFTNessSpecialLwAbsorb;         // 0x000016D4
-
 extern void *gFTNessFileMain;
 extern void *gFTNessFileMainMotion;
 extern void *gFTNessFileModel;

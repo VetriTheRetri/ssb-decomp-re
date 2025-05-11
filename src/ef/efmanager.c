@@ -5844,7 +5844,7 @@ void efManagerCaptureKirbyStarProcUpdate(GObj *effect_gobj)
     fp = ftGetStruct(ep->fighter_gobj);
     topn_dobj = DObjGetStruct(effect_gobj);
 
-    copy = lbRelocGetFileData(FTKirbyCopy*, gFTDataKirbyMainMotion, &lFTKirbySpecialNCopyData);;
+    copy = lbRelocGetFileData(FTKirbyCopy*, gFTDataKirbyMainMotion, &llKirbyMainMotionSpecialNFTKirbyCopy);
 
     child_dobj = topn_dobj->child;
 
@@ -5882,7 +5882,7 @@ GObj* efManagerCaptureKirbyStarMakeEffect(GObj *fighter_gobj)
     DObj *dobj;
     FTKirbyCopy *copy;
 
-    copy = lbRelocGetFileData(FTKirbyCopy*, gFTDataKirbyMainMotion, &lFTKirbySpecialNCopyData);;
+    copy = lbRelocGetFileData(FTKirbyCopy*, gFTDataKirbyMainMotion, &llKirbyMainMotionSpecialNFTKirbyCopy);
 
     dEFManagerCaptureKirbyStarEffectDesc.file_head = &addr;
 

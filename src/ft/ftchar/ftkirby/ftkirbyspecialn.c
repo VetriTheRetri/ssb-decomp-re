@@ -1,12 +1,6 @@
 #include <ft/fighter.h>
+#include <reloc_data.h>
 
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lFTKirbySpecialNCopyData;       // 0x00000000
 // // // // // // // // // // // //
 //                               //
 //             MACROS            //
@@ -116,7 +110,7 @@ void ftKirbySpecialNCopyInitCopyVars(GObj *fighter_gobj)
 {
     s16 copy_id;
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTKirbyCopy *copy = lbRelocGetFileData(FTKirbyCopy*, gFTDataKirbyMainMotion, &lFTKirbySpecialNCopyData);;
+    FTKirbyCopy *copy = lbRelocGetFileData(FTKirbyCopy*, gFTDataKirbyMainMotion, &llKirbyMainMotionSpecialNFTKirbyCopy);
 
     if (fp->motion_vars.flags.flag1 != 0)
     {
@@ -175,7 +169,7 @@ void ftKirbySpecialNLoopProcUpdate(GObj *fighter_gobj)
 void ftKirbySpecialNCatchProcUpdate(GObj *fighter_gobj)
 {
     FTStruct *kirby_fp = ftGetStruct(fighter_gobj);
-    FTKirbyCopy *copy = lbRelocGetFileData(FTKirbyCopy*, gFTDataKirbyMainMotion, &lFTKirbySpecialNCopyData);
+    FTKirbyCopy *copy = lbRelocGetFileData(FTKirbyCopy*, gFTDataKirbyMainMotion, &llKirbyMainMotionSpecialNFTKirbyCopy);
     FTStruct *victim_fp;
     Vec3f kirby_pos;
     f32 dist;

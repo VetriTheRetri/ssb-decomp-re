@@ -1,19 +1,6 @@
 #include <ft/fighter.h>
 #include <it/item.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lFTCaptainSpecialHiOffset;          // 0x00000000
-
-// // // // // // // // // // // //
-//                               //
-//           FUNCTIONS           //
-//                               //
-// // // // // // // // // // // //
+#include <reloc_data.h>
 
 // 0x8014D0F0
 void ftCommonCaptureCaptainUpdatePositions(GObj *fighter_gobj, GObj *capture_gobj, Vec3f *pos)
@@ -23,7 +10,7 @@ void ftCommonCaptureCaptainUpdatePositions(GObj *fighter_gobj, GObj *capture_gob
 
     FTStruct *this_fp = ftGetStruct(fighter_gobj);
     FTStruct *capture_fp = ftGetStruct(capture_gobj);
-    Vec2h *offset_add = lbRelocGetFileData(Vec2h*, gFTDataCaptainMainMotion, &lFTCaptainSpecialHiOffset);
+    Vec2h *offset_add = lbRelocGetFileData(Vec2h*, gFTDataCaptainMainMotion, &llCaptainMainMotionSpecialHiVec2h);
     s32 unused;
 
     pos->x = 0.0F;

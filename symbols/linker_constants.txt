@@ -646,17 +646,6 @@ lGRHyruleTwisterThrowHitDesc = 0x000000BC;
 lGRJungleDataStart = 0x00000014;
 lGRJungleTaruCannThrowHitDesc = 0x000000BC;
 
-lFTCaptainSpecialHiOffset = 0x00000000;
-
-lFTNessAttackS4Reflector = 0x00001114;
-
-lFTNessSpecialLwAbsorb = 0x000016D4;
-
-lFTFoxSpecialLwReflector = 0x000019B0;
-
-lFTKirbySpecialNCopyData = 0x00000000;
-lFTKirbyAttack100Effect = 0x00001220;
-
 lWPMariroFireballWeaponAttributes = 0x00000000;
 lWPMarioFireballMarioWeaponAttributes = 0x00000000;
 lWPMarioFireballLuigiWeaponAttributes = 0x00000000;

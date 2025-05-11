@@ -1,4 +1,5 @@
 #include <ft/fighter.h>
+#include <reloc_data.h>
 
 // externs from scsubsysdata.c
 extern s32 D_ovl1_80390E7C[];
@@ -304,14 +305,14 @@ FTMotionDesc dFTMarioMotionDescs[] =
 // 0x80117810
 FTData dFTMarioData =
 {
-	0x000000CB,
-	0x000000CA,
+	&llMarioMainFileID,
+	&llMarioMainMotionFileID,
 	0x00000000,
-	0x00000128,
-	0x0000012A,
-	0x000000CC,
-	0x00000164,
-	0x00000129,
+	&llMarioModelFileID,
+	&llMarioShieldPoseFileID,
+	&llMarioSpecial1FileID,
+	&llMarioSpecial2FileID,
+	&llMarioSpecial3FileID,
 	0x00000000,
 	0x00000000,
 	&gFTMarioFileMain,
@@ -550,14 +551,14 @@ FTMotionDesc dFTMMarioMotionDescs[] =
 // 0x80118220
 FTData dFTMMarioData =
 {
-	0x000000CE,
-	0x000000CD,
-	0x000000CA,
-	0x0000012C,
-	0x0000012A,
-	0x000000CC,
-	0x00000164,
-	0x00000129,
+	&llMMarioMainFileID,
+	&llMMarioMainMotionFileID,
+	&llMarioMainMotionFileID,
+	&llMMarioModelFileID,
+	&llMarioShieldPoseFileID,
+	&llMarioSpecial1FileID,
+	&llMarioSpecial2FileID,
+	&llMarioSpecial3FileID,
 	0x00000000,
 	0x00000000,
 	&gFTDataMMarioMain,
@@ -795,11 +796,11 @@ FTMotionDesc dFTNMarioMotionDescs[] =
 
 FTData dFTNMarioData =
 {
-	0x000000CF,
+	&llNMarioMainFileID,
 	0x00000000,
-	0x000000CA,
-	0x0000012D,
-	0x0000012A,
+	&llMarioMainMotionFileID,
+	&llNMarioModelFileID,
+	&llMarioShieldPoseFileID,
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -1054,15 +1055,15 @@ FTMotionDesc dFTFoxMotionDescs[] =
 
 FTData dFTFoxData =
 {
-	0x000000D1,
-	0x000000D0,
+	&llFoxMainFileID,
+	&llFoxMainMotionFileID,
 	0x00000000,
-	0x00000139,
-	0x0000013A,
-	0x000000D2,
-	0x0000015A,
-	0x000000A1,
-	0x0000013C,
+	&llFoxModelFileID,
+	&llFoxShieldPoseFileID,
+	&llFoxSpecial1FileID,
+	&llFoxSpecial2FileID,
+	&llMVOpeningSectorArwingFileID,
+	&llFoxSpecial4FileID,
 	0x00000000,
 	&gFTDataFoxMain,
 	&gFTDataFoxMainMotion,
@@ -1313,11 +1314,11 @@ FTMotionDesc dFTNFoxMotionDescs[] =
 
 FTData dFTNFoxData =
 {
-	0x000000D3,
+	&llNFoxMainFileID,
 	0x00000000,
-	0x000000D0,
-	0x0000012F,
-	0x0000013A,
+	&llFoxMainMotionFileID,
+	&llNFoxModelFileID,
+	&llFoxShieldPoseFileID,
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -1574,13 +1575,13 @@ FTMotionDesc dFTDonkeyMotionDescs[] =
 
 FTData dFTDonkeyData =
 {
-	0x000000D5,
-	0x000000D4,
+	&llDonkeyMainFileID,
+	&llDonkeyMainMotionFileID,
 	0x00000000,
-	0x0000013D,
-	0x0000013E,
+	&llDonkeyModelFileID,
+	&llDonkeyShieldPoseFileID,
 	0x00000000,
-	0x00000163,
+	&llDonkeySpecial2FileID,
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -1835,11 +1836,11 @@ FTMotionDesc dFTNDonkeyMotionDescs[] =
 
 FTData dFTNDonkeyData =
 {
-	0x000000D6,
+	&llNDonkeyMainFileID,
 	0x00000000,
-	0x000000D4,
-	0x00000134,
-	0x0000013E,
+	&llDonkeyMainMotionFileID,
+	&llNDonkeyModelFileID,
+	&llDonkeyShieldPoseFileID,
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -2096,13 +2097,13 @@ FTMotionDesc dFTGDonkeyMotionDescs[] =
 
 FTData dFTGDonkeyData =
 {
-	0x000000D7,
+	&llGDonkeyMainFileID,
 	0x00000000,
-	0x000000D4,
-	0x0000013D,
-	0x0000013E,
+	&llDonkeyMainMotionFileID,
+	&llDonkeyModelFileID,
+	&llDonkeyShieldPoseFileID,
 	0x00000000,
-	0x00000163,
+	&llDonkeySpecial2FileID,
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -2343,14 +2344,14 @@ FTMotionDesc dFTSamusMotionDescs[] =
 
 FTData dFTSamusData =
 {
-	0x000000D9,
-	0x000000D8,
+	&llSamusMainFileID,
+	&llSamusMainMotionFileID,
 	0x00000000,
-	0x00000140,
-	0x00000142,
-	0x000000DA,
-	0x0000015D,
-	0x00000141,
+	&llSamusModelFileID,
+	&llSamusShieldPoseFileID,
+	&llSamusSpecial1FileID,
+	&llSamusSpecial2FileID,
+	&llSamusSpecial3FileID,
 	0x00000000,
 	0x00000000,
 	&gFTDataSamusMain,
@@ -2587,11 +2588,11 @@ FTMotionDesc dFTNSamusMotionDescs[] =
 
 FTData dFTNSamusData =
 {
-	0x000000DB,
+	&llNSamusMainFileID,
 	0x00000000,
-	0x000000D8,
-	0x00000135,
-	0x00000142,
+	&llSamusMainMotionFileID,
+	&llNSamusModelFileID,
+	&llSamusShieldPoseFileID,
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -2829,14 +2830,14 @@ FTMotionDesc dFTLuigiMotionDescs[] =
 
 FTData dFTLuigiData =
 {
-	0x000000DD,
-	0x000000DC,
+	&llLuigiMainFileID,
+	&llLuigiMainMotionFileID,
 	0x00000000,
-	0x00000143,
-	0x0000012A,
-	0x000000DE,
-	0x00000164,
-	0x00000129,
+	&llLuigiModelFileID,
+	&llMarioShieldPoseFileID,
+	&llLuigiSpecial1FileID,
+	&llMarioSpecial2FileID,
+	&llMarioSpecial3FileID,
 	0x00000000,
 	0x00000000,
 	&gFTDataLuigiMain,
@@ -3073,11 +3074,11 @@ FTMotionDesc dFTNLuigiMotionDescs[] =
 
 FTData dFTNLuigiData =
 {
-	0x000000DF,
+	&llNLuigiMainFileID,
 	0x00000000,
-	0x000000DC,
-	0x0000012D,
-	0x0000012A,
+	&llLuigiMainMotionFileID,
+	&llNMarioModelFileID,
+	&llMarioShieldPoseFileID,
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -3325,14 +3326,14 @@ FTMotionDesc dFTLinkMotionDescs[] =
 
 FTData dFTLinkData =
 {
-	0x000000E1,
-	0x000000E0,
+	&llLinkMainFileID,
+	&llLinkMainMotionFileID,
 	0x00000000,
-	0x00000144,
-	0x00000147,
-	0x000000E2,
-	0x00000161,
-	0x00000145,
+	&llLinkModelFileID,
+	&llLinkShieldPoseFileID,
+	&llLinkSpecial1FileID,
+	&llLinkSpecial2FileID,
+	&llLinkSpecial3FileID,
 	0x00000000,
 	0x00000000,
 	&gFTDataLinkMain,
@@ -3577,11 +3578,11 @@ FTMotionDesc dFTNLinkMotionDescs[] =
 
 FTData dFTNLinkData =
 {
-	0x000000E3,
+	&llNLinkMainFileID,
 	0x00000000,
-	0x000000E0,
-	0x00000136,
-	0x00000147,
+	&llLinkMainMotionFileID,
+	&llNLinkModelFileID,
+	&llLinkShieldPoseFileID,
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -3825,14 +3826,14 @@ FTMotionDesc dFTYoshiMotionDescs[] =
 
 FTData dFTYoshiData =
 {
-	0x000000F7,
-	0x000000F6,
+	&llYoshiMainFileID,
+	&llYoshiMainMotionFileID,
 	0x00000000,
-	0x00000152,
-	0x00000154,
+	&llYoshiModelFileID,
+	&llYoshiShieldPoseFileID,
 	0x00000000,
-	0x00000162,
-	0x00000153,
+	&llYoshiSpecial2FileID,
+	&llYoshiSpecial3FileID,
 	0x00000000,
 	0x00000000,
 	&gFTDataYoshiMain,
@@ -4072,11 +4073,11 @@ FTMotionDesc dFTNYoshiMotionDescs[] =
 
 FTData dFTNYoshiData =
 {
-	0x000000F8,
+	&llNYoshiMainFileID,
 	0x00000000,
-	0x000000F6,
-	0x00000130,
-	0x00000154,
+	&llYoshiMainMotionFileID,
+	&llNYoshiModelFileID,
+	&llYoshiShieldPoseFileID,
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -4326,14 +4327,14 @@ FTMotionDesc dFTCaptainMotionDescs[] =
 
 FTData dFTCaptainData =
 {
-	0x000000EC,
-	0x000000EB,
+	&llCaptainMainFileID,
+	&llCaptainMainMotionFileID,
 	0x00000000,
-	0x0000014C,
-	0x0000014E,
+	&llCaptainModelFileID,
+	&llCaptainShieldPoseFileID,
 	0x00000000,
-	0x0000015E,
-	0x0000014D,
+	&llCaptainSpecial2FileID,
+	&llCaptainSpecial3FileID,
 	0x00000000,
 	0x00000000,
 	&gFTDataCaptainMain,
@@ -4578,11 +4579,11 @@ FTMotionDesc dFTNCaptainMotionDescs[] =
 
 FTData dFTNCaptainData =
 {
-	0x000000ED,
+	&llNCaptainMainFileID,
 	0x00000000,
-	0x000000EB,
-	0x00000137,
-	0x0000014E,
+	&llCaptainMainMotionFileID,
+	&llNCaptainModelFileID,
+	&llCaptainShieldPoseFileID,
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -4892,13 +4893,13 @@ FTMotionDesc dFTKirbyMotionDescs[] =
 
 FTData dFTKirbyData =
 {
-	0x000000E5,
-	0x000000E4,
+	&llKirbyMainFileID,
+	&llKirbyMainMotionFileID,
 	0x00000000,
-	0x00000148,
-	0x00000149,
+	&llKirbyModelFileID,
+	&llKirbyShieldPoseFileID,
 	0x00000000,
-	0x0000015C,
+	&llKirbySpecial2FileID,
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -5175,11 +5176,11 @@ FTMotionDesc dFTNKirbyMotionDescs[] =
 
 FTData dFTNKirbyData =
 {
-	0x000000E7,
+	&llNKirbyMainFileID,
 	0x00000000,
-	0x000000E4,
-	0x00000131,
-	0x00000149,
+	&llKirbyMainMotionFileID,
+	&llNKirbyModelFileID,
+	&llKirbyShieldPoseFileID,
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -5426,14 +5427,14 @@ FTMotionDesc dFTPikachuMotionDescs[] =
 
 FTData dFTPikachuData =
 {
-	0x000000F3,
-	0x000000F2,
+	&llPikachuMainFileID,
+	&llPikachuMainMotionFileID,
 	0x00000000,
-	0x00000155,
-	0x00000157,
-	0x000000F4,
-	0x0000015B,
-	0x00000156,
+	&llPikachuModelFileID,
+	&llPikachuShieldPoseFileID,
+	&llPikachuSpecial1FileID,
+	&llPikachuSpecial2FileID,
+	&llPikachuSpecial3FileID,
 	0x00000000,
 	0x00000000,
 	&gFTDataPikachuMain,
@@ -5675,13 +5676,13 @@ FTMotionDesc dFTNPikachuMotionDescs[] =
 
 FTData dFTNPikachuData =
 {
-	0x000000F5,
+	&llNPikachuMainFileID,
 	0x00000000,
-	0x000000F2,
-	0x00000133,
-	0x00000157,
+	&llPikachuMainMotionFileID,
+	&llNPikachuModelFileID,
+	&llPikachuShieldPoseFileID,
 	0x00000000,
-	0x0000015B,
+	&llPikachuSpecial2FileID,
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -5924,13 +5925,13 @@ FTMotionDesc dFTPurinMotionDescs[] =
 
 FTData dFTPurinData =
 {
-	0x000000E9,
-	0x000000E8,
+	&llPurinMainFileID,
+	&llPurinMainMotionFileID,
 	0x00000000,
-	0x0000014A,
-	0x0000014B,
+	&llPurinModelFileID,
+	&llPurinShieldPoseFileID,
 	0x00000000,
-	0x0000015F,
+	&llPurinSpecial2FileID,
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -6173,11 +6174,11 @@ FTMotionDesc dFTNPurinMotionDescs[] =
 
 FTData dFTNPurinData =
 {
-	0x000000EA,
+	&llNPurinMainFileID,
 	0x00000000,
-	0x000000E8,
-	0x00000132,
-	0x0000014B,
+	&llPurinMainMotionFileID,
+	&llNPurinModelFileID,
+	&llPurinShieldPoseFileID,
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -6433,14 +6434,14 @@ FTMotionDesc dFTNessMotionDescs[] =
 
 FTData dFTNessData =
 {
-	0x000000EF,
-	0x000000EE,
+	&llNessMainFileID,
+	&llNessMainMotionFileID,
 	0x00000000,
-	0x0000014F,
-	0x00000151,
-	0x000000F0,
-	0x00000160,
-	0x00000150,
+	&llNessModelFileID,
+	&llNessShieldPoseFileID,
+	&llNessSpecial1FileID,
+	&llNessSpecial2FileID,
+	&llNessSpecial3FileID,
 	0x00000000,
 	0x00000000,
 	&gFTNessFileMain,
@@ -6693,11 +6694,11 @@ FTMotionDesc dFTNNessMotionDescs[] =
 
 FTData dFTNNessData =
 {
-	0x000000F1,
+	&llNNessMainFileID,
 	0x00000000,
-	0x000000EE,
-	0x00000138,
-	0x00000151,
+	&llNessMainMotionFileID,
+	&llNNessModelFileID,
+	&llNessShieldPoseFileID,
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -6958,10 +6959,10 @@ FTMotionDesc dFTBossMotionDescs[] =
 
 FTData dFTBossData =
 {
-	0x000000FA,
-	0x000000F9,
+	&llBossMainFileID,
+	&llBossMainMotionFileID,
 	0x00000000,
-	0x00000158,
+	&llBossModelFileID,
 	0x00000000,
 	0x00000000,
 	0x00000000,

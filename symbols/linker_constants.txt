@@ -638,8 +638,6 @@ lEFGroundYamabukiPoppoDObjSetup = 0x0000FE58;
 lEFGroundYamabukiPoppoAnimJoint = 0x0000FEE0;
 lEFGroundYamabukiPoppoMatAnimJoint = 0x0000FFD0;
 
-lFTShadowTextureImage = 0x00003A68;
-
 lGRHyruleDataStart = 0x00000014;
 lGRHyruleTwisterThrowHitDesc = 0x000000BC;
 

@@ -1576,6 +1576,9 @@ Sprite LampRedContour 0x23a28
 Sprite LampYellowContour 0x24620
 Sprite LampBlueContour 0x25290
 
+[84]
+TextureImage Shadow 0x3A68
+
 [87]
 Sprite Arrow 0x50
 

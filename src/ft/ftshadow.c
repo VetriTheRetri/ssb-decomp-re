@@ -1,13 +1,6 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lFTShadowTextureImage;          // 0x00003A68
+#include <reloc_data.h>
 
 extern s32 gSYTaskmanTaskID;
 
@@ -94,7 +87,7 @@ void ftShadowProcDisplay(GObj *shadow_gobj)
         gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTShadowNoPrevLinkDL);
 
        
-        gDPLoadTextureBlock_4b(gSYTaskmanDLHeads[0]++, ((uintptr_t)gEFManagerFiles[1] + (intptr_t)&lFTShadowTextureImage), G_IM_FMT_I, 16, 16, 0, G_TX_MIRROR | G_TX_WRAP, G_TX_MIRROR | G_TX_WRAP, 4, 4, G_TX_NOLOD, G_TX_NOLOD);
+        gDPLoadTextureBlock_4b(gSYTaskmanDLHeads[0]++, ((uintptr_t)gEFManagerFiles[1] + (intptr_t)&llEFCommonEffects2ShadowTextureImage), G_IM_FMT_I, 16, 16, 0, G_TX_MIRROR | G_TX_WRAP, G_TX_MIRROR | G_TX_WRAP, 4, 4, G_TX_NOLOD, G_TX_NOLOD);
     }
     fs = (FTShadow*)shadow_gobj->user_data.p;
 

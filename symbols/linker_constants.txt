@@ -1,6 +1,3 @@
-lEFManagerFoxEntryArwingLAnimJoint = 0x000590;
-lEFManagerFoxEntryArwingRAnimJoint = 0x0009E0;
-
 lSYKseg1ValidateFunc = 0x00000000;
 lSYKseg1ValidateNBytes = 0x00000030;
 
@@ -78,15 +75,10 @@ lGRBonus2BoardedPlatformMediumAnimJoint = 0x00005C30;
 lGRBonus2BoardedPlatformLargeDObjDesc = 0x000061E0;
 lGRBonus2BoardedPlatformLargeAnimJoint = 0x00006290;
 
-
 lEFCommonParticleScriptBankLo = efcommon_scb_ROM_START;
 lEFCommonParticleScriptBankHi = efcommon_scb_ROM_END;
 lEFCommonParticleTextureBankLo = efcommon_txb_ROM_START;
 lEFCommonParticleTextureBankHi = efcommon_txb_ROM_END;
-
-lEFManagerShieldDObjSetup = 0x00000300;
-
-lEFManagerYoshiShieldDObjSetup = 0x0000A860;
 
 lEFManagerKirbyStarDObjSetup = 0x00005458;
 
@@ -95,69 +87,18 @@ lEFManagerQuakeMag1AnimJoint = 0x0000CC20;
 lEFManagerQuakeMag2AnimJoint = 0x0000CCF0;
 lEFManagerQuakeMag3AnimJoint = 0x0000CDC0;
 
-lEFManagerPikachuUnkMObjSub = 0x00000640;
-lEFManagerPikachuUnkDObjSetup = 0x00000800;
-lEFManagerPikachuUnkAnimJoint = 0x00000890;
-lEFManagerPikachuUnkMatAnimJoint = 0x00000900;
-
-lEFManagerPikachuThunderShockMObjSub = 0x000013A0;
-lEFManagerPikachuThunderShockDObjSetup = 0x00001640;
-lEFManagerPikachuThunderShock0AnimJoint = 0x00001720;
 lEFManagerPikachuThunderShock1AnimJoint = 0x00001850;
 lEFManagerPikachuThunderShock2AnimJoint = 0x00001970;
-lEFManagerPikachuThunderShock0MatAnimJoint = 0x00001A80;
 lEFManagerPikachuThunderShock1MatAnimJoint = 0x00001AC0;
 lEFManagerPikachuThunderShock2MatAnimJoint = 0x00001B10;
 
 lEFManagerPikachuThunderTrailMObjSub = 0x00009420;
 lEFManagerPikachuThunderTrailDObjSetup = 0x000095B0;
 
-lEFManagerPikachuThunderJoltMObjSub = 0x000020A0;
-lEFManagerPikachuThunderJoltDObjSetup = 0x00002258;
-lEFManagerPikachuThunderJoltAnimJoint = 0x000022E0;
-lEFManagerPikachuThunderJoltMatAnimJoint = 0x00002350;
-
-lEFManagerKirbyVulcanJabDObjSetup = 0x00000B20;
-
-lEFManagerSamusGrappleBeamMObjSub = 0x00000210;
-lEFManagerSamusGrappleBeamDObjSetup = 0x00000380;
-lEFManagerSamusGrappleBeamAnimJoint = 0x00000410;
-lEFManagerSamusGrappleBeamMatAnimJoint = 0x00000480;
-
-lEFManagerCaptainFalconKickMObjSub = 0x00000960;
-lEFManagerCaptainFalconKickDObjSetup = 0x00000B08;
-lEFManagerCaptainFalconKickAnimJoint = 0x00000B90;
-lEFManagerCaptainFalconKickMatAnimJoint = 0x00000C00;
-
-lEFManagerCaptainFalconPunchMObjSub = 0x00000690;
-lEFManagerCaptainFalconPunchDObjSetup = 0x00000760;
-lEFManagerCaptainFalconPunchMatAnimJoint = 0x00000830;
-
-lEFManagerPurinSingMObjSub = 0x00001C20;
-lEFManagerPurinSingDObjSetup = 0x00002130;
-lEFManagerPurinSingAnimJoint = 0x00002270;
-lEFManagerPurinSingMatAnimJoint = 0x00002D70;
-
-lEFManagerDeadExplodeDefaultMObjSub = 0x00004F08;
-lEFManagerDeadExplodeDefaultDObjSetup = 0x000053E8;
-lEFManagerDeadExplodeDefaultAnimJoint = 0x000054D0;
-lEFManagerDeadExplodeDefaultMatAnimJoint = 0x00005870;
-
 lEFManagerDeadExplode1PMatAnimJoint = 0x000058E0;
 lEFManagerDeadExplode2PMatAnimJoint = 0x00005800;
 lEFManagerDeadExplode3PMatAnimJoint = 0x00005950;
 lEFManagerDeadExplode4PMatAnimJoint = 0x00005870;
-
-lEFManagerKirbyCutterUpDObjSetup = 0x000012E8;
-lEFManagerKirbyCutterUpAnimJoint = 0x00001470;
-
-lEFManagerKirbyCutterDownDObjSetup = 0x00002390;
-lEFManagerKirbyCutterDownAnimJoint = 0x000024D0;
-
-lEFManagerKirbyCutterDrawDObjSetup = 0x00002888;
-
-lEFManagerKirbyCutterTrailDObjSetup = 0x00000DF8;
-lEFManagerKirbyCutterTrailAnimJoint = 0x000013F0;
 
 lEFManagerNessPsychicMagnetMObjSub = 0x00000810;
 lEFManagerNessPsychicMagnetDObjSetup = 0x000009A8;
@@ -171,24 +112,7 @@ lEFManagerNessPKThunderWaveDObjSetup = 0x00009A10;
 lEFManagerNessPKThunderWaveAnimJoint = 0x00009AC0;
 lEFManagerNessPKThunderWaveMatAnimJoint = 0x00009BB0;
 
-lEFManagerLinkEntryWaveMObjSub = 0x00000130;
-lEFManagerLinkEntryWaveDObjSetup = 0x000003F8;
-lEFManagerLinkEntryWaveAnimJoint = 0x00000840;
-lEFManagerLinkEntryWaveMatAnimJoint = 0x00000B90;
-
-lEFManagerLinkEntryBeamMObjSub = 0x000004F0;
-lEFManagerLinkEntryBeamDObjSetup = 0x000007B8;
-lEFManagerLinkEntryBeamAnimJoint = 0x00000B60;
-lEFManagerLinkEntryBeamMatAnimJoint = 0x00000BF0;
-
-lEFManagerKirbyEntryStarDObjSetup = 0x00001DA8;
-lEFManagerKirbyEntryStarLAnimJoint = 0x00001E30;
 lEFManagerKirbyEntryStarRAnimJoint = 0x00001EA0;
-
-lEFManagerMBallRaysMObjSub = 0x00000108;
-lEFManagerMBallRaysDObjSetup = 0x00000628;
-lEFManagerMBallRaysAnimJoint = 0x00000710;
-lEFManagerMBallRaysMatAnimJoint = 0x00000860;
 
 lEFManagerMBallThrownFileHead = 0x000006E4;
 lEFManagerMBallThrownMObjSub = 0x00009120;
@@ -198,93 +122,12 @@ lEFManagerMBallThrownRAnimJoint = 0x00009690;
 lEFManagerMBallThrownLMatAnimJoint = 0x00009740;
 lEFManagerMBallThrownRMatAnimJoint = 0x00009810;
 
-lEFManagerYoshiEntryEggMObjSub = 0x00000460;
-lEFManagerYoshiEntryEggDObjSetup = 0x00000530;
-lEFManagerYoshiEntryEggAnimJoint = 0x00000600;
-lEFManagerYoshiEntryEggMatAnimJoint = 0x00000780;
-
-lEFManagerYoshiEggLayDObjSetup = 0x00000960;
 lEFManagerYoshiEggLayBreakAnimJoint = 0x000009F0;
-lEFManagerYoshiEggLayThrowAnimJoint = 0x00000B90;
 lEFManagerYoshiEggLayWaitAnimJoint = 0x00000DB0;
-
-lEFManagerLinkSpinAttackMObjSub = 0x00001038;
-lEFManagerLinkSpinAttackDObjSetup = 0x000011C0;
-lEFManagerLinkSpinAttackAnimJoint = 0x00001250;
-lEFManagerLinkSpinAttackMatAnimJoint = 0x000012F0;
-
-lEFManagerDonkeyEntryTaruDObjSetup = 0x000007C8;
-lEFManagerDonkeyEntryTaruAnimJoint = 0x00000850;
-
-lEFManagerSamusEntryPointDObjSetup = 0x00000B90;
-lEFManagerSamusEntryPointAnimJoint = 0x00000C20;
-
-lEFManagerCaptainEntryCarDObjSetup = 0x00005FC0;
 
 lEFManagerMarioEntryDokanDObjSetup = 0x00000608;
 lEFManagerMarioEntryDokanAnimJoint = 0x000006C0;
 
-lEFManagerFoxEntryArwingDObjSetup = 0x00002C30;
-
-lEFManagerRebirthHaloDObjSetup = 0x00002AC0;
-lEFManagerRebirthHaloAnimJoint = 0x00002B70;
-
-lEFManagerItemGetSwirlMObjSub = 0x00002CA8;
-lEFManagerItemGetSwirlDObjSetup = 0x00003170;
-lEFManagerItemGetSwirlAnimJoint = 0x000032B0;
-lEFManagerItemGetSwirlMatAnimJoint = 0x00003490;
-
-lEFManagerReflectBreakMObjSub = 0x00002F78;
-lEFManagerReflectBreakDObjSetup = 0x00003398;
-lEFManagerReflectBreakAnimJoint = 0x000034A0;
-lEFManagerReflectBreakMatAnimJoint = 0x000035A0;
-
-lEFManagerCatchSwirlMObjSub = 0x000022B8;
-lEFManagerCatchSwirlDObjSetup = 0x00002760;
-lEFManagerCatchSwirlAnimJoint = 0x000028A0;
-lEFManagerCatchSwirlMatAnimJoint = 0x00002AB0;
-
-lEFManagerFoxReflectorDObjSetup = 0x000002B0;
-lEFManagerFoxReflectorAnimJointStart = 0x00000340;
-lEFManagerFoxReflectorAnimJointHit = 0x000003A0;
-lEFManagerFoxReflectorAnimJointEnd = 0x00000430;
-lEFManagerFoxReflectorAnimJointLoop = 0x000004C0;
-
-lEFManagerFireSparkMObjSub = 0x00001EA0;
-lEFManagerFireSparkDObjSetup = 0x00002040;
-lEFManagerFireSparkAnimJoint = 0x000020D0;
-lEFManagerFireSparkMatAnimJoint = 0x00002170;
-
-lEFManagerDamageSlashMObjSub = 0x000073E0;
-lEFManagerDamageSlashDObjSetup = 0x00007750;
-lEFManagerDamageSlashAnimJoint = 0x00007800;
-lEFManagerDamageSlashMatAnimJoint = 0x00007860;
-
-lEFManagerShockSmallMObjSub = 0x00001428;
-lEFManagerShockSmallDObjSetup = 0x00001500;
-lEFManagerShockSmallMatAnimJoint = 0x00001570;
-
-lEFManagerDamageFlyOrbsDObjSetup = 0x00007E80;
-lEFManagerDamageFlyOrbsAnimJoint = 0x00007F40;
-
-lEFManagerImpactWaveMObjSub = 0x00007A80;
-lEFManagerImpactWaveDObjSetup = 0x00007C28;
-lEFManagerImpactWaveAnimJoint = 0x00007D40;
-lEFManagerImpactWaveMatAnimJoint = 0x00007DA0;
-
-lEFManagerCommonSparkMObjSub = 0x00008EC0;
-lEFManagerCommonSparkDObjSetup = 0x00008FA0;
-lEFManagerCommonSparkAnimJoint = 0x00009050;
-lEFManagerCommonSparkMatAnimJoint = 0x000090C0;
-
-lEFManagerDamageFlyMDustMObjSub = 0x0000C978;
-lEFManagerDamageFlyMDustDObjSetup = 0x0000CAC8;
-lEFManagerDamageFlyMDustAnimJoint = 0x0000CAE0;
-lEFManagerDamageFlyMDustMatAnimJoint = 0x0000CB40;
-
-lEFManagerNessPKFlashMObjSub = 0x00006B40;
-lEFManagerNessPKFlashDObjSetup = 0x00006D00;
-lEFManagerNessPKFlashAnimJoint = 0x00006D90;
 lEFManagerNessPKFlashMatAnimJoint = 0x00006E20;
 
 lGRCommonMapHeaderStart = 0x00000014;

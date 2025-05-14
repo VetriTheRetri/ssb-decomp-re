@@ -14,7 +14,7 @@ extern void syRdpSetViewport(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 // // // // // // // // // // // //
 
 // 0x801328F0
-u32 dMVOpeningSectorFileIDs[/* */] = { &llMVOpeningSectorFileID, &llMVOpeningSectorArwingFileID, &llMVOpeningSectorWallpaperFileID };
+u32 dMVOpeningSectorFileIDs[/* */] = { &llMVOpeningSectorFileID, &llFoxSpecial3FileID, &llMVOpeningSectorWallpaperFileID };
 
 // 0x80132900
 Lights1 dMVOpeningSectorLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x14, 0x14, 0x14);
@@ -368,7 +368,7 @@ void mvOpeningSectorMakeArwings(void)
             (
                 DObjDesc*,
                 sMVOpeningSectorFiles[1],
-                &llMVOpeningSectorArwingDObjDesc
+                &llFoxSpecial3EntryArwingDObjDesc
             ),
             NULL,
             nGCMatrixKindTraRotRpyRSca,

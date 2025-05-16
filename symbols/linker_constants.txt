@@ -80,56 +80,6 @@ lEFCommonParticleScriptBankHi = efcommon_scb_ROM_END;
 lEFCommonParticleTextureBankLo = efcommon_txb_ROM_START;
 lEFCommonParticleTextureBankHi = efcommon_txb_ROM_END;
 
-lEFManagerKirbyStarDObjSetup = 0x00005458;
-
-lEFManagerQuakeMag0AnimJoint = 0x0000CBC0;
-lEFManagerQuakeMag1AnimJoint = 0x0000CC20;
-lEFManagerQuakeMag2AnimJoint = 0x0000CCF0;
-lEFManagerQuakeMag3AnimJoint = 0x0000CDC0;
-
-lEFManagerPikachuThunderShock1AnimJoint = 0x00001850;
-lEFManagerPikachuThunderShock2AnimJoint = 0x00001970;
-lEFManagerPikachuThunderShock1MatAnimJoint = 0x00001AC0;
-lEFManagerPikachuThunderShock2MatAnimJoint = 0x00001B10;
-
-lEFManagerPikachuThunderTrailMObjSub = 0x00009420;
-lEFManagerPikachuThunderTrailDObjSetup = 0x000095B0;
-
-lEFManagerDeadExplode1PMatAnimJoint = 0x000058E0;
-lEFManagerDeadExplode2PMatAnimJoint = 0x00005800;
-lEFManagerDeadExplode3PMatAnimJoint = 0x00005950;
-lEFManagerDeadExplode4PMatAnimJoint = 0x00005870;
-
-lEFManagerNessPsychicMagnetMObjSub = 0x00000810;
-lEFManagerNessPsychicMagnetDObjSetup = 0x000009A8;
-lEFManagerNessPsychicMagnetAnimJoint = 0x00000A30;
-lEFManagerNessPsychicMagnetMatAnimJoint = 0x00000AD0;
-
-lEFManagerNessPKThunderTrailDObjSetup = 0x00009050;
-
-lEFManagerNessPKThunderWaveMObjSub = 0x00009870;
-lEFManagerNessPKThunderWaveDObjSetup = 0x00009A10;
-lEFManagerNessPKThunderWaveAnimJoint = 0x00009AC0;
-lEFManagerNessPKThunderWaveMatAnimJoint = 0x00009BB0;
-
-lEFManagerKirbyEntryStarRAnimJoint = 0x00001EA0;
-
-lEFManagerMBallThrownFileHead = 0x000006E4;
-lEFManagerMBallThrownMObjSub = 0x00009120;
-lEFManagerMBallThrownDObjSetup = 0x00009430;
-lEFManagerMBallThrownLAnimJoint = 0x000095E0;
-lEFManagerMBallThrownRAnimJoint = 0x00009690;
-lEFManagerMBallThrownLMatAnimJoint = 0x00009740;
-lEFManagerMBallThrownRMatAnimJoint = 0x00009810;
-
-lEFManagerYoshiEggLayBreakAnimJoint = 0x000009F0;
-lEFManagerYoshiEggLayWaitAnimJoint = 0x00000DB0;
-
-lEFManagerMarioEntryDokanDObjSetup = 0x00000608;
-lEFManagerMarioEntryDokanAnimJoint = 0x000006C0;
-
-lEFManagerNessPKFlashMatAnimJoint = 0x00006E20;
-
 lGRCommonMapHeaderStart = 0x00000014;
 
 lGRPupupuMapHead = 0x000010F0;

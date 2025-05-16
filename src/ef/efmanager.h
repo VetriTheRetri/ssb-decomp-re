@@ -5,65 +5,6 @@
 #include <sys/objdef.h>
 #include <ef/efdef.h>
 
-extern intptr_t D_NF_000004D4;
-extern intptr_t lEFManagerKirbyStarDObjSetup;                   // 0x00005458
-
-extern intptr_t lEFManagerPikachuThunderShock1AnimJoint;        // 0x00001850
-extern intptr_t lEFManagerPikachuThunderShock2AnimJoint;        // 0x00001970
-extern intptr_t lEFManagerPikachuThunderShock1MatAnimJoint;     // 0x00001AC0
-extern intptr_t lEFManagerPikachuThunderShock2MatAnimJoint;     // 0x00001B10
-
-extern intptr_t lEFManagerPikachuThunderTrailMObjSub;           // 0x00009420
-extern intptr_t lEFManagerPikachuThunderTrailDObjSetup;         // 0x000095B0
-
-extern intptr_t lEFManagerDeadExplode1PMatAnimJoint;            // 0x000058E0
-extern intptr_t lEFManagerDeadExplode2PMatAnimJoint;            // 0x00005800
-extern intptr_t lEFManagerDeadExplode3PMatAnimJoint;            // 0x00005950
-extern intptr_t lEFManagerDeadExplode4PMatAnimJoint;            // 0x00005870
-
-extern intptr_t lEFManagerNessPsychicMagnetMObjSub;             // 0x00000810
-extern intptr_t lEFManagerNessPsychicMagnetDObjSetup;           // 0x000009A8
-extern intptr_t lEFManagerNessPsychicMagnetAnimJoint;           // 0x00000A30
-extern intptr_t lEFManagerNessPsychicMagnetMatAnimJoint;        // 0x00000AD0
-
-extern intptr_t lEFManagerNessPKThunderTrailDObjSetup;          // 0x00009050
-
-extern intptr_t lEFManagerNessPKThunderWaveMObjSub;             // 0x00009870
-extern intptr_t lEFManagerNessPKThunderWaveDObjSetup;           // 0x00009A10
-extern intptr_t lEFManagerNessPKThunderWaveAnimJoint;           // 0x00009AC0
-extern intptr_t lEFManagerNessPKThunderWaveMatAnimJoint;        // 0x00009BB0
-
-extern intptr_t lEFManagerKirbyEntryStarRAnimJoint;             // 0x00001EA0
-
-extern intptr_t lEFManagerMBallThrownFileHead;                  // 0x000006E4
-extern intptr_t lEFManagerMBallThrownMObjSub;                   // 0x00009120
-extern intptr_t lEFManagerMBallThrownDObjSetup;                 // 0x00009430
-extern intptr_t lEFManagerMBallThrownLAnimJoint;                // 0x000095E0
-extern intptr_t lEFManagerMBallThrownRAnimJoint;                // 0x00009690
-extern intptr_t lEFManagerMBallThrownLMatAnimJoint;             // 0x00009740
-extern intptr_t lEFManagerMBallThrownRMatAnimJoint;             // 0x00009810
-
-extern intptr_t lEFManagerYoshiEggLayBreakAnimJoint;            // 0x000009F0
-extern intptr_t lEFManagerYoshiEggLayWaitAnimJoint;             // 0x00000DB0
-
-extern intptr_t lEFManagerMarioEntryDokanDObjSetup;             // 0x00000608
-extern intptr_t lEFManagerMarioEntryDokanAnimJoint;             // 0x000006C0
-
-extern intptr_t D_NF_00002E74;                                  // 0x00002E74
-
-extern intptr_t lEFManagerShockSmallMObjSub;                    // 0x00001428
-extern intptr_t lEFManagerShockSmallDObjSetup;                  // 0x00001500
-extern intptr_t lEFManagerShockSmallMatAnimJoint;               // 0x00001570
-
-extern intptr_t D_NF_00006200;                                  // 0x00006200
-extern intptr_t D_NF_00006518;                                  // 0x00006518
-extern intptr_t D_NF_00006598;                                  // 0x00006598
-
-extern intptr_t lEFManagerQuakeMag0AnimJoint;                   // 0x0000CBC0
-extern intptr_t lEFManagerQuakeMag1AnimJoint;                   // 0x0000CC20
-extern intptr_t lEFManagerQuakeMag2AnimJoint;                   // 0x0000CCF0
-extern intptr_t lEFManagerQuakeMag3AnimJoint;                   // 0x0000CDC0
-
 extern void efManagerInitEffects(void);
 extern EFStruct* efManagerGetNextStructAlloc(sb32 is_force_return);
 extern EFStruct* efManagerGetEffectNoForce(void);

@@ -2119,6 +2119,129 @@ SpriteArray MenuOption 0x13C
 PosSpriteArray 0x10C 0x10C
 PosSpriteArray 0x1B8 0x1B8
 
+[255]
+MapHeader - 0x14
+
+[256]
+MapHeader - 0x14
+
+[257]
+MapHeader - 0x14
+
+[258]
+MapHeader - 0x14
+
+[259]
+MapHeader - 0x14
+
+[260]
+MapHeader - 0x14
+
+[261]
+MapHeader - 0x14
+
+[262]
+MapHeader - 0x14
+
+[263]
+MapHeader - 0x14
+
+[264]
+MapHeader - 0x14
+
+[265]
+MapHeader - 0x14
+
+[266]
+MapHeader - 0x0
+
+[267]
+MapHeader - 0x0
+
+[268]
+MapHeader - 0x14
+
+[269]
+MapHeader - 0x14
+
+[270]
+MapHeader - 0x14
+
+[271]
+MapHeader - 0x0
+
+[272]
+MapHeader - 0x0
+
+[273]
+MapHeader - 0x0
+
+[274]
+MapHeader - 0x0
+
+[275]
+MapHeader - 0x0
+
+[276]
+MapHeader - 0x0
+
+[277]
+MapHeader - 0x0
+
+[278]
+MapHeader - 0x0
+
+[279]
+MapHeader - 0x0
+
+[280]
+MapHeader - 0x0
+
+[281]
+MapHeader - 0x0
+
+[282]
+MapHeader - 0x0
+
+[283]
+MapHeader - 0x0
+
+[284]
+MapHeader - 0x0
+
+[285]
+MapHeader - 0x0
+
+[286]
+MapHeader - 0x0
+
+[287]
+MapHeader - 0x0
+
+[288]
+MapHeader - 0x0
+
+[289]
+MapHeader - 0x0
+
+[290]
+MapHeader - 0x0
+
+[291]
+MapHeader - 0x0
+
+[292]
+MapHeader - 0x0
+
+[293]
+MapHeader - 0x0
+
+[294]
+MapHeader - 0x0
+
+[295]
+MapHeader - 0x0
+
 [296]
 Sprite Stock 0x72d0
 Sprite FTEmblem 0x74c8

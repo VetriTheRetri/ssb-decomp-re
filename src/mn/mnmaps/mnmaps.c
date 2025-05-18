@@ -28,15 +28,15 @@ u32 dMNMapsFileIDs[/* */] =
 // 0x801344E4
 GRFileInfo dMNMapsFileInfos[/* */] =
 {
-	{ &llGRCastleMapFileID,   &lGRCommonMapHeaderStart },
-	{ &llGRSectorMapFileID,   &lGRCommonMapHeaderStart },
-	{ &llGRJungleMapFileID,   &lGRCommonMapHeaderStart },
-	{ &llGRZebesMapFileID,    &lGRCommonMapHeaderStart },
-	{ &llGRHyruleMapFileID,   &lGRCommonMapHeaderStart },
-	{ &llGRYosterMapFileID,   &lGRCommonMapHeaderStart },
-	{ &llGRPupupuMapFileID,   &lGRCommonMapHeaderStart },
-	{ &llGRYamabukiMapFileID, &lGRCommonMapHeaderStart },
-	{ &llGRInishieMapFileID,  &lGRCommonMapHeaderStart }
+	{ &llGRCastleMapFileID,   &llGRCastleMapMapHeader },
+	{ &llGRSectorMapFileID,   &llGRSectorMapMapHeader },
+	{ &llGRJungleMapFileID,   &llGRJungleMapMapHeader },
+	{ &llGRZebesMapFileID,    &llGRZebesMapMapHeader },
+	{ &llGRHyruleMapFileID,   &llGRHyruleMapMapHeader },
+	{ &llGRYosterMapFileID,   &llGRYosterMapMapHeader },
+	{ &llGRPupupuMapFileID,   &llGRPupupuMapMapHeader },
+	{ &llGRYamabukiMapFileID, &llGRYamabukiMapMapHeader },
+	{ &llGRInishieMapFileID,  &llGRInishieMapMapHeader }
 };
 
 // 0x8013452C

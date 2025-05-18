@@ -80,8 +80,6 @@ lEFCommonParticleScriptBankHi = efcommon_scb_ROM_END;
 lEFCommonParticleTextureBankLo = efcommon_txb_ROM_START;
 lEFCommonParticleTextureBankHi = efcommon_txb_ROM_END;
 
-lGRCommonMapHeaderStart = 0x00000014;
-
 lGRPupupuMapHead = 0x000010F0;
 
 lGRPupupuWhispyEyesLeftTurnAnimJoint = 0x000011A0;

@@ -25,90 +25,80 @@ f32 dMPCollisionMaterialFrictions[/* */] =
 // 0x8012C520
 GRFileInfo dMPCollisionGroundFileInfos[/* */] =
 {
-    { &llGRCastleMapFileID,        &lGRCommonMapHeaderStart }, // Peach's Castle
-    { &llGRSectorMapFileID,        &lGRCommonMapHeaderStart }, // Sector Z
-    { &llGRJungleMapFileID,        &lGRCommonMapHeaderStart }, // Kongo Jungle
-    { &llGRZebesMapFileID,         &lGRCommonMapHeaderStart }, // Planet Zebes
-    { &llGRHyruleMapFileID,        &lGRCommonMapHeaderStart }, // Hyrule Castle
-    { &llGRYosterMapFileID,        &lGRCommonMapHeaderStart }, // Yoshi's Island
-    { &llGRPupupuMapFileID,        &lGRCommonMapHeaderStart }, // Dream Land
-    { &llGRYamabukiMapFileID,      &lGRCommonMapHeaderStart }, // Saffron City
-    { &llGRInishieMapFileID,       &lGRCommonMapHeaderStart }, // Mushroom Kingdom
-    { &llGRPupupuSmallMapFileID,   &lGRCommonMapHeaderStart }, // Beta Dream Land
-    { &llGRPupupuTestMapFileID,    &lGRCommonMapHeaderStart }, // Test Stage
-    { &llGRExplainMapFileID,       0x0 },                      // How to Play
-    { &llGRYosterSmallMapFileID,   &lGRCommonMapHeaderStart }, // Small Yoshi's Island (1P Game)
-    { &llGRMetalMapFileID,         &lGRCommonMapHeaderStart }, // Meta Crystal
-    { &llGRZakoMapFileID,          &lGRCommonMapHeaderStart }, // Duel Zone
-    { &llGRBonus3MapFileID,        0x0 },                      // Race to the Finish
-    { &llGRLastMapFileID,          0x0 },                      // Final Destination
-    { &llGRBonus1MarioMapFileID,   0x0 },                      // Break the Targets Mario
-    { &llGRBonus1FoxMapFileID,     0x0 },                      // Break the Targets Fox
-    { &llGRBonus1DonkeyMapFileID,  0x0 },                      // Break the Targets Donkey Kong
-    { &llGRBonus1SamusMapFileID,   0x0 },                      // Break the Targets Samus
-    { &llGRBonus1LuigiMapFileID,   0x0 },                      // Break the Targets Luigi
-    { &llGRBonus1LinkMapFileID,    0x0 },                      // Break the Targets Link
-    { &llGRBonus1YoshiMapFileID,   0x0 },                      // Break the Targets Yoshi
-    { &llGRBonus1CaptainMapFileID, 0x0 },                      // Break the Targets Captain Falcon
-    { &llGRBonus1KirbyMapFileID,   0x0 },                      // Break the Targets Kirby
-    { &llGRBonus1PikachuMapFileID, 0x0 },                      // Break the Targets Pikachu
-    { &llGRBonus1PurinMapFileID,   0x0 },                      // Break the Targets Jigglypuff
-    { &llGRBonus1NessMapFileID,    0x0 },                      // Break the Targets Ness
-    { &llGRBonus2MarioMapFileID,   0x0 },                      // Board the Platforms Mario
-    { &llGRBonus2FoxMapFileID,     0x0 },                      // Board the Platforms Fox
-    { &llGRBonus2DonkeyMapFileID,  0x0 },                      // Board the Platforms Donkey Kong
-    { &llGRBonus2SamusMapFileID,   0x0 },                      // Board the Platforms Samus
-    { &llGRBonus2LuigiMapFileID,   0x0 },                      // Board the Platforms Luigi
-    { &llGRBonus2LinkMapFileID,    0x0 },                      // Board the Platforms Link
-    { &llGRBonus2YoshiMapFileID,   0x0 },                      // Board the Platforms Yoshi
-    { &llGRBonus2CaptainMapFileID, 0x0 },                      // Board the Platforms Captain Falcon
-    { &llGRBonus2KirbyMapFileID,   0x0 },                      // Board the Platforms Kirby
-    { &llGRBonus2PikachuMapFileID, 0x0 },                      // Board the Platforms Pikachu
-    { &llGRBonus2PurinMapFileID,   0x0 },                      // Board the Platforms Jigglypuff
-    { &llGRBonus2NessMapFileID,    0x0 }                       // Board the Platforms Ness
+    { &llGRCastleMapFileID,        &llGRCastleMapMapHeader }, // Peach's Castle
+    { &llGRSectorMapFileID,        &llGRSectorMapMapHeader }, // Sector Z
+    { &llGRJungleMapFileID,        &llGRJungleMapMapHeader }, // Kongo Jungle
+    { &llGRZebesMapFileID,         &llGRZebesMapMapHeader }, // Planet Zebes
+    { &llGRHyruleMapFileID,        &llGRHyruleMapMapHeader }, // Hyrule Castle
+    { &llGRYosterMapFileID,        &llGRYosterMapMapHeader }, // Yoshi's Island
+    { &llGRPupupuMapFileID,        &llGRPupupuMapMapHeader }, // Dream Land
+    { &llGRYamabukiMapFileID,      &llGRYamabukiMapMapHeader }, // Saffron City
+    { &llGRInishieMapFileID,       &llGRInishieMapMapHeader }, // Mushroom Kingdom
+    { &llGRPupupuSmallMapFileID,   &llGRPupupuSmallMapMapHeader }, // Beta Dream Land
+    { &llGRPupupuTestMapFileID,    &llGRPupupuTestMapMapHeader }, // Test Stage
+    { &llGRExplainMapFileID,       &llGRExplainMapMapHeader }, // How to Play
+    { &llGRYosterSmallMapFileID,   &llGRYosterSmallMapMapHeader }, // Small Yoshi's Island (1P Game)
+    { &llGRMetalMapFileID,         &llGRMetalMapMapHeader }, // Meta Crystal
+    { &llGRZakoMapFileID,          &llGRZakoMapMapHeader }, // Duel Zone
+    { &llGRBonus3MapFileID,        &llGRBonus3MapMapHeader }, // Race to the Finish
+    { &llGRLastMapFileID,          &llGRLastMapMapHeader }, // Final Destination
+    { &llGRBonus1MarioMapFileID,   &llGRBonus1MarioMapMapHeader }, // Break the Targets Mario
+    { &llGRBonus1FoxMapFileID,     &llGRBonus1FoxMapMapHeader }, // Break the Targets Fox
+    { &llGRBonus1DonkeyMapFileID,  &llGRBonus1DonkeyMapMapHeader }, // Break the Targets Donkey Kong
+    { &llGRBonus1SamusMapFileID,   &llGRBonus1SamusMapMapHeader }, // Break the Targets Samus
+    { &llGRBonus1LuigiMapFileID,   &llGRBonus1LuigiMapMapHeader }, // Break the Targets Luigi
+    { &llGRBonus1LinkMapFileID,    &llGRBonus1LinkMapMapHeader }, // Break the Targets Link
+    { &llGRBonus1YoshiMapFileID,   &llGRBonus1YoshiMapMapHeader }, // Break the Targets Yoshi
+    { &llGRBonus1CaptainMapFileID, &llGRBonus1CaptainMapMapHeader }, // Break the Targets Captain Falcon
+    { &llGRBonus1KirbyMapFileID,   &llGRBonus1KirbyMapMapHeader }, // Break the Targets Kirby
+    { &llGRBonus1PikachuMapFileID, &llGRBonus1PikachuMapMapHeader }, // Break the Targets Pikachu
+    { &llGRBonus1PurinMapFileID,   &llGRBonus1PurinMapMapHeader }, // Break the Targets Jigglypuff
+    { &llGRBonus1NessMapFileID,    &llGRBonus1NessMapMapHeader }, // Break the Targets Ness
+    { &llGRBonus2MarioMapFileID,   &llGRBonus2MarioMapMapHeader }, // Board the Platforms Mario
+    { &llGRBonus2FoxMapFileID,     &llGRBonus2FoxMapMapHeader }, // Board the Platforms Fox
+    { &llGRBonus2DonkeyMapFileID,  &llGRBonus2DonkeyMapMapHeader }, // Board the Platforms Donkey Kong
+    { &llGRBonus2SamusMapFileID,   &llGRBonus2SamusMapMapHeader }, // Board the Platforms Samus
+    { &llGRBonus2LuigiMapFileID,   &llGRBonus2LuigiMapMapHeader }, // Board the Platforms Luigi
+    { &llGRBonus2LinkMapFileID,    &llGRBonus2LinkMapMapHeader }, // Board the Platforms Link
+    { &llGRBonus2YoshiMapFileID,   &llGRBonus2YoshiMapMapHeader }, // Board the Platforms Yoshi
+    { &llGRBonus2CaptainMapFileID, &llGRBonus2CaptainMapMapHeader }, // Board the Platforms Captain Falcon
+    { &llGRBonus2KirbyMapFileID,   &llGRBonus2KirbyMapMapHeader }, // Board the Platforms Kirby
+    { &llGRBonus2PikachuMapFileID, &llGRBonus2PikachuMapMapHeader }, // Board the Platforms Pikachu
+    { &llGRBonus2PurinMapFileID,   &llGRBonus2PurinMapMapHeader }, // Board the Platforms Jigglypuff
+    { &llGRBonus2NessMapFileID,    &llGRBonus2NessMapMapHeader }  // Board the Platforms Ness
 };
 
-// 0x8012C668 - I can't for the life of me figure out if these are referenced at all and I'm too lazy to transcribe these if they're not used
-u8 dMPCollisionUnusedFloats[/* */] =
+// 0x8012C668 - I can't for the life of me figure out if these are referenced at all
+f32 dMPCollisionUnusedFloats[/* */] =
 {
-    0x45, 0x9C, 0x40, 0x00, 0xC5, 0x1C, 0x40, 0x00, 0x45, 0xDA, 0xC0, 0x00,
-    0xC5, 0xDA, 0xC0, 0x00, 0x46, 0x0C, 0xA0, 0x00, 0xC5, 0x9C, 0x40, 0x00,
-    0x46, 0x3B, 0x80, 0x00, 0xC6, 0x3B, 0x80, 0x00, 0x41, 0xA0, 0x00, 0x00,
-    0x42, 0x34, 0x00, 0x00, 0x44, 0xC2, 0xA9, 0x9A, 0x00, 0x00, 0x00, 0x00,
-    0x45, 0x26, 0xE0, 0x00, 0xC5, 0x26, 0xE0, 0x00, 0x45, 0x7A, 0x00, 0x00,
-    0xC5, 0x1C, 0x40, 0x00, 0x45, 0xAB, 0xE0, 0x00, 0xC5, 0xAB, 0xE0, 0x00,
-    0x46, 0x0C, 0xA0, 0x00, 0xC5, 0x9C, 0x40, 0x00, 0x46, 0x2B, 0xE0, 0x00,
-    0xC6, 0x2B, 0xE0, 0x00, 0x41, 0xA0, 0x00, 0x00, 0x42, 0x34, 0x00, 0x00,
-    0x44, 0xC1, 0xCC, 0xCD, 0x00, 0x00, 0x00, 0x00, 0x44, 0xFC, 0x1C, 0xCD,
-    0xC4, 0xFC, 0x1C, 0xCD, 0x45, 0x9C, 0x40, 0x00, 0xC5, 0x1C, 0x40, 0x00,
-    0x45, 0xCB, 0x20, 0x00, 0xC5, 0xCB, 0x20, 0x00, 0x46, 0x0C, 0xA0, 0x00,
-    0xC5, 0x9C, 0x40, 0x00, 0x46, 0x33, 0xB0, 0x00, 0xC6, 0x33, 0xB0, 0x00,
-    0x00, 0x00, 0x00, 0x00, 0x42, 0xB4, 0x00, 0x00, 0x44, 0xC4, 0x50, 0x00,
-    0x00, 0x00, 0x00, 0x00, 0x45, 0x26, 0xCC, 0xCD, 0xC5, 0x2D, 0xEC, 0xCD,
-    0x45, 0x7A, 0x00, 0x00, 0xC5, 0x1C, 0x40, 0x00, 0x45, 0xAB, 0xE0, 0x00,
-    0xC5, 0xAB, 0xE0, 0x00, 0x46, 0x0C, 0xA0, 0x00, 0xC5, 0x9C, 0x40, 0x00,
-    0x46, 0x2B, 0xE0, 0x00, 0xC6, 0x2B, 0xE0, 0x00, 0x41, 0xA0, 0x00, 0x00,
-    0x42, 0x34, 0x00, 0x00, 0x44, 0xC1, 0xCC, 0xCD, 0x00, 0x00, 0x00, 0x00,
-    0x44, 0xFC, 0x1C, 0xCD, 0xC4, 0xFC, 0x1C, 0xCD, 0x45, 0x9C, 0x40, 0x00,
-    0xC5, 0x1C, 0x40, 0x00, 0x45, 0xDA, 0xC0, 0x00, 0xC5, 0xDA, 0xC0, 0x00,
-    0x46, 0x0C, 0xA0, 0x00, 0xC5, 0x9C, 0x40, 0x00, 0x46, 0x3B, 0x80, 0x00,
-    0xC6, 0x3B, 0x80, 0x00, 0x41, 0xA0, 0x00, 0x00, 0x42, 0x34, 0x00, 0x00,
-    0x44, 0xC2, 0xA9, 0x9A, 0x00, 0x00, 0x00, 0x00, 0x45, 0x26, 0xE0, 0x00,
-    0xC5, 0x26, 0xE0, 0x00, 0x45, 0x9C, 0x40, 0x00, 0xC5, 0x1C, 0x40, 0x00,
-    0x45, 0xDA, 0xC0, 0x00, 0xC5, 0xDA, 0xC0, 0x00, 0x46, 0x0C, 0xA0, 0x00,
-    0xC5, 0x9C, 0x40, 0x00, 0x46, 0x3B, 0x80, 0x00, 0xC6, 0x3B, 0x80, 0x00,
-    0x41, 0xA0, 0x00, 0x00, 0x42, 0x34, 0x00, 0x00, 0x44, 0xC2, 0xA9, 0x9A,
-    0x00, 0x00, 0x00, 0x00, 0x45, 0x26, 0xE0, 0x00, 0xC5, 0x26, 0xE0, 0x00,
-    0x45, 0x9C, 0x40, 0x00, 0xC5, 0x1C, 0x40, 0x00, 0x45, 0xDA, 0xC0, 0x00,
-    0xC5, 0xDA, 0xC0, 0x00, 0x46, 0x0C, 0xA0, 0x00, 0xC5, 0x9C, 0x40, 0x00,
-    0x46, 0x3B, 0x80, 0x00, 0xC6, 0x3B, 0x80, 0x00, 0x41, 0xA0, 0x00, 0x00,
-    0x42, 0x34, 0x00, 0x00, 0x44, 0xC2, 0xA9, 0x9A, 0x00, 0x00, 0x00, 0x00,
-    0x45, 0x26, 0xE0, 0x00, 0xC5, 0x26, 0xE0, 0x00, 0x45, 0x9C, 0x40, 0x00,
-    0xC5, 0x1C, 0x40, 0x00, 0x45, 0xDA, 0xC0, 0x00, 0xC5, 0xDA, 0xC0, 0x00,
-    0x46, 0x0C, 0xA0, 0x00, 0xC5, 0x9C, 0x40, 0x00, 0x46, 0x3B, 0x80, 0x00,
-    0xC6, 0x3B, 0x80, 0x00, 0x41, 0xA0, 0x00, 0x00, 0x42, 0x34, 0x00, 0x00,
-    0x44, 0xC2, 0xA9, 0x9A, 0x00, 0x00, 0x00, 0x00, 0x45, 0x26, 0xE0, 0x00,
-    0xC5, 0x26, 0xE0, 0x00  
+    5000.0, -2500.0, 7000.0, -7000.0,
+    9000.0, -5000.0, 12000.0, -12000.0,
+    20.0, 45.0, 1557.3, 0.0,
+    2670.0, -2670.0, 4000.0, -2500.0,
+    5500.0, -5500.0, 9000.0, -5000.0,
+    11000.0, -11000.0, 20.0, 45.0,
+    1550.4, 0.0, 2016.9, -2016.9,
+    5000.0, -2500.0, 6500.0, -6500.0,
+    9000.0, -5000.0, 11500.0, -11500.0,
+    0.0, 90.0, 1570.5, 0.0,
+    2668.8, -2782.8, 4000.0, -2500.0,
+    5500.0, -5500.0, 9000.0, -5000.0,
+    11000.0, -11000.0, 20.0, 45.0,
+    1550.4, 0.0, 2016.9, -2016.9,
+    5000.0, -2500.0, 7000.0, -7000.0,
+    9000.0, -5000.0, 12000.0, -12000.0,
+    20.0, 45.0, 1557.3, 0.0,
+    2670.0, -2670.0, 5000.0, -2500.0,
+    7000.0, -7000.0, 9000.0, -5000.0,
+    12000.0, -12000.0, 20.0, 45.0,
+    1557.3, 0.0, 2670.0, -2670.0,
+    5000.0, -2500.0, 7000.0, -7000.0,
+    9000.0, -5000.0, 12000.0, -12000.0,
+    20.0, 45.0, 1557.3, 0.0,
+    2670.0, -2670.0, 5000.0, -2500.0,
+    7000.0, -7000.0, 9000.0, -5000.0,
+    12000.0, -12000.0, 20.0, 45.0,
+    1557.3, 0.0, 2670.0, -2670.0
 };
 
 // // // // // // // // // // // //

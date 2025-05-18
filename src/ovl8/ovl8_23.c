@@ -30,49 +30,59 @@ extern dbUnknownLinkStruct D_ovl8_8038CA10;
 extern dbFunction D_ovl8_8038CB58;
 extern dbUnknownLink D_ovl8_8038CCB0;
 
+void func_ovl8_80383B58(unkStructB* arg0);
+
 // 0x803833A0
+void* func_ovl8_803833A0(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2);
+#ifdef NON_MATCHING
+void* func_ovl8_803833A0(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2)
+{
+	if ((arg0 != NULL) || (arg0 = func_ovl8_803717A0(0xC0)) != NULL)
+	{
+		if (arg1 == NULL)
+		{
+			arg1 = &arg0->unk_dbunk5_0x58;
+			arg2 = &arg0->unk_dbunk5_0xB4;
+			func_ovl8_803717E0(arg1);
+			func_ovl8_8037C2D0(arg2);
+		}
+		func_ovl8_803733AC(arg0, arg1, arg2);
+		arg0->unk_dbunk5_0x30 = &D_ovl8_8038CA10;
+		arg1->db_func = &D_ovl8_8038CB58;
+		arg2->unk_dbunklink_0x8 = &D_ovl8_8038CCB0;
+		func_ovl8_80383B58(arg0);
+	}
+	return arg0;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_23/func_ovl8_803833A0.s")
-// void* func_ovl8_803833A0(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2)
-// {
-//     if ((arg0 != NULL) || (arg0 = func_ovl8_803717A0(0xC0)) != NULL)
-//     {
-//         if (arg1 == NULL)
-//         {
-//             arg1 = &arg0->unk_dbunk5_0x58;
-//             arg2 = &arg0->unk_dbunk5_0xB4;
-//             func_ovl8_803717E0(arg1);
-//             func_ovl8_8037C2D0(arg2);
-//         }
-//         func_ovl8_803733AC(arg0, arg1, arg2);
-//         arg0->unk_dbunk5_0x30 = &D_ovl8_8038CA10;
-//         arg1->db_func = &D_ovl8_8038CB58;
-//         arg2->unk_dbunklink_0x8 = &D_ovl8_8038CCB0;
-//         func_ovl8_80383B58(arg0);
-//     }
-//     return arg0;
-// }
+#endif /* NON_MATCHING */
 
 // 0x80383450
+void* func_ovl8_80383450(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2, s32 arg3, s32 arg4);
+#ifdef NON_MATCHING
+void* func_ovl8_80383450(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2, s32 arg3, s32 arg4)
+{
+	if ((arg0 != NULL) || (arg0 = func_ovl8_803717A0(0xC0)) != NULL)
+	{
+		if (arg1 == NULL)
+		{
+			arg1 = &arg0->unk_dbunk5_0x58;
+			arg2 = &arg0->unk_dbunk5_0xB4;
+			func_ovl8_803717E0(arg1);
+			func_ovl8_8037C2D0(arg2);
+		}
+		func_ovl8_8037345C(arg0, arg1, arg2, arg3, arg4);
+		arg0->unk_dbunk5_0x30 = &D_ovl8_8038CA10;
+		arg1->db_func = &D_ovl8_8038CB58;
+		arg2->unk_dbunklink_0x8 = &D_ovl8_8038CCB0;
+		func_ovl8_80383B58(arg0);
+	}
+	return arg0;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_23/func_ovl8_80383450.s")
-// void* func_ovl8_80383450(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2, s32 arg3, s32 arg4)
-// {
-//     if ((arg0 != NULL) || (arg0 = func_ovl8_803717A0(0xC0)) != NULL)
-//     {
-//         if (arg1 == NULL)
-//         {
-//             arg1 = &arg0->unk_dbunk5_0x58;
-//             arg2 = &arg0->unk_dbunk5_0xB4;
-//             func_ovl8_803717E0(arg1);
-//             func_ovl8_8037C2D0(arg2);
-//         }
-//         func_ovl8_8037345C(arg0, arg1, arg2, arg3, arg4);
-//         arg0->unk_dbunk5_0x30 = &D_ovl8_8038CA10;
-//         arg1->db_func = &D_ovl8_8038CB58;
-//         arg2->unk_dbunklink_0x8 = &D_ovl8_8038CCB0;
-//         func_ovl8_80383B58(arg0);
-//     }
-//     return arg0;
-// }
+#endif /* NON_MATCHING */
 
 // 0x80383510
 void func_ovl8_80383510(dbUnknown5* arg0, s32 arg1)
@@ -125,14 +135,14 @@ s32 func_ovl8_803835C4(s32* arg0, s32 arg1)
 // 0x803836D4
 void func_ovl8_803836D4(dbUnknownS38* arg0, u16 arg1)
 {
-    s32 temp_v1 = arg1;
+	s32 temp_v1 = arg1;
 
-    arg0->unk_dbunks38_0x30[26].unk_dbfunc_0x4(arg0->unk_dbunks38_0x30[26].unk_dbfunc_0x0 + (uintptr_t)arg0, (u8)temp_v1 & 0xFF);
+	arg0->unk_dbunks38_0x30[26].unk_dbfunc_0x4(arg0->unk_dbunks38_0x30[26].unk_dbfunc_0x0 + (uintptr_t)arg0, (u8)temp_v1 & 0xFF);
 
-    if (temp_v1 & 0xFF00)
-    {
-        arg0->unk_dbunks38_0x30[26].unk_dbfunc_0x4(arg0->unk_dbunks38_0x30[26].unk_dbfunc_0x0 + (uintptr_t)arg0, (u8)(temp_v1 >> 8));
-    }
+	if (temp_v1 & 0xFF00)
+	{
+		arg0->unk_dbunks38_0x30[26].unk_dbfunc_0x4(arg0->unk_dbunks38_0x30[26].unk_dbfunc_0x0 + (uintptr_t)arg0, (u8)(temp_v1 >> 8));
+	}
 }
 
 // 0x8038374C
@@ -191,40 +201,40 @@ void func_ovl8_80383B58(unkStructB* arg0)
 // 0x80383D4C
 void func_ovl8_80383D4C(dbUnknown5* arg0)
 {
-    u64 time;
-    dbFunction* db_func;
+	u64 time;
+	dbFunction* db_func;
 
-    time = ((u32)osGetTime() - arg0->unk_dbunk5_0x50) * 64ULL / 3000ULL;
+	time = ((u32)osGetTime() - arg0->unk_dbunk5_0x50) * 64ULL / 3000ULL;
 
-    if (time >= 1000000)
-    {
-        db_func = arg0->unk_dbunk5_0x38->db_func;
-        db_func[35].unk_dbfunc_0x4(db_func[35].unk_dbfunc_0x0 + (uintptr_t)arg0->unk_dbunk5_0x38, 1);
-    }
+	if (time >= 1000000)
+	{
+		db_func = arg0->unk_dbunk5_0x38->db_func;
+		db_func[35].unk_dbfunc_0x4(db_func[35].unk_dbfunc_0x0 + (uintptr_t)arg0->unk_dbunk5_0x38, 1);
+	}
 }
 
 // 0x80383DD4
 void func_ovl8_80383DD4(dbUnknown5* arg0, DBMenuPosition* arg1, s32 arg2)
 {
-    u8 sp2F;
-    DBMenuPosition sp24;
-    dbFunction* temp_v0;
+	u8 sp2F;
+	DBMenuPosition sp24;
+	dbFunction* temp_v0;
 
-    temp_v0 = arg0->unk_dbunk5_0x38->db_func;
-    temp_v0[21].unk_dbfunc_0x4(temp_v0[21].unk_dbfunc_0x0 + (uintptr_t)arg0->unk_dbunk5_0x38, &sp24);
+	temp_v0 = arg0->unk_dbunk5_0x38->db_func;
+	temp_v0[21].unk_dbfunc_0x4(temp_v0[21].unk_dbfunc_0x0 + (uintptr_t)arg0->unk_dbunk5_0x38, &sp24);
 
-    arg1->x = 2;
+	arg1->x = 2;
 
-    if (arg2 > 0)
-    {
-        sp2F = arg0->unk_dbunk5_0x3C.u_8[arg2];
-        arg0->unk_dbunk5_0x3C.u_8[arg2] = 0;
-        arg1->x += func_ovl8_8037E7A8(arg0->unk_dbunk5_0x3C.u_8);
-        arg0->unk_dbunk5_0x3C.u_8[arg2] = sp2F;
-    }
-    arg1->y = 2;
-    arg1->w = 2;
-    arg1->h = (s16) (sp24.h - 4);
+	if (arg2 > 0)
+	{
+		sp2F = arg0->unk_dbunk5_0x3C.u_8[arg2];
+		arg0->unk_dbunk5_0x3C.u_8[arg2] = 0;
+		arg1->x += func_ovl8_8037E7A8(arg0->unk_dbunk5_0x3C.u_8);
+		arg0->unk_dbunk5_0x3C.u_8[arg2] = sp2F;
+	}
+	arg1->y = 2;
+	arg1->w = 2;
+	arg1->h = (s16) (sp24.h - 4);
 }
 
 // 0x80383E98
@@ -245,8 +255,8 @@ void func_ovl8_80383F74(dbUnknownLinkStruct* arg0)
 // 0x80383FC8
 s32 func_ovl8_80383FC8(dbUnknownS38* arg0, db2Shorts arg1)
 {
-    dbFunction* temp_v0 = arg0->unk_dbunks38_0x30;
-    return temp_v0[35].unk_dbfunc_0x4(temp_v0[35].unk_dbfunc_0x0 + (uintptr_t)arg0, arg1.arr[0]) + 1;
+	dbFunction* temp_v0 = arg0->unk_dbunks38_0x30;
+	return temp_v0[35].unk_dbfunc_0x4(temp_v0[35].unk_dbfunc_0x0 + (uintptr_t)arg0, arg1.arr[0]) + 1;
 }
 
 // 0x80384000

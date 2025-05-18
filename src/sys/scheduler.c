@@ -379,7 +379,7 @@ void sySchedulerApplyViMode(void)
 }
 
 // also non matching in snap sys/sched
-void sySchedulerUpdateViMode(u32, u32, s32, s16, s16, s16, s16);
+void sySchedulerUpdateViMode(u32 width, u32 height, u32 flags, s16 off_left, s16 off_right, s16 off_top, s16 off_bottom);
 #ifdef NON_MATCHING
 void sySchedulerUpdateViMode(u32 width, u32 height, u32 flags, s16 off_left, s16 off_right, s16 off_top, s16 off_bottom)
 {

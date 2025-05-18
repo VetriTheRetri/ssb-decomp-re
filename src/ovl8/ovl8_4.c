@@ -21,6 +21,7 @@ void func_ovl8_803718C4(dbUnknownLinkStruct*, s32);
 void func_ovl8_8037C30C(dbUnknownLink*, s32);
 void func_ovl8_8037EB00(dbUnknownS38*, s32);
 void func_ovl8_8038120C(dbUnknownLinkStruct* arg0, s32 arg1);
+void func_ovl8_80373308(dbUnknownS38* arg0, s32 arg1);
 
 #ifdef NON_MATCHING
 /*

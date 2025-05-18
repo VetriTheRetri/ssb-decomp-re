@@ -300,13 +300,13 @@ void func_ovl8_803725DC(dbTestMenu *arg0)
 
         spMove(sprite, sp34.arr[0] + sp3C.arr[0], sp34.arr[1] + sp3C.arr[1]);
 
-        sprite->rsp_dl_next = gDisplayListHead[0];
+        sprite->rsp_dl_next = gSYTaskmanDLHeads[0];
 
         spDraw(sprite);
 
-        gDisplayListHead[0] = sprite->rsp_dl_next - 1;
+        gSYTaskmanDLHeads[0] = sprite->rsp_dl_next - 1;
 
-        gDPPipeSync(gDisplayListHead[0]++);
+        gDPPipeSync(gSYTaskmanDLHeads[0]++);
     }
 }
 #else

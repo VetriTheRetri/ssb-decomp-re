@@ -271,6 +271,12 @@ typedef struct dbUnknown5
     u8 filler_0xCC[0x4];
     s32 unk_dbunk5_0xD0;
     s32 unk_dbunk5_0xD4;
+    s32 unk_dbunk5_0xD8;
+    s32 unk_dbunk5_0xDC;
+    s32 unk_dbunk5_0xE0;
+    s32 unk_dbunk5_0xE4;
+    u8 filler_0xDC[0x55];
+    s32 unk_dbunk5_0x134;
 } dbUnknown5;
 
 typedef struct dbUnknown5_2

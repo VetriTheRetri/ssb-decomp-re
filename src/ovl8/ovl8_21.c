@@ -1,6 +1,14 @@
 #include "common.h"
 #include <sys/develop.h>
 
+extern dbUnknownLinkStruct D_ovl8_8038C4E0;
+extern dbFunction D_ovl8_8038C5B8;
+extern dbUnknownLink D_ovl8_8038C710;
+extern dbUnknownLinkStruct D_ovl8_8038C738;
+
+void* func_ovl8_80382B44(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2, s32 arg3, s32 arg4, s32 arg5);
+void func_ovl8_80382CDC(dbUnknown5* arg0);
+
 // 0x80382AE0
 s32 func_ovl8_80382AE0(s32 arg0, dbUnknown3* arg1)
 {
@@ -23,33 +31,36 @@ s32 func_ovl8_80382AE0(s32 arg0, dbUnknown3* arg1)
 }
 
 // 0x80382B44
+#ifdef NON_MATCHING
+void* func_ovl8_80382B44(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2, s32 arg3, s32 arg4, s32 arg5)
+{
+    s32 foo;
+
+    if (arg0 != NULL || ((arg0 = func_ovl8_803717A0(0xC8)) != NULL))
+    {
+        if (arg1 == NULL)
+        {
+            arg1 = &arg0->unk_dbunk5_0x60;\
+            arg2 = &arg0->unk_dbunk5_0xBC;\
+            func_ovl8_803717E0(arg1);
+            func_ovl8_8037C2D0(arg2);
+        }
+
+        func_ovl8_8037EF0C(arg0, arg1, arg2, arg3, 0, arg5);
+        func_ovl8_8038116C(&arg0->unk_dbunk5_0x40, arg4, arg0);
+
+        arg0->unk_dbunk5_0x30 = &D_ovl8_8038C4E0,
+        arg1->db_func = &D_ovl8_8038C5B8;
+        arg2->unk_dbunklink_0x8 = &D_ovl8_8038C710;
+        arg0->unk_dbunk5_0x5C = &D_ovl8_8038C738;
+        func_ovl8_80382CDC(arg0);
+    }
+
+    return arg0;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_21/func_ovl8_80382B44.s")
-// void* func_ovl8_80382B44(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2, s32 arg3, s32 arg4, s32 arg5)
-// {
-//     s32 foo;
-
-//     if (arg0 != NULL || ((arg0 = func_ovl8_803717A0(0xC8)) != NULL))
-//     {
-//         if (arg1 == NULL)
-//         {
-//             arg1 = &arg0->unk_dbunk5_0x60;\
-//             arg2 = &arg0->unk_dbunk5_0xBC;\
-//             func_ovl8_803717E0(arg1);
-//             func_ovl8_8037C2D0(arg2);
-//         }
-
-//         func_ovl8_8037EF0C(arg0, arg1, arg2, arg3, 0, arg5);
-//         func_ovl8_8038116C(&arg0->unk_dbunk5_0x40, arg4, arg0);
-
-//         arg0->unk_dbunk5_0x30 = &D_ovl8_8038C4E0,
-//         arg1->db_func = &D_ovl8_8038C5B8;
-//         arg2->unk_dbunklink_0x8 = &D_ovl8_8038C710;
-//         arg0->unk_dbunk5_0x5C = &D_ovl8_8038C738;
-//         func_ovl8_80382CDC(arg0);
-//     }
-
-//     return arg0;
-// }
+#endif /* NON_MATCHING */
 
 // 0x80382C24
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_21/func_ovl8_80382C24.s")

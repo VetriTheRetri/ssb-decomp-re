@@ -15,29 +15,32 @@ extern dbUnknownLink D_ovl8_8038B948;
 extern dbUnknown3 D_ovl8_8038B970;
 
 // 0x8037F300
+void* func_ovl8_8037F300(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2);
+#ifdef NON_MATCHING
+void* func_ovl8_8037F300(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2)
+{
+    if (arg0 != NULL || ((arg0 = func_ovl8_803717A0(0xB4)) != NULL))
+    {
+        if (arg1 == NULL)
+        {
+            arg1 = &arg0->unk_dbunk5_0x4C;
+            arg2 = &arg0->unk_dbunk5_0xA8;
+            func_ovl8_803717E0(arg1);
+            func_ovl8_8037C2D0(arg2);
+        }
+
+        func_ovl8_803733AC(arg0, arg1, arg2);
+
+        arg0->unk_dbunk5_0x30 = &D_ovl8_8038AF38;
+        arg1->db_func = &D_ovl8_8038B018;
+        arg2->unk_dbunklink_0x8 = &D_ovl8_8038B170;
+
+    }
+    return arg0;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_15/func_ovl8_8037F300.s")
-// void* func_ovl8_8037F300(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2)
-// {
-//     if (arg0 != NULL || ((arg0 = func_ovl8_803717A0(0xB4)) != NULL))
-//     {
-//         if (arg1 == NULL)
-//         {
-//             arg1 = &arg0->unk_dbunk5_0x4C;
-//             arg2 = &arg0->unk_dbunk5_0xA8;
-//             func_ovl8_803717E0(arg1);
-//             func_ovl8_8037C2D0(arg2);
-//         }
-
-//         func_ovl8_803733AC(arg0, arg1, arg2);
-
-//         arg0->unk_dbunk5_0x30 = &D_ovl8_8038AF38;
-//         arg1->db_func = &D_ovl8_8038B018;
-//         arg2->unk_dbunklink_0x8 = &D_ovl8_8038B170;
-
-//     }
-
-//     return arg0;
-// }
+#endif /* NON_MATCHING */
 
 // 0x8037F3A8
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_15/func_ovl8_8037F3A8.s")

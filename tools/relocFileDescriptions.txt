@@ -2121,33 +2121,115 @@ PosSpriteArray 0x1B8 0x1B8
 
 [255]
 MapHeader - 0x14
+MObjSub WhispyEyesTransformKinds 0x0F00
+MapHead - 0x10F0
+DObjDesc WhispyEyesTransformKinds 0x10F0
+MObjSub WhispyMouthTransformKinds 0x13B0
+DObjDesc WhispyMouthTransformKinds 0x1770
+DObjDesc FlowersBackTransformKinds 0x2A80
+DObjDesc FlowersFrontTransformKinds 0x31F8
+AnimJoint WhispyEyesLeftTurn 0x11A0
+MatAnimJoint WhispyEyesLeftTurn 0x11E0
+AnimJoint WhispyEyesLeftBlink 0x12B0
+AnimJoint WhispyEyesRightTurn 0x1220
+MatAnimJoint WhispyEyesRightTurn 0x1270
+AnimJoint WhispyEyesRightBlink 0x1330
+AnimJoint WhispyMouthLeftStretch 0x18B0
+MatAnimJoint WhispyMouthLeftStretch 0x1A00
+AnimJoint WhispyMouthLeftTurn 0x1BE0
+MatAnimJoint WhispyMouthLeftTurn 0x1CE0
+AnimJoint WhispyMouthLeftOpen 0x1E80
+MatAnimJoint WhispyMouthLeftOpen 0x20B0
+AnimJoint WhispyMouthLeftClose 0x2100
+MatAnimJoint WhispyMouthLeftClose 0x22A0
+AnimJoint WhispyMouthRightStretch 0x1A40
+MatAnimJoint WhispyMouthRightStretch 0x1BA0
+AnimJoint WhispyMouthRightTurn 0x1D30
+MatAnimJoint WhispyMouthRightTurn 0x1E30
+AnimJoint WhispyMouthRightOpen 0x22F0
+MatAnimJoint WhispyMouthRightOpen 0x2540
+AnimJoint WhispyMouthRightClose 0x2590
+MatAnimJoint WhispyMouthRightClose 0x2740
+Texture WhispyMouthLeftOpen 0x2BE0
+Texture WhispyMouthLeftBlow 0x2C30
+Texture WhispyMouthLeftClose 0x2C80
+Texture WhispyMouthRightOpen 0x2CD0
+Texture WhispyMouthRightBlow 0x2D20
+Texture WhispyMouthRightClose 0x2D70
+Texture WhispyEyesLeft0 0x33E0
+Texture WhispyEyesLeft1 0x3450
+Texture WhispyEyesLeft2 0x34B0
+Texture WhispyEyesRight0 0x3510
+Texture WhispyEyesRight1 0x35C0
+Texture WhispyEyesRight2 0x3660
 
 [256]
 MapHeader - 0x14
 
 [257]
 MapHeader - 0x14
+GRAttackColl Acid 0xBC
+MObjSub Acid 0x8C0
+DObjDesc Acid 0xB08
+AnimJoint Acid 0xB90
+MatAnimJoint Acid 0xBD0
 
 [258]
 MapHeader - 0x14
 
 [259]
 MapHeader - 0x14
+MapHead - 0x0
 
 [260]
 MapHeader - 0x14
+DObjDesc Scale 0x380
+MapHead - 0x5F0
+AnimJoint ScaleRetract 0x734
+GRAttackColl PowerBlock 0x0BC
 
 [261]
 MapHeader - 0x14
+MapHead - 0xA98
+AnimJoint TaruCannDefault 0xB20
+AnimJoint TaruCannFill 0xB68
+AnimJoint TaruCannShoot 0xBF8
 
 [262]
 MapHeader - 0x14
+MapHead - 0x0
+WeaponAttributes ArwingLaser2D 0xBC
+WeaponAttributes ArwingLaser3D 0xF0
+SectorDesc Arwing0 0x0000
+SectorDesc Arwing1 0x0250
+SectorDesc Arwing2 0x06D0
+SectorDesc Arwing3 0x03E0
+SectorDesc Arwing4 0x0D10
+SectorDesc Arwing5 0x0EB0
+SectorDesc Arwing6 0x1510
+SectorDesc Arwing7 0x11D0
+AnimJoint Arwing0 0x0000
+AnimJoint Arwing1 0x1D34
+AnimJoint Arwing2 0x1DA4
+AnimJoint Arwing3 0x1DC4
+AnimJoint Arwing4 0x1D54
+AnimJoint Arwing5 0x1DE4
 
 [263]
 MapHeader - 0x14
+MapHead - 0x100
+AnimJoint _1E0_ 0x1E0
+MObjSub _4B8_ 0x4B8
+DisplayList Cloud 0x580
+MatAnimJoint CloudSolid 0x670
+MatAnimJoint CloudEvaporate 0x690
 
 [264]
 MapHeader - 0x14
+AnimJoint GateOpen 0x9B0
+AnimJoint GateClose 0xA20
+ItemHead - 0x014
+MapHead - 0x8A0
 
 [265]
 MapHeader - 0x14

@@ -2,6 +2,7 @@
 #include <ft/fighter.h>
 #include <it/item.h>
 #include <sc/scene.h>
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -124,13 +125,13 @@ void grYamabukiGateAddAnimOffset(intptr_t offset)
 // 0x8010AED8
 void grYamabukiGateAddAnimOpen(void)
 {
-    grYamabukiGateAddAnimOffset((intptr_t)&lGRYamabukiGateOpenAnimJoint);
+    grYamabukiGateAddAnimOffset((intptr_t)&llGRYamabukiMapGateOpenAnimJoint);
 }
 
 // 0x8010AEFC
 void grYamabukiGateAddAnimClose(void)
 {
-    grYamabukiGateAddAnimOffset((intptr_t)&lGRYamabukiGateCloseAnimJoint);
+    grYamabukiGateAddAnimOffset((intptr_t)&llGRYamabukiMapGateCloseAnimJoint);
 }
 
 // 0x8010AF20 - Allow entry inside Pokémon spawn hub?
@@ -253,7 +254,7 @@ void grYamabukiMakeGate(void)
     (
         gate_gobj, 
         (DObjDesc*) 
-        ((uintptr_t)gGRCommonStruct.yamabuki.map_head + (intptr_t)&lGRYamabukiMapHead), 
+        ((uintptr_t)gGRCommonStruct.yamabuki.map_head + (intptr_t)&llGRYamabukiMapMapHead), 
         NULL, 
         nGCMatrixKindTraRotRpyR, 
         nGCMatrixKindNull, 
@@ -266,12 +267,12 @@ void grYamabukiMakeGate(void)
 // 0x8010B250
 void grYamabukiInitGroundVars(void)
 {
-    gGRCommonStruct.yamabuki.map_head = (void*) ((uintptr_t)gMPCollisionGroundData->map_nodes - (intptr_t)&lGRYamabukiMapHead);
+    gGRCommonStruct.yamabuki.map_head = (void*) ((uintptr_t)gMPCollisionGroundData->map_nodes - (intptr_t)&llGRYamabukiMapMapHead);
 
     mpCollisionSetYakumonoOnID(3);
 
     gGRCommonStruct.yamabuki.gate_wait = 1;
-    gGRCommonStruct.yamabuki.item_head = (void*) ((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRYamabukiItemHead);
+    gGRCommonStruct.yamabuki.item_head = (void*) ((uintptr_t)gMPCollisionGroundData - (intptr_t)&llGRYamabukiMapItemHead);
 
     dGRYamabukiMonsterAttackKind = GRYAMABUKI_MONSTER_WEAPON_MAX;
 

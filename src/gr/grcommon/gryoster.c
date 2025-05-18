@@ -1,22 +1,6 @@
 #include <gr/ground.h>
 #include <ft/fighter.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lGRYosterMapHead;                   // 0x00000100
-extern intptr_t D_NF_000001E0;
-extern intptr_t D_NF_000004B8;
-extern intptr_t lGRYosterCloudDisplayList;          // 0x00000580
-extern intptr_t lGRYosterCloudSolidMatAnimJoint;    // 0x00000670
-extern intptr_t lGRYosterCloudEvaporateMatAnimJoint;// 0x00000690
-extern intptr_t lGRYosterParticleScriptBankLo;      // 0x00B22980
-extern intptr_t lGRYosterParticleScriptBankHi;      // 0x00B22A00
-extern intptr_t lGRYosterParticleTextureBankLo;     // 0x00B22A00
-extern intptr_t lGRYosterParticleTextureBankHi;     // 0x00B22C30
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -25,7 +9,7 @@ extern intptr_t lGRYosterParticleTextureBankHi;     // 0x00B22C30
 // // // // // // // // // // // //
 
 // 0x8012EB20
-intptr_t dGRYosterCloudMatAnimJoints[/* */] = { &lGRYosterCloudSolidMatAnimJoint, &lGRYosterCloudEvaporateMatAnimJoint };
+intptr_t dGRYosterCloudMatAnimJoints[/* */] = { &llGRYosterMapCloudSolidMatAnimJoint, &llGRYosterMapCloudEvaporateMatAnimJoint };
 
 // 0x8012EB28
 u8 dGRYosterCloudLineIDs[/* */] = { 0x1, 0x2, 0x3 };
@@ -220,7 +204,7 @@ void grYosterInitAll(void)
     void *map_head;
     s32 i, j;
 
-    map_head = (uintptr_t)gMPCollisionGroundData->map_nodes - (intptr_t)&lGRYosterMapHead;
+    map_head = (uintptr_t)gMPCollisionGroundData->map_nodes - (intptr_t)&llGRYosterMapMapHead;
     gGRCommonStruct.yoster.map_head = map_head;
 
     for (i = 0; i < ARRAY_COUNT(gGRCommonStruct.yoster.clouds); i++)
@@ -233,7 +217,7 @@ void grYosterInitAll(void)
         gcSetupCustomDObjs
         (
             map_gobj, 
-            (DObjDesc*) ((intptr_t)&lGRYosterMapHead + (uintptr_t)map_head), 
+            (DObjDesc*) ((intptr_t)&llGRYosterMapMapHead + (uintptr_t)map_head), 
             NULL, 
             nGCMatrixKindTra,    // Make this nGCMatrixKindTraRotRpyRSca to see cloud scale animation
             nGCMatrixKindNull, 
@@ -241,7 +225,7 @@ void grYosterInitAll(void)
         );
         gcAddGObjProcess(map_gobj, gcPlayAnimAll, nGCProcessKindFunc, 5);
 
-        gcAddAnimJointAll(map_gobj, (uintptr_t)map_head + (intptr_t)&D_NF_000001E0, 0);
+        gcAddAnimJointAll(map_gobj, (uintptr_t)map_head + (intptr_t)&llGRYosterMap_1E0_AnimJoint, 0);
 
         coll_dobj = DObjGetStruct(map_gobj);
         coll_dobj->translate.vec.f = gMPCollisionYakumonoDObjs->dobjs[dGRYosterCloudLineIDs[i]]->translate.vec.f;
@@ -252,12 +236,12 @@ void grYosterInitAll(void)
 
         for (j = 0; j < ARRAY_COUNT(gGRCommonStruct.yoster.clouds[i].dobj); j++, coll_dobj = coll_dobj->sib_next)
         {
-            cloud_dobj = gcAddChildForDObj(coll_dobj, (uintptr_t)map_head + (intptr_t)&lGRYosterCloudDisplayList);
+            cloud_dobj = gcAddChildForDObj(coll_dobj, (uintptr_t)map_head + (intptr_t)&llGRYosterMapCloudDisplayList);
             gGRCommonStruct.yoster.clouds[i].dobj[j] = cloud_dobj;
 
             gcAddXObjForDObjFixed(cloud_dobj, nGCMatrixKindTra, 0);
             gcAddXObjForDObjFixed(cloud_dobj, nGCMatrixKind48, 0);
-            lbCommonAddMObjForTreeDObjs(cloud_dobj, (uintptr_t)map_head + (intptr_t)&D_NF_000004B8);
+            lbCommonAddMObjForTreeDObjs(cloud_dobj, (uintptr_t)map_head + (intptr_t)&llGRYosterMap_4B8_MObjSub);
         }
         gcPlayAnimAll(map_gobj);
 

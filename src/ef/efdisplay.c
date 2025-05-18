@@ -1,21 +1,5 @@
 #include <ef/effect.h>
 
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern uintptr_t lEFCommonParticleScriptBankLo;                 // 0x00AC7340
-extern uintptr_t lEFCommonParticleScriptBankHi;                 // 0x00AC9DE0
-extern uintptr_t lEFCommonParticleTextureBankLo;                // 0x00AC9DE0
-extern uintptr_t lEFCommonParticleTextureBankHi;                // 0x00B16C80
-
-// // // // // // // // // // // //
-//                               //
-//           FUNCTIONS           //
-//                               //
-// // // // // // // // // // // //
 
 // 0x800FCCC0
 void efDisplayCLDProcDisplay(GObj *effect_gobj)

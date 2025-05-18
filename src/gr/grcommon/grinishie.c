@@ -257,8 +257,8 @@ void grInishieScaleUpdateStep(void)
     {
         gGRCommonStruct.inishie.splat_status = nGRInishieScaleStatusRetract;
 
-        gcAddDObjAnimJoint(gGRCommonStruct.inishie.scale[0].platform_dobj, (AObjEvent32*) ((intptr_t)&lGRInishieScaleRetractAnimJoint + (uintptr_t)gGRCommonStruct.inishie.map_head), 0.0F);
-        gcAddDObjAnimJoint(gGRCommonStruct.inishie.scale[1].platform_dobj, (AObjEvent32*) ((intptr_t)&lGRInishieScaleRetractAnimJoint + (uintptr_t)gGRCommonStruct.inishie.map_head), 0.0F);
+        gcAddDObjAnimJoint(gGRCommonStruct.inishie.scale[0].platform_dobj, (AObjEvent32*) ((intptr_t)&llGRInishieMapScaleRetractAnimJoint + (uintptr_t)gGRCommonStruct.inishie.map_head), 0.0F);
+        gcAddDObjAnimJoint(gGRCommonStruct.inishie.scale[1].platform_dobj, (AObjEvent32*) ((intptr_t)&llGRInishieMapScaleRetractAnimJoint + (uintptr_t)gGRCommonStruct.inishie.map_head), 0.0F);
     }
 }
 
@@ -356,7 +356,7 @@ void grInishieMakeScale(void)
     ground_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_PRIORITY_DEFAULT);
 
     gcAddGObjDisplay(ground_gobj, gcDrawDObjTreeForGObj, 6, GOBJ_PRIORITY_DEFAULT, ~0);
-    grModelSetupGroundDObjs(ground_gobj, (DObjDesc*) ((uintptr_t)map_head + (intptr_t)&lGRInishieScaleDObjDesc), map_dobjs, dGRInishieScaleTransformKinds);
+    grModelSetupGroundDObjs(ground_gobj, (DObjDesc*) ((uintptr_t)map_head + (intptr_t)&llGRInishieMapScaleDObjDesc), map_dobjs, dGRInishieScaleTransformKinds);
 
     gGRCommonStruct.inishie.scale[0].string_dobj = map_dobjs[4];
     gGRCommonStruct.inishie.scale[0].string_length = map_dobjs[0]->translate.vec.f.y + map_dobjs[3]->translate.vec.f.y;
@@ -369,7 +369,7 @@ void grInishieMakeScale(void)
         ground_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_PRIORITY_DEFAULT);
         gcAddGObjDisplay(ground_gobj, gcDrawDObjDLHead0, 6, GOBJ_PRIORITY_DEFAULT, ~0);
 
-        platform_dobj = gcAddDObjForGObj(ground_gobj, (void*) ((uintptr_t)map_head + (intptr_t)&lGRInishieMapHead));
+        platform_dobj = gcAddDObjForGObj(ground_gobj, (void*) ((uintptr_t)map_head + (intptr_t)&llGRInishieMapMapHead));
         gGRCommonStruct.inishie.scale[i].platform_dobj = platform_dobj;
 
         gcAddXObjForDObjFixed(platform_dobj, nGCMatrixKindTra, 0);
@@ -529,7 +529,7 @@ void grInishieMakePowerBlock(void)
         gGRCommonStruct.inishie.pblock_pos_ids[i] = pos_ids[i];
     }
     gGRCommonStruct.inishie.pblock_status = nGRInishiePowerBlockStatusWait;
-    gGRCommonStruct.inishie.attack_coll = (GRAttackColl*) (((uintptr_t)gMPCollisionGroundData - (intptr_t)&llGRInishieMapMapHeader) + (intptr_t)&lGRInishiePowerBlockHit);
+    gGRCommonStruct.inishie.attack_coll = (GRAttackColl*) (((uintptr_t)gMPCollisionGroundData - (intptr_t)&llGRInishieMapMapHeader) + (intptr_t)&llGRInishieMapPowerBlockGRAttackColl);
 }
 
 // 0x80109B4C
@@ -564,7 +564,7 @@ sb32 grInishiePowerBlockCheckGetDamageKind(GObj *item_gobj, GObj *fighter_gobj, 
 // 0x80109BD4
 void grInishieInitHeaders(void)
 {
-    gGRCommonStruct.inishie.map_head = (void*) ((uintptr_t)gMPCollisionGroundData->map_nodes - (intptr_t)&lGRInishieMapHead);
+    gGRCommonStruct.inishie.map_head = (void*) ((uintptr_t)gMPCollisionGroundData->map_nodes - (intptr_t)&llGRInishieMapMapHead);
     gGRCommonStruct.inishie.item_head = (void*) ((uintptr_t)gMPCollisionGroundData - (intptr_t)&llGRInishieMapMapHeader);
 }
 

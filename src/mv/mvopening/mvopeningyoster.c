@@ -137,7 +137,7 @@ void mvOpeningYosterMakeWallpaper(void)
         (
             Sprite*,
             sMVOpeningYosterFiles[1],
-            &lGRYosterWallpaperSprite
+            &llStageYoshiSprite
         )
     );
     wallpaper_sobj->pos.x = 10.0F;

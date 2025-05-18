@@ -22,25 +22,25 @@ extern void syInterpCubic(void*, void*, f32);
 // 0x8012E940
 intptr_t dGRSectorArwingSectorDescs[/* */] =
 {
-    &lGRSectorArwingSectorDesc0,
-    &lGRSectorArwingSectorDesc1,
-    &lGRSectorArwingSectorDesc2,
-    &lGRSectorArwingSectorDesc3,
-    &lGRSectorArwingSectorDesc4,
-    &lGRSectorArwingSectorDesc5,
-    &lGRSectorArwingSectorDesc6,
-    &lGRSectorArwingSectorDesc7
+    &llGRSectorMapArwing0SectorDesc,
+    &llGRSectorMapArwing1SectorDesc,
+    &llGRSectorMapArwing2SectorDesc,
+    &llGRSectorMapArwing3SectorDesc,
+    &llGRSectorMapArwing4SectorDesc,
+    &llGRSectorMapArwing5SectorDesc,
+    &llGRSectorMapArwing6SectorDesc,
+    &llGRSectorMapArwing7SectorDesc
 };
 
 // 0x8012E960
 intptr_t dGRSectorArwingAnimJoints[/* */] =
 {
-    0x0,
-    &lGRSectorArwing1AnimJoint,
-    &lGRSectorArwing2AnimJoint,
-    &lGRSectorArwing3AnimJoint,
-    &lGRSectorArwing4AnimJoint,
-    &lGRSectorArwing5AnimJoint
+    &llGRSectorMapArwing0AnimJoint,
+    &llGRSectorMapArwing1AnimJoint,
+    &llGRSectorMapArwing2AnimJoint,
+    &llGRSectorMapArwing3AnimJoint,
+    &llGRSectorMapArwing4AnimJoint,
+    &llGRSectorMapArwing5AnimJoint
 };
 
 // 0x8012E978
@@ -159,7 +159,7 @@ WPDesc dGRSectorArwingWeaponLaser2DWeaponDesc =
     0,                                          // Render flags?
     nWPKindArwingLaser2D,                       // Weapon Kind
     &gGRCommonStruct.sector.weapon_head,        // Pointer to character's loaded files?
-    &lGRSectorArwingLaser2DWeaponAttributes,    // Offset of weapon attributes in loaded files
+    &llGRSectorMapArwingLaser2DWeaponAttributes,    // Offset of weapon attributes in loaded files
     
     // DObj transformation struct
     {
@@ -184,7 +184,7 @@ WPDesc dGRSectorArwingWeaponLaser3DWeaponDesc =
     0,                                          // Render flags?
     nWPKindArwingLaser3D,                       // Weapon Kind
     &gGRCommonStruct.sector.weapon_head,        // Pointer to character's loaded files?
-    &lGRSectorArwingLaser3DWeaponAttributes,    // Offset of weapon attributes in loaded files
+    &llGRSectorMapArwingLaser3DWeaponAttributes,    // Offset of weapon attributes in loaded files
     
     // DObj transformation struct
     {
@@ -1085,7 +1085,7 @@ void grSectorInitAll(void)
     GObj *map_gobj;
     void *map_file;
 
-    gGRCommonStruct.sector.map_head = (void*) ((uintptr_t)gMPCollisionGroundData->map_nodes - (intptr_t)&lGRSectorMapHead);
+    gGRCommonStruct.sector.map_head = (void*) ((uintptr_t)gMPCollisionGroundData->map_nodes - (intptr_t)&llGRSectorMapMapHead);
 
     map_file = lbRelocGetForceStatusBufferFile((intptr_t)&llFoxSpecial3FileID);
 

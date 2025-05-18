@@ -1,5 +1,6 @@
 #include <gr/ground.h>
 #include <ft/fighter.h>
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -45,13 +46,13 @@ void grJungleTaruCannAddAnimOffset(GObj *ground_gobj, intptr_t offset)
 // 0x80109CFC
 void grJungleTaruCannAddAnimFill(GObj *ground_gobj)
 {
-    grJungleTaruCannAddAnimOffset(ground_gobj, &lGRJungleTaruCannFillAnimJoint);
+    grJungleTaruCannAddAnimOffset(ground_gobj, &llGRJungleMapTaruCannFillAnimJoint);
 }
 
 // 0x80109D20
 void grJungleTaruCannAddAnimShoot(GObj *ground_gobj)
 {
-    grJungleTaruCannAddAnimOffset(ground_gobj, &lGRJungleTaruCannShootAnimJoint);
+    grJungleTaruCannAddAnimOffset(ground_gobj, &llGRJungleMapTaruCannShootAnimJoint);
 }
 
 // 0x80109D44
@@ -108,17 +109,17 @@ void grJungleMakeTaruCann(void)
     void *map_head;
     GObj *tarucann_gobj;
 
-    map_head = (void*) ((uintptr_t)gMPCollisionGroundData->map_nodes - (intptr_t)&lGRJungleMapHead);
+    map_head = (void*) ((uintptr_t)gMPCollisionGroundData->map_nodes - (intptr_t)&llGRJungleMapMapHead);
     gGRCommonStruct.jungle.map_head = map_head;
 
     gGRCommonStruct.jungle.tarucann_gobj = tarucann_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_PRIORITY_DEFAULT);
 
     gcAddGObjDisplay(tarucann_gobj, gcDrawDObjTreeForGObj, 6, GOBJ_PRIORITY_DEFAULT, ~0);
 
-    grModelSetupGroundDObjs(tarucann_gobj, (DObjDesc*) ((intptr_t)&lGRJungleMapHead + (uintptr_t)map_head), NULL, dGRJungleTaruCannTransformKinds);
+    grModelSetupGroundDObjs(tarucann_gobj, (DObjDesc*) ((intptr_t)&llGRJungleMapMapHead + (uintptr_t)map_head), NULL, dGRJungleTaruCannTransformKinds);
     gcAddGObjProcess(tarucann_gobj, gcPlayAnimAll, nGCProcessKindFunc, 5);
 
-    gcAddAnimJointAll(tarucann_gobj, ((uintptr_t)map_head + (intptr_t)&lGRJungleTaruCannDefaultAnimJoint), 0.0F);
+    gcAddAnimJointAll(tarucann_gobj, ((uintptr_t)map_head + (intptr_t)&llGRJungleMapTaruCannDefaultAnimJoint), 0.0F);
     gcPlayAnimAll(tarucann_gobj);
 
     gcAddGObjProcess(tarucann_gobj, grJungleTaruCannProcUpdate, nGCProcessKindFunc, 4);

@@ -2,6 +2,7 @@
 #include <ft/fighter.h>
 #include <ef/effect.h>
 #include <sc/scene.h>
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -72,46 +73,46 @@ enum grPupupuFlowerStatus
 // 0x8012E870
 intptr_t dGRPupupuWhispyEyesAnims[/* */][nGRPupupuWhispyEyesStatusEnumCount][2] =
 {
-    { { &lGRPupupuWhispyEyesLeftTurnAnimJoint, &lGRPupupuWhispyEyesLeftTurnMatAnimJoint }, { &lGRPupupuWhispyEyesLeftBlinkAnimJoint, 0x0 } },
-    { { &lGRPupupuWhispyEyesRightTurnAnimJoint, &lGRPupupuWhispyEyesRightTurnMatAnimJoint }, { &lGRPupupuWhispyEyesRightBlinkAnimJoint, 0x0 } }
+    { { &llGRPupupuMapWhispyEyesLeftTurnAnimJoint, &llGRPupupuMapWhispyEyesLeftTurnMatAnimJoint }, { &llGRPupupuMapWhispyEyesLeftBlinkAnimJoint, 0x0 } },
+    { { &llGRPupupuMapWhispyEyesRightTurnAnimJoint, &llGRPupupuMapWhispyEyesRightTurnMatAnimJoint }, { &llGRPupupuMapWhispyEyesRightBlinkAnimJoint, 0x0 } }
 };
 
 // 0x8012E890
 intptr_t dGRPupupuWhispyMouthAnims[/* */][nGRPupupuWhispyMouthStatusEnumCount][2] =
 {
     // Left-facing
-    { 
-        { &lGRPupupuWhispyMouthLeftStretchAnimJoint, &lGRPupupuWhispyMouthLeftStretchMatAnimJoint }, 
-        { &lGRPupupuWhispyMouthLeftTurnAnimJoint, &lGRPupupuWhispyMouthLeftTurnMatAnimJoint }, 
-        { &lGRPupupuWhispyMouthLeftOpenAnimJoint, &lGRPupupuWhispyMouthLeftOpenMatAnimJoint }, 
-        { &lGRPupupuWhispyMouthLeftCloseAnimJoint, &lGRPupupuWhispyMouthLeftCloseMatAnimJoint } 
+    {
+        { &llGRPupupuMapWhispyMouthLeftStretchAnimJoint, &llGRPupupuMapWhispyMouthLeftStretchMatAnimJoint },
+        { &llGRPupupuMapWhispyMouthLeftTurnAnimJoint, &llGRPupupuMapWhispyMouthLeftTurnMatAnimJoint },
+        { &llGRPupupuMapWhispyMouthLeftOpenAnimJoint, &llGRPupupuMapWhispyMouthLeftOpenMatAnimJoint },
+        { &llGRPupupuMapWhispyMouthLeftCloseAnimJoint, &llGRPupupuMapWhispyMouthLeftCloseMatAnimJoint }
     },
 
     // Right-facing
-    { 
-        { &lGRPupupuWhispyMouthRightStretchAnimJoint, &lGRpupupuWhispyMouthRightStretchMatAnimJoint }, 
-        { &lGRPupupuWhispyMouthRightTurnAnimJoint, &lGRPupupuWhispyMouthRightTurnMatAnimJoint },
-        { &lGRPupupuWhispyMouthRightOpenAnimJoint, &lGRPupupuWhispyMouthRightOpenMatAnimJoint }, 
-        { &lGRPupupuWhispyMouthRightCloseAnimJoint, &lGRPupupuWhispyMouthRightCloseMatAnimJoint } 
+    {
+        { &llGRPupupuMapWhispyMouthRightStretchAnimJoint, &llGRPupupuMapWhispyMouthRightStretchMatAnimJoint },
+        { &llGRPupupuMapWhispyMouthRightTurnAnimJoint, &llGRPupupuMapWhispyMouthRightTurnMatAnimJoint },
+        { &llGRPupupuMapWhispyMouthRightOpenAnimJoint, &llGRPupupuMapWhispyMouthRightOpenMatAnimJoint },
+        { &llGRPupupuMapWhispyMouthRightCloseAnimJoint, &llGRPupupuMapWhispyMouthRightCloseMatAnimJoint }
     }
 };
 
 // 0x8012E8D0
 intptr_t dGRPupupuWhispyMouthTextures[/* */][nGRPupupuWhispyMouthTextureEnumCount] =
 {
-    { &lGRPupupuWhispyMouthLeftOpenTexture, &lGRPupupuWhispyMouthLeftBlowTexture, &lGRPupupuWhispyMouthLeftCloseTexture },
-    { &lGRPupupuWhispyMouthRightOpenTexture, &lGRPupupuWhispyMouthRightBlowTexture, &lGRPupupuWhispyMouthRightCloseTexture }
+    { &llGRPupupuMapWhispyMouthLeftOpenTexture, &llGRPupupuMapWhispyMouthLeftBlowTexture, &llGRPupupuMapWhispyMouthLeftCloseTexture },
+    { &llGRPupupuMapWhispyMouthRightOpenTexture, &llGRPupupuMapWhispyMouthRightBlowTexture, &llGRPupupuMapWhispyMouthRightCloseTexture }
 };
 
 // 0x8012E8E8
 intptr_t dGRPupupuWhispyEyesTextures[/* */][nGRPupupuWhispyEyesTextureEnumCount] =
 {
-    { &lGRPupupuWhispyEyesLeftTexture0, &lGRPupupuWhispyEyesLeftTexture1, &lGRPupupuWhispyEyesLeftTexture2 },
-    { &lGRPupupuWhispyEyesRightTexture0, &lGRPupupuWhispyEyesRightTexture1, &lGRPupupuWhispyEyesRightTexture2 }
+    { &llGRPupupuMapWhispyEyesLeft0Texture, &llGRPupupuMapWhispyEyesLeft1Texture, &llGRPupupuMapWhispyEyesLeft2Texture },
+    { &llGRPupupuMapWhispyEyesRight0Texture, &llGRPupupuMapWhispyEyesRight1Texture, &llGRPupupuMapWhispyEyesRight2Texture }
 };
 
 // 0x8012E900
-GRPupupuEffect dGRPupupuWhispyLeavesEffectAttributes[/* */] = 
+GRPupupuEffect dGRPupupuWhispyLeavesEffectAttributes[/* */] =
 {
     { { -715.0F, 450.0F, -696.0F }, F_CLC_DTOR32(-157.0F) },
     { { -205.0F, 450.0F, -762.0F }, F_CLC_DTOR32( -13.0F) }
@@ -599,9 +600,9 @@ void grPupupuUpdateGObjAnims(void)
     {
         gcAddAnimJointAll
         (
-            gGRCommonStruct.pupupu.map_gobj[2], 
+            gGRCommonStruct.pupupu.map_gobj[2],
             (AObjEvent32**)
-            (dGRPupupuWhispyMouthTextures[gGRCommonStruct.pupupu.lr_players][gGRCommonStruct.pupupu.whispy_mouth_texture] + (uintptr_t)gGRCommonStruct.pupupu.map_head), 
+            (dGRPupupuWhispyMouthTextures[gGRCommonStruct.pupupu.lr_players][gGRCommonStruct.pupupu.whispy_mouth_texture] + (uintptr_t)gGRCommonStruct.pupupu.map_head),
             0.0F
         );
         gcPlayAnimAll(gGRCommonStruct.pupupu.map_gobj[2]);
@@ -641,12 +642,12 @@ GObj* grPupupuMakeMapGObj(intptr_t o_dobjdesc, intptr_t o_mobjsub, void (*proc_d
 
     gcSetupCustomDObjs
     (
-        ground_gobj, 
-        (DObjDesc*) 
-        ((uintptr_t)gGRCommonStruct.pupupu.map_head + o_dobjdesc), 
-        NULL, 
-        nGCMatrixKindTraRotRpyRSca, 
-        nGCMatrixKindNull, 
+        ground_gobj,
+        (DObjDesc*)
+        ((uintptr_t)gGRCommonStruct.pupupu.map_head + o_dobjdesc),
+        NULL,
+        nGCMatrixKindTraRotRpyRSca,
+        nGCMatrixKindNull,
         nGCMatrixKindNull
     );
     if (o_mobjsub != 0)
@@ -661,12 +662,11 @@ GObj* grPupupuMakeMapGObj(intptr_t o_dobjdesc, intptr_t o_mobjsub, void (*proc_d
 // 0x8010658C
 void grPupupuInitAll(void)
 {
-    gGRCommonStruct.pupupu.map_head = (void*) ((uintptr_t)gMPCollisionGroundData->map_nodes - (intptr_t)&lGRPupupuMapHead);
-
-    gGRCommonStruct.pupupu.map_gobj[0] = grPupupuMakeMapGObj(&lGRPupupuMapHead, &D_NF_00000F00, grDisplayLayer0PriProcDisplay, 4);
-    gGRCommonStruct.pupupu.map_gobj[1] = grPupupuMakeMapGObj(&lGRPupupuWhispyMouthTransformKinds, &D_NF_000013B0, grDisplayLayer0PriProcDisplay, 4);
-    gGRCommonStruct.pupupu.map_gobj[2] = grPupupuMakeMapGObj(&lGRPupupuFlowersBackTrasnformKinds, 0x0, grDisplayLayer0PriProcDisplay, 4);
-    gGRCommonStruct.pupupu.map_gobj[3] = grPupupuMakeMapGObj(&lGRPupupuFlowersFrontTransformKinds, 0x0, grDisplayLayer3PriProcDisplay, 16);
+    gGRCommonStruct.pupupu.map_head = (void*) ((uintptr_t)gMPCollisionGroundData->map_nodes - (intptr_t)&llGRPupupuMapMapHead);
+    gGRCommonStruct.pupupu.map_gobj[0] = grPupupuMakeMapGObj(&llGRPupupuMapMapHead, &llGRPupupuMapWhispyEyesTransformKindsMObjSub, grDisplayLayer0PriProcDisplay, 4);
+    gGRCommonStruct.pupupu.map_gobj[1] = grPupupuMakeMapGObj(&llGRPupupuMapWhispyMouthTransformKindsDObjDesc, &llGRPupupuMapWhispyMouthTransformKindsMObjSub, grDisplayLayer0PriProcDisplay, 4);
+    gGRCommonStruct.pupupu.map_gobj[2] = grPupupuMakeMapGObj(&llGRPupupuMapFlowersBackTransformKindsDObjDesc, 0x0, grDisplayLayer0PriProcDisplay, 4);
+    gGRCommonStruct.pupupu.map_gobj[3] = grPupupuMakeMapGObj(&llGRPupupuMapFlowersFrontTransformKindsDObjDesc, 0x0, grDisplayLayer3PriProcDisplay, 16);
 
     gGRCommonStruct.pupupu.whispy_eyes_status   =
     gGRCommonStruct.pupupu.whispy_mouth_status  =

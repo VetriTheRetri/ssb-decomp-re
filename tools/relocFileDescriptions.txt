@@ -2162,6 +2162,16 @@ Texture WhispyEyesLeft2 0x34B0
 Texture WhispyEyesRight0 0x3510
 Texture WhispyEyesRight1 0x35C0
 Texture WhispyEyesRight2 0x3660
+DObjDesc Bronto 0x33B8
+AnimJoint BrontoL 0x3440
+MatAnimJoint BrontoL 0x34E0
+MObjSub Bronto 0x31F0
+AnimJoint BrontoR 0x36E0
+MatAnimJoint BrontoR 0x37A0
+DataStart - 0x1CE0
+DObjDesc Dedede 0x3E80
+AnimJoint DededeFar 0x3F10
+AnimJoint DededeNear 0x4080
 
 [256]
 MapHeader - 0x14
@@ -2173,6 +2183,15 @@ MObjSub Acid 0x8C0
 DObjDesc Acid 0xB08
 AnimJoint Acid 0xB90
 MatAnimJoint Acid 0xBD0
+DataStart - 0x5AC0;
+AnimJoint Ridley 0xCF70
+DObjDesc Ridley 0xCEE8
+MObjSub Ridley 0xCC90
+MatAnimJoint Ridley 0xD030
+AnimJoint Ship 0xDEB0
+DObjDesc Ship 0xDE28
+MObjSub Ship 0xDAE0
+MatAnimJoint Ship 0xDF10
 
 [258]
 MapHeader - 0x14
@@ -2180,6 +2199,10 @@ MapHeader - 0x14
 [259]
 MapHeader - 0x14
 MapHead - 0x0
+DataStart - 0x2A08
+DObjDesc Lakitu 0x4118
+AnimJoint LakituR 0x4220
+AnimJoint LakituL 0x4370
 
 [260]
 MapHeader - 0x14
@@ -2194,6 +2217,11 @@ MapHead - 0xA98
 AnimJoint TaruCannDefault 0xB20
 AnimJoint TaruCannFill 0xB68
 AnimJoint TaruCannShoot 0xBF8
+MObjSub Bird 0xF230
+DObjDesc Bird 0xF400
+AnimJoint Bird 0xF490
+MatAnimJoint Bird 0xF510
+DataStart - 0x9878
 
 [262]
 MapHeader - 0x14
@@ -2214,6 +2242,14 @@ AnimJoint Arwing2 0x1DA4
 AnimJoint Arwing3 0x1DC4
 AnimJoint Arwing4 0x1D54
 AnimJoint Arwing5 0x1DE4
+DataStart - 0x8680
+AnimJoint Rocket 0xADB0
+DObjDesc Rocket 0xAD00
+DObjDesc Ship 0xB6F8
+AnimJoint ShipL 0xB780
+MObjSub Ship 0xB3C0
+MatAnimJoint Ship 0xB7B0
+AnimJoint ShipR 0xB7E0
 
 [263]
 MapHeader - 0x14
@@ -2223,6 +2259,28 @@ MObjSub _4B8_ 0x4B8
 DisplayList Cloud 0x580
 MatAnimJoint CloudSolid 0x670
 MatAnimJoint CloudEvaporate 0x690
+AnimJoint Bird 0x7870
+DObjDesc Bird 0x77E0
+MObjSub Bird 0x7610
+MatAnimJoint Bird 0x7950
+DataStart - 0x4E78
+AnimJoint HeihoFast 0xB4E0
+DObjDesc HeihoFast 0xB458
+MObjSub HeihoFast 0xB290
+MatAnimJoint HeihoFast 0xB550
+AnimJoint HeihoFruitFast 0xA630
+DObjDesc HeihoFruitFast 0xA5A8
+MObjSub HeihoFruitFast 0xA3E0
+MatAnimJoint HeihoFruitFast 0xA6A0
+AnimJoint HeihoFruitSlow 0x8800
+MObjSub HeihoFruitSlow 0x8360
+DObjDesc HeihoFruitSlowL 0x8528
+MatAnimJoint HeihoFruitSlow 0x8930
+DObjDesc HeihoFruitSlowR 0x8778
+AnimJoint HeihoSlow 0x9770
+DObjDesc HeihoSlow 0x96E8
+MObjSub HeihoSlow 0x9520
+MatAnimJoint HeihoSlow 0x97F0
 
 [264]
 MapHeader - 0x14
@@ -2230,6 +2288,23 @@ AnimJoint GateOpen 0x9B0
 AnimJoint GateClose 0xA20
 ItemHead - 0x014
 MapHead - 0x8A0
+AnimJoint Butterfree 0x99E0
+DObjDesc Butterfree 0x9958
+MObjSub Butterfree 0x9790
+MatAnimJoint Butterfree 0x9DC0
+DataStart - 0x6A70
+AnimJoint Fire 0xC920
+DObjDesc Fire 0xC890
+MObjSub Fire 0xC6C0
+MatAnimJoint Fire 0xC9E0
+AnimJoint Onidrill 0xE490
+DObjDesc Onidrill 0xE400
+MObjSub Onidrill 0xE230
+MatAnimJoint Onidrill 0xE5C0
+AnimJoint Poppo 0xFEE0
+DObjDesc Poppo 0xFE58
+MObjSub Poppo 0xFC90
+MatAnimJoint Poppo 0xFFD0
 
 [265]
 MapHeader - 0x14
@@ -2323,6 +2398,10 @@ MapHeader - 0x0
 
 [295]
 MapHeader - 0x0
+MapHead - 0x0
+ItemHead - 0x0
+DObjDesc Bumpers 0x0
+AnimJoint Bumpers 0x110
 
 [296]
 Sprite Stock 0x72d0

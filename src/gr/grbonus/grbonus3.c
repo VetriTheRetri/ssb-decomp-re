@@ -2,29 +2,13 @@
 #include <it/item.h>
 #include <ft/fighter.h>
 #include <sc/scene.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lGRBonus3MapHead;                   // 0x00000000
-extern intptr_t lGRBonus3ItemHead;                  // 0x00000000
-extern intptr_t lGRBonus3BumpersDObjDesc;           // 0x00000000
-extern intptr_t lGRBonus3BumpersAnimJoint;          // 0x00000110
-
-// // // // // // // // // // // //
-//                               //
-//           FUNCTIONS           //
-//                               //
-// // // // // // // // // // // //
+#include <reloc_data.h>
 
 // 0x8010B4D0
 void grBonus3InitHeaders(void)
 {
-    gGRCommonStruct.bonus3.map_head = (void*) ((uintptr_t)gMPCollisionGroundData->map_nodes - (intptr_t)&lGRBonus3MapHead);
-    gGRCommonStruct.bonus3.item_head = (void*) ((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRBonus3ItemHead);
+    gGRCommonStruct.bonus3.map_head = (void*) ((uintptr_t)gMPCollisionGroundData->map_nodes - (intptr_t)&llGRBonus3MapMapHead);
+    gGRCommonStruct.bonus3.item_head = (void*) ((uintptr_t)gMPCollisionGroundData - (intptr_t)&llGRBonus3MapItemHead);
 }
 
 // 0x8010B508
@@ -38,8 +22,8 @@ void grBonus3MakeBumpers(void)
 
     vel.x = vel.y = vel.z = 0.0F;
 
-    dobjdesc = (DObjDesc*) ((uintptr_t)gGRCommonStruct.bonus3.map_head + (intptr_t)&lGRBonus3BumpersDObjDesc);
-    anim_joint = (AObjEvent32**) ((uintptr_t)gGRCommonStruct.bonus3.map_head + (intptr_t)&lGRBonus3BumpersAnimJoint);
+    dobjdesc = (DObjDesc*) ((uintptr_t)gGRCommonStruct.bonus3.map_head + (intptr_t)&llGRBonus3MapBumpersDObjDesc);
+    anim_joint = (AObjEvent32**) ((uintptr_t)gGRCommonStruct.bonus3.map_head + (intptr_t)&llGRBonus3MapBumpersAnimJoint);
 
     anim_joint++, dobjdesc++;
 

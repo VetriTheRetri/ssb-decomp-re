@@ -1,6 +1,7 @@
 #include <ef/effect.h>
 #include <gr/ground.h>
 #include <sc/scene.h>
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -57,9 +58,9 @@ EFGroundDesc dEFGroundCastleEffectDescs[/* */] =
             efGroundCommonProcUpdate,               // Proc Update
             gcDrawDObjTreeForGObj,                // Proc Render
 
-            &lEFGroundCastleLakituDObjSetup,        // DObj Setup attributes offset (?)
+            &llGRCastleMapLakituDObjDesc,        // DObj Setup attributes offset (?)
             0x0,                                    // MObjSub offset
-            &lEFGroundCastleLakituRAnimJoint,       // AnimJoint offset
+            &llGRCastleMapLakituRAnimJoint,       // AnimJoint offset
             0x0                                     // MatAnimJoint offset
         }
     },
@@ -96,9 +97,9 @@ EFGroundDesc dEFGroundCastleEffectDescs[/* */] =
             efGroundCommonProcUpdate,               // Proc Update
             gcDrawDObjTreeForGObj,                // Proc Render
 
-            &lEFGroundCastleLakituDObjSetup,        // DObj Setup attributes offset (?)
+            &llGRCastleMapLakituDObjDesc,        // DObj Setup attributes offset (?)
             0x0,                                    // MObjSub offset
-            &lEFGroundCastleLakituLAnimJoint,       // AnimJoint offset
+            &llGRCastleMapLakituLAnimJoint,       // AnimJoint offset
             0x0                                     // MatAnimJoint offset
         }   
     }
@@ -139,10 +140,10 @@ EFGroundDesc dEFGroundJungleEffectDescs[/* */] =
             efGroundCommonProcUpdate,               // Proc Update
             gcDrawDObjTreeForGObj,                // Proc Render
 
-            &lEFGroundJungleBirdDObjSetup,          // DObj Setup attributes offset (?)
-            &lEFGroundJungleBirdMObjSub,            // MObjSub offset
-            &lEFGroundJungleBirdAnimJoint,          // AnimJoint offset
-            &lEFGroundJungleBirdMatAnimJoint        // MatAnimJoint offset
+            &llGRJungleMapBirdDObjDesc,          // DObj Setup attributes offset (?)
+            &llGRJungleMapBirdMObjSub,            // MObjSub offset
+            &llGRJungleMapBirdAnimJoint,          // AnimJoint offset
+            &llGRJungleMapBirdMatAnimJoint        // MatAnimJoint offset
         }
     }
 };
@@ -182,9 +183,9 @@ EFGroundDesc dEFGroundSectorEffectDescs[/* */] =
             efGroundUpdateStepPositions,            // Proc Update
             gcDrawDObjTreeForGObj,                // Proc Render
 
-            &lEFGroundSectorRocketDObjSetup,        // DObj Setup attributes offset (?)
+            &llGRSectorMapRocketDObjDesc,        // DObj Setup attributes offset (?)
             0x0,                                    // MObjSub offset
-            &lEFGroundSectorRocketAnimJoint,        // AnimJoint offset
+            &llGRSectorMapRocketAnimJoint,        // AnimJoint offset
             0x0                                     // MatAnimJoint offset
         }   
     },
@@ -221,9 +222,9 @@ EFGroundDesc dEFGroundSectorEffectDescs[/* */] =
             efGroundCommonProcUpdate,               // Proc Update
             gcDrawDObjTreeForGObj,                // Proc Render
 
-            &lEFGroundSectorRocketDObjSetup,        // DObj Setup attributes offset (?)
+            &llGRSectorMapRocketDObjDesc,        // DObj Setup attributes offset (?)
             0x0,                                    // MObjSub offset
-            &lEFGroundSectorRocketAnimJoint,        // AnimJoint offset
+            &llGRSectorMapRocketAnimJoint,        // AnimJoint offset
             0x0                                     // MatAnimJoint offset
         }   
     },
@@ -260,9 +261,9 @@ EFGroundDesc dEFGroundSectorEffectDescs[/* */] =
             efGroundCommonProcUpdate,               // Proc Update
             gcDrawDObjTreeForGObj,                // Proc Render
 
-            &lEFGroundSectorRocketDObjSetup,        // DObj Setup attributes offset (?)
+            &llGRSectorMapRocketDObjDesc,        // DObj Setup attributes offset (?)
             0x0,                                    // MObjSub offset
-            &lEFGroundSectorRocketAnimJoint,        // AnimJoint offset
+            &llGRSectorMapRocketAnimJoint,        // AnimJoint offset
             0x0                                     // MatAnimJoint offset
         }
     },
@@ -299,10 +300,10 @@ EFGroundDesc dEFGroundSectorEffectDescs[/* */] =
             efGroundCommonProcUpdate,               // Proc Update
             gcDrawDObjTreeForGObj,                // Proc Render
 
-            &lEFGroundSectorShipDObjSetup,          // DObj Setup attributes offset (?)
-            &lEFGroundSectorShipMObjSub,            // MObjSub offset
-            &lEFGroundSectorShipLAnimJoint,         // AnimJoint offset
-            &lEFGroundSectorShipMatAnimJoint        // MatAnimJoint offset
+            &llGRSectorMapShipDObjDesc,          // DObj Setup attributes offset (?)
+            &llGRSectorMapShipMObjSub,            // MObjSub offset
+            &llGRSectorMapShipLAnimJoint,         // AnimJoint offset
+            &llGRSectorMapShipMatAnimJoint        // MatAnimJoint offset
         }
     },
 
@@ -338,10 +339,10 @@ EFGroundDesc dEFGroundSectorEffectDescs[/* */] =
             efGroundCommonProcUpdate,               // Proc Update
             gcDrawDObjTreeForGObj,                // Proc Render
 
-            &lEFGroundSectorShipDObjSetup,          // DObj Setup attributes offset (?)
-            &lEFGroundSectorShipMObjSub,            // MObjSub offset
-            &lEFGroundSectorShipRAnimJoint,         // AnimJoint offset
-            &lEFGroundSectorShipMatAnimJoint        // MatAnimJoint offset
+            &llGRSectorMapShipDObjDesc,          // DObj Setup attributes offset (?)
+            &llGRSectorMapShipMObjSub,            // MObjSub offset
+            &llGRSectorMapShipRAnimJoint,         // AnimJoint offset
+            &llGRSectorMapShipMatAnimJoint        // MatAnimJoint offset
         }
     },
 };
@@ -381,10 +382,10 @@ EFGroundDesc dEFGroundZebesEffectDescs[/* */] =
             efGroundCommonProcUpdate,               // Proc Update
             gcDrawDObjTreeForGObj,                // Proc Render
 
-            &lEFGroundZebesShipDObjSetup,           // DObj Setup attributes offset (?)
-            &lEFGroundZebesShipMObjSub,             // MObjSub offset
-            &lEFGroundZebesShipAnimJoint,           // AnimJoint offset
-            &lEFGroundZebesShipMatAnimJoint         // MatAnimJoint offset
+            &llGRZebesMapShipDObjDesc,           // DObj Setup attributes offset (?)
+            &llGRZebesMapShipMObjSub,             // MObjSub offset
+            &llGRZebesMapShipAnimJoint,           // AnimJoint offset
+            &llGRZebesMapShipMatAnimJoint         // MatAnimJoint offset
         }
     },
 
@@ -420,10 +421,10 @@ EFGroundDesc dEFGroundZebesEffectDescs[/* */] =
             efGroundCommonProcUpdate,               // Proc Update
             gcDrawDObjTreeForGObj,                // Proc Render
 
-            &lEFGroundZebesRidleyDObjSetup,         // DObj Setup attributes offset (?)
-            &lEFGroundZebesRidleyMObjSub,           // MObjSub offset
-            &lEFGroundZebesRidleyAnimJoint,         // AnimJoint offset
-            &lEFGroundZebesRidleyMatAnimJoint       // MatAnimJoint offset
+            &llGRZebesMapRidleyDObjDesc,         // DObj Setup attributes offset (?)
+            &llGRZebesMapRidleyMObjSub,           // MObjSub offset
+            &llGRZebesMapRidleyAnimJoint,         // AnimJoint offset
+            &llGRZebesMapRidleyMatAnimJoint       // MatAnimJoint offset
         }
     }
 };
@@ -463,10 +464,10 @@ EFGroundDesc dEFGroundYosterEffectDescs[/* */] =
             efGroundCommonProcUpdate,               // Proc Update
             gcDrawDObjTreeForGObj,                // Proc Render
 
-            &lEFGroundYosterBirdDObjSetup,          // DObj Setup attributes offset (?)
-            &lEFGroundYosterBirdMObjSub,            // MObjSub offset
-            &lEFGroundYosterBirdAnimJoint,          // AnimJoint offset
-            &lEFGroundYosterBirdMatAnimJoint        // MatAnimJoint offset
+            &llGRYosterMapBirdDObjDesc,          // DObj Setup attributes offset (?)
+            &llGRYosterMapBirdMObjSub,            // MObjSub offset
+            &llGRYosterMapBirdAnimJoint,          // AnimJoint offset
+            &llGRYosterMapBirdMatAnimJoint        // MatAnimJoint offset
         }
     },
     
@@ -502,10 +503,10 @@ EFGroundDesc dEFGroundYosterEffectDescs[/* */] =
             efGroundUpdateEffectYaw,                // Proc Update
             gcDrawDObjTreeForGObj,                // Proc Render
 
-            &lEFGroundYosterHeihoFruitSlowLDObjSetup,       // DObj Setup attributes offset (?)
-            &lEFGroundYosterHeihoFruitSlowMObjSub,    // MObjSub offset
-            &lEFGroundYosterHeihoFruitSlowAnimJoint,        // AnimJoint offset
-            &lEFGroundYosterHeihoFruitSlowMatAnimJoint      // MatAnimJoint offset
+            &llGRYosterMapHeihoFruitSlowLDObjDesc,       // DObj Setup attributes offset (?)
+            &llGRYosterMapHeihoFruitSlowMObjSub,    // MObjSub offset
+            &llGRYosterMapHeihoFruitSlowAnimJoint,        // AnimJoint offset
+            &llGRYosterMapHeihoFruitSlowMatAnimJoint      // MatAnimJoint offset
         }
     },
 
@@ -541,10 +542,10 @@ EFGroundDesc dEFGroundYosterEffectDescs[/* */] =
             efGroundUpdateEffectYaw,                // Proc Update
             gcDrawDObjTreeForGObj,                // Proc Render
 
-            &lEFGroundYosterHeihoFruitSlowRDObjSetup,       // DObj Setup attributes offset (?)
-            &lEFGroundYosterHeihoFruitSlowMObjSub,    // MObjSub offset
-            &lEFGroundYosterHeihoFruitSlowAnimJoint,        // AnimJoint offset
-            &lEFGroundYosterHeihoFruitSlowMatAnimJoint      // MatAnimJoint offset
+            &llGRYosterMapHeihoFruitSlowRDObjDesc,       // DObj Setup attributes offset (?)
+            &llGRYosterMapHeihoFruitSlowMObjSub,    // MObjSub offset
+            &llGRYosterMapHeihoFruitSlowAnimJoint,        // AnimJoint offset
+            &llGRYosterMapHeihoFruitSlowMatAnimJoint      // MatAnimJoint offset
         }
     },
 
@@ -580,10 +581,10 @@ EFGroundDesc dEFGroundYosterEffectDescs[/* */] =
             efGroundCommonProcUpdate,               // Proc Update
             gcDrawDObjTreeForGObj,                // Proc Render
 
-            &lEFGroundYosterHeihoSlowDObjSetup,     // DObj Setup attributes offset (?)
-            &lEFGroundYosterHeihoSlowMObjSub,       // MObjSub offset
-            &lEFGroundYosterHeihoSlowAnimJoint,     // AnimJoint offset
-            &lEFGroundYosterHeihoSlowMatAnimJoint   // MatAnimJoint offset
+            &llGRYosterMapHeihoSlowDObjDesc,     // DObj Setup attributes offset (?)
+            &llGRYosterMapHeihoSlowMObjSub,       // MObjSub offset
+            &llGRYosterMapHeihoSlowAnimJoint,     // AnimJoint offset
+            &llGRYosterMapHeihoSlowMatAnimJoint   // MatAnimJoint offset
         }
     },
 
@@ -619,10 +620,10 @@ EFGroundDesc dEFGroundYosterEffectDescs[/* */] =
             efGroundCommonProcUpdate,               // Proc Update
             gcDrawDObjTreeForGObj,                // Proc Render
 
-            &lEFGroundYosterHeihoFruitFastDObjSetup,        // DObj Setup attributes offset (?)
-            &lEFGroundYosterHeihoFruitFastMObjSub,    // MObjSub offset
-            &lEFGroundYosterHeihoFruitFastAnimJoint,        // AnimJoint offset
-            &lEFGroundYosterHeihoFruitFastMatAnimJoint      // MatAnimJoint offset
+            &llGRYosterMapHeihoFruitFastDObjDesc,        // DObj Setup attributes offset (?)
+            &llGRYosterMapHeihoFruitFastMObjSub,    // MObjSub offset
+            &llGRYosterMapHeihoFruitFastAnimJoint,        // AnimJoint offset
+            &llGRYosterMapHeihoFruitFastMatAnimJoint      // MatAnimJoint offset
         }
     },
 
@@ -658,10 +659,10 @@ EFGroundDesc dEFGroundYosterEffectDescs[/* */] =
             efGroundCommonProcUpdate,               // Proc Update
             gcDrawDObjTreeForGObj,                // Proc Render
 
-            &lEFGroundYosterHeihoFastDObjSetup,     // DObj Setup attributes offset (?)
-            &lEFGroundYosterHeihoFastMObjSub,       // MObjSub offset
-            &lEFGroundYosterHeihoFastAnimJoint,     // AnimJoint offset
-            &lEFGroundYosterHeihoFastMatAnimJoint   // MatAnimJoint offset
+            &llGRYosterMapHeihoFastDObjDesc,     // DObj Setup attributes offset (?)
+            &llGRYosterMapHeihoFastMObjSub,       // MObjSub offset
+            &llGRYosterMapHeihoFastAnimJoint,     // AnimJoint offset
+            &llGRYosterMapHeihoFastMatAnimJoint   // MatAnimJoint offset
         }
     }
 };
@@ -701,10 +702,10 @@ EFGroundDesc dEFGroundPupupuEffectDescs[/* */] =
             efGroundCommonProcUpdate,               // Proc Update
             gcDrawDObjTreeForGObj,                // Proc Render
 
-            &lEFGroundPupupuBrontoDObjSetup,        // DObj Setup attributes offset (?)
-            &lEFGroundPupupuBrontoMObjSub,          // MObjSub offset
-            &lEFGroundPupupuBrontoLAnimJoint,       // AnimJoint offset
-            &lEFGroundPupupuBrontoLMatAnimJoint     // MatAnimJoint offset
+            &llGRPupupuMapBrontoDObjDesc,        // DObj Setup attributes offset (?)
+            &llGRPupupuMapBrontoMObjSub,          // MObjSub offset
+            &llGRPupupuMapBrontoLAnimJoint,       // AnimJoint offset
+            &llGRPupupuMapBrontoLMatAnimJoint     // MatAnimJoint offset
         }
     },
 
@@ -740,10 +741,10 @@ EFGroundDesc dEFGroundPupupuEffectDescs[/* */] =
             efGroundCommonProcUpdate,               // Proc Update
             gcDrawDObjTreeForGObj,                // Proc Render
 
-            &lEFGroundPupupuBrontoDObjSetup,        // DObj Setup attributes offset (?)
-            &lEFGroundPupupuBrontoMObjSub,          // MObjSub offset
-            &lEFGroundPupupuBrontoRAnimJoint,       // AnimJoint offset
-            &lEFGroundPupupuBrontoRMatAnimJoint     // MatAnimJoint offset
+            &llGRPupupuMapBrontoDObjDesc,        // DObj Setup attributes offset (?)
+            &llGRPupupuMapBrontoMObjSub,          // MObjSub offset
+            &llGRPupupuMapBrontoRAnimJoint,       // AnimJoint offset
+            &llGRPupupuMapBrontoRMatAnimJoint     // MatAnimJoint offset
         }
     },
 
@@ -779,9 +780,9 @@ EFGroundDesc dEFGroundPupupuEffectDescs[/* */] =
             efGroundCommonProcUpdate,               // Proc Update
             gcDrawDObjTreeForGObj,                // Proc Render
 
-            &lEFGroundPupupuDededeDObjSetup,        // DObj Setup attributes offset (?)
+            &llGRPupupuMapDededeDObjDesc,        // DObj Setup attributes offset (?)
             0x0,                                    // MObjSub offset
-            &lEFGroundPupupuDededeFarAnimJoint,     // AnimJoint offset
+            &llGRPupupuMapDededeFarAnimJoint,     // AnimJoint offset
             0x0                                     // MatAnimJoint offset
         }
     },
@@ -818,9 +819,9 @@ EFGroundDesc dEFGroundPupupuEffectDescs[/* */] =
             efGroundCommonProcUpdate,               // Proc Update
             gcDrawDObjTreeForGObj,                // Proc Render
 
-            &lEFGroundPupupuDededeDObjSetup,        // DObj Setup attributes offset (?)
+            &llGRPupupuMapDededeDObjDesc,        // DObj Setup attributes offset (?)
             0x0,                                    // MObjSub offset
-            &lEFGroundPupupuDededeNearAnimJoint,    // AnimJoint offset
+            &llGRPupupuMapDededeNearAnimJoint,    // AnimJoint offset
             0x0                                     // MatAnimJoint offset
         }
     }
@@ -861,10 +862,10 @@ EFGroundDesc dEFGroundYamabukiEffectDescs[/* */] =
             efGroundCommonProcUpdate,               // Proc Update
             gcDrawDObjTreeForGObj,                // Proc Render
 
-            &lEFGroundYamabukiButterfreeDObjSetup,  // DObj Setup attributes offset (?)
-            &lEFGroundYamabukiButterfreeMObjSub,    // MObjSub offset
-            &lEFGroundYamabukiButterfreeAnimJoint,  // AnimJoint offset
-            &lEFGroundYamabukiButterfreeMatAnimJoint// MatAnimJoint offset
+            &llGRYamabukiMapButterfreeDObjDesc,  // DObj Setup attributes offset (?)
+            &llGRYamabukiMapButterfreeMObjSub,    // MObjSub offset
+            &llGRYamabukiMapButterfreeAnimJoint,  // AnimJoint offset
+            &llGRYamabukiMapButterfreeMatAnimJoint// MatAnimJoint offset
         }
     },
 
@@ -900,10 +901,10 @@ EFGroundDesc dEFGroundYamabukiEffectDescs[/* */] =
             efGroundCommonProcUpdate,               // Proc Update
             gcDrawDObjTreeForGObj,                // Proc Render
 
-            &lEFGroundYamabukiFireDObjSetup,        // DObj Setup attributes offset (?)
-            &lEFGroundYamabukiFireMObjSub,          // MObjSub offset
-            &lEFGroundYamabukiFireAnimJoint,        // AnimJoint offset
-            &lEFGroundYamabukiFireMatAnimJoint      // MatAnimJoint offset
+            &llGRYamabukiMapFireDObjDesc,        // DObj Setup attributes offset (?)
+            &llGRYamabukiMapFireMObjSub,          // MObjSub offset
+            &llGRYamabukiMapFireAnimJoint,        // AnimJoint offset
+            &llGRYamabukiMapFireMatAnimJoint      // MatAnimJoint offset
         }
     },
 
@@ -939,10 +940,10 @@ EFGroundDesc dEFGroundYamabukiEffectDescs[/* */] =
             efGroundCommonProcUpdate,               // Proc Update
             gcDrawDObjTreeForGObj,                // Proc Render
 
-            &lEFGroundYamabukiOnidrillDObjSetup,    // DObj Setup attributes offset (?)
-            &lEFGroundYamabukiOnidrillMObjSub,      // MObjSub offset
-            &lEFGroundYamabukiOnidrillAnimJoint,    // AnimJoint offset
-            &lEFGroundYamabukiOnidrillMatAnimJoint  // MatAnimJoint offset
+            &llGRYamabukiMapOnidrillDObjDesc,    // DObj Setup attributes offset (?)
+            &llGRYamabukiMapOnidrillMObjSub,      // MObjSub offset
+            &llGRYamabukiMapOnidrillAnimJoint,    // AnimJoint offset
+            &llGRYamabukiMapOnidrillMatAnimJoint  // MatAnimJoint offset
         }
     },
 
@@ -978,10 +979,10 @@ EFGroundDesc dEFGroundYamabukiEffectDescs[/* */] =
             efGroundCommonProcUpdate,               // Proc Update
             gcDrawDObjTreeForGObj,                // Proc Render
 
-            &lEFGroundYamabukiPoppoDObjSetup,       // DObj Setup attributes offset (?)
-            &lEFGroundYamabukiPoppoMObjSub,         // MObjSub offset
-            &lEFGroundYamabukiPoppoAnimJoint,       // AnimJoint offset
-            &lEFGroundYamabukiPoppoMatAnimJoint     // MatAnimJoint offset
+            &llGRYamabukiMapPoppoDObjDesc,       // DObj Setup attributes offset (?)
+            &llGRYamabukiMapPoppoMObjSub,         // MObjSub offset
+            &llGRYamabukiMapPoppoAnimJoint,       // AnimJoint offset
+            &llGRYamabukiMapPoppoMatAnimJoint     // MatAnimJoint offset
         }
     }
 };
@@ -993,7 +994,7 @@ EFGroundData dEFGroundDatas[/* */] =
     { 
         ARRAY_COUNT(dEFGroundCastleParams),         // Number of param structs
         dEFGroundCastleParams,                      // Param struct array pointer
-        &lEFGroundCastleDataStart,                  // ???
+        &llGRCastleMapDataStart,                  // ???
         dEFGroundCastleEffectDescs                  // Desc struct array pointer
     },
 
@@ -1001,7 +1002,7 @@ EFGroundData dEFGroundDatas[/* */] =
     { 
         ARRAY_COUNT(dEFGroundSectorParams),         // Number of param structs
         dEFGroundSectorParams,                      // Param struct array pointer
-        &lEFGroundSectorDataStart,                  // ???
+        &llGRSectorMapDataStart,                  // ???
         dEFGroundSectorEffectDescs                  // Desc struct array pointer
     },
 
@@ -1009,7 +1010,7 @@ EFGroundData dEFGroundDatas[/* */] =
     { 
         ARRAY_COUNT(dEFGroundJungleParams),         // Number of param structs
         dEFGroundJungleParams,                      // Param struct array pointer
-        &lEFGroundJungleDataStart,                  // ???
+        &llGRJungleMapDataStart,                  // ???
         dEFGroundJungleEffectDescs                  // Desc struct array pointer
     },
 
@@ -1017,7 +1018,7 @@ EFGroundData dEFGroundDatas[/* */] =
     { 
         ARRAY_COUNT(dEFGroundZebesParams),          // Number of param structs
         dEFGroundZebesParams,                       // Param struct array pointer
-        &lEFGroundZebesDataStart,                   // ???
+        &llGRZebesMapDataStart,                   // ???
         dEFGroundZebesEffectDescs                   // Desc struct array pointer
     },
 
@@ -1033,7 +1034,7 @@ EFGroundData dEFGroundDatas[/* */] =
     { 
         ARRAY_COUNT(dEFGroundYosterParams),         // Number of param structs
         dEFGroundYosterParams,                      // Param struct array pointer
-        &lEFGroundYosterDataStart,                  // ???
+        &llGRYosterMapDataStart,                  // ???
         dEFGroundYosterEffectDescs                  // Desc struct array pointer
     },
 
@@ -1041,7 +1042,7 @@ EFGroundData dEFGroundDatas[/* */] =
     { 
         ARRAY_COUNT(dEFGroundPupupuParams),         // Number of param structs
         dEFGroundPupupuParams,                      // Param struct array pointer
-        &lEFGroundPupupuDataStart,                  // ???
+        &llGRPupupuMapDataStart,                  // ???
         dEFGroundPupupuEffectDescs                  // Desc struct array pointer
     },
 
@@ -1049,7 +1050,7 @@ EFGroundData dEFGroundDatas[/* */] =
     { 
         ARRAY_COUNT(dEFGroundYamabukiParams),       // Number of param structs
         dEFGroundYamabukiParams,                    // Param struct array pointer
-        &lEFGroundYamabukiDataStart,                // ???
+        &llGRYamabukiMapDataStart,                // ???
         dEFGroundYamabukiEffectDescs                // Desc struct array pointer
     }
 };

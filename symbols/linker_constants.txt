@@ -4,9 +4,6 @@ lSYKseg1ValidateNBytes = 0x00000030;
 lSYSignValidateFunc = 0x00000000;
 lSYSignValidateNBytes = 0x00000040;
 
-lSC1PBonusStagePlatformSprite = 0x000000C0;
-lSC1PBonusStageTargetSprite = 0x000001D0;
-
 lGRBonus1MarioTargetsStart = 0x00001EB0;
 lGRBonus1MarioTargetsDObjDesc = 0x00002150;
 lGRBonus1MarioTargetsAnimJoint = 0x00002360;

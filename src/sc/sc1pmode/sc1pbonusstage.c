@@ -805,7 +805,7 @@ void sc1PBonusStageMakeTargetSprites(void)
 
 	for (i = 0; i < gGRCommonStruct.bonus1.target_count; i++)
 	{
-		sobj = lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, file, &lSC1PBonusStageTargetSprite));
+		sobj = lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, file, &llSC1PStageClear3TargetSprite));
 		sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
 
 		sobj->pos.x = -(sobj->sprite.width / 2) + (((sobj->sprite.width + 3) * i) + 30);
@@ -828,7 +828,7 @@ void sc1PBonusStageMakePlatformSprites(void)
 
 	for (i = 0; i < gGRCommonStruct.bonus2.platform_count; i++)
 	{
-		sobj = lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, file, &lSC1PBonusStagePlatformSprite));
+		sobj = lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, file, &llSC1PStageClear3PlatformSprite));
 		sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
 
 		sobj->pos.x = -(sobj->sprite.width / 2) + (((sobj->sprite.width + 3) * i) + 30);

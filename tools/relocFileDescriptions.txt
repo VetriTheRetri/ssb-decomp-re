@@ -92,6 +92,7 @@
 -094: StagePokemon
 -095: StageCastle
 -099: StageSector
+-136: Bonus2Common
 -151: SC1PStageClear3
 -161: FoxSpecial3
 # FTManagerCommon contains dobj, mobjsub, and animjoint for effects
@@ -1684,6 +1685,26 @@ Sprite - 0x26c88
 [119]
 Sprite 0x26c88 0x26c88
 
+[136]
+DObjDesc PlatformSmall 0x3DA8
+AnimJoint PlatformSmall 0x3E60
+MObjSub PlatformSmall 0x3720
+MatAnimJoint PlatformSmall 0x3F00
+DObjDesc PlatformMedium 0x45D8
+AnimJoint PlatformMedium 0x4690
+MObjSub PlatformMedium 0x3F70
+MatAnimJoint PlatformMedium 0x4730
+DObjDesc PlatformLarge 0x4E08
+AnimJoint PlatformLarge 0x4EC0
+MObjSub PlatformLarge 0x47A0
+MatAnimJoint PlatformLarge 0x4F70
+DObjDesc BoardedPlatformSmall 0x5520
+AnimJoint BoardedPlatformSmall 0x55D0
+DObjDesc BoardedPlatformMedium 0x5B80
+AnimJoint BoardedPlatformMedium 0x5C30
+DObjDesc BoardedPlatformLarge 0x61E0
+AnimJoint BoardedPlatformLarge 0x6290
+
 [151]
 Sprite Platform 0xc0
 Sprite Target 0x1d0
@@ -2326,51 +2347,91 @@ MapHeader - 0x14
 
 [271]
 MapHeader - 0x0
+TargetsStart - 0x1EB0
+DObjDesc Targets 0x2150
+AnimJoint Targets 0x2360
 
 [272]
 MapHeader - 0x0
+TargetsStart - 0x2068
+DObjDesc Targets 0x24B0
+AnimJoint Targets 0x26C0
 
 [273]
 MapHeader - 0x0
+TargetsStart - 0x1F20
+DObjDesc Targets 0x2250
+AnimJoint Targets 0x2460
 
 [274]
 MapHeader - 0x0
+TargetsStart - 0x1868
+DObjDesc Targets 0x1B30
+AnimJoint Targets 0x1D40
 
 [275]
 MapHeader - 0x0
+TargetsStart - 0x1BA0
+DObjDesc Targets 0x2020
+AnimJoint Targets 0x2230
 
 [276]
 MapHeader - 0x0
+TargetsStart - 0x2378
+DObjDesc Targets 0x2770
+AnimJoint Targets 0x2980
 
 [277]
 MapHeader - 0x0
+TargetsStart - 0x2D68
+DObjDesc Targets 0x3290
+AnimJoint Targets 0x34A0
 
 [278]
 MapHeader - 0x0
+TargetsStart - 0x1888
+DObjDesc Targets 0x1B70
+AnimJoint Targets 0x1D80
 
 [279]
 MapHeader - 0x0
+TargetsStart - 0x2150
+DObjDesc Targets 0x2510
+AnimJoint Targets 0x2720
 
 [280]
 MapHeader - 0x0
+TargetsStart - 0x2658
+DObjDesc Targets 0x2A70
+AnimJoint Targets 0x2C80
 
 [281]
 MapHeader - 0x0
+TargetsStart - 0x1FF8
+DObjDesc Targets 0x23A0
+AnimJoint Targets 0x25B0
 
 [282]
 MapHeader - 0x0
+TargetsStart - 0x2940
+DObjDesc Targets 0x2E60
+AnimJoint Targets 0x3070
 
 [283]
 MapHeader - 0x0
 
 [284]
 MapHeader - 0x0
+DObjDesc Bumpers 0xE160
+AnimJoint Bumpers 0xE350
 
 [285]
 MapHeader - 0x0
 
 [286]
 MapHeader - 0x0
+DObjDesc Bumpers 0x2910
+AnimJoint Bumpers 0x29C0
 
 [287]
 MapHeader - 0x0
@@ -2386,15 +2447,21 @@ MapHeader - 0x0
 
 [291]
 MapHeader - 0x0
+DObjDesc Bumpers 0x3920
+AnimJoint Bumpers 0x3A60
 
 [292]
 MapHeader - 0x0
 
 [293]
 MapHeader - 0x0
+DObjDesc Bumpers 0x4FE0
+AnimJoint Bumpers 0x5120
 
 [294]
 MapHeader - 0x0
+DObjDesc Bumpers 0x3FE0
+AnimJoint Bumpers 0x4090
 
 [295]
 MapHeader - 0x0

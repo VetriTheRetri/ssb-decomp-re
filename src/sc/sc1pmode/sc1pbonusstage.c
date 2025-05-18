@@ -20,86 +20,86 @@ GRBonusTarget dSC1PBonusStageTargetDescs[/* */] =
 {
 	// Bonus1Mario
 	{ 
-		&lGRBonus1MarioTargetsStart,
-		&lGRBonus1MarioTargetsDObjDesc,
-		&lGRBonus1MarioTargetsAnimJoint
+		&llGRBonus1MarioMapTargetsStart,
+		&llGRBonus1MarioMapTargetsDObjDesc,
+		&llGRBonus1MarioMapTargetsAnimJoint
 	},
 
 	// Bonus1Fox
 	{ 
-		&lGRBonus1FoxTargetsStart,
-		&lGRBonus1FoxTargetsDObjDesc,
-		&lGRBonus1FoxTargetsAnimJoint,
+		&llGRBonus1FoxMapTargetsStart,
+		&llGRBonus1FoxMapTargetsDObjDesc,
+		&llGRBonus1FoxMapTargetsAnimJoint,
 	},
 
 	// Bonus1Donkey
 	{ 
-		&lGRBonus1DonkeyTargetsStart,
-		&lGRBonus1DonkeyTargetsDObjDesc,
-		&lGRBonus1DonkeyTargetsAnimJoint
+		&llGRBonus1DonkeyMapTargetsStart,
+		&llGRBonus1DonkeyMapTargetsDObjDesc,
+		&llGRBonus1DonkeyMapTargetsAnimJoint
 	},
 
 	// Bonus1Samus
 	{ 
-		&lGRBonus1SamusTargetsStart,
-		&lGRBonus1SamusTargetsDObjDesc,
-		&lGRBonus1SamusTargetsAnimJoint
+		&llGRBonus1SamusMapTargetsStart,
+		&llGRBonus1SamusMapTargetsDObjDesc,
+		&llGRBonus1SamusMapTargetsAnimJoint
 	},
 
 	// Bonus1Luigi
 	{ 
-		&lGRBonus1LuigiTargetsStart,
-		&lGRBonus1LuigiTargetsDObjDesc,
-		&lGRBonus1LuigiTargetsAnimJoint
+		&llGRBonus1LuigiMapTargetsStart,
+		&llGRBonus1LuigiMapTargetsDObjDesc,
+		&llGRBonus1LuigiMapTargetsAnimJoint
 	},
 
 	// Bonus1Link
 	{ 
-		&lGRBonus1LinkTargetsStart,
-		&lGRBonus1LinkTargetsDObjDesc,
-		&lGRBonus1LinkTargetsAnimJoint
+		&llGRBonus1LinkMapTargetsStart,
+		&llGRBonus1LinkMapTargetsDObjDesc,
+		&llGRBonus1LinkMapTargetsAnimJoint
 	},
 
 	// Bonus1Yoshi
 	{ 
-		&lGRBonus1YoshiTargetsStart,
-		&lGRBonus1YoshiTargetsDObjDesc,
-		&lGRBonus1YoshiTargetsAnimJoint
+		&llGRBonus1YoshiMapTargetsStart,
+		&llGRBonus1YoshiMapTargetsDObjDesc,
+		&llGRBonus1YoshiMapTargetsAnimJoint
 	},
 
 	// Bonus1Captain
 	{ 
-		&lGRBonus1CaptainTargetsStart,
-		&lGRBonus1CaptainTargetsDObjDesc,
-		&lGRBonus1CaptainTargetsAnimJoint
+		&llGRBonus1CaptainMapTargetsStart,
+		&llGRBonus1CaptainMapTargetsDObjDesc,
+		&llGRBonus1CaptainMapTargetsAnimJoint
 	},
 
 	// Bonus1Kirby
 	{ 
-		&lGRBonus1KirbyTargetsStart,
-		&lGRBonus1KirbyTargetsDObjDesc,
-		&lGRBonus1KirbyTargetsAnimJoint
+		&llGRBonus1KirbyMapTargetsStart,
+		&llGRBonus1KirbyMapTargetsDObjDesc,
+		&llGRBonus1KirbyMapTargetsAnimJoint
 	},
 
 	// Bonus1Pikachu
 	{ 
-		&lGRBonus1PikachuTargetsStart,
-		&lGRBonus1PikachuTargetsDObjDesc,
-		&lGRBonus1PikachuTargetsAnimJoint
+		&llGRBonus1PikachuMapTargetsStart,
+		&llGRBonus1PikachuMapTargetsDObjDesc,
+		&llGRBonus1PikachuMapTargetsAnimJoint
 	},
 
 	// Bonus1Purin
 	{ 
-		&lGRBonus1PurinTargetsStart,
-		&lGRBonus1PurinTargetsDObjDesc,
-		&lGRBonus1PurinTargetsAnimJoint
+		&llGRBonus1PurinMapTargetsStart,
+		&llGRBonus1PurinMapTargetsDObjDesc,
+		&llGRBonus1PurinMapTargetsAnimJoint
 	},
 
 	// Bonus1Ness
 	{ 
-		&lGRBonus1NessTargetsStart,
-		&lGRBonus1NessTargetsDObjDesc,
-		&lGRBonus1NessTargetsAnimJoint
+		&llGRBonus1NessMapTargetsStart,
+		&llGRBonus1NessMapTargetsDObjDesc,
+		&llGRBonus1NessMapTargetsAnimJoint
 	}
 };
 
@@ -114,8 +114,8 @@ intptr_t dSC1PBonusStageBumperDescs[/* */][2] =
 
 	// Fox
 	{
-		&lGRBonus2FoxBumpersDObjDesc,
-		&lGRBonus2FoxBumpersAnimJoint
+		&llGRBonus2FoxMapBumpersDObjDesc,
+		&llGRBonus2FoxMapBumpersAnimJoint
 	},
 
 	// Donkey
@@ -126,8 +126,8 @@ intptr_t dSC1PBonusStageBumperDescs[/* */][2] =
 
 	// Samus
 	{
-		&lGRBonus2SamusBumpersDObjDesc,
-		&lGRBonus2SamusBumpersAnimJoint
+		&llGRBonus2SamusMapBumpersDObjDesc,
+		&llGRBonus2SamusMapBumpersAnimJoint
 	},
 
 	// Luigi
@@ -156,8 +156,8 @@ intptr_t dSC1PBonusStageBumperDescs[/* */][2] =
 
 	// Kirby
 	{
-		&lGRBonus2KirbyBumpersDObjDesc,
-		&lGRBonus2KirbyBumpersAnimJoint
+		&llGRBonus2KirbyMapBumpersDObjDesc,
+		&llGRBonus2KirbyMapBumpersAnimJoint
 	},
 
 	// Pikachu
@@ -168,14 +168,14 @@ intptr_t dSC1PBonusStageBumperDescs[/* */][2] =
 
 	// Purin
 	{
-		&lGRBonus2PurinBumpersDObjDesc,
-		&lGRBonus2PurinBumpersAnimJoint
+		&llGRBonus2PurinMapBumpersDObjDesc,
+		&llGRBonus2PurinMapBumpersAnimJoint
 	},
 
 	// Ness
 	{
-		&lGRBonus2NessBumpersDObjDesc,
-		&lGRBonus2NessBumpersAnimJoint
+		&llGRBonus2NessMapBumpersDObjDesc,
+		&llGRBonus2NessMapBumpersAnimJoint
 	}
 };
 
@@ -184,26 +184,26 @@ intptr_t dSC1PBonusStagePlatformDescs[/* */][4] =
 {
 	// Small
 	{
-		&lGRBonus2PlatformSmallDObjDesc,
-		&lGRBonus2PlatformSmallAnimJoint,
-		&lGRBonus2PlatformSmallMObjSub,
-		&lGRBonus2PlatformSmallMatAnimJoint
+		&llBonus2CommonPlatformSmallDObjDesc,
+		&llBonus2CommonPlatformSmallAnimJoint,
+		&llBonus2CommonPlatformSmallMObjSub,
+		&llBonus2CommonPlatformSmallMatAnimJoint
 	},
 
 	// Medium
 	{
-		&lGRBonus2PlatformMediumDObjDesc,
-		&lGRBonus2PlatformMediumAnimJoint,
-		&lGRBonus2PlatformMediumMObjSub,
-		&lGRBonus2PlatformMediumMatAnimJoint
+		&llBonus2CommonPlatformMediumDObjDesc,
+		&llBonus2CommonPlatformMediumAnimJoint,
+		&llBonus2CommonPlatformMediumMObjSub,
+		&llBonus2CommonPlatformMediumMatAnimJoint
 	},
 
 	// Large
 	{
-		&lGRBonus2PlatformLargeDObjDesc,
-		&lGRBonus2PlatformLargeAnimJoint,
-		&lGRBonus2PlatformLargeMObjSub,
-		&lGRBonus2PlatformLargeMatAnimJoint
+		&llBonus2CommonPlatformLargeDObjDesc,
+		&llBonus2CommonPlatformLargeAnimJoint,
+		&llBonus2CommonPlatformLargeMObjSub,
+		&llBonus2CommonPlatformLargeMatAnimJoint
 	}
 };
 
@@ -212,20 +212,20 @@ intptr_t dSC1PBonusStageBoardedPlatformDescs[/* */][2] =
 {
 	// Small
 	{
-		&lGRBonus2BoardedPlatformSmallDObjDesc,
-		&lGRBonus2BoardedPlatformSmallAnimJoint
+		&llBonus2CommonBoardedPlatformSmallDObjDesc,
+		&llBonus2CommonBoardedPlatformSmallAnimJoint
 	},
 
 	// Medium
 	{
-		&lGRBonus2BoardedPlatformMediumDObjDesc,
-		&lGRBonus2BoardedPlatformMediumAnimJoint
+		&llBonus2CommonBoardedPlatformMediumDObjDesc,
+		&llBonus2CommonBoardedPlatformMediumAnimJoint
 	},
 
 	// Large
 	{
-		&lGRBonus2BoardedPlatformLargeDObjDesc,
-		&lGRBonus2BoardedPlatformLargeAnimJoint
+		&llBonus2CommonBoardedPlatformLargeDObjDesc,
+		&llBonus2CommonBoardedPlatformLargeAnimJoint
 	}
 };
 
@@ -512,7 +512,7 @@ void sc1PBonusStageMakeBonus1Ground(void)
 // 0x8018D5E8
 void sc1PBonusStageBonus2LoadFile(void)
 {
-	gGRCommonStruct.bonus2.file = lbRelocGetExternHeapFile((u32)&ll_136_FileID, syTaskmanMalloc(lbRelocGetFileSize((u32)&ll_136_FileID), 0x10));
+	gGRCommonStruct.bonus2.file = lbRelocGetExternHeapFile((u32)&llBonus2CommonFileID, syTaskmanMalloc(lbRelocGetFileSize((u32)&llBonus2CommonFileID), 0x10));
 }
 
 // 0x8018D62C

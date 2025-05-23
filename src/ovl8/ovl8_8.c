@@ -833,7 +833,37 @@ void func_ovl8_8037BF34(GObj* arg0)
 }
 
 // 0x8037BF68
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037BF68.s")
+s32 func_ovl8_8037BF68(s32 user_data, Sprite* sprite, void (*proc)(GObj*), void (*proc_display)(GObj*), GObj **camera_out, GObj **sprite_out, sb32 low_priority)
+{
+	GObj *camera_gobj;
+	GObj *sprite_gobj;
+
+	camera_gobj = gcMakeCameraGObj(-0x1FF, gcDefaultProcRun, 0, 0x80000000, func_80018300, !low_priority ? 2 : 1, 0x8000000000000000ULL, 0, 1, 0, NULL, 1, 0);
+	if (camera_gobj == NULL)
+		return -1;
+
+	((CObj*)camera_gobj->obj)->flags = 8;
+	camera_gobj->camera_tag = camera_gobj;
+	if (!low_priority)
+	{
+		sprite_gobj = gcMakeGObjSPBefore(-0x1FD, NULL, 0x1F, 1);
+		if (sprite_gobj == NULL)
+			return -1;
+	}
+	else
+	{
+		sprite_gobj = gcMakeGObjSPBefore(-0x1FC, NULL, 0x1F, 2);
+		if (sprite_gobj == NULL)
+			return -1;
+	}
+	gcAddGObjDisplay(sprite_gobj, proc_display, 0x3F, 1, camera_gobj);
+	gcAddSObjForGObj(sprite_gobj, sprite);
+	gcAddGObjProcess(sprite_gobj, proc, 0, 1);
+	sprite_gobj->user_data.p = user_data;
+	*camera_out = camera_gobj;
+	*sprite_out = sprite_gobj;
+	return 0;
+}
 
 // 0x8037C0CC
 dbUnknownLinkStruct* func_ovl8_8037C0CC()

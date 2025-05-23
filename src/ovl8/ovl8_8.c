@@ -26,7 +26,7 @@ extern s32 D_ovl8_8038EE60;
 extern s32 D_ovl8_8038EE64;
 extern s32 D_ovl8_8038EE68[];
 extern s32 D_ovl8_8038EE70[];
-extern s32 D_8038EE90_1AB6E0[];
+extern Gfx D_8038EE90_1AB6E0[];
 
 // DATA
 s32 D_ovl8_80387CA0[] = { 0xDF000000, 0x00000000 };
@@ -66,19 +66,37 @@ s32 D_ovl8_80387CA8[]  =
 	0xFFFFFFFF, 0xFC40FFFF, 0xFC40FC00, 0xFC00FC00
 };
 
-s32 D_ovl8_80387EA8[] =
+Bitmap D_ovl8_80387EA8 =
 {
-	0x00100010, 0x00000000, D_ovl8_80387CA8, 0x00100000
+	16, 16,
+	0, 0,
+	D_ovl8_80387CA8,
+	16, 0
 };
 
-s32 D_ovl8_80387EB8[] =
+Sprite D_ovl8_80387EB8 =
 {
-	0x00000000, 0x00100010, 0x3F800000, 0x3F800000,
-	0x00000000, 0x02001234, 0xFFFFFFFF, 0x00000000,
-	0x00000000, 0x00000001, 0x00010024, 0x00100010,
-	0x00020000, D_ovl8_80387EA8, D_8038EE90_1AB6E0, 0x00000000,
-	0x00000000, 0x00000000
+	0, 0,
+	16, 16,
+	1.0, 1.0,
+	0, 0,
+	0x200,
+	0x1234,
+	0xff, 0xff, 0xff, 0xff,
+	0, 0,
+	NULL,
+	0, 1,
+	1, 0x24,
+	16, 16,
+	G_IM_FMT_RGBA,
+	G_IM_SIZ_16b,
+	&D_ovl8_80387EA8,
+	D_8038EE90_1AB6E0,
+	NULL,
+	0, 0
 };
+
+s32 D_ovl8_80387EFC = 0;
 
 char D_ovl8_80387F00[] = "1";
 char D_ovl8_80387F04[] = "2";
@@ -693,7 +711,7 @@ void func_ovl8_8037BB78()
 }
 
 // 0x8037BBF0
-s32 func_ovl8_8037BBF0(dbUnknown8_S28* arg0, s32* arg1, u16 arg2, u16 arg3)
+s32 func_ovl8_8037BBF0(dbUnknown8_S28* arg0, Sprite* sprite, u16 arg2, u16 arg3)
 {
 	dbTestMenu *temp_v0;
 	s32 sp20;
@@ -703,14 +721,14 @@ s32 func_ovl8_8037BBF0(dbUnknown8_S28* arg0, s32* arg1, u16 arg2, u16 arg3)
 
 	if (temp_v0 != NULL)
 	{
-		func_ovl8_803759F0(temp_v0, 0, arg0, arg1);
+		func_ovl8_803759F0(temp_v0, 0, arg0, sprite);
 		var_v1 = temp_v0;
 	}
 	else
 		var_v1 = NULL;
 
 	D_8038EFCC_1AB81C = var_v1;
-	sp20 = func_ovl8_803723AC(D_8038EFCC_1AB81C, D_8038EFCC_1AB81C, arg1, func_ovl8_8037BEC8, func_ovl8_8037BF34, 0);
+	sp20 = func_ovl8_803723AC(D_8038EFCC_1AB81C, D_8038EFCC_1AB81C, sprite, func_ovl8_8037BEC8, func_ovl8_8037BF34, FALSE);
 	func_ovl8_80375B8C(D_8038EFCC_1AB81C, arg2, arg3);
 
 	if (sp20 != 0)
@@ -734,7 +752,7 @@ s32 func_ovl8_8037BCB8()
 	sp18 = D_ovl8_8038A144;
 	sp18.str = 'Arow'; // 0x41726F77
 
-	return func_ovl8_8037BBF0(&sp18, D_ovl8_80387EB8, 4, 1);
+	return func_ovl8_8037BBF0(&sp18, &D_ovl8_80387EB8, 4, 1);
 }
 
 // 0x8037BD44

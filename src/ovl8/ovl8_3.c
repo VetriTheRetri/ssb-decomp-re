@@ -165,11 +165,11 @@ void func_ovl8_80372360(dbMenuSprite *mnsprite, Sprite *arg1)
 	sobj->sprite = *arg1;
 }
 
-void* func_ovl8_803723AC(dbMenuSprite *arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5)
+void* func_ovl8_803723AC(dbMenuSprite *arg0, s32 user_data, Sprite* sprite, void (*proc)(GObj*), void (*proc_display)(GObj*), sb32 low_priority)
 {
 	dbMenuSprite *mnsprite;
 	SObj *sobj;
-	void *thing = func_ovl8_8037BF68(arg1, arg2, arg3, arg4, arg0, (uintptr_t)arg0 + 4, arg5);
+	void *thing = func_ovl8_8037BF68(user_data, sprite, proc, proc_display, &arg0->unk_dbmenusprite_0x0, &arg0->unk_dbmenusprite_0x4, low_priority);
 
 	mnsprite = arg0->unk_dbmenusprite_0x10;
 	mnsprite->unk_dbmenusprite_0x48 = arg0->unk_dbmenusprite_0x4;

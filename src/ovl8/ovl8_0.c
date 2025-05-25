@@ -126,7 +126,7 @@ s32 func_ovl8_8037169C(s32 arg0)
 	return func_ovl8_803714B4((arg0 + 0xF) & ~3) != 0;
 }
 
-dbUnknownLink** func_ovl8_803716D8(u32 arg0) 
+dbUnknownLink** func_ovl8_803716D8(u32 arg0)
 {
 	dbUnknownLink* temp_v0;
 	u32 temp_a1;

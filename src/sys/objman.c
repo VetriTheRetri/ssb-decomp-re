@@ -41,21 +41,21 @@ u32 sGCMatrixesActiveNum;
 void (*sGCDrawFuncEject)(DObjVec*);
 
 AObj *sGCAnimHead;
-u32 sGCAnimsActive;
+u32 sGCAnimsActiveNum;
 
 MObj *sGCMaterialHead;
 u32 sGCMaterialsActive;
 
 DObj *sGCDrawHead;
-u32 sGCDrawsActive;
+u32 sGCDrawsActiveNum;
 u16 sGCDrawSize;
 
 SObj *sGCSpriteHead;
-u32 sGCSpritesActive;
+u32 sGCSpritesActiveNum;
 u16 sGCSpriteSize;
 
 CObj *sGCCameraHead;
-u32 sGCCamerasActive;
+u32 sGCCamerasActiveNum;
 u16 sGCCameraSize;
 
 GObj *gGCCurrentCommon;
@@ -616,7 +616,7 @@ AObj* gcGetAObjSetNextAlloc(void)
 	}
 	aobj = sGCAnimHead;
 	sGCAnimHead = sGCAnimHead->next;
-	sGCAnimsActive++;
+	sGCAnimsActiveNum++;
 
 	return aobj;
 }
@@ -646,7 +646,7 @@ void gcAppendAObjToCamera(CObj *cobj, AObj *aobj)
 void gcSetAObjPrevAlloc(AObj *aobj)
 {
 	aobj->next = sGCAnimHead;
-	sGCAnimsActive--;
+	sGCAnimsActiveNum--;
 	sGCAnimHead = aobj;
 }
 
@@ -700,7 +700,7 @@ DObj* gcGetDObjSetNextAlloc(void)
 	}
 	dobj = sGCDrawHead;
 	sGCDrawHead = sGCDrawHead->alloc_free;
-	sGCDrawsActive++;
+	sGCDrawsActiveNum++;
 
 	return dobj;
 }
@@ -709,7 +709,7 @@ DObj* gcGetDObjSetNextAlloc(void)
 void gcSetDObjPrevAlloc(DObj *dobj)
 {
 	dobj->alloc_free = sGCDrawHead;
-	sGCDrawsActive--;
+	sGCDrawsActiveNum--;
 	sGCDrawHead = dobj;
 }
 
@@ -730,7 +730,7 @@ SObj* gcGetSObjSetNextAlloc(void)
 	}
 	sobj = sGCSpriteHead;
 	sGCSpriteHead = sGCSpriteHead->alloc_free;
-	sGCSpritesActive++;
+	sGCSpritesActiveNum++;
 
 	return sobj;
 }
@@ -739,7 +739,7 @@ SObj* gcGetSObjSetNextAlloc(void)
 void gcSetSObjPrevAlloc(SObj *sobj)
 {
 	sobj->alloc_free = sGCSpriteHead;
-	sGCSpritesActive--;
+	sGCSpritesActiveNum--;
 	sGCSpriteHead = sobj;
 }
 
@@ -762,7 +762,7 @@ CObj *gcGetCObjSetNextAlloc(void)
 
 	cobj = sGCCameraHead;
 	sGCCameraHead = sGCCameraHead->next;
-	sGCCamerasActive++;
+	sGCCamerasActiveNum++;
 
 	return cobj;
 }
@@ -771,7 +771,7 @@ CObj *gcGetCObjSetNextAlloc(void)
 void gcSetCObjPrevAlloc(CObj *cobj)
 {
 	cobj->next = sGCCameraHead;
-	sGCCamerasActive--;
+	sGCCamerasActiveNum--;
 	sGCCameraHead = cobj;
 }
 
@@ -2239,7 +2239,7 @@ void gcRunAll(void)
 }
 
 // 0x8000A6E0
-void gcSetupObjectManager(GCSetup *setup)
+void gcSetupObjman(GCSetup *setup)
 {
 	s32 i;
 
@@ -2421,8 +2421,7 @@ void gcSetupObjectManager(GCSetup *setup)
 	{
 		gGCCommonDLLinks[i] = sGCCommonDLLinks[i] = NULL;
 	}
-
-	func_80014430();
+	gcInitDLs();
 	osCreateMesgQueue(&gGCMesgQueue, sGCMesgs, ARRAY_COUNT(sGCMesgs));
 
 	sGCStacksActiveNum 	=
@@ -2430,10 +2429,10 @@ void gcSetupObjectManager(GCSetup *setup)
 	sGCProcessesActive 	=
 	sGCCommonsActiveNum =
 	sGCMatrixesActiveNum=
-	sGCAnimsActive 		=
-	sGCDrawsActive 		=	
-	sGCSpritesActive 	=
-	sGCCamerasActive 	= 0;
+	sGCAnimsActiveNum 	=
+	sGCDrawsActiveNum 	=	
+	sGCSpritesActiveNum =
+	sGCCamerasActiveNum = 0;
 
 	sGCProcessFunction = NULL;
 

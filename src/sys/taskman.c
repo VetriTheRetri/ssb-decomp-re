@@ -1272,7 +1272,7 @@ void syTaskmanStartTask(SYTaskmanSetup *tsetup)
 	gcsetup.cobjs_num = tsetup->cobjs_num;
 	gcsetup.cobj_size = tsetup->cobj_size;
 
-	gcSetupObjectManager(&gcsetup);
+	gcSetupObjman(&gcsetup);
 
 	sSYTaskmanDefaultFunction.task_update = syTaskmanCommonTaskUpdate;
 	sSYTaskmanDefaultFunction.task_draw = syTaskmanCommonTaskDraw;

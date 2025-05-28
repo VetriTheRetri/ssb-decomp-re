@@ -1,4 +1,4 @@
-#include <sys/objmanager.h>
+#include <sys/objman.h>
 #include <sys/develop.h>
 #include <db/debug.h>
 

@@ -495,6 +495,7 @@ void ftNessSpecialHiCollideWallPhysics(GObj *fighter_gobj, MPCollData *coll_data
         }
         angle_new = ((angle_new + F_CST_DTOR32(180.0F)) < angle_old) ? (angle_new + F_CST_DTOR32(90.0F)) : (angle_new + F_CST_DTOR32(-90.0F));
     }
+    // WARNING: Even though this function only runs if Ness collides with an LWALL/RWALL, angle_new is uninitialized if both conditions fail somehow. Cosmic bit-flip?
     syVectorRotate3D(&fp->physics.vel_air, SYVECTOR_AXIS_Z, angle_new - (fp->status_vars.ness.specialhi.pkjibaku_angle * fp->lr));
 
     fp->status_vars.ness.specialhi.pkjibaku_angle = syUtilsArcTan2(fp->physics.vel_air.y, fp->physics.vel_air.x * fp->lr);

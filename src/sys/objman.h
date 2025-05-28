@@ -141,6 +141,6 @@ extern void gcDrawAll(void);
 extern GObj *gcRunGObj(GObj *gobj);
 extern GObjProcess *gcRunGObjProcess(GObjProcess *gobjproc);
 extern void gcRunAll(void);
-extern void gcSetupObjectManager(GCSetup *setup);
+extern void gcSetupObjman(GCSetup *setup);
 
 #endif

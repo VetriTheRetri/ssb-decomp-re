@@ -1680,7 +1680,7 @@ void gcDrawDObjDLLinksForGObj(GObj *gobj)
 }
 
 // 0x80014430
-void func_80014430(void)
+void gcInitDLs(void)
 {
     s32 i;
 

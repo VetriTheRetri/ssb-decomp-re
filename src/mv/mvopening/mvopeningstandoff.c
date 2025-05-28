@@ -33,7 +33,7 @@ SYTaskmanSetup dMVOpeningStandoffTaskmanSetup =
     {
         0,                              // ???
         gcRunAll,                       // Update function
-        gcDrawAll,                  // Frame draw function
+        gcDrawAll,                      // Frame draw function
         &ovl47_BSS_END,                 // Allocatable memory pool start
         0,                              // Allocatable memory pool size
         1,                              // ???

@@ -415,7 +415,7 @@ gcDrawAll = 0x8000A340;
 gcRunGObj = 0x8000A40C;
 gcRunGObjProcess = 0x8000A49C;
 gcRunAll = 0x8000A5E4;
-gcSetupObjectManager = 0x8000A6E0;
+gcSetupObjman = 0x8000A6E0;
 // bss
 sGCThreadHead = 0x800466B0;
 sGCThreadsActive = 0x800466B4;
@@ -484,7 +484,7 @@ gcDrawDObjTree = 0x80013EF8;
 gcDrawDObjTreeForGObj = 0x80014038;
 gcDrawDObjDLLinks = 0x80014068;
 gcDrawDObjDLLinksForGObj = 0x800143FC;
-func_80014430 = 0x80014430;
+gcInitDLs = 0x80014430;
 gcDrawDObjTreeDLLinks = 0x8001445C;
 gcDrawDObjTreeDLLinksForGObj = 0x80014768;
 gcGetDObjDistFromEye = 0x80014798;

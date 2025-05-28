@@ -3155,9 +3155,9 @@ void ifCommonBattleSetUpdateInterface(void)
 // 0x80114800
 void ifCommonSetMaxNumGObj(void)
 {
-    size_t free_space = (uintptr_t)gSYTaskmanGeneralHeap.end - (uintptr_t)gSYTaskmanGeneralHeap.ptr;
+    size_t free_space = (size_t) ((uintptr_t)gSYTaskmanGeneralHeap.end - (uintptr_t)gSYTaskmanGeneralHeap.ptr);
 
-    if ((gcGetMaxNumGObj() == -1) && (free_space < (25 * 1024)))
+    if ((gcGetMaxNumGObj() == -1) && (free_space < 25 * 1024))
     {
         gcSetMaxNumGObj(gcGetGObjsActiveNum());
     }

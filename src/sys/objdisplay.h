@@ -46,7 +46,7 @@ extern void gcDrawDObjTree(DObj *this_dobj);
 extern void gcDrawDObjTreeForGObj(GObj *gobj);
 extern void gcDrawDObjDLLinks(DObj *dobj, DObjDLLink *dl_link);
 extern void gcDrawDObjDLLinksForGObj(GObj *gobj);
-extern void func_80014430(void);
+extern void gcInitDLs(void);
 extern void gcDrawDObjTreeDLLinks(DObj *dobj);
 extern void gcDrawDObjTreeDLLinksForGObj(GObj *gobj);
 extern f32 gcGetDObjDistFromEye(DObj *dobj);

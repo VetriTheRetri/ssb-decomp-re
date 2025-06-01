@@ -1,9 +1,3 @@
-lSYKseg1ValidateFunc = 0x00000000;
-lSYKseg1ValidateNBytes = 0x00000030;
-
-lSYSignValidateFunc = 0x00000000;
-lSYSignValidateNBytes = 0x00000040;
-
 lEFCommonParticleScriptBankLo = efcommon_scb_ROM_START;
 lEFCommonParticleScriptBankHi = efcommon_scb_ROM_END;
 lEFCommonParticleTextureBankLo = efcommon_txb_ROM_START;

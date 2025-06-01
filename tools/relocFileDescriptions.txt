@@ -2100,6 +2100,14 @@ Sprite BButton 0x1d948
 Sprite ZButton 0x1df58
 Sprite PlusSymbol 0x1e018
 
+[199]
+Func - 0x0
+NBytes - 0x30
+
+[200]
+Func - 0x0
+NBytes - 0x40
+
 [208]
 FTSpecialColl LwReflector 0x19B0
 

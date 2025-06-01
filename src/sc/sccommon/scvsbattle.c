@@ -139,10 +139,10 @@ void scVSBattleStartBattle(void)
 	if (!(gSCManagerBackupData.error_flags & LBBACKUP_ERROR_1PGAMEMARIO) && (gSCManagerBackupData.boot > 68))
 	{
 		file = lbRelocGetExternHeapFile((u32)&llSYKseg1ValidateFileID, syTaskmanMalloc(lbRelocGetFileSize((u32)&llSYKseg1ValidateFileID), 0x10));
-		func_kseg1 = lbRelocGetFileData(sb32 (*)(void), file, &lSYKseg1ValidateFunc);
+		func_kseg1 = lbRelocGetFileData(sb32 (*)(void), file, &llSYKseg1ValidateFunc);
 
-		osWritebackDCache(func_kseg1, *lbRelocGetFileData(s32*, file, &lSYKseg1ValidateNBytes));
-		osInvalICache(func_kseg1, *lbRelocGetFileData(s32*, file, &lSYKseg1ValidateNBytes));
+		osWritebackDCache(func_kseg1, *lbRelocGetFileData(s32*, file, &llSYKseg1ValidateNBytes));
+		osInvalICache(func_kseg1, *lbRelocGetFileData(s32*, file, &llSYKseg1ValidateNBytes));
 
 		if (func_kseg1() == FALSE)
 		{

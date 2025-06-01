@@ -65,7 +65,10 @@ void func_ovl8_8038120C(dbUnknownLinkStruct* arg0, s32 arg1)
 }
 
 // 0x8038125C
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_17/func_ovl8_8038125C.s")
+void func_ovl8_8038125C(s32 **arg0, s32 arg1, s32 *arg2)
+{
+	*arg2 = (arg0[2] + (arg1))[-1];
+}
 
 // 0x80381274
 void func_ovl8_80381274(dbUnknown17* arg0, s32 arg1)

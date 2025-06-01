@@ -93,7 +93,24 @@ void func_ovl8_8038597C(s32 arg0)
 }
 
 // 0x8038599C
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_28/func_ovl8_8038599C.s")
+void func_ovl8_8038599C(dbFunction **arg0)
+{
+    s32 sp2C;
+    dbFunction *temp_v0;
+    s32 sp24;
+    dbFunction *temp_v0_3;
+
+    temp_v0 = arg0[19];
+    sp2C = temp_v0[9].unk_dbfunc_0x4(temp_v0[9].unk_dbfunc_0x0 + (char*) arg0 + 0x40);
+
+    if (sp2C == 0)
+        return;
+
+    temp_v0_3 = arg0[19];
+    temp_v0_3[4].unk_dbfunc_0x4(temp_v0_3[4].unk_dbfunc_0x0 + (char*) arg0 + 0x40, &sp24);
+    func_ovl8_80377AEC(sp2C, &sp24, arg0[14] + 3, 4);
+    func_ovl8_80382354(arg0);
+}
 
 // 0x80385A1C
 void func_ovl8_80385A1C(dbUnknownS38* arg0)

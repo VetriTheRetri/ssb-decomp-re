@@ -99,7 +99,11 @@ Vec3i* func_ovl8_8037D3AC(Vec3i* arg0)
 }
 
 // 0x8037D3DC
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D3DC.s")
+void *func_ovl8_8037D3DC(Vec3i *arg0)
+{
+    D_8038EFE0_1AB830 = *arg0;
+    return arg0;
+}
 
 // 0x8037D404
 void* func_ovl8_8037D404(Vec3i* arg0, s32 arg1)

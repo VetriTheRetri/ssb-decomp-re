@@ -2,6 +2,7 @@
 #include <gr/ground.h>
 #include <if/interface.h>
 #include <sc/scene.h>
+#include <reloc_data.h>
 
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
@@ -27,8 +28,8 @@ SC1PGameBossEffect dSC1PGameBossEffects0[/* */] =
     {
         SC1PGameBossWallpaper0ProcUpdate,       // Proc Update
         SC1PGameBossWallpaper0ProcDisplay,       // Proc Render
-        &lSC1PGameBossEffects0DObjDesc,         // DObjDesc offset
-        &lSC1PGameBossEffects0MObjSub           // MObjSub offset
+        &llGRLastMapEffects0DObjDesc,         // DObjDesc offset
+        &llGRLastMapEffects0MObjSub           // MObjSub offset
     }
 };
 
@@ -37,29 +38,29 @@ SC1PGameBossAnim dSC1PGameBossAnims0[/* */] =
 {
     // Anim 0
     {
-        &lSC1PGameBossAnims0AnimJoint,          // AnimJoint offset
-        &lSC1PGameBossAnims0MatAnimJoint,       // MatAnimJoint offset
+        &llGRLastMapAnims0AnimJoint,          // AnimJoint offset
+        &llGRLastMapAnims0MatAnimJoint,       // MatAnimJoint offset
         0.5F                                    // Animation speed
     },
 
     // Anim 1
     {
-        &lSC1PGameBossAnims0AnimJoint,          // AnimJoint offset
-        &lSC1PGameBossAnims0MatAnimJoint,       // MatAnimJoint offset
+        &llGRLastMapAnims0AnimJoint,          // AnimJoint offset
+        &llGRLastMapAnims0MatAnimJoint,       // MatAnimJoint offset
         1.0F                                    // Animation speed
     },
 
     // Anim 2
     {
-        &lSC1PGameBossAnims0AnimJoint,          // AnimJoint offset
-        &lSC1PGameBossAnims0MatAnimJoint,       // MatAnimJoint offset
+        &llGRLastMapAnims0AnimJoint,          // AnimJoint offset
+        &llGRLastMapAnims0MatAnimJoint,       // MatAnimJoint offset
         0.7F                                    // Animation speed
     },
 
     // Anim 3
     {
-        &lSC1PGameBossAnims0AnimJoint,          // AnimJoint offset
-        &lSC1PGameBossAnims0MatAnimJoint,       // MatAnimJoint offset
+        &llGRLastMapAnims0AnimJoint,          // AnimJoint offset
+        &llGRLastMapAnims0MatAnimJoint,       // MatAnimJoint offset
         0.25F                                   // Animation speed
     },
 };
@@ -103,8 +104,8 @@ SC1PGameBossEffect dSC1PGameBossEffects1[/* */] =
     {
         SC1PGameBossWallpaper1ProcUpdate,       // Proc Update
         SC1PGameBossWallpaper1ProcDisplay,       // Proc Render
-        &lSC1PGameBossEffects1DObjDesc,         // DObjDesc offset
-        &lSC1PGameBossEffects1MObjSub           // MObjSub offset
+        &llGRLastMapEffects1DObjDesc,         // DObjDesc offset
+        &llGRLastMapEffects1MObjSub           // MObjSub offset
     }
 };
 
@@ -113,8 +114,8 @@ SC1PGameBossAnim dSC1PGameBossAnims1[/* */] =
 {
     // Anim 0
     {
-        &lSC1PGameBossAnims1AnimJoint,          // AnimJoint offset
-        &lSC1PGameBossAnims1MatAnimJoint,       // MatAnimJoint offset
+        &llGRLastMapAnims1AnimJoint,          // AnimJoint offset
+        &llGRLastMapAnims1MatAnimJoint,       // MatAnimJoint offset
         0.5F                                    // Animation speed
     }
 };
@@ -144,16 +145,16 @@ SC1PGameBossEffect dSC1PGameBossEffects2[/* */] =
     {
         SC1PGameBossWallpaper2ProcUpdate0,      // Proc Update
         SC1PGameBossWallpaper2ProcDisplay,       // Proc Render
-        &lSC1PGameBossEffects2DObjDesc0,        // DObjDesc offset
-        &lSC1PGameBossEffects2MObjSub0          // MObjSub offset
+        &llGRLastMapEffects2_0DObjDesc,        // DObjDesc offset
+        &llGRLastMapEffects2_0MObjSub          // MObjSub offset
     },
 
     // Effect 1
     {
         SC1PGameBossWallpaper2ProcUpdate1,      // Proc Update
         SC1PGameBossWallpaper3ProcDisplay0,       // Proc Render
-        &lSC1PGameBossEffects2DObjDesc1,        // DObjDesc offset
-        &lSC1PGameBossEffects2MObjSub1          // MObjSub offset
+        &llGRLastMapEffects2_1DObjDesc,        // DObjDesc offset
+        &llGRLastMapEffects2_1MObjSub          // MObjSub offset
     }
 };
 
@@ -162,15 +163,15 @@ SC1PGameBossAnim dSC1PGameBossAnims2[/* */] =
 {
     // Anim 0
     {
-        &lSC1PGameBossAnims2AnimJoint0,         // AnimJoint offset
-        &lSC1PGameBossAnims2MatAnimJoint0,      // MatAnimJoint offset
+        &llGRLastMapAnims2_0AnimJoint,         // AnimJoint offset
+        &llGRLastMapAnims2_0MatAnimJoint,      // MatAnimJoint offset
         1.0F                                    // Animation speed
     },
 
     // Anim 1
     {
         0x0,                                    // AnimJoint offset
-        &lSC1PGameBossAnims2MatAnimJoint1,      // MatAnimJoint offset
+        &llGRLastMapAnims2_1MatAnimJoint,      // MatAnimJoint offset
         1.0F                                    // Animation speed
     }
 };
@@ -214,15 +215,15 @@ SC1PGameBossEffect dSC1PGameBossEffects3[/* */] =
     {
         SC1PGameBossWallpaper3ProcUpdate0,      // Proc Update
         SC1PGameBossWallpaper3ProcDisplay0,      // Proc Render
-        &lSC1PGameBossEffects3DObjDesc0,        // DObjDesc offset
-        &lSC1PGameBossEffects3MObjSub0          // MObjSub offset
+        &llGRLastMapEffects3_0DObjDesc,        // DObjDesc offset
+        &llGRLastMapEffects3_0MObjSub          // MObjSub offset
     },
 
     // Effect 1
     {
         SC1PGameBossWallpaper3ProcUpdate1,      // Proc Update
         SC1PGameBossWallpaper2ProcDisplay,       // Proc Render
-        &lSC1PGameBossEffects3DObjDesc1,        // DObjDesc offset
+        &llGRLastMapEffects3_1DObjDesc,        // DObjDesc offset
         0x0                                     // MObjSub offset
     }
 };
@@ -233,13 +234,13 @@ SC1PGameBossAnim dSC1PGameBossAnims3[/* */] =
     // Anim 0
     {
         0x0,                                    // AnimJoint offset
-        &lSC1PGameBossAnims3MatAnimJoint0,      // MatAnimJoint offset
+        &llGRLastMapAnims3_0MatAnimJoint,      // MatAnimJoint offset
         0.5F                                    // Animation speed
     },
 
     // Anim 1
     {
-        &lSC1PGameBossAnims3AnimJoint1,         // AnimJoint offset
+        &llGRLastMapAnims3_1AnimJoint,         // AnimJoint offset
         0x0,                                    // MatAnimJoint offset
         1.0F                                    // Animation speed
     }
@@ -1016,7 +1017,7 @@ void sc1PGameBossInitWallpaper(void)
 
         sSC1PGameBossMain.is_skip_wallpaper_change = FALSE;
         sSC1PGameBossMain.wallpaper_id = 0;
-        sSC1PGameBossMain.file_head = (void*) ((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobjdesc - (intptr_t)&D_NF_00004D48);
+        sSC1PGameBossMain.file_head = (void*) ((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobjdesc - (intptr_t)&llGRLastMapFileHead);
         sSC1PGameBossMain.change_wait = 0;
         sSC1PGameBossWallpaperStepRGBA = 0.0F;
     }

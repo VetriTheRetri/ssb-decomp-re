@@ -14,7 +14,6 @@
 
 extern alSoundEffect D_8009EDD0_406D0;
 
-extern intptr_t D_NF_00004D48;
 extern intptr_t D_NF_00006010;
 extern intptr_t D_NF_00006450;
 
@@ -1488,7 +1487,7 @@ void sc1PGameWaitStageBossUpdate(void)
     sp20.y = 0.0F;
     sp20.z = 0.0F;
 
-    gmCameraSetStatusAnim((void*) (((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobjdesc - (intptr_t)&D_NF_00004D48) + (intptr_t)&D_NF_00006010), 0.0F, &sp20);
+    gmCameraSetStatusAnim((void*) (((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobjdesc - (intptr_t)&llGRLastMapFileHead) + (intptr_t)&D_NF_00006010), 0.0F, &sp20);
 
     for (player = 0; TRUE; player++) // Wut da haeiyll
     {
@@ -1937,7 +1936,7 @@ void sc1PGameBossDefeatInterfaceProcSet(void)
 {
     gcFuncGObjAll(ifCommonBattleInterfaceResumeGObj, 0);
     sc1PGameBossSetChangeWallpaper();
-    gmCameraSetStatusAnim((void*) (((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobjdesc - (intptr_t)&D_NF_00004D48) + (intptr_t)&D_NF_00006450), 0.0F, &sSC1PGameBossDefeatZoomPosition);
+    gmCameraSetStatusAnim((void*) (((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobjdesc - (intptr_t)&llGRLastMapFileHead) + (intptr_t)&D_NF_00006450), 0.0F, &sSC1PGameBossDefeatZoomPosition);
     ifCommonBattleBossDefeatSetGameStatus();
 }
 

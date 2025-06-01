@@ -2,21 +2,7 @@
 #include <it/item.h>
 #include <gr/ground.h>
 #include <sc/scene.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lGRHyruleDataStart;             // 0x00000014
-extern intptr_t lGRHyruleTwisterThrowHitDesc;   // 0x000000BC
-
-// // // // // // // // // // // //
-//                               //
-//           FUNCTIONS           //
-//                               //
-// // // // // // // // // // // //
+#include <reloc_data.h>
 
 // 0x801439D0
 void ftCommonTwisterProcUpdate(GObj *fighter_gobj)
@@ -103,7 +89,7 @@ void ftCommonTwisterSetStatus(GObj *fighter_gobj, GObj *tornado_gobj)
 void ftCommonTwisterShootFighter(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTThrowHitDesc *tornado = (FTThrowHitDesc*) (((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRHyruleDataStart) + (intptr_t)&lGRHyruleTwisterThrowHitDesc);
+    FTThrowHitDesc *tornado = (FTThrowHitDesc*) (((uintptr_t)gMPCollisionGroundData - (intptr_t)&llGRHyruleMapMapHeader) + (intptr_t)&llGRHyruleMapTwisterThrowHitDesc);
     f32 knockback;
     s32 damage;
 

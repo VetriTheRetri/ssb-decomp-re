@@ -2242,6 +2242,7 @@ GRAttackColl PowerBlock 0x0BC
 
 [261]
 MapHeader - 0x14
+HitDesc TaruCannThrow 0xBC
 MapHead - 0xA98
 AnimJoint TaruCannDefault 0xB20
 AnimJoint TaruCannFill 0xB68
@@ -2337,9 +2338,31 @@ MatAnimJoint Poppo 0xFFD0
 
 [265]
 MapHeader - 0x14
+HitDesc TwisterThrow 0xBC
 
 [266]
 MapHeader - 0x0
+FileHead - 0x4D48
+MObjSub Effects0 0x086D8
+DObjDesc Effects0 0x08960
+AnimJoint Anims0 0x08A40
+MatAnimJoint Anims0 0x08C50
+MObjSub Effects1 0x097B0
+DObjDesc Effects1 0x0A188
+AnimJoint Anims1 0x0A340
+MatAnimJoint Anims1 0x0B1B0
+MObjSub Effects2_0 0x0D470
+DObjDesc Effects2_0 0x0DD90
+MObjSub Effects2_1 0x10788
+DObjDesc Effects2_1 0x11268
+AnimJoint Anims2_0 0x0DE70
+MatAnimJoint Anims2_0 0x0DEC0
+MatAnimJoint Anims2_1 0x11420
+MObjSub Effects3_0 0x10788
+DObjDesc Effects3_0 0x11268
+DObjDesc Effects3_1 0x12858
+MatAnimJoint Anims3_0 0x115C0
+AnimJoint Anims3_1 0x128E0
 
 [267]
 MapHeader - 0x0

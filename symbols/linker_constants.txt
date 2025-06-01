@@ -23,11 +23,10 @@ lMNTitleParticleScriptBankHi = mntitle_scb_ROM_END;
 lMNTitleParticleTextureBankLo = mntitle_txb_ROM_START;
 lMNTitleParticleTextureBankHi = mntitle_txb_ROM_END;
 
-lGRHyruleDataStart = 0x00000014;
-lGRHyruleTwisterThrowHitDesc = 0x000000BC;
-
-lGRJungleDataStart = 0x00000014;
-lGRJungleTaruCannThrowHitDesc = 0x000000BC;
+lITManagerParticleScriptBankLo = itcommon_scb_ROM_START;
+lITManagerParticleScriptBankHi = itcommon_scb_ROM_END;
+lITManagerParticleTextureBankLo = itcommon_txb_ROM_START;
+lITManagerParticleTextureBankHi = itcommon_txb_ROM_END;
 
 lWPMariroFireballWeaponAttributes = 0x00000000;
 lWPMarioFireballMarioWeaponAttributes = 0x00000000;
@@ -63,11 +62,6 @@ lWPLinkBoomerangWeaponAttributes = 0x00000000;
 
 lWPBossBulletNormalWeaponAttributes = 0x00000774;
 lWPBossBulletHardWeaponAttributes = 0x000007A8;
-
-lITManagerParticleScriptBankLo = itcommon_scb_ROM_START;
-lITManagerParticleScriptBankHi = itcommon_scb_ROM_END;
-lITManagerParticleTextureBankLo = itcommon_txb_ROM_START;
-lITManagerParticleTextureBankHi = itcommon_txb_ROM_END;
 
 lITMainContainerVelocitiesY = 0x00000000;
 
@@ -237,34 +231,6 @@ lITLinkBombAttackEvents = 0x00000088;
 lITLinkBombBloatScales = 0x000000A8;
 
 lITMonsterAnimBankStart = 0x00013624;
-
-lGRYosterWallpaperSprite = 0x00026C88;
-
-lSC1PGameBossEffects0MObjSub = 0x000086D8;
-lSC1PGameBossEffects0DObjDesc = 0x00008960;
-lSC1PGameBossAnims0AnimJoint = 0x00008A40;
-lSC1PGameBossAnims0MatAnimJoint = 0x00008C50;
-
-lSC1PGameBossEffects1MObjSub = 0x000097B0;
-lSC1PGameBossEffects1DObjDesc = 0x0000A188;
-lSC1PGameBossAnims1AnimJoint = 0x0000A340;
-lSC1PGameBossAnims1MatAnimJoint = 0x0000B1B0;
-
-lSC1PGameBossEffects2MObjSub0 = 0x0000D470;
-lSC1PGameBossEffects2DObjDesc0 = 0x0000DD90;
-lSC1PGameBossEffects2MObjSub1 = 0x00010788;
-lSC1PGameBossEffects2DObjDesc1 = 0x00011268;
-
-lSC1PGameBossAnims2AnimJoint0 = 0x0000DE70;
-lSC1PGameBossAnims2MatAnimJoint0 = 0x0000DEC0;
-lSC1PGameBossAnims2MatAnimJoint1 = 0x00011420;
-
-lSC1PGameBossEffects3MObjSub0 = 0x00010788;
-lSC1PGameBossEffects3DObjDesc0 = 0x00011268;
-lSC1PGameBossEffects3DObjDesc1 = 0x00012858;
-
-lSC1PGameBossAnims3MatAnimJoint0 = 0x000115C0;
-lSC1PGameBossAnims3AnimJoint1 = 0x000128E0;
 
 lLBRelocTableFilesNum = 0x000854;
 lLBRelocTableAddr = relocData_ROM_START;

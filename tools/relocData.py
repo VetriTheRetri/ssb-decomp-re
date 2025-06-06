@@ -175,7 +175,8 @@ def generateHeader(relocFileDescriptionsFilePath, outputHeaderFilePath, outputLi
 			outputLinkerFile.write(f"{symbolName} = {hex(fileId)};\n")
 
 		# File offset symbols
-		for line in lines:
+		for i in range(len(lines)):
+			line = lines[i]
 			if len(line) == 0 or line[0] == '#' or line[0] == '-':
 				continue
 			m = re.match(r"\[(\d+)]", line);
@@ -185,14 +186,18 @@ def generateHeader(relocFileDescriptionsFilePath, outputHeaderFilePath, outputLi
 				outputHeaderFile.write('\n')
 				outputLinkerFile.write('\n')
 				continue
-			blockType, blockName, blockOffset = line.split(' ')
+			try:
+				blockType, blockName, blockOffset = line.split(' ')
+			except Exception as e:
+				print(f"Parsing error at line: {i + 1}", file=sys.stderr)
+				return False
 			if blockName == '-':
 				symbolName = f"ll{currentFileName}{blockType}"
 			else:
 				symbolName = f"ll{currentFileName}{blockName}{blockType}"
 			outputHeaderFile.write(f"extern int {symbolName}; // {blockOffset}\n")
 			outputLinkerFile.write(f"{symbolName} = {blockOffset};\n")
-
+	return True
 
 
 if __name__ == "__main__":
@@ -214,4 +219,6 @@ if __name__ == "__main__":
 	elif sys.argv[1] == 'makeBin':
 		makeBin()
 	elif sys.argv[1] == 'genHeader':
-		generateHeader(sys.argv[2], sys.argv[3], sys.argv[4])
+		if not generateHeader(sys.argv[2], sys.argv[3], sys.argv[4]):
+			os.remove(sys.argv[3])
+			os.remove(sys.argv[4])

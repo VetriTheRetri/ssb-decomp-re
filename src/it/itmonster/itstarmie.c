@@ -1,18 +1,7 @@
 #include <it/item.h>
 #include <wp/weapon.h>
 #include <ft/fighter.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lITStarmieItemAttributes;   // 0x00000B34
-extern intptr_t
-lITStarmieWeaponSwiftWeaponAttributes;      // 0x00000B7C
-extern intptr_t lITStarmieDataStart;        // 0x000112A0
-extern intptr_t lITStarmieMatAnimJoint;     // 0x00011338
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -24,14 +13,14 @@ extern intptr_t lITStarmieMatAnimJoint;     // 0x00011338
 ITDesc dITStarmieItemDesc = 
 {
     nITKindStarmie,                         // Item Kind
-    &gITManagerCommonData,                    // Pointer to item file data?
-    &lITStarmieItemAttributes,              // Offset of item attributes in file?
+    &gITManagerCommonData,                  // Pointer to item file data?
+    &llITCommonDataStarmieItemAttributes,   // Offset of item attributes in file?
 
     // DObj transformation struct
     {
         nGCMatrixKindTraRotRpyR,             // Main matrix transformations
         nGCMatrixKindNull,                   // Secondary matrix transformations?
-        0,                                  // ???
+        0,                                   // ???
     },
 
     nGMAttackStateNew,                      // Hitbox Update State
@@ -79,7 +68,7 @@ WPDesc dITStarmieWeaponSwiftWeaponDesc =
     0x03,                                   // Render flags?
     nWPKindStarmieSwift,                    // Weapon Kind
     &gITManagerCommonData,                    // Pointer to character's loaded files?
-    &lITStarmieWeaponSwiftWeaponAttributes, // Offset of weapon attributes in loaded files
+    &llITCommonDataStarmieSwiftWeaponAttributes, // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
@@ -253,7 +242,7 @@ void itStarmieNFollowFindFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
     }
     if (ip->kind == nITKindStarmie)
     {
-        gcAddMObjMatAnimJoint(item_dobj->mobj, itGetPData(ip, lITStarmieDataStart, lITStarmieMatAnimJoint), 0);
+        gcAddMObjMatAnimJoint(item_dobj->mobj, itGetPData(ip, llITCommonDataStarmieDataStart, llITCommonDataStarmieMatAnimJoint), 0);
 
         gcPlayAnimAll(item_gobj);
     }
@@ -362,7 +351,7 @@ GObj* itStarmieMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f.y -= ip->attr->map_coll_bottom;
 
-        gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITStarmieDataStart), 0.0F);
+        gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, llITCommonDataStarmieDataStart), 0.0F);
 
         gcMoveGObjDLHead(item_gobj, 18, item_gobj->dl_link_priority);
     }

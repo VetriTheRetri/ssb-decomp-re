@@ -2,17 +2,7 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 #include <gr/ground.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t
-lITHitokageItemAttributes;                  // 0x000001FC
-extern intptr_t
-lITHitokageWeaponFlameWeaponAttributes;     // 0x00000244
+#include <reloc_data.h>
 
 extern s32 dGRYamabukiMonsterAttackKind;
 
@@ -26,12 +16,12 @@ ITDesc dITHitokageItemDesc =
 {
     nITKindHitokage,                        // Item Kind
     &gGRCommonStruct.yamabuki.item_head,    // Pointer to item file data?
-    &lITHitokageItemAttributes,             // Offset of item attributes in file?
+    &llGRYamabukiMapHitokageItemAttributes, // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nGCMatrixKindTraRotRpyR,             // Main matrix transformations
-        nGCMatrixKindNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyR,            // Main matrix transformations
+        nGCMatrixKindNull,                  // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -66,12 +56,12 @@ WPDesc dITHitokageWeaponFlameWeaponDesc =
     0x00,                                   // Render flags?
     nWPKindHitokageFlame,                   // Weapon Kind
     &gGRCommonStruct.yamabuki.item_head,    // Pointer to character's loaded files?
-    &lITHitokageWeaponFlameWeaponAttributes,// Offset of weapon attributes in loaded files
+    &llGRYamabukiMapHitokageFlameWeaponAttributes,// Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
-        nGCMatrixKindTraRotRpyRSca,          // Main matrix transformations
-        nGCMatrixKindNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyRSca,         // Main matrix transformations
+        nGCMatrixKindNull,                  // Secondary matrix transformations?
         0                                   // ???
     },
 

@@ -149,9 +149,9 @@ void itManagerInitItems(void) // Many linker things here
 
     gITManagerParticleBankID = efParticleGetLoadBankID
     (
-        &lITManagerParticleScriptBankLo, 
+        &lITManagerParticleScriptBankLo,
         &lITManagerParticleScriptBankHi,
-        &lITManagerParticleTextureBankLo, 
+        &lITManagerParticleTextureBankLo,
         &lITManagerParticleTextureBankHi
     );
     itManagerSetupContainerDrops();

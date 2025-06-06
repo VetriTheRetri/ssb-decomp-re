@@ -1,17 +1,7 @@
 #include <it/item.h>
 #include <wp/weapon.h>
 #include <ft/fighter.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lITNyarsItemAttributes;     // 0x00000880
-extern intptr_t
-lITNyarsWeaponCoinWeaponAttributes;         // 0x000008C8
-extern intptr_t lITNyarsAnimJoint;          // 0x0000C130
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -23,13 +13,13 @@ extern intptr_t lITNyarsAnimJoint;          // 0x0000C130
 ITDesc dITNyarsItemDesc =
 {
     nITKindNyars,                           // Item Kind
-    &gITManagerCommonData,                    // Pointer to item file data?
-    &lITNyarsItemAttributes,                // Offset of item attributes in file?
+    &gITManagerCommonData,                  // Pointer to item file data?
+    &llITCommonDataNyarsItemAttributes,     // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nGCMatrixKindTraRotRpyRSca,          // Main matrix transformations
-        nGCMatrixKindNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyRSca,         // Main matrix transformations
+        nGCMatrixKindNull,                  // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -63,15 +53,15 @@ ITStatusDesc dITNyarsStatusDescs[/* */] =
 // 0x8018ACF4
 WPDesc dITNyarsWeaponCoinWeaponDesc =
 {
-    0x01,                                   // Render flags?
-    nWPKindNyarsCoin,                       // Weapon Kind
+    0x01,                                     // Render flags?
+    nWPKindNyarsCoin,                         // Weapon Kind
     &gITManagerCommonData,                    // Pointer to character's loaded files?
-    &lITNyarsWeaponCoinWeaponAttributes,    // Offset of weapon attributes in loaded files
+    &llITCommonDataNyarsCoinWeaponAttributes, // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
-        nGCMatrixKindNull,                   // Main matrix transformations
-        nGCMatrixKindNull,                   // Secondary matrix transformations?
+        nGCMatrixKindNull,                  // Main matrix transformations
+        nGCMatrixKindNull,                  // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -206,7 +196,7 @@ GObj* itNyarsMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f.y -= ip->attr->map_coll_bottom;
 
-        gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITNyarsAnimJoint), 0.0F);
+        gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, llITCommonDataNyarsAnimJoint), 0.0F);
     }
     return item_gobj;
 }

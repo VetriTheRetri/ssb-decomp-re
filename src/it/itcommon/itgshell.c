@@ -1,15 +1,5 @@
 #include <it/item.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lITGShellItemAttributes;    // 0x0000053C
-extern intptr_t lITGShellDataStart;         // 0x00005F88
-extern intptr_t lITGShellAnimJoint;         // 0x00006018
-extern intptr_t lITGShellMatAnimJoint;      // 0x00006048
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -21,7 +11,7 @@ ITDesc dITGShellItemDesc =
 {
     nITKindGShell,                          // Item Kind
     &gITManagerCommonData,                  // Pointer to item file data?
-    &lITGShellItemAttributes,               // Offset of item attributes in file?
+    &llITCommonDataGShellItemAttributes,    // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -179,8 +169,8 @@ void itGShellSpinAddAnim(GObj *item_gobj)
     DObj *dobj = DObjGetStruct(item_gobj);
     s32 unused[2];
 
-    gcAddDObjAnimJoint(dobj, itGetPData(ip, lITGShellDataStart, lITGShellAnimJoint), 0.0F);
-    gcAddMObjMatAnimJoint(dobj->mobj, itGetPData(ip, lITGShellDataStart, lITGShellMatAnimJoint), 0.0F);
+    gcAddDObjAnimJoint(dobj, itGetPData(ip, llITCommonDataShellDataStart, llITCommonDataShellAnimJoint), 0.0F);
+    gcAddMObjMatAnimJoint(dobj->mobj, itGetPData(ip, llITCommonDataShellDataStart, llITCommonDataShellMatAnimJoint), 0.0F);
     gcPlayAnimAll(item_gobj);
 }
 

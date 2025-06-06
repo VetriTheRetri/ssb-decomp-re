@@ -1,21 +1,7 @@
 #include <it/item.h>
 #include <ft/fighter.h>
 #include <gr/ground.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern
-intptr_t lITPakkunItemAttributes;           // 0x00000120
-extern 
-intptr_t lITPakkunAppearAnimJoint;          // 0x00000CC8
-extern 
-intptr_t lITPakkunAppearMatAnimJoint;       // 0x00000CF8
-extern 
-intptr_t lITPakkunDamagedMatAnimJoint;      // 0x00000E04
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -27,11 +13,11 @@ ITDesc dITPakkunItemDesc =
 {
     nITKindPakkun,                          // Item Kind
     &gGRCommonStruct.inishie.item_head,     // Pointer to item file data?
-    &lITPakkunItemAttributes,               // Offset of item attributes in file?
+    &llGRInishieMapPakkunItemAttributes,    // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nGCMatrixKindTra,                    // Main matrix transformations
+        nGCMatrixKindTra,                   // Main matrix transformations
         0x30,                               // Secondary matrix transformations?
         0                                   // ???
     },
@@ -189,8 +175,8 @@ sb32 itPakkunWaitProcUpdate(GObj *item_gobj)
         {
             DObj *dobj = DObjGetStruct(item_gobj);
 
-            gcAddDObjAnimJoint(dobj, lbRelocGetFileData(AObjEvent32*, gGRCommonStruct.inishie.map_head, &lITPakkunAppearAnimJoint), 0.0F);
-            gcAddMObjMatAnimJoint(dobj->mobj, lbRelocGetFileData(AObjEvent32*, gGRCommonStruct.inishie.map_head, &lITPakkunAppearMatAnimJoint), 0.0F);
+            gcAddDObjAnimJoint(dobj, lbRelocGetFileData(AObjEvent32*, gGRCommonStruct.inishie.map_head, &llGRInishieMapPakkunAppearAnimJoint), 0.0F);
+            gcAddMObjMatAnimJoint(dobj->mobj, lbRelocGetFileData(AObjEvent32*, gGRCommonStruct.inishie.map_head, &llGRInishieMapPakkunAppearMatAnimJoint), 0.0F);
             gcPlayAnimAll(item_gobj);
 
             dobj->translate.vec.f.y += ip->item_vars.pakkun.pos.y;
@@ -295,7 +281,7 @@ sb32 itPakkunAppearProcDamage(GObj *item_gobj)
 
         dobj->anim_wait = AOBJ_ANIM_NULL;
 
-        gcAddMObjMatAnimJoint(dobj->mobj, lbRelocGetFileData(AObjEvent32*, gGRCommonStruct.inishie.map_head, &lITPakkunDamagedMatAnimJoint), 0.0F);
+        gcAddMObjMatAnimJoint(dobj->mobj, lbRelocGetFileData(AObjEvent32*, gGRCommonStruct.inishie.map_head, &llGRInishieMapPakkunDamagedMatAnimJoint), 0.0F);
         gcPlayAnimAll(item_gobj);
     }
     return FALSE;

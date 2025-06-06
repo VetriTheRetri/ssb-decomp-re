@@ -2131,6 +2131,9 @@ WeaponAttributes Fireball 0x0
 
 [225]
 WeaponAttributes SpinAttack 0xC
+ItemAttributes Bomb 0x40
+AttackEvents Bomb 0x88
+BloatScales Bomb 0xA8
 
 [226]
 WeaponAttributes Boomerang 0x0
@@ -2155,6 +2158,7 @@ WeaponAttributes PKThunderTrail 0x40
 
 [240]
 WeaponAttributes PKFire 0x0
+ItemAttributes PKFire 0x34
 
 [243]
 WeaponAttributes ThunderHead 0xC
@@ -2173,15 +2177,109 @@ WeaponAttributes BulletNormal 0x774
 WeaponAttributes BulletHard 0x7A8
 
 [251]
-Unknown _4D4_ 0x4D4
+VelocitiesY Container 0x0
+ItemAttributes Capsule 0x50
+AttackEvents Capsule 0x98
+ItemAttributes Tomato 0xB8
+ItemAttributes Heart 0x100
+ItemAttributes Star 0x148
+ItemAttributes Sword 0x190
+ItemAttributes Bat 0x1D8
+ItemAttributes Harisen 0x220
+ItemAttributes LGun 0x268
+WeaponAttributes LGunAmmo 0x2B0
+ItemAttributes FFlower 0x2E4
+WeaponAttributes FFlowerFlame 0x32C
+Angles FFlowerFlame 0x360
+ItemAttributes Hammer 0x374
+ItemAttributes MSBomb 0x3BC
+AttackEvents MSBomb 0x404
+ItemAttributes BombHei 0x424
+AttackEvents BombHei 0x46C
+ItemAttributes StarRod 0x48C
+WeaponAttributes StarRod 0x4D4
+WeaponAttributes StarRodSmash 0x508
+ItemAttributes GShell 0x53C
+ItemAttributes RShell 0x584
+ItemAttributes Box 0x5CC
+AttackEvents Box 0x614
+ItemAttributes Taru 0x634
+AttackEvents Taru 0x67C
 FileHead MBallThrown 0x6E4
+ItemAttributes MBall 0x6E4
+ItemAttributes Wark 0x72C
+WeaponAttributes WarkRock 0x774
+ItemAttributes Kabigon 0x7A8
+ItemAttributes Tosakinto 0x7F0
+ItemAttributes Mew 0x838
+ItemAttributes Nyars 0x880
+WeaponAttributes NyarsCoin 0x8C8
+ItemAttributes Lizardon 0x8FC
+WeaponAttributes LizardonFlame 0x944
+ItemAttributes Spear 0x98C
+WeaponAttributes SpearSwarm 0x9D4
+ItemAttributes Kamex 0xA08
+WeaponAttributes KamexHydro 0xA50
+ItemAttributes MLucky 0xA84
+ItemAttributes Egg 0xACC
+AttackEvents Egg 0xB14
+ItemAttributes Starmie 0xB34
+WeaponAttributes StarmieSwift 0xB7C
+ItemAttributes Sawamura 0xBB0
+ItemAttributes Dogas 0xBF8
+WeaponAttributes DogasSmog 0xC40
+ItemAttributes Pippi 0xC74
+WeaponAttributes PippiSwarm 0xCBC
+ItemAttributes GBumper 0xCF0
+DataStart Harisen 0x2198
+DataStart BombHei 0x33F8
+DisplayList BombHeiWalkRight 0x3310
+DisplayList BombHeiWalkLeft 0x34C0
+MatAnimJoint BombHeiWalk 0x35B8
 DObjDesc KirbyStar 0x5458
+DataStart Shell 0x5F88
+AnimJoint Shell 0x6018
+MatAnimJoint Shell 0x6048
+DataStart Box 0x6778
+EffectDisplayList Box 0x68F0
+ItemAttributes NBumper 0x69C
+DataStart NBumper 0x7648
+MObjSub NBumperWait 0x7A38
+DisplayList NBumperWait 0x7AF8
 MObjSub MBallThrown 0x9120
+DataStart MBall 0x9430
 DObjDesc MBallThrown 0x9430
+MatAnimJoint MBall 0x9520
 AnimJoint MBallThrownL 0x95E0
 AnimJoint MBallThrownR 0x9690
 MatAnimJoint MBallThrownL 0x9740
 MatAnimJoint MBallThrownR 0x9810
+DataStart Wark 0xA140
+DisplayList Wark 0xA640
+AnimJoint Kabigon 0xB158
+DataStart Tosakinto 0xB708
+AnimJoint Tosakinto 0xB7CC
+MatAnimJoint Tosakinto 0xB90C
+DataStart Mew 0xBCC0
+AnimJoint Nyars 0xC130
+DataStart Lizardon 0xD5C0
+AnimJoint Lizardon 0xD658
+MatAnimJoint Lizardon 0xD688
+DataStart Spear 0xDF38
+AnimJoint Spear 0xDFFC
+MatAnimJoint Spear 0xE12C
+DisplayList Kamex 0xED60
+DataStart Kamex 0xEA60
+DataStart Starmie 0x112A0
+MatAnimJoint Starmie 0x11338
+DataStart Dogas 0x12820
+AnimJoint Dogas 0x128DC
+DataStart Lucky 0x10000
+AnimJoint Lucky 0x100BC
+DataStart Sawamura 0x11F40
+DisplayList Sawamura 0x12340
+DataStart Pippi 0x13598
+AnimBankStart Monster 0x13624
 
 [252]
 KeyEvent 0 0x0
@@ -2262,7 +2360,7 @@ MObjSub Acid 0x8C0
 DObjDesc Acid 0xB08
 AnimJoint Acid 0xB90
 MatAnimJoint Acid 0xBD0
-DataStart - 0x5AC0;
+DataStart - 0x5AC0
 AnimJoint Ridley 0xCF70
 DObjDesc Ridley 0xCEE8
 MObjSub Ridley 0xCC90
@@ -2289,6 +2387,13 @@ DObjDesc Scale 0x380
 MapHead - 0x5F0
 AnimJoint ScaleRetract 0x734
 GRAttackColl PowerBlock 0x0BC
+ItemAttributes Pakkun 0x120
+AnimJoint PakkunAppear 0xCC8
+MatAnimJoint PakkunAppear 0xCF8
+MatAnimJoint PakkunDamaged 0xE04
+ItemAttributes PowerBlock 0xD8
+DataStart PowerBlock 0x11F8
+AnimJoint PowerBlock 0x1288
 
 [261]
 MapHeader - 0x14
@@ -2364,9 +2469,19 @@ MatAnimJoint HeihoSlow 0x97F0
 
 [264]
 MapHeader - 0x14
+ItemHead - 0x14
+ItemAttributes GLucky 0xBC
+ItemAttributes Marumine 0x104
+AttackEvents Marumine 0x14C
+ItemAttributes Porygon 0x16C
+HitParties Porygon 0x1B4
+ItemAttributes Hitokage 0x1FC
+WeaponAttributes HitokageFlame 0x244
+ItemAttributes Fushigibana 0x278
+HitParties Fushigibana 0x2C0
+WeaponAttributes FushigibanaRazor 0x308
 AnimJoint GateOpen 0x9B0
 AnimJoint GateClose 0xA20
-ItemHead - 0x014
 MapHead - 0x8A0
 AnimJoint Butterfree 0x99E0
 DObjDesc Butterfree 0x9958
@@ -2549,7 +2664,11 @@ MapHeader - 0x0
 MapHead - 0x0
 ItemHead - 0x0
 DObjDesc Bumpers 0x0
+ItemAttributes TaruBomb 0xA8
+AttackEvents TaruBomb 0xF0
 AnimJoint Bumpers 0x110
+DataStart TaruBomb 0x788
+DisplayList TaruBombEffect 0x8A0
 
 [296]
 Sprite Stock 0x72d0

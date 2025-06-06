@@ -1,13 +1,5 @@
 #include <it/item.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lITCapsuleItemAttributes;   // 0x00000050
-extern intptr_t lITCapsuleAttackEvents;        // 0x00000098
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -18,13 +10,13 @@ extern intptr_t lITCapsuleAttackEvents;        // 0x00000098
 ITDesc dITCapsuleItemDesc = 
 {
     nITKindCapsule,                         // Item Kind
-    &gITManagerCommonData,                    // Pointer to item file data?
-    &lITCapsuleItemAttributes,              // Offset of item attributes in file?
+    &gITManagerCommonData,                  // Pointer to item file data?
+    &llITCommonDataCapsuleItemAttributes,   // Offset of item attributes in file?
     
     // DObj transformation struct
     {
-        nGCMatrixKindTraRotRpyR,             // Main matrix transformations
-        nGCMatrixKindNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyR,            // Main matrix transformations
+        nGCMatrixKindNull,                  // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -271,7 +263,7 @@ sb32 itCapsuleExplodeProcUpdate(GObj *item_gobj)
     {
         return TRUE;
     }
-    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITCapsuleItemDesc, lITCapsuleAttackEvents)); // (ITAttackEvent*) ((uintptr_t)*dITCapsuleItemDesc.p_file + (intptr_t)&D_NF_00000098); Linker thing
+    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITCapsuleItemDesc, llITCommonDataCapsuleAttackEvents)); // (ITAttackEvent*) ((uintptr_t)*dITCapsuleItemDesc.p_file + (intptr_t)&D_NF_00000098); Linker thing
 
     return FALSE;
 }
@@ -316,7 +308,7 @@ void itCapsuleExplodeInitVars(GObj *item_gobj)
     itMainClearOwnerStats(item_gobj);
     itMainRefreshAttackColl(item_gobj);
 
-    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITCapsuleItemDesc, lITCapsuleAttackEvents));
+    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITCapsuleItemDesc, llITCommonDataCapsuleAttackEvents));
 }
 
 // 0x801743F4

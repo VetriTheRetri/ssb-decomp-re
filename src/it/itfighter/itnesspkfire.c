@@ -1,14 +1,7 @@
 #include <it/item.h>
 #include <wp/weapon.h>
 #include <ft/fighter.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lITNessPKFireItemAttributes;// 0x00000034
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -20,7 +13,7 @@ ITDesc dITNessPKFireItemDesc =
 {
     nITKindNessPKFire,                      // Item Kind
     &gFTNessFileSpecial1,                   // Pointer to item file data?
-    &lITNessPKFireItemAttributes,           // Offset of item attributes in file?
+    &llNessSpecial1PKFireItemAttributes,    // Offset of item attributes in file?
 
     // DObj transformation struct
     {

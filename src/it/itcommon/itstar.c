@@ -1,13 +1,6 @@
 #include <it/item.h>
 #include <sc/scene.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lITStarItemAttributes;      // 0x00000148
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -18,13 +11,13 @@ extern intptr_t lITStarItemAttributes;      // 0x00000148
 ITDesc dITStarItemDesc =
 {
     nITKindStar,                            // Item Kind
-    &gITManagerCommonData,                    // Pointer to item file data?
-    &lITStarItemAttributes,                 // Offset of item attributes in file?
+    &gITManagerCommonData,                  // Pointer to item file data?
+    &llITCommonDataStarItemAttributes,      // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nGCMatrixKindTraRotRpyR,             // Main matrix transformations
-        nGCMatrixKindNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyR,            // Main matrix transformations
+        nGCMatrixKindNull,                  // Secondary matrix transformations?
         0                                   // ???
     },
 

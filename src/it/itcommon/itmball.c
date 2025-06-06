@@ -1,16 +1,7 @@
 #include <it/item.h>
 #include <ft/fighter.h>
 #include <sc/scene.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lITMBallITemAttributes;     // 0x000006E4
-extern intptr_t lITMBallDataStart;          // 0x00009430
-extern intptr_t lITMBallMatAnimJoint;       // 0x00009520
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -21,13 +12,13 @@ extern intptr_t lITMBallMatAnimJoint;       // 0x00009520
 ITDesc dITMBallItemDesc =
 {
     nITKindMBall,                           // Item Kind
-    &gITManagerCommonData,                    // Pointer to item file data?
-    &lITMBallITemAttributes,                // Offset of item attributes in file?
+    &gITManagerCommonData,                  // Pointer to item file data?
+    &llITCommonDataMBallItemAttributes,     // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nGCMatrixKindNull,                   // Main matrix transformations
-        nGCMatrixKindNull,                   // Secondary matrix transformations?
+        nGCMatrixKindNull,                  // Main matrix transformations
+        nGCMatrixKindNull,                  // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -158,7 +149,7 @@ void itMBallOpenAddAnim(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
-    void *matanim_joint = itGetPData(ip, lITMBallDataStart, lITMBallMatAnimJoint);
+    void *matanim_joint = itGetPData(ip, llITCommonDataMBallDataStart, llITCommonDataMBallMatAnimJoint);
 
     gcAddMObjMatAnimJoint(dobj->child->child->sib_next->mobj, matanim_joint, 0.0F);
     gcPlayAnimAll(item_gobj);

@@ -1,14 +1,6 @@
 #include <it/item.h>
 #include <sys/develop.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lITKabigonItemAttributes;   // 0x000007A8
-extern intptr_t lITKabigonAnimJoint;        // 0x0000B158
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -20,13 +12,13 @@ extern intptr_t lITKabigonAnimJoint;        // 0x0000B158
 ITDesc dITKabigonItemDesc = 
 {
     nITKindKabigon,                         // Item Kind
-    &gITManagerCommonData,                    // Pointer to item file data?
-    &lITKabigonItemAttributes,              // Offset of item attributes in file?
+    &gITManagerCommonData,                  // Pointer to item file data?
+    &llITCommonDataKabigonItemAttributes,   // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nGCMatrixKindTraRotRpyRSca,          // Main matrix transformations
-        nGCMatrixKindNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyRSca,         // Main matrix transformations
+        nGCMatrixKindNull,                  // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -46,7 +38,7 @@ ITStatusDesc dITKabigonStatusDescs[/* */] =
 {
     // Status 0 (Neutral Jump)
     {
-        itKabigonJumpProcUpdate,           // Proc Update
+        itKabigonJumpProcUpdate,            // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
@@ -58,7 +50,7 @@ ITStatusDesc dITKabigonStatusDescs[/* */] =
 
     // Status 1 (Neutral Fall)
     {
-        itKabigonFallProcUpdate,           // Proc Update
+        itKabigonFallProcUpdate,            // Proc Update
         NULL,                               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
@@ -302,7 +294,7 @@ GObj* itKabigonMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         ip->physics.vel_air.x = ip->physics.vel_air.z = 0.0F;
         ip->physics.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITKabigonAnimJoint), 0.0F);
+        gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, llITCommonDataKabigonAnimJoint), 0.0F);
 
         if (ip->kind == nITKindKabigon)
         {

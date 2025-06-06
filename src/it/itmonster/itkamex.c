@@ -1,18 +1,7 @@
 #include <it/item.h>
 #include <wp/weapon.h>
 #include <ft/fighter.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lITKamexItemAttributes;     // 0x00000A08
-extern intptr_t
-lITKamexWeaponHydroWeaponAttributes;        // 0x00000A50
-extern intptr_t lITKamexDataStart;          // 0x0000EA60
-extern intptr_t lITKamexDisplayList;        // 0x0000ED60
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -24,8 +13,8 @@ extern intptr_t lITKamexDisplayList;        // 0x0000ED60
 ITDesc dITKamexItemDesc = 
 {
     nITKindKamex,                           // Item Kind
-    &gITManagerCommonData,                    // Pointer to item file data?
-    &lITKamexItemAttributes,                // Offset of item attributes in file?
+    &gITManagerCommonData,                  // Pointer to item file data?
+    &llITCommonDataKamexItemAttributes,     // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -62,8 +51,8 @@ ITStatusDesc dITKamexStatusDescs[/* */] =
 
     // Status 1 (Neutral Appear)
     {
-        itKamexAppearProcUpdate,           // Proc Update
-        itKamexAppearProcMap,              // Proc Map
+        itKamexAppearProcUpdate,            // Proc Update
+        itKamexAppearProcMap,               // Proc Map
         NULL,                               // Proc Hit
         NULL,                               // Proc Shield
         NULL,                               // Proc Hop
@@ -88,15 +77,15 @@ ITStatusDesc dITKamexStatusDescs[/* */] =
 // 0x8018AF74
 WPDesc dITKamexWeaponHydroWeaponDesc =
 {
-    0x01,                                   // Render flags?
-    nWPKindKamexHydro,                      // Weapon Kind
-    &gITManagerCommonData,                    // Pointer to weapon's loaded files?
-    &lITKamexWeaponHydroWeaponAttributes,   // Offset of weapon attributes in loaded files
+    0x01,                                      // Render flags?
+    nWPKindKamexHydro,                         // Weapon Kind
+    &gITManagerCommonData,                     // Pointer to weapon's loaded files?
+    &llITCommonDataKamexHydroWeaponAttributes, // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
-        nGCMatrixKindTraRotRpyRSca,          // Main matrix transformations
-        nGCMatrixKindNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyRSca,         // Main matrix transformations
+        nGCMatrixKindNull,                  // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -297,7 +286,7 @@ void itKamexAttackInitVars(GObj *item_gobj, sb32 is_ignore_setup)
 
         if (ip->kind == nITKindKamex)
         {
-            Gfx *dl = (Gfx*) itGetPData(ip, lITKamexDataStart, lITKamexDisplayList);
+            Gfx *dl = (Gfx*) itGetPData(ip, llITCommonDataKamexDataStart, llITCommonDataKamexDisplayList);
 
             dobj->dl = dl;
 
@@ -429,7 +418,7 @@ GObj* itKamexMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         }
         dobj->translate.vec.f.y -= kamex_ip->attr->map_coll_bottom;
 
-        gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(kamex_ip, lITKamexDataStart), 0.0F);
+        gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(kamex_ip, llITCommonDataKamexDataStart), 0.0F);
     }
     return item_gobj;
 }

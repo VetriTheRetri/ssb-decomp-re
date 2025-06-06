@@ -1,22 +1,7 @@
 #include <it/item.h>
 #include <wp/weapon.h>
 #include <gr/ground.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-
-extern intptr_t lITSpearItemAttributes;     // 0x0000098C
-extern intptr_t 
-lITSpearWeaponSwarmWeaponAttributes;        // 0x000009D4
-extern intptr_t 
-lITPippiWeaponSwarmWeaponAttributes;        // 0x00000CBC
-extern intptr_t lITSpearDataStart;          // 0x0000DF38
-extern intptr_t lITSpearAnimJoint;          // 0x0000DFFC
-extern intptr_t lITSpearMatAnimJoint;       // 0x0000E12C
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -28,13 +13,13 @@ extern intptr_t lITSpearMatAnimJoint;       // 0x0000E12C
 ITDesc dITSpearItemDesc =
 {
     nITKindSpear,                           // Item Kind
-    &gITManagerCommonData,                    // Pointer to item file data?
-    &lITSpearItemAttributes,                // Offset of item attributes in file?
+    &gITManagerCommonData,                  // Pointer to item file data?
+    &llITCommonDataSpearItemAttributes,     // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nGCMatrixKindTraRotRpyR,             // Main matrix transformations
-        nGCMatrixKindNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyR,            // Main matrix transformations
+        nGCMatrixKindNull,                  // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -80,15 +65,15 @@ ITStatusDesc dITSpearStatusDescs[/* */] =
 // 0x8018AE74
 WPDesc dITSpearWeaponSwarmWeaponDesc =
 {
-    0x01,                                   // Render flags?
-    nWPKindSpearSwarm,                      // Weapon Kind
+    0x01,                                     // Render flags?
+    nWPKindSpearSwarm,                        // Weapon Kind
     &gITManagerCommonData,                    // Pointer to character's loaded files?
-    &lITSpearWeaponSwarmWeaponAttributes,   // Offset of weapon attributes in loaded files
+    &llITCommonDataSpearSwarmWeaponAttributes,// Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
-        nGCMatrixKindTraRotRpyR,             // Main matrix transformations
-        nGCMatrixKindNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyR,            // Main matrix transformations
+        nGCMatrixKindNull,                  // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -105,15 +90,15 @@ WPDesc dITSpearWeaponSwarmWeaponDesc =
 // 0x8018AEA8
 WPDesc dITPippiWeaponSwarmWeaponDesc =
 {
-    0x01,                                   // Render flags?
-    nWPKindSpearSwarm,                      // Weapon Kind
+    0x01,                                     // Render flags?
+    nWPKindSpearSwarm,                        // Weapon Kind
     &gITManagerCommonData,                    // Pointer to character's loaded files?
-    &lITPippiWeaponSwarmWeaponAttributes,   // Offset of weapon attributes in loaded files
+    &llITCommonDataPippiSwarmWeaponAttributes,// Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
-        nGCMatrixKindTraRotRpyR,             // Main matrix transformations
-        nGCMatrixKindNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyR,            // Main matrix transformations
+        nGCMatrixKindNull,                  // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -197,11 +182,11 @@ void itSpearAppearInitVars(GObj *item_gobj)
         void *anim_joint; 
         void *matanim_joint;
 
-        anim_joint = itGetPData(ip, lITSpearDataStart, lITSpearAnimJoint);
+        anim_joint = itGetPData(ip, llITCommonDataSpearDataStart, llITCommonDataSpearAnimJoint);
 
         gcAddDObjAnimJoint(dobj->child, anim_joint, 0.0F);
 
-        matanim_joint = itGetPData(ip, lITSpearDataStart, lITSpearMatAnimJoint);
+        matanim_joint = itGetPData(ip, llITCommonDataSpearDataStart, llITCommonDataSpearMatAnimJoint);
 
         gcAddMObjMatAnimJoint(dobj->child->mobj, matanim_joint, 0.0F);
         gcPlayAnimAll(item_gobj);
@@ -348,7 +333,7 @@ GObj* itSpearMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f.y -= ip->attr->map_coll_bottom;
 
-        gcAddDObjAnimJoint(dobj->child, itGetMonsterAnimNode(ip, lITSpearDataStart), 0.0F);
+        gcAddDObjAnimJoint(dobj->child, itGetMonsterAnimNode(ip, llITCommonDataSpearDataStart), 0.0F);
     }
     return item_gobj;
 }

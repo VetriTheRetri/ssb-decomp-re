@@ -1,16 +1,6 @@
 #include <it/item.h>
 #include <sc/scene.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lITBoxItemAttributes;       // 0x000005CC
-extern intptr_t lITBoxAttackEvents;            // 0x00000614
-extern intptr_t lITBoxDataStart;            // 0x00006778
-extern intptr_t lITBoxEffectDisplayList;    // 0x000068F0
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -33,13 +23,13 @@ Vec2f dITBoxItemSpawnVelocities[/* */] =
 ITDesc dITBoxItemDesc = 
 {
     nITKindBox,                             // Item Kind
-    &gITManagerCommonData,                    // Pointer to item file data?
-    &lITBoxItemAttributes,                  // Offset of item attributes in file?
+    &gITManagerCommonData,                  // Pointer to item file data?
+    &llITCommonDataBoxItemAttributes,       // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nGCMatrixKindTraRotRpyR,             // Main matrix transformations
-        nGCMatrixKindNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyR,            // Main matrix transformations
+        nGCMatrixKindNull,                  // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -199,7 +189,7 @@ void itBoxContainerSmashMakeEffect(Vec3f *pos)
         {
             gcAddGObjDisplay(effect_gobj, gcDrawDObjTreeForGObj, 11, GOBJ_PRIORITY_DEFAULT, ~0);
 
-            dl = (Gfx*) ((*(uintptr_t*) ((uintptr_t)*dITBoxItemDesc.p_file + dITBoxItemDesc.o_attributes) - (intptr_t)&lITBoxDataStart) + (intptr_t)&lITBoxEffectDisplayList);
+            dl = (Gfx*) ((*(uintptr_t*) ((uintptr_t)*dITBoxItemDesc.p_file + dITBoxItemDesc.o_attributes) - (intptr_t)&llITCommonDataBoxDataStart) + (intptr_t)&llITCommonDataBoxEffectDisplayList);
 
             for (i = 0; i < ITCONTAINER_EFFECT_COUNT; i++)
             {
@@ -447,7 +437,7 @@ sb32 itBoxExplodeProcUpdate(GObj *item_gobj)
     {
         return TRUE;
     }
-    else itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITBoxItemDesc, lITBoxAttackEvents));
+    else itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITBoxItemDesc, llITCommonDataBoxAttackEvents));
 
     return FALSE;
 }
@@ -494,7 +484,7 @@ void itBoxExplodeInitVars(GObj *item_gobj)
 
     itMainClearOwnerStats(item_gobj);
     itMainRefreshAttackColl(item_gobj);
-    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITBoxItemDesc, lITBoxAttackEvents));
+    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITBoxItemDesc, llITCommonDataBoxAttackEvents));
 }
 
 // 0x80179AD4

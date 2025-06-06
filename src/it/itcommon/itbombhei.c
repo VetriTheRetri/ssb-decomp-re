@@ -1,17 +1,5 @@
 #include <it/item.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lITBombHeiItemAttributes;       // 0x00000424
-extern intptr_t lITBombHeiAttackEvents;         // 0x0000046C
-extern intptr_t lITBombHeiDataStart;            // 0x000033F8
-extern intptr_t lITBombHeiWalkRightDisplayList; // 0x00003310
-extern intptr_t lITBombHeiWalkLeftDisplayList;  // 0x000034C0         
-extern intptr_t lITBombHeiWalkMatAnimJoint;     // 0x000035B8
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -22,21 +10,21 @@ extern intptr_t lITBombHeiWalkMatAnimJoint;     // 0x000035B8
 // 0x80189F90 - unused?
 intptr_t dITBombHeiDisplayListOffsets[/* */] = 
 {
-    &lITBombHeiWalkRightDisplayList, 
-    &lITBombHeiWalkLeftDisplayList
+    &llITCommonDataBombHeiWalkRightDisplayList,
+    &llITCommonDataBombHeiWalkLeftDisplayList
 };
 
 // 0x80189F98
 ITDesc dITBombHeiItemDesc =
 {
     nITKindBombHei,                         // Item Kind
-    &gITManagerCommonData,                    // Pointer to item file data?
-    &lITBombHeiItemAttributes,              // Offset of item attributes in file?
+    &gITManagerCommonData,                  // Pointer to item file data?
+    &llITCommonDataBombHeiItemAttributes,   // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nGCMatrixKindTra,                    // Main matrix transformations
-        nGCMatrixKindNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTra,                   // Main matrix transformations
+        nGCMatrixKindNull,                  // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -223,8 +211,8 @@ void itBombHeiCommonSetWalkLR(GObj *item_gobj, ub8 lr)
 {
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
-    Gfx *dll = itGetPData(ip, lITBombHeiDataStart, lITBombHeiWalkLeftDisplayList);  // (void*)((uintptr_t)((uintptr_t)ip->attr->data - (uintptr_t)&lITBombHeiDataStart) + &lITBombHeiWalkLeftDisplayList);
-    Gfx *dlr = itGetPData(ip, lITBombHeiDataStart, lITBombHeiWalkRightDisplayList); // (void*)((uintptr_t)((uintptr_t)ip->attr->data - (uintptr_t)&lITBombHeiDataStart) + &lITBombHeiWalkRightDisplayList);
+    Gfx *dll = itGetPData(ip, llITCommonDataBombHeiDataStart, llITCommonDataBombHeiWalkLeftDisplayList);  // (void*)((uintptr_t)((uintptr_t)ip->attr->data - (uintptr_t)&llITCommonDataBombHeiDataStart) + &llITCommonDataBombHeiWalkLeftDisplayList);
+    Gfx *dlr = itGetPData(ip, llITCommonDataBombHeiDataStart, llITCommonDataBombHeiWalkRightDisplayList); // (void*)((uintptr_t)((uintptr_t)ip->attr->data - (uintptr_t)&llITCommonDataBombHeiDataStart) + &llITCommonDataBombHeiWalkRightDisplayList);
 
     if (lr != 0)
     {
@@ -320,7 +308,7 @@ sb32 itBombHeiWaitProcUpdate(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
-    void *dll = itGetPData(ip, lITBombHeiDataStart, lITBombHeiWalkLeftDisplayList);
+    void *dll = itGetPData(ip, llITCommonDataBombHeiDataStart, llITCommonDataBombHeiWalkLeftDisplayList);
     s32 lr;
 
     if (ip->multi == ITBOMBHEI_WALK_WAIT)
@@ -534,7 +522,7 @@ void itBombHeiWalkInitVars(GObj *item_gobj)
 
     itMainRefreshAttackColl(item_gobj);
 
-    matanim_joint = itGetPData(ip, lITBombHeiDataStart, lITBombHeiWalkMatAnimJoint);
+    matanim_joint = itGetPData(ip, llITCommonDataBombHeiDataStart, llITCommonDataBombHeiWalkMatAnimJoint);
 
     gcAddMObjMatAnimJoint(dobj->mobj, matanim_joint, 0.0F);
     gcPlayAnimAll(item_gobj);
@@ -589,7 +577,7 @@ void itBombHeiCommonClearVelSetExplode(GObj *item_gobj, u8 unused)
 void itBombHeiCommonUpdateAttackEvent(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
-    ITAttackEvent *ev = itGetAttackEvent(dITBombHeiItemDesc, lITBombHeiAttackEvents);
+    ITAttackEvent *ev = itGetAttackEvent(dITBombHeiItemDesc, llITCommonDataBombHeiAttackEvents);
 
     if (ip->multi == ev[ip->event_id].timer)
     {

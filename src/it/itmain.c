@@ -1,14 +1,13 @@
 #include <it/item.h>
 #include <ft/fighter.h>
 #include <sc/scene.h>
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
 //       EXTERNAL VARIABLES      //
 //                               //
 // // // // // // // // // // // //
-
-extern intptr_t lITMainContainerVelocitiesY;  // 0x00000000
 
 extern alSoundEffect* func_800269C0_275C0(u16);
 
@@ -583,8 +582,8 @@ sb32 itMainMakeContainerItem(GObj *parent_gobj)
         {
             vel.x = 0.0F;
 
-            // Quite ridiculous especially since lITMainContainerVelocitiesY is 0
-            vel.y = *(f32*) ((intptr_t)&lITMainContainerVelocitiesY + ((uintptr_t) &((f32*)gITManagerCommonData)[kind]));
+            // Quite ridiculous especially since llITCommonDataContainerVelocitiesY is 0
+            vel.y = *(f32*) ((intptr_t)&llITCommonDataContainerVelocitiesY + ((uintptr_t) &((f32*)gITManagerCommonData)[kind]));
             vel.z = 0;
 
             if

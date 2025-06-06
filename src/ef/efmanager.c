@@ -5889,7 +5889,7 @@ GObj* efManagerCaptureKirbyStarMakeEffect(GObj *fighter_gobj)
 
     dEFManagerCaptureKirbyStarEffectDesc.file_head = &addr;
 
-    p_addr = lbRelocGetFileData(void**, gITManagerCommonData, &llITCommonData_4D4_Unknown);
+    p_addr = lbRelocGetFileData(void**, gITManagerCommonData, &llITCommonDataStarRodWeaponAttributes);
     addr = (void*) ((uintptr_t)*p_addr - (intptr_t)&llITCommonDataKirbyStarDObjDesc);
 
     effect_gobj = efManagerMakeEffectNoForce(&dEFManagerCaptureKirbyStarEffectDesc);
@@ -5964,7 +5964,7 @@ GObj* efManagerLoseKirbyStarMakeEffect(GObj *fighter_gobj)
 
     dEFManagerLoseKirbyStarEffectDesc.file_head = &addr;
 
-    p_addr = lbRelocGetFileData(void**, gITManagerCommonData, &llITCommonData_4D4_Unknown);
+    p_addr = lbRelocGetFileData(void**, gITManagerCommonData, &llITCommonDataStarRodWeaponAttributes);
     addr = ((uintptr_t)*p_addr - (intptr_t)&llITCommonDataKirbyStarDObjDesc);
 
     effect_gobj = efManagerMakeEffectNoForce(&dEFManagerLoseKirbyStarEffectDesc);

@@ -1,16 +1,7 @@
 #include <it/item.h>
 #include <wp/weapon.h>
 #include <ft/fighter.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lITLGunItemAttributes;      // 0x00000268
-extern intptr_t 
-lITLGunWeaponAmmoWeaponAttributes;          // 0x000002B0
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -21,13 +12,13 @@ lITLGunWeaponAmmoWeaponAttributes;          // 0x000002B0
 ITDesc dITLGunItemDesc =
 {
     nITKindLGun,                            // Item Kind
-    &gITManagerCommonData,                    // Pointer to item file data?
-    &lITLGunItemAttributes,                 // Offset of item attributes in file?
+    &gITManagerCommonData,                  // Pointer to item file data?
+    &llITCommonDataLGunItemAttributes,      // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nGCMatrixKindTraRotRpyR,             // Main matrix transformations
-        nGCMatrixKindNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyR,            // Main matrix transformations
+        nGCMatrixKindNull,                  // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -105,17 +96,17 @@ ITStatusDesc dITLGunStatusDescs[/* */] =
     }
 };
 
-WPDesc lITLGunWeaponAmmoWeaponDesc =
+WPDesc llITCommonDataLGunWeaponAmmoWeaponDesc =
 {
     0x00,                                   // Render flags?
     nWPKindLGunAmmo,                        // Weapon Kind
-    &gITManagerCommonData,                    // Pointer to character's loaded files?
-    &lITLGunWeaponAmmoWeaponAttributes,     // Offset of weapon attributes in loaded files
+    &gITManagerCommonData,                  // Pointer to character's loaded files?
+    &llITCommonDataLGunAmmoWeaponAttributes,// Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
-        nGCMatrixKindTraRotRpyRSca,          // Main matrix transformations
-        nGCMatrixKindNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyRSca,         // Main matrix transformations
+        nGCMatrixKindNull,                  // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -351,7 +342,7 @@ sb32 itLGunWeaponAmmoProcReflector(GObj *weapon_gobj)
 // 0x80175A60
 GObj* itLGunWeaponAmmoMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 {
-    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &lITLGunWeaponAmmoWeaponDesc, pos, (WEAPON_FLAG_COLLPROJECT | WEAPON_FLAG_PARENT_FIGHTER));
+    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &llITCommonDataLGunWeaponAmmoWeaponDesc, pos, (WEAPON_FLAG_COLLPROJECT | WEAPON_FLAG_PARENT_FIGHTER));
     WPStruct *wp;
 
     if (weapon_gobj == NULL)

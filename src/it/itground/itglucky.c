@@ -1,14 +1,7 @@
 #include <it/item.h>
 #include <gr/ground.h>
 #include <sc/scene.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lITGLuckyItemAttributes;    // 0x000000BC
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -20,12 +13,12 @@ ITDesc dITGLuckyItemDesc =
 {
     nITKindGLucky,                          // Item Kind
     &gGRCommonStruct.yamabuki.item_head,    // Pointer to item file data?
-    &lITGLuckyItemAttributes,               // Offset of item attributes in file?
+    &llGRYamabukiMapGLuckyItemAttributes,   // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nGCMatrixKindTraRotRpyR,             // Main matrix transformations
-        nGCMatrixKindNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyR,            // Main matrix transformations
+        nGCMatrixKindNull,                  // Secondary matrix transformations?
         0                                   // ???
     },
 

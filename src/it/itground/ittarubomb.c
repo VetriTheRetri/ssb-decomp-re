@@ -1,5 +1,6 @@
 #include <it/item.h>
 #include <gr/ground.h>
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -12,11 +13,6 @@ extern f32 syUtilsArcTan2(f32, f32);
 
 extern alSoundEffect *func_800269C0_275C0(u16);
 
-extern intptr_t lITTaruBombItemAttributes;     // 0x000000A8
-extern intptr_t lITTaruBombAttackEvents;          // 0x000000F0
-extern intptr_t lITTaruBombDataStart;          // 0x00000788
-extern intptr_t lITTaruBombEffectDisplayList;  // 0x000008A0
-
 // // // // // // // // // // // //
 //                               //
 //       INITIALIZED DATA        //
@@ -27,13 +23,13 @@ ITDesc dITTaruBombItemDesc =
 {
     nITKindTaruBomb,                            // Item Kind
     &gGRCommonStruct.bonus3.item_head,          // Pointer to item file data?
-    &lITTaruBombItemAttributes,                 // Offset of item attributes in file?
+    &llGRBonus3MapTaruBombItemAttributes,       // Offset of item attributes in file?
 
     // DObj transformation struct
     {
         nGCMatrixKindTraRotRpyR,                 // Main matrix transformations
         nGCMatrixKindNull,                       // Secondary matrix transformations?
-        0                                       // ???
+        0                                        // ???
     },
 
     nGMAttackStateNew,                          // Hitbox Update State
@@ -152,7 +148,7 @@ void itTaruBombContainerSmashMakeEffect(Vec3f *pos)
         {
             gcAddGObjDisplay(effect_gobj, gcDrawDObjTreeForGObj, 11, GOBJ_PRIORITY_DEFAULT, ~0);
 
-            dl = (Gfx*) ((*(uintptr_t*)((uintptr_t)*dITTaruBombItemDesc.p_file + dITTaruBombItemDesc.o_attributes) - (uintptr_t)&lITTaruBombDataStart) + (uintptr_t)&lITTaruBombEffectDisplayList);
+            dl = (Gfx*) ((*(uintptr_t*)((uintptr_t)*dITTaruBombItemDesc.p_file + dITTaruBombItemDesc.o_attributes) - (uintptr_t)&llGRBonus3MapTaruBombDataStart) + (uintptr_t)&llGRBonus3MapTaruBombEffectDisplayList);
 
             for (i = 0; i < ITTARUBOMB_EFFECT_COUNT; i++)
             {
@@ -297,7 +293,7 @@ sb32 itTaruBombExplodeProcUpdate(GObj *item_gobj)
     {
         return TRUE;
     }
-    else itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITTaruBombItemDesc, lITTaruBombAttackEvents));
+    else itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITTaruBombItemDesc, llGRBonus3MapTaruBombAttackEvents));
 
     return FALSE;
 }
@@ -377,7 +373,7 @@ void itTaruBombExplodeInitVars(GObj *item_gobj)
     ip->damage_coll.hitstatus = nGMHitStatusNone;
 
     itMainRefreshAttackColl(item_gobj);
-    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITTaruBombItemDesc, lITTaruBombAttackEvents));
+    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITTaruBombItemDesc, llGRBonus3MapTaruBombAttackEvents));
 }
 
 // 0x80185284

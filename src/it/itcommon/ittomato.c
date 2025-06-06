@@ -1,12 +1,5 @@
 #include <it/item.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lITTomatoItemAttributes;    // 0x000000B8
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -17,14 +10,14 @@ extern intptr_t lITTomatoItemAttributes;    // 0x000000B8
 ITDesc dITTomatoItemDesc =
 {
     nITKindTomato,                          // Item Kind
-    &gITManagerCommonData,                    // Pointer to item file data?
-    &lITTomatoItemAttributes,               // Offset of item attributes in file?
+    &gITManagerCommonData,                  // Pointer to item file data?
+    &llITCommonDataTomatoItemAttributes,    // Offset of item attributes in file?
 
     // DObj transformation struct
     {
         nGCMatrixKindTraRotRpyR,             // Main matrix transformations
         nGCMatrixKindNull,                   // Secondary matrix transformations?
-        0                                   // ???
+        0                                    // ???
     },
 
     nGMAttackStateOff,                      // Hitbox Update State

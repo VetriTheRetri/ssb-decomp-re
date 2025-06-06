@@ -1,15 +1,7 @@
 #include <it/item.h>
 #include <ft/fighter.h>
 #include <sc/scene.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lITMSBombItemAttributes;    // 0x000003BC
-extern intptr_t lITMSBombAttackEvents;         // 0x00000404
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -20,13 +12,13 @@ extern intptr_t lITMSBombAttackEvents;         // 0x00000404
 ITDesc dITMSBombItemDesc =
 {
     nITKindMSBomb,                          // Item Kind
-    &gITManagerCommonData,                    // Pointer to item file data?
-    &lITMSBombItemAttributes,               // Offset of item attributes in file?
+    &gITManagerCommonData,                  // Pointer to item file data?
+    &llITCommonDataMSBombItemAttributes,    // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nGCMatrixKindNull,                   // Main matrix transformations
-        nGCMatrixKindNull,                   // Secondary matrix transformations?
+        nGCMatrixKindNull,                  // Main matrix transformations
+        nGCMatrixKindNull,                  // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -476,7 +468,7 @@ sb32 itMSBombAttachedProcMap(GObj *item_gobj)
 void itMSBombExplodeUpdateAttackEvent(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
-    ITAttackEvent *ev = itGetAttackEvent(dITMSBombItemDesc, lITMSBombAttackEvents); // (ITAttackEvent *)((uintptr_t)*dITMSBombItemDesc.p_file + &lITMSBombAttackEvents); - Linker thing
+    ITAttackEvent *ev = itGetAttackEvent(dITMSBombItemDesc, llITCommonDataMSBombAttackEvents); // (ITAttackEvent *)((uintptr_t)*dITMSBombItemDesc.p_file + &llITCommonDataMSBombAttackEvents); - Linker thing
 
     if (ip->multi == ev[ip->event_id].timer)
     {

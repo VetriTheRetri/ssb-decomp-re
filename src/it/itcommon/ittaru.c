@@ -1,13 +1,5 @@
 #include <it/item.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lITTaruItemAttributes;      // 0x00000634
-extern intptr_t lITTaruAttackEvents;           // 0x0000067C
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -18,13 +10,13 @@ extern intptr_t lITTaruAttackEvents;           // 0x0000067C
 ITDesc dITTaruItemDesc =
 {
     nITKindTaru,                            // Item Kind
-    &gITManagerCommonData,                    // Pointer to item file data?
-    &lITTaruItemAttributes,                 // Offset of item attributes in file?
+    &gITManagerCommonData,                  // Pointer to item file data?
+    &llITCommonDataTaruItemAttributes,      // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nGCMatrixKindTraRotRpyR,             // Main matrix transformations
-        nGCMatrixKindNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyR,            // Main matrix transformations
+        nGCMatrixKindNull,                  // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -334,7 +326,7 @@ sb32 itTaruExplodeProcUpdate(GObj *item_gobj)
     {
         return TRUE;
     }
-    else itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITTaruItemDesc, lITTaruAttackEvents));
+    else itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITTaruItemDesc, llITCommonDataTaruAttackEvents));
 
     return FALSE;
 }
@@ -435,7 +427,7 @@ void itTaruExplodeInitVars(GObj *item_gobj)
 
     itMainClearOwnerStats(item_gobj);
     itMainRefreshAttackColl(item_gobj);
-    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITTaruItemDesc, lITTaruAttackEvents));
+    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITTaruItemDesc, llITCommonDataTaruAttackEvents));
 }
 
 // 0x8017A2D8

@@ -1,23 +1,7 @@
 #include <it/item.h>
 #include <wp/weapon.h>
 #include <ft/fighter.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t 
-lITLizardonItemAttributes;                  // 0x000008FC
-extern intptr_t
-lITLizardonWeaponFlameWeaponAttributes;     // 0x00000944
-extern intptr_t
-lITLizardonDataStart;                       // 0x0000D5C0
-extern intptr_t 
-lITLizardonAnimJoint;                       // 0x0000D658
-extern intptr_t 
-lITLizardonMatAnimJoint;                    // 0x0000D688
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -29,14 +13,14 @@ lITLizardonMatAnimJoint;                    // 0x0000D688
 ITDesc dITLizardonItemDesc = 
 {
     nITKindLizardon,                        // Item Kind
-    &gITManagerCommonData,                    // Pointer to item file data?
-    &lITLizardonItemAttributes,             // Offset of item attributes in file?
+    &gITManagerCommonData,                  // Pointer to item file data?
+    &llITCommonDataLizardonItemAttributes,  // Offset of item attributes in file?
 
     // DObj transformation struct
     {
         nGCMatrixKindNull,                   // Main matrix transformations
         nGCMatrixKindNull,                   // Secondary matrix transformations?
-        0,                                  // ???
+        0,                                   // ???
     },
 
     nGMAttackStateNew,                      // Hitbox Update State
@@ -96,7 +80,7 @@ WPDesc dITLizardonWeaponFlameWeaponDesc =
     0x00,                                   // Render flags?
     nWPKindLizardonFlame,                   // Weapon Kind
     &gITManagerCommonData,                    // Pointer to character's loaded files?
-    &lITLizardonWeaponFlameWeaponAttributes,// Offset of weapon attributes in loaded files
+    &llITCommonDataLizardonFlameWeaponAttributes,// Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
@@ -284,10 +268,10 @@ void itLizardonAttackInitVars(GObj *item_gobj)
 
     if (ip->kind == nITKindLizardon)
     {
-        addr = (void*) ((uintptr_t)ip->attr->data - (intptr_t)&lITLizardonDataStart);
+        addr = (void*) ((uintptr_t)ip->attr->data - (intptr_t)&llITCommonDataLizardonDataStart);
 
-        gcAddDObjAnimJoint(dobj, lbRelocGetFileData(AObjEvent32*, addr, &lITLizardonAnimJoint), 0.0F);
-        gcAddMObjMatAnimJoint(dobj->mobj, lbRelocGetFileData(AObjEvent32*, addr, &lITLizardonMatAnimJoint), 0.0F);
+        gcAddDObjAnimJoint(dobj, lbRelocGetFileData(AObjEvent32*, addr, &llITCommonDataLizardonAnimJoint), 0.0F);
+        gcAddMObjMatAnimJoint(dobj->mobj, lbRelocGetFileData(AObjEvent32*, addr, &llITCommonDataLizardonMatAnimJoint), 0.0F);
         gcPlayAnimAll(item_gobj);
     }
 }
@@ -357,7 +341,7 @@ GObj* itLizardonMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f.y -= ip->attr->map_coll_bottom;
 
-        gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITLizardonDataStart), 0.0F);
+        gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, llITCommonDataLizardonDataStart), 0.0F);
     }
     return item_gobj;
 }

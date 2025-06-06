@@ -1,13 +1,5 @@
 #include <it/item.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lITMewItemAttributes;       // 0x00000838
-extern intptr_t lITMewDataStart;            // 0x0000BCC0
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -19,13 +11,13 @@ extern intptr_t lITMewDataStart;            // 0x0000BCC0
 ITDesc dITMewItemDesc =
 {
     nITKindMew,                             // Item Kind
-    &gITManagerCommonData,                    // Pointer to item file data?
-    &lITMewItemAttributes,                  // Offset of item attributes in file?
+    &gITManagerCommonData,                  // Pointer to item file data?
+    &llITCommonDataMewItemAttributes,       // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nGCMatrixKindTraRotRpyRSca,          // Main matrix transformations
-        nGCMatrixKindNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyRSca,         // Main matrix transformations
+        nGCMatrixKindNull,                  // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -178,7 +170,7 @@ GObj* itMewMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         dobj->translate.vec.f.y -= ip->attr->map_coll_bottom;
             
         // This ptr stuff is likely also a macro
-        gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITMewDataStart), 0.0F);
+        gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, llITCommonDataMewDataStart), 0.0F);
     }
     return item_gobj;
 }

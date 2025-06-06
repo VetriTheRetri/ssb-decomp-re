@@ -1,15 +1,6 @@
 #include <it/item.h>
 #include <gr/ground.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lITPowerBlockItemAttributes;// 0x000000D8
-extern intptr_t lITPowerBlockDataStart;     // 0x000011F8
-extern intptr_t lITPowerBlockAnimJoint;     // 0x00001288
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -21,12 +12,12 @@ ITDesc dITPowerBlockItemDesc =
 {
     nITKindPowerBlock,                      // Item Kind
     &gGRCommonStruct.inishie.item_head,     // Pointer to item file data?
-    &lITPowerBlockItemAttributes,           // Offset of item attributes in file?
+    &llGRInishieMapPowerBlockItemAttributes,// Offset of item attributes in file?
 
     // DObj transformation struct
     {
         0x44,                               // Main matrix transformations
-        nGCMatrixKindNull,                   // Secondary matrix transformations?
+        nGCMatrixKindNull,                  // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -114,7 +105,7 @@ sb32 itPowerBlockWaitProcDamage(GObj *item_gobj)
     ip->proc_update = itPowerBlockNDamageProcUpdate;
     ip->damage_coll.hitstatus = nGMHitStatusNone;
 
-    gcAddDObjAnimJoint(DObjGetStruct(item_gobj), itGetPData(ip, lITPowerBlockDataStart, lITPowerBlockAnimJoint), 0.0F);
+    gcAddDObjAnimJoint(DObjGetStruct(item_gobj), itGetPData(ip, llGRInishieMapPowerBlockDataStart, llGRInishieMapPowerBlockAnimJoint), 0.0F);
     gcPlayAnimAll(item_gobj);
     func_800269C0_275C0(nSYAudioFGMInishiePowerBlock);
     efManagerQuakeMakeEffect(3);

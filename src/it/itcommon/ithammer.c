@@ -1,12 +1,5 @@
 #include <it/item.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lITHammerItemAttributes;    // 0x00000374
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -18,7 +11,7 @@ ITDesc dITHammerItemDesc =
 {
     nITKindHammer,                          // Item Kind
     &gITManagerCommonData,                  // Pointer to item file data?
-    &lITHammerItemAttributes,               // Offset of item attributes in file?
+    &llITCommonDataHammerItemAttributes,    // Offset of item attributes in file?
 
     // DObj transformation struct
     {

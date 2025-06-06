@@ -1,14 +1,6 @@
 #include <it/item.h>
 #include <gr/ground.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lITMarumineItemAttributes;  // 0x00000104
-extern intptr_t lITMarumineAttackEvents;       // 0x0000014C
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -20,12 +12,12 @@ ITDesc dITMarumineItemDesc =
 {
     nITKindMarumine,                        // Item Kind
     &gGRCommonStruct.yamabuki.item_head,    // Pointer to item file data?
-    &lITMarumineItemAttributes,             // Offset of item attributes in file?
+    &llGRYamabukiMapMarumineItemAttributes,  // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nGCMatrixKindTra,                    // Main matrix transformations
-        nGCMatrixKindNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTra,                   // Main matrix transformations
+        nGCMatrixKindNull,                  // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -105,7 +97,7 @@ void itMarumineExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 void itMarumineExplodeUpdateAttackEvent(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
-    ITAttackEvent *ev = itGetAttackEvent(dITMarumineItemDesc, lITMarumineAttackEvents); // (ITAttackEvent*) ((uintptr_t)*dITMarumineItemDesc.p_file + (intptr_t)&lITMarumineAttackEvents);
+    ITAttackEvent *ev = itGetAttackEvent(dITMarumineItemDesc, llGRYamabukiMapMarumineAttackEvents); // (ITAttackEvent*) ((uintptr_t)*dITMarumineItemDesc.p_file + (intptr_t)&llGRYamabukiMapMarumineAttackEvents);
 
     if (ip->multi == ev[ip->event_id].timer)
     {

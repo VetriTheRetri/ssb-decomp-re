@@ -1,16 +1,6 @@
 #include <it/item.h>
 #include <ft/fighter.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lITNBumperItemAttributes;   // 0x0000069C
-extern intptr_t lITNBumperDataStart;        // 0x00007648
-extern intptr_t lITNBumperWaitMObjSub;      // 0x00007A38
-extern intptr_t lITNBumperWaitDisplayList;  // 0x00007AF8
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -22,14 +12,14 @@ extern intptr_t lITNBumperWaitDisplayList;  // 0x00007AF8
 ITDesc dITNBumperItemDesc =
 {
     nITKindNBumper,                         // Item Kind
-    &gITManagerCommonData,                    // Pointer to item file data?
-    &lITNBumperItemAttributes,              // Offset of item attributes in file?
+    &gITManagerCommonData,                  // Pointer to item file data?
+    &llITCommonDataNBumperItemAttributes,   // Offset of item attributes in file?
 
     // DObj transformation struct
     {
         nGCMatrixKindTra,                    // Main matrix transformations
         nGCMatrixKindNull,                   // Secondary matrix transformations?
-        0                                   // ???
+        0                                    // ???
     },
 
     nGMAttackStateOff,                      // Hitbox Update State
@@ -370,11 +360,11 @@ void itNBumperAttachedInitVars(GObj *item_gobj)
     ip->physics.vel_air.y = 0.0F;
     ip->physics.vel_air.z = 0.0F;
 
-    dl = itGetPData(ip, lITNBumperDataStart, lITNBumperWaitDisplayList); // (uintptr_t)((uintptr_t)ip->attr->data - (intptr_t)&lITNBumperDataStart) + (intptr_t)&lITNBumperWaitDisplayList; Linker thing
+    dl = itGetPData(ip, llITCommonDataNBumperDataStart, llITCommonDataNBumperWaitDisplayList); // (uintptr_t)((uintptr_t)ip->attr->data - (intptr_t)&llITCommonDataNBumperDataStart) + (intptr_t)&llITCommonDataNBumperWaitDisplayList; Linker thing
 
     dobj->dl = dl;
 
-    mobjsub = itGetPData(ip, lITNBumperDataStart, lITNBumperWaitMObjSub); // ((uintptr_t)((uintptr_t)ip->attr->data - (intptr_t)&lITNBumperDataStart) + (intptr_t)&lITNBumperWaitMObjSub);
+    mobjsub = itGetPData(ip, llITCommonDataNBumperDataStart, llITCommonDataNBumperWaitMObjSub); // ((uintptr_t)((uintptr_t)ip->attr->data - (intptr_t)&llITCommonDataNBumperDataStart) + (intptr_t)&llITCommonDataNBumperWaitMObjSub);
 
     gcRemoveMObjAll(dobj);
     gcAddMObjForDObj(dobj, mobjsub);

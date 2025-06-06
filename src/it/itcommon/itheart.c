@@ -1,12 +1,5 @@
 #include <it/item.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lITHeartItemAttributes;     // 0x00000100
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -17,8 +10,8 @@ extern intptr_t lITHeartItemAttributes;     // 0x00000100
 ITDesc dITHeartItemDesc =
 {
     nITKindHeart,                           // Item Kind
-    &gITManagerCommonData,                    // Pointer to item file data?
-    &lITHeartItemAttributes,                // Offset of item attributes in file?
+    &gITManagerCommonData,                  // Pointer to item file data?
+    &llITCommonDataHeartItemAttributes,     // Offset of item attributes in file?
 
     // DObj transformation struct
     {

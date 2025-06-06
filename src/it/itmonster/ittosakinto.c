@@ -1,15 +1,5 @@
 #include <it/item.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lITTosakintoItemAttributes; // 0x000007F0
-extern intptr_t lITTosakintoDataStart;      // 0x0000B708
-extern intptr_t lITTosakintoAnimJoint;      // 0x0000B7CC
-extern intptr_t lITTosakintoMatAnimJoint;   // 0x0000B90C
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -21,14 +11,14 @@ extern intptr_t lITTosakintoMatAnimJoint;   // 0x0000B90C
 ITDesc dITTosakintoItemDesc =
 {
     nITKindTosakinto,                       // Item Kind
-    &gITManagerCommonData,                    // Pointer to item file data?
-    &lITTosakintoItemAttributes,            // Offset of item attributes in file?
+    &gITManagerCommonData,                  // Pointer to item file data?
+    &llITCommonDataTosakintoItemAttributes, // Offset of item attributes in file?
 
     // DObj transformation struct
     {
         nGCMatrixKindNull,                   // Main matrix transformations
         nGCMatrixKindNull,                   // Secondary matrix transformations?
-        0,                                  // ???
+        0,                                   // ???
     },
 
     nGMAttackStateOff,                      // Hitbox Update State
@@ -183,11 +173,11 @@ void itTosakintoBounceInitVars(GObj *item_gobj)
 
     if (ip->kind == nITKindTosakinto)
     {
-        anim_joint = itGetPData(ip, lITTosakintoDataStart, lITTosakintoAnimJoint);
+        anim_joint = itGetPData(ip, llITCommonDataTosakintoDataStart, llITCommonDataTosakintoAnimJoint);
 
         gcAddDObjAnimJoint(dobj->child, anim_joint, 0.0F);
 
-        matanim_joint = itGetPData(ip, lITTosakintoDataStart, lITTosakintoMatAnimJoint);
+        matanim_joint = itGetPData(ip, llITCommonDataTosakintoDataStart, llITCommonDataTosakintoMatAnimJoint);
 
         gcAddMObjMatAnimJoint(dobj->child->mobj, matanim_joint, 0.0F);
 
@@ -257,7 +247,7 @@ GObj* itTosakintoMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f.y -= ip->attr->map_coll_bottom;
 
-        gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITTosakintoDataStart), 0.0F);
+        gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, llITCommonDataTosakintoDataStart), 0.0F);
     }
     return item_gobj;
 }

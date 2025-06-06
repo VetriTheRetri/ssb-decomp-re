@@ -1,17 +1,6 @@
 #include <it/item.h>
 #include <wp/weapon.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lITDogasItemAttributes;     // 0x00000BF8
-extern intptr_t
-lITDogasWeaponSmogWeaponAttributes;         // 0x00000C40
-extern intptr_t lITDogasDataStart;          // 0x00012820
-extern intptr_t lITDogasAnimJoint;          // 0x000128DC
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -23,14 +12,14 @@ extern intptr_t lITDogasAnimJoint;          // 0x000128DC
 ITDesc dITDogasItemDesc =
 {
     nITKindDogas,                           // Item Kind
-    &gITManagerCommonData,                    // Pointer to item file data?
-    &lITDogasItemAttributes,                // Offset of item attributes in file?
+    &gITManagerCommonData,                  // Pointer to item file data?
+    &llITCommonDataDogasItemAttributes,     // Offset of item attributes in file?
 
     // DObj transformation struct
     {
         nGCMatrixKindNull,                   // Main matrix transformations
         nGCMatrixKindNull,                   // Secondary matrix transformations?
-        0,                                  // ???
+        0,                                   // ???
     },
 
     nGMAttackStateOff,                      // Hitbox Update State
@@ -78,7 +67,7 @@ WPDesc dITDogasWeaponSmogWeaponDesc =
     0x03,                                   // Render flags?
     nWPKindDogasSmog,                       // Weapon Kind
     &gITManagerCommonData,                    // Pointer to weapon's loaded files?
-    &lITDogasWeaponSmogWeaponAttributes,    // Offset of weapon attributes in loaded files
+    &llITCommonDataDogasSmogWeaponAttributes,    // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
@@ -208,7 +197,7 @@ void itDogasAttackInitVars(GObj *item_gobj)
     {
         ip->item_vars.dogas.pos = dobj->translate.vec.f;
 
-        gcAddDObjAnimJoint(dobj->child, itGetPData(ip, lITDogasDataStart, lITDogasAnimJoint), 0.0F);
+        gcAddDObjAnimJoint(dobj->child, itGetPData(ip, llITCommonDataDogasDataStart, llITCommonDataDogasAnimJoint), 0.0F);
 
         gcPlayAnimAll(item_gobj);
         func_800269C0_275C0(nSYAudioVoiceMBallDogasAppear);
@@ -276,7 +265,7 @@ GObj* itDogasMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         ip->physics.vel_air.z = 0.0F;
         ip->physics.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        gcAddDObjAnimJoint(dobj->child, itGetMonsterAnimNode(ip, lITDogasDataStart), 0.0F);
+        gcAddDObjAnimJoint(dobj->child, itGetMonsterAnimNode(ip, llITCommonDataDogasDataStart), 0.0F);
     }
     return item_gobj;
 }

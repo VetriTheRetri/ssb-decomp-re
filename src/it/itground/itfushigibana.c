@@ -2,6 +2,7 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 #include <gr/ground.h>
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -10,14 +11,6 @@
 // // // // // // // // // // // //
 
 extern alSoundEffect* func_800269C0_275C0(u16);
-
-extern intptr_t
-lITFushigibanaItemAttributes;                   // 0x00000278
-extern intptr_t 
-lITFushigibanaHitParties;                       // 0x000002C0
-extern intptr_t
-lITFushigibanaWeaponRazorWeaponAttributes;      // 0x00000308
-
 extern s32 dGRYamabukiMonsterAttackKind;
 
 // // // // // // // // // // // //
@@ -30,12 +23,12 @@ ITDesc dITFushigibanaItemDesc =
 {
     nITKindFushigibana,                         // Item Kind
     &gGRCommonStruct.yamabuki.item_head,        // Pointer to item file data?
-    &lITFushigibanaItemAttributes,              // Offset of item attributes in file?
+    &llGRYamabukiMapFushigibanaItemAttributes,  // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nGCMatrixKindTraRotRpyR,                 // Main matrix transformations
-        nGCMatrixKindNull,                       // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyR,                // Main matrix transformations
+        nGCMatrixKindNull,                      // Secondary matrix transformations?
         0                                       // ???
     },
 
@@ -55,12 +48,12 @@ WPDesc dITFushigibanaWeaponRazorWeaponDesc =
     0x03,                                       // Render flags?
     nWPKindFushigibanaRazor,                    // Weapon Kind
     &gGRCommonStruct.yamabuki.item_head,        // Pointer to item's loaded files?
-    &lITFushigibanaWeaponRazorWeaponAttributes, // Offset of weapon attributes in loaded files
+    &llGRYamabukiMapFushigibanaRazorWeaponAttributes, // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
-        nGCMatrixKindTraRotRpyRSca,              // Main matrix transformations
-        nGCMatrixKindNull,                       // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyRSca,             // Main matrix transformations
+        nGCMatrixKindNull,                      // Secondary matrix transformations?
         0                                       // ???
     },
 
@@ -84,7 +77,7 @@ WPDesc dITFushigibanaWeaponRazorWeaponDesc =
 void itFushigibanaCommonUpdateMonsterEvent(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
-    ITMonsterEvent *ev = itGetMonsterEvent(dITFushigibanaItemDesc, lITFushigibanaHitParties); // (ITMonsterEvent*) ((uintptr_t)*dITFushigibanaItemDesc.p_file + (intptr_t)&Fushigibana_Event);
+    ITMonsterEvent *ev = itGetMonsterEvent(dITFushigibanaItemDesc, llGRYamabukiMapFushigibanaHitParties); // (ITMonsterEvent*) ((uintptr_t)*dITFushigibanaItemDesc.p_file + (intptr_t)&Fushigibana_Event);
 
     if (ip->multi == ev[ip->event_id].timer)
     {

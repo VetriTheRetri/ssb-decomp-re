@@ -1,18 +1,7 @@
 #include <it/item.h>
 #include <wp/weapon.h>
 #include <ft/fighter.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lITStarRodItemAttributes;   // 0x0000048C     
-extern intptr_t
-lITStarRodWeaponStarWeaponAttributes;       // 0x000004D4
-extern intptr_t 
-lITStarRodWeaponStarSmashAttributes;        // 0x00000508
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -24,7 +13,7 @@ ITDesc dITStarRodItemDesc =
 {
     nITKindStarRod,                         // Item Kind
     &gITManagerCommonData,                  // Pointer to item file data?
-    &lITStarRodItemAttributes,              // Offset of item attributes in file?
+    &llITCommonDataStarRodItemAttributes,   // Offset of item attributes in file?
 
     // DObj transformation struct
     {
@@ -111,13 +100,13 @@ WPDesc dITStarRodWeaponStarWeaponDesc =
 {
     0x00,                                   // Render flags?
     nWPKindStarRodStar,                     // Weapon Kind
-    &gITManagerCommonData,                    // Pointer to character's loaded files?
-    &lITStarRodWeaponStarWeaponAttributes,  // Offset of weapon attributes in loaded files
+    &gITManagerCommonData,                  // Pointer to character's loaded files?
+    &llITCommonDataStarRodWeaponAttributes, // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
-        nGCMatrixKindTraRotRpyRSca,          // Main matrix transformations
-        nGCMatrixKindNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyRSca,         // Main matrix transformations
+        nGCMatrixKindNull,                  // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -382,7 +371,7 @@ GObj* itStarRodWeaponStarMakeWeapon(GObj *fighter_gobj, Vec3f *pos, ub8 is_smash
 
     if (is_smash == TRUE)
     {
-        dITStarRodWeaponStarWeaponDesc.o_attributes = (intptr_t)&lITStarRodWeaponStarSmashAttributes; // Set attribute data on smash input - Linker thing
+        dITStarRodWeaponStarWeaponDesc.o_attributes = (intptr_t)&llITCommonDataStarRodSmashWeaponAttributes; // Set attribute data on smash input - Linker thing
     }
     weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dITStarRodWeaponStarWeaponDesc, pos, (WEAPON_FLAG_COLLPROJECT | WEAPON_FLAG_PARENT_FIGHTER));
 

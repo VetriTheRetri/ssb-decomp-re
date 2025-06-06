@@ -1,5 +1,6 @@
 #include <it/item.h>
 #include <ft/fighter.h>
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -9,10 +10,6 @@
 
 // WARNING: Intentionally erroneous declaration. Missing two u16 arguments after f32. HAL's mistake, not mine.
 extern void itMainSetFighterRelease(GObj*, Vec3f*, f32);
-
-extern intptr_t lITLinkBombItemAttributes;	// 0x00000040
-extern intptr_t lITLinkBombAttackEvents;  	// 0x00000088
-extern intptr_t lITLinkBombBloatScales; 	// 0x000000A8
 
 // // // // // // // // // // // //
 //                               //
@@ -24,7 +21,7 @@ ITDesc dItLinkBombItemDesc =
 {
 	nITKindLinkBomb, 						// Item Kind
 	&gFTDataLinkMain, 						// Pointer to item file data?
-	&lITLinkBombItemAttributes,				// Offset of item attributes in file?
+	&llLinkMainBombItemAttributes,			// Offset of item attributes in file?
 
 	// DObj transformation struct
 	{
@@ -150,7 +147,7 @@ void itLinkBombExplodeWaitUpdateScale(GObj *item_gobj)
 
 	if (ip->item_vars.linkbomb.scale_int == 0)
 	{
-		f32 *scales = (f32*) ((uintptr_t)*dItLinkBombItemDesc.p_file + (intptr_t)&lITLinkBombBloatScales);
+		f32 *scales = (f32*) ((uintptr_t)*dItLinkBombItemDesc.p_file + (intptr_t)&llLinkMainBombBloatScales);
 		s32 scale_id = (ip->item_vars.linkbomb.scale_id > ITLINKBOMB_SCALE_INDEX_REWIND) ?
 					      (ITLINKBOMB_SCALE_INDEX_MAX - ip->item_vars.linkbomb.scale_id) :
 					   								    ip->item_vars.linkbomb.scale_id;
@@ -525,7 +522,7 @@ void itLinkBombExplodeInitVars(GObj *item_gobj)
 void itLinkBombExplodeUpdateAttackEvent(GObj *item_gobj)
 {
 	ITStruct *ip = itGetStruct(item_gobj);
-	ITAttackEvent *ev = itGetAttackEvent(dItLinkBombItemDesc, lITLinkBombAttackEvents);
+	ITAttackEvent *ev = itGetAttackEvent(dItLinkBombItemDesc, llLinkMainBombAttackEvents);
 
 	if (ip->multi == ev[ip->event_id].timer)
 	{

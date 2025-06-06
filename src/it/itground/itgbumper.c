@@ -1,14 +1,7 @@
 #include <it/item.h>
 #include <gr/ground.h>
 #include <sc/scene.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lITGBumperItemAttributes;   // 0x00000CF0
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -19,13 +12,13 @@ extern intptr_t lITGBumperItemAttributes;   // 0x00000CF0
 ITDesc dITGBumperItemDesc =
 {
     nITKindGBumper,                         // Item Kind
-    &gITManagerCommonData,                    // Pointer to item file data?
-    &lITGBumperItemAttributes,              // Offset of item attributes in file?
+    &gITManagerCommonData,                  // Pointer to item file data?
+    &llITCommonDataGBumperItemAttributes,   // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nGCMatrixKindTraRotRpyRSca,          // Main matrix transformations
-        nGCMatrixKindNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyRSca,         // Main matrix transformations
+        nGCMatrixKindNull,                  // Secondary matrix transformations?
         0                                   // ???
     },
 

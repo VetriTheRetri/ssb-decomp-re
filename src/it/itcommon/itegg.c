@@ -1,14 +1,5 @@
 #include <it/item.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lITEggItemAttributes;       // 0x00000ACC
-extern intptr_t lITCapsuleAttackEvents;        // 0x00000098
-extern intptr_t lITEggAttackEvents;            // 0x00000B14
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -19,14 +10,14 @@ extern intptr_t lITEggAttackEvents;            // 0x00000B14
 ITDesc dITEggItemDesc =
 {
     nITKindEgg,                             // Item Kind
-    &gITManagerCommonData,                    // Pointer to item file data?
-    &lITEggItemAttributes,                  // Offset of item attributes in file?
+    &gITManagerCommonData,                  // Pointer to item file data?
+    &llITCommonDataEggItemAttributes,       // Offset of item attributes in file?
 
     // DObj transformation struct
     {
         nGCMatrixKindTraRotRpyRSca,          // Main matrix transformations
         nGCMatrixKindNull,                   // Secondary matrix transformations?
-        0                                   // ???
+        0                                    // ???
     },
 
     nGMAttackStateOff,                      // Hitbox Update State
@@ -301,7 +292,7 @@ sb32 itEggExplodeProcUpdate(GObj *item_gobj)
 
         return TRUE;
     }
-    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITEggItemDesc, lITEggAttackEvents));
+    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITEggItemDesc, llITCommonDataEggAttackEvents));
 
     return FALSE;
 }
@@ -365,7 +356,7 @@ void itEggExplodeInitVars(GObj *item_gobj)
 
     itMainClearOwnerStats(item_gobj);
     itMainRefreshAttackColl(item_gobj);
-    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITEggItemDesc, lITCapsuleAttackEvents)); // Should this be lITEggAttackEvents?
+    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITEggItemDesc, llITCommonDataCapsuleAttackEvents)); // Should this be llITCommonDataEggAttackEvents?
 }
 
 // 0x80181B5C

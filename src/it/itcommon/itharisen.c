@@ -1,13 +1,5 @@
 #include <it/item.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lITHarisenItemAttributes;   // 0x00000220
-extern intptr_t lITHarisenDataStart;        // 0x00002198
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -24,13 +16,13 @@ intptr_t dITHarisenAnimJoint[/* */] =
 ITDesc dITHarisenItemDesc =
 {
     nITKindHarisen,                         // Item Kind
-    &gITManagerCommonData,                    // Pointer to item file data?
-    &lITHarisenItemAttributes,              // Offset of item attributes in file?
+    &gITManagerCommonData,                  // Pointer to item file data?
+    &llITCommonDataHarisenItemAttributes,   // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nGCMatrixKindTraRotRpyRSca,          // Main matrix transformations
-        nGCMatrixKindNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyRSca,         // Main matrix transformations
+        nGCMatrixKindNull,                  // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -251,7 +243,7 @@ void func_ovl3_80175408(GObj *item_gobj, s32 index) // Unused
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    gcAddAnimJointAll(item_gobj, (((uintptr_t)ip->attr->data + dITHarisenAnimJoint[index]) - (intptr_t)&lITHarisenDataStart), 0.0F);
+    gcAddAnimJointAll(item_gobj, (((uintptr_t)ip->attr->data + dITHarisenAnimJoint[index]) - (intptr_t)&llITCommonDataHarisenDataStart), 0.0F);
     gcPlayAnimAll(item_gobj);
 }
 

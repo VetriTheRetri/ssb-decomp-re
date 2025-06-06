@@ -1,17 +1,7 @@
 #include <it/item.h>
 #include <wp/weapon.h>
 #include <ft/fighter.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lITFFlowerItemAttributes;   // 0x000002E4
-extern intptr_t
-lITFFlowerWeaponFlameWeaponAttributes;      // 0x0000032C
-extern intptr_t lITFFlowerFlameAngles;      // 0x00000360
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -22,13 +12,13 @@ extern intptr_t lITFFlowerFlameAngles;      // 0x00000360
 ITDesc dITFFlowerItemDesc = 
 {
     nITKindFFlower,                         // Item Kind
-    &gITManagerCommonData,                    // Pointer to item file data?
-    &lITFFlowerItemAttributes,              // Offset of item attributes in file?
+    &gITManagerCommonData,                  // Pointer to item file data?
+    &llITCommonDataFFlowerItemAttributes,   // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nGCMatrixKindTraRotRpyR,             // Main matrix transformations
-        nGCMatrixKindNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyR,            // Main matrix transformations
+        nGCMatrixKindNull,                  // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -108,16 +98,16 @@ ITStatusDesc dITFFlowerStatusDescs[/* */] =
 
 WPDesc dITFFlowerWeaponFlameWeaponDesc =
 {
-    0x00,                                   // Render flags?
-    nWPKindFFlowerFlame,                    // Weapon Kind
-    &gITManagerCommonData,                    // Pointer to character's loaded files?
-    &lITFFlowerWeaponFlameWeaponAttributes, // Offset of weapon attributes in loaded files
+    0x00,                                        // Render flags?
+    nWPKindFFlowerFlame,                         // Weapon Kind
+    &gITManagerCommonData,                       // Pointer to character's loaded files?
+    &llITCommonDataFFlowerFlameWeaponAttributes, // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
         nGCMatrixKindTraRotRpyRSca,          // Main matrix transformations
         nGCMatrixKindNull,                   // Secondary matrix transformations?
-        0                                   // ???
+        0                                    // ???
     },
 
     itFFlowerWeaponFlameProcUpdate,         // Proc Update
@@ -348,7 +338,7 @@ void itFFlowerShootFlame(GObj *fighter_gobj, Vec3f *pos, s32 index, s32 ammo_sub
 {
     ITStruct *ip = itGetStruct(ftGetStruct(fighter_gobj)->item_gobj);
     Vec3f vel;
-    f32 *angle = (f32*) ((uintptr_t)*dITFFlowerItemDesc.p_file + (intptr_t)&lITFFlowerFlameAngles);
+    f32 *angle = (f32*) ((uintptr_t)*dITFFlowerItemDesc.p_file + (intptr_t) &llITCommonDataFFlowerFlameAngles);
 
     vel.x = __cosf(angle[index]) * ITFFLOWER_AMMO_VEL;
     vel.y = __sinf(angle[index]) * ITFFLOWER_AMMO_VEL;

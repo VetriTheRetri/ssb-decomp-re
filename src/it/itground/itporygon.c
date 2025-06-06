@@ -1,14 +1,6 @@
 #include <it/item.h>
 #include <gr/ground.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lITPorygonItemAttributes;   // 0x0000016C
-extern intptr_t lITPorygonHitParties;       // 0x000001B4
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -20,12 +12,12 @@ ITDesc dITPorygonItemDesc =
 {
     nITKindPorygon,                         // Item Kind
     &gGRCommonStruct.yamabuki.item_head,    // Pointer to item file data?
-    &lITPorygonItemAttributes,              // Offset of item attributes in file?
+    &llGRYamabukiMapPorygonItemAttributes,   // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nGCMatrixKindTraRotRpyR,             // Main matrix transformations
-        nGCMatrixKindNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyR,            // Main matrix transformations
+        nGCMatrixKindNull,                  // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -50,7 +42,7 @@ ITDesc dITPorygonItemDesc =
 void itPorygonCommonUpdateMonsterEvent(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
-    ITMonsterEvent *ev = itGetMonsterEvent(dITPorygonItemDesc, lITPorygonHitParties); // (ITMonsterEvent*) ((uintptr_t)*dITPorygonItemDesc.p_file + (intptr_t)&Porygon_Event);
+    ITMonsterEvent *ev = itGetMonsterEvent(dITPorygonItemDesc, llGRYamabukiMapPorygonHitParties); // (ITMonsterEvent*) ((uintptr_t)*dITPorygonItemDesc.p_file + (intptr_t)&Porygon_Event);
 
     if (ip->multi == ev[ip->event_id].timer)
     {

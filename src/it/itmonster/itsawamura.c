@@ -1,16 +1,7 @@
 #include <it/item.h>
 #include <ft/fighter.h>
 #include <gr/ground.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lITSawamuraItemAttributes;  // 0x00000BB0
-extern intptr_t lITSawamuraDataStart;       // 0x00011F40
-extern intptr_t lITSawamuraDisplayList;     // 0x00012340
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -22,13 +13,13 @@ extern intptr_t lITSawamuraDisplayList;     // 0x00012340
 ITDesc dITSawamuraItemDesc =
 {
     nITKindSawamura,                        // Item Kind
-    &gITManagerCommonData,                    // Pointer to item file data?
-    &lITSawamuraItemAttributes,             // Offset of item attributes in file?
+    &gITManagerCommonData,                  // Pointer to item file data?
+    &llITCommonDataSawamuraItemAttributes,  // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nGCMatrixKindTraRotRpyR,             // Main matrix transformations
-        nGCMatrixKindNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyR,            // Main matrix transformations
+        nGCMatrixKindNull,                  // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -259,7 +250,7 @@ void itSawamuraAttackInitVars(GObj *item_gobj)
 
     if (ip->kind == nITKindSawamura)
     {
-        Gfx *dl = (Gfx*)itGetPData(ip, lITSawamuraDataStart, lITSawamuraDisplayList);
+        Gfx *dl = (Gfx*)itGetPData(ip, llITCommonDataSawamuraDataStart, llITCommonDataSawamuraDisplayList);
 
         dobj->dl = dl;
 
@@ -328,7 +319,7 @@ GObj* itSawamuraMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f.y -= ip->attr->map_coll_bottom;
 
-        gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITSawamuraDataStart), 0.0F);
+        gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, llITCommonDataSawamuraDataStart), 0.0F);
 
         func_800269C0_275C0(nSYAudioVoiceMBallSawamuraAppear);
 

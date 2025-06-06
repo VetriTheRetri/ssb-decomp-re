@@ -1,15 +1,7 @@
 #include <it/item.h>
 #include <sys/develop.h>
 #include <sys/matrix.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lITPippiItemAttributes;     // 0x00000C74
-extern intptr_t lITPippiDataStart;          // 0x00013598
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -38,13 +30,13 @@ void (*dITPippiStatusProcList[/* */])(GObj*) =
 ITDesc dITPippiItemDesc = 
 {
     nITKindPippi,                           // Item Kind
-    &gITManagerCommonData,                    // Pointer to item file data?
-    &lITPippiItemAttributes,                // Offset of item attributes in file?
+    &gITManagerCommonData,                  // Pointer to item file data?
+    &llITCommonDataPippiItemAttributes,     // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nGCMatrixKindTraRotRpyR,             // Main matrix transformations
-        nGCMatrixKindNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyR,            // Main matrix transformations
+        nGCMatrixKindNull,                  // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -230,7 +222,7 @@ GObj* itPippiMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f.y -= ip->attr->map_coll_bottom;
 
-        gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITPippiDataStart), 0.0F);
+        gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, llITCommonDataPippiDataStart), 0.0F);
         func_800269C0_275C0(nSYAudioVoiceMBallPippiAppear);
 
         item_gobj->proc_display = itPippiCommonProcDisplay;

@@ -1,15 +1,5 @@
 #include <it/item.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lITRShellITemAttributes;    // 0x00000584
-extern intptr_t lITRShellDataStart;         // 0x00005F88
-extern intptr_t lITRShellAnimJoint;         // 0x00006018
-extern intptr_t lITRShellMatAnimJoint;      // 0x00006048
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -20,13 +10,13 @@ extern intptr_t lITRShellMatAnimJoint;      // 0x00006048
 ITDesc dITRShellItemDesc =
 {
     nITKindRShell,                          // Item Kind
-    &gITManagerCommonData,                    // Pointer to item file data?
-    &lITRShellITemAttributes,               // Offset of item attributes in file?
+    &gITManagerCommonData,                  // Pointer to item file data?
+    &llITCommonDataRShellItemAttributes,    // Offset of item attributes in file?
 
     // DObj transformation struct
     {
-        nGCMatrixKindNull,                   // Main matrix transformations
-        nGCMatrixKindNull,                   // Secondary matrix transformations?
+        nGCMatrixKindNull,                  // Main matrix transformations
+        nGCMatrixKindNull,                  // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -259,8 +249,8 @@ void itRShellSpinAddAnim(GObj *item_gobj) // Identical to Green Shell function
     DObj *dobj = DObjGetStruct(item_gobj);
     s32 unused[2];
 
-    gcAddDObjAnimJoint(dobj, itGetPData(ip, lITRShellDataStart, lITRShellAnimJoint), 0.0F);
-    gcAddMObjMatAnimJoint(dobj->mobj, itGetPData(ip, lITRShellDataStart, lITRShellMatAnimJoint), 0.0F);
+    gcAddDObjAnimJoint(dobj, itGetPData(ip, llITCommonDataShellDataStart, llITCommonDataShellAnimJoint), 0.0F);
+    gcAddMObjMatAnimJoint(dobj->mobj, itGetPData(ip, llITCommonDataShellDataStart, llITCommonDataShellMatAnimJoint), 0.0F);
     gcPlayAnimAll(item_gobj);
 }
 

@@ -1,14 +1,6 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t 
-lWPLinkSpinAttackWeaponAttributes;          // 0x0000000C
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -19,15 +11,15 @@ lWPLinkSpinAttackWeaponAttributes;          // 0x0000000C
 WPDesc dWPLinkSpinAttackWeaponDesc =
 {
     0x03,                                   // Render flags?
-    nWPKindSpinAttack,                     // Weapon Kind
+    nWPKindSpinAttack,                      // Weapon Kind
     &gFTDataLinkMain,                       // Pointer to character's loaded files?
-    &lWPLinkSpinAttackWeaponAttributes,     // Offset of weapon attributes in loaded files
+    &llLinkMainSpinAttackWeaponAttributes,  // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
         nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
         nGCMatrixKindNull,               // Secondary matrix transformations?
-        0                                   // ???
+        0                                // ???
     },
 
     wpLinkSpinAttackProcUpdate,             // Proc Update

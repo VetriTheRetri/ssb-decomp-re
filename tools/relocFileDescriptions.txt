@@ -2108,12 +2108,39 @@ NBytes - 0x30
 Func - 0x0
 NBytes - 0x40
 
+[203]
+WeaponAttributes Fireball 0x0
+
+[204]
+WeaponAttributes Fireball 0x0
+
 [208]
 FTSpecialColl LwReflector 0x19B0
+
+[210]
+WeaponAttributes Blaster 0x0
+
+[217]
+WeaponAttributes Bomb 0xC
+
+[218]
+WeaponAttributes ChargeShot 0x0
+
+[222]
+WeaponAttributes Fireball 0x0
+
+[225]
+WeaponAttributes SpinAttack 0xC
+
+[226]
+WeaponAttributes Boomerang 0x0
 
 [228]
 FTKirbyCopy SpecialN 0x0
 ftKirbyAttack100Effect - 0x1220
+
+[229]
+WeaponAttributes Cutter 0x8
 
 [235]
 Vec2h SpecialHi 0x0
@@ -2121,6 +2148,29 @@ Vec2h SpecialHi 0x0
 [238]
 FTSpecialColl AttackS4Reflector 0x1114
 FTSpecialColl LwAbsorb 0x16D4
+
+[239]
+WeaponAttributes PKThunder 0xC
+WeaponAttributes PKThunderTrail 0x40
+
+[240]
+WeaponAttributes PKFire 0x0
+
+[243]
+WeaponAttributes ThunderHead 0xC
+WeaponAttributes ThunderTrail 0x40
+
+[244]
+WeaponAttributes ThunderJoltAir 0x0
+WeaponAttributes ThunderJoltGround 0x34
+
+[247]
+WeaponAttributes EggThrow 0xC
+WeaponAttributes Star 0x40
+
+[249]
+WeaponAttributes BulletNormal 0x774
+WeaponAttributes BulletHard 0x7A8
 
 [251]
 Unknown _4D4_ 0x4D4
@@ -2573,6 +2623,8 @@ Sprite Stock 0x9a00
 Sprite FTEmblem 0x9be8
 
 [342]
+AnimJoint ThunderJoltB 0x1A20
+MatAnimJoint ThunderJoltB 0x1AE0
 DObjDesc ThunderJolt 0x2258
 MObjSub ThunderJolt 0x20A0
 AnimJoint ThunderJolt 0x22E0

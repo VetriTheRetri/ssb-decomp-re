@@ -1,14 +1,6 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern
-intptr_t lWPYoshiStarWeaponAttributes;      // 0x00000040
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -19,15 +11,15 @@ intptr_t lWPYoshiStarWeaponAttributes;      // 0x00000040
 WPDesc dWPYoshiStarWeaponDesc =
 {
     0x00,                                   // Render flags?
-    nWPKindYoshiStar,                      // Weapon Kind
+    nWPKindYoshiStar,                       // Weapon Kind
     &gFTDataYoshiMain,                      // Pointer to character's loaded files?
-    &lWPYoshiStarWeaponAttributes,          // Offset of weapon attributes in loaded files
+    &llYoshiMainStarWeaponAttributes,       // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
         nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
         nGCMatrixKindNull,               // Secondary matrix transformations?
-        0                                   // ???
+        0                                // ???
     },
 
     wpYoshiStarProcUpdate,                  // Proc Update

@@ -1,18 +1,6 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t
-lWPMariroFireballWeaponAttributes;          // 0x00000000
-extern intptr_t
-lWPMarioFireballMarioWeaponAttributes;      // 0x00000000
-extern intptr_t
-lWPMarioFireballLuigiWeaponAttributes;      // 0x00000000
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -25,34 +13,34 @@ wpMarioFireballAttributes dWPMarioFireballWeaponAttributes[/* */] =
 {
     // Mario
     {
-        140,                                    // Lifetime
-        55.0F,                                  // Terminal velocity
-        30.0F,                                  // Map collision damage
-        1.2F,                                   // Gravity
-        0.85F,                                  // Map collision rebound velocity?
-        F_CLC_DTOR32(20.0F),                    // Rotate speed (0.349065870047F)
-        F_CLC_DTOR32(-5.0F),                    // Grounded launch angle (-0.0872664675117F)
-        F_CLC_DTOR32(-5.0F),                    // Aerial launch angle (-0.0872664675117F)
-        50.0F,                                  // Base velocity
-        &gFTMarioFileSpecial1,                  // Pointer to ???
-        &lWPMarioFireballMarioWeaponAttributes, // Offset of hitbox/attributes?
-        0.0F                                    // Animation starting frame?
+        140,                                      // Lifetime
+        55.0F,                                    // Terminal velocity
+        30.0F,                                    // Map collision damage
+        1.2F,                                     // Gravity
+        0.85F,                                    // Map collision rebound velocity?
+        F_CLC_DTOR32(20.0F),                      // Rotate speed (0.349065870047F)
+        F_CLC_DTOR32(-5.0F),                      // Grounded launch angle (-0.0872664675117F)
+        F_CLC_DTOR32(-5.0F),                      // Aerial launch angle (-0.0872664675117F)
+        50.0F,                                    // Base velocity
+        &gFTMarioFileSpecial1,                    // Pointer to ???
+        &llMarioSpecial1FireballWeaponAttributes, // Offset of hitbox/attributes?
+        0.0F                                      // Animation starting frame?
     },
 
     // Luigi
     {
-        80,                                     // Lifetime
-        55.0F,                                  // Terminal velocity
-        30.0F,                                  // Map collision damage
-        0.0F,                                   // Gravity
-        0.85F,                                  // Map collision rebound velocity?
-        F_CLC_DTOR32(25.0F),                    // Rotate speed (0.436332315207F)
-        F_CLC_DTOR32(0.0F),                     // Grounded launch angle (0.0F)
-        F_CLC_DTOR32(0.0F),                     // Aerial launch angle (0.0F)
-        36.0F,                                  // Base velocity
-        &gFTDataLuigiSpecial1,                  // Pointer to ???
-        &lWPMarioFireballLuigiWeaponAttributes, // Offset of hitbox/attributes?
-        1.0F                                    // Animation starting frame?
+        80,                                       // Lifetime
+        55.0F,                                    // Terminal velocity
+        30.0F,                                    // Map collision damage
+        0.0F,                                     // Gravity
+        0.85F,                                    // Map collision rebound velocity?
+        F_CLC_DTOR32(25.0F),                      // Rotate speed (0.436332315207F)
+        F_CLC_DTOR32(0.0F),                       // Grounded launch angle (0.0F)
+        F_CLC_DTOR32(0.0F),                       // Aerial launch angle (0.0F)
+        36.0F,                                    // Base velocity
+        &gFTDataLuigiSpecial1,                    // Pointer to ???
+        &llLuigiSpecial1FireballWeaponAttributes, // Offset of hitbox/attributes?
+        1.0F                                      // Animation starting frame?
     }
 };
 
@@ -62,11 +50,11 @@ WPDesc dWPMarioFireballWeaponDesc =
     0x00,                                   // Render flags?
     nWPKindFireball,                        // Weapon Kind
     &gFTMarioFileMain,                      // Pointer to character's loaded files?
-    &lWPMariroFireballWeaponAttributes,     // Offset of weapon attributes in loaded files
+    &llMarioMainFireballWeaponAttributes,   // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
-        nGCMatrixKindTra,                // Main matrix transformations
+        nGCMatrixKindTra,                   // Main matrix transformations
         0x47,                               // Secondary matrix transformations?
         0                                   // ???
     },

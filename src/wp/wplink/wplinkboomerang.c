@@ -1,14 +1,6 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t 
-lWPLinkBoomerangWeaponAttributes;           // 0x00000000
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -18,16 +10,16 @@ lWPLinkBoomerangWeaponAttributes;           // 0x00000000
 
 WPDesc dWPLinkBoomerangWeaponDesc =
 {
-    0x01,                                   // Render flags?
-    nWPKindBoomerang,                       // Weapon Kind
-    &gFTDataLinkSpecial1,                   // Pointer to character's loaded files?
-    &lWPLinkBoomerangWeaponAttributes,      // Offset of weapon attributes in loaded files
+    0x01,                                     // Render flags?
+    nWPKindBoomerang,                         // Weapon Kind
+    &gFTDataLinkSpecial1,                     // Pointer to character's loaded files?
+    &llLinkSpecial1BoomerangWeaponAttributes, // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
         nGCMatrixKindTraRotRpyRSca,          // Main matrix transformations
         nGCMatrixKindNull,                   // Secondary matrix transformations?
-        0                                   // ???
+        0                                    // ???
     },
 
     wpLinkBoomerangProcUpdate,              // Proc Update

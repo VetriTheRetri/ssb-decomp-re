@@ -1,14 +1,6 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t 
-lWPFoxBlasterWeaponAttributes;              // 0x00000000
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -18,16 +10,16 @@ lWPFoxBlasterWeaponAttributes;              // 0x00000000
 
 WPDesc dWPFoxBlasterWeaponDesc = 
 {
-    0x00,                                   // Render flags?
+    0x00,                                  // Render flags?
     nWPKindBlaster,                        // Weapon Kind
-    &gFTDataFoxSpecial1,                    // Pointer to character's loaded files?
-    &lWPFoxBlasterWeaponAttributes,         // Offset of weapon attributes in loaded files
+    &gFTDataFoxSpecial1,                   // Pointer to character's loaded files?
+    &llFoxSpecial1BlasterWeaponAttributes, // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
         nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
         nGCMatrixKindNull,               // Secondary matrix transformations?
-        0                                   // ???
+        0                                // ???
     },
 
     wpFoxBlasterProcUpdate,                 // Proc Update

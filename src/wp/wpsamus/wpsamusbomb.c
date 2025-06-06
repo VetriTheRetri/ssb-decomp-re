@@ -1,14 +1,6 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t 
-lWPSamusBombWeaponAttributes;               // 0x0000000C
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -21,7 +13,7 @@ WPDesc dWPSamusBombWeaponDesc =
     0x00,                                   // Render flags?
     nWPKindSamusBomb,                       // Weapon Kind
     &gFTDataSamusMain,                      // Pointer to character's loaded files?
-    &lWPSamusBombWeaponAttributes,          // Offset of weapon attributes in loaded files
+    &llSamusMainBombWeaponAttributes,       // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {

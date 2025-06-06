@@ -1,14 +1,6 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t 
-lWPSamusChargeShotWeaponAttributes;         // 0x00000000
+#include <reloc_data.h>
 
 extern alSoundEffect* func_800269C0_275C0(u16);
 extern void ftParamPlayLoopSFX(FTStruct*, u16);
@@ -131,7 +123,7 @@ WPDesc dWPSamusChargeShotWeaponDesc =
     0x00,                                   // Render flags?
     nWPKindChargeShot,                     // Weapon Kind
     &gFTDataSamusSpecial1,                    // Pointer to character's loaded files?
-    &lWPSamusChargeShotWeaponAttributes,    // Offset of weapon attributes in loaded files
+    &llSamusSpecial1ChargeShotWeaponAttributes,    // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {

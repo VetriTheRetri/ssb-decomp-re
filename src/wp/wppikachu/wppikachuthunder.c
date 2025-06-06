@@ -1,16 +1,6 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t 
-lWPPikachuThunderHeadWeaponAttributes;          // 0x0000000C
-extern intptr_t 
-lWPPikachuThunderTrailWeaponAttributes;         // 0x00000040
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -20,16 +10,16 @@ lWPPikachuThunderTrailWeaponAttributes;         // 0x00000040
 
 WPDesc dWPPikachuThunderHeadWeaponDesc =
 {
-    0x02,                                       // Render flags?
+    0x02,                                      // Render flags?
     nWPKindThunderHead,                        // Weapon Kind
-    &gFTDataPikachuMain,                        // Pointer to character's loaded files?
-    &lWPPikachuThunderHeadWeaponAttributes,     // Offset of weapon attributes in loaded files
+    &gFTDataPikachuMain,                       // Pointer to character's loaded files?
+    &llPikachuMainThunderHeadWeaponAttributes, // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
         nGCMatrixKindTraRotRpyRSca,          // Main matrix transformations
         nGCMatrixKindNull,                   // Secondary matrix transformations?
-        0                                       // ???
+        0                                    // ???
     },
 
     wpPikachuThunderHeadProcUpdate,             // Proc Update
@@ -47,7 +37,7 @@ WPDesc dWPPikachuThunderTrailWeaponDesc =
     0x02,                                       // Render flags?
     nWPKindThunderTrail,                       // Weapon Kind
     &gFTDataPikachuMain,                        // Pointer to character's loaded files?
-    &lWPPikachuThunderTrailWeaponAttributes,    // Offset of weapon attributes in loaded files
+    &llPikachuMainThunderTrailWeaponAttributes,    // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {

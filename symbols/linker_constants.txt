@@ -28,41 +28,6 @@ lITManagerParticleScriptBankHi = itcommon_scb_ROM_END;
 lITManagerParticleTextureBankLo = itcommon_txb_ROM_START;
 lITManagerParticleTextureBankHi = itcommon_txb_ROM_END;
 
-lWPMariroFireballWeaponAttributes = 0x00000000;
-lWPMarioFireballMarioWeaponAttributes = 0x00000000;
-lWPMarioFireballLuigiWeaponAttributes = 0x00000000;
-
-lWPFoxBlasterWeaponAttributes = 0x00000000;
-
-lWPSamusChargeShotWeaponAttributes = 0x00000000;
-
-lWPSamusBombWeaponAttributes = 0x0000000C;
-
-lWPPikachuThunderJoltAirWeaponAttributes = 0x00000000;
-lWPPikachuThunderJoltGroundWeaponAttributes = 0x00000034;
-
-lWPPikachuThunderJoltAnimJoint = 0x00001A20;
-lWPPikachuThunderJoltMatAnimJoint = 0x00001AE0;
-
-lWPPikachuThunderHeadWeaponAttributes = 0x0000000C;
-lWPPikachuThunderTrailWeaponAttributes = 0x00000040;
-
-lWPNessPKFireWeaponAttributes = 0x00000000;
-
-lWPNessPKThunderWeaponAttributes = 0x0000000C;
-lWPNessPKThunderTrailWeaponAttributes = 0x00000040;
-
-lWPKirbyCutterWeaponAttributes = 0x00000008;
-
-lWPYoshiEggThrowWeaponAttributes = 0x0000000C;
-lWPYoshiStarWeaponAttributes = 0x00000040;
-
-lWPLinkSpinAttackWeaponAttributes = 0x0000000C;
-lWPLinkBoomerangWeaponAttributes = 0x00000000;
-
-lWPBossBulletNormalWeaponAttributes = 0x00000774;
-lWPBossBulletHardWeaponAttributes = 0x000007A8;
-
 lITMainContainerVelocitiesY = 0x00000000;
 
 lITCapsuleItemAttributes = 0x00000050;

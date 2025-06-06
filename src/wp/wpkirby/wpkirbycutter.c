@@ -1,14 +1,6 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t 
-lWPKirbyCutterWeaponAttributes;             // 0x00000008
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -18,10 +10,10 @@ lWPKirbyCutterWeaponAttributes;             // 0x00000008
 
 WPDesc dWPKirbyCutterWeaponDesc =
 {
-    0x03,                                   // Render flags?
+    0x03,                                  // Render flags?
     nWPKindCutter,                         // Weapon Kind
-    &gFTDataKirbyMain,                      // Pointer to character's loaded files?
-    &lWPKirbyCutterWeaponAttributes,        // Offset of weapon attributes in loaded files
+    &gFTDataKirbyMain,                     // Pointer to character's loaded files?
+    &llKirbyMainCutterWeaponAttributes,    // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {

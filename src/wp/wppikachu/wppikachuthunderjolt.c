@@ -1,20 +1,6 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t 
-lWPPikachuThunderJoltAirWeaponAttributes;               // 0x00000000
-extern intptr_t 
-lWPPikachuThunderJoltGroundWeaponAttributes;            // 0x00000034
-extern intptr_t 
-lWPPikachuThunderJoltAnimJoint;                         // 0x00001A20
-extern intptr_t 
-lWPPikachuThunderJoltMatAnimJoint;                      // 0x00001AE0
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -27,7 +13,7 @@ WPDesc dWPPikachuThunderJoltAirWeaponDesc =
     0x00,                                               // Render flags?
     nWPKindThunderJoltAir,                             // Weapon Kind
     &gFTDataPikachuSpecial1,                              // Pointer to character's loaded files?
-    &lWPPikachuThunderJoltAirWeaponAttributes,          // Offset of weapon attributes in loaded files
+    &llPikachuSpecial1ThunderJoltAirWeaponAttributes,          // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
@@ -51,7 +37,7 @@ WPDesc dWPPikachuThunderJoltGroundWeaponDesc =
     0x03,                                               // Render flags?
     nWPKindThunderJoltGround,                          // Weapon Kind
     &gFTDataPikachuSpecial1,                              // Pointer to character's loaded files?
-    &lWPPikachuThunderJoltGroundWeaponAttributes,       // Offset of weapon attributes in loaded files
+    &llPikachuSpecial1ThunderJoltGroundWeaponAttributes,       // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
@@ -204,8 +190,8 @@ void wpPikachuThunderJoltGroundAddAnim(GObj *weapon_gobj)
     gcAddAnimAll
     (
         weapon_gobj, 
-        lbRelocGetFileData(AObjEvent32**, gFTDataPikachuSpecial3, &lWPPikachuThunderJoltAnimJoint), 
-        lbRelocGetFileData(AObjEvent32***, gFTDataPikachuSpecial3, &lWPPikachuThunderJoltMatAnimJoint), 
+        lbRelocGetFileData(AObjEvent32**, gFTDataPikachuSpecial3, &llPikachuSpecial3ThunderJoltBAnimJoint), 
+        lbRelocGetFileData(AObjEvent32***, gFTDataPikachuSpecial3, &llPikachuSpecial3ThunderJoltBMatAnimJoint), 
         0.0F
     );
     gcPlayAnimAll(weapon_gobj);

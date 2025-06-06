@@ -1,16 +1,6 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t 
-lWPBossBulletNormalWeaponAttributes;        // 0x00000774
-extern intptr_t
-lWPBossBulletHardWeaponAttributes;          // 0x000007A8
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -20,16 +10,16 @@ lWPBossBulletHardWeaponAttributes;          // 0x000007A8
 
 WPDesc dWPBossBulletNormalWeaponDesc =
 {
-    0x01,                                   // Render flags?
-    nWPKindBulletNormal,                   // Weapon Kind
-    &gFTDataBossMainMotion,               // Pointer to character's loaded files?
-    &lWPBossBulletNormalWeaponAttributes,   // Offset of weapon attributes in loaded files
+    0x01,                                          // Render flags?
+    nWPKindBulletNormal,                           // Weapon Kind
+    &gFTDataBossMainMotion,                        // Pointer to character's loaded files?
+    &llBossMainMotionBulletNormalWeaponAttributes, // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
         nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
         nGCMatrixKindNull,               // Secondary matrix transformations?
-        0,                                  // ???
+        0,                               // ???
     },
 
     NULL,                                   // Proc Update
@@ -44,16 +34,16 @@ WPDesc dWPBossBulletNormalWeaponDesc =
 
 WPDesc dWPBossBulletHardWeaponDesc =
 {
-    0x01,                                   // Render flags?
-    nWPKindBulletHard,                     // Weapon Kind
-    &gFTDataBossMainMotion,               // Pointer to character's loaded files?
-    &lWPBossBulletHardWeaponAttributes,     // Offset of weapon attributes in loaded files
+    0x01,                                        // Render flags?
+    nWPKindBulletHard,                           // Weapon Kind
+    &gFTDataBossMainMotion,                      // Pointer to character's loaded files?
+    &llBossMainMotionBulletHardWeaponAttributes, // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
         nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
         nGCMatrixKindNull,               // Secondary matrix transformations?
-        0,                                  // ???
+        0,                               // ???
     },
 
     NULL,                                   // Proc Update

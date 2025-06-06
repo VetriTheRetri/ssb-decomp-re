@@ -1,15 +1,7 @@
 #include <wp/weapon.h>
 #include <it/item.h>
 #include <ft/fighter.h>
-
-// // // // // // // // // // // //
-//                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t 
-lWPNessPKFireWeaponAttributes;              // 0x00000000
+#include <reloc_data.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -20,15 +12,15 @@ lWPNessPKFireWeaponAttributes;              // 0x00000000
 WPDesc dWPNessPKFireWeaponDesc =
 {
     0x00,                                   // Render flags?
-    nWPKindPKFire,                         // Weapon Kind
+    nWPKindPKFire,                          // Weapon Kind
     &gFTNessFileSpecial1,                   // Pointer to character's loaded files?
-    &lWPNessPKFireWeaponAttributes,         // Offset of weapon attributes in loaded files
+    &llNessSpecial1PKFireWeaponAttributes,  // Offset of weapon attributes in loaded files
 
     // DObj transformation struct
     {
         nGCMatrixKindTra,                // Main matrix transformations
-        0x2E,                               // Secondary matrix transformations?
-        0                                   // ???
+        0x2E,                            // Secondary matrix transformations?
+        0                                // ???
     },
 
     wpNessPKFireProcUpdate,                 // Proc Update

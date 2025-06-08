@@ -18,9 +18,9 @@ VPK0_BIN_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "vpk0cm
 def extractSsbfile():
 	os.chdir(EXTRACTED_FILES_PATH)
 	processes = []
-	for i in range(2132):
+	for i in range(FILE_COUNT):
 		processes.append(subprocess.Popen([RELOC_EXTRACTOR_BIN_PATH, f'{i}', '--mode', 'decompress', '--rom', ROM_PATH], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL))
-	for i in range(2132):
+	for i in range(FILE_COUNT):
 		processes[i].wait()
 
 def extract():
@@ -155,6 +155,10 @@ def generateHeader(relocFileDescriptionsFilePath, outputHeaderFilePath, outputLi
 		lines = relocFileDescriptionsFile.read().split('\n')
 	fileIdToNameDict = {}
 	with open(outputHeaderFilePath, 'w') as outputHeaderFile, open(outputLinkerFilePath, 'w') as outputLinkerFile:
+
+		# File count symbol
+		outputHeaderFile.write(f"extern int llRelocFileCount; // {FILE_COUNT}\n\n")
+		outputLinkerFile.write(f"llRelocFileCount = {FILE_COUNT};\n\n")
 
 		# File ID symbols
 		for line in lines:

@@ -1361,7 +1361,7 @@ void mnVSOptionsFuncStart(void)
     LBRelocSetup rl_setup;
 
     rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
-    rl_setup.table_files_num = (u32)&lLBRelocTableFilesNum;
+    rl_setup.table_files_num = (u32)&llRelocFileCount;
     rl_setup.file_heap = NULL;
     rl_setup.file_heap_size = 0;
     rl_setup.status_buffer = sMNVSOptionsStatusBuffer;

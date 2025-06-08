@@ -10,7 +10,7 @@
 {                                                                                                       \
     LBRelocSetup rl_setup;                                                                              \
     rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;                                                \
-    rl_setup.table_files_num = (u32)&lLBRelocTableFilesNum;                                             \
+    rl_setup.table_files_num = (u32)&llRelocFileCount;                                                  \
     rl_setup.file_heap = NULL;                                                                          \
     rl_setup.file_heap_size = 0;                                                                        \
     rl_setup.status_buffer = status_buffer;                                                             \
@@ -53,7 +53,6 @@ lbRelocLoadFilesExtern                              \
     )                                               \
 )
 
-extern uintptr_t lLBRelocTableFilesNum;     // 0x00000854
 extern uintptr_t lLBRelocTableAddr;         // 0x001AC870
 
 extern void* lbRelocFindStatusBufferFile(u32 id);

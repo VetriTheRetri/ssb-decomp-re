@@ -5,6 +5,7 @@
 #include <gm/gmsound.h>
 #include <sys/debug.h>
 #include <sys/video.h>
+#include <reloc_data.h>
 
 extern void* func_800269C0_275C0(u16);
 
@@ -531,7 +532,7 @@ void dbCubeFuncStart(void)
 	s32 unused3;
 
 	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
-	rl_setup.table_files_num = (u32)&lLBRelocTableFilesNum;
+	rl_setup.table_files_num = (u32)&llRelocFileCount;
 	rl_setup.file_heap = NULL;
 	rl_setup.file_heap_size = 0;
 	rl_setup.status_buffer = sDBCubeStatusBuffer;

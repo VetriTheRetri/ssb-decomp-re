@@ -3,10 +3,10 @@
 #include <if/interface.h>
 #include <sc/scene.h>
 #include <sys/video.h>
+#include <sys/rdp.h>
 #include <reloc_data.h>
 
 extern void dbMenuUpdateMenuInputs();
-extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 extern u32 sySchedulerGetTicCount();
 

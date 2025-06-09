@@ -5,12 +5,12 @@
 #include <gr/ground.h>
 #include <sc/scene.h>
 #include <sys/video.h>
+#include <sys/rdp.h>
 #include <reloc_data.h>
 
 extern alSoundEffect* func_800269C0_275C0(u16);
 
 extern void syAudioSetBGMVolume(u32, u32);
-extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
 //                               //

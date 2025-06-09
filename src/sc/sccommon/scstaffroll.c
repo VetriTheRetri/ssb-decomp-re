@@ -2,10 +2,9 @@
 #include <gm/gmsound.h>
 #include <sys/video.h>
 #include <sys/controller.h>
+#include <sys/interp.h>
+#include <sys/rdp.h>
 #include <reloc_data.h>
-
-extern void syInterpCubic(Vec3f*, void*, f32);
-extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
 //                               //
@@ -475,13 +474,13 @@ f32 sSCStaffrollCrosshairPositionY;
 AObjEvent32 *sSCStaffrollNameAnimJoint;
 
 // 0x8013A8E0
-void *sSCStaffrollNameInterpolation;
+SYInterpDesc *sSCStaffrollNameInterpolation;
 
 // 0x8013A8E4
 CObj *sSCStaffrollCamera;
 
 // 0x8013A8E8
-void *sSCStaffrollDObjDesc;
+DObjDesc *sSCStaffrollDObjDesc;
 
 // 0x8013A8EC
 s32 sSCStaffrollHighlightSize;
@@ -2031,7 +2030,7 @@ void scStaffrollInitVars(void)
 	sSCStaffrollRollSpeed = 0.0037500001F;
 	sSCStaffrollNameAllocFree = NULL;
 	sSCStaffrollIsPaused = FALSE;
-	sSCStaffrollNameInterpolation = lbRelocGetFileData(void*, sSCStaffrollFiles[0], &llSCStaffrollInterpolation);
+	sSCStaffrollNameInterpolation = lbRelocGetFileData(SYInterpDesc*, sSCStaffrollFiles[0], &llSCStaffrollInterpolation);
 	sSCStaffrollNameAnimJoint = lbRelocGetFileData(AObjEvent32*, sSCStaffrollFiles[0], &llSCStaffrollAnimJoint);
 	sSCStaffrollDObjDesc = lbRelocGetFileData(DObjDesc*, sSCStaffrollFiles[0], &llSCStaffrollDObjDesc);
 	sSCStaffrollRollBeginWait = 0;

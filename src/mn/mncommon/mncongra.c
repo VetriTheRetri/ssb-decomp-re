@@ -3,9 +3,9 @@
 #include <sc/scene.h> // includes sys/obj.h
 #include <sys/video.h>
 #include <sys/controller.h>
+#include <sys/rdp.h>
 #include <reloc_data.h>
 
-extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 extern void* func_800269C0_275C0(u16);
 
 // // // // // // // // // // // //

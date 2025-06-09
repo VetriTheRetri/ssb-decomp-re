@@ -2,11 +2,11 @@
 #include <gm/gmsound.h>
 #include <sc/scene.h>
 #include <sys/video.h>
+#include <sys/rdp.h>
 #include <sys/controller.h>
 #include <reloc_data.h>
 
 extern void* func_800269C0_275C0(u16);
-extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
 //                               //

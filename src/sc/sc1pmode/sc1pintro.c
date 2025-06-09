@@ -1,12 +1,12 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
 #include <sys/video.h>
+#include <sys/rdp.h>
 #include <reloc_data.h>
 
 extern void func_800266A0_272A0();
 extern void* func_800269C0_275C0(u16);
 extern u32 sySchedulerGetTicCount();
-extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
 //                               //

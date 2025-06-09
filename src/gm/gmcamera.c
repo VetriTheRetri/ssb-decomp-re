@@ -3,9 +3,8 @@
 #include <wp/weapon.h>
 #include <if/interface.h>
 #include <sc/scene.h>
+#include <sys/rdp.h>
 // #include <sys/taskman.h>
-
-extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
 //                               //

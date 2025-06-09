@@ -1,10 +1,11 @@
+
 #include <mn/menu.h>
 #include <sc/scene.h>
 #include <sys/controller.h>
 #include <sys/video.h>
+#include <sys/rdp.h>
 #include <reloc_data.h>
 
-extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
 //                               //

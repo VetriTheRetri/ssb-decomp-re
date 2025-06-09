@@ -4,9 +4,8 @@
 #include <gm/gmsound.h>
 #include <sys/controller.h>
 #include <sys/video.h>
+#include <sys/rdp.h>
 #include <reloc_data.h>
-
-extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
 //                               //
@@ -34,6 +33,7 @@ mnCommonSetOptionChangeWaitN(sMNVSItemSwitchOptionChangeWait, is_button, stick_r
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
+
 
 // 0x80133210
 s32 dMNVSItemSwitchTogglesItemKinds[/* */] =

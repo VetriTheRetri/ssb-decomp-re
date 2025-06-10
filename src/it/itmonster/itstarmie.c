@@ -242,7 +242,7 @@ void itStarmieNFollowFindFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
     }
     if (ip->kind == nITKindStarmie)
     {
-        gcAddMObjMatAnimJoint(item_dobj->mobj, itGetPData(ip, llITCommonDataStarmieDataStart, llITCommonDataStarmieMatAnimJoint), 0);
+        gcAddMObjMatAnimJoint(item_dobj->mobj, itGetPData(ip, &llITCommonDataStarmieDataStart, &llITCommonDataStarmieMatAnimJoint), 0);
 
         gcPlayAnimAll(item_gobj);
     }
@@ -351,7 +351,7 @@ GObj* itStarmieMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f.y -= ip->attr->map_coll_bottom;
 
-        gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, llITCommonDataStarmieDataStart), 0.0F);
+        gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, &llITCommonDataStarmieDataStart), 0.0F);
 
         gcMoveGObjDLHead(item_gobj, 18, item_gobj->dl_link_priority);
     }

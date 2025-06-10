@@ -114,7 +114,7 @@ void itMLuckyMakeEggInitVars(GObj *item_gobj)
 
     if (ip->kind == nITKindMLucky)
     {
-        gcAddDObjAnimJoint(dobj->child, itGetPData(ip, llITCommonDataLuckyDataStart, llITCommonDataLuckyAnimJoint), 0.0F);
+        gcAddDObjAnimJoint(dobj->child, itGetPData(ip, &llITCommonDataLuckyDataStart, &llITCommonDataLuckyAnimJoint), 0.0F);
         gcPlayAnimAll(item_gobj);
     }
     ip->damage_coll.hitstatus = nGMHitStatusNormal;
@@ -363,7 +363,7 @@ GObj* itMLuckyMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f.y -= ip->attr->map_coll_bottom;
 
-        gcAddDObjAnimJoint(dobj->child, itGetMonsterAnimNode(ip, llITCommonDataLuckyDataStart), 0.0F);
+        gcAddDObjAnimJoint(dobj->child, itGetMonsterAnimNode(ip, &llITCommonDataLuckyDataStart), 0.0F);
     }
     return item_gobj;
 }

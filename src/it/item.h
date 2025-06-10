@@ -39,13 +39,13 @@ extern intptr_t lITMonsterAnimBankStart;
 
 // Points to all sorts of data
 #define itGetPData(ip, off1, off2)                                                                                     \
-	((void*)(((uintptr_t)(ip)->attr->data - (intptr_t) & (off1)) + (intptr_t) & (off2)))
+	((void*)(((uintptr_t)(ip)->attr->data - (intptr_t) (off1)) + (intptr_t) (off2)))
 
 #define itGetMonsterAnimNode(ip, off)                                                                                  \
-	((void*)(((uintptr_t)(ip)->attr->data - (intptr_t) & (off)) + (intptr_t)&llITCommonDataMonsterAnimBankStart))
+	((void*)(((uintptr_t)(ip)->attr->data - (intptr_t) (off)) + (intptr_t)&llITCommonDataMonsterAnimBankStart))
 
-#define itGetAttackEvent(it_desc, off) ((ITAttackEvent*)((uintptr_t) * (it_desc).p_file + (intptr_t) & (off)))
+#define itGetAttackEvent(it_desc, off) ((ITAttackEvent*)((uintptr_t) * (it_desc).p_file + (intptr_t) (off)))
 
-#define itGetMonsterEvent(it_desc, off) ((ITMonsterEvent*)((uintptr_t) * (it_desc).p_file + (intptr_t) & (off)))
+#define itGetMonsterEvent(it_desc, off) ((ITMonsterEvent*)((uintptr_t) * (it_desc).p_file + (intptr_t) (off)))
 
 #endif

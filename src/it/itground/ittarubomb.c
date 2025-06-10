@@ -293,7 +293,7 @@ sb32 itTaruBombExplodeProcUpdate(GObj *item_gobj)
     {
         return TRUE;
     }
-    else itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITTaruBombItemDesc, llGRBonus3MapTaruBombAttackEvents));
+    else itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITTaruBombItemDesc, &llGRBonus3MapTaruBombAttackEvents));
 
     return FALSE;
 }
@@ -373,7 +373,7 @@ void itTaruBombExplodeInitVars(GObj *item_gobj)
     ip->damage_coll.hitstatus = nGMHitStatusNone;
 
     itMainRefreshAttackColl(item_gobj);
-    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITTaruBombItemDesc, llGRBonus3MapTaruBombAttackEvents));
+    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITTaruBombItemDesc, &llGRBonus3MapTaruBombAttackEvents));
 }
 
 // 0x80185284

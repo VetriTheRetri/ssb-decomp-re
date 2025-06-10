@@ -292,7 +292,7 @@ sb32 itEggExplodeProcUpdate(GObj *item_gobj)
 
         return TRUE;
     }
-    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITEggItemDesc, llITCommonDataEggAttackEvents));
+    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITEggItemDesc, &llITCommonDataEggAttackEvents));
 
     return FALSE;
 }
@@ -356,7 +356,7 @@ void itEggExplodeInitVars(GObj *item_gobj)
 
     itMainClearOwnerStats(item_gobj);
     itMainRefreshAttackColl(item_gobj);
-    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITEggItemDesc, llITCommonDataCapsuleAttackEvents)); // Should this be llITCommonDataEggAttackEvents?
+    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITEggItemDesc, &llITCommonDataCapsuleAttackEvents)); // Should this be llITCommonDataEggAttackEvents?
 }
 
 // 0x80181B5C

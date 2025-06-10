@@ -42,7 +42,7 @@ ITDesc dITPorygonItemDesc =
 void itPorygonCommonUpdateMonsterEvent(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
-    ITMonsterEvent *ev = itGetMonsterEvent(dITPorygonItemDesc, llGRYamabukiMapPorygonHitParties); // (ITMonsterEvent*) ((uintptr_t)*dITPorygonItemDesc.p_file + (intptr_t)&Porygon_Event);
+    ITMonsterEvent *ev = itGetMonsterEvent(dITPorygonItemDesc, &llGRYamabukiMapPorygonHitParties); // (ITMonsterEvent*) ((uintptr_t)*dITPorygonItemDesc.p_file + (intptr_t)&Porygon_Event);
 
     if (ip->multi == ev[ip->event_id].timer)
     {

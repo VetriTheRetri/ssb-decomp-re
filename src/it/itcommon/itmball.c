@@ -149,7 +149,7 @@ void itMBallOpenAddAnim(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
-    void *matanim_joint = itGetPData(ip, llITCommonDataMBallDataStart, llITCommonDataMBallMatAnimJoint);
+    void *matanim_joint = itGetPData(ip, &llITCommonDataMBallDataStart, &llITCommonDataMBallMatAnimJoint);
 
     gcAddMObjMatAnimJoint(dobj->child->child->sib_next->mobj, matanim_joint, 0.0F);
     gcPlayAnimAll(item_gobj);

@@ -437,7 +437,7 @@ sb32 itBoxExplodeProcUpdate(GObj *item_gobj)
     {
         return TRUE;
     }
-    else itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITBoxItemDesc, llITCommonDataBoxAttackEvents));
+    else itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITBoxItemDesc, &llITCommonDataBoxAttackEvents));
 
     return FALSE;
 }
@@ -484,7 +484,7 @@ void itBoxExplodeInitVars(GObj *item_gobj)
 
     itMainClearOwnerStats(item_gobj);
     itMainRefreshAttackColl(item_gobj);
-    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITBoxItemDesc, llITCommonDataBoxAttackEvents));
+    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITBoxItemDesc, &llITCommonDataBoxAttackEvents));
 }
 
 // 0x80179AD4

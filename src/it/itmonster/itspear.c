@@ -182,11 +182,11 @@ void itSpearAppearInitVars(GObj *item_gobj)
         void *anim_joint; 
         void *matanim_joint;
 
-        anim_joint = itGetPData(ip, llITCommonDataSpearDataStart, llITCommonDataSpearAnimJoint);
+        anim_joint = itGetPData(ip, &llITCommonDataSpearDataStart, &llITCommonDataSpearAnimJoint);
 
         gcAddDObjAnimJoint(dobj->child, anim_joint, 0.0F);
 
-        matanim_joint = itGetPData(ip, llITCommonDataSpearDataStart, llITCommonDataSpearMatAnimJoint);
+        matanim_joint = itGetPData(ip, &llITCommonDataSpearDataStart, &llITCommonDataSpearMatAnimJoint);
 
         gcAddMObjMatAnimJoint(dobj->child->mobj, matanim_joint, 0.0F);
         gcPlayAnimAll(item_gobj);
@@ -333,7 +333,7 @@ GObj* itSpearMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f.y -= ip->attr->map_coll_bottom;
 
-        gcAddDObjAnimJoint(dobj->child, itGetMonsterAnimNode(ip, llITCommonDataSpearDataStart), 0.0F);
+        gcAddDObjAnimJoint(dobj->child, itGetMonsterAnimNode(ip, &llITCommonDataSpearDataStart), 0.0F);
     }
     return item_gobj;
 }

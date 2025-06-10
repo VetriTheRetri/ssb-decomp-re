@@ -170,7 +170,7 @@ GObj* itMewMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         dobj->translate.vec.f.y -= ip->attr->map_coll_bottom;
             
         // This ptr stuff is likely also a macro
-        gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, llITCommonDataMewDataStart), 0.0F);
+        gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, &llITCommonDataMewDataStart), 0.0F);
     }
     return item_gobj;
 }

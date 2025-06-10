@@ -96,7 +96,7 @@ ITStatusDesc dITLGunStatusDescs[/* */] =
     }
 };
 
-WPDesc llITCommonDataLGunWeaponAmmoWeaponDesc =
+WPDesc dITLGunAmmoWeaponDesc =
 {
     0x00,                                   // Render flags?
     nWPKindLGunAmmo,                        // Weapon Kind
@@ -342,7 +342,7 @@ sb32 itLGunWeaponAmmoProcReflector(GObj *weapon_gobj)
 // 0x80175A60
 GObj* itLGunWeaponAmmoMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 {
-    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &llITCommonDataLGunWeaponAmmoWeaponDesc, pos, (WEAPON_FLAG_COLLPROJECT | WEAPON_FLAG_PARENT_FIGHTER));
+    GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dITLGunAmmoWeaponDesc, pos, (WEAPON_FLAG_COLLPROJECT | WEAPON_FLAG_PARENT_FIGHTER));
     WPStruct *wp;
 
     if (weapon_gobj == NULL)

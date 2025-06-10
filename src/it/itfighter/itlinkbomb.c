@@ -522,7 +522,7 @@ void itLinkBombExplodeInitVars(GObj *item_gobj)
 void itLinkBombExplodeUpdateAttackEvent(GObj *item_gobj)
 {
 	ITStruct *ip = itGetStruct(item_gobj);
-	ITAttackEvent *ev = itGetAttackEvent(dItLinkBombItemDesc, llLinkMainBombAttackEvents);
+	ITAttackEvent *ev = itGetAttackEvent(dItLinkBombItemDesc, &llLinkMainBombAttackEvents);
 
 	if (ip->multi == ev[ip->event_id].timer)
 	{

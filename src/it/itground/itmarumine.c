@@ -97,7 +97,7 @@ void itMarumineExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 void itMarumineExplodeUpdateAttackEvent(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
-    ITAttackEvent *ev = itGetAttackEvent(dITMarumineItemDesc, llGRYamabukiMapMarumineAttackEvents); // (ITAttackEvent*) ((uintptr_t)*dITMarumineItemDesc.p_file + (intptr_t)&llGRYamabukiMapMarumineAttackEvents);
+    ITAttackEvent *ev = itGetAttackEvent(dITMarumineItemDesc, &llGRYamabukiMapMarumineAttackEvents); // (ITAttackEvent*) ((uintptr_t)*dITMarumineItemDesc.p_file + (intptr_t)&llGRYamabukiMapMarumineAttackEvents);
 
     if (ip->multi == ev[ip->event_id].timer)
     {

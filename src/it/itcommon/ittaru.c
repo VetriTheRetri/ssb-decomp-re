@@ -326,7 +326,7 @@ sb32 itTaruExplodeProcUpdate(GObj *item_gobj)
     {
         return TRUE;
     }
-    else itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITTaruItemDesc, llITCommonDataTaruAttackEvents));
+    else itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITTaruItemDesc, &llITCommonDataTaruAttackEvents));
 
     return FALSE;
 }
@@ -427,7 +427,7 @@ void itTaruExplodeInitVars(GObj *item_gobj)
 
     itMainClearOwnerStats(item_gobj);
     itMainRefreshAttackColl(item_gobj);
-    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITTaruItemDesc, llITCommonDataTaruAttackEvents));
+    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITTaruItemDesc, &llITCommonDataTaruAttackEvents));
 }
 
 // 0x8017A2D8

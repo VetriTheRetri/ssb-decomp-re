@@ -211,8 +211,8 @@ void itBombHeiCommonSetWalkLR(GObj *item_gobj, ub8 lr)
 {
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
-    Gfx *dll = itGetPData(ip, llITCommonDataBombHeiDataStart, llITCommonDataBombHeiWalkLeftDisplayList);  // (void*)((uintptr_t)((uintptr_t)ip->attr->data - (uintptr_t)&llITCommonDataBombHeiDataStart) + &llITCommonDataBombHeiWalkLeftDisplayList);
-    Gfx *dlr = itGetPData(ip, llITCommonDataBombHeiDataStart, llITCommonDataBombHeiWalkRightDisplayList); // (void*)((uintptr_t)((uintptr_t)ip->attr->data - (uintptr_t)&llITCommonDataBombHeiDataStart) + &llITCommonDataBombHeiWalkRightDisplayList);
+    Gfx *dll = itGetPData(ip, &llITCommonDataBombHeiDataStart, &llITCommonDataBombHeiWalkLeftDisplayList);  // (void*)((uintptr_t)((uintptr_t)ip->attr->data - (uintptr_t)&llITCommonDataBombHeiDataStart) + &llITCommonDataBombHeiWalkLeftDisplayList);
+    Gfx *dlr = itGetPData(ip, &llITCommonDataBombHeiDataStart, &llITCommonDataBombHeiWalkRightDisplayList); // (void*)((uintptr_t)((uintptr_t)ip->attr->data - (uintptr_t)&llITCommonDataBombHeiDataStart) + &llITCommonDataBombHeiWalkRightDisplayList);
 
     if (lr != 0)
     {
@@ -308,7 +308,7 @@ sb32 itBombHeiWaitProcUpdate(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
-    void *dll = itGetPData(ip, llITCommonDataBombHeiDataStart, llITCommonDataBombHeiWalkLeftDisplayList);
+    void *dll = itGetPData(ip, &llITCommonDataBombHeiDataStart, &llITCommonDataBombHeiWalkLeftDisplayList);
     s32 lr;
 
     if (ip->multi == ITBOMBHEI_WALK_WAIT)
@@ -522,7 +522,7 @@ void itBombHeiWalkInitVars(GObj *item_gobj)
 
     itMainRefreshAttackColl(item_gobj);
 
-    matanim_joint = itGetPData(ip, llITCommonDataBombHeiDataStart, llITCommonDataBombHeiWalkMatAnimJoint);
+    matanim_joint = itGetPData(ip, &llITCommonDataBombHeiDataStart, &llITCommonDataBombHeiWalkMatAnimJoint);
 
     gcAddMObjMatAnimJoint(dobj->mobj, matanim_joint, 0.0F);
     gcPlayAnimAll(item_gobj);
@@ -577,7 +577,7 @@ void itBombHeiCommonClearVelSetExplode(GObj *item_gobj, u8 unused)
 void itBombHeiCommonUpdateAttackEvent(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
-    ITAttackEvent *ev = itGetAttackEvent(dITBombHeiItemDesc, llITCommonDataBombHeiAttackEvents);
+    ITAttackEvent *ev = itGetAttackEvent(dITBombHeiItemDesc, &llITCommonDataBombHeiAttackEvents);
 
     if (ip->multi == ev[ip->event_id].timer)
     {

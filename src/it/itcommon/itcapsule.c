@@ -263,7 +263,7 @@ sb32 itCapsuleExplodeProcUpdate(GObj *item_gobj)
     {
         return TRUE;
     }
-    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITCapsuleItemDesc, llITCommonDataCapsuleAttackEvents)); // (ITAttackEvent*) ((uintptr_t)*dITCapsuleItemDesc.p_file + (intptr_t)&D_NF_00000098); Linker thing
+    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITCapsuleItemDesc, &llITCommonDataCapsuleAttackEvents)); // (ITAttackEvent*) ((uintptr_t)*dITCapsuleItemDesc.p_file + (intptr_t)&D_NF_00000098); Linker thing
 
     return FALSE;
 }
@@ -308,7 +308,7 @@ void itCapsuleExplodeInitVars(GObj *item_gobj)
     itMainClearOwnerStats(item_gobj);
     itMainRefreshAttackColl(item_gobj);
 
-    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITCapsuleItemDesc, llITCommonDataCapsuleAttackEvents));
+    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITCapsuleItemDesc, &llITCommonDataCapsuleAttackEvents));
 }
 
 // 0x801743F4

@@ -468,7 +468,7 @@ sb32 itMSBombAttachedProcMap(GObj *item_gobj)
 void itMSBombExplodeUpdateAttackEvent(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
-    ITAttackEvent *ev = itGetAttackEvent(dITMSBombItemDesc, llITCommonDataMSBombAttackEvents); // (ITAttackEvent *)((uintptr_t)*dITMSBombItemDesc.p_file + &llITCommonDataMSBombAttackEvents); - Linker thing
+    ITAttackEvent *ev = itGetAttackEvent(dITMSBombItemDesc, &llITCommonDataMSBombAttackEvents); // (ITAttackEvent *)((uintptr_t)*dITMSBombItemDesc.p_file + &llITCommonDataMSBombAttackEvents); - Linker thing
 
     if (ip->multi == ev[ip->event_id].timer)
     {

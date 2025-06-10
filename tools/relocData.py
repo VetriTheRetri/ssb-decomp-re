@@ -150,10 +150,54 @@ def relocateFile(inputBinaryPath, outputBinaryPath, relocInternOffset, relocExte
 			print(f"{hex(currentOffsetInBytes)} -> {hex(bytesNum)}")
 
 
+def generateFileIdToNameDict(relocFileDescriptionLines):
+	fileIdToNameDict = {}
+	for line in relocFileDescriptionLines:
+		if len(line) == 0 or line[0] != '-':
+			continue
+		fileId = int(line[1:4])
+		assert(fileId not in fileIdToNameDict.keys())
+		fileName = line[6:]
+		fileIdToNameDict[fileId] = fileName
+	return fileIdToNameDict
+
+def generateFileIdSymbols(fileIdToNameDict):
+	symbols = []
+	for fileId in range(FILE_COUNT):
+		if fileId in fileIdToNameDict.keys():
+			fileName = fileIdToNameDict[fileId]
+			symbolName = f"ll{fileName}FileID"
+		else:
+			symbolName = f"ll_{fileId}_FileID"
+		symbols.append((symbolName, hex(fileId)))
+	return symbols
+
+def generateFileOffsetSymbols(relocFileDescriptionLines, fileIdToNameDict):
+	symbols = []
+	for i in range(len(relocFileDescriptionLines)):
+		line = relocFileDescriptionLines[i]
+		if len(line) == 0 or line[0] == '#' or line[0] == '-':
+			continue
+		m = re.match(r"\[(\d+)]", line);
+		if m is not None:
+			currentFileId = int(m.group(1))
+			currentFileName = fileIdToNameDict[currentFileId] if currentFileId in fileIdToNameDict.keys() else f"_{currentFileId}_"
+			symbols.append((None, None))
+			continue
+		if line.count(' ') != 2:
+			raise Exception(f"Parsing error at line: {i + 1}, expected two spaces")
+		blockType, blockName, blockOffset = line.split(' ')
+		if blockName == '-':
+			symbolName = f"ll{currentFileName}{blockType}"
+		else:
+			symbolName = f"ll{currentFileName}{blockName}{blockType}"
+		symbols.append((symbolName, blockOffset))
+	return symbols
+
 def generateHeader(relocFileDescriptionsFilePath, outputHeaderFilePath, outputLinkerFilePath):
 	with open(relocFileDescriptionsFilePath, 'r') as relocFileDescriptionsFile:
 		lines = relocFileDescriptionsFile.read().split('\n')
-	fileIdToNameDict = {}
+	fileIdToNameDict = generateFileIdToNameDict(lines)
 	with open(outputHeaderFilePath, 'w') as outputHeaderFile, open(outputLinkerFilePath, 'w') as outputLinkerFile:
 
 		# File count symbol
@@ -161,48 +205,38 @@ def generateHeader(relocFileDescriptionsFilePath, outputHeaderFilePath, outputLi
 		outputLinkerFile.write(f"llRelocFileCount = {FILE_COUNT};\n\n")
 
 		# File ID symbols
-		for line in lines:
-			if len(line) == 0 or line[0] != '-':
-				continue
-			fileId = int(line[1:4])
-			assert(fileId not in fileIdToNameDict.keys())
-			fileName = line[6:]
-			fileIdToNameDict[fileId] = fileName
-
-		for fileId in range(FILE_COUNT):
-			if fileId in fileIdToNameDict.keys():
-				fileName = fileIdToNameDict[fileId]
-				symbolName = f"ll{fileName}FileID"
-			else:
-				symbolName = f"ll_{fileId}_FileID"
+		for symbolName, fileId in generateFileIdSymbols(fileIdToNameDict):
 			outputHeaderFile.write(f"extern int {symbolName}; // {fileId}\n")
-			outputLinkerFile.write(f"{symbolName} = {hex(fileId)};\n")
+			outputLinkerFile.write(f"{symbolName} = {fileId};\n")
 
 		# File offset symbols
-		for i in range(len(lines)):
-			line = lines[i]
-			if len(line) == 0 or line[0] == '#' or line[0] == '-':
+		for symbolName, offset in generateFileOffsetSymbols(lines, fileIdToNameDict):
+			if symbolName is None:
+				outputHeaderFile.write("\n")
+				outputLinkerFile.write("\n")
 				continue
-			m = re.match(r"\[(\d+)]", line);
-			if m is not None:
-				currentFileId = int(m.group(1))
-				currentFileName = fileIdToNameDict[currentFileId] if currentFileId in fileIdToNameDict.keys() else f"_{currentFileId}_"
-				outputHeaderFile.write('\n')
-				outputLinkerFile.write('\n')
-				continue
-			try:
-				blockType, blockName, blockOffset = line.split(' ')
-			except Exception as e:
-				print(f"Parsing error at line: {i + 1}", file=sys.stderr)
-				return False
-			if blockName == '-':
-				symbolName = f"ll{currentFileName}{blockType}"
-			else:
-				symbolName = f"ll{currentFileName}{blockName}{blockType}"
-			outputHeaderFile.write(f"extern int {symbolName}; // {blockOffset}\n")
-			outputLinkerFile.write(f"{symbolName} = {blockOffset};\n")
-	return True
+			outputHeaderFile.write(f"extern int {symbolName}; // {offset}\n")
+			outputLinkerFile.write(f"{symbolName} = {offset};\n")
 
+def generateDefineHeader(relocFileDescriptionsFilePath, outputHeaderFilePath):
+	with open(relocFileDescriptionsFilePath, 'r') as relocFileDescriptionsFile:
+		lines = relocFileDescriptionsFile.read().split('\n')
+	fileIdToNameDict = generateFileIdToNameDict(lines)
+	with open(outputHeaderFilePath, 'w') as outputHeaderFile:
+
+		# File count symbol
+		outputHeaderFile.write(f"#define llRelocFileCount {FILE_COUNT}\n\n")
+
+		# File ID symbols
+		for symbolName, fileId in generateFileIdSymbols(fileIdToNameDict):
+			outputHeaderFile.write(f"#define {symbolName} {fileId}\n")
+
+		# File offset symbols
+		for symbolName, offset in generateFileOffsetSymbols(lines, fileIdToNameDict):
+			if symbolName is None:
+				outputHeaderFile.write("\n")
+				continue
+			outputHeaderFile.write(f"#define {symbolName} {offset}\n")
 
 if __name__ == "__main__":
 	if len(sys.argv) < 2:
@@ -223,6 +257,6 @@ if __name__ == "__main__":
 	elif sys.argv[1] == 'makeBin':
 		makeBin()
 	elif sys.argv[1] == 'genHeader':
-		if not generateHeader(sys.argv[2], sys.argv[3], sys.argv[4]):
-			os.remove(sys.argv[3])
-			os.remove(sys.argv[4])
+		generateHeader(sys.argv[2], sys.argv[3], sys.argv[4])
+	elif sys.argv[1] == 'genDefineHeader':
+		generateDefineHeader(sys.argv[2], sys.argv[3])

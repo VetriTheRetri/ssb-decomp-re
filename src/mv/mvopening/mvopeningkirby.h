@@ -18,7 +18,7 @@ extern void mvOpeningKirbyMakePosedFighter(void);
 extern void mvOpeningKirbyMakeNameCamera(void);
 extern void mvOpeningKirbyMakePosedFighterCamera(void);
 extern void mvOpeningKirbyMakePosedWallpaperCamera(void);
-extern void mvOpeningKirbyProcRun(GObj *gobj);
+extern void mvOpeningKirbyFuncRun(GObj *gobj);
 extern void mvOpeningKirbyInitVars(void);
 extern void mvOpeningKirbyFuncStart(void);
 extern void mvOpeningKirbyFuncLights(Gfx **dls);

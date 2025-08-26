@@ -617,7 +617,7 @@ void mnVSItemSwitchUpdateOption(s32 option_id, s32 rate)
 }
 
 // 0x80132AF0
-void mnVSItemSwitchProcRun(GObj *gobj)
+void mnVSItemSwitchFuncRun(GObj *gobj)
 {
     s32 unused;
     s32 stick_range;
@@ -810,7 +810,7 @@ void mnVSItemSwitchFuncStart(void)
     
     lbRelocInitSetup(&rl_setup);
     lbRelocLoadFilesListed(dMNVSItemSwitchFileIDs, sMNVSItemSwitchFiles);
-    gcMakeGObjSPAfter(0, mnVSItemSwitchProcRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeGObjSPAfter(0, mnVSItemSwitchFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     
     mnVSItemSwitchInitVars();

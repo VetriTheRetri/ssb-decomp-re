@@ -298,8 +298,8 @@ struct SCExplainPhase
 struct SCAutoDemoProc
 {
 	u16 focus_end_wait;
-	void (*proc_change)();
-	void (*proc_focus)();
+	void (*func_change)();
+	void (*func_focus)();
 };
 
 struct SCBattleResults

@@ -231,17 +231,17 @@ typedef enum AObjTrackKind
     nGCAnimTrackJointEnd = nGCAnimTrackScaZ,    // End of joint tracks
     // texture
     nGCAnimTrackMaterialStart = 13,
-    nGCAnimTrackSetTextureIDCurrent = nGCAnimTrackMaterialStart,
-    nGCAnimTrackTexture14,
-    nGCAnimTrackTexture15,
-    nGCAnimTrackTexture16,
-    nGCAnimTrackTexture17,
-    nGCAnimTrackSetTextureIDNext,
-    nGCAnimTrackTexture19,
-    nGCAnimTrackTexture20,
+    nGCAnimTrackTextureIDCurrent = nGCAnimTrackMaterialStart,
+    nGCAnimTrackTraU,
+    nGCAnimTrackTraV,
+    nGCAnimTrackScaU,
+    nGCAnimTrackScaV,
+    nGCAnimTrackTextureIDNext,
+    nGCAnimTrackScrU,
+    nGCAnimTrackScrV,
     nGCAnimTrackSetLFrac,
-    nGCAnimTrackSetTextureFrame,
-    nGCAnimTrackMaterialEnd = nGCAnimTrackSetTextureFrame,
+    nGCAnimTrackPaletteID,
+    nGCAnimTrackMaterialEnd = nGCAnimTrackPaletteID,
     // camera
     nGCAnimTrackCameraStart = 25,
     nGCAnimTrackEyeX = nGCAnimTrackCameraStart,
@@ -269,7 +269,7 @@ typedef enum AObjTrackKind
 typedef enum GCStatus
 {
     nGCStatusSystem,
-    nGCStatusRunning,               // Processing current GObj's proc_run
+    nGCStatusRunning,               // Processing current GObj's func_run
     nGCStatusProcessing,            // Processing current GObjProcess
     nGCStatusCapturing,             // Processing current CObj's viewport?
     nGCStatusDisplaying             // Processing current CObj and DObj's rendering?

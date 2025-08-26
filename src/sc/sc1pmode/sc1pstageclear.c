@@ -1863,7 +1863,7 @@ void sc1PStageClearUpdateResultScore(void)
 }
 
 // 0x801349F0
-void sc1PStageClearProcRun(GObj *gobj)
+void sc1PStageClearFuncRun(GObj *gobj)
 {
 	sSC1PStageClearTotalTimeTics++;
 
@@ -1965,7 +1965,7 @@ void sc1PStageClearFuncStart(void)
 
 	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesListed(dSC1PStageClearFileIDs, sSC1PStageClearFiles);
-	gcMakeGObjSPAfter(0, sc1PStageClearProcRun, 0, GOBJ_PRIORITY_DEFAULT);
+	gcMakeGObjSPAfter(0, sc1PStageClearFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
 	sc1PStageClearCopyFramebufToWallpaper();
 	gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, 0, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
 	sc1PStageClearInitVars();

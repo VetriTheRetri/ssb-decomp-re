@@ -485,7 +485,7 @@ void mnTitleProceedModeSelect(void)
 }
 
 // 0x801320F0
-void mnTitleProcRun(GObj *gobj)
+void mnTitleFuncRun(GObj *gobj)
 {
 	s32 i;
 	u16 buttons;
@@ -612,7 +612,7 @@ void mnTitleSetAllowProceedWait(void)
 }
 
 // 0x80132448
-void mnTitleTransitionsProcRun(GObj *gobj)
+void mnTitleTransitionsFuncRun(GObj *gobj)
 {
 	sMNTitleTransitionTotalTimeTics++;
 
@@ -819,7 +819,7 @@ void mnTitleFireProcDisplay(GObj *fire_gobj)
 }
 
 // 0x80132A20
-void mnTitleFireProcRun(GObj *gobj)
+void mnTitleFireFuncRun(GObj *gobj)
 {
 	if (gobj->flags != GOBJ_FLAG_HIDDEN)
 	{
@@ -876,7 +876,7 @@ void mnTitleMakeFire(void)
 	GObj *fire_gobj;
 	SObj *fire_sobj;
 
-	fire_gobj = gcMakeGObjSPAfter(5, mnTitleFireProcRun, 6, GOBJ_PRIORITY_DEFAULT);
+	fire_gobj = gcMakeGObjSPAfter(5, mnTitleFireFuncRun, 6, GOBJ_PRIORITY_DEFAULT);
 
 	if (fire_gobj != NULL)
 	{
@@ -966,7 +966,7 @@ void mnTitleLogoProcDisplay(GObj *gobj)
 }
 
 // 0x80132EDC
-void mnTitleFadeOutLogoProcRun(GObj *gobj)
+void mnTitleFadeOutLogoFuncRun(GObj *gobj)
 {
 	SObj *sobj = SObjGetStruct(gobj);
 
@@ -1065,7 +1065,7 @@ void mnTitleMakeLogo(void)
 		logo_gobj = lbCommonMakeSpriteGObj
 		(
 			11,
-			mnTitleFadeOutLogoProcRun,
+			mnTitleFadeOutLogoFuncRun,
 			10,
 			GOBJ_PRIORITY_DEFAULT,
 			mnTitleLogoProcDisplay,
@@ -1408,8 +1408,8 @@ void mnTitleMakeLogoFireParticles(void)
 // 0x80133F3C
 void mnTitleMakeActors(void)
 {
-	sMNTitleMainGObj = gcMakeGObjSPAfter(0, mnTitleProcRun, 1, GOBJ_PRIORITY_DEFAULT);
-	sMNTitleTransitionsGObj = gcMakeGObjSPAfter(0, mnTitleTransitionsProcRun, 15, GOBJ_PRIORITY_DEFAULT);
+	sMNTitleMainGObj = gcMakeGObjSPAfter(0, mnTitleFuncRun, 1, GOBJ_PRIORITY_DEFAULT);
+	sMNTitleTransitionsGObj = gcMakeGObjSPAfter(0, mnTitleTransitionsFuncRun, 15, GOBJ_PRIORITY_DEFAULT);
 }
 
 // 0x80133F90

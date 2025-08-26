@@ -989,7 +989,7 @@ void mnSoundTestUpdateFunctions(void)
 }
 
 // 0x80132244
-void mnSoundTestProcRun(GObj *gobj)
+void mnSoundTestFuncRun(GObj *gobj)
 {
     mnSoundTestUpdateOptionColors();
 
@@ -1716,7 +1716,7 @@ void mnSoundTestInitVars(void)
 // 0x801338F8
 void mnSoundTestFuncStart(void)
 {
-    gcMakeGObjSPAfter(0, mnSoundTestProcRun, 1, GOBJ_PRIORITY_DEFAULT);
+    gcMakeGObjSPAfter(0, mnSoundTestFuncRun, 1, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(4, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     mnSoundTestSetupFiles();
     mnSoundTestInitVars();

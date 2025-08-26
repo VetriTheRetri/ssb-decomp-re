@@ -124,7 +124,7 @@ GObj* gcFindGObjByID(u32 id)
 }
 
 // 0x8000B1C4
-void gcDefaultProcRun(GObj *gobj)
+void gcDefaultFuncRun(GObj *gobj)
 {
     gcParseGObjScript(NULL);
 }
@@ -437,7 +437,7 @@ void gcEjectAll(void)
 GObj* gcMakeModelGObj
 (
     u32 id,
-    void (*proc_run)(GObj*),
+    void (*func_run)(GObj*),
     s32 link,
     u32 link_priority,
     void (*proc_display)(GObj*),
@@ -454,7 +454,7 @@ GObj* gcMakeModelGObj
     GObj *gobj;
     DObj *dobj;
 
-    gobj = gcMakeGObjSPAfter(id, proc_run, link, link_priority);
+    gobj = gcMakeGObjSPAfter(id, func_run, link, link_priority);
 
     if (gobj == NULL)
     {
@@ -479,7 +479,7 @@ GObj* gcMakeModelGObj
 GObj* gcMakeSpriteGObj
 (
     u32 id,
-    void (*proc_run)(GObj*),
+    void (*func_run)(GObj*),
     s32 link,
     u32 link_priority,
     void (*proc_display)(GObj*),
@@ -492,7 +492,7 @@ GObj* gcMakeSpriteGObj
     u32 gobjproc_priority
 )
 {
-    GObj *gobj = gcMakeGObjSPAfter(id, proc_run, link, link_priority);
+    GObj *gobj = gcMakeGObjSPAfter(id, func_run, link, link_priority);
         
     if (gobj == NULL)
     {
@@ -513,7 +513,7 @@ GObj* gcMakeSpriteGObj
 GObj* gcMakeCameraGObj
 (
     u32 id,
-    void (*proc_run)(GObj*),
+    void (*func_run)(GObj*),
     s32 link,
     u32 link_priority,
     void (*proc_display)(GObj*),
@@ -530,7 +530,7 @@ GObj* gcMakeCameraGObj
     GObj *gobj;
     CObj *cobj;
 
-    gobj = gcMakeGObjSPAfter(id, proc_run, link, link_priority);
+    gobj = gcMakeGObjSPAfter(id, func_run, link, link_priority);
     
     if (gobj == NULL)
     {
@@ -562,7 +562,7 @@ GObj* gcMakeDefaultCameraGObj(s32 link, u32 link_priority, u32 dl_link_priority,
     GObj *gobj = gcMakeCameraGObj
     (
         -1,
-        gcDefaultProcRun,
+        gcDefaultFuncRun,
         link,
         link_priority,
         func_80017DBC,

@@ -44,7 +44,7 @@ s16 dSCAutoDemoMapObjKindList[/* */] =
 };
 
 // 0x8018E180
-SCAutoDemoProc dSCAutoDemoProcList[/* */] =
+SCAutoDemoProc dSCAutoDemoFuncList[/* */] =
 {
 	// Nothing?
 	{
@@ -60,28 +60,28 @@ SCAutoDemoProc dSCAutoDemoProcList[/* */] =
 		NULL                            // Function to run when focusing
 	},
 
-	// Player 1 Focus
+	// Change to Player 1 focus
 	{
 		340,                            // Wait frames until focus changes 
 		scAutoDemoSetFocusPlayer1,      // Function to run on focus change
 		NULL                            // Function to run when focusing
 	},
 
-	// Player 2 focus
+	// Player 1 focus
 	{
 		340,                            // Wait frames until focus changes 
 		scAutoDemoSetFocusPlayer2,      // Function to run on focus change
 		SCAutoDemoProcFocusPlayer1      // Function to run when focusing
 	},
 
-	// End focus
+	// Player 2 focus
 	{
 		400,                            // Wait frames until focus changes 
 		scAutoDemoResetFocusPlayerAll,  // Function to run on focus change
 		SCAutoDemoProcFocusPlayer2      // Function to run when focusing
 	},
 
-	// Unknown
+	// End focus
 	{
 		60,                             // Wait frames until focus changes 
 		scAutoDemoSetMagnifyDisplayOn,  // Function to run on focus change
@@ -132,7 +132,7 @@ SYTaskmanSetup dSCAutoDemoTaskmanSetup =
     {
         0,                          // ???
         scAutoDemoFuncUpdate,       // Update function
-        scManagerFuncDraw,              // Frame draw function
+        scManagerFuncDraw,          // Frame draw function
         &ovl64_BSS_END,             // Allocatable memory pool start
         0,                          // Allocatable memory pool size
         1,                          // ???
@@ -189,7 +189,7 @@ u16 sSCAutoDemoFighterMask;
 GObj *sSCAutoDemoFighterNameGObj;
 
 // 0x8018E4EC
-SCAutoDemoProc *sSCAutoDemoProc;
+SCAutoDemoProc *sSCAutoDemoFunc;
 
 // 0x8018E4F0
 s16 sSCAutoDemoMapObjs[8];
@@ -392,21 +392,21 @@ void scAutoDemoExit(void)
 // 0x8018D624
 void scAutoDemoChangeFocus(void)
 {
-	sSCAutoDemoFocusChangeWait = sSCAutoDemoProc->focus_end_wait;
+	sSCAutoDemoFocusChangeWait = sSCAutoDemoFunc->focus_end_wait;
 
-	if (sSCAutoDemoProc->proc_change != NULL)
+	if (sSCAutoDemoFunc->func_change != NULL)
 	{
-		sSCAutoDemoProc->proc_change();
+		sSCAutoDemoFunc->func_change();
 	}
-	sSCAutoDemoProc++;
+	sSCAutoDemoFunc++;
 }
 
 // 0x8018D674
 void scAutoDemoUpdateFocus(void)
 {
-	if (sSCAutoDemoProc->proc_focus != NULL)
+	if (sSCAutoDemoFunc->func_focus != NULL)
 	{
-		sSCAutoDemoProc->proc_focus();
+		sSCAutoDemoFunc->func_focus();
 	}
 	while (sSCAutoDemoFocusChangeWait == 0)
 	{
@@ -416,7 +416,7 @@ void scAutoDemoUpdateFocus(void)
 }
 
 // 0x8018D6DC
-void scAutoDemoProcRun(GObj *gobj)
+void scAutoDemoFuncRun(GObj *gobj)
 {
 	scAutoDemoDetectExit();
 	scAutoDemoUpdateFocus();
@@ -425,9 +425,9 @@ void scAutoDemoProcRun(GObj *gobj)
 // 0x8018D704
 GObj* scAutoDemoMakeFocusInterface(void)
 {
-	GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, scAutoDemoProcRun, nGCCommonLinkIDInterfaceActor, GOBJ_PRIORITY_DEFAULT);
+	GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, scAutoDemoFuncRun, nGCCommonLinkIDInterfaceActor, GOBJ_PRIORITY_DEFAULT);
 
-	sSCAutoDemoProc = dSCAutoDemoProcList;
+	sSCAutoDemoFunc = dSCAutoDemoFuncList;
 	sSCAutoDemoFocusChangeWait = 0;
 
 	scAutoDemoUpdateFocus();
@@ -566,7 +566,7 @@ void scAutoDemoInitDemo(void)
 		gSCManagerBattleState->players[i].stock_damage_all = scAutoDemoGetPlayerDamage(i);
 	}
 	gSCManagerBattleState->pl_count = 0;
-	gSCManagerBattleState->cp_count = 4;
+	gSCManagerBattleState->cp_count = GMCOMMON_PLAYERS_MAX;
 
 	for (i = 0; i < ARRAY_COUNT(sSCAutoDemoMapObjs); i++)
 	{
@@ -609,8 +609,8 @@ void scAutoDemoInitSObjs(void)
 
 		sobj->sprite.attr = SP_TEXSHUF | SP_HIDDEN | SP_TRANSPARENT;
 
-		sobj->pos.x = (s32)(160.0F - (sobj->sprite.width * 0.5F));
-		sobj->pos.y = (s32)(50.0F - (sobj->sprite.height * 0.5F));
+		sobj->pos.x = (s32) (160.0F - (sobj->sprite.width * 0.5F));
+		sobj->pos.y = (s32) (50.0F - (sobj->sprite.height * 0.5F));
 	}
 }
 

@@ -18,7 +18,7 @@ extern void mvOpeningSectorMakeMainCamera(void);
 extern void mvOpeningSectorMakeWallpaperCamera(void);
 extern void mvOpeningSectorMakeCockpitCamera(void);
 extern void mvOpeningSectorInitTotalTimeTics(void);
-extern void mvOpeningSectorProcRun(GObj *gobj);
+extern void mvOpeningSectorFuncRun(GObj *gobj);
 extern void mvOpeningSectorFuncStart(void);
 extern void mvOpeningSectorStartScene(void);
 

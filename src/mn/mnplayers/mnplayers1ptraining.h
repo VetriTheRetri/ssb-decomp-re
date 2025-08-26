@@ -101,7 +101,7 @@ extern void mnPlayers1PTrainingReadyProcUpdate(GObj *gobj);
 extern void mnPlayers1PTrainingMakeReady(void);
 extern void mnPlayers1PTrainingSetSceneData(void);
 extern void mnPlayers1PTrainingPauseSlotProcesses(void);
-extern void mnPlayers1PTrainingProcRun(GObj *gobj);
+extern void mnPlayers1PTrainingFuncRun(GObj *gobj);
 extern void mnPlayers1PTrainingInitPlayer(s32 player);
 extern void mnPlayers1PTrainingResetPlayer(s32 player);
 extern void mnPlayers1PTrainingResetPlayerNot(s32 player);

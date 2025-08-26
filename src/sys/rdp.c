@@ -65,23 +65,18 @@ Vp gSYRdpViewport;
 // // // // // // // // // // // //
 
 // 0x80007080
-#ifdef NON_MATCHING
 void syRdpSetViewport(Vp *viewport, f32 ulx, f32 uly, f32 lrx, f32 lry)
 {
     f32 h = (ulx + lrx) / 2.0F;
     f32 v = (uly + lry) / 2.0F;
 
-    viewport->vp.vscale[0] = (lrx - h) * 4.0F;
-    viewport->vp.vscale[1] = (lry - v) * 4.0F;
-    
-    viewport->vp.vtrans[0] = h * 4.0F;
-    viewport->vp.vtrans[1] = v * 4.0F;
+    viewport->vp.vscale[0] = ((s32) ((lrx - h) * 4.0F)) & 0xFFFF;
+    viewport->vp.vscale[1] = ((s32) ((lry - v) * 4.0F)) & 0xFFFF;
+    viewport->vp.vtrans[0] = ((s32) (h * 4.0F)) & 0xFFFF;
+    viewport->vp.vtrans[1] = ((s32) (v * 4.0F)) & 0xFFFF;
 
     viewport->vp.vscale[2] = viewport->vp.vtrans[2] = G_MAXZ / 2;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/rdp/syRdpSetViewport.s")
-#endif /* NON_MATCHING */
 
 void syRdpSetDefaultViewport(Vp *vp)
 {

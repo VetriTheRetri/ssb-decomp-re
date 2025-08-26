@@ -158,7 +158,7 @@ void dbMapsExitFuncMenu(void)
 }
 
 // 0x800D64A0
-void dbMapsProcRun(GObj *gobj)
+void dbMapsFuncRun(GObj *gobj)
 {
 	if (gSYControllerMain.button_tap & START_BUTTON)
 	{
@@ -190,7 +190,7 @@ void dbMapsProcRun(GObj *gobj)
 // 0x800D65AC
 void dbMapsFuncStart(void)
 {
-	gcMakeGObjSPAfter(0, dbMapsProcRun, 0, GOBJ_PRIORITY_DEFAULT);
+	gcMakeGObjSPAfter(0, dbMapsFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	dbMenuInitMenu();
 	dbMenuMakeMenu(0x32, 0x32, 0x64, dDBMapsMenuOptions, ARRAY_COUNT(dDBMapsMenuOptions));

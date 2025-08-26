@@ -14,7 +14,7 @@ extern void sc1PChallengerMakeFighter(s32 fkind);
 extern void sc1PChallengerMakeFighterCamera(void);
 extern void sc1PChallengerMakeDecalsCamera(void);
 extern void sc1PChallengerInitVars(void);
-extern void sc1PChallengerProcRun(GObj *gobj);
+extern void sc1PChallengerFuncRun(GObj *gobj);
 extern void sc1PChallengerFuncStart(void);
 extern void sc1PChallengerStartScene(void);
 

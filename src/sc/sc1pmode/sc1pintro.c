@@ -1814,7 +1814,7 @@ void func_ovl24_801348EC(void)
 }
 
 // 0x801348F4
-void sc1PIntroProcRun(GObj *gobj)
+void sc1PIntroFuncRun(GObj *gobj)
 {
     sc1PIntroTotalTimeTics++;
     
@@ -1925,7 +1925,7 @@ void sc1PIntroFuncStart(void)
     
     lbRelocInitSetup(&rl_setup);
     lbRelocLoadFilesListed(dSC1PIntroFileIDs, sSC1PIntroFiles);
-    gcMakeGObjSPAfter(0, sc1PIntroProcRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeGObjSPAfter(0, sc1PIntroFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     sc1PIntroInitVars();
     efParticleInitAll();

@@ -78,41 +78,41 @@ void scVSBattleFuncUpdate(void)
 }
 
 // 0x8018D0E0 - Get player's initial facing direction for battle start
-s32 scVSBattleGetStartPlayerLR(s32 target_player)
+s32 scVSBattleGetStartPlayerLR(s32 this_player)
 {
 	s32 lr;
 	f32 near_spawn;
 	f32 near_dist;
 	f32 distx;
 	Vec3f loop_spawn_pos;
-	Vec3f target_spawn_pos;
+	Vec3f this_spawn_pos;
 	s32 loop_player;
 
 	near_dist = 65536.0F;
 	near_spawn = 0.0F;
 
-	mpCollisionGetPlayerMapObjPosition(target_player, &target_spawn_pos);
+	mpCollisionGetPlayerMapObjPosition(this_player, &this_spawn_pos);
 
 	for (loop_player = 0; loop_player < ARRAY_COUNT(gSCManagerBattleState->players); loop_player++)
 	{
-		if (loop_player == target_player)
+		if (loop_player == this_player)
 		{
 			continue;
 		}
-		else if (gSCManagerBattleState->players[loop_player].pkind == nFTPlayerKindNot) 
+		else if (gSCManagerBattleState->players[loop_player].pkind == nFTPlayerKindNot)
 		{
 			continue;
 		}
-		else if (gSCManagerBattleState->players[loop_player].player != gSCManagerBattleState->players[target_player].player)
+		else if (gSCManagerBattleState->players[loop_player].player != gSCManagerBattleState->players[this_player].player)
 		{
 			mpCollisionGetPlayerMapObjPosition(loop_player, &loop_spawn_pos);
 
-			distx = (loop_spawn_pos.x < target_spawn_pos.x) ? -(loop_spawn_pos.x - target_spawn_pos.x) : (loop_spawn_pos.x - target_spawn_pos.x);
+			distx = (loop_spawn_pos.x < this_spawn_pos.x) ? -(loop_spawn_pos.x - this_spawn_pos.x) : (loop_spawn_pos.x - this_spawn_pos.x);
 
 			if (near_dist > distx)
 			{
 				near_dist = distx;
-				near_spawn = loop_spawn_pos.x - target_spawn_pos.x;
+				near_spawn = loop_spawn_pos.x - this_spawn_pos.x;
 			}
 		}
 	}

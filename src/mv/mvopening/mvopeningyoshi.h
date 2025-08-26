@@ -18,7 +18,7 @@ extern void mvOpeningYoshiMakePosedFighter(void);
 extern void mvOpeningYoshiMakeNameCamera(void);
 extern void mvOpeningYoshiMakePosedFighterCamera(void);
 extern void mvOpeningYoshiMakePosedWallpaperCamera(void);
-extern void mvOpeningYoshiProcRun(GObj *gobj);
+extern void mvOpeningYoshiFuncRun(GObj *gobj);
 extern void mvOpeningYoshiInitVars(void);
 extern void mvOpeningYoshiFuncStart(void);
 extern void mvOpeningYoshiFuncLights(Gfx **dls);

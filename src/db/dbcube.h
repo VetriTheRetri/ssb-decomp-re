@@ -18,7 +18,7 @@ extern void dbCubeStopBGM(void);
 extern void dbCubePlayBGM(void);
 extern void dbCubePlayTransition(void);
 extern void dbCubeAudioThreadUpdate(GObj *gobj);
-extern void dbCubeProcRun(GObj *gobj);
+extern void dbCubeFuncRun(GObj *gobj);
 extern GObj* dbCubeMakeGObj(void (*thread)(GObj*), void *dvar);
 extern GObj* dbCubeMakeCamera(void (*thread)(GObj*));
 extern void dbCubeFuncStart(void);

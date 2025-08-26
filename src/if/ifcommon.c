@@ -1521,7 +1521,7 @@ void ifCommonPlayerMagnifyUpdateViewport(Gfx **dls, FTStruct *fp)
 
         if (gIFCommonPlayerInterface.magnify_mode != 1)
         {
-            cobj = CObjGetStruct(gGMCameraCameraGObj);
+            cobj = CObjGetStruct(gGMCameraGObj);
 
             gSPViewport(dls[0]++, &cobj->viewport);
 
@@ -1594,7 +1594,7 @@ void ifCommonPlayerMagnifyProcDisplay(FTStruct *fp)
 
         dobj->scale.vec.f.x = dobj->scale.vec.f.y = gIFCommonPlayerInterface.magnify_scale * 0.5F;
 
-        cobj = CObjGetStruct(gGMCameraCameraGObj);
+        cobj = CObjGetStruct(gGMCameraGObj);
 
         gSPViewport(gSYTaskmanDLHeads[0]++, &cobj->viewport);
         gDPSetScissor(gSYTaskmanDLHeads[0]++, G_SC_NON_INTERLACE, gGMCameraStruct.viewport_ulx, gGMCameraStruct.viewport_uly, gGMCameraStruct.viewport_lrx, gGMCameraStruct.viewport_lry);
@@ -1708,7 +1708,7 @@ GObj* ifCommonPlayerArrowsMakeInterface(void (*proc_display)(GObj*), void (*proc
 }
 
 // 0x8011171C
-void ifCommonPlayerArrowsProcRun(GObj *interface_gobj)
+void ifCommonPlayerArrowsFuncRun(GObj *interface_gobj)
 {
     sb32 lr_right = FALSE;
     sb32 lr_left = FALSE;
@@ -1780,7 +1780,7 @@ void ifCommonPlayerArrowsInitInterface(void)
 
     gcAddGObjDisplay
     (
-        gcMakeGObjSPAfter(nGCCommonKindInterface, ifCommonPlayerArrowsProcRun, nGCCommonLinkIDInterface, GOBJ_PRIORITY_DEFAULT),
+        gcMakeGObjSPAfter(nGCCommonKindInterface, ifCommonPlayerArrowsFuncRun, nGCCommonLinkIDInterface, GOBJ_PRIORITY_DEFAULT),
         ifCommonPlayerArrowsMainProcDisplay,
         8,
         GOBJ_PRIORITY_DEFAULT,
@@ -1830,13 +1830,13 @@ void ifCommonPlayerTagProcDisplay(GObj *interface_gobj)
 
     if (!(fp->is_playertag_bossend) && !(fp->is_playertag_hide))
     {
-        if ((fp->playertag_wait == 1) || (CObjGetStruct(gGMCameraCameraGObj)->vec.eye.z > 6000.0F))
+        if ((fp->playertag_wait == 1) || (CObjGetStruct(gGMCameraGObj)->vec.eye.z > 6000.0F))
         {
             pos = fp->joints[nFTPartsJointTopN]->translate.vec.f;
 
             pos.y += fp->attr->camera_zoom_base;
 
-            func_ovl2_800EB924(CObjGetStruct(gGMCameraCameraGObj), gGMCameraMatrix, &pos, &x, &y);
+            func_ovl2_800EB924(CObjGetStruct(gGMCameraGObj), gGMCameraMatrix, &pos, &x, &y);
 
             if (gmCameraCheckTargetInBounds(x, y) != FALSE)
             {
@@ -1901,7 +1901,7 @@ void ifCommonItemArrowProcDisplay(GObj *interface_gobj)
 
         pos.y += ip->coll_data.map_coll.top + 100.0F;
 
-        func_ovl2_800EB924(CObjGetStruct(gGMCameraCameraGObj), gGMCameraMatrix, &pos, &x, &y);
+        func_ovl2_800EB924(CObjGetStruct(gGMCameraGObj), gGMCameraMatrix, &pos, &x, &y);
 
         if (gmCameraCheckTargetInBounds(x, y) != FALSE)
         {
@@ -2469,7 +2469,7 @@ SObj* ifCommonTimerMakeDigits(void)
 }
 
 // 0x80113104
-void ifCommonTimerProcRun(GObj *interface_gobj)
+void ifCommonTimerFuncRun(GObj *interface_gobj)
 {
     u32 time_delta;
     u32 time_update;
@@ -2539,7 +2539,7 @@ void ifCommonTimerMakeInterface(void (*proc)(void))
     sIFCommonTimerIsStarted = FALSE;
 
     ifCommonTimerInitAnnouncedSeconds();
-    ifSetProc(gcMakeGObjSPAfter(nGCCommonKindInterface, ifCommonTimerProcRun, nGCCommonLinkIDInterfaceActor, GOBJ_PRIORITY_DEFAULT), proc);
+    ifSetProc(gcMakeGObjSPAfter(nGCCommonKindInterface, ifCommonTimerFuncRun, nGCCommonLinkIDInterfaceActor, GOBJ_PRIORITY_DEFAULT), proc);
 }
 
 // 0x8011341C
@@ -3065,7 +3065,7 @@ void ifCommonBattlePauseUpdateInterface(void)
     }
     if (sIFCommonBattlePauseKindInterface != nIFPauseKindPlayerNA)
     {
-        gmCameraRunFuncCamera(gGMCameraCameraGObj);
+        gmCameraRunFuncCamera(gGMCameraGObj);
         grWallpaperRunProcessAll();
     }
 }
@@ -3080,7 +3080,7 @@ void ifCommonBattlePauseRestoreInterfaceAll(void)
         gGMCameraPauseCameraEyeX += (sIFCommonBattlePauseCameraEyeXOrigin - gGMCameraPauseCameraEyeX) * 0.1F;
         gGMCameraPauseCameraEyeY += (sIFCommonBattlePauseCameraEyeYOrigin - gGMCameraPauseCameraEyeY) * 0.1F;
 
-        gmCameraRunFuncCamera(gGMCameraCameraGObj);
+        gmCameraRunFuncCamera(gGMCameraGObj);
         grWallpaperRunProcessAll();
 
         return;
@@ -3133,7 +3133,7 @@ void ifCommonBattleBossDefeatUpdateInterface(void)
     }
     else
     {
-        gmCameraRunFuncCamera(gGMCameraCameraGObj);
+        gmCameraRunFuncCamera(gGMCameraGObj);
         grWallpaperRunProcessAll();
 
         dIFCommonBattleBossUpdateWait--;

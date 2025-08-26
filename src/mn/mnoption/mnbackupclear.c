@@ -704,7 +704,7 @@ void mnBackupClearUpdateOptionConfirmMenu(sb32 confirm_kind)
 }
 
 // 0x80132B9C
-void mnBackupClearProcRun(GObj *gobj)
+void mnBackupClearFuncRun(GObj *gobj)
 {
     sMNBackupClearTotalTimeTics++;
     
@@ -781,7 +781,7 @@ void mnBackupClearFuncStart(void)
     
     lbRelocInitSetup(&rl_setup);
     lbRelocLoadFilesListed(dMNBackupClearFileIDs, sMNBackupClearFiles);
-    gcMakeGObjSPAfter(0, mnBackupClearProcRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeGObjSPAfter(0, mnBackupClearFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     mnBackupClearInitVars();
     mnBackupClearMakeMainCamera();

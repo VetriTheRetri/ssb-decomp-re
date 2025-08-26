@@ -1383,7 +1383,7 @@ GObj* efGroundMakeEffect(EFDesc *effect_desc, s32 lr)
     }
     else ep = NULL;
 
-    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, efManagerProcRun, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, efManagerFuncRun, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT);
 
     if (effect_gobj == NULL)
     {

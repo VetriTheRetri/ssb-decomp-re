@@ -57,7 +57,7 @@ extern s32 mvOpeningRoomGetDroppedFighterKind(void);
 extern s32 mvOpeningRoomGetPulledFighterKind(void);
 extern void mvOpeningRoomInitVars(void);
 extern sb32 mvOpeningRoomCheckSetFramebuffer(SYTaskGfx *arg);
-extern void mvOpeningRoomProcRun(GObj *gobj);
+extern void mvOpeningRoomFuncRun(GObj *gobj);
 extern void mvOpeningRoomFuncStart(void);
 extern void mvOpeningRoomStartScene(void);
 

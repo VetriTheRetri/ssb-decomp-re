@@ -1106,7 +1106,7 @@ void ftDisplayMainProcDisplay(GObj *fighter_gobj)
                 ft_pos.y += fp->attr->cam_offset_y;
 
             #if defined(AVOID_UB) || defined(NON_MATCHING)
-                syVectorDiff3D(&dist, &CObjGetStruct(gGMCameraCameraGObj)->vec.at, &ft_pos);
+                syVectorDiff3D(&dist, &CObjGetStruct(gGMCameraGObj)->vec.at, &ft_pos);
 
                 if (fp->attr->cam_offset_y < syVectorMag3D(&dist))
                 {
@@ -1116,7 +1116,7 @@ void ftDisplayMainProcDisplay(GObj *fighter_gobj)
                 }
             #else
                 // SUPER FAKE. I hope I can fix this in the future. ft_pos - 2 should really be dist, but we get stack issues otherwise.
-                syVectorDiff3D(&ft_pos - 2, &CObjGetStruct(gGMCameraCameraGObj)->vec.at, &ft_pos);
+                syVectorDiff3D(&ft_pos - 2, &CObjGetStruct(gGMCameraGObj)->vec.at, &ft_pos);
 
                 if (fp->attr->cam_offset_y < syVectorMag3D(&ft_pos - 2))
                 {
@@ -1126,14 +1126,14 @@ void ftDisplayMainProcDisplay(GObj *fighter_gobj)
                 }
             #endif
 
-                func_ovl2_800EB924(CObjGetStruct(gGMCameraCameraGObj), gGMCameraMatrix, &ft_pos, &cam_pos_x, &cam_pos_y);
+                func_ovl2_800EB924(CObjGetStruct(gGMCameraGObj), gGMCameraMatrix, &ft_pos, &cam_pos_x, &cam_pos_y);
 
                 if (gmCameraCheckTargetInBounds(cam_pos_x, cam_pos_y) == FALSE)
                 {
                     ft_pos = fp->joints[nFTPartsJointTopN]->translate.vec.f;
                     ft_pos.y += 300.0F;
 
-                    func_ovl2_800EB924(CObjGetStruct(gGMCameraCameraGObj), gGMCameraMatrix, &ft_pos, &fp->magnify_pos.x, &fp->magnify_pos.y);
+                    func_ovl2_800EB924(CObjGetStruct(gGMCameraGObj), gGMCameraMatrix, &ft_pos, &fp->magnify_pos.x, &fp->magnify_pos.y);
 
                     fp->is_magnify_show = TRUE;
 

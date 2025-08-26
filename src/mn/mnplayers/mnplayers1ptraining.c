@@ -2912,7 +2912,7 @@ void mnPlayers1PTrainingPauseSlotProcesses(void)
 }
 
 // 0x80137700
-void mnPlayers1PTrainingProcRun(GObj *gobj)
+void mnPlayers1PTrainingFuncRun(GObj *gobj)
 {
 	sMNPlayers1PTrainingTotalTimeTics++;
 
@@ -3140,7 +3140,7 @@ void mnPlayers1PTrainingFuncStart(void)
 
 	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesListed(dMNPlayers1PTrainingFileIDs, sMNPlayers1PTrainingFiles);
-	gcMakeGObjSPAfter(nGCCommonKindPlayerSelect, mnPlayers1PTrainingProcRun, 15, GOBJ_PRIORITY_DEFAULT);
+	gcMakeGObjSPAfter(nGCCommonKindPlayerSelect, mnPlayers1PTrainingFuncRun, 15, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(16, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
 	efParticleInitAll();
 	efManagerInitEffects();

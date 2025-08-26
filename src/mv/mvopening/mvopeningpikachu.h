@@ -18,7 +18,7 @@ extern void mvOpeningPikachuMakePosedFighter(void);
 extern void mvOpeningPikachuMakeNameCamera(void);
 extern void mvOpeningPikachuMakePosedFighterCamera(void);
 extern void mvOpeningPikachuMakePosedWallpaperCamera(void);
-extern void mvOpeningPikachuProcRun(GObj *gobj);
+extern void mvOpeningPikachuFuncRun(GObj *gobj);
 extern void mvOpeningPikachuInitVars(void);
 extern void mvOpeningPikachuFuncStart(void);
 extern void mvOpeningPikachuFuncLights(Gfx **dls);

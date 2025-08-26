@@ -98,7 +98,7 @@ extern void mnPlayers1PBonusMakeSpotlight(void);
 extern void mnPlayers1PBonusReadyProcUpdate(GObj *gobj);
 extern void mnPlayers1PBonusMakeReady(void);
 extern void mnPlayers1PBonusSetSceneData(void);
-extern void mnPlayers1PBonusProcRun(GObj *gobj);
+extern void mnPlayers1PBonusFuncRun(GObj *gobj);
 extern void mnPlayers1PBonusInitPlayer(void);
 extern void mnPlayers1PBonusInitVars(void);
 extern void mnPlayers1PBonusInitSlot(s32 player);

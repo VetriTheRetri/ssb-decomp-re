@@ -788,7 +788,7 @@ sb32 mpCollisionCheckFloorLineCollisionSame(Vec3f *position, Vec3f *translate, V
     s32 temp_s1;
     s32 vpos_x;
     s32 vpos_y;
-    f32 spB0;
+    f32 scrollv;
     f32 spAC;
 
     line_project_pos = F32_MAX;
@@ -862,13 +862,13 @@ sb32 mpCollisionCheckFloorLineCollisionSame(Vec3f *position, Vec3f *translate, V
                         {
                             if (vtdist_y < vpdist_y)
                             {
-                                if (mpCollisionCheckFCSurfaceFlat(temp_s1, temp_s0, vpos_x, vpdist_x, vpdist_y, vtdist_x, vtdist_y, &spB0, &spAC) == TRUE)
+                                if (mpCollisionCheckFCSurfaceFlat(temp_s1, temp_s0, vpos_x, vpdist_x, vpdist_y, vtdist_x, vtdist_y, &scrollv, &spAC) == TRUE)
                                 {
                                     if (line_project_pos <= ((spAC < vpdist_y) ? -(spAC - vpdist_y) : (spAC - vpdist_y))) continue;
 
                                     if (ga_last != NULL)
                                     {
-                                        ga_last->x = spB0 + vedge_x;
+                                        ga_last->x = scrollv + vedge_x;
                                         ga_last->y = spAC + vedge_y;
                                         ga_last->z = 0.0F;
                                     }
@@ -889,13 +889,13 @@ sb32 mpCollisionCheckFloorLineCollisionSame(Vec3f *position, Vec3f *translate, V
                                 }
                             }
                         }
-                        else if (mpCollisionCheckFloorSurfaceTilt(temp_s1, temp_s0, vpos_x, vpos_y, vpdist_x, vpdist_y, vtdist_x, vtdist_y, &spB0, &spAC) == TRUE)
+                        else if (mpCollisionCheckFloorSurfaceTilt(temp_s1, temp_s0, vpos_x, vpos_y, vpdist_x, vpdist_y, vtdist_x, vtdist_y, &scrollv, &spAC) == TRUE)
                         {
                             if (line_project_pos <= ((spAC < vpdist_y) ? -(spAC - vpdist_y) : (spAC - vpdist_y))) continue;
 
                             if (ga_last != NULL)
                             {
-                                ga_last->x = spB0 + vedge_x;
+                                ga_last->x = scrollv + vedge_x;
                                 ga_last->y = spAC + vedge_y;
                                 ga_last->z = 0.0F;
                             }
@@ -947,7 +947,7 @@ sb32 mpCollisionCheckFloorLineCollisionDiff(Vec3f *position, Vec3f *translate, V
     s32 temp_s1;
     s32 vpos_x;
     s32 vpos_y;
-    f32 spB0;
+    f32 scrollv;
     f32 spAC;
 
     line_project_pos = F32_MAX;
@@ -1024,13 +1024,13 @@ sb32 mpCollisionCheckFloorLineCollisionDiff(Vec3f *position, Vec3f *translate, V
                         {
                             if (vtdist_y < vpdist_y)
                             {
-                                if (mpCollisionCheckFCSurfaceFlat(temp_s1, temp_s0, vpos_x, vpdist_x, vpdist_y, vtdist_x, vtdist_y, &spB0, &spAC) == TRUE)
+                                if (mpCollisionCheckFCSurfaceFlat(temp_s1, temp_s0, vpos_x, vpdist_x, vpdist_y, vtdist_x, vtdist_y, &scrollv, &spAC) == TRUE)
                                 {
                                     if (line_project_pos <= ((spAC < (vpdist_y - dynamic_y)) ? -(spAC - (vpdist_y - dynamic_y)) : (spAC - (vpdist_y - dynamic_y)))) continue;
 
                                     if (ga_last != NULL)
                                     {
-                                        ga_last->x = spB0 + vedge_x;
+                                        ga_last->x = scrollv + vedge_x;
                                         ga_last->y = spAC + vedge_y;
                                         ga_last->z = 0.0F;
                                     }
@@ -1051,13 +1051,13 @@ sb32 mpCollisionCheckFloorLineCollisionDiff(Vec3f *position, Vec3f *translate, V
                                 }
                             }
                         }
-                        else if (mpCollisionCheckFloorSurfaceTilt(temp_s1, temp_s0, vpos_x, vpos_y, vpdist_x, vpdist_y, vtdist_x, vtdist_y, &spB0, &spAC) == TRUE)
+                        else if (mpCollisionCheckFloorSurfaceTilt(temp_s1, temp_s0, vpos_x, vpos_y, vpdist_x, vpdist_y, vtdist_x, vtdist_y, &scrollv, &spAC) == TRUE)
                         {
                             if (line_project_pos <= ((spAC < (vpdist_y - dynamic_y)) ? -(spAC - (vpdist_y - dynamic_y)) : (spAC - (vpdist_y - dynamic_y)))) continue;
 
                             if (ga_last != NULL)
                             {
-                                ga_last->x = spB0 + vedge_x;
+                                ga_last->x = scrollv + vedge_x;
                                 ga_last->y = spAC + vedge_y;
                                 ga_last->z = 0.0F;
                             }
@@ -1292,7 +1292,7 @@ sb32 mpCollisionCheckCeilLineCollisionSame(Vec3f *position, Vec3f *translate, Ve
     s32 temp_s1;
     s32 vpos_x;
     s32 vpos_y;
-    f32 spB0;
+    f32 scrollv;
     f32 spAC;
 
     line_project_pos = F32_MAX;
@@ -1366,13 +1366,13 @@ sb32 mpCollisionCheckCeilLineCollisionSame(Vec3f *position, Vec3f *translate, Ve
                         {
                             if (vtdist_y > vpdist_y)
                             {
-                                if (mpCollisionCheckFCSurfaceFlat(temp_s1, temp_s0, vpos_x, vpdist_x, vpdist_y, vtdist_x, vtdist_y, &spB0, &spAC) == TRUE)
+                                if (mpCollisionCheckFCSurfaceFlat(temp_s1, temp_s0, vpos_x, vpdist_x, vpdist_y, vtdist_x, vtdist_y, &scrollv, &spAC) == TRUE)
                                 {
                                     if (line_project_pos <= ((spAC < vpdist_y) ? -(spAC - vpdist_y) : (spAC - vpdist_y))) continue;
 
                                     if (ga_last != NULL)
                                     {
-                                        ga_last->x = spB0 + vedge_x;
+                                        ga_last->x = scrollv + vedge_x;
                                         ga_last->y = spAC + vedge_y;
                                         ga_last->z = 0.0F;
                                     }
@@ -1393,13 +1393,13 @@ sb32 mpCollisionCheckCeilLineCollisionSame(Vec3f *position, Vec3f *translate, Ve
                                 }
                             }
                         }
-                        else if (mpCollisionCheckCeilSurfaceTilt(temp_s1, temp_s0, vpos_x, vpos_y, vpdist_x, vpdist_y, vtdist_x, vtdist_y, &spB0, &spAC) == TRUE)
+                        else if (mpCollisionCheckCeilSurfaceTilt(temp_s1, temp_s0, vpos_x, vpos_y, vpdist_x, vpdist_y, vtdist_x, vtdist_y, &scrollv, &spAC) == TRUE)
                         {
                             if (line_project_pos <= ((spAC < vpdist_y) ? -(spAC - vpdist_y) : (spAC - vpdist_y))) continue;
 
                             if (ga_last != NULL)
                             {
-                                ga_last->x = spB0 + vedge_x;
+                                ga_last->x = scrollv + vedge_x;
                                 ga_last->y = spAC + vedge_y;
                                 ga_last->z = 0.0F;
                             }
@@ -1451,7 +1451,7 @@ sb32 mpCollisionCheckCeilLineCollisionDiff(Vec3f *position, Vec3f *translate, Ve
     s32 temp_s1;
     s32 vpos_x;
     s32 vpos_y;
-    f32 spB0;
+    f32 scrollv;
     f32 spAC;
 
     line_project_pos = F32_MAX;
@@ -1528,13 +1528,13 @@ sb32 mpCollisionCheckCeilLineCollisionDiff(Vec3f *position, Vec3f *translate, Ve
                         {
                             if (vtdist_y > vpdist_y)
                             {
-                                if (mpCollisionCheckFCSurfaceFlat(temp_s1, temp_s0, vpos_x, vpdist_x, vpdist_y, vtdist_x, vtdist_y, &spB0, &spAC) == TRUE)
+                                if (mpCollisionCheckFCSurfaceFlat(temp_s1, temp_s0, vpos_x, vpdist_x, vpdist_y, vtdist_x, vtdist_y, &scrollv, &spAC) == TRUE)
                                 {
                                     if (line_project_pos <= ((spAC < (vpdist_y - dynamic_y)) ? -(spAC - (vpdist_y - dynamic_y)) : (spAC - (vpdist_y - dynamic_y)))) continue;
 
                                     if (ga_last != NULL)
                                     {
-                                        ga_last->x = spB0 + vedge_x;
+                                        ga_last->x = scrollv + vedge_x;
                                         ga_last->y = spAC + vedge_y;
                                         ga_last->z = 0.0F;
                                     }
@@ -1555,13 +1555,13 @@ sb32 mpCollisionCheckCeilLineCollisionDiff(Vec3f *position, Vec3f *translate, Ve
                                 }
                             }
                         }
-                        else if (mpCollisionCheckCeilSurfaceTilt(temp_s1, temp_s0, vpos_x, vpos_y, vpdist_x, vpdist_y, vtdist_x, vtdist_y, &spB0, &spAC) == TRUE)
+                        else if (mpCollisionCheckCeilSurfaceTilt(temp_s1, temp_s0, vpos_x, vpos_y, vpdist_x, vpdist_y, vtdist_x, vtdist_y, &scrollv, &spAC) == TRUE)
                         {
                             if (line_project_pos <= ((spAC < (vpdist_y - dynamic_y)) ? -(spAC - (vpdist_y - dynamic_y)) : (spAC - (vpdist_y - dynamic_y)))) continue;
 
                             if (ga_last != NULL)
                             {
-                                ga_last->x = spB0 + vedge_x;
+                                ga_last->x = scrollv + vedge_x;
                                 ga_last->y = spAC + vedge_y;
                                 ga_last->z = 0.0F;
                             }
@@ -1612,7 +1612,7 @@ sb32 mpCollisionCheckRWallLineCollisionSame(Vec3f *position, Vec3f *translate, V
     s32 temp_s1;
     s32 vpos_x;
     s32 vpos_y;
-    f32 spB0;
+    f32 scrollv;
     f32 spAC;
 
     line_project_pos = F32_MAX;
@@ -1686,13 +1686,13 @@ sb32 mpCollisionCheckRWallLineCollisionSame(Vec3f *position, Vec3f *translate, V
                         {
                             if (vtdist_x < vpdist_x)
                             {
-                                if (mpCollisionCheckLRSurfaceFlat(temp_s0, temp_s1, vpos_y, vpdist_x, vpdist_y, vtdist_x, vtdist_y, &spB0, &spAC) == TRUE)
+                                if (mpCollisionCheckLRSurfaceFlat(temp_s0, temp_s1, vpos_y, vpdist_x, vpdist_y, vtdist_x, vtdist_y, &scrollv, &spAC) == TRUE)
                                 {
-                                    if (line_project_pos <= ((spB0 < vpdist_x) ? -(spB0 - vpdist_x) : (spB0 - vpdist_x))) continue;
+                                    if (line_project_pos <= ((scrollv < vpdist_x) ? -(scrollv - vpdist_x) : (scrollv - vpdist_x))) continue;
 
                                     if (ga_last != NULL)
                                     {
-                                        ga_last->x = spB0 + vedge_y;
+                                        ga_last->x = scrollv + vedge_y;
                                         ga_last->y = spAC + vedge_x;
                                         ga_last->z = 0.0F;
                                     }
@@ -1709,17 +1709,17 @@ sb32 mpCollisionCheckRWallLineCollisionSame(Vec3f *position, Vec3f *translate, V
                                     {
                                         *stand_coll_flags = gMPCollisionVertexData->vpos[gMPCollisionVertexIDs->vertex_id[vertex_id]].vertex_flags;
                                     }
-                                    line_project_pos = (spB0 < vpdist_x) ? -(spB0 - vpdist_x) : (spB0 - vpdist_x);
+                                    line_project_pos = (scrollv < vpdist_x) ? -(scrollv - vpdist_x) : (scrollv - vpdist_x);
                                 }
                             }
                         }
-                        else if (mpCollisionCheckRWallSurfaceTilt(temp_s0, temp_s1, vpos_x, vpos_y, vpdist_x, vpdist_y, vtdist_x, vtdist_y, &spB0, &spAC) == TRUE)
+                        else if (mpCollisionCheckRWallSurfaceTilt(temp_s0, temp_s1, vpos_x, vpos_y, vpdist_x, vpdist_y, vtdist_x, vtdist_y, &scrollv, &spAC) == TRUE)
                         {
-                            if (line_project_pos <= ((spB0 < vpdist_x) ? -(spB0 - vpdist_x) : (spB0 - vpdist_x))) continue;
+                            if (line_project_pos <= ((scrollv < vpdist_x) ? -(scrollv - vpdist_x) : (scrollv - vpdist_x))) continue;
 
                             if (ga_last != NULL)
                             {
-                                ga_last->x = spB0 + vedge_y;
+                                ga_last->x = scrollv + vedge_y;
                                 ga_last->y = spAC + vedge_x;
                                 ga_last->z = 0.0F;
                             }
@@ -1735,7 +1735,7 @@ sb32 mpCollisionCheckRWallLineCollisionSame(Vec3f *position, Vec3f *translate, V
                             {
                                 *stand_coll_flags = gMPCollisionVertexData->vpos[gMPCollisionVertexIDs->vertex_id[vertex_id]].vertex_flags;
                             }
-                            line_project_pos = (spB0 < vpdist_x) ? -(spB0 - vpdist_x) : (spB0 - vpdist_x);
+                            line_project_pos = (scrollv < vpdist_x) ? -(scrollv - vpdist_x) : (scrollv - vpdist_x);
                         }
                     }
                 }
@@ -1932,7 +1932,7 @@ sb32 mpCollisionCheckRWallLineCollisionDiff(Vec3f *position, Vec3f *translate, V
     s32 temp_s1;
     s32 vpos_x;
     s32 vpos_y;
-    f32 spB0;
+    f32 scrollv;
     f32 spAC;
 
     line_project_pos = F32_MAX;
@@ -2009,13 +2009,13 @@ sb32 mpCollisionCheckRWallLineCollisionDiff(Vec3f *position, Vec3f *translate, V
                         {
                             if (vtdist_x < vpdist_x)
                             {
-                                if (mpCollisionCheckLRSurfaceFlat(temp_s0, temp_s1, vpos_y, vpdist_x, vpdist_y, vtdist_x, vtdist_y, &spB0, &spAC) == TRUE)
+                                if (mpCollisionCheckLRSurfaceFlat(temp_s0, temp_s1, vpos_y, vpdist_x, vpdist_y, vtdist_x, vtdist_y, &scrollv, &spAC) == TRUE)
                                 {
-                                    if (line_project_pos <= ((spB0 < (vpdist_x - dynamic_x)) ? -(spB0 - (vpdist_x - dynamic_x)) : (spB0 - (vpdist_x - dynamic_x)))) continue;
+                                    if (line_project_pos <= ((scrollv < (vpdist_x - dynamic_x)) ? -(scrollv - (vpdist_x - dynamic_x)) : (scrollv - (vpdist_x - dynamic_x)))) continue;
 
                                     if (ga_last != NULL)
                                     {
-                                        ga_last->x = spB0 + vedge_y;
+                                        ga_last->x = scrollv + vedge_y;
                                         ga_last->y = spAC + vedge_x;
                                         ga_last->z = 0.0F;
                                     }
@@ -2032,17 +2032,17 @@ sb32 mpCollisionCheckRWallLineCollisionDiff(Vec3f *position, Vec3f *translate, V
                                     {
                                         *stand_coll_flags = gMPCollisionVertexData->vpos[gMPCollisionVertexIDs->vertex_id[vertex_id]].vertex_flags;
                                     }
-                                    line_project_pos = (spB0 < (vpdist_x - dynamic_x)) ? -(spB0 - (vpdist_x - dynamic_x)) : (spB0 - (vpdist_x - dynamic_x));
+                                    line_project_pos = (scrollv < (vpdist_x - dynamic_x)) ? -(scrollv - (vpdist_x - dynamic_x)) : (scrollv - (vpdist_x - dynamic_x));
                                 }
                             }
                         }
-                        else if (mpCollisionCheckRWallSurfaceTilt(temp_s0, temp_s1, vpos_x, vpos_y, vpdist_x, vpdist_y, vtdist_x, vtdist_y, &spB0, &spAC) == TRUE)
+                        else if (mpCollisionCheckRWallSurfaceTilt(temp_s0, temp_s1, vpos_x, vpos_y, vpdist_x, vpdist_y, vtdist_x, vtdist_y, &scrollv, &spAC) == TRUE)
                         {
-                            if (line_project_pos <= ((spB0 < (vpdist_x - dynamic_x)) ? -(spB0 - (vpdist_x - dynamic_x)) : (spB0 - (vpdist_x - dynamic_x)))) continue;
+                            if (line_project_pos <= ((scrollv < (vpdist_x - dynamic_x)) ? -(scrollv - (vpdist_x - dynamic_x)) : (scrollv - (vpdist_x - dynamic_x)))) continue;
 
                             if (ga_last != NULL)
                             {
-                                ga_last->x = spB0 + vedge_y;
+                                ga_last->x = scrollv + vedge_y;
                                 ga_last->y = spAC + vedge_x;
                                 ga_last->z = 0.0F;
                             }
@@ -2058,7 +2058,7 @@ sb32 mpCollisionCheckRWallLineCollisionDiff(Vec3f *position, Vec3f *translate, V
                             {
                                 *stand_coll_flags = gMPCollisionVertexData->vpos[gMPCollisionVertexIDs->vertex_id[vertex_id]].vertex_flags;
                             }
-                            line_project_pos = (spB0 < (vpdist_x - dynamic_x)) ? -(spB0 - (vpdist_x - dynamic_x)) : (spB0 - (vpdist_x - dynamic_x));
+                            line_project_pos = (scrollv < (vpdist_x - dynamic_x)) ? -(scrollv - (vpdist_x - dynamic_x)) : (scrollv - (vpdist_x - dynamic_x));
                         }
                     }
                 }
@@ -2153,7 +2153,7 @@ sb32 mpCollisionCheckLWallLineCollisionSame(Vec3f *position, Vec3f *translate, V
     s32 temp_s1;
     s32 vpos_x;
     s32 vpos_y;
-    f32 spB0;
+    f32 scrollv;
     f32 spAC;
 
     line_project_pos = F32_MAX;
@@ -2227,13 +2227,13 @@ sb32 mpCollisionCheckLWallLineCollisionSame(Vec3f *position, Vec3f *translate, V
                         {
                             if (vtdist_x > vpdist_x)
                             {
-                                if (mpCollisionCheckLRSurfaceFlat(temp_s0, temp_s1, vpos_y, vpdist_x, vpdist_y, vtdist_x, vtdist_y, &spB0, &spAC) == TRUE)
+                                if (mpCollisionCheckLRSurfaceFlat(temp_s0, temp_s1, vpos_y, vpdist_x, vpdist_y, vtdist_x, vtdist_y, &scrollv, &spAC) == TRUE)
                                 {
-                                    if (line_project_pos <= ((spB0 < vpdist_x) ? -(spB0 - vpdist_x) : (spB0 - vpdist_x))) continue;
+                                    if (line_project_pos <= ((scrollv < vpdist_x) ? -(scrollv - vpdist_x) : (scrollv - vpdist_x))) continue;
 
                                     if (ga_last != NULL)
                                     {
-                                        ga_last->x = spB0 + vedge_y;
+                                        ga_last->x = scrollv + vedge_y;
                                         ga_last->y = spAC + vedge_x;
                                         ga_last->z = 0.0F;
                                     }
@@ -2250,17 +2250,17 @@ sb32 mpCollisionCheckLWallLineCollisionSame(Vec3f *position, Vec3f *translate, V
                                     {
                                         *stand_coll_flags = gMPCollisionVertexData->vpos[gMPCollisionVertexIDs->vertex_id[vertex_id]].vertex_flags;
                                     }
-                                    line_project_pos = (spB0 < vpdist_x) ? -(spB0 - vpdist_x) : (spB0 - vpdist_x);
+                                    line_project_pos = (scrollv < vpdist_x) ? -(scrollv - vpdist_x) : (scrollv - vpdist_x);
                                 }
                             }
                         }
-                        else if (mpCollisionCheckLWallSurfaceTilt(temp_s0, temp_s1, vpos_x, vpos_y, vpdist_x, vpdist_y, vtdist_x, vtdist_y, &spB0, &spAC) == TRUE)
+                        else if (mpCollisionCheckLWallSurfaceTilt(temp_s0, temp_s1, vpos_x, vpos_y, vpdist_x, vpdist_y, vtdist_x, vtdist_y, &scrollv, &spAC) == TRUE)
                         {
-                            if (line_project_pos <= ((spB0 < vpdist_x) ? -(spB0 - vpdist_x) : (spB0 - vpdist_x))) continue;
+                            if (line_project_pos <= ((scrollv < vpdist_x) ? -(scrollv - vpdist_x) : (scrollv - vpdist_x))) continue;
 
                             if (ga_last != NULL)
                             {
-                                ga_last->x = spB0 + vedge_y;
+                                ga_last->x = scrollv + vedge_y;
                                 ga_last->y = spAC + vedge_x;
                                 ga_last->z = 0.0F;
                             }
@@ -2276,7 +2276,7 @@ sb32 mpCollisionCheckLWallLineCollisionSame(Vec3f *position, Vec3f *translate, V
                             {
                                 *stand_coll_flags = gMPCollisionVertexData->vpos[gMPCollisionVertexIDs->vertex_id[vertex_id]].vertex_flags;
                             }
-                            line_project_pos = (spB0 < vpdist_x) ? -(spB0 - vpdist_x) : (spB0 - vpdist_x);
+                            line_project_pos = (scrollv < vpdist_x) ? -(scrollv - vpdist_x) : (scrollv - vpdist_x);
                         }
                     }
                 }
@@ -2438,7 +2438,7 @@ sb32 mpCollisionCheckLWallLineCollisionDiff(Vec3f *position, Vec3f *translate, V
     s32 temp_s1;
     s32 vpos_x;
     s32 vpos_y;
-    f32 spB0;
+    f32 scrollv;
     f32 spAC;
 
     line_project_pos = F32_MAX;
@@ -2515,13 +2515,13 @@ sb32 mpCollisionCheckLWallLineCollisionDiff(Vec3f *position, Vec3f *translate, V
                         {
                             if (vtdist_x > vpdist_x)
                             {
-                                if (mpCollisionCheckLRSurfaceFlat(temp_s0, temp_s1, vpos_y, vpdist_x, vpdist_y, vtdist_x, vtdist_y, &spB0, &spAC) == TRUE)
+                                if (mpCollisionCheckLRSurfaceFlat(temp_s0, temp_s1, vpos_y, vpdist_x, vpdist_y, vtdist_x, vtdist_y, &scrollv, &spAC) == TRUE)
                                 {
-                                    if (line_project_pos <= ((spB0 < (vpdist_x - dynamic_x)) ? -(spB0 - (vpdist_x - dynamic_x)) : (spB0 - (vpdist_x - dynamic_x)))) continue;
+                                    if (line_project_pos <= ((scrollv < (vpdist_x - dynamic_x)) ? -(scrollv - (vpdist_x - dynamic_x)) : (scrollv - (vpdist_x - dynamic_x)))) continue;
 
                                     if (ga_last != NULL)
                                     {
-                                        ga_last->x = spB0 + vedge_y;
+                                        ga_last->x = scrollv + vedge_y;
                                         ga_last->y = spAC + vedge_x;
                                         ga_last->z = 0.0F;
                                     }
@@ -2538,17 +2538,17 @@ sb32 mpCollisionCheckLWallLineCollisionDiff(Vec3f *position, Vec3f *translate, V
                                     {
                                         *stand_coll_flags = gMPCollisionVertexData->vpos[gMPCollisionVertexIDs->vertex_id[vertex_id]].vertex_flags;
                                     }
-                                    line_project_pos = (spB0 < (vpdist_x - dynamic_x)) ? -(spB0 - (vpdist_x - dynamic_x)) : (spB0 - (vpdist_x - dynamic_x));
+                                    line_project_pos = (scrollv < (vpdist_x - dynamic_x)) ? -(scrollv - (vpdist_x - dynamic_x)) : (scrollv - (vpdist_x - dynamic_x));
                                 }
                             }
                         }
-                        else if (mpCollisionCheckLWallSurfaceTilt(temp_s0, temp_s1, vpos_x, vpos_y, vpdist_x, vpdist_y, vtdist_x, vtdist_y, &spB0, &spAC) == TRUE)
+                        else if (mpCollisionCheckLWallSurfaceTilt(temp_s0, temp_s1, vpos_x, vpos_y, vpdist_x, vpdist_y, vtdist_x, vtdist_y, &scrollv, &spAC) == TRUE)
                         {
-                            if (line_project_pos <= ((spB0 < (vpdist_x - dynamic_x)) ? -(spB0 - (vpdist_x - dynamic_x)) : (spB0 - (vpdist_x - dynamic_x)))) continue;
+                            if (line_project_pos <= ((scrollv < (vpdist_x - dynamic_x)) ? -(scrollv - (vpdist_x - dynamic_x)) : (scrollv - (vpdist_x - dynamic_x)))) continue;
 
                             if (ga_last != NULL)
                             {
-                                ga_last->x = spB0 + vedge_y;
+                                ga_last->x = scrollv + vedge_y;
                                 ga_last->y = spAC + vedge_x;
                                 ga_last->z = 0.0F;
                             }
@@ -2564,7 +2564,7 @@ sb32 mpCollisionCheckLWallLineCollisionDiff(Vec3f *position, Vec3f *translate, V
                             {
                                 *stand_coll_flags = gMPCollisionVertexData->vpos[gMPCollisionVertexIDs->vertex_id[vertex_id]].vertex_flags;
                             }
-                            line_project_pos = (spB0 < (vpdist_x - dynamic_x)) ? -(spB0 - (vpdist_x - dynamic_x)) : (spB0 - (vpdist_x - dynamic_x));
+                            line_project_pos = (scrollv < (vpdist_x - dynamic_x)) ? -(scrollv - (vpdist_x - dynamic_x)) : (scrollv - (vpdist_x - dynamic_x));
                         }
                     }
                 }

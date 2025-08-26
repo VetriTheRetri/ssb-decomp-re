@@ -1909,7 +1909,7 @@ void func_ovl2_800FD70C(void)
 }
 
 // 0x800FD714
-void efManagerProcRun(GObj *effect_gobj)
+void efManagerFuncRun(GObj *effect_gobj)
 {
     EFStruct *ep = efGetStruct(effect_gobj);
 
@@ -1922,7 +1922,7 @@ void efManagerProcRun(GObj *effect_gobj)
     }
     else gcAddGObjProcess(effect_gobj, efManagerNoStructProcUpdate, nGCProcessKindFunc, 3);
 
-    effect_gobj->proc_run = NULL;
+    effect_gobj->func_run = NULL;
 }
 
 // 0x800FD778
@@ -1956,7 +1956,7 @@ GObj* efManagerMakeEffect(EFDesc *effect_desc, sb32 is_force_return)
     }
     else ep = NULL;
 
-    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, efManagerProcRun, (effect_flags & EFFECT_FLAG_SPECIALLINK) ? nGCCommonLinkIDSpecialEffect : nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, efManagerFuncRun, (effect_flags & EFFECT_FLAG_SPECIALLINK) ? nGCCommonLinkIDSpecialEffect : nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -3772,7 +3772,7 @@ void efManagerQuakeProcUpdate(GObj *effect_gobj)
     }
     else
     {
-        cobj = CObjGetStruct(gGMCameraCameraGObj);
+        cobj = CObjGetStruct(gGMCameraGObj);
 
         dobj = DObjGetStruct(effect_gobj);
 
@@ -3799,13 +3799,13 @@ void efManagerQuakeProcUpdate(GObj *effect_gobj)
 }
 
 // 0x801008B8
-void efManagerQuakeProcRun(GObj *effect_gobj)
+void efManagerQuakeFuncRun(GObj *effect_gobj)
 {
     EFStruct *ep = efGetStruct(effect_gobj);
 
     gcAddGObjProcess(effect_gobj, efManagerQuakeProcUpdate, nGCProcessKindFunc, ep->effect_vars.quake.priority);
 
-    effect_gobj->proc_run = NULL;
+    effect_gobj->func_run = NULL;
 }
 
 // 0x801008F4
@@ -3821,7 +3821,7 @@ GObj* efManagerQuakeMakeEffect(s32 magnitude)
     {
         return NULL;
     }
-    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, efManagerQuakeProcRun, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, efManagerQuakeFuncRun, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT);
 
     if (effect_gobj == NULL)
     {

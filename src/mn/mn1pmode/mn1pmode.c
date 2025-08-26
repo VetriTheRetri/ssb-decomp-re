@@ -569,7 +569,7 @@ void mn1PModeInitVars(void)
 }
 
 // 0x801329A8
-void mn1PModeProcRun(GObj *gobj)
+void mn1PModeFuncRun(GObj *gobj)
 {
     s32 unused;
     
@@ -753,7 +753,7 @@ void mn1PModeFuncStart(void)
     }
     lbRelocLoadFilesListed(dMN1PModeFileIDs, sMN1PModeFiles);
 
-    gcMakeGObjSPAfter(0, mn1PModeProcRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeGObjSPAfter(0, mn1PModeFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, 0, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
     
     mn1PModeInitVars();

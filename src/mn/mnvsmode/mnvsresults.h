@@ -118,7 +118,7 @@ extern void mnVSResultsSetAutoHandicaps(s32 best, s32 worst);
 extern void mnVSResultsUpdateAutoHandicap(void);
 extern void mnVSResultsPlayWinBGM(void);
 extern void mnVSResultsMakeConfetti(void);
-extern void mnVSResultsProcRun(GObj *gobj);
+extern void mnVSResultsFuncRun(GObj *gobj);
 extern void mnVSResultsFuncStart(void);
 extern void mnVSResultsStartScene(void);
 

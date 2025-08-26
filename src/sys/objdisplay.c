@@ -1206,12 +1206,12 @@ void gcDrawMObjForDObj(DObj *dobj, Gfx **dl_head)
     Gfx *new_dl;
     Gfx *branch_dl;
     u32 flags;
-    f32 phi_f2;
-    f32 phi_f12;
-    f32 spBC;
-    f32 spB8;
-    f32 spB4;
-    f32 spB0;
+    f32 scau;
+    f32 scav;
+    f32 trau;
+    f32 trav;
+    f32 scrollu;
+    f32 scrollv;
     s32 uls, ult;
     s32 s, t;
 
@@ -1226,41 +1226,40 @@ void gcDrawMObjForDObj(DObj *dobj, Gfx **dl_head)
         mobj = mobj->next;
     }
     mobj = dobj->mobj;
-    branch_dl = (Gfx*)gSYTaskmanGraphicsHeap.ptr + mobj_count;
+    branch_dl = (Gfx*) (((Gfx*) gSYTaskmanGraphicsHeap.ptr) + mobj_count);
     new_dl = gSYTaskmanGraphicsHeap.ptr;
 
     for (i = 0; i < mobj_count; i++, mobj = mobj->next)
     {
         flags = mobj->sub.flags;
 
-        if (flags == 0)
+        if (flags == MOBJ_FLAG_NONE)
         {
-            flags = (0x80 | 0x20 | 0x1);
+            flags = (MOBJ_FLAG_TEXTURE | 0x20 | MOBJ_FLAG_ALPHA);
         }
-        if (flags & (0x80 | 0x40 | 0x20))
+        if (flags & (MOBJ_FLAG_TEXTURE | 0x40 | 0x20))
         {
-            phi_f2 = mobj->sub.unk1C;
-            phi_f12 = mobj->sub.unk20;
-
-            spBC = mobj->sub.unk14;
-            spB8 = mobj->sub.unk18;
-            spB4 = mobj->sub.unk3C;
-            spB0 = mobj->sub.unk40;
+            scau = mobj->sub.scau;
+            scav = mobj->sub.scav;
+            trau = mobj->sub.trau;
+            trav = mobj->sub.trav;
+            scrollu = mobj->sub.scrollu;
+            scrollv = mobj->sub.scrollv;
 
             if (mobj->sub.unk10 == 1)
             {
-                phi_f2 *= 0.5F;
-                spBC = ((spBC - mobj->sub.unk24) + 1.0F - (mobj->sub.unk28 * 0.5F)) * 0.5F;
-                spB4 = ((spB4 - mobj->sub.unk44) + 1.0F - (mobj->sub.unk28 * 0.5F)) * 0.5F;
+                scau *= 0.5F;
+                trau = ((trau - mobj->sub.unk24) + 1.0F - (mobj->sub.unk28 * 0.5F)) * 0.5F;
+                scrollu = ((scrollu - mobj->sub.unk44) + 1.0F - (mobj->sub.unk28 * 0.5F)) * 0.5F;
             }
         }
         gSPBranchList(&new_dl[i], branch_dl);
 
-        if (flags & 0x4)
+        if (flags & MOBJ_FLAG_PALETTE)
         {
             gDPSetTextureImage(branch_dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, mobj->sub.palettes[(s32)mobj->palette_id]);
 
-            if (flags & (0x2 | 0x1))
+            if (flags & (MOBJ_FLAG_SPLIT | MOBJ_FLAG_ALPHA))
             {
                 gDPTileSync(branch_dl++);
                 gDPSetTile
@@ -1292,9 +1291,9 @@ void gcDrawMObjForDObj(DObj *dobj, Gfx **dl_head)
         {
             gSPLightColor(branch_dl++, LIGHT_2, mobj->sub.light2color.pack);
         }
-        if (flags & (MOBJ_FLAG_PRIMCOLOR | 0x10 | 0x8))
+        if (flags & (MOBJ_FLAG_PRIMCOLOR | MOBJ_FLAG_FRAC | 0x8))
         {
-            if (flags & 0x10)
+            if (flags & MOBJ_FLAG_FRAC)
             {
                 s32 trunc = mobj->lfrac;
 
@@ -1347,9 +1346,9 @@ void gcDrawMObjForDObj(DObj *dobj, Gfx **dl_head)
                 mobj->sub.blendcolor.s.a
             );
         }
-        if (flags & (0x10 | 0x2))
+        if (flags & (MOBJ_FLAG_FRAC | MOBJ_FLAG_SPLIT))
         {
-            s32 block_siz = (mobj->sub.block_siz == G_IM_SIZ_32b) ? G_IM_SIZ_32b : G_IM_SIZ_16b; // or a one case switch..?
+            s32 block_siz = (mobj->sub.block_siz == G_IM_SIZ_32b) ? G_IM_SIZ_32b : G_IM_SIZ_16b;
 
             gDPSetTextureImage
             (
@@ -1359,7 +1358,7 @@ void gcDrawMObjForDObj(DObj *dobj, Gfx **dl_head)
                 1,
                 mobj->sub.sprites[mobj->texture_id_next]
             );
-            if (flags & (0x10 | 0x1))
+            if (flags & (MOBJ_FLAG_FRAC | MOBJ_FLAG_ALPHA))
             {
                 gDPLoadSync(branch_dl++);
 
@@ -1416,7 +1415,7 @@ void gcDrawMObjForDObj(DObj *dobj, Gfx **dl_head)
                 gDPLoadSync(branch_dl++);
             }
         }
-        if (flags & (0x10 | 0x1))
+        if (flags & (MOBJ_FLAG_FRAC | MOBJ_FLAG_ALPHA))
         {
             gDPSetTextureImage
             (
@@ -1431,8 +1430,8 @@ void gcDrawMObjForDObj(DObj *dobj, Gfx **dl_head)
         {
             if (mobj->sub.unk10 == 2)
             {
-                uls = (ABSF(phi_f2) > 0.000015259022F) ? ((mobj->sub.unk0C * spBC) / phi_f2) * 4.0F : 0.0F;
-                ult = (ABSF(phi_f12) > 0.000015259022F) ? ((mobj->sub.unk0E * spB8) / phi_f12) * 4.0F : 0.0F;
+                uls = (ABSF(scau) > (1.0F / 65535.0F)) ? ((mobj->sub.unk0C * trau) / scau) * 4.0F : 0.0F;
+                ult = (ABSF(scav) > (1.0F / 65535.0F)) ? ((mobj->sub.unk0E * trav) / scav) * 4.0F : 0.0F;
 
                 if (uls < 0)
                 {
@@ -1445,8 +1444,8 @@ void gcDrawMObjForDObj(DObj *dobj, Gfx **dl_head)
             }
             else
             {
-                uls = (ABSF(phi_f2) > 0.000015259022F) ? (((mobj->sub.unk0C * spBC) + mobj->sub.unk0A) / phi_f2) * 4.0F : 0.0F;
-                ult = (ABSF(phi_f12) > 0.000015259022F) ? (((((1.0F - phi_f12) - spB8) * mobj->sub.unk0E) + mobj->sub.unk0A) / phi_f12) * 4.0F : 0.0F;
+                uls = (ABSF(scau) > (1.0F / 65535.0F)) ? (((mobj->sub.unk0C * trau) + mobj->sub.unk0A) / scau) * 4.0F : 0.0F;
+                ult = (ABSF(scav) > (1.0F / 65535.0F)) ? (((((1.0F - scav) - trav) * mobj->sub.unk0E) + mobj->sub.unk0A) / scav) * 4.0F : 0.0F;
             }
             gDPSetTileSize
             (
@@ -1460,8 +1459,8 @@ void gcDrawMObjForDObj(DObj *dobj, Gfx **dl_head)
         }
         if (flags & 0x40)
         {
-            uls = (ABSF(phi_f2) > 0.000015259022F) ? (((mobj->sub.unk38 * spB4) + mobj->sub.unk0A) / phi_f2) * 4.0F : 0.0F;
-            ult = (ABSF(phi_f12) > 0.000015259022F) ? (((((1.0F - phi_f12) - spB0) * mobj->sub.unk3A) + mobj->sub.unk0A) / phi_f12) * 4.0F : 0.0F;
+            uls = (ABSF(scau) > (1.0F / 65535.0F)) ? (((mobj->sub.unk38 * scrollu) + mobj->sub.unk0A) / scau) * 4.0F : 0.0F;
+            ult = (ABSF(scav) > (1.0F / 65535.0F)) ? (((((1.0F - scav) - scrollv) * mobj->sub.unk3A) + mobj->sub.unk0A) / scav) * 4.0F : 0.0F;
 
             gDPSetTileSize
             (
@@ -1473,17 +1472,17 @@ void gcDrawMObjForDObj(DObj *dobj, Gfx **dl_head)
                 ((mobj->sub.unk3A - 1) << 2) + ult
             );
         }
-        if (flags & 0x80)
+        if (flags & MOBJ_FLAG_TEXTURE)
         {
             if (mobj->sub.unk10 == 2)
             {
-                s = (ABSF(phi_f2) > 0.000015259022F) ? (mobj->sub.unk0C * 64) / phi_f2 : 0.0F;
-                t = (ABSF(phi_f12) > 0.000015259022F) ? (mobj->sub.unk0E * 64) / phi_f12 : 0.0F;
+                s = (ABSF(scau) > (1.0F / 65535.0F)) ? (mobj->sub.unk0C * 64) / scau : 0.0F;
+                t = (ABSF(scav) > (1.0F / 65535.0F)) ? (mobj->sub.unk0E * 64) / scav : 0.0F;
             }
             else
             {
-                s = (ABSF(phi_f2) > 0.000015259022F) ? (2097152.0F / mobj->sub.unk08) / phi_f2 : 0.0F;
-                t = (ABSF(phi_f12) > 0.000015259022F) ? (2097152.0F / mobj->sub.unk08) / phi_f12 : 0.0F;
+                s = (ABSF(scau) > (1.0F / 65535.0F)) ? (2097152.0F / mobj->sub.unk08) / scau : 0.0F;
+                t = (ABSF(scav) > (1.0F / 65535.0F)) ? (2097152.0F / mobj->sub.unk08) / scav : 0.0F;
             }
             if (s > 0xFFFF)
             {
@@ -1497,7 +1496,7 @@ void gcDrawMObjForDObj(DObj *dobj, Gfx **dl_head)
         }
         gSPEndDisplayList(branch_dl++);
     }
-    gSYTaskmanGraphicsHeap.ptr = (void*)branch_dl;
+    gSYTaskmanGraphicsHeap.ptr = (void*) branch_dl;
 }
 
 // 0x80013D90

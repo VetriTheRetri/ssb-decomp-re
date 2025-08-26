@@ -425,7 +425,7 @@ void mvOpeningCliffInitTotalTimeTics(void)
 }
 
 // 0x80132414
-void mvOpeningCliffProcRun(GObj *gobj)
+void mvOpeningCliffFuncRun(GObj *gobj)
 {
     sMVOpeningCliffTotalTimeTics++;
 
@@ -477,7 +477,7 @@ void mvOpeningCliffFuncStart(void)
 
     lbRelocInitSetup(&rl_setup);
     lbRelocLoadFilesListed(dMVOpeningCliffFileIDs, sMVOpeningCliffFiles);
-    gcMakeGObjSPAfter(0, mvOpeningCliffProcRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeGObjSPAfter(0, mvOpeningCliffFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
 
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
 

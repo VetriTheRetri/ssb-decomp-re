@@ -1299,46 +1299,46 @@ void gcPlayMObjMatAnim(MObj *mobj)
                     default: 
                         break;
                     }
-                    switch (aobj->track) 
+                    switch (aobj->track)
                     {
-                    case nGCAnimTrackSetTextureIDCurrent: 
-                        mobj->texture_id_curr = value; 
+                    case nGCAnimTrackTextureIDCurrent: 
+                        mobj->texture_id_curr = value;
                         break;
                         
-                    case nGCAnimTrackTexture14: 
-                        mobj->sub.unk14 = value; 
+                    case nGCAnimTrackTraU:
+                        mobj->sub.trau = value;
                         break;
                         
-                    case nGCAnimTrackTexture15: 
-                        mobj->sub.unk18 = value; 
+                    case nGCAnimTrackTraV:
+                        mobj->sub.trav = value;
                         break;
                         
-                    case nGCAnimTrackTexture16: 
-                        mobj->sub.unk1C = value; 
+                    case nGCAnimTrackScaU:
+                        mobj->sub.scau = value;
                         break;
                         
-                    case nGCAnimTrackTexture17: 
-                        mobj->sub.unk20 = value; 
+                    case nGCAnimTrackScaV: 
+                        mobj->sub.scav = value;
                         break;
                         
-                    case nGCAnimTrackSetTextureIDNext: 
+                    case nGCAnimTrackTextureIDNext: 
                         mobj->texture_id_next = value; 
                         break;
                         
-                    case nGCAnimTrackTexture19: 
-                        mobj->sub.unk3C = value; 
+                    case nGCAnimTrackScrU:
+                        mobj->sub.scrollu = value; 
                         break;
                         
-                    case nGCAnimTrackTexture20: 
-                        mobj->sub.unk40 = value; 
+                    case nGCAnimTrackScrV:
+                        mobj->sub.scrollv = value; 
                         break;
                         
                     case nGCAnimTrackSetLFrac: 
                         mobj->lfrac = value; 
                         break;
                         
-                    case nGCAnimTrackSetTextureFrame: 
-                        mobj->palette_id = value; 
+                    case nGCAnimTrackPaletteID: 
+                        mobj->palette_id = value;
                         break;
                         
                     default: 
@@ -1392,7 +1392,7 @@ void gcPlayMObjMatAnim(MObj *mobj)
                         color = (aobj->length_invert <= aobj->length) ? *(SYColorPack*)&aobj->value_target : *(SYColorPack*)&aobj->value_base;
                         break;
                     }
-                    switch(aobj->track)
+                    switch (aobj->track)
                     {
                     case nGCAnimTrackPrimColor:
                         mobj->sub.primcolor = color;

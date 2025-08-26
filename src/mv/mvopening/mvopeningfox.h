@@ -18,7 +18,7 @@ extern void mvOpeningFoxMakePosedFighter(void);
 extern void mvOpeningFoxMakeNameCamera(void);
 extern void mvOpeningFoxMakePosedFighterCamera(void);
 extern void mvOpeningFoxMakePosedWallpaperCamera(void);
-extern void mvOpeningFoxProcRun(GObj *gobj);
+extern void mvOpeningFoxFuncRun(GObj *gobj);
 extern void mvOpeningFoxInitVars(void);
 extern void mvOpeningFoxFuncStart(void);
 extern void mvOpeningFoxFuncLights(Gfx **dls);

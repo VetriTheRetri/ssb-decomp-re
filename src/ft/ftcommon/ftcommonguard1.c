@@ -298,7 +298,8 @@ void ftCommonGuardInitJoints(GObj *fighter_gobj)
                     (
                         joint,
                         dobjdesc,
-                        fp->status_vars.common.guard.shield_rotate_range, scale
+                        fp->status_vars.common.guard.shield_rotate_range,
+                        scale
                     );
                     joint->anim_wait = AOBJ_ANIM_NULL;
                 }

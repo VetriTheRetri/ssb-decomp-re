@@ -3148,7 +3148,7 @@ void func_ovl31_801388A4(void)
 }
 
 // 0x801388AC
-void mnVSResultsProcRun(GObj *gobj)
+void mnVSResultsFuncRun(GObj *gobj)
 {
 	s32 unlocks_num;
 	u16 spgame_complete_mask;
@@ -3258,7 +3258,7 @@ void mnVSResultsFuncStart(void)
 
 	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesListed(dMNVSResultsFileIDs, sMNVSResultsFiles);
-	gcMakeGObjSPAfter(0, mnVSResultsProcRun, 0, GOBJ_PRIORITY_DEFAULT);
+	gcMakeGObjSPAfter(0, mnVSResultsFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	efParticleInitAll();
 	efManagerInitEffects();

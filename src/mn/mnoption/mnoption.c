@@ -768,7 +768,7 @@ void mnOptionWriteBackup(void)
 }
 
 // 0x80132E4C
-void mnOptionProcRun(GObj *gobj)
+void mnOptionFuncRun(GObj *gobj)
 {
     GObj *select_gobj;
     sb32 stick_range;
@@ -984,7 +984,7 @@ void mnOptionFuncStart(void)
 
     lbRelocInitSetup(&rl_setup);
     lbRelocLoadFilesListed(dMNOptionFileIDs, sMNOptionFiles);
-    gcMakeGObjSPAfter(0, mnOptionProcRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeGObjSPAfter(0, mnOptionFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, 0, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
     
     mnOptionInitVars();

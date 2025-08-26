@@ -10,7 +10,7 @@ extern GObj* gcFuncGObjAllEx(GObj* (*func)(GObj*, u32), u32 param, sb32 is_retur
 extern GObj* gcGetGObjByID(GObj *gobj, u32 id);
 extern GObj* gcFindGObjByLinkAndID(s32 link, u32 id);
 extern GObj* gcFindGObjByID(u32 id);
-extern void gcDefaultProcRun(GObj *gobj);
+extern void gcDefaultFuncRun(GObj *gobj);
 extern void gcSleepCurrentGObjThread(s32 tics);
 extern void gcPauseGObjProcessAll(GObj *gobj);
 extern void gcResumeGObjProcessAll(GObj *gobj);
@@ -35,7 +35,7 @@ extern void gcEjectAll(void);
 extern GObj* gcMakeModelGObj
 (
     u32 id,
-    void (*proc_run)(GObj*),
+    void (*func_run)(GObj*),
     s32 link,
     u32 link_priority,
     void (*proc_display)(GObj*),
@@ -51,7 +51,7 @@ extern GObj* gcMakeModelGObj
 extern GObj* gcMakeSpriteGObj
 (
     u32 id,
-    void (*proc_run)(GObj*),
+    void (*func_run)(GObj*),
     s32 link,
     u32 link_priority,
     void (*proc_display)(GObj*),
@@ -66,7 +66,7 @@ extern GObj* gcMakeSpriteGObj
 GObj* gcMakeCameraGObj
 (
     u32 id,
-    void (*proc_run)(GObj*),
+    void (*func_run)(GObj*),
     s32 link,
     u32 link_priority,
     void (*proc_display)(GObj*),

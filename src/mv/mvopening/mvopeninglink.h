@@ -18,7 +18,7 @@ extern void mvOpeningLinkMakePosedFighter(void);
 extern void mvOpeningLinkMakeNameCamera(void);
 extern void mvOpeningLinkMakePosedFighterCamera(void);
 extern void mvOpeningLinkMakePosedWallpaperCamera(void);
-extern void mvOpeningLinkProcRun(GObj *gobj);
+extern void mvOpeningLinkFuncRun(GObj *gobj);
 extern void mvOpeningLinkInitVars(void);
 extern void mvOpeningLinkFuncStart(void);
 extern void mvOpeningLinkFuncLights(Gfx **dls);

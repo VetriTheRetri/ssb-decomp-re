@@ -18,7 +18,7 @@ extern void mvOpeningSamusMakePosedFighter(void);
 extern void mvOpeningSamusMakeNameCamera(void);
 extern void mvOpeningSamusMakePosedFighterCamera(void);
 extern void mvOpeningSamusMakePosedWallpaperCamera(void);
-extern void mvOpeningSamusProcRun(GObj *gobj);
+extern void mvOpeningSamusFuncRun(GObj *gobj);
 extern void mvOpeningSamusInitVars(void);
 extern void mvOpeningSamusFuncStart(void);
 extern void mvOpeningSamusFuncLights(Gfx **dls);

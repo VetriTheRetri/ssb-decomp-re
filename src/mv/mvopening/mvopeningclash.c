@@ -326,7 +326,7 @@ void mvOpeningClashInitTotalTimeTics(void)
 }
 
 // 0x8013255C
-void mvOpeningClashProcRun(GObj *gobj)
+void mvOpeningClashFuncRun(GObj *gobj)
 {
     sMVOpeningClashTotalTimeTics++;
 
@@ -393,7 +393,7 @@ void mvOpeningClashFuncStart(void)
 
     lbRelocInitSetup(&rl_setup);
     lbRelocLoadFilesListed(dMVOpeningClashFileIDs, sMVOpeningClashFiles);
-    gcMakeGObjSPAfter(0, mvOpeningClashProcRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeGObjSPAfter(0, mvOpeningClashFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 
     efParticleInitAll();

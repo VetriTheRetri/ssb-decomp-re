@@ -448,7 +448,7 @@ void mvOpeningYoshiMakePosedWallpaperCamera(void)
 }
 
 // 0x8018DDC0
-void mvOpeningYoshiProcRun(GObj *gobj)
+void mvOpeningYoshiFuncRun(GObj *gobj)
 {
 	sMVOpeningYoshiTotalTimeTics++;
 
@@ -495,7 +495,7 @@ void mvOpeningYoshiFuncStart(void)
 	gSCManagerBattleState->players[0].pkind = nFTPlayerKindKey;
 
 	mvOpeningYoshiSetupFiles();
-	gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningYoshiProcRun, nGCCommonLinkIDMovie, GOBJ_PRIORITY_DEFAULT);
+	gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningYoshiFuncRun, nGCCommonLinkIDMovie, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(nGCCommonLinkIDCamera, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	mvOpeningYoshiInitVars();
 	efParticleInitAll();

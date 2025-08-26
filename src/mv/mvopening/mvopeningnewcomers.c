@@ -361,7 +361,7 @@ void mvOpeningNewcomersInitVars(void)
 }
 
 // 0x801323A4
-void mvOpeningNewcomersProcRun(GObj *gobj)
+void mvOpeningNewcomersFuncRun(GObj *gobj)
 {
     s32 unused;
 
@@ -419,7 +419,7 @@ void mvOpeningNewcomersFuncStart(void)
 
     lbRelocInitSetup(&rl_setup);
     lbRelocLoadFilesListed(dMVOpeningNewcomersFileIDs, sMVOpeningNewcomersFiles);
-    gcMakeGObjSPAfter(0, mvOpeningNewcomersProcRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeGObjSPAfter(0, mvOpeningNewcomersFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
 
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF));
 

@@ -18,7 +18,7 @@ extern void mvOpeningDonkeyMakePosedFighter(void);
 extern void mvOpeningDonkeyMakeNameCamera(void);
 extern void mvOpeningDonkeyMakePosedFighterCamera(void);
 extern void mvOpeningDonkeyMakePosedWallpaperCamera(void);
-extern void mvOpeningDonkeyProcRun(GObj *gobj);
+extern void mvOpeningDonkeyFuncRun(GObj *gobj);
 extern void mvOpeningDonkeyInitVars(void);
 extern void mvOpeningDonkeyFuncStart(void);
 extern void mvOpeningDonkeyFuncLights(Gfx **dls);

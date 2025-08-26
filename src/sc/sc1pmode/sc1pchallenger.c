@@ -309,7 +309,7 @@ void func_ovl23_80132110(void)
 }
 
 // 0x80132118
-void sc1PChallengerProcRun(GObj *gobj)
+void sc1PChallengerFuncRun(GObj *gobj)
 {
     sSC1PChallengerTotalTimeTics++;
     
@@ -351,7 +351,7 @@ void sc1PChallengerFuncStart(void)
     
     lbRelocInitSetup(&rl_setup);
     lbRelocLoadFilesListed(dSC1PChallengerFileIDs, sSC1PChallengerFiles);
-    gcMakeGObjSPAfter(0, sc1PChallengerProcRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeGObjSPAfter(0, sc1PChallengerFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     sc1PChallengerInitVars();
     efParticleInitAll();

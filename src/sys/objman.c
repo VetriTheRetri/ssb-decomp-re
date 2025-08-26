@@ -1321,8 +1321,8 @@ MObj* gcAddMObjForDObj(DObj *dobj, MObjSub* mobjsub)
 	mobj->lfrac = mobjsub->prim_l / 255.0F;
 	mobj->sub = *mobjsub;
 
-	mobj->sub.unk24 = mobjsub->unk14;
-	mobj->sub.unk28 = mobjsub->unk1C;
+	mobj->sub.unk24 = mobjsub->trau;
+	mobj->sub.unk28 = mobjsub->scau;
 	mobj->texture_id_curr = 0;
 	mobj->texture_id_next = 0;
 	mobj->palette_id = 0;
@@ -1685,7 +1685,7 @@ void gcEjectCamera(CObj *cobj)
 }
 
 // 0x800098A4
-GObj* gcInitGObjCommon(u32 id, void (*proc_run)(GObj*), u8 link, u32 priority)
+GObj* gcInitGObjCommon(u32 id, void (*func_run)(GObj*), u8 link, u32 priority)
 {
 	GObj *new_gobj;
 
@@ -1703,7 +1703,7 @@ GObj* gcInitGObjCommon(u32 id, void (*proc_run)(GObj*), u8 link, u32 priority)
 	new_gobj->id = id;
 	new_gobj->link_id = link;
 	new_gobj->link_priority = priority;
-	new_gobj->proc_run = proc_run;
+	new_gobj->func_run = func_run;
 	new_gobj->gobjproc_head = NULL;
 	new_gobj->gobjproc_tail = NULL;
 	new_gobj->gobjscripts_num = 0;
@@ -1721,9 +1721,9 @@ GObj* gcInitGObjCommon(u32 id, void (*proc_run)(GObj*), u8 link, u32 priority)
 }
 
 // 0x80009968
-GObj* gcMakeGObjSPAfter(u32 id, void (*proc_run)(GObj*), u8 link, u32 priority)
+GObj* gcMakeGObjSPAfter(u32 id, void (*func_run)(GObj*), u8 link, u32 priority)
 {
-	GObj *new_gobj = gcInitGObjCommon(id, proc_run, link, priority);
+	GObj *new_gobj = gcInitGObjCommon(id, func_run, link, priority);
 
 	if (new_gobj == NULL)
 	{
@@ -1735,9 +1735,9 @@ GObj* gcMakeGObjSPAfter(u32 id, void (*proc_run)(GObj*), u8 link, u32 priority)
 }
 
 // 0x800099A8
-GObj* gcMakeGObjSPBefore(u32 id, void (*proc_run)(GObj*), u8 link, u32 priority)
+GObj* gcMakeGObjSPBefore(u32 id, void (*func_run)(GObj*), u8 link, u32 priority)
 {
-	GObj *new_gobj = gcInitGObjCommon(id, proc_run, link, priority);
+	GObj *new_gobj = gcInitGObjCommon(id, func_run, link, priority);
 
 	if (new_gobj == NULL)
 	{
@@ -1749,9 +1749,9 @@ GObj* gcMakeGObjSPBefore(u32 id, void (*proc_run)(GObj*), u8 link, u32 priority)
 }
 
 // 0x800099E8
-GObj* gcMakeGObjAfter(u32 id, void (*proc_run)(GObj*), GObj *link_gobj)
+GObj* gcMakeGObjAfter(u32 id, void (*func_run)(GObj*), GObj *link_gobj)
 {
-	GObj *new_gobj = gcInitGObjCommon(id, proc_run, link_gobj->link_id, link_gobj->link_priority);
+	GObj *new_gobj = gcInitGObjCommon(id, func_run, link_gobj->link_id, link_gobj->link_priority);
 
 	if (new_gobj == NULL)
 	{
@@ -1763,9 +1763,9 @@ GObj* gcMakeGObjAfter(u32 id, void (*proc_run)(GObj*), GObj *link_gobj)
 }
 
 // 0x80009A34
-GObj* gcMakeGObjBefore(u32 id, void (*proc_run)(GObj*), GObj *link_gobj)
+GObj* gcMakeGObjBefore(u32 id, void (*func_run)(GObj*), GObj *link_gobj)
 {
-	GObj *new_gobj = gcInitGObjCommon(id, proc_run, link_gobj->link_id, link_gobj->link_priority);
+	GObj *new_gobj = gcInitGObjCommon(id, func_run, link_gobj->link_id, link_gobj->link_priority);
 
 	if (new_gobj == NULL)
 	{
@@ -2122,7 +2122,7 @@ GObj* gcRunGObj(GObj *gobj)
 	dGCCurrentStatus = nGCStatusRunning;
 	gGCCurrentCommon = gobj;
 
-	gobj->proc_run(gobj);
+	gobj->func_run(gobj);
 
 	next_gobj = gobj->link_next;
 
@@ -2216,7 +2216,7 @@ void gcRunAll(void)
 
 		while (gobj != NULL)
 		{
-			if (!(gobj->flags & GOBJ_FLAG_NORUN) && (gobj->proc_run != NULL))
+			if (!(gobj->flags & GOBJ_FLAG_NORUN) && (gobj->func_run != NULL))
 			{
 				gobj = gcRunGObj(gobj);
 			}

@@ -1456,7 +1456,7 @@ void scManagerFuncPrint(void)
 
 		if (gGCCurrentCommon != NULL)
 		{
-			syDebugDebugPrintf("addr:%x\n", gGCCurrentCommon->proc_run);
+			syDebugDebugPrintf("addr:%x\n", gGCCurrentCommon->func_run);
 			scManagerInspectGObj(gGCCurrentCommon);
 		}
 		break;

@@ -17,11 +17,11 @@ void* syMallocSet(SYMallocRegion *bp, size_t size, u32 alignment)
     if (alignment != 0) 
     {
         offset  = alignment - 1;
-        aligned = (u8*)(((uintptr_t)bp->ptr + (offset)) & ~(offset));
+        aligned = (u8*) (((uintptr_t)bp->ptr + (offset)) & ~(offset));
     } 
-    else aligned = (u8*)bp->ptr;
+    else aligned = (u8*) bp->ptr;
 
-    bp->ptr = (void*)(aligned + size);
+    bp->ptr = (void*) (aligned + size);
 
     if (bp->end < bp->ptr)
     {
@@ -29,7 +29,7 @@ void* syMallocSet(SYMallocRegion *bp, size_t size, u32 alignment)
 
         while (TRUE);
     }
-    return (void*)aligned;
+    return (void*) aligned;
 }
 
 void syMallocInit(SYMallocRegion *bp, u32 id, void *start, size_t size)

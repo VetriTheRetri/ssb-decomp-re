@@ -6,7 +6,7 @@
 #include <db/dbdef.h>
 
 extern void dbMapsExitFuncMenu(void);
-extern void dbMapsProcRun(GObj *gobj);
+extern void dbMapsFuncRun(GObj *gobj);
 extern void dbMapsFuncStart(void);
 extern void dbMapsStartScene(void);
 

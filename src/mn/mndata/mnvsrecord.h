@@ -75,7 +75,7 @@ extern void mnVSRecordMakeRankingHighlightCamera(void);
 extern void mnVSRecordMakeLabelsCamera(void);
 extern void mnVSRecordInitVars(void);
 extern void mnVSRecordRedrawStats(s32 stats_kind);
-extern void mnVSRecordProcRun(GObj *gobj);
+extern void mnVSRecordFuncRun(GObj *gobj);
 extern void mnVSRecordFuncStart(void);
 extern void mnVSRecordStartScene(void);
 

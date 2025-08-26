@@ -49,7 +49,7 @@ extern void mnMapsMakePreviewCamera(void);
 extern void mnMapsSaveSceneData(void);
 extern void mnMapsInitVars(void);
 extern void mnMapsSaveSceneData2(void);
-extern void mnMapsProcRun(GObj *gobj);
+extern void mnMapsFuncRun(GObj *gobj);
 extern void mnMapsFuncStart(void);
 extern void mnMapsStartScene(void);
 

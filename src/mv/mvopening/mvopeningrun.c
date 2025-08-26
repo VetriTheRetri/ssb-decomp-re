@@ -291,7 +291,7 @@ void mvOpeningRunInitVars(void)
 }
 
 // 0x80132268
-void mvOpeningRunProcRun(GObj *gobj)
+void mvOpeningRunFuncRun(GObj *gobj)
 {
 	sMVOpeningRunTotalTimeTics++;
 
@@ -348,7 +348,7 @@ void mvOpeningRunFuncStart(void)
 
 	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesListed(dMVOpeningRunFileIDs, sMVOpeningRunFiles);
-	gcMakeGObjSPAfter(0, mvOpeningRunProcRun, 0, GOBJ_PRIORITY_DEFAULT);
+	gcMakeGObjSPAfter(0, mvOpeningRunFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
 
 	efParticleInitAll();

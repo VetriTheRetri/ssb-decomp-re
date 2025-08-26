@@ -448,7 +448,7 @@ void mvOpeningFoxMakePosedWallpaperCamera(void)
 }
 
 // 0x8018DD98
-void mvOpeningFoxProcRun(GObj *gobj)
+void mvOpeningFoxFuncRun(GObj *gobj)
 {
 	sMVOpeningFoxTotalTimeTics++;
 
@@ -495,7 +495,7 @@ void mvOpeningFoxFuncStart(void)
 	gSCManagerBattleState->players[0].pkind = nFTPlayerKindKey;
 
 	mvOpeningFoxSetupFiles();
-	gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningFoxProcRun, nGCCommonLinkIDMovie, GOBJ_PRIORITY_DEFAULT);
+	gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningFoxFuncRun, nGCCommonLinkIDMovie, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(nGCCommonLinkIDCamera, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	mvOpeningFoxInitVars();
 	efParticleInitAll();

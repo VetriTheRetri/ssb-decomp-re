@@ -1294,7 +1294,7 @@ sb32 scStaffrollGetPauseStatusHighlight(void)
 }
 
 // 0x801334E4
-void scStaffrollProcRun(GObj *gobj)
+void scStaffrollFuncRun(GObj *gobj)
 {
 	sb32 is_paused;
 	u16 button_tap;
@@ -2106,7 +2106,7 @@ void scStaffrollMakeCamera(void)
 // 0x8013505C
 void scStaffrollFuncStart(void)
 {
-	gcMakeGObjSPAfter(0, scStaffrollProcRun, 1, GOBJ_PRIORITY_DEFAULT);
+	gcMakeGObjSPAfter(0, scStaffrollFuncRun, 1, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(12, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 
 	scStaffrollSetupFiles();

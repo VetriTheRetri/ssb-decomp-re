@@ -3265,7 +3265,7 @@ void mnPlayers1PGamePauseSlotProcesses(void)
 }
 
 // 0x80137FCC
-void mnPlayers1PGameProcRun(GObj *gobj)
+void mnPlayers1PGameFuncRun(GObj *gobj)
 {
 	sMNPlayers1PGameTotalTimeTics++;
 
@@ -3419,7 +3419,7 @@ void mnPlayers1PGameFuncStart(void)
 	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesListed(dMNPlayers1PGameFileIDs, sMNPlayers1PGameFiles);
 
-	gcMakeGObjSPAfter(nGCCommonKindPlayerSelect, mnPlayers1PGameProcRun, 15, GOBJ_PRIORITY_DEFAULT);
+	gcMakeGObjSPAfter(nGCCommonKindPlayerSelect, mnPlayers1PGameFuncRun, 15, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(16, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
 	efParticleInitAll();
 	efManagerInitEffects();

@@ -151,7 +151,7 @@ extern sb32 mnPlayersVSCheckNoPuckOnPortraitAll(void);
 extern sb32 mnPlayersVSCheckReady(void);
 extern void mnPlayersVSSetSceneData(void);
 extern void mnPlayersVSPauseSlotProcesses(void);
-extern void mnPlayersVSProcRun(GObj *gobj);
+extern void mnPlayersVSFuncRun(GObj *gobj);
 extern s32 mnPlayersVSGetNextTimeValue(s32 current_value);
 extern s32 mnPlayersVSGetPrevTimeValue(s32 current_value);
 extern void mnPlayersVSInitPlayer(s32 player);

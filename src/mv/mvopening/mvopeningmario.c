@@ -455,7 +455,7 @@ void mvOpeningMarioMakePosedWallpaperCamera(void)
 }
 
 // 0x8018DD9C
-void mvOpeningMarioProcRun(GObj *gobj)
+void mvOpeningMarioFuncRun(GObj *gobj)
 {
 	sMVOpeningMarioTotalTimeTics++;
 
@@ -504,7 +504,7 @@ void mvOpeningMarioFuncStart(void)
 
 	mvOpeningMarioSetupFiles();
 
-	gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningMarioProcRun, 13, GOBJ_PRIORITY_DEFAULT);
+	gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningMarioFuncRun, 13, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(nGCCommonLinkIDCamera, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 
 	mvOpeningMarioInitVars();

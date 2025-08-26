@@ -79,7 +79,6 @@ void* lbRelocFindForceStatusBufferFile(u32 id)
             }
         }
     }
-
     return lbRelocFindStatusBufferFile(id);
 }
 
@@ -100,7 +99,6 @@ void lbRelocAddStatusBufferFile(u32 id, void *addr)
             scManagerRunPrintGObjStatus();
         }
     }
-
     sLBRelocInternBuffer.status_buffer[num].id = id;
     sLBRelocInternBuffer.status_buffer[num].addr = addr;
     sLBRelocInternBuffer.status_buffer_num++;
@@ -139,7 +137,7 @@ void lbRelocLoadAndRelocFile(u32 file_id, void *ram_dst, u32 bytes_num, s32 loc)
     LBRelocDesc *intern_desc, *extern_desc;
     void *vaddr_extern;
     u16 reloc_intern, reloc_extern;
-    u8 file_ids[16];
+    u16 file_ids[8];
     uintptr_t data_rom_offset;
 
     data_rom_offset = sLBRelocInternBuffer.rom_table_hi + sLBRelocCurrentTableEntry->data_offset;
@@ -285,6 +283,7 @@ void* lbRelocGetExternBufferFile(u32 id)
     size_t file_size;
 
     file = lbRelocFindStatusBufferFile(id);
+
     if (file != NULL)
     {
         return file;

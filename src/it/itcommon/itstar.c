@@ -85,7 +85,7 @@ sb32 itStarCommonProcHit(GObj *item_gobj)
 // 0x80174A18
 GObj* itStarMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    CObj *cobj = CObjGetStruct(gGMCameraCameraGObj);
+    CObj *cobj = CObjGetStruct(gGMCameraGObj);
     GObj *item_gobj;
     DObj *dobj;
     ITStruct *ip;

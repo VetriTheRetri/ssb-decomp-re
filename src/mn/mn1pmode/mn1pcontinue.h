@@ -56,7 +56,7 @@ extern void mnPlayers1PGameContinueMakeSpotlightCamera(void);
 extern void mnPlayers1PGameContinueMakeTextCamera(void);
 extern void mnPlayers1PGameContinueInitVars(void);
 extern void mnPlayers1PGameContinueUnused0x80133990(void);
-extern void mnPlayers1PGameContinueProcRun(GObj *gobj);
+extern void mnPlayers1PGameContinueFuncRun(GObj *gobj);
 extern void mnPlayers1PGameContinueFuncStart(void);
 extern void mnPlayers1PGameContinueStartScene(void);
 

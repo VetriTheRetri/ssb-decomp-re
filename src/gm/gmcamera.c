@@ -53,7 +53,7 @@ f32 dGMCameraPlayerZoomRanges[/* */] =
 // // // // // // // // // // // //
 
 // 0x80131460
-GObj *gGMCameraCameraGObj;
+GObj *gGMCameraGObj;
 
 // 0x80131464
 f32 gGMCameraPauseCameraEyeY;
@@ -927,8 +927,8 @@ void gmCameraSetStatusAnim(AObjEvent32 *camanim_joint, f32 anim_frame, Vec3f *ve
 
     gGMCameraStruct.vel_all = *vel;
 
-    gcAddCObjCamAnimJoint(CObjGetStruct(gGMCameraCameraGObj), camanim_joint, anim_frame);
-    gmCameraUpdateAnimVel(gGMCameraCameraGObj);
+    gcAddCObjCamAnimJoint(CObjGetStruct(gGMCameraGObj), camanim_joint, anim_frame);
+    gmCameraUpdateAnimVel(gGMCameraGObj);
 }
 
 // 0x8010D0A4
@@ -1126,7 +1126,7 @@ GObj* gmCameraMakeDefaultCamera(u8 tk1, u8 tk2, void (*proc)(GObj*))
         3,
         FALSE
     );
-    gGMCameraCameraGObj = camera_gobj;
+    gGMCameraGObj = camera_gobj;
 
     cobj = CObjGetStruct(camera_gobj);
 
@@ -1247,9 +1247,9 @@ void gmCameraScreenFlashProcDisplay(GObj *camera_gobj)
         Vp_t *viewport;
         s32 ulx, uly, lrx, lry;
 
-        gSPViewport(gSYTaskmanDLHeads[0]++, &CObjGetStruct(gGMCameraCameraGObj)->viewport);
+        gSPViewport(gSYTaskmanDLHeads[0]++, &CObjGetStruct(gGMCameraGObj)->viewport);
 
-        viewport = &CObjGetStruct(gGMCameraCameraGObj)->viewport.vp;
+        viewport = &CObjGetStruct(gGMCameraGObj)->viewport.vp;
 
         ulx = (viewport->vtrans[0] / 4) - (viewport->vscale[0] / 4);
         uly = (viewport->vtrans[1] / 4) - (viewport->vscale[1] / 4);
@@ -1302,8 +1302,8 @@ sb32 gmCameraPlayerMagnifyFuncMatrix(Mtx *mtx, CObj *cobj, Gfx **dls)
     f32 dist_y;
     f32 dist_z;
 
-    eye = &CObjGetStruct(gGMCameraCameraGObj)->vec.eye;
-    at = &CObjGetStruct(gGMCameraCameraGObj)->vec.at;
+    eye = &CObjGetStruct(gGMCameraGObj)->vec.eye;
+    at = &CObjGetStruct(gGMCameraGObj)->vec.at;
 
     dist_x = eye->x - at->x;
     dist_y = eye->y - at->y;
@@ -1316,7 +1316,7 @@ sb32 gmCameraPlayerMagnifyFuncMatrix(Mtx *mtx, CObj *cobj, Gfx **dls)
     sp50.y = 900.0F;
     sp50.x = 0.0F;
 
-    func_ovl2_800EB924(CObjGetStruct(gGMCameraCameraGObj), spA4, &sp50, &dist_x, &dist_y);
+    func_ovl2_800EB924(CObjGetStruct(gGMCameraGObj), spA4, &sp50, &dist_x, &dist_y);
 
     gIFCommonPlayerInterface.magnify_scale = (dist_y / 18.0F);
 

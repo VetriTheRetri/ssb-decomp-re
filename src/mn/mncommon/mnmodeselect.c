@@ -553,7 +553,7 @@ void mnModeSelectInitVars(void)
 }
 
 // 0x801325E8
-void mnModeSelectProcRun(GObj *gobj)
+void mnModeSelectFuncRun(GObj *gobj)
 {
     s32 unused1;
     s32 stick_range;
@@ -732,7 +732,7 @@ void mnModeSelectFuncStart(void)
     
     lbRelocInitSetup(&rl_setup);
     lbRelocLoadFilesListed(dMNModeSelectFileIDs, sMNModeSelectFiles);
-    gcMakeGObjSPAfter(0, mnModeSelectProcRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeGObjSPAfter(0, mnModeSelectFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, 0, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
     
     mnModeSelectInitVars();

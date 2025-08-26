@@ -23,7 +23,7 @@ extern void mnDataMakeOptionsCamera(void);
 extern void mnDataMakeLabelsCamera(void);
 extern void mnDataMakeDecalsCamera(void);
 extern void mnDataInitVars(void);
-extern void mnDataProcRun(GObj *gobj);
+extern void mnDataFuncRun(GObj *gobj);
 extern void mnDataFuncStart(void);
 extern void mnDataStartScene(void);
 

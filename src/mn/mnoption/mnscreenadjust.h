@@ -16,7 +16,7 @@ extern void mnScreenAdjustMakeSpriteCamera(void);
 extern void mnScreenAdjustApplyCenterOffsets(s16 h, s16 v);
 extern void mnScreenAdjustInitVars(void);
 extern void mnScreenAdjustBackupOffsets(void);
-extern void mnScreenAdjustProcRun(GObj *gobj);
+extern void mnScreenAdjustFuncRun(GObj *gobj);
 extern void mnScreenAdjustFuncStart(void);
 extern void mnScreenAdjustStartScene(void);
 

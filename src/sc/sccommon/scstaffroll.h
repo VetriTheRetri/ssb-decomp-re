@@ -29,7 +29,7 @@ extern void scStaffrollMakeCompanyTextGObj(GObj *staff_gobj);
 extern sb32 scStaffrollCheckCursorHighlightPrompt(GObj *gobj, SCStaffrollProjection *proj);
 extern void func_ovl59_8013330C(void);
 extern sb32 scStaffrollGetPauseStatusHighlight(void);
-extern void scStaffrollProcRun(GObj *gobj);
+extern void scStaffrollFuncRun(GObj *gobj);
 extern SCStaffrollName* SCStaffrollNameUpdateAlloc(GObj *gobj);
 extern void SCStaffrollNameSetPrevAlloc(SCStaffrollName *cn);
 extern void scStaffrollJobAndNameThreadUpdate(GObj *gobj);

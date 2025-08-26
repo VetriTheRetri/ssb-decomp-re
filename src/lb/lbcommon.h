@@ -129,7 +129,7 @@ extern SObj* lbCommonMakeSObjForGObj(GObj *gobj, Sprite *sprite);
 extern GObj* lbCommonMakeSpriteGObj
 (
     u32 id,
-    void (*proc_run)(GObj*),
+    void (*func_run)(GObj*),
     s32 link,
     u32 link_priority,
     void (*proc_display)(GObj*),

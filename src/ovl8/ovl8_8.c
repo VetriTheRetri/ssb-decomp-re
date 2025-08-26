@@ -856,7 +856,7 @@ s32 func_ovl8_8037BF68(s32 user_data, Sprite* sprite, void (*proc)(GObj*), void 
 	GObj *camera_gobj;
 	GObj *sprite_gobj;
 
-	camera_gobj = gcMakeCameraGObj(-0x1FF, gcDefaultProcRun, 0, 0x80000000, func_80018300, !low_priority ? 2 : 1, 0x8000000000000000ULL, 0, 1, 0, NULL, 1, 0);
+	camera_gobj = gcMakeCameraGObj(-0x1FF, gcDefaultFuncRun, 0, 0x80000000, func_80018300, !low_priority ? 2 : 1, 0x8000000000000000ULL, 0, 1, 0, NULL, 1, 0);
 	if (camera_gobj == NULL)
 		return -1;
 

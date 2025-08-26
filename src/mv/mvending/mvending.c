@@ -465,7 +465,7 @@ void mvEndingInitVars(void)
 }
 
 // 0x801327C8
-void mvEndingProcRun(GObj *gobj)
+void mvEndingFuncRun(GObj *gobj)
 {
     sMVEndingTotalTimeTics++;
 
@@ -521,7 +521,7 @@ void mvEndingFuncStart(void)
 
     lbRelocInitSetup(&rl_setup);
     lbRelocLoadFilesListed(dMVEndingFileIDs, sMVEndingFiles);
-    gcMakeGObjSPAfter(0, mvEndingProcRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeGObjSPAfter(0, mvEndingFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF));
     efParticleInitAll();
     mvEndingInitVars();

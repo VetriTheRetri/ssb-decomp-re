@@ -12,7 +12,7 @@ extern s32 dbBattleGetSetShade(s32 player);
 extern s32 dbBattleGetFighterKindsNum(u16 mask);
 extern s32 dbBattleGetShuffledFighterKind(u16 this_mask, u16 prev_mask, s32 random);
 extern void dbBattleSetDemoFighterKinds(void);
-extern void dbBattleProcRun(GObj *gobj);
+extern void dbBattleFuncRun(GObj *gobj);
 extern void dbBattleActorProcUpdate(GObj *gobj);
 extern GObj* dbBattleMakeCamera(void (*thread)(GObj*));
 extern void dbBattleFuncStart(void);

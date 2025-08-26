@@ -16,7 +16,7 @@ extern void mvOpeningCliffCameraProcUpdate(GObj *gobj);
 extern void mvOpeningCliffMakeMainCamera(void);
 extern void mvOpeningCliffMakeWallpaperCamera(void);
 extern void mvOpeningCliffInitTotalTimeTics(void);
-extern void mvOpeningCliffProcRun(GObj *gobj);
+extern void mvOpeningCliffFuncRun(GObj *gobj);
 extern void mvOpeningCliffFuncStart(void);
 extern void mvOpeningCliffStartScene(void);
 

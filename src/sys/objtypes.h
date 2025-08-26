@@ -42,7 +42,13 @@
 #define AOBJ_ANIM_CHANGED           (F32_MIN / 2.0F)    // ???
 #define AOBJ_ANIM_END               (F32_MIN / 3.0F)    // Used to mark the end of an animation?
 
-// MObj defines
+// MObj defines - some of these are wild guesses...
+#define MOBJ_FLAG_NONE              (0)
+#define MOBJ_FLAG_ALPHA             (1 << 0)
+#define MOBJ_FLAG_SPLIT             (1 << 1)    // Uses texture_id_next as texture image...?
+#define MOBJ_FLAG_PALETTE           (1 << 2)
+#define MOBJ_FLAG_FRAC              (1 << 4)
+#define MOBJ_FLAG_TEXTURE           (1 << 7)
 #define MOBJ_FLAG_PRIMCOLOR         (1 << 9)
 #define MOBJ_FLAG_ENVCOLOR          (1 << 10)
 #define MOBJ_FLAG_BLENDCOLOR        (1 << 11)
@@ -189,7 +195,7 @@ struct GObj
     u8 frame_draw_last;                 // Last frame drawn?
     u8 obj_kind;                        // Determines kind of *obj: 0 = NULL, 1 = DObj, 2 = SObj, 3 = CObj
     u32 link_priority;
-    void (*proc_run)(GObj*);
+    void (*func_run)(GObj*);
     GObjProcess *gobjproc_head;
 
     union
@@ -302,10 +308,10 @@ struct MObjSub
     u16 unk0C;
     u16 unk0E;
     s32 unk10; // could be f32??
-    f32 unk14;
-    f32 unk18;
-    f32 unk1C;
-    f32 unk20;
+    f32 trau;       // U-Translation?
+    f32 trav;       // V-Translation?
+    f32 scau;       // U-Scale?
+    f32 scav;       // V-Scale?
     f32 unk24;
     f32 unk28;
     void **palettes;  // palette pointers?
@@ -316,10 +322,10 @@ struct MObjSub
     u16 unk36;
     u16 unk38;
     u16 unk3A;
-    f32 unk3C;
-    f32 unk40;
+    f32 scrollu;
+    f32 scrollv;
     f32 unk44;
-    u8 pad48[0x4C - 0x48];
+    f32 unk48;       // Translate V?
     u32 unk4C;
     SYColorPack primcolor;
     u8 prim_l;

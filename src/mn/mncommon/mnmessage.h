@@ -18,7 +18,7 @@ extern void mnMessageMakeWallpaperCamera(void);
 extern void mnMessageMakeExclaimCamera(void);
 extern void mnMessageInitVars(void);
 extern void mnMessageApplyUnlock(void);
-extern void mnMessageProcRun(GObj *gobj);
+extern void mnMessageFuncRun(GObj *gobj);
 extern void mnMessageFuncStart(void);
 extern void mnMessageStartScene(void);
 

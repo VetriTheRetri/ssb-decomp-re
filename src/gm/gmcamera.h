@@ -6,7 +6,7 @@
 #include <gm/gmdef.h>
 
 // 0x80131460
-extern GObj* gGMCameraCameraGObj;
+extern GObj* gGMCameraGObj;
 
 // 0x80131464
 extern f32 gGMCameraPauseCameraEyeY;

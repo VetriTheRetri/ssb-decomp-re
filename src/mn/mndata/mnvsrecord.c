@@ -1932,7 +1932,7 @@ void mnVSRecordRedrawStats(s32 stats_kind)
 }
 
 // 0x80135D98
-void mnVSRecordProcRun(GObj *gobj)
+void mnVSRecordFuncRun(GObj *gobj)
 {
 	s32 unused;
 	s32 stick_range;
@@ -2166,7 +2166,7 @@ void mnVSRecordFuncStart(void)
 
 	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesListed(dMNVSRecordFileIDs, sMNVSRecordFiles);
-	gcMakeGObjSPAfter(0, mnVSRecordProcRun, 0, GOBJ_PRIORITY_DEFAULT);
+	gcMakeGObjSPAfter(0, mnVSRecordFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 
 	mnVSRecordInitVars();

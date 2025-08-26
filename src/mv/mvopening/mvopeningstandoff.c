@@ -512,7 +512,7 @@ void mvOpeningStandoffInitTotalTimeTics(void)
 }
 
 // 0x801325DC
-void mvOpeningStandoffProcRun(GObj *gobj)
+void mvOpeningStandoffFuncRun(GObj *gobj)
 {
     sMVOpeningStandoffTotalTimeTics++;
 
@@ -564,7 +564,7 @@ void mvOpeningStandoffFuncStart(void)
 
     lbRelocInitSetup(&rl_setup);
     lbRelocLoadFilesListed(dMVOpeningStandoffFileIDs, sMVOpeningStandoffFiles);
-    gcMakeGObjSPAfter(0, mvOpeningStandoffProcRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeGObjSPAfter(0, mvOpeningStandoffFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
 
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 

@@ -51,7 +51,7 @@ extern void sc1PIntroMakePicturesCamera(void);
 extern s32 sc1PIntroGetFighterAllocsNum(s32 stage);
 extern void sc1PIntroUpdateAnnounce(void);
 extern void sc1PIntroInitVars(void);
-extern void sc1PIntroProcRun(GObj *gobj);
+extern void sc1PIntroFuncRun(GObj *gobj);
 extern void sc1PIntroSetupFighterFiles(s32 stage);
 extern void sc1PIntroFuncStart(void);
 extern void sc1PIntroStartScene(void);

@@ -262,7 +262,7 @@ void mnScreenAdjustBackupOffsets(void)
 }
 
 // 0x8013209C
-void mnScreenAdjustProcRun(GObj *gobj)
+void mnScreenAdjustFuncRun(GObj *gobj)
 {
     s32 stick_range;
 
@@ -429,7 +429,7 @@ void mnScreenAdjustFuncStart(void)
     
     lbRelocInitSetup(&rl_setup);
     lbRelocLoadFilesListed(dMNScreenAdjustFileIDs, sMNScreenAdjustFiles);
-    gcMakeGObjSPAfter(0, mnScreenAdjustProcRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeGObjSPAfter(0, mnScreenAdjustFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     mnScreenAdjustInitVars();
     mnScreenAdjustMakeFrameCamera();

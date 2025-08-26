@@ -89,7 +89,7 @@ extern void sc1PGameInitTeamStockDisplay(void);
 extern void sc1PGameSetPlayerDefeatStats(s32 player, s32 team_order);
 extern void sc1PGameTryInitPlayerArrows(void);
 extern void sc1PGameInitTimeUpMessage(void);
-extern s32 sc1PGameGetEnemyStartLR(s32 target_player);
+extern s32 sc1PGameGetEnemyStartLR(s32 this_player);
 extern void sc1PGameSetCameraZoom(void);
 extern void sc1PGameBossSetCameraZoom(FTStruct *fp);
 extern void sc1PGameBossHidePlayerTagAll(void);

@@ -1335,7 +1335,7 @@ void mnMapsSaveSceneData2(void)
 }
 
 // 0x80133D80
-void mnMapsProcRun(GObj *gobj)
+void mnMapsFuncRun(GObj *gobj)
 {
 	s32 unused;
 	s32 stick_input;
@@ -1538,7 +1538,7 @@ void mnMapsFuncStart(void)
 	lbRelocLoadFilesListed(dMNMapsFileIDs, sMNMapsFiles);
 	mnMapsAllocModelHeaps();
 
-	gcMakeGObjSPAfter(0, mnMapsProcRun, 0, GOBJ_PRIORITY_DEFAULT);
+	gcMakeGObjSPAfter(0, mnMapsFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(1, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
 	mnMapsInitVars();
 	mnMapsMakeWallpaperCamera();

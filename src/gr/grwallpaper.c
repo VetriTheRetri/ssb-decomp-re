@@ -57,7 +57,7 @@ void grWallpaperCalcPersp(SObj *wallpaper_sobj)
     f32 height;
     f32 scale;
 
-    cobj = CObjGetStruct(gGMCameraCameraGObj);
+    cobj = CObjGetStruct(gGMCameraGObj);
 
     syVectorDiff3D(&dist, &cobj->vec.eye, &cobj->vec.at);
 
@@ -198,7 +198,7 @@ void grWallpaperSectorProcUpdate(GObj *wallpaper_gobj)
     f32 temp;
     f32 scale;
 
-    cobj = gGMCameraCameraGObj->obj;
+    cobj = gGMCameraGObj->obj;
 
     syVectorDiff3D(&dist, &cobj->vec.eye, &cobj->vec.at);
 

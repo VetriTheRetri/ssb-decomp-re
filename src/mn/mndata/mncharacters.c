@@ -2582,7 +2582,7 @@ void mnCharactersUpdateSceneDemo(void)
 }
 
 // 0x80133D68
-void mnCharactersProcRun(GObj *gobj)
+void mnCharactersFuncRun(GObj *gobj)
 {
 	sMNCharactersTotalTimeTics++;
 
@@ -2627,7 +2627,7 @@ void mnCharactersFuncStart(void)
 
 	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesListed(dMNCharactersFileIDs, sMNCharactersFiles);
-	gcMakeGObjSPAfter(0, mnCharactersProcRun, 0, GOBJ_PRIORITY_DEFAULT);
+	gcMakeGObjSPAfter(0, mnCharactersFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	efParticleInitAll();
 	mnCharactersInitVars();

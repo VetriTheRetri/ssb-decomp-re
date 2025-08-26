@@ -425,7 +425,7 @@ GObj* syDebugMakeMeterCamera(s32 link, u32 link_priority, u32 dl_link_priority)
     else return gcMakeCameraGObj
     (
         ~0x1, 
-        gcDefaultProcRun,
+        gcDefaultFuncRun,
         link,
         link_priority,
         syDebugMeterProcDisplay,
@@ -665,7 +665,7 @@ void syDebugFramebufferPrintThreadStatus(OSThread *t, sb32 is_show_summary)
         u32 word  = *(u32*)stack_csr;
         s32 small = ((word & 0x7F800000) >> 23) - 127;
 
-        if ((small >= -126 && small < 128) || word == 0) 
+        if ((small > -127 && small < 128) || word == 0)
         {
             syDebugFramebufferPrintf
             (
@@ -700,7 +700,7 @@ void syDebugFramebufferPrintThreadStatus(OSThread *t, sb32 is_show_summary)
         word  = *(u32*)stack_csr;
         small = ((word & 0x7F800000) >> 23) - 127;
 
-        if ((small >= -126 && small < 128) || word == 0) 
+        if ((small > -127 && small < 128) || word == 0) 
         {
             syDebugFramebufferPrintf
             (

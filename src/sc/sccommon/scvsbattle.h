@@ -7,7 +7,7 @@
 #include <sc/scdef.h>
 
 extern void scVSBattleFuncUpdate(void);
-extern s32 scVSBattleGetStartPlayerLR(s32 target_player);
+extern s32 scVSBattleGetStartPlayerLR(s32 this_player);
 extern void scVSBattleStartBattle(void);
 extern sb32 scVSBattleSetScoreCheckSuddenDeath(void);
 extern void scVSBattleStartSuddenDeath(void);

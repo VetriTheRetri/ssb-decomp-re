@@ -18,7 +18,7 @@ extern void mvOpeningMarioMakePosedFighter(void);
 extern void mvOpeningMarioMakeNameCamera(void);
 extern void mvOpeningMarioMakePosedFighterCamera(void);
 extern void mvOpeningMarioMakePosedWallpaperCamera(void);
-extern void mvOpeningMarioProcRun(GObj *gobj);
+extern void mvOpeningMarioFuncRun(GObj *gobj);
 extern void mvOpeningMarioInitVars(void);
 extern void mvOpeningMarioFuncStart(void);
 extern void mvOpeningMarioFuncLights(Gfx **dls);

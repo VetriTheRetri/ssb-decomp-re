@@ -2658,7 +2658,7 @@ void func_ovl29_801369C8(void)
 }
 
 // 0x801369D0
-void mnPlayers1PBonusProcRun(GObj *gobj)
+void mnPlayers1PBonusFuncRun(GObj *gobj)
 {
 	sMNPlayers1PBonusTotalTimeTics++;
 
@@ -2798,7 +2798,7 @@ void mnPlayers1PBonusFuncStart(void)
 
 	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesListed(dMNPlayers1PBonusFileIDs, sMNPlayers1PBonusFiles);
-	gcMakeGObjSPAfter(nGCCommonKindPlayerSelect, mnPlayers1PBonusProcRun, nGCCommonLinkIDPlayerSelect, GOBJ_PRIORITY_DEFAULT);
+	gcMakeGObjSPAfter(nGCCommonKindPlayerSelect, mnPlayers1PBonusFuncRun, nGCCommonLinkIDPlayerSelect, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(16, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
 	efParticleInitAll();
 	efManagerInitEffects();

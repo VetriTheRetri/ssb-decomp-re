@@ -4435,7 +4435,7 @@ void mnPlayersVSPauseSlotProcesses(void)
 }
 
 // 0x8013A920
-void mnPlayersVSProcRun(GObj *gobj)
+void mnPlayersVSFuncRun(GObj *gobj)
 {
 	s32 gkinds_num;
 	s32 i;
@@ -4723,7 +4723,7 @@ void mnPlayersVSFuncStart(void)
 	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesListed(dMNPlayersVSFileIDs, sMNPlayersVSFiles);
 
-	gcMakeGObjSPAfter(nGCCommonKindPlayerSelect, mnPlayersVSProcRun, 15, GOBJ_PRIORITY_DEFAULT);
+	gcMakeGObjSPAfter(nGCCommonKindPlayerSelect, mnPlayersVSFuncRun, 15, GOBJ_PRIORITY_DEFAULT);
 
 	gcMakeDefaultCameraGObj(16, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
 

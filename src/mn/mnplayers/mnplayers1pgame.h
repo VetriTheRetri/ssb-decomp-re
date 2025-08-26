@@ -117,7 +117,7 @@ extern void mnPlayers1PGameMakeReady(void);
 extern sb32 mnPlayers1PGameCheckReady(void);
 extern void mnPlayers1PGameSetSceneData(void);
 extern void mnPlayers1PGamePauseSlotProcesses(void);
-extern void mnPlayers1PGameProcRun(GObj *gobj);
+extern void mnPlayers1PGameFuncRun(GObj *gobj);
 extern s32 mnPlayers1PGameGetNextTimeValue(s32 value);
 extern s32 mnPlayers1PGameGetPrevTimeValue(s32 value);
 extern void mnPlayers1PGameInitPlayer(s32 player);

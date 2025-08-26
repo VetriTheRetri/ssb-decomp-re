@@ -353,7 +353,7 @@ void mvOpeningYamabukiInitTotalTimeTics(void)
 }
 
 // 0x801320DC
-void mvOpeningYamabukiProcRun(GObj *gobj)
+void mvOpeningYamabukiFuncRun(GObj *gobj)
 {
     sMVOpeningYamabukiTotalTimeTics++;
 
@@ -405,7 +405,7 @@ void mvOpeningYamabukiFuncStart(void)
 
     lbRelocInitSetup(&rl_setup);
     lbRelocLoadFilesListed(dMVOpeningYamabukiFileIDs, sMVOpeningYamabukiFiles);
-    gcMakeGObjSPAfter(0, mvOpeningYamabukiProcRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeGObjSPAfter(0, mvOpeningYamabukiFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
 
     gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 

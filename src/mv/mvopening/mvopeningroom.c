@@ -1195,7 +1195,7 @@ sb32 mvOpeningRoomCheckSetFramebuffer(SYTaskGfx *arg)
 }
 
 // 0x80134400
-void mvOpeningRoomProcRun(GObj *gobj)
+void mvOpeningRoomFuncRun(GObj *gobj)
 {
 	sMVOpeningRoomTotalTimeTics++;
 
@@ -1322,7 +1322,7 @@ void mvOpeningRoomFuncStart(void)
 
 	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesListed(dMVOpeningRoomFileIDs, sMVOpeningRoomFiles);
-	gcMakeGObjSPAfter(0, mvOpeningRoomProcRun, 0, GOBJ_PRIORITY_DEFAULT);
+	gcMakeGObjSPAfter(0, mvOpeningRoomFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
 	sMVOpeningRoomCameraGObj = gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	efParticleInitAll();
 	mvOpeningRoomInitVars();

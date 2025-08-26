@@ -1487,7 +1487,7 @@ void sc1PGameWaitStageBossUpdate(void)
     sp20.y = 0.0F;
     sp20.z = 0.0F;
 
-    gmCameraSetStatusAnim((void*) (((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobjdesc - (intptr_t)&llGRLastMapFileHead) + (intptr_t)&D_NF_00006010), 0.0F, &sp20);
+    gmCameraSetStatusAnim(lbRelocGetFileData(AObjEvent32*, ((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobjdesc - (intptr_t)&llGRLastMapFileHead), &D_NF_00006010), 0.0F, &sp20);
 
     for (player = 0; TRUE; player++) // Wut da haeiyll
     {
@@ -1774,7 +1774,7 @@ void sc1PGameInitTimeUpMessage(void)
 }
 
 // 0x8018F240
-s32 sc1PGameGetEnemyStartLR(s32 target_player)
+s32 sc1PGameGetEnemyStartLR(s32 this_player)
 {
     f32 lr_dist;
     f32 closest_dist;
@@ -1787,11 +1787,11 @@ s32 sc1PGameGetEnemyStartLR(s32 target_player)
     closest_dist = 65536.0F;
     lr_dist = 0.0F;
 
-    sc1PGameGetStartPosition(&target_pos, sSC1PGamePlayerSetups[target_player].mapobj_kind);
+    sc1PGameGetStartPosition(&target_pos, sSC1PGamePlayerSetups[this_player].mapobj_kind);
 
     for (current_player = 0; current_player < (ARRAY_COUNT(gSCManagerBattleState->players) + ARRAY_COUNT(sSC1PGamePlayerSetups)) / 2; current_player++)
     {
-        if (current_player == target_player)
+        if (current_player == this_player)
         {
             continue;
         }
@@ -1799,7 +1799,7 @@ s32 sc1PGameGetEnemyStartLR(s32 target_player)
         {
             continue;
         }
-        else if (gSCManagerBattleState->players[current_player].team != gSCManagerBattleState->players[target_player].team)
+        else if (gSCManagerBattleState->players[current_player].team != gSCManagerBattleState->players[this_player].team)
         {
             sc1PGameGetStartPosition(&current_pos, sSC1PGamePlayerSetups[current_player].mapobj_kind);
 

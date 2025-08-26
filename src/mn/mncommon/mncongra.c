@@ -234,7 +234,7 @@ s32 mnCongraGetPlayerTapButtons(u32 buttons)
 }
 
 // 0x80131C04
-void mnCongraActorProcRun(GObj *gobj)
+void mnCongraActorFuncRun(GObj *gobj)
 {
 	SYColorRGBA color;
 
@@ -279,7 +279,7 @@ void mnCongraFuncStart(void)
 
 	lbRelocInitSetup(&rl_setup);
 
-	gcMakeGObjSPAfter(0, mnCongraActorProcRun, 0, GOBJ_PRIORITY_DEFAULT);
+	gcMakeGObjSPAfter(0, mnCongraActorFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 
 	cobj = CObjGetStruct

@@ -131,13 +131,42 @@ extern s16 D_ovl8_80389F40;
 extern s16 D_ovl8_80389F44;
 
 // 0x80376B60
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80376B60.s")
+void func_ovl8_80376B60(s32 arg0, u8* arg1, u32* arg2)
+{
+	switch (arg0)
+	{
+	case 1:
+		*arg2 = (u32) arg1;
+		return;
+	case 2:
+		*arg2 = ((u32)arg1[0] << 8) & 0xF800;
+		*arg2 |= (((u32)arg1[1] * 8) & 0x7C0);
+		*arg2 |= (((u32)arg1[2] >> 2) & 0x3E);
+		*arg2 |= arg1[3] ? 1 : 0;
+		return;
+	case 3:
+		*arg2 = ((u32)arg1[0] << 0x18) & 0xFF000000;
+		*arg2 |= (((u32)arg1[1] << 0x10) & 0xFF0000);
+		*arg2 |= (((u32)arg1[2] << 8) & 0xFF00);
+		*arg2 |= (((u32)arg1[3] << 0) & 0xFF);
+		return;
+	}
+}
 
 // 0x80376C40
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80376C40.s")
 
 // 0x80376EE0
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80376EE0.s")
+void func_ovl8_80376EE0(u8* arg0, u8* arg1, s32 arg2)
+{
+	f64 temp_f0;
+
+	temp_f0 = (f64) arg2;
+	arg1[0] = (u8) (s32) (((f32) arg0[0] / 100.0) * temp_f0);
+	arg1[1] = (u8) (s32) (((f32) arg0[1] / 100.0) * temp_f0);
+	arg1[2] = (u8) (s32) (((f32) arg0[2] / 100.0) * temp_f0);
+	arg1[3] = (u8) arg0[3];
+}
 
 // 0x80376FB4
 s32 func_ovl8_80376FB4()
@@ -237,7 +266,7 @@ void func_ovl8_80377108(char *a, int v, int b)
 // 0x80377134
 void func_ovl8_80377134(s32 arg0, s32 arg1)
 {
-	func_ovl8_80376B60(arg1, arg0, &D_ovl8_80389F64, arg1);
+	func_ovl8_80376B60(arg1, arg0, &D_ovl8_80389F64);
 }
 
 // 0x80377168

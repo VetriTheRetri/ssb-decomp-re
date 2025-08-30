@@ -39,6 +39,8 @@ fi
 git submodule update --init --recursive
 python3 -m pip install -r ./tools/splat/requirements.txt
 python3 -m pip install charset-normalizer -U
+TARGET_SPIMDISASM_VERSION=1.35.0
+[ "$(python3 -m spimdisasm --version)" = "${TARGET_SPIMDISASM_VERSION}" ] || python3 -m pip install --force-reinstall -v "spimdisasm==${TARGET_SPIMDISASM_VERSION}"
 
 if [ ! -f ./baserom.us.z64 ]
 then

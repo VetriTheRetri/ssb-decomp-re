@@ -71,10 +71,10 @@ then
 	chmod +x tools/vpk0cmd
 fi
 
-if [ ! -f "tools/halAssetTool" ] || [ `md5sum tools/halAssetTool | grep -c f4345d2fd5e9adcde8a0194fb004b6be` -eq 0 ]
+if [ ! -f "tools/halAssetTool" ] || [ `md5sum tools/halAssetTool | grep -c dde182d728f8f2e3ab268c683792492a` -eq 0 ]
 then
-	[ "$DETECTED_OS" = "linux" ] && curl https://github.com/santaclose/halAssetTool/releases/download/0.14/halAssetTool_linux_x86 -L --output tools/halAssetTool
-	[ "$DETECTED_OS" = "macos" ] && curl https://github.com/santaclose/halAssetTool/releases/download/0.14/halAssetTool_macos_arm64 -L --output tools/halAssetTool
+	[ "$DETECTED_OS" = "linux" ] && curl https://github.com/santaclose/halAssetTool/releases/download/0.15/halAssetTool -L --output tools/halAssetTool
+	# [ "$DETECTED_OS" = "macos" ] && curl https://github.com/santaclose/halAssetTool/releases/download/0.14/halAssetTool_macos_arm64 -L --output tools/halAssetTool
 	chmod +x tools/halAssetTool
 fi
 

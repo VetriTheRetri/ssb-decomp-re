@@ -291,6 +291,20 @@ typedef struct dbUnknown5_2
     dbUnknown5 *dbUnknown5_2_0x4C;
 } dbUnknown5_2;
 
+typedef struct dbUnknown7
+{
+    s32 unk0[0x18/4];
+    s32 unk18;
+    dbUnknownLink *unk1C;
+    dbUnknownLinkStruct *unk20;
+    s32 unk24[(0x38-0x24)/4];
+    s32 unk38;
+    s32 unk3C[2];
+    s32 unk44;
+    s32 unk48[0x60/4];
+    s32 unkA8;
+} dbUnknown7;
+
 typedef struct dbBytesCopy2
 {
     db4Shorts unk_dbbytescopy_0x0;

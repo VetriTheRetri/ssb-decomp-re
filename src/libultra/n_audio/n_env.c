@@ -15,11 +15,11 @@ typedef struct alSoundEffect
 	u16 unk_0x18;
 	u16 unk_0x1A;
 	s32* unk_0x1C;
-	u16 unk_0x20;
-	u16 unk_0x22;
+	s32* unk_0x20;
 	u16 unk_0x24;
 	u16 sfx_id;
 	u16 sfx_max;    // End of SFX index list
+	u16 unk_0x2A;
 
 } alSoundEffect;
 
@@ -87,7 +87,14 @@ alSoundEffect* func_800269C0_275C0(u16 id)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_80026A6C_2766C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_80026B40_27740.s")
+alSoundEffect* func_80026B40_27740(u16 id)
+{
+	if (id >= D_8009EDD0_406D0.unk_0x2A)
+	{
+		return NULL;
+	}
+	else return func_80026A6C_2766C(D_8009EDD0_406D0.unk_0x20[id]);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_80026B90_27790.s")
 

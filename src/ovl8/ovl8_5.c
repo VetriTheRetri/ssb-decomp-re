@@ -305,13 +305,23 @@ void func_ovl8_80373B28(dbUnknown5* arg0, db4Bytes arg1, s32 arg2)
 }
 
 // 0x80373B84
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_5/func_ovl8_80373B84.s")
+void func_ovl8_80373B84(dbUnknownS38* arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4)
+{
+    dbFunction* temp_v0 = arg0->unk_dbunks38_0x30;
+    // WHAT IN TARNATION?!?
+    temp_v0[23].unk_dbfunc_0x4(temp_v0[23].unk_dbfunc_0x0 + (uintptr_t) (u64) (s32) (u64) (s32) (u64) arg0, arg1, arg2, arg3, arg4);
+}
 
 // 0x80373BC0
 void func_ovl8_80373BC0(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {}
 
 // 0x80373BD4
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_5/func_ovl8_80373BD4.s")
+void func_ovl8_80373BD4(dbUnknownS38* arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4)
+{
+    dbFunction* temp_v0 = arg0->unk_dbunks38_0x30;
+    // WHAT IN TARNATION?!?
+    temp_v0[23].unk_dbfunc_0x4(temp_v0[23].unk_dbfunc_0x0 + (uintptr_t) (u64) (s32) (u64) (s32) (u64) arg0, arg1, arg2, arg3, arg4);
+}
 
 // 0x80373C10
 void* func_ovl8_80373C10(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2);

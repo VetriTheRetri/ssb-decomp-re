@@ -303,6 +303,8 @@ typedef struct dbUnknown7
     s32 unk44;
     s32 unk48[0x60/4];
     s32 unkA8;
+    s32 unkAC[5];
+    s32 unkC0;
 } dbUnknown7;
 
 typedef struct dbBytesCopy2

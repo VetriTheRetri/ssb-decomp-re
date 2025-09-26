@@ -8,6 +8,10 @@ extern dbUnknownLinkStruct D_ovl8_8038B1A0;
 extern dbFunction D_ovl8_8038B288;
 extern dbUnknownLink D_ovl8_8038B3E0;
 extern dbUnknownLinkStruct D_ovl8_8038B408;
+extern dbUnknownLinkStruct D_ovl8_8038B470;
+extern dbFunction D_ovl8_8038B540;
+extern dbUnknownLink D_ovl8_8038B698;
+extern s32 D_ovl8_8038B6C0;
 
 extern dbFunction D_ovl8_8038B720;
 extern dbFunction D_ovl8_8038B7F0;
@@ -304,7 +308,35 @@ void func_ovl8_8037FF40(s32* arg0, s32* arg1, s32* arg2, s32* arg3, s32* arg4)
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_15/func_ovl8_80380048.s")
 
 // 0x8038011C
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_15/func_ovl8_8038011C.s")
+void func_ovl8_8038011C(dbUnknown7* arg0, s32 arg1)
+{
+    s32 temp_a0;
+
+    if (arg0 != NULL)
+    {
+        arg0->unk18 = &D_ovl8_8038B470,
+        arg0->unk20->db_func = &D_ovl8_8038B540;
+        arg0->unk1C->unk_dbunklink_0x8 = &D_ovl8_8038B698;
+        arg0->unk44 = &D_ovl8_8038B6C0;
+
+        temp_a0 = arg0->unkC0;
+
+        if (temp_a0 != 0)
+            func_ovl8_8037B3E4(temp_a0);
+
+        func_ovl8_803768E0(arg0, 0);
+
+        if (arg1 != 0)
+        {
+            func_ovl8_8037C30C(arg0->unk1C, 0);
+            func_ovl8_803718C4(arg0->unk20, 0);
+        }
+        if (arg1 & 1)
+        {
+            func_ovl8_803717C0(arg0);
+        }
+    }
+}
 
 // 0x803801DC
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_15/func_ovl8_803801DC.s")

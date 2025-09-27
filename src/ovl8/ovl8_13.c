@@ -285,7 +285,37 @@ u16 func_ovl8_8037E824()
 }
 
 // 0x8037E830
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037E830.s")
+typedef struct {
+    s32 unk0[0x10/4];
+    u16 unk10;
+    s32 unk14[0x10/4];
+    s32 unk24;
+} UnkStruct8037E830;
+s32 func_ovl8_8037E830(s32 arg0, UnkStruct8037E830 *arg1)
+{
+    s32 sp34;
+    s32 temp_v0;
+    s32 sp2C;
+    s32 var_v1;
+
+    temp_v0 = arg1->unk10;
+
+    if (temp_v0 == 2)
+        sp2C = 2;
+    else if (temp_v0 == 5)
+        sp2C = 3;
+    
+    sp34 = func_ovl8_803717A0(0x120);
+    if (sp34 != 0)
+    {
+        func_ovl8_8037E97C(sp34, 0, 0, arg1, sp2C, arg1->unk24, arg0);
+        var_v1 = sp34;
+    }
+    else
+        var_v1 = 0;
+    
+    return var_v1;
+}
 
 // 0x8037E8C8
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037E8C8.s")

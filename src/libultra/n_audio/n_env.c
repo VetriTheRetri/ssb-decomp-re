@@ -42,6 +42,7 @@ extern u16 D_8009EE20_40720;
 extern u8 unref8009EE22[0x8];
 extern u8 D_8009EE2A_4072A;
 extern u16 D_8003D31C_3DF1C;
+extern f32 D_8003D318_3DF18;
 
 void func_80026070_26C70(u8 arg0)
 {
@@ -64,7 +65,18 @@ void func_80026070_26C70(u8 arg0)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_80026594_27194.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_8002668C_2728C.s")
+typedef struct {
+	s32 unk0[0x28/4];
+	s16 unk28;
+	s8 unk2A;
+	s32 unk2C[0x1c/4];
+	s16 unk48;
+} UnkStruct8002668C;
+void func_8002668C_2728C(UnkStruct8002668C *arg0) {
+	arg0->unk28 = 0;
+	arg0->unk2A = 2;
+	arg0->unk48 = 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_800266A0_272A0.s")
 
@@ -634,7 +646,14 @@ void func_8002909C_29C9C(u16 arg0) {
 }
 
 //0x29CAC
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_800290AC_29CAC.s")
+void func_800290AC_29CAC(f32 arg0)
+{
+	if (arg0 <= 0.0f)
+		arg0 = 1.0f;
+	else if (arg0 > 10.0f)
+		arg0 = 1.0f;
+	D_8003D318_3DF18 = arg0;
+}
 
 //0x29D00 80029100
 /*

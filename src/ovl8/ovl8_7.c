@@ -101,7 +101,21 @@ void func_ovl8_80376A04(dbUnknown5* arg0)
 }
 
 // 0x80376A48
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_7/func_ovl8_80376A48.s")
+void func_ovl8_80376A48(dbUnknownLinkStruct *arg0, s16 arg1, s16 arg2)
+{
+	dbUnknownLinkStruct *var_v0;
+	dbUnknownLinkStruct *var_v1;
+
+	var_v0 = arg0;
+	if (arg0 != NULL)
+		var_v0 = arg0->unk_dbunkstruct_0x20;
+
+	var_v1 = arg0;
+	if (arg0 != NULL)
+		var_v1 = arg0->unk_dbunkstruct_0x20;
+
+	spMove(arg0->unk_dbunkstruct_0x40, var_v0->unk_dbunkstruct_0x2.arr[0] + arg1, var_v1->unk_dbunkstruct_0x2.arr[1] + arg2);
+}
 
 // 0x80376AA4
 void func_ovl8_80376AA4(dbUnknownSpriteHolder* arg0, s16 arg1, s16 arg2)

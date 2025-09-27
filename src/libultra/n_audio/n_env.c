@@ -141,7 +141,7 @@ f32 randFloat2(void) {
 
 void func_80027458_28058(void)
 {
-	
+
 }
 
 //split 0x28060?
@@ -397,9 +397,9 @@ static u8 __getTrackByte(ALCSeq *seq,u32 track)
 			if(nextByte != AL_CMIDI_BLOCK_CODE)
 			{
 				/* if here, then got a backup section. get the amount of
-				   backup, and the len of the section. Subtract the amount of
-				   backup from the curLoc ptr, and subtract four more, since
-				   curLoc has been advanced by four while reading the codes. */
+					 backup, and the len of the section. Subtract the amount of
+					 backup from the curLoc ptr, and subtract four more, since
+					 curLoc has been advanced by four while reading the codes. */
 				hiBackUp = nextByte;
 				loBackUp = *seq->curLoc[track];
 				seq->curLoc[track]++;
@@ -482,9 +482,9 @@ void n_alCSeqNewMarker(ALCSeq *seq, ALCSeqMarker *m, u32 ticks)
 // 0x296F8
 #ifdef NON_MATCHING
 /*
-  Note: If there are no valid tracks (ie. all tracks have
-  reached the end of their data stream), then return FALSE
-  to indicate that there is no next event.
+	Note: If there are no valid tracks (ie. all tracks have
+	reached the end of their data stream), then return FALSE
+	to indicate that there is no next event.
 */
 char __alCSeqNextDelta(ALCSeq *seq, s32 *pDeltaTicks)
 {
@@ -520,7 +520,7 @@ char __alCSeqNextDelta(ALCSeq *seq, s32 *pDeltaTicks)
 
 /* might want to make these macros */
 void alLink(ALLink *ln, ALLink *to)
-{					
+{
 	ln->next = to->next;
 	ln->prev = to;
 	if (to->next)
@@ -534,16 +534,16 @@ void alLink(ALLink *ln, ALLink *to)
 	ALLink *_to = (ALLink *)(to); \
 	_ln->next = _to->next;        \
 	_ln->prev = _to;              \
-								  \
+									\
 	if (_to->next) {              \
 		_to->next->prev = _ln;    \
 	}                             \
-								  \
+									\
 	_to->next = _ln;              \
 }
 
-void alUnlink(ALLink *ln)			
-{					
+void alUnlink(ALLink *ln)
+{
 	if (ln->next)
 		ln->next->prev = ln->prev;
 	if (ln->prev)
@@ -552,7 +552,7 @@ void alUnlink(ALLink *ln)
 
 //0x298B4
 /*
-  This routine flushes events according their type.
+	This routine flushes events according their type.
 */
 void alEvtqFlushType(ALEventQueue *evtq, s16 type)
 {
@@ -614,7 +614,7 @@ ALMicroTime alEvtqNextEvent(ALEventQueue *evtq, ALEvent *evt)
 	/* at once completely emptying out the queue.  At this point this problem */
 	/* must be treated as an out of resource error and the evtq should be increased. */
 	evt->type = -1;
-	delta = 0;	
+	delta = 0;
 	}
 
 	osSetIntMask(mask);
@@ -669,12 +669,12 @@ void __setUsptFromTempo (ALCSPlayer *seqp, f32 tempo);
 #if 0
 // Needs -O3
 /*
-  This routine safely calculates the sequence player's
-  uspt value based on the given tempo.  It does this safely
-  by making sure that the player has a target sequence and
-  therefore a qnpt value which is needed for the calculation.
-  Compact sequence player needs its own version of this routine
-  since the ALCSeq's qnpt field is at a different offset.
+	This routine safely calculates the sequence player's
+	uspt value based on the given tempo.  It does this safely
+	by making sure that the player has a target sequence and
+	therefore a qnpt value which is needed for the calculation.
+	Compact sequence player needs its own version of this routine
+	since the ALCSeq's qnpt field is at a different offset.
 */
 static void __setUsptFromTempo (ALCSPlayer *seqp, f32 tempo)
 {
@@ -757,11 +757,134 @@ s16 __n_getRate(f32 vol, f32 tgt, s32 count, u16* ratel)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/_pullSubFrame.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/_n_freeParam.s")
+// 0x8002A050
+void _n_freeParam(ALParam *param)
+{
+	param->next = n_syn->paramList;
+	n_syn->paramList = param;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/n_alLoadParam.s")
+#define ADPCMFBYTES      9
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/n_alEnvmixerParam.s")
+// 0x8002A070
+s32 n_alLoadParam(N_PVoice *v, s32 paramID, void *param)
+{
+		ALLoadFilter *a = (ALLoadFilter *) v;
+
+		switch (paramID) {
+				case (AL_FILTER_SET_WAVETABLE):
+						v->dc_table = (ALWaveTable *) param;
+						v->dc_memin = (s32) v->dc_table->base;
+						v->dc_sample = 0;
+						switch (v->dc_table->type){
+								case (AL_ADPCM_WAVE):
+
+										/*
+										 * Set up the correct handler
+										 */
+
+										/*
+										 * Make sure the table length is an integer number of
+										 * frames
+										 */
+										v->dc_table->len = ADPCMFBYTES *
+												((s32) (v->dc_table->len/ADPCMFBYTES));
+
+										v->dc_bookSize = 2*v->dc_table->waveInfo.adpcmWave.book->order*
+										v->dc_table->waveInfo.adpcmWave.book->npredictors*ADPCMVSIZE;
+										if (v->dc_table->waveInfo.adpcmWave.loop) {
+												v->dc_loop.start = v->dc_table->waveInfo.adpcmWave.loop->start;
+												v->dc_loop.end = v->dc_table->waveInfo.adpcmWave.loop->end;
+												v->dc_loop.count = v->dc_table->waveInfo.adpcmWave.loop->count;
+												alCopy(v->dc_table->waveInfo.adpcmWave.loop->state,
+															 v->dc_lstate, sizeof(ADPCM_STATE));
+										} else {
+												v->dc_loop.start = v->dc_loop.end = v->dc_loop.count = 0;
+										}
+										break;
+
+								case (AL_RAW16_WAVE):
+										//f->handler = alRaw16Pull;
+										if (v->dc_table->waveInfo.rawWave.loop) {
+												v->dc_loop.start = v->dc_table->waveInfo.rawWave.loop->start;
+												v->dc_loop.end = v->dc_table->waveInfo.rawWave.loop->end;
+												v->dc_loop.count = v->dc_table->waveInfo.rawWave.loop->count;
+										} else {
+												v->dc_loop.start = v->dc_loop.end = v->dc_loop.count = 0;
+										}
+										break;
+
+								default:
+										break;
+
+						}
+						break;
+
+				case (AL_FILTER_RESET):
+						v->dc_lastsam = 0;
+						v->dc_first   = 1;
+						v->dc_sample = 0;
+
+			/* sct 2/14/96 - Check table since it is initialized to null and */
+			/* Get loop info according to table type. */
+			if (v->dc_table)
+			{
+		v->dc_memin  = (s32) v->dc_table->base;
+		if (v->dc_table->type == AL_ADPCM_WAVE)
+		{
+				if (v->dc_table->waveInfo.adpcmWave.loop)
+			v->dc_loop.count = v->dc_table->waveInfo.adpcmWave.loop->count;
+		}
+		else if (v->dc_table->type == AL_RAW16_WAVE)
+		{
+				if (v->dc_table->waveInfo.rawWave.loop)
+			v->dc_loop.count = v->dc_table->waveInfo.rawWave.loop->count;
+		}
+			}
+
+						break;
+
+				default:
+						break;
+		}
+}
+
+// 0x8002A230
+s32 n_alEnvmixerParam(N_PVoice *filter, s32 paramID, void *param)
+{
+	N_PVoice	*e =  filter;
+
+	switch (paramID) {
+	case (AL_FILTER_ADD_UPDATE):
+		if (e->em_ctrlTail) {
+			e->em_ctrlTail->next = (ALParam *)param;
+		} else {
+			e->em_ctrlList = (ALParam *)param;
+		}
+		e->em_ctrlTail = (ALParam *)param;
+		break;
+	case (AL_FILTER_RESET):
+		e->em_first = 1;
+		e->em_motion = AL_STOPPED;
+		e->em_volume = 1;
+		e->rs_delta  = 0.0;
+		e->rs_first  = 1;
+		e->rs_upitch = 0;
+		n_alLoadParam(e, AL_FILTER_RESET, param);
+		break;
+	case (AL_FILTER_START):
+		e->em_motion = AL_PLAYING;
+		break;
+	default:
+#if 1
+		n_alLoadParam(e, paramID, param);
+#else
+		n_alResampleParam(e, paramID, param);
+#endif
+		break;
+	}
+	return 0;
+}
 
 // 0x8002A2D0 - 0x4260 split?
 void _n_freePVoice(N_PVoice *pvoice)
@@ -800,26 +923,38 @@ s16 __n_getVol(s16 ivol, s32 samples, s16 ratem, u16 ratel)
 
 Acmd *n_alAuxBusPull(s32 sampleOffset, Acmd *p)
 {
-  Acmd        *ptr = p;
-  N_ALAuxBus   *m = (N_ALAuxBus *)n_syn->auxBus;
-  N_PVoice    **sources = m->sources;
-  s32         i;
+	Acmd        *ptr = p;
+	N_ALAuxBus   *m = (N_ALAuxBus *)n_syn->auxBus;
+	N_PVoice    **sources = m->sources;
+	s32         i;
 
 #ifndef N_MICRO
-  aClearBuffer(ptr++, AL_AUX_L_OUT, FIXED_SAMPLE<<1);
-  aClearBuffer(ptr++, AL_AUX_R_OUT, FIXED_SAMPLE<<1);
+	aClearBuffer(ptr++, AL_AUX_L_OUT, FIXED_SAMPLE<<1);
+	aClearBuffer(ptr++, AL_AUX_R_OUT, FIXED_SAMPLE<<1);
 #else
-  aClearBuffer(ptr++, N_AL_AUX_L_OUT, N_AL_DIVIDED<<1);
+	aClearBuffer(ptr++, N_AL_AUX_L_OUT, N_AL_DIVIDED<<1);
 #endif
 
-  for (i = 0; i < m->sourceCount; i++)
+	for (i = 0; i < m->sourceCount; i++)
 	ptr = n_alEnvmixerPull(sources[i],sampleOffset,ptr);
-  return ptr;
+	return ptr;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_8002AA68_2B668.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/_n_filterBuffer.s")
+// 0x8002AB94
+Acmd *_n_filterBuffer(ALLowPass *lp, s32 buff, Acmd *p)
+{
+		Acmd* ptr = p;
+		s8 t8;
+
+		n_aLoadADPCM(ptr++, 32, osVirtualToPhysical(lp->fcvec.fccoef));
+		t8 = buff>>8;
+		n_aPoleFilter(ptr++, lp->first, lp->fgain, t8, osVirtualToPhysical(lp->fstate));
+		lp->first = 0;
+
+		return ptr;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/n_env/func_8002AC48_2B848.s")
 
@@ -847,9 +982,9 @@ void func_8002C3D0_2CFD(N_ALCSPlayer *seqp, ALSeqpConfig *c);
 #if 0
 static s32 _n_timeToSamplesNoRound(s32 micros);
 /*
-  Add 0.5 to adjust the average affect of
-  the truncation error produced by casting
-  a float to an int.
+	Add 0.5 to adjust the average affect of
+	the truncation error produced by casting
+	a float to an int.
 */
 s32 _n_timeToSamplesNoRound(s32 micros)
 {
@@ -904,27 +1039,27 @@ ALParam *__n_allocParam(void)
 //0x2D248
 Acmd *n_alMainBusPull( s32 sampleOffset, Acmd *p)
 {
-  Acmd        *ptr = p;
+	Acmd        *ptr = p;
 
 #ifndef N_MICRO
-  aClearBuffer(ptr++, AL_MAIN_L_OUT, FIXED_SAMPLE<<1);
-  aClearBuffer(ptr++, AL_MAIN_R_OUT, FIXED_SAMPLE<<1);
+	aClearBuffer(ptr++, AL_MAIN_L_OUT, FIXED_SAMPLE<<1);
+	aClearBuffer(ptr++, AL_MAIN_R_OUT, FIXED_SAMPLE<<1);
 #else
-  aClearBuffer(ptr++, N_AL_MAIN_L_OUT, N_AL_DIVIDED<<1);
+	aClearBuffer(ptr++, N_AL_MAIN_L_OUT, N_AL_DIVIDED<<1);
 #endif
 
-  ptr = (n_syn->mainBus->filter.handler)(sampleOffset,ptr);
+	ptr = (n_syn->mainBus->filter.handler)(sampleOffset,ptr);
 
 #ifndef N_MICRO
-  aSetBuffer(ptr++, 0, 0, 0, FIXED_SAMPLE<<1);
-  aMix(ptr++, 0, 0x7fff, AL_AUX_L_OUT, AL_MAIN_L_OUT);
-  aMix(ptr++, 0, 0x7fff, AL_AUX_R_OUT, AL_MAIN_R_OUT);
+	aSetBuffer(ptr++, 0, 0, 0, FIXED_SAMPLE<<1);
+	aMix(ptr++, 0, 0x7fff, AL_AUX_L_OUT, AL_MAIN_L_OUT);
+	aMix(ptr++, 0, 0x7fff, AL_AUX_R_OUT, AL_MAIN_R_OUT);
 #else
-  aMix(ptr++, 0, 0x7fff, N_AL_AUX_L_OUT, N_AL_MAIN_L_OUT);
-  aMix(ptr++, 0, 0x7fff, N_AL_AUX_R_OUT, N_AL_MAIN_R_OUT);
+	aMix(ptr++, 0, 0x7fff, N_AL_AUX_L_OUT, N_AL_MAIN_L_OUT);
+	aMix(ptr++, 0, 0x7fff, N_AL_AUX_R_OUT, N_AL_MAIN_R_OUT);
 #endif
 
-  return ptr;
+	return ptr;
 }
 
 // 0x2D2BC
@@ -960,38 +1095,38 @@ void func_8002C700_2D300() {
 // 0x8002CA20
 void alN_PVoiceNew(N_PVoice *mv, ALDMANew dmaNew, ALHeap *hp)
 {
-  mv->dc_state = alHeapAlloc(hp, 1, sizeof(ADPCM_STATE));
-  mv->dc_lstate = alHeapAlloc(hp, 1, sizeof(ADPCM_STATE));
-  mv->dc_dma = dmaNew(&mv->dc_dmaState);
-  mv->dc_lastsam = 0;
-  mv->dc_first = 1;
-  mv->dc_memin = 0;
+	mv->dc_state = alHeapAlloc(hp, 1, sizeof(ADPCM_STATE));
+	mv->dc_lstate = alHeapAlloc(hp, 1, sizeof(ADPCM_STATE));
+	mv->dc_dma = dmaNew(&mv->dc_dmaState);
+	mv->dc_lastsam = 0;
+	mv->dc_first = 1;
+	mv->dc_memin = 0;
 
-  mv->rs_state = alHeapAlloc(hp, 1, sizeof(RESAMPLE_STATE));
-  mv->rs_delta  = 0.0;
-  mv->rs_first  = 1;
-  mv->rs_ratio = 1.0;
-  mv->rs_upitch = 0;
+	mv->rs_state = alHeapAlloc(hp, 1, sizeof(RESAMPLE_STATE));
+	mv->rs_delta  = 0.0;
+	mv->rs_first  = 1;
+	mv->rs_ratio = 1.0;
+	mv->rs_upitch = 0;
 
-  mv->em_state = alHeapAlloc(hp, 1, sizeof(ENVMIX_STATE));
-  mv->em_first = 1;
-  mv->em_motion = AL_STOPPED;
-  mv->em_volume = 1;
-  mv->em_ltgt = 1;
-  mv->em_rtgt = 1;
-  mv->em_cvolL = 1;
-  mv->em_cvolR = 1;
-  mv->em_dryamt = 0;
-  mv->em_wetamt = 0;
-  mv->em_lratm = 1;
-  mv->em_lratl = 0;
-  mv->em_lratm = 1;
-  mv->em_lratl = 0;
-  mv->em_delta = 0;
-  mv->em_segEnd = 0;
-  mv->em_pan = 0;
-  mv->em_ctrlList = 0;
-  mv->em_ctrlTail = 0;
+	mv->em_state = alHeapAlloc(hp, 1, sizeof(ENVMIX_STATE));
+	mv->em_first = 1;
+	mv->em_motion = AL_STOPPED;
+	mv->em_volume = 1;
+	mv->em_ltgt = 1;
+	mv->em_rtgt = 1;
+	mv->em_cvolL = 1;
+	mv->em_cvolR = 1;
+	mv->em_dryamt = 0;
+	mv->em_wetamt = 0;
+	mv->em_lratm = 1;
+	mv->em_lratl = 0;
+	mv->em_lratm = 1;
+	mv->em_lratl = 0;
+	mv->em_delta = 0;
+	mv->em_segEnd = 0;
+	mv->em_pan = 0;
+	mv->em_ctrlList = 0;
+	mv->em_ctrlTail = 0;
 }
 
 // 0x8002CB48
@@ -1037,7 +1172,7 @@ void n_alSynNew(ALSynConfig *c)
 	n_syn->auxBus->sourceCount = 0;
 	n_syn->auxBus->maxSources = c->maxPVoices;
 	n_syn->auxBus->sources = (N_PVoice **)
-	  alHeapAlloc(hp, c->maxPVoices, sizeof(N_PVoice *));
+		alHeapAlloc(hp, c->maxPVoices, sizeof(N_PVoice *));
 
 /******* main new *******************************/
 	n_syn->mainBus = (N_ALMainBus *)alHeapAlloc(hp, 1, sizeof(N_ALMainBus));
@@ -1045,10 +1180,10 @@ void n_alSynNew(ALSynConfig *c)
 /******* fx new *******************************/
 
 	if (c->fxType != AL_FX_NONE){
-	  n_syn->auxBus->fx = n_alSynAllocFX(0, c, hp);
-	  n_syn->mainBus->filter.handler = (N_ALCmdHandler)n_alFxPull;
+		n_syn->auxBus->fx = n_alSynAllocFX(0, c, hp);
+		n_syn->mainBus->filter.handler = (N_ALCmdHandler)n_alFxPull;
 	} else {
-	  n_syn->mainBus->filter.handler = (N_ALCmdHandler)n_alAuxBusPull;
+		n_syn->mainBus->filter.handler = (N_ALCmdHandler)n_alAuxBusPull;
 	}
 
 	n_syn->pFreeList.next = 0;
@@ -1060,11 +1195,11 @@ void n_alSynNew(ALSynConfig *c)
 
 	pvoices = alHeapAlloc(hp, c->maxPVoices, sizeof(N_PVoice));
 	for (i = 0; i < c->maxPVoices; i++) {
-	  pv = &pvoices[i];
-	  alLinkMacro((ALLink *)pv, &n_syn->pFreeList);
-	  pv->vvoice = 0;
-	  alN_PVoiceNew(pv, n_syn->dma, hp);
-	  n_syn->auxBus->sources[n_syn->auxBus->sourceCount++] = pv;
+		pv = &pvoices[i];
+		alLinkMacro((ALLink *)pv, &n_syn->pFreeList);
+		pv->vvoice = 0;
+		alN_PVoiceNew(pv, n_syn->dma, hp);
+		n_syn->auxBus->sources[n_syn->auxBus->sourceCount++] = pv;
 	}
 
 	params = alHeapAlloc(hp, c->maxUpdates, sizeof(ALParam));
@@ -1232,13 +1367,13 @@ void n_alFxNew(ALFx **fx_ar, ALSynConfig *c, ALHeap *hp)
 	*fx_ar = r = (ALFx *)alHeapAlloc(hp, 1, sizeof(ALFx));
 
 	switch (c->fxType) {
-	  case AL_FX_SMALLROOM:	param = SMALLROOM_PARAMS_N;	break;
-	  case AL_FX_BIGROOM:	param = BIGROOM_PARAMS_N;	break;
-	  case AL_FX_ECHO:		param = ECHO_PARAMS_N;		break;
-	  case AL_FX_CHORUS:	param = CHORUS_PARAMS_N;	break;
-	  case AL_FX_FLANGE:	param = FLANGE_PARAMS_N;	break;
-	  case AL_FX_CUSTOM:	param = c->params;		break;
-	  default:			    param = NULL_PARAMS_N;		break;
+		case AL_FX_SMALLROOM:	param = SMALLROOM_PARAMS_N;	break;
+		case AL_FX_BIGROOM:	param = BIGROOM_PARAMS_N;	break;
+		case AL_FX_ECHO:		param = ECHO_PARAMS_N;		break;
+		case AL_FX_CHORUS:	param = CHORUS_PARAMS_N;	break;
+		case AL_FX_FLANGE:	param = FLANGE_PARAMS_N;	break;
+		case AL_FX_CUSTOM:	param = c->params;		break;
+		default:			    param = NULL_PARAMS_N;		break;
 	}
 
 

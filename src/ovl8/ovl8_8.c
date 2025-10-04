@@ -681,7 +681,29 @@ s32 stringToNumberSigned(char* str)
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037B760.s")
 
 // 0x8037B7F0
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037B7F0.s")
+s32 func_ovl8_8037B7F0(u8 *str, s32 index)
+{
+	s32 pos = 0;
+	u8 c = str[pos];
+
+	while (str[pos] != 0)
+	{
+		if (index < pos)
+			return 0;
+
+		if (c & 0x80) // high-bit set => multi-byte char?
+		{
+			if (index == pos)
+				return 1;
+			pos++;
+			if (index == pos)
+				return 1;
+		}
+		pos++;
+		c = str[pos];
+	}
+	return 0;
+}
 
 // 0x8037B85C
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037B85C.s")

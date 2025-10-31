@@ -21,6 +21,14 @@ VERSION ?= us
 BASEROM := baserom.$(VERSION).z64
 TARGET  := smashbrothers
 
+# Default extra link dependencies (US build)
+EXTRA_LINK_DEPS := symbols/not_found.txt symbols/linker_constants.txt build/assets/relocData.o
+
+# Skip reloc-related deps for JP build
+ifeq ($(VERSION),jp)
+	EXTRA_LINK_DEPS :=
+endif
+
 UNAME_S := $(shell uname -s)
 ifeq ($(OS),Windows_NT)
 $(error Native Windows is currently unsupported for building this repository, use WSL instead c:)
@@ -93,12 +101,22 @@ OBJDUMP         := $(BINUTILS_PREFIX)-objdump
 ASM_PROC        := $(PYTHON) tools/asm-processor/build.py
 CCFLAGS         := -c -G 0 -non_shared -Xfullwarn -Xcpluscomm $(INCLUDES) $(DEFINES) -Wab,-r4300_mul -woff 649,838,712,516,624,568
 ASFLAGS         := -EB -I include -march=vr4300 -mabi=32
-LDFLAGS         := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt -T symbols/not_found.txt -T symbols/linker_constants.txt -T symbols/reloc_data_symbols.txt -T .splat/smashbrothers.ld
+
+ifeq ($(VERSION),jp)
+    LDFLAGS := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt -T .splat/smashbrothers_jp.ld
+    C_FILES := 
+else ifeq ($(VERSION),us)
+    LDFLAGS := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt \
+               -T .splat/smashbrothers.ld -T symbols/not_found.txt -T symbols/linker_constants.txt -T symbols/reloc_data_symbols.txt
+    C_FILES := $(shell find src -type f | grep \\.c$)
+else
+    $(error Unsupported VERSION "$(VERSION)")
+endif
 OBJCOPYFLAGS    := --pad-to=0xC00000 --gap-fill=0xFF
 ASM_PROC_FLAGS  := --input-enc=utf-8 --output-enc=euc-jp --convert-statics=global-with-filename
 
 SPLAT             ?= $(PYTHON) tools/splat/split.py
-SPLAT_YAML        ?= smashbrothers.yaml
+SPLAT_YAML        ?= smashbrothers.$(VERSION).yaml
 SPLAT_FLAGS       ?=
 ifneq ($(FULL_DISASM),0)
     SPLAT_FLAGS       += --disassemble-all
@@ -107,7 +125,9 @@ endif
 # ----- Files ------
 CC := $(ASM_PROC) $(ASM_PROC_FLAGS) $(IDO7) -- $(AS) $(ASFLAGS) --
 
-C_FILES        := $(shell find src -type f | grep \\.c$)
+# C_FILES 	   := $(shell python3 -c "import yaml; d=yaml.safe_load(open('smashbrothers.$(VERSION).yaml')); segs = d.get('segments', d) if isinstance(d, dict) else d; srcs=[]; \
+# [ srcs.append(s.get('source')) for s in segs if isinstance(s, dict) and s.get('type')=='c' and s.get('source') ]; \
+# print(' '.join(sorted(set(srcs))))")
 S_TEXT_FILES   := $(shell find asm src -type f -name '*.s' | grep -v /nonmatchings/ | grep -v /matchings/ | grep -v '\.rodata\.s' | grep -v '\.data\.s' | grep -v '\.bss\.s')
 S_DATA_FILES   := $(shell find asm -type f | grep \\.data\\.s$)
 S_RODATA_FILES := $(shell find asm -type f | grep \\.rodata\\.s$)
@@ -265,9 +285,12 @@ extract:
 	rm -r -f asm
 	rm -r -f assets
 	$(SPLAT) $(SPLAT_YAML) $(SPLAT_FLAGS)
+
+ifeq ($(VERSION),us)
 	$(PYTHON) tools/relocData.py extractAll
 	@mkdir -p relocAssets
 	tools/halAssetTool x tools/relocFileDescriptions.txt assets/relocData/ relocAssets
+endif
 
 init:
 	${MAKE} clean
@@ -296,7 +319,7 @@ $(ROM): $(ELF)
 	$(V)$(PYTHON) tools/n64crc.py $@
 
 # Linking
-$(ELF): $(O_FILES) symbols/not_found.txt symbols/linker_constants.txt build/assets/relocData.o
+$(ELF): $(O_FILES) $(EXTRA_LINK_DEPS)
 	$(call print_2,Linking:,$@,$(BLUE))
 	$(V)$(LD) -Map $(LD_MAP) -o $@ $(LDFLAGS)
 

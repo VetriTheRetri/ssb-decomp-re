@@ -1,0 +1,74 @@
+name: Smash Brothers (Japan)
+sha1: 4b71f0e01878696733eefa9c80d11c147ecb4984
+
+options:
+  basename: smashbrothers_jp
+  target_path: baserom.jp.z64
+  elf_path: build/smashbrothers_jp.elf
+  base_path: .
+  platform: n64
+  compiler: IDO
+  build_path: build
+
+  ld_script_path: .splat/smashbrothers_jp.ld
+  ld_dependencies: True
+  asm_emit_size_directive: True
+
+  header_encoding: ASCII
+
+  o_as_suffix: True
+  use_legacy_include_asm: False
+
+  asm_function_macro: glabel
+  asm_jtbl_label_macro: jlabel
+  asm_data_macro: dlabel
+  symbol_name_format: $VRAM_$ROM
+
+  # symbol_addrs_path:
+    # - symbols/libultra.txt
+    # - symbols/system.txt
+    # - symbols/scmanager.txt
+
+    # - symbols/ovl0.txt
+    # - symbols/ovl1.txt
+    # - symbols/ovl2.txt
+    # - symbols/ovl8.txt
+
+    # - symbols/not_found.txt
+    # - symbols/splatignore.txt
+  # reloc_addrs_path:
+  #   - reloc_addrs.txt
+
+  # undefined_funcs_auto_path: .splat/undefined_funcs_auto.txt
+  # undefined_syms_auto_path: .splat/undefined_syms_auto.txt
+
+  # extensions_path: tools/splat_ext
+
+  rodata_string_guesser_level: 3
+  data_string_guesser_level: 3
+
+  hasm_in_src_path: True
+
+  # elf_section_list_path: build/smashbrothers.elf
+  # asm_path: build/jp/asm_jp
+  # src_path: build/jp/src_jp
+  # create_asm_dependencies: True
+  # rom_address_padding: True
+  # dump_symbols: True
+  # section_order: [".text", ".data", ".rodata", ".bss"]
+  # auto_all_sections: [".data", ".rodata", ".bss"]
+  # string_encoding: ASCII
+  # data_string_encoding: ASCII
+  # libultra_symbols: True
+  # hardware_regs: True
+  # gfx_ucode: # one of [f3d, f3db, f3dex, f3dexb, f3dex2]
+
+segments:
+  - [0x000000, bin, baserom.jp.z64]
+  # - [0x000000, header, header]
+
+  - name: ipl3 #is this actually ipl3?
+    type: databin
+    start: 0x000040
+
+  - [0x1000000]

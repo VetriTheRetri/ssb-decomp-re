@@ -64,11 +64,25 @@ options:
   # gfx_ucode: # one of [f3d, f3db, f3dex, f3dexb, f3dex2]
 
 segments:
-  - [0x000000, bin, baserom.jp.z64]
-  # - [0x000000, header, header]
+  - [0x000000, header, header]
 
   - name: ipl3 #is this actually ipl3?
     type: databin
     start: 0x000040
+
+  - name: entry
+    type: code
+    start: 0x1000
+    vram: 0x80000400
+    subsegments:
+      - [0x1000, hasm, entry]
+
+  - name: wip
+    type: code
+    start: 0x1060
+    vram: 0x80000460
+    follows_vram: entry
+    subsegments:
+      - [0x1060, bin, baserom.jp.z64]
 
   - [0x1000000]

@@ -1,0 +1,4 @@
+main_BSS_START = 0x8003FEC0;
+main_BSS_SIZE = 0x4FB20;
+syMainLoop = 0x80000870;
+sSYMainThread1 = 0x800400C0;

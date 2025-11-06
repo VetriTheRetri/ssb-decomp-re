@@ -311,35 +311,34 @@ segments:
       - [0x0403E0, .rodata, libultra/libc/llcvt]
       - { start: 0x0403F0, type: databin, name: rsp/n_aspmain,      linker_section_order: .rodata }
       - { start: 0x0406A0, type: databin, name: rsp/gspF3DEX2_fifo, linker_section_order: .rodata }
-      - { start: 0x040AC0, type: .bss, name: sys/main,                 vram: 0x8003FAD0 }
-      - { start: 0x045EB0, type: .bss, name: sys/scheduler,            vram: 0x80044EC0 }
-      - { start: 0x046000, type: .bss, name: sys/dma,                  vram: 0x80045040 }
-      - { start: 0x0460E0, type: .bss, name: sys/controller,           vram: 0x800450F0 }
-      - { start: 0x046460, type: .bss, name: sys/maindevice,           vram: 0x80045470 }
-      - { start: 0x046470, type: .bss, name: sys/taskman,              vram: 0x80045480 }
-      - { start: 0x047660, type: .bss, name: sys/video,                vram: 0x80046670 }
-      - { start: 0x047690, type: .bss, name: sys/rdp,                  vram: 0x800466A0 }
-      - { start: 0x0476A0, type: .bss, name: sys/objman,               vram: 0x800466B0 }
-      - { start: 0x047F90, type: .bss, name: sys/objdisplay,           vram: 0x80046FA0 }
-      - { start: 0x0482C0, type: .bss, name: sys/audio,                vram: 0x800472D0 }
-      - { start: 0x09E9F0, type: .bss, name: sys/debug,                vram: 0x8009DA00 }
-      - { start: 0x09FDB0, type: .bss, name: libultra/sp/sprite,       vram: 0x8009EDC0 }
-      - { start: 0x09FDC0, type:  bss, name: libultra/n_audio/n_env,   vram: 0x8009EDD0 }
-      - { start: 0x09FE30, type: .bss, name: libultra/io/sptask,       vram: 0x8009EE40 }
-      - { start: 0x09FE70, type: .bss, name: libultra/io/motor,        vram: 0x8009EE80 }
-      - { start: 0x09FF70, type: .bss, name: libultra/io/siacs,        vram: 0x8009EF80 }
-      - { start: 0x09FF90, type: .bss, name: libultra/io/controller,   vram: 0x8009EFA0 }
-      - { start: 0x0A0020, type: .bss, name: libultra/os/initialize,   vram: 0x8009F030 }
-      - { start: 0x0A0030, type: .bss, name: libultra/os/threadsave,   vram: 0x8009F040 }
-      - { start: 0x0A01E0, type: .bss, name: libultra/io/pimgr,        vram: 0x8009F1F0 }
-      - { start: 0x0A14A0, type: .bss, name: libultra/io/piacs,        vram: 0x800A04B0 }
-      - { start: 0x0A14C0, type: .bss, name: libultra/os/seteventmesg, vram: 0x800A04D0 }
-      - { start: 0x0A1540, type: .bss, name: libultra/os/timerintr,    vram: 0x800A0550 }
-      - { start: 0x0A1580, type: .bss, name: libultra/io/cartrominit,  vram: 0x800A0590 }
-      - { start: 0x0A1600, type: .bss, name: libultra/io/contpfs,      vram: 0x800A0610 }
-      - { start: 0x0A1700, type: .bss, name: libultra/io/pfsisplug,    vram: 0x800A0710 }
-      - { start: 0x0A1740, type: .bss, name: libultra/io/vimgr,        vram: 0x800A0750 }
-
+      - { start: 0x040AC0, type: .bss, name: sys/main,                 vram: 0x8003FEA0 }
+      - { start: 0x045EB0, type: .bss, name: sys/scheduler,            vram: 0x800452B0 }
+      - { start: 0x046000, type: .bss, name: sys/dma,                  vram: 0x80045430 }
+      - { start: 0x0460E0, type: .bss, name: sys/controller,           vram: 0x800455E0 }
+      - { start: 0x046460, type: .bss, name: sys/maindevice,           vram: 0x80045860 }
+      - { start: 0x046470, type: .bss, name: sys/taskman,              vram: 0x80045870 }
+      - { start: 0x047660, type: .bss, name: sys/video,                vram: 0x80046A60 }
+      - { start: 0x047690, type: .bss, name: sys/rdp,                  vram: 0x80046A90 }
+      - { start: 0x0476A0, type: .bss, name: sys/objman,               vram: 0x80046AA0 }
+      - { start: 0x047F90, type: .bss, name: sys/objdisplay,           vram: 0x80047390 }
+      - { start: 0x0482C0, type: .bss, name: sys/audio,                vram: 0x800476C0 }
+      - { start: 0x09E9F0, type: .bss, name: sys/debug,                vram: 0x8009DE00 }
+      - { start: 0x09FDB0, type: .bss, name: libultra/sp/sprite,       vram: 0x8009F1B0 }
+      - { start: 0x09FDC0, type:  bss, name: libultra/n_audio/n_env,   vram: 0x8009F1C0 }
+      - { start: 0x09FE30, type: .bss, name: libultra/io/sptask,       vram: 0x8009F230 }
+      - { start: 0x09FE70, type: .bss, name: libultra/io/motor,        vram: 0x8009F270 }
+      - { start: 0x09FF70, type: .bss, name: libultra/io/siacs,        vram: 0x8009F370 }
+      - { start: 0x09FF90, type: .bss, name: libultra/io/controller,   vram: 0x8009F390 }
+      - { start: 0x0A0020, type: .bss, name: libultra/os/initialize,   vram: 0x8009F420 }
+      - { start: 0x0A0030, type: .bss, name: libultra/os/threadsave,   vram: 0x8009F430 }
+      - { start: 0x0A01E0, type: .bss, name: libultra/io/pimgr,        vram: 0x8009F5E0 }
+      - { start: 0x0A14A0, type: .bss, name: libultra/io/piacs,        vram: 0x800A08A0 }
+      - { start: 0x0A14C0, type: .bss, name: libultra/os/seteventmesg, vram: 0x800A08C0 }
+      - { start: 0x0A1540, type: .bss, name: libultra/os/timerintr,    vram: 0x800A0940 }
+      - { start: 0x0A1580, type: .bss, name: libultra/io/cartrominit,  vram: 0x800A0980 }
+      - { start: 0x0A1600, type: .bss, name: libultra/io/contpfs,      vram: 0x800A0A00 }
+      - { start: 0x0A1700, type: .bss, name: libultra/io/pfsisplug,    vram: 0x800A0B00 }
+      - { start: 0x0A1740, type: .bss, name: libultra/io/vimgr,        vram: 0x800A0B40 }
 
   - name: scmanager
     type: code

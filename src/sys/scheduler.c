@@ -1165,6 +1165,9 @@ void sySchedulerSoftReset(void);
 #define INTR_DP_FULL_SYNC 3
 #define INTR_SOFT_RESET   99
 
+// 0x80002518
+// jp: 0x8000241C 
+// TODO: fix regional differences
 void sySchedulerThreadMain(void *arg)
 {
     OSMesg mesg;
@@ -1279,7 +1282,9 @@ void sySchedulerSoftReset(void)
         syControllerInitRumble(i);
         syControllerStopRumble(i);
     }
+    #if defined(REGION_US)
     sSYSchedulerAfterPreNMI = osAfterPreNMI();
+    #endif
 }
 
 void unref_80002A50(void (*func)(void))

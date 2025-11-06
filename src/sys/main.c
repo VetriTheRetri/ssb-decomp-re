@@ -215,7 +215,9 @@ void syMainThread1Idle(void *arg)
 void syMainLoop(void) 
 {
     gSYMainThread0Stack[STACK_CANARY_OFFSET] = STACK_CANARY;
+    #if defined(REGION_US)
     __osSetWatchLo(0x04900000 & WATCHLO_ADDRMASK);
+    #endif
     osInitialize();
     osCreateThread(&sSYMainThread1, 1, syMainThread1Idle, sSYMainThreadArgBuf, &sSYMainThread1Stack[THREAD1_STACK_SIZE], OS_PRIORITY_APPMAX);
 

@@ -24,7 +24,8 @@ options:
   asm_data_macro: dlabel
   symbol_name_format: $VRAM_$ROM
 
-  # symbol_addrs_path:
+  symbol_addrs_path:
+    - symbols/jp_wip.txt
     # - symbols/libultra.txt
     # - symbols/system.txt
     # - symbols/scmanager.txt
@@ -34,13 +35,13 @@ options:
     # - symbols/ovl2.txt
     # - symbols/ovl8.txt
 
-    # - symbols/not_found.txt
-    # - symbols/splatignore.txt
+    - symbols/not_found.txt
+    - symbols/splatignore.txt
   # reloc_addrs_path:
   #   - reloc_addrs.txt
 
-  # undefined_funcs_auto_path: .splat/undefined_funcs_auto.txt
-  # undefined_syms_auto_path: .splat/undefined_syms_auto.txt
+  undefined_funcs_auto_path: .splat/undefined_funcs_auto.txt
+  undefined_syms_auto_path: .splat/undefined_syms_auto.txt
 
   # extensions_path: tools/splat_ext
 
@@ -77,12 +78,292 @@ segments:
     subsegments:
       - [0x1000, hasm, entry]
 
-  - name: wip
+  - name: main
     type: code
     start: 0x1060
     vram: 0x80000460
     follows_vram: entry
+    bss_size: 0x61EA0
     subsegments:
-      - [0x1060, bin, baserom.jp.z64]
+      - [0x001060, c, sys/main]
+      - [0x001500, c, sys/scheduler]
+      - [0x003440, c, sys/dma]
+      - [0x0045C0, c, sys/controller]
+      - [0x005290, c, sys/taskman]
+      - [0x007680, c, sys/malloc]
+      - [0x007710, c, sys/video]
+      - [0x007A20, c, sys/rdp]
+      - [0x007D80, c, sys/objman]
+      - [0x00B670, c, sys/objscript]
+      - [0x00B890, c, sys/objhelper]
+      - [0x00C550, c, sys/objanim]
+      - [0x011710, c, sys/objdisplay]
+      - [0x018E80, c, sys/utils]  
+      - [0x019880, c, sys/vector]
+      - [0x01A610, c, sys/matrix]
+      - [0x01DFB0, c, sys/interp]
+      - [0x01EF60, c, sys/audio]
+      - [0x021A60, c, sys/debug]
+      - [0x0241E0, c, sys/unref] # One func, that's entirely unreferenced.
+      - [0x024210, c, libultra/sp/setattribute]
+      - [0x024220, c, libultra/sp/sprite]
+      - [0x026890, c, libultra/sp/clearattribute]
+      - [0x0268B0, c, libultra/sp/hide]
+      - [0x0268D0, c, libultra/sp/show]
+      - [0x0268F0, c, libultra/sp/spscale]
+      - [0x026960, c, libultra/n_audio/cspsetpriority]
+      - [0x0269B0, c, libultra/n_audio/cspsetfxmix]
+      - [0x026A20, c, libultra/n_audio/n_env]
+      - [0x02DFD0, c, libultra/n_audio/n_synaddplayer]
+      - [0x02E130, c, libultra/n_audio/n_synstopvoice]
+      - [0x02E1A0, c, libultra/n_audio/n_synallocvoice]
+      - [0x02E3D0, c, libultra/n_audio/n_synsetpan]
+      - [0x02E450, c, libultra/n_audio/n_synstartvoiceparam]
+      - [0x02E620, c, libultra/n_audio/audio09]
+      - [0x02FFE0, c, libultra/n_audio/n_synsetpriority]
+      - [0x030010, c, libultra/n_audio/seqpgetvol]
+      - [0x030030, c, libultra/n_audio/seq]
+      - [0x030420, c, libultra/n_audio/cspsetseq]
+      - [0x030460, c, libultra/n_audio/n_synsetpitch]
+      - [0x0304E0, c, libultra/n_audio/cspsetbank]
+      - [0x0305C0, c, libultra/n_audio/cspsetvol]
+      - [0x030600, c, libultra/n_audio/n_synsetfxmix]
+      - [0x030730, c, libultra/n_audio/n_syndelete]
+      - [0x030760, c, libultra/n_audio/cspplay]
+      - [0x030790, c, libultra/n_audio/seqpgetchlvol]
+      - [0x0307E0, c, libultra/n_audio/n_synallocfx]
+      - [0x030840, c, libultra/n_audio/cspstop]
+      - [0x030870, c, libultra/n_audio/n_synfreevoice]
+      - [0x030910, c, libultra/n_audio/n_synsetvol]
+      - [0x0309B0, c, libultra/os/sendmesg]
+      - [0x030B00, c, libultra/os/stopthread]
+      - [0x030BC0, c, libultra/os/recvmesg]
+      - [0x030D00, hasm, libultra/os/setintmask]
+      - [0x030DA0, c, libultra/gu/sinf]
+      - [0x030F60, c, libultra/io/sptask]
+      - [0x031250, c, libultra/os/destroythread]
+      - [0x031360, c, libultra/libc/ll]
+      - [0x031620, hasm, libultra/os/exceptasm] # differs from us
+      - [0x031F30, c, libultra/os/thread]
+      - [0x031F70, hasm, libultra/libc/bzero]
+      - [0x032010, ?, libultra/?/?]
+      - [0x032700, c, libultra/io/motor]
+      - [0x032AD0, c, libultra/io/siacs]
+      - [0x032B90, c, libultra/io/controller]
+      - [0x032ED0, c, libultra/os/createthread]
+      - [0x033020, c, libultra/io/contreaddata]
+      - [0x033200, c, libultra/os/virtualtophysical]
+      - [0x033280, hasm, libultra/os/writebackdcache]
+      - [0x032E50, c, libultra/os/initialize]
+      - [0x0331B0, c, libultra/io/pirawread] #wip: this and below not correct offset
+      - [0x033210, pad, pad0x033210]
+      - [0x033270, hasm, libultra/os/setsr]
+      - [0x033280, hasm, libultra/os/getsr]
+      - [0x033290, c, libultra/io/vigetnextframebuf]
+      - [0x0332D0, c, libultra/io/sprawdma]
+      - [0x033360, c, libultra/io/sirawdma]
+      - [0x033410, c, libultra/io/epilinkhandle]
+      - [0x033460, c, libultra/io/viblack]
+      - [0x0334D0, c, libultra/io/sirawread]
+      - [0x033520, c, libultra/io/sptaskyield]
+      - [0x033540, c, libultra/gu/mtxutil]
+      - [0x0337B0, c, libultra/io/visetmode]
+      - [0x033820, hasm, libultra/os/probetlb]
+      - [0x0338E0, c, libultra/io/pimgr]
+      - [0x033A50, c, libultra/io/piacs]
+      - [0x033B10, pad, padding0x033B10]
+      - [0x033B20, c, libultra/io/devmgr]
+      - [0x033FB0, c, libultra/io/pirawdma]
+      - [0x034090, hasm, libultra/os/getcount]
+      - [0x0340A0, c, libultra/os/seteventmesg]
+      - [0x034110, hasm, libultra/gu/sqrtf]
+      - [0x034120, c, libultra/os/afterprenmi]
+      - [0x034140, c, libultra/io/contquery]
+      - [0x0341F0, c, libultra/libc/xprintf]
+      - [0x034EB0, hasm, libultra/os/unmaptlball]
+      - [0x034F00, c, libultra/io/epidma]
+      - [0x034FE0, c, libultra/libc/string]
+      - [0x035080, c, libultra/os/createmesgqueue]
+      - [0x0350B0, hasm, libultra/os/invalicache]
+      - [0x035130, hasm, libultra/os/invaldcache]
+      - [0x0351E0, c, libultra/io/sp]
+      - [0x035210, c, libultra/io/si]
+      - [0x035240, c, libultra/os/jammesg]
+      - [0x035390, c, libultra/os/setthreadpri]
+      - [0x035470, c, libultra/os/getthreadpri]
+      - [0x035490, c, libultra/io/viswapbuf]
+      - [0x0354E0, c, libultra/gu/mtxxfmf]
+      - [0x035580, c, libultra/gu/mtxcatf]
+      - [0x0356F0, c, libultra/io/epirawdma]
+      - [0x0358D0, c, libultra/io/sptaskyielded]
+      - [0x035950, c, libultra/os/gettime]
+      - [0x0359E0, c, libultra/os/timerintr]
+      - [0x035DE0, c, libultra/os/setglobalintmask]
+      - [0x035E30, c, libultra/io/aisetfreq]
+      - [0x035F80, c, libultra/gu/normalize]
+      - [0x036010, hasm, libultra/os/setcompare]
+      - [0x036020, c, libultra/os/getactivequeue]
+      - [0x036030, hasm, libultra/libc/bcopy]
+      - [0x036340, c, libultra/audio/alCopy]
+      - [0x0363C0, c, libultra/os/resetglobalintmask]
+      - [0x036420, hasm, libultra/os/interrupt]
+      - [0x036460, c, libultra/io/vi]
+      - [0x0365A0, c, libultra/io/viswapcontext]
+      - [0x0368A0, c, libultra/io/pigetcmdq]
+      - [0x0368D0, c, libultra/gu/cosf]
+      - [0x036A40, c, libultra/os/settime]
+      - [0x036A70, c, libultra/io/visetevent]
+      - [0x036AE0, c, libultra/io/cartrominit]
+      - [0x036CC0, c, libultra/io/pfsselectbank]
+      - [0x036D40, hasm, libultra/os/setfpccsr]
+      - [0x036D50, c, libultra/io/epirawread]
+      - [0x036EB0, hasm, libultra/os/maptlbrdb]
+      - [0x036F10, c, libultra/os/yieldthread]
+      - [0x036F60, c, libultra/audio/cents2ratio]
+      - [0x036FB0, c, libultra/io/contramwrite]
+      - [0x037200, c, libultra/io/pfsgetstatus]
+      - [0x037430, c, libultra/io/contpfs]
+      - [0x037FB0, hasm, libultra/libc/bcmp]
+      - [0x0380D0, c, libultra/io/contramread]
+      - [0x038300, c, libultra/io/crc]
+      - [0x038470, c, libultra/io/pfsisplug]
+      - [0x0387B0, c, libultra/io/epirawwrite]
+      - [0x038910, c, libultra/os/settimer]
+      - [0x0389F0, c, libultra/libc/xldtob]
+      - [0x0394B0, c, libultra/libc/ldiv]
+      - [0x039640, c, libultra/libc/xlitob]
+      - [0x0398E0, c, libultra/io/sirawwrite]
+      - [0x039930, c, libultra/io/dpsetnextbuf]
+      - [0x0399E0, c, libultra/io/dp]
+      - [0x039A10, c, libultra/io/spsetstat]
+      - [0x039A20, c, libultra/io/spgetstat]
+      - [0x039A30, pad, padding_39A30]
+      - [0x039A40, c, libultra/io/vimgr]
+      - [0x039D50, c, libultra/io/vigetcurrcontext]
+      - [0x039D60, hasm, libultra/os/writebackdcacheall]
+      - [0x039D90, c, libultra/os/startthread]
+      - [0x039EE0, c, libultra/io/visetyscale]
+      - [0x039F40, c, libultra/libc/llcvt]
+      - [0x03A150, c, libultra/io/aisetnextbuf]
+      - [0x03A200, c, libultra/io/ai]
+      - [0x03A230, c, libultra/io/vigetcurrframebuf]
+      - [0x03A270, c, libultra/io/spsetpc]
+      - [0x03A2B0, hasm, libultra/os/getwatchlo]
+      - [0x03A2C0, textbin, rsp/n_aspmain]
+      - [0x03AF20, textbin, rsp/gspF3DEX2_fifo] # L3DEX2_2.04H.code
+      - [0x03C0B0, bin, unk_3C0B0] # other rsp files?
+      - [0x03C2B0, .data, sys/main]
+      - [0x03C2E0, .data, sys/taskman]
+      - [0x03C350, .data, sys/rdp]
+      - [0x03C470, .data, sys/objman]
+      - [0x03C530, .data, sys/objdisplay]
+      - [0x03C540, .data, sys/utils]
+      - [0x03C550, .data, sys/sintable]
+      - [0x03D550, .data, sys/audio]
+      - [0x03D7B0, .data, sys/debug]
+      - [0x03DC70, .data, libultra/sp/sprite]
+      - [0x03DC80, data, libultra/n_audio/n_env]
+      - [0x03DF30, data, libultra/io/vimodepallan1] # osViModePalLan1
+      - [0x03DF80, data, libultra/os/exceptasm]
+      - [0x03DFB0, .data, libultra/os/thread]
+      - [0x03DFD0, .data, libultra/io/siacs]
+      - [0x03DFE0, .data, libultra/io/controller]
+      - [0x03DFF0, .data, libultra/os/initialize]
+      - [0x03E010, .data, libultra/io/pimgr]
+      - [0x03E040, .data, libultra/io/piacs]
+      - [0x03E050, .data, libultra/libc/xprintf]
+      - [0x03E0A0, .data, libultra/os/timerintr]
+      - [0x03E0B0, data, libultra/vimodentsclan1] # osViModeNtscLan1
+      - [0x03E100, data, libultra/vimodempallan1] # osViModeMpalLan1
+      - [0x03E150, .data, libultra/io/vi]
+      - [0x03E1C0, .data, libultra/io/cartrominit]
+      - [0x03E1D0, .data, libultra/io/contpfs]
+      - [0x03E1E0, .data, libultra/io/contramread]
+      - [0x03E1F0, .data, libultra/libc/xlitob]
+      - [0x03E220, .data, libultra/io/vimgr]
+      - [0x03E240, .data, libultra/io/aisetnextbuf]
+      - [0x03E250, .rodata, sys/main]
+      - [0x03E270, .rodata, sys/scheduler]
+      - [0x03E2D0, .rodata, sys/controller]
+      - [0x03E2F0, .rodata, sys/taskman]
+      - [0x03E510, .rodata, sys/malloc]
+      - [0x03E530, .rodata, sys/objman]
+      - [0x03E980, .rodata, sys/objscript]
+      - [0x03E9A0, .rodata, sys/objhelper]
+      - [0x03E9D0, .rodata, sys/objanim]
+      - [0x03ED10, .rodata, sys/objdisplay]
+      - [0x03EF50, .rodata, sys/utils]
+      - [0x03EFA0, .rodata, sys/matrix]
+      - [0x03EFF0, .rodata, sys/interp]
+      - [0x03F010, .rodata, sys/audio]
+      - [0x03F020, .rodata, sys/debug]
+      - [0x03F460, .rodata, libultra/sp/sprite]
+      - [0x03F470, .rodata, libultra/n_audio/n_env]
+      - [0x03FAA0, .rodata, libultra/n_audio/audio09]
+      - [0x03FCE0, rodata, libultra/os/setintmask]
+      - [0x03FD60, .rodata, libultra/gu/sinf]
+      - [0x03FDB0, rodata, libultra/os/exceptasm]
+      - [0x03FE00, .rodata, libultra/io/devmgr]
+      - [0x03FE20, .rodata, libultra/libc/xprintf]
+      - [0x03FF20, .rodata, libultra/gu/cosf]
+      - [0x03FF70, rodata, libultra/gu/libm_vals]
+      - [0x03FF80, .rodata, libultra/audio/cents2ratio]
+      - [0x03FF90, .rodata, libultra/libc/xldtob]
+      - [0x03FFF0, .rodata, libultra/libc/llcvt]
+      - { start: 0x040000, type: databin, name: rsp/n_aspmain,      linker_section_order: .rodata }
+      - { start: 0x0402B0, type: databin, name: rsp/gspF3DEX2_fifo, linker_section_order: .rodata }
+      - { start: 0x0406D0, type: .bss, name: sys/main,                 vram: 0x8003FAD0 }
+      - { start: 0x045AC0, type: .bss, name: sys/scheduler,            vram: 0x80044EC0 }
+      - { start: 0x045C40, type: .bss, name: sys/dma,                  vram: 0x80045040 }
+      - { start: 0x045CF0, type: .bss, name: sys/controller,           vram: 0x800450F0 }
+      - { start: 0x046070, type: .bss, name: sys/maindevice,           vram: 0x80045470 }
+      - { start: 0x046080, type: .bss, name: sys/taskman,              vram: 0x80045480 }
+      - { start: 0x047270, type: .bss, name: sys/video,                vram: 0x80046670 }
+      - { start: 0x0472A0, type: .bss, name: sys/rdp,                  vram: 0x800466A0 }
+      - { start: 0x0472B0, type: .bss, name: sys/objman,               vram: 0x800466B0 }
+      - { start: 0x047BA0, type: .bss, name: sys/objdisplay,           vram: 0x80046FA0 }
+      - { start: 0x047ED0, type: .bss, name: sys/audio,                vram: 0x800472D0 }
+      - { start: 0x09E600, type: .bss, name: sys/debug,                vram: 0x8009DA00 }
+      - { start: 0x09F9C0, type: .bss, name: libultra/sp/sprite,       vram: 0x8009EDC0 }
+      - { start: 0x09F9D0, type:  bss, name: libultra/n_audio/n_env,   vram: 0x8009EDD0 }
+      - { start: 0x09FA40, type: .bss, name: libultra/io/sptask,       vram: 0x8009EE40 }
+      - { start: 0x09FA80, type: .bss, name: libultra/io/motor,        vram: 0x8009EE80 }
+      - { start: 0x09FB80, type: .bss, name: libultra/io/siacs,        vram: 0x8009EF80 }
+      - { start: 0x09FBA0, type: .bss, name: libultra/io/controller,   vram: 0x8009EFA0 }
+      - { start: 0x09FC30, type: .bss, name: libultra/os/initialize,   vram: 0x8009F030 }
+      - { start: 0x09FC40, type: .bss, name: libultra/os/threadsave,   vram: 0x8009F040 }
+      - { start: 0x09FDF0, type: .bss, name: libultra/io/pimgr,        vram: 0x8009F1F0 }
+      - { start: 0x0A10B0, type: .bss, name: libultra/io/piacs,        vram: 0x800A04B0 }
+      - { start: 0x0A10D0, type: .bss, name: libultra/os/seteventmesg, vram: 0x800A04D0 }
+      - { start: 0x0A1150, type: .bss, name: libultra/os/timerintr,    vram: 0x800A0550 }
+      - { start: 0x0A1190, type: .bss, name: libultra/io/cartrominit,  vram: 0x800A0590 }
+      - { start: 0x0A1210, type: .bss, name: libultra/io/contpfs,      vram: 0x800A0610 }
+      - { start: 0x0A1310, type: .bss, name: libultra/io/pfsisplug,    vram: 0x800A0710 }
+      - { start: 0x0A1350, type: .bss, name: libultra/io/vimgr,        vram: 0x800A0750 }
+
+  - name: scmanager
+    type: code
+    start: 0x040AC0
+    vram: 0x8009F9E0
+    subsegments:
+      - [0x040AC0, c, sc/scmanager]
+      - [0x042180, .data, sc/scmanager]
+      - [0x043290, .rodata, sc/scmanager]
+      - { start: auto, type: .bss, name: sc/scmanager }
+
+  - name: zbuffer
+    exclusive_ram_id: zbuffers
+    type: code
+    follows_vram: scmanager
+    subsegments:
+    - { start: auto, type: .bss, name: sys/zbuffer }
+
+  - name: wip
+    type: code
+    start: 0x43570
+    vram: 0x800C5800
+    follows_vram: zbuffer
+    subsegments:
+      - [0x43570, bin, baserom.jp.z64]
 
   - [0x1000000]

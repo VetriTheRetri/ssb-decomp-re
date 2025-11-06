@@ -83,6 +83,13 @@ ifeq ($(AVOID_UB),1)
 DEFINES += -DAVOID_UB
 endif
 
+ifeq ($(VERSION),jp)
+    DEFINES += -DREGION_JP
+else ifeq ($(VERSION),us)
+    DEFINES += -DREGION_US
+endif
+
+
 # ----- Output ------
 
 BUILD_DIR := build
@@ -105,7 +112,8 @@ ASFLAGS         := -EB -I include -march=vr4300 -mabi=32
 ifeq ($(VERSION),jp)
     LDFLAGS := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt \
                -T .splat/smashbrothers_jp.ld -T symbols/jp_wip.txt
-    C_FILES := 
+	C_FILES := $(shell grep -v '^[[:space:]]*#' smashbrothers.jp.yaml | grep -oP '\[.*?,[[:space:]]*c,[[:space:]]*\K[^\], ]+')
+	C_FILES := $(addprefix src/,$(addsuffix .c,$(C_FILES)))
 else ifeq ($(VERSION),us)
     LDFLAGS := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt \
                -T .splat/smashbrothers.ld -T symbols/not_found.txt -T symbols/linker_constants.txt -T symbols/reloc_data_symbols.txt

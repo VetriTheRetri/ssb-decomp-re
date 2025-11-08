@@ -26,7 +26,7 @@ options:
 
   symbol_addrs_path:
     - symbols/jp_wip.txt
-    # - symbols/libultra.txt
+    # - symbols/libultra.jp.txt
     # - symbols/system.txt
     # - symbols/scmanager.txt
 
@@ -156,7 +156,7 @@ segments:
       - [0x033280, hasm, libultra/os/writebackdcache]
       - [0x033300, c, libultra/os/initialize]
       - [0x033590, c, libultra/io/pirawread]
-      - [0x0335F0, pad, pad0x033210]
+      - [0x0335F0, pad, pad0x0335F0]
       - [0x033650, hasm, libultra/os/setsr]
       - [0x033660, hasm, libultra/os/getsr]
       - [0x033670, c, libultra/io/vigetnextframebuf]
@@ -177,7 +177,7 @@ segments:
       - [0x0344F0, c, libultra/os/seteventmesg]
       - [0x034560, hasm, libultra/gu/sqrtf]
       - [0x034570, c, libultra/io/contquery]
-      - [0x034620, pad, padding0x034630]
+      - [0x034620, pad, padding0x034620]
       - [0x034630, c, libultra/libc/xprintf]
       - [0x0352F0, c, libultra/io/epidma]
       - [0x0353D0, c, libultra/io/leodiskinit]
@@ -249,7 +249,7 @@ segments:
       - [0x03A690, c, libultra/io/spsetpc]
       - [0x03A6D0, textbin, rsp/n_aspmain]
       - [0x03B330, textbin, rsp/gspF3DEX2_fifo] # L3DEX2_2.04H.code
-      - [0x03C4C0, bin, unk_3C0B0] # other rsp files?
+      - [0x03C4C0, bin, unk_3C4C0] # other rsp files?
       - [0x03C6C0, .data, sys/main]
       - [0x03C6F0, .data, sys/taskman]
       - [0x03C760, .data, sys/rdp]
@@ -274,7 +274,7 @@ segments:
       - [0x03E460, data, libultra/vimodentsclan1] # osViModeNtscLan1
       # - [0x03E4B0, data, libultra/vimodempallan1] # osViModeMpalLan1
       - [0x03E4B0, .data, libultra/io/vi]
-      - [0x03E520, .data, libultra/os/leodiskinit] # maybe?
+      - [0x03E520, .data, libultra/io/leodiskinit] # maybe?
       - [0x03E5B0, .data, libultra/io/cartrominit]
       - [0x03E5C0, .data, libultra/io/contpfs]
       - [0x03E5D0, .data, libultra/io/contramread]
@@ -311,34 +311,36 @@ segments:
       - [0x0403E0, .rodata, libultra/libc/llcvt]
       - { start: 0x0403F0, type: databin, name: rsp/n_aspmain,      linker_section_order: .rodata }
       - { start: 0x0406A0, type: databin, name: rsp/gspF3DEX2_fifo, linker_section_order: .rodata }
-      - { start: 0x040AC0, type: .bss, name: sys/main,                 vram: 0x8003FEA0 }
-      - { start: 0x045EB0, type: .bss, name: sys/scheduler,            vram: 0x800452B0 }
-      - { start: 0x046000, type: .bss, name: sys/dma,                  vram: 0x80045430 }
-      - { start: 0x0460E0, type: .bss, name: sys/controller,           vram: 0x800455E0 }
-      - { start: 0x046460, type: .bss, name: sys/maindevice,           vram: 0x80045860 }
-      - { start: 0x046470, type: .bss, name: sys/taskman,              vram: 0x80045870 }
-      - { start: 0x047660, type: .bss, name: sys/video,                vram: 0x80046A60 }
-      - { start: 0x047690, type: .bss, name: sys/rdp,                  vram: 0x80046A90 }
-      - { start: 0x0476A0, type: .bss, name: sys/objman,               vram: 0x80046AA0 }
-      - { start: 0x047F90, type: .bss, name: sys/objdisplay,           vram: 0x80047390 }
-      - { start: 0x0482C0, type: .bss, name: sys/audio,                vram: 0x800476C0 }
-      - { start: 0x09E9F0, type: .bss, name: sys/debug,                vram: 0x8009DE00 }
-      - { start: 0x09FDB0, type: .bss, name: libultra/sp/sprite,       vram: 0x8009F1B0 }
-      - { start: 0x09FDC0, type:  bss, name: libultra/n_audio/n_env,   vram: 0x8009F1C0 }
-      - { start: 0x09FE30, type: .bss, name: libultra/io/sptask,       vram: 0x8009F230 }
-      - { start: 0x09FE70, type: .bss, name: libultra/io/motor,        vram: 0x8009F270 }
-      - { start: 0x09FF70, type: .bss, name: libultra/io/siacs,        vram: 0x8009F370 }
-      - { start: 0x09FF90, type: .bss, name: libultra/io/controller,   vram: 0x8009F390 }
-      - { start: 0x0A0020, type: .bss, name: libultra/os/initialize,   vram: 0x8009F420 }
-      - { start: 0x0A0030, type: .bss, name: libultra/os/threadsave,   vram: 0x8009F430 }
-      - { start: 0x0A01E0, type: .bss, name: libultra/io/pimgr,        vram: 0x8009F5E0 }
-      - { start: 0x0A14A0, type: .bss, name: libultra/io/piacs,        vram: 0x800A08A0 }
-      - { start: 0x0A14C0, type: .bss, name: libultra/os/seteventmesg, vram: 0x800A08C0 }
-      - { start: 0x0A1540, type: .bss, name: libultra/os/timerintr,    vram: 0x800A0940 }
-      - { start: 0x0A1580, type: .bss, name: libultra/io/cartrominit,  vram: 0x800A0980 }
-      - { start: 0x0A1600, type: .bss, name: libultra/io/contpfs,      vram: 0x800A0A00 }
-      - { start: 0x0A1700, type: .bss, name: libultra/io/pfsisplug,    vram: 0x800A0B00 }
-      - { start: 0x0A1740, type: .bss, name: libultra/io/vimgr,        vram: 0x800A0B40 }
+      - { start: 0x040AC0, type: .bss, name: sys/main,                 vram: 0x8003FEC0 }
+      - { start: 0x045BB0, type: .bss, name: sys/scheduler,            vram: 0x80044FB0 }
+      - { start: 0x045C30, type: .bss, name: sys/dma,                  vram: 0x80045030 }
+      - { start: 0x045CE0, type: .bss, name: sys/controller,           vram: 0x800450E0 }
+      - { start: 0x046060, type: .bss, name: sys/maindevice,           vram: 0x80045460 }
+      - { start: 0x046070, type: .bss, name: sys/taskman,              vram: 0x80045470 }
+      - { start: 0x047260, type: .bss, name: sys/video,                vram: 0x80046660 }
+      - { start: 0x047290, type: .bss, name: sys/rdp,                  vram: 0x80046690 }
+      - { start: 0x0472A0, type: .bss, name: sys/objman,               vram: 0x800466A0 }
+      - { start: 0x047B90, type: .bss, name: sys/objdisplay,           vram: 0x80046F90 }
+      - { start: 0x047EC0, type: .bss, name: sys/audio,                vram: 0x800472C0 }
+      - { start: 0x09B5F0, type: .bss, name: sys/debug,                vram: 0x8009A9F0 }
+      - { start: 0x09C9B0, type: .bss, name: libultra/sp/sprite,       vram: 0x8009BDB0 }
+      - { start: 0x09C9C0, type: .bss, name: libultra/n_audio/n_env,   vram: 0x8009BDC0 }
+      - { start: 0x09CA30, type: .bss, name: libultra/io/sptask,       vram: 0x8009BE30 }
+      # probably something else here
+      - { start: 0x09DA70, type: .bss, name: libultra/io/motor,        vram: 0x8009CE70 }
+      - { start: 0x09DB70, type: .bss, name: libultra/io/siacs,        vram: 0x8009CF70 }
+      - { start: 0x09DB90, type: .bss, name: libultra/io/controller,   vram: 0x8009CF90 }
+      - { start: 0x09DC20, type: .bss, name: libultra/os/initialize,   vram: 0x8009D020 }
+      - { start: 0x09DC30, type: .bss, name: libultra/os/threadsave,   vram: 0x8009D030 }
+      - { start: 0x09DDE0, type: .bss, name: libultra/io/pimgr,        vram: 0x8009D1E0 }
+      - { start: 0x09F0A0, type: .bss, name: libultra/io/piacs,        vram: 0x8009E4A0 }
+      - { start: 0x09F0C0, type: .bss, name: libultra/os/seteventmesg, vram: 0x8009E4C0 }
+      - { start: 0x09F140, type: .bss, name: libultra/io/leodiskinit,  vram: 0x8009E540 } # maybe?
+      - { start: 0x09F1C0, type: .bss, name: libultra/os/timerintr,    vram: 0x8009E5C0 }
+      - { start: 0x09F200, type: .bss, name: libultra/io/cartrominit,  vram: 0x8009E600 }
+      - { start: 0x09F280, type: .bss, name: libultra/io/contpfs,      vram: 0x8009E680 }
+      - { start: 0x09F380, type: .bss, name: libultra/io/pfsisplug,    vram: 0x8009E780 }
+      - { start: 0x09F3C0, type: .bss, name: libultra/io/vimgr,        vram: 0x8009E7C0 }
 
   - name: scmanager
     type: code

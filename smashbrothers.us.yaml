@@ -319,7 +319,7 @@ segments:
       - { start: 0x046080, type: .bss, name: sys/taskman,              vram: 0x80045480 }
       - { start: 0x047270, type: .bss, name: sys/video,                vram: 0x80046670 }
       - { start: 0x0472A0, type: .bss, name: sys/rdp,                  vram: 0x800466A0 }
-      - { start: 0x0472B0, type: .bss, name: sys/objman,           vram: 0x800466B0 }
+      - { start: 0x0472B0, type: .bss, name: sys/objman,               vram: 0x800466B0 }
       - { start: 0x047BA0, type: .bss, name: sys/objdisplay,           vram: 0x80046FA0 }
       - { start: 0x047ED0, type: .bss, name: sys/audio,                vram: 0x800472D0 }
       - { start: 0x09E600, type: .bss, name: sys/debug,                vram: 0x8009DA00 }

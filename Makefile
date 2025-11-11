@@ -26,7 +26,7 @@ EXTRA_LINK_DEPS := symbols/not_found.txt symbols/linker_constants.txt build/asse
 
 # Skip reloc-related deps for JP build
 ifeq ($(VERSION),jp)
-	EXTRA_LINK_DEPS := symbols/jp_wip.txt
+	EXTRA_LINK_DEPS := symbols/jp_wip_linker.txt
 endif
 
 UNAME_S := $(shell uname -s)
@@ -111,7 +111,7 @@ ASFLAGS         := -EB -I include -march=vr4300 -mabi=32
 
 ifeq ($(VERSION),jp)
     LDFLAGS := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt \
-               -T .splat/smashbrothers_jp.ld -T symbols/jp_wip.txt
+               -T .splat/smashbrothers_jp.ld -T symbols/jp_wip_linker.txt
 # 	C_FILES := $(shell grep -v '^[[:space:]]*#' smashbrothers.jp.yaml | \
 # 					grep -oP '\[.*?,[[:space:]]*(?:c|\.data|\.bss|\.rodata),[[:space:]]*\K[^\], ]+'; \
 # 					grep -oP '.bss, name:[[:space:]]*\K[^\}, ]+' smashbrothers.jp.yaml | \

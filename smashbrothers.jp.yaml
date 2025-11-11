@@ -26,7 +26,7 @@ options:
 
   symbol_addrs_path:
     - symbols/jp_wip.txt
-    # - symbols/libultra.jp.txt
+    # - symbols/libultra.txt
     # - symbols/system.txt
     # - symbols/scmanager.txt
 
@@ -359,13 +359,580 @@ segments:
     subsegments:
     - { start: auto, type: .bss, name: sys/zbuffer }
 
-  - name: wip
+  - name: ovl0
     type: code
-    start: 0x43570
+    start: 0x043570
     vram: 0x800C5800
     follows_vram: zbuffer
     subsegments:
-      - [0x43570, bin, baserom.jp.z64]
+      - [0x043570, bin, baserom.jp.z64]
+
+  - name: ovl2
+    type: code
+    start: 0x051EC0
+    vram: 0x800D4330
+    follows_vram: ovl0
+    exclusive_ram_id: overlay_800D4330
+    subsegments:
+      - [0x051EC0, bin, baserom.jp.z64]
+
+  - name: ovl3
+    type: code
+    start: 0x0AC460
+    vram: 0x8012F690
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F690
+    subsegments:
+      - [0x0AC460, bin, baserom.jp.z64]
+
+  - name: ovl1
+    type: code
+    start: 0x1076C0
+    vram: 0x803903D0
+    exclusive_ram_id: overlay_803903D0
+    subsegments:
+      - [0x1076C0, bin, baserom.jp.z64]
+
+  - name: ovl4
+    type: code
+    start: 0x109CC0
+    vram: 0x8018AA30
+    follows_vram: ovl3
+    exclusive_ram_id: overlay_8018AA30
+    subsegments:
+      - [0x109CC0, bin, baserom.jp.z64]
+
+  - name: ovl5
+    type: code
+    start: 0x10B080
+    vram: 0x8018AA30
+    follows_vram: ovl3
+    exclusive_ram_id: overlay_8018AA30
+    subsegments:
+      - [0x10B080, bin, baserom.jp.z64]
+
+  - name: ovl65
+    type: code
+    start: 0x10B630
+    vram: 0x8018AA30
+    follows_vram: ovl3
+    exclusive_ram_id: overlay_8018AA30
+    subsegments:
+      - [0x10B630, bin, baserom.jp.z64]
+
+  - name: ovl6
+    type: code
+    start: 0x111520
+    vram: 0x8018AA30
+    follows_vram: ovl3
+    exclusive_ram_id: overlay_8018AA30
+    subsegments:
+      - [0x111520, bin, baserom.jp.z64]
+
+  - name: ovl7
+    type: code
+    start: 0x113550
+    vram: 0x8018AA30
+    follows_vram: ovl3
+    exclusive_ram_id: overlay_8018AA30
+    subsegments:
+      - [0x113550, bin, baserom.jp.z64]
+
+  - name: ovl10
+    type: code
+    start: 0x116D10
+    vram: 0x8012F690
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F690
+    subsegments:
+      - [0x116D10, bin, baserom.jp.z64]
+
+  - name: ovl11
+    type: code
+    start: 0x119830
+    vram: 0x800D4330
+    exclusive_ram_id: overlay_800D4330
+    subsegments:
+      - [0x119830, bin, baserom.jp.z64]
+
+  - name: ovl12
+    type: code
+    start: 0x119B60
+    vram: 0x800D4330
+    exclusive_ram_id: overlay_800D4330
+    subsegments:
+      - [0x119B60, bin, baserom.jp.z64]
+
+  - name: ovl13
+    type: code
+    start: 0x11A0B0
+    vram: 0x8012F6A0
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F6A0
+    subsegments:
+      - [0x11A0B0, bin, baserom.jp.z64]
+
+  - name: ovl14
+    type: code
+    start: 0x11B6C0
+    vram: 0x8012F690
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F690
+    subsegments:
+      - [0x11B6C0, bin, baserom.jp.z64]
+
+  - name: ovl17
+    type: code
+    start: 0x11C7E0
+    vram: 0x8012F690
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F690
+    subsegments:
+      - [0x11C7E0, bin, baserom.jp.z64]
+
+  - name: ovl18
+    type: code
+    start: 0x11DCB0
+    vram: 0x8012F690
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F690
+    subsegments:
+      - [0x11DCB0, bin, baserom.jp.z64]
+
+  - name: ovl60
+    type: code
+    start: 0x11F4E0
+    vram: 0x8012F690
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F690
+    subsegments:
+      - [0x11F4E0, bin, baserom.jp.z64]
+
+  - name: ovl61
+    type: code
+    start: 0x121340
+    vram: 0x8012F690
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F690
+    subsegments:
+      - [0x121340, bin, baserom.jp.z64]
+
+  - name: ovl19
+    type: code
+    start: 0x122960
+    vram: 0x8012F6A0
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F6A0
+    subsegments:
+      - [0x122960, bin, baserom.jp.z64]
+
+  - name: ovl20
+    type: code
+    start: 0x125BF0
+    vram: 0x8012F690
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F690
+    subsegments:
+      - [0x125BF0, bin, baserom.jp.z64]
+
+  - name: ovl21
+    type: code
+    start: 0x128D20
+    vram: 0x8012F690
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F690
+    subsegments:
+      - [0x128D20, bin, baserom.jp.z64]
+
+  - name: ovl22
+    type: code
+    start: 0x12A790
+    vram: 0x8012F690
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F690
+    subsegments:
+      - [0x12A790, bin, baserom.jp.z64]
+
+  - name: ovl23
+    type: code
+    start: 0x12B340
+    vram: 0x8012F690
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F690
+    subsegments:
+      - [0x12B340, bin, baserom.jp.z64]
+
+  - name: ovl24
+    type: code
+    start: 0x12BCC0
+    vram: 0x8012F690
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F690
+    subsegments:
+      - [0x12BCC0, bin, baserom.jp.z64]
+
+  - name: ovl25
+    type: code
+    start: 0x12FD90
+    vram: 0x8012F690
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F690
+    subsegments:
+      - [0x12FD90, bin, baserom.jp.z64]
+
+  - name: ovl26
+    type: code
+    start: 0x130BB0
+    vram: 0x8012F6A0
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F6A0
+    subsegments:
+      - [0x130BB0, bin, baserom.jp.z64]
+
+  - name: ovl27
+    type: code
+    start: 0x13AB90
+    vram: 0x8012F6A0
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F6A0
+    subsegments:
+      - [0x13AB90, bin, baserom.jp.z64]
+
+  - name: ovl28
+    type: code
+    start: 0x141FD0
+    vram: 0x8012F6A0
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F6A0
+    subsegments:
+      - [0x141FD0, bin, baserom.jp.z64]
+
+  - name: ovl29
+    type: code
+    start: 0x148A80
+    vram: 0x8012F6A0
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F6A0
+    subsegments:
+      - [0x148A80, bin, baserom.jp.z64]
+
+  - name: ovl30
+    type: code
+    start: 0x14E680
+    vram: 0x8012F6A0
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F6A0
+    subsegments:
+      - [0x14E680, bin, baserom.jp.z64]
+
+  - name: ovl15
+    type: code
+    start: 0x151910
+    vram: 0x800D4330
+    exclusive_ram_id: overlay_800D4330
+    subsegments:
+      - [0x151910, bin, baserom.jp.z64]
+
+  - name: ovl31
+    type: code
+    start: 0x151E70
+    vram: 0x8012F6A0
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F6A0
+    subsegments:
+      - [0x151E70, bin, baserom.jp.z64]
+
+  - name: ovl32
+    type: code
+    start: 0x159C10
+    vram: 0x8012F690
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F690
+    subsegments:
+      - [0x159C10, bin, baserom.jp.z64]
+
+  - name: ovl33
+    type: code
+    start: 0x15ED20
+    vram: 0x8012F690
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F690
+    subsegments:
+      - [0x15ED20, bin, baserom.jp.z64]
+
+  - name: ovl34
+    type: code
+    start: 0x1637B0
+    vram: 0x8012F690
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F690
+    subsegments:
+      - [0x1637B0, bin, baserom.jp.z64]
+
+  - name: ovl35
+    type: code
+    start: 0x166980
+    vram: 0x8012F690
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F690
+    subsegments:
+      - [0x166980, bin, baserom.jp.z64]
+
+  - name: ovl36
+    type: code
+    start: 0x167860
+    vram: 0x8018AA30
+    follows_vram: ovl3
+    exclusive_ram_id: overlay_8018AA30
+    subsegments:
+      - [0x167860, bin, baserom.jp.z64]
+
+  - name: ovl37
+    type: code
+    start: 0x1689A0
+    vram: 0x8018AA30
+    follows_vram: ovl3
+    exclusive_ram_id: overlay_8018AA30
+    subsegments:
+      - [0x1689A0, bin, baserom.jp.z64]
+
+  - name: ovl38
+    type: code
+    start: 0x169B40
+    vram: 0x8018AA30
+    follows_vram: ovl3
+    exclusive_ram_id: overlay_8018AA30
+    subsegments:
+      - [0x169B40, bin, baserom.jp.z64]
+
+  - name: ovl39
+    type: code
+    start: 0x16ACF0
+    vram: 0x8018AA30
+    follows_vram: ovl3
+    exclusive_ram_id: overlay_8018AA30
+    subsegments:
+      - [0x16ACF0, bin, baserom.jp.z64]
+
+  - name: ovl40
+    type: code
+    start: 0x16BE20
+    vram: 0x8018AA30
+    follows_vram: ovl3
+    exclusive_ram_id: overlay_8018AA30
+    subsegments:
+      - [0x16BE20, bin, baserom.jp.z64]
+
+  - name: ovl41
+    type: code
+    start: 0x16CF20
+    vram: 0x8018AA30
+    follows_vram: ovl3
+    exclusive_ram_id: overlay_8018AA30
+    subsegments:
+      - [0x16CF20, bin, baserom.jp.z64]
+
+  - name: ovl42
+    type: code
+    start: 0x16E080
+    vram: 0x8018AA30
+    follows_vram: ovl3
+    exclusive_ram_id: overlay_8018AA30
+    subsegments:
+      - [0x16E080, bin, baserom.jp.z64]
+
+  - name: ovl43
+    type: code
+    start: 0x16F1E0
+    vram: 0x8018AA30
+    follows_vram: ovl3
+    exclusive_ram_id: overlay_8018AA30
+    subsegments:
+      - [0x16F1E0, bin, baserom.jp.z64]
+
+  - name: ovl44
+    type: code
+    start: 0x170340
+    vram: 0x8012F690
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F690
+    subsegments:
+      - [0x16F1E0, bin, baserom.jp.z64]
+
+  - name: ovl45
+    type: code
+    start: 0x170F50
+    vram: 0x8012F690
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F690
+    subsegments:
+      - [0x170F50, bin, baserom.jp.z64]
+
+  - name: ovl46
+    type: code
+    start: 0x171870
+    vram: 0x8012F690
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F690
+    subsegments:
+      - [0x171870, bin, baserom.jp.z64]
+
+  - name: ovl47
+    type: code
+    start: 0x172530
+    vram: 0x8012F690
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F690
+    subsegments:
+      - [0x172530, bin, baserom.jp.z64]
+
+  - name: ovl48
+    type: code
+    start: 0x1733F0
+    vram: 0x8012F690
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F690
+    subsegments:
+      - [0x1733F0, bin, baserom.jp.z64]
+
+  - name: ovl49
+    type: code
+    start: 0x173D70
+    vram: 0x8012F690
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F690
+    subsegments:
+      - [0x173D70, bin, baserom.jp.z64]
+
+  - name: ovl50
+    type: code
+    start: 0x174C40
+    vram: 0x8012F690
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F690
+    subsegments:
+      - [0x174C40, bin, baserom.jp.z64]
+
+  - name: ovl51
+    type: code
+    start: 0x175B50
+    vram: 0x8018AA30
+    follows_vram: ovl3
+    exclusive_ram_id: overlay_8018AA30
+    subsegments:
+      - [0x175B50, bin, baserom.jp.z64]
+
+  - name: ovl52
+    type: code
+    start: 0x1764D0
+    vram: 0x8012F690
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F690
+    subsegments:
+      - [0x1764D0, bin, baserom.jp.z64]
+
+  - name: ovl53
+    type: code
+    start: 0x177110
+    vram: 0x8012F690
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F690
+    subsegments:
+      - [0x177110, bin, baserom.jp.z64]
+
+  - name: ovl54
+    type: code
+    start: 0x1787B0
+    vram: 0x8012F690
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F690
+    subsegments:
+      - [0x1787B0, bin, baserom.jp.z64]
+
+  - name: ovl55
+    type: code
+    start: 0x179870
+    vram: 0x8012F690
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F690
+    subsegments:
+      - [0x179870, bin, baserom.jp.z64]
+
+  - name: ovl56
+    type: code
+    start: 0x17C060
+    vram: 0x8012F690
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F690
+    subsegments:
+      - [0x17C060, bin, baserom.jp.z64]
+
+  - name: ovl59
+    type: code
+    start: 0x17F820
+    vram: 0x8012F6A0
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F6A0
+    subsegments:
+      - [0x17F820, bin, baserom.jp.z64]
+
+  - name: ovl62
+    type: code
+    start: 0x188150
+    vram: 0x8012F6A0
+    follows_vram: ovl2
+    exclusive_ram_id: overlay_8012F6A0
+    subsegments:
+      - [0x188150, bin, baserom.jp.z64]
+
+  - name: ovl63
+    type: code
+    start: 0x18A950
+    vram: 0x8018AA30
+    follows_vram: ovl3
+    exclusive_ram_id: overlay_8018AA30
+    subsegments:
+      - [0x18A950, bin, baserom.jp.z64]
+
+  - name: ovl64
+    type: code
+    start: 0x18C080
+    vram: 0x8018AA30
+    follows_vram: ovl3
+    exclusive_ram_id: overlay_8018AA30
+    subsegments:
+      - [0x18C080, bin, baserom.jp.z64]
+
+  - name: ovl16
+    type: code
+    start: 0x18D2B0
+    vram: 0x800D4330
+    exclusive_ram_id: overlay_800D4330
+    subsegments:
+      - [0x18D2B0, bin, baserom.jp.z64]
+
+  - name: ovl8
+    type: code
+    start: 0x18DF30
+    vram: 0x80371440
+    exclusive_ram_id: overlay_80371440
+    subsegments:
+      - [0x18DF30, bin, baserom.jp.z64]
+
+  - name: ovl9
+    type: code
+    start: 0x1AB930
+    vram: 0x80369220
+    exclusive_ram_id: overlay_80369220
+    subsegments:
+      - [0x1AB930, bin, baserom.jp.z64]
+
+  - name: wip
+    type: code
+    start: 0x1ACAF0
+    follows_vram: ovl1
+    subsegments:
+      - [0x1ACAF0, bin, baserom.jp.z64]
 
 # Music and sound effects
   - name: S1_music.sbk

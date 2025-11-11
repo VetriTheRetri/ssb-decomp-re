@@ -367,4 +367,35 @@ segments:
     subsegments:
       - [0x43570, bin, baserom.jp.z64]
 
+# Music and sound effects
+  - name: S1_music.sbk
+    type: bin
+    start: 0x96DA40
+  - name: B1_sounds1.ctl
+    type: bin
+    start: 0x994850
+  - name: B1_sounds1.tbl
+    type: bin
+    start: 0x99AF70
+  - name: B1_sounds2.ctl
+    type: bin
+    start: 0xAB18E0
+  - name: B1_sounds2.tbl
+    type: bin
+    start: 0xAC1520
+
+  - name: fgm.unk # ???
+    type: bin
+    start: 0xD71B00
+  - name: fgm.tbl
+    type: bin # Sound table (?)
+    start: 0xD72320
+  - name: fgm.ucd
+    type: bin # FGM microcode
+    start: 0xD74E70
+
+  - name: rom_pad
+    type: bin
+    start: 0xD79640
+
   - [0x1000000]

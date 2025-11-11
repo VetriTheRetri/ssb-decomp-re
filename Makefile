@@ -112,8 +112,12 @@ ASFLAGS         := -EB -I include -march=vr4300 -mabi=32
 ifeq ($(VERSION),jp)
     LDFLAGS := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt \
                -T .splat/smashbrothers_jp.ld -T symbols/jp_wip.txt
-	C_FILES := $(shell grep -v '^[[:space:]]*#' smashbrothers.jp.yaml | grep -oP '\[.*?,[[:space:]]*c,[[:space:]]*\K[^\], ]+')
-	C_FILES := $(addprefix src/,$(addsuffix .c,$(C_FILES)))
+# 	C_FILES := $(shell grep -v '^[[:space:]]*#' smashbrothers.jp.yaml | \
+# 					grep -oP '\[.*?,[[:space:]]*(?:c|\.data|\.bss|\.rodata),[[:space:]]*\K[^\], ]+'; \
+# 					grep -oP '.bss, name:[[:space:]]*\K[^\}, ]+' smashbrothers.jp.yaml | \
+# 					grep -E '^(src/)?[A-Za-z0-9_/.-]+$$')
+# 	C_FILES := $(addprefix src/,$(addsuffix .c,$(C_FILES)))
+	C_FILES := $(shell find src/sys src/libultra src/sc -type f -name '*.c')
 else ifeq ($(VERSION),us)
     LDFLAGS := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt \
                -T .splat/smashbrothers.ld -T symbols/not_found.txt -T symbols/linker_constants.txt -T symbols/reloc_data_symbols.txt

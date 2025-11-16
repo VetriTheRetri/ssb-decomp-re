@@ -26,7 +26,7 @@ EXTRA_LINK_DEPS := symbols/not_found.txt symbols/linker_constants.txt build/asse
 
 # Skip reloc-related deps for JP build
 ifeq ($(VERSION),jp)
-	EXTRA_LINK_DEPS := symbols/jp_wip_linker.txt
+	EXTRA_LINK_DEPS := symbols/jp_wip_linker.txt .splat/smashbrothers_jp.ld
 endif
 
 UNAME_S := $(shell uname -s)

@@ -117,7 +117,20 @@ ifeq ($(VERSION),jp)
 # 					grep -oP '.bss, name:[[:space:]]*\K[^\}, ]+' smashbrothers.jp.yaml | \
 # 					grep -E '^(src/)?[A-Za-z0-9_/.-]+$$')
 # 	C_FILES := $(addprefix src/,$(addsuffix .c,$(C_FILES)))
-	C_FILES := $(shell find src/sys src/libultra src/sc -type f -name '*.c')
+# 	C_FILES := $(shell find src/sys src/libultra src/sc -type f -name '*.c')
+	C_FILES := src/sys/maindevice.c \
+			   src/sys/sintable.c \
+			   src/libultra/sp/setattribute.c \
+			   src/libultra/sp/hide.c \
+			   src/libultra/sp/sprite.c \
+			   src/libultra/sp/show.c \
+			   src/libultra/sp/clearattribute.c \
+			   src/libultra/sp/spscale.c \
+			   src/libultra/n_audio/cspsetpriority.c \
+			   src/libultra/n_audio/cspsetfxmix.c \
+			   src/libultra/os/threadsave.c \
+			   src/sys/zbuffer.c\
+			   src/sys/framebuffer.c
 else ifeq ($(VERSION),us)
     LDFLAGS := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt \
                -T .splat/smashbrothers.ld -T symbols/not_found.txt -T symbols/linker_constants.txt -T symbols/reloc_data_symbols.txt

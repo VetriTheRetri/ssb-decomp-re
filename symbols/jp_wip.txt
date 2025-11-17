@@ -3,6 +3,10 @@ drawbitmap = 0x80023658;
 sySchedulerUpdateViMode = 0x80000F10;
 unref_800036B4 = 0x80003468;
 
+entry = 0x80000400;
+syMainLoop = 0x80000870;
+sSYMainThread1 = 0x800400C0;
+
 func_8002CC38_2D838 = 0x8002CC38;
 func_8002CBF8_2D7F8 = 0x8002CBF8;
 func_80026770_27370 = 0x80026770;

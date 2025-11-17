@@ -3,6 +3,9 @@ osViModeNtscLan1 = 0x8003D860;
 osViModeMpalLan1 = 0x8003D970;
 osAfterPreNMI = 0x80078068;
 
+main_BSS_SIZE_HI = main_BSS_SIZE >> 16;
+main_BSS_SIZE_LO = main_BSS_SIZE & 0xFFFF;
+
 
 func_80024EA0_25AA0 = 0x80024EA0;
 func_80024D74_25974 = 0x80024D74;

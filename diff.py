@@ -72,6 +72,8 @@ if __name__ == "__main__":
         help="Function name or address to start diffing from.",
     )
 
+    parser.add_argument("-v", "--version", help="Which version should be processed", default="us")
+
     if argcomplete:
 
         def complete_symbol(

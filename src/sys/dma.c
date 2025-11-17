@@ -401,6 +401,7 @@ void syDmaFillVpk0Buf(void)
     sSYDmaVpkDevAddr += sSYDmaVpkBufferSize;
 }
 
+#ifdef REGION_US
 void syDmaReadVpk0Buf(uintptr_t dev_addr, void *ram_dst, void *ram_addr, size_t size)
 {
     syDmaInitVpk0Stream(dev_addr, ram_addr, size);
@@ -409,10 +410,19 @@ void syDmaReadVpk0Buf(uintptr_t dev_addr, void *ram_dst, void *ram_addr, size_t 
 
 void syDmaReadVpk0(uintptr_t dev_addr, void *ram_dst)
 {
-    u8 buf[0x400];
+    u16 buf[0x200];
 
-    syDmaReadVpk0Buf(dev_addr, ram_dst, buf, ARRAY_COUNT(buf));
+    syDmaReadVpk0Buf(dev_addr, ram_dst, buf, sizeof(buf));
 }
+#else
+void syDmaReadVpk0(uintptr_t dev_addr, void *ram_dst)
+{
+    u16 buf[0x200];
+
+    syDmaInitVpk0Stream(dev_addr, &buf, sizeof(buf));
+    syDmaDecodeVpk0(buf, sizeof(buf), syDmaFillVpk0Buf, ram_dst);
+}
+#endif
 
 // Best I can do with this is functionally equivalent. Somewhat disappointing, but not a big deal; this function is unreferenced. It's also non-matching in Pokémon Snap.
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/dma/unref_800036B4.s")

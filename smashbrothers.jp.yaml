@@ -87,7 +87,7 @@ segments:
     subsegments:
       - [0x001060, asm, sys/main]
       - [0x001500, asm, sys/scheduler]
-      - [0x003440, asm, sys/dma]
+      - [0x003440, c, sys/dma]
       - [0x0045C0, asm, sys/controller]
       - [0x005290, asm, sys/taskman]
       - [0x007680, asm, sys/malloc]
@@ -183,7 +183,7 @@ segments:
       - [0x0352F0, asm, libultra/io/epidma]
       - [0x0353D0, asm, libultra/io/leodiskinit]
       - [0x035470, asm, libultra/libc/string]
-      - [0x035510, asm, libultra/os/createmesgqueue]
+      - [0x035510, c, libultra/os/createmesgqueue]
       - [0x035540, asm, libultra/os/invalicache]
       - [0x0355C0, asm, libultra/os/invaldcache]
       - [0x035670, asm, libultra/io/sp]
@@ -314,7 +314,7 @@ segments:
       - { start: 0x0406A0, type: databin, name: rsp/gspF3DEX2_fifo, linker_section_order: .rodata }
       - { type: bss, name: sys/main,                 vram: 0x8003FEC0 }
       - { type: bss, name: sys/scheduler,            vram: 0x80044FB0 }
-      - { type: bss, name: sys/dma,                  vram: 0x80045030 }
+      - { type: .bss, name: sys/dma,                  vram: 0x80045030 }
       - { type: bss, name: sys/controller,           vram: 0x800450E0 }
       - { type: bss, name: sys/maindevice,           vram: 0x80045460 }
       - { type: bss, name: sys/taskman,              vram: 0x80045470 }

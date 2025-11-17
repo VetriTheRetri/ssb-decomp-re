@@ -104,7 +104,7 @@ segments:
       - [0x01DFB0, asm, sys/interp]
       - [0x01EF60, asm, sys/audio]
       - [0x021A60, asm, sys/debug]
-      - [0x0241E0, asm, sys/unref] # One func, that's entirely unreferenced.
+      - [0x0241E0, c, sys/unref] # One func, that's entirely unreferenced.
       - [0x024210, c, libultra/sp/setattribute]
       - [0x024220, c, libultra/sp/sprite]
       - [0x026890, c, libultra/sp/clearattribute]
@@ -137,7 +137,7 @@ segments:
       - [0x030870, asm, libultra/n_audio/n_synfreevoice]
       - [0x030910, asm, libultra/n_audio/n_synsetvol]
       - [0x0309B0, asm, libultra/os/sendmesg]
-      - [0x030B00, asm, libultra/os/stopthread]
+      - [0x030B00, c, libultra/os/stopthread]
       - [0x030BC0, asm, libultra/os/recvmesg]
       - [0x030D00, asm, libultra/os/setintmask]
       - [0x030DA0, asm, libultra/gu/sinf]

@@ -89,7 +89,6 @@ func_8002E520_2F120 = 0x8002E2D0;
 func_8002ED54_2F954 = 0x8002EB04;
 func_8002F51C_3011C = 0x8002F2CC;
 
-
 mvOpeningDonkeyStartScene = 0x8018E018; // segment:ovl37
 mvOpeningSamusStartScene = 0x8018E0C8; // segment:ovl38
 mvOpeningFoxStartScene = 0x8018E02C; // segment:ovl39

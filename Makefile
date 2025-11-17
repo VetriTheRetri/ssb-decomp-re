@@ -120,6 +120,9 @@ ifeq ($(VERSION),jp)
 # 	C_FILES := $(shell find src/sys src/libultra src/sc -type f -name '*.c')
 	C_FILES := src/sys/maindevice.c \
 			   src/sys/sintable.c \
+			   src/sys/debug.c \
+			   src/sys/unref.c \
+			   src/libultra/os/stopthread.c \
 			   src/libultra/sp/setattribute.c \
 			   src/libultra/sp/hide.c \
 			   src/libultra/sp/sprite.c \

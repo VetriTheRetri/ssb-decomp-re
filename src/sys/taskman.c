@@ -1315,7 +1315,11 @@ void unref_80006AF8()
 void unref_80006B24(s32 arg0)
 {
 	if ((arg0 == 1) || (arg0 == 2))
+#if defined(REGION_US)
 		gSYTaskmanTaskCount = arg0;
+#else
+		gSYTaskmanTaskID = arg0;
+#endif
 }
 
 // 0x80006B44

@@ -59,8 +59,7 @@ s32 sSCManagerUnk0x800A523C;
 //                               //
 // // // // // // // // // // // //
 
-// 0x800A3070
-#if defined(REGION_US)
+// 0x800A3070 (JP: 0x800A1090)
 SYOverlay dSCManagerOverlays[/* */] =
 {
 	SCMANAGER_OVERLAY_DEFINE(0),
@@ -120,8 +119,10 @@ SYOverlay dSCManagerOverlays[/* */] =
 	SCMANAGER_OVERLAY_DEFINE(54),
 	SCMANAGER_OVERLAY_DEFINE(55),
 	SCMANAGER_OVERLAY_DEFINE(56),
+#if defined(REGION_US)
 	SCMANAGER_OVERLAY_DEFINE(57),
 	SCMANAGER_OVERLAY_DEFINE(58),
+#endif
 	SCMANAGER_OVERLAY_DEFINE(59),
 	SCMANAGER_OVERLAY_DEFINE(60),
 	SCMANAGER_OVERLAY_DEFINE(61),
@@ -790,21 +791,15 @@ SCBattleState dSCManagerDefaultBattleState =
 		}
 	}
 };
-#else
-extern SYOverlay dSCManagerOverlays[];
-extern LBBackupData dSCManagerDefaultBackupData;
-extern SCCommonData dSCManagerDefaultSceneData;
-extern SCBattleState dSCManagerDefaultBattleState;
-#endif
 
+#if defined(REGION_US)
 // 0x800A41B8
 s32 dSCManagerPad0x800A41B8[/* */] = { 0, 0 };
 
-#if defined(REGION_US)
 // 0x800A41C0 (.rodata) - use { __DATE__ " " __TIME__ } in a real setting
 char dSCManagerBuildDate[/* */] = { "Mar 16 1999 18:26:57" };
 #else
-// char dSCManagerBuildDate[/* */] = { "Dec 23 1998 18:06:24" };
+char dSCManagerBuildDate[/* */] = { "Dec 23 1998 18:06:24" };
 #endif
 
 // // // // // // // // // // // //

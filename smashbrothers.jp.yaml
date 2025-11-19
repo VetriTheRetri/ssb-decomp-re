@@ -349,7 +349,7 @@ segments:
     vram: 0x8009F9E0
     subsegments:
       - [0x040AC0, c, sc/scmanager]
-      - [0x042170, data, sc/scmanager]
+      - [0x042180, .data, sc/scmanager]
       - [0x043290, .rodata, sc/scmanager]
       - { type: .bss, name: sc/scmanager, vram: 0x800A2490 }
 

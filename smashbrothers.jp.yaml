@@ -372,7 +372,7 @@ segments:
     type: code
     start: 0x051EC0
     vram: 0x800D4330
-    follows_vram: ovl0
+    # follows_vram: ovl0
     exclusive_ram_id: overlay_800D4330
     subsegments:
       - [0x051EC0, bin, ovl2]
@@ -381,7 +381,7 @@ segments:
     type: code
     start: 0x0AC460
     vram: 0x8012F690
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
       - [0x0AC460, bin, ovl3]
@@ -398,7 +398,7 @@ segments:
     type: code
     start: 0x109CC0
     vram: 0x8018AA30
-    follows_vram: ovl3
+    # follows_vram: ovl3
     exclusive_ram_id: overlay_8018AA30
     subsegments:
       - [0x109CC0, bin, ovl4]
@@ -407,7 +407,7 @@ segments:
     type: code
     start: 0x10B080
     vram: 0x8018AA30
-    follows_vram: ovl3
+    # follows_vram: ovl3
     exclusive_ram_id: overlay_8018AA30
     subsegments:
       - [0x10B080, bin, ovl5]
@@ -416,7 +416,7 @@ segments:
     type: code
     start: 0x10B630
     vram: 0x8018AA30
-    follows_vram: ovl3
+    # follows_vram: ovl3
     exclusive_ram_id: overlay_8018AA30
     subsegments:
       - [0x10B630, bin, ovl65]
@@ -425,7 +425,7 @@ segments:
     type: code
     start: 0x111520
     vram: 0x8018AA30
-    follows_vram: ovl3
+    # follows_vram: ovl3
     exclusive_ram_id: overlay_8018AA30
     subsegments:
       - [0x111520, bin, ovl6]
@@ -434,7 +434,7 @@ segments:
     type: code
     start: 0x113550
     vram: 0x8018AA30
-    follows_vram: ovl3
+    # follows_vram: ovl3
     exclusive_ram_id: overlay_8018AA30
     subsegments:
       - [0x113550, bin, ovl7]
@@ -443,7 +443,7 @@ segments:
     type: code
     start: 0x116D10
     vram: 0x8012F690
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
       - [0x116D10, bin, ovl10]
@@ -468,7 +468,7 @@ segments:
     type: code
     start: 0x11A0B0
     vram: 0x8012F6A0
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F6A0
     subsegments:
       - [0x11A0B0, bin, ovl13]
@@ -477,7 +477,7 @@ segments:
     type: code
     start: 0x11B6C0
     vram: 0x8012F690
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
       - [0x11B6C0, bin, ovl14]
@@ -486,7 +486,7 @@ segments:
     type: code
     start: 0x11C7E0
     vram: 0x8012F690
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
       - [0x11C7E0, bin, ovl17]
@@ -495,7 +495,7 @@ segments:
     type: code
     start: 0x11DCB0
     vram: 0x8012F690
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
       - [0x11DCB0, bin, ovl18]
@@ -504,7 +504,7 @@ segments:
     type: code
     start: 0x11F4E0
     vram: 0x8012F690
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
       - [0x11F4E0, bin, mn/mnoption/mnoption]
@@ -514,7 +514,7 @@ segments:
     type: code
     start: 0x121340
     vram: 0x8012F690
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
       - [0x121340, bin, ovl61]
@@ -523,7 +523,7 @@ segments:
     type: code
     start: 0x122960
     vram: 0x8012F6A0
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F6A0
     subsegments:
       - [0x122960, bin, ovl19]
@@ -532,7 +532,7 @@ segments:
     type: code
     start: 0x125BF0
     vram: 0x8012F690
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
       - [0x125BF0, bin, ovl20]
@@ -541,7 +541,7 @@ segments:
     type: code
     start: 0x128D20
     vram: 0x8012F690
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
       - [0x128D20, bin, ovl21]
@@ -550,7 +550,7 @@ segments:
     type: code
     start: 0x12A790
     vram: 0x8012F690
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
       - [0x12A790, bin, ovl22]
@@ -559,7 +559,7 @@ segments:
     type: code
     start: 0x12B340
     vram: 0x8012F690
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
       - [0x12B340, bin, ovl23]
@@ -568,7 +568,7 @@ segments:
     type: code
     start: 0x12BCC0
     vram: 0x8012F690
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
       - [0x12BCC0, bin, ovl24]
@@ -577,7 +577,7 @@ segments:
     type: code
     start: 0x12FD90
     vram: 0x8012F690
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
       - [0x12FD90, bin, ovl25]
@@ -586,7 +586,7 @@ segments:
     type: code
     start: 0x130BB0
     vram: 0x8012F6A0
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F6A0
     subsegments:
       - [0x130BB0, bin, ovl26]
@@ -595,7 +595,7 @@ segments:
     type: code
     start: 0x13AB90
     vram: 0x8012F6A0
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F6A0
     subsegments:
       - [0x13AB90, bin, ovl27]
@@ -604,7 +604,7 @@ segments:
     type: code
     start: 0x141FD0
     vram: 0x8012F6A0
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F6A0
     subsegments:
       - [0x141FD0, bin, ovl28]
@@ -613,7 +613,7 @@ segments:
     type: code
     start: 0x148A80
     vram: 0x8012F6A0
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F6A0
     subsegments:
       - [0x148A80, bin, ovl29]
@@ -622,7 +622,7 @@ segments:
     type: code
     start: 0x14E680
     vram: 0x8012F6A0
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F6A0
     subsegments:
       - [0x14E680, bin, ovl30]
@@ -639,7 +639,7 @@ segments:
     type: code
     start: 0x151E70
     vram: 0x8012F6A0
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F6A0
     subsegments:
       - [0x151E70, bin, ovl31]
@@ -648,7 +648,7 @@ segments:
     type: code
     start: 0x159C10
     vram: 0x8012F690
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
       - [0x159C10, bin, ovl32]
@@ -657,7 +657,7 @@ segments:
     type: code
     start: 0x15ED20
     vram: 0x8012F690
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
       - [0x15ED20, bin, ovl33]
@@ -666,7 +666,7 @@ segments:
     type: code
     start: 0x1637B0
     vram: 0x8012F690
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
       - [0x1637B0, bin, ovl34]
@@ -675,7 +675,7 @@ segments:
     type: code
     start: 0x166980
     vram: 0x8012F690
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
       - [0x166980, bin, ovl35]
@@ -684,7 +684,7 @@ segments:
     type: code
     start: 0x167860
     vram: 0x8018AA30
-    follows_vram: ovl3
+    # follows_vram: ovl3
     exclusive_ram_id: overlay_8018AA30
     subsegments:
       - [0x167860, bin, ovl36]
@@ -693,7 +693,7 @@ segments:
     type: code
     start: 0x1689A0
     vram: 0x8018AA30
-    follows_vram: ovl3
+    # follows_vram: ovl3
     exclusive_ram_id: overlay_8018AA30
     subsegments:
       - [0x1689A0, bin, ovl37]
@@ -702,7 +702,7 @@ segments:
     type: code
     start: 0x169B40
     vram: 0x8018AA30
-    follows_vram: ovl3
+    # follows_vram: ovl3
     exclusive_ram_id: overlay_8018AA30
     subsegments:
       - [0x169B40, bin, ovl38]
@@ -711,7 +711,7 @@ segments:
     type: code
     start: 0x16ACF0
     vram: 0x8018AA30
-    follows_vram: ovl3
+    # follows_vram: ovl3
     exclusive_ram_id: overlay_8018AA30
     subsegments:
       - [0x16ACF0, bin, ovl39]
@@ -720,7 +720,7 @@ segments:
     type: code
     start: 0x16BE20
     vram: 0x8018AA30
-    follows_vram: ovl3
+    # follows_vram: ovl3
     exclusive_ram_id: overlay_8018AA30
     subsegments:
       - [0x16BE20, bin, ovl40]
@@ -729,7 +729,7 @@ segments:
     type: code
     start: 0x16CF20
     vram: 0x8018AA30
-    follows_vram: ovl3
+    # follows_vram: ovl3
     exclusive_ram_id: overlay_8018AA30
     subsegments:
       - [0x16CF20, bin, ovl41]
@@ -738,7 +738,7 @@ segments:
     type: code
     start: 0x16E080
     vram: 0x8018AA30
-    follows_vram: ovl3
+    # follows_vram: ovl3
     exclusive_ram_id: overlay_8018AA30
     subsegments:
       - [0x16E080, bin, ovl42]
@@ -747,7 +747,7 @@ segments:
     type: code
     start: 0x16F1E0
     vram: 0x8018AA30
-    follows_vram: ovl3
+    # follows_vram: ovl3
     exclusive_ram_id: overlay_8018AA30
     subsegments:
       - [0x16F1E0, bin, ovl43]
@@ -756,7 +756,7 @@ segments:
     type: code
     start: 0x170340
     vram: 0x8012F690
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
       - [0x170340, bin, ovl44]
@@ -765,7 +765,7 @@ segments:
     type: code
     start: 0x170F50
     vram: 0x8012F690
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
       - [0x170F50, bin, ovl45]
@@ -774,7 +774,7 @@ segments:
     type: code
     start: 0x171870
     vram: 0x8012F690
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
       - [0x171870, bin, ovl46]
@@ -783,7 +783,7 @@ segments:
     type: code
     start: 0x172530
     vram: 0x8012F690
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
       - [0x172530, bin, ovl47]
@@ -792,7 +792,7 @@ segments:
     type: code
     start: 0x1733F0
     vram: 0x8012F690
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
       - [0x1733F0, bin, ovl48]
@@ -801,7 +801,7 @@ segments:
     type: code
     start: 0x173D70
     vram: 0x8012F690
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
       - [0x173D70, bin, ovl49]
@@ -810,7 +810,7 @@ segments:
     type: code
     start: 0x174C40
     vram: 0x8012F690
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
       - [0x174C40, bin, ovl50]
@@ -819,7 +819,7 @@ segments:
     type: code
     start: 0x175B50
     vram: 0x8018AA30
-    follows_vram: ovl3
+    # follows_vram: ovl3
     exclusive_ram_id: overlay_8018AA30
     subsegments:
       - [0x175B50, bin, ovl51]
@@ -828,7 +828,7 @@ segments:
     type: code
     start: 0x1764D0
     vram: 0x8012F690
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
       - [0x1764D0, bin, ovl52]
@@ -837,7 +837,7 @@ segments:
     type: code
     start: 0x177110
     vram: 0x8012F690
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
       - [0x177110, bin, ovl53]
@@ -846,7 +846,7 @@ segments:
     type: code
     start: 0x1787B0
     vram: 0x8012F690
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
       - [0x1787B0, bin, ovl54]
@@ -855,7 +855,7 @@ segments:
     type: code
     start: 0x179870
     vram: 0x8012F690
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
       - [0x179870, bin, ovl55]
@@ -864,7 +864,7 @@ segments:
     type: code
     start: 0x17C060
     vram: 0x8012F690
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
       - [0x17C060, bin, ovl56]
@@ -873,7 +873,7 @@ segments:
     type: code
     start: 0x17F820
     vram: 0x8012F6A0
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F6A0
     subsegments:
       - [0x17F820, bin, ovl59]
@@ -882,7 +882,7 @@ segments:
     type: code
     start: 0x188150
     vram: 0x8012F6A0
-    follows_vram: ovl2
+    # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F6A0
     subsegments:
       - [0x188150, bin, ovl62]
@@ -891,7 +891,7 @@ segments:
     type: code
     start: 0x18A950
     vram: 0x8018AA30
-    follows_vram: ovl3
+    # follows_vram: ovl3
     exclusive_ram_id: overlay_8018AA30
     subsegments:
       - [0x18A950, bin, ovl63]
@@ -900,7 +900,7 @@ segments:
     type: code
     start: 0x18C080
     vram: 0x8018AA30
-    follows_vram: ovl3
+    # follows_vram: ovl3
     exclusive_ram_id: overlay_8018AA30
     subsegments:
       - [0x18C080, bin, ovl64]
@@ -932,7 +932,7 @@ segments:
   - name: framebuffer
     exclusive_ram_id: framebuffers
     type: code
-    follows_vram: ovl1
+    # follows_vram: ovl1
     subsegments:
     - { start: auto, type: .bss, name: sys/framebuffer }
 

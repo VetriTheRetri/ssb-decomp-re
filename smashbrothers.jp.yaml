@@ -86,7 +86,7 @@ segments:
     bss_size: 0x5FB20
     subsegments:
       - [0x001060, c, sys/main]
-      - [0x001500, asm, sys/scheduler]
+      - [0x001500, c, sys/scheduler]
       - [0x003440, c, sys/dma]
       - [0x0045C0, c, sys/controller]
       - [0x005290, asm, sys/taskman]
@@ -283,7 +283,7 @@ segments:
       - [0x03E610, data, libultra/io/vimgr]
       - [0x03E630, data, libultra/io/aisetnextbuf]
       - [0x03E640, .rodata, sys/main]
-      - [0x03E660, rodata, sys/scheduler]
+      - [0x03E660, .rodata, sys/scheduler]
       - [0x03E6C0, .rodata, sys/controller]
       - [0x03E6E0, rodata, sys/taskman]
       - [0x03E900, .rodata, sys/malloc]
@@ -313,7 +313,7 @@ segments:
       - { start: 0x0403F0, type: databin, name: rsp/n_aspmain,      linker_section_order: .rodata }
       - { start: 0x0406A0, type: databin, name: rsp/gspF3DEX2_fifo, linker_section_order: .rodata }
       - { type: .bss, name: sys/main,                 vram: 0x8003FEC0 }
-      - { type: bss, name: sys/scheduler,            vram: 0x80044EB0 }
+      - { type: .bss, name: sys/scheduler,            vram: 0x80044EB0 }
       - { type: .bss, name: sys/dma,                  vram: 0x80045030 }
       - { type: .bss, name: sys/controller,           vram: 0x800450E0 }
       - { type: bss, name: sys/maindevice,           vram: 0x80045460 }

@@ -310,6 +310,18 @@ D_8003F4D0_400D0 = 0x8003F4D0;
 func_80000970 = 0x80000950;
 gSYSchedulerTaskMesgQueue = 0x80044FE8;
 
+osViGetNextFramebuffer = 0x80032A70;
+osGetCount = 0x800330C0;
+osViSetMode = 0x80032F90;
+osViBlack = 0x80032C40;
+osViSwapBuffer = 0x80034D20;
+osSpTaskYield = 0x80032D00;
+osSpTaskLoad = 0x8003047C;
+osSpTaskStartGo = 0x8003060C;
+osDpSetNextBuffer = 0x80039150;
+osSpTaskYielded = 0x800351B0;
+osViSetEvent = 0x80036360;
+osViSetYScale = 0x80039700;
 
 func_80026094_26C94 = 0x80025E44;
 func_80026104_26D04 = 0x80025EB4;

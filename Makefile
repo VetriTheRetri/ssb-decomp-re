@@ -139,6 +139,7 @@ ifeq ($(VERSION),jp)
 			   src/sys/unref.c \
 			   src/sys/debug.c \
 			   src/sys/main.c \
+			   src/sys/scheduler.c \
 			   src/sys/controller.c \
 			   src/sys/video.c \
 			   src/sys/malloc.c \

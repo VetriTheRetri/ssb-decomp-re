@@ -89,10 +89,10 @@ segments:
       - [0x001500, c, sys/scheduler]
       - [0x003440, c, sys/dma]
       - [0x0045C0, c, sys/controller]
-      - [0x005290, asm, sys/taskman]
+      - [0x005290, c, sys/taskman]
       - [0x007680, c, sys/malloc]
       - [0x007710, c, sys/video]
-      - [0x007A20, asm, sys/rdp]
+      - [0x007A20, c, sys/rdp]
       - [0x007D80, asm, sys/objman]
       - [0x00B670, asm, sys/objscript]
       - [0x00B890, asm, sys/objhelper]
@@ -252,8 +252,8 @@ segments:
       - [0x03B330, textbin, rsp/gspF3DEX2_fifo] # L3DEX2_2.04H.code
       - [0x03C4C0, bin, unk_3C4C0] # other rsp files?
       - [0x03C6C0, .data, sys/main]
-      - [0x03C6F0, data, sys/taskman]
-      - [0x03C760, data, sys/rdp]
+      - [0x03C6F0, .data, sys/taskman]
+      - [0x03C760, .data, sys/rdp]
       - [0x03C880, data, sys/objman]
       - [0x03C940, data, sys/objdisplay]
       - [0x03C950, .data, sys/utils]
@@ -285,7 +285,7 @@ segments:
       - [0x03E640, .rodata, sys/main]
       - [0x03E660, .rodata, sys/scheduler]
       - [0x03E6C0, .rodata, sys/controller]
-      - [0x03E6E0, rodata, sys/taskman]
+      - [0x03E6E0, .rodata, sys/taskman]
       - [0x03E900, .rodata, sys/malloc]
       - [0x03E920, rodata, sys/objman]
       - [0x03ED70, rodata, sys/objscript]
@@ -317,9 +317,9 @@ segments:
       - { type: .bss, name: sys/dma,                  vram: 0x80045030 }
       - { type: .bss, name: sys/controller,           vram: 0x800450E0 }
       - { type: bss, name: sys/maindevice,           vram: 0x80045460 }
-      - { type: bss, name: sys/taskman,              vram: 0x80045470 }
+      - { type: .bss, name: sys/taskman,              vram: 0x80045470 }
       - { type: .bss, name: sys/video,                vram: 0x80046660 }
-      - { type: bss, name: sys/rdp,                  vram: 0x80046690 }
+      - { type: .bss, name: sys/rdp,                  vram: 0x80046690 }
       - { type: bss, name: sys/objman,               vram: 0x800466A0 }
       - { type: bss, name: sys/objdisplay,           vram: 0x80046F90 }
       - { type: bss, name: sys/audio,                vram: 0x800472C0 }

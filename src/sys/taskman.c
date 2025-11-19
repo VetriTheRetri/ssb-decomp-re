@@ -1150,7 +1150,9 @@ void unref_8000641C(GObj *gobj)
 	}
 	while (D_80046638[gSYTaskmanTaskID] != 0);
 
+#if defined(REGION_US)
 	dSYTaskmanFrameCount++;
+#endif
 }
 
 // 0x80006548

@@ -141,7 +141,9 @@ ifeq ($(VERSION),jp)
 			   src/sys/main.c \
 			   src/sys/scheduler.c \
 			   src/sys/controller.c \
+			   src/sys/taskman.c \
 			   src/sys/video.c \
+			   src/sys/rdp.c \
 			   src/sys/malloc.c \
 			   src/sys/utils.c \
 			   src/sc/scmanager.c

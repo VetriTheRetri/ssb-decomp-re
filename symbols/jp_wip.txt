@@ -184,6 +184,11 @@ gGCCurrentCamera = 0x80046A48;
 gGCCurrentDisplay = 0x80046A4C;
 scManagerRunPrintGObjStatus = 0x800A1060;
 
+__sinf = 0x800301A0;
+__cosf = 0x800361C0;
+sqrtf = 0x80033960;
+__ull_to_f = 0x80039938;
+
 gSYZBuffer = 0x800A3200;
 syTaskmanStartTask = 0x800065E8;
 syVideoInit = 0x80006DC4;

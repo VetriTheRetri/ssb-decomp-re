@@ -139,6 +139,8 @@ ifeq ($(VERSION),jp)
 			   src/sys/unref.c \
 			   src/sys/debug.c \
 			   src/sys/main.c \
+			   src/sys/malloc.c \
+			   src/sys/utils.c \
 			   src/sc/scmanager.c
 else ifeq ($(VERSION),us)
     LDFLAGS := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt \

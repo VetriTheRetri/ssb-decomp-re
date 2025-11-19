@@ -189,6 +189,15 @@ __cosf = 0x800361C0;
 sqrtf = 0x80033960;
 __ull_to_f = 0x80039938;
 
+osContStartQuery = 0x80033970;
+osContGetQuery = 0x800339F4;
+osMotorInit = 0x80031D74;
+osContStartReadData = 0x80032420;
+osContGetReadData = 0x800324A4;
+osContInit = 0x80031F90;
+__osMotorAccess = 0x80031B00;
+osSendMesg = 0x8002FDB0;
+
 gSYZBuffer = 0x800A3200;
 syTaskmanStartTask = 0x800065E8;
 syVideoInit = 0x80006DC4;
@@ -290,7 +299,6 @@ D_8003D728_3E328 = 0x8003D728;
 func_8002C3C8_2CFC8 = 0x8002C3C8;
 func_8002CFC8_2DBC8 = 0x8002CFC8;
 func_8002A080_2AC80 = 0x8002A080;
-func_8002FDB0_309B0 = 0x8002FDB0;
 func_8002FF00_30B00 = 0x8002FF00;
 __osRunningThread = 0x8003D770;
 __osEnqueueAndYield = 0x8003104C;

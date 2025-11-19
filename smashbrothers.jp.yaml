@@ -91,7 +91,7 @@ segments:
       - [0x0045C0, c, sys/controller]
       - [0x005290, asm, sys/taskman]
       - [0x007680, c, sys/malloc]
-      - [0x007710, asm, sys/video]
+      - [0x007710, c, sys/video]
       - [0x007A20, asm, sys/rdp]
       - [0x007D80, asm, sys/objman]
       - [0x00B670, asm, sys/objscript]
@@ -318,7 +318,7 @@ segments:
       - { type: .bss, name: sys/controller,           vram: 0x800450E0 }
       - { type: bss, name: sys/maindevice,           vram: 0x80045460 }
       - { type: bss, name: sys/taskman,              vram: 0x80045470 }
-      - { type: bss, name: sys/video,                vram: 0x80046660 }
+      - { type: .bss, name: sys/video,                vram: 0x80046660 }
       - { type: bss, name: sys/rdp,                  vram: 0x80046690 }
       - { type: bss, name: sys/objman,               vram: 0x800466A0 }
       - { type: bss, name: sys/objdisplay,           vram: 0x80046F90 }

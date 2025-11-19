@@ -60,6 +60,7 @@ s32 sSCManagerUnk0x800A523C;
 // // // // // // // // // // // //
 
 // 0x800A3070
+#if defined(REGION_US)
 SYOverlay dSCManagerOverlays[/* */] =
 {
 	SCMANAGER_OVERLAY_DEFINE(0),
@@ -789,12 +790,22 @@ SCBattleState dSCManagerDefaultBattleState =
 		}
 	}
 };
+#else
+extern SYOverlay dSCManagerOverlays[];
+extern LBBackupData dSCManagerDefaultBackupData;
+extern SCCommonData dSCManagerDefaultSceneData;
+extern SCBattleState dSCManagerDefaultBattleState;
+#endif
 
 // 0x800A41B8
 s32 dSCManagerPad0x800A41B8[/* */] = { 0, 0 };
 
+#if defined(REGION_US)
 // 0x800A41C0 (.rodata) - use { __DATE__ " " __TIME__ } in a real setting
 char dSCManagerBuildDate[/* */] = { "Mar 16 1999 18:26:57" };
+#else
+// char dSCManagerBuildDate[/* */] = { "Dec 23 1998 18:06:24" };
+#endif
 
 // // // // // // // // // // // //
 //                               //
@@ -802,6 +813,7 @@ char dSCManagerBuildDate[/* */] = { "Mar 16 1999 18:26:57" };
 //                               //
 // // // // // // // // // // // //
 
+#if defined(REGION_US)
 // 0x800A1980
 void scManagerRunLoop(sb32 arg)
 {
@@ -1243,6 +1255,9 @@ void scManagerRunLoop(sb32 arg)
 		}
 	}
 }
+#else
+#pragma GLOBAL_ASM("asm/nonmatchings/sc/scmanager/scManagerRunLoop.s")
+#endif
 
 // 0x800A2698
 void scManagerFuncUpdate(SYTaskmanSetup *arg)
@@ -1376,6 +1391,8 @@ void scManagerMakeDebugCameras(s32 link, u32 link_priority, s32 dl_link_priority
 	else scManagerMakeMeterCamera(link, link_priority, dl_link_priority);
 }
 
+// This doesn't match for JP due to differences in the ITStruct.
+#if defined(REGION_US)
 // 0x800A2C30
 void scManagerInspectGObj(GObj *gobj)
 {
@@ -1441,6 +1458,9 @@ void scManagerInspectGObj(GObj *gobj)
         break;
     }
 }
+#else
+#pragma GLOBAL_ASM("asm/nonmatchings/sc/scmanager/scManagerInspectGObj.s")
+#endif
 
 // 0x800A2E84
 void scManagerFuncPrint(void)

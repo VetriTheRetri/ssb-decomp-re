@@ -135,7 +135,11 @@ ifeq ($(VERSION),jp)
 			   src/libultra/os/createmesgqueue.c \
 			   src/sys/zbuffer.c \
 			   src/sys/framebuffer.c \
-			   src/sys/dma.c
+			   src/sys/dma.c \
+			   src/sys/unref.c \
+			   src/sys/debug.c \
+			   src/sys/main.c \
+			   src/sc/scmanager.c
 else ifeq ($(VERSION),us)
     LDFLAGS := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt \
                -T .splat/smashbrothers.ld -T symbols/not_found.txt -T symbols/linker_constants.txt -T symbols/reloc_data_symbols.txt

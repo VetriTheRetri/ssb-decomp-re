@@ -610,7 +610,7 @@ gSYSinTable = 0x8003B950; // size:0x1000
 dSYMainSceneManagerOverlay = 0x8003B6B0;
 dSYMainNoThread5 = 0x8003B6D4; // size:0x4
 
-gSYMainThread0Stack = 0x8003FAD0; // size:0x1C8 type:u64
+gSYMainThread0Stack = 0x8003FAD0; // size:0x200 type:u64
 sSYMainThread1 = 0x8003FCD0; // size:0x1B0
 sSYMainThread1Stack = 0x8003FE80; // size:0x100 type:u64
 sSYMainThread3 = 0x8003FF80; // size:0x1B0
@@ -628,7 +628,7 @@ sSYMainBlockMesg = 0x80044D44; // size:0x4
 gSYMainThreadingMesgQueue = 0x80044D48; // size:0x18
 sSYMainPiCmdMesg = 0x80044D60; // size:0xC8
 sSYMainPiCmdQueue = 0x80044E28; // size:0x18
-sSYMainThreadArgBuf = 0x80044E40; // size=0x80
+sSYMainThreadArgBuf = 0x80044E40; // size:0x80
 
 sSYUtilsRandomSeed = 0x8003B940; // type:s32
 sSYUtilsRandomSeedPtr = 0x8003B944;

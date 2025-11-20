@@ -188,6 +188,7 @@ __sinf = 0x800301A0;
 __cosf = 0x800361C0;
 sqrtf = 0x80033960;
 __ull_to_f = 0x80039938;
+__libm_qnan_f = 0x8003F760;
 
 osContStartQuery = 0x80033970;
 osContGetQuery = 0x800339F4;
@@ -323,6 +324,12 @@ osSpTaskYielded = 0x800351B0;
 osViSetEvent = 0x80036360;
 osViSetYScale = 0x80039700;
 
+osDestroyThread = 0x80030650;
+syInterpCubic = 0x8001E2D0;
+guMtxCatF = 0x80034E10;
+__ull_rshift = 0x80030760;
+syVectorRotateAbout3D = 0x800191D8;
+guNormalize = 0x80035870;
 
 func_80026094_26C94 = 0x80025E44;
 func_80026104_26D04 = 0x80025EB4;

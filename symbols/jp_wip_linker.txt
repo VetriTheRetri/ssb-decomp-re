@@ -172,7 +172,6 @@ func_8002F508_30108 = 0x8002F508;
 func_8002DA20_2E620 = 0x8002DA20;
 .L8002F3F0_2FFF0 = 0x8002F3F0;
 __osRcpImTable = 0x8003F0E0;
-__libm_qnan_f = 0x8003F370;
 __osIntOffTable = 0x8003F1B0;
 __osIntTable = 0x8003F1D0;
 __osHwIntTable = 0x8003D380;

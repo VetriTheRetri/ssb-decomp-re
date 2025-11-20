@@ -133,6 +133,8 @@ ifeq ($(VERSION),jp)
 			   src/libultra/n_audio/cspsetfxmix.c \
 			   src/libultra/os/threadsave.c \
 			   src/libultra/os/createmesgqueue.c \
+			   src/libultra/gu/sinf.c \
+			   src/libultra/gu/cosf.c \
 			   src/sys/zbuffer.c \
 			   src/sys/framebuffer.c \
 			   src/sys/dma.c \
@@ -144,8 +146,14 @@ ifeq ($(VERSION),jp)
 			   src/sys/taskman.c \
 			   src/sys/video.c \
 			   src/sys/rdp.c \
+			   src/sys/objman.c \
+			   src/sys/objscript.c \
+			   src/sys/objhelper.c \
+			   src/sys/objanim.c \
+			   src/sys/objdisplay.c \
 			   src/sys/malloc.c \
 			   src/sys/utils.c \
+			   src/sys/matrix.c \
 			   src/sc/scmanager.c
 else ifeq ($(VERSION),us)
     LDFLAGS := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt \

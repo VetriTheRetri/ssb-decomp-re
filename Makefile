@@ -122,6 +122,12 @@ ifeq ($(VERSION),jp)
 			   src/sys/sintable.c \
 			   src/sys/debug.c \
 			   src/sys/unref.c \
+			   src/libultra/n_audio/n_synaddplayer.c \
+			   src/libultra/n_audio/n_synstopvoice.c \
+			   src/libultra/n_audio/n_synallocvoice.c \
+			   src/libultra/n_audio/n_synsetpan.c \
+			   src/libultra/n_audio/n_synstartvoiceparam.c \
+			   src/libultra/n_audio/audio09.c \
 			   src/libultra/os/stopthread.c \
 			   src/libultra/sp/setattribute.c \
 			   src/libultra/sp/hide.c \

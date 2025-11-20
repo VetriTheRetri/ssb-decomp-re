@@ -99,10 +99,10 @@ segments:
       - [0x00C550, c, sys/objanim]
       - [0x011710, c, sys/objdisplay]
       - [0x018E80, c, sys/utils]  
-      - [0x019880, asm, sys/vector]
+      - [0x019880, c, sys/vector]
       - [0x01A610, c, sys/matrix]
-      - [0x01DFB0, asm, sys/interp]
-      - [0x01EF60, asm, sys/audio]
+      - [0x01DFB0, c, sys/interp]
+      - [0x01EF60, c, sys/audio]
       - [0x021A60, c, sys/debug]
       - [0x0241E0, c, sys/unref] # One func, that's entirely unreferenced.
       - [0x024210, c, libultra/sp/setattribute]
@@ -258,7 +258,7 @@ segments:
       - [0x03C940, .data, sys/objdisplay]
       - [0x03C950, .data, sys/utils]
       - [0x03C960, .data, sys/sintable]
-      - [0x03D960, data, sys/audio]
+      - [0x03D960, .data, sys/audio]
       - [0x03DBC0, .data, sys/debug]
       - [0x03E080, .data, libultra/sp/sprite]
       - [0x03E090, data, libultra/n_audio/n_env]
@@ -294,8 +294,8 @@ segments:
       - [0x03F100, .rodata, sys/objdisplay]
       - [0x03F340, .rodata, sys/utils]
       - [0x03F390, .rodata, sys/matrix]
-      - [0x03F3E0, rodata, sys/interp]
-      - [0x03F400, rodata, sys/audio]
+      - [0x03F3E0, .rodata, sys/interp]
+      - [0x03F400, .rodata, sys/audio]
       - [0x03F410, .rodata, sys/debug]
       - [0x03F850, .rodata, libultra/sp/sprite]
       - [0x03F860, rodata, libultra/n_audio/n_env]
@@ -322,7 +322,7 @@ segments:
       - { type: .bss, name: sys/rdp,                  vram: 0x80046690 }
       - { type: .bss, name: sys/objman,               vram: 0x800466A0 }
       - { type: .bss, name: sys/objdisplay,           vram: 0x80046F90 }
-      - { type: bss, name: sys/audio,                vram: 0x800472C0 }
+      - { type: .bss, name: sys/audio,                vram: 0x800472C0 }
       - { type: .bss, name: sys/debug,                vram: 0x8009A9F0 }
       - { type: .bss, name: libultra/sp/sprite,       vram: 0x8009BDB0 }
       - { type: bss, name: libultra/n_audio/n_env,   vram: 0x8009BDC0 }

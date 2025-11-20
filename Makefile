@@ -153,7 +153,10 @@ ifeq ($(VERSION),jp)
 			   src/sys/objdisplay.c \
 			   src/sys/malloc.c \
 			   src/sys/utils.c \
+			   src/sys/vector.c \
 			   src/sys/matrix.c \
+			   src/sys/interp.c \
+			   src/sys/audio.c \
 			   src/sc/scmanager.c
 else ifeq ($(VERSION),us)
     LDFLAGS := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt \

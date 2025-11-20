@@ -160,7 +160,6 @@ dDBMapsGroundNames = 0x800D4528;
 mnUnusedFightersStartScene = 0x800D4E50;
 mnModeSelectStartScene = 0x80130A14;
 mnOptionStartScene = 0x80131314;
-D_8003CB6D = 0x8003CF7D;
 // func_ovl3_80132EC0 = 0x80132750;
 mnNoControllerStartScene = 0x800D44A4;
 mn1PModeStartScene = 0x80130D48;
@@ -189,6 +188,21 @@ __cosf = 0x800361C0;
 sqrtf = 0x80033960;
 __ull_to_f = 0x80039938;
 __libm_qnan_f = 0x8003F760;
+
+alCents2Ratio = 0x800367B0;
+osAiSetFrequency = 0x80035710;
+n_alInit = 0x8002CC38;
+alCSPSetBank = 0x8002F980;
+osAiSetNextBuffer = 0x80039970;
+alCSPSetSeq = 0x8002F820;
+alCSPSetVol = 0x8002F9C0;
+alCSPStop = 0x8002FC40;
+alCSPPlay = 0x8002FB60;
+n_alClose = 0x8002CBF8;
+n_aspMainTextStart = 0x80039AD0;
+n_aspMainDataStart = 0x8003F7F0;
+func_800269C0_275C0 = 0x80026770;
+func_80026070_26C70 = 0x80025E20;
 
 osContStartQuery = 0x80033970;
 osContGetQuery = 0x800339F4;
@@ -280,10 +294,6 @@ syAudioGetStatus = 0x80020df4;
 syAudioUpdateMesgQueue = 0x80020e0c;
 
 
-func_8002CC38_2D838 = 0x8002CC38;
-func_8002CBF8_2D7F8 = 0x8002CBF8;
-func_80026770_27370 = 0x80026770;
-func_80025E20_26A20 = 0x80025E20;
 osSetIntMask = 0x80030100;
 alCopy = 0x80035C30;
 osVirtualToPhysical = 0x80032600;

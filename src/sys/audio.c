@@ -137,7 +137,11 @@ SYAudioSettings dSYAudioPublicSettings =
 // // // // // // // // // // // //
 
 // 0x800472D0
+#if defined(REGION_US)
 u8 gSYAudioHeapBuffer[0x56000];
+#else
+u8 gSYAudioHeapBuffer[0x53000];
+#endif
 
 // 0x8009D2D0
 u32 gSYAudioThreadTimeDelta;

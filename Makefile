@@ -128,6 +128,21 @@ ifeq ($(VERSION),jp)
 			   src/libultra/n_audio/n_synsetpan.c \
 			   src/libultra/n_audio/n_synstartvoiceparam.c \
 			   src/libultra/n_audio/audio09.c \
+			   src/libultra/n_audio/n_synsetpriority.c \
+			   src/libultra/n_audio/seqpgetvol.c \
+			   src/libultra/n_audio/seq.c \
+			   src/libultra/n_audio/cspsetseq.c \
+			   src/libultra/n_audio/n_synsetpitch.c \
+			   src/libultra/n_audio/cspsetbank.c \
+			   src/libultra/n_audio/cspsetvol.c \
+			   src/libultra/n_audio/n_synsetfxmix.c \
+			   src/libultra/n_audio/n_syndelete.c \
+			   src/libultra/n_audio/cspplay.c \
+			   src/libultra/n_audio/seqpgetchlvol.c \
+			   src/libultra/n_audio/n_synallocfx.c \
+			   src/libultra/n_audio/cspstop.c \
+			   src/libultra/n_audio/n_synfreevoice.c \
+			   src/libultra/n_audio/n_synsetvol.c \
 			   src/libultra/os/stopthread.c \
 			   src/libultra/sp/setattribute.c \
 			   src/libultra/sp/hide.c \

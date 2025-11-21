@@ -165,6 +165,7 @@ ifeq ($(VERSION),jp)
 			   src/libultra/io/controller.c \
 			   src/libultra/os/createthread.c \
 			   src/libultra/io/contreaddata.c \
+			   src/libultra/os/virtualtophysical.c \
 			   src/libultra/gu/cosf.c \
 			   src/sys/zbuffer.c \
 			   src/sys/framebuffer.c \

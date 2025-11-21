@@ -224,6 +224,7 @@ __osMaxControllers = 0x8009CFD1;
 __osPackRequestData = 0x800321D0;
 __osContGetInitData = 0x80032100;
 __osCleanupThread = 0x80031320;
+__osProbeTLB = 0x80033000;
 
 osContStartQuery = 0x80033970;
 osContGetQuery = 0x800339F4;

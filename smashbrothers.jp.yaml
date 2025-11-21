@@ -153,7 +153,7 @@ segments:
       - [0x032B90, c, libultra/io/controller]
       - [0x032ED0, c, libultra/os/createthread]
       - [0x033020, c, libultra/io/contreaddata]
-      - [0x033200, asm, libultra/os/virtualtophysical]
+      - [0x033200, c, libultra/os/virtualtophysical]
       - [0x033280, hasm, libultra/os/writebackdcache]
       - [0x033300, asm, libultra/os/initialize]
       - [0x033590, asm, libultra/io/pirawread]

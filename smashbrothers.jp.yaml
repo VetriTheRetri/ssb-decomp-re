@@ -142,13 +142,13 @@ segments:
       - [0x030D00, asm, libultra/os/setintmask]
       - [0x030DA0, c, libultra/gu/sinf]
       - [0x030F60, asm, libultra/io/sptask]
-      - [0x031250, asm, libultra/os/destroythread]
-      - [0x031360, asm, libultra/libc/ll]
+      - [0x031250, c, libultra/os/destroythread]
+      - [0x031360, c, libultra/libc/ll]
       - [0x031620, asm, libultra/os/exceptasm] # differs from us
-      - [0x031F30, asm, libultra/os/thread]
+      - [0x031F30, c, libultra/os/thread]
       - [0x031F70, hasm, libultra/libc/bzero]
       - [0x032010, asm, libultra/io/leointerrupt]
-      - [0x032700, asm, libultra/io/motor]
+      - [0x032700, c, libultra/io/motor]
       - [0x032AD0, asm, libultra/io/siacs]
       - [0x032B90, asm, libultra/io/controller]
       - [0x032ED0, asm, libultra/os/createthread]
@@ -264,7 +264,7 @@ segments:
       - [0x03E090, data, libultra/n_audio/n_env]
       # - [0x03DF30, data, libultra/io/vimodepallan1] # osViModePalLan1
       - [0x03E340, data, libultra/os/exceptasm]
-      - [0x03E360, data, libultra/os/thread]
+      - [0x03E360, .data, libultra/os/thread]
       - [0x03E380, data, libultra/io/siacs]
       - [0x03E390, data, libultra/io/controller]
       - [0x03E3A0, data, libultra/os/initialize]
@@ -328,7 +328,7 @@ segments:
       - { type: bss, name: libultra/n_audio/n_env,   vram: 0x8009BDC0 }
       - { type: bss, name: libultra/io/sptask,       vram: 0x8009BE30 }
       # probably something else here
-      - { type: bss, name: libultra/io/motor,        vram: 0x8009CE70 }
+      - { type: .bss, name: libultra/io/motor,        vram: 0x8009CE70 }
       - { type: bss, name: libultra/io/siacs,        vram: 0x8009CF70 }
       - { type: bss, name: libultra/io/controller,   vram: 0x8009CF90 }
       - { type: bss, name: libultra/os/initialize,   vram: 0x8009D020 }

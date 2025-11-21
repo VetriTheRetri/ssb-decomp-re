@@ -149,8 +149,8 @@ segments:
       - [0x031F70, hasm, libultra/libc/bzero]
       - [0x032010, asm, libultra/io/leointerrupt]
       - [0x032700, c, libultra/io/motor]
-      - [0x032AD0, asm, libultra/io/siacs]
-      - [0x032B90, asm, libultra/io/controller]
+      - [0x032AD0, c, libultra/io/siacs]
+      - [0x032B90, c, libultra/io/controller]
       - [0x032ED0, asm, libultra/os/createthread]
       - [0x033020, asm, libultra/io/contreaddata]
       - [0x033200, asm, libultra/os/virtualtophysical]
@@ -265,8 +265,8 @@ segments:
       # - [0x03DF30, data, libultra/io/vimodepallan1] # osViModePalLan1
       - [0x03E340, data, libultra/os/exceptasm]
       - [0x03E360, .data, libultra/os/thread]
-      - [0x03E380, data, libultra/io/siacs]
-      - [0x03E390, data, libultra/io/controller]
+      - [0x03E380, .data, libultra/io/siacs]
+      - [0x03E390, .data, libultra/io/controller]
       - [0x03E3A0, data, libultra/os/initialize]
       - [0x03E3C0, data, libultra/io/pimgr]
       - [0x03E3F0, data, libultra/io/piacs]
@@ -329,8 +329,8 @@ segments:
       - { type: bss, name: libultra/io/sptask,       vram: 0x8009BE30 }
       # probably something else here
       - { type: .bss, name: libultra/io/motor,        vram: 0x8009CE70 }
-      - { type: bss, name: libultra/io/siacs,        vram: 0x8009CF70 }
-      - { type: bss, name: libultra/io/controller,   vram: 0x8009CF90 }
+      - { type: .bss, name: libultra/io/siacs,        vram: 0x8009CF70 }
+      - { type: .bss, name: libultra/io/controller,   vram: 0x8009CF90 }
       - { type: bss, name: libultra/os/initialize,   vram: 0x8009D020 }
       - { type: bss, name: libultra/os/threadsave,   vram: 0x8009D030 }
       - { type: bss, name: libultra/io/pimgr,        vram: 0x8009D1E0 }

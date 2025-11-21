@@ -217,6 +217,12 @@ __osSiRelAccess = 0x80031F64;
 __osContAddressCrc = 0x80037AF0;
 __osPfsSelectBank = 0x800364D0;
 __osContRamRead = 0x800378F0;
+__osSiCreateAccessQueue = 0x80031ED0;
+__osContPifRam = 0x8009CF90;
+osSetTimer = 0x80038130;
+__osMaxControllers = 0x8009CFD1;
+__osPackRequestData = 0x800321D0;
+__osContGetInitData = 0x80032100;
 
 osContStartQuery = 0x80033970;
 osContGetQuery = 0x800339F4;

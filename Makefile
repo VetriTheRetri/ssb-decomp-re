@@ -161,6 +161,8 @@ ifeq ($(VERSION),jp)
 			   src/libultra/libc/ll.c \
 			   src/libultra/os/thread.c \
 			   src/libultra/io/motor.c \
+			   src/libultra/io/siacs.c \
+			   src/libultra/io/controller.c \
 			   src/libultra/gu/cosf.c \
 			   src/sys/zbuffer.c \
 			   src/sys/framebuffer.c \

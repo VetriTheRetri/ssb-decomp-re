@@ -143,7 +143,9 @@ ifeq ($(VERSION),jp)
 			   src/libultra/n_audio/cspstop.c \
 			   src/libultra/n_audio/n_synfreevoice.c \
 			   src/libultra/n_audio/n_synsetvol.c \
+			   src/libultra/os/sendmesg.c \
 			   src/libultra/os/stopthread.c \
+			   src/libultra/os/recvmesg.c \
 			   src/libultra/sp/setattribute.c \
 			   src/libultra/sp/hide.c \
 			   src/libultra/sp/sprite.c \

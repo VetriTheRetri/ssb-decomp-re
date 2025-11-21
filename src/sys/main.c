@@ -227,10 +227,8 @@ void syMainLoop(void)
     gSYMainThread0Stack[STACK_CANARY_OFFSET] = STACK_CANARY;
     #if defined(REGION_US)
     __osSetWatchLo(0x04900000 & WATCHLO_ADDRMASK);
-    osInitialize();
-    #else
-    __osSetWatchLo(); // @Bug: Missing argument 
     #endif
+    osInitialize();
     osCreateThread(&sSYMainThread1, 1, syMainThread1Idle, sSYMainThreadArgBuf, &sSYMainThread1Stack[THREAD1_STACK_SIZE], OS_PRIORITY_APPMAX);
 
     sSYMainThread1Stack[STACK_CANARY_OFFSET] = STACK_CANARY; osStartThread(&sSYMainThread1);

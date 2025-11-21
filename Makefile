@@ -167,6 +167,16 @@ ifeq ($(VERSION),jp)
 			   src/libultra/io/contreaddata.c \
 			   src/libultra/os/virtualtophysical.c \
 			   src/libultra/os/initialize.c \
+			   src/libultra/io/pirawread.c \
+			   src/libultra/io/vigetnextframebuf.c \
+			   src/libultra/io/sprawdma.c \
+			   src/libultra/io/sirawdma.c \
+			   src/libultra/io/epilinkhandle.c \
+			   src/libultra/io/viblack.c \
+			   src/libultra/io/sirawread.c \
+			   src/libultra/io/sptaskyield.c \
+			   src/libultra/gu/mtxutil.c \
+			   src/libultra/io/visetmode.c \
 			   src/libultra/gu/cosf.c \
 			   src/sys/zbuffer.c \
 			   src/sys/framebuffer.c \

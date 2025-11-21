@@ -163,6 +163,8 @@ ifeq ($(VERSION),jp)
 			   src/libultra/io/motor.c \
 			   src/libultra/io/siacs.c \
 			   src/libultra/io/controller.c \
+			   src/libultra/os/createthread.c \
+			   src/libultra/io/contreaddata.c \
 			   src/libultra/gu/cosf.c \
 			   src/sys/zbuffer.c \
 			   src/sys/framebuffer.c \

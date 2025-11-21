@@ -6,7 +6,9 @@
 
 extern OSPiHandle *__osDiskHandle;
 
+#if 0
 u8 leoDiskStack[OS_PIM_STACKSIZE] ALIGNED(0x10);
+#endif
 
 static void __osLeoAbnormalResume(void);
 static void __osLeoResume(void);
@@ -128,7 +130,11 @@ s32 __osLeoInterrupt(void) {
             __OSBlockInfo *bptr = &info->block[0];
             if (bptr->C1ErrNum == 0) {
                 if (((u32 *)bptr->C2Addr)[0] | ((u32 *)bptr->C2Addr)[1] | ((u32 *)bptr->C2Addr)[2] | ((u32 *)bptr->C2Addr)[3]) {
+#if 0
                     bptr->errStatus = LEO_ERROR_24;
+#else
+                    bptr->errStatus = LEO_ERROR_23;
+#endif
                     __osLeoAbnormalResume();
                     return 1;
                 }

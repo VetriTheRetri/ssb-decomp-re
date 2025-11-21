@@ -223,7 +223,6 @@ __osPackRequestData = 0x800321D0;
 __osContGetInitData = 0x80032100;
 __osCleanupThread = 0x80031320;
 __osProbeTLB = 0x80033000;
-__osDiskHandle = 0x8009E5B4;
 __osEventStateTab = 0x8009E4C0;
 __osEnqueueThread = 0x8003114C;
 __osSetFpcCsr = 0x80036550;
@@ -233,14 +232,12 @@ osMapTLBRdb = 0x80036700;
 __osPiRawReadIo = 0x80032990;
 __osSiRawReadIo = 0x80032CB0;
 __osViNext = 0x8003D914;
-__osPiTable = 0x8003D7DC;
 __osSiDeviceBusy = 0x80034AA0;
 __osPiRawStartDma = 0x80033810;
 __osDevMgrMain = 0x80033380;
 osPiGetCmdQueue = 0x80036190;
 osJamMesg = 0x80034AD0;
 CartRomHandle = 0x8009E600;
-LeoDiskHandle = 0x8009E540;
 
 osContStartQuery = 0x80033970;
 osContGetQuery = 0x800339F4;
@@ -430,6 +427,10 @@ __n_lookupSoundQuick = 0x8002E1CC;
 func_8002E520_2F120 = 0x8002E2D0;
 func_8002ED54_2F954 = 0x8002EB04;
 func_8002F51C_3011C = 0x8002F2CC;
+
+LeoDiskHandle = 0x8009E540; // size:0x74
+__osDiskHandle = 0x8009E5B4; // size:0x4
+__osPiTable = 0x8003D7DC; // size:0x4
 
 mvOpeningDonkeyStartScene = 0x8018E018; // segment:ovl37
 mvOpeningSamusStartScene = 0x8018E0C8; // segment:ovl38

@@ -6,7 +6,7 @@ osAfterPreNMI = 0x80078068;
 main_BSS_SIZE_HI = main_BSS_SIZE >> 16;
 main_BSS_SIZE_LO = main_BSS_SIZE & 0xFFFF;
 
-__osEPiRawStartDma = 0x80034AF0;
+__osEPiRawStartDma = 0x80034F80;
 D_8003D7AC_3E3AC = 0x8003D7AC;
 D_8003D7A8_3E3A8 = 0x8003D7A8;
 

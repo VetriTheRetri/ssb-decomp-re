@@ -160,6 +160,8 @@ ifeq ($(VERSION),jp)
 			   src/libultra/os/destroythread.c \
 			   src/libultra/libc/ll.c \
 			   src/libultra/os/thread.c \
+			   src/libultra/io/leodiskinit.c \
+			   src/libultra/io/leointerrupt.c \
 			   src/libultra/io/motor.c \
 			   src/libultra/io/siacs.c \
 			   src/libultra/io/controller.c \
@@ -315,6 +317,10 @@ build/src/libultra/os/seteventmesg.o: OPTFLAGS := -O1 -mips2
 build/src/libultra/os/seteventmesg.o: CC := $(IDO5)
 build/src/libultra/io/vimgr.o: OPTFLAGS := -O2 -mips2
 build/src/libultra/io/vimgr.o: CC := $(IDO5)
+build/src/libultra/io/leodiskinit.o: OPTFLAGS := -O2 -mips2
+build/src/libultra/io/leodiskinit.o: CC := $(IDO5)
+build/src/libultra/io/leointerrupt.o: OPTFLAGS := -O2 -mips2
+build/src/libultra/io/leointerrupt.o: CC := $(IDO5)
 build/src/libultra/io/cartrominit.o: OPTFLAGS := -O2 -mips2
 build/src/libultra/io/cartrominit.o: CC := $(IDO5)
 build/src/libultra/os/initialize.o: OPTFLAGS := -O1 -mips2

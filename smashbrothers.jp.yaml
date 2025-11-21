@@ -147,7 +147,7 @@ segments:
       - [0x031620, asm, libultra/os/exceptasm] # differs from us
       - [0x031F30, c, libultra/os/thread]
       - [0x031F70, hasm, libultra/libc/bzero]
-      - [0x032010, asm, libultra/io/leointerrupt]
+      - [0x032010, c, libultra/io/leointerrupt]
       - [0x032700, c, libultra/io/motor]
       - [0x032AD0, c, libultra/io/siacs]
       - [0x032B90, c, libultra/io/controller]
@@ -181,7 +181,7 @@ segments:
       - [0x034620, pad, padding0x034620]
       - [0x034630, asm, libultra/libc/xprintf]
       - [0x0352F0, asm, libultra/io/epidma]
-      - [0x0353D0, asm, libultra/io/leodiskinit]
+      - [0x0353D0, c, libultra/io/leodiskinit]
       - [0x035470, asm, libultra/libc/string]
       - [0x035510, c, libultra/os/createmesgqueue]
       - [0x035540, asm, libultra/os/invalicache]
@@ -275,7 +275,6 @@ segments:
       - [0x03E460, data, libultra/vimodentsclan1] # osViModeNtscLan1
       # - [0x03E4B0, data, libultra/vimodempallan1] # osViModeMpalLan1
       - [0x03E4B0, data, libultra/io/vi]
-      - [0x03E520, data, libultra/io/leodiskinit] # maybe?
       - [0x03E5B0, data, libultra/io/cartrominit]
       - [0x03E5C0, data, libultra/io/contpfs]
       - [0x03E5D0, data, libultra/io/contramread]
@@ -336,7 +335,7 @@ segments:
       - { type: bss, name: libultra/io/pimgr,        vram: 0x8009D1E0 }
       - { type: bss, name: libultra/io/piacs,        vram: 0x8009E4A0 }
       - { type: bss, name: libultra/os/seteventmesg, vram: 0x8009E4C0 }
-      - { type: bss, name: libultra/io/leodiskinit,  vram: 0x8009E540 } # maybe?
+      - { type: .bss, name: libultra/io/leodiskinit,  vram: 0x8009E540 }
       - { type: bss, name: libultra/os/timerintr,    vram: 0x8009E5C0 }
       - { type: bss, name: libultra/io/cartrominit,  vram: 0x8009E600 }
       - { type: bss, name: libultra/io/contpfs,      vram: 0x8009E680 }

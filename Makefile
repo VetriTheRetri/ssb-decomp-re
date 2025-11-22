@@ -194,6 +194,11 @@ ifeq ($(VERSION),jp)
 			   src/libultra/io/viswapbuf.c \
 			   src/libultra/gu/mtxxfmf.c \
 			   src/libultra/gu/mtxcatf.c \
+			   src/libultra/os/gettime.c \
+			   src/libultra/os/timerintr.c \
+			   src/libultra/os/setglobalintmask.c \
+			   src/libultra/gu/normalize.c \
+			   src/libultra/os/getactivequeue.c \
 			   src/libultra/gu/cosf.c \
 			   src/sys/zbuffer.c \
 			   src/sys/framebuffer.c \

@@ -196,14 +196,14 @@ segments:
       - [0x035A10, c, libultra/gu/mtxcatf]
       - [0x035B80, asm, libultra/io/epirawdma]
       - [0x035DB0, asm, libultra/io/sptaskyielded]
-      - [0x035E30, asm, libultra/os/gettime]
-      - [0x035EC0, asm, libultra/os/timerintr]
-      - [0x0362C0, asm, libultra/os/setglobalintmask]
+      - [0x035E30, c, libultra/os/gettime]
+      - [0x035EC0, c, libultra/os/timerintr]
+      - [0x0362C0, c, libultra/os/setglobalintmask]
       - [0x036310, asm, libultra/io/aisetfreq]
-      - [0x036470, asm, libultra/gu/normalize]
-      - [0x036500, asm, libultra/os/setcompare]
-      - [0x036510, asm, libultra/os/getactivequeue]
-      - [0x036520, asm, libultra/libc/bcopy]
+      - [0x036470, c, libultra/gu/normalize]
+      - [0x036500, hasm, libultra/os/setcompare]
+      - [0x036510, c, libultra/os/getactivequeue]
+      - [0x036520, hasm, libultra/libc/bcopy]
       - [0x036830, asm, libultra/audio/alCopy]
       - [0x0368B0, asm, libultra/os/resetglobalintmask]
       - [0x036910, asm, libultra/os/interrupt]
@@ -271,7 +271,7 @@ segments:
       - [0x03E3C0, data, libultra/io/pimgr]
       - [0x03E3F0, data, libultra/io/piacs]
       - [0x03E400, .data, libultra/libc/xprintf]
-      - [0x03E450, data, libultra/os/timerintr]
+      - [0x03E450, .data, libultra/os/timerintr]
       - [0x03E460, data, libultra/vimodentsclan1] # osViModeNtscLan1
       # - [0x03E4B0, data, libultra/vimodempallan1] # osViModeMpalLan1
       - [0x03E4B0, data, libultra/io/vi]
@@ -336,7 +336,7 @@ segments:
       - { type: bss, name: libultra/io/piacs,        vram: 0x8009E4A0 }
       - { type: .bss, name: libultra/os/seteventmesg, vram: 0x8009E4C0 }
       - { type: .bss, name: libultra/io/leodiskinit,  vram: 0x8009E540 }
-      - { type: bss, name: libultra/os/timerintr,    vram: 0x8009E5C0 }
+      - { type: .bss, name: libultra/os/timerintr,    vram: 0x8009E5C0 }
       - { type: bss, name: libultra/io/cartrominit,  vram: 0x8009E600 }
       - { type: bss, name: libultra/io/contpfs,      vram: 0x8009E680 }
       - { type: bss, name: libultra/io/pfsisplug,    vram: 0x8009E780 }

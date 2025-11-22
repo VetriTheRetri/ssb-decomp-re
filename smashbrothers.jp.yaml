@@ -212,7 +212,7 @@ segments:
       - [0x036D90, c, libultra/io/pigetcmdq]
       - [0x036DC0, c, libultra/gu/cosf]
       - [0x036F30, c, libultra/os/settime]
-      - [0x036F60, asm, libultra/io/visetevent]
+      - [0x036F60, c, libultra/io/visetevent]
       - [0x036FD0, asm, libultra/io/cartrominit]
       - [0x0370D0, asm, libultra/io/pfsselectbank]
       - [0x037150, asm, libultra/os/setfpccsr]

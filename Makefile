@@ -204,6 +204,7 @@ ifeq ($(VERSION),jp)
 			   src/libultra/io/pigetcmdq.c \
 			   src/libultra/gu/cosf.c \
 			   src/libultra/os/settime.c \
+			   src/libultra/io/visetevent.c \
 			   src/sys/zbuffer.c \
 			   src/sys/framebuffer.c \
 			   src/sys/dma.c \

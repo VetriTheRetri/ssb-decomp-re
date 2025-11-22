@@ -238,6 +238,16 @@ __osDevMgrMain = 0x80033380;
 osPiGetCmdQueue = 0x80036190;
 osJamMesg = 0x80034AD0;
 CartRomHandle = 0x8009E600;
+__osResetGlobalIntMask = 0x80035CB0;
+__osEPiRawWriteIo = 0x80037FA0;
+__osEPiRawReadIo = 0x80036560;
+__osSetGlobalIntMask = 0x800356C0;
+osYieldThread = 0x80036760;
+_Litob = 0x80038E60;
+_Ldtob = 0x80038780;
+strlen = 0x8003489C;
+strchr = 0x800348C4;
+__osPiDevMgr = 0x8003D7C0;
 
 osContStartQuery = 0x80033970;
 osContGetQuery = 0x800339F4;

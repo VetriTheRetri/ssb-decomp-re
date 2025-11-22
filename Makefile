@@ -179,6 +179,21 @@ ifeq ($(VERSION),jp)
 			   src/libultra/io/sptaskyield.c \
 			   src/libultra/gu/mtxutil.c \
 			   src/libultra/io/visetmode.c \
+			   src/libultra/io/devmgr.c \
+			   src/libultra/io/pirawdma.c \
+			   src/libultra/os/seteventmesg.c \
+			   src/libultra/io/contquery.c \
+			   src/libultra/libc/xprintf.c \
+			   src/libultra/io/epidma.c \
+			   src/libultra/libc/string.c \
+			   src/libultra/io/sp.c \
+			   src/libultra/io/si.c \
+			   src/libultra/os/jammesg.c \
+			   src/libultra/os/setthreadpri.c \
+			   src/libultra/os/getthreadpri.c \
+			   src/libultra/io/viswapbuf.c \
+			   src/libultra/gu/mtxxfmf.c \
+			   src/libultra/gu/mtxcatf.c \
 			   src/libultra/gu/cosf.c \
 			   src/sys/zbuffer.c \
 			   src/sys/framebuffer.c \

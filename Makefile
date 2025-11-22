@@ -199,6 +199,8 @@ ifeq ($(VERSION),jp)
 			   src/libultra/os/setglobalintmask.c \
 			   src/libultra/gu/normalize.c \
 			   src/libultra/os/getactivequeue.c \
+			   src/libultra/audio/alCopy.c \
+			   src/libultra/os/resetglobalintmask.c \
 			   src/libultra/gu/cosf.c \
 			   src/sys/zbuffer.c \
 			   src/sys/framebuffer.c \

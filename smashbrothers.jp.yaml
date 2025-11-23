@@ -315,7 +315,7 @@ segments:
       - { type: .bss, name: sys/scheduler,            vram: 0x80044EB0 }
       - { type: .bss, name: sys/dma,                  vram: 0x80045030 }
       - { type: .bss, name: sys/controller,           vram: 0x800450E0 }
-      - { type: bss, name: sys/maindevice,           vram: 0x80045460 }
+      - { type: .bss, name: sys/maindevice,           vram: 0x80045460 }
       - { type: .bss, name: sys/taskman,              vram: 0x80045470 }
       - { type: .bss, name: sys/video,                vram: 0x80046660 }
       - { type: .bss, name: sys/rdp,                  vram: 0x80046690 }
@@ -331,7 +331,7 @@ segments:
       - { type: .bss, name: libultra/io/siacs,        vram: 0x8009CF70 }
       - { type: .bss, name: libultra/io/controller,   vram: 0x8009CF90 }
       - { type: .bss, name: libultra/os/initialize,   vram: 0x8009D020 }
-      - { type: bss, name: libultra/os/threadsave,   vram: 0x8009D030 }
+      - { type: .bss, name: libultra/os/threadsave,   vram: 0x8009D030 }
       - { type: bss, name: libultra/io/pimgr,        vram: 0x8009D1E0 }
       - { type: bss, name: libultra/io/piacs,        vram: 0x8009E4A0 }
       - { type: .bss, name: libultra/os/seteventmesg, vram: 0x8009E4C0 }

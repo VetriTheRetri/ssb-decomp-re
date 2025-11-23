@@ -223,6 +223,7 @@ ifeq ($(VERSION),jp)
 			   src/libultra/io/spgetstat.c \
 			   src/libultra/io/vimgr.c \
 			   src/libultra/io/vigetcurrcontext.c \
+			   src/libultra/os/startthread.c \
 			   src/sys/zbuffer.c \
 			   src/sys/framebuffer.c \
 			   src/sys/dma.c \

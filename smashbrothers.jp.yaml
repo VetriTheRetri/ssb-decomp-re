@@ -241,7 +241,7 @@ segments:
       - [0x039E60, c, libultra/io/vimgr]
       - [0x03A170, c, libultra/io/vigetcurrcontext]
       - [0x03A180, hasm, libultra/os/writebackdcacheall]
-      - [0x03A1B0, asm, libultra/os/startthread]
+      - [0x03A1B0, c, libultra/os/startthread]
       - [0x03A300, asm, libultra/io/visetyscale]
       - [0x03A360, asm, libultra/libc/llcvt]
       - [0x03A570, asm, libultra/io/aisetnextbuf]

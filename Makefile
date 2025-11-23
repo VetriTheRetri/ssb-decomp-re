@@ -205,6 +205,11 @@ ifeq ($(VERSION),jp)
 			   src/libultra/gu/cosf.c \
 			   src/libultra/os/settime.c \
 			   src/libultra/io/visetevent.c \
+			   src/libultra/io/pfsselectbank.c \
+			   src/libultra/os/yieldthread.c \
+			   src/libultra/audio/cents2ratio.c \
+			   src/libultra/io/contramwrite.c \
+			   src/libultra/io/pfsgetstatus.c \
 			   src/sys/zbuffer.c \
 			   src/sys/framebuffer.c \
 			   src/sys/dma.c \

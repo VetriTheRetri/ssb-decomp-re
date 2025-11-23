@@ -251,6 +251,10 @@ __osPiDevMgr = 0x8003D7C0;
 __osSetCompare = 0x80035900;
 __osCurrentHandle = 0x8003D7E0;
 __additional_scanline = 0x8003DA2C;
+__osContRamWrite = 0x80036800;
+__osPfsPifRam = 0x8009E780;
+__osContDataCrc = 0x80037BC0;
+__osPfsInodeCacheBank = 0x8003D9C4;
 
 osContStartQuery = 0x80033970;
 osContGetQuery = 0x800339F4;

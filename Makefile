@@ -210,6 +210,8 @@ ifeq ($(VERSION),jp)
 			   src/libultra/audio/cents2ratio.c \
 			   src/libultra/io/contramwrite.c \
 			   src/libultra/io/pfsgetstatus.c \
+			   src/libultra/io/crc.c \
+			   src/libultra/io/pfsisplug.c \
 			   src/sys/zbuffer.c \
 			   src/sys/framebuffer.c \
 			   src/sys/dma.c \

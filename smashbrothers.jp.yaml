@@ -225,8 +225,8 @@ segments:
       - [0x037850, asm, libultra/io/contpfs]
       - [0x0383D0, hasm, libultra/libc/bcmp]
       - [0x0384F0, asm, libultra/io/contramread]
-      - [0x0386F0, asm, libultra/io/crc]
-      - [0x038860, asm, libultra/io/pfsisplug]
+      - [0x0386F0, c, libultra/io/crc]
+      - [0x038860, c, libultra/io/pfsisplug]
       - [0x038BA0, asm, libultra/io/epirawwrite]
       - [0x038D30, asm, libultra/os/settimer]
       - [0x038E10, asm, libultra/libc/xldtob]
@@ -339,7 +339,7 @@ segments:
       - { type: .bss, name: libultra/os/timerintr,    vram: 0x8009E5C0 }
       - { type: bss, name: libultra/io/cartrominit,  vram: 0x8009E600 }
       - { type: bss, name: libultra/io/contpfs,      vram: 0x8009E680 }
-      - { type: bss, name: libultra/io/pfsisplug,    vram: 0x8009E780 }
+      - { type: .bss, name: libultra/io/pfsisplug,    vram: 0x8009E780 }
       - { type: bss, name: libultra/io/vimgr,        vram: 0x8009E7C0 }
 
   - name: scmanager

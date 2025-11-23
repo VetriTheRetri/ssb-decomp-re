@@ -30,6 +30,9 @@ void osCreatePiManager(OSPri pri, OSMesgQueue* cmdQ, OSMesg* cmdBuf, s32 cmdMsgC
     if (__osPiDevMgr.active) {
         return;
     }
+#if defined(REGION_JP)
+	func_8003324C_33E4C();
+#endif
     osCreateMesgQueue(cmdQ, cmdBuf, cmdMsgCnt);
     osCreateMesgQueue(&piEventQueue, (OSMesg*)piEventBuf, 1);
 
@@ -63,3 +66,7 @@ void osCreatePiManager(OSPri pri, OSMesgQueue* cmdQ, OSMesg* cmdBuf, s32 cmdMsgC
         osSetThreadPri(NULL, oldPri);
     }
 }
+
+#if defined(REGION_JP)
+#pragma GLOBAL_ASM("asm/nonmatchings/libultra/io/pimgr/func_8003324C_33E4C.s")
+#endif

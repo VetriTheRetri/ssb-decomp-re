@@ -171,8 +171,8 @@ segments:
       - [0x033B90, c, libultra/io/visetmode]
       - [0x033C00, hasm, libultra/os/probetlb]
       - [0x033CC0, hasm, libultra/os/getcount]
-      - [0x033CD0, asm, libultra/io/pimgr]
-      - [0x033EC0, asm, libultra/io/piacs]
+      - [0x033CD0, c, libultra/io/pimgr]
+      - [0x033EC0, c, libultra/io/piacs]
       - [0x033F80, c, libultra/io/devmgr]
       - [0x034410, c, libultra/io/pirawdma]
       - [0x0344F0, c, libultra/os/seteventmesg]
@@ -268,8 +268,8 @@ segments:
       - [0x03E380, .data, libultra/io/siacs]
       - [0x03E390, .data, libultra/io/controller]
       - [0x03E3A0, .data, libultra/os/initialize]
-      - [0x03E3C0, data, libultra/io/pimgr]
-      - [0x03E3F0, data, libultra/io/piacs]
+      - [0x03E3C0, .data, libultra/io/pimgr]
+      - [0x03E3F0, .data, libultra/io/piacs]
       - [0x03E400, .data, libultra/libc/xprintf]
       - [0x03E450, .data, libultra/os/timerintr]
       - [0x03E460, data, libultra/vimodentsclan1] # osViModeNtscLan1
@@ -332,8 +332,8 @@ segments:
       - { type: .bss, name: libultra/io/controller,   vram: 0x8009CF90 }
       - { type: .bss, name: libultra/os/initialize,   vram: 0x8009D020 }
       - { type: .bss, name: libultra/os/threadsave,   vram: 0x8009D030 }
-      - { type: bss, name: libultra/io/pimgr,        vram: 0x8009D1E0 }
-      - { type: bss, name: libultra/io/piacs,        vram: 0x8009E4A0 }
+      - { type: .bss, name: libultra/io/pimgr,        vram: 0x8009D1E0 }
+      - { type: .bss, name: libultra/io/piacs,        vram: 0x8009E4A0 }
       - { type: .bss, name: libultra/os/seteventmesg, vram: 0x8009E4C0 }
       - { type: .bss, name: libultra/io/leodiskinit,  vram: 0x8009E540 }
       - { type: .bss, name: libultra/os/timerintr,    vram: 0x8009E5C0 }

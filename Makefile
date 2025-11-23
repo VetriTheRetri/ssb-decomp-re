@@ -224,6 +224,12 @@ ifeq ($(VERSION),jp)
 			   src/libultra/io/vimgr.c \
 			   src/libultra/io/vigetcurrcontext.c \
 			   src/libultra/os/startthread.c \
+			   src/libultra/io/visetyscale.c \
+			   src/libultra/libc/llcvt.c \
+			   src/libultra/io/aisetnextbuf.c \
+			   src/libultra/io/ai.c \
+			   src/libultra/io/vigetcurrframebuf.c \
+			   src/libultra/io/spsetpc.c \
 			   src/sys/zbuffer.c \
 			   src/sys/framebuffer.c \
 			   src/sys/dma.c \

@@ -242,12 +242,12 @@ segments:
       - [0x03A170, c, libultra/io/vigetcurrcontext]
       - [0x03A180, hasm, libultra/os/writebackdcacheall]
       - [0x03A1B0, c, libultra/os/startthread]
-      - [0x03A300, asm, libultra/io/visetyscale]
-      - [0x03A360, asm, libultra/libc/llcvt]
-      - [0x03A570, asm, libultra/io/aisetnextbuf]
-      - [0x03A620, asm, libultra/io/ai]
-      - [0x03A650, asm, libultra/io/vigetcurrframebuf]
-      - [0x03A690, asm, libultra/io/spsetpc]
+      - [0x03A300, c, libultra/io/visetyscale]
+      - [0x03A360, c, libultra/libc/llcvt]
+      - [0x03A570, c, libultra/io/aisetnextbuf]
+      - [0x03A620, c, libultra/io/ai]
+      - [0x03A650, c, libultra/io/vigetcurrframebuf]
+      - [0x03A690, c, libultra/io/spsetpc]
       - [0x03A6D0, textbin, rsp/n_aspmain]
       - [0x03B330, textbin, rsp/gspF3DEX2_fifo] # L3DEX2_2.04H.code
       - [0x03C4C0, bin, unk_3C4C0] # other rsp files?
@@ -280,7 +280,7 @@ segments:
       - [0x03E5D0, data, libultra/io/contramread]
       - [0x03E5E0, .data, libultra/libc/xlitob]
       - [0x03E610, .data, libultra/io/vimgr]
-      - [0x03E630, data, libultra/io/aisetnextbuf]
+      - [0x03E630, .data, libultra/io/aisetnextbuf]
       - [0x03E640, .rodata, sys/main]
       - [0x03E660, .rodata, sys/scheduler]
       - [0x03E6C0, .rodata, sys/controller]
@@ -308,7 +308,7 @@ segments:
       - [0x040360, rodata, libultra/gu/libm_vals]
       - [0x040370, .rodata, libultra/audio/cents2ratio]
       - [0x040380, .rodata, libultra/libc/xldtob]
-      - [0x0403E0, rodata, libultra/libc/llcvt]
+      - [0x0403E0, .rodata, libultra/libc/llcvt]
       - { start: 0x0403F0, type: databin, name: rsp/n_aspmain,      linker_section_order: .rodata }
       - { start: 0x0406A0, type: databin, name: rsp/gspF3DEX2_fifo, linker_section_order: .rodata }
       - { type: .bss, name: sys/main,                 vram: 0x8003FEC0 }

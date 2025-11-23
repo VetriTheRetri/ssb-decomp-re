@@ -212,6 +212,17 @@ ifeq ($(VERSION),jp)
 			   src/libultra/io/pfsgetstatus.c \
 			   src/libultra/io/crc.c \
 			   src/libultra/io/pfsisplug.c \
+			   src/libultra/os/settimer.c \
+			   src/libultra/libc/xldtob.c \
+			   src/libultra/libc/ldiv.c \
+			   src/libultra/libc/xlitob.c \
+			   src/libultra/io/sirawwrite.c \
+			   src/libultra/io/dpsetnextbuf.c \
+			   src/libultra/io/dp.c \
+			   src/libultra/io/spsetstat.c \
+			   src/libultra/io/spgetstat.c \
+			   src/libultra/io/vimgr.c \
+			   src/libultra/io/vigetcurrcontext.c \
 			   src/sys/zbuffer.c \
 			   src/sys/framebuffer.c \
 			   src/sys/dma.c \

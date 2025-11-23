@@ -228,19 +228,19 @@ segments:
       - [0x0386F0, c, libultra/io/crc]
       - [0x038860, c, libultra/io/pfsisplug]
       - [0x038BA0, asm, libultra/io/epirawwrite]
-      - [0x038D30, asm, libultra/os/settimer]
-      - [0x038E10, asm, libultra/libc/xldtob]
-      - [0x0398D0, asm, libultra/libc/ldiv]
-      - [0x039A60, asm, libultra/libc/xlitob]
-      - [0x039D00, asm, libultra/io/sirawwrite]
-      - [0x039D50, asm, libultra/io/dpsetnextbuf]
-      - [0x039E00, asm, libultra/io/dp]
-      - [0x039E30, asm, libultra/io/spsetstat]
-      - [0x039E40, asm, libultra/io/spgetstat]
+      - [0x038D30, c, libultra/os/settimer]
+      - [0x038E10, c, libultra/libc/xldtob]
+      - [0x0398D0, c, libultra/libc/ldiv]
+      - [0x039A60, c, libultra/libc/xlitob]
+      - [0x039D00, c, libultra/io/sirawwrite]
+      - [0x039D50, c, libultra/io/dpsetnextbuf]
+      - [0x039E00, c, libultra/io/dp]
+      - [0x039E30, c, libultra/io/spsetstat]
+      - [0x039E40, c, libultra/io/spgetstat]
       - [0x039E50, pad, padding_39E50]
-      - [0x039E60, asm, libultra/io/vimgr]
-      - [0x03A170, asm, libultra/io/vigetcurrcontext]
-      - [0x03A180, asm, libultra/os/writebackdcacheall]
+      - [0x039E60, c, libultra/io/vimgr]
+      - [0x03A170, c, libultra/io/vigetcurrcontext]
+      - [0x03A180, hasm, libultra/os/writebackdcacheall]
       - [0x03A1B0, asm, libultra/os/startthread]
       - [0x03A300, asm, libultra/io/visetyscale]
       - [0x03A360, asm, libultra/libc/llcvt]
@@ -278,8 +278,8 @@ segments:
       - [0x03E5B0, data, libultra/io/cartrominit]
       - [0x03E5C0, data, libultra/io/contpfs]
       - [0x03E5D0, data, libultra/io/contramread]
-      - [0x03E5E0, data, libultra/libc/xlitob]
-      - [0x03E610, data, libultra/io/vimgr]
+      - [0x03E5E0, .data, libultra/libc/xlitob]
+      - [0x03E610, .data, libultra/io/vimgr]
       - [0x03E630, data, libultra/io/aisetnextbuf]
       - [0x03E640, .rodata, sys/main]
       - [0x03E660, .rodata, sys/scheduler]
@@ -307,7 +307,7 @@ segments:
       - [0x040310, .rodata, libultra/gu/cosf]
       - [0x040360, rodata, libultra/gu/libm_vals]
       - [0x040370, .rodata, libultra/audio/cents2ratio]
-      - [0x040380, rodata, libultra/libc/xldtob]
+      - [0x040380, .rodata, libultra/libc/xldtob]
       - [0x0403E0, rodata, libultra/libc/llcvt]
       - { start: 0x0403F0, type: databin, name: rsp/n_aspmain,      linker_section_order: .rodata }
       - { start: 0x0406A0, type: databin, name: rsp/gspF3DEX2_fifo, linker_section_order: .rodata }
@@ -340,7 +340,7 @@ segments:
       - { type: bss, name: libultra/io/cartrominit,  vram: 0x8009E600 }
       - { type: bss, name: libultra/io/contpfs,      vram: 0x8009E680 }
       - { type: .bss, name: libultra/io/pfsisplug,    vram: 0x8009E780 }
-      - { type: bss, name: libultra/io/vimgr,        vram: 0x8009E7C0 }
+      - { type: .bss, name: libultra/io/vimgr,        vram: 0x8009E7C0 }
 
   - name: scmanager
     type: code

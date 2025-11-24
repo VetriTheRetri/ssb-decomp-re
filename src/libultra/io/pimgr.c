@@ -17,7 +17,8 @@ OSPiHandle __Dom2SpeedParam ALIGNED(0x8);
 OSPiHandle* __osCurrentHandle[2] ALIGNED(0x8) = { &__Dom1SpeedParam, &__Dom2SpeedParam };
 
 #if defined(REGION_JP)
-static void func_8003324C_33E4C(void);
+#define SPEED_PARAM_FUNC createSpeedParam
+static void SPEED_PARAM_FUNC(void);
 #endif
 
 void osCreatePiManager(OSPri pri, OSMesgQueue* cmdQ, OSMesg* cmdBuf, s32 cmdMsgCnt) {
@@ -29,7 +30,7 @@ void osCreatePiManager(OSPri pri, OSMesgQueue* cmdQ, OSMesg* cmdBuf, s32 cmdMsgC
         return;
     }
 #if defined(REGION_JP)
-	func_8003324C_33E4C();
+	SPEED_PARAM_FUNC();
 #endif
     osCreateMesgQueue(cmdQ, cmdBuf, cmdMsgCnt);
     osCreateMesgQueue(&piEventQueue, (OSMesg*)piEventBuf, 1);
@@ -66,7 +67,7 @@ void osCreatePiManager(OSPri pri, OSMesgQueue* cmdQ, OSMesg* cmdBuf, s32 cmdMsgC
 }
 
 #if defined(REGION_JP)
-static void func_8003324C_33E4C(void) {
+static void SPEED_PARAM_FUNC(void) {
 	__Dom1SpeedParam.latency = IO_READ(PI_BSD_DOM1_LAT_REG);
     __Dom1SpeedParam.pulse = IO_READ(PI_BSD_DOM1_PWD_REG);
     __Dom1SpeedParam.pageSize = IO_READ(PI_BSD_DOM1_PGS_REG);

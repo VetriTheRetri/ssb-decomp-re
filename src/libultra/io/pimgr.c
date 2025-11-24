@@ -20,6 +20,7 @@ OSPiHandle* __osCurrentHandle[2] ALIGNED(0x8) = { &__Dom1SpeedParam, &__Dom2Spee
 extern OSPiHandle CartRomHandle;
 extern OSPiHandle LeoDiskHandle;
 OSPiHandle* __osCurrentHandle[2] ALIGNED(0x8) = { &CartRomHandle, &LeoDiskHandle };
+static void func_8003324C_33E4C(void);
 #endif
 
 void osCreatePiManager(OSPri pri, OSMesgQueue* cmdQ, OSMesg* cmdBuf, s32 cmdMsgCnt) {
@@ -68,5 +69,17 @@ void osCreatePiManager(OSPri pri, OSMesgQueue* cmdQ, OSMesg* cmdBuf, s32 cmdMsgC
 }
 
 #if defined(REGION_JP)
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/io/pimgr/func_8003324C_33E4C.s")
+static void func_8003324C_33E4C(void) {
+	CartRomHandle.latency = IO_READ(PI_BSD_DOM1_LAT_REG);
+    CartRomHandle.pulse = IO_READ(PI_BSD_DOM1_PWD_REG);
+    CartRomHandle.pageSize = IO_READ(PI_BSD_DOM1_PGS_REG);
+    CartRomHandle.relDuration = IO_READ(PI_BSD_DOM1_RLS_REG);
+    CartRomHandle.domain = 0;
+
+    LeoDiskHandle.latency = IO_READ(PI_BSD_DOM2_LAT_REG);
+    LeoDiskHandle.pulse = IO_READ(PI_BSD_DOM2_PWD_REG);
+    LeoDiskHandle.pageSize = IO_READ(PI_BSD_DOM2_PGS_REG);
+    LeoDiskHandle.relDuration = IO_READ(PI_BSD_DOM2_RLS_REG);
+    LeoDiskHandle.domain = 1;
+}
 #endif

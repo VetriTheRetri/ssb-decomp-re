@@ -179,6 +179,8 @@ ifeq ($(VERSION),jp)
 			   src/libultra/io/sptaskyield.c \
 			   src/libultra/gu/mtxutil.c \
 			   src/libultra/io/visetmode.c \
+			   src/libultra/io/pimgr.c \
+			   src/libultra/io/piacs.c \
 			   src/libultra/io/devmgr.c \
 			   src/libultra/io/pirawdma.c \
 			   src/libultra/os/seteventmesg.c \

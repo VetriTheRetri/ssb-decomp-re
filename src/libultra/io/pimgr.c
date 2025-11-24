@@ -12,14 +12,13 @@ static OSMesg piEventBuf[1];
 
 OSDevMgr __osPiDevMgr = { 0 };
 OSPiHandle* __osPiTable = NULL;
-#if defined(REGION_US)
 OSPiHandle __Dom1SpeedParam ALIGNED(0x8);
 OSPiHandle __Dom2SpeedParam ALIGNED(0x8);
 OSPiHandle* __osCurrentHandle[2] ALIGNED(0x8) = { &__Dom1SpeedParam, &__Dom2SpeedParam };
-#else
-extern OSPiHandle CartRomHandle;
-extern OSPiHandle LeoDiskHandle;
-OSPiHandle* __osCurrentHandle[2] ALIGNED(0x8) = { &CartRomHandle, &LeoDiskHandle };
+
+#if defined(REGION_JP)
+#define SPEED_PARAM_FUNC createSpeedParam
+static void SPEED_PARAM_FUNC(void);
 #endif
 
 void osCreatePiManager(OSPri pri, OSMesgQueue* cmdQ, OSMesg* cmdBuf, s32 cmdMsgCnt) {
@@ -30,6 +29,9 @@ void osCreatePiManager(OSPri pri, OSMesgQueue* cmdQ, OSMesg* cmdBuf, s32 cmdMsgC
     if (__osPiDevMgr.active) {
         return;
     }
+#if defined(REGION_JP)
+	SPEED_PARAM_FUNC();
+#endif
     osCreateMesgQueue(cmdQ, cmdBuf, cmdMsgCnt);
     osCreateMesgQueue(&piEventQueue, (OSMesg*)piEventBuf, 1);
 
@@ -63,3 +65,19 @@ void osCreatePiManager(OSPri pri, OSMesgQueue* cmdQ, OSMesg* cmdBuf, s32 cmdMsgC
         osSetThreadPri(NULL, oldPri);
     }
 }
+
+#if defined(REGION_JP)
+static void SPEED_PARAM_FUNC(void) {
+	__Dom1SpeedParam.latency = IO_READ(PI_BSD_DOM1_LAT_REG);
+    __Dom1SpeedParam.pulse = IO_READ(PI_BSD_DOM1_PWD_REG);
+    __Dom1SpeedParam.pageSize = IO_READ(PI_BSD_DOM1_PGS_REG);
+    __Dom1SpeedParam.relDuration = IO_READ(PI_BSD_DOM1_RLS_REG);
+    __Dom1SpeedParam.domain = PI_DOMAIN1;
+
+    __Dom2SpeedParam.latency = IO_READ(PI_BSD_DOM2_LAT_REG);
+    __Dom2SpeedParam.pulse = IO_READ(PI_BSD_DOM2_PWD_REG);
+    __Dom2SpeedParam.pageSize = IO_READ(PI_BSD_DOM2_PGS_REG);
+    __Dom2SpeedParam.relDuration = IO_READ(PI_BSD_DOM2_RLS_REG);
+    __Dom2SpeedParam.domain = PI_DOMAIN2;
+}
+#endif

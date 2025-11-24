@@ -72,12 +72,12 @@ static void SPEED_PARAM_FUNC(void) {
     __Dom1SpeedParam.pulse = IO_READ(PI_BSD_DOM1_PWD_REG);
     __Dom1SpeedParam.pageSize = IO_READ(PI_BSD_DOM1_PGS_REG);
     __Dom1SpeedParam.relDuration = IO_READ(PI_BSD_DOM1_RLS_REG);
-    __Dom1SpeedParam.domain = 0;
+    __Dom1SpeedParam.domain = PI_DOMAIN1;
 
     __Dom2SpeedParam.latency = IO_READ(PI_BSD_DOM2_LAT_REG);
     __Dom2SpeedParam.pulse = IO_READ(PI_BSD_DOM2_PWD_REG);
     __Dom2SpeedParam.pageSize = IO_READ(PI_BSD_DOM2_PGS_REG);
     __Dom2SpeedParam.relDuration = IO_READ(PI_BSD_DOM2_RLS_REG);
-    __Dom2SpeedParam.domain = 1;
+    __Dom2SpeedParam.domain = PI_DOMAIN2;
 }
 #endif

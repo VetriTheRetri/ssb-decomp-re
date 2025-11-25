@@ -207,7 +207,7 @@ segments:
       - [0x036830, c, libultra/audio/alCopy]
       - [0x0368B0, c, libultra/os/resetglobalintmask]
       - [0x036910, hasm, libultra/os/interrupt]
-      - [0x036950, asm, libultra/io/vi]
+      - [0x036950, c, libultra/io/vi]
       - [0x036A90, asm, libultra/io/viswapcontext]
       - [0x036D90, c, libultra/io/pigetcmdq]
       - [0x036DC0, c, libultra/gu/cosf]
@@ -262,7 +262,6 @@ segments:
       - [0x03DBC0, .data, sys/debug]
       - [0x03E080, .data, libultra/sp/sprite]
       - [0x03E090, data, libultra/n_audio/n_env]
-      # - [0x03DF30, data, libultra/io/vimodepallan1] # osViModePalLan1
       - [0x03E340, data, libultra/os/exceptasm]
       - [0x03E360, .data, libultra/os/thread]
       - [0x03E380, .data, libultra/io/siacs]
@@ -274,7 +273,8 @@ segments:
       - [0x03E450, .data, libultra/os/timerintr]
       - [0x03E460, data, libultra/vimodentsclan1] # osViModeNtscLan1
       # - [0x03E4B0, data, libultra/vimodempallan1] # osViModeMpalLan1
-      - [0x03E4B0, data, libultra/io/vi]
+      - [0x03E4B0, .data, libultra/io/vi]
+      - [0x03E520, data, libultra/io/vimodepallan1] # osViModePalLan1
       - [0x03E5B0, data, libultra/io/cartrominit]
       - [0x03E5C0, data, libultra/io/contpfs]
       - [0x03E5D0, data, libultra/io/contramread]

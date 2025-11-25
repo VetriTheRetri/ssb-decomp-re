@@ -203,6 +203,7 @@ ifeq ($(VERSION),jp)
 			   src/libultra/os/getactivequeue.c \
 			   src/libultra/audio/alCopy.c \
 			   src/libultra/os/resetglobalintmask.c \
+			   src/libultra/io/vi.c \
 			   src/libultra/io/pigetcmdq.c \
 			   src/libultra/gu/cosf.c \
 			   src/libultra/os/settime.c \

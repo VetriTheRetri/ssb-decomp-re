@@ -204,10 +204,12 @@ ifeq ($(VERSION),jp)
 			   src/libultra/audio/alCopy.c \
 			   src/libultra/os/resetglobalintmask.c \
 			   src/libultra/io/vi.c \
+			   src/libultra/io/viswapcontext.c \
 			   src/libultra/io/pigetcmdq.c \
 			   src/libultra/gu/cosf.c \
 			   src/libultra/os/settime.c \
 			   src/libultra/io/visetevent.c \
+			   src/libultra/io/cartrominit.c \
 			   src/libultra/io/pfsselectbank.c \
 			   src/libultra/os/yieldthread.c \
 			   src/libultra/audio/cents2ratio.c \
@@ -374,7 +376,11 @@ build/src/libultra/io/leodiskinit.o: OPTFLAGS := -O2 -mips2
 build/src/libultra/io/leodiskinit.o: CC := $(IDO5)
 build/src/libultra/io/leointerrupt.o: OPTFLAGS := -O2 -mips2
 build/src/libultra/io/leointerrupt.o: CC := $(IDO5)
+ifeq ($(VERSION),jp)
+build/src/libultra/io/cartrominit.o: OPTFLAGS := -O1 -mips2
+else
 build/src/libultra/io/cartrominit.o: OPTFLAGS := -O2 -mips2
+endif
 build/src/libultra/io/cartrominit.o: CC := $(IDO5)
 build/src/libultra/os/initialize.o: OPTFLAGS := -O1 -mips2
 build/src/libultra/os/initialize.o: CC := $(IDO5)

@@ -208,12 +208,12 @@ segments:
       - [0x0368B0, c, libultra/os/resetglobalintmask]
       - [0x036910, hasm, libultra/os/interrupt]
       - [0x036950, c, libultra/io/vi]
-      - [0x036A90, asm, libultra/io/viswapcontext]
+      - [0x036A90, c, libultra/io/viswapcontext]
       - [0x036D90, c, libultra/io/pigetcmdq]
       - [0x036DC0, c, libultra/gu/cosf]
       - [0x036F30, c, libultra/os/settime]
       - [0x036F60, c, libultra/io/visetevent]
-      - [0x036FD0, asm, libultra/io/cartrominit]
+      - [0x036FD0, c, libultra/io/cartrominit]
       - [0x0370D0, c, libultra/io/pfsselectbank]
       - [0x037150, hasm, libultra/os/setfpccsr]
       - [0x037160, asm, libultra/io/epirawread]
@@ -275,7 +275,6 @@ segments:
       # - [0x03E4B0, data, libultra/vimodempallan1] # osViModeMpalLan1
       - [0x03E4B0, .data, libultra/io/vi]
       - [0x03E520, data, libultra/io/vimodepallan1] # osViModePalLan1
-      - [0x03E5B0, data, libultra/io/cartrominit]
       - [0x03E5C0, data, libultra/io/contpfs]
       - [0x03E5D0, data, libultra/io/contramread]
       - [0x03E5E0, .data, libultra/libc/xlitob]
@@ -337,7 +336,7 @@ segments:
       - { type: .bss, name: libultra/os/seteventmesg, vram: 0x8009E4C0 }
       - { type: .bss, name: libultra/io/leodiskinit,  vram: 0x8009E540 }
       - { type: .bss, name: libultra/os/timerintr,    vram: 0x8009E5C0 }
-      - { type: bss, name: libultra/io/cartrominit,  vram: 0x8009E600 }
+      - { type: .bss, name: libultra/io/cartrominit,  vram: 0x8009E600 }
       - { type: bss, name: libultra/io/contpfs,      vram: 0x8009E680 }
       - { type: .bss, name: libultra/io/pfsisplug,    vram: 0x8009E780 }
       - { type: .bss, name: libultra/io/vimgr,        vram: 0x8009E7C0 }

@@ -34,28 +34,30 @@ OSPiHandle* osCartRomInit(void) {
 
     WAIT_ON_IOBUSY(stat);
 
-    latency = IO_READ(PI_BSD_DOM1_LAT_REG);
-    pageSize = IO_READ(PI_BSD_DOM1_PGS_REG);
-    relDuration = IO_READ(PI_BSD_DOM1_RLS_REG);
-    pulse = IO_READ(PI_BSD_DOM1_PWD_REG);
-
     IO_WRITE(PI_BSD_DOM1_LAT_REG, 0xFF);
     IO_WRITE(PI_BSD_DOM1_PGS_REG, 0);
     IO_WRITE(PI_BSD_DOM1_RLS_REG, 3);
     IO_WRITE(PI_BSD_DOM1_PWD_REG, 0xFF);
 
     value = IO_READ(__CartRomHandle.baseAddress);
-    __CartRomHandle.latency = value & 0xFF;
-    __CartRomHandle.pageSize = (value >> 0x10) & 0xF;
-    __CartRomHandle.relDuration = (value >> 0x14) & 0xF;
-    __CartRomHandle.pulse = (value >> 8) & 0xFF;
 
-    IO_WRITE(PI_BSD_DOM1_LAT_REG, latency);
-    IO_WRITE(PI_BSD_DOM1_PGS_REG, pageSize);
-    IO_WRITE(PI_BSD_DOM1_RLS_REG, relDuration);
-    IO_WRITE(PI_BSD_DOM1_PWD_REG, pulse);
+	__CartRomHandle.latency = (value >> 0) & 0xFF;
+	__CartRomHandle.pulse = (value >> 8) & 0xFF;
+	__CartRomHandle.pageSize = (value >> 0x10) & 0xF;
+	__CartRomHandle.relDuration = (value >> 0x14) & 0xF;
 
-    saveMask = __osDisableInt();
+	IO_WRITE(PI_BSD_DOM1_LAT_REG, __CartRomHandle.latency);
+	IO_WRITE(PI_BSD_DOM1_PGS_REG, __CartRomHandle.pageSize);
+	IO_WRITE(PI_BSD_DOM1_RLS_REG, __CartRomHandle.relDuration);
+	IO_WRITE(PI_BSD_DOM1_PWD_REG, __CartRomHandle.pulse);
+
+	__osCurrentHandle[__CartRomHandle.domain]->type = (u8) __CartRomHandle.type;
+	__osCurrentHandle[__CartRomHandle.domain]->latency = (u8) __CartRomHandle.latency;
+	__osCurrentHandle[__CartRomHandle.domain]->pageSize = (u8) __CartRomHandle.pageSize;
+	__osCurrentHandle[__CartRomHandle.domain]->relDuration = (u8) __CartRomHandle.relDuration;
+	__osCurrentHandle[__CartRomHandle.domain]->pulse = (u8) __CartRomHandle.pulse;
+
+	saveMask = __osDisableInt();
     __CartRomHandle.next = __osPiTable;
     __osPiTable = &__CartRomHandle;
     __osRestoreInt(saveMask);

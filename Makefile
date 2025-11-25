@@ -157,6 +157,7 @@ ifeq ($(VERSION),jp)
 			   src/libultra/os/threadsave.c \
 			   src/libultra/os/createmesgqueue.c \
 			   src/libultra/gu/sinf.c \
+			   src/libultra/io/sptask.c \
 			   src/libultra/os/destroythread.c \
 			   src/libultra/libc/ll.c \
 			   src/libultra/os/thread.c \

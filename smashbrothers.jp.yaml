@@ -141,7 +141,7 @@ segments:
       - [0x030BC0, c, libultra/os/recvmesg]
       - [0x030D00, hasm, libultra/os/setintmask]
       - [0x030DA0, c, libultra/gu/sinf]
-      - [0x030F60, asm, libultra/io/sptask]
+      - [0x030F60, c, libultra/io/sptask]
       - [0x031250, c, libultra/os/destroythread]
       - [0x031360, c, libultra/libc/ll]
       - [0x031620, asm, libultra/os/exceptasm] # differs from us
@@ -323,9 +323,9 @@ segments:
       - { type: .bss, name: sys/audio,                vram: 0x800472C0 }
       - { type: .bss, name: sys/debug,                vram: 0x8009A9F0 }
       - { type: .bss, name: libultra/sp/sprite,       vram: 0x8009BDB0 }
-      - { type: bss, name: libultra/n_audio/n_env,   vram: 0x8009BDC0 }
-      - { type: bss, name: libultra/io/sptask,       vram: 0x8009BE30 }
-      # probably something else here
+      - { type: bss, name: libultra/n_audio/n_env,    vram: 0x8009BDC0 }
+      - { type: .bss, name: libultra/io/sptask,       vram: 0x8009BE30 }
+      - { type: bss, name: unk,                       vram: 0x8009BE70 } # leointerrupt?
       - { type: .bss, name: libultra/io/motor,        vram: 0x8009CE70 }
       - { type: .bss, name: libultra/io/siacs,        vram: 0x8009CF70 }
       - { type: .bss, name: libultra/io/controller,   vram: 0x8009CF90 }

@@ -196,6 +196,7 @@ ifeq ($(VERSION),jp)
 			   src/libultra/io/viswapbuf.c \
 			   src/libultra/gu/mtxxfmf.c \
 			   src/libultra/gu/mtxcatf.c \
+			   src/libultra/io/epirawdma.c \
 			   src/libultra/os/gettime.c \
 			   src/libultra/os/timerintr.c \
 			   src/libultra/os/setglobalintmask.c \
@@ -215,6 +216,7 @@ ifeq ($(VERSION),jp)
 			   src/libultra/audio/cents2ratio.c \
 			   src/libultra/io/contramwrite.c \
 			   src/libultra/io/pfsgetstatus.c \
+			   src/libultra/io/contpfs.c \
 			   src/libultra/io/crc.c \
 			   src/libultra/io/pfsisplug.c \
 			   src/libultra/os/settimer.c \

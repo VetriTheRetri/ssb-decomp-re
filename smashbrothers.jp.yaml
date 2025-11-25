@@ -325,7 +325,7 @@ segments:
       - { type: .bss, name: libultra/sp/sprite,       vram: 0x8009BDB0 }
       - { type: bss, name: libultra/n_audio/n_env,    vram: 0x8009BDC0 }
       - { type: .bss, name: libultra/io/sptask,       vram: 0x8009BE30 }
-      - { type: bss, name: unk,                       vram: 0x8009BE70 } # leointerrupt?
+      - { type: .bss, name: libultra/io/leointerrupt, vram: 0x8009BE70 }
       - { type: .bss, name: libultra/io/motor,        vram: 0x8009CE70 }
       - { type: .bss, name: libultra/io/siacs,        vram: 0x8009CF70 }
       - { type: .bss, name: libultra/io/controller,   vram: 0x8009CF90 }

@@ -6,9 +6,7 @@
 
 extern OSPiHandle *__osDiskHandle;
 
-#if 0
 u8 leoDiskStack[OS_PIM_STACKSIZE] ALIGNED(0x10);
-#endif
 
 static void __osLeoAbnormalResume(void);
 static void __osLeoResume(void);

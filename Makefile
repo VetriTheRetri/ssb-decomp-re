@@ -200,6 +200,7 @@ ifeq ($(VERSION),jp)
 			   src/libultra/os/gettime.c \
 			   src/libultra/os/timerintr.c \
 			   src/libultra/os/setglobalintmask.c \
+			   src/libultra/io/aisetfreq.c \
 			   src/libultra/gu/normalize.c \
 			   src/libultra/os/getactivequeue.c \
 			   src/libultra/audio/alCopy.c \
@@ -219,6 +220,7 @@ ifeq ($(VERSION),jp)
 			   src/libultra/io/contpfs.c \
 			   src/libultra/io/crc.c \
 			   src/libultra/io/pfsisplug.c \
+			   src/libultra/io/contramread.c \
 			   src/libultra/os/settimer.c \
 			   src/libultra/libc/xldtob.c \
 			   src/libultra/libc/ldiv.c \
@@ -342,7 +344,11 @@ build/src/libultra/io/epirawread.o: OPTFLAGS := -O2 -mips2
 build/src/libultra/io/epirawread.o: CC := $(IDO5)
 build/src/libultra/io/contramwrite.o: OPTFLAGS := -O2 -mips2
 build/src/libultra/io/contramwrite.o: CC := $(IDO5)
+ifeq ($(VERSION),jp)
+build/src/libultra/io/aisetfreq.o: OPTFLAGS := -O1 -mips2
+else
 build/src/libultra/io/aisetfreq.o: OPTFLAGS := -O2 -mips2
+endif
 build/src/libultra/io/aisetfreq.o: CC := $(IDO5)
 build/src/libultra/io/epirawdma.o: OPTFLAGS := -O2 -mips2
 build/src/libultra/io/epirawdma.o: CC := $(IDO5)

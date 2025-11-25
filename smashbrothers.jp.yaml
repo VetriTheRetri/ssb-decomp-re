@@ -199,7 +199,7 @@ segments:
       - [0x035E30, c, libultra/os/gettime]
       - [0x035EC0, c, libultra/os/timerintr]
       - [0x0362C0, c, libultra/os/setglobalintmask]
-      - [0x036310, asm, libultra/io/aisetfreq]
+      - [0x036310, c, libultra/io/aisetfreq]
       - [0x036470, c, libultra/gu/normalize]
       - [0x036500, hasm, libultra/os/setcompare]
       - [0x036510, c, libultra/os/getactivequeue]

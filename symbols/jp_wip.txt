@@ -186,7 +186,6 @@ __cosf = 0x800361C0;
 sqrtf = 0x80033960;
 __ull_to_f = 0x80039938;
 __libm_qnan_f = 0x8003F760;
-n_syn = 0x8003D724;
 alCents2Ratio = 0x800367B0;
 osAiSetFrequency = 0x80035710;
 n_alInit = 0x8002CC38;

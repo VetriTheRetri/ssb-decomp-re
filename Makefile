@@ -198,6 +198,7 @@ ifeq ($(VERSION),jp)
 			   src/libultra/gu/mtxxfmf.c \
 			   src/libultra/gu/mtxcatf.c \
 			   src/libultra/io/epirawdma.c \
+			   src/libultra/io/sptaskyielded.c \
 			   src/libultra/os/gettime.c \
 			   src/libultra/os/timerintr.c \
 			   src/libultra/os/setglobalintmask.c \
@@ -214,6 +215,7 @@ ifeq ($(VERSION),jp)
 			   src/libultra/io/visetevent.c \
 			   src/libultra/io/cartrominit.c \
 			   src/libultra/io/pfsselectbank.c \
+			   src/libultra/io/epirawread.c \
 			   src/libultra/os/yieldthread.c \
 			   src/libultra/audio/cents2ratio.c \
 			   src/libultra/io/contramwrite.c \
@@ -221,6 +223,7 @@ ifeq ($(VERSION),jp)
 			   src/libultra/io/contpfs.c \
 			   src/libultra/io/crc.c \
 			   src/libultra/io/pfsisplug.c \
+			   src/libultra/io/epirawwrite.c \
 			   src/libultra/io/contramread.c \
 			   src/libultra/os/settimer.c \
 			   src/libultra/libc/xldtob.c \
@@ -341,7 +344,11 @@ build/src/libultra/io/viswapcontext.o: OPTFLAGS := -O2 -mips2
 build/src/libultra/io/viswapcontext.o: CC := $(IDO5)
 build/src/libultra/io/pfsselectbank.o: OPTFLAGS := -O2 -mips2
 build/src/libultra/io/pfsselectbank.o: CC := $(IDO5)
+ifeq ($(VERSION),jp)
+build/src/libultra/io/epirawread.o: OPTFLAGS := -O1 -mips2
+else
 build/src/libultra/io/epirawread.o: OPTFLAGS := -O2 -mips2
+endif
 build/src/libultra/io/epirawread.o: CC := $(IDO5)
 build/src/libultra/io/contramwrite.o: OPTFLAGS := -O2 -mips2
 build/src/libultra/io/contramwrite.o: CC := $(IDO5)
@@ -351,7 +358,11 @@ else
 build/src/libultra/io/aisetfreq.o: OPTFLAGS := -O2 -mips2
 endif
 build/src/libultra/io/aisetfreq.o: CC := $(IDO5)
+ifeq ($(VERSION),jp)
+build/src/libultra/io/epirawdma.o: OPTFLAGS := -O1 -mips2
+else
 build/src/libultra/io/epirawdma.o: OPTFLAGS := -O2 -mips2
+endif
 build/src/libultra/io/epirawdma.o: CC := $(IDO5)
 build/src/libultra/gu/mtxcatf.o: OPTFLAGS := -O2 -mips2
 build/src/libultra/gu/mtxcatf.o: CC := $(IDO5)
@@ -375,7 +386,11 @@ build/src/libultra/io/crc.o: OPTFLAGS := -O2 -mips2
 build/src/libultra/io/crc.o: CC := $(IDO5)
 build/src/libultra/io/pfsisplug.o: OPTFLAGS := -O1 -mips2
 build/src/libultra/io/pfsisplug.o: CC := $(IDO5)
+ifeq ($(VERSION),jp)
+build/src/libultra/io/epirawwrite.o: OPTFLAGS := -O1 -mips2
+else
 build/src/libultra/io/epirawwrite.o: OPTFLAGS := -O2 -mips2
+endif
 build/src/libultra/io/epirawwrite.o: CC := $(IDO5)
 build/src/libultra/os/seteventmesg.o: OPTFLAGS := -O1 -mips2
 build/src/libultra/os/seteventmesg.o: CC := $(IDO5)

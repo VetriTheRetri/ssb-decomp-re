@@ -180,6 +180,7 @@ gGCCurrentProcess = 0x80046A50;
 gGCCurrentCamera = 0x80046A48;
 gGCCurrentDisplay = 0x80046A4C;
 scManagerRunPrintGObjStatus = 0x800A1060;
+__osPfsLastChannel = 0x8003D9D0; // type:s32
 
 __sinf = 0x800301A0;
 __cosf = 0x800361C0;

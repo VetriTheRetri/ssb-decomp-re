@@ -214,7 +214,6 @@ __osRcpImTable = 0x8003F4D0;
 D_8003F4D0_400D0 = __osRcpImTable;
 __osIntOffTable = 0x8003F1B0;
 __osIntTable = 0x8003F1D0;
-__osHwIntTable = 0x8003D380;
 osUnmapTLBAll = 0x800342B0;
 osResetType = 0x8000030C;
 osAppNMIBuffer = 0x8000031C;

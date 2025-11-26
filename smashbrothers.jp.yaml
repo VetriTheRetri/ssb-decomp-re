@@ -144,7 +144,7 @@ segments:
       - [0x030F60, c, libultra/io/sptask]
       - [0x031250, c, libultra/os/destroythread]
       - [0x031360, c, libultra/libc/ll]
-      - [0x031620, asm, libultra/os/exceptasm] # differs from us
+      - [0x031620, hasm, libultra/os/exceptasm] # differs from us
       - [0x031F30, c, libultra/os/thread]
       - [0x031F70, hasm, libultra/libc/bzero]
       - [0x032010, c, libultra/io/leointerrupt]
@@ -262,7 +262,7 @@ segments:
       - [0x03DBC0, .data, sys/debug]
       - [0x03E080, .data, libultra/sp/sprite]
       - [0x03E090, data, libultra/n_audio/n_env]
-      - [0x03E340, data, libultra/os/exceptasm]
+      - [0x03E340, .data, libultra/os/exceptasm]
       - [0x03E360, .data, libultra/os/thread]
       - [0x03E380, .data, libultra/io/siacs]
       - [0x03E390, .data, libultra/io/controller]
@@ -300,7 +300,7 @@ segments:
       - [0x03FE90, .rodata, libultra/n_audio/audio09]
       - [0x0400D0, .rodata, libultra/os/setintmask]
       - [0x040150, .rodata, libultra/gu/sinf]
-      - [0x0401A0, rodata, libultra/os/exceptasm]
+      - [0x0401A0, .rodata, libultra/os/exceptasm]
       - [0x0401F0, .rodata, libultra/io/devmgr]
       - [0x040210, .rodata, libultra/libc/xprintf]
       - [0x040310, .rodata, libultra/gu/cosf]

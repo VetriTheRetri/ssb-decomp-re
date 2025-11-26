@@ -41,12 +41,6 @@ else ifeq ($(UNAME_S),Linux)
     BINUTILS_PREFIX := mips-linux-gnu
 endif
 
-# Support python venv's if one is installed.
-PYTHON_VENV = .venv/bin/python3
-ifneq "$(wildcard $(PYTHON_VENV) )" ""
-  PYTHON = $(PYTHON_VENV)
-endif
-
 ifeq ($(VERBOSE),0)
   V := @
 endif
@@ -74,6 +68,12 @@ PYTHON   := python3
 INCLUDES := -Iinclude -Isrc
 DEFINES  := -DF3DEX_GBI_2 -D_MIPS_SZLONG=32 -DNDEBUG -DN_MICRO -D_FINALROM
 OPTFLAGS := -O2 -mips2
+
+# Support python venv's if one is installed.
+PYTHON_VENV = .venv/bin/python3
+ifneq "$(wildcard $(PYTHON_VENV) )" ""
+  PYTHON = $(PYTHON_VENV)
+endif
 
 ifeq ($(NON_MATCHING),1)
 DEFINES += -DNON_MATCHING
@@ -105,6 +105,7 @@ AS              := $(BINUTILS_PREFIX)-as
 LD              := $(BINUTILS_PREFIX)-ld
 OBJCOPY         := $(BINUTILS_PREFIX)-objcopy
 OBJDUMP         := $(BINUTILS_PREFIX)-objdump
+STRIP           := $(BINUTILS_PREFIX)-strip
 ASM_PROC        := $(PYTHON) tools/asm-processor/build.py
 CCFLAGS         := -c -G 0 -non_shared -Xfullwarn -Xcpluscomm $(INCLUDES) $(DEFINES) -Wab,-r4300_mul -woff 649,838,712,516,624,568
 ASFLAGS         := -EB -I include -march=vr4300 -mabi=32
@@ -406,6 +407,8 @@ else
 build/src/libultra/io/cartrominit.o: OPTFLAGS := -O2 -mips2
 endif
 build/src/libultra/io/cartrominit.o: CC := $(IDO5)
+build/src/libultra/os/exceptasm.o: OPTFLAGS := -O1 -mips3 -32
+build/src/libultra/os/exceptasm.o: CC := $(IDO5)
 build/src/libultra/os/initialize.o: OPTFLAGS := -O1 -mips2
 build/src/libultra/os/initialize.o: CC := $(IDO5)
 build/src/libultra/io/controller.o: OPTFLAGS := -O1 -mips2
@@ -524,6 +527,15 @@ $(BUILD_DIR)/%.o: %.s
 	$(call print_3,Assembling:,$<,$@)
 	@mkdir -p $(@D)
 	$(V)$(AS) $(ASFLAGS) -o $@ $<
+
+# libultra asm files - Compile with the ido compiler
+$(BUILD_DIR)/src/libultra/%.o: src/libultra/%.s
+	$(call print_3,Assembling Libultra:,$<,$@)
+	$(V)$(CC) -c $(CCFLAGS) $(OPTFLAGS) $(OPTFLAGS) -o $@ $<
+	$(V)$(STRIP) --strip-unneeded $@
+	@if [ "$(OPTFLAGS)" = "-O1 -mips3 -32" ]; then \
+		$(PYTHON) tools/patchMips3Objects.py $@; \
+	fi
 
 # Source C files
 $(BUILD_DIR)/%.o: %.c

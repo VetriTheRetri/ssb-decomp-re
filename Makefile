@@ -407,7 +407,11 @@ else
 build/src/libultra/io/cartrominit.o: OPTFLAGS := -O2 -mips2
 endif
 build/src/libultra/io/cartrominit.o: CC := $(IDO5)
+ifeq ($(VERSION),jp)
 build/src/libultra/os/exceptasm.o: OPTFLAGS := -O1 -mips3 -32
+else
+build/src/libultra/os/exceptasm.o: OPTFLAGS := -O1 -mips3 -32 -DBUILD_VERSION=7
+endif
 build/src/libultra/os/exceptasm.o: CC := $(IDO5)
 build/src/libultra/os/initialize.o: OPTFLAGS := -O1 -mips2
 build/src/libultra/os/initialize.o: CC := $(IDO5)
@@ -533,7 +537,7 @@ $(BUILD_DIR)/src/libultra/%.o: src/libultra/%.s
 	$(call print_3,Assembling Libultra:,$<,$@)
 	$(V)$(CC) -c $(CCFLAGS) $(OPTFLAGS) $(OPTFLAGS) -o $@ $<
 	$(V)$(STRIP) --strip-unneeded $@
-	@if [ "$(OPTFLAGS)" = "-O1 -mips3 -32" ]; then \
+	@if [[ "$(OPTFLAGS)" =~ "-mips3 -32" ]]; then \
 		$(PYTHON) tools/patchMips3Objects.py $@; \
 	fi
 

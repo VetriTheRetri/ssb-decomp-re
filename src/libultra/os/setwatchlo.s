@@ -3,7 +3,8 @@
 #include "sys/regdef.h"
 
 .text
-LEAF(__osGetWatchLo)
-    MFC0(   v0, C0_WATCHLO)
+LEAF(__osSetWatchLo)
+    MTC0(   a0, C0_WATCHLO)
+    NOP
     jr      ra
-END(__osGetWatchLo)
+END(__osSetWatchLo)

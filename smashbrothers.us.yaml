@@ -247,7 +247,7 @@ segments:
       - [0x03A200, c, libultra/io/ai]
       - [0x03A230, c, libultra/io/vigetcurrframebuf]
       - [0x03A270, c, libultra/io/spsetpc]
-      - [0x03A2B0, hasm, libultra/os/getwatchlo]
+      - [0x03A2B0, hasm, libultra/os/setwatchlo]
       - [0x03A2C0, textbin, rsp/n_aspmain]
       - [0x03AF20, textbin, rsp/gspF3DEX2_fifo] # L3DEX2_2.04H.code
       - [0x03C0B0, bin, unk_3C0B0] # other rsp files?
@@ -263,7 +263,7 @@ segments:
       - [0x03DC70, .data, libultra/sp/sprite]
       - [0x03DC80, data, libultra/n_audio/n_env]
       - [0x03DF30, data, libultra/io/vimodepallan1] # osViModePalLan1
-      - [0x03DF80, data, libultra/os/exceptasm]
+      - [0x03DF80, .data, libultra/os/exceptasm]
       - [0x03DFB0, .data, libultra/os/thread]
       - [0x03DFD0, .data, libultra/io/siacs]
       - [0x03DFE0, .data, libultra/io/controller]
@@ -301,7 +301,7 @@ segments:
       - [0x03FAA0, .rodata, libultra/n_audio/audio09]
       - [0x03FCE0, .rodata, libultra/os/setintmask]
       - [0x03FD60, .rodata, libultra/gu/sinf]
-      - [0x03FDB0, rodata, libultra/os/exceptasm]
+      - [0x03FDB0, .rodata, libultra/os/exceptasm]
       - [0x03FE00, .rodata, libultra/io/devmgr]
       - [0x03FE20, .rodata, libultra/libc/xprintf]
       - [0x03FF20, .rodata, libultra/gu/cosf]

@@ -627,14 +627,14 @@ cart:
     /* Set up a stack and run the callback */
     lw      sp, HWINTR_SP(t1)
     jalr    t2
+    /* Post a cart event message */
+    li      a0, MESG(OS_EVENT_CART)
 
     beqz    v0, 1f
     /* Redispatch immediately if the callback returned nonzero */
     b       redispatch
 
 1:
-    /* Post a cart event message */
-    li      a0, MESG(OS_EVENT_CART)
     jal     send_mesg
     /* Continue */
     b       next_interrupt
@@ -795,7 +795,7 @@ pi:
     li      t1, PI_STATUS_CLR_INTR
     sw      t1, PHYS_TO_K1(PI_STATUS_REG)
 
-#if BUILD_VERSION >= VERSION_J
+#if 0
     /* Load pi callback */
     la      t1, __osPiIntTable
     lw      t2, (t1)

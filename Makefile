@@ -202,6 +202,9 @@ ifeq ($(VERSION),jp)
 			   src/libultra/io/sptaskyielded.c \
 			   src/libultra/os/gettime.c \
 			   src/libultra/os/timerintr.c \
+			   src/libultra/vimodes/vimodentsclan1.c \
+			   src/libultra/vimodes/vimodepallan1.c \
+			   src/libultra/vimodes/vimodempallan1.c \
 			   src/libultra/os/setglobalintmask.c \
 			   src/libultra/io/aisetfreq.c \
 			   src/libultra/gu/normalize.c \

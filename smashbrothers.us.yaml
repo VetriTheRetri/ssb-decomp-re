@@ -262,7 +262,7 @@ segments:
       - [0x03D7B0, .data, sys/debug]
       - [0x03DC70, .data, libultra/sp/sprite]
       - [0x03DC80, data, libultra/n_audio/n_env]
-      - [0x03DF30, data, libultra/io/vimodepallan1] # osViModePalLan1
+      - [0x03DF30, .data, libultra/vimodes/vimodepallan1] # osViModePalLan1
       - [0x03DF80, .data, libultra/os/exceptasm]
       - [0x03DFB0, .data, libultra/os/thread]
       - [0x03DFD0, .data, libultra/io/siacs]
@@ -272,8 +272,8 @@ segments:
       - [0x03E040, .data, libultra/io/piacs]
       - [0x03E050, .data, libultra/libc/xprintf]
       - [0x03E0A0, .data, libultra/os/timerintr]
-      - [0x03E0B0, data, libultra/vimodentsclan1] # osViModeNtscLan1
-      - [0x03E100, data, libultra/vimodempallan1] # osViModeMpalLan1
+      - [0x03E0B0, .data, libultra/vimodes/vimodentsclan1] # osViModeNtscLan1
+      - [0x03E100, .data, libultra/vimodes/vimodempallan1] # osViModeMpalLan1
       - [0x03E150, .data, libultra/io/vi]
       - [0x03E1C0, .data, libultra/io/cartrominit]
       - [0x03E1D0, .data, libultra/io/contpfs]
@@ -305,7 +305,7 @@ segments:
       - [0x03FE00, .rodata, libultra/io/devmgr]
       - [0x03FE20, .rodata, libultra/libc/xprintf]
       - [0x03FF20, .rodata, libultra/gu/cosf]
-      - [0x03FF70, rodata, libultra/gu/libm_vals]
+      - [0x03FF70, .rodata, libultra/gu/libm_vals]
       - [0x03FF80, .rodata, libultra/audio/cents2ratio]
       - [0x03FF90, .rodata, libultra/libc/xldtob]
       - [0x03FFF0, .rodata, libultra/libc/llcvt]

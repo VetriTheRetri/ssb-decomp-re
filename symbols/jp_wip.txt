@@ -345,7 +345,7 @@ syAudioGetRestarting = 0x80020de8;
 syAudioGetStatus = 0x80020df4;
 syAudioUpdateMesgQueue = 0x80020e0c;
 
-
+n_alGlobals = 0x8003D720;
 osSetIntMask = 0x80030100;
 alCopy = 0x80035C30;
 osVirtualToPhysical = 0x80032600;

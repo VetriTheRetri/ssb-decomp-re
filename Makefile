@@ -123,6 +123,7 @@ ifeq ($(VERSION),jp)
 			   src/sys/sintable.c \
 			   src/sys/debug.c \
 			   src/sys/unref.c \
+			   src/libultra/n_audio/n_env.c \
 			   src/libultra/n_audio/n_synaddplayer.c \
 			   src/libultra/n_audio/n_synstopvoice.c \
 			   src/libultra/n_audio/n_synallocvoice.c \

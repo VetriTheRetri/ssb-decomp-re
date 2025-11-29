@@ -1386,8 +1386,6 @@ void scManagerMakeDebugCameras(s32 link, u32 link_priority, s32 dl_link_priority
 	else scManagerMakeMeterCamera(link, link_priority, dl_link_priority);
 }
 
-// This doesn't match for JP due to differences in the ITStruct.
-#if defined(REGION_US)
 // 0x800A2C30
 void scManagerInspectGObj(GObj *gobj)
 {
@@ -1453,9 +1451,6 @@ void scManagerInspectGObj(GObj *gobj)
         break;
     }
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/sc/scmanager/scManagerInspectGObj.s")
-#endif
 
 // 0x800A2E84
 void scManagerFuncPrint(void)

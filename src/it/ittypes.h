@@ -232,7 +232,10 @@ struct ITStruct 						// Common items, stage hazards, fighter items and Pokémon
 	GMStatFlags reflect_stat_flags; 	// Status flags of GObj reflecting this
 	u16 reflect_stat_count;				// Status update count at the time the item is reflected
 
+// This may not be correct - but it's my first guess as to the missing word in JP version
+#if defined(REGION_US)
 	s32 damage_highest;		  			// I don't know why there are at least two of these
+#endif
 	f32 damage_knockback;	  			// Item's calculated knockback
 	s32 damage_queue;		  			// Used to calculate knockback?
 	s32 damage_angle;		  			// Angle of attack that hit the item

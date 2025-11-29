@@ -224,7 +224,7 @@ segments:
       - [0x037620, c, libultra/io/pfsgetstatus]
       - [0x037850, c, libultra/io/contpfs]
       - [0x0383D0, hasm, libultra/libc/bcmp]
-      - [0x0384F0, asm, libultra/io/contramread]
+      - [0x0384F0, c, libultra/io/contramread]
       - [0x0386F0, c, libultra/io/crc]
       - [0x038860, c, libultra/io/pfsisplug]
       - [0x038BA0, c, libultra/io/epirawwrite]
@@ -276,7 +276,7 @@ segments:
       - [0x03E520, .data, libultra/vimodes/vimodepallan1] # osViModePalLan1
       - [0x03E570, .data, libultra/vimodes/vimodempallan1] # osViModeMpalLan1
       - [0x03E5C0, .data, libultra/io/contpfs]
-      - [0x03E5D0, data, libultra/io/contramread]
+      - [0x03E5D0, .data, libultra/io/contramread]
       - [0x03E5E0, .data, libultra/libc/xlitob]
       - [0x03E610, .data, libultra/io/vimgr]
       - [0x03E630, .data, libultra/io/aisetnextbuf]

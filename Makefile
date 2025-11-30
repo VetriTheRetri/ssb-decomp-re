@@ -112,7 +112,7 @@ ASFLAGS         := -EB -I include -march=vr4300 -mabi=32
 
 ifeq ($(VERSION),jp)
     LDFLAGS := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt \
-               -T .splat/smashbrothers_jp.ld -T symbols/jp_wip_linker.txt
+               -T .splat/smashbrothers_jp.ld -T symbols/jp_wip_linker.txt symbols/jp_wip_reloc_data_symbols.txt 
 # 	C_FILES := $(shell grep -v '^[[:space:]]*#' smashbrothers.jp.yaml | \
 # 					grep -oP '\[.*?,[[:space:]]*(?:c|\.data|\.bss|\.rodata),[[:space:]]*\K[^\], ]+'; \
 # 					grep -oP '.bss, name:[[:space:]]*\K[^\}, ]+' smashbrothers.jp.yaml | \
@@ -270,7 +270,8 @@ ifeq ($(VERSION),jp)
 			   src/sys/matrix.c \
 			   src/sys/interp.c \
 			   src/sys/audio.c \
-			   src/sc/scmanager.c
+			   src/sc/scmanager.c \
+			   $(shell find src/lb -type f -name '*.c')
 else ifeq ($(VERSION),us)
     LDFLAGS := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt \
                -T .splat/smashbrothers.ld -T symbols/not_found.txt -T symbols/linker_constants.txt -T symbols/reloc_data_symbols.txt

@@ -364,7 +364,31 @@ segments:
     vram: 0x800C5800
     follows_vram: zbuffer
     subsegments:
-      - [0x043570, bin, ovl0]
+    # ovl0 text
+      - [0x043570, c, lb/lbcommon]
+      - [0x049290, c, lb/lbreloc]
+      - [0x049C90, c, lb/lbparticle]
+      - [0x04FAD0, c, lb/lbfade]
+      - [0x04FD80, c, lb/lbtransition]
+      - [0x050170, c, lb/lbbackup]
+
+    # ovl0 data
+      - [0x0508C0, .data, lb/lbcommon]
+      - [0x051960, .data, lb/lbparticle]
+      - [0x051970, .data, lb/lbtransition]
+
+    # ovl0 rodata
+      - [0x051A20, .rodata, lb/lbcommon]
+      - [0x051AF0, .rodata, lb/lbreloc]
+      - [0x051BD0, .rodata, lb/lbparticle]
+      - [0x051EB0, .rodata, lb/lbtransition]
+
+    # ovl0 bss
+      - { start: auto, type: .bss, name: lb/lbcommon }
+      - { start: auto, type: .bss, name: lb/lbreloc }
+      - { start: auto, type: .bss, name: lb/lbparticle}
+      - { start: auto, type: .bss, name: lb/lbfade }
+      - { start: auto, type: .bss, name: lb/lbtransition }
 
   - name: ovl2
     type: code

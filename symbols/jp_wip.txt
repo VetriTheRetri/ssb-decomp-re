@@ -519,3 +519,10 @@ SI_PIF_ADDR_WR64B_REG = 0xA4800010;
 SI_STATUS_REG = 0xA4800018;
 
 SP_PC = 0xA4080000;
+
+func_ovl0_800CB140 = 0x800C904C;
+D_ovl0_800D5E10 = 0x800D3CB0;
+lbCommonPrepSObjDraw = 0x800CA724;
+lbParticleUpdateStruct = 0x800CCE2C;
+lbParticleDrawTextures = 0x800CEC14;
+lbParticleGeneratorFuncRun = 0x800D0B2C;

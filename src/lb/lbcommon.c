@@ -1614,6 +1614,7 @@ sb32 func_ovl0_800C9F30(Mtx *mtx, DObj *dobj, Gfx **dls)
     return 0;
 }
 
+#if defined(REGION_US)
 // 0x800C9F70
 sb32 func_ovl0_800C9F70(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
@@ -1632,6 +1633,7 @@ sb32 func_ovl0_800C9F70(Mtx *mtx, DObj *dobj, Gfx **dls)
     
     return 0;
 }
+#endif
 
 // 0x800CA024
 sb32 func_ovl0_800CA024(Mtx *mtx, DObj *dobj, Gfx **dls)
@@ -2144,9 +2146,11 @@ sb32 (*dLBCommonFuncMatrixList[/* */])(/* */) =
 	func_ovl0_800C994C,
 	func_ovl0_800C99CC,
 	func_ovl0_800C99CC,
+#if defined(REGION_US)
 	func_ovl0_800C9F30,
 	func_ovl0_800C9F30,
-	func_ovl0_800C9F70,
+#endif
+    func_ovl0_800C9F70,
 	func_ovl0_800C9F70,
 	grSectorArwingLaser3DFuncMatrix,
 	grSectorArwingLaser3DFuncMatrix,

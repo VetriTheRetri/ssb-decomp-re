@@ -271,7 +271,7 @@ ifeq ($(VERSION),jp)
 			   src/sys/interp.c \
 			   src/sys/audio.c \
 			   src/sc/scmanager.c \
-			   $(shell find src/lb -type f -name '*.c')
+			   $(shell find src/lb src/sc/scsubsys -type f -name '*.c')
 else ifeq ($(VERSION),us)
     LDFLAGS := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt \
                -T .splat/smashbrothers.ld -T symbols/not_found.txt -T symbols/linker_constants.txt -T symbols/reloc_data_symbols.txt

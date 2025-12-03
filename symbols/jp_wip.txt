@@ -526,3 +526,5 @@ lbCommonPrepSObjDraw = 0x800CA724;
 lbParticleUpdateStruct = 0x800CCE2C;
 lbParticleDrawTextures = 0x800CEC14;
 lbParticleGeneratorFuncRun = 0x800D0B2C;
+
+scSubsysFighterOpeningProcUpdate = 0x803905E4;

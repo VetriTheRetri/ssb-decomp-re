@@ -2,19 +2,60 @@
 #include <reloc_data.h>
 
 // externs from scsubsysdata.c
-extern s32 D_ovl1_80390E7C[];
-extern s32 D_ovl1_8039114C[];
-extern s32 D_ovl1_80391350[];
-extern s32 D_ovl1_80391578[];
-extern s32 D_ovl1_803917B4[];
-extern s32 D_ovl1_803919EC[];
-extern s32 D_ovl1_80391C64[];
-extern s32 D_ovl1_80391E88[];
-extern s32 D_ovl1_80392088[];
-extern s32 D_ovl1_803922AC[];
-extern s32 D_ovl1_80392584[];
-extern s32 D_ovl1_80392754[];
-extern s32 D_ovl1_803928E0[];
+extern FTMotionDesc dFTMarioSubMotionDescs[];
+extern FTMotionDesc dFTMMarioSubMotionDescs[];
+extern FTMotionDesc dFTNMarioSubMotionDescs[];
+extern s32 dFTMarioSubMotionDescsCount;
+extern s32 dFTMMarioSubMotionDescsCount;
+extern s32 dFTNMarioSubMotionDescsCount;
+extern FTMotionDesc dFTFoxSubMotionDescs[];
+extern FTMotionDesc dFTNFoxSubMotionDescs[];
+extern s32 dFTFoxSubMotionDescsCount;
+extern s32 dFTNFoxSubMotionDescsCount;
+extern FTMotionDesc dFTDonkeySubMotionDescs[];
+extern FTMotionDesc dFTNDonkeySubMotionDescs[];
+extern FTMotionDesc dFTGDonkeySubMotionDescs[];
+extern s32 dFTDonkeySubMotionDescsCount;
+extern s32 dFTNDonkeySubMotionDescsCount;
+extern s32 dFTGDonkeySubMotionDescsCount;
+extern FTMotionDesc dFTSamusSubMotionDescs[];
+extern FTMotionDesc dFTNSamusSubMotionDescs[];
+extern s32 dFTSamusSubMotionDescsCount;
+extern s32 dFTNSamusSubMotionDescsCount;
+extern FTMotionDesc dFTLuigiSubMotionDescs[];
+extern FTMotionDesc dFTNLuigiSubMotionDescs[];
+extern s32 dFTLuigiSubMotionDescsCount;
+extern s32 dFTNLuigiSubMotionDescsCount;
+extern FTMotionDesc dFTLinkSubMotionDescs[];
+extern FTMotionDesc dFTNLinkSubMotionDescs[];
+extern s32 dFTLinkSubMotionDescsCount;
+extern s32 dFTNLinkSubMotionDescsCount;
+extern FTMotionDesc dFTYoshiSubMotionDescs[];
+extern FTMotionDesc dFTNYoshiSubMotionDescs[];
+extern s32 dFTYoshiSubMotionDescsCount;
+extern s32 dFTNYoshiSubMotionDescsCount;
+extern FTMotionDesc dFTCaptainSubMotionDescs[];
+extern FTMotionDesc dFTNCaptainSubMotionDescs[];
+extern s32 dFTCaptainSubMotionDescsCount;
+extern s32 dFTNCaptainSubMotionDescsCount;
+extern FTMotionDesc dFTKirbySubMotionDescs[];
+extern FTMotionDesc dFTNKirbySubMotionDescs[];
+extern s32 dFTKirbySubMotionDescsCount;
+extern s32 dFTNKirbySubMotionDescsCount;
+extern FTMotionDesc dFTPikachuSubMotionDescs[];
+extern FTMotionDesc dFTNPikachuSubMotionDescs[];
+extern s32 dFTPikachuSubMotionDescsCount;
+extern s32 dFTNPikachuSubMotionDescsCount;
+extern FTMotionDesc dFTPurinSubMotionDescs[];
+extern FTMotionDesc dFTNPurinSubMotionDescs[];
+extern s32 dFTPurinSubMotionDescsCount;
+extern s32 dFTNPurinSubMotionDescsCount;
+extern FTMotionDesc dFTNessSubMotionDescs[];
+extern FTMotionDesc dFTNNessSubMotionDescs[];
+extern s32 dFTNessSubMotionDescsCount;
+extern s32 dFTNNessSubMotionDescsCount;
+extern FTMotionDesc dFTBossSubMotionDescs[];
+extern s32 dFTBossSubMotionDescsCount;
 
 extern s32 particles_unk0_scb_ROM_START;
 extern s32 particles_unk0_scb_ROM_END;
@@ -330,10 +371,10 @@ FTData dFTMarioData =
 	0x00000000,
 	0x00000000,
 	0x00000428,
-	dFTMarioMotionDescs,
-	&D_ovl1_80390E7C[9],
+	&dFTMarioMotionDescs,
+	&dFTMarioSubMotionDescs,
 	0x000000CC,
-	&D_ovl1_80390E7C[66],
+	&dFTMarioSubMotionDescsCount,
 	0x00000000
 };
 
@@ -576,10 +617,10 @@ FTData dFTMMarioData =
 	0x00000000,
 	0x00000000,
 	0x000002A8,
-	dFTMMarioMotionDescs,
-	&D_ovl1_80390E7C[69],
+	&dFTMMarioMotionDescs,
+	&dFTMMarioSubMotionDescs,
 	0x000000CC,
-	&D_ovl1_80390E7C[114],
+	&dFTMMarioSubMotionDescsCount,
 	0x00000000
 };
 
@@ -821,10 +862,10 @@ FTData dFTNMarioData =
 	0x00000000,
 	0x00000000,
 	0x00000298,
-	dFTNMarioMotionDescs,
-	&D_ovl1_80390E7C[117],
+	&dFTNMarioMotionDescs,
+	&dFTNMarioSubMotionDescs,
 	0x000000CC,
-	&D_ovl1_80390E7C[162],
+	&dFTNMarioSubMotionDescsCount,
 	0x00000000
 };
 
@@ -1080,10 +1121,10 @@ FTData dFTFoxData =
 	0x00000000,
 	0x00000000,
 	0x0000046C,
-	dFTFoxMotionDescs,
-	&D_ovl1_8039114C[2],
+	&dFTFoxMotionDescs,
+	&dFTFoxSubMotionDescs,
 	0x000000DB,
-	&D_ovl1_8039114C[74],
+	&dFTFoxSubMotionDescsCount,
 	0x00000000
 };
 
@@ -1339,10 +1380,10 @@ FTData dFTNFoxData =
 	0x00000000,
 	0x00000000,
 	0x000002A4,
-	dFTNFoxMotionDescs,
-	&D_ovl1_8039114C[77],
+	&dFTNFoxMotionDescs,
+	&dFTNFoxSubMotionDescs,
 	0x000000DB,
-	&D_ovl1_8039114C[122],
+	&dFTNFoxSubMotionDescsCount,
 	0x00000000
 };
 
@@ -1600,10 +1641,10 @@ FTData dFTDonkeyData =
 	0x00000000,
 	0x00000000,
 	0x000004A4,
-	dFTDonkeyMotionDescs,
-	&D_ovl1_80391350[3],
+	&dFTDonkeyMotionDescs,
+	&dFTDonkeySubMotionDescs,
 	0x000000DD,
-	&D_ovl1_80391350[48],
+	&dFTDonkeySubMotionDescsCount,
 	0x00000000
 };
 
@@ -1861,10 +1902,10 @@ FTData dFTNDonkeyData =
 	0x00000000,
 	0x00000000,
 	0x00000298,
-	dFTNDonkeyMotionDescs,
-	&D_ovl1_80391350[52],
+	&dFTNDonkeyMotionDescs,
+	&dFTNDonkeySubMotionDescs,
 	0x000000DD,
-	&D_ovl1_80391350[97],
+	&dFTNDonkeySubMotionDescsCount,
 	0x00000000
 };
 
@@ -2122,10 +2163,10 @@ FTData dFTGDonkeyData =
 	0x00000000,
 	0x00000000,
 	0x000003C8,
-	dFTGDonkeyMotionDescs,
-	&D_ovl1_80391350[100],
+	&dFTGDonkeyMotionDescs,
+	&dFTGDonkeySubMotionDescs,
 	0x000000DD,
-	&D_ovl1_80391350[103],
+	&dFTGDonkeySubMotionDescsCount,
 	0x00000000
 };
 
@@ -2369,10 +2410,10 @@ FTData dFTSamusData =
 	0x00000000,
 	0x00000000,
 	0x00000610,
-	dFTSamusMotionDescs,
-	&D_ovl1_80391578[2],
+	&dFTSamusMotionDescs,
+	&dFTSamusSubMotionDescs,
 	0x000000CE,
-	&D_ovl1_80391578[47],
+	&dFTSamusSubMotionDescsCount,
 	0x00000000
 };
 
@@ -2613,10 +2654,10 @@ FTData dFTNSamusData =
 	0x00000000,
 	0x00000000,
 	0x000003BC,
-	dFTNSamusMotionDescs,
-	&D_ovl1_80391578[50],
+	&dFTNSamusMotionDescs,
+	&dFTNSamusSubMotionDescs,
 	0x000000CE,
-	&D_ovl1_80391578[95],
+	&dFTNSamusSubMotionDescsCount,
 	0x00000000
 };
 
@@ -2855,10 +2896,10 @@ FTData dFTLuigiData =
 	0x00000000,
 	0x00000000,
 	0x00000580,
-	dFTLuigiMotionDescs,
-	&D_ovl1_803917B4[2],
+	&dFTLuigiMotionDescs,
+	&dFTLuigiSubMotionDescs,
 	0x000000CC,
-	&D_ovl1_803917B4[47],
+	&dFTLuigiSubMotionDescsCount,
 	0x00000000
 };
 
@@ -3099,10 +3140,10 @@ FTData dFTNLuigiData =
 	0x00000000,
 	0x00000000,
 	0x00000298,
-	dFTNLuigiMotionDescs,
-	&D_ovl1_803917B4[51],
+	&dFTNLuigiMotionDescs,
+	&dFTNLuigiSubMotionDescs,
 	0x000000CC,
-	&D_ovl1_803917B4[54],
+	&dFTNLuigiSubMotionDescsCount,
 	0x00000000
 };
 
@@ -3351,10 +3392,10 @@ FTData dFTLinkData =
 	0x00000000,
 	0x00000000,
 	0x00000708,
-	dFTLinkMotionDescs,
-	&D_ovl1_803919EC[5],
+	&dFTLinkMotionDescs,
+	&dFTLinkSubMotionDescs,
 	0x000000D4,
-	&D_ovl1_803919EC[53],
+	&dFTLinkSubMotionDescsCount,
 	0x00000000
 };
 
@@ -3603,10 +3644,10 @@ FTData dFTNLinkData =
 	0x00000000,
 	0x00000000,
 	0x000002D8,
-	dFTNLinkMotionDescs,
-	&D_ovl1_803919EC[57],
+	&dFTNLinkMotionDescs,
+	&dFTNLinkSubMotionDescs,
 	0x000000D4,
-	&D_ovl1_803919EC[102],
+	&dFTNLinkSubMotionDescsCount,
 	0x00000000
 };
 
@@ -3851,10 +3892,10 @@ FTData dFTYoshiData =
 	&particles_unk2_txb_ROM_START,
 	&particles_unk2_txb_ROM_END,
 	0x0000047C,
-	dFTYoshiMotionDescs,
-	&D_ovl1_80391C64[15],
+	&dFTYoshiMotionDescs,
+	&dFTYoshiSubMotionDescs,
 	0x000000D0,
-	&D_ovl1_80391C64[72],
+	&dFTYoshiSubMotionDescsCount,
 	0x00000000
 };
 
@@ -4099,10 +4140,10 @@ FTData dFTNYoshiData =
 	0x00000000,
 	0x00000000,
 	0x000002B8,
-	dFTNYoshiMotionDescs,
-	&D_ovl1_80391C64[75],
+	&dFTNYoshiMotionDescs,
+	&dFTNYoshiSubMotionDescs,
 	0x000000D0,
-	&D_ovl1_80391C64[120],
+	&dFTNYoshiSubMotionDescsCount,
 	0x00000000
 };
 
@@ -4353,10 +4394,10 @@ FTData dFTCaptainData =
 	0x00000000,
 	0x00000000,
 	0x00000488,
-	dFTCaptainMotionDescs,
-	&D_ovl1_80391E88[2],
+	&dFTCaptainMotionDescs,
+	&dFTCaptainSubMotionDescs,
 	0x000000D6,
-	&D_ovl1_80391E88[47],
+	&dFTCaptainSubMotionDescsCount,
 	0x00000000
 };
 
@@ -4605,10 +4646,10 @@ FTData dFTNCaptainData =
 	0x00000000,
 	0x00000000,
 	0x0000029C,
-	dFTNCaptainMotionDescs,
-	&D_ovl1_80391E88[50],
+	&dFTNCaptainMotionDescs,
+	&dFTNCaptainSubMotionDescs,
 	0x000000D6,
-	&D_ovl1_80391E88[95],
+	&dFTNCaptainSubMotionDescsCount,
 	0x00000000
 };
 
@@ -4917,10 +4958,10 @@ FTData dFTKirbyData =
 	&particles_unk0_txb_ROM_START,
 	&particles_unk0_txb_ROM_END,
 	0x00000808,
-	dFTKirbyMotionDescs,
-	&D_ovl1_80392088[11],
+	&dFTKirbyMotionDescs,
+	&dFTKirbySubMotionDescs,
 	0x00000114,
-	&D_ovl1_80392088[59],
+	&dFTKirbySubMotionDescsCount,
 	0x00000000
 };
 
@@ -5202,10 +5243,10 @@ FTData dFTNKirbyData =
 	0x00000000,
 	0x00000000,
 	0x000002C0,
-	dFTNKirbyMotionDescs,
-	&D_ovl1_80392088[62],
+	&dFTNKirbyMotionDescs,
+	&dFTNKirbySubMotionDescs,
 	0x000000F5,
-	&D_ovl1_80392088[107],
+	&dFTNKirbySubMotionDescsCount,
 	0x00000000
 };
 
@@ -5453,10 +5494,10 @@ FTData dFTPikachuData =
 	0x00000000,
 	0x00000000,
 	0x0000041C,
-	dFTPikachuMotionDescs,
-	&D_ovl1_803922AC[17],
+	&dFTPikachuMotionDescs,
+	&dFTPikachuSubMotionDescs,
 	0x000000D3,
-	&D_ovl1_803922AC[65],
+	&dFTPikachuSubMotionDescsCount,
 	0x00000000
 };
 
@@ -5702,10 +5743,10 @@ FTData dFTNPikachuData =
 	0x00000000,
 	0x00000000,
 	0x000002A8,
-	dFTNPikachuMotionDescs,
-	&D_ovl1_803922AC[69],
+	&dFTNPikachuMotionDescs,
+	&dFTNPikachuSubMotionDescs,
 	0x000000D1,
-	&D_ovl1_803922AC[114],
+	&dFTNPikachuSubMotionDescsCount,
 	0x00000000
 };
 
@@ -5951,10 +5992,10 @@ FTData dFTPurinData =
 	0x00000000,
 	0x00000000,
 	0x00000474,
-	dFTPurinMotionDescs,
-	&D_ovl1_80392584[7],
+	&dFTPurinMotionDescs,
+	&dFTPurinSubMotionDescs,
 	0x000000D1,
-	&D_ovl1_80392584[52],
+	&dFTPurinSubMotionDescsCount,
 	0x00000000
 };
 
@@ -6200,10 +6241,10 @@ FTData dFTNPurinData =
 	0x00000000,
 	0x00000000,
 	0x000002A0,
-	dFTNPurinMotionDescs,
-	&D_ovl1_80392584[55],
+	&dFTNPurinMotionDescs,
+	&dFTNPurinSubMotionDescs,
 	0x000000D1,
-	&D_ovl1_80392584[58],
+	&dFTNPurinSubMotionDescsCount,
 	0x00000000
 };
 
@@ -6460,10 +6501,10 @@ FTData dFTNessData =
 	&particles_unk1_txb_ROM_START,
 	&particles_unk1_txb_ROM_END,
 	0x000005BC,
-	dFTNessMotionDescs,
-	&D_ovl1_80392754[3],
+	&dFTNessMotionDescs,
+	&dFTNessSubMotionDescs,
 	0x000000DC,
-	&D_ovl1_80392754[48],
+	&dFTNessSubMotionDescsCount,
 	0x00000000
 };
 
@@ -6720,10 +6761,10 @@ FTData dFTNNessData =
 	0x00000000,
 	0x00000000,
 	0x000002F0,
-	dFTNNessMotionDescs,
-	&D_ovl1_80392754[51],
+	&dFTNNessMotionDescs,
+	&dFTNNessSubMotionDescs,
 	0x000000DC,
-	&D_ovl1_80392754[96],
+	&dFTNNessSubMotionDescsCount,
 	0x00000000
 };
 
@@ -6985,9 +7026,9 @@ FTData dFTBossData =
 	0x00000000,
 	0x00000000,
 	0x000000E8,
-	dFTBossMotionDescs,
-	&D_ovl1_803928E0[2],
+	&dFTBossMotionDescs,
+	&dFTBossSubMotionDescs,
 	0x000000E1,
-	&D_ovl1_803928E0[56],
+	&dFTBossSubMotionDescsCount,
 	0x00000000
 };

@@ -765,3 +765,10 @@ func_8001C2C4_1CEC4 = 0x8001C2C4;
 func_800D06D8_4E448 = 0x800D06D8;
 func_800183DC_18FDC = 0x800183DC;
 func_800CC688_4A3F8 = 0x800CC688;
+
+ftMainPlayAnimEventsAll = 0x800DE6B0;
+ftMainRunUpdateColAnim = 0x800DF048;
+ftMainSetStatus = 0x800E4D40;
+func_ovl2_800EDA0C = 0x800EB62C;
+gmCollisionGetWorldPosition = 0x800EAFE0;
+mvOpeningFighterProcUpdate = 0x8012FE30;

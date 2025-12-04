@@ -116,6 +116,7 @@ ifeq ($(VERSION),jp)
 	C_FILES := src/sc/scmanager.c \
 			   src/mn/mncommon/mnnocontroller.c \
 			   src/mn/mncommon/mnnocontrollerfiles.c \
+			   src/db/dbmaps.c \
 			   $(shell find src/sys src/libultra src/lb src/sc/scsubsys -type f -name '*.c')
 else ifeq ($(VERSION),us)
     LDFLAGS := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt \

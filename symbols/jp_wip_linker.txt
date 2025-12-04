@@ -774,3 +774,8 @@ ftMainSetStatus = 0x800E4D40;
 func_ovl2_800EDA0C = 0x800EB62C;
 gmCollisionGetWorldPosition = 0x800EAFE0;
 mvOpeningFighterProcUpdate = 0x8012FE30;
+
+gDBMenuIsMenuOpen = 0x80371400;
+dbMenuMakeMenu = 0x80369d58;
+dbMenuDestroyMenu = 0x80369ea0;
+dbMenuInitMenu = 0x80369ec0;

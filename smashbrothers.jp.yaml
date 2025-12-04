@@ -522,7 +522,10 @@ segments:
     vram: 0x800D4330
     exclusive_ram_id: overlay_800D4330
     subsegments:
-      - [0x119B60, bin, ovl12]
+      - [0x119B60, c, db/dbmaps]
+      - [0x119D50, .data, db/dbmaps]
+      - [0x119EE0, .rodata, db/dbmaps]
+      - { start: auto, type: .bss, name: db/dbmaps }
 
   - name: ovl13
     type: code

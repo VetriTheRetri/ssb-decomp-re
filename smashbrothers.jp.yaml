@@ -974,7 +974,10 @@ segments:
     vram: 0x800D4330
     exclusive_ram_id: overlay_800D4330
     subsegments:
-      - [0x18D2B0, bin, ovl16]
+      - [0x18D2B0, c, mn/mncommon/mnunusedfighters]
+      - [0x18D930, .data, mn/mncommon/mnunusedfighters]
+      - [0x18DA20, .rodata, mn/mncommon/mnunusedfighters]
+      - { start: auto, type: .bss, name: mn/mncommon/mnunusedfighters }
 
   - name: ovl8
     type: code

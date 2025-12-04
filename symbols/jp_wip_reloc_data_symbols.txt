@@ -1,4 +1,4 @@
-llRelocFileCount = 2132;
+llRelocFileCount = 2107;
 
 llMNCommonFileID = 0x0;
 llMNMainFileID = 0x1;

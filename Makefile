@@ -114,6 +114,8 @@ ifeq ($(VERSION),jp)
     LDFLAGS := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt \
                -T .splat/smashbrothers_jp.ld -T symbols/jp_wip_linker.txt symbols/jp_wip_reloc_data_symbols.txt 
 	C_FILES := src/sc/scmanager.c \
+			   src/mn/mncommon/mnnocontroller.c \
+			   src/mn/mncommon/mnnocontrollerfiles.c \
 			   $(shell find src/sys src/libultra src/lb src/sc/scsubsys -type f -name '*.c')
 else ifeq ($(VERSION),us)
     LDFLAGS := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt \

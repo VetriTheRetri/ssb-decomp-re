@@ -509,7 +509,12 @@ segments:
     vram: 0x800D4330
     exclusive_ram_id: overlay_800D4330
     subsegments:
-      - [0x119830, bin, ovl11]
+      - [0x119830, c, mn/mncommon/mnnocontroller]
+      - [0x119A00, c, mn/mncommon/mnnocontrollerfiles]
+      - [0x119AA0, .data, mn/mncommon/mnnocontroller]
+      - [0x119B50, .data, mn/mncommon/mnnocontrollerfiles]
+      - { start: auto, type: .bss, name: mn/mncommon/mnnocontroller }
+      - { start: auto, type: .bss, name: mn/mncommon/mnnocontrollerfiles }
 
   - name: ovl12
     type: code

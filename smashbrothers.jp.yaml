@@ -993,7 +993,10 @@ segments:
     vram: 0x80369220
     exclusive_ram_id: overlay_80369220
     subsegments:
-      - [0x1AB930, bin, ovl9]
+      - [0x1AB930, c, db/dbmenu]
+      - [0x1AC650, .data, db/dbmenu]
+      - [0x1ACAA0, .rodata, db/dbmenu]
+      - { start: auto, type: .bss, name: db/dbmenu }
 
   - name: framebuffer
     exclusive_ram_id: framebuffers

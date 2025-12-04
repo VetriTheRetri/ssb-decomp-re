@@ -271,8 +271,8 @@ syVideoInit = 0x80006DC4;
 
 
 
-mnVSModeStartScene = 0x80132540;
-mnVSOptionsStartScene = 0x80130EE4;
+mnVSModeStartScene = 0x80132750;
+mnVSOptionsStartScene = 0x80132540;
 
 
 

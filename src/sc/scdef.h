@@ -158,7 +158,9 @@ typedef enum SCKind
 	nSCKindVSResults,    	  	  	// VS mode results
 	nSCKindVSRecord,          	  	// Records screen
 	nSCKindCharacters,        		// Character data screen
+#if defined(REGION_US)
 	nSCKindStartup,               	// N64 logo
+#endif
 	nSCKindOpeningRoom,       	  	// Room with Master Hand and figures coming to life
 	nSCKindOpeningPortraits,		// Stylized horizontal sliding portraits
 	nSCKindOpeningMario,			// Mario opening scene
@@ -186,7 +188,9 @@ typedef enum SCKind
 	nSCKind1PGame,            	  	// 1P Game logic loop
 	nSCKind1PBonusStage,       	  	// Bonus game in-game
 	nSCKind1PTrainingMode,    		// Training mode in-game
+#if defined(REGION_US)
 	nSCKindCongra,	 		  	  	// Congratulations screen
+#endif	
 	nSCKindStaffroll,             	// Credits scene
 	nSCKindOption,           	  	// Options menu
 	nSCKindData,              	  	// Data menu

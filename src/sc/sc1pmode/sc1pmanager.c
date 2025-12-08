@@ -27,8 +27,10 @@ SYOverlay dSC1PManagerEndingOverlay = SCMANAGER_OVERLAY_DEFINE(54);
 // 0x80116CA4
 SYOverlay dSC1PManagerMessageOverlay = SCMANAGER_OVERLAY_DEFINE(22);
 
+#if defined(REGION_US)
 // 0x80116CC8
 SYOverlay dSC1PManagerCongraOverlay = SCMANAGER_OVERLAY_DEFINE(57);
+#endif
 
 // 0x80116CEC
 SYOverlay dSC1PManagerStaffrollOverlay = SCMANAGER_OVERLAY_DEFINE(59);
@@ -165,11 +167,18 @@ void sc1PManagerTrySetChallengers(void)
     {
         gSCManagerSceneData.spgame_stage = nSC1PGameStageNess;
     }
+#if defined(REGION_US)
     else if (!(gSCManagerBackupData.unlock_mask & LBBACKUP_UNLOCK_MASK_CAPTAIN) && (gSC1PManagerTotalTimeTics < I_MIN_TO_TICS(12)))
     {
         // Captain Falcon's unlock criteria is 12 minutes instead of the reported 20???
         gSCManagerSceneData.spgame_stage = nSC1PGameStageCaptain;
     }
+#else
+    else if (!(gSCManagerBackupData.unlock_mask & LBBACKUP_UNLOCK_MASK_CAPTAIN) && (gSC1PManagerTotalTimeTics < I_MIN_TO_TICS(20)))
+    {
+        gSCManagerSceneData.spgame_stage = nSC1PGameStageCaptain;
+    }
+#endif
     else if (!(gSCManagerBackupData.unlock_mask & LBBACKUP_UNLOCK_MASK_PURIN))
     {
         gSCManagerSceneData.spgame_stage = nSC1PGameStagePurin;
@@ -423,7 +432,11 @@ void sc1PManagerUpdateScene(void)
                     sc1PManagerTrySaveBackup(FALSE);
 
                     gSCManagerSceneData.scene_prev = nSCKind1PGame;
+#if defined(REGION_US)        
                     gSCManagerSceneData.scene_curr = nSCKindStartup;
+#else
+                    gSCManagerSceneData.scene_curr = nSCKindOpeningRoom;
+#endif
 
                     return;
                 }
@@ -476,12 +489,14 @@ void sc1PManagerUpdateScene(void)
 
         scStaffrollStartScene();
 
+#if defined(REGION_US)
         syDmaLoadOverlay(&dSC1PManagerCongraOverlay);
 
         gSCManagerSceneData.scene_prev = nSCKind1PGame;
         gSCManagerSceneData.scene_curr = nSCKindCongra;
 
         mnCongraStartScene();
+#endif
 
         gSCManagerSceneData.spgame_stage--;
 
@@ -564,5 +579,9 @@ skip_main_stages:
         }
     }
     gSCManagerSceneData.scene_prev = nSCKind1PGame;
+#if defined(REGION_US)        
     gSCManagerSceneData.scene_curr = nSCKindStartup;
+#else
+    gSCManagerSceneData.scene_curr = nSCKindOpeningRoom;
+#endif
 }

@@ -397,7 +397,145 @@ segments:
     # follows_vram: ovl0
     exclusive_ram_id: overlay_800D4330
     subsegments:
-      - [0x051EC0, bin, ovl2]
+    # ovl2 text
+      - [0x051EC0, c, sc/sc1pmode/sc1pmanager]
+      - [0x0529F0, c, ft/ftmanager]
+      - [0x0541E0, c, ft/ftphysics]
+      - [0x054E90, c, ft/ftanimend]
+      - [0x054F20, pad, pad0x054F20]
+      - [0x054F30, c, mp/mpprocess]
+      - [0x059240, c, mp/mpcommon]
+      - [0x05AB00, c, ft/ftmain]
+      - [0x063470, c, ft/ftparam]
+      - [0x067910, c, ft/ftanim]
+      - [0x068530, c, gm/gmcollision]
+      - [0x06C7D0, c, ft/ftdisplaymain]
+      - [0x06EE90, c, ft/fthammer]
+      - [0x06F1A0, c, mp/mpcollision]
+      - [0x078320, c, ft/ftdisplaylights]
+      - [0x078470, c, ef/efdisplay]
+      - [0x078AB0, c, ef/efmanager]
+      - [0x07FDD0, c, gr/grwallpaper]
+      - [0x080540, c, gr/grdisplay]
+      - [0x080DB0, c, gr/grcommonsetup]
+      - [0x080E70, c, gr/grmainsetup]
+      - [0x080F10, c, gr/grmodelsetup]
+      - [0x081080, c, gr/grcommon/grpupupu]
+      - [0x081ED0, c, gr/grcommon/grsector]
+      - [0x0837C0, c, gr/grcommon/grzebes]
+      - [0x083CF0, c, gr/grcommon/gryoster]
+      - [0x084470, c, gr/grcommon/grinishie]
+      - [0x085450, c, gr/grcommon/grjungle]
+      - [0x0858E0, c, gr/grcommon/grhyrule]
+      - [0x086470, c, gr/grcommon/gryamabuki]
+      - [0x086AE0, c, gr/grcommon/grcastle]
+      - [0x086C70, c, gr/grbonus/grbonus3]
+      - [0x086FB0, c, gm/gmcamera]
+      - [0x089E30, c, if/ifcommon]
+      - [0x0905B0, c, gm/gmrumble]
+      - [0x091010, c, ef/efparticle]
+      - [0x091290, c, ft/ftkey]
+      - [0x091370, c, if/ifscreenflash]
+      - [0x091600, c, ef/efground]
+
+    # ovl2 data
+      - [0x092350, .data, gm/gmcommon]
+      - [0x092370, .data, sc/sc1pmode/sc1pmanager]
+      - [0x092530, .data, ft/ftdata]
+      - [0x0A4460, .data, ft/ftmain]
+      - [0x0A6F10, .data, ft/ftparam]
+      - [0x0A7070, .data, ft/ftanim]
+      - [0x0A7090, .data, ft/ftdisplaymain]
+      - [0x0A7C40, .data, mp/mpcollision]
+      - [0x0A7F90, .data, ft/ftcommondata]
+      - [0x0A81F0, .data, gm/gmcolscripts]
+      - [0x0A95C0, .data, ef/efmanager]
+      - [0x0A9F00, .data, gr/grwallpaper]
+      - [0x0A9F40, .data, gr/grdisplay]
+      - [0x0A9F80, .data, gr/grcommonsetup]
+      - [0x0A9FB0, .data, gr/grcommon/grpupupu]
+      - [0x0AA080, .data, gr/grcommon/grsector]
+      - [0x0AA1A0, .data, gr/grcommon/grzebes]
+      - [0x0AA260, .data, gr/grcommon/gryoster]
+      - [0x0AA270, .data, gr/grcommon/grinishie]
+      - [0x0AA290, .data, gr/grcommon/grjungle]
+      - [0x0AA2A0, .data, gr/grcommon/gryamabuki]
+      - [0x0AA2B0, .data, gm/gmcamera]
+      - [0x0AA330, .data, if/ifcommon]
+      - [0x0AA8D0, pad, pad0x0AA8D0]
+      - [0x0AA8E0, .data, gm/gmrumble]
+      - [0x0AA990, .data, ef/efground]
+
+    # ovl2 read-only data
+      - [0x0AB1A0, .rodata, ft/ftmanager]
+      - [0x0AB250, .rodata, mp/mpcommon]
+      - [0x0AB2D0, .rodata, ft/ftmain]
+      - [0x0AB5E0, .rodata, ft/ftparam]
+      - [0x0AB820, .rodata, ft/ftanim]
+      - [0x0AB8A0, .rodata, gm/gmcollision]
+      - [0x0AB980, .rodata, ft/ftdisplaymain]
+      - [0x0AB990, .rodata, mp/mpcollision]
+      - [0x0AC030, .rodata, ft/ftdisplaylights]
+      - [0x0AC040, .rodata, ef/efmanager]
+      - [0x0AC150, .rodata, gr/grwallpaper]
+      - [0x0AC1B0, .rodata, gr/grcommon/grpupupu]
+      - [0x0AC1E0, .rodata, gr/grcommon/grsector]
+      - [0x0AC220, .rodata, gr/grcommon/gryoster]
+      - [0x0AC230, .rodata, gr/grcommon/grinishie]
+      - [0x0AC280, .rodata, gr/grcommon/grjungle]
+      - [0x0AC290, .rodata, gr/grcommon/grhyrule]
+      - [0x0AC2D0, .rodata, gr/grbonus/grbonus3]
+      - [0x0AC2F0, .rodata, gm/gmcamera]
+      - [0x0AC380, .rodata, if/ifcommon]
+      - [0x0AC3F0, .rodata, gm/gmrumble]
+      - [0x0AC430, .rodata, ef/efparticle]
+      - [0x0AC450, .rodata, ef/efground]
+
+    # ovl2 bss
+      - { start: auto, type: .bss, name: gm/gmcommon }
+      - { start: auto, type: .bss, name: sc/sc1pmode/sc1pmanager }
+      - { start: auto, type: .bss, name: ft/ftmanager }
+      - { start: auto, type: .bss, name: mp/mpprocess }
+      - { start: auto, type: .bss, name: mp/mpcommon }
+      - { start: auto, type: .bss, name: ft/ftchar/ftmario/ftmario }
+      - { start: auto, type: .bss, name: ft/ftchar/ftmmario/ftmmario }
+      - { start: auto, type: .bss, name: ft/ftchar/ftnmario/ftnmario }
+      - { start: auto, type: .bss, name: ft/ftchar/ftfox/ftfox }
+      - { start: auto, type: .bss, name: ft/ftchar/ftnfox/ftnfox }
+      - { start: auto, type: .bss, name: ft/ftchar/ftdonkey/ftdonkey }
+      - { start: auto, type: .bss, name: ft/ftchar/ftndonkey/ftndonkey }
+      - { start: auto, type: .bss, name: ft/ftchar/ftgdonkey/ftgdonkey }
+      - { start: auto, type: .bss, name: ft/ftchar/ftsamus/ftsamus }
+      - { start: auto, type: .bss, name: ft/ftchar/ftnsamus/ftnsamus }
+      - { start: auto, type: .bss, name: ft/ftchar/ftluigi/ftluigi }
+      - { start: auto, type: .bss, name: ft/ftchar/ftnluigi/ftnluigi }
+      - { start: auto, type: .bss, name: ft/ftchar/ftlink/ftlink }
+      - { start: auto, type: .bss, name: ft/ftchar/ftnlink/ftnlink }
+      - { start: auto, type: .bss, name: ft/ftchar/ftyoshi/ftyoshi }
+      - { start: auto, type: .bss, name: ft/ftchar/ftnyoshi/ftnyoshi }
+      - { start: auto, type: .bss, name: ft/ftchar/ftcaptain/ftcaptain }
+      - { start: auto, type: .bss, name: ft/ftchar/ftncaptain/ftncaptain }
+      - { start: auto, type: .bss, name: ft/ftchar/ftkirby/ftkirby }
+      - { start: auto, type: .bss, name: ft/ftchar/ftnkirby/ftnkirby }
+      - { start: auto, type: .bss, name: ft/ftchar/ftpikachu/ftpikachu }
+      - { start: auto, type: .bss, name: ft/ftchar/ftnpikachu/ftnpikachu }
+      - { start: auto, type: .bss, name: ft/ftchar/ftpurin/ftpurin }
+      - { start: auto, type: .bss, name: ft/ftchar/ftnpurin/ftnpurin }
+      - { start: auto, type: .bss, name: ft/ftchar/ftness/ftness }
+      - { start: auto, type: .bss, name: ft/ftchar/ftnness/ftnness }
+      - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftboss }
+      - { start: auto, type: .bss, name: ft/ftmain }
+      - { start: auto, type: .bss, name: ft/ftdisplaymain }
+      - { start: auto, type: .bss, name: mp/mpcollision }
+      - { start: auto, type: .bss, name: ef/efmanager }
+      - { start: auto, type: .bss, name: gr/grwallpaper }
+      - { start: auto, type: .bss, name: gr/grcommonsetup }
+      - { start: auto, type: .bss, name: gm/gmcamera }
+      - { start: auto, type: .bss, name: if/ifcommon }
+      - { start: auto, type: .bss, name: gm/gmrumble }
+      - { start: auto, type: .bss, name: ef/efparticle }
+      - { start: auto, type: .bss, name: if/ifscreenflash }
+      - { start: auto, type: .bss, name: ef/efground }
 
   - name: ovl3
     type: code
@@ -1031,7 +1169,7 @@ segments:
 
   - name: particles_unk2.scb
     type: bin
-    start: 0x95D990
+    start: 0x95F990
   - name: particles_unk2.txb
     type: bin
     start: 0x95FAE0

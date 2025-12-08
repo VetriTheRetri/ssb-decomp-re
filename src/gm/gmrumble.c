@@ -10,7 +10,8 @@
 // 0x8012F1A0
 GMRumbleEventDefault dGMRumbleEvent0[/* */] =
 {
-    { nGMRumbleEventStartRumble, 8000 }
+    { nGMRumbleEventStartRumble, 8000 },
+    { nGMRumbleEventEnd,          0 }
 };
 
 // 0x8012F1A4
@@ -27,7 +28,11 @@ GMRumbleEventDefault dGMRumbleEvent1[/* */] =
 GMRumbleEventDefault dGMRumbleEvent2[/* */] =
 {
     { nGMRumbleEventLoopBegin, 8000 },
+#if defined(REGION_US)
     { nGMRumbleEventStartRumble,  2 },
+#else
+    { nGMRumbleEventStartRumble,  1 },
+#endif
     { nGMRumbleEventStopRumble,   4 },
     { nGMRumbleEventLoopEnd,      0 },
     { nGMRumbleEventEnd,    0 }
@@ -37,8 +42,13 @@ GMRumbleEventDefault dGMRumbleEvent2[/* */] =
 GMRumbleEventDefault dGMRumbleEvent3[/* */] =
 {
     { nGMRumbleEventLoopBegin, 8000 },
+#if defined(REGION_US)
     { nGMRumbleEventStartRumble,  2 },
     { nGMRumbleEventStopRumble,   8 },
+#else
+    { nGMRumbleEventStartRumble,  1 },
+    { nGMRumbleEventStopRumble,   6 },
+#endif
     { nGMRumbleEventLoopEnd,      0 },
     { nGMRumbleEventEnd,          0 }
 };
@@ -46,7 +56,8 @@ GMRumbleEventDefault dGMRumbleEvent3[/* */] =
 // 0x8012F1C8
 GMRumbleEventDefault dGMRumbleEvent4[/* */] =
 {
-    { nGMRumbleEventStartRumble, 12 }
+    { nGMRumbleEventStartRumble, 12 },
+    { nGMRumbleEventEnd,          0 }
 };
 
 // 0x8012F1CC
@@ -62,7 +73,13 @@ GMRumbleEventDefault dGMRumbleEvent5[/* */] =
 // 0x8012F1D8
 GMRumbleEventDefault dGMRumbleEvent6[/* */] =
 {
-    { nGMRumbleEventStartRumble, 3 }
+#if defined(REGION_US)
+    { nGMRumbleEventStartRumble,  3 },
+#else
+    { nGMRumbleEventStartRumble,  4 },
+    { nGMRumbleEventStopRumble,   2 },
+#endif
+    { nGMRumbleEventEnd,          0 }
 };
 
 // 0x8012F1DC
@@ -88,13 +105,26 @@ GMRumbleEventDefault dGMRumbleEvent8[/* */] =
 // 0x8012F1F4
 GMRumbleEventDefault dGMRumbleEvent9[/* */] =
 {
-    { nGMRumbleEventStartRumble,  8 }
+#if defined(REGION_US)
+    { nGMRumbleEventStartRumble,  8 },
+#else
+    { nGMRumbleEventLoopBegin,    3 },
+    { nGMRumbleEventStartRumble,  3 },
+    { nGMRumbleEventStopRumble,   1 },
+    { nGMRumbleEventLoopEnd,      0 },
+#endif
+    { nGMRumbleEventEnd,          0 }
 };
 
 // 0x8012F1F8
 GMRumbleEventDefault dGMRumbleEvent10[/* */] =
 {
-    { nGMRumbleEventStartRumble, 16 }
+#if defined(REGION_US)
+    { nGMRumbleEventStartRumble, 16 },
+#else
+    { nGMRumbleEventStartRumble, 14 },
+#endif
+    { nGMRumbleEventEnd,          0 }
 };
 
 // 0x8012F1FC - padding?

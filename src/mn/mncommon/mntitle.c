@@ -459,7 +459,11 @@ void mnTitleProceedDemoNext(void)
 
 	case nSCKindModeSelect:
 	case nSCKindAutoDemo:
-		gSCManagerSceneData.scene_curr = nSCKindStartup;
+#if defined(REGION_US)        
+        gSCManagerSceneData.scene_curr = nSCKindStartup;
+#else
+        gSCManagerSceneData.scene_curr = nSCKindOpeningRoom;
+#endif
 		break;
 
 	default:

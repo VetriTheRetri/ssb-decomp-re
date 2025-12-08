@@ -143,8 +143,10 @@ struct WPStruct
     f32 shield_collide_angle;           // Angle at which item collided with shield?
     Vec3f shield_collide_dir;           // Position of shield item collided with? (Update: only Z axis appears to be used, can be 0, -1 or 1 depending on attack direction
     GObj *reflect_gobj;                 // GObj that reflected this weapon
+#if defined(REGION_US)
     GMStatFlags reflect_stat_flags;     // Status flags of GObj reflecting this item (e.g. is_smash_attack, ga, is_projectile, etc.)
     u16 reflect_stat_count;             // Status update count at the time the item is reflected?
+#endif
     GObj *absorb_gobj;                  // GObj that absorbed this item
 
     ub32 is_hitlag_victim : 1;          // Weapon can deal hitlag to target

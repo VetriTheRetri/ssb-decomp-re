@@ -2156,7 +2156,11 @@ void scStaffrollFuncDraw(void)
 	}
 	if (sSCStaffrollStatus == -1)
 	{
-		gSCManagerSceneData.scene_curr = nSCKindStartup;
+#if defined(REGION_US)        
+    	gSCManagerSceneData.scene_curr = nSCKindStartup;
+#else
+    	gSCManagerSceneData.scene_curr = nSCKindOpeningRoom;
+#endif
 
 		syAudioStopBGMAll();
 		syVideoSetFlags(SYVIDEO_FLAG_BLACKOUT);

@@ -416,9 +416,11 @@ void dbBattleFuncRun(GObj *gobj)
 			gSCManagerTransferBattleState.is_team_battle = FALSE;
 			break;
 			
+#if defined(REGION_US)
 		case nDBBattleSceneCongra:
 			gSCManagerSceneData.scene_curr = nSCKindCongra;
 			break;
+#endif
 		}
 		syTaskmanSetLoadScene();
 	}

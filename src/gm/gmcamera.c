@@ -1441,7 +1441,11 @@ void gmCameraMakePlayerArrowsCamera(void)
             FALSE
         )
     );
+#if defined(REGION_US)
     lbCommonInitCameraOrtho(cobj, 0x54, 1);
+#else
+    lbCommonInitCameraOrtho(cobj, 0x53, 1);
+#endif
 
     cobj->flags |= COBJ_FLAG_DLBUFFERS;
 

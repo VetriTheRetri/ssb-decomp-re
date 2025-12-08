@@ -421,6 +421,10 @@ void mnMessageStartScene(void)
     else
     {
         gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+#if defined(REGION_US)        
         gSCManagerSceneData.scene_curr = nSCKindStartup;
+#else
+        gSCManagerSceneData.scene_curr = nSCKindOpeningRoom;
+#endif
     }
 }

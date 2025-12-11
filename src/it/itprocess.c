@@ -1099,8 +1099,10 @@ next_check:
         ip->player = fp->player;
         ip->player_num = fp->player_num;
         ip->handicap = fp->handicap;
+#if defined(REGION_US)
         ip->attack_coll.stat_flags = ip->reflect_stat_flags;
         ip->attack_coll.stat_count = ip->reflect_stat_count;
+#endif
 
         if (ip->proc_reflector != NULL)
         {

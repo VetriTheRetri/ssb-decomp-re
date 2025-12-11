@@ -3816,7 +3816,7 @@ llMarioMainFireballWeaponAttributes = 0x0;
 
 llMarioSpecial1FireballWeaponAttributes = 0x0;
 
-llFoxMainMotionLwReflectorFTSpecialColl = 0x19B0;
+llFoxMainMotionLwReflectorFTSpecialColl = 0x19D0;
 
 llFoxSpecial1BlasterWeaponAttributes = 0x0;
 
@@ -3834,14 +3834,14 @@ llLinkMainBombBloatScales = 0xA8;
 llLinkSpecial1BoomerangWeaponAttributes = 0x0;
 
 llKirbyMainMotionSpecialNFTKirbyCopy = 0x0;
-llKirbyMainMotionftKirbyAttack100Effect = 0x1220;
+llKirbyMainMotionftKirbyAttack100Effect = 0x1208;
 
 llKirbyMainCutterWeaponAttributes = 0x8;
 
 llCaptainMainMotionSpecialHiVec2h = 0x0;
 
 llNessMainMotionAttackS4ReflectorFTSpecialColl = 0x1114;
-llNessMainMotionLwAbsorbFTSpecialColl = 0x16D4;
+llNessMainMotionLwAbsorbFTSpecialColl = 0x16CC;
 
 llNessMainPKThunderWeaponAttributes = 0xC;
 llNessMainPKThunderTrailWeaponAttributes = 0x40;

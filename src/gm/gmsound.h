@@ -185,58 +185,58 @@ typedef enum gmFGMVoiceID
 	nSYAudioFGMGroundGrind3,
 	nSYAudioFGMInflateJump6,
 	nSYAudioFGMNessJump,
-	// nSYAudioFGMInflateJump7,
-	// nSYAudioFGMInflateJump8,
-	// nSYAudioFGMGroundGrind4,
-	// nSYAudioFGMInflateJump9,
-	// nSYAudioFGMDonkeyFoot, // Might be footsteps? They are very quiet
-	// nSYAudioFGMCaptainFoot,
-	// nSYAudioFGMFoxFoot,
-	// nSYAudioFGMKirbyFoot,
-	// nSYAudioFGMLinkFoot,
-	// nSYAudioFGMMarioFoot,				// Also Luigi
-	// nSYAudioFGMNessFoot,
-	// nSYAudioFGMPikachuFoot,
-	// nSYAudioFGMPurinFoot,
-	// nSYAudioFGMSamusFoot,
-	// nSYAudioFGMYoshiFoot,
-	// nSYAudioFGMDonkeyDash,
-	// nSYAudioFGMCaptainDash,
-	// nSYAudioFGMFoxDash,
-	// nSYAudioFGMKirbyDash,
-	// nSYAudioFGMLinkDash,
-	// nSYAudioFGMMarioDash,				// Also Luigi
-	// nSYAudioFGMMMarioFoot,				// Metal Mario footstep
-	// nSYAudioFGMMMarioDash, 				// Unconfirmed, Metal Mario uses the above ID 122 for all foot sounds
-	// nSYAudioFGMNessDash,
-	// nSYAudioFGMPikachuDash,
-	// nSYAudioFGMPurinDash,
-	// nSYAudioFGMSamusDash,
-	// nSYAudioFGMGroundBrakeGrind,
-	// nSYAudioFGMUnkEchoHit1,
-	// nSYAudioFGMYoshiDash,
-	// nSYAudioFGMDogasSmog,
-	// nSYAudioFGMIwarkRockMake,
-	// nSYAudioFGMKabigonFall,
-	// nSYAudioFGMKabigonJump, // ???
-	// nSYAudioFGMKamexHydro,
-	// nSYAudioFGMLizardonFlame,
-	// nSYAudioFGMMewFly,
-	// nSYAudioFGMNyarsCoin,
-	// nSYAudioFGMMBallOpen,
-	// nSYAudioFGMMonsterShoot, // Venusaur and Starmie firing sound effect
-	// nSYAudioFGMTosakintoSplash,
+	nSYAudioFGMInflateJump7,
+	nSYAudioFGMInflateJump8,
+	nSYAudioFGMGroundGrind4,
+	nSYAudioFGMInflateJump9,
+	nSYAudioFGMDonkeyFoot, // Might be footsteps? They are very quiet
+	nSYAudioFGMCaptainFoot,
+	nSYAudioFGMFoxFoot,
+	nSYAudioFGMKirbyFoot,
+	nSYAudioFGMLinkFoot,
+	nSYAudioFGMMarioFoot,				// Also Luigi
+	nSYAudioFGMNessFoot,
+	nSYAudioFGMPikachuFoot,
+	nSYAudioFGMPurinFoot,
+	nSYAudioFGMSamusFoot,
+	nSYAudioFGMYoshiFoot,
+	nSYAudioFGMDonkeyDash,
+	nSYAudioFGMCaptainDash,
+	nSYAudioFGMFoxDash,
+	nSYAudioFGMKirbyDash,
+	nSYAudioFGMLinkDash,
+	nSYAudioFGMMarioDash,				// Also Luigi
+	nSYAudioFGMMMarioFoot,				// Metal Mario footstep
+	nSYAudioFGMMMarioDash, 				// Unconfirmed, Metal Mario uses the above ID 122 for all foot sounds
+	nSYAudioFGMNessDash,
+	nSYAudioFGMPikachuDash,
+	nSYAudioFGMPurinDash,
+	nSYAudioFGMSamusDash,
+	nSYAudioFGMGroundBrakeGrind,
+	nSYAudioFGMUnkEchoHit1,
+	nSYAudioFGMYoshiDash,
+	nSYAudioFGMDogasSmog,
+	nSYAudioFGMIwarkRockMake,
+	nSYAudioFGMKabigonFall,
+	nSYAudioFGMKabigonJump, // ???
+	nSYAudioFGMKamexHydro,
+	nSYAudioFGMLizardonFlame,
+	nSYAudioFGMMewFly,
+	nSYAudioFGMNyarsCoin,
+	nSYAudioFGMMBallOpen,
+	nSYAudioFGMMonsterShoot, // Venusaur and Starmie firing sound effect
+	nSYAudioFGMTosakintoSplash,
 	// nSYAudioFGMDairantouKickL,
 	// nSYAudioFGMDairantouKickM,
 	// nSYAudioFGMDairantouKickS,
 	// nSYAudioFGMDairantouPunchL,
 	// nSYAudioFGMDairantouPunchM,
 	// nSYAudioFGMDairantouPunchS,
-	// nSYAudioFGMOpeningSectorAmbient,
-	// nSYAudioFGMOpeningNewcomersClash,
-	// nSYAudioFGMPublicPrologue,		// Cheer on Meta Crystal and Duel Zone before the music starts playing
-	// nSYAudioFGMOpeningClash,			
-	// nSYAudioFGMOpeningBatM,				// Plays on characters clashing scene in opening?
+	nSYAudioFGMOpeningSectorAmbient,
+	nSYAudioFGMOpeningNewcomersClash,
+	nSYAudioFGMPublicPrologue,		// Cheer on Meta Crystal and Duel Zone before the music starts playing
+	nSYAudioFGMOpeningClash,			
+	nSYAudioFGMOpeningBatM,				// Plays on characters clashing scene in opening?
 	nSYAudioFGMAltitudeWarn = 0x8F,			// Bottom map_bound warning sound?
 	nSYAudioFGMDeadExplodeL, 			// One of many sounds that play when entering the blast zones
 	nSYAudioFGMDeadExplodeS,
@@ -699,21 +699,21 @@ typedef enum gmFGMVoiceID
 	nSYAudioVoicePublicPurin,		 	// 0x264
 	nSYAudioVoicePublicSamus,		 	// 0x265
 	nSYAudioVoicePublicYoshi,		  	// 0x266
-	// nSYAudioVoicePublicGaspL,			// Loud audience gasp when fighter recovers successfully
-	// nSYAudioVoicePublicGaspM,			// Medium audience gasp when a fighter recovers successfully
-	// nSYAudioVoicePublicGaspS,			// Slight audience gasp when a fighter recovers successfully
-	// nSYAudioVoicePublicCheer,			// Audience cheer (>= 160 knockback) + pressed start on CSS
-	// nSYAudioVoicePublicAmazed,			// Amazed at player performance (< 160 knockback)
-	// nSYAudioVoicePublicGaspClap,			// Audience gasps, then claps
-	// nSYAudioVoicePublicWin,				// "Static" reaction pre-winner announcement
-	// nSYAudioVoicePublicDamageL,			// React to fighter receiving heavy knockback
-	// nSYAudioVoicePublicDamageM,			// React to fighter receiving medium knockback
-	// nSYAudioVoicePublicNoContest,		// No contest?
-	// nSYAudioVoicePublicDamageS,			// React to fighter receiving light knockback
-	// nSYAudioVoicePublicExcited,			// React to winner announcement after game set / match begin
-	// nSYAudioVoicePublicAbsorb,			// React to fighter absorbing projectiles (Ness)
-	// nSYAudioVoicePublicClapL,			// Louder audience clap
-	// nSYAudioVoicePublicClapS,			// Slight audience clap
+	nSYAudioVoicePublicGaspL,			// Loud audience gasp when fighter recovers successfully
+	nSYAudioVoicePublicGaspM,			// Medium audience gasp when a fighter recovers successfully
+	nSYAudioVoicePublicGaspS,			// Slight audience gasp when a fighter recovers successfully
+	nSYAudioVoicePublicCheer,			// Audience cheer (>= 160 knockback) + pressed start on CSS
+	nSYAudioVoicePublicAmazed,			// Amazed at player performance (< 160 knockback)
+	nSYAudioVoicePublicGaspClap,			// Audience gasps, then claps
+	nSYAudioVoicePublicWin,				// "Static" reaction pre-winner announcement
+	nSYAudioVoicePublicDamageL,			// React to fighter receiving heavy knockback
+	nSYAudioVoicePublicDamageM,			// React to fighter receiving medium knockback
+	nSYAudioVoicePublicNoContest,		// No contest?
+	nSYAudioVoicePublicDamageS,			// React to fighter receiving light knockback
+	nSYAudioVoicePublicExcited,			// React to winner announcement after game set / match begin
+	nSYAudioVoicePublicAbsorb,			// React to fighter absorbing projectiles (Ness)
+	nSYAudioVoicePublicClapL,			// Louder audience clap
+	nSYAudioVoicePublicClapS,			// Slight audience clap
 	// nSYAudioFGMCharacterUnkZip1,			// ??? goes repeats for 10 more instances, character-based?
 	// nSYAudioFGMCharacterUnkZip2,
 	// nSYAudioFGMCharacterUnkZip3,

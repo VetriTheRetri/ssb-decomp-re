@@ -90,7 +90,9 @@ GObj* itStarMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     DObj *dobj;
     ITStruct *ip;
     Vec3f vel_real;
+#if defined(REGION_US)
     Vec3f translate;
+#endif
 
     vel_real.x = (pos->x < cobj->vec.at.x) ? ITSTAR_VEL_X : -ITSTAR_VEL_X;
     vel_real.y = ITSTAR_BOUNCE_Y;
@@ -102,7 +104,9 @@ GObj* itStarMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     {
         dobj = DObjGetStruct(item_gobj);
 
+#if defined(REGION_US)
         translate = dobj->translate.vec.f;
+#endif
 
         ip = itGetStruct(item_gobj);
 
@@ -116,7 +120,11 @@ GObj* itStarMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->rotate.vec.f.z = 0.0F;
 
+#if defined(REGION_US)
         dobj->translate.vec.f = translate;
+#else
+        dobj->translate.vec.f = *pos;
+#endif
     }
     return item_gobj;
 }

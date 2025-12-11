@@ -150,11 +150,14 @@ GObj* itHeartMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
     GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITHeartItemDesc, pos, vel, flags);
     DObj *dobj;
+#if defined(REGION_US)
     Vec3f translate;
+#endif
     ITStruct *ip;
 
     if (item_gobj != NULL)
     {
+#if defined(REGION_US)
         dobj = DObjGetStruct(item_gobj);
         ip = itGetStruct(item_gobj);
         translate = dobj->translate.vec.f;
@@ -162,6 +165,14 @@ GObj* itHeartMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         gcAddXObjForDObjFixed(dobj, 0x2E, 0);
 
         dobj->translate.vec.f = translate;
+#else
+        ip = itGetStruct(item_gobj);
+        dobj = DObjGetStruct(item_gobj);
+
+        gcAddXObjForDObjFixed(dobj, 0x2E, 0);
+
+        dobj->translate.vec.f = *pos;
+#endif
 
         dobj->rotate.vec.f.z = 0.0F;
 

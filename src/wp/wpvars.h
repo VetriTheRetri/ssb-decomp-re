@@ -31,10 +31,15 @@
 #define WPSAMUSBOMB_WAIT_BLINK_TIMER_MID 5	// Switch out Bomb's texture animation frame when this timer reaches 0
 #define WPSAMUSBOMB_WAIT_BLINK_TIMER_FAST 3 // Switch out Bomb's texture animation frame when this timer reaches 0
 
-#define WPPIKACHUJOLT_LIFETIME 100
 #define WPPIKACHUJOLT_VEL 55.0F
 #define WPPIKACHUJOLT_GRAVITY 0.0F
+#if defined(REGION_US)
+#define WPPIKACHUJOLT_LIFETIME 100
 #define WPPIKACHUJOLT_TVEL 50.0F
+#else
+#define WPPIKACHUJOLT_LIFETIME 120
+#define WPPIKACHUJOLT_TVEL 45.0F
+#endif
 #define WPPIKACHUJOLT_ROTATE_ANGLE_MAX F_CLC_DTOR32(100.0F)
 #define WPPIKACHUJOLT_ANIM_PUSH_FRAME 7.5F // Frame on which Thunder Jolt gets pushed ahead to simulate movement?
 #define WPPIKACHUJOLT_COLL_GROUND 0		   // ID of Thunder Jolt collision type

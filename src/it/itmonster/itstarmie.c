@@ -252,6 +252,7 @@ void itStarmieNFollowFindFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
 void itStarmieNFollowInitVars(GObj *item_gobj)
 {
     GObj *fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
+#if defined(REGION_US)
     ITStruct *ip = itGetStruct(item_gobj);
     GObj *victim_gobj;
     s32 unused2[2];
@@ -260,21 +261,38 @@ void itStarmieNFollowInitVars(GObj *item_gobj)
     f32 dist_x;
     f32 dist_xy;
     Vec3f dist;
-    s32 ft_count = 0;
+#else
+    // TODO: regswap
+    s32 unused1;
+    GObj *victim_gobj;
+    s32 unused2[2];
+    ITStruct *ip = itGetStruct(item_gobj);
+    DObj *dobj = DObjGetStruct(item_gobj);
+    FTStruct *owner_fp = ftGetStruct(ip->owner_gobj);
+    f32 square_xy;
+    f32 dist_xy;
+    Vec3f dist;
+    f32 dist_x;
+#endif
+    s32 players = 0;
 
     while (fighter_gobj != NULL)
     {
         FTStruct *fp = ftGetStruct(fighter_gobj);
 
+#if defined(REGION_US)
         if ((fighter_gobj != ip->owner_gobj) && (fp->team != ip->team))
+#else
+        if ((fighter_gobj != ip->owner_gobj) && (fp->team != owner_fp->team))
+#endif
         {
             syVectorDiff3D(&dist, &DObjGetStruct(fighter_gobj)->translate.vec.f, &dobj->translate.vec.f);
 
-            if (ft_count == 0)
+            if (players == 0)
             {
                 dist_xy = SQUARE(dist.x) + SQUARE(dist.y);
             }
-            ft_count++;
+            players++;
 
             square_xy = SQUARE(dist.x) + SQUARE(dist.y);
 
@@ -286,6 +304,8 @@ void itStarmieNFollowInitVars(GObj *item_gobj)
             }
         }
         fighter_gobj = fighter_gobj->link_next;
+
+        continue;
     }
     itStarmieNFollowFindFollowPlayerLR(item_gobj, victim_gobj);
 

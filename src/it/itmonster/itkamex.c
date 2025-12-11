@@ -345,6 +345,9 @@ void itKamexCommonFindTargetsSetLR(GObj *item_gobj)
     GObj *victim_gobj;
     s32 unused2[3];
     ITStruct *ip = itGetStruct(item_gobj);
+#if defined(REGION_JP)
+    FTStruct *owner_fp = ftGetStruct(ip->owner_gobj);
+#endif
     DObj *dobj = DObjGetStruct(item_gobj);
     f32 dist_xy;
     f32 dist_x;
@@ -356,7 +359,11 @@ void itKamexCommonFindTargetsSetLR(GObj *item_gobj)
     {
         FTStruct *fp = ftGetStruct(fighter_gobj);
 
+#if defined(REGION_US)
         if ((fighter_gobj != ip->owner_gobj) && (fp->team != ip->team))
+#else
+        if ((fighter_gobj != ip->owner_gobj) && (fp->team != owner_fp->team))
+#endif
         {
             syVectorDiff3D(&dist, &DObjGetStruct(fighter_gobj)->translate.vec.f, &dobj->translate.vec.f);
 
@@ -408,7 +415,9 @@ GObj* itKamexMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         mball_ip = itGetStruct(parent_gobj);
 
         kamex_ip->owner_gobj = mball_ip->owner_gobj;
+#if defined(REGION_US)        
         kamex_ip->team = mball_ip->team;
+#endif
 
         itKamexCommonFindTargetsSetLR(item_gobj);
 

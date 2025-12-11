@@ -150,11 +150,14 @@ GObj* itTomatoMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
     GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITTomatoItemDesc, pos, vel, flags);
     DObj *joint;
+#if defined(REGION_US)
     Vec3f translate;
+#endif
     ITStruct *ip;
 
     if (item_gobj != NULL)
     {
+#if defined(REGION_US)
         joint = DObjGetStruct(item_gobj);
         ip = itGetStruct(item_gobj);
         translate = joint->translate.vec.f;
@@ -162,6 +165,14 @@ GObj* itTomatoMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         gcAddXObjForDObjFixed(joint, 0x2E, 0);
 
         joint->translate.vec.f = translate;
+#else
+        ip = itGetStruct(item_gobj);
+        joint = DObjGetStruct(item_gobj);
+
+        gcAddXObjForDObjFixed(joint, 0x2E, 0);
+
+        joint->translate.vec.f = *pos;
+#endif
 
         ip->is_unused_item_bool = TRUE;
 

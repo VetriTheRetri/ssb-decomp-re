@@ -478,7 +478,9 @@ GObj* itMBallMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     {
         DObj *dobj = DObjGetStruct(item_gobj);
         ITStruct *ip = itGetStruct(item_gobj);
+#if defined(REGION_US)
         Vec3f translate = dobj->translate.vec.f;
+#endif
 
         dobj->child->flags = DOBJ_FLAG_HIDDEN;
         dobj->child->sib_next->flags = DOBJ_FLAG_NONE;
@@ -486,7 +488,11 @@ GObj* itMBallMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         gcAddXObjForDObjFixed(dobj, nGCMatrixKindTraRotRpyR, 0);
         gcAddXObjForDObjFixed(dobj->child->sib_next, 0x46, 0);
 
+#if defined(REGION_US)
         dobj->translate.vec.f = translate;
+#else
+        dobj->translate.vec.f = *pos;
+#endif
 
         ip->multi = ITMBALL_SPAWN_WAIT;
 

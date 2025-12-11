@@ -60,10 +60,13 @@ sb32 ftCommonRunBrakeCheckInterruptTurnRun(GObj *fighter_gobj)
     {
         ftCommonRunBrakeSetStatus(fighter_gobj, 0);
 
+#if defined(REGION_US)
+        // Momentum slide fix
         if (fp->physics.vel_ground.x > fp->attr->run_speed)
         {
             fp->physics.vel_ground.x = fp->attr->run_speed;
         }
+#endif
         return TRUE;
     }
     else return FALSE;

@@ -601,7 +601,9 @@ GObj* itMSBombMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITMSBombItemDesc, pos, vel, flags);
     DObj *dobj;
     ITStruct *ip;
+#if defined(REGION_US)
     Vec3f translate;
+#endif
 
     if (item_gobj != NULL)
     {
@@ -610,12 +612,18 @@ GObj* itMSBombMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         dobj->child->flags = DOBJ_FLAG_HIDDEN;
         dobj->child->sib_next->flags = DOBJ_FLAG_NONE;
 
+#if defined(REGION_US)
         translate = dobj->translate.vec.f;
+#endif
 
         gcAddXObjForDObjFixed(dobj, nGCMatrixKindTraRotRpyR, 0);
         gcAddXObjForDObjFixed(dobj->child->sib_next, 0x46, 0);
 
+#if defined(REGION_US)
         dobj->translate.vec.f = translate;
+#else
+        dobj->translate.vec.f = *pos;
+#endif
 
         ip = itGetStruct(item_gobj);
 

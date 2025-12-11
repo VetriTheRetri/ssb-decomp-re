@@ -29,7 +29,11 @@ wpMarioFireballAttributes dWPMarioFireballWeaponAttributes[/* */] =
 
     // Luigi
     {
+#if defined(REGION_US)
         80,                                       // Lifetime
+#else
+        90,                                       // Lifetime
+#endif
         55.0F,                                    // Terminal velocity
         30.0F,                                    // Map collision damage
         0.0F,                                     // Gravity

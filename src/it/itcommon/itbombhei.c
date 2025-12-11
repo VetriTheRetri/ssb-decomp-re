@@ -716,13 +716,17 @@ GObj* itBombHeiMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITBombHeiItemDesc, pos, vel, flags);
     DObj *dobj;
     ITStruct *ip;
+#if defined(REGION_US)
     Vec3f translate;
+#endif
 
     if (item_gobj != NULL)
     {
         dobj = DObjGetStruct(item_gobj);
 
+#if defined(REGION_US)
         translate = dobj->translate.vec.f;
+#endif
 
         ip = itGetStruct(item_gobj);
 
@@ -732,7 +736,11 @@ GObj* itBombHeiMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         gcAddXObjForDObjFixed(dobj, 0x2E, 0);
 
+#if defined(REGION_US)
         dobj->translate.vec.f = translate;
+#else
+        dobj->translate.vec.f = *pos;
+#endif
 
         ip->is_unused_item_bool = TRUE;
 

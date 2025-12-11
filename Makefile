@@ -120,19 +120,7 @@ ifeq ($(VERSION),jp)
 			   src/mn/mncommon/mnunusedfighters.c \
 			   src/db/dbmaps.c \
 			   src/db/dbmenu.c \
-			   src/ft/ftmanager.c \
-			   src/ft/ftphysics.c \
-			   src/ft/ftanimend.c \
-			   src/ft/ftmain.c \
-			   src/ft/ftparam.c \
-			   src/ft/ftanim.c \
-			   src/ft/ftdisplaymain.c \
-			   src/ft/fthammer.c \
-			   src/ft/ftdisplaylights.c \
-			   src/ft/ftkey.c \
-			   src/ft/ftdata.c \
-			   src/ft/ftcommondata.c \
-			   $(shell find src/sys src/libultra src/lb src/sc/scsubsys src/mp src/gm src/ef src/gr src/if src/ft/ftchar -type f -name '*.c')
+			   $(shell find src/sys src/libultra src/lb src/sc/scsubsys src/mp src/gm src/ef src/gr src/if src/ft src/wp src/it -type f -name '*.c')
 else ifeq ($(VERSION),us)
     LDFLAGS := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt \
                -T .splat/smashbrothers.ld -T symbols/not_found.txt -T symbols/linker_constants.txt -T symbols/reloc_data_symbols.txt

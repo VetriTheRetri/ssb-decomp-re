@@ -148,11 +148,16 @@ sb32 itIwarkAttackProcUpdate(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
+#if defined(REGION_US)
     f32 pos_y = gMPCollisionGroundData->map_bound_top - ITIWARK_FLY_STOP_Y;
 
     if (dobj->translate.vec.f.y >= pos_y)
     {
         dobj->translate.vec.f.y = pos_y;
+#else
+    if (dobj->translate.vec.f.y >= gMPCollisionGroundData->map_bound_top - ITIWARK_FLY_STOP_Y)
+    {
+#endif
 
         ip->physics.vel_air.y = 0.0F;
 
@@ -195,7 +200,9 @@ void itIwarkAttackInitVars(GObj *item_gobj)
     Gfx *dl;
     Vec3f pos;
 
+#if defined(REGION_US)
     ip->ga = nMPKineticsAir;
+#endif
 
     ip->physics.vel_air.y = ITIWARK_FLY_VEL_Y;
 

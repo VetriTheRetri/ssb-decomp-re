@@ -12,6 +12,7 @@ void ftCommonCapturePulledRotateScale(GObj *fighter_gobj, Vec3f *this_pos, Vec3f
 {
     FTStruct *this_fp = ftGetStruct(fighter_gobj);
     FTStruct *capture_fp = ftGetStruct(this_fp->capture_gobj);
+#if defined(REGION_US)
     DObj *joint = DObjGetStruct(fighter_gobj)->child;
     Mtx44f mtx;
 
@@ -23,6 +24,20 @@ void ftCommonCapturePulledRotateScale(GObj *fighter_gobj, Vec3f *this_pos, Vec3f
     this_pos->z = (-joint->translate.vec.f.z * DObjGetStruct(fighter_gobj)->scale.vec.f.z);
 
     gmCollisionGetWorldPosition(mtx, this_pos);
+#else
+    FTParts *ftparts;
+    DObj *joint = DObjGetStruct(fighter_gobj)->child;
+
+    func_ovl2_800EDBA4(capture_fp->joints[capture_fp->attr->joint_itemheavy_id]);
+    ftparts = capture_fp->joints[capture_fp->attr->joint_itemheavy_id]->user_data.p;
+    func_ovl2_800EDA0C(ftparts->mtx_translate, rotate);
+
+    this_pos->x = (-joint->translate.vec.f.x * DObjGetStruct(fighter_gobj)->scale.vec.f.x);
+    this_pos->y = (-joint->translate.vec.f.y * DObjGetStruct(fighter_gobj)->scale.vec.f.y);
+    this_pos->z = (-joint->translate.vec.f.z * DObjGetStruct(fighter_gobj)->scale.vec.f.z);
+
+    gmCollisionGetWorldPosition(ftparts->mtx_translate, this_pos);
+#endif
 }
 
 // 0x8014A6B4

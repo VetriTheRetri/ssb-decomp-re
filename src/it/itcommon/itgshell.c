@@ -547,14 +547,20 @@ GObj* itGShellMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     {
         DObj *dobj = DObjGetStruct(item_gobj);
         ITStruct *ip;
+#if defined(REGION_US)
         Vec3f translate = dobj->translate.vec.f;
+#endif
 
         dobj->rotate.vec.f.y = F_CST_DTOR32(90.0F);
 
         gcAddXObjForDObjFixed(dobj, nGCMatrixKindTraRotRpyR, 0);
         gcAddXObjForDObjFixed(dobj, 0x48, 0);
 
+#if defined(REGION_US)
         dobj->translate.vec.f = translate;
+#else
+        dobj->translate.vec.f = *pos;
+#endif
 
         dobj->mobj->palette_id = 1.0F;
 

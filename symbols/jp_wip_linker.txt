@@ -1466,6 +1466,16 @@ ftPublicDefeatedAddID = 0x80162c28;
 ftCommonSleepCheckIgnorePauseMenu = 0x8013b0d0;
 sc1PGameSetCameraZoom = 0x8018cd14;
 
+sc1PGameSetPlayerDefeatStats = 0x8018c964;
+sc1PGameSpawnEnemyTeamNext = 0x8018baf4;
+ftParamGetGroundHazardKnockback = 0x800e7b88;
+gSC1PGameBonusTomatoCount = 0x80191028;
+gSC1PGameBonusHeartCount = 0x80191029;
+gSC1PGameBonusShieldBreaker = 0x8019102a;
+sc1PGameBossDefeatInitInterface = 0x8018d0c4;
+itTargetMakeItem = 0x8018C71C;
+gSC1PGameBonusMewCatcher = 0x8019102c;
+
 ovl65_TEXT_START = 0x8018AA30;
 ovl65_TEXT_END = 0x80190180;
 ovl65_DATA_START = 0x80190180;

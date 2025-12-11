@@ -1056,10 +1056,12 @@ segments:
     type: code
     start: 0x10B080
     vram: 0x8018AA30
-    # follows_vram: ovl3
+    follows_vram: ovl3
     exclusive_ram_id: overlay_8018AA30
     subsegments:
-      - [0x10B080, bin, ovl5]
+      - [0x10B080, c, mv/mvunknownmario]
+      - [0x10B540, .data, mv/mvunknownmario]
+      - { start: auto, type: .bss, name: mv/mvunknownmario }
 
   - name: ovl65
     type: code

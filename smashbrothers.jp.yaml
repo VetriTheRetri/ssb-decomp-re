@@ -1044,10 +1044,13 @@ segments:
     type: code
     start: 0x109CC0
     vram: 0x8018AA30
-    # follows_vram: ovl3
+    follows_vram: ovl3
     exclusive_ram_id: overlay_8018AA30
     subsegments:
-      - [0x109CC0, bin, ovl4]
+      - [0x109CC0, c, sc/sccommon/scvsbattle]
+      - [0x10AF30, c, sc/sccommon/scvsbattlefiles]
+      - [0x10AFD0, .data, sc/sccommon/scvsbattle]
+      - { start: auto, type: .bss, name: sc/sccommon/scvsbattlefiles }
 
   - name: ovl5
     type: code

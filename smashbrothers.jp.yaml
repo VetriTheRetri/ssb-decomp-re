@@ -1067,10 +1067,24 @@ segments:
     type: code
     start: 0x10B630
     vram: 0x8018AA30
-    # follows_vram: ovl3
+    follows_vram: ovl3
     exclusive_ram_id: overlay_8018AA30
     subsegments:
-      - [0x10B630, bin, ovl65]
+    # Main 1P Game scene stuff
+      - [0x10B630, c, sc/sc1pmode/sc1pgame]
+    # Final Destination backgrounds
+      - [0x10F620, c, sc/sc1pmode/sc1pgameboss]
+    # Main 1P Game scene stuff
+      - [0x10FD80, .data, sc/sc1pmode/sc1pgame]
+    # Final Destination backgrounds
+      - [0x111140, .data, sc/sc1pmode/sc1pgameboss]
+    # Main 1P Game scene stuff
+      - [0x111390, .rodata, sc/sc1pmode/sc1pgame]
+    # Final Destination backgrounds
+      - [0x1114F0, .rodata, sc/sc1pmode/sc1pgameboss]
+    # Main 1P Game scene stuff
+      - { start: auto, type: .bss, name: sc/sc1pmode/sc1pgame }
+      - { start: auto, type: .bss, name: sc/sc1pmode/sc1pgameboss }
 
   - name: ovl6
     type: code

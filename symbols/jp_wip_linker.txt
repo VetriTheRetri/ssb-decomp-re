@@ -1475,10 +1475,3 @@ gSC1PGameBonusShieldBreaker = 0x8019102a;
 sc1PGameBossDefeatInitInterface = 0x8018d0c4;
 itTargetMakeItem = 0x8018C71C;
 gSC1PGameBonusMewCatcher = 0x8019102c;
-
-ovl65_TEXT_START = 0x8018AA30;
-ovl65_TEXT_END = 0x80190180;
-ovl65_DATA_START = 0x80190180;
-ovl65_RODATA_END = 0x80190920;
-ovl65_BSS_START = 0x80190920;
-ovl65_BSS_END = 0x80191280;

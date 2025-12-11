@@ -1090,10 +1090,17 @@ segments:
     type: code
     start: 0x111520
     vram: 0x8018AA30
-    # follows_vram: ovl3
+    follows_vram: ovl3
     exclusive_ram_id: overlay_8018AA30
     subsegments:
-      - [0x111520, bin, ovl6]
+      - [0x111520, c, sc/sc1pmode/sc1pbonusstage]
+      - [0x113120, c, sc/sc1pmode/sc1pbonusstagefiles]
+      - [0x1131C0, c, it/itground/ittarget]
+      - [0x113270, .data, sc/sc1pmode/sc1pbonusstage]
+      - [0x1134E0, .data, it/itground/ittarget]
+      - [0x113520, .rodata, sc/sc1pmode/sc1pbonusstage]
+      - { start: auto, type: .bss, name: sc/sc1pmode/sc1pbonusstage }
+      - { start: auto, type: .bss, name: sc/sc1pmode/sc1pbonusstagefiles }
 
   - name: ovl7
     type: code

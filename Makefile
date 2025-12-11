@@ -125,6 +125,8 @@ ifeq ($(VERSION),jp)
 			   src/mv/mvunknownmario.c \
 			   src/sc/sc1pmode/sc1pgame.c \
 			   src/sc/sc1pmode/sc1pgameboss.c \
+			   src/sc/sc1pmode/sc1pbonusstage.c \
+			   src/sc/sc1pmode/sc1pbonusstagefiles.c \
 			   $(shell find src/sys src/libultra src/lb src/sc/scsubsys src/mp src/gm src/ef src/gr src/if src/ft src/wp src/it -type f -name '*.c')
 else ifeq ($(VERSION),us)
     LDFLAGS := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt \

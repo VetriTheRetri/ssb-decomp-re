@@ -895,6 +895,7 @@ void sc1PBonusStageTimerProcUpdate(GObj *interface_gobj)
 	}
 }
 
+#if defined(REGION_US)
 // 0x8018E298
 void sc1PBonusStageSetTimeUp(void)
 {
@@ -934,6 +935,7 @@ void sc1PBonusStageMakeTimeUp(void)
 		);
 	}
 }
+#endif
 
 // 0x8018E344
 void sc1PBonusStageMakeTimer(void)
@@ -977,7 +979,11 @@ void sc1PBonusStageMakeTimer(void)
 	}
 	else
 	{
+#if defined(REGION_US)
 		ifCommonTimerMakeInterface(sc1PBonusStageSetTimeUp);
+#else
+		ifCommonTimerMakeInterface(ifCommonAnnounceFailureInitInterface);
+#endif
 		ifCommonTimerMakeDigits();
 	}
 }
@@ -1067,7 +1073,9 @@ void sc1PBonusStageFuncStart(void)
 	color = dSC1PBonusStageFadeColor;
 
 	lbFadeMakeActor(nGCCommonKindTransition, nGCCommonLinkIDTransition, 10, &color, 12, TRUE, NULL);
+#if defined(REGION_US)
 	sc1PBonusStageMakeTimeUp();
+#endif
 }
 
 // 0x8018E8D0

@@ -1106,10 +1106,13 @@ segments:
     type: code
     start: 0x113550
     vram: 0x8018AA30
-    # follows_vram: ovl3
+    follows_vram: ovl3
     exclusive_ram_id: overlay_8018AA30
     subsegments:
-      - [0x113550, bin, ovl7]
+      - [0x113550, c, sc/sc1pmode/sc1ptrainingmode]
+      - [0x116B20, .data, sc/sc1pmode/sc1ptrainingmode]
+      - [0x116CD0, .rodata, sc/sc1pmode/sc1ptrainingmode]
+      - { start: auto, type: .bss, name: sc/sc1pmode/sc1ptrainingmode }
 
   - name: ovl10
     type: code

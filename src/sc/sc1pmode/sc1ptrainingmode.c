@@ -304,6 +304,10 @@ void sc1PTrainingModeUpdateScroll(void)
 	sc1PTrainingModeUpdateOptionArrows();
 	sc1PTrainingModeUpdateUnderline();
 	func_800269C0_275C0(nSYAudioFGMMenuScroll2);
+#if defined(REGION_JP)
+	func_ovl7_8018F874();
+	func_ovl7_8018FA54();
+#endif
 }
 
 // 0x8018D40C
@@ -337,6 +341,9 @@ sb32 sc1PTrainingModeUpdateCPOption(void)
 		sc1PTrainingModeUpdateCPDisplaySprite();
 		sc1PTrainingModeUpdateCPOptionSprite();
 		sc1PTrainingModeUpdateScroll();
+#if defined(REGION_JP)
+		func_ovl7_8018FA54();
+#endif
 	}
 	return FALSE;
 }
@@ -371,6 +378,9 @@ sb32 sc1PTrainingModeUpdateItemOption(void)
 	{
 		sc1PTrainingModeUpdateItemOptionSprite();
 		sc1PTrainingModeUpdateScroll();
+#if defined(REGION_JP)
+		func_ovl7_8018FA54();
+#endif
 	}
 	if (sSC1PTrainingModeMenu.item_spawn_wait == 0)
 	{
@@ -412,6 +422,9 @@ sb32 sc1PTrainingModeUpdateSpeedOption(void)
 		sc1PTrainingModeUpdateSpeedDisplaySprite();
 		sc1PTrainingModeUpdateSpeedOptionSprite();
 		sc1PTrainingModeUpdateScroll();
+#if defined(REGION_JP)
+		func_ovl7_8018FA54();
+#endif
 	}
 	return FALSE;
 }
@@ -437,6 +450,9 @@ sb32 sc1PTrainingModeUpdateViewOption(void)
 		}
 		sc1PTrainingModeUpdateViewOptionSprite();
 		sc1PTrainingModeUpdateScroll();
+#if defined(REGION_JP)
+		func_ovl7_8018FA54();
+#endif
 	}
 	return FALSE;
 }
@@ -933,7 +949,11 @@ void sc1PTrainingModeMakeCPDisplay(void)
 
 	sobj = lbCommonMakeSObjForGObj(interface_gobj, sSC1PTrainingModeMenu.display_option_sprites[sSC1PTrainingModeMenu.cp_menu_option + 31]);
 
+#if defined(REGION_US)
 	sobj->pos.x = 191.0F;
+#else
+	sobj->pos.x = 193.0F;
+#endif
 	sobj->pos.y = 20.0F;
 
 	sc1PTrainingModeInitSpriteEnvColors(sobj);
@@ -1118,7 +1138,9 @@ void sc1PTrainingModeUpdateCPOptionSprite(void)
 	SObj *sobj = SObjGetStruct(sSC1PTrainingModeMenu.cp_option_gobj);
 
 	sobj->sprite = *sSC1PTrainingModeMenu.menu_option_sprites[sSC1PTrainingModeMenu.cp_menu_option + nSC1PTrainingModeMenuOptionSpriteCPStart];
+#if defined(REGION_US)
 	sobj->pos.x = 191 - (sobj->sprite.width / 2);
+#endif
 }
 
 // 0x8018EF78
@@ -1142,8 +1164,13 @@ void sc1PTrainingModeMakeCPOption(void)
 		sSC1PTrainingModeMenu.menu_option_sprites[sSC1PTrainingModeMenu.cp_menu_option + nSC1PTrainingModeMenuOptionSpriteCPStart]
 	);
 
+#if defined(REGION_US)
 	sobj->pos.x = 191 - (sobj->sprite.width / 2);
 	sobj->pos.y = 65.0F;
+#else
+	sobj->pos.x = 137.0F;
+	sobj->pos.y = 63.0F;
+#endif
 
 	sobj->envcolor.r = 0x4A;
 	sobj->envcolor.g = 0x2E;
@@ -1157,8 +1184,12 @@ void sc1PTrainingModeUpdateItemOptionSprite(void)
 
 	sobj->sprite = *sSC1PTrainingModeMenu.menu_option_sprites[sSC1PTrainingModeMenu.item_menu_option + nSC1PTrainingModeMenuOptionSpriteItemStart];
 
+#if defined(REGION_US)
 	sobj->pos.x = 191 - (sobj->sprite.width / 2);
 	sobj->pos.y = (sSC1PTrainingModeMenu.item_menu_option == nSC1PTrainingModeMenuItemMotionSensorBomb) ? 83.0F : 85.0F;
+#else
+	sobj->pos.y = (sSC1PTrainingModeMenu.item_menu_option == nSC1PTrainingModeMenuItemMotionSensorBomb) ? 82.0F : 84.0F;
+#endif
 }
 
 // 0x8018F0FC
@@ -1197,7 +1228,11 @@ void sc1PTrainingModeMakeItemOption(void)
 		sSC1PTrainingModeMenu.menu_option_sprites[sSC1PTrainingModeMenu.item_menu_option + nSC1PTrainingModeMenuOptionSpriteItemStart]
 	);
 
+#if defined(REGION_US)
 	sobj->pos.x = 191 - (sobj->sprite.width / 2);
+#else
+	sobj->pos.x = 137.0F;
+#endif
 
 	sc1PTrainingModeUpdateItemOptionSprite();
 
@@ -1227,7 +1262,9 @@ void sc1PTrainingModeUpdateSpeedOptionSprite(void)
 	SObj *sobj = SObjGetStruct(sSC1PTrainingModeMenu.speed_option_gobj);
 
 	sobj->sprite = *sSC1PTrainingModeMenu.menu_option_sprites[sSC1PTrainingModeMenu.speed_menu_option + nSC1PTrainingModeMenuOptionSpriteSpeedStart];
+#if defined(REGION_US)
 	sobj->pos.x = 191 - (sobj->sprite.width / 2);
+#endif
 }
 
 // 0x8018F354
@@ -1251,7 +1288,11 @@ void sc1PTrainingModeMakeSpeedOption(void)
 		sSC1PTrainingModeMenu.menu_option_sprites[sSC1PTrainingModeMenu.speed_menu_option + nSC1PTrainingModeMenuOptionSpriteSpeedStart]
 	);
 
+#if defined(REGION_US)
 	sobj->pos.x = 191 - (sobj->sprite.width / 2);
+#else
+	sobj->pos.x = 140.0F;
+#endif
 	sobj->pos.y = 105.0F;
 
 	sobj->envcolor.r = 0x4A;
@@ -1271,7 +1312,9 @@ void sc1PTrainingModeUpdateViewOptionSprite(void)
 	SObj *sobj = SObjGetStruct(sSC1PTrainingModeMenu.view_option_gobj);
 
 	sobj->sprite = *sSC1PTrainingModeMenu.menu_option_sprites[sSC1PTrainingModeMenu.view_menu_option + nSC1PTrainingModeMenuOptionSpriteViewStart];
+#if defined(REGION_US)
 	sobj->pos.x = 191 - (sobj->sprite.width / 2);
+#endif
 }
 
 // 0x8018F4B4
@@ -1309,8 +1352,13 @@ void sc1PTrainingModeMakeViewOption(void)
 		sSC1PTrainingModeMenu.menu_option_sprites[sSC1PTrainingModeMenu.view_menu_option + nSC1PTrainingModeMenuOptionSpriteViewStart]
 	);
 
+#if defined(REGION_US)
 	sobj->pos.x = 191 - (sobj->sprite.width / 2);
 	sobj->pos.y = 125.0F;
+#else
+	sobj->pos.x = 140.0F;
+	sobj->pos.y = 124.0F;
+#endif
 
 	sobj->envcolor.r = 0x4A;
 	sobj->envcolor.g = 0x2E;
@@ -1350,6 +1398,7 @@ void sc1PTrainingModeUpdateOptionArrows(void)
 	{
 		SObj *option_sobj = sSC1PTrainingModeMenu.hscroll_option_sobj[sSC1PTrainingModeMenu.main_menu_option];
 
+#if defined(REGION_US)
 		root_sobj->pos.x = 137.0F;
 		next_sobj->pos.x = 237.0F;
 
@@ -1362,6 +1411,12 @@ void sc1PTrainingModeUpdateOptionArrows(void)
 			root_sobj->pos.y = next_sobj->pos.y = (s32) (option_sobj->pos.y + 5.0F);
 		}
 		else root_sobj->pos.y = next_sobj->pos.y = (s32) (option_sobj->pos.y + 3.0F);
+#else
+		root_sobj->pos.x = option_sobj->pos.x - root_sobj->sprite.width - 3.0F;
+		next_sobj->pos.x = option_sobj->pos.x + option_sobj->sprite.width + 3.0F;
+
+		root_sobj->pos.y = next_sobj->pos.y = (s32) (option_sobj->pos.y + (option_sobj->sprite.height / 2.0F) - (root_sobj->sprite.height / 2.0F));
+#endif
 
 		root_sobj->sprite.attr &= ~SP_HIDDEN;
 		next_sobj->sprite.attr &= ~SP_HIDDEN;
@@ -1523,7 +1578,11 @@ void sc1PTrainingModeUpdateCursorPosition(void)
 	SObj *cursor_sobj = SObjGetStruct(sSC1PTrainingModeMenu.cursor_gobj);
 	SObj *text_sobj = sSC1PTrainingModeMenu.vscroll_option_sobj[sSC1PTrainingModeMenu.main_menu_option][0];
 
+#if defined(REGION_US)
 	cursor_sobj->pos.y = (s32) (text_sobj->pos.y - 1.0F);
+#else
+	cursor_sobj->pos.y = (s32) (text_sobj->pos.y + (text_sobj->sprite.height / 2.0F) - (cursor_sobj->sprite.height / 2.0F));
+#endif
 }
 
 // 0x8018FC00
@@ -1546,7 +1605,11 @@ void sc1PTrainingModeMakeCursor(void)
 		interface_gobj,
 		sSC1PTrainingModeMenu.menu_option_sprites[nSC1PTrainingModeMenuOptionSpriteCursor]
 	);
+#if defined(REGION_US)
 	target_sprite->pos.x = 71.0F;
+#else
+	target_sprite->pos.x = 69.0F;
+#endif
 
 	sc1PTrainingModeUpdateCursorPosition();
 }
@@ -1595,6 +1658,7 @@ void sc1PTrainingModeUpdateUnderline(void)
 	SObj *arrow_sobj = sSC1PTrainingModeMenu.vscroll_option_sobj[sSC1PTrainingModeMenu.main_menu_option][1];
 	s32 offset;
 
+#if defined(REGION_US)
 	sSC1PTrainingModeMenu.cursor_ulx = text_sobj->pos.x - 13.0F;
 
 	offset = 
@@ -1607,6 +1671,13 @@ void sc1PTrainingModeUpdateUnderline(void)
 	sSC1PTrainingModeMenu.cursor_lrx = offset + (arrow_sobj->pos.x + arrow_sobj->sprite.width);
 	sSC1PTrainingModeMenu.cursor_uly = text_sobj->pos.y + text_sobj->sprite.height + -1.0F;
 	sSC1PTrainingModeMenu.cursor_lry = sSC1PTrainingModeMenu.cursor_uly + 1;
+#else
+	sSC1PTrainingModeMenu.cursor_ulx = text_sobj->pos.x - 2.0F;
+
+	sSC1PTrainingModeMenu.cursor_lrx = (arrow_sobj->pos.x + arrow_sobj->sprite.width) + 2.0F;
+	sSC1PTrainingModeMenu.cursor_uly = text_sobj->pos.y + text_sobj->sprite.height + 1.0F;
+	sSC1PTrainingModeMenu.cursor_lry = sSC1PTrainingModeMenu.cursor_uly + 2;
+#endif
 }
 
 // 0x80190070
@@ -1645,6 +1716,10 @@ void sc1PTrainingModeMakeMenuAll(void)
 	sc1PTrainingModeMakeViewOption();
 	sc1PTrainingModeSetHScrollOptionSObjs();
 	sc1PTrainingModeMakeOptionArrows();
+	func_ovl7_8018F804();
+	func_ovl7_8018F8FC();
+	func_ovl7_8018F984();
+	func_ovl7_8018FB40();
 	sc1PTrainingModeSetVScrollOptionSObjs();
 	sc1PTrainingModeMakeCursor();
 	sc1PTrainingModeMakeUnderline();

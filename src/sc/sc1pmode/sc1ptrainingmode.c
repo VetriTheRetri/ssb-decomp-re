@@ -1716,10 +1716,12 @@ void sc1PTrainingModeMakeMenuAll(void)
 	sc1PTrainingModeMakeViewOption();
 	sc1PTrainingModeSetHScrollOptionSObjs();
 	sc1PTrainingModeMakeOptionArrows();
+#if defined(REGION_JP)
 	func_ovl7_8018F804();
 	func_ovl7_8018F8FC();
 	func_ovl7_8018F984();
 	func_ovl7_8018FB40();
+#endif
 	sc1PTrainingModeSetVScrollOptionSObjs();
 	sc1PTrainingModeMakeCursor();
 	sc1PTrainingModeMakeUnderline();

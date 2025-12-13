@@ -112,12 +112,14 @@ ASFLAGS         := -EB -I include -march=vr4300 -mabi=32
 
 ifeq ($(VERSION),jp)
     LDFLAGS := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt \
-               -T .splat/smashbrothers_jp.ld -T symbols/jp_wip_linker.txt symbols/jp_wip_reloc_data_symbols.txt 
+               -T .splat/smashbrothers_jp.ld -T symbols/jp_wip_linker.txt symbols/reloc_data_symbols.$(VERSION).txt 
 	C_FILES := src/sc/scmanager.c \
 			   src/sc/sc1pmode/sc1pmanager.c \
 			   src/mn/mncommon/mnnocontroller.c \
 			   src/mn/mncommon/mnnocontrollerfiles.c \
 			   src/mn/mncommon/mnunusedfighters.c \
+			   src/mn/mncommon/mntitle.c \
+			   src/mn/mncommon/mntitlefiles.c \
 			   src/db/dbmaps.c \
 			   src/db/dbmenu.c \
 			   src/sc/sccommon/scvsbattle.c \
@@ -131,7 +133,7 @@ ifeq ($(VERSION),jp)
 			   $(shell find src/sys src/libultra src/lb src/sc/scsubsys src/mp src/gm src/ef src/gr src/if src/ft src/wp src/it -type f -name '*.c')
 else ifeq ($(VERSION),us)
     LDFLAGS := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt \
-               -T .splat/smashbrothers.ld -T symbols/not_found.txt -T symbols/linker_constants.txt -T symbols/reloc_data_symbols.txt
+               -T .splat/smashbrothers.ld -T symbols/not_found.txt -T symbols/linker_constants.txt -T symbols/reloc_data_symbols.$(VERSION).txt
     C_FILES := $(shell find src -type f | grep \\.c$)
 else
     $(error Unsupported VERSION "$(VERSION)")
@@ -303,7 +305,7 @@ DEP_FILES := $(O_FILES:.o=.d)
 $(shell mkdir -p $(BUILD_DIR)/asm)
 $(shell mkdir -p $(BUILD_DIR)/src)
 $(shell mkdir -p $(BUILD_DIR)/assets)
-$(shell [ -f include/reloc_data.h ] || $(PYTHON) tools/relocData.py genHeader ./tools/relocFileDescriptions.txt ./include/reloc_data.h ./symbols/reloc_data_symbols.txt) # generate if not there
+$(shell [ -f include/reloc_data.h ] || $(PYTHON) tools/relocData.py genHeader ./tools/relocFileDescriptions.$(VERSION).txt ./include/reloc_data.h ./symbols/reloc_data_symbols.$(VERSION).txt) # generate if not there
 
 # ----- Targets ------
 
@@ -331,7 +333,7 @@ clean:
 	rm -f src/credits/titles.credits.encoded src/credits/titles.credits.metadata
 	rm -f src/credits/info.credits.encoded src/credits/info.credits.metadata
 	rm -f src/credits/companies.credits.encoded src/credits/companies.credits.metadata
-	rm -f include/reloc_data.h symbols/reloc_data_symbols.txt
+	rm -f include/reloc_data.h symbols/reloc_data_symbols.$(VERSION).txt
 	@echo removing vpk0 files
 	@rm -f $(VPK0_FILES)
 
@@ -340,10 +342,10 @@ extract:
 	rm -r -f assets
 	$(SPLAT) $(SPLAT_YAML) $(SPLAT_FLAGS)
 
-ifeq ($(VERSION),us)
-	$(PYTHON) tools/relocData.py extractAll
+	$(PYTHON) tools/relocData.py extractAll tools/relocFileDescriptions.$(VERSION).txt
 	@mkdir -p relocAssets
-	tools/halAssetTool x tools/relocFileDescriptions.txt assets/relocData/ relocAssets
+ifeq ($(VERSION),us)
+	tools/halAssetTool x tools/relocFileDescriptions.$(VERSION).txt assets/relocData/ relocAssets
 endif
 
 init:
@@ -414,9 +416,9 @@ $(BUILD_DIR)/%.o: %.c
 # patch object files compiled with mips3 to be able to link them
 	$(V)$(PYTHON) tools/patchMips3Objects.py $@
 
-include/reloc_data.h: ./tools/relocFileDescriptions.txt
+include/reloc_data.h: ./tools/relocFileDescriptions.$(VERSION).txt
 	$(call print_2,Generating reloc data header and symbol file from:,$<,$(BLUE))
-	$(V)$(PYTHON) tools/relocData.py genHeader ./tools/relocFileDescriptions.txt ./include/reloc_data.h ./symbols/reloc_data_symbols.txt
+	$(V)$(PYTHON) tools/relocData.py genHeader ./tools/relocFileDescriptions.$(VERSION).txt ./include/reloc_data.h ./symbols/reloc_data_symbols.$(VERSION).txt
 
 # Staff roll specific
 src/sc/sccommon/scstaffroll.c: src/credits/staff.credits.encoded src/credits/titles.credits.encoded src/credits/info.credits.encoded src/credits/companies.credits.encoded

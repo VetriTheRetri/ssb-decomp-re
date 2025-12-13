@@ -1118,10 +1118,16 @@ segments:
     type: code
     start: 0x116D10
     vram: 0x8012F690
-    # follows_vram: ovl2
+    follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
-      - [0x116D10, bin, ovl10]
+      - [0x116D10, c, mn/mncommon/mntitle]
+      - [0x1194F0, c, mn/mncommon/mntitlefiles]
+      - [0x119590, .data, mn/mncommon/mntitle]
+      - [0x119810, .data, mn/mncommon/mntitlefiles]
+      - [0x119820, .rodata, mn/mncommon/mntitle]
+      - { start: auto, type: .bss, name: mn/mncommon/mntitle }
+      - { start: auto, type: .bss, name: mn/mncommon/mntitlefiles }
 
   - name: ovl11
     type: code

@@ -1128,9 +1128,12 @@ segments:
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x117180, c, mn/mncommon/mntitle]
+      - [0x1197C0, c, mn/mncommon/mntitlefiles]
       - [0x119860, .data, mn/mncommon/mntitle]
+      - [0x119AA0, .data, mn/mncommon/mntitlefiles]
       - [0x119AB0, .rodata, mn/mncommon/mntitle]
       - { start: auto, type: .bss, name: mn/mncommon/mntitle }
+      - { start: auto, type: .bss, name: mn/mncommon/mntitlefiles }
 
   - name: ovl11
     type: code

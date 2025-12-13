@@ -1170,10 +1170,13 @@ segments:
     type: code
     start: 0x11B6C0
     vram: 0x8012F690
-    # follows_vram: ovl2
+    follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
-      - [0x11B6C0, bin, ovl14]
+      - [0x11B6C0, c, db/dbbattle]
+      - [0x11C260, .data, db/dbbattle]
+      - [0x11C5A0, .rodata, db/dbbattle]
+      - { start: auto, type: .bss, name: db/dbbattle }
 
   - name: ovl17
     type: code

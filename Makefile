@@ -123,6 +123,7 @@ ifeq ($(VERSION),jp)
 			   src/db/dbmaps.c \
 			   src/db/dbmenu.c \
 			   src/db/dbcube.c \
+			   src/db/dbbattle.c \
 			   src/sc/sccommon/scvsbattle.c \
 			   src/sc/sccommon/scvsbattlefiles.c \
 			   src/mv/mvunknownmario.c \

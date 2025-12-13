@@ -246,7 +246,11 @@ DBMenuOption dDBCubeMenuOptions[/* */] =
 	{ nDBMenuOptionKindNumeric,     dbCubeStartRumble,  "frame %4d",                    &dDBCubeMenuValueFrame,     0.0F, 8000.0F, 0 },
 	{ nDBMenuOptionKindLabel,       dbCubeStopRumble,   "STOP RUMBLE",                  NULL,                       0.0F, 0.0F,    0 },
 	{ nDBMenuOptionKindNumeric,     dbCubePlayCall,     "call %3d",                    	&dDBCubeMenuValueCall,      0.0F, 11.0F,   0 },
+#if defined(REGION_US)
 	{ nDBMenuOptionKindNumeric,     dbCubePlayFGM,      "fgm %3d",                      &dDBCubeMenuValueFGM,       0.0F, 695.0F,  0 },
+#else
+	{ nDBMenuOptionKindNumeric,     dbCubePlayFGM,      "fgm %3d",                      &dDBCubeMenuValueFGM,       0.0F, 669.0F,  0 },
+#endif
 	{ nDBMenuOptionKindLabel,       dbCubeStopFGM,      "STOP FGM",                    	NULL,                       0.0F, 0.0F,    0 },
 	{ nDBMenuOptionKindNumeric,     dbCubePlayBGM,      "bgm %3d",                     	&dDBCubeMenuValueBGM,       0.0F, 46.0F,   0 },
 	{ nDBMenuOptionKindNumeric,     dbCubePlayBGM,      "effect %3d",                  	&dDBCubeMenuValueEffect,    0.0F, 6.0F,    0 },
@@ -254,7 +258,9 @@ DBMenuOption dDBCubeMenuOptions[/* */] =
 	{ nDBMenuOptionKindString,      dbCubePlayTransition,(char*)dDBCubeTransitionNames, &dDBCubeMenuValueTransition,0.0F, 10.0F,   0 },
 	{ nDBMenuOptionKindNumericByte, NULL,               "cic %3d",                      &gSCManagerCIC,             0.0F, 255.0F,  0 },
 	{ nDBMenuOptionKindNumericByte, NULL,               "boot %3d",                     &gSCManagerBackupData.boot, 0.0F, 255.0F,  0 },
+#if defined(REGION_US)
 	{ nDBMenuOptionKindNumeric,     NULL,               "TvType %3d",                   &osTvType,                 	0.0F, 255.0F,  0 },
+#endif
 	{ nDBMenuOptionKindExitLabel,   dbCubeExit,         "Exit",                         NULL,                       0.0F, 0.0F,    0 }
 };
 

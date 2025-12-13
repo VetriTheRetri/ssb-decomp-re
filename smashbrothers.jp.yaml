@@ -1157,10 +1157,14 @@ segments:
     type: code
     start: 0x11A0B0
     vram: 0x8012F6A0
-    # follows_vram: ovl2
+    # TODO: figure out why follows_vram doesn't work here
+    # follows_vram: ovl2 
     exclusive_ram_id: overlay_8012F6A0
     subsegments:
-      - [0x11A0B0, bin, ovl13]
+      - [0x11A0B0, c, db/dbcube]
+      - [0x11A790, .data, db/dbcube]
+      - [0x11B5B0, .rodata, db/dbcube]
+      - { start: auto, type: .bss, name: db/dbcube }
 
   - name: ovl14
     type: code

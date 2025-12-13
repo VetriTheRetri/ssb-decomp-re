@@ -122,6 +122,7 @@ ifeq ($(VERSION),jp)
 			   src/mn/mncommon/mntitlefiles.c \
 			   src/db/dbmaps.c \
 			   src/db/dbmenu.c \
+			   src/db/dbcube.c \
 			   src/sc/sccommon/scvsbattle.c \
 			   src/sc/sccommon/scvsbattlefiles.c \
 			   src/mv/mvunknownmario.c \

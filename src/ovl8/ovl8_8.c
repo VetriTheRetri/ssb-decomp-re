@@ -277,7 +277,7 @@ void stringConcat(char* target, char* source)
 // 0x80377108 Some sort of fill function
 void func_ovl8_80377108(char *dest, int value, int count)
 { 
-    char * pos; 
+    char* pos; 
     pos = count--;
     if(pos != 0){
         pos--;

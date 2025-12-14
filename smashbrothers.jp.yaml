@@ -1185,7 +1185,9 @@ segments:
     # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
-      - [0x11C7E0, bin, ovl17]
+      - [0x11C7E0, c, mn/mncommon/mnmodeselect]
+      - [0x11DBC0, .data, mn/mncommon/mnmodeselect]
+      - { start: auto, type: .bss, name: mn/mncommon/mnmodeselect }
 
   - name: ovl18
     type: code

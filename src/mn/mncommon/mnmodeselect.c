@@ -173,6 +173,40 @@ void mnModeSelectMake1PMode(void)
         
         sobj->pos.x = 169.0F;
         sobj->pos.y = 27.0F;
+
+#if defined(REGION_JP)
+        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNModeSelectFiles[1], &llMNMain1PModeTextJapSprite));
+
+        sobj->sprite.attr &= ~SP_FASTCOPY;
+        sobj->sprite.attr |= SP_TRANSPARENT;
+
+        sobj->sprite.red = 0xFF;
+        sobj->sprite.green = 0xFF;
+        sobj->sprite.blue = 0xFF;
+    
+        sobj->envcolor.r = 0x00;
+        sobj->envcolor.g = 0x00;
+        sobj->envcolor.b = 0x00;
+        
+        sobj->pos.x = 122.0F;
+        sobj->pos.y = 195.0F;
+
+        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNModeSelectFiles[0], &llMNCommonFrameSprite));
+        
+        sobj->sprite.attr &= ~SP_FASTCOPY;
+        sobj->sprite.attr |= SP_TRANSPARENT;
+        
+        sobj->sprite.red = 0xFF;
+        sobj->sprite.green = 0xFF;
+        sobj->sprite.blue = 0xFF;
+    
+        sobj->envcolor.r = 0x00;
+        sobj->envcolor.g = 0x00;
+        sobj->envcolor.b = 0x00;
+        
+        sobj->pos.x = 93.0F;
+        sobj->pos.y = 189.0F;
+#endif
     }
     else
     {
@@ -216,6 +250,40 @@ void mnModeSelectMakeVSMode(void)
         
         sobj->pos.x = 128.0F;
         sobj->pos.y = 64.0F;
+
+#if defined(REGION_JP)
+        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNModeSelectFiles[1], &llMNMainVsModeTextJapSprite));
+
+        sobj->sprite.attr &= ~SP_FASTCOPY;
+        sobj->sprite.attr |= SP_TRANSPARENT;
+
+        sobj->sprite.red = 0xFF;
+        sobj->sprite.green = 0xFF;
+        sobj->sprite.blue = 0xFF;
+    
+        sobj->envcolor.r = 0x00;
+        sobj->envcolor.g = 0x00;
+        sobj->envcolor.b = 0x00;
+        
+        sobj->pos.x = 126.0F;
+        sobj->pos.y = 195.0F;
+
+        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNModeSelectFiles[0], &llMNCommonFrameSprite));
+        
+        sobj->sprite.attr &= ~SP_FASTCOPY;
+        sobj->sprite.attr |= SP_TRANSPARENT;
+        
+        sobj->sprite.red = 0xFF;
+        sobj->sprite.green = 0xFF;
+        sobj->sprite.blue = 0xFF;
+    
+        sobj->envcolor.r = 0x00;
+        sobj->envcolor.g = 0x00;
+        sobj->envcolor.b = 0x00;
+        
+        sobj->pos.x = 93.0F;
+        sobj->pos.y = 189.0F;
+#endif
     }
     else
     {
@@ -259,6 +327,40 @@ void mnModeSelectMakeOption(void)
         
         sobj->pos.x = 87.0F;
         sobj->pos.y = 101.0F;
+
+#if defined(REGION_JP)
+        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNModeSelectFiles[1], &llMNMainOptionTextJapSprite));
+
+        sobj->sprite.attr &= ~SP_FASTCOPY;
+        sobj->sprite.attr |= SP_TRANSPARENT;
+
+        sobj->sprite.red = 0xFF;
+        sobj->sprite.green = 0xFF;
+        sobj->sprite.blue = 0xFF;
+    
+        sobj->envcolor.r = 0x00;
+        sobj->envcolor.g = 0x00;
+        sobj->envcolor.b = 0x00;
+        
+        sobj->pos.x = 112.0F;
+        sobj->pos.y = 195.0F;
+
+        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNModeSelectFiles[0], &llMNCommonFrameSprite));
+        
+        sobj->sprite.attr &= ~SP_FASTCOPY;
+        sobj->sprite.attr |= SP_TRANSPARENT;
+        
+        sobj->sprite.red = 0xFF;
+        sobj->sprite.green = 0xFF;
+        sobj->sprite.blue = 0xFF;
+    
+        sobj->envcolor.r = 0x00;
+        sobj->envcolor.g = 0x00;
+        sobj->envcolor.b = 0x00;
+        
+        sobj->pos.x = 93.0F;
+        sobj->pos.y = 189.0F;
+#endif
     }
     else
     {
@@ -302,6 +404,40 @@ void mnModeSelectMakeData(void)
         
         sobj->pos.x = 46.0F;
         sobj->pos.y = 138.0F;
+
+#if defined(REGION_JP)
+        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNModeSelectFiles[1], &llMNMainDataTextJapSprite));
+
+        sobj->sprite.attr &= ~SP_FASTCOPY;
+        sobj->sprite.attr |= SP_TRANSPARENT;
+
+        sobj->sprite.red = 0xFF;
+        sobj->sprite.green = 0xFF;
+        sobj->sprite.blue = 0xFF;
+    
+        sobj->envcolor.r = 0x00;
+        sobj->envcolor.g = 0x00;
+        sobj->envcolor.b = 0x00;
+        
+        sobj->pos.x = 126.0F;
+        sobj->pos.y = 195.0F;
+
+        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNModeSelectFiles[0], &llMNCommonFrameSprite));
+        
+        sobj->sprite.attr &= ~SP_FASTCOPY;
+        sobj->sprite.attr |= SP_TRANSPARENT;
+        
+        sobj->sprite.red = 0xFF;
+        sobj->sprite.green = 0xFF;
+        sobj->sprite.blue = 0xFF;
+    
+        sobj->envcolor.r = 0x00;
+        sobj->envcolor.g = 0x00;
+        sobj->envcolor.b = 0x00;
+        
+        sobj->pos.x = 93.0F;
+        sobj->pos.y = 189.0F;
+#endif
     }
     else
     {

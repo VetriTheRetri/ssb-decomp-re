@@ -120,6 +120,7 @@ ifeq ($(VERSION),jp)
 			   src/mn/mncommon/mnunusedfighters.c \
 			   src/mn/mncommon/mntitle.c \
 			   src/mn/mncommon/mntitlefiles.c \
+			   src/mn/mncommon/mnmodeselect.c \
 			   src/db/dbmaps.c \
 			   src/db/dbmenu.c \
 			   src/db/dbcube.c \

@@ -274,16 +274,20 @@ void stringConcat(char* target, char* source)
 	*target = '\0';
 }
 
-// 0x80377108
-void func_ovl8_80377108(char *a, int v, int b);
-#ifdef NON_MATCHING
-void func_ovl8_80377108(char *a, int v, int b)
-{
-	while (b--) { char *csr = a++; *csr = v; }
+// 0x80377108 Some sort of fill function
+void func_ovl8_80377108(char *dest, int value, int count)
+{ 
+    char * pos; 
+    pos = count--;
+    if(pos != 0){
+        pos--;
+        do {
+            pos = dest;
+            dest++; *pos = value;
+        } while(count--); 
+    } 
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80377108.s")
-#endif /* NON_MATCHING */
+
 
 // 0x80377134
 void func_ovl8_80377134(s32 arg0, s32 arg1)

@@ -28,7 +28,7 @@ extern s32 mnVSModeGetTimeStockValue(void);
 extern void mnVSModeMakeTimeStockValue(void);
 extern void mnVSModeMakeTimeStockButton(void);
 extern void mnVSModeMakeVSOptionsButton(void);
-extern void mnVSModeSetColorsUnused(SObj* sobj);
+extern void mnVSModeSetSubtitleSpriteColors(SObj* sobj);
 extern void mnVSModeMakeUnusedGObj(void);
 extern void mnVSModeRenderMenuName(GObj* menu_name_gobj);
 extern void mnVSModeMakeMenuName(void);

@@ -2245,9 +2245,9 @@ Sprite TeamText 0x2c20
 Sprite TimePeriodText 0x2ec8
 Sprite MinText 0x2fc8
 Sprite StockPeriodText 0x3248
-Sprite VSOptionsText 0x3828
-Sprite ConsoleIconDark 0x5eb0
-Sprite VSText 0x6118
+Sprite VSOptionsText 0x3618
+Sprite ConsoleIconDark 0x5ca0
+Sprite VSText 0x5f08
 
 [7]
 Sprite HandicapTextJap 0x360

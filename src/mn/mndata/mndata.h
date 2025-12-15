@@ -13,7 +13,7 @@ extern void mnDataMakeOptionTab(GObj *gobj, f32 pos_x, f32 pos_y, s32 lrs);
 extern void mnDataMakeCharacters(void);
 extern void mnDataMakeVSRecord(void);
 extern void mnDataMakeSoundTest(void);
-extern void func_ovl61_801320A0(SObj *sobj);
+extern void mnDataSetSubtitleSpriteColors(SObj *sobj);
 extern void mnDataMakeMenuGObj(void);
 extern void mnDataLabelsProcDisplay(GObj *gobj);
 extern void mnDataMakeLabels(void);

@@ -123,6 +123,7 @@ ifeq ($(VERSION),jp)
 			   src/mn/mncommon/mnmodeselect.c \
 			   src/mn/mn1pmode/mn1pmode.c \
 			   src/mn/mnoption/mnoption.c \
+			   src/mn/mndata/mndata.c \
 			   src/db/dbmaps.c \
 			   src/db/dbmenu.c \
 			   src/db/dbcube.c \

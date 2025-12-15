@@ -1215,10 +1215,12 @@ segments:
     type: code
     start: 0x121340
     vram: 0x8012F690
-    # follows_vram: ovl2
+    follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
-      - [0x121340, bin, ovl61]
+      - [0x121340, c, mn/mndata/mndata]
+      - [0x122820, .data, mn/mndata/mndata]
+      - { start: auto, type: .bss, name: mn/mndata/mndata }
 
   - name: ovl19
     type: code

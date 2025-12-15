@@ -327,7 +327,7 @@ void mnDataMakeSoundTest(void)
 }
 
 // 0x801320A0 - Unused?
-void func_ovl61_801320A0(SObj *sobj)
+void mnDataSetSubtitleSpriteColors(SObj *sobj)
 {
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -344,20 +344,39 @@ void func_ovl61_801320A0(SObj *sobj)
 // 0x801320D4
 void mnDataMakeMenuGObj(void)
 {
-    s32 unused[2];
+    GObj *gobj;
+    SObj *sobj;
 
     // 0x80132F80 - Japanese descriptions
-    intptr_t sp34[/* */] = { 0x000006A8, 0x00000AC8, 0x000010C8 };
+    intptr_t offsets[/* */] = { &llMNDataCharactersTextJapSprite, &llMNDataVSRecordTextJapSprite, &llMNDataSoundTestTextJapSprite };
 
     // 0x8013F28C
-    Vec2f sp1C[/* */] =
+    Vec2f positions[/* */] =
     {
         { 105.0F, 194.0F },
         { 131.0F, 194.0F },
         { 113.0F, 194.0F }
     };
 
-    sMNDataMenuGObj = gcMakeGObjSPAfter(0, NULL, 5, GOBJ_PRIORITY_DEFAULT);
+    sMNDataMenuGObj = gobj =  gcMakeGObjSPAfter(0, NULL, 5, GOBJ_PRIORITY_DEFAULT);
+
+#if defined(REGION_JP)
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 3, GOBJ_PRIORITY_DEFAULT, ~0);
+
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNDataFiles[0], &llMNCommonFrameSprite));
+
+    sobj->pos.x = 93.0F;
+    sobj->pos.y = 189.0F;
+    
+    mnDataSetSubtitleSpriteColors(sobj);
+
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNDataFiles[1], offsets[sMNDataOption]));
+
+    sobj->pos.x = positions[sMNDataOption].x;
+    sobj->pos.y = positions[sMNDataOption].y;
+    
+    mnDataSetSubtitleSpriteColors(sobj);
+#endif
 }
 
 // 0x80132164
@@ -629,8 +648,9 @@ void mnDataFuncRun(GObj *gobj)
         if (sMNDataIsProceedScene != FALSE)
         {
             syTaskmanSetLoadScene();
-
+#if defined(REGION_US)
             return;
+#endif
         }
         if (sMNDataOptionChangeWait != 0)
         {
@@ -687,8 +707,9 @@ void mnDataFuncRun(GObj *gobj)
             gSCManagerSceneData.scene_curr = nSCKindModeSelect;
 
             syTaskmanSetLoadScene();
-
+#if defined(REGION_US)
             return;
+#endif
         }
         if
         (

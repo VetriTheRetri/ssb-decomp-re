@@ -1394,10 +1394,13 @@ segments:
     type: code
     start: 0x167860
     vram: 0x8018AA30
-    # follows_vram: ovl3
+    follows_vram: ovl3
     exclusive_ram_id: overlay_8018AA30
     subsegments:
-      - [0x167860, bin, ovl36]
+      - [0x167860, c, mv/mvopening/mvopeningmario]
+      - [0x168830, .data, mv/mvopening/mvopeningmario]
+      - [0x168970, .rodata, mv/mvopening/mvopeningmario]
+      - { start: auto, type: .bss, name: mv/mvopening/mvopeningmario }
 
   - name: ovl37
     type: code

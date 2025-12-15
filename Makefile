@@ -133,6 +133,7 @@ ifeq ($(VERSION),jp)
 			   src/sc/sccommon/scvsbattlefiles.c \
 			   src/mv/mvunknownmario.c \
 			   src/mv/mvopening/mvopeningroom.c \
+			   src/mv/mvopening/mvopeningportraits.c \
 			   src/sc/sc1pmode/sc1pgame.c \
 			   src/sc/sc1pmode/sc1pgameboss.c \
 			   src/sc/sc1pmode/sc1pbonusstage.c \

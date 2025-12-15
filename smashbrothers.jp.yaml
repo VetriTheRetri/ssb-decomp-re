@@ -1182,7 +1182,7 @@ segments:
     type: code
     start: 0x11C7E0
     vram: 0x8012F690
-    # follows_vram: ovl2
+    follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
       - [0x11C7E0, c, mn/mncommon/mnmodeselect]
@@ -1193,10 +1193,12 @@ segments:
     type: code
     start: 0x11DCB0
     vram: 0x8012F690
-    # follows_vram: ovl2
+    follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
-      - [0x11DCB0, bin, ovl18]
+      - [0x11DCB0, c, mn/mn1pmode/mn1pmode]
+      - [0x11F3C0, .data, mn/mn1pmode/mn1pmode]
+      - { start: auto, type: .bss, name: mn/mn1pmode/mn1pmode }
 
   - name: ovl60
     type: code

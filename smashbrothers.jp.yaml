@@ -1372,10 +1372,13 @@ segments:
     type: code
     start: 0x1637B0
     vram: 0x8012F690
-    # follows_vram: ovl2
+    follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
-      - [0x1637B0, bin, ovl34]
+      - [0x1637B0, c, mv/mvopening/mvopeningroom]
+      - [0x1666D0, .data, mv/mvopening/mvopeningroom]
+      - [0x166930, .rodata, mv/mvopening/mvopeningroom]
+      - { start: auto, type: .bss, name: mv/mvopening/mvopeningroom }
 
   - name: ovl35
     type: code
@@ -1644,7 +1647,7 @@ segments:
   - name: framebuffer
     exclusive_ram_id: framebuffers
     type: code
-    # follows_vram: ovl1
+    follows_vram: ovl1
     subsegments:
     - { start: auto, type: .bss, name: sys/framebuffer }
 

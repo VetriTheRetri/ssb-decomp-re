@@ -366,7 +366,7 @@ void mnOptionMakeBackupClear(void)
 }
 
 // 0x80132174 - Unused?
-void func_ovl60_80132174(SObj *sobj)
+void mnOptionSetSubtitleSpriteColors(SObj *sobj)
 {
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -383,7 +383,8 @@ void func_ovl60_80132174(SObj *sobj)
 // 0x801321A8
 void mnOptionMakeMenuGObj(void)
 {
-    s32 unused[2];
+    GObj *gobj;
+    SObj *sobj;
 
     // 0x80133680
     intptr_t sp1C[/* */] = { 0x6A8, 0x1580, 0x1CF0 };
@@ -397,7 +398,62 @@ void mnOptionMakeMenuGObj(void)
         { 103.0F, 195.0F }
     };
 
-    sMNOptionMenuGObj = gcMakeGObjSPAfter(0, NULL, 5, GOBJ_PRIORITY_DEFAULT);
+    sMNOptionMenuGObj = gobj = gcMakeGObjSPAfter(0, NULL, 5, GOBJ_PRIORITY_DEFAULT);
+
+#if defined(REGION_JP)
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 3, GOBJ_PRIORITY_DEFAULT, ~0);
+
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNOptionFiles[0], &llMNCommonFrameSprite));
+
+    sobj->pos.x = 93.0F;
+    sobj->pos.y = 189.0F;
+    
+    mnOptionSetSubtitleSpriteColors(sobj);
+    
+    switch (sMNOptionOption)
+    {
+        case nMNOptionOptionSound:
+            sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNOptionFiles[1], &llMNOptionSoundTextJapSprite));
+            
+            sobj->pos.x = 105.0F;
+            sobj->pos.y = 195.0F;
+            
+            mnOptionSetSubtitleSpriteColors(sobj);
+
+            if (sMNOptionSoundMonoOrStereo == 1) 
+            {
+                sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNOptionFiles[1], &llMNOptionStereoTextJapSprite));
+            }
+            else
+            {
+                sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNOptionFiles[1], &llMNOptionMonoTextJapSprite));
+            }
+
+            sobj->pos.x = 169.0F;
+            sobj->pos.y = 196.0F;
+
+            mnOptionSetSubtitleSpriteColors(sobj);
+            return;
+
+        case nMNOptionOptionScreenAdjust:
+            sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNOptionFiles[1], &llMNOptionScreenAdjustTextJapSprite));
+            
+            sobj->pos.x = 120.0F;
+            sobj->pos.y = 195.0F;
+            
+            mnOptionSetSubtitleSpriteColors(sobj);
+            return;
+
+        case nMNOptionOptionBackupClear:
+            sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNOptionFiles[1], &llMNOptionBackupClearTextJapSprite));
+            
+            sobj->pos.x = 104.0F;
+            sobj->pos.y = 195.0F;
+            
+            mnOptionSetSubtitleSpriteColors(sobj);
+            return;
+    }
+#endif
 }
 
 // 0x80132248

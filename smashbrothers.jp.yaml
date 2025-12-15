@@ -1204,11 +1204,12 @@ segments:
     type: code
     start: 0x11F4E0
     vram: 0x8012F690
-    # follows_vram: ovl2
+    follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
-      - [0x11F4E0, bin, mn/mnoption/mnoption]
-      # - [0x1211C0, data, mn/mnoption/mnoption]
+      - [0x11F4E0, c, mn/mnoption/mnoption]
+      - [0x1211C0, .data, mn/mnoption/mnoption]
+      - { start: auto, type: .bss, name: mn/mnoption/mnoption }
 
   - name: ovl61
     type: code

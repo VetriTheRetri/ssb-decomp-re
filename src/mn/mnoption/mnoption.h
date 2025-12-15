@@ -14,7 +14,7 @@ extern void mnOptionMakeSoundToggle(void);
 extern void mnOptionMakeSound(void);
 extern void mnOptionMakeScreenAdjust(void);
 extern void mnOptionMakeBackupClear(void);
-extern void func_ovl60_80132174(SObj *sobj);
+extern void mnOptionSetSubtitleSpriteColors(SObj *sobj);
 extern void mnOptionMakeMenuGObj(void);
 extern void mnOptionLabelsProcDisplay(GObj *gobj);
 extern void mnOptionMakeLabels(void);

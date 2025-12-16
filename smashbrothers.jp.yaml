@@ -1442,10 +1442,13 @@ segments:
     type: code
     start: 0x16BE20
     vram: 0x8018AA30
-    # follows_vram: ovl3
+    follows_vram: ovl3
     exclusive_ram_id: overlay_8018AA30
     subsegments:
-      - [0x16BE20, bin, ovl40]
+      - [0x16BE20, c, mv/mvopening/mvopeninglink]
+      - [0x16CDD0, .data, mv/mvopening/mvopeninglink]
+      - [0x16CEF0, .rodata, mv/mvopening/mvopeninglink]
+      - { start: auto, type: .bss, name: mv/mvopening/mvopeninglink }
 
   - name: ovl41
     type: code

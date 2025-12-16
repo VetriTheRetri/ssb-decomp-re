@@ -1513,19 +1513,25 @@ segments:
     type: code
     start: 0x171870
     vram: 0x8012F690
-    # follows_vram: ovl2
+    follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
-      - [0x171870, bin, ovl46]
+      - [0x171870, c, mv/mvopening/mvopeningcliff]
+      - [0x172440, .data, mv/mvopening/mvopeningcliff]
+      - [0x172520, .rodata, mv/mvopening/mvopeningcliff]
+      - { start: auto, type: .bss, name: mv/mvopening/mvopeningcliff }
 
   - name: ovl47
     type: code
     start: 0x172530
     vram: 0x8012F690
-    # follows_vram: ovl2
+    follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
-      - [0x172530, bin, ovl47]
+      - [0x172530, c, mv/mvopening/mvopeningstandoff]
+      - [0x173300, .data, mv/mvopening/mvopeningstandoff]
+      - [0x1733E0, .rodata, mv/mvopening/mvopeningstandoff]
+      - { start: auto, type: .bss, name: mv/mvopening/mvopeningstandoff }
 
   - name: ovl48
     type: code

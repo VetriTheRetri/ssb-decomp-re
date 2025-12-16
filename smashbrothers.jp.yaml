@@ -1490,10 +1490,13 @@ segments:
     type: code
     start: 0x170340
     vram: 0x8012F690
-    # follows_vram: ovl2
+    follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
-      - [0x170340, bin, ovl44]
+      - [0x170340, c, mv/mvopening/mvopeningrun]
+      - [0x170E10, .data, mv/mvopening/mvopeningrun]
+      - [0x170F40, .rodata, mv/mvopening/mvopeningrun]
+      - { start: auto, type: .bss, name: mv/mvopening/mvopeningrun }
 
   - name: ovl45
     type: code

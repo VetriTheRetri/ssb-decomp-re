@@ -1537,10 +1537,12 @@ segments:
     type: code
     start: 0x1733F0
     vram: 0x8012F690
-    # follows_vram: ovl2
+    follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
-      - [0x1733F0, bin, ovl48]
+      - [0x1733F0, c, mv/mvopening/mvopeningyamabuki]
+      - [0x173C90, .data, mv/mvopening/mvopeningyamabuki]
+      - { start: auto, type: .bss, name: mv/mvopening/mvopeningyamabuki }
 
   - name: ovl49
     type: code

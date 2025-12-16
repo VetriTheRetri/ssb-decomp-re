@@ -135,6 +135,7 @@ ifeq ($(VERSION),jp)
 			   src/mv/mvopening/mvopeningroom.c \
 			   src/mv/mvopening/mvopeningportraits.c \
 			   src/mv/mvopening/mvopeningmario.c \
+			   src/mv/mvopening/mvopeningdonkey.c \
 			   src/sc/sc1pmode/sc1pgame.c \
 			   src/sc/sc1pmode/sc1pgameboss.c \
 			   src/sc/sc1pmode/sc1pbonusstage.c \

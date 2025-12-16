@@ -130,7 +130,7 @@ void mvOpeningDonkeyMakeName(void)
 {
 	GObj *gobj;
 	SObj *sobj;
-
+#if defined (REGION_US)
 	intptr_t offsets[/* */] =
 	{
 		&llIFCommonAnnounceCommonLetterDSprite,
@@ -142,6 +142,36 @@ void mvOpeningDonkeyMakeName(void)
 		{  0.0F, 0.0F },
 		{ 40.0F, 0.0F }
 	};
+#else
+	intptr_t offsets[/* */] =
+	{
+		&llIFCommonAnnounceCommonLetterDSprite,
+		&llIFCommonAnnounceCommonLetterOSprite,
+		&llIFCommonAnnounceCommonLetterNSprite,
+		&llIFCommonAnnounceCommonLetterKSprite,
+		&llIFCommonAnnounceCommonLetterESprite,
+		&llIFCommonAnnounceCommonLetterYSprite,
+		&llIFCommonAnnounceCommonLetterKSprite,
+		&llIFCommonAnnounceCommonLetterOSprite,
+		&llIFCommonAnnounceCommonLetterNSprite,
+		&llIFCommonAnnounceCommonLetterGSprite,
+		0x0
+	};
+
+	Vec2f pos[/* */] =
+	{
+		{   0.0F,  0.0F },
+		{  30.0F,  0.0F },
+		{  65.0F,  0.0F },
+		{  97.0F,  0.0F },
+		{ 127.0F,  0.0F },
+		{ 152.0F,  0.0F },
+		{  90.0F, 50.0F },
+		{ 119.0F, 50.0F },
+		{ 155.0F, 50.0F },
+		{ 186.0F, 50.0F }
+	};
+#endif
 	s32 i;
 
 	sMVOpeningDonkeyNameGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
@@ -154,8 +184,13 @@ void mvOpeningDonkeyMakeName(void)
 		sobj->sprite.attr &= ~SP_FASTCOPY;
 		sobj->sprite.attr |= SP_TRANSPARENT;
 		
+#if defined (REGION_US)
 		sobj->pos.x = pos[i].x + 120.0F;
 		sobj->pos.y = pos[i].y + 100.0F;
+#else
+		sobj->pos.x = pos[i].x + 60.0F;
+		sobj->pos.y = pos[i].y + 80.0F;
+#endif
 
 		mvOpeningDonkeyInitName(sobj);
 	}

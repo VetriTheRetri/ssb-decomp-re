@@ -1418,10 +1418,13 @@ segments:
     type: code
     start: 0x169B40
     vram: 0x8018AA30
-    # follows_vram: ovl3
+    follows_vram: ovl3
     exclusive_ram_id: overlay_8018AA30
     subsegments:
-      - [0x169B40, bin, ovl38]
+      - [0x169B40, c, mv/mvopening/mvopeningsamus]
+      - [0x16ABA0, .data, mv/mvopening/mvopeningsamus]
+      - [0x16ACC0, .rodata, mv/mvopening/mvopeningsamus]
+      - { start: auto, type: .bss, name: mv/mvopening/mvopeningsamus }
 
   - name: ovl39
     type: code

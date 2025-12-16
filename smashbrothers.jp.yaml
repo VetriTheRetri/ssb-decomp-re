@@ -1571,10 +1571,13 @@ segments:
     type: code
     start: 0x175B50
     vram: 0x8018AA30
-    # follows_vram: ovl3
+    follows_vram: ovl3
     exclusive_ram_id: overlay_8018AA30
     subsegments:
-      - [0x175B50, bin, ovl51]
+      - [0x175B50, c, mv/mvopening/mvopeningjungle]
+      - [0x176300, .data, mv/mvopening/mvopeningjungle]
+      - [0x176480, .rodata, mv/mvopening/mvopeningjungle]
+      - { start: auto, type: .bss, name: mv/mvopening/mvopeningjungle }
 
   - name: ovl52
     type: code

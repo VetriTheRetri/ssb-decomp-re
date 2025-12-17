@@ -126,6 +126,7 @@ ifeq ($(VERSION),jp)
 			   src/mn/mndata/mndata.c \
 			   src/mn/mnvsmode/mnvsmode.c \
 			   src/mn/mnvsmode/mnvsoptions.c \
+			   src/mn/mnvsmode/mnvsitemswitch.c \
 			   src/db/dbmaps.c \
 			   src/db/dbmenu.c \
 			   src/db/dbcube.c \

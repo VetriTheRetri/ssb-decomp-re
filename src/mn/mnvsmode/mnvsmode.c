@@ -761,7 +761,7 @@ void mnVSModeSetSubtitleSpriteColors(SObj* sobj)
 }
 
 // 0x80132FD8
-void mnVSModeMakeUnusedGObj(void)
+void mnVSModeMakeSubtitle(void)
 {
     GObj *gobj;
     SObj *sobj;
@@ -1376,7 +1376,7 @@ void mnVSModeMain(GObj *gobj)
 
             mnVSModeUpdateButton(*buttons[sMNVSModeCursorIndex], nMNOptionTabStatusHighlight);
             gcEjectGObj(sMNVSModeUnusedGObj);
-            mnVSModeMakeUnusedGObj();
+            mnVSModeMakeSubtitle();
 
             sMNVSModeInputDirection = nMNVSModeInputDirectionUp;
 
@@ -1418,7 +1418,7 @@ void mnVSModeMain(GObj *gobj)
 
             mnVSModeUpdateButton(*buttons[sMNVSModeCursorIndex], nMNOptionTabStatusHighlight);
             gcEjectGObj(sMNVSModeUnusedGObj);
-            mnVSModeMakeUnusedGObj();
+            mnVSModeMakeSubtitle();
 
             sMNVSModeInputDirection = nMNVSModeInputDirectionDown;
 
@@ -1465,7 +1465,7 @@ void mnVSModeMain(GObj *gobj)
                         mnCommonSetOptionChangeWaitN(sMNVSModeChangeWait, is_button, stick_range, 7);
 
                         gcEjectGObj(sMNVSModeUnusedGObj);
-                        mnVSModeMakeUnusedGObj();
+                        mnVSModeMakeSubtitle();
 
                         sMNVSModeInputDirection = nMNVSModeInputDirectionLeft;
                     }
@@ -1497,7 +1497,7 @@ void mnVSModeMain(GObj *gobj)
                         mnCommonSetOptionChangeWaitP(sMNVSModeChangeWait, is_button, stick_range, 7);
 
                         gcEjectGObj(sMNVSModeUnusedGObj);
-                        mnVSModeMakeUnusedGObj();
+                        mnVSModeMakeSubtitle();
 
                         sMNVSModeInputDirection = nMNVSModeInputDirectionRight;
 
@@ -1640,7 +1640,7 @@ void mnVSModeFuncStart(void)
     mnVSModeMakeTimeStockButton();
     mnVSModeMakeTimeStockValue();
     mnVSModeMakeVSOptionsButton();
-    mnVSModeMakeUnusedGObj();
+    mnVSModeMakeSubtitle();
 
     if (gSCManagerSceneData.scene_prev == nSCKindPlayersVS)
     {

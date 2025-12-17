@@ -2255,14 +2255,14 @@ Sprite TeamAttackTextJap 0x9e0
 Sprite StageSelectTextJap 0xf70
 Sprite DamageTextJap 0x15f0
 Sprite ItemSwitchTextJap 0x1c70
-Sprite VSOptionsText 0x2668
-Sprite Bubble 0x33d8
-Sprite HandicapText 0x3690
-Sprite TeamAttackText 0x3968
-Sprite StageSelectText 0x3cf8
-Sprite ItemSwitchText 0x3fc8
-Sprite DamageText 0x4228
-Sprite ConsoleIconDark 0x5f60
+Sprite VSOptionsText 0x25d8
+Sprite Bubble 0x3348
+Sprite HandicapText 0x3600
+Sprite TeamAttackText 0x38d8
+Sprite StageSelectText 0x3c68
+Sprite ItemSwitchText 0x3f38
+Sprite DamageText 0x4198
+Sprite ConsoleIconDark 0x5ed0
 
 [8]
 Sprite LabelVSOptions 0x9a8

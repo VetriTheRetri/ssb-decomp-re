@@ -446,7 +446,11 @@ void mnVSOptionsMakeDamageDigits(void)
         0x00, 0x00, 0x00
     };
  
-    s32 pos_y = (sMNVSOptionsIsHaveItemSwitch != FALSE) ? 0x97 : 0xA4;
+#if defined(REGION_US)
+    s32 pos_y = (sMNVSOptionsIsHaveItemSwitch != FALSE) ? 151 : 164;
+#else
+    s32 pos_y = (sMNVSOptionsIsHaveItemSwitch != FALSE) ? 135 : 144;
+#endif
     
     sMNVSOptionsDamageGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
 
@@ -461,7 +465,11 @@ void mnVSOptionsMakeDamageOption(void)
     SObj *sobj;
     s32 pos_y;
 
+#if defined(REGION_US)
     pos_y = (sMNVSOptionsIsHaveItemSwitch != FALSE) ? 148 : 161;
+#else
+    pos_y = (sMNVSOptionsIsHaveItemSwitch != FALSE) ? 132 : 141;
+#endif
 
     sMNVSOptionsOptionGObjs[nMNVSOptionsOptionDamage] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, ~0);
@@ -506,7 +514,9 @@ void mnVSOptionsMakeItemSwitchOption(void)
 {
     GObj *gobj;
     SObj *sobj;
+#if defined(REGION_US)
     s32 pos_y = 176;
+#endif
 
     sMNVSOptionsOptionGObjs[nMNVSOptionsOptionItemSwitch] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
 
@@ -517,7 +527,11 @@ void mnVSOptionsMakeItemSwitchOption(void)
     sobj->sprite.attr |= SP_TRANSPARENT;
 
     sobj->pos.x = 82.0F;
+#if defined(REGION_US)
     sobj->pos.y = pos_y + 1;
+#else
+    sobj->pos.y = 157.0F;
+#endif
     
     mnVSOptionsSetOptionSpriteColors(gobj, sMNVSOptionsOption == nMNVSOptionsOptionItemSwitch);
     
@@ -527,7 +541,11 @@ void mnVSOptionsMakeItemSwitchOption(void)
     sobj->sprite.attr |= SP_TRANSPARENT;
     
     sobj->pos.x = 128.0F;
+#if defined(REGION_US)
     sobj->pos.y = pos_y + 3;
+#else
+    sobj->pos.y = 159.0F;
+#endif
 
     sobj->sprite.red = 0x00;
     sobj->sprite.green = 0x00;
@@ -541,7 +559,11 @@ void mnVSOptionsMakeStageSelectOption(void)
     SObj *sobj;
     s32 pos_y;
 
+#if defined(REGION_US)
     pos_y = (sMNVSOptionsIsHaveItemSwitch != FALSE) ? 119 : 129;
+#else
+    pos_y = (sMNVSOptionsIsHaveItemSwitch != FALSE) ? 107 : 113;
+#endif
 
     sMNVSOptionsOptionGObjs[nMNVSOptionsOptionStageSelect] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, ~0);
@@ -578,7 +600,11 @@ void mnVSOptionsMakeTeamAttackOption(void)
     SObj *sobj;
     s32 pos_y;
 
+#if defined(REGION_US)
     pos_y = (sMNVSOptionsIsHaveItemSwitch != FALSE) ? 90 : 97;
+#else
+    pos_y = (sMNVSOptionsIsHaveItemSwitch != FALSE) ? 82 : 85;
+#endif
 
     sMNVSOptionsOptionGObjs[nMNVSOptionsOptionTeamAttack] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, ~0);
@@ -616,7 +642,11 @@ void mnVSOptionsMakeHandicapOption(void)
     SObj *sobj;
     s32 pos_y;
 
+#if defined(REGION_US)
     pos_y = (sMNVSOptionsIsHaveItemSwitch != FALSE) ? 61 : 65;
+#else
+    pos_y = 57;
+#endif
 
     sMNVSOptionsOptionGObjs[nMNVSOptionsOptionHandicap] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, ~0);
@@ -690,7 +720,7 @@ void mnVSOptionsMakeLabel(void)
 }
 
 // 0x80132E24
-void func_ovl20_80132E24(SObj *sobj)
+void mnVSOptionsSetSubtitleSpriteColors(SObj *sobj)
 {
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -705,19 +735,133 @@ void func_ovl20_80132E24(SObj *sobj)
 }
 
 // 0x80132E58
-void func_ovl20_80132E58(void)
+void mnVSOptionsMakeSubtitle(void)
 {
-    s32 unused[2];
+    GObj *gobj;
+    SObj *sobj;
     
     // 0x80134780
     intptr_t sp1C[/* */] =
     {
         &llMNCommonOffTextSprite,
         &llMNCommonOnTextSprite,
-        0x1968
+        &llMNCommonAutoTextJapSprite
     };
     
-    sMNVSOptionsSubtitlesGObj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT);
+    sMNVSOptionsSubtitlesGObj = gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT);
+
+#if defined(REGION_JP)
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
+
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSOptionsFiles[0], &llMNCommonFrameSprite));
+
+    sobj->pos.x = 93.0F;
+    sobj->pos.y = 189.0F;
+    
+    mnVSOptionsSetSubtitleSpriteColors(sobj);
+    
+    switch (sMNVSOptionsOption)
+    {
+        case nMNVSOptionsOptionHandicap:
+            sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSOptionsFiles[1], &llMNVSOptionsHandicapTextJapSprite));
+            
+            sobj->pos.x = 120.0F;
+            sobj->pos.y = 195.0F;
+            
+            mnVSOptionsSetSubtitleSpriteColors(sobj);
+
+            switch (sMNVSOptionsHandicapStatus)
+            {
+                case nSCBattleHandicapOff:
+
+                    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSOptionsFiles[0], &llMNCommonOffTextJapSprite));
+                    
+                    sobj->pos.x = 177.0F;
+                    sobj->pos.y = 196.0F;
+                    break;
+                case nSCBattleHandicapOn:
+                    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSOptionsFiles[0], &llMNCommonOnTextJapSprite));
+                    
+                    sobj->pos.x = 177.0F;
+                    sobj->pos.y = 196.0F;
+                    break;
+                case nSCBattleHandicapAuto:
+                    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSOptionsFiles[0], &llMNCommonAutoTextJapSprite));
+                    
+                    sobj->pos.x = 177.0F;
+                    sobj->pos.y = 195.0F;
+                    break;
+            }
+
+            mnVSOptionsSetSubtitleSpriteColors(sobj);
+
+            return;
+
+        case nMNVSOptionsOptionTeamAttack:
+            sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSOptionsFiles[1], &llMNVSOptionsTeamAttackTextJapSprite));
+            
+            sobj->pos.x = 96.0F;
+            sobj->pos.y = 195.0F;
+            
+            mnVSOptionsSetSubtitleSpriteColors(sobj);
+
+            if (sMNVSOptionsTeamAttackStatus == nMNOptionTabStatusOn)
+            {
+                sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSOptionsFiles[0], &llMNCommonOnTextJapSprite));
+            }
+            else
+            {
+                sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSOptionsFiles[0], &llMNCommonOffTextJapSprite));
+            }
+                    
+            sobj->pos.x = 200.0F;
+            sobj->pos.y = 196.0F;
+            
+            mnVSOptionsSetSubtitleSpriteColors(sobj);
+            return;
+
+        case nMNVSOptionsOptionStageSelect:
+            sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSOptionsFiles[1], &llMNVSOptionsStageSelectTextJapSprite));
+            
+            sobj->pos.x = 104.0F;
+            sobj->pos.y = 195.0F;
+            
+            mnVSOptionsSetSubtitleSpriteColors(sobj);
+
+            if (sMNVSOptionsStageSelectStatus == nMNOptionTabStatusOn)
+            {
+                sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSOptionsFiles[0], &llMNCommonOnTextJapSprite));
+            }
+            else
+            {
+                sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSOptionsFiles[0], &llMNCommonOffTextJapSprite));
+            }
+            
+            sobj->pos.x = 192.0F;
+            sobj->pos.y = 196.0F;
+            
+            mnVSOptionsSetSubtitleSpriteColors(sobj);
+            return;
+
+        case nMNVSOptionsOptionItemSwitch:
+            sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSOptionsFiles[1], &llMNVSOptionsItemSwitchTextJapSprite));
+            
+            sobj->pos.x = 109.0F;
+            sobj->pos.y = 195.0F;
+            
+            mnVSOptionsSetSubtitleSpriteColors(sobj);
+            return;
+
+        case nMNVSOptionsOptionDamage:
+            sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSOptionsFiles[1], &llMNVSOptionsDamageTextJapSprite));
+            
+            sobj->pos.x = 109.0F;
+            sobj->pos.y = 194.0F;
+            
+            mnVSOptionsSetSubtitleSpriteColors(sobj);
+            return;
+    }
+#endif
 }
 
 // 0x80132EAC
@@ -739,13 +883,14 @@ void mnVSOptionsMakeWallpaper(void)
 void mnVSOptionsUnderlineProcDisplay(GObj *gobj)
 {   
     // 0x8013478C
+#if defined(REGION_US)
     SYRectangle handicap_rect[/* */] =
     {
         { 255, 77, 283, 77 },
         { 190, 77, 216, 77 },
         { 219, 77, 251, 77 }
     };
-
+    
     // 0x801347BC
     SYRectangle team_attack_rect[/* */] =
     {
@@ -759,6 +904,28 @@ void mnVSOptionsUnderlineProcDisplay(GObj *gobj)
         { 241, 135, 269, 135 },
         { 208, 135, 234, 135 }
     };
+#else
+    SYRectangle handicap_rect[/* */] =
+    {
+        { 255, 73, 283, 73 },
+        { 190, 73, 216, 73 },
+        { 219, 73, 251, 73 }
+    };
+    
+    // 0x801347BC
+    SYRectangle team_attack_rect[/* */] =
+    {
+        { 245, 98, 272, 98 },
+        { 213, 98, 239, 98 }
+    };
+
+    // 0x801347DC
+    SYRectangle stage_select_rect[/* */] =
+    {
+        { 241, 123, 269, 123 },
+        { 208, 123, 234, 123 }
+    };
+#endif
 
     s32 off_y;
 
@@ -770,8 +937,11 @@ void mnVSOptionsUnderlineProcDisplay(GObj *gobj)
     switch (sMNVSOptionsOption)
     {
     case nMNVSOptionsOptionHandicap:
+#if defined(REGION_US)
         off_y = (sMNVSOptionsIsHaveItemSwitch != FALSE) ? 0 : 4;
-
+#else
+        off_y = 0;
+#endif
         gDPFillRectangle
         (
             gSYTaskmanDLHeads[0]++,
@@ -783,7 +953,11 @@ void mnVSOptionsUnderlineProcDisplay(GObj *gobj)
         break;
         
     case nMNVSOptionsOptionTeamAttack:
+#if defined(REGION_US)
         off_y = (sMNVSOptionsIsHaveItemSwitch != FALSE) ? 0 : 7;
+#else
+        off_y = (sMNVSOptionsIsHaveItemSwitch != FALSE) ? 0 : 3;
+#endif
 
         gDPFillRectangle
         (
@@ -796,7 +970,11 @@ void mnVSOptionsUnderlineProcDisplay(GObj *gobj)
         break;
         
     case nMNVSOptionsOptionStageSelect:
+#if defined(REGION_US)
         off_y = (sMNVSOptionsIsHaveItemSwitch != FALSE) ? 0 : 10;
+#else
+        off_y = (sMNVSOptionsIsHaveItemSwitch != FALSE) ? 0 : 6;
+#endif
 
         gDPFillRectangle
         (
@@ -1146,7 +1324,7 @@ void mnVSOptionsFuncRun(GObj *gobj)
                 sMNVSOptionsOptionChangeWait += 8;
             }
             gcEjectGObj(sMNVSOptionsSubtitlesGObj);
-            func_ovl20_80132E58();
+            mnVSOptionsMakeSubtitle();
         }
         if
         (
@@ -1173,7 +1351,7 @@ void mnVSOptionsFuncRun(GObj *gobj)
                 sMNVSOptionsOptionChangeWait += 8;
             }
             gcEjectGObj(sMNVSOptionsSubtitlesGObj);
-            func_ovl20_80132E58();
+            mnVSOptionsMakeSubtitle();
         }
         if
         (
@@ -1190,7 +1368,7 @@ void mnVSOptionsFuncRun(GObj *gobj)
 
                     func_800269C0_275C0(nSYAudioFGMMenuScroll1);
                     gcEjectGObj(sMNVSOptionsSubtitlesGObj);
-                    func_ovl20_80132E58();
+                    mnVSOptionsMakeSubtitle();
                     mnVSOptionsSetHandicapSettings();
                 }
                 mnVSOptionsSetHandicapSpriteColors(sMNVSOptionsOptionGObjs[nMNVSOptionsOptionHandicap], sMNVSOptionsHandicapStatus);
@@ -1204,7 +1382,7 @@ void mnVSOptionsFuncRun(GObj *gobj)
                 
                     func_800269C0_275C0(nSYAudioFGMMenuScroll1);
                     gcEjectGObj(sMNVSOptionsSubtitlesGObj);
-                    func_ovl20_80132E58();
+                    mnVSOptionsMakeSubtitle();
                 }
                 mnVSOptionsSetToggleSpriteColors(sMNVSOptionsOptionGObjs[nMNVSOptionsOptionTeamAttack], sMNVSOptionsTeamAttackStatus);
                 mnVSOptionsSetOptionChangeWaitN(is_button, stick_range, 7);
@@ -1217,7 +1395,7 @@ void mnVSOptionsFuncRun(GObj *gobj)
                     
                     func_800269C0_275C0(nSYAudioFGMMenuScroll1);
                     gcEjectGObj(sMNVSOptionsSubtitlesGObj);
-                    func_ovl20_80132E58();
+                    mnVSOptionsMakeSubtitle();
                 }
                 mnVSOptionsSetToggleSpriteColors(sMNVSOptionsOptionGObjs[nMNVSOptionsOptionStageSelect], sMNVSOptionsStageSelectStatus);
                 mnVSOptionsSetOptionChangeWaitN(is_button, stick_range, 7);
@@ -1258,7 +1436,7 @@ void mnVSOptionsFuncRun(GObj *gobj)
 
                     func_800269C0_275C0(nSYAudioFGMMenuScroll1);
                     gcEjectGObj(sMNVSOptionsSubtitlesGObj);
-                    func_ovl20_80132E58();
+                    mnVSOptionsMakeSubtitle();
                     mnVSOptionsSetHandicapSettings();
                 }
                 mnVSOptionsSetHandicapSpriteColors(sMNVSOptionsOptionGObjs[nMNVSOptionsOptionHandicap], sMNVSOptionsHandicapStatus);
@@ -1272,7 +1450,7 @@ void mnVSOptionsFuncRun(GObj *gobj)
                 
                     func_800269C0_275C0(nSYAudioFGMMenuScroll1);
                     gcEjectGObj(sMNVSOptionsSubtitlesGObj);
-                    func_ovl20_80132E58();
+                    mnVSOptionsMakeSubtitle();
                 }
                 mnVSOptionsSetToggleSpriteColors(sMNVSOptionsOptionGObjs[nMNVSOptionsOptionTeamAttack], sMNVSOptionsTeamAttackStatus);
                 mnVSOptionsSetOptionChangeWaitP(is_button, stick_range, 7);
@@ -1285,7 +1463,7 @@ void mnVSOptionsFuncRun(GObj *gobj)
                     
                     func_800269C0_275C0(nSYAudioFGMMenuScroll1);
                     gcEjectGObj(sMNVSOptionsSubtitlesGObj);
-                    func_ovl20_80132E58();
+                    mnVSOptionsMakeSubtitle();
                 }
                 mnVSOptionsSetToggleSpriteColors(sMNVSOptionsOptionGObjs[nMNVSOptionsOptionStageSelect], sMNVSOptionsStageSelectStatus);
                 mnVSOptionsSetOptionChangeWaitP(is_button, stick_range, 7);
@@ -1329,7 +1507,7 @@ void mnVSOptionsFuncRun(GObj *gobj)
                 
                 mnVSOptionsSetHandicapSpriteColors(sMNVSOptionsOptionGObjs[nMNVSOptionsOptionHandicap], sMNVSOptionsHandicapStatus);
                 gcEjectGObj(sMNVSOptionsSubtitlesGObj);
-                func_ovl20_80132E58();
+                mnVSOptionsMakeSubtitle();
                 mnVSOptionsSetHandicapSettings();
                 break;
                 
@@ -1339,7 +1517,7 @@ void mnVSOptionsFuncRun(GObj *gobj)
                 
                 mnVSOptionsSetToggleSpriteColors(sMNVSOptionsOptionGObjs[nMNVSOptionsOptionTeamAttack], sMNVSOptionsTeamAttackStatus);
                 gcEjectGObj(sMNVSOptionsSubtitlesGObj);
-                func_ovl20_80132E58();
+                mnVSOptionsMakeSubtitle();
                 break;
                 
             case nMNVSOptionsOptionStageSelect:
@@ -1348,7 +1526,7 @@ void mnVSOptionsFuncRun(GObj *gobj)
 
                 mnVSOptionsSetToggleSpriteColors(sMNVSOptionsOptionGObjs[nMNVSOptionsOptionStageSelect], sMNVSOptionsStageSelectStatus);
                 gcEjectGObj(sMNVSOptionsSubtitlesGObj);
-                func_ovl20_80132E58();
+                mnVSOptionsMakeSubtitle();
                 break;
             }
         }
@@ -1395,7 +1573,7 @@ void mnVSOptionsFuncStart(void)
         mnVSOptionsMakeItemSwitchOption();
     }
     mnVSOptionsMakeUnderline();
-    func_ovl20_80132E58();
+    mnVSOptionsMakeSubtitle();
 }
 
 // 0x80134810

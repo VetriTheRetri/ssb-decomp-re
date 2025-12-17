@@ -1238,10 +1238,12 @@ segments:
     type: code
     start: 0x125BF0
     vram: 0x8012F690
-    # follows_vram: ovl2
+    follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
-      - [0x125BF0, bin, ovl20]
+      - [0x125BF0, c, mn/mnvsmode/mnvsoptions]
+      - [0x1287B0, .data, mn/mnvsmode/mnvsoptions]
+      - { start: auto, type: .bss, name: mn/mnvsmode/mnvsoptions }
 
   - name: ovl21
     type: code

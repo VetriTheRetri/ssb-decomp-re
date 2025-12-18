@@ -139,6 +139,7 @@ void mnMessageMakeMessage(s32 message)
     // 0x80132564
     Vec2i message_pos[/* */] =
     {
+#if defined(REGION_US)
         { 85, 114 },
         { 35, 123 },
         { 58, 114 },
@@ -146,6 +147,15 @@ void mnMessageMakeMessage(s32 message)
         { 48, 123 },
         { 56, 114 },
         { 54, 114 }
+#else
+        { 28, 121 },
+        { 46, 121 },
+        { 44, 114 },
+        { 24, 121 },
+        { 68, 121 },
+        { 49, 114 },
+        { 43, 114 }
+#endif
     };
 
     gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT);
@@ -398,10 +408,12 @@ SYTaskmanSetup dMNMessageTaskmanSetup =
 // 0x801323F8
 void mnMessageStartScene(void)
 {
+    s32 i;
+
     dMNMessageVideoSetup.zbuffer = SYVIDEO_ZBUFFER_START(320, 240, 0, 10, u16);
     
     syVideoInit(&dMNMessageVideoSetup);
-    
+
     dMNMessageTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl22_BSS_END);
 
     for
@@ -412,7 +424,27 @@ void mnMessageStartScene(void)
     )
     {
         syTaskmanStartTask(&dMNMessageTaskmanSetup);
+
+#if defined(REGION_JP)
+        if (sc1PManagerCheckUnlockSoundTest() != FALSE)
+        {
+            for
+            (
+                i = sMNMessageQueueID + 1;
+                i < nLBBackupUnlockEnumCount;
+                i++
+            )
+            {
+                if (gSCManagerSceneData.unlock_messages[i] == nLBBackupUnlockEnumCount)
+                {
+                    gSCManagerSceneData.unlock_messages[i] = nLBBackupUnlockSoundTest;
+                    break;
+                }
+            }
+        }
+#endif
     }
+    
     if (gSCManagerSceneData.scene_prev == nSCKindVSResults)
     {
         gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;

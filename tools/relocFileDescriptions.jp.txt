@@ -2306,14 +2306,14 @@ Sprite VeryHighTextJap 0x95A0
 Sprite NothingTextJap 0x97C0
 
 [9]
-Sprite UnlockLuigi 0x9e0
-Sprite UnlockNess 0x1148
-Sprite UnlockCaptain 0x1f50
-Sprite UnlockPurin 0x2e58
-Sprite UnlockInishie 0x3458
-Sprite UnlockSoundTest 0x4180
-Sprite UnlockItemSwitch 0x4eb0
-Sprite DecalExclaim 0x5300
+Sprite UnlockLuigi 0x700
+Sprite UnlockNess 0xd80
+Sprite UnlockCaptain 0x1b20
+Sprite UnlockPurin 0x2270
+Sprite UnlockInishie 0x27b8
+Sprite UnlockSoundTest 0x3470
+Sprite UnlockItemSwitch 0x4210
+Sprite DecalExclaim 0x4660
 
 [10]
 Sprite ChallengerText 0x1f8

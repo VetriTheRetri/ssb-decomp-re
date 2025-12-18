@@ -1260,10 +1260,12 @@ segments:
     type: code
     start: 0x12A790
     vram: 0x8012F690
-    # follows_vram: ovl2
+    follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
-      - [0x12A790, bin, ovl22]
+      - [0x12A790, c, mn/mncommon/mnmessage]
+      - [0x12B1F0, .data, mn/mncommon/mnmessage]
+      - { start: auto, type: .bss, name: mn/mncommon/mnmessage }
 
   - name: ovl23
     type: code

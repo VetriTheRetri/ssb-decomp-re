@@ -1294,10 +1294,12 @@ segments:
     type: code
     start: 0x12FD90
     vram: 0x8012F690
-    # follows_vram: ovl2
+    follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
-      - [0x12FD90, bin, ovl25]
+      - [0x12FD90, c, mn/mnoption/mnscreenadjust]
+      - [0x130AC0, .data, mn/mnoption/mnscreenadjust]
+      - { start: auto, type: .bss, name: mn/mnoption/mnscreenadjust }
 
   - name: ovl26
     type: code

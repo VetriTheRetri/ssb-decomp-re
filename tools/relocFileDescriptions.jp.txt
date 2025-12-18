@@ -2415,8 +2415,8 @@ Sprite Race 0x1a658
 Sprite - 0x27388
 
 [15]
-Sprite Instruction 0x918
-Sprite Guide 0x98a0
+Sprite Instruction 0x6a8
+Sprite Guide 0x9630
 
 [16]
 Sprite Label 0x630

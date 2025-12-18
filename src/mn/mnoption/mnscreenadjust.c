@@ -180,7 +180,11 @@ void mnScreenAdjustMakeInstruction(void)
     sobj->sprite.green = 0xFF;
     sobj->sprite.blue = 0xFF;
     
+#if defined(REGION_US)
     sobj->pos.x = 16.0F;
+#else
+    sobj->pos.x = 41.0F;
+#endif
     sobj->pos.y = 198.0F;
 }
 

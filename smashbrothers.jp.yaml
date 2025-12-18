@@ -1282,10 +1282,13 @@ segments:
     type: code
     start: 0x12BCC0
     vram: 0x8012F690
-    # follows_vram: ovl2
+    follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
-      - [0x12BCC0, bin, ovl24]
+      - [0x12BCC0, c, sc/sc1pmode/sc1pintro]
+      - [0x12EF60, .data, sc/sc1pmode/sc1pintro]
+      - [0x12FD50, .rodata, sc/sc1pmode/sc1pintro]
+      - { start: auto, type: .bss, name: sc/sc1pmode/sc1pintro }
 
   - name: ovl25
     type: code

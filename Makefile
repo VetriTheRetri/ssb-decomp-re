@@ -142,7 +142,6 @@ ifeq ($(VERSION),jp)
 			   src/db/dbfalls.c \
 			   src/sc/sccommon/scvsbattle.c \
 			   src/sc/sccommon/scvsbattlefiles.c \
-			   src/mv/mvunknownmario.c \
 			   src/sc/sc1pmode/sc1pgame.c \
 			   src/sc/sc1pmode/sc1pgameboss.c \
 			   src/sc/sc1pmode/sc1pbonusstage.c \
@@ -150,7 +149,7 @@ ifeq ($(VERSION),jp)
 			   src/sc/sc1pmode/sc1ptrainingmode.c \
 			   src/sc/sc1pmode/sc1pchallenger.c \
 			   src/sc/sc1pmode/sc1pintro.c \
-			   $(shell find src/sys src/libultra src/lb src/sc/scsubsys src/mp src/gm src/ef src/gr src/if src/ft src/wp src/it src/mv/mvopening -type f -name '*.c')
+			   $(shell find src/sys src/libultra src/lb src/sc/scsubsys src/mp src/gm src/ef src/gr src/if src/ft src/wp src/it src/mv -type f -name '*.c')
 else ifeq ($(VERSION),us)
     LDFLAGS := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt \
                -T .splat/smashbrothers.ld -T symbols/not_found.txt -T symbols/linker_constants.txt -T symbols/reloc_data_symbols.$(VERSION).txt

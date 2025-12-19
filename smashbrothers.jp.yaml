@@ -1647,10 +1647,13 @@ segments:
     type: code
     start: 0x1787B0
     vram: 0x8012F690
-    # follows_vram: ovl2
+    follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
-      - [0x1787B0, bin, ovl54]
+      - [0x1787B0, c, mv/mvending/mvending]
+      - [0x179780, .data, mv/mvending/mvending]
+      - [0x179860, .rodata, mv/mvending/mvending]
+      - { start: auto, type: .bss, name: mv/mvending/mvending }
 
   - name: ovl55
     type: code

@@ -150,6 +150,7 @@ ifeq ($(VERSION),jp)
 			   src/sc/sc1pmode/sc1ptrainingmode.c \
 			   src/sc/sc1pmode/sc1pchallenger.c \
 			   src/sc/sc1pmode/sc1pintro.c \
+			   src/sc/sc1pmode/sc1pstageclear.c \
 			   $(shell find src/sys src/libultra src/lb src/sc/scsubsys src/mp src/gm src/ef src/gr src/if src/ft src/wp src/it src/mv -type f -name '*.c')
 else ifeq ($(VERSION),us)
     LDFLAGS := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt \

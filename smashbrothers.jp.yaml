@@ -1345,6 +1345,7 @@ segments:
     type: code
     start: 0x148A80
     vram: 0x8012F6A0
+    # TODO: figure out why follows_vram doesn't work here
     # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F6A0
     subsegments:
@@ -1358,6 +1359,7 @@ segments:
     type: code
     start: 0x14E680
     vram: 0x8012F6A0
+    # TODO: figure out why follows_vram doesn't work here
     # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F6A0
     subsegments:
@@ -1381,10 +1383,15 @@ segments:
     type: code
     start: 0x151E70
     vram: 0x8012F6A0
+    # TODO: figure out why follows_vram doesn't work here
     # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F6A0
     subsegments:
-      - [0x151E70, bin, ovl31]
+      - [0x151E70, pad, pad0x150CA0]
+      - [0x151E90, c, mn/mnvsmode/mnvsresults]
+      - [0x159260, .data, mn/mnvsmode/mnvsresults]
+      - [0x159B30, .rodata, mn/mnvsmode/mnvsresults]
+      - { start: auto, type: .bss, name: mn/mnvsmode/mnvsresults }
 
   - name: ovl32
     type: code

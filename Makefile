@@ -129,6 +129,7 @@ ifeq ($(VERSION),jp)
 			   src/mn/mnvsmode/mnvsmode.c \
 			   src/mn/mnvsmode/mnvsoptions.c \
 			   src/mn/mnvsmode/mnvsitemswitch.c \
+			   src/mn/mnvsmode//mnvsresults.c \
 			   src/mn/mnplayers/mnplayersvs.c \
 			   src/mn/mnplayers/mnplayers1pgame.c \
 			   src/mn/mnplayers/mnplayers1ptraining.c \

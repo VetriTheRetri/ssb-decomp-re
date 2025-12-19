@@ -4147,23 +4147,46 @@ void mnPlayersVSMakeReady(void)
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddGObjProcess(gobj, mnPlayersVSReadyProcUpdate, nGCProcessKindFunc, 1);
 
+#if defined(REGION_US)
 	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayersVSFiles[0], &llMNPlayersCommonPressTextSprite));
+#else
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayersVSFiles[0], &llMNPlayersCommonPushTextSprite));
+#endif
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 	sobj->sprite.red = 0xD6;
 	sobj->sprite.green = 0xDD;
 	sobj->sprite.blue = 0xC6;
+#if defined(REGION_US)
 	sobj->pos.x = 133.0F;
+#else
+	sobj->pos.x = 120.0F;
+#endif
 	sobj->pos.y = 219.0F;
-
+	
 	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayersVSFiles[0], &llMNPlayersCommonStartTextSprite));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 	sobj->sprite.red = 0xFF;
 	sobj->sprite.green = 0x56;
 	sobj->sprite.blue = 0x92;
+#if defined(REGION_US)
 	sobj->pos.x = 162.0F;
+#else
+	sobj->pos.x = 143.0F;
+#endif
 	sobj->pos.y = 219.0F;
+
+#if defined(REGION_JP)
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayersVSFiles[0], &llMNPlayersCommonButtonTextSprite));
+	sobj->sprite.attr &= ~SP_FASTCOPY;
+	sobj->sprite.attr |= SP_TRANSPARENT;
+	sobj->sprite.red = 0xD6;
+	sobj->sprite.green = 0xDD;
+	sobj->sprite.blue = 0xC6;
+	sobj->pos.x = 171.0F;
+	sobj->pos.y = 219.0F;
+#endif
 }
 
 // 0x8013A0DC

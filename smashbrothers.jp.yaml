@@ -1659,10 +1659,13 @@ segments:
     type: code
     start: 0x179870
     vram: 0x8012F690
-    # follows_vram: ovl2
+    follows_vram: ovl2
     exclusive_ram_id: overlay_8012F690
     subsegments:
-      - [0x179870, bin, ovl55]
+      - [0x179870, c, mn/mn1pmode/mn1pcontinue]
+      - [0x17BED0, .data, mn/mn1pmode/mn1pcontinue]
+      - [0x17C050, .rodata, mn/mn1pmode/mn1pcontinue]
+      - { start: auto, type: .bss, name: mn/mn1pmode/mn1pcontinue }
 
   - name: ovl56
     type: code

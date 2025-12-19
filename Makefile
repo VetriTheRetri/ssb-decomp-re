@@ -123,6 +123,7 @@ ifeq ($(VERSION),jp)
 			   src/mn/mncommon/mnmodeselect.c \
 			   src/mn/mncommon/mnmessage.c \
 			   src/mn/mn1pmode/mn1pmode.c \
+			   src/mn/mn1pmode/mn1pcontinue.c \
 			   src/mn/mnoption/mnoption.c \
 			   src/mn/mnoption/mnscreenadjust.c \
 			   src/mn/mndata/mndata.c \

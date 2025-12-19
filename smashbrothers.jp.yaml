@@ -1319,6 +1319,7 @@ segments:
     type: code
     start: 0x13AB90
     vram: 0x8012F6A0
+    # TODO: figure out why follows_vram doesn't work here
     # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F6A0
     subsegments:
@@ -1331,10 +1332,14 @@ segments:
     type: code
     start: 0x141FD0
     vram: 0x8012F6A0
+    # TODO: figure out why follows_vram doesn't work here
     # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F6A0
     subsegments:
-      - [0x141FD0, bin, ovl28]
+      - [0x141FD0, c, mn/mnplayers/mnplayers1ptraining]
+      - [0x148790, .data, mn/mnplayers/mnplayers1ptraining]
+      - [0x148A10, .rodata, mn/mnplayers/mnplayers1ptraining]
+      - { start: auto, type: .bss, name: mn/mnplayers/mnplayers1ptraining }
 
   - name: ovl29
     type: code

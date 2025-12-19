@@ -131,6 +131,7 @@ ifeq ($(VERSION),jp)
 			   src/mn/mnvsmode/mnvsitemswitch.c \
 			   src/mn/mnplayers/mnplayersvs.c \
 			   src/mn/mnplayers/mnplayers1pgame.c \
+			   src/mn/mnplayers/mnplayers1ptraining.c \
 			   src/db/dbmaps.c \
 			   src/db/dbmenu.c \
 			   src/db/dbcube.c \

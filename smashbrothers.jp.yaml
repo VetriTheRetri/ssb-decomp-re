@@ -1348,7 +1348,11 @@ segments:
     # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F6A0
     subsegments:
-      - [0x148A80, bin, ovl29]
+      - [0x148A80, pad, pad0x148A80]
+      - [0x148AC0, c, mn/mnplayers/mnplayers1pbonus]
+      - [0x14DF90, .data, mn/mnplayers/mnplayers1pbonus]
+      - [0x14E620, .rodata, mn/mnplayers/mnplayers1pbonus]
+      - { start: auto, type: .bss, name: mn/mnplayers/mnplayers1pbonus }
 
   - name: ovl30
     type: code

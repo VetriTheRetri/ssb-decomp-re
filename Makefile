@@ -132,6 +132,7 @@ ifeq ($(VERSION),jp)
 			   src/mn/mnplayers/mnplayersvs.c \
 			   src/mn/mnplayers/mnplayers1pgame.c \
 			   src/mn/mnplayers/mnplayers1ptraining.c \
+			   src/mn/mnplayers/mnplayers1pbonus.c \
 			   src/db/dbmaps.c \
 			   src/db/dbmenu.c \
 			   src/db/dbcube.c \

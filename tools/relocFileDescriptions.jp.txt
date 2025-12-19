@@ -2587,8 +2587,8 @@ Sprite BackButton 0x11428
 Sprite FreeForAllText 0x280
 Sprite TeamBattleText 0x4e0
 Sprite TrainingModeText 0x758
-Sprite Bonus1BreakTheTargetsText 0xbd8
-Sprite Bonus2BoardThePlatformsText 0x1058
+Sprite Bonus1BreakTheTargetsText 0xb80
+Sprite Bonus2BoardThePlatformsText 0x1008
 
 [19]
 Sprite Cross 0x2B8

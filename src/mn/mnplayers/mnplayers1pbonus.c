@@ -1129,7 +1129,11 @@ void mnPlayers1PBonusMakeBestTaskCount(void)
 		}
 		else sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[5], &llMNPlayers1PModePlatformsTextSprite));
 		
+#if defined(REGION_US)
 		sobj->pos.x = 235.0F;
+#else
+		sobj->pos.x = 187.0F;
+#endif
 		sobj->pos.y = 195.0F;
 		sobj->sprite.attr &= ~SP_FASTCOPY;
 		sobj->sprite.attr |= SP_TRANSPARENT;
@@ -1137,7 +1141,11 @@ void mnPlayers1PBonusMakeBestTaskCount(void)
 		sobj->sprite.green = 0x7C;
 		sobj->sprite.blue = 0x77;
 
+#if defined(REGION_US)
 		mnPlayers1PBonusMakeNumber(gobj, mnPlayers1PBonusGetBestTaskCount(fkind), 225.0F, 194.0F, colors2, 2, TRUE);
+#else
+		mnPlayers1PBonusMakeNumber(gobj, mnPlayers1PBonusGetBestTaskCount(fkind), 257.0F, 194.0F, colors2, 2, TRUE);
+#endif
 	}
 }
 
@@ -2606,13 +2614,21 @@ void mnPlayers1PBonusMakeReady(void)
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_PRIORITY_DEFAULT, ~0);
 	gcAddGObjProcess(gobj, mnPlayers1PBonusReadyProcUpdate, nGCProcessKindFunc, 1);
 
+#if defined(REGION_US)
 	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[0], &llMNPlayersCommonPressTextSprite));
+#else
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[0], &llMNPlayersCommonPushTextSprite));
+#endif
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 	sobj->sprite.red = 0xD6;
 	sobj->sprite.green = 0xDD;
 	sobj->sprite.blue = 0xC6;
+#if defined(REGION_US)
 	sobj->pos.x = 133.0F;
+#else
+	sobj->pos.x = 120.0F;
+#endif
 	sobj->pos.y = 219.0F;
 
 	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[0], &llMNPlayersCommonStartTextSprite));
@@ -2621,8 +2637,23 @@ void mnPlayers1PBonusMakeReady(void)
 	sobj->sprite.red = 0xFF;
 	sobj->sprite.green = 0x56;
 	sobj->sprite.blue = 0x92;
+#if defined(REGION_US)
 	sobj->pos.x = 162.0F;
+#else
+	sobj->pos.x = 143.0F;
+#endif
 	sobj->pos.y = 219.0F;
+
+#if defined(REGION_JP)
+	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNPlayers1PBonusFiles[0], &llMNPlayersCommonButtonTextSprite));
+	sobj->sprite.attr &= ~SP_FASTCOPY;
+	sobj->sprite.attr |= SP_TRANSPARENT;
+	sobj->sprite.red = 0xD6;
+	sobj->sprite.green = 0xDD;
+	sobj->sprite.blue = 0xC6;
+	sobj->pos.x = 171.0F;
+	sobj->pos.y = 219.0F;
+#endif
 }
 
 // 0x80136980 - Unused?

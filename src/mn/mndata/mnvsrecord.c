@@ -1294,7 +1294,11 @@ GObj* mnVSRecordMakeBattleScoreTableHeaders(void)
 	sobj->sprite.green = 0x88;
 	sobj->sprite.blue = 0x92;
 
+#if defined(REGION_US)
 	sobj->pos.x = 264.0F;
+#else
+	sobj->pos.x = 270.0F;
+#endif
 	sobj->pos.y = 50.0F;
 
 	mnVSRecordMakeRowIcons(gobj);
@@ -1562,7 +1566,11 @@ GObj* mnVSRecordMakeRankingTableHeaders(s32 column)
 		&llMNVSRecordMainLabelUsePercentSprite,
 		&llMNVSRecordMainLabelAvgSprite
 	};
+#if defined(REGION_US)
 	s32 x_padding[/* */] = { 2, 2, 2, 4, 4, 3, 1 };
+#else
+	s32 x_padding[/* */] = { 7, 2, 2, 4, 4, 3, 1 };
+#endif
 	s32 column_order[(ARRAY_COUNT(offsets) + ARRAY_COUNT(x_padding)) / 2];
 	s32 i, j;
 	s32 x;
@@ -1721,11 +1729,17 @@ GObj* mnVSRecordMakeIndivPortraitAll(void)
 	};
 	Vec2f positions[/* */] =
 	{
-
+#if defined(REGION_US)
 		{ 29.0F, 159.0F },
 		{ 28.0F, 171.0F },
 		{ 25.0F, 183.0F },
 		{ 26.0F, 195.0F }
+#else
+		{ 28.0F, 159.0F },
+		{ 28.0F, 171.0F },
+		{ 28.0F, 183.0F },
+		{ 28.0F, 195.0F }
+#endif
 	};
 	s32 i;
 

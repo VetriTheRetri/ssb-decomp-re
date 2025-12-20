@@ -1370,11 +1370,13 @@ s32 mnCharactersGetPage(s32 fkind)
 	return pages[fkind];
 }
 
+#if defined(REGION_US)
 // 0x80131BF8 - Unused?
 void func_ovl33_80131BF8(void)
 {
 	return;
 }
+#endif
 
 // 0x80131C00
 void mnCharactersMakeStory(s32 fkind)
@@ -1401,6 +1403,7 @@ void mnCharactersMakeStory(s32 fkind)
 	sMNCharactersStoryGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 26, GOBJ_PRIORITY_DEFAULT, ~0);
 
+#if defined(REGION_US)
 	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNCharactersFiles[0], &llMNCharactersStoryWallpaperSprite));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1412,6 +1415,7 @@ void mnCharactersMakeStory(s32 fkind)
 
 	sobj->pos.x = 126.0F;
 	sobj->pos.y = 54.0F;
+#endif
 
 	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNCharactersFiles[0], offsets[fkind]));
 
@@ -1553,7 +1557,11 @@ void mnCharactersMakeName(s32 fkind)
 		{ 24.0F, 48.0F },
 		{ 34.0F, 49.0F },
 		{ 23.0F, 50.0F },
+#if defined(REGION_US)
 		{ 34.0F, 49.0F },
+#else
+		{ 34.0F, 50.0F },
+#endif
 		{ 42.0F, 52.0F }
 	};
 	intptr_t offsets[/* */] =
@@ -1569,7 +1577,11 @@ void mnCharactersMakeName(s32 fkind)
 	sMNCharactersNameGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 29, GOBJ_PRIORITY_DEFAULT, ~0);
 
+#if defined(REGION_US)
 	if ((fkind == nFTKindPurin) || (fkind == nFTKindCaptain))
+#else
+	if ((fkind == nFTKindDonkey) || (fkind == nFTKindCaptain))
+#endif
 	{
 		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNCharactersFiles[0], &llMNCharactersNameTagTallSprite));
 		

@@ -136,6 +136,7 @@ ifeq ($(VERSION),jp)
 			   src/mn/mnplayers/mnplayers1ptraining.c \
 			   src/mn/mnplayers/mnplayers1pbonus.c \
 			   src/mn/mndata/mnvsrecord.c \
+			   src/mn/mndata/mncharacters.c \
 			   src/mn/mnmaps/mnmaps.c \
 			   src/db/dbmaps.c \
 			   src/db/dbmenu.c \

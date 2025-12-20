@@ -113,54 +113,16 @@ ASFLAGS         := -EB -I include -march=vr4300 -mabi=32
 ifeq ($(VERSION),jp)
     LDFLAGS := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt \
                -T .splat/smashbrothers_jp.ld -T symbols/jp_wip_linker.txt symbols/reloc_data_symbols.$(VERSION).txt 
-	C_FILES := src/sc/scmanager.c \
-			   src/sc/sc1pmode/sc1pmanager.c \
-			   src/mn/mncommon/mnnocontroller.c \
-			   src/mn/mncommon/mnnocontrollerfiles.c \
-			   src/mn/mncommon/mnunusedfighters.c \
-			   src/mn/mncommon/mntitle.c \
-			   src/mn/mncommon/mntitlefiles.c \
-			   src/mn/mncommon/mnmodeselect.c \
-			   src/mn/mncommon/mnmessage.c \
-			   src/mn/mn1pmode/mn1pmode.c \
-			   src/mn/mn1pmode/mn1pcontinue.c \
-			   src/mn/mnoption/mnoption.c \
-			   src/mn/mnoption/mnscreenadjust.c \
-			   src/mn/mnoption/mnbackupclear.c \
-			   src/mn/mndata/mndata.c \
-			   src/mn/mnvsmode/mnvsmode.c \
-			   src/mn/mnvsmode/mnvsoptions.c \
-			   src/mn/mnvsmode/mnvsitemswitch.c \
-			   src/mn/mnvsmode//mnvsresults.c \
-			   src/mn/mnplayers/mnplayersvs.c \
-			   src/mn/mnplayers/mnplayers1pgame.c \
-			   src/mn/mnplayers/mnplayers1ptraining.c \
-			   src/mn/mnplayers/mnplayers1pbonus.c \
-			   src/mn/mndata/mnvsrecord.c \
-			   src/mn/mndata/mncharacters.c \
-			   src/mn/mndata/mnsoundtest.c \
-			   src/mn/mnmaps/mnmaps.c \
-			   src/db/dbmaps.c \
+	C_FILES := src/db/dbmaps.c \
 			   src/db/dbmenu.c \
 			   src/db/dbcube.c \
 			   src/db/dbbattle.c \
 			   src/db/dbfalls.c \
-			   src/sc/sccommon/scvsbattle.c \
-			   src/sc/sccommon/scvsbattlefiles.c \
-			   src/sc/sccommon/scstaffroll.c \
-			   src/sc/sccommon/scexplain.c \
-			   src/sc/sccommon/scexplainfiles.c \
-			   src/sc/sccommon/scautodemo.c \
-			   src/sc/sccommon/scautodemofiles.c \
-			   src/sc/sc1pmode/sc1pgame.c \
-			   src/sc/sc1pmode/sc1pgameboss.c \
-			   src/sc/sc1pmode/sc1pbonusstage.c \
-			   src/sc/sc1pmode/sc1pbonusstagefiles.c \
-			   src/sc/sc1pmode/sc1ptrainingmode.c \
-			   src/sc/sc1pmode/sc1pchallenger.c \
-			   src/sc/sc1pmode/sc1pintro.c \
-			   src/sc/sc1pmode/sc1pstageclear.c \
-			   $(shell find src/sys src/libultra src/lb src/sc/scsubsys src/mp src/gm src/ef src/gr src/if src/ft src/wp src/it src/mv -type f -name '*.c')
+			   $(shell find src/sys src/libultra src/lb src/sc/scsubsys src/mp src/gm src/ef src/gr src/if src/ft src/wp src/it src/mv src/mn src/sc -type f -name '*.c')
+	C_FILES := $(filter-out \
+			    src/mn/mncommon/mncongra.c \
+				src/mn/mncommon/mnstartup.c \
+			   ,$(C_FILES))
 else ifeq ($(VERSION),us)
     LDFLAGS := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt \
                -T .splat/smashbrothers.ld -T symbols/not_found.txt -T symbols/linker_constants.txt -T symbols/reloc_data_symbols.$(VERSION).txt

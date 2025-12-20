@@ -3259,16 +3259,16 @@ Sprite OptionSubjectMode 0x4cf0
 Sprite OptionPrize 0x5340
 Sprite OptionAllDataClear 0x5990
 Sprite OptionCircle 0x5db8
-Sprite IsOkayText 0x63c8
-Sprite AreYouSureText 0x69d8
-Sprite OptionBonusStageTime 0x7020
-Palette OptionYesHighlight 0x7500
-Palette OptionYesNot 0x7528
-Palette OptionConfirm 0x7550
-Sprite OptionYes 0x7580
-Palette OptionNoHighlight 0x7a60
-Palette OptionNoNot 0x7a88
-Sprite OptionNo 0x7ab8
+Sprite IsOkayText 0x6238
+Sprite AreYouSureText 0x63f8
+Sprite OptionBonusStageTime 0x6a40
+Palette OptionYesHighlight 0x6f20
+Palette OptionYesNot 0x6f48
+Palette OptionConfirm 0x6F70
+Sprite OptionYes 0x6fa0
+Palette OptionNoHighlight 0x7480
+Palette OptionNoNot 0x74a8
+Sprite OptionNo 0x74d8
 
 [78]
 Sprite - 0xb40

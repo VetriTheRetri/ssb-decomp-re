@@ -126,6 +126,7 @@ ifeq ($(VERSION),jp)
 			   src/mn/mn1pmode/mn1pcontinue.c \
 			   src/mn/mnoption/mnoption.c \
 			   src/mn/mnoption/mnscreenadjust.c \
+			   src/mn/mnoption/mnbackupclear.c \
 			   src/mn/mndata/mndata.c \
 			   src/mn/mnvsmode/mnvsmode.c \
 			   src/mn/mnvsmode/mnvsoptions.c \

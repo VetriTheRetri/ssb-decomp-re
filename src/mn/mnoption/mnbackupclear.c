@@ -152,10 +152,11 @@ void mnBackupClearFuncLights(Gfx **dls)
 // 0x80131B24
 void mnBackupClearMakeUnused(s32 option)
 {
-    s32 unused[2];
+    GObj *gobj;
+    SObj *sobj;
     
     // 0x80132EF0
-    intptr_t sp48[/* */] =
+    intptr_t offsets[/* */] =
     {
         0x000011E0,
         0x00001770,
@@ -166,7 +167,7 @@ void mnBackupClearMakeUnused(s32 option)
     };
 
     // 0x80132F08
-    Vec2f sp18[/* */] =
+    Vec2f pos[/* */] =
     {
         { 111.0F, 197.0F },
         { 117.0F, 197.0F },
@@ -175,7 +176,43 @@ void mnBackupClearMakeUnused(s32 option)
         { 119.0F, 197.0F },
         { 126.0F, 197.0F }
     };
-    sMNBackupClearUnusedGObj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT);
+    sMNBackupClearUnusedGObj = gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT);
+
+#if defined(REGION_JP)
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
+
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNBackupClearFiles[0], &llMNCommonFrameSprite));
+
+    sobj->pos.x = 93.0F;
+    sobj->pos.y = 191.0F;
+
+    sobj->sprite.attr &= ~SP_FASTCOPY;
+    sobj->sprite.attr |= SP_TRANSPARENT;
+
+    sobj->envcolor.r = 0x00;
+    sobj->envcolor.g = 0x00;
+    sobj->envcolor.b = 0x00;
+
+    sobj->sprite.red   = 0xFF;
+    sobj->sprite.green = 0xFF;
+    sobj->sprite.blue  = 0xFF;
+
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNBackupClearFiles[1], offsets[option]));
+        
+    sobj->pos.x = pos[option].x;
+    sobj->pos.y = pos[option].y;
+
+    sobj->sprite.attr &= ~SP_FASTCOPY;
+    sobj->sprite.attr |= SP_TRANSPARENT;
+
+    sobj->envcolor.r = 0x00;
+    sobj->envcolor.g = 0x00;
+    sobj->envcolor.b = 0x00;
+
+    sobj->sprite.red   = 0xFF;
+    sobj->sprite.green = 0xFF;
+    sobj->sprite.blue  = 0xFF;
+#endif
 }
 
 // 0x80131BC8
@@ -267,12 +304,21 @@ void mnBackupClearSetOptionSpriteColors(void)
     // 0x80132F70
     Vec2f pos[/* */] =
     {
+#if defined(REGION_US)
         { 95.0F,  54.0F },
         { 95.0F,  81.0F },
         { 95.0F, 108.0F },
         { 95.0F, 135.0F },
         { 95.0F, 162.0F },
         { 95.0F, 189.0F }
+#else
+        { 95.0F,  49.0F },
+        { 95.0F,  72.0F },
+        { 95.0F,  95.0F },
+        { 95.0F, 118.0F },
+        { 95.0F, 141.0F },
+        { 95.0F, 164.0F }
+#endif
     };
 
     s32 i;
@@ -407,8 +453,13 @@ void mnBackupClearMakeOptionConfirm(sb32 confirm_kind, sb32 yes_or_no)
         sobj->sprite.green = 0x9D;
         sobj->sprite.blue = 0x00;
         
+#if defined(REGION_US)
         sobj->pos.x = 59.0F;
         sobj->pos.y = 83.0F;
+#else
+        sobj->pos.x = 68.0F;
+        sobj->pos.y = 84.0F;
+#endif
     }
     else
     {
@@ -421,8 +472,13 @@ void mnBackupClearMakeOptionConfirm(sb32 confirm_kind, sb32 yes_or_no)
         sobj->sprite.green = 0x9D;
         sobj->sprite.blue = 0x00;
         
+#if defined(REGION_US)
         sobj->pos.x = 59.0F;
         sobj->pos.y = 83.0F;
+#else
+        sobj->pos.x = 135.0F;
+        sobj->pos.y = 84.0F;
+#endif
     }
 }
 

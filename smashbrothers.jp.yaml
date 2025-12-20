@@ -1687,6 +1687,10 @@ segments:
     exclusive_ram_id: overlay_8012F6A0
     subsegments:
       - [0x17F820, bin, ovl59]
+      # - [0x17F820, c, sc/sccommon/scstaffroll]
+      # - [0x182F80, .data, sc/sccommon/scstaffroll]
+      # - [0x188130, .rodata, sc/sccommon/scstaffroll]
+      # - { start: auto, type: .bss, name: sc/sccommon/scstaffroll }
 
   - name: ovl62
     type: code
@@ -1701,10 +1705,15 @@ segments:
     type: code
     start: 0x18A950
     vram: 0x8018AA30
-    # follows_vram: ovl3
+    follows_vram: ovl3
     exclusive_ram_id: overlay_8018AA30
     subsegments:
-      - [0x18A950, bin, ovl63]
+      - [0x18A950, c, sc/sccommon/scexplain]
+      - [0x18BED0, c, sc/sccommon/scexplainfiles]
+      - [0x18BF70, .data, sc/sccommon/scexplain]
+      - [0x18C070, .rodata, sc/sccommon/scexplain]
+      - { start: auto, type: .bss, name: sc/sccommon/scexplain }
+      - { start: auto, type: .bss, name: sc/sccommon/scexplainfiles }
 
   - name: ovl64
     type: code

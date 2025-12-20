@@ -143,6 +143,9 @@ ifeq ($(VERSION),jp)
 			   src/db/dbfalls.c \
 			   src/sc/sccommon/scvsbattle.c \
 			   src/sc/sccommon/scvsbattlefiles.c \
+			   src/sc/sccommon/scstaffroll.c \
+			   src/sc/sccommon/scexplain.c \
+			   src/sc/sccommon/scexplainfiles.c \
 			   src/sc/sc1pmode/sc1pgame.c \
 			   src/sc/sc1pmode/sc1pgameboss.c \
 			   src/sc/sc1pmode/sc1pbonusstage.c \

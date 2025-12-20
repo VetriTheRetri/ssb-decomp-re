@@ -3830,9 +3830,9 @@ Sprite Damage3 0x7c38
 Sprite Shield 0x8218
 Sprite StartFighting 0x8c78
 Sprite PlayerCount 0x91a8
-Sprite HereText 0x9628
+Sprite HereText 0x9b68
 Sprite Banner 0x10260
-Sprite TapTheStick 0x11f60
+Sprite TapTheStick 0x12260
 Sprite Jump 0x12b60
 Sprite MidairJump 0x13658
 Sprite Attack 0x139f0
@@ -3846,10 +3846,10 @@ Sprite ThrowEnemy 0x1b468
 Sprite GrabItems 0x1b950
 Sprite UseItems 0x1beb0
 Sprite ThrowItems 0x1cd20
-Sprite AButton 0x1d338
-Sprite BButton 0x1d948
-Sprite ZButton 0x1df58
-Sprite PlusSymbol 0x1e018
+Sprite AButton 0x1dfb8
+Sprite BButton 0x1e5c8
+Sprite ZButton 0x1ebd8
+Sprite PlusSymbol 0x1ec98
 
 [174]
 Func - 0x0
@@ -4034,10 +4034,10 @@ AnimBankStart Monster 0x13624
 
 [227]
 KeyEvent 0 0x0
-KeyEvent 1 0x9D4
-KeyEvent 2 0x13FC
-KeyEvent 3 0x1400
-ExplainPhase - 0x1404
+KeyEvent 1 0x874
+KeyEvent 2 0x10C8
+KeyEvent 3 0x10cc
+ExplainPhase - 0x10d0
 
 [229]
 PosSpriteArray DisplayLabel 0x000

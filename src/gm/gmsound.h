@@ -620,22 +620,22 @@ typedef enum gmFGMVoiceID
 	nSYAudioVoiceAnnounceWins,
 	nSYAudioVoiceAnnounceWinnerIs,		// This game's winner is...
 	nSYAudioVoiceAnnounceYoshi,
-	// nSYAudioVoicePikachuAppeal,
-	// nSYAudioVoicePikachuSmash1,
-	// nSYAudioVoicePikachuSmash2,
-	// nSYAudioVoicePikachuSmash3,
-	// nSYAudioVoicePikachuSpecialN,
-	// nSYAudioVoicePikachuSpecialLw,
-	// nSYAudioVoicePikachuDeadUp,
-	// nSYAudioVoicePikachuFuraFura,
-	// nSYAudioVoicePikachuDamage,
-	// nSYAudioVoicePikachuFinalPika,
-	// nSYAudioVoicePikachuFinalChu,
-	// nSYAudioVoicePikachuSpecialHi,
-	// nSYAudioVoicePikachuHeavyGet,
-	// nSYAudioVoicePikachuOttotto,
-	// nSYAudioVoicePikachuDead,
-	nSYAudioVoicePikachuFuraSleep = 0x21B,
+	nSYAudioVoicePikachuAppeal,
+	nSYAudioVoicePikachuSmash1,
+	nSYAudioVoicePikachuSmash2,
+	nSYAudioVoicePikachuSmash3,
+	nSYAudioVoicePikachuSpecialN,
+	nSYAudioVoicePikachuSpecialLw,
+	nSYAudioVoicePikachuDeadUp,
+	nSYAudioVoicePikachuFuraFura,
+	nSYAudioVoicePikachuDamage,
+	nSYAudioVoicePikachuFinalPika,
+	nSYAudioVoicePikachuFinalChu,
+	nSYAudioVoicePikachuSpecialHi,
+	nSYAudioVoicePikachuHeavyGet,
+	nSYAudioVoicePikachuOttotto,
+	nSYAudioVoicePikachuDead,
+	nSYAudioVoicePikachuFuraSleep,
 	nSYAudioVoiceYamabukiFushigibana,
 	nSYAudioVoiceYamabukiHitokage,
 	nSYAudioVoiceYamabukiLucky,
@@ -714,27 +714,27 @@ typedef enum gmFGMVoiceID
 	nSYAudioVoicePublicAbsorb,			// React to fighter absorbing projectiles (Ness)
 	nSYAudioVoicePublicClapL,			// Louder audience clap
 	nSYAudioVoicePublicClapS,			// Slight audience clap
-	// nSYAudioFGMCharacterUnkZip1,			// ??? goes repeats for 10 more instances, character-based?
-	// nSYAudioFGMCharacterUnkZip2,
-	// nSYAudioFGMCharacterUnkZip3,
-	// nSYAudioFGMCharacterUnkZip4,
-	// nSYAudioFGMCharacterUnkZip5,
-	// nSYAudioFGMCharacterUnkZip6,
-	// nSYAudioFGMCharacterUnkZip7,
-	// nSYAudioFGMCharacterUnkZip8,
-	// nSYAudioFGMCharacterUnkZip9,
-	// nSYAudioFGMCharacterUnkZip10,
-	// nSYAudioFGMCharacterUnkZip11,
-	// nSYAudioVoiceUnkExplode,				// ???
-	// nSYAudioVoiceUnkSpin,					// ???
-	// nSYAudioVoiceUnkBurn,					// ???
-	// nSYAudioVoiceUnkSlashM,					// ???
-	// nSYAudioVoiceUnkSlashL,					// ???
-	// nSYAudioVoiceUnkSlashS1,				// ??? lower pitched than the above two
-	// nSYAudioVoiceUnkSlashS2,				// Similar to the above
-	// nSYAudioVoiceUnkShockL,					// ???
-	// nSYAudioVoiceUnkShockM,					// ???
-	// nSYAudioVoicePublicUnkGasp,			// ???
+	nSYAudioFGMCharacterUnkZip1,			// ??? goes repeats for 10 more instances, character-based?
+	nSYAudioFGMCharacterUnkZip2,
+	nSYAudioFGMCharacterUnkZip3,
+	nSYAudioFGMCharacterUnkZip4,
+	nSYAudioFGMCharacterUnkZip5,
+	nSYAudioFGMCharacterUnkZip6,
+	nSYAudioFGMCharacterUnkZip7,
+	nSYAudioFGMCharacterUnkZip8,
+	nSYAudioFGMCharacterUnkZip9,
+	nSYAudioFGMCharacterUnkZip10,
+	nSYAudioFGMCharacterUnkZip11,
+	nSYAudioVoiceUnkExplode,				// ???
+	nSYAudioVoiceUnkSpin,					// ???
+	nSYAudioVoiceUnkBurn,					// ???
+	nSYAudioVoiceUnkSlashM,					// ???
+	nSYAudioVoiceUnkSlashL,					// ???
+	nSYAudioVoiceUnkSlashS1,				// ??? lower pitched than the above two
+	nSYAudioVoiceUnkSlashS2,				// Similar to the above
+	nSYAudioVoiceUnkShockL,					// ???
+	nSYAudioVoiceUnkShockM,					// ???
+	nSYAudioVoicePublicUnkGasp,			// ???
 	// Dood I'm not gonna bother with these unless they're really used somehow
 	nSYAudioFGMVoiceEnd = 0x29D,
 	nSYAudioFGMVoiceEnumCount = nSYAudioFGMVoiceEnd

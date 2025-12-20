@@ -1705,10 +1705,14 @@ segments:
     type: code
     start: 0x188150
     vram: 0x8012F6A0
+    # TODO: figure out why follows_vram doesn't work here
     # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F6A0
     subsegments:
-      - [0x188150, bin, ovl62]
+      - [0x188150, c, mn/mndata/mnsoundtest]
+      - [0x18A030, .data, mn/mndata/mnsoundtest]
+      - [0x18A940, .rodata, mn/mndata/mnsoundtest]
+      - { start: auto, type: .bss, name: mn/mndata/mnsoundtest }
 
   - name: ovl63
     type: code

@@ -146,6 +146,8 @@ ifeq ($(VERSION),jp)
 			   src/sc/sccommon/scstaffroll.c \
 			   src/sc/sccommon/scexplain.c \
 			   src/sc/sccommon/scexplainfiles.c \
+			   src/sc/sccommon/scautodemo.c \
+			   src/sc/sccommon/scautodemofiles.c \
 			   src/sc/sc1pmode/sc1pgame.c \
 			   src/sc/sc1pmode/sc1pgameboss.c \
 			   src/sc/sc1pmode/sc1pbonusstage.c \

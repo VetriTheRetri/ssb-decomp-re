@@ -1719,10 +1719,15 @@ segments:
     type: code
     start: 0x18C080
     vram: 0x8018AA30
-    # follows_vram: ovl3
+    follows_vram: ovl3
     exclusive_ram_id: overlay_8018AA30
     subsegments:
-      - [0x18C080, bin, ovl64]
+      - [0x18C080, c, sc/sccommon/scautodemo]
+      - [0x18D080, c, sc/sccommon/scautodemofiles]
+      - [0x18D120, .data, sc/sccommon/scautodemo]
+      - [0x18D2A0, .rodata, sc/sccommon/scautodemo]
+      - { start: auto, type: .bss, name: sc/sccommon/scautodemo }
+      - { start: auto, type: .bss, name: sc/sccommon/scautodemofiles }
 
   - name: ovl16
     type: code

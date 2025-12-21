@@ -1,4 +1,5 @@
 import sys
+import os
 
 DECODE_PRINT_MARGIN = 35
 
@@ -210,8 +211,11 @@ if __name__ == "__main__":
 
 	inFilePath = sys.argv[1]
 
-	outEncodedPath = inFilePath[:inFilePath.rfind('.')] + '.encoded'
-	outMetadataPath = inFilePath[:inFilePath.rfind('.')] + '.metadata'
+	base, ext = os.path.splitext(inFilePath)      # x.credits.v , .txt
+	base, region = os.path.splitext(base)         # x.credits , .v
+
+	outEncodedPath = base + '.encoded'
+	outMetadataPath = base + '.metadata'
 
 	with open(inFilePath, 'r') as creditsTextFile:
 		creditsText = creditsTextFile.read()

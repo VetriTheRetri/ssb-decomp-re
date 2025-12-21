@@ -1692,14 +1692,14 @@ segments:
     type: code
     start: 0x17F820
     vram: 0x8012F6A0
+    # TODO: figure out why follows_vram doesn't work here
     # follows_vram: ovl2
     exclusive_ram_id: overlay_8012F6A0
     subsegments:
-      - [0x17F820, bin, ovl59]
-      # - [0x17F820, c, sc/sccommon/scstaffroll]
-      # - [0x182F80, .data, sc/sccommon/scstaffroll]
-      # - [0x188130, .rodata, sc/sccommon/scstaffroll]
-      # - { start: auto, type: .bss, name: sc/sccommon/scstaffroll }
+      - [0x17F820, c, sc/sccommon/scstaffroll]
+      - [0x182F80, .data, sc/sccommon/scstaffroll]
+      - [0x188130, .rodata, sc/sccommon/scstaffroll]
+      - { start: auto, type: .bss, name: sc/sccommon/scstaffroll }
 
   - name: ovl62
     type: code

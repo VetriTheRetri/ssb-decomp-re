@@ -409,16 +409,16 @@ include/reloc_data.h: ./tools/relocFileDescriptions.$(VERSION).txt
 
 # Staff roll specific
 src/sc/sccommon/scstaffroll.c: src/credits/staff.credits.encoded src/credits/titles.credits.encoded src/credits/info.credits.encoded src/credits/companies.credits.encoded
-src/credits/staff.credits.encoded: src/credits/staff.credits.txt tools/creditsTextConverter.py
+src/credits/staff.credits.encoded: src/credits/staff.credits.$(VERSION).txt tools/creditsTextConverter.py
 	$(call print_2,Creating staff roll data for:,$<,$(PURPLE))
 	$(V)$(PYTHON) tools/creditsTextConverter.py $< -titleFont
-src/credits/titles.credits.encoded: src/credits/titles.credits.txt tools/creditsTextConverter.py
+src/credits/titles.credits.encoded: src/credits/titles.credits.$(VERSION).txt tools/creditsTextConverter.py
 	$(call print_2,Creating staff roll data for:,$<,$(PURPLE))
 	$(V)$(PYTHON) tools/creditsTextConverter.py $< -titleFont
-src/credits/info.credits.encoded: src/credits/info.credits.txt tools/creditsTextConverter.py
+src/credits/info.credits.encoded: src/credits/info.credits.$(VERSION).txt tools/creditsTextConverter.py
 	$(call print_2,Creating staff roll data for:,$<,$(PURPLE))
 	$(V)$(PYTHON) tools/creditsTextConverter.py $< -paragraphFont -multiline
-src/credits/companies.credits.encoded: src/credits/companies.credits.txt tools/creditsTextConverter.py
+src/credits/companies.credits.encoded: src/credits/companies.credits.$(VERSION).txt tools/creditsTextConverter.py
 	$(call print_2,Creating staff roll data for:,$<,$(PURPLE))
 	$(V)$(PYTHON) tools/creditsTextConverter.py $< -paragraphFont
 

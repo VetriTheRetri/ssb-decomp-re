@@ -27,7 +27,12 @@ SCStaffrollText dSCStaffrollNameTextInfo[/* */] =
 // 0x80136794
 s32 dSCStaffrollUnused0x80136794[/* */] =
 {
-	0x000004A5, 0x00000000
+#if defined(REGION_US)
+	0x000004A5, 
+#else
+	0x0000046D, 
+#endif
+	0x00000000
 };
 
 // 0x8013679C
@@ -43,7 +48,11 @@ SCStaffrollJob dSCStaffrollJobDescriptions[/* */] =
 	// Chief Programmer
 	{ 
 		1,			// Prefix ID
+#if defined(REGION_US)
 		16, 		// Job string ID
+#else
+		2, 		    // Job string ID
+#endif
 		2 			// Show next job from this staff member in order
 	},
 
@@ -57,7 +66,11 @@ SCStaffrollJob dSCStaffrollJobDescriptions[/* */] =
 	// Chief Designer
 	{
 		1,			// Prefix ID
+#if defined(REGION_US)
 		17, 		// Job string ID
+#else
+		3, 		    // Job string ID
+#endif
 		8 			// Show next job from this staff member in order
 	},
 
@@ -96,46 +109,68 @@ SCStaffrollJob dSCStaffrollJobDescriptions[/* */] =
 		56 			// Show next job from this staff member in order
 	},
 
+#if defined(REGION_US)
 	// NOA Staff
 	{
 		-1,			// Prefix ID
 		15, 		// Job string ID
 		59 			// Show next job from this staff member in order
 	},
+#endif
 
 	// Special Thanks
 	{
 		-1,			// Prefix ID
 		7, 			// Job string ID
+#if defined(REGION_US)
 		75 			// Show next job from this staff member in order
+#else
+		71 			// Show next job from this staff member in order
+#endif
 	},
 
 	// Project Manager
 	{
 		9,			// Prefix ID
 		10, 		// Job string ID
+#if defined(REGION_US)
 		76 			// Show next job from this staff member in order
+#else
+		72 			// Show next job from this staff member in order
+#endif
 	},
 
 	// Progress Manager
 	{
 		11,			// Prefix ID
 		10, 		// Job string ID
+#if defined(REGION_US)
 		77 			// Show next job from this staff member in order
+#else
+		73 			// Show next job from this staff member in order
+#endif
 	},
 
 	// Producer
 	{
 		-1,			// Prefix ID
 		12, 		// Job string ID
+#if defined(REGION_US)
 		81 			// Show next job from this staff member in order
+#else
+		77 			// Show next job from this staff member in order
+#endif
 	},
 
 	// Executive Producer
 	{
 		13,			// Prefix ID
 		12, 		// Job string ID
+#if defined(REGION_US)
 		82 			// Show next job from this staff member in order
+#else
+		78 			// Show next job from this staff member in order
+#endif
 	},
 
 	// Presents
@@ -183,7 +218,11 @@ SCStaffrollText dSCStaffrollCompanyTextInfo[/* */] =
 };
 
 // 0x8013A02C - Empty word in company text info
+#if defined(REGION_US)
 s32 dSCStaffrollUnused0x8013A02C[/* */] = { 0x00000073, 0x00000000 };
+#else
+s32 dSCStaffrollUnused0x8013A02C[/* */] = { 0x0000006E, 0x00000000 };
+#endif
 
 // 0x8013A034
 s32 dSCStaffrollCompanyIDs[/* */] =
@@ -207,30 +246,38 @@ s32 dSCStaffrollCompanyIDs[/* */] =
 	nSCStaffrollCompanyHAL,
 	nSCStaffrollCompanyHAL,
 	nSCStaffrollCompanyHAL,
-	-1,
-	-1,
-	-1,
-	-1,
-	-1,
+	nSCStaffrollCompanyNull,
+	nSCStaffrollCompanyNull,
+	nSCStaffrollCompanyNull,
+	nSCStaffrollCompanyNull,
+	nSCStaffrollCompanyNull,
 	nSCStaffrollCompanyCreatures,
 	nSCStaffrollCompanyCreatures,
 	nSCStaffrollCompanyCreatures,
 	nSCStaffrollCompanyHAL,
 	nSCStaffrollCompanyHAL,
-	-1,
+	nSCStaffrollCompanyNull,
 	nSCStaffrollCompanyARTSVISION,
 	nSCStaffrollCompanyNINTENDO,
 	nSCStaffrollCompanyAONIProd,
 	nSCStaffrollCompanyAONIProd,
 	nSCStaffrollCompanyEZAKIProd,
 	nSCStaffrollCompanyAONIProd,
-	-1,
+#if defined(REGION_US)
+	nSCStaffrollCompanyNull,
+#else
+	nSCStaffrollCompanyKENProd,
+#endif
 	nSCStaffrollCompanyMickeys,
 	nSCStaffrollCompanyNINTENDO,
 	nSCStaffrollCompanyNINTENDO,
 	nSCStaffrollCompanyNINTENDO,
 	nSCStaffrollCompanyNINTENDO,
-	-1, 
+#if defined(REGION_US)
+	nSCStaffrollCompanyNull,
+#else
+	nSCStaffrollCompanyRare,
+#endif
 	nSCStaffrollCompanyNINTENDO,
 	nSCStaffrollCompanyNINTENDO,
 	nSCStaffrollCompanyNINTENDO,
@@ -243,10 +290,12 @@ s32 dSCStaffrollCompanyIDs[/* */] =
 	nSCStaffrollCompanyHAL,
 	nSCStaffrollCompanyNINTENDO,
 	nSCStaffrollCompanyCreatures,
-	-1,
+	nSCStaffrollCompanyNull,
+#if defined(REGION_US)
 	nSCStaffrollCompanyNOA,
 	nSCStaffrollCompanyNOA,
 	nSCStaffrollCompanyNOA,
+#endif
 	nSCStaffrollCompanyHAL,
 	nSCStaffrollCompanyHAL,
 	nSCStaffrollCompanyHAL,
@@ -260,9 +309,11 @@ s32 dSCStaffrollCompanyIDs[/* */] =
 	nSCStaffrollCompanyNINTENDO,
 	nSCStaffrollCompanyNINTENDO,
 	nSCStaffrollCompanyNINTENDO,
-	-1,
-	-1,
-	-1,
+	nSCStaffrollCompanyNull,
+	nSCStaffrollCompanyNull,
+#if defined(REGION_US)
+	nSCStaffrollCompanyNull,
+#endif
 	nSCStaffrollCompanyHAL,
 	nSCStaffrollCompanyNINTENDO,
 	nSCStaffrollCompanyHAL,
@@ -270,8 +321,8 @@ s32 dSCStaffrollCompanyIDs[/* */] =
 	nSCStaffrollCompanyNINTENDO,
 	nSCStaffrollCompanyNINTENDO,
 	nSCStaffrollCompanyNINTENDO,
-	-1,
-	-1
+	nSCStaffrollCompanyNull,
+	nSCStaffrollCompanyNull
 };
 
 // 0x8013A184
@@ -335,7 +386,9 @@ SCStaffrollSprite dSCStaffrollNameAndJobSpriteInfo[/* */] =
 	{  7,  7, &llSCStaffrollNameAndJobPeriodImage },
 	{  8, 11, &llSCStaffrollNameAndJobCommaImage },
 	{  8, 11, &llSCStaffrollNameAndJobApostropheImage },
+#if defined(REGION_US)
 	{ 16, 22, &llSCStaffrollNameAndJob4Image }
+#endif
 };
 
 // 0x8013A348
@@ -414,7 +467,9 @@ SCStaffrollSprite dSCStaffrollTextBoxSpriteInfo[/* */] =
 	{ 12, 14, &llSCStaffrollTextBoxQuestionSprite },
 	{  7, 14, &llSCStaffrollTextBoxBracketOpenSprite },
 	{  7, 14, &llSCStaffrollTextBoxBracketCloseSprite },
+#if defined(REGION_US)
 	{ 10, 13, &llSCStaffrollTextBoxEAccentSprite }
+#endif
 };
 
 // 0x8013A598
@@ -441,7 +496,11 @@ Gfx dSCStaffrollTextBoxDisplayList[/* */] =
 s32 sSCStaffrollPad0x8013A7D0[2];
 
 // 0x8013A7D8
+#if defined(REGION_US)
 Gfx *sSCStaffrollNameAndJobDisplayLists[56];
+#else
+Gfx *sSCStaffrollNameAndJobDisplayLists[55];
+#endif
 
 // 0x8013A8B8
 s32 sSCStaffrollNameID;
@@ -903,6 +962,7 @@ void scStaffrollTryHideUnlocks(void)
 	// 0x8013A64C
 	s32 earthbound[/* */] =
 	{
+#if defined(REGION_US)
 		GMSTAFFROLL_ASCII_LETTER_TO_FONT_INDEX('E'),
 		GMSTAFFROLL_ASCII_LETTER_TO_FONT_INDEX('a'),
 		GMSTAFFROLL_ASCII_LETTER_TO_FONT_INDEX('r'),
@@ -913,6 +973,15 @@ void scStaffrollTryHideUnlocks(void)
 		GMSTAFFROLL_ASCII_LETTER_TO_FONT_INDEX('u'),
 		GMSTAFFROLL_ASCII_LETTER_TO_FONT_INDEX('n'),
 		GMSTAFFROLL_ASCII_LETTER_TO_FONT_INDEX('d')
+#else
+		GMSTAFFROLL_ASCII_LETTER_TO_FONT_INDEX('M'),
+		GMSTAFFROLL_ASCII_LETTER_TO_FONT_INDEX('o'),
+		GMSTAFFROLL_ASCII_LETTER_TO_FONT_INDEX('t'),
+		GMSTAFFROLL_ASCII_LETTER_TO_FONT_INDEX('h'),
+		GMSTAFFROLL_ASCII_LETTER_TO_FONT_INDEX('e'),
+		GMSTAFFROLL_ASCII_LETTER_TO_FONT_INDEX('r'),
+		GMSTAFFROLL_ASCII_NUMBER_TO_PARA_FONT_INDEX('2'),
+#endif
 	};
 
 	// 0x8013A674
@@ -1036,7 +1105,9 @@ void scStaffrollMakeStaffRoleTextSObjs(GObj *text_gobj, GObj *staff_gobj)
 					dSCStaffrollStaffRoleCharacters[character_id] == GMSTAFFROLL_ASCII_NUMBER_TO_PARA_FONT_INDEX('0') ||
 					dSCStaffrollStaffRoleCharacters[character_id] == GMSTAFFROLL_AMPERSAND_PARA_FONT_INDEX            ||
 					dSCStaffrollStaffRoleCharacters[character_id] == GMSTAFFROLL_QUESTION_MARK_PARA_FONT_INDEX        ||
+#if defined(REGION_US)
 					dSCStaffrollStaffRoleCharacters[character_id] == GMSTAFFROLL_E_ACCENT_PARA_FONT_INDEX             ||
+#endif
 					dSCStaffrollStaffRoleCharacters[character_id] == GMSTAFFROLL_DOUBLE_QUOTES_PARA_FONT_INDEX
 				)
 				{
@@ -1100,7 +1171,7 @@ void scStaffrollMakeCompanyTextSObjs(GObj *text_gobj, GObj *staff_gobj)
 	SCStaffrollName *staff = staff_gobj->user_data.p;
 	s32 i;
 
-	if (dSCStaffrollCompanyIDs[staff->name_id] != -1)
+	if (dSCStaffrollCompanyIDs[staff->name_id] != nSCStaffrollCompanyNull)
 	{
 		wbase = 350.0F;
 

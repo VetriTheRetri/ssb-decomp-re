@@ -113,12 +113,7 @@ ASFLAGS         := -EB -I include -march=vr4300 -mabi=32
 ifeq ($(VERSION),jp)
     LDFLAGS := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt \
                -T .splat/smashbrothers_jp.ld -T symbols/jp_wip_linker.txt symbols/reloc_data_symbols.$(VERSION).txt 
-	C_FILES := src/db/dbmaps.c \
-			   src/db/dbmenu.c \
-			   src/db/dbcube.c \
-			   src/db/dbbattle.c \
-			   src/db/dbfalls.c \
-			   $(shell find src/sys src/libultra src/lb src/sc/scsubsys src/mp src/gm src/ef src/gr src/if src/ft src/wp src/it src/mv src/mn src/sc -type f -name '*.c')
+    C_FILES := $(shell find src -type f | grep \\.c$)
 	C_FILES := $(filter-out \
 			    src/mn/mncommon/mncongra.c \
 				src/mn/mncommon/mnstartup.c \

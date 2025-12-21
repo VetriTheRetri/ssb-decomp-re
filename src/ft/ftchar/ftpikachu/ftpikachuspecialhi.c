@@ -186,7 +186,11 @@ void ftPikachuSpecialHiProcMap(GObj *fighter_gobj)
         }
         else ftPikachuSpecialHiSwitchStatusAir(fighter_gobj);
     }
+#if defined(REGION_US)
     else if (fp->coll_data.mask_curr & (MAP_FLAG_RWALL | MAP_FLAG_LWALL))
+#else
+    if (fp->coll_data.mask_curr & (MAP_FLAG_RWALL | MAP_FLAG_LWALL))
+#endif
     {
         ftPikachuSpecialHiEndSetStatus(fighter_gobj);
     }

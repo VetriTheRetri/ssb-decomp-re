@@ -3341,16 +3341,20 @@ void ifCommonAnnounceCompleteInitInterface(u16 sfx_id)
 // 0x80114D98
 void ifCommonAnnounceTimeUpInitInterface(void)
 {
-    ifCommonBattleSetInterface(ifCommonBonusInterfaceProcUpdate, ifCommonBattleInterfaceProcSet, 0x20F, 90);
+    ifCommonBattleSetInterface(ifCommonBonusInterfaceProcUpdate, ifCommonBattleInterfaceProcSet, nSYAudioVoiceAnnounceTimeUp, 90);
     ifCommonAnnounceTimeUpMakeInterface();
 }
 
 // 0x80114DD4
 void ifCommonAnnounceFailureInitInterface(void)
 {
+#if defined(REGION_US)
     if (gSCManagerBattleState->game_status != nSCBattleGameStatusEnd)
     {
-        ifCommonBattleSetInterface(ifCommonBonusInterfaceProcUpdate, ifCommonBattleInterfaceProcSet, 0x1CC, 90);
+#endif
+        ifCommonBattleSetInterface(ifCommonBonusInterfaceProcUpdate, ifCommonBattleInterfaceProcSet, nSYAudioVoiceAnnounceFailure, 90);
         ifCommonAnnounceFailureMakeInterface();
+#if defined(REGION_US)
     }
+#endif
 }

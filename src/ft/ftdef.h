@@ -124,6 +124,33 @@
 // WARNING: Only advances 4 bytes at a time
 #define ftMotionEventCastAdvance(event, type) ((type*)(event)->p_script++)
 
+#define ftMotionCommandEnd() GC_FIELDSET(nFTMotionEventEnd, 26, 6)
+
+#define ftMotionCommandWait(frames) (GC_FIELDSET(nFTMotionEventSyncWait, 26, 6) | GC_FIELDSET(frames, 0, 26))
+#define ftMotionCommandWaitAsync(frames) (GC_FIELDSET(nFTMotionEventAsyncWait, 26, 6) | GC_FIELDSET(frames, 0, 26))
+
+#define ftMotionPlayFGM(fgm_id) (GC_FIELDSET(nFTMotionEventPlayFGM, 26, 6) | GC_FIELDSET(fgm_id, 0, 26))
+
+#define ftMotionPlayVoice(fgm_id) (GC_FIELDSET(nFTMotionEventPlayVoiceStoreInfo, 26, 6) | GC_FIELDSET(fgm_id, 0, 26))
+#define ftMotionPlayInterruptableVoice(fgm_id) (GC_FIELDSET(nFTMotionEventPlayLoopVoiceStoreInfo, 26, 6) | GC_FIELDSET(fgm_id, 0, 26)) // stops playing on action change
+
+#define ftMotionCommandSubroutineS1() GC_FIELDSET(nFTMotionEventSubroutine, 26, 6)
+#define ftMotionCommandSubroutineS2(addr) ((uintptr_t)addr)
+
+#define ftMotionCommandSubroutine(addr) ftMotionCommandSubroutineS1(), ftMotionCommandSubroutineS2(addr)
+
+#define ftMotionCommandReturn() GC_FIELDSET(nFTMotionEventReturn, 26, 6)
+
+#define ftMotionCommandGotoS1() GC_FIELDSET(nFTMotionEventGoto, 26, 6)
+#define ftMotionCommandGotoS2(addr) ((uintptr_t)addr)
+
+#define ftMotionCommandGoto(addr) ftMotionCommandGotoS1(), ftMotionCommandGotoS2(addr)
+
+#define ftMotionCommandSetTexturePartID(flag) (GC_FIELDSET(nFTMotionEventSetTexturePartID, 26, 6) | GC_FIELDSET(flag, 0, 26)) // 0 = none, 3 = feet
+
+#define ftMotionCommandSetSlopeContour(flag) (GC_FIELDSET(nFTMotionEventSetSlopeContour, 26, 6) | GC_FIELDSET(flag, 0, 26)) // 0 = none, 3 = feet
+
+
 // Enums
 typedef enum FTStatusUpdateFlags
 {

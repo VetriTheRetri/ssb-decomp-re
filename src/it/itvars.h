@@ -474,8 +474,13 @@
 
 #define ITPKFIRE_LIFETIME 100
 #define ITPKFIRE_HURT_DAMAGE_MUL 3 // Multiplies damage taken, result gets subtracted from lifetime
+#if defined(REGION_US)
 #define ITPKFIRE_GRAVITY 0.45F
 #define ITPKFIRE_TVEL 55.0F
+#else
+#define ITPKFIRE_GRAVITY 0.4F
+#define ITPKFIRE_TVEL 50.0F
+#endif
 #define ITPKFIRE_MAP_REBOUND_COMMON 0.2F
 #define ITPKFIRE_MAP_REBOUND_GROUND 0.5F
 

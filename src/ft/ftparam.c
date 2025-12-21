@@ -1473,6 +1473,7 @@ f32 ftParamGetCommonKnockback(s32 percent_damage, s32 recent_damage, s32 hit_dam
     return knockback;
 }
 
+#if defined(REGION_US)
 // 0x800E9FC0 - Used by Barrel Cannon on Kongo Jungle
 f32 ftParamGetGroundHazardKnockback(s32 percent_damage, s32 recent_damage, s32 hit_damage, s32 knockback_weight, s32 knockback_scale, s32 knockback_base, f32 weight, s32 attack_handicap, s32 defend_handicap)
 {
@@ -1498,6 +1499,7 @@ f32 ftParamGetGroundHazardKnockback(s32 percent_damage, s32 recent_damage, s32 h
     }
     return knockback;
 }
+#endif
 
 // 0x800EA1B0
 f32 ftParamGetHitStun(f32 knockback)
@@ -1508,7 +1510,11 @@ f32 ftParamGetHitStun(f32 knockback)
 // 0x800EA1C0
 s32 ftParamGetHitLag(s32 damage, s32 status_id, f32 hitlag_mul)
 {
+#if defined(REGION_US)
     s32 hitlag_tics = (s32) ( (damage * (1.0F / 3.0F) ) + 5.0F ) * hitlag_mul;
+#else
+    s32 hitlag_tics = (s32) ( (damage * (1.0F / 3.0F) ) + 4.0F ) * hitlag_mul;
+#endif
 
     if ((status_id == nFTCommonStatusSquat) || (status_id == nFTCommonStatusSquatWait))
     {

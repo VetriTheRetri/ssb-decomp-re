@@ -63,12 +63,29 @@ intptr_t dMNTitleFireSpriteOffsets[/* */] =
 // 0x80134268
 MNTitleSpriteDesc dMNTitleCommonSpriteDescs[/* */] =
 {
+#if defined(REGION_US)
 	{ { 157,  94 }, &llMNTitleCutoutSprite },
 	{ { 161,  88 }, &llMNTitleSmashSprite },
 	{ {  55,  96 }, &llMNTitleSuperSprite },
 	{ { 268,  96 }, &llMNTitleBrosSprite },
 	{ { 270, 132 }, &llMNTitleTMUnkSprite },
 	{ { 160, 208 }, &llMNTitleCopyrightSprite },
+#else
+	{ { 136,  68 }, 0x10580 },
+	{ { 172,  71 }, 0x10CA8 },
+	{ { 202,  73 }, 0x113C8 },
+	{ {  83, 127 }, 0x12780 },
+	{ { 112, 135 }, 0x12EA8 },
+	{ { 130, 150 }, 0x13178 },
+	{ { 144, 121 }, 0x137C8 },
+	{ { 158, 136 }, 0x139A8 },
+	{ { 175, 127 }, 0x14308 },
+	{ { 191, 145 }, 0x14728 },
+	{ { 210, 128 }, 0x14F08 },
+	{ { 224, 132 }, 0x15008 },
+	{ { 243, 120 }, 0x16468 },
+	{ { 160, 208 }, 0x19CE0 },
+#endif
 	{ { 160,  15 }, &llMNTitleBorderUpperSprite },
 	{ { 162, 177 }, &llMNTitlePressStartSprite },
 	{ { 260,  60 }, &llMNTitleLogoAnimFullSprite },
@@ -76,7 +93,11 @@ MNTitleSpriteDesc dMNTitleCommonSpriteDescs[/* */] =
 };
 
 // 0x801342E0
+#if defined(REGION_US)
 char *dMNTitleUnknown0x801342E0[/* */] = { NULL, NULL, "English", NULL, NULL, NULL, NULL, NULL, NULL, dSCManagerBuildDate, NULL, NULL, NULL, NULL };
+#else
+char *dMNTitleUnknown0x801342E0[/* */] = { NULL, NULL, dSCManagerBuildDate, NULL, NULL, NULL, NULL };
+#endif
 
 // 0x80134318
 u8 dMNTitleFireColorsR[/* */] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xE6, 0xFF, 0xFF };
@@ -157,12 +178,6 @@ SYTaskmanSetup dMNTitleTaskmanSetup =
     mnTitleFuncStart               	// Task start function
 };
 
-// 0x80134418
-s32 dMNTitleUnused0x80134418[/* */] = { 0, 0 };
-
-// 0x80134420
-u32 dMNTitleFileIDs[/* */] = { &llMNTitleFileID, &llMNTitleFireAnimFileID };
-
 // // // // // // // // // // // //
 //                               //
 //   GLOBAL / STATIC VARIABLES   //
@@ -234,12 +249,6 @@ s32 sMNTitleFireColorID;
 
 // 0x80134498
 u32 sMNTitleAllowProceedWait;
-
-// 0x801344A0
-LBFileNode sMNTitleStatusBuffer[32];
-
-// 0x801345A0
-void *sMNTitleFiles[ARRAY_COUNT(dMNTitleFileIDs)];
 
 // // // // // // // // // // // //
 //                               //
@@ -445,6 +454,9 @@ void mnTitleProceedDemoNext(void)
 	u8 scene_prev = gSCManagerSceneData.scene_prev;
 
 	gcMakeDefaultCameraGObj(2, GOBJ_PRIORITY_DEFAULT, 0, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+#if defined(REGION_JP)
+	gcEjectGObj(gGCCommonLinks[13]);
+#endif
 	mnTitleSetDemoFighterKinds();
 	func_800266A0_272A0();
 
@@ -459,7 +471,11 @@ void mnTitleProceedDemoNext(void)
 
 	case nSCKindModeSelect:
 	case nSCKindAutoDemo:
-		gSCManagerSceneData.scene_curr = nSCKindStartup;
+#if defined(REGION_US)        
+        gSCManagerSceneData.scene_curr = nSCKindStartup;
+#else
+        gSCManagerSceneData.scene_curr = nSCKindOpeningRoom;
+#endif
 		break;
 
 	default:
@@ -474,6 +490,9 @@ void mnTitleProceedDemoNext(void)
 void mnTitleProceedModeSelect(void)
 {
 	gcMakeDefaultCameraGObj(2, GOBJ_PRIORITY_DEFAULT, 0, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+#if defined(REGION_JP)
+	gcEjectGObj(gGCCommonLinks[13]);
+#endif
 
 	gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 	gSCManagerSceneData.scene_curr = nSCKindModeSelect;
@@ -606,9 +625,15 @@ void mnTitleSetAllowProceedWait(void)
 {
 	if (sMNTitleLayout == nMNTitleLayoutFinal)
 	{
+#if defined(REGION_US)
 		sMNTitleAllowProceedWait = 280;
 	}
 	else sMNTitleAllowProceedWait = 364;
+#else
+		sMNTitleAllowProceedWait = 230;
+	}
+	else sMNTitleAllowProceedWait = 294;
+#endif
 }
 
 // 0x80132448
@@ -629,15 +654,46 @@ void mnTitleTransitionsFuncRun(GObj *gobj)
 	case 170:
 		mnTitleSetEndLogoPosition();
 		mnTitleShowGObjLinkID(8);
+
+#if defined(REGION_JP)
+		if (sMNTitleLayout != nMNTitleLayoutOpening || gSCManagerSceneData.scene_prev != nSCKindOpeningNewcomers)
+		{
+			mnTitleShowGObjLinkID(13);
+		}
+#endif
 		mnTitleAdvanceLayout();
 		mnTitleSetAllowProceedWait();
 		break;
 
+#if defined(REGION_US)
 	case 220:
+#else
+	case 230:
+#endif
+#if defined(REGION_JP)
+		mnTitleShowGObjLinkID(13);
+#endif
 		mnTitleSetEndLayout();
 		break;
 
+	case 214:
+#if defined(REGION_JP)
+		if (sMNTitleLayout == nMNTitleLayoutFinal)
+			mnTitleShowGObjLinkID(11);
+			break;
+#endif
+	case 240:
+#if defined(REGION_JP)
+		if (sMNTitleLayout == nMNTitleLayoutAnimate)
+			mnTitleShowGObjLinkID(11);
+#endif
+		break;
+
+#if defined(REGION_US)
 	case 280:
+#else
+	case 270:
+#endif
 		mnTitleShowGObjLinkID(9);
 		break;
 
@@ -651,11 +707,6 @@ void mnTitleTransitionsFuncRun(GObj *gobj)
 		{
 			func_800269C0_275C0(nSYAudioFGMPublicPrologue);
 		}
-		break;
-
-	case 214:
-	case 240:
-		// Maybe a FGM call in J version?
 		break;
 
 	case 650:
@@ -706,6 +757,7 @@ void mnTitlePressStartProcUpdate(GObj *gobj)
 	}
 }
 
+#if defined(REGION_US)
 // 0x801326D4
 void mnTitleProcUpdate(GObj *gobj)
 {
@@ -714,6 +766,7 @@ void mnTitleProcUpdate(GObj *gobj)
 		mnTitlePlayAnim(gobj);
 	}
 }
+#endif
 
 // 0x80132704
 void mnTitleUpdateLabelsPosition(GObj *gobj)
@@ -748,6 +801,7 @@ void mnTitleSetColors(SObj *sobj, s32 kind)
 {
 	if (kind < nMNTitleSpriteKindFooter)
 	{
+#if defined(REGION_US)
 		if ((kind == nMNTitleSpriteKindDropShadow) || (kind == nMNTitleSpriteKindTM))
 		{
 			sobj->sprite.red = 0x00;
@@ -763,6 +817,14 @@ void mnTitleSetColors(SObj *sobj, s32 kind)
 			sobj->envcolor.g = 0x00;
 			sobj->envcolor.b = 0x00;
 		}
+#else
+		sobj->sprite.red = 0x15;
+		sobj->sprite.green = 0x13;
+		sobj->sprite.blue = 0x06;
+		sobj->envcolor.r = 0x36;
+		sobj->envcolor.g = 0x33;
+		sobj->envcolor.b = 0x21;
+#endif
 	}
 	else switch (kind)
 	{
@@ -998,7 +1060,7 @@ void mnTitleMakeLogoNoOpening(void)
 		0,
 		GOBJ_PRIORITY_DEFAULT,
 		-1,
-		lbRelocGetFileData(Sprite*, sMNTitleFiles[0], dMNTitleCommonSpriteDescs[8].offset),
+		lbRelocGetFileData(Sprite*, sMNTitleFiles[0], dMNTitleCommonSpriteDescs[nMNTitleSpriteKindLogo].offset),
 		nGCProcessKindFunc,
 		NULL,
 		1
@@ -1104,7 +1166,7 @@ void mnTitleMakeSprites(void)
 	gobj = gcMakeGObjSPAfter(8, NULL, 8, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
 
-	for (i = 0; i < 7; i++)
+	for (i = 0; i < nMNTitleSpriteKindPressStart; i++)
 	{
 		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNTitleFiles[0], dMNTitleCommonSpriteDescs[i].offset));
 		sobj->sprite.attr = SP_TRANSPARENT;
@@ -1130,12 +1192,15 @@ void mnTitleMakeLabels(void)
 
 	gobj = gcMakeGObjSPAfter(8, NULL, 8, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
+#if defined(REGION_US)
 	gcAddGObjProcess(gobj, mnTitleProcUpdate, nGCProcessKindFunc, 1);
-
+#else
+	gcAddGObjProcess(gobj, mnTitlePressStartProcUpdate, nGCProcessKindFunc, 1);
+#endif
 	gobj->user_data.p = animation_gobj;
 	animation_dobj = DObjGetStruct(animation_gobj)->child;
 
-	for (i = 0; i < 5; i++)
+	for (i = 0; i < nMNTitleSpriteKindFooter; i++)
 	{
 		texture_sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNTitleFiles[0], dMNTitleCommonSpriteDescs[i].offset));
 		texture_sobj->sprite.attr = SP_TRANSPARENT;
@@ -1153,7 +1218,7 @@ void mnTitleMakeLabels(void)
 
 	gobj->user_data.p = animation_gobj;
 
-	for (i = 5; i < 7; i++)
+	for (i = nMNTitleSpriteKindFooter; i < nMNTitleSpriteKindPressStart; i++)
 	{
 		texture_sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNTitleFiles[0], dMNTitleCommonSpriteDescs[i].offset));
 		texture_sobj->sprite.attr = SP_TRANSPARENT;
@@ -1187,7 +1252,7 @@ void mnTitleMakePressStart(void)
 
 	press_start_gobj->user_data.p = press_start_anim_gobj;
 
-	press_start_sobj = lbCommonMakeSObjForGObj(press_start_gobj, lbRelocGetFileData(Sprite*, sMNTitleFiles[0], dMNTitleCommonSpriteDescs[7].offset));
+	press_start_sobj = lbCommonMakeSObjForGObj(press_start_gobj, lbRelocGetFileData(Sprite*, sMNTitleFiles[0], dMNTitleCommonSpriteDescs[nMNTitleSpriteKindPressStart].offset));
 	press_start_sobj->sprite.attr = SP_TRANSPARENT;
 
 	mnTitleSetPosition(press_start_anim_dobj, press_start_sobj, nMNTitleSpriteKindPressStart);
@@ -1199,7 +1264,20 @@ void mnTitleMakePressStart(void)
 // 0x80133634 - discarded language selection?
 void func_ovl10_80133634(void)
 {
+#if defined(REGION_US)
 	return;
+#else
+    GObj *gobj;
+    SObj *sobj;
+    
+    gobj = gcMakeGObjSPAfter(8, NULL, 11, GOBJ_PRIORITY_DEFAULT);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNTitleFiles[0], dMNTitleCommonSpriteDescs[17].offset));
+    sobj->sprite.attr = SP_TRANSPARENT;
+    mnTitleSetPosition(NULL, sobj, 17);
+    mnTitleSetColors(sobj, 17);
+    gobj->flags = GOBJ_FLAG_HIDDEN;
+#endif
 }
 
 // 0x8013363C - Unused?
@@ -1235,6 +1313,16 @@ void mnTitleMakeSlash(void)
 		gcPlayAnimAll(gobj);
 		gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindFunc, 1);
 	}
+
+#if defined(REGION_JP)
+	gobj = gcMakeGObjSPAfter(12, NULL, 13, GOBJ_PRIORITY_DEFAULT);
+	gcAddGObjDisplay(gobj, gcDrawDObjTreeDLLinksForGObj, 2, GOBJ_PRIORITY_DEFAULT, ~0);
+	gcSetupCustomDObjs(gobj, lbRelocGetFileData(DObjDesc*, sMNTitleFiles[0], &llMNTitleUnknownDObjDesc), NULL, nGCMatrixKindTraRotRpyRSca, nGCMatrixKindNull, nGCMatrixKindNull);
+	gcAddAnimJointAll(gobj, lbRelocGetFileData(AObjEvent32**, sMNTitleFiles[0], &llMNTitleUnknownAnimJoint), 0.0F);
+	gcPlayAnimAll(gobj);
+	gcAddGObjProcess(gobj, mnTitleSlashProcUpdate, nGCProcessKindFunc, 1);
+	gobj->flags = GOBJ_FLAG_HIDDEN;
+#endif
 }
 
 // 0x80133770
@@ -1469,22 +1557,4 @@ void mnTitleStartScene(void)
 	}
 	dMNTitleTaskmanSetup.scene_setup.arena_size = (size_t) ((uintptr_t)&ovl9_VRAM - (uintptr_t)&ovl10_BSS_END);
 	syTaskmanStartTask(&dMNTitleTaskmanSetup);
-}
-
-// 0x80134140
-void mnTitleLoadFiles(void)
-{
-	LBRelocSetup rl_setup;
-
-	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
-	rl_setup.table_files_num = (u32)&llRelocFileCount;
-	rl_setup.file_heap = NULL;
-	rl_setup.file_heap_size = 0;
-	rl_setup.status_buffer = sMNTitleStatusBuffer;
-	rl_setup.status_buffer_size = ARRAY_COUNT(sMNTitleStatusBuffer);
-	rl_setup.force_status_buffer = NULL;
-	rl_setup.force_status_buffer_size = 0;
-
-	lbRelocInitSetup(&rl_setup);
-	lbRelocLoadFilesListed(dMNTitleFileIDs, sMNTitleFiles);
 }

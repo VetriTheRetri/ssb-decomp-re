@@ -99,7 +99,7 @@ sb32 scUseCustomSwapBufferFunc;
 OSMesgQueue *scCustomSwapBufferQueue;
 void (*sSYSchedulerFuncReset)(void);
 u32 sSYSchedulerTicCount;
-sb32 gSYSchedulerIsSoftReset; // gSoftReseting ..?
+ub32 gSYSchedulerIsSoftReset; // gSoftReseting ..?
 s32 sSYSchedulerAfterPreNMI; // return of osAfterPreNMI
 void *sSYSchedulerReadyBuffers[3];
 u8 sSYSchedulerReadyBufferID;
@@ -1165,9 +1165,11 @@ void sySchedulerSoftReset(void);
 #define INTR_DP_FULL_SYNC 3
 #define INTR_SOFT_RESET   99
 
+// 0x80002518
+// jp: 0x8000241C 
 void sySchedulerThreadMain(void *arg)
 {
-    OSMesg mesg;
+    s32 mesg;
 
     // the wonders of matching
     sSYSchedulerClients = NULL;
@@ -1185,10 +1187,13 @@ void sySchedulerThreadMain(void *arg)
     scUseCustomSwapBufferFunc = FALSE;
     sSYSchedulerFuncReset = sySchedulerSoftReset;
     gSYSchedulerIsSoftReset = FALSE;
+#if defined(REGION_US)
     sSYSchedulerAfterPreNMI = -1;
+#endif
     sSYSchedulerTicCount = 0;
     sSYSchedulerReadyBufferID = sSYSchedulerSwapBufferID = 0;
 
+#if defined(REGION_US)
     switch (osTvType)
     {
     case OS_TV_NTSC:
@@ -1203,6 +1208,10 @@ void sySchedulerThreadMain(void *arg)
         sSYSchedulerCurrentViMode = sSYSchedulerPendingViMode = osViModeMpalLan1;
         break;
     }
+#else
+    sSYSchedulerCurrentViMode = sSYSchedulerPendingViMode = osViModeNtscLan1;
+#endif
+
     sSYSchedulerPendingViMode.comRegs.ctrl = VI_CTRL_TYPE_16 | VI_CTRL_GAMMA_DITHER_ON | VI_CTRL_DIVOT_ON | VI_CTRL_DITHER_FILTER_ON;
     sSYSchedulerCurrentViMode.comRegs.ctrl = VI_CTRL_TYPE_16 | VI_CTRL_GAMMA_DITHER_ON | VI_CTRL_DIVOT_ON | VI_CTRL_DITHER_FILTER_ON;
     osViSetMode(&sSYSchedulerPendingViMode);
@@ -1228,9 +1237,9 @@ void sySchedulerThreadMain(void *arg)
 
     while (TRUE)
     {
-        osRecvMesg(&gSYSchedulerTaskMesgQueue, &mesg, OS_MESG_BLOCK);
+        osRecvMesg(&gSYSchedulerTaskMesgQueue, (OSMesg)&mesg, OS_MESG_BLOCK);
 
-        switch ((u32)mesg)
+        switch (mesg)
         {
         case INTR_VRETRACE:
             sySchedulerVRetrace();
@@ -1239,10 +1248,12 @@ void sySchedulerThreadMain(void *arg)
         case INTR_SP_TASK_DONE:
             sySchedulerSpTaskDone();
 
+#if defined(REGION_US)
             if ((gSYSchedulerIsSoftReset == 1) && (sSYSchedulerAfterPreNMI == -1))
             {
                 sSYSchedulerAfterPreNMI = osAfterPreNMI();
             }
+#endif
             break;
 
         case INTR_DP_FULL_SYNC:
@@ -1279,7 +1290,9 @@ void sySchedulerSoftReset(void)
         syControllerInitRumble(i);
         syControllerStopRumble(i);
     }
+    #if defined(REGION_US)
     sSYSchedulerAfterPreNMI = osAfterPreNMI();
+    #endif
 }
 
 void unref_80002A50(void (*func)(void))

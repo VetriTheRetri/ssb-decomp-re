@@ -29,14 +29,23 @@
 #define FTKIRBY_FINALCUTTER_AIR_ACCEL_MUL 0.5F          // Multiplies air acceleration during Final Cutter
 
 #define FTKIRBY_STONE_DURATION_MAX 160                  // Maximum time Kirby can spend in his Stone form
+#if defined(REGION_US)
 #define FTKIRBY_STONE_DURATION_MIN 18                   // Minimum time Kirby must spend in his Stone form before he can turn back
+#else
+#define FTKIRBY_STONE_DURATION_MIN 14                   // Minimum time Kirby must spend in his Stone form before he can turn back
+#endif
 #define FTKIRBY_STONE_FALL_VEL -140.0F                  // Stone terminal velocity in midair
 #define FTKIRBY_STONE_SLIDE_ANGLE F_CLC_DTOR32(25.0F)   // Minimum surface angle required to slide? (Radians) (0.43633232F)
 #define FTKIRBY_STONE_SLIDE_TRACTION_MUL 1.15F          // Traction multiplier?
 #define FTKIRBY_STONE_SLIDE_VEL_MUL 36.0F               // Slide velocity multiplier
 #define FTKIRBY_STONE_SLIDE_CLAMP_VEL_X 30.0F           // Maximum slide velocity?
+#if defined(REGION_US)
 #define FTKIRBY_STONE_HEALTH_MAX 38                     // Maximum % damage Kirby can withstand while transformed
 #define FTKIRBY_STONE_HEALTH_MID 22                     // Begin flashing more rapidly when remaining Stone HP is compromised 
+#else
+#define FTKIRBY_STONE_HEALTH_MAX 50                     // Maximum % damage Kirby can withstand while transformed
+#define FTKIRBY_STONE_HEALTH_MID 25                     // Begin flashing more rapidly when remaining Stone HP is compromised 
+#endif
 #define FTKIRBY_STONE_HEALTH_LOW 10                     // Begin flashing fast when remaining Stone HP is critical
 #define FTKIRBY_STONE_COLANIM_ID_HIGH 0x33              // Color Animation ID of high-HP Stone
 #define FTKIRBY_STONE_COLANIM_LENGTH_HIGH 0
@@ -91,8 +100,13 @@
 #define FTKIRBY_COPYNESS_PKFIRE_SPAWN_OFF_Y 190.0F
 #define FTKIRBY_COPYNESS_PKFIRE_SPARK_ANGLE_AIR F_CLC_DTOR32(-38.0F) // -0.6632251F
 #define FTKIRBY_COPYNESS_PKFIRE_SPARK_ANGLE_GROUND F_CLC_DTOR32(-3.6F) // -0.06283185F
+#if defined(REGION_US)
 #define FTKIRBY_COPYNESS_PKFIRE_SPARK_VEL_AIR 95.0F
 #define FTKIRBY_COPYNESS_PKFIRE_SPARK_VEL_GROUND 73.0F
+#else
+#define FTKIRBY_COPYNESS_PKFIRE_SPARK_VEL_AIR 120.0F
+#define FTKIRBY_COPYNESS_PKFIRE_SPARK_VEL_GROUND 90.0F
+#endif
 
 extern intptr_t lFTKirbySpecialNCopyData;
 

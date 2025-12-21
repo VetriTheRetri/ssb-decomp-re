@@ -1436,7 +1436,11 @@ void ftMainProcUpdateInterrupt(GObj *fighter_gobj)
         {
             this_fp->star_hitstatus = nGMHitStatusNormal;
 
+#if defined(REGION_US)
             if (this_fp->colanim.colanim_id == 0x4A)
+#else
+            if (this_fp->colanim.colanim_id == 0x49)
+#endif
             {
                 ftParamResetStatUpdateColAnim(fighter_gobj);
             }
@@ -2013,8 +2017,11 @@ void ftMainSetHitRebound(GObj *attacker_gobj, FTStruct *fp, FTAttackColl *attack
 
         if ((attack_coll->can_rebound) && (fp->ga == nMPKineticsGround))
         {
+#if defined(REGION_US)
             fp->attack_rebound = (fp->attack_shield_push * 1.62F) + 4.0F;
-
+#else
+            fp->attack_rebound = (fp->attack_shield_push * 1.75F) + 4.0F;
+#endif
             fp->hit_lr = (DObjGetStruct(attacker_gobj)->translate.vec.f.x < DObjGetStruct(victim_gobj)->translate.vec.f.x) ? +1 : -1;
         }
     }
@@ -2296,6 +2303,7 @@ void ftMainUpdateReflectorStatWeapon(WPStruct *wp, WPAttackColl *wp_attack_coll,
     {
         wp->reflect_gobj = fighter_gobj;
 
+#if defined(REGION_US)
         /*
          * Oversight: attack_id is not set to that of the reflecting fighter.
          * This causes whatever move the original attacker used to summon the weapon
@@ -2305,6 +2313,7 @@ void ftMainUpdateReflectorStatWeapon(WPStruct *wp, WPAttackColl *wp_attack_coll,
          */
         wp->reflect_stat_flags = fp->stat_flags;
         wp->reflect_stat_count = fp->stat_count;
+#endif
 
         fp->reflect_lr = (DObjGetStruct(fighter_gobj)->translate.vec.f.x < DObjGetStruct(wp->weapon_gobj)->translate.vec.f.x) ? +1 : -1;
     }
@@ -2476,6 +2485,7 @@ void ftMainUpdateReflectorStatItem(ITStruct *ip, ITAttackColl *it_attack_coll, F
     {
         ip->reflect_gobj = fighter_gobj;
 
+#if defined(REGION_US)
         /*
          * Oversight: attack_id is not set to that of the reflecting fighter.
          * This causes whatever move the original attacker used the item with
@@ -2485,6 +2495,7 @@ void ftMainUpdateReflectorStatItem(ITStruct *ip, ITAttackColl *it_attack_coll, F
          */
         ip->reflect_stat_flags = fp->stat_flags;
         ip->reflect_stat_count = fp->stat_count;
+#endif
 
         fp->reflect_lr = (DObjGetStruct(fighter_gobj)->translate.vec.f.x < DObjGetStruct(ip->item_gobj)->translate.vec.f.x) ? +1 : -1;
     }
@@ -2510,11 +2521,12 @@ void ftMainUpdateDamageStatItem(ITStruct *ip, ITAttackColl *it_attack_coll, s32 
             ftParamSetStarHitStatusInvincible(fp, ITSTAR_INVINCIBLE_TIME);
             ftParamTryPlayItemMusic(nSYAudioBGMStar);
             func_800269C0_275C0(nSYAudioFGMStarGet);
-
+#if defined (REGION_US)
             if ((gSCManagerBattleState->game_type == nSCBattleGameType1PGame) && (fp->player == gSCManagerSceneData.player) && (gSC1PGameBonusStarCount < U8_MAX))
             {
                 gSC1PGameBonusStarCount++;
             }
+#endif
             break;
 
         case nITKindGLucky:

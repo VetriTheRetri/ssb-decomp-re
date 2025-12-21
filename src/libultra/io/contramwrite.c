@@ -11,7 +11,11 @@ extern s32 __osPfsLastChannel;
 s32 __osContRamWrite(OSMesgQueue* mq, int channel, u16 address, u8* buffer, int force) {
 	s32 ret = 0;
 	s32 i;
+#if defined(REGION_US)
 	u8* ptr;
+#else
+	u8* ptr = (u8*)__osPfsPifRam.ramarray;
+#endif
 	s32 retry = 2;
 	u8 crc;
 
@@ -21,9 +25,10 @@ s32 __osContRamWrite(OSMesgQueue* mq, int channel, u16 address, u8* buffer, int 
 
 	__osSiGetAccess();
 
+#if defined(REGION_US)
 	do {
 		ptr = (u8*)__osPfsPifRam.ramarray;
-
+#endif
 		if (__osContLastCmd != CONT_CMD_WRITE_MEMPACK || (u32)__osPfsLastChannel != channel) {
 			__osContLastCmd = CONT_CMD_WRITE_MEMPACK;
 			__osPfsLastChannel = channel;
@@ -56,6 +61,9 @@ s32 __osContRamWrite(OSMesgQueue* mq, int channel, u16 address, u8* buffer, int 
 		crc = __osContDataCrc(buffer);
 		osRecvMesg(mq, NULL, OS_MESG_BLOCK);
 
+#if defined(REGION_JP)
+	do {
+#endif
 		ret = __osSiRawStartDma(OS_READ, &__osPfsPifRam);
 		osRecvMesg(mq, NULL, OS_MESG_BLOCK);
 

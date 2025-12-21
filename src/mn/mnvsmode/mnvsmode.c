@@ -14,7 +14,6 @@ extern void* func_800269C0_275C0(u16);
 //                               //
 // // // // // // // // // // // //
 
-extern uintptr_t D_NF_00000006;
 extern ub8 gSYMainImemOK;
 
 // // // // // // // // // // // //
@@ -740,12 +739,16 @@ void mnVSModeMakeVSOptionsButton(void)
     button_sobj->sprite.red = 0x00;
     button_sobj->sprite.green = 0x00;
     button_sobj->sprite.blue = 0x00;
+#if defined(REGION_US)
     button_sobj->pos.x = 71.0F;
+#else
+    button_sobj->pos.x = 98.0F;
+#endif
     button_sobj->pos.y = 151.0F;
 }
 
 // 0x80132FA4 - Unused?
-void mnVSModeSetColorsUnused(SObj* sobj)
+void mnVSModeSetSubtitleSpriteColors(SObj* sobj)
 {
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -758,9 +761,149 @@ void mnVSModeSetColorsUnused(SObj* sobj)
 }
 
 // 0x80132FD8
-void mnVSModeMakeUnusedGObj(void)
+void mnVSModeMakeSubtitle(void)
 {
-    sMNVSModeUnusedGObj = gcMakeGObjSPAfter(0, NULL, 5, GOBJ_PRIORITY_DEFAULT);
+    GObj *gobj;
+    SObj *sobj;
+
+    sMNVSModeUnusedGObj = gobj = gcMakeGObjSPAfter(0, NULL, 5, GOBJ_PRIORITY_DEFAULT);
+
+#if defined(REGION_JP)
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 3, GOBJ_PRIORITY_DEFAULT, ~0);
+
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSModeFiles[0], &llMNCommonFrameSprite));
+
+    sobj->pos.x = 93.0F;
+    sobj->pos.y = 189.0F;
+    
+    mnVSModeSetSubtitleSpriteColors(sobj);
+    
+    switch (sMNVSModeCursorIndex)
+    {
+        case nMNVSModeOptionStart:
+            sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSModeFiles[1], &llMNVSModeVSStartTextJapSprite));
+            
+            sobj->pos.x = 121.0F;
+            sobj->pos.y = 195.0F;
+            
+            mnVSModeSetSubtitleSpriteColors(sobj);
+            return;
+
+        case nMNVSModeOptionRule:
+            switch (sMNVSModeRule)
+            {
+                case nMNVSModeRuleTime:
+                    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSModeFiles[1], &llMNVSModeTimeBasedTextJapSprite));
+                    
+                    sobj->pos.x = 120.0F;
+                    sobj->pos.y = 195.0F;
+                    
+                    mnVSModeSetSubtitleSpriteColors(sobj);
+
+                    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSModeFiles[1], &llMNVSModeBattleTextJapSprite));
+                    
+                    sobj->pos.x = 166.0F;
+                    sobj->pos.y = 195.0F;
+                    
+                    mnVSModeSetSubtitleSpriteColors(sobj);
+                    break;
+                case nMNVSModeRuleStock:
+                    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSModeFiles[1], &llMNVSModeStockTextJapSprite));
+                    
+                    sobj->pos.x = 115.0F;
+                    sobj->pos.y = 195.0F;
+                    
+                    mnVSModeSetSubtitleSpriteColors(sobj);
+
+                    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSModeFiles[1], &llMNVSModeBattleTextJapSprite));
+                    
+                    sobj->pos.x = 172.0F;
+                    sobj->pos.y = 195.0F;
+                    
+                    mnVSModeSetSubtitleSpriteColors(sobj);
+                    break;
+                case nMNVSModeRuleTimeTeam:
+                    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSModeFiles[1], &llMNVSModeTimeBasedTextJapSprite));
+                    
+                    sobj->pos.x = 102.0F;
+                    sobj->pos.y = 195.0F;
+                    
+                    mnVSModeSetSubtitleSpriteColors(sobj);
+
+                    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSModeFiles[1], &llMNVSModeTeamTextJapSprite));
+                    
+                    sobj->pos.x = 148.0F;
+                    sobj->pos.y = 195.0F;
+                    
+                    mnVSModeSetSubtitleSpriteColors(sobj);
+
+                    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSModeFiles[1], &llMNVSModeBattleTextJapSprite));
+                    
+                    sobj->pos.x = 182.0F;
+                    sobj->pos.y = 195.0F;
+                    
+                    mnVSModeSetSubtitleSpriteColors(sobj);
+                    break;
+                case nMNVSModeRuleStockTeam:
+                    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSModeFiles[1], &llMNVSModeStockTextJapSprite));
+                    
+                    sobj->pos.x = 98.0F;
+                    sobj->pos.y = 195.0F;
+                    
+                    mnVSModeSetSubtitleSpriteColors(sobj);
+
+                    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSModeFiles[1], &llMNVSModeTeamTextJapSprite));
+                    
+                    sobj->pos.x = 154.0F;
+                    sobj->pos.y = 195.0F;
+                    
+                    mnVSModeSetSubtitleSpriteColors(sobj);
+
+                    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSModeFiles[1], &llMNVSModeBattleTextJapSprite));
+                    
+                    sobj->pos.x = 188.0F;
+                    sobj->pos.y = 195.0F;
+                    
+                    mnVSModeSetSubtitleSpriteColors(sobj);
+                    break;
+            }
+
+            return;
+
+        case nMNVSModeOptionTimeStock:
+            switch (sMNVSModeRule)
+            {
+                case nMNVSModeRuleStock:
+                case nMNVSModeRuleStockTeam:
+                    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSModeFiles[1], &llMNVSModeRemaningPlayersTextJapSprite));
+                    
+                    sobj->pos.x = 126.0F;
+                    sobj->pos.y = 195.0F;
+                    
+                    mnVSModeSetSubtitleSpriteColors(sobj);
+                    break;
+                case nMNVSModeRuleTime:
+                case nMNVSModeRuleTimeTeam:
+                    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSModeFiles[1], &llMNVSModeTimeLimitTextJapSprite));
+                    
+                    sobj->pos.x = 132.0F;
+                    sobj->pos.y = 195.0F;
+                    
+                    mnVSModeSetSubtitleSpriteColors(sobj);
+                    break;
+            }
+            return;
+
+        case nMNVSModeOptionOptions:
+            sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSModeFiles[1], &llMNVSModeMatchOptionsTextJapSprite));
+            
+            sobj->pos.x = 111.0F;
+            sobj->pos.y = 195.0F;
+            
+            mnVSModeSetSubtitleSpriteColors(sobj);
+            return;
+    }
+#endif
 }
 
 // 0x80133008
@@ -1233,7 +1376,7 @@ void mnVSModeMain(GObj *gobj)
 
             mnVSModeUpdateButton(*buttons[sMNVSModeCursorIndex], nMNOptionTabStatusHighlight);
             gcEjectGObj(sMNVSModeUnusedGObj);
-            mnVSModeMakeUnusedGObj();
+            mnVSModeMakeSubtitle();
 
             sMNVSModeInputDirection = nMNVSModeInputDirectionUp;
 
@@ -1275,7 +1418,7 @@ void mnVSModeMain(GObj *gobj)
 
             mnVSModeUpdateButton(*buttons[sMNVSModeCursorIndex], nMNOptionTabStatusHighlight);
             gcEjectGObj(sMNVSModeUnusedGObj);
-            mnVSModeMakeUnusedGObj();
+            mnVSModeMakeSubtitle();
 
             sMNVSModeInputDirection = nMNVSModeInputDirectionDown;
 
@@ -1322,7 +1465,7 @@ void mnVSModeMain(GObj *gobj)
                         mnCommonSetOptionChangeWaitN(sMNVSModeChangeWait, is_button, stick_range, 7);
 
                         gcEjectGObj(sMNVSModeUnusedGObj);
-                        mnVSModeMakeUnusedGObj();
+                        mnVSModeMakeSubtitle();
 
                         sMNVSModeInputDirection = nMNVSModeInputDirectionLeft;
                     }
@@ -1354,7 +1497,7 @@ void mnVSModeMain(GObj *gobj)
                         mnCommonSetOptionChangeWaitP(sMNVSModeChangeWait, is_button, stick_range, 7);
 
                         gcEjectGObj(sMNVSModeUnusedGObj);
-                        mnVSModeMakeUnusedGObj();
+                        mnVSModeMakeSubtitle();
 
                         sMNVSModeInputDirection = nMNVSModeInputDirectionRight;
 
@@ -1497,7 +1640,7 @@ void mnVSModeFuncStart(void)
     mnVSModeMakeTimeStockButton();
     mnVSModeMakeTimeStockValue();
     mnVSModeMakeVSOptionsButton();
-    mnVSModeMakeUnusedGObj();
+    mnVSModeMakeSubtitle();
 
     if (gSCManagerSceneData.scene_prev == nSCKindPlayersVS)
     {

@@ -565,8 +565,13 @@ void mnMapsSetNamePosition(SObj *sobj, s32 gkind)
 		{ 190.0F, 196.0F },
 		{ 190.0F, 196.0F }
 	};
+#if defined(REGION_US)
 	sobj->pos.x = 183.0F;
 	sobj->pos.y = 196.0F;
+#else
+	sobj->pos.x = positions[gkind].x;
+	sobj->pos.y = positions[gkind].y;
+#endif
 }
 
 // 0x80132738
@@ -597,6 +602,7 @@ void mnMapsMakeName(GObj *gobj, s32 gkind)
 	sobj->sprite.blue = 0x00;
 }
 
+#if defined(REGION_US)
 // 0x80134700
 char *dMNMapsSubtitles[/* */] =
 {
@@ -608,7 +614,10 @@ char *dMNMapsSubtitles[/* */] =
 	"YOSHI'S ISLAND",
 	"PUPUPU LAND",
 	"YAMABUKI CITY",
-	"CLASSIC MUSHROOM",
+	"CLASSIC MUSHROOM"
+};
+char *dMNMapsSubtitles2[/* */] =
+{
 	"CASTLE PEACH",
 	"ABOARD A GREAT FOX",
 	NULL,
@@ -621,32 +630,122 @@ char *dMNMapsSubtitles[/* */] =
 };
 
 // 0x80134748
-f32 dMNMapsSubtitlePositions[/* */] =
+Vec2f dMNMapsSubtitlePositions[/* */] =
 {
-	192.0F, 167.0F, 214.0F, 167.0F, 202.0F, 169.0F, 202.0F, 169.0F, 193.0F, 169.0F, 198.0F,
-	169.0F, 205.0F, 169.0F, 199.0F, 169.0F, 191.0F, 167.0F, 209.0F, 174.0F, 188.0F, 174.0F
+	{ 192.0F, 167.0F },
+	{ 214.0F, 167.0F },
+	{ 202.0F, 169.0F },
+	{ 202.0F, 169.0F },
+	{ 193.0F, 169.0F },
+	{ 198.0F, 169.0F },
+	{ 205.0F, 169.0F },
+	{ 199.0F, 169.0F },
+	{ 191.0F, 167.0F }
 };
-
-// 0x801347A0
-s32 dMNMapsUnknown0x801347A0[/* */] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-
-// 0x801347C8
-f32 dMNMapsUnknown0x801347C8[/* */] = { 203.0F, 174.0F, 213.0F, 174.0 };
+Vec2f dMNMapsSubtitlePositions2[/* */] =
+{
+	{ 209.0F, 174.0F },
+	{ 188.0F, 174.0F },
+	{   0.0F,   0.0F },
+	{   0.0F,   0.0F },
+	{   0.0F,   0.0F },
+	{   0.0F,   0.0F },
+	{   0.0F,   0.0F },
+	{ 203.0F, 174.0F }, 
+	{ 213.0F, 174.0 }
+};
 
 // 0x801347D8
 u32 dMNMapsSubtitleColors[/* */] = { 255, 255, 255 };
 
 // 0x801327E0 - Unused?
-void func_ovl30_801327E0(void)
+void mnMapsSubtitleHasExtraLine(void)
 {
 	return;
 }
 
 // 0x801327E8 - Unused?
-void func_ovl30_801327E8(void)
+void mnMapsMakeSubtitle(void)
 {
 	return;
 }
+#else
+// 0x801327E0 - Unused?
+sb32 mnMapsSubtitleHasExtraLine(s32 gkind)
+{
+	switch (gkind)
+	{
+		case nGRKindCastle:
+		case nGRKindSector:
+		case nGRKindInishie:
+			return TRUE;
+		default:
+			return FALSE;
+	}
+}
+
+// 0x801327E8 - Unused?
+void mnMapsMakeSubtitle(GObj *gobj, s32 gkind) {
+    char *dMNMapsSubtitles[/* */] =
+    {
+    	"IN THE SKY OF",
+    	"SECTOR Z",
+    	"CONGO JUNGLE",
+    	"PLANET ZEBES",
+    	"CASTLE OF HYRULE",
+    	"YOSHI'S ISLAND",
+    	"PUPUPU LAND",
+    	"YAMABUKI CITY",
+    	"CLASSIC MUSHROOM"
+    };
+    char *dMNMapsSubtitles2[/* */] =
+    {
+    	"CASTLE PEACH",
+    	"ABOARD A GREAT FOX",
+    	NULL,
+    	NULL,
+    	NULL,
+    	NULL,
+    	NULL,
+    	NULL,
+    	"KINGDOM"
+    };
+
+    Vec2f dMNMapsSubtitlePositions[/* */] =
+    {
+        { 192.0F, 167.0F },
+        { 214.0F, 167.0F },
+        { 202.0F, 169.0F },
+        { 202.0F, 169.0F },
+        { 193.0F, 169.0F },
+        { 198.0F, 169.0F },
+        { 205.0F, 169.0F },
+        { 199.0F, 169.0F },
+        { 191.0F, 167.0F }
+    };
+    Vec2f dMNMapsSubtitlePositions2[/* */] =
+    {
+        { 209.0F, 174.0F },
+        { 188.0F, 174.0F },
+        {   0.0F,   0.0F },
+        {   0.0F,   0.0F },
+        {   0.0F,   0.0F },
+        {   0.0F,   0.0F },
+        {   0.0F,   0.0F },
+        { 203.0F, 174.0F }, 
+        { 213.0F, 174.0 }
+    };
+
+    u32 dMNMapsSubtitleColors[/* */] = { 255, 255, 255 };
+
+    mnMapsMakeString(gobj, dMNMapsSubtitles[gkind], dMNMapsSubtitlePositions[gkind].x, dMNMapsSubtitlePositions[gkind].y, dMNMapsSubtitleColors);
+    
+    if (mnMapsSubtitleHasExtraLine(gkind) != FALSE) 
+    {
+        mnMapsMakeString(gobj, dMNMapsSubtitles2[gkind], dMNMapsSubtitlePositions2[gkind].x, dMNMapsSubtitlePositions2[gkind].y, dMNMapsSubtitleColors);
+    }
+}
+#endif
 
 // 0x801327F0
 void mnMapsSetLogoPosition(GObj *gobj, s32 gkind)
@@ -732,6 +831,9 @@ void mnMapsMakeNameAndEmblem(s32 slot)
 	if (slot != 9)
 	{
 		mnMapsMakeName(sMNMapsNameLogoGObj, mnMapsGetGroundKind(slot));
+#if defined(REGION_JP)
+		mnMapsMakeSubtitle(sMNMapsNameLogoGObj, mnMapsGetGroundKind(slot));
+#endif
 	}
 }
 

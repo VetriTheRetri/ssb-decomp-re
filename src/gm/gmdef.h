@@ -338,7 +338,9 @@ typedef enum GMColAnimKind
 	nGMColAnimFighterKirbySpecialLwEnd,
 	nGMColAnimFighterPikachuAttackS4,
 	nGMColAnimFighterPikachuSpecialHiStart,
+#if defined(REGION_US)
 	nGMColAnimFighterPikachuSpecialHi,
+#endif
 	nGMColAnimFighterPikachuSpecialN,
 	nGMColAnimFighterPikachuSpecialLwHit,
 	nGMColAnimFighterPikachuSpecialLwEnd,

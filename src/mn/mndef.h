@@ -83,7 +83,11 @@ typedef enum MNTitleSpriteKind
     nMNTitleSpriteKindSuper,
     nMNTitleSpriteKindBros,
     nMNTitleSpriteKindTM,
+#if defined(REGION_US)
     nMNTitleSpriteKindFooter,
+#else
+    nMNTitleSpriteKindFooter = 13,
+#endif
     nMNTitleSpriteKindHeader,
     nMNTitleSpriteKindPressStart,
     nMNTitleSpriteKindLogo,

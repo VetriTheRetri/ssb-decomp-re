@@ -48,7 +48,11 @@ SC1PGameComputer dSC1PGameComputerDesc[/* */] =
     {
         TRUE,                       // Is team attack enabled?
         nSCBattleItemSwitchLow,     // Item Switch
+#if defined(REGION_US)
         {  1,  2,  3,  6,  8 },     // Enemy CPU levels per difficulty setting
+#else
+        {  1,  1,  3,  6,  8 },     // Enemy CPU levels per difficulty setting
+#endif
         {  9,  9,  9,  9,  9 },     // Enemy handicaps per difficulty setting
         {  1,  1,  1,  1,  1 },     // Ally CPU levels per difficulty setting
         {  9,  9,  9,  9,  9 }      // Ally handicaps per difficulty setting
@@ -58,7 +62,11 @@ SC1PGameComputer dSC1PGameComputerDesc[/* */] =
     {
         TRUE,                       // Is team attack enabled?
         nSCBattleItemSwitchMiddle,  // Item Switch
+#if defined(REGION_US)
         {  1,  2,  4,  6,  8 },     // Enemy CPU levels per difficulty setting
+#else
+        {  1,  2,  3,  5,  6 },     // Enemy CPU levels per difficulty setting
+#endif
         { 10, 11, 12, 13, 14 },     // Enemy handicaps per difficulty setting
         {  1,  1,  1,  1,  1 },     // Ally CPU levels per difficulty setting
         {  9,  9,  9,  9,  9 }      // Ally handicaps per difficulty setting
@@ -68,7 +76,11 @@ SC1PGameComputer dSC1PGameComputerDesc[/* */] =
     {
         TRUE,                       // Is team attack enabled?
         nSCBattleItemSwitchMiddle,  // Item Switch
+#if defined(REGION_US)
         {  2,  3,  5,  7,  9 },     // Enemy CPU levels per difficulty setting
+#else
+        {  2,  3,  4,  6,  8 },     // Enemy CPU levels per difficulty setting
+#endif
         {  9,  9,  9,  9,  9 },     // Enemy handicaps per difficulty setting
         {  1,  1,  1,  1,  1 },     // Ally CPU levels per difficulty setting
         {  9,  9,  9,  9,  9 }      // Ally handicaps per difficulty setting
@@ -88,9 +100,17 @@ SC1PGameComputer dSC1PGameComputerDesc[/* */] =
     {
         FALSE,                      // Is team attack enabled?
         nSCBattleItemSwitchMiddle,  // Item Switch
+#if defined(REGION_US)
         {  2,  3,  5,  7,  9 },     // Enemy CPU levels per difficulty setting
+#else
+        {  2,  3,  5,  6,  7 },     // Enemy CPU levels per difficulty setting
+#endif
         {  9,  9,  9,  9,  9 },     // Enemy handicaps per difficulty setting
+#if defined(REGION_US)
         {  5,  5,  5,  4,  2 },     // Ally CPU levels per difficulty setting
+#else
+        {  6,  5,  4,  3,  2 },     // Ally CPU levels per difficulty setting
+#endif
         {  9,  9,  9,  9,  9 }      // Ally handicaps per difficulty setting
     },
 
@@ -108,10 +128,19 @@ SC1PGameComputer dSC1PGameComputerDesc[/* */] =
     {
         FALSE,                      // Is team attack enabled?
         nSCBattleItemSwitchHigh,    // Item Switch
+#if defined(REGION_US)
         {  2,  4,  6,  7,  8 },     // Enemy CPU levels per difficulty setting
+#else
+        {  2,  3,  4,  6,  7 },     // Enemy CPU levels per difficulty setting
+#endif
         { 25, 26, 27, 28, 29 },     // Enemy handicaps per difficulty setting
+#if defined(REGION_US)
         {  4,  4,  4,  3,  2 },     // Ally CPU levels per difficulty setting
         {  7,  7,  7,  7,  7 }      // Ally handicaps per difficulty setting
+#else
+        {  4,  3,  2,  1,  1 },     // Ally CPU levels per difficulty setting
+        {  8,  7,  7,  7,  7 }      // Ally handicaps per difficulty setting
+#endif
     },
 
     // Bonus Stage: Board the Platforms!
@@ -128,7 +157,11 @@ SC1PGameComputer dSC1PGameComputerDesc[/* */] =
     {
         TRUE,                       // Is team attack enabled?
         nSCBattleItemSwitchMiddle,  // Item Switch
+#if defined(REGION_US)
         {  3,  4,  5,  6,  7 },     // Enemy CPU levels per difficulty setting
+#else
+        {  2,  3,  4,  5,  7 },     // Enemy CPU levels per difficulty setting
+#endif
         { 15, 16, 17, 18, 19 },     // Enemy handicaps per difficulty setting
         {  1,  1,  1,  1,  1 },     // Ally CPU levels per difficulty setting
         {  9,  9,  9,  9,  9 }      // Ally handicaps per difficulty setting
@@ -138,8 +171,13 @@ SC1PGameComputer dSC1PGameComputerDesc[/* */] =
     {
         TRUE,                       // Is team attack enabled?
         nSCBattleItemSwitchMiddle,  // Item Switch
+#if defined(REGION_US)
         {  5,  6,  8,  9,  9 },     // Enemy CPU levels per difficulty setting
         {  9,  9,  9,  9, 40 },     // Enemy handicaps per difficulty setting
+#else
+        {  4,  5,  7,  8,  9 },     // Enemy CPU levels per difficulty setting
+        {  9,  9,  9,  9,  9 },     // Enemy handicaps per difficulty setting
+#endif
         {  1,  1,  1,  1,  1 },     // Ally CPU levels per difficulty setting
         {  9,  9,  9,  9,  9 }      // Ally handicaps per difficulty setting
     },
@@ -148,7 +186,11 @@ SC1PGameComputer dSC1PGameComputerDesc[/* */] =
     {
         TRUE,                       // Is team attack enabled?
         nSCBattleItemSwitchVeryLow, // Item Switch
+#if defined(REGION_US)
         {  1,  3,  4,  6,  8 },     // Enemy CPU levels per difficulty setting
+#else
+        {  1,  2,  3,  4,  6 },     // Enemy CPU levels per difficulty setting
+#endif
         { 30, 31, 32, 33, 34 },     // Enemy handicaps per difficulty setting
         {  1,  1,  1,  1,  1 },     // Ally CPU levels per difficulty setting
         {  9,  9,  9,  9,  9 }      // Ally handicaps per difficulty setting
@@ -158,7 +200,11 @@ SC1PGameComputer dSC1PGameComputerDesc[/* */] =
     {
         TRUE,                       // Is team attack enabled?
         nSCBattleItemSwitchNone,    // Item Switch
+#if defined(REGION_US)
         {  6,  8,  9,  9,  9 },     // Enemy CPU levels per difficulty setting
+#else
+        {  6,  8,  8,  9,  9 },     // Enemy CPU levels per difficulty setting
+#endif
         {  1,  3,  5,  7,  9 },     // Enemy handicaps per difficulty setting
         {  1,  1,  1,  1,  1 },     // Ally CPU levels per difficulty setting
         {  9,  9,  9,  9,  9 }      // Ally handicaps per difficulty setting
@@ -168,7 +214,11 @@ SC1PGameComputer dSC1PGameComputerDesc[/* */] =
     {
         TRUE,                       // Is team attack enabled?
         nSCBattleItemSwitchHigh,    // Item Switch
+#if defined(REGION_US)
         {  2,  3,  4,  5,  7 },     // Enemy CPU levels per difficulty setting
+#else
+        {  2,  2,  3,  4,  5 },     // Enemy CPU levels per difficulty setting
+#endif
         { 20, 21, 22, 23, 24 },     // Enemy handicaps per difficulty setting
         {  1,  1,  1,  1,  1 },     // Ally CPU levels per difficulty setting
         {  9,  9,  9,  9,  9 }      // Ally handicaps per difficulty setting
@@ -188,7 +238,11 @@ SC1PGameComputer dSC1PGameComputerDesc[/* */] =
     {
         TRUE,                       // Is team attack enabled?
         nSCBattleItemSwitchNone,    // Item Switch
+#if defined(REGION_US)
         {  6,  7,  7,  8,  9 },     // Enemy CPU levels per difficulty setting
+#else
+        {  6,  7,  7,  7,  8 },     // Enemy CPU levels per difficulty setting
+#endif
         {  6,  6,  6,  6,  6 },     // Enemy handicaps per difficulty setting
         {  1,  1,  1,  1,  1 },     // Ally CPU levels per difficulty setting
         {  9,  9,  9,  9,  9 }      // Ally handicaps per difficulty setting
@@ -198,7 +252,11 @@ SC1PGameComputer dSC1PGameComputerDesc[/* */] =
     {
         TRUE,                       // Is team attack enabled?
         nSCBattleItemSwitchNone,    // Item Switch
+#if defined(REGION_US)
         {  6,  7,  7,  8,  9 },     // Enemy CPU levels per difficulty setting
+#else
+        {  6,  7,  7,  7,  8 },     // Enemy CPU levels per difficulty setting
+#endif
         {  6,  6,  6,  6,  6 },     // Enemy handicaps per difficulty setting
         {  1,  1,  1,  1,  1 },     // Ally CPU levels per difficulty setting
         {  9,  9,  9,  9,  9 }      // Ally handicaps per difficulty setting
@@ -208,7 +266,11 @@ SC1PGameComputer dSC1PGameComputerDesc[/* */] =
     {
         TRUE,                       // Is team attack enabled?
         nSCBattleItemSwitchNone,    // Item Switch
+#if defined(REGION_US)
         {  6,  7,  7,  8,  9 },     // Enemy CPU levels per difficulty setting
+#else
+        {  6,  7,  7,  7,  8 },     // Enemy CPU levels per difficulty setting
+#endif
         {  6,  6,  6,  6,  6 },     // Enemy handicaps per difficulty setting
         {  1,  1,  1,  1,  1 },     // Ally CPU levels per difficulty setting
         {  9,  9,  9,  9,  9 }      // Ally handicaps per difficulty setting
@@ -218,7 +280,11 @@ SC1PGameComputer dSC1PGameComputerDesc[/* */] =
     {
         TRUE,                       // Is team attack enabled?
         nSCBattleItemSwitchNone,    // Item Switch
+#if defined(REGION_US)
         {  6,  7,  7,  8,  9 },     // Enemy CPU levels per difficulty setting
+#else
+        {  6,  7,  7,  7,  8 },     // Enemy CPU levels per difficulty setting
+#endif
         {  6,  6,  6,  6,  6 },     // Enemy handicaps per difficulty setting
         {  1,  1,  1,  1,  1 },     // Ally CPU levels per difficulty setting
         {  9,  9,  9,  9,  9 }      // Ally handicaps per difficulty setting
@@ -645,8 +711,10 @@ u8 gSC1PGameBonusTomatoCount;
 // 0x801936A9
 u8 gSC1PGameBonusHeartCount;
 
+#if defined(REGION_US)
 // 0x801936AA
 u8 gSC1PGameBonusStarCount;
+#endif
 
 // 0x801936AB
 ub8 gSC1PGameBonusShieldBreaker;
@@ -1209,7 +1277,9 @@ void sc1PGameSetupStageAll(void)
     }
     gSC1PGameBonusTomatoCount = 0;
     gSC1PGameBonusHeartCount = 0;
+#if defined(REGION_US)
     gSC1PGameBonusStarCount = 0;
+#endif
     gSC1PGameBonusShieldBreaker = FALSE;
     gSC1PGameBonusGiantImpact = FALSE;
     gSC1PGameBonusMewCatcher = FALSE;
@@ -2157,6 +2227,8 @@ void sc1PGameAppendBonusStats(void)
     {
         for (i = 0; i < sSC1PGameBonusStatPlayerKOsNum; i++)
         {
+            if (TRUE);
+
             if
             (
                 (sSC1PGameBonusStatEnemyStats[i].damage_player != gSCManagerSceneData.player)   ||
@@ -2204,7 +2276,11 @@ check_item_strike:
     {
         if (gSCManagerBattleState->item_appearance_rate != nSCBattleItemSwitchNone)
         {
+#if defined(REGION_US)
             if ((gSC1PGameBonusTomatoCount == 0) && (gSC1PGameBonusHeartCount == 0) && (gSC1PGameBonusStarCount == 0))
+#else
+            if ((gSC1PGameBonusTomatoCount == 0) && (gSC1PGameBonusHeartCount == 0))
+#endif
             {
                 for (i = nFTMotionAttackIDItemStart; i <= nFTMotionAttackIDItemEnd; i++)
                 {
@@ -2213,17 +2289,21 @@ check_item_strike:
                         goto check_shieldbreaker;
                     }
                 }
+#if defined(REGION_US)
                 if (gSC1PGameBonusDefendIDCount[nFTStatusAttackIDNull] != 0)
                 {
                     goto check_shieldbreaker;
                 }
                 else
                 {
+#endif
                     // No Item
                     gSCManagerSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_NOITEM;
 
-                    if (sSC1PGameBonusStatPlayerKOsNum); // Bogus, but it matches
+#if defined(REGION_US)
+                    if (sSC1PGameBonusStatPlayerKOsNum);
                 }
+#endif
             }
         }
     }
@@ -2436,7 +2516,11 @@ check_smash:
         }
     }
 check_heavy_damage:
+#if defined(REGION_US)
     if (gSCManagerBattleState->players[gSCManagerSceneData.player].stock_damage_all >= 200)
+#else
+    if (gSCManagerBattleState->players[gSCManagerSceneData.player].stock_damage_all >= 300)
+#endif
     {
         gSCManagerSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_HEAVYDAMAGE;
     }
@@ -2755,9 +2839,7 @@ check_heavy_damage:
         !(gSCManagerSceneData.bonus_get_mask[1] & SC1PGAME_BONUS_MASK1_SMASHMANIA)
     )
     {
-        attack_count = 0;
-
-        for (i = nFTStatusAttackIDAttackStart; i < ARRAY_COUNT(gSC1PGameBonusAttackIDCount); i++)
+        for (attack_count = 0, i = nFTStatusAttackIDAttackStart; i < ARRAY_COUNT(gSC1PGameBonusAttackIDCount); i++)
         {
             attack_count += gSC1PGameBonusAttackIDCount[i];
         }

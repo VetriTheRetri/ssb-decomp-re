@@ -26,7 +26,11 @@
 #define WEAPON_REHIT_TIME_DEFAULT 16 // If the weapon is multihit, its hitbox will refresh per victim after this many frames have passed
 
 #define WEAPON_REFLECT_TIME_DEFAULT 100	 // Maximum damage cap for reflected weapons
+#if defined(REGION_US)
 #define WEAPON_REFLECT_MUL_DEFAULT 1.8F	 // Universal reflect damage multiplier
+#else
+#define WEAPON_REFLECT_MUL_DEFAULT 1.5F	 // Universal reflect damage multiplier
+#endif
 #define WEAPON_REFLECT_ADD_DEFAULT 0.99F // Added after multiplying weapon's hitbox damage
 
 #define WEAPON_STALE_ADD_DEFAULT 0.999F // Bonus 1% added after multiplying hitbox damage with staling modifier

@@ -77,6 +77,7 @@ void scSubsysFighterSetStatus(GObj *fighter_gobj, s32 status_id)
 }
 
 // 0x803905F4 - Is this to attach models to Master Hand in the opening movie?
+#if defined(REGION_US)
 void scSubsysFighterOpeningProcUpdate(GObj *this_gobj, GObj *other_gobj)
 {
     FTStruct *fp = ftGetStruct(this_gobj);
@@ -93,6 +94,26 @@ void scSubsysFighterOpeningProcUpdate(GObj *this_gobj, GObj *other_gobj)
     
     gmCollisionGetWorldPosition(mtx_f, &DObjGetStruct(other_gobj)->translate.vec.f);
 }
+#else
+void scSubsysFighterOpeningProcUpdate(GObj *this_gobj, GObj *other_gobj)
+{
+    FTStruct *fp = ftGetStruct(this_gobj);
+    s32 unused;
+    FTParts *ftparts;
+    DObj *child_dobj = DObjGetStruct(other_gobj)->child;
+    
+    func_ovl2_800EDBA4(fp->joints[fp->attr->joint_itemheavy_id]);
+    
+    ftparts = fp->joints[fp->attr->joint_itemheavy_id]->user_data.p;
+    func_ovl2_800EDA0C(ftparts->mtx_translate, &DObjGetStruct(other_gobj)->rotate.vec.f);
+    
+    DObjGetStruct(other_gobj)->translate.vec.f.x = -child_dobj->translate.vec.f.x;
+    DObjGetStruct(other_gobj)->translate.vec.f.y = -child_dobj->translate.vec.f.y;
+    DObjGetStruct(other_gobj)->translate.vec.f.z = -child_dobj->translate.vec.f.z;
+    
+    gmCollisionGetWorldPosition(ftparts->mtx_translate, &DObjGetStruct(other_gobj)->translate.vec.f);
+}
+#endif
 
 // 0x8039069C
 void scSubsysFighterApplyVelTransN(GObj *fighter_gobj)

@@ -247,7 +247,7 @@ segments:
       - [0x03A200, c, libultra/io/ai]
       - [0x03A230, c, libultra/io/vigetcurrframebuf]
       - [0x03A270, c, libultra/io/spsetpc]
-      - [0x03A2B0, hasm, libultra/os/getwatchlo]
+      - [0x03A2B0, hasm, libultra/os/setwatchlo]
       - [0x03A2C0, textbin, rsp/n_aspmain]
       - [0x03AF20, textbin, rsp/gspF3DEX2_fifo] # L3DEX2_2.04H.code
       - [0x03C0B0, bin, unk_3C0B0] # other rsp files?
@@ -262,8 +262,8 @@ segments:
       - [0x03D7B0, .data, sys/debug]
       - [0x03DC70, .data, libultra/sp/sprite]
       - [0x03DC80, data, libultra/n_audio/n_env]
-      - [0x03DF30, data, libultra/io/vimodepallan1] # osViModePalLan1
-      - [0x03DF80, data, libultra/os/exceptasm]
+      - [0x03DF30, .data, libultra/vimodes/vimodepallan1] # osViModePalLan1
+      - [0x03DF80, .data, libultra/os/exceptasm]
       - [0x03DFB0, .data, libultra/os/thread]
       - [0x03DFD0, .data, libultra/io/siacs]
       - [0x03DFE0, .data, libultra/io/controller]
@@ -272,8 +272,8 @@ segments:
       - [0x03E040, .data, libultra/io/piacs]
       - [0x03E050, .data, libultra/libc/xprintf]
       - [0x03E0A0, .data, libultra/os/timerintr]
-      - [0x03E0B0, data, libultra/vimodentsclan1] # osViModeNtscLan1
-      - [0x03E100, data, libultra/vimodempallan1] # osViModeMpalLan1
+      - [0x03E0B0, .data, libultra/vimodes/vimodentsclan1] # osViModeNtscLan1
+      - [0x03E100, .data, libultra/vimodes/vimodempallan1] # osViModeMpalLan1
       - [0x03E150, .data, libultra/io/vi]
       - [0x03E1C0, .data, libultra/io/cartrominit]
       - [0x03E1D0, .data, libultra/io/contpfs]
@@ -299,13 +299,13 @@ segments:
       - [0x03F460, .rodata, libultra/sp/sprite]
       - [0x03F470, .rodata, libultra/n_audio/n_env]
       - [0x03FAA0, .rodata, libultra/n_audio/audio09]
-      - [0x03FCE0, rodata, libultra/os/setintmask]
+      - [0x03FCE0, .rodata, libultra/os/setintmask]
       - [0x03FD60, .rodata, libultra/gu/sinf]
-      - [0x03FDB0, rodata, libultra/os/exceptasm]
+      - [0x03FDB0, .rodata, libultra/os/exceptasm]
       - [0x03FE00, .rodata, libultra/io/devmgr]
       - [0x03FE20, .rodata, libultra/libc/xprintf]
       - [0x03FF20, .rodata, libultra/gu/cosf]
-      - [0x03FF70, rodata, libultra/gu/libm_vals]
+      - [0x03FF70, .rodata, libultra/gu/libm_vals]
       - [0x03FF80, .rodata, libultra/audio/cents2ratio]
       - [0x03FF90, .rodata, libultra/libc/xldtob]
       - [0x03FFF0, .rodata, libultra/libc/llcvt]
@@ -319,7 +319,7 @@ segments:
       - { start: 0x046080, type: .bss, name: sys/taskman,              vram: 0x80045480 }
       - { start: 0x047270, type: .bss, name: sys/video,                vram: 0x80046670 }
       - { start: 0x0472A0, type: .bss, name: sys/rdp,                  vram: 0x800466A0 }
-      - { start: 0x0472B0, type: .bss, name: sys/objman,           vram: 0x800466B0 }
+      - { start: 0x0472B0, type: .bss, name: sys/objman,               vram: 0x800466B0 }
       - { start: 0x047BA0, type: .bss, name: sys/objdisplay,           vram: 0x80046FA0 }
       - { start: 0x047ED0, type: .bss, name: sys/audio,                vram: 0x800472D0 }
       - { start: 0x09E600, type: .bss, name: sys/debug,                vram: 0x8009DA00 }
@@ -1015,6 +1015,33 @@ segments:
       - [0x107AC0, c, sc/scsubsys/scsubsysfighter]
       - [0x107CE0, c, sc/scsubsys/scsubsyscontroller]
       - [0x1081C0, .data, sc/scsubsys/scsubsysdata]
+      - [0x1083B0, .data, sc/scsubsys/scsubsysdatamario]
+      - [0x108580, .data, sc/scsubsys/scsubsysdatammario]
+      - [0x108640, .data, sc/scsubsys/scsubsysdatanmario]
+      - [0x108700, .data, sc/scsubsys/scsubsysdatafox]
+      - [0x108870, .data, sc/scsubsys/scsubsysdatanfox]
+      - [0x108930, .data, sc/scsubsys/scsubsysdatadonkey]
+      - [0x108A10, .data, sc/scsubsys/scsubsysdatandonkey]
+      - [0x108AD0, .data, sc/scsubsys/scsubsysdatagdonkey]
+      - [0x108AE0, .data, sc/scsubsys/scsubsysdatasamus]
+      - [0x108C30, .data, sc/scsubsys/scsubsysdatansamus]
+      - [0x108CF0, .data, sc/scsubsys/scsubsysdataluigi]
+      - [0x108E70, .data, sc/scsubsys/scsubsysdatanluigi]
+      - [0x108E80, .data, sc/scsubsys/scsubsysdatalink]
+      - [0x1090C0, .data, sc/scsubsys/scsubsysdatanlink]
+      - [0x109180, .data, sc/scsubsys/scsubsysdatayoshi]
+      - [0x109380, .data, sc/scsubsys/scsubsysdatanyoshi]
+      - [0x109440, .data, sc/scsubsys/scsubsysdatacaptain]
+      - [0x109540, .data, sc/scsubsys/scsubsysdatancaptain]
+      - [0x109600, .data, sc/scsubsys/scsubsysdatakirby]
+      - [0x109770, .data, sc/scsubsys/scsubsysdatankirby]
+      - [0x109830, .data, sc/scsubsys/scsubsysdatapikachu]
+      - [0x1099B0, .data, sc/scsubsys/scsubsysdatanpikachu]
+      - [0x109A70, .data, sc/scsubsys/scsubsysdatapurin]
+      - [0x109C50, .data, sc/scsubsys/scsubsysdatanpurin]
+      - [0x109C60, .data, sc/scsubsys/scsubsysdataness]
+      - [0x109E10, .data, sc/scsubsys/scsubsysdatanness]
+      - [0x109ED0, .data, sc/scsubsys/scsubsysdataboss]
       - { start: auto, type: .bss, name: sc/scsubsys/scsubsysunused }
       - { start: auto, type: .bss, name: sc/scsubsys/scsubsysfighter }
       - { start: auto, type: .bss, name: sc/scsubsys/scsubsyscontroller }
@@ -1101,9 +1128,12 @@ segments:
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x117180, c, mn/mncommon/mntitle]
+      - [0x1197C0, c, mn/mncommon/mntitlefiles]
       - [0x119860, .data, mn/mncommon/mntitle]
+      - [0x119AA0, .data, mn/mncommon/mntitlefiles]
       - [0x119AB0, .rodata, mn/mncommon/mntitle]
       - { start: auto, type: .bss, name: mn/mncommon/mntitle }
+      - { start: auto, type: .bss, name: mn/mncommon/mntitlefiles }
 
   - name: ovl11
     type: code

@@ -11,6 +11,8 @@ extern uintptr_t lMNTitleParticleScriptBankHi;  // 0x00B22D40
 extern uintptr_t lMNTitleParticleTextureBankLo; // 0x00B22D40
 extern uintptr_t lMNTitleParticleTextureBankHi; // 0x00B277B0
 
+extern void *sMNTitleFiles[/* */];
+
 extern s32 mnTitleGetFighterKindsNum(u16 mask);
 extern s32 mnTitleGetShuffledFighterKind(u16 this_mask, u16 prev_mask, s32 random);
 extern s32 mnTitleSetDemoFighterKinds(void);

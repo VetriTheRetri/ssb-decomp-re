@@ -384,7 +384,11 @@ void scAutoDemoSetMagnifyDisplayOn(void)
 void scAutoDemoExit(void)
 {
 	gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
-	gSCManagerSceneData.scene_curr = nSCKindStartup;
+#if defined(REGION_US)        
+    gSCManagerSceneData.scene_curr = nSCKindStartup;
+#else
+    gSCManagerSceneData.scene_curr = nSCKindOpeningRoom;
+#endif
 
 	syTaskmanSetLoadScene();
 }

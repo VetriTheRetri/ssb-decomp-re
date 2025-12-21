@@ -139,7 +139,11 @@ u8 dGRSectorArwingPilotWaitTimers[/* */][2] =
 // 0x8012E9CC
 DObjTransformTypes dGRSectorArwingTransformKinds[/* */] =
 {
+#if defined(REGION_US)
     { 0x53, nGCMatrixKindNull, 0x00 },
+#else
+    { 0x52, nGCMatrixKindNull, 0x00 },
+#endif
     { nGCMatrixKindTraRotRpyR, nGCMatrixKindNull, 0x00 },
     { nGCMatrixKindTra, 0x2C, 0x01 },
     { nGCMatrixKindTra, 0x2C, 0x01 },

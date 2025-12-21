@@ -26,7 +26,7 @@ EXTRA_LINK_DEPS := symbols/not_found.txt symbols/linker_constants.txt build/asse
 
 # Skip reloc-related deps for JP build
 ifeq ($(VERSION),jp)
-	EXTRA_LINK_DEPS := symbols/jp_wip.txt
+	EXTRA_LINK_DEPS := symbols/jp_wip_linker.txt .splat/smashbrothers_jp.ld
 endif
 
 UNAME_S := $(shell uname -s)
@@ -39,12 +39,6 @@ else ifeq ($(UNAME_S),Darwin)
 else ifeq ($(UNAME_S),Linux)
     BIG_MIPS_OBJCOPY_TARGET := elf32-tradbigmips
     BINUTILS_PREFIX := mips-linux-gnu
-endif
-
-# Support python venv's if one is installed.
-PYTHON_VENV = .venv/bin/python3
-ifneq "$(wildcard $(PYTHON_VENV) )" ""
-  PYTHON = $(PYTHON_VENV)
 endif
 
 ifeq ($(VERBOSE),0)
@@ -75,6 +69,12 @@ INCLUDES := -Iinclude -Isrc
 DEFINES  := -DF3DEX_GBI_2 -D_MIPS_SZLONG=32 -DNDEBUG -DN_MICRO -D_FINALROM
 OPTFLAGS := -O2 -mips2
 
+# Support python venv's if one is installed.
+PYTHON_VENV = .venv/bin/python3
+ifneq "$(wildcard $(PYTHON_VENV) )" ""
+  PYTHON = $(PYTHON_VENV)
+endif
+
 ifeq ($(NON_MATCHING),1)
 DEFINES += -DNON_MATCHING
 endif
@@ -82,6 +82,13 @@ endif
 ifeq ($(AVOID_UB),1)
 DEFINES += -DAVOID_UB
 endif
+
+ifeq ($(VERSION),jp)
+    DEFINES += -DREGION_JP
+else ifeq ($(VERSION),us)
+    DEFINES += -DREGION_US
+endif
+
 
 # ----- Output ------
 
@@ -98,17 +105,22 @@ AS              := $(BINUTILS_PREFIX)-as
 LD              := $(BINUTILS_PREFIX)-ld
 OBJCOPY         := $(BINUTILS_PREFIX)-objcopy
 OBJDUMP         := $(BINUTILS_PREFIX)-objdump
+STRIP           := $(BINUTILS_PREFIX)-strip
 ASM_PROC        := $(PYTHON) tools/asm-processor/build.py
 CCFLAGS         := -c -G 0 -non_shared -Xfullwarn -Xcpluscomm $(INCLUDES) $(DEFINES) -Wab,-r4300_mul -woff 649,838,712,516,624,568
 ASFLAGS         := -EB -I include -march=vr4300 -mabi=32
 
 ifeq ($(VERSION),jp)
     LDFLAGS := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt \
-               -T .splat/smashbrothers_jp.ld -T symbols/jp_wip.txt
-    C_FILES := 
+               -T .splat/smashbrothers_jp.ld -T symbols/jp_wip_linker.txt symbols/reloc_data_symbols.$(VERSION).txt 
+    C_FILES := $(shell find src -type f | grep \\.c$)
+	C_FILES := $(filter-out \
+			    src/mn/mncommon/mncongra.c \
+				src/mn/mncommon/mnstartup.c \
+			   ,$(C_FILES))
 else ifeq ($(VERSION),us)
     LDFLAGS := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt \
-               -T .splat/smashbrothers.ld -T symbols/not_found.txt -T symbols/linker_constants.txt -T symbols/reloc_data_symbols.txt
+               -T .splat/smashbrothers.ld -T symbols/not_found.txt -T symbols/linker_constants.txt -T symbols/reloc_data_symbols.$(VERSION).txt
     C_FILES := $(shell find src -type f | grep \\.c$)
 else
     $(error Unsupported VERSION "$(VERSION)")
@@ -184,13 +196,25 @@ build/src/libultra/io/viswapcontext.o: OPTFLAGS := -O2 -mips2
 build/src/libultra/io/viswapcontext.o: CC := $(IDO5)
 build/src/libultra/io/pfsselectbank.o: OPTFLAGS := -O2 -mips2
 build/src/libultra/io/pfsselectbank.o: CC := $(IDO5)
+ifeq ($(VERSION),jp)
+build/src/libultra/io/epirawread.o: OPTFLAGS := -O1 -mips2
+else
 build/src/libultra/io/epirawread.o: OPTFLAGS := -O2 -mips2
+endif
 build/src/libultra/io/epirawread.o: CC := $(IDO5)
 build/src/libultra/io/contramwrite.o: OPTFLAGS := -O2 -mips2
 build/src/libultra/io/contramwrite.o: CC := $(IDO5)
+ifeq ($(VERSION),jp)
+build/src/libultra/io/aisetfreq.o: OPTFLAGS := -O1 -mips2
+else
 build/src/libultra/io/aisetfreq.o: OPTFLAGS := -O2 -mips2
+endif
 build/src/libultra/io/aisetfreq.o: CC := $(IDO5)
+ifeq ($(VERSION),jp)
+build/src/libultra/io/epirawdma.o: OPTFLAGS := -O1 -mips2
+else
 build/src/libultra/io/epirawdma.o: OPTFLAGS := -O2 -mips2
+endif
 build/src/libultra/io/epirawdma.o: CC := $(IDO5)
 build/src/libultra/gu/mtxcatf.o: OPTFLAGS := -O2 -mips2
 build/src/libultra/gu/mtxcatf.o: CC := $(IDO5)
@@ -214,14 +238,32 @@ build/src/libultra/io/crc.o: OPTFLAGS := -O2 -mips2
 build/src/libultra/io/crc.o: CC := $(IDO5)
 build/src/libultra/io/pfsisplug.o: OPTFLAGS := -O1 -mips2
 build/src/libultra/io/pfsisplug.o: CC := $(IDO5)
+ifeq ($(VERSION),jp)
+build/src/libultra/io/epirawwrite.o: OPTFLAGS := -O1 -mips2
+else
 build/src/libultra/io/epirawwrite.o: OPTFLAGS := -O2 -mips2
+endif
 build/src/libultra/io/epirawwrite.o: CC := $(IDO5)
 build/src/libultra/os/seteventmesg.o: OPTFLAGS := -O1 -mips2
 build/src/libultra/os/seteventmesg.o: CC := $(IDO5)
 build/src/libultra/io/vimgr.o: OPTFLAGS := -O2 -mips2
 build/src/libultra/io/vimgr.o: CC := $(IDO5)
+build/src/libultra/io/leodiskinit.o: OPTFLAGS := -O2 -mips2
+build/src/libultra/io/leodiskinit.o: CC := $(IDO5)
+build/src/libultra/io/leointerrupt.o: OPTFLAGS := -O2 -mips2
+build/src/libultra/io/leointerrupt.o: CC := $(IDO5)
+ifeq ($(VERSION),jp)
+build/src/libultra/io/cartrominit.o: OPTFLAGS := -O1 -mips2
+else
 build/src/libultra/io/cartrominit.o: OPTFLAGS := -O2 -mips2
+endif
 build/src/libultra/io/cartrominit.o: CC := $(IDO5)
+ifeq ($(VERSION),jp)
+build/src/libultra/os/exceptasm.o: OPTFLAGS := -O1 -mips3 -32
+else
+build/src/libultra/os/exceptasm.o: OPTFLAGS := -O1 -mips3 -32 -DBUILD_VERSION=7
+endif
+build/src/libultra/os/exceptasm.o: CC := $(IDO5)
 build/src/libultra/os/initialize.o: OPTFLAGS := -O1 -mips2
 build/src/libultra/os/initialize.o: CC := $(IDO5)
 build/src/libultra/io/controller.o: OPTFLAGS := -O1 -mips2
@@ -250,7 +292,7 @@ DEP_FILES := $(O_FILES:.o=.d)
 $(shell mkdir -p $(BUILD_DIR)/asm)
 $(shell mkdir -p $(BUILD_DIR)/src)
 $(shell mkdir -p $(BUILD_DIR)/assets)
-$(shell [ -f include/reloc_data.h ] || $(PYTHON) tools/relocData.py genHeader ./tools/relocFileDescriptions.txt ./include/reloc_data.h ./symbols/reloc_data_symbols.txt) # generate if not there
+$(shell [ -f include/reloc_data.h ] || $(PYTHON) tools/relocData.py genHeader ./tools/relocFileDescriptions.$(VERSION).txt ./include/reloc_data.h ./symbols/reloc_data_symbols.$(VERSION).txt) # generate if not there
 
 # ----- Targets ------
 
@@ -278,7 +320,7 @@ clean:
 	rm -f src/credits/titles.credits.encoded src/credits/titles.credits.metadata
 	rm -f src/credits/info.credits.encoded src/credits/info.credits.metadata
 	rm -f src/credits/companies.credits.encoded src/credits/companies.credits.metadata
-	rm -f include/reloc_data.h symbols/reloc_data_symbols.txt
+	rm -f include/reloc_data.h symbols/reloc_data_symbols.$(VERSION).txt
 	@echo removing vpk0 files
 	@rm -f $(VPK0_FILES)
 
@@ -287,10 +329,10 @@ extract:
 	rm -r -f assets
 	$(SPLAT) $(SPLAT_YAML) $(SPLAT_FLAGS)
 
-ifeq ($(VERSION),us)
-	$(PYTHON) tools/relocData.py extractAll
+	$(PYTHON) tools/relocData.py extractAll tools/relocFileDescriptions.$(VERSION).txt
 	@mkdir -p relocAssets
-	tools/halAssetTool x tools/relocFileDescriptions.txt assets/relocData/ relocAssets
+ifeq ($(VERSION),us)
+	tools/halAssetTool x tools/relocFileDescriptions.$(VERSION).txt assets/relocData/ relocAssets
 endif
 
 init:
@@ -341,6 +383,15 @@ $(BUILD_DIR)/%.o: %.s
 	@mkdir -p $(@D)
 	$(V)$(AS) $(ASFLAGS) -o $@ $<
 
+# libultra asm files - Compile with the ido compiler
+$(BUILD_DIR)/src/libultra/%.o: src/libultra/%.s
+	$(call print_3,Assembling Libultra:,$<,$@)
+	$(V)$(CC) -c $(CCFLAGS) $(OPTFLAGS) $(OPTFLAGS) -o $@ $<
+	$(V)$(STRIP) --strip-unneeded $@
+	@if [[ "$(OPTFLAGS)" =~ "-mips3 -32" ]]; then \
+		$(PYTHON) tools/patchMips3Objects.py $@; \
+	fi
+
 # Source C files
 $(BUILD_DIR)/%.o: %.c
 	$(call print_3,Compiling:,$<,$@)
@@ -352,22 +403,22 @@ $(BUILD_DIR)/%.o: %.c
 # patch object files compiled with mips3 to be able to link them
 	$(V)$(PYTHON) tools/patchMips3Objects.py $@
 
-include/reloc_data.h: ./tools/relocFileDescriptions.txt
+include/reloc_data.h: ./tools/relocFileDescriptions.$(VERSION).txt
 	$(call print_2,Generating reloc data header and symbol file from:,$<,$(BLUE))
-	$(V)$(PYTHON) tools/relocData.py genHeader ./tools/relocFileDescriptions.txt ./include/reloc_data.h ./symbols/reloc_data_symbols.txt
+	$(V)$(PYTHON) tools/relocData.py genHeader ./tools/relocFileDescriptions.$(VERSION).txt ./include/reloc_data.h ./symbols/reloc_data_symbols.$(VERSION).txt
 
 # Staff roll specific
 src/sc/sccommon/scstaffroll.c: src/credits/staff.credits.encoded src/credits/titles.credits.encoded src/credits/info.credits.encoded src/credits/companies.credits.encoded
-src/credits/staff.credits.encoded: src/credits/staff.credits.txt tools/creditsTextConverter.py
+src/credits/staff.credits.encoded: src/credits/staff.credits.$(VERSION).txt tools/creditsTextConverter.py
 	$(call print_2,Creating staff roll data for:,$<,$(PURPLE))
 	$(V)$(PYTHON) tools/creditsTextConverter.py $< -titleFont
-src/credits/titles.credits.encoded: src/credits/titles.credits.txt tools/creditsTextConverter.py
+src/credits/titles.credits.encoded: src/credits/titles.credits.$(VERSION).txt tools/creditsTextConverter.py
 	$(call print_2,Creating staff roll data for:,$<,$(PURPLE))
 	$(V)$(PYTHON) tools/creditsTextConverter.py $< -titleFont
-src/credits/info.credits.encoded: src/credits/info.credits.txt tools/creditsTextConverter.py
+src/credits/info.credits.encoded: src/credits/info.credits.$(VERSION).txt tools/creditsTextConverter.py
 	$(call print_2,Creating staff roll data for:,$<,$(PURPLE))
 	$(V)$(PYTHON) tools/creditsTextConverter.py $< -paragraphFont -multiline
-src/credits/companies.credits.encoded: src/credits/companies.credits.txt tools/creditsTextConverter.py
+src/credits/companies.credits.encoded: src/credits/companies.credits.$(VERSION).txt tools/creditsTextConverter.py
 	$(call print_2,Creating staff roll data for:,$<,$(PURPLE))
 	$(V)$(PYTHON) tools/creditsTextConverter.py $< -paragraphFont
 

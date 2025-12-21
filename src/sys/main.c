@@ -18,7 +18,9 @@
 #include <PR/ultratypes.h>
 
 // libultra internal
-void __osSetWatchLo(u32);
+#if defined(REGION_US)
+void __osSetWatchLo(u32); // Only define this for US region as it breaks the JP region
+#endif
 
 #define STACK_CANARY_OFFSET 7 //this is weird but kirby also does this
 #define STACK_CANARY 0xFEDCBA98
@@ -28,7 +30,11 @@ void __osSetWatchLo(u32);
 #define THREAD1_STACK_SIZE 0x100 / sizeof(u64)
 #define THREAD3_STACK_SIZE 0x400 / sizeof(u64)
 #define THREAD4_STACK_SIZE 0x600 / sizeof(u64)
+#if defined(REGION_US)
 #define THREAD5_STACK_SIZE 0x3400 / sizeof(u64)
+#else
+#define THREAD5_STACK_SIZE 0x3000 / sizeof(u64)
+#endif
 #define THREAD6_STACK_SIZE 0x800 / sizeof(u64)
 
 // Thread Scheduler Priorities
@@ -118,7 +124,11 @@ u64* unref_8000046C(void)
 
 void* unref_80000478(void) 
 {
+    #if defined(REGION_US)
     return (void*)(0x00003400);
+    #else
+    return (void*)(0x00003000);
+    #endif
 }
 
 void syMainSetImemStatus(void)
@@ -212,10 +222,12 @@ void syMainThread1Idle(void *arg)
     while (TRUE);
 }
 
-void syMainLoop(void) 
+void syMainLoop(void)
 {
     gSYMainThread0Stack[STACK_CANARY_OFFSET] = STACK_CANARY;
+    #if defined(REGION_US)
     __osSetWatchLo(0x04900000 & WATCHLO_ADDRMASK);
+    #endif
     osInitialize();
     osCreateThread(&sSYMainThread1, 1, syMainThread1Idle, sSYMainThreadArgBuf, &sSYMainThread1Stack[THREAD1_STACK_SIZE], OS_PRIORITY_APPMAX);
 

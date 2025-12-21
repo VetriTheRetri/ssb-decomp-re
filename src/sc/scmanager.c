@@ -59,7 +59,7 @@ s32 sSCManagerUnk0x800A523C;
 //                               //
 // // // // // // // // // // // //
 
-// 0x800A3070
+// 0x800A3070 (JP: 0x800A1090)
 SYOverlay dSCManagerOverlays[/* */] =
 {
 	SCMANAGER_OVERLAY_DEFINE(0),
@@ -119,8 +119,10 @@ SYOverlay dSCManagerOverlays[/* */] =
 	SCMANAGER_OVERLAY_DEFINE(54),
 	SCMANAGER_OVERLAY_DEFINE(55),
 	SCMANAGER_OVERLAY_DEFINE(56),
+#if defined(REGION_US)
 	SCMANAGER_OVERLAY_DEFINE(57),
 	SCMANAGER_OVERLAY_DEFINE(58),
+#endif
 	SCMANAGER_OVERLAY_DEFINE(59),
 	SCMANAGER_OVERLAY_DEFINE(60),
 	SCMANAGER_OVERLAY_DEFINE(61),
@@ -484,9 +486,13 @@ LBBackupData dSCManagerDefaultBackupData =
 // 0x800A3F80
 SCCommonData dSCManagerDefaultSceneData =
 {
+#if defined(REGION_US)
 	nSCKindStartup,										// Current scene
 	nSCKindStartup,										// Previous scene
-
+#else
+	nSCKindOpeningRoom,									// Current scene
+	nSCKindOpeningRoom,									// Previous scene
+#endif
 	// Queued unlock messages
 	{
 		nLBBackupUnlockEnumCount,
@@ -790,11 +796,15 @@ SCBattleState dSCManagerDefaultBattleState =
 	}
 };
 
+#if defined(REGION_US)
 // 0x800A41B8
 s32 dSCManagerPad0x800A41B8[/* */] = { 0, 0 };
 
 // 0x800A41C0 (.rodata) - use { __DATE__ " " __TIME__ } in a real setting
 char dSCManagerBuildDate[/* */] = { "Mar 16 1999 18:26:57" };
+#else
+char dSCManagerBuildDate[/* */] = { "Dec 23 1998 18:06:24" };
+#endif
 
 // // // // // // // // // // // //
 //                               //
@@ -918,13 +928,21 @@ void scManagerRunLoop(sb32 arg)
 
 			case nSCKindOption:
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
+#if defined(REGION_US)
 				syDmaLoadOverlay(&dSCManagerOverlays[60]);
+#else
+				syDmaLoadOverlay(&dSCManagerOverlays[58]);
+#endif
 				mnOptionStartScene();
 				break;
 
 			case nSCKindData:
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
+#if defined(REGION_US)
 				syDmaLoadOverlay(&dSCManagerOverlays[61]);
+#else
+				syDmaLoadOverlay(&dSCManagerOverlays[59]);
+#endif
 				mnDataStartScene();
 				break;
 
@@ -1040,11 +1058,13 @@ void scManagerRunLoop(sb32 arg)
 				mnCharactersStartScene();
 				break;
 
-			case nSCKindStartup:
+#if defined(REGION_US)
+				case nSCKindStartup:
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[58]);
 				mnStartupStartScene();
 				break;
+#endif
 
 			case nSCKindOpeningRoom:
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
@@ -1212,32 +1232,50 @@ void scManagerRunLoop(sb32 arg)
 				break;
 
 			case nSCKindStaffroll:
+#if defined(REGION_US)
 				syDmaLoadOverlay(&dSCManagerOverlays[59]);
+#else
+				syDmaLoadOverlay(&dSCManagerOverlays[57]);
+#endif
 				scStaffrollStartScene();
 				break;
 
+#if defined(REGION_US)
 			case nSCKindCongra:
 				syDmaLoadOverlay(&dSCManagerOverlays[57]);
 				mnCongraStartScene();
 				break;
+#endif
 
 			case nSCKindSoundTest:
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
+#if defined(REGION_US)
 				syDmaLoadOverlay(&dSCManagerOverlays[62]);
+#else
+				syDmaLoadOverlay(&dSCManagerOverlays[60]);
+#endif
 				mnSoundTestStartScene();
 				break;
 
 			case nSCKindExplain:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[3]);
+#if defined(REGION_US)
 				syDmaLoadOverlay(&dSCManagerOverlays[63]);
+#else
+				syDmaLoadOverlay(&dSCManagerOverlays[61]);
+#endif
 				scExplainStartScene();
 				break;
 
 			case nSCKindAutoDemo:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[3]);
+#if defined(REGION_US)
 				syDmaLoadOverlay(&dSCManagerOverlays[64]);
+#else
+				syDmaLoadOverlay(&dSCManagerOverlays[62]);
+#endif
 				scAutoDemoStartScene();
 				break;
 		}

@@ -236,7 +236,7 @@ void mnVSItemSwitchMakeLabels(void)
 }
 
 // 0x80131EFC
-void func_ovl21_80131EFC(SObj *sobj)
+void mnItemSwitchSetSubtitleSpriteColors(SObj *sobj)
 {
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -251,45 +251,98 @@ void func_ovl21_80131EFC(SObj *sobj)
 }
 
 // 0x80131F30
-void func_ovl21_80131F30(s32 option_id)
+void mnItemSwitchMakeSubtitle(s32 option_id)
 {
-    s32 unused1[2];
+    GObj *gobj;
+    SObj *sobj;
     
     // 0x80133298
-    intptr_t sp38[/* */] =
+    intptr_t offsets1[/* */] =
     {
-        0x65C0,
-        0x67E0,
-        0x6A00,
-        0x6C20,
-        0x7060,
-        0x8B98,
-        0x74A0,
-        0x76C0,
-        0x78E0,
-        0x7B00,
-        0x7D20,
-        0x7F40,
-        0x8160,
-        0x8380,
-        0x85A0,
-        0x87C0
+        &llMNVSItemSwitchAppearancePercentTextJapSprite,
+        &llMNVSItemSwitchBeamSwordTextJapSprite,
+        &llMNVSItemSwitchHomerunBatTextJapSprite,
+        &llMNVSItemSwitchHammerTextJapSprite,
+        &llMNVSItemSwitchHarisenTextJapSprite,
+        &llMNVSItemSwitchMotionSensorBombTextJapSprite,
+        &llMNVSItemSwitchBombTrooperTextJapSprite,
+        &llMNVSItemSwitchBumperTextJapSprite,
+        &llMNVSItemSwitchShellTextJapSprite,
+        &llMNVSItemSwitchMonsterBallTextJapSprite,
+        &llMNVSItemSwitchLayGunTextJapSprite,
+        &llMNVSItemSwitchFireFlowerTextJapSprite,
+        &llMNVSItemSwitchStarRodTextJapSprite,
+        &llMNVSItemSwitchMaximTomatoTextJapSprite,
+        &llMNVSItemSwitchHeartTextJapSprite,
+        &llMNVSItemSwitchStarTextJapSprite
     };
 
     // 0x801332D8
-    intptr_t sp20[/* */] =
+    intptr_t offsets2[/* */] =
     {
-        0x9850,
-        0x8DB0,
-        0x8FD0,
-        0x91F0,
-        0x9410,
-        0x9630
+        &llMNVSItemSwitchNothingTextJapSprite,
+        &llMNVSItemSwitchVeryLowTextJapSprite,
+        &llMNVSItemSwitchLowTextJapSprite,
+        &llMNVSItemSwitchMiddleTextJapSprite,
+        &llMNVSItemSwitchHighTextJapSprite,
+        &llMNVSItemSwitchVeryHighTextJapSprite
     };
     
+#if defined(REGION_US)
     s32 unused2[2];
+#endif
     
-    sMNVSItemSwitchUnkGObj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT);
+    sMNVSItemSwitchUnkGObj = gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT);
+
+#if defined(REGION_JP)
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, ~0);
+
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSItemSwitchFiles[0], &llMNVSItemSwitchFrameSprite));
+
+    sobj->sprite.attr &= ~SP_FASTCOPY;
+    sobj->sprite.attr |= SP_TRANSPARENT;
+    
+    sobj->pos.x = 27.0F;
+    sobj->pos.y = 186.0F;
+    
+    mnItemSwitchSetSubtitleSpriteColors(sobj);
+
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSItemSwitchFiles[0], offsets1[option_id]));
+            
+    sobj->sprite.attr &= ~SP_FASTCOPY;
+    sobj->sprite.attr |= SP_TRANSPARENT;
+
+    switch (option_id)
+    {
+        case 0:
+            sobj->pos.x = 31.0F;
+            sobj->pos.y = 188.0F;
+            break;
+        case 5:
+            sobj->pos.x = 31.0F;
+            sobj->pos.y = 188.0F;
+            break;
+        default:
+            sobj->pos.x = 31.0F;
+            sobj->pos.y = 193.0F;
+    }
+
+    mnItemSwitchSetSubtitleSpriteColors(sobj);
+
+    if (option_id == 0)
+    {
+            sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSItemSwitchFiles[0], offsets2[sMNVSItemSwitchOptionStatuses[option_id]]));
+                
+            sobj->sprite.attr &= ~SP_FASTCOPY;
+            sobj->sprite.attr |= SP_TRANSPARENT;
+            
+            sobj->pos.x = 31.0F;
+            sobj->pos.y = 199.0F;
+        
+            mnItemSwitchSetSubtitleSpriteColors(sobj);
+    }
+    
+#endif
 }
 
 // 0x80131FDC
@@ -672,7 +725,7 @@ void mnVSItemSwitchFuncRun(GObj *gobj)
             mnVSItemSwitchSetCursorPosition(sMNVSItemSwitchCursorGObj, sMNVSItemSwitchOptionSelectID);
             
             gcEjectGObj(sMNVSItemSwitchUnkGObj);
-            func_ovl21_80131F30(sMNVSItemSwitchOptionSelectID);
+            mnItemSwitchMakeSubtitle(sMNVSItemSwitchOptionSelectID);
         }
         if
         (
@@ -697,7 +750,7 @@ void mnVSItemSwitchFuncRun(GObj *gobj)
             mnVSItemSwitchSetCursorPosition(sMNVSItemSwitchCursorGObj, sMNVSItemSwitchOptionSelectID);
             
             gcEjectGObj(sMNVSItemSwitchUnkGObj);
-            func_ovl21_80131F30(sMNVSItemSwitchOptionSelectID);
+            mnItemSwitchMakeSubtitle(sMNVSItemSwitchOptionSelectID);
         }
         if
         (
@@ -718,7 +771,7 @@ void mnVSItemSwitchFuncRun(GObj *gobj)
                 mnVSItemSwitchUpdateOption(sMNVSItemSwitchOptionSelectID, sMNVSItemSwitchOptionStatuses[0]);
                 
                 gcEjectGObj(sMNVSItemSwitchUnkGObj);
-                func_ovl21_80131F30(sMNVSItemSwitchOptionSelectID);
+                mnItemSwitchMakeSubtitle(sMNVSItemSwitchOptionSelectID);
             }
             else if (sMNVSItemSwitchOptionStatuses[sMNVSItemSwitchOptionSelectID] == nMNOptionTabStatusOff)
             {
@@ -749,7 +802,7 @@ void mnVSItemSwitchFuncRun(GObj *gobj)
                 mnVSItemSwitchUpdateOption(sMNVSItemSwitchOptionSelectID, sMNVSItemSwitchOptionStatuses[0]);
                 
                 gcEjectGObj(sMNVSItemSwitchUnkGObj);
-                func_ovl21_80131F30(sMNVSItemSwitchOptionSelectID);
+                mnItemSwitchMakeSubtitle(sMNVSItemSwitchOptionSelectID);
             }
             else if (sMNVSItemSwitchOptionStatuses[sMNVSItemSwitchOptionSelectID] == nMNOptionTabStatusOn)
             {
@@ -776,7 +829,7 @@ void mnVSItemSwitchFuncRun(GObj *gobj)
                 mnVSItemSwitchUpdateOption(sMNVSItemSwitchOptionSelectID, sMNVSItemSwitchOptionStatuses[0]);
                 
                 gcEjectGObj(sMNVSItemSwitchUnkGObj);
-                func_ovl21_80131F30(sMNVSItemSwitchOptionSelectID);
+                mnItemSwitchMakeSubtitle(sMNVSItemSwitchOptionSelectID);
             }
             else
             {
@@ -823,7 +876,7 @@ void mnVSItemSwitchFuncStart(void)
     mnVSItemSwitchMakeCursor(sMNVSItemSwitchOptionSelectID);
     mnVSItemSwitchInitToggles();
 
-    func_ovl21_80131F30(sMNVSItemSwitchOptionSelectID);
+    mnItemSwitchMakeSubtitle(sMNVSItemSwitchOptionSelectID);
 }
 
 // 0x80133320

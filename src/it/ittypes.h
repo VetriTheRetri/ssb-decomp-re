@@ -229,8 +229,10 @@ struct ITStruct 						// Common items, stage hazards, fighter items and Pokémon
 	Vec3f shield_collide_dir; 			// Direction of incoming velocity vector?
 
 	GObj* reflect_gobj;					// GObj that reflected this item
+#if defined(REGION_US)
 	GMStatFlags reflect_stat_flags; 	// Status flags of GObj reflecting this
 	u16 reflect_stat_count;				// Status update count at the time the item is reflected
+#endif
 
 	s32 damage_highest;		  			// I don't know why there are at least two of these
 	f32 damage_knockback;	  			// Item's calculated knockback

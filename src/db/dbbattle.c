@@ -71,7 +71,9 @@ char *dDBBattleSceneNames[/* */] =
 	"Staffroll",
 	"Explain",
 	"AutoDemo",
+#if defined(REGION_US)
 	"Congra"
+#endif
 };
 
 // 0x80132738
@@ -100,7 +102,11 @@ char *dDBBattleStageNames[/* */] =
 // 0x80132780
 DBMenuOption dDBBattleMenuOptions[/* */] =
 {
+#if defined(REGION_US)
 	{ nDBMenuOptionKindStringByte,  dbBattleStartBattle,(char*)	dDBBattleSceneNames,      	&dDBBattleMenuValueScene,           				0.0F, 5.0F,  0 },
+#else
+	{ nDBMenuOptionKindStringByte,  dbBattleStartBattle,(char*)	dDBBattleSceneNames,      	&dDBBattleMenuValueScene,           				0.0F, 4.0F,  0 },
+#endif
 	{ nDBMenuOptionKindNumericByte, NULL,               (char*) "BattleTime %3d",           &gSCManagerTransferBattleState.time_limit,        	1.0F, 60.0F, 0 },
 	{ nDBMenuOptionKindStringByte,  NULL,               (char*) dDBBattleStageNames,       	&gSCManagerSceneData.spgame_stage,              	0.0F, 17.0F, 0 },
 	{ nDBMenuOptionKindStringByte,  NULL,               (char*) dDBBattlePlayerKindNames,  	&gSCManagerTransferBattleState.players[0].pkind, 	0.0F, 5.0F,  0 },
@@ -416,9 +422,11 @@ void dbBattleFuncRun(GObj *gobj)
 			gSCManagerTransferBattleState.is_team_battle = FALSE;
 			break;
 			
+#if defined(REGION_US)
 		case nDBBattleSceneCongra:
 			gSCManagerSceneData.scene_curr = nSCKindCongra;
 			break;
+#endif
 		}
 		syTaskmanSetLoadScene();
 	}

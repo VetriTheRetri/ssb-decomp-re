@@ -305,7 +305,7 @@ void mn1PModeMakeBonus2Practice(void)
 }
 
 // 0x80132208
-void func_ovl18_80132208(SObj *sobj)
+void mn1PModeSetSubtitleSpriteColors(SObj *sobj)
 {
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -320,9 +320,62 @@ void func_ovl18_80132208(SObj *sobj)
 }
 
 // 0x8013223C
-void func_ovl18_8013223C(void)
+void mn1PModeMakeSubtitle(void)
 {
-    sMN1PModeSubtitleGObj = gcMakeGObjSPAfter(0, NULL, 5, GOBJ_PRIORITY_DEFAULT);
+    GObj *gobj;
+    SObj *sobj;
+
+    sMN1PModeSubtitleGObj = gobj = gcMakeGObjSPAfter(0, NULL, 5, GOBJ_PRIORITY_DEFAULT);
+
+#if defined(REGION_JP)
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 3, GOBJ_PRIORITY_DEFAULT, ~0);
+
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PModeFiles[0], &llMNCommonFrameSprite));
+
+    sobj->pos.x = 93.0F;
+    sobj->pos.y = 189.0F;
+    
+    mn1PModeSetSubtitleSpriteColors(sobj);
+    
+    switch (sMN1PModeOption)
+    {
+        case nMN1PModeOption1PGame:
+            sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PModeFiles[1], &llMN1P1PGameTextJapSprite));
+            
+            sobj->pos.x = 122.0F;
+            sobj->pos.y = 195.0F;
+            
+            mn1PModeSetSubtitleSpriteColors(sobj);
+            return;
+
+        case nMN1PModeOptionTrainingMode:
+            sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PModeFiles[1], &llMN1PTrainingModeTextJapSprite));
+            
+            sobj->pos.x = 121.0F;
+            sobj->pos.y = 195.0F;
+            
+            mn1PModeSetSubtitleSpriteColors(sobj);
+            return;
+
+        case nMN1PModeOptionBonus1Practice:
+            sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PModeFiles[1], &llMN1PBonus1PracticeTextJapSprite));
+            
+            sobj->pos.x = 98.0F;
+            sobj->pos.y = 195.0F;
+            
+            mn1PModeSetSubtitleSpriteColors(sobj);
+            return;
+
+        case nMN1PModeOptionBonus2Practice:
+            sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PModeFiles[1], &llMN1PBonus2PracticeTextJapSprite));
+            
+            sobj->pos.x = 97.0F;
+            sobj->pos.y = 195.0F;
+            
+            mn1PModeSetSubtitleSpriteColors(sobj);
+            return;
+    }
+#endif
 }
 
 // 0x8013226C
@@ -701,7 +754,7 @@ void mn1PModeFuncRun(GObj *gobj)
             }
             mn1PModeSetOptionSpriteColors(*option_gobjss[sMN1PModeOption], nMNOptionTabStatusHighlight, sMN1PModeOption);
             gcEjectGObj(sMN1PModeSubtitleGObj);
-            func_ovl18_8013223C();
+            mn1PModeMakeSubtitle();
         }
         if
         (
@@ -726,7 +779,7 @@ void mn1PModeFuncRun(GObj *gobj)
             }
             mn1PModeSetOptionSpriteColors(*option_gobjss[sMN1PModeOption], nMNOptionTabStatusHighlight, sMN1PModeOption);
             gcEjectGObj(sMN1PModeSubtitleGObj);
-            func_ovl18_8013223C();
+            mn1PModeMakeSubtitle();
         }
     }
 }
@@ -767,7 +820,7 @@ void mn1PModeFuncStart(void)
     mn1PModeMakeTrainingMode();
     mn1PModeMakeBonus1Practice();
     mn1PModeMakeBonus2Practice();
-    func_ovl18_8013223C();
+    mn1PModeMakeSubtitle();
     
     if (gSCManagerSceneData.scene_prev != nSCKindModeSelect)
     {

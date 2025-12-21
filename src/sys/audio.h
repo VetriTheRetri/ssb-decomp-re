@@ -174,7 +174,11 @@ typedef struct SYAudioConfig
 } SYAudioConfig;
 
 extern SYAudioSettings dSYAudioPublicSettings;
+#if defined(REGION_US)
 extern u8 gSYAudioHeapBuffer[0x56000];
+#else
+extern u8 gSYAudioHeapBuffer[0x53000];
+#endif
 extern u32 gSYAudioThreadTimeDelta;
 extern ALCSPlayer *gSYAudioCSPlayers[/* */];
 

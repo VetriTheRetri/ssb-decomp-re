@@ -441,7 +441,11 @@ void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
 
     item_gobj->obj = joint;
 
+#if defined(REGION_US)
     gcAddXObjForDObjFixed(joint, 0x52, 0);
+#else
+    gcAddXObjForDObjFixed(joint, 0x51, 0);
+#endif
 
     joint_id = (ip->weight == nITWeightHeavy) ? fp->attr->joint_itemheavy_id : fp->attr->joint_itemlight_id;
 

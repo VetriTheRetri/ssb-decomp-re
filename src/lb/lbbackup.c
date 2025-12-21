@@ -113,11 +113,13 @@ void lbBackupCorrectErrors(void)
             gSCManagerSceneData.maps_training_gkind = dSCManagerDefaultSceneData.maps_training_gkind;
         }
     }
+#if defined(REGION_US)
     if (!(gSCManagerBackupData.unlock_mask & LBBACKUP_UNLOCK_MASK_ITEMSWITCH))
     {
         gSCManagerTransferBattleState.item_toggles = dSCManagerDefaultBattleState.item_toggles;
         gSCManagerTransferBattleState.item_appearance_rate  = dSCManagerDefaultBattleState.item_appearance_rate;
     }
+#endif
 }
 
 // 0x800D48E0

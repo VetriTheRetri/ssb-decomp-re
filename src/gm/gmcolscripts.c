@@ -830,6 +830,7 @@ u32 dGMColScriptsFighterPikachuSpecialHiStartLoop[/* */] =
 	gmColCommandGoto(dGMColScriptsFighterPikachuSpecialHiStartLoop)
 };
 
+#if defined(REGION_US)
 // 0x8012D6D0
 u32 dGMColScriptsFighterPikachuSpecialHi[/* */] =
 {
@@ -837,6 +838,7 @@ u32 dGMColScriptsFighterPikachuSpecialHi[/* */] =
 	gmColCommandWait(2),
 	gmColCommandGoto(dGMColScriptsFighterPikachuSpecialHi)
 };
+#endif
 
 // 0x8012D6EC
 u32 dGMColScriptsFighterPikachuSpecialN[/* */] =
@@ -1222,7 +1224,9 @@ GMColDesc dGMColScriptsDescs[/* */] =
 	{ dGMColScriptsFighterKirbySpecialLwEnd,  			 60,  TRUE },
 	{ dGMColScriptsFighterPikachuAttackS4,  			 60,  TRUE },
 	{ dGMColScriptsFighterPikachuSpecialHiStart,		 60,  TRUE },
+#if defined(REGION_US)
 	{ dGMColScriptsFighterPikachuSpecialHi,  			 60,  TRUE },
+#endif
 	{ dGMColScriptsFighterPikachuSpecialN,  			 60,  TRUE },
 	{ dGMColScriptsFighterPikachuSpecialLwHit,  		 60,  TRUE },
 	{ dGMColScriptsFighterPikachuSpecialLwEnd,  		 60,  TRUE },

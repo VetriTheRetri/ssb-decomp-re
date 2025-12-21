@@ -3,7 +3,7 @@ import os
 import re
 import yaml
 
-SPLAT_YAML_FILE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../", "smashbrothers.yaml")
+SPLAT_YAML_FILE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../", "smashbrothers.us.yaml")
 ASM_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../", "asm")
 
 

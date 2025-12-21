@@ -88,8 +88,9 @@ void ftLinkSpecialNProcStatus(GObj *fighter_gobj)
     if ((ABS(fp->input.pl.stick_range.x) >= FTLINK_BOOMERANG_SMASH_STICK_MIN) && (fp->hold_stick_x < FTLINK_BOOMERANG_SMASH_BUFFER))
     {
         fp->status_vars.link.specialn.is_smash = TRUE;
-
+#if defined(REGION_US)
         fp->stat_flags.is_smash_attack = TRUE;
+#endif
     }
     else fp->status_vars.link.specialn.is_smash = FALSE;
 }

@@ -5,17 +5,19 @@ import sys
 import json
 import subprocess
 
-FILE_COUNT = 2132
 COMPRESSED_FILE_COUNT = 499
 ENDIANNESS = "big"
 EXTRACTED_FILES_PATH = "assets/relocData"
 VPK0_EXCESS_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "vpk0_excess_bytes.txt")
-ROM_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../", "baserom.us.z64")
 RELOC_EXTRACTOR_BIN_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ssbfile")
 VPK0_BIN_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "vpk0cmd")
 
 
-def extractSsbfile():
+def extractSsbfile(relocFileDescriptionsFilePath, version="us"):
+	with open(relocFileDescriptionsFilePath, 'r') as relocFileDescriptionsFile:
+		lines = relocFileDescriptionsFile.read().split('\n')
+	FILE_COUNT = getFileCount(lines)
+	ROM_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../", f"baserom.{version}.z64")
 	os.chdir(EXTRACTED_FILES_PATH)
 	processes = []
 	for i in range(FILE_COUNT):
@@ -23,10 +25,13 @@ def extractSsbfile():
 	for i in range(FILE_COUNT):
 		processes[i].wait()
 
-def extract():
+def extract(relocFileDescriptionsFilePath):
+	with open(relocFileDescriptionsFilePath, 'r') as relocFileDescriptionsFile:
+		lines = relocFileDescriptionsFile.read().split('\n')
+	FILE_COUNT = getFileCount(lines)
 	RELOC_DATA_FILE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../", "assets/relocData.bin")
-	RELOC_TABLE_SIZE = 0x63FC # in bytes
 	RELOC_TABLE_ENTRY_SIZE = 12 # in bytes
+	RELOC_TABLE_SIZE = (FILE_COUNT + 1) * RELOC_TABLE_ENTRY_SIZE # in bytes
 
 	# read table
 	relocTable = []
@@ -149,19 +154,24 @@ def relocateFile(inputBinaryPath, outputBinaryPath, relocInternOffset, relocExte
 			bytesNum = int.from_bytes(inputFile.read(2), ENDIANNESS) * 4
 			print(f"{hex(currentOffsetInBytes)} -> {hex(bytesNum)}")
 
+def getFileCount(relocFileDescriptionLines):
+    for line in relocFileDescriptionLines:
+        line = line.strip()
+        if line.startswith("# FILE_COUNT:"):
+            return int(line.split(":")[1].strip())
 
 def generateFileIdToNameDict(relocFileDescriptionLines):
 	fileIdToNameDict = {}
 	for line in relocFileDescriptionLines:
 		if len(line) == 0 or line[0] != '-':
 			continue
-		fileId = int(line[1:4])
+		fileId = int(line.split(":")[0][1:])
 		assert(fileId not in fileIdToNameDict.keys())
-		fileName = line[6:]
+		fileName = line.split(":")[1][1:]
 		fileIdToNameDict[fileId] = fileName
 	return fileIdToNameDict
 
-def generateFileIdSymbols(fileIdToNameDict):
+def generateFileIdSymbols(fileIdToNameDict, FILE_COUNT):
 	symbols = []
 	for fileId in range(FILE_COUNT):
 		if fileId in fileIdToNameDict.keys():
@@ -198,6 +208,7 @@ def generateHeader(relocFileDescriptionsFilePath, outputHeaderFilePath, outputLi
 	with open(relocFileDescriptionsFilePath, 'r') as relocFileDescriptionsFile:
 		lines = relocFileDescriptionsFile.read().split('\n')
 	fileIdToNameDict = generateFileIdToNameDict(lines)
+	FILE_COUNT = getFileCount(lines)
 	with open(outputHeaderFilePath, 'w') as outputHeaderFile, open(outputLinkerFilePath, 'w') as outputLinkerFile:
 
 		# File count symbol
@@ -205,7 +216,7 @@ def generateHeader(relocFileDescriptionsFilePath, outputHeaderFilePath, outputLi
 		outputLinkerFile.write(f"llRelocFileCount = {FILE_COUNT};\n\n")
 
 		# File ID symbols
-		for symbolName, fileId in generateFileIdSymbols(fileIdToNameDict):
+		for symbolName, fileId in generateFileIdSymbols(fileIdToNameDict, FILE_COUNT):
 			outputHeaderFile.write(f"extern int {symbolName}; // {fileId}\n")
 			outputLinkerFile.write(f"{symbolName} = {fileId};\n")
 
@@ -222,13 +233,14 @@ def generateDefineHeader(relocFileDescriptionsFilePath, outputHeaderFilePath):
 	with open(relocFileDescriptionsFilePath, 'r') as relocFileDescriptionsFile:
 		lines = relocFileDescriptionsFile.read().split('\n')
 	fileIdToNameDict = generateFileIdToNameDict(lines)
+	FILE_COUNT = getFileCount(lines)
 	with open(outputHeaderFilePath, 'w') as outputHeaderFile:
 
 		# File count symbol
 		outputHeaderFile.write(f"#define llRelocFileCount {FILE_COUNT}\n\n")
 
 		# File ID symbols
-		for symbolName, fileId in generateFileIdSymbols(fileIdToNameDict):
+		for symbolName, fileId in generateFileIdSymbols(fileIdToNameDict, FILE_COUNT):
 			outputHeaderFile.write(f"#define {symbolName} {fileId}\n")
 
 		# File offset symbols
@@ -241,7 +253,7 @@ def generateDefineHeader(relocFileDescriptionsFilePath, outputHeaderFilePath):
 if __name__ == "__main__":
 	if len(sys.argv) < 2:
 		print("Usage:")
-		print("Extract:         relocData extractAll")
+		print("Extract:         relocData extractAll <relocFileDescriptionsFilePath> [<version>]")
 		print("Compress:        relocData compress <binInputPath> <vpk0OutputPath>")
 		print("Relocate:        relocData relocate <binInputPath> <binOutputPath> <relocInternOffset> <relocExternOffset>")
 		print("Make bin:        relocData makeBin")
@@ -249,7 +261,7 @@ if __name__ == "__main__":
 		sys.exit(1)
 
 	if sys.argv[1] == 'extractAll':
-		extract()
+		extract(sys.argv[2])
 	elif sys.argv[1] == 'compress':
 		compressFile(sys.argv[2], sys.argv[3])
 	elif sys.argv[1] == 'relocate':

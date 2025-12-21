@@ -101,7 +101,7 @@ extern OSMesgQueue __osPiAccessQueue;
 extern u32 __osPiAccessQueueEnabled;
 
 // These symbols were all renamed in 2.0J.
-#if BUILD_VERSION < VERSION_J
+#if defined(REGION_JP)
 #define __osEPiRawStartDma osEPiRawStartDma
 #define __osEPiRawReadIo osEPiRawReadIo
 #define __osEPiRawWriteIo osEPiRawWriteIo
@@ -134,7 +134,7 @@ OSMesgQueue *osPiGetCmdQueue(void);
     if (cHandle->var != pihandle->var) \
         IO_WRITE(reg, pihandle->var)
 
-#if BUILD_VERSION >= VERSION_J
+#if defined(REGION_US)
 
 #define EPI_SYNC(pihandle, stat, domain)                             \
                                                                      \

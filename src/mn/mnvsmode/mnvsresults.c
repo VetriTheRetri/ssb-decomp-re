@@ -1230,11 +1230,36 @@ void mnVSResultsMakeWinnerText(s32 winner)
 {
 	char win[/* */] = "W1I1N1!";
 	char wins[/* */] = "W1I1N1S1!";
-
+	
 	f32 x_fkinds[/* */] =
 	{
-		175.0F, 160.0F, 150.0F, 176.0F, 163.0F, 160.0F,
-		170.0F, 178.0F, 165.0F, 172.0F, 173.0F, 160.0F
+#if defined(REGION_US)
+		175.0F, 
+		160.0F, 
+		150.0F, 
+		176.0F, 
+		163.0F, 
+		160.0F,
+		170.0F, 
+		178.0F, 
+		165.0F, 
+		172.0F, 
+		173.0F, 
+		160.0F
+#else
+		190.0F, 
+		160.0F,
+		190.0F, 
+		190.0F, 
+		170.0F, 
+		170.0F, 
+		170.0F, 
+		190.0F, 
+		180.0F, 
+		190.0F, 
+		190.0F, 
+		160.0F
+#endif
 	};
 	f32 x_teams[/* */] =
 	{
@@ -1249,7 +1274,11 @@ void mnVSResultsMakeWinnerText(s32 winner)
 	}
 	if (sMNVSResultsIsTeamBattle == FALSE)
 	{
+#if defined(REGION_US)
 		mnVSResultsMakeString(wins, x_fkinds[winner], 180.0F, 3, 1.0F);
+#else
+		mnVSResultsMakeString(win, x_fkinds[winner], 180.0F, 3, 1.0F);
+#endif
 	}
 }
 
@@ -1268,7 +1297,11 @@ void mnVSResultMakeFighterName(void)
 	{
 		"MARIO",
 		"FOX",
+#if defined(REGION_US)
 		"D3K",
+#else
+		"D.1KONG",
+#endif
 		"SAMUS",
 		"LU1I1G1I",
 		"L1I1N1K",
@@ -1276,18 +1309,61 @@ void mnVSResultMakeFighterName(void)
 		"C2.2FA1L1C1O1N",
 		"K1I1RBY",
 		"P4I4KAC3H3U",
+#if defined(REGION_US)
 		"JIGGLYPUFF",
+#else
+		"P1U1RI1N",
+#endif
 		"N2E2S2S"
 	};
 	f32 pos_x[/* */] =
 	{
-		30.0F, 60.0F, 70.0F, 25.0F, 50.0F, 55.0F,
-		30.0F, 27.0F, 40.0F, 30.0F, 27.0F, 50.0F
+#if defined(REGION_US)
+		30.0F, 
+		60.0F, 
+		70.0F, 
+		25.0F, 
+		50.0F, 
+		55.0F,
+		30.0F, 
+		27.0F, 
+		40.0F, 
+		30.0F, 
+		27.0F, 
+		50.0F
+#else
+		30.0F, 
+		60.0F, 
+		30.0F, 
+		30.0F, 
+		50.0F, 
+		55.0F,
+		30.0F, 
+		30.0F, 
+		45.0F, 
+		40.0F, 
+		50.0F, 
+		50.0F
+#endif
 	};
 	f32 scales[/* */] = {
 
-		1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F,
-		1.0F, 0.7F, 1.0F, 0.7F, 0.6F, 1.0F
+		1.0F, 
+		1.0F, 
+		1.0F, 
+		1.0F, 
+		1.0F, 
+		1.0F,
+		1.0F, 
+		0.7F, 
+		1.0F, 
+		0.7F, 
+#if defined(REGION_US)
+		0.6F, 
+#else
+		1.0F,
+#endif
+		1.0F
 	};
 	
 	fkind = mnVSResultGetWinFighterKind();

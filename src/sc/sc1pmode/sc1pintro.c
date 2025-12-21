@@ -388,21 +388,33 @@ void sc1PIntroMakeBonusTasks(s32 stage)
     case nSC1PGameStageBonus1:
         sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PIntroFiles[0], &llSC1PIntroBreakTheTargetsTextSprite));
 
+#if defined(REGION_US)
         sobj->pos.x = 160 - (sobj->sprite.width / 2);
+#else
+        sobj->pos.x = 83.0F;
+#endif
         sobj->pos.y = 197.0F;
         break;
         
     case nSC1PGameStageBonus2:
         sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PIntroFiles[0], &llSC1PIntroBoardThePlatformsTextSprite));
         
+#if defined(REGION_US)
         sobj->pos.x = 160 - (sobj->sprite.width / 2);
+#else
+        sobj->pos.x = 91.0F;
+#endif
         sobj->pos.y = 197.0F;
         break;
         
     case nSC1PGameStageBonus3:
         sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PIntroFiles[0], &llSC1PIntroRaceToTheFinishTextSprite));
         
+#if defined(REGION_US)
         sobj->pos.x = 160 - (sobj->sprite.width / 2);
+#else
+        sobj->pos.x = 59.0F;
+#endif
         sobj->pos.y = 197.0F;
         break;
 
@@ -665,7 +677,11 @@ void sc1PIntroSetNamePositions(s32 stage)
     sobj->pos.y = 196.0F;
 
     sobj->next->pos.x = sobj->pos.x + sobj->sprite.width + 10.0F;
+#if defined(REGION_US)
     sobj->next->pos.y = (stage == nSC1PGameStageZako) ? 190.0F : 196.0F;
+#else
+    sobj->next->pos.y = (stage == nSC1PGameStageDonkey) ? 188.0F : 196.0F;
+#endif
 }
 
 // 0x80132B10

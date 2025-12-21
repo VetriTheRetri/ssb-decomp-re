@@ -147,7 +147,7 @@ extern sb32 gSYSchedulerIsCustomFramebuffer;
 extern u32 gSYSchedulerFrameTime;
 extern u32 gSYSchedulerAudioTime;
 extern u64 sSYSchedulerRdpCache;
-extern sb32 gSYSchedulerIsSoftReset;
+extern ub32 gSYSchedulerIsSoftReset;
 extern void *gSYSchedulerNextFramebuffer;
 extern void *gSYSchedulerCurrentFramebuffer;
 extern u32 gSYSchedulerFramebufferSetTimestamp;

@@ -4775,6 +4775,22 @@ void func_ovl3_801346D4(FTStruct *fp)
         }
         else com->target_pos.y = pos.y;
     }
+#if defined(REGION_JP)
+    if (fp->fkind == nFTKindPikachu)
+    {
+        switch (fp->status_id)
+        {
+            case nFTPikachuStatusSpecialAirHiStart:
+                com->target_pos.x = pos.x;
+                com->target_pos.y = pos.y + 1100.0F;
+                break;
+            case nFTPikachuStatusSpecialAirHi:
+                com->target_pos.x = 0.0F;
+                com->target_pos.y = pos.y;
+                break;
+        }
+    }
+#endif
 }
 
 // 0x80134964
@@ -6524,6 +6540,7 @@ void ftComputerFollowObjectiveRecover(FTStruct *fp)
     {
         func_ovl3_80134964(fp);
 
+#if defined(REGION_US)
         if (fp->fkind == nFTKindPikachu)
         {
             switch (fp->status_id)
@@ -6538,6 +6555,8 @@ void ftComputerFollowObjectiveRecover(FTStruct *fp)
                 break;
             }
         }
+#endif
+
         ftComputerFollowObjectiveWalk(fp);
     }
 }
@@ -6990,7 +7009,11 @@ sb32 func_ovl3_80138EE4(FTStruct *fp)
             return FALSE;
         }
     }
+#if defined(REGION_US)
     if ((fkind == nFTKindDonkey) || (fkind == nFTKindNDonkey) || (fkind == nFTKindGDonkey))
+#else
+    if ((fkind == nFTKindDonkey))
+#endif
     {
         if
         (
@@ -6998,15 +7021,19 @@ sb32 func_ovl3_80138EE4(FTStruct *fp)
             (fp->status_id == nFTDonkeyStatusSpecialAirNStart)             ||
             (fp->status_id == nFTDonkeyStatusSpecialNLoop)                 ||
             (fp->status_id == nFTDonkeyStatusSpecialAirNLoop)              ||
-            (fp->status_id == nFTKirbyStatusCopyDonkeySpecialNStart)      ||
-            (fp->status_id == nFTKirbyStatusCopyDonkeySpecialAirNStart)   ||
-            (fp->status_id == nFTKirbyStatusCopyDonkeySpecialNLoop)       ||
-            (fp->status_id == nFTKirbyStatusCopyDonkeySpecialAirNLoop)    ||
+            (fp->status_id == nFTKirbyStatusCopyDonkeySpecialNStart)       ||
+            (fp->status_id == nFTKirbyStatusCopyDonkeySpecialAirNStart)    ||
+            (fp->status_id == nFTKirbyStatusCopyDonkeySpecialNLoop)        ||
+#if defined(REGION_US)
+            (fp->status_id == nFTKirbyStatusCopyDonkeySpecialAirNLoop)     ||
             (fp->status_id == nFTDonkeyStatusThrowFWait)                   ||
             (fp->status_id == nFTDonkeyStatusThrowFWalkSlow)               ||
             (fp->status_id == nFTDonkeyStatusThrowFWalkMiddle)             ||
             (fp->status_id == nFTDonkeyStatusThrowFWalkFast)               ||
             (fp->status_id == nFTDonkeyStatusThrowFTurn)
+#else
+            (fp->status_id == nFTKirbyStatusCopyDonkeySpecialAirNLoop)     
+#endif
         )
         {
             return FALSE;
@@ -7718,7 +7745,11 @@ void ftComputerProcessTrait(FTStruct *fp)
         break;
 
     case nFTComputerTraitLink:
+#if defined(REGION_US)
         if ((fp->percent_damage >= 14) || (com->behavior_change_wait == 0))
+#else
+        if ((fp->percent_damage >= 20) || (com->behavior_change_wait == 0))
+#endif
         {
             com->behavior = nFTComputerBehaviorDefault;
         }
@@ -7820,13 +7851,22 @@ void ftComputerSetupAll(GObj *fighter_gobj)
         com->trait = 0;
         com->behavior = 0;
 
+#if defined(REGION_US)
         i = 1440 - (fp->level * 240);
-
         if (i < 0)
         {
             i = 0;
         }
         com->behavior_change_wait = i;
+#else
+        com->behavior_change_wait = 2160 - (fp->level * 360);
+
+        if (com->behavior_change_wait < 0)
+        {
+            com->behavior_change_wait = 0;
+        }
+#endif
+
         com->dash_predict = 0.0F;
 
         dash_speed = fp->attr->dash_speed;

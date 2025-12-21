@@ -532,8 +532,10 @@ next_check:
         wp->display_mode = fp->display_mode;
         wp->player_num = fp->player_num;
         wp->handicap = fp->handicap;
+#if defined(REGION_US)
         wp->attack_coll.stat_flags = wp->reflect_stat_flags;
         wp->attack_coll.stat_count = wp->reflect_stat_count;
+#endif
 
         if (wp->proc_reflector != NULL)
         {

@@ -3,7 +3,11 @@
 
 #include "ftyoshifunctions.h"
 
+#if defined(REGION_US)
 #define FTYOSHI_JUMPAERIAL_KNOCKBACK_RESIST 140.0F
+#else
+#define FTYOSHI_JUMPAERIAL_KNOCKBACK_RESIST 110.0F
+#endif
 
 #define FTYOSHI_EGGTHROW_JOINT nFTPartsJointYRotN // Bone to attach Egg
 

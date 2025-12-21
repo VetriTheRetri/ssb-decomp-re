@@ -112,16 +112,24 @@ typedef enum gmFGMVoiceID
 	nSYAudioFGMBurnM,
 	nSYAudioFGMBurnS,
 	nSYAudioFGMShockML,
+#if defined(REGION_US)
 	nSYAudioFGMFirefox,
+#endif
 	nSYAudioFGMKickL,
 	nSYAudioFGMKickM,
+#if defined(REGION_US)
 	nSYAudioFGMDeadFall, // Plays when dying in a blast zone?
+#endif
 	nSYAudioFGMKickS,
+#if defined(REGION_US)
 	nSYAudioFGMUnkTap1,
+#endif
 	nSYAudioFGMFireShoot2,
 	nSYAudioFGMPunchL,
 	nSYAudioFGMPunchM,
+#if defined(REGION_US)
 	nSYAudioFGMUnkSlam1,
+#endif
 	nSYAudioFGMPunchS,
 	nSYAudioFGMLightSwingL,
 	nSYAudioFGMLightSwingM,
@@ -224,12 +232,14 @@ typedef enum gmFGMVoiceID
 	nSYAudioFGMMBallOpen,
 	nSYAudioFGMMonsterShoot, // Venusaur and Starmie firing sound effect
 	nSYAudioFGMTosakintoSplash,
+#if defined(REGION_US)
 	nSYAudioFGMDairantouKickL,
 	nSYAudioFGMDairantouKickM,
 	nSYAudioFGMDairantouKickS,
 	nSYAudioFGMDairantouPunchL,
 	nSYAudioFGMDairantouPunchM,
 	nSYAudioFGMDairantouPunchS,
+#endif
 	nSYAudioFGMOpeningSectorAmbient,
 	nSYAudioFGMOpeningNewcomersClash,
 	nSYAudioFGMPublicPrologue,		// Cheer on Meta Crystal and Duel Zone before the music starts playing
@@ -547,8 +557,10 @@ typedef enum gmFGMVoiceID
 	nSYAudioVoiceAnnounceMMario,
 	nSYAudioVoiceAnnounceTitleWait,			// ...Super... SMAAAAAAAAAASH Brotheeeeeeeeers!! (long wait at beginning?)
 	nSYAudioVoiceAnnounceNewRecord,
+#if defined(REGION_US)
 	nSYAudioVoiceAnnounceCongra,			// Congratulations
 	nSYAudioVoiceAnnounceIncredible,
+#endif
 	nSYAudioVoiceAnnounceOne,
 	nSYAudioVoiceAnnounceDenied1,			// Trying to start a game with not enough players?
 	nSYAudioVoiceAnnounceTwo,
@@ -734,7 +746,11 @@ typedef enum gmFGMVoiceID
 	nSYAudioVoiceUnkShockM,					// ???
 	nSYAudioVoicePublicUnkGasp,			// ???
 	// Dood I'm not gonna bother with these unless they're really used somehow
+#if defined(REGION_US)
 	nSYAudioFGMVoiceEnd = 0x2B7,
+#else
+	nSYAudioFGMVoiceEnd = 0x29D,
+#endif
 	nSYAudioFGMVoiceEnumCount = nSYAudioFGMVoiceEnd
 
 } gmFGMVoiceID;

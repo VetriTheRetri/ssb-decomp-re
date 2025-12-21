@@ -475,9 +475,11 @@ sb32 itNBumperAttachedProcMap(GObj *item_gobj)
 
             itNBumperDroppedSetStatus(item_gobj);
 
+#if defined(REGION_US)
             joint->scale.vec.f.x = joint->scale.vec.f.y = joint->scale.vec.f.z = 1.0F;
 
             joint->mobj->palette_id = 0.0F;
+#endif
         }
         else if (ip->multi == 0)
         {
@@ -618,7 +620,9 @@ GObj* itNBumperMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     {
         DObj *dobj = DObjGetStruct(item_gobj);
         ITStruct *ip;
+#if defined(REGION_US)
         Vec3f translate = dobj->translate.vec.f;
+#endif
 
         ip = itGetStruct(item_gobj);
 
@@ -632,7 +636,11 @@ GObj* itNBumperMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         gcAddXObjForDObjFixed(dobj, 0x2E, 0);
 
+#if defined(REGION_US)
         dobj->translate.vec.f = translate;
+#else
+        dobj->translate.vec.f = *pos;
+#endif
 
         dobj->rotate.vec.f.z = 0.0F;
 

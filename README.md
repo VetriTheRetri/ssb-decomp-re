@@ -19,7 +19,7 @@ This script will also tell you where to place the ROM in case it's not found in 
 
 `make init` or `make clean && make extract && make`
 
-Extracting is required every time the splat yaml (`smashbrothers.yaml`) file is modified or anything inside the `symbols` folder (which is used by splat). So it's recommended to run `make init` every time you pull changes.
+Extracting is required every time the splat yaml (`smashbrothers.us.yaml` of `smashbrothers.jp.yaml`) file is modified or anything inside the `symbols` folder (which is used by splat). So it's recommended to run `make init` every time you pull changes.
 
 ## Build the ROM
 

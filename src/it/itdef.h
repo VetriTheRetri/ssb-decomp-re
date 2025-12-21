@@ -40,7 +40,11 @@
 #define ITEM_REFLECT_MAX_DEFAULT 100
 
 // Universal reflect damage multiplier
+#if defined(REGION_US)
 #define ITEM_REFLECT_MUL_DEFAULT 1.8F
+#else
+#define ITEM_REFLECT_MUL_DEFAULT 1.5F
+#endif
 
 // Added after multiplying item's hitbox damage
 #define ITEM_REFLECT_ADD_DEFAULT 0.99F

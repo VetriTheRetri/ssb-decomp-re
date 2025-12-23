@@ -378,13 +378,13 @@ void* func_ovl8_8037C7D4(dbUnknown5* arg0, dbUnknown5* arg1, dbFunction** arg2, 
 		arg0->unk_dbunk5_0xB4 = arg4;
 		switch (arg3[0x14/4])
 		{
-		case 0x5342544E:
+		case 'SBTN':
 			var_v0 = 0;
 			break;
-		case 0x534f5042:
+		case 'SOPB':
 			var_v0 = 2;
 			break;
-		case 0x53544742:
+		case 'STGB':
 			var_v0 = 1;
 			break;
 		default:

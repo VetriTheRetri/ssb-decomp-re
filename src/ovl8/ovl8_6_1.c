@@ -240,7 +240,7 @@ s32 func_ovl8_80376164(s32 arg0, s32 *arg1)
 	s32 sp20;
 
 	sp20 = arg1[0x14/4];
-	if ((sp20 != 0x46464857) && (sp20 != 0x4646574E))
+	if ((sp20 != 'FFHW') && (sp20 != 'FFWN'))
 		sp20 = 0;
 	else
 		sp20 = 1;

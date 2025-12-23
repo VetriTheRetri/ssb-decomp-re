@@ -23,7 +23,7 @@ s32 func_ovl8_80376848(s32 arg0, dbUnknown5* arg1)
 	s32 var_v1_2;
 
 	var_v1_2 = arg1->unk_dbunk5_0x14;
-	var_v1_2 = ((var_v1_2 != 0x42464857) && (var_v1_2 != 0x4246574E)) ? 0 : 1;
+	var_v1_2 = ((var_v1_2 != 'BFHW') && (var_v1_2 != 'BFWN')) ? 0 : 1;
 	var_v1 = func_ovl8_803717A0(0xB8);
 
 	if (var_v1 != 0)

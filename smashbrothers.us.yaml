@@ -1826,7 +1826,7 @@ segments:
       - [0x1A7620, data, ovl8/ovl8_15]
       - [0x1A8220, data, ovl8/ovl8_16]
       - [0x1A8480, data, ovl8/ovl8_17]
-      - [0x1A8560, data, ovl8/ovl8_18]
+      - [0x1A8560, .data, ovl8/ovl8_18]
       - [0x1A8570, data, ovl8/ovl8_19]
       - [0x1A8A10, data, ovl8/ovl8_20]
       - [0x1A8D30, data, ovl8/ovl8_21]

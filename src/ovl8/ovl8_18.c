@@ -1,132 +1,164 @@
 #include "common.h"
+#include <sys/develop.h>
 
-extern s32 (*D_8038FBBC_1AC40C[])(s32, s32*);
-extern s32 D_8038FBC0_1AC410;
-extern u16 D_ovl8_8038BD10;
+typedef struct {
+    s32 unk_dbUnknownS28_0x00;
+    s32 unk_dbUnknownS28_0x04;
+    s32 unk_dbUnknownS28_0x08;
+    s32 unk_dbUnknownS28_0x0C;
+    u16 unk_dbUnknownS28_0x10;
+    u16 unk_dbUnknownS28_0x12;
+    s32 id;
+    s32 unk_dbUnknownS28_0x18;
+    s32 unk_dbUnknownS28_0x1C;
+    s32 unk_dbUnknownS28_0x20;
+    s32 unk_dbUnknownS28_0x24;
+} dbUnknownS28;
 
-extern void func_ovl8_80376164();
-extern void func_ovl8_80376848();
-extern void func_ovl8_8037C660();
-extern void func_ovl8_8037CA60();
-extern void func_ovl8_8037E830();
-extern void func_ovl8_8037EE00();
-extern void func_ovl8_8037FBC0();
-extern void func_ovl8_80380EC0();
-extern void func_ovl8_80382490();
-extern void func_ovl8_80382710();
-extern void func_ovl8_80382AE0();
-extern void func_ovl8_80382D90();
-extern void func_ovl8_803840C0();
-extern void func_ovl8_80384460();
-extern void func_ovl8_80385180();
-extern void func_ovl8_80385460();
-extern void func_ovl8_80385640();
-extern void func_ovl8_80385A50();
-extern void func_ovl8_803879A0();
+typedef s32 (*dbUiNodeHandler)(s32, dbUnknownS28*);
+typedef struct {
+    u32 id;
+    dbUiNodeHandler handler;
+} dbUiNodeTypeEntry;
 
-s32 func_ovl8_80381C2C(s32 arg0);
+// 0x8038FBC0
+extern dbUiNodeTypeEntry gDBUiNodeTypeTable[256];
+
+// 0x8038BD10
+u16 gDBUiNodeTypeCount = 0;
+
+extern s32 func_ovl8_80376164(s32, dbUnknownS28*);
+extern s32 func_ovl8_80376848(s32, dbUnknownS28*);
+extern s32 func_ovl8_8037C660(s32, dbUnknownS28*);
+extern s32 func_ovl8_8037CA60(s32, dbUnknownS28*);
+extern s32 func_ovl8_8037E830(s32, dbUnknownS28*);
+extern s32 func_ovl8_8037EE00(s32, dbUnknownS28*);
+extern s32 func_ovl8_8037FBC0(s32, dbUnknownS28*);
+extern s32 func_ovl8_80380EC0(s32, dbUnknownS28*);
+extern s32 func_ovl8_80382490(s32, dbUnknownS28*);
+extern s32 func_ovl8_80382710(s32, dbUnknownS28*);
+extern s32 func_ovl8_80382AE0(s32, dbUnknownS28*);
+extern s32 func_ovl8_80382D90(s32, dbUnknownS28*);
+extern s32 func_ovl8_803840C0(s32, dbUnknownS28*);
+extern s32 func_ovl8_80384460(s32, dbUnknownS28*);
+extern s32 func_ovl8_80385180(s32, dbUnknownS28*);
+extern s32 func_ovl8_80385460(s32, dbUnknownS28*);
+extern s32 func_ovl8_80385640(s32, dbUnknownS28*);
+extern s32 func_ovl8_80385A50(s32, dbUnknownS28*);
+extern s32 func_ovl8_803879A0(s32, dbUnknownS28*);
+
+u16 dbUiNodeTypeFindIndex(u32);
 
 // 0x80381B70
-void func_ovl8_80381B70(s32 arg0, uintptr_t func)
+void dbUiNodeTypeRegisterHandler(u32 id, dbUiNodeHandler handler) 
 {
-    s32 temp_v0;
-    s32 var_v1;
-    s32 *temp_v0_2;
+    u16 index;
+    u16 i;
 
-    temp_v0 = func_ovl8_80381C2C(arg0);
-    var_v1 = temp_v0 & 0xFFFF;
-    if (temp_v0 == 0) {
-        D_ovl8_8038BD10++;
-        var_v1 = D_ovl8_8038BD10;
+    i = index = dbUiNodeTypeFindIndex(id);
+
+    if (index == 0) 
+    {
+        gDBUiNodeTypeCount++;
+        i = gDBUiNodeTypeCount;
     }
-    temp_v0_2 = (var_v1 * 2) + &D_8038FBC0_1AC410;
-    temp_v0_2[-2] = arg0;
-    temp_v0_2[-1] = func;
+
+    gDBUiNodeTypeTable[i-1].id = id;
+    gDBUiNodeTypeTable[i-1].handler = handler;
 }
 
 // 0x80381BD0
-#ifdef NON_MATCHING
-s32 func_ovl8_80381BD0(s32 *arg0, s32 arg1)
+s32 dbUiNodeDispatch(dbUnknownS28 *arg0, s32 arg1)
 {
-    s32 temp_v0;
-    temp_v0 = func_ovl8_80381C2C(arg0[0x14/4]);
-    if (temp_v0 != 0)
-        return D_8038FBBC_1AC40C[(temp_v0 & 0xFFFF) * 2](arg1, arg0);
+    u16 index = dbUiNodeTypeFindIndex(arg0->id);
+    
+    if (index != 0)
+    {
+        return gDBUiNodeTypeTable[index-1].handler(arg1, arg0);
+    }
+    
     return 0;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_18/func_ovl8_80381BD0.s")
-#endif /* NON_MATCHING */
 
 // 0x80381C2C
-#ifdef NON_MATCHING
-s32 func_ovl8_80381C2C(s32 arg0)
-{
-    s32 var_v0;
-    s32 var_v1;
+u16 dbUiNodeTypeFindIndex(u32 id) {
+    u16 i;
+    u16 index = 0;
 
-    var_v1 = 0;
-    var_v0 = 0;
-
-    if ((s32) D_ovl8_8038BD10 > 0) {
-        do {
-            if (arg0 == *(&D_8038FBC0_1AC410 + (var_v0 * 2))) {
-                var_v1 = (var_v0 + 1) & 0xFFFF;
-            }
-            var_v0 = (var_v0 + 1) & 0xFFFF;
-        } while (var_v0 < (s32) D_ovl8_8038BD10);
+    for (i = 0; i < gDBUiNodeTypeCount; i++) 
+    {
+        if (id == gDBUiNodeTypeTable[i].id) 
+        {
+            index = i + 1;
+        }
     }
-    return var_v1 & 0xFFFF;
+    
+    return index + 0;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_18/func_ovl8_80381C2C.s")
-#endif /* NON_MATCHING */
 
 // 0x80381C80
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_18/func_ovl8_80381C80.s")
 
 // 0x80381D40
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_18/func_ovl8_80381D40.s")
+void dbUiNodeListDispatch(s32 arg0, dbUnknownS28 *arg1)
+{
+    while (arg1->unk_dbUnknownS28_0x10 != 0)
+    {
+        if (arg1->unk_dbUnknownS28_0x10); // why
+        
+        switch (arg1->unk_dbUnknownS28_0x10)
+        {
+            case 1:
+            case 4:
+            case 6:
+                break;
+            default:
+                dbUiNodeDispatch(arg1, arg0);
+                break;
+        }
+        arg1++;
+    }
+}
 
 // 0x80381DC8
-void func_ovl8_80381DC8(void)
+void dbUiNodeTypeRegisterHandlers(void)
 {
-    func_ovl8_80381B70(0x4657494E, func_ovl8_80376164);
-    func_ovl8_80381B70(0x4648574E, func_ovl8_80376164);
-    func_ovl8_80381B70(0x4646574E, func_ovl8_80376164);
-    func_ovl8_80381B70(0x46464857, func_ovl8_80376164);
-    func_ovl8_80381B70(0x4257494E, func_ovl8_80376848);
-    func_ovl8_80381B70(0x4248574E, func_ovl8_80376848);
-    func_ovl8_80381B70(0x4246574E, func_ovl8_80376848);
-    func_ovl8_80381B70(0x42464857, func_ovl8_80376848);
-    func_ovl8_80381B70(0x5342544E, func_ovl8_8037C660);
-    func_ovl8_80381B70(0x53544742, func_ovl8_8037C660);
-    func_ovl8_80381B70(0x534F5042, func_ovl8_8037C660);
-    func_ovl8_80381B70(0x53544342, func_ovl8_8037C660);
-    func_ovl8_80381B70(0x5354424E, func_ovl8_8037E830);
-    func_ovl8_80381B70(0x53545442, func_ovl8_8037E830);
-    func_ovl8_80381B70(0x53544F42, func_ovl8_8037E830);
-    func_ovl8_80381B70(0x53545443, func_ovl8_8037E830);
-    func_ovl8_80381B70(0x4242544E, func_ovl8_8037CA60);
-    func_ovl8_80381B70(0x42544742, func_ovl8_8037CA60);
-    func_ovl8_80381B70(0x424F5042, func_ovl8_8037CA60);
-    func_ovl8_80381B70(0x424F5054, func_ovl8_8037CA60);
-    func_ovl8_80381B70(0x42545842, func_ovl8_8037EE00);
-    func_ovl8_80381B70(0x42545442, func_ovl8_8037EE00);
-    func_ovl8_80381B70(0x42544F42, func_ovl8_8037EE00);
-    func_ovl8_80381B70(0x42545443, func_ovl8_8037EE00);
-    func_ovl8_80381B70(0x504F504D, func_ovl8_80376848);
-    func_ovl8_80381B70(0x53504F50, func_ovl8_80382710);
-    func_ovl8_80381B70(0x42504F50, func_ovl8_80382AE0);
-    func_ovl8_80381B70(0x53564C4D, func_ovl8_8037FBC0);
-    func_ovl8_80381B70(0x42564C4D, func_ovl8_80380EC0);
-    func_ovl8_80381B70(0x42434150, func_ovl8_80382490);
-    func_ovl8_80381B70(0x53434150, func_ovl8_80385640);
-    func_ovl8_80381B70(0x43414D20, func_ovl8_80382D90);
-    func_ovl8_80381B70(0x534C4544, func_ovl8_803840C0);
-    func_ovl8_80381B70(0x424C4544, func_ovl8_80384460);
-    func_ovl8_80381B70(0x534C5354, func_ovl8_80385180);
-    func_ovl8_80381B70(0x424C5354, func_ovl8_80385460);
-    func_ovl8_80381B70(0x53425050, func_ovl8_80385A50);
-    func_ovl8_80381B70(0x53424950, func_ovl8_803879A0);
+    dbUiNodeTypeRegisterHandler('FWIN', func_ovl8_80376164);
+    dbUiNodeTypeRegisterHandler('FHWN', func_ovl8_80376164);
+    dbUiNodeTypeRegisterHandler('FFWN', func_ovl8_80376164);
+    dbUiNodeTypeRegisterHandler('FFHW', func_ovl8_80376164);
+    dbUiNodeTypeRegisterHandler('BWIN', func_ovl8_80376848);
+    dbUiNodeTypeRegisterHandler('BHWN', func_ovl8_80376848);
+    dbUiNodeTypeRegisterHandler('BFWN', func_ovl8_80376848);
+    dbUiNodeTypeRegisterHandler('BFHW', func_ovl8_80376848);
+    dbUiNodeTypeRegisterHandler('SBTN', func_ovl8_8037C660);
+    dbUiNodeTypeRegisterHandler('STGB', func_ovl8_8037C660);
+    dbUiNodeTypeRegisterHandler('SOPB', func_ovl8_8037C660);
+    dbUiNodeTypeRegisterHandler('STCB', func_ovl8_8037C660);
+    dbUiNodeTypeRegisterHandler('STBN', func_ovl8_8037E830);
+    dbUiNodeTypeRegisterHandler('STTB', func_ovl8_8037E830);
+    dbUiNodeTypeRegisterHandler('STOB', func_ovl8_8037E830);
+    dbUiNodeTypeRegisterHandler('STTC', func_ovl8_8037E830);
+    dbUiNodeTypeRegisterHandler('BBTN', func_ovl8_8037CA60);
+    dbUiNodeTypeRegisterHandler('BTGB', func_ovl8_8037CA60);
+    dbUiNodeTypeRegisterHandler('BOPB', func_ovl8_8037CA60);
+    dbUiNodeTypeRegisterHandler('BOPT', func_ovl8_8037CA60);
+    dbUiNodeTypeRegisterHandler('BTXB', func_ovl8_8037EE00);
+    dbUiNodeTypeRegisterHandler('BTTB', func_ovl8_8037EE00);
+    dbUiNodeTypeRegisterHandler('BTOB', func_ovl8_8037EE00);
+    dbUiNodeTypeRegisterHandler('BTTC', func_ovl8_8037EE00);
+    dbUiNodeTypeRegisterHandler('POPM', func_ovl8_80376848);
+    dbUiNodeTypeRegisterHandler('SPOP', func_ovl8_80382710);
+    dbUiNodeTypeRegisterHandler('BPOP', func_ovl8_80382AE0);
+    dbUiNodeTypeRegisterHandler('SVLM', func_ovl8_8037FBC0);
+    dbUiNodeTypeRegisterHandler('BVLM', func_ovl8_80380EC0);
+    dbUiNodeTypeRegisterHandler('BCAP', func_ovl8_80382490);
+    dbUiNodeTypeRegisterHandler('SCAP', func_ovl8_80385640);
+    dbUiNodeTypeRegisterHandler('CAM ', func_ovl8_80382D90);
+    dbUiNodeTypeRegisterHandler('SLED', func_ovl8_803840C0);
+    dbUiNodeTypeRegisterHandler('BLED', func_ovl8_80384460);
+    dbUiNodeTypeRegisterHandler('SLST', func_ovl8_80385180);
+    dbUiNodeTypeRegisterHandler('BLST', func_ovl8_80385460);
+    dbUiNodeTypeRegisterHandler('SBPP', func_ovl8_80385A50);
+    dbUiNodeTypeRegisterHandler('SBIP', func_ovl8_803879A0);
 }

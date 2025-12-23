@@ -15,20 +15,20 @@ extern dbFunction D_ovl8_8038E660;
 extern dbFunction D_ovl8_8038E7B8;
 extern s32 D_ovl8_8038E7E0;
 
-void func_ovl8_80381B70(s32, s32*);
+void dbUiNodeTypeRegisterHandler(s32, s32*);
 s32 func_ovl8_803865D0(DBMenuPosition*, s32, char*);
 
 // 0x80386540
 void func_ovl8_80386540(s32 arg0, s32 arg1)
 {
-	func_ovl8_80381B70(0x4B79576E, &func_ovl8_803867E8);
+	dbUiNodeTypeRegisterHandler('KyWn', &func_ovl8_803867E8);
 	func_ovl8_803865D0(&D_ovl8_80388298, arg0, arg1);
 }
 
 // 0x80386588
 void func_ovl8_80386588(s32 arg0, s32 arg1)
 {
-	func_ovl8_80381B70(0x4B795064, &func_ovl8_80386994);
+	dbUiNodeTypeRegisterHandler('KyPd', &func_ovl8_80386994);
 	func_ovl8_803865D0(&D_ovl8_80387F40, arg0, arg1);
 }
 

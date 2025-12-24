@@ -277,36 +277,36 @@ void func_ovl8_80372DC8(s32 arg0, s32 arg1, s32 arg2) {}
 
 void func_ovl8_80372DD8(s32 arg0, s32 arg1, s32 arg2) {}
 
-void func_ovl8_80372DE8(dbUnknownS38* arg0)
+void func_ovl8_80372DE8(dbUnknownS38* root)
 {
-	dbUnknown3 *temp_v0 = func_ovl8_80373160(arg0);
+	dbUnknown3 *elem = func_ovl8_80373160(root);
 
-	if (temp_v0 != NULL)
+	if (elem != NULL)
 	{
-		while(temp_v0 != NULL)
+		while(elem != NULL)
 		{
-			dbFunction *db_func = temp_v0->unk_dbunk3_0x38->db_func;
+			dbFunction *db_func = elem->unk_dbunk3_0x38->db_func;
 
-			db_func[34].unk_dbfunc_0x4(db_func[34].unk_dbfunc_0x0 + (uintptr_t)temp_v0->unk_dbunk3_0x38);
+			db_func[34].unk_dbfunc_0x4(db_func[34].unk_dbfunc_0x0 + (uintptr_t)elem->unk_dbunk3_0x38);
 
-			temp_v0 = temp_v0->unk_dbunk3_0x28;
+			elem = elem->unk_dbunk3_0x28;
 		}
 	}
 }
 
-void func_ovl8_80372E40(dbUnknownS38* arg0)
+void func_ovl8_80372E40(dbUnknownS38* root)
 {
-	dbUnknown3 *temp_v0 = func_ovl8_80373160(arg0);
+	dbUnknown3 *elem = func_ovl8_80373160(root);
 
-	if (temp_v0 != NULL)
+	if (elem != NULL)
 	{
-		while (temp_v0 != NULL)
+		while (elem != NULL)
 		{
-			dbFunction *db_func = temp_v0->unk_dbunk3_0x38->db_func;
+			dbFunction *db_func = elem->unk_dbunk3_0x38->db_func;
 
-			db_func[32].unk_dbfunc_0x4(db_func[32].unk_dbfunc_0x0 + (uintptr_t)temp_v0->unk_dbunk3_0x38);
+			db_func[32].unk_dbfunc_0x4(db_func[32].unk_dbfunc_0x0 + (uintptr_t)elem->unk_dbunk3_0x38);
 
-			temp_v0 = temp_v0->unk_dbunk3_0x28;
+			elem = elem->unk_dbunk3_0x28;
 		}
 	}
 }
@@ -379,19 +379,19 @@ void func_ovl8_80372F04(dbUnknown3 *arg0)
 	arg0->unk_dbunk3_0x18[14].unk_dbfunc_0x4(arg0->unk_dbunk3_0x18[14].unk_dbfunc_0x0 + (uintptr_t)arg0);
 }
 
-void func_ovl8_80372FEC(dbUnknownS38* arg0)
+void func_ovl8_80372FEC(dbUnknownS38* root)
 {
-	dbUnknown3 *temp_v0 = func_ovl8_80373160(arg0);
+	dbUnknown3 *elem = func_ovl8_80373160(root);
 
-	if (temp_v0 != NULL)
+	if (elem != NULL)
 	{
-		while (temp_v0 != NULL)
+		while (elem != NULL)
 		{
-			dbFunction *db_func = temp_v0->unk_dbunk3_0x38->db_func;
+			dbFunction *db_func = elem->unk_dbunk3_0x38->db_func;
 
-			db_func[11].unk_dbfunc_0x4(db_func[11].unk_dbfunc_0x0 + (uintptr_t)temp_v0->unk_dbunk3_0x38);
+			db_func[11].unk_dbfunc_0x4(db_func[11].unk_dbfunc_0x0 + (uintptr_t)elem->unk_dbunk3_0x38);
 
-			temp_v0 = temp_v0->unk_dbunk3_0x28;
+			elem = elem->unk_dbunk3_0x28;
 		}
 	}
 }

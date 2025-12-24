@@ -1,21 +1,7 @@
 #include "common.h"
-#include <sys/develop.h>
+#include <db/debug.h>
 
-typedef struct {
-    s32 unk_dbUnknownS28_0x00;
-    s32 unk_dbUnknownS28_0x04;
-    s32 unk_dbUnknownS28_0x08;
-    s32 unk_dbUnknownS28_0x0C;
-    u16 unk_dbUnknownS28_0x10;
-    u16 unk_dbUnknownS28_0x12;
-    s32 id;
-    s32 unk_dbUnknownS28_0x18;
-    s32 unk_dbUnknownS28_0x1C;
-    s32 unk_dbUnknownS28_0x20;
-    s32 unk_dbUnknownS28_0x24;
-} dbUnknownS28;
-
-typedef s32 (*dbUiNodeHandler)(s32, dbUnknownS28*);
+typedef s32 (*dbUiNodeHandler)(s32, DBMenu*);
 typedef struct {
     u32 id;
     dbUiNodeHandler handler;
@@ -27,25 +13,25 @@ extern dbUiNodeTypeEntry gDBUiNodeTypeTable[256];
 // 0x8038BD10
 u16 gDBUiNodeTypeCount = 0;
 
-extern s32 func_ovl8_80376164(s32, dbUnknownS28*);
-extern s32 func_ovl8_80376848(s32, dbUnknownS28*);
-extern s32 func_ovl8_8037C660(s32, dbUnknownS28*);
-extern s32 func_ovl8_8037CA60(s32, dbUnknownS28*);
-extern s32 func_ovl8_8037E830(s32, dbUnknownS28*);
-extern s32 func_ovl8_8037EE00(s32, dbUnknownS28*);
-extern s32 func_ovl8_8037FBC0(s32, dbUnknownS28*);
-extern s32 func_ovl8_80380EC0(s32, dbUnknownS28*);
-extern s32 func_ovl8_80382490(s32, dbUnknownS28*);
-extern s32 func_ovl8_80382710(s32, dbUnknownS28*);
-extern s32 func_ovl8_80382AE0(s32, dbUnknownS28*);
-extern s32 func_ovl8_80382D90(s32, dbUnknownS28*);
-extern s32 func_ovl8_803840C0(s32, dbUnknownS28*);
-extern s32 func_ovl8_80384460(s32, dbUnknownS28*);
-extern s32 func_ovl8_80385180(s32, dbUnknownS28*);
-extern s32 func_ovl8_80385460(s32, dbUnknownS28*);
-extern s32 func_ovl8_80385640(s32, dbUnknownS28*);
-extern s32 func_ovl8_80385A50(s32, dbUnknownS28*);
-extern s32 func_ovl8_803879A0(s32, dbUnknownS28*);
+extern s32 func_ovl8_80376164(s32, DBMenu*);
+extern s32 func_ovl8_80376848(s32, DBMenu*);
+extern s32 func_ovl8_8037C660(s32, DBMenu*);
+extern s32 func_ovl8_8037CA60(s32, DBMenu*);
+extern s32 func_ovl8_8037E830(s32, DBMenu*);
+extern s32 func_ovl8_8037EE00(s32, DBMenu*);
+extern s32 func_ovl8_8037FBC0(s32, DBMenu*);
+extern s32 func_ovl8_80380EC0(s32, DBMenu*);
+extern s32 func_ovl8_80382490(s32, DBMenu*);
+extern s32 func_ovl8_80382710(s32, DBMenu*);
+extern s32 func_ovl8_80382AE0(s32, DBMenu*);
+extern s32 func_ovl8_80382D90(s32, DBMenu*);
+extern s32 func_ovl8_803840C0(s32, DBMenu*);
+extern s32 func_ovl8_80384460(s32, DBMenu*);
+extern s32 func_ovl8_80385180(s32, DBMenu*);
+extern s32 func_ovl8_80385460(s32, DBMenu*);
+extern s32 func_ovl8_80385640(s32, DBMenu*);
+extern s32 func_ovl8_80385A50(s32, DBMenu*);
+extern s32 func_ovl8_803879A0(s32, DBMenu*);
 
 u16 dbUiNodeTypeFindIndex(u32);
 
@@ -68,7 +54,7 @@ void dbUiNodeTypeRegisterHandler(u32 id, dbUiNodeHandler handler)
 }
 
 // 0x80381BD0
-s32 dbUiNodeDispatch(dbUnknownS28 *arg0, s32 arg1)
+s32 dbUiNodeDispatch(DBMenu *arg0, s32 arg1)
 {
     u16 index = dbUiNodeTypeFindIndex(arg0->id);
     
@@ -100,13 +86,13 @@ u16 dbUiNodeTypeFindIndex(u32 id) {
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_18/func_ovl8_80381C80.s")
 
 // 0x80381D40
-void dbUiNodeListDispatch(s32 arg0, dbUnknownS28 *arg1)
+void dbUiNodeListDispatch(s32 arg0, DBMenu *arg1)
 {
-    while (arg1->unk_dbUnknownS28_0x10 != 0)
+    while (arg1->unk_dbmenu_0x10 != 0)
     {
-        if (arg1->unk_dbUnknownS28_0x10); // why
+        if (arg1->unk_dbmenu_0x10); // why
         
-        switch (arg1->unk_dbUnknownS28_0x10)
+        switch (arg1->unk_dbmenu_0x10)
         {
             case 1:
             case 4:

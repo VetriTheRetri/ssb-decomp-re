@@ -47,6 +47,20 @@ struct DBMenuPosition
 	u16 h;
 };
 
+struct DBMenu
+{
+	DBMenuPosition position;
+	u32 text_color;
+    u32 bg_color;
+    u16 unk_dbmenu_0x10;
+    u16 unk_dbmenu_0x12;
+    s32 id;
+    s32 unk_dbmenu_0x18;
+    s32 unk_dbmenu_0x1C;
+    s32 unk_dbmenu_0x20;
+    s32 unk_dbmenu_0x24;
+};
+
 struct DBFighter
 {
 	u8 fkind;

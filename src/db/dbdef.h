@@ -25,6 +25,7 @@ typedef enum DBBattleScene
 } DBBattleScene;
 
 typedef struct DBFont					DBFont;
+typedef struct DBMenu		            DBMenu;
 typedef struct DBMenuOption             DBMenuOption;
 typedef struct DBMenuPosition           DBMenuPosition;
 typedef struct DBFighter                DBFighter;

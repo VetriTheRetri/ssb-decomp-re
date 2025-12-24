@@ -30,30 +30,21 @@ u32 dDBMenuTextColor = GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF);
 u32 dDBMenuTextBGColor[/* */] = { GPACK_RGBA8888(0x00, 0x00, 0xFF, 0xFF), GPACK_RGBA8888(0x00, 0x00, 0xFF, 0xFF), GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF) };
 
 // 0x80369F7C
-DBMenuPosition dDBMenuPosition = { 0 };
-
-// 0x80369F84 - TO DO: some kind of struct, first two members appear to be packed 32-bit RGBA, then single byte, followed by float
-u16 dDBMenuUnknown0x80369F84[/* */] =
-{
-	0xFFFF,	0xFFFF,
-	0x0000,	0xFFFF,
-	0x0001,	0x0000,
-	0x4257,	0x494E,
-	0x0000,	0x0000,
-	0x0000,	0x0000,
-	0x0000,	0x0000,
-	0x0000,	0x0000,
-	0x0000,	0x0000,
-	0x0000,	0x0000,
-	0x0000,	0x0000,
-	0x0000,	0x0000,
-	0x0000,	0x0000,
-	0x0000,	0x0000,
-	0x0000,	0x0000,
-	0x0000,	0x0000,
-	0x0000,	0x0000,
-	0x0000,	0x0000
-}; 
+DBMenu dDBMenuArray[/* */] = { 
+	{ 
+		{ 0, 0, 0, 0 }, 
+		GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF), 
+		GPACK_RGBA8888(0x00, 0x00, 0xFF, 0xFF),
+		1,
+		0,
+		'BWIN',
+		0,
+		0,
+		0,
+		0
+	}, 
+	NULL
+};
 
 // 0x80369FCC
 u16 dDBMenuPrevInputs = 0;
@@ -312,30 +303,30 @@ void dbMenuDrawBorder(s32 arg0, u32 color)
 
 	temp_s0 = func_ovl8_803749BC(arg0);
 
-	func_ovl8_80374A54(arg0, &dDBMenuPosition);
+	func_ovl8_80374A54(arg0, &dDBMenuArray[0].position);
 
 	// draw top border
 	menu_position.x = 0;
 	menu_position.y = 0;
 	menu_position.w = 1;
-	menu_position.h = dDBMenuPosition.h;
+	menu_position.h = dDBMenuArray[0].position.h;
 	func_ovl8_80377AEC(temp_s0, &menu_position, color, 4);
 
 	// draw left border
-	menu_position.w = dDBMenuPosition.w;
+	menu_position.w = dDBMenuArray[0].position.w;
 	menu_position.h = 1;
 	func_ovl8_80377AEC(temp_s0, &menu_position, color, 4);
 
 	// draw bottom border
-	menu_position.y = dDBMenuPosition.h - 1;
+	menu_position.y = dDBMenuArray[0].position.h - 1;
 	menu_position.h = 1;
 	func_ovl8_80377AEC(temp_s0, &menu_position, color, 4);
 
 	// draw right border
-	menu_position.x = dDBMenuPosition.w - 1;
+	menu_position.x = dDBMenuArray[0].position.w - 1;
 	menu_position.y = 0;
 	menu_position.w = 1;
-	menu_position.h = dDBMenuPosition.h;
+	menu_position.h = dDBMenuArray[0].position.h;
 	func_ovl8_80377AEC(temp_s0, &menu_position, color, 4);
 }
 
@@ -347,13 +338,13 @@ void dbMenuDrawBackground(s32 arg0, u32 color)
 
 	sp24 = func_ovl8_803749BC(arg0);
 
-	func_ovl8_80374A54(arg0, &dDBMenuPosition);
+	func_ovl8_80374A54(arg0, &dDBMenuArray[0].position);
 
 	// draw bg
 	sp1C.x = 1;
 	sp1C.y = 1;
-	sp1C.w = dDBMenuPosition.w - 2;
-	sp1C.h = dDBMenuPosition.h - 2;
+	sp1C.w = dDBMenuArray[0].position.w - 2;
+	sp1C.h = dDBMenuArray[0].position.h - 2;
 
 	func_ovl8_80377AEC(sp24, &sp1C, color, 4);
 }
@@ -596,12 +587,12 @@ void dbMenuMakeMenu(s32 x, s32 y, s32 w, DBMenuOption *menu_options, s32 menu_op
 		sDBMenuCursorID = sDBMenuIsRedrawInterrupt = 0;
 		sDBMenuCursorExitID = -1;
 
-		dDBMenuPosition.x = x;
-		dDBMenuPosition.y = y;
-		dDBMenuPosition.w = w;
-		dDBMenuPosition.h = (menu_options_num * 9) + 3;
+		dDBMenuArray[0].position.x = x;
+		dDBMenuArray[0].position.y = y;
+		dDBMenuArray[0].position.w = w;
+		dDBMenuArray[0].position.h = (menu_options_num * 9) + 3;
 
-		D_ovl9_80371404 = func_ovl8_80381C80(&dDBMenuPosition);
+		D_ovl9_80371404 = func_ovl8_80381C80(dDBMenuArray);
 		sDBMenuActorGObj = func_ovl8_80374910(D_ovl9_80371404);
 
 		dbMenuDrawBorder(D_ovl9_80371404, &dDBMenuBorderColor);

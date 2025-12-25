@@ -7,6 +7,9 @@ extern dbUnknownLink D_ovl8_8038C3F8;
 extern dbUnknownLinkStruct D_ovl8_8038C420;
 extern s32 D_ovl8_8038C488;
 
+void func_ovl8_803817C0(void*, f32);
+void func_ovl8_80373694(void*, f32);
+
 // 0x80382710
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_20/func_ovl8_80382710.s")
 
@@ -129,8 +132,8 @@ void func_ovl8_80382A80(dbUnknown5 *arg0)
 }
 
 // 0x80382AA0
-void func_ovl8_80382AA0(dbUnknown5* arg0, s32 arg1)
+void func_ovl8_80382AA0(dbUnknown5* arg0, f32 arg1)
     {
-    func_ovl8_803817C0(arg0->unk_dbunk5_0xB8);
+    func_ovl8_803817C0(arg0->unk_dbunk5_0xB8, arg1);
     func_ovl8_80373694(arg0, arg1);
 }

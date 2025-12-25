@@ -1,6 +1,9 @@
 #include "common.h"
 #include <sys/develop.h>
 
+void func_ovl8_803817C0(void*, f32);
+void func_ovl8_80373694(void*, f32);
+
 // 0x80385A50
 s32 func_ovl8_80385A50(s32 arg0, s32 arg1)
 {
@@ -34,9 +37,9 @@ void func_ovl8_80385D34(s32 arg0)
 }
 
 // 0x80385D54
-void func_ovl8_80385D54(s32 arg0, s32 arg1)
+void func_ovl8_80385D54(s32 arg0, f32 arg1)
 {
-    func_ovl8_803817C0(arg0 + 0xB8);
+    func_ovl8_803817C0(arg0 + 0xB8, arg1);
     func_ovl8_80373694(arg0, arg1);
 }
 

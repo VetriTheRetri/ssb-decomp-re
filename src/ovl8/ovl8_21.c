@@ -8,6 +8,8 @@ extern dbUnknownLinkStruct D_ovl8_8038C738;
 
 void* func_ovl8_80382B44(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2, s32 arg3, s32 arg4, s32 arg5);
 void func_ovl8_80382CDC(dbUnknown5* arg0);
+void func_ovl8_803817C0(void*, f32);
+void func_ovl8_80373694(void*, f32);
 
 // 0x80382AE0
 s32 func_ovl8_80382AE0(s32 arg0, dbUnknown3* arg1)
@@ -84,8 +86,8 @@ void func_ovl8_80382D30(s32 arg0)
 }
 
 // 0x80382D50
-void func_ovl8_80382D50(s32 arg0, s32 arg1)
+void func_ovl8_80382D50(s32 arg0, f32 arg1)
 {
-	func_ovl8_803817C0(arg0 + 0x40);
+	func_ovl8_803817C0(arg0 + 0x40, arg1);
 	func_ovl8_80373694(arg0, arg1);
 }

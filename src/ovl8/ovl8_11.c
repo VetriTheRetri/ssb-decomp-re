@@ -44,7 +44,7 @@ extern void func_ovl8_80371B98(void *arg0, db4Bytes *arg1);
 extern void func_ovl8_80371C2C(dbUnknownLinkStruct* arg0, dbBytesContainer *arg1);
 
 
-extern void func_ovl8_80373694(void*);
+extern void func_ovl8_80373694(void*, f32);
 extern void func_ovl8_80373E24(void*);
 extern void func_ovl8_80373EA8(void*);
 extern void func_ovl8_80373990(void*);

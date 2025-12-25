@@ -34,6 +34,26 @@ typedef struct {
 	s32 unk1C;
 } dbUnknown20;
 
+typedef struct {
+    s32 unk0[0x30 / 4];
+    struct dbUnknown23* handler;
+} dbUnknown21;
+
+typedef struct {
+    s32 unk0;
+    dbUnknown21* obj;
+    s32* table;      // pointer table (used in indexed lookup)
+    s32 count;
+} dbUnknown22;
+
+typedef struct dbUnknown23 {
+    s32 unk0[0x70 / 4];
+    s16 offset;
+    void (*callback)(void* base, void* arg);
+} dbUnknown23;
+
+extern s32 D_ovl8_8038BC30;
+
 void func_ovl8_80381908(dbUnknownLink* arg0);
 
 extern dbUnknownLinkStruct D_ovl8_8038BC34;
@@ -103,7 +123,34 @@ void func_ovl8_803812BC(dbUnknown17* arg0, s32* arg1)
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_17/func_ovl8_80381710.s")
 
 // 0x803817C0
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_17/func_ovl8_803817C0.s")
+void func_ovl8_803817C0(dbUnknown22* arg0, f32 arg1)
+{
+    s32 index;
+    dbUnknown23* handler;
+
+    if (arg1 > 0.0f)
+    {
+        index = arg1;
+
+        if (arg0->count >= index)
+        {
+            handler = arg0->obj->handler;
+
+            handler->callback(
+                (void*)(handler->offset + (uintptr_t)arg0->obj),
+                arg0->table[index - 1]
+            );
+            return;
+        }
+    }
+
+    handler = arg0->obj->handler;
+
+    handler->callback(
+        (void*)(handler->offset + (uintptr_t)arg0->obj),
+        &D_ovl8_8038BC30
+    );
+}
 
 // 0x8038185C
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_17/func_ovl8_8038185C.s")

@@ -2,7 +2,7 @@
 
 // ovl8
 extern DBMenuPosition* func_ovl8_803749BC(s32);
-extern void func_ovl8_80374A54(s32, DBMenuPosition*);
+extern void func_ovl8_80374A54(s32, DBMenu*);
 extern void func_ovl8_80377AEC(DBMenuPosition*, DBMenuPosition*, u32, s32);
 extern void func_ovl8_8037DD60(DBMenuPosition*, char*);
 extern void func_ovl8_80386BE0(char*, const char**);
@@ -33,8 +33,8 @@ u32 dDBMenuTextBGColor[/* */] = { GPACK_RGBA8888(0x00, 0x00, 0xFF, 0xFF), GPACK_
 DBMenu dDBMenuArray[/* */] = { 
 	{ 
 		{ 0, 0, 0, 0 }, 
-		GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF), 
-		GPACK_RGBA8888(0x00, 0x00, 0xFF, 0xFF),
+		{ 0xFF, 0xFF, 0xFF, 0xFF }, 
+		{ 0x00, 0x00, 0xFF, 0xFF }, 
 		1,
 		0,
 		'BWIN',
@@ -303,7 +303,7 @@ void dbMenuDrawBorder(s32 arg0, u32 color)
 
 	temp_s0 = func_ovl8_803749BC(arg0);
 
-	func_ovl8_80374A54(arg0, &dDBMenuArray[0].position);
+	func_ovl8_80374A54(arg0, &dDBMenuArray[0]);
 
 	// draw top border
 	menu_position.x = 0;
@@ -338,7 +338,7 @@ void dbMenuDrawBackground(s32 arg0, u32 color)
 
 	sp24 = func_ovl8_803749BC(arg0);
 
-	func_ovl8_80374A54(arg0, &dDBMenuArray[0].position);
+	func_ovl8_80374A54(arg0, &dDBMenuArray[0]);
 
 	// draw bg
 	sp1C.x = 1;

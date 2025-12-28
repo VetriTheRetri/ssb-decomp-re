@@ -91,18 +91,18 @@ void func_ovl8_8037217C(dbUnknownLink *arg0)
 
 void func_ovl8_803721E8(dbTestMenu *arg0, dbUnknownLinkStruct *arg1)
 {
-	arg1->unk_dbunkstruct_0x2.arr[0] = 0;
+	arg1->position.x = 0;
 	arg1->unk_dbunkstruct_0x0 = 0;
 
 	if (arg0->unk_dbtestmenu_0x8 != NULL)
 	{
-		arg1->unk_dbunkstruct_0x2.arr[1] = arg0->unk_dbtestmenu_0x8->arr[2];
-		arg1->unk_dbunkstruct_0x2.arr[2] = arg0->unk_dbtestmenu_0x8->arr[3];
+		arg1->position.y = arg0->unk_dbtestmenu_0x8->arr[2];
+		arg1->position.w = arg0->unk_dbtestmenu_0x8->arr[3];
 	}
 	else
 	{
-		arg1->unk_dbunkstruct_0x2.arr[2] = 0;
-		arg1->unk_dbunkstruct_0x2.arr[1] = 0;
+		arg1->position.w = 0;
+		arg1->position.y = 0;
 	}
 }
 

@@ -348,16 +348,15 @@ void func_ovl8_8037728C()
 // 0x803772AC
 void func_ovl8_803772AC(dbUnknown5* arg0)
 {
-	s32 probably_rest_of_struct[7];
+	DBMenu sp20;
 	s16 arg1, arg2;
-	DBMenuPosition sp20;
 	dbFunction* db_func;
 
 	func_ovl8_80374A54(arg0, &sp20);
 
 	db_func = arg0->db_func;
-	arg1 = 0xA0 - (sp20.w / 2);
-	arg2 = 0x78 - (sp20.h / 2);
+	arg1 = 160 - (sp20.position.w / 2);
+	arg2 = 120 - (sp20.position.h / 2);
 	db_func[10].unk_dbfunc_0x4(db_func[10].unk_dbfunc_0x0 + (uintptr_t)arg0, arg1, arg2);
 }
 

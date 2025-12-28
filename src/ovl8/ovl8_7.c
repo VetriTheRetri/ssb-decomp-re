@@ -114,7 +114,7 @@ void func_ovl8_80376A48(dbUnknownLinkStruct *arg0, s16 arg1, s16 arg2)
 	if (arg0 != NULL)
 		var_v1 = arg0->unk_dbunkstruct_0x20;
 
-	spMove(arg0->unk_dbunkstruct_0x40, var_v0->unk_dbunkstruct_0x2.arr[0] + arg1, var_v1->unk_dbunkstruct_0x2.arr[1] + arg2);
+	spMove(arg0->unk_dbunkstruct_0x40, var_v0->position.x + arg1, var_v1->position.y + arg2);
 }
 
 // 0x80376AA4

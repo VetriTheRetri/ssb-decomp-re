@@ -50,8 +50,8 @@ struct DBMenuPosition
 struct DBMenu
 {
 	DBMenuPosition position;
-	u32 text_color;
-    u32 bg_color;
+	SYColorRGBA text_color;
+    SYColorRGBA bg_color;
     u16 unk_dbmenu_0x10;
     u16 unk_dbmenu_0x12;
     s32 id;

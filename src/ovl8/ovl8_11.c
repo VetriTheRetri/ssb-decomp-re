@@ -41,7 +41,7 @@ extern void func_ovl8_80371AD8(dbUnknownLinkStruct* arg0, s32 arg1);
 extern sb32 func_ovl8_80371BCC(dbUnknownLinkStruct* arg0, s32 arg1);
 extern void func_ovl8_80371B34(dbUnknownLinkStruct* arg0, s32 arg1);
 extern void func_ovl8_80371B98(void *arg0, db4Bytes *arg1);
-extern void func_ovl8_80371C2C(dbUnknownLinkStruct* arg0, dbBytesContainer *arg1);
+extern void func_ovl8_80371C2C(dbUnknownLinkStruct* arg0, DBMenuPosition *arg1);
 
 
 extern void func_ovl8_80373694(void*, f32);

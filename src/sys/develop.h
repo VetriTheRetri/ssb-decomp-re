@@ -4,6 +4,7 @@
 #include <ssb_types.h>
 #include <PR/ultratypes.h>
 #include <sys/obj.h>
+#include <db/dbtypes.h>
 
 typedef enum dbObjectDisplayMode
 {
@@ -100,11 +101,11 @@ struct dbBytesCopy
 struct dbUnknownLinkStruct
 {
     u16 unk_dbunkstruct_0x0;
-    db4Shorts unk_dbunkstruct_0x2;
+    DBMenuPosition position;
     s32 unk_dbunkstruct_0xC;
-    s32 unk_dbunkstruct_0x10;
-    db4Bytes unk_dbunkstruct_0x14;
-    db4Bytes unk_dbunkstruct_0x18;
+    s32 id;
+    SYColorRGBA text_color;
+    SYColorRGBA bg_color;
     dbUnknownLinkStruct *unk_dbunkstruct_0x1C;
     dbUnknownLinkStruct *unk_dbunkstruct_0x20;
     u16 unk_dbunkstruct_0x24;
@@ -121,7 +122,7 @@ struct dbUnknownLinkStruct
     db4Bytes unk_dbunkstruct_0x50;
     sb32(*unk_dbunkstruct_0x54)();
     dbFunction *db_func;                            // Points to a whole bunch of function pointers?
-    db4Shorts unk_dbunkstruct_0x5C;
+    DBMenuPosition unk_dbunkstruct_0x5C;
     s32 unk_dbunkstruct_0x64;
 };
 

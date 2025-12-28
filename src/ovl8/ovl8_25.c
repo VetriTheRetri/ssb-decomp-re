@@ -129,7 +129,7 @@ void func_ovl8_80384654(dbUnknown5* arg0, s32 arg1)
 // 0x803846F0
 s16 func_ovl8_803846F0(dbUnknownS38* arg0)
 {
-    return arg0->unk_dbunks38_0x38.unk_dbunkstruct_0x2.arr[2];
+    return arg0->unk_dbunks38_0x38.position.w;
 }
 
 // 0x803846F8
@@ -211,7 +211,7 @@ void func_ovl8_80384BD4(dbUnknownS38* arg0)
     dbFunction* temp_v0;
 
     temp_v0 = arg0->unk_dbunks38_0x30;
-    temp_v0[26].unk_dbfunc_0x4(temp_v0[26].unk_dbfunc_0x0 + (uintptr_t)arg0, arg0->unk_dbunks38_0x38.unk_dbunkstruct_0x2.arr[1] + 1);
+    temp_v0[26].unk_dbfunc_0x4(temp_v0[26].unk_dbfunc_0x0 + (uintptr_t)arg0, arg0->unk_dbunks38_0x38.position.y + 1);
 }
 
 // 0x80384C0C
@@ -220,7 +220,7 @@ void func_ovl8_80384C0C(dbUnknownS38* arg0)
     dbFunction* temp_v0;
 
     temp_v0 = arg0->unk_dbunks38_0x30;
-    temp_v0[26].unk_dbfunc_0x4(temp_v0[26].unk_dbfunc_0x0 + (uintptr_t)arg0, arg0->unk_dbunks38_0x38.unk_dbunkstruct_0x2.arr[1] - 1);
+    temp_v0[26].unk_dbfunc_0x4(temp_v0[26].unk_dbfunc_0x0 + (uintptr_t)arg0, arg0->unk_dbunks38_0x38.position.y - 1);
 }
 
 // 0x80384C44

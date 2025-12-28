@@ -317,7 +317,45 @@ void func_ovl8_80374A28(dbUnknownS38* arg0)
 }
 
 // 0x80374A54
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_80374A54.s")
+void func_ovl8_80374A54(dbUnknownLinkStruct* arg0, DBMenu* arg1) 
+{
+    dbUnknownLinkStruct* var_v0;
+
+    var_v0 = arg0;
+    if (arg0 != NULL) 
+    {
+        var_v0 = arg0->unk_dbunkstruct_0x20;
+    }
+    arg1->position = var_v0->position;
+    
+    var_v0 = arg0;
+    if (arg0 != NULL) 
+    {
+        var_v0 = arg0->unk_dbunkstruct_0x20;
+    }
+    arg1->text_color = var_v0->text_color;
+    
+    var_v0 = arg0;
+    if (arg0 != NULL) 
+    {
+        var_v0 = arg0->unk_dbunkstruct_0x20;
+    }
+    arg1->bg_color = var_v0->bg_color;
+    
+    var_v0 = arg0;
+    if (arg0 != NULL) 
+    {
+        var_v0 = arg0->unk_dbunkstruct_0x20;
+    }
+    arg1->unk_dbmenu_0x18 = var_v0->unk_dbunkstruct_0xC;
+    
+    var_v0 = arg0;
+    if (arg0 != NULL) 
+    {
+        var_v0 = arg0->unk_dbunkstruct_0x20;
+    }
+    arg1->id = var_v0->id;
+}
 
 // 0x80374AE4
 void func_ovl8_80374AE4(dbUnknownS38* arg0)
@@ -481,11 +519,11 @@ void func_ovl8_80374F18(s16 arg0, s16 arg1, u16 arg2, u16 arg3)
     dbUnknownLinkStruct* temp_v0;
 
     temp_v0 = func_ovl8_8037C0CC();
-    temp_v0->unk_dbunkstruct_0x2.arr[0] = arg0;
-    temp_v0->unk_dbunkstruct_0x2.arr[1] = arg1;
-    temp_v0->unk_dbunkstruct_0x2.arr[2] = arg2;
-    temp_v0->unk_dbunkstruct_0x2.arr[3] = arg3;
-    temp_v0->unk_dbunkstruct_0x5C = temp_v0->unk_dbunkstruct_0x2;
+    temp_v0->position.x = arg0;
+    temp_v0->position.y = arg1;
+    temp_v0->position.w = arg2;
+    temp_v0->position.h = arg3;
+    temp_v0->unk_dbunkstruct_0x5C = temp_v0->position;
 }
 
 // 0x80374F84
@@ -494,10 +532,10 @@ void func_ovl8_80374F84(s16 arg0, s16 arg1, u16 arg2, u16 arg3)
     dbUnknownLinkStruct* temp_v0;
 
     temp_v0 = func_ovl8_8037C0CC();
-    temp_v0->unk_dbunkstruct_0x5C.arr[0] = arg0;
-    temp_v0->unk_dbunkstruct_0x5C.arr[1] = arg1;
-    temp_v0->unk_dbunkstruct_0x5C.arr[2] = arg2;
-    temp_v0->unk_dbunkstruct_0x5C.arr[3] = arg3;
+    temp_v0->unk_dbunkstruct_0x5C.x = arg0;
+    temp_v0->unk_dbunkstruct_0x5C.y = arg1;
+    temp_v0->unk_dbunkstruct_0x5C.w = arg2;
+    temp_v0->unk_dbunkstruct_0x5C.h = arg3;
 }
 
 // 0x80374FD0

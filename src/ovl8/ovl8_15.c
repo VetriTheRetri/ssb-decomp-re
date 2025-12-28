@@ -93,7 +93,7 @@ void func_ovl8_8037F590(dbUnknown5* arg0)
     temp_v1 = temp_a2->db_func;
     temp_v1[21].unk_dbfunc_0x4(temp_v1[21].unk_dbfunc_0x0 + (uintptr_t)temp_a2, &sp38);
 
-    func_ovl8_8037B46C(sp2C, &sp38, arg0->unk_dbunk5_0x48, &arg0->unk_dbunk5_0x38->unk_dbunkstruct_0x18);
+    func_ovl8_8037B46C(sp2C, &sp38, arg0->unk_dbunk5_0x48, &arg0->unk_dbunk5_0x38->bg_color);
 
     temp_v1 = arg0->unk_dbunk5_0x30;
     temp_v1[26].unk_dbfunc_0x4(temp_v1[26].unk_dbfunc_0x0 + (uintptr_t)arg0, &sp30);
@@ -101,7 +101,7 @@ void func_ovl8_8037F590(dbUnknown5* arg0)
     sp30[0] += sp38[0];
     sp30[1] += sp38[1];
 
-    func_ovl8_8037B46C(sp2C, &sp30, arg0->unk_dbunk5_0x44.ls, &arg0->unk_dbunk5_0x38->unk_dbunkstruct_0x18);
+    func_ovl8_8037B46C(sp2C, &sp30, arg0->unk_dbunk5_0x44.ls, &arg0->unk_dbunk5_0x38->bg_color);
 }
 
 // 0x8037F654

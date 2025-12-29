@@ -525,4 +525,17 @@ void func_ovl8_803743CC(u16* arg0, u16 arg1)
 }
 
 // 0x803743D8
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_5/func_ovl8_803743D8.s")
+void func_ovl8_803743D8(dbUnknown5 *arg0, s32 arg1, s32 arg2, s32 arg3) 
+{
+    dbFunction* temp_v0;
+
+    if (arg2 == arg3)
+        return;
+
+    arg0->unk_dbunk5_0x0 = arg1 = (arg0->unk_dbunk5_0x0 != 0.0f) ? 0 : 1;
+
+    if(0);
+    
+    temp_v0 = arg0->unk_dbunk5_0x38->db_func;
+    temp_v0[35].unk_dbfunc_0x4(temp_v0[35].unk_dbfunc_0x0 + (uintptr_t)arg0->unk_dbunk5_0x38, 1);
+}

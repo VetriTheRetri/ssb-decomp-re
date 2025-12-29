@@ -106,7 +106,10 @@ struct dbUnknownLinkStruct
     s32 id;
     SYColorRGBA text_color;
     SYColorRGBA bg_color;
-    dbUnknownLinkStruct *unk_dbunkstruct_0x1C;
+    union {
+        dbUnknownLinkStruct *link;
+        s16 s[2];
+    } unk_dbunkstruct_0x1C;
     dbUnknownLinkStruct *unk_dbunkstruct_0x20;
     u16 unk_dbunkstruct_0x24;
     sb32 unk_dbunkstruct_0x28;

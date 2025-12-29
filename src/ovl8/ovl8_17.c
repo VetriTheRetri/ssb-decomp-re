@@ -64,7 +64,7 @@ dbUnknownLinkStruct* func_ovl8_80381130(dbUnknownLinkStruct* arg0)
 {
 	if ((arg0 != NULL) || ((arg0 = func_ovl8_803717A0(0x20)) != NULL))
 	{
-		arg0->unk_dbunkstruct_0x1C = &D_ovl8_8038BC34;
+		arg0->unk_dbunkstruct_0x1C.link = &D_ovl8_8038BC34;
 	}
 	return arg0;
 }
@@ -78,7 +78,7 @@ void func_ovl8_8038120C(dbUnknownLinkStruct* arg0, s32 arg1)
 	if (arg0 == NULL)
 		return;
 
-	arg0->unk_dbunkstruct_0x1C = &D_ovl8_8038BC34;
+	arg0->unk_dbunkstruct_0x1C.link = &D_ovl8_8038BC34;
 	func_ovl8_80381908(arg0);
 	if (arg1 & 1)
 		func_ovl8_803717C0(arg0);
@@ -246,7 +246,7 @@ void func_ovl8_80381B10(dbUnknownLinkStruct* arg0, s32 arg1)
 	if (arg0 == NULL)
 		return;
 
-	arg0->unk_dbunkstruct_0x1C = &D_ovl8_8038BC8C;
+	arg0->unk_dbunkstruct_0x1C.link = &D_ovl8_8038BC8C;
 	func_ovl8_8038120C(arg0, 0);
 	if (arg1 & 1)
 		func_ovl8_803717C0(arg0);

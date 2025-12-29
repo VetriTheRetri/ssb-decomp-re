@@ -56,7 +56,7 @@ struct DBMenu
     u16 unk_dbmenu_0x12;
     s32 id;
     s32 unk_dbmenu_0x18;
-    s32 unk_dbmenu_0x1C;
+    s16 unk_dbmenu_0x1C;
     s32 unk_dbmenu_0x20;
     s32 unk_dbmenu_0x24;
 };

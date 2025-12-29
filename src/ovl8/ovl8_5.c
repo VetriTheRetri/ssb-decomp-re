@@ -260,7 +260,47 @@ void func_ovl8_80373988(dbUnknown5* arg0, s32 arg1)
 }
 
 // 0x80373990
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_5/func_ovl8_80373990.s")
+void func_ovl8_80373990(dbUnknownLinkStruct* arg0, DBMenu* arg1) 
+{
+    dbUnknownLinkStruct* var_v0;
+
+    var_v0 = arg0;
+    if (arg0 != NULL) 
+    {
+        var_v0 = arg0->unk_dbunkstruct_0x38;
+    }
+    arg1->position = var_v0->position;
+    
+    var_v0 = arg0;
+    if (arg0 != NULL) 
+    {
+        var_v0 = arg0->unk_dbunkstruct_0x38;
+    }
+    arg1->text_color = var_v0->text_color;
+    
+    var_v0 = arg0;
+    if (arg0 != NULL) 
+    {
+        var_v0 = arg0->unk_dbunkstruct_0x38;
+    }
+    arg1->bg_color = var_v0->bg_color;
+    
+    var_v0 = arg0;
+    if (arg0 != NULL) 
+    {
+        var_v0 = arg0->unk_dbunkstruct_0x38;
+    }
+    arg1->unk_dbmenu_0x18 = var_v0->unk_dbunkstruct_0xC;
+    
+    var_v0 = arg0;
+    if (arg0 != NULL) 
+    {
+        var_v0 = arg0->unk_dbunkstruct_0x38;
+    }
+    arg1->id = var_v0->id;
+
+    arg1->unk_dbmenu_0x1C = arg0->unk_dbunkstruct_0x1C.s[1];
+}
 
 // 0x80373A28
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_5/func_ovl8_80373A28.s")

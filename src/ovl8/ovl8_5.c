@@ -2,6 +2,20 @@
 #include <sys/develop.h>
 #include <db/debug.h>
 
+typedef struct {
+    s16 unk0[0x1e/2];
+    s16 unk1E;
+    s32 unk20[0x8/4];
+    s32 unk28;
+    s32 unk2C[0x4/4];
+    dbFunction * unk30;
+    s32 unk34;
+    s32* unk38;
+    s32 unk3C;
+    s16 unk40;
+    s32 (*unk44)(s32, f32);
+} UnkStruct1;
+
 extern dbUnknownLinkStruct D_ovl8_803890A0;
 extern dbFunction D_ovl8_80389170;
 extern dbUnknownLink D_ovl8_803892C8;
@@ -303,7 +317,30 @@ void func_ovl8_80373990(dbUnknownLinkStruct* arg0, DBMenu* arg1)
 }
 
 // 0x80373A28
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_5/func_ovl8_80373A28.s")
+void func_ovl8_80373A28(UnkStruct1 *arg0, f32 arg1) 
+{
+    s16 temp_v0_2;
+    UnkStruct1 *temp_v0;
+
+    if (arg0->unk38);
+    
+    temp_v0 = func_ovl8_80373160(arg0->unk38[0x4C/4]);
+    
+    if (temp_v0 != NULL)
+    {
+        while (temp_v0 != NULL)
+        {
+            temp_v0_2 = temp_v0->unk1E;
+            
+            if ((temp_v0_2 > 0) && (arg0 != temp_v0) && (temp_v0_2 == arg0->unk1E)) 
+            {
+                ((void (*)(void*, f32))temp_v0->unk30[8].unk_dbfunc_0x4)(temp_v0->unk30[8].unk_dbfunc_0x0 + (uintptr_t)temp_v0, arg1);
+            }
+            
+            temp_v0 = temp_v0->unk28;
+        }
+    }
+}
 
 // 0x80373ABC
 void func_ovl8_80373ABC(s32 arg0) {}

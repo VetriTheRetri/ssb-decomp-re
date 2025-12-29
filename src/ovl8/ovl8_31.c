@@ -101,7 +101,7 @@ s32 func_ovl8_803866AC(dbUnknown5* arg0, s32 arg1, dbUnknown5* arg2)
 		temp_v0 = arg0->unk_dbunk5_0xAC->unk_dbunks38_0x30;
 		temp_v1 = arg0->unk_dbunk5_0xAC;
 
-		temp_v0[27].unk_dbfunc_0x4(temp_v0[27].unk_dbfunc_0x0 + (uintptr_t)temp_v1, (u8)arg2->unk_dbunk5_0xC);
+		temp_v0[27].unk_dbfunc_0x4(temp_v0[27].unk_dbfunc_0x0 + (uintptr_t)temp_v1, arg2->unk_dbunk5_0xC.b);
 		temp_v1 = arg0->unk_dbunk5_0xAC;
 		temp_v0 = temp_v1->unk_dbunks38_0x30;
 		temp_v0[28].unk_dbfunc_0x4(temp_v0[28].unk_dbfunc_0x0 + (uintptr_t)temp_v1);

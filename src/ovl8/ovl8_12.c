@@ -93,6 +93,13 @@ dbFunction D_ovl8_8038A700[] =
 	0x0000, NULL
 };
 
+// 0x8037CF4C
+void func_ovl8_8037CF4C(dbUnknownLinkStruct* arg0) {
+    arg0->unk_dbunkstruct_0x64 = 0;
+    arg0->unk_dbunkstruct_0x5C = arg0->position;
+    arg0->unk_dbunkstruct_0x48 = gcMakeGObjSPAfter(-0x1FB, NULL, 0x1F, 0);
+}
+
 // 0x8037CE40
 void* func_ovl8_8037CE40(dbUnknownLinkStruct* arg0)
 {
@@ -134,8 +141,7 @@ void func_ovl8_8037CEE8(dbUnknownLinkStruct* arg0, s32 arg1)
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_12/func_ovl8_8037CEE8.s")
 #endif /* NON_MATCHING */
 
-// 0x8037CF4C
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_12/func_ovl8_8037CF4C.s")
+
 
 // 0x8037CFAC
 void func_ovl8_8037CFAC(void** arg0)

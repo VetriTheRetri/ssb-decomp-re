@@ -31,7 +31,9 @@ typedef struct dbUnknown6_3 dbUnknown6_3;
 struct dbUnknown6_3 {
     u8 unk_dbunk6_0x0[0x20];
     dbUnknown6_2* unk_dbunk6_0x20;
-    u8 unk_dbunk6_0x24[0x38 - 0x24];
+    u8 unk_dbunk6_0x24[0x28 - 0x24];
+    dbUnknown6_3* unk_dbunk6_0x28;
+    u8 unk_dbunk6_0x2C[0x38 - 0x2C];
     dbUnknown6_2* unk_dbunk6_0x38;
 };
 
@@ -551,7 +553,19 @@ void func_ovl8_80375010(dbUnknown6_3* arg0, dbUnknown6* arg1)
 }
 
 // 0x80375050
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_80375050.s")
+void func_ovl8_80375050(dbUnknown6_3* arg0, dbUnknown6* arg1) 
+{
+    dbUnknown6_3 *var_v1 = func_ovl8_80373160(arg0);
+
+    if (var_v1 == NULL)
+        return;
+    
+    while (var_v1 != NULL)
+    {
+        var_v1->unk_dbunk6_0x38->unk_dbunk6_0x2C = *arg1;
+        var_v1 = var_v1->unk_dbunk6_0x28;
+    }
+}
 
 // 0x803750CC
 void func_ovl8_803750CC(s16 arg0)

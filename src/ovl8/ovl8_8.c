@@ -130,6 +130,8 @@ extern s16 D_ovl8_80389F3C;
 extern s16 D_ovl8_80389F40;
 extern s16 D_ovl8_80389F44;
 
+extern DBMenu D_ovl8_80389F68;
+
 // 0x80376B60
 void func_ovl8_80376B60(s32 arg0, u8* arg1, u32* arg2)
 {
@@ -370,7 +372,18 @@ void func_ovl8_80377330(dbUnknown5* arg0, s16 arg1, s16 arg2)
 }
 
 // 0x80377374
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80377374.s")
+void func_ovl8_80377374(DBMenuPosition *arg0) 
+{
+    if (arg0 != NULL) 
+    {
+        D_ovl8_80389F68.position = *arg0;
+    }
+    else
+    {
+        D_ovl8_80389F68.position.x = D_ovl8_80389F68.position.y = 0;
+        D_ovl8_80389F68.position.w = D_ovl8_80389F68.position.h = 32767;
+    }
+}
 
 // 0x803773CC
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_803773CC.s")

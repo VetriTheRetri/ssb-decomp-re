@@ -94,7 +94,6 @@ dbFunction D_ovl8_8038A700[] =
 	0x0000, NULL
 };
 
-
 // 0x8037CE40
 void* func_ovl8_8037CE40(dbUnknownLinkStruct* arg0)
 {

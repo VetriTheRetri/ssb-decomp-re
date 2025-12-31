@@ -264,7 +264,23 @@ void func_ovl8_8037DFCC(s16 arg0, s16 arg1)
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037E6F4.s")
 
 // 0x8037E7A8
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037E7A8.s")
+s32 func_ovl8_8037E7A8(u8 * s) 
+{
+    register s32 sum = 0;
+
+    if (s == NULL) {
+        return 0;
+    }
+    
+    if (*s != 0) {
+        u8 *p;
+        do {
+            p = s++, sum += func_ovl8_8037E6F4(*p);   
+        } while (*s != 0);
+    }
+
+    return sum;
+}
 
 // 0x8037E80C
 u16 func_ovl8_8037E80C()

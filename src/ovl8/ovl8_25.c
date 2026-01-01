@@ -233,7 +233,13 @@ s16 func_ovl8_80384C44(s16* arg0)
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_25/func_ovl8_80384C4C.s")
 
 // 0x80384D58
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_25/func_ovl8_80384D58.s")
+void func_ovl8_80384D58(dbUnknownS38 *arg0, s32 arg1) 
+{
+    ((void (*)(void*, s32))arg0->unk_dbunks38_0x30[30].unk_dbfunc_0x4)(
+        arg0->unk_dbunks38_0x30[30].unk_dbfunc_0x0 + (uintptr_t)arg0, 
+        ((f32 (*)(void*, s32))arg0->unk_dbunks38_0x30[5].unk_dbfunc_0x4)(arg0->unk_dbunks38_0x30[5].unk_dbfunc_0x0 + (uintptr_t)arg0, arg1) - 1.0
+    );
+}
 
 // 0x80384DC4
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_25/func_ovl8_80384DC4.s")

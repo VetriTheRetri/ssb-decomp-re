@@ -722,7 +722,52 @@ s32 func_ovl8_8037B7F0(u8 *str, s32 index)
 }
 
 // 0x8037B85C
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037B85C.s")
+void func_ovl8_8037B85C(s32 arg0, s32* arg1, s32* arg2) 
+{
+    s32 temp_v0;
+    s32 temp_v1;
+    s32 var_a0;
+    s32 var_a1;
+    s32 var_a2;
+    s32 temp_f6;
+
+    var_a2 = (arg0 == 1) ? 0x800 : (arg0 == 2) ? 0x800 : 0x400;
+    
+    temp_f6 = sqrtf(var_a2);
+    
+    temp_v0 = *arg1;
+    temp_v1 = *arg2;
+    
+    if (var_a2 < (temp_v0 * temp_v1)) 
+    {
+        if (temp_v0 >= temp_v1) 
+        {
+            var_a0 = temp_v1;
+            var_a1 = var_a2 / temp_v1;
+        } 
+        else 
+        {
+            var_a0 = var_a2 / temp_v0;
+            var_a1 = temp_v0;
+        }
+        
+        if (temp_f6 < var_a1) 
+        {
+            var_a1 = temp_f6;
+        }
+        
+        if (temp_f6 < var_a0) 
+        {
+            var_a0 = temp_f6;
+        }
+
+        var_a1 &= ~3;
+        var_a0 &= ~3;
+        
+        *arg1 = var_a1;
+        *arg2 = var_a0;
+    }
+}
 
 // 0x8037B98C
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037B98C.s")

@@ -274,9 +274,9 @@ s32 func_ovl8_8037E7A8(u8 * s)
     
     while (*s != 0) {
         u8 *p = s++;\
-         sum += func_ovl8_8037E6F4(*p);   
+        sum += func_ovl8_8037E6F4(*p);   
     }
-
+    
     return sum;
 }
 

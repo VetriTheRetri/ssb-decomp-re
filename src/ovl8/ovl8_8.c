@@ -641,6 +641,7 @@ s32 func_ovl8_8037AA5C(DBMenuPosition* arg0)
 // 0x8037ABDC
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037ABDC.s")
 
+// 0x8037ACAC
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037ACAC.s")
 
 // 0x8037B3E4

@@ -91,6 +91,33 @@ void func_ovl8_8037CCC8(dbUnknown5* arg0, s32 arg1)
 }
 
 // 0x8037CD64
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_11_1/func_ovl8_8037CD64.s")
+void func_ovl8_8037CD64(dbUnknown5* arg0) 
+{
+    dbFunction* temp_v0;
+    dbUnknownLinkStruct *var_v0;
+    dbUnknownLinkStruct* temp_v1;
+    Vec2h sp28;
+    Vec2h sp24;
 
+    var_v0 = var_v0 = arg0->unk_dbunk5_0x0 != 0.0f ? (arg0->unk_dbunk5_0x40 != NULL ? arg0->unk_dbunk5_0x40 : arg0->unk_dbunk5_0x44.ls) : arg0->unk_dbunk5_0x44.ls;
+    
+    if (var_v0 != 0) 
+    {
+        temp_v1 = arg0->unk_dbunk5_0x38;
+        temp_v1->db_func[21].unk_dbfunc_0x4(temp_v1->db_func[21].unk_dbfunc_0x0 + (uintptr_t)temp_v1, &sp28);
+        
+        sp24.x = sp28.x;
+        sp24.y = sp28.y;
+        sp28.y = 0;
+        sp28.x = 0;
+        
+        temp_v1 = arg0->unk_dbunk5_0x38;
+        if (1);
+        temp_v0 = temp_v1->db_func;
+        
+        func_ovl8_803787C0(var_v0, temp_v0[23].unk_dbfunc_0x4(temp_v0[23].unk_dbfunc_0x0 + (uintptr_t)temp_v1), &sp28, &sp24);
+    }
+}
+
+// 0x8037CE30
 void func_ovl8_8037CE30(s32 arg0) {}

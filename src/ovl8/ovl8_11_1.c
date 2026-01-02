@@ -101,7 +101,7 @@ void func_ovl8_8037CD64(dbUnknown5* arg0)
 
     var_v0 = var_v0 = arg0->unk_dbunk5_0x0 != 0.0f ? (arg0->unk_dbunk5_0x40 != NULL ? arg0->unk_dbunk5_0x40 : arg0->unk_dbunk5_0x44.ls) : arg0->unk_dbunk5_0x44.ls;
     
-    if (var_v0 != 0) 
+    if (var_v0 != NULL) 
     {
         temp_v1 = arg0->unk_dbunk5_0x38;
         temp_v1->db_func[21].unk_dbfunc_0x4(temp_v1->db_func[21].unk_dbfunc_0x0 + (uintptr_t)temp_v1, &sp28);

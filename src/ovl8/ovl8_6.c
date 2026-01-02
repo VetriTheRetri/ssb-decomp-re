@@ -579,7 +579,7 @@ void func_ovl8_803750E4(dbUnkStruct arg0)
     D_ovl8_8038A878 = arg0.unk0;
     D_ovl8_8038A87C = arg0.unk4;
     D_ovl8_8038A880 = arg0.unk8;
-    D_ovl8_8038A884 = arg0.unkC;
+    D_ovl8_8038A884 = arg0.db_func;
 }
 
 // 0x80375118

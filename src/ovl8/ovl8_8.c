@@ -20,6 +20,8 @@ s32 func_ovl8_8037AA5C(DBMenuPosition*);
 void func_ovl8_8037BD44();
 void func_ovl8_8037BEC8();
 void func_ovl8_8037BF34();
+void* func_ovl8_8037BDF4(GObj*);
+void* func_ovl8_8037BD94(GObj*);
 
 // BSS
 extern s32 D_ovl8_8038EE60;
@@ -119,7 +121,9 @@ extern s32 D_ovl8_80389F60;
 extern s32 D_ovl8_80389F64;
 extern void* D_ovl8_80389FB4;
 extern void* D_ovl8_8038A068;
-extern dbTestMenu* D_8038EFC4_1AB814;
+extern DBMenu D_ovl8_8038A11C;
+extern GObj *D_8038EFC0_1AB810;
+extern dbUnkStruct *D_8038EFC4_1AB814;
 extern dbUnknownLinkStruct* D_8038EFC8_1AB818;
 extern dbTestMenu* D_8038EFCC_1AB81C;
 extern dbUnknown8_S28 D_ovl8_8038A144;
@@ -770,7 +774,54 @@ void func_ovl8_8037B85C(s32 arg0, s32* arg1, s32* arg2)
 }
 
 // 0x8037B98C
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037B98C.s")
+void func_ovl8_8037B98C(dbMenuSprite *arg0)
+{
+    dbUnkStruct *temp_v0;
+    dbUnknownLinkStruct *temp_v0_2;
+    DBMenu sp28;
+    dbMenuSprite *var_v1;
+
+    sp28 = D_ovl8_8038A11C;
+    
+    D_8038EFC0_1AB810 = arg0->unk_dbmenusprite_0x0;
+    
+    func_ovl8_80371638(D_8038EFC0_1AB810, arg0->unk_dbmenusprite_0x4);
+    func_ovl8_8037D2F0();
+    
+    temp_v0 = func_ovl8_803717A0(0x10);
+    
+    if (temp_v0 != NULL) 
+    {
+        func_ovl8_8037C3C0(temp_v0);
+        var_v1 = temp_v0;
+    } 
+    else var_v1 = NULL;
+    
+    D_8038EFC4_1AB814 = var_v1;
+    
+    func_ovl8_8037C498(D_8038EFC4_1AB814, D_8038EFC4_1AB814);
+    gcAddGObjProcess(func_ovl8_8037C510(D_8038EFC4_1AB814), func_ovl8_8037BD94, 0, 1);
+    
+    temp_v0_2 = func_ovl8_803717A0(0x68);
+    
+    if (temp_v0_2 != NULL) 
+    {
+        func_ovl8_8037CE90(temp_v0_2, &sp28);
+        var_v1 = temp_v0_2;
+    } 
+    else var_v1 = NULL;
+    
+    D_8038EFC8_1AB818 = var_v1;
+    
+    func_ovl8_8037CFD8(D_8038EFC8_1AB818, D_8038EFC8_1AB818);
+    var_v1 = D_8038EFC8_1AB818;
+    gcAddGObjProcess(var_v1->unk_dbmenusprite_0x48, func_ovl8_8037BDF4, 0, 1);
+    func_ovl8_8037D63C();
+    
+    D_8038EFCC_1AB81C = NULL;
+    
+    dbUiNodeTypeRegisterHandlers();
+}
 
 // 0x8037BAD8
 void func_ovl8_8037BAD8()
@@ -907,7 +958,7 @@ void func_ovl8_8037BD44()
 }
 
 // 0x8037BD94
-void func_ovl8_8037BD94(GObj* arg0)
+void* func_ovl8_8037BD94(GObj* arg0)
 {
 	void *temp_s0 = arg0->user_data.p;
 
@@ -916,10 +967,12 @@ void func_ovl8_8037BD94(GObj* arg0)
 		func_ovl8_8037C4A4(temp_s0, arg0);
 		gcSleepCurrentGObjThread(1);
 	}
+
+	return temp_s0;
 }
 
 // 0x8037BDF4
-void func_ovl8_8037BDF4(GObj* arg0)
+void* func_ovl8_8037BDF4(GObj* arg0)
 {
 	void *temp_s0 = arg0->user_data.p;
 
@@ -928,6 +981,8 @@ void func_ovl8_8037BDF4(GObj* arg0)
 		func_ovl8_8037CFAC(temp_s0);
 		gcSleepCurrentGObjThread(1);
 	}
+
+	return temp_s0;
 }
 
 // 0x8037BE34

@@ -31,6 +31,7 @@ extern f32 D_8038F034_1AB884;
 extern void* D_8038F03C_1AB88C;
 extern u16 D_8038F044_1AB894;
 extern u16 D_8038F046_1AB896;
+extern s16 D_ovl8_8038A864;
 
 extern dbUnknownS14 D_8038FB90_1AC3E0;
 extern db4Bytes D_8038FB98_1AC3E8;
@@ -46,7 +47,35 @@ void func_ovl8_8037D9B4(db4Bytes*);
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D000.s")
 
 // 0x8037D28C
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D28C.s")
+s32 func_ovl8_8037D28C() 
+{
+	SYController *controller = &gSYControllerMain;
+    s32 mask = 0;
+    s16 threshold = D_ovl8_8038A864;\
+    s8 range = controller->stick_range.x;
+    
+    if (range > threshold) 
+    {
+        mask = 0x40000;
+    }
+    if (range < -threshold) 
+    {
+        mask |= 0x80000;
+    }
+
+    range = controller->stick_range.y;
+    
+    if (range > threshold) 
+    {
+        mask |= 0x10000;
+    }
+    if (range < -threshold) 
+    {
+        mask |= 0x20000;
+    }
+    
+    return mask;
+}
 
 // 0x8037D2F0
 s32 func_ovl8_8037D2F0()

@@ -11,6 +11,16 @@ typedef struct dbUnknownS14 {
     s32 dbUnknownS14_0x10;
 } dbUnknownS14;
 
+typedef struct dbUnknown8_13
+{
+	u16 unk_dbunknown8_13_0x0;
+	u16 unk_dbunknown8_13_0x2;
+	u16 unk_dbunknown8_13_0x4;
+	u16 unk_dbunknown8_13_0x6;
+	u8 unk_dbunknown8_13_0x8;
+	s32 unk_dbunknown8_13_0xc;
+} dbUnknown8_13;
+
 extern GObj* D_ovl8_8038A860;
 extern s16 D_ovl8_8038A864;
 extern db4Bytes D_ovl8_8038A890[];
@@ -26,8 +36,12 @@ extern s16 D_8038EFFC_1AB84C;
 extern db4Shorts D_8038F000_1AB850;
 extern DBFont D_8038F008_1AB858;
 extern u16 D_8038F00C_1AB85C;
+extern dbUnknown8_13 D_8038F020_1AB870;
 extern s16 D_8038F030_1AB880;
+extern s16 D_8038F032_1AB882;
 extern f32 D_8038F034_1AB884;
+extern f32 D_8038F038_1AB888;
+extern void *D_8038F040_1AB890;
 extern void* D_8038F03C_1AB88C;
 extern u16 D_8038F044_1AB894;
 extern u16 D_8038F046_1AB896;
@@ -217,7 +231,29 @@ void func_ovl8_8037D6D4(DBFont* dbFont)
 }
 
 // 0x8037D7D4
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D7D4.s")
+void func_ovl8_8037D7D4(dbUnknown8_13 *arg0) {
+    u16 temp_a1 = 0;
+    s32 var_v0 = 0;
+
+    D_8038F020_1AB870 = *arg0;
+    temp_a1 = D_8038F020_1AB870.unk_dbunknown8_13_0x2 * D_8038F020_1AB870.unk_dbunknown8_13_0x8;
+    var_v0 = (temp_a1 & 7 ? 1 : 0);
+    
+    D_8038F032_1AB882 = ((temp_a1 / 8) + var_v0) * D_8038F020_1AB870.unk_dbunknown8_13_0x4;
+    D_8038F038_1AB888 = D_8038F020_1AB870.unk_dbunknown8_13_0x8 == 1 ? 1.0f : (f32) (1 << D_8038F020_1AB870.unk_dbunknown8_13_0x8);
+
+    if (D_8038F020_1AB870.unk_dbunknown8_13_0x8 == 1)
+    {
+        D_8038F040_1AB890 = &func_ovl8_8037D5AC;
+        return;
+    }
+    if (D_8038F020_1AB870.unk_dbunknown8_13_0x8 == 2)
+    {
+        D_8038F040_1AB890 = &func_ovl8_8037D518;
+        return;
+    }
+    D_8038F040_1AB890 = &func_ovl8_8037D470;
+}
 
 // 0x8037D8CC
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D8CC.s")

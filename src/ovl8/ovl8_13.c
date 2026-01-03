@@ -12,26 +12,26 @@ typedef struct dbUnknownS14 {
 } dbUnknownS14;
 
 extern GObj* D_ovl8_8038A860;
+extern s16 D_ovl8_8038A864;
+extern db4Bytes D_ovl8_8038A890[];
 extern dbUnknownLinkStruct D_ovl8_8038A8A0;
 extern dbFunction D_ovl8_8038A980;
 extern dbUnknownLink D_ovl8_8038AAD8;
 extern dbUnknownLinkStruct D_ovl8_8038AB00;
 
-extern Vec3i D_8038EFF0_1AB840;
-extern s32 D_8038EFEC_1AB83C;
 extern Vec3i D_8038EFE0_1AB830;
+extern s32 D_8038EFEC_1AB83C;
+extern Vec3i D_8038EFF0_1AB840;
 extern s16 D_8038EFFC_1AB84C;
-extern s16 D_8038F000_1AB850[];
-extern u16 D_8038F00C_1AB85C;
-extern u16 D_8038F044_1AB894;
-extern u16 D_8038F046_1AB896;
+extern db4Shorts D_8038F000_1AB850;
 extern DBFont D_8038F008_1AB858;
+extern u16 D_8038F00C_1AB85C;
 extern s16 D_8038F030_1AB880;
 extern f32 D_8038F034_1AB884;
 extern void* D_8038F03C_1AB88C;
 extern u16 D_8038F044_1AB894;
 extern u16 D_8038F046_1AB896;
-extern s16 D_ovl8_8038A864;
+extern s16 D_8038F048_1AB898;
 
 extern dbUnknownS14 D_8038FB90_1AC3E0;
 extern db4Bytes D_8038FB98_1AC3E8;
@@ -41,7 +41,12 @@ void func_ovl8_8037D470();
 void func_ovl8_8037D518();
 void func_ovl8_8037D45C();
 void func_ovl8_8037D5AC();
+void func_ovl8_8037D990(s32);
 void func_ovl8_8037D9B4(db4Bytes*);
+void func_ovl8_8037D9D0(db4Bytes*);
+void func_ovl8_8037D9EC(u16, u16);
+void func_ovl8_8037D99C(s32);
+void func_ovl8_8037D9A8(s32);
 
 // 0x8037D000
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D000.s")
@@ -168,7 +173,22 @@ void func_ovl8_8037D45C()
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D5AC.s")
 
 // 0x8037D63C
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D63C.s")
+void func_ovl8_8037D63C() 
+{
+    db4Bytes thing[2];
+
+    thing[1] = D_ovl8_8038A890[0];
+    thing[0] = D_ovl8_8038A890[1];
+    D_8038F000_1AB850.arr[0] = D_8038F000_1AB850.arr[1] = 0;
+    D_8038F048_1AB898 = 0;
+    
+    func_ovl8_8037D990(0x10);
+    func_ovl8_8037D9D0(&thing[1]);
+    func_ovl8_8037D9B4(&thing[0]);
+    func_ovl8_8037D9EC(0, 0);
+    func_ovl8_8037D99C(0);
+    func_ovl8_8037D9A8(0);
+}
 
 // 0x8037D6D4
 void func_ovl8_8037D6D4(DBFont* dbFont)
@@ -264,13 +284,13 @@ void func_ovl8_8037DD60(DBMenuPosition* pos, char* text)
 	s16 temp_s5;
 	char current;
 
-	temp_s5 = D_8038F000_1AB850[0];
+	temp_s5 = D_8038F000_1AB850.arr[0];
 	for (current = *text; current != '\0'; text++, current = *text)
 	{
 		if (current == '\n')
 		{
-			D_8038F000_1AB850[0] = temp_s5;
-			D_8038F000_1AB850[1] = D_8038F008_1AB858.unk_dbfont_0x4 + D_8038F000_1AB850[1] + D_8038F046_1AB896;
+			D_8038F000_1AB850.arr[0] = temp_s5;
+			D_8038F000_1AB850.arr[1] = D_8038F008_1AB858.unk_dbfont_0x4 + D_8038F000_1AB850.arr[1] + D_8038F046_1AB896;
 		}
 		else
 			func_ovl8_8037DAA0(pos, current);
@@ -282,8 +302,8 @@ void func_ovl8_8037DD60(DBMenuPosition* pos, char* text)
 
 void func_ovl8_8037DFCC(s16 arg0, s16 arg1)
 {
-	D_8038F000_1AB850[1] = arg1;
-	D_8038F000_1AB850[0] = arg0;
+	D_8038F000_1AB850.arr[1] = arg1;
+	D_8038F000_1AB850.arr[0] = arg0;
 }
 
 // 0x8037DFF8

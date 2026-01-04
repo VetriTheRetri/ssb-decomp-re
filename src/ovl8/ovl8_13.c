@@ -38,7 +38,7 @@ extern DBFont D_8038F008_1AB858;
 extern u16 D_8038F00C_1AB85C;
 extern dbUnknown8_13 D_8038F020_1AB870;
 extern s16 D_8038F030_1AB880;
-extern s16 D_8038F032_1AB882;
+extern u16 D_8038F032_1AB882;
 extern f32 D_8038F034_1AB884;
 extern f32 D_8038F038_1AB888;
 extern void *D_8038F040_1AB890;
@@ -310,7 +310,26 @@ void func_ovl8_8037D9EC(u16 arg0, u16 arg1)
 }
 
 // 0x8037DA08
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037DA08.s")
+u32 func_ovl8_8037DA08(u8 arg0, u8 arg1) 
+{
+    arg0 = arg0 & 0x7F;
+    arg1 = arg1 & 0x7F;
+    
+    arg1 = (arg0 & 1) ? arg1 + 0x1F : arg1 + 0x7D;
+    arg0 = ((arg0 - 0x21) >> 1) + 0x81;
+    
+    if (arg1 >= 0x7F) 
+    {
+        arg1 += 0x01;
+    }
+    
+    if (arg0 >= 0xA0) 
+    {
+        arg0 += 0x40;
+    }
+    
+    return (((arg0 * 0xC0) + arg1) - 0x6100) * D_8038F032_1AB882;
+}
 
 // 0x8037DAA0
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037DAA0.s")

@@ -51,16 +51,16 @@ extern dbUnknownS14 D_8038FB90_1AC3E0;
 extern db4Bytes D_8038FB98_1AC3E8;
 
 void func_ovl8_8037D000();
-void func_ovl8_8037D470();
-void func_ovl8_8037D518();
 void func_ovl8_8037D45C();
+void func_ovl8_8037D470();
+void func_ovl8_8037D518(u16, u16, u8*, u8*);
 void func_ovl8_8037D5AC(u16, u16, u8*, u8*);
 void func_ovl8_8037D990(s32);
+void func_ovl8_8037D99C(s32);
+void func_ovl8_8037D9A8(s32);
 void func_ovl8_8037D9B4(db4Bytes*);
 void func_ovl8_8037D9D0(db4Bytes*);
 void func_ovl8_8037D9EC(u16, u16);
-void func_ovl8_8037D99C(s32);
-void func_ovl8_8037D9A8(s32);
 
 // 0x8037D000
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D000.s")
@@ -181,38 +181,70 @@ void func_ovl8_8037D45C()
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D470.s")
 
 // 0x8037D518
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D518.s")
-
-// 0x8037D5AC
-void func_ovl8_8037D5AC(u16 totalBits, u16 rowBits, u8* src, u8* dest) 
+void func_ovl8_8037D518(u16 totalPixels, u16 rowPixels, u8* src, u8* dest) 
 {
-    u32 bitInByte;
+    u32 pixelInByte;
     u32 bitInRow;
     
-    for(bitInRow = bitInByte = 0; totalBits != 0; totalBits--)
+    for(bitInRow = pixelInByte = 0; totalPixels != 0; totalPixels--)
     {
-        u32 b = bitInByte;
-        u8* temp_dest = dest++; *temp_dest = ((*src >> (7 - (b & 7))) & 1);
+        u32 b = pixelInByte;
+        u8* temp_dest = dest++; *temp_dest = (((*src >> (3 - (b & 3) << 1))) & 3);
         
         if (FALSE);
-        b = bitInByte++;
+        b = pixelInByte++;
 
-        if ((b & 7) == 7) 
+        if ((b & 3) == 3) 
         {
-            bitInByte = 0;
+            pixelInByte = 0;
             src++;
         }
 
         bitInRow++;
 
-        if (bitInRow == rowBits) 
+        if (bitInRow == rowPixels) 
         {
-            if (bitInByte != 0) 
+            if (pixelInByte != 0) 
             {
                 src++;
             }
 
-            bitInByte = 0;
+            pixelInByte = 0;
+            bitInRow = 0;
+        }
+    }
+}
+
+// 0x8037D5AC
+void func_ovl8_8037D5AC(u16 totalPixels, u16 rowPixels, u8* src, u8* dest) 
+{
+    u32 pixelInByte;
+    u32 bitInRow;
+    
+    for(bitInRow = pixelInByte = 0; totalPixels != 0; totalPixels--)
+    {
+        u32 b = pixelInByte;
+        u8* temp_dest = dest++; *temp_dest = ((*src >> (7 - (b & 7))) & 1);
+        
+        if (FALSE);
+        b = pixelInByte++;
+
+        if ((b & 7) == 7) 
+        {
+            pixelInByte = 0;
+            src++;
+        }
+
+        bitInRow++;
+
+        if (bitInRow == rowPixels) 
+        {
+            if (pixelInByte != 0) 
+            {
+                src++;
+            }
+
+            pixelInByte = 0;
             bitInRow = 0;
         }
     }
@@ -243,18 +275,18 @@ void func_ovl8_8037D6D4(DBFont* dbFont)
 	s32 var_v0;
 
 	D_8038F008_1AB858 = *dbFont;
-	temp_a1 = (D_8038F008_1AB858.unk_dbfont_0x2 * D_8038F008_1AB858.unk_dbfont_0x8) & 0xFFFF;
+	temp_a1 = (D_8038F008_1AB858.unk_dbfont_0x2 * D_8038F008_1AB858.bits_per_pixel) & 0xFFFF;
 	var_v0 = (temp_a1 & 7 ? 1 : 0);
 
 	D_8038F030_1AB880 = ((temp_a1 / 8) + var_v0) * D_8038F008_1AB858.unk_dbfont_0x4;
-	D_8038F034_1AB884 = D_8038F008_1AB858.unk_dbfont_0x8 == 1 ? 1.0f : (f32) (1 << D_8038F008_1AB858.unk_dbfont_0x8);
+	D_8038F034_1AB884 = D_8038F008_1AB858.bits_per_pixel == 1 ? 1.0f : (f32) (1 << D_8038F008_1AB858.bits_per_pixel);
 
-	if (D_8038F008_1AB858.unk_dbfont_0x8 == 1)
+	if (D_8038F008_1AB858.bits_per_pixel == 1)
 	{
 		D_8038F03C_1AB88C = func_ovl8_8037D5AC;
 		return;
 	}
-	if (D_8038F008_1AB858.unk_dbfont_0x8 == 2)
+	if (D_8038F008_1AB858.bits_per_pixel == 2)
 	{
 		D_8038F03C_1AB88C = func_ovl8_8037D518;
 		return;

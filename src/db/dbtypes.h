@@ -13,7 +13,7 @@ struct DBFont
 	u16 unk_dbfont_0x2;
 	u16 unk_dbfont_0x4;
 	u16 *dimensions;
-	u8 unk_dbfont_0x8;
+	u8 bits_per_pixel;
 	u32 *glyphs;
 };
 

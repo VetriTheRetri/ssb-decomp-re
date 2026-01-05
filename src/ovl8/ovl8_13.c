@@ -54,7 +54,7 @@ void func_ovl8_8037D000();
 void func_ovl8_8037D470();
 void func_ovl8_8037D518();
 void func_ovl8_8037D45C();
-void func_ovl8_8037D5AC();
+void func_ovl8_8037D5AC(u16, u16, u8*, u8*);
 void func_ovl8_8037D990(s32);
 void func_ovl8_8037D9B4(db4Bytes*);
 void func_ovl8_8037D9D0(db4Bytes*);
@@ -184,7 +184,39 @@ void func_ovl8_8037D45C()
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D518.s")
 
 // 0x8037D5AC
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D5AC.s")
+void func_ovl8_8037D5AC(u16 totalBits, u16 rowBits, u8* src, u8* dest) 
+{
+    u32 bitInByte;
+    u32 bitInRow;
+    
+    for(bitInRow = bitInByte = 0; totalBits != 0; totalBits--)
+    {
+        u32 b = bitInByte;
+        u8* temp_dest = dest++; *temp_dest = ((*src >> (7 - (b & 7))) & 1);
+        
+        if (FALSE);
+        b = bitInByte++;
+
+        if ((b & 7) == 7) 
+        {
+            bitInByte = 0;
+            src++;
+        }
+
+        bitInRow++;
+
+        if (bitInRow == rowBits) 
+        {
+            if (bitInByte != 0) 
+            {
+                src++;
+            }
+
+            bitInByte = 0;
+            bitInRow = 0;
+        }
+    }
+}
 
 // 0x8037D63C
 void func_ovl8_8037D63C() 

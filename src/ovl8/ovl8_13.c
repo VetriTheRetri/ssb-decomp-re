@@ -14,10 +14,10 @@ typedef struct dbUnknownS14 {
 typedef struct dbUnknown8_13
 {
 	u16 unk_dbunknown8_13_0x0;
-	u16 unk_dbunknown8_13_0x2;
-	u16 unk_dbunknown8_13_0x4;
-	u16 unk_dbunknown8_13_0x6;
-	u8 unk_dbunknown8_13_0x8;
+	u16 width;
+	u16 height;
+	DBFontPadding padding;
+	u8 bits_per_pixel;
 	s32 unk_dbunknown8_13_0xc;
 } dbUnknown8_13;
 
@@ -45,7 +45,7 @@ extern void *D_8038F040_1AB890;
 extern void* D_8038F03C_1AB88C;
 extern u16 D_8038F044_1AB894;
 extern u16 D_8038F046_1AB896;
-extern s16 D_8038F048_1AB898;
+extern u16 D_8038F048_1AB898;
 
 extern dbUnknownS14 D_8038FB90_1AC3E0;
 extern db4Bytes D_8038FB98_1AC3E8;
@@ -310,10 +310,10 @@ void func_ovl8_8037D6D4(DBFont* dbFont)
 	s32 var_v0;
 
 	D_8038F008_1AB858 = *dbFont;
-	temp_a1 = (D_8038F008_1AB858.unk_dbfont_0x2 * D_8038F008_1AB858.bits_per_pixel) & 0xFFFF;
+	temp_a1 = (D_8038F008_1AB858.width * D_8038F008_1AB858.bits_per_pixel) & 0xFFFF;
 	var_v0 = (temp_a1 & 7 ? 1 : 0);
 
-	D_8038F030_1AB880 = ((temp_a1 / 8) + var_v0) * D_8038F008_1AB858.unk_dbfont_0x4;
+	D_8038F030_1AB880 = ((temp_a1 / 8) + var_v0) * D_8038F008_1AB858.height;
 	D_8038F034_1AB884 = D_8038F008_1AB858.bits_per_pixel == 1 ? 1.0f : (f32) (1 << D_8038F008_1AB858.bits_per_pixel);
 
 	if (D_8038F008_1AB858.bits_per_pixel == 1)
@@ -335,18 +335,18 @@ void func_ovl8_8037D7D4(dbUnknown8_13 *arg0) {
     s32 var_v0 = 0;
 
     D_8038F020_1AB870 = *arg0;
-    temp_a1 = D_8038F020_1AB870.unk_dbunknown8_13_0x2 * D_8038F020_1AB870.unk_dbunknown8_13_0x8;
+    temp_a1 = D_8038F020_1AB870.width * D_8038F020_1AB870.bits_per_pixel;
     var_v0 = (temp_a1 & 7 ? 1 : 0);
     
-    D_8038F032_1AB882 = ((temp_a1 / 8) + var_v0) * D_8038F020_1AB870.unk_dbunknown8_13_0x4;
-    D_8038F038_1AB888 = D_8038F020_1AB870.unk_dbunknown8_13_0x8 == 1 ? 1.0f : (f32) (1 << D_8038F020_1AB870.unk_dbunknown8_13_0x8);
+    D_8038F032_1AB882 = ((temp_a1 / 8) + var_v0) * D_8038F020_1AB870.height;
+    D_8038F038_1AB888 = D_8038F020_1AB870.bits_per_pixel == 1 ? 1.0f : (f32) (1 << D_8038F020_1AB870.bits_per_pixel);
 
-    if (D_8038F020_1AB870.unk_dbunknown8_13_0x8 == 1)
+    if (D_8038F020_1AB870.bits_per_pixel == 1)
     {
         D_8038F040_1AB890 = &func_ovl8_8037D5AC;
         return;
     }
-    if (D_8038F020_1AB870.unk_dbunknown8_13_0x8 == 2)
+    if (D_8038F020_1AB870.bits_per_pixel == 2)
     {
         D_8038F040_1AB890 = &func_ovl8_8037D518;
         return;
@@ -444,7 +444,7 @@ void func_ovl8_8037DD60(DBMenuPosition* pos, char* text)
 		if (current == '\n')
 		{
 			D_8038F000_1AB850.arr[0] = temp_s5;
-			D_8038F000_1AB850.arr[1] = D_8038F008_1AB858.unk_dbfont_0x4 + D_8038F000_1AB850.arr[1] + D_8038F046_1AB896;
+			D_8038F000_1AB850.arr[1] = D_8038F008_1AB858.height + D_8038F000_1AB850.arr[1] + D_8038F046_1AB896;
 		}
 		else
 			func_ovl8_8037DAA0(pos, current);
@@ -464,7 +464,33 @@ void func_ovl8_8037DFCC(s16 arg0, s16 arg1)
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037DFF8.s")
 
 // 0x8037E6F4
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037E6F4.s")
+u32 func_ovl8_8037E6F4(u8 arg0) {
+    u32 retVal;
+    u32 var_a0;
+    DBFontPadding* temp_v0;
+
+    if (D_8038F048_1AB898 & 0xFF00) 
+    {
+        D_8038F048_1AB898 = 0;
+        
+        retVal = D_8038F020_1AB870.width;
+    }
+    else if (arg0 & 0x80) 
+    {
+        D_8038F048_1AB898 = (arg0 & 0xFF) << 8;
+        
+        retVal = 0;
+    }
+    else if (((arg0 >= ' ') && (arg0 <= '~')) || ((arg0 >= 0xA0) && (arg0 < 0xE0))) 
+    {
+        var_a0 = (arg0 >= 0xA1) ? arg0 - 'A' : arg0 - ' ';
+        
+        retVal = (D_8038F008_1AB858.width - D_8038F008_1AB858.padding[var_a0].left_padding) - D_8038F008_1AB858.padding[var_a0].right_padding;
+    }
+    else retVal = 0;
+    
+    return retVal;
+}
 
 // 0x8037E7A8
 s32 func_ovl8_8037E7A8(u8 * s) 

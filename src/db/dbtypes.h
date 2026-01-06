@@ -7,12 +7,18 @@
 
 #include "dbdef.h"
 
+struct DBFontPadding
+{
+    u8 left_padding;
+    u8 right_padding;
+};
+
 struct DBFont
 {
 	u16 unk_dbfont_0x0;
-	u16 unk_dbfont_0x2;
-	u16 unk_dbfont_0x4;
-	u16 *dimensions;
+	u16 width;
+	u16 height;
+	DBFontPadding *padding;
 	u8 bits_per_pixel;
 	u32 *glyphs;
 };

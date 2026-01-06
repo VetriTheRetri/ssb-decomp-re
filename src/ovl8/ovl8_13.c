@@ -495,7 +495,7 @@ u32 func_ovl8_8037E6F4(u8 arg0) {
 // 0x8037E7A8
 s32 func_ovl8_8037E7A8(u8 * s) 
 {
-    s32 sum = 0;
+    s32 width = 0;
 
     if (s == NULL) {
         return 0;
@@ -503,10 +503,10 @@ s32 func_ovl8_8037E7A8(u8 * s)
     
     while (*s != 0) {
         u8 *p = s++;\
-        sum += func_ovl8_8037E6F4(*p);   
+        width += func_ovl8_8037E6F4(*p);   
     }
     
-    return sum;
+    return width;
 }
 
 // 0x8037E80C

@@ -6,7 +6,7 @@ extern void func_ovl8_80374A54(s32, DBMenu*);
 extern void func_ovl8_80377AEC(DBMenuPosition*, DBMenuPosition*, u32, s32);
 extern void func_ovl8_8037DD60(DBMenuPosition*, char*);
 extern void func_ovl8_80386BE0(char*, const char**);
-extern void func_ovl8_8037DFCC(s32, s16);
+extern void func_ovl8_8037DFCC(s16, s16);
 
 // // // // // // // // // // // //
 //                               //

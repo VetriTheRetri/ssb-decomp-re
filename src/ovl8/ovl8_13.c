@@ -21,6 +21,8 @@ typedef struct dbUnknown8_13
 	s32 unk_dbunknown8_13_0xc;
 } dbUnknown8_13;
 
+extern db4Bytes D_ovl8_80389F4C;
+extern db4Bytes D_ovl8_80389F50;
 extern GObj* D_ovl8_8038A860;
 extern s16 D_ovl8_8038A864;
 extern db4Bytes D_ovl8_8038A890[];
@@ -35,7 +37,6 @@ extern Vec3i D_8038EFF0_1AB840;
 extern s16 D_8038EFFC_1AB84C;
 extern db4Shorts D_8038F000_1AB850;
 extern DBFont D_8038F008_1AB858;
-extern u16 D_8038F00C_1AB85C;
 extern dbUnknown8_13 D_8038F020_1AB870;
 extern s16 D_8038F030_1AB880;
 extern u16 D_8038F032_1AB882;
@@ -512,7 +513,7 @@ s32 func_ovl8_8037E7A8(u8 * s)
 // 0x8037E80C
 u16 func_ovl8_8037E80C()
 {
-    return D_8038F00C_1AB85C;
+    return D_8038F008_1AB858.height;
 }
 
 // 0x8037E818
@@ -602,4 +603,63 @@ void func_ovl8_8037EB00(dbUnknown5* arg0, s32 arg1)
 }
 
 // 0x8037EBC8
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037EBC8.s")
+void func_ovl8_8037EBC8(dbUnknown5* arg0) 
+{
+    u16 sp56;
+    u16 sp54;
+    s32* sp50;
+    s32 sp4C;
+    char* str;
+    s32 unused2;
+    s32 a0;
+    s32 a1;
+    dbUnknownS14* sp38;
+    Vec2h sp34;
+    db4Bytes sp30;
+    dbFunction* temp_v1;
+    f32 unused3;
+
+    str = &arg0->unk_dbunk5_0xC;
+    
+    if (arg0->unk_dbunk5_0x48 != NULL) 
+    {
+        sp4C = func_ovl8_8037E7A8(str);
+        
+        temp_v1 = arg0->unk_dbunk5_0x4C;
+        temp_v1[4].unk_dbfunc_0x4(temp_v1[4].unk_dbfunc_0x0 + (uintptr_t)&arg0->unk_dbunk5_0x40, &sp50);
+        
+        func_ovl8_8037D95C(&sp38);
+        func_ovl8_8037D990(0x10);
+
+        if (arg0->unk_dbunk5_0x0 == (0.0F, 0.0F)) 
+        {
+            func_ovl8_8037B434(arg0->unk_dbunk5_0xB4, &sp50, 0, &arg0->unk_dbunk5_0x38->bg_color);
+            func_ovl8_8037D9D0(&D_ovl8_80389F4C);
+            
+            sp34.x = sp34.y = 6;
+            func_ovl8_8037A5B8(arg0->unk_dbunk5_0xB4, &sp34, &sp30);
+            func_ovl8_8037D9B4(&sp30);
+
+            a0 = (sp54 / 2) - (sp4C / 2);
+            a1 = (sp56 / 2) - (func_ovl8_8037E80C() / 2);
+            func_ovl8_8037DFCC(a0, a1);
+            func_ovl8_8037DD60(arg0->unk_dbunk5_0xB4, str);
+        } 
+        else 
+        {
+            func_ovl8_8037B434(arg0->unk_dbunk5_0xB0, &sp50, 1, &arg0->unk_dbunk5_0x38->bg_color);
+            func_ovl8_8037D9D0(&D_ovl8_80389F50);
+            
+            sp34.x = sp34.y = 6;
+            func_ovl8_8037A5B8(arg0->unk_dbunk5_0xB0, &sp34, &sp30);
+            func_ovl8_8037D9B4(&sp30);
+
+            a0 = (sp54 / 2) - (sp4C / 2);
+            a1 = (sp56 / 2) - (func_ovl8_8037E80C() / 2);
+            func_ovl8_8037DFCC(a0 + 1, a1 + 1);
+            func_ovl8_8037DD60(arg0->unk_dbunk5_0xB0, str);
+        }
+        
+        func_ovl8_8037D908(&sp38);
+    }
+}

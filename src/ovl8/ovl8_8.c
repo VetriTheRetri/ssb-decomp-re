@@ -662,7 +662,7 @@ void func_ovl8_8037B3E4(dbUnknown3* arg0)
 }
 
 // 0x8037B434
-void func_ovl8_8037B434(s32 arg0, s32 arg1, s32 arg2)
+void func_ovl8_8037B434(s32 arg0, s32 arg1, s32 arg2, SYColorRGBA* arg3)
 {
 	s32 var_a2;
 
@@ -675,7 +675,7 @@ void func_ovl8_8037B434(s32 arg0, s32 arg1, s32 arg2)
 		var_a2 = &D_ovl8_80389FB4;
 	}
 
-	func_ovl8_8037B46C(arg0, arg1, var_a2);
+	func_ovl8_8037B46C(arg0, arg1, var_a2, arg3);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037B46C.s")

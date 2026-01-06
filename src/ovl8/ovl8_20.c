@@ -120,7 +120,7 @@ void func_ovl8_80382A20(dbUnknown5* arg0)
         arg0->unk_dbunk5_0x0 = 0.0f;
     }
 
-    func_ovl8_8037EBC8();
+    func_ovl8_8037EBC8(arg0);
 
     arg0->unk_dbunk5_0x0 = current_value;
 }

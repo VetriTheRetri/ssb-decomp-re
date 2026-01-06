@@ -230,6 +230,7 @@ typedef struct dbUnknown5
     union {
         u8 b;
         s32 w;
+        char *str;
     } unk_dbunk5_0xC;
     u8 filler_0x10[0x4];
     u32 unk_dbunk5_0x14;

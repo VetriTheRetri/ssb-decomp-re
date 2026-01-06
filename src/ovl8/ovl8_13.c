@@ -52,7 +52,7 @@ extern db4Bytes D_8038FB98_1AC3E8;
 
 void func_ovl8_8037D000();
 void func_ovl8_8037D45C();
-void func_ovl8_8037D470();
+void func_ovl8_8037D470(u16, u16, u8*, u8*);
 void func_ovl8_8037D518(u16, u16, u8*, u8*);
 void func_ovl8_8037D5AC(u16, u16, u8*, u8*);
 void func_ovl8_8037D990(s32);
@@ -178,7 +178,42 @@ void func_ovl8_8037D45C()
 }
 
 // 0x8037D470
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D470.s")
+void func_ovl8_8037D470(u16 totalBits, u16 rowBits, u8* src, u8* dest) 
+{
+    u32 bitInByte;
+    u32 bitInRow;
+    
+    for(bitInRow = bitInByte = 0; totalBits != 0; totalBits--)
+    {
+        u32 b, nibble;
+        u8* temp_dest = dest++; 
+        
+        nibble = ((bitInByte & 1) ? (*src & 0xF) : ((*src >> 4) & 0xF)); 
+        *temp_dest = nibble;
+        
+        if (FALSE);
+        b = bitInByte++;
+
+        if ((b & 1) != 0) 
+        {
+            bitInByte = 0;
+            src++;
+        }
+
+        bitInRow++;
+
+        if (bitInRow == rowBits) 
+        {
+            if (bitInByte != 0) 
+            {
+                src++;
+            }
+
+            bitInByte = 0;
+            bitInRow = 0;
+        }
+    }
+}
 
 // 0x8037D518
 void func_ovl8_8037D518(u16 totalPixels, u16 rowPixels, u8* src, u8* dest) 

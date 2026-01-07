@@ -245,7 +245,7 @@ typedef struct dbUnknown5
     dbUnknownLink *unk_dbunk5_0x34;
     dbUnknownLinkStruct *unk_dbunk5_0x38;
     union {
-        u8 *u_8;
+        u8 *str;
         u16 u_16;
         s16 s_16;
         dbUnknownLinkStruct *ls;

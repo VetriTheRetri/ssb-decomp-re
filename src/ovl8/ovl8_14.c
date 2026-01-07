@@ -64,9 +64,7 @@ void func_ovl8_8037F030(dbUnknown5* arg0)
 {
     s32 sp5C;
     s32 sp58;
-    u16 sp56;
-    u16 sp54;
-    Vec2h sp50;
+    DBMenuPosition sp50;
     Vec2h sp4C;
     db4Bytes sp48;
     s32 unused;
@@ -99,7 +97,7 @@ void func_ovl8_8037F030(dbUnknown5* arg0)
         func_ovl8_8037A5B8(sp5C, &sp4C, &sp48);
         func_ovl8_8037D9B4(&sp48);
 
-        a0 = ((sp50.x + sp54 / 2) - (sp58 / 2)) + 1;
+        a0 = ((sp50.x + sp50.w / 2) - (sp58 / 2)) + 1;
         a1 = sp50.y + 3;
         func_ovl8_8037DFCC(a0, a1);
     } 
@@ -113,8 +111,8 @@ void func_ovl8_8037F030(dbUnknown5* arg0)
         func_ovl8_8037A5B8(sp5C, &sp4C, &sp48);
         func_ovl8_8037D9B4(&sp48);
 
-        a1 = (sp50.y + (sp56 / 2)) - (func_ovl8_8037E80C() / 2);
-        a0 = ((sp50.x + sp54 / 2) - (sp58 / 2));
+        a1 = (sp50.y + (sp50.h / 2)) - (func_ovl8_8037E80C() / 2);
+        a0 = ((sp50.x + sp50.w / 2) - (sp58 / 2));
         func_ovl8_8037DFCC(a0, a1);
     }
     

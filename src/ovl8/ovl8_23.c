@@ -25,7 +25,24 @@ typedef struct {
 	s32 unk54;
 } unkStructB;
 
+typedef struct {
+    u8 pad_0x0[0x30];
+    void *unk30;
+    u8 pad_0x34[0x4];
+    dbUnknownLinkStruct *unk38;
+    s32 unk3C;
+    u8 pad_0x40[0x8];
+    s32 unk48;
+    s32 unk4C;
+} Arg0Struct;
 
+typedef struct {
+    s16 val;
+    s16 pad1;
+    s32 pad2;
+} Sp48Struct;
+
+extern s32 D_ovl8_8038CCD8;
 extern dbUnknownLinkStruct D_ovl8_8038CA10;
 extern dbFunction D_ovl8_8038CB58;
 extern dbUnknownLink D_ovl8_8038CCB0;
@@ -196,7 +213,59 @@ void func_ovl8_80383B58(unkStructB* arg0)
 }
 
 // 0x80383BC4
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_23/func_ovl8_80383BC4.s")
+void func_ovl8_80383BC4(Arg0Struct *arg0) {
+    s32 sp5C;
+    s32 sp58;
+    DBMenuPosition sp50;
+    Sp48Struct sp48;
+    s16 sp44[2];
+    s32 sp40;
+    dbFunction* temp_v1;
+    s32 sp2C[4];
+    s32 result;
+
+    if (arg0->unk48 != 0) {
+        return;
+    }
+
+    temp_v1 = arg0->unk38->db_func;
+    sp5C = temp_v1[23].unk_dbfunc_0x4(temp_v1[23].unk_dbfunc_0x0 + (uintptr_t)arg0->unk38);
+
+    if (sp5C == 0) {
+        return;
+    }
+
+    if (arg0->unk4C != 0) {
+        arg0->unk4C = 0;
+        func_ovl8_8037D95C(sp2C);
+        func_ovl8_8037E7A8(arg0->unk3C);
+
+
+        temp_v1 = arg0->unk38->db_func;
+        temp_v1[21].unk_dbfunc_0x4(temp_v1[21].unk_dbfunc_0x0 + (uintptr_t)arg0->unk38, &sp50);
+
+        func_ovl8_8037B46C(sp5C, &sp50.x, &D_ovl8_8038CCD8, &arg0->unk38->bg_color);
+        func_ovl8_8037D990(0x10);
+        func_ovl8_8037D9D0(&arg0->unk38->text_color);
+
+        sp44[0] = sp50.x + 6;\
+        sp44[1] = sp50.y + 6;
+        func_ovl8_8037A5B8(sp5C, sp44, &sp40);
+        func_ovl8_8037D9B4(&sp40);
+
+        temp_v1 = arg0->unk30;
+        temp_v1[37].unk_dbfunc_0x4(temp_v1[37].unk_dbfunc_0x0 + (uintptr_t)arg0, &sp48.val, 0);
+
+        result = func_ovl8_8037E80C();
+        func_ovl8_8037DFCC((s16)(sp50.x + sp48.val), (s16)(sp50.y + (sp50.h / 2) - (result / 2)));
+
+        func_ovl8_8037DD60(sp5C, arg0->unk3C);
+        func_ovl8_8037D908(sp2C);
+    }
+
+    temp_v1 = arg0->unk30;
+    temp_v1[38].unk_dbfunc_0x4(temp_v1[38].unk_dbfunc_0x0 + (uintptr_t)arg0);
+}
 
 // 0x80383D4C
 void func_ovl8_80383D4C(dbUnknown5* arg0)

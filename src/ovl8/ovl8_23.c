@@ -26,6 +26,7 @@ typedef struct {
 } unkStructB;
 
 
+extern s32 D_ovl8_8038CCD8;
 extern dbUnknownLinkStruct D_ovl8_8038CA10;
 extern dbFunction D_ovl8_8038CB58;
 extern dbUnknownLink D_ovl8_8038CCB0;
@@ -196,7 +197,59 @@ void func_ovl8_80383B58(unkStructB* arg0)
 }
 
 // 0x80383BC4
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_23/func_ovl8_80383BC4.s")
+void func_ovl8_80383BC4(dbUnknown5 *arg0) {
+    s32 sp5C;
+    s32 sp58;
+    DBMenuPosition sp50;
+    DBMenuPosition sp48;
+    s16 sp44[2];
+    db4Bytes sp40;
+    dbFunction* temp_v1;
+    s32 sp2C[4];
+    s32 result;
+
+    if (arg0->unk_dbunk5_0x48 != 0) {
+        return;
+    }
+
+    temp_v1 = arg0->unk_dbunk5_0x38->db_func;
+    sp5C = temp_v1[23].unk_dbfunc_0x4(temp_v1[23].unk_dbfunc_0x0 + (uintptr_t)arg0->unk_dbunk5_0x38);
+
+    if (sp5C == 0) {
+        return;
+    }
+
+    if (arg0->unk_dbunk5_0x4C != 0) {
+        arg0->unk_dbunk5_0x4C = 0;
+        func_ovl8_8037D95C(sp2C);
+        func_ovl8_8037E7A8(arg0->unk_dbunk5_0x3C.u_8);
+
+
+        temp_v1 = arg0->unk_dbunk5_0x38->db_func;
+        temp_v1[21].unk_dbfunc_0x4(temp_v1[21].unk_dbfunc_0x0 + (uintptr_t)arg0->unk_dbunk5_0x38, &sp50);
+
+        func_ovl8_8037B46C(sp5C, &sp50.x, &D_ovl8_8038CCD8, &arg0->unk_dbunk5_0x38->bg_color);
+        func_ovl8_8037D990(0x10);
+        func_ovl8_8037D9D0(&arg0->unk_dbunk5_0x38->text_color);
+
+        sp44[0] = sp50.x + 6;\
+        sp44[1] = sp50.y + 6;
+        func_ovl8_8037A5B8(sp5C, sp44, &sp40);
+        func_ovl8_8037D9B4(&sp40);
+
+        temp_v1 = (dbFunction*)arg0->unk_dbunk5_0x30;
+        temp_v1[37].unk_dbfunc_0x4(temp_v1[37].unk_dbfunc_0x0 + (uintptr_t)arg0, &sp48.x, 0);
+
+        result = func_ovl8_8037E80C();
+        func_ovl8_8037DFCC((s16)(sp50.x + sp48.x), (s16)(sp50.y + (sp50.h / 2) - (result / 2)));
+
+        func_ovl8_8037DD60(sp5C, arg0->unk_dbunk5_0x3C.u_8);
+        func_ovl8_8037D908(sp2C);
+    }
+
+    temp_v1 = (dbFunction*)arg0->unk_dbunk5_0x30;
+    temp_v1[38].unk_dbfunc_0x4(temp_v1[38].unk_dbfunc_0x0 + (uintptr_t)arg0);
+}
 
 // 0x80383D4C
 void func_ovl8_80383D4C(dbUnknown5* arg0)

@@ -2,15 +2,6 @@
 #include <sys/develop.h>
 #include <db/debug.h>
 
-
-typedef struct dbUnknownS14 {
-    s32 dbUnknownS14_0x0;
-    db4Bytes dbUnknownS14_0x4;
-    db4Bytes dbUnknownS14_0x8;
-    s32 dbUnknownS14_0xC;
-    s32 dbUnknownS14_0x10;
-} dbUnknownS14;
-
 typedef struct dbUnknown8_13
 {
 	u16 unk_dbunknown8_13_0x0;
@@ -619,7 +610,7 @@ void func_ovl8_8037EBC8(dbUnknown5* arg0)
     dbFunction* temp_v1;
     f32 unused3;
 
-    str = &arg0->unk_dbunk5_0xC;
+    str = &arg0->unk_dbunk5_0xC.str;
     
     if (arg0->unk_dbunk5_0x48 != NULL) 
     {

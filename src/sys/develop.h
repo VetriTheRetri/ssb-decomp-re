@@ -327,4 +327,12 @@ typedef struct dbBytesCopy2
     s16 unk_dbbytescopy_0x1C;
 } dbBytesCopy2;
 
+typedef struct dbUnknownS14 {
+    s32 dbUnknownS14_0x0;
+    db4Bytes dbUnknownS14_0x4;
+    db4Bytes dbUnknownS14_0x8;
+    s32 dbUnknownS14_0xC;
+    s32 dbUnknownS14_0x10;
+} dbUnknownS14;
+
 #endif

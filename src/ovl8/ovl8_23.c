@@ -173,11 +173,9 @@ void func_ovl8_803839D0(unkStructB *arg0, u8 *arg1) {
     arg0->unk42 = 0;
     arg0->unk44 = 0;
 
-    if (*arg1 != 0) {
-        do {
-            u8 *v1 = arg1;
-            arg1++; arg0->unk30[26].unk_dbfunc_0x4(arg0->unk30[26].unk_dbfunc_0x0 + (uintptr_t)arg0, *v1); arg0->unk42++;
-        } while (*arg1 != 0);
+    while (*arg1 != 0) {
+        u8 *v1 = arg1;
+        arg1++; arg0->unk30[26].unk_dbfunc_0x4(arg0->unk30[26].unk_dbfunc_0x0 + (uintptr_t)arg0, *v1); arg0->unk42++;
     }
 
     arg0->unk48 = 0;

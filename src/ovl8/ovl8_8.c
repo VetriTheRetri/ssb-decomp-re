@@ -9,6 +9,14 @@ typedef struct dbUnknown8_S28 {
 	s32 dbUnknown8_S28_0x20[3];
 } dbUnknown8_S28;
 
+typedef struct dbUnknown8_SC {
+    s16 x0;
+    s16 y0;
+    s16 x1;
+    s16 y1;
+    s32 dbUnknown8_SC_0x8;
+} dbUnknown8_SC;
+
 void func_ovl8_80377F50(char*, db4Shorts*);
 void func_ovl8_80377FE4(char*, db4Shorts*, db4Shorts*);
 void func_ovl8_803780B8(char*, DBMenuPosition*);
@@ -17,6 +25,7 @@ void func_ovl8_8037A9C0(db4Shorts*, s32, s32);
 void func_ovl8_8037A9F4(DBMenuPosition*, DBMenuPosition*);
 void func_ovl8_8037AA28(db4Shorts*, db4Shorts*);
 s32 func_ovl8_8037AA5C(DBMenuPosition*);
+void func_ovl8_8037B46C(dbUnknownS38*, DBMenuPosition*, dbUnknown8_SC*, s32); 
 void func_ovl8_8037BD44();
 void func_ovl8_8037BEC8();
 void func_ovl8_8037BF34();
@@ -119,8 +128,8 @@ char D_ovl8_80387F38[] = "Caption";
 extern s32 D_ovl8_80389F5C;
 extern s32 D_ovl8_80389F60;
 extern s32 D_ovl8_80389F64;
-extern void* D_ovl8_80389FB4;
-extern void* D_ovl8_8038A068;
+extern dbUnknown8_SC* D_ovl8_80389FB4;
+extern dbUnknown8_SC* D_ovl8_8038A068;
 extern DBMenu D_ovl8_8038A11C;
 extern GObj *D_8038EFC0_1AB810;
 extern dbUnkStruct *D_8038EFC4_1AB814;
@@ -296,7 +305,7 @@ void func_ovl8_80377108(char *dest, int value, int count)
 
 
 // 0x80377134
-void func_ovl8_80377134(s32 arg0, s32 arg1)
+void func_ovl8_80377134(u8* arg0, s32 arg1)
 {
 	func_ovl8_80376B60(arg1, arg0, &D_ovl8_80389F64);
 }
@@ -393,7 +402,7 @@ void func_ovl8_80377374(DBMenuPosition *arg0)
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_803773CC.s")
 
 // 0x80377AEC
-void func_ovl8_80377AEC(char* arg0, db4Shorts* arg1, s32 arg2, s32 arg3)
+void func_ovl8_80377AEC(char* arg0, db4Shorts* arg1, u8* arg2, s32 arg3)
 {
 	func_ovl8_80376B60(arg0[0x31], arg2, &D_ovl8_80389F5C);
 	D_ovl8_80389F60 = arg3;
@@ -404,7 +413,7 @@ void func_ovl8_80377AEC(char* arg0, db4Shorts* arg1, s32 arg2, s32 arg3)
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80377B40.s")
 
 // 0x80377EFC
-void func_ovl8_80377EFC(char* arg0, db4Shorts* arg1, s32 arg2, s32 arg3)
+void func_ovl8_80377EFC(char* arg0, db4Shorts* arg1, u8* arg2, s32 arg3)
 {
 	func_ovl8_80376B60(arg0[0x31], arg2, &D_ovl8_80389F5C);
 	D_ovl8_80389F60 = arg3;
@@ -423,7 +432,7 @@ void func_ovl8_80377F50(char* arg0, db4Shorts* arg1)
 }
 
 // 0x80377F90
-void func_ovl8_80377F90(char* arg0, db4Shorts* arg1, s32 arg2, s32 arg3, s32 arg4)
+void func_ovl8_80377F90(char* arg0, db4Shorts* arg1, s32 arg2, u8* arg3, s32 arg4)
 {
 	func_ovl8_80376B60(arg0[0x31], arg3, &D_ovl8_80389F5C);
 	D_ovl8_80389F60 = arg4;
@@ -449,7 +458,7 @@ void func_ovl8_80377FE4(char* arg0, db4Shorts* arg1, db4Shorts* arg2)
 }
 
 // 0x80378064
-void func_ovl8_80378064(char* arg0, db4Shorts* arg1, s32 arg2, s32 arg3)
+void func_ovl8_80378064(char* arg0, db4Shorts* arg1, u8* arg2, s32 arg3)
 {
 	func_ovl8_80376B60(arg0[0x31], arg2, &D_ovl8_80389F5C);
 	D_ovl8_80389F60 = arg3;
@@ -662,9 +671,9 @@ void func_ovl8_8037B3E4(dbUnknown3* arg0)
 }
 
 // 0x8037B434
-void func_ovl8_8037B434(s32 arg0, s32 arg1, s32 arg2, SYColorRGBA* arg3)
+void func_ovl8_8037B434(s32 arg0, s32 arg1, dbUnknown8_SC* arg2, SYColorRGBA* arg3)
 {
-	s32 var_a2;
+	dbUnknown8_SC* var_a2;
 
 	if (arg2 != 0)
 	{
@@ -678,7 +687,37 @@ void func_ovl8_8037B434(s32 arg0, s32 arg1, s32 arg2, SYColorRGBA* arg3)
 	func_ovl8_8037B46C(arg0, arg1, var_a2, arg3);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037B46C.s")
+// 0x8037B46C
+void func_ovl8_8037B46C(dbUnknownS38* arg0, DBMenuPosition* arg1, dbUnknown8_SC* arg2, s32 arg3) 
+{
+    s32 var_v0;
+    DBMenuPosition abs;
+	s32 unused;
+	db4Bytes sp44;
+    s16 temp1, temp2;
+    dbUnknown8_SC* var_s1;
+
+    for (var_s1 = arg2; var_s1->x0 != (0x7FFF, 0x7FFF); var_s1++) 
+    {
+        var_v0 = (var_s1->x0 & 0x8000) ? (arg1->w - (var_s1->x0 & 0x7FFF)) - 1 : var_s1->x0;
+        abs.x = arg1->x + var_v0;
+        
+        var_v0 = (var_s1->y0 & 0x8000) ? (arg1->h - (var_s1->y0 & 0x7FFF)) - 1 : var_s1->y0;
+        abs.y = arg1->y + var_v0;
+        
+        var_v0 = (var_s1->x1 & 0x8000) ? (arg1->w - (var_s1->x1 & 0x7FFF)) - 1 : var_s1->x1;
+        temp1 = arg1->x + var_v0;
+        
+        var_v0 = (var_s1->y1 & 0x8000) ? (arg1->h - (var_s1->y1 & 0x7FFF)) - 1 : var_s1->y1;
+        temp2 = arg1->y + var_v0;
+
+        abs.w = (temp1 - abs.x) + 1;
+        abs.h = (temp2 - abs.y) + 1;
+
+        func_ovl8_80376EE0(arg3, &sp44, var_s1->dbUnknown8_SC_0x8);
+        func_ovl8_80377AEC(arg0, &abs, &sp44, 4);
+    }
+}
 
 // 0x8037B5F8
 s32 stringToNumberSigned(char* str)

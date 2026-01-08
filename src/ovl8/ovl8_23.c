@@ -165,7 +165,42 @@ void func_ovl8_803838B8(unkStructB* arg0)
 }
 
 // 0x803838E0
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_23/func_ovl8_803838E0.s")
+void func_ovl8_803838E0(unkStructB* arg0) {
+    s32 var_t0;
+    s32 temp_t7;
+    s32 var_t1;
+    dbFunction* temp_v1;
+    s16 var_a2;
+    dbUnknownLinkStruct* temp_v0_3;
+    dbFunction* temp_v1_3;
+
+    if (arg0->unk42 != 0) {
+        temp_v1 = arg0->unk30;
+        var_t0 = arg0->unk42 - 1;
+        var_t1 = 1;
+
+        if (temp_v1[30].unk_dbfunc_0x4(temp_v1[30].unk_dbfunc_0x0 + (uintptr_t)arg0) != 0) {
+            var_t0 -= 1;
+            var_t1 = 2;
+        }
+
+        var_a2 = arg0->unk44;
+        temp_t7 = var_a2 - arg0->unk42;
+
+        if (temp_t7 > 0) {
+            func_ovl8_8037B760(arg0->unk3C + arg0->unk42, arg0->unk3C + var_t0, temp_t7);
+            var_a2 = arg0->unk44;
+        }
+
+        arg0->unk44 = (s16)(var_a2 - var_t1);
+        arg0->unk3C[arg0->unk44] = 0;
+        temp_v0_3 = arg0->unk38;
+        arg0->unk42 = (s16)(arg0->unk42 - var_t1);
+        arg0->unk4C = 1;
+        temp_v1_3 = temp_v0_3->db_func;
+        temp_v1_3[35].unk_dbfunc_0x4(temp_v1_3[35].unk_dbfunc_0x0 + (uintptr_t)temp_v0_3, 1);
+    }
+}
 
 // 0x803839D0
 void func_ovl8_803839D0(unkStructB *arg0, u8 *arg1) {

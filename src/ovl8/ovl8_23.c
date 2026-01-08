@@ -345,4 +345,29 @@ s32 func_ovl8_80383FC8(dbUnknownS38* arg0, db2Shorts arg1)
 }
 
 // 0x80384000
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_23/func_ovl8_80384000.s")
+typedef struct dbInputData {
+    u8 unk0[0x8];
+    db2Shorts unk8;
+} dbInputData;
+
+s32 func_ovl8_80384000(unkStructB* arg0, dbInputData* arg1) {
+    db2Shorts sp24;
+    dbUnknownLinkStruct* temp_a2;
+    dbFunction* db_func;
+
+    *(db2Shorts*)&sp24 = arg1->unk8;
+
+    temp_a2 = (dbUnknownLinkStruct*)arg0->unk38;
+    db_func = temp_a2->db_func;
+    db_func[10].unk_dbfunc_0x4(db_func[10].unk_dbfunc_0x0 + (uintptr_t)temp_a2, &sp24);
+
+    db_func = (dbFunction*)arg0->unk30;
+    arg0->unk42 = db_func[20].unk_dbfunc_0x4(db_func[20].unk_dbfunc_0x0 + (uintptr_t)arg0, sp24) - 1;
+
+    temp_a2 = (dbUnknownLinkStruct*)arg0->unk38;
+    db_func = temp_a2->db_func;
+    db_func[35].unk_dbfunc_0x4(db_func[35].unk_dbfunc_0x0 + (uintptr_t)temp_a2, 1, temp_a2);
+
+    return 1;
+}
+

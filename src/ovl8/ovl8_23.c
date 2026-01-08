@@ -12,9 +12,9 @@ typedef struct {
 
 typedef struct {
 	u8 unk0[0x30];
-	void* unk30;
+	dbFunction* unk30;
 	s32 unk34;
-	unkStructA** unk38;
+	dbUnknownLinkStruct* unk38;
 	u8* unk3C;
 	s16 unk40;
 	s16 unk42;
@@ -24,7 +24,6 @@ typedef struct {
 	s32 unk50;
 	s32 unk54;
 } unkStructB;
-
 
 extern dbUnknownLinkStruct D_ovl8_8038CA10;
 extern dbFunction D_ovl8_8038CB58;
@@ -169,7 +168,22 @@ void func_ovl8_803838B8(unkStructB* arg0)
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_23/func_ovl8_803838E0.s")
 
 // 0x803839D0
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_23/func_ovl8_803839D0.s")
+void func_ovl8_803839D0(unkStructB *arg0, u8 *arg1) {
+    arg0->unk48 = 1;
+    arg0->unk42 = 0;
+    arg0->unk44 = 0;
+
+    if (*arg1 != 0) {
+        do {
+            u8 *v1 = arg1;
+            arg1++; arg0->unk30[26].unk_dbfunc_0x4(arg0->unk30[26].unk_dbfunc_0x0 + (uintptr_t)arg0, *v1); arg0->unk42++;
+        } while (*arg1 != 0);
+    }
+
+    arg0->unk48 = 0;
+    arg0->unk4C = 1;
+    arg0->unk38->db_func[35].unk_dbfunc_0x4(arg0->unk38->db_func[35].unk_dbfunc_0x0 + (uintptr_t)arg0->unk38, 1);
+}
 
 // 0x80383A78
 s32 func_ovl8_80383A78(s32* arg0)

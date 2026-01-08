@@ -178,7 +178,40 @@ s32 func_ovl8_80383A78(s32* arg0)
 }
 
 // 0x80383A80
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_23/func_ovl8_80383A80.s")
+s32 func_ovl8_80383A80(unkStructB *arg0, s32 arg1) {
+    s32 var_s0;
+    s32 var_s1;
+    s32 temp_s3;
+    s32 var_v0;
+    u8 var_a0;
+    u8 *new_var;
+    s32 half;
+
+    var_s0 = 0;
+    var_s1 = 0;
+
+    if (*arg0->unk3C != 0) {
+        new_var = arg0->unk3C;
+        var_a0 = *new_var;
+        do {
+            temp_s3 = var_s0;
+            var_v0 = func_ovl8_8037E6F4(var_a0);
+            if (arg0->unk3C[var_s0] & 0x80) {
+                var_s0 += 1;
+                var_v0 = func_ovl8_8037E6F4(arg0->unk3C[var_s0]);
+            }
+            var_s0 += 1;
+            half = var_v0 / 2;
+            if (var_s1 + half >= arg1) {
+                return temp_s3;
+            }
+            var_s1 += var_v0;
+            var_a0 = arg0->unk3C[var_s0];
+        } while (var_a0 != 0);
+    }
+
+    return arg0->unk44;
+}
 
 // 0x80383B58
 void func_ovl8_80383B58(unkStructB* arg0)

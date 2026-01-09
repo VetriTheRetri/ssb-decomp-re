@@ -12,6 +12,7 @@ extern dbUnknownLinkStruct D_ovl8_8038B470;
 extern dbFunction D_ovl8_8038B540;
 extern dbUnknownLink D_ovl8_8038B698;
 extern s32 D_ovl8_8038B6C0;
+extern s32 D_8038EFCC_1AB81C;
 
 extern dbFunction D_ovl8_8038B720;
 extern dbFunction D_ovl8_8038B7F0;
@@ -380,7 +381,31 @@ void func_ovl8_803806C0(dbUnknown5* arg0, void* arg1, void* arg2, void* arg3, s3
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_15/func_ovl8_80380920.s")
 
 // 0x80380AD0
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_15/func_ovl8_80380AD0.s")
+void func_ovl8_80380AD0(dbUnknown7* arg0) 
+{
+    Vec2h pos;
+    u16 sp22;
+    u16 sp20;
+    dbFunction* temp_v0;
+
+
+    if (arg0->unkAC[0] != 0) {
+        
+        pos.x = arg0->unkAC[3] + 2;
+        pos.y = arg0->unkAC[4] * arg0->unkAC[0];
+        
+
+        temp_v0 = arg0->unk20->db_func;
+        temp_v0[9].unk_dbfunc_0x4(((u8*)arg0->unk20 + temp_v0[9].unk_dbfunc_0x0), &pos.x);
+        
+        func_ovl8_80375BA0(D_8038EFCC_1AB81C, &sp22, &sp20);
+        
+        pos.x -= sp22;
+        pos.y -= sp20;
+        func_ovl8_80375BD0(&pos.x);
+    }
+}
+
 
 // 0x80380B6C
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_15/func_ovl8_80380B6C.s")

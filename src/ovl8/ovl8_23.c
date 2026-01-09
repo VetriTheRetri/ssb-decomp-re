@@ -131,7 +131,28 @@ s32 func_ovl8_803835C4(s32* arg0, s32 arg1)
 }
 
 // 0x80383618
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_23/func_ovl8_80383618.s")
+void func_ovl8_80383618(unkStructB* arg0, u8 arg1)
+{
+	dbUnknownLinkStruct* temp_v1;
+
+	if (arg1 == 0)
+		return;
+
+	if (arg0->unk44 < arg0->unk40)
+	{
+		if (arg0->unk44 - arg0->unk42 > 0)
+		{
+			func_ovl8_8037B760(arg0->unk3C + arg0->unk42, arg0->unk3C + arg0->unk42 + 1, arg0->unk44 - arg0->unk42);
+		}
+		arg0->unk3C[arg0->unk42] = arg1;
+		arg0->unk44 = (s16)(arg0->unk44 + 1);
+		arg0->unk3C[arg0->unk44] = 0;
+		temp_v1 = (void*)arg0->unk38;
+		arg0->unk4C = 1;
+		temp_v1 = (void*)temp_v1->db_func;
+		((dbFunction*)temp_v1)[35].unk_dbfunc_0x4(((dbFunction*)temp_v1)[35].unk_dbfunc_0x0 + (uintptr_t)arg0->unk38, 1);
+	}
+}
 
 // 0x803836D4
 void func_ovl8_803836D4(dbUnknownS38* arg0, u16 arg1)

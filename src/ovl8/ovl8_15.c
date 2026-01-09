@@ -388,7 +388,7 @@ void func_ovl8_80380AD0(dbUnknown7* arg0)
     u16 sp20;
     dbFunction* temp_v0;
 
-    if (arg0->unkAC[0] != 0) {
+    if (arg0->unkAC[0]) {
         
         pos.x = arg0->unkAC[3] + 2;
         pos.y = arg0->unkAC[4] * arg0->unkAC[0];

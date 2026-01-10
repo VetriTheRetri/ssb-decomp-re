@@ -29,6 +29,11 @@ ifeq ($(VERSION),jp)
 	EXTRA_LINK_DEPS := symbols/jp_wip_linker.txt .splat/smashbrothers_jp.ld
 endif
 
+# Disable dependency generation for decomp-permuter
+ifeq ($(PERMUTER),1)
+SKIP_DEPS := 1
+endif
+
 UNAME_S := $(shell uname -s)
 ifeq ($(OS),Windows_NT)
 $(error Native Windows is currently unsupported for building this repository, use WSL instead c:)
@@ -397,7 +402,9 @@ $(BUILD_DIR)/%.o: %.c
 	$(call print_3,Compiling:,$<,$@)
 	@mkdir -p $(@D)
 # generate .d files to track header dependencies
+ifndef SKIP_DEPS
 	$(V)clang -MMD -MP -fno-builtin -funsigned-char -fdiagnostics-color -std=gnu89 -m32 $(INCLUDES) $(DEFINES) -E -o $@ $< && rm $@
+endif
 # compile and pipe through colorizer
 	$(V)$(CC) $(CCFLAGS) $(OPTFLAGS) -o $@ $< 2>&1 | $(PYTHON) tools/colorizeIDO.py
 # patch object files compiled with mips3 to be able to link them

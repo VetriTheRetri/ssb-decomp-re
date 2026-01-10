@@ -222,6 +222,17 @@ struct dbUnknownStruct2S18
     u16 unk_0x16;
 };
 
+struct dbUnknownStructS1C
+{ 
+    s32 unk_0x0;
+    s32 unk_0x4;
+    s32 unk_0x8;
+    s32 unk_0xC;
+    s32 unk_0x10;
+    s32 unk_0x14;
+    dbFunction * dbfunc;
+};
+
 typedef struct dbUnknown5
 {
     f32 unk_dbunk5_0x0;

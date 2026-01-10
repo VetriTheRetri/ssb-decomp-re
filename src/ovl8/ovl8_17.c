@@ -69,8 +69,26 @@ dbUnknownLinkStruct* func_ovl8_80381130(dbUnknownLinkStruct* arg0)
 	return arg0;
 }
 
-// 0x8038116C
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_17/func_ovl8_8038116C.s")
+// 0x8038116C a fn that resets dbUnknownLinkStruct to some degree
+dbUnknownLinkStruct* func_ovl8_8038116C(dbUnknownLinkStruct* targetLinkStruct, s32 arg1, dbUnknownS38* arg2) {
+    if ( targetLinkStruct || (targetLinkStruct = func_ovl8_803717A0(32))) {
+        
+        targetLinkStruct->unk_dbunkstruct_0x1C.link = &D_ovl8_8038BC34;
+        *(dbUnknownS38**)&targetLinkStruct->position.y = arg2;
+        
+        arg2->unk_dbunks38_0x30[11].unk_dbfunc_0x4(arg2->unk_dbunks38_0x30[11].unk_dbfunc_0x0 + (uintptr_t) arg2, 0x4CBEBC20, arg2);
+        
+        func_ovl8_8038185C(targetLinkStruct, arg1);
+       
+        stringCopy((char*)*(dbUnknownS38**)&targetLinkStruct->position.y + 0xC, &D_ovl8_8038BC30);
+        
+        *(u32*)&targetLinkStruct->text_color = 0;
+        *(u32*)&targetLinkStruct->bg_color  = 0;
+        targetLinkStruct->id = (s32) targetLinkStruct->unk_dbunkstruct_0xC;
+    }
+    
+    return targetLinkStruct;
+}
 
 // 0x8038120C
 void func_ovl8_8038120C(dbUnknownLinkStruct* arg0, s32 arg1)

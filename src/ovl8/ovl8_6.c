@@ -582,8 +582,34 @@ void func_ovl8_803750E4(dbUnkStruct arg0)
     D_ovl8_8038A884 = arg0.db_func;
 }
 
-// 0x80375118
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_80375118.s")
+// 0x80375118 Fills info into MenuPositions and passes them to db_funcs
+void func_ovl8_80375118(dbUnknownLinkStruct* targetLinkStruct) {
+    void* gptr;
+    s16 MenuPositions[6];
+    dbUnknownLinkStruct* linkedStruct;
+    
+    func_ovl8_80377108((char*)MenuPositions, 0, sizeof(MenuPositions));
+    linkedStruct = targetLinkStruct->unk_dbunkstruct_0x38->unk_dbunkstruct_0x4C;
+    
+    gptr = targetLinkStruct;
+    if (gptr){
+        gptr = targetLinkStruct->unk_dbunkstruct_0x38;
+    }  
+    MenuPositions[4] = ((dbUnknownLinkStruct*)(gptr))->position.x;
+    
+    gptr = targetLinkStruct;
+    if (gptr){
+        gptr = targetLinkStruct->unk_dbunkstruct_0x38;
+    }
+    MenuPositions[5] = ((dbUnknownLinkStruct*)(gptr))->position.y;
+
+    gptr = linkedStruct->unk_dbunkstruct_0x20->db_func;
+    ((dbFunction*)(gptr))[9].unk_dbfunc_0x4(((dbFunction*)(gptr))[9].unk_dbfunc_0x0 + (uintptr_t) linkedStruct->unk_dbunkstruct_0x20, &MenuPositions[4]);
+
+    gptr = targetLinkStruct->unk_dbunkstruct_0x38->db_func;
+    ((dbFunction*)(gptr))[18].unk_dbfunc_0x4(((dbFunction*)(gptr))[18].unk_dbfunc_0x0 + (uintptr_t) targetLinkStruct->unk_dbunkstruct_0x38, MenuPositions);
+}
+
 
 // 0x803751C0
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_803751C0.s")

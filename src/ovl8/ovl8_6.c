@@ -595,7 +595,32 @@ void func_ovl8_803750E4(dbUnkStruct arg0)
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_80375354.s")
 
 // 0x80375528
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_80375528.s")
+void func_ovl8_80375528(struct dbUnknownStructS1C* arg0, s32 arg1, s32 arg2) {
+    s32 unk8;
+    arg0->unk_0x0 = arg1;
+    arg0->unk_0x4 = arg2;
+    
+    unk8 = arg0->unk_0x8;
+
+    if (unk8) {
+        func_ovl8_8037B3E4(arg0->unk_0x8);
+    }
+
+    if (arg0->unk_0xC) {
+        func_ovl8_8037B3E4(arg0->unk_0xC);
+    }
+
+    if (arg0->unk_0x10) {
+        func_ovl8_8037B3E4(arg0->unk_0x10);
+    }
+    
+    if (arg0->unk_0x14) {
+        func_ovl8_8037B3E4(arg0->unk_0x14);
+    }
+    
+    arg0->dbfunc[4].unk_dbfunc_0x4(arg0->dbfunc[4].unk_dbfunc_0x0 + (uintptr_t)arg0);
+}
+
 
 // 0x803755C4
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_803755C4.s")

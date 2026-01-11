@@ -9,6 +9,7 @@ typedef struct dbUnknownThing {
     s16 dbUnknownThing_0x44;
     s16 dbUnknownThing_0x46;
 } dbUnknownThing;
+typedef sb32 (*dbUnknownfnCall)(uintptr_t, f32, void*);
 
 extern dbUnknownLinkStruct D_ovl8_8038D0D0;
 extern dbFunction D_ovl8_8038D218;
@@ -188,7 +189,33 @@ void func_ovl8_803848CC(dbUnknown5* arg0, s32 arg1)
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_25/func_ovl8_80384968.s")
 
 // 0x80384AE8
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_25/func_ovl8_80384AE8.s")
+void func_ovl8_80384AE8(dbUnknown5_2* arg0, s32* arg1) {
+    s32* var_v0;
+    dbFunction* temp_v0;
+    dbFunction* temp_v0_2;
+
+    arg0->dbUnknown5_2_unk_0x3E = 0;
+    var_v0 = arg1;
+    
+    for (var_v0 = arg1; var_v0 != NULL && *var_v0 != 0; var_v0++) {
+        arg0->dbUnknown5_2_unk_0x3E++;
+    }
+
+    temp_v0 = arg0->dbUnknown5_2_db_func;
+    arg0->dbUnknown5_2_unk_0x40 = arg1;
+    
+    temp_v0[10].unk_dbfunc_0x4(temp_v0[10].unk_dbfunc_0x0 + (uintptr_t) arg0, 0x3F800000, arg0, arg1);
+    
+    temp_v0_2 = arg0->dbUnknown5_2_db_func;
+    
+    ((dbUnknownfnCall)(temp_v0_2[11].unk_dbfunc_0x4))(
+        (uintptr_t)temp_v0_2[11].unk_dbfunc_0x0 + 
+            (uintptr_t)arg0,
+        (f32)arg0->dbUnknown5_2_unk_0x3E,
+        arg0
+    );
+}
+
 
 // 0x80384B90
 s32 func_ovl8_80384B90(dbUnknownThing* arg0, s32 arg1)

@@ -14,6 +14,10 @@ extern dbFunction D_ovl8_8038E5A0;
 extern dbFunction D_ovl8_8038E660;
 extern dbFunction D_ovl8_8038E7B8;
 extern s32 D_ovl8_8038E7E0;
+extern dbFunction D_ovl8_8038E840;
+extern dbFunction D_ovl8_8038E900;
+extern dbUnknownLink D_ovl8_8038EA58;
+extern s32 D_ovl8_8038EA80;
 
 void dbUiNodeTypeRegisterHandler(s32, s32*);
 s32 func_ovl8_803865D0(DBMenuPosition*, s32, char*);
@@ -169,7 +173,34 @@ void func_ovl8_803868EC(dbUnknownS38* arg0, s32 arg1)
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_31/func_ovl8_80386994.s")
 
 // 0x80386AFC
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_31/func_ovl8_80386AFC.s")
+void func_ovl8_80386AFC(dbUnknownS38* arg0, s32 arg1) 
+{
+    if (arg0 != NULL) 
+    {
+        arg0->unk_dbunks38_0x18 = &D_ovl8_8038E840;\
+        arg0->unk_dbunks38_0x20->db_func = &D_ovl8_8038E900;
+        arg0->unk_dbunks38_0x1C->unk_dbunklink_0x8 = &D_ovl8_8038EA58;
+        arg0->unk_dbunks38_0x38.unk_dbunkstruct_0xC = &D_ovl8_8038EA80;
+        
+        if (arg0 != NULL) 
+        {
+            arg0->unk_dbunks38_0x18 = &D_ovl8_8038E5A0;\
+            arg0->unk_dbunks38_0x20->db_func = &D_ovl8_8038E660;
+            arg0->unk_dbunks38_0x1C->unk_dbunklink_0x8 = &D_ovl8_8038E7B8;
+            arg0->unk_dbunks38_0x38.unk_dbunkstruct_0xC = &D_ovl8_8038E7E0;
+            func_ovl8_803761F4(arg0, 0);
+        }
+        
+        if (arg1 != 0) {
+            func_ovl8_8037C30C(arg0->unk_dbunks38_0x1C, 0);
+            func_ovl8_803718C4(arg0->unk_dbunks38_0x20, 0);
+        }
+        
+        if (arg1 & 1) {
+            func_ovl8_803717C0(arg0);
+        }
+    }
+}
 
 // 0x80386BE0
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_31/func_ovl8_80386BE0.s")

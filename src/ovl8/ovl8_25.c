@@ -9,7 +9,6 @@ typedef struct dbUnknownThing {
     s16 dbUnknownThing_0x44;
     s16 dbUnknownThing_0x46;
 } dbUnknownThing;
-typedef sb32 (*dbUnknownfnCall)(uintptr_t, f32);
 
 extern dbUnknownLinkStruct D_ovl8_8038D0D0;
 extern dbFunction D_ovl8_8038D218;
@@ -208,10 +207,10 @@ void func_ovl8_80384AE8(dbUnknown5_2* arg0, s32* arg1) {
     
     temp_v0_2 = arg0->dbUnknown5_2_db_func;
     
-    ((dbUnknownfnCall)(temp_v0_2[11].unk_dbfunc_0x4))(
-        (uintptr_t)temp_v0_2[11].unk_dbfunc_0x0 + 
+    ((sb32 (*)(uintptr_t, f32))(temp_v0_2[11].unk_dbfunc_0x4))(
+        temp_v0_2[11].unk_dbfunc_0x0 + 
             (uintptr_t)arg0,
-        (f32)arg0->dbUnknown5_2_unk_0x3E
+        arg0->dbUnknown5_2_unk_0x3E
     );
 }
 

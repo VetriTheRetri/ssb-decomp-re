@@ -1,26 +1,20 @@
 #include "common.h"
+#include <sys/develop.h>
+#include <db/debug.h>
 
-typedef struct dbUnknownStruct_803864CC
-{
-	u16 unk0;
-	u16 unk2;
-	u16 unk4;
-	u16 unk6;
-	s32 unk8[7];
-	s32 unk24;
-
-} dbUnknownStruct_803864CC;
-
-extern void* D_ovl8_8038E1E0;
-extern u16 D_ovl8_8038E1E4;
-extern dbUnknownStruct_803864CC D_ovl8_8038E208;
-extern dbUnknownStruct_803864CC D_ovl8_8038E564;
+extern DBMenuPosition D_ovl8_80389F48;
+extern db4Bytes D_ovl8_80389F4C;
+extern DBMenu D_ovl8_8038E1E0;
+extern DBMenu D_ovl8_8038E208;
+extern DBMenu D_ovl8_8038E564;
 extern s32 D_803903C0_1ACC10;
 extern s32 D_803903C4_1ACC14;
 extern s32 D_803903C8_1ACC18;
 
+void func_ovl8_80385F44(s32, s32);
 s32 func_ovl8_80386488(s32, s32);
 void func_ovl8_8038649C();
+void func_ovl8_8037DFCC(s16, s16);
 
 // 0x80385E10
 void func_ovl8_80385E10(s32 arg0, ...)
@@ -59,7 +53,42 @@ void func_ovl8_80385F04(const char *str, ...)
 }
 
 // 0x80385F44
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_30/func_ovl8_80385F44.s")
+void func_ovl8_80385F44(s32 arg0, s32 arg1) {
+    dbBytesCopy sp2C;
+    s32 temp_s0;
+    s32 temp_v0;
+
+    temp_s0 = D_ovl8_8038E1E0.unk_dbmenu_0x24;
+    
+    sp2C.position = D_ovl8_8038E1E0.position;
+    sp2C.position.x = 0;
+    sp2C.position.y = 0;
+    
+    func_ovl8_80377AEC(temp_s0, &sp2C.position, &D_ovl8_80389F48, 4);
+    func_ovl8_80378064(temp_s0, &sp2C.position, &D_ovl8_80389F4C, 4);
+    
+    sp2C.position.x = sp2C.position.y = 2;
+    sp2C.position.w -= 4;
+    sp2C.position.h -= 4;
+    func_ovl8_80378064(temp_s0, &sp2C.position, &D_ovl8_80389F4C, 4);
+    
+    if (arg1 != 0) 
+    {
+        func_ovl8_8037D95C(&sp2C.text_color);
+        func_ovl8_8037D9B4(&D_ovl8_8038E1E0.bg_color);
+        temp_v0 = func_ovl8_8037E7A8(arg1);
+        
+        if (arg0 == 1) 
+        {
+            func_ovl8_8037DFCC(((sp2C.position.x + (sp2C.position.w / 2)) - (temp_v0 / 2)), ((sp2C.position.y + (sp2C.position.h / 2)) - (func_ovl8_8037E80C() / 2)));
+        } else {
+            func_ovl8_8037DFCC(4, ((sp2C.position.y + (sp2C.position.h / 2)) - (func_ovl8_8037E80C() / 2)));
+        }
+        
+        func_ovl8_8037DD60(temp_s0, arg1);
+        func_ovl8_8037D908(&sp2C.text_color);
+    }
+}
 
 // 0x8038612C
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_30/func_ovl8_8038612C.s")
@@ -85,15 +114,15 @@ void func_ovl8_8038649C()
 }
 
 // 0x803864CC
-void func_ovl8_803864CC(s32 arg0, dbUnknownStruct_803864CC* arg1)
+void func_ovl8_803864CC(s32 arg0, DBMenu* arg1)
 {
 	s32 temp_v1;
 	s32 temp_lo;
 
-	temp_v1 = func_ovl8_8037E7A8(arg1->unk24) + 4;
+	temp_v1 = func_ovl8_8037E7A8(arg1->unk_dbmenu_0x24) + 4;
 	temp_lo = arg0 * temp_v1;
-	arg1->unk0 = ((D_ovl8_8038E1E4 - temp_lo) - (arg0 * 2)) - 4;
-	arg1->unk2 = 4;
-	arg1->unk4 = temp_v1;
-	arg1->unk6 = 0x10;
+	arg1->position.x = ((D_ovl8_8038E1E0.position.w - temp_lo) - (arg0 * 2)) - 4;
+	arg1->position.y = 4;
+	arg1->position.w = temp_v1;
+	arg1->position.h = 0x10;
 }

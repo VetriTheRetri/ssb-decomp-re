@@ -90,9 +90,9 @@ struct dbFunction
 
 struct dbBytesCopy
 {
-    db4Shorts unk_dbbytescopy_0x0;
-    db4Bytes unk_dbbytescopy_0x8;
-    db4Bytes unk_dbbytescopy_0xC;
+    DBMenuPosition position;
+    SYColorRGBA text_color;
+    SYColorRGBA bg_color;
     u16 unk_dbbytescopy_0x10;
     s32 unk_dbbytescopy_0x14;
     s32 unk_dbbytescopy_0x18;

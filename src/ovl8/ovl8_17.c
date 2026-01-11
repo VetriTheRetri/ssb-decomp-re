@@ -138,7 +138,23 @@ void func_ovl8_803812BC(dbUnknown17* arg0, s32* arg1)
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_17/func_ovl8_80381308.s")
 
 // 0x80381710
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_17/func_ovl8_80381710.s")
+void func_ovl8_80381710(dbUnknownStructSC* arg0, s32 arg1) {
+    dbUnknown5_2* temp_v0;
+    dbFunction* temp_v1;
+
+    arg0->unk_0x4->dbUnknown5_2_unk_f32_0x0 = arg1;
+    temp_v0 = arg0->unk_0x4;
+    
+    if ((temp_v0->dbUnknown5_2_unk_f32_0x0 > 0.0f) && (temp_v0->dbUnknown5_2_unk_f32_0x0 <= arg0->unk_0xC)) {
+        temp_v1 = temp_v0->dbUnknown5_2_db_func;
+        temp_v1[14].unk_dbfunc_0x4(temp_v1[14].unk_dbfunc_0x0 + (uintptr_t)temp_v0, arg0->unk_0x8[arg1 - 1]);
+        return;
+    }
+    
+    temp_v1 = temp_v0->dbUnknown5_2_db_func;
+    temp_v1[14].unk_dbfunc_0x4(temp_v1[14].unk_dbfunc_0x0 + (uintptr_t) temp_v0, &D_ovl8_8038BC30);
+}
+
 
 // 0x803817C0
 void func_ovl8_803817C0(dbUnknown22* arg0, f32 arg1)

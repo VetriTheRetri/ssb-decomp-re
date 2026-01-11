@@ -301,7 +301,7 @@ typedef struct dbUnknown5
 
 typedef struct dbUnknown5_2
 {
-    u8  dbUnknown5_2_filler_0x0[0x4];     
+    f32 dbUnknown5_2_unk_f32_0x0;    
     struct dbUnknown5_2 *dbUnknown5_2_0x4;
     u8  dbUnknown5_2_filler_0x8[0x4];     
     char dbUnknown5_2_string[0x10];       
@@ -313,6 +313,14 @@ typedef struct dbUnknown5_2
     u8  dbUnknown5_2_filler_0x44[0x08];   
     dbUnknown5 *dbUnknown5_2_0x4C;        
 } dbUnknown5_2;
+
+typedef struct dbUnknownStructSC
+{ 
+    u32 unk_0x0;
+    dbUnknown5_2* unk_0x4;   
+    void** unk_0x8;       
+    s32 unk_0xC;          
+} dbUnknownStructSC;
 
 typedef struct dbUnknown7
 {

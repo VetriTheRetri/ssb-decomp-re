@@ -203,15 +203,10 @@ void func_ovl8_80384AE8(dbUnknown5_2* arg0, s32* arg1) {
     temp_v0 = arg0->dbUnknown5_2_db_func;
     arg0->dbUnknown5_2_unk_0x40 = arg1;
     
-    temp_v0[10].unk_dbfunc_0x4(temp_v0[10].unk_dbfunc_0x0 + (uintptr_t) arg0, 0x3F800000, arg0, arg1);
+    ((sb32 (*)(uintptr_t, f32))(temp_v0[10].unk_dbfunc_0x4))(temp_v0[10].unk_dbfunc_0x0 + (uintptr_t) arg0, 1.0F);
     
     temp_v0_2 = arg0->dbUnknown5_2_db_func;
-    
-    ((sb32 (*)(uintptr_t, f32))(temp_v0_2[11].unk_dbfunc_0x4))(
-        temp_v0_2[11].unk_dbfunc_0x0 + 
-            (uintptr_t)arg0,
-        arg0->dbUnknown5_2_unk_0x3E
-    );
+    ((sb32 (*)(uintptr_t, f32))(temp_v0_2[11].unk_dbfunc_0x4))(temp_v0_2[11].unk_dbfunc_0x0 + (uintptr_t)arg0, arg0->dbUnknown5_2_unk_0x3E);
 }
 
 

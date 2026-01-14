@@ -180,7 +180,11 @@ struct dbUnknownLink
 
 struct dbUnknownS38
 {
-    u8 filler_0x0[0x18];
+    u8 filler_0x0[0x8];
+    s32 unk_dbunks38_0x8;
+    s32 unk_dbunks38_0xC;
+    s32 unk_dbunks38_0x10;
+    s32 unk_dbunks38_0x14;
     dbFunction *unk_dbunks38_0x18;
     dbUnknownLink *unk_dbunks38_0x1C;
     dbUnknownLinkStruct *unk_dbunks38_0x20;

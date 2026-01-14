@@ -2,6 +2,10 @@
 #include <sys/develop.h>
 #include <db/debug.h>
 
+extern dbFunction* D_ovl8_80389670;
+extern dbFunction* D_ovl8_803896A8;
+extern dbUnknownLink* D_ovl8_80389800;
+
 typedef struct dbUnknownStruct_80375C54
 {
 	GObj* unk0;
@@ -615,7 +619,40 @@ void func_ovl8_80375118(dbUnknownLinkStruct* targetLinkStruct) {
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_803751C0.s")
 
 // 0x80375270
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_80375270.s")
+void func_ovl8_80375270(dbUnknownS38* arg0, s32 arg1) {
+    if (arg0 != NULL) 
+    {
+        arg0->unk_dbunks38_0x18 = &D_ovl8_80389670,
+		arg0->unk_dbunks38_0x20->db_func = &D_ovl8_803896A8;
+		arg0->unk_dbunks38_0x1C->unk_dbunklink_0x8 = &D_ovl8_80389800;
+        
+        if (arg0->unk_dbunks38_0x8 != 0) {
+            func_ovl8_8037B3E4(arg0->unk_dbunks38_0x8);
+        }
+        
+        if (arg0->unk_dbunks38_0xC != 0) {
+            func_ovl8_8037B3E4(arg0->unk_dbunks38_0xC);
+        }
+        
+        if (arg0->unk_dbunks38_0x10 != 0) {
+            func_ovl8_8037B3E4(arg0->unk_dbunks38_0x10);
+        }
+        
+        if (arg0->unk_dbunks38_0x14 != 0) {
+            func_ovl8_8037B3E4(arg0->unk_dbunks38_0x14);
+        }
+        
+        if (arg1 != 0) 
+        {
+            func_ovl8_8037C30C(arg0->unk_dbunks38_0x1C, 0);
+            func_ovl8_803718C4(arg0->unk_dbunks38_0x20, 0);
+        }
+        if (arg1 & 1) 
+        {
+            func_ovl8_803717C0(arg0);
+        }
+    }
+}
 
 // 0x80375354
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_80375354.s")

@@ -452,7 +452,7 @@ void func_ovl8_80383E98(dbUnknown5 *arg0) {
 
         if (1) {}
         temp_v0 = (dbFunction*)arg0->unk_dbunk5_0x30;
-        temp_v0[37].unk_dbfunc_0x4(temp_v0[37].unk_dbfunc_0x0 + (uintptr_t)arg0, &sp2C, ((s16*)&arg0->unk_dbunk5_0x40)[1]);
+        temp_v0[37].unk_dbfunc_0x4(temp_v0[37].unk_dbfunc_0x0 + (uintptr_t)arg0, &sp2C, arg0->unk_dbunk5_0x40.v.y);
 
         sp2C.x += sp34.x;
         sp2C.y += sp34.y;

@@ -449,9 +449,9 @@ void func_ovl8_80374CCC(dbUnknownS38* arg0)
 }
 
 // 0x80374CF8
-s32 func_ovl8_80374CF8(dbUnknown5* arg0)
+void* func_ovl8_80374CF8(dbUnknown5* arg0)
 {
-    return arg0->unk_dbunk5_0x40;
+    return arg0->unk_dbunk5_0x40.ls;
 }
 
 // 0x80374D00

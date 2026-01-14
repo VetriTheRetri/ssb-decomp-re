@@ -261,7 +261,13 @@ typedef struct dbUnknown5
         s16 s_16;
         dbUnknownLinkStruct *ls;
     } unk_dbunk5_0x3C;
-    dbUnknownLinkStruct *unk_dbunk5_0x40;
+    union {
+        u8 *str;
+        u16 u_16;
+        s16 s_16;
+        Vec2h v;
+        dbUnknownLinkStruct *ls;
+    } unk_dbunk5_0x40;
     union {
         s16 s_16;
         dbUnknownLinkStruct *ls;

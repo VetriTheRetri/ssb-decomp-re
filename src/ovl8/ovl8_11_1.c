@@ -99,7 +99,7 @@ void func_ovl8_8037CD64(dbUnknown5* arg0)
     Vec2h sp28;
     Vec2h sp24;
 
-    var_v0 = var_v0 = arg0->unk_dbunk5_0x0 != 0.0f ? (arg0->unk_dbunk5_0x40 != NULL ? arg0->unk_dbunk5_0x40 : arg0->unk_dbunk5_0x44.ls) : arg0->unk_dbunk5_0x44.ls;
+    var_v0 = var_v0 = arg0->unk_dbunk5_0x0 != 0.0f ? (arg0->unk_dbunk5_0x40.ls != NULL ? arg0->unk_dbunk5_0x40.ls : arg0->unk_dbunk5_0x44.ls) : arg0->unk_dbunk5_0x44.ls;
     
     if (var_v0 != NULL) 
     {

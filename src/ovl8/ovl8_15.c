@@ -112,7 +112,39 @@ void func_ovl8_8037F654(dbTestMenu* arg0, s16 arg1)
 }
 
 // 0x8037F668
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_15/func_ovl8_8037F668.s")
+void func_ovl8_8037F668(dbUnknown5* arg0, DBMenuPosition* arg1) 
+{
+    DBMenuPosition sp30;
+    dbFunction* temp_v0;
+    f32 temp_f0;
+    f32 temp_f12;
+    f32 temp_f14;
+
+    temp_v0 = arg0->unk_dbunk5_0x38->db_func;
+    temp_v0[22].unk_dbfunc_0x4(temp_v0[22].unk_dbfunc_0x0 + (uintptr_t)arg0->unk_dbunk5_0x38, &sp30);
+
+    // if (arg0->unk_dbunk5_0x8);
+    temp_f14 = (arg0->unk_dbunk5_0x8 - arg0->unk_dbunk5_0x4);
+    
+    if (arg0->unk_dbunk5_0x3C.ls == NULL)
+    {
+        temp_f0 = (sp30.w - arg0->unk_dbunk5_0x40.s_16);
+        temp_f12 = (temp_f0, temp_f0) * (((arg0->unk_dbunk5_0x0 - arg0->unk_dbunk5_0x4) / temp_f14));
+        arg1->x = temp_f12;
+        arg1->y = sp30.y;
+        arg1->w = arg0->unk_dbunk5_0x40.s_16;
+        arg1->h = sp30.h;
+    }
+    else
+    {
+        temp_f0 = (sp30.h - arg0->unk_dbunk5_0x40.s_16);
+        temp_f12 = (temp_f0, temp_f0) * (((arg0->unk_dbunk5_0x0 - arg0->unk_dbunk5_0x4) / temp_f14));
+        arg1->x = sp30.x;
+        arg1->y = ((sp30.h - arg0->unk_dbunk5_0x40.s_16) - temp_f12);
+        arg1->w = sp30.w;
+        arg1->h = arg0->unk_dbunk5_0x40.s_16;
+    }
+}
 
 // 0x8037F784
 s32 func_ovl8_8037F784(dbUnknown5* arg0, db4Bytes arg1)

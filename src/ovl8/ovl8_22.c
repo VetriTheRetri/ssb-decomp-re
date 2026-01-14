@@ -23,10 +23,70 @@ s32 func_ovl8_80382D90(s32 arg0, dbUnknown3* arg1)
 }
 
 // 0x80382DF4
+#ifdef NON_MATCHING
+/*
+ * NONMATCHING: instruction order around func_ovl8_803717E0
+ */
+
+void* func_ovl8_80382DF4(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2)
+{
+    if (arg0 != NULL || ((arg0 = func_ovl8_803717A0(0xAC)) != NULL))
+    {
+        if (arg1 == NULL)
+        {
+            arg1 = &arg0->unk_dbunk5_0x50;\
+            arg2 = &arg0->unk_dbunk5_0x44;\
+            func_ovl8_803717E0(arg1);
+            func_ovl8_8037C2D0(arg2);
+        }
+
+        func_ovl8_80373C10(arg0, arg1, arg2);
+
+        arg0->unk_dbunk5_0x30 = &D_ovl8_8038C790,
+        arg1->db_func = &D_ovl8_8038C890;
+        arg2->unk_dbunklink_0x8 = &D_ovl8_8038C9E8;
+        arg0->unk_dbunk5_0x40.ls = NULL;
+        arg0->unk_dbunk5_0x3C.s_16 = 3;
+    }
+
+    return arg0;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_22/func_ovl8_80382DF4.s")
+#endif /* NON_MATCHING */
 
 // 0x80382EA8
+#ifdef NON_MATCHING
+/*
+ * NONMATCHING: instruction order around func_ovl8_803717E0
+ */
+
+void* func_ovl8_80382EA8(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2, s32 arg3, s32 arg4, s32 arg5)
+{
+    if (arg0 != NULL || ((arg0 = func_ovl8_803717A0(0xAC)) != NULL))
+    {
+        if (arg1 == NULL)
+        {
+            arg1 = &arg0->unk_dbunk5_0x50;\
+            arg2 = &arg0->unk_dbunk5_0x44;\
+            func_ovl8_803717E0(arg1);
+            func_ovl8_8037C2D0(arg2);
+        }
+
+        func_ovl8_80373CC4(arg0, arg1, arg2, arg3, arg4);
+
+        arg0->unk_dbunk5_0x30 = &D_ovl8_8038C790,
+        arg1->db_func = &D_ovl8_8038C890;
+        arg2->unk_dbunklink_0x8 = &D_ovl8_8038C9E8;
+        arg0->unk_dbunk5_0x40.ls = arg5;
+        arg0->unk_dbunk5_0x3C.s_16 = 3;
+    }
+
+    return arg0;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_22/func_ovl8_80382EA8.s")
+#endif /* NON_MATCHING */
 
 // 0x80382F70
 void func_ovl8_80382F70(dbUnknown5* arg0, s32 arg1)

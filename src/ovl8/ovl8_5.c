@@ -16,6 +16,13 @@ typedef struct {
     s32 (*unk44)(s32, f32);
 } UnkStruct1;
 
+typedef struct dbUnkStruct8_5
+{
+	DBMenuPosition position;
+	Vec2h v;
+	Vec2h v2;
+} dbUnkStruct8_5;
+
 extern dbUnknownLinkStruct D_ovl8_803890A0;
 extern dbFunction D_ovl8_80389170;
 extern dbUnknownLink D_ovl8_803892C8;
@@ -264,7 +271,36 @@ s32 func_ovl8_80373828(dbUnknown5* arg0, s32 arg1)
 }
 
 // 0x8037383C
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_5/func_ovl8_8037383C.s")
+s32 func_ovl8_8037383C(dbUnknown5* arg0, dbUnkStruct8_5* arg1) 
+{
+    dbUnkStruct8_5 sp28;
+    dbFunction* temp_v1;
+
+    sp28.v2 = arg1->v;
+    temp_v1 = arg0->unk_dbunk5_0x38->db_func;
+    temp_v1[10].unk_dbfunc_0x4(temp_v1[10].unk_dbfunc_0x0 + (uintptr_t)arg0->unk_dbunk5_0x38, &sp28.v2);
+
+    if (1);
+    
+    temp_v1 = arg0->unk_dbunk5_0x38->db_func;
+    temp_v1[22].unk_dbfunc_0x4(temp_v1[22].unk_dbfunc_0x0 + (uintptr_t)arg0->unk_dbunk5_0x38, &sp28.position);
+
+    if (func_ovl8_80377168(sp28.v2, &sp28.position) == 0) 
+    {
+        return 0;
+    } 
+
+    temp_v1 = arg0->unk_dbunk5_0x30;
+
+    if (temp_v1[20].unk_dbfunc_0x4(temp_v1[20].unk_dbfunc_0x0 + (uintptr_t)arg0, sp28.v2) <= 0) 
+    {
+        return 0;
+    }
+
+    temp_v1 = arg0->unk_dbunk5_0x30;
+    
+    return temp_v1[12].unk_dbfunc_0x4(temp_v1[12].unk_dbfunc_0x0 + (uintptr_t)arg0, arg1);
+}
 
 // 0x80373930
 void func_ovl8_80373930(dbUnknown5_2* arg0, char* arg1)

@@ -447,7 +447,7 @@ void func_ovl8_8037C9E4(dbUnknown5* arg0)
 	}
 
 	arg0->unk_dbunk5_0x48 = var_v0;
-	func_ovl8_803725DC(&arg0->unk_dbunk5_0x40, arg0);
+	func_ovl8_803725DC(&arg0->unk_dbunk5_0x40);
 }
 
 // 0x8037CA48

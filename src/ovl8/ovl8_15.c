@@ -375,7 +375,7 @@ void func_ovl8_8038011C(dbUnknown7* arg0, s32 arg1)
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_15/func_ovl8_803801DC.s")
 
 // 0x80380414
-void func_ovl8_80380414(dbUnknownLinkStruct* arg0)
+void* func_ovl8_80380414(dbUnknownLinkStruct* arg0)
 {
     dbUnknownLinkStruct* var_v0 = arg0;
 
@@ -386,9 +386,9 @@ void func_ovl8_80380414(dbUnknownLinkStruct* arg0)
 
     if (var_v0->unk_dbunkstruct_0x2C == 0)
     {
-        func_ovl8_80380704();
+        return func_ovl8_80380704(arg0);
     }
-    else func_ovl8_80380920();
+    else return func_ovl8_80380920(arg0);
 }
 
 // 0x8038045C

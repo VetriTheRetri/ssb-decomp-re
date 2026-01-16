@@ -2,11 +2,11 @@
 #include <sys/develop.h>
 #include <db/debug.h>
 
-// probably part of another struct?
-typedef struct db2ShortsContainer
+typedef struct Vec2hPair
 {
-	db2Shorts unk_db2shortscont_0x0;
-} db2ShortsContainer;
+	Vec2h pos;
+	Vec2h pos2;
+} Vec2hPair;
 
 typedef struct dbUnknown6_1_spriteContainer {
 	u8 dbUnknown6_1_spriteContainer_0x0[0x10];
@@ -29,7 +29,7 @@ extern dbFunction D_ovl8_803899F0;
 extern dbFunction D_ovl8_80389AA8;
 extern dbUnknownLink D_ovl8_80389C00;
 extern dbFunction D_ovl8_80389C28;
-extern db2ShortsContainer D_8038EFB0_1AB800;
+extern Vec2hPair D_8038EFB0_1AB800;
 extern dbBytesContainer D_8038EFB8_1AB808;
 extern dbTestMenu* D_8038EFCC_1AB81C;
 
@@ -94,15 +94,15 @@ void func_ovl8_80375BA0(u16* arg0, u16* arg1, u16* arg2)
 }
 
 // 0x80375BB4
-void func_ovl8_80375BB4(db2Shorts *arg0)
+void func_ovl8_80375BB4(Vec2h *arg0)
 {
-	*arg0 = D_8038EFB0_1AB800.unk_db2shortscont_0x0;
+	*arg0 = D_8038EFB0_1AB800.pos;
 }
 
 // 0x80375BD0
-void func_ovl8_80375BD0(db2ShortsContainer* arg0)
+void func_ovl8_80375BD0(Vec2h* arg0)
 {
-	D_8038EFB0_1AB800.unk_db2shortscont_0x0 = arg0->unk_db2shortscont_0x0;
+	D_8038EFB0_1AB800.pos = *arg0;
 }
 
 // 0x80375BEC
@@ -119,8 +119,8 @@ void func_ovl8_80375BEC(dbUnknown6_1* arg0, dbUnknown6_1* arg1)
 		func_ovl8_80375E60(arg0);
 	}
 
-	x = D_8038EFB0_1AB800.unk_db2shortscont_0x0.arr[0] - arg0->dbUnknown6_1_0x14;
-	y = D_8038EFB0_1AB800.unk_db2shortscont_0x0.arr[1] - arg0->dbUnknown6_1_0x16;
+	x = D_8038EFB0_1AB800.pos.x - arg0->dbUnknown6_1_0x14;
+	y = D_8038EFB0_1AB800.pos.y - arg0->dbUnknown6_1_0x16;
 	spMove(&temp_v0->dbUnknown6_1_spriteContainer_0x10, x, y);
 }
 
@@ -183,22 +183,22 @@ void func_ovl8_80375D54(dbTestMenu *arg0, db4Shorts *arg1)
 // 0x80375D84
 void func_ovl8_80375D84(s32 arg0)
 {
-	if (D_8038EFB0_1AB800.unk_db2shortscont_0x0.arr[0] < D_8038EFB8_1AB808.unk_dbbytescont_0x0.arr[0])
+	if (D_8038EFB0_1AB800.pos.x < D_8038EFB8_1AB808.unk_dbbytescont_0x0.arr[0])
 	{
-		D_8038EFB0_1AB800.unk_db2shortscont_0x0.arr[0] = D_8038EFB8_1AB808.unk_dbbytescont_0x0.arr[0];
+		D_8038EFB0_1AB800.pos.x = D_8038EFB8_1AB808.unk_dbbytescont_0x0.arr[0];
 	}
-	else if (D_8038EFB8_1AB808.unk_dbbytescont_0x0.arr[2] < D_8038EFB0_1AB800.unk_db2shortscont_0x0.arr[0])
+	else if (D_8038EFB8_1AB808.unk_dbbytescont_0x0.arr[2] < D_8038EFB0_1AB800.pos.x)
 	{
-		D_8038EFB0_1AB800.unk_db2shortscont_0x0.arr[0] = D_8038EFB8_1AB808.unk_dbbytescont_0x0.arr[2];
+		D_8038EFB0_1AB800.pos.x = D_8038EFB8_1AB808.unk_dbbytescont_0x0.arr[2];
 	}
 
-	if (D_8038EFB0_1AB800.unk_db2shortscont_0x0.arr[1] < D_8038EFB8_1AB808.unk_dbbytescont_0x0.arr[1])
+	if (D_8038EFB0_1AB800.pos.y < D_8038EFB8_1AB808.unk_dbbytescont_0x0.arr[1])
 	{
-		D_8038EFB0_1AB800.unk_db2shortscont_0x0.arr[1] = D_8038EFB8_1AB808.unk_dbbytescont_0x0.arr[1];
+		D_8038EFB0_1AB800.pos.y = D_8038EFB8_1AB808.unk_dbbytescont_0x0.arr[1];
 	}
-	else if (D_8038EFB8_1AB808.unk_dbbytescont_0x0.arr[3] < D_8038EFB0_1AB800.unk_db2shortscont_0x0.arr[1])
+	else if (D_8038EFB8_1AB808.unk_dbbytescont_0x0.arr[3] < D_8038EFB0_1AB800.pos.y)
 	{
-		D_8038EFB0_1AB800.unk_db2shortscont_0x0.arr[1] = D_8038EFB8_1AB808.unk_dbbytescont_0x0.arr[3];
+		D_8038EFB0_1AB800.pos.y = D_8038EFB8_1AB808.unk_dbbytescont_0x0.arr[3];
 	}
 }
 

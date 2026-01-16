@@ -355,9 +355,9 @@ void func_ovl8_8037726C(db2Shorts *arg0)
 }
 
 // 0x8037728C
-void func_ovl8_8037728C()
+void func_ovl8_8037728C(Vec2h* arg0)
 {
-	func_ovl8_80375BD0();
+	func_ovl8_80375BD0(arg0);
 }
 
 // 0x803772AC

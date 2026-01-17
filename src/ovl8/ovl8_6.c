@@ -41,6 +41,19 @@ struct dbUnknown6_3 {
     dbUnknown6_2* unk_dbunk6_0x38;
 };
 
+typedef struct dbUnknownStructS24
+{
+    s32 unk_0x0;
+    s32 unk_0x4;
+    Sprite* unk_0x8;
+    Sprite* unk_0xC;
+    Sprite* unk_0x10;
+    Sprite* unk_0x14;
+    s32 unk_0x18;
+    s32 unk_0x1C;
+    dbUnknownLinkStruct* unk_0x20;
+} dbUnknownStructS24;
+
 extern s16 D_ovl8_8038A864;
 extern s32 D_ovl8_8038A878;
 extern s32 D_ovl8_8038A87C;
@@ -692,7 +705,48 @@ void func_ovl8_80375270(dbUnknownS38* arg0, s32 arg1) {
 }
 
 // 0x80375354
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_80375354.s")
+void func_ovl8_80375354(dbUnknownStructS24* arg0) 
+{
+    s32 unused;
+    DBMenuPosition sp44;
+    dbFunction* temp_s0;
+    dbUnknownLinkStruct* temp_v0;
+
+    if ((arg0->unk_0x8 != NULL) && (arg0->unk_0xC != NULL) && (arg0->unk_0x10 != NULL) && (arg0->unk_0x14 != NULL)) 
+    {
+        temp_v0 = arg0->unk_0x20;
+        temp_s0 = temp_v0->db_func;
+        temp_s0[20].unk_dbfunc_0x4(temp_s0[20].unk_dbfunc_0x0 + (uintptr_t)temp_v0, &sp44);
+        if (temp_s0);
+        
+        spMove(arg0->unk_0x8, sp44.x - arg0->unk_0x0, sp44.y - arg0->unk_0x4);
+        spMove(arg0->unk_0xC, sp44.x - arg0->unk_0x0, sp44.y);
+        spMove(arg0->unk_0x10, sp44.x + sp44.w, sp44.y);
+        spMove(arg0->unk_0x14, sp44.x - arg0->unk_0x0, sp44.y + sp44.h);
+
+        if (gSYTaskmanDLHeads);
+
+        arg0->unk_0x8->rsp_dl_next = gSYTaskmanDLHeads[0];
+        spDraw(arg0->unk_0x8);
+        gSYTaskmanDLHeads[0] = arg0->unk_0x8->rsp_dl_next - 1;
+        gDPPipeSync(gSYTaskmanDLHeads[0]++);
+        
+        arg0->unk_0xC->rsp_dl_next = gSYTaskmanDLHeads[0];
+        spDraw(arg0->unk_0xC);
+        gSYTaskmanDLHeads[0] = arg0->unk_0xC->rsp_dl_next - 1;
+        gDPPipeSync(gSYTaskmanDLHeads[0]++);
+        
+        arg0->unk_0x10->rsp_dl_next = gSYTaskmanDLHeads[0];
+        spDraw(arg0->unk_0x10);
+        gSYTaskmanDLHeads[0] = arg0->unk_0x10->rsp_dl_next - 1;
+        gDPPipeSync(gSYTaskmanDLHeads[0]++);
+        
+        arg0->unk_0x14->rsp_dl_next = gSYTaskmanDLHeads[0];
+        spDraw(arg0->unk_0x14);
+        gSYTaskmanDLHeads[0] = arg0->unk_0x14->rsp_dl_next - 1;
+        gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    }
+}
 
 // 0x80375528
 void func_ovl8_80375528(struct dbUnknownStructS1C* arg0, s32 arg1, s32 arg2) {

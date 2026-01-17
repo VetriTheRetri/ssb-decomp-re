@@ -20,8 +20,8 @@ extern dbUnknownLink D_ovl8_8038B948;
 extern dbUnknown3 D_ovl8_8038B970;
 
 extern void func_ovl8_803724B4(void *, void *, void *, s32, s32);
-
 void *func_ovl8_8037FCD8(dbUnknown5 *arg0, dbUnknownLinkStruct **arg1, dbUnknownLink **arg2, u16 *arg3, s32 arg4);
+s32 func_ovl8_80380704(dbUnknownLinkStruct*);
 
 // 0x8037F300
 void* func_ovl8_8037F300(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2);
@@ -407,7 +407,93 @@ void func_ovl8_803806C0(dbUnknown5* arg0, void* arg1, void* arg2, void* arg3, s3
 }
 
 // 0x80380704
+#ifdef NON_MATCHING
+// This matches in decomp.me, but has a regswap in our repo :(
+// https://decomp.me/scratch/tBFJb
+s32 func_ovl8_80380704(dbUnknownLinkStruct* arg0) 
+{
+    Vec2h sp3C;
+    s32 var_s3;
+    dbUnknownLinkStruct* var_s0;
+
+    func_ovl8_8037726C(&sp3C);
+
+    ((dbFunction*)(var_s0)) = arg0->unk_dbunkstruct_0x20->db_func;
+    
+    if (((dbFunction*)(var_s0))[16].unk_dbfunc_0x4(((dbFunction*)(var_s0))[16].unk_dbfunc_0x0 + (uintptr_t)arg0->unk_dbunkstruct_0x20, &sp3C) != 0) 
+    {
+        ((dbFunction*)(var_s0)) = arg0->unk_dbunkstruct_0x20->db_func;
+        ((dbFunction*)(var_s0))[8].unk_dbfunc_0x4(((dbFunction*)(var_s0))[8].unk_dbfunc_0x0 + (uintptr_t)arg0->unk_dbunkstruct_0x20, &sp3C);
+        
+        arg0[1].unk_dbunkstruct_0x44 = ((sp3C.y / 12) + 1);
+        
+        if (1) 
+        {
+            ((dbFunction*)(var_s0)) = arg0->unk_dbunkstruct_0x20->db_func;
+            ((dbFunction*)(var_s0))[35].unk_dbfunc_0x4(((dbFunction*)(var_s0))[35].unk_dbfunc_0x0 + (uintptr_t)arg0->unk_dbunkstruct_0x20, 1);
+        }
+    } 
+    else 
+    {
+        arg0[1].unk_dbunkstruct_0x44 = 0;
+    }
+    
+    var_s3 = arg0[1].unk_dbunkstruct_0x44;
+    
+    var_s0 = arg0;
+    if (arg0 != NULL) 
+    {
+        
+        var_s0 = arg0->unk_dbunkstruct_0x20;
+    }
+    
+    while (func_ovl8_80377244() & var_s0->unk_dbunkstruct_0x30)
+    {
+        func_ovl8_8037726C(&sp3C);
+
+        ((dbFunction*)(var_s0)) = arg0->unk_dbunkstruct_0x20->db_func;
+        
+        if (((dbFunction*)(var_s0))[16].unk_dbfunc_0x4(((dbFunction*)(var_s0))[16].unk_dbfunc_0x0 + (uintptr_t)arg0->unk_dbunkstruct_0x20, &sp3C) != 0) 
+        {
+            ((dbFunction*)(var_s0)) = arg0->unk_dbunkstruct_0x20->db_func;
+            ((dbFunction*)(var_s0))[8].unk_dbfunc_0x4(((dbFunction*)(var_s0))[8].unk_dbfunc_0x0 + (uintptr_t)arg0->unk_dbunkstruct_0x20, &sp3C);
+            
+            
+            arg0[1].unk_dbunkstruct_0x44 = (sp3C.y / 12) + 1;
+            
+            if (1);
+            
+            if ((arg0[1].unk_dbunkstruct_0x44 <= 0) || ((s32)arg0[1].unk_dbunkstruct_0x48 < arg0[1].unk_dbunkstruct_0x44)) 
+            {
+                arg0[1].unk_dbunkstruct_0x44 = 0;
+            }
+        } 
+        else 
+        {
+            arg0[1].unk_dbunkstruct_0x44 = 0;
+        }
+        
+        if (arg0[1].unk_dbunkstruct_0x44 != var_s3) 
+        {
+            ((dbFunction*)(var_s0)) = arg0->unk_dbunkstruct_0x20->db_func;
+            ((dbFunction*)(var_s0))[35].unk_dbfunc_0x4(((dbFunction*)(var_s0))[35].unk_dbfunc_0x0 + (uintptr_t)arg0->unk_dbunkstruct_0x20, 1);
+            var_s3 = arg0[1].unk_dbunkstruct_0x44;
+        }
+
+        gcSleepCurrentGObjThread(1);
+        
+        var_s0 = arg0;
+        if (arg0 != NULL) 
+        {
+            var_s0 = arg0->unk_dbunkstruct_0x20;
+        }
+    }
+    
+    return arg0[1].unk_dbunkstruct_0x44;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_15/func_ovl8_80380704.s")
+#endif /* NON_MATCHING */
 
 // 0x80380920
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_15/func_ovl8_80380920.s")

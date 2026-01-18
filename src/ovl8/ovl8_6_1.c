@@ -60,11 +60,11 @@ void func_ovl8_803758E8(void)
 // 0x803759F0
 void* func_ovl8_803759F0(dbTestMenu* arg0, dbUnknownLinkStruct* arg1, dbUnknown8_S28* arg2, Sprite* arg3) {
     if ((arg0) || (arg0 = func_ovl8_803717A0(0x7C))) {
-        if (arg1 == NULL) {
-            arg1 = &arg0->unk_dbtestmenu_0x14.unk_dbunkstruct_0xC; // Dis wrong
+        if (!arg1) {
+            arg1 = (dbUnknownLinkStruct*) &arg0->unk_dbtestmenu_0x14.unk_dbunkstruct_0xC; // Dis wrong
             func_ovl8_803717E0(arg1);
         }
-        func_ovl8_8037203C(arg0, arg1, arg2, arg3);
+        func_ovl8_8037203C((dbUnknownLink*)arg0, arg1, arg2, arg3);
         arg0->db_func = &D_ovl8_80389830;
         arg1->db_func = &D_ovl8_80389898;
         arg0->unk_dbtestmenu_0x14.unk_dbunkstruct_0x0 = 0;

@@ -2,13 +2,6 @@
 #include <sys/develop.h>
 #include <db/debug.h>
 
-// TODO: move to h file
-typedef struct dbUnknown8_S28 {
-	s32 dbUnknown8_S28_0x0[6];
-	s32 str;
-	s32 dbUnknown8_S28_0x20[3];
-} dbUnknown8_S28;
-
 typedef struct dbUnknown8_SC {
     s16 x0;
     s16 y0;

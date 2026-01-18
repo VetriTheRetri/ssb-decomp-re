@@ -2,6 +2,9 @@
 #include <sys/develop.h>
 #include <db/debug.h>
 
+extern s32 gSYVideoResHeight;
+extern s32 gSYVideoResWidth;
+
 typedef struct Vec2hPair
 {
 	Vec2h pos;
@@ -55,7 +58,28 @@ void func_ovl8_803758E8(void)
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6_1/func_ovl8_80375920.s")
 
 // 0x803759F0
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6_1/func_ovl8_803759F0.s")
+void* func_ovl8_803759F0(dbTestMenu* arg0, dbUnknownLinkStruct* arg1, dbUnknown8_S28* arg2, Sprite* arg3) {
+    if ((arg0) || (arg0 = func_ovl8_803717A0(0x7C))) {
+        if (arg1 == NULL) {
+            arg1 = &arg0->unk_dbtestmenu_0x14.unk_dbunkstruct_0xC; // Dis wrong
+            func_ovl8_803717E0(arg1);
+        }
+        func_ovl8_8037203C(arg0, arg1, arg2, arg3);
+        arg0->db_func = &D_ovl8_80389830;
+        arg1->db_func = &D_ovl8_80389898;
+        arg0->unk_dbtestmenu_0x14.unk_dbunkstruct_0x0 = 0;
+        arg0->unk_dbtestmenu_0x14.position.x = 0;
+        D_8038EFB0_1AB800.pos.x = (s16) ((s32) gSYVideoResWidth / 2);
+        D_8038EFB0_1AB800.pos.y = (s16) ((s32) gSYVideoResHeight / 2);
+        *(u32 *)&arg0->unk_dbtestmenu_0x14.position.y = 0;
+        D_8038EFB8_1AB808.unk_dbbytescont_0x0.arr[1] = 0;
+        D_8038EFB8_1AB808.unk_dbbytescont_0x0.arr[0] = D_8038EFB8_1AB808.unk_dbbytescont_0x0.arr[1];
+        D_8038EFB8_1AB808.unk_dbbytescont_0x0.arr[2] = gSYVideoResWidth - 1;
+        D_8038EFB8_1AB808.unk_dbbytescont_0x0.arr[3] = gSYVideoResHeight - 1;
+        *(u32 *)&arg0->unk_dbtestmenu_0x14.position.h = 1;
+    }
+    return arg0;
+}
 
 // 0x80375B04
 void func_ovl8_80375B04(dbTestMenu *arg0, s32 arg1)

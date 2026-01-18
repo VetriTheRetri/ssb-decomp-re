@@ -178,6 +178,12 @@ struct dbUnknownLink
     dbUnknownLinkStruct unk_dbunklink_0x14;
 };
 
+typedef struct dbUnknown8_S28 {
+	s32 dbUnknown8_S28_0x0[6];
+	s32 str;
+	s32 dbUnknown8_S28_0x20[3];
+} dbUnknown8_S28;
+
 struct dbUnknownS38
 {
     u8 filler_0x0[0x8];

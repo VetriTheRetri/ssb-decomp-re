@@ -20,6 +20,7 @@ extern dbUnknownLink D_ovl8_8038B948;
 extern dbUnknown3 D_ovl8_8038B970;
 
 extern void func_ovl8_803724B4(void *, void *, void *, s32, s32);
+extern void func_ovl8_8037726C(db2Shorts*);
 void *func_ovl8_8037FCD8(dbUnknown5 *arg0, dbUnknownLinkStruct **arg1, dbUnknownLink **arg2, u16 *arg3, s32 arg4);
 s32 func_ovl8_80380704(dbUnknownLinkStruct*);
 
@@ -407,9 +408,6 @@ void func_ovl8_803806C0(dbUnknown5* arg0, void* arg1, void* arg2, void* arg3, s3
 }
 
 // 0x80380704
-#ifdef NON_MATCHING
-// This matches in decomp.me, but has a regswap in our repo :(
-// https://decomp.me/scratch/tBFJb
 s32 func_ovl8_80380704(dbUnknownLinkStruct* arg0) 
 {
     Vec2h sp3C;
@@ -491,9 +489,6 @@ s32 func_ovl8_80380704(dbUnknownLinkStruct* arg0)
     
     return arg0[1].unk_dbunkstruct_0x44;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_15/func_ovl8_80380704.s")
-#endif /* NON_MATCHING */
 
 // 0x80380920
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_15/func_ovl8_80380920.s")

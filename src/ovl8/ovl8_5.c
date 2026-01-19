@@ -23,6 +23,11 @@ typedef struct dbUnkStruct8_5
 	Vec2h v2;
 } dbUnkStruct8_5;
 
+typedef struct SYColorRGBAContainer
+{
+    SYColorRGBA color;
+} SYColorRGBAContainer;
+
 extern dbUnknownLinkStruct D_ovl8_803890A0;
 extern dbFunction D_ovl8_80389170;
 extern dbUnknownLink D_ovl8_803892C8;
@@ -33,6 +38,7 @@ extern dbUnknownLink D_ovl8_80389520;
 void* func_ovl8_8037345C(dbUnknown5 *arg0, dbUnknownLinkStruct *arg1, dbUnknownLink *arg2, dbBytesCopy2* arg3, dbUnknown5* arg4);
 void func_ovl8_803735E4(dbUnknown5 *arg0);
 void func_ovl8_803743CC(u16* arg0, u16 arg1);
+extern void func_ovl8_8037726C(void *);
 
 // 0x80373350
 dbUnknownLinkStruct* func_ovl8_80373350(s32 arg0, s32 arg1)
@@ -569,7 +575,193 @@ s32 func_ovl8_80373E24(dbUnknown5* arg0, s32 arg1)
 }
 
 // 0x80373EA8
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_5/func_ovl8_80373EA8.s")
+s32 func_ovl8_80373EA8(dbUnknown5* arg0, dbBytesCopy* arg1) 
+{
+    SYColorRGBAContainer sp6C;
+    s32 var_s6;
+    s32 var_s4;
+    s32 var_s5;
+    s32 var_v1;
+    u32 var_t7;
+    s32 var_v0;
+    dbFunction* temp_v1;
+    s32 var_s0;
+    dbUnknownLinkStruct* var_s2;
+
+    if (var_s6) {}
+    var_s5 = 1;
+    var_s4 = 0;
+
+    var_t7 = arg0->unk_dbunk5_0x0;
+    
+    sp6C.color = arg1->text_color;
+    
+    ((dbFunction*)(var_s0)) = arg0->unk_dbunk5_0x38->db_func;
+    ((dbFunction*)(var_s0))[10].unk_dbfunc_0x4(((dbFunction*)(var_s0))[10].unk_dbfunc_0x0 + (uintptr_t)arg0->unk_dbunk5_0x38, &sp6C);
+    
+    ((dbFunction*)(var_s0)) = (dbFunction*)arg0->unk_dbunk5_0x30;
+    var_s6 = ((dbFunction*)(var_s0))[20].unk_dbfunc_0x4(((dbFunction*)(var_s0))[20].unk_dbfunc_0x0 + (uintptr_t)arg0, sp6C.color);
+    
+    if (var_s6 <= 0) 
+    {
+        return 0;
+    }
+    
+    ((dbFunction*)(var_s0)) = (dbFunction*)arg0->unk_dbunk5_0x30;
+    if (((dbFunction*)(var_s0))[12].unk_dbfunc_0x4(((dbFunction*)(var_s0))[12].unk_dbfunc_0x0 + (uintptr_t)arg0, arg1) != 0) 
+    {
+        return 1;
+    } 
+    if ((arg0->unk_dbunk5_0x3C.u_16 == 2) && (1.0f - arg0->unk_dbunk5_0x0 == 0.0f)) 
+    {
+        var_s0 = (dbUnknownLinkStruct*)arg0;
+        if (arg0 != NULL) 
+        {
+            var_s0 = arg0->unk_dbunk5_0x38;
+        }
+        
+        temp_v1 = arg0->unk_dbunk5_0x34->unk_dbunklink_0x8;
+        temp_v1[3].unk_dbfunc_0x4(temp_v1[3].unk_dbfunc_0x0 + (uintptr_t)arg0->unk_dbunk5_0x34, ((s32*)var_s0)[3], arg0);
+    } 
+    else 
+    {
+        ((dbFunction*)(var_s0)) = (dbFunction*)arg0->unk_dbunk5_0x30;
+        ((dbFunction*)(var_s0))[22].unk_dbfunc_0x4(((dbFunction*)(var_s0))[22].unk_dbfunc_0x0 + (uintptr_t)arg0, var_s6, 1, 0, &sp6C);
+        
+        var_s0 = arg0;
+        if (arg0 != NULL) 
+        {
+            var_s0 = arg0->unk_dbunk5_0x38;
+        }
+
+        if (((dbUnknownLinkStruct*)var_s0)->unk_dbunkstruct_0x2C == 0) 
+        {
+            var_s0 = arg0;
+            if (arg0 != NULL) 
+            {
+                var_s0 = arg0->unk_dbunk5_0x38;
+            }
+
+            var_s2 = var_s0;
+            while (func_ovl8_80377244() & var_s2->unk_dbunkstruct_0x30)
+            {
+                func_ovl8_8037726C(&sp6C);
+                
+                ((dbFunction*)(var_s0)) = arg0->unk_dbunk5_0x38->db_func;
+                ((dbFunction*)(var_s0))[10].unk_dbfunc_0x4(((dbFunction*)(var_s0))[10].unk_dbfunc_0x0 + (uintptr_t)arg0->unk_dbunk5_0x38, &sp6C);
+                
+                ((dbFunction*)(var_s0)) = (dbFunction*)arg0->unk_dbunk5_0x30;
+                var_s4 = var_s5;
+                var_s5 = ((dbFunction*)(var_s0))[21].unk_dbfunc_0x4(((dbFunction*)(var_s0))[21].unk_dbfunc_0x0 + (uintptr_t)arg0, sp6C.color, var_s6);
+                
+                ((dbFunction*)(var_s0)) = (dbFunction*)arg0->unk_dbunk5_0x30;
+                ((dbFunction*)(var_s0))[23].unk_dbfunc_0x4(((dbFunction*)(var_s0))[23].unk_dbfunc_0x0 + (uintptr_t)arg0, var_s6, var_s5, var_s4, &sp6C);
+
+                if (1)
+                {
+                    if (arg0->unk_dbunk5_0x2C != NULL) 
+                    {
+                        ((void(*)(void *))arg0->unk_dbunk5_0x2C)(arg0);
+                    } 
+                    else 
+                    {
+                        ((dbFunction*)(var_s0)) = (dbFunction*)arg0->unk_dbunk5_0x30;
+                        ((dbFunction*)(var_s0))[19].unk_dbfunc_0x4(((dbFunction*)(var_s0))[19].unk_dbfunc_0x0 + (uintptr_t)arg0);
+                    }
+                }
+                
+                gcSleepCurrentGObjThread(1);
+            
+                if ((arg0->unk_dbunk5_0x3C.u_16 == 0) && (gSYControllerMain.button_update != 0)) 
+                {
+                    var_s0 = arg0;
+                    if (arg0 != NULL)
+                    {
+                        var_s0 = arg0->unk_dbunk5_0x38;
+                    }
+                    
+                    temp_v1 = arg0->unk_dbunk5_0x34->unk_dbunklink_0x8;
+                    temp_v1[3].unk_dbfunc_0x4(temp_v1[3].unk_dbfunc_0x0 + (uintptr_t)arg0->unk_dbunk5_0x34, ((s32*)var_s0)[3], arg0);
+                }
+                
+                var_s2 = arg0;
+                if (arg0 != NULL) 
+                {
+                    var_s2 = arg0->unk_dbunk5_0x38;
+                }
+            }
+            
+            
+            if (arg0->unk_dbunk5_0x3C.u_16 == 0) 
+            {
+                ((dbFunction*)(var_s0)) = (dbFunction*)arg0->unk_dbunk5_0x30;
+                ((dbFunction*)(var_s0))[24].unk_dbfunc_0x4(((dbFunction*)(var_s0))[24].unk_dbfunc_0x0 + (uintptr_t)arg0, var_s6, 0, var_s4, &sp6C);
+            }
+            
+            func_ovl8_8037726C(&sp6C);
+            
+            ((dbFunction*)(var_s0)) = arg0->unk_dbunk5_0x38->db_func;
+            ((dbFunction*)(var_s0))[10].unk_dbfunc_0x4(((dbFunction*)(var_s0))[10].unk_dbfunc_0x0 + (uintptr_t)arg0->unk_dbunk5_0x38, &sp6C);
+            
+            ((dbFunction*)(var_s0)) = (dbFunction*)arg0->unk_dbunk5_0x30;
+            var_v1 = ((dbFunction*)(var_s0))[21].unk_dbfunc_0x4(((dbFunction*)(var_s0))[21].unk_dbfunc_0x0 + (uintptr_t)arg0, sp6C.color, var_s6);
+        } 
+        else {
+            var_v1 = var_s6;
+        }
+        
+        var_v0 = 0;
+
+        var_s0 = arg0->unk_dbunk5_0x3C.u_16;
+        switch (var_s0) 
+        {
+            case 0:
+                if (var_v1 == var_s6) 
+                {
+                    var_v0 = 1;
+                }
+                break;
+            case 1:
+                if (arg0->unk_dbunk5_0x0 != var_t7) 
+                {
+                    var_v0 = 1;
+                }
+                break;
+            case 2:
+                if (arg0->unk_dbunk5_0x0 != var_t7) 
+                {
+                    var_v0 = 1;
+                }
+                break;
+        }
+        
+        if (var_v0 != 0) 
+        {
+            var_s0 = arg0;
+            if (arg0 != NULL) 
+            {
+                var_s0 = arg0->unk_dbunk5_0x38;
+            }
+            
+            temp_v1 = arg0->unk_dbunk5_0x34->unk_dbunklink_0x8;
+            temp_v1[3].unk_dbfunc_0x4(temp_v1[3].unk_dbfunc_0x0 + (uintptr_t)arg0->unk_dbunk5_0x34, ((s32*)var_s0)[3], arg0);
+            
+            if (arg0->unk_dbunk5_0x0 != 0.0f) 
+            {
+                ((dbFunction*)(var_s0)) = (dbFunction*)arg0->unk_dbunk5_0x30;
+                ((void (*)(void*, f32))((dbFunction*)(var_s0))[18].unk_dbfunc_0x4)(((dbFunction*)(var_s0))[18].unk_dbfunc_0x0 + (uintptr_t)arg0, 0.0f);
+            }
+            
+            arg0->unk_dbunk5_0x20 = 1.0f;
+        } 
+        else 
+        {
+            arg0->unk_dbunk5_0x20 = 0.0f;
+        }
+    }
+    
+    return 1;
+}
 
 // 0x803743C0
 void func_ovl8_803743C0(u16* arg0, u16 arg1)

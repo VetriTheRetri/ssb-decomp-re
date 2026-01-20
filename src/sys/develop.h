@@ -186,7 +186,8 @@ typedef struct dbUnknown8_S28 {
 
 struct dbUnknownS38
 {
-    u8 filler_0x0[0x8];
+    s32 unk_dbunks38_0x0;
+    s32 unk_dbunks38_0x4;
     s32 unk_dbunks38_0x8;
     s32 unk_dbunks38_0xC;
     s32 unk_dbunks38_0x10;

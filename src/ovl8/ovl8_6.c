@@ -54,6 +54,17 @@ typedef struct dbUnknownStructS24
     dbUnknownLinkStruct* unk_0x20;
 } dbUnknownStructS24;
 
+typedef struct DBMenuPositionContainer {
+    DBMenuPosition position;
+} DBMenuPositionContainer;
+
+extern void* D_ovl8_80389580;
+extern void* D_ovl8_80389598;
+extern void* D_ovl8_803895D4;
+extern void* D_ovl8_803895F8;
+extern void* D_ovl8_8038961C;
+extern void* D_ovl8_80389634;
+
 extern s16 D_ovl8_8038A864;
 extern s32 D_ovl8_8038A878;
 extern s32 D_ovl8_8038A87C;
@@ -777,7 +788,59 @@ void func_ovl8_80375528(struct dbUnknownStructS1C* arg0, s32 arg1, s32 arg2) {
 
 
 // 0x803755C4
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_803755C4.s")
+void func_ovl8_803755C4(dbUnknownS38* arg0) 
+{
+    DBMenuPosition sp48;
+    DBMenuPositionContainer sp40;
+    DBMenuPositionContainer sp38;
+    s32 var_s1;
+    dbUnknownLinkStruct* var_v0;
+
+    var_v0 = arg0;
+    if (arg0 != NULL) 
+    {
+        var_v0 = arg0->unk_dbunks38_0x20;
+    }
+    if (var_v0->unk_dbunkstruct_0x24);
+    var_s1 = (var_v0->unk_dbunkstruct_0x24 != 4) ? 2 : 3;
+    
+    arg0->unk_dbunks38_0x20->db_func[20].unk_dbfunc_0x4(arg0->unk_dbunks38_0x20->db_func[20].unk_dbfunc_0x0 + (uintptr_t)arg0->unk_dbunks38_0x20, &sp48);
+    
+    if ((sp48.w) && (sp48.h)) 
+    {
+        sp40.position.x = sp40.position.y = 0;
+        sp40.position.w = sp48.w + (arg0->unk_dbunks38_0x0 * 2);
+        sp40.position.h = arg0->unk_dbunks38_0x4;
+        arg0->unk_dbunks38_0x8 = func_ovl8_8037ACAC(sp40.position.w, sp40.position.h, var_s1, 0x18, 0x18);
+        func_ovl8_8037B46C(arg0->unk_dbunks38_0x8, &sp40.position, &D_ovl8_80389580, &arg0->unk_dbunks38_0x20->text_color);
+        
+        sp38.position = sp40.position;
+        sp38.position.x = (sp38.position.x + arg0->unk_dbunks38_0x0) - 2;
+        sp38.position.w = (sp38.position.w - (arg0->unk_dbunks38_0x0 * 2)) + 4;
+        func_ovl8_8037B46C(arg0->unk_dbunks38_0x8, &sp38.position, &D_ovl8_80389598, &arg0->unk_dbunks38_0x20->text_color);
+        
+        sp40.position.x = sp40.position.y = 0;
+        sp40.position.w = arg0->unk_dbunks38_0x0;
+        sp40.position.h = sp48.h;
+        arg0->unk_dbunks38_0xC = func_ovl8_8037ACAC(sp40.position.w, sp48.h, var_s1, 0x18, 0x18);
+        func_ovl8_8037B46C(arg0->unk_dbunks38_0xC, &sp40.position, &D_ovl8_803895D4, &arg0->unk_dbunks38_0x20->text_color);
+        
+        sp40.position.w = arg0->unk_dbunks38_0x0;
+        sp40.position.h = sp48.h;
+        arg0->unk_dbunks38_0x10 = func_ovl8_8037ACAC(sp40.position.w, sp48.h, var_s1, 0x18, 0x18);
+        func_ovl8_8037B46C(arg0->unk_dbunks38_0x10, &sp40.position, &D_ovl8_803895F8, &arg0->unk_dbunks38_0x20->text_color);
+        
+        sp40.position.w = sp48.w + (arg0->unk_dbunks38_0x0 * 2);
+        sp40.position.h = arg0->unk_dbunks38_0x4;
+        arg0->unk_dbunks38_0x14 = func_ovl8_8037ACAC(sp40.position.w, sp40.position.h, var_s1, 0x18, 0x18);
+        func_ovl8_8037B46C(arg0->unk_dbunks38_0x14, &sp40.position, &D_ovl8_8038961C, &arg0->unk_dbunks38_0x20->text_color);
+        
+        sp38.position = sp40.position;
+        sp38.position.x = (sp38.position.x + arg0->unk_dbunks38_0x0) - 2;
+        sp38.position.w = (sp38.position.w - (arg0->unk_dbunks38_0x0 * 2)) + 4;
+        func_ovl8_8037B46C(arg0->unk_dbunks38_0x14, &sp38.position, &D_ovl8_80389634, &arg0->unk_dbunks38_0x20->text_color);
+    }
+}
 
 // 0x80375864
 void func_ovl8_80375864(dbUnknown6* arg0, s32* arg1, s32* arg2, s32* arg3, s32* arg4)

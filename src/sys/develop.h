@@ -319,17 +319,20 @@ typedef struct dbUnknown5
 
 typedef struct dbUnknown5_2
 {
-    f32 dbUnknown5_2_unk_f32_0x0;    
+    f32 dbUnknown5_2_unk_f32_0x0;
     struct dbUnknown5_2 *dbUnknown5_2_0x4;
-    u8  dbUnknown5_2_filler_0x8[0x4];     
-    char dbUnknown5_2_string[0x10];       
-    u8  dbUnknown5_2_filler_0x1C[0x14];   
-    dbFunction *dbUnknown5_2_db_func;     
-    u8  dbUnknown5_2_filler_0x34[0x0A];   
-    s16 dbUnknown5_2_unk_0x3E;            
-    s32 *dbUnknown5_2_unk_0x40;           
-    u8  dbUnknown5_2_filler_0x44[0x08];   
-    dbUnknown5 *dbUnknown5_2_0x4C;        
+    u8 dbUnknown5_2_filler_0x8[0x4];
+    char dbUnknown5_2_string[0x10];
+    u8 dbUnknown5_2_filler_0x1C[0x14];
+    dbFunction *dbUnknown5_2_db_func;  
+    u8  dbUnknown5_2_filler_0x34[0x08];
+    s16 dbUnknown5_2_unk_0x3C;
+    s16 dbUnknown5_2_unk_0x3E;
+    s32 *dbUnknown5_2_unk_0x40;       
+    u8  dbUnknown5_2_filler_0x44[0x02];
+    s16  dbUnknown5_2_unk_0x46;
+    s32  dbUnknown5_2_unk_0x48;
+    dbUnknown5 *dbUnknown5_2_0x4C;
 } dbUnknown5_2;
 
 typedef struct dbUnknownStructSC

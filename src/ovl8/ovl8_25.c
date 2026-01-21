@@ -18,6 +18,7 @@ extern dbFunction D_ovl8_8038D4C0;
 extern dbUnknownLink D_ovl8_8038D618;
 extern SYColorRGBA D_ovl8_8038D640; // = { 0xFF, 0x00, 0x00, 0xFF };
 
+extern void func_ovl8_8037DFCC(s16, s16);
 void* func_ovl8_8038456C(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2, dbUnknown3* arg3, s32 arg4, s32 arg5);
 
 // 0x80384460
@@ -301,7 +302,34 @@ void func_ovl8_80384DC4(dbUnknownS38 *arg0, s32 arg1) {
 }
 
 // 0x80384E30
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_25/func_ovl8_80384E30.s")
+void func_ovl8_80384E30(dbUnknown3* arg0, DBMenuPosition* arg1, DBMenuPosition* arg2, s32 arg3) 
+{
+    s32 x, y;
+    s32 unused1;
+    s32 unused2;
+    SYColorRGBA sp3C;
+    s32 unused3;
+    s32 unused4;
+    DBMenuPosition sp2C;
+    u32 sp28;
+    
+
+    func_ovl8_8037D95C(&sp3C);
+    
+    sp2C.x = arg2->x + 6;
+    sp2C.y = arg2->y + 6;
+    func_ovl8_8037A5B8(arg1, &sp2C, &sp28);
+    func_ovl8_8037D9B4(&sp28);
+    func_ovl8_8037D990(0x10);
+    func_ovl8_8037D9D0(&arg0->unk_dbunk3_0x38->text_color);
+
+    if (1);
+    x = (arg2->x + (arg2->w / 2)) - func_ovl8_8037E7A8((arg0->unk_dbunk3_0x40)[arg3-1]) / 2;
+    y = arg2->y;
+    func_ovl8_8037DFCC(x, y);
+    func_ovl8_8037DD60(arg1, arg0->unk_dbunk3_0x40[arg3-1]);
+    func_ovl8_8037D908(&sp3C);
+}
 
 // 0x80384F3C
 void func_ovl8_80384F3C(s32 arg0, s32 arg1, s32 arg2, s32 arg3)

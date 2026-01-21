@@ -159,7 +159,8 @@ struct dbUnknown3
     u32 unk_dbunk3_0x30;
     void *unk_dbunk3_0x34;
     dbUnknownLinkStruct *unk_dbunk3_0x38;
-    u8 filler_0x3C[0x44 - 0x3C];
+    u8 filler_0x3C[0x40 - 0x3C];
+    char** unk_dbunk3_0x40;
     dbUnknown3 *unk_dbunk3_0x44;
     dbUnknown3 *unk_dbunk3_0x48;
     void *unk_dbunk3_0x4C;

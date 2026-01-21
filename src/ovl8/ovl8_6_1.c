@@ -233,23 +233,16 @@ void func_ovl8_80375E00(Vec3i* arg0, s32 arg1)
 }
 
 // 0x80375E08
-void func_ovl8_80375E08(dbTestMenu* arg0, s32 arg1, s32 arg2, u16 arg3, u16 arg4);
-#ifdef NON_MATCHING
-void func_ovl8_80375E08(dbTestMenu* arg0, s32 arg1, s32 arg2, u16 arg3, u16 arg4)
+void func_ovl8_80375E08(dbTestMenu *arg0, s32 arg1, s32 arg2, u16 arg3, u16 arg4)
 {
-	dbFunction *temp_v0;
+    dbTestMenu **new_var = &arg0;
+    
+    arg0->db_func[10].unk_dbfunc_0x4((uintptr_t)*new_var + arg0->db_func[10].unk_dbfunc_0x0, arg1);
+    
+    func_ovl8_80375B8C(arg0, arg3, arg4);
 
-	temp_v0 = arg0->db_func;
-	temp_v0[10].unk_dbfunc_0x4(temp_v0[10].unk_dbfunc_0x0 + (uintptr_t)arg0, arg1);
-
-	func_ovl8_80375B8C(arg0, arg3, arg4);
-
-	if (arg2);
-	arg0->unk_dbtestmenu_0x10->unk_dbunkstruct_0xC = arg2;
+    arg0->unk_dbtestmenu_0x10->unk_dbunkstruct_0xC = arg2;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6_1/func_ovl8_80375E08.s")
-#endif /* NON_MATCHING */
 
 // 0x80375E60
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6_1/func_ovl8_80375E60.s")

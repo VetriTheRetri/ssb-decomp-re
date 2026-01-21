@@ -321,4 +321,21 @@ s32 func_ovl8_803762AC(Vec3i* arg0)
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6_1/func_ovl8_803762B4.s")
 
 // 0x803764C8
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6_1/func_ovl8_803764C8.s")
+sb32 func_ovl8_803764C8(dbUnknownS38 *arg0, s32 arg1) 
+{
+    dbUnknownLinkStruct *var_v1;
+    sb32 temp_a0;
+
+    ((dbFunction*)var_v1) = arg0->unk_dbunks38_0x18;
+    temp_a0 = ((dbFunction*)var_v1)[17].unk_dbfunc_0x4(((dbFunction*)var_v1)[17].unk_dbfunc_0x0 + (uintptr_t)arg0, arg1);
+    
+    var_v1 = arg0;
+    
+    if (arg0 != NULL)
+        var_v1 = arg0->unk_dbunks38_0x20;
+
+    if (var_v1->bg_color.a == 0)
+        return temp_a0;
+    else
+        return TRUE;
+}

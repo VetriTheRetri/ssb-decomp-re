@@ -10,6 +10,31 @@ typedef struct dbUnknown8_SC {
     s32 dbUnknown8_SC_0x8;
 } dbUnknown8_SC;
 
+typedef struct UiLineStepper {
+    s32 startX;                 // dbUnknown8_8_0x0
+    s32 startY;                 // dbUnknown8_8_0x4
+
+    s32* errorSub;              // dbUnknown8_8_0x8   (usually dx or dy)
+    s32* errorAdd;              // dbUnknown8_8_0xC   (usually 2*minor)
+
+    s32 endX;                   // dbUnknown8_8_0x10
+    s32 endY;                   // dbUnknown8_8_0x14
+
+    s32* stepPrimary;           // dbUnknown8_8_0x18  (dx or dy)
+    s32* stepSecondary;         // dbUnknown8_8_0x1C  (other axis)
+
+    s32 currentX;               // dbUnknown8_8_0x20
+    s32 currentY;               // dbUnknown8_8_0x24
+
+    s32* posPrimary;            // dbUnknown8_8_0x28  (&currentX or &currentY)
+    s32* posSecondary;          // dbUnknown8_8_0x2C  (&currentY or &currentX)
+
+    s32 stepsRemaining;         // dbUnknown8_8_0x30
+    s32 totalSteps;             // dbUnknown8_8_0x34
+
+    s32 error;                  // dbUnknown8_8_0x38
+} UiLineStepper;
+
 void func_ovl8_80377F50(char*, db4Shorts*);
 void func_ovl8_80377FE4(char*, db4Shorts*, db4Shorts*);
 void func_ovl8_803780B8(char*, DBMenuPosition*);
@@ -18,6 +43,7 @@ void func_ovl8_8037A9C0(db4Shorts*, s32, s32);
 void func_ovl8_8037A9F4(DBMenuPosition*, DBMenuPosition*);
 void func_ovl8_8037AA28(db4Shorts*, db4Shorts*);
 s32 func_ovl8_8037AA5C(DBMenuPosition*);
+s32 func_ovl8_8037ABDC(Vec2h*, UiLineStepper*);
 void func_ovl8_8037B46C(dbUnknownS38*, DBMenuPosition*, dbUnknown8_SC*, s32); 
 void func_ovl8_8037BD44();
 void func_ovl8_8037BEC8();
@@ -641,7 +667,39 @@ s32 func_ovl8_8037AA5C(DBMenuPosition* arg0)
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037AA88.s")
 
 // 0x8037ABDC
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037ABDC.s")
+s32 func_ovl8_8037ABDC(Vec2h* arg0, UiLineStepper* arg1) 
+{
+    if (arg1->error == arg1->stepsRemaining) 
+    {
+        arg0->x = arg1->currentX;
+        arg0->y = arg1->currentY;
+    } 
+    else 
+    {
+        if (arg1->totalSteps < 0) 
+        {
+            *arg1->posPrimary += *arg1->stepPrimary;
+            arg1->totalSteps += *arg1->errorAdd;
+        } 
+        else 
+        {
+            *arg1->posPrimary += *arg1->stepPrimary;
+            
+            if (arg1->currentX && arg1->currentX);
+            
+            *arg1->posSecondary += *arg1->stepSecondary;
+            
+            if (arg1->currentX && arg1->currentX);
+            
+            arg1->totalSteps += *arg1->errorAdd - *arg1->errorSub;
+        }
+        
+        arg0->x = arg1->currentX;
+        arg0->y = arg1->currentY;
+    }
+    
+    return arg1->stepsRemaining--;
+}
 
 // 0x8037ACAC
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037ACAC.s")

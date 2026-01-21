@@ -786,7 +786,56 @@ s32 stringToNumberSigned(char* str)
 }
 
 // 0x8037B654
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037B654.s")
+s32 func_ovl8_8037B654(s32 val, char* str) 
+{
+    s32 digit;
+    s32 found_first_digit;
+    s32 index;
+    s32 place;
+    s32 remaining;
+    s32 abs = (val < 0) ? -val : val;
+    s32 ret;
+    
+    remaining = abs;
+    index = 0;
+    found_first_digit = FALSE;
+    
+    if (val < 0)
+    {
+        abs = index++,
+        str[abs] = '-';  // '-' character
+    }
+
+    place = 1000000000;
+    found_first_digit = FALSE;
+    
+    while (place != 0) 
+    {
+        digit = remaining / place;
+        
+        if ((digit != 0) || (found_first_digit != FALSE)) 
+        {   
+            abs = index--;
+            str[abs] = digit + '0';  // Convert digit to ASCII
+            index += 2;
+        }
+        if (digit != 0)
+        {
+            found_first_digit = TRUE;
+            remaining -= place * digit;
+        }
+        place /= 10;
+    }
+    if (index != 0) 
+    {
+        str[index] = '\0';  // Null terminator
+    }
+    else
+    {
+        str[0] = '0';  // '0' character
+        str[1] = '\0';     // Null terminator
+    }
+}
 
 // 0x8037B760
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037B760.s")

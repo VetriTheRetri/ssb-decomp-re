@@ -5,6 +5,8 @@ extern dbUnknownLinkStruct D_ovl8_8038C790;
 extern dbFunction D_ovl8_8038C890;
 extern dbUnknownLink D_ovl8_8038C9E8;
 
+extern void syRdpSetViewport(Vp*, f32, f32, f32, f32);
+
 // 0x80382D90
 s32 func_ovl8_80382D90(s32 arg0, dbUnknown3* arg1)
 {
@@ -118,7 +120,40 @@ void func_ovl8_8038300C(s32 arg0) {}
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_22/func_ovl8_80383014.s")
 
 // 0x803831C8
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_22/func_ovl8_803831C8.s")
+void func_ovl8_803831C8(dbUnknown5 *arg0) 
+{
+    f32 viewport_ulx;
+    f32 viewport_uly;
+    Vp *vp;
+    dbFunction *temp_v0;
+    Vec2h sp3C;
+    DBMenuPosition sp34;
+    dbUnknownLinkStruct *temp_a3;
+    dbUnknownLinkStruct *temp_a2;
+    dbUnknownLinkStruct *temp_v1;
+    dbUnknownLinkStruct *foo;
+    
+    ((dbUnknownLinkStruct*) temp_v0) = arg0->unk_dbunk5_0x38;
+
+    if (arg0->unk_dbunk5_0x40.gobj != NULL) 
+    {
+        if (1);
+        temp_a3 = arg0->unk_dbunk5_0x38;
+        temp_a2 = temp_a3->unk_dbunkstruct_0x4C;
+        temp_v1 = temp_a2->unk_dbunkstruct_0x20;
+        temp_v0 = temp_v1->db_func;
+        temp_v0[20].unk_dbfunc_0x4(temp_v0[20].unk_dbfunc_0x0 + (uintptr_t)temp_v1, &sp3C);
+        
+        ((dbUnknownLinkStruct*)temp_v0) = arg0->unk_dbunk5_0x38;
+        ((dbFunction*)temp_a2) = ((dbUnknownLinkStruct*)temp_v0)->db_func;
+        ((dbFunction*)temp_a2)[20].unk_dbfunc_0x4(((dbFunction*)temp_a2)[20].unk_dbfunc_0x0 + (uintptr_t)temp_v0, &sp34);
+        
+        viewport_ulx = sp3C.x + sp34.x;
+        viewport_uly = sp3C.y + sp34.y;
+        vp = &CObjGetStruct((GObj*)arg0->unk_dbunk5_0x40.gobj)->viewport;
+        syRdpSetViewport(vp, viewport_ulx, viewport_uly, (sp3C.x + sp34.x + sp34.w), (sp3C.y + sp34.y + sp34.h));
+    }
+}
 
 // 0x803832A4
 void func_ovl8_803832A4(dbUnknownLinkStruct* arg0)

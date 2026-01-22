@@ -279,6 +279,7 @@ typedef struct dbUnknown5
         s16 s_16;
         Vec2h v;
         dbUnknownLinkStruct *ls;
+        GObj *gobj;
     } unk_dbunk5_0x40;
     union {
         s16 s_16;

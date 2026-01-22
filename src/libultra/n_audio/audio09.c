@@ -205,6 +205,8 @@ void __n_seqpReleaseVoice(ALSeqPlayer *seqp, ALVoice *voice, ALMicroTime deltaTi
 }
 
 // 0x8002E11C
+// -O3: https://decomp.me/scratch/7gXRr
+// __n_voiceNeedsNoteKill
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/audio09/func_8002E11C_2ED1C.s")
 
 // 0x8002E1C4
@@ -242,6 +244,8 @@ void __n_unmapVoice(ALSeqPlayer *seqp, ALVoice *voice)
 }
 
 // 0x8002E234
+// -O3: https://decomp.me/scratch/0ProW
+// __handleMetaMsg?
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/audio09/func_8002E234_2EE34.s")
 
 // 0x8002E2AC
@@ -317,6 +321,7 @@ ALVoiceState* __n_mapVoice(ALSeqPlayer *seqp, u8 key, u8 vel, u8 channel)
 }
 
 // 0x8002E41C
+// -O3: https://decomp.me/scratch/vkETz
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/audio09/__n_lookupSoundQuick.s")
 
 // 0x8002E520

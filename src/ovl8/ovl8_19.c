@@ -124,7 +124,40 @@ void func_ovl8_803822D8(dbUnknownLinkStruct* arg0, s32 arg1)
 }
 
 // 0x80382354
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_19/func_ovl8_80382354.s")
+void func_ovl8_80382354(dbUnknown5 *arg0) 
+{
+    s32 sp44;
+    s32 sp40;
+    DBMenuPosition sp38;
+    Vec2h pos;
+    s32 sp30;
+    dbUnknownLinkStruct* temp_a2_2;
+    dbFunction* temp_v1;
+
+    sp40 = func_ovl8_8037E7A8(arg0->unk_dbunk5_0x3C.str);
+    
+    temp_a2_2 = arg0->unk_dbunk5_0x38;
+    temp_v1 = temp_a2_2->db_func;
+    sp44 = temp_v1[23].unk_dbfunc_0x4(temp_v1[23].unk_dbfunc_0x0 + (uintptr_t)temp_a2_2);
+    
+    if (sp44) 
+    {
+        temp_a2_2 = arg0->unk_dbunk5_0x38;
+        temp_v1 = temp_a2_2->db_func;
+        temp_v1[21].unk_dbfunc_0x4(temp_v1[21].unk_dbfunc_0x0 + (uintptr_t)temp_a2_2, &sp38, temp_a2_2);
+        
+        func_ovl8_8037D990(0x10);
+        func_ovl8_8037D9D0(&arg0->unk_dbunk5_0x38->text_color);
+        
+        pos.x = sp38.x + 6,
+        pos.y = sp38.y + 6;
+        
+        func_ovl8_8037A5B8(sp44, &pos, &sp30);
+        func_ovl8_8037D9B4(&sp30);
+        func_ovl8_8037DFCC((s16) ((sp38.x + ((s32) sp38.w / 2)) - (sp40 / 2)), (s16) ((sp38.y + ((s32) sp38.h / 2)) - (func_ovl8_8037E80C() / 2)));
+        func_ovl8_8037DD60(sp44, arg0->unk_dbunk5_0x3C.str);
+    }
+}
 
 // 0x80382490
 s32 func_ovl8_80382490(s32 arg0, s32* arg1)

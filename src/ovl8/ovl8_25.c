@@ -186,42 +186,53 @@ void func_ovl8_803848CC(dbUnknown5* arg0, s32 arg1)
 }
 
 // 0x80384968
-void func_ovl8_80384968(dbUnknown5* arg0) {
+void func_ovl8_80384968(dbUnknown5* arg0) 
+{
     s32 temp_v0_2;
-    db4Shorts sp3C;
-    db4Shorts sp34;
+    DBMenuPosition sp3C;
+    DBMenuPosition sp34;
     void* temp_v0;
     s32 count;
 
-    if (arg0->unk_dbunk5_0x40.str) {
+    if (arg0->unk_dbunk5_0x40.str) 
+    {
         temp_v0 = arg0->unk_dbunk5_0x38->db_func;
         temp_v0_2 = ((dbFunction*)temp_v0)[23].unk_dbfunc_0x4(((dbFunction*)temp_v0)[23].unk_dbfunc_0x0 + (uintptr_t) arg0->unk_dbunk5_0x38);
-        if (temp_v0_2) {
+        
+        if (temp_v0_2) 
+        {
             temp_v0 = arg0->unk_dbunk5_0x38->db_func;
             ((dbFunction*)temp_v0)[21].unk_dbfunc_0x4(((dbFunction*)temp_v0)[21].unk_dbfunc_0x0 + (uintptr_t) arg0->unk_dbunk5_0x38, &sp34);
-            func_ovl8_80377AEC(temp_v0_2, &sp34, ((u8*) arg0->unk_dbunk5_0x38) + 0x18, 4);
-            count = 0;
-            if (((dbUnknownThing *)arg0)->dbUnknownThing_0x46 > 0) {
-                do {
-                    if (((dbUnknownThing *)arg0)->dbUnknownThing_0x3E < (count + arg0->unk_dbunk5_0x3C.s_16)) {
-                        return;
-                    }
-                        sp3C.arr[0]  = sp34.arr[0];
-                        temp_v0 = arg0;
-                        sp3C.arr[1] = sp34.arr[1] + (count * arg0->unk_dbunk5_0x44.s_16);
-                        if (arg0) {
-                            temp_v0 = arg0->unk_dbunk5_0x38;
-                        }
-                        sp3C.uarr[2] = ((dbUnknownLinkStruct*)temp_v0)->position.w;
-                        sp3C.arr[3]  = arg0->unk_dbunk5_0x44.s_16;
-                        temp_v0 = arg0->unk_dbunk5_0x30;
-                        ((dbFunction*)(temp_v0) + 33)->unk_dbfunc_0x4(((dbFunction*)(temp_v0) + 33)->unk_dbfunc_0x0 + (uintptr_t) arg0, temp_v0_2, &sp3C, (s32) count + arg0->unk_dbunk5_0x3C.s_16);
-                        if ((f32) ((s32)count + arg0->unk_dbunk5_0x3C.s_16)  == arg0->unk_dbunk5_0x0) {
-                            temp_v0 = arg0->unk_dbunk5_0x30;
-                            ((dbFunction*)(temp_v0) + 34)->unk_dbfunc_0x4(((dbFunction*)(u8*)temp_v0 + 34)->unk_dbfunc_0x0 + (uintptr_t) arg0, temp_v0_2, &sp3C, count + arg0->unk_dbunk5_0x3C.s_16);
-                        }
-                    
-                } while (++count < ((dbUnknownThing *)arg0)->dbUnknownThing_0x46);
+        
+            func_ovl8_80377AEC(temp_v0_2, &sp34, &arg0->unk_dbunk5_0x38->bg_color, 4);
+            
+            for (count = 0; ((s16*)(&arg0->unk_dbunk5_0x44))[1] > count; count++) 
+            {
+                if (((s16*)(&arg0->unk_dbunk5_0x3C))[1] < (count + arg0->unk_dbunk5_0x3C.s_16)) 
+                {
+                    return;
+                }
+                
+                sp3C.x  = sp34.x;
+                sp3C.y = sp34.y + (count * arg0->unk_dbunk5_0x44.s_16);
+                
+                temp_v0 = arg0;
+                if (arg0) 
+                {
+                    temp_v0 = arg0->unk_dbunk5_0x38;
+                }
+                
+                sp3C.w = ((dbUnknownLinkStruct*)temp_v0)->position.w;
+                sp3C.h  = arg0->unk_dbunk5_0x44.s_16;
+                
+                temp_v0 = arg0->unk_dbunk5_0x30;
+                ((dbFunction*)temp_v0)[33].unk_dbfunc_0x4(((dbFunction*)temp_v0)[33].unk_dbfunc_0x0 + (uintptr_t) arg0, temp_v0_2, &sp3C, (s32) count + arg0->unk_dbunk5_0x3C.s_16);
+                
+                if (((s32)count + arg0->unk_dbunk5_0x3C.s_16)  == arg0->unk_dbunk5_0x0) 
+                {
+                    temp_v0 = arg0->unk_dbunk5_0x30;
+                    ((dbFunction*)temp_v0)[34].unk_dbfunc_0x4(((dbFunction*)temp_v0)[34].unk_dbfunc_0x0 + (uintptr_t) arg0, temp_v0_2, &sp3C, count + arg0->unk_dbunk5_0x3C.s_16);
+                }
             }
         }
     }

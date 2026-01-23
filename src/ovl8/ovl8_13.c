@@ -53,6 +53,7 @@ void func_ovl8_8037D9A8(s32);
 void func_ovl8_8037D9B4(db4Bytes*);
 void func_ovl8_8037D9D0(db4Bytes*);
 void func_ovl8_8037D9EC(u16, u16);
+void func_ovl8_8037DAA0(s32, u32);
 
 // 0x8037D000
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D000.s")
@@ -427,24 +428,75 @@ u32 func_ovl8_8037DA08(u8 arg0, u8 arg1)
 
 void func_ovl8_8037DD60(DBMenuPosition* pos, char* text)
 {
-	s16 temp_s5;
-	char current;
+    s16 temp_s5;
+    char current;
+    
+    temp_s5 = D_8038F000_1AB850.arr[0];
+    current = *text;
+    
+    while (current)
+    {
+        if (current == '\n')
+        {
+            D_8038F000_1AB850.arr[0] = temp_s5;
+            D_8038F000_1AB850.arr[1] += D_8038F008_1AB858.height + D_8038F046_1AB896;
+        }
+        else
+            func_ovl8_8037DAA0(pos, current);
 
-	temp_s5 = D_8038F000_1AB850.arr[0];
-	for (current = *text; current != '\0'; text++, current = *text)
-	{
-		if (current == '\n')
-		{
-			D_8038F000_1AB850.arr[0] = temp_s5;
-			D_8038F000_1AB850.arr[1] = D_8038F008_1AB858.height + D_8038F000_1AB850.arr[1] + D_8038F046_1AB896;
-		}
-		else
-			func_ovl8_8037DAA0(pos, current);
-	}
+        current = text[1];
+        text++;
+    }
 }
 
 // 0x8037DE1C
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037DE1C.s")
+void func_ovl8_8037DE1C(DBMenuPosition* pos, char *str, DBMenuPosition *arg2) 
+{
+    s16 temp_s6;
+    s32 var_s3;
+    s32 var_v1;
+    u8 chr;
+    DBFontPadding *temp_v0;
+
+    chr = *str;
+    temp_s6 = D_8038F000_1AB850.arr[0];
+    
+    while (chr) 
+    {
+        if (chr == 0xA) 
+        {
+            D_8038F000_1AB850.arr[0] = temp_s6;
+            D_8038F000_1AB850.arr[1] = D_8038F000_1AB850.arr[1] + D_8038F008_1AB858.height + D_8038F046_1AB896;
+        } 
+        else 
+        {
+            if (!(D_8038F048_1AB898 & 0xFF00)) 
+            {
+                if (chr & 0x80) 
+                {
+                    var_s3 = D_8038F020_1AB870.width + D_8038F044_1AB894;
+                } 
+                else if (((chr >= ' ') && (chr <= '~')) || ((chr >= 0xA0) && (chr < 0xE0))) 
+                {
+                    var_v1 = (chr >= 0xA1) ? chr - 'A' : chr - ' ';
+                    var_s3 = ((D_8038F008_1AB858.width - D_8038F008_1AB858.padding[var_v1].left_padding) - D_8038F008_1AB858.padding[var_v1].right_padding) + D_8038F044_1AB894;
+                }
+                
+                if ((D_8038F000_1AB850.arr[0] + var_s3) >= (arg2->x + arg2->w)) 
+                {
+                    D_8038F000_1AB850.arr[0] = temp_s6;
+                    D_8038F000_1AB850.arr[1] = D_8038F000_1AB850.arr[1] + D_8038F008_1AB858.height + D_8038F046_1AB896;
+                    chr = *str;
+                }
+            }
+            
+            func_ovl8_8037DAA0(pos, chr);
+        }
+        
+        chr = str[1];
+        str++;
+    }
+}
 
 void func_ovl8_8037DFCC(s16 arg0, s16 arg1)
 {

@@ -855,3 +855,6 @@ D_ovl8_8038EE60 = 0x8038EE60; // segment:ovl8
 D_ovl8_8038EE64 = 0x8038EE64; // segment:ovl8
 D_ovl8_8038EE68 = 0x8038EE68; // segment:ovl8
 D_ovl8_8038EE70 = 0x8038EE70; // segment:ovl8
+
+D_8038F050_1AB8A0 = 0x8038F050; // segment:ovl8
+D_8038F290_1ABAE0 = 0x8038F290; // segment:ovl8

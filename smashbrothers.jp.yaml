@@ -1776,6 +1776,7 @@ segments:
       - [0x199910, c, ovl8/ovl8_12]
       - [0x199AC0, pad, pad0x199840]
       - [0x199AD0, c, ovl8/ovl8_13]
+      - [0x19A830, c, ovl8/ovl8_13_2]
       - [0x19B8D0, c, ovl8/ovl8_14]
       - [0x19BDD0, c, ovl8/ovl8_15]
       - [0x19D990, c, ovl8/ovl8_16]
@@ -1802,6 +1803,7 @@ segments:
       - [0x1A6CA0, .data, ovl8/ovl8_11]
       - [0x1A71D0, .data, ovl8/ovl8_12]
       - [0x1A7330, data, ovl8/ovl8_13]
+      - [0x1A75D0, data, ovl8/ovl8_13_2] # probably wrong!
       - [0x1A7640, data, ovl8/ovl8_14]
       - [0x1A78A0, data, ovl8/ovl8_15]
       - [0x1A84A0, data, ovl8/ovl8_16]

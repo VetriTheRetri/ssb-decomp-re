@@ -664,7 +664,51 @@ s32 func_ovl8_8037AA5C(DBMenuPosition* arg0)
 }
 
 // 0x8037AA88
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037AA88.s")
+void func_ovl8_8037AA88(s32 arg0, s32 arg1, s32 arg2, s32 arg3, dbUnknown7* arg4) {
+    s32 temp_v1_4;
+    s32 var_v0;
+    s32 var_v0_4;
+    s32 var_v1;
+    s32 var_v1_2;
+
+    arg4->unk0 = arg2 - arg0;
+    arg4->unk4 = (s32) (arg3 - arg1);
+    arg4->unk20 = arg0;
+    arg4->unk24 = arg1;
+    var_v0 = arg4->unk0 == 0 ? 0 : (arg4->unk0 > 0 ? 1 : -1);
+    
+    arg4->unk10 = var_v0;
+    var_v0 = arg4->unk4 == 0 ? 0 : (arg4->unk4 > 0 ? 1 : -1);
+    
+    arg4->unk14 = var_v0;
+    var_v0 = arg4->unk0 < 0 ? -arg4->unk0 : arg4->unk0;
+
+    arg4->unk0 = var_v0;
+    var_v0 = arg4->unk4 < 0 ? -arg4->unk4 : arg4->unk4;
+    
+    temp_v1_4 = arg4->unk0;
+    arg4->unk4 = var_v0;
+    
+    if (var_v0 < temp_v1_4) {
+        arg4->unk30 = temp_v1_4;
+        arg4->unk28 = ((u8*)arg4 + 0x20);
+        arg4->unk2C = ((u8*)arg4 + 0x24);
+        arg4->unk8 =  (s32*) arg4;
+        arg4->unkC = (s32*) ((u8*)arg4 + 4);
+        arg4->unk18 = ((u8*)arg4 + 0x10);
+        arg4->unk1C = (void* ) ((u8*)arg4 + 0x14);
+    } else {
+        arg4->unk30 = arg4->unk4;
+        arg4->unk28 = ((u8*)arg4 + 0x24);
+        arg4->unk2C = ((u8*)arg4 + 0x20);
+        arg4->unk8 = (s32*) ((u8*)arg4 + 4);
+        arg4->unkC = (s32) arg4;
+        arg4->unk18 = ((u8*)arg4 + 0x14);
+        arg4->unk1C = (void* ) ((u8*)arg4 + 0x10);
+    }
+    arg4->unk34 = (*arg4->unkC / 2);
+    arg4->unk38 = arg4->unk30;
+}
 
 // 0x8037ABDC
 s32 func_ovl8_8037ABDC(Vec2h* arg0, UiLineStepper* arg1) 

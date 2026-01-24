@@ -35,16 +35,18 @@ typedef struct UiLineStepper {
     s32 error;                  // dbUnknown8_8_0x38
 } UiLineStepper;
 
-void func_ovl8_80377F50(char*, db4Shorts*);
-void func_ovl8_80377FE4(char*, db4Shorts*, db4Shorts*);
-void func_ovl8_803780B8(char*, DBMenuPosition*);
+void func_ovl8_80377B40(Sprite*, s16*);
+void func_ovl8_80377F50(Sprite*, db4Shorts*);
+void func_ovl8_80377FE4(Sprite*, db4Shorts*, db4Shorts*);
+void func_ovl8_803780B8(Sprite*, DBMenuPosition*);
+s32 func_ovl8_8037A67C(s16*, s16*, s16*);
 void func_ovl8_8037A904(db4Shorts*, db4Shorts*);
 void func_ovl8_8037A9C0(db4Shorts*, s32, s32);
 void func_ovl8_8037A9F4(DBMenuPosition*, DBMenuPosition*);
 void func_ovl8_8037AA28(db4Shorts*, db4Shorts*);
 s32 func_ovl8_8037AA5C(DBMenuPosition*);
 s32 func_ovl8_8037ABDC(Vec2h*, UiLineStepper*);
-void func_ovl8_8037B46C(dbUnknownS38*, DBMenuPosition*, dbUnknown8_SC*, s32); 
+void func_ovl8_8037B46C(Sprite*, DBMenuPosition*, dbUnknown8_SC*, s32); 
 void func_ovl8_8037BD44();
 void func_ovl8_8037BEC8();
 void func_ovl8_8037BF34();
@@ -421,26 +423,88 @@ void func_ovl8_80377374(DBMenuPosition *arg0)
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_803773CC.s")
 
 // 0x80377AEC
-void func_ovl8_80377AEC(char* arg0, db4Shorts* arg1, u8* arg2, s32 arg3)
+void func_ovl8_80377AEC(Sprite* arg0, db4Shorts* arg1, u8* arg2, s32 arg3)
 {
-	func_ovl8_80376B60(arg0[0x31], arg2, &D_ovl8_80389F5C);
+	func_ovl8_80376B60(arg0->bmsiz, arg2, &D_ovl8_80389F5C);
 	D_ovl8_80389F60 = arg3;
 	func_ovl8_80377B40(arg0, arg1);
 }
 
 // 0x80377B40
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80377B40.s")
+void func_ovl8_80377B40(Sprite *arg0, s16 *arg1) 
+{
+    DBMenuPosition sp90;
+    db4Shorts sp88;
+    db4Shorts sp80;
+    s16 actualWidth;
+    s32 i;
+    s32 sp74;
+    s32 sp70;
+    s32 sp6C;
+    s32 x;
+    s32 y;
+    s32 cols;
+    s32 rows;
+    s32 actualHeight;
+    s32 j;
+    s32 var_v1;
+
+    sp80.arr[0] = sp80.arr[1] = 0;
+    sp80.arr[2]  = arg0->width;
+    sp80.arr[3]  = arg0->height;
+    func_ovl8_8037A67C(arg1, &sp80, &sp90);
+    
+    if (func_ovl8_8037AA5C(&sp90) == 0) 
+    {
+        actualWidth = arg0->bitmap->width;
+        actualHeight = arg0->bitmap->actualHeight;
+        cols = sp90.x / actualWidth;
+        rows = sp90.y / actualHeight;
+        
+        var_v1 = ((arg0->width % actualWidth) != 0) ? 1 : 0;
+        sp6C = (arg0->width / actualWidth) + var_v1;
+        
+        var_v1 = ((sp90.w % actualWidth) != 0) ? 1 : 0;
+        sp74 = (sp90.w / actualWidth) + var_v1 + 1;
+        
+        var_v1 = ((sp90.h % actualHeight) != 0) ? 1 : 0;
+        sp70 = (sp90.h / actualHeight) + var_v1 + 1;
+        
+        for (i = 0; i < sp70; i++) 
+        {
+            for (j = 0; j < sp74; j++) 
+            {
+                x = cols + j;
+                x *= actualWidth;
+                
+                y = rows + i;
+                y *= actualHeight;
+
+                sp88.arr[0] = x;
+                sp88.arr[1] = y;
+                sp88.arr[2] = actualWidth;
+                sp88.arr[3] = actualHeight;
+                if (func_ovl8_8037A67C(&sp88, &sp90, &sp80) != 0) 
+                {
+                    sp80.arr[0] %= actualWidth;
+                    sp80.arr[1] %= actualHeight;
+                    func_ovl8_803773CC(arg0->bitmap + ((rows + i) * sp6C) + j + cols, arg0->bmsiz, &sp80);
+                }
+            }
+        }
+    }
+}
 
 // 0x80377EFC
-void func_ovl8_80377EFC(char* arg0, db4Shorts* arg1, u8* arg2, s32 arg3)
+void func_ovl8_80377EFC(Sprite* arg0, db4Shorts* arg1, u8* arg2, s32 arg3)
 {
-	func_ovl8_80376B60(arg0[0x31], arg2, &D_ovl8_80389F5C);
+	func_ovl8_80376B60(arg0->bmsiz, arg2, &D_ovl8_80389F5C);
 	D_ovl8_80389F60 = arg3;
 	func_ovl8_80377F50(arg0, arg1);
 }
 
 // 0x80377F50
-void func_ovl8_80377F50(char* arg0, db4Shorts* arg1)
+void func_ovl8_80377F50(Sprite* arg0, db4Shorts* arg1)
 {
 	db4Shorts sp18;
 
@@ -459,7 +523,7 @@ void func_ovl8_80377F90(char* arg0, db4Shorts* arg1, s32 arg2, u8* arg3, s32 arg
 }
 
 // 0x80377FE4
-void func_ovl8_80377FE4(char* arg0, db4Shorts* arg1, db4Shorts* arg2)
+void func_ovl8_80377FE4(Sprite* arg0, db4Shorts* arg1, db4Shorts* arg2)
 {
 	s32 temp_s0;
 	s32 unused[12];
@@ -477,15 +541,15 @@ void func_ovl8_80377FE4(char* arg0, db4Shorts* arg1, db4Shorts* arg2)
 }
 
 // 0x80378064
-void func_ovl8_80378064(char* arg0, db4Shorts* arg1, u8* arg2, s32 arg3)
+void func_ovl8_80378064(Sprite* arg0, db4Shorts* arg1, u8* arg2, s32 arg3)
 {
-	func_ovl8_80376B60(arg0[0x31], arg2, &D_ovl8_80389F5C);
+	func_ovl8_80376B60(arg0->bmsiz, arg2, &D_ovl8_80389F5C);
 	D_ovl8_80389F60 = arg3;
 	func_ovl8_803780B8(arg0, arg1);
 }
 
 // 0x803780B8
-void func_ovl8_803780B8(char* arg0, DBMenuPosition* arg1)
+void func_ovl8_803780B8(Sprite* arg0, DBMenuPosition* arg1)
 {
 	DBMenuPosition sp20;
 
@@ -533,7 +597,7 @@ void func_ovl8_803780B8(char* arg0, DBMenuPosition* arg1)
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037A0FC.s")
 
 // 0x8037A5B8
-void func_ovl8_8037A5B8(char* arg0, DBMenuPosition* arg1, s32 arg2)
+void func_ovl8_8037A5B8(Sprite* arg0, DBMenuPosition* arg1, s32 arg2)
 {
 	DBMenuPosition sp28;
 	u32 var_a1;
@@ -545,11 +609,11 @@ void func_ovl8_8037A5B8(char* arg0, DBMenuPosition* arg1, s32 arg2)
 	func_ovl8_8037A0FC(arg0, &sp28, &sp20);
 
 	var_a1 = sp20;
-	if (arg0[0x31] == 2)
+	if (arg0->bmsiz == 2)
 	{
 		var_a1 = sp20 >> 0x10;
 	}
-	func_ovl8_80376C40(arg0[0x31], var_a1, arg2);
+	func_ovl8_80376C40(arg0->bmsiz, var_a1, arg2);
 }
 
 // 0x8037A62C
@@ -567,7 +631,7 @@ void func_ovl8_8037A62C(db4Shorts* arg0, s32 arg1)
 }
 
 // 0x8037A67C
-s32 func_ovl8_8037A67C(void* arg0, void* arg1, s32 arg2)
+s32 func_ovl8_8037A67C(s16* arg0, s16* arg1, s16* arg2)
 {
 	s32 sp30[2];
 	s32 sp28[2];
@@ -722,7 +786,7 @@ void func_ovl8_8037B3E4(dbUnknown3* arg0)
 }
 
 // 0x8037B434
-void func_ovl8_8037B434(s32 arg0, s32 arg1, dbUnknown8_SC* arg2, SYColorRGBA* arg3)
+void func_ovl8_8037B434(Sprite* arg0, s32 arg1, dbUnknown8_SC* arg2, SYColorRGBA* arg3)
 {
 	dbUnknown8_SC* var_a2;
 
@@ -739,7 +803,7 @@ void func_ovl8_8037B434(s32 arg0, s32 arg1, dbUnknown8_SC* arg2, SYColorRGBA* ar
 }
 
 // 0x8037B46C
-void func_ovl8_8037B46C(dbUnknownS38* arg0, DBMenuPosition* arg1, dbUnknown8_SC* arg2, s32 arg3) 
+void func_ovl8_8037B46C(Sprite* arg0, DBMenuPosition* arg1, dbUnknown8_SC* arg2, s32 arg3) 
 {
     s32 var_v0;
     DBMenuPosition abs;

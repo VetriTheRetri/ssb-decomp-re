@@ -20,7 +20,7 @@ struct DBFont
 	u16 height;
 	DBFontPadding *padding;
 	u8 bits_per_pixel;
-	u32 *glyphs;
+	u8 *glyphs;
 };
 
 struct DBMenuOption

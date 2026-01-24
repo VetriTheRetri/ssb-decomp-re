@@ -407,17 +407,17 @@ u32 func_ovl8_8037DA08(u8 arg0, u8 arg1)
     arg0 = arg0 & 0x7F;
     arg1 = arg1 & 0x7F;
     
-    arg1 = (arg0 & 1) ? arg1 + 0x1F : arg1 + 0x7D;
-    arg0 = ((arg0 - 0x21) >> 1) + 0x81;
+    arg1 = (arg0 & 1) ? arg1 + ' ' - 1 : arg1 + '~' - 1;
+    arg0 = ((arg0 - '!') >> 1) + 0x81;
     
-    if (arg1 >= 0x7F) 
+    if (arg1 > '~') 
     {
-        arg1 += 0x01;
+        arg1 += 1;
     }
     
     if (arg0 >= 0xA0) 
     {
-        arg0 += 0x40;
+        arg0 += 'A' - 1;
     }
     
     return (((arg0 * 0xC0) + arg1) - 0x6100) * D_8038F032_1AB882;

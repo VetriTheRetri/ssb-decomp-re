@@ -2,6 +2,8 @@
 #include <sys/develop.h>
 #include <db/debug.h>
 
+void func_ovl8_8037AA88(s32 arg0, s32 arg1, s32 arg2, s32 arg3, dbUnknown7* arg4);
+
 typedef struct dbUnknown8_SC {
     s16 x0;
     s16 y0;

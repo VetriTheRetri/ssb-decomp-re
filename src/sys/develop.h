@@ -347,11 +347,20 @@ typedef struct dbUnknownStructSC
 
 typedef struct dbUnknown7
 {
-    s32 unk0[0x18/4];
+    s32 unk0;
+    s32 unk4;
+    s32 *unk8;
+    s32 *unkC;
+    s32 unk10;
+    s32 unk14;
     s32 unk18;
     dbUnknownLink *unk1C;
     dbUnknownLinkStruct *unk20;
-    s32 unk24[(0x38-0x24)/4];
+    s32 unk24;
+    void *unk28;
+    void *unk2C;
+    s32 unk30;
+    s32 unk34;
     s32 unk38;
     s32 unk3C[2];
     s32 unk44;

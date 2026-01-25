@@ -260,7 +260,10 @@ typedef struct dbUnknown5
     dbFunction *db_func;
     u8 filler_0x1C[0x2];
     s16 unk_dbunk5_0x1E;
-    f32 unk_dbunk5_0x20;
+    union {
+        f32 f;
+        dbUnknownLinkStruct *ls;
+    } unk_dbunk5_0x20;
     s32 unk_dbunk5_0x24;
     s32 unk_dbunk5_0x28;
     s32 unk_dbunk5_0x2C;

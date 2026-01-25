@@ -522,7 +522,69 @@ void func_ovl8_80380AD0(dbUnknown7* arg0)
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_15/func_ovl8_80380B6C.s")
 
 // 0x80380C30
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_15/func_ovl8_80380C30.s")
+void func_ovl8_80380C30(dbUnknown5* arg0) 
+{
+    s32 var_s1;
+    u8* sp60;
+    u8* sp5C;
+    dbUnknownLinkStruct* temp_s3;
+    dbUnknownLinkStruct* var_v0;
+    s32 var_s4;
+    Vec2h sp4C;
+
+    temp_s3 = arg0->unk_dbunk5_0xB4;
+    var_s4 = 0;
+    
+    if (((s32*)temp_s3)[2])  // definitely wrong type
+    {
+        memcpy(arg0->unk_dbunk5_0x40.ls->unk_dbunkstruct_0x20, ((s32*)temp_s3)[2], 0x200);
+    }
+    
+    var_v0 = (dbUnknownLinkStruct*) arg0;
+    if (arg0 ) 
+    {
+        var_v0 = arg0->unk_dbunk5_0x20.ls;
+    }
+    
+    if (var_v0->unk_dbunkstruct_0x24 == 6) 
+    {
+        var_s4 = func_ovl8_803716D8(temp_s3->position.x * arg0->unk_dbunk5_0xBC);
+    }
+    
+    for (var_s1 = 0; arg0->unk_dbunk5_0xB0 > var_s1; var_s1++) 
+    {
+        sp4C.x = 0;
+        sp4C.y = arg0->unk_dbunk5_0xBC * (0, var_s1);
+        
+        var_v0 = ((var_s1 + 1) == (s32)arg0->unk_dbunk5_0xAC) 
+            ? ((Vec2i*)(temp_s3->unk_dbunkstruct_0xC))[var_s1].y  // definitely wrong type
+            : ((Vec2i*)(temp_s3->unk_dbunkstruct_0xC))[var_s1].x; // definitely wrong type
+        
+        sp60 = var_v0;
+        
+        if (var_v0 != 0) 
+        {
+            var_v0 = arg0;
+            if (arg0 != 0) 
+            {
+                var_v0 = arg0->unk_dbunk5_0x20.ls;
+            }
+            
+            if (var_v0->unk_dbunkstruct_0x24 == 6) 
+            {
+                sp5C = var_s4;
+                func_ovl8_8037C1D4(&sp60, &sp5C, temp_s3->position.x * arg0->unk_dbunk5_0xBC);
+                sp60 = var_s4;
+            }
+            
+            func_ovl8_803798A0(arg0->unk_dbunk5_0x40.str, sp60, arg0->unk_dbunk5_0xB8[0], arg0->unk_dbunk5_0xBC, &sp4C, 4);
+        }
+    }
+    if (var_s4) 
+    {
+        func_ovl8_80371764(var_s4);
+    }
+}
 
 // 0x80380DD8
 void func_ovl8_80380DD8(s32 arg0, db4Shorts* arg1, s32* arg2, s32* arg3, s32* arg4, s32* arg5)

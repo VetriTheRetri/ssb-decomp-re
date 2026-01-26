@@ -650,7 +650,15 @@ __HandleMIDIMsg(ALSeqPlayer *seqp, ALEvent *event)
 		break;
 
 	    case (AL_MIDI_FX_CTRL_0):
+            if (byte2 >= 0x79) {
+		        seqp->chanState[chan].bendRange = 0x4B0;
+            } else {
+		        seqp->chanState[chan].bendRange = byte2 * 10;
+            }
+            break;
 	    case (AL_MIDI_FX_CTRL_1):
+            seqp->masterVol = byte2;
+            break;
 	    case (AL_MIDI_FX_CTRL_2):
 	    case (AL_MIDI_FX_CTRL_3):
 	    case (AL_MIDI_FX_CTRL_4):
@@ -668,18 +676,6 @@ __HandleMIDIMsg(ALSeqPlayer *seqp, ALEvent *event)
 		break;
 
 	    }
-            break;
-
-        case (AL_MIDI_PitchBendChange-2): // TODO: what is this case value??
-            if (byte2 >= 0x79) {
-		        seqp->chanState[chan].bendRange = 0x4B0;
-            } else {
-		        seqp->chanState[chan].bendRange = byte2 * 10;
-            }
-            break;
-
-        case (AL_MIDI_PitchBendChange-1): // TODO what is this case value??
-            seqp->masterVol = byte2;
             break;
 
         case (AL_MIDI_ProgramChange):

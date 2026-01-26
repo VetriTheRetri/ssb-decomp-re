@@ -796,9 +796,10 @@ extern "C"
 		ALPlayer node; /* note: must be first in structure */
 		ALSynth* drvr; /* reference to the client driver   */
 		ALSeq* target; /* current sequence                 */
-		s32 unkA[2];
 		ALMicroTime curTime;
 		ALBank* bank;  /* current ALBank                   */
+		s32 unknown0; /* Added by HAL Laboratory? */
+		s32 unknown1; /* Added by HAL Laboratory? */
 		s32 uspt;	   /* microseconds per tick            */
 		s32 nextDelta; /* microseconds to next callback    */
 		s32 state;
@@ -827,9 +828,10 @@ extern "C"
 		ALPlayer node;	/* note: must be first in structure */
 		ALSynth* drvr;	/* reference to the client driver   */
 		ALCSeq* target; /* current sequence                 */
-		s32 unknown[2];
 		ALMicroTime curTime;
 		ALBank* bank;  /* current ALBank                   */
+		s32 unknown0; /* Added by HAL Laboratory? */
+		s32 unknown1; /* Added by HAL Laboratory? */
 		s32 uspt;	   /* microseconds per tick            */
 		s32 nextDelta; /* microseconds to next callback    */
 		s32 state;
@@ -844,10 +846,10 @@ extern "C"
 		ALVoiceState* vAllocHead; /* list head for allocated voices   */
 		ALVoiceState* vAllocTail; /* list tail for allocated voices   */
 		ALVoiceState* vFreeList;  /* list of free voice state structs */
+		u8 masterVol; // ?
 		ALOscInit initOsc;
 		ALOscUpdate updateOsc;
 		ALOscStop stopOsc;
-		s32 unknown2; /* Added by HAL Laboratory? */
 	} ALCSPlayer;
 
 	/*

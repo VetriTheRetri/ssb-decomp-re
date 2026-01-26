@@ -409,3 +409,4 @@ alSeqNextEvent = 0x8002F758;
 readVarLen = 0x8002F70C;
 func_8002FA54 = 0x8002FA54;
 func_8002FA5C = 0x8002FA5C;
+__voiceNeedsNoteKill = 0x8002e11c;

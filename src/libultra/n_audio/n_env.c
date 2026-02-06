@@ -4566,7 +4566,7 @@ static s32 func_800293A8_29FA8(s32 arg0)
         }
         var_s0 = temp_v1;
     }
-    randFloat1();
+    randFloat2();
     
     return D_8009EDD0_406D0.unk_alsound_0x44;
 }
@@ -5351,7 +5351,7 @@ void func_80026204_26E04(N_ALUnk80026204 *arg0)
     client->clientData = NULL;
     
     n_alSynAddSndPlayer(client);
-    sRandomSeed1 = 1;
+    sRandomSeed2 = 1;
 }
 
 void func_80026174_26D74(ALWhatever8009EDD0_siz34 *arg0, u8 arg1)

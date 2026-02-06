@@ -363,8 +363,8 @@ __readVarLen = 0x8002852C;
 __getTrackByte = 0x80028468;
 
 eqpower = 0x8003D210; // size:0x100
-randFloat1 = 0x80027390;
-randFloat2 = 0x800273F4;
+randFloat2 = 0x80027390;
+randFloat1 = 0x800273F4;
 sRandomSeed1 = 0x8003D320;
 sRandomSeed2 = 0x8003D324; // size:0x4
 

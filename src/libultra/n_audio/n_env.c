@@ -3994,21 +3994,21 @@ void func_80027460_28060(ALWhatever8009EE0C_2 *arg0)
                         switch (temp_a3)
                         {
                         case 4:
-                            var_s0_6->unkALWhatever8009EDD0_siz24_0x20 = (randFloat2() * var_s0_6->unkALWhatever8009EDD0_siz24_0xC) + var_s0_6->unkALWhatever8009EDD0_siz24_0x10;
-                            var_s0_6->unkALWhatever8009EDD0_siz24_0x18 = randFloat2() * var_s0_6->unkALWhatever8009EDD0_siz24_0x8;
+                            var_s0_6->unkALWhatever8009EDD0_siz24_0x20 = (randFloat1() * var_s0_6->unkALWhatever8009EDD0_siz24_0xC) + var_s0_6->unkALWhatever8009EDD0_siz24_0x10;
+                            var_s0_6->unkALWhatever8009EDD0_siz24_0x18 = randFloat1() * var_s0_6->unkALWhatever8009EDD0_siz24_0x8;
                             var_s0_6->unkALWhatever8009EDD0_siz24_0x14 = var_s0_6->unkALWhatever8009EDD0_siz24_0x18 * sp9C * (1.0F / 256.0F);
                             break;
                             
                         case 5:
                             var_s0_6->unkALWhatever8009EDD0_siz24_0x1C = 0.0F;
-                            var_s0_6->unkALWhatever8009EDD0_siz24_0x20 = (randFloat2() * var_s0_6->unkALWhatever8009EDD0_siz24_0xC) + var_s0_6->unkALWhatever8009EDD0_siz24_0x10;
-                            var_s0_6->unkALWhatever8009EDD0_siz24_0x18 = (randFloat2() * var_s0_6->unkALWhatever8009EDD0_siz24_0x8) + 0.5F;
+                            var_s0_6->unkALWhatever8009EDD0_siz24_0x20 = (randFloat1() * var_s0_6->unkALWhatever8009EDD0_siz24_0xC) + var_s0_6->unkALWhatever8009EDD0_siz24_0x10;
+                            var_s0_6->unkALWhatever8009EDD0_siz24_0x18 = (randFloat1() * var_s0_6->unkALWhatever8009EDD0_siz24_0x8) + 0.5F;
                             var_s0_6->unkALWhatever8009EDD0_siz24_0x14 = var_s0_6->unkALWhatever8009EDD0_siz24_0x18 * sp9C * (1.0F / 256.0F);
                             break;
                             
                         case 8:
-                            var_s0_6->unkALWhatever8009EDD0_siz24_0x20 = (randFloat1() * var_s0_6->unkALWhatever8009EDD0_siz24_0xC) + var_s0_6->unkALWhatever8009EDD0_siz24_0x10;
-                            var_s0_6->unkALWhatever8009EDD0_siz24_0x18 = randFloat1() * var_s0_6->unkALWhatever8009EDD0_siz24_0x8;
+                            var_s0_6->unkALWhatever8009EDD0_siz24_0x20 = (randFloat2() * var_s0_6->unkALWhatever8009EDD0_siz24_0xC) + var_s0_6->unkALWhatever8009EDD0_siz24_0x10;
+                            var_s0_6->unkALWhatever8009EDD0_siz24_0x18 = randFloat2() * var_s0_6->unkALWhatever8009EDD0_siz24_0x8;
                             var_s0_6->unkALWhatever8009EDD0_siz24_0x14 = var_s0_6->unkALWhatever8009EDD0_siz24_0x18 * sp9C * (1.0F / 256.0F);
                             break;
                         }
@@ -4129,9 +4129,9 @@ void func_80027460_28060(ALWhatever8009EE0C_2 *arg0)
             if (var_s0_6->unkALWhatever8009EDD0_siz24_0x18 < var_s0_6->unkALWhatever8009EDD0_siz24_0x14)
             {
                 var_s0_6->unkALWhatever8009EDD0_siz24_0x20 =
-                ((randFloat2() * var_s0_6->unkALWhatever8009EDD0_siz24_0xC) + var_s0_6->unkALWhatever8009EDD0_siz24_0x10);
+                ((randFloat1() * var_s0_6->unkALWhatever8009EDD0_siz24_0xC) + var_s0_6->unkALWhatever8009EDD0_siz24_0x10);
                     
-                var_s0_6->unkALWhatever8009EDD0_siz24_0x18 = randFloat2() * var_s0_6->unkALWhatever8009EDD0_siz24_0x8;
+                var_s0_6->unkALWhatever8009EDD0_siz24_0x18 = randFloat1() * var_s0_6->unkALWhatever8009EDD0_siz24_0x8;
                 var_s0_6->unkALWhatever8009EDD0_siz24_0x14 = 0;
             }
             var_f12 = var_s0_6->unkALWhatever8009EDD0_siz24_0x20;
@@ -4143,9 +4143,9 @@ void func_80027460_28060(ALWhatever8009EE0C_2 *arg0)
             if (var_s0_6->unkALWhatever8009EDD0_siz24_0x18 < var_s0_6->unkALWhatever8009EDD0_siz24_0x14)
             {
                 var_s0_6->unkALWhatever8009EDD0_siz24_0x1C = var_s0_6->unkALWhatever8009EDD0_siz24_0x20;
-                var_s0_6->unkALWhatever8009EDD0_siz24_0x20 = ((randFloat2() * var_s0_6->unkALWhatever8009EDD0_siz24_0xC) + var_s0_6->unkALWhatever8009EDD0_siz24_0x10);
+                var_s0_6->unkALWhatever8009EDD0_siz24_0x20 = ((randFloat1() * var_s0_6->unkALWhatever8009EDD0_siz24_0xC) + var_s0_6->unkALWhatever8009EDD0_siz24_0x10);
                     
-                var_s0_6->unkALWhatever8009EDD0_siz24_0x18 = randFloat2() * var_s0_6->unkALWhatever8009EDD0_siz24_0x8 + 0.5F;
+                var_s0_6->unkALWhatever8009EDD0_siz24_0x18 = randFloat1() * var_s0_6->unkALWhatever8009EDD0_siz24_0x8 + 0.5F;
                 var_s0_6->unkALWhatever8009EDD0_siz24_0x14 = 0;
             }
             var_f12 =
@@ -4190,8 +4190,8 @@ void func_80027460_28060(ALWhatever8009EE0C_2 *arg0)
                 
             if (var_s0_6->unkALWhatever8009EDD0_siz24_0x18 < var_s0_6->unkALWhatever8009EDD0_siz24_0x14)
             {
-                var_s0_6->unkALWhatever8009EDD0_siz24_0x20 = (randFloat1() * var_s0_6->unkALWhatever8009EDD0_siz24_0xC) + var_s0_6->unkALWhatever8009EDD0_siz24_0x10;
-                var_s0_6->unkALWhatever8009EDD0_siz24_0x18 = randFloat1() * var_s0_6->unkALWhatever8009EDD0_siz24_0x8;
+                var_s0_6->unkALWhatever8009EDD0_siz24_0x20 = (randFloat2() * var_s0_6->unkALWhatever8009EDD0_siz24_0xC) + var_s0_6->unkALWhatever8009EDD0_siz24_0x10;
+                var_s0_6->unkALWhatever8009EDD0_siz24_0x18 = randFloat2() * var_s0_6->unkALWhatever8009EDD0_siz24_0x8;
                 var_s0_6->unkALWhatever8009EDD0_siz24_0x14 = 0;
             }
             var_f12 = var_s0_6->unkALWhatever8009EDD0_siz24_0x20;

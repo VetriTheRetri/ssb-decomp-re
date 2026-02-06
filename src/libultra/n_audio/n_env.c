@@ -2379,6 +2379,8 @@ static s32 __n_nextSampleTime(ALPlayer **client)
 
 f32 D_8003D318_3DF18 = 1.0F;
 u16 D_8003D31C_3DF1C = 0xFFFF;
+s32 sRandomSeed2 = 0;
+s32 sRandomSeed1 = 0;
 
 /////////////////////////////////////////////////////////
 // n_csplayer.c
@@ -4438,7 +4440,6 @@ ALWhatever8009EE0C* func_80026A6C_2766C(void *arg0);
 ALWhatever8009EE0C* func_80026B40_27740(u16 id);
 f32 randFloat1();
 
-s32 sRandomSeed1, sRandomSeed2;
 void func_80026B90_27790(ALWhatever8009EDD0_siz34 *arg0);
 
 // TODO: where does this go?

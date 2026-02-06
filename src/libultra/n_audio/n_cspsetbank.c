@@ -1,7 +1,6 @@
 /*====================================================================
- * cspsetbank.c
  *
- * Copyright 1995, Silicon Graphics, Inc.
+ * Copyright 1993, Silicon Graphics, Inc.
  * All Rights Reserved.
  *
  * This is UNPUBLISHED PROPRIETARY SOURCE CODE of Silicon Graphics,
@@ -19,37 +18,38 @@
  *====================================================================*/
 
 #include <PR/libaudio.h>
+#include <n_audio/n_libaudio.h>
 
 // Needs -O3
-void alCSPSetBank(ALCSPlayer *seqp, ALBank *b)
+void n_alCSPSetBank(N_ALCSPlayer *seqp, ALBank *b)
 {
-	ALEvent evt;
+	N_ALEvent evt;
 
 	evt.type = AL_SEQP_BANK_EVT;
 	evt.msg.spbank.bank = b;
-	alEvtqPostEvent(&seqp->evtq, &evt, 0);
+	n_alEvtqPostEvent(&seqp->evtq, &evt, 0);
 }
 
-void alCSPSetBank_Alt(ALCSPlayer *seqp, ALBank *b, u8 arg2)
+void n_alCSPSetBank_Alt(N_ALCSPlayer *seqp, ALBank *b, u8 arg2)
 {
-	ALEvent evt;
+	N_ALEvent evt;
 
 	if (arg2 == 0)
 	{
 		evt.type = AL_SEQP_BANK_EVT;
 		evt.msg.spbank.bank = b;
-		alEvtqPostEvent(&seqp->evtq, &evt, 0);
+		n_alEvtqPostEvent(&seqp->evtq, &evt, 0);
 	}
 	else if (arg2 == 1)
 	{
 		evt.type = 0x18;
 		evt.msg.spbank.bank = b;
-		alEvtqPostEvent(&seqp->evtq, &evt, 0);
+		n_alEvtqPostEvent(&seqp->evtq, &evt, 0);
 	}
 	else if (arg2 == 2)
 	{
 		evt.type = 0x19;
 		evt.msg.spbank.bank = b;
-		alEvtqPostEvent(&seqp->evtq, &evt, 0);
+		n_alEvtqPostEvent(&seqp->evtq, &evt, 0);
 	}
 }

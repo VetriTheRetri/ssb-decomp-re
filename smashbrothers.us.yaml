@@ -111,28 +111,28 @@ segments:
       - [0x026B10, c, libultra/sp/hide]
       - [0x026B30, c, libultra/sp/show]
       - [0x026B50, c, libultra/sp/spscale]
-      - [0x026BC0, c, libultra/n_audio/cspsetpriority]
-      - [0x026C10, c, libultra/n_audio/cspsetfxmix]
+      - [0x026BC0, c, libultra/n_audio/n_cspsetpriority]
+      - [0x026C10, c, libultra/n_audio/n_cspsetfxmix]
       - [0x026C70, c, libultra/n_audio/n_env]
       - [0x02E220, c, libultra/n_audio/n_synaddplayer]
       - [0x02E380, c, libultra/n_audio/n_synstopvoice]
       - [0x02E3F0, c, libultra/n_audio/n_synallocvoice]
       - [0x02E620, c, libultra/n_audio/n_synsetpan]
       - [0x02E6A0, c, libultra/n_audio/n_synstartvoiceparam]
-      - [0x02E870, c, libultra/n_audio/seqplayer]
+      - [0x02E870, c, libultra/n_audio/n_seqplayer]
       - [0x0302A0, c, libultra/n_audio/n_synsetpriority]
-      - [0x0302C0, c, libultra/n_audio/seqpgetvol]
-      - [0x0302E0, c, libultra/n_audio/seq]
-      - [0x030670, c, libultra/n_audio/cspsetseq]
+      - [0x0302C0, c, libultra/n_audio/n_seqpgetvol]
+      - [0x0302E0, c, libultra/n_audio/n_seq]
+      - [0x030670, c, libultra/n_audio/n_cspsetseq]
       - [0x0306B0, c, libultra/n_audio/n_synsetpitch]
-      - [0x030730, c, libultra/n_audio/cspsetbank]
-      - [0x030810, c, libultra/n_audio/cspsetvol]
+      - [0x030730, c, libultra/n_audio/n_cspsetbank]
+      - [0x030810, c, libultra/n_audio/n_cspsetvol]
       - [0x030850, c, libultra/n_audio/n_synsetfxmix]
       - [0x030980, c, libultra/n_audio/n_syndelete]
-      - [0x0309B0, c, libultra/n_audio/cspplay]
-      - [0x0309E0, c, libultra/n_audio/seqpgetchlvol]
+      - [0x0309B0, c, libultra/n_audio/n_cspplay]
+      - [0x0309E0, c, libultra/n_audio/n_seqpgetchlvol]
       - [0x030A30, c, libultra/n_audio/n_synallocfx]
-      - [0x030A90, c, libultra/n_audio/cspstop]
+      - [0x030A90, c, libultra/n_audio/n_cspstop]
       - [0x030AC0, c, libultra/n_audio/n_synfreevoice]
       - [0x030B60, c, libultra/n_audio/n_synsetvol]
       - [0x030C00, c, libultra/os/sendmesg]
@@ -261,7 +261,7 @@ segments:
       - [0x03D550, .data, sys/audio]
       - [0x03D7B0, .data, sys/debug]
       - [0x03DC70, .data, libultra/sp/sprite]
-      - [0x03DC80, data, libultra/n_audio/n_env]
+      - [0x03DC80, .data, libultra/n_audio/n_env]
       - [0x03DF30, .data, libultra/vimodes/vimodepallan1] # osViModePalLan1
       - [0x03DF80, .data, libultra/os/exceptasm]
       - [0x03DFB0, .data, libultra/os/thread]
@@ -298,7 +298,7 @@ segments:
       - [0x03F020, .rodata, sys/debug]
       - [0x03F460, .rodata, libultra/sp/sprite]
       - [0x03F470, .rodata, libultra/n_audio/n_env]
-      - [0x03FAA0, .rodata, libultra/n_audio/seqplayer]
+      - [0x03FAA0, .rodata, libultra/n_audio/n_seqplayer]
       - [0x03FCE0, .rodata, libultra/os/setintmask]
       - [0x03FD60, .rodata, libultra/gu/sinf]
       - [0x03FDB0, .rodata, libultra/os/exceptasm]
@@ -324,7 +324,7 @@ segments:
       - { start: 0x047ED0, type: .bss, name: sys/audio,                vram: 0x800472D0 }
       - { start: 0x09E600, type: .bss, name: sys/debug,                vram: 0x8009DA00 }
       - { start: 0x09F9C0, type: .bss, name: libultra/sp/sprite,       vram: 0x8009EDC0 }
-      - { start: 0x09F9D0, type:  bss, name: libultra/n_audio/n_env,   vram: 0x8009EDD0 }
+      - { start: 0x09F9D0, type: .bss, name: libultra/n_audio/n_env,   vram: 0x8009EDD0 }
       - { start: 0x09FA40, type: .bss, name: libultra/io/sptask,       vram: 0x8009EE40 }
       - { start: 0x09FA80, type: .bss, name: libultra/io/motor,        vram: 0x8009EE80 }
       - { start: 0x09FB80, type: .bss, name: libultra/io/siacs,        vram: 0x8009EF80 }

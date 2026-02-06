@@ -192,6 +192,8 @@ typedef struct {
     ALSeq              *target;        /* current sequence                 */
     ALMicroTime         curTime;
     ALBank             *bank;           /* current ALBank                   */
+    s32 unknown0; /* Added by HAL Laboratory? */
+    s32 unknown1; /* Added by HAL Laboratory? */
     s32                 uspt;           /* microseconds per tick            */
     s32                 nextDelta;      /* microseconds to next callback    */
     s32                 state;
@@ -206,6 +208,7 @@ typedef struct {
     N_ALVoiceState     *vAllocHead;     /* list head for allocated voices   */
     N_ALVoiceState     *vAllocTail;     /* list tail for allocated voices   */
     N_ALVoiceState     *vFreeList;      /* list of free voice state structs */
+    u8 masterVol; // ?
     ALOscInit           initOsc;
     ALOscUpdate         updateOsc;
     ALOscStop           stopOsc;

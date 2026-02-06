@@ -1,5 +1,4 @@
 /*====================================================================
- * seq.c
  *
  * Copyright 1993, Silicon Graphics, Inc.
  * All Rights Reserved.
@@ -21,6 +20,7 @@
 #include <PR/libaudio.h>
 #include <PR/os_internal.h>
 #include <PR/ultraerror.h>
+#include <n_audio/n_libaudio.h>
 
 char __alSeqNextDelta (ALSeq *seq, s32 *pDeltaTicks);
 
@@ -90,7 +90,7 @@ void alSeqNew(ALSeq *seq, u8 *ptr, s32 len)
 }
 #endif
 
-void alSeqNextEvent(ALSeq *seq, ALEvent *event)
+void n_alSeqNextEvent(ALSeq *seq, N_ALEvent *event)
 {
     u8          status;
     s16         delta;
@@ -119,7 +119,7 @@ void alSeqNextEvent(ALSeq *seq, ALEvent *event)
         for (i = 0; i < len; i++) {
             read8(seq);
         }
-        alSeqNextEvent(seq,event);
+        n_alSeqNextEvent(seq,event);
         return;
     }
 #endif
@@ -149,7 +149,7 @@ void alSeqNextEvent(ALSeq *seq, ALEvent *event)
             for (i = 0; i < len; i++) {
                 read8(seq);
             }
-            alSeqNextEvent(seq,event);
+            n_alSeqNextEvent(seq,event);
             return;
 #endif            
         }
@@ -216,9 +216,9 @@ u32 alSeqSecToTicks(ALSeq *seq, f32 sec, u32 tempo)
 }
 #endif
 
-void alSeqNewMarker(ALSeq *seq, ALSeqMarker *m, u32 ticks)
+void n_alSeqNewMarker(ALSeq *seq, ALSeqMarker *m, u32 ticks)
 {
-    ALEvent     evt;
+    N_ALEvent     evt;
     u8          *savePtr, *lastPtr;
     s32         saveTicks, lastTicks;
     s16         saveStatus, lastStatus;
@@ -245,7 +245,7 @@ void alSeqNewMarker(ALSeq *seq, ALSeqMarker *m, u32 ticks)
             lastStatus = seq->lastStatus;
             lastTicks  = seq->lastTicks;
         
-            alSeqNextEvent(seq, &evt);
+            n_alSeqNextEvent(seq, &evt);
             
             if (evt.type == AL_SEQ_END_EVT)
 	    {

@@ -1,9 +1,6 @@
 /*====================================================================
- * cspplay.c
  *
- * Synopsis:
- *
- * Copyright 1995, Silicon Graphics, Inc.
+ * Copyright 1993, Silicon Graphics, Inc.
  * All Rights Reserved.
  *
  * This is UNPUBLISHED PROPRIETARY SOURCE CODE of Silicon Graphics,
@@ -21,12 +18,14 @@
  *====================================================================*/
 
 #include <PR/libaudio.h>
+#include <n_audio/n_libaudio.h>
 
-void alCSPPlay(ALCSPlayer *seqp)
+void n_alCSPSetSeq(N_ALCSPlayer *seqp, ALCSeq *seq)
 {
-    ALEvent evt;
-    
-    evt.type = AL_SEQP_PLAY_EVT;
-                    
-    alEvtqPostEvent(&seqp->evtq, &evt, 0);
+    N_ALEvent evt;
+
+    evt.type = AL_SEQP_SEQ_EVT;
+    evt.msg.spseq.seq = seq;
+
+    n_alEvtqPostEvent(&seqp->evtq, &evt, 0);
 }

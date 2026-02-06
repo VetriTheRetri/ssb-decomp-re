@@ -1,9 +1,6 @@
 /*====================================================================
- * cspsetseq.c
  *
- * Synopsis:
- *
- * Copyright 1995, Silicon Graphics, Inc.
+ * Copyright 1993, Silicon Graphics, Inc.
  * All Rights Reserved.
  *
  * This is UNPUBLISHED PROPRIETARY SOURCE CODE of Silicon Graphics,
@@ -21,13 +18,12 @@
  *====================================================================*/
 
 #include <PR/libaudio.h>
+#include <n_audio/n_libaudio.h>
 
-void alCSPSetSeq(ALCSPlayer *seqp, ALCSeq *seq)
+void n_alCSPStop(N_ALCSPlayer *seqp)
 {
-	ALEvent evt;
+    N_ALEvent     evt;
 
-	evt.type = AL_SEQP_SEQ_EVT;
-	evt.msg.spseq.seq = seq;
-
-	alEvtqPostEvent(&seqp->evtq, &evt, 0);
+    evt.type = AL_SEQP_STOPPING_EVT;                    
+    n_alEvtqPostEvent(&seqp->evtq, &evt, 0);
 }

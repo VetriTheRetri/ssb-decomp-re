@@ -43,3 +43,6 @@ main_BSS_SIZE_LO = main_BSS_SIZE & 0xFFFF; /* for entry.c */
 MI_INTR_MASK_REG = D_A430000C;
 
 gDBUiNodeTypeTable = 0x8038fbc0; /* segment:ovl8 */
+
+n_alCSPNew = 0x8002c3d0;
+n_alAudioFrame = 0x8002C708;

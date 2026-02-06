@@ -975,8 +975,8 @@ void syAudioMakeBGMPlayers(void)
         seqp_config.stopOsc = syAudioStopOsc;
 
         gSYAudioCSPlayers[i] = alHeapAlloc(&sSYAudioHeap, 1, sizeof(*gSYAudioCSPlayers[i]));
-        func_8002C3D0_2CFD0(gSYAudioCSPlayers[i], &seqp_config);
-        alCSPSetBank(gSYAudioCSPlayers[i], sSYAudioSequenceBank2);
+        n_alCSPNew(gSYAudioCSPlayers[i], &seqp_config);
+        n_alCSPSetBank(gSYAudioCSPlayers[i], sSYAudioSequenceBank2);
         sSYAudioCSeqs[i] = alHeapAlloc(&sSYAudioHeap, 1, sizeof(*sSYAudioCSeqs[i]));
         
         sSYAudioCSPlayerStatuses[i] = 0;
@@ -1035,7 +1035,7 @@ void syAudioThreadMain(void *arg)
         }
         sSYAudioTimeStamp = osGetTime();
         
-        sSYAudioCurrentAcmdListBuffer = func_8002C708_2D308(sSYAudioCurrentAcmdListBuffer, &sp80, osVirtualToPhysical(sSYAudioDataBuffers[id_mod3]), dSYAudioSampleCounts[id_mod3]);
+        sSYAudioCurrentAcmdListBuffer = n_alAudioFrame(sSYAudioCurrentAcmdListBuffer, &sp80, osVirtualToPhysical(sSYAudioDataBuffers[id_mod3]), dSYAudioSampleCounts[id_mod3]);
 
         sSYAudioCurrentTask->info.type = nSYTaskTypeAudio;
         sSYAudioCurrentTask->info.priority = 80;
@@ -1103,7 +1103,7 @@ void syAudioThreadMain(void *arg)
             case 1:
                 if (gSYAudioCSPlayers[i]->state != AL_STOPPED)
                 {
-                    alCSPStop(gSYAudioCSPlayers[i]);
+                    n_alCSPStop(gSYAudioCSPlayers[i]);
                     continue;
                 }
                 else if (sSYAudioBGMPlayingIDs[i] < 0)
@@ -1121,12 +1121,12 @@ void syAudioThreadMain(void *arg)
                 
             case 2:
                 n_alCSeqNew(sSYAudioCSeqs[i], sSYAudioBGMSequenceDatas[i]);
-                alCSPSetSeq(gSYAudioCSPlayers[i], sSYAudioCSeqs[i]);
-                alCSPPlay(gSYAudioCSPlayers[i]);
+                n_alCSPSetSeq(gSYAudioCSPlayers[i], sSYAudioCSeqs[i]);
+                n_alCSPPlay(gSYAudioCSPlayers[i]);
 
                 for (sp80 = 0; sp80 < AL_MAX_CHANNELS; sp80++)
                 {
-                    alCSPSetChlPriority(gSYAudioCSPlayers[i], sp80, gSYAudioGlobalBGMPriority);
+                    n_alCSPSetChlPriority(gSYAudioCSPlayers[i], sp80, gSYAudioGlobalBGMPriority);
                 }
                 sSYAudioCSPlayerStatuses[i]++;
                 break;
@@ -1156,7 +1156,7 @@ void syAudioThreadMain(void *arg)
                 {
                     sSYAudioBGMVolumes[i] = 30720.0F;
                 }
-                alCSPSetVol(gSYAudioCSPlayers[i], sSYAudioBGMVolumes[i]);
+                n_alCSPSetVol(gSYAudioCSPlayers[i], sSYAudioBGMVolumes[i]);
             }
         }
         if (dSYAudioIsSettingsUpdated != FALSE)
@@ -1306,7 +1306,7 @@ void syAudioSetBGMVolume(s32 sngplayer, u32 vol)
     {
         vol = 30720;
     }
-    alCSPSetVol(gSYAudioCSPlayers[sngplayer], vol);
+    n_alCSPSetVol(gSYAudioCSPlayers[sngplayer], vol);
     sSYAudioBGMVolumes[sngplayer] = vol;
     sSYAudioBGMVolumeTimers[sngplayer] = 0;
 }
@@ -1337,7 +1337,7 @@ void syAudioSetBGMReverb(s32 sngplayer, u32 reverb)
     }
     for (i = 0; i < AL_MAX_CHANNELS; i++)
     {
-        alCSPSetChlFXMix(gSYAudioCSPlayers[sngplayer], i, reverb);
+        n_alCSPSetChlFXMix(gSYAudioCSPlayers[sngplayer], i, reverb);
     }
 }
 
@@ -1354,7 +1354,7 @@ void syAudioSetBGMPriority(s32 sngplayer, u8 priority)
 
     for (i = 0; i < AL_MAX_CHANNELS; i++)
     {
-        alCSPSetChlPriority(gSYAudioCSPlayers[sngplayer], i, priority);
+        n_alCSPSetChlPriority(gSYAudioCSPlayers[sngplayer], i, priority);
     }
 }
 

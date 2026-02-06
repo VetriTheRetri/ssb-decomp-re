@@ -1,7 +1,6 @@
 /*====================================================================
- * cspsetfxmix.c
  *
- * Copyright 1995, Silicon Graphics, Inc.
+ * Copyright 1993, Silicon Graphics, Inc.
  * All Rights Reserved.
  *
  * This is UNPUBLISHED PROPRIETARY SOURCE CODE of Silicon Graphics,
@@ -19,16 +18,15 @@
  *====================================================================*/
 
 #include <PR/libaudio.h>
+#include <n_audio/n_libaudio.h>
 
-void alCSPSetChlFXMix(ALCSPlayer *seqp, u8 chan, u8 fxmix)
+void n_alCSPSetChlPriority(N_ALCSPlayer *seqp, u8 chan, u8 priority)
 {
-	ALEvent       evt;
+    N_ALEvent evt;
 
-	evt.type            = AL_SEQP_MIDI_EVT;
-	evt.msg.midi.ticks  = 0;
-	evt.msg.midi.status = AL_MIDI_ControlChange | chan;
-	evt.msg.midi.byte1  = AL_MIDI_FX1_CTRL;
-	evt.msg.midi.byte2  = fxmix;
+    evt.type = AL_SEQP_PRIORITY_EVT;
+    evt.msg.sppriority.chan = chan;
+    evt.msg.sppriority.priority = priority;
 
-	alEvtqPostEvent(&seqp->evtq, &evt, 0);
+    n_alEvtqPostEvent(&seqp->evtq, &evt, 0);
 }

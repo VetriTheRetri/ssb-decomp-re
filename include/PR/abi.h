@@ -278,7 +278,7 @@ typedef short RESAMPLE_STATE[16];
  * Resampler constants
  */
 #define UNITY_PITCH 0x8000
-#define MAX_RATIO 1.99996 /* within .03 cents of +1 octave */
+#define MAX_RATIO 1.99996F /* within .03 cents of +1 octave */
 
 /*
  * Enveloper/Mixer state

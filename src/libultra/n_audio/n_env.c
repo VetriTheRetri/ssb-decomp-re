@@ -2378,8 +2378,8 @@ static s32 __n_nextSampleTime(ALPlayer **client)
 
 f32 D_8003D318_3DF18 = 1.0F;
 u16 D_8003D31C_3DF1C = 0xFFFF;
-s32 sRandomSeed2 = 0;
-s32 sRandomSeed1 = 0;
+s32 sRandomSeed2 = 1;
+s32 sRandomSeed1 = 1;
 
 /////////////////////////////////////////////////////////
 // n_csplayer.c

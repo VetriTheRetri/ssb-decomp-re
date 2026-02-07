@@ -237,8 +237,7 @@ typedef struct ALWhatever8009EDD0
     u8 unk_alsound_0x5A;
     ALWhatever8009EE0C *unk_alsound_0x5C;
     ALWhatever8009EDD0_siz34 *unk_alsound_0x60;
-    u8 filler_0x64[0x84 - 0x64];
-    s32 unk_alwhatev8009EDD0_0x84;
+    s32 unk_alwhatev8009EDD0_0x64;
 
 } ALWhatever8009EDD0;
 
@@ -3743,8 +3742,6 @@ static u32 __readVarLen(ALCSeq *seq,u32 track)
 
 //////////////////////////////////////////////////////////////
 
-s32 unknown1 = 1;
-s32 unknown2 = 1;
 extern u16 gSYSinTable[0x800];
 
 void func_80027460_28060(ALWhatever8009EE0C_2 *arg0)

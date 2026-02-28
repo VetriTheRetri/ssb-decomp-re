@@ -46,3 +46,6 @@ gDBUiNodeTypeTable = 0x8038fbc0; /* segment:ovl8 */
 
 n_alCSPNew = 0x8002c3d0;
 n_alAudioFrame = 0x8002C708;
+
+gSYControllerMainButtonTap = 0x80045472;
+gSYControllerMainButtonUpdate = 0x80045474;

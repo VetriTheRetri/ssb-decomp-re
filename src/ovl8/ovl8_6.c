@@ -62,10 +62,8 @@ extern void* D_ovl8_8038961C;
 extern void* D_ovl8_80389634;
 
 extern s16 D_ovl8_8038A864;
-extern s32 D_ovl8_8038A878;
-extern s32 D_ovl8_8038A87C;
-extern s32 D_ovl8_8038A880;
-extern s32 D_ovl8_8038A884;
+extern u64 D_ovl8_8038A878;
+extern u64 D_ovl8_8038A880;
 
 extern DBMenu D_ovl8_80389550;
 
@@ -637,12 +635,10 @@ void func_ovl8_803750CC(s16 arg0)
 }
 
 // 0x803750E4
-void func_ovl8_803750E4(dbUnkStruct arg0)
+void func_ovl8_803750E4(u64 arg0, u64 arg1) 
 {
-    D_ovl8_8038A878 = arg0.unk0;
-    D_ovl8_8038A87C = arg0.unk4;
-    D_ovl8_8038A880 = arg0.unk8;
-    D_ovl8_8038A884 = arg0.db_func;
+    D_ovl8_8038A878 = arg0;
+    D_ovl8_8038A880 = arg1;
 }
 
 // 0x80375118 Fills info into MenuPositions and passes them to db_funcs
@@ -683,10 +679,10 @@ dbUnknown7* func_ovl8_803751C0(dbUnknown7* arg0, dbUnknownLinkStruct* arg1, dbUn
         {
             arg1 = &arg0->unk30;
             arg2 = &arg0->unk24;
-            #line 683
+            #line 679
             func_ovl8_803717E0(arg1);
             func_ovl8_8037C2D0(arg2);
-            #line 690
+            #line 686
         }
 
         arg0->unk20 = arg1;

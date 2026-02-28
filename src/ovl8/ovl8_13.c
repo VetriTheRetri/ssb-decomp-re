@@ -2,6 +2,13 @@
 #include <sys/develop.h>
 #include <db/debug.h>
 
+
+typedef struct menuCursorStruct {
+    u32 button_tap;
+    u32 button_update;
+    Vec2h cursor_pos;
+} menuCursorStruct;
+
 typedef struct dbUnknown8_13
 {
 	u16 unk_dbunknown8_13_0x0;
@@ -12,19 +19,192 @@ typedef struct dbUnknown8_13
 	u8 *glyphs;
 } dbUnknown8_13;
 
+// direct references to gSYControllerMain?
+extern u16 gSYControllerMainButtonTap;
+extern u16 gSYControllerMainButtonUpdate;
+
 extern db4Bytes D_ovl8_80389F4C;
 extern db4Bytes D_ovl8_80389F50;
-extern GObj* D_ovl8_8038A860;
-extern s16 D_ovl8_8038A864;
-extern db4Bytes D_ovl8_8038A890[];
-extern dbUnknownLinkStruct D_ovl8_8038A8A0;
-extern dbFunction D_ovl8_8038A980;
-extern dbUnknownLink D_ovl8_8038AAD8;
-extern dbUnknownLinkStruct D_ovl8_8038AB00;
 
-extern Vec3i D_8038EFE0_1AB830;
+// Forward declarations for all functions referenced in dispatch tables
+extern sb32 func_ovl8_8037EB00();
+extern sb32 func_ovl8_8037EBC8();
+extern sb32 func_ovl8_8037C9E4();
+extern sb32 func_ovl8_80373650();
+extern sb32 func_ovl8_8037367C();
+extern sb32 func_ovl8_80373684();
+extern sb32 func_ovl8_8037368C();
+extern sb32 func_ovl8_80373694();
+extern sb32 func_ovl8_80373750();
+extern sb32 func_ovl8_80373790();
+extern sb32 func_ovl8_803737DC();
+extern sb32 func_ovl8_80373E24();
+extern sb32 func_ovl8_80373EA8();
+extern sb32 func_ovl8_80373930();
+extern sb32 func_ovl8_80373980();
+extern sb32 func_ovl8_80373988();
+extern sb32 func_ovl8_80373990();
+extern sb32 func_ovl8_80373A28();
+extern sb32 func_ovl8_80373ABC();
+extern sb32 func_ovl8_80373AC4();
+extern sb32 func_ovl8_80373B28();
+extern sb32 func_ovl8_80373B84();
+extern sb32 func_ovl8_803743D8();
+extern sb32 func_ovl8_80373BD4();
+extern sb32 func_ovl8_803743C0();
+extern sb32 func_ovl8_8037CA48();
+extern sb32 func_ovl8_803718FC();
+extern sb32 func_ovl8_80371930();
+extern sb32 func_ovl8_80371960();
+extern sb32 func_ovl8_80371968();
+extern sb32 func_ovl8_80371970();
+extern sb32 func_ovl8_80371978();
+extern sb32 func_ovl8_80371980();
+extern sb32 func_ovl8_803719A4();
+extern sb32 func_ovl8_803719C8();
+extern sb32 func_ovl8_80371A2C();
+extern sb32 func_ovl8_80371AC4();
+extern sb32 func_ovl8_80371ACC();
+extern sb32 func_ovl8_80371AD8();
+extern sb32 func_ovl8_80371B34();
+extern sb32 func_ovl8_80371B98();
+extern sb32 func_ovl8_80371BCC();
+extern sb32 func_ovl8_80371C2C();
+extern sb32 func_ovl8_80372224();
+extern sb32 func_ovl8_80371C8C();
+extern sb32 func_ovl8_80372358();
+extern sb32 func_ovl8_80371D08();
+extern sb32 func_ovl8_80371D64();
+extern sb32 func_ovl8_80371D74();
+extern sb32 func_ovl8_80371DC0();
+extern sb32 func_ovl8_80371DD0();
+extern sb32 func_ovl8_80371DDC();
+extern sb32 func_ovl8_80371DE4();
+extern sb32 func_ovl8_803726CC();
+extern sb32 func_ovl8_80371DF4();
+extern sb32 func_ovl8_80371DFC();
+extern sb32 func_ovl8_80371E04();
+extern sb32 func_ovl8_80371E0C();
+extern sb32 func_ovl8_80371E14();
+extern sb32 func_ovl8_80371E1C();
+extern sb32 func_ovl8_80371E24();
+extern sb32 func_ovl8_80371E2C();
+extern sb32 func_ovl8_80371E58();
+extern sb32 func_ovl8_8037C344();
+extern sb32 func_ovl8_8037C358();
+
+GObj* D_ovl8_8038A860 = NULL;
+s16 D_ovl8_8038A864 = 0x0010;
+
+// Auto-repeat timing variables (64-bit timestamps in milliseconds)
+u64 D_ovl8_8038A868 = 0;  // Last button press time
+u64 D_ovl8_8038A870 = 0;  // Repeat start time
+u64 D_ovl8_8038A878 = 250000;  // Initial repeat delay (250ms)
+u64 D_ovl8_8038A880 = 500000;  // Repeat interval (500ms)
+
+s32 D_ovl8_8038A888 = 0;
+s32 D_ovl8_8038A88C = 0;
+db4Bytes D_ovl8_8038A890[] = {
+    {-1, -1, -1, -1},  // 0xFFFFFFFF
+    { 0,  0,  0, -1}   // 0x000000FF
+};
+s32 D_ovl8_8038A898 = 0;
+s32 D_ovl8_8038A89C = 0;
+
+// Function dispatch table - array of dbFunction structs
+// offset (s16) + function pointer, organized as vtable
+dbFunction D_ovl8_8038A8A0[] = {
+    {0, NULL}, 
+    {0, func_ovl8_8037EB00},
+    {0, func_ovl8_8037EBC8},
+    {0, func_ovl8_8037C9E4},
+    {0, func_ovl8_80373650},
+    {0, func_ovl8_8037367C},
+    {0, func_ovl8_80373684},
+    {0, func_ovl8_8037368C},
+    {0, func_ovl8_80373694},
+    {0, func_ovl8_80373750},
+    {0, func_ovl8_80373790},
+    {0, func_ovl8_803737DC},
+    {0, func_ovl8_80373E24},
+    {0, func_ovl8_80373EA8},
+    {0, func_ovl8_80373930},
+    {0, func_ovl8_80373980},
+    {0, func_ovl8_80373988},
+    {0, func_ovl8_80373990},
+    {0, func_ovl8_80373A28},
+    {0, func_ovl8_80373ABC},
+    {0, func_ovl8_80373AC4},
+    {0, func_ovl8_80373B28},
+    {0, func_ovl8_80373B84},
+    {0, func_ovl8_803743D8},
+    {0, func_ovl8_80373BD4},
+    {0, func_ovl8_803743C0},
+    {0, func_ovl8_8037CA48},
+    {0, NULL}
+};
+
+// Another function dispatch table with sentinel markers
+dbFunction D_ovl8_8038A980[] = {
+    {0, NULL},
+    {(s16)0xFF48, func_ovl8_8037EB00},
+    {0, func_ovl8_803718FC},
+    {0, func_ovl8_80371930},
+    {0, func_ovl8_80371960},
+    {0, func_ovl8_80371968},
+    {0, func_ovl8_80371970},
+    {0, func_ovl8_80371978},
+    {0, func_ovl8_80371980},
+    {0, func_ovl8_803719A4},
+    {0, func_ovl8_803719C8},
+    {0, func_ovl8_80371A2C},
+    {(s16)0xFF48, func_ovl8_8037C9E4},
+    {0, func_ovl8_80371AC4},
+    {0, func_ovl8_80371ACC},
+    {0, func_ovl8_80371AD8},
+    {0, func_ovl8_80371B34},
+    {0, func_ovl8_80371B98},
+    {0, func_ovl8_80371BCC},
+    {(s16)0xFF48, func_ovl8_80373650},
+    {0, func_ovl8_80371C2C},
+    {(s16)0xFF88, func_ovl8_80372224},
+    {0, func_ovl8_80371C8C},
+    {(s16)0xFF88, func_ovl8_80372358},
+    {(s16)0xFF48, func_ovl8_8037EBC8},
+    {0, func_ovl8_80371D08},
+    {0, func_ovl8_80371D64},
+    {0, func_ovl8_80371D74},
+    {0, func_ovl8_80371DC0},
+    {0, func_ovl8_80371DD0},
+    {0, func_ovl8_80371DDC},
+    {0, func_ovl8_80371DE4},
+    {(s16)0xFF88, func_ovl8_803726CC},
+    {0, func_ovl8_80371DF4},
+    {0, func_ovl8_80371DFC},
+    {0, func_ovl8_80371E04},
+    {0, func_ovl8_80371E0C},
+    {0, func_ovl8_80371E14},
+    {0, func_ovl8_80371E1C},
+    {0, func_ovl8_80371E24},
+    {0, func_ovl8_80371E2C},
+    {0, func_ovl8_80371E58},
+    {0, NULL}
+};
+
+// Third function dispatch table
+dbFunction D_ovl8_8038AAD8[] = {
+    {0, NULL}, 
+    {(s16)0xFEEC, func_ovl8_8037EB00},
+    {0, func_ovl8_8037C344},
+    {0, func_ovl8_8037C358},
+    {0, NULL}
+};
+
+// extern dbUnknownLinkStruct D_ovl8_8038AB00;
+
+extern menuCursorStruct D_8038EFE0_1AB830;
 extern s32 D_8038EFEC_1AB83C;
-extern Vec3i D_8038EFF0_1AB840;
+extern menuCursorStruct D_8038EFF0_1AB840;
 extern s16 D_8038EFFC_1AB84C;
 extern db4Shorts D_8038F000_1AB850;
 extern DBFont D_8038F008_1AB858;
@@ -43,9 +223,10 @@ extern s32* D_8038F290_1ABAE0;
 
 extern dbUnknownS14 D_8038FB90_1AC3E0;
 extern db4Bytes D_8038FB98_1AC3E8;
-
 extern void func_ovl8_803798A0(Sprite*, s32*, u32, u32, db4Shorts*, s32);
-void func_ovl8_8037D000();
+void func_ovl8_8037D000(s32);
+s32 func_ovl8_8037D28C();
+menuCursorStruct* func_ovl8_8037D3DC(menuCursorStruct *arg0);
 void func_ovl8_8037D45C();
 void func_ovl8_8037D470(u16, u16, u8*, u8*);
 void func_ovl8_8037D518(u16, u16, u8*, u8*);
@@ -59,7 +240,87 @@ void func_ovl8_8037D9EC(u16, u16);
 extern void func_ovl8_8037DFF8(Sprite*, u16, u16, u8, s32, s32*, s32*, f32);
 
 // 0x8037D000
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D000.s")
+void func_ovl8_8037D000(s32 arg0) 
+{
+    menuCursorStruct cs;
+    s32 should_fire_repeat;
+    s32 directional_input;
+    u64 current_time;
+    u64 time_since_press;
+    
+    // Get controller input
+    cs.button_tap = gSYControllerMainButtonTap;
+    cs.button_update = gSYControllerMainButtonUpdate;
+    
+    // Get cursor position
+    func_ovl8_8037726C(&cs.cursor_pos);
+    
+    should_fire_repeat = 0;
+    
+    // Check if a button is being held down
+    if (D_ovl8_8038A868 != 0) 
+    {
+        // Get current time in milliseconds
+        // osGetTime returns 64-bit counter at 62.5MHz
+        // Multiply by 0x40 (64) and divide by 0xBB8 (3000) to get milliseconds
+        current_time = osGetTime() * 64ULL / 3000ULL;
+        
+        // Check if we should start auto-repeat
+        // Must exceed initial delay
+        if ((current_time - D_ovl8_8038A868) > D_ovl8_8038A878) 
+        {
+            should_fire_repeat = 1;
+        }
+    }
+    
+    // Mask to 16-bit button values
+    cs.button_tap &= 0xFFFF;
+    cs.button_update &= 0xFFFF;
+    
+    // Get directional input from D-pad/stick
+    directional_input = func_ovl8_8037D28C();
+    
+    // Handle auto-repeat logic
+    if ((should_fire_repeat != 0) != 0) 
+    {
+        current_time = osGetTime() * 64ULL / 3000ULL;
+        
+        // Check if this is the first repeat or if repeat interval has elapsed
+        if ((D_ovl8_8038A868 == D_ovl8_8038A870) || ((current_time - D_ovl8_8038A870) > D_ovl8_8038A880)) 
+        {
+            
+            // Fire repeat event
+            cs.button_update |= directional_input;
+            
+            // Update repeat start time
+            D_ovl8_8038A870 = current_time;
+        }
+    } 
+    // No button held, so treat any directional input as new press
+    else if (D_ovl8_8038A868 == 0) 
+    {
+        cs.button_tap |= directional_input;
+        cs.button_update |= directional_input;
+    }
+    
+    // Handle button press timing
+    if ((should_fire_repeat != 0) == 0 && ((cs.button_tap >> 0x10) != 0)) 
+    {
+        // New button press - record timestamp
+        current_time = osGetTime() * 64ULL / 3000ULL;
+
+        D_ovl8_8038A870 = current_time;
+        D_ovl8_8038A868 = D_ovl8_8038A870;
+    } 
+    // No directional input - clear timestamps
+    else if (directional_input == 0) 
+    {
+        D_ovl8_8038A868 = 0;
+    }
+    
+    // Send processed input to handler
+    func_ovl8_8037D3DC(&cs);
+}
 
 // 0x8037D28C
 s32 func_ovl8_8037D28C() 
@@ -122,35 +383,35 @@ void func_ovl8_8037D34C()
 // 0x8037D384
 sb32 func_ovl8_8037D384()
 {
-    sb32 var_v1 = D_8038EFE0_1AB830.x != 0;
+    sb32 var_v1 = D_8038EFE0_1AB830.button_tap != 0;
 
     if (var_v1 == FALSE)
     {
-        var_v1 = D_8038EFE0_1AB830.y != 0;
+        var_v1 = D_8038EFE0_1AB830.button_update != 0;
     }
 
     return var_v1;
 }
 
 // 0x8037D3AC
-Vec3i* func_ovl8_8037D3AC(Vec3i* arg0)
+menuCursorStruct* func_ovl8_8037D3AC(menuCursorStruct* arg0)
 {
     *arg0 = D_8038EFE0_1AB830;
-    D_8038EFE0_1AB830.x = 0;
-    D_8038EFE0_1AB830.y = 0;
+    D_8038EFE0_1AB830.button_tap = 0;
+    D_8038EFE0_1AB830.button_update = 0;
 
     return arg0;
 }
 
 // 0x8037D3DC
-void *func_ovl8_8037D3DC(Vec3i *arg0)
+menuCursorStruct* func_ovl8_8037D3DC(menuCursorStruct *arg0)
 {
     D_8038EFE0_1AB830 = *arg0;
     return arg0;
 }
 
 // 0x8037D404
-void* func_ovl8_8037D404(Vec3i* arg0, s32 arg1)
+menuCursorStruct* func_ovl8_8037D404(menuCursorStruct* arg0, s32 arg1)
 {
     D_8038EFEC_1AB83C = arg1;
     D_8038EFF0_1AB840 = *arg0;
@@ -159,7 +420,7 @@ void* func_ovl8_8037D404(Vec3i* arg0, s32 arg1)
 }
 
 // 0x8037D434
-void* func_ovl8_8037D434(Vec3i* arg0)
+menuCursorStruct* func_ovl8_8037D434(menuCursorStruct* arg0)
 {
     D_8038EFE0_1AB830 = *arg0;
 
@@ -169,8 +430,8 @@ void* func_ovl8_8037D434(Vec3i* arg0)
 // 0x8037D45C
 void func_ovl8_8037D45C()
 {
-    D_8038EFE0_1AB830.y = 0;
-    D_8038EFE0_1AB830.x = 0;
+    D_8038EFE0_1AB830.button_update = 0;
+    D_8038EFE0_1AB830.button_tap = 0;
 }
 
 // 0x8037D470

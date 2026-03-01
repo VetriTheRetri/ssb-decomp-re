@@ -2,6 +2,7 @@
 #include <sys/develop.h>
 #include <db/debug.h>
 
+s32 func_ovl8_8037A6D4(db4Shorts *rect1, db4Shorts *rect2, db4Shorts *intersection);
 void func_ovl8_8037AA88(s32 arg0, s32 arg1, s32 arg2, s32 arg3, dbUnknown7* arg4);
 
 typedef struct dbUnknown8_SC {
@@ -648,7 +649,83 @@ s32 func_ovl8_8037A67C(s16* arg0, s16* arg1, s16* arg2)
 }
 
 // 0x8037A6D4
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037A6D4.s")
+s32 func_ovl8_8037A6D4(db4Shorts *rect1, db4Shorts *rect2, db4Shorts *intersection) {
+    s16 rect1_bottom;
+    s16 rect1_right;
+    s16 rect2_right;
+    s16 rect2_left;
+    s16 result_value;
+    s32 overlapX;
+    s32 overlapY;
+    
+    // Check X-axis overlap
+    overlapX = 0;
+    rect2_left = rect2->arr[0], rect1_right = rect1->arr[2];
+    
+    // Case 1: rect2 left edge inside rect1, rect2 extends past rect1 right
+    if ((rect2_left < rect1_right) && (rect2->arr[2] >= rect1_right)) {
+        overlapX = 1;
+    }
+    // Case 2: rect1 left edge inside rect2
+    else if ((rect1->arr[0] >= rect2_left) && (rect1->arr[0] < rect2->arr[2])) {
+        overlapX = 1;
+    }
+    // Case 3: rect1 completely contains rect2 horizontally
+    else if ((rect1->arr[0] < rect2_left) && (rect1_right >= rect2->arr[2])) {
+        overlapX = 1;
+    }
+    
+    if (overlapX != 0) {
+        // Compute intersection left edge: max(rect1_left, rect2_left)
+        result_value = rect2_left < rect1->arr[0] ? rect1->arr[0] : rect2_left;
+
+        intersection->arr[0] = result_value;
+        
+        // Compute intersection right edge: min(rect1_right, rect2_right)
+        rect2_right = rect2->arr[2];
+        rect1_right = rect1->arr[2];
+        result_value = rect1_right < rect2_right ? rect1_right : rect2_right;
+        intersection->arr[2] = result_value;
+        
+        // Check Y-axis overlap
+        rect1_bottom = rect1->arr[3];
+        rect2_left = rect2->arr[1];  // reused as rect2_top
+        overlapY = 0;
+        rect1_right = rect1->arr[1]; // reused as rect1_top
+        
+        // Case 1: rect2 top edge inside rect1, rect2 extends past rect1 bottom
+        if ((rect2_left < rect1_bottom) && (rect2->arr[3] >= rect1_bottom)) {
+            overlapY = 1;
+        }
+        // Case 2: rect1 top edge inside rect2
+        else if ((rect1->arr[1] >= rect2_left) && (rect1->arr[1] < rect2->arr[3])) {
+            overlapY = 1;
+        }
+        // Case 3: rect1 completely contains rect2 vertically
+        else if ((rect1->arr[1] < rect2_left) && (rect1_bottom >= rect2->arr[3])) {
+            overlapY = 1;
+        }
+        
+        if (overlapY != 0) {
+            // Compute intersection top edge: max(rect1_top, rect2_top)
+            rect1_right = rect1->arr[1]; // reused as rect1_top
+            result_value = rect2_left < rect1_right ?  rect1_right : rect2_left;    // rect2_top
+            intersection->arr[1] = result_value;
+            
+            // Compute intersection bottom edge: min(rect1_bottom, rect2_bottom)
+            rect2_right = rect2->arr[3]; // reused as rect2_bottom
+            rect1_bottom = rect1->arr[3];
+            result_value = rect1_bottom < rect2_right ? rect1_bottom : rect2_right;
+            intersection->arr[3] = result_value;
+            return 1; // Rectangles intersect
+        }
+    }
+    intersection->arr[2] = 0;
+    intersection->arr[3] = 0;
+    intersection->arr[1] = 0;
+    intersection->arr[0] = 0;
+    return 0;
+}
 
 // 0x8037A8BC
 void func_ovl8_8037A8BC(void* arg0, void* arg1)

@@ -1932,8 +1932,7 @@ sb32 func_ovl0_800CAB48(Mtx *mtx, DObj *dobj, Gfx **dls)
     return 1;
 }
 
-#ifdef NON_MATCHING
-// 0x800CB140 - NONMATCHING: 'f[2][2] = dist.z' line uses wrong FPR
+// 0x800CB140
 sb32 func_ovl0_800CB140(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
     CObj *cobj;
@@ -1943,16 +1942,22 @@ sb32 func_ovl0_800CB140(Mtx *mtx, DObj *dobj, Gfx **dls)
     Vec3f sp50;
     Vec3f dist;
     Vec3f sp38;
-    f32 scale;
+    f32 magnitude;
+    f32 temp;
 
     attach_dobj = dobj->user_data.p;
     parts = attach_dobj->user_data.p;
     
     func_ovl2_800EDBA4(attach_dobj);
     
-    scale = sqrtf(SQUARE(parts->mtx_translate[0][0]) + SQUARE(parts->mtx_translate[0][1]) + SQUARE(parts->mtx_translate[0][2]));
+    magnitude = sqrtf
+    (
+        SQUARE(parts->mtx_translate[0][0]) +
+        SQUARE(parts->mtx_translate[0][1]) +
+        SQUARE(parts->mtx_translate[0][2])
+    );
     
-    if (scale == 0.0F)
+    if (magnitude == 0.0F)
     {
         while (TRUE)
         {
@@ -1960,46 +1965,47 @@ sb32 func_ovl0_800CB140(Mtx *mtx, DObj *dobj, Gfx **dls)
             scManagerRunPrintGObjStatus();
         }
     }
-    scale = 1.0F / scale;
-    
-    sp50.x = f[1][0] = parts->mtx_translate[0][0] * scale;
-    sp50.y = f[1][1] = parts->mtx_translate[0][1] * scale;
-    sp50.z = f[1][2] = parts->mtx_translate[0][2] * scale;
-    
-    cobj = CObjGetStruct(gGCCurrentCamera);
-    
-    syVectorDiff3D(&dist, &cobj->vec.eye, &cobj->vec.at);
-    
-    if (lbCommonSim3D(&sp50, &dist) < 0.999F)
+    else 
     {
-        syVectorNormCross3D(&sp50, &dist, &sp38);
-        lbCommonCross3D(&sp50, &sp38, &dist);
-    }
-    else
-    {
-        dist.x = dist.y = dist.z = 0.0F;
-        
-        sp38 = dist;
-    }
-    f[0][0] = sp38.x;
-    f[0][1] = sp38.y;
-    f[0][2] = sp38.z;
-
-    f[2][0] = dist.x;
-    f[2][1] = dist.y;
-    f[2][2] = dist.z;
-
-    f[3][1] = f[3][2] = 0.0F;
-    f[3][0] = 0.0F;
+        magnitude = 1.0F / magnitude;
     
-    syMatrixF2LFixedW(&f, mtx);
+        sp50.x = f[1][0] = parts->mtx_translate[0][0] * magnitude;
+        sp50.y = f[1][1] = parts->mtx_translate[0][1] * magnitude;
+        sp50.z = f[1][2] = parts->mtx_translate[0][2] * magnitude;
     
+        cobj = CObjGetStruct(gGCCurrentCamera);
+    
+        syVectorDiff3D(&dist, &cobj->vec.eye, &cobj->vec.at);
+    
+        if (lbCommonSim3D(&sp50, &dist) < 0.999F)
+        {
+            syVectorNormCross3D(&sp50, &dist, &sp38);
+            lbCommonCross3D(&sp50, &sp38, &dist);
+        }
+        else
+        {
+            dist.x = dist.y = dist.z = 0.0F;
+            sp38 = dist;
+        }
+
+        f[0][0] = sp38.x; 
+        f[0][1] = sp38.y;
+        f[0][2] = sp38.z;
+
+        // FAKE
+        temp = SQUARE(f[2][2]) + SQUARE(f[2][2]);
+        if (temp > 0.0f) {}
+        f[2][0] = dist.x;
+        f[2][1] = dist.y;
+        f[2][2] = dist.z;
+
+        f[3][1] = f[3][2] = (0.0F);
+        f[3][0] = 0.0f;
+    
+        syMatrixF2LFixedW(&f, mtx);
+    }
     return 0;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/lb/lbcommon/func_ovl0_800CB140.s")
-#pragma GLOBAL_ASM("asm/nonmatchings/lb/lbcommon/D_ovl0_800D5E10.s")
-#endif /* NON_MATCHING */
 
 // 0x800CB2F0
 sb32 func_ovl0_800CB2F0(Mtx *mtx, DObj *dobj, Gfx **dls)

@@ -1,6 +1,8 @@
 #include <sys/develop.h>
 #include <db/debug.h>
 
+#define guardNull(in, alt, out) ((out = in), (in != NULL) ? (out = alt) : (out))
+
 extern dbUnknownLinkStruct D_ovl8_8038C790;
 extern dbFunction D_ovl8_8038C890;
 extern dbUnknownLink D_ovl8_8038C9E8;
@@ -35,10 +37,10 @@ dbUnknown5* func_ovl8_80382DF4(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUn
         {
             arg1 = &arg0->unk_dbunk5_0x50;\
             arg2 = &arg0->unk_dbunk5_0x44;
-            #line 35
+            #line 37
             func_ovl8_803717E0(arg1);
             func_ovl8_8037C2D0(arg2);
-            #line 42
+            #line 44
         }
 
         func_ovl8_80373C10(arg0, arg1, arg2);
@@ -62,10 +64,10 @@ dbUnknown5* func_ovl8_80382EA8(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUn
         {
             arg1 = &arg0->unk_dbunk5_0x50;\
             arg2 = &arg0->unk_dbunk5_0x44;
-            #line 62
+            #line 64
             func_ovl8_803717E0(arg1);
             func_ovl8_8037C2D0(arg2);
-            #line 69
+            #line 71
         }
 
         func_ovl8_80373CC4(arg0, arg1, arg2, arg3, arg4);
@@ -107,7 +109,58 @@ void func_ovl8_80382F70(dbUnknown5* arg0, s32 arg1)
 void func_ovl8_8038300C(s32 arg0) {}
 
 // 0x80383014
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_22/func_ovl8_80383014.s")
+void func_ovl8_80383014(dbUnknownLinkStruct *arg0, GObj *arg1) 
+{
+    u32 *v0;
+    DBMenuPosition sp34;
+    void *a3;
+    void *v1;
+    void *a2;
+
+    arg0->unk_dbunkstruct_0x40 = arg1;
+
+    if (arg0->unk_dbunkstruct_0x40 != NULL) 
+    {
+        ((dbUnknownLinkStruct *)v1) = arg0->unk_dbunkstruct_0x38;
+        v0 = ((dbUnknownLinkStruct *)v1)->db_func;
+        ((dbFunction *)v0)[20].unk_dbfunc_0x4(((dbFunction *)v0)[20].unk_dbfunc_0x0 + (uintptr_t)v1, &sp34);
+        
+        if (1);
+        
+        a3 = arg0->unk_dbunkstruct_0x38;
+        v0 = ((dbUnknownLinkStruct *)a3)->unk_dbunkstruct_0x4C;
+        a2 = ((dbUnknownLinkStruct *)v0)->unk_dbunkstruct_0x20;
+        v1 = ((dbUnknownLinkStruct *)a2)->db_func;
+        ((dbFunction *)v1)[9].unk_dbfunc_0x4(((dbFunction *)v1)[9].unk_dbfunc_0x0 + (uintptr_t)a2, &sp34);
+        
+        syRdpSetViewport(&CObjGetStruct((GObj*)arg0->unk_dbunkstruct_0x40)->viewport, sp34.x, sp34.y, (sp34.x + sp34.w), (sp34.y + sp34.h));
+
+        CObjGetStruct((GObj*)arg0->unk_dbunkstruct_0x40)->projection.persp.aspect = (sp34.w / (f32) sp34.h);
+        
+        a3 = arg0->unk_dbunkstruct_0x38;
+        v0 = ((dbUnknownLinkStruct*)a3)->unk_dbunkstruct_0x4C;
+        v1 = ((dbUnknownS38*)v0)->unk_dbunks38_0x18;
+        func_8000A2B4(arg0->unk_dbunkstruct_0x40, ((dbFunction *)v1)[6].unk_dbfunc_0x4(((dbFunction *)v1)[6].unk_dbfunc_0x0 + (uintptr_t)v0));
+
+        if (1);
+        
+        if (guardNull(arg0, arg0->unk_dbunkstruct_0x38, ((dbUnknownLinkStruct *)v0))->bg_color.a != 0) 
+        {
+            func_ovl8_80376B60(3, &arg0->unk_dbunkstruct_0x38->bg_color, &CObjGetStruct((GObj*)arg0->unk_dbunkstruct_0x40)->color);
+        
+            if (1);
+            
+            v0 = &CObjGetStruct((GObj*)arg0->unk_dbunkstruct_0x40)->flags;
+            *v0 |= COBJ_FLAG_FILLCOLOR;
+        }
+        
+        if (guardNull(arg0, arg0->unk_dbunkstruct_0x38, ((dbUnknownLinkStruct *)v0))->unk_dbunkstruct_0x1C.link == NULL)
+        {
+            v0 = &((GObj*)arg0->unk_dbunkstruct_0x40)->flags;
+            *v0 |= 1;
+        }
+    }
+}
 
 // 0x803831C8
 void func_ovl8_803831C8(dbUnknown5 *arg0) 

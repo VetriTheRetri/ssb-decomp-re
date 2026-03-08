@@ -220,57 +220,44 @@ void func_ovl8_80372554(dbUnknownLink *arg0, u32 arg1)
 	}
 }
 
-#ifdef NON_MATCHING
-/*
- * NONMATCHING: regswap
- */
-
+// 0x803725DC
 void func_ovl8_803725DC(dbTestMenu *arg0)
 {
-	dbUnknownLinkStruct *db_unk10;
-	dbUnknownLinkStruct *db_unk4C;
-	dbUnknownLinkStruct *db_unk20;
-	db4Shorts sp3C;
-	db4Shorts sp34;
-	Sprite *sprite;
-	dbFunction *db_func;
-	dbFunction *db_func_2;
+    dbUnknownLinkStruct *a3;
+    dbUnknownLinkStruct *v1;
+    dbUnknownLinkStruct *a2;
+    DBMenuPosition sp3C;
+    DBMenuPosition sp34;
+    Sprite *sprite;
+    dbFunction *v0;
 
-	db_func = arg0->db_func;
+    v1 = arg0->db_func;
+    sprite = (Sprite*) ((dbFunction *)v1)[9].unk_dbfunc_0x4(((dbFunction *)v1)[9].unk_dbfunc_0x0 + (uintptr_t)arg0);
+    if (a2);
 
-	sprite = (Sprite*) db_func[9].unk_dbfunc_0x4(db_func[9].unk_dbfunc_0x0 + (uintptr_t)arg0);
+    if (sprite != NULL) 
+    {
+        a3 = arg0->unk_dbtestmenu_0x10;
+        if (a3);
+        v1 = a3->unk_dbunkstruct_0x4C;
+        a2 = v1->unk_dbunkstruct_0x20;
+        a2->db_func[20].unk_dbfunc_0x4(a2->db_func[20].unk_dbfunc_0x0 + (uintptr_t)a2, &sp3C);
+        if (1);
+        
+        v0 = arg0->unk_dbtestmenu_0x10;
+        ((dbFunction *)((dbUnknownLinkStruct *)v0)->db_func)[20].unk_dbfunc_0x4(((dbFunction *)((dbUnknownLinkStruct *)v0)->db_func)[20].unk_dbfunc_0x0 + (uintptr_t)v0, &sp34);
 
-	if (sprite != NULL)
-	{
-		if (db_unk10);
-		db_unk10 = arg0->unk_dbtestmenu_0x10;
-		db_unk4C = db_unk10->unk_dbunkstruct_0x4C;
-		db_unk20 = db_unk4C->unk_dbunkstruct_0x20;
-
-		db_func_2 = db_unk20->db_func;
-
-		db_func_2[20].unk_dbfunc_0x4(db_func_2[20].unk_dbfunc_0x0 + (uintptr_t)db_unk20, &sp3C);
-
-		db_unk20 = arg0->unk_dbtestmenu_0x10;
-
-		db_func = db_unk20->db_func;
-
-		db_func[20].unk_dbfunc_0x4(db_func[20].unk_dbfunc_0x0 + (uintptr_t)db_unk20, &sp34);
-
-		spMove(sprite, sp34.arr[0] + sp3C.arr[0], sp34.arr[1] + sp3C.arr[1]);
-
-		sprite->rsp_dl_next = gSYTaskmanDLHeads[0];
-
-		spDraw(sprite);
-
-		gSYTaskmanDLHeads[0] = sprite->rsp_dl_next - 1;
-
-		gDPPipeSync(gSYTaskmanDLHeads[0]++);
-	}
+        spMove(sprite, sp3C.x + sp34.x, sp3C.y + sp34.y);
+        
+        sprite->rsp_dl_next = gSYTaskmanDLHeads[0];
+        
+        spDraw(sprite);
+        
+        gSYTaskmanDLHeads[0] = sprite->rsp_dl_next - 1;
+        
+        gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    }
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_3/func_ovl8_803725DC.s")
-#endif /* NON_MATCHING */
 
 void func_ovl8_803726CC(dbTestMenu *arg0)
 {

@@ -1,4 +1,5 @@
 #include "common.h"
+#include <sys/develop.h>
 #include <db/debug.h>
 
 typedef s32 (*dbUiNodeHandler)(s32, DBMenu*);
@@ -83,7 +84,55 @@ u16 dbUiNodeTypeFindIndex(u32 id) {
 }
 
 // 0x80381C80
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_18/func_ovl8_80381C80.s")
+dbUnknownLinkStruct* func_ovl8_80381C80(DBMenu* arg0)
+{
+    dbUnknownLinkStruct *root;
+    dbUnknownLinkStruct *elem;
+    DBMenu *local = arg0 + 1;
+
+    root = dbUiNodeDispatch(arg0, NULL);
+
+    while (TRUE)
+    {
+        
+        if (local->unk_dbmenu_0x10 != 0)
+        {
+            DBMenu *local2 = local++;
+            dbUiNodeDispatch(local2, root);
+        }
+        else break;
+    }
+    
+    if (root) 
+    {
+        dbUnknownLinkStruct* v0;
+        dbUnknownLinkStruct* v0_2;
+        dbFunction* a2;
+        
+        elem = func_ovl8_80373160(root);
+        
+        v0 = elem->unk_dbunkstruct_0x38;
+        if (v0->db_func && v0->db_func);
+        
+        while (elem) 
+        {
+            v0_2 = v0 = elem->unk_dbunkstruct_0x38;
+            a2 = v0_2->db_func;
+            v0_2->db_func[13].unk_dbfunc_0x4(a2[13].unk_dbfunc_0x0 + (uintptr_t)elem->unk_dbunkstruct_0x38);
+            
+            if (1);
+            a2 = elem->unk_dbunkstruct_0x30;
+            elem = ((dbFunction*)elem->unk_dbunkstruct_0x30)[15].unk_dbfunc_0x4(a2[15].unk_dbfunc_0x0 + (uintptr_t)elem);
+        }
+
+        v0 = root->unk_dbunkstruct_0x20;
+        a2 = v0->db_func;
+        if (1);
+        v0->db_func[13].unk_dbfunc_0x4(a2[13].unk_dbfunc_0x0 + (uintptr_t)root->unk_dbunkstruct_0x20);
+    }
+    
+    return root;
+}
 
 // 0x80381D40
 void dbUiNodeListDispatch(s32 arg0, DBMenu *arg1)

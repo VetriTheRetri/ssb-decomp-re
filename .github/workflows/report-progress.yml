@@ -23,4 +23,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: us_report
-        path: report.json
+        path: us_report.json

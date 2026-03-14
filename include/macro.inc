@@ -15,6 +15,19 @@
     \label:
 .endm
 
+# End of a data symbol.
+.macro enddlabel label
+    .size \label, . - \label
+.endm
+
+# Label to signal the symbol haven't been matched yet.
+.macro nonmatching label, size=1
+    .global \label\().NON_MATCHING
+    .type \label\().NON_MATCHING, @object
+    .size \label\().NON_MATCHING, \size
+    \label\().NON_MATCHING:
+.endm
+
 # COP0 register aliases
 
 .set Index,         $0

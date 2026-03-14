@@ -319,6 +319,9 @@ void func_80010C2C(Mtx *mtx_l, DObj *dobj, sb32 is_translate)
 }
 
 // 0x80010D70
+/* Scratch: https://decomp.me/scratch/X7YA9
+ * Similar function is matched in pokemonsnap: renPrepareModelMatrix (render.c)
+ */
 #ifdef NON_MATCHING
 s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
 {

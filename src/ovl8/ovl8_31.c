@@ -21,6 +21,7 @@ extern s32 D_ovl8_8038EA80;
 
 void dbUiNodeTypeRegisterHandler(s32, s32*);
 s32 func_ovl8_803865D0(DBMenuPosition*, s32, char*);
+void stringCopyPartial(char* target, char* source, s32 count);
 
 // 0x80386540
 void func_ovl8_80386540(s32 arg0, s32 arg1)
@@ -152,10 +153,10 @@ dbUnknown5* func_ovl8_803867E8(void* arg0, DBMenu* arg1)
             {
                 sp34 = &temp_v0->unk_dbunk5_0xB0;\
                 sp30 = &temp_v0->unk_dbunk5_0x10C;
-                #line 153
+                #line 154
                 func_ovl8_803717E0(sp34);
                 func_ovl8_8037C2D0(sp30);
-                #line 159
+                #line 160
             }
             
             func_ovl8_80376010(temp_v0, sp34, sp30, arg1, 1);
@@ -191,9 +192,9 @@ void func_ovl8_803868EC(dbUnknownS38* arg0, s32 arg1)
         arg0->unk_dbunks38_0x1C->unk_dbunklink_0x8 = &D_ovl8_8038E7B8;
         arg0->unk_dbunks38_0x38.unk_dbunkstruct_0xC = &D_ovl8_8038E7E0;
 
-        #line 191
+        #line 192
         func_ovl8_803761F4(arg0, 0);
-        #line 197
+        #line 198
 
         if (arg1 != 0)
         {
@@ -233,10 +234,10 @@ dbUnknown5* func_ovl8_80386994(void* arg0, DBMenu* arg1)
             {
                 sp3C = &temp_v0->unk_dbunk5_0xBC;\
                 sp38 = &temp_v0->unk_dbunk5_0xB0;
-                #line 233
+                #line 234
                 func_ovl8_803717E0(sp3C);
                 func_ovl8_8037C2D0(sp38);
-                #line 240
+                #line 241
             }
             
             var_s1 = temp_v0;
@@ -249,10 +250,10 @@ dbUnknown5* func_ovl8_80386994(void* arg0, DBMenu* arg1)
                 {
                     sp30 = &var_s1->unk_dbunk5_0xB0;\
                     sp2C = &var_s1->unk_dbunk5_0x10C;
-                    #line 250
+                    #line 251
                     func_ovl8_803717E0(sp30);
                     func_ovl8_8037C2D0(sp2C);
-                    #line 256
+                    #line 257
                 }
                 
                 func_ovl8_80376010(var_s1, sp30, sp2C, arg1, 1);
@@ -327,7 +328,49 @@ int stringToNumber(char *string)
 }
 
 // 0x80386FE0
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_31/func_ovl8_80386FE0.s")
+s32 func_ovl8_80386FE0(char* out, char* src, sb32 leftAlign, s32 width, s32 maxLen) 
+{
+    s32 i;
+    s32 len;
+
+    len = stringLength(src);
+    
+    len = ((maxLen != 0) && (maxLen < len)) ? maxLen : len;
+    
+    if (leftAlign == FALSE) 
+    {
+        char *temp = out;
+        for (i = 0; i < width - len; i++)
+        {
+            temp = out++; *temp = ' ';
+        }
+        if (temp);
+        if (temp);
+        if (temp);
+        if (temp);
+        if (temp);
+    }
+    
+    stringCopyPartial(out, src, len);
+    
+    out += len;
+    
+    if (leftAlign != FALSE) 
+    {
+        char *temp = out;
+        for (i = 0; i < width - len; i++)
+        {
+            temp = out++; *temp = ' ';
+        }
+        if (temp);
+        if (temp);
+        if (temp);
+        if (temp);
+        if (temp);
+    }
+
+    return (width < len) ? len : width;
+}
 
 // 0x80387154
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_31/func_ovl8_80387154.s")

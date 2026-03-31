@@ -133,7 +133,12 @@ void func_ovl8_8037DFCC(s16 arg0, s16 arg1)
 }
 
 // 0x8037DFF8
+#ifdef NON_MATCHING
+void func_ovl8_8037DFF8(Sprite* arg0, u16 arg1, u16 arg2, u8 arg3, s32 arg4, s32* arg5, s32* arg6, f32 arg7) {
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13_2/func_ovl8_8037DFF8.s")
+#endif /* NON_MATCHING */
 
 // 0x8037E6F4
 u32 func_ovl8_8037E6F4(u8 arg0) {

@@ -1020,7 +1020,34 @@ s32 func_ovl8_8037B654(s32 val, char* str)
 }
 
 // 0x8037B760
+// NON_MATCHING: loop body missing 2 register-copy instructions per iteration
+// (or a0,v0 and or a2,v1 pointer temps before lbu/sb) - likely recomp scheduling difference.
+#ifdef NON_MATCHING
+void func_ovl8_8037B760(u8 *src, u8 *dst, s32 count) {
+    u8 *s;
+    u8 *d;
+
+    if (!(src < dst)) {
+        s = src;
+        d = dst;
+        while (count--) {
+            *d = *s;
+            s++;
+            d++;
+        }
+    } else {
+        s = src + count - 1;
+        d = dst + count - 1;
+        while (count--) {
+            *d = *s;
+            s--;
+            d--;
+        }
+    }
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037B760.s")
+#endif /* NON_MATCHING */
 
 // 0x8037B7F0
 s32 func_ovl8_8037B7F0(u8 *str, s32 index)

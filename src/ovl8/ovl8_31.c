@@ -22,6 +22,9 @@ extern s32 D_ovl8_8038EA80;
 void dbUiNodeTypeRegisterHandler(s32, s32*);
 s32 func_ovl8_803865D0(DBMenuPosition*, s32, char*);
 void stringCopyPartial(char* target, char* source, s32 count);
+int stringToNumber(char*);
+s32 func_ovl8_80386FE0(char*, char*, sb32, s32, s32);
+s32 func_ovl8_80387154(char*, s64, s32, s32, s32, s32, s32);
 
 // 0x80386540
 void func_ovl8_80386540(s32 arg0, s32 arg1)
@@ -310,7 +313,231 @@ void func_ovl8_80386AFC(dbUnknownS38* arg0, s32 arg1)
 }
 
 // 0x80386BE0
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_31/func_ovl8_80386BE0.s")
+void func_ovl8_80386BE0(char* dst, s32* args)
+{
+    char *src = (char*)args[0];
+    s32 *argp = (s32*)((u8*)args + 4);
+    s32 aligned;
+    s32 radix;
+    s32 width;
+    s32 minus;
+    s32 zero_pad;
+    s32 one;
+    s32 precision;
+    s32 ch;
+    s32 fmtChar;
+
+    {
+        s32 temp;
+        if (((uintptr_t)argp & 7) != 0) {
+            temp = 1;
+        } else {
+            temp = 0;
+        }
+        ch = *src;
+        aligned = temp;
+        one = 1;
+    }
+    if (ch == 0) goto end;
+
+    loop_top:
+    if (ch & 0x80) {
+        u8 *d, *s;
+        u8 b;
+
+        s = src;
+        b = *s;
+        src++;
+        d = dst;
+        s = src;
+        *d = b;
+        b = *s;
+        dst++;
+        d = dst;
+        dst++;
+        src++;
+        *d = b;
+        goto loop_bottom;
+    }
+
+    precision = 0;
+    if (ch == '%') goto parse_format;
+
+    {
+        u8 *d, *s;
+        s = src;
+        d = dst;
+        dst++;
+        src++;
+        *d = *s;
+    }
+    goto loop_bottom;
+
+    parse_format:
+    ch = *(src + 1);
+    src++;
+    width = 0;
+    zero_pad = 0;
+    minus = 0;
+    radix = 4;
+
+    if (ch != '-') goto check_zero;
+    ch = *(src + 1);
+    minus = one;
+    src++;
+
+    check_zero:
+    if (ch != '0') goto check_width;
+    ch = *(src + 1);
+    zero_pad = one;
+    src++;
+
+    check_width:
+    if (ch < '1') goto done_width;
+    if (ch >= ':') goto check_dot;
+
+    width = stringToNumber(src);
+    ch = *src;
+    if (ch < '0') goto done_width;
+    if (ch >= ':') goto check_dot;
+
+    ch = *(src + 1);
+    skip_digits:
+    src++;
+    if (ch < '0') goto done_width;
+    if (ch < ':') {
+        ch = *(src + 1);
+        goto skip_digits;
+    }
+
+    done_width:
+
+    check_dot:
+    if (ch != '.') goto check_il;
+
+    ch = *(src + 1);
+    src++;
+    if (ch < '0') goto done_dot;
+    if (ch >= ':') goto check_il;
+
+    precision = stringToNumber(src);
+    ch = *src;
+    if (ch < '0') goto done_dot;
+    if (ch >= ':') goto check_il;
+
+    ch = *(src + 1);
+    skip_prec_digits:
+    src++;
+    if (ch < '0') goto done_dot;
+    if (ch < ':') {
+        ch = *(src + 1);
+        goto skip_prec_digits;
+    }
+
+    done_dot:
+
+    check_il:
+    if (ch == 'i') goto handle_i;
+    fmtChar = ch;
+    if (ch == 'l') goto handle_l;
+    goto fmt_dispatch;
+
+    handle_i:
+    ch = *(src + 1);
+    src++;
+    fmtChar = ch;
+    goto fmt_dispatch;
+
+    handle_l:
+    ch = *(src + 1);
+    radix = 8;
+    src++;
+    fmtChar = ch;
+
+    fmt_dispatch:
+    if (fmtChar == 'c') goto case_c;
+    if (fmtChar == 's') goto case_s;
+    if (fmtChar == 'd') goto case_d;
+    if (fmtChar == 'f') goto case_f;
+
+    {
+        u8 *d;
+        d = dst;
+        *d = ch;
+        dst++;
+    }
+    goto next_fmt;
+
+    case_c:
+    {
+        u8 *d;
+        u8 c = *(u8*)argp;
+        d = dst++;
+        argp = (s32*)((u8*)argp + 4);
+        aligned = one - aligned;
+        *d = c;
+    }
+    goto next_fmt;
+
+    case_s:
+    {
+        char *str = (char*)*argp;
+        argp = (s32*)((u8*)argp + 4);
+        aligned = one - aligned;
+        dst += func_ovl8_80386FE0(dst, str, minus, width, precision);
+    }
+    goto next_fmt;
+
+    case_d:
+    {
+        s64 val;
+        if (radix == 4) goto case_d_int;
+        if (radix == 8) goto case_d_long;
+        goto case_d_post;
+
+        case_d_int:
+        val = (s64)*argp;
+        aligned = one - aligned;
+        goto case_d_post;
+
+        case_d_long:
+        if (aligned == 0) {
+            val = *(s64*)argp;
+        } else {
+            aligned = 0;
+            argp = (s32*)((u8*)argp + 4);
+            val = *(s64*)argp;
+        }
+
+        case_d_post:
+        argp = (s32*)((u8*)argp + radix);
+        dst += func_ovl8_80387154(dst, val, 0, minus, zero_pad, width, precision);
+    }
+    goto next_fmt;
+
+    case_f:
+    {
+        f32 fval;
+        if (aligned != 0) {
+            aligned = 0;
+            argp = (s32*)((u8*)argp + 4);
+        }
+        fval = (f32)(*(f64*)argp);
+        argp = (s32*)((u8*)argp + 8);
+        dst += func_ovl8_80387154(dst, *(s64*)&fval, one, minus, zero_pad, width, precision);
+    }
+    goto next_fmt;
+
+    next_fmt:
+    src++;
+
+    loop_bottom:
+    ch = *src;
+    if (ch != 0) goto loop_top;
+
+    end:
+    *dst = '\0';
+}
 
 // 0x80386F90
 int stringToNumber(char *string)

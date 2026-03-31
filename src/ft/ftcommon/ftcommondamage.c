@@ -258,7 +258,7 @@ void ftCommonDamageCommonProcLagUpdate(GObj *fighter_gobj)
 }
 
 // 0x80140934
-void func_ovl3_80140934(void) // Unused?
+void ftCommonDamageUnused80140934(void) // Unused?
 {
     return;
 }

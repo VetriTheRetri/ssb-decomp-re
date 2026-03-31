@@ -18,7 +18,7 @@ extern void itBoxFallSetStatus(GObj *item_gobj);
 extern void itBoxHoldSetStatus(GObj *item_gobj);
 extern sb32 itBoxThrownProcMap(GObj *item_gobj);
 extern void itBoxThrownSetStatus(GObj *item_gobj);
-extern sb32 func_ovl3_801798B8(GObj *item_gobj);
+extern sb32 itBoxThrownProcRebound(GObj *item_gobj);
 extern sb32 itBoxDroppedProcMap(GObj *item_gobj);
 extern void itBoxDroppedSetStatus(GObj *item_gobj);
 extern sb32 itBoxExplodeProcUpdate(GObj *item_gobj);

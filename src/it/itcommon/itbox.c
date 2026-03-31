@@ -405,7 +405,7 @@ void itBoxThrownSetStatus(GObj *item_gobj)
 }
 
 // 0x801798B8
-sb32 func_ovl3_801798B8(GObj *item_gobj) // Unused
+sb32 itBoxThrownProcRebound(GObj *item_gobj) // Unused
 {
     itMainVelSetRebound(item_gobj);
 

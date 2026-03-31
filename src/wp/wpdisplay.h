@@ -25,7 +25,7 @@ void wpDisplayDLHead1(GObj *weapon_gobj);
 void wpDisplayDObjDLLinks(GObj *weapon_gobj);
 
 // Unknown
-void func_ovl3_80167618(GObj *weapon_gobj);
+void wpDisplayDObjDLScaleX(GObj *weapon_gobj);
 
 // Unknown
 void wpDisplayDObjTreeDLLinks(GObj *weapon_gobj);

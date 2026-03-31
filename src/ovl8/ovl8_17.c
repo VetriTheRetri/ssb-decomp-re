@@ -59,9 +59,16 @@ typedef struct {
 } dbUnknown24;
 
 extern s32 D_ovl8_8038BC30;
+extern DBMenu D_ovl8_8038BCE4;
+extern SYColorRGBA D_ovl8_8038BCEC;
+extern SYColorRGBA D_ovl8_8038BCF0;
+extern s16 D_ovl8_8038BCF4;
 
 void func_ovl8_8038185C(dbUnknown24 *arg0, s32 *arg1);
 void func_ovl8_80381908(dbUnknownLink* arg0);
+dbUnknown5* func_ovl8_80380B6C(dbUnknown5 *arg0, dbUnknownLinkStruct *arg1, dbUnknownLink *arg2, DBMenu *arg3, s32 arg4);
+dbUnknown5* func_ovl8_80380048(dbUnknown5 *arg0, dbUnknownLinkStruct *arg1, dbUnknownLink *arg2, DBMenu *arg3, s32 arg4);
+void* func_ovl8_80380414(dbUnknownLinkStruct* arg0);
 
 extern dbUnknownLinkStruct D_ovl8_8038BC34;
 extern dbUnknownLinkStruct D_ovl8_8038BC8C;
@@ -142,7 +149,132 @@ void func_ovl8_803812BC(dbUnknown17* arg0, s32* arg1)
 }
 
 // 0x80381308
+#ifdef NON_MATCHING
+s32 func_ovl8_80381308(dbUnknown20* arg0, s16* arg1)
+{
+    dbUnknownLinkStruct* link;
+    dbUnknown5_2* obj;
+    dbUnknown5* newObj;
+    dbFunction* funcs;
+    dbUnknownLinkStruct* dest;
+    f32 sp2C;
+    f32 f0;
+
+    if (arg0->unkC == 0) {
+        return 1;
+    }
+
+    link = (dbUnknownLinkStruct*)arg0->unk4;
+    if (link != NULL) {
+        link = link->unk_dbunkstruct_0x38;
+    }
+
+    if (link->unk_dbunkstruct_0x24 == 7) {
+        D_ovl8_8038BCF4 = 6;
+    } else if (link->unk_dbunkstruct_0x24 == 2) {
+        D_ovl8_8038BCF4 = 1;
+    } else if (link->unk_dbunkstruct_0x24 == 5) {
+        D_ovl8_8038BCF4 = 4;
+    }
+
+    D_ovl8_8038BCE4.position.x = arg1[4];
+    D_ovl8_8038BCE4.position.y = arg1[5];
+
+    link = (dbUnknownLinkStruct*)arg0->unk4;
+    if (link != NULL) link = link->unk_dbunkstruct_0x38;
+    D_ovl8_8038BCEC = link->text_color;
+
+    link = (dbUnknownLinkStruct*)arg0->unk4;
+    if (link != NULL) link = link->unk_dbunkstruct_0x38;
+    D_ovl8_8038BCF0 = link->bg_color;
+
+    D_ovl8_8038BCE4.unk_dbmenu_0x24 = (s32)arg0->unk8;
+
+    obj = (dbUnknown5_2*)arg0->unk4;
+    funcs = obj->dbUnknown5_2_db_func;
+    sp2C = (f32)funcs[5].unk_dbfunc_0x4(funcs[5].unk_dbfunc_0x0 + (uintptr_t)obj);
+
+    arg0->unk18[0] = 1;
+    ((dbUnknown5_2*)arg0->unk4)->dbUnknown5_2_unk_f32_0x0 = 1.0f;
+
+    link = ((dbUnknownLinkStruct*)arg0->unk4)->unk_dbunkstruct_0x38;
+    funcs = link->db_func;
+    funcs[35].unk_dbfunc_0x4(funcs[35].unk_dbfunc_0x0 + (uintptr_t)link, 1);
+
+    if (arg0->unk14 != 0) {
+        newObj = (dbUnknown5*)func_ovl8_803717A0(0x130);
+        if (newObj != NULL) {
+            newObj = func_ovl8_80380B6C(newObj, NULL, NULL, &D_ovl8_8038BCE4, (s32)arg0->unk8);
+        }
+    } else {
+        newObj = (dbUnknown5*)func_ovl8_803717A0(0x130);
+        if (newObj != NULL) {
+            newObj = func_ovl8_80380048(newObj, NULL, NULL, &D_ovl8_8038BCE4, (s32)arg0->unk8);
+        }
+    }
+
+    funcs = newObj->db_func;
+    funcs[22].unk_dbfunc_0x4(funcs[22].unk_dbfunc_0x0 + (uintptr_t)newObj);
+
+    *(s32*)&newObj->unk_dbunk5_0xAC = (s32)sp2C;
+
+    link = (dbUnknownLinkStruct*)arg0->unk4;
+    if (link != NULL) link = link->unk_dbunkstruct_0x38;
+    dest = newObj->unk_dbunk5_0x20.ls;
+    dest->unk_dbunkstruct_0x30 = link->unk_dbunkstruct_0x30;
+    dest->unk_dbunkstruct_0x34 = link->unk_dbunkstruct_0x34;
+    dest->unk_dbunkstruct_0x38 = link->unk_dbunkstruct_0x38;
+    dest->unk_dbunkstruct_0x3C = link->unk_dbunkstruct_0x3C;
+    dest->unk_dbunkstruct_0x40 = link->unk_dbunkstruct_0x40;
+    dest->unk_dbunkstruct_0x44 = link->unk_dbunkstruct_0x44;
+
+    f0 = (f32)(u32)func_ovl8_80380414((dbUnknownLinkStruct*)newObj);
+
+    if (newObj != NULL) {
+        funcs = newObj->db_func;
+        funcs[1].unk_dbfunc_0x4(funcs[1].unk_dbfunc_0x0 + (uintptr_t)newObj, 3);
+    }
+    arg0->unk18[0] = 0;
+
+    ((dbUnknown5_2*)arg0->unk4)->dbUnknown5_2_unk_f32_0x0 = sp2C;
+
+    link = ((dbUnknownLinkStruct*)arg0->unk4)->unk_dbunkstruct_0x38;
+    funcs = link->db_func;
+    funcs[35].unk_dbfunc_0x4(funcs[35].unk_dbfunc_0x0 + (uintptr_t)link, 1);
+
+    *(f32*)((u8*)arg0->unk4 + 0x20) = f0;
+
+    if (f0 != 0.0f) {
+        obj = (dbUnknown5_2*)arg0->unk4;
+        funcs = obj->dbUnknown5_2_db_func;
+        funcs[8].unk_dbfunc_0x4(funcs[8].unk_dbfunc_0x0 + (uintptr_t)obj, f0);
+
+        obj = (dbUnknown5_2*)arg0->unk4;
+        funcs = obj->dbUnknown5_2_db_func;
+        funcs[18].unk_dbfunc_0x4(funcs[18].unk_dbfunc_0x0 + (uintptr_t)obj, 0.0f);
+
+        if (f0 == sp2C) {
+            obj = (dbUnknown5_2*)arg0->unk4;
+            link = (dbUnknownLinkStruct*)obj;
+            if (link != NULL) link = link->unk_dbunkstruct_0x38;
+            {
+                void* t0 = *(void**)((u8*)obj + 0x34);
+                dbFunction* ft = *(dbFunction**)((u8*)t0 + 0x8);
+                ft[3].unk_dbfunc_0x4(ft[3].unk_dbfunc_0x0 + (uintptr_t)t0,
+                                      link->unk_dbunkstruct_0xC, obj);
+            }
+        }
+    } else if (sp2C == 0.0f) {
+        obj = (dbUnknown5_2*)arg0->unk4;
+        funcs = obj->dbUnknown5_2_db_func;
+        funcs[8].unk_dbfunc_0x4(funcs[8].unk_dbfunc_0x0 + (uintptr_t)obj, 0.0f);
+    }
+
+    return 1;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_17/func_ovl8_80381308.s")
+#endif
 
 // 0x80381710
 void func_ovl8_80381710(dbUnknownStructSC* arg0, s32 arg1) {

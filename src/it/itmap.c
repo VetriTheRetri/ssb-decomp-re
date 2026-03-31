@@ -378,7 +378,7 @@ sb32 itMapCheckMapProcAll(GObj *item_gobj, void (*proc_map)(GObj*))
 }
 
 // 0x80173E9C
-sb32 func_ovl3_80173E9C(GObj *item_gobj, void (*proc)(GObj*)) // Unused
+sb32 itMapCheckMapProcAllReturn(GObj *item_gobj, void (*proc)(GObj*)) // Unused
 {
     if ((itMapTestAllCollisionFlag(item_gobj, MAP_FLAG_MAIN_MASK) != FALSE))
     {

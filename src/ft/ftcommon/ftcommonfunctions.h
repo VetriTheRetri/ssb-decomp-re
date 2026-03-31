@@ -188,7 +188,7 @@ void ftCommonDamageAirCommonProcInterrupt(GObj* fighter_gobj);
 void ftCommonDamageFlyRollUpdateModelPitch(GObj* fighter_gobj);
 void ftCommonDamageCommonProcPhysics(GObj* fighter_gobj);
 void ftCommonDamageCommonProcLagUpdate(GObj* fighter_gobj);
-void func_ovl3_80140934();
+void ftCommonDamageUnused80140934();
 void ftCommonDamageAirCommonProcMap(GObj* fighter_gobj);
 f32 ftCommonDamageGetKnockbackAngle(s32 angle_i, s32 ga, f32 knockback);
 s32 ftCommonDamageGetDamageLevel(f32 hitstun);
@@ -215,7 +215,7 @@ void ftCommonDamageFallProcMap(GObj* fighter_gobj);
 void ftCommonDamageFallClampRumble(GObj* fighter_gobj);
 void ftCommonDamageFallSetStatusFromDamage(GObj* fighter_gobj);
 void ftCommonDamageFallSetStatusFromCliffWait(GObj* fighter_gobj);
-void func_ovl3_801436F0(GObj* fighter_gobj);
+void ftCommonDamageFallSetStatusPreserve(GObj* fighter_gobj);
 
 // FallSpecial
 void ftCommonFallSpecialProcInterrupt(GObj* fighter_gobj);
@@ -495,7 +495,7 @@ void ftCommonFuraSleepSetStatus(GObj* fighter_gobj);
 // Catch
 void ftCommonCatchProcUpdate(GObj* fighter_gobj);
 void ftCommonCatchCaptureSetStatusRelease(GObj* fighter_gobj);
-void func_ovl3_80149B48(GObj* fighter_gobj); // Unused?
+void ftCommonCatchCheckFloor(GObj* fighter_gobj); // Unused?
 void ftCommonCatchProcMap(GObj* fighter_gobj);
 void ftCommonCatchSetStatus(GObj* fighter_gobj);
 sb32 ftCommonCatchCheckInterruptGuard(GObj* fighter_gobj);
@@ -557,7 +557,7 @@ void ftCommonThrownCopyStarProcStatus(GObj* fighter_gobj);
 void ftCommonThrownCopyStarSetStatus(GObj* fighter_gobj);
 
 // CaptureYoshi / YoshiEgg
-void func_ovl3_8014C770(); // Unused
+void ftCommonCaptureYoshiUnused8014C770(); // Unused
 void ftCommonCaptureYoshiProcPhysics(GObj* fighter_gobj);
 void ftCommonCaptureYoshiProcCapture(GObj* fighter_gobj, GObj* capture_gobj);
 void ftCommonYoshiEggMakeEffect(GObj* fighter_gobj);

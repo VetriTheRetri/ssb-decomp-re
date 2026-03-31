@@ -283,7 +283,7 @@ extern void ftKirbyCopyCaptainSpecialNSwitchStatusAir(GObj* fighter_gobj);
 extern void ftKirbyCopyCaptainSpecialNProcMap(GObj* fighter_gobj);
 extern void ftKirbyCopyCaptainSpecialAirNProcMap(GObj* fighter_gobj);
 extern void ftKirbyCopyCaptainSpecialNInitStatusVars(GObj* fighter_gobj);
-extern void func_ovl3_80160B28(); // Unused
+extern void ftKirbyCopyCaptainSpecialNUnused80160B28(); // Unused
 extern void ftKirbyCopyCaptainSpecialNSetStatus(GObj* fighter_gobj);
 extern void ftKirbyCopyCaptainSpecialAirNSetStatus(GObj* fighter_gobj);
 

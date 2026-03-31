@@ -7,7 +7,7 @@
 
 extern void itLinkBombExplodeWaitUpdateScale(GObj* item_gobj);
 extern void itLinkBombExplodeMakeEffectGotoSetStatus(GObj* item_gobj);
-extern void func_ovl3_80185B18(GObj* item_gobj);
+extern void itLinkBombMakeDustEffect(GObj* item_gobj);
 extern sb32 itLinkBombCommonProcDamage(GObj* item_gobj);
 extern sb32 itLinkBombThrownProcHit(GObj* item_gobj);
 extern void itLinkBombCommonSetHitStatusNormal(GObj* item_gobj);
@@ -29,7 +29,7 @@ extern void itLinkBombDroppedSetStatus(GObj* item_gobj);
 extern void itLinkBombExplodeInitVars(GObj* item_gobj);
 extern void itLinkBombExplodeUpdateAttackEvent(GObj* item_gobj);
 extern sb32 itLinkBombCommonProcShield(GObj* item_gobj);
-extern sb32 func_ovl3_801864BC(GObj* item_gobj);
+extern sb32 itLinkBombGroundExplode(GObj* item_gobj);
 extern void itLinkBombExplodeInitAttackColl(GObj* item_gobj);
 extern sb32 itLinkBombExplodeProcUpdate(GObj* item_gobj);
 extern void itLinkBombExplodeSetStatus(GObj* item_gobj);

@@ -18,7 +18,7 @@ extern sb32 itHarisenCommonProcHit(GObj *item_gobj);
 extern void itHarisenThrownSetStatus(GObj *item_gobj);
 extern sb32 itHarisenDroppedProcMap(GObj *item_gobj);
 extern void itHarisenDroppedSetStatus(GObj *item_gobj);
-extern void func_ovl3_80175408(GObj *item_gobj, s32 index);
+extern void itHarisenSetAnimJoint(GObj *item_gobj, s32 index);
 extern GObj* itHarisenMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 
 #endif

@@ -3887,7 +3887,7 @@ FTStruct* ftComputerWaitGetTarget(FTStruct *this_fp)
 }
 
 // 0x80132EC0
-void func_ovl3_80132EC0(void) // Unused
+void ftComputerUnused80132EC0(void) // Unused
 {
     return;
 }
@@ -4698,7 +4698,7 @@ sb32 ftComputerCheckSetTargetEdgeLeft(FTStruct *fp, sb32 is_find_edge_target)
 }
 
 // 0x801346D4
-void func_ovl3_801346D4(FTStruct *fp)
+void ftComputerSetRecoverTarget(FTStruct *fp)
 {
     FTComputer *com = &fp->computer;
     Vec3f pos = fp->joints[nFTPartsJointTopN]->translate.vec.f;
@@ -4794,7 +4794,7 @@ void func_ovl3_801346D4(FTStruct *fp)
 }
 
 // 0x80134964
-void func_ovl3_80134964(FTStruct *fp)
+void ftComputerSetRecoverTargetEdge(FTStruct *fp)
 {
     FTComputer *com = &fp->computer;
     Vec3f pos = fp->joints[nFTPartsJointTopN]->translate.vec.f;
@@ -4839,7 +4839,7 @@ void func_ovl3_80134964(FTStruct *fp)
         }
         else com->target_pos.y = (pos.y + 1100.0F);
     }
-    else func_ovl3_801346D4(fp);
+    else ftComputerSetRecoverTarget(fp);
 }
 
 // 0x80134B4C
@@ -5305,7 +5305,7 @@ void ftComputerFollowObjectiveWalk(FTStruct *fp)
 }
 
 // 0x80135B78
-sb32 func_ovl3_80135B78(FTStruct *this_fp)
+sb32 ftComputerCheckDetectDanger(FTStruct *this_fp)
 {
     GObj *fighter_gobj;
     GObj *weapon_gobj;
@@ -5492,7 +5492,7 @@ sb32 func_ovl3_80135B78(FTStruct *this_fp)
 }
 
 // 0x801361BC
-void func_ovl3_801361BC(FTStruct *fp)
+void ftComputerSetCounterAttackTarget(FTStruct *fp)
 {
     FTComputer *com = &fp->computer;
     s32 var_v1;
@@ -6288,7 +6288,7 @@ s32 ftComputerProcDefault(GObj *fighter_gobj)
     }
     if ((fp->fkind != nFTKindMMario) && (fp->fkind != nFTKindGDonkey))
     {
-        if (func_ovl3_80135B78(fp) != FALSE)
+        if (ftComputerCheckDetectDanger(fp) != FALSE)
         {
             com->objective = nFTComputerObjectiveCounterAttack;
             return TRUE;
@@ -6503,7 +6503,7 @@ s32 ftComputerProcJump(GObj *fighter_gobj)
 }
 
 // 0x80137E70
-s32 func_ovl3_80137E70(GObj *fighter_gobj)
+s32 ftComputerProcReturnToOrigin(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     FTComputer *com = &fp->computer;
@@ -6538,7 +6538,7 @@ void ftComputerFollowObjectiveRecover(FTStruct *fp)
 
     if (ftComputerCheckTryCancelSpecialN(fp) == FALSE)
     {
-        func_ovl3_80134964(fp);
+        ftComputerSetRecoverTargetEdge(fp);
 
 #if defined(REGION_US)
         if (fp->fkind == nFTKindPikachu)
@@ -6566,7 +6566,7 @@ void ftComputerFollowObjectiveCounterAttack(FTStruct *fp)
 {
     FTComputer *com = &fp->computer;
 
-    func_ovl3_801361BC(fp);
+    ftComputerSetCounterAttackTarget(fp);
 
     if (com->is_counterattack)
     {
@@ -6693,7 +6693,7 @@ void ftComputerFollowObjectiveEvade(FTStruct *fp)
 }
 
 // 0x8013837C
-s32 func_ovl3_8013837C(FTStruct *this_fp)
+s32 ftComputerGetTargetFighterInfo(FTStruct *this_fp)
 {
     FTComputer *com = &this_fp->computer;
 
@@ -6761,7 +6761,7 @@ s32 func_ovl3_8013837C(FTStruct *this_fp)
 }
 
 // 0x8013877C
-void func_ovl3_8013877C(FTStruct *this_fp)
+void ftComputerFollowObjectiveWait(FTStruct *this_fp)
 {
     FTComputer *com = &this_fp->computer;
     Vec3f edge_left_pos;
@@ -6867,7 +6867,7 @@ void func_ovl3_8013877C(FTStruct *this_fp)
 }
 
 // 0x80138AA8
-sb32 func_ovl3_80138AA8(FTStruct *this_fp, sb32 is_delay)
+sb32 ftComputerCheckTrySpecialN(FTStruct *this_fp, sb32 is_delay)
 {
     FTComputer *com = &this_fp->computer;
     Vec3f pos;
@@ -6978,7 +6978,7 @@ sb32 func_ovl3_80138AA8(FTStruct *this_fp, sb32 is_delay)
 }
 
 // 0x80138EE4
-sb32 func_ovl3_80138EE4(FTStruct *fp)
+sb32 ftComputerCheckTryDodge(FTStruct *fp)
 {
     FTComputer *com = &fp->computer;
     s32 fkind;
@@ -7106,7 +7106,7 @@ sb32 func_ovl3_80138EE4(FTStruct *fp)
 void ftComputerFollowObjectiveAttack(FTStruct *fp)
 {
     FTComputer *com = &fp->computer;
-    s32 temp_v0 = func_ovl3_8013837C(fp);
+    s32 temp_v0 = ftComputerGetTargetFighterInfo(fp);
     f32 random;
     sb32 var_a1;
     s32 unused[2];
@@ -7127,7 +7127,7 @@ void ftComputerFollowObjectiveAttack(FTStruct *fp)
 
             if (com->target_dist < ((random * 300.0F) + 1200.0F))
             {
-                if (func_ovl3_80138EE4(fp) != FALSE)
+                if (ftComputerCheckTryDodge(fp) != FALSE)
                 {
                     com->unk_ftcom_0x35 = 0;
                     return;
@@ -7181,14 +7181,14 @@ void ftComputerFollowObjectiveAttack(FTStruct *fp)
 
                         return;
                     }
-                    func_ovl3_8013877C(fp);
+                    ftComputerFollowObjectiveWait(fp);
                 }
             }
             else
             {
                 com->item_throw_wait = 0;
 
-                if (func_ovl3_80138AA8(fp, var_a1) != FALSE)
+                if (ftComputerCheckTrySpecialN(fp, var_a1) != FALSE)
                 {
                     com->walk_stop_wait = 0;
                     return;
@@ -7226,19 +7226,19 @@ void ftComputerFollowObjectiveAttack(FTStruct *fp)
                     }
                     com->unk_ftcom_0x35 = 0;
 
-                    func_ovl3_8013877C(fp);
+                    ftComputerFollowObjectiveWait(fp);
                 }
             }
         }
     }
-    else func_ovl3_8013877C(fp);
+    else ftComputerFollowObjectiveWait(fp);
 }
 
 // 0x801397F4
-void func_ovl3_801397F4(FTStruct *fp)
+void ftComputerFollowObjectiveUnknown1(FTStruct *fp)
 {
     FTComputer *com = &fp->computer;
-    s32 temp_v0 = func_ovl3_8013837C(fp);
+    s32 temp_v0 = ftComputerGetTargetFighterInfo(fp);
     f32 random;
     sb32 var_a1;
     s32 unused[2];
@@ -7259,7 +7259,7 @@ void func_ovl3_801397F4(FTStruct *fp)
 
             if (com->target_dist < ((random * 300.0F) + 1200.0F))
             {
-                if (func_ovl3_80138EE4(fp) != FALSE)
+                if (ftComputerCheckTryDodge(fp) != FALSE)
                 {
                     com->unk_ftcom_0x35 = 0;
                     return;
@@ -7296,7 +7296,7 @@ void func_ovl3_801397F4(FTStruct *fp)
             {
                 com->item_throw_wait = 0;
 
-                if (func_ovl3_80138AA8(fp, var_a1) != FALSE)
+                if (ftComputerCheckTrySpecialN(fp, var_a1) != FALSE)
                 {
                     com->walk_stop_wait = 0;
                 }
@@ -7317,14 +7317,14 @@ void func_ovl3_801397F4(FTStruct *fp)
             }
         }
     }
-    else func_ovl3_8013877C(fp);
+    else ftComputerFollowObjectiveWait(fp);
 }
 
 // 0x80139A60
 void ftComputerFollowObjectiveAlly(FTStruct *fp)
 {
     FTComputer *com = &fp->computer;
-    s32 temp_v0 = func_ovl3_8013837C(fp);
+    s32 temp_v0 = ftComputerGetTargetFighterInfo(fp);
     f32 random;
     sb32 var_a1;
     s32 unused[2];
@@ -7345,7 +7345,7 @@ void ftComputerFollowObjectiveAlly(FTStruct *fp)
 
             if (com->target_dist < ((random * 300.0F) + 1200.0F))
             {
-                if (func_ovl3_80138EE4(fp) != FALSE)
+                if (ftComputerCheckTryDodge(fp) != FALSE)
                 {
                     com->unk_ftcom_0x35 = 0;
                     return;
@@ -7355,12 +7355,12 @@ void ftComputerFollowObjectiveAlly(FTStruct *fp)
                     com->unk_ftcom_0x35 = 0;
                     return;
                 }
-                func_ovl3_8013877C(fp);
+                ftComputerFollowObjectiveWait(fp);
                 return;
             }
             com->item_throw_wait = 0;
 
-            if (func_ovl3_80138AA8(fp, var_a1) != FALSE)
+            if (ftComputerCheckTrySpecialN(fp, var_a1) != FALSE)
             {
                 com->walk_stop_wait = 0;
                 return;
@@ -7395,18 +7395,18 @@ void ftComputerFollowObjectiveAlly(FTStruct *fp)
                     return;
                 }
                 com->unk_ftcom_0x35 = 0;
-                func_ovl3_8013877C(fp);
+                ftComputerFollowObjectiveWait(fp);
             }
         }
     }
-    else func_ovl3_8013877C(fp);
+    else ftComputerFollowObjectiveWait(fp);
 }
 
 // 0x80139D6C
 void ftComputerFollowObjectivePatrol(FTStruct *fp)
 {
     FTComputer *com = &fp->computer;
-    s32 temp_v0 = func_ovl3_8013837C(fp);
+    s32 temp_v0 = ftComputerGetTargetFighterInfo(fp);
     f32 random;
     sb32 var_a1;
     s32 unused[2];
@@ -7427,7 +7427,7 @@ void ftComputerFollowObjectivePatrol(FTStruct *fp)
 
             if (com->target_dist < ((random * 300.0F) + 1200.0F))
             {
-                if (func_ovl3_80138EE4(fp) != FALSE)
+                if (ftComputerCheckTryDodge(fp) != FALSE)
                 {
                     com->unk_ftcom_0x35 = 0;
                     return;
@@ -7480,14 +7480,14 @@ void ftComputerFollowObjectivePatrol(FTStruct *fp)
                         com->walk_stop_wait = 0;
                         return;
                     }
-                    else func_ovl3_8013877C(fp);
+                    else ftComputerFollowObjectiveWait(fp);
                 }
             }
             else
             {
                 com->item_throw_wait = 0;
 
-                if (func_ovl3_80138AA8(fp, var_a1) != FALSE)
+                if (ftComputerCheckTrySpecialN(fp, var_a1) != FALSE)
                 {
                     com->walk_stop_wait = 0;
                     return;
@@ -7522,12 +7522,12 @@ void ftComputerFollowObjectivePatrol(FTStruct *fp)
                         return;
                     }
                     com->unk_ftcom_0x35 = 0;
-                    func_ovl3_8013877C(fp);
+                    ftComputerFollowObjectiveWait(fp);
                 }
             }
         }
     }
-    else func_ovl3_8013877C(fp);
+    else ftComputerFollowObjectiveWait(fp);
 }
 
 // 0x8013A298
@@ -7567,7 +7567,7 @@ void ftComputerFollowObjectiveRush(FTStruct *fp)
             com->walk_stop_wait = 0;
         }
     }
-    else func_ovl3_8013877C(fp);
+    else ftComputerFollowObjectiveWait(fp);
 }
 
 // 0x8013A38C
@@ -7613,7 +7613,7 @@ void ftComputerProcessObjective(FTStruct *fp)
             break;
 
         case nFTComputerObjectiveUnknown1:
-            func_ovl3_801397F4(fp);
+            ftComputerFollowObjectiveUnknown1(fp);
             break;
 
         case nFTComputerObjectiveAlly:
@@ -7705,7 +7705,7 @@ void ftComputerProcessBehavior(FTStruct *fp)
         break;
 
     case nFTComputerBehaviorUnk5:
-        com->proc_com = func_ovl3_80137E70;
+        com->proc_com = ftComputerProcReturnToOrigin;
         break;
     }
 }

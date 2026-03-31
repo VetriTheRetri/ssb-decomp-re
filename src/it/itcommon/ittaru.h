@@ -18,7 +18,7 @@ extern void itTaruRollSetStatus(GObj *item_gobj);
 extern sb32 itTaruThrownProcMap(GObj *item_gobj);
 extern void itTaruThrownInitVars(GObj *item_gobj);
 extern void itTaruThrownSetStatus(GObj *item_gobj);
-extern sb32 func_ovl3_80179F50(GObj *item_gobj);
+extern sb32 itTaruThrownProcRebound(GObj *item_gobj);
 extern void itTaruDroppedSetStatus(GObj *item_gobj);
 extern sb32 itTaruExplodeProcUpdate(GObj *item_gobj);
 extern sb32 itTaruRollProcUpdate(GObj *item_gobj);

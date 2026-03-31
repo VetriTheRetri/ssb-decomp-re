@@ -15,7 +15,7 @@ extern void itCapsuleHoldSetStatus(GObj *item_gobj);
 extern sb32 itCapsuleThrownProcUpdate(GObj *item_gobj);
 extern sb32 itCapsuleThrownProcMap(GObj *item_gobj);
 extern void itCapsuleThrownSetStatus(GObj *item_gobj);
-extern sb32 func_ovl3_801741F0(GObj *item_gobj);
+extern sb32 itCapsuleThrownProcRebound(GObj *item_gobj);
 extern sb32 itCapsuleDroppedProcMap(GObj *item_gobj);
 extern void itCapsuleDroppedSetStatus(GObj *item_gobj);
 extern sb32 itCapsuleExplodeProcUpdate(GObj *item_gobj);

@@ -46,7 +46,7 @@ ftCommonYoshiEggDesc dFTCommonYoshiEggDamageCollDescs[/* */] =
 // // // // // // // // // // // //
 
 // 0x8014C770
-void func_ovl3_8014C770(void) // Unused
+void ftCommonCaptureYoshiUnused8014C770(void) // Unused
 {
 	return;
 }

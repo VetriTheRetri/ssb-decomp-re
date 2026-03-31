@@ -134,7 +134,7 @@ void wpMainClearAttackRecord(WPStruct *wp) // Clear hit victims array
 }
 
 // 0x8016830C
-void func_ovl3_8016830C(DObj *dobj, Vec3f *vec)
+void wpMainGetDObjWorldPosition(DObj *dobj, Vec3f *vec)
 {
     s32 unused[4];
     DObj *current_dobj;

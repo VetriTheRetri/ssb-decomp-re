@@ -254,7 +254,7 @@ void itEggThrownSetStatus(GObj *item_gobj)
 }
 
 // 0x80181894
-sb32 func_ovl3_80181894(GObj *item_gobj) // Unused
+sb32 itEggThrownProcRebound(GObj *item_gobj) // Unused
 {
     itMainVelSetRebound(item_gobj);
 

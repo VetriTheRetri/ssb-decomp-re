@@ -198,7 +198,7 @@ void itLinkBombExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 }
 
 // 0x80185B18 - Called only by unused function
-void func_ovl3_80185B18(GObj *item_gobj)
+void itLinkBombMakeDustEffect(GObj *item_gobj)
 {
 	s32 unused[5];
 	ITStruct *ip = itGetStruct(item_gobj);
@@ -553,9 +553,9 @@ sb32 itLinkBombCommonProcShield(GObj *item_gobj)
 }
 
 // 0x801864BC
-sb32 func_ovl3_801864BC(GObj *item_gobj) // Unused
+sb32 itLinkBombGroundExplode(GObj *item_gobj) // Unused
 {
-	func_ovl3_80185B18(item_gobj);
+	itLinkBombMakeDustEffect(item_gobj);
 	itLinkBombExplodeInitVars(item_gobj);
 
 	return FALSE;

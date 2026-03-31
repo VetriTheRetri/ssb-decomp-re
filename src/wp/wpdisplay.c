@@ -182,7 +182,7 @@ void wpDisplayDObjDLLinks(GObj *weapon_gobj)
 }
 
 // 0x80167618
-void func_ovl3_80167618(GObj *weapon_gobj)
+void wpDisplayDObjDLScaleX(GObj *weapon_gobj)
 {
     wpDisplayMain(weapon_gobj, lbCommonDObjScaleXProcDisplay); // Unused?
 }

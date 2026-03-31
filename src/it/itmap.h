@@ -48,7 +48,7 @@ sb32 itMapCheckDestroyLanding(GObj* item_gobj, f32 common_rebound);
 sb32 itMapCheckMapProcAll(GObj* item_gobj, void (*proc_map)(GObj*));
 
 // Unknown; unused?
-sb32 func_ovl3_80173E9C(GObj* item_gobj, void (*proc_map)(GObj*));
+sb32 itMapCheckMapProcAllReturn(GObj* item_gobj, void (*proc_map)(GObj*));
 
 // Test for all collisions; if item recoils from collision with ground, run proc_map; otherwise check all other surface
 // types; always returns FALSE

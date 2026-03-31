@@ -16,7 +16,7 @@ extern void itEggHoldSetStatus(GObj *item_gobj);
 extern sb32 itEggThrownProcUpdate(GObj *item_gobj);
 extern sb32 itEggThrownProcMap(GObj *item_gobj);
 extern void itEggThrownSetStatus(GObj *item_gobj);
-extern sb32 func_ovl3_80181894(GObj *item_gobj);
+extern sb32 itEggThrownProcRebound(GObj *item_gobj);
 extern sb32 itEggDroppedProcMap(GObj *item_gobj);
 extern void itEggDroppedSetStatus(GObj *item_gobj);
 extern sb32 itEggExplodeProcUpdate(GObj *item_gobj);

@@ -233,7 +233,7 @@ void itCapsuleThrownSetStatus(GObj *item_gobj)
 }
 
 // 0x801741F0
-sb32 func_ovl3_801741F0(GObj *item_gobj) // Unused
+sb32 itCapsuleThrownProcRebound(GObj *item_gobj) // Unused
 {
     itMainVelSetRebound(item_gobj);
 

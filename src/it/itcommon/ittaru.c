@@ -301,7 +301,7 @@ void itTaruThrownSetStatus(GObj *item_gobj)
 }
 
 // 0x80179F50 - Unused
-sb32 func_ovl3_80179F50(GObj *item_gobj)
+sb32 itTaruThrownProcRebound(GObj *item_gobj)
 {
     itMainVelSetRebound(item_gobj);
 

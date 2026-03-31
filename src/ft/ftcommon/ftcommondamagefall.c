@@ -66,7 +66,7 @@ void ftCommonDamageFallSetStatusFromCliffWait(GObj *fighter_gobj)
 }
 
 // 0x801436F0
-void func_ovl3_801436F0(GObj *fighter_gobj) // Unused
+void ftCommonDamageFallSetStatusPreserve(GObj *fighter_gobj) // Unused
 {
     ftMainSetStatus(fighter_gobj, nFTCommonStatusDamageFall, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_PLAYERTAG | FTSTATUS_PRESERVE_FASTFALL));
     ftCommonDamageFallClampRumble(fighter_gobj);

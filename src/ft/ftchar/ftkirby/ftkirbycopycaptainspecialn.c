@@ -136,7 +136,7 @@ void ftKirbyCopyCaptainSpecialNInitStatusVars(GObj *fighter_gobj)
 }
 
 // 0x80160B28
-void func_ovl3_80160B28() // Unused
+void ftKirbyCopyCaptainSpecialNUnused80160B28() // Unused
 {
     return;
 }

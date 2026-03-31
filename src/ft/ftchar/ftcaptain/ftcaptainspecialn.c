@@ -142,7 +142,7 @@ void ftCaptainSpecialNInitStatusVars(GObj *fighter_gobj)
 }
 
 // 0x8015FB54
-void func_ovl3_8015FB54() // Unused???
+void ftCaptainSpecialNUnused8015FB54() // Unused???
 {
     return;
 }

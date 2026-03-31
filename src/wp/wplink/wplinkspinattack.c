@@ -39,7 +39,7 @@ WPDesc dWPLinkSpinAttackWeaponDesc =
 // // // // // // // // // // // //
 
 // 0x8016C9A0
-void func_ovl3_8016C9A0(void) // Unused
+void wpLinkSpinAttackUnused8016C9A0(void) // Unused
 {
     return;
 }

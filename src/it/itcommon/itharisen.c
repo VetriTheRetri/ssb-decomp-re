@@ -239,7 +239,7 @@ void itHarisenDroppedSetStatus(GObj *item_gobj)
 }
 
 // 0x80175408
-void func_ovl3_80175408(GObj *item_gobj, s32 index) // Unused
+void itHarisenSetAnimJoint(GObj *item_gobj, s32 index) // Unused
 {
     ITStruct *ip = itGetStruct(item_gobj);
 

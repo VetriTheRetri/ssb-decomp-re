@@ -185,7 +185,7 @@ SYTaskmanSetup dMNTitleTaskmanSetup =
 // // // // // // // // // // // //
 
 // 0x80134440
-s32 D_ovl10_80134440[2];
+s32 dLBParticleUnused[2];
 
 // 0x80134448
 GObj *sMNTitleFireCameraGObj;

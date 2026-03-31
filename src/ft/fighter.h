@@ -15,8 +15,8 @@ extern Gfx dFTDisplayMainHitCollisionCubeDL[/* */];
 extern Gfx dFTDisplayMainMapCollisionBottomDL[/* */];
 extern Gfx dFTDisplayMainMapCollisionTopDL[/* */];
 
-extern FTOpeningDesc *D_ovl1_80390D20[/* */];
-extern FTOpeningDesc D_ovl1_80390BE8;
+extern FTOpeningDesc *dSCSubsysOpeningDescAll[/* */];
+extern FTOpeningDesc dSCSubsysOpeningDescCommon;
 
 #define ftGetStruct(fighter_gobj) 	((FTStruct*)(fighter_gobj)->user_data.p)
 #define ftGetParts(fighter_dobj) 	((FTParts *)(fighter_dobj)->user_data.p)

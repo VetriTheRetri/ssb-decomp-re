@@ -74,13 +74,13 @@ u16 gLBParticleGeneratorsUsedNum;
 u16 gLBParticleTransformsUsedNum;
 
 // 0x800D644E
-u16 D_ovl0_800D644E;
+u16 gLBParticleStructsUsedPeak;
 
 // 0x800D6450
-u16 D_ovl0_800D6450;
+u16 gLBParticleGeneratorsUsedPeak;
 
 // 0x800D6452
-u16 D_ovl0_800D6452;
+u16 gLBParticleTransformsUsedPeak;
 
 // 0x800D6454
 LBTransform *sLBParticleTransformsAllocFree;
@@ -114,7 +114,7 @@ s32 lbParticleAllocTransforms(s32 num, size_t size)
 		sLBParticleTransformsAllocFree = xf;
 	}
 	gLBParticleTransformsUsedNum = 0;
-	D_ovl0_800D6452 = 0;
+	gLBParticleTransformsUsedPeak = 0;
 
 	return i;
 }
@@ -140,9 +140,9 @@ LBTransform* lbParticleGetTransform(u8 status, u16 generator_id)
 
 		gLBParticleTransformsUsedNum++;
 
-		if (D_ovl0_800D6452 < gLBParticleTransformsUsedNum)
+		if (gLBParticleTransformsUsedPeak < gLBParticleTransformsUsedNum)
 		{
-			D_ovl0_800D6452 = gLBParticleTransformsUsedNum;
+			gLBParticleTransformsUsedPeak = gLBParticleTransformsUsedNum;
 		}
 	}
 	return xf;
@@ -253,7 +253,7 @@ GObj* lbParticleAllocStructs(s32 num)
 		sLBParticleStructsAllocFree = pc;
 	}
 	gLBParticleStructsUsedNum = 0;
-	D_ovl0_800D644E = 0;
+	gLBParticleStructsUsedPeak = 0;
 
 	if (gcFindGObjByID(~0x5) != NULL)
 	{
@@ -295,9 +295,9 @@ LBParticle* lbParticleMakeStruct
     }
     gLBParticleStructsUsedNum++;
     
-    if (D_ovl0_800D644E < gLBParticleStructsUsedNum) 
+    if (gLBParticleStructsUsedPeak < gLBParticleStructsUsedNum) 
     {
-        D_ovl0_800D644E = gLBParticleStructsUsedNum;
+        gLBParticleStructsUsedPeak = gLBParticleStructsUsedNum;
     }
     if (gn != NULL)
     {
@@ -2159,7 +2159,7 @@ GObj* lbParticleAllocGenerators(s32 num)
 		sLBParticleGeneratorsAllocFree = gn;
 	}
 	gLBParticleGeneratorsUsedNum = 0;
-	D_ovl0_800D6450 = 0;
+	gLBParticleGeneratorsUsedPeak = 0;
 
 	return gcMakeGObjSPAfter(~0x6, lbParticleGeneratorFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
 }
@@ -2603,9 +2603,9 @@ LBGenerator* lbParticleGetGenerator(void)
     }
     gLBParticleGeneratorsUsedNum++;
     
-    if (D_ovl0_800D6450 < gLBParticleGeneratorsUsedNum)
+    if (gLBParticleGeneratorsUsedPeak < gLBParticleGeneratorsUsedNum)
     {
-        D_ovl0_800D6450 = gLBParticleGeneratorsUsedNum;
+        gLBParticleGeneratorsUsedPeak = gLBParticleGeneratorsUsedNum;
     }
     sLBParticleGeneratorsAllocFree = gn->next;
     gn->next = sLBParticleGeneratorsQueued;

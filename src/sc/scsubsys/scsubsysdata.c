@@ -3,9 +3,9 @@
 #include <sc/scsubsys/scsubsys.h>
 #include <reloc_data.h>
 
-s32 D_ovl1_80390BE0[2] = { 0, 0 };
+s32 dSCSubsysOpeningUnused[2] = { 0, 0 };
 
-FTOpeningDesc D_ovl1_80390BE8[15] =
+FTOpeningDesc dSCSubsysOpeningDescCommon[15] =
 {
 	0x00010000, NULL,
 	0x00010001, NULL,
@@ -24,12 +24,12 @@ FTOpeningDesc D_ovl1_80390BE8[15] =
 	0x0001000E, NULL
 };
 
-FTOpeningDesc D_ovl1_80390C60[1] =
+FTOpeningDesc dSCSubsysOpeningDescEmpty[1] =
 {
 	0xFFFFFFFF, NULL
 };
 
-FTOpeningDesc D_ovl1_80390C68[4] =
+FTOpeningDesc dSCSubsysOpeningDescMario[4] =
 {
 	0x0001000F, NULL,
 	0x00010010, NULL,
@@ -37,7 +37,7 @@ FTOpeningDesc D_ovl1_80390C68[4] =
 	0x00010012, NULL
 };
 
-FTOpeningDesc D_ovl1_80390C88[9] =
+FTOpeningDesc dSCSubsysOpeningDescFox[9] =
 {
 	0x0001000F, NULL,
 	0x00010010, NULL,
@@ -50,17 +50,17 @@ FTOpeningDesc D_ovl1_80390C88[9] =
 	0x00010017, NULL
 };
 
-FTOpeningDesc D_ovl1_80390CD0[1] =
+FTOpeningDesc dSCSubsysOpeningDescKirby[1] =
 {
 	0x0001000F, NULL
 };
 
-FTOpeningDesc D_ovl1_80390CD8[1] =
+FTOpeningDesc dSCSubsysOpeningDescLink[1] =
 {
 	0x0001000F, NULL
 };
 
-FTOpeningDesc D_ovl1_80390CE0[4] =
+FTOpeningDesc dSCSubsysOpeningDescYoshi[4] =
 {
 	0x0001000F, NULL,
 	0x00010010, NULL,
@@ -68,47 +68,47 @@ FTOpeningDesc D_ovl1_80390CE0[4] =
 	0x00010012, NULL
 };
 
-FTOpeningDesc D_ovl1_80390D00[1] =
+FTOpeningDesc dSCSubsysOpeningDescPikachu[1] =
 {
 	0x0001000F, NULL
 };
 
-FTOpeningDesc D_ovl1_80390D08[3] =
+FTOpeningDesc dSCSubsysOpeningDescMasterHand[3] =
 {
 	0x0001000F, NULL,
 	0x00010010, NULL,
 	0x00010011, NULL
 };
 
-FTOpeningDesc* D_ovl1_80390D20[] =
+FTOpeningDesc* dSCSubsysOpeningDescAll[] =
 {
-	D_ovl1_80390C68,
-	D_ovl1_80390C88,
-	D_ovl1_80390C60,
-	D_ovl1_80390C60,
-	D_ovl1_80390C60,
-	D_ovl1_80390CD8,
-	D_ovl1_80390CE0,
-	D_ovl1_80390C60,
-	D_ovl1_80390CD0,
-	D_ovl1_80390D00,
-	D_ovl1_80390C60,
-	D_ovl1_80390C60,
-	D_ovl1_80390D08,
-	D_ovl1_80390C60,
-	D_ovl1_80390C60,
-	D_ovl1_80390C60,
-	D_ovl1_80390C60,
-	D_ovl1_80390C60,
-	D_ovl1_80390C60,
-	D_ovl1_80390C60,
-	D_ovl1_80390C60,
-	D_ovl1_80390C60,
-	D_ovl1_80390C60,
-	D_ovl1_80390C60,
-	D_ovl1_80390C60,
-	D_ovl1_80390C60,
-	D_ovl1_80390C60,
+	dSCSubsysOpeningDescMario,
+	dSCSubsysOpeningDescFox,
+	dSCSubsysOpeningDescEmpty,
+	dSCSubsysOpeningDescEmpty,
+	dSCSubsysOpeningDescEmpty,
+	dSCSubsysOpeningDescLink,
+	dSCSubsysOpeningDescYoshi,
+	dSCSubsysOpeningDescEmpty,
+	dSCSubsysOpeningDescKirby,
+	dSCSubsysOpeningDescPikachu,
+	dSCSubsysOpeningDescEmpty,
+	dSCSubsysOpeningDescEmpty,
+	dSCSubsysOpeningDescMasterHand,
+	dSCSubsysOpeningDescEmpty,
+	dSCSubsysOpeningDescEmpty,
+	dSCSubsysOpeningDescEmpty,
+	dSCSubsysOpeningDescEmpty,
+	dSCSubsysOpeningDescEmpty,
+	dSCSubsysOpeningDescEmpty,
+	dSCSubsysOpeningDescEmpty,
+	dSCSubsysOpeningDescEmpty,
+	dSCSubsysOpeningDescEmpty,
+	dSCSubsysOpeningDescEmpty,
+	dSCSubsysOpeningDescEmpty,
+	dSCSubsysOpeningDescEmpty,
+	dSCSubsysOpeningDescEmpty,
+	dSCSubsysOpeningDescEmpty,
 	NULL,
 };
 

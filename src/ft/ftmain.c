@@ -4553,12 +4553,12 @@ void ftMainSetStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, f32 ani
     }
     if (status_id >= FTSTAT_OPENING1_START) // Check if Opening status ID 1
     {
-        opening_struct = D_ovl1_80390D20[fp->fkind];
+        opening_struct = dSCSubsysOpeningDescAll[fp->fkind];
         status_struct_id = status_id - FTSTAT_OPENING1_START;
     }
     else if (status_id >= FTSTAT_OPENING2_START) // Check if Opening status ID 2
     {
-        opening_struct = &D_ovl1_80390BE8;
+        opening_struct = &dSCSubsysOpeningDescCommon;
         status_struct_id = status_id - FTSTAT_OPENING2_START;
     }
     else if (status_id >= nFTCommonStatusSpecialStart)

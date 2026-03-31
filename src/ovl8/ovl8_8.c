@@ -43,6 +43,7 @@ void func_ovl8_80377F50(Sprite*, db4Shorts*);
 void func_ovl8_80377FE4(Sprite*, db4Shorts*, db4Shorts*);
 void func_ovl8_803780B8(Sprite*, DBMenuPosition*);
 s32 func_ovl8_8037A67C(s16*, s16*, s16*);
+void func_ovl8_80379D74(u8*, s32, Bitmap*, s16, DBMenuPosition*);
 void func_ovl8_8037A904(db4Shorts*, db4Shorts*);
 void func_ovl8_8037A9C0(db4Shorts*, s32, s32);
 void func_ovl8_8037A9F4(DBMenuPosition*, DBMenuPosition*);
@@ -597,7 +598,86 @@ void func_ovl8_803780B8(Sprite* arg0, DBMenuPosition* arg1)
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80379D74.s")
 
 // 0x8037A0FC
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037A0FC.s")
+void func_ovl8_8037A0FC(Sprite* sprite, DBMenuPosition* dst_rect, u8* dst_buffer)
+{
+    DBMenuPosition spB0;
+    DBMenuPosition spA8;
+    DBMenuPosition spA0;
+    DBMenuPosition sp98;
+    s32 sp90;
+    s32 sp8C;
+    s32 sp88;
+    s32 sp84;
+    s32 sp78;
+    s32 sp74;
+    s32 sp70;
+    s32 sp6C;
+    s32 s0;
+    s32 s3;
+    s32 s6;
+    u8* s1;
+    u8* sp5C;
+    Bitmap* bitmap;
+
+    spB0 = *dst_rect;
+
+    if (sprite->bmsiz == 1) {
+        sp6C = 1;
+    } else if (sprite->bmsiz == 2) {
+        sp6C = 2;
+    } else {
+        sp6C = 4;
+    }
+
+    sp98.x = sp98.y = 0;
+    sp98.w = sprite->width;
+    sp98.h = sprite->height;
+
+    func_ovl8_8037A67C((s16*)&spB0, (s16*)&sp98, (s16*)&spA8);
+
+    if (func_ovl8_8037AA5C(&spA8) == 0)
+    {
+        s3 = sprite->bitmap->width;
+        s6 = sprite->bitmap->actualHeight;
+
+        sp5C = dst_buffer + (((spA8.y - spB0.y) * dst_rect->w) + (spA8.x - spB0.x)) * sp6C;
+
+        sp78 = spA8.x / s3;
+        sp74 = spA8.y / s6;
+
+        sp84 = (sprite->width / s3) + ((sprite->width % s3) != 0 ? 1 : 0);
+
+        sp8C = (spA8.w / s3) + ((spA8.w % s3) != 0 ? 1 : 0) + 1;
+
+        sp88 = (spA8.h / s6) + ((spA8.h % s6) != 0 ? 1 : 0) + 1;
+
+        for (sp90 = 0; sp90 < sp88; sp90++)
+        {
+            s1 = sp5C;
+
+            for (s0 = 0; s0 != sp8C; s0++)
+            {
+                spA0.x = (sp78 + s0) * s3;
+                spA0.y = (sp74 + sp90) * s6;
+                spA0.w = s3;
+                spA0.h = s6;
+
+                if (func_ovl8_8037A67C((s16*)&spA0, (s16*)&spA8, (s16*)&sp98) != 0)
+                {
+                    sp98.x %= s3;
+                    sp98.y %= s6;
+
+                    bitmap = sprite->bitmap + ((sp74 + sp90) * sp84) + s0 + sp78;
+
+                    func_ovl8_80379D74(s1, dst_rect->w, bitmap, sprite->bmsiz, &sp98);
+                    sp70 = sp98.h;
+                }
+                s1 += sp98.w * sp6C;
+            }
+            sp5C += sp70 * dst_rect->w * sp6C;
+        }
+    }
+}
 
 // 0x8037A5B8
 void func_ovl8_8037A5B8(Sprite* arg0, DBMenuPosition* arg1, s32 arg2)

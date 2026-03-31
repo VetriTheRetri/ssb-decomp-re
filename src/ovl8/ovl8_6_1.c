@@ -428,37 +428,28 @@ s32 func_ovl8_803762AC(Vec3i* arg0)
 }
 
 // 0x803762B4
-// NON_MATCHING: IDO allocates s0 for arg0, target uses no callee-saved registers.
-// With a local 'link' variable, IDO keeps it alive across DL macros and calls,
-// preventing the repeated null-check pattern seen in the target.
-// Logic and structure are correct; difference is purely register allocation.
-#ifdef NON_MATCHING
+// Uses LINK macro to re-derive link pointer for every field access,
+// preventing IDO from allocating a callee-saved register. 133/133 match.
+#define LINK(arg0) ((arg0) != NULL ? (arg0)->unk_dbunks38_0x20 : (dbUnknownLinkStruct*)(arg0))
 void func_ovl8_803762B4(dbUnknownS38 *arg0)
 {
-    dbUnknownLinkStruct *link;
-
-    link = (dbUnknownLinkStruct *)arg0;
-    if (arg0 != NULL) link = arg0->unk_dbunks38_0x20;
-
-    if (link->bg_color.a != 0) {
+    if (LINK(arg0)->bg_color.a != 0) {
         gDPPipeSync(gSYTaskmanDLHeads[0]++);
         gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_FILL);
         gDPSetFillColor(gSYTaskmanDLHeads[0]++, syVideoGetFillColor(
-            GPACK_RGBA8888(link->bg_color.r, link->bg_color.g,
-                           link->bg_color.b, link->bg_color.a)));
+            GPACK_RGBA8888(LINK(arg0)->bg_color.r, LINK(arg0)->bg_color.g,
+                           LINK(arg0)->bg_color.b, LINK(arg0)->bg_color.a)));
         gDPFillRectangle(gSYTaskmanDLHeads[0]++,
-            link->position.x, link->position.y,
-            link->position.x + link->position.w - 1,
-            link->position.y + link->position.h - 1);
+            LINK(arg0)->position.x, LINK(arg0)->position.y,
+            LINK(arg0)->position.x + LINK(arg0)->position.w - 1,
+            LINK(arg0)->position.y + LINK(arg0)->position.h - 1);
         gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
     }
 
     func_ovl8_80375354(arg0);
     arg0->unk_dbunks38_0x18[16].unk_dbfunc_0x4(arg0->unk_dbunks38_0x18[16].unk_dbfunc_0x0 + (uintptr_t)arg0);
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6_1/func_ovl8_803762B4.s")
-#endif
+#undef LINK
 
 // 0x803764C8
 sb32 func_ovl8_803764C8(dbUnknownS38 *arg0, s32 arg1) 

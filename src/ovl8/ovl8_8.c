@@ -426,7 +426,6 @@ void func_ovl8_80377374(DBMenuPosition *arg0)
 }
 
 // 0x803773CC
-#ifdef NON_MATCHING
 void func_ovl8_803773CC(Bitmap* arg0, s16 arg1, db4Shorts* arg2)
 {
     s16 row;
@@ -677,9 +676,6 @@ void func_ovl8_803773CC(Bitmap* arg0, s16 arg1, db4Shorts* arg2)
         break;
     }
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_803773CC.s")
-#endif
 
 // 0x80377AEC
 void func_ovl8_80377AEC(Sprite* arg0, db4Shorts* arg1, u8* arg2, s32 arg3)
@@ -838,7 +834,6 @@ void func_ovl8_803780B8(Sprite* arg0, DBMenuPosition* arg1)
 }
 
 // 0x803781A4
-#ifdef NON_MATCHING
 void func_ovl8_803781A4(s32 bmsiz, Bitmap *src, Bitmap *dst, db4Shorts *srcRect, db4Shorts *dstRect)
 {
     u16 w;
@@ -1006,12 +1001,8 @@ void func_ovl8_803781A4(s32 bmsiz, Bitmap *src, Bitmap *dst, db4Shorts *srcRect,
         break;
     }
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_803781A4.s")
-#endif
 
 // 0x803787C0
-#ifdef NON_MATCHING
 void func_ovl8_803787C0(Sprite *src, Sprite *dst, DBMenuPosition *srcPos, db2Shorts *dstOffset)
 {
     db2Shorts srcOff;           // sp+0x6C
@@ -1199,12 +1190,8 @@ void func_ovl8_803787C0(Sprite *src, Sprite *dst, DBMenuPosition *srcPos, db2Sho
         ;
     }
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_803787C0.s")
-#endif
 
 // 0x80379070
-#ifdef NON_MATCHING
 void func_ovl8_80379070(u8* arg0, s32 arg1, Bitmap* arg2, s16 arg3, DBMenuPosition* arg4)
 {
     s16 temp_v0;
@@ -1428,12 +1415,8 @@ void func_ovl8_80379070(u8* arg0, s32 arg1, Bitmap* arg2, s16 arg3, DBMenuPositi
         break;
     }
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80379070.s")
-#endif
 
 // 0x803798A0
-#ifdef NON_MATCHING
 void func_ovl8_803798A0(Sprite* sprite, u8* dst_buffer, s32 dst_w, s16 dst_h, DBMenuPosition* src_pos, s32 arg5)
 {
     DBMenuPosition spB0;
@@ -1530,9 +1513,6 @@ void func_ovl8_803798A0(Sprite* sprite, u8* dst_buffer, s32 dst_w, s16 dst_h, DB
         sp5C += sp70 * dst_w * sp6C;
     }
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_803798A0.s")
-#endif
 
 // 0x80379D74
 // NON_MATCHING: IDO generates if-chain instead of jump table for 4-case switch.
@@ -2007,7 +1987,6 @@ s32 func_ovl8_8037ABDC(Vec2h* arg0, UiLineStepper* arg1)
 }
 
 // 0x8037ACAC
-#ifdef NON_MATCHING
 // This function creates a tiled texture/bitmap structure for the debug menu UI.
 // It divides a width x height region into tiles, allocates bitmap memory, and
 // fills a descriptor array for each tile.
@@ -2315,9 +2294,6 @@ dbUnknown3* func_ovl8_8037ACAC(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4)
 
     return result;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037ACAC.s")
-#endif
 
 // 0x8037B3E4
 void func_ovl8_8037B3E4(dbUnknown3* arg0)

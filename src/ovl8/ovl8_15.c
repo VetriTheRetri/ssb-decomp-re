@@ -234,7 +234,142 @@ s32 func_ovl8_8037F784(dbUnknown5* arg0, db4Bytes arg1)
 }
 
 // 0x8037F80C
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_15/func_ovl8_8037F80C.s")
+s32 func_ovl8_8037F80C(dbUnknown5 *arg0, dbBytesCopy2 *arg1)
+{
+    db2Shorts cursor_pos;
+    s16 delta_y;
+    s16 delta_x;
+    db4Shorts sp50;
+    s32 hittest;
+    db4Shorts sp44;
+    f32 range;
+    f32 result;
+    dbUnknownLinkStruct *var_s0;
+
+    *(db4Bytes *)&cursor_pos = arg1->unk_dbbytescopy_0x8;
+
+    ((dbFunction *)(var_s0)) = arg0->unk_dbunk5_0x38->db_func;
+    ((dbFunction *)(var_s0))[10].unk_dbfunc_0x4(((dbFunction *)(var_s0))[10].unk_dbfunc_0x0 + (uintptr_t)arg0->unk_dbunk5_0x38, &cursor_pos);
+
+    ((dbFunction *)(var_s0)) = (dbFunction *)arg0->unk_dbunk5_0x30;
+    hittest = ((dbFunction *)(var_s0))[20].unk_dbfunc_0x4(((dbFunction *)(var_s0))[20].unk_dbfunc_0x0 + (uintptr_t)arg0, *(db4Bytes *)&cursor_pos);
+
+    if (hittest == 0)
+    {
+        return 0;
+    }
+
+    ((dbFunction *)(var_s0)) = (dbFunction *)arg0->unk_dbunk5_0x30;
+    ((dbFunction *)(var_s0))[26].unk_dbfunc_0x4(((dbFunction *)(var_s0))[26].unk_dbfunc_0x0 + (uintptr_t)arg0, &sp50);
+
+    delta_x = cursor_pos.arr[0] - sp50.arr[0];
+    delta_y = cursor_pos.arr[1] - sp50.arr[1];
+
+
+    range = arg0->unk_dbunk5_0x8 - arg0->unk_dbunk5_0x4;
+
+    {
+        dbUnknownLinkStruct *temp_v0 = arg0->unk_dbunk5_0x38;
+        ((dbFunction *)(var_s0)) = temp_v0->db_func;
+        ((dbFunction *)(var_s0))[22].unk_dbfunc_0x4(((dbFunction *)(var_s0))[22].unk_dbfunc_0x0 + (uintptr_t)temp_v0, &sp44);
+    }
+
+    if (hittest == 1)
+    {
+        var_s0 = (dbUnknownLinkStruct *)arg0;
+        if (arg0 != NULL)
+        {
+            var_s0 = arg0->unk_dbunk5_0x38;
+        }
+
+        while (func_ovl8_80377244() & var_s0->unk_dbunkstruct_0x30)
+        {
+            if (arg0->unk_dbunk5_0x3C.w == 0)
+            {
+                result = ((f32)(cursor_pos.arr[0] - delta_x - sp44.arr[0]) / (f32)(sp44.uarr[2] - arg0->unk_dbunk5_0x40.s_16)) * range + arg0->unk_dbunk5_0x4;
+            }
+            else
+            {
+                result = ((f32)(sp44.arr[1] + sp44.uarr[3] - cursor_pos.arr[1] + delta_y) / (f32)(sp44.uarr[3] - arg0->unk_dbunk5_0x40.s_16)) * range + arg0->unk_dbunk5_0x4;
+            }
+
+            ((dbFunction *)(var_s0)) = (dbFunction *)arg0->unk_dbunk5_0x30;
+            ((void (*)(uintptr_t, f32))((dbFunction *)(var_s0))[8].unk_dbfunc_0x4)(((dbFunction *)(var_s0))[8].unk_dbfunc_0x0 + (uintptr_t)arg0, result);
+
+            func_ovl8_8037726C(&cursor_pos);
+
+            {
+                dbUnknownLinkStruct *temp_v0 = arg0->unk_dbunk5_0x38;
+                ((dbFunction *)(var_s0)) = temp_v0->db_func;
+                ((dbFunction *)(var_s0))[10].unk_dbfunc_0x4(((dbFunction *)(var_s0))[10].unk_dbfunc_0x0 + (uintptr_t)temp_v0, &cursor_pos);
+            }
+
+            if (cursor_pos.arr[0] < 0)
+            {
+                cursor_pos.arr[0] = 0;
+            }
+            if (cursor_pos.arr[1] < 0)
+            {
+                cursor_pos.arr[1] = 0;
+            }
+            if (cursor_pos.arr[0] >= sp44.uarr[2])
+            {
+                cursor_pos.arr[0] = (s16)(sp44.uarr[2] - 1);
+            }
+            if (cursor_pos.arr[1] >= sp44.uarr[3])
+            {
+                cursor_pos.arr[1] = (s16)(sp44.uarr[3] - 1);
+            }
+
+            if (arg0->unk_dbunk5_0x2C != 0)
+            {
+                ((sb32 (*)())arg0->unk_dbunk5_0x2C)(arg0);
+            }
+            else
+            {
+                ((dbFunction *)(var_s0)) = (dbFunction *)arg0->unk_dbunk5_0x30;
+                ((dbFunction *)(var_s0))[19].unk_dbfunc_0x4(((dbFunction *)(var_s0))[19].unk_dbfunc_0x0 + (uintptr_t)arg0);
+            }
+
+            gcSleepCurrentGObjThread(1);
+
+            var_s0 = (dbUnknownLinkStruct *)arg0;
+            if (arg0 != NULL)
+            {
+                var_s0 = arg0->unk_dbunk5_0x38;
+            }
+        }
+
+        return 1;
+    }
+    else if (hittest == 2)
+    {
+        if (arg0->unk_dbunk5_0x3C.w == 0)
+        {
+            result = ((f32)cursor_pos.arr[0] - (f32)sp44.arr[0]) / (f32)(sp44.uarr[2] - arg0->unk_dbunk5_0x40.s_16) * range + arg0->unk_dbunk5_0x4;
+        }
+        else
+        {
+            result = ((f32)cursor_pos.arr[1] - (f32)sp44.arr[1]) / (f32)(sp44.uarr[3] - arg0->unk_dbunk5_0x40.s_16) * range + arg0->unk_dbunk5_0x4;
+        }
+
+        ((dbFunction *)(var_s0)) = (dbFunction *)arg0->unk_dbunk5_0x30;
+        ((void (*)(uintptr_t, f32))((dbFunction *)(var_s0))[8].unk_dbfunc_0x4)(((dbFunction *)(var_s0))[8].unk_dbfunc_0x0 + (uintptr_t)arg0, result);
+
+        if (arg0->unk_dbunk5_0x2C != 0)
+        {
+            ((sb32 (*)())arg0->unk_dbunk5_0x2C)(arg0);
+            return 1;
+        }
+        else
+        {
+            ((dbFunction *)(var_s0)) = (dbFunction *)arg0->unk_dbunk5_0x30;
+            ((dbFunction *)(var_s0))[19].unk_dbfunc_0x4(((dbFunction *)(var_s0))[19].unk_dbfunc_0x0 + (uintptr_t)arg0);
+        }
+    }
+
+    return 1;
+}
 
 // 0x8037FBC0
 s32 func_ovl8_8037FBC0(s32 arg0, s32 arg1)

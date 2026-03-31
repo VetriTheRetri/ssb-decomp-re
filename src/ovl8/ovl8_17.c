@@ -73,7 +73,7 @@ void* func_ovl8_80380414(dbUnknownLinkStruct* arg0);
 extern dbUnknownLinkStruct D_ovl8_8038BC34;
 extern dbUnknownLinkStruct D_ovl8_8038BC8C;
 
-//0x80381130
+// 0x80381130
 dbUnknownLinkStruct* func_ovl8_80381130(dbUnknownLinkStruct* arg0)
 {
 	if ((arg0 != NULL) || ((arg0 = func_ovl8_803717A0(0x20)) != NULL))
@@ -149,7 +149,6 @@ void func_ovl8_803812BC(dbUnknown17* arg0, s32* arg1)
 }
 
 // 0x80381308
-#ifdef NON_MATCHING
 s32 func_ovl8_80381308(dbUnknown20* arg0, s16* arg1)
 {
     dbUnknownLinkStruct* link;
@@ -272,9 +271,6 @@ s32 func_ovl8_80381308(dbUnknown20* arg0, s16* arg1)
 
     return 1;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_17/func_ovl8_80381308.s")
-#endif
 
 // 0x80381710
 void func_ovl8_80381710(dbUnknownStructSC* arg0, s32 arg1) {

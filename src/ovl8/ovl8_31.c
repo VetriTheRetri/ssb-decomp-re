@@ -759,7 +759,6 @@ u32 stringFromNumber(char* string, s64 number)
 // NON_MATCHING: Float-to-string (ftoa). C code matches 280/280 when compiled standalone,
 // but asm-processor interaction with preceding NON_MATCHING func_ovl8_80387154 changes
 // register allocation. Will match once func_ovl8_80387154 is also decompiled.
-#ifdef NON_MATCHING
 s32 func_ovl8_80387540(char *buf, s32 float_bits, s32 precision)
 {
     f32 f = *(f32 *)&float_bits;
@@ -792,6 +791,3 @@ s32 func_ovl8_80387540(char *buf, s32 float_bits, s32 precision)
 
     return digit_count;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_31/func_ovl8_80387540.s")
-#endif

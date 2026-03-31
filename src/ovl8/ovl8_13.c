@@ -706,6 +706,7 @@ u32 func_ovl8_8037DA08(u8 arg0, u8 arg1)
     return (((arg0 * 0xC0) + arg1) - 0x6100) * D_8038F032_1AB882;
 }
 
+// 0x8037DAA0
 void func_ovl8_8037DAA0(Sprite *arg0, u8 arg1)
 {
     u8 *glyph;

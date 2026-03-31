@@ -48,7 +48,7 @@ extern void mnTitleMakeLogo(void);
 extern void mnTitleMakeSprites(void);
 extern void mnTitleMakeLabels(void);
 extern void mnTitleMakePressStart(void);
-extern void func_ovl10_80133634(void);
+extern void mnTitleMakeLanguageOption(void);
 extern void mnTitleSlashProcUpdate(GObj *gobj);
 extern void mnTitleMakeSlash(void);
 extern void mnTitleFireCameraProcUpdate(GObj *gobj);

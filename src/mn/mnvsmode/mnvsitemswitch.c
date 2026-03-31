@@ -538,7 +538,7 @@ void mnVSItemSwitchMakeLabelsCamera(void)
 }
 
 // 0x801325A8 - unused?
-void func_ovl21_801325A8(void)
+void mnVSItemSwitchUnused(void)
 {
     return;
 }

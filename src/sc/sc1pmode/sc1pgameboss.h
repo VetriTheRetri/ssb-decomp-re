@@ -5,7 +5,7 @@
 #include <sys/objdef.h>
 #include <sc/scdef.h>
 
-extern void func_ovl65_801910B0(void);
+extern void sc1PGameBossResumeWallpaperProcesses(void);
 extern void sc1PGameBossSetChangeWallpaper(void);
 extern void sc1PGameBossMakeCamera(void);
 extern void SC1PGameBossWallpaper0ProcDisplay(GObj *gobj);
@@ -16,7 +16,7 @@ extern void sc1PGameBossProcDisplayFadeAlpha(GObj *gobj);
 extern void sc1PGameBossProcDisplayFadeColor(GObj *gobj);
 extern void sc1PGameBossUpdateWallpaperColorID(void);
 extern void SC1PGameBossWallpaper3ProcUpdate0(GObj *gobj);
-extern void func_ovl65_80191B44(GObj *gobj);
+extern void sc1PGameBossRandomizeStarPosition(GObj *gobj);
 extern void SC1PGameBossWallpaper0ProcUpdate(GObj *gobj);
 extern void SC1PGameBossWallpaper1ProcUpdate(GObj *gobj);
 extern void SC1PGameBossWallpaper2ProcUpdate0(GObj *gobj);

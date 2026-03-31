@@ -1262,7 +1262,7 @@ void mnTitleMakePressStart(void)
 }
 
 // 0x80133634 - discarded language selection?
-void func_ovl10_80133634(void)
+void mnTitleMakeLanguageOption(void)
 {
 #if defined(REGION_US)
 	return;
@@ -1518,7 +1518,7 @@ void mnTitleFuncStart(void)
 	mnTitleMakeFire();
 	mnTitleMakeLogo();
 	mnTitleMakeLabels();
-	func_ovl10_80133634();
+	mnTitleMakeLanguageOption();
 	mnTitleMakePressStart();
 	mnTitleMakeSlash();
 	mnTitleMakeLogoFireParticles();

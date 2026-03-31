@@ -617,7 +617,7 @@ sb32 scStaffrollGetPauseStatusResume(void)
 }
 
 // 0x80131BB0
-void func_ovl59_80131BB0(Mtx44f mtx, Vec3f *vec, f32 *width, f32 *height)
+void scStaffrollProjectVertex(Mtx44f mtx, Vec3f *vec, f32 *width, f32 *height)
 {
 	f32 x = vec->x;
 	f32 y = vec->y;
@@ -634,7 +634,7 @@ void func_ovl59_80131BB0(Mtx44f mtx, Vec3f *vec, f32 *width, f32 *height)
 }
 
 // 0x80131C88
-void func_ovl59_80131C88(CObj *cobj)
+void scStaffrollSetupProjectionMatrix(CObj *cobj)
 {
 	Mtx44f m, n;
 
@@ -644,7 +644,7 @@ void func_ovl59_80131C88(CObj *cobj)
 }
 
 // 0x80131D30
-void func_ovl59_80131D30(DObj *dobj, Vec3f *vec, f32 *width, f32 *height)
+void scStaffrollProjectDObjVertex(DObj *dobj, Vec3f *vec, f32 *width, f32 *height)
 {
 	Mtx44f m, r;
 
@@ -662,11 +662,11 @@ void func_ovl59_80131D30(DObj *dobj, Vec3f *vec, f32 *width, f32 *height)
 		dobj->scale.vec.f.z
 	);
 	guMtxCatF(m, sSCStaffrollMatrix, r);
-	func_ovl59_80131BB0(r, vec, width, height);
+	scStaffrollProjectVertex(r, vec, width, height);
 }
 
 // 0x80131DD0
-void func_ovl59_80131DD0(GObj *gobj, SCStaffrollProjection *proj)
+void scStaffrollGetCreditProjection(GObj *gobj, SCStaffrollProjection *proj)
 {
 	SCStaffrollMatrix *credits = gobj->user_data.p;
 
@@ -680,7 +680,7 @@ void func_ovl59_80131DD0(GObj *gobj, SCStaffrollProjection *proj)
 }
 
 // 0x80131E70
-void func_ovl59_80131E70(Vec3f *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4)
+void scStaffrollInterpolateEdge(Vec3f *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4)
 {
 	arg0->x = arg2 - arg4;
 	arg0->y = arg3 - arg1;
@@ -704,7 +704,7 @@ sb32 scStaffrollCheckCursorNameOverlap(Vec3f *vec)
 }
 
 // 0x80131F34
-void func_ovl59_80131F34(GObj *arg0)
+void scStaffrollHighlightProcUpdate(GObj *arg0)
 {
 	GObj *ugobj = arg0->user_data.p;
 	SCStaffrollMatrix *credits = ugobj->user_data.p;
@@ -727,7 +727,7 @@ void func_ovl59_80131F34(GObj *arg0)
 }
 
 // 0x8013202C
-void func_ovl59_8013202C(GObj *arg0)
+void scStaffrollMakeOrUpdateHighlight(GObj *arg0)
 {
 	GObj *gobj = gGCCommonLinks[nGCCommonLinkID02];
 	GObj *ugobj = arg0->user_data.p;
@@ -737,7 +737,7 @@ void func_ovl59_8013202C(GObj *arg0)
 		gobj = gcMakeGObjSPAfter(8, NULL, nGCCommonLinkID02, GOBJ_PRIORITY_DEFAULT);
 		gcAddGObjDisplay(gobj, gcDrawDObjTreeForGObj, 3, GOBJ_PRIORITY_DEFAULT, ~0);
 		gcSetupCustomDObjs(gobj, sSCStaffrollDObjDesc, NULL, nGCMatrixKindTraRotRpyRSca, nGCMatrixKindNull, nGCMatrixKindNull);
-		gcAddGObjProcess(gobj, func_ovl59_80131F34, nGCProcessKindFunc, 1);
+		gcAddGObjProcess(gobj, scStaffrollHighlightProcUpdate, nGCProcessKindFunc, 1);
 
 		gobj->user_data.p = arg0;
 		ugobj->unk_gobj_0x1C = gobj;
@@ -1276,10 +1276,10 @@ sb32 scStaffrollCheckCursorHighlightPrompt(GObj *gobj, SCStaffrollProjection *pr
 
 	b = TRUE;
 
-	func_ovl59_80131E70(&sp4C, proj->px0, proj->py0, proj->px2, proj->py2);
-	func_ovl59_80131E70(&sp40, proj->px1, proj->py1, proj->px3, proj->py3);
-	func_ovl59_80131E70(&sp34, proj->px0, proj->py0, proj->px1, proj->py1);
-	func_ovl59_80131E70(&sp28, proj->px2, proj->py2, proj->px3, proj->py3);
+	scStaffrollInterpolateEdge(&sp4C, proj->px0, proj->py0, proj->px2, proj->py2);
+	scStaffrollInterpolateEdge(&sp40, proj->px1, proj->py1, proj->px3, proj->py3);
+	scStaffrollInterpolateEdge(&sp34, proj->px0, proj->py0, proj->px1, proj->py1);
+	scStaffrollInterpolateEdge(&sp28, proj->px2, proj->py2, proj->px3, proj->py3);
 
 	if 
 	(
@@ -1293,7 +1293,7 @@ sb32 scStaffrollCheckCursorHighlightPrompt(GObj *gobj, SCStaffrollProjection *pr
 
 		b = FALSE;
 
-		func_ovl59_8013202C(gobj);
+		scStaffrollMakeOrUpdateHighlight(gobj);
 		scStaffrollMakeHighlightGObj(gobj);
 		scStaffrollMakeStaffRoleTextGObj(gobj);
 		scStaffrollMakeCompanyTextGObj(gobj);
@@ -1302,14 +1302,14 @@ sb32 scStaffrollCheckCursorHighlightPrompt(GObj *gobj, SCStaffrollProjection *pr
 }
 
 // 0x8013330C
-void func_ovl59_8013330C(void)
+void scStaffrollCheckAllCreditsHighlight(void)
 {
 	GObj *gobj;
 	DObj *dobj;
 	SCStaffrollProjection proj;
 	sb32 b;
 
-	func_ovl59_80131C88(sSCStaffrollCamera);
+	scStaffrollSetupProjectionMatrix(sSCStaffrollCamera);
 
 	gobj = gGCCommonLinks[3];
 
@@ -1319,11 +1319,11 @@ void func_ovl59_8013330C(void)
 		{
 			dobj = DObjGetStruct(gobj);
 
-			func_ovl59_80131DD0(gobj, &proj);
-			func_ovl59_80131D30(dobj, &proj.pv0, &proj.px0, &proj.py0);
-			func_ovl59_80131D30(dobj, &proj.pv1, &proj.px1, &proj.py1);
-			func_ovl59_80131D30(dobj, &proj.pv2, &proj.px2, &proj.py2);
-			func_ovl59_80131D30(dobj, &proj.pv3, &proj.px3, &proj.py3);
+			scStaffrollGetCreditProjection(gobj, &proj);
+			scStaffrollProjectDObjVertex(dobj, &proj.pv0, &proj.px0, &proj.py0);
+			scStaffrollProjectDObjVertex(dobj, &proj.pv1, &proj.px1, &proj.py1);
+			scStaffrollProjectDObjVertex(dobj, &proj.pv2, &proj.px2, &proj.py2);
+			scStaffrollProjectDObjVertex(dobj, &proj.pv3, &proj.px3, &proj.py3);
 
 			b = scStaffrollCheckCursorHighlightPrompt(gobj, &proj);
 
@@ -1342,7 +1342,7 @@ sb32 scStaffrollGetPauseStatusHighlight(void)
 
 	if (button_tap & (A_BUTTON | B_BUTTON))
 	{
-		func_ovl59_8013330C();
+		scStaffrollCheckAllCreditsHighlight();
 
 		if (button_tap & B_BUTTON)
 		{

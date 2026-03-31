@@ -364,7 +364,7 @@ void dbCubeExit(void)
 }
 
 // 0x80131BCC - Unused?
-void func_ovl13_80131BCC(void)
+void dbCubeUnused(void)
 {
 	return;
 }

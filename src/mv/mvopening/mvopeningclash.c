@@ -72,7 +72,7 @@ void mvOpeningClashFuncLights(Gfx **dls)
 }
 
 // 0x80131B58 - Unused?
-void func_ovl49_80131B58()
+void mvOpeningClashUnused()
 {
     return;
 }

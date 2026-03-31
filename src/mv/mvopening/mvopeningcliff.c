@@ -153,7 +153,7 @@ void mvOpeningCliffMakeHills(void)
 }
 
 // 0x80131CA4 - Unused?
-void func_ovl46_80131CA4()
+void mvOpeningCliffUnused()
 {
     return;
 }

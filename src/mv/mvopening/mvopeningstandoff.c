@@ -134,7 +134,7 @@ void mvOpeningStandoffMakeGround(void)
 }
 
 // 0x80131BF8 - Unused?
-void func_ovl47_80131BF8()
+void mvOpeningStandoffUnused0()
 {
     return;
 }
@@ -384,7 +384,7 @@ void mvOpeningStandoffLightningFlashProcDisplay(GObj *gobj)
 }
 
 // 0x80132330 - Unused?
-void func_ovl47_80132330()
+void mvOpeningStandoffUnused1()
 {
     return;
 }
@@ -434,7 +434,7 @@ void mvOpeningStandoffMakeLightningFlashCamera(void)
 }
 
 // 0x80132424 - Unused?
-void func_ovl147_80132424()
+void mvOpeningStandoffUnused2()
 {
     return;
 }

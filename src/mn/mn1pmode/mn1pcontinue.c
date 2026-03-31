@@ -311,7 +311,7 @@ void mnPlayers1PGameContinueMakeScoreDisplay(s32 points)
 }
 
 // 0x80132094 - Unused?
-void func_ovl55_80132094(void)
+void mnPlayers1PGameContinueUnused(void)
 {
     return;
 }

@@ -1983,7 +1983,7 @@ void sc1PGameBossDefeatInterfaceProcUpdate(void)
     gmRumbleResumeProcessAll();
     gcFuncGObjByLink(nGCCommonLinkIDInterface, ifCommonBattleInterfaceResumeGObj, 0);
     gcFuncGObjByLink(nGCCommonLinkIDEffect, ifCommonBattleInterfaceResumeGObj, 0);
-    func_ovl65_801910B0();
+    sc1PGameBossResumeWallpaperProcesses();
     func_800266A0_272A0();
     syAudioStopBGMAll();
     ifCommonBattleEndPlaySoundQueue();

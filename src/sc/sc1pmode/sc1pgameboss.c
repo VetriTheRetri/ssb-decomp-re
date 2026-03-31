@@ -371,7 +371,7 @@ f32 sSC1PGameBossWallpaperStepRGBA;
 // // // // // // // // // // // //
 
 // 0x801910B0
-void func_ovl65_801910B0(void)
+void sc1PGameBossResumeWallpaperProcesses(void)
 {
     GObj *gobj;
 
@@ -635,7 +635,7 @@ void SC1PGameBossWallpaper3ProcUpdate0(GObj *gobj)
 }
 
 // 0x80191B44
-void func_ovl65_80191B44(GObj *gobj)
+void sc1PGameBossRandomizeStarPosition(GObj *gobj)
 {
     DObj *dobj = DObjGetStruct(gobj);
     f32 lr;
@@ -684,7 +684,7 @@ void SC1PGameBossWallpaper0ProcUpdate(GObj *gobj)
 
     if (gobj->anim_frame <= 0.0F)
     {
-        func_ovl65_80191B44(gobj);
+        sc1PGameBossRandomizeStarPosition(gobj);
     }
 }
 
@@ -842,7 +842,7 @@ void sc1PGameBossSetWallpaperTranslate(GObj *gobj, s32 plan_id)
 
     if (sSC1PGameBossMain.bosswallpaper->is_random_wallpaper == TRUE)
     {
-        func_ovl65_80191B44(gobj);
+        sc1PGameBossRandomizeStarPosition(gobj);
 
         dobj->translate.vec.f.z = sSC1PGameBossMain.bosswallpaper->bossplan[plan_id].pos.z;
     }

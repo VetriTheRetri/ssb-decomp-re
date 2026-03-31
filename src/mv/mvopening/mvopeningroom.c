@@ -322,7 +322,7 @@ void mvOpeningFighterProcUpdate(GObj *fighter_gobj)
 }
 
 // 0x801322C8 - Unused?
-void func_ovl34_801322C8(GObj *fighter_gobj)
+void mvOpeningRoomFighterApplyTransNVel(GObj *fighter_gobj)
 {
 	FTStruct *fp;
 	DObj *topn_joint, *transn_joint;
@@ -337,13 +337,13 @@ void func_ovl34_801322C8(GObj *fighter_gobj)
 }
 
 // 0x80132320 - Unused?
-void func_ovl34_80132320(void)
+void mvOpeningRoomUnused0(void)
 {
 	return;
 }
 
 // 0x80132328 - Unused?
-void func_ovl34_80132328(void)
+void mvOpeningRoomUnused1(void)
 {
 	return;
 }

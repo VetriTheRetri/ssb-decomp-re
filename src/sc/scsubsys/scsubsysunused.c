@@ -33,7 +33,7 @@ typedef struct scSubsysUnkUD
 } scSubsysUnkUD;
 
 // This function isn't even called, ever. Stinky.
-void func_ovl1_803903E0(GObj *gobj, s32 arg1)
+void scSubsysUnusedSetCostume(GObj *gobj, s32 arg1)
 {
     s32 i;
     DObj *temp_s0;

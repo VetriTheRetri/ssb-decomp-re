@@ -336,13 +336,13 @@ sb32 sSC1PBonusStageIsTimeUp;
 // // // // // // // // // // // //
 
 // 0x8018D0C0
-void func_ovl6_8018D0C0(void)
+void sc1PBonusStageUnused0(void)
 {
 	return;
 }
 
 // 0x8018D0C8
-void func_ovl6_8018D0C8(void)
+void sc1PBonusStageUnused1(void)
 {
 	return;
 }

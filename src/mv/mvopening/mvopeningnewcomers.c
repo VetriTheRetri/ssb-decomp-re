@@ -144,13 +144,13 @@ sb32 mvOpeningNewcomersCheckLocked(s32 fkind)
 }
 
 // 0x80131C28 - Unused?
-void func_ovl52_80131C28()
+void mvOpeningNewcomersUnused0()
 {
     return;
 }
 
 // 0x80131C30 - Unused?
-void func_ovl52_80131C30()
+void mvOpeningNewcomersUnused1()
 {
     return;
 }

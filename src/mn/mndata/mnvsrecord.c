@@ -1639,7 +1639,7 @@ f32 mnVSRecordGetAvgAgainst(s32 this_fkind, s32 against_fkind)
 }
 
 // 0x8013547C - Unused?
-void func_ovl32_8013547C(void)
+void mnVSRecordUnused(void)
 {
 	return;
 }

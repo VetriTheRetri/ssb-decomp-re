@@ -1372,7 +1372,7 @@ s32 mnCharactersGetPage(s32 fkind)
 
 #if defined(REGION_US)
 // 0x80131BF8 - Unused?
-void func_ovl33_80131BF8(void)
+void mnCharactersUnused0(void)
 {
 	return;
 }
@@ -1699,7 +1699,7 @@ void mnCharactersSetFighterPosition(GObj *fighter_gobj, s32 fkind)
 }
 
 // 0x801324F8 - Unused?
-void func_ovl33_801324F8(void)
+void mnCharactersUnused1(void)
 {
 	return;
 }

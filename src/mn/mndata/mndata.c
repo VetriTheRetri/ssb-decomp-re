@@ -214,7 +214,7 @@ void mnDataMakeOptionTab(GObj *gobj, f32 pos_x, f32 pos_y, s32 lrs)
 }
 
 // 0x80131D54
-void func_ovl61_80131D54(void)
+void mnDataUnused(void)
 {
     return;
 }

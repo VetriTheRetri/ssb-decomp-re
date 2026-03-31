@@ -1169,7 +1169,7 @@ void sc1PStageClearMakeTargetTextSObjs(void)
 }
 
 // 0x80132DC0
-void func_ovl56_80132DC0(GObj *gobj)
+void sc1PStageClearBonusObjectiveProcUpdate(GObj *gobj)
 {
 	gobj->flags = (gobj->user_data.u < sSC1PStageClearTotalTimeTics) ? GOBJ_FLAG_NONE : GOBJ_FLAG_HIDDEN;
 
@@ -1183,7 +1183,7 @@ void func_ovl56_80132DC0(GObj *gobj)
 }
 
 // 0x80132E40
-void func_ovl56_80132E40(f32 x, f32 y, s32 objective_num)
+void sc1PStageClearMakeBonusObjective(f32 x, f32 y, s32 objective_num)
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -1191,7 +1191,7 @@ void func_ovl56_80132E40(f32 x, f32 y, s32 objective_num)
 	sSC1PStageClearBonusObjectiveGObjs[objective_num] = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
 
 	gcAddGObjDisplay(gobj, sc1PStageClearTextProcDisplay, 26, GOBJ_PRIORITY_DEFAULT, ~0);
-	gcAddGObjProcess(gobj, func_ovl56_80132DC0, nGCProcessKindFunc, 1);
+	gcAddGObjProcess(gobj, sc1PStageClearBonusObjectiveProcUpdate, nGCProcessKindFunc, 1);
 
 	gobj->user_data.u = (objective_num * 10) + sSC1PStageClearTotalTimeTics;
 
@@ -1213,7 +1213,7 @@ void func_ovl56_80132E40(f32 x, f32 y, s32 objective_num)
 }
 
 // 0x80132F78
-void func_ovl56_80132F78(void)
+void sc1PStageClearMakeBonusObjectives(void)
 {
 	s32 i = 0;
 
@@ -1223,7 +1223,7 @@ void func_ovl56_80132F78(void)
 
 		do
 		{
-			func_ovl56_80132E40(x, 93.0F, i);
+			sc1PStageClearMakeBonusObjective(x, 93.0F, i);
 			i++, x += 16;
 		}
 		while (i < sSC1PStageClearBonusObjectivesCleared);
@@ -1956,7 +1956,7 @@ void sc1PStageClearUpdateResultScore(void)
 		}
 		else if (sSC1PStageClearTotalTimeTics == 20)
 		{
-			func_ovl56_80132F78();
+			sc1PStageClearMakeBonusObjectives();
 			sSC1PStageClearBaseIntervalTic = (sSC1PStageClearBonusObjectivesCleared * 10) + sSC1PStageClearTotalTimeTics;
 		}
 	}

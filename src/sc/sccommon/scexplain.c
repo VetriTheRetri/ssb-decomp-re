@@ -526,7 +526,7 @@ void scExplainUpdateTextBoxSprite(void)
 }
 
 // 0x8018DDBC
-void func_ovl63_8018DDBC(void)
+void scExplainUpdateStick(void)
 {
     s32 sw = sSCExplainPhase->control_stick_args.sprite_status;
     GObj *stick_gobj = sSCExplainStruct.stick_gobj;
@@ -638,7 +638,7 @@ void scExplainUpdatePhase(void)
         else
         {
             scExplainUpdateTextBoxSprite();
-            func_ovl63_8018DDBC();
+            scExplainUpdateStick();
             scExplainHideTapSpark();
             scExplainSpecialMoveRGBProcUpdate();
             scExplainUpdateArgsSObj(&sSCExplainPhase->phase_args0, sSCExplainStruct.phase_sobj0);

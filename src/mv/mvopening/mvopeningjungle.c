@@ -208,7 +208,7 @@ void mvOpeningJungleSetupFiles(void)
 }
 
 // 0x8018D160 - Unused?
-void func_ovl51_8018D160(void)
+void mvOpeningJungleUnused(void)
 {
     return;
 }
@@ -371,7 +371,7 @@ void mvOpeningJungleFuncRun(GObj *gobj)
 }
 
 // 0x8018D668 - Unused?
-void func_ovl51_8018D668(void)
+void mvOpeningJungleUnusedExit(void)
 {
     return;
 }

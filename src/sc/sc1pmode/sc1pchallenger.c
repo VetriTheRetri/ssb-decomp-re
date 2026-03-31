@@ -303,7 +303,7 @@ void sc1PChallengerInitVars(void)
 }
 
 // 0x80132110 - unused?
-void func_ovl23_80132110(void)
+void sc1PChallengerUnused(void)
 {
     return;
 }
@@ -328,7 +328,7 @@ void sc1PChallengerFuncRun(GObj *gobj)
             gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
             gSCManagerSceneData.scene_curr = nSCKindTitle;
             
-            func_ovl23_80132110();
+            sc1PChallengerUnused();
             syTaskmanSetLoadScene();
         }
     }

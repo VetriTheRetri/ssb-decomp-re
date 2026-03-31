@@ -560,7 +560,7 @@ void mnOptionMakeDecals(void)
 }
 
 // 0x80132618 - Unused?
-void func_ovl60_80132618(GObj *gobj)
+void mnOptionUnusedProcDisplay(GObj *gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
@@ -577,7 +577,7 @@ void func_ovl60_80132618(GObj *gobj)
 }
 
 // 0x8013275C
-void func_ovl60_8013275C(void)
+void mnOptionEjectCreditsGObj(void)
 {
     if (D_ovl60_801337D4 != NULL)
     {
@@ -588,16 +588,16 @@ void func_ovl60_8013275C(void)
 }
 
 // 0x80132794 - Unused?
-void func_ovl60_80132794(GObj *gobj)
+void mnOptionCreditsProcUpdate(GObj *gobj)
 {
     if (sMNOptionTotalTimeTics == D_ovl60_801337D8)
     {
-        func_ovl60_8013275C();
+        mnOptionEjectCreditsGObj();
     }
 }
 
 // 0x801327CC - Unused?
-void func_ovl60_801327CC(void)
+void mnOptionUnused(void)
 {
     return;
 }

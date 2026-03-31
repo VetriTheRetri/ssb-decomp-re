@@ -557,7 +557,7 @@ void mnBackupClearApplyOptionID(s32 option)
 }
 
 // 0x801325CC - unused?
-func_ovl53_801325CC(void)
+mnBackupClearUnused0(void)
 {
     return;
 }
@@ -606,7 +606,7 @@ void mnBackupClearUpdateOptionMainMenu(void)
         gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
         gSCManagerSceneData.scene_curr = nSCKindOption;
 
-        func_ovl53_801325CC();
+        mnBackupClearUnused0();
         syTaskmanSetLoadScene();
         return;
     }
@@ -663,7 +663,7 @@ void mnBackupClearUpdateOptionMainMenu(void)
 }
 
 // 0x80132928
-void func_ovl53_80132928(void)
+void mnBackupClearUnused1(void)
 {
     return;
 }

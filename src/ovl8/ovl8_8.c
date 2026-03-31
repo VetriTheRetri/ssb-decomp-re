@@ -64,6 +64,7 @@ extern s32 D_ovl8_8038EE64;
 extern s32 D_ovl8_8038EE68[];
 extern s32 D_ovl8_8038EE70[];
 extern Gfx D_8038EE90_1AB6E0[];
+extern s32 D_ovl8_80389F70;
 
 // DATA
 s32 D_ovl8_80387CA0[] = { 0xDF000000, 0x00000000 };
@@ -425,7 +426,260 @@ void func_ovl8_80377374(DBMenuPosition *arg0)
 }
 
 // 0x803773CC
+#ifdef NON_MATCHING
+void func_ovl8_803773CC(Bitmap* arg0, s16 arg1, db4Shorts* arg2)
+{
+    s16 row;
+    s16 col;
+    s16 width_img;
+    s32 mode;
+    s32 odd;
+    u8 *pixAddr8;
+    u16 *pixAddr16;
+    u32 *pixAddr32;
+    u8 color8;
+    u8 readColor8;
+    u16 color16;
+    u16 readColor16;
+    u32 color32;
+    u32 readColor32;
+
+    width_img = arg0->width_img;
+
+    switch (arg1)
+    {
+    case 1:
+        for (row = 0; row < arg2->uarr[3]; row++)
+        {
+            for (col = 0; col < arg2->uarr[2]; col++)
+            {
+                s32 rowCoord;
+                mode = D_ovl8_80389F60;
+
+                if (mode == 4)
+                {
+                    rowCoord = arg2->arr[1] + row;
+                    odd = rowCoord & 1;
+                    color8 = (u8)D_ovl8_80389F5C;
+                    pixAddr8 = (u8*)arg0->buf + rowCoord * width_img + arg2->arr[0] + col;
+                }
+                else
+                {
+                    rowCoord = arg2->arr[1] + row;
+                    odd = rowCoord & 1;
+
+                    if (odd != 0)
+                    {
+                        s32 colCoord = arg2->arr[0] + col;
+                        if (colCoord & 4)
+                        {
+                            pixAddr8 = (u8*)arg0->buf + rowCoord * width_img + arg2->arr[0] + col;
+                            readColor8 = pixAddr8[-4];
+                        }
+                        else
+                        {
+                            pixAddr8 = (u8*)arg0->buf + rowCoord * width_img + arg2->arr[0] + col;
+                            color8 = pixAddr8[4];
+                            readColor8 = color8;
+                        }
+                    }
+                    else
+                    {
+                        pixAddr8 = (u8*)arg0->buf + rowCoord * width_img + arg2->arr[0] + col;
+                        readColor8 = pixAddr8[0];
+                    }
+
+                    if (mode == 2)
+                    {
+                        color8 = (readColor8 | (u32)D_ovl8_80389F5C) & 0xFF;
+                    }
+                    else if (mode == 1)
+                    {
+                        color8 = (readColor8 ^ (u32)D_ovl8_80389F5C) & 0xFF;
+                    }
+                }
+
+                if (odd != 0)
+                {
+                    s32 colCoord = arg2->arr[0] + col;
+                    if (colCoord & 4)
+                    {
+                        pixAddr8[-4] = color8;
+                        *((u8*)((u8*)arg0->buf + (arg2->arr[1] + row) * width_img + arg2->arr[0] + col) - 4) = color8;
+                        *((u8*)((u8*)arg0->buf + (arg2->arr[1] + row) * width_img + arg2->arr[0] + col) - 4) = color8;
+                    }
+                    else
+                    {
+                        pixAddr8[4] = color8;
+                        *((u8*)((u8*)arg0->buf + (arg2->arr[1] + row) * width_img + arg2->arr[0] + col) + 4) = color8;
+                    }
+                }
+                else
+                {
+                    pixAddr8[0] = color8;
+                }
+            }
+        }
+        break;
+
+    case 2:
+        for (row = 0; row < arg2->uarr[3]; row++)
+        {
+            for (col = 0; col < arg2->uarr[2]; col++)
+            {
+                s32 rowCoord;
+                s16 col2;
+                mode = D_ovl8_80389F60;
+
+                col2 = col;
+
+                if (mode == 4)
+                {
+                    rowCoord = arg2->arr[1] + row;
+                    odd = rowCoord & 1;
+                    color16 = (u16)D_ovl8_80389F5C;
+                    pixAddr16 = (u16*)((u8*)arg0->buf + (rowCoord * width_img + arg2->arr[0]) * 2 + col2 * 2);
+                }
+                else
+                {
+                    rowCoord = arg2->arr[1] + row;
+                    odd = rowCoord & 1;
+
+                    if (odd != 0)
+                    {
+                        s32 colCoord = arg2->arr[0] + col;
+                        if (colCoord & 2)
+                        {
+                            pixAddr16 = (u16*)((u8*)arg0->buf + (rowCoord * width_img + arg2->arr[0]) * 2 + col2 * 2);
+                            readColor16 = pixAddr16[-2];
+                        }
+                        else
+                        {
+                            pixAddr16 = (u16*)((u8*)arg0->buf + (rowCoord * width_img + arg2->arr[0]) * 2 + col2 * 2);
+                            color16 = pixAddr16[2];
+                            readColor16 = color16;
+                        }
+                    }
+                    else
+                    {
+                        pixAddr16 = (u16*)((u8*)arg0->buf + (rowCoord * width_img + arg2->arr[0]) * 2 + col2 * 2);
+                        readColor16 = pixAddr16[0];
+                    }
+
+                    if (mode == 2)
+                    {
+                        color16 = (readColor16 | (u32)D_ovl8_80389F5C) & 0xFFFF;
+                    }
+                    else if (mode == 1)
+                    {
+                        color16 = (readColor16 ^ (u32)D_ovl8_80389F5C) & 0xFFFF;
+                    }
+                }
+
+                if (odd != 0)
+                {
+                    s32 colCoord = arg2->arr[0] + col;
+                    if (colCoord & 2)
+                    {
+                        pixAddr16[-2] = color16;
+                        *(u16*)((u8*)arg0->buf + (arg2->arr[1] + row) * width_img * 2 + arg2->arr[0] * 2 + col2 * 2 - 4) = color16;
+                        *(u16*)((u8*)arg0->buf + (arg2->arr[1] + row) * width_img * 2 + arg2->arr[0] * 2 + col2 * 2 - 4) = color16;
+                    }
+                    else
+                    {
+                        pixAddr16[2] = color16;
+                        *(u16*)((u8*)arg0->buf + (arg2->arr[1] + row) * width_img * 2 + arg2->arr[0] * 2 + col2 * 2 + 4) = color16;
+                    }
+                }
+                else
+                {
+                    pixAddr16[0] = color16;
+                }
+            }
+        }
+        break;
+
+    case 3:
+        for (row = 0; row < arg2->uarr[3]; row++)
+        {
+            for (col = 0; col < arg2->uarr[2]; col++)
+            {
+                s32 rowCoord;
+                s16 col2;
+                mode = D_ovl8_80389F60;
+
+                col2 = col;
+
+                if (mode == 4)
+                {
+                    rowCoord = arg2->arr[1] + row;
+                    odd = rowCoord & 1;
+                    color32 = D_ovl8_80389F5C;
+                    pixAddr32 = (u32*)((u8*)arg0->buf + (rowCoord * width_img + arg2->arr[0]) * 4 + col2 * 4);
+                }
+                else
+                {
+                    rowCoord = arg2->arr[1] + row;
+                    odd = rowCoord & 1;
+
+                    if (odd != 0)
+                    {
+                        s32 colCoord = arg2->arr[0] + col;
+                        if (colCoord & 2)
+                        {
+                            pixAddr32 = (u32*)((u8*)arg0->buf + (rowCoord * width_img + arg2->arr[0]) * 4 + col2 * 4);
+                            readColor32 = pixAddr32[-2];
+                        }
+                        else
+                        {
+                            pixAddr32 = (u32*)((u8*)arg0->buf + (rowCoord * width_img + arg2->arr[0]) * 4 + col2 * 4);
+                            color32 = pixAddr32[2];
+                            readColor32 = color32;
+                        }
+                    }
+                    else
+                    {
+                        pixAddr32 = (u32*)((u8*)arg0->buf + (rowCoord * width_img + arg2->arr[0]) * 4 + col2 * 4);
+                        readColor32 = pixAddr32[0];
+                    }
+
+                    if (mode == 2)
+                    {
+                        color32 = readColor32 | (u32)D_ovl8_80389F5C;
+                    }
+                    else if (mode == 1)
+                    {
+                        color32 = readColor32 ^ (u32)D_ovl8_80389F5C;
+                    }
+                }
+
+                if (odd != 0)
+                {
+                    s32 colCoord = arg2->arr[0] + col;
+                    if (colCoord & 2)
+                    {
+                        pixAddr32[-2] = color32;
+                        *(u32*)((u8*)arg0->buf + (arg2->arr[1] + row) * width_img * 4 + arg2->arr[0] * 4 + col2 * 4 - 8) = color32;
+                        *(u32*)((u8*)arg0->buf + (arg2->arr[1] + row) * width_img * 4 + arg2->arr[0] * 4 + col2 * 4 - 8) = color32;
+                    }
+                    else
+                    {
+                        pixAddr32[2] = color32;
+                        *(u32*)((u8*)arg0->buf + (arg2->arr[1] + row) * width_img * 4 + arg2->arr[0] * 4 + col2 * 4 + 8) = color32;
+                    }
+                }
+                else
+                {
+                    pixAddr32[0] = color32;
+                }
+            }
+        }
+        break;
+    }
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_803773CC.s")
+#endif
 
 // 0x80377AEC
 void func_ovl8_80377AEC(Sprite* arg0, db4Shorts* arg1, u8* arg2, s32 arg3)
@@ -757,10 +1011,430 @@ void func_ovl8_803781A4(s32 bmsiz, Bitmap *src, Bitmap *dst, db4Shorts *srcRect,
 #endif
 
 // 0x803787C0
+#ifdef NON_MATCHING
+void func_ovl8_803787C0(Sprite *src, Sprite *dst, DBMenuPosition *srcPos, db2Shorts *dstOffset)
+{
+    db2Shorts srcOff;
+    DBMenuPosition srcRect;
+    DBMenuPosition clipRect;
+    DBMenuPosition dstRect;
+    DBMenuPosition spE0;
+    DBMenuPosition spD8;
+    s32 srcBmWidth;
+    s32 srcBmHeight;
+    s32 srcStartTileX;
+    s32 srcStartTileY;
+    s32 srcTilesX;
+    s32 srcTilesY;
+    s32 dstTilesX;
+    s32 dstTilesY;
+    s32 dstTilesXw;
+    s32 dstTilesYh;
+    s16 dstBmWidth;
+    s16 dstBmHeight;
+    s32 rowBase;
+    s32 colBase;
+    s32 colOff;
+    s32 row_tile;
+    s32 col_tile;
+    s32 i;
+    s32 j;
+    Bitmap *srcBm;
+    Bitmap *dstBm;
+
+    srcOff = *dstOffset;
+    srcRect = *srcPos;
+
+    clipRect.x = 0;
+    clipRect.y = 0;
+    clipRect.w = src->width;
+    clipRect.h = src->height;
+
+    func_ovl8_8037A67C((s16 *)srcPos, (s16 *)&clipRect, (s16 *)&srcRect);
+
+    srcOff.arr[0] = srcOff.arr[0] + srcRect.x - srcPos->x;
+    srcOff.arr[1] = srcOff.arr[1] + srcRect.y - srcPos->y;
+
+    if (func_ovl8_8037AA5C(&srcRect) != 0)
+    {
+        return;
+    }
+
+    clipRect.x = 0;
+    clipRect.y = 0;
+    clipRect.w = dst->width;
+    clipRect.h = dst->height;
+
+    dstRect.x = srcOff.arr[0];
+    dstRect.y = srcOff.arr[1];
+    dstRect.w = srcRect.w;
+    dstRect.h = srcRect.h;
+
+    func_ovl8_8037A67C((s16 *)&clipRect, (s16 *)&dstRect, (s16 *)&spE0);
+
+    srcOff.arr[0] = srcOff.arr[0] + spE0.x - dstRect.x;
+    srcOff.arr[1] = srcOff.arr[1] + spE0.y - dstRect.y;
+
+    spE0.x = srcOff.arr[0] - dstOffset->arr[0];
+    spE0.y = srcOff.arr[1] - dstOffset->arr[1];
+
+    if (func_ovl8_8037AA5C(&spE0) != 0)
+    {
+        return;
+    }
+
+    dstRect = spE0;
+    dstRect.x = srcOff.arr[0];
+    dstRect.y = srcOff.arr[1];
+
+    srcBm = dst->bitmap;
+    srcBmWidth = srcBm->width;
+    srcBmHeight = srcBm->actualHeight;
+
+    srcStartTileX = srcRect.x / srcBmWidth;
+    srcStartTileY = srcRect.y / srcBmHeight;
+
+    dstBm = src->bitmap;
+    dstBmWidth = dstBm->width;
+    dstBmHeight = dstBm->actualHeight;
+
+    srcTilesX = src->width / srcBmWidth + ((src->width % srcBmWidth) != 0);
+    srcTilesY = src->width / srcBmWidth;
+
+    srcStartTileX = srcRect.x / dstBmWidth;
+    srcStartTileY = srcRect.y / dstBmHeight;
+
+    srcTilesX = dst->width / dstBmWidth + ((dst->width % dstBmWidth) != 0);
+
+    dstTilesXw = (dstRect.w / srcBmWidth) + ((dstRect.w % srcBmWidth) != 0) + 1;
+    dstTilesYh = (dstRect.h / srcBmHeight) + ((dstRect.h % srcBmHeight) != 0) + 1;
+
+    dstTilesX = (dst->width / dstBmWidth) + ((dst->width % dstBmWidth) != 0) + 1;
+    dstTilesY = (dstRect.h / dstBmHeight) + ((dstRect.h % dstBmHeight) != 0) + 1;
+
+    if (dstTilesY <= 0)
+    {
+        return;
+    }
+
+    for (row_tile = 0; row_tile < dstTilesY; row_tile++)
+    {
+        col_tile = 0;
+        if (dstTilesXw <= 0)
+        {
+            goto next_row;
+        }
+
+        rowBase = srcStartTileX * srcBmWidth;
+        colOff = (srcStartTileY + row_tile) * srcBmHeight;
+
+        do
+        {
+            spE0.x = rowBase;
+            spE0.y = colOff;
+            spE0.w = srcBmWidth;
+            spE0.h = srcBmHeight;
+
+            if (dstTilesYh <= 0)
+            {
+                goto next_col;
+            }
+
+            for (j = 0; j < dstTilesYh; j++)
+            {
+                i = 0;
+                if (dstTilesX <= 0)
+                {
+                    goto next_j;
+                }
+
+                i = 0;
+                {
+                    s32 tileBaseX = srcStartTileX * dstBmWidth;
+                    s32 tileBaseY;
+                    s32 tileY = srcStartTileY + col_tile;
+                    tileBaseY = tileY * dstBmHeight;
+
+                    do
+                    {
+                        spD8.x = tileBaseX + srcOff.arr[0] - srcRect.x;
+                        spD8.y = tileBaseY + srcOff.arr[1] - srcRect.y;
+                        spD8.w = dstBmWidth;
+                        spD8.h = dstBmHeight;
+
+                        if (func_ovl8_8037A67C((s16 *)&spE0, (s16 *)&dstRect, (s16 *)&clipRect) != 0)
+                        {
+                            if (func_ovl8_8037A67C((s16 *)&clipRect, (s16 *)&spD8, (s16 *)&clipRect) != 0)
+                            {
+                                s32 srcPixX;
+                                s32 srcPixY;
+                                s32 dstPixX;
+                                s32 dstPixY;
+                                Bitmap *srcTileBm;
+                                Bitmap *dstTileBm;
+
+                                srcPixX = (clipRect.x - srcOff.arr[0] + srcRect.x) % dstBmWidth;
+                                srcPixY = (clipRect.y - srcOff.arr[1] + srcRect.y) % dstBmHeight;
+                                dstPixX = clipRect.x % srcBmWidth;
+                                dstPixY = clipRect.y % srcBmHeight;
+
+                                clipRect.w = spE0.w;
+                                clipRect.h = spE0.h;
+
+                                srcTileBm = dst->bitmap + (tileY * dstTilesXw + j) * 1;
+                                dstTileBm = src->bitmap + ((srcStartTileY + row_tile) * srcTilesX + col_tile) * 1;
+
+                                func_ovl8_803781A4(src->bmsiz, srcTileBm, dstTileBm, &clipRect, &spD8);
+                            }
+                        }
+
+                        i++;
+                        tileBaseX += dstBmWidth;
+                    } while (i < dstTilesX);
+                }
+            next_j:
+                col_tile++;
+            }
+        next_col:
+            rowBase += srcBmWidth;
+        } while (col_tile < dstTilesXw);
+
+    next_row:
+        row_tile++;
+    }
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_803787C0.s")
+#endif
 
 // 0x80379070
+#ifdef NON_MATCHING
+void func_ovl8_80379070(u8* arg0, s32 arg1, Bitmap* arg2, s16 arg3, DBMenuPosition* arg4)
+{
+    s16 temp_v0;
+    s16 var_a0;
+    s16 var_a1;
+    s32 temp_t0;
+    s32 var_t2;
+    u8* var_v1;
+    s32 mode;
+    u8 src_byte;
+    u16 src_half;
+    s32 src_word;
+    u8 dest_byte;
+    u16 dest_half;
+    s32 dest_word;
+    u8* pixel_addr;
+    u16* pixel_addr16;
+    s32* pixel_addr32;
+
+    temp_v0 = arg2->width_img;
+
+    switch (arg3) {
+    default:
+        break;
+    case 1:
+        var_v1 = arg0;
+        var_a1 = 0;
+        if ((s32)arg4->h <= 0) return;
+        mode = D_ovl8_80389F60;
+        do {
+            var_a0 = 0;
+            if ((s32)arg4->w > 0)
+            do {
+                src_byte = *var_v1;
+                var_v1++;
+
+                if (mode == 4) {
+                    temp_t0 = arg4->y + var_a1;
+                    var_t2 = src_byte & 0xFF;
+                    pixel_addr = (u8*)arg2->buf + temp_t0 * temp_v0 + arg4->x + var_a0;
+                } else {
+                    temp_t0 = arg4->y + var_a1;
+                    if (temp_t0 & 1) {
+                        if ((arg4->x + var_a0) & 4) {
+                            pixel_addr = (u8*)arg2->buf + temp_t0 * temp_v0 + arg4->x + var_a0;
+                            dest_byte = pixel_addr[-4];
+                        } else {
+                            pixel_addr = (u8*)arg2->buf + temp_t0 * temp_v0 + arg4->x + var_a0;
+                            var_t2 = pixel_addr[4];
+                            dest_byte = var_t2 & 0xFF;
+                        }
+                    } else {
+                        pixel_addr = (u8*)arg2->buf + temp_t0 * temp_v0 + arg4->x + var_a0;
+                        dest_byte = *pixel_addr;
+                    }
+                    var_t2 = dest_byte & 0xFF;
+
+                    if (mode == 0x10) {
+                        if (src_byte != D_ovl8_80389F64) {
+                            var_t2 = src_byte & 0xFF;
+                        }
+                    } else if (mode == 8) {
+                        if (src_byte != 0) {
+                            var_t2 = src_byte & 0xFF;
+                        }
+                    } else if (mode == 2) {
+                        var_t2 = (dest_byte | src_byte) & 0xFF;
+                    } else if (mode == 1) {
+                        var_t2 = (dest_byte ^ src_byte) & 0xFF;
+                    }
+                }
+
+                if (temp_t0 & 1) {
+                    if ((arg4->x + var_a0) & 4) {
+                        pixel_addr[-4] = var_t2;
+                        ((u8*)arg2->buf + (arg4->y + var_a1) * temp_v0 + arg4->x + var_a0)[-4] = var_t2;
+                        ((u8*)arg2->buf + (arg4->y + var_a1) * temp_v0 + arg4->x + var_a0)[-4] = var_t2;
+                    } else {
+                        pixel_addr[4] = var_t2;
+                        ((u8*)arg2->buf + (arg4->y + var_a1) * temp_v0 + arg4->x + var_a0)[4] = var_t2;
+                    }
+                } else {
+                    *pixel_addr = var_t2;
+                }
+                var_a0++;
+            } while (var_a0 < (s32)arg4->w);
+            var_a1++;
+            var_v1 += arg1 - (s32)arg4->w;
+        } while (var_a1 < (s32)arg4->h);
+        return;
+
+    case 2:
+        var_v1 = arg0;
+        var_a1 = 0;
+        if ((s32)arg4->h <= 0) return;
+        mode = D_ovl8_80389F60;
+        do {
+            var_a0 = 0;
+            if ((s32)arg4->w > 0)
+            do {
+                src_half = *(u16*)var_v1;
+                var_v1 += 2;
+
+                if (mode == 4) {
+                    temp_t0 = arg4->y + var_a1;
+                    dest_half = src_half & 0xFFFF;
+                    pixel_addr16 = (u16*)((u8*)arg2->buf + temp_t0 * temp_v0 * 2 + arg4->x * 2 + var_a0 * 2);
+                } else {
+                    temp_t0 = arg4->y + var_a1;
+                    if (temp_t0 & 1) {
+                        if ((arg4->x + var_a0) & 2) {
+                            pixel_addr16 = (u16*)((u8*)arg2->buf + temp_t0 * temp_v0 * 2 + arg4->x * 2 + var_a0 * 2);
+                            dest_half = pixel_addr16[-2];
+                        } else {
+                            pixel_addr16 = (u16*)((u8*)arg2->buf + temp_t0 * temp_v0 * 2 + arg4->x * 2 + var_a0 * 2);
+                            dest_half = pixel_addr16[2] & 0xFFFF;
+                        }
+                    } else {
+                        pixel_addr16 = (u16*)((u8*)arg2->buf + temp_t0 * temp_v0 * 2 + arg4->x * 2 + var_a0 * 2);
+                        dest_half = *pixel_addr16;
+                    }
+                    dest_half &= 0xFFFF;
+
+                    if (mode == 0x10) {
+                        if (src_half != D_ovl8_80389F64) {
+                            dest_half = src_half & 0xFFFF;
+                        }
+                    } else if (mode == 8) {
+                        if (src_half != 0) {
+                            dest_half = src_half & 0xFFFF;
+                        }
+                    } else if (mode == 2) {
+                        dest_half = (dest_half | src_half) & 0xFFFF;
+                    } else if (mode == 1) {
+                        dest_half = (dest_half ^ src_half) & 0xFFFF;
+                    }
+                }
+
+                if (temp_t0 & 1) {
+                    if ((arg4->x + var_a0) & 2) {
+                        pixel_addr16[-2] = dest_half;
+                        ((u16*)((u8*)arg2->buf + (arg4->y + var_a1) * temp_v0 * 2 + arg4->x * 2 + var_a0 * 2))[-2] = dest_half;
+                        ((u16*)((u8*)arg2->buf + (arg4->y + var_a1) * temp_v0 * 2 + arg4->x * 2 + var_a0 * 2))[-2] = dest_half;
+                    } else {
+                        pixel_addr16[2] = dest_half;
+                        ((u16*)((u8*)arg2->buf + (arg4->y + var_a1) * temp_v0 * 2 + arg4->x * 2 + var_a0 * 2))[2] = dest_half;
+                    }
+                } else {
+                    *pixel_addr16 = dest_half;
+                }
+                var_a0++;
+            } while (var_a0 < (s32)arg4->w);
+            var_a1++;
+            var_v1 += (arg1 - (s32)arg4->w) * 2;
+        } while (var_a1 < (s32)arg4->h);
+        return;
+
+    case 3:
+        var_v1 = arg0;
+        var_a1 = 0;
+        if ((s32)arg4->h <= 0) break;
+        mode = D_ovl8_80389F60;
+        do {
+            var_a0 = 0;
+            if ((s32)arg4->w > 0)
+            do {
+                src_word = *(s32*)var_v1;
+                var_v1 += 4;
+
+                if (mode == 4) {
+                    temp_t0 = arg4->y + var_a1;
+                    dest_word = src_word;
+                    pixel_addr32 = (s32*)((u8*)arg2->buf + temp_t0 * temp_v0 * 4 + arg4->x * 4 + var_a0 * 4);
+                } else {
+                    temp_t0 = arg4->y + var_a1;
+                    if (temp_t0 & 1) {
+                        if ((arg4->x + var_a0) & 2) {
+                            pixel_addr32 = (s32*)((u8*)arg2->buf + temp_t0 * temp_v0 * 4 + arg4->x * 4 + var_a0 * 4);
+                            dest_word = pixel_addr32[-2];
+                        } else {
+                            pixel_addr32 = (s32*)((u8*)arg2->buf + temp_t0 * temp_v0 * 4 + arg4->x * 4 + var_a0 * 4);
+                            dest_word = pixel_addr32[2];
+                        }
+                    } else {
+                        pixel_addr32 = (s32*)((u8*)arg2->buf + temp_t0 * temp_v0 * 4 + arg4->x * 4 + var_a0 * 4);
+                        dest_word = *pixel_addr32;
+                    }
+
+                    if (mode == 0x10) {
+                        if (src_word != D_ovl8_80389F64) {
+                            dest_word = src_word;
+                        }
+                    } else if (mode == 8) {
+                        if (src_word != 0) {
+                            dest_word = src_word;
+                        }
+                    } else if (mode == 2) {
+                        dest_word = dest_word | src_word;
+                    } else if (mode == 1) {
+                        dest_word = dest_word ^ src_word;
+                    }
+                }
+
+                if (temp_t0 & 1) {
+                    if ((arg4->x + var_a0) & 2) {
+                        pixel_addr32[-2] = dest_word;
+                        ((s32*)((u8*)arg2->buf + (arg4->y + var_a1) * temp_v0 * 4 + arg4->x * 4 + var_a0 * 4))[-2] = dest_word;
+                        ((s32*)((u8*)arg2->buf + (arg4->y + var_a1) * temp_v0 * 4 + arg4->x * 4 + var_a0 * 4))[-2] = dest_word;
+                    } else {
+                        pixel_addr32[2] = dest_word;
+                        ((s32*)((u8*)arg2->buf + (arg4->y + var_a1) * temp_v0 * 4 + arg4->x * 4 + var_a0 * 4))[2] = dest_word;
+                    }
+                } else {
+                    *pixel_addr32 = dest_word;
+                }
+                var_a0++;
+            } while (var_a0 < (s32)arg4->w);
+            var_a1++;
+            var_v1 += (arg1 - (s32)arg4->w) * 4;
+        } while (var_a1 < (s32)arg4->h);
+        break;
+    }
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80379070.s")
+#endif
 
 // 0x803798A0
 #ifdef NON_MATCHING
@@ -1337,7 +2011,317 @@ s32 func_ovl8_8037ABDC(Vec2h* arg0, UiLineStepper* arg1)
 }
 
 // 0x8037ACAC
+#ifdef NON_MATCHING
+// This function creates a tiled texture/bitmap structure for the debug menu UI.
+// It divides a width x height region into tiles, allocates bitmap memory, and
+// fills a descriptor array for each tile.
+dbUnknown3* func_ovl8_8037ACAC(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
+    s32 tileDim;    // a0
+    s32 maxArea;    // a1
+    s32 bpp;        // ra (repurposed)
+    s32 v1;
+    s32 t1;         // tileStripW
+    s32 t3;         // tileRowH
+    s32 t5;         // remTileW
+    s32 a6;         // numFullTilesX -> a2 copy
+    s32 v0;
+    s32 a0rem;      // remainderH
+    s32 totalBytes;
+    s32 numTiles;
+    s32 numTileRows;
+    s32 tileColsX;  // s1
+    s32 origAlloc;
+    s32 tileDescs;
+    s32 tileDescArr;
+    dbUnknown3* result;
+
+    if (arg2 == 1) {
+        bpp = 1;
+        maxArea = 0x800;
+        tileDim = 8;
+    } else if (arg2 == 2) {
+        bpp = 2;
+        maxArea = 0x800;
+        tileDim = 4;
+    } else if (arg2 == 3) {
+        bpp = 4;
+        maxArea = 0x400;
+        tileDim = 4;
+    } else {
+        bpp = *(s32*)((u8*)&arg2 + 0x64);  // sp+0x90 in caller frame - unreachable in practice
+        maxArea = *(s32*)((u8*)&arg2 + 0x0C);
+        tileDim = *(s32*)((u8*)&arg2 + 0x4C);
+    }
+
+    // clamp width to arg3
+    v1 = (arg0 < arg3) ? arg0 : arg3;
+    t1 = v1;
+
+    // round up to tileDim
+    v1 = (v1 % tileDim != 0) ? tileDim : 0;
+    t1 = (t1 / tileDim) * tileDim + v1;
+
+    // X tile division
+    a6 = arg0 / t1;
+    v0 = arg0 % t1;
+    t5 = v0;
+
+    // round up remainder
+    if (v0 != 0) {
+        v1 = (v0 % tileDim != 0) ? tileDim : 0;
+        t5 = (v0 / tileDim) * tileDim + v1;
+        if (t5 == 0) {
+            t5 = tileDim;
+        }
+    }
+
+    // clamp height to arg4
+    v0 = arg4;
+    v1 = (arg1 < v0) ? arg1 : v0;
+    t3 = v1;
+    if (v1 * t1 > maxArea) {
+        t3 = maxArea / t1;
+    }
+
+    // Y tile division
+    a0rem = arg1 % t3;
+    v0 = arg1 / t3;
+
+    // total bytes computation
+    totalBytes  = t1 * t3 * bpp * a6 * v0;
+    totalBytes += t5 * t3 * v0 * bpp;
+    totalBytes += t1 * a0rem * a6 * bpp;
+    totalBytes += t5 * a0rem * bpp;
+
+    // tile counts
+    v1 = (t5 != 0) ? 1 : 0;
+    tileColsX = a6 + v1;
+
+    v1 = (a0rem != 0) ? 1 : 0;
+    numTileRows = v0 + v1;
+
+    // corner tile check
+    if (a6 > 0) {
+        if (v0 > 0) {
+            if (t5 != 0) {
+                if (a0rem != 0) {
+                    v1 = 1;
+                } else {
+                    v1 = 0;
+                }
+            } else {
+                v1 = 0;
+            }
+        } else {
+            v1 = 0;
+        }
+    } else {
+        v1 = 0;
+    }
+
+    numTiles = tileColsX * numTileRows + v1;
+
+    // allocate bitmap (8 extra for alignment)
+    {
+        s32 bitmapBase;
+        s32 bitmapAligned;
+        s32 k;
+        u8* p;
+        s32 rem;
+
+        origAlloc = (s32)func_ovl8_803716D8(totalBytes + 8);
+        bitmapBase = origAlloc;
+        v1 = bitmapBase & 7;
+        if (v1 != 0) {
+            bitmapAligned = (bitmapBase - v1) + 8;
+        } else {
+            bitmapAligned = bitmapBase;
+        }
+
+        // memset to 0xFF
+        k = 0;
+        if (totalBytes > 0) {
+            rem = totalBytes & 3;
+            if (rem != 0) {
+                p = (u8*)bitmapAligned;
+                do {
+                    k++;
+                    *p = 0xFF;
+                    p++;
+                } while (rem != k);
+                if (k == totalBytes) goto done_memset;
+            }
+            p = (u8*)(bitmapAligned + k);
+            do {
+                k += 4;
+                p[0] = 0xFF;
+                p[1] = 0xFF;
+                p[2] = 0xFF;
+                p[3] = 0xFF;
+                p += 4;
+            } while (k != totalBytes);
+        }
+    done_memset:
+        k = 0;
+
+        // allocate tile descriptors (16 bytes each)
+        tileDescArr = (s32)func_ovl8_803716D8(numTiles << 4);
+
+        // fill tile descriptors
+        {
+            s32 a5;       // byte offset
+            s32 idx;      // t0
+            s32 curW;     // a0
+            s32 curH;     // a3 (height remaining)
+            s32 j;        // a2
+            s16* tile;    // v1
+
+            a5 = 0;
+            idx = 0;
+            curH = arg1;
+            if (numTileRows > 0) {
+                curW = arg0;
+                do {
+                    if (tileColsX > 0) {
+                        j = 0;
+                        tile = (s16*)(tileDescArr + (idx << 4));
+                        if (tileColsX & 1) {
+                            // first tile (odd peel)
+                            if (curW < t1) {
+                                tile[0] = t1;
+                                tile[1] = t1;
+                            } else {
+                                tile[0] = curW;
+                                tile[1] = t5;
+                            }
+                            if (curH < t3) {
+                                tile[6] = curH;
+                            } else {
+                                tile[6] = t3;
+                            }
+                            *(s32*)&tile[4] = bitmapAligned + a5;
+                            j = 1;
+                            tile[2] = 0;
+                            tile[3] = 0;
+                            tile[7] = 0;
+                            curW -= t1;
+                            idx++;
+                            tile += 8;
+                            a5 += tile[-7] * tile[-2] * bpp;
+                            if (j == tileColsX) goto end_inner;
+                        }
+                        // main loop (pairs)
+                        do {
+                            if (curW < t1) {
+                                tile[0] = curW;
+                                tile[1] = t5;
+                            } else {
+                                tile[0] = t1;
+                                tile[1] = t1;
+                            }
+                            if (curH < t3) {
+                                tile[6] = curH;
+                            } else {
+                                tile[6] = t3;
+                            }
+                            *(s32*)&tile[4] = bitmapAligned + a5;
+                            curW -= t1;
+                            tile[2] = 0;
+                            tile[3] = 0;
+                            tile[7] = 0;
+                            idx++;
+                            tile += 8;
+                            a5 += tile[-7] * tile[-2] * bpp;
+
+                            // second of pair
+                            if (curW < t1) {
+                                tile[0] = curW;
+                                tile[1] = t5;
+                            } else {
+                                tile[0] = t1;
+                                tile[1] = t1;
+                            }
+                            if (curH < t3) {
+                                tile[6] = curH;
+                            } else {
+                                tile[6] = t3;
+                            }
+                            *(s32*)&tile[4] = bitmapAligned + a5;
+                            j += 2;
+                            tile[2] = 0;
+                            tile[3] = 0;
+                            tile[7] = 0;
+                            curW -= t1;
+                            idx++;
+                            tile += 8;
+                            a5 += tile[-7] * tile[-2] * bpp;
+                        } while (j != tileColsX);
+                    }
+                end_inner:
+                    k++;
+                    curH -= t3;
+                } while (k != numTileRows);
+            }
+        }
+
+        // allocate 0x48 struct
+        result = (dbUnknown3*)func_ovl8_803716D8(0x48);
+
+        // copy template from D_ovl8_80389F70
+        {
+            s32* src = (s32*)&D_ovl8_80389F70;
+            s32* dst = (s32*)result;
+            s32* end = (s32*)((u8*)&D_ovl8_80389F70 + 0x3C);
+            s32* dd = dst;
+            do {
+                src += 3;
+                dd += 3;
+                dd[-3] = src[-3];
+                dd[-2] = src[-2];
+                dd[-1] = src[-1];
+            } while (src != end);
+            // last 2 words
+            dd[0] = src[0];
+            dd[1] = src[1];
+        }
+
+        // set fields based on mode
+        if (arg2 == 1 || arg2 == 2) {
+            v1 = 0x220;
+        } else {
+            v1 = 0x201;
+        }
+
+        {
+            s16* r = (s16*)result;
+            u8* rb = (u8*)result;
+            s32* rw = (s32*)result;
+
+            r[0xA] = v1;                               // 0x14
+            rb[0x31] = arg2;                            // 0x31
+            r[2] = arg0;                                // 0x4
+            r[0x16] = t3;                               // 0x2C
+            r[0x17] = t3;                               // 0x2E
+            r[0x15] = numTiles * 12 + 0x18;             // 0x2A
+            r[0x14] = numTiles;                         // 0x28
+            r[3] = arg1;                                // 0x6
+            rw[0xE] = 0;                                // 0x38
+            rw[0xD] = tileDescArr;                      // 0x34
+            rw[0x11] = origAlloc;                       // 0x44
+
+            if (arg2 == 1) {
+                rb[0x30] = 2;
+                r[0xF] = 0x100;                         // 0x1E
+                rw[8] = (s32)func_ovl8_803716D8(0x200); // 0x20
+            }
+        }
+    }
+
+    return result;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037ACAC.s")
+#endif
 
 // 0x8037B3E4
 void func_ovl8_8037B3E4(dbUnknown3* arg0)

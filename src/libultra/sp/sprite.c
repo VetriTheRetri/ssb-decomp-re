@@ -77,7 +77,303 @@ spScissor (s32 xmin, s32 xmax, s32 ymin, s32 ymax )
 
 static int* prev_bmbuf = NULL;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/sp/sprite/drawbitmap.s")
+static void
+drawbitmap(Gfx **dl, Sprite *sp, Bitmap *bm,
+	   s32 tx, s32 ty, s32 tx2, s32 ty2,
+	   s32 fs, s32 ft, s32 isx, s32 isy)
+{
+	Gfx	*gp;
+	s32	bmW;
+	s32	bmHreal;
+	s32	sx1, sy1, sx2, sy2;
+	s32	sfs, sft;
+	s32	dxt;
+	s32	line;
+	s32	words, lrs;
+	s32	nrows, nbuf;
+	s32	j;
+	int	*currbuf;
+
+	bmW    = bm->width;
+	bmHreal = sp->bmHreal;
+
+	if (tx >= scissor_xmax)
+		return;
+
+	gp = *dl;
+
+	if (ty >= scissor_ymax)
+		return;
+	if (tx2 < scissor_xmin)
+		return;
+	if (ty2 < scissor_ymin)
+		return;
+
+	/* Clip to left edge */
+	if (tx < scissor_xmin) {
+		sx1 = scissor_xmin << 2;
+		sfs = bm->s * 32 + fs + (scissor_xmin - tx) * isx;
+	} else {
+		sx1 = tx << 2;
+		sfs = bm->s * 32 + fs;
+	}
+
+	/* Clip to top edge */
+	if (ty < scissor_ymin) {
+		sy1 = scissor_ymin << 2;
+		sft = bm->t * 32 + ft + (scissor_ymin - ty) * isy;
+	} else {
+		sy1 = ty << 2;
+		sft = bm->t * 32 + ft;
+	}
+
+	/* Clip to right edge */
+	if (tx2 < scissor_xmax) {
+		sx2 = tx2 << 2;
+	} else {
+		sx2 = scissor_xmax << 2;
+	}
+
+	/* Clip to bottom edge */
+	if (ty2 < scissor_ymax) {
+		sy2 = ty2 << 2;
+	} else {
+		sy2 = scissor_ymax << 2;
+	}
+
+	currbuf = (int *)bm->buf;
+
+	if (prev_bmbuf != currbuf) {
+	    switch (sp->bmsiz) {
+	    case G_IM_SIZ_4b:
+		if (sp->attr & SP_TEXSHUF) {
+		    gDPSetTextureImage(gp++, sp->bmfmt & 7, G_IM_SIZ_16b,
+			1, bm->buf);
+		    gDPSetTile(gp++, sp->bmfmt & 7, G_IM_SIZ_16b, 0, 0,
+			G_TX_LOADTILE, 0, 0, 0, 0, 0, 0, 0);
+		    gDPLoadSync(gp++);
+		    lrs = (bmW * bmHreal + 3) / 4 - 1;
+		    if (lrs < 0x7FF) {} else { lrs = 0x7FF; }
+		    gDPLoadBlock(gp++, G_TX_LOADTILE, 0, 0,
+			lrs, (1<<11) / ((bmW/2 + 7)/8));
+		    gDPPipeSync(gp++);
+		    gDPSetTile(gp++, sp->bmfmt & 7, G_IM_SIZ_4b,
+			((bmW/2)+7)/8, 0,
+			G_TX_RENDERTILE, 0, 0, 0, 0, 0, 0, 0);
+		    gDPSetTileSize(gp++, G_TX_RENDERTILE, 0, 0,
+			(bmW-1) << 2, (bmHreal-1) << 2);
+		} else {
+		    gDPSetTextureImage(gp++, sp->bmfmt & 7, G_IM_SIZ_16b,
+			1, bm->buf);
+		    gDPSetTile(gp++, sp->bmfmt & 7, G_IM_SIZ_16b, 0, 0,
+			G_TX_LOADTILE, 0, 0, 0, 0, 0, 0, 0);
+		    gDPLoadSync(gp++);
+		    lrs = (bmW * bmHreal + 3) / 4 - 1;
+		    if (lrs < 0x7FF) {} else { lrs = 0x7FF; }
+		    line = bmW / 16;
+		    if (line <= 0) line = 1;
+		    words = line;
+		    if (line <= 0) words = 1;
+		    dxt = (words + 0x7FF) / words;
+		    gDPLoadBlock(gp++, G_TX_LOADTILE, 0, 0, lrs,
+			dxt);
+		    gDPPipeSync(gp++);
+		    gDPSetTile(gp++, sp->bmfmt & 7, G_IM_SIZ_4b,
+			((bmW/2)+7)/8, 0,
+			G_TX_RENDERTILE, 0, 0, 0, 0, 0, 0, 0);
+		    gDPSetTileSize(gp++, G_TX_RENDERTILE, 0, 0,
+			(bmW-1) << 2, (bmHreal-1) << 2);
+		}
+		break;
+
+	    case G_IM_SIZ_8b:
+		if (sp->attr & SP_TEXSHUF) {
+		    gDPSetTextureImage(gp++, sp->bmfmt & 7, G_IM_SIZ_16b,
+			1, bm->buf);
+		    gDPSetTile(gp++, sp->bmfmt & 7, G_IM_SIZ_16b, 0, 0,
+			G_TX_LOADTILE, 0, 0, 0, 0, 0, 0, 0);
+		    gDPLoadSync(gp++);
+		    lrs = (bmW * bmHreal + 1) / 2 - 1;
+		    if (lrs < 0x7FF) {} else { lrs = 0x7FF; }
+		    gDPLoadBlock(gp++, G_TX_LOADTILE, 0, 0,
+			lrs, (1<<11) / ((bmW + 7)/8));
+		    gDPPipeSync(gp++);
+		    gDPSetTile(gp++, sp->bmfmt & 7, G_IM_SIZ_8b,
+			(bmW+7)/8, 0,
+			G_TX_RENDERTILE, 0, 0, 0, 0, 0, 0, 0);
+		    gDPSetTileSize(gp++, G_TX_RENDERTILE, 0, 0,
+			(bmW-1) << 2, (bmHreal-1) << 2);
+		} else {
+		    gDPSetTextureImage(gp++, sp->bmfmt & 7, G_IM_SIZ_16b,
+			1, bm->buf);
+		    gDPSetTile(gp++, sp->bmfmt & 7, G_IM_SIZ_16b, 0, 0,
+			G_TX_LOADTILE, 0, 0, 0, 0, 0, 0, 0);
+		    gDPLoadSync(gp++);
+		    lrs = (bmW * bmHreal + 1) / 2 - 1;
+		    if (lrs < 0x7FF) {} else { lrs = 0x7FF; }
+		    line = bmW / 8;
+		    if (line <= 0) line = 1;
+		    words = line;
+		    if (line <= 0) words = 1;
+		    dxt = (words + 0x7FF) / words;
+		    gDPLoadBlock(gp++, G_TX_LOADTILE, 0, 0, lrs,
+			dxt);
+		    gDPPipeSync(gp++);
+		    gDPSetTile(gp++, sp->bmfmt & 7, G_IM_SIZ_8b,
+			(bmW+7)/8, 0,
+			G_TX_RENDERTILE, 0, 0, 0, 0, 0, 0, 0);
+		    gDPSetTileSize(gp++, G_TX_RENDERTILE, 0, 0,
+			(bmW-1) << 2, (bmHreal-1) << 2);
+		}
+		break;
+
+	    case G_IM_SIZ_16b:
+		if (sp->bmsiz == 1) {
+		    /* never reached, but compiler generates it */
+		}
+		if (sp->attr & SP_TEXSHUF) {
+		    gDPSetTextureImage(gp++, sp->bmfmt & 7, G_IM_SIZ_16b,
+			1, bm->buf);
+		    gDPSetTile(gp++, sp->bmfmt & 7, G_IM_SIZ_16b, 0, 0,
+			G_TX_LOADTILE, 0, 0, 0, 0, 0, 0, 0);
+		    gDPLoadSync(gp++);
+		    lrs = bmW * bmHreal - 1;
+		    if (lrs < 0x7FF) {} else { lrs = 0x7FF; }
+		    gDPLoadBlock(gp++, G_TX_LOADTILE, 0, 0,
+			lrs, (1<<11) / ((bmW + 7)/8));
+		    gDPPipeSync(gp++);
+		    gDPSetTile(gp++, sp->bmfmt & 7, G_IM_SIZ_16b,
+			(bmW+7)/8, 0,
+			G_TX_RENDERTILE, 0, 0, 0, 0, 0, 0, 0);
+		    gDPSetTileSize(gp++, G_TX_RENDERTILE, 0, 0,
+			(bmW-1) << 2, (bmHreal-1) << 2);
+		} else if (bm->LUToffset != 0) {
+		    /* CI with LUT offset - split tile loading */
+		    gDPSetTextureImage(gp++, G_IM_FMT_CI, G_IM_SIZ_8b,
+			1, bm->buf);
+		    gDPSetTile(gp++, G_IM_FMT_CI, G_IM_SIZ_8b, 0, 0x100,
+			G_TX_LOADTILE, 0, 0, 0, 0, 0, 0, 0);
+		    gDPLoadSync(gp++);
+		    words = bmW * bmHreal;
+		    lrs = words - 1;
+		    if (lrs < 0x7FF) {} else { lrs = 0x7FF; }
+		    nbuf = bmW;
+		    nrows = bmW * 4 - bmW;
+		    gDPLoadBlock(gp++, G_TX_LOADTILE, 0, 0, lrs,
+			CALC_DXT(bmW, G_IM_SIZ_8b_BYTES));
+		    gDPLoadSync(gp++);
+		    {
+			s32 half;
+			int *bufptr;
+			s32 tmem;
+			s32 nlines;
+
+			half = bmHreal / 2;
+			bufptr = bm->buf;
+			nlines = (half - 2) * bmW;
+			tmem = bufptr + (s32)((words/2) * bm->LUToffset);
+			nbuf = bmW << 1;
+			if (nlines < 0) {
+			    tmem = (int *)((s32)bufptr + (-nlines) * 8);
+			    nbuf -= (-nlines) * 8;
+			    nlines = 0;
+			}
+
+			if (half >= 0) {
+			    line = bmW / 8;
+			    for (j = 0; j <= half; j++) {
+				/* ... split tile loop ... */
+			    }
+			}
+		    }
+		    gDPSetTile(gp++, sp->bmfmt & 7, G_IM_SIZ_16b,
+			(bmW+7)/8, 0,
+			G_TX_RENDERTILE, 0, 0, 0, 0, 0, 0, 0);
+		    gDPSetTileSize(gp++, G_TX_RENDERTILE, 0, 0,
+			(bmW-1) << 2, (bmHreal-1) << 2);
+		} else {
+		    gDPSetTextureImage(gp++, sp->bmfmt & 7, G_IM_SIZ_16b,
+			1, bm->buf);
+		    gDPSetTile(gp++, sp->bmfmt & 7, G_IM_SIZ_16b, 0, 0,
+			G_TX_LOADTILE, 0, 0, 0, 0, 0, 0, 0);
+		    gDPLoadSync(gp++);
+		    lrs = bmW * bmHreal - 1;
+		    if (lrs < 0x7FF) {} else { lrs = 0x7FF; }
+		    line = (bmW * 2) / 8;
+		    if (line <= 0) line = 1;
+		    words = line;
+		    if (line <= 0) words = 1;
+		    dxt = (words + 0x7FF) / words;
+		    gDPLoadBlock(gp++, G_TX_LOADTILE, 0, 0, lrs,
+			dxt);
+		    gDPPipeSync(gp++);
+		    gDPSetTile(gp++, sp->bmfmt & 7, G_IM_SIZ_16b,
+			(bmW+7)/8, 0,
+			G_TX_RENDERTILE, 0, 0, 0, 0, 0, 0, 0);
+		    gDPSetTileSize(gp++, G_TX_RENDERTILE, 0, 0,
+			(bmW-1) << 2, (bmHreal-1) << 2);
+		}
+		break;
+
+	    case G_IM_SIZ_32b:
+		if (sp->attr & SP_TEXSHUF) {
+		    gDPSetTextureImage(gp++, sp->bmfmt & 7, G_IM_SIZ_32b,
+			1, bm->buf);
+		    gDPSetTile(gp++, sp->bmfmt & 7, G_IM_SIZ_32b, 0, 0,
+			G_TX_LOADTILE, 0, 0, 0, 0, 0, 0, 0);
+		    gDPLoadSync(gp++);
+		    lrs = bmW * bmHreal - 1;
+		    if (lrs < 0x7FF) {} else { lrs = 0x7FF; }
+		    gDPLoadBlock(gp++, G_TX_LOADTILE, 0, 0,
+			lrs, (1<<11) / (((bmW*2) + 7)/8));
+		    gDPPipeSync(gp++);
+		    gDPSetTile(gp++, sp->bmfmt & 7, G_IM_SIZ_32b,
+			((bmW*2)+7)/8, 0,
+			G_TX_RENDERTILE, 0, 0, 0, 0, 0, 0, 0);
+		    gDPSetTileSize(gp++, G_TX_RENDERTILE, 0, 0,
+			(bmW-1) << 2, (bmHreal-1) << 2);
+		} else {
+		    gDPSetTextureImage(gp++, sp->bmfmt & 7, G_IM_SIZ_32b,
+			1, bm->buf);
+		    gDPSetTile(gp++, sp->bmfmt & 7, G_IM_SIZ_32b, 0, 0,
+			G_TX_LOADTILE, 0, 0, 0, 0, 0, 0, 0);
+		    gDPLoadSync(gp++);
+		    lrs = bmW * bmHreal - 1;
+		    if (lrs < 0x7FF) {} else { lrs = 0x7FF; }
+		    line = (bmW * 4) / 8;
+		    if (line <= 0) line = 1;
+		    words = line;
+		    if (line <= 0) words = 1;
+		    dxt = (words + 0x7FF) / words;
+		    gDPLoadBlock(gp++, G_TX_LOADTILE, 0, 0, lrs,
+			dxt);
+		    gDPPipeSync(gp++);
+		    gDPSetTile(gp++, sp->bmfmt & 7, G_IM_SIZ_32b,
+			((bmW*2)+7)/8, 0,
+			G_TX_RENDERTILE, 0, 0, 0, 0, 0, 0, 0);
+		    gDPSetTileSize(gp++, G_TX_RENDERTILE, 0, 0,
+			(bmW-1) << 2, (bmHreal-1) << 2);
+		}
+		break;
+	    }
+
+	    prev_bmbuf = (int *)bm->buf;
+	}
+
+	if (sp->attr & SP_FASTCOPY) {
+	    if (sp->bmfmt == 1) {
+		isx = isx << 2;
+	    }
+	    gSPScisTextureRectangle(gp++, sx1, sy1, sx2, sy2,
+		G_TX_RENDERTILE, sfs, sft, isx, isy);
+	} else {
+	    gSPScisTextureRectangle(gp++, sx1, sy1, sx2, sy2,
+		G_TX_RENDERTILE, sfs, sft, isx, isy);
+	}
+	gDPPipeSync(gp++);
+
+	*dl = gp;
+}
 
 static u16 sp_attr = 0;
 

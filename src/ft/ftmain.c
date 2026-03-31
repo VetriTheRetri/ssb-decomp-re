@@ -6,7 +6,7 @@
 #include <sys/controller.h>
 
 extern alSoundEffect* func_800269C0_275C0(u16);
-extern void func_ovl0_800C9A38();
+extern void lbCommonGetNormalizedPartsMatrix();
 
 // // // // // // // // // // // //
 //                               //
@@ -4054,7 +4054,7 @@ void ftMainProcParams(GObj *fighter_gobj)
                 s32 unused;
                 Mtx44f mtx;
 
-                func_ovl0_800C9A38(mtx, fp->joints[fp->attr->joint_itemlight_id]);
+                lbCommonGetNormalizedPartsMatrix(mtx, fp->joints[fp->attr->joint_itemlight_id]);
 
                 fp->afterimage.desc[fp->afterimage.desc_id].translate_x = mtx[3][0];
                 fp->afterimage.desc[fp->afterimage.desc_id].translate_y = mtx[3][1];

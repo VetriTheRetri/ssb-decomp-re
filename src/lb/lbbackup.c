@@ -189,7 +189,7 @@ void lbBackupClearAllData(void)
 }
 
 // 0x800D4C90 - unused
-void func_ovl0_800D4C90(void)
+void lbBackupUnusedEmpty(void)
 {
     return;
 }

@@ -1344,23 +1344,23 @@ void lbCommonPlayTranslateScaledDObjAnim(DObj *dobj, Vec3f *scale)
 }
 
 // 0x800C96DC
-void func_ovl0_800C96DC(Mtx *mtx, DObj *dobj, Gfx **dls)
+void lbCommonEmptyFuncMatrixProc(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
     return;
 }
 
 // 0x800C96EC
-sb32 func_ovl0_800C96EC(Mtx *mtx, DObj *dobj, Gfx **dls)
+sb32 lbCommonNopFuncMatrix(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
-	func_ovl0_800C96DC(mtx, dobj, 0);
+	lbCommonEmptyFuncMatrixProc(mtx, dobj, 0);
 
 	return 0;
 }
 
 // 0x800C9714
-sb32 func_ovl0_800C9714(Mtx *mtx, DObj *dobj, Gfx **dls)
+sb32 lbCommonNopPerspFuncMatrix(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
-	func_ovl0_800C96DC(mtx, dobj, 1);
+	lbCommonEmptyFuncMatrixProc(mtx, dobj, 1);
 
 	return 0;
 }
@@ -1442,7 +1442,7 @@ sb32 lbCommonFighterPartsFuncMatrix(Mtx *mtx, DObj *dobj, Gfx **dls)
 }
 
 // 0x800C994C
-sb32 func_ovl0_800C994C(Mtx *mtx, DObj *dobj, Gfx **dls)
+sb32 lbCommonAttachPartsFuncMatrix(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
     s32 unused;
     DObj *attach_dobj = dobj->user_data.p;
@@ -1458,7 +1458,7 @@ sb32 func_ovl0_800C994C(Mtx *mtx, DObj *dobj, Gfx **dls)
 }
 
 // 0x800C99CC
-sb32 func_ovl0_800C99CC(Mtx *mtx, DObj *dobj, Gfx **dls)
+sb32 lbCommonAttachTranslateFuncMatrix(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
     s32 unused[2];
     DObj *attach_dobj = dobj->user_data.p;
@@ -1474,7 +1474,7 @@ sb32 func_ovl0_800C99CC(Mtx *mtx, DObj *dobj, Gfx **dls)
 }
 
 // 0x800C9A38
-void func_ovl0_800C9A38(Mtx44f mtx, DObj *dobj)
+void lbCommonGetNormalizedPartsMatrix(Mtx44f mtx, DObj *dobj)
 {
     FTParts *parts = ftGetParts(dobj);
     FTStruct *fp = ftGetStruct(dobj->parent_gobj);
@@ -1604,11 +1604,11 @@ void func_ovl0_800C9A38(Mtx44f mtx, DObj *dobj)
 }
 
 // 0x800C9F30
-sb32 func_ovl0_800C9F30(Mtx *mtx, DObj *dobj, Gfx **dls)
+sb32 lbCommonAttachNormRotFuncMatrix(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
     Mtx44f f;
 
-    func_ovl0_800C9A38(f, dobj->user_data.p);
+    lbCommonGetNormalizedPartsMatrix(f, dobj->user_data.p);
     syMatrixF2LFixedW(&f, mtx);
     
     return 0;
@@ -1616,13 +1616,13 @@ sb32 func_ovl0_800C9F30(Mtx *mtx, DObj *dobj, Gfx **dls)
 
 #if defined(REGION_US)
 // 0x800C9F70
-sb32 func_ovl0_800C9F70(Mtx *mtx, DObj *dobj, Gfx **dls)
+sb32 lbCommonAttachShuffleFuncMatrix(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
     DObj *attach_dobj = dobj->user_data.p;
     FTStruct *fp = ftGetStruct(attach_dobj->parent_gobj);
     Mtx44f f;
     
-    func_ovl0_800C9A38(f, attach_dobj);
+    lbCommonGetNormalizedPartsMatrix(f, attach_dobj);
     
     if (fp->shuffle_tics != 0)
     {
@@ -1636,7 +1636,7 @@ sb32 func_ovl0_800C9F70(Mtx *mtx, DObj *dobj, Gfx **dls)
 #endif
 
 // 0x800CA024
-sb32 func_ovl0_800CA024(Mtx *mtx, DObj *dobj, Gfx **dls)
+sb32 lbCommonTraScaFuncMatrix(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
     s32 e1, e2;
 
@@ -1699,7 +1699,7 @@ sb32 lbCommonRotScaFuncMatrix(Mtx *mtx, DObj *dobj, Gfx **dls)
 }
 
 // 0x800CA194
-sb32 func_ovl0_800CA194(Mtx *mtx, DObj *dobj, Gfx **dls)
+sb32 lbCommonPerspRotZFuncMatrix(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
     s32 unused;
     int e1, e2;
@@ -1772,7 +1772,7 @@ sb32 func_ovl0_800CA194(Mtx *mtx, DObj *dobj, Gfx **dls)
 }
 
 // 0x800CA5C8
-sb32 func_ovl0_800CA5C8(Mtx *mtx, DObj *dobj, Gfx **dls)
+sb32 lbCommonPerspRotXYFuncMatrix(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
     s32 unused;
     int e1, e2;
@@ -1849,7 +1849,7 @@ sb32 func_ovl0_800CA5C8(Mtx *mtx, DObj *dobj, Gfx **dls)
 }
 
 // 0x800CAB48
-sb32 func_ovl0_800CAB48(Mtx *mtx, DObj *dobj, Gfx **dls)
+sb32 lbCommonPerspRotXYScaFuncMatrix(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
     f32 scaley;
     int e1, e2;
@@ -1933,7 +1933,7 @@ sb32 func_ovl0_800CAB48(Mtx *mtx, DObj *dobj, Gfx **dls)
 }
 
 // 0x800CB140
-sb32 func_ovl0_800CB140(Mtx *mtx, DObj *dobj, Gfx **dls)
+sb32 lbCommonBillboardDirecXFuncMatrix(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
     CObj *cobj;
     DObj *attach_dobj;
@@ -2008,7 +2008,7 @@ sb32 func_ovl0_800CB140(Mtx *mtx, DObj *dobj, Gfx **dls)
 }
 
 // 0x800CB2F0
-sb32 func_ovl0_800CB2F0(Mtx *mtx, DObj *dobj, Gfx **dls)
+sb32 lbCommonAttachRotZFuncMatrix(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
     s32 unused;
     DObj *attach_dobj = dobj->user_data.p;
@@ -2122,24 +2122,24 @@ void lbCommonEjectGObjLinkedList(GObj *gobj)
 // 0x800D5CAC
 sb32 (*dLBCommonFuncMatrixList[/* */])(/* */) =
 {
-	func_ovl0_800C96EC,
-	func_ovl0_800C96EC,
-	func_ovl0_800C9714,
-	func_ovl0_800C9714,
-	func_ovl0_800CA024,
-	func_ovl0_800CA024,
+	lbCommonNopFuncMatrix,
+	lbCommonNopFuncMatrix,
+	lbCommonNopPerspFuncMatrix,
+	lbCommonNopPerspFuncMatrix,
+	lbCommonTraScaFuncMatrix,
+	lbCommonTraScaFuncMatrix,
 	lbCommonRotScaFuncMatrix,
 	lbCommonRotScaFuncMatrix,
-	func_ovl0_800CA194,
-	func_ovl0_800CA194,
-	func_ovl0_800CA5C8,
-	func_ovl0_800CA5C8,
-	func_ovl0_800CAB48,
-	func_ovl0_800CAB48,
-	func_ovl0_800CB140,
-	func_ovl0_800CB140,
-	func_ovl0_800CB2F0,
-	func_ovl0_800CB2F0,
+	lbCommonPerspRotZFuncMatrix,
+	lbCommonPerspRotZFuncMatrix,
+	lbCommonPerspRotXYFuncMatrix,
+	lbCommonPerspRotXYFuncMatrix,
+	lbCommonPerspRotXYScaFuncMatrix,
+	lbCommonPerspRotXYScaFuncMatrix,
+	lbCommonBillboardDirecXFuncMatrix,
+	lbCommonBillboardDirecXFuncMatrix,
+	lbCommonAttachRotZFuncMatrix,
+	lbCommonAttachRotZFuncMatrix,
 	lbCommonFighterPartsFuncMatrix,
 	lbCommonFighterPartsFuncMatrix,
 	gmCameraLookAtFuncMatrix,
@@ -2148,16 +2148,16 @@ sb32 (*dLBCommonFuncMatrixList[/* */])(/* */) =
 	NULL,
 	gmCameraOrthoLookAtFuncMatrix,
 	NULL,
-	func_ovl0_800C994C,
-	func_ovl0_800C994C,
-	func_ovl0_800C99CC,
-	func_ovl0_800C99CC,
+	lbCommonAttachPartsFuncMatrix,
+	lbCommonAttachPartsFuncMatrix,
+	lbCommonAttachTranslateFuncMatrix,
+	lbCommonAttachTranslateFuncMatrix,
 #if defined(REGION_US)
-	func_ovl0_800C9F30,
-	func_ovl0_800C9F30,
+	lbCommonAttachNormRotFuncMatrix,
+	lbCommonAttachNormRotFuncMatrix,
 #endif
-    func_ovl0_800C9F70,
-	func_ovl0_800C9F70,
+    lbCommonAttachShuffleFuncMatrix,
+	lbCommonAttachShuffleFuncMatrix,
 	grSectorArwingLaser3DFuncMatrix,
 	grSectorArwingLaser3DFuncMatrix,
 	gmCameraOrthoLookAtFuncMatrix,

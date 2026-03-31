@@ -520,7 +520,7 @@ SI_STATUS_REG = 0xA4800018;
 
 SP_PC = 0xA4080000;
 
-func_ovl0_800CB140 = 0x800C904C;
+lbCommonBillboardDirecXFuncMatrix = 0x800C904C;
 D_ovl0_800D5E10 = 0x800D3CB0;
 lbCommonPrepSObjDraw = 0x800CA724;
 lbParticleUpdateStruct = 0x800CCE2C;

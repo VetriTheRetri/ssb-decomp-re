@@ -105,13 +105,13 @@ void mnUnusedFightersFuncLights(Gfx **dls)
 }
 
 // 0x800D64B4
-void func_ovl16_800D64B4(void)
+void mnUnusedFightersUnusedEmpty1(void)
 {
     return;
 }
 
 // 0x800D64BC
-void func_ovl16_800D64BC(void)
+void mnUnusedFightersUnusedEmpty2(void)
 {
     return;
 }

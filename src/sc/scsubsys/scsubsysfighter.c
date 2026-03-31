@@ -85,7 +85,7 @@ void scSubsysFighterOpeningProcUpdate(GObj *this_gobj, GObj *other_gobj)
     DObj *child_dobj = DObjGetStruct(other_gobj)->child;
     Mtx44f mtx_f;
     
-    func_ovl0_800C9A38(mtx_f, fp->joints[fp->attr->joint_itemheavy_id]);
+    lbCommonGetNormalizedPartsMatrix(mtx_f, fp->joints[fp->attr->joint_itemheavy_id]);
     gmCollisionGetMatrixRotation(mtx_f, &DObjGetStruct(other_gobj)->rotate.vec.f);
     
     DObjGetStruct(other_gobj)->translate.vec.f.x = -child_dobj->translate.vec.f.x;

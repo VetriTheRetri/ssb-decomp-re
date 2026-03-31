@@ -16,7 +16,7 @@ void ftCommonCapturePulledRotateScale(GObj *fighter_gobj, Vec3f *this_pos, Vec3f
     DObj *joint = DObjGetStruct(fighter_gobj)->child;
     Mtx44f mtx;
 
-    func_ovl0_800C9A38(mtx, capture_fp->joints[capture_fp->attr->joint_itemheavy_id]);
+    lbCommonGetNormalizedPartsMatrix(mtx, capture_fp->joints[capture_fp->attr->joint_itemheavy_id]);
     gmCollisionGetMatrixRotation(mtx, rotate);
 
     this_pos->x = (-joint->translate.vec.f.x * DObjGetStruct(fighter_gobj)->scale.vec.f.x);

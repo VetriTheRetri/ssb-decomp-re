@@ -86,7 +86,7 @@ void scSubsysFighterOpeningProcUpdate(GObj *this_gobj, GObj *other_gobj)
     Mtx44f mtx_f;
     
     func_ovl0_800C9A38(mtx_f, fp->joints[fp->attr->joint_itemheavy_id]);
-    func_ovl2_800EDA0C(mtx_f, &DObjGetStruct(other_gobj)->rotate.vec.f);
+    gmCollisionGetMatrixRotation(mtx_f, &DObjGetStruct(other_gobj)->rotate.vec.f);
     
     DObjGetStruct(other_gobj)->translate.vec.f.x = -child_dobj->translate.vec.f.x;
     DObjGetStruct(other_gobj)->translate.vec.f.y = -child_dobj->translate.vec.f.y;
@@ -102,10 +102,10 @@ void scSubsysFighterOpeningProcUpdate(GObj *this_gobj, GObj *other_gobj)
     FTParts *ftparts;
     DObj *child_dobj = DObjGetStruct(other_gobj)->child;
     
-    func_ovl2_800EDBA4(fp->joints[fp->attr->joint_itemheavy_id]);
+    gmCollisionBuildPartsMatrix(fp->joints[fp->attr->joint_itemheavy_id]);
     
     ftparts = fp->joints[fp->attr->joint_itemheavy_id]->user_data.p;
-    func_ovl2_800EDA0C(ftparts->mtx_translate, &DObjGetStruct(other_gobj)->rotate.vec.f);
+    gmCollisionGetMatrixRotation(ftparts->mtx_translate, &DObjGetStruct(other_gobj)->rotate.vec.f);
     
     DObjGetStruct(other_gobj)->translate.vec.f.x = -child_dobj->translate.vec.f.x;
     DObjGetStruct(other_gobj)->translate.vec.f.y = -child_dobj->translate.vec.f.y;

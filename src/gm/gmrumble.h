@@ -15,7 +15,7 @@ extern void gmRumbleActorProcUpdate(GObj *rumble_gobj);
 extern sb32 gmRumbleCheckSetEventID(GMRumblePlayer *rplayer, s32 index, s32 rumble_timer);
 extern GMRumbleScript* gmRumbleGetEventPriorityRelink(GMRumblePlayer *rplayer, s32 index);
 extern void gmRumbleSetPlayerRumbleParams(s32 player, s32 index, s32 rumble_timer);
-extern void func_ovl2_801155C4(s32 player);
+extern void gmRumbleResetPlayer(s32 player);
 extern void gmRumbleStopRumbleID(s32 player, s32 index);
 extern void gmRumbleMakeActor(void);
 extern void gmRumbleInitPlayers(void);

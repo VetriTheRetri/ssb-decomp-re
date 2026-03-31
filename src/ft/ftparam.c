@@ -2418,7 +2418,7 @@ void ftParamClearAnimLocks(FTStruct *fp)
 }
 
 // 0x800EB924
-void func_ovl2_800EB924(CObj *cobj, Mtx44f mtx, Vec3f *vec, f32 *rx, f32 *ry)
+void ftParamProjectWorldToScreen(CObj *cobj, Mtx44f mtx, Vec3f *vec, f32 *rx, f32 *ry)
 {
     // My math doodoo but ChatGPT says this is projecting a 3D view onto a 2D screen
     f32 x = vec->x;
@@ -2439,7 +2439,7 @@ void func_ovl2_800EB924(CObj *cobj, Mtx44f mtx, Vec3f *vec, f32 *rx, f32 *ry)
 }
 
 // 0x800EBA6C
-f32 func_ovl2_800EBA6C(Vec3f *arg0, Vec3f *arg1)
+f32 ftParamRejectAlongAxis(Vec3f *arg0, Vec3f *arg1)
 {
     Vec3f sp1C = *arg1;
     f32 scale;
@@ -2458,15 +2458,15 @@ f32 func_ovl2_800EBA6C(Vec3f *arg0, Vec3f *arg1)
 }
 
 // 0x800EBB3C
-f32 func_ovl2_800EBB3C(Vec3f *arg0, Vec3f *arg1, Vec3f *arg2)
+f32 ftParamGetSignedAngle(Vec3f *arg0, Vec3f *arg1, Vec3f *arg2)
 {
     Vec3f sp1C;
 
-    if (func_ovl2_800EBA6C(arg0, arg2) < 0.0004F)
+    if (ftParamRejectAlongAxis(arg0, arg2) < 0.0004F)
     {
         return 0.0F;
     }
-    else if (func_ovl2_800EBA6C(arg1, arg2) < 0.0004F)
+    else if (ftParamRejectAlongAxis(arg1, arg2) < 0.0004F)
     {
         return 0.0F;
     }
@@ -2480,7 +2480,7 @@ f32 func_ovl2_800EBB3C(Vec3f *arg0, Vec3f *arg1, Vec3f *arg2)
 }
 
 // 0x800EBC0C
-void func_ovl2_800EBC0C(s32 arg0, Vec3f *arg1, f32 *arg2, f32 arg3, DObj *dobj)
+void ftParamGetSwingPosition(s32 arg0, Vec3f *arg1, f32 *arg2, f32 arg3, DObj *dobj)
 {
     s32 unused1[2];
     DObj *attach_dobj;
@@ -2498,7 +2498,7 @@ void func_ovl2_800EBC0C(s32 arg0, Vec3f *arg1, f32 *arg2, f32 arg3, DObj *dobj)
 
     *arg1 = sp50;
 
-    func_ovl2_800EE018(dobj, &sp50);
+    gmCollisionGetPartsInversePosition(dobj, &sp50);
 
     sp2C.z = 0.0F;
     sp2C.x = 0.0F;
@@ -2516,11 +2516,11 @@ void func_ovl2_800EBC0C(s32 arg0, Vec3f *arg1, f32 *arg2, f32 arg3, DObj *dobj)
     syVectorNorm3D(&sp38);
     syVectorNorm3D(&sp50);
 
-    *arg2 = func_ovl2_800EBB3C(&sp44, &sp38, &sp50);
+    *arg2 = ftParamGetSignedAngle(&sp44, &sp38, &sp50);
 }
 
 // 0x800EBD08
-void func_ovl2_800EBD08(DObj *root_dobj, f32 arg1, Vec3f *vec, f32 arg3)
+void ftParamSetIKRotation(DObj *root_dobj, f32 arg1, Vec3f *vec, f32 arg3)
 {
     // I feel like this is kind of a fakematch (as in, matching stack allocation is achieved by nonsense) but I hate this function so I'll take it
     DObj *child1_dobj;

@@ -205,7 +205,7 @@ void gmCollisionGetWorldPosition(Mtx44f mtx, Vec3f *vec)
 }
 
 // 0x800ED490
-void func_ovl2_800ED490(Mtx44f dst, Mtx44f lhs, Mtx44f rhs)
+void gmCollisionMultiplyMatrix(Mtx44f dst, Mtx44f lhs, Mtx44f rhs)
 {
     dst[0][0] = (lhs[0][0] * rhs[0][0]) + (lhs[1][0] * rhs[0][1]) + (lhs[2][0] * rhs[0][2]);
     dst[0][1] = (lhs[0][1] * rhs[0][0]) + (lhs[1][1] * rhs[0][1]) + (lhs[2][1] * rhs[0][2]);
@@ -278,7 +278,7 @@ void gmCollisionSetInvertMatrix(Mtx44f dst, Mtx44f src)
 }
 
 // 0x800EDA0C
-void func_ovl2_800EDA0C(Mtx44f mtx, Vec3f *rotate)
+void gmCollisionGetMatrixRotation(Mtx44f mtx, Vec3f *rotate)
 {
     Mtx44f dst;
     f32 scale;
@@ -321,7 +321,7 @@ void func_ovl2_800EDA0C(Mtx44f mtx, Vec3f *rotate)
 }
 
 // 0x800EDB88
-void func_ovl2_800EDB88(Mtx44f mtx, Vec3f *vec)
+void gmCollisionGetMatrixTranslation(Mtx44f mtx, Vec3f *vec)
 {
     vec->x = mtx[3][0];
     vec->y = mtx[3][1];
@@ -329,7 +329,7 @@ void func_ovl2_800EDB88(Mtx44f mtx, Vec3f *vec)
 }
 
 // 0x800EDBA4
-void func_ovl2_800EDBA4(DObj *main_dobj)
+void gmCollisionBuildPartsMatrix(DObj *main_dobj)
 {
     DObj *current_dobj;
     FTParts *parts;
@@ -387,7 +387,7 @@ void func_ovl2_800EDBA4(DObj *main_dobj)
 
                 current_dobjdata->transform_update_mode = 1;
             }
-            func_ovl2_800ED490(current_dobjdata->mtx_translate, parts->mtx_translate, current_dobjdata->unk_dobjtrans_0x10);
+            gmCollisionMultiplyMatrix(current_dobjdata->mtx_translate, parts->mtx_translate, current_dobjdata->unk_dobjtrans_0x10);
 
             current_dobjdata->unk_dobjtrans_0x5 = 1;
             parts = current_dobjdata;
@@ -443,7 +443,7 @@ void func_ovl2_800EDBA4(DObj *main_dobj)
                 current_dobjdata->transform_update_mode = 1;
                 current_dobjdata->unk_dobjtrans_0x6 = 1;
             }
-            func_ovl2_800ED490(current_dobjdata->mtx_translate, parts->mtx_translate, current_dobjdata->unk_dobjtrans_0x10);
+            gmCollisionMultiplyMatrix(current_dobjdata->mtx_translate, parts->mtx_translate, current_dobjdata->unk_dobjtrans_0x10);
 
             current_dobjdata->unk_dobjtrans_0x5 = 1;
             parts = current_dobjdata;
@@ -452,7 +452,7 @@ void func_ovl2_800EDBA4(DObj *main_dobj)
 }
 
 // 0x800EDE00
-void func_ovl2_800EDE00(DObj *main_dobj)
+void gmCollisionUpdatePartsInvertMatrix(DObj *main_dobj)
 {
     FTParts *parts = ftGetParts(main_dobj);
 
@@ -460,7 +460,7 @@ void func_ovl2_800EDE00(DObj *main_dobj)
     {
         if (parts->unk_dobjtrans_0x5 == 0)
         {
-            func_ovl2_800EDBA4(main_dobj);
+            gmCollisionBuildPartsMatrix(main_dobj);
         }
         gmCollisionSetInvertMatrix(parts->unk_dobjtrans_0x9C, parts->mtx_translate);
 
@@ -469,7 +469,7 @@ void func_ovl2_800EDE00(DObj *main_dobj)
 }
 
 // 0x800EDE5C
-void func_ovl2_800EDE5C(DObj *main_dobj)
+void gmCollisionUpdatePartsScale(DObj *main_dobj)
 {
     FTParts *parts = ftGetParts(main_dobj);
 
@@ -477,7 +477,7 @@ void func_ovl2_800EDE5C(DObj *main_dobj)
     {
         if (parts->unk_dobjtrans_0x5 == 0)
         {
-            func_ovl2_800EDBA4(main_dobj);
+            gmCollisionBuildPartsMatrix(main_dobj);
         }
         parts->vec_scale.x = sqrtf(SQUARE(parts->mtx_translate[0][0]) + SQUARE(parts->mtx_translate[0][1]) + SQUARE(parts->mtx_translate[0][2]));
         parts->vec_scale.y = sqrtf(SQUARE(parts->mtx_translate[1][0]) + SQUARE(parts->mtx_translate[1][1]) + SQUARE(parts->mtx_translate[1][2]));
@@ -522,23 +522,23 @@ void gmCollisionGetFighterPartsWorldPosition(DObj *main_dobj, Vec3f *vec)
 
         if (parts->unk_dobjtrans_0x5 == 0)
         {
-            func_ovl2_800EDBA4(main_dobj);
+            gmCollisionBuildPartsMatrix(main_dobj);
         }
         gmCollisionGetWorldPosition(parts->mtx_translate, vec);
     }
 }
 
 // 0x800EE018
-void func_ovl2_800EE018(DObj *main_dobj, Vec3f *vec)
+void gmCollisionGetPartsInversePosition(DObj *main_dobj, Vec3f *vec)
 {
     FTParts *parts = ftGetParts(main_dobj);
 
-    func_ovl2_800EDE00(main_dobj);
+    gmCollisionUpdatePartsInvertMatrix(main_dobj);
     gmCollisionGetWorldPosition(parts->unk_dobjtrans_0x9C, vec);
 }
 
 // 0x800EE050
-void func_ovl2_800EE050(s32 arg0, Vec3f *arg1, Vec3f *arg2, sb32 *arg3, Mtx44f mtx, f32 *p_scale)
+void gmCollisionSetCapsuleMatrix(s32 arg0, Vec3f *arg1, Vec3f *arg2, sb32 *arg3, Mtx44f mtx, f32 *p_scale)
 {
     Vec3f dist;
     f32 unused[2];
@@ -618,7 +618,7 @@ void func_ovl2_800EE050(s32 arg0, Vec3f *arg1, Vec3f *arg2, sb32 *arg3, Mtx44f m
 }
 
 // 0x800EE24C
-u32 func_ovl2_800EE24C(Vec3f *lhs, Vec3f *rhs)
+u32 gmCollisionGetOutcodesXY(Vec3f *lhs, Vec3f *rhs)
 {
     u32 flags = 0;
 
@@ -642,7 +642,7 @@ u32 func_ovl2_800EE24C(Vec3f *lhs, Vec3f *rhs)
 }
 
 // 0x800EE2C0
-u32 func_ovl2_800EE2C0(Vec3f *lhs, Vec3f *rhs)
+u32 gmCollisionGetOutcodesZ(Vec3f *lhs, Vec3f *rhs)
 {
     u32 flags = 0;
 
@@ -714,8 +714,8 @@ sb32 gmCollisionTestRectangle(Vec3f *pos_curr, Vec3f *pos_prev, f32 radius, s32 
     disty = sp6C.y - sp78.y;
     distz = sp6C.z - sp78.z;
 
-    flags_sp78 = func_ovl2_800EE24C(&sp78, &center);
-    flags_sp6C = func_ovl2_800EE24C(&sp6C, &center);
+    flags_sp78 = gmCollisionGetOutcodesXY(&sp78, &center);
+    flags_sp6C = gmCollisionGetOutcodesXY(&sp6C, &center);
 
 loop:
     if ((flags_sp78 != 0) || (flags_sp6C != 0))
@@ -757,17 +757,17 @@ loop:
         if (flags_main == flags_sp78)
         {
             sp78 = sp84;
-            flags_sp78 = func_ovl2_800EE24C(&sp78, &center);
+            flags_sp78 = gmCollisionGetOutcodesXY(&sp78, &center);
         }
         else
         {
             sp6C = sp84;
-            flags_sp6C = func_ovl2_800EE24C(&sp6C, &center);
+            flags_sp6C = gmCollisionGetOutcodesXY(&sp6C, &center);
         }
         goto loop;
     }
-    flags_sp78 = func_ovl2_800EE2C0(&sp78, &center);
-    flags_sp6C = func_ovl2_800EE2C0(&sp6C, &center);
+    flags_sp78 = gmCollisionGetOutcodesZ(&sp78, &center);
+    flags_sp6C = gmCollisionGetOutcodesZ(&sp6C, &center);
 
     if (flags_sp78 & flags_sp6C)
     {
@@ -1001,7 +1001,7 @@ sb32 gmCollisionTestSphere(Vec3f *pos_curr, Vec3f *pos_prev, f32 hitsize, s32 at
 }
 
 // 0x800EEEAC
-sb32 func_ovl2_800EEEAC(Vec3f *arg0, Vec3f *arg1, f32 arg2, s32 opkind, Mtx44f mtx, s32 arg5, Vec3f *arg6, f32 arg7, s32 arg8, f32 arg9)
+sb32 gmCollisionTestCapsule(Vec3f *arg0, Vec3f *arg1, f32 arg2, s32 opkind, Mtx44f mtx, s32 arg5, Vec3f *arg6, f32 arg7, s32 arg8, f32 arg9)
 {
     Vec3f sp94;
     Vec3f sp88;
@@ -1051,8 +1051,8 @@ sb32 func_ovl2_800EEEAC(Vec3f *arg0, Vec3f *arg1, f32 arg2, s32 opkind, Mtx44f m
     disty = sp64.y - sp70.y;
     distz = sp64.z - sp70.z;
 
-    flags_sp70 = func_ovl2_800EE24C(&sp70, &sp94);
-    flags_sp64 = func_ovl2_800EE24C(&sp64, &sp94);
+    flags_sp70 = gmCollisionGetOutcodesXY(&sp70, &sp94);
+    flags_sp64 = gmCollisionGetOutcodesXY(&sp64, &sp94);
 
 loop:
     if ((flags_sp70 != 0) || (flags_sp64 != 0))
@@ -1095,18 +1095,18 @@ loop:
         {
             sp70 = sp7C;
 
-            flags_sp70 = func_ovl2_800EE24C(&sp70, &sp94);
+            flags_sp70 = gmCollisionGetOutcodesXY(&sp70, &sp94);
         }
         else
         {
             sp64 = sp7C;
 
-            flags_sp64 = func_ovl2_800EE24C(&sp64, &sp94);
+            flags_sp64 = gmCollisionGetOutcodesXY(&sp64, &sp94);
         }
         goto loop;
     }
-    flags_sp70 = func_ovl2_800EE2C0(&sp70, &sp94);
-    flags_sp64 = func_ovl2_800EE2C0(&sp64, &sp94);
+    flags_sp70 = gmCollisionGetOutcodesZ(&sp70, &sp94);
+    flags_sp64 = gmCollisionGetOutcodesZ(&sp64, &sp94);
 
     if (flags_sp70 & flags_sp64)
     {
@@ -1192,7 +1192,7 @@ sb32 gmCollisionCheckItemInFighterRange(ITAttackColl *attack_coll, s32 attack_id
 }
 
 // 0x800EF5D4
-sb32 func_ovl2_800EF5D4(Vec3f *arg0, Vec3f *arg1, f32 arg2, s32 arg3, Vec3f *arg4, Vec3f *arg5, f32 arg6, s32 arg7)
+sb32 gmCollisionTestOverlap2D(Vec3f *arg0, Vec3f *arg1, f32 arg2, s32 arg3, Vec3f *arg4, Vec3f *arg5, f32 arg6, s32 arg7)
 {
     f32 sp2C;
     f32 sp28;
@@ -1334,7 +1334,7 @@ sb32 gmCollisionCheckFighterAttacksCollide(FTAttackColl *attack_coll1, FTAttackC
 {
     if 
     (
-        func_ovl2_800EF5D4
+        gmCollisionTestOverlap2D
         (
             &attack_coll1->pos_curr, 
             &attack_coll1->pos_prev, 
@@ -1350,7 +1350,7 @@ sb32 gmCollisionCheckFighterAttacksCollide(FTAttackColl *attack_coll1, FTAttackC
     {
         return FALSE;
     }
-    else func_ovl2_800EE050
+    else gmCollisionSetCapsuleMatrix
     (
         attack_coll2->attack_state, 
         &attack_coll2->pos_curr, 
@@ -1360,7 +1360,7 @@ sb32 gmCollisionCheckFighterAttacksCollide(FTAttackColl *attack_coll1, FTAttackC
         &attack_coll2->attack_matrix.unk_fthitmtx_0x44
     );
 
-    return func_ovl2_800EEEAC
+    return gmCollisionTestCapsule
     (
         &attack_coll1->pos_curr,
         &attack_coll1->pos_prev,
@@ -1384,8 +1384,8 @@ sb32 gmCollisionCheckFighterAttackDamageCollide(FTAttackColl *attack_coll, FTDam
     dobj = damage_coll->joint;
     parts = ftGetParts(dobj);
 
-    func_ovl2_800EDE00(dobj);
-    func_ovl2_800EDE5C(dobj);
+    gmCollisionUpdatePartsInvertMatrix(dobj);
+    gmCollisionUpdatePartsScale(dobj);
 
     return gmCollisionTestRectangle
     (
@@ -1429,8 +1429,8 @@ sb32 gmCollisionCheckFighterAttackShieldCollide(FTAttackColl *attack_coll, GObj 
 
     parts = ftGetParts(dobj);
 
-    func_ovl2_800EDE00(dobj);
-    func_ovl2_800EDE5C(dobj);
+    gmCollisionUpdatePartsInvertMatrix(dobj);
+    gmCollisionUpdatePartsScale(dobj);
 
     return gmCollisionTestSphere
     (
@@ -1453,7 +1453,7 @@ sb32 gmCollisionCheckWeaponAttackFighterAttackCollide(WPAttackColl *wp_attack_co
 {
     if
     (
-        func_ovl2_800EF5D4
+        gmCollisionTestOverlap2D
         (
             &wp_attack_coll->attack_pos[attack_id].pos_curr,
             &wp_attack_coll->attack_pos[attack_id].pos_prev,
@@ -1469,7 +1469,7 @@ sb32 gmCollisionCheckWeaponAttackFighterAttackCollide(WPAttackColl *wp_attack_co
     {
         return FALSE;
     }
-    else func_ovl2_800EE050
+    else gmCollisionSetCapsuleMatrix
     (
         ft_attack_coll->attack_state,
         &ft_attack_coll->pos_curr,
@@ -1479,7 +1479,7 @@ sb32 gmCollisionCheckWeaponAttackFighterAttackCollide(WPAttackColl *wp_attack_co
         &ft_attack_coll->attack_matrix.unk_fthitmtx_0x44
     );
 
-    return func_ovl2_800EEEAC
+    return gmCollisionTestCapsule
     (
         &wp_attack_coll->attack_pos[attack_id].pos_curr,
         &wp_attack_coll->attack_pos[attack_id].pos_prev,
@@ -1503,8 +1503,8 @@ sb32 gmCollisionCheckWeaponAttackFighterDamageCollide(WPAttackColl *attack_coll,
     dobj = damage_coll->joint;
     parts = ftGetParts(dobj);
 
-    func_ovl2_800EDE00(dobj);
-    func_ovl2_800EDE5C(dobj);
+    gmCollisionUpdatePartsInvertMatrix(dobj);
+    gmCollisionUpdatePartsScale(dobj);
 
     return gmCollisionTestRectangle
     (
@@ -1537,8 +1537,8 @@ sb32 gmCollisionCheckWeaponAttackShieldCollide(WPAttackColl *attack_coll, s32 at
 
     parts = ftGetParts(dobj);
 
-    func_ovl2_800EDE00(dobj);
-    func_ovl2_800EDE5C(dobj);
+    gmCollisionUpdatePartsInvertMatrix(dobj);
+    gmCollisionUpdatePartsScale(dobj);
 
     return gmCollisionTestSphere
     (
@@ -1562,8 +1562,8 @@ sb32 gmCollisionCheckWeaponAttackSpecialCollide(WPAttackColl *attack_coll, s32 a
     DObj *dobj = fp->joints[special_coll->joint_id];
     FTParts *parts = ftGetParts(dobj);
 
-    func_ovl2_800EDE00(dobj);
-    func_ovl2_800EDE5C(dobj);
+    gmCollisionUpdatePartsInvertMatrix(dobj);
+    gmCollisionUpdatePartsScale(dobj);
 
     return gmCollisionTestSphere
     (
@@ -1586,7 +1586,7 @@ sb32 gmCollisionCheckWeaponAttacksCollide(WPAttackColl *attack_coll1, s32 atk1_i
 {
     if
     (
-        func_ovl2_800EF5D4
+        gmCollisionTestOverlap2D
         (
             &attack_coll1->attack_pos[atk1_id].pos_curr,
             &attack_coll1->attack_pos[atk1_id].pos_prev,
@@ -1602,7 +1602,7 @@ sb32 gmCollisionCheckWeaponAttacksCollide(WPAttackColl *attack_coll1, s32 atk1_i
     {
         return FALSE;
     }
-    else func_ovl2_800EE050
+    else gmCollisionSetCapsuleMatrix
     (
         attack_coll2->attack_state,
         &attack_coll2->attack_pos[atk2_id].pos_curr,
@@ -1612,7 +1612,7 @@ sb32 gmCollisionCheckWeaponAttacksCollide(WPAttackColl *attack_coll1, s32 atk1_i
         &attack_coll2->attack_pos[atk2_id].unk_wphitpos_0x5C
     );
 
-    return func_ovl2_800EEEAC
+    return gmCollisionTestCapsule
     (
         &attack_coll1->attack_pos[atk1_id].pos_curr,
         &attack_coll1->attack_pos[atk1_id].pos_prev,
@@ -1632,7 +1632,7 @@ sb32 gmCollisionCheckWeaponAttackItemAttackCollide(WPAttackColl *wp_attack_coll,
 {
     if
     (
-        func_ovl2_800EF5D4
+        gmCollisionTestOverlap2D
         (
             &wp_attack_coll->attack_pos[wp_attack_id].pos_curr,
             &wp_attack_coll->attack_pos[wp_attack_id].pos_prev,
@@ -1648,7 +1648,7 @@ sb32 gmCollisionCheckWeaponAttackItemAttackCollide(WPAttackColl *wp_attack_coll,
     {
         return FALSE;
     }
-    else func_ovl2_800EE050
+    else gmCollisionSetCapsuleMatrix
     (
         it_attack_coll->attack_state,
         &it_attack_coll->attack_pos[it_attack_id].pos_curr,
@@ -1658,7 +1658,7 @@ sb32 gmCollisionCheckWeaponAttackItemAttackCollide(WPAttackColl *wp_attack_coll,
         &it_attack_coll->attack_pos[it_attack_id].unk_ithitpos_0x5C
     );
 
-    return func_ovl2_800EEEAC
+    return gmCollisionTestCapsule
     (
         &wp_attack_coll->attack_pos[wp_attack_id].pos_curr,
         &wp_attack_coll->attack_pos[wp_attack_id].pos_prev,
@@ -1678,7 +1678,7 @@ sb32 gmCollisionCheckItemAttackFighterAttackCollide(ITAttackColl *it_attack_coll
 {
     if
     (
-        func_ovl2_800EF5D4
+        gmCollisionTestOverlap2D
         (
             &it_attack_coll->attack_pos[attack_id].pos_curr,
             &it_attack_coll->attack_pos[attack_id].pos_prev,
@@ -1694,7 +1694,7 @@ sb32 gmCollisionCheckItemAttackFighterAttackCollide(ITAttackColl *it_attack_coll
     {
         return FALSE;
     }
-    else func_ovl2_800EE050
+    else gmCollisionSetCapsuleMatrix
     (
         ft_attack_coll->attack_state,
         &ft_attack_coll->pos_curr,
@@ -1704,7 +1704,7 @@ sb32 gmCollisionCheckItemAttackFighterAttackCollide(ITAttackColl *it_attack_coll
         &ft_attack_coll->attack_matrix.unk_fthitmtx_0x44
     );
 
-    return func_ovl2_800EEEAC
+    return gmCollisionTestCapsule
     (
         &it_attack_coll->attack_pos[attack_id].pos_curr,
         &it_attack_coll->attack_pos[attack_id].pos_prev,
@@ -1728,8 +1728,8 @@ sb32 gmCollisionCheckItemAttackFighterDamageCollide(ITAttackColl *attack_coll, s
     dobj = damage_coll->joint;
     parts = ftGetParts(dobj);
 
-    func_ovl2_800EDE00(dobj);
-    func_ovl2_800EDE5C(dobj);
+    gmCollisionUpdatePartsInvertMatrix(dobj);
+    gmCollisionUpdatePartsScale(dobj);
 
     return gmCollisionTestRectangle
     (
@@ -1762,8 +1762,8 @@ sb32 gmCollisionCheckItemAttackShieldCollide(ITAttackColl *attack_coll, s32 atta
 
     parts = ftGetParts(dobj);
 
-    func_ovl2_800EDE00(dobj);
-    func_ovl2_800EDE5C(dobj);
+    gmCollisionUpdatePartsInvertMatrix(dobj);
+    gmCollisionUpdatePartsScale(dobj);
 
     return gmCollisionTestSphere
     (
@@ -1787,8 +1787,8 @@ sb32 gmCollisionCheckItemAttackSpecialCollide(ITAttackColl *attack_coll, s32 att
     DObj *dobj = fp->joints[special_coll->joint_id];
     FTParts *parts = ftGetParts(dobj);
 
-    func_ovl2_800EDE00(dobj);
-    func_ovl2_800EDE5C(dobj);
+    gmCollisionUpdatePartsInvertMatrix(dobj);
+    gmCollisionUpdatePartsScale(dobj);
 
     return gmCollisionTestSphere
     (
@@ -1811,7 +1811,7 @@ sb32 gmCollisionCheckItemAttacksCollide(ITAttackColl *attack_coll1, s32 atk1_id,
 {
     if
     (
-        func_ovl2_800EF5D4
+        gmCollisionTestOverlap2D
         (
             &attack_coll1->attack_pos[atk1_id].pos_curr,
             &attack_coll1->attack_pos[atk1_id].pos_prev,
@@ -1827,7 +1827,7 @@ sb32 gmCollisionCheckItemAttacksCollide(ITAttackColl *attack_coll1, s32 atk1_id,
     {
         return FALSE;
     }
-    else func_ovl2_800EE050
+    else gmCollisionSetCapsuleMatrix
     (
         attack_coll2->attack_state,
         &attack_coll2->attack_pos[atk2_id].pos_curr,
@@ -1837,7 +1837,7 @@ sb32 gmCollisionCheckItemAttacksCollide(ITAttackColl *attack_coll1, s32 atk1_id,
         &attack_coll2->attack_pos[atk2_id].unk_ithitpos_0x5C
     );
 
-    return func_ovl2_800EEEAC
+    return gmCollisionTestCapsule
     (
         &attack_coll1->attack_pos[atk1_id].pos_curr,
         &attack_coll1->attack_pos[atk1_id].pos_prev,

@@ -1836,7 +1836,7 @@ void ifCommonPlayerTagProcDisplay(GObj *interface_gobj)
 
             pos.y += fp->attr->camera_zoom_base;
 
-            func_ovl2_800EB924(CObjGetStruct(gGMCameraGObj), gGMCameraMatrix, &pos, &x, &y);
+            ftParamProjectWorldToScreen(CObjGetStruct(gGMCameraGObj), gGMCameraMatrix, &pos, &x, &y);
 
             if (gmCameraCheckTargetInBounds(x, y) != FALSE)
             {
@@ -1901,7 +1901,7 @@ void ifCommonItemArrowProcDisplay(GObj *interface_gobj)
 
         pos.y += ip->coll_data.map_coll.top + 100.0F;
 
-        func_ovl2_800EB924(CObjGetStruct(gGMCameraGObj), gGMCameraMatrix, &pos, &x, &y);
+        ftParamProjectWorldToScreen(CObjGetStruct(gGMCameraGObj), gGMCameraMatrix, &pos, &x, &y);
 
         if (gmCameraCheckTargetInBounds(x, y) != FALSE)
         {

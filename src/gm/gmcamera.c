@@ -1316,7 +1316,7 @@ sb32 gmCameraPlayerMagnifyFuncMatrix(Mtx *mtx, CObj *cobj, Gfx **dls)
     sp50.y = 900.0F;
     sp50.x = 0.0F;
 
-    func_ovl2_800EB924(CObjGetStruct(gGMCameraGObj), spA4, &sp50, &dist_x, &dist_y);
+    ftParamProjectWorldToScreen(CObjGetStruct(gGMCameraGObj), spA4, &sp50, &dist_x, &dist_y);
 
     gIFCommonPlayerInterface.magnify_scale = (dist_y / 18.0F);
 

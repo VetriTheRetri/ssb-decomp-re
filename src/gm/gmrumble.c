@@ -574,7 +574,7 @@ void gmRumbleSetPlayerRumbleParams(s32 player, s32 rumble_id, s32 rumble_timer)
 }
 
 // 0x801155C4 - Unused?
-void func_ovl2_801155C4(s32 player)
+void gmRumbleResetPlayer(s32 player)
 {
     GMRumbleLink *rlink;
 

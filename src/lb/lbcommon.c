@@ -1449,7 +1449,7 @@ sb32 func_ovl0_800C994C(Mtx *mtx, DObj *dobj, Gfx **dls)
     FTParts *parts = attach_dobj->user_data.p;
     Mtx44f f;
     
-    func_ovl2_800EDBA4(attach_dobj);
+    gmCollisionBuildPartsMatrix(attach_dobj);
     gmCollisionCopyMatrix(f, parts->mtx_translate);
     gGCScaleX = sqrtf(SQUARE(f[0][0]) + SQUARE(f[0][1]) + SQUARE(f[0][2]));
     syMatrixF2LFixedW(&f, mtx);
@@ -1485,7 +1485,7 @@ void func_ovl0_800C9A38(Mtx44f mtx, DObj *dobj)
     
     if ((fp->is_use_animlocks) || (dobj->parent == DOBJ_PARENT_NULL))
     {
-        func_ovl2_800EDBA4(dobj);
+        gmCollisionBuildPartsMatrix(dobj);
 
         p = &parts->mtx_translate;
         
@@ -1565,7 +1565,7 @@ void func_ovl0_800C9A38(Mtx44f mtx, DObj *dobj)
         f[3][1] = (*p)[3][1];
         f[3][2] = (*p)[3][2];
 
-        func_ovl2_800EDBA4(parent_dobj);
+        gmCollisionBuildPartsMatrix(parent_dobj);
 
         p = &ftGetParts(parent_dobj)->mtx_translate;
 
@@ -1599,7 +1599,7 @@ void func_ovl0_800C9A38(Mtx44f mtx, DObj *dobj)
         f[1][2] *= scale;
         f[2][2] *= scale;
 
-        func_ovl2_800ED490(mtx, *p, f);
+        gmCollisionMultiplyMatrix(mtx, *p, f);
     }
 }
 
@@ -1948,7 +1948,7 @@ sb32 func_ovl0_800CB140(Mtx *mtx, DObj *dobj, Gfx **dls)
     attach_dobj = dobj->user_data.p;
     parts = attach_dobj->user_data.p;
     
-    func_ovl2_800EDBA4(attach_dobj);
+    gmCollisionBuildPartsMatrix(attach_dobj);
     
     magnitude = sqrtf
     (
@@ -2013,7 +2013,7 @@ sb32 func_ovl0_800CB2F0(Mtx *mtx, DObj *dobj, Gfx **dls)
     s32 unused;
     DObj *attach_dobj = dobj->user_data.p;
     
-    func_ovl2_800EDBA4(attach_dobj);
+    gmCollisionBuildPartsMatrix(attach_dobj);
     
     dobj->rotate.vec.f.z = (ftGetParts(attach_dobj)->mtx_translate[0][2] > 0.0F) ?
     attach_dobj->rotate.vec.f.x : -attach_dobj->rotate.vec.f.x;

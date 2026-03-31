@@ -375,24 +375,24 @@ void mpCommonUpdateFighterSlopeContour(GObj *fighter_gobj)
             {
                 joint = fp->joints[attr->joint_rfoot_id];
 
-                func_ovl2_800EBC0C(fp, &sp30, &sp2C, attr->joint_rfoot_rotate, joint);
+                ftParamGetSwingPosition(fp, &sp30, &sp2C, attr->joint_rfoot_rotate, joint);
 
                 if (func_ovl2_800DDF74(fighter_gobj, fp, attr, joint, &sp30) != FALSE)
                 {
-                    func_ovl2_800EE018(fp->joints[attr->joint_rfoot_id], &sp30);
-                    func_ovl2_800EBD08(fp->joints[attr->joint_rfoot_id], attr->joint_rfoot_rotate, &sp30, sp2C);
+                    gmCollisionGetPartsInversePosition(fp->joints[attr->joint_rfoot_id], &sp30);
+                    ftParamSetIKRotation(fp->joints[attr->joint_rfoot_id], attr->joint_rfoot_rotate, &sp30, sp2C);
                 }
             }
             if (fp->slope_contour & FTSLOPECONTOUR_FLAG_LFOOT)
             {
                 joint = fp->joints[attr->joint_lfoot_id];
 
-                func_ovl2_800EBC0C(fp, &sp30, &sp2C, attr->joint_lfoot_rotate, joint);
+                ftParamGetSwingPosition(fp, &sp30, &sp2C, attr->joint_lfoot_rotate, joint);
 
                 if (func_ovl2_800DDF74(fighter_gobj, fp, attr, joint, &sp30) != FALSE)
                 {
-                    func_ovl2_800EE018(fp->joints[attr->joint_lfoot_id], &sp30);
-                    func_ovl2_800EBD08(fp->joints[attr->joint_lfoot_id], attr->joint_lfoot_rotate, &sp30, sp2C);
+                    gmCollisionGetPartsInversePosition(fp->joints[attr->joint_lfoot_id], &sp30);
+                    ftParamSetIKRotation(fp->joints[attr->joint_lfoot_id], attr->joint_lfoot_rotate, &sp30, sp2C);
                 }
             }
             if (fp->slope_contour & FTSLOPECONTOUR_FLAG_FULL)

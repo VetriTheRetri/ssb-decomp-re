@@ -1126,14 +1126,14 @@ void ftDisplayMainProcDisplay(GObj *fighter_gobj)
                 }
             #endif
 
-                func_ovl2_800EB924(CObjGetStruct(gGMCameraGObj), gGMCameraMatrix, &ft_pos, &cam_pos_x, &cam_pos_y);
+                ftParamProjectWorldToScreen(CObjGetStruct(gGMCameraGObj), gGMCameraMatrix, &ft_pos, &cam_pos_x, &cam_pos_y);
 
                 if (gmCameraCheckTargetInBounds(cam_pos_x, cam_pos_y) == FALSE)
                 {
                     ft_pos = fp->joints[nFTPartsJointTopN]->translate.vec.f;
                     ft_pos.y += 300.0F;
 
-                    func_ovl2_800EB924(CObjGetStruct(gGMCameraGObj), gGMCameraMatrix, &ft_pos, &fp->magnify_pos.x, &fp->magnify_pos.y);
+                    ftParamProjectWorldToScreen(CObjGetStruct(gGMCameraGObj), gGMCameraMatrix, &ft_pos, &fp->magnify_pos.x, &fp->magnify_pos.y);
 
                     fp->is_magnify_show = TRUE;
 

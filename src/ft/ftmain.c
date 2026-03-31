@@ -4026,7 +4026,7 @@ void ftMainProcParams(GObj *fighter_gobj)
             {
                 FTParts *parts = fp->joints[11]->user_data.p;
 
-                func_ovl2_800EDBA4(fp->joints[11]);
+                gmCollisionBuildPartsMatrix(fp->joints[11]);
 
                 fp->afterimage.desc[fp->afterimage.desc_id].translate_x = parts->mtx_translate[3][0];
                 fp->afterimage.desc[fp->afterimage.desc_id].translate_y = parts->mtx_translate[3][1];

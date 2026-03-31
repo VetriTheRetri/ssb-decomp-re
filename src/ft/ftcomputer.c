@@ -7971,7 +7971,7 @@ void ftComputerSetFighterDamageDetectSize(GObj *fighter_gobj)
 
             if (parts->unk_dobjtrans_0x5 == 0)
             {
-                func_ovl2_800EDBA4(joint);
+                gmCollisionBuildPartsMatrix(joint);
             }
             for (j = 0; j < 8; j++)
             {

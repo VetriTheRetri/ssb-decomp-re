@@ -41,6 +41,9 @@ extern u16 D_8038F048_1AB898;
 extern u8* D_8038F050_1AB8A0;
 extern s32* D_8038F290_1ABAE0;
 
+dbUnknown5* func_ovl8_8037E97C(dbUnknown5*, dbUnknownLinkStruct*, dbUnknownLink*, s32*, s32, s32, s32);
+void func_ovl8_8037EBC8(dbUnknown5*);
+
 extern dbUnknownS14 D_8038FB90_1AC3E0;
 extern db4Bytes D_8038FB98_1AC3E8;
 
@@ -256,7 +259,69 @@ dbUnknown5* func_ovl8_8037E8C8(dbUnknown5 *arg0, dbUnknownLinkStruct *arg1, dbUn
 }
 
 // 0x8037E97C
+// Switch in ascending order (matches cfe sort), all beq. No B-format patching needed.
+#ifdef NON_MATCHING
+dbUnknown5* func_ovl8_8037E97C(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2, s32* arg3, s32 arg4, s32 arg5, s32 arg6)
+{
+    if (arg0 != NULL || ((arg0 = func_ovl8_803717A0(0x120)) != NULL))
+    {
+        if (arg1 == NULL)
+        {
+            arg1 = (dbUnknownLinkStruct*)&arg0->unk_dbunk5_0xB8;
+            arg2 = (dbUnknownLink*)&arg0->unk_dbunk5_0x114;
+            #line 238
+            func_ovl8_803717E0(arg1);
+            func_ovl8_8037C2D0(arg2);
+            #line 245
+        }
+
+        func_ovl8_8037C7D4(arg0, (dbUnknown5*)arg1, (dbFunction**)arg2, arg3, 0, 0, arg6);
+
+        arg0->unk_dbunk5_0x30 = &D_ovl8_8038A8A0;
+        arg1->db_func = &D_ovl8_8038A980;
+        arg2->unk_dbunklink_0x8 = (dbUnknownLink*)&D_ovl8_8038AAD8;
+        arg0->unk_dbunk5_0x4C = (dbUnknownLinkStruct*)&D_ovl8_8038AB00;
+
+        {
+            s32 sp40 = ((u16*)arg3)[2];
+            s32 sp3C = ((u16*)arg3)[3];
+
+            func_ovl8_8037B85C(arg4, &sp40, &sp3C);
+
+            {
+                s32 retval = func_ovl8_8037ACAC(((u16*)arg3)[2], ((u16*)arg3)[3], arg4, sp40, sp3C);
+                arg0->unk_dbunk5_0xB0 = retval;
+                arg0->unk_dbunk5_0xB4 = (dbUnknownLinkStruct*)retval;
+                arg0->unk_dbunk5_0x48 = (dbUnknownLinkStruct*)retval;
+            }
+        }
+
+        {
+            dbFunction *temp_v1 = (dbFunction*)arg0->unk_dbunk5_0x30;
+            temp_v1[14].unk_dbfunc_0x4(temp_v1[14].unk_dbfunc_0x0 + (uintptr_t)arg0, arg5);
+        }
+
+        {
+            s32 result;
+
+            switch (arg3[5]) {
+            case 0x5354424E: result = 0; break;
+            case 0x53545442: result = 1; break;
+            case 0x53544F42: result = 2; break;
+            default: result = 0; break;
+            }
+
+            arg0->unk_dbunk5_0x3C.s_16 = result;
+        }
+
+        func_ovl8_8037EBC8(arg0);
+    }
+
+    return arg0;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13_2/func_ovl8_8037E97C.s")
+#endif /* NON_MATCHING */
 
 // 0x8037EB00
 void func_ovl8_8037EB00(dbUnknown5* arg0, s32 arg1)

@@ -43,6 +43,7 @@ void func_ovl8_80377F50(Sprite*, db4Shorts*);
 void func_ovl8_80377FE4(Sprite*, db4Shorts*, db4Shorts*);
 void func_ovl8_803780B8(Sprite*, DBMenuPosition*);
 s32 func_ovl8_8037A67C(s16*, s16*, s16*);
+void func_ovl8_80379070(u8*, s32, Bitmap*, s16, DBMenuPosition*);
 void func_ovl8_80379D74(u8*, s32, Bitmap*, s16, DBMenuPosition*);
 void func_ovl8_8037A904(db4Shorts*, db4Shorts*);
 void func_ovl8_8037A9C0(db4Shorts*, s32, s32);
@@ -583,7 +584,177 @@ void func_ovl8_803780B8(Sprite* arg0, DBMenuPosition* arg1)
 }
 
 // 0x803781A4
+#ifdef NON_MATCHING
+void func_ovl8_803781A4(s32 bmsiz, Bitmap *src, Bitmap *dst, db4Shorts *srcRect, db4Shorts *dstRect)
+{
+    u16 w;
+    u16 h;
+    s16 srcStride;
+    s16 dstStride;
+    s32 row;
+    s32 col;
+    u32 pixel;
+    s32 srcY, dstY;
+    s16 srcX, dstX;
+
+    w = srcRect->uarr[2];
+    h = srcRect->uarr[3];
+    srcStride = src->width_img;
+    dstStride = dst->width_img;
+
+    switch (bmsiz)
+    {
+    case 1:
+        if (h <= 0) break;
+        for (row = 0; row < h; row++)
+        {
+            if (w <= 0) continue;
+            for (col = 0; col < w; col++)
+            {
+                srcY = srcRect->arr[1] + row;
+                if (srcY & 1)
+                {
+                    srcX = srcRect->arr[0];
+                    if ((srcX + col) & 4)
+                    {
+                        pixel = *((u8 *)src->buf + srcY * srcStride + srcX + col - 4);
+                    }
+                    else
+                    {
+                        pixel = *((u8 *)src->buf + srcY * srcStride + srcX + col + 4);
+                    }
+                }
+                else
+                {
+                    pixel = *((u8 *)src->buf + srcY * srcStride + srcRect->arr[0] + col);
+                }
+
+                dstY = dstRect->arr[1] + row;
+                if (dstY & 1)
+                {
+                    dstX = dstRect->arr[0];
+                    if ((dstX + col) & 4)
+                    {
+                        *((u8 *)dst->buf + dstY * dstStride + dstX + col - 4) = pixel;
+                        *((u8 *)dst->buf + (dstRect->arr[1] + row) * dstStride + dstRect->arr[0] + col - 4) = pixel;
+                        *((u8 *)dst->buf + (dstRect->arr[1] + row) * dstStride + dstRect->arr[0] + col - 4) = pixel;
+                    }
+                    else
+                    {
+                        *((u8 *)dst->buf + dstY * dstStride + dstX + col + 4) = pixel;
+                        *((u8 *)dst->buf + (dstRect->arr[1] + row) * dstStride + dstRect->arr[0] + col + 4) = pixel;
+                    }
+                }
+                else
+                {
+                    *((u8 *)dst->buf + dstY * dstStride + dstRect->arr[0] + col) = pixel;
+                }
+            }
+        }
+        break;
+    case 2:
+        if (h <= 0) break;
+        for (row = 0; row < h; row++)
+        {
+            if (w <= 0) continue;
+            for (col = 0; col < w; col++)
+            {
+                srcY = srcRect->arr[1] + row;
+                if (srcY & 1)
+                {
+                    srcX = srcRect->arr[0];
+                    if ((srcX + col) & 2)
+                    {
+                        pixel = *(u16 *)((u8 *)src->buf + srcY * srcStride * 2 + srcX * 2 + col * 2 - 4);
+                    }
+                    else
+                    {
+                        pixel = *(u16 *)((u8 *)src->buf + srcY * srcStride * 2 + srcX * 2 + col * 2 + 4);
+                    }
+                }
+                else
+                {
+                    pixel = *(u16 *)((u8 *)src->buf + srcY * srcStride * 2 + srcRect->arr[0] * 2 + col * 2);
+                }
+
+                dstY = dstRect->arr[1] + row;
+                if (dstY & 1)
+                {
+                    dstX = dstRect->arr[0];
+                    if ((dstX + col) & 2)
+                    {
+                        *(u16 *)((u8 *)dst->buf + dstY * dstStride * 2 + dstX * 2 + col * 2 - 4) = pixel;
+                        *(u16 *)((u8 *)dst->buf + (dstRect->arr[1] + row) * dstStride * 2 + dstRect->arr[0] * 2 + col * 2 - 4) = pixel;
+                        *(u16 *)((u8 *)dst->buf + (dstRect->arr[1] + row) * dstStride * 2 + dstRect->arr[0] * 2 + col * 2 - 4) = pixel;
+                    }
+                    else
+                    {
+                        *(u16 *)((u8 *)dst->buf + dstY * dstStride * 2 + dstX * 2 + col * 2 + 4) = pixel;
+                        *(u16 *)((u8 *)dst->buf + (dstRect->arr[1] + row) * dstStride * 2 + dstRect->arr[0] * 2 + col * 2 + 4) = pixel;
+                    }
+                }
+                else
+                {
+                    *(u16 *)((u8 *)dst->buf + dstY * dstStride * 2 + dstRect->arr[0] * 2 + col * 2) = pixel;
+                }
+            }
+        }
+        break;
+    case 3:
+        if (h <= 0) break;
+        for (row = 0; row < h; row++)
+        {
+            if (w <= 0) continue;
+            for (col = 0; col < w; col++)
+            {
+                srcY = srcRect->arr[1] + row;
+                if (srcY & 1)
+                {
+                    srcX = srcRect->arr[0];
+                    if ((srcX + col) & 2)
+                    {
+                        pixel = *(u32 *)((u8 *)src->buf + srcY * srcStride * 4 + srcX * 4 + col * 4 - 8);
+                    }
+                    else
+                    {
+                        pixel = *(u32 *)((u8 *)src->buf + srcY * srcStride * 4 + srcX * 4 + col * 4 + 8);
+                    }
+                }
+                else
+                {
+                    pixel = *(u32 *)((u8 *)src->buf + srcY * srcStride * 4 + srcRect->arr[0] * 4 + col * 4);
+                }
+
+                dstY = dstRect->arr[1] + row;
+                if (dstY & 1)
+                {
+                    dstX = dstRect->arr[0];
+                    if ((dstX + col) & 2)
+                    {
+                        *(u32 *)((u8 *)dst->buf + dstY * dstStride * 4 + dstX * 4 + col * 4 - 8) = pixel;
+                        *(u32 *)((u8 *)dst->buf + (dstRect->arr[1] + row) * dstStride * 4 + dstRect->arr[0] * 4 + col * 4 - 8) = pixel;
+                        *(u32 *)((u8 *)dst->buf + (dstRect->arr[1] + row) * dstStride * 4 + dstRect->arr[0] * 4 + col * 4 - 8) = pixel;
+                    }
+                    else
+                    {
+                        *(u32 *)((u8 *)dst->buf + dstY * dstStride * 4 + dstX * 4 + col * 4 + 8) = pixel;
+                        *(u32 *)((u8 *)dst->buf + (dstRect->arr[1] + row) * dstStride * 4 + dstRect->arr[0] * 4 + col * 4 + 8) = pixel;
+                    }
+                }
+                else
+                {
+                    *(u32 *)((u8 *)dst->buf + dstY * dstStride * 4 + dstRect->arr[0] * 4 + col * 4) = pixel;
+                }
+            }
+        }
+        break;
+    default:
+        break;
+    }
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_803781A4.s")
+#endif
 
 // 0x803787C0
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_803787C0.s")
@@ -592,7 +763,106 @@ void func_ovl8_803780B8(Sprite* arg0, DBMenuPosition* arg1)
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80379070.s")
 
 // 0x803798A0
+#ifdef NON_MATCHING
+void func_ovl8_803798A0(Sprite* sprite, u8* dst_buffer, s32 dst_w, s16 dst_h, DBMenuPosition* src_pos, s32 arg5)
+{
+    DBMenuPosition spB0;
+    DBMenuPosition spA8;
+    DBMenuPosition spA0;
+    DBMenuPosition sp98;
+    s32 sp90;
+    s32 sp8C;
+    s32 sp88;
+    s32 sp84;
+    s32 sp78;
+    s32 sp74;
+    s32 sp70;
+    s32 sp6C;
+    s32 s0;
+    s32 s3;
+    s32 s6;
+    u8* s1;
+    u8* sp5C;
+    Bitmap* bitmap;
+
+    D_ovl8_80389F60 = arg5;
+
+    if (sprite->bmsiz == 1) {
+        sp6C = 1;
+    } else if (sprite->bmsiz == 2) {
+        sp6C = 2;
+    } else {
+        sp6C = 4;
+    }
+
+    spB0.x = src_pos->x;
+    spB0.y = src_pos->y;
+    spB0.w = dst_w;
+    spB0.h = dst_h;
+
+    sp98.x = sp98.y = 0;
+    sp98.w = sprite->width;
+    sp98.h = sprite->height;
+
+    func_ovl8_8037A67C((s16*)&spB0, (s16*)&sp98, (s16*)&spA8);
+
+    if (func_ovl8_8037AA5C(&spA8) != 0) {
+        return;
+    }
+
+    func_ovl8_8037A67C((s16*)&spA8, (s16*)&D_ovl8_80389F68, (s16*)&spA8);
+
+    if (func_ovl8_8037AA5C(&spA8) != 0) {
+        return;
+    }
+
+    s3 = sprite->bitmap->width;
+    s6 = sprite->bitmap->actualHeight;
+
+    sp5C = dst_buffer + (((spA8.y - spB0.y) * dst_w) + (spA8.x - spB0.x)) * sp6C;
+
+    sp78 = spA8.x / s3;
+    sp74 = spA8.y / s6;
+
+    sp84 = (sprite->width / s3) + ((sprite->width % s3) != 0 ? 1 : 0);
+
+    sp8C = ((u16)spA8.w / s3) + (((u16)spA8.w % s3) != 0 ? 1 : 0) + 1;
+
+    sp88 = ((u16)spA8.h / s6) + (((u16)spA8.h % s6) != 0 ? 1 : 0) + 1;
+
+    if (sp88 <= 0) {
+        return;
+    }
+
+    for (sp90 = 0; sp90 < sp88; sp90++)
+    {
+        s1 = sp5C;
+
+        for (s0 = 0; s0 != sp8C; s0++)
+        {
+            spA0.x = (sp78 + s0) * s3;
+            spA0.y = (sp74 + sp90) * s6;
+            spA0.w = s3;
+            spA0.h = s6;
+
+            if (func_ovl8_8037A67C((s16*)&spA0, (s16*)&spA8, (s16*)&sp98) != 0)
+            {
+                sp98.x %= s3;
+                sp98.y %= s6;
+
+                bitmap = sprite->bitmap + ((sp74 + sp90) * sp84) + s0 + sp78;
+
+                func_ovl8_80379070(s1, dst_w, bitmap, sprite->bmsiz, &sp98);
+                sp70 = sp98.h;
+            }
+            s1 += sp98.w * sp6C;
+        }
+        sp5C += sp70 * dst_w * sp6C;
+    }
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_803798A0.s")
+#endif
 
 // 0x80379D74
 // NON_MATCHING: IDO generates if-chain instead of jump table for 4-case switch.

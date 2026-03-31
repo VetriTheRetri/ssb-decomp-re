@@ -46,6 +46,7 @@ void func_ovl8_8037EBC8(dbUnknown5*);
 
 extern dbUnknownS14 D_8038FB90_1AC3E0;
 extern db4Bytes D_8038FB98_1AC3E8;
+extern u8 D_8038FBA8_1AC3F8[];
 
 extern void func_ovl8_8037D990(s32);
 extern void func_ovl8_8037D9B4(db4Bytes*);
@@ -134,7 +135,98 @@ void func_ovl8_8037DFCC(s16 arg0, s16 arg1)
 
 // 0x8037DFF8
 #ifdef NON_MATCHING
-void func_ovl8_8037DFF8(Sprite* arg0, u16 arg1, u16 arg2, u8 arg3, s32 arg4, s32* arg5, s32* arg6, f32 arg7) {
+void func_ovl8_8037DFF8(Sprite* arg0, u16 arg1, u16 arg2, u8 arg3, s32 arg4, s32* arg5, s32* arg6, f32 arg7)
+{
+    dbUnknownS14 *info = &D_8038FB90_1AC3E0;
+    f32 r_step, g_step, b_step;
+    u16 row;
+    u16 col;
+    u16 end_col;
+    u8 *src;
+    u8 *dst;
+    u16 width;
+    u8 pixel;
+    u8 r, g, b;
+    u16 rgba;
+
+    if (arg7 == 1.0f)
+    {
+        r_step = 0.0f;
+        g_step = 0.0f;
+        b_step = 0.0f;
+    }
+    else
+    {
+        r_step = (f32)(info->dbUnknownS14_0x8.arr[0] - info->dbUnknownS14_0x4.arr[0]) / arg7;
+        g_step = (f32)(info->dbUnknownS14_0x8.arr[1] - info->dbUnknownS14_0x4.arr[1]) / arg7;
+        b_step = (f32)(info->dbUnknownS14_0x8.arr[2] - info->dbUnknownS14_0x4.arr[2]) / arg7;
+    }
+
+    end_col = (u16)(arg1 - (u8)arg4);
+    width = arg1;
+    src = (u8*)arg5;
+    dst = (u8*)arg6;
+
+    for (row = 0; row < arg2; row++)
+    {
+        for (col = arg3; col < end_col; col++)
+        {
+            u8 src_pixel;
+            u8 a1_val;
+
+            src_pixel = src[col];
+            a1_val = src_pixel;
+
+            if (info->dbUnknownS14_0xC != 0)
+            {
+                a1_val = ~a1_val;
+            }
+
+            if (arg0->bmsiz == 1)
+            {
+                *dst++ = D_8038FBA8_1AC3F8[src_pixel];
+            }
+            else if (arg0->bmsiz == 2)
+            {
+                if (a1_val == 0)
+                {
+                    r = info->dbUnknownS14_0x8.arr[0];
+                    g = info->dbUnknownS14_0x8.arr[1];
+                    b = info->dbUnknownS14_0x8.arr[2];
+                }
+                else
+                {
+                    r = (u8)(s32)(r_step * (f32)a1_val + (f32)info->dbUnknownS14_0x4.arr[0]);
+                    g = (u8)(s32)(g_step * (f32)a1_val + (f32)info->dbUnknownS14_0x4.arr[1]);
+                    b = (u8)(s32)(b_step * (f32)a1_val + (f32)info->dbUnknownS14_0x4.arr[2]);
+                }
+
+                rgba = ((r & 0xF8) << 8) | ((g & 0xF8) << 3) | ((b & 0xF8) >> 2) | 1;
+                *dst++ = (u8)(rgba >> 8);
+                *dst++ = (u8)rgba;
+            }
+            else if (arg0->bmsiz == 3)
+            {
+                if (a1_val == 0)
+                {
+                    *dst++ = info->dbUnknownS14_0x8.arr[0];
+                    *dst++ = info->dbUnknownS14_0x8.arr[1];
+                    *dst++ = info->dbUnknownS14_0x8.arr[2];
+                    *dst++ = info->dbUnknownS14_0x8.arr[3];
+                }
+                else
+                {
+                    *dst++ = (u8)(s32)(r_step * (f32)a1_val + (f32)info->dbUnknownS14_0x4.arr[0]);
+                    *dst++ = (u8)(s32)(g_step * (f32)a1_val + (f32)info->dbUnknownS14_0x4.arr[1]);
+                    *dst++ = (u8)(s32)(b_step * (f32)a1_val + (f32)info->dbUnknownS14_0x4.arr[2]);
+                    *dst++ = info->dbUnknownS14_0x4.arr[3];
+                }
+            }
+        }
+        src += width;
+    }
+    arg5 = (s32*)src;
+    arg6 = (s32*)dst;
 }
 #else
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13_2/func_ovl8_8037DFF8.s")

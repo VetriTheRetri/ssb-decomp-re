@@ -322,7 +322,6 @@ void func_80010C2C(Mtx *mtx_l, DObj *dobj, sb32 is_translate)
 /* Scratch: https://decomp.me/scratch/X7YA9
  * Similar function is matched in pokemonsnap: renPrepareModelMatrix (render.c)
  */
-#ifdef NON_MATCHING
 s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
 {
     Gfx *current_dl = *dl;
@@ -1196,9 +1195,6 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
 
     return sp2CC;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/objdisplay/gcPrepDObjMatrix.s")
-#endif /* NON_MATCHING */
 
 // 0x80012D90
 void gcDrawMObjForDObj(DObj *dobj, Gfx **dl_head)

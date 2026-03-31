@@ -2642,8 +2642,7 @@ void lbCommonPrepSObjAttr(Gfx **dls, SObj *sobj)
     dls[0] = dl;
 }
 
-#ifdef NON_MATCHING
-// 0x800CC818 - NONMATCHING: many regswaps, but appears to be equivalent
+// 0x800CC818
 void lbCommonPrepSObjDraw(Gfx **dls, SObj *sobj)
 {
     Sprite *sprite;
@@ -2781,9 +2780,6 @@ void lbCommonPrepSObjDraw(Gfx **dls, SObj *sobj)
         }
     }
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/lb/lbcommon/lbCommonPrepSObjDraw.s")
-#endif /* NON_MATCHING */
 
 // 0x800CCEAC
 void lbCommonClearExternSpriteParams(void)

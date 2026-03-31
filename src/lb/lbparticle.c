@@ -702,8 +702,7 @@ void lbParticleAddDistVelMagDObj(LBParticle *pc, DObj *dobj, f32 magnitude)
 	}
 }
 
-#ifdef NON_MATCHING
-// 0x800CEF4C - NONMATCHING: v0 VS v1 regswap in switch statement initialization + floats are a mess near the end of the function
+// 0x800CEF4C
 LBParticle* lbParticleUpdateStruct(LBParticle *this_pc, LBParticle *other_pc, s32 bank_id)
 {
     LBParticle *current_pc;
@@ -1407,9 +1406,6 @@ LBParticle* lbParticleUpdateStruct(LBParticle *this_pc, LBParticle *other_pc, s3
     }
     return this_pc->next;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/lb/lbparticle/lbParticleUpdateStruct.s")
-#endif /* NON_MATCHING */
 
 // 0x800D0C74
 void lbParticleStructFuncRun(GObj *gobj)
@@ -1444,9 +1440,8 @@ void lbParticleStructFuncRun(GObj *gobj)
 	}
 }
 
-#ifdef NON_MATCHING
-/* 
- * NONMATCHING: xh, xl, yh, yl, pos_x, pos_y and pos_z float reg and/or order swaps
+/*
+ * xh, xl, yh, yl, pos_x, pos_y and pos_z float reg and/or order swaps
  * This is likely related to control flow, because xl and yl are supposed to go into saved regs,
  * but they are instead placed in fv0 and fv1 (f0 and f2 respectively). xh and yh are however
  * correctly placed into the registers they belong in. The empty brackets are also suspicious.
@@ -2119,9 +2114,6 @@ void lbParticleDrawTextures(GObj *gobj)
         gDPSetTextureLUT(gSYTaskmanDLHeads[0]++, G_TT_NONE);
     }
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/lb/lbparticle/lbParticleDrawTextures.s")
-#endif /* NON_MATCHING */
 
 // 0x800D2720
 void lbParticleAddAttachDObj(s32 bank_id, DObj *dobj)
@@ -2265,9 +2257,8 @@ void lbParticleGetPosVelDObj(Vec3f *pos, Vec3f *vel, DObj *dobj)
 	vel->z = (dst[0][2] * x) + (dst[1][2] * y) + (dst[2][2] * z);
 }
 
-#ifdef NON_MATCHING
-/* 
- * NONMATCHING: move $a0, $s0 and move $a1, $s1 order swap around sLBParticleGeneratorFuncDefault
+/*
+ * move $a0, $s0 and move $a1, $s1 order swap around sLBParticleGeneratorFuncDefault
  */
 
 // 0x800D2C4C
@@ -2588,9 +2579,6 @@ void lbParticleGeneratorFuncRun(GObj *gobj)
         gn = gn->next;
     }
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/lb/lbparticle/lbParticleGeneratorFuncRun.s")
-#endif /* NON_MATCHING */
 
 // 0x800D353C
 LBGenerator* lbParticleGetGenerator(void)

@@ -17,7 +17,7 @@ void func_ovl8_80376B60(s32 arg0, u8* arg1, u32* arg2);
 dbUnknown5* func_ovl8_80376530(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2, DBMenu* arg3, s32 arg4, s32 arg5)
 {
     s32 sp4C;
-    DBMenuPositionContainer sp44;
+    DBMenuPosition sp44;
     s32 sp40;
     s32 sp3C;
     s32 sp38;
@@ -83,9 +83,9 @@ dbUnknown5* func_ovl8_80376530(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUn
             } 
             else 
             {
-                sp44.position = arg3->position;
-                sp44.position.x = 0;
-                sp44.position.y = 0;
+                *(DBMenuPosition*)&sp44 = arg3->position;
+                sp44.x = 0;
+                sp44.y = 0;
                 func_ovl8_80377AEC(arg0->unk_dbunk5_0x40.gobj, &sp44, &arg3->bg_color, 4);
             }
             func_ovl8_803723AC(&arg0->unk_dbunk5_0x38, arg0, arg0->unk_dbunk5_0x40.gobj, func_ovl8_8037BE34, func_ovl8_8037BE94, arg5);

@@ -69,10 +69,6 @@ struct dbBytesContainer
     db4Shorts unk_dbbytescont_0x0;
 };
 
-typedef struct DBMenuPositionContainer {
-    DBMenuPosition position;
-} DBMenuPositionContainer;
-
 struct dbUnAl1
 {
     u16 unk_dbunal1_0x0;

@@ -809,8 +809,8 @@ void func_ovl8_80375528(struct dbUnknownStructS1C* arg0, s32 arg1, s32 arg2) {
 void func_ovl8_803755C4(dbUnknownS38* arg0) 
 {
     DBMenuPosition sp48;
-    DBMenuPositionContainer sp40;
-    DBMenuPositionContainer sp38;
+    DBMenuPosition sp40;
+    DBMenuPosition sp38;
     s32 var_s1;
     dbUnknownLinkStruct* var_v0;
 
@@ -826,37 +826,37 @@ void func_ovl8_803755C4(dbUnknownS38* arg0)
     
     if ((sp48.w) && (sp48.h)) 
     {
-        sp40.position.x = sp40.position.y = 0;
-        sp40.position.w = sp48.w + (arg0->unk_dbunks38_0x0 * 2);
-        sp40.position.h = arg0->unk_dbunks38_0x4;
-        arg0->unk_dbunks38_0x8 = func_ovl8_8037ACAC(sp40.position.w, sp40.position.h, var_s1, 0x18, 0x18);
-        func_ovl8_8037B46C(arg0->unk_dbunks38_0x8, &sp40.position, &D_ovl8_80389580, &arg0->unk_dbunks38_0x20->text_color);
+        sp40.x = sp40.y = 0;
+        sp40.w = sp48.w + (arg0->unk_dbunks38_0x0 * 2);
+        sp40.h = arg0->unk_dbunks38_0x4;
+        arg0->unk_dbunks38_0x8 = func_ovl8_8037ACAC(sp40.w, sp40.h, var_s1, 0x18, 0x18);
+        func_ovl8_8037B46C(arg0->unk_dbunks38_0x8, &sp40, &D_ovl8_80389580, &arg0->unk_dbunks38_0x20->text_color);
         
-        sp38.position = sp40.position;
-        sp38.position.x = (sp38.position.x + arg0->unk_dbunks38_0x0) - 2;
-        sp38.position.w = (sp38.position.w - (arg0->unk_dbunks38_0x0 * 2)) + 4;
-        func_ovl8_8037B46C(arg0->unk_dbunks38_0x8, &sp38.position, &D_ovl8_80389598, &arg0->unk_dbunks38_0x20->text_color);
+        *(DBMenuPosition*)&sp38 = *(DBMenuPosition*)&sp40;
+        sp38.x = (sp38.x + arg0->unk_dbunks38_0x0) - 2;
+        sp38.w = (sp38.w - (arg0->unk_dbunks38_0x0 * 2)) + 4;
+        func_ovl8_8037B46C(arg0->unk_dbunks38_0x8, &sp38, &D_ovl8_80389598, &arg0->unk_dbunks38_0x20->text_color);
         
-        sp40.position.x = sp40.position.y = 0;
-        sp40.position.w = arg0->unk_dbunks38_0x0;
-        sp40.position.h = sp48.h;
-        arg0->unk_dbunks38_0xC = func_ovl8_8037ACAC(sp40.position.w, sp48.h, var_s1, 0x18, 0x18);
-        func_ovl8_8037B46C(arg0->unk_dbunks38_0xC, &sp40.position, &D_ovl8_803895D4, &arg0->unk_dbunks38_0x20->text_color);
+        sp40.x = sp40.y = 0;
+        sp40.w = arg0->unk_dbunks38_0x0;
+        sp40.h = sp48.h;
+        arg0->unk_dbunks38_0xC = func_ovl8_8037ACAC(sp40.w, sp48.h, var_s1, 0x18, 0x18);
+        func_ovl8_8037B46C(arg0->unk_dbunks38_0xC, &sp40, &D_ovl8_803895D4, &arg0->unk_dbunks38_0x20->text_color);
         
-        sp40.position.w = arg0->unk_dbunks38_0x0;
-        sp40.position.h = sp48.h;
-        arg0->unk_dbunks38_0x10 = func_ovl8_8037ACAC(sp40.position.w, sp48.h, var_s1, 0x18, 0x18);
-        func_ovl8_8037B46C(arg0->unk_dbunks38_0x10, &sp40.position, &D_ovl8_803895F8, &arg0->unk_dbunks38_0x20->text_color);
+        sp40.w = arg0->unk_dbunks38_0x0;
+        sp40.h = sp48.h;
+        arg0->unk_dbunks38_0x10 = func_ovl8_8037ACAC(sp40.w, sp48.h, var_s1, 0x18, 0x18);
+        func_ovl8_8037B46C(arg0->unk_dbunks38_0x10, &sp40, &D_ovl8_803895F8, &arg0->unk_dbunks38_0x20->text_color);
         
-        sp40.position.w = sp48.w + (arg0->unk_dbunks38_0x0 * 2);
-        sp40.position.h = arg0->unk_dbunks38_0x4;
-        arg0->unk_dbunks38_0x14 = func_ovl8_8037ACAC(sp40.position.w, sp40.position.h, var_s1, 0x18, 0x18);
-        func_ovl8_8037B46C(arg0->unk_dbunks38_0x14, &sp40.position, &D_ovl8_8038961C, &arg0->unk_dbunks38_0x20->text_color);
+        sp40.w = sp48.w + (arg0->unk_dbunks38_0x0 * 2);
+        sp40.h = arg0->unk_dbunks38_0x4;
+        arg0->unk_dbunks38_0x14 = func_ovl8_8037ACAC(sp40.w, sp40.h, var_s1, 0x18, 0x18);
+        func_ovl8_8037B46C(arg0->unk_dbunks38_0x14, &sp40, &D_ovl8_8038961C, &arg0->unk_dbunks38_0x20->text_color);
         
-        sp38.position = sp40.position;
-        sp38.position.x = (sp38.position.x + arg0->unk_dbunks38_0x0) - 2;
-        sp38.position.w = (sp38.position.w - (arg0->unk_dbunks38_0x0 * 2)) + 4;
-        func_ovl8_8037B46C(arg0->unk_dbunks38_0x14, &sp38.position, &D_ovl8_80389634, &arg0->unk_dbunks38_0x20->text_color);
+        *(DBMenuPosition*)&sp38 = *(DBMenuPosition*)&sp40;
+        sp38.x = (sp38.x + arg0->unk_dbunks38_0x0) - 2;
+        sp38.w = (sp38.w - (arg0->unk_dbunks38_0x0 * 2)) + 4;
+        func_ovl8_8037B46C(arg0->unk_dbunks38_0x14, &sp38, &D_ovl8_80389634, &arg0->unk_dbunks38_0x20->text_color);
     }
 }
 

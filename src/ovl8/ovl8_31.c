@@ -25,6 +25,8 @@ void stringCopyPartial(char* target, char* source, s32 count);
 int stringToNumber(char*);
 s32 func_ovl8_80386FE0(char*, char*, sb32, s32, s32);
 s32 func_ovl8_80387154(char*, s64, s32, s32, s32, s32, s32);
+u32 stringFromNumber(char*, s64);
+s32 func_ovl8_80387540(char*, s32, s32);
 
 // 0x80386540
 void func_ovl8_80386540(s32 arg0, s32 arg1)
@@ -600,7 +602,108 @@ s32 func_ovl8_80386FE0(char* out, char* src, sb32 leftAlign, s32 width, s32 maxL
 }
 
 // 0x80387154
+// NON_MATCHING: Number formatter (int/float to string with padding/sign).
+// Frame size matches (0xA8). Register allocation extensively differs throughout.
+#ifdef NON_MATCHING
+s32 func_ovl8_80387154(char *dst, s64 val, s32 is_float, s32 minus, s32 zero_pad, s32 width, s32 precision)
+{
+    char buf[0x44];
+    s32 i;
+    s32 pad_char;
+    s32 rpad_char;
+    s32 minus_sign = 0;
+    s32 sign_count = 0;
+    s32 digit_count;
+    s32 total;
+    s32 padding;
+    char *temp;
+
+    pad_char = zero_pad ? '0' : ' ';
+    rpad_char = pad_char;
+
+    if (is_float == 1) {
+        if (minus == 0) {
+            rpad_char = ' ';
+        } else if (zero_pad == 0) {
+            rpad_char = ' ';
+        } else {
+            rpad_char = '0';
+        }
+    } else {
+        rpad_char = ' ';
+    }
+
+    if (is_float == 0) {
+        if (val < 0) {
+            val = -val;
+            minus_sign = 1;
+            sign_count = 1;
+        }
+        digit_count = stringFromNumber(buf, val);
+    } else {
+        f32 fval = *(f32 *)&val;
+        if (fval < 0.0f) {
+            fval = -fval;
+            minus_sign = 1;
+            sign_count = 1;
+        }
+        digit_count = func_ovl8_80387540(buf, *(s32 *)&fval, precision);
+    }
+
+    total = sign_count + digit_count;
+
+    if (minus_sign && zero_pad) {
+        temp = dst++;
+        *temp = '-';
+    }
+
+    if (minus == 0) {
+        padding = width - total;
+        if (padding > 0) {
+            temp = dst;
+            for (i = 0; i < padding; i++) {
+                temp = dst++; *temp = pad_char;
+            }
+            if (temp);
+            if (temp);
+            if (temp);
+            if (temp);
+            if (temp);
+        }
+    }
+
+    if (minus_sign && !zero_pad) {
+        temp = dst++;
+        *temp = '-';
+    }
+
+    if (digit_count > 0) {
+        char *src = buf;
+        while (digit_count--) {
+            *dst++ = *src++;
+        }
+    }
+
+    if (minus) {
+        padding = width - total;
+        if (padding > 0) {
+            temp = dst;
+            for (i = 0; i < padding; i++) {
+                temp = dst++; *temp = rpad_char;
+            }
+            if (temp);
+            if (temp);
+            if (temp);
+            if (temp);
+            if (temp);
+        }
+    }
+
+    return (width < total) ? total : width;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_31/func_ovl8_80387154.s")
+#endif
 
 // 0x80387420
 void stringCopyPartial(char* target, char* source, s32 count)

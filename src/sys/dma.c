@@ -424,5 +424,312 @@ void syDmaReadVpk0(uintptr_t dev_addr, void *ram_dst)
 }
 #endif
 
-// Best I can do with this is functionally equivalent. Somewhat disappointing, but not a big deal; this function is unreferenced. It's also non-matching in Pokémon Snap.
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/dma/unref_800036B4.s")
+// Unreferenced VPK0-variant decompressor. Also non-matching in Pokémon Snap (but matches here).
+void unref_800036B4(u16 *data, u8 *dst)
+{
+    SYHuffmanNode *sample1_node;
+    SYHuffmanNode *lengths_node;
+    SYHuffmanNode sp14C[64];
+    u8 *out_ptr;
+    SYHuffmanNode *offsets_tree;
+    SYHuffmanNode *lengths_tree;
+    u8 *copy_src;
+    void *out_buf_end;
+    u32 sample_method;
+    SYHuffmanNode *off_stack[24];
+    s32 off_stack_size;
+    s32 value;
+    SYHuffmanNode *offsets_node;
+    SYHuffmanNode *off_node;
+    SYHuffmanNode *lengths_stack[24];
+    s32 lengths_stack_size;
+    SYHuffmanNode *length_node;
+    s32 sp64;
+    u32 temp_value;
+    s32 bits_num;
+    u16 *csr;
+
+    // Read 4 halfwords for decompressed size
+    temp_value = data[0];
+    temp_value = (temp_value << 16) | data[1];
+    temp_value = (temp_value << 16) | data[2];
+    temp_value = (temp_value << 16) | data[3];
+
+    out_ptr = dst;
+    out_buf_end = (void *)((uintptr_t)temp_value + (uintptr_t)dst);
+
+    // Initialize bitstream with 5th halfword
+    bits_num = 0;
+    bits_num += 8;
+    temp_value <<= 16;
+    temp_value |= data[4];
+
+    // Extract sample_method (8 bits)
+    sample_method = (temp_value << ((32 - 8) - bits_num)) >> (32 - (u32)(8));
+
+    csr = &data[5];
+    lengths_node = sp14C;
+
+    // Read Huffman tree for offsets
+    off_stack_size = 0;
+    off_stack[0] = NULL;
+
+    while (TRUE)
+    {
+        if (bits_num < 1)
+        {
+            temp_value <<= 16;
+            temp_value |= *(csr++);
+            bits_num += 16;
+        }
+        bits_num -= 1;
+        value = (temp_value << ((32 - 1) - bits_num)) >> (32 - (u32)(1));
+
+        if ((value != 0) && (off_stack_size < 2))
+        {
+            break;
+        }
+        if (value != 0)
+        {
+            off_node = lengths_node;
+            lengths_node->left = NULL;
+            lengths_node->right = NULL;
+            lengths_node->value = 0;
+            lengths_node++;
+
+            off_node->left = off_stack[off_stack_size - 2];
+            off_node->right = off_stack[off_stack_size - 1];
+
+            off_stack[off_stack_size - 2] = off_node;
+            off_stack_size--;
+        }
+        else
+        {
+            off_node = lengths_node;
+            lengths_node->left = NULL;
+            lengths_node->right = NULL;
+            lengths_node->value = 0;
+            lengths_node++;
+
+            if (bits_num < 8)
+            {
+                temp_value <<= 16;
+                temp_value |= *(csr++);
+                bits_num += 16;
+            }
+            bits_num -= 8;
+            off_node->value = (temp_value << ((32 - 8) - bits_num)) >> (32 - (u32)(8));
+
+            off_stack[off_stack_size] = off_node;
+            off_stack_size++;
+        }
+    }
+    offsets_tree = off_stack[0];
+
+    // Read Huffman tree for lengths
+    lengths_stack_size = 0;
+    lengths_stack[0] = NULL;
+
+    while (TRUE)
+    {
+        if (bits_num < 1)
+        {
+            temp_value <<= 16;
+            temp_value |= *(csr++);
+            bits_num += 16;
+        }
+        bits_num -= 1;
+        value = (temp_value << ((32 - 1) - bits_num)) >> (32 - (u32)(1));
+
+        if ((value != 0) && (lengths_stack_size < 2))
+        {
+            break;
+        }
+        if (value != 0)
+        {
+            length_node = lengths_node;
+            lengths_node->left = NULL;
+            lengths_node->right = NULL;
+            lengths_node->value = 0;
+            lengths_node++;
+
+            length_node->left = lengths_stack[lengths_stack_size - 2];
+            length_node->right = lengths_stack[lengths_stack_size - 1];
+
+            lengths_stack[lengths_stack_size - 2] = length_node;
+            lengths_stack_size--;
+        }
+        else
+        {
+            length_node = lengths_node;
+            lengths_node->left = NULL;
+            lengths_node->right = NULL;
+            lengths_node->value = 0;
+            lengths_node++;
+
+            if (bits_num < 8)
+            {
+                temp_value <<= 16;
+                temp_value |= *(csr++);
+                bits_num += 16;
+            }
+            bits_num -= 8;
+            length_node->value = (temp_value << ((32 - 8) - bits_num)) >> (32 - (u32)(8));
+
+            lengths_stack[lengths_stack_size] = length_node;
+            lengths_stack_size++;
+        }
+    }
+    lengths_tree = lengths_stack[0];
+
+    while ((uintptr_t)out_ptr < (uintptr_t)out_buf_end)
+    {
+        if (bits_num < 1)
+        {
+            temp_value <<= 16;
+            temp_value |= *(csr++);
+            bits_num += 16;
+        }
+        bits_num -= 1;
+        value = (temp_value << ((32 - 1) - bits_num)) >> (32 - (u32)(1));
+
+        if (!value)
+        {
+            // literal byte
+            if (bits_num < 8)
+            {
+                temp_value <<= 16;
+                temp_value |= *(csr++);
+                bits_num += 16;
+            }
+            bits_num -= 8;
+            *out_ptr++ = (temp_value << ((32 - 8) - bits_num)) >> (32 - (u32)(8));
+        }
+        else
+        {
+            // encoded data
+            sample1_node = lengths_tree;
+            offsets_node = offsets_tree;
+
+            if (sample_method != 0)
+            {
+                // two samples
+                sp64 = 0;
+                off_node = offsets_tree;
+
+                while (offsets_node->left != NULL)
+                {
+                    if (bits_num < 1)
+                    {
+                        temp_value <<= 16;
+                        temp_value |= *(csr++);
+                        bits_num += 16;
+                    }
+                    bits_num -= 1;
+                    value = (temp_value << ((32 - 1) - bits_num)) >> (32 - (u32)(1));
+                    off_node = !value ? off_node->left : off_node->right;
+                    offsets_node = off_node->left;
+                }
+
+                if (bits_num < (s32)off_node->value)
+                {
+                    temp_value <<= 16;
+                    temp_value |= *(csr++);
+                    bits_num += 16;
+                }
+                bits_num -= off_node->value;
+                value = (temp_value << ((32 - off_node->value) - bits_num)) >> (32 - (u32)(off_node->value));
+
+                if (value < 3)
+                {
+                    sp64 = value + 1;
+                    offsets_node = offsets_tree;
+
+                    while (offsets_node->left != NULL)
+                    {
+                        if (bits_num < 1)
+                        {
+                            temp_value <<= 16;
+                            temp_value |= *(csr++);
+                            bits_num += 16;
+                        }
+                        bits_num -= 1;
+                        value = (temp_value << ((32 - 1) - bits_num)) >> (32 - (u32)(1));
+                        offsets_node = !value ? offsets_node->left : offsets_node->right;
+                    }
+
+                    if (bits_num < (s32)offsets_node->value)
+                    {
+                        temp_value <<= 16;
+                        temp_value |= *(csr++);
+                        bits_num += 16;
+                    }
+                    bits_num -= offsets_node->value;
+                    value = (temp_value << ((32 - offsets_node->value) - bits_num)) >> (32 - (u32)(offsets_node->value));
+                }
+                copy_src = out_ptr - value * 4 - sp64 + 8;
+            }
+            else
+            {
+                // one sample
+                off_node = offsets_tree;
+
+                while (offsets_node->left != NULL)
+                {
+                    if (bits_num < 1)
+                    {
+                        temp_value <<= 16;
+                        temp_value |= *(csr++);
+                        bits_num += 16;
+                    }
+                    bits_num -= 1;
+                    value = (temp_value << ((32 - 1) - bits_num)) >> (32 - (u32)(1));
+                    off_node = !value ? off_node->left : off_node->right;
+                    offsets_node = off_node->left;
+                }
+
+                if (bits_num < (s32)off_node->value)
+                {
+                    temp_value <<= 16;
+                    temp_value |= *(csr++);
+                    bits_num += 16;
+                }
+                bits_num -= off_node->value;
+                value = (temp_value << ((32 - off_node->value) - bits_num)) >> (32 - (u32)(off_node->value));
+
+                copy_src = out_ptr - value;
+            }
+
+            // get number of bytes to copy
+            if (sample1_node->left != NULL)
+            {
+                while (sample1_node->left != NULL)
+                {
+                    if (bits_num < 1)
+                    {
+                        temp_value <<= 16;
+                        temp_value |= *(csr++);
+                        bits_num += 16;
+                    }
+                    bits_num -= 1;
+                    value = (temp_value << ((32 - 1) - bits_num)) >> (32 - (u32)(1));
+                    sample1_node = !value ? sample1_node->left : sample1_node->right;
+                }
+            }
+
+            if (bits_num < (s32)sample1_node->value)
+            {
+                temp_value <<= 16;
+                temp_value |= *(csr++);
+                bits_num += 16;
+            }
+            bits_num -= sample1_node->value;
+            value = (temp_value << ((32 - sample1_node->value) - bits_num)) >> (32 - (u32)(sample1_node->value));
+
+            while (value-- > 0)
+            {
+                *(out_ptr++) = *(copy_src++);
+            }
+        }
+    }
+}

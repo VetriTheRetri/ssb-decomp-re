@@ -55,7 +55,7 @@ extern sb32 mpCollisionCheckLWallSurfaceTilt(s32 v1x, s32 v1y, s32 v2x, s32 v2y,
 									   f32 *dfy);
 extern sb32 mpCollisionCheckLWallLineCollisionDiff(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id,
 											 u32 *stand_coll_flags, Vec3f *angle);
-extern sb32 func_ovl2_800F8FFC(Vec3f *position);
+extern sb32 mpCollisionCheckExistYakumonoFloor(Vec3f *position);
 extern sb32 mpCollisionCheckProjectFloor(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32 *stand_coll_flags, Vec3f *angle);
 extern sb32 mpCollisionCheckProjectCeil(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32 *stand_coll_flags, Vec3f *angle);
 extern sb32 mpCollisionCheckProjectRWall(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32 *stand_coll_flags, Vec3f *angle);
@@ -74,10 +74,10 @@ extern s32 mpCollisionGetEdgeLeftULineID(s32 line_id);
 extern s32 mpCollisionGetEdgeLeftDLineID(s32 line_id);
 extern void mpCollisionGetPlayerMapObjPosition(s32 player, Vec3f *pos);
 extern void mpCollisionAllocVertexInfo();
-extern void func_ovl2_800FB04C();
+extern void mpCollisionSetVertexInfoBounds();
 extern void mpCollisionInitLineTypesAll();
-extern void func_ovl2_800FB31C();
-extern void func_ovl2_800FB554();
+extern void mpCollisionSetVertexInfoEdgeLinks();
+extern void mpCollisionInitVertexInfoAll();
 extern void mpCollisionAllocYakumono(DObjDesc *dobjdesc);
 extern void mpCollisionUpdateBoundsCurrent();
 extern void mpCollisionUpdateBoundsDiff();

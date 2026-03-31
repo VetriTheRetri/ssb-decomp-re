@@ -394,7 +394,7 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
 }
 
 // 0x800ECCA4 - Unused?
-void func_ovl2_800ECCA4(GObj *gobj)
+void ftAnimPlayAnimAll(GObj *gobj)
 {
     DObj *main_dobj = DObjGetStruct(gobj);
     MObj *mobj;

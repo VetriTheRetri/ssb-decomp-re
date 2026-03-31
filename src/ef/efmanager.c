@@ -597,7 +597,7 @@ EFDesc dEFManagerPikachuUnkEffectDesc =
         0x00                                // ???
     },
 
-    func_ovl2_801017E8,                     // Proc Update
+    efManagerTimerProcUpdate,                     // Proc Update
     gcDrawDObjTreeForGObj,                // Proc Render
 
     &llPikachuSpecial2UnkDObjDesc,                // DObj Setup attributes offset (?)
@@ -1836,7 +1836,7 @@ void efManagerHaveStructProcUpdate(GObj *effect_gobj)
 }
 
 // New file? Unused
-void func_ovl2_800FD5D0(void)
+void efManagerUnused800FD5D0(void)
 {
     return;
 }
@@ -1903,7 +1903,7 @@ void efManagerSortZPos(DObj *dobj)
 }
 
 // Another unused func
-void func_ovl2_800FD70C(void)
+void efManagerUnused800FD70C(void)
 {
     return;
 }
@@ -2109,7 +2109,7 @@ void efManagerDefaultProcUpdate(GObj *effect_gobj)
 }
 
 // 0x800FDBFC - Unused
-void func_ovl2_800FDBFC(void)
+void efManagerUnused800FDBFC(void)
 {
     return;
 }
@@ -4368,7 +4368,7 @@ LBGenerator* efManagerShieldBreakMakeEffect(Vec3f *pos)
 }
 
 // 0x801017E8
-void func_ovl2_801017E8(GObj *effect_gobj)
+void efManagerTimerProcUpdate(GObj *effect_gobj)
 {
     EFStruct *ep = efGetStruct(effect_gobj);
 
@@ -4383,7 +4383,7 @@ void func_ovl2_801017E8(GObj *effect_gobj)
 }
 
 // 0x8010183C
-GObj* func_ovl2_8010183C(Vec3f *pos, s32 arg1)
+GObj* efManagerPikachuUnkMakeEffect(Vec3f *pos, s32 arg1)
 {
     GObj *effect_gobj;
     EFStruct *ep;
@@ -4838,7 +4838,7 @@ GObj* efManagerDeadExplodeMakeEffect(Vec3f *pos, s32 player, u32 type)
 }
 
 // 0x801023D4
-void func_ovl2_801023D4(Vec3f *pos) // Unused?
+void efManagerDeadExplodeOffsetMakeEffect(Vec3f *pos) // Unused?
 {
     pos->y += 8000.0F;
     pos->x = 4000.0F;
@@ -5456,7 +5456,7 @@ GObj* efManagerYoshiEggEscapeMakeEffect(GObj *fighter_gobj)
 }
 
 // 0x801031E0
-LBParticle* func_ovl2_801031E0(Vec3f *pos)
+LBParticle* efManagerKirbyParticle2MakeEffect(Vec3f *pos)
 {
     LBParticle *pc = lbParticleMakeScriptID(gFTDataKirbyParticleBankID, 2);
 
@@ -5485,7 +5485,7 @@ LBParticle* func_ovl2_801031E0(Vec3f *pos)
 }
 
 // 0x80103280
-LBParticle* func_ovl2_80103280(Vec3f *pos)
+LBParticle* efManagerKirbyParticle5MakeEffect(Vec3f *pos)
 {
     LBParticle *pc = lbParticleMakeScriptID(gFTDataKirbyParticleBankID, 5);
 

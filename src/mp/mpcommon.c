@@ -297,7 +297,7 @@ void mpCommonSetFighterFallOnEdgeBreak(GObj *fighter_gobj)
 }
 
 // 0x800DDF74
-sb32 func_ovl2_800DDF74(GObj *fighter_gobj, FTStruct *fp, FTAttributes *attr, DObj *target_joint, Vec3f *vec)
+sb32 mpCommonSetFighterSlopeYOffset(GObj *fighter_gobj, FTStruct *fp, FTAttributes *attr, DObj *target_joint, Vec3f *vec)
 {
     Vec3f sp64;
     Vec3f vec_translate;
@@ -377,7 +377,7 @@ void mpCommonUpdateFighterSlopeContour(GObj *fighter_gobj)
 
                 ftParamGetSwingPosition(fp, &sp30, &sp2C, attr->joint_rfoot_rotate, joint);
 
-                if (func_ovl2_800DDF74(fighter_gobj, fp, attr, joint, &sp30) != FALSE)
+                if (mpCommonSetFighterSlopeYOffset(fighter_gobj, fp, attr, joint, &sp30) != FALSE)
                 {
                     gmCollisionGetPartsInversePosition(fp->joints[attr->joint_rfoot_id], &sp30);
                     ftParamSetIKRotation(fp->joints[attr->joint_rfoot_id], attr->joint_rfoot_rotate, &sp30, sp2C);
@@ -389,7 +389,7 @@ void mpCommonUpdateFighterSlopeContour(GObj *fighter_gobj)
 
                 ftParamGetSwingPosition(fp, &sp30, &sp2C, attr->joint_lfoot_rotate, joint);
 
-                if (func_ovl2_800DDF74(fighter_gobj, fp, attr, joint, &sp30) != FALSE)
+                if (mpCommonSetFighterSlopeYOffset(fighter_gobj, fp, attr, joint, &sp30) != FALSE)
                 {
                     gmCollisionGetPartsInversePosition(fp->joints[attr->joint_lfoot_id], &sp30);
                     ftParamSetIKRotation(fp->joints[attr->joint_lfoot_id], attr->joint_lfoot_rotate, &sp30, sp2C);

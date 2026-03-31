@@ -2631,7 +2631,7 @@ void ifCommonBattleInterfaceProcUpdate(void)
 }
 
 // 0x80113744 - Unused?
-void func_ovl2_80113744(GObj *fighter_gobj, u32 unused) 
+void ifCommonBattleInterfaceResumeBoss(GObj *fighter_gobj, u32 unused) 
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     

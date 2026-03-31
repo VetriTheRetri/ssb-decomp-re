@@ -3741,7 +3741,7 @@ sb32 ftComputerCheckFindTarget(FTStruct *this_fp)
                     (other_fp->status_id >= nFTCommonStatusWait) &&
                     (
                         (
-                            (func_ovl2_800F8FFC(&other_fp->joints[nFTPartsJointTopN]->translate.vec.f) != FALSE) &&
+                            (mpCollisionCheckExistYakumonoFloor(&other_fp->joints[nFTPartsJointTopN]->translate.vec.f) != FALSE) &&
                             (other_pos_x <= gMPCollisionBounds.current.right) &&
                             (other_pos_x >= gMPCollisionBounds.current.left) &&
                             (other_pos_y >= gMPCollisionBounds.current.bottom) &&
@@ -3958,7 +3958,7 @@ sb32 ftComputerCheckDetectTarget(FTStruct *this_fp, f32 detect_range_base)
 
         while (this_detect_pos.x < ((this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x + detect_far_x) + 100.0F))
         {
-            if (func_ovl2_800F8FFC(&this_detect_pos) == FALSE)
+            if (mpCollisionCheckExistYakumonoFloor(&this_detect_pos) == FALSE)
             {
                 return FALSE;
             }
@@ -4140,7 +4140,7 @@ sb32 ftComputerCheckDetectTarget(FTStruct *this_fp, f32 detect_range_base)
 
                 while (this_detect_pos.x < ((this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x + detect_far_x) + 100.0F))
                 {
-                    if (func_ovl2_800F8FFC(&this_detect_pos) == FALSE)
+                    if (mpCollisionCheckExistYakumonoFloor(&this_detect_pos) == FALSE)
                     {
                         goto l_continue;
                     }
@@ -5187,7 +5187,7 @@ void ftComputerFollowObjectiveWalk(FTStruct *fp)
             case nFTComputerBehaviorPolyTeam:
                 if (fp->status_id == nFTCommonStatusFall)
                 {
-                    if (func_ovl2_800F8FFC(&fp->joints[nFTPartsJointTopN]->translate.vec.f) != FALSE)
+                    if (mpCollisionCheckExistYakumonoFloor(&fp->joints[nFTPartsJointTopN]->translate.vec.f) != FALSE)
                     {
                         com->target_pos.x = fp->joints[nFTPartsJointTopN]->translate.vec.f.x;
                         com->target_pos.y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y - 500.0F;
@@ -5209,7 +5209,7 @@ void ftComputerFollowObjectiveWalk(FTStruct *fp)
                 sp80.y = target_fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
                 sp80.z = 0.0F;
 
-                if (func_ovl2_800F8FFC(&sp80) != FALSE)
+                if (mpCollisionCheckExistYakumonoFloor(&sp80) != FALSE)
                 {
                     com->target_pos.x = sp80.x;
                     com->target_pos.y = sp80.y;
@@ -5218,7 +5218,7 @@ void ftComputerFollowObjectiveWalk(FTStruct *fp)
                 {
                     sp80.x = target_fp->joints[nFTPartsJointTopN]->translate.vec.f.x + (target_fp->lr * 1500.0F);
 
-                    if (func_ovl2_800F8FFC(&sp80) != FALSE)
+                    if (mpCollisionCheckExistYakumonoFloor(&sp80) != FALSE)
                     {
                         com->target_pos.x = sp80.x;
                         com->target_pos.y = sp80.y;
@@ -5576,7 +5576,7 @@ sb32 ftComputerCheckFindItem(FTStruct *fp)
 
         if ((gSCManagerBattleState->is_team_battle == TRUE) && (gSCManagerBattleState->is_team_attack == FALSE) && (ip->team == fp->team)) goto next_item;
 
-        if ((ip->is_allow_pickup) && (func_ovl2_800F8FFC(&DObjGetStruct(item_gobj)->translate.vec.f) != FALSE))
+        if ((ip->is_allow_pickup) && (mpCollisionCheckExistYakumonoFloor(&DObjGetStruct(item_gobj)->translate.vec.f) != FALSE))
         {
             f32 it_pos_x = DObjGetStruct(item_gobj)->translate.vec.f.x;
             f32 it_pos_y = DObjGetStruct(item_gobj)->translate.vec.f.y;
@@ -6011,7 +6011,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
 
         tarucann_pos.y = 2000.0F;
 
-        if (func_ovl2_800F8FFC(&tarucann_pos) != FALSE)
+        if (mpCollisionCheckExistYakumonoFloor(&tarucann_pos) != FALSE)
         {
             fvar = ((grJungleTaruCannGetRotate() < 0.0F) ? -grJungleTaruCannGetRotate() : grJungleTaruCannGetRotate());
 
@@ -6079,7 +6079,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
     {
         if ((this_fp->status_id == nFTNessStatusSpecialHiHold) || (this_fp->status_id == nFTNessStatusSpecialAirHiHold))
         {
-            if (func_ovl2_800F8FFC(&this_fp->joints[nFTPartsJointTopN]->translate.vec.f) == FALSE)
+            if (mpCollisionCheckExistYakumonoFloor(&this_fp->joints[nFTPartsJointTopN]->translate.vec.f) == FALSE)
             {
                 com->target_pos.x = this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x;
 
@@ -6163,7 +6163,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
     }
     if
     (
-        (func_ovl2_800F8FFC(&this_fp->joints[nFTPartsJointTopN]->translate.vec.f) == FALSE) ||
+        (mpCollisionCheckExistYakumonoFloor(&this_fp->joints[nFTPartsJointTopN]->translate.vec.f) == FALSE) ||
         (gSCManagerBattleState->gkind == nGRKindInishie) &&
         (this_fp->coll_data.floor_line_id >= 0) &&
         (mpCollisionCheckExistPlatformLineID(this_fp->coll_data.floor_line_id) != FALSE) &&

@@ -2581,7 +2581,7 @@ sb32 mpCollisionCheckLWallLineCollisionDiff(Vec3f *position, Vec3f *translate, V
 }
 
 // 0x800F8FFC
-sb32 func_ovl2_800F8FFC(Vec3f *position)
+sb32 mpCollisionCheckExistYakumonoFloor(Vec3f *position)
 {
     MPLineInfo *line_info;
     MPLineData *line_data;
@@ -3433,7 +3433,7 @@ void mpCollisionAllocVertexInfo(void)
 }
 
 // 0x800FB04C
-void func_ovl2_800FB04C(void)
+void mpCollisionSetVertexInfoBounds(void)
 {
     s32 line_id;
     s32 i;
@@ -3505,7 +3505,7 @@ void mpCollisionInitLineTypesAll(void)
 }
 
 // 0x800FB31C
-void func_ovl2_800FB31C(void)
+void mpCollisionSetVertexInfoEdgeLinks(void)
 {
     s32 line_id;
     s32 line_next;
@@ -3584,11 +3584,11 @@ void func_ovl2_800FB31C(void)
 }
 
 // 0x800FB554
-void func_ovl2_800FB554(void)
+void mpCollisionInitVertexInfoAll(void)
 {
-    func_ovl2_800FB04C();
+    mpCollisionSetVertexInfoBounds();
     mpCollisionInitLineTypesAll();
-    func_ovl2_800FB31C();
+    mpCollisionSetVertexInfoEdgeLinks();
 }
 
 // 0x800FB584
@@ -3997,7 +3997,7 @@ void mpCollisionInitGroundData(void)
 
     mpCollisionInitLineIDsAll();
     mpCollisionAllocVertexInfo();
-    func_ovl2_800FB554();
+    mpCollisionInitVertexInfoAll();
     mpCollisionAllocYakumono(gMPCollisionGroundData->gr_desc[1].dobjdesc);
 
     gMPCollisionLightColor.r = 0xFF;

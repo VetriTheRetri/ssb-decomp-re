@@ -884,7 +884,7 @@ void grSectorArwingWeaponLaser3DMakeWeapon(void)
 }
 
 // 0x80107910
-void func_ovl2_80107910(void)
+void grSectorArwingFireLaser(void)
 {
     if (gGRCommonStruct.sector.arwing_laser_count == 2)
     {
@@ -896,7 +896,7 @@ void func_ovl2_80107910(void)
 }
 
 // 0x80107958
-void func_ovl2_80107958(void)
+void grSectorArwingUpdateLaserAmmo(void)
 {
     s32 ammo;
     void *mh1, *mh2;
@@ -956,7 +956,7 @@ void func_ovl2_80107958(void)
             {
                 mh2 = gGRCommonStruct.sector.map_head;
 
-                func_ovl2_80107910();
+                grSectorArwingFireLaser();
 
                 grSectorArwingAddAnim(gGRCommonStruct.sector.map_dobjs[2], lbRelocGetFileData(AObjEvent32*, mh2, &llFoxSpecial3_1B34_AnimJoint), 0.0F);
                 grSectorArwingAddAnim(gGRCommonStruct.sector.map_dobjs[3], lbRelocGetFileData(AObjEvent32*, mh2, &llFoxSpecial3_1B34_AnimJoint), 0.0F);
@@ -977,7 +977,7 @@ void func_ovl2_80107958(void)
 }
 
 // 0x80107B30
-void func_ovl2_80107B30(void)
+void grSectorArwingUpdateAmbientAnim(void)
 {
     if ((gGRCommonStruct.sector.map_dobjs[8]->anim_wait == AOBJ_ANIM_NULL) && (gGRCommonStruct.sector.map_dobjs[7]->flags == DOBJ_FLAG_NONE))
     {
@@ -1024,8 +1024,8 @@ void grSectorArwingUpdatePatrol(void)
 {
     grSectorArwingDecideZNear();
     grSectorArwingUpdatePilotState();
-    func_ovl2_80107958();
-    func_ovl2_80107B30();
+    grSectorArwingUpdateLaserAmmo();
+    grSectorArwingUpdateAmbientAnim();
     grSectorArwingUpdateCollisions();
 
     if (gGRCommonStruct.sector.map_dobjs[0]->anim_wait == AOBJ_ANIM_NULL)
@@ -1041,7 +1041,7 @@ void grSectorArwingUpdatePatrol(void)
 }
 
 // 0x80107D50
-void func_ovl2_80107D50(void)
+void grSectorArwingSetFlightPattern(void)
 {
     GObj *map_gobj;
     GRSectorDesc *desc;
@@ -1080,7 +1080,7 @@ void grSectorProcUpdate(GObj *ground_gobj)
         grSectorArwingUpdatePatrol();
         break;
     }
-    func_ovl2_80107D50();
+    grSectorArwingSetFlightPattern();
 }
 
 // 0x80107E7C

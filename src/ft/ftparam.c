@@ -2053,7 +2053,7 @@ void* ftParamMakeEffect(GObj *fighter_gobj, s32 effect_id, s32 joint_id, Vec3f *
         break;
 
     case nEFKindCrashTheGame:
-        effect = func_ovl2_8010183C(&pos, arg7);
+        effect = efManagerPikachuUnkMakeEffect(&pos, arg7);
         break;
 
     case nEFKindChargeSparkle:
@@ -2074,11 +2074,11 @@ void* ftParamMakeEffect(GObj *fighter_gobj, s32 effect_id, s32 joint_id, Vec3f *
         break;
 
     case 0x4C:
-        effect = func_ovl2_801031E0(&pos);
+        effect = efManagerKirbyParticle2MakeEffect(&pos);
         break;
 
     case 0x4D:
-        effect = func_ovl2_80103280(&pos);
+        effect = efManagerKirbyParticle5MakeEffect(&pos);
         break;
 
     case nEFKindHealSparkles:

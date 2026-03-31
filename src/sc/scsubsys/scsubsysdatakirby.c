@@ -2,7 +2,7 @@
 #include <sc/scsubsys/scsubsys.h>
 #include <reloc_data.h>
 
-s32 D_ovl1_80392010[] =
+s32 dFTKirbyOpeningBlinkScript[] =
 {
 	0xAC000008,
 	ftMotionCommandWait(3),
@@ -10,67 +10,67 @@ s32 D_ovl1_80392010[] =
 	ftMotionCommandReturn()
 };
 
-s32 D_ovl1_80392020[] =
+s32 dFTKirbyOpeningWaitScript[] =
 {
-	ftMotionCommandSubroutine(D_ovl1_80392010),
+	ftMotionCommandSubroutine(dFTKirbyOpeningBlinkScript),
 	ftMotionCommandWait(80),
-	ftMotionCommandSubroutine(D_ovl1_80392010),
+	ftMotionCommandSubroutine(dFTKirbyOpeningBlinkScript),
 	ftMotionCommandWait(20),
-	ftMotionCommandSubroutine(D_ovl1_80392010),
+	ftMotionCommandSubroutine(dFTKirbyOpeningBlinkScript),
 	ftMotionCommandWait(140),
 	0xAC000005,
 	ftMotionCommandWait(80),
 	0xAC000000,
 	ftMotionCommandWait(70),
-	ftMotionCommandGoto(D_ovl1_80392020)
+	ftMotionCommandGoto(dFTKirbyOpeningWaitScript)
 };
 
-s32 D_ovl1_8039205C[] =
+s32 dFTKirbyOpeningEntry1Script[] =
 {
 	ftMotionCommandWaitAsync(158),
 	0xAC000005,
 	ftMotionCommandEnd()
 };
 
-s32 D_ovl1_80392068[] =
+s32 dFTKirbyOpeningEntry2Script[] =
 {
 	ftMotionCommandWaitAsync(158),
 	0xAC000005,
 	ftMotionCommandEnd()
 };
 
-s32 D_ovl1_80392074[] =
+s32 dFTKirbyOpeningEntry3Script[] =
 {
 	ftMotionCommandWaitAsync(120),
 	0xAC000005,
 	ftMotionCommandEnd()
 };
 
-s32 D_ovl1_80392080[] =
+s32 dFTKirbyOpeningActionScript[] =
 {
 	0xAC000005,
 	ftMotionCommandEnd()
 };
 
-s32 D_ovl1_80392088[] =
+s32 dFTKirbyOpeningLoopScript[] =
 {
-	ftMotionCommandSubroutine(D_ovl1_80392010),
+	ftMotionCommandSubroutine(dFTKirbyOpeningBlinkScript),
 	ftMotionCommandWait(0x003C),
-	ftMotionCommandSubroutine(D_ovl1_80392010),
+	ftMotionCommandSubroutine(dFTKirbyOpeningBlinkScript),
 	ftMotionCommandWait(20),
-	ftMotionCommandSubroutine(D_ovl1_80392010),
+	ftMotionCommandSubroutine(dFTKirbyOpeningBlinkScript),
 	ftMotionCommandWait(0x003C),
-	ftMotionCommandGoto(D_ovl1_80392088)
+	ftMotionCommandGoto(dFTKirbyOpeningLoopScript)
 };
 
 FTMotionDesc dFTKirbySubMotionDescs[] =
 {
-    &ll_1259_FileID, D_ovl1_80392020, 0x00000000,
-    &ll_416_FileID,  D_ovl1_8039205C, 0x80000000,
-    &ll_417_FileID,  D_ovl1_80392068, 0x80000000,
-    &ll_418_FileID,  D_ovl1_80392074, 0x00000000,
-    &ll_418_FileID,  D_ovl1_80392074, 0x00000000,
-    &ll_419_FileID,  D_ovl1_80392080, 0x00000000,
+    &ll_1259_FileID, dFTKirbyOpeningWaitScript, 0x00000000,
+    &ll_416_FileID,  dFTKirbyOpeningEntry1Script, 0x80000000,
+    &ll_417_FileID,  dFTKirbyOpeningEntry2Script, 0x80000000,
+    &ll_418_FileID,  dFTKirbyOpeningEntry3Script, 0x00000000,
+    &ll_418_FileID,  dFTKirbyOpeningEntry3Script, 0x00000000,
+    &ll_419_FileID,  dFTKirbyOpeningActionScript, 0x00000000,
     &ll_423_FileID,  0x80000000,      0x00000000,
     0x00000000,      0x80000000,      0x00000000,
     &ll_420_FileID,  0x80000000,      0x80000000,
@@ -80,7 +80,7 @@ FTMotionDesc dFTKirbySubMotionDescs[] =
     &ll_426_FileID,  0x80000000,      0x00000000,
     &ll_427_FileID,  0x80000000,      0x00000000,
     &ll_428_FileID,  0x80000000,      0x00000000,
-    &ll_424_FileID,  D_ovl1_80392088, 0x00000000
+    &ll_424_FileID,  dFTKirbyOpeningLoopScript, 0x00000000
 };
 
 s32 dFTKirbySubMotionDescsCount = sizeof(dFTKirbySubMotionDescs)/sizeof(FTMotionDesc); // 0x00000010

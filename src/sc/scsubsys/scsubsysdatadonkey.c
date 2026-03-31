@@ -2,23 +2,23 @@
 #include <sc/scsubsys/scsubsys.h>
 #include <reloc_data.h>
 
-s32 D_ovl1_80391340[] =
+s32 dFTDonkeyOpeningEntry1Script[] =
 {
 	ftMotionPlayFGM(nSYAudioVoiceDonkeySmash1),
 	ftMotionCommandEnd()
 };
 
-s32 D_ovl1_80391348[] =
+s32 dFTDonkeyOpeningEntry2Script[] =
 {
 	ftMotionCommandEnd()
 };
 
-s32 D_ovl1_8039134C[] =
+s32 dFTDonkeyOpeningEntry3Script[] =
 {
 	ftMotionCommandEnd()
 };
 
-s32 D_ovl1_80391350[] =
+s32 dFTDonkeyOpeningActionScript[] =
 {
 	0xA0800001,
 	0xA0500001,
@@ -28,11 +28,11 @@ s32 D_ovl1_80391350[] =
 FTMotionDesc dFTDonkeySubMotionDescs[] =
 {
     &ll_800_FileID, 0x80000000, 0x00000000,
-    &ll_381_FileID, D_ovl1_80391340, 0x00000000,
-    &ll_382_FileID, D_ovl1_80391348, 0x00000000,
+    &ll_381_FileID, dFTDonkeyOpeningEntry1Script, 0x00000000,
+    &ll_382_FileID, dFTDonkeyOpeningEntry2Script, 0x00000000,
     &ll_383_FileID, 0x80000000, 0x00000000,
-    &ll_384_FileID, D_ovl1_8039134C, 0x00000000,
-    &ll_385_FileID, D_ovl1_80391350, 0x00000000,
+    &ll_384_FileID, dFTDonkeyOpeningEntry3Script, 0x00000000,
+    &ll_385_FileID, dFTDonkeyOpeningActionScript, 0x00000000,
     &ll_806_FileID, 0x80000000, 0x00000000,
     0x00000000,   0x80000000, 0x00000000,
     &ll_386_FileID, 0x80000000, 0x80000000,

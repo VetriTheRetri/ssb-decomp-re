@@ -2,7 +2,7 @@
 #include <sc/scsubsys/scsubsys.h>
 #include <reloc_data.h>
 
-s32 D_ovl1_80392480[] =
+s32 dFTPurinOpeningBlinkScript[] =
 {
 	0xAC000004,
 	0xAC100004,
@@ -19,44 +19,44 @@ s32 D_ovl1_80392480[] =
 	ftMotionCommandReturn()
 };
 
-s32 D_ovl1_803924B4[] =
+s32 dFTPurinOpeningWaitScript[] =
 {
-	ftMotionCommandSubroutine(D_ovl1_80392480),
+	ftMotionCommandSubroutine(dFTPurinOpeningBlinkScript),
 	ftMotionCommandWait(90),
-	ftMotionCommandSubroutine(D_ovl1_80392480),
+	ftMotionCommandSubroutine(dFTPurinOpeningBlinkScript),
 	ftMotionCommandWait(10),
-	ftMotionCommandSubroutine(D_ovl1_80392480),
+	ftMotionCommandSubroutine(dFTPurinOpeningBlinkScript),
 	ftMotionCommandWait(80),
-	ftMotionCommandGoto(D_ovl1_803924B4)
+	ftMotionCommandGoto(dFTPurinOpeningWaitScript)
 };
 
-s32 D_ovl1_803924E0[] =
+s32 dFTPurinOpeningEntry1Script[] =
 {
 	ftMotionCommandWaitAsync(0),
-	ftMotionCommandSubroutine(D_ovl1_80392480),
+	ftMotionCommandSubroutine(dFTPurinOpeningBlinkScript),
 	ftMotionCommandWaitAsync(30),
-	ftMotionCommandSubroutine(D_ovl1_80392480),
+	ftMotionCommandSubroutine(dFTPurinOpeningBlinkScript),
 	ftMotionCommandWaitAsync(60),
-	ftMotionCommandSubroutine(D_ovl1_80392480),
+	ftMotionCommandSubroutine(dFTPurinOpeningBlinkScript),
 	ftMotionCommandEnd()
 };
 
-s32 D_ovl1_80392508[] =
+s32 dFTPurinOpeningEntry2Script[] =
 {
 	ftMotionCommandWaitAsync(8),
-	ftMotionCommandSubroutine(D_ovl1_80392480),
+	ftMotionCommandSubroutine(dFTPurinOpeningBlinkScript),
 	ftMotionCommandWaitAsync(32),
-	ftMotionCommandSubroutine(D_ovl1_80392480),
+	ftMotionCommandSubroutine(dFTPurinOpeningBlinkScript),
 	ftMotionCommandWaitAsync(62),
-	ftMotionCommandSubroutine(D_ovl1_80392480),
+	ftMotionCommandSubroutine(dFTPurinOpeningBlinkScript),
 	ftMotionCommandWaitAsync(92),
-	ftMotionCommandSubroutine(D_ovl1_80392480),
+	ftMotionCommandSubroutine(dFTPurinOpeningBlinkScript),
 	ftMotionCommandWaitAsync(120),
-	ftMotionCommandSubroutine(D_ovl1_80392480),
+	ftMotionCommandSubroutine(dFTPurinOpeningBlinkScript),
 	ftMotionCommandEnd()
 };
 
-s32 D_ovl1_80392548[] =
+s32 dFTPurinOpeningEntry3Script[] =
 {
 	0xAC000005,
 	0xAC100005,
@@ -67,29 +67,29 @@ s32 D_ovl1_80392548[] =
 	0xAC000000,
 	0xAC100000,
 	ftMotionCommandWaitAsync(110),
-	ftMotionCommandSubroutine(D_ovl1_80392480),
+	ftMotionCommandSubroutine(dFTPurinOpeningBlinkScript),
 	ftMotionCommandWaitAsync(120),
-	ftMotionCommandSubroutine(D_ovl1_80392480),
+	ftMotionCommandSubroutine(dFTPurinOpeningBlinkScript),
 	ftMotionCommandEnd()
 };
 
-s32 D_ovl1_80392584[] =
+s32 dFTPurinOpeningActionScript[] =
 {
-	ftMotionCommandSubroutine(D_ovl1_80392480),
+	ftMotionCommandSubroutine(dFTPurinOpeningBlinkScript),
 	ftMotionCommandWait(80),
-	ftMotionCommandSubroutine(D_ovl1_80392480),
+	ftMotionCommandSubroutine(dFTPurinOpeningBlinkScript),
 	ftMotionCommandWait(10),
 	ftMotionCommandEnd()
 };
 
 FTMotionDesc dFTPurinSubMotionDescs[] =
 {
-	&ll_1492_FileID, D_ovl1_803924B4, 0x00000000,
-	&ll_469_FileID, D_ovl1_803924E0, 0x00000000,
-	&ll_470_FileID, D_ovl1_80392508, 0x00000000,
-	&ll_471_FileID, D_ovl1_80392548, 0x00000000,
-	&ll_471_FileID, D_ovl1_80392548, 0x00000000,
-	&ll_472_FileID, D_ovl1_80392584, 0x00000000,
+	&ll_1492_FileID, dFTPurinOpeningWaitScript, 0x00000000,
+	&ll_469_FileID, dFTPurinOpeningEntry1Script, 0x00000000,
+	&ll_470_FileID, dFTPurinOpeningEntry2Script, 0x00000000,
+	&ll_471_FileID, dFTPurinOpeningEntry3Script, 0x00000000,
+	&ll_471_FileID, dFTPurinOpeningEntry3Script, 0x00000000,
+	&ll_472_FileID, dFTPurinOpeningActionScript, 0x00000000,
 	0x00000000, 0x80000000, 0x00000000,
 	0x00000000, 0x80000000, 0x00000000,
 	0x00000000, 0x80000000, 0x00000000,

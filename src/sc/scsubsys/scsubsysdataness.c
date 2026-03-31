@@ -2,7 +2,7 @@
 #include <sc/scsubsys/scsubsys.h>
 #include <reloc_data.h>
 
-s32 D_ovl1_80392670[] =
+s32 dFTNessOpeningBlinkScript[] =
 {
 	0xAC000001,
 	ftMotionCommandWait(2),
@@ -15,20 +15,20 @@ s32 D_ovl1_80392670[] =
 	ftMotionCommandReturn()
 };
 
-s32 D_ovl1_80392694[] =
+s32 dFTNessOpeningWaitScript[] =
 {
 	ftMotionCommandSetSlopeContour(0x0003),
-	ftMotionCommandSubroutine(D_ovl1_80392670),
+	ftMotionCommandSubroutine(dFTNessOpeningBlinkScript),
 	ftMotionCommandWait(80),
 	ftMotionCommandSetSlopeContour(0x0003),
-	ftMotionCommandSubroutine(D_ovl1_80392670),
+	ftMotionCommandSubroutine(dFTNessOpeningBlinkScript),
 	ftMotionCommandWait(20),
-	ftMotionCommandSubroutine(D_ovl1_80392670),
+	ftMotionCommandSubroutine(dFTNessOpeningBlinkScript),
 	ftMotionCommandWait(80),
-	ftMotionCommandGoto(D_ovl1_80392694)
+	ftMotionCommandGoto(dFTNessOpeningWaitScript)
 };
 
-s32 D_ovl1_803926C8[] =
+s32 dFTNessOpeningEntry1Script[] =
 {
 	ftMotionCommandWaitAsync(8),
 	ftMotionPlayFGM(nSYAudioFGMNessJump),
@@ -54,14 +54,14 @@ s32 D_ovl1_803926C8[] =
 	ftMotionCommandEnd()
 };
 
-s32 D_ovl1_80392720[] =
+s32 dFTNessOpeningEntry2Script[] =
 {
 	ftMotionCommandWaitAsync(100),
 	0xAC000003,
 	ftMotionCommandEnd()
 };
 
-s32 D_ovl1_8039272C[] =
+s32 dFTNessOpeningEntry3Script[] =
 {
 	0xA0880001,
 	0xAC000004,
@@ -74,12 +74,12 @@ s32 D_ovl1_8039272C[] =
 	ftMotionCommandEnd()
 };
 
-s32 D_ovl1_80392750[] =
+s32 dFTNessOpeningActionScript[] =
 {
 	ftMotionCommandEnd()
 };
 
-s32 D_ovl1_80392754[] =
+s32 dFTNessOpeningLoopScript[] =
 {
 	0xA0800002,
 	0xA0500002,
@@ -88,12 +88,12 @@ s32 D_ovl1_80392754[] =
 
 FTMotionDesc dFTNessSubMotionDescs[] =
 {
-	&ll_1664_FileID, D_ovl1_80392694, 0x00000000,
-	&ll_436_FileID, D_ovl1_803926C8, 0x00000000,
-	&ll_437_FileID, D_ovl1_80392720, 0x80000000,
-	&ll_438_FileID, D_ovl1_8039272C, 0x00000000,
-	&ll_438_FileID, D_ovl1_8039272C, 0x00000000,
-	&ll_439_FileID, D_ovl1_80392750, 0x00000000,
+	&ll_1664_FileID, dFTNessOpeningWaitScript, 0x00000000,
+	&ll_436_FileID, dFTNessOpeningEntry1Script, 0x00000000,
+	&ll_437_FileID, dFTNessOpeningEntry2Script, 0x80000000,
+	&ll_438_FileID, dFTNessOpeningEntry3Script, 0x00000000,
+	&ll_438_FileID, dFTNessOpeningEntry3Script, 0x00000000,
+	&ll_439_FileID, dFTNessOpeningActionScript, 0x00000000,
 	&ll_1670_FileID, 0x80000000, 0x00000000,
 	0x00000000, 0x80000000, 0x00000000,
 	0x00000000, 0x80000000, 0x00000000,
@@ -101,7 +101,7 @@ FTMotionDesc dFTNessSubMotionDescs[] =
 	&ll_441_FileID, 0x80000000, 0x40000000,
 	0x00000000, 0x80000000, 0x00000000,
 	0x00000000, 0x80000000, 0x00000000,
-	&ll_442_FileID, D_ovl1_80392754, 0x00000000,
+	&ll_442_FileID, dFTNessOpeningLoopScript, 0x00000000,
 	0x00000000, 0x80000000, 0x00000000
 };
 

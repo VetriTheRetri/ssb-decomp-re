@@ -2,7 +2,7 @@
 #include <sc/scsubsys/scsubsys.h>
 #include <reloc_data.h>
 
-s32 D_ovl1_80391890[] =
+s32 dFTLinkOpeningBlinkScript[] =
 {
 	0xAC000002,
 	ftMotionCommandWait(6),
@@ -11,18 +11,18 @@ s32 D_ovl1_80391890[] =
 	ftMotionCommandReturn()
 };
 
-s32 D_ovl1_803918A4[] =
+s32 dFTLinkOpeningWaitScript[] =
 {
-	ftMotionCommandSubroutine(D_ovl1_80391890),
+	ftMotionCommandSubroutine(dFTLinkOpeningBlinkScript),
 	ftMotionCommandWait(30),
-	ftMotionCommandSubroutine(D_ovl1_80391890),
+	ftMotionCommandSubroutine(dFTLinkOpeningBlinkScript),
 	ftMotionCommandWait(80),
-	ftMotionCommandSubroutine(D_ovl1_80391890),
+	ftMotionCommandSubroutine(dFTLinkOpeningBlinkScript),
 	ftMotionCommandWait(50),
-	ftMotionCommandGoto(D_ovl1_803918A4)
+	ftMotionCommandGoto(dFTLinkOpeningWaitScript)
 };
 
-s32 D_ovl1_803918D0[] =
+s32 dFTLinkOpeningEntry1Script[] =
 {
 	ftMotionCommandWaitAsync(5),
 	ftMotionPlayFGM(nSYAudioFGMBladeSwing3),
@@ -45,7 +45,7 @@ s32 D_ovl1_803918D0[] =
 	ftMotionCommandEnd()
 };
 
-s32 D_ovl1_8039191C[] =
+s32 dFTLinkOpeningEntry2Script[] =
 {
 	ftMotionCommandWaitAsync(5),
 	ftMotionPlayFGM(nSYAudioVoiceLinkSmash1),
@@ -63,7 +63,7 @@ s32 D_ovl1_8039191C[] =
 	ftMotionCommandEnd()
 };
 
-s32 D_ovl1_80391954[] =
+s32 dFTLinkOpeningEntry3Script[] =
 {
 	ftMotionCommandWaitAsync(15),
 	ftMotionPlayFGM(nSYAudioFGMBladeSwing3),
@@ -76,7 +76,7 @@ s32 D_ovl1_80391954[] =
 	ftMotionCommandEnd()
 };
 
-s32 D_ovl1_80391978[] =
+s32 dFTLinkOpeningActionScript[] =
 {
 	0xA0A00000,
 	0xA05FFFFF,
@@ -85,7 +85,7 @@ s32 D_ovl1_80391978[] =
 	ftMotionCommandEnd()
 };
 
-s32 D_ovl1_8039198C[] =
+s32 dFTLinkOpeningSpecialScript[] =
 {
 	ftMotionPlayFGM(nSYAudioFGMGroundGrind3),
 	0x98003400,
@@ -95,7 +95,7 @@ s32 D_ovl1_8039198C[] =
 	ftMotionCommandEnd()
 };
 
-s32 D_ovl1_803919A4[] =
+s32 dFTLinkOpeningLoopScript[] =
 {
 	0xA0A80000,
 	0xA09FFFFF,
@@ -117,7 +117,7 @@ s32 D_ovl1_803919A4[] =
 	0xAC000000
 };
 
-s32 D_ovl1_803919EC[] =
+s32 dFTLinkOpeningAppearScript[] =
 {
 	0xA0B00001,
 	0xA0B80001,
@@ -128,21 +128,21 @@ s32 D_ovl1_803919EC[] =
 
 FTMotionDesc dFTLinkSubMotionDescs[] =
 {
-    &ll_1115_FileID, D_ovl1_803918A4, 0x00000000,
-    &ll_404_FileID,  D_ovl1_803918D0, 0x00000000,
-    &ll_405_FileID,  D_ovl1_8039191C, 0x00000000,
-    &ll_406_FileID,  D_ovl1_80391954, 0x00000000,
-    &ll_406_FileID,  D_ovl1_80391954, 0x00000000,
-    &ll_407_FileID,  D_ovl1_80391978, 0x00000000,
+    &ll_1115_FileID, dFTLinkOpeningWaitScript, 0x00000000,
+    &ll_404_FileID,  dFTLinkOpeningEntry1Script, 0x00000000,
+    &ll_405_FileID,  dFTLinkOpeningEntry2Script, 0x00000000,
+    &ll_406_FileID,  dFTLinkOpeningEntry3Script, 0x00000000,
+    &ll_406_FileID,  dFTLinkOpeningEntry3Script, 0x00000000,
+    &ll_407_FileID,  dFTLinkOpeningActionScript, 0x00000000,
     &ll_1121_FileID, 0x80000000,      0x00000000,
-    &ll_1125_FileID, D_ovl1_8039198C, 0x00000000,
+    &ll_1125_FileID, dFTLinkOpeningSpecialScript, 0x00000000,
     &ll_408_FileID,  0x80000000,      0x80000000,
     &ll_409_FileID,  0x80000000,      0x40000000,
     &ll_410_FileID,  0x80000000,      0x40000000,
     &ll_412_FileID,  0x80000000,      0x00000000,
     &ll_413_FileID,  0x80000000,      0x00000000,
-    &ll_414_FileID,  D_ovl1_803919EC, 0x00000000,
-    &ll_415_FileID,  D_ovl1_803919EC, 0x00000000,
-    &ll_411_FileID,  D_ovl1_803919A4, 0x00000000
+    &ll_414_FileID,  dFTLinkOpeningAppearScript, 0x00000000,
+    &ll_415_FileID,  dFTLinkOpeningAppearScript, 0x00000000,
+    &ll_411_FileID,  dFTLinkOpeningLoopScript, 0x00000000
 };
 s32 dFTLinkSubMotionDescsCount = sizeof(dFTLinkSubMotionDescs)/sizeof(FTMotionDesc); // 0x00000010

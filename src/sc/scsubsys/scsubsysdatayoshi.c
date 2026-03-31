@@ -2,7 +2,7 @@
 #include <sc/scsubsys/scsubsys.h>
 #include <reloc_data.h>
 
-s32 D_ovl1_80391B90[] =
+s32 dFTYoshiOpeningBlinkScript[] =
 {
 	0xAC000004,
 	0xAC100004,
@@ -19,18 +19,18 @@ s32 D_ovl1_80391B90[] =
 	ftMotionCommandReturn()
 };
 
-s32 D_ovl1_80391BC4[] =
+s32 dFTYoshiOpeningWaitScript[] =
 {
-	ftMotionCommandSubroutine(D_ovl1_80391B90),
+	ftMotionCommandSubroutine(dFTYoshiOpeningBlinkScript),
 	ftMotionCommandWait(80),
-	ftMotionCommandSubroutine(D_ovl1_80391B90),
+	ftMotionCommandSubroutine(dFTYoshiOpeningBlinkScript),
 	ftMotionCommandWait(20),
-	ftMotionCommandSubroutine(D_ovl1_80391B90),
+	ftMotionCommandSubroutine(dFTYoshiOpeningBlinkScript),
 	ftMotionCommandWait(80),
-	ftMotionCommandGoto(D_ovl1_80391BC4)
+	ftMotionCommandGoto(dFTYoshiOpeningWaitScript)
 };
 
-s32 D_ovl1_80391BF0[] =
+s32 dFTYoshiOpeningEntry1Script[] =
 {
 	ftMotionCommandWaitAsync(40),
 	0xAC00000A,
@@ -40,7 +40,7 @@ s32 D_ovl1_80391BF0[] =
 	ftMotionCommandEnd()
 };
 
-s32 D_ovl1_80391C08[] =
+s32 dFTYoshiOpeningEntry2Script[] =
 {
 	0xAC000009,
 	0xAC100009,
@@ -52,7 +52,7 @@ s32 D_ovl1_80391C08[] =
 	ftMotionCommandEnd()
 };
 
-s32 D_ovl1_80391C28[] =
+s32 dFTYoshiOpeningEntry3Script[] =
 {
 	0xAC000006,
 	0xAC100006,
@@ -70,12 +70,12 @@ s32 D_ovl1_80391C28[] =
 	ftMotionCommandEnd()
 };
 
-s32 D_ovl1_80391C60[] =
+s32 dFTYoshiOpeningActionScript[] =
 {
 	ftMotionCommandEnd()
 };
 
-s32 D_ovl1_80391C64[] =
+s32 dFTYoshiOpeningLoopScript[] =
 {
 	0xAC000005,
 	0xAC100005,
@@ -96,12 +96,12 @@ s32 D_ovl1_80391C64[] =
 
 FTMotionDesc dFTYoshiSubMotionDescs[] =
 {
-    &ll_1815_FileID, D_ovl1_80391BC4, 0x00000000,
-    &ll_443_FileID,  D_ovl1_80391BF0, 0x00000000,
-    &ll_444_FileID,  D_ovl1_80391C08, 0x00000000,
-    &ll_445_FileID,  D_ovl1_80391C28, 0x00000000,
-    &ll_445_FileID,  D_ovl1_80391C28, 0x00000000,
-    &ll_446_FileID,  D_ovl1_80391C60, 0x00000000,
+    &ll_1815_FileID, dFTYoshiOpeningWaitScript, 0x00000000,
+    &ll_443_FileID,  dFTYoshiOpeningEntry1Script, 0x00000000,
+    &ll_444_FileID,  dFTYoshiOpeningEntry2Script, 0x00000000,
+    &ll_445_FileID,  dFTYoshiOpeningEntry3Script, 0x00000000,
+    &ll_445_FileID,  dFTYoshiOpeningEntry3Script, 0x00000000,
+    &ll_446_FileID,  dFTYoshiOpeningActionScript, 0x00000000,
     &ll_1821_FileID, 0x80000000,      0x00000000,
     0x00000000,      0x80000000,      0x00000000,
     &ll_447_FileID,  0x80000000,      0x80000000,
@@ -111,7 +111,7 @@ FTMotionDesc dFTYoshiSubMotionDescs[] =
     &ll_455_FileID,  0x80000000,      0x00000000,
     &ll_456_FileID,  0x80000000,      0x00000000,
     &ll_457_FileID,  0x80000000,      0x00000000,
-    &ll_450_FileID,  D_ovl1_80391C64, 0x00000000,
+    &ll_450_FileID,  dFTYoshiOpeningLoopScript, 0x00000000,
     &ll_451_FileID,  0x80000000,      0x00000000,
     &ll_452_FileID,  0x80000000,      0x00000000,
     &ll_453_FileID,  0x80000000,      0x00000000

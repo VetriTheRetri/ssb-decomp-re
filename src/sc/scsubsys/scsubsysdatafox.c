@@ -2,7 +2,7 @@
 #include <sc/scsubsys/scsubsys.h>
 #include <reloc_data.h>
 
-s32 D_ovl1_80391110[] =
+s32 dFTFoxOpeningEntry1Script[] =
 {
 	0xA0880000,
 	ftMotionCommandWaitAsync(85),
@@ -11,7 +11,7 @@ s32 D_ovl1_80391110[] =
 	ftMotionCommandEnd()
 };
 
-s32 D_ovl1_80391124[] =
+s32 dFTFoxOpeningEntry2Script[] =
 {
 	0xA0880000,
 	ftMotionCommandWaitAsync(110),
@@ -19,21 +19,21 @@ s32 D_ovl1_80391124[] =
 	ftMotionCommandEnd()
 };
 
-s32 D_ovl1_80391134[] =
+s32 dFTFoxOpeningEntry3Script[] =
 {
 	ftMotionCommandWaitAsync(90),
 	ftMotionPlayFGM(nSYAudioVoiceFoxSelected),
 	ftMotionCommandEnd()
 };
 
-s32 D_ovl1_80391140[] =
+s32 dFTFoxOpeningActionScript[] =
 {
 	0xA0800001,
 	0xA0500001,
 	ftMotionCommandEnd()
 };
 
-s32 D_ovl1_8039114C[] =
+s32 dFTFoxOpeningLoopScript[] =
 {
 	0xA0880000,
 	ftMotionCommandEnd()
@@ -42,11 +42,11 @@ s32 D_ovl1_8039114C[] =
 FTMotionDesc dFTFoxSubMotionDescs[] =
 {
 	&ll_642_FileID, 0x80000000, 0x00000000,
-	&ll_370_FileID, D_ovl1_80391110, 0x00000000,
-	&ll_371_FileID, D_ovl1_80391124, 0x00000000,
-	&ll_372_FileID, D_ovl1_80391134, 0x00000000,
-	&ll_372_FileID, D_ovl1_80391134, 0x00000000,
-	&ll_373_FileID, D_ovl1_80391140, 0x00000000,
+	&ll_370_FileID, dFTFoxOpeningEntry1Script, 0x00000000,
+	&ll_371_FileID, dFTFoxOpeningEntry2Script, 0x00000000,
+	&ll_372_FileID, dFTFoxOpeningEntry3Script, 0x00000000,
+	&ll_372_FileID, dFTFoxOpeningEntry3Script, 0x00000000,
+	&ll_373_FileID, dFTFoxOpeningActionScript, 0x00000000,
 	&ll_648_FileID, 0x80000000, 0x00000000,
 	0x00000000, 0x80000000, 0x00000000,
 	&ll_374_FileID, 0x80000000, 0x80000000,
@@ -54,8 +54,8 @@ FTMotionDesc dFTFoxSubMotionDescs[] =
 	&ll_376_FileID, 0x80000000, 0x40000000,
 	&ll_377_FileID, 0x80000000, 0x00000000,
 	&ll_378_FileID, 0x80000000, 0x00000000,
-	&ll_379_FileID, D_ovl1_8039114C, 0x00000000,
-	&ll_380_FileID, D_ovl1_8039114C, 0x00000000,
+	&ll_379_FileID, dFTFoxOpeningLoopScript, 0x00000000,
+	&ll_380_FileID, dFTFoxOpeningLoopScript, 0x00000000,
 	&ll_781_FileID, 0x80000000, 0x00000000,
 	&ll_782_FileID, 0x80000000, 0x00000000,
 	&ll_783_FileID, 0x80000000, 0x00000000,

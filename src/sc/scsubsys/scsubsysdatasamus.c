@@ -2,7 +2,7 @@
 #include <sc/scsubsys/scsubsys.h>
 #include <reloc_data.h>
 
-s32 D_ovl1_803914F0[] =
+s32 dFTSamusOpeningEntry1Script[] =
 {
 	ftMotionCommandWaitAsync(19),
 	0x98807C00,
@@ -29,7 +29,7 @@ s32 D_ovl1_803914F0[] =
 	ftMotionCommandEnd()
 };
 
-s32 D_ovl1_8039154C[] =
+s32 dFTSamusOpeningEntry2Script[] =
 {
 	ftMotionPlayFGM(nSYAudioFGMLightSwingS),
 	ftMotionCommandWaitAsync(75),
@@ -41,14 +41,14 @@ s32 D_ovl1_8039154C[] =
 	ftMotionCommandEnd()
 };
 
-s32 D_ovl1_8039156C[] =
+s32 dFTSamusOpeningEntry3Script[] =
 {
 	ftMotionCommandWaitAsync(100),
 	ftMotionPlayFGM(nSYAudioFGMBladeDraw),
 	ftMotionCommandEnd()
 };
 
-s32 D_ovl1_80391578[] =
+s32 dFTSamusOpeningActionScript[] =
 {
 	0xA0500001,
 	ftMotionCommandEnd()
@@ -57,11 +57,11 @@ s32 D_ovl1_80391578[] =
 FTMotionDesc dFTSamusSubMotionDescs[] =
 {
     &ll_953_FileID, 0x80000000, 0x00000000,
-    &ll_393_FileID, D_ovl1_803914F0, 0x00000000,
-    &ll_394_FileID, D_ovl1_8039154C, 0x00000000,
-    &ll_395_FileID, D_ovl1_8039156C, 0x00000000,
-    &ll_395_FileID, D_ovl1_8039156C, 0x00000000,
-    &ll_396_FileID, D_ovl1_80391578, 0x00000000,
+    &ll_393_FileID, dFTSamusOpeningEntry1Script, 0x00000000,
+    &ll_394_FileID, dFTSamusOpeningEntry2Script, 0x00000000,
+    &ll_395_FileID, dFTSamusOpeningEntry3Script, 0x00000000,
+    &ll_395_FileID, dFTSamusOpeningEntry3Script, 0x00000000,
+    &ll_396_FileID, dFTSamusOpeningActionScript, 0x00000000,
     &ll_959_FileID, 0x80000000, 0x00000000,
     0x00000000,   0x80000000, 0x00000000,
     &ll_397_FileID, 0x80000000, 0x80000000,

@@ -504,7 +504,7 @@ void gmCameraGetAdjustAtAngle(Vec3f *at, Vec3f *vec, f32 x, f32 y)
 }
 
 // 0x8010C3C0
-void func_ovl2_8010C3C0(Vec3f *at, Vec3f *vec)
+void gmCameraGetFocusAngleClamp(Vec3f *at, Vec3f *vec)
 {
     f32 x, y;
 
@@ -538,7 +538,7 @@ void gmCameraUpdateInishieFocus(Vec3f *arg0, Vec3f *arg1)
 }
 
 // 0x8010C4D0
-f32 func_ovl2_8010C4D0(void)
+f32 gmCameraGetPanScale(void)
 {
     if (gGMCameraStruct.target_dist > 15000.0F)
     {
@@ -566,7 +566,7 @@ void gmCameraPan(CObj *cobj, Vec3f *pos, f32 scale)
 }
 
 // 0x8010C5C0
-void func_ovl2_8010C5C0(CObj *cobj, Vec3f *scale)
+void gmCameraUpdateEyePosition(CObj *cobj, Vec3f *scale)
 {
     Vec3f sp34;
     Vec3f pan;
@@ -585,7 +585,7 @@ void func_ovl2_8010C5C0(CObj *cobj, Vec3f *scale)
 }
 
 // 0x8010C670
-void func_ovl2_8010C670(f32 dist)
+void gmCameraAdjustTargetDist(f32 dist)
 {
     f32 temp_f0;
     f32 temp_f14;
@@ -635,10 +635,10 @@ void gmCameraDefaultFuncCamera(GObj *camera_gobj)
     gmCameraUpdateInterests(&sp30, &sp2C, &sp28);
     gmCameraAdjustFOV(38.0F);
     gmCameraGetClampDimensionsMax(sp2C, sp28, &sp48);
-    func_ovl2_8010C670(sp48);
-    gmCameraPan(cobj, &sp30, func_ovl2_8010C4D0());
-    func_ovl2_8010C3C0(&cobj->vec.at, &sp3C);
-    func_ovl2_8010C5C0(cobj, &sp3C);
+    gmCameraAdjustTargetDist(sp48);
+    gmCameraPan(cobj, &sp30, gmCameraGetPanScale());
+    gmCameraGetFocusAngleClamp(&cobj->vec.at, &sp3C);
+    gmCameraUpdateEyePosition(cobj, &sp3C);
     gmCameraApplyVel(cobj);
     gmCameraApplyFOV(cobj);
 }
@@ -685,9 +685,9 @@ void gmCameraZebesFuncCamera(GObj *camera_gobj)
     gmCameraUpdateInterests(&sp30, &hz, &vt);
     gmCameraAdjustFOV(38.0F);
     gmCameraGetClampDimensionsMax(hz, vt, &max);
-    func_ovl2_8010C670(max);
-    gmCameraPan(cobj, &sp30, func_ovl2_8010C4D0());
-    func_ovl2_8010C3C0(&cobj->vec.at, &scale);
+    gmCameraAdjustTargetDist(max);
+    gmCameraPan(cobj, &sp30, gmCameraGetPanScale());
+    gmCameraGetFocusAngleClamp(&cobj->vec.at, &scale);
     gmCameraUpdateAcidZoom(cobj, &scale);
     gmCameraApplyVel(cobj);
     gmCameraApplyFOV(cobj);
@@ -724,7 +724,7 @@ void gmCameraUpdatePlayerZoom(GObj *camera_gobj)
     angle.x = lbCommonSin(eye.y) * angle.z;
     angle.z *= lbCommonCos(eye.y);
 
-    func_ovl2_8010C5C0(cobj, &angle);
+    gmCameraUpdateEyePosition(cobj, &angle);
     gmCameraApplyVel(cobj);
     gmCameraApplyFOV(cobj);
 }
@@ -764,10 +764,10 @@ void gmCameraInishieFuncCamera(GObj *camera_gobj)
     gmCameraUpdateInterests(&sp30, &sp2C, &sp28);
     gmCameraAdjustFOV(38.0F);
     gmCameraGetClampDimensionsMax(sp2C, sp28, &sp48);
-    func_ovl2_8010C670(sp48);
-    gmCameraPan(cobj, &sp30, func_ovl2_8010C4D0());
+    gmCameraAdjustTargetDist(sp48);
+    gmCameraPan(cobj, &sp30, gmCameraGetPanScale());
     gmCameraUpdateInishieFocus(&cobj->vec.at, &sp3C);
-    func_ovl2_8010C5C0(cobj, &sp3C);
+    gmCameraUpdateEyePosition(cobj, &sp3C);
     gmCameraApplyVel(cobj);
     gmCameraApplyFOV(cobj);
 }
@@ -814,7 +814,7 @@ void gmCameraMapZoomFuncCamera(GObj *camera_gobj)
 
     syVectorDiff3D(&sp30, &gGMCameraStruct.zoom_origin_pos, &cobj->vec.at);
     sp28 = syVectorMag3D(&sp30);
-    sp2C = func_ovl2_8010C4D0() * sp28;
+    sp2C = gmCameraGetPanScale() * sp28;
     syVectorNorm3D(&sp30);
     syVectorScale3D(&sp30, sp2C);
     syVectorAdd3D(&cobj->vec.at, &sp30);
@@ -862,7 +862,7 @@ void gmCameraPlayerFollowFuncCamera(GObj *camera_gobj)
     angle.x = lbCommonSin(eye_x) * angle.z;
     angle.z *= lbCommonCos(eye_x);
 
-    func_ovl2_8010C5C0(cobj, &angle);
+    gmCameraUpdateEyePosition(cobj, &angle);
     gmCameraApplyVel(cobj);
     gmCameraApplyFOV(cobj);
 }
@@ -953,7 +953,7 @@ void gmCameraSetVelAt(Vec3f *vel)
 }
 
 // 0x8010D14C - Unused?
-void func_ovl2_8010D14C(GObj *gobj)
+void gmCameraUnusedFuncCamera(GObj *gobj)
 {
     return;
 }
@@ -1031,7 +1031,7 @@ sb32 gmCameraPrepLookAtFuncMatrix(Mtx *mtx, CObj *cobj, Gfx **dls)
 }
 
 // 0x8010D4B0
-void func_ovl2_8010D4B0(Mtx *mtx, CObj *cobj, Gfx **dls)
+void gmCameraUnusedFuncMatrix(Mtx *mtx, CObj *cobj, Gfx **dls)
 {
     return;
 }

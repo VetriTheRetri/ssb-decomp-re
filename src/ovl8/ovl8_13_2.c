@@ -264,7 +264,7 @@ dbUnknown5* func_ovl8_8037E8C8(dbUnknown5 *arg0, dbUnknownLinkStruct *arg1, dbUn
 }
 
 // 0x8037E97C
-// Switch in ascending order (matches cfe sort), all beq. No B-format patching needed.
+// NON_MATCHING: Switch case order (target: STBN,STTB,STOB) differs from cfe ascending sort (STBN,STOB,STTB). Also stack offset diffs.
 #ifdef NON_MATCHING
 dbUnknown5* func_ovl8_8037E97C(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2, s32* arg3, s32 arg4, s32 arg5, s32 arg6)
 {

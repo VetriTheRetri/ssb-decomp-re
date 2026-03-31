@@ -227,7 +227,7 @@ enum grSectorArwingStatus
 // // // // // // // // // // // //
 
 // 0x80106730
-void func_ovl2_80106730(DObj *arg0, Vec3f *vec1, Vec3f *vec2, Vec3f *vec3)
+void grSectorArwingInterpolateBasis(DObj *arg0, Vec3f *vec1, Vec3f *vec2, Vec3f *vec3)
 {
     DObj *sp54 = gGRCommonStruct.sector.map_dobjs[11];
     AObj *aobj = arg0->aobj;
@@ -301,7 +301,7 @@ sb32 grSectorArwingLaser3DFuncMatrix(Mtx *mtx, DObj *dobj, Gfx **dls)
         sp74.x = sp74.y = 0.0F;
         sp74.z = 1;
     }
-    else func_ovl2_80106730(dobj, &sp80, &sp74, &sp68);
+    else grSectorArwingInterpolateBasis(dobj, &sp80, &sp74, &sp68);
 
     f[0][0] = sp74.x; // sp28
     f[0][1] = sp74.y; // sp2C
@@ -420,7 +420,7 @@ void grSectorArwingDecideZNear(void)
 }
 
 // 0x80106C88
-void func_ovl2_80106C88(void)
+void grSectorArwingUpdatePilotState1(void)
 {
     switch (gGRCommonStruct.sector.arwing_state_timer)
     {
@@ -435,7 +435,7 @@ void func_ovl2_80106C88(void)
 }
 
 // 0x80106CC4
-void func_ovl2_80106CC4(void)
+void grSectorArwingUpdatePilotState4(void)
 {
     switch (gGRCommonStruct.sector.arwing_state_timer)
     {
@@ -450,7 +450,7 @@ void func_ovl2_80106CC4(void)
 }
 
 // 0x80106D00
-void func_ovl2_80106D00(void)
+void grSectorArwingUpdatePilotState5(void)
 {
     if (gGRCommonStruct.sector.arwing_state_timer == 0)
     {
@@ -473,7 +473,7 @@ void func_ovl2_80106D00(void)
 }
 
 // 0x80106DD8
-void func_ovl2_80106DD8(void)
+void grSectorArwingUpdatePilotState(void)
 {
     if (gGRCommonStruct.sector.arwing_pilot_curr != -2)
     {
@@ -482,15 +482,15 @@ void func_ovl2_80106DD8(void)
             switch (gGRCommonStruct.sector.arwing_pilot_curr)
             {
             case 1:
-                func_ovl2_80106C88();
+                grSectorArwingUpdatePilotState1();
                 break;
 
             case 4:
-                func_ovl2_80106CC4();
+                grSectorArwingUpdatePilotState4();
                 break;
 
             case 5:
-                func_ovl2_80106D00();
+                grSectorArwingUpdatePilotState5();
                 break;
             }
             if (gGRCommonStruct.sector.map_dobjs[1]->anim_wait == AOBJ_ANIM_NULL)
@@ -580,7 +580,7 @@ sb32 grSectorArwingWeaponLaser2DProcHit(GObj *weapon_gobj)
 }
 
 // 0x801070A4
-void func_ovl2_801070A4(Vec3f *rotate, Vec3f *direction, Vec3f *vec3, Vec3f *vec4)
+void grSectorArwingGetRotationFromBasis(Vec3f *rotate, Vec3f *direction, Vec3f *vec3, Vec3f *vec4)
 {
     if ((vec3->z == -1.0F) || (vec3->z == 1.0F))
     {
@@ -605,7 +605,7 @@ void func_ovl2_801070A4(Vec3f *rotate, Vec3f *direction, Vec3f *vec3, Vec3f *vec
 }
 
 // 0x8010719C
-void func_ovl2_8010719C(Vec3f *vel, Vec3f *rotate)
+void grSectorArwingSetLaserRotation(Vec3f *vel, Vec3f *rotate)
 {
     Vec3f sp2C;
     Vec3f sp20;
@@ -623,7 +623,7 @@ void func_ovl2_8010719C(Vec3f *vel, Vec3f *rotate)
     lbCommonCross3D(vel, &sp2C, &sp20);
     syVectorNorm3D(&sp2C);
     syVectorNorm3D(&sp20);
-    func_ovl2_801070A4(rotate, vel, &sp2C, &sp20);
+    grSectorArwingGetRotationFromBasis(rotate, vel, &sp2C, &sp20);
 }
 
 // 0x80107238
@@ -637,7 +637,7 @@ sb32 grSectorArwingWeaponLaser2DProcHop(GObj *weapon_gobj)
     vel = wp->physics.vel_air;
 
     syVectorNorm3D(&vel);
-    func_ovl2_8010719C(&vel, &DObjGetStruct(weapon_gobj)->rotate.vec.f);
+    grSectorArwingSetLaserRotation(&vel, &DObjGetStruct(weapon_gobj)->rotate.vec.f);
 
     return FALSE;
 }
@@ -654,7 +654,7 @@ sb32 grSectorArwingWeaponLaser2DProcReflector(GObj *weapon_gobj)
     vel = wp->physics.vel_air;
 
     syVectorNorm3D(&vel);
-    func_ovl2_8010719C(&vel, &DObjGetStruct(weapon_gobj)->rotate.vec.f);
+    grSectorArwingSetLaserRotation(&vel, &DObjGetStruct(weapon_gobj)->rotate.vec.f);
 
     return FALSE;
 }
@@ -693,7 +693,7 @@ void grSectorArwingWeaponLaser2DMakeWeapon(void)
         vel.y = vel.z = 0.0F;
         vel.x = -1.0F;
 
-        func_ovl2_8010719C(&vel, &rotate);
+        grSectorArwingSetLaserRotation(&vel, &rotate);
 
         DObjGetStruct(weapon_gobj)->rotate.vec.f = rotate;
 
@@ -814,7 +814,7 @@ void grSectorArwingWeaponLaser3DMakeWeapon(void)
 
     dobj = gGRCommonStruct.sector.map_dobjs[0];
 
-    func_ovl2_80106730(dobj, &sp94, &sp88, &sp7C);
+    grSectorArwingInterpolateBasis(dobj, &sp94, &sp88, &sp7C);
 
     mtx[0][0] = sp88.x; // sp30
     mtx[0][1] = sp88.y; // sp34
@@ -879,7 +879,7 @@ void grSectorArwingWeaponLaser3DMakeWeapon(void)
         wp->physics.vel_air.y = wp_angle.y * 230.0F;
         wp->physics.vel_air.z = wp_angle.z * 230.0F;
 
-        func_ovl2_8010719C(&wp_angle, &DObjGetStruct(weapon_gobj)->rotate.vec.f);
+        grSectorArwingSetLaserRotation(&wp_angle, &DObjGetStruct(weapon_gobj)->rotate.vec.f);
     }
 }
 
@@ -1023,7 +1023,7 @@ void grSectorArwingUpdateCollisions(void)
 void grSectorArwingUpdatePatrol(void)
 {
     grSectorArwingDecideZNear();
-    func_ovl2_80106DD8();
+    grSectorArwingUpdatePilotState();
     func_ovl2_80107958();
     func_ovl2_80107B30();
     grSectorArwingUpdateCollisions();

@@ -554,7 +554,7 @@ s32 dMNPlayers1PGameUnknown0x80138860[/* */] =
 };
 
 // 0x80132794 - Unused?
-void func_ovl27_80132794(void)
+void mnPlayers1PGameUnused1(void)
 {
 	return;
 }
@@ -1649,13 +1649,13 @@ void mnPlayers1PGameMakeTotalRecord(void)
 }
 
 // 0x80134EB0 - Unused?
-void func_ovl27_80134EB0(void)
+void mnPlayers1PGameUnused2(void)
 {
 	return;
 }
 
 // 0x80134EB8 - Unused?
-void func_ovl27_80134EB8(void)
+void mnPlayers1PGameUnused3(void)
 {
 	return;
 }
@@ -1981,7 +1981,7 @@ sb32 mnPlayers1PGameCheckPuckInRange(GObj *gobj, s32 cursor_player, s32 player)
 }
 
 // 0x801357FC - Unused?
-void func_ovl27_801357FC(void)
+void mnPlayers1PGameUnused4(void)
 {
 	return;
 }
@@ -2009,7 +2009,7 @@ void mnPlayers1PGameUpdateFighter(s32 player)
 }
 
 // 0x801358BC - Unused?
-void func_ovl27_801358BC(void)
+void mnPlayers1PGameUnused5(void)
 {
 	return;
 }
@@ -2119,7 +2119,7 @@ void mnPlayers1PGameAnnounceFighter(s32 player, s32 slot)
 }
 
 // 0x80135BFC - Unused?
-void func_ovl27_80135BFC(void)
+void mnPlayers1PGameUnused6(void)
 {
 	return;
 }
@@ -2750,7 +2750,7 @@ intptr_t dMNPlayers1PGamePuckSpriteOffsets[/* */] =
 };
 
 // 0x8013702C - Unused?
-void func_ovl27_8013702C(void)
+void mnPlayers1PGameUnused7(void)
 {
 	return;
 }
@@ -2773,7 +2773,7 @@ void mnPlayers1PGameCenterPuckInPortrait(GObj *gobj, s32 fkind)
 }
 
 // 0x801370E4 - Unused?
-void func_ovl27_801370E4(void)
+void mnPlayers1PGameUnused8(void)
 {
 	return;
 }
@@ -3002,7 +3002,7 @@ void mnPlayers1PGameMakePuck(s32 player)
 }
 
 // 0x801376F0 - Unused?
-void func_ovl27_801376F0(void)
+void mnPlayers1PGameUnused9(void)
 {
 	return;
 }
@@ -3235,13 +3235,13 @@ void mnPlayers1PGameMakeReady(void)
 }
 
 // 0x80137EE0 - Unused?
-void func_ovl27_80137EE0(void)
+void mnPlayers1PGameUnused10(void)
 {
 	return;
 }
 
 // 0x80137EE8 - Unused?
-void func_ovl27_80137EE8(void)
+void mnPlayers1PGameUnused11(void)
 {
 	return;
 }
@@ -3378,7 +3378,7 @@ void mnPlayers1PGameInitPlayer(s32 player)
 }
 
 // 0x801381D0 - Unused?
-void func_ovl27_801381D0(void)
+void mnPlayers1PGameUnused12(void)
 {
 	return;
 }

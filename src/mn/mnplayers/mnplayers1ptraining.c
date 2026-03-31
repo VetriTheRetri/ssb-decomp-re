@@ -272,7 +272,7 @@ s32 dMNPlayers1PTrainingUnknown0x80138070[/* */] =
 };
 
 // 0x80131FC8 - Unused?
-void func_ovl28_80131FC8(void)
+void mnPlayers1PTrainingUnused1(void)
 {
 	return;
 }
@@ -786,25 +786,25 @@ void mnPlayers1PTrainingMakeGate(s32 player)
 }
 
 // 0x80132FF4 - Unused?
-void func_ovl28_80132FF4(void)
+void mnPlayers1PTrainingUnused2(void)
 {
 	return;
 }
 
 // 0x80132FFC - Unused?
-void func_ovl28_80132FFC(void)
+void mnPlayers1PTrainingUnused3(void)
 {
 	return;
 }
 
 // 0x80133004 - Unused?
-void func_ovl28_80133004(void)
+void mnPlayers1PTrainingUnused4(void)
 {
 	return;
 }
 
 // 0x8013300C - Unused?
-void func_ovl28_8013300C(void)
+void mnPlayers1PTrainingUnused5(void)
 {
 	return;
 }
@@ -934,19 +934,19 @@ f32 dMNPlayers1PTrainingDigitWidths[/* */] =
 };
 
 // 0x801332C4 - Unused?
-void func_ovl28_801332C4(void)
+void mnPlayers1PTrainingUnused6(void)
 {
 	return;
 }
 
 // 0x801332CC - Unused?
-void func_ovl28_801332CC(void)
+void mnPlayers1PTrainingUnused7(void)
 {
 	return;
 }
 
 // 0x801332D4 - Unused?
-void func_ovl28_801332D4(void)
+void mnPlayers1PTrainingUnused8(void)
 {
 	return;
 }
@@ -1261,7 +1261,7 @@ void mnPlayers1PTrainingUpdateCursor(GObj *gobj, s32 player, s32 cursor_status)
 }
 
 // 0x80133CA0 - Unused?
-void func_ovl28_80133CA0(void)
+void mnPlayers1PTrainingUnused9(void)
 {
 	return;
 }
@@ -1327,7 +1327,7 @@ void mnPlayers1PTrainingUpdateFighter(s32 player)
 }
 
 // 0x80133ED8 - Unused?
-void func_ovl28_80133ED8(void)
+void mnPlayers1PTrainingUnused10(void)
 {
 	return;
 }
@@ -1442,7 +1442,7 @@ void mnPlayers1PTrainingAnnounceFighter(s32 player, s32 slot)
 }
 
 // 0x801342B0 - Unused?
-void func_ovl28_801342B0(void)
+void mnPlayers1PTrainingUnused11(void)
 {
 	return;
 }
@@ -1619,19 +1619,19 @@ intptr_t dMNPlayers1PTrainingUnused0x80138328[/* */] =
 };
 
 // 0x80134830 - Unused?
-void func_ovl28_80134830(void)
+void mnPlayers1PTrainingUnused12(void)
 {
 	return;
 }
 
 // 0x80134838 - Unused?
-void func_ovl28_80134838(void)
+void mnPlayers1PTrainingUnused13(void)
 {
 	return;
 }
 
 // 0x80134840 - Unused?
-void func_ovl28_80134840(void)
+void mnPlayers1PTrainingUnused14(void)
 {
 	return;
 }
@@ -2208,7 +2208,7 @@ void mnPlayers1PTrainingCenterPuckInPortrait(GObj *gobj, s32 fkind)
 }
 
 // 0x80135D7C - Unused?
-void func_ovl28_80135D7C(void)
+void mnPlayers1PTrainingUnused15(void)
 {
 	return;
 }
@@ -2902,7 +2902,7 @@ void mnPlayers1PTrainingMakeReady(void)
 }
 
 // 0x801375D0 - Unused?
-void func_ovl28_801375D0(void)
+void mnPlayers1PTrainingUnused16(void)
 {
 	return;
 }

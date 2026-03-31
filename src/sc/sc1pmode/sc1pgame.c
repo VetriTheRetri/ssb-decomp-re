@@ -877,7 +877,7 @@ s32 sc1PGameGetNextFreeCostume(s32 com)
 }
 
 // 0x8018D38C - Empty function because of course
-void func_ovl65_8018D38C(void)
+void sc1PGameUnused1(void)
 {
     return;
 }
@@ -904,7 +904,7 @@ s32 sc1PGameGetFighterKindsNum(u16 shuf, s32 max)
 }
 
 // 0x8018D3D0 - Yet ANOTHER empty function
-void func_ovl65_8018D3D0(void)
+void sc1PGameUnused2(void)
 {
     return;
 }
@@ -1966,7 +1966,7 @@ void sc1PGameBossSetIgnorePlayerMapBounds(GObj *fighter_gobj, u32 unused)
 }
 
 // 0x8018F5E4 - Unused?
-void func_ovl65_8018F5E4(void)
+void sc1PGameUnused3(void)
 {
     return;
 }
@@ -1996,7 +1996,7 @@ void sc1PGameBossDefeatInterfaceProcUpdate(void)
 }
 
 // 0x8018F6DC
-void func_ovl65_8018F6DC(void)
+void sc1PGameBossDefeatRestoreSoundMax(void)
 {
     D_8009EDD0_406D0.sfx_max = sSC1PGameBossDefeatSoundTerminateTemp;
 }

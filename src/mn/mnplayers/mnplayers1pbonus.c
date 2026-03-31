@@ -246,19 +246,19 @@ f32 dMNPlayers1PBonusFontWidths[/* */] =
 };
 
 // 0x80131F5C - Unused?
-void func_ovl29_80131F5C(void)
+void mnPlayers1PBonusUnused1(void)
 {
 	return;
 }
 
 // 0x80131F64 - Unused?
-void func_ovl29_80131F64(void)
+void mnPlayers1PBonusUnused2(void)
 {
 	return;
 }
 
 // 0x80131F6C - Unused?
-void func_ovl29_80131F6C(void)
+void mnPlayers1PBonusUnused3(void)
 {
 	return;
 }
@@ -413,7 +413,7 @@ s32 dMNPlayers1PBonusUnkown0x80137180[/* */] =
 };
 
 // 0x80132388 - Unused?
-void func_ovl29_80132388(void)
+void mnPlayers1PBonusUnused4(void)
 {
 	return;
 }
@@ -818,7 +818,7 @@ f32 dMNPlayers1PBonusDigitWidths[/* */] =
 };
 
 // 0x801330C4 - Unused?
-void func_ovl29_801330C4(void)
+void mnPlayers1PBonusUnused5(void)
 {
 	return;
 }
@@ -868,7 +868,7 @@ void mnPlayers1PBonusMakeWallpaperCamera(void)
 }
 
 // 0x80133210 - Unused?
-void func_ovl29_80133210(void)
+void mnPlayers1PBonusUnused6(void)
 {
 	return;
 }
@@ -1178,7 +1178,7 @@ void mnPlayers1PBonusMakeHiScore(void)
 }
 
 // 0x80133C14 - Unused?
-void func_ovl29_80133C14(void)
+void mnPlayers1PBonusUnused7(void)
 {
 	return;
 }
@@ -1244,13 +1244,13 @@ void mnPlayers1PBonusMakeTotalTime(void)
 }
 
 // 0x80133F4C - Unused?
-void func_ovl29_80133F4C(void)
+void mnPlayers1PBonusUnused8(void)
 {
 	return;
 }
 
 // 0x80133F54 - Unused?
-void func_ovl29_80133F54(void)
+void mnPlayers1PBonusUnused9(void)
 {
 	return;
 }
@@ -1564,7 +1564,7 @@ void mnPlayers1PBonusUpdateFighter(s32 player)
 }
 
 // 0x801347F0 - Unused?
-void func_ovl29_801347F0(void)
+void mnPlayers1PBonusUnused10(void)
 {
 	return;
 }
@@ -1674,7 +1674,7 @@ void mnPlayers1PBonusAnnounceFighter(s32 player, s32 slot)
 }
 
 // 0x80134B1C - Unused?
-void func_ovl29_80134B1C(void)
+void mnPlayers1PBonusUnused11(void)
 {
 	return;
 }
@@ -2187,13 +2187,13 @@ intptr_t dMNPlayers1PBonusPuckSpriteOffsets[/* */] =
 };
 
 // 0x80135BA4 - Unused?
-void func_ovl29_80135BA4(void)
+void mnPlayers1PBonusUnused12(void)
 {
 	return;
 }
 
 // 0x80135BAC - Unused?
-void func_ovl29_80135BAC(void)
+void mnPlayers1PBonusUnused13(void)
 {
 	return;
 }
@@ -2424,7 +2424,7 @@ void mnPlayers1PBonusMakePuck(s32 player)
 }
 
 // 0x801361A4 - Unused?
-void func_ovl29_801361A4(void)
+void mnPlayers1PBonusUnused14(void)
 {
 	return;
 }
@@ -2657,19 +2657,19 @@ void mnPlayers1PBonusMakeReady(void)
 }
 
 // 0x80136980 - Unused?
-void func_ovl29_80136980(void)
+void mnPlayers1PBonusUnused15(void)
 {
 	return;
 }
 
 // 0x80136988 - Unused?
-void func_ovl29_80136988(void)
+void mnPlayers1PBonusUnused16(void)
 {
 	return;
 }
 
 // 0x80136990 - Unused?
-void func_ovl29_80136990(void)
+void mnPlayers1PBonusUnused17(void)
 {
 	return;
 }
@@ -2683,7 +2683,7 @@ void mnPlayers1PBonusSetSceneData(void)
 }
 
 // 0x801369C8 - Unused?
-void func_ovl29_801369C8(void)
+void mnPlayers1PBonusUnused18(void)
 {
 	return;
 }
@@ -2728,13 +2728,13 @@ void mnPlayers1PBonusFuncRun(GObj *gobj)
 }
 
 // 0x80136B14 - Unused?
-void func_ovl29_80136B14(void)
+void mnPlayers1PBonusUnused19(void)
 {
 	return;
 }
 
 // 0x80136B1C - Unused?
-void func_ovl29_80136B1C(void)
+void mnPlayers1PBonusUnused20(void)
 {
 	return;
 }
@@ -2790,7 +2790,7 @@ void mnPlayers1PBonusInitSlot(s32 player)
 }
 
 // 0x80136C80 - Unused?
-void func_ovl29_80136C80(void)
+void mnPlayers1PBonusUnused21(void)
 {
 	return;
 }

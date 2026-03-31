@@ -2673,7 +2673,7 @@ void ifCommonBattleEndAddSoundQueueID(u16 sfx_id)
 // 0x80113854
 void ifCommonBattleEndSetBossDefeat(void)
 {
-    func_ovl65_8018F6DC();
+    sc1PGameBossDefeatRestoreSoundMax();
 
     gSCManagerBattleState->game_status = nSCBattleGameStatusBossDefeat;
     sIFCommonBattlePauseCameraRestoreWait = 0;

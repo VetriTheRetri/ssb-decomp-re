@@ -329,7 +329,7 @@ s32 dMNPlayersVSUnknown0x8013B4B0[/* */] =
 };
 
 // 0x80132110 - Unused?
-void func_ovl26_80132110(void)
+void mnPlayersVSUnused1(void)
 {
 	return;
 }
@@ -1454,19 +1454,19 @@ void mnPlayersVSMakeLabels(void)
 }
 
 // 0x801345F0 - Unused?
-void func_ovl26_801345F0(void)
+void mnPlayersVSUnused2(void)
 {
 	return;
 }
 
 // 0x801345F8 - Unused?
-void func_ovl26_801345F8(void)
+void mnPlayersVSUnused3(void)
 {
 	return;
 }
 
 // 0x80134600 - Unused?
-void func_ovl26_80134600(void)
+void mnPlayersVSUnused4(void)
 {
 	return;
 }
@@ -1815,7 +1815,7 @@ s32 mnPlayersVSCheckTimeArrowLInRange(GObj *gobj)
 }
 
 // 0x801350F4 - Unused?
-void func_ovl26_801350F4(void)
+void mnPlayersVSUnused5(void)
 {
 	return;
 }
@@ -4078,7 +4078,7 @@ void mnPlayersVSMakeSpotlight(void)
 }
 
 // 0x80139DD8 - Unused?
-void func_ovl26_80139DD8(void)
+void mnPlayersVSUnused6(void)
 {
 	return;
 }
@@ -4305,7 +4305,7 @@ void mnPlayersVSSetIdlePlayerNotAll(void)
 }
 
 // 0x8013A468 - Unused?
-void func_ovl26_8013A468(void)
+void mnPlayersVSUnused7(void)
 {
 	return;
 }

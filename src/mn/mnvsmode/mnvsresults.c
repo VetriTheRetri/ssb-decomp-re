@@ -2109,7 +2109,7 @@ void mnVSResultsMakePointsRow(void)
 }
 
 // 0x80135FE8 - Unused?
-void func_ovl31_80135FE8(void)
+void mnVSResultsUnused1(void)
 {
 	return;
 }
@@ -2871,7 +2871,7 @@ void mnVSResultsMakeAudioThread(void)
 }
 
 // 0x80137898
-void func_ovl31_80137898(GObj *gobj)
+void mnVSResultsWinnerRumbleProcUpdate(GObj *gobj)
 {
 	u32 tic = 0;
 	s32 winner = mnVSResultsGetWinPlayer();
@@ -2899,13 +2899,13 @@ void func_ovl31_80137898(GObj *gobj)
 }
 
 // 0x80137938
-void func_ovl31_80137938(void)
+void mnVSResultsMakeWinnerRumble(void)
 {
-	gcAddGObjProcess(gcMakeGObjSPAfter(0, NULL, 15, GOBJ_PRIORITY_DEFAULT), func_ovl31_80137898, nGCProcessKindThread, 1);
+	gcAddGObjProcess(gcMakeGObjSPAfter(0, NULL, 15, GOBJ_PRIORITY_DEFAULT), mnVSResultsWinnerRumbleProcUpdate, nGCProcessKindThread, 1);
 }
 
 // 0x8013797C
-void func_ovl31_8013797C(void)
+void mnVSResultsStopRumbleAll(void)
 {
 	s32 i;
 
@@ -3218,7 +3218,7 @@ void mnVSResultsMakeConfetti(void)
 }
 
 // 0x801388A4 - Unused?
-void func_ovl31_801388A4(void)
+void mnVSResultsUnused2(void)
 {
 	return;
 }
@@ -3377,11 +3377,11 @@ void mnVSResultsFuncStart(void)
 		mnVSResultsMakeEmblem();
 	}
 	mnVSResultsMakeWallpaperTint();
-	func_ovl31_8013797C();
+	mnVSResultsStopRumbleAll();
 
 	if ((sMNVSResultsKind != nMNVSResultsKindNoContest) && (gSCManagerTransferBattleState.players[mnVSResultsGetWinPlayer()].pkind == nFTPlayerKindMan))
 	{
-		func_ovl31_80137938();
+		mnVSResultsMakeWinnerRumble();
 	}
 	scSubsysFighterSetLightParams(10.0F, 10.0F, 0xFF, 0xFF, 0xFF, sMNVSResultsCharacterAlpha);
 

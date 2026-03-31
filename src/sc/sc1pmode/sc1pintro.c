@@ -141,7 +141,7 @@ void sc1PIntroMakeBanners(void)
 }
 
 // 0x80131C58 - unused?
-void func_ovl24_80131C58(GObj *gobj)
+void sc1PIntroDrawDebugStageProgress(GObj *gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
@@ -181,7 +181,7 @@ void func_ovl24_80131C58(GObj *gobj)
 }
 
 // 0x80131ECC - unused?
-void func_ovl24_80131ECC(void)
+void sc1PIntroUnused1(void)
 {
     return;
 }
@@ -1488,7 +1488,7 @@ CObjDesc* sc1PIntroGetFighterCObjDesc(CObjDesc *cobj_desc, s32 fkind, s32 cobj_i
 }
 
 // 0x80133F88 - unused?
-void func_ovl24_80133F88(void)
+void sc1PIntroUnused2(void)
 {
     return;
 }
@@ -1824,7 +1824,7 @@ void sc1PIntroInitVars(void)
 }
 
 // 0x801348EC - unused?
-void func_ovl24_801348EC(void)
+void sc1PIntroUnused3(void)
 {
     return;
 }
@@ -1845,7 +1845,7 @@ void sc1PIntroFuncRun(GObj *gobj)
             gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
             gSCManagerSceneData.scene_curr = nSCKindTitle;
             
-            func_ovl24_801348EC();
+            sc1PIntroUnused3();
             syTaskmanSetLoadScene();
         }
         if (sSC1PIntroUnk0x80135CF4 != 0)
@@ -1863,7 +1863,7 @@ void sc1PIntroFuncRun(GObj *gobj)
             gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
             gSCManagerSceneData.scene_curr = nSCKindTitle;
             
-            func_ovl24_801348EC();
+            sc1PIntroUnused3();
             syTaskmanSetLoadScene();
         }
     }

@@ -10,7 +10,7 @@
 extern void sc1PIntroFuncLights(Gfx **dls);
 extern void sc1PIntroMakeSky(void);
 extern void sc1PIntroMakeBanners(void);
-extern void func_ovl24_80131C58(GObj *gobj);
+extern void sc1PIntroDrawDebugStageProgress(GObj *gobj);
 extern void sc1PIntroMakeVSDecal(void);
 extern sb32 sc1PIntroCheckNotBonusStage(s32 stage);
 extern void sc1PIntroMakeLabels(s32 stage);

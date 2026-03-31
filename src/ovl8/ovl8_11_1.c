@@ -6,6 +6,8 @@ extern dbFunction D_ovl8_8038A578;
 extern dbUnknownLink D_ovl8_8038A6D0;
 
 void func_ovl8_8037CE30(s32 arg0);
+dbUnknown5* func_ovl8_8037CBA0(dbUnknown5*, dbUnknownLinkStruct*, dbUnknownLink*, s32*, s32, s32, s32);
+void func_ovl8_8037CD64(dbUnknown5*);
 
 // 0x8037CA60
 s32 func_ovl8_8037CA60(s32 arg0, s32** arg1)
@@ -59,7 +61,54 @@ dbUnknown5* func_ovl8_8037CAF0(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUn
 }
 
 // 0x8037CBA0
+// Switch produces beq (ascending order matches cfe sort). as1 optimizes last case to beql.
+#ifdef NON_MATCHING
+dbUnknown5* func_ovl8_8037CBA0(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2, s32* arg3, s32 arg4, s32 arg5, s32 arg6)
+{
+    if (arg0 != NULL || ((arg0 = func_ovl8_803717A0(0xB8)) != NULL))
+    {
+        if (arg1 == NULL)
+        {
+            arg1 = &arg0->unk_dbunk5_0x5C;
+            arg2 = &arg0->unk_dbunk5_0x50;
+            #line 36
+            func_ovl8_803717E0(arg1);
+            func_ovl8_8037C2D0(arg2);
+            #line 43
+        }
+
+        func_ovl8_80373CC4(arg0, arg1, arg2, (s32)arg3, arg6);
+
+        arg0->unk_dbunk5_0x30 = &D_ovl8_8038A4A0;
+        arg1->db_func = &D_ovl8_8038A578;
+        arg2->unk_dbunklink_0x8 = &D_ovl8_8038A6D0;
+
+        func_ovl8_8037CE30(arg0);
+
+        arg0->unk_dbunk5_0x40.ls = (dbUnknownLinkStruct*)arg5;
+        arg0->unk_dbunk5_0x44.ls = (dbUnknownLinkStruct*)arg4;
+
+        {
+            s32 result;
+
+            switch (arg3[5]) {
+            case 0x4242544E: result = 0; break;
+            case 0x42544742: result = 1; break;
+            case 0x424F5042: result = 2; break;
+            default: result = 0; break;
+            }
+
+            arg0->unk_dbunk5_0x3C.s_16 = result;
+        }
+
+        func_ovl8_8037CD64(arg0);
+    }
+
+    return arg0;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_11_1/func_ovl8_8037CBA0.s")
+#endif /* NON_MATCHING */
 
 // 0x8037CCC8
 void func_ovl8_8037CCC8(dbUnknown5* arg0, s32 arg1)

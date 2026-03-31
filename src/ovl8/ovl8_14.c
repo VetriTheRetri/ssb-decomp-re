@@ -9,6 +9,8 @@ extern dbFunction D_ovl8_8038AC48;
 extern dbUnknownLink D_ovl8_8038ADA0;
 
 void func_ovl8_8037DFCC(s16, s16);
+dbUnknown5* func_ovl8_8037EF0C(dbUnknown5*, dbUnknownLinkStruct*, dbUnknownLink*, s32*, s32, s32);
+void func_ovl8_8037F030(dbUnknown5*);
 
 // 0x8037EE00
 s32 func_ovl8_8037EE00(s32 arg0, dbUnknown3* arg1)
@@ -54,7 +56,52 @@ dbUnknown5* func_ovl8_8037EE64(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUn
 }
 
 // 0x8037EF0C
+// NON_MATCHING: IDO cfe sorts switch cases ascending; target has descending beq chain.
+// C code is correct but switch case comparison order cannot be controlled from source.
+#ifdef NON_MATCHING
+dbUnknown5* func_ovl8_8037EF0C(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2, s32* arg3, s32 arg4, s32 arg5)
+{
+    if (arg0 != NULL || ((arg0 = func_ovl8_803717A0(0xA8)) != NULL))
+    {
+        if (arg1 == NULL)
+        {
+            arg1 = &arg0->unk_dbunk5_0x4C;
+            arg2 = &arg0->unk_dbunk5_0x40;
+            #line 60
+            func_ovl8_803717E0(arg1);
+            func_ovl8_8037C2D0(arg2);
+            #line 70
+        }
+
+        func_ovl8_80373CC4(arg0, arg1, arg2, (s32)arg3, arg5);
+
+        arg0->unk_dbunk5_0x30 = &D_ovl8_8038AB70;
+        arg1->db_func = &D_ovl8_8038AC48;
+        arg2->unk_dbunklink_0x8 = &D_ovl8_8038ADA0;
+
+        ((dbFunction*)arg0->unk_dbunk5_0x30)[14].unk_dbfunc_0x4(((dbFunction*)arg0->unk_dbunk5_0x30)[14].unk_dbfunc_0x0 + (uintptr_t)arg0, arg4);
+
+        {
+            s32 result;
+
+            switch (arg3[5]) {
+            case 0x42545842: result = 0; break;
+            case 0x42545442: result = 1; break;
+            case 0x42544F42: result = 2; break;
+            default: result = 0; break;
+            }
+
+            arg0->unk_dbunk5_0x3C.s_16 = result;
+        }
+
+        func_ovl8_8037F030(arg0);
+    }
+
+    return arg0;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_14/func_ovl8_8037EF0C.s")
+#endif
 
 // 0x8037F030
 void func_ovl8_8037F030(dbUnknown5* arg0) 

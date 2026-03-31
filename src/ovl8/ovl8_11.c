@@ -365,8 +365,10 @@ void* func_ovl8_8037C7D4(dbUnknown5* arg0, dbUnknown5* arg1, dbFunction** arg2, 
 		{
 			arg1 = &arg0->unk_dbunk5_0x54;
 			arg2 = arg0->unk_dbunk5_0xB8;
+			#line 36
 			func_ovl8_803717E0(arg1, arg2);
 			func_ovl8_8037C2D0(arg2);
+			#line 43
 		}
 		func_ovl8_80373CC4(arg0, arg1, arg2, arg3, arg6);
 		func_ovl8_803724B4(&arg0->unk_dbunk5_0x40, arg1, arg3, arg6, arg4 != 0 ? arg4 : arg5);

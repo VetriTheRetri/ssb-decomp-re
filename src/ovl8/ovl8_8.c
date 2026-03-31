@@ -43,6 +43,7 @@ void func_ovl8_80377F50(Sprite*, db4Shorts*);
 void func_ovl8_80377FE4(Sprite*, db4Shorts*, db4Shorts*);
 void func_ovl8_803780B8(Sprite*, DBMenuPosition*);
 s32 func_ovl8_8037A67C(s16*, s16*, s16*);
+void func_ovl8_80379D74(u8*, s32, Bitmap*, s16, DBMenuPosition*);
 void func_ovl8_8037A904(db4Shorts*, db4Shorts*);
 void func_ovl8_8037A9C0(db4Shorts*, s32, s32);
 void func_ovl8_8037A9F4(DBMenuPosition*, DBMenuPosition*);
@@ -594,10 +595,192 @@ void func_ovl8_803780B8(Sprite* arg0, DBMenuPosition* arg1)
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_803798A0.s")
 
 // 0x80379D74
+// NON_MATCHING: IDO generates if-chain instead of jump table for 4-case switch.
+// Frame size (0x8) and case bodies are structurally correct.
+// BLOCKER: Need to figure out what triggers IDO jump table for 4 cases.
+// With dummy cases 4-5, jump table generates but sltiu is 6 instead of 4.
+#ifdef NON_MATCHING
+void func_ovl8_80379D74(u8* arg0, s32 arg1, Bitmap* arg2, s16 arg3, DBMenuPosition* arg4)
+{
+    s16 temp_v0;
+    s16 var_a0;
+    s16 var_a1;
+    s32 temp_t0;
+    s32 var_t2;
+    u8* var_v1;
+
+    temp_v0 = arg2->width_img;
+
+    switch (arg3) {
+    default:
+        break;
+    case 1:
+        var_v1 = arg0;
+        var_a1 = 0;
+        if ((s32)arg4->h <= 0) return;
+        do {
+            var_a0 = 0;
+            if ((s32)arg4->w > 0)
+            do {
+                temp_t0 = arg4->y + var_a1;
+                if (temp_t0 & 1) {
+                    if ((arg4->x + var_a0) & 4) {
+                        var_t2 = ((u8*)arg2->buf + temp_t0 * temp_v0 + arg4->x + var_a0)[-4];
+                    } else {
+                        var_t2 = ((u8*)arg2->buf + temp_t0 * temp_v0 + arg4->x + var_a0)[4] & 0xFF;
+                    }
+                } else {
+                    var_t2 = *((u8*)arg2->buf + temp_t0 * temp_v0 + arg4->x + var_a0);
+                }
+                *var_v1 = var_t2;
+                var_a0++;
+                var_v1++;
+            } while (var_a0 < (s32)arg4->w);
+            var_a1++;
+            var_v1 += arg1 - (s32)arg4->w;
+        } while (var_a1 < (s32)arg4->h);
+        return;
+
+    case 2:
+        var_v1 = arg0;
+        var_a1 = 0;
+        if ((s32)arg4->h <= 0) return;
+        do {
+            var_a0 = 0;
+            if ((s32)arg4->w > 0)
+            do {
+                temp_t0 = arg4->y + var_a1;
+                if (temp_t0 & 1) {
+                    if ((arg4->x + var_a0) & 2) {
+                        var_t2 = ((u16*)((u8*)arg2->buf + temp_t0 * temp_v0 * 2 + arg4->x * 2 + var_a0 * 2))[-2];
+                    } else {
+                        var_t2 = ((u16*)((u8*)arg2->buf + temp_t0 * temp_v0 * 2 + arg4->x * 2 + var_a0 * 2))[2] & 0xFFFF;
+                    }
+                } else {
+                    var_t2 = *((u16*)((u8*)arg2->buf + temp_t0 * temp_v0 * 2 + arg4->x * 2 + var_a0 * 2));
+                }
+                *(u16*)var_v1 = var_t2;
+                var_a0++;
+                var_v1 += 2;
+            } while (var_a0 < (s32)arg4->w);
+            var_a1++;
+            var_v1 += (arg1 - (s32)arg4->w) * 2;
+        } while (var_a1 < (s32)arg4->h);
+        return;
+
+    case 3:
+        var_v1 = arg0;
+        var_a1 = 0;
+        if ((s32)arg4->h <= 0) break;
+        do {
+            var_a0 = 0;
+            if ((s32)arg4->w > 0)
+            do {
+                temp_t0 = arg4->y + var_a1;
+                if (temp_t0 & 1) {
+                    if ((arg4->x + var_a0) & 2) {
+                        var_t2 = ((s32*)((u8*)arg2->buf + temp_t0 * temp_v0 * 4 + arg4->x * 4 + var_a0 * 4))[-2];
+                    } else {
+                        var_t2 = ((s32*)((u8*)arg2->buf + temp_t0 * temp_v0 * 4 + arg4->x * 4 + var_a0 * 4))[2];
+                    }
+                } else {
+                    var_t2 = *((s32*)((u8*)arg2->buf + temp_t0 * temp_v0 * 4 + arg4->x * 4 + var_a0 * 4));
+                }
+                *(s32*)var_v1 = var_t2;
+                var_a0++;
+                var_v1 += 4;
+            } while (var_a0 < (s32)arg4->w);
+            var_a1++;
+            var_v1 += (arg1 - (s32)arg4->w) * 4;
+        } while (var_a1 < (s32)arg4->h);
+        break;
+    }
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_80379D74.s")
+#endif
 
 // 0x8037A0FC
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037A0FC.s")
+void func_ovl8_8037A0FC(Sprite* sprite, DBMenuPosition* dst_rect, u8* dst_buffer)
+{
+    DBMenuPosition spB0;
+    DBMenuPosition spA8;
+    DBMenuPosition spA0;
+    DBMenuPosition sp98;
+    s32 sp90;
+    s32 sp8C;
+    s32 sp88;
+    s32 sp84;
+    s32 sp78;
+    s32 sp74;
+    s32 sp70;
+    s32 sp6C;
+    s32 s0;
+    s32 s3;
+    s32 s6;
+    u8* s1;
+    u8* sp5C;
+    Bitmap* bitmap;
+
+    spB0 = *dst_rect;
+
+    if (sprite->bmsiz == 1) {
+        sp6C = 1;
+    } else if (sprite->bmsiz == 2) {
+        sp6C = 2;
+    } else {
+        sp6C = 4;
+    }
+
+    sp98.x = sp98.y = 0;
+    sp98.w = sprite->width;
+    sp98.h = sprite->height;
+
+    func_ovl8_8037A67C((s16*)&spB0, (s16*)&sp98, (s16*)&spA8);
+
+    if (func_ovl8_8037AA5C(&spA8) == 0)
+    {
+        s3 = sprite->bitmap->width;
+        s6 = sprite->bitmap->actualHeight;
+
+        sp5C = dst_buffer + (((spA8.y - spB0.y) * dst_rect->w) + (spA8.x - spB0.x)) * sp6C;
+
+        sp78 = spA8.x / s3;
+        sp74 = spA8.y / s6;
+
+        sp84 = (sprite->width / s3) + ((sprite->width % s3) != 0 ? 1 : 0);
+
+        sp8C = (spA8.w / s3) + ((spA8.w % s3) != 0 ? 1 : 0) + 1;
+
+        sp88 = (spA8.h / s6) + ((spA8.h % s6) != 0 ? 1 : 0) + 1;
+
+        for (sp90 = 0; sp90 < sp88; sp90++)
+        {
+            s1 = sp5C;
+
+            for (s0 = 0; s0 != sp8C; s0++)
+            {
+                spA0.x = (sp78 + s0) * s3;
+                spA0.y = (sp74 + sp90) * s6;
+                spA0.w = s3;
+                spA0.h = s6;
+
+                if (func_ovl8_8037A67C((s16*)&spA0, (s16*)&spA8, (s16*)&sp98) != 0)
+                {
+                    sp98.x %= s3;
+                    sp98.y %= s6;
+
+                    bitmap = sprite->bitmap + ((sp74 + sp90) * sp84) + s0 + sp78;
+
+                    func_ovl8_80379D74(s1, dst_rect->w, bitmap, sprite->bmsiz, &sp98);
+                    sp70 = sp98.h;
+                }
+                s1 += sp98.w * sp6C;
+            }
+            sp5C += sp70 * dst_rect->w * sp6C;
+        }
+    }
+}
 
 // 0x8037A5B8
 void func_ovl8_8037A5B8(Sprite* arg0, DBMenuPosition* arg1, s32 arg2)
@@ -1020,7 +1203,34 @@ s32 func_ovl8_8037B654(s32 val, char* str)
 }
 
 // 0x8037B760
+// NON_MATCHING: loop body missing 2 register-copy instructions per iteration
+// (or a0,v0 and or a2,v1 pointer temps before lbu/sb) - likely recomp scheduling difference.
+#ifdef NON_MATCHING
+void func_ovl8_8037B760(u8 *src, u8 *dst, s32 count) {
+    u8 *s;
+    u8 *d;
+
+    if (!(src < dst)) {
+        s = src;
+        d = dst;
+        while (count--) {
+            *d = *s;
+            s++;
+            d++;
+        }
+    } else {
+        s = src + count - 1;
+        d = dst + count - 1;
+        while (count--) {
+            *d = *s;
+            s--;
+            d--;
+        }
+    }
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037B760.s")
+#endif /* NON_MATCHING */
 
 // 0x8037B7F0
 s32 func_ovl8_8037B7F0(u8 *str, s32 index)

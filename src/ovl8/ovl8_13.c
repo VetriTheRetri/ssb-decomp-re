@@ -223,6 +223,7 @@ extern s32* D_8038F290_1ABAE0;
 
 extern dbUnknownS14 D_8038FB90_1AC3E0;
 extern db4Bytes D_8038FB98_1AC3E8;
+extern u8 D_8038FBA8_1AC3F8[];
 extern void func_ovl8_803798A0(Sprite*, s32*, u32, u32, db4Shorts*, s32);
 void func_ovl8_8037D000(s32);
 s32 func_ovl8_8037D28C();
@@ -612,7 +613,25 @@ void func_ovl8_8037D7D4(dbUnknown8_13 *arg0) {
 }
 
 // 0x8037D8CC
+// NON_MATCHING: src register is a2 in target but IDO always assigns v1 or a1.
+// Likely post-compilation register rename. Structure and logic match perfectly.
+#ifdef NON_MATCHING
+void func_ovl8_8037D8CC(u8* src)
+{
+    u8 *dest = D_8038FBA8_1AC3F8;
+    u8 *s;
+    u8 *d;
+    u32 n;
+    u32 i = 0xF;
+
+    do {
+        s = src++, d = dest++, n = i;
+        *d = *s;
+    } while (i--);
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D8CC.s")
+#endif /* NON_MATCHING */
 
 // 0x8037D908
 void func_ovl8_8037D908(dbUnknownS14* arg0)

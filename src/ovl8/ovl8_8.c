@@ -1014,33 +1014,36 @@ void func_ovl8_803781A4(s32 bmsiz, Bitmap *src, Bitmap *dst, db4Shorts *srcRect,
 #ifdef NON_MATCHING
 void func_ovl8_803787C0(Sprite *src, Sprite *dst, DBMenuPosition *srcPos, db2Shorts *dstOffset)
 {
-    db2Shorts srcOff;
-    DBMenuPosition srcRect;
-    DBMenuPosition clipRect;
-    DBMenuPosition dstRect;
-    DBMenuPosition spE0;
-    DBMenuPosition spD8;
-    s32 srcBmWidth;
-    s32 srcBmHeight;
-    s32 srcStartTileX;
-    s32 srcStartTileY;
-    s32 srcTilesX;
-    s32 srcTilesY;
-    s32 dstTilesX;
-    s32 dstTilesY;
-    s32 dstTilesXw;
-    s32 dstTilesYh;
-    s16 dstBmWidth;
-    s16 dstBmHeight;
-    s32 rowBase;
-    s32 colBase;
-    s32 colOff;
-    s32 row_tile;
-    s32 col_tile;
-    s32 i;
-    s32 j;
-    Bitmap *srcBm;
-    Bitmap *dstBm;
+    db2Shorts srcOff;           // sp+0x6C
+    DBMenuPosition srcRect;     // sp+0xC0
+    DBMenuPosition clipRect;    // sp+0xD0 (s3)
+    DBMenuPosition dstRect;     // sp+0xC8
+    DBMenuPosition dstTileRect; // sp+0xE0
+    DBMenuPosition srcTileRect; // sp+0xD8 (s2 after reassign)
+    s32 dstBmW;                 // sp+0xA8
+    s32 dstBmH;                 // sp+0xA4
+    s32 dstTileX0;              // sp+0xA0 = srcOff.x / dstBmW
+    s32 dstTileY0;              // sp+0x9C = srcOff.y / dstBmH
+    s32 dstTilesPerRow;         // sp+0xAC = CEILDIV(dst->width, dstBmW)
+    s32 srcTileX0;              // sp+0x7C = srcRect.x / srcBmW
+    s32 srcTileY0;              // sp+0x78 = srcRect.y / srcBmH
+    s32 srcTilesPerRow;         // sp+0x88 = CEILDIV(src->width, srcBmW)
+    s32 outerTilesX;            // sp+0xB4 = CEILDIV(dstRect.w, dstBmW) + 1
+    s32 outerTilesY;            // sp+0xB0 = CEILDIV(dstRect.h, dstBmH) + 1
+    s32 innerTilesX;            // sp+0x90 = CEILDIV(dstRect.w, srcBmW) + 1
+    s32 innerTilesY;            // sp+0x8C = CEILDIV(dstRect.h, srcBmH) + 1
+    s16 srcBmW;                 // s5
+    s16 srcBmH;                 // s7
+    s32 dstPixelX;              // sp+0x64
+    s32 dstTileYIdx;            // sp+0x60
+    s32 dstPixelY;              // sp+0x5C
+    s32 rowTile;                // sp+0xB8
+    s32 colTile;                // fp
+    s32 innerY;                 // v0 / sp+0x94
+    s32 innerX;                 // s0
+    s32 srcPixelX;              // s1
+    s32 srcTileYIdx;            // s4
+    s32 srcPixelY;              // s6
 
     srcOff = *dstOffset;
     srcRect = *srcPos;
@@ -1070,137 +1073,130 @@ void func_ovl8_803787C0(Sprite *src, Sprite *dst, DBMenuPosition *srcPos, db2Sho
     dstRect.w = srcRect.w;
     dstRect.h = srcRect.h;
 
-    func_ovl8_8037A67C((s16 *)&clipRect, (s16 *)&dstRect, (s16 *)&spE0);
+    func_ovl8_8037A67C((s16 *)&clipRect, (s16 *)&dstRect, (s16 *)&dstTileRect);
 
-    srcOff.arr[0] = srcOff.arr[0] + spE0.x - dstRect.x;
-    srcOff.arr[1] = srcOff.arr[1] + spE0.y - dstRect.y;
+    srcOff.arr[0] = srcOff.arr[0] + dstTileRect.x - dstRect.x;
+    srcOff.arr[1] = srcOff.arr[1] + dstTileRect.y - dstRect.y;
 
-    spE0.x = srcOff.arr[0] - dstOffset->arr[0];
-    spE0.y = srcOff.arr[1] - dstOffset->arr[1];
+    dstTileRect.x = srcOff.arr[0] - dstOffset->arr[0];
+    dstTileRect.y = srcOff.arr[1] - dstOffset->arr[1];
 
-    if (func_ovl8_8037AA5C(&spE0) != 0)
+    if (func_ovl8_8037AA5C(&dstTileRect) != 0)
     {
         return;
     }
 
-    dstRect = spE0;
+    dstRect = dstTileRect;
     dstRect.x = srcOff.arr[0];
     dstRect.y = srcOff.arr[1];
 
-    srcBm = dst->bitmap;
-    srcBmWidth = srcBm->width;
-    srcBmHeight = srcBm->actualHeight;
+    dstBmW = dst->bitmap->width;
+    dstBmH = dst->bitmap->actualHeight;
 
-    srcStartTileX = srcRect.x / srcBmWidth;
-    srcStartTileY = srcRect.y / srcBmHeight;
+    dstTileX0 = srcOff.arr[0] / dstBmW;
+    dstTileY0 = srcOff.arr[1] / dstBmH;
 
-    dstBm = src->bitmap;
-    dstBmWidth = dstBm->width;
-    dstBmHeight = dstBm->actualHeight;
+    srcBmW = src->bitmap->width;
+    srcBmH = src->bitmap->actualHeight;
 
-    srcTilesX = src->width / srcBmWidth + ((src->width % srcBmWidth) != 0);
-    srcTilesY = src->width / srcBmWidth;
+    dstTilesPerRow = dst->width / dstBmW + ((dst->width % dstBmW) != 0);
 
-    srcStartTileX = srcRect.x / dstBmWidth;
-    srcStartTileY = srcRect.y / dstBmHeight;
+    srcTileX0 = srcRect.x / srcBmW;
+    srcTileY0 = srcRect.y / srcBmH;
 
-    srcTilesX = dst->width / dstBmWidth + ((dst->width % dstBmWidth) != 0);
+    srcTilesPerRow = src->width / srcBmW + ((src->width % srcBmW) != 0);
 
-    dstTilesXw = (dstRect.w / srcBmWidth) + ((dstRect.w % srcBmWidth) != 0) + 1;
-    dstTilesYh = (dstRect.h / srcBmHeight) + ((dstRect.h % srcBmHeight) != 0) + 1;
+    outerTilesX = dstRect.w / dstBmW + ((dstRect.w % dstBmW) != 0) + 1;
+    outerTilesY = dstRect.h / dstBmH + ((dstRect.h % dstBmH) != 0) + 1;
 
-    dstTilesX = (dst->width / dstBmWidth) + ((dst->width % dstBmWidth) != 0) + 1;
-    dstTilesY = (dstRect.h / dstBmHeight) + ((dstRect.h % dstBmHeight) != 0) + 1;
+    innerTilesX = dstRect.w / srcBmW + ((dstRect.w % srcBmW) != 0) + 1;
+    innerTilesY = dstRect.h / srcBmH + ((dstRect.h % srcBmH) != 0) + 1;
 
-    if (dstTilesY <= 0)
+    if (outerTilesY <= 0)
     {
         return;
     }
 
-    for (row_tile = 0; row_tile < dstTilesY; row_tile++)
+    for (rowTile = 0; rowTile < outerTilesY; rowTile++)
     {
-        col_tile = 0;
-        if (dstTilesXw <= 0)
+        colTile = 0;
+        if (outerTilesX <= 0)
         {
             goto next_row;
         }
 
-        rowBase = srcStartTileX * srcBmWidth;
-        colOff = (srcStartTileY + row_tile) * srcBmHeight;
+        dstPixelX = dstTileX0 * dstBmW;
+        dstTileYIdx = dstTileY0 + rowTile;
+        dstPixelY = dstTileYIdx * dstBmH;
 
         do
         {
-            spE0.x = rowBase;
-            spE0.y = colOff;
-            spE0.w = srcBmWidth;
-            spE0.h = srcBmHeight;
+            dstTileRect.x = dstPixelX;
+            dstTileRect.y = dstPixelY;
+            dstTileRect.w = dstBmW;
+            dstTileRect.h = dstBmH;
 
-            if (dstTilesYh <= 0)
+            if (innerTilesY <= 0)
             {
                 goto next_col;
             }
 
-            for (j = 0; j < dstTilesYh; j++)
+            innerY = 0;
+            do
             {
-                i = 0;
-                if (dstTilesX <= 0)
+                innerX = 0;
+                if (innerTilesX <= 0)
                 {
-                    goto next_j;
+                    goto next_innerY;
                 }
 
-                i = 0;
-                {
-                    s32 tileBaseX = srcStartTileX * dstBmWidth;
-                    s32 tileBaseY;
-                    s32 tileY = srcStartTileY + col_tile;
-                    tileBaseY = tileY * dstBmHeight;
+                srcPixelX = srcTileX0 * srcBmW;
+                srcTileYIdx = srcTileY0 + innerY;
+                srcPixelY = srcTileYIdx * srcBmH;
 
-                    do
+                do
+                {
+                    srcTileRect.x = srcPixelX + srcOff.arr[0] - srcRect.x;
+                    srcTileRect.y = srcPixelY + srcOff.arr[1] - srcRect.y;
+                    srcTileRect.w = srcBmW;
+                    srcTileRect.h = srcBmH;
+
+                    if (func_ovl8_8037A67C((s16 *)&dstTileRect, (s16 *)&dstRect, (s16 *)&clipRect) != 0)
                     {
-                        spD8.x = tileBaseX + srcOff.arr[0] - srcRect.x;
-                        spD8.y = tileBaseY + srcOff.arr[1] - srcRect.y;
-                        spD8.w = dstBmWidth;
-                        spD8.h = dstBmHeight;
-
-                        if (func_ovl8_8037A67C((s16 *)&spE0, (s16 *)&dstRect, (s16 *)&clipRect) != 0)
+                        if (func_ovl8_8037A67C((s16 *)&clipRect, (s16 *)&srcTileRect, (s16 *)&clipRect) != 0)
                         {
-                            if (func_ovl8_8037A67C((s16 *)&clipRect, (s16 *)&spD8, (s16 *)&clipRect) != 0)
-                            {
-                                s32 srcPixX;
-                                s32 srcPixY;
-                                s32 dstPixX;
-                                s32 dstPixY;
-                                Bitmap *srcTileBm;
-                                Bitmap *dstTileBm;
+                            srcTileRect.x = (clipRect.x - srcOff.arr[0] + srcRect.x) % srcBmW;
+                            srcTileRect.y = (clipRect.y - srcOff.arr[1] + srcRect.y) % srcBmH;
+                            clipRect.x = clipRect.x % dstBmW;
+                            clipRect.y = clipRect.y % dstBmH;
+                            clipRect.w = dstTileRect.w;
+                            clipRect.h = dstTileRect.h;
 
-                                srcPixX = (clipRect.x - srcOff.arr[0] + srcRect.x) % dstBmWidth;
-                                srcPixY = (clipRect.y - srcOff.arr[1] + srcRect.y) % dstBmHeight;
-                                dstPixX = clipRect.x % srcBmWidth;
-                                dstPixY = clipRect.y % srcBmHeight;
-
-                                clipRect.w = spE0.w;
-                                clipRect.h = spE0.h;
-
-                                srcTileBm = dst->bitmap + (tileY * dstTilesXw + j) * 1;
-                                dstTileBm = src->bitmap + ((srcStartTileY + row_tile) * srcTilesX + col_tile) * 1;
-
-                                func_ovl8_803781A4(src->bmsiz, srcTileBm, dstTileBm, &clipRect, &spD8);
-                            }
+                            func_ovl8_803781A4(
+                                src->bmsiz,
+                                &src->bitmap[srcTileYIdx * srcTilesPerRow + innerX + srcTileX0],
+                                &dst->bitmap[dstTileYIdx * dstTilesPerRow + colTile + dstTileX0],
+                                &clipRect,
+                                &srcTileRect
+                            );
                         }
+                    }
 
-                        i++;
-                        tileBaseX += dstBmWidth;
-                    } while (i < dstTilesX);
-                }
-            next_j:
-                col_tile++;
-            }
+                    innerX++;
+                    srcPixelX += srcBmW;
+                } while (innerX != innerTilesX);
+
+            next_innerY:
+                innerY++;
+            } while (innerY != innerTilesY);
+
         next_col:
-            rowBase += srcBmWidth;
-        } while (col_tile < dstTilesXw);
+            dstPixelX += dstBmW;
+            colTile++;
+        } while (colTile != outerTilesX);
 
     next_row:
-        row_tile++;
+        ;
     }
 }
 #else

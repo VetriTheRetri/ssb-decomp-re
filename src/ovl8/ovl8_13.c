@@ -220,6 +220,7 @@ extern u16 D_8038F046_1AB896;
 extern u16 D_8038F048_1AB898;
 extern u8* D_8038F050_1AB8A0;
 extern s32* D_8038F290_1ABAE0;
+extern u8 D_8038FBA8_1AC3F8[16];
 
 extern dbUnknownS14 D_8038FB90_1AC3E0;
 extern db4Bytes D_8038FB98_1AC3E8;
@@ -612,7 +613,23 @@ void func_ovl8_8037D7D4(dbUnknown8_13 *arg0) {
 }
 
 // 0x8037D8CC
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D8CC.s")
+void func_ovl8_8037D8CC(u8 *src)
+{
+    u8 *dst = D_8038FBA8_1AC3F8;
+    u8 *temp_dst = NULL;
+    s32 i = 15;
+    u8 *temp_src;
+
+    do
+    {
+        temp_dst = dst;
+        dst++;
+        temp_src = src;
+        src++;
+        *temp_dst = *temp_src;
+    }
+    while (i--);
+}
 
 // 0x8037D908
 void func_ovl8_8037D908(dbUnknownS14* arg0)

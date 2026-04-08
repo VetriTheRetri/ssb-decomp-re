@@ -1,0 +1,8 @@
+# Relocation metadata for file 282
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+extern dGRBonus1NessMap_MapHeader_0x0000 0x950
+extern dGRBonus1NessMap_MapHeader_0x0000+0x10 0x2940
+extern dGRBonus1NessMap_MapHeader_0x0000+0x14 0x2E20
+extern dGRBonus1NessMap_MapHeader_0x0000+0x40 0x2DF8
+extern dGRBonus1NessMap_MapHeader_0x0000+0x48 0x26C88

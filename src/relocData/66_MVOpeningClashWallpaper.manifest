@@ -1,0 +1,22 @@
+# Block manifest for relocData file 66 (MVOpeningClashWallpaper)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+gap_0x0000.data.c
+LL_MObjSub.data.c
+LL_DisplayList.data.c
+LL_MatAnimJoint.data.c
+LL_AnimJoint.data.c
+LR_MObjSub.data.c
+LR_DisplayList.data.c
+LR_MatAnimJoint.data.c
+LR_AnimJoint.data.c
+UL_MObjSub.data.c
+UL_DisplayList.data.c
+UL_MatAnimJoint.data.c
+UL_AnimJoint.data.c
+UR_MObjSub.data.c
+UR_DisplayList.data.c
+UR_MatAnimJoint.data.c
+UR_AnimJoint.data.c
+Cam_AnimJoint.data.c

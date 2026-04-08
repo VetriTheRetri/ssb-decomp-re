@@ -1,0 +1,5 @@
+# Block manifest for relocData file 226 (LinkSpecial1)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+Boomerang_WeaponAttributes.data.c

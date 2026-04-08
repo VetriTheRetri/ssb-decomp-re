@@ -1,0 +1,31 @@
+# Sprite manifest for relocData file 30 (MNMaps)
+# Edit to add/remove/reorder sprites; alignment is computed automatically by tools/genRelocMaster.py.
+
+PeachsCastleText
+SectorZText
+CongoJungleText
+PlanetZebesText
+HyruleCastleText
+YoshisIslandText
+SaffronCityText
+MushroomKingdomText
+DreamLandText
+Cursor
+QuestionMark
+StageSelectText
+WoodenCircle
+PlateRight
+PlateMiddle
+PlateLeft
+PeachsCastle
+SectorZ
+CongoJungle
+PlanetZebes
+HyruleCastle
+YoshisIsland
+SaffronCity
+MushroomKingdom
+DreamLand
+Tiles
+RandomSmall
+RandomBig

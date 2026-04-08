@@ -1,0 +1,27 @@
+# Sprite manifest for relocData file 82 (IFCommonGameStatus)
+# Edit to add/remove/reorder sprites; alignment is computed automatically by tools/genRelocMaster.py.
+
+OrangeLetterG
+OrangeLetterO
+OrangeExclamationMark
+BlueLetterT
+BlueLetterI
+BlueLetterM
+BlueLetterE
+BlueLetterU
+BlueLetterP
+BlueLetterS
+BlueLetterA
+BlueLetterG
+Rod
+Frame
+RodShadow
+LampRedDim
+LampYellowDim
+LampBlueDim
+LampRedLight
+LampYellowLight
+LampBlueLight
+LampRedContour
+LampYellowContour
+LampBlueContour

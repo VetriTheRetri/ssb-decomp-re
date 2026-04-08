@@ -1,0 +1,29 @@
+# Relocation metadata for file 36
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dIFCommonDigits_0_bitmaps+0x8 dIFCommonDigits_0_tex
+intern dIFCommonDigits_0+0x34 dIFCommonDigits_0_bitmaps
+intern dIFCommonDigits_1_bitmaps+0x8 dIFCommonDigits_1_tex
+intern dIFCommonDigits_1+0x34 dIFCommonDigits_1_bitmaps
+intern dIFCommonDigits_2_bitmaps+0x8 dIFCommonDigits_2_tex
+intern dIFCommonDigits_2+0x34 dIFCommonDigits_2_bitmaps
+intern dIFCommonDigits_3_bitmaps+0x8 dIFCommonDigits_3_tex
+intern dIFCommonDigits_3+0x34 dIFCommonDigits_3_bitmaps
+intern dIFCommonDigits_4_bitmaps+0x8 dIFCommonDigits_4_tex
+intern dIFCommonDigits_4+0x34 dIFCommonDigits_4_bitmaps
+intern dIFCommonDigits_5_bitmaps+0x8 dIFCommonDigits_5_tex
+intern dIFCommonDigits_5+0x34 dIFCommonDigits_5_bitmaps
+intern dIFCommonDigits_6_bitmaps+0x8 dIFCommonDigits_6_tex
+intern dIFCommonDigits_6+0x34 dIFCommonDigits_6_bitmaps
+intern dIFCommonDigits_7_bitmaps+0x8 dIFCommonDigits_7_tex
+intern dIFCommonDigits_7+0x34 dIFCommonDigits_7_bitmaps
+intern dIFCommonDigits_8_bitmaps+0x8 dIFCommonDigits_8_tex
+intern dIFCommonDigits_8+0x34 dIFCommonDigits_8_bitmaps
+intern dIFCommonDigits_9_bitmaps+0x8 dIFCommonDigits_9_tex
+intern dIFCommonDigits_9+0x34 dIFCommonDigits_9_bitmaps
+intern dIFCommonDigits_Dash_bitmaps+0x8 dIFCommonDigits_Dash_tex
+intern dIFCommonDigits_Dash+0x34 dIFCommonDigits_Dash_bitmaps
+intern dIFCommonDigits_Cross_bitmaps+0x8 dIFCommonDigits_Cross_tex
+intern dIFCommonDigits_Cross+0x34 dIFCommonDigits_Cross_bitmaps
+intern dIFCommonDigits_Colon_bitmaps+0x8 dIFCommonDigits_Colon_tex
+intern dIFCommonDigits_Colon+0x34 dIFCommonDigits_Colon_bitmaps

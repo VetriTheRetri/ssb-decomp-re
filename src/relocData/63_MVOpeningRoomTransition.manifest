@@ -1,0 +1,9 @@
+# Block manifest for relocData file 63 (MVOpeningRoomTransition)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+gap_0x0000.data.c
+Overlay_DisplayList.data.c
+Overlay_AnimJoint.data.c
+Outline_DisplayList.data.c
+Outline_AnimJoint.data.c

@@ -1,0 +1,4 @@
+/* Raw data from file offset 0x0000 to 0x0014 (20 bytes) */
+u32 dGRYosterMap_gap_0x0000[] = {
+	0x3C280096, 0x0E07080A, 0x060E0F08, 0x0C0A0C0D, 0x08080A14,
+};

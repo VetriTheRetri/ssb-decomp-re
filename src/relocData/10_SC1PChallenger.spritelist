@@ -1,0 +1,7 @@
+# Sprite manifest for relocData file 10 (SC1PChallenger)
+# Edit to add/remove/reorder sprites; alignment is computed automatically by tools/genRelocMaster.py.
+
+ChallengerText
+ApproachingText
+WarningText
+DecalExclaim

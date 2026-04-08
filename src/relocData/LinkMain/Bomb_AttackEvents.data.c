@@ -1,0 +1,4 @@
+/* Raw data from file offset 0x0088 to 0x00A8 (32 bytes) */
+u32 dLinkMain_Bomb_AttackEvents[] = {
+	0x005A4140, 0x012C0000, 0x025A4140, 0x00E60000, 0x045A4140, 0x00960000, 0x065A4140, 0x00000000,
+};

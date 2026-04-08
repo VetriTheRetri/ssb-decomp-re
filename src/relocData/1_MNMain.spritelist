@@ -1,0 +1,23 @@
+# Sprite manifest for relocData file 1 (MNMain)
+# Edit to add/remove/reorder sprites; alignment is computed automatically by tools/genRelocMaster.py.
+
+1PModeTextJap
+VsModeTextJap
+DataTextJap
+ControllerIcon
+ConsoleIcon
+DataIcon
+ModeSelectText
+SettingsIcon
+OptionTextJap
+1PModeText
+VsModeText
+DataText
+ControllerIconDark
+ConsoleIconDark
+DataIconDark
+DecalBarEdge
+SmashLogo
+DecalBarMiddle
+SettingsIconDark
+OptionText

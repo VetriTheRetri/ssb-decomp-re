@@ -89,7 +89,7 @@ def compressFile(inputBinaryPath, outputVpk0Path):
 		with open(outputVpk0Path, 'ab') as outputFile:
 			outputFile.write(targetVpk0Excess)
 
-def makeBin():
+def makeBin(overrideDir=None):
 
 	with open(f"{EXTRACTED_FILES_PATH}.csv", 'r') as tableFile:
 		csvLines = tableFile.read().split('\n')
@@ -101,7 +101,6 @@ def makeBin():
 			continue
 		row = line.split(', ')
 		relocTable.append({"isVpk0": row[0] != '0', "dataOffset": eval(row[1]), "relocInternOffset": eval(row[2]), "compressedSize": eval(row[3]), "relocExternOffset": eval(row[4]), "decompressedSize": eval(row[5])})
-		# relocTable = json.loads(tableFile.read())
 
 	with open(f"{EXTRACTED_FILES_PATH}.bin", 'wb') as targetFile:
 		# write table
@@ -115,9 +114,14 @@ def makeBin():
 			targetFile.write(item["relocExternOffset"].to_bytes(2, ENDIANNESS))
 			targetFile.write(item["decompressedSize"].to_bytes(2, ENDIANNESS))
 
-		# write files
+		# write files (prefer override dir if file exists there)
 		for i, item in enumerate(relocTable[:-1]):
-			filePath = f'{EXTRACTED_FILES_PATH}/{i}.{"vpk0" if item["isVpk0"] else "bin"}'
+			ext = "vpk0" if item["isVpk0"] else "bin"
+			overridePath = os.path.join(overrideDir, f"{i}.{ext}") if overrideDir else None
+			if overridePath and os.path.exists(overridePath):
+				filePath = overridePath
+			else:
+				filePath = f'{EXTRACTED_FILES_PATH}/{i}.{ext}'
 			with open(filePath, 'rb') as relocFile:
 				targetFile.write(relocFile.read())
 
@@ -267,7 +271,8 @@ if __name__ == "__main__":
 	elif sys.argv[1] == 'relocate':
 		relocateFile(sys.argv[2], sys.argv[3], eval(sys.argv[4]), eval(sys.argv[5]))
 	elif sys.argv[1] == 'makeBin':
-		makeBin()
+		overrideDir = sys.argv[2] if len(sys.argv) > 2 else None
+		makeBin(overrideDir)
 	elif sys.argv[1] == 'genHeader':
 		generateHeader(sys.argv[2], sys.argv[3], sys.argv[4])
 	elif sys.argv[1] == 'genDefineHeader':

@@ -1,0 +1,5 @@
+# Relocation metadata for file 204
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+extern dMarioSpecial1_Fireball_WeaponAttributes 0x1A8
+extern dMarioSpecial1_Fireball_WeaponAttributes+0x4 0xD8

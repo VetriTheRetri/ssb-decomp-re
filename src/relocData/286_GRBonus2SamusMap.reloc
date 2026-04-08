@@ -1,0 +1,9 @@
+# Relocation metadata for file 286
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+extern dGRBonus2SamusMap_MapHeader_0x0000 0x720
+extern dGRBonus2SamusMap_MapHeader_0x0000+0x10 0x1CA8
+extern dGRBonus2SamusMap_MapHeader_0x0000+0x14 0x2480
+extern dGRBonus2SamusMap_MapHeader_0x0000+0x40 0x2460
+extern dGRBonus2SamusMap_MapHeader_0x0000+0x48 0x26C88
+extern dGRBonus2SamusMap_MapHeader_0x0000+0x80 0x2910

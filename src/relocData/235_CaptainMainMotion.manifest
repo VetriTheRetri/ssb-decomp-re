@@ -1,0 +1,5 @@
+# Block manifest for relocData file 235 (CaptainMainMotion)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+SpecialHi_Vec2h.data.c

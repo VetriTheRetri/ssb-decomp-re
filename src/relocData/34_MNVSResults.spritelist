@@ -1,0 +1,14 @@
+# Sprite manifest for relocData file 34 (MNVSResults)
+# Edit to add/remove/reorder sprites; alignment is computed automatically by tools/genRelocMaster.py.
+
+TKOText
+PlaceText
+KOsText
+PtsText
+0x48c8
+1PArrow
+2PArrow
+3PArrow
+4PArrow
+Wallpaper
+Winner

@@ -1,0 +1,16 @@
+# Sprite manifest for relocData file 7 (MNVSOptions)
+# Edit to add/remove/reorder sprites; alignment is computed automatically by tools/genRelocMaster.py.
+
+HandicapTextJap
+TeamAttackTextJap
+StageSelectTextJap
+DamageTextJap
+ItemSwitchTextJap
+VSOptionsText
+Bubble
+HandicapText
+TeamAttackText
+StageSelectText
+ItemSwitchText
+DamageText
+ConsoleIconDark

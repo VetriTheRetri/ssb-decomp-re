@@ -1,0 +1,7 @@
+# Block manifest for relocData file 45 (LBTransitionSudare1)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+gap_0x0000.data.c
+DObjDesc_0x74A8.dobjdesc.c
+AnimJoint_0x7660.data.c

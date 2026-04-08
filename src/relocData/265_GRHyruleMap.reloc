@@ -1,0 +1,9 @@
+# Relocation metadata for file 265
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+extern dGRHyruleMap_MapHeader_0x0014 0x4588
+extern dGRHyruleMap_MapHeader_0x0014+0x10 0x5700
+extern dGRHyruleMap_MapHeader_0x0014+0x30 0x66A8
+extern dGRHyruleMap_MapHeader_0x0014+0x40 0x599C
+extern dGRHyruleMap_MapHeader_0x0014+0x48 0x26C88
+intern dGRHyruleMap_MapHeader_0x0014+0x84 dGRHyruleMap_gap_0x0000

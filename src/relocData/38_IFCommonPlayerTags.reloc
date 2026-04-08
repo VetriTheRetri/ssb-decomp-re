@@ -1,0 +1,15 @@
+# Relocation metadata for file 38
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dIFCommonPlayerTags_1P_bitmaps+0x8 dIFCommonPlayerTags_1P_tex
+intern dIFCommonPlayerTags_1P+0x34 dIFCommonPlayerTags_1P_bitmaps
+intern dIFCommonPlayerTags_2P_bitmaps+0x8 dIFCommonPlayerTags_2P_tex
+intern dIFCommonPlayerTags_2P+0x34 dIFCommonPlayerTags_2P_bitmaps
+intern dIFCommonPlayerTags_3P_bitmaps+0x8 dIFCommonPlayerTags_3P_tex
+intern dIFCommonPlayerTags_3P+0x34 dIFCommonPlayerTags_3P_bitmaps
+intern dIFCommonPlayerTags_4P_bitmaps+0x8 dIFCommonPlayerTags_4P_tex
+intern dIFCommonPlayerTags_4P+0x34 dIFCommonPlayerTags_4P_bitmaps
+intern dIFCommonPlayerTags_CP_bitmaps+0x8 dIFCommonPlayerTags_CP_tex
+intern dIFCommonPlayerTags_CP+0x34 dIFCommonPlayerTags_CP_bitmaps
+intern dIFCommonPlayerTags_Ally_bitmaps+0x8 dIFCommonPlayerTags_Ally_tex
+intern dIFCommonPlayerTags_Ally+0x34 dIFCommonPlayerTags_Ally_bitmaps

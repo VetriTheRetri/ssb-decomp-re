@@ -1,0 +1,8 @@
+# Relocation metadata for file 292
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+extern dGRBonus2PikachuMap_MapHeader_0x0000 0xD58
+extern dGRBonus2PikachuMap_MapHeader_0x0000+0x10 0x3690
+extern dGRBonus2PikachuMap_MapHeader_0x0000+0x14 0x4220
+extern dGRBonus2PikachuMap_MapHeader_0x0000+0x40 0x4204
+extern dGRBonus2PikachuMap_MapHeader_0x0000+0x48 0x26C88

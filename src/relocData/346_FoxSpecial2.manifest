@@ -1,0 +1,13 @@
+# Block manifest for relocData file 346 (FoxSpecial2)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+gap_0x0000.data.c
+Reflector.dobjdesc.c
+pad 12
+ReflectorStart_AnimJoint.data.c
+ReflectorHit_AnimJoint.data.c
+ReflectorEnd_AnimJoint.data.c
+ReflectorLoop_AnimJoint.data.c
+EntryArwingL_AnimJoint.data.c
+EntryArwingR_AnimJoint.data.c

@@ -1,0 +1,19 @@
+# Block manifest for relocData file 347 (PikachuSpecial2)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+gap_0x0000.data.c
+Unk_MObjSub.data.c
+Unk.dobjdesc.c
+pad 12
+Unk_AnimJoint.data.c
+Unk_MatAnimJoint.data.c
+ThunderShock_MObjSub.data.c
+ThunderShock.dobjdesc.c
+pad 4
+ThunderShock0_AnimJoint.data.c
+ThunderShock1_AnimJoint.data.c
+ThunderShock2_AnimJoint.data.c
+ThunderShock0_MatAnimJoint.data.c
+ThunderShock1_MatAnimJoint.data.c
+ThunderShock2_MatAnimJoint.data.c

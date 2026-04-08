@@ -1,0 +1,9 @@
+# Block manifest for relocData file 354 (YoshiSpecial2)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+gap_0x0000.data.c
+EntryEgg_MObjSub.data.c
+gap_0x0530.data.c
+EntryEgg_AnimJoint.data.c
+EntryEgg_MatAnimJoint.data.c

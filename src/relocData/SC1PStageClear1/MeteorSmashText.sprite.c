@@ -1,0 +1,33 @@
+/* Sprite: MeteorSmashText */
+
+Gfx dSC1PStageClear1_MeteorSmashText_dl[] = { gsSPEndDisplayList() };
+
+/* Texture: MeteorSmashText (86(96)x8 i4) */
+u8 dSC1PStageClear1_MeteorSmashText_tex[] = {
+    #include <SC1PStageClear1/MeteorSmashText.i4.inc.c>
+};
+
+Bitmap dSC1PStageClear1_MeteorSmashText_bitmaps[] = {
+	{ 86, 96, 0, 0, dSC1PStageClear1_MeteorSmashText_tex, 8, 0 },
+};
+
+/* Sprite: MeteorSmashText (86x8 i4) */
+Sprite dSC1PStageClear1_MeteorSmashText = {
+	0, 0,
+	86, 8,
+	1.0f, 1.0f,
+	0, 0,
+	SP_FASTCOPY | SP_TEXSHUF,
+	4660,
+	255, 255, 255, 255,
+	0, 0,
+	(int*)0x00000000,
+	0, 1,
+	1, 36,
+	8, 8,
+	4, 0,
+	(Bitmap*)dSC1PStageClear1_MeteorSmashText_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};

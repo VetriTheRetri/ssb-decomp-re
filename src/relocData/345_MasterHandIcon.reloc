@@ -1,0 +1,8 @@
+# Relocation metadata for file 345
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dMasterHandIcon_Stock_bitmaps+0x8 dMasterHandIcon_Stock_tex
+intern dMasterHandIcon_Stock+0x20 dMasterHandIcon_Stock_tex+0x88
+intern dMasterHandIcon_Stock+0x34 dMasterHandIcon_Stock_bitmaps
+intern dMasterHandIcon_FTEmblem_bitmaps+0x8 dMasterHandIcon_FTEmblem_tex
+intern dMasterHandIcon_FTEmblem+0x34 dMasterHandIcon_FTEmblem_bitmaps

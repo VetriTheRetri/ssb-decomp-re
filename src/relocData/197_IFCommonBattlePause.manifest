@@ -1,0 +1,37 @@
+# Block manifest for relocData file 197 (IFCommonBattlePause)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+gap_0x0000.data.c
+PlayerNum1P.sprite.c
+gap_0x00BC.data.c
+PlayerNum2P.sprite.c
+gap_0x017C.data.c
+PlayerNum3P.sprite.c
+gap_0x023C.data.c
+PlayerNum4P.sprite.c
+gap_0x02FC.data.c
+DecalPause.sprite.c
+gap_0x047C.data.c
+DecalPlus.sprite.c
+gap_0x051C.data.c
+DecalReset.sprite.c
+pad 12
+DecalSmashBall.sprite.c
+pad 4
+DecalRetry.sprite.c
+gap_0x086C.data.c
+DecalAButton.sprite.c
+gap_0x099C.data.c
+DecalBButton.sprite.c
+gap_0x0ACC.data.c
+DecalZTrigger.sprite.c
+gap_0x0C1C.data.c
+DecalRTrigger.sprite.c
+pad 4
+DecalArrows.sprite.c
+pad 4
+DecalControlStick.sprite.c
+pad 4
+DecalLTrigger.sprite.c
+pad 4

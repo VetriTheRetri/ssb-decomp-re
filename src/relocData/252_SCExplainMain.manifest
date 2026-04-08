@@ -1,0 +1,9 @@
+# Block manifest for relocData file 252 (SCExplainMain)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+0_KeyEvent.data.c
+1_KeyEvent.data.c
+2_KeyEvent.data.c
+3_KeyEvent.data.c
+ExplainPhase_0x1404.data.c

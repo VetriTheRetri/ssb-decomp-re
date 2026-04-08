@@ -1,0 +1,5 @@
+/* Raw data from file offset 0x00BC to 0x00E0 (36 bytes) */
+u32 dGRZebesMap_Acid_GRAttackColl[] = {
+	0x00000000, 0x00000010, 0x00000050, 0x00000082, 0x00000000, 0x0000001E, 0x00000001, 0x00000000,
+	0x00000000,
+};

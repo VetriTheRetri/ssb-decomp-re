@@ -1,0 +1,21 @@
+# Block manifest for relocData file 348 (KirbySpecial2)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+gap_0x0000.data.c
+VulcanJab.dobjdesc.c
+gap_0x0BA4.data.c
+CutterTrail.dobjdesc.c
+gap_0x0EA8.data.c
+CutterUp.dobjdesc.c
+CutterTrail_AnimJoint.data.c
+CutterUp_AnimJoint.data.c
+EntryStar.dobjdesc.c
+pad 4
+EntryStarL_AnimJoint.data.c
+EntryStarR_AnimJoint.data.c
+CutterDown.dobjdesc.c
+pad 12
+CutterDown_AnimJoint.data.c
+CutterDraw.dobjdesc.c
+pad 4

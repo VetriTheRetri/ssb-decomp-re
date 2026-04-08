@@ -1,0 +1,4 @@
+/* Raw data from file offset 0x0000 to 0x0014 (20 bytes) */
+u32 dGRInishieMap_gap_0x0000[] = {
+	0x50287800, 0x0A050A0A, 0x05080807, 0x1412080E, 0x06190A12,
+};

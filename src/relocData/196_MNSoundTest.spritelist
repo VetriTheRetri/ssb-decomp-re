@@ -1,0 +1,12 @@
+# Sprite manifest for relocData file 196 (MNSoundTest)
+# Edit to add/remove/reorder sprites; alignment is computed automatically by tools/genRelocMaster.py.
+
+MusicText
+SoundText
+VoiceText
+CapsuleRight
+ColonExitText
+ColonFadeOutText
+ColonPlayText
+SoundTestText
+StartButton

@@ -1,0 +1,20 @@
+# Sprite manifest for relocData file 4 (MNOption)
+# Edit to add/remove/reorder sprites; alignment is computed automatically by tools/genRelocMaster.py.
+
+SoundTextJap
+StereoTextJap
+MonoTextJap
+FlashingTextJap
+ScreenAdjustTextJap
+BackupClearTextJap
+WarningText
+PhotosensitivityWarningTextJap
+WarningIcon
+StereoText
+MonoText
+SoundText
+FlashingText
+ScreenAdjustText
+BackupClearText
+OptionText
+SettingsIconDark

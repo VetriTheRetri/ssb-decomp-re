@@ -1,0 +1,5 @@
+# Relocation metadata for file 226
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+extern dLinkSpecial1_Boomerang_WeaponAttributes 0x610
+extern dLinkSpecial1_Boomerang_WeaponAttributes+0x8 0x6C0

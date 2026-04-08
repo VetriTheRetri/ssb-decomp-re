@@ -1,0 +1,5 @@
+/* Raw data from file offset 0x00BC to 0x00E0 (36 bytes) */
+u32 dGRJungleMap_TaruCannThrow_HitDesc[] = {
+	0x00000003, 0x00000000, 0x0000005A, 0x00000000, 0x00000000, 0x000000B4, 0x00000000, 0x00000000,
+	0x00000000,
+};

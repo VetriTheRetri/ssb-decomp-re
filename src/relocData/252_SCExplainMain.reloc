@@ -1,0 +1,25 @@
+# Relocation metadata for file 252
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+extern dSCExplainMain_ExplainPhase_0x1404+0x8 0x10260
+extern dSCExplainMain_ExplainPhase_0x1404+0x34 0x11F60
+extern dSCExplainMain_ExplainPhase_0x1404+0x60 0x12B60
+extern dSCExplainMain_ExplainPhase_0x1404+0x8C 0x13658
+extern dSCExplainMain_ExplainPhase_0x1404+0xB8 0x139F0
+extern dSCExplainMain_ExplainPhase_0x1404+0xE4 0x14448
+extern dSCExplainMain_ExplainPhase_0x1404+0x110 0x14E30
+extern dSCExplainMain_ExplainPhase_0x1404+0x13C 0x6C58
+extern dSCExplainMain_ExplainPhase_0x1404+0x168 0x72D8
+extern dSCExplainMain_ExplainPhase_0x1404+0x194 0x7C38
+extern dSCExplainMain_ExplainPhase_0x1404+0x1C0 0x15C40
+extern dSCExplainMain_ExplainPhase_0x1404+0x1EC 0x17FE0
+extern dSCExplainMain_ExplainPhase_0x1404+0x218 0x17FE0
+extern dSCExplainMain_ExplainPhase_0x1404+0x244 0x1A440
+extern dSCExplainMain_ExplainPhase_0x1404+0x270 0x8218
+extern dSCExplainMain_ExplainPhase_0x1404+0x29C 0x1AA10
+extern dSCExplainMain_ExplainPhase_0x1404+0x2C8 0x1B468
+extern dSCExplainMain_ExplainPhase_0x1404+0x2F4 0x1B950
+extern dSCExplainMain_ExplainPhase_0x1404+0x320 0x1BEB0
+extern dSCExplainMain_ExplainPhase_0x1404+0x34C 0x1CD20
+extern dSCExplainMain_ExplainPhase_0x1404+0x378 0x8C78
+extern dSCExplainMain_ExplainPhase_0x1404+0x3A4 0x91A8

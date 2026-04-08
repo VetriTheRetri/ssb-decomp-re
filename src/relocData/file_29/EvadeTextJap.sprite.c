@@ -1,0 +1,33 @@
+/* Sprite: EvadeTextJap */
+
+Gfx dRelocFile29_EvadeTextJap_dl[] = { gsSPEndDisplayList() };
+
+/* Texture: EvadeTextJap (34(48)x12 i4) */
+u8 dRelocFile29_EvadeTextJap_tex[] = {
+    #include <file_29/EvadeTextJap.i4.inc.c>
+};
+
+Bitmap dRelocFile29_EvadeTextJap_bitmaps[] = {
+	{ 34, 48, 0, 0, dRelocFile29_EvadeTextJap_tex, 12, 0 },
+};
+
+/* Sprite: EvadeTextJap (34x12 i4) */
+Sprite dRelocFile29_EvadeTextJap = {
+	0, 0,
+	34, 12,
+	1.0f, 1.0f,
+	0, 0,
+	SP_FASTCOPY | SP_TEXSHUF,
+	4660,
+	255, 255, 255, 255,
+	0, 0,
+	(int*)0x00000000,
+	0, 1,
+	1, 36,
+	12, 12,
+	4, 0,
+	(Bitmap*)dRelocFile29_EvadeTextJap_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};

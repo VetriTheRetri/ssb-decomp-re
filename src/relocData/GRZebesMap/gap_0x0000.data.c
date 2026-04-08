@@ -1,0 +1,4 @@
+/* Raw data from file offset 0x0000 to 0x0014 (20 bytes) */
+u32 dGRZebesMap_gap_0x0000[] = {
+	0x1408C800, 0x0A050514, 0x05080C1E, 0x0F08160C, 0x0E050710,
+};

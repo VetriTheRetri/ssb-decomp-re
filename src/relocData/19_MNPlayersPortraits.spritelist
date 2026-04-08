@@ -1,0 +1,24 @@
+# Sprite manifest for relocData file 19 (MNPlayersPortraits)
+# Edit to add/remove/reorder sprites; alignment is computed automatically by tools/genRelocMaster.py.
+
+Cross
+WhiteSquare
+PortraitQuestionMark
+BlackSquare
+PortraitFireBg
+Mario
+Luigi
+Donkey
+Samus
+Fox
+Kirby
+Link
+Yoshi
+Pikachu
+Ness
+Captain
+Purin
+CaptainShadow
+LuigiShadow
+NessShadow
+PurinShadow

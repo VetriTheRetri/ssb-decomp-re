@@ -1,0 +1,11 @@
+# Relocation metadata for file 249
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dBossMainMotion_gap_0x0000+0x29C dBossMainMotion_gap_0x0000+0x1B8
+intern dBossMainMotion_gap_0x0000+0x394 dBossMainMotion_gap_0x0000+0x378
+intern dBossMainMotion_gap_0x0000+0x4E8 dBossMainMotion_gap_0x0000+0x4D0
+intern dBossMainMotion_gap_0x0000+0x770 dBossMainMotion_gap_0x0000+0x72C
+extern dBossMainMotion_BulletNormal_WeaponAttributes 0x2CB8
+extern dBossMainMotion_BulletHard_WeaponAttributes 0x2CB8
+intern dBossMainMotion_BulletHard_WeaponAttributes+0x1A4 dBossMainMotion_BulletHard_WeaponAttributes+0x17C
+intern dBossMainMotion_BulletHard_WeaponAttributes+0x1C4 dBossMainMotion_BulletHard_WeaponAttributes+0x1A8

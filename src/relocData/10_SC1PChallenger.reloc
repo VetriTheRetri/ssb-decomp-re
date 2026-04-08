@@ -1,0 +1,12 @@
+# Relocation metadata for file 10
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dSC1PChallenger_ChallengerText_bitmaps+0x8 dSC1PChallenger_ChallengerText_tex
+intern dSC1PChallenger_ChallengerText+0x34 dSC1PChallenger_ChallengerText_bitmaps
+intern dSC1PChallenger_ApproachingText_bitmaps+0x8 dSC1PChallenger_ApproachingText_tex
+intern dSC1PChallenger_ApproachingText+0x34 dSC1PChallenger_ApproachingText_bitmaps
+intern dSC1PChallenger_WarningText_bitmaps+0x8 dSC1PChallenger_WarningText_tex
+intern dSC1PChallenger_WarningText+0x34 dSC1PChallenger_WarningText_bitmaps
+intern dSC1PChallenger_DecalExclaim_bitmaps+0x8 dSC1PChallenger_DecalExclaim_tex
+intern dSC1PChallenger_DecalExclaim+0x20 dSC1PChallenger_DecalExclaim_tex+0x3C8
+intern dSC1PChallenger_DecalExclaim+0x34 dSC1PChallenger_DecalExclaim_bitmaps

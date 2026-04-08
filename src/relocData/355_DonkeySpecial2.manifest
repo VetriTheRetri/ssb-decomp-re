@@ -1,0 +1,8 @@
+# Block manifest for relocData file 355 (DonkeySpecial2)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+gap_0x0000.data.c
+EntryTaru.dobjdesc.c
+pad 4
+EntryTaru_AnimJoint.data.c

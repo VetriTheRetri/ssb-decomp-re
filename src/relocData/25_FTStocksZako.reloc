@@ -1,0 +1,6 @@
+# Relocation metadata for file 25
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTStocksZako_sprite_0x0080_bitmaps+0x8 dFTStocksZako_sprite_0x0080_tex
+intern dFTStocksZako_sprite_0x0080+0x20 dFTStocksZako_sprite_0x0080_tex+0x48
+intern dFTStocksZako_sprite_0x0080+0x34 dFTStocksZako_sprite_0x0080_bitmaps

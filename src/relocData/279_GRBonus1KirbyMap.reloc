@@ -1,0 +1,8 @@
+# Relocation metadata for file 279
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+extern dGRBonus1KirbyMap_MapHeader_0x0000 0xA60
+extern dGRBonus1KirbyMap_MapHeader_0x0000+0x10 0x2150
+extern dGRBonus1KirbyMap_MapHeader_0x0000+0x14 0x24D0
+extern dGRBonus1KirbyMap_MapHeader_0x0000+0x40 0x24AC
+extern dGRBonus1KirbyMap_MapHeader_0x0000+0x48 0x26C88

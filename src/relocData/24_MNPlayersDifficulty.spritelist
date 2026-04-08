@@ -1,0 +1,8 @@
+# Sprite manifest for relocData file 24 (MNPlayersDifficulty)
+# Edit to add/remove/reorder sprites; alignment is computed automatically by tools/genRelocMaster.py.
+
+EasyText
+HardText
+NormalText
+VeryEasyText
+VeryHardText

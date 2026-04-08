@@ -1,0 +1,4 @@
+/* Raw data from file offset 0x0000 to 0x0014 (20 bytes) */
+u32 dGRJungleMap_gap_0x0000[] = {
+	0x50783200, 0x0A05060C, 0x05080A05, 0x120D0A0A, 0x0E030714,
+};

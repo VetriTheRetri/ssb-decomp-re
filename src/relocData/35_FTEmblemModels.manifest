@@ -1,0 +1,34 @@
+# Block manifest for relocData file 35 (FTEmblemModels)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+Mario_MObjSub.data.c
+Mario.dobjdesc.c
+Mario_MatAnimJoint.data.c
+Donkey_MObjSub.data.c
+Donkey.dobjdesc.c
+Donkey_MatAnimJoint.data.c
+Metroid_MObjSub.data.c
+Metroid.dobjdesc.c
+Metroid_MatAnimJoint.data.c
+Fox_MObjSub.data.c
+Fox.dobjdesc.c
+Fox_MatAnimJoint.data.c
+Zelda_MObjSub.data.c
+Zelda.dobjdesc.c
+Zelda_MatAnimJoint.data.c
+Yoshi_MObjSub.data.c
+Yoshi.dobjdesc.c
+Yoshi_MatAnimJoint.data.c
+FZero_MObjSub.data.c
+FZero.dobjdesc.c
+FZero_MatAnimJoint.data.c
+Kirby_MObjSub.data.c
+Kirby.dobjdesc.c
+Kirby_MatAnimJoint.data.c
+PMonsters_MObjSub.data.c
+PMonsters.dobjdesc.c
+PMonsters_MatAnimJoint.data.c
+Mother_MObjSub.data.c
+Mother.dobjdesc.c
+Mother_MatAnimJoint.data.c

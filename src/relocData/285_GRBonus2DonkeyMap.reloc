@@ -1,0 +1,8 @@
+# Relocation metadata for file 285
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+extern dGRBonus2DonkeyMap_MapHeader_0x0000 0x848
+extern dGRBonus2DonkeyMap_MapHeader_0x0000+0x10 0x2D90
+extern dGRBonus2DonkeyMap_MapHeader_0x0000+0x14 0x34D0
+extern dGRBonus2DonkeyMap_MapHeader_0x0000+0x40 0x34B0
+extern dGRBonus2DonkeyMap_MapHeader_0x0000+0x48 0x26C88

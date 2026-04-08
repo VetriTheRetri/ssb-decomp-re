@@ -1,0 +1,4 @@
+/* Raw data from file offset 0x0000 to 0x0008 (8 bytes) */
+u32 dKirbyMain_gap_0x0000[] = {
+	0x00010055, 0x000202C8, /* reloc: +0x0->0x0154X, +0x4->0x0B20X */
+};

@@ -1,0 +1,13 @@
+# Relocation metadata for file 255
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+extern dGRPupupuMap_MapHeader_0x0014 0x1008
+extern dGRPupupuMap_MapHeader_0x0014+0x10 0x1CE0
+extern dGRPupupuMap_MapHeader_0x0014+0x20 0x2450
+extern dGRPupupuMap_MapHeader_0x0014+0x28 0x1F50
+extern dGRPupupuMap_MapHeader_0x0014+0x2C 0x2530
+extern dGRPupupuMap_MapHeader_0x0014+0x30 0x2BF8
+extern dGRPupupuMap_MapHeader_0x0014+0x40 0x1F34
+extern dGRPupupuMap_MapHeader_0x0014+0x48 0x26C88
+extern dGRPupupuMap_MapHeader_0x0014+0x80 0x10F0
+intern dGRPupupuMap_MapHeader_0x0014+0x84 dGRPupupuMap_gap_0x0000

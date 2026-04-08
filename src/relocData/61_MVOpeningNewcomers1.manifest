@@ -1,0 +1,11 @@
+# Block manifest for relocData file 61 (MVOpeningNewcomers1)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+gap_0x0000.data.c
+PurinShow_DisplayList.data.c
+Purin_AnimJoint.data.c
+LuigiShow_DisplayList.data.c
+Luigi_AnimJoint.data.c
+PurinHidden_DisplayList.data.c
+LuigiHidden_DisplayList.data.c

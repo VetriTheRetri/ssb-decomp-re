@@ -1,0 +1,8 @@
+# Relocation metadata for file 275
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+extern dGRBonus1LuigiMap_MapHeader_0x0000 0x950
+extern dGRBonus1LuigiMap_MapHeader_0x0000+0x10 0x1BA0
+extern dGRBonus1LuigiMap_MapHeader_0x0000+0x14 0x1F60
+extern dGRBonus1LuigiMap_MapHeader_0x0000+0x40 0x1F38
+extern dGRBonus1LuigiMap_MapHeader_0x0000+0x48 0x26C88

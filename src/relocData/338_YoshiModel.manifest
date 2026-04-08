@@ -1,0 +1,10 @@
+# Block manifest for relocData file 338 (YoshiModel)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+gap_0x0000.data.c
+gap_0xA860.data.c
+Stock.sprite.c
+pad 4
+FTEmblem.sprite.c
+pad 4

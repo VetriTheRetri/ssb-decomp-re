@@ -1,0 +1,7 @@
+# Block manifest for relocData file 40 (LBTransitionAeroplane)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+gap_0x0000.data.c
+DObjDesc_0xB3F8.dobjdesc.c
+AnimJoint_0xB710.data.c

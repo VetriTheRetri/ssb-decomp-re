@@ -1,0 +1,15 @@
+# Relocation metadata for file 356
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dMarioSpecial2_gap_0x0000+0x414 dMarioSpecial2_gap_0x0000+0x420
+intern dMarioSpecial2_gap_0x0000+0x43C dMarioSpecial2_gap_0x0000+0x8
+intern dMarioSpecial2_gap_0x0000+0x464 dMarioSpecial2_gap_0x0000+0x58
+intern dMarioSpecial2_gap_0x0000+0x484 dMarioSpecial2_gap_0x0000+0x120
+intern dMarioSpecial2_gap_0x0000+0x4FC dMarioSpecial2_gap_0x0000+0x1E0
+intern dMarioSpecial2_gap_0x0000+0x57C dMarioSpecial2_gap_0x0000+0x30
+intern dMarioSpecial2_gap_0x0000+0x5A4 dMarioSpecial2_gap_0x0000+0xA0
+intern dMarioSpecial2_gap_0x0000+0x5C4 dMarioSpecial2_gap_0x0000+0x300
+intern dMarioSpecial2_EntryDokan+0x30 dMarioSpecial2_gap_0x0000+0x3C0
+intern dMarioSpecial2_EntryDokan+0x5C dMarioSpecial2_gap_0x0000+0x4C0
+intern dMarioSpecial2_EntryDokan_AnimJoint+0x4 dMarioSpecial2_EntryDokan_AnimJoint+0xC
+intern dMarioSpecial2_EntryDokan_AnimJoint+0x8 dMarioSpecial2_EntryDokan_AnimJoint+0x18

@@ -1,0 +1,5 @@
+/* Raw data from file offset 0x11C4 to 0x11F0 (44 bytes) */
+u32 dMVOpeningRoomTransition_Outline_AnimJoint[] = {
+	0x11C00000, 0x3D4CCCCD, 0x3D4CCCCD, 0x3D4CCCCD, 0x11C00028, 0x3F800000, 0x3F800000, 0x3F800000,
+	0x00000000, 0x00000000, 0x00000000,
+};

@@ -1,0 +1,6 @@
+# Sprite manifest for relocData file 32 (MNDataCommon)
+# Edit to add/remove/reorder sprites; alignment is computed automatically by tools/genRelocMaster.py.
+
+DataHeader
+ArrowL
+ArrowR

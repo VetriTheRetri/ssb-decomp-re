@@ -120,7 +120,7 @@ ASFLAGS         := -EB -I include -march=vr4300 -mabi=32
 
 ifeq ($(VERSION),jp)
     LDFLAGS := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt \
-               -T .splat/smashbrothers_jp.ld -T symbols/jp_wip_linker.txt symbols/reloc_data_symbols.$(VERSION).txt 
+               -T .splat/smashbrothers_jp.ld -T symbols/jp_wip_linker.txt symbols/reloc_data_symbols.$(VERSION).txt
     C_FILES := $(shell find src -type f | grep \\.c$)
 	C_FILES := $(filter-out \
 			    src/mn/mncommon/mncongra.c \
@@ -133,6 +133,13 @@ else ifeq ($(VERSION),us)
 else
     $(error Unsupported VERSION "$(VERSION)")
 endif
+
+# Exclude relocData C files from normal compilation (they are compiled separately into binary blobs)
+C_FILES := $(filter-out $(wildcard src/relocData/*.c src/relocData/**/*.c),$(C_FILES))
+
+# relocData C-to-binary conversion
+-include src/relocData/converted_files.mk
+RELOC_C_FILES ?=
 OBJCOPYFLAGS    := --pad-to=0xC00000 --gap-fill=0xFF
 ASM_PROC_FLAGS  := --input-enc=utf-8 --output-enc=euc-jp --convert-statics=global-with-filename
 
@@ -349,8 +356,8 @@ endif
 
 init:
 	${MAKE} clean
-	${MAKE} extract
-	${MAKE} all
+	${MAKE} extract RELOC_DATA=$(RELOC_DATA) VERSION=$(VERSION)
+	${MAKE} all RELOC_DATA=$(RELOC_DATA) VERSION=$(VERSION)
 
 # asm-differ expected object files
 expected:
@@ -450,17 +457,159 @@ assets/%.bin: assets/%.png
 	$(V)$(PYTHON) tools/image_converter.py $< $@
 
 ifeq ($(RELOC_DATA),1)
-# Reloc data
-assets/relocData.bin: $(VPK0_FILES)
-	$(call print_2,Making reloc data binary:,relocData.bin,$(BLUE))
-	$(V)$(PYTHON) tools/relocData.py makeBin
+# Compiled relocData files go in build/assets/relocData/ as overrides.
+# Compressed files (ID < 499): build/assets/relocData/N.vpk0
+# Uncompressed files (ID >= 499): build/assets/relocData/N.bin
+RELOC_C_OVERRIDES := $(foreach f,$(RELOC_C_FILES),\
+                       $(if $(shell [ $(f) -lt 499 ] && echo yes),\
+                         $(BUILD_DIR)/assets/relocData/$(f).vpk0,\
+                         $(BUILD_DIR)/assets/relocData/$(f).bin))
 
-# Compressed files
+# Reloc data
+assets/relocData.bin: $(VPK0_FILES) $(RELOC_C_OVERRIDES)
+	$(call print_2,Making reloc data binary:,relocData.bin,$(BLUE))
+	$(V)$(PYTHON) tools/relocData.py makeBin $(BUILD_DIR)/assets/relocData
+
+# Compressed files (originals from baserom)
 .PRECIOUS: assets/relocData/%.vpk0
 assets/relocData/%.vpk0: assets/relocData/%.vpk0.bin
 	$(call print_3,Compressing File:,$<,$@)
 	$(V)$(PYTHON) tools/relocData.py compress $< $@
+
+# Compressed override files (compiled C source)
+$(BUILD_DIR)/assets/relocData/%.vpk0: $(BUILD_DIR)/assets/relocData/%.vpk0.bin
+	$(call print_3,Compressing File:,$<,$@)
+	$(V)$(PYTHON) tools/relocData.py compress $< $@
 endif
+
+# relocData C-to-binary rules
+# Source structure:
+#   src/relocData/<id>_<Name>.manifest        - block manifest (committed)
+#   src/relocData/<id>_<Name>.reloc           - relocation metadata (committed)
+#   src/relocData/<Name>/<block>.sprite.c     - sprite struct definitions (committed)
+#   src/relocData/<Name>/<block>.data.c       - raw data arrays (committed)
+#   src/relocData/<Name>/<block>.dobjdesc.c   - DObjDesc arrays (committed)
+#   src/relocData/<Name>/<block>.png          - OPTIONAL user override (gitignored)
+#
+# Build artifacts (auto-regenerated, gitignored, removed by `make clean`):
+#   build/src/relocData/<id>_<Name>.c         - master .c generated from manifest
+#   build/src/relocData/<Name>/<block>.inc.c  - raw N64 texture bytes
+#   build/src/relocData/<Name>/<block>.png    - PNG preview from binary
+
+# Per-file extract stamp: re-extracting the textures takes meaningful time, so
+# do it once per file and tracking via a stamp avoids redundant work.
+$(BUILD_DIR)/src/relocData/.extract-%.stamp: assets/relocData/%.vpk0.bin
+	@mkdir -p $(@D)
+	$(V)$(PYTHON) tools/relocSpriteTool.py extract $* >/dev/null
+	@touch $@
+
+$(BUILD_DIR)/src/relocData/.extract-%.stamp: assets/relocData/%.bin
+	@mkdir -p $(@D)
+	$(V)$(PYTHON) tools/relocSpriteTool.py extract $* >/dev/null
+	@touch $@
+
+# User PNG override: if src/relocData/<Name>/<sprite>.<fmt>.png exists, use it
+# to (re)generate the corresponding inc.c in the build directory. This rule
+# fires after the main extraction, overwriting the build/-generated inc.c.
+$(BUILD_DIR)/src/relocData/%.inc.c: src/relocData/%.png
+	@mkdir -p $(@D)
+	$(call print_3,Converting texture override:,$<,$@)
+	$(V)$(PYTHON) tools/relocSpriteTool.py png2inc $< $@
+
+define RELOC_C_RULE
+# Search for a manifest source in preference order: .manifest, .spritelist, .c
+RELOC_MANIFEST_$(1) := $$(firstword $$(wildcard src/relocData/$(1)_*.manifest src/relocData/$(1).manifest))
+RELOC_LIST_$(1) := $$(firstword $$(wildcard src/relocData/$(1)_*.spritelist src/relocData/$(1).spritelist))
+RELOC_C_$(1) := $$(firstword $$(wildcard src/relocData/$(1)_*.c src/relocData/$(1).c))
+# Subfolder name: master file basename with leading "<fid>_" stripped, fallback to "file_<fid>"
+RELOC_BASENAME_$(1) := $$(basename $$(notdir $$(or $$(RELOC_MANIFEST_$(1)),$$(RELOC_LIST_$(1)),$$(RELOC_C_$(1)))))
+RELOC_SUB_$(1) := $$(or $$(patsubst $(1)_%,%,$$(RELOC_BASENAME_$(1))),file_$(1))
+RELOC_DIR_$(1) := src/relocData/$$(RELOC_SUB_$(1))/
+RELOC_BUILD_DIR_$(1) := $$(BUILD_DIR)/src/relocData/$$(RELOC_SUB_$(1))/
+# Per-block structural files (always in src/) - master regen depends on these
+RELOC_SPRITE_DEPS_$(1) := $$(wildcard $$(RELOC_DIR_$(1))*.sprite.c) \
+                          $$(wildcard $$(RELOC_DIR_$(1))*.data.c) \
+                          $$(wildcard $$(RELOC_DIR_$(1))*.dobjdesc.c)
+# User PNG overrides in src/ - each generates a build/ inc.c
+RELOC_PNG_OVERRIDES_$(1) := $$(wildcard $$(RELOC_DIR_$(1))*.png)
+RELOC_INC_OVERRIDES_$(1) := $$(patsubst $$(RELOC_DIR_$(1))%.png,$$(RELOC_BUILD_DIR_$(1))%.inc.c,$$(RELOC_PNG_OVERRIDES_$(1)))
+# Stamp marking that the extract step has populated build/.../<sprite>.inc.c files
+RELOC_STAMP_$(1) := $$(BUILD_DIR)/src/relocData/.extract-$(1).stamp
+
+ifneq ($$(RELOC_MANIFEST_$(1)),)
+  # Rich block manifest drives the master .c
+  RELOC_MASTER_$(1) := $$(BUILD_DIR)/src/relocData/$$(RELOC_BASENAME_$(1)).c
+
+  $$(RELOC_MASTER_$(1)): $$(RELOC_MANIFEST_$(1)) $$(RELOC_SPRITE_DEPS_$(1)) $$(RELOC_STAMP_$(1)) $$(RELOC_INC_OVERRIDES_$(1))
+	$$(call print_3,Generating master from manifest:,$$<,$$@)
+	@mkdir -p $$(@D)
+	$$(V)$$(PYTHON) tools/genRelocMaster.py $$(RELOC_MANIFEST_$(1)) $$@ -Isrc/relocData -I$$(BUILD_DIR)/src/relocData
+else ifneq ($$(RELOC_LIST_$(1)),)
+  # Sprite-only .spritelist drives the master .c
+  RELOC_MASTER_$(1) := $$(BUILD_DIR)/src/relocData/$$(RELOC_BASENAME_$(1)).c
+
+  $$(RELOC_MASTER_$(1)): $$(RELOC_LIST_$(1)) $$(RELOC_SPRITE_DEPS_$(1)) $$(RELOC_STAMP_$(1)) $$(RELOC_INC_OVERRIDES_$(1))
+	$$(call print_3,Generating master from spritelist:,$$<,$$@)
+	@mkdir -p $$(@D)
+	$$(V)$$(PYTHON) tools/genRelocMaster.py $$(RELOC_LIST_$(1)) $$@ -Isrc/relocData -I$$(BUILD_DIR)/src/relocData
+else
+  # Hand-written .c master (no manifest)
+  RELOC_MASTER_$(1) := $$(RELOC_C_$(1))
+endif
+
+# Compiling depends on:
+#   - master .c (from manifest or hand-written)
+#   - structural block files (.sprite.c etc.) in src/
+#   - extract stamp (ensures build/.../inc.c files exist)
+#   - any PNG overrides (each one regenerates its build/.../inc.c)
+$$(BUILD_DIR)/src/relocData/$(1).o: $$(RELOC_MASTER_$(1)) $$(RELOC_SPRITE_DEPS_$(1)) $$(RELOC_STAMP_$(1)) $$(RELOC_INC_OVERRIDES_$(1))
+	$$(call print_3,Compiling relocData:,$$<,$$@)
+	@mkdir -p $$(@D)
+	$$(V)$$(IDO7) $$(CCFLAGS) $$(OPTFLAGS) -Isrc/relocData -I$$(BUILD_DIR)/src/relocData -o $$@ $$<
+
+# .reloc file path (sibling of either the master .c or the manifest)
+RELOC_RELOC_$(1) := src/relocData/$$(RELOC_BASENAME_$(1)).reloc
+
+# Compiled .data section goes to build/ to avoid overwriting the original asset.
+# Compressed files (ID < 499) go to .vpk0.bin which then gets compressed to .vpk0;
+# uncompressed files (ID >= 499) go directly to .bin.
+$$(BUILD_DIR)/assets/relocData/$(1).vpk0.bin: $$(BUILD_DIR)/src/relocData/$(1).o
+	$$(call print_3,Extracting relocData .data:,$$<,$$@)
+	@mkdir -p $$(@D)
+	$$(V)$$(OBJCOPY) -O binary --only-section=.data $$< $$@
+	$$(V)cp assets/relocData/$(1).vpk0.vpk0_config $$(BUILD_DIR)/assets/relocData/$(1).vpk0.vpk0_config 2>/dev/null || true
+	$$(V)if [ -f $$(RELOC_RELOC_$(1)) ]; then \
+		$$(PYTHON) tools/fixRelocChain.py $$@ $$(RELOC_RELOC_$(1)) $$< --file-id $(1); \
+	fi
+
+$$(BUILD_DIR)/assets/relocData/$(1).bin: $$(BUILD_DIR)/src/relocData/$(1).o
+	$$(call print_3,Extracting relocData .data:,$$<,$$@)
+	@mkdir -p $$(@D)
+	$$(V)$$(OBJCOPY) -O binary --only-section=.data $$< $$@
+	$$(V)if [ -f $$(RELOC_RELOC_$(1)) ]; then \
+		$$(PYTHON) tools/fixRelocChain.py $$@ $$(RELOC_RELOC_$(1)) $$< --file-id $(1); \
+	fi
+endef
+
+$(foreach f,$(RELOC_C_FILES),$(eval $(call RELOC_C_RULE,$(f))))
+
+# verify-reloc: compare generated binaries against originals (run after make)
+.PHONY: verify-reloc
+verify-reloc:
+	@$(PYTHON) tools/verifyRelocOffsets.py $(RELOC_C_FILES)
+
+# relocData texture management
+# extract-textures: extract PNG previews from relocData sprite files
+.PHONY: extract-textures
+extract-textures:
+	@for f in $(RELOC_C_FILES); do \
+		$(PYTHON) tools/relocSpriteTool.py extract $$f; \
+	done
+
+# Convert a single PNG back to .inc.c: make png2inc PNG=path/to/Sprite.ia8.png INC=path/to/output.inc.c
+.PHONY: png2inc
+png2inc:
+	$(V)$(PYTHON) tools/relocSpriteTool.py png2inc $(PNG) $(INC)
 
 -include $(DEP_FILES)
 

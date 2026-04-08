@@ -1,0 +1,4 @@
+/* Raw data from file offset 0x0000 to 0x0014 (20 bytes) */
+u32 dGRZakoMap_gap_0x0000[] = {
+	0x46287800, 0x1B09070A, 0x050C1608, 0x0A070A0C, 0x0A03081E,
+};

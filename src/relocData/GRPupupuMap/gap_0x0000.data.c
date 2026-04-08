@@ -1,0 +1,4 @@
+/* Raw data from file offset 0x0000 to 0x0014 (20 bytes) */
+u32 dGRPupupuMap_gap_0x0000[] = {
+	0x46287800, 0x1404060E, 0x070C1607, 0x0A070A09, 0x0E050514,
+};

@@ -1,0 +1,6 @@
+# Block manifest for relocData file 244 (PikachuSpecial1)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+ThunderJoltAir_WeaponAttributes.data.c
+ThunderJoltGround_WeaponAttributes.data.c

@@ -1,0 +1,16 @@
+# Relocation metadata for file 166
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dIFCommonPlayer_Magnify_DisplayList+0x24 dIFCommonPlayer_gap_0x0000
+intern dIFCommonPlayer_Magnify_DisplayList+0x9C dIFCommonPlayer_Magnify_DisplayList+0x50
+intern dIFCommonPlayer_Magnify_DisplayList+0xE4 dIFCommonPlayer_Magnify_DisplayList+0x50
+intern dIFCommonPlayer_Magnify_DisplayList+0x12C dIFCommonPlayer_Magnify_DisplayList+0x50
+intern dIFCommonPlayer_Arrows+0x30 dIFCommonPlayer_Magnify_DisplayList+0x80
+intern dIFCommonPlayer_Arrows+0x5C dIFCommonPlayer_Magnify_DisplayList+0xC8
+intern dIFCommonPlayer_Arrows+0x88 dIFCommonPlayer_Magnify_DisplayList+0x110
+intern dIFCommonPlayer_Arrows_AnimJoint+0x4 dIFCommonPlayer_Arrows_AnimJoint+0x10
+intern dIFCommonPlayer_Arrows_AnimJoint+0x8 dIFCommonPlayer_Arrows_AnimJoint+0x24
+intern dIFCommonPlayer_Arrows_AnimJoint+0xC dIFCommonPlayer_Arrows_AnimJoint+0x38
+intern dIFCommonPlayer_Arrows_AnimJoint+0x20 dIFCommonPlayer_Arrows_AnimJoint+0x10
+intern dIFCommonPlayer_Arrows_AnimJoint+0x34 dIFCommonPlayer_Arrows_AnimJoint+0x24
+intern dIFCommonPlayer_Arrows_AnimJoint+0x44 dIFCommonPlayer_Arrows_AnimJoint+0x38

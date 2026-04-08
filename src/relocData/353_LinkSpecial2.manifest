@@ -1,0 +1,20 @@
+# Block manifest for relocData file 353 (LinkSpecial2)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+gap_0x0000.data.c
+EntryWave_MObjSub.data.c
+EntryWave.dobjdesc.c
+gap_0x047C.data.c
+EntryBeam_MObjSub.data.c
+EntryBeam.dobjdesc.c
+pad 4
+EntryWave_AnimJoint.data.c
+EntryBeam_AnimJoint.data.c
+EntryWave_MatAnimJoint.data.c
+EntryBeam_MatAnimJoint.data.c
+SpinAttack_MObjSub.data.c
+SpinAttack.dobjdesc.c
+pad 12
+SpinAttack_AnimJoint.data.c
+SpinAttack_MatAnimJoint.data.c

@@ -1,0 +1,13 @@
+# Block manifest for relocData file 349 (SamusSpecial2)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+gap_0x0000.data.c
+GrappleBeam_MObjSub.data.c
+GrappleBeam.dobjdesc.c
+pad 12
+GrappleBeam_AnimJoint.data.c
+GrappleBeam_MatAnimJoint.data.c
+EntryPoint.dobjdesc.c
+pad 12
+EntryPoint_AnimJoint.data.c

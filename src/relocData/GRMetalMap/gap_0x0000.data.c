@@ -1,0 +1,4 @@
+/* Raw data from file offset 0x0000 to 0x0014 (20 bytes) */
+u32 dGRMetalMap_gap_0x0000[] = {
+	0x3C287800, 0x0100060A, 0x050C1608, 0x0A070A0A, 0x0A050512,
+};

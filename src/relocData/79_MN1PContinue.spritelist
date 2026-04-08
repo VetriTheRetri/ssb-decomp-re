@@ -1,0 +1,10 @@
+# Sprite manifest for relocData file 79 (MN1PContinue)
+# Edit to add/remove/reorder sprites; alignment is computed automatically by tools/genRelocMaster.py.
+
+ContinueText
+YesText
+NoText
+Cursor
+Room
+Spotlight
+Shadow

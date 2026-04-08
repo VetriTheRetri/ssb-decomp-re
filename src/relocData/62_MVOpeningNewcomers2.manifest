@@ -1,0 +1,11 @@
+# Block manifest for relocData file 62 (MVOpeningNewcomers2)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+gap_0x0000.data.c
+CaptainShow_DisplayList.data.c
+Captain_AnimJoint.data.c
+NessShow_DisplayList.data.c
+Ness_AnimJoint.data.c
+CaptainHidden_DisplayList.data.c
+NessHidden_DisplayList.data.c

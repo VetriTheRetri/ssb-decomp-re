@@ -1,0 +1,22 @@
+# Sprite manifest for relocData file 6 (MNVSMode)
+# Edit to add/remove/reorder sprites; alignment is computed automatically by tools/genRelocMaster.py.
+
+VSStartTextJap
+BattleTextJap
+TimeBasedTextJap
+StockTextJap
+TeamTextJap
+TimeLimitTextJap
+RemaningPlayersTextJap
+MatchOptionsTextJap
+VSStartText
+RulePeriodText
+TimeText
+StockText
+TeamText
+TimePeriodText
+MinText
+StockPeriodText
+VSOptionsText
+ConsoleIconDark
+VSText

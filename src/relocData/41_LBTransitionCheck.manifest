@@ -1,0 +1,7 @@
+# Block manifest for relocData file 41 (LBTransitionCheck)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+gap_0x0000.data.c
+DObjDesc_0x3E80.dobjdesc.c
+AnimJoint_0x4038.data.c

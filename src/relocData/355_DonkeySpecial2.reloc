@@ -1,0 +1,11 @@
+# Relocation metadata for file 355
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dDonkeySpecial2_gap_0x0000+0x67C dDonkeySpecial2_gap_0x0000+0x30
+intern dDonkeySpecial2_gap_0x0000+0x6AC dDonkeySpecial2_gap_0x0000+0x260
+intern dDonkeySpecial2_gap_0x0000+0x6CC dDonkeySpecial2_gap_0x0000+0x460
+intern dDonkeySpecial2_gap_0x0000+0x70C dDonkeySpecial2_gap_0x0000+0x8
+intern dDonkeySpecial2_gap_0x0000+0x734 dDonkeySpecial2_gap_0x0000+0x58
+intern dDonkeySpecial2_gap_0x0000+0x754 dDonkeySpecial2_gap_0x0000+0x500
+intern dDonkeySpecial2_EntryTaru+0x30 dDonkeySpecial2_gap_0x0000+0x620
+intern dDonkeySpecial2_EntryTaru_AnimJoint+0x4 dDonkeySpecial2_EntryTaru_AnimJoint+0x8

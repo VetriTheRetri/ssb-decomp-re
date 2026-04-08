@@ -20,11 +20,11 @@ COMPRESSED_FILE_COUNT = 499
 
 
 def get_original_path(file_id):
-    """Get the path to the original decompressed binary."""
-    if file_id < COMPRESSED_FILE_COUNT:
-        return os.path.join(EXTRACTED_FILES_PATH, f"{file_id}.vpk0.bin")
-    else:
-        return os.path.join(EXTRACTED_FILES_PATH, f"{file_id}.bin")
+    """Get the path to the original decompressed binary, version-agnostic."""
+    vpk0_path = os.path.join(EXTRACTED_FILES_PATH, f"{file_id}.vpk0.bin")
+    if os.path.exists(vpk0_path):
+        return vpk0_path
+    return os.path.join(EXTRACTED_FILES_PATH, f"{file_id}.bin")
 
 
 def verify_file(file_id):

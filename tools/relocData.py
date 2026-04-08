@@ -71,14 +71,35 @@ def extract(relocFileDescriptionsFilePath):
 				with open(targetFilePath, 'wb') as targetFile:
 					targetFile.write(fileBytes)
 
+def getVpk0ExcessPath():
+	"""Pick the right vpk0_excess_bytes file based on the currently extracted
+	relocData.csv. We sniff the JP-vs-US distinction by looking at the row count
+	in the CSV (US has 2132 + 1 sentinel, JP has 2107 + 1).
+	"""
+	scriptDir = os.path.dirname(os.path.abspath(__file__))
+	csvPath = os.path.join(os.path.dirname(scriptDir), "assets", "relocData.csv")
+	if os.path.exists(csvPath):
+		with open(csvPath) as f:
+			rowCount = sum(1 for _ in f) - 1  # minus header
+		# JP has 2108 rows (2107 files + sentinel), US has 2133
+		if rowCount == 2108:
+			jpPath = os.path.join(scriptDir, "vpk0_excess_bytes.jp.txt")
+			if os.path.exists(jpPath):
+				return jpPath
+	# Fallback to the default (US) file
+	return VPK0_EXCESS_PATH
+
+
 def compressFile(inputBinaryPath, outputVpk0Path):
 	subprocess.run([VPK0_BIN_PATH, 'c', inputBinaryPath, outputVpk0Path])
 	targetFileNameNoExt = os.path.basename(outputVpk0Path).split('.')[0]
 	targetVpk0Excess = None
 	foundExcess = False
 
-	with open(VPK0_EXCESS_PATH, 'r') as vpk0ExcessFile:
+	with open(getVpk0ExcessPath(), 'r') as vpk0ExcessFile:
 		for line in vpk0ExcessFile.read().split('\n'):
+			if ' - ' not in line:
+				continue
 			fileNameNoExt, targetVpk0Excess = line.split(' - ')
 			if fileNameNoExt == targetFileNameNoExt:
 				targetVpk0Excess = bytearray.fromhex(targetVpk0Excess)

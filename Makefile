@@ -24,9 +24,15 @@ TARGET  := smashbrothers
 # Default extra link dependencies (US build)
 EXTRA_LINK_DEPS := symbols/not_found.txt symbols/linker_constants.txt build/assets/relocData.o
 
-# Skip reloc-related deps for JP build
+# JP build is WIP - many C-side symbols still need to be mapped, so by default
+# we skip the relocData link dep. With RELOC_DATA=1, the JP build still attempts
+# to include relocData.o (so the relocData side of the pipeline can be tested).
 ifeq ($(VERSION),jp)
-	EXTRA_LINK_DEPS := symbols/jp_wip_linker.txt .splat/smashbrothers_jp.ld
+  ifeq ($(RELOC_DATA),1)
+    EXTRA_LINK_DEPS := symbols/jp_wip_linker.txt .splat/smashbrothers_jp.ld build/assets/relocData.o
+  else
+    EXTRA_LINK_DEPS := symbols/jp_wip_linker.txt .splat/smashbrothers_jp.ld
+  endif
 endif
 
 # Disable dependency generation for decomp-permuter
@@ -137,9 +143,24 @@ endif
 # Exclude relocData C files from normal compilation (they are compiled separately into binary blobs)
 C_FILES := $(filter-out $(wildcard src/relocData/*.c src/relocData/**/*.c),$(C_FILES))
 
-# relocData C-to-binary conversion
--include src/relocData/converted_files.mk
+# relocData C-to-binary conversion - per-version manifest of converted files.
+# Loads converted_files.<version>.mk if it exists, falls back to converted_files.mk
+# for backwards compatibility (the unversioned file is treated as US by default).
+-include src/relocData/converted_files.$(VERSION).mk
+ifndef RELOC_C_FILES
+  ifeq ($(VERSION),us)
+    -include src/relocData/converted_files.mk
+  endif
+endif
 RELOC_C_FILES ?=
+
+# Generate an id->name map for the active version so we can find manifests by
+# name when JP/US file ids differ. The on-disk manifest filename uses whichever
+# version's id existed when it was first committed (typically US), so we glob
+# *_<Name>.manifest as a fallback.
+RELOC_NAMES_MK := build/reloc_names.$(VERSION).mk
+$(shell mkdir -p build && python3 tools/genRelocNamesMk.py tools/relocFileDescriptions.$(VERSION).txt > $(RELOC_NAMES_MK))
+include $(RELOC_NAMES_MK)
 OBJCOPYFLAGS    := --pad-to=0xC00000 --gap-fill=0xFF
 ASM_PROC_FLAGS  := --input-enc=utf-8 --output-enc=euc-jp --convert-statics=global-with-filename
 
@@ -163,7 +184,10 @@ S_BSS_FILES    := $(shell find asm -type f | grep \\.bss\\.s$)
 PNG_FILES      := $(shell find assets -type f | grep \\.png$)
 BIN_FILES      := $(shell find assets -type f | grep \\.bin$ | grep -v /relocData/) \
                   $(foreach f,$(PNG_FILES:.png=.bin),$f)
-VPK0_FILES     := $(shell for i in {0..498} ; do echo assets/relocData/$$i.vpk0 ; done) # first 499 files are compressed
+# The number of compressed (vpk0) relocData files differs by version (US: 499,
+# JP: 474). Detect from the filesystem so the same Makefile works for both.
+VPK0_FILES     := $(wildcard assets/relocData/*.vpk0.bin)
+VPK0_FILES     := $(VPK0_FILES:.vpk0.bin=.vpk0)
 
 O_FILES        := $(foreach f,$(C_FILES:.c=.o),$(BUILD_DIR)/$f) \
                   $(foreach f,$(S_TEXT_FILES:.s=.o),$(BUILD_DIR)/$f) \
@@ -311,7 +335,14 @@ DEP_FILES := $(O_FILES:.o=.d)
 $(shell mkdir -p $(BUILD_DIR)/asm)
 $(shell mkdir -p $(BUILD_DIR)/src)
 $(shell mkdir -p $(BUILD_DIR)/assets)
-$(shell [ -f include/reloc_data.h ] || $(PYTHON) tools/genRelocSymbols.py ./tools/relocFileDescriptions.$(VERSION).txt ./include/reloc_data.h ./symbols/reloc_data_symbols.$(VERSION).txt > /dev/null) # generate if not there
+# Bootstrap reloc_data.h and the version-specific symbols file at parse time.
+# Both files are gitignored, and the version-specific symbols file ensures we
+# regenerate when switching between US and JP builds. We also pass the active
+# converted-files list so the bootstrap output already reflects which files
+# get manifest-computed offsets vs description offsets — without this, the
+# proper rule below would never re-fire (its outputs would already exist and
+# be newer than its dependencies) and we'd link against the wrong values.
+$(shell ([ -f include/reloc_data.h ] && [ -f symbols/reloc_data_symbols.$(VERSION).txt ]) || $(PYTHON) tools/genRelocSymbols.py ./tools/relocFileDescriptions.$(VERSION).txt ./include/reloc_data.h ./symbols/reloc_data_symbols.$(VERSION).txt --converted-files "$(RELOC_C_FILES)" > /dev/null)
 
 # ----- Targets ------
 
@@ -346,6 +377,15 @@ clean:
 extract:
 	rm -r -f asm
 	rm -r -f assets
+	# Drop generated symbols/header from any previous version build so the
+	# parse-time bootstrap regenerates for the version we're extracting now.
+	rm -f include/reloc_data.h symbols/reloc_data_symbols.us.txt symbols/reloc_data_symbols.jp.txt
+	# Drop encoded credits files too — they're generated from the version-
+	# specific .txt source but make can't tell which version they came from.
+	rm -f src/credits/staff.credits.encoded src/credits/staff.credits.metadata
+	rm -f src/credits/titles.credits.encoded src/credits/titles.credits.metadata
+	rm -f src/credits/info.credits.encoded src/credits/info.credits.metadata
+	rm -f src/credits/companies.credits.encoded src/credits/companies.credits.metadata
 	$(SPLAT) $(SPLAT_YAML) $(SPLAT_FLAGS)
 
 	$(PYTHON) tools/relocData.py extractAll tools/relocFileDescriptions.$(VERSION).txt
@@ -436,7 +476,7 @@ include/reloc_data.h symbols/reloc_data_symbols.$(VERSION).txt &: \
 		tools/genRelocSymbols.py tools/genRelocMaster.py \
 		$(RELOCDATA_STRUCT_FILES) $(RELOCDATA_EXTRACT_STAMPS)
 	$(call print_2,Generating reloc data header and symbol file from:,$<,$(BLUE))
-	$(V)$(PYTHON) tools/genRelocSymbols.py ./tools/relocFileDescriptions.$(VERSION).txt ./include/reloc_data.h ./symbols/reloc_data_symbols.$(VERSION).txt -Isrc/relocData -I$(BUILD_DIR)/src/relocData
+	$(V)$(PYTHON) tools/genRelocSymbols.py ./tools/relocFileDescriptions.$(VERSION).txt ./include/reloc_data.h ./symbols/reloc_data_symbols.$(VERSION).txt -Isrc/relocData -I$(BUILD_DIR)/src/relocData --converted-files "$(RELOC_C_FILES)"
 
 # Staff roll specific
 src/sc/sccommon/scstaffroll.c: src/credits/staff.credits.encoded src/credits/titles.credits.encoded src/credits/info.credits.encoded src/credits/companies.credits.encoded
@@ -468,10 +508,11 @@ assets/%.bin: assets/%.png
 
 ifeq ($(RELOC_DATA),1)
 # Compiled relocData files go in build/assets/relocData/ as overrides.
-# Compressed files (ID < 499): build/assets/relocData/N.vpk0
-# Uncompressed files (ID >= 499): build/assets/relocData/N.bin
+# Compressed files (those that have a .vpk0.bin in assets/) go through
+# vpk0 compression; uncompressed files go directly to .bin. The boundary
+# differs by version (US: 499, JP: 474), so we check the filesystem.
 RELOC_C_OVERRIDES := $(foreach f,$(RELOC_C_FILES),\
-                       $(if $(shell [ $(f) -lt 499 ] && echo yes),\
+                       $(if $(wildcard assets/relocData/$(f).vpk0.bin),\
                          $(BUILD_DIR)/assets/relocData/$(f).vpk0,\
                          $(BUILD_DIR)/assets/relocData/$(f).bin))
 
@@ -510,12 +551,12 @@ endif
 # do it once per file and tracking via a stamp avoids redundant work.
 $(BUILD_DIR)/src/relocData/.extract-%.stamp: assets/relocData/%.vpk0.bin
 	@mkdir -p $(@D)
-	$(V)$(PYTHON) tools/relocSpriteTool.py extract $* >/dev/null
+	$(V)$(PYTHON) tools/relocSpriteTool.py extract $* --version $(VERSION) >/dev/null
 	@touch $@
 
 $(BUILD_DIR)/src/relocData/.extract-%.stamp: assets/relocData/%.bin
 	@mkdir -p $(@D)
-	$(V)$(PYTHON) tools/relocSpriteTool.py extract $* >/dev/null
+	$(V)$(PYTHON) tools/relocSpriteTool.py extract $* --version $(VERSION) >/dev/null
 	@touch $@
 
 # User PNG override: if src/relocData/<Name>/<sprite>.<fmt>.png exists, use it
@@ -527,13 +568,25 @@ $(BUILD_DIR)/src/relocData/%.inc.c: src/relocData/%.png
 	$(V)$(PYTHON) tools/relocSpriteTool.py png2inc $< $@
 
 define RELOC_C_RULE
-# Search for a manifest source in preference order: .manifest, .spritelist, .c
-RELOC_MANIFEST_$(1) := $$(firstword $$(wildcard src/relocData/$(1)_*.manifest src/relocData/$(1).manifest))
-RELOC_LIST_$(1) := $$(firstword $$(wildcard src/relocData/$(1)_*.spritelist src/relocData/$(1).spritelist))
-RELOC_C_$(1) := $$(firstword $$(wildcard src/relocData/$(1)_*.c src/relocData/$(1).c))
-# Subfolder name: master file basename with leading "<fid>_" stripped, fallback to "file_<fid>"
+# Search for a manifest source in preference order: .manifest, .spritelist, .c.
+# When we know the file's name (via RELOC_NAME_$(1) from descriptions), look
+# up *only* by name — JP and US can have different files at the same id, so
+# matching by id would silently pick the wrong source. The literal id glob is
+# kept as a fallback for unnamed files that the descriptions don't label.
+RELOC_MANIFEST_$(1) := $$(firstword $$(if $$(RELOC_NAME_$(1)),\
+    $$(wildcard src/relocData/*_$$(RELOC_NAME_$(1)).manifest),\
+    $$(wildcard src/relocData/$(1)_*.manifest src/relocData/$(1).manifest)))
+RELOC_LIST_$(1) := $$(firstword $$(if $$(RELOC_NAME_$(1)),\
+    $$(wildcard src/relocData/*_$$(RELOC_NAME_$(1)).spritelist),\
+    $$(wildcard src/relocData/$(1)_*.spritelist src/relocData/$(1).spritelist)))
+RELOC_C_$(1) := $$(firstword $$(if $$(RELOC_NAME_$(1)),\
+    $$(wildcard src/relocData/*_$$(RELOC_NAME_$(1)).c),\
+    $$(wildcard src/relocData/$(1)_*.c src/relocData/$(1).c)))
+# Subfolder name: prefer the version-specific RELOC_NAME (set by reloc_names mk),
+# fall back to stripping the literal "<fid>_" prefix from the source basename, or
+# finally "file_<fid>" if neither is available.
 RELOC_BASENAME_$(1) := $$(basename $$(notdir $$(or $$(RELOC_MANIFEST_$(1)),$$(RELOC_LIST_$(1)),$$(RELOC_C_$(1)))))
-RELOC_SUB_$(1) := $$(or $$(patsubst $(1)_%,%,$$(RELOC_BASENAME_$(1))),file_$(1))
+RELOC_SUB_$(1) := $$(or $$(RELOC_NAME_$(1)),$$(patsubst $(1)_%,%,$$(RELOC_BASENAME_$(1))),file_$(1))
 RELOC_DIR_$(1) := src/relocData/$$(RELOC_SUB_$(1))/
 RELOC_BUILD_DIR_$(1) := $$(BUILD_DIR)/src/relocData/$$(RELOC_SUB_$(1))/
 # Per-block structural files (always in src/) - master regen depends on these

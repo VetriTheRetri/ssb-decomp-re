@@ -262,8 +262,17 @@ def compute_spritelist_offsets(file_id, file_name, spritelist_path,
 
 # ── Main symbol assembly ────────────────────────────────────────────────
 
-def collect_all_symbols(desc_path, reloc_dir, search_paths):
+def collect_all_symbols(desc_path, reloc_dir, search_paths, converted_ids=None):
     """Walk descriptions + manifests/spritelists, build the full symbol map.
+
+    Args:
+        converted_ids: optional set of file ids that have been converted to C
+                       source for the active version. When provided, only those
+                       files use manifest-computed offsets; all others use the
+                       description offsets verbatim. When None (or empty), every
+                       file with a manifest on disk gets computed offsets — this
+                       is the original behavior used by US builds where on-disk
+                       manifest existence already implies "converted".
 
     Returns:
         file_count: int
@@ -290,24 +299,41 @@ def collect_all_symbols(desc_path, reloc_dir, search_paths):
     converted_count = 0
     description_count = 0
 
+    import glob
+
     for fid in sorted(blocks_by_file.keys()):
         file_name = file_id_to_name.get(fid)
         descs = blocks_by_file[fid]
 
-        # Look for a manifest or spritelist for this file
+        # Decide whether to look for a manifest. When converted_ids is given,
+        # only those files get manifest-based offsets; everything else uses
+        # description offsets verbatim (its baserom binary hasn't been
+        # touched, so the offsets must remain authoritative).
+        consider_manifest = (converted_ids is None) or (fid in converted_ids)
+
         manifest_path = None
         spritelist_path = None
-        if file_name:
+        if consider_manifest and file_name:
+            # Prefer name-based lookup over the literal id pattern. JP and US
+            # can have different files at the same id, so matching by name is
+            # the only reliable way to find the right source.
             for ext, target in (('.manifest', 'manifest'), ('.spritelist', 'spritelist')):
-                candidate = os.path.join(reloc_dir, f"{fid}_{file_name}{ext}")
-                if os.path.exists(candidate):
+                candidate = None
+                matches = sorted(glob.glob(os.path.join(reloc_dir, f"*_{file_name}{ext}")))
+                if matches:
+                    candidate = matches[0]
+                else:
+                    fallback = os.path.join(reloc_dir, f"{fid}_{file_name}{ext}")
+                    if os.path.exists(fallback):
+                        candidate = fallback
+                if candidate and os.path.exists(candidate):
                     if target == 'manifest':
                         manifest_path = candidate
                     else:
                         spritelist_path = candidate
                     break
         # Also check unnamed-file forms (e.g. 29.manifest)
-        if not manifest_path and not spritelist_path:
+        if consider_manifest and not manifest_path and not spritelist_path:
             for ext, target in (('.manifest', 'manifest'), ('.spritelist', 'spritelist')):
                 candidate = os.path.join(reloc_dir, f"{fid}{ext}")
                 if os.path.exists(candidate):
@@ -387,6 +413,13 @@ def main():
                         help="Directory containing manifest/spritelist files")
     parser.add_argument("-I", dest="include_paths", action="append", default=[],
                         help="Search paths for resolving #include'd .inc.c files")
+    parser.add_argument("--converted-files", default=None,
+                        help="Space-separated list of file ids that have been "
+                             "converted to C source for the active version. "
+                             "Restricts manifest-based offset computation to "
+                             "exactly these files; everything else uses the "
+                             "description offsets verbatim. Omit for the "
+                             "legacy behavior (any on-disk manifest is used).")
     args = parser.parse_args()
 
     # Default include paths if not provided
@@ -395,8 +428,13 @@ def main():
         os.path.join(PROJECT_DIR, "build", "src", "relocData"),
     ]
 
+    converted_ids = None
+    if args.converted_files is not None:
+        converted_ids = {int(x) for x in args.converted_files.split() if x}
+
     file_count, file_id_symbols, block_symbols, converted, fallback = \
-        collect_all_symbols(args.descriptions, args.reloc_dir, search_paths)
+        collect_all_symbols(args.descriptions, args.reloc_dir, search_paths,
+                            converted_ids=converted_ids)
 
     write_outputs(file_count, file_id_symbols, block_symbols,
                   args.header, args.linker)

@@ -54,8 +54,16 @@ SP_ATTR_FLAGS = {
 # ── helpers ──────────────────────────────────────────────────────────────
 
 def get_binary_path(file_id):
-    if file_id < COMPRESSED_FILE_COUNT:
-        return os.path.join(EXTRACTED_FILES_PATH, f"{file_id}.vpk0.bin")
+    """Return the decompressed binary path for a file ID.
+
+    Compressed files (VPK0) have a `.vpk0.bin` decompressed sibling, while
+    uncompressed files just use `.bin`. The split between the two varies by
+    version (US: 0-498 compressed, JP: 0-473), so we check the filesystem
+    rather than relying on a hardcoded boundary.
+    """
+    vpk0_path = os.path.join(EXTRACTED_FILES_PATH, f"{file_id}.vpk0.bin")
+    if os.path.exists(vpk0_path):
+        return vpk0_path
     return os.path.join(EXTRACTED_FILES_PATH, f"{file_id}.bin")
 
 

@@ -44,8 +44,14 @@ BPP = {0: 4, 1: 8, 2: 16, 3: 32, 4: 2}
 
 
 def get_binary_path(file_id):
-    if file_id < COMPRESSED_FILE_COUNT:
-        return os.path.join(EXTRACTED_FILES_PATH, f"{file_id}.vpk0.bin")
+    """Return the decompressed binary path, version-agnostic.
+
+    The compressed/uncompressed boundary varies by version (US: 499, JP: 474),
+    so we check the filesystem rather than relying on a hardcoded constant.
+    """
+    vpk0_path = os.path.join(EXTRACTED_FILES_PATH, f"{file_id}.vpk0.bin")
+    if os.path.exists(vpk0_path):
+        return vpk0_path
     return os.path.join(EXTRACTED_FILES_PATH, f"{file_id}.bin")
 
 
@@ -496,6 +502,8 @@ def main():
     ext.add_argument("file_id", type=int)
     ext.add_argument("--output-dir", "-o", default=None)
     ext.add_argument("--descriptions", "-d", default=None)
+    ext.add_argument("--version", "-v", default="us",
+                     help="ROM version (us or jp). Selects relocFileDescriptions.<version>.txt")
 
     conv = sub.add_parser("png2inc", help="Convert PNG to .inc.c hex data file")
     conv.add_argument("png_path", help="Input PNG (format encoded in filename, e.g. foo.ia8.png)")
@@ -506,17 +514,19 @@ def main():
     args = parser.parse_args()
 
     if args.command == "extract":
+        # Default descriptions path comes from --version (us or jp)
+        desc_path = args.descriptions or os.path.join(
+            SCRIPT_DIR, f"relocFileDescriptions.{args.version}.txt")
         # Default output dir is build/src/relocData/<FileName>/ - generated
         # texture data is a build artifact, not part of the source tree.
         if args.output_dir:
             out_dir = args.output_dir
         else:
-            desc_path = args.descriptions or os.path.join(SCRIPT_DIR, "relocFileDescriptions.us.txt")
             file_id_to_name = parse_file_id_to_name(desc_path)
             file_name = file_id_to_name.get(args.file_id, "")
             subdir = file_name if file_name else f"file_{args.file_id}"
             out_dir = os.path.join(PROJECT_DIR, "build", "src", "relocData", subdir)
-        extract_sprites(args.file_id, out_dir, args.descriptions)
+        extract_sprites(args.file_id, out_dir, desc_path)
     elif args.command == "png2inc":
         fmt = args.format
         if fmt is None:

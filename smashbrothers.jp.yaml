@@ -1757,6 +1757,7 @@ segments:
     type: code
     start: 0x18DF30
     vram: 0x80371440
+    bss_size: 0x1580
     exclusive_ram_id: overlay_80371440
     subsegments:
       - [0x18DF30, c, ovl8/ovl8_0]

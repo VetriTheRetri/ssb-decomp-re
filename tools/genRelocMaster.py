@@ -73,13 +73,16 @@ def find_inc_file(inc_path, sprite_dir, search_paths):
     return None
 
 
-def parse_sprite_info(sprite_c_path, search_paths=()):
+def parse_sprite_info(sprite_c_path, search_paths=(), strict=True):
     """Parse a .sprite.c file and return (size, has_dl).
 
     Texture .inc.c files referenced via either quoted or angle-bracket
     #include directives get resolved through search_paths (which mirrors
     the compiler's -I flags) so the structural .sprite.c can stay decoupled
     from the build-output asset path.
+
+    With strict=False, returns (None, None) if any referenced .inc.c is
+    missing rather than calling sys.exit().
     """
     with open(sprite_c_path) as f:
         content = f.read()
@@ -96,6 +99,8 @@ def parse_sprite_info(sprite_c_path, search_paths=()):
                          content):
         inc_file = find_inc_file(m.group(1), sprite_dir, search_paths)
         if inc_file is None:
+            if not strict:
+                return (None, None)
             print(f"Error: {sprite_c_path} references missing {m.group(1)}",
                   file=sys.stderr)
             sys.exit(1)

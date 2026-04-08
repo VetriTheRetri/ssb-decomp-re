@@ -4,7 +4,7 @@ Gfx dMVOpeningSectorWallpaper_sprite_0x26C88_dl[] = { gsSPEndDisplayList() };
 
 /* Texture: sprite_0x26C88 (300x263 rgba16, 44 tiles) */
 u8 dMVOpeningSectorWallpaper_sprite_0x26C88_tex[] = {
-    #include "sprite_0x26C88.rgba16.inc.c"
+    #include <MVOpeningSectorWallpaper/sprite_0x26C88.rgba16.inc.c>
 };
 
 Bitmap dMVOpeningSectorWallpaper_sprite_0x26C88_bitmaps[] = {

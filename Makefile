@@ -311,7 +311,7 @@ DEP_FILES := $(O_FILES:.o=.d)
 $(shell mkdir -p $(BUILD_DIR)/asm)
 $(shell mkdir -p $(BUILD_DIR)/src)
 $(shell mkdir -p $(BUILD_DIR)/assets)
-$(shell [ -f include/reloc_data.h ] || $(PYTHON) tools/relocData.py genHeader ./tools/relocFileDescriptions.$(VERSION).txt ./include/reloc_data.h ./symbols/reloc_data_symbols.$(VERSION).txt) # generate if not there
+$(shell [ -f include/reloc_data.h ] || $(PYTHON) tools/genRelocSymbols.py ./tools/relocFileDescriptions.$(VERSION).txt ./include/reloc_data.h ./symbols/reloc_data_symbols.$(VERSION).txt > /dev/null) # generate if not there
 
 # ----- Targets ------
 
@@ -424,9 +424,19 @@ endif
 # patch object files compiled with mips3 to be able to link them
 	$(V)$(PYTHON) tools/patchMips3Objects.py $@
 
-include/reloc_data.h: ./tools/relocFileDescriptions.$(VERSION).txt
+# Per-block source files determine the offsets for converted reloc files,
+# so the symbols header depends on every manifest/spritelist/block file in
+# src/relocData/. The texture .inc.c files (in build/) also affect sprite
+# block sizes, so each file's extract stamp is also a dependency.
+RELOCDATA_STRUCT_FILES := $(wildcard src/relocData/*.manifest src/relocData/*.spritelist src/relocData/*/*.sprite.c src/relocData/*/*.data.c src/relocData/*/*.dobjdesc.c)
+RELOCDATA_EXTRACT_STAMPS := $(foreach f,$(RELOC_C_FILES),$(BUILD_DIR)/src/relocData/.extract-$(f).stamp)
+
+include/reloc_data.h symbols/reloc_data_symbols.$(VERSION).txt &: \
+		./tools/relocFileDescriptions.$(VERSION).txt \
+		tools/genRelocSymbols.py tools/genRelocMaster.py \
+		$(RELOCDATA_STRUCT_FILES) $(RELOCDATA_EXTRACT_STAMPS)
 	$(call print_2,Generating reloc data header and symbol file from:,$<,$(BLUE))
-	$(V)$(PYTHON) tools/relocData.py genHeader ./tools/relocFileDescriptions.$(VERSION).txt ./include/reloc_data.h ./symbols/reloc_data_symbols.$(VERSION).txt
+	$(V)$(PYTHON) tools/genRelocSymbols.py ./tools/relocFileDescriptions.$(VERSION).txt ./include/reloc_data.h ./symbols/reloc_data_symbols.$(VERSION).txt -Isrc/relocData -I$(BUILD_DIR)/src/relocData
 
 # Staff roll specific
 src/sc/sccommon/scstaffroll.c: src/credits/staff.credits.encoded src/credits/titles.credits.encoded src/credits/info.credits.encoded src/credits/companies.credits.encoded

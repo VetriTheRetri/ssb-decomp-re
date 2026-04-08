@@ -396,8 +396,9 @@ void n_alFxNew(ALFx **fx_ar, ALSynConfig *c, ALHeap *hp)
 	d->gain   = param[j++];
 
 	if (param[j]) {
-#define RANGE 2.0f
 /*	    d->rsinc     = ((f32) param[j++])/0xffffff; */
+		float RANGE = 2.0f;
+		float CONVERT = 173123.404906676f;
 		d->rsinc = ((((f32)param[j++])/1000) * RANGE)/c->outputRate;
 
 		/*
@@ -412,9 +413,7 @@ void n_alFxNew(ALFx **fx_ar, ALSynConfig *c, ALHeap *hp)
 		 * where
 		 *		120,000/ln(2) = 173123.40...
 		 */
-#define CONVERT 173123.404906676f
-#define LENGTH	(d->output - d->input)
-		d->rsgain 	 = (((f32) param[j++])/CONVERT) * LENGTH;
+		d->rsgain 	 = (((f32) param[j++])/CONVERT) * (d->output - d->input);
 		d->rsval	 = 1.0;
 		d->rsdelta	 = 0.0;
 		d->rs 	 = alHeapAlloc(hp, 1, sizeof(ALResampler));

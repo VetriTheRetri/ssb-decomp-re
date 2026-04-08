@@ -1,5 +1,6 @@
 #include "common.h"
 #include "utils.h"
+#include "libc/math.h"
 
 #include <macros.h>
 #include <string.h>

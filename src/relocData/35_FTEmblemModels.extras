@@ -1,0 +1,25 @@
+# Extra typed blocks inside file 35 (FTEmblemModels) that the descriptions
+# don't track. These all live inside what was previously emitted as the
+# `gap_0x0078.data.c` blob between Mario.mobjsub.c and Mario.dobjdesc.c.
+#
+# Format: <type> <name> <offset> [extra]
+#   - MObjSub: standalone 0x78-byte material sub-object
+#   - Vtx:     16 bytes per vertex; extra = vertex count
+#   - DataBlock: raw bytes; extra = byte length
+#   - DisplayList: F3DEX Gfx[] up to first 0xDF terminator (no extra needed)
+
+# Two more anonymous MObjSubs follow Mario's. The descriptions only label
+# the first one ("Mario @ 0x0"), but the data here is two more 0x78-byte
+# materials referenced via the pointer array at 0x170.
+MObjSub - 0x78
+MObjSub - 0xF0
+
+# 24 bytes: 8 bytes of zero pad, then a 4-entry pointer array
+# (3 reloc'd MObjSub.sprites pointers + 1 NULL).
+DataBlock MObjSubPtrArray 0x168 24
+
+# 96 vertices = 0x600 bytes of vertex pool used by the display list below.
+Vtx - 0x180 96
+
+# F3DEX display list — runs from 0x780 to its 0xDF terminator at 0x988.
+DisplayList - 0x780

@@ -93,6 +93,55 @@ def parse_file_descriptions(desc_path, file_id):
     return entries
 
 
+def parse_extras_file(file_id, file_name):
+    """Parse an optional `<id>_<Name>.extras` file in src/relocData/.
+
+    The extras file lets contributors hand-author additional typed blocks
+    that aren't tracked by the descriptions — typically when an existing
+    `gap_*.data.c` blob actually contains MObjSubs/Vtx/DisplayList data
+    that needs to be split out for editability.
+
+    Format (one block per line, # for comments):
+
+        # type   name        offset  [extra]
+        MObjSub  -           0x78
+        MObjSub  Pose1       0xF0
+        Vtx      EmblemVtx   0x180   96         # 96 vertices
+        DisplayList -        0x780
+        DataBlock PtrArray   0x168   24         # 24 raw bytes
+
+    Each line returns a tuple `(type, name, offset, extra)` where `extra`
+    is None unless the block needs a sized payload (Vtx count, DataBlock
+    byte length, etc).
+    """
+    suffix = f"_{file_name}" if file_name else ""
+    extras_path = os.path.join(PROJECT_DIR, "src", "relocData",
+                                f"{file_id}{suffix}.extras")
+    if not os.path.exists(extras_path):
+        return []
+    entries = []
+    with open(extras_path) as f:
+        for line in f:
+            # Strip inline comments
+            if '#' in line:
+                line = line[:line.index('#')]
+            line = line.strip()
+            if not line:
+                continue
+            parts = line.split()
+            if len(parts) < 3:
+                print(f"Warning: bad extras line: {line!r}", file=sys.stderr)
+                continue
+            bt = parts[0]
+            bn = parts[1]
+            bo = int(parts[2], 16) if parts[2].startswith('0x') else int(parts[2])
+            extra = None
+            if len(parts) >= 4:
+                extra = int(parts[3], 16) if parts[3].startswith('0x') else int(parts[3])
+            entries.append((bt, bn, bo, extra))
+    return entries
+
+
 def parse_file_id_to_name(desc_path):
     d = {}
     if not desc_path or not os.path.exists(desc_path):
@@ -895,10 +944,12 @@ def write_block_file(block_dir, filename, block_lines):
 
 
 def generate(file_id, data, file_name, entries, reloc_map, csv_entry,
-             extract_data=False, output_dir=None):
+             extract_data=False, output_dir=None, extras_payload=None):
     lines = []
     sym_map = SymbolMap()
     reloc_entries = []  # list of (type, ptr_label, target_label)
+    if extras_payload is None:
+        extras_payload = {}
     # Manifest entries: list of (kind, payload)
     #   ('block', filename) -> #include "subdir/filename"
     #   ('pad', n)          -> PAD(n);
@@ -1023,8 +1074,12 @@ def generate(file_id, data, file_name, entries, reloc_map, csv_entry,
         if m is None:
             return offset
 
-        name_suffix = name if name != '-' else f"MObjSub_0x{offset:04X}"
-        var_name = f"{prefix}_{name_suffix}_MObjSub"
+        if name != '-':
+            name_suffix = name
+            var_name = f"{prefix}_{name_suffix}_MObjSub"
+        else:
+            name_suffix = f"MObjSub_0x{offset:04X}"
+            var_name = f"{prefix}_{name_suffix}"
         sym_map.add(var_name, offset, offset + MOBJSUB_SIZE)
 
         # Walk every 4-byte word inside the MObjSub and emit a reloc entry
@@ -1124,8 +1179,12 @@ def generate(file_id, data, file_name, entries, reloc_map, csv_entry,
             # No terminator found — emit the whole next_offset range as raw
             return offset
 
-        name_suffix = name if name != '-' else f"DisplayList_0x{offset:04X}"
-        var_name = f"{prefix}_{name_suffix}_DisplayList"
+        if name != '-':
+            name_suffix = name
+            var_name = f"{prefix}_{name_suffix}_DisplayList"
+        else:
+            name_suffix = f"DisplayList_0x{offset:04X}"
+            var_name = f"{prefix}_{name_suffix}"
         sym_map.add(var_name, offset, end)
 
         block_lines = [f"/* DisplayList: {name} @ 0x{offset:X} ({end - offset} bytes) */"]
@@ -1163,8 +1222,12 @@ def generate(file_id, data, file_name, entries, reloc_map, csv_entry,
         size = count * VTX_SIZE
         if offset + size > len(data):
             return offset
-        name_suffix = name if name != '-' else f"Vtx_0x{offset:04X}"
-        var_name = f"{prefix}_{name_suffix}_Vtx"
+        if name != '-':
+            name_suffix = name
+            var_name = f"{prefix}_{name_suffix}_Vtx"
+        else:
+            name_suffix = f"Vtx_0x{offset:04X}"
+            var_name = f"{prefix}_{name_suffix}"
         sym_map.add(var_name, offset, offset + size)
 
         block_lines = [f"/* Vtx: {name} @ 0x{offset:X} ({count} vertices) */"]
@@ -1629,6 +1692,31 @@ def generate(file_id, data, file_name, entries, reloc_map, csv_entry,
                 emit_relocs_in_range(cursor, offset)
             cursor = emit_mobjsub_block(offset, block_name)
 
+        elif block_type == 'Vtx':
+            # Extras-only block. The 4th tuple element (count) is required —
+            # without it we can't tell where the vtx pool ends.
+            if cursor < offset:
+                emit_pad(cursor, offset)
+                emit_relocs_in_range(cursor, offset)
+            count = extras_payload.get(('Vtx', offset))
+            if count is None:
+                # Fall back to filling to next entry, assuming 16-byte stride
+                count = (next_off - offset) // VTX_SIZE
+            cursor = emit_vtx_block(offset, block_name, count)
+            emit_relocs_in_range(offset, cursor)
+
+        elif block_type == 'DataBlock':
+            # Extras-only block. The 4th tuple element is the byte size.
+            if cursor < offset:
+                emit_pad(cursor, offset)
+                emit_relocs_in_range(cursor, offset)
+            size = extras_payload.get(('DataBlock', offset))
+            end = offset + size if size else next_off
+            db_name = block_name if block_name != '-' else f"data_0x{offset:04X}"
+            emit_data_block(offset, end, db_name)
+            emit_relocs_in_range(offset, end)
+            cursor = end
+
         elif block_type == 'DisplayList':
             if cursor < offset:
                 emit_pad(cursor, offset)
@@ -1716,6 +1804,16 @@ def main():
     file_name = file_id_to_name.get(file_id, "")
     entries = parse_file_descriptions(desc_path, file_id)
 
+    # Merge in any hand-authored extras (typed blocks the descriptions don't
+    # know about — usually splits inside an existing gap_*.data.c blob).
+    extras = parse_extras_file(file_id, file_name)
+    extras_payload = {}  # (type, offset) -> extra integer (count, size, etc)
+    for bt, bn, bo, ex in extras:
+        entries.append((bt, bn, bo))
+        if ex is not None:
+            extras_payload[(bt, bo)] = ex
+    entries.sort(key=lambda x: x[2])
+
     if args.output:
         output_path = args.output
     else:
@@ -1725,7 +1823,8 @@ def main():
 
     c_source, sym_map, reloc_entries, manifest = generate(
         file_id, data, file_name, entries, reloc_map, csv_entry,
-        extract_data=args.extract_data, output_dir=output_dir)
+        extract_data=args.extract_data, output_dir=output_dir,
+        extras_payload=extras_payload)
 
     os.makedirs(output_dir, exist_ok=True)
 

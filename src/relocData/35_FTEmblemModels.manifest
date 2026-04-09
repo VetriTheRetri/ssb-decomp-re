@@ -3,7 +3,11 @@
 # The master .c file is generated from this manifest at build time.
 
 Mario.mobjsub.c
-gap_0x0078.data.c
+MObjSub_0x0078.mobjsub.c
+MObjSub_0x00F0.mobjsub.c
+MObjSubPtrArray.data.c
+Vtx_0x0180.vtx.c
+DisplayList_0x0780.dl.c
 Mario.dobjdesc.c
 Mario_MatAnimJoint.data.c
 Donkey.mobjsub.c

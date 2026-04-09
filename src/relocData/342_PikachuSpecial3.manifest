@@ -5,7 +5,8 @@
 gap_0x0000.data.c
 ThunderJoltB_AnimJoint.data.c
 ThunderJoltB_MatAnimJoint.data.c
-ThunderJolt_MObjSub.data.c
+ThunderJolt.mobjsub.c
+gap_0x2118.data.c
 ThunderJolt.dobjdesc.c
 pad 4
 ThunderJolt_AnimJoint.data.c

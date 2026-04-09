@@ -3,7 +3,8 @@
 # The master .c file is generated from this manifest at build time.
 
 gap_0x0000.data.c
-PsychicMagnet_MObjSub.data.c
+PsychicMagnet.mobjsub.c
+gap_0x0888.data.c
 PsychicMagnet.dobjdesc.c
 pad 4
 PsychicMagnet_AnimJoint.data.c

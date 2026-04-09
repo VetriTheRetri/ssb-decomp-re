@@ -1,9 +1,9 @@
 # Relocation metadata for file 22
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-intern dMNPlayersSpotlight_MObjSub_0x0408+0x4 dMNPlayersSpotlight_MObjSub_0x0408+0x80
-intern dMNPlayersSpotlight_MObjSub_0x0408+0x80 dMNPlayersSpotlight_MObjSub_0x0408+0x8
-intern dMNPlayersSpotlight_MObjSub_0x0408+0x104 dMNPlayersSpotlight_gap_0x0000+0x8
-intern dMNPlayersSpotlight_MObjSub_0x0408+0x12C dMNPlayersSpotlight_MObjSub_0x0408+0x88
-intern dMNPlayersSpotlight_MObjSub_0x0408+0x154 dMNPlayersSpotlight_MObjSub_0x0408+0xC8
-intern dMNPlayersSpotlight_DObjDesc_0x0568+0x30 dMNPlayersSpotlight_MObjSub_0x0408+0x150
+intern dMNPlayersSpotlight_MObjSub_0x0408_MObjSub+0x4 0x0488
+intern dMNPlayersSpotlight_gap_0x0480+0x8 dMNPlayersSpotlight_MObjSub_0x0408_MObjSub+0x8
+intern dMNPlayersSpotlight_gap_0x0480+0x8C dMNPlayersSpotlight_gap_0x0000+0x8
+intern dMNPlayersSpotlight_gap_0x0480+0xB4 dMNPlayersSpotlight_gap_0x0480+0x10
+intern dMNPlayersSpotlight_gap_0x0480+0xDC dMNPlayersSpotlight_gap_0x0480+0x50
+intern dMNPlayersSpotlight_DObjDesc_0x0568+0x30 dMNPlayersSpotlight_gap_0x0480+0xD8

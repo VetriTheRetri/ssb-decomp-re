@@ -3,12 +3,14 @@
 # The master .c file is generated from this manifest at build time.
 
 gap_0x0000.data.c
-Unk_MObjSub.data.c
+Unk.mobjsub.c
+gap_0x06B8.data.c
 Unk.dobjdesc.c
 pad 12
 Unk_AnimJoint.data.c
 Unk_MatAnimJoint.data.c
-ThunderShock_MObjSub.data.c
+ThunderShock.mobjsub.c
+gap_0x1418.data.c
 ThunderShock.dobjdesc.c
 pad 4
 ThunderShock0_AnimJoint.data.c

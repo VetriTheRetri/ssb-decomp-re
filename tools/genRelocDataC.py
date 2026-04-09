@@ -35,6 +35,7 @@ COMPRESSED_FILE_COUNT = 499
 SPRITE_SIZE = 68
 BITMAP_SIZE = 16
 DOBJDESC_SIZE = 44
+MOBJSUB_SIZE = 0x78
 
 TEX_FMTS = {0: "rgba", 1: "yuv", 2: "ci", 3: "ia", 4: "i"}
 TEX_SIZES = {0: "4", 1: "8", 2: "16", 3: "32", 4: "4c"}
@@ -210,18 +211,25 @@ def format_float(f_val, raw_u32):
     try:
         repacked = struct.pack('>f', float(simple))
         if struct.unpack('>I', repacked)[0] == raw_u32:
-            if '.' in simple:
+            # Strip trailing zeros from the MANTISSA only — never from the
+            # exponent. e.g. "3.680e-40" must not become "3.68e-4".
+            if 'e' in simple or 'E' in simple:
+                idx = simple.lower().index('e')
+                mantissa = simple[:idx]
+                exponent = simple[idx:]
+                if '.' in mantissa:
+                    mantissa = mantissa.rstrip('0').rstrip('.')
+                simple = mantissa + exponent
+            elif '.' in simple:
                 simple = simple.rstrip('0').rstrip('.')
-            if '.' not in simple:
+            if '.' not in simple and 'e' not in simple.lower():
                 simple += ".0"
             return simple + 'f'
     except (ValueError, OverflowError):
         pass
-    # Fall back: try Python's hex float (some IDO versions support it via -Xcpluscomm)
-    try:
-        return f"{float.fromhex(f_val.hex())}f"
-    except (ValueError, OverflowError):
-        return f"/* 0x{raw_u32:08X} */ 0.0f"
+    # Last-ditch: fall through to a comment + 0.0f. Caller is responsible for
+    # handling weird denormals via raw u32 hex emission if matching matters.
+    return f"/* 0x{raw_u32:08X} */ 0.0f"
 
 
 def format_u32_line(data, offset, words_per_line=8):
@@ -789,6 +797,74 @@ def emit_dobjdesc_array(lines, data, offset, prefix, name, next_offset, reloc_ma
     return pos
 
 
+# ── MObjSub ─────────────────────────────────────────────────────────────
+#
+# A material sub-object — fixed 0x78 bytes. Defined in src/sys/objtypes.h.
+# Pointer fields (chained via the relocation table) are at:
+#   +0x04  void **sprites
+#   +0x2C  void **palettes
+# Everything else is u8/u16/u32/f32 numeric data. Color fields stored as
+# packed u32s (SYColorPack).
+#
+# MObjSub blocks are always standalone in the descriptions (one entry per
+# offset), never adjacent — there's always padding before the next block.
+
+def parse_mobjsub(data, offset):
+    """Parse a 0x78-byte MObjSub. Returns a dict of field values, or None
+    if the offset is out of bounds.
+    """
+    if offset + MOBJSUB_SIZE > len(data):
+        return None
+    raw = data[offset:offset + MOBJSUB_SIZE]
+    # Field-by-field unpack matching the struct layout exactly so each
+    # named field maps to a known byte offset.
+    fields = {}
+    fields['pad00']      = struct.unpack('>H', raw[0x00:0x02])[0]
+    fields['fmt']        = raw[0x02]
+    fields['siz']        = raw[0x03]
+    fields['sprites']    = struct.unpack('>I', raw[0x04:0x08])[0]
+    fields['unk08']      = struct.unpack('>H', raw[0x08:0x0A])[0]
+    fields['unk0A']      = struct.unpack('>H', raw[0x0A:0x0C])[0]
+    fields['unk0C']      = struct.unpack('>H', raw[0x0C:0x0E])[0]
+    fields['unk0E']      = struct.unpack('>H', raw[0x0E:0x10])[0]
+    fields['unk10']      = struct.unpack('>i', raw[0x10:0x14])[0]
+    for fname, foff in (('trau', 0x14), ('trav', 0x18),
+                        ('scau', 0x1C), ('scav', 0x20),
+                        ('unk24', 0x24), ('unk28', 0x28)):
+        u32 = struct.unpack('>I', raw[foff:foff + 4])[0]
+        f32 = struct.unpack('>f', raw[foff:foff + 4])[0]
+        fields[fname] = f32
+        fields[fname + '_raw'] = u32
+    fields['palettes']   = struct.unpack('>I', raw[0x2C:0x30])[0]
+    fields['flags']      = struct.unpack('>H', raw[0x30:0x32])[0]
+    fields['block_fmt']  = raw[0x32]
+    fields['block_siz']  = raw[0x33]
+    fields['block_dxt']  = struct.unpack('>H', raw[0x34:0x36])[0]
+    fields['unk36']      = struct.unpack('>H', raw[0x36:0x38])[0]
+    fields['unk38']      = struct.unpack('>H', raw[0x38:0x3A])[0]
+    fields['unk3A']      = struct.unpack('>H', raw[0x3A:0x3C])[0]
+    for fname, foff in (('scrollu', 0x3C), ('scrollv', 0x40),
+                        ('unk44', 0x44), ('unk48', 0x48)):
+        u32 = struct.unpack('>I', raw[foff:foff + 4])[0]
+        f32 = struct.unpack('>f', raw[foff:foff + 4])[0]
+        fields[fname] = f32
+        fields[fname + '_raw'] = u32
+    fields['unk4C']        = struct.unpack('>I', raw[0x4C:0x50])[0]
+    fields['primcolor']    = struct.unpack('>I', raw[0x50:0x54])[0]
+    fields['prim_l']       = raw[0x54]
+    fields['prim_m']       = raw[0x55]
+    fields['prim_pad']     = struct.unpack('>H', raw[0x56:0x58])[0]
+    fields['envcolor']     = struct.unpack('>I', raw[0x58:0x5C])[0]
+    fields['blendcolor']   = struct.unpack('>I', raw[0x5C:0x60])[0]
+    fields['light1color']  = struct.unpack('>I', raw[0x60:0x64])[0]
+    fields['light2color']  = struct.unpack('>I', raw[0x64:0x68])[0]
+    fields['unk68']        = struct.unpack('>i', raw[0x68:0x6C])[0]
+    fields['unk6C']        = struct.unpack('>i', raw[0x6C:0x70])[0]
+    fields['unk70']        = struct.unpack('>i', raw[0x70:0x74])[0]
+    fields['unk74']        = struct.unpack('>i', raw[0x74:0x78])[0]
+    return fields
+
+
 # ── main generation ──────────────────────────────────────────────────────
 
 def write_block_file(block_dir, filename, block_lines):
@@ -903,6 +979,88 @@ def generate(file_id, data, file_name, entries, reloc_map, csv_entry,
             lines.extend(block_lines)
             lines.append("")
         return pos
+
+    def emit_mobjsub_block(offset, name):
+        """Emit a single 0x78-byte MObjSub as a typed C struct initializer.
+
+        Always exactly one struct (description entries are never adjacent).
+        Pointer fields (sprites, palettes) become raw u32 chain words; the
+        relocation chain rewrites them at link time.
+        """
+        m = parse_mobjsub(data, offset)
+        if m is None:
+            return offset
+
+        name_suffix = name if name != '-' else f"MObjSub_0x{offset:04X}"
+        var_name = f"{prefix}_{name_suffix}_MObjSub"
+        sym_map.add(var_name, offset, offset + MOBJSUB_SIZE)
+
+        # Walk every 4-byte word inside the MObjSub and emit a reloc entry
+        # for each word that has a target in the original reloc map. The
+        # MObjSub struct in objtypes.h labels +0x4 (sprites) and +0x2C
+        # (palettes) as pointer fields, but the actual data has many more —
+        # several `unkXX` fields turn out to be pointers in real instances
+        # (model files have relocs at +0x08, +0x0C, +0x10, +0x14, etc.).
+        # Emitting only the "named" pointers would leave the others off the
+        # chain, which would corrupt fixRelocChain's word ordering.
+        for word_off in range(0, MOBJSUB_SIZE, 4):
+            if (offset + word_off) in reloc_map:
+                emit_reloc(reloc_entries, reloc_map, sym_map,
+                           offset + word_off,
+                           f"{var_name}+0x{word_off:X}")
+
+        block_lines = [f"/* MObjSub: {name} @ 0x{offset:X} */"]
+        block_lines.append(f"MObjSub {var_name} = {{")
+        block_lines.append(f"\t0x{m['pad00']:04X},")
+        block_lines.append(f"\t0x{m['fmt']:02X}, 0x{m['siz']:02X},")
+        block_lines.append(f"\t(void**)0x{m['sprites']:08X},")
+        block_lines.append(f"\t0x{m['unk08']:04X}, 0x{m['unk0A']:04X}, "
+                           f"0x{m['unk0C']:04X}, 0x{m['unk0E']:04X},")
+        block_lines.append(f"\t{m['unk10']},")
+        block_lines.append(f"\t{format_float(m['trau'], m['trau_raw'])}, "
+                           f"{format_float(m['trav'], m['trav_raw'])},")
+        block_lines.append(f"\t{format_float(m['scau'], m['scau_raw'])}, "
+                           f"{format_float(m['scav'], m['scav_raw'])},")
+        block_lines.append(f"\t{format_float(m['unk24'], m['unk24_raw'])}, "
+                           f"{format_float(m['unk28'], m['unk28_raw'])},")
+        block_lines.append(f"\t(void**)0x{m['palettes']:08X},")
+        block_lines.append(f"\t0x{m['flags']:04X},")
+        block_lines.append(f"\t0x{m['block_fmt']:02X}, 0x{m['block_siz']:02X},")
+        block_lines.append(f"\t0x{m['block_dxt']:04X},")
+        block_lines.append(f"\t0x{m['unk36']:04X}, 0x{m['unk38']:04X}, 0x{m['unk3A']:04X},")
+        block_lines.append(f"\t{format_float(m['scrollu'], m['scrollu_raw'])}, "
+                           f"{format_float(m['scrollv'], m['scrollv_raw'])},")
+        block_lines.append(f"\t{format_float(m['unk44'], m['unk44_raw'])}, "
+                           f"{format_float(m['unk48'], m['unk48_raw'])},")
+        block_lines.append(f"\t0x{m['unk4C']:08X},")
+
+        def color_pack(u32):
+            r = (u32 >> 24) & 0xFF
+            g = (u32 >> 16) & 0xFF
+            b = (u32 >> 8) & 0xFF
+            a = u32 & 0xFF
+            return (f"{{ {{ 0x{r:02X}, 0x{g:02X}, 0x{b:02X}, 0x{a:02X} }} }}")
+
+        block_lines.append(f"\t{color_pack(m['primcolor'])},")
+        block_lines.append(f"\t0x{m['prim_l']:02X}, 0x{m['prim_m']:02X}, "
+                           f"{{ 0x{(m['prim_pad'] >> 8) & 0xFF:02X}, "
+                           f"0x{m['prim_pad'] & 0xFF:02X} }},")
+        block_lines.append(f"\t{color_pack(m['envcolor'])},")
+        block_lines.append(f"\t{color_pack(m['blendcolor'])},")
+        block_lines.append(f"\t{color_pack(m['light1color'])},")
+        block_lines.append(f"\t{color_pack(m['light2color'])},")
+        block_lines.append(f"\t{m['unk68']}, {m['unk6C']},")
+        block_lines.append(f"\t{m['unk70']}, {m['unk74']},")
+        block_lines.append("};")
+
+        filename = f"{name_suffix}.mobjsub.c"
+        if extract_data:
+            write_block_file(block_dir, filename, block_lines)
+            manifest.append(('block', filename))
+        else:
+            lines.extend(block_lines)
+            lines.append("")
+        return offset + MOBJSUB_SIZE
 
     def emit_palette(p_offset, p_name):
         """Write a .palette.c file for a 16-color RGBA5551 palette and
@@ -1063,14 +1221,15 @@ def generate(file_id, data, file_name, entries, reloc_map, csv_entry,
             emit_palette(p_off, p_name)
             cursor_local = p_off + 32
 
-        # Pad from the last palette to the bitmap array (if any)
+        # Bridge from the last emitted palette to the bitmap array. The
+        # remaining bytes might be alignment padding (all-zero) OR more
+        # palettes the auto-gen didn't discover (file 341 has 5 extra
+        # palettes packed back-to-back after the one Sprite.LUT references).
+        # Use emit_pad which falls back to a raw data block when the bytes
+        # aren't all zero.
         if cursor_local < info['bitmaps_off']:
-            pad = info['bitmaps_off'] - cursor_local
-            if extract_data:
-                manifest.append(('pad', pad))
-            else:
-                lines.append(f"PAD({pad});")
-                lines.append("")
+            emit_pad(cursor_local, info['bitmaps_off'])
+            emit_relocs_in_range(cursor_local, info['bitmaps_off'])
 
         # ── 3. Sprite file (bitmap_array + sprite struct, with externs) ──
         bm_var = f"{var_base}_bitmaps"
@@ -1336,6 +1495,12 @@ def generate(file_id, data, file_name, entries, reloc_map, csv_entry,
                 emit_pad(cursor, offset)
                 emit_relocs_in_range(cursor, offset)
             cursor = emit_dobjdesc_block(offset, block_name, next_off)
+
+        elif block_type == 'MObjSub':
+            if cursor < offset:
+                emit_pad(cursor, offset)
+                emit_relocs_in_range(cursor, offset)
+            cursor = emit_mobjsub_block(offset, block_name)
 
         elif block_type == 'LUT':
             # If this LUT is inside a sprite range it was already emitted

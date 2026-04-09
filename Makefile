@@ -468,7 +468,7 @@ endif
 # so the symbols header depends on every manifest/spritelist/block file in
 # src/relocData/. The texture .inc.c files (in build/) also affect sprite
 # block sizes, so each file's extract stamp is also a dependency.
-RELOCDATA_STRUCT_FILES := $(wildcard src/relocData/*.manifest src/relocData/*.spritelist src/relocData/*/*.sprite.c src/relocData/*/*.data.c src/relocData/*/*.dobjdesc.c src/relocData/*/*.palette.c)
+RELOCDATA_STRUCT_FILES := $(wildcard src/relocData/*.manifest src/relocData/*.spritelist src/relocData/*/*.sprite.c src/relocData/*/*.data.c src/relocData/*/*.dobjdesc.c src/relocData/*/*.palette.c src/relocData/*/*.mobjsub.c)
 RELOCDATA_EXTRACT_STAMPS := $(foreach f,$(RELOC_C_FILES),$(BUILD_DIR)/src/relocData/.extract-$(f).stamp)
 
 include/reloc_data.h symbols/reloc_data_symbols.$(VERSION).txt &: \
@@ -593,7 +593,8 @@ RELOC_BUILD_DIR_$(1) := $$(BUILD_DIR)/src/relocData/$$(RELOC_SUB_$(1))/
 RELOC_SPRITE_DEPS_$(1) := $$(wildcard $$(RELOC_DIR_$(1))*.sprite.c) \
                           $$(wildcard $$(RELOC_DIR_$(1))*.data.c) \
                           $$(wildcard $$(RELOC_DIR_$(1))*.dobjdesc.c) \
-                          $$(wildcard $$(RELOC_DIR_$(1))*.palette.c)
+                          $$(wildcard $$(RELOC_DIR_$(1))*.palette.c) \
+                          $$(wildcard $$(RELOC_DIR_$(1))*.mobjsub.c)
 # User PNG overrides in src/ - each generates a build/ inc.c
 RELOC_PNG_OVERRIDES_$(1) := $$(wildcard $$(RELOC_DIR_$(1))*.png)
 RELOC_INC_OVERRIDES_$(1) := $$(patsubst $$(RELOC_DIR_$(1))%.png,$$(RELOC_BUILD_DIR_$(1))%.inc.c,$$(RELOC_PNG_OVERRIDES_$(1)))

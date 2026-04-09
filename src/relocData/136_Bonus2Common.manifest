@@ -3,17 +3,20 @@
 # The master .c file is generated from this manifest at build time.
 
 gap_0x0000.data.c
-PlatformSmall_MObjSub.data.c
+PlatformSmall.mobjsub.c
+gap_0x3798.data.c
 PlatformSmall.dobjdesc.c
 pad 8
 PlatformSmall_AnimJoint.data.c
 PlatformSmall_MatAnimJoint.data.c
-PlatformMedium_MObjSub.data.c
+PlatformMedium.mobjsub.c
+gap_0x3FE8.data.c
 PlatformMedium.dobjdesc.c
 pad 8
 PlatformMedium_AnimJoint.data.c
 PlatformMedium_MatAnimJoint.data.c
-PlatformLarge_MObjSub.data.c
+PlatformLarge.mobjsub.c
+gap_0x4818.data.c
 PlatformLarge.dobjdesc.c
 pad 8
 PlatformLarge_AnimJoint.data.c

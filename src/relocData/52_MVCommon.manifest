@@ -3,7 +3,8 @@
 # The master .c file is generated from this manifest at build time.
 
 gap_0x0000.data.c
-RoomBackground_MObjSub.data.c
+RoomBackground.mobjsub.c
+gap_0x4370.data.c
 RoomBackground.dobjdesc.c
 RoomBackground_MatAnimJoint.data.c
 RoomDesk.dobjdesc.c
@@ -20,27 +21,32 @@ pad 4
 RoomLamp_AnimJoint.data.c
 RoomTissues_DisplayList.data.c
 RoomTissues_AnimJoint.data.c
-RoomLogo_MObjSub.data.c
+RoomLogo.mobjsub.c
+gap_0x1BCD8.data.c
 RoomLogo.dobjdesc.c
 RoomLogo_MatAnimJoint.data.c
 RoomSnap.dobjdesc.c
 pad 4
 RoomSnap_AnimJoint.data.c
-RoomCloseUpEffectAir_MObjSub.data.c
+RoomCloseUpEffectAir.mobjsub.c
+gap_0x1DD18.data.c
 RoomCloseUpEffectAir.dobjdesc.c
 RoomCloseUpEffectAir_MatAnimJoint.data.c
 RoomCloseUpEffectAir_AnimJoint.data.c
-RoomCloseUpEffectGround_MObjSub.data.c
+RoomCloseUpEffectGround.mobjsub.c
+gap_0x1F170.data.c
 RoomCloseUpEffectGround.dobjdesc.c
 RoomCloseUpEffectGround_MatAnimJoint.data.c
 RoomCloseUpEffectGround_AnimJoint.data.c
 RoomBossShadow_DisplayList.data.c
 RoomBossShadow_AnimJoint.data.c
-RoomDeskGround_MObjSub.data.c
+RoomDeskGround.mobjsub.c
+gap_0x204F8.data.c
 RoomDeskGround.dobjdesc.c
 gap_0x224C4.data.c
 RoomDeskGround_MatAnimJoint.data.c
-RoomSpotlight_MObjSub.data.c
+RoomSpotlight.mobjsub.c
+gap_0x22D08.data.c
 RoomSpotlight_DisplayList.data.c
 RoomSpotlight_MatAnimJoint.data.c
 RoomOutside_DisplayList.data.c

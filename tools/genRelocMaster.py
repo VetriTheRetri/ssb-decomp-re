@@ -191,6 +191,20 @@ def compute_palette_c_size(palette_c_path):
     return 32
 
 
+def compute_mobjsub_c_size(mobjsub_c_path):
+    """A .mobjsub.c file is always a single MObjSub struct = 0x78 bytes.
+
+    Validation: must contain `MObjSub <name> = { ... };` (singular, not array).
+    """
+    with open(mobjsub_c_path) as f:
+        content = f.read()
+    if not re.search(r'MObjSub\s+\w+\s*=\s*\{', content):
+        print(f"Error: {mobjsub_c_path} doesn't look like an MObjSub struct",
+              file=sys.stderr)
+        sys.exit(1)
+    return 0x78
+
+
 def compute_dobjdesc_c_size(dobjdesc_c_path):
     """Parse a .dobjdesc.c file and return its byte size (44 per entry)."""
     with open(dobjdesc_c_path) as f:
@@ -227,6 +241,8 @@ def compute_block_size(block_path, search_paths=()):
         return compute_dobjdesc_c_size(block_path)
     if block_path.endswith('.palette.c'):
         return compute_palette_c_size(block_path)
+    if block_path.endswith('.mobjsub.c'):
+        return compute_mobjsub_c_size(block_path)
     print(f"Error: unknown block type: {block_path}", file=sys.stderr)
     sys.exit(1)
 

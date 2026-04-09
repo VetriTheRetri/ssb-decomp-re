@@ -1,15 +1,11 @@
 /* Sprite: Stock */
 
-/* Texture: Stock (8(16)x10 ci4) */
-u8 dPikachuModel_Stock_tex[] = {
-    #include <PikachuModel/Stock.ci4.inc.c>
-};
+/* Sprite: Stock (8x10 ci4) */
 
 Bitmap dPikachuModel_Stock_bitmaps[] = {
 	{ 8, 16, 0, 0, dPikachuModel_Stock_tex, 10, 0 },
 };
 
-/* Sprite: Stock (8x10 ci4) */
 Sprite dPikachuModel_Stock = {
 	0, 0,
 	8, 10,
@@ -19,7 +15,7 @@ Sprite dPikachuModel_Stock = {
 	4660,
 	255, 255, 255, 255,
 	0, 256,
-	(int*)0x268D264C,
+	(int*)dPikachuModel_palette_0x9930,
 	0, 1,
 	1, 36,
 	10, 10,

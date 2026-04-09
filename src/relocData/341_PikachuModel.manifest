@@ -3,9 +3,13 @@
 # The master .c file is generated from this manifest at build time.
 
 gap_0x0000.data.c
-ThunderTrail_MObjSub.data.c
+ThunderTrail.mobjsub.c
+gap_0x9498.data.c
 ThunderTrail.dobjdesc.c
 gap_0x9634.data.c
+Stock_tex.data.c
+palette_0x9930.palette.c
+gap_0x9950.data.c
 Stock.sprite.c
 pad 12
 FTEmblem.sprite.c

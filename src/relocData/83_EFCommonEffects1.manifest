@@ -3,21 +3,25 @@
 # The master .c file is generated from this manifest at build time.
 
 gap_0x0000.data.c
-DamageSlash_MObjSub.data.c
+DamageSlash.mobjsub.c
+gap_0x7458.data.c
 DamageSlash.dobjdesc.c
 DamageSlash_AnimJoint.data.c
 DamageSlash_MatAnimJoint.data.c
-ImpactWave_MObjSub.data.c
+ImpactWave.mobjsub.c
+gap_0x7AF8.data.c
 gap_0x7C28.data.c
 ImpactWave_AnimJoint.data.c
 ImpactWave_MatAnimJoint.data.c
 gap_0x7E80.data.c
 FlyOrbs_AnimJoint.data.c
-CommonSpark_MObjSub.data.c
+CommonSpark.mobjsub.c
+gap_0x8F38.data.c
 gap_0x8FA0.data.c
 CommonSpark_AnimJoint.data.c
 CommonSpark_MatAnimJoint.data.c
-DamageFlyMDust_MObjSub.data.c
+DamageFlyMDust.mobjsub.c
+gap_0xC9F0.data.c
 gap_0xCAC8.data.c
 DamageFlyMDust_AnimJoint.data.c
 DamageFlyMDust_MatAnimJoint.data.c

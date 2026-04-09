@@ -1,13 +1,13 @@
 # Relocation metadata for file 354
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-intern dYoshiSpecial2_EntryEgg_MObjSub dYoshiSpecial2_EntryEgg_MObjSub+0x88
+intern dYoshiSpecial2_EntryEgg_MObjSub+0x0 0x04E8
 intern dYoshiSpecial2_EntryEgg_MObjSub+0x4 dYoshiSpecial2_gap_0x0000+0x260
 intern dYoshiSpecial2_EntryEgg_MObjSub+0x8 dYoshiSpecial2_gap_0x0000+0x58
 intern dYoshiSpecial2_EntryEgg_MObjSub+0x14 dYoshiSpecial2_EntryEgg_MObjSub+0x4
-intern dYoshiSpecial2_EntryEgg_MObjSub+0x88 dYoshiSpecial2_EntryEgg_MObjSub+0x10
+intern dYoshiSpecial2_gap_0x04D8+0x10 dYoshiSpecial2_EntryEgg_MObjSub+0x10
 intern dYoshiSpecial2_gap_0x0530+0x4C dYoshiSpecial2_gap_0x0000+0x30
-intern dYoshiSpecial2_gap_0x0530+0x8C dYoshiSpecial2_EntryEgg_MObjSub+0x90
+intern dYoshiSpecial2_gap_0x0530+0x8C dYoshiSpecial2_gap_0x04D8+0x18
 intern dYoshiSpecial2_EntryEgg_AnimJoint dYoshiSpecial2_EntryEgg_AnimJoint+0x4
 intern dYoshiSpecial2_EntryEgg_MatAnimJoint dYoshiSpecial2_EntryEgg_MatAnimJoint+0x34
 intern dYoshiSpecial2_EntryEgg_MatAnimJoint+0x34 dYoshiSpecial2_EntryEgg_MatAnimJoint+0x4

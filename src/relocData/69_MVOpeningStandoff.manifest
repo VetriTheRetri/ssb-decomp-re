@@ -4,7 +4,8 @@
 
 gap_0x0000.data.c
 Ground_DisplayList.data.c
-Lightning_MObjSub.data.c
+Lightning.mobjsub.c
+gap_0x61B8.data.c
 Lightning.dobjdesc.c
 Lightning_MatAnimJoint.data.c
 Lightning_AnimJoint.data.c

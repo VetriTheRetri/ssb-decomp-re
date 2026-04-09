@@ -3,19 +3,23 @@
 # The master .c file is generated from this manifest at build time.
 
 gap_0x0000.data.c
-LL_MObjSub.data.c
+LL.mobjsub.c
+gap_0x30C8.data.c
 LL_DisplayList.data.c
 LL_MatAnimJoint.data.c
 LL_AnimJoint.data.c
-LR_MObjSub.data.c
+LR.mobjsub.c
+gap_0x3758.data.c
 LR_DisplayList.data.c
 LR_MatAnimJoint.data.c
 LR_AnimJoint.data.c
-UL_MObjSub.data.c
+UL.mobjsub.c
+gap_0x3DE8.data.c
 UL_DisplayList.data.c
 UL_MatAnimJoint.data.c
 UL_AnimJoint.data.c
-UR_MObjSub.data.c
+UR.mobjsub.c
+gap_0x4488.data.c
 UR_DisplayList.data.c
 UR_MatAnimJoint.data.c
 UR_AnimJoint.data.c

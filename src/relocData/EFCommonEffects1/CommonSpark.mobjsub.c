@@ -2,7 +2,7 @@
 MObjSub dEFCommonEffects1_CommonSpark_MObjSub = {
 	0x23B1,
 	0x23, 0xD6,
-	(void**)0x23B22330,
+	(void**)((u8*)dEFCommonEffects1_FlyOrbs_AnimJoint + 0xD80),
 	0x23B3, 0x22AE, 0x23B4, 0x222C,
 	599073194,
 	1.974652175731488e-17f, 1.9854726907604168e-17f,

@@ -192,17 +192,46 @@ def compute_palette_c_size(palette_c_path):
 
 
 def compute_mobjsub_c_size(mobjsub_c_path):
-    """A .mobjsub.c file is always a single MObjSub struct = 0x78 bytes.
+    """A .mobjsub.c file may contain:
+      - A single MObjSub struct:      `MObjSub name = { ... };` (0x78 bytes)
+      - An MObjSub array:             `MObjSub name[N] = { ... };` (N * 0x78)
+      - Optionally followed by a trailing u32 pointer array (used when
+        discovery rolls an <owner>.MObjSubPtrArray into the same file).
 
-    Validation: must contain `MObjSub <name> = { ... };` (singular, not array).
+    We sum the byte sizes of all recognized declarations in the file.
     """
     with open(mobjsub_c_path) as f:
         content = f.read()
-    if not re.search(r'MObjSub\s+\w+\s*=\s*\{', content):
-        print(f"Error: {mobjsub_c_path} doesn't look like an MObjSub struct",
+    content = re.sub(r'/\*.*?\*/', '', content, flags=re.DOTALL)
+    content = re.sub(r'//[^\n]*', '', content)
+
+    total = 0
+    found_any = False
+
+    # MObjSub declarations (single or array)
+    for m in re.finditer(r'MObjSub\s+\w+(?:\[(\d+)\])?\s*=\s*\{', content):
+        count = int(m.group(1)) if m.group(1) else 1
+        total += 0x78 * count
+        found_any = True
+
+    # Trailing u8/u16/u32/u64 arrays (e.g. the MObjSub pointer array).
+    for m in re.finditer(
+            r'(u8|u16|u32|u64)\s+\w+\[(?:\d*)\]\s*=\s*\{([^}]*)\}',
+            content, re.DOTALL):
+        elem_type = m.group(1)
+        body = m.group(2)
+        if '#include' in body:
+            continue
+        elem_count = len(re.findall(r'0x[0-9A-Fa-f]+', body))
+        elem_size = {'u8': 1, 'u16': 2, 'u32': 4, 'u64': 8}[elem_type]
+        total += elem_count * elem_size
+        found_any = True
+
+    if not found_any:
+        print(f"Error: {mobjsub_c_path} has no recognized declarations",
               file=sys.stderr)
         sys.exit(1)
-    return 0x78
+    return total
 
 
 def _count_top_level_braces(body):

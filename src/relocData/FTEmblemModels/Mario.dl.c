@@ -1,10 +1,10 @@
-/* DisplayList: - @ 0x780 (528 bytes) */
-Gfx dFTEmblemModels_DisplayList_0x0780[] = {
+/* DisplayList: Mario @ 0x780 (528 bytes) */
+Gfx dFTEmblemModels_Mario_DisplayList[] = {
 	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
 	{ { 0xFCFFFFFF, 0xFFFE7D3E } },  /* cmd 0xFC */
 	{ { 0xDE000000, 0x0E000000 } },  /* cmd 0xDE */
 	{ { 0xD7000000, 0x00000000 } },  /* cmd 0xD7 */
-	{ { 0x0100C018, (unsigned int)dFTEmblemModels_Vtx_0x0180 } },  /* cmd 0x01 */
+	{ { 0x0100C018, (unsigned int)dFTEmblemModels_Mario_Vtx } },  /* cmd 0x01 */
 	{ { 0x06161412, 0x00161014 } },  /* cmd 0x06 */
 	{ { 0x0616120E, 0x00160C10 } },  /* cmd 0x06 */
 	{ { 0x06160E0A, 0x0016080C } },  /* cmd 0x06 */
@@ -12,7 +12,7 @@ Gfx dFTEmblemModels_DisplayList_0x0780[] = {
 	{ { 0x06160204, 0x00160002 } },  /* cmd 0x06 */
 	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
 	{ { 0xDE000000, 0x0E000008 } },  /* cmd 0xDE */
-	{ { 0x01020040, (unsigned int)((u8*)dFTEmblemModels_Vtx_0x0180 + 0xC0) } },  /* cmd 0x01 */
+	{ { 0x01020040, (unsigned int)((u8*)dFTEmblemModels_Mario_Vtx + 0xC0) } },  /* cmd 0x01 */
 	{ { 0x063E3C3A, 0x003E3A38 } },  /* cmd 0x06 */
 	{ { 0x063E3836, 0x003E3634 } },  /* cmd 0x06 */
 	{ { 0x063E3432, 0x003E3230 } },  /* cmd 0x06 */
@@ -28,9 +28,9 @@ Gfx dFTEmblemModels_DisplayList_0x0780[] = {
 	{ { 0x063C0C0A, 0x003C0A08 } },  /* cmd 0x06 */
 	{ { 0x06063E28, 0x0006043E } },  /* cmd 0x06 */
 	{ { 0x06060204, 0x00060002 } },  /* cmd 0x06 */
-	{ { 0x01002006, (unsigned int)((u8*)dFTEmblemModels_Vtx_0x0180 + 0x2C0) } },  /* cmd 0x01 */
-	{ { 0x01010028, (unsigned int)((u8*)dFTEmblemModels_Vtx_0x0180 + 0x2E0) } },  /* cmd 0x01 */
-	{ { 0x0100B040, (unsigned int)((u8*)dFTEmblemModels_Vtx_0x0180 + 0x3E0) } },  /* cmd 0x01 */
+	{ { 0x01002006, (unsigned int)((u8*)dFTEmblemModels_Mario_Vtx + 0x2C0) } },  /* cmd 0x01 */
+	{ { 0x01010028, (unsigned int)((u8*)dFTEmblemModels_Mario_Vtx + 0x2E0) } },  /* cmd 0x01 */
+	{ { 0x0100B040, (unsigned int)((u8*)dFTEmblemModels_Mario_Vtx + 0x3E0) } },  /* cmd 0x01 */
 	{ { 0x06063E00, 0x00063C3E } },  /* cmd 0x06 */
 	{ { 0x06063A3C, 0x00380628 } },  /* cmd 0x06 */
 	{ { 0x06383606, 0x00383436 } },  /* cmd 0x06 */
@@ -46,10 +46,10 @@ Gfx dFTEmblemModels_DisplayList_0x0780[] = {
 	{ { 0x06180C0E, 0x00181A0A } },  /* cmd 0x06 */
 	{ { 0x06180A08, 0x00180804 } },  /* cmd 0x06 */
 	{ { 0x05180402, 0x00000000 } },  /* cmd 0x05 */
-	{ { 0x01001002, (unsigned int)((u8*)dFTEmblemModels_Vtx_0x0180 + 0x100) } },  /* cmd 0x01 */
-	{ { 0x01001006, (unsigned int)((u8*)dFTEmblemModels_Vtx_0x0180 + 0x2A0) } },  /* cmd 0x01 */
-	{ { 0x01009018, (unsigned int)((u8*)dFTEmblemModels_Vtx_0x0180 + 0x490) } },  /* cmd 0x01 */
-	{ { 0x0100201E, (unsigned int)((u8*)dFTEmblemModels_Vtx_0x0180 + 0x520) } },  /* cmd 0x01 */
+	{ { 0x01001002, (unsigned int)((u8*)dFTEmblemModels_Mario_Vtx + 0x100) } },  /* cmd 0x01 */
+	{ { 0x01001006, (unsigned int)((u8*)dFTEmblemModels_Mario_Vtx + 0x2A0) } },  /* cmd 0x01 */
+	{ { 0x01009018, (unsigned int)((u8*)dFTEmblemModels_Mario_Vtx + 0x490) } },  /* cmd 0x01 */
+	{ { 0x0100201E, (unsigned int)((u8*)dFTEmblemModels_Mario_Vtx + 0x520) } },  /* cmd 0x01 */
 	{ { 0x0618021C, 0x001C1A18 } },  /* cmd 0x06 */
 	{ { 0x061A1618, 0x001A1416 } },  /* cmd 0x06 */
 	{ { 0x061A1214, 0x001A1012 } },  /* cmd 0x06 */
@@ -59,7 +59,7 @@ Gfx dFTEmblemModels_DisplayList_0x0780[] = {
 	{ { 0x05060400, 0x00000000 } },  /* cmd 0x05 */
 	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
 	{ { 0xDE000000, 0x0E000010 } },  /* cmd 0xDE */
-	{ { 0x0100C018, (unsigned int)((u8*)dFTEmblemModels_Vtx_0x0180 + 0x540) } },  /* cmd 0x01 */
+	{ { 0x0100C018, (unsigned int)((u8*)dFTEmblemModels_Mario_Vtx + 0x540) } },  /* cmd 0x01 */
 	{ { 0x06161412, 0x00161014 } },  /* cmd 0x06 */
 	{ { 0x0616120E, 0x00160C10 } },  /* cmd 0x06 */
 	{ { 0x06160E0A, 0x0016080C } },  /* cmd 0x06 */

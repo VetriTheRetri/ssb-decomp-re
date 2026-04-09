@@ -1,5 +1,5 @@
-/* Vtx: - @ 0x180 (96 vertices) */
-Vtx dFTEmblemModels_Vtx_0x0180[] = {
+/* Vtx: Mario @ 0x180 (96 vertices) */
+Vtx dFTEmblemModels_Mario_Vtx[] = {
 	{ { { -18, -38, 0 }, 0x0000, { 0, 0 }, { 0x00, 0x00, 0x7F, 0x00 } } },
 	{ { { -22, -36, 0 }, 0x0000, { 0, 0 }, { 0x00, 0x00, 0x7F, 0x00 } } },
 	{ { { -27, -38, 0 }, 0x0000, { 0, 0 }, { 0x00, 0x00, 0x7F, 0x00 } } },

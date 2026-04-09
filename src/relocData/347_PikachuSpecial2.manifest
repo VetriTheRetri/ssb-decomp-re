@@ -5,6 +5,8 @@
 gap_0x0000.data.c
 Unk.mobjsub.c
 gap_0x06B8.data.c
+Unk.vtx.c
+Unk.dl.c
 Unk.dobjdesc.c
 pad 12
 Unk_AnimJoint.data.c

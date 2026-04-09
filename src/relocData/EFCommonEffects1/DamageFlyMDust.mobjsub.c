@@ -2,7 +2,7 @@
 MObjSub dEFCommonEffects1_DamageFlyMDust_MObjSub = {
 	0x325F,
 	0x32, 0x84,
-	(void**)0x3260305E,
+	(void**)((u8*)dEFCommonEffects1_CommonSpark_MatAnimJoint + 0x30B8),
 	0x3261, 0x2E5C, 0x3262, 0x2C5A,
 	845359704,
 	1.3280518018632392e-08f, 1.3338269155838134e-08f,

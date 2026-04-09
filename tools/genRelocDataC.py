@@ -972,11 +972,18 @@ def generate(file_id, data, file_name, entries, reloc_map, csv_entry,
     asset_dir = os.path.join(PROJECT_DIR, "build", "src", "relocData", file_subdir)
 
     def emit_data_block(start, end, name_suffix):
-        """Extract a raw data region to a .data.c file and add to manifest."""
+        """Extract a raw data region to a .data.c file and add to manifest.
+
+        `name_suffix` is used verbatim as the filename stem (so dots in
+        names like `Mario.MObjSubPtrArray` survive to `Mario.MObjSubPtrArray.data.c`),
+        but the C variable name replaces `.` with `_` to produce a valid
+        C identifier.
+        """
         size = end - start
         if size == 0:
             return
-        var_name = f"{prefix}_{name_suffix}"
+        c_ident = name_suffix.replace('.', '_')
+        var_name = f"{prefix}_{c_ident}"
         sym_map.add(var_name, start, end)
         block_lines = [f"/* Raw data from file offset 0x{start:04X} to 0x{end:04X} ({size} bytes) */"]
         has_relocs = any(start <= off < end for off in reloc_map)
@@ -1063,63 +1070,46 @@ def generate(file_id, data, file_name, entries, reloc_map, csv_entry,
             lines.append("")
         return pos
 
-    def emit_mobjsub_block(offset, name):
-        """Emit a single 0x78-byte MObjSub as a typed C struct initializer.
+    def emit_mobjsub_block(offset, name, count=1):
+        """Emit one or more contiguous MObjSubs.
 
-        Always exactly one struct (description entries are never adjacent).
-        Pointer fields (sprites, palettes) become raw u32 chain words; the
-        relocation chain rewrites them at link time.
+        When count == 1 the output is a single struct:
+            MObjSub <var> = { ... };
+        When count > 1 it's an array spanning [offset, offset + count*0x78):
+            MObjSub <var>[N] = { { ... }, { ... }, ... };
+
+        The array form is used when discovery has determined that several
+        MObjSubs in a row all belong to the same character (the named one
+        plus anonymous ones reachable via the .sprites pointer chain).
+
+        Pointer fields (sprites, palettes, and several "unkXX" slots that
+        are actually pointers in some instances) become raw u32 chain words
+        that fixRelocChain rewrites at link time. We walk every 4-byte word
+        in every element and emit a reloc entry for each one that has a
+        target in the original reloc map.
         """
-        m = parse_mobjsub(data, offset)
-        if m is None:
+        if offset + count * MOBJSUB_SIZE > len(data):
             return offset
 
         if name != '-':
             name_suffix = name
-            var_name = f"{prefix}_{name_suffix}_MObjSub"
+            c_ident = name_suffix.replace('.', '_')
+            var_name = f"{prefix}_{c_ident}_MObjSub"
         else:
             name_suffix = f"MObjSub_0x{offset:04X}"
             var_name = f"{prefix}_{name_suffix}"
-        sym_map.add(var_name, offset, offset + MOBJSUB_SIZE)
+        total_size = count * MOBJSUB_SIZE
+        sym_map.add(var_name, offset, offset + total_size)
 
-        # Walk every 4-byte word inside the MObjSub and emit a reloc entry
-        # for each word that has a target in the original reloc map. The
-        # MObjSub struct in objtypes.h labels +0x4 (sprites) and +0x2C
-        # (palettes) as pointer fields, but the actual data has many more —
-        # several `unkXX` fields turn out to be pointers in real instances
-        # (model files have relocs at +0x08, +0x0C, +0x10, +0x14, etc.).
-        # Emitting only the "named" pointers would leave the others off the
-        # chain, which would corrupt fixRelocChain's word ordering.
-        for word_off in range(0, MOBJSUB_SIZE, 4):
-            if (offset + word_off) in reloc_map:
-                emit_reloc(reloc_entries, reloc_map, sym_map,
-                           offset + word_off,
-                           f"{var_name}+0x{word_off:X}")
-
-        block_lines = [f"/* MObjSub: {name} @ 0x{offset:X} */"]
-        block_lines.append(f"MObjSub {var_name} = {{")
-        block_lines.append(f"\t0x{m['pad00']:04X},")
-        block_lines.append(f"\t0x{m['fmt']:02X}, 0x{m['siz']:02X},")
-        block_lines.append(f"\t(void**)0x{m['sprites']:08X},")
-        block_lines.append(f"\t0x{m['unk08']:04X}, 0x{m['unk0A']:04X}, "
-                           f"0x{m['unk0C']:04X}, 0x{m['unk0E']:04X},")
-        block_lines.append(f"\t{m['unk10']},")
-        block_lines.append(f"\t{format_float(m['trau'], m['trau_raw'])}, "
-                           f"{format_float(m['trav'], m['trav_raw'])},")
-        block_lines.append(f"\t{format_float(m['scau'], m['scau_raw'])}, "
-                           f"{format_float(m['scav'], m['scav_raw'])},")
-        block_lines.append(f"\t{format_float(m['unk24'], m['unk24_raw'])}, "
-                           f"{format_float(m['unk28'], m['unk28_raw'])},")
-        block_lines.append(f"\t(void**)0x{m['palettes']:08X},")
-        block_lines.append(f"\t0x{m['flags']:04X},")
-        block_lines.append(f"\t0x{m['block_fmt']:02X}, 0x{m['block_siz']:02X},")
-        block_lines.append(f"\t0x{m['block_dxt']:04X},")
-        block_lines.append(f"\t0x{m['unk36']:04X}, 0x{m['unk38']:04X}, 0x{m['unk3A']:04X},")
-        block_lines.append(f"\t{format_float(m['scrollu'], m['scrollu_raw'])}, "
-                           f"{format_float(m['scrollv'], m['scrollv_raw'])},")
-        block_lines.append(f"\t{format_float(m['unk44'], m['unk44_raw'])}, "
-                           f"{format_float(m['unk48'], m['unk48_raw'])},")
-        block_lines.append(f"\t0x{m['unk4C']:08X},")
+        # Reloc entries for every relocated word in every element.
+        for elem in range(count):
+            elem_off = offset + elem * MOBJSUB_SIZE
+            for word_off in range(0, MOBJSUB_SIZE, 4):
+                if (elem_off + word_off) in reloc_map:
+                    label_off = elem * MOBJSUB_SIZE + word_off
+                    emit_reloc(reloc_entries, reloc_map, sym_map,
+                               elem_off + word_off,
+                               f"{var_name}+0x{label_off:X}")
 
         def color_pack(u32):
             r = (u32 >> 24) & 0xFF
@@ -1128,17 +1118,126 @@ def generate(file_id, data, file_name, entries, reloc_map, csv_entry,
             a = u32 & 0xFF
             return (f"{{ {{ 0x{r:02X}, 0x{g:02X}, 0x{b:02X}, 0x{a:02X} }} }}")
 
-        block_lines.append(f"\t{color_pack(m['primcolor'])},")
-        block_lines.append(f"\t0x{m['prim_l']:02X}, 0x{m['prim_m']:02X}, "
-                           f"{{ 0x{(m['prim_pad'] >> 8) & 0xFF:02X}, "
-                           f"0x{m['prim_pad'] & 0xFF:02X} }},")
-        block_lines.append(f"\t{color_pack(m['envcolor'])},")
-        block_lines.append(f"\t{color_pack(m['blendcolor'])},")
-        block_lines.append(f"\t{color_pack(m['light1color'])},")
-        block_lines.append(f"\t{color_pack(m['light2color'])},")
-        block_lines.append(f"\t{m['unk68']}, {m['unk6C']},")
-        block_lines.append(f"\t{m['unk70']}, {m['unk74']},")
-        block_lines.append("};")
+        def resolve_ptr_field(field_offset, raw_value, type_str):
+            """Turn a relocated ptr field into a labeled C expression, or
+            fall back to the raw chain word hex when the target is unknown.
+            """
+            if field_offset in reloc_map:
+                target = reloc_map[field_offset][1]
+                expr = sym_map.resolve_c_expr(target)
+                if expr is not None:
+                    return f"({type_str}){expr}"
+            return f"({type_str})0x{raw_value:08X}"
+
+        def emit_one(m, indent, elem_offset):
+            """Return the lines for one MObjSub initializer (without trailing
+            comma or wrapping braces). `elem_offset` is this MObjSub's file
+            offset and is used to resolve pointer fields."""
+            i = indent
+            sprites_expr = resolve_ptr_field(elem_offset + 0x4,
+                                             m['sprites'], 'void**')
+            palettes_expr = resolve_ptr_field(elem_offset + 0x2C,
+                                              m['palettes'], 'void**')
+            return [
+                f"{i}0x{m['pad00']:04X},",
+                f"{i}0x{m['fmt']:02X}, 0x{m['siz']:02X},",
+                f"{i}{sprites_expr},",
+                f"{i}0x{m['unk08']:04X}, 0x{m['unk0A']:04X}, 0x{m['unk0C']:04X}, 0x{m['unk0E']:04X},",
+                f"{i}{m['unk10']},",
+                f"{i}{format_float(m['trau'], m['trau_raw'])}, "
+                f"{format_float(m['trav'], m['trav_raw'])},",
+                f"{i}{format_float(m['scau'], m['scau_raw'])}, "
+                f"{format_float(m['scav'], m['scav_raw'])},",
+                f"{i}{format_float(m['unk24'], m['unk24_raw'])}, "
+                f"{format_float(m['unk28'], m['unk28_raw'])},",
+                f"{i}{palettes_expr},",
+                f"{i}0x{m['flags']:04X},",
+                f"{i}0x{m['block_fmt']:02X}, 0x{m['block_siz']:02X},",
+                f"{i}0x{m['block_dxt']:04X},",
+                f"{i}0x{m['unk36']:04X}, 0x{m['unk38']:04X}, 0x{m['unk3A']:04X},",
+                f"{i}{format_float(m['scrollu'], m['scrollu_raw'])}, "
+                f"{format_float(m['scrollv'], m['scrollv_raw'])},",
+                f"{i}{format_float(m['unk44'], m['unk44_raw'])}, "
+                f"{format_float(m['unk48'], m['unk48_raw'])},",
+                f"{i}0x{m['unk4C']:08X},",
+                f"{i}{color_pack(m['primcolor'])},",
+                f"{i}0x{m['prim_l']:02X}, 0x{m['prim_m']:02X}, "
+                f"{{ 0x{(m['prim_pad'] >> 8) & 0xFF:02X}, "
+                f"0x{m['prim_pad'] & 0xFF:02X} }},",
+                f"{i}{color_pack(m['envcolor'])},",
+                f"{i}{color_pack(m['blendcolor'])},",
+                f"{i}{color_pack(m['light1color'])},",
+                f"{i}{color_pack(m['light2color'])},",
+                f"{i}{m['unk68']}, {m['unk6C']},",
+                f"{i}{m['unk70']}, {m['unk74']},",
+            ]
+
+        block_lines = []
+        # If there's a trailing ptr array, forward-declare it at the top
+        # so the MObjSub initializers below can reference it via labeled
+        # expressions without hitting "undefined identifier" errors.
+        ptr_array_var_name = None
+        if offset in mobjsub_ptr_arrays:
+            ptr_array_var_name = f"{prefix}_{c_ident}_MObjSubPtrArray" if name != '-' else var_name + "_MObjSubPtrArray"
+            block_lines.append(f"extern u32 {ptr_array_var_name}[];")
+            block_lines.append("")
+
+        if count == 1:
+            block_lines.append(f"/* MObjSub: {name} @ 0x{offset:X} */")
+            block_lines.append(f"MObjSub {var_name} = {{")
+            m = parse_mobjsub(data, offset)
+            block_lines.extend(emit_one(m, "\t", offset))
+            block_lines.append("};")
+        else:
+            block_lines.append(f"/* MObjSub array: {name} @ 0x{offset:X} ({count} entries) */")
+            block_lines.append(f"MObjSub {var_name}[{count}] = {{")
+            for elem in range(count):
+                elem_offset = offset + elem * MOBJSUB_SIZE
+                m = parse_mobjsub(data, elem_offset)
+                block_lines.append(f"\t/* [{elem}] @ 0x{elem_offset:X} */")
+                block_lines.append(f"\t{{")
+                block_lines.extend(emit_one(m, "\t\t", elem_offset))
+                block_lines.append(f"\t}},")
+            block_lines.append("};")
+
+        # If discovery found a trailing MObjSub pointer array for this
+        # owner, emit it in the same file as a u32 array. This keeps all
+        # of <owner>'s data in one place (so e.g. Mario.mobjsub.c contains
+        # both the array of 3 MObjSubs and the pointer array that walks
+        # them).
+        ptr_array_end = offset + total_size
+        if offset in mobjsub_ptr_arrays:
+            pa_start, pa_size = mobjsub_ptr_arrays[offset]
+            if pa_start >= offset + total_size:
+                ptr_array_var = f"{prefix}_{c_ident}_MObjSubPtrArray" if name != '-' else var_name + "_MObjSubPtrArray"
+                # (sym_map already registered this during discovery;
+                # re-add here only to be safe.)
+                sym_map.add(ptr_array_var, pa_start, pa_start + pa_size)
+
+                block_lines.append("")
+                block_lines.append(
+                    f"/* MObjSub pointer array @ 0x{pa_start:X} "
+                    f"({pa_size} bytes: leading pad + {(pa_size - (pa_start - (offset + total_size))) // 4 - 1} pointers + NULL) */")
+                block_lines.append(f"u32 {ptr_array_var}[] = {{")
+                # Chunk into lines of 4 u32s.
+                wpl = 4
+                word_count = pa_size // 4
+                for i in range(0, word_count, wpl):
+                    chunk_words = []
+                    for j in range(i, min(i + wpl, word_count)):
+                        raw = struct.unpack('>I', data[pa_start + j*4:pa_start + j*4 + 4])[0]
+                        chunk_words.append(f"0x{raw:08X}")
+                    block_lines.append(f"\t{', '.join(chunk_words)},")
+                block_lines.append("};")
+
+                # Emit reloc entries for each relocated word in the ptr array
+                for word_off in range(0, pa_size, 4):
+                    abs_off = pa_start + word_off
+                    if abs_off in reloc_map:
+                        emit_reloc(reloc_entries, reloc_map, sym_map,
+                                   abs_off, f"{ptr_array_var}+0x{word_off:X}")
+
+                ptr_array_end = pa_start + pa_size
 
         filename = f"{name_suffix}.mobjsub.c"
         if extract_data:
@@ -1147,7 +1246,7 @@ def generate(file_id, data, file_name, entries, reloc_map, csv_entry,
         else:
             lines.extend(block_lines)
             lines.append("")
-        return offset + MOBJSUB_SIZE
+        return ptr_array_end
 
     def emit_displaylist_block(offset, name, next_offset):
         """Emit an F3DEX display list as a `Gfx` array of raw word pairs.
@@ -1181,7 +1280,8 @@ def generate(file_id, data, file_name, entries, reloc_map, csv_entry,
 
         if name != '-':
             name_suffix = name
-            var_name = f"{prefix}_{name_suffix}_DisplayList"
+            c_ident = name_suffix.replace('.', '_')
+            var_name = f"{prefix}_{c_ident}_DisplayList"
         else:
             name_suffix = f"DisplayList_0x{offset:04X}"
             var_name = f"{prefix}_{name_suffix}"
@@ -1224,7 +1324,8 @@ def generate(file_id, data, file_name, entries, reloc_map, csv_entry,
             return offset
         if name != '-':
             name_suffix = name
-            var_name = f"{prefix}_{name_suffix}_Vtx"
+            c_ident = name_suffix.replace('.', '_')
+            var_name = f"{prefix}_{c_ident}_Vtx"
         else:
             name_suffix = f"Vtx_0x{offset:04X}"
             var_name = f"{prefix}_{name_suffix}"
@@ -1510,6 +1611,213 @@ def generate(file_id, data, file_name, entries, reloc_map, csv_entry,
         lines.append(f"/* NOTE: {oob} entries beyond file bounds (runtime-expanded data) */")
         lines.append("")
 
+    # ── Owner-graph discovery ────────────────────────────────────────────
+    # Walk the data graph from named description entries to find anonymous
+    # typed sub-blocks that should be grouped under the same owner name:
+    #
+    #   1. Each `MObjSub <name>` entry has a `.sprites` field (+0x4) that
+    #      may point at a pointer-array of `&MObjSub+0x8` references. Walk
+    #      that array to discover more contiguous MObjSubs that all belong
+    #      to the same character. The whole run is folded into a single
+    #      `<name>.mobjsub.c` array.
+    #
+    #   2. Each `DObjDesc <name>` entry's array of entries has a `.dl`
+    #      field (+0x4 in each entry) that may point at a display list.
+    #      The DL extends to the first 0xDF terminator and is emitted as
+    #      `<name>.dl.c`. We then scan the DL for G_VTX (cmd 0x01)
+    #      commands; the lowest reloc'd target inside the DL is the start
+    #      of a vertex pool that runs up to the DL itself, emitted as
+    #      `<name>.vtx.c`.
+    #
+    #   3. The pointer array from (1) becomes
+    #      `<name>.MObjSubPtrArray.data.c` (a small DataBlock that
+    #      includes any leading zero padding).
+    #
+    # Anything not classified by discovery falls back to the existing
+    # `gap_*.data.c` blob path.
+
+    discovered_extras = []  # list of (block_type, name, offset, extra)
+    mobjsub_array_groups = {}  # {first_offset: count}
+    mobjsub_ptr_arrays = {}    # {mobjsub_offset: (start, size)}
+    discovery_consumed = set()  # offsets to skip in the main dispatch
+
+    def looks_like_mobjsub(off):
+        """Sanity check: pad00 is zero and the bytes parse as an MObjSub."""
+        if off < 0 or off + MOBJSUB_SIZE > len(data):
+            return False
+        m = parse_mobjsub(data, off)
+        return m is not None and m['pad00'] == 0
+
+    # Phase 1: MObjSub array discovery via .sprites pointer chain
+    for bt, bn, bo in valid_entries:
+        if bt != 'MObjSub' or bn == '-':
+            continue
+        sprites_off = bo + 0x4
+        if sprites_off not in reloc_map:
+            continue
+        ptr_array_addr = reloc_map[sprites_off][1]
+        # Walk a contiguous run of u32 reloc entries starting at the
+        # pointer array address. Each entry should target an MObjSub+0x8.
+        chained = []
+        chain_addr = ptr_array_addr
+        while chain_addr in reloc_map:
+            target = reloc_map[chain_addr][1]
+            mobjsub_start = target - 0x8
+            if not looks_like_mobjsub(mobjsub_start):
+                break
+            chained.append(mobjsub_start)
+            chain_addr += 4
+        if not chained:
+            continue
+        # Combine the named MObjSub with the chained ones; require all to
+        # be contiguous in memory (each starts where the last ended).
+        all_offsets = sorted(set([bo] + chained))
+        contiguous = all(all_offsets[i + 1] - all_offsets[i] == MOBJSUB_SIZE
+                         for i in range(len(all_offsets) - 1))
+        if not contiguous or len(all_offsets) < 2:
+            continue
+        if all_offsets[0] != bo:
+            # Named MObjSub isn't the first one — skip; we'd need to
+            # rename, which is more invasive than this discovery wants.
+            continue
+        mobjsub_array_groups[bo] = len(all_offsets)
+        for off in all_offsets[1:]:
+            discovery_consumed.add(off)
+
+        # The pointer array lives at ptr_array_addr. There's commonly some
+        # leading zero padding between the last MObjSub's end and the start
+        # of the array (file 35: 8 bytes; other files: 0–12). The array
+        # itself is N entries + 1 NULL terminator. We roll the padding +
+        # ptr array into the Mario.mobjsub.c file as trailing u32 data,
+        # so the whole Mario group is one self-contained source file.
+        array_total_words = len(chained) + 1  # +1 NULL terminator
+        array_byte_size = array_total_words * 4
+        array_with_pad_start = ptr_array_addr
+        prev_end = all_offsets[-1] + MOBJSUB_SIZE
+        while (array_with_pad_start > prev_end
+               and array_with_pad_start - 4 >= prev_end
+               and data[array_with_pad_start - 4:array_with_pad_start] == b'\x00\x00\x00\x00'):
+            array_with_pad_start -= 4
+        full_size = (ptr_array_addr - array_with_pad_start) + array_byte_size
+        mobjsub_ptr_arrays[bo] = (array_with_pad_start, full_size)
+
+        # Pre-register the ptr array in sym_map so .sprites field
+        # resolution inside emit_mobjsub_block produces a labeled
+        # expression like `(u8*)dFoo_Mario_MObjSubPtrArray + 0x8` instead
+        # of the raw chain encoding.
+        ptr_array_var = f"{prefix}_{bn}_MObjSubPtrArray".replace('.', '_')
+        sym_map.add(ptr_array_var, array_with_pad_start,
+                    array_with_pad_start + full_size)
+
+    # Phase 2: DL + Vtx discovery via DObjDesc.dl pointer chain
+    #
+    # If the file already has DisplayList description entries, they've
+    # been hand-curated and we should stay out of the way — otherwise
+    # discovery would re-classify random data as DLs inside regions that
+    # the descriptions already account for.
+    has_existing_dls = any(
+        bt == 'DisplayList' for bt, bn, bo in valid_entries)
+    seen_dls = set()
+    # Track how many discovered DLs we've seen per owner name so we can
+    # disambiguate when a DObjDesc array references multiple distinct
+    # display lists (which would otherwise produce colliding filenames
+    # like two `<owner>.dl.c` or `<owner>_post.data.c` entries).
+    owner_dl_counts = {}
+
+    for bt, bn, bo in (valid_entries if not has_existing_dls else []):
+        if bt != 'DObjDesc' or bn == '-':
+            continue
+        # Walk this DObjDesc array (terminated by id == -1, capped at next entry)
+        pos = bo
+        while pos + DOBJDESC_SIZE <= len(data):
+            d = parse_dobjdesc(data, pos)
+            if d is None or not is_reasonable_dobjdesc(d):
+                break
+            dl_field_off = pos + 4
+            if dl_field_off in reloc_map:
+                dl_addr = reloc_map[dl_field_off][1]
+                if dl_addr not in seen_dls and dl_addr + 8 <= len(data):
+                    seen_dls.add(dl_addr)
+                    # Find DF terminator AND validate that this really
+                    # looks like a display list — if we scan too many
+                    # "commands" with unknown/out-of-range bytes before
+                    # hitting DF, treat it as a false positive and skip.
+                    # Real DL starts have well-known opening bytes like
+                    # 0xE7 (PipeSync), 0xFC (SetCombine), 0xDE (DisplayList
+                    # call), 0xD7 (SPTexture), 0x01 (Vertex), etc.
+                    first_cmd = struct.unpack('>I', data[dl_addr:dl_addr + 4])[0] >> 24
+                    # Real F3DEX display lists almost always start with a
+                    # setup/sync command rather than a noop or vertex load.
+                    # We deliberately EXCLUDE 0x00 (G_NOOP) and 0x01 (G_VTX)
+                    # from this list because they're common bit patterns in
+                    # non-DL data (e.g. DObjDesc entries with zero dl pointers
+                    # or 16-byte-aligned material tables whose first word
+                    # happens to be 0).
+                    VALID_DL_START_CMDS = {
+                        0xD7,  # G_TEXTURE
+                        0xD9,  # G_GEOMETRYMODE
+                        0xDA,  # G_MTX
+                        0xDB,  # G_MOVEWORD
+                        0xDC,  # G_MOVEMEM
+                        0xDE,  # G_DL
+                        0xDF,  # G_ENDDL (empty DL)
+                        0xE2,  # G_SETOTHERMODE_L
+                        0xE3,  # G_SETOTHERMODE_H
+                        0xE6,  # G_RDPLOADSYNC
+                        0xE7,  # G_RDPPIPESYNC
+                        0xE8,  # G_RDPTILESYNC
+                        0xE9,  # G_RDPFULLSYNC
+                        0xEF,  # G_SETOTHERMODE
+                        0xF8,  # G_SETFILLCOLOR
+                        0xFB,  # G_SETENVCOLOR
+                        0xFC,  # G_SETCOMBINE
+                        0xFD,  # G_SETTIMG
+                    }
+                    dl_end = None
+                    if first_cmd in VALID_DL_START_CMDS:
+                        for p in range(dl_addr, len(data) - 7, GFX_SIZE):
+                            w0 = struct.unpack('>I', data[p:p + 4])[0]
+                            if (w0 >> 24) == 0xDF:
+                                dl_end = p + GFX_SIZE
+                                break
+                            # Bail early if we've walked too far without
+                            # finding a terminator — real DLs aren't huge.
+                            if p - dl_addr > 0x4000:
+                                dl_end = None
+                                break
+                    if dl_end is not None:
+                        # Disambiguate: first DL under an owner uses the
+                        # plain owner name, subsequent ones append _N.
+                        idx = owner_dl_counts.get(bn, 0)
+                        owner_dl_counts[bn] = idx + 1
+                        dl_name = bn if idx == 0 else f"{bn}_{idx}"
+                        discovered_extras.append(
+                            ('DisplayList', dl_name, dl_addr, None))
+                        # Scan for G_VTX commands and find vertex pool extents
+                        vtx_targets = set()
+                        for p in range(dl_addr, dl_end, GFX_SIZE):
+                            w0 = struct.unpack('>I', data[p:p + 4])[0]
+                            cmd = (w0 >> 24) & 0xFF
+                            if cmd == 0x01:  # G_VTX
+                                if (p + 4) in reloc_map:
+                                    vtx_targets.add(reloc_map[p + 4][1])
+                        if vtx_targets:
+                            vtx_start = min(vtx_targets)
+                            if vtx_start < dl_addr:
+                                vtx_count = (dl_addr - vtx_start) // VTX_SIZE
+                                discovered_extras.append(
+                                    ('Vtx', dl_name, vtx_start, vtx_count))
+            pos += DOBJDESC_SIZE
+            if d['id'] == -1:
+                break
+
+    # Merge discovered extras into valid_entries (and into extras_payload).
+    for bt, bn, bo, ex in discovered_extras:
+        valid_entries.append((bt, bn, bo))
+        if ex is not None:
+            extras_payload[(bt, bo)] = ex
+    valid_entries.sort(key=lambda x: x[2])
+
     # ── Palette pre-scan ─────────────────────────────────────────────────
     # Palettes (16-color RGBA5551, 32 bytes each) come from two sources:
     #   1. Description LUT entries — explicitly named palettes the engine
@@ -1687,10 +1995,16 @@ def generate(file_id, data, file_name, entries, reloc_map, csv_entry,
             cursor = emit_dobjdesc_block(offset, block_name, next_off)
 
         elif block_type == 'MObjSub':
+            # Discovered MObjSubs that are folded into another MObjSub's
+            # array (via .sprites pointer chain) get skipped here — the
+            # owning entry's emit_mobjsub_block call writes all of them.
+            if offset in discovery_consumed:
+                continue
             if cursor < offset:
                 emit_pad(cursor, offset)
                 emit_relocs_in_range(cursor, offset)
-            cursor = emit_mobjsub_block(offset, block_name)
+            count = mobjsub_array_groups.get(offset, 1)
+            cursor = emit_mobjsub_block(offset, block_name, count=count)
 
         elif block_type == 'Vtx':
             # Extras-only block. The 4th tuple element (count) is required —

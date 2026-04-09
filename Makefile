@@ -121,7 +121,7 @@ OBJCOPY         := $(BINUTILS_PREFIX)-objcopy
 OBJDUMP         := $(BINUTILS_PREFIX)-objdump
 STRIP           := $(BINUTILS_PREFIX)-strip
 ASM_PROC        := $(PYTHON) tools/asm-processor/build.py
-CCFLAGS         := -c -G 0 -non_shared -Xfullwarn -Xcpluscomm $(INCLUDES) $(DEFINES) -Wab,-r4300_mul -woff 649,838,712,516,624,568
+CCFLAGS         := -c -G 0 -non_shared -Xfullwarn -Xcpluscomm $(INCLUDES) $(DEFINES) -Wab,-r4300_mul -woff 649,838,712,516,624,568,763
 ASFLAGS         := -EB -I include -march=vr4300 -mabi=32
 
 ifeq ($(VERSION),jp)

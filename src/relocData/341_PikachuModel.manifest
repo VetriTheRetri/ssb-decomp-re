@@ -5,6 +5,8 @@
 gap_0x0000.data.c
 ThunderTrail.mobjsub.c
 gap_0x9498.data.c
+ThunderTrail.vtx.c
+ThunderTrail.dl.c
 ThunderTrail.dobjdesc.c
 gap_0x9634.data.c
 Stock_tex.data.c

@@ -5,6 +5,8 @@
 gap_0x0000.data.c
 FalconKick.mobjsub.c
 gap_0x09D8.data.c
+FalconKick.vtx.c
+FalconKick.dl.c
 FalconKick.dobjdesc.c
 pad 4
 FalconKick_AnimJoint.data.c

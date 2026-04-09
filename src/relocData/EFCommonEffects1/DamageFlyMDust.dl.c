@@ -1,0 +1,17 @@
+/* DisplayList: DamageFlyMDust @ 0xCA58 (112 bytes) */
+Gfx dEFCommonEffects1_DamageFlyMDust_DisplayList[] = {
+	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
+	{ { 0xD9DDFFFF, 0x00000000 } },  /* cmd 0xD9 */
+	{ { 0xFC121824, 0xFF33FFFF } },  /* cmd 0xFC */
+	{ { 0xDE000000, 0x0E000000 } },  /* cmd 0xDE */
+	{ { 0xF5700000, 0x07014050 } },  /* cmd 0xF5 */
+	{ { 0xE6000000, 0x00000000 } },  /* cmd 0xE6 */
+	{ { 0xF3000000, 0x073FF100 } },  /* cmd 0xF3 */
+	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
+	{ { 0xF5701000, 0x00094250 } },  /* cmd 0xF5 */
+	{ { 0x01004008, (unsigned int)dEFCommonEffects1_DamageFlyMDust_Vtx } },  /* cmd 0x01 */
+	{ { 0x06060402, 0x00000602 } },  /* cmd 0x06 */
+	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
+	{ { 0xD9FFFFFF, 0x00220000 } },  /* cmd 0xD9 */
+	{ { 0xDF000000, 0x00000000 } },  /* cmd 0xDF */
+};

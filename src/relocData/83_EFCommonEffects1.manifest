@@ -22,6 +22,8 @@ CommonSpark_AnimJoint.data.c
 CommonSpark_MatAnimJoint.data.c
 DamageFlyMDust.mobjsub.c
 gap_0xC9F0.data.c
+DamageFlyMDust.vtx.c
+DamageFlyMDust.dl.c
 gap_0xCAC8.data.c
 DamageFlyMDust_AnimJoint.data.c
 DamageFlyMDust_MatAnimJoint.data.c

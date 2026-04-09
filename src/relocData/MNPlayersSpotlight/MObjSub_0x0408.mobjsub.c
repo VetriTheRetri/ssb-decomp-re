@@ -1,5 +1,5 @@
 /* MObjSub: - @ 0x408 */
-MObjSub dMNPlayersSpotlight_MObjSub_0x0408_MObjSub = {
+MObjSub dMNPlayersSpotlight_MObjSub_0x0408 = {
 	0x0000,
 	0x00, 0x00,
 	(void**)0x01220122,

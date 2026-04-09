@@ -2,7 +2,7 @@
 MObjSub dYoshiSpecial2_EntryEgg_MObjSub = {
 	0x0119,
 	0x01, 0x3A,
-	(void**)0x011A0098,
+	(void**)((u8*)dYoshiSpecial2_gap_0x0000 + 0x260),
 	0x011D, 0x0016, 0x0000, 0x0000,
 	514,
 	3.416359210050968e-38f, 2.938735877055719e-39f,

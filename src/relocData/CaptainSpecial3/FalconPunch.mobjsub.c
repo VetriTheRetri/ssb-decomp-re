@@ -2,7 +2,7 @@
 MObjSub dCaptainSpecial3_FalconPunch_MObjSub = {
 	0x01A5,
 	0x01, 0xC6,
-	(void**)0x01A60124,
+	(void**)((u8*)dCaptainSpecial3_gap_0x0000 + 0x490),
 	0x01A7, 0x00A2, 0x01A9, 0x0020,
 	514,
 	7.273607274374296e-38f, 2.938735877055719e-39f,

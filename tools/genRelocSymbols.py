@@ -301,7 +301,8 @@ def compute_spritelist_offsets(file_id, file_name, spritelist_path,
 
 # ── Main symbol assembly ────────────────────────────────────────────────
 
-def collect_all_symbols(desc_path, reloc_dir, search_paths, converted_ids=None):
+def collect_all_symbols(desc_path, reloc_dir, search_paths, converted_ids=None,
+                        us_desc_path=None):
     """Walk descriptions + manifests/spritelists, build the full symbol map.
 
     Args:
@@ -312,6 +313,11 @@ def collect_all_symbols(desc_path, reloc_dir, search_paths, converted_ids=None):
                        file with a manifest on disk gets computed offsets — this
                        is the original behavior used by US builds where on-disk
                        manifest existence already implies "converted".
+        us_desc_path:  path to the US descriptions file. When the active version
+                       is JP, this is used to derive cross-version aliases:
+                       any JP file whose name matches a US-side name also
+                       gets a `ll_<US_id>_FileID = <JP_id>` symbol so existing
+                       C code that references files by US id continues to work.
 
     Returns:
         file_count: int
@@ -326,36 +332,63 @@ def collect_all_symbols(desc_path, reloc_dir, search_paths, converted_ids=None):
     for fid, btype, bname, boff in all_block_entries:
         blocks_by_file.setdefault(fid, []).append((btype, bname, boff))
 
+    # Build US name → US id map for cross-version aliasing. When we're
+    # generating symbols for JP, this lets us emit `ll_<US_id>_FileID` for
+    # any JP file whose name matches a US-side name. This replaces the
+    # historical placeholder mechanism (JP names like `_500_` whose symbol
+    # form `ll_500_FileID` happened to look like the US legacy form) with
+    # something more explicit. When generating US symbols, this map is
+    # only used for self-consistency.
+    us_name_to_id = {}
+    if us_desc_path is not None and os.path.abspath(us_desc_path) != os.path.abspath(desc_path):
+        _, us_id_to_name, _ = parse_descriptions(us_desc_path)
+        for uid, uname in us_id_to_name.items():
+            if uname:
+                us_name_to_id[uname] = uid
+
     # File ID symbols
-    # When a file has a real name, emit BOTH the named symbol (e.g.
-    # `llFTMarioAnimWalk1FileID`) AND the legacy anonymous form
-    # (`ll_500_FileID`) so existing C source that referenced the file
-    # by id continues to compile without changes. New code should use
-    # the named form.
+    # For each file we emit:
+    #   1. The primary symbol — `ll<Name>FileID` if named, else `ll_<id>_FileID`
+    #   2. The legacy `ll_<active_id>_FileID` form if it doesn't already collide,
+    #      so existing C source compiles without changes.
+    #   3. (JP only) `ll_<US_id>_FileID` for any JP file whose name matches
+    #      a US-side name — the cross-version alias. C code can reference
+    #      files by their US id and it'll resolve correctly on both versions.
     #
-    # Two complications:
-    #   1. JP descriptions use placeholder "names" like `_500_` which
-    #      file_id_symbol() turns into `ll_500_FileID`. That's a JP
-    #      cross-version alias — `ll_500_FileID` on JP resolves to
-    #      whichever JP file id has the placeholder, NOT to JP file 500.
-    #   2. So before emitting an anonymous fallback `ll_<fid>_FileID`,
-    #      we need to check that nothing else has already claimed that
-    #      symbol name (which would happen if any file's placeholder
-    #      name happens to be `_<fid>_`).
+    # Some JP files still use the legacy `_NNN_` placeholder when neither
+    # version has a real name. file_id_symbol() turns those into
+    # `ll_NNN_FileID` directly so the alias works without a name lookup.
     file_id_symbols = []
     used_names = set()
+
     # First pass: collect all primary symbol names so we can dedup
     for fid in range(file_count):
         sym = file_id_symbol(fid, file_id_to_name)
         used_names.add(sym)
-    # Second pass: emit primary + anonymous fallback if it doesn't collide
+
+    # Second pass: emit primary, anonymous fallback, and cross-version alias
     for fid in range(file_count):
         sym = file_id_symbol(fid, file_id_to_name)
         file_id_symbols.append((sym, fid))
+
+        # Anonymous fallback `ll_<fid>_FileID` so legacy code that referenced
+        # this file by its active-version id still resolves.
         anon = f"ll_{fid}_FileID"
         if sym != anon and anon not in used_names:
             file_id_symbols.append((anon, fid))
             used_names.add(anon)
+
+        # Cross-version alias: if this file's name matches a US name at a
+        # different file id (i.e. we're on JP and the US side has the same
+        # content at a different position), also emit `ll_<US_id>_FileID`.
+        name = file_id_to_name.get(fid)
+        if name and name in us_name_to_id:
+            us_id = us_name_to_id[name]
+            if us_id != fid:
+                cross = f"ll_{us_id}_FileID"
+                if cross not in used_names:
+                    file_id_symbols.append((cross, fid))
+                    used_names.add(cross)
 
     # For each file, decide whether to use computed offsets (manifest exists)
     # or fall back to description offsets.
@@ -496,9 +529,17 @@ def main():
     if args.converted_files is not None:
         converted_ids = {int(x) for x in args.converted_files.split() if x}
 
+    # For cross-version aliasing, auto-discover the US descriptions file as
+    # a sibling of the active descriptions file.
+    us_desc_path = os.path.join(os.path.dirname(args.descriptions),
+                                "relocFileDescriptions.us.txt")
+    if not os.path.exists(us_desc_path):
+        us_desc_path = None
+
     file_count, file_id_symbols, block_symbols, converted, fallback = \
         collect_all_symbols(args.descriptions, args.reloc_dir, search_paths,
-                            converted_ids=converted_ids)
+                            converted_ids=converted_ids,
+                            us_desc_path=us_desc_path)
 
     write_outputs(file_count, file_id_symbols, block_symbols,
                   args.header, args.linker)

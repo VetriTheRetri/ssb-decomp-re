@@ -89,7 +89,13 @@ def parse_reloc_chain(data, start_word):
     return entries
 
 
-def parse_file_descriptions(desc_path, file_id):
+def parse_all_descriptions(desc_path, file_id):
+    """Parse every block description for a file id, sorted by offset.
+
+    Unlike parse_file_descriptions which filters to sprites only, this
+    returns all block types so callers can detect non-sprite blocks (LUT,
+    DObjDesc, etc.) that affect texture region boundaries.
+    """
     entries = []
     if not desc_path or not os.path.exists(desc_path):
         return entries
@@ -109,7 +115,44 @@ def parse_file_descriptions(desc_path, file_id):
             bt, bn, bo = line.split(' ')
             offset = int(bo, 16) if bo.startswith('0x') else int(bo)
             entries.append((bt, bn, offset))
-    return [(t, n, o) for t, n, o in sorted(entries, key=lambda x: x[2]) if t == 'Sprite']
+    return sorted(entries, key=lambda x: x[2])
+
+
+def parse_file_descriptions(desc_path, file_id):
+    return [(t, n, o) for t, n, o in parse_all_descriptions(desc_path, file_id)
+            if t == 'Sprite']
+
+
+def split_sprites_in_subdir(file_id):
+    """Find sprite names that use the split _tex.data.c layout.
+
+    A split sprite has its texture data in a sibling `<Name>_tex.data.c` file
+    (so palettes can sit at their original physical position between the
+    texture and the bitmap array). The texture extraction must truncate at
+    palette boundaries for these sprites only — old-style sprites that keep
+    everything in a single `.sprite.c` need the full untruncated region.
+
+    Returns a set of sprite base names (e.g. {"RedCard", "GrayCard"}).
+    """
+    import glob
+    # Find the file's source subdir name
+    candidates = glob.glob(os.path.join(PROJECT_DIR, "src", "relocData",
+                                         f"{file_id}_*.manifest"))
+    candidates += glob.glob(os.path.join(PROJECT_DIR, "src", "relocData",
+                                          f"{file_id}.manifest"))
+    if not candidates:
+        return set()
+    base = os.path.basename(candidates[0]).rsplit('.', 1)[0]
+    parts = base.split('_', 1)
+    subdir_name = parts[1] if len(parts) == 2 and parts[0].isdigit() else parts[0]
+    subdir = os.path.join(PROJECT_DIR, "src", "relocData", subdir_name)
+    if not os.path.isdir(subdir):
+        return set()
+    split = set()
+    for f in os.listdir(subdir):
+        if f.endswith('_tex.data.c'):
+            split.add(f[:-len('_tex.data.c')])
+    return split
 
 
 def parse_file_id_to_name(desc_path):
@@ -341,6 +384,29 @@ def extract_sprites(file_id, output_dir, desc_path=None):
         print(f"No sprite descriptions for file {file_id}")
         return
 
+    # Identify which sprites in this file use the split _tex.data.c layout
+    # (palettes live in separate .palette.c blocks, texture must truncate at
+    # the first palette inside the sprite's range). Old-style sprites keep
+    # everything in one .sprite.c and need the full untruncated tex region.
+    split_sprites = split_sprites_in_subdir(file_id)
+
+    # Pre-collect all palette offsets in the file (LUT description entries
+    # plus Sprite.LUT reloc targets). Used per-sprite to find the first
+    # palette inside that sprite's tex range.
+    palette_offsets = set()
+    if split_sprites:
+        all_entries = parse_all_descriptions(desc_path, file_id)
+        for ent_type, _ent_name, ent_off in all_entries:
+            if ent_type == 'LUT':
+                palette_offsets.add(ent_off)
+        for _, _name, sp_off in sprite_entries:
+            sp_check = parse_sprite(data, sp_off)
+            if sp_check is None:
+                continue
+            lut_target = relocs.get(sp_off + 32)
+            if lut_target is not None and lut_target + 32 <= len(data):
+                palette_offsets.add(lut_target)
+
     os.makedirs(output_dir, exist_ok=True)
 
     for _, name, sp_off in sprite_entries:
@@ -375,10 +441,17 @@ def extract_sprites(file_id, output_dir, desc_path=None):
             continue
 
         # The texture region spans from the first tile's pixel data to the
-        # bitmap array start, including any inter-tile padding/DL terminators
-        # for multi-bitmap sprites. This matches genRelocDataC.py exactly so
-        # the .inc.c file is byte-identical to what gets emitted there.
-        tex_size = bitmap_off - pixel_off
+        # bitmap array start. For sprites that use the split _tex.data.c
+        # layout we cap it at the first palette inside that range — palettes
+        # get emitted as separate .palette.c blocks, so leaving them in tex
+        # would double the bytes. Old-style sprites keep palettes embedded
+        # and need the full region.
+        tex_end = bitmap_off
+        if name in split_sprites:
+            for p_off in palette_offsets:
+                if pixel_off < p_off < tex_end:
+                    tex_end = p_off
+        tex_size = tex_end - pixel_off
         pixel_data_combined = data[pixel_off:pixel_off + tex_size]
 
         # Total visible height for the PNG: sum of all tiles' actualHeight

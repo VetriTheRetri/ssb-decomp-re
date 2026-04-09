@@ -117,8 +117,19 @@ def parse_sprite_info(sprite_c_path, search_paths=(), strict=True):
     return size, has_dl
 
 
-def compute_data_c_size(data_c_path):
-    """Parse a .data.c file (raw u32 or u8 array) and return its byte size."""
+def compute_data_c_size(data_c_path, search_paths=()):
+    """Parse a .data.c file and return its byte size.
+
+    Handles three declaration forms (and sums them all):
+      - Literal arrays:    u8/u16/u32/u64 X[] = { 0xAB, 0xCD, ... };
+      - Texture includes:  u8 X[] = { #include <Subdir/Name.fmt.inc.c> };
+      - DL terminators:    Gfx X[] = { gsSPEndDisplayList() };
+
+    The texture-include form is used by `<Name>_tex.data.c` files emitted
+    when a sprite has palettes inside its byte range — the texture data
+    is split out from .sprite.c so the palette blocks can sit at their
+    original physical location between the texture and the bitmap array.
+    """
     with open(data_c_path) as f:
         content = f.read()
 
@@ -126,18 +137,58 @@ def compute_data_c_size(data_c_path):
     # reloc annotations like "/* reloc: +0x0->0x0008 */")
     content = re.sub(r'/\*.*?\*/', '', content, flags=re.DOTALL)
 
-    # Look for the array declaration to determine element size
-    m = re.search(r'(u8|u16|u32|u64)\s+\w+\[\]\s*=\s*\{([^}]*)\}', content,
-                  re.DOTALL)
-    if not m:
-        print(f"Error: can't parse {data_c_path}", file=sys.stderr)
-        sys.exit(1)
-    elem_type = m.group(1)
-    body = m.group(2)
+    file_dir = os.path.dirname(data_c_path)
+    total = 0
 
-    elem_count = len(re.findall(r'0x[0-9A-Fa-f]+', body))
-    elem_size = {'u8': 1, 'u16': 2, 'u32': 4, 'u64': 8}[elem_type]
-    return elem_count * elem_size
+    # DL terminators: 8 bytes each
+    dl_count = len(re.findall(r'Gfx\s+\w+\[\]\s*=\s*\{\s*gsSPEndDisplayList',
+                              content))
+    total += dl_count * DL_TERMINATOR_SIZE
+
+    # Texture-include arrays: u8 X[] = { #include <...> };
+    for m in re.finditer(r'u8\s+\w+\[\]\s*=\s*\{\s*#include\s+[<"]([^>"]+)[>"]',
+                         content):
+        inc_file = find_inc_file(m.group(1), file_dir, search_paths)
+        if inc_file is None:
+            print(f"Error: {data_c_path} references missing {m.group(1)}",
+                  file=sys.stderr)
+            sys.exit(1)
+        total += count_hex_values(inc_file)
+
+    # Literal arrays: count bytes from each one. Match the array body
+    # explicitly so we don't double-count #include arrays.
+    for m in re.finditer(
+            r'(u8|u16|u32|u64)\s+\w+\[(?:\d*)\]\s*=\s*\{([^}]*)\}',
+            content, re.DOTALL):
+        body = m.group(2)
+        if '#include' in body:
+            continue  # already counted above
+        elem_type = m.group(1)
+        elem_count = len(re.findall(r'0x[0-9A-Fa-f]+', body))
+        elem_size = {'u8': 1, 'u16': 2, 'u32': 4, 'u64': 8}[elem_type]
+        total += elem_count * elem_size
+
+    if total == 0:
+        print(f"Error: can't parse {data_c_path} (no recognized declarations)",
+              file=sys.stderr)
+        sys.exit(1)
+
+    return total
+
+
+def compute_palette_c_size(palette_c_path):
+    """A .palette.c file is always a 16-color RGBA5551 palette = 32 bytes.
+
+    We still validate that the file looks like a palette (u16 X[16]) but
+    the byte count is fixed.
+    """
+    with open(palette_c_path) as f:
+        content = f.read()
+    if not re.search(r'u16\s+\w+\[16\]\s*=\s*\{', content):
+        print(f"Error: {palette_c_path} doesn't look like a 16-color palette",
+              file=sys.stderr)
+        sys.exit(1)
+    return 32
 
 
 def compute_dobjdesc_c_size(dobjdesc_c_path):
@@ -171,9 +222,11 @@ def compute_block_size(block_path, search_paths=()):
     if block_path.endswith('.sprite.c'):
         return parse_sprite_info(block_path, search_paths)[0]
     if block_path.endswith('.data.c'):
-        return compute_data_c_size(block_path)
+        return compute_data_c_size(block_path, search_paths)
     if block_path.endswith('.dobjdesc.c'):
         return compute_dobjdesc_c_size(block_path)
+    if block_path.endswith('.palette.c'):
+        return compute_palette_c_size(block_path)
     print(f"Error: unknown block type: {block_path}", file=sys.stderr)
     sys.exit(1)
 

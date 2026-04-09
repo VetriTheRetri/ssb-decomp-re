@@ -1,0 +1,176 @@
+# Block manifest for relocData file 17 (MNPlayersCommon)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+ManText.sprite.c
+pad 12
+ComText.sprite.c
+pad 12
+Colon0Text.sprite.c
+pad 12
+Colon1Text.sprite.c
+pad 12
+Colon2Text.sprite.c
+pad 12
+Colon3Text.sprite.c
+pad 12
+Colon4Text.sprite.c
+pad 12
+PlayerText.sprite.c
+pad 4
+1Text.sprite.c
+pad 12
+2Text.sprite.c
+pad 12
+3Text.sprite.c
+pad 12
+4Text.sprite.c
+pad 12
+1PText.sprite.c
+pad 4
+2PText.sprite.c
+pad 4
+3PText.sprite.c
+pad 4
+4PText.sprite.c
+pad 4
+CPText.sprite.c
+pad 4
+HandicapText.sprite.c
+pad 4
+CPLevelText.sprite.c
+pad 4
+PushText.sprite.c
+pad 4
+StartText.sprite.c
+pad 4
+ButtonText.sprite.c
+pad 4
+PressText.sprite.c
+pad 4
+MarioText.sprite.c
+pad 4
+LuigiText.sprite.c
+pad 4
+DKText.sprite.c
+pad 4
+SamusText.sprite.c
+pad 4
+FoxText.sprite.c
+pad 4
+KirbyText.sprite.c
+pad 4
+LinkText.sprite.c
+pad 12
+YoshiText.sprite.c
+pad 4
+PikachuText.sprite.c
+pad 4
+NessText.sprite.c
+pad 12
+CaptainFalconText.sprite.c
+pad 4
+JigglypuffText.sprite.c
+pad 4
+InfinityDark.sprite.c
+pad 12
+TimeSelector.sprite.c
+pad 12
+StockSelector.sprite.c
+pad 12
+0Dark.sprite.c
+pad 4
+1Dark.sprite.c
+pad 12
+2Dark.sprite.c
+pad 4
+3Dark.sprite.c
+pad 4
+4Dark.sprite.c
+pad 4
+5Dark.sprite.c
+pad 4
+6Dark.sprite.c
+pad 4
+7Dark.sprite.c
+pad 4
+8Dark.sprite.c
+pad 4
+9Dark.sprite.c
+pad 4
+HmnLabel.sprite.c
+pad 4
+CPLabel.sprite.c
+pad 4
+NALabel.sprite.c
+pad 4
+CursorHandPoint.sprite.c
+pad 4
+CursorHandGrab.sprite.c
+pad 4
+CursorHandHover.sprite.c
+pad 4
+1PTextGradient.sprite.c
+pad 4
+2PTextGradient.sprite.c
+pad 4
+3PTextGradient.sprite.c
+pad 4
+4PTextGradient.sprite.c
+pad 4
+1PPuck.sprite.c
+pad 4
+2PPuck.sprite.c
+pad 4
+3PPuck.sprite.c
+pad 4
+4PPuck.sprite.c
+pad 4
+CPPuck.sprite.c
+pad 4
+SmashLogoCardLeft.sprite.c
+pad 12
+SmashLogoCardRight.sprite.c
+pad 12
+RedLabel.sprite.c
+pad 4
+GreenLabel.sprite.c
+pad 4
+BlueLabel.sprite.c
+pad 12
+ArrowL_tex.data.c
+palette_0xECB8.palette.c
+ArrowL.sprite.c
+pad 12
+ArrowR_tex.data.c
+palette_0xED98.palette.c
+ArrowR.sprite.c
+pad 4
+ReadyToFightText.sprite.c
+pad 4
+ReadyBanner.sprite.c
+pad 20
+RedCard_tex.data.c
+GateMan1P.palette.c
+pad 8
+GateMan2P.palette.c
+pad 8
+GateMan4P.palette.c
+pad 8
+GateMan3P.palette.c
+RedCard.sprite.c
+pad 20
+GrayCard_tex.data.c
+GateCom1P.palette.c
+pad 8
+GateCom2P.palette.c
+pad 8
+GateCom4P.palette.c
+pad 8
+GateCom3P.palette.c
+GrayCard.sprite.c
+pad 20
+BackButton_tex.data.c
+palette_0x11598.palette.c
+BackButton.sprite.c
+pad 4

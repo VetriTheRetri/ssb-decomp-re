@@ -315,6 +315,34 @@ def write_texture_inc(data, start, size, inc_path):
         f.write("\n".join(inc_lines) + "\n")
 
 
+def write_palette_png(colors_u16, png_path):
+    """Write a 16x1 PNG strip from 16 RGBA5551 palette colors.
+
+    Each palette entry becomes one pixel in the strip; the strip is upscaled
+    16x vertically (so the file is 16x16 instead of 16x1) to make it visible
+    in image viewers without zooming.
+    """
+    try:
+        import png as pnglib
+    except ImportError:
+        return
+
+    rgba_row = []
+    for c in colors_u16:
+        r = ((c >> 11) & 0x1F) * 255 // 31
+        g = ((c >> 6) & 0x1F) * 255 // 31
+        b = ((c >> 1) & 0x1F) * 255 // 31
+        a = (c & 1) * 255
+        rgba_row.extend([r, g, b, a])
+
+    rows = [rgba_row for _ in range(16)]  # 16x16 for visibility
+
+    w = pnglib.Writer(width=16, height=16, alpha=True, greyscale=False)
+    os.makedirs(os.path.dirname(png_path), exist_ok=True)
+    with open(png_path, 'wb') as f:
+        w.write(f, rows)
+
+
 def write_texture_png(data, start, width, width_img, height, bmfmt, bmsiz, png_path):
     """Write a PNG preview of texture data."""
     try:
@@ -331,12 +359,45 @@ def write_texture_png(data, start, width, width_img, height, bmfmt, bmsiz, png_p
         w.write(f, rgba_rows)
 
 
-def write_sprite_png(data, tiles, bmfmt, bmsiz, png_path):
+def deshuffle_texshuf_bytes(row_bytes_data, row_index, word_size=16):
+    """Undo the SP_TEXSHUF / N64 RDP byte interleave on an odd row.
+
+    The N64 RDP stores RGBA32 textures across TMEM's two 4 KB banks (R+G in
+    one, B+A in the other). For efficient row-pair access, every odd row
+    has its bytes swapped within each 16-byte unit — the two 8-byte halves
+    are exchanged. Even rows pass through unchanged.
+
+    For 4-/8-/16-bit formats use word_size=8 (the regular RDP swizzle).
+    The default of 16 matches the rgba32 case which is the only format
+    n64_to_rgba doesn't already unswizzle internally.
+    """
+    if row_index % 2 == 0:
+        return row_bytes_data
+    out = bytearray(len(row_bytes_data))
+    half = word_size // 2
+    for i in range(0, len(row_bytes_data), word_size):
+        chunk = row_bytes_data[i:i + word_size]
+        if len(chunk) == word_size:
+            out[i:i + half] = chunk[half:]
+            out[i + half:i + word_size] = chunk[:half]
+        else:
+            # Partial trailing word — leave as-is
+            out[i:i + len(chunk)] = chunk
+    return bytes(out)
+
+
+def write_sprite_png(data, tiles, bmfmt, bmsiz, png_path, texshuf=False,
+                     tlut_data=None):
     """Write a stitched PNG preview for a (possibly multi-tile) sprite.
 
     Each tile's pixel data is decoded to RGBA and stacked vertically.
-    Skips formats that cannot round-trip without extra info (CI - needs palette,
-    4c - compressed).
+    If texshuf is True, each tile's rows are de-interleaved from the
+    SP_TEXSHUF storage order before stitching.
+    For CI sprites, tlut_data should be the 32-byte palette bytes that
+    the sprite's LUT field points at — without it, CI sprites are
+    rendered as grayscale by index.
+    Skips 4c (compressed) format which can't be decoded without runtime
+    expansion.
     """
     try:
         import png as pnglib
@@ -344,20 +405,31 @@ def write_sprite_png(data, tiles, bmfmt, bmsiz, png_path):
     except ImportError:
         return
 
-    # Skip unsupported formats - CI needs a palette, 4c is compressed
     if bmsiz == 4:  # G_IM_SIZ_4c (compressed)
-        return
-    if bmfmt == 2:  # CI - no palette support yet
         return
 
     width_img = tiles[0]['bitmap']['width_img']
+    bpp = BPP[bmsiz]
+    row_byte_count = (width_img * bpp + 7) // 8
+    # n64_to_rgba already unswizzles 4/8/16-bit row pairs, but it explicitly
+    # skips RGBA32 (bmfmt=0, bmsiz=3) — those textures need the same odd-row
+    # byte swap manually applied here when SP_TEXSHUF is set.
+    needs_rgba32_unswizzle = texshuf and bmfmt == 0 and bmsiz == 3
     all_rows = []
     try:
         for tile in tiles:
             bm = tile['bitmap']
             h = bm['actualHeight']
             pixel_data = data[tile['tex_off']:tile['tex_off'] + tile['tex_size']]
-            rgba_rows = n64_to_rgba(pixel_data, width_img, h, width_img, bmfmt, bmsiz)
+            if needs_rgba32_unswizzle:
+                fixed = bytearray(len(pixel_data))
+                for r in range(h):
+                    src = pixel_data[r * row_byte_count:(r + 1) * row_byte_count]
+                    fixed[r * row_byte_count:(r + 1) * row_byte_count] = \
+                        deshuffle_texshuf_bytes(src, r)
+                pixel_data = bytes(fixed)
+            rgba_rows = n64_to_rgba(pixel_data, width_img, h, width_img,
+                                    bmfmt, bmsiz, tlut_data=tlut_data)
             all_rows.extend(rgba_rows)
     except Exception:
         return
@@ -473,7 +545,8 @@ def analyze_sprite_block(data, sp_off, reloc_map):
 # ── emit sprite block ───────────────────────────────────────────────────
 
 def emit_sprite_block(master_lines, data, sp_off, prefix, name, reloc_map, sym_map,
-                      extract_data, block_dir, asset_dir, file_subdir, reloc_entries):
+                      extract_data, block_dir, asset_dir, file_subdir, reloc_entries,
+                      lut_expr=None, palette_bytes=None):
     """Emit a complete sprite data block.
 
     Writes the sprite definition to <block_dir>/<name>.sprite.c containing:
@@ -541,7 +614,9 @@ def emit_sprite_block(master_lines, data, sp_off, prefix, name, reloc_map, sym_m
         # by git - the .png is the human-editable form.
         png_filename = f"{name}.{fmt_name}.png"
         png_path = os.path.join(asset_dir, png_filename)
-        write_sprite_png(data, tiles, sp['bmfmt'], sp['bmsiz'], png_path)
+        write_sprite_png(data, tiles, sp['bmfmt'], sp['bmsiz'], png_path,
+                         texshuf=bool(sp['attr'] & 0x0200),
+                         tlut_data=palette_bytes)
 
         # Write inc.c after, with mtime forced to be newer than the PNG
         write_texture_inc(data, tex_start, tex_size, inc_path)
@@ -609,8 +684,9 @@ def emit_sprite_block(master_lines, data, sp_off, prefix, name, reloc_map, sym_m
     sprite_lines.append(f"\t{attr_str},")
     sprite_lines.append(f"\t{sp['zdepth']},")
     sprite_lines.append(f"\t{sp['red']}, {sp['green']}, {sp['blue']}, {sp['alpha']},")
+    lut_str = lut_expr if lut_expr else f"(int*)0x{sp['LUT']:08X}"
     sprite_lines.append(f"\t{sp['startTLUT']}, {sp['nTLUT']},")
-    sprite_lines.append(f"\t(int*)0x{sp['LUT']:08X},")
+    sprite_lines.append(f"\t{lut_str},")
     sprite_lines.append(f"\t{sp['istart']}, {sp['istep']},")
     sprite_lines.append(f"\t{sp['nbitmaps']}, {sp['ndisplist']},")
     sprite_lines.append(f"\t{sp['bmheight']}, {sp['bmHreal']},")
@@ -828,6 +904,242 @@ def generate(file_id, data, file_name, entries, reloc_map, csv_entry,
             lines.append("")
         return pos
 
+    def emit_palette(p_offset, p_name):
+        """Write a .palette.c file for a 16-color RGBA5551 palette and
+        generate a 16x16 PNG preview alongside it.
+
+        The palette symbol is already in sym_map (registered during the
+        pre-scan), so reloc entries pointing here resolve to the right name.
+        """
+        var_name = palette_var_name(p_offset, p_name)
+
+        colors = struct.unpack('>16H', data[p_offset:p_offset + 32])
+
+        block_lines = []
+        title = f"{p_name} @ 0x{p_offset:X}" if p_name else f"@ 0x{p_offset:X}"
+        block_lines.append(f"/* Palette: {title} (16 colors RGBA5551) */")
+        block_lines.append(f"u16 {var_name}[16] = {{")
+        for i in range(0, 16, 8):
+            row = ", ".join(f"0x{c:04X}" for c in colors[i:i + 8])
+            block_lines.append(f"\t{row},")
+        block_lines.append("};")
+
+        filename = palette_filename(p_offset, p_name)
+        if extract_data:
+            write_block_file(block_dir, filename, block_lines)
+            png_suffix = p_name if p_name else f"palette_0x{p_offset:04X}"
+            png_path = os.path.join(asset_dir, f"{png_suffix}.palette.png")
+            write_palette_png(colors, png_path)
+            manifest.append(('block', filename))
+        else:
+            lines.extend(block_lines)
+            lines.append("")
+
+    def emit_sprite_with_palettes(sp_off, block_name, info, palettes):
+        """Emit a sprite that has palette blocks inside its texture range.
+
+        Original physical layout (preserved byte-for-byte):
+            [DL terminator?] [bitmap pixel data]
+            [palette 1] [pad] [palette 2] [pad] ... [palette N]
+            [bitmap array] [sprite struct]
+
+        We split this into THREE manifest entries:
+          1. <Name>_tex.data.c   — DL terminator + u8 _tex[] (just the
+                                    bitmap pixels, capped at first palette)
+          2. <name>.palette.c    — one per palette (with inter-palette pad)
+          3. <Name>.sprite.c     — extern decls + bitmap_array + sprite_struct
+
+        The .sprite.c emits the same Bitmap and Sprite struct fields as the
+        single-file path; the only differences are (a) it omits the u8 _tex
+        declaration and (b) it has `extern` declarations at the top.
+
+        Returns the byte offset after the sprite struct, or None on failure.
+        """
+        sp = info['sprite']
+        nbm = info['bitmaps_count']
+        tiles = info['tiles']
+        first_tile = tiles[0]
+
+        if block_name == '-':
+            local_name = f"sprite_0x{sp_off:04X}"
+        else:
+            local_name = block_name
+        var_base = f"{prefix}_{local_name}"
+        fmt_name = f"{TEX_FMTS.get(sp['bmfmt'], '?')}{TEX_SIZES.get(sp['bmsiz'], '?')}"
+
+        # ── Where does the texture actually end? ──
+        first_palette_off = palettes[0][0]
+        tex_start = first_tile['tex_off']
+        tex_end = first_palette_off  # cap before the first palette
+
+        # The DL terminator (if present) lives 8 bytes before tex_start.
+        dl_var = None
+        dl_off = first_tile['dl_off']
+        if dl_off is not None:
+            dl_var = f"{var_base}_dl"
+            sym_map.add(dl_var, dl_off, dl_off + 8)
+
+        # ── 1. Tex data file ──
+        tex_var = f"{var_base}_tex"
+        sym_map.add(tex_var, tex_start, tex_end)
+
+        bm0 = first_tile['bitmap']
+        total_h = sum(t['bitmap']['actualHeight'] for t in tiles)
+        w_info = (f"{bm0['width']}x{total_h}"
+                  if bm0['width'] == bm0['width_img']
+                  else f"{bm0['width']}({bm0['width_img']})x{total_h}")
+        nbm_info = f", {nbm} tiles" if nbm > 1 else ""
+
+        tex_lines = [
+            f"/* Texture data for sprite {local_name} */",
+            "/* Split out from .sprite.c so the palette blocks can sit at",
+            "   their original physical position between the texture and",
+            "   the bitmap array. */",
+            "",
+            '#include "relocdata_types.h"',
+            "",
+        ]
+        if dl_off is not None:
+            tex_lines.append(f"Gfx {dl_var}[] = {{ gsSPEndDisplayList() }};")
+            tex_lines.append("")
+        tex_lines.append(f"/* Texture: {local_name} ({w_info} {fmt_name}{nbm_info}) */")
+
+        if extract_data:
+            inc_filename = f"{local_name}.{fmt_name}.inc.c"
+            inc_path = os.path.join(asset_dir, inc_filename)
+            png_filename = f"{local_name}.{fmt_name}.png"
+            png_path = os.path.join(asset_dir, png_filename)
+
+            # Use the sprite's actual LUT target palette for the PNG (if any).
+            # Falls back to the first palette in the sprite's range, then to
+            # None (which yields a grayscale-by-index render).
+            sprite_palette_bytes = None
+            sprite_lut_target = reloc_target(reloc_map, sp_off + 32)
+            if sprite_lut_target is not None and sprite_lut_target + 32 <= len(data):
+                sprite_palette_bytes = data[sprite_lut_target:sprite_lut_target + 32]
+            elif palettes:
+                first_p_off = palettes[0][0]
+                sprite_palette_bytes = data[first_p_off:first_p_off + 32]
+
+            write_sprite_png(data, tiles, sp['bmfmt'], sp['bmsiz'], png_path,
+                             texshuf=bool(sp['attr'] & 0x0200),
+                             tlut_data=sprite_palette_bytes)
+            write_texture_inc(data, tex_start, tex_end - tex_start, inc_path)
+            if os.path.exists(png_path):
+                import time
+                now = time.time()
+                os.utime(png_path, (now - 1, now - 1))
+                os.utime(inc_path, (now, now))
+            tex_lines.append(f"u8 {tex_var}[] = {{")
+            tex_lines.append(f'    #include <{file_subdir}/{inc_filename}>')
+            tex_lines.append("};")
+        else:
+            tex_lines.append(f"u8 {tex_var}[] = {{")
+            region = data[tex_start:tex_end]
+            for j in range(0, len(region), 16):
+                chunk = region[j:j + 16]
+                tex_lines.append(f"\t{', '.join(f'0x{b:02X}' for b in chunk)},")
+            tex_lines.append("};")
+
+        tex_filename = f"{local_name}_tex.data.c"
+        if extract_data:
+            write_block_file(block_dir, tex_filename, tex_lines)
+            manifest.append(('block', tex_filename))
+        else:
+            lines.extend(tex_lines)
+            lines.append("")
+
+        # ── 2. Palette blocks (with inter-palette padding) ──
+        cursor_local = tex_end
+        for p_off, p_name in palettes:
+            if cursor_local < p_off:
+                pad = p_off - cursor_local
+                if extract_data:
+                    manifest.append(('pad', pad))
+                else:
+                    lines.append(f"PAD({pad});")
+                    lines.append("")
+                cursor_local = p_off
+            emit_palette(p_off, p_name)
+            cursor_local = p_off + 32
+
+        # Pad from the last palette to the bitmap array (if any)
+        if cursor_local < info['bitmaps_off']:
+            pad = info['bitmaps_off'] - cursor_local
+            if extract_data:
+                manifest.append(('pad', pad))
+            else:
+                lines.append(f"PAD({pad});")
+                lines.append("")
+
+        # ── 3. Sprite file (bitmap_array + sprite struct, with externs) ──
+        bm_var = f"{var_base}_bitmaps"
+        sym_map.add(bm_var, info['bitmaps_off'], info['bitmaps_off'] + nbm * BITMAP_SIZE)
+        sp_var = var_base
+        sym_map.add(sp_var, sp_off, sp_off + SPRITE_SIZE)
+
+        sprite_lines = []
+        sprite_lines.append(f"/* Sprite: {local_name} ({sp['width']}x{sp['height']} {fmt_name}) */")
+        sprite_lines.append("")
+
+        sprite_lines.append(f"Bitmap {bm_var}[] = {{")
+        for i, tile in enumerate(tiles):
+            bm = tile['bitmap']
+            tile_offset = tile['tex_off'] - tex_start
+            if tile_offset == 0:
+                buf_expr = tex_var
+            else:
+                buf_expr = f"{tex_var} + 0x{tile_offset:X}"
+            sprite_lines.append(
+                f"\t{{ {bm['width']}, {bm['width_img']}, {bm['s']}, {bm['t']}, "
+                f"{buf_expr}, {bm['actualHeight']}, {bm['LUToffset']} }},")
+            bm_buf_off = info['bitmaps_off'] + i * BITMAP_SIZE + 8
+            emit_reloc(reloc_entries, reloc_map, sym_map, bm_buf_off,
+                       f"{bm_var}+0x{i * BITMAP_SIZE + 8:X}")
+        sprite_lines.append("};")
+        sprite_lines.append("")
+
+        attr_str = format_attr_flags(sp['attr'])
+
+        emit_reloc(reloc_entries, reloc_map, sym_map, sp_off + 32, f"{sp_var}+0x20")
+        emit_reloc(reloc_entries, reloc_map, sym_map, sp_off + 52, f"{sp_var}+0x34")
+        emit_reloc(reloc_entries, reloc_map, sym_map, sp_off + 56, f"{sp_var}+0x38")
+        emit_reloc(reloc_entries, reloc_map, sym_map, sp_off + 60, f"{sp_var}+0x3C")
+
+        sprite_lines.append(f"Sprite {sp_var} = {{")
+        sprite_lines.append(f"\t{sp['x']}, {sp['y']},")
+        sprite_lines.append(f"\t{sp['width']}, {sp['height']},")
+        sprite_lines.append(f"\t{format_float(sp['scalex'], sp['scalex_raw'])}, {format_float(sp['scaley'], sp['scaley_raw'])},")
+        sprite_lines.append(f"\t{sp['expx']}, {sp['expy']},")
+        sprite_lines.append(f"\t{attr_str},")
+        sprite_lines.append(f"\t{sp['zdepth']},")
+        sprite_lines.append(f"\t{sp['red']}, {sp['green']}, {sp['blue']}, {sp['alpha']},")
+        sprite_lines.append(f"\t{sp['startTLUT']}, {sp['nTLUT']},")
+        sprite_lines.append(f"\t{resolve_lut_expr(sp_off)},")
+        sprite_lines.append(f"\t{sp['istart']}, {sp['istep']},")
+        sprite_lines.append(f"\t{sp['nbitmaps']}, {sp['ndisplist']},")
+        sprite_lines.append(f"\t{sp['bmheight']}, {sp['bmHreal']},")
+        sprite_lines.append(f"\t{sp['bmfmt']}, {sp['bmsiz']},")
+        sprite_lines.append(f"\t(Bitmap*){bm_var},")
+        sprite_lines.append(f"\t(Gfx*)0x{sp['rsp_dl_raw']:08X},")
+        sprite_lines.append(f"\t(Gfx*)0x{sp['rsp_dl_next_raw']:08X},")
+        sprite_lines.append(f"\t{sp['frac_s']}, {sp['frac_t']},")
+        sprite_lines.append("};")
+        sprite_lines.append("")
+
+        sprite_filename = f"{local_name}.sprite.c"
+        if extract_data:
+            sprite_path = os.path.join(block_dir, sprite_filename)
+            os.makedirs(block_dir, exist_ok=True)
+            with open(sprite_path, 'w') as f:
+                f.write(f"/* Sprite: {local_name} */\n\n")
+                f.write("\n".join(sprite_lines))
+            manifest.append(('block', sprite_filename))
+        else:
+            lines.extend(sprite_lines)
+
+        return sp_off + SPRITE_SIZE
+
     def emit_pad(start, end):
         """Emit alignment padding as an explicit PAD manifest entry."""
         if start >= end:
@@ -848,6 +1160,87 @@ def generate(file_id, data, file_name, entries, reloc_map, csv_entry,
     if oob > 0:
         lines.append(f"/* NOTE: {oob} entries beyond file bounds (runtime-expanded data) */")
         lines.append("")
+
+    # ── Palette pre-scan ─────────────────────────────────────────────────
+    # Palettes (16-color RGBA5551, 32 bytes each) come from two sources:
+    #   1. Description LUT entries — explicitly named palettes the engine
+    #      looks up by symbol (e.g. llMNPlayersCommonGateMan1PLUT).
+    #   2. Sprite reloc targets — each sprite's `LUT` field points to its
+    #      default palette via the relocation chain. Some of these targets
+    #      aren't in the descriptions and need synthesized names.
+    # Both sets get merged into palette_set keyed by file offset.
+    palette_set = {}  # {offset: name_or_None}
+    for bt, bn, bo in valid_entries:
+        if bt == 'LUT' and bo + 32 <= len(data):
+            palette_set[bo] = bn if bn != '-' else None
+
+    for bt, bn, bo in valid_entries:
+        if bt != 'Sprite':
+            continue
+        sp_ck = parse_sprite(data, bo)
+        if sp_ck is None:
+            continue
+        lut_target = reloc_target(reloc_map, bo + 32)
+        if lut_target is None:
+            continue
+        if lut_target + 32 > len(data):
+            continue
+        if lut_target not in palette_set:
+            palette_set[lut_target] = None
+
+    def palette_var_name(p_offset, p_name):
+        if p_name:
+            return f"{prefix}_{p_name}_palette"
+        return f"{prefix}_palette_0x{p_offset:04X}"
+
+    def palette_filename(p_offset, p_name):
+        suffix = p_name if p_name else f"palette_0x{p_offset:04X}"
+        return f"{suffix}.palette.c"
+
+    # Pre-register palettes in sym_map so reloc emission for sprite LUT
+    # fields resolves to the correct palette name.
+    for p_off, p_name in palette_set.items():
+        sym_map.add(palette_var_name(p_off, p_name), p_off, p_off + 32)
+
+    # ── Sprite range pre-scan ────────────────────────────────────────────
+    # For each Sprite description entry, compute the byte range it owns:
+    # from its first tile's start (DL terminator if present, else first
+    # texture pixel) to the end of the Sprite struct. We use this to
+    # detect LUT description entries that fall *inside* a sprite's range
+    # — those are emitted by the sprite handler so the original physical
+    # layout is preserved.
+    sprite_ranges = []  # list of (start, sprite_struct_off, sp_offset_for_lookup)
+    for bt, bn, bo in valid_entries:
+        if bt != 'Sprite':
+            continue
+        info = analyze_sprite_block(data, bo, reloc_map)
+        if info and info['tiles']:
+            first_tile = info['tiles'][0]
+            r_start = first_tile['dl_off'] if first_tile['dl_off'] is not None else first_tile['tex_off']
+            sprite_ranges.append((r_start, bo + SPRITE_SIZE, bo))
+
+    def lut_inside_sprite(p_offset):
+        return any(s <= p_offset < e for s, e, _ in sprite_ranges)
+
+    def palettes_in_range(start, end_exclusive):
+        return sorted((po, palette_set[po]) for po in palette_set
+                      if start <= po < end_exclusive)
+
+    def resolve_lut_expr(sp_off):
+        """Resolve a Sprite's LUT field to a C expression.
+
+        If the LUT field's reloc target points at a known palette, return
+        a cast to that palette's variable name (e.g. `(int*)dFoo_GateMan1P_palette`).
+        Otherwise fall back to the raw hex literal.
+        """
+        lut_target_off = reloc_target(reloc_map, sp_off + 32)
+        if lut_target_off is not None and lut_target_off in palette_set:
+            p_name = palette_set[lut_target_off]
+            return f"(int*){palette_var_name(lut_target_off, p_name)}"
+        sp = parse_sprite(data, sp_off)
+        if sp is not None:
+            return f"(int*)0x{sp['LUT']:08X}"
+        return "(int*)0x00000000"
 
     if not valid_entries:
         var_name = prefix
@@ -895,16 +1288,39 @@ def generate(file_id, data, file_name, entries, reloc_map, csv_entry,
                     emit_pad(cursor, dl_start)
                     emit_relocs_in_range(cursor, dl_start)
 
-                end = emit_sprite_block(lines, data, offset, prefix, block_name,
-                                        reloc_map, sym_map, extract_data,
-                                        block_dir, asset_dir, file_subdir, reloc_entries)
-                if end is not None:
-                    # Add sprite to manifest
-                    sprite_name = block_name if block_name != '-' else f"sprite_0x{offset:04X}"
-                    if extract_data:
-                        manifest.append(('block', f"{sprite_name}.sprite.c"))
-                    cursor = end
-                    continue
+                # Are there any palettes inside this sprite's [tex_start,
+                # bitmaps_off) range? If so, use the split-emission path so
+                # the palettes can sit at their original physical position.
+                palettes_here = palettes_in_range(first_tile['tex_off'],
+                                                  info['bitmaps_off'])
+
+                if palettes_here:
+                    end = emit_sprite_with_palettes(offset, block_name, info,
+                                                    palettes_here)
+                    if end is not None:
+                        # Reloc entries inside the sprite range have been
+                        # emitted by the split helpers; nothing to flush here.
+                        cursor = end
+                        continue
+                else:
+                    # Pass through the sprite's palette bytes (if any) so CI
+                    # sprites whose LUT lives outside their byte range still
+                    # get a readable PNG preview.
+                    sp_palette_bytes = None
+                    sp_lut_target = reloc_target(reloc_map, offset + 32)
+                    if sp_lut_target is not None and sp_lut_target + 32 <= len(data):
+                        sp_palette_bytes = data[sp_lut_target:sp_lut_target + 32]
+                    end = emit_sprite_block(lines, data, offset, prefix, block_name,
+                                            reloc_map, sym_map, extract_data,
+                                            block_dir, asset_dir, file_subdir, reloc_entries,
+                                            lut_expr=resolve_lut_expr(offset),
+                                            palette_bytes=sp_palette_bytes)
+                    if end is not None:
+                        sprite_name = block_name if block_name != '-' else f"sprite_0x{offset:04X}"
+                        if extract_data:
+                            manifest.append(('block', f"{sprite_name}.sprite.c"))
+                        cursor = end
+                        continue
 
             # Fallback: sprite couldn't be analyzed, emit as raw data block
             if cursor < offset:
@@ -920,6 +1336,18 @@ def generate(file_id, data, file_name, entries, reloc_map, csv_entry,
                 emit_pad(cursor, offset)
                 emit_relocs_in_range(cursor, offset)
             cursor = emit_dobjdesc_block(offset, block_name, next_off)
+
+        elif block_type == 'LUT':
+            # If this LUT is inside a sprite range it was already emitted
+            # by emit_sprite_with_palettes; skip it here.
+            if lut_inside_sprite(offset):
+                continue
+            # Standalone palette (rare): pad up to it and emit directly.
+            if cursor < offset:
+                emit_pad(cursor, offset)
+                emit_relocs_in_range(cursor, offset)
+            emit_palette(offset, block_name if block_name != '-' else None)
+            cursor = offset + 32
 
         else:
             if cursor < offset:

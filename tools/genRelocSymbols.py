@@ -34,7 +34,7 @@ RELOC_DIR = os.path.join(PROJECT_DIR, "src", "relocData")
 sys.path.insert(0, SCRIPT_DIR)
 from genRelocMaster import (
     parse_manifest, parse_spritelist, parse_sprite_info,
-    compute_data_c_size, compute_dobjdesc_c_size,
+    compute_data_c_size, compute_dobjdesc_c_size, compute_palette_c_size,
     SPRITE_BLOCK_ALIGNMENT, GHOST_DL_PAD,
 )
 
@@ -137,6 +137,14 @@ def block_filename_for_description(block_type, block_name, offset):
             return f"DObjDesc_0x{offset:04X}.dobjdesc.c"
         return f"{block_name}.dobjdesc.c"
 
+    if block_type == 'LUT':
+        # LUT description entries are emitted as standalone .palette.c
+        # files (16 RGBA5551 colors). The auto-generator names them after
+        # the description's block name.
+        if block_name == '-':
+            return f"palette_0x{offset:04X}.palette.c"
+        return f"{block_name}.palette.c"
+
     # Generic data blocks
     if block_name == '-':
         rl = f"{block_type}_0x{offset:04X}"
@@ -187,10 +195,13 @@ def compute_manifest_offsets(file_id, file_name, manifest_path,
                 return {}
             sym_offset = cursor + size - SPRITE_STRUCT_SIZE
         elif payload.endswith('.data.c'):
-            size = compute_data_c_size(block_path)
+            size = compute_data_c_size(block_path, search_paths)
             sym_offset = cursor
         elif payload.endswith('.dobjdesc.c'):
             size = compute_dobjdesc_c_size(block_path)
+            sym_offset = cursor
+        elif payload.endswith('.palette.c'):
+            size = compute_palette_c_size(block_path)
             sym_offset = cursor
         else:
             return {}

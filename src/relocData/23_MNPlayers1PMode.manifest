@@ -1,0 +1,38 @@
+# Block manifest for relocData file 23 (MNPlayers1PMode)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+1PlayerGameText.sprite.c
+pad 4
+ClosingParenthesis.sprite.c
+pad 4
+OpeningParenthesis.sprite.c
+pad 4
+LevelColonText.sprite.c
+pad 4
+StockColonText.sprite.c
+pad 4
+OptionOutline.sprite.c
+pad 4
+BestTimeText.sprite.c
+pad 12
+TotalBestTimeText.sprite.c
+pad 12
+TargetsText.sprite.c
+pad 4
+PlatformsText.sprite.c
+pad 4
+SmashLogo.sprite.c
+pad 12
+OptionText.sprite.c
+pad 4
+Sec.sprite.c
+pad 4
+CSec.sprite.c
+pad 12
+RedCard_tex.data.c
+palette_0x3210.palette.c
+pad 8
+GateCP.palette.c
+RedCard.sprite.c
+pad 4

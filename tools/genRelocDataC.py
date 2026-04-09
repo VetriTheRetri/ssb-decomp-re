@@ -272,6 +272,7 @@ class SymbolMap:
         self.entries.append((var_name, file_start, file_end))
 
     def resolve(self, byte_offset):
+        """Return a `<var>` or `<var>+0xN` label for use in .reloc files."""
         for var_name, start, end in self.entries:
             if start <= byte_offset < end:
                 rel = byte_offset - start
@@ -279,6 +280,22 @@ class SymbolMap:
                     return var_name
                 return f"{var_name}+0x{rel:X}"
         return f"0x{byte_offset:04X}"
+
+    def resolve_c_expr(self, byte_offset):
+        """Return a valid C expression that points at the given byte offset.
+
+        Used for typed-struct fields whose value is a relocated pointer —
+        the chain word gets overwritten at link time, but we still want the
+        source to read like `(u8*)var + 0xN` instead of a meaningless raw
+        chain encoding so the file is human-editable.
+        """
+        for var_name, start, end in self.entries:
+            if start <= byte_offset < end:
+                rel = byte_offset - start
+                if rel == 0:
+                    return var_name
+                return f"((u8*){var_name} + 0x{rel:X})"
+        return None
 
 
 # ── emit helpers ─────────────────────────────────────────────────────────
@@ -967,7 +984,20 @@ def generate(file_id, data, file_name, entries, reloc_map, csv_entry,
             emit_reloc(reloc_entries, reloc_map, sym_map, dl_off,
                        f"{var_name}+0x{i * DOBJDESC_SIZE + 4:X}")
 
-            block_lines.append(f"\t{{ {d['id']}, (void*)0x{d['dl']:08X}, "
+            # If the dl field is relocated, resolve it to a label-based C
+            # expression so the source documents which display list this
+            # entry points at. The actual word value gets patched by
+            # fixRelocChain at link time using the .reloc file's labels.
+            dl_expr = None
+            if dl_off in reloc_map:
+                target = reloc_map[dl_off][1]
+                dl_expr = sym_map.resolve_c_expr(target)
+            if dl_expr is None:
+                dl_expr = f"(void*)0x{d['dl']:08X}"
+            else:
+                dl_expr = f"(void*){dl_expr}"
+
+            block_lines.append(f"\t{{ {d['id']}, {dl_expr}, "
                                f"{{ {', '.join(tr_s)} }}, {{ {', '.join(ro_s)} }}, {{ {', '.join(sc_s)} }} }},")
         block_lines.append("};")
 

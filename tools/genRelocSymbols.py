@@ -94,7 +94,15 @@ def parse_descriptions(desc_path):
 # ── Symbol name conventions ─────────────────────────────────────────────
 
 def file_id_symbol(file_id, file_id_to_name):
-    """Build the file-id symbol name (e.g. llMNCommonFileID, ll_29_FileID)."""
+    """Build the file-id symbol name (e.g. llMNCommonFileID, ll_29_FileID).
+
+    JP descriptions use placeholder "names" of the form `_NNN_` where
+    NNN is the *US* file id, which is a clever cross-version aliasing
+    trick: code that references `ll_500_FileID` resolves to file 500 on
+    US and to whatever JP file id has the placeholder `_500_` on JP.
+    These placeholders need to be treated as real names so the alias
+    works.
+    """
     name = file_id_to_name.get(file_id)
     if name:
         return f"ll{name}FileID"
@@ -319,10 +327,35 @@ def collect_all_symbols(desc_path, reloc_dir, search_paths, converted_ids=None):
         blocks_by_file.setdefault(fid, []).append((btype, bname, boff))
 
     # File ID symbols
+    # When a file has a real name, emit BOTH the named symbol (e.g.
+    # `llFTMarioAnimWalk1FileID`) AND the legacy anonymous form
+    # (`ll_500_FileID`) so existing C source that referenced the file
+    # by id continues to compile without changes. New code should use
+    # the named form.
+    #
+    # Two complications:
+    #   1. JP descriptions use placeholder "names" like `_500_` which
+    #      file_id_symbol() turns into `ll_500_FileID`. That's a JP
+    #      cross-version alias — `ll_500_FileID` on JP resolves to
+    #      whichever JP file id has the placeholder, NOT to JP file 500.
+    #   2. So before emitting an anonymous fallback `ll_<fid>_FileID`,
+    #      we need to check that nothing else has already claimed that
+    #      symbol name (which would happen if any file's placeholder
+    #      name happens to be `_<fid>_`).
     file_id_symbols = []
+    used_names = set()
+    # First pass: collect all primary symbol names so we can dedup
+    for fid in range(file_count):
+        sym = file_id_symbol(fid, file_id_to_name)
+        used_names.add(sym)
+    # Second pass: emit primary + anonymous fallback if it doesn't collide
     for fid in range(file_count):
         sym = file_id_symbol(fid, file_id_to_name)
         file_id_symbols.append((sym, fid))
+        anon = f"ll_{fid}_FileID"
+        if sym != anon and anon not in used_names:
+            file_id_symbols.append((anon, fid))
+            used_names.add(anon)
 
     # For each file, decide whether to use computed offsets (manifest exists)
     # or fall back to description offsets.

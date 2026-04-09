@@ -391,7 +391,11 @@ extract:
 	$(PYTHON) tools/relocData.py extractAll tools/relocFileDescriptions.$(VERSION).txt
 	@mkdir -p relocAssets
 ifeq ($(VERSION),us)
-	tools/halAssetTool x tools/relocFileDescriptions.$(VERSION).txt assets/relocData/ relocAssets
+	@# halAssetTool's parser only accepts 3-digit file ids in the names section,
+	@# so strip names for file ids >= 1000 before passing the descriptions file in.
+	@mkdir -p build
+	sed '/^-[0-9][0-9][0-9][0-9]/d' tools/relocFileDescriptions.$(VERSION).txt > build/relocFileDescriptions.$(VERSION).halAssetTool.txt
+	tools/halAssetTool x build/relocFileDescriptions.$(VERSION).halAssetTool.txt assets/relocData/ relocAssets
 endif
 
 init:

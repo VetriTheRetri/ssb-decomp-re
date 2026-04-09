@@ -3,9 +3,13 @@
 # The master .c file is generated from this manifest at build time.
 
 gap_0x0000.data.c
-CaptainShow_DisplayList.data.c
+CaptainShow.dl.c
+CaptainShow_post.data.c
 Captain_AnimJoint.data.c
-NessShow_DisplayList.data.c
+NessShow.dl.c
+NessShow_post.data.c
 Ness_AnimJoint.data.c
-CaptainHidden_DisplayList.data.c
-NessHidden_DisplayList.data.c
+CaptainHidden.dl.c
+CaptainHidden_post.data.c
+NessHidden.dl.c
+NessHidden_post.data.c

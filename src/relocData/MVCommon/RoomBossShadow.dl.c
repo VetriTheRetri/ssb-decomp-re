@@ -1,0 +1,51 @@
+/* DisplayList: RoomBossShadow @ 0x1F790 (384 bytes) */
+Gfx dMVCommon_RoomBossShadow_DisplayList[] = {
+	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
+	{ { 0xD9DDFFFF, 0x00000000 } },  /* cmd 0xD9 */
+	{ { 0xE2001E01, 0x00000001 } },  /* cmd 0xE2 */
+	{ { 0xFCFFFFFF, 0xFFFE773B } },  /* cmd 0xFC */
+	{ { 0xFA000000, 0xFFFFFF80 } },  /* cmd 0xFA */
+	{ { 0xF9000000, 0x00000008 } },  /* cmd 0xF9 */
+	{ { 0xD7000000, 0x00000000 } },  /* cmd 0xD7 */
+	{ { 0x01020040, (unsigned int)((u8*)dMVCommon_RoomCloseUpEffectGround_AnimJoint + 0x80) } },  /* cmd 0x01 */
+	{ { 0x063E3C3A, 0x003E3A38 } },  /* cmd 0x06 */
+	{ { 0x063E3836, 0x003E3634 } },  /* cmd 0x06 */
+	{ { 0x063E3432, 0x003E3230 } },  /* cmd 0x06 */
+	{ { 0x06302E3E, 0x00302C2E } },  /* cmd 0x06 */
+	{ { 0x062A2E2C, 0x002A2C28 } },  /* cmd 0x06 */
+	{ { 0x062A2826, 0x002A2624 } },  /* cmd 0x06 */
+	{ { 0x062A2422, 0x00202224 } },  /* cmd 0x06 */
+	{ { 0x06201E22, 0x00201C1E } },  /* cmd 0x06 */
+	{ { 0x06201A1C, 0x0020181A } },  /* cmd 0x06 */
+	{ { 0x06201618, 0x00201416 } },  /* cmd 0x06 */
+	{ { 0x062A2212, 0x002A1210 } },  /* cmd 0x06 */
+	{ { 0x0610120E, 0x00100E0C } },  /* cmd 0x06 */
+	{ { 0x060C0A10, 0x000C080A } },  /* cmd 0x06 */
+	{ { 0x060C0608, 0x000C0406 } },  /* cmd 0x06 */
+	{ { 0x060C0204, 0x000C0002 } },  /* cmd 0x06 */
+	{ { 0x0100500C, (unsigned int)((u8*)dMVCommon_RoomCloseUpEffectGround_AnimJoint + 0x280) } },  /* cmd 0x01 */
+	{ { 0x01001010, (unsigned int)((u8*)dMVCommon_RoomCloseUpEffectGround_AnimJoint + 0x2D0) } },  /* cmd 0x01 */
+	{ { 0x0100C02A, (unsigned int)((u8*)dMVCommon_RoomCloseUpEffectGround_AnimJoint + 0x2E0) } },  /* cmd 0x01 */
+	{ { 0x0100A040, (unsigned int)((u8*)dMVCommon_RoomCloseUpEffectGround_AnimJoint + 0x3A0) } },  /* cmd 0x01 */
+	{ { 0x060C3E00, 0x002A103C } },  /* cmd 0x06 */
+	{ { 0x062A3C3A, 0x00383A3C } },  /* cmd 0x06 */
+	{ { 0x0638363A, 0x00383436 } },  /* cmd 0x06 */
+	{ { 0x06383234, 0x00383032 } },  /* cmd 0x06 */
+	{ { 0x06382E30, 0x00382C2E } },  /* cmd 0x06 */
+	{ { 0x0638282C, 0x002A3A26 } },  /* cmd 0x06 */
+	{ { 0x062A2624, 0x00222426 } },  /* cmd 0x06 */
+	{ { 0x06222024, 0x00221E20 } },  /* cmd 0x06 */
+	{ { 0x06221C1E, 0x00221A1C } },  /* cmd 0x06 */
+	{ { 0x0622181A, 0x00221618 } },  /* cmd 0x06 */
+	{ { 0x06221416, 0x00221214 } },  /* cmd 0x06 */
+	{ { 0x060E2A24, 0x000E0A2A } },  /* cmd 0x06 */
+	{ { 0x060E080A, 0x000E0608 } },  /* cmd 0x06 */
+	{ { 0x060E0406, 0x000E0204 } },  /* cmd 0x06 */
+	{ { 0x01001002, (unsigned int)((u8*)dMVCommon_RoomCloseUpEffectGround_AnimJoint + 0x440) } },  /* cmd 0x01 */
+	{ { 0x01001006, (unsigned int)((u8*)dMVCommon_RoomCloseUpEffectGround_AnimJoint + 0x450) } },  /* cmd 0x01 */
+	{ { 0x060E0402, 0x000E0004 } },  /* cmd 0x06 */
+	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
+	{ { 0xD9FFFFFF, 0x00220000 } },  /* cmd 0xD9 */
+	{ { 0xE2001E01, 0x00000000 } },  /* cmd 0xE2 */
+	{ { 0xDF000000, 0x00000000 } },  /* cmd 0xDF */
+};

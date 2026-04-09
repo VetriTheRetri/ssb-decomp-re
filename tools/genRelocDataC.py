@@ -36,6 +36,8 @@ SPRITE_SIZE = 68
 BITMAP_SIZE = 16
 DOBJDESC_SIZE = 44
 MOBJSUB_SIZE = 0x78
+GFX_SIZE = 8         # one F3DEX command pair (w0, w1)
+VTX_SIZE = 16        # one Vtx struct
 
 TEX_FMTS = {0: "rgba", 1: "yuv", 2: "ci", 3: "ia", 4: "i"}
 TEX_SIZES = {0: "4", 1: "8", 2: "16", 3: "32", 4: "4c"}
@@ -1092,6 +1094,101 @@ def generate(file_id, data, file_name, entries, reloc_map, csv_entry,
             lines.append("")
         return offset + MOBJSUB_SIZE
 
+    def emit_displaylist_block(offset, name, next_offset):
+        """Emit an F3DEX display list as a `Gfx` array of raw word pairs.
+
+        The display list runs from `offset` to the first `gsSPEndDisplayList`
+        (cmd byte 0xDF), inclusive of the terminator's 8 bytes. Each pair of
+        u32s becomes one Gfx entry initializer:
+
+            { 0xWWWWWWWW, 0xWWWWWWWW },     // raw words
+            { 0xWWWWWWWW, (uintptr_t)label },  // when w1 is a relocated ptr
+
+        For any 8-byte command whose second word lives in the reloc map, we
+        replace the raw chain encoding with a label-based C expression so the
+        source documents what the pointer actually targets. The relocation
+        chain still gets rebuilt at link time by fixRelocChain.
+
+        Returns the byte offset just past the DL terminator.
+        """
+        # Find DL end (first 0xDF000000 + its trailing 4 bytes of 0)
+        end = None
+        for pos in range(offset, min(next_offset, len(data)), GFX_SIZE):
+            if pos + GFX_SIZE > len(data):
+                break
+            w0 = struct.unpack('>I', data[pos:pos + 4])[0]
+            if (w0 >> 24) == 0xDF:
+                end = pos + GFX_SIZE
+                break
+        if end is None:
+            # No terminator found — emit the whole next_offset range as raw
+            return offset
+
+        name_suffix = name if name != '-' else f"DisplayList_0x{offset:04X}"
+        var_name = f"{prefix}_{name_suffix}_DisplayList"
+        sym_map.add(var_name, offset, end)
+
+        block_lines = [f"/* DisplayList: {name} @ 0x{offset:X} ({end - offset} bytes) */"]
+        block_lines.append(f"Gfx {var_name}[] = {{")
+        for pos in range(offset, end, GFX_SIZE):
+            w0 = struct.unpack('>I', data[pos:pos + 4])[0]
+            w1 = struct.unpack('>I', data[pos + 4:pos + 8])[0]
+            cmd = (w0 >> 24) & 0xFF
+            w1_off = pos + 4
+            # Resolve w1 to a label if it's a relocated pointer in this file.
+            w1_expr = f"0x{w1:08X}"
+            if w1_off in reloc_map:
+                target = reloc_map[w1_off][1]
+                label = sym_map.resolve_c_expr(target)
+                if label is not None:
+                    # The C field is `unsigned int w1`, so cast through
+                    # uintptr_t to silence pointer-to-int conversion errors.
+                    w1_expr = f"(unsigned int){label}"
+                emit_reloc(reloc_entries, reloc_map, sym_map, w1_off,
+                           f"{var_name}+0x{(pos + 4 - offset):X}")
+            block_lines.append(f"\t{{ {{ 0x{w0:08X}, {w1_expr} }} }},  /* cmd 0x{cmd:02X} */")
+        block_lines.append("};")
+
+        filename = f"{name_suffix}.dl.c"
+        if extract_data:
+            write_block_file(block_dir, filename, block_lines)
+            manifest.append(('block', filename))
+        else:
+            lines.extend(block_lines)
+            lines.append("")
+        return end
+
+    def emit_vtx_block(offset, name, count):
+        """Emit a Vtx[] array. count = number of vertices (each 16 bytes)."""
+        size = count * VTX_SIZE
+        if offset + size > len(data):
+            return offset
+        name_suffix = name if name != '-' else f"Vtx_0x{offset:04X}"
+        var_name = f"{prefix}_{name_suffix}_Vtx"
+        sym_map.add(var_name, offset, offset + size)
+
+        block_lines = [f"/* Vtx: {name} @ 0x{offset:X} ({count} vertices) */"]
+        block_lines.append(f"Vtx {var_name}[] = {{")
+        for i in range(count):
+            v = data[offset + i * VTX_SIZE:offset + (i + 1) * VTX_SIZE]
+            x, y, z = struct.unpack('>3h', v[0:6])
+            flag = struct.unpack('>H', v[6:8])[0]
+            s, t = struct.unpack('>2h', v[8:12])
+            r, g, b, a = v[12], v[13], v[14], v[15]
+            block_lines.append(
+                f"\t{{ {{ {{ {x}, {y}, {z} }}, 0x{flag:04X}, "
+                f"{{ {s}, {t} }}, {{ 0x{r:02X}, 0x{g:02X}, 0x{b:02X}, 0x{a:02X} }} }} }},")
+        block_lines.append("};")
+
+        filename = f"{name_suffix}.vtx.c"
+        if extract_data:
+            write_block_file(block_dir, filename, block_lines)
+            manifest.append(('block', filename))
+        else:
+            lines.extend(block_lines)
+            lines.append("")
+        return offset + size
+
     def emit_palette(p_offset, p_name):
         """Write a .palette.c file for a 16-color RGBA5551 palette and
         generate a 16x16 PNG preview alongside it.
@@ -1531,6 +1628,25 @@ def generate(file_id, data, file_name, entries, reloc_map, csv_entry,
                 emit_pad(cursor, offset)
                 emit_relocs_in_range(cursor, offset)
             cursor = emit_mobjsub_block(offset, block_name)
+
+        elif block_type == 'DisplayList':
+            if cursor < offset:
+                emit_pad(cursor, offset)
+                emit_relocs_in_range(cursor, offset)
+            dl_end = emit_displaylist_block(offset, block_name, next_off)
+            emit_relocs_in_range(offset, dl_end)
+            # Anything between the DL terminator and the next description
+            # entry is trailing data — usually vertex/texture/material bytes
+            # the DL referenced via segmented address. Emit it as a raw
+            # `<name>_post.data.c` block so the user can later split it into
+            # `.vtx.c` / `.dl.c` blocks by hand.
+            if dl_end < next_off:
+                trailing_name = (f"{block_name}_post" if block_name != '-'
+                                 else f"DisplayList_0x{offset:04X}_post")
+                trailing_name = re.sub(r'[^a-zA-Z0-9_]', '_', trailing_name)
+                emit_data_block(dl_end, next_off, trailing_name)
+                emit_relocs_in_range(dl_end, next_off)
+            cursor = next_off
 
         elif block_type == 'LUT':
             # If this LUT is inside a sprite range it was already emitted

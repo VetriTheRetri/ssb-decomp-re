@@ -3,9 +3,13 @@
 # The master .c file is generated from this manifest at build time.
 
 gap_0x0000.data.c
-PurinShow_DisplayList.data.c
+PurinShow.dl.c
+PurinShow_post.data.c
 Purin_AnimJoint.data.c
-LuigiShow_DisplayList.data.c
+LuigiShow.dl.c
+LuigiShow_post.data.c
 Luigi_AnimJoint.data.c
-PurinHidden_DisplayList.data.c
-LuigiHidden_DisplayList.data.c
+PurinHidden.dl.c
+PurinHidden_post.data.c
+LuigiHidden.dl.c
+LuigiHidden_post.data.c

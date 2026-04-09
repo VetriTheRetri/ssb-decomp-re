@@ -1,0 +1,4 @@
+/* Raw data from file offset 0x1F910 to 0x1F924 (20 bytes) */
+u32 dMVCommon_RoomBossShadow_post[] = {
+	0x00000001, 0x7E487DE4, 0x00000004, 0x00000000, 0x81207E49, /* reloc: +0x4->0x1F790, +0x10->0x1F924 */
+};

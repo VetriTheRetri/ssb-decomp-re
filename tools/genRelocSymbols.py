@@ -35,7 +35,7 @@ sys.path.insert(0, SCRIPT_DIR)
 from genRelocMaster import (
     parse_manifest, parse_spritelist, parse_sprite_info,
     compute_data_c_size, compute_dobjdesc_c_size, compute_palette_c_size,
-    compute_mobjsub_c_size,
+    compute_mobjsub_c_size, compute_dl_c_size, compute_vtx_c_size,
     SPRITE_BLOCK_ALIGNMENT, GHOST_DL_PAD,
 )
 
@@ -151,6 +151,11 @@ def block_filename_for_description(block_type, block_name, offset):
             return f"MObjSub_0x{offset:04X}.mobjsub.c"
         return f"{block_name}.mobjsub.c"
 
+    if block_type == 'DisplayList':
+        if block_name == '-':
+            return f"DisplayList_0x{offset:04X}.dl.c"
+        return f"{block_name}.dl.c"
+
     # Generic data blocks
     if block_name == '-':
         rl = f"{block_type}_0x{offset:04X}"
@@ -211,6 +216,12 @@ def compute_manifest_offsets(file_id, file_name, manifest_path,
             sym_offset = cursor
         elif payload.endswith('.mobjsub.c'):
             size = compute_mobjsub_c_size(block_path)
+            sym_offset = cursor
+        elif payload.endswith('.dl.c'):
+            size = compute_dl_c_size(block_path)
+            sym_offset = cursor
+        elif payload.endswith('.vtx.c'):
+            size = compute_vtx_c_size(block_path)
             sym_offset = cursor
         else:
             return {}

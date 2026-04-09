@@ -1,0 +1,4 @@
+/* Raw data from file offset 0x5E30 to 0x5E44 (20 bytes) */
+u32 dMVOpeningNewcomers1_PurinShow_post[] = {
+	0x00000001, 0x1790170A, 0x00000004, 0x00000000, 0x72211791, /* reloc: +0x4->0x5C28, +0x10->0x5E44 */
+};

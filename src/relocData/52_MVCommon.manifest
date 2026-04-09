@@ -9,7 +9,8 @@ RoomBackground.dobjdesc.c
 RoomBackground_MatAnimJoint.data.c
 RoomDesk.dobjdesc.c
 gap_0x8E7C.data.c
-RoomHaze_DisplayList.data.c
+RoomHaze.dl.c
+RoomHaze_post.data.c
 RoomBooks.dobjdesc.c
 pad 8
 RoomBooks_AnimJoint.data.c
@@ -19,7 +20,8 @@ RoomPencils_AnimJoint.data.c
 RoomLamp.dobjdesc.c
 pad 4
 RoomLamp_AnimJoint.data.c
-RoomTissues_DisplayList.data.c
+RoomTissues.dl.c
+RoomTissues_post.data.c
 RoomTissues_AnimJoint.data.c
 RoomLogo.mobjsub.c
 gap_0x1BCD8.data.c
@@ -38,7 +40,8 @@ gap_0x1F170.data.c
 RoomCloseUpEffectGround.dobjdesc.c
 RoomCloseUpEffectGround_MatAnimJoint.data.c
 RoomCloseUpEffectGround_AnimJoint.data.c
-RoomBossShadow_DisplayList.data.c
+RoomBossShadow.dl.c
+RoomBossShadow_post.data.c
 RoomBossShadow_AnimJoint.data.c
 RoomDeskGround.mobjsub.c
 gap_0x204F8.data.c
@@ -47,7 +50,8 @@ gap_0x224C4.data.c
 RoomDeskGround_MatAnimJoint.data.c
 RoomSpotlight.mobjsub.c
 gap_0x22D08.data.c
-RoomSpotlight_DisplayList.data.c
+RoomSpotlight.dl.c
+RoomSpotlight_post.data.c
 RoomSpotlight_MatAnimJoint.data.c
-RoomOutside_DisplayList.data.c
-RoomSunlight_DisplayList.data.c
+RoomOutside.dl.c
+RoomSunlight_post.data.c

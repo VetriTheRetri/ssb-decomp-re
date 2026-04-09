@@ -205,6 +205,51 @@ def compute_mobjsub_c_size(mobjsub_c_path):
     return 0x78
 
 
+def _count_top_level_braces(body):
+    depth = 0
+    entries = 0
+    for ch in body:
+        if ch == '{':
+            if depth == 0:
+                entries += 1
+            depth += 1
+        elif ch == '}':
+            depth -= 1
+    return entries
+
+
+def compute_dl_c_size(dl_c_path):
+    """A .dl.c file is `Gfx <name>[] = { {{ w0, w1 }}, ... };`. Each top-level
+    `{ ... }` is one F3DEX command pair = 8 bytes.
+    """
+    with open(dl_c_path) as f:
+        content = f.read()
+    content = re.sub(r'/\*.*?\*/', '', content, flags=re.DOTALL)
+    content = re.sub(r'//[^\n]*', '', content)
+    m = re.search(r'Gfx\s+\w+\[\]\s*=\s*\{(.*)\};', content, re.DOTALL)
+    if not m:
+        print(f"Error: {dl_c_path} doesn't look like a Gfx[] array",
+              file=sys.stderr)
+        sys.exit(1)
+    return _count_top_level_braces(m.group(1)) * 8
+
+
+def compute_vtx_c_size(vtx_c_path):
+    """A .vtx.c file is `Vtx <name>[] = { ... };`. Each top-level entry is
+    one Vtx struct = 16 bytes.
+    """
+    with open(vtx_c_path) as f:
+        content = f.read()
+    content = re.sub(r'/\*.*?\*/', '', content, flags=re.DOTALL)
+    content = re.sub(r'//[^\n]*', '', content)
+    m = re.search(r'Vtx\s+\w+\[\]\s*=\s*\{(.*)\};', content, re.DOTALL)
+    if not m:
+        print(f"Error: {vtx_c_path} doesn't look like a Vtx[] array",
+              file=sys.stderr)
+        sys.exit(1)
+    return _count_top_level_braces(m.group(1)) * 16
+
+
 def compute_dobjdesc_c_size(dobjdesc_c_path):
     """Parse a .dobjdesc.c file and return its byte size (44 per entry)."""
     with open(dobjdesc_c_path) as f:
@@ -243,6 +288,10 @@ def compute_block_size(block_path, search_paths=()):
         return compute_palette_c_size(block_path)
     if block_path.endswith('.mobjsub.c'):
         return compute_mobjsub_c_size(block_path)
+    if block_path.endswith('.dl.c'):
+        return compute_dl_c_size(block_path)
+    if block_path.endswith('.vtx.c'):
+        return compute_vtx_c_size(block_path)
     print(f"Error: unknown block type: {block_path}", file=sys.stderr)
     sys.exit(1)
 

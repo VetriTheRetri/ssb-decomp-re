@@ -20,6 +20,7 @@ Supported N64 texture formats:
 """
 
 import os
+import re
 import sys
 import struct
 import argparse
@@ -597,6 +598,11 @@ def main():
         else:
             file_id_to_name = parse_file_id_to_name(desc_path)
             file_name = file_id_to_name.get(args.file_id, "")
+            # Treat JP placeholder names like `_NNN_` as unnamed — those exist
+            # only as cross-version aliases, not as real symbol names. Falling
+            # back to `file_<id>` matches the existing on-disk subdir convention.
+            if re.match(r'^_\d+_$', file_name):
+                file_name = ""
             subdir = file_name if file_name else f"file_{args.file_id}"
             out_dir = os.path.join(PROJECT_DIR, "build", "src", "relocData", subdir)
         extract_sprites(args.file_id, out_dir, desc_path)

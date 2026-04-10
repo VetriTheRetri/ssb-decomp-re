@@ -18,11 +18,20 @@ def main():
     if len(sys.argv) != 2:
         print("Usage: genRelocNamesMk.py <relocFileDescriptions.txt>", file=sys.stderr)
         sys.exit(1)
+    # JP descriptions use placeholder names of the form `_NNN_` for files
+    # that don't have a real name on either version. These are not real
+    # symbol names — they exist solely to make the cross-version `ll_NNN_FileID`
+    # alias resolve to the right file id. Don't export them as RELOC_NAMES,
+    # otherwise the per-file build rule will look for `*__NNN_.c` (which
+    # never exists) instead of falling back to the literal-id `<id>.c`.
     with open(sys.argv[1]) as f:
         for line in f:
             m = re.match(r'^-(\d+):\s+(\S+)', line)
             if m:
-                print(f"RELOC_NAME_{int(m.group(1))} := {m.group(2)}")
+                name = m.group(2)
+                if re.match(r'^_\d+_$', name):
+                    continue
+                print(f"RELOC_NAME_{int(m.group(1))} := {name}")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,19 @@
+# Relocation metadata for file 395
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTSamusAnimSelected_joints+0x0 dFTSamusAnimSelected_joint1
+intern dFTSamusAnimSelected_joints+0x4 dFTSamusAnimSelected_joint2
+intern dFTSamusAnimSelected_joints+0x8 dFTSamusAnimSelected_joint4
+intern dFTSamusAnimSelected_joints+0x10 dFTSamusAnimSelected_joint5
+intern dFTSamusAnimSelected_joints+0x14 dFTSamusAnimSelected_joint6
+intern dFTSamusAnimSelected_joints+0x18 dFTSamusAnimSelected_joint7
+intern dFTSamusAnimSelected_joints+0x1C dFTSamusAnimSelected_joint8
+intern dFTSamusAnimSelected_joints+0x20 dFTSamusAnimSelected_joint11
+intern dFTSamusAnimSelected_joints+0x2C dFTSamusAnimSelected_joint12
+intern dFTSamusAnimSelected_joints+0x30 dFTSamusAnimSelected_joint14
+intern dFTSamusAnimSelected_joints+0x38 dFTSamusAnimSelected_joint15
+intern dFTSamusAnimSelected_joints+0x3C dFTSamusAnimSelected_joint17
+intern dFTSamusAnimSelected_joints+0x44 dFTSamusAnimSelected_joint19
+intern dFTSamusAnimSelected_joints+0x4C dFTSamusAnimSelected_joint20
+intern dFTSamusAnimSelected_joints+0x50 dFTSamusAnimSelected_joint22
+intern dFTSamusAnimSelected_joints+0x58 dFTSamusAnimSelected_joint22+0xAC

@@ -1,0 +1,20 @@
+# Relocation metadata for file 357
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTMarioAnimWin2_joints+0x0 dFTMarioAnimWin2_joint1
+intern dFTMarioAnimWin2_joints+0x4 dFTMarioAnimWin2_joint2
+intern dFTMarioAnimWin2_joints+0x8 dFTMarioAnimWin2_joint4
+intern dFTMarioAnimWin2_joints+0x10 dFTMarioAnimWin2_joint5
+intern dFTMarioAnimWin2_joints+0x14 dFTMarioAnimWin2_joint7
+intern dFTMarioAnimWin2_joints+0x1C dFTMarioAnimWin2_joint8
+intern dFTMarioAnimWin2_joints+0x20 dFTMarioAnimWin2_joint10
+intern dFTMarioAnimWin2_joints+0x28 dFTMarioAnimWin2_joint11
+intern dFTMarioAnimWin2_joints+0x2C dFTMarioAnimWin2_joint12
+intern dFTMarioAnimWin2_joints+0x30 dFTMarioAnimWin2_joint13
+intern dFTMarioAnimWin2_joints+0x34 dFTMarioAnimWin2_joint15
+intern dFTMarioAnimWin2_joints+0x3C dFTMarioAnimWin2_joint16
+intern dFTMarioAnimWin2_joints+0x40 dFTMarioAnimWin2_joint18
+intern dFTMarioAnimWin2_joints+0x48 dFTMarioAnimWin2_joint20
+intern dFTMarioAnimWin2_joints+0x50 dFTMarioAnimWin2_joint21
+intern dFTMarioAnimWin2_joints+0x54 dFTMarioAnimWin2_joint23
+intern dFTMarioAnimWin2_joints+0x5C dFTMarioAnimWin2_joint23+0x80

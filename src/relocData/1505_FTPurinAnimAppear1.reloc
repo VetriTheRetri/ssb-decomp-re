@@ -1,0 +1,20 @@
+# Relocation metadata for file 1505
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTPurinAnimAppear1_joints+0x0 dFTPurinAnimAppear1_joint1
+intern dFTPurinAnimAppear1_joints+0x4 dFTPurinAnimAppear1_joint2
+intern dFTPurinAnimAppear1_joints+0x8 dFTPurinAnimAppear1_joint3
+intern dFTPurinAnimAppear1_joints+0xC dFTPurinAnimAppear1_joint4
+intern dFTPurinAnimAppear1_joints+0x10 dFTPurinAnimAppear1_joint6
+intern dFTPurinAnimAppear1_joints+0x18 dFTPurinAnimAppear1_joint7
+intern dFTPurinAnimAppear1_joints+0x1C dFTPurinAnimAppear1_joint8
+intern dFTPurinAnimAppear1_joints+0x20 dFTPurinAnimAppear1_joint10
+intern dFTPurinAnimAppear1_joints+0x28 dFTPurinAnimAppear1_joint11
+intern dFTPurinAnimAppear1_joints+0x2C dFTPurinAnimAppear1_joint12
+intern dFTPurinAnimAppear1_joints+0x30 dFTPurinAnimAppear1_joint14
+intern dFTPurinAnimAppear1_joints+0x38 dFTPurinAnimAppear1_joint15
+intern dFTPurinAnimAppear1_joints+0x3C dFTPurinAnimAppear1_joint17
+intern dFTPurinAnimAppear1_joints+0x44 dFTPurinAnimAppear1_joint19
+intern dFTPurinAnimAppear1_joints+0x4C dFTPurinAnimAppear1_joint20
+intern dFTPurinAnimAppear1_joints+0x50 dFTPurinAnimAppear1_joint22
+intern dFTPurinAnimAppear1_joints+0x58 dFTPurinAnimAppear1_joint22+0x8C

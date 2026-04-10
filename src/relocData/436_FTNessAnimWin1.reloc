@@ -1,0 +1,23 @@
+# Relocation metadata for file 436
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTNessAnimWin1_joints+0x0 dFTNessAnimWin1_joint1
+intern dFTNessAnimWin1_joints+0x4 dFTNessAnimWin1_joint2
+intern dFTNessAnimWin1_joints+0x8 dFTNessAnimWin1_joint4
+intern dFTNessAnimWin1_joints+0x10 dFTNessAnimWin1_joint5
+intern dFTNessAnimWin1_joints+0x14 dFTNessAnimWin1_joint6
+intern dFTNessAnimWin1_joints+0x18 dFTNessAnimWin1_joint7
+intern dFTNessAnimWin1_joints+0x1C dFTNessAnimWin1_joint8
+intern dFTNessAnimWin1_joints+0x20 dFTNessAnimWin1_joint10
+intern dFTNessAnimWin1_joints+0x28 dFTNessAnimWin1_joint11
+intern dFTNessAnimWin1_joints+0x2C dFTNessAnimWin1_joint12
+intern dFTNessAnimWin1_joints+0x30 dFTNessAnimWin1_joint13
+intern dFTNessAnimWin1_joints+0x34 dFTNessAnimWin1_joint15
+intern dFTNessAnimWin1_joints+0x3C dFTNessAnimWin1_joint16
+intern dFTNessAnimWin1_joints+0x40 dFTNessAnimWin1_joint18
+intern dFTNessAnimWin1_joints+0x48 dFTNessAnimWin1_joint19
+intern dFTNessAnimWin1_joints+0x4C dFTNessAnimWin1_joint21
+intern dFTNessAnimWin1_joints+0x54 dFTNessAnimWin1_joint22
+intern dFTNessAnimWin1_joints+0x58 dFTNessAnimWin1_joint24
+intern dFTNessAnimWin1_joints+0x60 dFTNessAnimWin1_joint25
+intern dFTNessAnimWin1_joints+0x64 dFTNessAnimWin1_joint25+0x304

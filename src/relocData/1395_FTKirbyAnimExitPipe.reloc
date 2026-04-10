@@ -1,0 +1,19 @@
+# Relocation metadata for file 1395
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTKirbyAnimExitPipe_joints+0x0 dFTKirbyAnimExitPipe_joint1
+intern dFTKirbyAnimExitPipe_joints+0x4 dFTKirbyAnimExitPipe_joint2
+intern dFTKirbyAnimExitPipe_joints+0x8 dFTKirbyAnimExitPipe_joint3
+intern dFTKirbyAnimExitPipe_joints+0xC dFTKirbyAnimExitPipe_joint5
+intern dFTKirbyAnimExitPipe_joints+0x14 dFTKirbyAnimExitPipe_joint6
+intern dFTKirbyAnimExitPipe_joints+0x18 dFTKirbyAnimExitPipe_joint7
+intern dFTKirbyAnimExitPipe_joints+0x1C dFTKirbyAnimExitPipe_joint9
+intern dFTKirbyAnimExitPipe_joints+0x24 dFTKirbyAnimExitPipe_joint10
+intern dFTKirbyAnimExitPipe_joints+0x28 dFTKirbyAnimExitPipe_joint11
+intern dFTKirbyAnimExitPipe_joints+0x2C dFTKirbyAnimExitPipe_joint13
+intern dFTKirbyAnimExitPipe_joints+0x34 dFTKirbyAnimExitPipe_joint14
+intern dFTKirbyAnimExitPipe_joints+0x38 dFTKirbyAnimExitPipe_joint16
+intern dFTKirbyAnimExitPipe_joints+0x40 dFTKirbyAnimExitPipe_joint18
+intern dFTKirbyAnimExitPipe_joints+0x48 dFTKirbyAnimExitPipe_joint19
+intern dFTKirbyAnimExitPipe_joints+0x4C dFTKirbyAnimExitPipe_joint21
+intern dFTKirbyAnimExitPipe_joints+0x54 dFTKirbyAnimExitPipe_joint21+0x1C

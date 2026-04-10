@@ -1,0 +1,23 @@
+# Relocation metadata for file 651
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTFoxAnimTurnRun_joints+0x0 dFTFoxAnimTurnRun_joint1
+intern dFTFoxAnimTurnRun_joints+0x4 dFTFoxAnimTurnRun_joint2
+intern dFTFoxAnimTurnRun_joints+0x8 dFTFoxAnimTurnRun_joint3
+intern dFTFoxAnimTurnRun_joints+0xC dFTFoxAnimTurnRun_joint5
+intern dFTFoxAnimTurnRun_joints+0x14 dFTFoxAnimTurnRun_joint6
+intern dFTFoxAnimTurnRun_joints+0x18 dFTFoxAnimTurnRun_joint8
+intern dFTFoxAnimTurnRun_joints+0x20 dFTFoxAnimTurnRun_joint9
+intern dFTFoxAnimTurnRun_joints+0x24 dFTFoxAnimTurnRun_joint11
+intern dFTFoxAnimTurnRun_joints+0x2C dFTFoxAnimTurnRun_joint12
+intern dFTFoxAnimTurnRun_joints+0x30 dFTFoxAnimTurnRun_joint13
+intern dFTFoxAnimTurnRun_joints+0x34 dFTFoxAnimTurnRun_joint14
+intern dFTFoxAnimTurnRun_joints+0x38 dFTFoxAnimTurnRun_joint16
+intern dFTFoxAnimTurnRun_joints+0x40 dFTFoxAnimTurnRun_joint17
+intern dFTFoxAnimTurnRun_joints+0x44 dFTFoxAnimTurnRun_joint19
+intern dFTFoxAnimTurnRun_joints+0x4C dFTFoxAnimTurnRun_joint21
+intern dFTFoxAnimTurnRun_joints+0x54 dFTFoxAnimTurnRun_joint22
+intern dFTFoxAnimTurnRun_joints+0x58 dFTFoxAnimTurnRun_joint24
+intern dFTFoxAnimTurnRun_joints+0x60 dFTFoxAnimTurnRun_joint25
+intern dFTFoxAnimTurnRun_joints+0x64 dFTFoxAnimTurnRun_joint26
+intern dFTFoxAnimTurnRun_joints+0x68 dFTFoxAnimTurnRun_joint26+0x3C

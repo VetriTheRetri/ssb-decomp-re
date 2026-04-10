@@ -1,0 +1,19 @@
+# Relocation metadata for file 960
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTSamusAnimRunBrake_joints+0x0 dFTSamusAnimRunBrake_joint1
+intern dFTSamusAnimRunBrake_joints+0x4 dFTSamusAnimRunBrake_joint2
+intern dFTSamusAnimRunBrake_joints+0x8 dFTSamusAnimRunBrake_joint4
+intern dFTSamusAnimRunBrake_joints+0x10 dFTSamusAnimRunBrake_joint5
+intern dFTSamusAnimRunBrake_joints+0x14 dFTSamusAnimRunBrake_joint6
+intern dFTSamusAnimRunBrake_joints+0x18 dFTSamusAnimRunBrake_joint7
+intern dFTSamusAnimRunBrake_joints+0x1C dFTSamusAnimRunBrake_joint8
+intern dFTSamusAnimRunBrake_joints+0x20 dFTSamusAnimRunBrake_joint11
+intern dFTSamusAnimRunBrake_joints+0x2C dFTSamusAnimRunBrake_joint12
+intern dFTSamusAnimRunBrake_joints+0x30 dFTSamusAnimRunBrake_joint14
+intern dFTSamusAnimRunBrake_joints+0x38 dFTSamusAnimRunBrake_joint15
+intern dFTSamusAnimRunBrake_joints+0x3C dFTSamusAnimRunBrake_joint17
+intern dFTSamusAnimRunBrake_joints+0x44 dFTSamusAnimRunBrake_joint19
+intern dFTSamusAnimRunBrake_joints+0x4C dFTSamusAnimRunBrake_joint20
+intern dFTSamusAnimRunBrake_joints+0x50 dFTSamusAnimRunBrake_joint22
+intern dFTSamusAnimRunBrake_joints+0x58 dFTSamusAnimRunBrake_joint22+0x40

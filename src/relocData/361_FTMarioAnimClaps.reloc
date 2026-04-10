@@ -1,0 +1,21 @@
+# Relocation metadata for file 361
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTMarioAnimClaps_joints+0x0 dFTMarioAnimClaps_joint1
+intern dFTMarioAnimClaps_joints+0x4 dFTMarioAnimClaps_joint2
+intern dFTMarioAnimClaps_joints+0x8 dFTMarioAnimClaps_joint4
+intern dFTMarioAnimClaps_joints+0x10 dFTMarioAnimClaps_joint5
+intern dFTMarioAnimClaps_joints+0x14 dFTMarioAnimClaps_joint6
+intern dFTMarioAnimClaps_joints+0x18 dFTMarioAnimClaps_joint7
+intern dFTMarioAnimClaps_joints+0x1C dFTMarioAnimClaps_joint8
+intern dFTMarioAnimClaps_joints+0x20 dFTMarioAnimClaps_joint10
+intern dFTMarioAnimClaps_joints+0x28 dFTMarioAnimClaps_joint11
+intern dFTMarioAnimClaps_joints+0x2C dFTMarioAnimClaps_joint12
+intern dFTMarioAnimClaps_joints+0x30 dFTMarioAnimClaps_joint13
+intern dFTMarioAnimClaps_joints+0x34 dFTMarioAnimClaps_joint15
+intern dFTMarioAnimClaps_joints+0x3C dFTMarioAnimClaps_joint16
+intern dFTMarioAnimClaps_joints+0x40 dFTMarioAnimClaps_joint18
+intern dFTMarioAnimClaps_joints+0x48 dFTMarioAnimClaps_joint20
+intern dFTMarioAnimClaps_joints+0x50 dFTMarioAnimClaps_joint21
+intern dFTMarioAnimClaps_joints+0x54 dFTMarioAnimClaps_joint23
+intern dFTMarioAnimClaps_joints+0x5C dFTMarioAnimClaps_joint23+0x7C

@@ -1,0 +1,19 @@
+# Relocation metadata for file 473
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTPurinAnimDollFall_joints+0x0 dFTPurinAnimDollFall_joint1
+intern dFTPurinAnimDollFall_joints+0x4 dFTPurinAnimDollFall_joint2
+intern dFTPurinAnimDollFall_joints+0x8 dFTPurinAnimDollFall_joint3
+intern dFTPurinAnimDollFall_joints+0xC dFTPurinAnimDollFall_joint4
+intern dFTPurinAnimDollFall_joints+0x10 dFTPurinAnimDollFall_joint6
+intern dFTPurinAnimDollFall_joints+0x18 dFTPurinAnimDollFall_joint7
+intern dFTPurinAnimDollFall_joints+0x1C dFTPurinAnimDollFall_joint8
+intern dFTPurinAnimDollFall_joints+0x20 dFTPurinAnimDollFall_joint10
+intern dFTPurinAnimDollFall_joints+0x28 dFTPurinAnimDollFall_joint11
+intern dFTPurinAnimDollFall_joints+0x2C dFTPurinAnimDollFall_joint14
+intern dFTPurinAnimDollFall_joints+0x38 dFTPurinAnimDollFall_joint15
+intern dFTPurinAnimDollFall_joints+0x3C dFTPurinAnimDollFall_joint17
+intern dFTPurinAnimDollFall_joints+0x44 dFTPurinAnimDollFall_joint19
+intern dFTPurinAnimDollFall_joints+0x4C dFTPurinAnimDollFall_joint20
+intern dFTPurinAnimDollFall_joints+0x50 dFTPurinAnimDollFall_joint22
+intern dFTPurinAnimDollFall_joints+0x58 dFTPurinAnimDollFall_joint22+0x2C

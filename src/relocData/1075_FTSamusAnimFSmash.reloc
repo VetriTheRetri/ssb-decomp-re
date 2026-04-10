@@ -1,0 +1,21 @@
+# Relocation metadata for file 1075
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTSamusAnimFSmash_joints+0x0 dFTSamusAnimFSmash_joint1
+intern dFTSamusAnimFSmash_joints+0x4 dFTSamusAnimFSmash_joint2
+intern dFTSamusAnimFSmash_joints+0x8 dFTSamusAnimFSmash_joint4
+intern dFTSamusAnimFSmash_joints+0x10 dFTSamusAnimFSmash_joint5
+intern dFTSamusAnimFSmash_joints+0x14 dFTSamusAnimFSmash_joint6
+intern dFTSamusAnimFSmash_joints+0x18 dFTSamusAnimFSmash_joint7
+intern dFTSamusAnimFSmash_joints+0x1C dFTSamusAnimFSmash_joint8
+intern dFTSamusAnimFSmash_joints+0x20 dFTSamusAnimFSmash_joint11
+intern dFTSamusAnimFSmash_joints+0x2C dFTSamusAnimFSmash_joint12
+intern dFTSamusAnimFSmash_joints+0x30 dFTSamusAnimFSmash_joint13
+intern dFTSamusAnimFSmash_joints+0x34 dFTSamusAnimFSmash_joint14
+intern dFTSamusAnimFSmash_joints+0x38 dFTSamusAnimFSmash_joint16
+intern dFTSamusAnimFSmash_joints+0x40 dFTSamusAnimFSmash_joint17
+intern dFTSamusAnimFSmash_joints+0x44 dFTSamusAnimFSmash_joint19
+intern dFTSamusAnimFSmash_joints+0x4C dFTSamusAnimFSmash_joint21
+intern dFTSamusAnimFSmash_joints+0x54 dFTSamusAnimFSmash_joint22
+intern dFTSamusAnimFSmash_joints+0x58 dFTSamusAnimFSmash_joint24
+intern dFTSamusAnimFSmash_joints+0x60 dFTSamusAnimFSmash_joint24+0x80

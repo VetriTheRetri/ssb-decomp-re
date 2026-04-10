@@ -1,0 +1,20 @@
+# Relocation metadata for file 1384
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTKirbyAnimFSmash_joints+0x0 dFTKirbyAnimFSmash_joint1
+intern dFTKirbyAnimFSmash_joints+0x4 dFTKirbyAnimFSmash_joint2
+intern dFTKirbyAnimFSmash_joints+0x8 dFTKirbyAnimFSmash_joint3
+intern dFTKirbyAnimFSmash_joints+0xC dFTKirbyAnimFSmash_joint4
+intern dFTKirbyAnimFSmash_joints+0x10 dFTKirbyAnimFSmash_joint6
+intern dFTKirbyAnimFSmash_joints+0x18 dFTKirbyAnimFSmash_joint7
+intern dFTKirbyAnimFSmash_joints+0x1C dFTKirbyAnimFSmash_joint8
+intern dFTKirbyAnimFSmash_joints+0x20 dFTKirbyAnimFSmash_joint10
+intern dFTKirbyAnimFSmash_joints+0x28 dFTKirbyAnimFSmash_joint11
+intern dFTKirbyAnimFSmash_joints+0x2C dFTKirbyAnimFSmash_joint12
+intern dFTKirbyAnimFSmash_joints+0x30 dFTKirbyAnimFSmash_joint14
+intern dFTKirbyAnimFSmash_joints+0x38 dFTKirbyAnimFSmash_joint15
+intern dFTKirbyAnimFSmash_joints+0x3C dFTKirbyAnimFSmash_joint17
+intern dFTKirbyAnimFSmash_joints+0x44 dFTKirbyAnimFSmash_joint19
+intern dFTKirbyAnimFSmash_joints+0x4C dFTKirbyAnimFSmash_joint20
+intern dFTKirbyAnimFSmash_joints+0x50 dFTKirbyAnimFSmash_joint22
+intern dFTKirbyAnimFSmash_joints+0x58 dFTKirbyAnimFSmash_joint22+0x1C

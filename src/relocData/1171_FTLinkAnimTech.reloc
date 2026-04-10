@@ -1,0 +1,23 @@
+# Relocation metadata for file 1171
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTLinkAnimTech_joints+0x0 dFTLinkAnimTech_joint1
+intern dFTLinkAnimTech_joints+0x4 dFTLinkAnimTech_joint2
+intern dFTLinkAnimTech_joints+0x8 dFTLinkAnimTech_joint4
+intern dFTLinkAnimTech_joints+0x10 dFTLinkAnimTech_joint5
+intern dFTLinkAnimTech_joints+0x14 dFTLinkAnimTech_joint6
+intern dFTLinkAnimTech_joints+0x18 dFTLinkAnimTech_joint9
+intern dFTLinkAnimTech_joints+0x24 dFTLinkAnimTech_joint10
+intern dFTLinkAnimTech_joints+0x28 dFTLinkAnimTech_joint11
+intern dFTLinkAnimTech_joints+0x2C dFTLinkAnimTech_joint12
+intern dFTLinkAnimTech_joints+0x30 dFTLinkAnimTech_joint13
+intern dFTLinkAnimTech_joints+0x34 dFTLinkAnimTech_joint16
+intern dFTLinkAnimTech_joints+0x40 dFTLinkAnimTech_joint17
+intern dFTLinkAnimTech_joints+0x44 dFTLinkAnimTech_joint18
+intern dFTLinkAnimTech_joints+0x48 dFTLinkAnimTech_joint20
+intern dFTLinkAnimTech_joints+0x50 dFTLinkAnimTech_joint21
+intern dFTLinkAnimTech_joints+0x54 dFTLinkAnimTech_joint23
+intern dFTLinkAnimTech_joints+0x5C dFTLinkAnimTech_joint25
+intern dFTLinkAnimTech_joints+0x64 dFTLinkAnimTech_joint26
+intern dFTLinkAnimTech_joints+0x68 dFTLinkAnimTech_joint28
+intern dFTLinkAnimTech_joints+0x70 dFTLinkAnimTech_joint28+0x60

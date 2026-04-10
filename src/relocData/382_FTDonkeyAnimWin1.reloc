@@ -1,0 +1,22 @@
+# Relocation metadata for file 382
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTDonkeyAnimWin1_joints+0x0 dFTDonkeyAnimWin1_joint1
+intern dFTDonkeyAnimWin1_joints+0x4 dFTDonkeyAnimWin1_joint2
+intern dFTDonkeyAnimWin1_joints+0x8 dFTDonkeyAnimWin1_joint4
+intern dFTDonkeyAnimWin1_joints+0x10 dFTDonkeyAnimWin1_joint5
+intern dFTDonkeyAnimWin1_joints+0x14 dFTDonkeyAnimWin1_joint6
+intern dFTDonkeyAnimWin1_joints+0x18 dFTDonkeyAnimWin1_joint7
+intern dFTDonkeyAnimWin1_joints+0x1C dFTDonkeyAnimWin1_joint8
+intern dFTDonkeyAnimWin1_joints+0x20 dFTDonkeyAnimWin1_joint10
+intern dFTDonkeyAnimWin1_joints+0x28 dFTDonkeyAnimWin1_joint11
+intern dFTDonkeyAnimWin1_joints+0x2C dFTDonkeyAnimWin1_joint12
+intern dFTDonkeyAnimWin1_joints+0x30 dFTDonkeyAnimWin1_joint13
+intern dFTDonkeyAnimWin1_joints+0x34 dFTDonkeyAnimWin1_joint14
+intern dFTDonkeyAnimWin1_joints+0x38 dFTDonkeyAnimWin1_joint16
+intern dFTDonkeyAnimWin1_joints+0x40 dFTDonkeyAnimWin1_joint17
+intern dFTDonkeyAnimWin1_joints+0x44 dFTDonkeyAnimWin1_joint19
+intern dFTDonkeyAnimWin1_joints+0x4C dFTDonkeyAnimWin1_joint21
+intern dFTDonkeyAnimWin1_joints+0x54 dFTDonkeyAnimWin1_joint22
+intern dFTDonkeyAnimWin1_joints+0x58 dFTDonkeyAnimWin1_joint24
+intern dFTDonkeyAnimWin1_joints+0x60 dFTDonkeyAnimWin1_joint24+0xB0

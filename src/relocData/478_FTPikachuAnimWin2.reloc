@@ -1,0 +1,23 @@
+# Relocation metadata for file 478
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTPikachuAnimWin2_joints+0x0 dFTPikachuAnimWin2_joint1
+intern dFTPikachuAnimWin2_joints+0x4 dFTPikachuAnimWin2_joint2
+intern dFTPikachuAnimWin2_joints+0x8 dFTPikachuAnimWin2_joint3
+intern dFTPikachuAnimWin2_joints+0xC dFTPikachuAnimWin2_joint5
+intern dFTPikachuAnimWin2_joints+0x14 dFTPikachuAnimWin2_joint6
+intern dFTPikachuAnimWin2_joints+0x18 dFTPikachuAnimWin2_joint7
+intern dFTPikachuAnimWin2_joints+0x1C dFTPikachuAnimWin2_joint8
+intern dFTPikachuAnimWin2_joints+0x20 dFTPikachuAnimWin2_joint9
+intern dFTPikachuAnimWin2_joints+0x24 dFTPikachuAnimWin2_joint10
+intern dFTPikachuAnimWin2_joints+0x28 dFTPikachuAnimWin2_joint11
+intern dFTPikachuAnimWin2_joints+0x2C dFTPikachuAnimWin2_joint13
+intern dFTPikachuAnimWin2_joints+0x34 dFTPikachuAnimWin2_joint14
+intern dFTPikachuAnimWin2_joints+0x38 dFTPikachuAnimWin2_joint16
+intern dFTPikachuAnimWin2_joints+0x40 dFTPikachuAnimWin2_joint17
+intern dFTPikachuAnimWin2_joints+0x44 dFTPikachuAnimWin2_joint19
+intern dFTPikachuAnimWin2_joints+0x4C dFTPikachuAnimWin2_joint21
+intern dFTPikachuAnimWin2_joints+0x54 dFTPikachuAnimWin2_joint22
+intern dFTPikachuAnimWin2_joints+0x58 dFTPikachuAnimWin2_joint24
+intern dFTPikachuAnimWin2_joints+0x60 dFTPikachuAnimWin2_joint25
+intern dFTPikachuAnimWin2_joints+0x64 dFTPikachuAnimWin2_joint25+0x34

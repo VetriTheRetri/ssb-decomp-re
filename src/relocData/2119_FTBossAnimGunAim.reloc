@@ -1,0 +1,23 @@
+# Relocation metadata for file 2119
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTBossAnimGunAim_joints+0x0 dFTBossAnimGunAim_joint1
+intern dFTBossAnimGunAim_joints+0x4 dFTBossAnimGunAim_joint3
+intern dFTBossAnimGunAim_joints+0xC dFTBossAnimGunAim_joint4
+intern dFTBossAnimGunAim_joints+0x10 dFTBossAnimGunAim_joint5
+intern dFTBossAnimGunAim_joints+0x14 dFTBossAnimGunAim_joint7
+intern dFTBossAnimGunAim_joints+0x1C dFTBossAnimGunAim_joint8
+intern dFTBossAnimGunAim_joints+0x20 dFTBossAnimGunAim_joint10
+intern dFTBossAnimGunAim_joints+0x28 dFTBossAnimGunAim_joint11
+intern dFTBossAnimGunAim_joints+0x2C dFTBossAnimGunAim_joint12
+intern dFTBossAnimGunAim_joints+0x30 dFTBossAnimGunAim_joint14
+intern dFTBossAnimGunAim_joints+0x38 dFTBossAnimGunAim_joint15
+intern dFTBossAnimGunAim_joints+0x3C dFTBossAnimGunAim_joint16
+intern dFTBossAnimGunAim_joints+0x40 dFTBossAnimGunAim_joint17
+intern dFTBossAnimGunAim_joints+0x44 dFTBossAnimGunAim_joint19
+intern dFTBossAnimGunAim_joints+0x4C dFTBossAnimGunAim_joint20
+intern dFTBossAnimGunAim_joints+0x50 dFTBossAnimGunAim_joint21
+intern dFTBossAnimGunAim_joints+0x54 dFTBossAnimGunAim_joint23
+intern dFTBossAnimGunAim_joints+0x5C dFTBossAnimGunAim_joint24
+intern dFTBossAnimGunAim_joints+0x60 dFTBossAnimGunAim_joint25
+intern dFTBossAnimGunAim_joints+0x64 dFTBossAnimGunAim_joint25+0x10

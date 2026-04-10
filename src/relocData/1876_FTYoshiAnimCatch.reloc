@@ -1,0 +1,24 @@
+# Relocation metadata for file 1876
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTYoshiAnimCatch_joints+0x0 dFTYoshiAnimCatch_joint1
+intern dFTYoshiAnimCatch_joints+0x4 dFTYoshiAnimCatch_joint2
+intern dFTYoshiAnimCatch_joints+0x8 dFTYoshiAnimCatch_joint3
+intern dFTYoshiAnimCatch_joints+0xC dFTYoshiAnimCatch_joint4
+intern dFTYoshiAnimCatch_joints+0x10 dFTYoshiAnimCatch_joint5
+intern dFTYoshiAnimCatch_joints+0x14 dFTYoshiAnimCatch_joint7
+intern dFTYoshiAnimCatch_joints+0x1C dFTYoshiAnimCatch_joint8
+intern dFTYoshiAnimCatch_joints+0x20 dFTYoshiAnimCatch_joint11
+intern dFTYoshiAnimCatch_joints+0x2C dFTYoshiAnimCatch_joint12
+intern dFTYoshiAnimCatch_joints+0x30 dFTYoshiAnimCatch_joint13
+intern dFTYoshiAnimCatch_joints+0x34 dFTYoshiAnimCatch_joint14
+intern dFTYoshiAnimCatch_joints+0x38 dFTYoshiAnimCatch_joint15
+intern dFTYoshiAnimCatch_joints+0x3C dFTYoshiAnimCatch_joint16
+intern dFTYoshiAnimCatch_joints+0x40 dFTYoshiAnimCatch_joint18
+intern dFTYoshiAnimCatch_joints+0x48 dFTYoshiAnimCatch_joint19
+intern dFTYoshiAnimCatch_joints+0x4C dFTYoshiAnimCatch_joint21
+intern dFTYoshiAnimCatch_joints+0x54 dFTYoshiAnimCatch_joint23
+intern dFTYoshiAnimCatch_joints+0x5C dFTYoshiAnimCatch_joint24
+intern dFTYoshiAnimCatch_joints+0x60 dFTYoshiAnimCatch_joint26
+intern dFTYoshiAnimCatch_joints+0x68 dFTYoshiAnimCatch_joint27
+intern dFTYoshiAnimCatch_joints+0x6C dFTYoshiAnimCatch_joint27+0x18C

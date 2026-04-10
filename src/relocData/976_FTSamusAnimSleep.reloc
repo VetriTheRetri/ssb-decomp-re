@@ -1,0 +1,19 @@
+# Relocation metadata for file 976
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTSamusAnimSleep_joints+0x0 dFTSamusAnimSleep_joint1
+intern dFTSamusAnimSleep_joints+0x4 dFTSamusAnimSleep_joint2
+intern dFTSamusAnimSleep_joints+0x8 dFTSamusAnimSleep_joint4
+intern dFTSamusAnimSleep_joints+0x10 dFTSamusAnimSleep_joint5
+intern dFTSamusAnimSleep_joints+0x14 dFTSamusAnimSleep_joint6
+intern dFTSamusAnimSleep_joints+0x18 dFTSamusAnimSleep_joint7
+intern dFTSamusAnimSleep_joints+0x1C dFTSamusAnimSleep_joint8
+intern dFTSamusAnimSleep_joints+0x20 dFTSamusAnimSleep_joint11
+intern dFTSamusAnimSleep_joints+0x2C dFTSamusAnimSleep_joint12
+intern dFTSamusAnimSleep_joints+0x30 dFTSamusAnimSleep_joint14
+intern dFTSamusAnimSleep_joints+0x38 dFTSamusAnimSleep_joint15
+intern dFTSamusAnimSleep_joints+0x3C dFTSamusAnimSleep_joint17
+intern dFTSamusAnimSleep_joints+0x44 dFTSamusAnimSleep_joint19
+intern dFTSamusAnimSleep_joints+0x4C dFTSamusAnimSleep_joint20
+intern dFTSamusAnimSleep_joints+0x50 dFTSamusAnimSleep_joint22
+intern dFTSamusAnimSleep_joints+0x58 dFTSamusAnimSleep_joint22+0x144

@@ -1,0 +1,24 @@
+# Relocation metadata for file 1729
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTNessAnimThrowB_joints+0x0 dFTNessAnimThrowB_joint1
+intern dFTNessAnimThrowB_joints+0x4 dFTNessAnimThrowB_joint2
+intern dFTNessAnimThrowB_joints+0x8 dFTNessAnimThrowB_joint4
+intern dFTNessAnimThrowB_joints+0x10 dFTNessAnimThrowB_joint5
+intern dFTNessAnimThrowB_joints+0x14 dFTNessAnimThrowB_joint6
+intern dFTNessAnimThrowB_joints+0x18 dFTNessAnimThrowB_joint7
+intern dFTNessAnimThrowB_joints+0x1C dFTNessAnimThrowB_joint8
+intern dFTNessAnimThrowB_joints+0x20 dFTNessAnimThrowB_joint10
+intern dFTNessAnimThrowB_joints+0x28 dFTNessAnimThrowB_joint11
+intern dFTNessAnimThrowB_joints+0x2C dFTNessAnimThrowB_joint12
+intern dFTNessAnimThrowB_joints+0x30 dFTNessAnimThrowB_joint13
+intern dFTNessAnimThrowB_joints+0x34 dFTNessAnimThrowB_joint15
+intern dFTNessAnimThrowB_joints+0x3C dFTNessAnimThrowB_joint16
+intern dFTNessAnimThrowB_joints+0x40 dFTNessAnimThrowB_joint18
+intern dFTNessAnimThrowB_joints+0x48 dFTNessAnimThrowB_joint19
+intern dFTNessAnimThrowB_joints+0x4C dFTNessAnimThrowB_joint21
+intern dFTNessAnimThrowB_joints+0x54 dFTNessAnimThrowB_joint22
+intern dFTNessAnimThrowB_joints+0x58 dFTNessAnimThrowB_joint24
+intern dFTNessAnimThrowB_joints+0x60 dFTNessAnimThrowB_joint25
+intern dFTNessAnimThrowB_joints+0x64 dFTNessAnimThrowB_joint26
+intern dFTNessAnimThrowB_joints+0x68 dFTNessAnimThrowB_joint26+0x130

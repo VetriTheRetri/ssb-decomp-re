@@ -1,0 +1,22 @@
+# Relocation metadata for file 1517
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTCaptainAnimDash_joints+0x0 dFTCaptainAnimDash_joint1
+intern dFTCaptainAnimDash_joints+0x4 dFTCaptainAnimDash_joint2
+intern dFTCaptainAnimDash_joints+0x8 dFTCaptainAnimDash_joint4
+intern dFTCaptainAnimDash_joints+0x10 dFTCaptainAnimDash_joint5
+intern dFTCaptainAnimDash_joints+0x14 dFTCaptainAnimDash_joint6
+intern dFTCaptainAnimDash_joints+0x18 dFTCaptainAnimDash_joint7
+intern dFTCaptainAnimDash_joints+0x1C dFTCaptainAnimDash_joint8
+intern dFTCaptainAnimDash_joints+0x20 dFTCaptainAnimDash_joint10
+intern dFTCaptainAnimDash_joints+0x28 dFTCaptainAnimDash_joint11
+intern dFTCaptainAnimDash_joints+0x2C dFTCaptainAnimDash_joint12
+intern dFTCaptainAnimDash_joints+0x30 dFTCaptainAnimDash_joint13
+intern dFTCaptainAnimDash_joints+0x34 dFTCaptainAnimDash_joint14
+intern dFTCaptainAnimDash_joints+0x38 dFTCaptainAnimDash_joint16
+intern dFTCaptainAnimDash_joints+0x40 dFTCaptainAnimDash_joint17
+intern dFTCaptainAnimDash_joints+0x44 dFTCaptainAnimDash_joint19
+intern dFTCaptainAnimDash_joints+0x4C dFTCaptainAnimDash_joint21
+intern dFTCaptainAnimDash_joints+0x54 dFTCaptainAnimDash_joint22
+intern dFTCaptainAnimDash_joints+0x58 dFTCaptainAnimDash_joint24
+intern dFTCaptainAnimDash_joints+0x60 dFTCaptainAnimDash_joint24+0x98

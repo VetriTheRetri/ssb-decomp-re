@@ -1,0 +1,21 @@
+# Relocation metadata for file 765
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTFoxAnimUSmash_joints+0x0 dFTFoxAnimUSmash_joint1
+intern dFTFoxAnimUSmash_joints+0x4 dFTFoxAnimUSmash_joint2
+intern dFTFoxAnimUSmash_joints+0x8 dFTFoxAnimUSmash_joint4
+intern dFTFoxAnimUSmash_joints+0x10 dFTFoxAnimUSmash_joint5
+intern dFTFoxAnimUSmash_joints+0x14 dFTFoxAnimUSmash_joint7
+intern dFTFoxAnimUSmash_joints+0x1C dFTFoxAnimUSmash_joint10
+intern dFTFoxAnimUSmash_joints+0x28 dFTFoxAnimUSmash_joint11
+intern dFTFoxAnimUSmash_joints+0x2C dFTFoxAnimUSmash_joint12
+intern dFTFoxAnimUSmash_joints+0x30 dFTFoxAnimUSmash_joint13
+intern dFTFoxAnimUSmash_joints+0x34 dFTFoxAnimUSmash_joint15
+intern dFTFoxAnimUSmash_joints+0x3C dFTFoxAnimUSmash_joint16
+intern dFTFoxAnimUSmash_joints+0x40 dFTFoxAnimUSmash_joint18
+intern dFTFoxAnimUSmash_joints+0x48 dFTFoxAnimUSmash_joint20
+intern dFTFoxAnimUSmash_joints+0x50 dFTFoxAnimUSmash_joint21
+intern dFTFoxAnimUSmash_joints+0x54 dFTFoxAnimUSmash_joint23
+intern dFTFoxAnimUSmash_joints+0x5C dFTFoxAnimUSmash_joint24
+intern dFTFoxAnimUSmash_joints+0x60 dFTFoxAnimUSmash_joint25
+intern dFTFoxAnimUSmash_joints+0x64 dFTFoxAnimUSmash_joint25+0x40

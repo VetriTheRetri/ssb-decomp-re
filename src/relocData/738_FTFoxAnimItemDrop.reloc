@@ -1,0 +1,23 @@
+# Relocation metadata for file 738
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTFoxAnimItemDrop_joints+0x0 dFTFoxAnimItemDrop_joint1
+intern dFTFoxAnimItemDrop_joints+0x4 dFTFoxAnimItemDrop_joint2
+intern dFTFoxAnimItemDrop_joints+0x8 dFTFoxAnimItemDrop_joint4
+intern dFTFoxAnimItemDrop_joints+0x10 dFTFoxAnimItemDrop_joint5
+intern dFTFoxAnimItemDrop_joints+0x14 dFTFoxAnimItemDrop_joint6
+intern dFTFoxAnimItemDrop_joints+0x18 dFTFoxAnimItemDrop_joint7
+intern dFTFoxAnimItemDrop_joints+0x1C dFTFoxAnimItemDrop_joint8
+intern dFTFoxAnimItemDrop_joints+0x20 dFTFoxAnimItemDrop_joint10
+intern dFTFoxAnimItemDrop_joints+0x28 dFTFoxAnimItemDrop_joint11
+intern dFTFoxAnimItemDrop_joints+0x2C dFTFoxAnimItemDrop_joint12
+intern dFTFoxAnimItemDrop_joints+0x30 dFTFoxAnimItemDrop_joint13
+intern dFTFoxAnimItemDrop_joints+0x34 dFTFoxAnimItemDrop_joint15
+intern dFTFoxAnimItemDrop_joints+0x3C dFTFoxAnimItemDrop_joint16
+intern dFTFoxAnimItemDrop_joints+0x40 dFTFoxAnimItemDrop_joint18
+intern dFTFoxAnimItemDrop_joints+0x48 dFTFoxAnimItemDrop_joint20
+intern dFTFoxAnimItemDrop_joints+0x50 dFTFoxAnimItemDrop_joint21
+intern dFTFoxAnimItemDrop_joints+0x54 dFTFoxAnimItemDrop_joint23
+intern dFTFoxAnimItemDrop_joints+0x5C dFTFoxAnimItemDrop_joint24
+intern dFTFoxAnimItemDrop_joints+0x60 dFTFoxAnimItemDrop_joint25
+intern dFTFoxAnimItemDrop_joints+0x64 dFTFoxAnimItemDrop_joint25+0x28

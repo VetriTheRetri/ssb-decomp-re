@@ -1,0 +1,21 @@
+# Relocation metadata for file 665
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTFoxAnimSleep_joints+0x0 dFTFoxAnimSleep_joint1
+intern dFTFoxAnimSleep_joints+0x4 dFTFoxAnimSleep_joint2
+intern dFTFoxAnimSleep_joints+0x8 dFTFoxAnimSleep_joint4
+intern dFTFoxAnimSleep_joints+0x10 dFTFoxAnimSleep_joint5
+intern dFTFoxAnimSleep_joints+0x14 dFTFoxAnimSleep_joint7
+intern dFTFoxAnimSleep_joints+0x1C dFTFoxAnimSleep_joint10
+intern dFTFoxAnimSleep_joints+0x28 dFTFoxAnimSleep_joint11
+intern dFTFoxAnimSleep_joints+0x2C dFTFoxAnimSleep_joint12
+intern dFTFoxAnimSleep_joints+0x30 dFTFoxAnimSleep_joint13
+intern dFTFoxAnimSleep_joints+0x34 dFTFoxAnimSleep_joint15
+intern dFTFoxAnimSleep_joints+0x3C dFTFoxAnimSleep_joint16
+intern dFTFoxAnimSleep_joints+0x40 dFTFoxAnimSleep_joint18
+intern dFTFoxAnimSleep_joints+0x48 dFTFoxAnimSleep_joint20
+intern dFTFoxAnimSleep_joints+0x50 dFTFoxAnimSleep_joint21
+intern dFTFoxAnimSleep_joints+0x54 dFTFoxAnimSleep_joint23
+intern dFTFoxAnimSleep_joints+0x5C dFTFoxAnimSleep_joint24
+intern dFTFoxAnimSleep_joints+0x60 dFTFoxAnimSleep_joint25
+intern dFTFoxAnimSleep_joints+0x64 dFTFoxAnimSleep_joint25+0xAC

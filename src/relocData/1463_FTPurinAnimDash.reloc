@@ -1,0 +1,19 @@
+# Relocation metadata for file 1463
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTPurinAnimDash_joints+0x0 dFTPurinAnimDash_joint1
+intern dFTPurinAnimDash_joints+0x4 dFTPurinAnimDash_joint2
+intern dFTPurinAnimDash_joints+0x8 dFTPurinAnimDash_joint3
+intern dFTPurinAnimDash_joints+0xC dFTPurinAnimDash_joint5
+intern dFTPurinAnimDash_joints+0x14 dFTPurinAnimDash_joint6
+intern dFTPurinAnimDash_joints+0x18 dFTPurinAnimDash_joint7
+intern dFTPurinAnimDash_joints+0x1C dFTPurinAnimDash_joint9
+intern dFTPurinAnimDash_joints+0x24 dFTPurinAnimDash_joint10
+intern dFTPurinAnimDash_joints+0x28 dFTPurinAnimDash_joint11
+intern dFTPurinAnimDash_joints+0x2C dFTPurinAnimDash_joint13
+intern dFTPurinAnimDash_joints+0x34 dFTPurinAnimDash_joint14
+intern dFTPurinAnimDash_joints+0x38 dFTPurinAnimDash_joint16
+intern dFTPurinAnimDash_joints+0x40 dFTPurinAnimDash_joint18
+intern dFTPurinAnimDash_joints+0x48 dFTPurinAnimDash_joint19
+intern dFTPurinAnimDash_joints+0x4C dFTPurinAnimDash_joint21
+intern dFTPurinAnimDash_joints+0x54 dFTPurinAnimDash_joint21+0x94

@@ -1,0 +1,20 @@
+# Relocation metadata for file 417
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTKirbyAnimWin2_joints+0x0 dFTKirbyAnimWin2_joint1
+intern dFTKirbyAnimWin2_joints+0x4 dFTKirbyAnimWin2_joint2
+intern dFTKirbyAnimWin2_joints+0x8 dFTKirbyAnimWin2_joint3
+intern dFTKirbyAnimWin2_joints+0xC dFTKirbyAnimWin2_joint4
+intern dFTKirbyAnimWin2_joints+0x10 dFTKirbyAnimWin2_joint6
+intern dFTKirbyAnimWin2_joints+0x18 dFTKirbyAnimWin2_joint7
+intern dFTKirbyAnimWin2_joints+0x1C dFTKirbyAnimWin2_joint8
+intern dFTKirbyAnimWin2_joints+0x20 dFTKirbyAnimWin2_joint10
+intern dFTKirbyAnimWin2_joints+0x28 dFTKirbyAnimWin2_joint11
+intern dFTKirbyAnimWin2_joints+0x2C dFTKirbyAnimWin2_joint12
+intern dFTKirbyAnimWin2_joints+0x30 dFTKirbyAnimWin2_joint14
+intern dFTKirbyAnimWin2_joints+0x38 dFTKirbyAnimWin2_joint15
+intern dFTKirbyAnimWin2_joints+0x3C dFTKirbyAnimWin2_joint17
+intern dFTKirbyAnimWin2_joints+0x44 dFTKirbyAnimWin2_joint19
+intern dFTKirbyAnimWin2_joints+0x4C dFTKirbyAnimWin2_joint20
+intern dFTKirbyAnimWin2_joints+0x50 dFTKirbyAnimWin2_joint22
+intern dFTKirbyAnimWin2_joints+0x58 dFTKirbyAnimWin2_joint22+0x100

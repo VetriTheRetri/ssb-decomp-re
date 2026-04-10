@@ -1,0 +1,23 @@
+# Relocation metadata for file 647
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTFoxAnimDash_joints+0x0 dFTFoxAnimDash_joint1
+intern dFTFoxAnimDash_joints+0x4 dFTFoxAnimDash_joint2
+intern dFTFoxAnimDash_joints+0x8 dFTFoxAnimDash_joint4
+intern dFTFoxAnimDash_joints+0x10 dFTFoxAnimDash_joint5
+intern dFTFoxAnimDash_joints+0x14 dFTFoxAnimDash_joint6
+intern dFTFoxAnimDash_joints+0x18 dFTFoxAnimDash_joint7
+intern dFTFoxAnimDash_joints+0x1C dFTFoxAnimDash_joint8
+intern dFTFoxAnimDash_joints+0x20 dFTFoxAnimDash_joint10
+intern dFTFoxAnimDash_joints+0x28 dFTFoxAnimDash_joint11
+intern dFTFoxAnimDash_joints+0x2C dFTFoxAnimDash_joint12
+intern dFTFoxAnimDash_joints+0x30 dFTFoxAnimDash_joint13
+intern dFTFoxAnimDash_joints+0x34 dFTFoxAnimDash_joint15
+intern dFTFoxAnimDash_joints+0x3C dFTFoxAnimDash_joint16
+intern dFTFoxAnimDash_joints+0x40 dFTFoxAnimDash_joint18
+intern dFTFoxAnimDash_joints+0x48 dFTFoxAnimDash_joint20
+intern dFTFoxAnimDash_joints+0x50 dFTFoxAnimDash_joint21
+intern dFTFoxAnimDash_joints+0x54 dFTFoxAnimDash_joint23
+intern dFTFoxAnimDash_joints+0x5C dFTFoxAnimDash_joint24
+intern dFTFoxAnimDash_joints+0x60 dFTFoxAnimDash_joint25
+intern dFTFoxAnimDash_joints+0x64 dFTFoxAnimDash_joint25+0x6C

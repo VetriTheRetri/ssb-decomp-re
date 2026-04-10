@@ -1,0 +1,18 @@
+# Relocation metadata for file 394
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTSamusAnimWin1_joints+0x0 dFTSamusAnimWin1_joint1
+intern dFTSamusAnimWin1_joints+0x4 dFTSamusAnimWin1_joint2
+intern dFTSamusAnimWin1_joints+0x8 dFTSamusAnimWin1_joint4
+intern dFTSamusAnimWin1_joints+0x10 dFTSamusAnimWin1_joint5
+intern dFTSamusAnimWin1_joints+0x14 dFTSamusAnimWin1_joint6
+intern dFTSamusAnimWin1_joints+0x18 dFTSamusAnimWin1_joint8
+intern dFTSamusAnimWin1_joints+0x20 dFTSamusAnimWin1_joint11
+intern dFTSamusAnimWin1_joints+0x2C dFTSamusAnimWin1_joint12
+intern dFTSamusAnimWin1_joints+0x30 dFTSamusAnimWin1_joint14
+intern dFTSamusAnimWin1_joints+0x38 dFTSamusAnimWin1_joint15
+intern dFTSamusAnimWin1_joints+0x3C dFTSamusAnimWin1_joint17
+intern dFTSamusAnimWin1_joints+0x44 dFTSamusAnimWin1_joint19
+intern dFTSamusAnimWin1_joints+0x4C dFTSamusAnimWin1_joint20
+intern dFTSamusAnimWin1_joints+0x50 dFTSamusAnimWin1_joint22
+intern dFTSamusAnimWin1_joints+0x58 dFTSamusAnimWin1_joint22+0x80

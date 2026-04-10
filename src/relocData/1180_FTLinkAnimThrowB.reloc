@@ -1,0 +1,24 @@
+# Relocation metadata for file 1180
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTLinkAnimThrowB_joints+0x0 dFTLinkAnimThrowB_joint1
+intern dFTLinkAnimThrowB_joints+0x4 dFTLinkAnimThrowB_joint2
+intern dFTLinkAnimThrowB_joints+0x8 dFTLinkAnimThrowB_joint4
+intern dFTLinkAnimThrowB_joints+0x10 dFTLinkAnimThrowB_joint5
+intern dFTLinkAnimThrowB_joints+0x14 dFTLinkAnimThrowB_joint6
+intern dFTLinkAnimThrowB_joints+0x18 dFTLinkAnimThrowB_joint9
+intern dFTLinkAnimThrowB_joints+0x24 dFTLinkAnimThrowB_joint10
+intern dFTLinkAnimThrowB_joints+0x28 dFTLinkAnimThrowB_joint11
+intern dFTLinkAnimThrowB_joints+0x2C dFTLinkAnimThrowB_joint12
+intern dFTLinkAnimThrowB_joints+0x30 dFTLinkAnimThrowB_joint13
+intern dFTLinkAnimThrowB_joints+0x34 dFTLinkAnimThrowB_joint16
+intern dFTLinkAnimThrowB_joints+0x40 dFTLinkAnimThrowB_joint17
+intern dFTLinkAnimThrowB_joints+0x44 dFTLinkAnimThrowB_joint18
+intern dFTLinkAnimThrowB_joints+0x48 dFTLinkAnimThrowB_joint20
+intern dFTLinkAnimThrowB_joints+0x50 dFTLinkAnimThrowB_joint21
+intern dFTLinkAnimThrowB_joints+0x54 dFTLinkAnimThrowB_joint23
+intern dFTLinkAnimThrowB_joints+0x5C dFTLinkAnimThrowB_joint25
+intern dFTLinkAnimThrowB_joints+0x64 dFTLinkAnimThrowB_joint26
+intern dFTLinkAnimThrowB_joints+0x68 dFTLinkAnimThrowB_joint28
+intern dFTLinkAnimThrowB_joints+0x70 dFTLinkAnimThrowB_joint29
+intern dFTLinkAnimThrowB_joints+0x74 dFTLinkAnimThrowB_joint29+0x1A0

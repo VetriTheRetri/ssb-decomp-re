@@ -1,0 +1,24 @@
+# Relocation metadata for file 704
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTFoxAnimCatch_joints+0x0 dFTFoxAnimCatch_joint1
+intern dFTFoxAnimCatch_joints+0x4 dFTFoxAnimCatch_joint2
+intern dFTFoxAnimCatch_joints+0x8 dFTFoxAnimCatch_joint4
+intern dFTFoxAnimCatch_joints+0x10 dFTFoxAnimCatch_joint5
+intern dFTFoxAnimCatch_joints+0x14 dFTFoxAnimCatch_joint6
+intern dFTFoxAnimCatch_joints+0x18 dFTFoxAnimCatch_joint7
+intern dFTFoxAnimCatch_joints+0x1C dFTFoxAnimCatch_joint8
+intern dFTFoxAnimCatch_joints+0x20 dFTFoxAnimCatch_joint10
+intern dFTFoxAnimCatch_joints+0x28 dFTFoxAnimCatch_joint11
+intern dFTFoxAnimCatch_joints+0x2C dFTFoxAnimCatch_joint12
+intern dFTFoxAnimCatch_joints+0x30 dFTFoxAnimCatch_joint13
+intern dFTFoxAnimCatch_joints+0x34 dFTFoxAnimCatch_joint15
+intern dFTFoxAnimCatch_joints+0x3C dFTFoxAnimCatch_joint16
+intern dFTFoxAnimCatch_joints+0x40 dFTFoxAnimCatch_joint18
+intern dFTFoxAnimCatch_joints+0x48 dFTFoxAnimCatch_joint20
+intern dFTFoxAnimCatch_joints+0x50 dFTFoxAnimCatch_joint21
+intern dFTFoxAnimCatch_joints+0x54 dFTFoxAnimCatch_joint23
+intern dFTFoxAnimCatch_joints+0x5C dFTFoxAnimCatch_joint24
+intern dFTFoxAnimCatch_joints+0x60 dFTFoxAnimCatch_joint25
+intern dFTFoxAnimCatch_joints+0x64 dFTFoxAnimCatch_joint26
+intern dFTFoxAnimCatch_joints+0x68 dFTFoxAnimCatch_joint26+0x38

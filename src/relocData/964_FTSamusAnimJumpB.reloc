@@ -1,0 +1,19 @@
+# Relocation metadata for file 964
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTSamusAnimJumpB_joints+0x0 dFTSamusAnimJumpB_joint1
+intern dFTSamusAnimJumpB_joints+0x4 dFTSamusAnimJumpB_joint2
+intern dFTSamusAnimJumpB_joints+0x8 dFTSamusAnimJumpB_joint4
+intern dFTSamusAnimJumpB_joints+0x10 dFTSamusAnimJumpB_joint5
+intern dFTSamusAnimJumpB_joints+0x14 dFTSamusAnimJumpB_joint6
+intern dFTSamusAnimJumpB_joints+0x18 dFTSamusAnimJumpB_joint7
+intern dFTSamusAnimJumpB_joints+0x1C dFTSamusAnimJumpB_joint8
+intern dFTSamusAnimJumpB_joints+0x20 dFTSamusAnimJumpB_joint11
+intern dFTSamusAnimJumpB_joints+0x2C dFTSamusAnimJumpB_joint12
+intern dFTSamusAnimJumpB_joints+0x30 dFTSamusAnimJumpB_joint14
+intern dFTSamusAnimJumpB_joints+0x38 dFTSamusAnimJumpB_joint15
+intern dFTSamusAnimJumpB_joints+0x3C dFTSamusAnimJumpB_joint17
+intern dFTSamusAnimJumpB_joints+0x44 dFTSamusAnimJumpB_joint19
+intern dFTSamusAnimJumpB_joints+0x4C dFTSamusAnimJumpB_joint20
+intern dFTSamusAnimJumpB_joints+0x50 dFTSamusAnimJumpB_joint22
+intern dFTSamusAnimJumpB_joints+0x58 dFTSamusAnimJumpB_joint22+0x68

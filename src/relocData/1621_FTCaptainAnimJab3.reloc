@@ -1,0 +1,23 @@
+# Relocation metadata for file 1621
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTCaptainAnimJab3_joints+0x0 dFTCaptainAnimJab3_joint1
+intern dFTCaptainAnimJab3_joints+0x4 dFTCaptainAnimJab3_joint2
+intern dFTCaptainAnimJab3_joints+0x8 dFTCaptainAnimJab3_joint3
+intern dFTCaptainAnimJab3_joints+0xC dFTCaptainAnimJab3_joint5
+intern dFTCaptainAnimJab3_joints+0x14 dFTCaptainAnimJab3_joint6
+intern dFTCaptainAnimJab3_joints+0x18 dFTCaptainAnimJab3_joint7
+intern dFTCaptainAnimJab3_joints+0x1C dFTCaptainAnimJab3_joint8
+intern dFTCaptainAnimJab3_joints+0x20 dFTCaptainAnimJab3_joint9
+intern dFTCaptainAnimJab3_joints+0x24 dFTCaptainAnimJab3_joint11
+intern dFTCaptainAnimJab3_joints+0x2C dFTCaptainAnimJab3_joint12
+intern dFTCaptainAnimJab3_joints+0x30 dFTCaptainAnimJab3_joint13
+intern dFTCaptainAnimJab3_joints+0x34 dFTCaptainAnimJab3_joint14
+intern dFTCaptainAnimJab3_joints+0x38 dFTCaptainAnimJab3_joint15
+intern dFTCaptainAnimJab3_joints+0x3C dFTCaptainAnimJab3_joint17
+intern dFTCaptainAnimJab3_joints+0x44 dFTCaptainAnimJab3_joint18
+intern dFTCaptainAnimJab3_joints+0x48 dFTCaptainAnimJab3_joint20
+intern dFTCaptainAnimJab3_joints+0x50 dFTCaptainAnimJab3_joint22
+intern dFTCaptainAnimJab3_joints+0x58 dFTCaptainAnimJab3_joint23
+intern dFTCaptainAnimJab3_joints+0x5C dFTCaptainAnimJab3_joint25
+intern dFTCaptainAnimJab3_joints+0x64 dFTCaptainAnimJab3_joint25+0xC0

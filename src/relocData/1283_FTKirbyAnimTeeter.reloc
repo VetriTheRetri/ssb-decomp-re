@@ -1,0 +1,19 @@
+# Relocation metadata for file 1283
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTKirbyAnimTeeter_joints+0x0 dFTKirbyAnimTeeter_joint1
+intern dFTKirbyAnimTeeter_joints+0x4 dFTKirbyAnimTeeter_joint2
+intern dFTKirbyAnimTeeter_joints+0x8 dFTKirbyAnimTeeter_joint3
+intern dFTKirbyAnimTeeter_joints+0xC dFTKirbyAnimTeeter_joint5
+intern dFTKirbyAnimTeeter_joints+0x14 dFTKirbyAnimTeeter_joint6
+intern dFTKirbyAnimTeeter_joints+0x18 dFTKirbyAnimTeeter_joint7
+intern dFTKirbyAnimTeeter_joints+0x1C dFTKirbyAnimTeeter_joint9
+intern dFTKirbyAnimTeeter_joints+0x24 dFTKirbyAnimTeeter_joint10
+intern dFTKirbyAnimTeeter_joints+0x28 dFTKirbyAnimTeeter_joint11
+intern dFTKirbyAnimTeeter_joints+0x2C dFTKirbyAnimTeeter_joint13
+intern dFTKirbyAnimTeeter_joints+0x34 dFTKirbyAnimTeeter_joint14
+intern dFTKirbyAnimTeeter_joints+0x38 dFTKirbyAnimTeeter_joint16
+intern dFTKirbyAnimTeeter_joints+0x40 dFTKirbyAnimTeeter_joint18
+intern dFTKirbyAnimTeeter_joints+0x48 dFTKirbyAnimTeeter_joint19
+intern dFTKirbyAnimTeeter_joints+0x4C dFTKirbyAnimTeeter_joint21
+intern dFTKirbyAnimTeeter_joints+0x54 dFTKirbyAnimTeeter_joint21+0x20

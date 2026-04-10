@@ -1,0 +1,22 @@
+# Relocation metadata for file 1828
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTYoshiAnimFall_joints+0x0 dFTYoshiAnimFall_joint1
+intern dFTYoshiAnimFall_joints+0x4 dFTYoshiAnimFall_joint2
+intern dFTYoshiAnimFall_joints+0x8 dFTYoshiAnimFall_joint3
+intern dFTYoshiAnimFall_joints+0xC dFTYoshiAnimFall_joint4
+intern dFTYoshiAnimFall_joints+0x10 dFTYoshiAnimFall_joint6
+intern dFTYoshiAnimFall_joints+0x18 dFTYoshiAnimFall_joint7
+intern dFTYoshiAnimFall_joints+0x1C dFTYoshiAnimFall_joint10
+intern dFTYoshiAnimFall_joints+0x28 dFTYoshiAnimFall_joint11
+intern dFTYoshiAnimFall_joints+0x2C dFTYoshiAnimFall_joint12
+intern dFTYoshiAnimFall_joints+0x30 dFTYoshiAnimFall_joint13
+intern dFTYoshiAnimFall_joints+0x34 dFTYoshiAnimFall_joint14
+intern dFTYoshiAnimFall_joints+0x38 dFTYoshiAnimFall_joint15
+intern dFTYoshiAnimFall_joints+0x3C dFTYoshiAnimFall_joint17
+intern dFTYoshiAnimFall_joints+0x44 dFTYoshiAnimFall_joint18
+intern dFTYoshiAnimFall_joints+0x48 dFTYoshiAnimFall_joint20
+intern dFTYoshiAnimFall_joints+0x50 dFTYoshiAnimFall_joint22
+intern dFTYoshiAnimFall_joints+0x58 dFTYoshiAnimFall_joint23
+intern dFTYoshiAnimFall_joints+0x5C dFTYoshiAnimFall_joint25
+intern dFTYoshiAnimFall_joints+0x64 dFTYoshiAnimFall_joint25+0x30

@@ -1,0 +1,19 @@
+# Relocation metadata for file 1262
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTKirbyAnimWalk3_joints+0x0 dFTKirbyAnimWalk3_joint1
+intern dFTKirbyAnimWalk3_joints+0x4 dFTKirbyAnimWalk3_joint2
+intern dFTKirbyAnimWalk3_joints+0x8 dFTKirbyAnimWalk3_joint3
+intern dFTKirbyAnimWalk3_joints+0xC dFTKirbyAnimWalk3_joint5
+intern dFTKirbyAnimWalk3_joints+0x14 dFTKirbyAnimWalk3_joint6
+intern dFTKirbyAnimWalk3_joints+0x18 dFTKirbyAnimWalk3_joint7
+intern dFTKirbyAnimWalk3_joints+0x1C dFTKirbyAnimWalk3_joint9
+intern dFTKirbyAnimWalk3_joints+0x24 dFTKirbyAnimWalk3_joint10
+intern dFTKirbyAnimWalk3_joints+0x28 dFTKirbyAnimWalk3_joint11
+intern dFTKirbyAnimWalk3_joints+0x2C dFTKirbyAnimWalk3_joint13
+intern dFTKirbyAnimWalk3_joints+0x34 dFTKirbyAnimWalk3_joint14
+intern dFTKirbyAnimWalk3_joints+0x38 dFTKirbyAnimWalk3_joint16
+intern dFTKirbyAnimWalk3_joints+0x40 dFTKirbyAnimWalk3_joint18
+intern dFTKirbyAnimWalk3_joints+0x48 dFTKirbyAnimWalk3_joint19
+intern dFTKirbyAnimWalk3_joints+0x4C dFTKirbyAnimWalk3_joint21
+intern dFTKirbyAnimWalk3_joints+0x54 dFTKirbyAnimWalk3_joint21+0x20

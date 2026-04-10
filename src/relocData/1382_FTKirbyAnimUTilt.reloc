@@ -1,0 +1,19 @@
+# Relocation metadata for file 1382
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTKirbyAnimUTilt_joints+0x0 dFTKirbyAnimUTilt_joint1
+intern dFTKirbyAnimUTilt_joints+0x4 dFTKirbyAnimUTilt_joint2
+intern dFTKirbyAnimUTilt_joints+0x8 dFTKirbyAnimUTilt_joint3
+intern dFTKirbyAnimUTilt_joints+0xC dFTKirbyAnimUTilt_joint5
+intern dFTKirbyAnimUTilt_joints+0x14 dFTKirbyAnimUTilt_joint6
+intern dFTKirbyAnimUTilt_joints+0x18 dFTKirbyAnimUTilt_joint7
+intern dFTKirbyAnimUTilt_joints+0x1C dFTKirbyAnimUTilt_joint9
+intern dFTKirbyAnimUTilt_joints+0x24 dFTKirbyAnimUTilt_joint10
+intern dFTKirbyAnimUTilt_joints+0x28 dFTKirbyAnimUTilt_joint11
+intern dFTKirbyAnimUTilt_joints+0x2C dFTKirbyAnimUTilt_joint13
+intern dFTKirbyAnimUTilt_joints+0x34 dFTKirbyAnimUTilt_joint14
+intern dFTKirbyAnimUTilt_joints+0x38 dFTKirbyAnimUTilt_joint16
+intern dFTKirbyAnimUTilt_joints+0x40 dFTKirbyAnimUTilt_joint18
+intern dFTKirbyAnimUTilt_joints+0x48 dFTKirbyAnimUTilt_joint19
+intern dFTKirbyAnimUTilt_joints+0x4C dFTKirbyAnimUTilt_joint21
+intern dFTKirbyAnimUTilt_joints+0x54 dFTKirbyAnimUTilt_joint21+0x1C

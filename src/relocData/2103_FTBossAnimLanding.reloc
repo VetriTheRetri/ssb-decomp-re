@@ -1,0 +1,23 @@
+# Relocation metadata for file 2103
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTBossAnimLanding_joints+0x0 dFTBossAnimLanding_joint1
+intern dFTBossAnimLanding_joints+0x4 dFTBossAnimLanding_joint3
+intern dFTBossAnimLanding_joints+0xC dFTBossAnimLanding_joint4
+intern dFTBossAnimLanding_joints+0x10 dFTBossAnimLanding_joint5
+intern dFTBossAnimLanding_joints+0x14 dFTBossAnimLanding_joint7
+intern dFTBossAnimLanding_joints+0x1C dFTBossAnimLanding_joint8
+intern dFTBossAnimLanding_joints+0x20 dFTBossAnimLanding_joint10
+intern dFTBossAnimLanding_joints+0x28 dFTBossAnimLanding_joint11
+intern dFTBossAnimLanding_joints+0x2C dFTBossAnimLanding_joint12
+intern dFTBossAnimLanding_joints+0x30 dFTBossAnimLanding_joint14
+intern dFTBossAnimLanding_joints+0x38 dFTBossAnimLanding_joint15
+intern dFTBossAnimLanding_joints+0x3C dFTBossAnimLanding_joint16
+intern dFTBossAnimLanding_joints+0x40 dFTBossAnimLanding_joint17
+intern dFTBossAnimLanding_joints+0x44 dFTBossAnimLanding_joint19
+intern dFTBossAnimLanding_joints+0x4C dFTBossAnimLanding_joint20
+intern dFTBossAnimLanding_joints+0x50 dFTBossAnimLanding_joint21
+intern dFTBossAnimLanding_joints+0x54 dFTBossAnimLanding_joint23
+intern dFTBossAnimLanding_joints+0x5C dFTBossAnimLanding_joint24
+intern dFTBossAnimLanding_joints+0x60 dFTBossAnimLanding_joint25
+intern dFTBossAnimLanding_joints+0x64 dFTBossAnimLanding_joint25+0x60

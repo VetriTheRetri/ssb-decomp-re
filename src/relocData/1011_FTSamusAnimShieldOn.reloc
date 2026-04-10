@@ -1,0 +1,19 @@
+# Relocation metadata for file 1011
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTSamusAnimShieldOn_joints+0x4 dFTSamusAnimShieldOn_joint2
+intern dFTSamusAnimShieldOn_joints+0x8 dFTSamusAnimShieldOn_joint3
+intern dFTSamusAnimShieldOn_joints+0xC dFTSamusAnimShieldOn_joint5
+intern dFTSamusAnimShieldOn_joints+0x14 dFTSamusAnimShieldOn_joint6
+intern dFTSamusAnimShieldOn_joints+0x18 dFTSamusAnimShieldOn_joint7
+intern dFTSamusAnimShieldOn_joints+0x1C dFTSamusAnimShieldOn_joint8
+intern dFTSamusAnimShieldOn_joints+0x20 dFTSamusAnimShieldOn_joint9
+intern dFTSamusAnimShieldOn_joints+0x24 dFTSamusAnimShieldOn_joint12
+intern dFTSamusAnimShieldOn_joints+0x30 dFTSamusAnimShieldOn_joint13
+intern dFTSamusAnimShieldOn_joints+0x34 dFTSamusAnimShieldOn_joint15
+intern dFTSamusAnimShieldOn_joints+0x3C dFTSamusAnimShieldOn_joint16
+intern dFTSamusAnimShieldOn_joints+0x40 dFTSamusAnimShieldOn_joint18
+intern dFTSamusAnimShieldOn_joints+0x48 dFTSamusAnimShieldOn_joint20
+intern dFTSamusAnimShieldOn_joints+0x50 dFTSamusAnimShieldOn_joint21
+intern dFTSamusAnimShieldOn_joints+0x54 dFTSamusAnimShieldOn_joint23
+intern dFTSamusAnimShieldOn_joints+0x5C dFTSamusAnimShieldOn_joint23+0x20

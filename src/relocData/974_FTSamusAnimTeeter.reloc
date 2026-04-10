@@ -1,0 +1,19 @@
+# Relocation metadata for file 974
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTSamusAnimTeeter_joints+0x0 dFTSamusAnimTeeter_joint1
+intern dFTSamusAnimTeeter_joints+0x4 dFTSamusAnimTeeter_joint2
+intern dFTSamusAnimTeeter_joints+0x8 dFTSamusAnimTeeter_joint4
+intern dFTSamusAnimTeeter_joints+0x10 dFTSamusAnimTeeter_joint5
+intern dFTSamusAnimTeeter_joints+0x14 dFTSamusAnimTeeter_joint6
+intern dFTSamusAnimTeeter_joints+0x18 dFTSamusAnimTeeter_joint7
+intern dFTSamusAnimTeeter_joints+0x1C dFTSamusAnimTeeter_joint8
+intern dFTSamusAnimTeeter_joints+0x20 dFTSamusAnimTeeter_joint11
+intern dFTSamusAnimTeeter_joints+0x2C dFTSamusAnimTeeter_joint12
+intern dFTSamusAnimTeeter_joints+0x30 dFTSamusAnimTeeter_joint14
+intern dFTSamusAnimTeeter_joints+0x38 dFTSamusAnimTeeter_joint15
+intern dFTSamusAnimTeeter_joints+0x3C dFTSamusAnimTeeter_joint17
+intern dFTSamusAnimTeeter_joints+0x44 dFTSamusAnimTeeter_joint19
+intern dFTSamusAnimTeeter_joints+0x4C dFTSamusAnimTeeter_joint20
+intern dFTSamusAnimTeeter_joints+0x50 dFTSamusAnimTeeter_joint22
+intern dFTSamusAnimTeeter_joints+0x58 dFTSamusAnimTeeter_joint22+0x78

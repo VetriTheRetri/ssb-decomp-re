@@ -1,0 +1,19 @@
+# Relocation metadata for file 1360
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTKirbyAnimItemDrop_joints+0x0 dFTKirbyAnimItemDrop_joint1
+intern dFTKirbyAnimItemDrop_joints+0x4 dFTKirbyAnimItemDrop_joint2
+intern dFTKirbyAnimItemDrop_joints+0x8 dFTKirbyAnimItemDrop_joint3
+intern dFTKirbyAnimItemDrop_joints+0xC dFTKirbyAnimItemDrop_joint5
+intern dFTKirbyAnimItemDrop_joints+0x14 dFTKirbyAnimItemDrop_joint6
+intern dFTKirbyAnimItemDrop_joints+0x18 dFTKirbyAnimItemDrop_joint7
+intern dFTKirbyAnimItemDrop_joints+0x1C dFTKirbyAnimItemDrop_joint9
+intern dFTKirbyAnimItemDrop_joints+0x24 dFTKirbyAnimItemDrop_joint10
+intern dFTKirbyAnimItemDrop_joints+0x28 dFTKirbyAnimItemDrop_joint11
+intern dFTKirbyAnimItemDrop_joints+0x2C dFTKirbyAnimItemDrop_joint13
+intern dFTKirbyAnimItemDrop_joints+0x34 dFTKirbyAnimItemDrop_joint14
+intern dFTKirbyAnimItemDrop_joints+0x38 dFTKirbyAnimItemDrop_joint16
+intern dFTKirbyAnimItemDrop_joints+0x40 dFTKirbyAnimItemDrop_joint18
+intern dFTKirbyAnimItemDrop_joints+0x48 dFTKirbyAnimItemDrop_joint19
+intern dFTKirbyAnimItemDrop_joints+0x4C dFTKirbyAnimItemDrop_joint21
+intern dFTKirbyAnimItemDrop_joints+0x54 dFTKirbyAnimItemDrop_joint21+0x20

@@ -1,0 +1,23 @@
+# Relocation metadata for file 1802
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTNessAnimAppear2_joints+0x0 dFTNessAnimAppear2_joint1
+intern dFTNessAnimAppear2_joints+0x4 dFTNessAnimAppear2_joint2
+intern dFTNessAnimAppear2_joints+0x8 dFTNessAnimAppear2_joint3
+intern dFTNessAnimAppear2_joints+0xC dFTNessAnimAppear2_joint5
+intern dFTNessAnimAppear2_joints+0x14 dFTNessAnimAppear2_joint6
+intern dFTNessAnimAppear2_joints+0x18 dFTNessAnimAppear2_joint7
+intern dFTNessAnimAppear2_joints+0x1C dFTNessAnimAppear2_joint8
+intern dFTNessAnimAppear2_joints+0x20 dFTNessAnimAppear2_joint9
+intern dFTNessAnimAppear2_joints+0x24 dFTNessAnimAppear2_joint11
+intern dFTNessAnimAppear2_joints+0x2C dFTNessAnimAppear2_joint12
+intern dFTNessAnimAppear2_joints+0x30 dFTNessAnimAppear2_joint13
+intern dFTNessAnimAppear2_joints+0x34 dFTNessAnimAppear2_joint16
+intern dFTNessAnimAppear2_joints+0x40 dFTNessAnimAppear2_joint17
+intern dFTNessAnimAppear2_joints+0x44 dFTNessAnimAppear2_joint19
+intern dFTNessAnimAppear2_joints+0x4C dFTNessAnimAppear2_joint20
+intern dFTNessAnimAppear2_joints+0x50 dFTNessAnimAppear2_joint22
+intern dFTNessAnimAppear2_joints+0x58 dFTNessAnimAppear2_joint23
+intern dFTNessAnimAppear2_joints+0x5C dFTNessAnimAppear2_joint25
+intern dFTNessAnimAppear2_joints+0x64 dFTNessAnimAppear2_joint26
+intern dFTNessAnimAppear2_joints+0x68 dFTNessAnimAppear2_joint26+0x190

@@ -1,0 +1,22 @@
+# Relocation metadata for file 801
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTDonkeyAnimWalk1_joints+0x0 dFTDonkeyAnimWalk1_joint1
+intern dFTDonkeyAnimWalk1_joints+0x4 dFTDonkeyAnimWalk1_joint2
+intern dFTDonkeyAnimWalk1_joints+0x8 dFTDonkeyAnimWalk1_joint4
+intern dFTDonkeyAnimWalk1_joints+0x10 dFTDonkeyAnimWalk1_joint5
+intern dFTDonkeyAnimWalk1_joints+0x14 dFTDonkeyAnimWalk1_joint6
+intern dFTDonkeyAnimWalk1_joints+0x18 dFTDonkeyAnimWalk1_joint7
+intern dFTDonkeyAnimWalk1_joints+0x1C dFTDonkeyAnimWalk1_joint8
+intern dFTDonkeyAnimWalk1_joints+0x20 dFTDonkeyAnimWalk1_joint10
+intern dFTDonkeyAnimWalk1_joints+0x28 dFTDonkeyAnimWalk1_joint11
+intern dFTDonkeyAnimWalk1_joints+0x2C dFTDonkeyAnimWalk1_joint12
+intern dFTDonkeyAnimWalk1_joints+0x30 dFTDonkeyAnimWalk1_joint13
+intern dFTDonkeyAnimWalk1_joints+0x34 dFTDonkeyAnimWalk1_joint14
+intern dFTDonkeyAnimWalk1_joints+0x38 dFTDonkeyAnimWalk1_joint16
+intern dFTDonkeyAnimWalk1_joints+0x40 dFTDonkeyAnimWalk1_joint17
+intern dFTDonkeyAnimWalk1_joints+0x44 dFTDonkeyAnimWalk1_joint19
+intern dFTDonkeyAnimWalk1_joints+0x4C dFTDonkeyAnimWalk1_joint21
+intern dFTDonkeyAnimWalk1_joints+0x54 dFTDonkeyAnimWalk1_joint22
+intern dFTDonkeyAnimWalk1_joints+0x58 dFTDonkeyAnimWalk1_joint24
+intern dFTDonkeyAnimWalk1_joints+0x60 dFTDonkeyAnimWalk1_joint24+0x50

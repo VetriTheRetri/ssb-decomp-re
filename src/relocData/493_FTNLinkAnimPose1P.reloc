@@ -1,0 +1,21 @@
+# Relocation metadata for file 493
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTNLinkAnimPose1P_joints+0x0 dFTNLinkAnimPose1P_joint1
+intern dFTNLinkAnimPose1P_joints+0x4 dFTNLinkAnimPose1P_joint2
+intern dFTNLinkAnimPose1P_joints+0x8 dFTNLinkAnimPose1P_joint4
+intern dFTNLinkAnimPose1P_joints+0x10 dFTNLinkAnimPose1P_joint5
+intern dFTNLinkAnimPose1P_joints+0x14 dFTNLinkAnimPose1P_joint6
+intern dFTNLinkAnimPose1P_joints+0x18 dFTNLinkAnimPose1P_joint9
+intern dFTNLinkAnimPose1P_joints+0x24 dFTNLinkAnimPose1P_joint10
+intern dFTNLinkAnimPose1P_joints+0x28 dFTNLinkAnimPose1P_joint11
+intern dFTNLinkAnimPose1P_joints+0x2C dFTNLinkAnimPose1P_joint12
+intern dFTNLinkAnimPose1P_joints+0x30 dFTNLinkAnimPose1P_joint18
+intern dFTNLinkAnimPose1P_joints+0x48 dFTNLinkAnimPose1P_joint19
+intern dFTNLinkAnimPose1P_joints+0x4C dFTNLinkAnimPose1P_joint22
+intern dFTNLinkAnimPose1P_joints+0x58 dFTNLinkAnimPose1P_joint23
+intern dFTNLinkAnimPose1P_joints+0x5C dFTNLinkAnimPose1P_joint25
+intern dFTNLinkAnimPose1P_joints+0x64 dFTNLinkAnimPose1P_joint27
+intern dFTNLinkAnimPose1P_joints+0x6C dFTNLinkAnimPose1P_joint28
+intern dFTNLinkAnimPose1P_joints+0x70 dFTNLinkAnimPose1P_joint30
+intern dFTNLinkAnimPose1P_joints+0x78 dFTNLinkAnimPose1P_joint30+0x10

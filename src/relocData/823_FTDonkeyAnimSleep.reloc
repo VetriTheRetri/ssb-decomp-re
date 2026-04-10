@@ -1,0 +1,21 @@
+# Relocation metadata for file 823
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTDonkeyAnimSleep_joints+0x0 dFTDonkeyAnimSleep_joint1
+intern dFTDonkeyAnimSleep_joints+0x4 dFTDonkeyAnimSleep_joint2
+intern dFTDonkeyAnimSleep_joints+0x8 dFTDonkeyAnimSleep_joint4
+intern dFTDonkeyAnimSleep_joints+0x10 dFTDonkeyAnimSleep_joint5
+intern dFTDonkeyAnimSleep_joints+0x14 dFTDonkeyAnimSleep_joint6
+intern dFTDonkeyAnimSleep_joints+0x18 dFTDonkeyAnimSleep_joint8
+intern dFTDonkeyAnimSleep_joints+0x20 dFTDonkeyAnimSleep_joint10
+intern dFTDonkeyAnimSleep_joints+0x28 dFTDonkeyAnimSleep_joint11
+intern dFTDonkeyAnimSleep_joints+0x2C dFTDonkeyAnimSleep_joint12
+intern dFTDonkeyAnimSleep_joints+0x30 dFTDonkeyAnimSleep_joint13
+intern dFTDonkeyAnimSleep_joints+0x34 dFTDonkeyAnimSleep_joint14
+intern dFTDonkeyAnimSleep_joints+0x38 dFTDonkeyAnimSleep_joint16
+intern dFTDonkeyAnimSleep_joints+0x40 dFTDonkeyAnimSleep_joint17
+intern dFTDonkeyAnimSleep_joints+0x44 dFTDonkeyAnimSleep_joint19
+intern dFTDonkeyAnimSleep_joints+0x4C dFTDonkeyAnimSleep_joint21
+intern dFTDonkeyAnimSleep_joints+0x54 dFTDonkeyAnimSleep_joint22
+intern dFTDonkeyAnimSleep_joints+0x58 dFTDonkeyAnimSleep_joint24
+intern dFTDonkeyAnimSleep_joints+0x60 dFTDonkeyAnimSleep_joint24+0x40

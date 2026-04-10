@@ -1,0 +1,21 @@
+# Relocation metadata for file 617
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTMarioAnimFSmash_joints+0x0 dFTMarioAnimFSmash_joint1
+intern dFTMarioAnimFSmash_joints+0x4 dFTMarioAnimFSmash_joint2
+intern dFTMarioAnimFSmash_joints+0x8 dFTMarioAnimFSmash_joint4
+intern dFTMarioAnimFSmash_joints+0x10 dFTMarioAnimFSmash_joint5
+intern dFTMarioAnimFSmash_joints+0x14 dFTMarioAnimFSmash_joint6
+intern dFTMarioAnimFSmash_joints+0x18 dFTMarioAnimFSmash_joint7
+intern dFTMarioAnimFSmash_joints+0x1C dFTMarioAnimFSmash_joint8
+intern dFTMarioAnimFSmash_joints+0x20 dFTMarioAnimFSmash_joint10
+intern dFTMarioAnimFSmash_joints+0x28 dFTMarioAnimFSmash_joint11
+intern dFTMarioAnimFSmash_joints+0x2C dFTMarioAnimFSmash_joint12
+intern dFTMarioAnimFSmash_joints+0x30 dFTMarioAnimFSmash_joint13
+intern dFTMarioAnimFSmash_joints+0x34 dFTMarioAnimFSmash_joint15
+intern dFTMarioAnimFSmash_joints+0x3C dFTMarioAnimFSmash_joint16
+intern dFTMarioAnimFSmash_joints+0x40 dFTMarioAnimFSmash_joint18
+intern dFTMarioAnimFSmash_joints+0x48 dFTMarioAnimFSmash_joint20
+intern dFTMarioAnimFSmash_joints+0x50 dFTMarioAnimFSmash_joint21
+intern dFTMarioAnimFSmash_joints+0x54 dFTMarioAnimFSmash_joint23
+intern dFTMarioAnimFSmash_joints+0x5C dFTMarioAnimFSmash_joint23+0x7C

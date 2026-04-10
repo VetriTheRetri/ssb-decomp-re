@@ -1,0 +1,22 @@
+# Relocation metadata for file 548
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTMarioAnimTechB_joints+0x0 dFTMarioAnimTechB_joint1
+intern dFTMarioAnimTechB_joints+0x4 dFTMarioAnimTechB_joint2
+intern dFTMarioAnimTechB_joints+0x8 dFTMarioAnimTechB_joint3
+intern dFTMarioAnimTechB_joints+0xC dFTMarioAnimTechB_joint5
+intern dFTMarioAnimTechB_joints+0x14 dFTMarioAnimTechB_joint6
+intern dFTMarioAnimTechB_joints+0x18 dFTMarioAnimTechB_joint7
+intern dFTMarioAnimTechB_joints+0x1C dFTMarioAnimTechB_joint8
+intern dFTMarioAnimTechB_joints+0x20 dFTMarioAnimTechB_joint9
+intern dFTMarioAnimTechB_joints+0x24 dFTMarioAnimTechB_joint11
+intern dFTMarioAnimTechB_joints+0x2C dFTMarioAnimTechB_joint12
+intern dFTMarioAnimTechB_joints+0x30 dFTMarioAnimTechB_joint13
+intern dFTMarioAnimTechB_joints+0x34 dFTMarioAnimTechB_joint14
+intern dFTMarioAnimTechB_joints+0x38 dFTMarioAnimTechB_joint16
+intern dFTMarioAnimTechB_joints+0x40 dFTMarioAnimTechB_joint17
+intern dFTMarioAnimTechB_joints+0x44 dFTMarioAnimTechB_joint19
+intern dFTMarioAnimTechB_joints+0x4C dFTMarioAnimTechB_joint21
+intern dFTMarioAnimTechB_joints+0x54 dFTMarioAnimTechB_joint22
+intern dFTMarioAnimTechB_joints+0x58 dFTMarioAnimTechB_joint24
+intern dFTMarioAnimTechB_joints+0x60 dFTMarioAnimTechB_joint24+0xD8

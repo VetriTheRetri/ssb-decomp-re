@@ -1,0 +1,23 @@
+# Relocation metadata for file 1955
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTYoshiAnimDamage_joints+0x0 dFTYoshiAnimDamage_joint1
+intern dFTYoshiAnimDamage_joints+0x4 dFTYoshiAnimDamage_joint2
+intern dFTYoshiAnimDamage_joints+0x8 dFTYoshiAnimDamage_joint3
+intern dFTYoshiAnimDamage_joints+0xC dFTYoshiAnimDamage_joint4
+intern dFTYoshiAnimDamage_joints+0x10 dFTYoshiAnimDamage_joint6
+intern dFTYoshiAnimDamage_joints+0x18 dFTYoshiAnimDamage_joint7
+intern dFTYoshiAnimDamage_joints+0x1C dFTYoshiAnimDamage_joint8
+intern dFTYoshiAnimDamage_joints+0x20 dFTYoshiAnimDamage_joint10
+intern dFTYoshiAnimDamage_joints+0x28 dFTYoshiAnimDamage_joint11
+intern dFTYoshiAnimDamage_joints+0x2C dFTYoshiAnimDamage_joint12
+intern dFTYoshiAnimDamage_joints+0x30 dFTYoshiAnimDamage_joint13
+intern dFTYoshiAnimDamage_joints+0x34 dFTYoshiAnimDamage_joint14
+intern dFTYoshiAnimDamage_joints+0x38 dFTYoshiAnimDamage_joint15
+intern dFTYoshiAnimDamage_joints+0x3C dFTYoshiAnimDamage_joint17
+intern dFTYoshiAnimDamage_joints+0x44 dFTYoshiAnimDamage_joint18
+intern dFTYoshiAnimDamage_joints+0x48 dFTYoshiAnimDamage_joint20
+intern dFTYoshiAnimDamage_joints+0x50 dFTYoshiAnimDamage_joint22
+intern dFTYoshiAnimDamage_joints+0x58 dFTYoshiAnimDamage_joint23
+intern dFTYoshiAnimDamage_joints+0x5C dFTYoshiAnimDamage_joint25
+intern dFTYoshiAnimDamage_joints+0x64 dFTYoshiAnimDamage_joint25+0x10

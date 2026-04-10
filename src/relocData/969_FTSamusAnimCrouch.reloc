@@ -1,0 +1,19 @@
+# Relocation metadata for file 969
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTSamusAnimCrouch_joints+0x0 dFTSamusAnimCrouch_joint1
+intern dFTSamusAnimCrouch_joints+0x4 dFTSamusAnimCrouch_joint2
+intern dFTSamusAnimCrouch_joints+0x8 dFTSamusAnimCrouch_joint4
+intern dFTSamusAnimCrouch_joints+0x10 dFTSamusAnimCrouch_joint5
+intern dFTSamusAnimCrouch_joints+0x14 dFTSamusAnimCrouch_joint6
+intern dFTSamusAnimCrouch_joints+0x18 dFTSamusAnimCrouch_joint7
+intern dFTSamusAnimCrouch_joints+0x1C dFTSamusAnimCrouch_joint8
+intern dFTSamusAnimCrouch_joints+0x20 dFTSamusAnimCrouch_joint11
+intern dFTSamusAnimCrouch_joints+0x2C dFTSamusAnimCrouch_joint12
+intern dFTSamusAnimCrouch_joints+0x30 dFTSamusAnimCrouch_joint14
+intern dFTSamusAnimCrouch_joints+0x38 dFTSamusAnimCrouch_joint15
+intern dFTSamusAnimCrouch_joints+0x3C dFTSamusAnimCrouch_joint17
+intern dFTSamusAnimCrouch_joints+0x44 dFTSamusAnimCrouch_joint19
+intern dFTSamusAnimCrouch_joints+0x4C dFTSamusAnimCrouch_joint20
+intern dFTSamusAnimCrouch_joints+0x50 dFTSamusAnimCrouch_joint22
+intern dFTSamusAnimCrouch_joints+0x58 dFTSamusAnimCrouch_joint22+0x38

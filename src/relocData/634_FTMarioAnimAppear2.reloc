@@ -1,0 +1,21 @@
+# Relocation metadata for file 634
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTMarioAnimAppear2_joints+0x0 dFTMarioAnimAppear2_joint1
+intern dFTMarioAnimAppear2_joints+0x4 dFTMarioAnimAppear2_joint2
+intern dFTMarioAnimAppear2_joints+0x8 dFTMarioAnimAppear2_joint3
+intern dFTMarioAnimAppear2_joints+0xC dFTMarioAnimAppear2_joint5
+intern dFTMarioAnimAppear2_joints+0x14 dFTMarioAnimAppear2_joint6
+intern dFTMarioAnimAppear2_joints+0x18 dFTMarioAnimAppear2_joint7
+intern dFTMarioAnimAppear2_joints+0x1C dFTMarioAnimAppear2_joint8
+intern dFTMarioAnimAppear2_joints+0x20 dFTMarioAnimAppear2_joint9
+intern dFTMarioAnimAppear2_joints+0x24 dFTMarioAnimAppear2_joint11
+intern dFTMarioAnimAppear2_joints+0x2C dFTMarioAnimAppear2_joint12
+intern dFTMarioAnimAppear2_joints+0x30 dFTMarioAnimAppear2_joint13
+intern dFTMarioAnimAppear2_joints+0x34 dFTMarioAnimAppear2_joint16
+intern dFTMarioAnimAppear2_joints+0x40 dFTMarioAnimAppear2_joint17
+intern dFTMarioAnimAppear2_joints+0x44 dFTMarioAnimAppear2_joint19
+intern dFTMarioAnimAppear2_joints+0x4C dFTMarioAnimAppear2_joint21
+intern dFTMarioAnimAppear2_joints+0x54 dFTMarioAnimAppear2_joint22
+intern dFTMarioAnimAppear2_joints+0x58 dFTMarioAnimAppear2_joint24
+intern dFTMarioAnimAppear2_joints+0x60 dFTMarioAnimAppear2_joint24+0xBC

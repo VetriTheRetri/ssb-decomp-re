@@ -1,0 +1,21 @@
+# Relocation metadata for file 1104
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTLuigiAnimDash_joints+0x0 dFTLuigiAnimDash_joint1
+intern dFTLuigiAnimDash_joints+0x4 dFTLuigiAnimDash_joint2
+intern dFTLuigiAnimDash_joints+0x8 dFTLuigiAnimDash_joint4
+intern dFTLuigiAnimDash_joints+0x10 dFTLuigiAnimDash_joint5
+intern dFTLuigiAnimDash_joints+0x14 dFTLuigiAnimDash_joint6
+intern dFTLuigiAnimDash_joints+0x18 dFTLuigiAnimDash_joint7
+intern dFTLuigiAnimDash_joints+0x1C dFTLuigiAnimDash_joint8
+intern dFTLuigiAnimDash_joints+0x20 dFTLuigiAnimDash_joint10
+intern dFTLuigiAnimDash_joints+0x28 dFTLuigiAnimDash_joint11
+intern dFTLuigiAnimDash_joints+0x2C dFTLuigiAnimDash_joint12
+intern dFTLuigiAnimDash_joints+0x30 dFTLuigiAnimDash_joint13
+intern dFTLuigiAnimDash_joints+0x34 dFTLuigiAnimDash_joint15
+intern dFTLuigiAnimDash_joints+0x3C dFTLuigiAnimDash_joint16
+intern dFTLuigiAnimDash_joints+0x40 dFTLuigiAnimDash_joint18
+intern dFTLuigiAnimDash_joints+0x48 dFTLuigiAnimDash_joint20
+intern dFTLuigiAnimDash_joints+0x50 dFTLuigiAnimDash_joint21
+intern dFTLuigiAnimDash_joints+0x54 dFTLuigiAnimDash_joint23
+intern dFTLuigiAnimDash_joints+0x5C dFTLuigiAnimDash_joint23+0x6C

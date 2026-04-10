@@ -1,0 +1,23 @@
+# Relocation metadata for file 711
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTFoxAnimThrownDK_joints+0x4 dFTFoxAnimThrownDK_joint2
+intern dFTFoxAnimThrownDK_joints+0x8 dFTFoxAnimThrownDK_joint3
+intern dFTFoxAnimThrownDK_joints+0xC dFTFoxAnimThrownDK_joint5
+intern dFTFoxAnimThrownDK_joints+0x14 dFTFoxAnimThrownDK_joint6
+intern dFTFoxAnimThrownDK_joints+0x18 dFTFoxAnimThrownDK_joint7
+intern dFTFoxAnimThrownDK_joints+0x1C dFTFoxAnimThrownDK_joint8
+intern dFTFoxAnimThrownDK_joints+0x20 dFTFoxAnimThrownDK_joint9
+intern dFTFoxAnimThrownDK_joints+0x24 dFTFoxAnimThrownDK_joint11
+intern dFTFoxAnimThrownDK_joints+0x2C dFTFoxAnimThrownDK_joint12
+intern dFTFoxAnimThrownDK_joints+0x30 dFTFoxAnimThrownDK_joint13
+intern dFTFoxAnimThrownDK_joints+0x34 dFTFoxAnimThrownDK_joint14
+intern dFTFoxAnimThrownDK_joints+0x38 dFTFoxAnimThrownDK_joint16
+intern dFTFoxAnimThrownDK_joints+0x40 dFTFoxAnimThrownDK_joint17
+intern dFTFoxAnimThrownDK_joints+0x44 dFTFoxAnimThrownDK_joint19
+intern dFTFoxAnimThrownDK_joints+0x4C dFTFoxAnimThrownDK_joint21
+intern dFTFoxAnimThrownDK_joints+0x54 dFTFoxAnimThrownDK_joint22
+intern dFTFoxAnimThrownDK_joints+0x58 dFTFoxAnimThrownDK_joint24
+intern dFTFoxAnimThrownDK_joints+0x60 dFTFoxAnimThrownDK_joint25
+intern dFTFoxAnimThrownDK_joints+0x64 dFTFoxAnimThrownDK_joint26
+intern dFTFoxAnimThrownDK_joints+0x68 dFTFoxAnimThrownDK_joint26+0x1C

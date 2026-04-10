@@ -1,0 +1,23 @@
+# Relocation metadata for file 2105
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTBossAnimWalk_joints+0x0 dFTBossAnimWalk_joint1
+intern dFTBossAnimWalk_joints+0x4 dFTBossAnimWalk_joint3
+intern dFTBossAnimWalk_joints+0xC dFTBossAnimWalk_joint4
+intern dFTBossAnimWalk_joints+0x10 dFTBossAnimWalk_joint5
+intern dFTBossAnimWalk_joints+0x14 dFTBossAnimWalk_joint7
+intern dFTBossAnimWalk_joints+0x1C dFTBossAnimWalk_joint8
+intern dFTBossAnimWalk_joints+0x20 dFTBossAnimWalk_joint10
+intern dFTBossAnimWalk_joints+0x28 dFTBossAnimWalk_joint11
+intern dFTBossAnimWalk_joints+0x2C dFTBossAnimWalk_joint12
+intern dFTBossAnimWalk_joints+0x30 dFTBossAnimWalk_joint14
+intern dFTBossAnimWalk_joints+0x38 dFTBossAnimWalk_joint15
+intern dFTBossAnimWalk_joints+0x3C dFTBossAnimWalk_joint16
+intern dFTBossAnimWalk_joints+0x40 dFTBossAnimWalk_joint17
+intern dFTBossAnimWalk_joints+0x44 dFTBossAnimWalk_joint19
+intern dFTBossAnimWalk_joints+0x4C dFTBossAnimWalk_joint20
+intern dFTBossAnimWalk_joints+0x50 dFTBossAnimWalk_joint21
+intern dFTBossAnimWalk_joints+0x54 dFTBossAnimWalk_joint23
+intern dFTBossAnimWalk_joints+0x5C dFTBossAnimWalk_joint24
+intern dFTBossAnimWalk_joints+0x60 dFTBossAnimWalk_joint25
+intern dFTBossAnimWalk_joints+0x64 dFTBossAnimWalk_joint25+0x20

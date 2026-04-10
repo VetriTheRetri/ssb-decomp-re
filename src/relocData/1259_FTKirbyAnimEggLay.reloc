@@ -1,0 +1,19 @@
+# Relocation metadata for file 1259
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTKirbyAnimEggLay_joints+0x0 dFTKirbyAnimEggLay_joint1
+intern dFTKirbyAnimEggLay_joints+0x4 dFTKirbyAnimEggLay_joint2
+intern dFTKirbyAnimEggLay_joints+0x8 dFTKirbyAnimEggLay_joint3
+intern dFTKirbyAnimEggLay_joints+0xC dFTKirbyAnimEggLay_joint5
+intern dFTKirbyAnimEggLay_joints+0x14 dFTKirbyAnimEggLay_joint6
+intern dFTKirbyAnimEggLay_joints+0x18 dFTKirbyAnimEggLay_joint7
+intern dFTKirbyAnimEggLay_joints+0x1C dFTKirbyAnimEggLay_joint9
+intern dFTKirbyAnimEggLay_joints+0x24 dFTKirbyAnimEggLay_joint10
+intern dFTKirbyAnimEggLay_joints+0x28 dFTKirbyAnimEggLay_joint11
+intern dFTKirbyAnimEggLay_joints+0x2C dFTKirbyAnimEggLay_joint13
+intern dFTKirbyAnimEggLay_joints+0x34 dFTKirbyAnimEggLay_joint14
+intern dFTKirbyAnimEggLay_joints+0x38 dFTKirbyAnimEggLay_joint16
+intern dFTKirbyAnimEggLay_joints+0x40 dFTKirbyAnimEggLay_joint18
+intern dFTKirbyAnimEggLay_joints+0x48 dFTKirbyAnimEggLay_joint19
+intern dFTKirbyAnimEggLay_joints+0x4C dFTKirbyAnimEggLay_joint21
+intern dFTKirbyAnimEggLay_joints+0x54 dFTKirbyAnimEggLay_joint21+0x30

@@ -1,0 +1,20 @@
+# Relocation metadata for file 1107
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTLuigiAnimTaunt_joints+0x0 dFTLuigiAnimTaunt_joint1
+intern dFTLuigiAnimTaunt_joints+0x4 dFTLuigiAnimTaunt_joint2
+intern dFTLuigiAnimTaunt_joints+0x8 dFTLuigiAnimTaunt_joint4
+intern dFTLuigiAnimTaunt_joints+0x10 dFTLuigiAnimTaunt_joint5
+intern dFTLuigiAnimTaunt_joints+0x14 dFTLuigiAnimTaunt_joint7
+intern dFTLuigiAnimTaunt_joints+0x1C dFTLuigiAnimTaunt_joint8
+intern dFTLuigiAnimTaunt_joints+0x20 dFTLuigiAnimTaunt_joint10
+intern dFTLuigiAnimTaunt_joints+0x28 dFTLuigiAnimTaunt_joint11
+intern dFTLuigiAnimTaunt_joints+0x2C dFTLuigiAnimTaunt_joint12
+intern dFTLuigiAnimTaunt_joints+0x30 dFTLuigiAnimTaunt_joint13
+intern dFTLuigiAnimTaunt_joints+0x34 dFTLuigiAnimTaunt_joint15
+intern dFTLuigiAnimTaunt_joints+0x3C dFTLuigiAnimTaunt_joint16
+intern dFTLuigiAnimTaunt_joints+0x40 dFTLuigiAnimTaunt_joint18
+intern dFTLuigiAnimTaunt_joints+0x48 dFTLuigiAnimTaunt_joint20
+intern dFTLuigiAnimTaunt_joints+0x50 dFTLuigiAnimTaunt_joint21
+intern dFTLuigiAnimTaunt_joints+0x54 dFTLuigiAnimTaunt_joint23
+intern dFTLuigiAnimTaunt_joints+0x5C dFTLuigiAnimTaunt_joint23+0xB0

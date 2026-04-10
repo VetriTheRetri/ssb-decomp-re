@@ -1,0 +1,19 @@
+# Relocation metadata for file 1300
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTKirbyAnimDamage2_joints+0x0 dFTKirbyAnimDamage2_joint1
+intern dFTKirbyAnimDamage2_joints+0x4 dFTKirbyAnimDamage2_joint2
+intern dFTKirbyAnimDamage2_joints+0x8 dFTKirbyAnimDamage2_joint3
+intern dFTKirbyAnimDamage2_joints+0xC dFTKirbyAnimDamage2_joint5
+intern dFTKirbyAnimDamage2_joints+0x14 dFTKirbyAnimDamage2_joint6
+intern dFTKirbyAnimDamage2_joints+0x18 dFTKirbyAnimDamage2_joint7
+intern dFTKirbyAnimDamage2_joints+0x1C dFTKirbyAnimDamage2_joint9
+intern dFTKirbyAnimDamage2_joints+0x24 dFTKirbyAnimDamage2_joint10
+intern dFTKirbyAnimDamage2_joints+0x28 dFTKirbyAnimDamage2_joint11
+intern dFTKirbyAnimDamage2_joints+0x2C dFTKirbyAnimDamage2_joint13
+intern dFTKirbyAnimDamage2_joints+0x34 dFTKirbyAnimDamage2_joint14
+intern dFTKirbyAnimDamage2_joints+0x38 dFTKirbyAnimDamage2_joint16
+intern dFTKirbyAnimDamage2_joints+0x40 dFTKirbyAnimDamage2_joint18
+intern dFTKirbyAnimDamage2_joints+0x48 dFTKirbyAnimDamage2_joint19
+intern dFTKirbyAnimDamage2_joints+0x4C dFTKirbyAnimDamage2_joint21
+intern dFTKirbyAnimDamage2_joints+0x54 dFTKirbyAnimDamage2_joint21+0x1C

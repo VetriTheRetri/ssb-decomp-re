@@ -1,0 +1,19 @@
+# Relocation metadata for file 1497
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTPurinAnimThrownDK_joints+0x4 dFTPurinAnimThrownDK_joint2
+intern dFTPurinAnimThrownDK_joints+0x8 dFTPurinAnimThrownDK_joint3
+intern dFTPurinAnimThrownDK_joints+0xC dFTPurinAnimThrownDK_joint4
+intern dFTPurinAnimThrownDK_joints+0x10 dFTPurinAnimThrownDK_joint6
+intern dFTPurinAnimThrownDK_joints+0x18 dFTPurinAnimThrownDK_joint7
+intern dFTPurinAnimThrownDK_joints+0x1C dFTPurinAnimThrownDK_joint8
+intern dFTPurinAnimThrownDK_joints+0x20 dFTPurinAnimThrownDK_joint10
+intern dFTPurinAnimThrownDK_joints+0x28 dFTPurinAnimThrownDK_joint11
+intern dFTPurinAnimThrownDK_joints+0x2C dFTPurinAnimThrownDK_joint12
+intern dFTPurinAnimThrownDK_joints+0x30 dFTPurinAnimThrownDK_joint14
+intern dFTPurinAnimThrownDK_joints+0x38 dFTPurinAnimThrownDK_joint15
+intern dFTPurinAnimThrownDK_joints+0x3C dFTPurinAnimThrownDK_joint17
+intern dFTPurinAnimThrownDK_joints+0x44 dFTPurinAnimThrownDK_joint19
+intern dFTPurinAnimThrownDK_joints+0x4C dFTPurinAnimThrownDK_joint20
+intern dFTPurinAnimThrownDK_joints+0x50 dFTPurinAnimThrownDK_joint22
+intern dFTPurinAnimThrownDK_joints+0x58 dFTPurinAnimThrownDK_joint22+0x20

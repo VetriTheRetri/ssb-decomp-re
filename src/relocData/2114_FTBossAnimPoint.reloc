@@ -1,0 +1,23 @@
+# Relocation metadata for file 2114
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTBossAnimPoint_joints+0x0 dFTBossAnimPoint_joint1
+intern dFTBossAnimPoint_joints+0x4 dFTBossAnimPoint_joint3
+intern dFTBossAnimPoint_joints+0xC dFTBossAnimPoint_joint4
+intern dFTBossAnimPoint_joints+0x10 dFTBossAnimPoint_joint5
+intern dFTBossAnimPoint_joints+0x14 dFTBossAnimPoint_joint7
+intern dFTBossAnimPoint_joints+0x1C dFTBossAnimPoint_joint8
+intern dFTBossAnimPoint_joints+0x20 dFTBossAnimPoint_joint10
+intern dFTBossAnimPoint_joints+0x28 dFTBossAnimPoint_joint11
+intern dFTBossAnimPoint_joints+0x2C dFTBossAnimPoint_joint12
+intern dFTBossAnimPoint_joints+0x30 dFTBossAnimPoint_joint14
+intern dFTBossAnimPoint_joints+0x38 dFTBossAnimPoint_joint15
+intern dFTBossAnimPoint_joints+0x3C dFTBossAnimPoint_joint16
+intern dFTBossAnimPoint_joints+0x40 dFTBossAnimPoint_joint17
+intern dFTBossAnimPoint_joints+0x44 dFTBossAnimPoint_joint19
+intern dFTBossAnimPoint_joints+0x4C dFTBossAnimPoint_joint20
+intern dFTBossAnimPoint_joints+0x50 dFTBossAnimPoint_joint21
+intern dFTBossAnimPoint_joints+0x54 dFTBossAnimPoint_joint23
+intern dFTBossAnimPoint_joints+0x5C dFTBossAnimPoint_joint24
+intern dFTBossAnimPoint_joints+0x60 dFTBossAnimPoint_joint25
+intern dFTBossAnimPoint_joints+0x64 dFTBossAnimPoint_joint25+0x10

@@ -1,0 +1,20 @@
+# Relocation metadata for file 686
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTFoxAnimStunLandD_joints+0x0 dFTFoxAnimStunLandD_joint2
+intern dFTFoxAnimStunLandD_joints+0x8 dFTFoxAnimStunLandD_joint4
+intern dFTFoxAnimStunLandD_joints+0x10 dFTFoxAnimStunLandD_joint5
+intern dFTFoxAnimStunLandD_joints+0x14 dFTFoxAnimStunLandD_joint7
+intern dFTFoxAnimStunLandD_joints+0x1C dFTFoxAnimStunLandD_joint10
+intern dFTFoxAnimStunLandD_joints+0x28 dFTFoxAnimStunLandD_joint11
+intern dFTFoxAnimStunLandD_joints+0x2C dFTFoxAnimStunLandD_joint12
+intern dFTFoxAnimStunLandD_joints+0x30 dFTFoxAnimStunLandD_joint13
+intern dFTFoxAnimStunLandD_joints+0x34 dFTFoxAnimStunLandD_joint15
+intern dFTFoxAnimStunLandD_joints+0x3C dFTFoxAnimStunLandD_joint16
+intern dFTFoxAnimStunLandD_joints+0x40 dFTFoxAnimStunLandD_joint18
+intern dFTFoxAnimStunLandD_joints+0x48 dFTFoxAnimStunLandD_joint20
+intern dFTFoxAnimStunLandD_joints+0x50 dFTFoxAnimStunLandD_joint21
+intern dFTFoxAnimStunLandD_joints+0x54 dFTFoxAnimStunLandD_joint23
+intern dFTFoxAnimStunLandD_joints+0x5C dFTFoxAnimStunLandD_joint24
+intern dFTFoxAnimStunLandD_joints+0x60 dFTFoxAnimStunLandD_joint25
+intern dFTFoxAnimStunLandD_joints+0x64 dFTFoxAnimStunLandD_joint25+0x28

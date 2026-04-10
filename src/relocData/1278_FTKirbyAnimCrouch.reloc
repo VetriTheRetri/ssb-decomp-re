@@ -1,0 +1,20 @@
+# Relocation metadata for file 1278
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTKirbyAnimCrouch_joints+0x0 dFTKirbyAnimCrouch_joint1
+intern dFTKirbyAnimCrouch_joints+0x4 dFTKirbyAnimCrouch_joint2
+intern dFTKirbyAnimCrouch_joints+0x8 dFTKirbyAnimCrouch_joint3
+intern dFTKirbyAnimCrouch_joints+0xC dFTKirbyAnimCrouch_joint4
+intern dFTKirbyAnimCrouch_joints+0x10 dFTKirbyAnimCrouch_joint6
+intern dFTKirbyAnimCrouch_joints+0x18 dFTKirbyAnimCrouch_joint7
+intern dFTKirbyAnimCrouch_joints+0x1C dFTKirbyAnimCrouch_joint8
+intern dFTKirbyAnimCrouch_joints+0x20 dFTKirbyAnimCrouch_joint10
+intern dFTKirbyAnimCrouch_joints+0x28 dFTKirbyAnimCrouch_joint11
+intern dFTKirbyAnimCrouch_joints+0x2C dFTKirbyAnimCrouch_joint12
+intern dFTKirbyAnimCrouch_joints+0x30 dFTKirbyAnimCrouch_joint14
+intern dFTKirbyAnimCrouch_joints+0x38 dFTKirbyAnimCrouch_joint15
+intern dFTKirbyAnimCrouch_joints+0x3C dFTKirbyAnimCrouch_joint17
+intern dFTKirbyAnimCrouch_joints+0x44 dFTKirbyAnimCrouch_joint19
+intern dFTKirbyAnimCrouch_joints+0x4C dFTKirbyAnimCrouch_joint20
+intern dFTKirbyAnimCrouch_joints+0x50 dFTKirbyAnimCrouch_joint22
+intern dFTKirbyAnimCrouch_joints+0x58 dFTKirbyAnimCrouch_joint22+0x1C

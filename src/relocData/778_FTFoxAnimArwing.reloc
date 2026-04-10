@@ -1,0 +1,18 @@
+# Relocation metadata for file 778
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTFoxAnimArwing_joints+0x4 dFTFoxAnimArwing_joint2
+intern dFTFoxAnimArwing_joints+0x8 dFTFoxAnimArwing_joint3
+intern dFTFoxAnimArwing_joints+0xC dFTFoxAnimArwing_joint5
+intern dFTFoxAnimArwing_joints+0x14 dFTFoxAnimArwing_joint6
+intern dFTFoxAnimArwing_joints+0x18 dFTFoxAnimArwing_joint8
+intern dFTFoxAnimArwing_joints+0x20 dFTFoxAnimArwing_joint11
+intern dFTFoxAnimArwing_joints+0x2C dFTFoxAnimArwing_joint12
+intern dFTFoxAnimArwing_joints+0x30 dFTFoxAnimArwing_joint16
+intern dFTFoxAnimArwing_joints+0x40 dFTFoxAnimArwing_joint17
+intern dFTFoxAnimArwing_joints+0x44 dFTFoxAnimArwing_joint19
+intern dFTFoxAnimArwing_joints+0x4C dFTFoxAnimArwing_joint21
+intern dFTFoxAnimArwing_joints+0x54 dFTFoxAnimArwing_joint22
+intern dFTFoxAnimArwing_joints+0x58 dFTFoxAnimArwing_joint24
+intern dFTFoxAnimArwing_joints+0x60 dFTFoxAnimArwing_joint25
+intern dFTFoxAnimArwing_joints+0x64 dFTFoxAnimArwing_joint25+0x158

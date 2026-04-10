@@ -1,0 +1,18 @@
+# Relocation metadata for file 396
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTSamusAnimClaps_joints+0x0 dFTSamusAnimClaps_joint1
+intern dFTSamusAnimClaps_joints+0x4 dFTSamusAnimClaps_joint2
+intern dFTSamusAnimClaps_joints+0x8 dFTSamusAnimClaps_joint4
+intern dFTSamusAnimClaps_joints+0x10 dFTSamusAnimClaps_joint5
+intern dFTSamusAnimClaps_joints+0x14 dFTSamusAnimClaps_joint6
+intern dFTSamusAnimClaps_joints+0x18 dFTSamusAnimClaps_joint8
+intern dFTSamusAnimClaps_joints+0x20 dFTSamusAnimClaps_joint11
+intern dFTSamusAnimClaps_joints+0x2C dFTSamusAnimClaps_joint12
+intern dFTSamusAnimClaps_joints+0x30 dFTSamusAnimClaps_joint14
+intern dFTSamusAnimClaps_joints+0x38 dFTSamusAnimClaps_joint15
+intern dFTSamusAnimClaps_joints+0x3C dFTSamusAnimClaps_joint17
+intern dFTSamusAnimClaps_joints+0x44 dFTSamusAnimClaps_joint19
+intern dFTSamusAnimClaps_joints+0x4C dFTSamusAnimClaps_joint20
+intern dFTSamusAnimClaps_joints+0x50 dFTSamusAnimClaps_joint22
+intern dFTSamusAnimClaps_joints+0x58 dFTSamusAnimClaps_joint22+0x48

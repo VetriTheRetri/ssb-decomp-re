@@ -1,0 +1,23 @@
+# Relocation metadata for file 1678
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTNessAnimFall_joints+0x0 dFTNessAnimFall_joint1
+intern dFTNessAnimFall_joints+0x4 dFTNessAnimFall_joint2
+intern dFTNessAnimFall_joints+0x8 dFTNessAnimFall_joint4
+intern dFTNessAnimFall_joints+0x10 dFTNessAnimFall_joint5
+intern dFTNessAnimFall_joints+0x14 dFTNessAnimFall_joint6
+intern dFTNessAnimFall_joints+0x18 dFTNessAnimFall_joint7
+intern dFTNessAnimFall_joints+0x1C dFTNessAnimFall_joint8
+intern dFTNessAnimFall_joints+0x20 dFTNessAnimFall_joint10
+intern dFTNessAnimFall_joints+0x28 dFTNessAnimFall_joint11
+intern dFTNessAnimFall_joints+0x2C dFTNessAnimFall_joint12
+intern dFTNessAnimFall_joints+0x30 dFTNessAnimFall_joint13
+intern dFTNessAnimFall_joints+0x34 dFTNessAnimFall_joint15
+intern dFTNessAnimFall_joints+0x3C dFTNessAnimFall_joint16
+intern dFTNessAnimFall_joints+0x40 dFTNessAnimFall_joint18
+intern dFTNessAnimFall_joints+0x48 dFTNessAnimFall_joint19
+intern dFTNessAnimFall_joints+0x4C dFTNessAnimFall_joint21
+intern dFTNessAnimFall_joints+0x54 dFTNessAnimFall_joint22
+intern dFTNessAnimFall_joints+0x58 dFTNessAnimFall_joint24
+intern dFTNessAnimFall_joints+0x60 dFTNessAnimFall_joint25
+intern dFTNessAnimFall_joints+0x64 dFTNessAnimFall_joint25+0x58

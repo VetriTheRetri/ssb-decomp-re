@@ -1,0 +1,23 @@
+# Relocation metadata for file 1153
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTLinkAnimDamage2_joints+0x0 dFTLinkAnimDamage2_joint1
+intern dFTLinkAnimDamage2_joints+0x4 dFTLinkAnimDamage2_joint2
+intern dFTLinkAnimDamage2_joints+0x8 dFTLinkAnimDamage2_joint4
+intern dFTLinkAnimDamage2_joints+0x10 dFTLinkAnimDamage2_joint5
+intern dFTLinkAnimDamage2_joints+0x14 dFTLinkAnimDamage2_joint6
+intern dFTLinkAnimDamage2_joints+0x18 dFTLinkAnimDamage2_joint9
+intern dFTLinkAnimDamage2_joints+0x24 dFTLinkAnimDamage2_joint10
+intern dFTLinkAnimDamage2_joints+0x28 dFTLinkAnimDamage2_joint11
+intern dFTLinkAnimDamage2_joints+0x2C dFTLinkAnimDamage2_joint12
+intern dFTLinkAnimDamage2_joints+0x30 dFTLinkAnimDamage2_joint13
+intern dFTLinkAnimDamage2_joints+0x34 dFTLinkAnimDamage2_joint16
+intern dFTLinkAnimDamage2_joints+0x40 dFTLinkAnimDamage2_joint17
+intern dFTLinkAnimDamage2_joints+0x44 dFTLinkAnimDamage2_joint18
+intern dFTLinkAnimDamage2_joints+0x48 dFTLinkAnimDamage2_joint20
+intern dFTLinkAnimDamage2_joints+0x50 dFTLinkAnimDamage2_joint21
+intern dFTLinkAnimDamage2_joints+0x54 dFTLinkAnimDamage2_joint23
+intern dFTLinkAnimDamage2_joints+0x5C dFTLinkAnimDamage2_joint25
+intern dFTLinkAnimDamage2_joints+0x64 dFTLinkAnimDamage2_joint26
+intern dFTLinkAnimDamage2_joints+0x68 dFTLinkAnimDamage2_joint28
+intern dFTLinkAnimDamage2_joints+0x70 dFTLinkAnimDamage2_joint28+0x90

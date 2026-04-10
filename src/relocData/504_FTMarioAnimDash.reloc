@@ -1,0 +1,21 @@
+# Relocation metadata for file 504
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTMarioAnimDash_joints+0x0 dFTMarioAnimDash_joint1
+intern dFTMarioAnimDash_joints+0x4 dFTMarioAnimDash_joint2
+intern dFTMarioAnimDash_joints+0x8 dFTMarioAnimDash_joint4
+intern dFTMarioAnimDash_joints+0x10 dFTMarioAnimDash_joint5
+intern dFTMarioAnimDash_joints+0x14 dFTMarioAnimDash_joint6
+intern dFTMarioAnimDash_joints+0x18 dFTMarioAnimDash_joint7
+intern dFTMarioAnimDash_joints+0x1C dFTMarioAnimDash_joint8
+intern dFTMarioAnimDash_joints+0x20 dFTMarioAnimDash_joint10
+intern dFTMarioAnimDash_joints+0x28 dFTMarioAnimDash_joint11
+intern dFTMarioAnimDash_joints+0x2C dFTMarioAnimDash_joint12
+intern dFTMarioAnimDash_joints+0x30 dFTMarioAnimDash_joint13
+intern dFTMarioAnimDash_joints+0x34 dFTMarioAnimDash_joint15
+intern dFTMarioAnimDash_joints+0x3C dFTMarioAnimDash_joint16
+intern dFTMarioAnimDash_joints+0x40 dFTMarioAnimDash_joint18
+intern dFTMarioAnimDash_joints+0x48 dFTMarioAnimDash_joint20
+intern dFTMarioAnimDash_joints+0x50 dFTMarioAnimDash_joint21
+intern dFTMarioAnimDash_joints+0x54 dFTMarioAnimDash_joint23
+intern dFTMarioAnimDash_joints+0x5C dFTMarioAnimDash_joint23+0x60

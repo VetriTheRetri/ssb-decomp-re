@@ -1,0 +1,22 @@
+# Relocation metadata for file 563
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTMarioAnimThrowF_joints+0x0 dFTMarioAnimThrowF_joint1
+intern dFTMarioAnimThrowF_joints+0x4 dFTMarioAnimThrowF_joint2
+intern dFTMarioAnimThrowF_joints+0x8 dFTMarioAnimThrowF_joint4
+intern dFTMarioAnimThrowF_joints+0x10 dFTMarioAnimThrowF_joint5
+intern dFTMarioAnimThrowF_joints+0x14 dFTMarioAnimThrowF_joint6
+intern dFTMarioAnimThrowF_joints+0x18 dFTMarioAnimThrowF_joint7
+intern dFTMarioAnimThrowF_joints+0x1C dFTMarioAnimThrowF_joint8
+intern dFTMarioAnimThrowF_joints+0x20 dFTMarioAnimThrowF_joint10
+intern dFTMarioAnimThrowF_joints+0x28 dFTMarioAnimThrowF_joint11
+intern dFTMarioAnimThrowF_joints+0x2C dFTMarioAnimThrowF_joint12
+intern dFTMarioAnimThrowF_joints+0x30 dFTMarioAnimThrowF_joint13
+intern dFTMarioAnimThrowF_joints+0x34 dFTMarioAnimThrowF_joint15
+intern dFTMarioAnimThrowF_joints+0x3C dFTMarioAnimThrowF_joint16
+intern dFTMarioAnimThrowF_joints+0x40 dFTMarioAnimThrowF_joint18
+intern dFTMarioAnimThrowF_joints+0x48 dFTMarioAnimThrowF_joint20
+intern dFTMarioAnimThrowF_joints+0x50 dFTMarioAnimThrowF_joint21
+intern dFTMarioAnimThrowF_joints+0x54 dFTMarioAnimThrowF_joint23
+intern dFTMarioAnimThrowF_joints+0x5C dFTMarioAnimThrowF_joint24
+intern dFTMarioAnimThrowF_joints+0x60 dFTMarioAnimThrowF_joint24+0x110

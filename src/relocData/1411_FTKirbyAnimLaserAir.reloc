@@ -1,0 +1,19 @@
+# Relocation metadata for file 1411
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTKirbyAnimLaserAir_joints+0x0 dFTKirbyAnimLaserAir_joint1
+intern dFTKirbyAnimLaserAir_joints+0x4 dFTKirbyAnimLaserAir_joint2
+intern dFTKirbyAnimLaserAir_joints+0x8 dFTKirbyAnimLaserAir_joint3
+intern dFTKirbyAnimLaserAir_joints+0xC dFTKirbyAnimLaserAir_joint5
+intern dFTKirbyAnimLaserAir_joints+0x14 dFTKirbyAnimLaserAir_joint6
+intern dFTKirbyAnimLaserAir_joints+0x18 dFTKirbyAnimLaserAir_joint7
+intern dFTKirbyAnimLaserAir_joints+0x1C dFTKirbyAnimLaserAir_joint9
+intern dFTKirbyAnimLaserAir_joints+0x24 dFTKirbyAnimLaserAir_joint10
+intern dFTKirbyAnimLaserAir_joints+0x28 dFTKirbyAnimLaserAir_joint11
+intern dFTKirbyAnimLaserAir_joints+0x2C dFTKirbyAnimLaserAir_joint13
+intern dFTKirbyAnimLaserAir_joints+0x34 dFTKirbyAnimLaserAir_joint14
+intern dFTKirbyAnimLaserAir_joints+0x38 dFTKirbyAnimLaserAir_joint16
+intern dFTKirbyAnimLaserAir_joints+0x40 dFTKirbyAnimLaserAir_joint18
+intern dFTKirbyAnimLaserAir_joints+0x48 dFTKirbyAnimLaserAir_joint19
+intern dFTKirbyAnimLaserAir_joints+0x4C dFTKirbyAnimLaserAir_joint21
+intern dFTKirbyAnimLaserAir_joints+0x54 dFTKirbyAnimLaserAir_joint21+0x30

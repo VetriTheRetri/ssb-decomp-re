@@ -1,0 +1,20 @@
+# Relocation metadata for file 1480
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTPurinAnimPass_joints+0x0 dFTPurinAnimPass_joint1
+intern dFTPurinAnimPass_joints+0x4 dFTPurinAnimPass_joint2
+intern dFTPurinAnimPass_joints+0x8 dFTPurinAnimPass_joint3
+intern dFTPurinAnimPass_joints+0xC dFTPurinAnimPass_joint4
+intern dFTPurinAnimPass_joints+0x10 dFTPurinAnimPass_joint6
+intern dFTPurinAnimPass_joints+0x18 dFTPurinAnimPass_joint7
+intern dFTPurinAnimPass_joints+0x1C dFTPurinAnimPass_joint8
+intern dFTPurinAnimPass_joints+0x20 dFTPurinAnimPass_joint10
+intern dFTPurinAnimPass_joints+0x28 dFTPurinAnimPass_joint11
+intern dFTPurinAnimPass_joints+0x2C dFTPurinAnimPass_joint12
+intern dFTPurinAnimPass_joints+0x30 dFTPurinAnimPass_joint14
+intern dFTPurinAnimPass_joints+0x38 dFTPurinAnimPass_joint15
+intern dFTPurinAnimPass_joints+0x3C dFTPurinAnimPass_joint17
+intern dFTPurinAnimPass_joints+0x44 dFTPurinAnimPass_joint19
+intern dFTPurinAnimPass_joints+0x4C dFTPurinAnimPass_joint20
+intern dFTPurinAnimPass_joints+0x50 dFTPurinAnimPass_joint22
+intern dFTPurinAnimPass_joints+0x58 dFTPurinAnimPass_joint22+0x1C

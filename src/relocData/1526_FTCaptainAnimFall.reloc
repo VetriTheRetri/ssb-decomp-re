@@ -1,0 +1,21 @@
+# Relocation metadata for file 1526
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTCaptainAnimFall_joints+0x0 dFTCaptainAnimFall_joint1
+intern dFTCaptainAnimFall_joints+0x4 dFTCaptainAnimFall_joint2
+intern dFTCaptainAnimFall_joints+0x8 dFTCaptainAnimFall_joint4
+intern dFTCaptainAnimFall_joints+0x10 dFTCaptainAnimFall_joint5
+intern dFTCaptainAnimFall_joints+0x14 dFTCaptainAnimFall_joint6
+intern dFTCaptainAnimFall_joints+0x18 dFTCaptainAnimFall_joint7
+intern dFTCaptainAnimFall_joints+0x1C dFTCaptainAnimFall_joint10
+intern dFTCaptainAnimFall_joints+0x28 dFTCaptainAnimFall_joint11
+intern dFTCaptainAnimFall_joints+0x2C dFTCaptainAnimFall_joint12
+intern dFTCaptainAnimFall_joints+0x30 dFTCaptainAnimFall_joint13
+intern dFTCaptainAnimFall_joints+0x34 dFTCaptainAnimFall_joint14
+intern dFTCaptainAnimFall_joints+0x38 dFTCaptainAnimFall_joint16
+intern dFTCaptainAnimFall_joints+0x40 dFTCaptainAnimFall_joint17
+intern dFTCaptainAnimFall_joints+0x44 dFTCaptainAnimFall_joint19
+intern dFTCaptainAnimFall_joints+0x4C dFTCaptainAnimFall_joint21
+intern dFTCaptainAnimFall_joints+0x54 dFTCaptainAnimFall_joint22
+intern dFTCaptainAnimFall_joints+0x58 dFTCaptainAnimFall_joint24
+intern dFTCaptainAnimFall_joints+0x60 dFTCaptainAnimFall_joint24+0x20

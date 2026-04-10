@@ -1,0 +1,18 @@
+# Relocation metadata for file 997
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTSamusAnimStunLandD_joints+0x0 dFTSamusAnimStunLandD_joint2
+intern dFTSamusAnimStunLandD_joints+0x8 dFTSamusAnimStunLandD_joint4
+intern dFTSamusAnimStunLandD_joints+0x10 dFTSamusAnimStunLandD_joint5
+intern dFTSamusAnimStunLandD_joints+0x14 dFTSamusAnimStunLandD_joint6
+intern dFTSamusAnimStunLandD_joints+0x18 dFTSamusAnimStunLandD_joint7
+intern dFTSamusAnimStunLandD_joints+0x1C dFTSamusAnimStunLandD_joint8
+intern dFTSamusAnimStunLandD_joints+0x20 dFTSamusAnimStunLandD_joint11
+intern dFTSamusAnimStunLandD_joints+0x2C dFTSamusAnimStunLandD_joint12
+intern dFTSamusAnimStunLandD_joints+0x30 dFTSamusAnimStunLandD_joint14
+intern dFTSamusAnimStunLandD_joints+0x38 dFTSamusAnimStunLandD_joint15
+intern dFTSamusAnimStunLandD_joints+0x3C dFTSamusAnimStunLandD_joint17
+intern dFTSamusAnimStunLandD_joints+0x44 dFTSamusAnimStunLandD_joint19
+intern dFTSamusAnimStunLandD_joints+0x4C dFTSamusAnimStunLandD_joint20
+intern dFTSamusAnimStunLandD_joints+0x50 dFTSamusAnimStunLandD_joint22
+intern dFTSamusAnimStunLandD_joints+0x58 dFTSamusAnimStunLandD_joint22+0x58

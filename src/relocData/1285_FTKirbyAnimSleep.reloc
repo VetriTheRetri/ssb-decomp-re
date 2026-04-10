@@ -1,0 +1,19 @@
+# Relocation metadata for file 1285
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTKirbyAnimSleep_joints+0x0 dFTKirbyAnimSleep_joint1
+intern dFTKirbyAnimSleep_joints+0x4 dFTKirbyAnimSleep_joint2
+intern dFTKirbyAnimSleep_joints+0x8 dFTKirbyAnimSleep_joint3
+intern dFTKirbyAnimSleep_joints+0xC dFTKirbyAnimSleep_joint5
+intern dFTKirbyAnimSleep_joints+0x14 dFTKirbyAnimSleep_joint6
+intern dFTKirbyAnimSleep_joints+0x18 dFTKirbyAnimSleep_joint7
+intern dFTKirbyAnimSleep_joints+0x1C dFTKirbyAnimSleep_joint9
+intern dFTKirbyAnimSleep_joints+0x24 dFTKirbyAnimSleep_joint10
+intern dFTKirbyAnimSleep_joints+0x28 dFTKirbyAnimSleep_joint11
+intern dFTKirbyAnimSleep_joints+0x2C dFTKirbyAnimSleep_joint13
+intern dFTKirbyAnimSleep_joints+0x34 dFTKirbyAnimSleep_joint14
+intern dFTKirbyAnimSleep_joints+0x38 dFTKirbyAnimSleep_joint16
+intern dFTKirbyAnimSleep_joints+0x40 dFTKirbyAnimSleep_joint18
+intern dFTKirbyAnimSleep_joints+0x48 dFTKirbyAnimSleep_joint19
+intern dFTKirbyAnimSleep_joints+0x4C dFTKirbyAnimSleep_joint21
+intern dFTKirbyAnimSleep_joints+0x54 dFTKirbyAnimSleep_joint21+0x60

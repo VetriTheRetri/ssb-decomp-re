@@ -1,0 +1,20 @@
+# Relocation metadata for file 1817
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTYoshiAnimWalk2_joints+0x0 dFTYoshiAnimWalk2_joint1
+intern dFTYoshiAnimWalk2_joints+0x4 dFTYoshiAnimWalk2_joint2
+intern dFTYoshiAnimWalk2_joints+0x8 dFTYoshiAnimWalk2_joint3
+intern dFTYoshiAnimWalk2_joints+0xC dFTYoshiAnimWalk2_joint6
+intern dFTYoshiAnimWalk2_joints+0x18 dFTYoshiAnimWalk2_joint7
+intern dFTYoshiAnimWalk2_joints+0x1C dFTYoshiAnimWalk2_joint10
+intern dFTYoshiAnimWalk2_joints+0x28 dFTYoshiAnimWalk2_joint11
+intern dFTYoshiAnimWalk2_joints+0x2C dFTYoshiAnimWalk2_joint13
+intern dFTYoshiAnimWalk2_joints+0x34 dFTYoshiAnimWalk2_joint14
+intern dFTYoshiAnimWalk2_joints+0x38 dFTYoshiAnimWalk2_joint15
+intern dFTYoshiAnimWalk2_joints+0x3C dFTYoshiAnimWalk2_joint17
+intern dFTYoshiAnimWalk2_joints+0x44 dFTYoshiAnimWalk2_joint18
+intern dFTYoshiAnimWalk2_joints+0x48 dFTYoshiAnimWalk2_joint20
+intern dFTYoshiAnimWalk2_joints+0x50 dFTYoshiAnimWalk2_joint22
+intern dFTYoshiAnimWalk2_joints+0x58 dFTYoshiAnimWalk2_joint23
+intern dFTYoshiAnimWalk2_joints+0x5C dFTYoshiAnimWalk2_joint25
+intern dFTYoshiAnimWalk2_joints+0x64 dFTYoshiAnimWalk2_joint25+0x40

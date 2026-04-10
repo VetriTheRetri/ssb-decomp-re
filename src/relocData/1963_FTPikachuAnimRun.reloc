@@ -1,0 +1,23 @@
+# Relocation metadata for file 1963
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTPikachuAnimRun_joints+0x0 dFTPikachuAnimRun_joint1
+intern dFTPikachuAnimRun_joints+0x4 dFTPikachuAnimRun_joint2
+intern dFTPikachuAnimRun_joints+0x8 dFTPikachuAnimRun_joint3
+intern dFTPikachuAnimRun_joints+0xC dFTPikachuAnimRun_joint5
+intern dFTPikachuAnimRun_joints+0x14 dFTPikachuAnimRun_joint6
+intern dFTPikachuAnimRun_joints+0x18 dFTPikachuAnimRun_joint7
+intern dFTPikachuAnimRun_joints+0x1C dFTPikachuAnimRun_joint8
+intern dFTPikachuAnimRun_joints+0x20 dFTPikachuAnimRun_joint9
+intern dFTPikachuAnimRun_joints+0x24 dFTPikachuAnimRun_joint10
+intern dFTPikachuAnimRun_joints+0x28 dFTPikachuAnimRun_joint11
+intern dFTPikachuAnimRun_joints+0x2C dFTPikachuAnimRun_joint13
+intern dFTPikachuAnimRun_joints+0x34 dFTPikachuAnimRun_joint14
+intern dFTPikachuAnimRun_joints+0x38 dFTPikachuAnimRun_joint16
+intern dFTPikachuAnimRun_joints+0x40 dFTPikachuAnimRun_joint17
+intern dFTPikachuAnimRun_joints+0x44 dFTPikachuAnimRun_joint19
+intern dFTPikachuAnimRun_joints+0x4C dFTPikachuAnimRun_joint21
+intern dFTPikachuAnimRun_joints+0x54 dFTPikachuAnimRun_joint22
+intern dFTPikachuAnimRun_joints+0x58 dFTPikachuAnimRun_joint24
+intern dFTPikachuAnimRun_joints+0x60 dFTPikachuAnimRun_joint25
+intern dFTPikachuAnimRun_joints+0x64 dFTPikachuAnimRun_joint25+0xA8

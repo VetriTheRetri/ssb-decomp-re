@@ -1,0 +1,19 @@
+# Relocation metadata for file 360
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTMarioAnimWinBeta_joints+0x0 dFTMarioAnimWinBeta_joint1
+intern dFTMarioAnimWinBeta_joints+0x4 dFTMarioAnimWinBeta_joint2
+intern dFTMarioAnimWinBeta_joints+0x8 dFTMarioAnimWinBeta_joint4
+intern dFTMarioAnimWinBeta_joints+0x10 dFTMarioAnimWinBeta_joint5
+intern dFTMarioAnimWinBeta_joints+0x14 dFTMarioAnimWinBeta_joint7
+intern dFTMarioAnimWinBeta_joints+0x1C dFTMarioAnimWinBeta_joint10
+intern dFTMarioAnimWinBeta_joints+0x28 dFTMarioAnimWinBeta_joint11
+intern dFTMarioAnimWinBeta_joints+0x2C dFTMarioAnimWinBeta_joint12
+intern dFTMarioAnimWinBeta_joints+0x30 dFTMarioAnimWinBeta_joint13
+intern dFTMarioAnimWinBeta_joints+0x34 dFTMarioAnimWinBeta_joint15
+intern dFTMarioAnimWinBeta_joints+0x3C dFTMarioAnimWinBeta_joint16
+intern dFTMarioAnimWinBeta_joints+0x40 dFTMarioAnimWinBeta_joint18
+intern dFTMarioAnimWinBeta_joints+0x48 dFTMarioAnimWinBeta_joint20
+intern dFTMarioAnimWinBeta_joints+0x50 dFTMarioAnimWinBeta_joint21
+intern dFTMarioAnimWinBeta_joints+0x54 dFTMarioAnimWinBeta_joint23
+intern dFTMarioAnimWinBeta_joints+0x5C dFTMarioAnimWinBeta_joint23+0x68

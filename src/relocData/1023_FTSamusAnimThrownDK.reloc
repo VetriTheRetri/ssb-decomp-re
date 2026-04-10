@@ -1,0 +1,19 @@
+# Relocation metadata for file 1023
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTSamusAnimThrownDK_joints+0x4 dFTSamusAnimThrownDK_joint2
+intern dFTSamusAnimThrownDK_joints+0x8 dFTSamusAnimThrownDK_joint3
+intern dFTSamusAnimThrownDK_joints+0xC dFTSamusAnimThrownDK_joint5
+intern dFTSamusAnimThrownDK_joints+0x14 dFTSamusAnimThrownDK_joint6
+intern dFTSamusAnimThrownDK_joints+0x18 dFTSamusAnimThrownDK_joint7
+intern dFTSamusAnimThrownDK_joints+0x1C dFTSamusAnimThrownDK_joint8
+intern dFTSamusAnimThrownDK_joints+0x20 dFTSamusAnimThrownDK_joint9
+intern dFTSamusAnimThrownDK_joints+0x24 dFTSamusAnimThrownDK_joint12
+intern dFTSamusAnimThrownDK_joints+0x30 dFTSamusAnimThrownDK_joint13
+intern dFTSamusAnimThrownDK_joints+0x34 dFTSamusAnimThrownDK_joint15
+intern dFTSamusAnimThrownDK_joints+0x3C dFTSamusAnimThrownDK_joint16
+intern dFTSamusAnimThrownDK_joints+0x40 dFTSamusAnimThrownDK_joint18
+intern dFTSamusAnimThrownDK_joints+0x48 dFTSamusAnimThrownDK_joint20
+intern dFTSamusAnimThrownDK_joints+0x50 dFTSamusAnimThrownDK_joint21
+intern dFTSamusAnimThrownDK_joints+0x54 dFTSamusAnimThrownDK_joint23
+intern dFTSamusAnimThrownDK_joints+0x5C dFTSamusAnimThrownDK_joint23+0x40

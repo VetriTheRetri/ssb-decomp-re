@@ -1,0 +1,22 @@
+# Relocation metadata for file 856
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTDonkeyAnimTech_joints+0x0 dFTDonkeyAnimTech_joint1
+intern dFTDonkeyAnimTech_joints+0x4 dFTDonkeyAnimTech_joint2
+intern dFTDonkeyAnimTech_joints+0x8 dFTDonkeyAnimTech_joint4
+intern dFTDonkeyAnimTech_joints+0x10 dFTDonkeyAnimTech_joint5
+intern dFTDonkeyAnimTech_joints+0x14 dFTDonkeyAnimTech_joint6
+intern dFTDonkeyAnimTech_joints+0x18 dFTDonkeyAnimTech_joint7
+intern dFTDonkeyAnimTech_joints+0x1C dFTDonkeyAnimTech_joint8
+intern dFTDonkeyAnimTech_joints+0x20 dFTDonkeyAnimTech_joint10
+intern dFTDonkeyAnimTech_joints+0x28 dFTDonkeyAnimTech_joint11
+intern dFTDonkeyAnimTech_joints+0x2C dFTDonkeyAnimTech_joint12
+intern dFTDonkeyAnimTech_joints+0x30 dFTDonkeyAnimTech_joint13
+intern dFTDonkeyAnimTech_joints+0x34 dFTDonkeyAnimTech_joint14
+intern dFTDonkeyAnimTech_joints+0x38 dFTDonkeyAnimTech_joint16
+intern dFTDonkeyAnimTech_joints+0x40 dFTDonkeyAnimTech_joint17
+intern dFTDonkeyAnimTech_joints+0x44 dFTDonkeyAnimTech_joint19
+intern dFTDonkeyAnimTech_joints+0x4C dFTDonkeyAnimTech_joint21
+intern dFTDonkeyAnimTech_joints+0x54 dFTDonkeyAnimTech_joint22
+intern dFTDonkeyAnimTech_joints+0x58 dFTDonkeyAnimTech_joint24
+intern dFTDonkeyAnimTech_joints+0x60 dFTDonkeyAnimTech_joint24+0x60

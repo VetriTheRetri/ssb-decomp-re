@@ -1,0 +1,20 @@
+# Relocation metadata for file 1487
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTPurinAnimCrouch_joints+0x0 dFTPurinAnimCrouch_joint1
+intern dFTPurinAnimCrouch_joints+0x4 dFTPurinAnimCrouch_joint2
+intern dFTPurinAnimCrouch_joints+0x8 dFTPurinAnimCrouch_joint3
+intern dFTPurinAnimCrouch_joints+0xC dFTPurinAnimCrouch_joint4
+intern dFTPurinAnimCrouch_joints+0x10 dFTPurinAnimCrouch_joint6
+intern dFTPurinAnimCrouch_joints+0x18 dFTPurinAnimCrouch_joint7
+intern dFTPurinAnimCrouch_joints+0x1C dFTPurinAnimCrouch_joint8
+intern dFTPurinAnimCrouch_joints+0x20 dFTPurinAnimCrouch_joint10
+intern dFTPurinAnimCrouch_joints+0x28 dFTPurinAnimCrouch_joint11
+intern dFTPurinAnimCrouch_joints+0x2C dFTPurinAnimCrouch_joint12
+intern dFTPurinAnimCrouch_joints+0x30 dFTPurinAnimCrouch_joint14
+intern dFTPurinAnimCrouch_joints+0x38 dFTPurinAnimCrouch_joint15
+intern dFTPurinAnimCrouch_joints+0x3C dFTPurinAnimCrouch_joint17
+intern dFTPurinAnimCrouch_joints+0x44 dFTPurinAnimCrouch_joint19
+intern dFTPurinAnimCrouch_joints+0x4C dFTPurinAnimCrouch_joint20
+intern dFTPurinAnimCrouch_joints+0x50 dFTPurinAnimCrouch_joint22
+intern dFTPurinAnimCrouch_joints+0x58 dFTPurinAnimCrouch_joint22+0x1C

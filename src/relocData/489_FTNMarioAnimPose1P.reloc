@@ -1,0 +1,21 @@
+# Relocation metadata for file 489
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTNMarioAnimPose1P_joints+0x0 dFTNMarioAnimPose1P_joint1
+intern dFTNMarioAnimPose1P_joints+0x4 dFTNMarioAnimPose1P_joint2
+intern dFTNMarioAnimPose1P_joints+0x8 dFTNMarioAnimPose1P_joint4
+intern dFTNMarioAnimPose1P_joints+0x10 dFTNMarioAnimPose1P_joint5
+intern dFTNMarioAnimPose1P_joints+0x14 dFTNMarioAnimPose1P_joint6
+intern dFTNMarioAnimPose1P_joints+0x18 dFTNMarioAnimPose1P_joint7
+intern dFTNMarioAnimPose1P_joints+0x1C dFTNMarioAnimPose1P_joint8
+intern dFTNMarioAnimPose1P_joints+0x20 dFTNMarioAnimPose1P_joint10
+intern dFTNMarioAnimPose1P_joints+0x28 dFTNMarioAnimPose1P_joint11
+intern dFTNMarioAnimPose1P_joints+0x2C dFTNMarioAnimPose1P_joint12
+intern dFTNMarioAnimPose1P_joints+0x30 dFTNMarioAnimPose1P_joint13
+intern dFTNMarioAnimPose1P_joints+0x34 dFTNMarioAnimPose1P_joint15
+intern dFTNMarioAnimPose1P_joints+0x3C dFTNMarioAnimPose1P_joint16
+intern dFTNMarioAnimPose1P_joints+0x40 dFTNMarioAnimPose1P_joint18
+intern dFTNMarioAnimPose1P_joints+0x48 dFTNMarioAnimPose1P_joint20
+intern dFTNMarioAnimPose1P_joints+0x50 dFTNMarioAnimPose1P_joint21
+intern dFTNMarioAnimPose1P_joints+0x54 dFTNMarioAnimPose1P_joint23
+intern dFTNMarioAnimPose1P_joints+0x5C dFTNMarioAnimPose1P_joint23+0x1C

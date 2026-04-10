@@ -1,0 +1,19 @@
+# Relocation metadata for file 1009
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTSamusAnimTech_joints+0x0 dFTSamusAnimTech_joint1
+intern dFTSamusAnimTech_joints+0x4 dFTSamusAnimTech_joint2
+intern dFTSamusAnimTech_joints+0x8 dFTSamusAnimTech_joint4
+intern dFTSamusAnimTech_joints+0x10 dFTSamusAnimTech_joint5
+intern dFTSamusAnimTech_joints+0x14 dFTSamusAnimTech_joint6
+intern dFTSamusAnimTech_joints+0x18 dFTSamusAnimTech_joint7
+intern dFTSamusAnimTech_joints+0x1C dFTSamusAnimTech_joint8
+intern dFTSamusAnimTech_joints+0x20 dFTSamusAnimTech_joint11
+intern dFTSamusAnimTech_joints+0x2C dFTSamusAnimTech_joint12
+intern dFTSamusAnimTech_joints+0x30 dFTSamusAnimTech_joint14
+intern dFTSamusAnimTech_joints+0x38 dFTSamusAnimTech_joint15
+intern dFTSamusAnimTech_joints+0x3C dFTSamusAnimTech_joint17
+intern dFTSamusAnimTech_joints+0x44 dFTSamusAnimTech_joint19
+intern dFTSamusAnimTech_joints+0x4C dFTSamusAnimTech_joint20
+intern dFTSamusAnimTech_joints+0x50 dFTSamusAnimTech_joint22
+intern dFTSamusAnimTech_joints+0x58 dFTSamusAnimTech_joint22+0x70

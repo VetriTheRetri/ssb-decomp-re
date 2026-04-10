@@ -1,0 +1,23 @@
+# Relocation metadata for file 752
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTFoxAnimJab2_joints+0x0 dFTFoxAnimJab2_joint1
+intern dFTFoxAnimJab2_joints+0x4 dFTFoxAnimJab2_joint2
+intern dFTFoxAnimJab2_joints+0x8 dFTFoxAnimJab2_joint4
+intern dFTFoxAnimJab2_joints+0x10 dFTFoxAnimJab2_joint5
+intern dFTFoxAnimJab2_joints+0x14 dFTFoxAnimJab2_joint6
+intern dFTFoxAnimJab2_joints+0x18 dFTFoxAnimJab2_joint7
+intern dFTFoxAnimJab2_joints+0x1C dFTFoxAnimJab2_joint8
+intern dFTFoxAnimJab2_joints+0x20 dFTFoxAnimJab2_joint10
+intern dFTFoxAnimJab2_joints+0x28 dFTFoxAnimJab2_joint11
+intern dFTFoxAnimJab2_joints+0x2C dFTFoxAnimJab2_joint12
+intern dFTFoxAnimJab2_joints+0x30 dFTFoxAnimJab2_joint13
+intern dFTFoxAnimJab2_joints+0x34 dFTFoxAnimJab2_joint15
+intern dFTFoxAnimJab2_joints+0x3C dFTFoxAnimJab2_joint16
+intern dFTFoxAnimJab2_joints+0x40 dFTFoxAnimJab2_joint18
+intern dFTFoxAnimJab2_joints+0x48 dFTFoxAnimJab2_joint20
+intern dFTFoxAnimJab2_joints+0x50 dFTFoxAnimJab2_joint21
+intern dFTFoxAnimJab2_joints+0x54 dFTFoxAnimJab2_joint23
+intern dFTFoxAnimJab2_joints+0x5C dFTFoxAnimJab2_joint24
+intern dFTFoxAnimJab2_joints+0x60 dFTFoxAnimJab2_joint25
+intern dFTFoxAnimJab2_joints+0x64 dFTFoxAnimJab2_joint25+0x20

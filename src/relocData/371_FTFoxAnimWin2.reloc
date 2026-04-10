@@ -1,0 +1,22 @@
+# Relocation metadata for file 371
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTFoxAnimWin2_joints+0x0 dFTFoxAnimWin2_joint1
+intern dFTFoxAnimWin2_joints+0x4 dFTFoxAnimWin2_joint2
+intern dFTFoxAnimWin2_joints+0x8 dFTFoxAnimWin2_joint4
+intern dFTFoxAnimWin2_joints+0x10 dFTFoxAnimWin2_joint5
+intern dFTFoxAnimWin2_joints+0x14 dFTFoxAnimWin2_joint6
+intern dFTFoxAnimWin2_joints+0x18 dFTFoxAnimWin2_joint7
+intern dFTFoxAnimWin2_joints+0x1C dFTFoxAnimWin2_joint10
+intern dFTFoxAnimWin2_joints+0x28 dFTFoxAnimWin2_joint11
+intern dFTFoxAnimWin2_joints+0x2C dFTFoxAnimWin2_joint12
+intern dFTFoxAnimWin2_joints+0x30 dFTFoxAnimWin2_joint13
+intern dFTFoxAnimWin2_joints+0x34 dFTFoxAnimWin2_joint15
+intern dFTFoxAnimWin2_joints+0x3C dFTFoxAnimWin2_joint16
+intern dFTFoxAnimWin2_joints+0x40 dFTFoxAnimWin2_joint18
+intern dFTFoxAnimWin2_joints+0x48 dFTFoxAnimWin2_joint20
+intern dFTFoxAnimWin2_joints+0x50 dFTFoxAnimWin2_joint21
+intern dFTFoxAnimWin2_joints+0x54 dFTFoxAnimWin2_joint23
+intern dFTFoxAnimWin2_joints+0x5C dFTFoxAnimWin2_joint24
+intern dFTFoxAnimWin2_joints+0x60 dFTFoxAnimWin2_joint25
+intern dFTFoxAnimWin2_joints+0x64 dFTFoxAnimWin2_joint25+0x9C

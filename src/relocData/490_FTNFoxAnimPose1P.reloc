@@ -1,0 +1,19 @@
+# Relocation metadata for file 490
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTNFoxAnimPose1P_joints+0x0 dFTNFoxAnimPose1P_joint1
+intern dFTNFoxAnimPose1P_joints+0x4 dFTNFoxAnimPose1P_joint2
+intern dFTNFoxAnimPose1P_joints+0x8 dFTNFoxAnimPose1P_joint4
+intern dFTNFoxAnimPose1P_joints+0x10 dFTNFoxAnimPose1P_joint5
+intern dFTNFoxAnimPose1P_joints+0x14 dFTNFoxAnimPose1P_joint7
+intern dFTNFoxAnimPose1P_joints+0x1C dFTNFoxAnimPose1P_joint8
+intern dFTNFoxAnimPose1P_joints+0x20 dFTNFoxAnimPose1P_joint10
+intern dFTNFoxAnimPose1P_joints+0x28 dFTNFoxAnimPose1P_joint11
+intern dFTNFoxAnimPose1P_joints+0x2C dFTNFoxAnimPose1P_joint15
+intern dFTNFoxAnimPose1P_joints+0x3C dFTNFoxAnimPose1P_joint16
+intern dFTNFoxAnimPose1P_joints+0x40 dFTNFoxAnimPose1P_joint18
+intern dFTNFoxAnimPose1P_joints+0x48 dFTNFoxAnimPose1P_joint20
+intern dFTNFoxAnimPose1P_joints+0x50 dFTNFoxAnimPose1P_joint21
+intern dFTNFoxAnimPose1P_joints+0x54 dFTNFoxAnimPose1P_joint23
+intern dFTNFoxAnimPose1P_joints+0x5C dFTNFoxAnimPose1P_joint25
+intern dFTNFoxAnimPose1P_joints+0x64 dFTNFoxAnimPose1P_joint25+0x30

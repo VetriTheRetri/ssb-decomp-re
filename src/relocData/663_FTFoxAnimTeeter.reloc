@@ -1,0 +1,23 @@
+# Relocation metadata for file 663
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTFoxAnimTeeter_joints+0x0 dFTFoxAnimTeeter_joint1
+intern dFTFoxAnimTeeter_joints+0x4 dFTFoxAnimTeeter_joint2
+intern dFTFoxAnimTeeter_joints+0x8 dFTFoxAnimTeeter_joint4
+intern dFTFoxAnimTeeter_joints+0x10 dFTFoxAnimTeeter_joint5
+intern dFTFoxAnimTeeter_joints+0x14 dFTFoxAnimTeeter_joint6
+intern dFTFoxAnimTeeter_joints+0x18 dFTFoxAnimTeeter_joint7
+intern dFTFoxAnimTeeter_joints+0x1C dFTFoxAnimTeeter_joint8
+intern dFTFoxAnimTeeter_joints+0x20 dFTFoxAnimTeeter_joint10
+intern dFTFoxAnimTeeter_joints+0x28 dFTFoxAnimTeeter_joint11
+intern dFTFoxAnimTeeter_joints+0x2C dFTFoxAnimTeeter_joint12
+intern dFTFoxAnimTeeter_joints+0x30 dFTFoxAnimTeeter_joint13
+intern dFTFoxAnimTeeter_joints+0x34 dFTFoxAnimTeeter_joint15
+intern dFTFoxAnimTeeter_joints+0x3C dFTFoxAnimTeeter_joint16
+intern dFTFoxAnimTeeter_joints+0x40 dFTFoxAnimTeeter_joint18
+intern dFTFoxAnimTeeter_joints+0x48 dFTFoxAnimTeeter_joint20
+intern dFTFoxAnimTeeter_joints+0x50 dFTFoxAnimTeeter_joint21
+intern dFTFoxAnimTeeter_joints+0x54 dFTFoxAnimTeeter_joint23
+intern dFTFoxAnimTeeter_joints+0x5C dFTFoxAnimTeeter_joint24
+intern dFTFoxAnimTeeter_joints+0x60 dFTFoxAnimTeeter_joint25
+intern dFTFoxAnimTeeter_joints+0x64 dFTFoxAnimTeeter_joint25+0x28

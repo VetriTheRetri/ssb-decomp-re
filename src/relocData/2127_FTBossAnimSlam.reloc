@@ -1,0 +1,23 @@
+# Relocation metadata for file 2127
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTBossAnimSlam_joints+0x0 dFTBossAnimSlam_joint1
+intern dFTBossAnimSlam_joints+0x4 dFTBossAnimSlam_joint3
+intern dFTBossAnimSlam_joints+0xC dFTBossAnimSlam_joint4
+intern dFTBossAnimSlam_joints+0x10 dFTBossAnimSlam_joint5
+intern dFTBossAnimSlam_joints+0x14 dFTBossAnimSlam_joint7
+intern dFTBossAnimSlam_joints+0x1C dFTBossAnimSlam_joint8
+intern dFTBossAnimSlam_joints+0x20 dFTBossAnimSlam_joint10
+intern dFTBossAnimSlam_joints+0x28 dFTBossAnimSlam_joint11
+intern dFTBossAnimSlam_joints+0x2C dFTBossAnimSlam_joint12
+intern dFTBossAnimSlam_joints+0x30 dFTBossAnimSlam_joint14
+intern dFTBossAnimSlam_joints+0x38 dFTBossAnimSlam_joint15
+intern dFTBossAnimSlam_joints+0x3C dFTBossAnimSlam_joint16
+intern dFTBossAnimSlam_joints+0x40 dFTBossAnimSlam_joint17
+intern dFTBossAnimSlam_joints+0x44 dFTBossAnimSlam_joint19
+intern dFTBossAnimSlam_joints+0x4C dFTBossAnimSlam_joint20
+intern dFTBossAnimSlam_joints+0x50 dFTBossAnimSlam_joint21
+intern dFTBossAnimSlam_joints+0x54 dFTBossAnimSlam_joint23
+intern dFTBossAnimSlam_joints+0x5C dFTBossAnimSlam_joint24
+intern dFTBossAnimSlam_joints+0x60 dFTBossAnimSlam_joint25
+intern dFTBossAnimSlam_joints+0x64 dFTBossAnimSlam_joint25+0x60

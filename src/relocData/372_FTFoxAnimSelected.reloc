@@ -1,0 +1,21 @@
+# Relocation metadata for file 372
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTFoxAnimSelected_joints+0x0 dFTFoxAnimSelected_joint1
+intern dFTFoxAnimSelected_joints+0x4 dFTFoxAnimSelected_joint2
+intern dFTFoxAnimSelected_joints+0x8 dFTFoxAnimSelected_joint4
+intern dFTFoxAnimSelected_joints+0x10 dFTFoxAnimSelected_joint5
+intern dFTFoxAnimSelected_joints+0x14 dFTFoxAnimSelected_joint6
+intern dFTFoxAnimSelected_joints+0x18 dFTFoxAnimSelected_joint7
+intern dFTFoxAnimSelected_joints+0x1C dFTFoxAnimSelected_joint10
+intern dFTFoxAnimSelected_joints+0x28 dFTFoxAnimSelected_joint11
+intern dFTFoxAnimSelected_joints+0x2C dFTFoxAnimSelected_joint12
+intern dFTFoxAnimSelected_joints+0x30 dFTFoxAnimSelected_joint15
+intern dFTFoxAnimSelected_joints+0x3C dFTFoxAnimSelected_joint16
+intern dFTFoxAnimSelected_joints+0x40 dFTFoxAnimSelected_joint18
+intern dFTFoxAnimSelected_joints+0x48 dFTFoxAnimSelected_joint20
+intern dFTFoxAnimSelected_joints+0x50 dFTFoxAnimSelected_joint21
+intern dFTFoxAnimSelected_joints+0x54 dFTFoxAnimSelected_joint23
+intern dFTFoxAnimSelected_joints+0x5C dFTFoxAnimSelected_joint24
+intern dFTFoxAnimSelected_joints+0x60 dFTFoxAnimSelected_joint25
+intern dFTFoxAnimSelected_joints+0x64 dFTFoxAnimSelected_joint25+0x34

@@ -1,0 +1,23 @@
+# Relocation metadata for file 672
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTFoxAnimDamaged3_joints+0x0 dFTFoxAnimDamaged3_joint1
+intern dFTFoxAnimDamaged3_joints+0x4 dFTFoxAnimDamaged3_joint2
+intern dFTFoxAnimDamaged3_joints+0x8 dFTFoxAnimDamaged3_joint4
+intern dFTFoxAnimDamaged3_joints+0x10 dFTFoxAnimDamaged3_joint5
+intern dFTFoxAnimDamaged3_joints+0x14 dFTFoxAnimDamaged3_joint6
+intern dFTFoxAnimDamaged3_joints+0x18 dFTFoxAnimDamaged3_joint7
+intern dFTFoxAnimDamaged3_joints+0x1C dFTFoxAnimDamaged3_joint8
+intern dFTFoxAnimDamaged3_joints+0x20 dFTFoxAnimDamaged3_joint10
+intern dFTFoxAnimDamaged3_joints+0x28 dFTFoxAnimDamaged3_joint11
+intern dFTFoxAnimDamaged3_joints+0x2C dFTFoxAnimDamaged3_joint12
+intern dFTFoxAnimDamaged3_joints+0x30 dFTFoxAnimDamaged3_joint13
+intern dFTFoxAnimDamaged3_joints+0x34 dFTFoxAnimDamaged3_joint15
+intern dFTFoxAnimDamaged3_joints+0x3C dFTFoxAnimDamaged3_joint16
+intern dFTFoxAnimDamaged3_joints+0x40 dFTFoxAnimDamaged3_joint18
+intern dFTFoxAnimDamaged3_joints+0x48 dFTFoxAnimDamaged3_joint20
+intern dFTFoxAnimDamaged3_joints+0x50 dFTFoxAnimDamaged3_joint21
+intern dFTFoxAnimDamaged3_joints+0x54 dFTFoxAnimDamaged3_joint23
+intern dFTFoxAnimDamaged3_joints+0x5C dFTFoxAnimDamaged3_joint24
+intern dFTFoxAnimDamaged3_joints+0x60 dFTFoxAnimDamaged3_joint25
+intern dFTFoxAnimDamaged3_joints+0x64 dFTFoxAnimDamaged3_joint25+0x48

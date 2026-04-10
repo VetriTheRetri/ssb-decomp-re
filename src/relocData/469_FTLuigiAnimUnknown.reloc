@@ -1,0 +1,19 @@
+# Relocation metadata for file 469
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTLuigiAnimUnknown_joints+0x0 dFTLuigiAnimUnknown_joint1
+intern dFTLuigiAnimUnknown_joints+0x4 dFTLuigiAnimUnknown_joint2
+intern dFTLuigiAnimUnknown_joints+0x8 dFTLuigiAnimUnknown_joint3
+intern dFTLuigiAnimUnknown_joints+0xC dFTLuigiAnimUnknown_joint5
+intern dFTLuigiAnimUnknown_joints+0x14 dFTLuigiAnimUnknown_joint6
+intern dFTLuigiAnimUnknown_joints+0x18 dFTLuigiAnimUnknown_joint7
+intern dFTLuigiAnimUnknown_joints+0x1C dFTLuigiAnimUnknown_joint9
+intern dFTLuigiAnimUnknown_joints+0x24 dFTLuigiAnimUnknown_joint10
+intern dFTLuigiAnimUnknown_joints+0x28 dFTLuigiAnimUnknown_joint11
+intern dFTLuigiAnimUnknown_joints+0x2C dFTLuigiAnimUnknown_joint13
+intern dFTLuigiAnimUnknown_joints+0x34 dFTLuigiAnimUnknown_joint14
+intern dFTLuigiAnimUnknown_joints+0x38 dFTLuigiAnimUnknown_joint16
+intern dFTLuigiAnimUnknown_joints+0x40 dFTLuigiAnimUnknown_joint18
+intern dFTLuigiAnimUnknown_joints+0x48 dFTLuigiAnimUnknown_joint19
+intern dFTLuigiAnimUnknown_joints+0x4C dFTLuigiAnimUnknown_joint21
+intern dFTLuigiAnimUnknown_joints+0x54 dFTLuigiAnimUnknown_joint21+0xC4

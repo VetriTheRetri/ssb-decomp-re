@@ -1,0 +1,20 @@
+# Relocation metadata for file 1268
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTKirbyAnimTurnRun_joints+0x0 dFTKirbyAnimTurnRun_joint1
+intern dFTKirbyAnimTurnRun_joints+0x4 dFTKirbyAnimTurnRun_joint2
+intern dFTKirbyAnimTurnRun_joints+0x8 dFTKirbyAnimTurnRun_joint3
+intern dFTKirbyAnimTurnRun_joints+0xC dFTKirbyAnimTurnRun_joint4
+intern dFTKirbyAnimTurnRun_joints+0x10 dFTKirbyAnimTurnRun_joint6
+intern dFTKirbyAnimTurnRun_joints+0x18 dFTKirbyAnimTurnRun_joint7
+intern dFTKirbyAnimTurnRun_joints+0x1C dFTKirbyAnimTurnRun_joint8
+intern dFTKirbyAnimTurnRun_joints+0x20 dFTKirbyAnimTurnRun_joint10
+intern dFTKirbyAnimTurnRun_joints+0x28 dFTKirbyAnimTurnRun_joint11
+intern dFTKirbyAnimTurnRun_joints+0x2C dFTKirbyAnimTurnRun_joint12
+intern dFTKirbyAnimTurnRun_joints+0x30 dFTKirbyAnimTurnRun_joint14
+intern dFTKirbyAnimTurnRun_joints+0x38 dFTKirbyAnimTurnRun_joint15
+intern dFTKirbyAnimTurnRun_joints+0x3C dFTKirbyAnimTurnRun_joint17
+intern dFTKirbyAnimTurnRun_joints+0x44 dFTKirbyAnimTurnRun_joint19
+intern dFTKirbyAnimTurnRun_joints+0x4C dFTKirbyAnimTurnRun_joint20
+intern dFTKirbyAnimTurnRun_joints+0x50 dFTKirbyAnimTurnRun_joint22
+intern dFTKirbyAnimTurnRun_joints+0x58 dFTKirbyAnimTurnRun_joint22+0x70

@@ -1,0 +1,21 @@
+# Relocation metadata for file 907
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTDonkeyAnimJab1_joints+0x0 dFTDonkeyAnimJab1_joint1
+intern dFTDonkeyAnimJab1_joints+0x4 dFTDonkeyAnimJab1_joint2
+intern dFTDonkeyAnimJab1_joints+0x8 dFTDonkeyAnimJab1_joint4
+intern dFTDonkeyAnimJab1_joints+0x10 dFTDonkeyAnimJab1_joint5
+intern dFTDonkeyAnimJab1_joints+0x14 dFTDonkeyAnimJab1_joint7
+intern dFTDonkeyAnimJab1_joints+0x1C dFTDonkeyAnimJab1_joint8
+intern dFTDonkeyAnimJab1_joints+0x20 dFTDonkeyAnimJab1_joint10
+intern dFTDonkeyAnimJab1_joints+0x28 dFTDonkeyAnimJab1_joint11
+intern dFTDonkeyAnimJab1_joints+0x2C dFTDonkeyAnimJab1_joint12
+intern dFTDonkeyAnimJab1_joints+0x30 dFTDonkeyAnimJab1_joint13
+intern dFTDonkeyAnimJab1_joints+0x34 dFTDonkeyAnimJab1_joint14
+intern dFTDonkeyAnimJab1_joints+0x38 dFTDonkeyAnimJab1_joint16
+intern dFTDonkeyAnimJab1_joints+0x40 dFTDonkeyAnimJab1_joint17
+intern dFTDonkeyAnimJab1_joints+0x44 dFTDonkeyAnimJab1_joint19
+intern dFTDonkeyAnimJab1_joints+0x4C dFTDonkeyAnimJab1_joint21
+intern dFTDonkeyAnimJab1_joints+0x54 dFTDonkeyAnimJab1_joint22
+intern dFTDonkeyAnimJab1_joints+0x58 dFTDonkeyAnimJab1_joint24
+intern dFTDonkeyAnimJab1_joints+0x60 dFTDonkeyAnimJab1_joint24+0x40

@@ -1,0 +1,23 @@
+# Relocation metadata for file 2113
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTBossAnimPoke_joints+0x0 dFTBossAnimPoke_joint1
+intern dFTBossAnimPoke_joints+0x4 dFTBossAnimPoke_joint3
+intern dFTBossAnimPoke_joints+0xC dFTBossAnimPoke_joint4
+intern dFTBossAnimPoke_joints+0x10 dFTBossAnimPoke_joint5
+intern dFTBossAnimPoke_joints+0x14 dFTBossAnimPoke_joint7
+intern dFTBossAnimPoke_joints+0x1C dFTBossAnimPoke_joint8
+intern dFTBossAnimPoke_joints+0x20 dFTBossAnimPoke_joint10
+intern dFTBossAnimPoke_joints+0x28 dFTBossAnimPoke_joint11
+intern dFTBossAnimPoke_joints+0x2C dFTBossAnimPoke_joint12
+intern dFTBossAnimPoke_joints+0x30 dFTBossAnimPoke_joint14
+intern dFTBossAnimPoke_joints+0x38 dFTBossAnimPoke_joint15
+intern dFTBossAnimPoke_joints+0x3C dFTBossAnimPoke_joint16
+intern dFTBossAnimPoke_joints+0x40 dFTBossAnimPoke_joint17
+intern dFTBossAnimPoke_joints+0x44 dFTBossAnimPoke_joint19
+intern dFTBossAnimPoke_joints+0x4C dFTBossAnimPoke_joint20
+intern dFTBossAnimPoke_joints+0x50 dFTBossAnimPoke_joint21
+intern dFTBossAnimPoke_joints+0x54 dFTBossAnimPoke_joint23
+intern dFTBossAnimPoke_joints+0x5C dFTBossAnimPoke_joint24
+intern dFTBossAnimPoke_joints+0x60 dFTBossAnimPoke_joint25
+intern dFTBossAnimPoke_joints+0x64 dFTBossAnimPoke_joint25+0x30

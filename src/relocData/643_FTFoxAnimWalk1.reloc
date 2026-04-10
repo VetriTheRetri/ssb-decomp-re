@@ -1,0 +1,20 @@
+# Relocation metadata for file 643
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTFoxAnimWalk1_joints+0x0 dFTFoxAnimWalk1_joint1
+intern dFTFoxAnimWalk1_joints+0x4 dFTFoxAnimWalk1_joint2
+intern dFTFoxAnimWalk1_joints+0x8 dFTFoxAnimWalk1_joint4
+intern dFTFoxAnimWalk1_joints+0x10 dFTFoxAnimWalk1_joint5
+intern dFTFoxAnimWalk1_joints+0x14 dFTFoxAnimWalk1_joint7
+intern dFTFoxAnimWalk1_joints+0x1C dFTFoxAnimWalk1_joint10
+intern dFTFoxAnimWalk1_joints+0x28 dFTFoxAnimWalk1_joint11
+intern dFTFoxAnimWalk1_joints+0x2C dFTFoxAnimWalk1_joint13
+intern dFTFoxAnimWalk1_joints+0x34 dFTFoxAnimWalk1_joint15
+intern dFTFoxAnimWalk1_joints+0x3C dFTFoxAnimWalk1_joint16
+intern dFTFoxAnimWalk1_joints+0x40 dFTFoxAnimWalk1_joint18
+intern dFTFoxAnimWalk1_joints+0x48 dFTFoxAnimWalk1_joint20
+intern dFTFoxAnimWalk1_joints+0x50 dFTFoxAnimWalk1_joint21
+intern dFTFoxAnimWalk1_joints+0x54 dFTFoxAnimWalk1_joint23
+intern dFTFoxAnimWalk1_joints+0x5C dFTFoxAnimWalk1_joint24
+intern dFTFoxAnimWalk1_joints+0x60 dFTFoxAnimWalk1_joint25
+intern dFTFoxAnimWalk1_joints+0x64 dFTFoxAnimWalk1_joint25+0x74

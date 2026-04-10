@@ -1,0 +1,19 @@
+# Relocation metadata for file 421
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTKirbyAnimDollFall_joints+0x0 dFTKirbyAnimDollFall_joint1
+intern dFTKirbyAnimDollFall_joints+0x4 dFTKirbyAnimDollFall_joint2
+intern dFTKirbyAnimDollFall_joints+0x8 dFTKirbyAnimDollFall_joint3
+intern dFTKirbyAnimDollFall_joints+0xC dFTKirbyAnimDollFall_joint4
+intern dFTKirbyAnimDollFall_joints+0x10 dFTKirbyAnimDollFall_joint6
+intern dFTKirbyAnimDollFall_joints+0x18 dFTKirbyAnimDollFall_joint7
+intern dFTKirbyAnimDollFall_joints+0x1C dFTKirbyAnimDollFall_joint8
+intern dFTKirbyAnimDollFall_joints+0x20 dFTKirbyAnimDollFall_joint10
+intern dFTKirbyAnimDollFall_joints+0x28 dFTKirbyAnimDollFall_joint11
+intern dFTKirbyAnimDollFall_joints+0x2C dFTKirbyAnimDollFall_joint14
+intern dFTKirbyAnimDollFall_joints+0x38 dFTKirbyAnimDollFall_joint15
+intern dFTKirbyAnimDollFall_joints+0x3C dFTKirbyAnimDollFall_joint17
+intern dFTKirbyAnimDollFall_joints+0x44 dFTKirbyAnimDollFall_joint19
+intern dFTKirbyAnimDollFall_joints+0x4C dFTKirbyAnimDollFall_joint20
+intern dFTKirbyAnimDollFall_joints+0x50 dFTKirbyAnimDollFall_joint22
+intern dFTKirbyAnimDollFall_joints+0x58 dFTKirbyAnimDollFall_joint22+0x3C

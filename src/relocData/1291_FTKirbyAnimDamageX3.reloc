@@ -1,0 +1,19 @@
+# Relocation metadata for file 1291
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTKirbyAnimDamageX3_joints+0x0 dFTKirbyAnimDamageX3_joint1
+intern dFTKirbyAnimDamageX3_joints+0x4 dFTKirbyAnimDamageX3_joint2
+intern dFTKirbyAnimDamageX3_joints+0x8 dFTKirbyAnimDamageX3_joint3
+intern dFTKirbyAnimDamageX3_joints+0xC dFTKirbyAnimDamageX3_joint5
+intern dFTKirbyAnimDamageX3_joints+0x14 dFTKirbyAnimDamageX3_joint6
+intern dFTKirbyAnimDamageX3_joints+0x18 dFTKirbyAnimDamageX3_joint7
+intern dFTKirbyAnimDamageX3_joints+0x1C dFTKirbyAnimDamageX3_joint9
+intern dFTKirbyAnimDamageX3_joints+0x24 dFTKirbyAnimDamageX3_joint10
+intern dFTKirbyAnimDamageX3_joints+0x28 dFTKirbyAnimDamageX3_joint11
+intern dFTKirbyAnimDamageX3_joints+0x2C dFTKirbyAnimDamageX3_joint13
+intern dFTKirbyAnimDamageX3_joints+0x34 dFTKirbyAnimDamageX3_joint14
+intern dFTKirbyAnimDamageX3_joints+0x38 dFTKirbyAnimDamageX3_joint16
+intern dFTKirbyAnimDamageX3_joints+0x40 dFTKirbyAnimDamageX3_joint18
+intern dFTKirbyAnimDamageX3_joints+0x48 dFTKirbyAnimDamageX3_joint19
+intern dFTKirbyAnimDamageX3_joints+0x4C dFTKirbyAnimDamageX3_joint21
+intern dFTKirbyAnimDamageX3_joints+0x54 dFTKirbyAnimDamageX3_joint21+0x68

@@ -1,0 +1,23 @@
+# Relocation metadata for file 2101
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTBossAnimLaunch_joints+0x0 dFTBossAnimLaunch_joint1
+intern dFTBossAnimLaunch_joints+0x4 dFTBossAnimLaunch_joint3
+intern dFTBossAnimLaunch_joints+0xC dFTBossAnimLaunch_joint4
+intern dFTBossAnimLaunch_joints+0x10 dFTBossAnimLaunch_joint5
+intern dFTBossAnimLaunch_joints+0x14 dFTBossAnimLaunch_joint7
+intern dFTBossAnimLaunch_joints+0x1C dFTBossAnimLaunch_joint8
+intern dFTBossAnimLaunch_joints+0x20 dFTBossAnimLaunch_joint10
+intern dFTBossAnimLaunch_joints+0x28 dFTBossAnimLaunch_joint11
+intern dFTBossAnimLaunch_joints+0x2C dFTBossAnimLaunch_joint12
+intern dFTBossAnimLaunch_joints+0x30 dFTBossAnimLaunch_joint14
+intern dFTBossAnimLaunch_joints+0x38 dFTBossAnimLaunch_joint15
+intern dFTBossAnimLaunch_joints+0x3C dFTBossAnimLaunch_joint16
+intern dFTBossAnimLaunch_joints+0x40 dFTBossAnimLaunch_joint17
+intern dFTBossAnimLaunch_joints+0x44 dFTBossAnimLaunch_joint19
+intern dFTBossAnimLaunch_joints+0x4C dFTBossAnimLaunch_joint20
+intern dFTBossAnimLaunch_joints+0x50 dFTBossAnimLaunch_joint21
+intern dFTBossAnimLaunch_joints+0x54 dFTBossAnimLaunch_joint23
+intern dFTBossAnimLaunch_joints+0x5C dFTBossAnimLaunch_joint24
+intern dFTBossAnimLaunch_joints+0x60 dFTBossAnimLaunch_joint25
+intern dFTBossAnimLaunch_joints+0x64 dFTBossAnimLaunch_joint25+0x74

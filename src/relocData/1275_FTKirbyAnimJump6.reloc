@@ -1,0 +1,19 @@
+# Relocation metadata for file 1275
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTKirbyAnimJump6_joints+0x0 dFTKirbyAnimJump6_joint1
+intern dFTKirbyAnimJump6_joints+0x4 dFTKirbyAnimJump6_joint2
+intern dFTKirbyAnimJump6_joints+0x8 dFTKirbyAnimJump6_joint3
+intern dFTKirbyAnimJump6_joints+0xC dFTKirbyAnimJump6_joint5
+intern dFTKirbyAnimJump6_joints+0x14 dFTKirbyAnimJump6_joint6
+intern dFTKirbyAnimJump6_joints+0x18 dFTKirbyAnimJump6_joint7
+intern dFTKirbyAnimJump6_joints+0x1C dFTKirbyAnimJump6_joint9
+intern dFTKirbyAnimJump6_joints+0x24 dFTKirbyAnimJump6_joint10
+intern dFTKirbyAnimJump6_joints+0x28 dFTKirbyAnimJump6_joint11
+intern dFTKirbyAnimJump6_joints+0x2C dFTKirbyAnimJump6_joint13
+intern dFTKirbyAnimJump6_joints+0x34 dFTKirbyAnimJump6_joint14
+intern dFTKirbyAnimJump6_joints+0x38 dFTKirbyAnimJump6_joint16
+intern dFTKirbyAnimJump6_joints+0x40 dFTKirbyAnimJump6_joint18
+intern dFTKirbyAnimJump6_joints+0x48 dFTKirbyAnimJump6_joint19
+intern dFTKirbyAnimJump6_joints+0x4C dFTKirbyAnimJump6_joint21
+intern dFTKirbyAnimJump6_joints+0x54 dFTKirbyAnimJump6_joint21+0x30

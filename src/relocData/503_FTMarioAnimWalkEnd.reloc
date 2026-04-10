@@ -1,0 +1,21 @@
+# Relocation metadata for file 503
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTMarioAnimWalkEnd_joints+0x0 dFTMarioAnimWalkEnd_joint1
+intern dFTMarioAnimWalkEnd_joints+0x4 dFTMarioAnimWalkEnd_joint2
+intern dFTMarioAnimWalkEnd_joints+0x8 dFTMarioAnimWalkEnd_joint4
+intern dFTMarioAnimWalkEnd_joints+0x10 dFTMarioAnimWalkEnd_joint5
+intern dFTMarioAnimWalkEnd_joints+0x14 dFTMarioAnimWalkEnd_joint6
+intern dFTMarioAnimWalkEnd_joints+0x18 dFTMarioAnimWalkEnd_joint7
+intern dFTMarioAnimWalkEnd_joints+0x1C dFTMarioAnimWalkEnd_joint8
+intern dFTMarioAnimWalkEnd_joints+0x20 dFTMarioAnimWalkEnd_joint10
+intern dFTMarioAnimWalkEnd_joints+0x28 dFTMarioAnimWalkEnd_joint11
+intern dFTMarioAnimWalkEnd_joints+0x2C dFTMarioAnimWalkEnd_joint12
+intern dFTMarioAnimWalkEnd_joints+0x30 dFTMarioAnimWalkEnd_joint13
+intern dFTMarioAnimWalkEnd_joints+0x34 dFTMarioAnimWalkEnd_joint15
+intern dFTMarioAnimWalkEnd_joints+0x3C dFTMarioAnimWalkEnd_joint16
+intern dFTMarioAnimWalkEnd_joints+0x40 dFTMarioAnimWalkEnd_joint18
+intern dFTMarioAnimWalkEnd_joints+0x48 dFTMarioAnimWalkEnd_joint20
+intern dFTMarioAnimWalkEnd_joints+0x50 dFTMarioAnimWalkEnd_joint21
+intern dFTMarioAnimWalkEnd_joints+0x54 dFTMarioAnimWalkEnd_joint23
+intern dFTMarioAnimWalkEnd_joints+0x5C dFTMarioAnimWalkEnd_joint23+0x30

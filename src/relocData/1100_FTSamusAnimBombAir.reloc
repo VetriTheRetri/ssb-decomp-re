@@ -1,0 +1,19 @@
+# Relocation metadata for file 1100
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTSamusAnimBombAir_joints+0x0 dFTSamusAnimBombAir_joint1
+intern dFTSamusAnimBombAir_joints+0x4 dFTSamusAnimBombAir_joint2
+intern dFTSamusAnimBombAir_joints+0x8 dFTSamusAnimBombAir_joint4
+intern dFTSamusAnimBombAir_joints+0x10 dFTSamusAnimBombAir_joint5
+intern dFTSamusAnimBombAir_joints+0x14 dFTSamusAnimBombAir_joint6
+intern dFTSamusAnimBombAir_joints+0x18 dFTSamusAnimBombAir_joint7
+intern dFTSamusAnimBombAir_joints+0x1C dFTSamusAnimBombAir_joint8
+intern dFTSamusAnimBombAir_joints+0x20 dFTSamusAnimBombAir_joint11
+intern dFTSamusAnimBombAir_joints+0x2C dFTSamusAnimBombAir_joint12
+intern dFTSamusAnimBombAir_joints+0x30 dFTSamusAnimBombAir_joint14
+intern dFTSamusAnimBombAir_joints+0x38 dFTSamusAnimBombAir_joint15
+intern dFTSamusAnimBombAir_joints+0x3C dFTSamusAnimBombAir_joint17
+intern dFTSamusAnimBombAir_joints+0x44 dFTSamusAnimBombAir_joint19
+intern dFTSamusAnimBombAir_joints+0x4C dFTSamusAnimBombAir_joint20
+intern dFTSamusAnimBombAir_joints+0x50 dFTSamusAnimBombAir_joint22
+intern dFTSamusAnimBombAir_joints+0x58 dFTSamusAnimBombAir_joint22+0x50

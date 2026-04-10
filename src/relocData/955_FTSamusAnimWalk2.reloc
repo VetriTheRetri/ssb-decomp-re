@@ -1,0 +1,19 @@
+# Relocation metadata for file 955
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTSamusAnimWalk2_joints+0x0 dFTSamusAnimWalk2_joint1
+intern dFTSamusAnimWalk2_joints+0x4 dFTSamusAnimWalk2_joint2
+intern dFTSamusAnimWalk2_joints+0x8 dFTSamusAnimWalk2_joint4
+intern dFTSamusAnimWalk2_joints+0x10 dFTSamusAnimWalk2_joint5
+intern dFTSamusAnimWalk2_joints+0x14 dFTSamusAnimWalk2_joint6
+intern dFTSamusAnimWalk2_joints+0x18 dFTSamusAnimWalk2_joint7
+intern dFTSamusAnimWalk2_joints+0x1C dFTSamusAnimWalk2_joint8
+intern dFTSamusAnimWalk2_joints+0x20 dFTSamusAnimWalk2_joint11
+intern dFTSamusAnimWalk2_joints+0x2C dFTSamusAnimWalk2_joint12
+intern dFTSamusAnimWalk2_joints+0x30 dFTSamusAnimWalk2_joint14
+intern dFTSamusAnimWalk2_joints+0x38 dFTSamusAnimWalk2_joint15
+intern dFTSamusAnimWalk2_joints+0x3C dFTSamusAnimWalk2_joint17
+intern dFTSamusAnimWalk2_joints+0x44 dFTSamusAnimWalk2_joint19
+intern dFTSamusAnimWalk2_joints+0x4C dFTSamusAnimWalk2_joint20
+intern dFTSamusAnimWalk2_joints+0x50 dFTSamusAnimWalk2_joint22
+intern dFTSamusAnimWalk2_joints+0x58 dFTSamusAnimWalk2_joint22+0x40

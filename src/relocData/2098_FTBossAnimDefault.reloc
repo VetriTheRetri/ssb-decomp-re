@@ -1,0 +1,23 @@
+# Relocation metadata for file 2098
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTBossAnimDefault_joints+0x0 dFTBossAnimDefault_joint1
+intern dFTBossAnimDefault_joints+0x4 dFTBossAnimDefault_joint3
+intern dFTBossAnimDefault_joints+0xC dFTBossAnimDefault_joint4
+intern dFTBossAnimDefault_joints+0x10 dFTBossAnimDefault_joint5
+intern dFTBossAnimDefault_joints+0x14 dFTBossAnimDefault_joint7
+intern dFTBossAnimDefault_joints+0x1C dFTBossAnimDefault_joint8
+intern dFTBossAnimDefault_joints+0x20 dFTBossAnimDefault_joint10
+intern dFTBossAnimDefault_joints+0x28 dFTBossAnimDefault_joint11
+intern dFTBossAnimDefault_joints+0x2C dFTBossAnimDefault_joint12
+intern dFTBossAnimDefault_joints+0x30 dFTBossAnimDefault_joint14
+intern dFTBossAnimDefault_joints+0x38 dFTBossAnimDefault_joint15
+intern dFTBossAnimDefault_joints+0x3C dFTBossAnimDefault_joint16
+intern dFTBossAnimDefault_joints+0x40 dFTBossAnimDefault_joint17
+intern dFTBossAnimDefault_joints+0x44 dFTBossAnimDefault_joint19
+intern dFTBossAnimDefault_joints+0x4C dFTBossAnimDefault_joint20
+intern dFTBossAnimDefault_joints+0x50 dFTBossAnimDefault_joint21
+intern dFTBossAnimDefault_joints+0x54 dFTBossAnimDefault_joint23
+intern dFTBossAnimDefault_joints+0x5C dFTBossAnimDefault_joint24
+intern dFTBossAnimDefault_joints+0x60 dFTBossAnimDefault_joint25
+intern dFTBossAnimDefault_joints+0x64 dFTBossAnimDefault_joint25+0x30

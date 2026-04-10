@@ -1,0 +1,19 @@
+# Relocation metadata for file 1094
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTSamusAnimShooting_joints+0x0 dFTSamusAnimShooting_joint1
+intern dFTSamusAnimShooting_joints+0x4 dFTSamusAnimShooting_joint2
+intern dFTSamusAnimShooting_joints+0x8 dFTSamusAnimShooting_joint4
+intern dFTSamusAnimShooting_joints+0x10 dFTSamusAnimShooting_joint5
+intern dFTSamusAnimShooting_joints+0x14 dFTSamusAnimShooting_joint6
+intern dFTSamusAnimShooting_joints+0x18 dFTSamusAnimShooting_joint7
+intern dFTSamusAnimShooting_joints+0x1C dFTSamusAnimShooting_joint8
+intern dFTSamusAnimShooting_joints+0x20 dFTSamusAnimShooting_joint11
+intern dFTSamusAnimShooting_joints+0x2C dFTSamusAnimShooting_joint12
+intern dFTSamusAnimShooting_joints+0x30 dFTSamusAnimShooting_joint14
+intern dFTSamusAnimShooting_joints+0x38 dFTSamusAnimShooting_joint15
+intern dFTSamusAnimShooting_joints+0x3C dFTSamusAnimShooting_joint17
+intern dFTSamusAnimShooting_joints+0x44 dFTSamusAnimShooting_joint19
+intern dFTSamusAnimShooting_joints+0x4C dFTSamusAnimShooting_joint20
+intern dFTSamusAnimShooting_joints+0x50 dFTSamusAnimShooting_joint22
+intern dFTSamusAnimShooting_joints+0x58 dFTSamusAnimShooting_joint22+0x30

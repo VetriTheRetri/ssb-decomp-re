@@ -1,0 +1,21 @@
+# Relocation metadata for file 537
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTMarioAnimDamage2_joints+0x0 dFTMarioAnimDamage2_joint1
+intern dFTMarioAnimDamage2_joints+0x4 dFTMarioAnimDamage2_joint2
+intern dFTMarioAnimDamage2_joints+0x8 dFTMarioAnimDamage2_joint4
+intern dFTMarioAnimDamage2_joints+0x10 dFTMarioAnimDamage2_joint5
+intern dFTMarioAnimDamage2_joints+0x14 dFTMarioAnimDamage2_joint6
+intern dFTMarioAnimDamage2_joints+0x18 dFTMarioAnimDamage2_joint7
+intern dFTMarioAnimDamage2_joints+0x1C dFTMarioAnimDamage2_joint8
+intern dFTMarioAnimDamage2_joints+0x20 dFTMarioAnimDamage2_joint10
+intern dFTMarioAnimDamage2_joints+0x28 dFTMarioAnimDamage2_joint11
+intern dFTMarioAnimDamage2_joints+0x2C dFTMarioAnimDamage2_joint12
+intern dFTMarioAnimDamage2_joints+0x30 dFTMarioAnimDamage2_joint13
+intern dFTMarioAnimDamage2_joints+0x34 dFTMarioAnimDamage2_joint15
+intern dFTMarioAnimDamage2_joints+0x3C dFTMarioAnimDamage2_joint16
+intern dFTMarioAnimDamage2_joints+0x40 dFTMarioAnimDamage2_joint18
+intern dFTMarioAnimDamage2_joints+0x48 dFTMarioAnimDamage2_joint20
+intern dFTMarioAnimDamage2_joints+0x50 dFTMarioAnimDamage2_joint21
+intern dFTMarioAnimDamage2_joints+0x54 dFTMarioAnimDamage2_joint23
+intern dFTMarioAnimDamage2_joints+0x5C dFTMarioAnimDamage2_joint23+0x68

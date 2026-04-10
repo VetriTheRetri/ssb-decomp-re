@@ -1,0 +1,48 @@
+# Block manifest for relocData file 167 (MNTitle)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+LogoAnimCutout.sprite.c
+pad 4
+LogoAnimStrikeV.sprite.c
+pad 4
+LogoAnimStrikeH.sprite.c
+pad 4
+LogoAnimFull.sprite.c
+pad 12
+BorderUpper.sprite.c
+pad 4
+Gradient.sprite.c
+pad 4
+TM.sprite.c
+pad 4
+Cutout.sprite.c
+pad 4
+TMUnk.sprite.c
+pad 4
+Copyright.sprite.c
+pad 12
+PressStart.sprite.c
+pad 4
+Super.sprite.c
+pad 4
+Smash.sprite.c
+pad 4
+Bros.sprite.c
+pad 4
+LogoAnimJoint_AnimJoint.data.c
+LabelsAnimJoint_AnimJoint.data.c
+PressStartAnimJoint_AnimJoint.data.c
+SlashAnimJoint_AnimJoint.data.c
+SlashMat_AnimJoint.data.c
+LogoDObjDesc.dobjdesc.c
+pad 8
+LabelsDObjDesc.dobjdesc.c
+pad 4
+PressStartDObjDesc.dobjdesc.c
+gap_0x26370.data.c
+SlashMObjSub.mobjsub.c
+gap_0x28850.data.c
+SlashDObjDesc.dobjdesc.c
+FireDObjDesc.dobjdesc.c
+FireAnimJoint_AnimJoint.data.c

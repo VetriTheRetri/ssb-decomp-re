@@ -963,6 +963,25 @@ def generate(file_id, data, file_name, entries, reloc_map, csv_entry,
     lines.append("")
 
     prefix = f"d{file_name}" if file_name else f"dRelocFile{file_id}"
+
+    # Track which (block_name, block_type) pairs exist so we can detect when
+    # two different block types share the same name (e.g. Sprite PressStart
+    # and DObjDesc PressStart). In that case, the C variable and filename get
+    # a type suffix to avoid collisions.
+    name_type_set = set()
+    colliding_names = set()
+    for _bt, _bn, _off in entries:
+        if _bn != '-':
+            key = _bn
+            if key in name_type_set:
+                colliding_names.add(key)
+            name_type_set.add(key)
+    # Reset — we just needed the set of names that appear more than once
+    name_type_set.clear()
+    for _bt, _bn, _off in entries:
+        if _bn != '-':
+            name_type_set.add((_bn, _bt))
+
     # Each reloc file gets its own subfolder for its block subfiles
     file_subdir = file_name if file_name else f"file_{file_id}"
     # Structural files (.sprite.c, .data.c, .dobjdesc.c) live under src/relocData/
@@ -1933,6 +1952,17 @@ def generate(file_id, data, file_name, entries, reloc_map, csv_entry,
 
     cursor = 0
 
+    # Disambiguate block names that appear with multiple block types.
+    # When e.g. "PressStart" is used for both a Sprite and a DObjDesc,
+    # rename the non-Sprite occurrences to "PressStartDObjDesc" etc.
+    # (Sprite keeps the bare name since its filename convention is
+    # "<Name>.sprite.c" which already has its own suffix.)
+    for i, (bt, bn, off) in enumerate(valid_entries):
+        if bn != '-' and bn in colliding_names:
+            # Sprite keeps the original name; others get a type suffix
+            if bt != 'Sprite':
+                valid_entries[i] = (bt, f"{bn}{bt}", off)
+
     for idx, (block_type, block_name, offset) in enumerate(valid_entries):
         next_off = valid_entries[idx + 1][2] if idx + 1 < len(valid_entries) else len(data)
 
@@ -2077,6 +2107,20 @@ def generate(file_id, data, file_name, entries, reloc_map, csv_entry,
     if cursor < len(data):
         emit_pad(cursor, len(data))
         emit_relocs_in_range(cursor, len(data))
+
+    # Emit any reloc chain entries that weren't picked up by the structured
+    # emission (e.g. pointer fields inside DObjDesc entries that aren't the
+    # `.dl` field, or pointer arrays that the discovery pass didn't find).
+    emitted_ptrs = {ptr for _, ptr, _ in reloc_entries}
+    for ptr_off in sorted(reloc_map):
+        ptr_label = sym_map.resolve(ptr_off)
+        if ptr_label not in emitted_ptrs:
+            ctype, target_off = reloc_map[ptr_off]
+            if ctype == 'extern':
+                target_label = f"0x{target_off:X}"
+            else:
+                target_label = sym_map.resolve(target_off)
+            reloc_entries.append((ctype, ptr_label, target_label))
 
     return "\n".join(lines), sym_map, reloc_entries, manifest
 

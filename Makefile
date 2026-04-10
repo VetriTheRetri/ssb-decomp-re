@@ -342,7 +342,10 @@ $(shell mkdir -p $(BUILD_DIR)/assets)
 # get manifest-computed offsets vs description offsets — without this, the
 # proper rule below would never re-fire (its outputs would already exist and
 # be newer than its dependencies) and we'd link against the wrong values.
-$(shell ([ -f include/reloc_data.h ] && [ -f symbols/reloc_data_symbols.$(VERSION).txt ]) || $(PYTHON) tools/genRelocSymbols.py ./tools/relocFileDescriptions.$(VERSION).txt ./include/reloc_data.h ./symbols/reloc_data_symbols.$(VERSION).txt --converted-files "$(RELOC_C_FILES)" > /dev/null)
+# Bootstrap uses --converted-files "" (empty) so it never needs extracted
+# .inc.c files. The proper rule below regenerates with the real list once
+# extract stamps exist, giving correct manifest-computed offsets.
+$(shell ([ -f include/reloc_data.h ] && [ -f symbols/reloc_data_symbols.$(VERSION).txt ]) || $(PYTHON) tools/genRelocSymbols.py ./tools/relocFileDescriptions.$(VERSION).txt ./include/reloc_data.h ./symbols/reloc_data_symbols.$(VERSION).txt --converted-files "" > /dev/null)
 
 # ----- Targets ------
 
@@ -572,11 +575,18 @@ $(BUILD_DIR)/src/relocData/%.inc.c: src/relocData/%.png
 	$(V)$(PYTHON) tools/relocSpriteTool.py png2inc $< $@
 
 define RELOC_C_RULE
-# Search for a manifest source in preference order: .manifest, .spritelist, .c.
+# Search for a manifest source in preference order:
+#   1. Version-specific .c override (e.g. *_Name.jp.c) — highest priority
+#   2. .manifest
+#   3. .spritelist
+#   4. .c (shared/hand-written)
 # When we know the file's name (via RELOC_NAME_$(1) from descriptions), look
 # up *only* by name — JP and US can have different files at the same id, so
 # matching by id would silently pick the wrong source. The literal id glob is
 # kept as a fallback for unnamed files that the descriptions don't label.
+RELOC_VC_$(1) := $$(firstword $$(if $$(RELOC_NAME_$(1)),\
+    $$(wildcard src/relocData/*_$$(RELOC_NAME_$(1)).$(VERSION).c),\
+    $$(wildcard src/relocData/$(1)_*.$(VERSION).c src/relocData/$(1).$(VERSION).c)))
 RELOC_MANIFEST_$(1) := $$(firstword $$(if $$(RELOC_NAME_$(1)),\
     $$(wildcard src/relocData/*_$$(RELOC_NAME_$(1)).manifest),\
     $$(wildcard src/relocData/$(1)_*.manifest src/relocData/$(1).manifest)))
@@ -589,6 +599,8 @@ RELOC_C_$(1) := $$(firstword $$(if $$(RELOC_NAME_$(1)),\
 # Subfolder name: prefer the version-specific RELOC_NAME (set by reloc_names mk),
 # fall back to stripping the literal "<fid>_" prefix from the source basename, or
 # finally "file_<fid>" if neither is available.
+# RELOC_BASENAME drives .reloc lookup and subfolder fallback — never use the
+# version-specific override here (its .jp/.us suffix would break the basename).
 RELOC_BASENAME_$(1) := $$(basename $$(notdir $$(or $$(RELOC_MANIFEST_$(1)),$$(RELOC_LIST_$(1)),$$(RELOC_C_$(1)))))
 RELOC_SUB_$(1) := $$(or $$(RELOC_NAME_$(1)),$$(patsubst $(1)_%,%,$$(RELOC_BASENAME_$(1))),file_$(1))
 RELOC_DIR_$(1) := src/relocData/$$(RELOC_SUB_$(1))/
@@ -607,7 +619,10 @@ RELOC_INC_OVERRIDES_$(1) := $$(patsubst $$(RELOC_DIR_$(1))%.png,$$(RELOC_BUILD_D
 # Stamp marking that the extract step has populated build/.../<sprite>.inc.c files
 RELOC_STAMP_$(1) := $$(BUILD_DIR)/src/relocData/.extract-$(1).stamp
 
-ifneq ($$(RELOC_MANIFEST_$(1)),)
+ifneq ($$(RELOC_VC_$(1)),)
+  # Version-specific .c override (e.g. *_Name.jp.c) — always wins
+  RELOC_MASTER_$(1) := $$(RELOC_VC_$(1))
+else ifneq ($$(RELOC_MANIFEST_$(1)),)
   # Rich block manifest drives the master .c
   RELOC_MASTER_$(1) := $$(BUILD_DIR)/src/relocData/$$(RELOC_BASENAME_$(1)).c
 
@@ -638,8 +653,10 @@ $$(BUILD_DIR)/src/relocData/$(1).o: $$(RELOC_MASTER_$(1)) $$(RELOC_SPRITE_DEPS_$
 	@mkdir -p $$(@D)
 	$$(V)$$(IDO7) $$(CCFLAGS) $$(OPTFLAGS) -Isrc/relocData -I$$(BUILD_DIR)/src/relocData -o $$@ $$<
 
-# .reloc file path (sibling of either the master .c or the manifest)
-RELOC_RELOC_$(1) := src/relocData/$$(RELOC_BASENAME_$(1)).reloc
+# .reloc file path (sibling of either the master .c or the manifest).
+# Version-specific overrides are raw blobs with relocation data already baked
+# in, so skip reloc-chain fixing for them.
+RELOC_RELOC_$(1) := $$(if $$(RELOC_VC_$(1)),,src/relocData/$$(RELOC_BASENAME_$(1)).reloc)
 
 # Compiled .data section goes to build/ to avoid overwriting the original asset.
 # Compressed files (ID < 499) go to .vpk0.bin which then gets compressed to .vpk0;
@@ -649,7 +666,7 @@ $$(BUILD_DIR)/assets/relocData/$(1).vpk0.bin: $$(BUILD_DIR)/src/relocData/$(1).o
 	@mkdir -p $$(@D)
 	$$(V)$$(OBJCOPY) -O binary --only-section=.data $$< $$@
 	$$(V)cp assets/relocData/$(1).vpk0.vpk0_config $$(BUILD_DIR)/assets/relocData/$(1).vpk0.vpk0_config 2>/dev/null || true
-	$$(V)if [ -f $$(RELOC_RELOC_$(1)) ]; then \
+	$$(V)if [ -n "$$(RELOC_RELOC_$(1))" ] && [ -f $$(RELOC_RELOC_$(1)) ]; then \
 		$$(PYTHON) tools/fixRelocChain.py $$@ $$(RELOC_RELOC_$(1)) $$< --file-id $(1); \
 	fi
 
@@ -657,7 +674,7 @@ $$(BUILD_DIR)/assets/relocData/$(1).bin: $$(BUILD_DIR)/src/relocData/$(1).o
 	$$(call print_3,Extracting relocData .data:,$$<,$$@)
 	@mkdir -p $$(@D)
 	$$(V)$$(OBJCOPY) -O binary --only-section=.data $$< $$@
-	$$(V)if [ -f $$(RELOC_RELOC_$(1)) ]; then \
+	$$(V)if [ -n "$$(RELOC_RELOC_$(1))" ] && [ -f $$(RELOC_RELOC_$(1)) ]; then \
 		$$(PYTHON) tools/fixRelocChain.py $$@ $$(RELOC_RELOC_$(1)) $$< --file-id $(1); \
 	fi
 endef

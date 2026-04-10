@@ -302,7 +302,7 @@ def compute_spritelist_offsets(file_id, file_name, spritelist_path,
 # ── Main symbol assembly ────────────────────────────────────────────────
 
 def collect_all_symbols(desc_path, reloc_dir, search_paths, converted_ids=None,
-                        us_desc_path=None):
+                        us_desc_path=None, version=None):
     """Walk descriptions + manifests/spritelists, build the full symbol map.
 
     Args:
@@ -318,6 +318,11 @@ def collect_all_symbols(desc_path, reloc_dir, search_paths, converted_ids=None,
                        any JP file whose name matches a US-side name also
                        gets a `ll_<US_id>_FileID = <JP_id>` symbol so existing
                        C code that references files by US id continues to work.
+        version:       active version string (e.g. "us", "jp"). When provided,
+                       files with a version-specific .c override (e.g.
+                       *_Name.<version>.c) skip manifest-based offset
+                       computation and use description offsets instead, since
+                       the override is a raw blob with no named blocks.
 
     Returns:
         file_count: int
@@ -407,6 +412,14 @@ def collect_all_symbols(desc_path, reloc_dir, search_paths, converted_ids=None,
         # description offsets verbatim (its baserom binary hasn't been
         # touched, so the offsets must remain authoritative).
         consider_manifest = (converted_ids is None) or (fid in converted_ids)
+
+        # If a version-specific .c override exists (e.g. *_Name.jp.c), this
+        # file is a raw blob — skip manifest-based offset computation and
+        # use description offsets instead.
+        if consider_manifest and version and file_name:
+            vc_matches = glob.glob(os.path.join(reloc_dir, f"*_{file_name}.{version}.c"))
+            if vc_matches:
+                consider_manifest = False
 
         manifest_path = None
         spritelist_path = None
@@ -536,10 +549,17 @@ def main():
     if not os.path.exists(us_desc_path):
         us_desc_path = None
 
+    # Detect version from the descriptions filename
+    # (e.g. relocFileDescriptions.jp.txt -> "jp")
+    import re
+    version_match = re.search(r'relocFileDescriptions\.(\w+)\.txt', args.descriptions)
+    version = version_match.group(1) if version_match else None
+
     file_count, file_id_symbols, block_symbols, converted, fallback = \
         collect_all_symbols(args.descriptions, args.reloc_dir, search_paths,
                             converted_ids=converted_ids,
-                            us_desc_path=us_desc_path)
+                            us_desc_path=us_desc_path,
+                            version=version)
 
     write_outputs(file_count, file_id_symbols, block_symbols,
                   args.header, args.linker)

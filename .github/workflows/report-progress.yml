@@ -19,8 +19,14 @@ jobs:
       with:
         ref: ${{ github.event.pull_request.head.sha }}
         
-    - name: Upload progress report artifact
+    - name: Upload US progress report
       uses: actions/upload-artifact@v4
       with:
         name: us_report
         path: us_report.json
+
+    - name: Upload JP progress report
+      uses: actions/upload-artifact@v4
+      with:
+        name: jp_report
+        path: jp_report.json

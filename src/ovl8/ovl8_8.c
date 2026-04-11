@@ -16,22 +16,22 @@ typedef struct dbUnknown8_SC {
 typedef struct UiLineStepper {
     s32 startX;                 // dbUnknown8_8_0x0
     s32 startY;                 // dbUnknown8_8_0x4
-
+	
     s32* errorSub;              // dbUnknown8_8_0x8   (usually dx or dy)
     s32* errorAdd;              // dbUnknown8_8_0xC   (usually 2*minor)
 
     s32 endX;                   // dbUnknown8_8_0x10
     s32 endY;                   // dbUnknown8_8_0x14
-
+	
     s32* stepPrimary;           // dbUnknown8_8_0x18  (dx or dy)
     s32* stepSecondary;         // dbUnknown8_8_0x1C  (other axis)
-
+	
     s32 currentX;               // dbUnknown8_8_0x20
     s32 currentY;               // dbUnknown8_8_0x24
-
+	
     s32* posPrimary;            // dbUnknown8_8_0x28  (&currentX or &currentY)
     s32* posSecondary;          // dbUnknown8_8_0x2C  (&currentY or &currentX)
-
+	
     s32 stepsRemaining;         // dbUnknown8_8_0x30
     s32 totalSteps;             // dbUnknown8_8_0x34
 
@@ -152,6 +152,7 @@ char D_ovl8_80387F38[] = "Caption";
 extern s32 D_ovl8_80389F5C;
 extern s32 D_ovl8_80389F60;
 extern s32 D_ovl8_80389F64;
+extern Sprite D_ovl8_80389F70;    // Template sprite structure
 extern dbUnknown8_SC* D_ovl8_80389FB4;
 extern dbUnknown8_SC* D_ovl8_8038A068;
 extern DBMenu D_ovl8_8038A11C;
@@ -1076,7 +1077,175 @@ s32 func_ovl8_8037ABDC(Vec2h* arg0, UiLineStepper* arg1)
 }
 
 // 0x8037ACAC
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_8/func_ovl8_8037ACAC.s")
+Sprite *func_ovl8_8037ACAC(s32 width, s32 height, s32 pixel_format, s32 tile_width, s32 tile_height)
+{
+    s32 num_bitmaps;
+    s32 bytes_per_pixel;
+    u8 *pixel_data;
+    u8 *raw_alloc;
+    Bitmap *bitmap_array;
+    s32 tiles_wide;
+    s32 tiles_high;
+    s32 alignment;
+    s32 tile_width_aligned;
+    s32 tile_height_max;
+    s32 pixel_offset;
+    s32 remaining_width;
+    s32 remaining_height;
+    s32 total_pixel_bytes;
+    s32 bitmap_idx;
+    s32 actual;
+    s32 width_remainder;
+    s32 height_remainder;
+    s32 i;
+    s32 rows;
+    s32 j;
+    s32 cols;
+    Sprite *sprite;
+    s32 max_texture_size;
+
+    switch (pixel_format)
+    {
+        case 1:
+            bytes_per_pixel = 1;
+            max_texture_size = 0x800;
+            alignment = 8;
+            break;
+
+        case 2:
+            bytes_per_pixel = 2;
+            max_texture_size = 0x800;
+            alignment = 4;
+            break;
+
+        case 3:
+            bytes_per_pixel = 4;
+            max_texture_size = 0x400;
+            alignment = 4;
+            break;
+
+    }
+
+    actual = (tile_width <= width) ? (tile_width) : (width);
+    tile_width_aligned = actual;
+    actual = ((tile_width_aligned % alignment) != 0) ? (alignment) : (0);
+    tile_width_aligned = ((tile_width_aligned / alignment) * alignment) + actual;
+    tiles_wide = width / tile_width_aligned;
+    
+    width_remainder = width % tile_width_aligned;
+        
+    if (width_remainder != 0)
+    {
+        actual = (((width_remainder % alignment) != 0) ? (alignment) : (0));
+        width_remainder = ((width_remainder / alignment) * alignment) + actual;
+        if (width_remainder == 0)
+        {
+            width_remainder = alignment;
+        }
+    }
+    
+    actual = (tile_height <= height) ? (tile_height) : (height);
+    
+    tile_height_max = actual;
+    if (max_texture_size < (actual * tile_width_aligned))
+    {
+        tile_height_max = max_texture_size / tile_width_aligned;
+    }
+    
+    tiles_high = height / tile_height_max;
+    height_remainder = height % tile_height_max;
+    total_pixel_bytes = ((((((tile_width_aligned * tile_height_max) * bytes_per_pixel) * tiles_wide) * tiles_high) + (((width_remainder * tile_height_max) * tiles_high) * bytes_per_pixel)) + (((tile_width_aligned * height_remainder) * tiles_wide) * bytes_per_pixel)) + ((width_remainder * height_remainder) * bytes_per_pixel);
+    
+    cols = tiles_wide;
+    actual = ((width_remainder != 0) ? (1) : (0));
+    cols += actual;
+    rows = tiles_high;
+    actual = ((height_remainder != 0) ? (1) : (0));
+    rows += actual;
+    actual = (((((tiles_wide > 0) && (tiles_high > 0)) && (width_remainder != 0)) && (height_remainder != 0)) ? (1) : (0));
+    num_bitmaps = (cols * rows) + actual;
+    
+    raw_alloc = pixel_data = (u8 *) func_ovl8_803716D8(total_pixel_bytes + 8);
+
+    if (((uintptr_t) raw_alloc) & 7)
+    {
+        pixel_data = (raw_alloc - (((uintptr_t) raw_alloc) & 7)) + 8;
+    }
+    for (i = 0; i < total_pixel_bytes; i++) pixel_data[i] = 0xFF;
+
+    bitmap_array = (Bitmap *) func_ovl8_803716D8(num_bitmaps * 0x10);
+    remaining_height = height;
+    pixel_offset = 0;
+    bitmap_idx = 0;
+    
+    for (i = 0; i < rows; i++)
+    {
+        remaining_width = width;
+        for (j = 0; j < cols; j++)
+        {
+            if (remaining_width >= tile_width_aligned)
+            {
+                bitmap_array[bitmap_idx].width = tile_width_aligned;
+                bitmap_array[bitmap_idx].width_img = tile_width_aligned;
+            }
+            else
+            {
+                bitmap_array[bitmap_idx].width = remaining_width;
+                bitmap_array[bitmap_idx].width_img = width_remainder;
+            }
+            if (tile_height_max <= remaining_height)
+            {
+                bitmap_array[bitmap_idx].actualHeight = tile_height_max;
+            }
+            else
+            {
+                bitmap_array[bitmap_idx].actualHeight = remaining_height;
+            }
+            
+            bitmap_array[bitmap_idx].buf = (void *) (pixel_data + pixel_offset);
+            bitmap_array[bitmap_idx].s = 0;
+            bitmap_array[bitmap_idx].t = 0;
+            bitmap_array[bitmap_idx].LUToffset = 0;
+            pixel_offset += (bitmap_array[bitmap_idx].width_img * bitmap_array[bitmap_idx].actualHeight) * bytes_per_pixel;
+            remaining_width -= tile_width_aligned;
+            bitmap_idx++;
+        }
+
+        remaining_height -= tile_height_max;
+    }
+
+    sprite = (Sprite *) func_ovl8_803716D8(0x48);
+    *sprite = D_ovl8_80389F70;
+    
+    if ((pixel_format == 1) || (pixel_format == 2))
+    {
+        actual = 0x220;
+    }
+    else
+    {
+        actual = 0x201;
+    }
+    sprite->attr = actual;
+    sprite->bmsiz = pixel_format;
+    sprite->height = height;
+    sprite->nbitmaps = num_bitmaps;
+    sprite->width = width;
+    sprite->bmheight = tile_height_max;
+    sprite->bmHreal = tile_height_max;
+    sprite->ndisplist = (num_bitmaps * 12) + 24;
+    sprite->bitmap = bitmap_array;
+    sprite->rsp_dl = 0;
+    *((void **) ((actual = (u8 *) sprite) + 0x44)) = raw_alloc;
+    
+    if (pixel_format == 1)
+    {
+        sprite->bmfmt = 2;
+        sprite->nTLUT = 0x100;
+        sprite->LUT = (int *) func_ovl8_803716D8(0x200);
+    }
+
+    return sprite;
+}
 
 // 0x8037B3E4
 void func_ovl8_8037B3E4(dbUnknown3* arg0)

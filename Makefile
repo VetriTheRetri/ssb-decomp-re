@@ -701,4 +701,8 @@ png2inc:
 
 -include $(DEP_FILES)
 
-.PHONY: all toolchain rom nolink clean extract init expected validate format
+# Progress report for decomp.dev
+report:
+	$(PYTHON) -m mapfile_parser objdiff_report -v $(VERSION) $(VERSION)_report.json
+
+.PHONY: all toolchain rom nolink clean extract init expected validate format report

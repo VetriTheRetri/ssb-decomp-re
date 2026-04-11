@@ -19,21 +19,21 @@ versions:
       asm: "asm/"
       nonmatchings: "asm/nonmatchings"
 
-  # - name: jp
-  #   fullname: jp
-  #   sha1: 4b71f0e01878696733eefa9c80d11c147ecb4984
-  #   paths:
-  #     target: "baserom.jp.z64"
+  - name: jp
+    fullname: jp
+    sha1: 4b71f0e01878696733eefa9c80d11c147ecb4984
+    paths:
+      target: "baserom.jp.z64"
 
-  #     build_dir: "build/"
-  #     map: "build/smashbrothers.jp.map"
-  #     compiled_target: "build/smashbrothers.jp.z64"
-  #     elf: "build/smashbrothers.jp.elf"
+      build_dir: "build/"
+      map: "build/smashbrothers.jp.map"
+      compiled_target: "build/smashbrothers.jp.z64"
+      elf: "build/smashbrothers.jp.elf"
 
-  #     expected_dir: "expected/"
+      expected_dir: "expected/"
 
-  #     asm: "asm/"
-  #     nonmatchings: "asm/nonmatchings"
+      asm: "asm/"
+      nonmatchings: "asm/nonmatchings"
 
 tools:
   mapfile_parser:

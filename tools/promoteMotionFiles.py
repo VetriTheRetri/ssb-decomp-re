@@ -1,9 +1,13 @@
 #!/usr/bin/python3
 """Promote MainMotion and ShieldPose relocData files from raw u32 blobs to typed C source.
 
-Parses the figatree binary format using the internal relocation chain to discover
-pointer arrays and AObjEvent16 data regions. Also handles external relocations
-for MainMotion files.
+MainMotion files are flat streams of ftMotionCommand u32 words.  The reloc chain
+entries are the address words (word 2) of pointer commands: Subroutine/Goto/
+SetParallelScript for intern relocs, and SetThrow/SetDamageThrown for extern.
+Each MainMotion file is emitted as a single flat u32 array.
+
+ShieldPose files contain AObjEvent16 figatree animation data (u16 commands)
+organised into pointer arrays and per-joint script regions.
 
 Usage:
     python3 tools/promoteMotionFiles.py <file_id>
@@ -223,6 +227,427 @@ def emit_raw_u32(data, start_word, end_word):
     return lines
 
 
+# ── ftMotionCommand decoder ─────────────────────────────────────────────
+
+# Enum values from nFTMotionEvent (ftdef.h)
+EVT_End = 0
+EVT_SyncWait = 1
+EVT_AsyncWait = 2
+EVT_MakeAttackColl = 3
+EVT_MakeAttackCollScaled = 4
+EVT_ClearAttackCollID = 5
+EVT_ClearAttackCollAll = 6
+EVT_SetAttackCollOffset = 7
+EVT_SetAttackCollDamage = 8
+EVT_SetAttackCollSize = 9
+EVT_SetAttackCollSoundLevel = 10
+EVT_RefreshAttackCollID = 11
+EVT_SetThrow = 12
+EVT_SetDamageThrown = 13
+EVT_PlayFGM = 14
+EVT_PlayLoopSFXStoreInfo = 15
+EVT_StopLoopSFX = 16
+EVT_PlayVoiceStoreInfo = 17
+EVT_PlayLoopVoiceStoreInfo = 18
+EVT_PlayFGMStoreInfo = 19
+EVT_PlaySmashVoice = 20
+EVT_SetFlag0 = 21
+EVT_SetFlag1 = 22
+EVT_SetFlag2 = 23
+EVT_SetFlag3 = 24
+EVT_SetAirJumpAdd = 25
+EVT_SetAirJumpMax = 26
+EVT_SetHitStatusPartAll = 27
+EVT_SetHitStatusPartID = 28
+EVT_SetHitStatusAll = 29
+EVT_ResetDamageCollPartAll = 30
+EVT_SetDamageCollPartID = 31
+EVT_LoopBegin = 32
+EVT_LoopEnd = 33
+EVT_Subroutine = 34
+EVT_Return = 35
+EVT_Goto = 36
+EVT_PauseScript = 37
+EVT_Effect = 38
+EVT_EffectItemHold = 39
+EVT_SetModelPartID = 40
+EVT_ResetModelPartAll = 41
+EVT_HideModelPartAll = 42
+EVT_SetTexturePartID = 43
+EVT_SetColAnim = 44
+EVT_ResetColAnim = 45
+EVT_SetParallelScript = 46
+EVT_SetSlopeContour = 47
+EVT_HideItem = 48
+EVT_MakeRumble = 49
+EVT_StopRumble = 50
+EVT_SetAfterImage = 51
+
+# Word count for each opcode (derived from struct sizes in fttypes.h)
+OPCODE_WORD_COUNT = {
+    EVT_End: 1, EVT_SyncWait: 1, EVT_AsyncWait: 1,
+    EVT_MakeAttackColl: 5, EVT_MakeAttackCollScaled: 5,
+    EVT_ClearAttackCollID: 1, EVT_ClearAttackCollAll: 1,
+    EVT_SetAttackCollOffset: 2,
+    EVT_SetAttackCollDamage: 1, EVT_SetAttackCollSize: 1,
+    EVT_SetAttackCollSoundLevel: 1, EVT_RefreshAttackCollID: 1,
+    EVT_SetThrow: 2, EVT_SetDamageThrown: 2,
+    EVT_PlayFGM: 1, EVT_PlayLoopSFXStoreInfo: 1, EVT_StopLoopSFX: 1,
+    EVT_PlayVoiceStoreInfo: 1, EVT_PlayLoopVoiceStoreInfo: 1,
+    EVT_PlayFGMStoreInfo: 1, EVT_PlaySmashVoice: 1,
+    EVT_SetFlag0: 1, EVT_SetFlag1: 1, EVT_SetFlag2: 1, EVT_SetFlag3: 1,
+    EVT_SetAirJumpAdd: 1, EVT_SetAirJumpMax: 1,
+    EVT_SetHitStatusPartAll: 1, EVT_SetHitStatusPartID: 1,
+    EVT_SetHitStatusAll: 1,
+    EVT_ResetDamageCollPartAll: 1, EVT_SetDamageCollPartID: 4,
+    EVT_LoopBegin: 1, EVT_LoopEnd: 1,
+    EVT_Subroutine: 2, EVT_Return: 1, EVT_Goto: 2,
+    EVT_PauseScript: 1,
+    EVT_Effect: 4, EVT_EffectItemHold: 4,
+    EVT_SetModelPartID: 1, EVT_ResetModelPartAll: 1, EVT_HideModelPartAll: 1,
+    EVT_SetTexturePartID: 1, EVT_SetColAnim: 1, EVT_ResetColAnim: 1,
+    EVT_SetParallelScript: 2,
+    EVT_SetSlopeContour: 1, EVT_HideItem: 1,
+    EVT_MakeRumble: 1, EVT_StopRumble: 1, EVT_SetAfterImage: 1,
+}
+
+# Human-readable names for opcodes
+OPCODE_NAMES = {
+    EVT_End: "End", EVT_SyncWait: "SyncWait", EVT_AsyncWait: "AsyncWait",
+    EVT_MakeAttackColl: "MakeAttackColl",
+    EVT_MakeAttackCollScaled: "MakeAttackCollScaled",
+    EVT_ClearAttackCollID: "ClearAttackCollID",
+    EVT_ClearAttackCollAll: "ClearAttackCollAll",
+    EVT_SetAttackCollOffset: "SetAttackCollOffset",
+    EVT_SetAttackCollDamage: "SetAttackCollDamage",
+    EVT_SetAttackCollSize: "SetAttackCollSize",
+    EVT_SetAttackCollSoundLevel: "SetAttackCollSoundLevel",
+    EVT_RefreshAttackCollID: "RefreshAttackCollID",
+    EVT_SetThrow: "SetThrow", EVT_SetDamageThrown: "SetDamageThrown",
+    EVT_PlayFGM: "PlayFGM",
+    EVT_PlayLoopSFXStoreInfo: "PlayLoopSFXStoreInfo",
+    EVT_StopLoopSFX: "StopLoopSFX",
+    EVT_PlayVoiceStoreInfo: "PlayVoiceStoreInfo",
+    EVT_PlayLoopVoiceStoreInfo: "PlayLoopVoiceStoreInfo",
+    EVT_PlayFGMStoreInfo: "PlayFGMStoreInfo",
+    EVT_PlaySmashVoice: "PlaySmashVoice",
+    EVT_SetFlag0: "SetFlag0", EVT_SetFlag1: "SetFlag1",
+    EVT_SetFlag2: "SetFlag2", EVT_SetFlag3: "SetFlag3",
+    EVT_SetAirJumpAdd: "SetAirJumpAdd", EVT_SetAirJumpMax: "SetAirJumpMax",
+    EVT_SetHitStatusPartAll: "SetHitStatusPartAll",
+    EVT_SetHitStatusPartID: "SetHitStatusPartID",
+    EVT_SetHitStatusAll: "SetHitStatusAll",
+    EVT_ResetDamageCollPartAll: "ResetDamageCollPartAll",
+    EVT_SetDamageCollPartID: "SetDamageCollPartID",
+    EVT_LoopBegin: "LoopBegin", EVT_LoopEnd: "LoopEnd",
+    EVT_Subroutine: "Subroutine", EVT_Return: "Return",
+    EVT_Goto: "Goto", EVT_PauseScript: "PauseScript",
+    EVT_Effect: "Effect", EVT_EffectItemHold: "EffectItemHold",
+    EVT_SetModelPartID: "SetModelPartID",
+    EVT_ResetModelPartAll: "ResetModelPartAll",
+    EVT_HideModelPartAll: "HideModelPartAll",
+    EVT_SetTexturePartID: "SetTexturePartID",
+    EVT_SetColAnim: "SetColAnim", EVT_ResetColAnim: "ResetColAnim",
+    EVT_SetParallelScript: "SetParallelScript",
+    EVT_SetSlopeContour: "SetSlopeContour", EVT_HideItem: "HideItem",
+    EVT_MakeRumble: "MakeRumble", EVT_StopRumble: "StopRumble",
+    EVT_SetAfterImage: "SetAfterImage",
+}
+
+FTTHROWHITDESC_WORDS = 7  # sizeof(FTThrowHitDesc) / sizeof(u32)
+
+
+def sign_extend(val, bits):
+    """Sign-extend a value from the given number of bits."""
+    if val & (1 << (bits - 1)):
+        val -= (1 << bits)
+    return val
+
+
+def decode_single_word_macro(word):
+    """Decode a single u32 word as an ftMotionCommand macro string, or None."""
+    opcode = (word >> 26) & 0x3F
+    payload = word & 0x03FFFFFF
+
+    macro_map_simple = {
+        EVT_End: "ftMotionCommandEnd()",
+        EVT_ClearAttackCollAll: "ftMotionCommandClearAttackCollAll()",
+        EVT_StopLoopSFX: "ftMotionCommandStopLoopSFX()",
+        EVT_ResetDamageCollPartAll: "ftMotionCommandResetDamageCollPartAll()",
+        EVT_LoopEnd: "ftMotionCommandLoopEnd()",
+        EVT_Return: "ftMotionCommandReturn()",
+        EVT_PauseScript: "ftMotionCommandPauseScript()",
+        EVT_ResetModelPartAll: "ftMotionCommandResetModelPartAll()",
+        EVT_HideModelPartAll: "ftMotionCommandHideModelPartAll()",
+        EVT_ResetColAnim: "ftMotionCommandResetColAnim()",
+    }
+    if opcode in macro_map_simple:
+        return macro_map_simple[opcode]
+
+    macro_map_payload = {
+        EVT_SyncWait: "ftMotionCommandWait",
+        EVT_AsyncWait: "ftMotionCommandWaitAsync",
+        EVT_ClearAttackCollID: "ftMotionCommandClearAttackCollID",
+        EVT_RefreshAttackCollID: "ftMotionCommandRefreshAttackCollID",
+        EVT_PlayFGM: "ftMotionPlayFGM",
+        EVT_PlayLoopSFXStoreInfo: "ftMotionCommandPlayLoopSFXStoreInfo",
+        EVT_PlayVoiceStoreInfo: "ftMotionPlayVoice",
+        EVT_PlayLoopVoiceStoreInfo: "ftMotionPlayInterruptableVoice",
+        EVT_PlayFGMStoreInfo: "ftMotionCommandPlayFGMStoreInfo",
+        EVT_PlaySmashVoice: "ftMotionCommandPlaySmashVoice",
+        EVT_SetFlag0: "ftMotionCommandSetFlag0",
+        EVT_SetFlag1: "ftMotionCommandSetFlag1",
+        EVT_SetFlag2: "ftMotionCommandSetFlag2",
+        EVT_SetFlag3: "ftMotionCommandSetFlag3",
+        EVT_SetAirJumpAdd: "ftMotionCommandSetAirJumpAdd",
+        EVT_SetAirJumpMax: "ftMotionCommandSetAirJumpMax",
+        EVT_SetHitStatusPartAll: "ftMotionCommandSetHitStatusPartAll",
+        EVT_SetHitStatusAll: "ftMotionCommandSetHitStatusAll",
+        EVT_LoopBegin: "ftMotionCommandLoopBegin",
+        EVT_SetTexturePartID: "ftMotionCommandSetTexturePartID",
+        EVT_SetSlopeContour: "ftMotionCommandSetSlopeContour",
+        EVT_HideItem: "ftMotionCommandHideItem",
+        EVT_StopRumble: "ftMotionCommandStopRumble",
+    }
+    if opcode in macro_map_payload:
+        return f"{macro_map_payload[opcode]}({payload})"
+
+    if opcode == EVT_SetAttackCollDamage:
+        aid = (word >> 23) & 0x7
+        dmg = (word >> 15) & 0xFF
+        return f"ftMotionCommandSetAttackCollDamage({aid}, {dmg})"
+    if opcode == EVT_SetAttackCollSize:
+        aid = (word >> 23) & 0x7
+        sz = (word >> 7) & 0xFFFF
+        return f"ftMotionCommandSetAttackCollSize({aid}, {sz})"
+    if opcode == EVT_SetAttackCollSoundLevel:
+        aid = (word >> 23) & 0x7
+        lvl = (word >> 20) & 0x7
+        return f"ftMotionCommandSetAttackCollSoundLevel({aid}, {lvl})"
+    if opcode == EVT_SetHitStatusPartID:
+        jid = sign_extend((word >> 19) & 0x7F, 7)
+        hs = word & 0x7FFFF
+        return f"ftMotionCommandSetHitStatusPartID({jid}, {hs})"
+    if opcode == EVT_SetModelPartID:
+        jid = sign_extend((word >> 19) & 0x7F, 7)
+        mid = sign_extend(word & 0x7FFFF, 19)
+        return f"ftMotionCommandSetModelPartID({jid}, {mid})"
+    if opcode == EVT_SetColAnim:
+        cid = (word >> 18) & 0xFF
+        ln = word & 0x3FFFF
+        return f"ftMotionCommandSetColAnim({cid}, {ln})"
+    if opcode == EVT_MakeRumble:
+        ln = (word >> 13) & 0x1FFF
+        rid = word & 0x1FFF
+        return f"ftMotionCommandMakeRumble({ln}, {rid})"
+    if opcode == EVT_SetAfterImage:
+        isw = (word >> 18) & 0xFF
+        ds = sign_extend(word & 0x3FFFF, 18)
+        return f"ftMotionCommandSetAfterImage({isw}, {ds})"
+
+    return None
+
+
+def find_data_structure_ranges(data, intern_relocs):
+    """Find word offsets that are FTThrowHitDesc data (not command scripts).
+
+    SetThrow (opcode 12) intern relocs point to FTThrowHitDesc data.
+    Returns a set of word offsets that are part of data structures.
+    """
+    data_words = set()
+    file_words = len(data) // 4
+
+    for pw, tw in intern_relocs:
+        if pw > 0:
+            prev = struct.unpack_from('>I', data, (pw - 1) * 4)[0]
+            prev_opc = (prev >> 26) & 0x3F
+            if prev_opc == EVT_SetThrow:
+                pos = tw
+                while pos + FTTHROWHITDESC_WORDS <= file_words:
+                    for w in range(pos, pos + FTTHROWHITDESC_WORDS):
+                        data_words.add(w)
+                    end_pos = pos + FTTHROWHITDESC_WORDS
+                    if end_pos < file_words:
+                        nv = struct.unpack_from('>I', data, end_pos * 4)[0]
+                        nopc = (nv >> 26) & 0x3F
+                        is_data = (nv == 0xFFFFFFFF or
+                                   (nopc == 0 and nv < 0x1000))
+                    else:
+                        is_data = False
+                    if not is_data:
+                        break
+                    pos += FTTHROWHITDESC_WORDS
+
+    return data_words
+
+
+def _decode_motion_comment(data, pos, opcode, word_count,
+                           intern_map, extern_map, var):
+    """Build a human-readable comment for a command at the given position."""
+    word = struct.unpack_from('>I', data, pos * 4)[0]
+    payload = word & 0x03FFFFFF
+    name_str = OPCODE_NAMES.get(opcode, f"Unk{opcode}")
+    loc = f"word {pos} (0x{pos * 4:04X})"
+
+    macro = decode_single_word_macro(word)
+    if word_count == 1 and macro:
+        return f"{loc} {macro}"
+
+    if word_count == 1:
+        return f"{loc} {name_str}({payload})"
+
+    if word_count == 2:
+        w2 = struct.unpack_from('>I', data, (pos + 1) * 4)[0]
+        if opcode == EVT_SetAttackCollOffset:
+            aid = (word >> 23) & 0x7
+            ox = sign_extend((word >> 7) & 0xFFFF, 16)
+            oy = sign_extend((w2 >> 16) & 0xFFFF, 16)
+            oz = sign_extend(w2 & 0xFFFF, 16)
+            return f"{loc} SetAttackCollOffset({aid}, {ox}, {oy}, {oz})"
+        if opcode in (EVT_Subroutine, EVT_Goto, EVT_SetThrow,
+                      EVT_SetDamageThrown, EVT_SetParallelScript):
+            return f"{loc} {name_str}"
+        return f"{loc} {name_str}"
+
+    if word_count == 4:
+        w2 = struct.unpack_from('>I', data, (pos + 1) * 4)[0]
+        w3 = struct.unpack_from('>I', data, (pos + 2) * 4)[0]
+        w4 = struct.unpack_from('>I', data, (pos + 3) * 4)[0]
+        if opcode in (EVT_Effect, EVT_EffectItemHold):
+            jt = sign_extend((word >> 19) & 0x7F, 7)
+            eid = (word >> 10) & 0x1FF
+            fl = word & 0x3FF
+            ox = sign_extend((w2 >> 16) & 0xFFFF, 16)
+            oy = sign_extend(w2 & 0xFFFF, 16)
+            oz = sign_extend((w3 >> 16) & 0xFFFF, 16)
+            rx = sign_extend(w3 & 0xFFFF, 16)
+            ry = sign_extend((w4 >> 16) & 0xFFFF, 16)
+            rz = sign_extend(w4 & 0xFFFF, 16)
+            return (f"{loc} {name_str}({jt}, {eid}, {fl}, "
+                    f"{ox}, {oy}, {oz}, {rx}, {ry}, {rz})")
+        if opcode == EVT_SetDamageCollPartID:
+            jid = sign_extend((word >> 19) & 0x7F, 7)
+            ox = sign_extend((w2 >> 16) & 0xFFFF, 16)
+            oy = sign_extend(w2 & 0xFFFF, 16)
+            oz = sign_extend((w3 >> 16) & 0xFFFF, 16)
+            sx = sign_extend(w3 & 0xFFFF, 16)
+            sy = sign_extend((w4 >> 16) & 0xFFFF, 16)
+            sz = sign_extend(w4 & 0xFFFF, 16)
+            return (f"{loc} SetDamageCollPartID({jid}, "
+                    f"{ox}, {oy}, {oz}, {sx}, {sy}, {sz})")
+        return f"{loc} {name_str}"
+
+    if word_count == 5:
+        w2 = struct.unpack_from('>I', data, (pos + 1) * 4)[0]
+        w3 = struct.unpack_from('>I', data, (pos + 2) * 4)[0]
+        w4 = struct.unpack_from('>I', data, (pos + 3) * 4)[0]
+        w5 = struct.unpack_from('>I', data, (pos + 4) * 4)[0]
+        if opcode in (EVT_MakeAttackColl, EVT_MakeAttackCollScaled):
+            aid = (word >> 23) & 0x7
+            gid = (word >> 20) & 0x7
+            jid = sign_extend((word >> 13) & 0x7F, 7)
+            dmg = (word >> 5) & 0xFF
+            reb = (word >> 4) & 0x1
+            ele = word & 0xF
+            sz = (w2 >> 16) & 0xFFFF
+            ox = sign_extend(w2 & 0xFFFF, 16)
+            oy = sign_extend((w3 >> 16) & 0xFFFF, 16)
+            oz = sign_extend(w3 & 0xFFFF, 16)
+            ang = sign_extend((w4 >> 22) & 0x3FF, 10)
+            kbs = (w4 >> 12) & 0x3FF
+            kbw = (w4 >> 2) & 0x3FF
+            ga = w4 & 0x3
+            sd = sign_extend((w5 >> 24) & 0xFF, 8)
+            fl = (w5 >> 21) & 0x7
+            fk = (w5 >> 17) & 0xF
+            kbb = (w5 >> 7) & 0x3FF
+            return (f"{loc} {name_str}({aid}, {gid}, {jid}, {dmg}, {reb}, "
+                    f"{ele}, {sz}, {ox}, {oy}, {oz}, {ang}, {kbs}, {kbw}, "
+                    f"{ga}, {sd}, {fl}, {fk}, {kbb})")
+        return f"{loc} {name_str}"
+
+    return f"{loc} {name_str}"
+
+
+def generate_motion_file(fid, name, data, intern_relocs, extern_relocs):
+    """Generate .c and .reloc for a MainMotion file as a single flat u32 array."""
+    prefix = f"d{name}"
+    file_size_words = len(data) // 4
+    var = prefix
+
+    c_lines = [
+        f"/* ftMotionCommand script data for relocData file {fid} ({name}) */",
+        f"/* File size: {len(data)} bytes (0x{len(data):X}) */",
+        "",
+        '#include "relocdata_types.h"',
+        '#include <ft/ftdef.h>',
+        "",
+    ]
+    reloc_lines = [
+        f"# Relocation metadata for file {fid}",
+        "# Format: <type> <ptr_label> <target_label>",
+        "# Labels are C variable names resolved via .o symbol table",
+    ]
+
+    intern_map = {r[0]: r[1] for r in intern_relocs}
+    extern_map = {r[0]: r[1] for r in extern_relocs}
+    data_struct_words = find_data_structure_ranges(data, intern_relocs)
+
+    c_lines.append(f"u32 {var}[{file_size_words}] = {{")
+
+    pos = 0
+    while pos < file_size_words:
+        # Data structure regions (FTThrowHitDesc) - emit raw hex
+        if pos in data_struct_words:
+            while pos < file_size_words and pos in data_struct_words:
+                val = struct.unpack_from('>I', data, pos * 4)[0]
+                c_lines.append(f"\t0x{val:08X}, /* word {pos} (0x{pos * 4:04X}) data */")
+                pos += 1
+            continue
+
+        word = struct.unpack_from('>I', data, pos * 4)[0]
+        opcode = (word >> 26) & 0x3F
+        word_count = OPCODE_WORD_COUNT.get(opcode, 1)
+
+        available = file_size_words - pos
+        if word_count > available:
+            for w in range(pos, file_size_words):
+                val = struct.unpack_from('>I', data, w * 4)[0]
+                c_lines.append(f"\t0x{val:08X}, /* word {w} */")
+            break
+
+        # Decode command for comment, but always emit raw hex
+        comment = _decode_motion_comment(data, pos, opcode, word_count,
+                                          intern_map, extern_map, var)
+        c_lines.append(f"\t0x{word:08X}, /* {comment} */")
+        for k in range(1, word_count):
+            wk = struct.unpack_from('>I', data, (pos + k) * 4)[0]
+            wk_pos = pos + k
+            # Annotate reloc'd pointer words
+            if wk_pos in intern_map:
+                tw = intern_map[wk_pos]
+                c_lines.append(f"\t0x{wk:08X}, /* -> word {tw} (0x{tw * 4:04X}) */")
+                reloc_lines.append(
+                    f"intern {var}+0x{wk_pos * 4:X} {var}+0x{tw * 4:X}")
+            elif wk_pos in extern_map:
+                tw = extern_map[wk_pos]
+                c_lines.append(f"\t0x{wk:08X}, /* extern -> 0x{tw * 4:X} */")
+                reloc_lines.append(
+                    f"extern {var}+0x{wk_pos * 4:X} 0x{tw * 4:X}")
+            else:
+                c_lines.append(f"\t0x{wk:08X},")
+
+        pos += word_count
+
+    c_lines.append("};")
+    c_lines.append("")
+
+    return "\n".join(c_lines), "\n".join(reloc_lines) + "\n"
+
+
+# ── ShieldPose (AObjEvent16) helpers ────────────────────────────────────
+
+
 def emit_aobj_data(data, start_word, end_word, intern_relocs, prefix, region_idx):
     """Emit AObjEvent16 data for a region that is targeted by figatree pointers.
 
@@ -310,8 +735,12 @@ def emit_aobj_data(data, start_word, end_word, intern_relocs, prefix, region_idx
     return c_lines, reloc_lines, symbols
 
 
-def generate_file(fid, name, data, intern_relocs, extern_relocs):
+def generate_file(fid, name, data, intern_relocs, extern_relocs,
+                   is_motion=False):
     """Generate typed .c and .reloc content for a MainMotion/ShieldPose file."""
+    if is_motion:
+        return generate_motion_file(fid, name, data, intern_relocs,
+                                     extern_relocs)
     prefix = f"d{name}"
     file_size_words = len(data) // 4
 
@@ -495,8 +924,10 @@ def process_file(fid, name, dry_run=False):
     intern_relocs = walk_reloc_chain(data, intern_start)
     extern_relocs = walk_reloc_chain(data, extern_start)
 
+    is_motion = fid in MAINMOTION_IDS
     c_content, reloc_content = generate_file(fid, name, data,
-                                              intern_relocs, extern_relocs)
+                                              intern_relocs, extern_relocs,
+                                              is_motion=is_motion)
 
     c_path = os.path.join(OUT_DIR, f"{fid}_{name}.c")
     reloc_path = os.path.join(OUT_DIR, f"{fid}_{name}.reloc")

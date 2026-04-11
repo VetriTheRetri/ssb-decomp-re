@@ -150,6 +150,96 @@
 
 #define ftMotionCommandSetSlopeContour(flag) (GC_FIELDSET(nFTMotionEventSetSlopeContour, 26, 6) | GC_FIELDSET(flag, 0, 26)) // 0 = none, 3 = feet
 
+#define ftMotionCommandClearAttackCollID(id) (GC_FIELDSET(nFTMotionEventClearAttackCollID, 26, 6) | GC_FIELDSET(id, 0, 26))
+#define ftMotionCommandClearAttackCollAll() GC_FIELDSET(nFTMotionEventClearAttackCollAll, 26, 6)
+#define ftMotionCommandRefreshAttackCollID(id) (GC_FIELDSET(nFTMotionEventRefreshAttackCollID, 26, 6) | GC_FIELDSET(id, 0, 26))
+
+#define ftMotionCommandSetAttackCollDamage(id, dmg) (GC_FIELDSET(nFTMotionEventSetAttackCollDamage, 26, 6) | GC_FIELDSET(id, 23, 3) | GC_FIELDSET(dmg, 15, 8))
+#define ftMotionCommandSetAttackCollSize(id, sz) (GC_FIELDSET(nFTMotionEventSetAttackCollSize, 26, 6) | GC_FIELDSET(id, 23, 3) | GC_FIELDSET(sz, 7, 16))
+#define ftMotionCommandSetAttackCollSoundLevel(id, lvl) (GC_FIELDSET(nFTMotionEventSetAttackCollSoundLevel, 26, 6) | GC_FIELDSET(id, 23, 3) | GC_FIELDSET(lvl, 20, 3))
+
+#define ftMotionCommandPlayLoopSFXStoreInfo(id) (GC_FIELDSET(nFTMotionEventPlayLoopSFXStoreInfo, 26, 6) | GC_FIELDSET(id, 0, 26))
+#define ftMotionCommandStopLoopSFX(id) (GC_FIELDSET(nFTMotionEventStopLoopSFX, 26, 6) | GC_FIELDSET(id, 0, 26))
+#define ftMotionCommandPlayFGMStoreInfo(id) (GC_FIELDSET(nFTMotionEventPlayFGMStoreInfo, 26, 6) | GC_FIELDSET(id, 0, 26))
+#define ftMotionCommandPlaySmashVoice(id) (GC_FIELDSET(nFTMotionEventPlaySmashVoice, 26, 6) | GC_FIELDSET(id, 0, 26))
+
+#define ftMotionCommandSetFlag0(val) (GC_FIELDSET(nFTMotionEventSetFlag0, 26, 6) | GC_FIELDSET(val, 0, 26))
+#define ftMotionCommandSetFlag1(val) (GC_FIELDSET(nFTMotionEventSetFlag1, 26, 6) | GC_FIELDSET(val, 0, 26))
+#define ftMotionCommandSetFlag2(val) (GC_FIELDSET(nFTMotionEventSetFlag2, 26, 6) | GC_FIELDSET(val, 0, 26))
+#define ftMotionCommandSetFlag3(val) (GC_FIELDSET(nFTMotionEventSetFlag3, 26, 6) | GC_FIELDSET(val, 0, 26))
+
+#define ftMotionCommandSetAirJumpAdd(val) (GC_FIELDSET(nFTMotionEventSetAirJumpAdd, 26, 6) | GC_FIELDSET(val, 0, 26))
+#define ftMotionCommandSetAirJumpMax(val) (GC_FIELDSET(nFTMotionEventSetAirJumpMax, 26, 6) | GC_FIELDSET(val, 0, 26))
+
+#define ftMotionCommandSetHitStatusPartAll(val) (GC_FIELDSET(nFTMotionEventSetHitStatusPartAll, 26, 6) | GC_FIELDSET(val, 0, 26))
+#define ftMotionCommandSetHitStatusPartID(jid, hs) (GC_FIELDSET(nFTMotionEventSetHitStatusPartID, 26, 6) | GC_FIELDSET(jid, 19, 7) | GC_FIELDSET(hs, 0, 19))
+#define ftMotionCommandSetHitStatusAll(val) (GC_FIELDSET(nFTMotionEventSetHitStatusAll, 26, 6) | GC_FIELDSET(val, 0, 26))
+#define ftMotionCommandResetDamageCollPartAll() GC_FIELDSET(nFTMotionEventResetDamageCollPartAll, 26, 6)
+
+#define ftMotionCommandLoopBegin(count) (GC_FIELDSET(nFTMotionEventLoopBegin, 26, 6) | GC_FIELDSET(count, 0, 26))
+#define ftMotionCommandLoopEnd() GC_FIELDSET(nFTMotionEventLoopEnd, 26, 6)
+#define ftMotionCommandPauseScript() GC_FIELDSET(nFTMotionEventPauseScript, 26, 6)
+
+#define ftMotionCommandSetModelPartID(jid, mid) (GC_FIELDSET(nFTMotionEventSetModelPartID, 26, 6) | GC_FIELDSET(jid, 19, 7) | GC_FIELDSET(mid, 0, 19))
+#define ftMotionCommandResetModelPartAll() GC_FIELDSET(nFTMotionEventResetModelPartAll, 26, 6)
+#define ftMotionCommandHideModelPartAll() GC_FIELDSET(nFTMotionEventHideModelPartAll, 26, 6)
+
+#define ftMotionCommandSetColAnim(cid, len) (GC_FIELDSET(nFTMotionEventSetColAnim, 26, 6) | GC_FIELDSET(cid, 18, 8) | GC_FIELDSET(len, 0, 18))
+#define ftMotionCommandResetColAnim() GC_FIELDSET(nFTMotionEventResetColAnim, 26, 6)
+
+#define ftMotionCommandHideItem(val) (GC_FIELDSET(nFTMotionEventHideItem, 26, 6) | GC_FIELDSET(val, 0, 26))
+#define ftMotionCommandMakeRumble(len, rid) (GC_FIELDSET(nFTMotionEventMakeRumble, 26, 6) | GC_FIELDSET(len, 13, 13) | GC_FIELDSET(rid, 0, 13))
+#define ftMotionCommandStopRumble(rid) (GC_FIELDSET(nFTMotionEventStopRumble, 26, 6) | GC_FIELDSET(rid, 0, 26))
+#define ftMotionCommandSetAfterImage(isw, ds) (GC_FIELDSET(nFTMotionEventSetAfterImage, 26, 6) | GC_FIELDSET(isw, 18, 8) | GC_FIELDSET(ds, 0, 18))
+
+#define ftMotionCommandSetParallelScriptS1() GC_FIELDSET(nFTMotionEventSetParallelScript, 26, 6)
+#define ftMotionCommandSetParallelScriptS2(addr) ((uintptr_t)addr)
+#define ftMotionCommandSetParallelScript(addr) ftMotionCommandSetParallelScriptS1(), ftMotionCommandSetParallelScriptS2(addr)
+
+#define ftMotionCommandSetThrowS1() GC_FIELDSET(nFTMotionEventSetThrow, 26, 6)
+#define ftMotionCommandSetThrowS2(addr) ((uintptr_t)addr)
+#define ftMotionCommandSetThrow(addr) ftMotionCommandSetThrowS1(), ftMotionCommandSetThrowS2(addr)
+
+#define ftMotionCommandSetDamageThrownS1() GC_FIELDSET(nFTMotionEventSetDamageThrown, 26, 6)
+#define ftMotionCommandSetDamageThrownS2(addr) ((uintptr_t)addr)
+#define ftMotionCommandSetDamageThrown(addr) ftMotionCommandSetDamageThrownS1(), ftMotionCommandSetDamageThrownS2(addr)
+
+#define ftMotionCommandSetAttackCollOffsetS1(id, ox) (GC_FIELDSET(nFTMotionEventSetAttackCollOffset, 26, 6) | GC_FIELDSET(id, 23, 3) | GC_FIELDSET(ox, 7, 16))
+#define ftMotionCommandSetAttackCollOffsetS2(oy, oz) (GC_FIELDSET(oy, 16, 16) | GC_FIELDSET(oz, 0, 16))
+#define ftMotionCommandSetAttackCollOffset(id, ox, oy, oz) ftMotionCommandSetAttackCollOffsetS1(id, ox), ftMotionCommandSetAttackCollOffsetS2(oy, oz)
+
+#define ftMotionCommandSetDamageCollPartIDS1(jid) (GC_FIELDSET(nFTMotionEventSetDamageCollPartID, 26, 6) | GC_FIELDSET(jid, 19, 7))
+#define ftMotionCommandSetDamageCollPartIDS2(ox, oy) (GC_FIELDSET(ox, 16, 16) | GC_FIELDSET(oy, 0, 16))
+#define ftMotionCommandSetDamageCollPartIDS3(oz, sx) (GC_FIELDSET(oz, 16, 16) | GC_FIELDSET(sx, 0, 16))
+#define ftMotionCommandSetDamageCollPartIDS4(sy, sz) (GC_FIELDSET(sy, 16, 16) | GC_FIELDSET(sz, 0, 16))
+#define ftMotionCommandSetDamageCollPartID(jid, ox, oy, oz, sx, sy, sz) \
+	ftMotionCommandSetDamageCollPartIDS1(jid), ftMotionCommandSetDamageCollPartIDS2(ox, oy), ftMotionCommandSetDamageCollPartIDS3(oz, sx), ftMotionCommandSetDamageCollPartIDS4(sy, sz)
+
+#define ftMotionCommandMakeAttackCollS1(aid, gid, jid, dmg, reb, ele) \
+	(GC_FIELDSET(nFTMotionEventMakeAttackColl, 26, 6) | GC_FIELDSET(aid, 23, 3) | GC_FIELDSET(gid, 20, 3) | GC_FIELDSET(jid, 13, 7) | GC_FIELDSET(dmg, 5, 8) | GC_FIELDSET(reb, 4, 1) | GC_FIELDSET(ele, 0, 4))
+#define ftMotionCommandMakeAttackCollS2(sz, ox) (GC_FIELDSET(sz, 16, 16) | GC_FIELDSET(ox, 0, 16))
+#define ftMotionCommandMakeAttackCollS3(oy, oz) (GC_FIELDSET(oy, 16, 16) | GC_FIELDSET(oz, 0, 16))
+#define ftMotionCommandMakeAttackCollS4(ang, kbs, kbw, ga) (GC_FIELDSET(ang, 22, 10) | GC_FIELDSET(kbs, 12, 10) | GC_FIELDSET(kbw, 2, 10) | GC_FIELDSET(ga, 0, 2))
+#define ftMotionCommandMakeAttackCollS5(sd, fl, fk, kbb) (GC_FIELDSET(sd, 24, 8) | GC_FIELDSET(fl, 21, 3) | GC_FIELDSET(fk, 17, 4) | GC_FIELDSET(kbb, 7, 10))
+
+#define ftMotionCommandMakeAttackCollScaledS1(aid, gid, jid, dmg, reb, ele) \
+	(GC_FIELDSET(nFTMotionEventMakeAttackCollScaled, 26, 6) | GC_FIELDSET(aid, 23, 3) | GC_FIELDSET(gid, 20, 3) | GC_FIELDSET(jid, 13, 7) | GC_FIELDSET(dmg, 5, 8) | GC_FIELDSET(reb, 4, 1) | GC_FIELDSET(ele, 0, 4))
+#define ftMotionCommandMakeAttackCollScaledS2(sz, ox) (GC_FIELDSET(sz, 16, 16) | GC_FIELDSET(ox, 0, 16))
+#define ftMotionCommandMakeAttackCollScaledS3(oy, oz) (GC_FIELDSET(oy, 16, 16) | GC_FIELDSET(oz, 0, 16))
+#define ftMotionCommandMakeAttackCollScaledS4(ang, kbs, kbw, ga) (GC_FIELDSET(ang, 22, 10) | GC_FIELDSET(kbs, 12, 10) | GC_FIELDSET(kbw, 2, 10) | GC_FIELDSET(ga, 0, 2))
+#define ftMotionCommandMakeAttackCollScaledS5(sd, fl, fk, kbb) (GC_FIELDSET(sd, 24, 8) | GC_FIELDSET(fl, 21, 3) | GC_FIELDSET(fk, 17, 4) | GC_FIELDSET(kbb, 7, 10))
+
+#define ftMotionCommandEffectS1(jid, eid, flag) \
+	(GC_FIELDSET(nFTMotionEventEffect, 26, 6) | GC_FIELDSET(jid, 19, 7) | GC_FIELDSET(eid, 10, 9) | GC_FIELDSET(flag, 0, 10))
+#define ftMotionCommandEffectS2(ox, oy) (GC_FIELDSET(ox, 16, 16) | GC_FIELDSET(oy, 0, 16))
+#define ftMotionCommandEffectS3(oz, rx) (GC_FIELDSET(oz, 16, 16) | GC_FIELDSET(rx, 0, 16))
+#define ftMotionCommandEffectS4(ry, rz) (GC_FIELDSET(ry, 16, 16) | GC_FIELDSET(rz, 0, 16))
+
+#define ftMotionCommandEffectItemHoldS1(jid, eid, flag) \
+	(GC_FIELDSET(nFTMotionEventEffectItemHold, 26, 6) | GC_FIELDSET(jid, 19, 7) | GC_FIELDSET(eid, 10, 9) | GC_FIELDSET(flag, 0, 10))
+#define ftMotionCommandEffectItemHoldS2(ox, oy) (GC_FIELDSET(ox, 16, 16) | GC_FIELDSET(oy, 0, 16))
+#define ftMotionCommandEffectItemHoldS3(oz, rx) (GC_FIELDSET(oz, 16, 16) | GC_FIELDSET(rx, 0, 16))
+#define ftMotionCommandEffectItemHoldS4(ry, rz) (GC_FIELDSET(ry, 16, 16) | GC_FIELDSET(rz, 0, 16))
 
 // Enums
 typedef enum FTStatusUpdateFlags

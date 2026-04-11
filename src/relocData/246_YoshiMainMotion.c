@@ -174,8 +174,7 @@ u32 dYoshiMainMotion_0x01EC[] = {
 
 u32 dYoshiMainMotion_0x01F8[] = {
 	ftMotionCommandSubroutine(dYoshiMainMotion_0x01E0),
-	ftMotionCommandSetDamageThrownS1(),
-	ftMotionCommandSetDamageThrownS2(0x0758), /* extern */
+	ftMotionCommandSetDamageThrown(0x0758), /* extern */
 	ftMotionCommandEnd(),
 };
 
@@ -758,8 +757,7 @@ u32 dYoshiMainMotion_0x08CC[] = {
 	ftMotionCommandSetAfterImage(1, 0),
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandSubroutineS1(),
-	ftMotionCommandSubroutineS2(0x0000), /* extern */
+	ftMotionCommandSubroutine(0x0000), /* extern */
 	ftMotionCommandWait(4),
 	ftMotionCommandSetAfterImage(0, -1),
 	ftMotionCommandWait(1),
@@ -774,8 +772,7 @@ u32 dYoshiMainMotion_0x0914[] = {
 	ftMotionCommandSetAfterImage(1, 0),
 	ftMotionCommandWaitAsync(12),
 	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandSubroutineS1(),
-	ftMotionCommandSubroutineS2(0x0064), /* extern */
+	ftMotionCommandSubroutine(0x0064), /* extern */
 	ftMotionCommandWait(4),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWait(4),
@@ -793,8 +790,7 @@ u32 dYoshiMainMotion_0x0948[] = {
 	ftMotionCommandSetAfterImage(1, 0),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandSubroutineS1(),
-	ftMotionCommandSubroutineS2(0x00C8), /* extern */
+	ftMotionCommandSubroutine(0x00C8), /* extern */
 	ftMotionCommandWait(5),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWaitAsync(26),
@@ -809,8 +805,7 @@ u32 dYoshiMainMotion_0x0988[] = {
 	ftMotionCommandWaitAsync(7),
 	ftMotionCommandSetAfterImage(1, 0),
 	ftMotionCommandWaitAsync(8),
-	ftMotionCommandSubroutineS1(),
-	ftMotionCommandSubroutineS2(0x012C), /* extern */
+	ftMotionCommandSubroutine(0x012C), /* extern */
 	ftMotionCommandWait(1),
 	ftMotionCommandSetAfterImage(0, -1),
 	ftMotionCommandWait(17),
@@ -823,8 +818,7 @@ u32 dYoshiMainMotion_0x0988[] = {
 u32 dYoshiMainMotion_0x09BC[] = {
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandSubroutineS1(),
-	ftMotionCommandSubroutineS2(0x01A0), /* extern */
+	ftMotionCommandSubroutine(0x01A0), /* extern */
 	ftMotionCommandWait(5),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWaitAsync(15),
@@ -835,8 +829,7 @@ u32 dYoshiMainMotion_0x09BC[] = {
 u32 dYoshiMainMotion_0x09E0[] = {
 	ftMotionCommandWaitAsync(12),
 	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandSubroutineS1(),
-	ftMotionCommandSubroutineS2(0x01F4), /* extern */
+	ftMotionCommandSubroutine(0x01F4), /* extern */
 	ftMotionCommandWait(4),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWaitAsync(32),
@@ -852,8 +845,7 @@ u32 dYoshiMainMotion_0x0A04[] = {
 	ftMotionCommandSetColAnim(76, 40),
 	ftMotionCommandWaitAsync(19),
 	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandSubroutineS1(),
-	ftMotionCommandSubroutineS2(0x0248), /* extern */
+	ftMotionCommandSubroutine(0x0248), /* extern */
 	ftMotionCommandWait(5),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWaitAsync(26),
@@ -864,8 +856,7 @@ u32 dYoshiMainMotion_0x0A04[] = {
 u32 dYoshiMainMotion_0x0A3C[] = {
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandWaitAsync(8),
-	ftMotionCommandSubroutineS1(),
-	ftMotionCommandSubroutineS2(0x02B0), /* extern */
+	ftMotionCommandSubroutine(0x02B0), /* extern */
 	ftMotionCommandWait(18),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWaitAsync(30),
@@ -876,8 +867,7 @@ u32 dYoshiMainMotion_0x0A3C[] = {
 u32 dYoshiMainMotion_0x0A60[] = {
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandSubroutineS1(),
-	ftMotionCommandSubroutineS2(0x0324), /* extern */
+	ftMotionCommandSubroutine(0x0324), /* extern */
 	ftMotionCommandWait(5),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWaitAsync(15),
@@ -888,8 +878,7 @@ u32 dYoshiMainMotion_0x0A60[] = {
 u32 dYoshiMainMotion_0x0A84[] = {
 	ftMotionCommandWaitAsync(12),
 	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandSubroutineS1(),
-	ftMotionCommandSubroutineS2(0x0378), /* extern */
+	ftMotionCommandSubroutine(0x0378), /* extern */
 	ftMotionCommandWait(4),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWaitAsync(32),
@@ -902,8 +891,7 @@ u32 dYoshiMainMotion_0x0AA8[] = {
 	ftMotionCommandSetTexturePartID(1048582),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandSubroutineS1(),
-	ftMotionCommandSubroutineS2(0x03CC), /* extern */
+	ftMotionCommandSubroutine(0x03CC), /* extern */
 	ftMotionCommandWait(5),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWaitAsync(26),
@@ -914,8 +902,7 @@ u32 dYoshiMainMotion_0x0AA8[] = {
 u32 dYoshiMainMotion_0x0AD4[] = {
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandWaitAsync(8),
-	ftMotionCommandSubroutineS1(),
-	ftMotionCommandSubroutineS2(0x0430), /* extern */
+	ftMotionCommandSubroutine(0x0430), /* extern */
 	ftMotionCommandWait(18),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWaitAsync(30),
@@ -927,8 +914,7 @@ u32 dYoshiMainMotion_0x0AF8[] = {
 	ftMotionCommandSetColAnim(75, 11),
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandSubroutineS1(),
-	ftMotionCommandSubroutineS2(0x0494), /* extern */
+	ftMotionCommandSubroutine(0x0494), /* extern */
 	ftMotionCommandWait(5),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWaitAsync(15),
@@ -940,8 +926,7 @@ u32 dYoshiMainMotion_0x0B20[] = {
 	ftMotionCommandSetColAnim(75, 18),
 	ftMotionCommandWaitAsync(12),
 	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandSubroutineS1(),
-	ftMotionCommandSubroutineS2(0x04F8), /* extern */
+	ftMotionCommandSubroutine(0x04F8), /* extern */
 	ftMotionCommandWaitAsync(14),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandWait(4),
@@ -958,8 +943,7 @@ u32 dYoshiMainMotion_0x0B50[] = {
 	ftMotionCommandPlaySmashVoice(0),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandSubroutineS1(),
-	ftMotionCommandSubroutineS2(0x055C), /* extern */
+	ftMotionCommandSubroutine(0x055C), /* extern */
 	ftMotionCommandWaitAsync(21),
 	ftMotionCommandSetFlag0(2),
 	ftMotionCommandWait(5),
@@ -973,8 +957,7 @@ u32 dYoshiMainMotion_0x0B8C[] = {
 	ftMotionCommandSetColAnim(75, 26),
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandWaitAsync(8),
-	ftMotionCommandSubroutineS1(),
-	ftMotionCommandSubroutineS2(0x05C0), /* extern */
+	ftMotionCommandSubroutine(0x05C0), /* extern */
 	ftMotionCommandWait(18),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWaitAsync(30),
@@ -1005,8 +988,7 @@ u32 dYoshiMainMotion_0x0BE4[] = {
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandSetTexturePartID(7),
 	ftMotionCommandSetTexturePartID(1048583),
-	ftMotionCommandSubroutineS1(),
-	ftMotionCommandSubroutineS2(0x0634), /* extern */
+	ftMotionCommandSubroutine(0x0634), /* extern */
 	ftMotionCommandWait(16),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandGoto(dYoshiMainMotion_0x0BE4),
@@ -1080,20 +1062,8 @@ u32 dYoshiMainMotion_0x0CD0[] = {
 };
 
 u32 dYoshiMainMotion_0x0CFC[] = {
-	0xFFFFFFFF,
-	0x00000006,
-	0x00000169,
-	0x00000064,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0xFFFFFFFF,
-	0x00000006,
-	0x00000169,
-	0x00000064,
-	0x00000000,
-	0x00000000,
-	0x00000000,
+	/* FTThrowHitDesc */ -1, 6, 361, 100, 0, 0, 0, /* status, damage, angle, kb_scale, kb_weight, kb_base, element */
+	/* FTThrowHitDesc */ -1, 6, 361, 100, 0, 0, 0, /* status, damage, angle, kb_scale, kb_weight, kb_base, element */
 };
 
 u32 dYoshiMainMotion_0x0D34[] = {
@@ -1125,20 +1095,8 @@ u32 dYoshiMainMotion_0x0D8C[] = {
 };
 
 u32 dYoshiMainMotion_0x0D90[] = {
-	0x00000034,
-	0x0000000C,
-	0x0000002D,
-	0x00000046,
-	0x00000000,
-	0x00000050,
-	0x00000000,
-	0xFFFFFFFF,
-	0x00000006,
-	0x00000169,
-	0x00000064,
-	0x00000000,
-	0x00000000,
-	0x00000000,
+	/* FTThrowHitDesc */ 52, 12, 45, 70, 0, 80, 0, /* status, damage, angle, kb_scale, kb_weight, kb_base, element */
+	/* FTThrowHitDesc */ -1, 6, 361, 100, 0, 0, 0, /* status, damage, angle, kb_scale, kb_weight, kb_base, element */
 };
 
 u32 dYoshiMainMotion_0x0DC8[] = {
@@ -1169,20 +1127,8 @@ u32 dYoshiMainMotion_0x0DC8[] = {
 };
 
 u32 dYoshiMainMotion_0x0E2C[] = {
-	0x00000034,
-	0x00000010,
-	0x0000002D,
-	0x00000046,
-	0x00000000,
-	0x00000046,
-	0x00000000,
-	0xFFFFFFFF,
-	0x00000008,
-	0x00000169,
-	0x00000064,
-	0x00000000,
-	0x00000000,
-	0x00000000,
+	/* FTThrowHitDesc */ 52, 16, 45, 70, 0, 70, 0, /* status, damage, angle, kb_scale, kb_weight, kb_base, element */
+	/* FTThrowHitDesc */ -1, 8, 361, 100, 0, 0, 0, /* status, damage, angle, kb_scale, kb_weight, kb_base, element */
 };
 
 u32 dYoshiMainMotion_0x0E64[] = {
@@ -1213,34 +1159,29 @@ u32 dYoshiMainMotion_0x0E64[] = {
 };
 
 u32 dYoshiMainMotion_0x0EC8[] = {
-	ftMotionCommandSubroutineS1(),
-	ftMotionCommandSubroutineS2(0x06AC), /* extern */
+	ftMotionCommandSubroutine(0x06AC), /* extern */
 	ftMotionCommandEnd(),
 };
 
 u32 dYoshiMainMotion_0x0ED4[] = {
-	ftMotionCommandSubroutineS1(),
-	ftMotionCommandSubroutineS2(0x06C4), /* extern */
+	ftMotionCommandSubroutine(0x06C4), /* extern */
 	ftMotionCommandEnd(),
 };
 
 u32 dYoshiMainMotion_0x0EE0[] = {
-	ftMotionCommandSubroutineS1(),
-	ftMotionCommandSubroutineS2(0x06CC), /* extern */
+	ftMotionCommandSubroutine(0x06CC), /* extern */
 	ftMotionCommandEnd(),
 };
 
 u32 dYoshiMainMotion_0x0EEC[] = {
 	ftMotionCommandSubroutine(dYoshiMainMotion_0x01E0),
-	ftMotionCommandSubroutineS1(),
-	ftMotionCommandSubroutineS2(0x06F0), /* extern */
+	ftMotionCommandSubroutine(0x06F0), /* extern */
 	ftMotionCommandEnd(),
 };
 
 u32 dYoshiMainMotion_0x0F00[] = {
 	ftMotionCommandSubroutine(dYoshiMainMotion_0x01E0),
-	ftMotionCommandSubroutineS1(),
-	ftMotionCommandSubroutineS2(0x070C), /* extern */
+	ftMotionCommandSubroutine(0x070C), /* extern */
 	ftMotionCommandEnd(),
 };
 
@@ -1821,20 +1762,8 @@ u32 dYoshiMainMotion_0x16B4[] = {
 };
 
 u32 dYoshiMainMotion_0x16F8[] = {
-	0xFFFFFFFF,
-	0x00000014,
-	0x00000169,
-	0x00000064,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0xFFFFFFFF,
-	0x00000005,
-	0x00000169,
-	0x00000064,
-	0x00000000,
-	0x00000000,
-	0x00000000,
+	/* FTThrowHitDesc */ -1, 20, 361, 100, 0, 0, 0, /* status, damage, angle, kb_scale, kb_weight, kb_base, element */
+	/* FTThrowHitDesc */ -1, 5, 361, 100, 0, 0, 0, /* status, damage, angle, kb_scale, kb_weight, kb_base, element */
 };
 
 u32 dYoshiMainMotion_0x1730[] = {

@@ -614,10 +614,7 @@ def decode_multi_word_macro(data, pos, opcode, intern_map, extern_map, prefix):
         ox = sign_extend((word >> 7) & 0xFFFF, 16)
         oy = sign_extend((w2 >> 16) & 0xFFFF, 16)
         oz = sign_extend(w2 & 0xFFFF, 16)
-        return [
-            f"ftMotionCommandSetAttackCollOffsetS1({aid}, {ox}),",
-            f"ftMotionCommandSetAttackCollOffsetS2({oy}, {oz}),",
-        ]
+        return [f"ftMotionCommandSetAttackCollOffset({aid}, {ox}, {oy}, {oz}),"]
 
     if opcode in (EVT_Subroutine, EVT_Goto, EVT_SetParallelScript):
         pw = pos + 1
@@ -633,16 +630,10 @@ def decode_multi_word_macro(data, pos, opcode, intern_map, extern_map, prefix):
             return [f"{macro_name}({target_label}),"]
         elif pw in extern_map:
             tw = extern_map[pw]
-            return [
-                f"{macro_name}S1(),",
-                f"{macro_name}S2(0x{tw * 4:04X}), /* extern */",
-            ]
+            return [f"{macro_name}(0x{tw * 4:04X}), /* extern */"]
         else:
             val = struct.unpack_from('>I', data, pw * 4)[0]
-            return [
-                f"{macro_name}S1(),",
-                f"{macro_name}S2(0x{val:08X}),",
-            ]
+            return [f"{macro_name}(0x{val:08X}),"]
 
     if opcode == EVT_SetThrow:
         pw = pos + 1
@@ -652,16 +643,10 @@ def decode_multi_word_macro(data, pos, opcode, intern_map, extern_map, prefix):
             return [f"ftMotionCommandSetThrow((u32){target_label}),"]
         elif pw in extern_map:
             tw = extern_map[pw]
-            return [
-                f"ftMotionCommandSetThrowS1(),",
-                f"ftMotionCommandSetThrowS2(0x{tw * 4:04X}), /* extern */",
-            ]
+            return [f"ftMotionCommandSetThrow(0x{tw * 4:04X}), /* extern */"]
         else:
             val = struct.unpack_from('>I', data, pw * 4)[0]
-            return [
-                f"ftMotionCommandSetThrowS1(),",
-                f"ftMotionCommandSetThrowS2(0x{val:08X}),",
-            ]
+            return [f"ftMotionCommandSetThrow(0x{val:08X}),"]
 
     if opcode == EVT_SetDamageThrown:
         pw = pos + 1
@@ -671,16 +656,10 @@ def decode_multi_word_macro(data, pos, opcode, intern_map, extern_map, prefix):
             return [f"ftMotionCommandSetDamageThrown((u32){target_label}),"]
         elif pw in extern_map:
             tw = extern_map[pw]
-            return [
-                f"ftMotionCommandSetDamageThrownS1(),",
-                f"ftMotionCommandSetDamageThrownS2(0x{tw * 4:04X}), /* extern */",
-            ]
+            return [f"ftMotionCommandSetDamageThrown(0x{tw * 4:04X}), /* extern */"]
         else:
             val = struct.unpack_from('>I', data, pw * 4)[0]
-            return [
-                f"ftMotionCommandSetDamageThrownS1(),",
-                f"0x{val:08X},",
-            ]
+            return [f"ftMotionCommandSetDamageThrown(0x{val:08X}),"]
 
     if opcode in (EVT_Effect, EVT_EffectItemHold):
         w2 = struct.unpack_from('>I', data, (pos + 1) * 4)[0]
@@ -862,12 +841,24 @@ def generate_motion_file(fid, name, data, intern_relocs, extern_relocs):
 
         pos = arr_start
         while pos < arr_end:
-            # Data structure regions (FTThrowHitDesc) - emit raw hex
+            # Data structure regions (FTThrowHitDesc) - emit with field names
             if pos in data_struct_words:
                 while pos < arr_end and pos in data_struct_words:
-                    val = struct.unpack_from('>I', data, pos * 4)[0]
-                    c_lines.append(f"\t0x{val:08X},")
-                    pos += 1
+                    # Emit one FTThrowHitDesc entry (7 words)
+                    if pos + FTTHROWHITDESC_WORDS <= arr_end:
+                        fields = [struct.unpack_from('>i', data, (pos + i) * 4)[0]
+                                  for i in range(FTTHROWHITDESC_WORDS)]
+                        c_lines.append(f"\t/* FTThrowHitDesc */ "
+                                       f"{fields[0]}, {fields[1]}, {fields[2]}, "
+                                       f"{fields[3]}, {fields[4]}, {fields[5]}, "
+                                       f"{fields[6]}, "
+                                       f"/* status, damage, angle, kb_scale, "
+                                       f"kb_weight, kb_base, element */")
+                        pos += FTTHROWHITDESC_WORDS
+                    else:
+                        val = struct.unpack_from('>I', data, pos * 4)[0]
+                        c_lines.append(f"\t0x{val:08X},")
+                        pos += 1
                 continue
 
             word = struct.unpack_from('>I', data, pos * 4)[0]

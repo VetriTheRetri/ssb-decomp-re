@@ -10,14 +10,69 @@ extern s32 D_ovl8_80388298;
 dbUnknown5* func_ovl8_803867E8(void* arg0, DBMenu* arg1);
 dbUnknown5* func_ovl8_80386994(void* arg0, DBMenu* arg1);
 
-extern dbFunction D_ovl8_8038E5A0;
-extern dbFunction D_ovl8_8038E660;
-extern dbFunction D_ovl8_8038E7B8;
-extern s32 D_ovl8_8038E7E0;
-extern dbFunction D_ovl8_8038E840;
-extern dbFunction D_ovl8_8038E900;
-extern dbUnknownLink D_ovl8_8038EA58;
-extern s32 D_ovl8_8038EA80;
+extern void func_ovl8_803718FC();
+extern void func_ovl8_80371930();
+extern void func_ovl8_80371960();
+extern void func_ovl8_80371968();
+extern void func_ovl8_80371970();
+extern void func_ovl8_80371978();
+extern void func_ovl8_80371980();
+extern void func_ovl8_803719A4();
+extern void func_ovl8_803719C8();
+extern void func_ovl8_80371A2C();
+extern void func_ovl8_80371AD8();
+extern void func_ovl8_80371B34();
+extern void func_ovl8_80371B98();
+extern void func_ovl8_80371BCC();
+extern void func_ovl8_80371C2C();
+extern void func_ovl8_80371C8C();
+extern void func_ovl8_80371D00();
+extern void func_ovl8_80371DE4();
+extern void func_ovl8_80371DEC();
+extern void func_ovl8_80371DF4();
+extern void func_ovl8_80371E04();
+extern void func_ovl8_80371E0C();
+extern void func_ovl8_80371E14();
+extern void func_ovl8_80371E24();
+extern void func_ovl8_80371E2C();
+extern void func_ovl8_80371E58();
+extern void func_ovl8_803721E8();
+extern void func_ovl8_80372224();
+extern void func_ovl8_80372250();
+extern void func_ovl8_803722A0();
+extern void func_ovl8_803722F0();
+extern void func_ovl8_80372348();
+extern void func_ovl8_80372358();
+extern void func_ovl8_80372360();
+extern void func_ovl8_80372A48();
+extern void func_ovl8_80372A94();
+extern void func_ovl8_80372D18();
+extern void func_ovl8_80372D70();
+extern void func_ovl8_80372DC8();
+extern void func_ovl8_80372DD8();
+extern void func_ovl8_80372DE8();
+extern void func_ovl8_80372E40();
+extern void func_ovl8_80372FEC();
+extern void func_ovl8_80373044();
+extern void func_ovl8_80373118();
+extern void func_ovl8_80373138();
+extern void func_ovl8_803732B0();
+extern void func_ovl8_80375528();
+extern void func_ovl8_803755C4();
+extern void func_ovl8_80375864();
+extern void func_ovl8_803762AC();
+extern void func_ovl8_803762B4();
+extern void func_ovl8_803764C8();
+extern void func_ovl8_8037C358();
+
+extern dbFunction D_ovl8_8038E5A0[];
+extern dbFunction D_ovl8_8038E660[];
+extern dbFunction D_ovl8_8038E7B8[];
+extern dbFunction D_ovl8_8038E7E0[];
+extern dbFunction D_ovl8_8038E840[];
+extern dbFunction D_ovl8_8038E900[];
+extern dbFunction D_ovl8_8038EA58[];
+extern dbFunction D_ovl8_8038EA80[];
 
 void dbUiNodeTypeRegisterHandler(s32, s32*);
 s32 func_ovl8_803865D0(DBMenuPosition*, s32, char*);
@@ -153,10 +208,10 @@ dbUnknown5* func_ovl8_803867E8(void* arg0, DBMenu* arg1)
             {
                 sp34 = &temp_v0->unk_dbunk5_0xB0;\
                 sp30 = &temp_v0->unk_dbunk5_0x10C;
-                #line 154
+                #line 209
                 func_ovl8_803717E0(sp34);
                 func_ovl8_8037C2D0(sp30);
-                #line 160
+                #line 215
             }
             
             func_ovl8_80376010(temp_v0, sp34, sp30, arg1, 1);
@@ -192,9 +247,9 @@ void func_ovl8_803868EC(dbUnknownS38* arg0, s32 arg1)
         arg0->unk_dbunks38_0x1C->unk_dbunklink_0x8 = &D_ovl8_8038E7B8;
         arg0->unk_dbunks38_0x38.unk_dbunkstruct_0xC = &D_ovl8_8038E7E0;
 
-        #line 192
+        #line 247
         func_ovl8_803761F4(arg0, 0);
-        #line 198
+        #line 253
 
         if (arg1 != 0)
         {
@@ -234,10 +289,10 @@ dbUnknown5* func_ovl8_80386994(void* arg0, DBMenu* arg1)
             {
                 sp3C = &temp_v0->unk_dbunk5_0xBC;\
                 sp38 = &temp_v0->unk_dbunk5_0xB0;
-                #line 234
+                #line 289
                 func_ovl8_803717E0(sp3C);
                 func_ovl8_8037C2D0(sp38);
-                #line 241
+                #line 296
             }
             
             var_s1 = temp_v0;
@@ -250,10 +305,10 @@ dbUnknown5* func_ovl8_80386994(void* arg0, DBMenu* arg1)
                 {
                     sp30 = &var_s1->unk_dbunk5_0xB0;\
                     sp2C = &var_s1->unk_dbunk5_0x10C;
-                    #line 251
+                    #line 306
                     func_ovl8_803717E0(sp30);
                     func_ovl8_8037C2D0(sp2C);
-                    #line 257
+                    #line 312
                 }
                 
                 func_ovl8_80376010(var_s1, sp30, sp2C, arg1, 1);
@@ -654,3 +709,194 @@ u32 stringFromNumber(char* string, s64 number)
 
 // 0x80387540
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_31/func_ovl8_80387540.s")
+dbFunction D_ovl8_8038E5A0[] = {
+	{0, NULL},
+	{0, func_ovl8_803868EC},
+	{0, func_ovl8_803762B4},
+	{0, func_ovl8_80375528},
+	{0, func_ovl8_803755C4},
+	{0, func_ovl8_80375864},
+	{0, func_ovl8_803762AC},
+	{0, func_ovl8_80372A48},
+	{0, func_ovl8_80372A94},
+	{0, func_ovl8_803764C8},
+	{0, func_ovl8_80372D18},
+	{0, func_ovl8_80372D70},
+	{0, func_ovl8_80372DC8},
+	{0, func_ovl8_80372DD8},
+	{0, func_ovl8_80372DE8},
+	{0, func_ovl8_80372E40},
+	{0, func_ovl8_80372FEC},
+	{0, func_ovl8_80373044},
+	{0, func_ovl8_803866AC},
+	{0, func_ovl8_80373118},
+	{0, func_ovl8_80373138},
+	{0, func_ovl8_803732B0},
+	{0, func_ovl8_803868C0},
+	{0, NULL},
+};
+
+dbFunction D_ovl8_8038E660[] = {
+	{0, NULL},
+	{(s16)0xFF50, func_ovl8_803868EC},
+	{0, func_ovl8_803718FC},
+	{0, func_ovl8_80371930},
+	{0, func_ovl8_80371960},
+	{0, func_ovl8_80371968},
+	{0, func_ovl8_80371970},
+	{0, func_ovl8_80371978},
+	{0, func_ovl8_80371980},
+	{0, func_ovl8_803719A4},
+	{0, func_ovl8_803719C8},
+	{0, func_ovl8_80371A2C},
+	{(s16)0xFF50, func_ovl8_803762B4},
+	{(s16)0xFF50, func_ovl8_803868C0},
+	{(s16)0xFF50, func_ovl8_80372A94},
+	{0, func_ovl8_80371AD8},
+	{0, func_ovl8_80371B34},
+	{0, func_ovl8_80371B98},
+	{0, func_ovl8_80371BCC},
+	{(s16)0xFF50, func_ovl8_803764C8},
+	{0, func_ovl8_80371C2C},
+	{(s16)0xFF88, func_ovl8_80372224},
+	{0, func_ovl8_80371C8C},
+	{(s16)0xFF88, func_ovl8_80372358},
+	{0, func_ovl8_80371D00},
+	{(s16)0xFF50, func_ovl8_80372D70},
+	{(s16)0xFF50, func_ovl8_80372DC8},
+	{(s16)0xFF50, func_ovl8_80372D18},
+	{(s16)0xFF50, func_ovl8_80372DD8},
+	{(s16)0xFF50, func_ovl8_80373118},
+	{(s16)0xFF50, func_ovl8_80373138},
+	{0, func_ovl8_80371DE4},
+	{0, func_ovl8_80371DEC},
+	{0, func_ovl8_80371DF4},
+	{(s16)0xFF50, func_ovl8_80372DE8},
+	{0, func_ovl8_80371E04},
+	{0, func_ovl8_80371E0C},
+	{0, func_ovl8_80371E14},
+	{(s16)0xFF50, func_ovl8_803732B0},
+	{0, func_ovl8_80371E24},
+	{0, func_ovl8_80371E2C},
+	{0, func_ovl8_80371E58},
+	{0, NULL},
+};
+
+dbFunction D_ovl8_8038E7B8[] = {
+	{0, NULL},
+	{(s16)0xFEF4, func_ovl8_803868EC},
+	{(s16)0xFEF4, func_ovl8_803866AC},
+	{0, func_ovl8_8037C358},
+	{0, NULL},
+};
+
+dbFunction D_ovl8_8038E7E0[] = {
+	{0, NULL},
+	{(s16)0xFFC8, func_ovl8_803868EC},
+	{(s16)0xFFC8, func_ovl8_803762B4},
+	{0, func_ovl8_803721E8},
+	{0, func_ovl8_80372224},
+	{0, func_ovl8_80372250},
+	{0, func_ovl8_803722A0},
+	{0, func_ovl8_803722F0},
+	{0, func_ovl8_80372348},
+	{0, func_ovl8_80372358},
+	{0, func_ovl8_80372360},
+	{0, NULL},
+};
+
+dbFunction D_ovl8_8038E840[] = {
+	{0, NULL},
+	{0, func_ovl8_80386AFC},
+	{0, func_ovl8_803762B4},
+	{0, func_ovl8_80375528},
+	{0, func_ovl8_803755C4},
+	{0, func_ovl8_80375864},
+	{0, func_ovl8_803762AC},
+	{0, func_ovl8_80372A48},
+	{0, func_ovl8_80372A94},
+	{0, func_ovl8_803764C8},
+	{0, func_ovl8_80372D18},
+	{0, func_ovl8_80372D70},
+	{0, func_ovl8_80372DC8},
+	{0, func_ovl8_80372DD8},
+	{0, func_ovl8_80372DE8},
+	{0, func_ovl8_80372E40},
+	{0, func_ovl8_80372FEC},
+	{0, func_ovl8_80373044},
+	{0, func_ovl8_803866AC},
+	{0, func_ovl8_80373118},
+	{0, func_ovl8_80373138},
+	{0, func_ovl8_803732B0},
+	{0, func_ovl8_803868C0},
+	{0, NULL},
+};
+
+dbFunction D_ovl8_8038E900[] = {
+	{0, NULL},
+	{(s16)0xFF44, func_ovl8_80386AFC},
+	{0, func_ovl8_803718FC},
+	{0, func_ovl8_80371930},
+	{0, func_ovl8_80371960},
+	{0, func_ovl8_80371968},
+	{0, func_ovl8_80371970},
+	{0, func_ovl8_80371978},
+	{0, func_ovl8_80371980},
+	{0, func_ovl8_803719A4},
+	{0, func_ovl8_803719C8},
+	{0, func_ovl8_80371A2C},
+	{(s16)0xFF44, func_ovl8_803762B4},
+	{(s16)0xFF44, func_ovl8_803868C0},
+	{(s16)0xFF44, func_ovl8_80372A94},
+	{0, func_ovl8_80371AD8},
+	{0, func_ovl8_80371B34},
+	{0, func_ovl8_80371B98},
+	{0, func_ovl8_80371BCC},
+	{(s16)0xFF44, func_ovl8_803764C8},
+	{0, func_ovl8_80371C2C},
+	{(s16)0xFF7C, func_ovl8_80372224},
+	{0, func_ovl8_80371C8C},
+	{(s16)0xFF7C, func_ovl8_80372358},
+	{0, func_ovl8_80371D00},
+	{(s16)0xFF44, func_ovl8_80372D70},
+	{(s16)0xFF44, func_ovl8_80372DC8},
+	{(s16)0xFF44, func_ovl8_80372D18},
+	{(s16)0xFF44, func_ovl8_80372DD8},
+	{(s16)0xFF44, func_ovl8_80373118},
+	{(s16)0xFF44, func_ovl8_80373138},
+	{0, func_ovl8_80371DE4},
+	{0, func_ovl8_80371DEC},
+	{0, func_ovl8_80371DF4},
+	{(s16)0xFF44, func_ovl8_80372DE8},
+	{0, func_ovl8_80371E04},
+	{0, func_ovl8_80371E0C},
+	{0, func_ovl8_80371E14},
+	{(s16)0xFF44, func_ovl8_803732B0},
+	{0, func_ovl8_80371E24},
+	{0, func_ovl8_80371E2C},
+	{0, func_ovl8_80371E58},
+	{0, NULL},
+};
+
+dbFunction D_ovl8_8038EA58[] = {
+	{0, NULL},
+	{(s16)0xFF50, func_ovl8_80386AFC},
+	{(s16)0xFF50, func_ovl8_803866AC},
+	{0, func_ovl8_8037C358},
+	{0, NULL},
+};
+
+dbFunction D_ovl8_8038EA80[] = {
+	{0, NULL},
+	{(s16)0xFFC8, func_ovl8_80386AFC},
+	{(s16)0xFFC8, func_ovl8_803762B4},
+	{0, func_ovl8_803721E8},
+	{0, func_ovl8_80372224},
+	{0, func_ovl8_80372250},
+	{0, func_ovl8_803722A0},
+	{0, func_ovl8_803722F0},
+	{0, func_ovl8_80372348},
+	{0, func_ovl8_80372358},
+	{0, func_ovl8_80372360},
+	{0, NULL},
+};

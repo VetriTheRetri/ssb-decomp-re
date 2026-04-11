@@ -1,0 +1,45 @@
+# Block manifest for relocData file 84 (EFCommonEffects2)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+gap_0x0000.data.c
+ShockSmallMObjSub.mobjsub.c
+gap_0x14A0.data.c
+gap_0x1500.data.c
+ShockSmallMatAnimJoint_MatAnimJoint.data.c
+FireSparkMObjSub.mobjsub.c
+gap_0x1F18.data.c
+FireSparkVtx.vtx.c
+FireSparkDisplayList.dl.c
+FireSparkDObjDesc.dobjdesc.c
+pad 12
+FireSparkAnimJoint_AnimJoint.data.c
+FireSparkMatAnimJoint_MatAnimJoint.data.c
+CatchSwirlDObjDesc.dobjdesc.c
+gap_0x2310.data.c
+CatchSwirlMObjSub.mobjsub.c
+gap_0x27D8.data.c
+CatchSwirlAnimJoint_AnimJoint.data.c
+CatchSwirlMatAnimJoint_MatAnimJoint.data.c
+ReflectBreakDObjDesc.dobjdesc.c
+gap_0x2FD0.data.c
+ReflectBreakMObjSub.mobjsub.c
+gap_0x3410.data.c
+ReflectBreakAnimJoint_AnimJoint.data.c
+ReflectBreakMatAnimJoint_MatAnimJoint.data.c
+Shadow_TextureImage.data.c
+DeadExplodeDefaultDObjDesc.dobjdesc.c
+gap_0x4F34.data.c
+DeadExplodeDefaultMObjSub.mobjsub.c
+gap_0x5460.data.c
+DeadExplodeDefaultAnimJoint_AnimJoint.data.c
+DeadExplode2_MatAnimJoint.data.c
+DeadExplode4_MatAnimJoint.data.c
+DeadExplode1_MatAnimJoint.data.c
+DeadExplode3_MatAnimJoint.data.c
+NessPKFlashDObjDesc.dobjdesc.c
+gap_0x6B6C.data.c
+NessPKFlashMObjSub.mobjsub.c
+pad 24
+NessPKFlashAnimJoint_AnimJoint.data.c
+NessPKFlashMatAnimJoint_MatAnimJoint.data.c

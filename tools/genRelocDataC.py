@@ -1963,8 +1963,30 @@ def generate(file_id, data, file_name, entries, reloc_map, csv_entry,
             if bt != 'Sprite':
                 valid_entries[i] = (bt, f"{bn}{bt}", off)
 
+    # Pre-compute sprite block starts so preceding blocks don't extend
+    # into the sprite's texture/DL data.  The description offset is the
+    # Sprite struct, but the sprite's physical data actually starts at its
+    # first tile's DL terminator or texture.
+    sprite_block_starts = {}  # {description_offset: actual_start}
+    for bt, bn, bo in valid_entries:
+        if bt == 'Sprite':
+            info = analyze_sprite_block(data, bo, reloc_map)
+            if info and info['tiles']:
+                ft = info['tiles'][0]
+                actual_start = ft['dl_off'] if ft['dl_off'] is not None else ft['tex_off']
+                if actual_start < bo:
+                    sprite_block_starts[bo] = actual_start
+
     for idx, (block_type, block_name, offset) in enumerate(valid_entries):
-        next_off = valid_entries[idx + 1][2] if idx + 1 < len(valid_entries) else len(data)
+        if idx + 1 < len(valid_entries):
+            raw_next = valid_entries[idx + 1][2]
+            adjusted = sprite_block_starts.get(raw_next, raw_next)
+            # Only use the adjusted (earlier) start if it doesn't go before
+            # the current block's offset — otherwise the sprite's texture
+            # data precedes this block and we'd get a negative-sized region.
+            next_off = adjusted if adjusted >= offset else raw_next
+        else:
+            next_off = len(data)
 
         if block_type == 'Sprite':
             info = analyze_sprite_block(data, offset, reloc_map)

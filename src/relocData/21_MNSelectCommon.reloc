@@ -1,0 +1,6 @@
+# Relocation metadata for file 21
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dMNSelectCommon_StoneBackground_bitmaps+0x8 dMNSelectCommon_StoneBackground_tex
+intern dMNSelectCommon_StoneBackground+0x20 dMNSelectCommon_palette_0x0410
+intern dMNSelectCommon_StoneBackground+0x34 dMNSelectCommon_StoneBackground_bitmaps

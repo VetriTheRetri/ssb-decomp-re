@@ -1,0 +1,18 @@
+# Block manifest for relocData file 335 (NessModel)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+gap_0x0000.data.c
+gap_0x9050.data.c
+PKThunderWaveMObjSub.mobjsub.c
+gap_0x98E8.data.c
+PKThunderWaveDObjDesc.dobjdesc.c
+PKThunderWaveAnimJoint_AnimJoint.data.c
+PKThunderWaveMatAnimJoint_MatAnimJoint.data.c
+Stock_tex.data.c
+palette_0xC0E0.palette.c
+gap_0xC100.data.c
+Stock.sprite.c
+pad 4
+FTEmblem.sprite.c
+pad 4

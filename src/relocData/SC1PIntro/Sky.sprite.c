@@ -1,0 +1,52 @@
+/* Sprite: Sky */
+
+/* Sprite: Sky (300x130 ci4) */
+
+Bitmap dSC1PIntro_Sky_bitmaps[] = {
+	{ 300, 304, 0, 0, dSC1PIntro_Sky_tex, 6, 0 },
+	{ 300, 304, 0, 0, dSC1PIntro_Sky_tex + 0x398, 6, 0 },
+	{ 300, 304, 0, 0, dSC1PIntro_Sky_tex + 0x730, 6, 0 },
+	{ 300, 304, 0, 0, dSC1PIntro_Sky_tex + 0xAC8, 6, 0 },
+	{ 300, 304, 0, 0, dSC1PIntro_Sky_tex + 0xE60, 6, 0 },
+	{ 300, 304, 0, 0, dSC1PIntro_Sky_tex + 0x11F8, 6, 0 },
+	{ 300, 304, 0, 0, dSC1PIntro_Sky_tex + 0x1590, 6, 0 },
+	{ 300, 304, 0, 0, dSC1PIntro_Sky_tex + 0x1928, 6, 0 },
+	{ 300, 304, 0, 0, dSC1PIntro_Sky_tex + 0x1CC0, 6, 0 },
+	{ 300, 304, 0, 0, dSC1PIntro_Sky_tex + 0x2058, 6, 0 },
+	{ 300, 304, 0, 0, dSC1PIntro_Sky_tex + 0x23F0, 6, 0 },
+	{ 300, 304, 0, 0, dSC1PIntro_Sky_tex + 0x2788, 6, 0 },
+	{ 300, 304, 0, 0, dSC1PIntro_Sky_tex + 0x2B20, 6, 0 },
+	{ 300, 304, 0, 0, dSC1PIntro_Sky_tex + 0x2EB8, 6, 0 },
+	{ 300, 304, 0, 0, dSC1PIntro_Sky_tex + 0x3250, 6, 0 },
+	{ 300, 304, 0, 0, dSC1PIntro_Sky_tex + 0x35E8, 6, 0 },
+	{ 300, 304, 0, 0, dSC1PIntro_Sky_tex + 0x3980, 6, 0 },
+	{ 300, 304, 0, 0, dSC1PIntro_Sky_tex + 0x3D18, 6, 0 },
+	{ 300, 304, 0, 0, dSC1PIntro_Sky_tex + 0x40B0, 6, 0 },
+	{ 300, 304, 0, 0, dSC1PIntro_Sky_tex + 0x4448, 6, 0 },
+	{ 300, 304, 0, 0, dSC1PIntro_Sky_tex + 0x47E0, 6, 0 },
+	{ 300, 304, 0, 0, dSC1PIntro_Sky_tex + 0x4B78, 6, 0 },
+	{ 300, 304, 0, 0, dSC1PIntro_Sky_tex + 0x4F10, 6, 0 },
+	{ 300, 304, 0, 0, dSC1PIntro_Sky_tex + 0x52A8, 6, 0 },
+	{ 300, 304, 0, 0, dSC1PIntro_Sky_tex + 0x5640, 6, 0 },
+	{ 300, 304, 0, 0, dSC1PIntro_Sky_tex + 0x59D8, 5, 0 },
+};
+
+Sprite dSC1PIntro_Sky = {
+	0, 0,
+	300, 130,
+	1.0f, 1.0f,
+	0, 0,
+	SP_OVERLAP | SP_TEXSHUF,
+	4660,
+	255, 255, 255, 255,
+	0, 256,
+	(int*)dSC1PIntro_palette_0x14A30,
+	0, 1,
+	26, 336,
+	5, 6,
+	2, 0,
+	(Bitmap*)dSC1PIntro_Sky_bitmaps,
+	(Gfx*)0x00000000,
+	(Gfx*)0x00000000,
+	0, 0,
+};

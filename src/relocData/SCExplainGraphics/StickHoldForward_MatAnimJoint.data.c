@@ -1,0 +1,4 @@
+/* Raw data from file offset 0x5430 to 0x5450 (32 bytes) */
+u32 dSCExplainGraphics_StickHoldForward_MatAnimJoint[] = {
+	0x15121512, 0x00000000, 0x16008000, 0x40800000, 0x04000001, 0x00000000, 0x1514150E, 0x00000000, /* reloc: +0x0->0x5448, +0x18->0x5438 */
+};

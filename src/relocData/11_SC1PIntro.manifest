@@ -1,0 +1,152 @@
+# Block manifest for relocData file 11 (SC1PIntro)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+VSDecal.sprite.c
+pad 12
+Number1.sprite.c
+pad 4
+Number2.sprite.c
+pad 4
+Number3.sprite.c
+pad 4
+Number4.sprite.c
+pad 4
+Number5.sprite.c
+pad 4
+Number6.sprite.c
+pad 4
+Number7.sprite.c
+pad 4
+Number8.sprite.c
+pad 4
+Number9.sprite.c
+pad 4
+Number10.sprite.c
+pad 4
+Cross.sprite.c
+pad 4
+StageText.sprite.c
+pad 4
+BonusText.sprite.c
+pad 4
+FinalText.sprite.c
+pad 12
+BreakTheTargetsText.sprite.c
+pad 4
+BoardThePlatformsText.sprite.c
+pad 4
+RaceToTheFinishText.sprite.c
+pad 4
+0x5028.sprite.c
+pad 4
+Dash.sprite.c
+pad 4
+MetalMarioText.sprite.c
+pad 4
+MasterHandText.sprite.c
+pad 4
+GiantDKText.sprite.c
+pad 4
+FoxMcCloudText.sprite.c
+pad 4
+KirbyTeamVS8Text.sprite.c
+pad 4
+MarioBrosText.sprite.c
+pad 4
+FightingPolygonTeamVS30Text.sprite.c
+pad 4
+SamusAranText.sprite.c
+pad 4
+YoshiTeamVS18Text.sprite.c
+pad 4
+VSText.sprite.c
+pad 4
+AllyText.sprite.c
+pad 4
+AllyText2.sprite.c
+pad 4
+FighterMarioCam_AnimJoint.data.c
+FighterFoxCam_AnimJoint.data.c
+FighterDonkeyCam_AnimJoint.data.c
+FighterSamusCam_AnimJoint.data.c
+FighterLuigiCam_AnimJoint.data.c
+FighterLinkCam_AnimJoint.data.c
+FighterYoshiCam_AnimJoint.data.c
+FighterCaptainCam_AnimJoint.data.c
+FighterKirbyCam_AnimJoint.data.c
+FighterPikachuCam_AnimJoint.data.c
+FighterPurinCam_AnimJoint.data.c
+FighterNessCam_AnimJoint.data.c
+StageKirbyCam_AnimJoint.data.c
+StageYoshiCam_AnimJoint.data.c
+StageBossCam_AnimJoint.data.c
+StageSamusCam_AnimJoint.data.c
+StageFoxCam_AnimJoint.data.c
+StagePikachuCam_AnimJoint.data.c
+StageLinkCam_AnimJoint.data.c
+StageDonkeyCam_AnimJoint.data.c
+StageMarioCam_AnimJoint.data.c
+StageMMarioCam_AnimJoint.data.c
+StageZakoCam_AnimJoint.data.c
+LinkMarker_tex.data.c
+palette_0x71A0.palette.c
+LinkMarker.sprite.c
+pad 20
+YoshiMarker_tex.data.c
+palette_0x72F0.palette.c
+YoshiMarker.sprite.c
+pad 20
+FoxMarker_tex.data.c
+palette_0x7440.palette.c
+FoxMarker.sprite.c
+pad 20
+MarioBrosMarker_tex.data.c
+palette_0x7590.palette.c
+MarioBrosMarker.sprite.c
+pad 20
+PikachuMarker_tex.data.c
+palette_0x76E0.palette.c
+PikachuMarker.sprite.c
+pad 20
+DKMarker_tex.data.c
+palette_0x7830.palette.c
+DKMarker.sprite.c
+pad 20
+KirbyMarker_tex.data.c
+palette_0x7980.palette.c
+KirbyMarker.sprite.c
+pad 20
+SamusMarker_tex.data.c
+palette_0x7AD0.palette.c
+SamusMarker.sprite.c
+pad 20
+MarioMarker_tex.data.c
+palette_0x7C20.palette.c
+MarioMarker.sprite.c
+pad 20
+ExclamationMark_tex.data.c
+palette_0x7D30.palette.c
+ExclamationMark.sprite.c
+pad 20
+BossMarker_tex.data.c
+palette_0x7E40.palette.c
+BossMarker.sprite.c
+pad 20
+BonusMarker_tex.data.c
+palette_0x7F10.palette.c
+BonusMarker.sprite.c
+pad 20
+BannerTop_tex.data.c
+palette_0xC5F8.palette.c
+gap_0xC618.data.c
+BannerTop.sprite.c
+pad 12
+BannerBottom_tex.data.c
+palette_0xEC40.palette.c
+BannerBottom.sprite.c
+pad 20
+Sky_tex.data.c
+palette_0x14A30.palette.c
+Sky.sprite.c
+pad 12

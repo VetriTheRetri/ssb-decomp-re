@@ -1,0 +1,32 @@
+/* DisplayList: SpecialMoveRGB @ 0x5E40 (232 bytes) */
+Gfx dSCExplainGraphics_SpecialMoveRGB_DisplayList[] = {
+	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
+	{ { 0xE3001001, 0x00008000 } },  /* cmd 0xE3 */
+	{ { 0xE2001E01, 0x00000001 } },  /* cmd 0xE2 */
+	{ { 0xD9DDFFFF, 0x00000000 } },  /* cmd 0xD9 */
+	{ { 0xFC121624, 0xFF2FFFFF } },  /* cmd 0xFC */
+	{ { 0xFA000000, 0xFFFFFF80 } },  /* cmd 0xFA */
+	{ { 0xF9000000, 0x00000008 } },  /* cmd 0xF9 */
+	{ { 0xE8000000, 0x00000000 } },  /* cmd 0xE8 */
+	{ { 0xF5000100, 0x05000000 } },  /* cmd 0xF5 */
+	{ { 0xF5500000, 0x07018040 } },  /* cmd 0xF5 */
+	{ { 0xFD100000, (unsigned int)((u8*)dSCExplainGraphics_TapSparkMatAnimJoint_MatAnimJoint + 0x1C0) } },  /* cmd 0xFD */
+	{ { 0xE6000000, 0x00000000 } },  /* cmd 0xE6 */
+	{ { 0xF0000000, 0x0503C000 } },  /* cmd 0xF0 */
+	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
+	{ { 0xD7000802, 0xFFFFFFFF } },  /* cmd 0xD7 */
+	{ { 0xF2000000, 0x0003C0BC } },  /* cmd 0xF2 */
+	{ { 0xFD500000, (unsigned int)((u8*)dSCExplainGraphics_TapSparkMatAnimJoint_MatAnimJoint + 0x38) } },  /* cmd 0xFD */
+	{ { 0xE6000000, 0x00000000 } },  /* cmd 0xE6 */
+	{ { 0xF3000000, 0x070BF800 } },  /* cmd 0xF3 */
+	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
+	{ { 0xF5400200, 0x00098240 } },  /* cmd 0xF5 */
+	{ { 0x01004008, (unsigned int)((u8*)dSCExplainGraphics_TapSparkMatAnimJoint_MatAnimJoint + 0x1E0) } },  /* cmd 0x01 */
+	{ { 0x06060402, 0x00000602 } },  /* cmd 0x06 */
+	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
+	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
+	{ { 0xE3001001, 0x00000000 } },  /* cmd 0xE3 */
+	{ { 0xE2001E01, 0x00000000 } },  /* cmd 0xE2 */
+	{ { 0xD9FFFFFF, 0x00220000 } },  /* cmd 0xD9 */
+	{ { 0xDF000000, 0x00000000 } },  /* cmd 0xDF */
+};

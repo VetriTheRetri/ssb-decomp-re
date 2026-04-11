@@ -1,0 +1,4 @@
+/* Raw data from file offset 0x5324 to 0x5338 (20 bytes) */
+u32 dSCStaffroll_gap_0x5324[] = {
+	0x00000000, 0x00000000, 0x00000000, 0xB8000000, 0x00000000,
+};

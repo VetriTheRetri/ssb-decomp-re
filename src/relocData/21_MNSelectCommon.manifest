@@ -1,0 +1,7 @@
+# Block manifest for relocData file 21 (MNSelectCommon)
+gap_0x0000.data.c
+StoneBackground_tex.data.c
+gap_0x0408.data.c
+palette_0x0410.palette.c
+StoneBackground.sprite.c
+pad 12

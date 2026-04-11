@@ -50,93 +50,157 @@ u32 dFTCaptainAnimCatchingEnemyWhileDiving_joints[] = {
 	0xFFFF00B4, /* [25] END */
 };
 
-/* Joint 1: 8 AObjEvent16 values @ 0x68 */
+/* Joint 1 */
 u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint1[8] = {
-	0x50E0, 0xFFF9, 0x0374, 0x0024, 0x0801, 0x0010, 0x0000, 0x0000,
+	ftAnimSetValAfter(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), -7, 884, 36,
+	ftAnimBlock(0, 16),
+	ftAnimEnd(),
+	0x0000,
 };
 
-/* Joint 2: 8 AObjEvent16 values @ 0x78 */
+/* Joint 2 */
 u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint2[8] = {
-	0x500E, 0x01AE, 0x0000, 0x0000, 0x0801, 0x0010, 0x0000, 0x0000,
+	ftAnimSetValAfter(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 430, 0, 0,
+	ftAnimBlock(0, 16),
+	ftAnimEnd(),
+	0x0000,
 };
 
-/* Joint 4: 12 AObjEvent16 values @ 0x88 */
+/* Joint 4 */
 u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint4[12] = {
-	0x4002, 0x002E, 0x480C, 0x0000, 0x0000, 0x3803, 0x0004, 0x008F, 0x3803, 0x000C, 0x002E, 0x0000,
+	ftAnimSetVal0Rate(FT_ANIM_ROTX), 46,
+	ftAnimSetValAfterBlock(FT_ANIM_ROTY | FT_ANIM_ROTZ), 0, 0,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX, 4), 143,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX, 12), 46,
+	ftAnimEnd(),
 };
 
-/* Joint 5: 34 AObjEvent16 values @ 0xA0 */
+/* Joint 5 */
 u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint5[34] = {
-	0x200E, 0x00F7, 0x0002, 0xFEED, 0xFFF3, 0xFD9F, 0x0000, 0x280B, 0x000F, 0x00F7, 0x0000, 0xFD9F, 0x0000, 0x2005, 0x0008, 0xFEA5,
-	0x000C, 0x2005, 0x0001, 0xFEB2, 0x000C, 0x2005, 0x0006, 0xFEEC, 0x0003, 0x200F, 0x0001, 0x00F7, 0x0000, 0xFEED, 0x0001, 0xFD9F,
-	0x0000, 0x0000,
+	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 247, 2, -275, -13, -609, 0,
+	ftAnimSetValRateT(FT_ANIM_ROTX | FT_ANIM_ROTZ, 15), 247, 0, -609, 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 8), -347, 12,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 1), -334, 12,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 6), -276, 3,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 247, 0, -275, 1, -609, 0,
+	ftAnimEnd(),
 };
 
-/* Joint 7: 24 AObjEvent16 values @ 0xE4 */
+/* Joint 7 */
 u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint7[24] = {
-	0x2808, 0xFD10, 0xFFE4, 0x4806, 0x0000, 0x0000, 0x2009, 0x0006, 0xFC75, 0x000A, 0x2009, 0x0001, 0xFC82, 0x000E, 0x2009, 0x0008,
-	0xFD0C, 0x0006, 0x2009, 0x0001, 0xFD10, 0x0003, 0x0000, 0x0000,
+	ftAnimSetValRate(FT_ANIM_ROTZ), -752, -28,
+	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 6), -907, 10,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -894, 14,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 8), -756, 6,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -752, 3,
+	ftAnimEnd(),
+	0x0000,
 };
 
-/* Joint 10: 8 AObjEvent16 values @ 0x114 */
+/* Joint 10 */
 u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint10[8] = {
-	0x500E, 0x0094, 0x0000, 0x0000, 0x0801, 0x0010, 0x0000, 0x0000,
+	ftAnimSetValAfter(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 148, 0, 0,
+	ftAnimBlock(0, 16),
+	ftAnimEnd(),
+	0x0000,
 };
 
-/* Joint 11: 34 AObjEvent16 values @ 0x124 */
+/* Joint 11 */
 u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint11[34] = {
-	0x200E, 0xFEFA, 0xFFFC, 0x00AD, 0x0009, 0xFD7C, 0x0000, 0x280B, 0x000F, 0xFEF9, 0x0000, 0xFD7C, 0x0000, 0x2005, 0x000B, 0x00C5,
-	0xFFF8, 0x2005, 0x0001, 0x00BD, 0xFFF9, 0x2005, 0x0003, 0x00AE, 0xFFFE, 0x200F, 0x0001, 0xFEFA, 0x0000, 0x00AD, 0xFFFF, 0xFD7C,
-	0x0000, 0x0000,
+	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -262, -4, 173, 9, -644, 0,
+	ftAnimSetValRateT(FT_ANIM_ROTX | FT_ANIM_ROTZ, 15), -263, 0, -644, 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 11), 197, -8,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 1), 189, -7,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 3), 174, -2,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), -262, 0, 173, -1, -644, 0,
+	ftAnimEnd(),
 };
 
-/* Joint 12: 24 AObjEvent16 values @ 0x168 */
+/* Joint 12 */
 u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint12[24] = {
-	0x2808, 0xFD5E, 0xFFE8, 0x4806, 0x0000, 0x0000, 0x2009, 0x0007, 0xFCE5, 0x000C, 0x2009, 0x0001, 0xFCF3, 0x000E, 0x2009, 0x0007,
-	0xFD5B, 0x0005, 0x2009, 0x0001, 0xFD5E, 0x0003, 0x0000, 0x0000,
+	ftAnimSetValRate(FT_ANIM_ROTZ), -674, -24,
+	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 7), -795, 12,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -781, 14,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 7), -677, 5,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -674, 3,
+	ftAnimEnd(),
+	0x0000,
 };
 
-/* Joint 13: 8 AObjEvent16 values @ 0x198 */
+/* Joint 13 */
 u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint13[8] = {
-	0x500E, 0xFFB8, 0x0028, 0xFF97, 0x0801, 0x0010, 0x0000, 0x0000,
+	ftAnimSetValAfter(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -72, 40, -105,
+	ftAnimBlock(0, 16),
+	ftAnimEnd(),
+	0x0000,
 };
 
-/* Joint 16: 10 AObjEvent16 values @ 0x1A8 */
+/* Joint 16 */
 u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint16[10] = {
-	0x50EE, 0x06E2, 0xFE62, 0xFFCA, 0x0062, 0x0037, 0x001F, 0x0801, 0x0010, 0x0000,
+	ftAnimSetValAfter(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 1762, -414, -54, 98, 55, 31,
+	ftAnimBlock(0, 16),
+	ftAnimEnd(),
 };
 
-/* Joint 17: 24 AObjEvent16 values @ 0x1BC */
+/* Joint 17 */
 u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint17[24] = {
-	0x200E, 0xF937, 0x000A, 0x081C, 0xFFFF, 0x0162, 0x0004, 0x200F, 0x000F, 0xF938, 0xFFFE, 0x081C, 0x0000, 0x0162, 0x0000, 0x200F,
-	0x0001, 0xF937, 0xFFFF, 0x081C, 0x0000, 0x0162, 0x0000, 0x0000,
+	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -1737, 10, 2076, -1, 354, 4,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 15), -1736, -2, 2076, 0, 354, 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), -1737, -1, 2076, 0, 354, 0,
+	ftAnimEnd(),
 };
 
-/* Joint 19: 16 AObjEvent16 values @ 0x1EC */
+/* Joint 19 */
 u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint19[16] = {
-	0x2808, 0x0446, 0x0008, 0x4806, 0x0000, 0x0000, 0x2009, 0x000F, 0x0447, 0xFFFF, 0x2009, 0x0001, 0x0446, 0xFFFF, 0x0000, 0x0000,
+	ftAnimSetValRate(FT_ANIM_ROTZ), 1094, 8,
+	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 15), 1095, -1,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 1094, -1,
+	ftAnimEnd(),
+	0x0000,
 };
 
-/* Joint 21: 22 AObjEvent16 values @ 0x20C */
+/* Joint 21 */
 u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint21[22] = {
-	0x4008, 0xF884, 0x2802, 0xF9F5, 0xFFF1, 0x4804, 0x058F, 0x2803, 0x000F, 0xF9F2, 0x0003, 0x3809, 0x000F, 0xF884, 0x200B, 0x0001,
-	0xF9F5, 0x0002, 0xF884, 0x0000, 0x0000, 0x0000,
+	ftAnimSetVal0Rate(FT_ANIM_ROTZ), -1916,
+	ftAnimSetValRate(FT_ANIM_ROTX), -1547, -15,
+	ftAnimSetValAfterBlock(FT_ANIM_ROTY), 1423,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 15), -1550, 3,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTZ, 15), -1916,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ, 1), -1547, 2, -1916, 0,
+	ftAnimEnd(),
+	0x0000,
 };
 
-/* Joint 22: 24 AObjEvent16 values @ 0x238 */
+/* Joint 22 */
 u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint22[24] = {
-	0x200E, 0xFA60, 0xFFFA, 0x04DC, 0x0001, 0x01A7, 0x0004, 0x200F, 0x000F, 0xFA5F, 0x0001, 0x04DC, 0x0000, 0x01A8, 0xFFFF, 0x200F,
-	0x0001, 0xFA60, 0x0000, 0x04DC, 0x0000, 0x01A7, 0x0000, 0x0000,
+	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -1440, -6, 1244, 1, 423, 4,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 15), -1441, 1, 1244, 0, 424, -1,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), -1440, 0, 1244, 0, 423, 0,
+	ftAnimEnd(),
 };
 
-/* Joint 24: 16 AObjEvent16 values @ 0x268 */
+/* Joint 24 */
 u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint24[16] = {
-	0x2808, 0x0431, 0x0008, 0x4806, 0x0000, 0x0000, 0x2009, 0x000F, 0x0432, 0xFFFE, 0x2009, 0x0001, 0x0431, 0xFFFF, 0x0000, 0x0000,
+	ftAnimSetValRate(FT_ANIM_ROTZ), 1073, 8,
+	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 15), 1074, -2,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 1073, -1,
+	ftAnimEnd(),
+	0x0000,
 };
 
-/* Joint 25: 44 AObjEvent16 values @ 0x288 */
+/* Joint 25 */
 u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint25[44] = {
-	0x200E, 0xFF99, 0x000E, 0x00E3, 0x0000, 0xFE58, 0x0000, 0x4009, 0x000F, 0xFE58, 0x2805, 0x000F, 0x00E3, 0x0000, 0x2003, 0x0009,
-	0xFFD4, 0xFFF5, 0x2003, 0x0001, 0xFFC8, 0xFFF5, 0x2003, 0x0005, 0xFF9B, 0xFFFD, 0x200F, 0x0001, 0xFF99, 0xFFFF, 0x00E3, 0x0000,
-	0xFE58, 0x0000, 0x0000, 0x0000, 0x50E0, 0x0065, 0xFC8B, 0x01CA, 0x0801, 0x0010, 0x0000, 0x0000,
+	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -103, 14, 227, 0, -424, 0,
+	ftAnimSetVal0RateT(FT_ANIM_ROTZ, 15), -424,
+	ftAnimSetValRateT(FT_ANIM_ROTY, 15), 227, 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 9), -44, -11,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), -56, -11,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 5), -101, -3,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), -103, -1, 227, 0, -424, 0,
+	ftAnimEnd(),
+	0x0000, 0x50E0, 0x0065, 0xFC8B, 0x01CA, 0x0801, 0x0010, 0x0000, 0x0000,
 };

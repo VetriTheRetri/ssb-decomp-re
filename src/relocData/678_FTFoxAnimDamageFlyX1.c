@@ -53,159 +53,337 @@ u32 dFTFoxAnimDamageFlyX1_joints[] = {
 	0xFFFF024E, /* [25] END */
 };
 
-/* Joint 1: 62 AObjEvent16 values @ 0x68 */
+/* Joint 1 */
 u16 dFTFoxAnimDamageFlyX1_joint1[62] = {
-	0x28E0, 0x0030, 0x0000, 0x0390, 0x0002, 0xFFEC, 0x0000, 0x380E, 0x0000, 0x0000, 0x0000, 0x20EF, 0x0001, 0x008F, 0xFFEC, 0x0000,
-	0x0000, 0x0000, 0x0000, 0x0030, 0xFFF5, 0x0371, 0x004B, 0xFF59, 0x0006, 0x20EF, 0x0007, 0xFF5D, 0xFFE9, 0x0000, 0x0000, 0x0000,
-	0x0000, 0x0025, 0xFFF6, 0x03DC, 0x0030, 0xFFF2, 0x0039, 0x20EF, 0x0010, 0xFE6E, 0xFFEF, 0x0000, 0x0000, 0x0000, 0x0000, 0x0011,
-	0xFFF6, 0x03FC, 0xFF6E, 0xFFFE, 0x0006, 0x38EF, 0x0005, 0xFDE8, 0x0000, 0x0000, 0x0009, 0x025B, 0x0002, 0x0000,
+	ftAnimSetValRate(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 48, 0, 912, 2, -20, 0,
+	ftAnimSetVal0RateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 0, 0, 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ, 1), 143, -20, 0, 0, 0, 0, 48, -11, 881, 75, -167, 6,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ, 7), -163, -23, 0, 0, 0, 0, 37, -10, 988, 48, -14, 57,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ, 16), -402, -17, 0, 0, 0, 0, 17, -10, 1020, -146, -2, 6,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ, 5), -536, 0, 0, 9, 603, 2,
+	ftAnimEnd(),
 };
 
-/* Joint 2: 44 AObjEvent16 values @ 0xE4 */
+/* Joint 2 */
 u16 dFTFoxAnimDamageFlyX1_joint2[44] = {
-	0x4006, 0xFF73, 0xFEAE, 0x2808, 0xFFFD, 0x0000, 0x48E0, 0x0000, 0x0000, 0x0000, 0x200F, 0x0001, 0xFF83, 0xFFEC, 0xFEAF, 0x0049,
-	0xFFFE, 0xFFDF, 0x200F, 0x0007, 0xFECC, 0xFFF9, 0x00F7, 0x0019, 0xFEF2, 0xFFF5, 0x200F, 0x0010, 0xFECC, 0xFFEC, 0x00F7, 0xFFF5,
-	0xFEF2, 0x000C, 0x2809, 0x0005, 0x0000, 0xFFE1, 0x3807, 0x0005, 0xFD14, 0x0000, 0x0000, 0x0000,
+	ftAnimSetVal0Rate(FT_ANIM_ROTX | FT_ANIM_ROTY), -141, -338,
+	ftAnimSetValRate(FT_ANIM_ROTZ), -3, 0,
+	ftAnimSetValAfterBlock(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 0, 0, 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), -125, -20, -337, 73, -2, -33,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 7), -308, -7, 247, 25, -270, -11,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 16), -308, -20, 247, -11, -270, 12,
+	ftAnimSetValRateT(FT_ANIM_ROTZ, 5), 0, -31,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY, 5), -748, 0,
+	ftAnimEnd(),
+	0x0000,
 };
 
-/* Joint 4: 38 AObjEvent16 values @ 0x13C */
+/* Joint 4 */
 u16 dFTFoxAnimDamageFlyX1_joint4[38] = {
-	0x400E, 0x0135, 0x009C, 0x0051, 0x48E0, 0x0000, 0x0000, 0x0000, 0x200F, 0x0001, 0x0273, 0xFFCA, 0x0096, 0xFFDC, 0x0051, 0xFFFE,
-	0x200F, 0x0007, 0xFF85, 0xFFE0, 0xFF7B, 0xFFF4, 0x0040, 0x0000, 0x200F, 0x0010, 0xFF85, 0x0020, 0xFF7B, 0x0015, 0x0040, 0x000B,
-	0x380F, 0x0005, 0x0235, 0x0143, 0x0138, 0x0000,
+	ftAnimSetVal0Rate(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 309, 156, 81,
+	ftAnimSetValAfterBlock(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 0, 0, 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 627, -54, 150, -36, 81, -2,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 7), -123, -32, -133, -12, 64, 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 16), -123, 32, -133, 21, 64, 11,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 5), 565, 323, 312,
+	ftAnimEnd(),
 };
 
-/* Joint 5: 138 AObjEvent16 values @ 0x188 */
+/* Joint 5 */
 u16 dFTFoxAnimDamageFlyX1_joint5[138] = {
-	0x200E, 0x0C23, 0x01DD, 0xFF5B, 0xFEE2, 0xF472, 0xFAD4, 0x200F, 0x0001, 0x0E01, 0x0108, 0xFE3C, 0xFF61, 0xEF46, 0xFD41, 0x200F,
-	0x0001, 0x0E33, 0xFFFB, 0xFE1B, 0xFFB1, 0xEEF3, 0xFFFC, 0x2805, 0x0002, 0xFD27, 0xFFF5, 0x200B, 0x0001, 0x0DF5, 0xFEA5, 0xEF3E,
-	0x016B, 0x200B, 0x0001, 0x0B7C, 0xFD92, 0xF1C9, 0x027F, 0x200F, 0x0001, 0x0918, 0xFE90, 0xFD85, 0x0068, 0xF43D, 0x0183, 0x2805,
-	0x0006, 0xFE2E, 0xFFE6, 0x200B, 0x0001, 0x089B, 0xFFAA, 0xF4D1, 0x0072, 0x200B, 0x0005, 0x078E, 0xFF84, 0xF62A, 0x008E, 0x200F,
-	0x0001, 0x06E5, 0xFF97, 0xFE0C, 0xFFF8, 0xF6EE, 0x0076, 0x2805, 0x000C, 0xFE72, 0xFFDE, 0x200B, 0x0004, 0x066A, 0xFFE6, 0xF760,
-	0x0018, 0x200B, 0x0001, 0x0653, 0xFFEA, 0xF774, 0x0013, 0x200B, 0x0006, 0x05E5, 0xFFF2, 0xF7D0, 0x000A, 0x200B, 0x0001, 0x05D8,
-	0x0027, 0xF7DA, 0xFFC7, 0x200F, 0x0001, 0x0635, 0x011D, 0xFE34, 0xFFEE, 0xF75E, 0xFED8, 0x2805, 0x0002, 0xFE71, 0xFFCA, 0x200B,
-	0x0001, 0x0813, 0x0187, 0xF58A, 0xFF09, 0x280B, 0x0002, 0x0A19, 0x00BD, 0xF591, 0xFFE1, 0x0801, 0x0001, 0x2005, 0x0001, 0xFDE0,
-	0xFF8B, 0x200F, 0x0001, 0x0ABE, 0x00A5, 0xFD86, 0xFFA7, 0xF52F, 0xFF9E, 0x0000,
+	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 3107, 477, -165, -286, -2958, -1324,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 3585, 264, -452, -159, -4282, -703,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 3635, -5, -485, -79, -4365, -4,
+	ftAnimSetValRateT(FT_ANIM_ROTY, 2), -729, -11,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ, 1), 3573, -347, -4290, 363,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ, 1), 2940, -622, -3639, 639,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 2328, -368, -635, 104, -3011, 387,
+	ftAnimSetValRateT(FT_ANIM_ROTY, 6), -466, -26,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ, 1), 2203, -86, -2863, 114,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ, 5), 1934, -124, -2518, 142,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 1765, -105, -500, -8, -2322, 118,
+	ftAnimSetValRateT(FT_ANIM_ROTY, 12), -398, -34,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ, 4), 1642, -26, -2208, 24,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ, 1), 1619, -22, -2188, 19,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ, 6), 1509, -14, -2096, 10,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ, 1), 1496, 39, -2086, -57,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 1589, 285, -460, -18, -2210, -296,
+	ftAnimSetValRateT(FT_ANIM_ROTY, 2), -399, -54,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ, 1), 2067, 391, -2678, -247,
+	ftAnimSetValRateT(FT_ANIM_ROTX | FT_ANIM_ROTZ, 2), 2585, 189, -2671, -31,
+	ftAnimBlock(0, 1),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 1), -544, -117,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 2750, 165, -634, -89, -2769, -98,
+	ftAnimEnd(),
 };
 
-/* Joint 6: 62 AObjEvent16 values @ 0x29C */
+/* Joint 6 */
 u16 dFTFoxAnimDamageFlyX1_joint6[62] = {
-	0x2808, 0xFDD2, 0x0227, 0x4806, 0x0000, 0x0000, 0x2009, 0x0001, 0xFFF9, 0x0113, 0x2009, 0x0001, 0xFFF9, 0xFFAE, 0x2009, 0x0003,
-	0xFE16, 0xFFBD, 0x2009, 0x0001, 0xFDFA, 0x0002, 0x2009, 0x0004, 0xFECE, 0x004E, 0x2009, 0x0001, 0xFF27, 0x008C, 0x2009, 0x0001,
-	0xFFE7, 0x0068, 0x2009, 0x0001, 0xFFF9, 0x0008, 0x3809, 0x000A, 0x0000, 0x2009, 0x0001, 0x0000, 0xFFB4, 0x2009, 0x0001, 0xFF67,
-	0xFECE, 0x2009, 0x0001, 0xFD9C, 0xFED8, 0x2009, 0x0002, 0xFD5A, 0x0049, 0x2009, 0x0001, 0xFDA9, 0x004E, 0x0000,
+	ftAnimSetValRate(FT_ANIM_ROTZ), -558, 551,
+	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -7, 275,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -7, -82,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 3), -490, -67,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -518, 2,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 4), -306, 78,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -217, 140,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -25, 104,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -7, 8,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTZ, 10), 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 0, -76,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -153, -306,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -612, -296,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 2), -678, 73,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -599, 78,
+	ftAnimEnd(),
 };
 
-/* Joint 7: 10 AObjEvent16 values @ 0x318 */
+/* Joint 7 */
 u16 dFTFoxAnimDamageFlyX1_joint7[10] = {
-	0x50EE, 0x0000, 0x0000, 0x0000, 0x010D, 0x0000, 0x0000, 0x0801, 0x001D, 0x0000,
+	ftAnimSetValAfter(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 0, 0, 0, 269, 0, 0,
+	ftAnimBlock(0, 29),
+	ftAnimEnd(),
 };
 
-/* Joint 8: 52 AObjEvent16 values @ 0x32C */
+/* Joint 8 */
 u16 dFTFoxAnimDamageFlyX1_joint8[52] = {
-	0x4008, 0xFFB8, 0x2806, 0xFF8F, 0x0000, 0x0088, 0x0000, 0x48E0, 0x0000, 0x0150, 0x0000, 0x280B, 0x0001, 0x0059, 0x0108, 0xFFB9,
-	0x0004, 0x3805, 0x0001, 0x0086, 0x280B, 0x0001, 0x019F, 0xFFE0, 0xFFC2, 0x0008, 0x3805, 0x0001, 0x006D, 0x200F, 0x0006, 0xFF77,
-	0xFFE1, 0xFFE4, 0x0006, 0xFFF5, 0x0001, 0x280B, 0x0010, 0xFEE5, 0x0011, 0xFFD9, 0x0006, 0x3805, 0x0010, 0x00FC, 0x380F, 0x0005,
-	0x00E1, 0xFE59, 0x0085, 0x0000,
+	ftAnimSetVal0Rate(FT_ANIM_ROTZ), -72,
+	ftAnimSetValRate(FT_ANIM_ROTX | FT_ANIM_ROTY), -113, 0, 136, 0,
+	ftAnimSetValAfterBlock(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 0, 336, 0,
+	ftAnimSetValRateT(FT_ANIM_ROTX | FT_ANIM_ROTZ, 1), 89, 264, -71, 4,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTY, 1), 134,
+	ftAnimSetValRateT(FT_ANIM_ROTX | FT_ANIM_ROTZ, 1), 415, -32, -62, 8,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTY, 1), 109,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 6), -137, -31, -28, 6, -11, 1,
+	ftAnimSetValRateT(FT_ANIM_ROTX | FT_ANIM_ROTZ, 16), -283, 17, -39, 6,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTY, 16), 252,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 5), 225, -423, 133,
+	ftAnimEnd(),
 };
 
-/* Joint 10: 10 AObjEvent16 values @ 0x394 */
+/* Joint 10 */
 u16 dFTFoxAnimDamageFlyX1_joint10[10] = {
-	0x50EE, 0x0000, 0x0000, 0x0000, 0x0000, 0x003E, 0xFFEE, 0x0801, 0x001D, 0x0000,
+	ftAnimSetValAfter(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 0, 0, 0, 0, 62, -18,
+	ftAnimBlock(0, 29),
+	ftAnimEnd(),
 };
 
-/* Joint 11: 132 AObjEvent16 values @ 0x3A8 */
+/* Joint 11 */
 u16 dFTFoxAnimDamageFlyX1_joint11[132] = {
-	0x200E, 0xFA3D, 0xFEFE, 0x0538, 0x0052, 0xFB09, 0xFAEF, 0x2805, 0x000A, 0x03FA, 0xFFF5, 0x200B, 0x0001, 0xF93B, 0xFF90, 0xF5F7,
-	0xFD63, 0x200B, 0x0001, 0xF95B, 0x0017, 0xF5CE, 0xFFDA, 0x2803, 0x0003, 0xF96F, 0x0042, 0x2009, 0x0002, 0xF595, 0xFFE9, 0x2009,
-	0x0001, 0xF57B, 0x0050, 0x2809, 0x0002, 0xF696, 0x002C, 0x2003, 0x0001, 0xF9FA, 0x0072, 0x2803, 0x0003, 0xF9DF, 0xFF1E, 0x0801,
-	0x0001, 0x2009, 0x0001, 0xF68E, 0xFFB7, 0x2009, 0x0001, 0xF604, 0xFF07, 0x200B, 0x0001, 0xF892, 0xFF44, 0xF49C, 0xFF35, 0x2803,
-	0x0002, 0xF828, 0xFFC7, 0x200D, 0x0001, 0x03E1, 0xFFED, 0xF46E, 0xFFC8, 0x2805, 0x000D, 0x03CD, 0x001F, 0x2009, 0x0001, 0xF42A,
-	0xFFC1, 0x2809, 0x000E, 0xF1F1, 0xFFFE, 0x2003, 0x0001, 0xF7F2, 0xFFCF, 0x2003, 0x000A, 0xF5D6, 0xFFB6, 0x2003, 0x0001, 0xF584,
-	0xFF63, 0x2007, 0x0001, 0xF49B, 0xFEA5, 0x0401, 0x0051, 0x2805, 0x0003, 0x0552, 0x002A, 0x2003, 0x0001, 0xF2CC, 0xFEB2, 0x200B,
-	0x0001, 0xF1FF, 0xFF28, 0xF1E0, 0xFF6C, 0x200B, 0x0001, 0xF11C, 0xFF50, 0xF0C8, 0xFF33, 0x200F, 0x0001, 0xF09E, 0xFF82, 0x0527,
-	0xFFD6, 0xF045, 0xFF7E, 0x0000,
+	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -1475, -258, 1336, 82, -1271, -1297,
+	ftAnimSetValRateT(FT_ANIM_ROTY, 10), 1018, -11,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ, 1), -1733, -112, -2569, -669,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ, 1), -1701, 23, -2610, -38,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 3), -1681, 66,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 2), -2667, -23,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -2693, 80,
+	ftAnimSetValRateT(FT_ANIM_ROTZ, 2), -2410, 44,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), -1542, 114,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 3), -1569, -226,
+	ftAnimBlock(0, 1),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -2418, -73,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -2556, -249,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ, 1), -1902, -188, -2916, -203,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 2), -2008, -57,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 993, -19, -2962, -56,
+	ftAnimSetValRateT(FT_ANIM_ROTY, 13), 973, 31,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -3030, -63,
+	ftAnimSetValRateT(FT_ANIM_ROTZ, 14), -3599, -2,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), -2062, -49,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 10), -2602, -74,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), -2684, -157,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY, 1), -2917, -347, 1025, 81,
+	ftAnimSetValRateT(FT_ANIM_ROTY, 3), 1362, 42,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), -3380, -334,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ, 1), -3585, -216, -3616, -148,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ, 1), -3812, -176, -3896, -205,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), -3938, -126, 1319, -42, -4027, -130,
+	ftAnimEnd(),
 };
 
-/* Joint 12: 62 AObjEvent16 values @ 0x4B0 */
+/* Joint 12 */
 u16 dFTFoxAnimDamageFlyX1_joint12[62] = {
-	0x2808, 0xFDAE, 0x0252, 0x4806, 0x0000, 0x0000, 0x2009, 0x0001, 0x0000, 0x0125, 0x3809, 0x0001, 0xFFF9, 0x2009, 0x0002, 0xFFF9,
-	0xFFFD, 0x2009, 0x0001, 0xFFF9, 0xFF84, 0x2009, 0x0001, 0xFF00, 0xFF55, 0x2009, 0x0001, 0xFEA3, 0xFFDC, 0x2009, 0x0002, 0xFF1E,
-	0x00A4, 0x2009, 0x0001, 0x0000, 0x006D, 0x2009, 0x0002, 0x0000, 0x0003, 0x2009, 0x0001, 0x0000, 0xFFFD, 0x2009, 0x000D, 0xFFF9,
-	0x0000, 0x2009, 0x0001, 0xFFF9, 0xFF4D, 0x2009, 0x0001, 0xFE93, 0xFF4E, 0x2009, 0x0001, 0xFE95, 0x0001, 0x0000,
+	ftAnimSetValRate(FT_ANIM_ROTZ), -594, 594,
+	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 0, 293,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTZ, 1), -7,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 2), -7, -3,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -7, -124,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -256, -171,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -349, -36,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 2), -226, 164,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 0, 109,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 2), 0, 3,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 0, -3,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 13), -7, 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -7, -179,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -365, -178,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -363, 1,
+	ftAnimEnd(),
 };
 
-/* Joint 13: 14 AObjEvent16 values @ 0x52C */
+/* Joint 13 */
 u16 dFTFoxAnimDamageFlyX1_joint13[14] = {
-	0x400A, 0x0000, 0x0000, 0x48E4, 0x0000, 0x0110, 0x0000, 0x0000, 0x380B, 0x001D, 0x002C, 0x002C, 0x0000, 0x0000,
+	ftAnimSetVal0Rate(FT_ANIM_ROTX | FT_ANIM_ROTZ), 0, 0,
+	ftAnimSetValAfterBlock(FT_ANIM_ROTY | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 0, 272, 0, 0,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ, 29), 44, 44,
+	ftAnimEnd(),
+	0x0000,
 };
 
-/* Joint 15: 10 AObjEvent16 values @ 0x548 */
+/* Joint 15 */
 u16 dFTFoxAnimDamageFlyX1_joint15[10] = {
-	0x50EE, 0x0000, 0xFCDC, 0x0648, 0x003C, 0xFFC4, 0x000C, 0x0801, 0x001D, 0x0000,
+	ftAnimSetValAfter(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 0, -804, 1608, 60, -60, 12,
+	ftAnimBlock(0, 29),
+	ftAnimEnd(),
 };
 
-/* Joint 16: 110 AObjEvent16 values @ 0x55C */
+/* Joint 16 */
 u16 dFTFoxAnimDamageFlyX1_joint16[110] = {
-	0x200E, 0xFE6B, 0x011D, 0xFF21, 0xFF65, 0xFFE6, 0xFE78, 0x2805, 0x0002, 0xFE8C, 0x000A, 0x200B, 0x0001, 0xFF88, 0x00A0, 0xFE5E,
-	0xFF3F, 0x200B, 0x0001, 0xFFAC, 0x001C, 0xFE62, 0x0015, 0x2809, 0x0003, 0xFED4, 0x0003, 0x2803, 0x0004, 0x007D, 0x0057, 0x2005,
-	0x0001, 0xFE9B, 0x0013, 0x2805, 0x0007, 0xFFA2, 0x0009, 0x0801, 0x0002, 0x2009, 0x0001, 0xFED0, 0x0018, 0x2809, 0x0009, 0xFF27,
-	0xFFF7, 0x2003, 0x0001, 0x00CB, 0x0040, 0x2803, 0x000D, 0x00C5, 0xFFF0, 0x0801, 0x0003, 0x2005, 0x0001, 0xFFAA, 0x0005, 0x2805,
-	0x000F, 0xFFC6, 0x000B, 0x0801, 0x0004, 0x2009, 0x0001, 0xFF1D, 0xFFF7, 0x2809, 0x000A, 0xFE65, 0xFFDA, 0x0801, 0x0004, 0x2003,
-	0x0001, 0x00B5, 0xFFF2, 0x2803, 0x0007, 0x001A, 0xFFDB, 0x0801, 0x0005, 0x200D, 0x0001, 0xFFCA, 0xFFFD, 0xFE45, 0xFFE9, 0x200D,
-	0x0001, 0xFFBF, 0xFFF5, 0xFE35, 0xFFF7, 0x200F, 0x0001, 0x0000, 0xFFE6, 0xFFB4, 0xFFF6, 0xFE32, 0xFFFD, 0x0000,
+	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -405, 285, -223, -155, -26, -392,
+	ftAnimSetValRateT(FT_ANIM_ROTY, 2), -372, 10,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ, 1), -120, 160, -418, -193,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ, 1), -84, 28, -414, 21,
+	ftAnimSetValRateT(FT_ANIM_ROTZ, 3), -300, 3,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 4), 125, 87,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 1), -357, 19,
+	ftAnimSetValRateT(FT_ANIM_ROTY, 7), -94, 9,
+	ftAnimBlock(0, 2),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -304, 24,
+	ftAnimSetValRateT(FT_ANIM_ROTZ, 9), -217, -9,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), 203, 64,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 13), 197, -16,
+	ftAnimBlock(0, 3),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 1), -86, 5,
+	ftAnimSetValRateT(FT_ANIM_ROTY, 15), -58, 11,
+	ftAnimBlock(0, 4),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -227, -9,
+	ftAnimSetValRateT(FT_ANIM_ROTZ, 10), -411, -38,
+	ftAnimBlock(0, 4),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), 181, -14,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 7), 26, -37,
+	ftAnimBlock(0, 5),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), -54, -3, -443, -23,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), -65, -11, -459, -9,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 0, -26, -76, -10, -462, -3,
+	ftAnimEnd(),
 };
 
-/* Joint 18: 46 AObjEvent16 values @ 0x638 */
+/* Joint 18 */
 u16 dFTFoxAnimDamageFlyX1_joint18[46] = {
-	0x2808, 0x0162, 0xFE9E, 0x4806, 0x0000, 0x0000, 0x2009, 0x0001, 0x0000, 0xFF4F, 0x3809, 0x0001, 0x0000, 0x2009, 0x0003, 0x0078,
-	0x008C, 0x2009, 0x0001, 0x0119, 0x005F, 0x2009, 0x0004, 0x0121, 0xFFF6, 0x2009, 0x0001, 0x0117, 0xFFF6, 0x2009, 0x000C, 0x00D0,
-	0x0016, 0x2009, 0x0001, 0x00EB, 0x003D, 0x2009, 0x0004, 0x0293, 0x0035, 0x2009, 0x0001, 0x02B0, 0x001D, 0x0000,
+	ftAnimSetValRate(FT_ANIM_ROTZ), 354, -354,
+	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 0, -177,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTZ, 1), 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 3), 120, 140,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 281, 95,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 4), 289, -10,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 279, -10,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 12), 208, 22,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 235, 61,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 4), 659, 53,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 688, 29,
+	ftAnimEnd(),
 };
 
-/* Joint 20: 82 AObjEvent16 values @ 0x694 */
+/* Joint 20 */
 u16 dFTFoxAnimDamageFlyX1_joint20[82] = {
-	0x200E, 0x002E, 0xFFFF, 0x007D, 0xFF4B, 0xFFC8, 0x0118, 0x2805, 0x0002, 0xFFC1, 0xFFFC, 0x2803, 0x0009, 0xFFBE, 0x0010, 0x2009,
-	0x0001, 0x00E0, 0x0091, 0x2009, 0x0001, 0x00EB, 0x0005, 0x2809, 0x000F, 0x008C, 0xFFFD, 0x2005, 0x0001, 0xFFC1, 0x0002, 0x2805,
-	0x0015, 0xFFA5, 0x0003, 0x0801, 0x0006, 0x2003, 0x0001, 0xFFCD, 0x000F, 0x2803, 0x000D, 0x008E, 0x0003, 0x0801, 0x0007, 0x2009,
-	0x0001, 0x0089, 0xFFFD, 0x2809, 0x000A, 0x0065, 0xFFFD, 0x0801, 0x0005, 0x2003, 0x0001, 0x0090, 0xFFF0, 0x2803, 0x0004, 0x0007,
-	0x0001, 0x2005, 0x0001, 0xFFAC, 0x000D, 0x2005, 0x0003, 0x0005, 0x001C, 0x200F, 0x0001, 0x000F, 0x0007, 0x0019, 0x0013, 0x0062,
-	0xFFFE, 0x0000,
+	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 46, -1, 125, -181, -56, 280,
+	ftAnimSetValRateT(FT_ANIM_ROTY, 2), -63, -4,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 9), -66, 16,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 224, 145,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 235, 5,
+	ftAnimSetValRateT(FT_ANIM_ROTZ, 15), 140, -3,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 1), -63, 2,
+	ftAnimSetValRateT(FT_ANIM_ROTY, 21), -91, 3,
+	ftAnimBlock(0, 6),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), -51, 15,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 13), 142, 3,
+	ftAnimBlock(0, 7),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 137, -3,
+	ftAnimSetValRateT(FT_ANIM_ROTZ, 10), 101, -3,
+	ftAnimBlock(0, 5),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), 144, -16,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 4), 7, 1,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 1), -84, 13,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 3), 5, 28,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 15, 7, 25, 19, 98, -2,
+	ftAnimEnd(),
 };
 
-/* Joint 21: 86 AObjEvent16 values @ 0x738 */
+/* Joint 21 */
 u16 dFTFoxAnimDamageFlyX1_joint21[86] = {
-	0x200E, 0x0163, 0xFF36, 0x0089, 0xFF10, 0x0086, 0xFE28, 0x200F, 0x0001, 0x0098, 0xFF95, 0xFF99, 0xFF90, 0xFEAF, 0xFF1E, 0x200F,
-	0x0001, 0x008B, 0xFFF0, 0xFFA9, 0x001B, 0xFEC2, 0x0006, 0x2803, 0x0008, 0x0065, 0x0014, 0x2805, 0x0009, 0x00B5, 0x0008, 0x2009,
-	0x0005, 0xFF62, 0x0037, 0x2009, 0x0001, 0xFF8F, 0x0021, 0x2809, 0x0011, 0xFF54, 0x001A, 0x0801, 0x0002, 0x2003, 0x0001, 0x007A,
-	0x0014, 0x2803, 0x000E, 0x012B, 0xFFF3, 0x2005, 0x0001, 0x00BD, 0x0008, 0x2005, 0x000D, 0x0111, 0xFFF3, 0x200F, 0x0001, 0x0116,
-	0xFFE1, 0x00F8, 0xFFDA, 0xFF7C, 0x0032, 0x200F, 0x0002, 0x00AB, 0xFFCC, 0x0088, 0xFFD4, 0xFFF8, 0x002E, 0x200F, 0x0001, 0x0082,
-	0xFFD8, 0x006B, 0xFFE3, 0x0017, 0x001F, 0x0000,
+	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 355, -202, 137, -240, 134, -472,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 152, -107, -103, -112, -337, -226,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 139, -16, -87, 27, -318, 6,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 8), 101, 20,
+	ftAnimSetValRateT(FT_ANIM_ROTY, 9), 181, 8,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 5), -158, 55,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -113, 33,
+	ftAnimSetValRateT(FT_ANIM_ROTZ, 17), -172, 26,
+	ftAnimBlock(0, 2),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), 122, 20,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 14), 299, -13,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 1), 189, 8,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 13), 273, -13,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 278, -31, 248, -38, -132, 50,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 2), 171, -52, 136, -44, -8, 46,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 130, -40, 107, -29, 23, 31,
+	ftAnimEnd(),
 };
 
-/* Joint 23: 40 AObjEvent16 values @ 0x7E4 */
+/* Joint 23 */
 u16 dFTFoxAnimDamageFlyX1_joint23[40] = {
-	0x2808, 0x014C, 0xFFAE, 0x4806, 0x0000, 0x0000, 0x2009, 0x0003, 0x0100, 0x0044, 0x2009, 0x0001, 0x014B, 0x0036, 0x2009, 0x0007,
-	0x009A, 0xFFED, 0x2009, 0x0001, 0x008B, 0xFFF6, 0x2009, 0x000E, 0x0180, 0x000D, 0x2009, 0x0001, 0x0177, 0xFFE4, 0x2009, 0x0001,
-	0x0147, 0xFFD7, 0x2009, 0x0001, 0x0125, 0xFFDE, 0x0000, 0x0000,
+	ftAnimSetValRate(FT_ANIM_ROTZ), 332, -82,
+	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 3), 256, 68,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 331, 54,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 7), 154, -19,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 139, -10,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 14), 384, 13,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 375, -28,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 327, -41,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 293, -34,
+	ftAnimEnd(),
+	0x0000,
 };
 
-/* Joint 24: 82 AObjEvent16 values @ 0x834 */
+/* Joint 24 */
 u16 dFTFoxAnimDamageFlyX1_joint24[82] = {
-	0x200E, 0x0010, 0xFF4A, 0xFF9A, 0x00AC, 0xFF1E, 0x00BC, 0x2805, 0x0007, 0x0098, 0xFFFC, 0x2809, 0x000D, 0x0140, 0xFFF9, 0x2003,
-	0x0002, 0xFF66, 0x0025, 0x2003, 0x0001, 0xFFA5, 0x0048, 0x2803, 0x0006, 0x00B9, 0xFFF0, 0x0801, 0x0004, 0x2005, 0x0001, 0x0094,
-	0xFFFC, 0x2805, 0x0014, 0x0000, 0xFFF2, 0x0801, 0x0001, 0x2003, 0x0001, 0x00A6, 0xFFEC, 0x2803, 0x000E, 0xFF6E, 0xFFE5, 0x0801,
-	0x0003, 0x2009, 0x0001, 0x0138, 0xFFF8, 0x2809, 0x000D, 0x019E, 0x003D, 0x0801, 0x000A, 0x2003, 0x0001, 0xFF4B, 0xFFD1, 0x2803,
-	0x0003, 0xFF39, 0x0035, 0x0801, 0x0002, 0x2009, 0x0001, 0x01D8, 0x002A, 0x200F, 0x0001, 0xFF6A, 0x0030, 0xFFF8, 0xFFF8, 0x01F2,
-	0x0019, 0x0000,
+	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 16, -182, -102, 172, -226, 188,
+	ftAnimSetValRateT(FT_ANIM_ROTY, 7), 152, -4,
+	ftAnimSetValRateT(FT_ANIM_ROTZ, 13), 320, -7,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 2), -154, 37,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), -91, 72,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 6), 185, -16,
+	ftAnimBlock(0, 4),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTY, 1), 148, -4,
+	ftAnimSetValRateT(FT_ANIM_ROTY, 20), 0, -14,
+	ftAnimBlock(0, 1),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), 166, -20,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 14), -146, -27,
+	ftAnimBlock(0, 3),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 312, -8,
+	ftAnimSetValRateT(FT_ANIM_ROTZ, 13), 414, 61,
+	ftAnimBlock(0, 10),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX, 1), -181, -47,
+	ftAnimSetValRateT(FT_ANIM_ROTX, 3), -199, 53,
+	ftAnimBlock(0, 2),
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 472, 42,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), -150, 48, -8, -8, 498, 25,
+	ftAnimEnd(),
 };
 
-/* Joint 25: 84 AObjEvent16 values @ 0x8D8 */
+/* Joint 25 */
 u16 dFTFoxAnimDamageFlyX1_joint25[84] = {
-	0x400C, 0x00DB, 0x0000, 0x2802, 0x0000, 0x0001, 0x48E0, 0x0000, 0xFF82, 0xFFA0, 0x200F, 0x0001, 0x015A, 0xFFBD, 0x00D3, 0xFFD0,
-	0x0000, 0x0000, 0x200F, 0x0007, 0xFDE6, 0xFFD8, 0xFF55, 0xFFF1, 0x0000, 0x0000, 0x200F, 0x0010, 0xFDC1, 0x0013, 0xFF78, 0x0009,
-	0x0006, 0x0000, 0x200F, 0x0002, 0xFF47, 0x0073, 0x0002, 0x0047, 0x0004, 0xFFFF, 0x380F, 0x0003, 0x0000, 0x00DB, 0x0000, 0x0000,
-	0x4006, 0xFF4E, 0xFF86, 0x48E8, 0x0000, 0x0000, 0x0040, 0xFE3E, 0x2007, 0x0001, 0x0000, 0x002A, 0x0000, 0x0011, 0x2803, 0x0007,
-	0x00A0, 0xFFFC, 0x3805, 0x0007, 0x000D, 0x2007, 0x0010, 0xFF9F, 0x000D, 0x0000, 0x0000, 0x3807, 0x0005, 0x01BE, 0x0000, 0x0000,
-	0x0000, 0x0000, 0x0000, 0x0000,
+	ftAnimSetVal0Rate(FT_ANIM_ROTY | FT_ANIM_ROTZ), 219, 0,
+	ftAnimSetValRate(FT_ANIM_ROTX), 0, 1,
+	ftAnimSetValAfterBlock(FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 0, -126, -96,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 346, -67, 211, -48, 0, 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 7), -538, -40, -171, -15, 0, 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 16), -575, 19, -136, 9, 6, 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 2), -185, 115, 2, 71, 4, -1,
+	ftAnimSetVal0RateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 3), 0, 219, 0,
+	ftAnimEnd(),
+	0x4006, 0xFF4E, 0xFF86, 0x48E8, 0x0000, 0x0000, 0x0040, 0xFE3E, 0x2007, 0x0001, 0x0000, 0x002A, 0x0000, 0x0011, 0x2803, 0x0007, 0x00A0, 0xFFFC, 0x3805, 0x0007, 0x000D, 0x2007, 0x0010, 0xFF9F, 0x000D, 0x0000, 0x0000, 0x3807, 0x0005, 0x01BE, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 };

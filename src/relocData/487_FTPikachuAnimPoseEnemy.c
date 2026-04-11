@@ -53,98 +53,146 @@ u32 dFTPikachuAnimPoseEnemy_joints[] = {
 	0xFFFF0080, /* [25] END */
 };
 
-/* Joint 1: 14 AObjEvent16 values @ 0x68 */
+/* Joint 1 */
 u16 dFTPikachuAnimPoseEnemy_joint1[14] = {
-	0x57EE, 0xFEF4, 0xFDE8, 0x0000, 0x0000, 0x032A, 0x0084, 0x1000, 0x1000, 0x1000, 0x0801, 0x0001, 0x0000, 0x0000,
+	ftAnimSetValAfter(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ | FT_ANIM_SCAX | FT_ANIM_SCAY | FT_ANIM_SCAZ), -268, -536, 0, 0, 810, 132, 4096, 4096, 4096,
+	ftAnimBlock(0, 1),
+	ftAnimEnd(),
+	0x0000,
 };
 
-/* Joint 2: 10 AObjEvent16 values @ 0x84 */
+/* Joint 2 */
 u16 dFTPikachuAnimPoseEnemy_joint2[10] = {
-	0x50EE, 0x0192, 0x0000, 0x0000, 0x0000, 0xFF2F, 0xFF91, 0x0801, 0x0001, 0x0000,
+	ftAnimSetValAfter(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 402, 0, 0, 0, -209, -111,
+	ftAnimBlock(0, 1),
+	ftAnimEnd(),
 };
 
-/* Joint 3: 10 AObjEvent16 values @ 0x98 */
+/* Joint 3 */
 u16 dFTPikachuAnimPoseEnemy_joint3[10] = {
-	0x50EE, 0x0000, 0x010C, 0x0000, 0x0004, 0x0135, 0x000C, 0x0801, 0x0001, 0x0000,
+	ftAnimSetValAfter(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 0, 268, 0, 4, 309, 12,
+	ftAnimBlock(0, 1),
+	ftAnimEnd(),
 };
 
-/* Joint 5: 10 AObjEvent16 values @ 0xAC */
+/* Joint 5 */
 u16 dFTPikachuAnimPoseEnemy_joint5[10] = {
-	0x50EE, 0x0000, 0x0000, 0x0000, 0x0050, 0xFF74, 0x01A2, 0x0801, 0x0001, 0x0000,
+	ftAnimSetValAfter(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 0, 0, 0, 80, -140, 418,
+	ftAnimBlock(0, 1),
+	ftAnimEnd(),
 };
 
-/* Joint 6: 8 AObjEvent16 values @ 0xC0 */
+/* Joint 6 */
 u16 dFTPikachuAnimPoseEnemy_joint6[8] = {
-	0x500E, 0xFFDA, 0x0656, 0x047A, 0x0801, 0x0001, 0x0000, 0x0000,
+	ftAnimSetValAfter(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -38, 1622, 1146,
+	ftAnimBlock(0, 1),
+	ftAnimEnd(),
+	0x0000,
 };
 
-/* Joint 7: 8 AObjEvent16 values @ 0xD0 */
+/* Joint 7 */
 u16 dFTPikachuAnimPoseEnemy_joint7[8] = {
-	0x500E, 0x0000, 0x0000, 0x0000, 0x0801, 0x0001, 0x0000, 0x0000,
+	ftAnimSetValAfter(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 0, 0, 0,
+	ftAnimBlock(0, 1),
+	ftAnimEnd(),
+	0x0000,
 };
 
-/* Joint 8: 10 AObjEvent16 values @ 0xE0 */
+/* Joint 8 */
 u16 dFTPikachuAnimPoseEnemy_joint8[10] = {
-	0x50EE, 0x0000, 0x010C, 0x0000, 0xFFFF, 0x00C2, 0x0094, 0x0801, 0x0001, 0x0000,
+	ftAnimSetValAfter(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 0, 268, 0, -1, 194, 148,
+	ftAnimBlock(0, 1),
+	ftAnimEnd(),
 };
 
-/* Joint 9: 10 AObjEvent16 values @ 0xF4 */
+/* Joint 9 */
 u16 dFTPikachuAnimPoseEnemy_joint9[10] = {
-	0x50EE, 0x003B, 0x0005, 0x0961, 0x0008, 0x0020, 0x01FC, 0x0801, 0x0001, 0x0000,
+	ftAnimSetValAfter(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 59, 5, 2401, 8, 32, 508,
+	ftAnimBlock(0, 1),
+	ftAnimEnd(),
 };
 
-/* Joint 10: 10 AObjEvent16 values @ 0x108 */
+/* Joint 10 */
 u16 dFTPikachuAnimPoseEnemy_joint10[10] = {
-	0x50EE, 0xFE05, 0x0032, 0x00BB, 0x00FE, 0x0168, 0x0024, 0x0801, 0x0001, 0x0000,
+	ftAnimSetValAfter(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), -507, 50, 187, 254, 360, 36,
+	ftAnimBlock(0, 1),
+	ftAnimEnd(),
 };
 
-/* Joint 11: 10 AObjEvent16 values @ 0x11C */
+/* Joint 11 */
 u16 dFTPikachuAnimPoseEnemy_joint11[10] = {
-	0x50EE, 0xFE2E, 0xFF2A, 0xFEAC, 0xFF01, 0x0168, 0x0024, 0x0801, 0x0001, 0x0000,
+	ftAnimSetValAfter(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), -466, -214, -340, -255, 360, 36,
+	ftAnimBlock(0, 1),
+	ftAnimEnd(),
 };
 
-/* Joint 13: 10 AObjEvent16 values @ 0x130 */
+/* Joint 13 */
 u16 dFTPikachuAnimPoseEnemy_joint13[10] = {
-	0x50EE, 0x0001, 0x0000, 0x0000, 0xFE1D, 0xFFEB, 0x0048, 0x0801, 0x0001, 0x0000,
+	ftAnimSetValAfter(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ | FT_ANIM_TRAX | FT_ANIM_TRAY | FT_ANIM_TRAZ), 1, 0, 0, -483, -21, 72,
+	ftAnimBlock(0, 1),
+	ftAnimEnd(),
 };
 
-/* Joint 14: 16 AObjEvent16 values @ 0x144 */
+/* Joint 14 */
 u16 dFTPikachuAnimPoseEnemy_joint14[16] = {
-	0x200E, 0xFABB, 0x0000, 0x01F6, 0x0000, 0x0762, 0x0000, 0x200F, 0x0001, 0xFABB, 0x0000, 0x01F6, 0x0000, 0x0762, 0x0000, 0x0000,
+	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -1349, 0, 502, 0, 1890, 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), -1349, 0, 502, 0, 1890, 0,
+	ftAnimEnd(),
 };
 
-/* Joint 16: 12 AObjEvent16 values @ 0x164 */
+/* Joint 16 */
 u16 dFTPikachuAnimPoseEnemy_joint16[12] = {
-	0x2808, 0xFE33, 0x0000, 0x4806, 0x0000, 0x0000, 0x2009, 0x0001, 0xFE33, 0x0000, 0x0000, 0x0000,
+	ftAnimSetValRate(FT_ANIM_ROTZ), -461, 0,
+	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), -461, 0,
+	ftAnimEnd(),
+	0x0000,
 };
 
-/* Joint 17: 16 AObjEvent16 values @ 0x17C */
+/* Joint 17 */
 u16 dFTPikachuAnimPoseEnemy_joint17[16] = {
-	0x200E, 0x018B, 0x0000, 0xFC10, 0x0000, 0xFBD5, 0x0000, 0x200F, 0x0001, 0x018B, 0x0000, 0xFC10, 0x0000, 0xFBD5, 0x0000, 0x0000,
+	ftAnimSetValRateBlock(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 395, 0, -1008, 0, -1067, 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ, 1), 395, 0, -1008, 0, -1067, 0,
+	ftAnimEnd(),
 };
 
-/* Joint 19: 12 AObjEvent16 values @ 0x19C */
+/* Joint 19 */
 u16 dFTPikachuAnimPoseEnemy_joint19[12] = {
-	0x2808, 0x02CE, 0x0000, 0x4806, 0x0000, 0x0000, 0x2009, 0x0001, 0x02CE, 0x0000, 0x0000, 0x0000,
+	ftAnimSetValRate(FT_ANIM_ROTZ), 718, 0,
+	ftAnimSetValAfterBlock(FT_ANIM_ROTX | FT_ANIM_ROTY), 0, 0,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTZ, 1), 718, 0,
+	ftAnimEnd(),
+	0x0000,
 };
 
-/* Joint 21: 14 AObjEvent16 values @ 0x1B4 */
+/* Joint 21 */
 u16 dFTPikachuAnimPoseEnemy_joint21[14] = {
-	0x280A, 0x055F, 0x0000, 0x06B9, 0x0000, 0x4804, 0x0670, 0x200B, 0x0001, 0x055F, 0x0000, 0x06B9, 0x0000, 0x0000,
+	ftAnimSetValRate(FT_ANIM_ROTX | FT_ANIM_ROTZ), 1375, 0, 1721, 0,
+	ftAnimSetValAfterBlock(FT_ANIM_ROTY), 1648,
+	ftAnimSetValRateBlockT(FT_ANIM_ROTX | FT_ANIM_ROTZ, 1), 1375, 0, 1721, 0,
+	ftAnimEnd(),
 };
 
-/* Joint 22: 8 AObjEvent16 values @ 0x1D0 */
+/* Joint 22 */
 u16 dFTPikachuAnimPoseEnemy_joint22[8] = {
-	0x500E, 0x0665, 0x05A2, 0xF69D, 0x0801, 0x0001, 0x0000, 0x0000,
+	ftAnimSetValAfter(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 1637, 1442, -2403,
+	ftAnimBlock(0, 1),
+	ftAnimEnd(),
+	0x0000,
 };
 
-/* Joint 24: 8 AObjEvent16 values @ 0x1E0 */
+/* Joint 24 */
 u16 dFTPikachuAnimPoseEnemy_joint24[8] = {
-	0x500E, 0x0000, 0x0000, 0x03DB, 0x0801, 0x0001, 0x0000, 0x0000,
+	ftAnimSetValAfter(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), 0, 0, 987,
+	ftAnimBlock(0, 1),
+	ftAnimEnd(),
+	0x0000,
 };
 
-/* Joint 25: 24 AObjEvent16 values @ 0x1F0 */
+/* Joint 25 */
 u16 dFTPikachuAnimPoseEnemy_joint25[24] = {
-	0x500E, 0xFA0D, 0xF91F, 0x06AE, 0x0801, 0x0001, 0x0000, 0x0000, 0x57EE, 0x0073, 0x05D0, 0xFF38, 0x00B5, 0xFFBC, 0xFE08, 0x1000,
-	0x1000, 0x1000, 0x0801, 0x0001, 0x0000, 0x0000, 0x0000, 0x0000,
+	ftAnimSetValAfter(FT_ANIM_ROTX | FT_ANIM_ROTY | FT_ANIM_ROTZ), -1523, -1761, 1710,
+	ftAnimBlock(0, 1),
+	ftAnimEnd(),
+	0x0000, 0x57EE, 0x0073, 0x05D0, 0xFF38, 0x00B5, 0xFFBC, 0xFE08, 0x1000, 0x1000, 0x1000, 0x0801, 0x0001, 0x0000, 0x0000, 0x0000, 0x0000,
 };

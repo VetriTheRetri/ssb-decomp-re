@@ -631,45 +631,50 @@ def decode_multi_word_macro(data, pos, opcode, intern_map, extern_map, prefix):
             tw = intern_map[pw]
             target_label = f"{prefix}_0x{tw * 4:04X}"
             return [f"{macro_name}({target_label}),"]
+        elif pw in extern_map:
+            tw = extern_map[pw]
+            return [
+                f"{macro_name}S1(),",
+                f"{macro_name}S2(0x{tw * 4:04X}), /* extern */",
+            ]
         else:
-            # Shouldn't happen for these opcodes in MainMotion
             val = struct.unpack_from('>I', data, pw * 4)[0]
             return [
                 f"{macro_name}S1(),",
-                f"0x{val:08X},",
+                f"{macro_name}S2(0x{val:08X}),",
             ]
 
     if opcode == EVT_SetThrow:
         pw = pos + 1
-        if pw in extern_map:
-            tw = extern_map[pw]
-            return [
-                f"ftMotionCommandSetThrowS1(),",
-                f"0x{tw * 4:08X}, /* extern 0x{tw * 4:X} */",
-            ]
-        elif pw in intern_map:
+        if pw in intern_map:
             tw = intern_map[pw]
             target_label = f"{prefix}_0x{tw * 4:04X}"
             return [f"ftMotionCommandSetThrow((u32){target_label}),"]
+        elif pw in extern_map:
+            tw = extern_map[pw]
+            return [
+                f"ftMotionCommandSetThrowS1(),",
+                f"ftMotionCommandSetThrowS2(0x{tw * 4:04X}), /* extern */",
+            ]
         else:
             val = struct.unpack_from('>I', data, pw * 4)[0]
             return [
                 f"ftMotionCommandSetThrowS1(),",
-                f"0x{val:08X},",
+                f"ftMotionCommandSetThrowS2(0x{val:08X}),",
             ]
 
     if opcode == EVT_SetDamageThrown:
         pw = pos + 1
-        if pw in extern_map:
-            tw = extern_map[pw]
-            return [
-                f"ftMotionCommandSetDamageThrownS1(),",
-                f"0x{tw * 4:08X}, /* extern 0x{tw * 4:X} */",
-            ]
-        elif pw in intern_map:
+        if pw in intern_map:
             tw = intern_map[pw]
             target_label = f"{prefix}_0x{tw * 4:04X}"
             return [f"ftMotionCommandSetDamageThrown((u32){target_label}),"]
+        elif pw in extern_map:
+            tw = extern_map[pw]
+            return [
+                f"ftMotionCommandSetDamageThrownS1(),",
+                f"ftMotionCommandSetDamageThrownS2(0x{tw * 4:04X}), /* extern */",
+            ]
         else:
             val = struct.unpack_from('>I', data, pw * 4)[0]
             return [

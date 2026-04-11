@@ -176,7 +176,7 @@ u32 dLinkMainMotion_0x01D8[] = {
 u32 dLinkMainMotion_0x01E4[] = {
 	ftMotionCommandSubroutine(dLinkMainMotion_0x01CC),
 	ftMotionCommandSetDamageThrownS1(),
-	0x00000758, /* extern 0x758 */
+	ftMotionCommandSetDamageThrownS2(0x0758), /* extern */
 	ftMotionCommandEnd(),
 };
 
@@ -876,7 +876,7 @@ u32 dLinkMainMotion_0x0A68[] = {
 	ftMotionCommandSetAfterImage(1, 0),
 	ftMotionCommandWaitAsync(7),
 	ftMotionCommandSubroutineS1(),
-	0x02AE0000,
+	ftMotionCommandSubroutineS2(0x0000), /* extern */
 	ftMotionCommandWait(4),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWait(2),
@@ -890,7 +890,7 @@ u32 dLinkMainMotion_0x0AA4[] = {
 	ftMotionCommandSetAfterImage(1, 0),
 	ftMotionCommandWaitAsync(11),
 	ftMotionCommandSubroutineS1(),
-	0x02BB0019,
+	ftMotionCommandSubroutineS2(0x0064), /* extern */
 	ftMotionCommandWait(3),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWait(5),
@@ -906,7 +906,7 @@ u32 dLinkMainMotion_0x0AD0[] = {
 	ftMotionCommandWaitAsync(17),
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandSubroutineS1(),
-	0x02CA0032,
+	ftMotionCommandSubroutineS2(0x00C8), /* extern */
 	ftMotionCommandWait(5),
 	ftMotionCommandSetAfterImage(0, -1),
 	ftMotionCommandWait(6),
@@ -924,7 +924,7 @@ u32 dLinkMainMotion_0x0B0C[] = {
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandWaitAsync(8),
 	ftMotionCommandSubroutineS1(),
-	0x02D5004B,
+	ftMotionCommandSubroutineS2(0x012C), /* extern */
 	ftMotionCommandWait(2),
 	ftMotionCommandSetAfterImage(0, -1),
 	ftMotionCommandWait(15),
@@ -938,7 +938,7 @@ u32 dLinkMainMotion_0x0B48[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(7),
 	ftMotionCommandSubroutineS1(),
-	0x02DC0068,
+	ftMotionCommandSubroutineS2(0x01A0), /* extern */
 	ftMotionCommandWait(4),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
@@ -948,7 +948,7 @@ u32 dLinkMainMotion_0x0B64[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(11),
 	ftMotionCommandSubroutineS1(),
-	0x02E7007D,
+	ftMotionCommandSubroutineS2(0x01F4), /* extern */
 	ftMotionCommandWait(3),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
@@ -962,7 +962,7 @@ u32 dLinkMainMotion_0x0B80[] = {
 	ftMotionCommandWaitAsync(17),
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandSubroutineS1(),
-	0x02F20092,
+	ftMotionCommandSubroutineS2(0x0248), /* extern */
 	ftMotionCommandWait(8),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWaitAsync(47),
@@ -976,7 +976,7 @@ u32 dLinkMainMotion_0x0BB4[] = {
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandWaitAsync(8),
 	ftMotionCommandSubroutineS1(),
-	0x02FB00AC,
+	ftMotionCommandSubroutineS2(0x02B0), /* extern */
 	ftMotionCommandWait(17),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWaitAsync(32),
@@ -988,7 +988,7 @@ u32 dLinkMainMotion_0x0BE0[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(7),
 	ftMotionCommandSubroutineS1(),
-	0x030200C9,
+	ftMotionCommandSubroutineS2(0x0324), /* extern */
 	ftMotionCommandWait(4),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
@@ -998,7 +998,7 @@ u32 dLinkMainMotion_0x0BFC[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(11),
 	ftMotionCommandSubroutineS1(),
-	0x030C00DE,
+	ftMotionCommandSubroutineS2(0x0378), /* extern */
 	ftMotionCommandWait(3),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
@@ -1011,7 +1011,7 @@ u32 dLinkMainMotion_0x0C18[] = {
 	ftMotionCommandWaitAsync(17),
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandSubroutineS1(),
-	0x031400F3,
+	ftMotionCommandSubroutineS2(0x03CC), /* extern */
 	ftMotionCommandWait(12),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWaitAsync(47),
@@ -1022,7 +1022,7 @@ u32 dLinkMainMotion_0x0C18[] = {
 u32 dLinkMainMotion_0x0C48[] = {
 	ftMotionCommandWaitAsync(8),
 	ftMotionCommandSubroutineS1(),
-	0x031E010C,
+	ftMotionCommandSubroutineS2(0x0430), /* extern */
 	ftMotionCommandWait(17),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWaitAsync(32),
@@ -1035,7 +1035,7 @@ u32 dLinkMainMotion_0x0C68[] = {
 	ftMotionCommandSetColAnim(75, 11),
 	ftMotionCommandWaitAsync(7),
 	ftMotionCommandSubroutineS1(),
-	0x03260125,
+	ftMotionCommandSubroutineS2(0x0494), /* extern */
 	ftMotionCommandWait(4),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
@@ -1046,7 +1046,7 @@ u32 dLinkMainMotion_0x0C88[] = {
 	ftMotionCommandSetColAnim(75, 15),
 	ftMotionCommandWaitAsync(11),
 	ftMotionCommandSubroutineS1(),
-	0x0332013E,
+	ftMotionCommandSubroutineS2(0x04F8), /* extern */
 	ftMotionCommandWaitAsync(12),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandWait(3),
@@ -1061,7 +1061,7 @@ u32 dLinkMainMotion_0x0CB0[] = {
 	ftMotionCommandWaitAsync(17),
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandSubroutineS1(),
-	0x03400157,
+	ftMotionCommandSubroutineS2(0x055C), /* extern */
 	ftMotionCommandWaitAsync(18),
 	ftMotionCommandSetFlag0(2),
 	ftMotionCommandWait(10),
@@ -1078,7 +1078,7 @@ u32 dLinkMainMotion_0x0CE8[] = {
 	ftMotionCommandSetColAnim(75, 25),
 	ftMotionCommandWaitAsync(8),
 	ftMotionCommandSubroutineS1(),
-	0x03550170,
+	ftMotionCommandSubroutineS2(0x05C0), /* extern */
 	ftMotionCommandWait(17),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWaitAsync(32),
@@ -1108,7 +1108,7 @@ u32 dLinkMainMotion_0x0D38[] = {
 	ftMotionCommandSetTexturePartID(1),
 	ftMotionCommandSetTexturePartID(1048577),
 	ftMotionCommandSubroutineS1(),
-	0x043D018D,
+	ftMotionCommandSubroutineS2(0x0634), /* extern */
 	ftMotionCommandWait(16),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandGoto(dLinkMainMotion_0x0D38),
@@ -1361,33 +1361,33 @@ u32 dLinkMainMotion_0x1008[] = {
 
 u32 dLinkMainMotion_0x10F0[] = {
 	ftMotionCommandSubroutineS1(),
-	0x044001AB,
+	ftMotionCommandSubroutineS2(0x06AC), /* extern */
 	ftMotionCommandEnd(),
 };
 
 u32 dLinkMainMotion_0x10FC[] = {
 	ftMotionCommandSubroutineS1(),
-	0x044301B1,
+	ftMotionCommandSubroutineS2(0x06C4), /* extern */
 	ftMotionCommandEnd(),
 };
 
 u32 dLinkMainMotion_0x1108[] = {
 	ftMotionCommandSubroutineS1(),
-	0x044801B3,
+	ftMotionCommandSubroutineS2(0x06CC), /* extern */
 	ftMotionCommandEnd(),
 };
 
 u32 dLinkMainMotion_0x1114[] = {
 	ftMotionCommandSubroutine(dLinkMainMotion_0x01CC),
 	ftMotionCommandSubroutineS1(),
-	0x044D01BC,
+	ftMotionCommandSubroutineS2(0x06F0), /* extern */
 	ftMotionCommandEnd(),
 };
 
 u32 dLinkMainMotion_0x1128[] = {
 	ftMotionCommandSubroutine(dLinkMainMotion_0x01CC),
 	ftMotionCommandSubroutineS1(),
-	0xFFFF01C3,
+	ftMotionCommandSubroutineS2(0x070C), /* extern */
 	ftMotionCommandEnd(),
 };
 

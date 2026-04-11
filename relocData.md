@@ -21,41 +21,48 @@ now the source is text you can read, diff, and modify.
 
 ## Status
 
-| Version | Promoted | Total | % | ROM matches |
+| Version | Building from C | Total | % | ROM matches |
 |---|---|---|---|---|
-| US      | **220**  | 2132  | 10.3% | yes |
-| JP      | **138**  | 2107  | 6.5%  | yes |
+| US      | **2132** | 2132  | 100% | yes |
+| JP      | **2107** | 2107  | 100% | yes |
 
-The unpromoted files (~89% of the segment) still flow through the original
-binary path, untouched. Conversion is incremental: you promote one file,
-verify the ROM still matches, commit.
+All files on both versions build from C source. The build requires
+`RELOC_DATA=1` to compile relocData files from source instead of using
+the original binaries.
 
-### Block file inventory (US, committed source)
+### Structural decomposition
 
-| Type | Files | What it is |
+| Source type | Files | Description |
 |---|---|---|
-| `.sprite.c` | 988 | Sprite definitions (Sprite struct + Bitmap[] + texture include) |
-| `.data.c`   | 486 | Raw `u32[]`/`u8[]` arrays (gaps, animation joints, raw blobs) |
-| `.dobjdesc.c` | 74 | DObjDesc[] arrays (scene graph nodes) |
-| `.mobjsub.c` | 45 | MObjSub material structs (now array-aware) |
-| `.dl.c` | 36 | F3DEX display lists as `Gfx[]` raw word pairs |
-| `.dobjdesc.c` ↑ | | (with labeled `dl` field expressions) |
-| `.vtx.c` | 15 | `Vtx[]` arrays (16 bytes per vertex) |
-| `.palette.c` | 14 | 16-color RGBA5551 palettes |
-| `.manifest` | 130 | Block ordering for files with mixed content |
-| `.spritelist` | 89 | Sprite-only flat ordering |
+| Typed manifests | 139 | Mixed-content files (sprites + DObjDesc + AnimJoint + MObjSub etc.) |
+| Typed spritelists | 89 | Sprite-only files with named sprite structs |
+| Typed AnimJoint (`.reloc`) | 1773 | Per-joint `u16[]` AObjEvent16 scripts with `ftAnim*` macros |
+| Typed MainMotion (`.reloc`) | 9 | `u32[]` ftMotionCommand subaction scripts with named arrays |
+| Typed ShieldPose (`.reloc`) | 11 | Figatree pointer arrays + AObjEvent16 per-joint data |
+| **Raw u32 blobs** | **111** | Unstructured `u32[]` hex dumps — data matches but not human-readable |
+| **Typed total** | **2021** | **94.8%** |
 
-### What's left
+### Remaining raw u32 blobs (111 files)
 
-Of the **1,912 unconverted US files**:
+These files build from C and produce byte-identical output, but their
+content is opaque hex — no macros, named fields, or structural typing.
+Each needs block descriptions added to `relocFileDescriptions.us.txt`
+or format-specific reverse engineering before it can be decomposed.
 
-- **1,841** are unnamed pure-data files (no description block entries) —
-  these can be batch-promoted today by running `genRelocDataC.py` on each;
-  they fall through the "single big `u32[]`" code path and produce a
-  matching binary on the first try.
-- **60** are named but have no typed description blocks — same story.
-- **11** have description blocks blocked by an unsupported type
-  (see "What's missing" below).
+| Category | Files | Bytes | What's needed |
+|---|---|---|---|
+| Stage File2/File3/File4 | 54 | ~1 MB | Supplementary stage geometry, collision, textures. Need block descriptions identifying DObjDesc, DisplayList, Vtx, and texture regions within each file. |
+| Fighter Main | 20 | 33 KB | Character attribute tables, hitbox data (FTAttributes struct, damage collision arrays). Mostly polygon/variant fighters. Structure comes from `FTData` in ftdata.c. |
+| Fighter Model | 14 | 209 KB | 3D model data with DObjDesc, Sprite, DL, Vtx, MObjSub. The existing manifest pipeline handles these once block descriptions are added. |
+| Fighter Special | 6 | 6 KB | Move-specific model/graphic data (fireball, boomerang, etc.). Small files with mixed DObjDesc + texture content. |
+| Stage images | 4 | 9 KB | Pure texture data (no relocs). Need format identification (width, height, pixel format). |
+| Item/object data | 2 | 96 KB | IFCommonObject, ITCommonObject — complex mixed data. |
+| Transition/opening | 2 | 262 KB | LBTransitionPaperAirplane, MVOpeningYamabuki — mixed DObjDesc + AnimJoint + Sprite. File 71 has a known fixRelocChain overflow issue. |
+| Bonus/target | 2 | 5 KB | ITBonus1Object + header. |
+| Non-standard anim | 2 | 5 KB | FTSamusAnimRollF/B — don't follow the standard AnimJoint format. |
+| Other | 3 | 33 KB | MNBackupClear (interleaved palette/sprite), MarioSecondaryImage, FoxUnknown. |
+| Fighter misc | 1 | 2 KB | FTCommonMoveset — shared fighter moveset data. |
+| Polygon texture | 1 | 1 KB | NCommonTexture — shared polygon fighter texture. |
 
 ## How it fits together
 
@@ -199,22 +206,22 @@ useful for fast iteration on non-relocData code.
 
 ## Contributing: promoting a new file
 
-**Pick a file.** Two flavors:
+All 2,132 US files already build from C source. The remaining work is
+converting the 111 raw `u32[]` blobs into structurally typed source.
 
-1. *Easy mode (1,841 candidates)*: a file that has no description block
-   entries — just an unnamed blob in the segment. These promote in one
-   command and produce a matching binary on the first try because they
-   fall into the "single big `u32[]`" code path.
+**Pick a file** from the "Remaining raw u32 blobs" table above. The
+approach depends on the category:
 
-2. *Typed mode*: a file with description block entries. Look at
-   [tools/relocFileDescriptions.us.txt](tools/relocFileDescriptions.us.txt)
-   and check whether the block types are all in this list:
+1. *Files with existing block descriptions* — check
+   `tools/relocFileDescriptions.us.txt` for `[<id>]` entries. If the
+   block types are all supported (Sprite, DObjDesc, MObjSub, etc.), run
+   `genRelocDataC.py` to generate typed output. Currently 0 files have
+   unused descriptions — all described files are already typed.
 
-   - `Sprite`, `DObjDesc`, `MObjSub`, `LUT`, `Palette`,
-     `DisplayList`, `Vtx`
-
-   If yes, the auto-generator handles it. If it uses any of the unsupported
-   types listed below, hold off (or add support for that type).
+2. *Files needing new descriptions* — reverse-engineer the internal
+   format by studying how the game loads and accesses the file. Add
+   block entries to `relocFileDescriptions.us.txt`, then run
+   `genRelocDataC.py`.
 
 **Run the auto-generator.**
 

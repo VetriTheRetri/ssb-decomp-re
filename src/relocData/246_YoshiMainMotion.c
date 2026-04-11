@@ -1094,6 +1094,9 @@ u32 dYoshiMainMotion_0x0CFC[] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+u32 dYoshiMainMotion_0x0D34[] = {
 	ftMotionCommandSetThrow((u32)dYoshiMainMotion_0x0CFC),
 	ftMotionCommandWaitAsync(15),
 	ftMotionCommandMakeRumble(0, 6),
@@ -1136,6 +1139,9 @@ u32 dYoshiMainMotion_0x0D90[] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+u32 dYoshiMainMotion_0x0DC8[] = {
 	ftMotionCommandSetThrow((u32)dYoshiMainMotion_0x0D90),
 	ftMotionCommandSetModelPartID(7, 1),
 	ftMotionCommandWaitAsync(4),
@@ -1177,6 +1183,9 @@ u32 dYoshiMainMotion_0x0E2C[] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+u32 dYoshiMainMotion_0x0E64[] = {
 	ftMotionCommandSetThrow((u32)dYoshiMainMotion_0x0E2C),
 	ftMotionCommandSetModelPartID(7, 1),
 	ftMotionCommandWaitAsync(4),
@@ -1826,6 +1835,9 @@ u32 dYoshiMainMotion_0x16F8[] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+u32 dYoshiMainMotion_0x1730[] = {
 	ftMotionCommandSetThrow((u32)dYoshiMainMotion_0x16F8),
 	ftMotionCommandWaitAsync(18),
 	ftMotionCommandMakeAttackCollS1(0, 0, 31, 1, 1, 0),

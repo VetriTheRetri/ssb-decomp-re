@@ -1006,6 +1006,9 @@ u32 dMarioMainMotion_0x0BB4[] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+u32 dMarioMainMotion_0x0BEC[] = {
 	ftMotionCommandSetThrow((u32)dMarioMainMotion_0x0BB4),
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandEffectS1(0, 11, 0),
@@ -1039,6 +1042,9 @@ u32 dMarioMainMotion_0x0C30[] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+u32 dMarioMainMotion_0x0C68[] = {
 	ftMotionCommandSetThrow((u32)dMarioMainMotion_0x0C30),
 	ftMotionCommandPlayFGMStoreInfo(43),
 	ftMotionCommandWait(4),
@@ -1078,6 +1084,9 @@ u32 dMarioMainMotion_0x0CC4[] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+u32 dMarioMainMotion_0x0CFC[] = {
 	ftMotionCommandSetThrow((u32)dMarioMainMotion_0x0CC4),
 	ftMotionPlayVoice(432),
 	ftMotionCommandWait(4),

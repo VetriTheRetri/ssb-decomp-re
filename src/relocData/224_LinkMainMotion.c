@@ -1200,6 +1200,9 @@ u32 dLinkMainMotion_0x0E5C[] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+u32 dLinkMainMotion_0x0E94[] = {
 	ftMotionCommandSetThrow((u32)dLinkMainMotion_0x0E5C),
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(4),
@@ -1259,6 +1262,9 @@ u32 dLinkMainMotion_0x0F34[] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+u32 dLinkMainMotion_0x0F6C[] = {
 	ftMotionCommandSetThrow((u32)dLinkMainMotion_0x0F34),
 	ftMotionCommandSetModelPartID(21, 0),
 	ftMotionCommandSetModelPartID(19, -1),
@@ -1314,6 +1320,9 @@ u32 dLinkMainMotion_0x1008[] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+u32 dLinkMainMotion_0x1040[] = {
 	ftMotionCommandSetThrow((u32)dLinkMainMotion_0x1008),
 	ftMotionCommandSetModelPartID(21, 0),
 	ftMotionCommandSetModelPartID(19, -1),

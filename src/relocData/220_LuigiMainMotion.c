@@ -1024,6 +1024,9 @@ u32 dLuigiMainMotion_0x0BF0[] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+u32 dLuigiMainMotion_0x0C28[] = {
 	ftMotionCommandSetThrow((u32)dLuigiMainMotion_0x0BF0),
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandEffectS1(0, 11, 0),
@@ -1057,6 +1060,9 @@ u32 dLuigiMainMotion_0x0C6C[] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+u32 dLuigiMainMotion_0x0CA4[] = {
 	ftMotionCommandSetThrow((u32)dLuigiMainMotion_0x0C6C),
 	ftMotionCommandPlayFGMStoreInfo(43),
 	ftMotionCommandWait(4),
@@ -1096,6 +1102,9 @@ u32 dLuigiMainMotion_0x0D00[] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+u32 dLuigiMainMotion_0x0D38[] = {
 	ftMotionCommandSetTexturePartID(3),
 	ftMotionCommandSetThrow((u32)dLuigiMainMotion_0x0D00),
 	ftMotionPlayVoice(419),

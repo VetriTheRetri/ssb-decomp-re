@@ -1052,6 +1052,9 @@ u32 dDonkeyMainMotion_0x0C14[] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+u32 dDonkeyMainMotion_0x0C4C[] = {
 	ftMotionCommandSetThrow((u32)dDonkeyMainMotion_0x0C14),
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(6),
@@ -1112,6 +1115,9 @@ u32 dDonkeyMainMotion_0x0CF0[] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+u32 dDonkeyMainMotion_0x0D28[] = {
 	ftMotionCommandSetThrow((u32)dDonkeyMainMotion_0x0CF0),
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(4),
@@ -1152,6 +1158,9 @@ u32 dDonkeyMainMotion_0x0D88[] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+u32 dDonkeyMainMotion_0x0DC0[] = {
 	ftMotionCommandSetThrow((u32)dDonkeyMainMotion_0x0D88),
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(4),

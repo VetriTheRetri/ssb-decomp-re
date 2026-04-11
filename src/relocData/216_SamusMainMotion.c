@@ -1130,6 +1130,9 @@ u32 dSamusMainMotion_0x0D34[] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+u32 dSamusMainMotion_0x0D6C[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandSetThrow((u32)dSamusMainMotion_0x0D34),
 	ftMotionCommandSubroutine(dSamusMainMotion_0x0D10),
@@ -1192,6 +1195,9 @@ u32 dSamusMainMotion_0x0E20[] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+u32 dSamusMainMotion_0x0E58[] = {
 	ftMotionCommandSetThrow((u32)dSamusMainMotion_0x0E20),
 	ftMotionCommandSubroutine(dSamusMainMotion_0x0D10),
 	ftMotionCommandWait(4),
@@ -1231,6 +1237,9 @@ u32 dSamusMainMotion_0x0EB8[] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+u32 dSamusMainMotion_0x0EF0[] = {
 	ftMotionCommandSetThrow((u32)dSamusMainMotion_0x0EB8),
 	ftMotionCommandSubroutine(dSamusMainMotion_0x0D10),
 	ftMotionCommandWait(4),

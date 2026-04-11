@@ -1101,6 +1101,9 @@ u32 dPurinMainMotion_0x0CD0[] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+u32 dPurinMainMotion_0x0D08[] = {
 	ftMotionCommandSetTexturePartID(4),
 	ftMotionCommandSetTexturePartID(1048580),
 	ftMotionCommandSetThrow((u32)dPurinMainMotion_0x0CD0),
@@ -1140,6 +1143,9 @@ u32 dPurinMainMotion_0x0D64[] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+u32 dPurinMainMotion_0x0D9C[] = {
 	ftMotionCommandSetThrow((u32)dPurinMainMotion_0x0D64),
 	ftMotionCommandPlaySmashVoice(0),
 	ftMotionCommandWait(4),
@@ -1202,6 +1208,9 @@ u32 dPurinMainMotion_0x0E54[] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+u32 dPurinMainMotion_0x0E8C[] = {
 	ftMotionCommandSetThrow((u32)dPurinMainMotion_0x0E54),
 	ftMotionCommandPlaySmashVoice(0),
 	ftMotionCommandPlayFGMStoreInfo(18),

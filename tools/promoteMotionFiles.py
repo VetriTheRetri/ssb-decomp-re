@@ -764,11 +764,37 @@ def generate_motion_file(fid, name, data, intern_relocs, extern_relocs):
             end_positions.add(pos + 1)
         pos += word_count
 
-    # Determine all array boundaries: start at 0, at reloc targets, and after End/Return
+    # Find throw data block start/end positions (from SetThrow intern targets)
+    throw_data_starts = set()
+    throw_data_ends = set()
+    for pw, tw in intern_relocs:
+        if pw > 0:
+            prev = struct.unpack_from('>I', data, (pw - 1) * 4)[0]
+            if (prev >> 26) & 0x3F == EVT_SetThrow:
+                throw_data_starts.add(tw)
+                # Walk forward in FTTHROWHITDESC_WORDS chunks to find end
+                pos = tw
+                while pos + FTTHROWHITDESC_WORDS <= file_size_words:
+                    end_pos = pos + FTTHROWHITDESC_WORDS
+                    if end_pos < file_size_words:
+                        nv = struct.unpack_from('>I', data, end_pos * 4)[0]
+                        nopc = (nv >> 26) & 0x3F
+                        is_more = (nv == 0xFFFFFFFF or (nopc == 0 and nv < 0x1000))
+                    else:
+                        is_more = False
+                    if not is_more:
+                        break
+                    pos += FTTHROWHITDESC_WORDS
+                throw_data_ends.add(pos + FTTHROWHITDESC_WORDS)
+
+    # Determine all array boundaries: start at 0, at reloc targets,
+    # after End/Return, and at throw data block starts
     array_starts = set()
     array_starts.add(0)
     array_starts.update(reloc_targets)
     array_starts.update(end_positions)
+    array_starts.update(throw_data_starts)
+    array_starts.update(throw_data_ends)
     # Remove any that equal file_size_words
     array_starts.discard(file_size_words)
     array_starts = sorted(array_starts)

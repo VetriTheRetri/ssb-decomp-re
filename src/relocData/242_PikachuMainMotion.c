@@ -1036,6 +1036,9 @@ u32 dPikachuMainMotion_0x0C18[] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+u32 dPikachuMainMotion_0x0C50[] = {
 	ftMotionCommandSetThrow((u32)dPikachuMainMotion_0x0C18),
 	ftMotionCommandSetTexturePartID(7),
 	ftMotionCommandSetTexturePartID(1048583),
@@ -1066,6 +1069,9 @@ u32 dPikachuMainMotion_0x0C88[] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+u32 dPikachuMainMotion_0x0CC0[] = {
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandSetThrow((u32)dPikachuMainMotion_0x0C88),
 	ftMotionPlayVoice(537),
@@ -1105,6 +1111,9 @@ u32 dPikachuMainMotion_0x0D1C[] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+u32 dPikachuMainMotion_0x0D54[] = {
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandSetThrow((u32)dPikachuMainMotion_0x0D1C),
 	ftMotionPlayVoice(537),

@@ -1,24 +1,24 @@
 /* AnimJoint data for relocData file 415 (FTLinkAnimPoseOpponent) */
-/* 432 bytes: 116-byte header + per-joint AObjEvent32 scripts */
+/* 432 bytes: 116-byte header + per-joint AObjEvent16 scripts */
 
 #include "relocdata_types.h"
 
-extern u32 dFTLinkAnimPoseOpponent_joint1[5];
-extern u32 dFTLinkAnimPoseOpponent_joint2[4];
-extern u32 dFTLinkAnimPoseOpponent_joint4[4];
-extern u32 dFTLinkAnimPoseOpponent_joint5[4];
-extern u32 dFTLinkAnimPoseOpponent_joint6[4];
-extern u32 dFTLinkAnimPoseOpponent_joint9[4];
-extern u32 dFTLinkAnimPoseOpponent_joint10[4];
-extern u32 dFTLinkAnimPoseOpponent_joint11[4];
-extern u32 dFTLinkAnimPoseOpponent_joint16[4];
-extern u32 dFTLinkAnimPoseOpponent_joint17[4];
-extern u32 dFTLinkAnimPoseOpponent_joint20[4];
-extern u32 dFTLinkAnimPoseOpponent_joint21[8];
-extern u32 dFTLinkAnimPoseOpponent_joint23[6];
-extern u32 dFTLinkAnimPoseOpponent_joint25[7];
-extern u32 dFTLinkAnimPoseOpponent_joint26[4];
-extern u32 dFTLinkAnimPoseOpponent_joint28[9];
+extern u16 dFTLinkAnimPoseOpponent_joint1[10];
+extern u16 dFTLinkAnimPoseOpponent_joint2[8];
+extern u16 dFTLinkAnimPoseOpponent_joint4[8];
+extern u16 dFTLinkAnimPoseOpponent_joint5[8];
+extern u16 dFTLinkAnimPoseOpponent_joint6[8];
+extern u16 dFTLinkAnimPoseOpponent_joint9[8];
+extern u16 dFTLinkAnimPoseOpponent_joint10[8];
+extern u16 dFTLinkAnimPoseOpponent_joint11[8];
+extern u16 dFTLinkAnimPoseOpponent_joint16[8];
+extern u16 dFTLinkAnimPoseOpponent_joint17[8];
+extern u16 dFTLinkAnimPoseOpponent_joint20[8];
+extern u16 dFTLinkAnimPoseOpponent_joint21[16];
+extern u16 dFTLinkAnimPoseOpponent_joint23[12];
+extern u16 dFTLinkAnimPoseOpponent_joint25[14];
+extern u16 dFTLinkAnimPoseOpponent_joint26[8];
+extern u16 dFTLinkAnimPoseOpponent_joint28[18];
 
 /* Joint pointer table (29 entries, 116 bytes) */
 u32 dFTLinkAnimPoseOpponent_joints[] = {
@@ -53,83 +53,83 @@ u32 dFTLinkAnimPoseOpponent_joints[] = {
 	0xFFFF0067, /* [28] END */
 };
 
-/* Joint 1: 5 words @ 0x74 */
-u32 dFTLinkAnimPoseOpponent_joint1[5] = {
-	0x50EE0050, 0x01C20000, 0xFE200528, 0xFF880801, 0x00010000,
+/* Joint 1: 10 AObjEvent16 values @ 0x74 */
+u16 dFTLinkAnimPoseOpponent_joint1[10] = {
+	0x50EE, 0x0050, 0x01C2, 0x0000, 0xFE20, 0x0528, 0xFF88, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 2: 4 words @ 0x88 */
-u32 dFTLinkAnimPoseOpponent_joint2[4] = {
-	0x500E0000, 0x00000000, 0x08010001, 0x00000000,
+/* Joint 2: 8 AObjEvent16 values @ 0x88 */
+u16 dFTLinkAnimPoseOpponent_joint2[8] = {
+	0x500E, 0x0000, 0x0000, 0x0000, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 4: 4 words @ 0x98 */
-u32 dFTLinkAnimPoseOpponent_joint4[4] = {
-	0x500E0000, 0x010C0050, 0x08010001, 0x00000000,
+/* Joint 4: 8 AObjEvent16 values @ 0x98 */
+u16 dFTLinkAnimPoseOpponent_joint4[8] = {
+	0x500E, 0x0000, 0x010C, 0x0050, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 5: 4 words @ 0xA8 */
-u32 dFTLinkAnimPoseOpponent_joint5[4] = {
-	0x500EFF0B, 0xFC3E0140, 0x08010001, 0x00000000,
+/* Joint 5: 8 AObjEvent16 values @ 0xA8 */
+u16 dFTLinkAnimPoseOpponent_joint5[8] = {
+	0x500E, 0xFF0B, 0xFC3E, 0x0140, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 6: 4 words @ 0xB8 */
-u32 dFTLinkAnimPoseOpponent_joint6[4] = {
-	0x500E0000, 0x0000FA9F, 0x08010001, 0x00000000,
+/* Joint 6: 8 AObjEvent16 values @ 0xB8 */
+u16 dFTLinkAnimPoseOpponent_joint6[8] = {
+	0x500E, 0x0000, 0x0000, 0xFA9F, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 9: 4 words @ 0xC8 */
-u32 dFTLinkAnimPoseOpponent_joint9[4] = {
-	0x500E0034, 0xFF7A0309, 0x08010001, 0x00000000,
+/* Joint 9: 8 AObjEvent16 values @ 0xC8 */
+u16 dFTLinkAnimPoseOpponent_joint9[8] = {
+	0x500E, 0x0034, 0xFF7A, 0x0309, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 10: 4 words @ 0xD8 */
-u32 dFTLinkAnimPoseOpponent_joint10[4] = {
-	0x500EFF74, 0x02210125, 0x08010001, 0x00000000,
+/* Joint 10: 8 AObjEvent16 values @ 0xD8 */
+u16 dFTLinkAnimPoseOpponent_joint10[8] = {
+	0x500E, 0xFF74, 0x0221, 0x0125, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 11: 4 words @ 0xE8 */
-u32 dFTLinkAnimPoseOpponent_joint11[4] = {
-	0x500E0000, 0x0000FCEB, 0x08010001, 0x00000000,
+/* Joint 11: 8 AObjEvent16 values @ 0xE8 */
+u16 dFTLinkAnimPoseOpponent_joint11[8] = {
+	0x500E, 0x0000, 0x0000, 0xFCEB, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 16: 4 words @ 0xF8 */
-u32 dFTLinkAnimPoseOpponent_joint16[4] = {
-	0x500E0000, 0xFFCB0000, 0x08010001, 0x00000000,
+/* Joint 16: 8 AObjEvent16 values @ 0xF8 */
+u16 dFTLinkAnimPoseOpponent_joint16[8] = {
+	0x500E, 0x0000, 0xFFCB, 0x0000, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 17: 4 words @ 0x108 */
-u32 dFTLinkAnimPoseOpponent_joint17[4] = {
-	0x500E00BB, 0xFF2A0000, 0x08010001, 0x00000000,
+/* Joint 17: 8 AObjEvent16 values @ 0x108 */
+u16 dFTLinkAnimPoseOpponent_joint17[8] = {
+	0x500E, 0x00BB, 0xFF2A, 0x0000, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 20: 4 words @ 0x118 */
-u32 dFTLinkAnimPoseOpponent_joint20[4] = {
-	0x500EFFB0, 0xFF2A0035, 0x08010001, 0x00000000,
+/* Joint 20: 8 AObjEvent16 values @ 0x118 */
+u16 dFTLinkAnimPoseOpponent_joint20[8] = {
+	0x500E, 0xFFB0, 0xFF2A, 0x0035, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 21: 8 words @ 0x128 */
-u32 dFTLinkAnimPoseOpponent_joint21[8] = {
-	0x200EFFC9, 0x0000FF62, 0x000000F0, 0x0000200F, 0x0001FFC9, 0x0000FF62, 0x000000F0, 0x00000000,
+/* Joint 21: 16 AObjEvent16 values @ 0x128 */
+u16 dFTLinkAnimPoseOpponent_joint21[16] = {
+	0x200E, 0xFFC9, 0x0000, 0xFF62, 0x0000, 0x00F0, 0x0000, 0x200F, 0x0001, 0xFFC9, 0x0000, 0xFF62, 0x0000, 0x00F0, 0x0000, 0x0000,
 };
 
-/* Joint 23: 6 words @ 0x148 */
-u32 dFTLinkAnimPoseOpponent_joint23[6] = {
-	0x28080005, 0x00004806, 0x00000000, 0x20090001, 0x00050000, 0x00000000,
+/* Joint 23: 12 AObjEvent16 values @ 0x148 */
+u16 dFTLinkAnimPoseOpponent_joint23[12] = {
+	0x2808, 0x0005, 0x0000, 0x4806, 0x0000, 0x0000, 0x2009, 0x0001, 0x0005, 0x0000, 0x0000, 0x0000,
 };
 
-/* Joint 25: 7 words @ 0x160 */
-u32 dFTLinkAnimPoseOpponent_joint25[7] = {
-	0x28060100, 0x0000FF22, 0x00004808, 0xFEF52007, 0x00010100, 0x0000FF22, 0x00000000,
+/* Joint 25: 14 AObjEvent16 values @ 0x160 */
+u16 dFTLinkAnimPoseOpponent_joint25[14] = {
+	0x2806, 0x0100, 0x0000, 0xFF22, 0x0000, 0x4808, 0xFEF5, 0x2007, 0x0001, 0x0100, 0x0000, 0xFF22, 0x0000, 0x0000,
 };
 
-/* Joint 26: 4 words @ 0x17C */
-u32 dFTLinkAnimPoseOpponent_joint26[4] = {
-	0x500EFEA7, 0x002CFCFF, 0x08010001, 0x00000000,
+/* Joint 26: 8 AObjEvent16 values @ 0x17C */
+u16 dFTLinkAnimPoseOpponent_joint26[8] = {
+	0x500E, 0xFEA7, 0x002C, 0xFCFF, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 28: 9 words @ 0x18C */
-u32 dFTLinkAnimPoseOpponent_joint28[9] = {
-	0x500E0000, 0x000004DB, 0x08010001, 0x00000000, 0x500EFCAB, 0xFF9AFFFD, 0x08010001, 0x00000000,
-	0x00000000,
+/* Joint 28: 18 AObjEvent16 values @ 0x18C */
+u16 dFTLinkAnimPoseOpponent_joint28[18] = {
+	0x500E, 0x0000, 0x0000, 0x04DB, 0x0801, 0x0001, 0x0000, 0x0000, 0x500E, 0xFCAB, 0xFF9A, 0xFFFD, 0x0801, 0x0001, 0x0000, 0x0000,
+	0x0000, 0x0000,
 };

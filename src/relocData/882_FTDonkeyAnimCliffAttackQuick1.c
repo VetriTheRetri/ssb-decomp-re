@@ -1,27 +1,27 @@
 /* AnimJoint data for relocData file 882 (FTDonkeyAnimCliffAttackQuick1) */
-/* 704 bytes: 104-byte header + per-joint AObjEvent32 scripts */
+/* 704 bytes: 104-byte header + per-joint AObjEvent16 scripts */
 
 #include "relocdata_types.h"
 
-extern u32 dFTDonkeyAnimCliffAttackQuick1_joint1[7];
-extern u32 dFTDonkeyAnimCliffAttackQuick1_joint2[10];
-extern u32 dFTDonkeyAnimCliffAttackQuick1_joint3[9];
-extern u32 dFTDonkeyAnimCliffAttackQuick1_joint5[9];
-extern u32 dFTDonkeyAnimCliffAttackQuick1_joint6[8];
-extern u32 dFTDonkeyAnimCliffAttackQuick1_joint7[6];
-extern u32 dFTDonkeyAnimCliffAttackQuick1_joint8[9];
-extern u32 dFTDonkeyAnimCliffAttackQuick1_joint9[6];
-extern u32 dFTDonkeyAnimCliffAttackQuick1_joint11[6];
-extern u32 dFTDonkeyAnimCliffAttackQuick1_joint12[8];
-extern u32 dFTDonkeyAnimCliffAttackQuick1_joint13[6];
-extern u32 dFTDonkeyAnimCliffAttackQuick1_joint14[9];
-extern u32 dFTDonkeyAnimCliffAttackQuick1_joint15[5];
-extern u32 dFTDonkeyAnimCliffAttackQuick1_joint17[5];
-extern u32 dFTDonkeyAnimCliffAttackQuick1_joint18[8];
-extern u32 dFTDonkeyAnimCliffAttackQuick1_joint20[6];
-extern u32 dFTDonkeyAnimCliffAttackQuick1_joint22[8];
-extern u32 dFTDonkeyAnimCliffAttackQuick1_joint23[8];
-extern u32 dFTDonkeyAnimCliffAttackQuick1_joint25[17];
+extern u16 dFTDonkeyAnimCliffAttackQuick1_joint1[14];
+extern u16 dFTDonkeyAnimCliffAttackQuick1_joint2[20];
+extern u16 dFTDonkeyAnimCliffAttackQuick1_joint3[18];
+extern u16 dFTDonkeyAnimCliffAttackQuick1_joint5[18];
+extern u16 dFTDonkeyAnimCliffAttackQuick1_joint6[16];
+extern u16 dFTDonkeyAnimCliffAttackQuick1_joint7[12];
+extern u16 dFTDonkeyAnimCliffAttackQuick1_joint8[18];
+extern u16 dFTDonkeyAnimCliffAttackQuick1_joint9[12];
+extern u16 dFTDonkeyAnimCliffAttackQuick1_joint11[12];
+extern u16 dFTDonkeyAnimCliffAttackQuick1_joint12[16];
+extern u16 dFTDonkeyAnimCliffAttackQuick1_joint13[12];
+extern u16 dFTDonkeyAnimCliffAttackQuick1_joint14[18];
+extern u16 dFTDonkeyAnimCliffAttackQuick1_joint15[10];
+extern u16 dFTDonkeyAnimCliffAttackQuick1_joint17[10];
+extern u16 dFTDonkeyAnimCliffAttackQuick1_joint18[16];
+extern u16 dFTDonkeyAnimCliffAttackQuick1_joint20[12];
+extern u16 dFTDonkeyAnimCliffAttackQuick1_joint22[16];
+extern u16 dFTDonkeyAnimCliffAttackQuick1_joint23[16];
+extern u16 dFTDonkeyAnimCliffAttackQuick1_joint25[34];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTDonkeyAnimCliffAttackQuick1_joints[] = {
@@ -53,104 +53,104 @@ u32 dFTDonkeyAnimCliffAttackQuick1_joints[] = {
 	0xFFFF00A5, /* [25] END */
 };
 
-/* Joint 1: 7 words @ 0x68 */
-u32 dFTDonkeyAnimCliffAttackQuick1_joint1[7] = {
-	0x28C0FC9C, 0x0D690000, 0xFFFE4820, 0x000020C1, 0x00010000, 0x00630000, 0x0EAF0000,
+/* Joint 1: 14 AObjEvent16 values @ 0x68 */
+u16 dFTDonkeyAnimCliffAttackQuick1_joint1[14] = {
+	0x28C0, 0xFC9C, 0x0D69, 0x0000, 0xFFFE, 0x4820, 0x0000, 0x20C1, 0x0001, 0x0000, 0x0063, 0x0000, 0x0EAF, 0x0000,
 };
 
-/* Joint 2: 10 words @ 0x84 */
-u32 dFTDonkeyAnimCliffAttackQuick1_joint2[10] = {
-	0x20E0FFE8, 0xFFDE0408, 0xEF2EFEED, 0x0C452841, 0x00020357, 0x0B052821, 0x0010FFC2, 0xFFF62081,
-	0x00010075, 0x04BD0000,
+/* Joint 2: 20 AObjEvent16 values @ 0x84 */
+u16 dFTDonkeyAnimCliffAttackQuick1_joint2[20] = {
+	0x20E0, 0xFFE8, 0xFFDE, 0x0408, 0xEF2E, 0xFEED, 0x0C45, 0x2841, 0x0002, 0x0357, 0x0B05, 0x2821, 0x0010, 0xFFC2, 0xFFF6, 0x2081,
+	0x0001, 0x0075, 0x04BD, 0x0000,
 };
 
-/* Joint 3: 9 words @ 0xAC */
-u32 dFTDonkeyAnimCliffAttackQuick1_joint3[9] = {
-	0x200E0011, 0xFFFAFFCB, 0x0093FFE4, 0x0006280F, 0x00040044, 0x00030598, 0x006A0020, 0x00040801,
-	0x00010000,
+/* Joint 3: 18 AObjEvent16 values @ 0xAC */
+u16 dFTDonkeyAnimCliffAttackQuick1_joint3[18] = {
+	0x200E, 0x0011, 0xFFFA, 0xFFCB, 0x0093, 0xFFE4, 0x0006, 0x280F, 0x0004, 0x0044, 0x0003, 0x0598, 0x006A, 0x0020, 0x0004, 0x0801,
+	0x0001, 0x0000,
 };
 
-/* Joint 5: 9 words @ 0xD0 */
-u32 dFTDonkeyAnimCliffAttackQuick1_joint5[9] = {
-	0x200E019E, 0x0043000F, 0x00000007, 0x0000280F, 0x000802CC, 0x00190010, 0x0000000D, 0x00000801,
-	0x00010000,
+/* Joint 5: 18 AObjEvent16 values @ 0xD0 */
+u16 dFTDonkeyAnimCliffAttackQuick1_joint5[18] = {
+	0x200E, 0x019E, 0x0043, 0x000F, 0x0000, 0x0007, 0x0000, 0x280F, 0x0008, 0x02CC, 0x0019, 0x0010, 0x0000, 0x000D, 0x0000, 0x0801,
+	0x0001, 0x0000,
 };
 
-/* Joint 6: 8 words @ 0xF4 */
-u32 dFTDonkeyAnimCliffAttackQuick1_joint6[8] = {
-	0x200E0583, 0x00BFFAD7, 0x001207E9, 0xFECF200F, 0x00010642, 0x00BFFAEA, 0x001206B8, 0xFECF0000,
+/* Joint 6: 16 AObjEvent16 values @ 0xF4 */
+u16 dFTDonkeyAnimCliffAttackQuick1_joint6[16] = {
+	0x200E, 0x0583, 0x00BF, 0xFAD7, 0x0012, 0x07E9, 0xFECF, 0x200F, 0x0001, 0x0642, 0x00BF, 0xFAEA, 0x0012, 0x06B8, 0xFECF, 0x0000,
 };
 
-/* Joint 7: 6 words @ 0x114 */
-u32 dFTDonkeyAnimCliffAttackQuick1_joint7[6] = {
-	0x2808FBB4, 0x00A04806, 0x00000000, 0x20090001, 0xFC5400A0, 0x00000000,
+/* Joint 7: 12 AObjEvent16 values @ 0x114 */
+u16 dFTDonkeyAnimCliffAttackQuick1_joint7[12] = {
+	0x2808, 0xFBB4, 0x00A0, 0x4806, 0x0000, 0x0000, 0x2009, 0x0001, 0xFC54, 0x00A0, 0x0000, 0x0000,
 };
 
-/* Joint 8: 9 words @ 0x12C */
-u32 dFTDonkeyAnimCliffAttackQuick1_joint8[9] = {
-	0x200EFF6F, 0xFFE9FFC1, 0x0002FF9E, 0x0013280F, 0x0008FDB4, 0xFFDBFF74, 0xFFFA00A4, 0x00160801,
-	0x00010000,
+/* Joint 8: 18 AObjEvent16 values @ 0x12C */
+u16 dFTDonkeyAnimCliffAttackQuick1_joint8[18] = {
+	0x200E, 0xFF6F, 0xFFE9, 0xFFC1, 0x0002, 0xFF9E, 0x0013, 0x280F, 0x0008, 0xFDB4, 0xFFDB, 0xFF74, 0xFFFA, 0x00A4, 0x0016, 0x0801,
+	0x0001, 0x0000,
 };
 
-/* Joint 9: 6 words @ 0x150 */
-u32 dFTDonkeyAnimCliffAttackQuick1_joint9[6] = {
-	0x100E0189, 0x0090004A, 0x180F0036, 0x00AEFFBD, 0xFFD40801, 0x00010000,
+/* Joint 9: 12 AObjEvent16 values @ 0x150 */
+u16 dFTDonkeyAnimCliffAttackQuick1_joint9[12] = {
+	0x100E, 0x0189, 0x0090, 0x004A, 0x180F, 0x0036, 0x00AE, 0xFFBD, 0xFFD4, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 11: 6 words @ 0x168 */
-u32 dFTDonkeyAnimCliffAttackQuick1_joint11[6] = {
-	0x100EFD2C, 0xFF49005B, 0x180F0008, 0xFCB00079, 0x02B40801, 0x00010000,
+/* Joint 11: 12 AObjEvent16 values @ 0x168 */
+u16 dFTDonkeyAnimCliffAttackQuick1_joint11[12] = {
+	0x100E, 0xFD2C, 0xFF49, 0x005B, 0x180F, 0x0008, 0xFCB0, 0x0079, 0x02B4, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 12: 8 words @ 0x180 */
-u32 dFTDonkeyAnimCliffAttackQuick1_joint12[8] = {
-	0x200E062B, 0x009404C1, 0xFF240742, 0x007F200F, 0x000106C0, 0x009403E4, 0xFF2407C1, 0x007F0000,
+/* Joint 12: 16 AObjEvent16 values @ 0x180 */
+u16 dFTDonkeyAnimCliffAttackQuick1_joint12[16] = {
+	0x200E, 0x062B, 0x0094, 0x04C1, 0xFF24, 0x0742, 0x007F, 0x200F, 0x0001, 0x06C0, 0x0094, 0x03E4, 0xFF24, 0x07C1, 0x007F, 0x0000,
 };
 
-/* Joint 13: 6 words @ 0x1A0 */
-u32 dFTDonkeyAnimCliffAttackQuick1_joint13[6] = {
-	0x2808FB92, 0x00044806, 0x00000000, 0x20090001, 0xFB960004, 0x00000000,
+/* Joint 13: 12 AObjEvent16 values @ 0x1A0 */
+u16 dFTDonkeyAnimCliffAttackQuick1_joint13[12] = {
+	0x2808, 0xFB92, 0x0004, 0x4806, 0x0000, 0x0000, 0x2009, 0x0001, 0xFB96, 0x0004, 0x0000, 0x0000,
 };
 
-/* Joint 14: 9 words @ 0x1B8 */
-u32 dFTDonkeyAnimCliffAttackQuick1_joint14[9] = {
-	0x200E037D, 0x007201BE, 0xFFFB00B2, 0x0013280F, 0x000405A1, 0xFFDC0070, 0xFFE9009A, 0xFFDB0801,
-	0x00010000,
+/* Joint 14: 18 AObjEvent16 values @ 0x1B8 */
+u16 dFTDonkeyAnimCliffAttackQuick1_joint14[18] = {
+	0x200E, 0x037D, 0x0072, 0x01BE, 0xFFFB, 0x00B2, 0x0013, 0x280F, 0x0004, 0x05A1, 0xFFDC, 0x0070, 0xFFE9, 0x009A, 0xFFDB, 0x0801,
+	0x0001, 0x0000,
 };
 
-/* Joint 15: 5 words @ 0x1DC */
-u32 dFTDonkeyAnimCliffAttackQuick1_joint15[5] = {
-	0x50EEFC83, 0xFAC409C6, 0x00780078, 0x00780801, 0x00010000,
+/* Joint 15: 10 AObjEvent16 values @ 0x1DC */
+u16 dFTDonkeyAnimCliffAttackQuick1_joint15[10] = {
+	0x50EE, 0xFC83, 0xFAC4, 0x09C6, 0x0078, 0x0078, 0x0078, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 17: 5 words @ 0x1F0 */
-u32 dFTDonkeyAnimCliffAttackQuick1_joint17[5] = {
-	0x4002FE6C, 0x480C0000, 0x00002003, 0x0001FE6C, 0xFF740000,
+/* Joint 17: 10 AObjEvent16 values @ 0x1F0 */
+u16 dFTDonkeyAnimCliffAttackQuick1_joint17[10] = {
+	0x4002, 0xFE6C, 0x480C, 0x0000, 0x0000, 0x2003, 0x0001, 0xFE6C, 0xFF74, 0x0000,
 };
 
-/* Joint 18: 8 words @ 0x204 */
-u32 dFTDonkeyAnimCliffAttackQuick1_joint18[8] = {
-	0x200E015C, 0x0019FD4D, 0x00520708, 0x0039200F, 0x00010175, 0x0019FDA0, 0x00520741, 0x00390000,
+/* Joint 18: 16 AObjEvent16 values @ 0x204 */
+u16 dFTDonkeyAnimCliffAttackQuick1_joint18[16] = {
+	0x200E, 0x015C, 0x0019, 0xFD4D, 0x0052, 0x0708, 0x0039, 0x200F, 0x0001, 0x0175, 0x0019, 0xFDA0, 0x0052, 0x0741, 0x0039, 0x0000,
 };
 
-/* Joint 20: 6 words @ 0x224 */
-u32 dFTDonkeyAnimCliffAttackQuick1_joint20[6] = {
-	0x280804A5, 0xFFBC4806, 0x00000000, 0x20090001, 0x0460FFBC, 0x00000000,
+/* Joint 20: 12 AObjEvent16 values @ 0x224 */
+u16 dFTDonkeyAnimCliffAttackQuick1_joint20[12] = {
+	0x2808, 0x04A5, 0xFFBC, 0x4806, 0x0000, 0x0000, 0x2009, 0x0001, 0x0460, 0xFFBC, 0x0000, 0x0000,
 };
 
-/* Joint 22: 8 words @ 0x23C */
-u32 dFTDonkeyAnimCliffAttackQuick1_joint22[8] = {
-	0x200E0179, 0xFF8E0009, 0x00070029, 0x0030200F, 0x00010107, 0xFF8E0011, 0x0007005A, 0x00300000,
+/* Joint 22: 16 AObjEvent16 values @ 0x23C */
+u16 dFTDonkeyAnimCliffAttackQuick1_joint22[16] = {
+	0x200E, 0x0179, 0xFF8E, 0x0009, 0x0007, 0x0029, 0x0030, 0x200F, 0x0001, 0x0107, 0xFF8E, 0x0011, 0x0007, 0x005A, 0x0030, 0x0000,
 };
 
-/* Joint 23: 8 words @ 0x25C */
-u32 dFTDonkeyAnimCliffAttackQuick1_joint23[8] = {
-	0x200EF87C, 0x004CF8F1, 0xFFC701A0, 0xFFD3200F, 0x0001F8C8, 0x004CF8B8, 0xFFC70173, 0xFFD30000,
+/* Joint 23: 16 AObjEvent16 values @ 0x25C */
+u16 dFTDonkeyAnimCliffAttackQuick1_joint23[16] = {
+	0x200E, 0xF87C, 0x004C, 0xF8F1, 0xFFC7, 0x01A0, 0xFFD3, 0x200F, 0x0001, 0xF8C8, 0x004C, 0xF8B8, 0xFFC7, 0x0173, 0xFFD3, 0x0000,
 };
 
-/* Joint 25: 17 words @ 0x27C */
-u32 dFTDonkeyAnimCliffAttackQuick1_joint25[17] = {
-	0x280804A6, 0xFFE34806, 0x00000000, 0x20090001, 0x0489FFE3, 0x00000000, 0x200E0653, 0xFFBE06CA,
-	0xFFFEFB0A, 0x0011200F, 0x00010610, 0xFFBE06C8, 0xFFFEFB1B, 0x00110000, 0x00000000, 0x00000000,
-	0x00000000,
+/* Joint 25: 34 AObjEvent16 values @ 0x27C */
+u16 dFTDonkeyAnimCliffAttackQuick1_joint25[34] = {
+	0x2808, 0x04A6, 0xFFE3, 0x4806, 0x0000, 0x0000, 0x2009, 0x0001, 0x0489, 0xFFE3, 0x0000, 0x0000, 0x200E, 0x0653, 0xFFBE, 0x06CA,
+	0xFFFE, 0xFB0A, 0x0011, 0x200F, 0x0001, 0x0610, 0xFFBE, 0x06C8, 0xFFFE, 0xFB1B, 0x0011, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000, 0x0000,
 };

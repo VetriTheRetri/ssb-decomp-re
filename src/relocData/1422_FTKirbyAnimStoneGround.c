@@ -1,24 +1,24 @@
 /* AnimJoint data for relocData file 1422 (FTKirbyAnimStoneGround) */
-/* 576 bytes: 92-byte header + per-joint AObjEvent32 scripts */
+/* 576 bytes: 92-byte header + per-joint AObjEvent16 scripts */
 
 #include "relocdata_types.h"
 
-extern u32 dFTKirbyAnimStoneGround_joint1[4];
-extern u32 dFTKirbyAnimStoneGround_joint2[7];
-extern u32 dFTKirbyAnimStoneGround_joint3[7];
-extern u32 dFTKirbyAnimStoneGround_joint4[7];
-extern u32 dFTKirbyAnimStoneGround_joint6[7];
-extern u32 dFTKirbyAnimStoneGround_joint7[19];
-extern u32 dFTKirbyAnimStoneGround_joint8[19];
-extern u32 dFTKirbyAnimStoneGround_joint10[7];
-extern u32 dFTKirbyAnimStoneGround_joint11[5];
-extern u32 dFTKirbyAnimStoneGround_joint12[4];
-extern u32 dFTKirbyAnimStoneGround_joint14[5];
-extern u32 dFTKirbyAnimStoneGround_joint15[5];
-extern u32 dFTKirbyAnimStoneGround_joint17[4];
-extern u32 dFTKirbyAnimStoneGround_joint19[5];
-extern u32 dFTKirbyAnimStoneGround_joint20[5];
-extern u32 dFTKirbyAnimStoneGround_joint22[11];
+extern u16 dFTKirbyAnimStoneGround_joint1[8];
+extern u16 dFTKirbyAnimStoneGround_joint2[14];
+extern u16 dFTKirbyAnimStoneGround_joint3[14];
+extern u16 dFTKirbyAnimStoneGround_joint4[14];
+extern u16 dFTKirbyAnimStoneGround_joint6[14];
+extern u16 dFTKirbyAnimStoneGround_joint7[38];
+extern u16 dFTKirbyAnimStoneGround_joint8[38];
+extern u16 dFTKirbyAnimStoneGround_joint10[14];
+extern u16 dFTKirbyAnimStoneGround_joint11[10];
+extern u16 dFTKirbyAnimStoneGround_joint12[8];
+extern u16 dFTKirbyAnimStoneGround_joint14[10];
+extern u16 dFTKirbyAnimStoneGround_joint15[10];
+extern u16 dFTKirbyAnimStoneGround_joint17[8];
+extern u16 dFTKirbyAnimStoneGround_joint19[10];
+extern u16 dFTKirbyAnimStoneGround_joint20[10];
+extern u16 dFTKirbyAnimStoneGround_joint22[22];
 
 /* Joint pointer table (23 entries, 92 bytes) */
 u32 dFTKirbyAnimStoneGround_joints[] = {
@@ -47,87 +47,87 @@ u32 dFTKirbyAnimStoneGround_joints[] = {
 	0xFFFF0089, /* [22] END */
 };
 
-/* Joint 1: 4 words @ 0x5C */
-u32 dFTKirbyAnimStoneGround_joint1[4] = {
-	0x50E00000, 0x00000000, 0x080100C8, 0x00000000,
+/* Joint 1: 8 AObjEvent16 values @ 0x5C */
+u16 dFTKirbyAnimStoneGround_joint1[8] = {
+	0x50E0, 0x0000, 0x0000, 0x0000, 0x0801, 0x00C8, 0x0000, 0x0000,
 };
 
-/* Joint 2: 7 words @ 0x6C */
-u32 dFTKirbyAnimStoneGround_joint2[7] = {
-	0x57EEF370, 0xFCDC0000, 0x000001E0, 0x00001000, 0x10001000, 0x080100C8, 0x00000000,
+/* Joint 2: 14 AObjEvent16 values @ 0x6C */
+u16 dFTKirbyAnimStoneGround_joint2[14] = {
+	0x57EE, 0xF370, 0xFCDC, 0x0000, 0x0000, 0x01E0, 0x0000, 0x1000, 0x1000, 0x1000, 0x0801, 0x00C8, 0x0000, 0x0000,
 };
 
-/* Joint 3: 7 words @ 0x88 */
-u32 dFTKirbyAnimStoneGround_joint3[7] = {
-	0x57EE0000, 0x00000000, 0x0000FEC8, 0x00001000, 0x10001000, 0x080100C8, 0x00000000,
+/* Joint 3: 14 AObjEvent16 values @ 0x88 */
+u16 dFTKirbyAnimStoneGround_joint3[14] = {
+	0x57EE, 0x0000, 0x0000, 0x0000, 0x0000, 0xFEC8, 0x0000, 0x1000, 0x1000, 0x1000, 0x0801, 0x00C8, 0x0000, 0x0000,
 };
 
-/* Joint 4: 7 words @ 0xA4 */
-u32 dFTKirbyAnimStoneGround_joint4[7] = {
-	0x57EE0000, 0x00000000, 0x00000138, 0x00001000, 0x10001000, 0x080100C8, 0x00000000,
+/* Joint 4: 14 AObjEvent16 values @ 0xA4 */
+u16 dFTKirbyAnimStoneGround_joint4[14] = {
+	0x57EE, 0x0000, 0x0000, 0x0000, 0x0000, 0x0138, 0x0000, 0x1000, 0x1000, 0x1000, 0x0801, 0x00C8, 0x0000, 0x0000,
 };
 
-/* Joint 6: 7 words @ 0xC0 */
-u32 dFTKirbyAnimStoneGround_joint6[7] = {
-	0x57EE0000, 0xFEF4FEF4, 0xFFC40000, 0x00001000, 0x10001000, 0x080100C8, 0x00000000,
+/* Joint 6: 14 AObjEvent16 values @ 0xC0 */
+u16 dFTKirbyAnimStoneGround_joint6[14] = {
+	0x57EE, 0x0000, 0xFEF4, 0xFEF4, 0xFFC4, 0x0000, 0x0000, 0x1000, 0x1000, 0x1000, 0x0801, 0x00C8, 0x0000, 0x0000,
 };
 
-/* Joint 7: 19 words @ 0xDC */
-u32 dFTKirbyAnimStoneGround_joint7[19] = {
-	0x280E08BD, 0x0000FB0E, 0x0000F8D9, 0x00004F00, 0x0C001000, 0x1000280B, 0x00C708BE, 0x0000F8D7,
-	0x00002005, 0x00ABFB0B, 0x00002005, 0x0001FB0B, 0x00012005, 0x001BFB0B, 0x0001200F, 0x000108BD,
-	0x0000FB0E, 0x0002F8D9, 0x00010000,
+/* Joint 7: 38 AObjEvent16 values @ 0xDC */
+u16 dFTKirbyAnimStoneGround_joint7[38] = {
+	0x280E, 0x08BD, 0x0000, 0xFB0E, 0x0000, 0xF8D9, 0x0000, 0x4F00, 0x0C00, 0x1000, 0x1000, 0x280B, 0x00C7, 0x08BE, 0x0000, 0xF8D7,
+	0x0000, 0x2005, 0x00AB, 0xFB0B, 0x0000, 0x2005, 0x0001, 0xFB0B, 0x0001, 0x2005, 0x001B, 0xFB0B, 0x0001, 0x200F, 0x0001, 0x08BD,
+	0x0000, 0xFB0E, 0x0002, 0xF8D9, 0x0001, 0x0000,
 };
 
-/* Joint 8: 19 words @ 0x128 */
-u32 dFTKirbyAnimStoneGround_joint8[19] = {
-	0x2808FFFA, 0x00004806, 0x00000000, 0x2009004E, 0xFFFAFFFD, 0x20090001, 0xFFFA0003, 0x38090038,
-	0x00002009, 0x00010000, 0xFFFD2009, 0x0032FFFA, 0xFFFD2009, 0x0001FFFA, 0x00032009, 0x000C0000,
-	0xFFFD2009, 0x0001FFFA, 0xFFFA0000,
+/* Joint 8: 38 AObjEvent16 values @ 0x128 */
+u16 dFTKirbyAnimStoneGround_joint8[38] = {
+	0x2808, 0xFFFA, 0x0000, 0x4806, 0x0000, 0x0000, 0x2009, 0x004E, 0xFFFA, 0xFFFD, 0x2009, 0x0001, 0xFFFA, 0x0003, 0x3809, 0x0038,
+	0x0000, 0x2009, 0x0001, 0x0000, 0xFFFD, 0x2009, 0x0032, 0xFFFA, 0xFFFD, 0x2009, 0x0001, 0xFFFA, 0x0003, 0x2009, 0x000C, 0x0000,
+	0xFFFD, 0x2009, 0x0001, 0xFFFA, 0xFFFA, 0x0000,
 };
 
-/* Joint 10: 7 words @ 0x174 */
-u32 dFTKirbyAnimStoneGround_joint10[7] = {
-	0x57EE0000, 0x010C010C, 0x003C0000, 0x00001000, 0x10001000, 0x080100C8, 0x00000000,
+/* Joint 10: 14 AObjEvent16 values @ 0x174 */
+u16 dFTKirbyAnimStoneGround_joint10[14] = {
+	0x57EE, 0x0000, 0x010C, 0x010C, 0x003C, 0x0000, 0x0000, 0x1000, 0x1000, 0x1000, 0x0801, 0x00C8, 0x0000, 0x0000,
 };
 
-/* Joint 11: 5 words @ 0x190 */
-u32 dFTKirbyAnimStoneGround_joint11[5] = {
-	0x570EF743, 0x04F1F8D9, 0x0C001000, 0x10000801, 0x00C80000,
+/* Joint 11: 10 AObjEvent16 values @ 0x190 */
+u16 dFTKirbyAnimStoneGround_joint11[10] = {
+	0x570E, 0xF743, 0x04F1, 0xF8D9, 0x0C00, 0x1000, 0x1000, 0x0801, 0x00C8, 0x0000,
 };
 
-/* Joint 12: 4 words @ 0x1A4 */
-u32 dFTKirbyAnimStoneGround_joint12[4] = {
-	0x500E0000, 0x0000FFFA, 0x080100C8, 0x00000000,
+/* Joint 12: 8 AObjEvent16 values @ 0x1A4 */
+u16 dFTKirbyAnimStoneGround_joint12[8] = {
+	0x500E, 0x0000, 0x0000, 0xFFFA, 0x0801, 0x00C8, 0x0000, 0x0000,
 };
 
-/* Joint 14: 5 words @ 0x1B4 */
-u32 dFTKirbyAnimStoneGround_joint14[5] = {
-	0x50EEFCDC, 0x0000FBD0, 0x00CCFF88, 0x00000801, 0x00C80000,
+/* Joint 14: 10 AObjEvent16 values @ 0x1B4 */
+u16 dFTKirbyAnimStoneGround_joint14[10] = {
+	0x50EE, 0xFCDC, 0x0000, 0xFBD0, 0x00CC, 0xFF88, 0x0000, 0x0801, 0x00C8, 0x0000,
 };
 
-/* Joint 15: 5 words @ 0x1C8 */
-u32 dFTKirbyAnimStoneGround_joint15[5] = {
-	0x570EFFBF, 0xFE9D0128, 0x10001000, 0x10000801, 0x00C80000,
+/* Joint 15: 10 AObjEvent16 values @ 0x1C8 */
+u16 dFTKirbyAnimStoneGround_joint15[10] = {
+	0x570E, 0xFFBF, 0xFE9D, 0x0128, 0x1000, 0x1000, 0x1000, 0x0801, 0x00C8, 0x0000,
 };
 
-/* Joint 17: 4 words @ 0x1DC */
-u32 dFTKirbyAnimStoneGround_joint17[4] = {
-	0x500E0000, 0x00000007, 0x080100C8, 0x00000000,
+/* Joint 17: 8 AObjEvent16 values @ 0x1DC */
+u16 dFTKirbyAnimStoneGround_joint17[8] = {
+	0x500E, 0x0000, 0x0000, 0x0007, 0x0801, 0x00C8, 0x0000, 0x0000,
 };
 
-/* Joint 19: 5 words @ 0x1EC */
-u32 dFTKirbyAnimStoneGround_joint19[5] = {
-	0x570EF843, 0x0708F8F9, 0x10001000, 0x10000801, 0x00C80000,
+/* Joint 19: 10 AObjEvent16 values @ 0x1EC */
+u16 dFTKirbyAnimStoneGround_joint19[10] = {
+	0x570E, 0xF843, 0x0708, 0xF8F9, 0x1000, 0x1000, 0x1000, 0x0801, 0x00C8, 0x0000,
 };
 
-/* Joint 20: 5 words @ 0x200 */
-u32 dFTKirbyAnimStoneGround_joint20[5] = {
-	0x570E0041, 0x01630128, 0x10001000, 0x10000801, 0x00C80000,
+/* Joint 20: 10 AObjEvent16 values @ 0x200 */
+u16 dFTKirbyAnimStoneGround_joint20[10] = {
+	0x570E, 0x0041, 0x0163, 0x0128, 0x1000, 0x1000, 0x1000, 0x0801, 0x00C8, 0x0000,
 };
 
-/* Joint 22: 11 words @ 0x214 */
-u32 dFTKirbyAnimStoneGround_joint22[11] = {
-	0x500E0000, 0x00000007, 0x080100C8, 0x00000000, 0x570EFB2D, 0xF8F8F8F9, 0x10001000, 0x10000801,
-	0x00C80000, 0x00000000, 0x00000000,
+/* Joint 22: 22 AObjEvent16 values @ 0x214 */
+u16 dFTKirbyAnimStoneGround_joint22[22] = {
+	0x500E, 0x0000, 0x0000, 0x0007, 0x0801, 0x00C8, 0x0000, 0x0000, 0x570E, 0xFB2D, 0xF8F8, 0xF8F9, 0x1000, 0x1000, 0x1000, 0x0801,
+	0x00C8, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 };

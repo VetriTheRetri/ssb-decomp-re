@@ -1,25 +1,25 @@
 /* AnimJoint data for relocData file 401 (FTSamusAnimPoseEnemy) */
-/* 480 bytes: 100-byte header + per-joint AObjEvent32 scripts */
+/* 480 bytes: 100-byte header + per-joint AObjEvent16 scripts */
 
 #include "relocdata_types.h"
 
-extern u32 dFTSamusAnimPoseEnemy_joint1[5];
-extern u32 dFTSamusAnimPoseEnemy_joint2[5];
-extern u32 dFTSamusAnimPoseEnemy_joint4[5];
-extern u32 dFTSamusAnimPoseEnemy_joint5[4];
-extern u32 dFTSamusAnimPoseEnemy_joint6[4];
-extern u32 dFTSamusAnimPoseEnemy_joint8[5];
-extern u32 dFTSamusAnimPoseEnemy_joint9[5];
-extern u32 dFTSamusAnimPoseEnemy_joint11[5];
-extern u32 dFTSamusAnimPoseEnemy_joint12[7];
-extern u32 dFTSamusAnimPoseEnemy_joint13[6];
-extern u32 dFTSamusAnimPoseEnemy_joint14[5];
-extern u32 dFTSamusAnimPoseEnemy_joint16[5];
-extern u32 dFTSamusAnimPoseEnemy_joint17[8];
-extern u32 dFTSamusAnimPoseEnemy_joint19[6];
-extern u32 dFTSamusAnimPoseEnemy_joint21[8];
-extern u32 dFTSamusAnimPoseEnemy_joint22[4];
-extern u32 dFTSamusAnimPoseEnemy_joint24[8];
+extern u16 dFTSamusAnimPoseEnemy_joint1[10];
+extern u16 dFTSamusAnimPoseEnemy_joint2[10];
+extern u16 dFTSamusAnimPoseEnemy_joint4[10];
+extern u16 dFTSamusAnimPoseEnemy_joint5[8];
+extern u16 dFTSamusAnimPoseEnemy_joint6[8];
+extern u16 dFTSamusAnimPoseEnemy_joint8[10];
+extern u16 dFTSamusAnimPoseEnemy_joint9[10];
+extern u16 dFTSamusAnimPoseEnemy_joint11[10];
+extern u16 dFTSamusAnimPoseEnemy_joint12[14];
+extern u16 dFTSamusAnimPoseEnemy_joint13[12];
+extern u16 dFTSamusAnimPoseEnemy_joint14[10];
+extern u16 dFTSamusAnimPoseEnemy_joint16[10];
+extern u16 dFTSamusAnimPoseEnemy_joint17[16];
+extern u16 dFTSamusAnimPoseEnemy_joint19[12];
+extern u16 dFTSamusAnimPoseEnemy_joint21[16];
+extern u16 dFTSamusAnimPoseEnemy_joint22[8];
+extern u16 dFTSamusAnimPoseEnemy_joint24[16];
 
 /* Joint pointer table (25 entries, 100 bytes) */
 u32 dFTSamusAnimPoseEnemy_joints[] = {
@@ -50,87 +50,87 @@ u32 dFTSamusAnimPoseEnemy_joints[] = {
 	0xFFFF0074, /* [24] END */
 };
 
-/* Joint 1: 5 words @ 0x64 */
-u32 dFTSamusAnimPoseEnemy_joint1[5] = {
-	0x50EE0000, 0x00000000, 0x000006F2, 0x00000801, 0x00010000,
+/* Joint 1: 10 AObjEvent16 values @ 0x64 */
+u16 dFTSamusAnimPoseEnemy_joint1[10] = {
+	0x50EE, 0x0000, 0x0000, 0x0000, 0x0000, 0x06F2, 0x0000, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 2: 5 words @ 0x78 */
-u32 dFTSamusAnimPoseEnemy_joint2[5] = {
-	0x50EE0000, 0x00000000, 0x00000000, 0x00000801, 0x00010000,
+/* Joint 2: 10 AObjEvent16 values @ 0x78 */
+u16 dFTSamusAnimPoseEnemy_joint2[10] = {
+	0x50EE, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 4: 5 words @ 0x8C */
-u32 dFTSamusAnimPoseEnemy_joint4[5] = {
-	0x50EE0000, 0x00000000, 0x00000000, 0x00000801, 0x00010000,
+/* Joint 4: 10 AObjEvent16 values @ 0x8C */
+u16 dFTSamusAnimPoseEnemy_joint4[10] = {
+	0x50EE, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 5: 4 words @ 0xA0 */
-u32 dFTSamusAnimPoseEnemy_joint5[4] = {
-	0x500EFBA9, 0xFA5E0698, 0x08010001, 0x00000000,
+/* Joint 5: 8 AObjEvent16 values @ 0xA0 */
+u16 dFTSamusAnimPoseEnemy_joint5[8] = {
+	0x500E, 0xFBA9, 0xFA5E, 0x0698, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 6: 4 words @ 0xB0 */
-u32 dFTSamusAnimPoseEnemy_joint6[4] = {
-	0x500E0000, 0x0000FEDE, 0x08010001, 0x00000000,
+/* Joint 6: 8 AObjEvent16 values @ 0xB0 */
+u16 dFTSamusAnimPoseEnemy_joint6[8] = {
+	0x500E, 0x0000, 0x0000, 0xFEDE, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 8: 5 words @ 0xC0 */
-u32 dFTSamusAnimPoseEnemy_joint8[5] = {
-	0x50EE0000, 0x00000000, 0x01A80000, 0x00000801, 0x00010000,
+/* Joint 8: 10 AObjEvent16 values @ 0xC0 */
+u16 dFTSamusAnimPoseEnemy_joint8[10] = {
+	0x50EE, 0x0000, 0x0000, 0x0000, 0x01A8, 0x0000, 0x0000, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 9: 5 words @ 0xD4 */
-u32 dFTSamusAnimPoseEnemy_joint9[5] = {
-	0x50EE0000, 0x00000000, 0x000001E0, 0x00000801, 0x00010000,
+/* Joint 9: 10 AObjEvent16 values @ 0xD4 */
+u16 dFTSamusAnimPoseEnemy_joint9[10] = {
+	0x50EE, 0x0000, 0x0000, 0x0000, 0x0000, 0x01E0, 0x0000, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 11: 5 words @ 0xE8 */
-u32 dFTSamusAnimPoseEnemy_joint11[5] = {
-	0x50EE0000, 0x00000000, 0x00000000, 0x00000801, 0x00010000,
+/* Joint 11: 10 AObjEvent16 values @ 0xE8 */
+u16 dFTSamusAnimPoseEnemy_joint11[10] = {
+	0x50EE, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 12: 7 words @ 0xFC */
-u32 dFTSamusAnimPoseEnemy_joint12[7] = {
-	0x280C00A8, 0x0000004E, 0x00004802, 0xFDFB200D, 0x000100A8, 0x0000004E, 0x00000000,
+/* Joint 12: 14 AObjEvent16 values @ 0xFC */
+u16 dFTSamusAnimPoseEnemy_joint12[14] = {
+	0x280C, 0x00A8, 0x0000, 0x004E, 0x0000, 0x4802, 0xFDFB, 0x200D, 0x0001, 0x00A8, 0x0000, 0x004E, 0x0000, 0x0000,
 };
 
-/* Joint 13: 6 words @ 0x118 */
-u32 dFTSamusAnimPoseEnemy_joint13[6] = {
-	0x2808FE94, 0x00004806, 0x00000000, 0x20090001, 0xFE940000, 0x00000000,
+/* Joint 13: 12 AObjEvent16 values @ 0x118 */
+u16 dFTSamusAnimPoseEnemy_joint13[12] = {
+	0x2808, 0xFE94, 0x0000, 0x4806, 0x0000, 0x0000, 0x2009, 0x0001, 0xFE94, 0x0000, 0x0000, 0x0000,
 };
 
-/* Joint 14: 5 words @ 0x130 */
-u32 dFTSamusAnimPoseEnemy_joint14[5] = {
-	0x50EE0000, 0x00000000, 0x01A9FF35, 0xFFC00801, 0x00010000,
+/* Joint 14: 10 AObjEvent16 values @ 0x130 */
+u16 dFTSamusAnimPoseEnemy_joint14[10] = {
+	0x50EE, 0x0000, 0x0000, 0x0000, 0x01A9, 0xFF35, 0xFFC0, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 16: 5 words @ 0x144 */
-u32 dFTSamusAnimPoseEnemy_joint16[5] = {
-	0x50EE0000, 0x0000FFFB, 0x01A700CB, 0x00400801, 0x00010000,
+/* Joint 16: 10 AObjEvent16 values @ 0x144 */
+u16 dFTSamusAnimPoseEnemy_joint16[10] = {
+	0x50EE, 0x0000, 0x0000, 0xFFFB, 0x01A7, 0x00CB, 0x0040, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 17: 8 words @ 0x158 */
-u32 dFTSamusAnimPoseEnemy_joint17[8] = {
-	0x200E003A, 0x0000FFCC, 0x0000000A, 0x0000200F, 0x0001003A, 0x0000FFCC, 0x0000000A, 0x00000000,
+/* Joint 17: 16 AObjEvent16 values @ 0x158 */
+u16 dFTSamusAnimPoseEnemy_joint17[16] = {
+	0x200E, 0x003A, 0x0000, 0xFFCC, 0x0000, 0x000A, 0x0000, 0x200F, 0x0001, 0x003A, 0x0000, 0xFFCC, 0x0000, 0x000A, 0x0000, 0x0000,
 };
 
-/* Joint 19: 6 words @ 0x178 */
-u32 dFTSamusAnimPoseEnemy_joint19[6] = {
-	0x28080004, 0x00004806, 0x00000000, 0x20090001, 0x00040000, 0x00000000,
+/* Joint 19: 12 AObjEvent16 values @ 0x178 */
+u16 dFTSamusAnimPoseEnemy_joint19[12] = {
+	0x2808, 0x0004, 0x0000, 0x4806, 0x0000, 0x0000, 0x2009, 0x0001, 0x0004, 0x0000, 0x0000, 0x0000,
 };
 
-/* Joint 21: 8 words @ 0x190 */
-u32 dFTSamusAnimPoseEnemy_joint21[8] = {
-	0x200EFFCA, 0x0000FFCA, 0x00000017, 0x0000200F, 0x0001FFCA, 0x0000FFCA, 0x00000017, 0x00000000,
+/* Joint 21: 16 AObjEvent16 values @ 0x190 */
+u16 dFTSamusAnimPoseEnemy_joint21[16] = {
+	0x200E, 0xFFCA, 0x0000, 0xFFCA, 0x0000, 0x0017, 0x0000, 0x200F, 0x0001, 0xFFCA, 0x0000, 0xFFCA, 0x0000, 0x0017, 0x0000, 0x0000,
 };
 
-/* Joint 22: 4 words @ 0x1B0 */
-u32 dFTSamusAnimPoseEnemy_joint22[4] = {
-	0x500EFFC6, 0x0034000A, 0x08010001, 0x00000000,
+/* Joint 22: 8 AObjEvent16 values @ 0x1B0 */
+u16 dFTSamusAnimPoseEnemy_joint22[8] = {
+	0x500E, 0xFFC6, 0x0034, 0x000A, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 24: 8 words @ 0x1C0 */
-u32 dFTSamusAnimPoseEnemy_joint24[8] = {
-	0x500E0000, 0x00000004, 0x08010001, 0x00000000, 0x500E001C, 0x00410017, 0x08010001, 0x00000000,
+/* Joint 24: 16 AObjEvent16 values @ 0x1C0 */
+u16 dFTSamusAnimPoseEnemy_joint24[16] = {
+	0x500E, 0x0000, 0x0000, 0x0004, 0x0801, 0x0001, 0x0000, 0x0000, 0x500E, 0x001C, 0x0041, 0x0017, 0x0801, 0x0001, 0x0000, 0x0000,
 };

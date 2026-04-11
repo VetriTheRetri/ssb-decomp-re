@@ -1,27 +1,27 @@
 /* AnimJoint data for relocData file 456 (FTYoshiAnimUnknown7) */
-/* 464 bytes: 104-byte header + per-joint AObjEvent32 scripts */
+/* 464 bytes: 104-byte header + per-joint AObjEvent16 scripts */
 
 #include "relocdata_types.h"
 
-extern u32 dFTYoshiAnimUnknown7_joint1[5];
-extern u32 dFTYoshiAnimUnknown7_joint2[5];
-extern u32 dFTYoshiAnimUnknown7_joint3[5];
-extern u32 dFTYoshiAnimUnknown7_joint4[5];
-extern u32 dFTYoshiAnimUnknown7_joint6[5];
-extern u32 dFTYoshiAnimUnknown7_joint7[4];
-extern u32 dFTYoshiAnimUnknown7_joint8[4];
-extern u32 dFTYoshiAnimUnknown7_joint10[5];
-extern u32 dFTYoshiAnimUnknown7_joint11[4];
-extern u32 dFTYoshiAnimUnknown7_joint12[4];
-extern u32 dFTYoshiAnimUnknown7_joint13[5];
-extern u32 dFTYoshiAnimUnknown7_joint14[5];
-extern u32 dFTYoshiAnimUnknown7_joint15[5];
-extern u32 dFTYoshiAnimUnknown7_joint17[5];
-extern u32 dFTYoshiAnimUnknown7_joint18[4];
-extern u32 dFTYoshiAnimUnknown7_joint20[4];
-extern u32 dFTYoshiAnimUnknown7_joint22[4];
-extern u32 dFTYoshiAnimUnknown7_joint23[4];
-extern u32 dFTYoshiAnimUnknown7_joint25[8];
+extern u16 dFTYoshiAnimUnknown7_joint1[10];
+extern u16 dFTYoshiAnimUnknown7_joint2[10];
+extern u16 dFTYoshiAnimUnknown7_joint3[10];
+extern u16 dFTYoshiAnimUnknown7_joint4[10];
+extern u16 dFTYoshiAnimUnknown7_joint6[10];
+extern u16 dFTYoshiAnimUnknown7_joint7[8];
+extern u16 dFTYoshiAnimUnknown7_joint8[8];
+extern u16 dFTYoshiAnimUnknown7_joint10[10];
+extern u16 dFTYoshiAnimUnknown7_joint11[8];
+extern u16 dFTYoshiAnimUnknown7_joint12[8];
+extern u16 dFTYoshiAnimUnknown7_joint13[10];
+extern u16 dFTYoshiAnimUnknown7_joint14[10];
+extern u16 dFTYoshiAnimUnknown7_joint15[10];
+extern u16 dFTYoshiAnimUnknown7_joint17[10];
+extern u16 dFTYoshiAnimUnknown7_joint18[8];
+extern u16 dFTYoshiAnimUnknown7_joint20[8];
+extern u16 dFTYoshiAnimUnknown7_joint22[8];
+extern u16 dFTYoshiAnimUnknown7_joint23[8];
+extern u16 dFTYoshiAnimUnknown7_joint25[16];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTYoshiAnimUnknown7_joints[] = {
@@ -53,97 +53,97 @@ u32 dFTYoshiAnimUnknown7_joints[] = {
 	0xFFFF0070, /* [25] END */
 };
 
-/* Joint 1: 5 words @ 0x68 */
-u32 dFTYoshiAnimUnknown7_joint1[5] = {
-	0x50EE0000, 0x00000000, 0x00000000, 0x00000801, 0x00010000,
+/* Joint 1: 10 AObjEvent16 values @ 0x68 */
+u16 dFTYoshiAnimUnknown7_joint1[10] = {
+	0x50EE, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 2: 5 words @ 0x7C */
-u32 dFTYoshiAnimUnknown7_joint2[5] = {
-	0x50EEFEED, 0xFAAC0000, 0x000002A2, 0x00B20801, 0x00010000,
+/* Joint 2: 10 AObjEvent16 values @ 0x7C */
+u16 dFTYoshiAnimUnknown7_joint2[10] = {
+	0x50EE, 0xFEED, 0xFAAC, 0x0000, 0x0000, 0x02A2, 0x00B2, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 3: 5 words @ 0x90 */
-u32 dFTYoshiAnimUnknown7_joint3[5] = {
-	0x50EE014F, 0x00AA00F1, 0x00000000, 0x00AC0801, 0x00010000,
+/* Joint 3: 10 AObjEvent16 values @ 0x90 */
+u16 dFTYoshiAnimUnknown7_joint3[10] = {
+	0x50EE, 0x014F, 0x00AA, 0x00F1, 0x0000, 0x0000, 0x00AC, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 4: 5 words @ 0xA4 */
-u32 dFTYoshiAnimUnknown7_joint4[5] = {
-	0x50EE0280, 0x034801D0, 0x00000215, 0x01640801, 0x00010000,
+/* Joint 4: 10 AObjEvent16 values @ 0xA4 */
+u16 dFTYoshiAnimUnknown7_joint4[10] = {
+	0x50EE, 0x0280, 0x0348, 0x01D0, 0x0000, 0x0215, 0x0164, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 6: 5 words @ 0xB8 */
-u32 dFTYoshiAnimUnknown7_joint6[5] = {
-	0x50EE014B, 0x0049FE15, 0x00000030, 0x00780801, 0x00010000,
+/* Joint 6: 10 AObjEvent16 values @ 0xB8 */
+u16 dFTYoshiAnimUnknown7_joint6[10] = {
+	0x50EE, 0x014B, 0x0049, 0xFE15, 0x0000, 0x0030, 0x0078, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 7: 4 words @ 0xCC */
-u32 dFTYoshiAnimUnknown7_joint7[4] = {
-	0x500E0192, 0x0028FF4F, 0x08010001, 0x00000000,
+/* Joint 7: 8 AObjEvent16 values @ 0xCC */
+u16 dFTYoshiAnimUnknown7_joint7[8] = {
+	0x500E, 0x0192, 0x0028, 0xFF4F, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 8: 4 words @ 0xDC */
-u32 dFTYoshiAnimUnknown7_joint8[4] = {
-	0x500E0000, 0x0000FC94, 0x08010001, 0x00000000,
+/* Joint 8: 8 AObjEvent16 values @ 0xDC */
+u16 dFTYoshiAnimUnknown7_joint8[8] = {
+	0x500E, 0x0000, 0x0000, 0xFC94, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 10: 5 words @ 0xEC */
-u32 dFTYoshiAnimUnknown7_joint10[5] = {
-	0x50EE00AA, 0xFE8AFF11, 0x00AC0000, 0x00000801, 0x00010000,
+/* Joint 10: 10 AObjEvent16 values @ 0xEC */
+u16 dFTYoshiAnimUnknown7_joint10[10] = {
+	0x50EE, 0x00AA, 0xFE8A, 0xFF11, 0x00AC, 0x0000, 0x0000, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 11: 4 words @ 0x100 */
-u32 dFTYoshiAnimUnknown7_joint11[4] = {
-	0x500E01C2, 0x00BE0192, 0x08010001, 0x00000000,
+/* Joint 11: 8 AObjEvent16 values @ 0x100 */
+u16 dFTYoshiAnimUnknown7_joint11[8] = {
+	0x500E, 0x01C2, 0x00BE, 0x0192, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 12: 4 words @ 0x110 */
-u32 dFTYoshiAnimUnknown7_joint12[4] = {
-	0x500E0000, 0x0000FBF8, 0x08010001, 0x00000000,
+/* Joint 12: 8 AObjEvent16 values @ 0x110 */
+u16 dFTYoshiAnimUnknown7_joint12[8] = {
+	0x500E, 0x0000, 0x0000, 0xFBF8, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 13: 5 words @ 0x120 */
-u32 dFTYoshiAnimUnknown7_joint13[5] = {
-	0x50EE0389, 0x010500F9, 0x00AC0000, 0x00000801, 0x00010000,
+/* Joint 13: 10 AObjEvent16 values @ 0x120 */
+u16 dFTYoshiAnimUnknown7_joint13[10] = {
+	0x50EE, 0x0389, 0x0105, 0x00F9, 0x00AC, 0x0000, 0x0000, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 14: 5 words @ 0x134 */
-u32 dFTYoshiAnimUnknown7_joint14[5] = {
-	0x50EEFDE8, 0xFC830000, 0x0000009C, 0x00000801, 0x00010000,
+/* Joint 14: 10 AObjEvent16 values @ 0x134 */
+u16 dFTYoshiAnimUnknown7_joint14[10] = {
+	0x50EE, 0xFDE8, 0xFC83, 0x0000, 0x0000, 0x009C, 0x0000, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 15: 5 words @ 0x148 */
-u32 dFTYoshiAnimUnknown7_joint15[5] = {
-	0x50EE0016, 0xFF64FFD4, 0x000000D7, 0xFF100801, 0x00010000,
+/* Joint 15: 10 AObjEvent16 values @ 0x148 */
+u16 dFTYoshiAnimUnknown7_joint15[10] = {
+	0x50EE, 0x0016, 0xFF64, 0xFFD4, 0x0000, 0x00D7, 0xFF10, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 17: 5 words @ 0x15C */
-u32 dFTYoshiAnimUnknown7_joint17[5] = {
-	0x50EE00D0, 0xFF5FFFB3, 0x0000002F, 0xFEF90801, 0x00010000,
+/* Joint 17: 10 AObjEvent16 values @ 0x15C */
+u16 dFTYoshiAnimUnknown7_joint17[10] = {
+	0x50EE, 0x00D0, 0xFF5F, 0xFFB3, 0x0000, 0x002F, 0xFEF9, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 18: 4 words @ 0x170 */
-u32 dFTYoshiAnimUnknown7_joint18[4] = {
-	0x500EFA8F, 0xFA6FFA35, 0x08010001, 0x00000000,
+/* Joint 18: 8 AObjEvent16 values @ 0x170 */
+u16 dFTYoshiAnimUnknown7_joint18[8] = {
+	0x500E, 0xFA8F, 0xFA6F, 0xFA35, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 20: 4 words @ 0x180 */
-u32 dFTYoshiAnimUnknown7_joint20[4] = {
-	0x500E0000, 0x00000163, 0x08010001, 0x00000000,
+/* Joint 20: 8 AObjEvent16 values @ 0x180 */
+u16 dFTYoshiAnimUnknown7_joint20[8] = {
+	0x500E, 0x0000, 0x0000, 0x0163, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 22: 4 words @ 0x190 */
-u32 dFTYoshiAnimUnknown7_joint22[4] = {
-	0x500EF894, 0x0B5FFF87, 0x08010001, 0x00000000,
+/* Joint 22: 8 AObjEvent16 values @ 0x190 */
+u16 dFTYoshiAnimUnknown7_joint22[8] = {
+	0x500E, 0xF894, 0x0B5F, 0xFF87, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 23: 4 words @ 0x1A0 */
-u32 dFTYoshiAnimUnknown7_joint23[4] = {
-	0x500EFF75, 0x002EFFAC, 0x08010001, 0x00000000,
+/* Joint 23: 8 AObjEvent16 values @ 0x1A0 */
+u16 dFTYoshiAnimUnknown7_joint23[8] = {
+	0x500E, 0xFF75, 0x002E, 0xFFAC, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 25: 8 words @ 0x1B0 */
-u32 dFTYoshiAnimUnknown7_joint25[8] = {
-	0x500E0000, 0x00000226, 0x08010001, 0x00000000, 0x500E007B, 0x056C05FD, 0x08010001, 0x00000000,
+/* Joint 25: 16 AObjEvent16 values @ 0x1B0 */
+u16 dFTYoshiAnimUnknown7_joint25[16] = {
+	0x500E, 0x0000, 0x0000, 0x0226, 0x0801, 0x0001, 0x0000, 0x0000, 0x500E, 0x007B, 0x056C, 0x05FD, 0x0801, 0x0001, 0x0000, 0x0000,
 };

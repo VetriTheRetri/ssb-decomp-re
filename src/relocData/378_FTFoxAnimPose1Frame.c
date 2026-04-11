@@ -1,25 +1,25 @@
 /* AnimJoint data for relocData file 378 (FTFoxAnimPose1Frame) */
-/* 496 bytes: 100-byte header + per-joint AObjEvent32 scripts */
+/* 496 bytes: 100-byte header + per-joint AObjEvent16 scripts */
 
 #include "relocdata_types.h"
 
-extern u32 dFTFoxAnimPose1Frame_joint1[5];
-extern u32 dFTFoxAnimPose1Frame_joint2[5];
-extern u32 dFTFoxAnimPose1Frame_joint4[5];
-extern u32 dFTFoxAnimPose1Frame_joint5[8];
-extern u32 dFTFoxAnimPose1Frame_joint6[6];
-extern u32 dFTFoxAnimPose1Frame_joint7[5];
-extern u32 dFTFoxAnimPose1Frame_joint8[5];
-extern u32 dFTFoxAnimPose1Frame_joint10[5];
-extern u32 dFTFoxAnimPose1Frame_joint11[4];
-extern u32 dFTFoxAnimPose1Frame_joint12[4];
-extern u32 dFTFoxAnimPose1Frame_joint15[5];
-extern u32 dFTFoxAnimPose1Frame_joint16[8];
-extern u32 dFTFoxAnimPose1Frame_joint18[6];
-extern u32 dFTFoxAnimPose1Frame_joint20[7];
-extern u32 dFTFoxAnimPose1Frame_joint21[4];
-extern u32 dFTFoxAnimPose1Frame_joint23[4];
-extern u32 dFTFoxAnimPose1Frame_joint24[12];
+extern u16 dFTFoxAnimPose1Frame_joint1[10];
+extern u16 dFTFoxAnimPose1Frame_joint2[10];
+extern u16 dFTFoxAnimPose1Frame_joint4[10];
+extern u16 dFTFoxAnimPose1Frame_joint5[16];
+extern u16 dFTFoxAnimPose1Frame_joint6[12];
+extern u16 dFTFoxAnimPose1Frame_joint7[10];
+extern u16 dFTFoxAnimPose1Frame_joint8[10];
+extern u16 dFTFoxAnimPose1Frame_joint10[10];
+extern u16 dFTFoxAnimPose1Frame_joint11[8];
+extern u16 dFTFoxAnimPose1Frame_joint12[8];
+extern u16 dFTFoxAnimPose1Frame_joint15[10];
+extern u16 dFTFoxAnimPose1Frame_joint16[16];
+extern u16 dFTFoxAnimPose1Frame_joint18[12];
+extern u16 dFTFoxAnimPose1Frame_joint20[14];
+extern u16 dFTFoxAnimPose1Frame_joint21[8];
+extern u16 dFTFoxAnimPose1Frame_joint23[8];
+extern u16 dFTFoxAnimPose1Frame_joint24[24];
 
 /* Joint pointer table (25 entries, 100 bytes) */
 u32 dFTFoxAnimPose1Frame_joints[] = {
@@ -53,88 +53,88 @@ u32 dFTFoxAnimPose1Frame_joints[] = {
 /* 4-byte alignment padding */
 static u32 dFTFoxAnimPose1Frame_pad[1] = { 0 };
 
-/* Joint 1: 5 words @ 0x68 */
-u32 dFTFoxAnimPose1Frame_joint1[5] = {
-	0x50EE0000, 0x00000000, 0x000003E4, 0x00000801, 0x00010000,
+/* Joint 1: 10 AObjEvent16 values @ 0x68 */
+u16 dFTFoxAnimPose1Frame_joint1[10] = {
+	0x50EE, 0x0000, 0x0000, 0x0000, 0x0000, 0x03E4, 0x0000, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 2: 5 words @ 0x7C */
-u32 dFTFoxAnimPose1Frame_joint2[5] = {
-	0x50EE002E, 0x004C0010, 0x00000000, 0x00000801, 0x00010000,
+/* Joint 2: 10 AObjEvent16 values @ 0x7C */
+u16 dFTFoxAnimPose1Frame_joint2[10] = {
+	0x50EE, 0x002E, 0x004C, 0x0010, 0x0000, 0x0000, 0x0000, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 4: 5 words @ 0x90 */
-u32 dFTFoxAnimPose1Frame_joint4[5] = {
-	0x50EEFF78, 0xFF9CFFFB, 0x00000000, 0x00000801, 0x00010000,
+/* Joint 4: 10 AObjEvent16 values @ 0x90 */
+u16 dFTFoxAnimPose1Frame_joint4[10] = {
+	0x50EE, 0xFF78, 0xFF9C, 0xFFFB, 0x0000, 0x0000, 0x0000, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 5: 8 words @ 0xA4 */
-u32 dFTFoxAnimPose1Frame_joint5[8] = {
-	0x200EF521, 0x0000019F, 0x0000FE25, 0x0000200F, 0x0001F521, 0x0000019F, 0x0000FE25, 0x00000000,
+/* Joint 5: 16 AObjEvent16 values @ 0xA4 */
+u16 dFTFoxAnimPose1Frame_joint5[16] = {
+	0x200E, 0xF521, 0x0000, 0x019F, 0x0000, 0xFE25, 0x0000, 0x200F, 0x0001, 0xF521, 0x0000, 0x019F, 0x0000, 0xFE25, 0x0000, 0x0000,
 };
 
-/* Joint 6: 6 words @ 0xC4 */
-u32 dFTFoxAnimPose1Frame_joint6[6] = {
-	0x2808FF08, 0x00004806, 0x00000000, 0x20090001, 0xFF080000, 0x00000000,
+/* Joint 6: 12 AObjEvent16 values @ 0xC4 */
+u16 dFTFoxAnimPose1Frame_joint6[12] = {
+	0x2808, 0xFF08, 0x0000, 0x4806, 0x0000, 0x0000, 0x2009, 0x0001, 0xFF08, 0x0000, 0x0000, 0x0000,
 };
 
-/* Joint 7: 5 words @ 0xDC */
-u32 dFTFoxAnimPose1Frame_joint7[5] = {
-	0x50EE0000, 0x00000000, 0x010D0000, 0x00000801, 0x00010000,
+/* Joint 7: 10 AObjEvent16 values @ 0xDC */
+u16 dFTFoxAnimPose1Frame_joint7[10] = {
+	0x50EE, 0x0000, 0x0000, 0x0000, 0x010D, 0x0000, 0x0000, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 8: 5 words @ 0xF0 */
-u32 dFTFoxAnimPose1Frame_joint8[5] = {
-	0x50EE0133, 0xFEBEFFC4, 0x00000150, 0x00000801, 0x00010000,
+/* Joint 8: 10 AObjEvent16 values @ 0xF0 */
+u16 dFTFoxAnimPose1Frame_joint8[10] = {
+	0x50EE, 0x0133, 0xFEBE, 0xFFC4, 0x0000, 0x0150, 0x0000, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 10: 5 words @ 0x104 */
-u32 dFTFoxAnimPose1Frame_joint10[5] = {
-	0x50EE0000, 0x00000000, 0x0000003E, 0xFFEE0801, 0x00010000,
+/* Joint 10: 10 AObjEvent16 values @ 0x104 */
+u16 dFTFoxAnimPose1Frame_joint10[10] = {
+	0x50EE, 0x0000, 0x0000, 0x0000, 0x0000, 0x003E, 0xFFEE, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 11: 4 words @ 0x118 */
-u32 dFTFoxAnimPose1Frame_joint11[4] = {
-	0x500EFD13, 0xFF52FE48, 0x08010001, 0x00000000,
+/* Joint 11: 8 AObjEvent16 values @ 0x118 */
+u16 dFTFoxAnimPose1Frame_joint11[8] = {
+	0x500E, 0xFD13, 0xFF52, 0xFE48, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 12: 4 words @ 0x128 */
-u32 dFTFoxAnimPose1Frame_joint12[4] = {
-	0x500E0000, 0x0000FE05, 0x08010001, 0x00000000,
+/* Joint 12: 8 AObjEvent16 values @ 0x128 */
+u16 dFTFoxAnimPose1Frame_joint12[8] = {
+	0x500E, 0x0000, 0x0000, 0xFE05, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 15: 5 words @ 0x138 */
-u32 dFTFoxAnimPose1Frame_joint15[5] = {
-	0x50EE0000, 0x00000000, 0x01100000, 0x00000801, 0x00010000,
+/* Joint 15: 10 AObjEvent16 values @ 0x138 */
+u16 dFTFoxAnimPose1Frame_joint15[10] = {
+	0x50EE, 0x0000, 0x0000, 0x0000, 0x0110, 0x0000, 0x0000, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 16: 8 words @ 0x14C */
-u32 dFTFoxAnimPose1Frame_joint16[8] = {
-	0x200E0041, 0x00000071, 0x00000002, 0x0000200F, 0x00010041, 0x00000071, 0x00000002, 0x00000000,
+/* Joint 16: 16 AObjEvent16 values @ 0x14C */
+u16 dFTFoxAnimPose1Frame_joint16[16] = {
+	0x200E, 0x0041, 0x0000, 0x0071, 0x0000, 0x0002, 0x0000, 0x200F, 0x0001, 0x0041, 0x0000, 0x0071, 0x0000, 0x0002, 0x0000, 0x0000,
 };
 
-/* Joint 18: 6 words @ 0x16C */
-u32 dFTFoxAnimPose1Frame_joint18[6] = {
-	0x28080005, 0x00004806, 0x00000000, 0x20090001, 0x00050000, 0x00000000,
+/* Joint 18: 12 AObjEvent16 values @ 0x16C */
+u16 dFTFoxAnimPose1Frame_joint18[12] = {
+	0x2808, 0x0005, 0x0000, 0x4806, 0x0000, 0x0000, 0x2009, 0x0001, 0x0005, 0x0000, 0x0000, 0x0000,
 };
 
-/* Joint 20: 7 words @ 0x184 */
-u32 dFTFoxAnimPose1Frame_joint20[7] = {
-	0x280A0044, 0x0000000D, 0x00004804, 0xFDA6200B, 0x00010044, 0x0000000D, 0x00000000,
+/* Joint 20: 14 AObjEvent16 values @ 0x184 */
+u16 dFTFoxAnimPose1Frame_joint20[14] = {
+	0x280A, 0x0044, 0x0000, 0x000D, 0x0000, 0x4804, 0xFDA6, 0x200B, 0x0001, 0x0044, 0x0000, 0x000D, 0x0000, 0x0000,
 };
 
-/* Joint 21: 4 words @ 0x1A0 */
-u32 dFTFoxAnimPose1Frame_joint21[4] = {
-	0x500EFC9E, 0x016AFF88, 0x08010001, 0x00000000,
+/* Joint 21: 8 AObjEvent16 values @ 0x1A0 */
+u16 dFTFoxAnimPose1Frame_joint21[8] = {
+	0x500E, 0xFC9E, 0x016A, 0xFF88, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 23: 4 words @ 0x1B0 */
-u32 dFTFoxAnimPose1Frame_joint23[4] = {
-	0x500E0000, 0x00000000, 0x08010001, 0x00000000,
+/* Joint 23: 8 AObjEvent16 values @ 0x1B0 */
+u16 dFTFoxAnimPose1Frame_joint23[8] = {
+	0x500E, 0x0000, 0x0000, 0x0000, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 24: 12 words @ 0x1C0 */
-u32 dFTFoxAnimPose1Frame_joint24[12] = {
-	0x500E0596, 0x01A90455, 0x08010001, 0x00000000, 0x50EE0166, 0x012C007A, 0xFFF9FE97, 0xFFB50801,
-	0x00010000, 0x00000000, 0x00000000, 0x00000000,
+/* Joint 24: 24 AObjEvent16 values @ 0x1C0 */
+u16 dFTFoxAnimPose1Frame_joint24[24] = {
+	0x500E, 0x0596, 0x01A9, 0x0455, 0x0801, 0x0001, 0x0000, 0x0000, 0x50EE, 0x0166, 0x012C, 0x007A, 0xFFF9, 0xFE97, 0xFFB5, 0x0801,
+	0x0001, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 };

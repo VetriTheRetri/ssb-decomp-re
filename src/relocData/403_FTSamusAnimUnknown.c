@@ -1,22 +1,22 @@
 /* AnimJoint data for relocData file 403 (FTSamusAnimUnknown) */
-/* 352 bytes: 92-byte header + per-joint AObjEvent32 scripts */
+/* 352 bytes: 92-byte header + per-joint AObjEvent16 scripts */
 
 #include "relocdata_types.h"
 
-extern u32 dFTSamusAnimUnknown_joint1[5];
-extern u32 dFTSamusAnimUnknown_joint2[5];
-extern u32 dFTSamusAnimUnknown_joint4[4];
-extern u32 dFTSamusAnimUnknown_joint5[4];
-extern u32 dFTSamusAnimUnknown_joint6[4];
-extern u32 dFTSamusAnimUnknown_joint8[4];
-extern u32 dFTSamusAnimUnknown_joint11[5];
-extern u32 dFTSamusAnimUnknown_joint12[4];
-extern u32 dFTSamusAnimUnknown_joint14[4];
-extern u32 dFTSamusAnimUnknown_joint15[4];
-extern u32 dFTSamusAnimUnknown_joint17[4];
-extern u32 dFTSamusAnimUnknown_joint19[4];
-extern u32 dFTSamusAnimUnknown_joint20[4];
-extern u32 dFTSamusAnimUnknown_joint22[10];
+extern u16 dFTSamusAnimUnknown_joint1[10];
+extern u16 dFTSamusAnimUnknown_joint2[10];
+extern u16 dFTSamusAnimUnknown_joint4[8];
+extern u16 dFTSamusAnimUnknown_joint5[8];
+extern u16 dFTSamusAnimUnknown_joint6[8];
+extern u16 dFTSamusAnimUnknown_joint8[8];
+extern u16 dFTSamusAnimUnknown_joint11[10];
+extern u16 dFTSamusAnimUnknown_joint12[8];
+extern u16 dFTSamusAnimUnknown_joint14[8];
+extern u16 dFTSamusAnimUnknown_joint15[8];
+extern u16 dFTSamusAnimUnknown_joint17[8];
+extern u16 dFTSamusAnimUnknown_joint19[8];
+extern u16 dFTSamusAnimUnknown_joint20[8];
+extern u16 dFTSamusAnimUnknown_joint22[20];
 
 /* Joint pointer table (23 entries, 92 bytes) */
 u32 dFTSamusAnimUnknown_joints[] = {
@@ -45,73 +45,73 @@ u32 dFTSamusAnimUnknown_joints[] = {
 	0xFFFF0052, /* [22] END */
 };
 
-/* Joint 1: 5 words @ 0x5C */
-u32 dFTSamusAnimUnknown_joint1[5] = {
-	0x50EEFF32, 0x00D7FF1D, 0xFB500780, 0xFF4C0801, 0x00010000,
+/* Joint 1: 10 AObjEvent16 values @ 0x5C */
+u16 dFTSamusAnimUnknown_joint1[10] = {
+	0x50EE, 0xFF32, 0x00D7, 0xFF1D, 0xFB50, 0x0780, 0xFF4C, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 2: 5 words @ 0x70 */
-u32 dFTSamusAnimUnknown_joint2[5] = {
-	0x50EE0000, 0x00000000, 0x0000FFAD, 0x00000801, 0x00010000,
+/* Joint 2: 10 AObjEvent16 values @ 0x70 */
+u16 dFTSamusAnimUnknown_joint2[10] = {
+	0x50EE, 0x0000, 0x0000, 0x0000, 0x0000, 0xFFAD, 0x0000, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 4: 4 words @ 0x84 */
-u32 dFTSamusAnimUnknown_joint4[4] = {
-	0x500E0034, 0xFFE6000B, 0x08010001, 0x00000000,
+/* Joint 4: 8 AObjEvent16 values @ 0x84 */
+u16 dFTSamusAnimUnknown_joint4[8] = {
+	0x500E, 0x0034, 0xFFE6, 0x000B, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 5: 4 words @ 0x94 */
-u32 dFTSamusAnimUnknown_joint5[4] = {
-	0x500EFD44, 0xF8D90495, 0x08010001, 0x00000000,
+/* Joint 5: 8 AObjEvent16 values @ 0x94 */
+u16 dFTSamusAnimUnknown_joint5[8] = {
+	0x500E, 0xFD44, 0xF8D9, 0x0495, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 6: 4 words @ 0xA4 */
-u32 dFTSamusAnimUnknown_joint6[4] = {
-	0x500E0000, 0x0000FDB3, 0x08010001, 0x00000000,
+/* Joint 6: 8 AObjEvent16 values @ 0xA4 */
+u16 dFTSamusAnimUnknown_joint6[8] = {
+	0x500E, 0x0000, 0x0000, 0xFDB3, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 8: 4 words @ 0xB4 */
-u32 dFTSamusAnimUnknown_joint8[4] = {
-	0x500EFF27, 0xFF29000F, 0x08010001, 0x00000000,
+/* Joint 8: 8 AObjEvent16 values @ 0xB4 */
+u16 dFTSamusAnimUnknown_joint8[8] = {
+	0x500E, 0xFF27, 0xFF29, 0x000F, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 11: 5 words @ 0xC4 */
-u32 dFTSamusAnimUnknown_joint11[5] = {
-	0x50EE0069, 0xFFEB0064, 0x000001E0, 0x00000801, 0x00010000,
+/* Joint 11: 10 AObjEvent16 values @ 0xC4 */
+u16 dFTSamusAnimUnknown_joint11[10] = {
+	0x50EE, 0x0069, 0xFFEB, 0x0064, 0x0000, 0x01E0, 0x0000, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 12: 4 words @ 0xD8 */
-u32 dFTSamusAnimUnknown_joint12[4] = {
-	0x500E00D0, 0x0081FEB5, 0x08010001, 0x00000000,
+/* Joint 12: 8 AObjEvent16 values @ 0xD8 */
+u16 dFTSamusAnimUnknown_joint12[8] = {
+	0x500E, 0x00D0, 0x0081, 0xFEB5, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 14: 4 words @ 0xE8 */
-u32 dFTSamusAnimUnknown_joint14[4] = {
-	0x500E0000, 0x0000FF6C, 0x08010001, 0x00000000,
+/* Joint 14: 8 AObjEvent16 values @ 0xE8 */
+u16 dFTSamusAnimUnknown_joint14[8] = {
+	0x500E, 0x0000, 0x0000, 0xFF6C, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 15: 4 words @ 0xF8 */
-u32 dFTSamusAnimUnknown_joint15[4] = {
-	0x500E001A, 0xFE85FB45, 0x08010001, 0x00000000,
+/* Joint 15: 8 AObjEvent16 values @ 0xF8 */
+u16 dFTSamusAnimUnknown_joint15[8] = {
+	0x500E, 0x001A, 0xFE85, 0xFB45, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 17: 4 words @ 0x108 */
-u32 dFTSamusAnimUnknown_joint17[4] = {
-	0x500E0000, 0x000004A8, 0x08010001, 0x00000000,
+/* Joint 17: 8 AObjEvent16 values @ 0x108 */
+u16 dFTSamusAnimUnknown_joint17[8] = {
+	0x500E, 0x0000, 0x0000, 0x04A8, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 19: 4 words @ 0x118 */
-u32 dFTSamusAnimUnknown_joint19[4] = {
-	0x500E0090, 0xFFFB025F, 0x08010001, 0x00000000,
+/* Joint 19: 8 AObjEvent16 values @ 0x118 */
+u16 dFTSamusAnimUnknown_joint19[8] = {
+	0x500E, 0x0090, 0xFFFB, 0x025F, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 20: 4 words @ 0x128 */
-u32 dFTSamusAnimUnknown_joint20[4] = {
-	0x500EFEB3, 0x00B6FF6A, 0x08010001, 0x00000000,
+/* Joint 20: 8 AObjEvent16 values @ 0x128 */
+u16 dFTSamusAnimUnknown_joint20[8] = {
+	0x500E, 0xFEB3, 0x00B6, 0xFF6A, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 22: 10 words @ 0x138 */
-u32 dFTSamusAnimUnknown_joint22[10] = {
-	0x500E0000, 0x00000000, 0x08010001, 0x00000000, 0x500E00EF, 0x00E6FFFC, 0x08010001, 0x00000000,
-	0x00000000, 0x00000000,
+/* Joint 22: 20 AObjEvent16 values @ 0x138 */
+u16 dFTSamusAnimUnknown_joint22[20] = {
+	0x500E, 0x0000, 0x0000, 0x0000, 0x0801, 0x0001, 0x0000, 0x0000, 0x500E, 0x00EF, 0x00E6, 0xFFFC, 0x0801, 0x0001, 0x0000, 0x0000,
+	0x0000, 0x0000, 0x0000, 0x0000,
 };

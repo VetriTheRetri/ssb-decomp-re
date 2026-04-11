@@ -1,20 +1,20 @@
 /* AnimJoint data for relocData file 1511 (FTPurinAnimDamage) */
-/* 368 bytes: 88-byte header + per-joint AObjEvent32 scripts */
+/* 368 bytes: 88-byte header + per-joint AObjEvent16 scripts */
 
 #include "relocdata_types.h"
 
-extern u32 dFTPurinAnimDamage_joint1[7];
-extern u32 dFTPurinAnimDamage_joint2[5];
-extern u32 dFTPurinAnimDamage_joint5[5];
-extern u32 dFTPurinAnimDamage_joint6[8];
-extern u32 dFTPurinAnimDamage_joint9[6];
-extern u32 dFTPurinAnimDamage_joint10[8];
-extern u32 dFTPurinAnimDamage_joint13[6];
-extern u32 dFTPurinAnimDamage_joint14[4];
-extern u32 dFTPurinAnimDamage_joint16[4];
-extern u32 dFTPurinAnimDamage_joint18[4];
-extern u32 dFTPurinAnimDamage_joint19[4];
-extern u32 dFTPurinAnimDamage_joint21[8];
+extern u16 dFTPurinAnimDamage_joint1[14];
+extern u16 dFTPurinAnimDamage_joint2[10];
+extern u16 dFTPurinAnimDamage_joint5[10];
+extern u16 dFTPurinAnimDamage_joint6[16];
+extern u16 dFTPurinAnimDamage_joint9[12];
+extern u16 dFTPurinAnimDamage_joint10[16];
+extern u16 dFTPurinAnimDamage_joint13[12];
+extern u16 dFTPurinAnimDamage_joint14[8];
+extern u16 dFTPurinAnimDamage_joint16[8];
+extern u16 dFTPurinAnimDamage_joint18[8];
+extern u16 dFTPurinAnimDamage_joint19[8];
+extern u16 dFTPurinAnimDamage_joint21[16];
 
 /* Joint pointer table (22 entries, 88 bytes) */
 u32 dFTPurinAnimDamage_joints[] = {
@@ -45,62 +45,62 @@ u32 dFTPurinAnimDamage_joints[] = {
 /* 4-byte alignment padding */
 static u32 dFTPurinAnimDamage_pad[1] = { 0 };
 
-/* Joint 1: 7 words @ 0x5C */
-u32 dFTPurinAnimDamage_joint1[7] = {
-	0x48EEFE6E, 0x0244FED1, 0x000002D8, 0x000048E1, 0x00010000, 0x02D80000, 0x00000000,
+/* Joint 1: 14 AObjEvent16 values @ 0x5C */
+u16 dFTPurinAnimDamage_joint1[14] = {
+	0x48EE, 0xFE6E, 0x0244, 0xFED1, 0x0000, 0x02D8, 0x0000, 0x48E1, 0x0001, 0x0000, 0x02D8, 0x0000, 0x0000, 0x0000,
 };
 
-/* Joint 2: 5 words @ 0x78 */
-u32 dFTPurinAnimDamage_joint2[5] = {
-	0x50EE0000, 0x00000000, 0x0000FEC8, 0x00000801, 0x00010000,
+/* Joint 2: 10 AObjEvent16 values @ 0x78 */
+u16 dFTPurinAnimDamage_joint2[10] = {
+	0x50EE, 0x0000, 0x0000, 0x0000, 0x0000, 0xFEC8, 0x0000, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 5: 5 words @ 0x8C */
-u32 dFTPurinAnimDamage_joint5[5] = {
-	0x50EE0000, 0x00000000, 0x00000138, 0x00000801, 0x00010000,
+/* Joint 5: 10 AObjEvent16 values @ 0x8C */
+u16 dFTPurinAnimDamage_joint5[10] = {
+	0x50EE, 0x0000, 0x0000, 0x0000, 0x0000, 0x0138, 0x0000, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 6: 8 words @ 0xA0 */
-u32 dFTPurinAnimDamage_joint6[8] = {
-	0x200E02A1, 0x0000FE8F, 0x0000FDCD, 0x0000200F, 0x000102A1, 0x0000FE8F, 0x0000FDCD, 0x00000000,
+/* Joint 6: 16 AObjEvent16 values @ 0xA0 */
+u16 dFTPurinAnimDamage_joint6[16] = {
+	0x200E, 0x02A1, 0x0000, 0xFE8F, 0x0000, 0xFDCD, 0x0000, 0x200F, 0x0001, 0x02A1, 0x0000, 0xFE8F, 0x0000, 0xFDCD, 0x0000, 0x0000,
 };
 
-/* Joint 9: 6 words @ 0xC0 */
-u32 dFTPurinAnimDamage_joint9[6] = {
-	0x2808FFFA, 0x00004806, 0x00000000, 0x20090001, 0xFFFA0000, 0x00000000,
+/* Joint 9: 12 AObjEvent16 values @ 0xC0 */
+u16 dFTPurinAnimDamage_joint9[12] = {
+	0x2808, 0xFFFA, 0x0000, 0x4806, 0x0000, 0x0000, 0x2009, 0x0001, 0xFFFA, 0x0000, 0x0000, 0x0000,
 };
 
-/* Joint 10: 8 words @ 0xD8 */
-u32 dFTPurinAnimDamage_joint10[8] = {
-	0x200EFF66, 0x0000029F, 0x0000FF68, 0x0000200F, 0x0001FF66, 0x0000029F, 0x0000FF68, 0x00000000,
+/* Joint 10: 16 AObjEvent16 values @ 0xD8 */
+u16 dFTPurinAnimDamage_joint10[16] = {
+	0x200E, 0xFF66, 0x0000, 0x029F, 0x0000, 0xFF68, 0x0000, 0x200F, 0x0001, 0xFF66, 0x0000, 0x029F, 0x0000, 0xFF68, 0x0000, 0x0000,
 };
 
-/* Joint 13: 6 words @ 0xF8 */
-u32 dFTPurinAnimDamage_joint13[6] = {
-	0x2808FFAD, 0x00004806, 0x00000000, 0x20090001, 0xFFAD0000, 0x00000000,
+/* Joint 13: 12 AObjEvent16 values @ 0xF8 */
+u16 dFTPurinAnimDamage_joint13[12] = {
+	0x2808, 0xFFAD, 0x0000, 0x4806, 0x0000, 0x0000, 0x2009, 0x0001, 0xFFAD, 0x0000, 0x0000, 0x0000,
 };
 
-/* Joint 14: 4 words @ 0x110 */
-u32 dFTPurinAnimDamage_joint14[4] = {
-	0x500EFBE1, 0xFEF1FE27, 0x08010001, 0x00000000,
+/* Joint 14: 8 AObjEvent16 values @ 0x110 */
+u16 dFTPurinAnimDamage_joint14[8] = {
+	0x500E, 0xFBE1, 0xFEF1, 0xFE27, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 16: 4 words @ 0x120 */
-u32 dFTPurinAnimDamage_joint16[4] = {
-	0x500E0000, 0x00000000, 0x08010001, 0x00000000,
+/* Joint 16: 8 AObjEvent16 values @ 0x120 */
+u16 dFTPurinAnimDamage_joint16[8] = {
+	0x500E, 0x0000, 0x0000, 0x0000, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 18: 4 words @ 0x130 */
-u32 dFTPurinAnimDamage_joint18[4] = {
-	0x500EFDC4, 0x049DFE23, 0x08010001, 0x00000000,
+/* Joint 18: 8 AObjEvent16 values @ 0x130 */
+u16 dFTPurinAnimDamage_joint18[8] = {
+	0x500E, 0xFDC4, 0x049D, 0xFE23, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 19: 4 words @ 0x140 */
-u32 dFTPurinAnimDamage_joint19[4] = {
-	0x500E0594, 0x0168FE48, 0x08010001, 0x00000000,
+/* Joint 19: 8 AObjEvent16 values @ 0x140 */
+u16 dFTPurinAnimDamage_joint19[8] = {
+	0x500E, 0x0594, 0x0168, 0xFE48, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 21: 8 words @ 0x150 */
-u32 dFTPurinAnimDamage_joint21[8] = {
-	0x500E0000, 0x00000007, 0x08010001, 0x00000000, 0x500EFB05, 0xFF3304BC, 0x08010001, 0x00000000,
+/* Joint 21: 16 AObjEvent16 values @ 0x150 */
+u16 dFTPurinAnimDamage_joint21[16] = {
+	0x500E, 0x0000, 0x0000, 0x0007, 0x0801, 0x0001, 0x0000, 0x0000, 0x500E, 0xFB05, 0xFF33, 0x04BC, 0x0801, 0x0001, 0x0000, 0x0000,
 };

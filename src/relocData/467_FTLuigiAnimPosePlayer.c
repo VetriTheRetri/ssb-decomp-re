@@ -1,25 +1,25 @@
 /* AnimJoint data for relocData file 467 (FTLuigiAnimPosePlayer) */
-/* 480 bytes: 96-byte header + per-joint AObjEvent32 scripts */
+/* 480 bytes: 96-byte header + per-joint AObjEvent16 scripts */
 
 #include "relocdata_types.h"
 
-extern u32 dFTLuigiAnimPosePlayer_joint1[5];
-extern u32 dFTLuigiAnimPosePlayer_joint2[5];
-extern u32 dFTLuigiAnimPosePlayer_joint4[5];
-extern u32 dFTLuigiAnimPosePlayer_joint5[7];
-extern u32 dFTLuigiAnimPosePlayer_joint6[6];
-extern u32 dFTLuigiAnimPosePlayer_joint7[4];
-extern u32 dFTLuigiAnimPosePlayer_joint8[5];
-extern u32 dFTLuigiAnimPosePlayer_joint10[5];
-extern u32 dFTLuigiAnimPosePlayer_joint11[4];
-extern u32 dFTLuigiAnimPosePlayer_joint12[6];
-extern u32 dFTLuigiAnimPosePlayer_joint13[4];
-extern u32 dFTLuigiAnimPosePlayer_joint15[4];
-extern u32 dFTLuigiAnimPosePlayer_joint16[8];
-extern u32 dFTLuigiAnimPosePlayer_joint18[4];
-extern u32 dFTLuigiAnimPosePlayer_joint20[8];
-extern u32 dFTLuigiAnimPosePlayer_joint21[4];
-extern u32 dFTLuigiAnimPosePlayer_joint23[11];
+extern u16 dFTLuigiAnimPosePlayer_joint1[10];
+extern u16 dFTLuigiAnimPosePlayer_joint2[10];
+extern u16 dFTLuigiAnimPosePlayer_joint4[10];
+extern u16 dFTLuigiAnimPosePlayer_joint5[14];
+extern u16 dFTLuigiAnimPosePlayer_joint6[12];
+extern u16 dFTLuigiAnimPosePlayer_joint7[8];
+extern u16 dFTLuigiAnimPosePlayer_joint8[10];
+extern u16 dFTLuigiAnimPosePlayer_joint10[10];
+extern u16 dFTLuigiAnimPosePlayer_joint11[8];
+extern u16 dFTLuigiAnimPosePlayer_joint12[12];
+extern u16 dFTLuigiAnimPosePlayer_joint13[8];
+extern u16 dFTLuigiAnimPosePlayer_joint15[8];
+extern u16 dFTLuigiAnimPosePlayer_joint16[16];
+extern u16 dFTLuigiAnimPosePlayer_joint18[8];
+extern u16 dFTLuigiAnimPosePlayer_joint20[16];
+extern u16 dFTLuigiAnimPosePlayer_joint21[8];
+extern u16 dFTLuigiAnimPosePlayer_joint23[22];
 
 /* Joint pointer table (24 entries, 96 bytes) */
 u32 dFTLuigiAnimPosePlayer_joints[] = {
@@ -52,88 +52,88 @@ u32 dFTLuigiAnimPosePlayer_joints[] = {
 /* 4-byte alignment padding */
 static u32 dFTLuigiAnimPosePlayer_pad[1] = { 0 };
 
-/* Joint 1: 5 words @ 0x64 */
-u32 dFTLuigiAnimPosePlayer_joint1[5] = {
-	0x50EE0000, 0xFCDC0000, 0x00000258, 0x00000801, 0x00010000,
+/* Joint 1: 10 AObjEvent16 values @ 0x64 */
+u16 dFTLuigiAnimPosePlayer_joint1[10] = {
+	0x50EE, 0x0000, 0xFCDC, 0x0000, 0x0000, 0x0258, 0x0000, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 2: 5 words @ 0x78 */
-u32 dFTLuigiAnimPosePlayer_joint2[5] = {
-	0x50EE0000, 0x00000000, 0x00000000, 0x00000801, 0x00010000,
+/* Joint 2: 10 AObjEvent16 values @ 0x78 */
+u16 dFTLuigiAnimPosePlayer_joint2[10] = {
+	0x50EE, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 4: 5 words @ 0x8C */
-u32 dFTLuigiAnimPosePlayer_joint4[5] = {
-	0x50EE0000, 0x00000000, 0x00000000, 0x00000801, 0x00010000,
+/* Joint 4: 10 AObjEvent16 values @ 0x8C */
+u16 dFTLuigiAnimPosePlayer_joint4[10] = {
+	0x50EE, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 5: 7 words @ 0xA0 */
-u32 dFTLuigiAnimPosePlayer_joint5[7] = {
-	0x280A07BE, 0x0000FAF7, 0x00004804, 0xFCFE200B, 0x000107BE, 0x0000FAF7, 0x00000000,
+/* Joint 5: 14 AObjEvent16 values @ 0xA0 */
+u16 dFTLuigiAnimPosePlayer_joint5[14] = {
+	0x280A, 0x07BE, 0x0000, 0xFAF7, 0x0000, 0x4804, 0xFCFE, 0x200B, 0x0001, 0x07BE, 0x0000, 0xFAF7, 0x0000, 0x0000,
 };
 
-/* Joint 6: 6 words @ 0xBC */
-u32 dFTLuigiAnimPosePlayer_joint6[6] = {
-	0x2808FE35, 0x00004806, 0x00000000, 0x20090001, 0xFE350000, 0x00000000,
+/* Joint 6: 12 AObjEvent16 values @ 0xBC */
+u16 dFTLuigiAnimPosePlayer_joint6[12] = {
+	0x2808, 0xFE35, 0x0000, 0x4806, 0x0000, 0x0000, 0x2009, 0x0001, 0xFE35, 0x0000, 0x0000, 0x0000,
 };
 
-/* Joint 7: 4 words @ 0xD4 */
-u32 dFTLuigiAnimPosePlayer_joint7[4] = {
-	0x500EFFC9, 0xFFEDFFA1, 0x08010001, 0x00000000,
+/* Joint 7: 8 AObjEvent16 values @ 0xD4 */
+u16 dFTLuigiAnimPosePlayer_joint7[8] = {
+	0x500E, 0xFFC9, 0xFFED, 0xFFA1, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 8: 5 words @ 0xE4 */
-u32 dFTLuigiAnimPosePlayer_joint8[5] = {
-	0x50EE0000, 0x00000000, 0x00000168, 0x00000801, 0x00010000,
+/* Joint 8: 10 AObjEvent16 values @ 0xE4 */
+u16 dFTLuigiAnimPosePlayer_joint8[10] = {
+	0x50EE, 0x0000, 0x0000, 0x0000, 0x0000, 0x0168, 0x0000, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 10: 5 words @ 0xF8 */
-u32 dFTLuigiAnimPosePlayer_joint10[5] = {
-	0x50EE0000, 0x00000000, 0x0000009C, 0xFFEE0801, 0x00010000,
+/* Joint 10: 10 AObjEvent16 values @ 0xF8 */
+u16 dFTLuigiAnimPosePlayer_joint10[10] = {
+	0x50EE, 0x0000, 0x0000, 0x0000, 0x0000, 0x009C, 0xFFEE, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 11: 4 words @ 0x10C */
-u32 dFTLuigiAnimPosePlayer_joint11[4] = {
-	0x500EFE07, 0x034FF424, 0x08010001, 0x00000000,
+/* Joint 11: 8 AObjEvent16 values @ 0x10C */
+u16 dFTLuigiAnimPosePlayer_joint11[8] = {
+	0x500E, 0xFE07, 0x034F, 0xF424, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 12: 6 words @ 0x11C */
-u32 dFTLuigiAnimPosePlayer_joint12[6] = {
-	0x2808FDE8, 0x00004806, 0x00000000, 0x20090001, 0xFDE80000, 0x00000000,
+/* Joint 12: 12 AObjEvent16 values @ 0x11C */
+u16 dFTLuigiAnimPosePlayer_joint12[12] = {
+	0x2808, 0xFDE8, 0x0000, 0x4806, 0x0000, 0x0000, 0x2009, 0x0001, 0xFDE8, 0x0000, 0x0000, 0x0000,
 };
 
-/* Joint 13: 4 words @ 0x134 */
-u32 dFTLuigiAnimPosePlayer_joint13[4] = {
-	0x500EFFA3, 0x007300BD, 0x08010001, 0x00000000,
+/* Joint 13: 8 AObjEvent16 values @ 0x134 */
+u16 dFTLuigiAnimPosePlayer_joint13[8] = {
+	0x500E, 0xFFA3, 0x0073, 0x00BD, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 15: 4 words @ 0x144 */
-u32 dFTLuigiAnimPosePlayer_joint15[4] = {
-	0x500E0000, 0x00000000, 0x08010001, 0x00000000,
+/* Joint 15: 8 AObjEvent16 values @ 0x144 */
+u16 dFTLuigiAnimPosePlayer_joint15[8] = {
+	0x500E, 0x0000, 0x0000, 0x0000, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 16: 8 words @ 0x154 */
-u32 dFTLuigiAnimPosePlayer_joint16[8] = {
-	0x200EF73F, 0x0000FC60, 0x00000598, 0x0000200F, 0x0001F73F, 0x0000FC60, 0x00000598, 0x00000000,
+/* Joint 16: 16 AObjEvent16 values @ 0x154 */
+u16 dFTLuigiAnimPosePlayer_joint16[16] = {
+	0x200E, 0xF73F, 0x0000, 0xFC60, 0x0000, 0x0598, 0x0000, 0x200F, 0x0001, 0xF73F, 0x0000, 0xFC60, 0x0000, 0x0598, 0x0000, 0x0000,
 };
 
-/* Joint 18: 4 words @ 0x174 */
-u32 dFTLuigiAnimPosePlayer_joint18[4] = {
-	0x500E0000, 0x0000028A, 0x08010001, 0x00000000,
+/* Joint 18: 8 AObjEvent16 values @ 0x174 */
+u16 dFTLuigiAnimPosePlayer_joint18[8] = {
+	0x500E, 0x0000, 0x0000, 0x028A, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 20: 8 words @ 0x184 */
-u32 dFTLuigiAnimPosePlayer_joint20[8] = {
-	0x200EFFB1, 0x00000127, 0x00000041, 0x0000200F, 0x0001FFB1, 0x00000127, 0x00000041, 0x00000000,
+/* Joint 20: 16 AObjEvent16 values @ 0x184 */
+u16 dFTLuigiAnimPosePlayer_joint20[16] = {
+	0x200E, 0xFFB1, 0x0000, 0x0127, 0x0000, 0x0041, 0x0000, 0x200F, 0x0001, 0xFFB1, 0x0000, 0x0127, 0x0000, 0x0041, 0x0000, 0x0000,
 };
 
-/* Joint 21: 4 words @ 0x1A4 */
-u32 dFTLuigiAnimPosePlayer_joint21[4] = {
-	0x500E0264, 0x02A5FF43, 0x08010001, 0x00000000,
+/* Joint 21: 8 AObjEvent16 values @ 0x1A4 */
+u16 dFTLuigiAnimPosePlayer_joint21[8] = {
+	0x500E, 0x0264, 0x02A5, 0xFF43, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 23: 11 words @ 0x1B4 */
-u32 dFTLuigiAnimPosePlayer_joint23[11] = {
-	0x500E0000, 0x00000275, 0x08010001, 0x00000000, 0x500EF993, 0x0785FA2F, 0x08010001, 0x00000000,
-	0x00000000, 0x00000000, 0x00000000,
+/* Joint 23: 22 AObjEvent16 values @ 0x1B4 */
+u16 dFTLuigiAnimPosePlayer_joint23[22] = {
+	0x500E, 0x0000, 0x0000, 0x0275, 0x0801, 0x0001, 0x0000, 0x0000, 0x500E, 0xF993, 0x0785, 0xFA2F, 0x0801, 0x0001, 0x0000, 0x0000,
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 };

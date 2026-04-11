@@ -1,27 +1,27 @@
 /* AnimJoint data for relocData file 2096 (FTPikachuAnimDamage) */
-/* 496 bytes: 104-byte header + per-joint AObjEvent32 scripts */
+/* 496 bytes: 104-byte header + per-joint AObjEvent16 scripts */
 
 #include "relocdata_types.h"
 
-extern u32 dFTPikachuAnimDamage_joint1[7];
-extern u32 dFTPikachuAnimDamage_joint2[5];
-extern u32 dFTPikachuAnimDamage_joint3[5];
-extern u32 dFTPikachuAnimDamage_joint5[4];
-extern u32 dFTPikachuAnimDamage_joint6[8];
-extern u32 dFTPikachuAnimDamage_joint7[8];
-extern u32 dFTPikachuAnimDamage_joint8[5];
-extern u32 dFTPikachuAnimDamage_joint9[5];
-extern u32 dFTPikachuAnimDamage_joint10[5];
-extern u32 dFTPikachuAnimDamage_joint11[5];
-extern u32 dFTPikachuAnimDamage_joint13[4];
-extern u32 dFTPikachuAnimDamage_joint14[4];
-extern u32 dFTPikachuAnimDamage_joint16[4];
-extern u32 dFTPikachuAnimDamage_joint17[4];
-extern u32 dFTPikachuAnimDamage_joint19[4];
-extern u32 dFTPikachuAnimDamage_joint21[4];
-extern u32 dFTPikachuAnimDamage_joint22[4];
-extern u32 dFTPikachuAnimDamage_joint24[4];
-extern u32 dFTPikachuAnimDamage_joint25[9];
+extern u16 dFTPikachuAnimDamage_joint1[14];
+extern u16 dFTPikachuAnimDamage_joint2[10];
+extern u16 dFTPikachuAnimDamage_joint3[10];
+extern u16 dFTPikachuAnimDamage_joint5[8];
+extern u16 dFTPikachuAnimDamage_joint6[16];
+extern u16 dFTPikachuAnimDamage_joint7[16];
+extern u16 dFTPikachuAnimDamage_joint8[10];
+extern u16 dFTPikachuAnimDamage_joint9[10];
+extern u16 dFTPikachuAnimDamage_joint10[10];
+extern u16 dFTPikachuAnimDamage_joint11[10];
+extern u16 dFTPikachuAnimDamage_joint13[8];
+extern u16 dFTPikachuAnimDamage_joint14[8];
+extern u16 dFTPikachuAnimDamage_joint16[8];
+extern u16 dFTPikachuAnimDamage_joint17[8];
+extern u16 dFTPikachuAnimDamage_joint19[8];
+extern u16 dFTPikachuAnimDamage_joint21[8];
+extern u16 dFTPikachuAnimDamage_joint22[8];
+extern u16 dFTPikachuAnimDamage_joint24[8];
+extern u16 dFTPikachuAnimDamage_joint25[18];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTPikachuAnimDamage_joints[] = {
@@ -53,98 +53,98 @@ u32 dFTPikachuAnimDamage_joints[] = {
 	0xFFFF0077, /* [25] END */
 };
 
-/* Joint 1: 7 words @ 0x68 */
-u32 dFTPikachuAnimDamage_joint1[7] = {
-	0x18C00348, 0x0000502E, 0x00000000, 0x00000000, 0x10C10004, 0x03480000, 0x00000000,
+/* Joint 1: 14 AObjEvent16 values @ 0x68 */
+u16 dFTPikachuAnimDamage_joint1[14] = {
+	0x18C0, 0x0348, 0x0000, 0x502E, 0x0000, 0x0000, 0x0000, 0x0000, 0x10C1, 0x0004, 0x0348, 0x0000, 0x0000, 0x0000,
 };
 
-/* Joint 2: 5 words @ 0x84 */
-u32 dFTPikachuAnimDamage_joint2[5] = {
-	0x50EE0000, 0x006B0000, 0x0000FF29, 0xFF8B0801, 0x00040000,
+/* Joint 2: 10 AObjEvent16 values @ 0x84 */
+u16 dFTPikachuAnimDamage_joint2[10] = {
+	0x50EE, 0x0000, 0x006B, 0x0000, 0x0000, 0xFF29, 0xFF8B, 0x0801, 0x0004, 0x0000,
 };
 
-/* Joint 3: 5 words @ 0x98 */
-u32 dFTPikachuAnimDamage_joint3[5] = {
-	0x50EE0000, 0x00000000, 0x0000012A, 0x00180801, 0x00040000,
+/* Joint 3: 10 AObjEvent16 values @ 0x98 */
+u16 dFTPikachuAnimDamage_joint3[10] = {
+	0x50EE, 0x0000, 0x0000, 0x0000, 0x0000, 0x012A, 0x0018, 0x0801, 0x0004, 0x0000,
 };
 
-/* Joint 5: 4 words @ 0xAC */
-u32 dFTPikachuAnimDamage_joint5[4] = {
-	0x50E00144, 0x00000139, 0x08010004, 0x00000000,
+/* Joint 5: 8 AObjEvent16 values @ 0xAC */
+u16 dFTPikachuAnimDamage_joint5[8] = {
+	0x50E0, 0x0144, 0x0000, 0x0139, 0x0801, 0x0004, 0x0000, 0x0000,
 };
 
-/* Joint 6: 8 words @ 0xBC */
-u32 dFTPikachuAnimDamage_joint6[8] = {
-	0x2804FEFE, 0x0000480A, 0x0324FCB1, 0x20050003, 0xFEFEFFFE, 0x20050001, 0xFEFE0000, 0x00000000,
+/* Joint 6: 16 AObjEvent16 values @ 0xBC */
+u16 dFTPikachuAnimDamage_joint6[16] = {
+	0x2804, 0xFEFE, 0x0000, 0x480A, 0x0324, 0xFCB1, 0x2005, 0x0003, 0xFEFE, 0xFFFE, 0x2005, 0x0001, 0xFEFE, 0x0000, 0x0000, 0x0000,
 };
 
-/* Joint 7: 8 words @ 0xDC */
-u32 dFTPikachuAnimDamage_joint7[8] = {
-	0x2808FFF6, 0x00004806, 0x00000000, 0x20090003, 0xFFF6FFFB, 0x20090001, 0xFFF60000, 0x00000000,
+/* Joint 7: 16 AObjEvent16 values @ 0xDC */
+u16 dFTPikachuAnimDamage_joint7[16] = {
+	0x2808, 0xFFF6, 0x0000, 0x4806, 0x0000, 0x0000, 0x2009, 0x0003, 0xFFF6, 0xFFFB, 0x2009, 0x0001, 0xFFF6, 0x0000, 0x0000, 0x0000,
 };
 
-/* Joint 8: 5 words @ 0xFC */
-u32 dFTPikachuAnimDamage_joint8[5] = {
-	0x50EEFF7A, 0x00000000, 0x000000B5, 0x00880801, 0x00040000,
+/* Joint 8: 10 AObjEvent16 values @ 0xFC */
+u16 dFTPikachuAnimDamage_joint8[10] = {
+	0x50EE, 0xFF7A, 0x0000, 0x0000, 0x0000, 0x00B5, 0x0088, 0x0801, 0x0004, 0x0000,
 };
 
-/* Joint 9: 5 words @ 0x110 */
-u32 dFTPikachuAnimDamage_joint9[5] = {
-	0x50EE0000, 0xFF95FCDC, 0xFDC60048, 0x021C0801, 0x00040000,
+/* Joint 9: 10 AObjEvent16 values @ 0x110 */
+u16 dFTPikachuAnimDamage_joint9[10] = {
+	0x50EE, 0x0000, 0xFF95, 0xFCDC, 0xFDC6, 0x0048, 0x021C, 0x0801, 0x0004, 0x0000,
 };
 
-/* Joint 10: 5 words @ 0x124 */
-u32 dFTPikachuAnimDamage_joint10[5] = {
-	0x50EE0192, 0x00000000, 0x00FF0162, 0x002B0801, 0x00040000,
+/* Joint 10: 10 AObjEvent16 values @ 0x124 */
+u16 dFTPikachuAnimDamage_joint10[10] = {
+	0x50EE, 0x0192, 0x0000, 0x0000, 0x00FF, 0x0162, 0x002B, 0x0801, 0x0004, 0x0000,
 };
 
-/* Joint 11: 5 words @ 0x138 */
-u32 dFTPikachuAnimDamage_joint11[5] = {
-	0x50EE0192, 0x00000000, 0xFF010162, 0x002B0801, 0x00040000,
+/* Joint 11: 10 AObjEvent16 values @ 0x138 */
+u16 dFTPikachuAnimDamage_joint11[10] = {
+	0x50EE, 0x0192, 0x0000, 0x0000, 0xFF01, 0x0162, 0x002B, 0x0801, 0x0004, 0x0000,
 };
 
-/* Joint 13: 4 words @ 0x14C */
-u32 dFTPikachuAnimDamage_joint13[4] = {
-	0x50E0FEBC, 0xFFA60139, 0x08010004, 0x00000000,
+/* Joint 13: 8 AObjEvent16 values @ 0x14C */
+u16 dFTPikachuAnimDamage_joint13[8] = {
+	0x50E0, 0xFEBC, 0xFFA6, 0x0139, 0x0801, 0x0004, 0x0000, 0x0000,
 };
 
-/* Joint 14: 4 words @ 0x15C */
-u32 dFTPikachuAnimDamage_joint14[4] = {
-	0x500E0324, 0xF8BF03C0, 0x08010004, 0x00000000,
+/* Joint 14: 8 AObjEvent16 values @ 0x15C */
+u16 dFTPikachuAnimDamage_joint14[8] = {
+	0x500E, 0x0324, 0xF8BF, 0x03C0, 0x0801, 0x0004, 0x0000, 0x0000,
 };
 
-/* Joint 16: 4 words @ 0x16C */
-u32 dFTPikachuAnimDamage_joint16[4] = {
-	0x500E0000, 0x0000FFF6, 0x08010004, 0x00000000,
+/* Joint 16: 8 AObjEvent16 values @ 0x16C */
+u16 dFTPikachuAnimDamage_joint16[8] = {
+	0x500E, 0x0000, 0x0000, 0xFFF6, 0x0801, 0x0004, 0x0000, 0x0000,
 };
 
-/* Joint 17: 4 words @ 0x17C */
-u32 dFTPikachuAnimDamage_joint17[4] = {
-	0x500E05EC, 0xF9C4050D, 0x08010004, 0x00000000,
+/* Joint 17: 8 AObjEvent16 values @ 0x17C */
+u16 dFTPikachuAnimDamage_joint17[8] = {
+	0x500E, 0x05EC, 0xF9C4, 0x050D, 0x0801, 0x0004, 0x0000, 0x0000,
 };
 
-/* Joint 19: 4 words @ 0x18C */
-u32 dFTPikachuAnimDamage_joint19[4] = {
-	0x500E0000, 0x00000345, 0x08010004, 0x00000000,
+/* Joint 19: 8 AObjEvent16 values @ 0x18C */
+u16 dFTPikachuAnimDamage_joint19[8] = {
+	0x500E, 0x0000, 0x0000, 0x0345, 0x0801, 0x0004, 0x0000, 0x0000,
 };
 
-/* Joint 21: 4 words @ 0x19C */
-u32 dFTPikachuAnimDamage_joint21[4] = {
-	0x500EF87C, 0xFA6206B3, 0x08010004, 0x00000000,
+/* Joint 21: 8 AObjEvent16 values @ 0x19C */
+u16 dFTPikachuAnimDamage_joint21[8] = {
+	0x500E, 0xF87C, 0xFA62, 0x06B3, 0x0801, 0x0004, 0x0000, 0x0000,
 };
 
-/* Joint 22: 4 words @ 0x1AC */
-u32 dFTPikachuAnimDamage_joint22[4] = {
-	0x500E00D4, 0x008BFD89, 0x08010004, 0x00000000,
+/* Joint 22: 8 AObjEvent16 values @ 0x1AC */
+u16 dFTPikachuAnimDamage_joint22[8] = {
+	0x500E, 0x00D4, 0x008B, 0xFD89, 0x0801, 0x0004, 0x0000, 0x0000,
 };
 
-/* Joint 24: 4 words @ 0x1BC */
-u32 dFTPikachuAnimDamage_joint24[4] = {
-	0x500E0000, 0x0000030C, 0x08010004, 0x00000000,
+/* Joint 24: 8 AObjEvent16 values @ 0x1BC */
+u16 dFTPikachuAnimDamage_joint24[8] = {
+	0x500E, 0x0000, 0x0000, 0x030C, 0x0801, 0x0004, 0x0000, 0x0000,
 };
 
-/* Joint 25: 9 words @ 0x1CC */
-u32 dFTPikachuAnimDamage_joint25[9] = {
-	0x500E064E, 0xF90B0804, 0x08010004, 0x00000000, 0x50EEFF2A, 0x00000000, 0x0000FF4C, 0xFE980801,
-	0x00040000,
+/* Joint 25: 18 AObjEvent16 values @ 0x1CC */
+u16 dFTPikachuAnimDamage_joint25[18] = {
+	0x500E, 0x064E, 0xF90B, 0x0804, 0x0801, 0x0004, 0x0000, 0x0000, 0x50EE, 0xFF2A, 0x0000, 0x0000, 0x0000, 0xFF4C, 0xFE98, 0x0801,
+	0x0004, 0x0000,
 };

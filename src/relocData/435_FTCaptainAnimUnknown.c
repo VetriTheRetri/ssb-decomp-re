@@ -1,24 +1,24 @@
 /* AnimJoint data for relocData file 435 (FTCaptainAnimUnknown) */
-/* 400 bytes: 100-byte header + per-joint AObjEvent32 scripts */
+/* 400 bytes: 100-byte header + per-joint AObjEvent16 scripts */
 
 #include "relocdata_types.h"
 
-extern u32 dFTCaptainAnimUnknown_joint1[5];
-extern u32 dFTCaptainAnimUnknown_joint2[5];
-extern u32 dFTCaptainAnimUnknown_joint4[5];
-extern u32 dFTCaptainAnimUnknown_joint5[4];
-extern u32 dFTCaptainAnimUnknown_joint6[4];
-extern u32 dFTCaptainAnimUnknown_joint7[4];
-extern u32 dFTCaptainAnimUnknown_joint8[4];
-extern u32 dFTCaptainAnimUnknown_joint10[4];
-extern u32 dFTCaptainAnimUnknown_joint11[4];
-extern u32 dFTCaptainAnimUnknown_joint12[4];
-extern u32 dFTCaptainAnimUnknown_joint16[4];
-extern u32 dFTCaptainAnimUnknown_joint17[4];
-extern u32 dFTCaptainAnimUnknown_joint19[4];
-extern u32 dFTCaptainAnimUnknown_joint21[4];
-extern u32 dFTCaptainAnimUnknown_joint22[4];
-extern u32 dFTCaptainAnimUnknown_joint24[11];
+extern u16 dFTCaptainAnimUnknown_joint1[10];
+extern u16 dFTCaptainAnimUnknown_joint2[10];
+extern u16 dFTCaptainAnimUnknown_joint4[10];
+extern u16 dFTCaptainAnimUnknown_joint5[8];
+extern u16 dFTCaptainAnimUnknown_joint6[8];
+extern u16 dFTCaptainAnimUnknown_joint7[8];
+extern u16 dFTCaptainAnimUnknown_joint8[8];
+extern u16 dFTCaptainAnimUnknown_joint10[8];
+extern u16 dFTCaptainAnimUnknown_joint11[8];
+extern u16 dFTCaptainAnimUnknown_joint12[8];
+extern u16 dFTCaptainAnimUnknown_joint16[8];
+extern u16 dFTCaptainAnimUnknown_joint17[8];
+extern u16 dFTCaptainAnimUnknown_joint19[8];
+extern u16 dFTCaptainAnimUnknown_joint21[8];
+extern u16 dFTCaptainAnimUnknown_joint22[8];
+extern u16 dFTCaptainAnimUnknown_joint24[22];
 
 /* Joint pointer table (25 entries, 100 bytes) */
 u32 dFTCaptainAnimUnknown_joints[] = {
@@ -52,83 +52,83 @@ u32 dFTCaptainAnimUnknown_joints[] = {
 /* 4-byte alignment padding */
 static u32 dFTCaptainAnimUnknown_pad[1] = { 0 };
 
-/* Joint 1: 5 words @ 0x68 */
-u32 dFTCaptainAnimUnknown_joint1[5] = {
-	0x50EEFFB9, 0xFE130050, 0x00000441, 0x00FD0801, 0x00010000,
+/* Joint 1: 10 AObjEvent16 values @ 0x68 */
+u16 dFTCaptainAnimUnknown_joint1[10] = {
+	0x50EE, 0xFFB9, 0xFE13, 0x0050, 0x0000, 0x0441, 0x00FD, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 2: 5 words @ 0x7C */
-u32 dFTCaptainAnimUnknown_joint2[5] = {
-	0x50EEFFC8, 0x0000001E, 0x00000000, 0x00000801, 0x00010000,
+/* Joint 2: 10 AObjEvent16 values @ 0x7C */
+u16 dFTCaptainAnimUnknown_joint2[10] = {
+	0x50EE, 0xFFC8, 0x0000, 0x001E, 0x0000, 0x0000, 0x0000, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 4: 5 words @ 0x90 */
-u32 dFTCaptainAnimUnknown_joint4[5] = {
-	0x50EE003D, 0x00510095, 0xFFE70010, 0x00170801, 0x00010000,
+/* Joint 4: 10 AObjEvent16 values @ 0x90 */
+u16 dFTCaptainAnimUnknown_joint4[10] = {
+	0x50EE, 0x003D, 0x0051, 0x0095, 0xFFE7, 0x0010, 0x0017, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 5: 4 words @ 0xA4 */
-u32 dFTCaptainAnimUnknown_joint5[4] = {
-	0x500EF79A, 0xF90106DE, 0x08010001, 0x00000000,
+/* Joint 5: 8 AObjEvent16 values @ 0xA4 */
+u16 dFTCaptainAnimUnknown_joint5[8] = {
+	0x500E, 0xF79A, 0xF901, 0x06DE, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 6: 4 words @ 0xB4 */
-u32 dFTCaptainAnimUnknown_joint6[4] = {
-	0x500E0000, 0x0000FCF1, 0x08010001, 0x00000000,
+/* Joint 6: 8 AObjEvent16 values @ 0xB4 */
+u16 dFTCaptainAnimUnknown_joint6[8] = {
+	0x500E, 0x0000, 0x0000, 0xFCF1, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 7: 4 words @ 0xC4 */
-u32 dFTCaptainAnimUnknown_joint7[4] = {
-	0x500EFD13, 0x009FFEBD, 0x08010001, 0x00000000,
+/* Joint 7: 8 AObjEvent16 values @ 0xC4 */
+u16 dFTCaptainAnimUnknown_joint7[8] = {
+	0x500E, 0xFD13, 0x009F, 0xFEBD, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 8: 4 words @ 0xD4 */
-u32 dFTCaptainAnimUnknown_joint8[4] = {
-	0x500E002E, 0x00A7FF56, 0x08010001, 0x00000000,
+/* Joint 8: 8 AObjEvent16 values @ 0xD4 */
+u16 dFTCaptainAnimUnknown_joint8[8] = {
+	0x500E, 0x002E, 0x00A7, 0xFF56, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 10: 4 words @ 0xE4 */
-u32 dFTCaptainAnimUnknown_joint10[4] = {
-	0x500EFFB3, 0xFEEBFFD7, 0x08010001, 0x00000000,
+/* Joint 10: 8 AObjEvent16 values @ 0xE4 */
+u16 dFTCaptainAnimUnknown_joint10[8] = {
+	0x500E, 0xFFB3, 0xFEEB, 0xFFD7, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 11: 4 words @ 0xF4 */
-u32 dFTCaptainAnimUnknown_joint11[4] = {
-	0x500E07D3, 0xF940F9B6, 0x08010001, 0x00000000,
+/* Joint 11: 8 AObjEvent16 values @ 0xF4 */
+u16 dFTCaptainAnimUnknown_joint11[8] = {
+	0x500E, 0x07D3, 0xF940, 0xF9B6, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 12: 4 words @ 0x104 */
-u32 dFTCaptainAnimUnknown_joint12[4] = {
-	0x500E0000, 0x0000FC9D, 0x08010001, 0x00000000,
+/* Joint 12: 8 AObjEvent16 values @ 0x104 */
+u16 dFTCaptainAnimUnknown_joint12[8] = {
+	0x500E, 0x0000, 0x0000, 0xFC9D, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 16: 4 words @ 0x114 */
-u32 dFTCaptainAnimUnknown_joint16[4] = {
-	0x500E0267, 0xFFD7FE85, 0x08010001, 0x00000000,
+/* Joint 16: 8 AObjEvent16 values @ 0x114 */
+u16 dFTCaptainAnimUnknown_joint16[8] = {
+	0x500E, 0x0267, 0xFFD7, 0xFE85, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 17: 4 words @ 0x124 */
-u32 dFTCaptainAnimUnknown_joint17[4] = {
-	0x500E0052, 0xFEA5FDB1, 0x08010001, 0x00000000,
+/* Joint 17: 8 AObjEvent16 values @ 0x124 */
+u16 dFTCaptainAnimUnknown_joint17[8] = {
+	0x500E, 0x0052, 0xFEA5, 0xFDB1, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 19: 4 words @ 0x134 */
-u32 dFTCaptainAnimUnknown_joint19[4] = {
-	0x500E0000, 0x00000305, 0x08010001, 0x00000000,
+/* Joint 19: 8 AObjEvent16 values @ 0x134 */
+u16 dFTCaptainAnimUnknown_joint19[8] = {
+	0x500E, 0x0000, 0x0000, 0x0305, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 21: 4 words @ 0x144 */
-u32 dFTCaptainAnimUnknown_joint21[4] = {
-	0x500EF89C, 0x05C9F973, 0x08010001, 0x00000000,
+/* Joint 21: 8 AObjEvent16 values @ 0x144 */
+u16 dFTCaptainAnimUnknown_joint21[8] = {
+	0x500E, 0xF89C, 0x05C9, 0xF973, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 22: 4 words @ 0x154 */
-u32 dFTCaptainAnimUnknown_joint22[4] = {
-	0x500EFE43, 0x0103FEFA, 0x08010001, 0x00000000,
+/* Joint 22: 8 AObjEvent16 values @ 0x154 */
+u16 dFTCaptainAnimUnknown_joint22[8] = {
+	0x500E, 0xFE43, 0x0103, 0xFEFA, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 24: 11 words @ 0x164 */
-u32 dFTCaptainAnimUnknown_joint24[11] = {
-	0x500E0000, 0x0000030D, 0x08010001, 0x00000000, 0x500E0196, 0x00C1FF76, 0x08010001, 0x00000000,
-	0x00000000, 0x00000000, 0x00000000,
+/* Joint 24: 22 AObjEvent16 values @ 0x164 */
+u16 dFTCaptainAnimUnknown_joint24[22] = {
+	0x500E, 0x0000, 0x0000, 0x030D, 0x0801, 0x0001, 0x0000, 0x0000, 0x500E, 0x0196, 0x00C1, 0xFF76, 0x0801, 0x0001, 0x0000, 0x0000,
+	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 };

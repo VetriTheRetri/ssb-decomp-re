@@ -1,24 +1,24 @@
 /* AnimJoint data for relocData file 640 (FTMarioAnimDamage) */
-/* 432 bytes: 96-byte header + per-joint AObjEvent32 scripts */
+/* 432 bytes: 96-byte header + per-joint AObjEvent16 scripts */
 
 #include "relocdata_types.h"
 
-extern u32 dFTMarioAnimDamage_joint1[6];
-extern u32 dFTMarioAnimDamage_joint2[4];
-extern u32 dFTMarioAnimDamage_joint4[5];
-extern u32 dFTMarioAnimDamage_joint5[4];
-extern u32 dFTMarioAnimDamage_joint6[4];
-extern u32 dFTMarioAnimDamage_joint7[4];
-extern u32 dFTMarioAnimDamage_joint10[4];
-extern u32 dFTMarioAnimDamage_joint11[11];
-extern u32 dFTMarioAnimDamage_joint12[7];
-extern u32 dFTMarioAnimDamage_joint13[4];
-extern u32 dFTMarioAnimDamage_joint15[5];
-extern u32 dFTMarioAnimDamage_joint16[4];
-extern u32 dFTMarioAnimDamage_joint18[4];
-extern u32 dFTMarioAnimDamage_joint20[4];
-extern u32 dFTMarioAnimDamage_joint21[4];
-extern u32 dFTMarioAnimDamage_joint23[10];
+extern u16 dFTMarioAnimDamage_joint1[12];
+extern u16 dFTMarioAnimDamage_joint2[8];
+extern u16 dFTMarioAnimDamage_joint4[10];
+extern u16 dFTMarioAnimDamage_joint5[8];
+extern u16 dFTMarioAnimDamage_joint6[8];
+extern u16 dFTMarioAnimDamage_joint7[8];
+extern u16 dFTMarioAnimDamage_joint10[8];
+extern u16 dFTMarioAnimDamage_joint11[22];
+extern u16 dFTMarioAnimDamage_joint12[14];
+extern u16 dFTMarioAnimDamage_joint13[8];
+extern u16 dFTMarioAnimDamage_joint15[10];
+extern u16 dFTMarioAnimDamage_joint16[8];
+extern u16 dFTMarioAnimDamage_joint18[8];
+extern u16 dFTMarioAnimDamage_joint20[8];
+extern u16 dFTMarioAnimDamage_joint21[8];
+extern u16 dFTMarioAnimDamage_joint23[20];
 
 /* Joint pointer table (24 entries, 96 bytes) */
 u32 dFTMarioAnimDamage_joints[] = {
@@ -48,84 +48,84 @@ u32 dFTMarioAnimDamage_joints[] = {
 	0xFFFF0066, /* [23] END */
 };
 
-/* Joint 1: 6 words @ 0x60 */
-u32 dFTMarioAnimDamage_joint1[6] = {
-	0x48E00014, 0x0209FFED, 0x50E10005, 0x007B029B, 0xFFA00801, 0x00040000,
+/* Joint 1: 12 AObjEvent16 values @ 0x60 */
+u16 dFTMarioAnimDamage_joint1[12] = {
+	0x48E0, 0x0014, 0x0209, 0xFFED, 0x50E1, 0x0005, 0x007B, 0x029B, 0xFFA0, 0x0801, 0x0004, 0x0000,
 };
 
-/* Joint 2: 4 words @ 0x78 */
-u32 dFTMarioAnimDamage_joint2[4] = {
-	0x500EFED1, 0xFEF400DF, 0x08010004, 0x00000000,
+/* Joint 2: 8 AObjEvent16 values @ 0x78 */
+u16 dFTMarioAnimDamage_joint2[8] = {
+	0x500E, 0xFED1, 0xFEF4, 0x00DF, 0x0801, 0x0004, 0x0000, 0x0000,
 };
 
-/* Joint 4: 5 words @ 0x88 */
-u32 dFTMarioAnimDamage_joint4[5] = {
-	0x50EE0008, 0x00000000, 0x00000000, 0x00000801, 0x00040000,
+/* Joint 4: 10 AObjEvent16 values @ 0x88 */
+u16 dFTMarioAnimDamage_joint4[10] = {
+	0x50EE, 0x0008, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0801, 0x0004, 0x0000,
 };
 
-/* Joint 5: 4 words @ 0x9C */
-u32 dFTMarioAnimDamage_joint5[4] = {
-	0x500EFA3C, 0xFE5E03D6, 0x08010004, 0x00000000,
+/* Joint 5: 8 AObjEvent16 values @ 0x9C */
+u16 dFTMarioAnimDamage_joint5[8] = {
+	0x500E, 0xFA3C, 0xFE5E, 0x03D6, 0x0801, 0x0004, 0x0000, 0x0000,
 };
 
-/* Joint 6: 4 words @ 0xAC */
-u32 dFTMarioAnimDamage_joint6[4] = {
-	0x500E0000, 0x0000FFF7, 0x08010004, 0x00000000,
+/* Joint 6: 8 AObjEvent16 values @ 0xAC */
+u16 dFTMarioAnimDamage_joint6[8] = {
+	0x500E, 0x0000, 0x0000, 0xFFF7, 0x0801, 0x0004, 0x0000, 0x0000,
 };
 
-/* Joint 7: 4 words @ 0xBC */
-u32 dFTMarioAnimDamage_joint7[4] = {
-	0x500E0000, 0xFDA10000, 0x08010004, 0x00000000,
+/* Joint 7: 8 AObjEvent16 values @ 0xBC */
+u16 dFTMarioAnimDamage_joint7[8] = {
+	0x500E, 0x0000, 0xFDA1, 0x0000, 0x0801, 0x0004, 0x0000, 0x0000,
 };
 
-/* Joint 10: 4 words @ 0xCC */
-u32 dFTMarioAnimDamage_joint10[4] = {
-	0x500EFF1B, 0x00000000, 0x08010004, 0x00000000,
+/* Joint 10: 8 AObjEvent16 values @ 0xCC */
+u16 dFTMarioAnimDamage_joint10[8] = {
+	0x500E, 0xFF1B, 0x0000, 0x0000, 0x0801, 0x0004, 0x0000, 0x0000,
 };
 
-/* Joint 11: 11 words @ 0xDC */
-u32 dFTMarioAnimDamage_joint11[11] = {
-	0x200EFF6A, 0x000004C4, 0x0000FDB1, 0x0000380F, 0x0003FF6A, 0x04C4FDB1, 0x200F0001, 0xFF6A0000,
-	0x04C40000, 0xFDB10000, 0x00000000,
+/* Joint 11: 22 AObjEvent16 values @ 0xDC */
+u16 dFTMarioAnimDamage_joint11[22] = {
+	0x200E, 0xFF6A, 0x0000, 0x04C4, 0x0000, 0xFDB1, 0x0000, 0x380F, 0x0003, 0xFF6A, 0x04C4, 0xFDB1, 0x200F, 0x0001, 0xFF6A, 0x0000,
+	0x04C4, 0x0000, 0xFDB1, 0x0000, 0x0000, 0x0000,
 };
 
-/* Joint 12: 7 words @ 0x108 */
-u32 dFTMarioAnimDamage_joint12[7] = {
-	0x2808FFF7, 0x00004806, 0x00000000, 0x38090003, 0xFFF72009, 0x0001FFF7, 0x00000000,
+/* Joint 12: 14 AObjEvent16 values @ 0x108 */
+u16 dFTMarioAnimDamage_joint12[14] = {
+	0x2808, 0xFFF7, 0x0000, 0x4806, 0x0000, 0x0000, 0x3809, 0x0003, 0xFFF7, 0x2009, 0x0001, 0xFFF7, 0x0000, 0x0000,
 };
 
-/* Joint 13: 4 words @ 0x124 */
-u32 dFTMarioAnimDamage_joint13[4] = {
-	0x500E0000, 0x025F0000, 0x08010004, 0x00000000,
+/* Joint 13: 8 AObjEvent16 values @ 0x124 */
+u16 dFTMarioAnimDamage_joint13[8] = {
+	0x500E, 0x0000, 0x025F, 0x0000, 0x0801, 0x0004, 0x0000, 0x0000,
 };
 
-/* Joint 15: 5 words @ 0x134 */
-u32 dFTMarioAnimDamage_joint15[5] = {
-	0x50EE0648, 0xFCDC0000, 0x00480000, 0x00240801, 0x00040000,
+/* Joint 15: 10 AObjEvent16 values @ 0x134 */
+u16 dFTMarioAnimDamage_joint15[10] = {
+	0x50EE, 0x0648, 0xFCDC, 0x0000, 0x0048, 0x0000, 0x0024, 0x0801, 0x0004, 0x0000,
 };
 
-/* Joint 16: 4 words @ 0x148 */
-u32 dFTMarioAnimDamage_joint16[4] = {
-	0x500EFF34, 0xFE79FEA5, 0x08010004, 0x00000000,
+/* Joint 16: 8 AObjEvent16 values @ 0x148 */
+u16 dFTMarioAnimDamage_joint16[8] = {
+	0x500E, 0xFF34, 0xFE79, 0xFEA5, 0x0801, 0x0004, 0x0000, 0x0000,
 };
 
-/* Joint 18: 4 words @ 0x158 */
-u32 dFTMarioAnimDamage_joint18[4] = {
-	0x500E0000, 0x00000007, 0x08010004, 0x00000000,
+/* Joint 18: 8 AObjEvent16 values @ 0x158 */
+u16 dFTMarioAnimDamage_joint18[8] = {
+	0x500E, 0x0000, 0x0000, 0x0007, 0x0801, 0x0004, 0x0000, 0x0000,
 };
 
-/* Joint 20: 4 words @ 0x168 */
-u32 dFTMarioAnimDamage_joint20[4] = {
-	0x500EFF7E, 0xFF3C0047, 0x08010004, 0x00000000,
+/* Joint 20: 8 AObjEvent16 values @ 0x168 */
+u16 dFTMarioAnimDamage_joint20[8] = {
+	0x500E, 0xFF7E, 0xFF3C, 0x0047, 0x0801, 0x0004, 0x0000, 0x0000,
 };
 
-/* Joint 21: 4 words @ 0x178 */
-u32 dFTMarioAnimDamage_joint21[4] = {
-	0x500E006D, 0x018EFEA0, 0x08010004, 0x00000000,
+/* Joint 21: 8 AObjEvent16 values @ 0x178 */
+u16 dFTMarioAnimDamage_joint21[8] = {
+	0x500E, 0x006D, 0x018E, 0xFEA0, 0x0801, 0x0004, 0x0000, 0x0000,
 };
 
-/* Joint 23: 10 words @ 0x188 */
-u32 dFTMarioAnimDamage_joint23[10] = {
-	0x500E0000, 0x00000007, 0x08010004, 0x00000000, 0x500E004B, 0x00FA0064, 0x08010004, 0x00000000,
-	0x00000000, 0x00000000,
+/* Joint 23: 20 AObjEvent16 values @ 0x188 */
+u16 dFTMarioAnimDamage_joint23[20] = {
+	0x500E, 0x0000, 0x0000, 0x0007, 0x0801, 0x0004, 0x0000, 0x0000, 0x500E, 0x004B, 0x00FA, 0x0064, 0x0801, 0x0004, 0x0000, 0x0000,
+	0x0000, 0x0000, 0x0000, 0x0000,
 };

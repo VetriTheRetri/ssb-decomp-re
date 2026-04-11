@@ -1,25 +1,25 @@
 /* AnimJoint data for relocData file 798 (FTFoxAnimDamage) */
-/* 496 bytes: 104-byte header + per-joint AObjEvent32 scripts */
+/* 496 bytes: 104-byte header + per-joint AObjEvent16 scripts */
 
 #include "relocdata_types.h"
 
-extern u32 dFTFoxAnimDamage_joint1[6];
-extern u32 dFTFoxAnimDamage_joint2[5];
-extern u32 dFTFoxAnimDamage_joint4[5];
-extern u32 dFTFoxAnimDamage_joint5[4];
-extern u32 dFTFoxAnimDamage_joint7[4];
-extern u32 dFTFoxAnimDamage_joint10[4];
-extern u32 dFTFoxAnimDamage_joint11[4];
-extern u32 dFTFoxAnimDamage_joint12[4];
-extern u32 dFTFoxAnimDamage_joint13[4];
-extern u32 dFTFoxAnimDamage_joint15[5];
-extern u32 dFTFoxAnimDamage_joint16[4];
-extern u32 dFTFoxAnimDamage_joint18[4];
-extern u32 dFTFoxAnimDamage_joint20[4];
-extern u32 dFTFoxAnimDamage_joint21[11];
-extern u32 dFTFoxAnimDamage_joint23[7];
-extern u32 dFTFoxAnimDamage_joint24[11];
-extern u32 dFTFoxAnimDamage_joint25[12];
+extern u16 dFTFoxAnimDamage_joint1[12];
+extern u16 dFTFoxAnimDamage_joint2[10];
+extern u16 dFTFoxAnimDamage_joint4[10];
+extern u16 dFTFoxAnimDamage_joint5[8];
+extern u16 dFTFoxAnimDamage_joint7[8];
+extern u16 dFTFoxAnimDamage_joint10[8];
+extern u16 dFTFoxAnimDamage_joint11[8];
+extern u16 dFTFoxAnimDamage_joint12[8];
+extern u16 dFTFoxAnimDamage_joint13[8];
+extern u16 dFTFoxAnimDamage_joint15[10];
+extern u16 dFTFoxAnimDamage_joint16[8];
+extern u16 dFTFoxAnimDamage_joint18[8];
+extern u16 dFTFoxAnimDamage_joint20[8];
+extern u16 dFTFoxAnimDamage_joint21[22];
+extern u16 dFTFoxAnimDamage_joint23[14];
+extern u16 dFTFoxAnimDamage_joint24[22];
+extern u16 dFTFoxAnimDamage_joint25[24];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTFoxAnimDamage_joints[] = {
@@ -51,90 +51,90 @@ u32 dFTFoxAnimDamage_joints[] = {
 	0xFFFF0074, /* [25] END */
 };
 
-/* Joint 1: 6 words @ 0x68 */
-u32 dFTFoxAnimDamage_joint1[6] = {
-	0x48E00014, 0x0360FFED, 0x50E10005, 0x007B03F2, 0xFFA00801, 0x00040000,
+/* Joint 1: 12 AObjEvent16 values @ 0x68 */
+u16 dFTFoxAnimDamage_joint1[12] = {
+	0x48E0, 0x0014, 0x0360, 0xFFED, 0x50E1, 0x0005, 0x007B, 0x03F2, 0xFFA0, 0x0801, 0x0004, 0x0000,
 };
 
-/* Joint 2: 5 words @ 0x80 */
-u32 dFTFoxAnimDamage_joint2[5] = {
-	0x50EE0000, 0x00000000, 0x00000000, 0x00000801, 0x00040000,
+/* Joint 2: 10 AObjEvent16 values @ 0x80 */
+u16 dFTFoxAnimDamage_joint2[10] = {
+	0x50EE, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0801, 0x0004, 0x0000,
 };
 
-/* Joint 4: 5 words @ 0x94 */
-u32 dFTFoxAnimDamage_joint4[5] = {
-	0x50EE0000, 0x00000000, 0x00000000, 0x00000801, 0x00040000,
+/* Joint 4: 10 AObjEvent16 values @ 0x94 */
+u16 dFTFoxAnimDamage_joint4[10] = {
+	0x50EE, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0801, 0x0004, 0x0000,
 };
 
-/* Joint 5: 4 words @ 0xA8 */
-u32 dFTFoxAnimDamage_joint5[4] = {
-	0x500E00C6, 0xFEF7FBF1, 0x08010004, 0x00000000,
+/* Joint 5: 8 AObjEvent16 values @ 0xA8 */
+u16 dFTFoxAnimDamage_joint5[8] = {
+	0x500E, 0x00C6, 0xFEF7, 0xFBF1, 0x0801, 0x0004, 0x0000, 0x0000,
 };
 
-/* Joint 7: 4 words @ 0xB8 */
-u32 dFTFoxAnimDamage_joint7[4] = {
-	0x500E0000, 0x0000FFF9, 0x08010004, 0x00000000,
+/* Joint 7: 8 AObjEvent16 values @ 0xB8 */
+u16 dFTFoxAnimDamage_joint7[8] = {
+	0x500E, 0x0000, 0x0000, 0xFFF9, 0x0801, 0x0004, 0x0000, 0x0000,
 };
 
-/* Joint 10: 4 words @ 0xC8 */
-u32 dFTFoxAnimDamage_joint10[4] = {
-	0x500EFEF9, 0x00000000, 0x08010004, 0x00000000,
+/* Joint 10: 8 AObjEvent16 values @ 0xC8 */
+u16 dFTFoxAnimDamage_joint10[8] = {
+	0x500E, 0xFEF9, 0x0000, 0x0000, 0x0801, 0x0004, 0x0000, 0x0000,
 };
 
-/* Joint 11: 4 words @ 0xD8 */
-u32 dFTFoxAnimDamage_joint11[4] = {
-	0x500E0567, 0x00DB0360, 0x08010004, 0x00000000,
+/* Joint 11: 8 AObjEvent16 values @ 0xD8 */
+u16 dFTFoxAnimDamage_joint11[8] = {
+	0x500E, 0x0567, 0x00DB, 0x0360, 0x0801, 0x0004, 0x0000, 0x0000,
 };
 
-/* Joint 12: 4 words @ 0xE8 */
-u32 dFTFoxAnimDamage_joint12[4] = {
-	0x500E0000, 0x0000FDD4, 0x08010004, 0x00000000,
+/* Joint 12: 8 AObjEvent16 values @ 0xE8 */
+u16 dFTFoxAnimDamage_joint12[8] = {
+	0x500E, 0x0000, 0x0000, 0xFDD4, 0x0801, 0x0004, 0x0000, 0x0000,
 };
 
-/* Joint 13: 4 words @ 0xF8 */
-u32 dFTFoxAnimDamage_joint13[4] = {
-	0x500E01DB, 0xFF24009A, 0x08010004, 0x00000000,
+/* Joint 13: 8 AObjEvent16 values @ 0xF8 */
+u16 dFTFoxAnimDamage_joint13[8] = {
+	0x500E, 0x01DB, 0xFF24, 0x009A, 0x0801, 0x0004, 0x0000, 0x0000,
 };
 
-/* Joint 15: 5 words @ 0x108 */
-u32 dFTFoxAnimDamage_joint15[5] = {
-	0x50EE0000, 0xFCDC0648, 0x003CFFC4, 0x000C0801, 0x00040000,
+/* Joint 15: 10 AObjEvent16 values @ 0x108 */
+u16 dFTFoxAnimDamage_joint15[10] = {
+	0x50EE, 0x0000, 0xFCDC, 0x0648, 0x003C, 0xFFC4, 0x000C, 0x0801, 0x0004, 0x0000,
 };
 
-/* Joint 16: 4 words @ 0x11C */
-u32 dFTFoxAnimDamage_joint16[4] = {
-	0x500EFFD5, 0xFF1AFBD6, 0x08010004, 0x00000000,
+/* Joint 16: 8 AObjEvent16 values @ 0x11C */
+u16 dFTFoxAnimDamage_joint16[8] = {
+	0x500E, 0xFFD5, 0xFF1A, 0xFBD6, 0x0801, 0x0004, 0x0000, 0x0000,
 };
 
-/* Joint 18: 4 words @ 0x12C */
-u32 dFTFoxAnimDamage_joint18[4] = {
-	0x500E0000, 0x00000157, 0x08010004, 0x00000000,
+/* Joint 18: 8 AObjEvent16 values @ 0x12C */
+u16 dFTFoxAnimDamage_joint18[8] = {
+	0x500E, 0x0000, 0x0000, 0x0157, 0x0801, 0x0004, 0x0000, 0x0000,
 };
 
-/* Joint 20: 4 words @ 0x13C */
-u32 dFTFoxAnimDamage_joint20[4] = {
-	0x500E004A, 0x00DCFF76, 0x08010004, 0x00000000,
+/* Joint 20: 8 AObjEvent16 values @ 0x13C */
+u16 dFTFoxAnimDamage_joint20[8] = {
+	0x500E, 0x004A, 0x00DC, 0xFF76, 0x0801, 0x0004, 0x0000, 0x0000,
 };
 
-/* Joint 21: 11 words @ 0x14C */
-u32 dFTFoxAnimDamage_joint21[11] = {
-	0x200E00D1, 0x0000016E, 0x00000043, 0x0000380F, 0x000300D1, 0x016E0043, 0x200F0001, 0x00D10000,
-	0x016E0000, 0x00430000, 0x00000000,
+/* Joint 21: 22 AObjEvent16 values @ 0x14C */
+u16 dFTFoxAnimDamage_joint21[22] = {
+	0x200E, 0x00D1, 0x0000, 0x016E, 0x0000, 0x0043, 0x0000, 0x380F, 0x0003, 0x00D1, 0x016E, 0x0043, 0x200F, 0x0001, 0x00D1, 0x0000,
+	0x016E, 0x0000, 0x0043, 0x0000, 0x0000, 0x0000,
 };
 
-/* Joint 23: 7 words @ 0x178 */
-u32 dFTFoxAnimDamage_joint23[7] = {
-	0x28080205, 0x00004806, 0x00000000, 0x38090003, 0x02052009, 0x00010205, 0x00000000,
+/* Joint 23: 14 AObjEvent16 values @ 0x178 */
+u16 dFTFoxAnimDamage_joint23[14] = {
+	0x2808, 0x0205, 0x0000, 0x4806, 0x0000, 0x0000, 0x3809, 0x0003, 0x0205, 0x2009, 0x0001, 0x0205, 0x0000, 0x0000,
 };
 
-/* Joint 24: 11 words @ 0x194 */
-u32 dFTFoxAnimDamage_joint24[11] = {
-	0x200EFEC9, 0x0000FF38, 0x0000004B, 0x0000380F, 0x0003FEC9, 0xFF38004B, 0x200F0001, 0xFEC90000,
-	0xFF380000, 0x004B0000, 0x00000000,
+/* Joint 24: 22 AObjEvent16 values @ 0x194 */
+u16 dFTFoxAnimDamage_joint24[22] = {
+	0x200E, 0xFEC9, 0x0000, 0xFF38, 0x0000, 0x004B, 0x0000, 0x380F, 0x0003, 0xFEC9, 0xFF38, 0x004B, 0x200F, 0x0001, 0xFEC9, 0x0000,
+	0xFF38, 0x0000, 0x004B, 0x0000, 0x0000, 0x0000,
 };
 
-/* Joint 25: 12 words @ 0x1C0 */
-u32 dFTFoxAnimDamage_joint25[12] = {
-	0x500E0000, 0x00000000, 0x08010004, 0x00000000, 0x50EE0000, 0x00000000, 0x00000040, 0xFE3E0801,
-	0x00040000, 0x00000000, 0x00000000, 0x00000000,
+/* Joint 25: 24 AObjEvent16 values @ 0x1C0 */
+u16 dFTFoxAnimDamage_joint25[24] = {
+	0x500E, 0x0000, 0x0000, 0x0000, 0x0801, 0x0004, 0x0000, 0x0000, 0x50EE, 0x0000, 0x0000, 0x0000, 0x0000, 0x0040, 0xFE3E, 0x0801,
+	0x0004, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 };

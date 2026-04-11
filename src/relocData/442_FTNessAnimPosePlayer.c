@@ -1,27 +1,27 @@
 /* AnimJoint data for relocData file 442 (FTNessAnimPosePlayer) */
-/* 544 bytes: 104-byte header + per-joint AObjEvent32 scripts */
+/* 544 bytes: 104-byte header + per-joint AObjEvent16 scripts */
 
 #include "relocdata_types.h"
 
-extern u32 dFTNessAnimPosePlayer_joint1[9];
-extern u32 dFTNessAnimPosePlayer_joint2[4];
-extern u32 dFTNessAnimPosePlayer_joint4[5];
-extern u32 dFTNessAnimPosePlayer_joint5[8];
-extern u32 dFTNessAnimPosePlayer_joint6[6];
-extern u32 dFTNessAnimPosePlayer_joint7[9];
-extern u32 dFTNessAnimPosePlayer_joint8[5];
-extern u32 dFTNessAnimPosePlayer_joint10[5];
-extern u32 dFTNessAnimPosePlayer_joint11[4];
-extern u32 dFTNessAnimPosePlayer_joint12[4];
-extern u32 dFTNessAnimPosePlayer_joint13[9];
-extern u32 dFTNessAnimPosePlayer_joint15[5];
-extern u32 dFTNessAnimPosePlayer_joint16[4];
-extern u32 dFTNessAnimPosePlayer_joint18[4];
-extern u32 dFTNessAnimPosePlayer_joint19[4];
-extern u32 dFTNessAnimPosePlayer_joint21[5];
-extern u32 dFTNessAnimPosePlayer_joint22[4];
-extern u32 dFTNessAnimPosePlayer_joint24[4];
-extern u32 dFTNessAnimPosePlayer_joint25[12];
+extern u16 dFTNessAnimPosePlayer_joint1[18];
+extern u16 dFTNessAnimPosePlayer_joint2[8];
+extern u16 dFTNessAnimPosePlayer_joint4[10];
+extern u16 dFTNessAnimPosePlayer_joint5[16];
+extern u16 dFTNessAnimPosePlayer_joint6[12];
+extern u16 dFTNessAnimPosePlayer_joint7[18];
+extern u16 dFTNessAnimPosePlayer_joint8[10];
+extern u16 dFTNessAnimPosePlayer_joint10[10];
+extern u16 dFTNessAnimPosePlayer_joint11[8];
+extern u16 dFTNessAnimPosePlayer_joint12[8];
+extern u16 dFTNessAnimPosePlayer_joint13[18];
+extern u16 dFTNessAnimPosePlayer_joint15[10];
+extern u16 dFTNessAnimPosePlayer_joint16[8];
+extern u16 dFTNessAnimPosePlayer_joint18[8];
+extern u16 dFTNessAnimPosePlayer_joint19[8];
+extern u16 dFTNessAnimPosePlayer_joint21[10];
+extern u16 dFTNessAnimPosePlayer_joint22[8];
+extern u16 dFTNessAnimPosePlayer_joint24[8];
+extern u16 dFTNessAnimPosePlayer_joint25[24];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTNessAnimPosePlayer_joints[] = {
@@ -53,101 +53,101 @@ u32 dFTNessAnimPosePlayer_joints[] = {
 	0xFFFF0080, /* [25] END */
 };
 
-/* Joint 1: 9 words @ 0x68 */
-u32 dFTNessAnimPosePlayer_joint1[9] = {
-	0x28C001A4, 0xFFD500AE, 0x000D482E, 0x00DA0087, 0x003CFFEE, 0x20C10001, 0x01A4FFD5, 0x00AE000D,
-	0x00000000,
+/* Joint 1: 18 AObjEvent16 values @ 0x68 */
+u16 dFTNessAnimPosePlayer_joint1[18] = {
+	0x28C0, 0x01A4, 0xFFD5, 0x00AE, 0x000D, 0x482E, 0x00DA, 0x0087, 0x003C, 0xFFEE, 0x20C1, 0x0001, 0x01A4, 0xFFD5, 0x00AE, 0x000D,
+	0x0000, 0x0000,
 };
 
-/* Joint 2: 4 words @ 0x8C */
-u32 dFTNessAnimPosePlayer_joint2[4] = {
-	0x500E00B5, 0xFE980008, 0x08010001, 0x00000000,
+/* Joint 2: 8 AObjEvent16 values @ 0x8C */
+u16 dFTNessAnimPosePlayer_joint2[8] = {
+	0x500E, 0x00B5, 0xFE98, 0x0008, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 4: 5 words @ 0x9C */
-u32 dFTNessAnimPosePlayer_joint4[5] = {
-	0x50EE0000, 0x00300000, 0x00000000, 0x00000801, 0x00010000,
+/* Joint 4: 10 AObjEvent16 values @ 0x9C */
+u16 dFTNessAnimPosePlayer_joint4[10] = {
+	0x50EE, 0x0000, 0x0030, 0x0000, 0x0000, 0x0000, 0x0000, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 5: 8 words @ 0xB0 */
-u32 dFTNessAnimPosePlayer_joint5[8] = {
-	0x200EFDBC, 0x0000FB1E, 0x0000011D, 0x0000200F, 0x0001FDBC, 0x0000FB1E, 0x0000011D, 0x00000000,
+/* Joint 5: 16 AObjEvent16 values @ 0xB0 */
+u16 dFTNessAnimPosePlayer_joint5[16] = {
+	0x200E, 0xFDBC, 0x0000, 0xFB1E, 0x0000, 0x011D, 0x0000, 0x200F, 0x0001, 0xFDBC, 0x0000, 0xFB1E, 0x0000, 0x011D, 0x0000, 0x0000,
 };
 
-/* Joint 6: 6 words @ 0xD0 */
-u32 dFTNessAnimPosePlayer_joint6[6] = {
-	0x2808FEA5, 0x00004806, 0x00000000, 0x20090001, 0xFEA50000, 0x00000000,
+/* Joint 6: 12 AObjEvent16 values @ 0xD0 */
+u16 dFTNessAnimPosePlayer_joint6[12] = {
+	0x2808, 0xFEA5, 0x0000, 0x4806, 0x0000, 0x0000, 0x2009, 0x0001, 0xFEA5, 0x0000, 0x0000, 0x0000,
 };
 
-/* Joint 7: 9 words @ 0xE8 */
-u32 dFTNessAnimPosePlayer_joint7[9] = {
-	0x280C0031, 0x00000080, 0x000048E2, 0xFEE3008F, 0x00000000, 0x200D0001, 0x00310000, 0x00800000,
-	0x00000000,
+/* Joint 7: 18 AObjEvent16 values @ 0xE8 */
+u16 dFTNessAnimPosePlayer_joint7[18] = {
+	0x280C, 0x0031, 0x0000, 0x0080, 0x0000, 0x48E2, 0xFEE3, 0x008F, 0x0000, 0x0000, 0x200D, 0x0001, 0x0031, 0x0000, 0x0080, 0x0000,
+	0x0000, 0x0000,
 };
 
-/* Joint 8: 5 words @ 0x10C */
-u32 dFTNessAnimPosePlayer_joint8[5] = {
-	0x50EEFE33, 0xFE920077, 0x0000012C, 0x00000801, 0x00010000,
+/* Joint 8: 10 AObjEvent16 values @ 0x10C */
+u16 dFTNessAnimPosePlayer_joint8[10] = {
+	0x50EE, 0xFE33, 0xFE92, 0x0077, 0x0000, 0x012C, 0x0000, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 10: 5 words @ 0x120 */
-u32 dFTNessAnimPosePlayer_joint10[5] = {
-	0x50EE0061, 0x00BF00F8, 0x00000000, 0x00000801, 0x00010000,
+/* Joint 10: 10 AObjEvent16 values @ 0x120 */
+u16 dFTNessAnimPosePlayer_joint10[10] = {
+	0x50EE, 0x0061, 0x00BF, 0x00F8, 0x0000, 0x0000, 0x0000, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 11: 4 words @ 0x134 */
-u32 dFTNessAnimPosePlayer_joint11[4] = {
-	0x500EF6F7, 0x021C0010, 0x08010001, 0x00000000,
+/* Joint 11: 8 AObjEvent16 values @ 0x134 */
+u16 dFTNessAnimPosePlayer_joint11[8] = {
+	0x500E, 0xF6F7, 0x021C, 0x0010, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 12: 4 words @ 0x144 */
-u32 dFTNessAnimPosePlayer_joint12[4] = {
-	0x500E0000, 0x0000FB75, 0x08010001, 0x00000000,
+/* Joint 12: 8 AObjEvent16 values @ 0x144 */
+u16 dFTNessAnimPosePlayer_joint12[8] = {
+	0x500E, 0x0000, 0x0000, 0xFB75, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 13: 9 words @ 0x154 */
-u32 dFTNessAnimPosePlayer_joint13[9] = {
-	0x28060393, 0x0004FF98, 0x000048E8, 0x0006008F, 0x00000000, 0x20070001, 0x03930004, 0xFF980000,
-	0x00000000,
+/* Joint 13: 18 AObjEvent16 values @ 0x154 */
+u16 dFTNessAnimPosePlayer_joint13[18] = {
+	0x2806, 0x0393, 0x0004, 0xFF98, 0x0000, 0x48E8, 0x0006, 0x008F, 0x0000, 0x0000, 0x2007, 0x0001, 0x0393, 0x0004, 0xFF98, 0x0000,
+	0x0000, 0x0000,
 };
 
-/* Joint 15: 5 words @ 0x178 */
-u32 dFTNessAnimPosePlayer_joint15[5] = {
-	0x50EE03AA, 0xFC5902A9, 0x004B0040, 0x00300801, 0x00010000,
+/* Joint 15: 10 AObjEvent16 values @ 0x178 */
+u16 dFTNessAnimPosePlayer_joint15[10] = {
+	0x50EE, 0x03AA, 0xFC59, 0x02A9, 0x004B, 0x0040, 0x0030, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 16: 4 words @ 0x18C */
-u32 dFTNessAnimPosePlayer_joint16[4] = {
-	0x500E06D6, 0xFB12F577, 0x08010001, 0x00000000,
+/* Joint 16: 8 AObjEvent16 values @ 0x18C */
+u16 dFTNessAnimPosePlayer_joint16[8] = {
+	0x500E, 0x06D6, 0xFB12, 0xF577, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 18: 4 words @ 0x19C */
-u32 dFTNessAnimPosePlayer_joint18[4] = {
-	0x500E0000, 0x0000028C, 0x08010001, 0x00000000,
+/* Joint 18: 8 AObjEvent16 values @ 0x19C */
+u16 dFTNessAnimPosePlayer_joint18[8] = {
+	0x500E, 0x0000, 0x0000, 0x028C, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 19: 4 words @ 0x1AC */
-u32 dFTNessAnimPosePlayer_joint19[4] = {
-	0x500EF95D, 0x06E9FA53, 0x08010001, 0x00000000,
+/* Joint 19: 8 AObjEvent16 values @ 0x1AC */
+u16 dFTNessAnimPosePlayer_joint19[8] = {
+	0x500E, 0xF95D, 0x06E9, 0xFA53, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 21: 5 words @ 0x1BC */
-u32 dFTNessAnimPosePlayer_joint21[5] = {
-	0x50EEFDE8, 0x00A300CE, 0x007EFFAE, 0xFFF40801, 0x00010000,
+/* Joint 21: 10 AObjEvent16 values @ 0x1BC */
+u16 dFTNessAnimPosePlayer_joint21[10] = {
+	0x50EE, 0xFDE8, 0x00A3, 0x00CE, 0x007E, 0xFFAE, 0xFFF4, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 22: 4 words @ 0x1D0 */
-u32 dFTNessAnimPosePlayer_joint22[4] = {
-	0x500EFFDC, 0x00E3FFAC, 0x08010001, 0x00000000,
+/* Joint 22: 8 AObjEvent16 values @ 0x1D0 */
+u16 dFTNessAnimPosePlayer_joint22[8] = {
+	0x500E, 0xFFDC, 0x00E3, 0xFFAC, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 24: 4 words @ 0x1E0 */
-u32 dFTNessAnimPosePlayer_joint24[4] = {
-	0x500E0000, 0x00000007, 0x08010001, 0x00000000,
+/* Joint 24: 8 AObjEvent16 values @ 0x1E0 */
+u16 dFTNessAnimPosePlayer_joint24[8] = {
+	0x500E, 0x0000, 0x0000, 0x0007, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 25: 12 words @ 0x1F0 */
-u32 dFTNessAnimPosePlayer_joint25[12] = {
-	0x500E00EE, 0x005EFF7E, 0x08010001, 0x00000000, 0x50EEFF40, 0x00000000, 0xFF82FFAE, 0xFFF40801,
-	0x00010000, 0x00000000, 0x00000000, 0x00000000,
+/* Joint 25: 24 AObjEvent16 values @ 0x1F0 */
+u16 dFTNessAnimPosePlayer_joint25[24] = {
+	0x500E, 0x00EE, 0x005E, 0xFF7E, 0x0801, 0x0001, 0x0000, 0x0000, 0x50EE, 0xFF40, 0x0000, 0x0000, 0xFF82, 0xFFAE, 0xFFF4, 0x0801,
+	0x0001, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 };

@@ -1,23 +1,23 @@
 /* AnimJoint data for relocData file 427 (FTKirbyAnimPose) */
-/* 512 bytes: 88-byte header + per-joint AObjEvent32 scripts */
+/* 512 bytes: 88-byte header + per-joint AObjEvent16 scripts */
 
 #include "relocdata_types.h"
 
-extern u32 dFTKirbyAnimPose_joint1[7];
-extern u32 dFTKirbyAnimPose_joint2[5];
-extern u32 dFTKirbyAnimPose_joint3[7];
-extern u32 dFTKirbyAnimPose_joint5[7];
-extern u32 dFTKirbyAnimPose_joint6[10];
-extern u32 dFTKirbyAnimPose_joint7[4];
-extern u32 dFTKirbyAnimPose_joint9[7];
-extern u32 dFTKirbyAnimPose_joint10[10];
-extern u32 dFTKirbyAnimPose_joint11[4];
-extern u32 dFTKirbyAnimPose_joint13[5];
-extern u32 dFTKirbyAnimPose_joint14[5];
-extern u32 dFTKirbyAnimPose_joint16[4];
-extern u32 dFTKirbyAnimPose_joint18[5];
-extern u32 dFTKirbyAnimPose_joint19[10];
-extern u32 dFTKirbyAnimPose_joint21[16];
+extern u16 dFTKirbyAnimPose_joint1[14];
+extern u16 dFTKirbyAnimPose_joint2[10];
+extern u16 dFTKirbyAnimPose_joint3[14];
+extern u16 dFTKirbyAnimPose_joint5[14];
+extern u16 dFTKirbyAnimPose_joint6[20];
+extern u16 dFTKirbyAnimPose_joint7[8];
+extern u16 dFTKirbyAnimPose_joint9[14];
+extern u16 dFTKirbyAnimPose_joint10[20];
+extern u16 dFTKirbyAnimPose_joint11[8];
+extern u16 dFTKirbyAnimPose_joint13[10];
+extern u16 dFTKirbyAnimPose_joint14[10];
+extern u16 dFTKirbyAnimPose_joint16[8];
+extern u16 dFTKirbyAnimPose_joint18[10];
+extern u16 dFTKirbyAnimPose_joint19[20];
+extern u16 dFTKirbyAnimPose_joint21[32];
 
 /* Joint pointer table (22 entries, 88 bytes) */
 u32 dFTKirbyAnimPose_joints[] = {
@@ -45,81 +45,81 @@ u32 dFTKirbyAnimPose_joints[] = {
 	0xFFFF0076, /* [21] END */
 };
 
-/* Joint 1: 7 words @ 0x58 */
-u32 dFTKirbyAnimPose_joint1[7] = {
-	0x57EE0175, 0xFE42FF56, 0x000001E0, 0x00001000, 0x10001000, 0x08010001, 0x00000000,
+/* Joint 1: 14 AObjEvent16 values @ 0x58 */
+u16 dFTKirbyAnimPose_joint1[14] = {
+	0x57EE, 0x0175, 0xFE42, 0xFF56, 0x0000, 0x01E0, 0x0000, 0x1000, 0x1000, 0x1000, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 2: 5 words @ 0x74 */
-u32 dFTKirbyAnimPose_joint2[5] = {
-	0x50EE0000, 0x00000000, 0x0000FEC8, 0x00000801, 0x00010000,
+/* Joint 2: 10 AObjEvent16 values @ 0x74 */
+u16 dFTKirbyAnimPose_joint2[10] = {
+	0x50EE, 0x0000, 0x0000, 0x0000, 0x0000, 0xFEC8, 0x0000, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 3: 7 words @ 0x88 */
-u32 dFTKirbyAnimPose_joint3[7] = {
-	0x57EE0000, 0x00000000, 0x00000138, 0x00001000, 0x10001000, 0x08010001, 0x00000000,
+/* Joint 3: 14 AObjEvent16 values @ 0x88 */
+u16 dFTKirbyAnimPose_joint3[14] = {
+	0x57EE, 0x0000, 0x0000, 0x0000, 0x0000, 0x0138, 0x0000, 0x1000, 0x1000, 0x1000, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 5: 7 words @ 0xA4 */
-u32 dFTKirbyAnimPose_joint5[7] = {
-	0x57EE0000, 0x00000000, 0xFF100000, 0x00001000, 0x10001000, 0x08010001, 0x00000000,
+/* Joint 5: 14 AObjEvent16 values @ 0xA4 */
+u16 dFTKirbyAnimPose_joint5[14] = {
+	0x57EE, 0x0000, 0x0000, 0x0000, 0xFF10, 0x0000, 0x0000, 0x1000, 0x1000, 0x1000, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 6: 10 words @ 0xC0 */
-u32 dFTKirbyAnimPose_joint6[10] = {
-	0x280E0025, 0x0000FB38, 0x0000FF63, 0x00004F00, 0x0C001000, 0x1000200F, 0x00010025, 0x0000FB38,
-	0x0000FF63, 0x00000000,
+/* Joint 6: 20 AObjEvent16 values @ 0xC0 */
+u16 dFTKirbyAnimPose_joint6[20] = {
+	0x280E, 0x0025, 0x0000, 0xFB38, 0x0000, 0xFF63, 0x0000, 0x4F00, 0x0C00, 0x1000, 0x1000, 0x200F, 0x0001, 0x0025, 0x0000, 0xFB38,
+	0x0000, 0xFF63, 0x0000, 0x0000,
 };
 
-/* Joint 7: 4 words @ 0xE8 */
-u32 dFTKirbyAnimPose_joint7[4] = {
-	0x500E0000, 0x00000000, 0x08010001, 0x00000000,
+/* Joint 7: 8 AObjEvent16 values @ 0xE8 */
+u16 dFTKirbyAnimPose_joint7[8] = {
+	0x500E, 0x0000, 0x0000, 0x0000, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 9: 7 words @ 0xF8 */
-u32 dFTKirbyAnimPose_joint9[7] = {
-	0x57EE0000, 0x00000000, 0x00F00000, 0x00001000, 0x10001000, 0x08010001, 0x00000000,
+/* Joint 9: 14 AObjEvent16 values @ 0xF8 */
+u16 dFTKirbyAnimPose_joint9[14] = {
+	0x57EE, 0x0000, 0x0000, 0x0000, 0x00F0, 0x0000, 0x0000, 0x1000, 0x1000, 0x1000, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 10: 10 words @ 0x114 */
-u32 dFTKirbyAnimPose_joint10[10] = {
-	0x280E0003, 0x0000F855, 0x0000FFBA, 0x00004F00, 0x0C001000, 0x1000200F, 0x00010004, 0x0000F855,
-	0x0000FFBA, 0x00000000,
+/* Joint 10: 20 AObjEvent16 values @ 0x114 */
+u16 dFTKirbyAnimPose_joint10[20] = {
+	0x280E, 0x0003, 0x0000, 0xF855, 0x0000, 0xFFBA, 0x0000, 0x4F00, 0x0C00, 0x1000, 0x1000, 0x200F, 0x0001, 0x0004, 0x0000, 0xF855,
+	0x0000, 0xFFBA, 0x0000, 0x0000,
 };
 
-/* Joint 11: 4 words @ 0x13C */
-u32 dFTKirbyAnimPose_joint11[4] = {
-	0x500E0000, 0x00000000, 0x08010001, 0x00000000,
+/* Joint 11: 8 AObjEvent16 values @ 0x13C */
+u16 dFTKirbyAnimPose_joint11[8] = {
+	0x500E, 0x0000, 0x0000, 0x0000, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 13: 5 words @ 0x14C */
-u32 dFTKirbyAnimPose_joint13[5] = {
-	0x50EEFCDC, 0x0000FBD0, 0x00CCFF88, 0x00000801, 0x00010000,
+/* Joint 13: 10 AObjEvent16 values @ 0x14C */
+u16 dFTKirbyAnimPose_joint13[10] = {
+	0x50EE, 0xFCDC, 0x0000, 0xFBD0, 0x00CC, 0xFF88, 0x0000, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 14: 5 words @ 0x160 */
-u32 dFTKirbyAnimPose_joint14[5] = {
-	0x570E0093, 0xFE71FFF7, 0x10001000, 0x10000801, 0x00010000,
+/* Joint 14: 10 AObjEvent16 values @ 0x160 */
+u16 dFTKirbyAnimPose_joint14[10] = {
+	0x570E, 0x0093, 0xFE71, 0xFFF7, 0x1000, 0x1000, 0x1000, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 16: 4 words @ 0x174 */
-u32 dFTKirbyAnimPose_joint16[4] = {
-	0x500E0000, 0x00000007, 0x08010001, 0x00000000,
+/* Joint 16: 8 AObjEvent16 values @ 0x174 */
+u16 dFTKirbyAnimPose_joint16[8] = {
+	0x500E, 0x0000, 0x0000, 0x0007, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 18: 5 words @ 0x184 */
-u32 dFTKirbyAnimPose_joint18[5] = {
-	0x570E00F7, 0x08BDFE82, 0x10001000, 0x10000801, 0x00010000,
+/* Joint 18: 10 AObjEvent16 values @ 0x184 */
+u16 dFTKirbyAnimPose_joint18[10] = {
+	0x570E, 0x00F7, 0x08BD, 0xFE82, 0x1000, 0x1000, 0x1000, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 19: 10 words @ 0x198 */
-u32 dFTKirbyAnimPose_joint19[10] = {
-	0x280EFF82, 0x0000019D, 0x00000017, 0x00004F00, 0x10001000, 0x1000200F, 0x0001FF82, 0x0000019D,
-	0x00000017, 0x00000000,
+/* Joint 19: 20 AObjEvent16 values @ 0x198 */
+u16 dFTKirbyAnimPose_joint19[20] = {
+	0x280E, 0xFF82, 0x0000, 0x019D, 0x0000, 0x0017, 0x0000, 0x4F00, 0x1000, 0x1000, 0x1000, 0x200F, 0x0001, 0xFF82, 0x0000, 0x019D,
+	0x0000, 0x0017, 0x0000, 0x0000,
 };
 
-/* Joint 21: 16 words @ 0x1C0 */
-u32 dFTKirbyAnimPose_joint21[16] = {
-	0x28080007, 0x00004806, 0x00000000, 0x20090001, 0x00070000, 0x00000000, 0x280A011D, 0x000000B4,
-	0x00004F04, 0xF5AD1000, 0x10001000, 0x200B0001, 0x011D0000, 0x00B40000, 0x00000000, 0x00000000,
+/* Joint 21: 32 AObjEvent16 values @ 0x1C0 */
+u16 dFTKirbyAnimPose_joint21[32] = {
+	0x2808, 0x0007, 0x0000, 0x4806, 0x0000, 0x0000, 0x2009, 0x0001, 0x0007, 0x0000, 0x0000, 0x0000, 0x280A, 0x011D, 0x0000, 0x00B4,
+	0x0000, 0x4F04, 0xF5AD, 0x1000, 0x1000, 0x1000, 0x200B, 0x0001, 0x011D, 0x0000, 0x00B4, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 };

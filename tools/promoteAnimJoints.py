@@ -122,7 +122,7 @@ def generate(fid, name, data, entries, header_size, pad_after_header=0):
 
     c_lines.append(f"/* AnimJoint data for relocData file {fid} ({name}) */")
     c_lines.append(f"/* {len(data)} bytes: {header_size}-byte header + "
-                   f"per-joint AObjEvent32 scripts */")
+                   f"per-joint AObjEvent16 scripts */")
     c_lines.append("")
     c_lines.append('#include "relocdata_types.h"')
     c_lines.append("")
@@ -136,8 +136,8 @@ def generate(fid, name, data, entries, header_size, pad_after_header=0):
     # pointer table references them and appears first in the file).
     for j in data_joints:
         jid = j['joint_id']
-        n_words = j['data_size'] // 4
-        c_lines.append(f"extern u32 {prefix}_joint{jid}[{n_words}];")
+        n_u16 = j['data_size'] // 2
+        c_lines.append(f"extern u16 {prefix}_joint{jid}[{n_u16}];")
     c_lines.append("")
 
     # Pointer table (first in memory = first in .data section)
@@ -190,19 +190,20 @@ def generate(fid, name, data, entries, header_size, pad_after_header=0):
         c_lines.append("")
 
     # Per-joint data arrays (in offset order, after the pointer table)
+    # Each joint's data is an array of AObjEvent16 (u16) commands.
     for j in data_joints:
         off = j['data_off']
         size = j['data_size']
-        n_words = size // 4
+        n_u16 = size // 2
         jid = j['joint_id']
         var = f"{prefix}_joint{jid}"
-        c_lines.append(f"/* Joint {jid}: {n_words} words @ 0x{off:X} */")
-        c_lines.append(f"u32 {var}[{n_words}] = {{")
-        for w in range(0, n_words, 8):
+        c_lines.append(f"/* Joint {jid}: {n_u16} AObjEvent16 values @ 0x{off:X} */")
+        c_lines.append(f"u16 {var}[{n_u16}] = {{")
+        for w in range(0, n_u16, 16):
             chunk = []
-            for k in range(w, min(w + 8, n_words)):
-                word = struct.unpack_from('>I', data, off + k * 4)[0]
-                chunk.append(f"0x{word:08X}")
+            for k in range(w, min(w + 16, n_u16)):
+                val = struct.unpack_from('>H', data, off + k * 2)[0]
+                chunk.append(f"0x{val:04X}")
             c_lines.append("\t" + ", ".join(chunk) + ",")
         c_lines.append("};")
         c_lines.append("")

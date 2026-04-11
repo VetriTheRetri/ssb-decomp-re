@@ -1,22 +1,22 @@
 /* AnimJoint data for relocData file 951 (FTDonkeyAnimDamage) */
-/* 432 bytes: 100-byte header + per-joint AObjEvent32 scripts */
+/* 432 bytes: 100-byte header + per-joint AObjEvent16 scripts */
 
 #include "relocdata_types.h"
 
-extern u32 dFTDonkeyAnimDamage_joint1[6];
-extern u32 dFTDonkeyAnimDamage_joint2[4];
-extern u32 dFTDonkeyAnimDamage_joint4[4];
-extern u32 dFTDonkeyAnimDamage_joint5[8];
-extern u32 dFTDonkeyAnimDamage_joint7[8];
-extern u32 dFTDonkeyAnimDamage_joint10[4];
-extern u32 dFTDonkeyAnimDamage_joint11[11];
-extern u32 dFTDonkeyAnimDamage_joint13[7];
-extern u32 dFTDonkeyAnimDamage_joint16[5];
-extern u32 dFTDonkeyAnimDamage_joint17[4];
-extern u32 dFTDonkeyAnimDamage_joint19[4];
-extern u32 dFTDonkeyAnimDamage_joint21[4];
-extern u32 dFTDonkeyAnimDamage_joint22[4];
-extern u32 dFTDonkeyAnimDamage_joint24[9];
+extern u16 dFTDonkeyAnimDamage_joint1[12];
+extern u16 dFTDonkeyAnimDamage_joint2[8];
+extern u16 dFTDonkeyAnimDamage_joint4[8];
+extern u16 dFTDonkeyAnimDamage_joint5[16];
+extern u16 dFTDonkeyAnimDamage_joint7[16];
+extern u16 dFTDonkeyAnimDamage_joint10[8];
+extern u16 dFTDonkeyAnimDamage_joint11[22];
+extern u16 dFTDonkeyAnimDamage_joint13[14];
+extern u16 dFTDonkeyAnimDamage_joint16[10];
+extern u16 dFTDonkeyAnimDamage_joint17[8];
+extern u16 dFTDonkeyAnimDamage_joint19[8];
+extern u16 dFTDonkeyAnimDamage_joint21[8];
+extern u16 dFTDonkeyAnimDamage_joint22[8];
+extern u16 dFTDonkeyAnimDamage_joint24[18];
 
 /* Joint pointer table (25 entries, 100 bytes) */
 u32 dFTDonkeyAnimDamage_joints[] = {
@@ -50,74 +50,74 @@ u32 dFTDonkeyAnimDamage_joints[] = {
 /* 4-byte alignment padding */
 static u32 dFTDonkeyAnimDamage_pad[1] = { 0 };
 
-/* Joint 1: 6 words @ 0x68 */
-u32 dFTDonkeyAnimDamage_joint1[6] = {
-	0x48E00014, 0x0303FD87, 0x50E10005, 0x007B0395, 0xFD3A0801, 0x00040000,
+/* Joint 1: 12 AObjEvent16 values @ 0x68 */
+u16 dFTDonkeyAnimDamage_joint1[12] = {
+	0x48E0, 0x0014, 0x0303, 0xFD87, 0x50E1, 0x0005, 0x007B, 0x0395, 0xFD3A, 0x0801, 0x0004, 0x0000,
 };
 
-/* Joint 2: 4 words @ 0x80 */
-u32 dFTDonkeyAnimDamage_joint2[4] = {
-	0x500E0000, 0x00000000, 0x08010004, 0x00000000,
+/* Joint 2: 8 AObjEvent16 values @ 0x80 */
+u16 dFTDonkeyAnimDamage_joint2[8] = {
+	0x500E, 0x0000, 0x0000, 0x0000, 0x0801, 0x0004, 0x0000, 0x0000,
 };
 
-/* Joint 4: 4 words @ 0x90 */
-u32 dFTDonkeyAnimDamage_joint4[4] = {
-	0x500E0165, 0x00000000, 0x08010004, 0x00000000,
+/* Joint 4: 8 AObjEvent16 values @ 0x90 */
+u16 dFTDonkeyAnimDamage_joint4[8] = {
+	0x500E, 0x0165, 0x0000, 0x0000, 0x0801, 0x0004, 0x0000, 0x0000,
 };
 
-/* Joint 5: 8 words @ 0xA0 */
-u32 dFTDonkeyAnimDamage_joint5[8] = {
-	0x2804FE3D, 0x0000480A, 0xF666FC95, 0x20050003, 0xFE3D0000, 0x20050001, 0xFE3D0000, 0x00000000,
+/* Joint 5: 16 AObjEvent16 values @ 0xA0 */
+u16 dFTDonkeyAnimDamage_joint5[16] = {
+	0x2804, 0xFE3D, 0x0000, 0x480A, 0xF666, 0xFC95, 0x2005, 0x0003, 0xFE3D, 0x0000, 0x2005, 0x0001, 0xFE3D, 0x0000, 0x0000, 0x0000,
 };
 
-/* Joint 7: 8 words @ 0xC0 */
-u32 dFTDonkeyAnimDamage_joint7[8] = {
-	0x2808FD80, 0x00004806, 0x00000000, 0x20090003, 0xFD800000, 0x20090001, 0xFD800000, 0x00000000,
+/* Joint 7: 16 AObjEvent16 values @ 0xC0 */
+u16 dFTDonkeyAnimDamage_joint7[16] = {
+	0x2808, 0xFD80, 0x0000, 0x4806, 0x0000, 0x0000, 0x2009, 0x0003, 0xFD80, 0x0000, 0x2009, 0x0001, 0xFD80, 0x0000, 0x0000, 0x0000,
 };
 
-/* Joint 10: 4 words @ 0xE0 */
-u32 dFTDonkeyAnimDamage_joint10[4] = {
-	0x500EFDE8, 0x00000000, 0x08010004, 0x00000000,
+/* Joint 10: 8 AObjEvent16 values @ 0xE0 */
+u16 dFTDonkeyAnimDamage_joint10[8] = {
+	0x500E, 0xFDE8, 0x0000, 0x0000, 0x0801, 0x0004, 0x0000, 0x0000,
 };
 
-/* Joint 11: 11 words @ 0xF0 */
-u32 dFTDonkeyAnimDamage_joint11[11] = {
-	0x200E0462, 0x00000552, 0x000001E6, 0x0000380F, 0x00030462, 0x055201E6, 0x200F0001, 0x04620000,
-	0x05520000, 0x01E60000, 0x00000000,
+/* Joint 11: 22 AObjEvent16 values @ 0xF0 */
+u16 dFTDonkeyAnimDamage_joint11[22] = {
+	0x200E, 0x0462, 0x0000, 0x0552, 0x0000, 0x01E6, 0x0000, 0x380F, 0x0003, 0x0462, 0x0552, 0x01E6, 0x200F, 0x0001, 0x0462, 0x0000,
+	0x0552, 0x0000, 0x01E6, 0x0000, 0x0000, 0x0000,
 };
 
-/* Joint 13: 7 words @ 0x11C */
-u32 dFTDonkeyAnimDamage_joint13[7] = {
-	0x2808FE4E, 0x00004806, 0x00000000, 0x38090003, 0xFE4E2009, 0x0001FE4E, 0x00000000,
+/* Joint 13: 14 AObjEvent16 values @ 0x11C */
+u16 dFTDonkeyAnimDamage_joint13[14] = {
+	0x2808, 0xFE4E, 0x0000, 0x4806, 0x0000, 0x0000, 0x3809, 0x0003, 0xFE4E, 0x2009, 0x0001, 0xFE4E, 0x0000, 0x0000,
 };
 
-/* Joint 16: 5 words @ 0x138 */
-u32 dFTDonkeyAnimDamage_joint16[5] = {
-	0x50EE045A, 0xFC89FED4, 0x0076007A, 0x002E0801, 0x00040000,
+/* Joint 16: 10 AObjEvent16 values @ 0x138 */
+u16 dFTDonkeyAnimDamage_joint16[10] = {
+	0x50EE, 0x045A, 0xFC89, 0xFED4, 0x0076, 0x007A, 0x002E, 0x0801, 0x0004, 0x0000,
 };
 
-/* Joint 17: 4 words @ 0x14C */
-u32 dFTDonkeyAnimDamage_joint17[4] = {
-	0x500E0057, 0xFE21FAF4, 0x08010004, 0x00000000,
+/* Joint 17: 8 AObjEvent16 values @ 0x14C */
+u16 dFTDonkeyAnimDamage_joint17[8] = {
+	0x500E, 0x0057, 0xFE21, 0xFAF4, 0x0801, 0x0004, 0x0000, 0x0000,
 };
 
-/* Joint 19: 4 words @ 0x15C */
-u32 dFTDonkeyAnimDamage_joint19[4] = {
-	0x500E0000, 0x0000031A, 0x08010004, 0x00000000,
+/* Joint 19: 8 AObjEvent16 values @ 0x15C */
+u16 dFTDonkeyAnimDamage_joint19[8] = {
+	0x500E, 0x0000, 0x0000, 0x031A, 0x0801, 0x0004, 0x0000, 0x0000,
 };
 
-/* Joint 21: 4 words @ 0x16C */
-u32 dFTDonkeyAnimDamage_joint21[4] = {
-	0x500E007E, 0x01200017, 0x08010004, 0x00000000,
+/* Joint 21: 8 AObjEvent16 values @ 0x16C */
+u16 dFTDonkeyAnimDamage_joint21[8] = {
+	0x500E, 0x007E, 0x0120, 0x0017, 0x0801, 0x0004, 0x0000, 0x0000,
 };
 
-/* Joint 22: 4 words @ 0x17C */
-u32 dFTDonkeyAnimDamage_joint22[4] = {
-	0x500E0228, 0x0171FD8D, 0x08010004, 0x00000000,
+/* Joint 22: 8 AObjEvent16 values @ 0x17C */
+u16 dFTDonkeyAnimDamage_joint22[8] = {
+	0x500E, 0x0228, 0x0171, 0xFD8D, 0x0801, 0x0004, 0x0000, 0x0000,
 };
 
-/* Joint 24: 9 words @ 0x18C */
-u32 dFTDonkeyAnimDamage_joint24[9] = {
-	0x500E0000, 0x00000247, 0x08010004, 0x00000000, 0x500EFE43, 0xFEF60018, 0x08010004, 0x00000000,
-	0x00000000,
+/* Joint 24: 18 AObjEvent16 values @ 0x18C */
+u16 dFTDonkeyAnimDamage_joint24[18] = {
+	0x500E, 0x0000, 0x0000, 0x0247, 0x0801, 0x0004, 0x0000, 0x0000, 0x500E, 0xFE43, 0xFEF6, 0x0018, 0x0801, 0x0004, 0x0000, 0x0000,
+	0x0000, 0x0000,
 };

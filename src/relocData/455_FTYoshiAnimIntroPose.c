@@ -1,26 +1,26 @@
 /* AnimJoint data for relocData file 455 (FTYoshiAnimIntroPose) */
-/* 528 bytes: 104-byte header + per-joint AObjEvent32 scripts */
+/* 528 bytes: 104-byte header + per-joint AObjEvent16 scripts */
 
 #include "relocdata_types.h"
 
-extern u32 dFTYoshiAnimIntroPose_joint1[5];
-extern u32 dFTYoshiAnimIntroPose_joint2[5];
-extern u32 dFTYoshiAnimIntroPose_joint3[5];
-extern u32 dFTYoshiAnimIntroPose_joint4[5];
-extern u32 dFTYoshiAnimIntroPose_joint6[5];
-extern u32 dFTYoshiAnimIntroPose_joint7[4];
-extern u32 dFTYoshiAnimIntroPose_joint8[4];
-extern u32 dFTYoshiAnimIntroPose_joint10[5];
-extern u32 dFTYoshiAnimIntroPose_joint11[4];
-extern u32 dFTYoshiAnimIntroPose_joint12[4];
-extern u32 dFTYoshiAnimIntroPose_joint14[5];
-extern u32 dFTYoshiAnimIntroPose_joint15[5];
-extern u32 dFTYoshiAnimIntroPose_joint17[5];
-extern u32 dFTYoshiAnimIntroPose_joint18[7];
-extern u32 dFTYoshiAnimIntroPose_joint20[6];
-extern u32 dFTYoshiAnimIntroPose_joint22[7];
-extern u32 dFTYoshiAnimIntroPose_joint23[8];
-extern u32 dFTYoshiAnimIntroPose_joint25[17];
+extern u16 dFTYoshiAnimIntroPose_joint1[10];
+extern u16 dFTYoshiAnimIntroPose_joint2[10];
+extern u16 dFTYoshiAnimIntroPose_joint3[10];
+extern u16 dFTYoshiAnimIntroPose_joint4[10];
+extern u16 dFTYoshiAnimIntroPose_joint6[10];
+extern u16 dFTYoshiAnimIntroPose_joint7[8];
+extern u16 dFTYoshiAnimIntroPose_joint8[8];
+extern u16 dFTYoshiAnimIntroPose_joint10[10];
+extern u16 dFTYoshiAnimIntroPose_joint11[8];
+extern u16 dFTYoshiAnimIntroPose_joint12[8];
+extern u16 dFTYoshiAnimIntroPose_joint14[10];
+extern u16 dFTYoshiAnimIntroPose_joint15[10];
+extern u16 dFTYoshiAnimIntroPose_joint17[10];
+extern u16 dFTYoshiAnimIntroPose_joint18[14];
+extern u16 dFTYoshiAnimIntroPose_joint20[12];
+extern u16 dFTYoshiAnimIntroPose_joint22[14];
+extern u16 dFTYoshiAnimIntroPose_joint23[16];
+extern u16 dFTYoshiAnimIntroPose_joint25[34];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTYoshiAnimIntroPose_joints[] = {
@@ -52,94 +52,94 @@ u32 dFTYoshiAnimIntroPose_joints[] = {
 	0xFFFF0079, /* [25] END */
 };
 
-/* Joint 1: 5 words @ 0x68 */
-u32 dFTYoshiAnimIntroPose_joint1[5] = {
-	0x50EE0000, 0x01340000, 0x000002A0, 0x00000801, 0x00010000,
+/* Joint 1: 10 AObjEvent16 values @ 0x68 */
+u16 dFTYoshiAnimIntroPose_joint1[10] = {
+	0x50EE, 0x0000, 0x0134, 0x0000, 0x0000, 0x02A0, 0x0000, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 2: 5 words @ 0x7C */
-u32 dFTYoshiAnimIntroPose_joint2[5] = {
-	0x50EEFCCF, 0xFD29028B, 0x00000000, 0x00000801, 0x00010000,
+/* Joint 2: 10 AObjEvent16 values @ 0x7C */
+u16 dFTYoshiAnimIntroPose_joint2[10] = {
+	0x50EE, 0xFCCF, 0xFD29, 0x028B, 0x0000, 0x0000, 0x0000, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 3: 5 words @ 0x90 */
-u32 dFTYoshiAnimIntroPose_joint3[5] = {
-	0x50EE02E0, 0x00000000, 0x00000000, 0x00AC0801, 0x00010000,
+/* Joint 3: 10 AObjEvent16 values @ 0x90 */
+u16 dFTYoshiAnimIntroPose_joint3[10] = {
+	0x50EE, 0x02E0, 0x0000, 0x0000, 0x0000, 0x0000, 0x00AC, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 4: 5 words @ 0xA4 */
-u32 dFTYoshiAnimIntroPose_joint4[5] = {
-	0x50EEFE11, 0x00000000, 0x00000258, 0x01490801, 0x00010000,
+/* Joint 4: 10 AObjEvent16 values @ 0xA4 */
+u16 dFTYoshiAnimIntroPose_joint4[10] = {
+	0x50EE, 0xFE11, 0x0000, 0x0000, 0x0000, 0x0258, 0x0149, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 6: 5 words @ 0xB8 */
-u32 dFTYoshiAnimIntroPose_joint6[5] = {
-	0x50EE0000, 0x00000000, 0x00000030, 0x00780801, 0x00010000,
+/* Joint 6: 10 AObjEvent16 values @ 0xB8 */
+u16 dFTYoshiAnimIntroPose_joint6[10] = {
+	0x50EE, 0x0000, 0x0000, 0x0000, 0x0000, 0x0030, 0x0078, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 7: 4 words @ 0xCC */
-u32 dFTYoshiAnimIntroPose_joint7[4] = {
-	0x500E0072, 0xFF94FDED, 0x08010001, 0x00000000,
+/* Joint 7: 8 AObjEvent16 values @ 0xCC */
+u16 dFTYoshiAnimIntroPose_joint7[8] = {
+	0x500E, 0x0072, 0xFF94, 0xFDED, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 8: 4 words @ 0xDC */
-u32 dFTYoshiAnimIntroPose_joint8[4] = {
-	0x500E0000, 0x0000FB11, 0x08010001, 0x00000000,
+/* Joint 8: 8 AObjEvent16 values @ 0xDC */
+u16 dFTYoshiAnimIntroPose_joint8[8] = {
+	0x500E, 0x0000, 0x0000, 0xFB11, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 10: 5 words @ 0xEC */
-u32 dFTYoshiAnimIntroPose_joint10[5] = {
-	0x50EE0000, 0x00000000, 0x00AC0000, 0x00000801, 0x00010000,
+/* Joint 10: 10 AObjEvent16 values @ 0xEC */
+u16 dFTYoshiAnimIntroPose_joint10[10] = {
+	0x50EE, 0x0000, 0x0000, 0x0000, 0x00AC, 0x0000, 0x0000, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 11: 4 words @ 0x100 */
-u32 dFTYoshiAnimIntroPose_joint11[4] = {
-	0x500EF9FF, 0x07F90390, 0x08010001, 0x00000000,
+/* Joint 11: 8 AObjEvent16 values @ 0x100 */
+u16 dFTYoshiAnimIntroPose_joint11[8] = {
+	0x500E, 0xF9FF, 0x07F9, 0x0390, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 12: 4 words @ 0x110 */
-u32 dFTYoshiAnimIntroPose_joint12[4] = {
-	0x500E0000, 0x0000FC3F, 0x08010001, 0x00000000,
+/* Joint 12: 8 AObjEvent16 values @ 0x110 */
+u16 dFTYoshiAnimIntroPose_joint12[8] = {
+	0x500E, 0x0000, 0x0000, 0xFC3F, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 14: 5 words @ 0x120 */
-u32 dFTYoshiAnimIntroPose_joint14[5] = {
-	0x50EE0000, 0x00000000, 0x00AC0000, 0x00000801, 0x00010000,
+/* Joint 14: 10 AObjEvent16 values @ 0x120 */
+u16 dFTYoshiAnimIntroPose_joint14[10] = {
+	0x50EE, 0x0000, 0x0000, 0x0000, 0x00AC, 0x0000, 0x0000, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 15: 5 words @ 0x134 */
-u32 dFTYoshiAnimIntroPose_joint15[5] = {
-	0x50EE0112, 0x00000000, 0x000000D7, 0xFF100801, 0x00010000,
+/* Joint 15: 10 AObjEvent16 values @ 0x134 */
+u16 dFTYoshiAnimIntroPose_joint15[10] = {
+	0x50EE, 0x0112, 0x0000, 0x0000, 0x0000, 0x00D7, 0xFF10, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 17: 5 words @ 0x148 */
-u32 dFTYoshiAnimIntroPose_joint17[5] = {
-	0x50EE0000, 0x00000000, 0x00000030, 0xFEF90801, 0x00010000,
+/* Joint 17: 10 AObjEvent16 values @ 0x148 */
+u16 dFTYoshiAnimIntroPose_joint17[10] = {
+	0x50EE, 0x0000, 0x0000, 0x0000, 0x0000, 0x0030, 0xFEF9, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 18: 7 words @ 0x15C */
-u32 dFTYoshiAnimIntroPose_joint18[7] = {
-	0x280A0024, 0x0000020C, 0x00004804, 0xFFBF200B, 0x00010024, 0x0000020C, 0x00000000,
+/* Joint 18: 14 AObjEvent16 values @ 0x15C */
+u16 dFTYoshiAnimIntroPose_joint18[14] = {
+	0x280A, 0x0024, 0x0000, 0x020C, 0x0000, 0x4804, 0xFFBF, 0x200B, 0x0001, 0x0024, 0x0000, 0x020C, 0x0000, 0x0000,
 };
 
-/* Joint 20: 6 words @ 0x178 */
-u32 dFTYoshiAnimIntroPose_joint20[6] = {
-	0x280801D7, 0x00004806, 0x00000000, 0x20090001, 0x01D70000, 0x00000000,
+/* Joint 20: 12 AObjEvent16 values @ 0x178 */
+u16 dFTYoshiAnimIntroPose_joint20[12] = {
+	0x2808, 0x01D7, 0x0000, 0x4806, 0x0000, 0x0000, 0x2009, 0x0001, 0x01D7, 0x0000, 0x0000, 0x0000,
 };
 
-/* Joint 22: 7 words @ 0x190 */
-u32 dFTYoshiAnimIntroPose_joint22[7] = {
-	0x280A0648, 0x00000052, 0x00004804, 0x0013200B, 0x00010648, 0x00000052, 0x00000000,
+/* Joint 22: 14 AObjEvent16 values @ 0x190 */
+u16 dFTYoshiAnimIntroPose_joint22[14] = {
+	0x280A, 0x0648, 0x0000, 0x0052, 0x0000, 0x4804, 0x0013, 0x200B, 0x0001, 0x0648, 0x0000, 0x0052, 0x0000, 0x0000,
 };
 
-/* Joint 23: 8 words @ 0x1AC */
-u32 dFTYoshiAnimIntroPose_joint23[8] = {
-	0x200EFFD2, 0x00000078, 0x0000FECA, 0x0000200F, 0x0001FFD2, 0x00000078, 0x0000FECA, 0x00000000,
+/* Joint 23: 16 AObjEvent16 values @ 0x1AC */
+u16 dFTYoshiAnimIntroPose_joint23[16] = {
+	0x200E, 0xFFD2, 0x0000, 0x0078, 0x0000, 0xFECA, 0x0000, 0x200F, 0x0001, 0xFFD2, 0x0000, 0x0078, 0x0000, 0xFECA, 0x0000, 0x0000,
 };
 
-/* Joint 25: 17 words @ 0x1CC */
-u32 dFTYoshiAnimIntroPose_joint25[17] = {
-	0x28080006, 0x00004806, 0x00000000, 0x20090001, 0x00060000, 0x00000000, 0x200E068A, 0x0000FFF4,
-	0x0000FF87, 0x0000200F, 0x0001068A, 0x0000FFF4, 0x0000FF87, 0x00000000, 0x00000000, 0x00000000,
-	0x00000000,
+/* Joint 25: 34 AObjEvent16 values @ 0x1CC */
+u16 dFTYoshiAnimIntroPose_joint25[34] = {
+	0x2808, 0x0006, 0x0000, 0x4806, 0x0000, 0x0000, 0x2009, 0x0001, 0x0006, 0x0000, 0x0000, 0x0000, 0x200E, 0x068A, 0x0000, 0xFFF4,
+	0x0000, 0xFF87, 0x0000, 0x200F, 0x0001, 0x068A, 0x0000, 0xFFF4, 0x0000, 0xFF87, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+	0x0000, 0x0000,
 };

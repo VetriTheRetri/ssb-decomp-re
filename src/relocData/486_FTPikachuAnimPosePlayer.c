@@ -1,27 +1,27 @@
 /* AnimJoint data for relocData file 486 (FTPikachuAnimPosePlayer) */
-/* 512 bytes: 104-byte header + per-joint AObjEvent32 scripts */
+/* 512 bytes: 104-byte header + per-joint AObjEvent16 scripts */
 
 #include "relocdata_types.h"
 
-extern u32 dFTPikachuAnimPosePlayer_joint1[7];
-extern u32 dFTPikachuAnimPosePlayer_joint2[5];
-extern u32 dFTPikachuAnimPosePlayer_joint3[5];
-extern u32 dFTPikachuAnimPosePlayer_joint5[5];
-extern u32 dFTPikachuAnimPosePlayer_joint6[4];
-extern u32 dFTPikachuAnimPosePlayer_joint7[4];
-extern u32 dFTPikachuAnimPosePlayer_joint8[5];
-extern u32 dFTPikachuAnimPosePlayer_joint9[5];
-extern u32 dFTPikachuAnimPosePlayer_joint10[5];
-extern u32 dFTPikachuAnimPosePlayer_joint11[5];
-extern u32 dFTPikachuAnimPosePlayer_joint13[5];
-extern u32 dFTPikachuAnimPosePlayer_joint14[8];
-extern u32 dFTPikachuAnimPosePlayer_joint16[6];
-extern u32 dFTPikachuAnimPosePlayer_joint17[4];
-extern u32 dFTPikachuAnimPosePlayer_joint19[4];
-extern u32 dFTPikachuAnimPosePlayer_joint21[4];
-extern u32 dFTPikachuAnimPosePlayer_joint22[4];
-extern u32 dFTPikachuAnimPosePlayer_joint24[4];
-extern u32 dFTPikachuAnimPosePlayer_joint25[13];
+extern u16 dFTPikachuAnimPosePlayer_joint1[14];
+extern u16 dFTPikachuAnimPosePlayer_joint2[10];
+extern u16 dFTPikachuAnimPosePlayer_joint3[10];
+extern u16 dFTPikachuAnimPosePlayer_joint5[10];
+extern u16 dFTPikachuAnimPosePlayer_joint6[8];
+extern u16 dFTPikachuAnimPosePlayer_joint7[8];
+extern u16 dFTPikachuAnimPosePlayer_joint8[10];
+extern u16 dFTPikachuAnimPosePlayer_joint9[10];
+extern u16 dFTPikachuAnimPosePlayer_joint10[10];
+extern u16 dFTPikachuAnimPosePlayer_joint11[10];
+extern u16 dFTPikachuAnimPosePlayer_joint13[10];
+extern u16 dFTPikachuAnimPosePlayer_joint14[16];
+extern u16 dFTPikachuAnimPosePlayer_joint16[12];
+extern u16 dFTPikachuAnimPosePlayer_joint17[8];
+extern u16 dFTPikachuAnimPosePlayer_joint19[8];
+extern u16 dFTPikachuAnimPosePlayer_joint21[8];
+extern u16 dFTPikachuAnimPosePlayer_joint22[8];
+extern u16 dFTPikachuAnimPosePlayer_joint24[8];
+extern u16 dFTPikachuAnimPosePlayer_joint25[26];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTPikachuAnimPosePlayer_joints[] = {
@@ -53,98 +53,98 @@ u32 dFTPikachuAnimPosePlayer_joints[] = {
 	0xFFFF0077, /* [25] END */
 };
 
-/* Joint 1: 7 words @ 0x68 */
-u32 dFTPikachuAnimPosePlayer_joint1[7] = {
-	0x57EEFF84, 0xFEF000D5, 0x000002B2, 0x00011000, 0x10001000, 0x08010001, 0x00000000,
+/* Joint 1: 14 AObjEvent16 values @ 0x68 */
+u16 dFTPikachuAnimPosePlayer_joint1[14] = {
+	0x57EE, 0xFF84, 0xFEF0, 0x00D5, 0x0000, 0x02B2, 0x0001, 0x1000, 0x1000, 0x1000, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 2: 5 words @ 0x84 */
-u32 dFTPikachuAnimPosePlayer_joint2[5] = {
-	0x50EEFFE3, 0xFFF7FF8A, 0x0000FF2F, 0xFF910801, 0x00010000,
+/* Joint 2: 10 AObjEvent16 values @ 0x84 */
+u16 dFTPikachuAnimPosePlayer_joint2[10] = {
+	0x50EE, 0xFFE3, 0xFFF7, 0xFF8A, 0x0000, 0xFF2F, 0xFF91, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 3: 5 words @ 0x98 */
-u32 dFTPikachuAnimPosePlayer_joint3[5] = {
-	0x50EE00A1, 0x000F0034, 0x00040135, 0x000C0801, 0x00010000,
+/* Joint 3: 10 AObjEvent16 values @ 0x98 */
+u16 dFTPikachuAnimPosePlayer_joint3[10] = {
+	0x50EE, 0x00A1, 0x000F, 0x0034, 0x0004, 0x0135, 0x000C, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 5: 5 words @ 0xAC */
-u32 dFTPikachuAnimPosePlayer_joint5[5] = {
-	0x50EE0000, 0x00000000, 0x014FFFE3, 0x01500801, 0x00010000,
+/* Joint 5: 10 AObjEvent16 values @ 0xAC */
+u16 dFTPikachuAnimPosePlayer_joint5[10] = {
+	0x50EE, 0x0000, 0x0000, 0x0000, 0x014F, 0xFFE3, 0x0150, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 6: 4 words @ 0xC0 */
-u32 dFTPikachuAnimPosePlayer_joint6[4] = {
-	0x500E02E7, 0xFF24FC24, 0x08010001, 0x00000000,
+/* Joint 6: 8 AObjEvent16 values @ 0xC0 */
+u16 dFTPikachuAnimPosePlayer_joint6[8] = {
+	0x500E, 0x02E7, 0xFF24, 0xFC24, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 7: 4 words @ 0xD0 */
-u32 dFTPikachuAnimPosePlayer_joint7[4] = {
-	0x500E0000, 0x0000FFF6, 0x08010001, 0x00000000,
+/* Joint 7: 8 AObjEvent16 values @ 0xD0 */
+u16 dFTPikachuAnimPosePlayer_joint7[8] = {
+	0x500E, 0x0000, 0x0000, 0xFFF6, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 8: 5 words @ 0xE0 */
-u32 dFTPikachuAnimPosePlayer_joint8[5] = {
-	0x50EEFF85, 0xFFB4FFDB, 0xFFFF00C2, 0x00940801, 0x00010000,
+/* Joint 8: 10 AObjEvent16 values @ 0xE0 */
+u16 dFTPikachuAnimPosePlayer_joint8[10] = {
+	0x50EE, 0xFF85, 0xFFB4, 0xFFDB, 0xFFFF, 0x00C2, 0x0094, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 9: 5 words @ 0xF4 */
-u32 dFTPikachuAnimPosePlayer_joint9[5] = {
-	0x50EE003B, 0x00050961, 0x00080020, 0x01FC0801, 0x00010000,
+/* Joint 9: 10 AObjEvent16 values @ 0xF4 */
+u16 dFTPikachuAnimPosePlayer_joint9[10] = {
+	0x50EE, 0x003B, 0x0005, 0x0961, 0x0008, 0x0020, 0x01FC, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 10: 5 words @ 0x108 */
-u32 dFTPikachuAnimPosePlayer_joint10[5] = {
-	0x50EEFF5D, 0x013A0061, 0x00E8016A, 0x00070801, 0x00010000,
+/* Joint 10: 10 AObjEvent16 values @ 0x108 */
+u16 dFTPikachuAnimPosePlayer_joint10[10] = {
+	0x50EE, 0xFF5D, 0x013A, 0x0061, 0x00E8, 0x016A, 0x0007, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 11: 5 words @ 0x11C */
-u32 dFTPikachuAnimPosePlayer_joint11[5] = {
-	0x50EEFE6F, 0xFFDCFFC7, 0xFF010168, 0x00240801, 0x00010000,
+/* Joint 11: 10 AObjEvent16 values @ 0x11C */
+u16 dFTPikachuAnimPosePlayer_joint11[10] = {
+	0x50EE, 0xFE6F, 0xFFDC, 0xFFC7, 0xFF01, 0x0168, 0x0024, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 13: 5 words @ 0x130 */
-u32 dFTPikachuAnimPosePlayer_joint13[5] = {
-	0x50EE0001, 0x00000000, 0xFEDDFFC9, 0x01AA0801, 0x00010000,
+/* Joint 13: 10 AObjEvent16 values @ 0x130 */
+u16 dFTPikachuAnimPosePlayer_joint13[10] = {
+	0x50EE, 0x0001, 0x0000, 0x0000, 0xFEDD, 0xFFC9, 0x01AA, 0x0801, 0x0001, 0x0000,
 };
 
-/* Joint 14: 8 words @ 0x144 */
-u32 dFTPikachuAnimPosePlayer_joint14[8] = {
-	0x200EFDBA, 0x000000DE, 0xFFFD086D, 0xFFFF200F, 0x0001FDB9, 0x000000DA, 0xFFFD086B, 0xFFFF0000,
+/* Joint 14: 16 AObjEvent16 values @ 0x144 */
+u16 dFTPikachuAnimPosePlayer_joint14[16] = {
+	0x200E, 0xFDBA, 0x0000, 0x00DE, 0xFFFD, 0x086D, 0xFFFF, 0x200F, 0x0001, 0xFDB9, 0x0000, 0x00DA, 0xFFFD, 0x086B, 0xFFFF, 0x0000,
 };
 
-/* Joint 16: 6 words @ 0x164 */
-u32 dFTPikachuAnimPosePlayer_joint16[6] = {
-	0x2808FFF6, 0x000A4806, 0x00000000, 0x20090001, 0x0000000A, 0x00000000,
+/* Joint 16: 12 AObjEvent16 values @ 0x164 */
+u16 dFTPikachuAnimPosePlayer_joint16[12] = {
+	0x2808, 0xFFF6, 0x000A, 0x4806, 0x0000, 0x0000, 0x2009, 0x0001, 0x0000, 0x000A, 0x0000, 0x0000,
 };
 
-/* Joint 17: 4 words @ 0x17C */
-u32 dFTPikachuAnimPosePlayer_joint17[4] = {
-	0x500EFA44, 0xFA7AF6C3, 0x08010001, 0x00000000,
+/* Joint 17: 8 AObjEvent16 values @ 0x17C */
+u16 dFTPikachuAnimPosePlayer_joint17[8] = {
+	0x500E, 0xFA44, 0xFA7A, 0xF6C3, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 19: 4 words @ 0x18C */
-u32 dFTPikachuAnimPosePlayer_joint19[4] = {
-	0x500E0000, 0x0000041B, 0x08010001, 0x00000000,
+/* Joint 19: 8 AObjEvent16 values @ 0x18C */
+u16 dFTPikachuAnimPosePlayer_joint19[8] = {
+	0x500E, 0x0000, 0x0000, 0x041B, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 21: 4 words @ 0x19C */
-u32 dFTPikachuAnimPosePlayer_joint21[4] = {
-	0x500E045F, 0x06AF072D, 0x08010001, 0x00000000,
+/* Joint 21: 8 AObjEvent16 values @ 0x19C */
+u16 dFTPikachuAnimPosePlayer_joint21[8] = {
+	0x500E, 0x045F, 0x06AF, 0x072D, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 22: 4 words @ 0x1AC */
-u32 dFTPikachuAnimPosePlayer_joint22[4] = {
-	0x500E06ED, 0x0748F969, 0x08010001, 0x00000000,
+/* Joint 22: 8 AObjEvent16 values @ 0x1AC */
+u16 dFTPikachuAnimPosePlayer_joint22[8] = {
+	0x500E, 0x06ED, 0x0748, 0xF969, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 24: 4 words @ 0x1BC */
-u32 dFTPikachuAnimPosePlayer_joint24[4] = {
-	0x500E0000, 0x00000000, 0x08010001, 0x00000000,
+/* Joint 24: 8 AObjEvent16 values @ 0x1BC */
+u16 dFTPikachuAnimPosePlayer_joint24[8] = {
+	0x500E, 0x0000, 0x0000, 0x0000, 0x0801, 0x0001, 0x0000, 0x0000,
 };
 
-/* Joint 25: 13 words @ 0x1CC */
-u32 dFTPikachuAnimPosePlayer_joint25[13] = {
-	0x500EFE71, 0x00C70150, 0x08010001, 0x00000000, 0x57EEF355, 0x04780B40, 0xFFD8FF75, 0xFE611000,
-	0x10001000, 0x08010001, 0x00000000, 0x00000000, 0x00000000,
+/* Joint 25: 26 AObjEvent16 values @ 0x1CC */
+u16 dFTPikachuAnimPosePlayer_joint25[26] = {
+	0x500E, 0xFE71, 0x00C7, 0x0150, 0x0801, 0x0001, 0x0000, 0x0000, 0x57EE, 0xF355, 0x0478, 0x0B40, 0xFFD8, 0xFF75, 0xFE61, 0x1000,
+	0x1000, 0x1000, 0x0801, 0x0001, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 };

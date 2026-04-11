@@ -1,24 +1,24 @@
 /* AnimJoint data for relocData file 1659 (FTCaptainAnimCatchingEnemyWhileDiving) */
-/* 736 bytes: 104-byte header + per-joint AObjEvent32 scripts */
+/* 736 bytes: 104-byte header + per-joint AObjEvent16 scripts */
 
 #include "relocdata_types.h"
 
-extern u32 dFTCaptainAnimCatchingEnemyWhileDiving_joint1[4];
-extern u32 dFTCaptainAnimCatchingEnemyWhileDiving_joint2[4];
-extern u32 dFTCaptainAnimCatchingEnemyWhileDiving_joint4[6];
-extern u32 dFTCaptainAnimCatchingEnemyWhileDiving_joint5[17];
-extern u32 dFTCaptainAnimCatchingEnemyWhileDiving_joint7[12];
-extern u32 dFTCaptainAnimCatchingEnemyWhileDiving_joint10[4];
-extern u32 dFTCaptainAnimCatchingEnemyWhileDiving_joint11[17];
-extern u32 dFTCaptainAnimCatchingEnemyWhileDiving_joint12[12];
-extern u32 dFTCaptainAnimCatchingEnemyWhileDiving_joint13[4];
-extern u32 dFTCaptainAnimCatchingEnemyWhileDiving_joint16[5];
-extern u32 dFTCaptainAnimCatchingEnemyWhileDiving_joint17[12];
-extern u32 dFTCaptainAnimCatchingEnemyWhileDiving_joint19[8];
-extern u32 dFTCaptainAnimCatchingEnemyWhileDiving_joint21[11];
-extern u32 dFTCaptainAnimCatchingEnemyWhileDiving_joint22[12];
-extern u32 dFTCaptainAnimCatchingEnemyWhileDiving_joint24[8];
-extern u32 dFTCaptainAnimCatchingEnemyWhileDiving_joint25[22];
+extern u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint1[8];
+extern u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint2[8];
+extern u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint4[12];
+extern u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint5[34];
+extern u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint7[24];
+extern u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint10[8];
+extern u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint11[34];
+extern u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint12[24];
+extern u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint13[8];
+extern u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint16[10];
+extern u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint17[24];
+extern u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint19[16];
+extern u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint21[22];
+extern u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint22[24];
+extern u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint24[16];
+extern u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint25[44];
 
 /* Joint pointer table (26 entries, 104 bytes) */
 u32 dFTCaptainAnimCatchingEnemyWhileDiving_joints[] = {
@@ -50,93 +50,93 @@ u32 dFTCaptainAnimCatchingEnemyWhileDiving_joints[] = {
 	0xFFFF00B4, /* [25] END */
 };
 
-/* Joint 1: 4 words @ 0x68 */
-u32 dFTCaptainAnimCatchingEnemyWhileDiving_joint1[4] = {
-	0x50E0FFF9, 0x03740024, 0x08010010, 0x00000000,
+/* Joint 1: 8 AObjEvent16 values @ 0x68 */
+u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint1[8] = {
+	0x50E0, 0xFFF9, 0x0374, 0x0024, 0x0801, 0x0010, 0x0000, 0x0000,
 };
 
-/* Joint 2: 4 words @ 0x78 */
-u32 dFTCaptainAnimCatchingEnemyWhileDiving_joint2[4] = {
-	0x500E01AE, 0x00000000, 0x08010010, 0x00000000,
+/* Joint 2: 8 AObjEvent16 values @ 0x78 */
+u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint2[8] = {
+	0x500E, 0x01AE, 0x0000, 0x0000, 0x0801, 0x0010, 0x0000, 0x0000,
 };
 
-/* Joint 4: 6 words @ 0x88 */
-u32 dFTCaptainAnimCatchingEnemyWhileDiving_joint4[6] = {
-	0x4002002E, 0x480C0000, 0x00003803, 0x0004008F, 0x3803000C, 0x002E0000,
+/* Joint 4: 12 AObjEvent16 values @ 0x88 */
+u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint4[12] = {
+	0x4002, 0x002E, 0x480C, 0x0000, 0x0000, 0x3803, 0x0004, 0x008F, 0x3803, 0x000C, 0x002E, 0x0000,
 };
 
-/* Joint 5: 17 words @ 0xA0 */
-u32 dFTCaptainAnimCatchingEnemyWhileDiving_joint5[17] = {
-	0x200E00F7, 0x0002FEED, 0xFFF3FD9F, 0x0000280B, 0x000F00F7, 0x0000FD9F, 0x00002005, 0x0008FEA5,
-	0x000C2005, 0x0001FEB2, 0x000C2005, 0x0006FEEC, 0x0003200F, 0x000100F7, 0x0000FEED, 0x0001FD9F,
-	0x00000000,
+/* Joint 5: 34 AObjEvent16 values @ 0xA0 */
+u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint5[34] = {
+	0x200E, 0x00F7, 0x0002, 0xFEED, 0xFFF3, 0xFD9F, 0x0000, 0x280B, 0x000F, 0x00F7, 0x0000, 0xFD9F, 0x0000, 0x2005, 0x0008, 0xFEA5,
+	0x000C, 0x2005, 0x0001, 0xFEB2, 0x000C, 0x2005, 0x0006, 0xFEEC, 0x0003, 0x200F, 0x0001, 0x00F7, 0x0000, 0xFEED, 0x0001, 0xFD9F,
+	0x0000, 0x0000,
 };
 
-/* Joint 7: 12 words @ 0xE4 */
-u32 dFTCaptainAnimCatchingEnemyWhileDiving_joint7[12] = {
-	0x2808FD10, 0xFFE44806, 0x00000000, 0x20090006, 0xFC75000A, 0x20090001, 0xFC82000E, 0x20090008,
-	0xFD0C0006, 0x20090001, 0xFD100003, 0x00000000,
+/* Joint 7: 24 AObjEvent16 values @ 0xE4 */
+u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint7[24] = {
+	0x2808, 0xFD10, 0xFFE4, 0x4806, 0x0000, 0x0000, 0x2009, 0x0006, 0xFC75, 0x000A, 0x2009, 0x0001, 0xFC82, 0x000E, 0x2009, 0x0008,
+	0xFD0C, 0x0006, 0x2009, 0x0001, 0xFD10, 0x0003, 0x0000, 0x0000,
 };
 
-/* Joint 10: 4 words @ 0x114 */
-u32 dFTCaptainAnimCatchingEnemyWhileDiving_joint10[4] = {
-	0x500E0094, 0x00000000, 0x08010010, 0x00000000,
+/* Joint 10: 8 AObjEvent16 values @ 0x114 */
+u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint10[8] = {
+	0x500E, 0x0094, 0x0000, 0x0000, 0x0801, 0x0010, 0x0000, 0x0000,
 };
 
-/* Joint 11: 17 words @ 0x124 */
-u32 dFTCaptainAnimCatchingEnemyWhileDiving_joint11[17] = {
-	0x200EFEFA, 0xFFFC00AD, 0x0009FD7C, 0x0000280B, 0x000FFEF9, 0x0000FD7C, 0x00002005, 0x000B00C5,
-	0xFFF82005, 0x000100BD, 0xFFF92005, 0x000300AE, 0xFFFE200F, 0x0001FEFA, 0x000000AD, 0xFFFFFD7C,
-	0x00000000,
+/* Joint 11: 34 AObjEvent16 values @ 0x124 */
+u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint11[34] = {
+	0x200E, 0xFEFA, 0xFFFC, 0x00AD, 0x0009, 0xFD7C, 0x0000, 0x280B, 0x000F, 0xFEF9, 0x0000, 0xFD7C, 0x0000, 0x2005, 0x000B, 0x00C5,
+	0xFFF8, 0x2005, 0x0001, 0x00BD, 0xFFF9, 0x2005, 0x0003, 0x00AE, 0xFFFE, 0x200F, 0x0001, 0xFEFA, 0x0000, 0x00AD, 0xFFFF, 0xFD7C,
+	0x0000, 0x0000,
 };
 
-/* Joint 12: 12 words @ 0x168 */
-u32 dFTCaptainAnimCatchingEnemyWhileDiving_joint12[12] = {
-	0x2808FD5E, 0xFFE84806, 0x00000000, 0x20090007, 0xFCE5000C, 0x20090001, 0xFCF3000E, 0x20090007,
-	0xFD5B0005, 0x20090001, 0xFD5E0003, 0x00000000,
+/* Joint 12: 24 AObjEvent16 values @ 0x168 */
+u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint12[24] = {
+	0x2808, 0xFD5E, 0xFFE8, 0x4806, 0x0000, 0x0000, 0x2009, 0x0007, 0xFCE5, 0x000C, 0x2009, 0x0001, 0xFCF3, 0x000E, 0x2009, 0x0007,
+	0xFD5B, 0x0005, 0x2009, 0x0001, 0xFD5E, 0x0003, 0x0000, 0x0000,
 };
 
-/* Joint 13: 4 words @ 0x198 */
-u32 dFTCaptainAnimCatchingEnemyWhileDiving_joint13[4] = {
-	0x500EFFB8, 0x0028FF97, 0x08010010, 0x00000000,
+/* Joint 13: 8 AObjEvent16 values @ 0x198 */
+u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint13[8] = {
+	0x500E, 0xFFB8, 0x0028, 0xFF97, 0x0801, 0x0010, 0x0000, 0x0000,
 };
 
-/* Joint 16: 5 words @ 0x1A8 */
-u32 dFTCaptainAnimCatchingEnemyWhileDiving_joint16[5] = {
-	0x50EE06E2, 0xFE62FFCA, 0x00620037, 0x001F0801, 0x00100000,
+/* Joint 16: 10 AObjEvent16 values @ 0x1A8 */
+u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint16[10] = {
+	0x50EE, 0x06E2, 0xFE62, 0xFFCA, 0x0062, 0x0037, 0x001F, 0x0801, 0x0010, 0x0000,
 };
 
-/* Joint 17: 12 words @ 0x1BC */
-u32 dFTCaptainAnimCatchingEnemyWhileDiving_joint17[12] = {
-	0x200EF937, 0x000A081C, 0xFFFF0162, 0x0004200F, 0x000FF938, 0xFFFE081C, 0x00000162, 0x0000200F,
-	0x0001F937, 0xFFFF081C, 0x00000162, 0x00000000,
+/* Joint 17: 24 AObjEvent16 values @ 0x1BC */
+u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint17[24] = {
+	0x200E, 0xF937, 0x000A, 0x081C, 0xFFFF, 0x0162, 0x0004, 0x200F, 0x000F, 0xF938, 0xFFFE, 0x081C, 0x0000, 0x0162, 0x0000, 0x200F,
+	0x0001, 0xF937, 0xFFFF, 0x081C, 0x0000, 0x0162, 0x0000, 0x0000,
 };
 
-/* Joint 19: 8 words @ 0x1EC */
-u32 dFTCaptainAnimCatchingEnemyWhileDiving_joint19[8] = {
-	0x28080446, 0x00084806, 0x00000000, 0x2009000F, 0x0447FFFF, 0x20090001, 0x0446FFFF, 0x00000000,
+/* Joint 19: 16 AObjEvent16 values @ 0x1EC */
+u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint19[16] = {
+	0x2808, 0x0446, 0x0008, 0x4806, 0x0000, 0x0000, 0x2009, 0x000F, 0x0447, 0xFFFF, 0x2009, 0x0001, 0x0446, 0xFFFF, 0x0000, 0x0000,
 };
 
-/* Joint 21: 11 words @ 0x20C */
-u32 dFTCaptainAnimCatchingEnemyWhileDiving_joint21[11] = {
-	0x4008F884, 0x2802F9F5, 0xFFF14804, 0x058F2803, 0x000FF9F2, 0x00033809, 0x000FF884, 0x200B0001,
-	0xF9F50002, 0xF8840000, 0x00000000,
+/* Joint 21: 22 AObjEvent16 values @ 0x20C */
+u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint21[22] = {
+	0x4008, 0xF884, 0x2802, 0xF9F5, 0xFFF1, 0x4804, 0x058F, 0x2803, 0x000F, 0xF9F2, 0x0003, 0x3809, 0x000F, 0xF884, 0x200B, 0x0001,
+	0xF9F5, 0x0002, 0xF884, 0x0000, 0x0000, 0x0000,
 };
 
-/* Joint 22: 12 words @ 0x238 */
-u32 dFTCaptainAnimCatchingEnemyWhileDiving_joint22[12] = {
-	0x200EFA60, 0xFFFA04DC, 0x000101A7, 0x0004200F, 0x000FFA5F, 0x000104DC, 0x000001A8, 0xFFFF200F,
-	0x0001FA60, 0x000004DC, 0x000001A7, 0x00000000,
+/* Joint 22: 24 AObjEvent16 values @ 0x238 */
+u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint22[24] = {
+	0x200E, 0xFA60, 0xFFFA, 0x04DC, 0x0001, 0x01A7, 0x0004, 0x200F, 0x000F, 0xFA5F, 0x0001, 0x04DC, 0x0000, 0x01A8, 0xFFFF, 0x200F,
+	0x0001, 0xFA60, 0x0000, 0x04DC, 0x0000, 0x01A7, 0x0000, 0x0000,
 };
 
-/* Joint 24: 8 words @ 0x268 */
-u32 dFTCaptainAnimCatchingEnemyWhileDiving_joint24[8] = {
-	0x28080431, 0x00084806, 0x00000000, 0x2009000F, 0x0432FFFE, 0x20090001, 0x0431FFFF, 0x00000000,
+/* Joint 24: 16 AObjEvent16 values @ 0x268 */
+u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint24[16] = {
+	0x2808, 0x0431, 0x0008, 0x4806, 0x0000, 0x0000, 0x2009, 0x000F, 0x0432, 0xFFFE, 0x2009, 0x0001, 0x0431, 0xFFFF, 0x0000, 0x0000,
 };
 
-/* Joint 25: 22 words @ 0x288 */
-u32 dFTCaptainAnimCatchingEnemyWhileDiving_joint25[22] = {
-	0x200EFF99, 0x000E00E3, 0x0000FE58, 0x00004009, 0x000FFE58, 0x2805000F, 0x00E30000, 0x20030009,
-	0xFFD4FFF5, 0x20030001, 0xFFC8FFF5, 0x20030005, 0xFF9BFFFD, 0x200F0001, 0xFF99FFFF, 0x00E30000,
-	0xFE580000, 0x00000000, 0x50E00065, 0xFC8B01CA, 0x08010010, 0x00000000,
+/* Joint 25: 44 AObjEvent16 values @ 0x288 */
+u16 dFTCaptainAnimCatchingEnemyWhileDiving_joint25[44] = {
+	0x200E, 0xFF99, 0x000E, 0x00E3, 0x0000, 0xFE58, 0x0000, 0x4009, 0x000F, 0xFE58, 0x2805, 0x000F, 0x00E3, 0x0000, 0x2003, 0x0009,
+	0xFFD4, 0xFFF5, 0x2003, 0x0001, 0xFFC8, 0xFFF5, 0x2003, 0x0005, 0xFF9B, 0xFFFD, 0x200F, 0x0001, 0xFF99, 0xFFFF, 0x00E3, 0x0000,
+	0xFE58, 0x0000, 0x0000, 0x0000, 0x50E0, 0x0065, 0xFC8B, 0x01CA, 0x0801, 0x0010, 0x0000, 0x0000,
 };

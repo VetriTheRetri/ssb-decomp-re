@@ -1,0 +1,6 @@
+# Relocation metadata for file 205
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dMMarioMainMotion_ptrs0+0x0 dMMarioMainMotion_script0_0
+intern dMMarioMainMotion_ptrs0+0x1C dMMarioMainMotion_ptrs0+0x4
+intern dMMarioMainMotion_ptrs0+0x80 dMMarioMainMotion_ptrs0+0x48

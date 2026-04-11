@@ -5,12 +5,12 @@
     "matched_code": "1427252",
     "matched_code_percent": 96.68681,
     "total_data": "16365674",
-    "matched_data": "16332832",
-    "matched_data_percent": 99.799324,
+    "matched_data": "16345936",
+    "matched_data_percent": 99.879395,
     "total_functions": 6535,
     "matched_functions": 6513,
     "matched_functions_percent": 99.66335,
-    "total_units": 674
+    "total_units": 657
   },
   "units": [
     {
@@ -75670,10 +75670,12 @@
     {
       "name": "ovl8/ovl8_13_2",
       "measures": {
-        "fuzzy_match_percent": 48.87218,
+        "fuzzy_match_percent": 50.18315,
         "total_code": "4256",
         "matched_code": "2080",
         "matched_code_percent": 48.87218,
+        "total_data": "112",
+        "matched_data": "112",
         "matched_data_percent": 100.0,
         "total_functions": 13,
         "matched_functions": 11,
@@ -75687,6 +75689,14 @@
           "fuzzy_match_percent": 48.87218,
           "metadata": {
             "virtual_address": "2151144768"
+          }
+        },
+        {
+          "name": ".data",
+          "size": "112",
+          "fuzzy_match_percent": 100.0,
+          "metadata": {
+            "virtual_address": "2151197408"
           }
         }
       ],
@@ -75806,10 +75816,12 @@
     {
       "name": "ovl8/ovl8_14",
       "measures": {
-        "fuzzy_match_percent": 77.1875,
+        "fuzzy_match_percent": 84.5339,
         "total_code": "1280",
         "matched_code": "988",
         "matched_code_percent": 77.1875,
+        "total_data": "608",
+        "matched_data": "608",
         "matched_data_percent": 100.0,
         "total_functions": 5,
         "matched_functions": 4,
@@ -75823,6 +75835,14 @@
           "fuzzy_match_percent": 77.1875,
           "metadata": {
             "virtual_address": "2151149024"
+          }
+        },
+        {
+          "name": ".data",
+          "size": "608",
+          "fuzzy_match_percent": 100.0,
+          "metadata": {
+            "virtual_address": "2151197520"
           }
         }
       ],
@@ -76149,6 +76169,8 @@
         "total_code": "624",
         "matched_code": "624",
         "matched_code_percent": 100.0,
+        "total_data": "608",
+        "matched_data": "608",
         "matched_data_percent": 100.0,
         "total_functions": 4,
         "matched_functions": 4,
@@ -76162,6 +76184,14 @@
           "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "2151157408"
+          }
+        },
+        {
+          "name": ".data",
+          "size": "608",
+          "fuzzy_match_percent": 100.0,
+          "metadata": {
+            "virtual_address": "2151201200"
           }
         }
       ],
@@ -76211,10 +76241,12 @@
     {
       "name": "ovl8/ovl8_17",
       "measures": {
-        "fuzzy_match_percent": 60.670734,
+        "fuzzy_match_percent": 63.764046,
         "total_code": "2624",
         "matched_code": "1592",
         "matched_code_percent": 60.670734,
+        "total_data": "224",
+        "matched_data": "224",
         "matched_data_percent": 100.0,
         "total_functions": 18,
         "matched_functions": 17,
@@ -76228,6 +76260,14 @@
           "fuzzy_match_percent": 60.670734,
           "metadata": {
             "virtual_address": "2151158032"
+          }
+        },
+        {
+          "name": ".data",
+          "size": "224",
+          "fuzzy_match_percent": 100.0,
+          "metadata": {
+            "virtual_address": "2151201808"
           }
         }
       ],
@@ -76476,6 +76516,8 @@
         "total_code": "1632",
         "matched_code": "1632",
         "matched_code_percent": 100.0,
+        "total_data": "1184",
+        "matched_data": "1184",
         "matched_data_percent": 100.0,
         "total_functions": 9,
         "matched_functions": 9,
@@ -76489,6 +76531,14 @@
           "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "2151162000"
+          }
+        },
+        {
+          "name": ".data",
+          "size": "1184",
+          "fuzzy_match_percent": 100.0,
+          "metadata": {
+            "virtual_address": "2151202048"
           }
         }
       ],
@@ -76582,6 +76632,8 @@
         "total_code": "976",
         "matched_code": "976",
         "matched_code_percent": 100.0,
+        "total_data": "800",
+        "matched_data": "800",
         "matched_data_percent": 100.0,
         "total_functions": 7,
         "matched_functions": 7,
@@ -76595,6 +76647,14 @@
           "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "2151163632"
+          }
+        },
+        {
+          "name": ".data",
+          "size": "800",
+          "fuzzy_match_percent": 100.0,
+          "metadata": {
+            "virtual_address": "2151203232"
           }
         }
       ],
@@ -76672,6 +76732,8 @@
         "total_code": "688",
         "matched_code": "688",
         "matched_code_percent": 100.0,
+        "total_data": "688",
+        "matched_data": "688",
         "matched_data_percent": 100.0,
         "total_functions": 6,
         "matched_functions": 6,
@@ -76685,6 +76747,14 @@
           "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "2151164608"
+          }
+        },
+        {
+          "name": ".data",
+          "size": "688",
+          "fuzzy_match_percent": 100.0,
+          "metadata": {
+            "virtual_address": "2151204032"
           }
         }
       ],
@@ -76754,6 +76824,8 @@
         "total_code": "1536",
         "matched_code": "1536",
         "matched_code_percent": 100.0,
+        "total_data": "640",
+        "matched_data": "640",
         "matched_data_percent": 100.0,
         "total_functions": 10,
         "matched_functions": 10,
@@ -76767,6 +76839,14 @@
           "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "2151165296"
+          }
+        },
+        {
+          "name": ".data",
+          "size": "640",
+          "fuzzy_match_percent": 100.0,
+          "metadata": {
+            "virtual_address": "2151204720"
           }
         }
       ],
@@ -76868,6 +76948,8 @@
         "total_code": "3360",
         "matched_code": "3360",
         "matched_code_percent": 100.0,
+        "total_data": "896",
+        "matched_data": "896",
         "matched_data_percent": 100.0,
         "total_functions": 22,
         "matched_functions": 22,
@@ -76881,6 +76963,14 @@
           "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "2151166848"
+          }
+        },
+        {
+          "name": ".data",
+          "size": "896",
+          "fuzzy_match_percent": 100.0,
+          "metadata": {
+            "virtual_address": "2151205360"
           }
         }
       ],
@@ -77078,6 +77168,8 @@
         "total_code": "928",
         "matched_code": "928",
         "matched_code_percent": 100.0,
+        "total_data": "832",
+        "matched_data": "832",
         "matched_data_percent": 100.0,
         "total_functions": 6,
         "matched_functions": 6,
@@ -77091,6 +77183,14 @@
           "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "2151170208"
+          }
+        },
+        {
+          "name": ".data",
+          "size": "832",
+          "fuzzy_match_percent": 100.0,
+          "metadata": {
+            "virtual_address": "2151206256"
           }
         }
       ],
@@ -77160,6 +77260,8 @@
         "total_code": "3360",
         "matched_code": "3360",
         "matched_code_percent": 100.0,
+        "total_data": "1408",
+        "matched_data": "1408",
         "matched_data_percent": 100.0,
         "total_functions": 23,
         "matched_functions": 23,
@@ -77173,6 +77275,14 @@
           "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "2151171136"
+          }
+        },
+        {
+          "name": ".data",
+          "size": "1408",
+          "fuzzy_match_percent": 100.0,
+          "metadata": {
+            "virtual_address": "2151207088"
           }
         }
       ],
@@ -77378,6 +77488,8 @@
         "total_code": "736",
         "matched_code": "736",
         "matched_code_percent": 100.0,
+        "total_data": "784",
+        "matched_data": "784",
         "matched_data_percent": 100.0,
         "total_functions": 5,
         "matched_functions": 5,
@@ -77391,6 +77503,14 @@
           "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "2151174496"
+          }
+        },
+        {
+          "name": ".data",
+          "size": "784",
+          "fuzzy_match_percent": 100.0,
+          "metadata": {
+            "virtual_address": "2151208496"
           }
         }
       ],
@@ -77452,6 +77572,8 @@
         "total_code": "480",
         "matched_code": "480",
         "matched_code_percent": 100.0,
+        "total_data": "672",
+        "matched_data": "672",
         "matched_data_percent": 100.0,
         "total_functions": 3,
         "matched_functions": 3,
@@ -77465,6 +77587,14 @@
           "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "2151175232"
+          }
+        },
+        {
+          "name": ".data",
+          "size": "672",
+          "fuzzy_match_percent": 100.0,
+          "metadata": {
+            "virtual_address": "2151209280"
           }
         }
       ],
@@ -77510,6 +77640,8 @@
         "total_code": "1040",
         "matched_code": "1040",
         "matched_code_percent": 100.0,
+        "total_data": "704",
+        "matched_data": "704",
         "matched_data_percent": 100.0,
         "total_functions": 7,
         "matched_functions": 7,
@@ -77523,6 +77655,14 @@
           "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "2151175712"
+          }
+        },
+        {
+          "name": ".data",
+          "size": "704",
+          "fuzzy_match_percent": 100.0,
+          "metadata": {
+            "virtual_address": "2151209952"
           }
         }
       ],
@@ -77600,6 +77740,8 @@
         "total_code": "960",
         "matched_code": "960",
         "matched_code_percent": 100.0,
+        "total_data": "800",
+        "matched_data": "800",
         "matched_data_percent": 100.0,
         "total_functions": 7,
         "matched_functions": 7,
@@ -77613,6 +77755,14 @@
           "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "2151176752"
+          }
+        },
+        {
+          "name": ".data",
+          "size": "800",
+          "fuzzy_match_percent": 100.0,
+          "metadata": {
+            "virtual_address": "2151210656"
           }
         }
       ],
@@ -77808,12 +77958,12 @@
     {
       "name": "ovl8/ovl8_31",
       "measures": {
-        "fuzzy_match_percent": 57.18284,
+        "fuzzy_match_percent": 67.400566,
         "total_code": "4272",
         "matched_code": "2436",
         "matched_code_percent": 57.02247,
-        "total_data": "16",
-        "matched_data": "16",
+        "total_data": "1360",
+        "matched_data": "1360",
         "matched_data_percent": 100.0,
         "total_functions": 15,
         "matched_functions": 13,
@@ -77827,6 +77977,14 @@
           "fuzzy_match_percent": 57.02247,
           "metadata": {
             "virtual_address": "2151179552"
+          }
+        },
+        {
+          "name": ".data",
+          "size": "1344",
+          "fuzzy_match_percent": 100.0,
+          "metadata": {
+            "virtual_address": "2151212416"
           }
         },
         {
@@ -77974,6 +78132,8 @@
         "total_code": "768",
         "matched_code": "768",
         "matched_code_percent": 100.0,
+        "total_data": "800",
+        "matched_data": "800",
         "matched_data_percent": 100.0,
         "total_functions": 6,
         "matched_functions": 6,
@@ -77987,6 +78147,14 @@
           "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "2151184768"
+          }
+        },
+        {
+          "name": ".data",
+          "size": "800",
+          "fuzzy_match_percent": 100.0,
+          "metadata": {
+            "virtual_address": "2151213760"
           }
         }
       ],
@@ -78076,58 +78244,6 @@
       }
     },
     {
-      "name": "ovl8/ovl8_13_2.data",
-      "measures": {
-        "matched_code_percent": 100.0,
-        "total_data": "112",
-        "matched_functions_percent": 100.0,
-        "total_units": 1
-      },
-      "sections": [
-        {
-          "name": ".data",
-          "size": "112",
-          "metadata": {
-            "virtual_address": "2151197408"
-          }
-        }
-      ],
-      "metadata": {
-        "module_name": ".ovl8",
-        "module_id": 132,
-        "progress_categories": [
-          "ovl8",
-          "segment_.ovl8"
-        ]
-      }
-    },
-    {
-      "name": "ovl8/ovl8_14.data",
-      "measures": {
-        "matched_code_percent": 100.0,
-        "total_data": "608",
-        "matched_functions_percent": 100.0,
-        "total_units": 1
-      },
-      "sections": [
-        {
-          "name": ".data",
-          "size": "608",
-          "metadata": {
-            "virtual_address": "2151197520"
-          }
-        }
-      ],
-      "metadata": {
-        "module_name": ".ovl8",
-        "module_id": 132,
-        "progress_categories": [
-          "ovl8",
-          "segment_.ovl8"
-        ]
-      }
-    },
-    {
       "name": "ovl8/ovl8_15.data",
       "measures": {
         "matched_code_percent": 100.0,
@@ -78154,344 +78270,6 @@
       }
     },
     {
-      "name": "ovl8/ovl8_16.data",
-      "measures": {
-        "matched_code_percent": 100.0,
-        "total_data": "608",
-        "matched_functions_percent": 100.0,
-        "total_units": 1
-      },
-      "sections": [
-        {
-          "name": ".data",
-          "size": "608",
-          "metadata": {
-            "virtual_address": "2151201200"
-          }
-        }
-      ],
-      "metadata": {
-        "module_name": ".ovl8",
-        "module_id": 132,
-        "progress_categories": [
-          "ovl8",
-          "segment_.ovl8"
-        ]
-      }
-    },
-    {
-      "name": "ovl8/ovl8_17.data",
-      "measures": {
-        "matched_code_percent": 100.0,
-        "total_data": "224",
-        "matched_functions_percent": 100.0,
-        "total_units": 1
-      },
-      "sections": [
-        {
-          "name": ".data",
-          "size": "224",
-          "metadata": {
-            "virtual_address": "2151201808"
-          }
-        }
-      ],
-      "metadata": {
-        "module_name": ".ovl8",
-        "module_id": 132,
-        "progress_categories": [
-          "ovl8",
-          "segment_.ovl8"
-        ]
-      }
-    },
-    {
-      "name": "ovl8/ovl8_19.data",
-      "measures": {
-        "matched_code_percent": 100.0,
-        "total_data": "1184",
-        "matched_functions_percent": 100.0,
-        "total_units": 1
-      },
-      "sections": [
-        {
-          "name": ".data",
-          "size": "1184",
-          "metadata": {
-            "virtual_address": "2151202048"
-          }
-        }
-      ],
-      "metadata": {
-        "module_name": ".ovl8",
-        "module_id": 132,
-        "progress_categories": [
-          "ovl8",
-          "segment_.ovl8"
-        ]
-      }
-    },
-    {
-      "name": "ovl8/ovl8_20.data",
-      "measures": {
-        "matched_code_percent": 100.0,
-        "total_data": "800",
-        "matched_functions_percent": 100.0,
-        "total_units": 1
-      },
-      "sections": [
-        {
-          "name": ".data",
-          "size": "800",
-          "metadata": {
-            "virtual_address": "2151203232"
-          }
-        }
-      ],
-      "metadata": {
-        "module_name": ".ovl8",
-        "module_id": 132,
-        "progress_categories": [
-          "ovl8",
-          "segment_.ovl8"
-        ]
-      }
-    },
-    {
-      "name": "ovl8/ovl8_21.data",
-      "measures": {
-        "matched_code_percent": 100.0,
-        "total_data": "688",
-        "matched_functions_percent": 100.0,
-        "total_units": 1
-      },
-      "sections": [
-        {
-          "name": ".data",
-          "size": "688",
-          "metadata": {
-            "virtual_address": "2151204032"
-          }
-        }
-      ],
-      "metadata": {
-        "module_name": ".ovl8",
-        "module_id": 132,
-        "progress_categories": [
-          "ovl8",
-          "segment_.ovl8"
-        ]
-      }
-    },
-    {
-      "name": "ovl8/ovl8_22.data",
-      "measures": {
-        "matched_code_percent": 100.0,
-        "total_data": "640",
-        "matched_functions_percent": 100.0,
-        "total_units": 1
-      },
-      "sections": [
-        {
-          "name": ".data",
-          "size": "640",
-          "metadata": {
-            "virtual_address": "2151204720"
-          }
-        }
-      ],
-      "metadata": {
-        "module_name": ".ovl8",
-        "module_id": 132,
-        "progress_categories": [
-          "ovl8",
-          "segment_.ovl8"
-        ]
-      }
-    },
-    {
-      "name": "ovl8/ovl8_23.data",
-      "measures": {
-        "matched_code_percent": 100.0,
-        "total_data": "896",
-        "matched_functions_percent": 100.0,
-        "total_units": 1
-      },
-      "sections": [
-        {
-          "name": ".data",
-          "size": "896",
-          "metadata": {
-            "virtual_address": "2151205360"
-          }
-        }
-      ],
-      "metadata": {
-        "module_name": ".ovl8",
-        "module_id": 132,
-        "progress_categories": [
-          "ovl8",
-          "segment_.ovl8"
-        ]
-      }
-    },
-    {
-      "name": "ovl8/ovl8_24.data",
-      "measures": {
-        "matched_code_percent": 100.0,
-        "total_data": "832",
-        "matched_functions_percent": 100.0,
-        "total_units": 1
-      },
-      "sections": [
-        {
-          "name": ".data",
-          "size": "832",
-          "metadata": {
-            "virtual_address": "2151206256"
-          }
-        }
-      ],
-      "metadata": {
-        "module_name": ".ovl8",
-        "module_id": 132,
-        "progress_categories": [
-          "ovl8",
-          "segment_.ovl8"
-        ]
-      }
-    },
-    {
-      "name": "ovl8/ovl8_25.data",
-      "measures": {
-        "matched_code_percent": 100.0,
-        "total_data": "1408",
-        "matched_functions_percent": 100.0,
-        "total_units": 1
-      },
-      "sections": [
-        {
-          "name": ".data",
-          "size": "1408",
-          "metadata": {
-            "virtual_address": "2151207088"
-          }
-        }
-      ],
-      "metadata": {
-        "module_name": ".ovl8",
-        "module_id": 132,
-        "progress_categories": [
-          "ovl8",
-          "segment_.ovl8"
-        ]
-      }
-    },
-    {
-      "name": "ovl8/ovl8_26.data",
-      "measures": {
-        "matched_code_percent": 100.0,
-        "total_data": "784",
-        "matched_functions_percent": 100.0,
-        "total_units": 1
-      },
-      "sections": [
-        {
-          "name": ".data",
-          "size": "784",
-          "metadata": {
-            "virtual_address": "2151208496"
-          }
-        }
-      ],
-      "metadata": {
-        "module_name": ".ovl8",
-        "module_id": 132,
-        "progress_categories": [
-          "ovl8",
-          "segment_.ovl8"
-        ]
-      }
-    },
-    {
-      "name": "ovl8/ovl8_27.data",
-      "measures": {
-        "matched_code_percent": 100.0,
-        "total_data": "672",
-        "matched_functions_percent": 100.0,
-        "total_units": 1
-      },
-      "sections": [
-        {
-          "name": ".data",
-          "size": "672",
-          "metadata": {
-            "virtual_address": "2151209280"
-          }
-        }
-      ],
-      "metadata": {
-        "module_name": ".ovl8",
-        "module_id": 132,
-        "progress_categories": [
-          "ovl8",
-          "segment_.ovl8"
-        ]
-      }
-    },
-    {
-      "name": "ovl8/ovl8_28.data",
-      "measures": {
-        "matched_code_percent": 100.0,
-        "total_data": "704",
-        "matched_functions_percent": 100.0,
-        "total_units": 1
-      },
-      "sections": [
-        {
-          "name": ".data",
-          "size": "704",
-          "metadata": {
-            "virtual_address": "2151209952"
-          }
-        }
-      ],
-      "metadata": {
-        "module_name": ".ovl8",
-        "module_id": 132,
-        "progress_categories": [
-          "ovl8",
-          "segment_.ovl8"
-        ]
-      }
-    },
-    {
-      "name": "ovl8/ovl8_29.data",
-      "measures": {
-        "matched_code_percent": 100.0,
-        "total_data": "800",
-        "matched_functions_percent": 100.0,
-        "total_units": 1
-      },
-      "sections": [
-        {
-          "name": ".data",
-          "size": "800",
-          "metadata": {
-            "virtual_address": "2151210656"
-          }
-        }
-      ],
-      "metadata": {
-        "module_name": ".ovl8",
-        "module_id": 132,
-        "progress_categories": [
-          "ovl8",
-          "segment_.ovl8"
-        ]
-      }
-    },
-    {
       "name": "ovl8/ovl8_30.data",
       "measures": {
         "matched_code_percent": 100.0,
@@ -78505,58 +78283,6 @@
           "size": "960",
           "metadata": {
             "virtual_address": "2151211456"
-          }
-        }
-      ],
-      "metadata": {
-        "module_name": ".ovl8",
-        "module_id": 132,
-        "progress_categories": [
-          "ovl8",
-          "segment_.ovl8"
-        ]
-      }
-    },
-    {
-      "name": "ovl8/ovl8_31.data",
-      "measures": {
-        "matched_code_percent": 100.0,
-        "total_data": "1344",
-        "matched_functions_percent": 100.0,
-        "total_units": 1
-      },
-      "sections": [
-        {
-          "name": ".data",
-          "size": "1344",
-          "metadata": {
-            "virtual_address": "2151212416"
-          }
-        }
-      ],
-      "metadata": {
-        "module_name": ".ovl8",
-        "module_id": 132,
-        "progress_categories": [
-          "ovl8",
-          "segment_.ovl8"
-        ]
-      }
-    },
-    {
-      "name": "ovl8/ovl8_32.data",
-      "measures": {
-        "matched_code_percent": 100.0,
-        "total_data": "800",
-        "matched_functions_percent": 100.0,
-        "total_units": 1
-      },
-      "sections": [
-        {
-          "name": ".data",
-          "size": "800",
-          "metadata": {
-            "virtual_address": "2151213760"
           }
         }
       ],
@@ -79974,17 +79700,17 @@
       "id": "ovl8",
       "name": "ovl8",
       "measures": {
-        "fuzzy_match_percent": 83.63882,
+        "fuzzy_match_percent": 84.370346,
         "total_code": "91248",
         "matched_code": "75900",
         "matched_code_percent": 83.1799,
         "total_data": "34618",
-        "matched_data": "3112",
-        "matched_data_percent": 8.989543,
+        "matched_data": "16216",
+        "matched_data_percent": 46.84268,
         "total_functions": 573,
         "matched_functions": 558,
         "matched_functions_percent": 97.3822,
-        "total_units": 57
+        "total_units": 40
       }
     },
     {
@@ -81147,17 +80873,17 @@
       "id": "segment_.ovl8",
       "name": "Segment .ovl8",
       "measures": {
-        "fuzzy_match_percent": 83.63882,
+        "fuzzy_match_percent": 84.370346,
         "total_code": "91248",
         "matched_code": "75900",
         "matched_code_percent": 83.1799,
         "total_data": "34618",
-        "matched_data": "3112",
-        "matched_data_percent": 8.989543,
+        "matched_data": "16216",
+        "matched_data_percent": 46.84268,
         "total_functions": 573,
         "matched_functions": 558,
         "matched_functions_percent": 97.3822,
-        "total_units": 57
+        "total_units": 40
       }
     },
     {

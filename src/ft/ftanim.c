@@ -352,7 +352,7 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
                 AObjAnimAdvance(root_dobj->anim_joint.event16);
                 break;
 
-            case nGCAnimEvent32End:
+            case nGCAnimEvent16End:
                 current_aobj = root_dobj->aobj;
 
                 while (current_aobj != NULL)

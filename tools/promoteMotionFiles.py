@@ -569,11 +569,221 @@ def _decode_motion_comment(data, pos, opcode, word_count,
     return f"{loc} {name_str}"
 
 
+def decode_multi_word_macro(data, pos, opcode, intern_map, extern_map, prefix):
+    """Decode a multi-word command into macro strings.
+
+    Returns a list of C expression strings (one per macro line).
+    """
+    word = struct.unpack_from('>I', data, pos * 4)[0]
+
+    if opcode in (EVT_MakeAttackColl, EVT_MakeAttackCollScaled):
+        w2 = struct.unpack_from('>I', data, (pos + 1) * 4)[0]
+        w3 = struct.unpack_from('>I', data, (pos + 2) * 4)[0]
+        w4 = struct.unpack_from('>I', data, (pos + 3) * 4)[0]
+        w5 = struct.unpack_from('>I', data, (pos + 4) * 4)[0]
+        aid = (word >> 23) & 0x7
+        gid = (word >> 20) & 0x7
+        jid = sign_extend((word >> 13) & 0x7F, 7)
+        dmg = (word >> 5) & 0xFF
+        reb = (word >> 4) & 0x1
+        ele = word & 0xF
+        sz = (w2 >> 16) & 0xFFFF
+        ox = sign_extend(w2 & 0xFFFF, 16)
+        oy = sign_extend((w3 >> 16) & 0xFFFF, 16)
+        oz = sign_extend(w3 & 0xFFFF, 16)
+        ang = sign_extend((w4 >> 22) & 0x3FF, 10)
+        kbs = (w4 >> 12) & 0x3FF
+        kbw = (w4 >> 2) & 0x3FF
+        ga = w4 & 0x3
+        sd = sign_extend((w5 >> 24) & 0xFF, 8)
+        fl = (w5 >> 21) & 0x7
+        fk = (w5 >> 17) & 0xF
+        kbb = (w5 >> 7) & 0x3FF
+        base = "ftMotionCommandMakeAttackColl" if opcode == EVT_MakeAttackColl else "ftMotionCommandMakeAttackCollScaled"
+        return [
+            f"{base}S1({aid}, {gid}, {jid}, {dmg}, {reb}, {ele}),",
+            f"{base}S2({sz}, {ox}),",
+            f"{base}S3({oy}, {oz}),",
+            f"{base}S4({ang}, {kbs}, {kbw}, {ga}),",
+            f"{base}S5({sd}, {fl}, {fk}, {kbb}),",
+        ]
+
+    if opcode == EVT_SetAttackCollOffset:
+        w2 = struct.unpack_from('>I', data, (pos + 1) * 4)[0]
+        aid = (word >> 23) & 0x7
+        ox = sign_extend((word >> 7) & 0xFFFF, 16)
+        oy = sign_extend((w2 >> 16) & 0xFFFF, 16)
+        oz = sign_extend(w2 & 0xFFFF, 16)
+        return [
+            f"ftMotionCommandSetAttackCollOffsetS1({aid}, {ox}),",
+            f"ftMotionCommandSetAttackCollOffsetS2({oy}, {oz}),",
+        ]
+
+    if opcode in (EVT_Subroutine, EVT_Goto, EVT_SetParallelScript):
+        pw = pos + 1
+        name_map = {
+            EVT_Subroutine: "ftMotionCommandSubroutine",
+            EVT_Goto: "ftMotionCommandGoto",
+            EVT_SetParallelScript: "ftMotionCommandSetParallelScript",
+        }
+        macro_name = name_map[opcode]
+        if pw in intern_map:
+            tw = intern_map[pw]
+            target_label = f"{prefix}_0x{tw * 4:04X}"
+            return [f"{macro_name}({target_label}),"]
+        else:
+            # Shouldn't happen for these opcodes in MainMotion
+            val = struct.unpack_from('>I', data, pw * 4)[0]
+            return [
+                f"{macro_name}S1(),",
+                f"0x{val:08X},",
+            ]
+
+    if opcode == EVT_SetThrow:
+        pw = pos + 1
+        if pw in extern_map:
+            tw = extern_map[pw]
+            return [
+                f"ftMotionCommandSetThrowS1(),",
+                f"0x{tw * 4:08X}, /* extern 0x{tw * 4:X} */",
+            ]
+        elif pw in intern_map:
+            tw = intern_map[pw]
+            target_label = f"{prefix}_0x{tw * 4:04X}"
+            return [f"ftMotionCommandSetThrow((u32){target_label}),"]
+        else:
+            val = struct.unpack_from('>I', data, pw * 4)[0]
+            return [
+                f"ftMotionCommandSetThrowS1(),",
+                f"0x{val:08X},",
+            ]
+
+    if opcode == EVT_SetDamageThrown:
+        pw = pos + 1
+        if pw in extern_map:
+            tw = extern_map[pw]
+            return [
+                f"ftMotionCommandSetDamageThrownS1(),",
+                f"0x{tw * 4:08X}, /* extern 0x{tw * 4:X} */",
+            ]
+        elif pw in intern_map:
+            tw = intern_map[pw]
+            target_label = f"{prefix}_0x{tw * 4:04X}"
+            return [f"ftMotionCommandSetDamageThrown((u32){target_label}),"]
+        else:
+            val = struct.unpack_from('>I', data, pw * 4)[0]
+            return [
+                f"ftMotionCommandSetDamageThrownS1(),",
+                f"0x{val:08X},",
+            ]
+
+    if opcode in (EVT_Effect, EVT_EffectItemHold):
+        w2 = struct.unpack_from('>I', data, (pos + 1) * 4)[0]
+        w3 = struct.unpack_from('>I', data, (pos + 2) * 4)[0]
+        w4 = struct.unpack_from('>I', data, (pos + 3) * 4)[0]
+        jid = sign_extend((word >> 19) & 0x7F, 7)
+        eid = (word >> 10) & 0x1FF
+        fl = word & 0x3FF
+        ox = sign_extend((w2 >> 16) & 0xFFFF, 16)
+        oy = sign_extend(w2 & 0xFFFF, 16)
+        oz = sign_extend((w3 >> 16) & 0xFFFF, 16)
+        rx = sign_extend(w3 & 0xFFFF, 16)
+        ry = sign_extend((w4 >> 16) & 0xFFFF, 16)
+        rz = sign_extend(w4 & 0xFFFF, 16)
+        base = "ftMotionCommandEffect" if opcode == EVT_Effect else "ftMotionCommandEffectItemHold"
+        return [
+            f"{base}S1({jid}, {eid}, {fl}),",
+            f"{base}S2({ox}, {oy}),",
+            f"{base}S3({oz}, {rx}),",
+            f"{base}S4({ry}, {rz}),",
+        ]
+
+    if opcode == EVT_SetHitStatusPartID:
+        # 1-word command, handled in decode_single_word_macro
+        pass
+
+    if opcode == EVT_SetDamageCollPartID:
+        w2 = struct.unpack_from('>I', data, (pos + 1) * 4)[0]
+        w3 = struct.unpack_from('>I', data, (pos + 2) * 4)[0]
+        w4 = struct.unpack_from('>I', data, (pos + 3) * 4)[0]
+        jid = sign_extend((word >> 19) & 0x7F, 7)
+        ox = sign_extend((w2 >> 16) & 0xFFFF, 16)
+        oy = sign_extend(w2 & 0xFFFF, 16)
+        oz = sign_extend((w3 >> 16) & 0xFFFF, 16)
+        sx = sign_extend(w3 & 0xFFFF, 16)
+        sy = sign_extend((w4 >> 16) & 0xFFFF, 16)
+        sz = sign_extend(w4 & 0xFFFF, 16)
+        return [
+            f"ftMotionCommandSetDamageCollPartIDS1({jid}),",
+            f"ftMotionCommandSetDamageCollPartIDS2({ox}, {oy}),",
+            f"ftMotionCommandSetDamageCollPartIDS3({oz}, {sx}),",
+            f"ftMotionCommandSetDamageCollPartIDS4({sy}, {sz}),",
+        ]
+
+    # Fallback: raw hex
+    lines = []
+    for k in range(OPCODE_WORD_COUNT.get(opcode, 1)):
+        val = struct.unpack_from('>I', data, (pos + k) * 4)[0]
+        lines.append(f"0x{val:08X},")
+    return lines
+
+
 def generate_motion_file(fid, name, data, intern_relocs, extern_relocs):
-    """Generate .c and .reloc for a MainMotion file as a single flat u32 array."""
+    """Generate .c and .reloc for a MainMotion file as split named u32 arrays."""
     prefix = f"d{name}"
     file_size_words = len(data) // 4
-    var = prefix
+
+    intern_map = {r[0]: r[1] for r in intern_relocs}
+    extern_map = {r[0]: r[1] for r in extern_relocs}
+    data_struct_words = find_data_structure_ranges(data, intern_relocs)
+
+    # Collect all reloc targets (intern destinations) - these are script entry points
+    reloc_targets = set()
+    for pw, tw in intern_relocs:
+        reloc_targets.add(tw)
+
+    # Walk the command stream to find End/Return boundaries
+    # and collect all script segment start positions
+    end_positions = set()  # word positions AFTER End/Return commands
+    pos = 0
+    while pos < file_size_words:
+        if pos in data_struct_words:
+            pos += 1
+            continue
+        word = struct.unpack_from('>I', data, pos * 4)[0]
+        opcode = (word >> 26) & 0x3F
+        word_count = OPCODE_WORD_COUNT.get(opcode, 1)
+        if pos + word_count > file_size_words:
+            break
+        if opcode in (EVT_End, EVT_Return):
+            end_positions.add(pos + 1)
+        pos += word_count
+
+    # Determine all array boundaries: start at 0, at reloc targets, and after End/Return
+    array_starts = set()
+    array_starts.add(0)
+    array_starts.update(reloc_targets)
+    array_starts.update(end_positions)
+    # Remove any that equal file_size_words
+    array_starts.discard(file_size_words)
+    array_starts = sorted(array_starts)
+
+    # Build array name mapping: byte_offset -> label
+    def array_label(word_pos):
+        return f"{prefix}_0x{word_pos * 4:04X}"
+
+    # Find which array contains a given word position
+    def find_containing_array(word_pos):
+        for i in range(len(array_starts) - 1, -1, -1):
+            if array_starts[i] <= word_pos:
+                return array_starts[i]
+        return array_starts[0]
+
+    # Generate forward declarations for all arrays referenced by relocs
+    # (needed because Subroutine/Goto may reference arrays defined later)
+    forward_decl_targets = set()
+    for pw, tw in intern_relocs:
+        forward_decl_targets.add(tw)
 
     c_lines = [
         f"/* ftMotionCommand script data for relocData file {fid} ({name}) */",
@@ -583,64 +793,102 @@ def generate_motion_file(fid, name, data, intern_relocs, extern_relocs):
         '#include <ft/ftdef.h>',
         "",
     ]
+
+    # Forward declarations for arrays that are referenced before definition
+    # We need to figure out which ones are referenced before they appear
+    # Simple approach: declare all reloc targets as extern
+    forward_needed = set()
+    for pw, tw in intern_relocs:
+        # Check if target array appears after the source array
+        src_array = find_containing_array(pw)
+        if tw > src_array:
+            forward_needed.add(tw)
+
+    if forward_needed:
+        for tw in sorted(forward_needed):
+            c_lines.append(f"extern u32 {array_label(tw)}[];")
+        c_lines.append("")
+
     reloc_lines = [
         f"# Relocation metadata for file {fid}",
         "# Format: <type> <ptr_label> <target_label>",
         "# Labels are C variable names resolved via .o symbol table",
     ]
 
-    intern_map = {r[0]: r[1] for r in intern_relocs}
-    extern_map = {r[0]: r[1] for r in extern_relocs}
-    data_struct_words = find_data_structure_ranges(data, intern_relocs)
+    # Generate each array
+    for ai, arr_start in enumerate(array_starts):
+        if ai + 1 < len(array_starts):
+            arr_end = array_starts[ai + 1]
+        else:
+            arr_end = file_size_words
 
-    c_lines.append(f"u32 {var}[{file_size_words}] = {{")
-
-    pos = 0
-    while pos < file_size_words:
-        # Data structure regions (FTThrowHitDesc) - emit raw hex
-        if pos in data_struct_words:
-            while pos < file_size_words and pos in data_struct_words:
-                val = struct.unpack_from('>I', data, pos * 4)[0]
-                c_lines.append(f"\t0x{val:08X}, /* word {pos} (0x{pos * 4:04X}) data */")
-                pos += 1
+        arr_word_count = arr_end - arr_start
+        if arr_word_count <= 0:
             continue
 
-        word = struct.unpack_from('>I', data, pos * 4)[0]
-        opcode = (word >> 26) & 0x3F
-        word_count = OPCODE_WORD_COUNT.get(opcode, 1)
+        label = array_label(arr_start)
+        c_lines.append(f"u32 {label}[] = {{")
 
-        available = file_size_words - pos
-        if word_count > available:
-            for w in range(pos, file_size_words):
-                val = struct.unpack_from('>I', data, w * 4)[0]
-                c_lines.append(f"\t0x{val:08X}, /* word {w} */")
-            break
+        pos = arr_start
+        while pos < arr_end:
+            # Data structure regions (FTThrowHitDesc) - emit raw hex
+            if pos in data_struct_words:
+                while pos < arr_end and pos in data_struct_words:
+                    val = struct.unpack_from('>I', data, pos * 4)[0]
+                    c_lines.append(f"\t0x{val:08X},")
+                    pos += 1
+                continue
 
-        # Decode command for comment, but always emit raw hex
-        comment = _decode_motion_comment(data, pos, opcode, word_count,
-                                          intern_map, extern_map, var)
-        c_lines.append(f"\t0x{word:08X}, /* {comment} */")
-        for k in range(1, word_count):
-            wk = struct.unpack_from('>I', data, (pos + k) * 4)[0]
-            wk_pos = pos + k
-            # Annotate reloc'd pointer words
-            if wk_pos in intern_map:
-                tw = intern_map[wk_pos]
-                c_lines.append(f"\t0x{wk:08X}, /* -> word {tw} (0x{tw * 4:04X}) */")
-                reloc_lines.append(
-                    f"intern {var}+0x{wk_pos * 4:X} {var}+0x{tw * 4:X}")
-            elif wk_pos in extern_map:
-                tw = extern_map[wk_pos]
-                c_lines.append(f"\t0x{wk:08X}, /* extern -> 0x{tw * 4:X} */")
-                reloc_lines.append(
-                    f"extern {var}+0x{wk_pos * 4:X} 0x{tw * 4:X}")
-            else:
-                c_lines.append(f"\t0x{wk:08X},")
+            word = struct.unpack_from('>I', data, pos * 4)[0]
+            opcode = (word >> 26) & 0x3F
+            word_count = OPCODE_WORD_COUNT.get(opcode, 1)
 
-        pos += word_count
+            available = arr_end - pos
+            if word_count > available:
+                # Truncated command at array boundary - emit raw
+                for w in range(pos, arr_end):
+                    val = struct.unpack_from('>I', data, w * 4)[0]
+                    c_lines.append(f"\t0x{val:08X},")
+                pos = arr_end
+                break
 
-    c_lines.append("};")
-    c_lines.append("")
+            # Single-word command
+            if word_count == 1:
+                macro = decode_single_word_macro(word)
+                if macro:
+                    c_lines.append(f"\t{macro},")
+                else:
+                    c_lines.append(f"\t0x{word:08X},")
+                pos += 1
+                continue
+
+            # Multi-word command
+            macro_lines = decode_multi_word_macro(data, pos, opcode,
+                                                   intern_map, extern_map, prefix)
+            for ml in macro_lines:
+                c_lines.append(f"\t{ml}")
+
+            # Generate reloc entries for pointer words
+            for k in range(1, word_count):
+                wk_pos = pos + k
+                if wk_pos in intern_map:
+                    tw = intern_map[wk_pos]
+                    src_label = array_label(arr_start)
+                    tgt_label = array_label(tw)
+                    offset_in_arr = (wk_pos - arr_start) * 4
+                    reloc_lines.append(
+                        f"intern {src_label}+0x{offset_in_arr:X} {tgt_label}")
+                elif wk_pos in extern_map:
+                    tw = extern_map[wk_pos]
+                    src_label = array_label(arr_start)
+                    offset_in_arr = (wk_pos - arr_start) * 4
+                    reloc_lines.append(
+                        f"extern {src_label}+0x{offset_in_arr:X} 0x{tw * 4:X}")
+
+            pos += word_count
+
+        c_lines.append("};")
+        c_lines.append("")
 
     return "\n".join(c_lines), "\n".join(reloc_lines) + "\n"
 

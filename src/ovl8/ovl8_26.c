@@ -229,10 +229,10 @@ void *func_ovl8_803851E4(dbUnknown5 *arg0, dbUnknownLinkStruct *arg1, dbUnknownL
 		{
 			arg1 = &arg0->unk_dbunk5_0x60;\
 			arg2 = &arg0->unk_dbunk5_0xC0;
-			#line 42
+			#line 229
 			func_ovl8_803717E0(arg1);
 			func_ovl8_8037C2D0(arg2);
-			#line 49
+			#line 236
 		}
 		
 		func_ovl8_803847A0(arg0, arg1, arg2, arg3, arg4, arg5);

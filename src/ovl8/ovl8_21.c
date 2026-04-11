@@ -211,10 +211,10 @@ dbUnknown5* func_ovl8_80382B44(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUn
 		{
 			arg1 = &arg0->unk_dbunk5_0x60;\
 			arg2 = &arg0->unk_dbunk5_0xBC;
-			#line 43
+			#line 211
 			func_ovl8_803717E0(arg1);
 			func_ovl8_8037C2D0(arg2);
-			#line 50
+			#line 218
 		}
 
 		func_ovl8_8037EF0C(arg0, arg1, arg2, arg3, 0, arg5);
@@ -240,9 +240,9 @@ void func_ovl8_80382C24(dbUnknown5* arg0, s32 arg1)
 		arg0->unk_dbunk5_0x34->unk_dbunklink_0x8 = &D_ovl8_8038C710;
 		arg0->unk_dbunk5_0x5C = &D_ovl8_8038C738;
 
-		#line 72
+		#line 240
 		func_ovl8_8038120C(&arg0->unk_dbunk5_0x40, 0);
-		#line 78
+		#line 246
 		func_ovl8_8037F260(arg0, 0);
 
 		if (arg1 != 0)

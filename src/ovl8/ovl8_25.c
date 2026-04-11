@@ -338,10 +338,10 @@ dbUnknown5* func_ovl8_803844C4(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUn
 		{
 			arg1 = &arg0->unk_dbunk5_0x64;
 			arg2 = &arg0->unk_dbunk5_0x58;
-			#line 56
+			#line 337
 			func_ovl8_803717E0(arg1);
 			func_ovl8_8037C2D0(arg2);
-			#line 63
+			#line 344
 		}
 
 		func_ovl8_803833A0(arg0, arg1, arg2);
@@ -365,10 +365,10 @@ dbUnknown5* func_ovl8_8038456C(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUn
 		{
 			arg1 = &arg0->unk_dbunk5_0x64;
 			arg2 = &arg0->unk_dbunk5_0x58;
-			#line 83
+			#line 364
 			func_ovl8_803717E0(arg1);
 			func_ovl8_8037C2D0(arg2);
-			#line 90
+			#line 371
 		}
 
 		func_ovl8_80383450(arg0, arg1, arg2, arg3, arg4);
@@ -455,10 +455,10 @@ dbUnknown5* func_ovl8_803847A0(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUn
 		{
 			arg1 = &arg0->unk_dbunk5_0x4C;
 			arg2 = &arg0->unk_dbunk5_0xA8;
-			#line 173
+			#line 454
 			func_ovl8_803717E0(arg1);
 			func_ovl8_8037C2D0(arg2);
-			#line 180
+			#line 461
 		}
 
 		func_ovl8_8037345C(arg0, arg1, arg2, arg3, arg4);

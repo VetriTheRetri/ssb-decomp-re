@@ -1,0 +1,24 @@
+# Relocation metadata for file 207
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+extern dNMarioMain_ptrs0+0x0 0x24
+extern dNMarioMain_ptrs1+0x0 0x2A30
+extern dNMarioMain_ptrs1+0x10 0x2A30
+extern dNMarioMain_ptrs2+0x0 0x2B8
+intern dNMarioMain_ptrs3+0x0 dNMarioMain_script0_1
+intern dNMarioMain_ptrs3+0x4 dNMarioMain_script0_0
+intern dNMarioMain_ptrs3+0x34 dNMarioMain_script0_2
+intern dNMarioMain_ptrs3+0x38 dNMarioMain_ptrs1
+extern dNMarioMain_ptrs3+0x3C 0xF0
+extern dNMarioMain_ptrs3+0x40 0x5A0
+extern dNMarioMain_ptrs3+0x44 0xA10
+extern dNMarioMain_ptrs3+0x48 0xE80
+extern dNMarioMain_ptrs3+0x4C 0x12F0
+extern dNMarioMain_ptrs3+0x50 0x17A0
+extern dNMarioMain_ptrs3+0x54 0x1C60
+extern dNMarioMain_ptrs3+0x58 0x20E0
+extern dNMarioMain_ptrs3+0x5C 0x2540
+intern dNMarioMain_ptrs3+0x8C dNMarioMain_script0_3
+intern dNMarioMain_ptrs3+0x94 dNMarioMain_script0_4
+intern dNMarioMain_ptrs3+0x9C dNMarioMain_script1_0
+intern dNMarioMain_ptrs3+0xA4 dNMarioMain_script1_1

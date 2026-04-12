@@ -1,0 +1,16 @@
+# Relocation metadata for file 250
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+extern dBossMain_ptrs0+0x0 0x0
+extern dBossMain_ptrs1+0x0 0x23D8
+extern dBossMain_ptrs1+0x10 0x23D8
+extern dBossMain_ptrs1+0x20 0x90
+extern dBossMain_ptrs1+0x24 0xC0
+intern dBossMain_ptrs1+0x28 dBossMain_ptrs1+0x20
+extern dBossMain_ptrs1+0x2C 0x2B8
+intern dBossMain_ptrs2+0x0 dBossMain_script0_1
+intern dBossMain_ptrs2+0x4 dBossMain_script0_0
+intern dBossMain_ptrs2+0x34 dBossMain_script0_2
+intern dBossMain_ptrs2+0x38 dBossMain_ptrs1
+intern dBossMain_ptrs2+0x8C dBossMain_script0_3
+intern dBossMain_ptrs2+0xA4 dBossMain_ptrs1+0x24

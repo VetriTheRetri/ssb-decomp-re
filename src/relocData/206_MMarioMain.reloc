@@ -1,0 +1,30 @@
+# Relocation metadata for file 206
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+extern dMMarioMain_ptrs0+0x0 0x38
+extern dMMarioMain_ptrs0+0x4 0x24
+extern dMMarioMain_ptrs0+0x8 0x608
+extern dMMarioMain_ptrs0+0xC 0x0
+extern dMMarioMain_ptrs1+0x0 0x1E08
+extern dMMarioMain_ptrs1+0x10 0x1E08
+extern dMMarioMain_ptrs2+0x0 0x2CD0
+extern dMMarioMain_ptrs2+0x4 0x2D00
+intern dMMarioMain_ptrs2+0x8 dMMarioMain_ptrs2
+extern dMMarioMain_ptrs2+0xC 0x2EF8
+intern dMMarioMain_ptrs3+0x0 dMMarioMain_script0_1
+intern dMMarioMain_ptrs3+0x4 dMMarioMain_script0_0
+intern dMMarioMain_ptrs3+0x34 dMMarioMain_script0_2
+intern dMMarioMain_ptrs3+0x38 dMMarioMain_ptrs1
+extern dMMarioMain_ptrs3+0x3C 0xF0
+extern dMMarioMain_ptrs3+0x40 0x5A0
+extern dMMarioMain_ptrs3+0x44 0xA10
+extern dMMarioMain_ptrs3+0x48 0xE80
+extern dMMarioMain_ptrs3+0x4C 0x12F0
+extern dMMarioMain_ptrs3+0x50 0x17A0
+extern dMMarioMain_ptrs3+0x54 0x1C60
+extern dMMarioMain_ptrs3+0x58 0x20E0
+extern dMMarioMain_ptrs3+0x5C 0x2540
+intern dMMarioMain_ptrs3+0x8C dMMarioMain_script0_3
+intern dMMarioMain_ptrs3+0x94 dMMarioMain_script0_4
+intern dMMarioMain_ptrs3+0x9C dMMarioMain_script1_0
+intern dMMarioMain_ptrs3+0xA4 dMMarioMain_ptrs2+0x4

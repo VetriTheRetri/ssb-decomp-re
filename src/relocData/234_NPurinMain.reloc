@@ -1,0 +1,24 @@
+# Relocation metadata for file 234
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+extern dNPurinMain_ptrs0+0x0 0x34
+extern dNPurinMain_ptrs1+0x0 0x23B8
+extern dNPurinMain_ptrs1+0x10 0x23B8
+extern dNPurinMain_ptrs2+0x0 0x2B8
+intern dNPurinMain_ptrs3+0x0 dNPurinMain_script0_1
+intern dNPurinMain_ptrs3+0x4 dNPurinMain_script0_0
+intern dNPurinMain_ptrs3+0x34 dNPurinMain_script0_2
+intern dNPurinMain_ptrs3+0x38 dNPurinMain_ptrs1
+extern dNPurinMain_ptrs3+0x3C 0x0
+extern dNPurinMain_ptrs3+0x40 0x450
+extern dNPurinMain_ptrs3+0x44 0xC40
+extern dNPurinMain_ptrs3+0x48 0x1480
+extern dNPurinMain_ptrs3+0x4C 0x1CA0
+extern dNPurinMain_ptrs3+0x50 0x2540
+extern dNPurinMain_ptrs3+0x54 0x2CD0
+extern dNPurinMain_ptrs3+0x58 0x3560
+extern dNPurinMain_ptrs3+0x5C 0x3DA0
+intern dNPurinMain_ptrs3+0x8C dNPurinMain_script0_3
+intern dNPurinMain_ptrs3+0x94 dNPurinMain_script0_4
+intern dNPurinMain_ptrs3+0x9C dNPurinMain_script1_0
+intern dNPurinMain_ptrs3+0xA4 dNPurinMain_script1_1

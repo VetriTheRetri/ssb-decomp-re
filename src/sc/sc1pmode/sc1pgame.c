@@ -1768,7 +1768,7 @@ void sc1PGameInitTeamStockDisplay(void)
 
         for (i = 0; i < sSC1PGameEnemyStocksRemaining; i++)
         {
-            lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[4], &ll_104_FileID));
+            lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[4], &llStagePupupuFile2FileID));
         }
         sSC1PGameEnemyStocksDisplay = sSC1PGameEnemyStocksRemaining + 1;
 
@@ -2078,7 +2078,7 @@ void sc1PGameFuncStart(void)
         // Need to load PK Fire graphics from Ness' file
         plns = dFTManagerDataFiles[nFTKindNess];
 
-        lbRelocGetExternHeapFile((uintptr_t)&ll_230_FileID, syTaskmanMalloc(lbRelocGetFileSize((uintptr_t)&ll_230_FileID), 0x10));
+        lbRelocGetExternHeapFile((uintptr_t)&llKirbySpecial1FileID, syTaskmanMalloc(lbRelocGetFileSize((uintptr_t)&llKirbySpecial1FileID), 0x10));
         efParticleGetLoadBankID
         (
             plns->particles_script_lo, 

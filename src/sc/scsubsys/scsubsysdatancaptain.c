@@ -4,7 +4,7 @@
 
 FTMotionDesc dFTNCaptainSubMotionDescs[] =
 {
-	&ll_1512_FileID, 0x80000000, 0x00000000,
+	&llFTCaptainAnimEggLayFileID, 0x80000000, 0x00000000,
 	0x00000000, 0x80000000, 0x00000000,
 	0x00000000, 0x80000000, 0x00000000,
 	0x00000000, 0x80000000, 0x00000000,
@@ -18,6 +18,6 @@ FTMotionDesc dFTNCaptainSubMotionDescs[] =
 	0x00000000, 0x80000000, 0x00000000,
 	0x00000000, 0x80000000, 0x00000000,
 	0x00000000, 0x80000000, 0x00000000,
-	&ll_495_FileID, 0x80000000, 0x00000000
+	&llFTNCaptainAnimPose1PFileID, 0x80000000, 0x00000000
 };
 s32 dFTNCaptainSubMotionDescsCount = sizeof(dFTNCaptainSubMotionDescs)/sizeof(FTMotionDesc); // 0x0000000F

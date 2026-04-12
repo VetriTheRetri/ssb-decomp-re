@@ -94,14 +94,11 @@ def parse_descriptions(desc_path):
 # ── Symbol name conventions ─────────────────────────────────────────────
 
 def file_id_symbol(file_id, file_id_to_name):
-    """Build the file-id symbol name (e.g. llMNCommonFileID, ll_29_FileID).
+    """Build the file-id symbol name (e.g. llMNCommonFileID).
 
-    JP descriptions use placeholder "names" of the form `_NNN_` where
-    NNN is the *US* file id, which is a clever cross-version aliasing
-    trick: code that references `ll_500_FileID` resolves to file 500 on
-    US and to whatever JP file id has the placeholder `_500_` on JP.
-    These placeholders need to be treated as real names so the alias
-    works.
+    Falls back to `ll_<id>_FileID` only for the rare unnamed file. Every
+    file in the current descriptions has a real name, so the fallback
+    should not normally fire.
     """
     name = file_id_to_name.get(file_id)
     if name:
@@ -315,9 +312,10 @@ def collect_all_symbols(desc_path, reloc_dir, search_paths, converted_ids=None,
                        manifest existence already implies "converted".
         us_desc_path:  path to the US descriptions file. When the active version
                        is JP, this is used to derive cross-version aliases:
-                       any JP file whose name matches a US-side name also
-                       gets a `ll_<US_id>_FileID = <JP_id>` symbol so existing
-                       C code that references files by US id continues to work.
+                       any JP file whose name matches a US-side name also gets
+                       a `ll<Name>FileID = <JP_id>` symbol so C code that
+                       references files by canonical name resolves on both
+                       versions even when the underlying ids differ.
         version:       active version string (e.g. "us", "jp"). When provided,
                        files with a version-specific .c override (e.g.
                        *_Name.<version>.c) skip manifest-based offset
@@ -338,12 +336,10 @@ def collect_all_symbols(desc_path, reloc_dir, search_paths, converted_ids=None,
         blocks_by_file.setdefault(fid, []).append((btype, bname, boff))
 
     # Build US name → US id map for cross-version aliasing. When we're
-    # generating symbols for JP, this lets us emit `ll_<US_id>_FileID` for
-    # any JP file whose name matches a US-side name. This replaces the
-    # historical placeholder mechanism (JP names like `_500_` whose symbol
-    # form `ll_500_FileID` happened to look like the US legacy form) with
-    # something more explicit. When generating US symbols, this map is
-    # only used for self-consistency.
+    # generating symbols for JP, this lets us emit `ll<Name>FileID` aliases
+    # for any JP file whose name matches a US-side name at a different file
+    # id. When generating US symbols, this map is only used for
+    # self-consistency.
     us_name_to_id = {}
     if us_desc_path is not None and os.path.abspath(us_desc_path) != os.path.abspath(desc_path):
         _, us_id_to_name, _ = parse_descriptions(us_desc_path)
@@ -354,15 +350,12 @@ def collect_all_symbols(desc_path, reloc_dir, search_paths, converted_ids=None,
     # File ID symbols
     # For each file we emit:
     #   1. The primary symbol — `ll<Name>FileID` if named, else `ll_<id>_FileID`
-    #   2. The legacy `ll_<active_id>_FileID` form if it doesn't already collide,
-    #      so existing C source compiles without changes.
-    #   3. (JP only) `ll_<US_id>_FileID` for any JP file whose name matches
-    #      a US-side name — the cross-version alias. C code can reference
-    #      files by their US id and it'll resolve correctly on both versions.
-    #
-    # Some JP files still use the legacy `_NNN_` placeholder when neither
-    # version has a real name. file_id_symbol() turns those into
-    # `ll_NNN_FileID` directly so the alias works without a name lookup.
+    #      for the rare unnamed file.
+    #   2. (JP only) `ll<US_Name>FileID` aliasing the JP file id, for any JP
+    #      file whose name matches a US-side name at a different file id.
+    #      This lets C code reference files by their canonical name and have
+    #      it resolve correctly on both versions even when the underlying ids
+    #      differ between US and JP.
     file_id_symbols = []
     used_names = set()
 
@@ -371,26 +364,18 @@ def collect_all_symbols(desc_path, reloc_dir, search_paths, converted_ids=None,
         sym = file_id_symbol(fid, file_id_to_name)
         used_names.add(sym)
 
-    # Second pass: emit primary, anonymous fallback, and cross-version alias
+    # Second pass: emit primary symbol and any cross-version aliases
     for fid in range(file_count):
         sym = file_id_symbol(fid, file_id_to_name)
         file_id_symbols.append((sym, fid))
 
-        # Anonymous fallback `ll_<fid>_FileID` so legacy code that referenced
-        # this file by its active-version id still resolves.
-        anon = f"ll_{fid}_FileID"
-        if sym != anon and anon not in used_names:
-            file_id_symbols.append((anon, fid))
-            used_names.add(anon)
-
-        # Cross-version alias: if this file's name matches a US name at a
-        # different file id (i.e. we're on JP and the US side has the same
-        # content at a different position), also emit `ll_<US_id>_FileID`.
+        # Cross-version alias: when this JP file's name matches a US name at
+        # a different file id, the US-side name still resolves on JP.
         name = file_id_to_name.get(fid)
         if name and name in us_name_to_id:
             us_id = us_name_to_id[name]
             if us_id != fid:
-                cross = f"ll_{us_id}_FileID"
+                cross = f"ll{name}FileID"
                 if cross not in used_names:
                     file_id_symbols.append((cross, fid))
                     used_names.add(cross)

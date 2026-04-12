@@ -427,7 +427,7 @@ void sc1PBonusStageInitVars(void)
 // 0x8018D330
 void sc1PBonusStageBonus1LoadFile(void)
 {
-	gSC1PBonusStageItemFile = lbRelocGetExternHeapFile((u32)&ll_253_FileID, syTaskmanMalloc(lbRelocGetFileSize((u32)&ll_253_FileID), 0x10));
+	gSC1PBonusStageItemFile = lbRelocGetExternHeapFile((u32)&llITBonus1ObjectHeaderFileID, syTaskmanMalloc(lbRelocGetFileSize((u32)&llITBonus1ObjectHeaderFileID), 0x10));
 }
 
 // 0x8018D374

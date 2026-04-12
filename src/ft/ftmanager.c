@@ -165,7 +165,7 @@ void ftManagerAllocFighter(u32 data_flags, s32 allocs_num)
 
     gFTManagerCommonFile = lbRelocGetExternHeapFile((u32)&llFTManagerCommonFileID, syTaskmanMalloc(lbRelocGetFileSize((u32)&llFTManagerCommonFileID), 0x10));
 
-    lbRelocGetExternHeapFile((u32)&ll_201_FileID, syTaskmanMalloc(lbRelocGetFileSize((u32)&ll_201_FileID), 0x10));
+    lbRelocGetExternHeapFile((u32)&llFTCommonMovesetFileID, syTaskmanMalloc(lbRelocGetFileSize((u32)&llFTCommonMovesetFileID), 0x10));
 
     for (i = 0; i < (nFTKindEnumCount + ARRAY_COUNT(gSCManagerFighterFileSizes)) / 2; i++)
     {

@@ -56,20 +56,20 @@ s32 D_ovl1_80391578[] =
 
 FTMotionDesc dFTSamusSubMotionDescs[] =
 {
-    &ll_953_FileID, 0x80000000, 0x00000000,
-    &ll_393_FileID, D_ovl1_803914F0, 0x00000000,
-    &ll_394_FileID, D_ovl1_8039154C, 0x00000000,
-    &ll_395_FileID, D_ovl1_8039156C, 0x00000000,
-    &ll_395_FileID, D_ovl1_8039156C, 0x00000000,
-    &ll_396_FileID, D_ovl1_80391578, 0x00000000,
-    &ll_959_FileID, 0x80000000, 0x00000000,
+    &llFTSamusAnimEggLayFileID, 0x80000000, 0x00000000,
+    &llFTSamusAnimWin3FileID, D_ovl1_803914F0, 0x00000000,
+    &llFTSamusAnimWin1FileID, D_ovl1_8039154C, 0x00000000,
+    &llFTSamusAnimSelectedFileID, D_ovl1_8039156C, 0x00000000,
+    &llFTSamusAnimSelectedFileID, D_ovl1_8039156C, 0x00000000,
+    &llFTSamusAnimClapsFileID, D_ovl1_80391578, 0x00000000,
+    &llFTSamusAnimRunFileID, 0x80000000, 0x00000000,
     0x00000000,   0x80000000, 0x00000000,
-    &ll_397_FileID, 0x80000000, 0x80000000,
-    &ll_398_FileID, 0x80000000, 0x40000000,
-    &ll_399_FileID, 0x80000000, 0x40000000,
-    &ll_400_FileID, 0x80000000, 0x00000000,
-    &ll_401_FileID, 0x80000000, 0x00000000,
-    &ll_402_FileID, 0x80000000, 0x00000000,
-    &ll_403_FileID, 0x80000000, 0x00000000
+    &llFTSamusAnimDollPickUpFileID, 0x80000000, 0x80000000,
+    &llFTSamusAnimDollFallFileID, 0x80000000, 0x40000000,
+    &llFTSamusAnimDollRevivalFileID, 0x80000000, 0x40000000,
+    &llFTSamusAnimIntroFileID, 0x80000000, 0x00000000,
+    &llFTSamusAnimPoseEnemyFileID, 0x80000000, 0x00000000,
+    &llFTSamusAnimPosePlayerFileID, 0x80000000, 0x00000000,
+    &llFTSamusAnimUnknownFileID, 0x80000000, 0x00000000
 };
 s32 dFTSamusSubMotionDescsCount = sizeof(dFTSamusSubMotionDescs)/sizeof(FTMotionDesc); // 0x0000000F

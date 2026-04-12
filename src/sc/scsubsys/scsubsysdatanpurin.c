@@ -4,6 +4,6 @@
 
 FTMotionDesc dFTNPurinSubMotionDescs[] =
 {
-	&ll_1492_FileID, 0x80000000, 0x00000000
+	&llFTPurinAnimEggLayFileID, 0x80000000, 0x00000000
 };
 s32 dFTNPurinSubMotionDescsCount = sizeof(dFTNPurinSubMotionDescs)/sizeof(FTMotionDesc); // 0x00000001

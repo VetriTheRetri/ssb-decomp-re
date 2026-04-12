@@ -1,16 +1,16 @@
 # Relocation metadata for file 250
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dBossMain_ptrs0+0x0 0x0
-extern dBossMain_ptrs1+0x0 0x23D8
-extern dBossMain_ptrs1+0x10 0x23D8
-extern dBossMain_ptrs1+0x20 0x90
-extern dBossMain_ptrs1+0x24 0xC0
-intern dBossMain_ptrs1+0x28 dBossMain_ptrs1+0x20
-extern dBossMain_ptrs1+0x2C 0x2B8
-intern dBossMain_attr+0x29C dBossMain_script0_1
-intern dBossMain_attr+0x2A0 dBossMain_script0_0
-intern dBossMain_attr+0x2D0 dBossMain_script0_2
-intern dBossMain_attr+0x2D4 dBossMain_ptrs1
-intern dBossMain_attr+0x328 dBossMain_script0_3
-intern dBossMain_attr+0x340 dBossMain_ptrs1+0x24
+extern dBossMain_pre+0x0 0x0
+extern dBossMain_pre+0xB8 0x23D8
+extern dBossMain_pre+0xC8 0x23D8
+extern dBossMain_pre+0xD8 0x90
+extern dBossMain_pre+0xDC 0xC0
+intern dBossMain_pre+0xE0 dBossMain_pre+0xD8
+extern dBossMain_pre+0xE4 0x2B8
+intern dBossMain_attr+0x29C dBossMain_pre+0xC
+intern dBossMain_attr+0x2A0 dBossMain_pre+0x4
+intern dBossMain_attr+0x2D0 dBossMain_pre+0x14
+intern dBossMain_attr+0x2D4 dBossMain_pre+0xB8
+intern dBossMain_attr+0x328 dBossMain_pre+0x54
+intern dBossMain_attr+0x340 dBossMain_pre+0xDC

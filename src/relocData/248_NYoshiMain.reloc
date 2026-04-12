@@ -1,14 +1,14 @@
 # Relocation metadata for file 248
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dNYoshiMain_ptrs0+0x0 0x34
-extern dNYoshiMain_ptrs1+0x0 0x2EF8
-extern dNYoshiMain_ptrs1+0x10 0x2EF8
-extern dNYoshiMain_ptrs2+0x0 0x2B8
-intern dNYoshiMain_attr+0x29C dNYoshiMain_script0_1
-intern dNYoshiMain_attr+0x2A0 dNYoshiMain_script0_0
-intern dNYoshiMain_attr+0x2D0 dNYoshiMain_script0_2
-intern dNYoshiMain_attr+0x2D4 dNYoshiMain_ptrs1
+extern dNYoshiMain_pre+0x0 0x34
+extern dNYoshiMain_pre+0xDC 0x2EF8
+extern dNYoshiMain_pre+0xEC 0x2EF8
+extern dNYoshiMain_pre+0x2B4 0x2B8
+intern dNYoshiMain_attr+0x29C dNYoshiMain_pre+0xC
+intern dNYoshiMain_attr+0x2A0 dNYoshiMain_pre+0x4
+intern dNYoshiMain_attr+0x2D0 dNYoshiMain_pre+0x14
+intern dNYoshiMain_attr+0x2D4 dNYoshiMain_pre+0xDC
 extern dNYoshiMain_attr+0x2D8 0x0
 extern dNYoshiMain_attr+0x2DC 0x500
 extern dNYoshiMain_attr+0x2E0 0x7D0
@@ -18,7 +18,7 @@ extern dNYoshiMain_attr+0x2EC 0x1040
 extern dNYoshiMain_attr+0x2F0 0x1310
 extern dNYoshiMain_attr+0x2F4 0x15E0
 extern dNYoshiMain_attr+0x2F8 0x18B0
-intern dNYoshiMain_attr+0x328 dNYoshiMain_script0_3
-intern dNYoshiMain_attr+0x330 dNYoshiMain_script0_4
-intern dNYoshiMain_attr+0x338 dNYoshiMain_script1_0
-intern dNYoshiMain_attr+0x340 dNYoshiMain_script1_1
+intern dNYoshiMain_attr+0x328 dNYoshiMain_pre+0x64
+intern dNYoshiMain_attr+0x330 dNYoshiMain_pre+0xD4
+intern dNYoshiMain_attr+0x338 dNYoshiMain_pre+0xFC
+intern dNYoshiMain_attr+0x340 dNYoshiMain_pre+0x2AC

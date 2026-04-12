@@ -1,14 +1,14 @@
 # Relocation metadata for file 234
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dNPurinMain_ptrs0+0x0 0x34
-extern dNPurinMain_ptrs1+0x0 0x23B8
-extern dNPurinMain_ptrs1+0x10 0x23B8
-extern dNPurinMain_ptrs2+0x0 0x2B8
-intern dNPurinMain_attr+0x29C dNPurinMain_script0_1
-intern dNPurinMain_attr+0x2A0 dNPurinMain_script0_0
-intern dNPurinMain_attr+0x2D0 dNPurinMain_script0_2
-intern dNPurinMain_attr+0x2D4 dNPurinMain_ptrs1
+extern dNPurinMain_pre+0x0 0x34
+extern dNPurinMain_pre+0xC4 0x23B8
+extern dNPurinMain_pre+0xD4 0x23B8
+extern dNPurinMain_pre+0x29C 0x2B8
+intern dNPurinMain_attr+0x29C dNPurinMain_pre+0xC
+intern dNPurinMain_attr+0x2A0 dNPurinMain_pre+0x4
+intern dNPurinMain_attr+0x2D0 dNPurinMain_pre+0x14
+intern dNPurinMain_attr+0x2D4 dNPurinMain_pre+0xC4
 extern dNPurinMain_attr+0x2D8 0x0
 extern dNPurinMain_attr+0x2DC 0x450
 extern dNPurinMain_attr+0x2E0 0xC40
@@ -18,7 +18,7 @@ extern dNPurinMain_attr+0x2EC 0x2540
 extern dNPurinMain_attr+0x2F0 0x2CD0
 extern dNPurinMain_attr+0x2F4 0x3560
 extern dNPurinMain_attr+0x2F8 0x3DA0
-intern dNPurinMain_attr+0x328 dNPurinMain_script0_3
-intern dNPurinMain_attr+0x330 dNPurinMain_script0_4
-intern dNPurinMain_attr+0x338 dNPurinMain_script1_0
-intern dNPurinMain_attr+0x340 dNPurinMain_script1_1
+intern dNPurinMain_attr+0x328 dNPurinMain_pre+0x54
+intern dNPurinMain_attr+0x330 dNPurinMain_pre+0xBC
+intern dNPurinMain_attr+0x338 dNPurinMain_pre+0xE4
+intern dNPurinMain_attr+0x340 dNPurinMain_pre+0x294

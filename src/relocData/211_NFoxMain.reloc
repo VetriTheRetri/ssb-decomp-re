@@ -1,14 +1,14 @@
 # Relocation metadata for file 211
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dNFoxMain_ptrs0+0x0 0x0
-extern dNFoxMain_ptrs1+0x0 0x2DF8
-extern dNFoxMain_ptrs1+0x10 0x2DF8
-extern dNFoxMain_ptrs2+0x0 0x2B8
-intern dNFoxMain_attr+0x29C dNFoxMain_script0_1
-intern dNFoxMain_attr+0x2A0 dNFoxMain_script0_0
-intern dNFoxMain_attr+0x2D0 dNFoxMain_script0_2
-intern dNFoxMain_attr+0x2D4 dNFoxMain_ptrs1
+extern dNFoxMain_pre+0x0 0x0
+extern dNFoxMain_pre+0xC8 0x2DF8
+extern dNFoxMain_pre+0xD8 0x2DF8
+extern dNFoxMain_pre+0x2A0 0x2B8
+intern dNFoxMain_attr+0x29C dNFoxMain_pre+0xC
+intern dNFoxMain_attr+0x2A0 dNFoxMain_pre+0x4
+intern dNFoxMain_attr+0x2D0 dNFoxMain_pre+0x14
+intern dNFoxMain_attr+0x2D4 dNFoxMain_pre+0xC8
 extern dNFoxMain_attr+0x2D8 0x120
 extern dNFoxMain_attr+0x2DC 0x620
 extern dNFoxMain_attr+0x2E0 0xAD0
@@ -18,7 +18,7 @@ extern dNFoxMain_attr+0x2EC 0x1900
 extern dNFoxMain_attr+0x2F0 0x1DB0
 extern dNFoxMain_attr+0x2F4 0x2270
 extern dNFoxMain_attr+0x2F8 0x2710
-intern dNFoxMain_attr+0x328 dNFoxMain_script0_3
-intern dNFoxMain_attr+0x330 dNFoxMain_script0_4
-intern dNFoxMain_attr+0x338 dNFoxMain_script1_0
-intern dNFoxMain_attr+0x340 dNFoxMain_script1_1
+intern dNFoxMain_attr+0x328 dNFoxMain_pre+0x54
+intern dNFoxMain_attr+0x330 dNFoxMain_pre+0xC0
+intern dNFoxMain_attr+0x338 dNFoxMain_pre+0xE8
+intern dNFoxMain_attr+0x340 dNFoxMain_pre+0x298

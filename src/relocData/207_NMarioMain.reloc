@@ -1,14 +1,14 @@
 # Relocation metadata for file 207
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dNMarioMain_ptrs0+0x0 0x24
-extern dNMarioMain_ptrs1+0x0 0x2A30
-extern dNMarioMain_ptrs1+0x10 0x2A30
-extern dNMarioMain_ptrs2+0x0 0x2B8
-intern dNMarioMain_attr+0x29C dNMarioMain_script0_1
-intern dNMarioMain_attr+0x2A0 dNMarioMain_script0_0
-intern dNMarioMain_attr+0x2D0 dNMarioMain_script0_2
-intern dNMarioMain_attr+0x2D4 dNMarioMain_ptrs1
+extern dNMarioMain_pre+0x0 0x24
+extern dNMarioMain_pre+0xBC 0x2A30
+extern dNMarioMain_pre+0xCC 0x2A30
+extern dNMarioMain_pre+0x294 0x2B8
+intern dNMarioMain_attr+0x29C dNMarioMain_pre+0xC
+intern dNMarioMain_attr+0x2A0 dNMarioMain_pre+0x4
+intern dNMarioMain_attr+0x2D0 dNMarioMain_pre+0x14
+intern dNMarioMain_attr+0x2D4 dNMarioMain_pre+0xBC
 extern dNMarioMain_attr+0x2D8 0xF0
 extern dNMarioMain_attr+0x2DC 0x5A0
 extern dNMarioMain_attr+0x2E0 0xA10
@@ -18,7 +18,7 @@ extern dNMarioMain_attr+0x2EC 0x17A0
 extern dNMarioMain_attr+0x2F0 0x1C60
 extern dNMarioMain_attr+0x2F4 0x20E0
 extern dNMarioMain_attr+0x2F8 0x2540
-intern dNMarioMain_attr+0x328 dNMarioMain_script0_3
-intern dNMarioMain_attr+0x330 dNMarioMain_script0_4
-intern dNMarioMain_attr+0x338 dNMarioMain_script1_0
-intern dNMarioMain_attr+0x340 dNMarioMain_script1_1
+intern dNMarioMain_attr+0x328 dNMarioMain_pre+0x54
+intern dNMarioMain_attr+0x330 dNMarioMain_pre+0xB8
+intern dNMarioMain_attr+0x338 dNMarioMain_pre+0xDC
+intern dNMarioMain_attr+0x340 dNMarioMain_pre+0x28C

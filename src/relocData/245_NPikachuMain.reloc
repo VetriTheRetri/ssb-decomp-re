@@ -1,15 +1,15 @@
 # Relocation metadata for file 245
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dNPikachuMain_ptrs0+0x0 0x10
-extern dNPikachuMain_ptrs0+0x4 0x800
-extern dNPikachuMain_ptrs1+0x0 0x2778
-extern dNPikachuMain_ptrs1+0x10 0x2778
-extern dNPikachuMain_ptrs2+0x0 0x2B8
-intern dNPikachuMain_attr+0x29C dNPikachuMain_script0_1
-intern dNPikachuMain_attr+0x2A0 dNPikachuMain_script0_0
-intern dNPikachuMain_attr+0x2D0 dNPikachuMain_script0_2
-intern dNPikachuMain_attr+0x2D4 dNPikachuMain_ptrs1
+extern dNPikachuMain_pre+0x0 0x10
+extern dNPikachuMain_pre+0x4 0x800
+extern dNPikachuMain_pre+0xCC 0x2778
+extern dNPikachuMain_pre+0xDC 0x2778
+extern dNPikachuMain_pre+0x2A4 0x2B8
+intern dNPikachuMain_attr+0x29C dNPikachuMain_pre+0x10
+intern dNPikachuMain_attr+0x2A0 dNPikachuMain_pre+0x8
+intern dNPikachuMain_attr+0x2D0 dNPikachuMain_pre+0x18
+intern dNPikachuMain_attr+0x2D4 dNPikachuMain_pre+0xCC
 extern dNPikachuMain_attr+0x2D8 0x0
 extern dNPikachuMain_attr+0x2DC 0x500
 extern dNPikachuMain_attr+0x2E0 0xB50
@@ -19,7 +19,7 @@ extern dNPikachuMain_attr+0x2EC 0x1E60
 extern dNPikachuMain_attr+0x2F0 0x24B0
 extern dNPikachuMain_attr+0x2F4 0x2B00
 extern dNPikachuMain_attr+0x2F8 0x3150
-intern dNPikachuMain_attr+0x328 dNPikachuMain_script0_3
-intern dNPikachuMain_attr+0x330 dNPikachuMain_script0_4
-intern dNPikachuMain_attr+0x338 dNPikachuMain_script1_0
-intern dNPikachuMain_attr+0x340 dNPikachuMain_script1_1
+intern dNPikachuMain_attr+0x328 dNPikachuMain_pre+0x58
+intern dNPikachuMain_attr+0x330 dNPikachuMain_pre+0xC4
+intern dNPikachuMain_attr+0x338 dNPikachuMain_pre+0xEC
+intern dNPikachuMain_attr+0x340 dNPikachuMain_pre+0x29C

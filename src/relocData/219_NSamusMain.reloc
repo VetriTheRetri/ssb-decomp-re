@@ -1,21 +1,21 @@
 # Relocation metadata for file 219
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dNSamusMain_ptrs0+0x0 0x84
-extern dNSamusMain_ptrs1+0x0 0x1C00
-extern dNSamusMain_ptrs1+0x14 0x1C00
-extern dNSamusMain_ptrs1+0x28 0x3BF0
-extern dNSamusMain_ptrs1+0x3C 0x3BF0
-extern dNSamusMain_ptrs1+0x50 0x4960
-extern dNSamusMain_ptrs1+0x64 0x4960
-intern dNSamusMain_ptrs1+0x80 dNSamusMain_ptrs1
-extern dNSamusMain_ptrs2+0x0 0x2A10
-extern dNSamusMain_ptrs2+0x10 0x2A10
-extern dNSamusMain_ptrs3+0x0 0x2B8
-intern dNSamusMain_attr+0x29C dNSamusMain_script0_1
-intern dNSamusMain_attr+0x2A0 dNSamusMain_script0_0
-intern dNSamusMain_attr+0x2D0 dNSamusMain_script0_2
-intern dNSamusMain_attr+0x2D4 dNSamusMain_ptrs2
+extern dNSamusMain_pre+0x0 0x84
+extern dNSamusMain_pre+0xE4 0x1C00
+extern dNSamusMain_pre+0xF8 0x1C00
+extern dNSamusMain_pre+0x10C 0x3BF0
+extern dNSamusMain_pre+0x120 0x3BF0
+extern dNSamusMain_pre+0x134 0x4960
+extern dNSamusMain_pre+0x148 0x4960
+intern dNSamusMain_pre+0x164 dNSamusMain_pre+0xE4
+extern dNSamusMain_pre+0x1E0 0x2A10
+extern dNSamusMain_pre+0x1F0 0x2A10
+extern dNSamusMain_pre+0x3B8 0x2B8
+intern dNSamusMain_attr+0x29C dNSamusMain_pre+0xC
+intern dNSamusMain_attr+0x2A0 dNSamusMain_pre+0x4
+intern dNSamusMain_attr+0x2D0 dNSamusMain_pre+0x14
+intern dNSamusMain_attr+0x2D4 dNSamusMain_pre+0x1E0
 extern dNSamusMain_attr+0x2D8 0xF0
 extern dNSamusMain_attr+0x2DC 0x570
 extern dNSamusMain_attr+0x2E0 0x9A0
@@ -25,6 +25,6 @@ extern dNSamusMain_attr+0x2EC 0x1650
 extern dNSamusMain_attr+0x2F0 0x1A90
 extern dNSamusMain_attr+0x2F4 0x1EE0
 extern dNSamusMain_attr+0x2F8 0x2310
-intern dNSamusMain_attr+0x328 dNSamusMain_ptrs1+0x78
-intern dNSamusMain_attr+0x338 dNSamusMain_script2_0
-intern dNSamusMain_attr+0x340 dNSamusMain_script2_1
+intern dNSamusMain_attr+0x328 dNSamusMain_pre+0x15C
+intern dNSamusMain_attr+0x338 dNSamusMain_pre+0x200
+intern dNSamusMain_attr+0x340 dNSamusMain_pre+0x3B0

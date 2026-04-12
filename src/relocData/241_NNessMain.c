@@ -2,6 +2,7 @@
 /* File size: 1600 bytes (0x640) */
 
 #include "relocdata_types.h"
+#include <ft/fttypes.h>
 
 extern u16 dNNessMain_script0_0[];
 extern u16 dNNessMain_script0_1[];
@@ -108,78 +109,124 @@ u32 dNNessMain_ptrs1[1] = {
 	0x017200AE, /* [0] extern -> 0x00AE */
 };
 
-/* Data region at word 0x00BC (167 words) */
-u32 dNNessMain_data1[167] = {
-	0x3F866666, 0x42B40000, 0x42700000, 0x42200000, 0x00000000, 0x00000000, 0x00000000, 0x41800000,
-	0x3E8F5C29, 0x40000000, 0x42880000, 0x40ACCCCD, 0x42200000, 0x40000000, 0x3EB33333, 0x3F333333,
-	0x41D00000, 0x3EB33333, 0x3F99999A, 0x3D23D70A, 0x41E00000, 0x3ECCCCCD, 0x402CCCCD, 0x425C0000,
-	0x42B08000, 0x00000002, 0x3F8CCCCD, 0x41C00000, 0x41400000, 0x43A00000, 0x42AA0000, 0x43480000,
-	0x42E10000, 0x00000000, 0x00000000, 0x430C0000, 0x44FA0000, 0x3F800000, 0x44160000, 0x437A0000,
-	0x430C0000, 0x00000000, 0x42E60000, 0x437A0000, 0x43C80000, 0x02B702B7, 0x02B702B7, 0x02B702B7,
-	0x02B70000, 0x42D20000, 0x00000000, 0x439D8000, 0x43160000, 0x42960000, 0x00000000, 0x43160000,
-	0x43160000, 0x00640064, 0x02B70000, 0x3F800000, 0xFFFFFF50, 0x00000050, 0x00000000, 0xFF000000,
-	0xFFFC0000, 0x00000005, 0x00000001, 0x00000001, 0x00000000, 0xC1F00000, 0x00000000, 0x42EA0000,
-	0x42920000, 0x42D20000, 0x00000006, 0x00000001, 0x00000001, 0x00000000, 0x41E00000, 0x00000000,
-	0x42EC0000, 0x42C80000, 0x42E00000, 0x0000000C, 0x00000002, 0x00000001, 0x00000000, 0x42B60000,
-	0x40C00000, 0x430F0000, 0x43190000, 0x43130000, 0x0000000E, 0x00000001, 0x00000000, 0x41700000,
-	0x00000000, 0x00000000, 0x426C0000, 0x42000000, 0x42000000, 0x00000008, 0x00000001, 0x00000000,
-	0x41700000, 0x00000000, 0x00000000, 0x426C0000, 0x42000000, 0x42000000, 0x0000000F, 0x00000001,
-	0x00000000, 0x41C80000, 0x00000000, 0x40400000, 0x424C0000, 0x42000000, 0x42000000, 0x00000009,
-	0x00000001, 0x00000000, 0x41C80000, 0x00000000, 0x40400000, 0x424C0000, 0x42000000, 0x42000000,
-	0x00000019, 0x00000000, 0x00000000, 0x42040000, 0x00000000, 0x00000000, 0x426C0000, 0x42820000,
-	0x42680000, 0x00000013, 0x00000000, 0x00000000, 0x42040000, 0x00000000, 0x00000000, 0x426C0000,
-	0x42820000, 0x42680000, 0x0000001A, 0x00000000, 0x00000000, 0x41D00000, 0x00000000, 0xC0000000,
-	0x42880000, 0x423C0000, 0x42280000, 0x00000014, 0x00000000, 0x00000000, 0x41D00000, 0x00000000,
-	0xC0000000, 0x42880000, 0x423C0000, 0x42280000, 0x44610000, 0x44610000, 0x44160000,
+FTAttributes dNNessMain_attr = {
+	1.05f, /* size */
+	90.0f, /* walkslow_anim_length */
+	60.0f, /* walkmiddle_anim_length */
+	40.0f, /* walkfast_anim_length */
+	0.0f, /* throw_walkslow_anim_length */
+	0.0f, /* throw_walkmiddle_anim_length */
+	0.0f, /* throw_walkfast_anim_length */
+	16.0f, /* rebound_anim_length */
+	0.28f, /* walk_speed_mul */
+	2.0f, /* traction */
+	68.0f, /* dash_speed */
+	5.4f, /* dash_decel */
+	40.0f, /* run_speed */
+	2.0f, /* kneebend_anim_length */
+	0.35f, /* jump_vel_x */
+	0.7f, /* jump_height_mul */
+	26.0f, /* jump_height_base */
+	0.35f, /* jumpaerial_vel_x */
+	1.2f, /* jumpaerial_height */
+	0.04f, /* air_accel */
+	28.0f, /* air_speed_max_x */
+	0.4f, /* air_friction */
+	2.7f, /* gravity */
+	55.0f, /* tvel_base */
+	88.25f, /* tvel_fast */
+	2, /* jumps_max */
+	1.1f, /* weight */
+	24.0f, /* attack1_followup_frames */
+	12.0f, /* dash_to_run */
+	320.0f, /* shield_size */
+	85.0f, /* shield_break_vel_y */
+	200.0f, /* shadow_size */
+	112.5f, /* jostle_width */
+	0.0f, /* jostle_x */
+	FALSE, /* is_metallic */
+	140.0f, /* cam_offset_y */
+	2000.0f, /* closeup_camera_zoom */
+	1.0f, /* camera_zoom */
+	600.0f, /* camera_zoom_base */
+	{ 250.0f, 140.0f, 0.0f, 115.0f }, /* map_coll */
+	{ 250.0f, 400.0f }, /* cliffcatch_coll */
+	{ 0x02B7, 0x02B7 }, /* dead_fgm_ids */
+	0x02B7, /* deadup_sfx */
+	0x02B7, /* damage_sfx */
+	{ 0x02B7, 0x02B7, 0x02B7 }, /* smash_sfx */
+	{ { 105.0f, 0.0f }, { 315.0f, 150.0f }, { 75.0f, 0.0f }, { 150.0f, 150.0f } }, /* item_pickup */
+	0x0064, /* itemthrow_vel_scale */
+	0x0064, /* itemthrow_damage_scale */
+	0x02B7, /* heavyget_sfx */
+	1.0f, /* halo_size */
+	{ { 0xFF, 0xFF, 0xFF, 0x50 }, { 0x00, 0x00, 0x00, 0x50 }, { 0x00, 0x00, 0x00, 0x00 } }, /* shade_color */
+	{ 0xFF, 0x00, 0x00, 0x00 }, /* fog_color */
+	1, /* is_have_attack11 */
+	1, /* is_have_attack12 */
+	1, /* is_have_attackdash */
+	1, /* is_have_attacks3 */
+	1, /* is_have_attackhi3 */
+	1, /* is_have_attacklw3 */
+	1, /* is_have_attacks4 */
+	1, /* is_have_attackhi4 */
+	1, /* is_have_attacklw4 */
+	1, /* is_have_attackairn */
+	1, /* is_have_attackairf */
+	1, /* is_have_attackairb */
+	1, /* is_have_attackairhi */
+	1, /* is_have_attackairlw */
+	0, /* is_have_specialn */
+	0, /* is_have_specialairn */
+	0, /* is_have_specialhi */
+	0, /* is_have_specialairhi */
+	0, /* is_have_speciallw */
+	0, /* is_have_specialairlw */
+	0, /* is_have_catch */
+	0, /* is_have_voice */
+	/* damage_coll_descs */
+	{
+		{ 5, 1, TRUE, { 0.0f, -30.0f, 0.0f }, { 117.0f, 73.0f, 105.0f } },
+		{ 6, 1, TRUE, { 0.0f, 28.0f, 0.0f }, { 118.0f, 100.0f, 112.0f } },
+		{ 12, 2, TRUE, { 0.0f, 91.0f, 6.0f }, { 143.0f, 153.0f, 147.0f } },
+		{ 14, 1, FALSE, { 15.0f, 0.0f, 0.0f }, { 59.0f, 32.0f, 32.0f } },
+		{ 8, 1, FALSE, { 15.0f, 0.0f, 0.0f }, { 59.0f, 32.0f, 32.0f } },
+		{ 15, 1, FALSE, { 25.0f, 0.0f, 3.0f }, { 51.0f, 32.0f, 32.0f } },
+		{ 9, 1, FALSE, { 25.0f, 0.0f, 3.0f }, { 51.0f, 32.0f, 32.0f } },
+		{ 25, 0, FALSE, { 33.0f, 0.0f, 0.0f }, { 59.0f, 65.0f, 58.0f } },
+		{ 19, 0, FALSE, { 33.0f, 0.0f, 0.0f }, { 59.0f, 65.0f, 58.0f } },
+		{ 26, 0, FALSE, { 26.0f, 0.0f, -2.0f }, { 68.0f, 47.0f, 42.0f } },
+		{ 20, 0, FALSE, { 26.0f, 0.0f, -2.0f }, { 68.0f, 47.0f, 42.0f } },
+	},
+	{ 900.0f, 900.0f, 600.0f }, /* hit_detect_range */
+	NULL, /* setup_parts */
+	NULL, /* animlock */
+	{ 12, 15, 20, 26, 9 }, /* effect_joint_ids */
+	{ FALSE, TRUE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
+	0, /* unused_0x2CC */
+	NULL, /* hiddenparts */
+	NULL, /* commonparts_container */
+	NULL, /* dobj_lookup */
+	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
+	24, /* joint_rfoot_id */
+	60.891f, /* joint_rfoot_rotate */
+	18, /* joint_lfoot_id */
+	60.891f, /* joint_lfoot_rotate */
+	{ 0x00, 0x00, 0x00, 0x0D, 0x42, 0x0F, 0xA6, 0xE9, 0x00, 0x00, 0x00, 0x07, 0x42, 0x0F, 0x8B, 0x44 }, /* filler_0x30C */
+	50.0f, /* unk_0x31C */
+	0.5235988f, /* unk_0x320 */
+	NULL, /* translate_scales */
+	NULL, /* modelparts_container */
+	NULL, /* accesspart */
+	NULL, /* textureparts_container */
+	30, /* joint_itemheavy_id */
+	NULL, /* thrown_status */
+	17, /* joint_itemlight_id */
+	NULL, /* sprites */
+	NULL, /* skeleton */
 };
 
-/* Pointer array at word 0x0163 (42 slots, 8 intern, 9 extern) */
-u32 dNNessMain_ptrs2[42] = {
-	0x01640003, /* [0] intern -> 0x0003 */
-	0x01700001, /* [1] intern -> 0x0001 */
-	0x0000000C, /* [2] */
-	0x0000000F, /* [3] */
-	0x00000014, /* [4] */
-	0x0000001A, /* [5] */
-	0x00000009, /* [6] */
-	0x00000000, /* [7] NULL */
-	0x00000001, /* [8] */
-	0x00000000, /* [9] NULL */
-	0x00000000, /* [10] NULL */
-	0x00000000, /* [11] NULL */
-	0x00000000, /* [12] NULL */
-	0x01710005, /* [13] intern -> 0x0005 */
-	0x01860045, /* [14] intern -> 0x0045 */
-	0x01730000, /* [15] extern -> 0x0000 */
-	0x01740140, /* [16] extern -> 0x0140 */
-	0x01750288, /* [17] extern -> 0x0288 */
-	0x017603D4, /* [18] extern -> 0x03D4 */
-	0x01770524, /* [19] extern -> 0x0524 */
-	0x01780680, /* [20] extern -> 0x0680 */
-	0x017907F4, /* [21] extern -> 0x07F4 */
-	0x017A0958, /* [22] extern -> 0x0958 */
-	0xFFFF0AE8, /* [23] extern -> 0x0AE8 */
-	0x00000018, /* [24] */
-	0x42739062, /* [25] */
-	0x00000012, /* [26] */
-	0x42739062, /* [27] */
-	0x0000000D, /* [28] */
-	0x420FA6E9, /* [29] */
-	0x00000007, /* [30] */
-	0x420F8B44, /* [31] */
-	0x42480000, /* [32] */
-	0x3F060A92, /* [33] */
-	0x00000000, /* [34] NULL */
-	0x01880029, /* [35] intern -> 0x0029 */
-	0x00000000, /* [36] NULL */
-	0x018A0044, /* [37] intern -> 0x0044 */
-	0x0000001E, /* [38] */
-	(u32)dNNessMain_script0_0, /* [39] intern -> 0x004D */
-	0x00000011, /* [40] */
-	(u32)dNNessMain_script0_1, /* [41] intern -> 0x00B9 */
-};
-
-/* Data region at word 0x018D (3 words) */
-u32 dNNessMain_data2[3] = {
-	0x00000000, 0x00000000, 0x00000000,
+/* Trailing padding at word 0x018E (2 words) */
+u32 dNNessMain_trailing[2] = {
+	0x00000000, 0x00000000,
 };

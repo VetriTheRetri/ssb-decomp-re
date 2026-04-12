@@ -2,6 +2,7 @@
 /* File size: 1808 bytes (0x710) */
 
 #include "relocdata_types.h"
+#include <ft/fttypes.h>
 
 extern u32 dGDonkeyMain_ptrs1[];
 extern u16 dGDonkeyMain_script0_0[];
@@ -158,78 +159,119 @@ u32 dGDonkeyMain_ptrs1[8] = {
 	0x01A800BE, /* [7] extern -> 0x00BE */
 };
 
-/* Data region at word 0x00F2 (167 words) */
-u32 dGDonkeyMain_data1[167] = {
-	0x40000000, 0x42480000, 0x420C0000, 0x41A00000, 0x42480000, 0x420C0000, 0x41A00000, 0x41800000,
-	0x3F000000, 0x3FCCCCCD, 0x42B40000, 0x40B00000, 0x428C0000, 0x41000000, 0x3F000000, 0x3F59999A,
-	0x42820000, 0x3F000000, 0x3F800000, 0x3CCCCCCD, 0x41F00000, 0x3E99999A, 0x40800000, 0x42900000,
-	0x42C80000, 0x00000002, 0x3F6E147B, 0x41E00000, 0x41980000, 0x43AF0000, 0x42F00000, 0x43AF0000,
-	0x430C0000, 0x00000000, 0x00000000, 0x437A0000, 0x44FA0000, 0x3F800000, 0x447A0000, 0x43FA0000,
-	0x437A0000, 0x00000000, 0x43160000, 0x43FA0000, 0x44160000, 0x0150011F, 0x014A014C, 0x01460147,
-	0x01480000, 0x43230000, 0x00000000, 0x43F50000, 0x43160000, 0x42E80000, 0x00000000, 0x43160000,
-	0x43160000, 0x00640064, 0x014E0000, 0x3FD9999A, 0xFFFFFF50, 0x00000050, 0x00000000, 0x80000000,
-	0xFFFFEC00, 0x00000005, 0x00000001, 0x00000001, 0x00000000, 0x00000000, 0x00000000, 0x430F0000,
-	0x42D40000, 0x42E80000, 0x00000006, 0x00000001, 0x00000001, 0x00000000, 0x43120000, 0x42F00000,
-	0x43430000, 0x43820000, 0x43820000, 0x0000000C, 0x00000002, 0x00000001, 0x00000000, 0x00000000,
-	0x41700000, 0x432A0000, 0x43480000, 0x43520000, 0x0000000E, 0x00000001, 0x00000001, 0x42340000,
-	0x00000000, 0x00000000, 0x432A0000, 0x42B00000, 0x42B80000, 0x00000008, 0x00000001, 0x00000001,
-	0x42340000, 0x00000000, 0x00000000, 0x432A0000, 0x42B00000, 0x42B80000, 0x0000000F, 0x00000001,
-	0x00000000, 0x42BC0000, 0x00000000, 0x00000000, 0x434F0000, 0x42C00000, 0x42D80000, 0x00000009,
-	0x00000001, 0x00000000, 0x42BC0000, 0x00000000, 0x00000000, 0x434F0000, 0x42C00000, 0x42D80000,
-	0x00000019, 0x00000000, 0x00000000, 0x42640000, 0x00000000, 0x00000000, 0x43050000, 0x42700000,
-	0x42800000, 0x00000014, 0x00000000, 0x00000000, 0x42640000, 0x00000000, 0x00000000, 0x43050000,
-	0x42700000, 0x42800000, 0x0000001A, 0x00000000, 0x00000000, 0x42800000, 0x41000000, 0x00000000,
-	0x432E0000, 0x428C0000, 0x42800000, 0x00000015, 0x00000000, 0x00000000, 0x42800000, 0x41000000,
-	0x00000000, 0x432E0000, 0x428C0000, 0x42800000, 0x45160000, 0x44960000, 0x45160000,
-};
-
-/* Pointer array at word 0x0199 (42 slots, 7 intern, 9 extern) */
-u32 dGDonkeyMain_ptrs2[42] = {
-	0x019A0004, /* [0] intern -> 0x0004 */
-	0x01A60002, /* [1] intern -> 0x0002 */
-	0x0000000C, /* [2] */
-	0x0000000F, /* [3] */
-	0x00000015, /* [4] */
-	0x0000001A, /* [5] */
-	0x00000009, /* [6] */
-	0x00000000, /* [7] NULL */
-	0x00000000, /* [8] NULL */
-	0x00000000, /* [9] NULL */
-	0x00000000, /* [10] NULL */
-	0x00000000, /* [11] NULL */
-	0x00000000, /* [12] NULL */
-	0x01A70006, /* [13] intern -> 0x0006 */
-	0x01BC0076, /* [14] intern -> 0x0076 */
-	0x01A90044, /* [15] extern -> 0x0044 */
-	0x01AA0178, /* [16] extern -> 0x0178 */
-	0x01AB0280, /* [17] extern -> 0x0280 */
-	0x01AC038C, /* [18] extern -> 0x038C */
-	0x01AD0498, /* [19] extern -> 0x0498 */
-	0x01AE05A4, /* [20] extern -> 0x05A4 */
-	0x01AF06AC, /* [21] extern -> 0x06AC */
-	0x01B007B4, /* [22] extern -> 0x07B4 */
-	0xFFFF08B8, /* [23] extern -> 0x08B8 */
-	0x00000018, /* [24] */
-	0x4318C979, /* [25] */
-	0x00000013, /* [26] */
-	0x4318CA3D, /* [27] */
-	0x0000000D, /* [28] */
-	0x434B2A7F, /* [29] */
-	0x00000007, /* [30] */
-	0x434B29BA, /* [31] */
-	0x42C80000, /* [32] */
-	0x3F060A92, /* [33] */
-	0x00000000, /* [34] NULL */
-	0x01C0005C, /* [35] intern -> 0x005C */
-	0x00000000, /* [36] NULL */
-	0x00000000, /* [37] NULL */
-	0x0000001D, /* [38] */
-	(u32)dGDonkeyMain_script0_0, /* [39] intern -> 0x007E */
-	0x00000011, /* [40] */
-	0xFFFF00EF, /* [41] intern -> 0x00EF */
-};
-
-/* Data region at word 0x01C3 (1 words) */
-u32 dGDonkeyMain_data2[1] = {
-	0x00000000,
+FTAttributes dGDonkeyMain_attr = {
+	2.0f, /* size */
+	50.0f, /* walkslow_anim_length */
+	35.0f, /* walkmiddle_anim_length */
+	20.0f, /* walkfast_anim_length */
+	50.0f, /* throw_walkslow_anim_length */
+	35.0f, /* throw_walkmiddle_anim_length */
+	20.0f, /* throw_walkfast_anim_length */
+	16.0f, /* rebound_anim_length */
+	0.5f, /* walk_speed_mul */
+	1.6f, /* traction */
+	90.0f, /* dash_speed */
+	5.5f, /* dash_decel */
+	70.0f, /* run_speed */
+	8.0f, /* kneebend_anim_length */
+	0.5f, /* jump_vel_x */
+	0.85f, /* jump_height_mul */
+	65.0f, /* jump_height_base */
+	0.5f, /* jumpaerial_vel_x */
+	1.0f, /* jumpaerial_height */
+	0.025f, /* air_accel */
+	30.0f, /* air_speed_max_x */
+	0.3f, /* air_friction */
+	4.0f, /* gravity */
+	72.0f, /* tvel_base */
+	100.0f, /* tvel_fast */
+	2, /* jumps_max */
+	0.93f, /* weight */
+	28.0f, /* attack1_followup_frames */
+	19.0f, /* dash_to_run */
+	350.0f, /* shield_size */
+	120.0f, /* shield_break_vel_y */
+	350.0f, /* shadow_size */
+	140.0f, /* jostle_width */
+	0.0f, /* jostle_x */
+	FALSE, /* is_metallic */
+	250.0f, /* cam_offset_y */
+	2000.0f, /* closeup_camera_zoom */
+	1.0f, /* camera_zoom */
+	1000.0f, /* camera_zoom_base */
+	{ 500.0f, 250.0f, 0.0f, 150.0f }, /* map_coll */
+	{ 500.0f, 600.0f }, /* cliffcatch_coll */
+	{ 0x0150, 0x011F }, /* dead_fgm_ids */
+	0x014A, /* deadup_sfx */
+	0x014C, /* damage_sfx */
+	{ 0x0146, 0x0147, 0x0148 }, /* smash_sfx */
+	{ { 163.0f, 0.0f }, { 490.0f, 150.0f }, { 116.0f, 0.0f }, { 150.0f, 150.0f } }, /* item_pickup */
+	0x0064, /* itemthrow_vel_scale */
+	0x0064, /* itemthrow_damage_scale */
+	0x014E, /* heavyget_sfx */
+	1.7f, /* halo_size */
+	{ { 0xFF, 0xFF, 0xFF, 0x50 }, { 0x00, 0x00, 0x00, 0x50 }, { 0x00, 0x00, 0x00, 0x00 } }, /* shade_color */
+	{ 0x80, 0x00, 0x00, 0x00 }, /* fog_color */
+	1, /* is_have_attack11 */
+	1, /* is_have_attack12 */
+	1, /* is_have_attackdash */
+	1, /* is_have_attacks3 */
+	1, /* is_have_attackhi3 */
+	1, /* is_have_attacklw3 */
+	1, /* is_have_attacks4 */
+	1, /* is_have_attackhi4 */
+	1, /* is_have_attacklw4 */
+	1, /* is_have_attackairn */
+	1, /* is_have_attackairf */
+	1, /* is_have_attackairb */
+	1, /* is_have_attackairhi */
+	1, /* is_have_attackairlw */
+	1, /* is_have_specialn */
+	1, /* is_have_specialairn */
+	1, /* is_have_specialhi */
+	1, /* is_have_specialairhi */
+	1, /* is_have_speciallw */
+	0, /* is_have_specialairlw */
+	1, /* is_have_catch */
+	1, /* is_have_voice */
+	/* damage_coll_descs */
+	{
+		{ 5, 1, TRUE, { 0.0f, 0.0f, 0.0f }, { 143.0f, 106.0f, 116.0f } },
+		{ 6, 1, TRUE, { 0.0f, 146.0f, 120.0f }, { 195.0f, 260.0f, 260.0f } },
+		{ 12, 2, TRUE, { 0.0f, 0.0f, 15.0f }, { 170.0f, 200.0f, 210.0f } },
+		{ 14, 1, TRUE, { 45.0f, 0.0f, 0.0f }, { 170.0f, 88.0f, 92.0f } },
+		{ 8, 1, TRUE, { 45.0f, 0.0f, 0.0f }, { 170.0f, 88.0f, 92.0f } },
+		{ 15, 1, FALSE, { 94.0f, 0.0f, 0.0f }, { 207.0f, 96.0f, 108.0f } },
+		{ 9, 1, FALSE, { 94.0f, 0.0f, 0.0f }, { 207.0f, 96.0f, 108.0f } },
+		{ 25, 0, FALSE, { 57.0f, 0.0f, 0.0f }, { 133.0f, 60.0f, 64.0f } },
+		{ 20, 0, FALSE, { 57.0f, 0.0f, 0.0f }, { 133.0f, 60.0f, 64.0f } },
+		{ 26, 0, FALSE, { 64.0f, 8.0f, 0.0f }, { 174.0f, 70.0f, 64.0f } },
+		{ 21, 0, FALSE, { 64.0f, 8.0f, 0.0f }, { 174.0f, 70.0f, 64.0f } },
+	},
+	{ 2400.0f, 1200.0f, 2400.0f }, /* hit_detect_range */
+	NULL, /* setup_parts */
+	NULL, /* animlock */
+	{ 12, 15, 21, 26, 9 }, /* effect_joint_ids */
+	{ FALSE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
+	0, /* unused_0x2CC */
+	NULL, /* hiddenparts */
+	NULL, /* commonparts_container */
+	NULL, /* dobj_lookup */
+	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
+	24, /* joint_rfoot_id */
+	152.787f, /* joint_rfoot_rotate */
+	19, /* joint_lfoot_id */
+	152.79f, /* joint_lfoot_rotate */
+	{ 0x00, 0x00, 0x00, 0x0D, 0x43, 0x4B, 0x2A, 0x7F, 0x00, 0x00, 0x00, 0x07, 0x43, 0x4B, 0x29, 0xBA }, /* filler_0x30C */
+	100.0f, /* unk_0x31C */
+	0.5235988f, /* unk_0x320 */
+	NULL, /* translate_scales */
+	NULL, /* modelparts_container */
+	NULL, /* accesspart */
+	NULL, /* textureparts_container */
+	29, /* joint_itemheavy_id */
+	NULL, /* thrown_status */
+	17, /* joint_itemlight_id */
+	NULL, /* sprites */
+	NULL, /* skeleton */
 };

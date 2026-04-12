@@ -2,6 +2,7 @@
 /* File size: 2256 bytes (0x8D0) */
 
 #include "relocdata_types.h"
+#include <ft/fttypes.h>
 
 extern u32 dLuigiMain_ptrs1[];
 extern u16 dLuigiMain_script0_1[];
@@ -190,76 +191,126 @@ u32 dLuigiMain_ptrs1[59] = {
 	0x0207012B, /* [58] intern -> 0x012B */
 };
 
-/* Data region at word 0x015F (168 words) */
-u32 dLuigiMain_data1[168] = {
-	0x00000000, 0x3F8F5C29, 0x42B40000, 0x42700000, 0x42200000, 0x00000000, 0x00000000, 0x00000000,
-	0x41800000, 0x3E99999A, 0x3F333333, 0x42480000, 0x40333333, 0x42200000, 0x40400000, 0x3EB33333,
-	0x3F333333, 0x41F00000, 0x3EB33333, 0x3F666666, 0x3CCCCCCD, 0x41B40000, 0x3E19999A, 0x40066666,
-	0x42280000, 0x42870000, 0x00000002, 0x3F800000, 0x41C00000, 0x41600000, 0x43870000, 0x428C0000,
-	0x43480000, 0x42E10000, 0x00000000, 0x00000000, 0x437A0000, 0x44D48000, 0x3F800000, 0x44048000,
-	0x43B90000, 0x437A0000, 0x00000000, 0x43160000, 0x43C80000, 0x43B40000, 0x01AB0124, 0x01A401A6,
-	0x01A001A1, 0x01A20000, 0x42D20000, 0x00000000, 0x43BD0000, 0x43480000, 0x42960000, 0x00000000,
-	0x43160000, 0x43160000, 0x00640064, 0x01AA0000, 0x3F828F5C, 0xFFFFFF50, 0x00000050, 0x00000000,
-	0xFF000000, 0xFFFFFC00, 0x00000006, 0x00000001, 0x00000001, 0x00000000, 0x41E00000, 0x41100000,
-	0x42DC0000, 0x43020000, 0x42C40000, 0x0000000C, 0x00000002, 0x00000001, 0x00000000, 0x42A20000,
-	0x41600000, 0x431B0000, 0x43200000, 0x43160000, 0x0000000E, 0x00000001, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x424C0000, 0x42480000, 0x42480000, 0x00000008, 0x00000001, 0x00000000,
-	0x00000000, 0x00000000, 0x00000000, 0x424C0000, 0x42480000, 0x42480000, 0x0000000F, 0x00000001,
-	0x00000000, 0x41A00000, 0x00000000, 0x00000000, 0x42940000, 0x42580000, 0x42580000, 0x00000009,
-	0x00000001, 0x00000000, 0x41A00000, 0x00000000, 0x00000000, 0x42940000, 0x42580000, 0x42580000,
-	0x00000018, 0x00000000, 0x00000000, 0x41900000, 0x00000000, 0x00000000, 0x42780000, 0x42860000,
-	0x42860000, 0x00000013, 0x00000000, 0x00000000, 0x41900000, 0x00000000, 0x00000000, 0x42780000,
-	0x42860000, 0x42860000, 0x00000019, 0x00000000, 0x00000000, 0x42080000, 0x00000000, 0x00000000,
-	0x42860000, 0x429C0000, 0x42980000, 0x00000014, 0x00000000, 0x00000000, 0x42080000, 0x00000000,
-	0x00000000, 0x42860000, 0x429C0000, 0x42980000, 0xFFFFFFFF, 0x00000000, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x44610000, 0x43E10000, 0x44610000,
+/* Data region at word 0x015F (1 words) */
+u32 dLuigiMain_data1[1] = {
+	0x00000000,
 };
 
-/* Pointer array at word 0x0207 (43 slots, 10 intern, 9 extern) */
-u32 dLuigiMain_ptrs2[43] = {
-	0x02080005, /* [0] intern -> 0x0005 */
-	0x02140003, /* [1] intern -> 0x0003 */
-	0x0000000C, /* [2] */
-	0x0000000F, /* [3] */
-	0x00000014, /* [4] */
-	0x00000019, /* [5] */
-	0x00000009, /* [6] */
-	0x00000000, /* [7] NULL */
-	0x00000001, /* [8] */
-	0x00000000, /* [9] NULL */
-	0x00000000, /* [10] NULL */
-	0x00000000, /* [11] NULL */
-	0x00000000, /* [12] NULL */
-	0x02150007, /* [13] intern -> 0x0007 */
-	0x02290059, /* [14] intern -> 0x0059 */
-	0x0217003C, /* [15] extern -> 0x003C */
-	0x02180168, /* [16] extern -> 0x0168 */
-	0x02190284, /* [17] extern -> 0x0284 */
-	0x021A03A0, /* [18] extern -> 0x03A0 */
-	0x021B04BC, /* [19] extern -> 0x04BC */
-	0x021C05E8, /* [20] extern -> 0x05E8 */
-	0x021D0718, /* [21] extern -> 0x0718 */
-	0x021E0838, /* [22] extern -> 0x0838 */
-	0xFFFF0950, /* [23] extern -> 0x0950 */
-	0x00000017, /* [24] */
-	0x42739062, /* [25] */
-	0x00000012, /* [26] */
-	0x42739062, /* [27] */
-	0x0000000D, /* [28] */
-	0x420FA6E9, /* [29] */
-	0x00000007, /* [30] */
-	0x420F8B44, /* [31] */
-	0x42480000, /* [32] */
-	0x3F060A92, /* [33] */
-	(u32)dLuigiMain_script0_1, /* [34] intern -> 0x00CD */
-	0x022C003F, /* [35] intern -> 0x003F */
-	0x00000000, /* [36] NULL */
-	0x022E0058, /* [37] intern -> 0x0058 */
-	0x0000001C, /* [38] */
-	(u32)dLuigiMain_script0_0, /* [39] intern -> 0x0061 */
-	0x00000011, /* [40] */
-	0x02310128, /* [41] intern -> 0x0128 */
-	0xFFFF015D, /* [42] intern -> 0x015D */
+FTAttributes dLuigiMain_attr = {
+	1.12f, /* size */
+	90.0f, /* walkslow_anim_length */
+	60.0f, /* walkmiddle_anim_length */
+	40.0f, /* walkfast_anim_length */
+	0.0f, /* throw_walkslow_anim_length */
+	0.0f, /* throw_walkmiddle_anim_length */
+	0.0f, /* throw_walkfast_anim_length */
+	16.0f, /* rebound_anim_length */
+	0.3f, /* walk_speed_mul */
+	0.7f, /* traction */
+	50.0f, /* dash_speed */
+	2.8f, /* dash_decel */
+	40.0f, /* run_speed */
+	3.0f, /* kneebend_anim_length */
+	0.35f, /* jump_vel_x */
+	0.7f, /* jump_height_mul */
+	30.0f, /* jump_height_base */
+	0.35f, /* jumpaerial_vel_x */
+	0.9f, /* jumpaerial_height */
+	0.025f, /* air_accel */
+	22.5f, /* air_speed_max_x */
+	0.15f, /* air_friction */
+	2.1f, /* gravity */
+	42.0f, /* tvel_base */
+	67.5f, /* tvel_fast */
+	2, /* jumps_max */
+	1.0f, /* weight */
+	24.0f, /* attack1_followup_frames */
+	14.0f, /* dash_to_run */
+	270.0f, /* shield_size */
+	70.0f, /* shield_break_vel_y */
+	200.0f, /* shadow_size */
+	112.5f, /* jostle_width */
+	0.0f, /* jostle_x */
+	FALSE, /* is_metallic */
+	250.0f, /* cam_offset_y */
+	1700.0f, /* closeup_camera_zoom */
+	1.0f, /* camera_zoom */
+	530.0f, /* camera_zoom_base */
+	{ 370.0f, 250.0f, 0.0f, 150.0f }, /* map_coll */
+	{ 400.0f, 360.0f }, /* cliffcatch_coll */
+	{ 0x01AB, 0x0124 }, /* dead_fgm_ids */
+	0x01A4, /* deadup_sfx */
+	0x01A6, /* damage_sfx */
+	{ 0x01A0, 0x01A1, 0x01A2 }, /* smash_sfx */
+	{ { 105.0f, 0.0f }, { 378.0f, 200.0f }, { 75.0f, 0.0f }, { 150.0f, 150.0f } }, /* item_pickup */
+	0x0064, /* itemthrow_vel_scale */
+	0x0064, /* itemthrow_damage_scale */
+	0x01AA, /* heavyget_sfx */
+	1.02f, /* halo_size */
+	{ { 0xFF, 0xFF, 0xFF, 0x50 }, { 0x00, 0x00, 0x00, 0x50 }, { 0x00, 0x00, 0x00, 0x00 } }, /* shade_color */
+	{ 0xFF, 0x00, 0x00, 0x00 }, /* fog_color */
+	1, /* is_have_attack11 */
+	1, /* is_have_attack12 */
+	1, /* is_have_attackdash */
+	1, /* is_have_attacks3 */
+	1, /* is_have_attackhi3 */
+	1, /* is_have_attacklw3 */
+	1, /* is_have_attacks4 */
+	1, /* is_have_attackhi4 */
+	1, /* is_have_attacklw4 */
+	1, /* is_have_attackairn */
+	1, /* is_have_attackairf */
+	1, /* is_have_attackairb */
+	1, /* is_have_attackairhi */
+	1, /* is_have_attackairlw */
+	1, /* is_have_specialn */
+	1, /* is_have_specialairn */
+	1, /* is_have_specialhi */
+	1, /* is_have_specialairhi */
+	1, /* is_have_speciallw */
+	1, /* is_have_specialairlw */
+	1, /* is_have_catch */
+	1, /* is_have_voice */
+	/* damage_coll_descs */
+	{
+		{ 6, 1, TRUE, { 0.0f, 28.0f, 9.0f }, { 110.0f, 130.0f, 98.0f } },
+		{ 12, 2, TRUE, { 0.0f, 81.0f, 14.0f }, { 155.0f, 160.0f, 150.0f } },
+		{ 14, 1, FALSE, { 0.0f, 0.0f, 0.0f }, { 51.0f, 50.0f, 50.0f } },
+		{ 8, 1, FALSE, { 0.0f, 0.0f, 0.0f }, { 51.0f, 50.0f, 50.0f } },
+		{ 15, 1, FALSE, { 20.0f, 0.0f, 0.0f }, { 74.0f, 54.0f, 54.0f } },
+		{ 9, 1, FALSE, { 20.0f, 0.0f, 0.0f }, { 74.0f, 54.0f, 54.0f } },
+		{ 24, 0, FALSE, { 18.0f, 0.0f, 0.0f }, { 62.0f, 67.0f, 67.0f } },
+		{ 19, 0, FALSE, { 18.0f, 0.0f, 0.0f }, { 62.0f, 67.0f, 67.0f } },
+		{ 25, 0, FALSE, { 34.0f, 0.0f, 0.0f }, { 67.0f, 78.0f, 76.0f } },
+		{ 20, 0, FALSE, { 34.0f, 0.0f, 0.0f }, { 67.0f, 78.0f, 76.0f } },
+		{ -1, 0, FALSE, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
+	},
+	{ 900.0f, 450.0f, 900.0f }, /* hit_detect_range */
+	NULL, /* setup_parts */
+	NULL, /* animlock */
+	{ 12, 15, 20, 25, 9 }, /* effect_joint_ids */
+	{ FALSE, TRUE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
+	0, /* unused_0x2CC */
+	NULL, /* hiddenparts */
+	NULL, /* commonparts_container */
+	NULL, /* dobj_lookup */
+	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
+	23, /* joint_rfoot_id */
+	60.891f, /* joint_rfoot_rotate */
+	18, /* joint_lfoot_id */
+	60.891f, /* joint_lfoot_rotate */
+	{ 0x00, 0x00, 0x00, 0x0D, 0x42, 0x0F, 0xA6, 0xE9, 0x00, 0x00, 0x00, 0x07, 0x42, 0x0F, 0x8B, 0x44 }, /* filler_0x30C */
+	50.0f, /* unk_0x31C */
+	0.5235988f, /* unk_0x320 */
+	NULL, /* translate_scales */
+	NULL, /* modelparts_container */
+	NULL, /* accesspart */
+	NULL, /* textureparts_container */
+	28, /* joint_itemheavy_id */
+	NULL, /* thrown_status */
+	17, /* joint_itemlight_id */
+	NULL, /* sprites */
+	NULL, /* skeleton */
 };
 
 /* Data region at word 0x0232 (2 words) */

@@ -372,7 +372,6 @@ def decode_single_word_macro(word):
     macro_map_simple = {
         EVT_End: "ftMotionCommandEnd()",
         EVT_ClearAttackCollAll: "ftMotionCommandClearAttackCollAll()",
-        EVT_StopLoopSFX: "ftMotionCommandStopLoopSFX()",
         EVT_ResetDamageCollPartAll: "ftMotionCommandResetDamageCollPartAll()",
         EVT_LoopEnd: "ftMotionCommandLoopEnd()",
         EVT_Return: "ftMotionCommandReturn()",
@@ -382,7 +381,13 @@ def decode_single_word_macro(word):
         EVT_ResetColAnim: "ftMotionCommandResetColAnim()",
     }
     if opcode in macro_map_simple:
-        return macro_map_simple[opcode]
+        # The simple no-arg macros zero out the lower 26 bits. If the
+        # original word has any payload bits set we'd lose them, so fall
+        # through and emit raw hex instead. (Notably some End/0x0 words in
+        # the wild are actually data slots that happen to start with 0x00.)
+        if payload == 0:
+            return macro_map_simple[opcode]
+        return None
 
     macro_map_payload = {
         EVT_SyncWait: "ftMotionCommandWait",
@@ -391,6 +396,7 @@ def decode_single_word_macro(word):
         EVT_RefreshAttackCollID: "ftMotionCommandRefreshAttackCollID",
         EVT_PlayFGM: "ftMotionPlayFGM",
         EVT_PlayLoopSFXStoreInfo: "ftMotionCommandPlayLoopSFXStoreInfo",
+        EVT_StopLoopSFX: "ftMotionCommandStopLoopSFX",
         EVT_PlayVoiceStoreInfo: "ftMotionPlayVoice",
         EVT_PlayLoopVoiceStoreInfo: "ftMotionPlayInterruptableVoice",
         EVT_PlayFGMStoreInfo: "ftMotionCommandPlayFGMStoreInfo",
@@ -1211,7 +1217,7 @@ def process_file(fid, name, dry_run=False):
 
 
 # Target files
-MAINMOTION_IDS = [202, 205, 212, 216, 220, 224, 232, 242, 246]
+MAINMOTION_IDS = [202, 205, 208, 212, 216, 220, 224, 228, 232, 235, 238, 242, 246, 249]
 SHIELDPOSE_IDS = [298, 314, 318, 322, 327, 329, 331, 334, 337, 340, 343]
 ALL_IDS = MAINMOTION_IDS + SHIELDPOSE_IDS
 

@@ -1,7 +1,0 @@
-# Block manifest for relocData file 249 (BossMainMotion)
-# Each line is either a block filename or 'pad N'.
-# The master .c file is generated from this manifest at build time.
-
-gap_0x0000.data.c
-BulletNormal_WeaponAttributes.data.c
-BulletHard_WeaponAttributes.data.c

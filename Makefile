@@ -347,6 +347,11 @@ $(shell mkdir -p $(BUILD_DIR)/assets)
 # extract stamps exist, giving correct manifest-computed offsets.
 $(shell ([ -f include/reloc_data.h ] && [ -f symbols/reloc_data_symbols.$(VERSION).txt ]) || $(PYTHON) tools/genRelocSymbols.py ./tools/relocFileDescriptions.$(VERSION).txt ./include/reloc_data.h ./symbols/reloc_data_symbols.$(VERSION).txt --converted-files "" > /dev/null)
 
+# Bootstrap the motion-desc offsets header so the first build doesn't fail.
+# The proper rule below regenerates it whenever a MainMotion/SubMotion source
+# changes, so this only fires on a clean checkout.
+$(shell [ -f include/ft/motiondesc_offsets.h ] || $(PYTHON) tools/genMotionDescOffsets.py > /dev/null)
+
 # ----- Targets ------
 
 all: rom
@@ -484,6 +489,15 @@ include/reloc_data.h symbols/reloc_data_symbols.$(VERSION).txt &: \
 		$(RELOCDATA_STRUCT_FILES) $(RELOCDATA_EXTRACT_STAMPS)
 	$(call print_2,Generating reloc data header and symbol file from:,$<,$(BLUE))
 	$(V)$(PYTHON) tools/genRelocSymbols.py ./tools/relocFileDescriptions.$(VERSION).txt ./include/reloc_data.h ./symbols/reloc_data_symbols.$(VERSION).txt -Isrc/relocData -I$(BUILD_DIR)/src/relocData --converted-files "$(RELOC_C_FILES)"
+
+# Per-motion-script offset macros consumed by ftdata.c (and per-character
+# scsubsysdata*.c) so FTMotionDesc entries can name the script they
+# reference instead of using a raw byte offset.
+RELOC_MOTION_SOURCES := $(wildcard src/relocData/*MainMotion.c src/relocData/*SubMotion.c)
+
+include/ft/motiondesc_offsets.h: tools/genMotionDescOffsets.py $(RELOC_MOTION_SOURCES)
+	$(call print_2,Generating motion-desc offset header from:,$<,$(BLUE))
+	$(V)$(PYTHON) tools/genMotionDescOffsets.py $@
 
 # Staff roll specific
 src/sc/sccommon/scstaffroll.c: src/credits/staff.credits.encoded src/credits/titles.credits.encoded src/credits/info.credits.encoded src/credits/companies.credits.encoded

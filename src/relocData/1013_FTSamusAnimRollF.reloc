@@ -1,0 +1,23 @@
+# Relocation metadata for file 1013
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFTSamusAnimRollF_ptrs0+0x0 dFTSamusAnimRollF_script1_0
+intern dFTSamusAnimRollF_ptrs0+0x4 dFTSamusAnimRollF_script1_1
+intern dFTSamusAnimRollF_ptrs0+0x8 dFTSamusAnimRollF_script1_2
+intern dFTSamusAnimRollF_ptrs0+0xC dFTSamusAnimRollF_script1_3
+intern dFTSamusAnimRollF_ptrs0+0x14 dFTSamusAnimRollF_script1_4
+intern dFTSamusAnimRollF_ptrs0+0x18 dFTSamusAnimRollF_script1_5
+intern dFTSamusAnimRollF_ptrs0+0x1C dFTSamusAnimRollF_script1_6
+intern dFTSamusAnimRollF_ptrs0+0x20 dFTSamusAnimRollF_script1_7
+intern dFTSamusAnimRollF_ptrs0+0x24 dFTSamusAnimRollF_script1_8
+intern dFTSamusAnimRollF_ptrs0+0x30 dFTSamusAnimRollF_script1_9
+intern dFTSamusAnimRollF_ptrs0+0x34 dFTSamusAnimRollF_script1_10
+intern dFTSamusAnimRollF_ptrs0+0x3C dFTSamusAnimRollF_script1_11
+intern dFTSamusAnimRollF_ptrs0+0x40 dFTSamusAnimRollF_script1_12
+intern dFTSamusAnimRollF_ptrs0+0x48 dFTSamusAnimRollF_script1_13
+intern dFTSamusAnimRollF_ptrs0+0x50 dFTSamusAnimRollF_script1_14
+intern dFTSamusAnimRollF_ptrs0+0x54 dFTSamusAnimRollF_script1_15
+intern dFTSamusAnimRollF_ptrs0+0x5C dFTSamusAnimRollF_script1_16
+intern dFTSamusAnimRollF_ptrs1+0x0 dFTSamusAnimRollF_script0_0
+intern dFTSamusAnimRollF_ptrs1+0x8 dFTSamusAnimRollF_script0_1
+intern dFTSamusAnimRollF_ptrs1+0xC dFTSamusAnimRollF_script0_2

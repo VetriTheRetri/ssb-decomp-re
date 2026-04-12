@@ -1,0 +1,5 @@
+/* Raw data from file offset 0x7528 to 0x7550 (40 bytes) */
+u32 dMNBackupClear_OptionYesNot_Palette[] = {
+	0x00000001, 0x08431085, 0x18C72109, 0x294B318D, 0x398D41CB, 0x5A4B6249, 0x6A897AC9, 0x83078B47,
+	0x00000000, 0x00000000,
+};

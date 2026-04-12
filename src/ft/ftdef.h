@@ -241,6 +241,19 @@
 #define ftMotionCommandEffectItemHoldS3(oz, rx) (GC_FIELDSET(oz, 16, 16) | GC_FIELDSET(rx, 0, 16))
 #define ftMotionCommandEffectItemHoldS4(ry, rz) (GC_FIELDSET(ry, 16, 16) | GC_FIELDSET(rz, 0, 16))
 
+// Merged multi-word macros
+#define ftMotionCommandEffect(jid, eid, flag, ox, oy, oz, rx, ry, rz) \
+ftMotionCommandEffectS1(jid, eid, flag), ftMotionCommandEffectS2(ox, oy), ftMotionCommandEffectS3(oz, rx), ftMotionCommandEffectS4(ry, rz)
+
+#define ftMotionCommandEffectItemHold(jid, eid, flag, ox, oy, oz, rx, ry, rz) \
+ftMotionCommandEffectItemHoldS1(jid, eid, flag), ftMotionCommandEffectItemHoldS2(ox, oy), ftMotionCommandEffectItemHoldS3(oz, rx), ftMotionCommandEffectItemHoldS4(ry, rz)
+
+#define ftMotionCommandMakeAttackColl(aid, gid, jid, dmg, reb, elem, sz, ox, oy, oz, ang, kbs, kbw, ga, sd, fl, fk, kbb) \
+ftMotionCommandMakeAttackCollS1(aid, gid, jid, dmg, reb, elem), ftMotionCommandMakeAttackCollS2(sz, ox), ftMotionCommandMakeAttackCollS3(oy, oz), ftMotionCommandMakeAttackCollS4(ang, kbs, kbw, ga), ftMotionCommandMakeAttackCollS5(sd, fl, fk, kbb)
+
+#define ftMotionCommandMakeAttackCollScaled(aid, gid, jid, dmg, reb, elem, sz, ox, oy, oz, ang, kbs, kbw, ga, sd, fl, fk, kbb) \
+ftMotionCommandMakeAttackCollScaledS1(aid, gid, jid, dmg, reb, elem), ftMotionCommandMakeAttackCollS2(sz, ox), ftMotionCommandMakeAttackCollS3(oy, oz), ftMotionCommandMakeAttackCollS4(ang, kbs, kbw, ga), ftMotionCommandMakeAttackCollS5(sd, fl, fk, kbb)
+
 // Enums
 typedef enum FTStatusUpdateFlags
 {

@@ -601,11 +601,7 @@ def decode_multi_word_macro(data, pos, opcode, intern_map, extern_map, prefix):
         kbb = (w5 >> 7) & 0x3FF
         base = "ftMotionCommandMakeAttackColl" if opcode == EVT_MakeAttackColl else "ftMotionCommandMakeAttackCollScaled"
         return [
-            f"{base}S1({aid}, {gid}, {jid}, {dmg}, {reb}, {ele}),",
-            f"{base}S2({sz}, {ox}),",
-            f"{base}S3({oy}, {oz}),",
-            f"{base}S4({ang}, {kbs}, {kbw}, {ga}),",
-            f"{base}S5({sd}, {fl}, {fk}, {kbb}),",
+            f"{base}({aid}, {gid}, {jid}, {dmg}, {reb}, {ele}, {sz}, {ox}, {oy}, {oz}, {ang}, {kbs}, {kbw}, {ga}, {sd}, {fl}, {fk}, {kbb}),",
         ]
 
     if opcode == EVT_SetAttackCollOffset:
@@ -675,12 +671,7 @@ def decode_multi_word_macro(data, pos, opcode, intern_map, extern_map, prefix):
         ry = sign_extend((w4 >> 16) & 0xFFFF, 16)
         rz = sign_extend(w4 & 0xFFFF, 16)
         base = "ftMotionCommandEffect" if opcode == EVT_Effect else "ftMotionCommandEffectItemHold"
-        return [
-            f"{base}S1({jid}, {eid}, {fl}),",
-            f"{base}S2({ox}, {oy}),",
-            f"{base}S3({oz}, {rx}),",
-            f"{base}S4({ry}, {rz}),",
-        ]
+        return [f"{base}({jid}, {eid}, {fl}, {ox}, {oy}, {oz}, {rx}, {ry}, {rz}),"]
 
     if opcode == EVT_SetHitStatusPartID:
         # 1-word command, handled in decode_single_word_macro
@@ -801,6 +792,7 @@ def generate_motion_file(fid, name, data, intern_relocs, extern_relocs):
         "",
         '#include "relocdata_types.h"',
         '#include <ft/ftdef.h>',
+        '#include <ft/fttypes.h>',
         "",
     ]
 
@@ -816,7 +808,10 @@ def generate_motion_file(fid, name, data, intern_relocs, extern_relocs):
 
     if forward_needed:
         for tw in sorted(forward_needed):
-            c_lines.append(f"extern u32 {array_label(tw)}[];")
+            if tw in throw_data_starts:
+                c_lines.append(f"extern FTThrowHitDesc {array_label(tw)}[];")
+            else:
+                c_lines.append(f"extern u32 {array_label(tw)}[];")
         c_lines.append("")
 
     reloc_lines = [
@@ -837,7 +832,11 @@ def generate_motion_file(fid, name, data, intern_relocs, extern_relocs):
             continue
 
         label = array_label(arr_start)
-        c_lines.append(f"u32 {label}[] = {{")
+        is_throw_data = arr_start in throw_data_starts
+        if is_throw_data:
+            c_lines.append(f"FTThrowHitDesc {label}[] = {{")
+        else:
+            c_lines.append(f"u32 {label}[] = {{")
 
         pos = arr_start
         while pos < arr_end:
@@ -848,12 +847,10 @@ def generate_motion_file(fid, name, data, intern_relocs, extern_relocs):
                     if pos + FTTHROWHITDESC_WORDS <= arr_end:
                         fields = [struct.unpack_from('>i', data, (pos + i) * 4)[0]
                                   for i in range(FTTHROWHITDESC_WORDS)]
-                        c_lines.append(f"\t/* FTThrowHitDesc */ "
-                                       f"{fields[0]}, {fields[1]}, {fields[2]}, "
-                                       f"{fields[3]}, {fields[4]}, {fields[5]}, "
-                                       f"{fields[6]}, "
-                                       f"/* status, damage, angle, kb_scale, "
-                                       f"kb_weight, kb_base, element */")
+                        c_lines.append(
+                            f"\t{{ {fields[0]}, {fields[1]}, {fields[2]}, "
+                            f"{fields[3]}, {fields[4]}, {fields[5]}, "
+                            f"{fields[6]} }},")
                         pos += FTTHROWHITDESC_WORDS
                     else:
                         val = struct.unpack_from('>I', data, pos * 4)[0]

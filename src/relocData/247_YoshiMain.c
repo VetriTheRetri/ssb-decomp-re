@@ -20,7 +20,7 @@ u32 dYoshiMain_pre[287] = {
 	0xFF6A0096,
 	0x00C85A40,
 	0x0C838000,
-	0x0660F134,
+	0x0660F934,
 	0x0C800000,
 	0x00351516, /* extern -> 0x5458 */
 	0x00000000,
@@ -33,7 +33,7 @@ u32 dYoshiMain_pre[287] = {
 	0xFF9C0060,
 	0x00A05A40,
 	0x1901001E,
-	0xFD6101BC,
+	0xFD6111BC,
 	0x00000000,
 	0x02204A40,
 	0x00000000,
@@ -313,13 +313,13 @@ FTAttributes dYoshiMain_attr = {
 	0.35f, /* jump_vel_x */
 	0.7f, /* jump_height_mul */
 	27.5f, /* jump_height_base */
-	0.35f, /* jumpaerial_vel_x */
+	0.4f, /* jumpaerial_vel_x */
 	1.2f, /* jumpaerial_height */
 	0.04f, /* air_accel */
-	40.0f, /* air_speed_max_x */
+	44.0f, /* air_speed_max_x */
 	0.4f, /* air_friction */
-	2.7f, /* gravity */
-	55.0f, /* tvel_base */
+	2.8f, /* gravity */
+	58.0f, /* tvel_base */
 	88.0f, /* tvel_fast */
 	2, /* jumps_max */
 	0.93f, /* weight */
@@ -337,14 +337,14 @@ FTAttributes dYoshiMain_attr = {
 	600.0f, /* camera_zoom_base */
 	{ 400.0f, 250.0f, 0.0f, 210.0f }, /* map_coll */
 	{ 420.0f, 400.0f }, /* cliffcatch_coll */
-	{ 0x0247, 0x011F }, /* dead_fgm_ids */
-	0x0240, /* deadup_sfx */
-	0x0242, /* damage_sfx */
-	{ 0x023C, 0x023D, 0x023E }, /* smash_sfx */
+	{ 0x0253, 0x0129 }, /* dead_fgm_ids */
+	0x024C, /* deadup_sfx */
+	0x024E, /* damage_sfx */
+	{ 0x0248, 0x0249, 0x024A }, /* smash_sfx */
 	{ { 100.0f, 0.0f }, { 588.0f, 200.0f }, { 0.0f, 0.0f }, { 150.0f, 150.0f } }, /* item_pickup */
 	0x0064, /* itemthrow_vel_scale */
 	0x0064, /* itemthrow_damage_scale */
-	0x0245, /* heavyget_sfx */
+	0x0251, /* heavyget_sfx */
 	1.2f, /* halo_size */
 	{ { 0xFF, 0xFF, 0xFF, 0x50 }, { 0x00, 0x00, 0x00, 0x50 }, { 0x00, 0x00, 0x00, 0x00 } }, /* shade_color */
 	{ 0xFF, 0x00, 0x00, 0x00 }, /* fog_color */
@@ -385,15 +385,15 @@ FTAttributes dYoshiMain_attr = {
 		{ 23, 0, FALSE, { 36.0f, 0.0f, 0.0f }, { 90.0f, 45.0f, 51.0f } },
 	},
 	{ 1200.0f, 600.0f, 1200.0f }, /* hit_detect_range */
-	(u32 *)0x01C7001F, /* setup_parts */
-	(u32 *)0x01D3001D, /* animlock */
+	NULL, /* setup_parts */
+	NULL, /* animlock */
 	{ 7, 16, 23, 28, 12 }, /* effect_joint_ids */
 	{ FALSE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	0, /* unused_0x2CC */
-	(FTHiddenPart *)0x01D40021, /* hiddenparts */
-	(FTCommonPartContainer *)0x01E90067, /* commonparts_container */
-	(DObjDesc *)0x01D60000, /* dobj_lookup */
-	{ (AObjEvent32 **)0x01D70140, (AObjEvent32 **)0x01D801F4, (AObjEvent32 **)0x01D902A8, (AObjEvent32 **)0x01DA035C, (AObjEvent32 **)0x01DB0410, (AObjEvent32 **)0x01DC04C4, (AObjEvent32 **)0x01DD0578, (AObjEvent32 **)0xFFFF062C }, /* shield_anim_joints */
+	NULL, /* hiddenparts */
+	NULL, /* commonparts_container */
+	NULL, /* dobj_lookup */
+	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
 	26, /* joint_rfoot_id */
 	82.602f, /* joint_rfoot_rotate */
 	21, /* joint_lfoot_id */
@@ -402,14 +402,14 @@ FTAttributes dYoshiMain_attr = {
 	50.0f, /* unk_0x31C */
 	0.5235988f, /* unk_0x320 */
 	NULL, /* translate_scales */
-	(FTModelPartContainer *)0x01EB0049, /* modelparts_container */
+	NULL, /* modelparts_container */
 	NULL, /* accesspart */
-	(FTTexturePartContainer *)0x01ED0065, /* textureparts_container */
+	NULL, /* textureparts_container */
 	31, /* joint_itemheavy_id */
-	(FTThrownStatusArray *)0x01EF006F, /* thrown_status */
+	NULL, /* thrown_status */
 	18, /* joint_itemlight_id */
-	(FTSprites *)0x01F000E1, /* sprites */
-	(FTSkeleton **)0xFFFF011C, /* skeleton */
+	NULL, /* sprites */
+	NULL, /* skeleton */
 };
 
 /* Trailing padding (3 words) */

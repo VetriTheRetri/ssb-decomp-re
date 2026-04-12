@@ -313,14 +313,14 @@ FTAttributes dPikachuMain_attr = {
 	470.0f, /* camera_zoom_base */
 	{ 300.0f, 150.0f, 0.0f, 140.0f }, /* map_coll */
 	{ 400.0f, 280.0f }, /* cliffcatch_coll */
-	{ 0x021A, 0x011C }, /* dead_fgm_ids */
-	0x0212, /* deadup_sfx */
-	0x0214, /* damage_sfx */
-	{ 0x020D, 0x020E, 0x020F }, /* smash_sfx */
+	{ 0x0226, 0x0126 }, /* dead_fgm_ids */
+	0x021E, /* deadup_sfx */
+	0x0220, /* damage_sfx */
+	{ 0x0219, 0x021A, 0x021B }, /* smash_sfx */
 	{ { 105.0f, 0.0f }, { 378.0f, 200.0f }, { 75.0f, 0.0f }, { 150.0f, 150.0f } }, /* item_pickup */
 	0x0064, /* itemthrow_vel_scale */
 	0x0064, /* itemthrow_damage_scale */
-	0x0218, /* heavyget_sfx */
+	0x0224, /* heavyget_sfx */
 	1.1f, /* halo_size */
 	{ { 0xFF, 0xFF, 0xFF, 0x50 }, { 0x00, 0x00, 0x00, 0x50 }, { 0x00, 0x00, 0x00, 0x00 } }, /* shade_color */
 	{ 0xFF, 0x00, 0x00, 0x00 }, /* fog_color */
@@ -361,15 +361,15 @@ FTAttributes dPikachuMain_attr = {
 		{ 21, 0, FALSE, { 43.0f, 3.0f, 0.0f }, { 69.0f, 45.0f, 45.0f } },
 	},
 	{ 800.0f, 400.0f, 800.0f }, /* hit_detect_range */
-	(u32 *)0x01AF001F, /* setup_parts */
-	(u32 *)0x01BB001D, /* animlock */
+	NULL, /* setup_parts */
+	NULL, /* animlock */
 	{ 11, 18, 21, 26, 10 }, /* effect_joint_ids */
 	{ FALSE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	0, /* unused_0x2CC */
-	(FTHiddenPart *)0x01BC0021, /* hiddenparts */
-	(FTCommonPartContainer *)0x01D10052, /* commonparts_container */
-	(DObjDesc *)0x01BE0000, /* dobj_lookup */
-	{ (AObjEvent32 **)0x01BF0140, (AObjEvent32 **)0x01C002D4, (AObjEvent32 **)0x01C10468, (AObjEvent32 **)0x01C205FC, (AObjEvent32 **)0x01C30798, (AObjEvent32 **)0x01C4092C, (AObjEvent32 **)0x01C50AC0, (AObjEvent32 **)0xFFFF0C54 }, /* shield_anim_joints */
+	NULL, /* hiddenparts */
+	NULL, /* commonparts_container */
+	NULL, /* dobj_lookup */
+	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
 	24, /* joint_rfoot_id */
 	79.671f, /* joint_rfoot_rotate */
 	19, /* joint_lfoot_id */
@@ -378,14 +378,14 @@ FTAttributes dPikachuMain_attr = {
 	50.0f, /* unk_0x31C */
 	0.5235988f, /* unk_0x320 */
 	NULL, /* translate_scales */
-	(FTModelPartContainer *)0x01D20031, /* modelparts_container */
-	(FTAccessPart *)0x01D3004C, /* accesspart */
-	(FTTexturePartContainer *)0x01D50050, /* textureparts_container */
+	NULL, /* modelparts_container */
+	NULL, /* accesspart */
+	NULL, /* textureparts_container */
 	30, /* joint_itemheavy_id */
-	(FTThrownStatusArray *)0x01D7005A, /* thrown_status */
+	NULL, /* thrown_status */
 	12, /* joint_itemlight_id */
-	(FTSprites *)0x01D800CB, /* sprites */
-	(FTSkeleton **)0xFFFF0104, /* skeleton */
+	NULL, /* sprites */
+	NULL, /* skeleton */
 };
 
 /* Trailing padding (3 words) */

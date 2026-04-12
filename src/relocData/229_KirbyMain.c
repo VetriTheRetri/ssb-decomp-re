@@ -19,7 +19,7 @@ u32 dKirbyMain_pre[514] = {
 	0xFF240032,
 	0x00FA5A40,
 	0x0C818C00,
-	0x0167E19C,
+	0x0168319C,
 	0x11800000,
 	0x04209480,
 	0x00000000,
@@ -523,7 +523,7 @@ u32 dKirbyMain_pre[514] = {
 };
 
 FTAttributes dKirbyMain_attr = {
-	0.94f, /* size */
+	0.91f, /* size */
 	90.0f, /* walkslow_anim_length */
 	60.0f, /* walkmiddle_anim_length */
 	40.0f, /* walkfast_anim_length */
@@ -564,14 +564,14 @@ FTAttributes dKirbyMain_attr = {
 	410.0f, /* camera_zoom_base */
 	{ 230.0f, 160.0f, 0.0f, 130.0f }, /* map_coll */
 	{ 250.0f, 400.0f }, /* cliffcatch_coll */
-	{ 0x0182, 0x0118 }, /* dead_fgm_ids */
-	0x017A, /* deadup_sfx */
-	0x017C, /* damage_sfx */
-	{ 0x0170, 0x0171, 0x0172 }, /* smash_sfx */
+	{ 0x018C, 0x0122 }, /* dead_fgm_ids */
+	0x0184, /* deadup_sfx */
+	0x0186, /* damage_sfx */
+	{ 0x017A, 0x017B, 0x017C }, /* smash_sfx */
 	{ { 112.0f, 0.0f }, { 403.0f, 150.0f }, { 80.0f, 0.0f }, { 150.0f, 150.0f } }, /* item_pickup */
 	0x0064, /* itemthrow_vel_scale */
 	0x0064, /* itemthrow_damage_scale */
-	0x017F, /* heavyget_sfx */
+	0x0189, /* heavyget_sfx */
 	1.14f, /* halo_size */
 	{ { 0xFF, 0xFF, 0xFF, 0x50 }, { 0x00, 0x00, 0x00, 0x50 }, { 0x00, 0x00, 0x00, 0x00 } }, /* shade_color */
 	{ 0xFF, 0x00, 0x00, 0x00 }, /* fog_color */
@@ -612,15 +612,15 @@ FTAttributes dKirbyMain_attr = {
 		{ -1, 0, FALSE, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 	},
 	{ 800.0f, 400.0f, 800.0f }, /* hit_detect_range */
-	(u32 *)0x02AA0011, /* setup_parts */
-	(u32 *)0x02B6000F, /* animlock */
+	NULL, /* setup_parts */
+	NULL, /* animlock */
 	{ 6, 16, 22, 27, 11 }, /* effect_joint_ids */
 	{ FALSE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	0, /* unused_0x2CC */
-	(FTHiddenPart *)0x02B70013, /* hiddenparts */
-	(FTCommonPartContainer *)0x02CC0117, /* commonparts_container */
-	(DObjDesc *)0x02B90000, /* dobj_lookup */
-	{ (AObjEvent32 **)0x02BA0114, (AObjEvent32 **)0x02BB0264, (AObjEvent32 **)0x02BC03BC, (AObjEvent32 **)0x02BD0508, (AObjEvent32 **)0x02BE0674, (AObjEvent32 **)0x02BF07C0, (AObjEvent32 **)0x02C00920, (AObjEvent32 **)0xFFFF0A68 }, /* shield_anim_joints */
+	NULL, /* hiddenparts */
+	NULL, /* commonparts_container */
+	NULL, /* dobj_lookup */
+	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
 	25, /* joint_rfoot_id */
 	61.848f, /* joint_rfoot_rotate */
 	20, /* joint_lfoot_id */
@@ -629,12 +629,12 @@ FTAttributes dKirbyMain_attr = {
 	50.0f, /* unk_0x31C */
 	0.5235988f, /* unk_0x320 */
 	NULL, /* translate_scales */
-	(FTModelPartContainer *)0x02CE00FB, /* modelparts_container */
+	NULL, /* modelparts_container */
 	NULL, /* accesspart */
-	(FTTexturePartContainer *)0x02D00116, /* textureparts_container */
+	NULL, /* textureparts_container */
 	30, /* joint_itemheavy_id */
-	(FTThrownStatusArray *)0x02D2011F, /* thrown_status */
+	NULL, /* thrown_status */
 	17, /* joint_itemlight_id */
-	(FTSprites *)0x02D30190, /* sprites */
-	(FTSkeleton **)0xFFFF01FF, /* skeleton */
+	NULL, /* sprites */
+	NULL, /* skeleton */
 };

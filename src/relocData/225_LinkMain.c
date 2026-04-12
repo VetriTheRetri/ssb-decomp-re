@@ -20,7 +20,7 @@ u32 dLinkMain_pre[450] = {
 	0xFF6A0096,
 	0x01900780,
 	0x0C814000,
-	0x01A0F984,
+	0x01A10184,
 	0x07800000,
 	0x00120636, /* extern -> 0x18D8 */
 	0x00000000,
@@ -35,18 +35,18 @@ u32 dLinkMain_pre[450] = {
 	0x00640071,
 	0x0000FF8F,
 	0x007100DC,
-	0x14041010,
-	0x0000103E,
-	0x27028C00,
-	0x0D4350D4,
+	0x14014020,
+	0x00001040,
+	0x270F0C00,
+	0x0E4390E4,
 	0x1E000000,
-	0x005A4200,
-	0x015E0000,
-	0x025A4180,
-	0x00FA0000,
-	0x045A4100,
+	0x005A4140,
+	0x012C0000,
+	0x025A4140,
+	0x00E60000,
+	0x045A4140,
 	0x00960000,
-	0x065A4040,
+	0x065A4140,
 	0x00000000,
 	0x3F4CCCCD,
 	0x3F800000,
@@ -87,7 +87,7 @@ u32 dLinkMain_pre[450] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x005618D8, /* extern -> 0x6360 */
+	0x005618DC, /* extern -> 0x6370 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -142,12 +142,12 @@ u32 dLinkMain_pre[450] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x008D0B26, /* extern -> 0x2C98 */
+	0x008D0B22, /* extern -> 0x2C88 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00920B26, /* extern -> 0x2C98 */
+	0x00920B22, /* extern -> 0x2C88 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -162,17 +162,17 @@ u32 dLinkMain_pre[450] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00A10B26, /* extern -> 0x2C98 */
+	0x00A10B22, /* extern -> 0x2C88 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00A60B26, /* extern -> 0x2C98 */
+	0x00A60B22, /* extern -> 0x2C88 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00AB0B7E, /* extern -> 0x2DF8 */
+	0x00AB0B82, /* extern -> 0x2E08 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -192,13 +192,13 @@ u32 dLinkMain_pre[450] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00BB0BB8, /* extern -> 0x2EE0 */
+	0x00BB0BBC, /* extern -> 0x2EF0 */
 	0x00BC0164, /* extern -> 0x0590 */
-	0x00BF10C5, /* extern -> 0x4314 */
+	0x00BF10C9, /* extern -> 0x4324 */
 	0x00000000,
 	0x00000000,
 	0x00C01A8C, /* extern -> 0x6A30 */
-	0x00C11230, /* extern -> 0x48C0 */
+	0x00C11234, /* extern -> 0x48D0 */
 	0x00C41F39, /* extern -> 0x7CE4 */
 	0x00000000,
 	0x00000000,
@@ -212,13 +212,13 @@ u32 dLinkMain_pre[450] = {
 	0x00CE279D, /* extern -> 0x9E74 */
 	0x00000000,
 	0x00000000,
-	0x00CF0CE2, /* extern -> 0x3388 */
+	0x00CF0CE6, /* extern -> 0x3398 */
 	0x00D00168, /* extern -> 0x05A0 */
-	0x00D310C8, /* extern -> 0x4320 */
+	0x00D310CC, /* extern -> 0x4330 */
 	0x00000000,
 	0x00000000,
 	0x00D41B82, /* extern -> 0x6E08 */
-	0x00D51234, /* extern -> 0x48D0 */
+	0x00D51238, /* extern -> 0x48E0 */
 	0x00D81F3C, /* extern -> 0x7CF0 */
 	0x00000000,
 	0x00000000,
@@ -266,12 +266,12 @@ u32 dLinkMain_pre[450] = {
 	0x00000000,
 	0x17000017,
 	0x01010000,
-	0x01050EB6, /* extern -> 0x3AD8 */
+	0x01050EBA, /* extern -> 0x3AE8 */
 	0x01060000, /* extern -> 0x0000 */
-	0x01081024, /* extern -> 0x4090 */
+	0x01081028, /* extern -> 0x40A0 */
 	0x00000000,
 	0x01091D2C, /* extern -> 0x74B0 */
-	0x010A10CC, /* extern -> 0x4330 */
+	0x010A10D0, /* extern -> 0x4340 */
 	0x01781E98, /* extern -> 0x7A60 */
 	0x00000000,
 	0xFFFFFFFF,
@@ -467,7 +467,7 @@ FTAttributes dLinkMain_attr = {
 	0.0f, /* throw_walkmiddle_anim_length */
 	0.0f, /* throw_walkfast_anim_length */
 	16.0f, /* rebound_anim_length */
-	0.4f, /* walk_speed_mul */
+	0.37f, /* walk_speed_mul */
 	2.0f, /* traction */
 	68.0f, /* dash_speed */
 	5.4f, /* dash_decel */
@@ -481,14 +481,14 @@ FTAttributes dLinkMain_attr = {
 	0.04f, /* air_accel */
 	31.0f, /* air_speed_max_x */
 	0.0f, /* air_friction */
-	3.2f, /* gravity */
+	3.4f, /* gravity */
 	64.0f, /* tvel_base */
 	102.0f, /* tvel_fast */
 	2, /* jumps_max */
 	0.96f, /* weight */
 	24.0f, /* attack1_followup_frames */
 	16.0f, /* dash_to_run */
-	260.0f, /* shield_size */
+	280.0f, /* shield_size */
 	90.0f, /* shield_break_vel_y */
 	200.0f, /* shadow_size */
 	112.5f, /* jostle_width */
@@ -500,14 +500,14 @@ FTAttributes dLinkMain_attr = {
 	630.0f, /* camera_zoom_base */
 	{ 400.0f, 250.0f, 0.0f, 150.0f }, /* map_coll */
 	{ 280.0f, 400.0f }, /* cliffcatch_coll */
-	{ 0x0193, 0x0119 }, /* dead_fgm_ids */
-	0x018B, /* deadup_sfx */
-	0x018D, /* damage_sfx */
-	{ 0x0187, 0x0188, 0x0189 }, /* smash_sfx */
+	{ 0x019D, 0x0123 }, /* dead_fgm_ids */
+	0x0195, /* deadup_sfx */
+	0x0197, /* damage_sfx */
+	{ 0x0191, 0x0192, 0x0193 }, /* smash_sfx */
 	{ { 105.0f, 0.0f }, { 378.0f, 200.0f }, { 75.0f, 0.0f }, { 150.0f, 150.0f } }, /* item_pickup */
 	0x0064, /* itemthrow_vel_scale */
 	0x0064, /* itemthrow_damage_scale */
-	0x0191, /* heavyget_sfx */
+	0x019B, /* heavyget_sfx */
 	1.1f, /* halo_size */
 	{ { 0xFF, 0xFF, 0xFF, 0x50 }, { 0x00, 0x00, 0x00, 0x50 }, { 0x00, 0x00, 0x00, 0x00 } }, /* shade_color */
 	{ 0xFF, 0x00, 0x00, 0x00 }, /* fog_color */
@@ -548,15 +548,15 @@ FTAttributes dLinkMain_attr = {
 		{ 27, 0, FALSE, { 43.0f, -3.0f, 0.0f }, { 121.0f, 43.0f, 51.0f } },
 	},
 	{ 1200.0f, 600.0f, 1200.0f }, /* hit_detect_range */
-	(u32 *)0x026A0032, /* setup_parts */
-	(u32 *)0x02760030, /* animlock */
+	NULL, /* setup_parts */
+	NULL, /* animlock */
 	{ 23, 14, 27, 32, 9 }, /* effect_joint_ids */
 	{ FALSE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	0, /* unused_0x2CC */
-	(FTHiddenPart *)0x02770034, /* hiddenparts */
-	(FTCommonPartContainer *)0x028C0104, /* commonparts_container */
-	(DObjDesc *)0x02790000, /* dobj_lookup */
-	{ (AObjEvent32 **)0x027A0160, (AObjEvent32 **)0x027B0290, (AObjEvent32 **)0x027C03CC, (AObjEvent32 **)0x027D0514, (AObjEvent32 **)0x027E0664, (AObjEvent32 **)0x027F07AC, (AObjEvent32 **)0x028008FC, (AObjEvent32 **)0xFFFF0A44 }, /* shield_anim_joints */
+	NULL, /* hiddenparts */
+	NULL, /* commonparts_container */
+	NULL, /* dobj_lookup */
+	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
 	30, /* joint_rfoot_id */
 	92.628f, /* joint_rfoot_rotate */
 	25, /* joint_lfoot_id */
@@ -565,12 +565,12 @@ FTAttributes dLinkMain_attr = {
 	50.0f, /* unk_0x31C */
 	0.5235988f, /* unk_0x320 */
 	NULL, /* translate_scales */
-	(FTModelPartContainer *)0x028E00E2, /* modelparts_container */
+	NULL, /* modelparts_container */
 	NULL, /* accesspart */
-	(FTTexturePartContainer *)0x02900102, /* textureparts_container */
+	NULL, /* textureparts_container */
 	35, /* joint_itemheavy_id */
-	(FTThrownStatusArray *)0x0292010C, /* thrown_status */
+	NULL, /* thrown_status */
 	16, /* joint_itemlight_id */
-	(FTSprites *)0x0293017C, /* sprites */
-	(FTSkeleton **)0xFFFF01BF, /* skeleton */
+	NULL, /* sprites */
+	NULL, /* skeleton */
 };

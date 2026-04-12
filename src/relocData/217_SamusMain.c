@@ -438,14 +438,14 @@ FTAttributes dSamusMain_attr = {
 	660.0f, /* camera_zoom_base */
 	{ 500.0f, 250.0f, 0.0f, 150.0f }, /* map_coll */
 	{ 440.0f, 550.0f }, /* cliffcatch_coll */
-	{ 0x023A, 0x011E }, /* dead_fgm_ids */
-	0x0234, /* deadup_sfx */
-	0x0239, /* damage_sfx */
-	{ 0x0231, 0x0232, 0x0233 }, /* smash_sfx */
+	{ 0x0246, 0x0128 }, /* dead_fgm_ids */
+	0x0240, /* deadup_sfx */
+	0x0245, /* damage_sfx */
+	{ 0x023D, 0x023E, 0x023F }, /* smash_sfx */
 	{ { 107.0f, 0.0f }, { 386.0f, 200.0f }, { 75.0f, 0.0f }, { 150.0f, 150.0f } }, /* item_pickup */
 	0x0064, /* itemthrow_vel_scale */
 	0x0064, /* itemthrow_damage_scale */
-	0x029D, /* heavyget_sfx */
+	0x02B7, /* heavyget_sfx */
 	1.2f, /* halo_size */
 	{ { 0xFF, 0xFF, 0xFF, 0x50 }, { 0x00, 0x00, 0x00, 0x50 }, { 0x00, 0x00, 0x00, 0x00 } }, /* shade_color */
 	{ 0xFF, 0x00, 0x00, 0x00 }, /* fog_color */
@@ -486,15 +486,15 @@ FTAttributes dSamusMain_attr = {
 		{ 28, 0, FALSE, { 80.0f, 0.0f, 0.0f }, { 203.0f, 56.0f, 64.0f } },
 	},
 	{ 1200.0f, 600.0f, 1200.0f }, /* hit_detect_range */
-	(u32 *)0x022C0012, /* setup_parts */
-	(u32 *)0x02380010, /* animlock */
+	NULL, /* setup_parts */
+	NULL, /* animlock */
 	{ 13, 16, 28, 33, 9 }, /* effect_joint_ids */
 	{ FALSE, TRUE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	0, /* unused_0x2CC */
-	(FTHiddenPart *)0x02390014, /* hiddenparts */
-	(FTCommonPartContainer *)0x024E00C3, /* commonparts_container */
-	(DObjDesc *)0x023B003C, /* dobj_lookup */
-	{ (AObjEvent32 **)0x023C015C, (AObjEvent32 **)0x023D0268, (AObjEvent32 **)0x023E0378, (AObjEvent32 **)0x023F0484, (AObjEvent32 **)0x02400594, (AObjEvent32 **)0x024106A4, (AObjEvent32 **)0x024207B8, (AObjEvent32 **)0xFFFF08C4 }, /* shield_anim_joints */
+	NULL, /* hiddenparts */
+	NULL, /* commonparts_container */
+	NULL, /* dobj_lookup */
+	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
 	31, /* joint_rfoot_id */
 	176.271f, /* joint_rfoot_rotate */
 	26, /* joint_lfoot_id */
@@ -503,14 +503,14 @@ FTAttributes dSamusMain_attr = {
 	100.0f, /* unk_0x31C */
 	0.5235988f, /* unk_0x320 */
 	NULL, /* translate_scales */
-	(FTModelPartContainer *)0x025200A2, /* modelparts_container */
+	NULL, /* modelparts_container */
 	NULL, /* accesspart */
 	NULL, /* textureparts_container */
 	36, /* joint_itemheavy_id */
-	(FTThrownStatusArray *)0x025400CB, /* thrown_status */
+	NULL, /* thrown_status */
 	11, /* joint_itemlight_id */
-	(FTSprites *)0x0255013C, /* sprites */
-	(FTSkeleton **)0xFFFF0181, /* skeleton */
+	NULL, /* sprites */
+	NULL, /* skeleton */
 };
 
 /* Trailing padding (2 words) */

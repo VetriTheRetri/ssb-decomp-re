@@ -417,14 +417,14 @@ FTAttributes dNessMain_attr = {
 	500.0f, /* camera_zoom_base */
 	{ 250.0f, 140.0f, 0.0f, 115.0f }, /* map_coll */
 	{ 280.0f, 420.0f }, /* cliffcatch_coll */
-	{ 0x01BF, 0x011B }, /* dead_fgm_ids */
-	0x01B5, /* deadup_sfx */
-	0x01B7, /* damage_sfx */
-	{ 0x01B1, 0x01B2, 0x01B3 }, /* smash_sfx */
+	{ 0x01C9, 0x0125 }, /* dead_fgm_ids */
+	0x01BF, /* deadup_sfx */
+	0x01C1, /* damage_sfx */
+	{ 0x01BB, 0x01BC, 0x01BD }, /* smash_sfx */
 	{ { 105.0f, 0.0f }, { 378.0f, 200.0f }, { 75.0f, 0.0f }, { 150.0f, 150.0f } }, /* item_pickup */
 	0x0064, /* itemthrow_vel_scale */
 	0x0064, /* itemthrow_damage_scale */
-	0x01B9, /* heavyget_sfx */
+	0x01C3, /* heavyget_sfx */
 	1.0f, /* halo_size */
 	{ { 0xFF, 0xFF, 0xFF, 0x50 }, { 0x00, 0x00, 0x00, 0x50 }, { 0x00, 0x00, 0x00, 0x00 } }, /* shade_color */
 	{ 0xFF, 0x00, 0x00, 0x00 }, /* fog_color */
@@ -465,15 +465,15 @@ FTAttributes dNessMain_attr = {
 		{ 20, 0, FALSE, { 26.0f, 0.0f, -2.0f }, { 68.0f, 47.0f, 42.0f } },
 	},
 	{ 900.0f, 900.0f, 600.0f }, /* hit_detect_range */
-	(u32 *)0x0217001F, /* setup_parts */
-	(u32 *)0x0223001D, /* animlock */
+	NULL, /* setup_parts */
+	NULL, /* animlock */
 	{ 12, 15, 20, 26, 9 }, /* effect_joint_ids */
 	{ FALSE, TRUE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	0, /* unused_0x2CC */
-	(FTHiddenPart *)0x02240021, /* hiddenparts */
-	(FTCommonPartContainer *)0x023900BB, /* commonparts_container */
-	(DObjDesc *)0x02260000, /* dobj_lookup */
-	{ (AObjEvent32 **)0x02270140, (AObjEvent32 **)0x02280288, (AObjEvent32 **)0x022903D4, (AObjEvent32 **)0x022A0524, (AObjEvent32 **)0x022B0680, (AObjEvent32 **)0x022C07F4, (AObjEvent32 **)0x022D0958, (AObjEvent32 **)0xFFFF0AE8 }, /* shield_anim_joints */
+	NULL, /* hiddenparts */
+	NULL, /* commonparts_container */
+	NULL, /* dobj_lookup */
+	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
 	24, /* joint_rfoot_id */
 	60.891f, /* joint_rfoot_rotate */
 	18, /* joint_lfoot_id */
@@ -482,14 +482,14 @@ FTAttributes dNessMain_attr = {
 	50.0f, /* unk_0x31C */
 	0.5235988f, /* unk_0x320 */
 	NULL, /* translate_scales */
-	(FTModelPartContainer *)0x023B009F, /* modelparts_container */
+	NULL, /* modelparts_container */
 	NULL, /* accesspart */
-	(FTTexturePartContainer *)0x023D00BA, /* textureparts_container */
+	NULL, /* textureparts_container */
 	30, /* joint_itemheavy_id */
-	(FTThrownStatusArray *)0x023F00C3, /* thrown_status */
+	NULL, /* thrown_status */
 	17, /* joint_itemlight_id */
-	(FTSprites *)0x02400133, /* sprites */
-	(FTSkeleton **)0xFFFF016C, /* skeleton */
+	NULL, /* sprites */
+	NULL, /* skeleton */
 };
 
 /* Trailing padding (3 words) */

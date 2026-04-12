@@ -136,12 +136,30 @@ def parse_bitfield(u32val):
     return bits
 
 
-def parse_ftattributes(data, base):
+def parse_ftattributes(data, base, raw_ptrs=False):
     """Parse FTAttributes from binary data at given base offset.
-    Returns a list of (field_name, c_value_string) tuples."""
+    Returns a list of (field_name, c_value_string) tuples.
+
+    If raw_ptrs is True, pointer fields are emitted as casts of the raw u32
+    value from the binary instead of NULL. Used for JP version-specific
+    overrides where the .reloc fixup pass is skipped by the Makefile, so the
+    binary must already contain the correct chain-encoded bytes at compile
+    time."""
 
     lines = []
     off = 0
+
+    def ptr(name, ctype):
+        nonlocal off
+        if raw_ptrs:
+            val = ru32(data, base + off)
+            if val == 0:
+                lines.append((name, "NULL", None))
+            else:
+                lines.append((name, f"({ctype})0x{val:08X}", None))
+        else:
+            lines.append((name, "NULL", None))
+        off += 4
 
     def f32(name, comment=None):
         nonlocal off
@@ -357,16 +375,13 @@ def parse_ftattributes(data, base):
 
     # ---- Pointer region (0x29C - 0x347) ----
     # These are all u32 slots that contain reloc-encoded values.
-    # fixRelocChain.py overwrites them, so the C initializer value doesn't matter
-    # for correctness, but we use NULL for clarity.
+    # For US, fixRelocChain.py overwrites them via the .reloc file so the
+    # initializer value does not matter; we use NULL for clarity. For JP
+    # version-specific overrides (raw_ptrs=True), the .reloc step is skipped
+    # by the Makefile, so we emit the raw chain-encoded u32 from the binary.
 
-    # u32 *setup_parts (ptr, intern reloc)
-    lines.append(("setup_parts", "NULL", None))
-    off += 4
-
-    # u32 *animlock (ptr, intern reloc)
-    lines.append(("animlock", "NULL", None))
-    off += 4
+    ptr("setup_parts", "u32 *")
+    ptr("animlock", "u32 *")
     assert off == 0x2A4
 
     # s32 effect_joint_ids[5]
@@ -390,20 +405,19 @@ def parse_ftattributes(data, base):
     s32("unused_0x2CC")
     assert off == 0x2D0
 
-    # FTHiddenPart *hiddenparts (ptr)
-    lines.append(("hiddenparts", "NULL", None))
-    off += 4
-
-    # FTCommonPartContainer *commonparts_container (ptr)
-    lines.append(("commonparts_container", "NULL", None))
-    off += 4
-
-    # DObjDesc *dobj_lookup (ptr)
-    lines.append(("dobj_lookup", "NULL", None))
-    off += 4
+    ptr("hiddenparts", "FTHiddenPart *")
+    ptr("commonparts_container", "FTCommonPartContainer *")
+    ptr("dobj_lookup", "DObjDesc *")
 
     # AObjEvent32 **shield_anim_joints[8] (8 ptrs)
-    lines.append(("shield_anim_joints", "{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }", None))
+    if raw_ptrs:
+        sa_vals = []
+        for i in range(8):
+            v = ru32(data, base + off + i * 4)
+            sa_vals.append("NULL" if v == 0 else f"(AObjEvent32 **)0x{v:08X}")
+        lines.append(("shield_anim_joints", "{ " + ", ".join(sa_vals) + " }", None))
+    else:
+        lines.append(("shield_anim_joints", "{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }", None))
     off += 32
     assert off == 0x2FC
 
@@ -435,39 +449,19 @@ def parse_ftattributes(data, base):
     f32("unk_0x320")
     assert off == 0x324
 
-    # Vec3f *translate_scales (ptr)
-    lines.append(("translate_scales", "NULL", None))
-    off += 4
+    ptr("translate_scales", "Vec3f *")
+    ptr("modelparts_container", "FTModelPartContainer *")
+    ptr("accesspart", "FTAccessPart *")
+    ptr("textureparts_container", "FTTexturePartContainer *")
 
-    # FTModelPartContainer *modelparts_container (ptr)
-    lines.append(("modelparts_container", "NULL", None))
-    off += 4
-
-    # FTAccessPart *accesspart (ptr)
-    lines.append(("accesspart", "NULL", None))
-    off += 4
-
-    # FTTexturePartContainer *textureparts_container (ptr)
-    lines.append(("textureparts_container", "NULL", None))
-    off += 4
-
-    # s32 joint_itemheavy_id
     s32("joint_itemheavy_id")
 
-    # FTThrownStatusArray *thrown_status (ptr)
-    lines.append(("thrown_status", "NULL", None))
-    off += 4
+    ptr("thrown_status", "FTThrownStatusArray *")
 
-    # s32 joint_itemlight_id
     s32("joint_itemlight_id")
 
-    # FTSprites *sprites (ptr)
-    lines.append(("sprites", "NULL", None))
-    off += 4
-
-    # FTSkeleton **skeleton (ptr)
-    lines.append(("skeleton", "NULL", None))
-    off += 4
+    ptr("sprites", "FTSprites *")
+    ptr("skeleton", "FTSkeleton **")
 
     assert off == 0x348, f"Expected 0x348, got 0x{off:X}"
 

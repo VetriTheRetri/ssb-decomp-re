@@ -1,15 +1,7 @@
 /* DisplayList: Joint_0x4218 @ 0x4218 (96 bytes) */
-Gfx dMarioModel_Joint_0x4218_DisplayList[] = {
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xFC327E05, 0xFF17FDFF } },  /* cmd 0xFC */
-	{ { 0xDE000000, 0x0E000000 } },  /* cmd 0xDE */
-	{ { 0xD7000000, 0x00000000 } },  /* cmd 0xD7 */
-	{ { 0x02140000, 0x00000000 } },  /* cmd 0x02 */
-	{ { 0x02140002, 0x00000000 } },  /* cmd 0x02 */
-	{ { 0x02140004, 0x00000000 } },  /* cmd 0x02 */
-	{ { 0x0100300C, (unsigned int)((u8*)dMarioModel_gap_0x26D0 + 0x1218) } },  /* cmd 0x01 */
-	{ { 0x0604000A, 0x0008040A } },  /* cmd 0x06 */
-	{ { 0x06080604, 0x00060204 } },  /* cmd 0x06 */
-	{ { 0x060A0002, 0x00060A02 } },  /* cmd 0x06 */
-	{ { 0xDF000000, 0x00000000 } },  /* cmd 0xDF */
+
+#include "relocdata_types.h"
+
+Gfx dMarioModel_Joint_0x4218_DisplayList[12] = {
+	#include <MarioModel/Joint_0x4218.dl.inc.c>
 };

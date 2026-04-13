@@ -1,20 +1,7 @@
 /* DisplayList: Joint_0x2358 @ 0x2358 (136 bytes) */
-Gfx dPikachuModel_Joint_0x2358_DisplayList[] = {
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xFC327E05, 0xFF17FDFF } },  /* cmd 0xFC */
-	{ { 0xDE000000, 0x0E000000 } },  /* cmd 0xDE */
-	{ { 0xD7000000, 0x00000000 } },  /* cmd 0xD7 */
-	{ { 0x0100F01E, (unsigned int)((u8*)dPikachuModel_gap_0x0000 + 0x15F8) } },  /* cmd 0x01 */
-	{ { 0x0608041C, 0x001C1A08 } },  /* cmd 0x06 */
-	{ { 0x061C181A, 0x0016181C } },  /* cmd 0x06 */
-	{ { 0x06161418, 0x00141612 } },  /* cmd 0x06 */
-	{ { 0x06161C12, 0x00181410 } },  /* cmd 0x06 */
-	{ { 0x06101A18, 0x000E121C } },  /* cmd 0x06 */
-	{ { 0x06001A10, 0x001A0008 } },  /* cmd 0x06 */
-	{ { 0x06120214, 0x001C040E } },  /* cmd 0x06 */
-	{ { 0x06021014, 0x00100C00 } },  /* cmd 0x06 */
-	{ { 0x06120E02, 0x000C1002 } },  /* cmd 0x06 */
-	{ { 0x060A020E, 0x000C0600 } },  /* cmd 0x06 */
-	{ { 0x060E040A, 0x0002060C } },  /* cmd 0x06 */
-	{ { 0xDF000000, 0x00000000 } },  /* cmd 0xDF */
+
+#include "relocdata_types.h"
+
+Gfx dPikachuModel_Joint_0x2358_DisplayList[17] = {
+	#include <PikachuModel/Joint_0x2358.dl.inc.c>
 };

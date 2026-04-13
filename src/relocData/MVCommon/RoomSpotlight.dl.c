@@ -1,32 +1,7 @@
 /* DisplayList: RoomSpotlight @ 0x22E18 (232 bytes) */
-Gfx dMVCommon_RoomSpotlight_DisplayList[] = {
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xD9FDFFFF, 0x00000000 } },  /* cmd 0xD9 */
-	{ { 0xFC6F96DF, 0xFF2E7F3F } },  /* cmd 0xFC */
-	{ { 0xF5900000, 0x07014040 } },  /* cmd 0xF5 */
-	{ { 0xF5880400, 0x00094240 } },  /* cmd 0xF5 */
-	{ { 0xD7000002, 0xFFFFFFFF } },  /* cmd 0xD7 */
-	{ { 0xF2000000, 0x0003C07C } },  /* cmd 0xF2 */
-	{ { 0xFD900000, (unsigned int)((u8*)dMVCommon_RoomDeskGround_MatAnimJoint + 0x4C4) } },  /* cmd 0xFD */
-	{ { 0xDE000000, 0x0E000000 } },  /* cmd 0xDE */
-	{ { 0xE6000000, 0x00000000 } },  /* cmd 0xE6 */
-	{ { 0xF3000000, 0x070FF400 } },  /* cmd 0xF3 */
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0x01004008, (unsigned int)((u8*)dMVCommon_gap_0x22D08 + 0x90) } },  /* cmd 0x01 */
-	{ { 0x06060402, 0x00000602 } },  /* cmd 0x06 */
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xFCFF97FF, 0xFF2E7F3F } },  /* cmd 0xFC */
-	{ { 0xF5900000, 0x07014050 } },  /* cmd 0xF5 */
-	{ { 0xF5880800, 0x00094250 } },  /* cmd 0xF5 */
-	{ { 0xF2000000, 0x0007C07C } },  /* cmd 0xF2 */
-	{ { 0xFD900000, (unsigned int)((u8*)dMVCommon_RoomDeskGround_MatAnimJoint + 0xBC) } },  /* cmd 0xFD */
-	{ { 0xDE000000, 0x0E000008 } },  /* cmd 0xDE */
-	{ { 0xE6000000, 0x00000000 } },  /* cmd 0xE6 */
-	{ { 0xF3000000, 0x071FF200 } },  /* cmd 0xF3 */
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0x01004008, (unsigned int)((u8*)dMVCommon_gap_0x22D08 + 0xD0) } },  /* cmd 0x01 */
-	{ { 0x06060402, 0x00000602 } },  /* cmd 0x06 */
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xD9FFFFFF, 0x00020000 } },  /* cmd 0xD9 */
-	{ { 0xDF000000, 0x00000000 } },  /* cmd 0xDF */
+
+#include "relocdata_types.h"
+
+Gfx dMVCommon_RoomSpotlight_DisplayList[29] = {
+	#include <MVCommon/RoomSpotlight.dl.inc.c>
 };

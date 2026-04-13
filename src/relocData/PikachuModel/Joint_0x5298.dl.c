@@ -1,12 +1,7 @@
 /* DisplayList: Joint_0x5298 @ 0x5298 (72 bytes) */
-Gfx dPikachuModel_Joint_0x5298_DisplayList[] = {
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xFC327E05, 0xFF17FDFF } },  /* cmd 0xFC */
-	{ { 0xDE000000, 0x0E000000 } },  /* cmd 0xDE */
-	{ { 0xD7000000, 0x00000000 } },  /* cmd 0xD7 */
-	{ { 0x0100500A, (unsigned int)((u8*)dPikachuModel_gap_0x2B78 + 0x1C00) } },  /* cmd 0x01 */
-	{ { 0x06080604, 0x00080402 } },  /* cmd 0x06 */
-	{ { 0x06040600, 0x00080200 } },  /* cmd 0x06 */
-	{ { 0x06000204, 0x00060800 } },  /* cmd 0x06 */
-	{ { 0xDF000000, 0x00000000 } },  /* cmd 0xDF */
+
+#include "relocdata_types.h"
+
+Gfx dPikachuModel_Joint_0x5298_DisplayList[9] = {
+	#include <PikachuModel/Joint_0x5298.dl.inc.c>
 };

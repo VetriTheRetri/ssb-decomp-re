@@ -1,15 +1,7 @@
 /* DisplayList: Joint_0x4B98 @ 0x4B98 (96 bytes) */
-Gfx dFoxModel_Joint_0x4B98_DisplayList[] = {
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xDB0A0000, 0xFFFFFF00 } },  /* cmd 0xDB */
-	{ { 0xDB0A0004, 0xFFFFFF00 } },  /* cmd 0xDB */
-	{ { 0xDB0A0018, 0x4C4C4C00 } },  /* cmd 0xDB */
-	{ { 0xDB0A001C, 0x4C4C4C00 } },  /* cmd 0xDB */
-	{ { 0xFC327E05, 0xFF17F7FF } },  /* cmd 0xFC */
-	{ { 0xFA000000, 0xA86204FF } },  /* cmd 0xFA */
-	{ { 0xD7000000, 0x00000000 } },  /* cmd 0xD7 */
-	{ { 0x0100500A, (unsigned int)((u8*)dFoxModel_gap_0x2E60 + 0xF70) } },  /* cmd 0x01 */
-	{ { 0x06080604, 0x00020406 } },  /* cmd 0x06 */
-	{ { 0x05080006, 0x00000000 } },  /* cmd 0x05 */
-	{ { 0xDF000000, 0x00000000 } },  /* cmd 0xDF */
+
+#include "relocdata_types.h"
+
+Gfx dFoxModel_Joint_0x4B98_DisplayList[12] = {
+	#include <FoxModel/Joint_0x4B98.dl.inc.c>
 };

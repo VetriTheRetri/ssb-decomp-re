@@ -1,16 +1,7 @@
 /* DisplayList: Joint_0x1218 @ 0x1218 (104 bytes) */
-Gfx dKirbySpecial2_Joint_0x1218_DisplayList[] = {
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xFCFFFFFF, 0xFFFE7D3E } },  /* cmd 0xFC */
-	{ { 0xD7000000, 0x00000000 } },  /* cmd 0xD7 */
-	{ { 0xD9DDFBFF, 0x00000000 } },  /* cmd 0xD9 */
-	{ { 0x01010020, (unsigned int)dKirbySpecial2_Vtx_0x0FB0_Vtx } },  /* cmd 0x01 */
-	{ { 0x061E1C1A, 0x00181E1A } },  /* cmd 0x06 */
-	{ { 0x06161412, 0x00101612 } },  /* cmd 0x06 */
-	{ { 0x060E0C0A, 0x000C080A } },  /* cmd 0x06 */
-	{ { 0x06060402, 0x00000602 } },  /* cmd 0x06 */
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xD9FFFFFF, 0x00220400 } },  /* cmd 0xD9 */
-	{ { 0xDF000000, 0x00000000 } },  /* cmd 0xDF */
+
+#include "relocdata_types.h"
+
+Gfx dKirbySpecial2_Joint_0x1218_DisplayList[13] = {
+	#include <KirbySpecial2/Joint_0x1218.dl.inc.c>
 };

@@ -1,19 +1,7 @@
 /* DisplayList: Joint_0x1990 @ 0x1990 (128 bytes) */
-Gfx dLuigiModel_Joint_0x1990_DisplayList[] = {
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xDB0A0000, 0xFFFFFF00 } },  /* cmd 0xDB */
-	{ { 0xDB0A0004, 0xFFFFFF00 } },  /* cmd 0xDB */
-	{ { 0xDB0A0018, 0x4C4C4C00 } },  /* cmd 0xDB */
-	{ { 0xDB0A001C, 0x4C4C4C00 } },  /* cmd 0xDB */
-	{ { 0xFC327E05, 0xFF17FDFF } },  /* cmd 0xFC */
-	{ { 0xDE000000, 0x0E000000 } },  /* cmd 0xDE */
-	{ { 0xD7000000, 0x00000000 } },  /* cmd 0xD7 */
-	{ { 0x0100B016, (unsigned int)((u8*)dLuigiModel_gap_0x0000 + 0xA90) } },  /* cmd 0x01 */
-	{ { 0x06060814, 0x00081214 } },  /* cmd 0x06 */
-	{ { 0x0610120A, 0x0000100A } },  /* cmd 0x06 */
-	{ { 0x06140E04, 0x000E140C } },  /* cmd 0x06 */
-	{ { 0x06100E0C, 0x00061404 } },  /* cmd 0x06 */
-	{ { 0x06020E00, 0x000E1000 } },  /* cmd 0x06 */
-	{ { 0x0614120C, 0x0012100C } },  /* cmd 0x06 */
-	{ { 0xDF000000, 0x00000000 } },  /* cmd 0xDF */
+
+#include "relocdata_types.h"
+
+Gfx dLuigiModel_Joint_0x1990_DisplayList[16] = {
+	#include <LuigiModel/Joint_0x1990.dl.inc.c>
 };

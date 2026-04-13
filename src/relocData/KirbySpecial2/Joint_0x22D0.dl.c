@@ -1,15 +1,7 @@
 /* DisplayList: Joint_0x22D0 @ 0x22D0 (96 bytes) */
-Gfx dKirbySpecial2_Joint_0x22D0_DisplayList[] = {
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xFCFFFFFF, 0xFFFE7D3E } },  /* cmd 0xFC */
-	{ { 0xD7000000, 0x00000000 } },  /* cmd 0xD7 */
-	{ { 0xD9DDFBFF, 0x00000000 } },  /* cmd 0xD9 */
-	{ { 0x0100C018, (unsigned int)dKirbySpecial2_Vtx_0x2090_Vtx } },  /* cmd 0x01 */
-	{ { 0x06161412, 0x00141012 } },  /* cmd 0x06 */
-	{ { 0x060E0C0A, 0x00080E0A } },  /* cmd 0x06 */
-	{ { 0x06060402, 0x00000602 } },  /* cmd 0x06 */
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xD9FFFFFF, 0x00220400 } },  /* cmd 0xD9 */
-	{ { 0xDF000000, 0x00000000 } },  /* cmd 0xDF */
+
+#include "relocdata_types.h"
+
+Gfx dKirbySpecial2_Joint_0x22D0_DisplayList[12] = {
+	#include <KirbySpecial2/Joint_0x22D0.dl.inc.c>
 };

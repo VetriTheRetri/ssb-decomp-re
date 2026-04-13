@@ -1,20 +1,7 @@
 /* DisplayList: Joint_0x73A0 @ 0x73A0 (136 bytes) */
-Gfx dCaptainModel_Joint_0x73A0_DisplayList[] = {
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xDB0A0000, 0xFFFFFF00 } },  /* cmd 0xDB */
-	{ { 0xDB0A0004, 0xFFFFFF00 } },  /* cmd 0xDB */
-	{ { 0xDB0A0018, 0x4C4C4C00 } },  /* cmd 0xDB */
-	{ { 0xDB0A001C, 0x4C4C4C00 } },  /* cmd 0xDB */
-	{ { 0xFC327E05, 0xFF17FDFF } },  /* cmd 0xFC */
-	{ { 0xDE000000, 0x0E000000 } },  /* cmd 0xDE */
-	{ { 0xD7000000, 0x00000000 } },  /* cmd 0xD7 */
-	{ { 0x01009012, (unsigned int)((u8*)dCaptainModel_gap_0x40B0 + 0x20B0) } },  /* cmd 0x01 */
-	{ { 0x06100E0C, 0x000E100A } },  /* cmd 0x06 */
-	{ { 0x0608100C, 0x00060A10 } },  /* cmd 0x06 */
-	{ { 0x06040C0E, 0x000A020E } },  /* cmd 0x06 */
-	{ { 0x06100806, 0x00080C04 } },  /* cmd 0x06 */
-	{ { 0x06040200, 0x00020A06 } },  /* cmd 0x06 */
-	{ { 0x060E0204, 0x00040008 } },  /* cmd 0x06 */
-	{ { 0x06060002, 0x00000608 } },  /* cmd 0x06 */
-	{ { 0xDF000000, 0x00000000 } },  /* cmd 0xDF */
+
+#include "relocdata_types.h"
+
+Gfx dCaptainModel_Joint_0x73A0_DisplayList[17] = {
+	#include <CaptainModel/Joint_0x73A0.dl.inc.c>
 };

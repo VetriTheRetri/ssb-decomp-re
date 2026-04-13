@@ -1,18 +1,7 @@
 /* DisplayList: Joint_0x6988 @ 0x6988 (120 bytes) */
-Gfx dCaptainModel_Joint_0x6988_DisplayList[] = {
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xDB0A0000, 0xFFFFFF00 } },  /* cmd 0xDB */
-	{ { 0xDB0A0004, 0xFFFFFF00 } },  /* cmd 0xDB */
-	{ { 0xDB0A0018, 0x4C4C4C00 } },  /* cmd 0xDB */
-	{ { 0xDB0A001C, 0x4C4C4C00 } },  /* cmd 0xDB */
-	{ { 0xFC327E05, 0xFF17FDFF } },  /* cmd 0xFC */
-	{ { 0xDE000000, 0x0E000000 } },  /* cmd 0xDE */
-	{ { 0xD7000000, 0x00000000 } },  /* cmd 0xD7 */
-	{ { 0x0100700E, (unsigned int)((u8*)dCaptainModel_gap_0x40B0 + 0x1AA0) } },  /* cmd 0x01 */
-	{ { 0x060C0A08, 0x0008060C } },  /* cmd 0x06 */
-	{ { 0x06060A0C, 0x00060804 } },  /* cmd 0x06 */
-	{ { 0x06020604, 0x00080A00 } },  /* cmd 0x06 */
-	{ { 0x06080004, 0x00000A06 } },  /* cmd 0x06 */
-	{ { 0x05020006, 0x00000000 } },  /* cmd 0x05 */
-	{ { 0xDF000000, 0x00000000 } },  /* cmd 0xDF */
+
+#include "relocdata_types.h"
+
+Gfx dCaptainModel_Joint_0x6988_DisplayList[15] = {
+	#include <CaptainModel/Joint_0x6988.dl.inc.c>
 };

@@ -1,11 +1,7 @@
 /* DisplayList: Joint_0x1FA0 @ 0x1FA0 (64 bytes) */
-Gfx dFoxSpecial3_Joint_0x1FA0_DisplayList[] = {
-	{ { 0xDB0A0000, 0xFFFFFF00 } },  /* cmd 0xDB */
-	{ { 0xDB0A0004, 0xFFFFFF00 } },  /* cmd 0xDB */
-	{ { 0xDB0A0018, 0x80808000 } },  /* cmd 0xDB */
-	{ { 0xDB0A001C, 0x80808000 } },  /* cmd 0xDB */
-	{ { 0xE8000000, 0x00000000 } },  /* cmd 0xE8 */
-	{ { 0xF5000100, 0x05000000 } },  /* cmd 0xF5 */
-	{ { 0xDE000000, 0x080307F8 } },  /* cmd 0xDE */
-	{ { 0xDF000000, 0x00000000 } },  /* cmd 0xDF */
+
+#include "relocdata_types.h"
+
+Gfx dFoxSpecial3_Joint_0x1FA0_DisplayList[8] = {
+	#include <FoxSpecial3/Joint_0x1FA0.dl.inc.c>
 };

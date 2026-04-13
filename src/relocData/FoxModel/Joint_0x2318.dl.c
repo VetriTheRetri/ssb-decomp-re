@@ -1,19 +1,7 @@
 /* DisplayList: Joint_0x2318 @ 0x2318 (128 bytes) */
-Gfx dFoxModel_Joint_0x2318_DisplayList[] = {
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xDB0A0000, 0xFFFFFF00 } },  /* cmd 0xDB */
-	{ { 0xDB0A0004, 0xFFFFFF00 } },  /* cmd 0xDB */
-	{ { 0xDB0A0018, 0x4C4C4C00 } },  /* cmd 0xDB */
-	{ { 0xDB0A001C, 0x4C4C4C00 } },  /* cmd 0xDB */
-	{ { 0xFCFFFE05, 0xFF167DFF } },  /* cmd 0xFC */
-	{ { 0xD7000000, 0x00000000 } },  /* cmd 0xD7 */
-	{ { 0x01009012, (unsigned int)((u8*)dFoxModel_gap_0x0000 + 0x1440) } },  /* cmd 0x01 */
-	{ { 0x06100E0C, 0x000A100C } },  /* cmd 0x06 */
-	{ { 0x06100A08, 0x00061008 } },  /* cmd 0x06 */
-	{ { 0x06080A0C, 0x00040C0E } },  /* cmd 0x06 */
-	{ { 0x06080206, 0x00020006 } },  /* cmd 0x06 */
-	{ { 0x0602080C, 0x0004020C } },  /* cmd 0x06 */
-	{ { 0x06040002, 0x00000E06 } },  /* cmd 0x06 */
-	{ { 0x060E1006, 0x00040E00 } },  /* cmd 0x06 */
-	{ { 0xDF000000, 0x00000000 } },  /* cmd 0xDF */
+
+#include "relocdata_types.h"
+
+Gfx dFoxModel_Joint_0x2318_DisplayList[16] = {
+	#include <FoxModel/Joint_0x2318.dl.inc.c>
 };

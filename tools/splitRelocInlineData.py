@@ -169,6 +169,77 @@ def migrate_palette(path):
     return True
 
 
+def migrate_dl(path):
+    """Rewrite a `.dl.c` file into wrapper + inc.c form.
+
+    Input:  `Gfx X[] = { {{w0, w1}}, {{w0, w1}}, ... };`
+    Output: `Gfx X[N] = { #include <Sub/X.dl.inc.c> };`
+
+    The inc.c body holds one `{ { w0, w1 } },` entry per command.
+    Single-command `gsSPEndDisplayList`-only files (emitted by the
+    sprite pipeline as DL terminators) are skipped: they're already a
+    named macro, not raw bytes.
+    """
+    with open(path) as f:
+        content = f.read()
+    if re.search(r'#include\s+[<"][^>"]+\.inc\.c[>"]', content):
+        return False
+    # Leave sprite DL terminators alone — they're just
+    # `Gfx X[] = { gsSPEndDisplayList() };` and carry no raw data.
+    if 'gsSPEndDisplayList' in content:
+        return False
+
+    clean = re.sub(r'/\*.*?\*/', '', content, flags=re.DOTALL)
+    clean = re.sub(r'//[^\n]*', '', clean)
+    m = re.search(r'Gfx\s+(\w+)\s*\[\s*\d*\s*\]\s*=\s*\{(.*)\};',
+                  clean, re.DOTALL)
+    if not m:
+        return False
+    var_name = m.group(1)
+    body = m.group(2)
+
+    # Walk top-level `{ ... }` entries — each one is a Gfx command.
+    entries = []
+    depth = 0
+    start = None
+    for i, ch in enumerate(body):
+        if ch == '{':
+            if depth == 0:
+                start = i
+            depth += 1
+        elif ch == '}':
+            depth -= 1
+            if depth == 0:
+                entries.append(body[start:i + 1])
+    if not entries:
+        return False
+    count = len(entries)
+
+    header_match = re.match(r'((?:/\*[^*]*\*+(?:[^/*][^*]*\*+)*/\s*)+)',
+                             content)
+    header = header_match.group(1) if header_match else ""
+
+    sub_dir = os.path.basename(os.path.dirname(path))
+    base_name = os.path.basename(path)[:-len('.dl.c')]
+    inc_name = f"{base_name}.dl.inc.c"
+    inc_path = os.path.join(BUILD_RELOC, sub_dir, inc_name)
+
+    write_inc(inc_path, [f"\t{e}," for e in entries])
+
+    wrapper = (
+        f"{header.rstrip()}\n"
+        f"\n"
+        f'#include "relocdata_types.h"\n'
+        f"\n"
+        f"Gfx {var_name}[{count}] = {{\n"
+        f"\t#include <{sub_dir}/{inc_name}>\n"
+        f"}};\n"
+    )
+    with open(path, 'w') as f:
+        f.write(wrapper)
+    return True
+
+
 def migrate_data(path, inc_suffix):
     """Rewrite a generic `.data.c` file into wrapper + inc.c form.
 
@@ -251,8 +322,8 @@ def migrate_data(path, inc_suffix):
 
 
 def main():
-    vtx_done = pal_done = data_done = 0
-    vtx_skip = pal_skip = data_skip = 0
+    vtx_done = pal_done = data_done = dl_done = 0
+    vtx_skip = pal_skip = data_skip = dl_skip = 0
 
     for root, dirs, files in os.walk(SRC_RELOC):
         for fn in files:
@@ -267,6 +338,11 @@ def main():
                     pal_done += 1
                 else:
                     pal_skip += 1
+            elif fn.endswith('.dl.c'):
+                if migrate_dl(path):
+                    dl_done += 1
+                else:
+                    dl_skip += 1
             elif fn.endswith('.data.c'):
                 # Tex_ blocks get a `.tex.inc.c` companion to match the
                 # earlier split pass; everything else gets `.data.inc.c`.
@@ -278,6 +354,7 @@ def main():
 
     print(f"Vtx:     {vtx_done} migrated, {vtx_skip} skipped")
     print(f"Palette: {pal_done} migrated, {pal_skip} skipped")
+    print(f"DL:      {dl_done} migrated, {dl_skip} skipped")
     print(f"Data:    {data_done} migrated, {data_skip} skipped")
 
 

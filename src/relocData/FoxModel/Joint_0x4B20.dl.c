@@ -1,18 +1,7 @@
 /* DisplayList: Joint_0x4B20 @ 0x4B20 (120 bytes) */
-Gfx dFoxModel_Joint_0x4B20_DisplayList[] = {
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xDB0A0000, 0xFFFFFF00 } },  /* cmd 0xDB */
-	{ { 0xDB0A0004, 0xFFFFFF00 } },  /* cmd 0xDB */
-	{ { 0xDB0A0018, 0x4C4C4C00 } },  /* cmd 0xDB */
-	{ { 0xDB0A001C, 0x4C4C4C00 } },  /* cmd 0xDB */
-	{ { 0xFCFFFE05, 0xFF167DFF } },  /* cmd 0xFC */
-	{ { 0xD7000000, 0x00000000 } },  /* cmd 0xD7 */
-	{ { 0x01009012, (unsigned int)((u8*)dFoxModel_gap_0x2E60 + 0xEE0) } },  /* cmd 0x01 */
-	{ { 0x06100E0C, 0x000C0E0A } },  /* cmd 0x06 */
-	{ { 0x060E1008, 0x00060C0A } },  /* cmd 0x06 */
-	{ { 0x060A0E08, 0x0004100C } },  /* cmd 0x06 */
-	{ { 0x0606020C, 0x00100002 } },  /* cmd 0x06 */
-	{ { 0x0602040C, 0x00020608 } },  /* cmd 0x06 */
-	{ { 0x06060A08, 0x00081002 } },  /* cmd 0x06 */
-	{ { 0xDF000000, 0x00000000 } },  /* cmd 0xDF */
+
+#include "relocdata_types.h"
+
+Gfx dFoxModel_Joint_0x4B20_DisplayList[15] = {
+	#include <FoxModel/Joint_0x4B20.dl.inc.c>
 };

@@ -1,28 +1,7 @@
 /* DisplayList: FireSparkDisplayList @ 0x1F78 (200 bytes) */
-Gfx dEFCommonEffects2_FireSparkDisplayList_DisplayList[] = {
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xD9DDFFFF, 0x00000000 } },  /* cmd 0xD9 */
-	{ { 0xFC121824, 0xFF33FFFF } },  /* cmd 0xFC */
-	{ { 0xF5400400, 0x00094250 } },  /* cmd 0xF5 */
-	{ { 0xE3001001, 0x00008000 } },  /* cmd 0xE3 */
-	{ { 0xD7000002, 0xFFFFFFFF } },  /* cmd 0xD7 */
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xF2000000, 0x0007C07C } },  /* cmd 0xF2 */
-	{ { 0xE8000000, 0x00000000 } },  /* cmd 0xE8 */
-	{ { 0xF5000100, 0x05000000 } },  /* cmd 0xF5 */
-	{ { 0xFD100000, (unsigned int)((u8*)dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint + 0xF0) } },  /* cmd 0xFD */
-	{ { 0xE6000000, 0x00000000 } },  /* cmd 0xE6 */
-	{ { 0xF0000000, 0x0503C000 } },  /* cmd 0xF0 */
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xF5500000, 0x07014050 } },  /* cmd 0xF5 */
-	{ { 0xDE000000, 0x0E000000 } },  /* cmd 0xDE */
-	{ { 0xE6000000, 0x00000000 } },  /* cmd 0xE6 */
-	{ { 0xF3000000, 0x070FF400 } },  /* cmd 0xF3 */
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0x01004008, (unsigned int)dEFCommonEffects2_FireSparkVtx_Vtx } },  /* cmd 0x01 */
-	{ { 0x06060402, 0x00000602 } },  /* cmd 0x06 */
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xD9FFFFFF, 0x00220000 } },  /* cmd 0xD9 */
-	{ { 0xE3001001, 0x00000000 } },  /* cmd 0xE3 */
-	{ { 0xDF000000, 0x00000000 } },  /* cmd 0xDF */
+
+#include "relocdata_types.h"
+
+Gfx dEFCommonEffects2_FireSparkDisplayList_DisplayList[25] = {
+	#include <EFCommonEffects2/FireSparkDisplayList.dl.inc.c>
 };

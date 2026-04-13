@@ -1,17 +1,7 @@
 /* DisplayList: Joint_0x6188 @ 0x6188 (112 bytes) */
-Gfx dDonkeyModel_Joint_0x6188_DisplayList[] = {
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xDB0A0000, 0xFFFFFF00 } },  /* cmd 0xDB */
-	{ { 0xDB0A0004, 0xFFFFFF00 } },  /* cmd 0xDB */
-	{ { 0xDB0A0018, 0x664C3300 } },  /* cmd 0xDB */
-	{ { 0xDB0A001C, 0x664C3300 } },  /* cmd 0xDB */
-	{ { 0xFC327E05, 0xFF17FDFF } },  /* cmd 0xFC */
-	{ { 0xDE000000, 0x0E000000 } },  /* cmd 0xDE */
-	{ { 0xD7000000, 0x00000000 } },  /* cmd 0xD7 */
-	{ { 0x0100600C, (unsigned int)((u8*)dDonkeyModel_gap_0x3E78 + 0x1530) } },  /* cmd 0x01 */
-	{ { 0x060A0806, 0x00060804 } },  /* cmd 0x06 */
-	{ { 0x0604080A, 0x0006020A } },  /* cmd 0x06 */
-	{ { 0x06000206, 0x00060400 } },  /* cmd 0x06 */
-	{ { 0x060A0004, 0x00000A02 } },  /* cmd 0x06 */
-	{ { 0xDF000000, 0x00000000 } },  /* cmd 0xDF */
+
+#include "relocdata_types.h"
+
+Gfx dDonkeyModel_Joint_0x6188_DisplayList[14] = {
+	#include <DonkeyModel/Joint_0x6188.dl.inc.c>
 };

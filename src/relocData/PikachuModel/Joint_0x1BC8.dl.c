@@ -1,18 +1,7 @@
 /* DisplayList: Joint_0x1BC8 @ 0x1BC8 (120 bytes) */
-Gfx dPikachuModel_Joint_0x1BC8_DisplayList[] = {
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xFC327E05, 0xFF17FDFF } },  /* cmd 0xFC */
-	{ { 0xDE000000, 0x0E000000 } },  /* cmd 0xDE */
-	{ { 0xD7000000, 0x00000000 } },  /* cmd 0xD7 */
-	{ { 0x02140000, 0x00000000 } },  /* cmd 0x02 */
-	{ { 0x02140002, 0x00000000 } },  /* cmd 0x02 */
-	{ { 0x02140004, 0x00000000 } },  /* cmd 0x02 */
-	{ { 0x02140006, 0x00000000 } },  /* cmd 0x02 */
-	{ { 0x01004010, (unsigned int)((u8*)dPikachuModel_gap_0x0000 + 0xE78) } },  /* cmd 0x01 */
-	{ { 0x0602040E, 0x0004000C } },  /* cmd 0x06 */
-	{ { 0x060E040C, 0x000C0006 } },  /* cmd 0x06 */
-	{ { 0x0606020A, 0x000A0C06 } },  /* cmd 0x06 */
-	{ { 0x060E080A, 0x000A080C } },  /* cmd 0x06 */
-	{ { 0x060A020E, 0x000C080E } },  /* cmd 0x06 */
-	{ { 0xDF000000, 0x00000000 } },  /* cmd 0xDF */
+
+#include "relocdata_types.h"
+
+Gfx dPikachuModel_Joint_0x1BC8_DisplayList[15] = {
+	#include <PikachuModel/Joint_0x1BC8.dl.inc.c>
 };

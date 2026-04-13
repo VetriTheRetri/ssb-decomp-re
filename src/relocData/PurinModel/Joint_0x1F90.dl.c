@@ -1,22 +1,7 @@
 /* DisplayList: Joint_0x1F90 @ 0x1F90 (152 bytes) */
-Gfx dPurinModel_Joint_0x1F90_DisplayList[] = {
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xFC327E05, 0xFF17FDFF } },  /* cmd 0xFC */
-	{ { 0xDE000000, 0x0E000000 } },  /* cmd 0xDE */
-	{ { 0xD7000000, 0x00000000 } },  /* cmd 0xD7 */
-	{ { 0x0100F01E, (unsigned int)((u8*)dPurinModel_JointVerts_Vtx + 0x1470) } },  /* cmd 0x01 */
-	{ { 0x061C1A18, 0x001A1C16 } },  /* cmd 0x06 */
-	{ { 0x061A1418, 0x0012141A } },  /* cmd 0x06 */
-	{ { 0x06101A16, 0x00121A10 } },  /* cmd 0x06 */
-	{ { 0x06180E1C, 0x0012100C } },  /* cmd 0x06 */
-	{ { 0x060E161C, 0x000A1412 } },  /* cmd 0x06 */
-	{ { 0x06101608, 0x000E1814 } },  /* cmd 0x06 */
-	{ { 0x060C1008, 0x000C0612 } },  /* cmd 0x06 */
-	{ { 0x06060412, 0x000A0E14 } },  /* cmd 0x06 */
-	{ { 0x0612040A, 0x0008160E } },  /* cmd 0x06 */
-	{ { 0x060E0A04, 0x000C0802 } },  /* cmd 0x06 */
-	{ { 0x06040602, 0x00060C02 } },  /* cmd 0x06 */
-	{ { 0x0600080E, 0x00000402 } },  /* cmd 0x06 */
-	{ { 0x06000208, 0x00000E04 } },  /* cmd 0x06 */
-	{ { 0xDF000000, 0x00000000 } },  /* cmd 0xDF */
+
+#include "relocdata_types.h"
+
+Gfx dPurinModel_Joint_0x1F90_DisplayList[19] = {
+	#include <PurinModel/Joint_0x1F90.dl.inc.c>
 };

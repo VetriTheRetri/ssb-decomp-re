@@ -1,9 +1,7 @@
 /* DisplayList: Joint_0x1F38 @ 0x1F38 (48 bytes) */
-Gfx dPurinSpecial2_Joint_0x1F38_DisplayList[] = {
-	{ { 0xD9DDFFFB, 0x00000000 } },  /* cmd 0xD9 */
-	{ { 0xFB000000, 0xFF0080FF } },  /* cmd 0xFB */
-	{ { 0xD7000002, 0xFFFFFFFF } },  /* cmd 0xD7 */
-	{ { 0xF9000000, 0x00000008 } },  /* cmd 0xF9 */
-	{ { 0xDE000000, 0x07E507DA } },  /* cmd 0xDE */
-	{ { 0xDF000000, 0x00000000 } },  /* cmd 0xDF */
+
+#include "relocdata_types.h"
+
+Gfx dPurinSpecial2_Joint_0x1F38_DisplayList[6] = {
+	#include <PurinSpecial2/Joint_0x1F38.dl.inc.c>
 };

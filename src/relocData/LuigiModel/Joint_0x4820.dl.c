@@ -1,17 +1,7 @@
 /* DisplayList: Joint_0x4820 @ 0x4820 (112 bytes) */
-Gfx dLuigiModel_Joint_0x4820_DisplayList[] = {
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xDB0A0000, 0x83271400 } },  /* cmd 0xDB */
-	{ { 0xDB0A0004, 0x83271400 } },  /* cmd 0xDB */
-	{ { 0xDB0A0018, 0x240F1100 } },  /* cmd 0xDB */
-	{ { 0xDB0A001C, 0x240F1100 } },  /* cmd 0xDB */
-	{ { 0xFCFFFE05, 0xFF167DFF } },  /* cmd 0xFC */
-	{ { 0xD7000000, 0x00000000 } },  /* cmd 0xD7 */
-	{ { 0x0100A014, (unsigned int)((u8*)dLuigiModel_gap_0x28E0 + 0x1570) } },  /* cmd 0x01 */
-	{ { 0x0612100E, 0x000C120E } },  /* cmd 0x06 */
-	{ { 0x06120C0A, 0x000A0812 } },  /* cmd 0x06 */
-	{ { 0x06080612, 0x00040608 } },  /* cmd 0x06 */
-	{ { 0x060C0E02, 0x000C020A } },  /* cmd 0x06 */
-	{ { 0x0602080A, 0x00080004 } },  /* cmd 0x06 */
-	{ { 0xDF000000, 0x00000000 } },  /* cmd 0xDF */
+
+#include "relocdata_types.h"
+
+Gfx dLuigiModel_Joint_0x4820_DisplayList[14] = {
+	#include <LuigiModel/Joint_0x4820.dl.inc.c>
 };

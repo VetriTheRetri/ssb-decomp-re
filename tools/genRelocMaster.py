@@ -271,13 +271,18 @@ def _count_top_level_braces(body):
 
 
 def compute_dl_c_size(dl_c_path):
-    """A .dl.c file is `Gfx <name>[] = { {{ w0, w1 }}, ... };`. Each top-level
-    `{ ... }` is one F3DEX command pair = 8 bytes.
+    """A .dl.c file is `Gfx <name>[N] = { #include <...> };` (wrapper form,
+    N declared explicitly) or the legacy inline form
+    `Gfx <name>[] = { {{w0,w1}}, ... };`. Each F3DEX command pair is
+    8 bytes, so the byte size is N * 8.
     """
     with open(dl_c_path) as f:
         content = f.read()
     content = re.sub(r'/\*.*?\*/', '', content, flags=re.DOTALL)
     content = re.sub(r'//[^\n]*', '', content)
+    m = re.search(r'Gfx\s+\w+\s*\[\s*(\d+)\s*\]\s*=\s*\{', content)
+    if m:
+        return int(m.group(1)) * 8
     m = re.search(r'Gfx\s+\w+\[\]\s*=\s*\{(.*)\};', content, re.DOTALL)
     if not m:
         print(f"Error: {dl_c_path} doesn't look like a Gfx[] array",

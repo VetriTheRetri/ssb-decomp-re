@@ -1,47 +1,7 @@
 /* DisplayList: PurinHidden @ 0x203A8 (352 bytes) */
-Gfx dMVOpeningNewcomers1_PurinHidden_DisplayList[] = {
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xD9DDFFFB, 0x00000000 } },  /* cmd 0xD9 */
-	{ { 0xE2001E01, 0x00000001 } },  /* cmd 0xE2 */
-	{ { 0xFC30FE61, 0x55FEF379 } },  /* cmd 0xFC */
-	{ { 0xFA000000, 0x3B3B3BFF } },  /* cmd 0xFA */
-	{ { 0xFB000000, 0x4C4C4CFF } },  /* cmd 0xFB */
-	{ { 0xF9000000, 0x00000008 } },  /* cmd 0xF9 */
-	{ { 0xD7000002, 0xFFFFFFFF } },  /* cmd 0xD7 */
-	{ { 0xFD88006F, (unsigned int)((u8*)dMVOpeningNewcomers1_Luigi_AnimJoint + 0x64) } },  /* cmd 0xFD */
-	{ { 0xF5881C00, 0x0701C070 } },  /* cmd 0xF5 */
-	{ { 0xE6000000, 0x00000000 } },  /* cmd 0xE6 */
-	{ { 0xF4000000, 0x071BC078 } },  /* cmd 0xF4 */
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xF5881C00, 0x0009C270 } },  /* cmd 0xF5 */
-	{ { 0xF2000000, 0x001BC078 } },  /* cmd 0xF2 */
-	{ { 0x01004008, (unsigned int)((u8*)dMVOpeningNewcomers1_Luigi_AnimJoint + 0x3474) } },  /* cmd 0x01 */
-	{ { 0x06060402, 0x00040002 } },  /* cmd 0x06 */
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xE6000000, 0x00000000 } },  /* cmd 0xE6 */
-	{ { 0xF4000078, 0x071BC0F0 } },  /* cmd 0xF4 */
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xF2000078, 0x001BC0F0 } },  /* cmd 0xF2 */
-	{ { 0x01001002, (unsigned int)((u8*)dMVOpeningNewcomers1_Luigi_AnimJoint + 0x3484) } },  /* cmd 0x01 */
-	{ { 0x01003008, (unsigned int)((u8*)dMVOpeningNewcomers1_Luigi_AnimJoint + 0x34A4) } },  /* cmd 0x01 */
-	{ { 0x06060204, 0x00020004 } },  /* cmd 0x06 */
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xE6000000, 0x00000000 } },  /* cmd 0xE6 */
-	{ { 0xF40000F0, 0x071BC168 } },  /* cmd 0xF4 */
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xF20000F0, 0x001BC168 } },  /* cmd 0xF2 */
-	{ { 0x01004008, (unsigned int)((u8*)dMVOpeningNewcomers1_Luigi_AnimJoint + 0x34B4) } },  /* cmd 0x01 */
-	{ { 0x06060204, 0x00020004 } },  /* cmd 0x06 */
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xE6000000, 0x00000000 } },  /* cmd 0xE6 */
-	{ { 0xF4000168, 0x071BC1D8 } },  /* cmd 0xF4 */
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xF2000168, 0x001BC1D8 } },  /* cmd 0xF2 */
-	{ { 0x01004008, (unsigned int)((u8*)dMVOpeningNewcomers1_Luigi_AnimJoint + 0x34D4) } },  /* cmd 0x01 */
-	{ { 0x06060204, 0x00020004 } },  /* cmd 0x06 */
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xD9FFFFFF, 0x00220004 } },  /* cmd 0xD9 */
-	{ { 0xE2001E01, 0x00000000 } },  /* cmd 0xE2 */
-	{ { 0xDF000000, 0x00000000 } },  /* cmd 0xDF */
+
+#include "relocdata_types.h"
+
+Gfx dMVOpeningNewcomers1_PurinHidden_DisplayList[44] = {
+	#include <MVOpeningNewcomers1/PurinHidden.dl.inc.c>
 };

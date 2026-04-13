@@ -1,20 +1,7 @@
 /* DisplayList: Joint_0x3F90 @ 0x3F90 (136 bytes) */
-Gfx dPurinModel_Joint_0x3F90_DisplayList[] = {
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xDB0A0000, 0xFFFFFF00 } },  /* cmd 0xDB */
-	{ { 0xDB0A0004, 0xFFFFFF00 } },  /* cmd 0xDB */
-	{ { 0xDB0A0018, 0x80808000 } },  /* cmd 0xDB */
-	{ { 0xDB0A001C, 0x80808000 } },  /* cmd 0xDB */
-	{ { 0xFC327E05, 0xFF17FDFF } },  /* cmd 0xFC */
-	{ { 0xDE000000, 0x0E000000 } },  /* cmd 0xDE */
-	{ { 0xD7000000, 0x00000000 } },  /* cmd 0xD7 */
-	{ { 0x01009012, (unsigned int)((u8*)dPurinModel_gap_0x24F8 + 0x1280) } },  /* cmd 0x01 */
-	{ { 0x06100E0C, 0x000A100C } },  /* cmd 0x06 */
-	{ { 0x0608100A, 0x00060E10 } },  /* cmd 0x06 */
-	{ { 0x06041008, 0x000C0E06 } },  /* cmd 0x06 */
-	{ { 0x06020A0C, 0x000A0208 } },  /* cmd 0x06 */
-	{ { 0x06040610, 0x0000020C } },  /* cmd 0x06 */
-	{ { 0x06000C06, 0x00020004 } },  /* cmd 0x06 */
-	{ { 0x06080204, 0x00000604 } },  /* cmd 0x06 */
-	{ { 0xDF000000, 0x00000000 } },  /* cmd 0xDF */
+
+#include "relocdata_types.h"
+
+Gfx dPurinModel_Joint_0x3F90_DisplayList[17] = {
+	#include <PurinModel/Joint_0x3F90.dl.inc.c>
 };

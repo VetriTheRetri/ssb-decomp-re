@@ -55,6 +55,8 @@ def wrapper_inc_target(block_filename):
         return block_filename[:-len('.vtx.c')] + '.vtx.inc.c'
     if block_filename.endswith('.palette.c'):
         return block_filename[:-len('.palette.c')] + '.palette.inc.c'
+    if block_filename.endswith('.dl.c'):
+        return block_filename[:-len('.dl.c')] + '.dl.inc.c'
     if block_filename.endswith('.data.c'):
         base = block_filename[:-len('.data.c')]
         if block_filename.startswith('Tex_'):
@@ -117,6 +119,16 @@ def emit_tex(data, start, size, path):
     write_lines(path, lines)
 
 
+def emit_dl(data, start, size, path):
+    """Walk an F3DEX2 DL region as 8-byte command pairs and emit each as
+    `{ { w0, w1 } },` — one line per command."""
+    lines = []
+    for i in range(0, size, 8):
+        w0, w1 = struct.unpack('>II', data[start + i:start + i + 8])
+        lines.append(f"\t{{ {{ 0x{w0:08X}, 0x{w1:08X} }} }},")
+    write_lines(path, lines)
+
+
 def process_fid(fid):
     manifest = manifest_for(fid)
     if manifest is None:
@@ -152,6 +164,8 @@ def process_fid(fid):
             emit_vtx(data, offset, count, inc_path)
         elif payload.endswith('.palette.c'):
             emit_palette(data, offset, inc_path)
+        elif payload.endswith('.dl.c'):
+            emit_dl(data, offset, size, inc_path)
         elif payload.endswith('.data.c'):
             emit_tex(data, offset, size, inc_path)
         emitted += 1

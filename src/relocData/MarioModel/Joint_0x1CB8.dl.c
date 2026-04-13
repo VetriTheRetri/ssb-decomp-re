@@ -1,19 +1,7 @@
 /* DisplayList: Joint_0x1CB8 @ 0x1CB8 (128 bytes) */
-Gfx dMarioModel_Joint_0x1CB8_DisplayList[] = {
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xDB0A0000, 0xFFFFFF00 } },  /* cmd 0xDB */
-	{ { 0xDB0A0004, 0xFFFFFF00 } },  /* cmd 0xDB */
-	{ { 0xDB0A0018, 0x4C4C4C00 } },  /* cmd 0xDB */
-	{ { 0xDB0A001C, 0x4C4C4C00 } },  /* cmd 0xDB */
-	{ { 0xFC327E05, 0xFF17FDFF } },  /* cmd 0xFC */
-	{ { 0xDE000000, 0x0E000000 } },  /* cmd 0xDE */
-	{ { 0xD7000000, 0x00000000 } },  /* cmd 0xD7 */
-	{ { 0x01009012, (unsigned int)((u8*)dMarioModel_gap_0x0000 + 0x1058) } },  /* cmd 0x01 */
-	{ { 0x06100006, 0x000E1006 } },  /* cmd 0x06 */
-	{ { 0x060C100E, 0x000C0A10 } },  /* cmd 0x06 */
-	{ { 0x060C0E08, 0x0000100A } },  /* cmd 0x06 */
-	{ { 0x060C080A, 0x00080E06 } },  /* cmd 0x06 */
-	{ { 0x06040806, 0x00020A08 } },  /* cmd 0x06 */
-	{ { 0x06040208, 0x0002000A } },  /* cmd 0x06 */
-	{ { 0xDF000000, 0x00000000 } },  /* cmd 0xDF */
+
+#include "relocdata_types.h"
+
+Gfx dMarioModel_Joint_0x1CB8_DisplayList[16] = {
+	#include <MarioModel/Joint_0x1CB8.dl.inc.c>
 };

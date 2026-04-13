@@ -1,20 +1,7 @@
 /* DisplayList: Joint_0x2920 @ 0x2920 (136 bytes) */
-Gfx dFoxSpecial3_Joint_0x2920_DisplayList[] = {
-	{ { 0xDB0A0000, 0xFFFFFF00 } },  /* cmd 0xDB */
-	{ { 0xDB0A0004, 0xFFFFFF00 } },  /* cmd 0xDB */
-	{ { 0xDB0A0018, 0x80808000 } },  /* cmd 0xDB */
-	{ { 0xDB0A001C, 0x80808000 } },  /* cmd 0xDB */
-	{ { 0xFC30FE61, 0x55FEF379 } },  /* cmd 0xFC */
-	{ { 0xFA000000, 0xFFFFFFFF } },  /* cmd 0xFA */
-	{ { 0xF5700000, 0x07010040 } },  /* cmd 0xF5 */
-	{ { 0xF5700800, 0x000D0340 } },  /* cmd 0xF5 */
-	{ { 0xD7000002, 0xFFFFFFFF } },  /* cmd 0xD7 */
-	{ { 0xF2000000, 0x0007C07C } },  /* cmd 0xF2 */
-	{ { 0xFD700000, (unsigned int)dFoxSpecial3_Tex_0x19F8 } },  /* cmd 0xFD */
-	{ { 0xE6000000, 0x00000000 } },  /* cmd 0xE6 */
-	{ { 0xF3000000, 0x070FF200 } },  /* cmd 0xF3 */
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xD9DFFBFB, 0x00000000 } },  /* cmd 0xD9 */
-	{ { 0xDE000000, 0x0A6F0A6A } },  /* cmd 0xDE */
-	{ { 0xDF000000, 0x00000000 } },  /* cmd 0xDF */
+
+#include "relocdata_types.h"
+
+Gfx dFoxSpecial3_Joint_0x2920_DisplayList[17] = {
+	#include <FoxSpecial3/Joint_0x2920.dl.inc.c>
 };

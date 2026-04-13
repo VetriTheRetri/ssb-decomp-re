@@ -1,26 +1,7 @@
 /* DisplayList: SuperJumpPunchDL @ 0x1D8 (184 bytes) */
-Gfx dMarioSpecial3_SuperJumpPunchDL_DisplayList[] = {
-	{ { 0xE8000000, 0x00000000 } },  /* cmd 0xE8 */
-	{ { 0xF5000100, 0x05000000 } },  /* cmd 0xF5 */
-	{ { 0xF5500000, 0x07010040 } },  /* cmd 0xF5 */
-	{ { 0xF5400200, 0x00090240 } },  /* cmd 0xF5 */
-	{ { 0xDE000000, 0x0E000000 } },  /* cmd 0xDE */
-	{ { 0xE6000000, 0x00000000 } },  /* cmd 0xE6 */
-	{ { 0xF0000000, 0x05030000 } },  /* cmd 0xF0 */
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xD7000002, 0xFFFFFFFF } },  /* cmd 0xD7 */
-	{ { 0xF2000000, 0x0003C03C } },  /* cmd 0xF2 */
-	{ { 0xFD500000, (unsigned int)dMarioSpecial3_Tex_0x0058 } },  /* cmd 0xFD */
-	{ { 0xE6000000, 0x00000000 } },  /* cmd 0xE6 */
-	{ { 0xF3000000, 0x0703F800 } },  /* cmd 0xF3 */
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xD9DDFBFF, 0x00000000 } },  /* cmd 0xD9 */
-	{ { 0x01004008, (unsigned int)dMarioSpecial3_JointVerts_Vtx } },  /* cmd 0x01 */
-	{ { 0x06060402, 0x00000602 } },  /* cmd 0x06 */
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xD9FFFFFF, 0x00220400 } },  /* cmd 0xD9 */
-	{ { 0xE3001001, 0x00000000 } },  /* cmd 0xE3 */
-	{ { 0xE2001E01, 0x00000000 } },  /* cmd 0xE2 */
-	{ { 0xDF000000, 0x00000000 } },  /* cmd 0xDF */
+
+#include "relocdata_types.h"
+
+Gfx dMarioSpecial3_SuperJumpPunchDL_DisplayList[23] = {
+	#include <MarioSpecial3/SuperJumpPunchDL.dl.inc.c>
 };

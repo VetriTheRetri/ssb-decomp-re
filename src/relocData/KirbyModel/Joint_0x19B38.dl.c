@@ -1,20 +1,7 @@
 /* DisplayList: Joint_0x19B38 @ 0x19B38 (136 bytes) */
-Gfx dKirbyModel_Joint_0x19B38_DisplayList[] = {
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xD9FDFFFF, 0x00000000 } },  /* cmd 0xD9 */
-	{ { 0xFC327E05, 0xFF17FDFF } },  /* cmd 0xFC */
-	{ { 0xDE000000, 0x0E000000 } },  /* cmd 0xDE */
-	{ { 0xD7000000, 0x00000000 } },  /* cmd 0xD7 */
-	{ { 0x0100A014, (unsigned int)((u8*)dKirbyModel_gap_0x31CC + 0x1639C) } },  /* cmd 0x01 */
-	{ { 0x06040212, 0x00121004 } },  /* cmd 0x06 */
-	{ { 0x06120206, 0x00060E12 } },  /* cmd 0x06 */
-	{ { 0x06120E0C, 0x000C0A10 } },  /* cmd 0x06 */
-	{ { 0x060C080A, 0x000A0004 } },  /* cmd 0x06 */
-	{ { 0x06080E06, 0x000A0800 } },  /* cmd 0x06 */
-	{ { 0x06060008, 0x000C1012 } },  /* cmd 0x06 */
-	{ { 0x0604100A, 0x000E080C } },  /* cmd 0x06 */
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xD9FFFFFF, 0x00020000 } },  /* cmd 0xD9 */
-	{ { 0xDF000000, 0x00000000 } },  /* cmd 0xDF */
+
+#include "relocdata_types.h"
+
+Gfx dKirbyModel_Joint_0x19B38_DisplayList[17] = {
+	#include <KirbyModel/Joint_0x19B38.dl.inc.c>
 };

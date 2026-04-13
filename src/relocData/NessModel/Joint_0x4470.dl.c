@@ -1,18 +1,7 @@
 /* DisplayList: Joint_0x4470 @ 0x4470 (120 bytes) */
-Gfx dNessModel_Joint_0x4470_DisplayList[] = {
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xDB0A0000, 0xFFFFFF00 } },  /* cmd 0xDB */
-	{ { 0xDB0A0004, 0xFFFFFF00 } },  /* cmd 0xDB */
-	{ { 0xDB0A0018, 0x8C666600 } },  /* cmd 0xDB */
-	{ { 0xDB0A001C, 0x8C666600 } },  /* cmd 0xDB */
-	{ { 0xFC327E05, 0xFF17FDFF } },  /* cmd 0xFC */
-	{ { 0xFA000000, 0xFFD6A5FF } },  /* cmd 0xFA */
-	{ { 0xD7000000, 0x00000000 } },  /* cmd 0xD7 */
-	{ { 0x0100700E, (unsigned int)((u8*)dNessModel_gap_0x2C04 + 0xBAC) } },  /* cmd 0x01 */
-	{ { 0x060C0A08, 0x00060C08 } },  /* cmd 0x06 */
-	{ { 0x06060A0C, 0x000A0408 } },  /* cmd 0x06 */
-	{ { 0x06080402, 0x00080006 } },  /* cmd 0x06 */
-	{ { 0x06000802, 0x00040A06 } },  /* cmd 0x06 */
-	{ { 0x06060004, 0x00040002 } },  /* cmd 0x06 */
-	{ { 0xDF000000, 0x00000000 } },  /* cmd 0xDF */
+
+#include "relocdata_types.h"
+
+Gfx dNessModel_Joint_0x4470_DisplayList[15] = {
+	#include <NessModel/Joint_0x4470.dl.inc.c>
 };

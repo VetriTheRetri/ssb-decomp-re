@@ -1,61 +1,7 @@
 /* DisplayList: Donkey @ 0x1178 (464 bytes) */
-Gfx dFTEmblemModels_Donkey_DisplayList[] = {
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xFCFFFFFF, 0xFFFE7D3E } },  /* cmd 0xFC */
-	{ { 0xDE000000, 0x0E000000 } },  /* cmd 0xDE */
-	{ { 0xD7000000, 0x00000000 } },  /* cmd 0xD7 */
-	{ { 0x01020040, (unsigned int)dFTEmblemModels_Donkey_Vtx } },  /* cmd 0x01 */
-	{ { 0x063E3C3A, 0x003E3A38 } },  /* cmd 0x06 */
-	{ { 0x063E3836, 0x003E3634 } },  /* cmd 0x06 */
-	{ { 0x063E3432, 0x003E3230 } },  /* cmd 0x06 */
-	{ { 0x062E3E30, 0x002C2E30 } },  /* cmd 0x06 */
-	{ { 0x06302A2C, 0x0030282A } },  /* cmd 0x06 */
-	{ { 0x06302628, 0x00302426 } },  /* cmd 0x06 */
-	{ { 0x062E223E, 0x00302024 } },  /* cmd 0x06 */
-	{ { 0x06301E20, 0x00301C1E } },  /* cmd 0x06 */
-	{ { 0x063E221A, 0x003E1A18 } },  /* cmd 0x06 */
-	{ { 0x063E1816, 0x003E1614 } },  /* cmd 0x06 */
-	{ { 0x063E1412, 0x0030101C } },  /* cmd 0x06 */
-	{ { 0x06100E3E, 0x00100C0E } },  /* cmd 0x06 */
-	{ { 0x06100A0C, 0x00103E12 } },  /* cmd 0x06 */
-	{ { 0x0610080A, 0x00100608 } },  /* cmd 0x06 */
-	{ { 0x0610041C, 0x00300210 } },  /* cmd 0x06 */
-	{ { 0x05100004, 0x00000000 } },  /* cmd 0x05 */
-	{ { 0x01001006, (unsigned int)((u8*)dFTEmblemModels_Donkey_Vtx + 0x200) } },  /* cmd 0x01 */
-	{ { 0x01004010, (unsigned int)((u8*)dFTEmblemModels_Donkey_Vtx + 0x210) } },  /* cmd 0x01 */
-	{ { 0x01006020, (unsigned int)((u8*)dFTEmblemModels_Donkey_Vtx + 0x250) } },  /* cmd 0x01 */
-	{ { 0x0610121E, 0x00101E00 } },  /* cmd 0x06 */
-	{ { 0x06101C06, 0x00101A1C } },  /* cmd 0x06 */
-	{ { 0x0610181A, 0x00301602 } },  /* cmd 0x06 */
-	{ { 0x06301416, 0x00300E14 } },  /* cmd 0x06 */
-	{ { 0x06300C0E, 0x00300A0C } },  /* cmd 0x06 */
-	{ { 0x0630080A, 0x00300408 } },  /* cmd 0x06 */
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xDE000000, 0x0E000008 } },  /* cmd 0xDE */
-	{ { 0x01020040, (unsigned int)((u8*)dFTEmblemModels_Donkey_Vtx + 0x2B0) } },  /* cmd 0x01 */
-	{ { 0x063E3C3A, 0x00383E3A } },  /* cmd 0x06 */
-	{ { 0x06383A36, 0x00383634 } },  /* cmd 0x06 */
-	{ { 0x06383432, 0x0038303E } },  /* cmd 0x06 */
-	{ { 0x06302E3E, 0x00302C2E } },  /* cmd 0x06 */
-	{ { 0x06302A2C, 0x0030282A } },  /* cmd 0x06 */
-	{ { 0x06302628, 0x00302426 } },  /* cmd 0x06 */
-	{ { 0x06302224, 0x00302022 } },  /* cmd 0x06 */
-	{ { 0x06301E20, 0x0038321C } },  /* cmd 0x06 */
-	{ { 0x06321A1C, 0x0032181A } },  /* cmd 0x06 */
-	{ { 0x06321618, 0x00321416 } },  /* cmd 0x06 */
-	{ { 0x06321214, 0x00321012 } },  /* cmd 0x06 */
-	{ { 0x06320E10, 0x00320C0E } },  /* cmd 0x06 */
-	{ { 0x061C0A38, 0x00160818 } },  /* cmd 0x06 */
-	{ { 0x06160608, 0x0030041E } },  /* cmd 0x06 */
-	{ { 0x060A0238, 0x000A0002 } },  /* cmd 0x06 */
-	{ { 0x01001004, (unsigned int)((u8*)dFTEmblemModels_Donkey_Vtx + 0x4B0) } },  /* cmd 0x01 */
-	{ { 0x0100200A, (unsigned int)((u8*)dFTEmblemModels_Donkey_Vtx + 0x4C0) } },  /* cmd 0x01 */
-	{ { 0x0100901E, (unsigned int)((u8*)dFTEmblemModels_Donkey_Vtx + 0x4E0) } },  /* cmd 0x01 */
-	{ { 0x06301C04, 0x00301A1C } },  /* cmd 0x06 */
-	{ { 0x0630181A, 0x00301618 } },  /* cmd 0x06 */
-	{ { 0x060A1400, 0x000A1214 } },  /* cmd 0x06 */
-	{ { 0x060A1012, 0x000A0E10 } },  /* cmd 0x06 */
-	{ { 0x060A0C0E, 0x000A080C } },  /* cmd 0x06 */
-	{ { 0x060A0608, 0x000A0206 } },  /* cmd 0x06 */
-	{ { 0xDF000000, 0x00000000 } },  /* cmd 0xDF */
+
+#include "relocdata_types.h"
+
+Gfx dFTEmblemModels_Donkey_DisplayList[58] = {
+	#include <FTEmblemModels/Donkey.dl.inc.c>
 };

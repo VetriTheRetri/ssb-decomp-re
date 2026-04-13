@@ -1,64 +1,7 @@
 /* DisplayList: RoomTissues @ 0xC690 (488 bytes) */
-Gfx dMVCommon_RoomTissues_DisplayList[] = {
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xD9DDFFFF, 0x00000000 } },  /* cmd 0xD9 */
-	{ { 0xE3001001, 0x00008000 } },  /* cmd 0xE3 */
-	{ { 0xE2001E01, 0x00000001 } },  /* cmd 0xE2 */
-	{ { 0xE200001C, 0x00553078 } },  /* cmd 0xE2 */
-	{ { 0xFC127E24, 0xFFFFF3F9 } },  /* cmd 0xFC */
-	{ { 0xF9000000, 0x00000000 } },  /* cmd 0xF9 */
-	{ { 0xE8000000, 0x00000000 } },  /* cmd 0xE8 */
-	{ { 0xF5000100, 0x05000000 } },  /* cmd 0xF5 */
-	{ { 0xF5500000, 0x07010040 } },  /* cmd 0xF5 */
-	{ { 0xF5400200, 0x00090240 } },  /* cmd 0xF5 */
-	{ { 0xFD100000, (unsigned int)((u8*)dMVCommon_RoomLamp_AnimJoint + 0x468) } },  /* cmd 0xFD */
-	{ { 0xE6000000, 0x00000000 } },  /* cmd 0xE6 */
-	{ { 0xF0000000, 0x0503C000 } },  /* cmd 0xF0 */
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xD7000002, 0xFFFFFFFF } },  /* cmd 0xD7 */
-	{ { 0xF2000000, 0x0003C03C } },  /* cmd 0xF2 */
-	{ { 0xFD500000, (unsigned int)((u8*)dMVCommon_RoomLamp_AnimJoint + 0x4E0) } },  /* cmd 0xFD */
-	{ { 0xE6000000, 0x00000000 } },  /* cmd 0xE6 */
-	{ { 0xF3000000, 0x0703F800 } },  /* cmd 0xF3 */
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0x01004008, (unsigned int)((u8*)dMVCommon_RoomLamp_AnimJoint + 0x6B0) } },  /* cmd 0x01 */
-	{ { 0x06060402, 0x00000602 } },  /* cmd 0x06 */
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xE2001E01, 0x00000000 } },  /* cmd 0xE2 */
-	{ { 0xE200001C, 0x00552078 } },  /* cmd 0xE2 */
-	{ { 0xD9FFFFFF, 0x00200000 } },  /* cmd 0xD9 */
-	{ { 0xFC121824, 0xFF33FFFF } },  /* cmd 0xFC */
-	{ { 0xF5500000, 0x0700C040 } },  /* cmd 0xF5 */
-	{ { 0xF5400200, 0x0008C240 } },  /* cmd 0xF5 */
-	{ { 0xFD100000, (unsigned int)((u8*)dMVCommon_RoomLamp_AnimJoint + 0x490) } },  /* cmd 0xFD */
-	{ { 0xE6000000, 0x00000000 } },  /* cmd 0xE6 */
-	{ { 0xF0000000, 0x0503C000 } },  /* cmd 0xF0 */
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xF2000000, 0x0003C01C } },  /* cmd 0xF2 */
-	{ { 0xFD500000, (unsigned int)((u8*)dMVCommon_RoomLamp_AnimJoint + 0x568) } },  /* cmd 0xFD */
-	{ { 0xE6000000, 0x00000000 } },  /* cmd 0xE6 */
-	{ { 0xF3000000, 0x0701F800 } },  /* cmd 0xF3 */
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0x01004008, (unsigned int)((u8*)dMVCommon_RoomLamp_AnimJoint + 0x6F0) } },  /* cmd 0x01 */
-	{ { 0x06060402, 0x00000602 } },  /* cmd 0x06 */
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xF5500000, 0x07010050 } },  /* cmd 0xF5 */
-	{ { 0xF5400400, 0x00090250 } },  /* cmd 0xF5 */
-	{ { 0xFD100000, (unsigned int)((u8*)dMVCommon_RoomLamp_AnimJoint + 0x4B8) } },  /* cmd 0xFD */
-	{ { 0xE6000000, 0x00000000 } },  /* cmd 0xE6 */
-	{ { 0xF0000000, 0x0503C000 } },  /* cmd 0xF0 */
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xF2000000, 0x0007C03C } },  /* cmd 0xF2 */
-	{ { 0xFD500000, (unsigned int)((u8*)dMVCommon_RoomLamp_AnimJoint + 0x5B0) } },  /* cmd 0xFD */
-	{ { 0xE6000000, 0x00000000 } },  /* cmd 0xE6 */
-	{ { 0xF3000000, 0x0707F400 } },  /* cmd 0xF3 */
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0x0100C018, (unsigned int)((u8*)dMVCommon_RoomLamp_AnimJoint + 0x730) } },  /* cmd 0x01 */
-	{ { 0x06161412, 0x00101612 } },  /* cmd 0x06 */
-	{ { 0x060E0C0A, 0x000C080A } },  /* cmd 0x06 */
-	{ { 0x06060402, 0x00000602 } },  /* cmd 0x06 */
-	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xD9FFFFFF, 0x00020000 } },  /* cmd 0xD9 */
-	{ { 0xE3001001, 0x00000000 } },  /* cmd 0xE3 */
-	{ { 0xDF000000, 0x00000000 } },  /* cmd 0xDF */
+
+#include "relocdata_types.h"
+
+Gfx dMVCommon_RoomTissues_DisplayList[61] = {
+	#include <MVCommon/RoomTissues.dl.inc.c>
 };

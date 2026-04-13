@@ -13,6 +13,7 @@ extern DObjDesc dStageCastleFile2_Layer2DObj[];
 extern u32 dStageCastleFile2_Layer2Anim_AnimJoint[];
 extern DObjDesc dStageCastleFile2_Layer3DObj[];
 extern u32 dStageCastleFile2_MPGeometryData_0x2D58[];
+extern u32 dStageCastleFile2_gap_0x0000[];
 
 /* Item-randomizer weights, referenced by `header.item_weights` */
 u8 dGRCastleMap_item_weights[20] = { 0x50, 0x1E, 0x78, 0x00, 0x0E, 0x07, 0x0C, 0x0A, 0x05, 0x0F, 0x0A, 0x08, 0x13, 0x08, 0x10, 0x16, 0x0A, 0x0A, 0x0A, 0x14 };
@@ -49,7 +50,7 @@ MPGroundData dGRCastleMap_header =
     9000,  /* map_bound_right */
     -9000,  /* map_bound_left */
     0x00000006,  /* bgm_id */
-    (void *)0xFFFF0000,  /* map_nodes */
+    dStageCastleFile2_gap_0x0000,  /* map_nodes */
     dGRCastleMap_item_weights,  /* item_weights */
     -1900,  /* alt_warning */
     4800,  /* camera_bound_team_top */

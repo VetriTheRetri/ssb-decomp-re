@@ -14,6 +14,7 @@ extern DObjDesc dStageYosterFile2_Layer1DObj[];
 extern DObjDesc dStageYosterFile2_Layer2DObj[];
 extern DObjDesc dStageYosterFile2_Layer3DObj[];
 extern u32 dStageYosterFile2_MPGeometryData_0x5188[];
+extern u32 dStageYosterFile2_gap_0x0078[];
 
 /* Item-randomizer weights, referenced by `header.item_weights` */
 u8 dGRYosterMap_item_weights[20] = { 0x3C, 0x28, 0x00, 0x96, 0x0E, 0x07, 0x08, 0x0A, 0x06, 0x0E, 0x0F, 0x08, 0x0C, 0x0A, 0x0C, 0x0D, 0x08, 0x08, 0x0A, 0x14 };
@@ -50,7 +51,7 @@ MPGroundData dGRYosterMap_header =
     10500,  /* map_bound_right */
     -7800,  /* map_bound_left */
     0x00000008,  /* bgm_id */
-    (void *)0xFFFF0040,  /* map_nodes */
+    (void *)((u8 *)dStageYosterFile2_gap_0x0078 + 0x88),  /* map_nodes */
     dGRYosterMap_item_weights,  /* item_weights */
     -2500,  /* alt_warning */
     4300,  /* camera_bound_team_top */

@@ -8,6 +8,7 @@ extern u32 dStageJungleFile2_Layer1Anim_AnimJoint[];
 extern DObjDesc dStageJungleFile2_Layer2DObj[];
 extern DObjDesc dStageJungleFile2_Layer3DObj[];
 extern u32 dStageJungleFile2_MPGeometryData_0x9AFC[];
+extern u32 dStageJungleFile2_gap_0x0000[];
 MPGroundData dGRJungleMap_MapHeader_0x0014 =
 {
     /* gr_desc[4] */
@@ -40,7 +41,7 @@ MPGroundData dGRJungleMap_MapHeader_0x0014 =
     8100,  /* map_bound_right */
     -8100,  /* map_bound_left */
     0x00000005,  /* bgm_id */
-    (void *)0xFFFF02A6,  /* map_nodes */
+    (void *)((u8 *)dStageJungleFile2_gap_0x0000 + 0xA98),  /* map_nodes */
     dGRJungleMap_gap_0x0000,  /* item_weights */
     -1900,  /* alt_warning */
     4000,  /* camera_bound_team_top */

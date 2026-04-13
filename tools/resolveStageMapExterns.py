@@ -131,6 +131,31 @@ def symbol_at(file_id, offset):
     return sorted(syms, key=len)[0]
 
 
+def symbol_near(file_id, offset):
+    """Return (symbol_name, delta) where `symbol_name` is the nearest
+    symbol at offset <= the requested offset in the given file's .o,
+    and `delta` is the byte distance forward from that symbol to the
+    requested offset. Returns (None, 0) if no symbol precedes."""
+    all_syms = nm(file_id)
+    if not all_syms:
+        return None, 0
+    # Skip the `*_bitmaps` / `*_dl` / `*_tex` sub-symbols that sprite blocks
+    # emit — they live inside a parent Sprite struct but aren't what a
+    # reader would want to see as the "owner" of an arbitrary offset.
+    candidates = []
+    for off, names in all_syms.items():
+        if off > offset:
+            continue
+        for name in names:
+            if name.endswith(("_bitmaps", "_dl", "_tex")):
+                continue
+            candidates.append((off, name))
+    if not candidates:
+        return None, 0
+    best_off, best_name = max(candidates)
+    return best_name, offset - best_off
+
+
 def parse_reloc(reloc_path):
     """Return (intern_entries, extern_entries) where each entry is
     (struct_byte_offset, target_label_or_hex)."""
@@ -185,60 +210,77 @@ POINTER_SLOTS = {
 
 def classify_extern_target(struct_off, target_off, stage):
     """For the given pointer slot, decide which file holds the target.
-    Returns (file_id, symbol_type_hint) or (None, None) for unknown."""
-    _, file2, file3, sprite, mainmotion = STAGE_EXTERNS[stage]
+    Returns (file_id, allow_approx) — when `allow_approx` is True the
+    caller falls back to `symbol_near` if the exact offset isn't a
+    named symbol in the target file."""
+    _, file2, _file3, sprite, _ = STAGE_EXTERNS[stage]
 
-    # gr_desc pointers and map_geometry are in File2
+    # gr_desc pointers and map_geometry are in File2 at a named symbol
     if struct_off in (0x00, 0x04, 0x08, 0x0C,
                       0x10, 0x14, 0x18, 0x1C,
                       0x20, 0x24, 0x28, 0x2C,
                       0x30, 0x34, 0x38, 0x3C,
                       0x40):
-        return file2, None
-    # Wallpaper is in the stage's sprite file
+        return file2, False
+    # Wallpaper is in the stage's sprite file, exact match
     if struct_off == 0x48:
-        return sprite, None
-    # map_nodes usually lives in a MainMotion-like anim file, but the
-    # convention varies by stage. Leave it unresolved for now.
+        return sprite, False
+    # map_nodes points into File2 at a MapHead-like offset. The typed
+    # File2 descriptions don't cover the MapHead region yet, so we
+    # resolve the nearest preceding symbol and express the difference
+    # as `((u8*)sym + delta)`.
     if struct_off == 0x80:
-        return mainmotion, None
-    return None, None
+        return file2, True
+    return None, False
 
 
 def build_rewrite(stage, reloc_path, header_sym):
     """For each extern entry in the .reloc, look up the target symbol in
-    the appropriate file and build a slot -> (symbol_name, target_file_id)
-    map. Also include any intern entry whose target is a known local
-    symbol (currently just item_weights)."""
-
+    the appropriate file and build a slot -> (expression, extern_sym,
+    file_id) mapping. `extern_sym` is the symbol that needs an `extern`
+    declaration (or None for purely local references); `expression` is
+    what goes into the struct initializer at that slot.
+    """
     intern, extern = parse_reloc(reloc_path)
-    rewrites = {}  # struct_byte_offset -> (symbol_expr, extern_file_id or None)
+    rewrites = {}  # struct_byte_offset -> (expr, extern_sym, file_id)
 
     for ptr_off, target in extern:
         try:
             target_byte = int(target, 16)
         except ValueError:
             continue
-        file_id, _ = classify_extern_target(ptr_off, target_byte, stage)
+        file_id, allow_approx = classify_extern_target(
+            ptr_off, target_byte, stage)
         if file_id is None:
             continue
         sym = symbol_at(file_id, target_byte)
+        if sym is not None:
+            rewrites[ptr_off] = (sym, sym, file_id)
+            continue
+        if not allow_approx:
+            continue
+        sym, delta = symbol_near(file_id, target_byte)
         if sym is None:
             continue
-        rewrites[ptr_off] = (sym, file_id)
+        if delta == 0:
+            rewrites[ptr_off] = (sym, sym, file_id)
+        else:
+            expr = f"(void *)((u8 *){sym} + 0x{delta:X})"
+            rewrites[ptr_off] = (expr, sym, file_id)
 
-    # Local intern targets: just replace with the symbol name directly.
+    # Local intern targets: replace with the symbol name directly. These
+    # don't need an extern declaration.
     for ptr_off, target in intern:
-        # Target like "dGRCastleMap_item_weights" or "dGRCastleMap_header+0x4"
         m = re.match(r"^(\w+)(?:\+0x([0-9a-fA-F]+))?$", target)
         if not m:
             continue
         sym = m.group(1)
         off = int(m.group(2), 16) if m.group(2) else 0
         if off == 0:
-            rewrites[ptr_off] = (sym, None)  # None = local, no extern needed
+            rewrites[ptr_off] = (sym, None, None)
         else:
-            rewrites[ptr_off] = (f"(void *)((u8 *){sym} + 0x{off:X})", None)
+            expr = f"(void *)((u8 *){sym} + 0x{off:X})"
+            rewrites[ptr_off] = (expr, None, None)
 
     return rewrites
 
@@ -339,24 +381,22 @@ def rewrite_map_c(stage, info, type_map):
     # Keep track of replacements so we can substitute inside the struct body
     replacements = []  # (old_pattern, new_str)
 
-    for ptr_off, (sym, target_file_id) in sorted(rewrites.items()):
+    for ptr_off, (expr, extern_sym, target_file_id) in sorted(rewrites.items()):
         if ptr_off not in POINTER_SLOTS:
             continue
         c_type, field_name = POINTER_SLOTS[ptr_off]
 
-        # For the pointer slot, the replacement is just the symbol name
-        # (IDO applies an implicit array->pointer decay or the cast is
-        # unnecessary because the symbol's declared type matches).
-        new_expr = sym
+        new_expr = expr
 
-        # Record the extern declaration (only for cross-file symbols).
-        if target_file_id is not None:
-            sym_type = type_map.get(sym)
+        # Record the extern declaration when the expression references
+        # a cross-file symbol.
+        if target_file_id is not None and extern_sym is not None:
+            sym_type = type_map.get(extern_sym)
             if sym_type is None:
                 # Fallback: use the pointer slot's C type (strip the * so
                 # we can declare the array).
                 sym_type = c_type.rstrip(" *")
-            externs_needed[sym] = sym_type
+            externs_needed[extern_sym] = sym_type
 
         # Build a loose pattern for the C type: word chars + optional stars,
         # with any whitespace between. Then match `(<type>) 0xHEX`.
@@ -392,9 +432,8 @@ def rewrite_map_c(stage, info, type_map):
         # Group by file for readability
         by_file = {}
         for sym, c_type in externs_needed.items():
-            # Look up which file by scanning the rewrites list
-            for po, (s, fid) in rewrites.items():
-                if s == sym and fid is not None:
+            for po, (_expr, e_sym, fid) in rewrites.items():
+                if e_sym == sym and fid is not None:
                     by_file.setdefault(fid, []).append((sym, c_type))
                     break
         for fid in sorted(by_file):
@@ -427,8 +466,8 @@ def rewrite_map_c(stage, info, type_map):
     if new_text != text:
         with open(map_c, "w") as f:
             f.write(new_text)
-        n_cross = sum(1 for _, (s, fid) in rewrites.items() if fid is not None)
-        n_local = sum(1 for _, (s, fid) in rewrites.items() if fid is None)
+        n_cross = sum(1 for _, (_, _, fid) in rewrites.items() if fid is not None)
+        n_local = sum(1 for _, (_, _, fid) in rewrites.items() if fid is None)
         print(f"  {stage}: {n_cross} extern + {n_local} local rewrites")
     else:
         print(f"  {stage}: no changes")

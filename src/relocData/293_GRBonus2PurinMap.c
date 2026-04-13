@@ -43,7 +43,7 @@ MPGroundData dGRBonus2PurinMap_header =
     9600,  /* map_bound_right */
     -9600,  /* map_bound_left */
     0x0000001A,  /* bgm_id */
-    (void *)0xFFFF13F8,  /* map_nodes */
+    (void *)((u8 *)dGRBonus2PurinFile2_Layer1Anim_AnimJoint + 0xF50),  /* map_nodes */
     NULL,  /* item_weights */
     -32768,  /* alt_warning */
     5000,  /* camera_bound_team_top */

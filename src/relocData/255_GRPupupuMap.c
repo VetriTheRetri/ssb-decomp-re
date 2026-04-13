@@ -6,6 +6,7 @@
 
 /* Cross-file references resolved by fixRelocChain.py — see .reloc */
 extern Sprite dStageDreamLand_sprite_0x26C88[];
+extern u32 dStagePupupuFile2_Layer0Anim_AnimJoint[];
 
 /* Item-randomizer weights, referenced by `header.item_weights` */
 u8 dGRPupupuMap_item_weights[20] = { 0x46, 0x28, 0x78, 0x00, 0x14, 0x04, 0x06, 0x0E, 0x07, 0x0C, 0x16, 0x07, 0x0A, 0x07, 0x0A, 0x09, 0x0E, 0x05, 0x05, 0x14 };
@@ -42,7 +43,7 @@ MPGroundData dGRPupupuMap_header =
     9000,  /* map_bound_right */
     -9000,  /* map_bound_left */
     0x00000000,  /* bgm_id */
-    (void *)0xFFFF043C,  /* map_nodes */
+    (void *)((u8 *)dStagePupupuFile2_Layer0Anim_AnimJoint + 0x720),  /* map_nodes */
     dGRPupupuMap_item_weights,  /* item_weights */
     -2900,  /* alt_warning */
     3500,  /* camera_bound_team_top */

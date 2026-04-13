@@ -7,6 +7,7 @@ extern u32 dStageZebesFile2_Layer1Anim_AnimJoint[];
 extern MObjSub dStageZebesFile2_Layer1MObj_MObjSub[];
 extern u32 dStageZebesFile2_Layer1MatAnim_MatAnimJoint[];
 extern u32 dStageZebesFile2_MPGeometryData_0x6160[];
+extern u32 dStageZebesFile2_gap_0x0000[];
 MPGroundData dGRZebesMap_MapHeader_0x0014 =
 {
     /* gr_desc[4] */
@@ -39,7 +40,7 @@ MPGroundData dGRZebesMap_MapHeader_0x0014 =
     9500,  /* map_bound_right */
     -9500,  /* map_bound_left */
     0x00000001,  /* bgm_id */
-    (void *)0xFFFF02C2,  /* map_nodes */
+    (void *)((u8 *)dStageZebesFile2_gap_0x0000 + 0xB08),  /* map_nodes */
     dGRZebesMap_gap_0x0000,  /* item_weights */
     -2900,  /* alt_warning */
     4400,  /* camera_bound_team_top */

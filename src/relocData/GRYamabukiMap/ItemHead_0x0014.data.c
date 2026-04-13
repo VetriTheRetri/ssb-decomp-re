@@ -10,6 +10,7 @@ extern MObjSub dStageYamabukiFile2_Layer1MObj_MObjSub[];
 extern u32 dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint[];
 extern DObjDesc dStageYamabukiFile2_Layer3DObj[];
 extern u32 dStageYamabukiFile2_MPGeometryData_0x6E8C[];
+extern u32 dStageYamabukiFile2_gap_0x0000[];
 MPGroundData dGRYamabukiMap_ItemHead_0x0014 =
 {
     /* gr_desc[4] */
@@ -42,7 +43,7 @@ MPGroundData dGRYamabukiMap_ItemHead_0x0014 =
     10000,  /* map_bound_right */
     -10000,  /* map_bound_left */
     0x00000007,  /* bgm_id */
-    (void *)0x002F0228,  /* map_nodes */
+    (void *)((u8 *)dStageYamabukiFile2_gap_0x0000 + 0x8A0),  /* map_nodes */
     dGRYamabukiMap_gap_0x0000,  /* item_weights */
     -2900,  /* alt_warning */
     5000,  /* camera_bound_team_top */

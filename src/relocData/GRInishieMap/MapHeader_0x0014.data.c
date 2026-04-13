@@ -10,6 +10,7 @@ extern DObjDesc dStageInishieFile2_Layer1DObj[];
 extern DObjDesc dStageInishieFile2_Layer2DObj[];
 extern DObjDesc dStageInishieFile2_Layer3DObj[];
 extern u32 dStageInishieFile2_MPGeometryData_0x6698[];
+extern u32 dStageInishieFile2_gap_0x0000[];
 MPGroundData dGRInishieMap_MapHeader_0x0014 =
 {
     /* gr_desc[4] */
@@ -42,7 +43,7 @@ MPGroundData dGRInishieMap_MapHeader_0x0014 =
     7400,  /* map_bound_right */
     -7400,  /* map_bound_left */
     0x00000002,  /* bgm_id */
-    (void *)0x0036017C,  /* map_nodes */
+    (void *)((u8 *)dStageInishieFile2_gap_0x0000 + 0x5F0),  /* map_nodes */
     dGRInishieMap_gap_0x0000,  /* item_weights */
     -2200,  /* alt_warning */
     3000,  /* camera_bound_team_top */

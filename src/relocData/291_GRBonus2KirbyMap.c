@@ -43,7 +43,7 @@ MPGroundData dGRBonus2KirbyMap_header =
     9600,  /* map_bound_right */
     -9600,  /* map_bound_left */
     0x0000001A,  /* bgm_id */
-    (void *)0xFFFF0E48,  /* map_nodes */
+    (void *)((u8 *)dGRBonus2KirbyFile2_Layer1Anim_AnimJoint + 0x290),  /* map_nodes */
     NULL,  /* item_weights */
     -32768,  /* alt_warning */
     5000,  /* camera_bound_team_top */

@@ -11,7 +11,7 @@ Gfx dPikachuSpecial3_Joint_0x2170_DisplayList[] = {
 	{ { 0xF5000100, 0x05000000 } },  /* cmd 0xF5 */
 	{ { 0xF5500000, 0x07014050 } },  /* cmd 0xF5 */
 	{ { 0xF5400400, 0x00094350 } },  /* cmd 0xF5 */
-	{ { 0xFD100000, (unsigned int)((u8*)dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint + 0x190) } },  /* cmd 0xFD */
+	{ { 0xFD100000, (unsigned int)dPikachuSpecial3_Lut_0x1C70_palette } },  /* cmd 0xFD */
 	{ { 0xE6000000, 0x00000000 } },  /* cmd 0xE6 */
 	{ { 0xF0000000, 0x0503C000 } },  /* cmd 0xF0 */
 	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
@@ -21,7 +21,7 @@ Gfx dPikachuSpecial3_Joint_0x2170_DisplayList[] = {
 	{ { 0xE6000000, 0x00000000 } },  /* cmd 0xE6 */
 	{ { 0xF3000000, 0x070FF400 } },  /* cmd 0xF3 */
 	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0x01004008, (unsigned int)((u8*)dPikachuSpecial3_gap_0x2118 + 0x18) } },  /* cmd 0x01 */
+	{ { 0x01004008, (unsigned int)dPikachuSpecial3_Vtx_0x2130_Vtx } },  /* cmd 0x01 */
 	{ { 0x06060402, 0x00060004 } },  /* cmd 0x06 */
 	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
 	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */

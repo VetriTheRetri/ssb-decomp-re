@@ -9,17 +9,17 @@ Gfx dLinkSpecial2_Joint_0x02D8_DisplayList[] = {
 	{ { 0xF5000100, 0x05000000 } },  /* cmd 0xF5 */
 	{ { 0xF5500000, 0x07014040 } },  /* cmd 0xF5 */
 	{ { 0xF5400200, 0x00094240 } },  /* cmd 0xF5 */
-	{ { 0xFD100000, (unsigned int)((u8*)dLinkSpecial2_gap_0x0000 + 0x8) } },  /* cmd 0xFD */
+	{ { 0xFD100000, (unsigned int)dLinkSpecial2_Lut_0x0008_palette } },  /* cmd 0xFD */
 	{ { 0xDE000000, 0x0E000000 } },  /* cmd 0xDE */
 	{ { 0xE6000000, 0x00000000 } },  /* cmd 0xE6 */
 	{ { 0xF0000000, 0x0503C000 } },  /* cmd 0xF0 */
 	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0xFD500000, (unsigned int)((u8*)dLinkSpecial2_gap_0x0000 + 0x30) } },  /* cmd 0xFD */
+	{ { 0xFD500000, (unsigned int)dLinkSpecial2_Tex_0x0030 } },  /* cmd 0xFD */
 	{ { 0xE6000000, 0x00000000 } },  /* cmd 0xE6 */
 	{ { 0xF3000000, 0x0707F800 } },  /* cmd 0xF3 */
 	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
 	{ { 0xD9FFFBFF, 0x00000000 } },  /* cmd 0xD9 */
-	{ { 0x01012024, (unsigned int)((u8*)dLinkSpecial2_gap_0x01A8 + 0x10) } },  /* cmd 0x01 */
+	{ { 0x01012024, (unsigned int)dLinkSpecial2_Vtx_0x01B8_Vtx } },  /* cmd 0x01 */
 	{ { 0x0622201E, 0x0020221C } },  /* cmd 0x06 */
 	{ { 0x061A201C, 0x0018221E } },  /* cmd 0x06 */
 	{ { 0x06161A1C, 0x00181E14 } },  /* cmd 0x06 */

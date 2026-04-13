@@ -11,7 +11,7 @@ Gfx dPikachuSpecial2_Joint_0x1598_DisplayList[] = {
 	{ { 0xF3000000, 0x071FF200 } },  /* cmd 0xF3 */
 	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
 	{ { 0xD9DDFBFF, 0x00000000 } },  /* cmd 0xD9 */
-	{ { 0x01004008, (unsigned int)((u8*)dPikachuSpecial2_gap_0x1418 + 0x60) } },  /* cmd 0x01 */
+	{ { 0x01004008, (unsigned int)dPikachuSpecial2_Vtx_0x1478_Vtx } },  /* cmd 0x01 */
 	{ { 0x06060402, 0x00000602 } },  /* cmd 0x06 */
 	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
 	{ { 0xD9FFFFFF, 0x00220400 } },  /* cmd 0xD9 */

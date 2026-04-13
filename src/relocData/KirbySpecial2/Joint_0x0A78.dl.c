@@ -5,12 +5,12 @@ Gfx dKirbySpecial2_Joint_0x0A78_DisplayList[] = {
 	{ { 0xF5900000, 0x07010040 } },  /* cmd 0xF5 */
 	{ { 0xF5800200, 0x000D0340 } },  /* cmd 0xF5 */
 	{ { 0xF2000000, 0x0007C07C } },  /* cmd 0xF2 */
-	{ { 0xFD900000, (unsigned int)((u8*)dKirbySpecial2_gap_0x0000 + 0x8) } },  /* cmd 0xFD */
+	{ { 0xFD900000, (unsigned int)dKirbySpecial2_Tex_0x0008 } },  /* cmd 0xFD */
 	{ { 0xE6000000, 0x00000000 } },  /* cmd 0xE6 */
 	{ { 0xF3000000, 0x0703F800 } },  /* cmd 0xF3 */
 	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
 	{ { 0xD9FFFFFF, 0x00200000 } },  /* cmd 0xD9 */
-	{ { 0x01004008, (unsigned int)((u8*)dKirbySpecial2_gap_0x0000 + 0x970) } },  /* cmd 0x01 */
+	{ { 0x01004008, (unsigned int)dKirbySpecial2_Vtx_0x0970_Vtx } },  /* cmd 0x01 */
 	{ { 0x06060402, 0x00000602 } },  /* cmd 0x06 */
 	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
 	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */

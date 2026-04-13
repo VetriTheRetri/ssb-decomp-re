@@ -7,12 +7,12 @@ Gfx dCaptainSpecial2_Joint_0x5E70_DisplayList[] = {
 	{ { 0xF5100000, 0x07010040 } },  /* cmd 0xF5 */
 	{ { 0xF5100800, 0x00090240 } },  /* cmd 0xF5 */
 	{ { 0xF2000000, 0x0003C03C } },  /* cmd 0xF2 */
-	{ { 0xFD100000, (unsigned int)((u8*)dCaptainSpecial2_FalconKickMatAnimJoint_MatAnimJoint + 0x3088) } },  /* cmd 0xFD */
+	{ { 0xFD100000, (unsigned int)dCaptainSpecial2_Tex_0x3C88 } },  /* cmd 0xFD */
 	{ { 0xE6000000, 0x00000000 } },  /* cmd 0xE6 */
 	{ { 0xF3000000, 0x070FF200 } },  /* cmd 0xF3 */
 	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
 	{ { 0xD9FFFFFF, 0x00220004 } },  /* cmd 0xD9 */
-	{ { 0x01014028, (unsigned int)((u8*)dCaptainSpecial2_FalconKickMatAnimJoint_MatAnimJoint + 0x4950) } },  /* cmd 0x01 */
+	{ { 0x01014028, (unsigned int)dCaptainSpecial2_Vtx_0x5550_Vtx } },  /* cmd 0x01 */
 	{ { 0x06262422, 0x00201E1C } },  /* cmd 0x06 */
 	{ { 0x06201C1A, 0x00181614 } },  /* cmd 0x06 */
 	{ { 0x0612100E, 0x00120C10 } },  /* cmd 0x06 */

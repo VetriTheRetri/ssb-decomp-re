@@ -13,7 +13,7 @@ Gfx dSamusSpecial2_Joint_0x02E0_DisplayList[] = {
 	{ { 0xF3000000, 0x0707F400 } },  /* cmd 0xF3 */
 	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
 	{ { 0xD9DDFBFB, 0x00000000 } },  /* cmd 0xD9 */
-	{ { 0x01004008, (unsigned int)((u8*)dSamusSpecial2_gap_0x0288 + 0x18) } },  /* cmd 0x01 */
+	{ { 0x01004008, (unsigned int)dSamusSpecial2_Vtx_0x02A0_Vtx } },  /* cmd 0x01 */
 	{ { 0x06060402, 0x00040002 } },  /* cmd 0x06 */
 	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
 	{ { 0xD9FFFFFF, 0x00220404 } },  /* cmd 0xD9 */

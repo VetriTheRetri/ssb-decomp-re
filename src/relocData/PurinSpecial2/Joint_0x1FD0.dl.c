@@ -7,12 +7,12 @@ Gfx dPurinSpecial2_Joint_0x1FD0_DisplayList[] = {
 	{ { 0xF5100000, 0x07014050 } },  /* cmd 0xF5 */
 	{ { 0xF5101000, 0x00094250 } },  /* cmd 0xF5 */
 	{ { 0xF2000000, 0x0007C07C } },  /* cmd 0xF2 */
-	{ { 0xFD100000, (unsigned int)((u8*)dPurinSpecial2_gap_0x0000 + 0x1018) } },  /* cmd 0xFD */
+	{ { 0xFD100000, (unsigned int)dPurinSpecial2_Tex_0x1018 } },  /* cmd 0xFD */
 	{ { 0xDE000000, 0x0E000000 } },  /* cmd 0xDE */
 	{ { 0xE6000000, 0x00000000 } },  /* cmd 0xE6 */
 	{ { 0xF3000000, 0x073FF100 } },  /* cmd 0xF3 */
 	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0x01004008, (unsigned int)((u8*)dPurinSpecial2_gap_0x1C98 + 0x1E0) } },  /* cmd 0x01 */
+	{ { 0x01004008, (unsigned int)dPurinSpecial2_Vtx_0x1E78_Vtx } },  /* cmd 0x01 */
 	{ { 0x06060402, 0x00000602 } },  /* cmd 0x06 */
 	{ { 0xDF000000, 0x00000000 } },  /* cmd 0xDF */
 };

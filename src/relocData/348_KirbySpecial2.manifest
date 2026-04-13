@@ -2,32 +2,50 @@
 # Each line is either a block filename or 'pad N'.
 # The master .c file is generated from this manifest at build time.
 
-gap_0x0000.data.c
+pad 8
+Tex_0x0008.data.c
+Tex_0x0090.data.c
+Vtx_0x0890.vtx.c
+Vtx_0x0970.vtx.c
 Joint_0x09B0.dl.c
 Joint_0x09B0_post.data.c
 Joint_0x0A78.dl.c
 JointCmd_0x0B00.data.c
 JointCmd_0x0B10.data.c
 VulcanJab.dobjdesc.c
-gap_0x0BA4.data.c
+pad 20
+Lut_0x0BB8.palette.c
+pad 8
+Tex_0x0BE0.data.c
+Vtx_0x0C20.vtx.c
+Vtx_0x0C50.vtx.c
 Joint_0x0C70.dl.c
 Joint_0x0CE0.dl.c
 JointCmd_0x0DD8.data.c
 JointCmd_0x0DE8.data.c
 CutterTrailDObjDesc.dobjdesc.c
-gap_0x0EA8.data.c
+pad 8
+Vtx_0x0EB0.vtx.c
+Vtx_0x0FB0.vtx.c
+Vtx_0x10B0.vtx.c
 Joint_0x11B0.dl.c
 Joint_0x1218.dl.c
 Joint_0x1280.dl.c
 CutterUpDObjDesc.dobjdesc.c
 CutterTrailAnimJoint_AnimJoint.data.c
 CutterUpAnimJoint_AnimJoint.data.c
+Tex_0x14B8.data.c
+Vtx_0x1CB8.vtx.c
 Joint_0x1CF8.dl.c
 JointCmd_0x1D98.data.c
 EntryStar.dobjdesc.c
 pad 4
 EntryStarL_AnimJoint.data.c
 EntryStarR_AnimJoint.data.c
+Vtx_0x1F10.vtx.c
+Vtx_0x1FD0.vtx.c
+Vtx_0x2090.vtx.c
+Vtx_0x2150.vtx.c
 Joint_0x2210.dl.c
 Joint_0x2270.dl.c
 Joint_0x22D0.dl.c
@@ -35,6 +53,10 @@ Joint_0x2330.dl.c
 CutterDownDObjDesc.dobjdesc.c
 pad 12
 CutterDownAnimJoint_AnimJoint.data.c
+Lut_0x2538.palette.c
+pad 8
+Tex_0x2560.data.c
+Vtx_0x2760.vtx.c
 Joint_0x27A0.dl.c
 CutterDraw.dobjdesc.c
 pad 4

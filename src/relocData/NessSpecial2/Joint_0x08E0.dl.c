@@ -17,7 +17,7 @@ Gfx dNessSpecial2_Joint_0x08E0_DisplayList[] = {
 	{ { 0xE6000000, 0x00000000 } },  /* cmd 0xE6 */
 	{ { 0xF3000000, 0x071FF200 } },  /* cmd 0xF3 */
 	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0x01004008, (unsigned int)((u8*)dNessSpecial2_gap_0x0888 + 0x18) } },  /* cmd 0x01 */
+	{ { 0x01004008, (unsigned int)dNessSpecial2_Vtx_0x08A0_Vtx } },  /* cmd 0x01 */
 	{ { 0x06060402, 0x00000602 } },  /* cmd 0x06 */
 	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
 	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */

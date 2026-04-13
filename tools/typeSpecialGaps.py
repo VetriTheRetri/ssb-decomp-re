@@ -350,18 +350,45 @@ def process(fid, file_name):
     def inside_dl(off):
         return any(s <= off < e for s, e in dl_spans)
 
-    new_entries = []
-    vtx_counts = {}
-
+    # Build the sorted target list, skipping DL-internal refs and any
+    # target that clashes with a pre-existing description entry.
+    sorted_targets = []
     for off in sorted(targets):
         if off in existing_offsets:
             continue
         if inside_dl(off):
             continue
+        sorted_targets.append(off)
+
+    # Clamp Vtx counts so they never cross into the next typed target.
+    # Some Special DLs contain an unreachable G_VTX branch that addresses
+    # memory that's *also* used as IA16 texture data for a later SETTIMG;
+    # if we take the Vtx n at face value the resulting block runs past
+    # the Tex address and genRelocDataC emits an overlapping manifest.
+    # All description-entry offsets (existing + new) that come after a
+    # given Vtx form the upper bound on its size.
+    all_offsets = sorted(set(existing_offsets) | set(sorted_targets))
+
+    def next_offset_after(off):
+        for o in all_offsets:
+            if o > off:
+                return o
+        return len(data)
+
+    new_entries = []
+    vtx_counts = {}
+
+    for off in sorted_targets:
         typ, extra = targets[off]
         if typ == 'Vtx':
+            max_bytes = next_offset_after(off) - off
+            max_count = max_bytes // VTX_SIZE
+            if max_count <= 0:
+                # No room for even one vertex — drop this target entirely.
+                continue
+            count = min(extra, max_count)
             new_entries.append(('Vtx', f'Vtx_0x{off:04X}', off))
-            vtx_counts[off] = extra
+            vtx_counts[off] = count
         elif typ == 'LUT':
             # LUT blocks are fixed 32 bytes (16 colors) in genRelocDataC.
             # If the count isn't 16 we fall back to DataBlock so the raw

@@ -2,7 +2,11 @@
 # Each line is either a block filename or 'pad N'.
 # The master .c file is generated from this manifest at build time.
 
-gap_0x0000.data.c
+pad 8
+Lut_0x0008.palette.c
+pad 8
+Tex_0x0030.data.c
+Vtx_0x0830.vtx.c
 Joint_0x0870.dl.c
 EggLay.dobjdesc.c
 pad 12

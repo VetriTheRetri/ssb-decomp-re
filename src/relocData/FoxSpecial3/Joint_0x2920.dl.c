@@ -10,7 +10,7 @@ Gfx dFoxSpecial3_Joint_0x2920_DisplayList[] = {
 	{ { 0xF5700800, 0x000D0340 } },  /* cmd 0xF5 */
 	{ { 0xD7000002, 0xFFFFFFFF } },  /* cmd 0xD7 */
 	{ { 0xF2000000, 0x0007C07C } },  /* cmd 0xF2 */
-	{ { 0xFD700000, (unsigned int)((u8*)dFoxSpecial3_gap_0x0000 + 0x19F8) } },  /* cmd 0xFD */
+	{ { 0xFD700000, (unsigned int)dFoxSpecial3_Tex_0x19F8 } },  /* cmd 0xFD */
 	{ { 0xE6000000, 0x00000000 } },  /* cmd 0xE6 */
 	{ { 0xF3000000, 0x070FF200 } },  /* cmd 0xF3 */
 	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */

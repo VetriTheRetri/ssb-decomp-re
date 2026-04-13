@@ -10,7 +10,7 @@ Gfx dCaptainSpecial2_Joint_0x0A30_DisplayList[] = {
 	{ { 0xF5000100, 0x05000000 } },  /* cmd 0xF5 */
 	{ { 0xF5500000, 0x07018060 } },  /* cmd 0xF5 */
 	{ { 0xF5400600, 0x00098260 } },  /* cmd 0xF5 */
-	{ { 0xFD100000, (unsigned int)((u8*)dCaptainSpecial2_gap_0x0000 + 0x30) } },  /* cmd 0xFD */
+	{ { 0xFD100000, (unsigned int)dCaptainSpecial2_Lut_0x0030_palette } },  /* cmd 0xFD */
 	{ { 0xE6000000, 0x00000000 } },  /* cmd 0xE6 */
 	{ { 0xF0000000, 0x0503C000 } },  /* cmd 0xF0 */
 	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
@@ -19,7 +19,7 @@ Gfx dCaptainSpecial2_Joint_0x0A30_DisplayList[] = {
 	{ { 0xF3000000, 0x0723F2AB } },  /* cmd 0xF3 */
 	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
 	{ { 0xD9DDFBFF, 0x00000000 } },  /* cmd 0xD9 */
-	{ { 0x01004008, (unsigned int)((u8*)dCaptainSpecial2_gap_0x09D8 + 0x18) } },  /* cmd 0x01 */
+	{ { 0x01004008, (unsigned int)dCaptainSpecial2_Vtx_0x09F0_Vtx } },  /* cmd 0x01 */
 	{ { 0x06060402, 0x00000602 } },  /* cmd 0x06 */
 	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
 	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */

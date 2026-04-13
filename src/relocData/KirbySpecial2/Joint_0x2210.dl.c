@@ -4,7 +4,7 @@ Gfx dKirbySpecial2_Joint_0x2210_DisplayList[] = {
 	{ { 0xFCFFFFFF, 0xFFFE7D3E } },  /* cmd 0xFC */
 	{ { 0xD7000000, 0x00000000 } },  /* cmd 0xD7 */
 	{ { 0xD9DDFBFF, 0x00000000 } },  /* cmd 0xD9 */
-	{ { 0x0100C018, (unsigned int)((u8*)dKirbySpecial2_EntryStarR_AnimJoint + 0x70) } },  /* cmd 0x01 */
+	{ { 0x0100C018, (unsigned int)dKirbySpecial2_Vtx_0x1F10_Vtx } },  /* cmd 0x01 */
 	{ { 0x06161412, 0x00141012 } },  /* cmd 0x06 */
 	{ { 0x060E0C0A, 0x00080E0A } },  /* cmd 0x06 */
 	{ { 0x06060402, 0x00040002 } },  /* cmd 0x06 */

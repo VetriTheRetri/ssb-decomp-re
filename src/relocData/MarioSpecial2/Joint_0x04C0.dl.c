@@ -7,7 +7,7 @@ Gfx dMarioSpecial2_Joint_0x04C0_DisplayList[] = {
 	{ { 0x02140006, 0x01FF0000 } },  /* cmd 0x02 */
 	{ { 0x02140008, 0x017E0000 } },  /* cmd 0x02 */
 	{ { 0x0214000A, 0x007E0000 } },  /* cmd 0x02 */
-	{ { 0x01012030, (unsigned int)((u8*)dMarioSpecial2_gap_0x0000 + 0x1E0) } },  /* cmd 0x01 */
+	{ { 0x01012030, (unsigned int)dMarioSpecial2_Vtx_0x01E0_Vtx } },  /* cmd 0x01 */
 	{ { 0x0600022E, 0x002C002E } },  /* cmd 0x06 */
 	{ { 0x062E0204, 0x000A002C } },  /* cmd 0x06 */
 	{ { 0x062A0A2C, 0x00282E04 } },  /* cmd 0x06 */
@@ -23,16 +23,16 @@ Gfx dMarioSpecial2_Joint_0x04C0_DisplayList[] = {
 	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
 	{ { 0xF5500000, 0x07010040 } },  /* cmd 0xF5 */
 	{ { 0xF5400200, 0x000D0340 } },  /* cmd 0xF5 */
-	{ { 0xFD100000, (unsigned int)((u8*)dMarioSpecial2_gap_0x0000 + 0x30) } },  /* cmd 0xFD */
+	{ { 0xFD100000, (unsigned int)dMarioSpecial2_Lut_0x0030_palette } },  /* cmd 0xFD */
 	{ { 0xE6000000, 0x00000000 } },  /* cmd 0xE6 */
 	{ { 0xF0000000, 0x0503C000 } },  /* cmd 0xF0 */
 	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
 	{ { 0xF2000000, 0x0007C07C } },  /* cmd 0xF2 */
-	{ { 0xFD500000, (unsigned int)((u8*)dMarioSpecial2_gap_0x0000 + 0xA0) } },  /* cmd 0xFD */
+	{ { 0xFD500000, (unsigned int)dMarioSpecial2_Tex_0x00A0 } },  /* cmd 0xFD */
 	{ { 0xE6000000, 0x00000000 } },  /* cmd 0xE6 */
 	{ { 0xF3000000, 0x0703F800 } },  /* cmd 0xF3 */
 	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
-	{ { 0x0100C024, (unsigned int)((u8*)dMarioSpecial2_gap_0x0000 + 0x300) } },  /* cmd 0x01 */
+	{ { 0x0100C024, (unsigned int)dMarioSpecial2_Vtx_0x0300_Vtx } },  /* cmd 0x01 */
 	{ { 0x0622201E, 0x001C221E } },  /* cmd 0x06 */
 	{ { 0x061A221C, 0x00181A1C } },  /* cmd 0x06 */
 	{ { 0x06161412, 0x00101612 } },  /* cmd 0x06 */

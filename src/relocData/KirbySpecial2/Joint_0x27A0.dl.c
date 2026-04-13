@@ -10,18 +10,18 @@ Gfx dKirbySpecial2_Joint_0x27A0_DisplayList[] = {
 	{ { 0xF5000100, 0x05000000 } },  /* cmd 0xF5 */
 	{ { 0xF5500000, 0x07014050 } },  /* cmd 0xF5 */
 	{ { 0xF5400400, 0x00094250 } },  /* cmd 0xF5 */
-	{ { 0xFD100000, (unsigned int)((u8*)dKirbySpecial2_CutterDownAnimJoint_AnimJoint + 0x68) } },  /* cmd 0xFD */
+	{ { 0xFD100000, (unsigned int)dKirbySpecial2_Lut_0x2538_palette } },  /* cmd 0xFD */
 	{ { 0xE6000000, 0x00000000 } },  /* cmd 0xE6 */
 	{ { 0xF0000000, 0x0503C000 } },  /* cmd 0xF0 */
 	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
 	{ { 0xD7000002, 0xFFFFFFFF } },  /* cmd 0xD7 */
 	{ { 0xF2000000, 0x0007C07C } },  /* cmd 0xF2 */
-	{ { 0xFD500000, (unsigned int)((u8*)dKirbySpecial2_CutterDownAnimJoint_AnimJoint + 0x90) } },  /* cmd 0xFD */
+	{ { 0xFD500000, (unsigned int)dKirbySpecial2_Tex_0x2560 } },  /* cmd 0xFD */
 	{ { 0xE6000000, 0x00000000 } },  /* cmd 0xE6 */
 	{ { 0xF3000000, 0x070FF400 } },  /* cmd 0xF3 */
 	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
 	{ { 0xD9DDFBFF, 0x00000000 } },  /* cmd 0xD9 */
-	{ { 0x01004008, (unsigned int)((u8*)dKirbySpecial2_CutterDownAnimJoint_AnimJoint + 0x290) } },  /* cmd 0x01 */
+	{ { 0x01004008, (unsigned int)dKirbySpecial2_Vtx_0x2760_Vtx } },  /* cmd 0x01 */
 	{ { 0x06060402, 0x00000602 } },  /* cmd 0x06 */
 	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */
 	{ { 0xE7000000, 0x00000000 } },  /* cmd 0xE7 */

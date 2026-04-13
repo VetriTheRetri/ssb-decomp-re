@@ -1,0 +1,9 @@
+# Relocation metadata for file 321
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dSamusSpecial3_BombDL_DisplayList+0x24 dSamusSpecial3_Lut_0x0008_palette
+intern dSamusSpecial3_BombDL_DisplayList+0x54 dSamusSpecial3_Tex_0x0030
+intern dSamusSpecial3_BombDL_DisplayList+0x7C dSamusSpecial3_JointVerts_Vtx
+intern dSamusSpecial3_BombDL_DisplayList+0x24 dSamusSpecial3_Lut_0x0008_palette
+intern dSamusSpecial3_BombDL_DisplayList+0x54 dSamusSpecial3_Tex_0x0030
+intern dSamusSpecial3_BombDL_DisplayList+0x7C dSamusSpecial3_JointVerts_Vtx

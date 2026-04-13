@@ -1,0 +1,13 @@
+# Block manifest for relocData file 336 (NessSpecial3)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+gap_0x0000.data.c
+Tex_0x02A8.data.c
+Tex_0x0330.data.c
+Vtx_0x0730.vtx.c
+Vtx_0x07B0.vtx.c
+Vtx_0x0830.vtx.c
+gap_0x0860.data.c
+PKFireDL.dl.c
+PKFireDL_post.data.c

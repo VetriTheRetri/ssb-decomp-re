@@ -1,0 +1,5 @@
+# Relocation metadata for file 316
+# Format: <type> <ptr_label> <target_label>
+# Labels are C variable names resolved via .o symbol table
+intern dFoxSpecial4_ReflectorDL_DisplayList+0x2C dFoxSpecial4_JointVerts_Vtx
+intern dFoxSpecial4_ReflectorDL_DisplayList+0x2C dFoxSpecial4_JointVerts_Vtx

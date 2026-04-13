@@ -1,6 +1,6 @@
 /* DObjDesc: FalconKickDObjDesc @ 0xB08 (3 entries) */
 DObjDesc dCaptainSpecial2_FalconKickDObjDesc[] = {
 	{ 0, (void*)0x00000000, { 0.0f, -66.0f, -324.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dCaptainSpecial2_gap_0x09D8 + 0x58), { 0.0f, 66.0f, 324.00006103515625f }, { -0.026179999113082886f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)dCaptainSpecial2_Joint_0x0A30_DisplayList, { 0.0f, 66.0f, 324.00006103515625f }, { -0.026179999113082886f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };

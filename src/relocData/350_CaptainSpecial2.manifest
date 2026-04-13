@@ -5,10 +5,32 @@
 gap_0x0000.data.c
 FalconKickMObjSub.mobjsub.c
 gap_0x09D8.data.c
+Joint_0x0A30.dl.c
 FalconKickDObjDesc.dobjdesc.c
 pad 4
 FalconKickAnimJoint_AnimJoint.data.c
 FalconKickMatAnimJoint_MatAnimJoint.data.c
+Joint_0x5690.dl.c
+Joint_0x5C60.dl.c
+Joint_0x5C60_post.data.c
+Joint_0x5D20.dl.c
+Joint_0x5D50.dl.c
+Joint_0x5D80.dl.c
+Joint_0x5DB0.dl.c
+Joint_0x5DE0.dl.c
+Joint_0x5E10.dl.c
+Joint_0x5E40.dl.c
+Joint_0x5E70.dl.c
+JointCmd_0x5F20.data.c
+JointCmd_0x5F30.data.c
+JointCmd_0x5F40.data.c
+JointCmd_0x5F50.data.c
+JointCmd_0x5F60.data.c
+JointCmd_0x5F70.data.c
+JointCmd_0x5F80.data.c
+JointCmd_0x5F90.data.c
+JointCmd_0x5FA0.data.c
+JointCmd_0x5FB0.data.c
 EntryCar.dobjdesc.c
 pad 4
 _6200__AnimJoint.data.c

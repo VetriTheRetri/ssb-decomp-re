@@ -5,6 +5,12 @@
 gap_0x0000.data.c
 _1B34__AnimJoint.data.c
 _1B84__AnimJoint.data.c
+Joint_0x1FA0.dl.c
+Joint_0x1FA0_post.data.c
+Joint_0x2920.dl.c
+Joint_0x2920_post.data.c
+JointCmd_0x2BB0.data.c
+JointCmd_0x2BC0.data.c
 EntryArwing.dobjdesc.c
 gap_0x2C88.data.c
 _2E74__AnimJoint.data.c

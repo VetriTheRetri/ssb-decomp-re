@@ -3,6 +3,7 @@
 # The master .c file is generated from this manifest at build time.
 
 gap_0x0000.data.c
+Joint_0x0870.dl.c
 EggLay.dobjdesc.c
 pad 12
 EggLayBreak_AnimJoint.data.c

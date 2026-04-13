@@ -5,6 +5,15 @@
 gap_0x0000.data.c
 SingMObjSub.mobjsub.c
 gap_0x1C98.data.c
+Joint_0x1F38.dl.c
+Joint_0x1F38_post.data.c
+Joint_0x1FD0.dl.c
+Joint_0x2048.dl.c
+Joint_0x2090.dl.c
+JointCmd_0x20F0.data.c
+JointCmd_0x2100.data.c
+JointCmd_0x2110.data.c
+JointCmd_0x2120.data.c
 SingDObjDesc.dobjdesc.c
 pad 12
 SingAnimJoint_AnimJoint.data.c

@@ -1,10 +1,13 @@
 # Relocation metadata for file 339
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-intern dYoshiSpecial3_gap_0x0000+0x8CC dYoshiSpecial3_gap_0x0000+0x8
-intern dYoshiSpecial3_gap_0x0000+0x8FC dYoshiSpecial3_gap_0x0000+0x30
-intern dYoshiSpecial3_gap_0x0000+0x91C dYoshiSpecial3_gap_0x0000+0x830
-intern dYoshiSpecial3_EggLay+0x30 dYoshiSpecial3_gap_0x0000+0x870
+intern dYoshiSpecial3_Joint_0x0870_DisplayList+0x5C dYoshiSpecial3_gap_0x0000+0x8
+intern dYoshiSpecial3_Joint_0x0870_DisplayList+0x8C dYoshiSpecial3_gap_0x0000+0x30
+intern dYoshiSpecial3_Joint_0x0870_DisplayList+0xAC dYoshiSpecial3_gap_0x0000+0x830
+intern dYoshiSpecial3_Joint_0x0870_DisplayList+0x5C dYoshiSpecial3_gap_0x0000+0x8
+intern dYoshiSpecial3_Joint_0x0870_DisplayList+0x8C dYoshiSpecial3_gap_0x0000+0x30
+intern dYoshiSpecial3_Joint_0x0870_DisplayList+0xAC dYoshiSpecial3_gap_0x0000+0x830
+intern dYoshiSpecial3_EggLay+0x30 dYoshiSpecial3_Joint_0x0870_DisplayList
 intern dYoshiSpecial3_EggLayBreak_AnimJoint dYoshiSpecial3_EggLayBreak_AnimJoint+0x8
 intern dYoshiSpecial3_EggLayBreak_AnimJoint+0x4 dYoshiSpecial3_EggLayBreak_AnimJoint+0x18
 intern dYoshiSpecial3_EggLayThrow_AnimJoint dYoshiSpecial3_EggLayThrow_AnimJoint+0x8

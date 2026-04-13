@@ -1,0 +1,4 @@
+/* Raw data from file offset 0x2110 to 0x2120 (16 bytes) */
+u32 dPurinSpecial2_JointCmd_0x2110[] = {
+	0x00000001, 0x08490812, 0x00000004, 0x00000000, /* reloc: +0x4->0x2048 */
+};

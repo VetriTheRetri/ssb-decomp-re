@@ -5,10 +5,14 @@
 gap_0x0000.data.c
 EntryWaveMObjSub.mobjsub.c
 gap_0x01A8.data.c
+Joint_0x02D8.dl.c
+JointCmd_0x03E8.data.c
 EntryWaveDObjDesc.dobjdesc.c
 gap_0x047C.data.c
 EntryBeamMObjSub.mobjsub.c
 gap_0x0568.data.c
+Joint_0x0698.dl.c
+JointCmd_0x07A8.data.c
 EntryBeamDObjDesc.dobjdesc.c
 pad 4
 EntryWaveAnimJoint_AnimJoint.data.c
@@ -17,6 +21,8 @@ EntryWaveMatAnimJoint_MatAnimJoint.data.c
 EntryBeamMatAnimJoint_MatAnimJoint.data.c
 SpinAttackMObjSub.mobjsub.c
 gap_0x10B0.data.c
+Joint_0x1100.dl.c
+JointCmd_0x11B0.data.c
 SpinAttackDObjDesc.dobjdesc.c
 pad 12
 SpinAttackAnimJoint_AnimJoint.data.c

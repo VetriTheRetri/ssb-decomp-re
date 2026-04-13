@@ -1,0 +1,4 @@
+/* Raw data from file offset 0x03E8 to 0x03F8 (16 bytes) */
+u32 dLinkSpecial2_JointCmd_0x03E8[] = {
+	0x00000001, 0x010A00B6, 0x00000004, 0x00000000, /* reloc: +0x4->0x02D8 */
+};

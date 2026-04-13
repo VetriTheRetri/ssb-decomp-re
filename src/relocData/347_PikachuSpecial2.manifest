@@ -5,12 +5,17 @@
 gap_0x0000.data.c
 UnkMObjSub.mobjsub.c
 gap_0x06B8.data.c
+Joint_0x0718.dl.c
 UnkDObjDesc.dobjdesc.c
 pad 12
 UnkAnimJoint_AnimJoint.data.c
 UnkMatAnimJoint_MatAnimJoint.data.c
 ThunderShockMObjSub.mobjsub.c
 gap_0x1418.data.c
+Joint_0x14B8.dl.c
+Joint_0x1598.dl.c
+JointCmd_0x1620.data.c
+JointCmd_0x1630.data.c
 ThunderShockDObjDesc.dobjdesc.c
 pad 4
 ThunderShock0AnimJoint_AnimJoint.data.c

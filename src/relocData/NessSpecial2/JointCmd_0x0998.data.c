@@ -1,0 +1,4 @@
+/* Raw data from file offset 0x0998 to 0x09A8 (16 bytes) */
+u32 dNessSpecial2_JointCmd_0x0998[] = {
+	0x00000001, 0x02760238, 0x00000004, 0x00000000, /* reloc: +0x4->0x08E0 */
+};

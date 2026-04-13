@@ -3,19 +3,38 @@
 # The master .c file is generated from this manifest at build time.
 
 gap_0x0000.data.c
+Joint_0x09B0.dl.c
+Joint_0x09B0_post.data.c
+Joint_0x0A78.dl.c
+JointCmd_0x0B00.data.c
+JointCmd_0x0B10.data.c
 VulcanJab.dobjdesc.c
 gap_0x0BA4.data.c
+Joint_0x0C70.dl.c
+Joint_0x0CE0.dl.c
+JointCmd_0x0DD8.data.c
+JointCmd_0x0DE8.data.c
 CutterTrailDObjDesc.dobjdesc.c
 gap_0x0EA8.data.c
+Joint_0x11B0.dl.c
+Joint_0x1218.dl.c
+Joint_0x1280.dl.c
 CutterUpDObjDesc.dobjdesc.c
 CutterTrailAnimJoint_AnimJoint.data.c
 CutterUpAnimJoint_AnimJoint.data.c
+Joint_0x1CF8.dl.c
+JointCmd_0x1D98.data.c
 EntryStar.dobjdesc.c
 pad 4
 EntryStarL_AnimJoint.data.c
 EntryStarR_AnimJoint.data.c
+Joint_0x2210.dl.c
+Joint_0x2270.dl.c
+Joint_0x22D0.dl.c
+Joint_0x2330.dl.c
 CutterDownDObjDesc.dobjdesc.c
 pad 12
 CutterDownAnimJoint_AnimJoint.data.c
+Joint_0x27A0.dl.c
 CutterDraw.dobjdesc.c
 pad 4

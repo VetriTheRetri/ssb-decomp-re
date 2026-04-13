@@ -7,6 +7,7 @@ ThunderJoltBAnimJoint_AnimJoint.data.c
 ThunderJoltBMatAnimJoint_MatAnimJoint.data.c
 ThunderJoltMObjSub.mobjsub.c
 gap_0x2118.data.c
+Joint_0x2170.dl.c
 ThunderJoltDObjDesc.dobjdesc.c
 pad 4
 ThunderJoltAnimJoint_AnimJoint.data.c

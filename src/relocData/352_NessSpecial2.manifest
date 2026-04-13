@@ -5,6 +5,8 @@
 gap_0x0000.data.c
 PsychicMagnetMObjSub.mobjsub.c
 gap_0x0888.data.c
+Joint_0x08E0.dl.c
+JointCmd_0x0998.data.c
 PsychicMagnetDObjDesc.dobjdesc.c
 pad 4
 PsychicMagnetAnimJoint_AnimJoint.data.c

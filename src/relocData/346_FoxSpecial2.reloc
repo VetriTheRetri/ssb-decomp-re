@@ -1,10 +1,13 @@
 # Relocation metadata for file 346
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-intern dFoxSpecial2_gap_0x0000+0x224 dFoxSpecial2_gap_0x0000+0x8
-intern dFoxSpecial2_gap_0x0000+0x24C dFoxSpecial2_gap_0x0000+0x18
-intern dFoxSpecial2_gap_0x0000+0x26C dFoxSpecial2_gap_0x0000+0x98
-intern dFoxSpecial2_Reflector+0x30 dFoxSpecial2_gap_0x0000+0x1B8
+intern dFoxSpecial2_Joint_0x01B8_DisplayList+0x6C dFoxSpecial2_gap_0x0000+0x8
+intern dFoxSpecial2_Joint_0x01B8_DisplayList+0x94 dFoxSpecial2_gap_0x0000+0x18
+intern dFoxSpecial2_Joint_0x01B8_DisplayList+0xB4 dFoxSpecial2_gap_0x0000+0x98
+intern dFoxSpecial2_Joint_0x01B8_DisplayList+0x6C dFoxSpecial2_gap_0x0000+0x8
+intern dFoxSpecial2_Joint_0x01B8_DisplayList+0x94 dFoxSpecial2_gap_0x0000+0x18
+intern dFoxSpecial2_Joint_0x01B8_DisplayList+0xB4 dFoxSpecial2_gap_0x0000+0x98
+intern dFoxSpecial2_Reflector+0x30 dFoxSpecial2_Joint_0x01B8_DisplayList
 intern dFoxSpecial2_ReflectorStart_AnimJoint+0x4 dFoxSpecial2_ReflectorStart_AnimJoint+0x8
 intern dFoxSpecial2_ReflectorHit_AnimJoint+0x4 dFoxSpecial2_ReflectorHit_AnimJoint+0x8
 intern dFoxSpecial2_ReflectorEnd_AnimJoint+0x4 dFoxSpecial2_ReflectorEnd_AnimJoint+0x8

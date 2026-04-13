@@ -1,0 +1,4 @@
+/* Raw data from file offset 0x0B10 to 0x0B20 (16 bytes) */
+u32 dKirbySpecial2_JointCmd_0x0B10[] = {
+	0x00000001, 0x02C9029E, 0x00000004, 0x00000000, /* reloc: +0x4->0x0A78 */
+};

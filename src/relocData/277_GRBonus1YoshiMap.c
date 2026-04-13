@@ -4,16 +4,22 @@
 #include <mp/mptypes.h>
 #include "relocdata_types.h"
 
+/* Cross-file references resolved by fixRelocChain.py — see .reloc */
+extern DObjDesc dGRBonus1YoshiFile2_Layer0DObj[];
+extern DObjDesc dGRBonus1YoshiFile2_Layer1DObj[];
+extern u32 dGRBonus1YoshiFile2_Layer1Anim_AnimJoint[];
+extern u32 dGRBonus1YoshiFile2_MPGeometryData_0x31F0[];
+
 MPGroundData dGRBonus1YoshiMap_header =
 {
     /* gr_desc[4] */
     {
-        { (DObjDesc *)0x00040320, NULL, NULL, NULL },
-        { (DObjDesc *)0x00050B5A, (AObjEvent32 **)0x00100C84, NULL, NULL },
+        { dGRBonus1YoshiFile2_Layer0DObj, NULL, NULL, NULL },
+        { dGRBonus1YoshiFile2_Layer1DObj, dGRBonus1YoshiFile2_Layer1Anim_AnimJoint, NULL, NULL },
         { NULL, NULL, NULL, NULL },
         { NULL, NULL, NULL, NULL },
     },
-    (MPGeometryData *)0x00120C7C,  /* map_geometry */
+    dGRBonus1YoshiFile2_MPGeometryData_0x31F0,  /* map_geometry */
     1,  /* layer_mask */
     (Sprite *)0xFFFF9B22,  /* wallpaper */
     { 0x4B, 0xC2, 0xF4 },  /* fog_color */

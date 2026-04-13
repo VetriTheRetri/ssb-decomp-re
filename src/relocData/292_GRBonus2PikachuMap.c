@@ -4,18 +4,25 @@
 #include <mp/mptypes.h>
 #include "relocdata_types.h"
 
+/* Cross-file references resolved by fixRelocChain.py — see .reloc */
+extern Sprite dBonus1CommonBackground_0x26c88[];
+extern DObjDesc dGRBonus2PikachuFile2_Layer0DObj[];
+extern DObjDesc dGRBonus2PikachuFile2_Layer1DObj[];
+extern u32 dGRBonus2PikachuFile2_Layer1Anim_AnimJoint[];
+extern u32 dGRBonus2PikachuFile2_MPGeometryData_0x4204[];
+
 MPGroundData dGRBonus2PikachuMap_header =
 {
     /* gr_desc[4] */
     {
-        { (DObjDesc *)0x00040356, NULL, NULL, NULL },
-        { (DObjDesc *)0x00050DA4, (AObjEvent32 **)0x00101088, NULL, NULL },
+        { dGRBonus2PikachuFile2_Layer0DObj, NULL, NULL, NULL },
+        { dGRBonus2PikachuFile2_Layer1DObj, dGRBonus2PikachuFile2_Layer1Anim_AnimJoint, NULL, NULL },
         { NULL, NULL, NULL, NULL },
         { NULL, NULL, NULL, NULL },
     },
-    (MPGeometryData *)0x00121081,  /* map_geometry */
+    dGRBonus2PikachuFile2_MPGeometryData_0x4204,  /* map_geometry */
     3,  /* layer_mask */
-    (Sprite *)0xFFFF9B22,  /* wallpaper */
+    dBonus1CommonBackground_0x26c88,  /* wallpaper */
     { 0x4B, 0xC2, 0xF4 },  /* fog_color */
     0x00,  /* fog_alpha */
     /* emblem_colors[4] */

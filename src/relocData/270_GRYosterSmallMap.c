@@ -4,6 +4,15 @@
 #include <mp/mptypes.h>
 #include "relocdata_types.h"
 
+/* Cross-file references resolved by fixRelocChain.py — see .reloc */
+extern Sprite dStageYoshi_sprite_0x26C88[];
+extern DObjDesc dStageYosterSmallFile2_Layer0DObj[];
+extern u32 dStageYosterSmallFile2_Layer0Anim_AnimJoint[];
+extern DObjDesc dStageYosterSmallFile2_Layer1DObj[];
+extern DObjDesc dStageYosterSmallFile2_Layer2DObj[];
+extern DObjDesc dStageYosterSmallFile2_Layer3DObj[];
+extern u32 dStageYosterSmallFile2_MPGeometryData_0x39F0[];
+
 /* Item-randomizer weights, referenced by `header.item_weights` */
 u8 dGRYosterSmallMap_item_weights[20] = { 0x3C, 0x28, 0x00, 0x96, 0x0E, 0x07, 0x08, 0x0A, 0x06, 0x0E, 0x0F, 0x08, 0x0C, 0x0A, 0x0C, 0x0D, 0x08, 0x08, 0x0A, 0x14 };
 
@@ -11,14 +20,14 @@ MPGroundData dGRYosterSmallMap_header =
 {
     /* gr_desc[4] */
     {
-        { (DObjDesc *)0x000602A2, (AObjEvent32 **)0x00090348, NULL, NULL },
-        { (DObjDesc *)0x000D0DFC, NULL, NULL, NULL },
-        { (DObjDesc *)0x00110F2A, NULL, NULL, NULL },
-        { (DObjDesc *)0x00151126, NULL, NULL, NULL },
+        { dStageYosterSmallFile2_Layer0DObj, dStageYosterSmallFile2_Layer0Anim_AnimJoint, NULL, NULL },
+        { dStageYosterSmallFile2_Layer1DObj, NULL, NULL, NULL },
+        { dStageYosterSmallFile2_Layer2DObj, NULL, NULL, NULL },
+        { dStageYosterSmallFile2_Layer3DObj, NULL, NULL, NULL },
     },
-    (MPGeometryData *)0x00170E7C,  /* map_geometry */
+    dStageYosterSmallFile2_MPGeometryData_0x39F0,  /* map_geometry */
     0,  /* layer_mask */
-    (Sprite *)0xFFFF9B22,  /* wallpaper */
+    dStageYoshi_sprite_0x26C88,  /* wallpaper */
     { 0xF3, 0xC7, 0xA5 },  /* fog_color */
     0x00,  /* fog_alpha */
     /* emblem_colors[4] */
@@ -40,7 +49,7 @@ MPGroundData dGRYosterSmallMap_header =
     -7000,  /* map_bound_left */
     0x00000008,  /* bgm_id */
     NULL,  /* map_nodes */
-    (MPItemWeights *)0xFFFF0000,  /* item_weights */
+    dGRYosterSmallMap_item_weights,  /* item_weights */
     -2500,  /* alt_warning */
     3500,  /* camera_bound_team_top */
     -1000,  /* camera_bound_team_bottom */

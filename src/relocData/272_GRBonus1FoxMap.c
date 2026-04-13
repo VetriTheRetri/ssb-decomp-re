@@ -4,16 +4,22 @@
 #include <mp/mptypes.h>
 #include "relocdata_types.h"
 
+/* Cross-file references resolved by fixRelocChain.py — see .reloc */
+extern DObjDesc dGRBonus1FoxFile2_Layer0DObj[];
+extern DObjDesc dGRBonus1FoxFile2_Layer1DObj[];
+extern u32 dGRBonus1FoxFile2_Layer1Anim_AnimJoint[];
+extern u32 dGRBonus1FoxFile2_MPGeometryData_0x240C[];
+
 MPGroundData dGRBonus1FoxMap_header =
 {
     /* gr_desc[4] */
     {
-        { (DObjDesc *)0x00040298, NULL, NULL, NULL },
-        { (DObjDesc *)0x0005081A, (AObjEvent32 **)0x0010090C, NULL, NULL },
+        { dGRBonus1FoxFile2_Layer0DObj, NULL, NULL, NULL },
+        { dGRBonus1FoxFile2_Layer1DObj, dGRBonus1FoxFile2_Layer1Anim_AnimJoint, NULL, NULL },
         { NULL, NULL, NULL, NULL },
         { NULL, NULL, NULL, NULL },
     },
-    (MPGeometryData *)0x00120903,  /* map_geometry */
+    dGRBonus1FoxFile2_MPGeometryData_0x240C,  /* map_geometry */
     1,  /* layer_mask */
     (Sprite *)0xFFFF9B22,  /* wallpaper */
     { 0x4B, 0xC2, 0xF4 },  /* fog_color */

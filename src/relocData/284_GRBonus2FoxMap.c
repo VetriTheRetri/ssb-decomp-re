@@ -4,18 +4,27 @@
 #include <mp/mptypes.h>
 #include "relocdata_types.h"
 
+/* Cross-file references resolved by fixRelocChain.py — see .reloc */
+extern Sprite dBonus1CommonBackground_0x26c88[];
+extern DObjDesc dGRBonus2FoxFile2_Layer0DObj[];
+extern DObjDesc dGRBonus2FoxFile2_Layer1DObj[];
+extern u32 dGRBonus2FoxFile2_Layer1Anim_AnimJoint[];
+extern MObjSub dGRBonus2FoxFile2_Layer1MObj_MObjSub[];
+extern u32 dGRBonus2FoxFile2_Layer1MatAnim_MatAnimJoint[];
+extern u32 dGRBonus2FoxFile2_MPGeometryData_0x3214[];
+
 MPGroundData dGRBonus2FoxMap_header =
 {
     /* gr_desc[4] */
     {
-        { (DObjDesc *)0x00040254, NULL, NULL, NULL },
-        { (DObjDesc *)0x00050A66, (AObjEvent32 **)0x00060C8C, (MObjSub ***)0x00070298, (AObjEvent32 ***)0x00100ED0 },
+        { dGRBonus2FoxFile2_Layer0DObj, NULL, NULL, NULL },
+        { dGRBonus2FoxFile2_Layer1DObj, dGRBonus2FoxFile2_Layer1Anim_AnimJoint, dGRBonus2FoxFile2_Layer1MObj_MObjSub, dGRBonus2FoxFile2_Layer1MatAnim_MatAnimJoint },
         { NULL, NULL, NULL, NULL },
         { NULL, NULL, NULL, NULL },
     },
-    (MPGeometryData *)0x00120C85,  /* map_geometry */
+    dGRBonus2FoxFile2_MPGeometryData_0x3214,  /* map_geometry */
     3,  /* layer_mask */
-    (Sprite *)0x00209B22,  /* wallpaper */
+    dBonus1CommonBackground_0x26c88,  /* wallpaper */
     { 0x4B, 0xC2, 0xF4 },  /* fog_color */
     0x00,  /* fog_alpha */
     /* emblem_colors[4] */

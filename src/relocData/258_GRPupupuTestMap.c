@@ -4,6 +4,17 @@
 #include <mp/mptypes.h>
 #include "relocdata_types.h"
 
+/* Cross-file references resolved by fixRelocChain.py — see .reloc */
+extern Sprite dStageDreamLand_sprite_0x26C88[];
+extern u32 dStagePupupuFile2_gap_0x0898[];
+extern u32 dStagePupupuFile2_Layer0Anim_AnimJoint[];
+extern u32 dStagePupupuFile2_gap_0x1D00[];
+extern u32 dStagePupupuFile2_Layer1Anim_AnimJoint[];
+extern u32 dStagePupupuFile2_gap_0x22D0[];
+extern u32 dStagePupupuFile2_gap_0x2810[];
+extern u32 dStagePupupuFile2_Layer3Anim_AnimJoint[];
+extern u32 dStagePupupuFile2_MPGeometryData_0x2094[];
+
 /* Item-randomizer weights, referenced by `header.item_weights` */
 u8 dGRPupupuTestMap_item_weights[20] = { 0x46, 0x28, 0x78, 0x00, 0x0A, 0x07, 0x06, 0x0A, 0x05, 0x0A, 0x0A, 0x08, 0x0A, 0x07, 0x0A, 0x0A, 0x0A, 0x05, 0x05, 0x12 };
 
@@ -11,14 +22,14 @@ MPGroundData dGRPupupuTestMap_header =
 {
     /* gr_desc[4] */
     {
-        { (DObjDesc *)0x00060226, (AObjEvent32 **)0x00090274, NULL, NULL },
-        { (DObjDesc *)0x000A0740, (AObjEvent32 **)0x000D082C, NULL, NULL },
-        { (DObjDesc *)0x001108B4, NULL, NULL, NULL },
-        { (DObjDesc *)0x00120A04, (AObjEvent32 **)0x00150A30, NULL, NULL },
+        { dStagePupupuFile2_gap_0x0898, dStagePupupuFile2_Layer0Anim_AnimJoint, NULL, NULL },
+        { dStagePupupuFile2_gap_0x1D00, dStagePupupuFile2_Layer1Anim_AnimJoint, NULL, NULL },
+        { dStagePupupuFile2_gap_0x22D0, NULL, NULL, NULL },
+        { dStagePupupuFile2_gap_0x2810, dStagePupupuFile2_Layer3Anim_AnimJoint, NULL, NULL },
     },
-    (MPGeometryData *)0x00170825,  /* map_geometry */
+    dStagePupupuFile2_MPGeometryData_0x2094,  /* map_geometry */
     0,  /* layer_mask */
-    (Sprite *)0xFFFF9B22,  /* wallpaper */
+    dStageDreamLand_sprite_0x26C88,  /* wallpaper */
     { 0x4B, 0xC2, 0xF4 },  /* fog_color */
     0x00,  /* fog_alpha */
     /* emblem_colors[4] */
@@ -40,7 +51,7 @@ MPGroundData dGRPupupuTestMap_header =
     -11000,  /* map_bound_left */
     0x00000000,  /* bgm_id */
     NULL,  /* map_nodes */
-    (MPItemWeights *)0xFFFF0000,  /* item_weights */
+    dGRPupupuTestMap_item_weights,  /* item_weights */
     -2900,  /* alt_warning */
     4000,  /* camera_bound_team_top */
     -2500,  /* camera_bound_team_bottom */

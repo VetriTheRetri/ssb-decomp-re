@@ -1,16 +1,27 @@
 /* MPGroundData (typed via tools/typeStageMap.py) */
+
+/* Cross-file references resolved by fixRelocChain.py — see .reloc */
+extern Sprite dStageInishieBackground_0x26c88[];
+extern DObjDesc dStageInishieFile2_Layer0DObj[];
+extern u32 dStageInishieFile2_Layer0Anim_AnimJoint[];
+extern MObjSub dStageInishieFile2_Layer0MObj_MObjSub[];
+extern u32 dStageInishieFile2_Layer0MatAnim_MatAnimJoint[];
+extern DObjDesc dStageInishieFile2_Layer1DObj[];
+extern DObjDesc dStageInishieFile2_Layer2DObj[];
+extern DObjDesc dStageInishieFile2_Layer3DObj[];
+extern u32 dStageInishieFile2_MPGeometryData_0x6698[];
 MPGroundData dGRInishieMap_MapHeader_0x0014 =
 {
     /* gr_desc[4] */
     {
-        { (DObjDesc *)0x00061292, (AObjEvent32 **)0x0007130C, (MObjSub ***)0x00080DCC, (AObjEvent32 ***)0x00091390 },
-        { (DObjDesc *)0x000D18C8, NULL, NULL, NULL },
-        { (DObjDesc *)0x00111A08, NULL, NULL, NULL },
-        { (DObjDesc *)0x00151B00, NULL, NULL, NULL },
+        { dStageInishieFile2_Layer0DObj, dStageInishieFile2_Layer0Anim_AnimJoint, dStageInishieFile2_Layer0MObj_MObjSub, dStageInishieFile2_Layer0MatAnim_MatAnimJoint },
+        { dStageInishieFile2_Layer1DObj, NULL, NULL, NULL },
+        { dStageInishieFile2_Layer2DObj, NULL, NULL, NULL },
+        { dStageInishieFile2_Layer3DObj, NULL, NULL, NULL },
     },
-    (MPGeometryData *)0x001719A6,  /* map_geometry */
+    dStageInishieFile2_MPGeometryData_0x6698,  /* map_geometry */
     1,  /* layer_mask */
-    (Sprite *)0x00259B22,  /* wallpaper */
+    dStageInishieBackground_0x26c88,  /* wallpaper */
     { 0x71, 0x88, 0xB8 },  /* fog_color */
     0x00,  /* fog_alpha */
     /* emblem_colors[4] */
@@ -32,7 +43,7 @@ MPGroundData dGRInishieMap_MapHeader_0x0014 =
     -7400,  /* map_bound_left */
     0x00000002,  /* bgm_id */
     (void *)0x0036017C,  /* map_nodes */
-    (MPItemWeights *)0xFFFF0000,  /* item_weights */
+    dGRInishieMap_gap_0x0000,  /* item_weights */
     -2200,  /* alt_warning */
     3000,  /* camera_bound_team_top */
     -1000,  /* camera_bound_team_bottom */

@@ -1,14 +1,20 @@
 /* MPGroundData (typed via tools/typeStageMap.py) */
+
+/* Cross-file references resolved by fixRelocChain.py — see .reloc */
+extern DObjDesc dStageHyruleFile2_Layer0DObj[];
+extern DObjDesc dStageHyruleFile2_Layer1DObj[];
+extern DObjDesc dStageHyruleFile2_Layer3DObj[];
+extern u32 dStageHyruleFile2_MPGeometryData_0x599C[];
 MPGroundData dGRHyruleMap_MapHeader_0x0014 =
 {
     /* gr_desc[4] */
     {
-        { (DObjDesc *)0x00091162, NULL, NULL, NULL },
-        { (DObjDesc *)0x001115C0, NULL, NULL, NULL },
+        { dStageHyruleFile2_Layer0DObj, NULL, NULL, NULL },
+        { dStageHyruleFile2_Layer1DObj, NULL, NULL, NULL },
         { NULL, NULL, NULL, NULL },
-        { (DObjDesc *)0x001519AA, NULL, NULL, NULL },
+        { dStageHyruleFile2_Layer3DObj, NULL, NULL, NULL },
     },
-    (MPGeometryData *)0x00171667,  /* map_geometry */
+    dStageHyruleFile2_MPGeometryData_0x599C,  /* map_geometry */
     1,  /* layer_mask */
     (Sprite *)0xFFFF9B22,  /* wallpaper */
     { 0xE1, 0xC8, 0xFF },  /* fog_color */
@@ -32,7 +38,7 @@ MPGroundData dGRHyruleMap_MapHeader_0x0014 =
     -12000,  /* map_bound_left */
     0x00000009,  /* bgm_id */
     NULL,  /* map_nodes */
-    (MPItemWeights *)0xFFFF0000,  /* item_weights */
+    dGRHyruleMap_gap_0x0000,  /* item_weights */
     -2600,  /* alt_warning */
     6000,  /* camera_bound_team_top */
     -2100,  /* camera_bound_team_bottom */

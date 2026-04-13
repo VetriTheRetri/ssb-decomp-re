@@ -1,14 +1,21 @@
 /* MPGroundData (typed via tools/typeStageMap.py) */
+
+/* Cross-file references resolved by fixRelocChain.py — see .reloc */
+extern DObjDesc dGRBonus3File2_Layer0DObj[];
+extern DObjDesc dGRBonus3File2_Layer1DObj[];
+extern MObjSub dGRBonus3File2_Layer1MObj_MObjSub[];
+extern u32 dGRBonus3File2_Layer1MatAnim_MatAnimJoint[];
+extern u32 dGRBonus3File2_MPGeometryData_0x65A8[];
 MPGroundData dGRBonus3Map_gap_0x0000 =
 {
     /* gr_desc[4] */
     {
-        { (DObjDesc *)0x00040D24, NULL, NULL, NULL },
-        { (DObjDesc *)0x00061848, NULL, (MObjSub ***)0x00070DA8, (AObjEvent32 ***)0x00101974 },
+        { dGRBonus3File2_Layer0DObj, NULL, NULL, NULL },
+        { dGRBonus3File2_Layer1DObj, NULL, dGRBonus3File2_Layer1MObj_MObjSub, dGRBonus3File2_Layer1MatAnim_MatAnimJoint },
         { NULL, NULL, NULL, NULL },
         { NULL, NULL, NULL, NULL },
     },
-    (MPGeometryData *)0x0020196A,  /* map_geometry */
+    dGRBonus3File2_MPGeometryData_0x65A8,  /* map_geometry */
     2,  /* layer_mask */
     NULL,  /* wallpaper */
     { 0x00, 0x00, 0x00 },  /* fog_color */

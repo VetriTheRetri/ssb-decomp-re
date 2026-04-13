@@ -4,18 +4,25 @@
 #include <mp/mptypes.h>
 #include "relocdata_types.h"
 
+/* Cross-file references resolved by fixRelocChain.py — see .reloc */
+extern Sprite dBonus1CommonBackground_0x26c88[];
+extern DObjDesc dGRBonus2MarioFile2_Layer0DObj[];
+extern DObjDesc dGRBonus2MarioFile2_Layer1DObj[];
+extern u32 dGRBonus2MarioFile2_Layer1Anim_AnimJoint[];
+extern u32 dGRBonus2MarioFile2_MPGeometryData_0x3B7C[];
+
 MPGroundData dGRBonus2MarioMap_header =
 {
     /* gr_desc[4] */
     {
-        { (DObjDesc *)0x00040274, NULL, NULL, NULL },
-        { (DObjDesc *)0x00050CBC, (AObjEvent32 **)0x00100EE8, NULL, NULL },
+        { dGRBonus2MarioFile2_Layer0DObj, NULL, NULL, NULL },
+        { dGRBonus2MarioFile2_Layer1DObj, dGRBonus2MarioFile2_Layer1Anim_AnimJoint, NULL, NULL },
         { NULL, NULL, NULL, NULL },
         { NULL, NULL, NULL, NULL },
     },
-    (MPGeometryData *)0x00120EDF,  /* map_geometry */
+    dGRBonus2MarioFile2_MPGeometryData_0x3B7C,  /* map_geometry */
     3,  /* layer_mask */
-    (Sprite *)0xFFFF9B22,  /* wallpaper */
+    dBonus1CommonBackground_0x26c88,  /* wallpaper */
     { 0x4B, 0xC2, 0xF4 },  /* fog_color */
     0x00,  /* fog_alpha */
     /* emblem_colors[4] */

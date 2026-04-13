@@ -1,16 +1,24 @@
 /* MPGroundData (typed via tools/typeStageMap.py) */
+
+/* Cross-file references resolved by fixRelocChain.py — see .reloc */
+extern Sprite dStageZebes_sprite_0x26C88[];
+extern DObjDesc dStageZebesFile2_Layer1DObj[];
+extern u32 dStageZebesFile2_Layer1Anim_AnimJoint[];
+extern MObjSub dStageZebesFile2_Layer1MObj_MObjSub[];
+extern u32 dStageZebesFile2_Layer1MatAnim_MatAnimJoint[];
+extern u32 dStageZebesFile2_MPGeometryData_0x6160[];
 MPGroundData dGRZebesMap_MapHeader_0x0014 =
 {
     /* gr_desc[4] */
     {
         { NULL, NULL, NULL, NULL },
-        { (DObjDesc *)0x000A16B0, (AObjEvent32 **)0x000B1860, (MObjSub ***)0x000C0AD2, (AObjEvent32 ***)0x00151904 },
+        { dStageZebesFile2_Layer1DObj, dStageZebesFile2_Layer1Anim_AnimJoint, dStageZebesFile2_Layer1MObj_MObjSub, dStageZebesFile2_Layer1MatAnim_MatAnimJoint },
         { NULL, NULL, NULL, NULL },
         { NULL, NULL, NULL, NULL },
     },
-    (MPGeometryData *)0x00171858,  /* map_geometry */
+    dStageZebesFile2_MPGeometryData_0x6160,  /* map_geometry */
     2,  /* layer_mask */
-    (Sprite *)0x00259B22,  /* wallpaper */
+    dStageZebes_sprite_0x26C88,  /* wallpaper */
     { 0x00, 0x00, 0x00 },  /* fog_color */
     0x00,  /* fog_alpha */
     /* emblem_colors[4] */
@@ -32,7 +40,7 @@ MPGroundData dGRZebesMap_MapHeader_0x0014 =
     -9500,  /* map_bound_left */
     0x00000001,  /* bgm_id */
     (void *)0xFFFF02C2,  /* map_nodes */
-    (MPItemWeights *)0xFFFF0000,  /* item_weights */
+    dGRZebesMap_gap_0x0000,  /* item_weights */
     -2900,  /* alt_warning */
     4400,  /* camera_bound_team_top */
     -2100,  /* camera_bound_team_bottom */

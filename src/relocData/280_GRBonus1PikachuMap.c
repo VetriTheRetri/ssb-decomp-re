@@ -4,16 +4,22 @@
 #include <mp/mptypes.h>
 #include "relocdata_types.h"
 
+/* Cross-file references resolved by fixRelocChain.py — see .reloc */
+extern DObjDesc dGRBonus1PikachuFile2_Layer0DObj[];
+extern DObjDesc dGRBonus1PikachuFile2_Layer1DObj[];
+extern u32 dGRBonus1PikachuFile2_Layer1Anim_AnimJoint[];
+extern u32 dGRBonus1PikachuFile2_MPGeometryData_0x2A10[];
+
 MPGroundData dGRBonus1PikachuMap_header =
 {
     /* gr_desc[4] */
     {
-        { (DObjDesc *)0x00040298, NULL, NULL, NULL },
-        { (DObjDesc *)0x00050996, (AObjEvent32 **)0x00100A8C, NULL, NULL },
+        { dGRBonus1PikachuFile2_Layer0DObj, NULL, NULL, NULL },
+        { dGRBonus1PikachuFile2_Layer1DObj, dGRBonus1PikachuFile2_Layer1Anim_AnimJoint, NULL, NULL },
         { NULL, NULL, NULL, NULL },
         { NULL, NULL, NULL, NULL },
     },
-    (MPGeometryData *)0x00120A84,  /* map_geometry */
+    dGRBonus1PikachuFile2_MPGeometryData_0x2A10,  /* map_geometry */
     1,  /* layer_mask */
     (Sprite *)0xFFFF9B22,  /* wallpaper */
     { 0x4B, 0xC2, 0xF4 },  /* fog_color */

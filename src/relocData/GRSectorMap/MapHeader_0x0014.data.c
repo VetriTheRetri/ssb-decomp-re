@@ -1,16 +1,24 @@
 /* MPGroundData (typed via tools/typeStageMap.py) */
+
+/* Cross-file references resolved by fixRelocChain.py — see .reloc */
+extern Sprite dStageSector_sprite_0x26C88[];
+extern DObjDesc dStageSectorFile2_Layer0DObj[];
+extern u32 dStageSectorFile2_Layer0Anim_AnimJoint[];
+extern DObjDesc dStageSectorFile2_Layer1DObj[];
+extern u32 dStageSectorFile2_Layer1Anim_AnimJoint[];
+extern u32 dStageSectorFile2_MPGeometryData_0x8AD8[];
 MPGroundData dGRSectorMap_MapHeader_0x0014 =
 {
     /* gr_desc[4] */
     {
-        { (DObjDesc *)0x00061132, (AObjEvent32 **)0x000911C4, NULL, NULL },
-        { (DObjDesc *)0x000A21A0, (AObjEvent32 **)0x001522C0, NULL, NULL },
+        { dStageSectorFile2_Layer0DObj, dStageSectorFile2_Layer0Anim_AnimJoint, NULL, NULL },
+        { dStageSectorFile2_Layer1DObj, dStageSectorFile2_Layer1Anim_AnimJoint, NULL, NULL },
         { NULL, NULL, NULL, NULL },
         { NULL, NULL, NULL, NULL },
     },
-    (MPGeometryData *)0x001722B6,  /* map_geometry */
+    dStageSectorFile2_MPGeometryData_0x8AD8,  /* map_geometry */
     3,  /* layer_mask */
-    (Sprite *)0x00259B22,  /* wallpaper */
+    dStageSector_sprite_0x26C88,  /* wallpaper */
     { 0x00, 0x00, 0x32 },  /* fog_color */
     0x00,  /* fog_alpha */
     /* emblem_colors[4] */
@@ -32,7 +40,7 @@ MPGroundData dGRSectorMap_MapHeader_0x0014 =
     -14000,  /* map_bound_left */
     0x00000004,  /* bgm_id */
     (void *)0x002F0000,  /* map_nodes */
-    (MPItemWeights *)0xFFFF0000,  /* item_weights */
+    dGRSectorMap_Arwing0_AnimJoint,  /* item_weights */
     -2300,  /* alt_warning */
     7000,  /* camera_bound_team_top */
     -1500,  /* camera_bound_team_bottom */

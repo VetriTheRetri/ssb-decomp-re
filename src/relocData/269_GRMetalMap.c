@@ -4,6 +4,22 @@
 #include <mp/mptypes.h>
 #include "relocdata_types.h"
 
+/* Cross-file references resolved by fixRelocChain.py — see .reloc */
+extern Sprite dStageMetalBackground_0x26c88[];
+extern DObjDesc dStageMetalFile2_Layer0DObj[];
+extern MObjSub dStageMetalFile2_Layer0MObj_MObjSub[];
+extern u32 dStageMetalFile2_Layer0MatAnim_MatAnimJoint[];
+extern DObjDesc dStageMetalFile2_Layer1DObj[];
+extern MObjSub dStageMetalFile2_Layer1MObj_MObjSub[];
+extern u32 dStageMetalFile2_Layer1MatAnim_MatAnimJoint[];
+extern DObjDesc dStageMetalFile2_Layer2DObj[];
+extern MObjSub dStageMetalFile2_Layer2MObj_MObjSub[];
+extern u32 dStageMetalFile2_Layer2MatAnim_MatAnimJoint[];
+extern DObjDesc dStageMetalFile2_Layer3DObj[];
+extern MObjSub dStageMetalFile2_Layer3MObj_MObjSub[];
+extern u32 dStageMetalFile2_Layer3MatAnim_MatAnimJoint[];
+extern u32 dStageMetalFile2_MPGeometryData_0x3068[];
+
 /* Item-randomizer weights, referenced by `header.item_weights` */
 u8 dGRMetalMap_item_weights[20] = { 0x3C, 0x28, 0x78, 0x00, 0x01, 0x00, 0x06, 0x0A, 0x05, 0x0C, 0x16, 0x08, 0x0A, 0x07, 0x0A, 0x0A, 0x0A, 0x05, 0x05, 0x12 };
 
@@ -11,14 +27,14 @@ MPGroundData dGRMetalMap_header =
 {
     /* gr_desc[4] */
     {
-        { (DObjDesc *)0x000706C4, NULL, (MObjSub ***)0x0008030C, (AObjEvent32 ***)0x000906E8 },
-        { (DObjDesc *)0x000B0BB8, NULL, (MObjSub ***)0x000C0774, (AObjEvent32 ***)0x000D0C24 },
-        { (DObjDesc *)0x000F0D1A, NULL, (MObjSub ***)0x00100C88, (AObjEvent32 ***)0x00110D3C },
-        { (DObjDesc *)0x00130F76, NULL, (MObjSub ***)0x00140D54, (AObjEvent32 ***)0x00150F98 },
+        { dStageMetalFile2_Layer0DObj, NULL, dStageMetalFile2_Layer0MObj_MObjSub, dStageMetalFile2_Layer0MatAnim_MatAnimJoint },
+        { dStageMetalFile2_Layer1DObj, NULL, dStageMetalFile2_Layer1MObj_MObjSub, dStageMetalFile2_Layer1MatAnim_MatAnimJoint },
+        { dStageMetalFile2_Layer2DObj, NULL, dStageMetalFile2_Layer2MObj_MObjSub, dStageMetalFile2_Layer2MatAnim_MatAnimJoint },
+        { dStageMetalFile2_Layer3DObj, NULL, dStageMetalFile2_Layer3MObj_MObjSub, dStageMetalFile2_Layer3MatAnim_MatAnimJoint },
     },
-    (MPGeometryData *)0x00170C1A,  /* map_geometry */
+    dStageMetalFile2_MPGeometryData_0x3068,  /* map_geometry */
     0,  /* layer_mask */
-    (Sprite *)0xFFFF9B22,  /* wallpaper */
+    dStageMetalBackground_0x26c88,  /* wallpaper */
     { 0x00, 0x00, 0x0A },  /* fog_color */
     0x00,  /* fog_alpha */
     /* emblem_colors[4] */
@@ -40,7 +56,7 @@ MPGroundData dGRMetalMap_header =
     -10000,  /* map_bound_left */
     0x00000025,  /* bgm_id */
     NULL,  /* map_nodes */
-    (MPItemWeights *)0xFFFF0000,  /* item_weights */
+    dGRMetalMap_item_weights,  /* item_weights */
     -2900,  /* alt_warning */
     5000,  /* camera_bound_team_top */
     -2400,  /* camera_bound_team_bottom */

@@ -4,16 +4,23 @@
 #include <mp/mptypes.h>
 #include "relocdata_types.h"
 
+/* Cross-file references resolved by fixRelocChain.py — see .reloc */
+extern DObjDesc dStageExplainFile2_Layer0DObj[];
+extern DObjDesc dStageExplainFile2_Layer1DObj[];
+extern DObjDesc dStageExplainFile2_Layer2DObj[];
+extern DObjDesc dStageExplainFile2_Layer3DObj[];
+extern u32 dStageExplainFile2_MPGeometryData_0x0854[];
+
 MPGroundData dGRExplainMap_header =
 {
     /* gr_desc[4] */
     {
-        { (DObjDesc *)0x00040042, NULL, NULL, NULL },
-        { (DObjDesc *)0x000801C8, NULL, NULL, NULL },
-        { (DObjDesc *)0x000C026E, NULL, NULL, NULL },
-        { (DObjDesc *)0x00100374, NULL, NULL, NULL },
+        { dStageExplainFile2_Layer0DObj, NULL, NULL, NULL },
+        { dStageExplainFile2_Layer1DObj, NULL, NULL, NULL },
+        { dStageExplainFile2_Layer2DObj, NULL, NULL, NULL },
+        { dStageExplainFile2_Layer3DObj, NULL, NULL, NULL },
     },
-    (MPGeometryData *)0x00120215,  /* map_geometry */
+    dStageExplainFile2_MPGeometryData_0x0854,  /* map_geometry */
     0,  /* layer_mask */
     (Sprite *)0xFFFF9B22,  /* wallpaper */
     { 0x6E, 0xD2, 0xFF },  /* fog_color */

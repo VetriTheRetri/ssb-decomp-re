@@ -4,18 +4,25 @@
 #include <mp/mptypes.h>
 #include "relocdata_types.h"
 
+/* Cross-file references resolved by fixRelocChain.py — see .reloc */
+extern Sprite dBonus1CommonBackground_0x26c88[];
+extern DObjDesc dGRBonus2NessFile2_Layer0DObj[];
+extern DObjDesc dGRBonus2NessFile2_Layer1DObj[];
+extern u32 dGRBonus2NessFile2_Layer1Anim_AnimJoint[];
+extern u32 dGRBonus2NessFile2_MPGeometryData_0x3DC0[];
+
 MPGroundData dGRBonus2NessMap_header =
 {
     /* gr_desc[4] */
     {
-        { (DObjDesc *)0x000402DC, NULL, NULL, NULL },
-        { (DObjDesc *)0x00050D28, (AObjEvent32 **)0x00100F78, NULL, NULL },
+        { dGRBonus2NessFile2_Layer0DObj, NULL, NULL, NULL },
+        { dGRBonus2NessFile2_Layer1DObj, dGRBonus2NessFile2_Layer1Anim_AnimJoint, NULL, NULL },
         { NULL, NULL, NULL, NULL },
         { NULL, NULL, NULL, NULL },
     },
-    (MPGeometryData *)0x00120F70,  /* map_geometry */
+    dGRBonus2NessFile2_MPGeometryData_0x3DC0,  /* map_geometry */
     3,  /* layer_mask */
-    (Sprite *)0x00209B22,  /* wallpaper */
+    dBonus1CommonBackground_0x26c88,  /* wallpaper */
     { 0x4B, 0xC2, 0xF4 },  /* fog_color */
     0x00,  /* fog_alpha */
     /* emblem_colors[4] */

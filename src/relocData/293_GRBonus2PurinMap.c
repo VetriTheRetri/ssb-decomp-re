@@ -4,18 +4,25 @@
 #include <mp/mptypes.h>
 #include "relocdata_types.h"
 
+/* Cross-file references resolved by fixRelocChain.py — see .reloc */
+extern Sprite dBonus1CommonBackground_0x26c88[];
+extern DObjDesc dGRBonus2PurinFile2_Layer0DObj[];
+extern DObjDesc dGRBonus2PurinFile2_Layer1DObj[];
+extern u32 dGRBonus2PurinFile2_Layer1Anim_AnimJoint[];
+extern u32 dGRBonus2PurinFile2_MPGeometryData_0x406C[];
+
 MPGroundData dGRBonus2PurinMap_header =
 {
     /* gr_desc[4] */
     {
-        { (DObjDesc *)0x00040210, NULL, NULL, NULL },
-        { (DObjDesc *)0x00050C8A, (AObjEvent32 **)0x00101024, NULL, NULL },
+        { dGRBonus2PurinFile2_Layer0DObj, NULL, NULL, NULL },
+        { dGRBonus2PurinFile2_Layer1DObj, dGRBonus2PurinFile2_Layer1Anim_AnimJoint, NULL, NULL },
         { NULL, NULL, NULL, NULL },
         { NULL, NULL, NULL, NULL },
     },
-    (MPGeometryData *)0x0012101B,  /* map_geometry */
+    dGRBonus2PurinFile2_MPGeometryData_0x406C,  /* map_geometry */
     3,  /* layer_mask */
-    (Sprite *)0x00209B22,  /* wallpaper */
+    dBonus1CommonBackground_0x26c88,  /* wallpaper */
     { 0x4B, 0xC2, 0xF4 },  /* fog_color */
     0x00,  /* fog_alpha */
     /* emblem_colors[4] */

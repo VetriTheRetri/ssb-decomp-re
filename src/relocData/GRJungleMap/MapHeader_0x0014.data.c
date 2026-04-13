@@ -1,16 +1,25 @@
 /* MPGroundData (typed via tools/typeStageMap.py) */
+
+/* Cross-file references resolved by fixRelocChain.py — see .reloc */
+extern Sprite dStageJungle_sprite_0x26C88[];
+extern DObjDesc dStageJungleFile2_Layer0DObj[];
+extern DObjDesc dStageJungleFile2_Layer1DObj[];
+extern u32 dStageJungleFile2_Layer1Anim_AnimJoint[];
+extern DObjDesc dStageJungleFile2_Layer2DObj[];
+extern DObjDesc dStageJungleFile2_Layer3DObj[];
+extern u32 dStageJungleFile2_MPGeometryData_0x9AFC[];
 MPGroundData dGRJungleMap_MapHeader_0x0014 =
 {
     /* gr_desc[4] */
     {
-        { (DObjDesc *)0x000922C6, NULL, NULL, NULL },
-        { (DObjDesc *)0x000A261E, (AObjEvent32 **)0x000D26C8, NULL, NULL },
-        { (DObjDesc *)0x001131F6, NULL, NULL, NULL },
-        { (DObjDesc *)0x00153462, NULL, NULL, NULL },
+        { dStageJungleFile2_Layer0DObj, NULL, NULL, NULL },
+        { dStageJungleFile2_Layer1DObj, dStageJungleFile2_Layer1Anim_AnimJoint, NULL, NULL },
+        { dStageJungleFile2_Layer2DObj, NULL, NULL, NULL },
+        { dStageJungleFile2_Layer3DObj, NULL, NULL, NULL },
     },
-    (MPGeometryData *)0x001726BF,  /* map_geometry */
+    dStageJungleFile2_MPGeometryData_0x9AFC,  /* map_geometry */
     0,  /* layer_mask */
-    (Sprite *)0x00259B22,  /* wallpaper */
+    dStageJungle_sprite_0x26C88,  /* wallpaper */
     { 0x5A, 0x0F, 0x00 },  /* fog_color */
     0x00,  /* fog_alpha */
     /* emblem_colors[4] */
@@ -32,7 +41,7 @@ MPGroundData dGRJungleMap_MapHeader_0x0014 =
     -8100,  /* map_bound_left */
     0x00000005,  /* bgm_id */
     (void *)0xFFFF02A6,  /* map_nodes */
-    (MPItemWeights *)0xFFFF0000,  /* item_weights */
+    dGRJungleMap_gap_0x0000,  /* item_weights */
     -1900,  /* alt_warning */
     4000,  /* camera_bound_team_top */
     -2000,  /* camera_bound_team_bottom */

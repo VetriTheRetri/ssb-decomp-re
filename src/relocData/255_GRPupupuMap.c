@@ -4,6 +4,9 @@
 #include <mp/mptypes.h>
 #include "relocdata_types.h"
 
+/* Cross-file references resolved by fixRelocChain.py — see .reloc */
+extern Sprite dStageDreamLand_sprite_0x26C88[];
+
 /* Item-randomizer weights, referenced by `header.item_weights` */
 u8 dGRPupupuMap_item_weights[20] = { 0x46, 0x28, 0x78, 0x00, 0x14, 0x04, 0x06, 0x0E, 0x07, 0x0C, 0x16, 0x07, 0x0A, 0x07, 0x0A, 0x09, 0x0E, 0x05, 0x05, 0x14 };
 
@@ -18,7 +21,7 @@ MPGroundData dGRPupupuMap_header =
     },
     (MPGeometryData *)0x001707CD,  /* map_geometry */
     0,  /* layer_mask */
-    (Sprite *)0x00259B22,  /* wallpaper */
+    dStageDreamLand_sprite_0x26C88,  /* wallpaper */
     { 0x6E, 0xD2, 0xFF },  /* fog_color */
     0x00,  /* fog_alpha */
     /* emblem_colors[4] */
@@ -40,7 +43,7 @@ MPGroundData dGRPupupuMap_header =
     -9000,  /* map_bound_left */
     0x00000000,  /* bgm_id */
     (void *)0xFFFF043C,  /* map_nodes */
-    (MPItemWeights *)0xFFFF0000,  /* item_weights */
+    dGRPupupuMap_item_weights,  /* item_weights */
     -2900,  /* alt_warning */
     3500,  /* camera_bound_team_top */
     -1000,  /* camera_bound_team_bottom */

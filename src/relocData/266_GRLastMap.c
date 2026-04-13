@@ -4,18 +4,26 @@
 #include <mp/mptypes.h>
 #include "relocdata_types.h"
 
+/* Cross-file references resolved by fixRelocChain.py — see .reloc */
+extern Sprite dStageLastBackground_0x26c88[];
+extern DObjDesc dStageLastFile2_Layer1DObj[];
+extern u32 dStageLastFile2_Layer1Anim_AnimJoint[];
+extern MObjSub dStageLastFile2_Layer1MObj_MObjSub[];
+extern u32 dStageLastFile2_Layer1MatAnim_MatAnimJoint[];
+extern u32 dStageLastFile2_MPGeometryData_0x4EF4[];
+
 MPGroundData dGRLastMap_header =
 {
     /* gr_desc[4] */
     {
         { NULL, NULL, NULL, NULL },
-        { (DObjDesc *)0x00051352, (AObjEvent32 **)0x000613C4, (MObjSub ***)0x0007081E, (AObjEvent32 ***)0x001013D0 },
+        { dStageLastFile2_Layer1DObj, dStageLastFile2_Layer1Anim_AnimJoint, dStageLastFile2_Layer1MObj_MObjSub, dStageLastFile2_Layer1MatAnim_MatAnimJoint },
         { NULL, NULL, NULL, NULL },
         { NULL, NULL, NULL, NULL },
     },
-    (MPGeometryData *)0x001213BD,  /* map_geometry */
+    dStageLastFile2_MPGeometryData_0x4EF4,  /* map_geometry */
     0,  /* layer_mask */
-    (Sprite *)0xFFFF9B22,  /* wallpaper */
+    dStageLastBackground_0x26c88,  /* wallpaper */
     { 0x00, 0x00, 0x32 },  /* fog_color */
     0x00,  /* fog_alpha */
     /* emblem_colors[4] */

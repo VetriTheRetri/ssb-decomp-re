@@ -276,6 +276,69 @@ def cleanup_orphan_blocks(block_dir, manifest_path):
             os.remove(os.path.join(block_dir, fn))
 
 
+def walk_dl_targets(data, arrays, file_size):
+    """For each DObjDesc array in `arrays`, collect the dl pointer target
+    offsets (chain-encoded `target_word * 4`). Returns a sorted list of
+    unique byte offsets that each look like a real display list start —
+    ie. the target fits in the file and the byte at that offset is a
+    known F3DEX opening opcode.
+    """
+    VALID_DL_START_CMDS = {
+        0xD7, 0xD9, 0xDA, 0xDB, 0xDC, 0xDE, 0xDF,
+        0xE2, 0xE3, 0xE6, 0xE7, 0xE8, 0xE9, 0xEF,
+        0xF8, 0xFB, 0xFC, 0xFD,
+    }
+    targets = set()
+    for arr_off, count in arrays:
+        for i in range(count):
+            entry_off = arr_off + i * DOBJDESC_SIZE
+            if entry_off + 8 > file_size:
+                continue
+            raw_dl = struct.unpack_from(">I", data, entry_off + 4)[0]
+            if raw_dl == 0:
+                continue
+            target_byte = (raw_dl & 0xFFFF) * 4
+            if target_byte == 0 or target_byte >= file_size:
+                continue
+            opcode = data[target_byte]
+            if opcode in VALID_DL_START_CMDS:
+                targets.add(target_byte)
+    return sorted(targets)
+
+
+def find_dl_end(data, start, file_size):
+    """Walk from `start` forward 8 bytes at a time until we hit a
+    gsSPEndDisplayList (0xDF000000 00000000), returning the byte offset
+    of the END-OF-LIST instruction's closing byte (exclusive). Caps at
+    file end."""
+    p = start
+    while p + 8 <= file_size:
+        if data[p] == 0xDF and data[p + 1] == 0x00 and data[p + 2] == 0x00 and data[p + 3] == 0x00:
+            return p + 8
+        p += 8
+    return file_size
+
+
+def starts_with_vtx(data):
+    """Heuristic: a file whose first 0x60 bytes look like plausible Vtx
+    entries (s16 positions in [-32768, 32767], pad=0, s16 tex coords in
+    [-4096, 4096], and 4 bytes of normal/color). Some fighter models
+    start with a pointer table instead, so not every model qualifies.
+    """
+    if len(data) < 0x60:
+        return False
+    for i in range(0, 0x60, 16):
+        # Positions are three s16 + 2 pad bytes
+        pad = struct.unpack_from(">H", data, i + 6)[0]
+        if pad != 0:
+            return False
+        # Texture coords — usually in [-0x1000, 0x1000]
+        u, v = struct.unpack_from(">hh", data, i + 8)
+        if abs(u) > 0x2000 or abs(v) > 0x2000:
+            return False
+    return True
+
+
 def process(fid, name):
     data = read_bin(fid)
     if data is None:
@@ -286,12 +349,8 @@ def process(fid, name):
         print(f"  {fid} {name}: no DObjDesc arrays found")
         return
 
-    # Add the first array as "JointTree" — the canonical fighter joint
-    # descriptor. Any additional arrays get offset-suffixed names so
-    # rebuilding the description never introduces a name collision that
-    # the downstream block dispatcher would turn into overlapping
-    # JointTreeDObjDesc.dobjdesc.c filenames.
     entries = []
+    # DObjDesc entries — first array is "JointTree", rest get offset suffix
     for idx, (off, count) in enumerate(arrays):
         if idx == 0:
             label = "JointTree"
@@ -299,8 +358,30 @@ def process(fid, name):
             label = f"JointTree_0x{off:04X}"
         entries.append(("DObjDesc", label, off))
 
+    # Walk each joint tree's dl pointers and add explicit DisplayList
+    # entries for the valid ones. Adding DisplayList entries to the
+    # description disables genRelocDataC's Phase 2 DL/Vtx auto-discovery
+    # (via has_existing_dls), so we skip the overlap-prone Vtx scan and
+    # only emit the DLs we can vouch for.
+    dl_targets = walk_dl_targets(data, arrays, len(data))
+    for idx, off in enumerate(dl_targets):
+        entries.append(("DisplayList", f"Joint_0x{off:04X}", off))
+
+    # If the file's prefix looks like Vtx data (the N-variant fighter
+    # models and a few others), emit a single Vtx block covering the
+    # range from offset 0 up to the first display list. genRelocDataC
+    # sizes the block by counting forward to the next description entry,
+    # so this produces one Vtx array that the joint DLs reference via
+    # segmented-address loads.
+    if dl_targets and starts_with_vtx(data):
+        first_dl = dl_targets[0]
+        if first_dl > 0 and first_dl % 16 == 0:
+            entries.append(("Vtx", "JointVerts", 0x0))
+
     ensure_description(fid, entries)
-    print(f"  {fid} {name}: added {len(entries)} DObjDesc entries")
+    n_dobj = sum(1 for e in entries if e[0] == "DObjDesc")
+    n_dl = sum(1 for e in entries if e[0] == "DisplayList")
+    print(f"  {fid} {name}: {n_dobj} DObjDesc + {n_dl} DisplayList entries")
     run_generator(fid)
 
     # Sweep any stale block files left over from a previous (with-discovery)

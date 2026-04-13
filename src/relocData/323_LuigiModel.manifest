@@ -3,8 +3,36 @@
 # The master .c file is generated from this manifest at build time.
 
 gap_0x0000.data.c
+Joint_0x1830.dl.c
+Joint_0x1990.dl.c
+Joint_0x1A10.dl.c
+Joint_0x1AB0.dl.c
+Joint_0x1B50.dl.c
+Joint_0x1EA0.dl.c
+Joint_0x1F20.dl.c
+Joint_0x1FC0.dl.c
+Joint_0x2060.dl.c
+Joint_0x20F0.dl.c
+Joint_0x21A8.dl.c
+Joint_0x2238.dl.c
+Joint_0x22C8.dl.c
+Joint_0x2380.dl.c
 JointTree.dobjdesc.c
 gap_0x28E0.data.c
+Joint_0x4020.dl.c
+Joint_0x4150.dl.c
+Joint_0x41C8.dl.c
+Joint_0x4248.dl.c
+Joint_0x42C8.dl.c
+Joint_0x45C0.dl.c
+Joint_0x4638.dl.c
+Joint_0x46B8.dl.c
+Joint_0x4738.dl.c
+Joint_0x47A0.dl.c
+Joint_0x4820.dl.c
+Joint_0x4890.dl.c
+Joint_0x48F8.dl.c
+Joint_0x4978.dl.c
 JointTree_0x49E8.dobjdesc.c
 gap_0x4E8C.data.c
 Stock_tex.data.c

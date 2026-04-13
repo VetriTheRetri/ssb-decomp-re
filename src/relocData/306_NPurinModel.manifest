@@ -2,6 +2,13 @@
 # Each line is either a block filename or 'pad N'.
 # The master .c file is generated from this manifest at build time.
 
-gap_0x0000.data.c
+JointVerts.vtx.c
+Joint_0x1A60.dl.c
+Joint_0x1D38.dl.c
+Joint_0x1E48.dl.c
+Joint_0x1F60.dl.c
+Joint_0x2070.dl.c
+Joint_0x2188.dl.c
+Joint_0x22A0.dl.c
 JointTree.dobjdesc.c
 pad 4

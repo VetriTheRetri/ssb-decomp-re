@@ -7,12 +7,13 @@ N64 decompilation of Super Smash Bros. (US version). The goal is to produce C so
 ## Build Commands
 
 ```bash
-make -j$(nproc)          # Build the ROM (parallel)
-make clean               # Clean build artifacts
-make init                # Full extract + build (run after pulling changes or modifying splat yaml/symbols)
-make extract             # Re-extract assembly/assets from baserom
-make format              # Run clang-format on source files
-make validate            # Validate build output matches expected
+make -j$(nproc)                  # Build the US ROM (parallel)
+make init -j$(nproc)             # Full extract + build for US (run after pulling or modifying splat yaml/symbols)
+make init -j$(nproc) VERSION=jp  # Full extract + build for JP — always use `make init` when switching versions; a plain `make VERSION=jp` on a tree last extracted for US can fail with missing-symbol linker errors
+make clean                       # Clean build artifacts
+make extract                     # Re-extract assembly/assets from baserom
+make format                      # Run clang-format on source files
+make validate                    # Validate build output matches expected
 ```
 
 Build flags: `NON_MATCHING=1` allows building with non-matching C stubs instead of assembly. `RELOC_DATA=1` compiles relocData files from C source instead of using original binaries. `make report` generates progress reports for decomp.dev.

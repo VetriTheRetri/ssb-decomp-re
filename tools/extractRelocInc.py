@@ -26,6 +26,12 @@ ASSET_DIR = os.path.join(PROJECT_DIR, "assets", "relocData")
 sys.path.insert(0, SCRIPT_DIR)
 from genRelocMaster import parse_manifest, compute_block_size
 
+try:
+    import pygfxd
+    _HAS_PYGFXD = True
+except ImportError:
+    _HAS_PYGFXD = False
+
 
 def bin_path(fid):
     for ext in (".vpk0.bin", ".bin"):
@@ -119,14 +125,65 @@ def emit_tex(data, start, size, path):
     write_lines(path, lines)
 
 
-def emit_dl(data, start, size, path):
-    """Walk an F3DEX2 DL region as 8-byte command pairs and emit each as
-    `{ { w0, w1 } },` — one line per command."""
+def _emit_dl_raw(data, start, size, path):
+    """Emit a DL inc.c as raw `{ { w0, w1 } },` word pairs."""
     lines = []
     for i in range(0, size, 8):
         w0, w1 = struct.unpack('>II', data[start + i:start + i + 8])
         lines.append(f"\t{{ {{ 0x{w0:08X}, 0x{w1:08X} }} }},")
     write_lines(path, lines)
+
+
+def _dl_is_pygfxd_safe(data, start, size):
+    """Return False if the byte stream contains patterns pygfxd's
+    decoder can't roundtrip byte-identically back through gbi.h's
+    encoders. The main offender is a 0x00-prefixed word0 with nonzero
+    lower bytes: pygfxd emits it as `gsDPNoOpTag(w1)` which re-encodes
+    to `word0 == 0`, dropping the lower-byte data.
+    """
+    for i in range(0, size, 8):
+        if i + 8 > size:
+            return False
+        w0 = struct.unpack('>I', data[start + i:start + i + 4])[0]
+        if (w0 >> 24) == 0x00 and w0 != 0:
+            return False
+    return True
+
+
+def emit_dl(data, start, size, path):
+    """Disassemble an F3DEX2 DL region into readable `gsSP* / gsDP*`
+    macro calls using pygfxd, falling back to raw `{ { w0, w1 } }` word
+    pairs for blocks that contain command patterns pygfxd can't
+    roundtrip (or when pygfxd isn't available).
+
+    For macro output, chain-encoded pointer arguments (SPVertex / SETTIMG
+    / etc.) stay as literal hex — they still get patched to a real
+    address at link time by fixRelocChain.
+    """
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+
+    if _HAS_PYGFXD and _dl_is_pygfxd_safe(data, start, size):
+        dl_bytes = data[start:start + size]
+        out_buf = pygfxd.gfxd_output_buffer(b'\0' * (size * 40 + 1024),
+                                             size * 40 + 1024)
+        pygfxd.gfxd_input_buffer(dl_bytes)
+        pygfxd.gfxd_target(pygfxd.gfxd_f3dex2)
+        pygfxd.gfxd_endian(pygfxd.GfxdEndian.big, 4)
+
+        def macro_fn():
+            pygfxd.gfxd_puts('\t')
+            pygfxd.gfxd_macro_dflt()
+            pygfxd.gfxd_puts(',\n')
+            return 0
+
+        pygfxd.gfxd_macro_fn(macro_fn)
+        pygfxd.gfxd_execute()
+        body = pygfxd.gfxd_buffer_to_string(out_buf)
+        with open(path, 'w') as f:
+            f.write(body)
+        return
+
+    _emit_dl_raw(data, start, size, path)
 
 
 def process_fid(fid):

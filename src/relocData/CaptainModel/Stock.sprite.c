@@ -1,15 +1,11 @@
 /* Sprite: Stock */
 
-/* Texture: Stock (8(16)x10 ci4) */
-u8 dCaptainModel_Stock_tex[] = {
-    #include <CaptainModel/Stock.ci4.inc.c>
-};
+/* Sprite: Stock (8x10 ci4) */
 
 Bitmap dCaptainModel_Stock_bitmaps[] = {
 	{ 8, 16, 0, 0, dCaptainModel_Stock_tex, 10, 0 },
 };
 
-/* Sprite: Stock (8x10 ci4) */
 Sprite dCaptainModel_Stock = {
 	0, 0,
 	8, 10,
@@ -19,7 +15,7 @@ Sprite dCaptainModel_Stock = {
 	4660,
 	255, 255, 255, 255,
 	0, 256,
-	(int*)0x31B7316C,
+	(int*)dCaptainModel_palette_0xC5B0,
 	0, 1,
 	1, 36,
 	10, 10,

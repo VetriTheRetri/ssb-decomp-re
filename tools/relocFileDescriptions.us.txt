@@ -4530,64 +4530,79 @@ DataStart TaruBomb 0x788
 DisplayList TaruBombEffect 0x8A0
 
 [296]
-Sprite Stock 0x72d0
-Sprite FTEmblem 0x74c8
-
+DObjDesc JointTree 0x2200
+DObjDesc JointTree_0x4590 0x4590
+Sprite Stock 0x72D0
+Sprite FTEmblem 0x74C8
 [300]
-Sprite Stock 0x2d00
-Sprite FTEmblem 0x2ef8
-
+DObjDesc JointTree 0x1E08
+Sprite Stock 0x2D00
+Sprite FTEmblem 0x2EF8
 [313]
-Sprite Stock 0x7c28
-Sprite FTEmblem 0x7e08
-
+DObjDesc JointTree 0x2938
+DObjDesc JointTree_0x5510 0x5510
+Sprite Stock 0x7C28
+Sprite FTEmblem 0x7E08
 [319]
 Sprite Stock 0x130
 Sprite FTEmblem 0x2f8
 
 [320]
-Sprite Stock 0xe2f0
-Sprite FTEmblem 0xe508
-
+DObjDesc JointTree 0x3520
+DObjDesc JointTree_0x69D0 0x69D0
+DObjDesc JointTree_0xADD8 0xADD8
+Sprite Stock 0xE2F0
+Sprite FTEmblem 0xE508
 [323]
-Sprite Stock 0x7cd8
-Sprite FTEmblem 0x7ec8
-
+DObjDesc JointTree 0x2410
+DObjDesc JointTree_0x49E8 0x49E8
+Sprite Stock 0x7CD8
+Sprite FTEmblem 0x7EC8
 [324]
-Sprite Stock 0x11d48
-Sprite FTEmblem 0x11f28
-
+DObjDesc JointTree 0x3AE8
+DObjDesc JointTree_0x74B0 0x74B0
+DObjDesc JointTree_0x8060 0x8060
+DObjDesc JointTree_0x9CF8 0x9CF8
+Sprite Stock 0x11D48
+Sprite FTEmblem 0x11F28
 [328]
-Sprite Stock 0x1d5e0
-Sprite FTEmblem 0x1d7d8
-
+DObjDesc JointTree 0x1448
+DObjDesc JointTree_0x2CD0 0x2CD0
+DObjDesc JointTree_0x19F08 0x19F08
+Sprite Stock 0x1D5E0
+Sprite FTEmblem 0x1D7D8
 [330]
-Sprite Stock 0x7bb0
-Sprite FTEmblem 0x7d98
-
+DObjDesc JointTree 0x2028
+DObjDesc JointTree_0x40A0 0x40A0
+DObjDesc JointTree_0x5BB0 0x5BB0
+Sprite Stock 0x7BB0
+Sprite FTEmblem 0x7D98
 [332]
-Sprite Stock 0xc6a8
-Sprite FTEmblem 0xc848
-
+DObjDesc JointTree 0x3BE0
+DObjDesc JointTree_0x7900 0x7900
+Sprite Stock 0xC6A8
+Sprite FTEmblem 0xC848
 [333]
 DObjDesc FalconPunch 0x0760
 MObjSub FalconPunch 0x0690
 MatAnimJoint FalconPunch 0x0830
 
 [335]
+DObjDesc JointTree 0x26B0
+DObjDesc JointTree_0x4FE8 0x4FE8
 DObjDesc PKThunderTrail 0x9050
 MObjSub PKThunderWave 0x9870
 DObjDesc PKThunderWave 0x9A10
 AnimJoint PKThunderWave 0x9AC0
 MatAnimJoint PKThunderWave 0x9BB0
-Sprite Stock 0xc188
-Sprite FTEmblem 0xc378
-
+Sprite Stock 0xC188
+Sprite FTEmblem 0xC378
 [338]
-Sprite Stock 0xaaa8
-DObjDesc Shield 0xa860
-Sprite FTEmblem 0xac98
-
+DObjDesc JointTree 0x33A0
+DObjDesc JointTree_0x6948 0x6948
+DObjDesc Shield 0xA860
+Sprite Stock 0xAAA8
+Sprite FTEmblem 0xAC98
 [339]
 DObjDesc EggLay 0x960
 AnimJoint EggLayBreak 0x9F0
@@ -4595,11 +4610,12 @@ AnimJoint EggLayThrow 0xB90
 AnimJoint EggLayWait 0xDB0
 
 [341]
+DObjDesc JointTree 0x2650
+DObjDesc JointTree_0x5490 0x5490
 MObjSub ThunderTrail 0x9420
 DObjDesc ThunderTrail 0x95B0
-Sprite Stock 0x9a00
-Sprite FTEmblem 0x9be8
-
+Sprite Stock 0x9A00
+Sprite FTEmblem 0x9BE8
 [342]
 AnimJoint ThunderJoltB 0x1A20
 MatAnimJoint ThunderJoltB 0x1AE0
@@ -4962,4 +4978,44 @@ MObjSub Layer1MObj 0x36A0
 DObjDesc Layer1DObj 0x6120
 MPGeometryData - 0x65A8
 MatAnimJoint Layer1MatAnim 0x65D0
+
+[301]
+DObjDesc JointTree 0x2A30
+
+[303]
+DObjDesc JointTree 0x2DF8
+
+[304]
+DObjDesc JointTree 0x2EF8
+
+[305]
+DObjDesc JointTree 0x2258
+
+[306]
+DObjDesc JointTree 0x23B8
+
+[307]
+DObjDesc JointTree 0x2778
+
+[308]
+DObjDesc JointTree 0x2D28
+
+[309]
+DObjDesc JointTree 0x2A10
+
+[310]
+DObjDesc JointTree 0x3080
+
+[311]
+DObjDesc JointTree 0x2D70
+
+[312]
+DObjDesc JointTree 0x2D40
+
+[317]
+DObjDesc JointTree 0x39A8
+DObjDesc JointTree_0x6EC0 0x6EC0
+
+[344]
+DObjDesc JointTree 0x23D8
 

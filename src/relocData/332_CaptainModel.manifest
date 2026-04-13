@@ -3,6 +3,13 @@
 # The master .c file is generated from this manifest at build time.
 
 gap_0x0000.data.c
+JointTree.dobjdesc.c
+gap_0x40B0.data.c
+JointTree_0x7900.dobjdesc.c
+gap_0x7DD0.data.c
+Stock_tex.data.c
+palette_0xC5B0.palette.c
+gap_0xC5D0.data.c
 Stock.sprite.c
 pad 4
 FTEmblem.sprite.c

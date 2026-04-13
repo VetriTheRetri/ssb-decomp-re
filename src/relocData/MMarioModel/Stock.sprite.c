@@ -1,15 +1,11 @@
 /* Sprite: Stock */
 
-/* Texture: Stock (8(16)x10 ci4) */
-u8 dMMarioModel_Stock_tex[] = {
-    #include <MMarioModel/Stock.ci4.inc.c>
-};
+/* Sprite: Stock (8x10 ci4) */
 
 Bitmap dMMarioModel_Stock_bitmaps[] = {
 	{ 8, 16, 0, 0, dMMarioModel_Stock_tex, 10, 0 },
 };
 
-/* Sprite: Stock (8x10 ci4) */
 Sprite dMMarioModel_Stock = {
 	0, 0,
 	8, 10,
@@ -19,7 +15,7 @@ Sprite dMMarioModel_Stock = {
 	4660,
 	255, 255, 255, 255,
 	0, 256,
-	(int*)0x0B4D0B34,
+	(int*)dMMarioModel_palette_0x2CD0,
 	0, 1,
 	1, 36,
 	10, 10,

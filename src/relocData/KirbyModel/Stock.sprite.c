@@ -1,15 +1,11 @@
 /* Sprite: Stock */
 
-/* Texture: Stock (8(16)x10 ci4) */
-u8 dKirbyModel_Stock_tex[] = {
-    #include <KirbyModel/Stock.ci4.inc.c>
-};
+/* Sprite: Stock (8x10 ci4) */
 
 Bitmap dKirbyModel_Stock_bitmaps[] = {
 	{ 8, 16, 0, 0, dKirbyModel_Stock_tex, 10, 0 },
 };
 
-/* Sprite: Stock (8x10 ci4) */
 Sprite dKirbyModel_Stock = {
 	0, 0,
 	8, 10,
@@ -19,7 +15,7 @@ Sprite dKirbyModel_Stock = {
 	4660,
 	255, 255, 255, 255,
 	0, 256,
-	(int*)0x75857544,
+	(int*)dKirbyModel_palette_0x1D510,
 	0, 1,
 	1, 36,
 	10, 10,

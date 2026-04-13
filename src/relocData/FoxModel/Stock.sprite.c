@@ -1,15 +1,11 @@
 /* Sprite: Stock */
 
-/* Texture: Stock (8(16)x10 ci4) */
-u8 dFoxModel_Stock_tex[] = {
-    #include <FoxModel/Stock.ci4.inc.c>
-};
+/* Sprite: Stock (8x10 ci4) */
 
 Bitmap dFoxModel_Stock_bitmaps[] = {
 	{ 8, 16, 0, 0, dFoxModel_Stock_tex, 10, 0 },
 };
 
-/* Sprite: Stock (8x10 ci4) */
 Sprite dFoxModel_Stock = {
 	0, 0,
 	8, 10,
@@ -19,7 +15,7 @@ Sprite dFoxModel_Stock = {
 	4660,
 	255, 255, 255, 255,
 	0, 256,
-	(int*)0x1F171EE0,
+	(int*)dFoxModel_palette_0x7B80,
 	0, 1,
 	1, 36,
 	10, 10,

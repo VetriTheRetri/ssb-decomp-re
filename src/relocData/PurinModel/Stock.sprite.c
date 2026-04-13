@@ -1,15 +1,11 @@
 /* Sprite: Stock */
 
-/* Texture: Stock (8(16)x10 ci4) */
-u8 dPurinModel_Stock_tex[] = {
-    #include <PurinModel/Stock.ci4.inc.c>
-};
+/* Sprite: Stock (8x10 ci4) */
 
 Bitmap dPurinModel_Stock_bitmaps[] = {
 	{ 8, 16, 0, 0, dPurinModel_Stock_tex, 10, 0 },
 };
 
-/* Sprite: Stock (8x10 ci4) */
 Sprite dPurinModel_Stock = {
 	0, 0,
 	8, 10,
@@ -19,7 +15,7 @@ Sprite dPurinModel_Stock = {
 	4660,
 	255, 255, 255, 255,
 	0, 256,
-	(int*)0x1EF91EB8,
+	(int*)dPurinModel_palette_0x7AE0,
 	0, 1,
 	1, 36,
 	10, 10,

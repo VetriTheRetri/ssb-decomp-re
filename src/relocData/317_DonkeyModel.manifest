@@ -1,0 +1,9 @@
+# Block manifest for relocData file 317 (DonkeyModel)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+gap_0x0000.data.c
+JointTree.dobjdesc.c
+gap_0x3E78.data.c
+JointTree_0x6EC0.dobjdesc.c
+gap_0x7390.data.c

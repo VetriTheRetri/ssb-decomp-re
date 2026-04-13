@@ -1,15 +1,11 @@
 /* Sprite: Stock */
 
-/* Texture: Stock (8(16)x10 ci4) */
-u8 dSamusModel_Stock_tex[] = {
-    #include <SamusModel/Stock.ci4.inc.c>
-};
+/* Sprite: Stock (8x10 ci4) */
 
 Bitmap dSamusModel_Stock_bitmaps[] = {
 	{ 8, 16, 0, 0, dSamusModel_Stock_tex, 10, 0 },
 };
 
-/* Sprite: Stock (8x10 ci4) */
 Sprite dSamusModel_Stock = {
 	0, 0,
 	8, 10,
@@ -19,7 +15,7 @@ Sprite dSamusModel_Stock = {
 	4660,
 	255, 255, 255, 255,
 	0, 256,
-	(int*)0x38C93888,
+	(int*)dSamusModel_palette_0xE220,
 	0, 1,
 	1, 36,
 	10, 10,

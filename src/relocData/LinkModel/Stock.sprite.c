@@ -1,15 +1,11 @@
 /* Sprite: Stock */
 
-/* Texture: Stock (8(16)x10 ci4) */
-u8 dLinkModel_Stock_tex[] = {
-    #include <LinkModel/Stock.ci4.inc.c>
-};
+/* Sprite: Stock (8x10 ci4) */
 
 Bitmap dLinkModel_Stock_bitmaps[] = {
 	{ 8, 16, 0, 0, dLinkModel_Stock_tex, 10, 0 },
 };
 
-/* Sprite: Stock (8x10 ci4) */
 Sprite dLinkModel_Stock = {
 	0, 0,
 	8, 10,
@@ -19,7 +15,7 @@ Sprite dLinkModel_Stock = {
 	4660,
 	255, 255, 255, 255,
 	0, 256,
-	(int*)0x475F4728,
+	(int*)dLinkModel_palette_0x11CA0,
 	0, 1,
 	1, 36,
 	10, 10,

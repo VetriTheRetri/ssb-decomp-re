@@ -1,0 +1,7 @@
+# Block manifest for relocData file 309 (NSamusModel)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+gap_0x0000.data.c
+JointTree.dobjdesc.c
+gap_0x2FE8.data.c

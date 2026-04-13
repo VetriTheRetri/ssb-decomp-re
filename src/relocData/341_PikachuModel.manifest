@@ -3,11 +3,13 @@
 # The master .c file is generated from this manifest at build time.
 
 gap_0x0000.data.c
-ThunderTrail.mobjsub.c
+JointTree.dobjdesc.c
+gap_0x2B78.data.c
+JointTree_0x5490.dobjdesc.c
+gap_0x59B8.data.c
+ThunderTrailMObjSub.mobjsub.c
 gap_0x9498.data.c
-ThunderTrail.vtx.c
-ThunderTrail.dl.c
-ThunderTrail.dobjdesc.c
+ThunderTrailDObjDesc.dobjdesc.c
 gap_0x9634.data.c
 Stock_tex.data.c
 palette_0x9930.palette.c

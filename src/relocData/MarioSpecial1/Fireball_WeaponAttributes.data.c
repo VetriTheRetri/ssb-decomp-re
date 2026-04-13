@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x0000 to 0x0040 (64 bytes) */
-u32 dMarioSpecial1_Fireball_WeaponAttributes[] = {
-	0x0001006A, 0xFFFF0036, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00320000, /* reloc: +0x0->0x01A8X, +0x4->0x00D8X */
-	0xFFCE0032, 0x00C85A40, 0x0641C400, 0x0160E13C, 0x02800000, 0x00000000, 0x00000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dMarioSpecial1_Fireball_WeaponAttributes[64] = {
+	#include <MarioSpecial1/Fireball_WeaponAttributes.data.inc.c>
 };

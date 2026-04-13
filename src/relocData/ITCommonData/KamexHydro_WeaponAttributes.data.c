@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x0A50 to 0x0A84 (52 bytes) */
-u32 dITCommonData_KamexHydro_WeaponAttributes[] = {
-	0x02953E76, 0x02963DB0, 0x02973EA4, 0x02A13EDC, 0x00000000, 0x00000000, 0x00000000, 0x00D50000, /* reloc: +0x0->0xF9D8X, +0x4->0xF6C0X, +0x8->0xFA90X, +0xC->0xFB70X */
-	0xFF2B00B4, 0x00C80000, 0x07818000, 0x01601184, 0x13800000,
+
+#include "relocdata_types.h"
+
+u8 dITCommonData_KamexHydro_WeaponAttributes[52] = {
+	#include <ITCommonData/KamexHydro_WeaponAttributes.data.inc.c>
 };

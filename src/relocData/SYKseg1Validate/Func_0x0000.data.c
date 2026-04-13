@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x0000 to 0x0030 (48 bytes) */
-u32 dSYKseg1Validate_Func_0x0000[] = {
-	0x3C0EA000, 0x8DCF0200, 0x3C01AC29, 0x00001825, 0x15E10003, 0x00000000, 0x03E00008, 0x24020001,
-	0x03E00008, 0x00601025, 0x00000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dSYKseg1Validate_Func_0x0000[48] = {
+	#include <SYKseg1Validate/Func_0x0000.data.inc.c>
 };

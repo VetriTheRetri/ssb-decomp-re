@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x6E90 to 0x6EC0 (48 bytes) */
-u32 dSC1PIntro_FighterNessCam_AnimJoint[] = {
-	0x17BB8000, 0xC4408381, 0x4343E74F, 0x43749F08, 0xC2BAFBF5, 0x4363851F, 0x4374665B, 0x00000000,
-	0x42200000, 0x04000001, 0x00000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dSC1PIntro_FighterNessCam_AnimJoint[48] = {
+	#include <SC1PIntro/FighterNessCam_AnimJoint.data.inc.c>
 };

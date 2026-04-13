@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x0000 to 0x0040 (64 bytes) */
-u32 dFoxSpecial1_Blaster_WeaponAttributes[] = {
-	0xFFFF0010, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x000A0000, /* reloc: +0x0->0x0040X */
-	0xFFF6000A, 0x00280280, 0x19018001, 0x0140113C, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dFoxSpecial1_Blaster_WeaponAttributes[64] = {
+	#include <FoxSpecial1/Blaster_WeaponAttributes.data.inc.c>
 };

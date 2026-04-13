@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x11E0 to 0x1220 (64 bytes) */
-u32 dStagePupupuFile2_WhispyEyesLeftTurnMatAnimJoint_MatAnimJoint[] = {
-	0x3F800000, 0x3F800000, 0x3F800000, 0x00002001, 0x0487029E, 0xC4CE52ED, 0x00000000, 0xC427AB05, /* reloc: +0x10->0x0A78 */
-	0x00000000, 0x00000000, 0x00000000, 0x3F800000, 0x3F800000, 0x3F800000, 0x00002001, 0x049202C6, /* reloc: +0x3C->0x0B18 */
+
+#include "relocdata_types.h"
+
+u8 dStagePupupuFile2_WhispyEyesLeftTurnMatAnimJoint_MatAnimJoint[64] = {
+	#include <StagePupupuFile2/WhispyEyesLeftTurnMatAnimJoint_MatAnimJoint.data.inc.c>
 };

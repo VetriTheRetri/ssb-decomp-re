@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x07A8 to 0x07F0 (72 bytes) */
-u32 dITCommonData_Kabigon_ItemAttributes[] = {
-	0x01FC2C56, 0x00000000, 0x00000000, 0x00000000, 0x58000000, 0x00000000, 0x00000000, 0x00000000, /* reloc: +0x0->0xB158X */
-	0x00000000, 0x02440244, 0x030C0249, 0x0000FDB7, 0x030C0320, 0x5A446160, 0x00001002, 0x310F1800,
-	0x0E4390E4, 0x32000000,
+
+#include "relocdata_types.h"
+
+u8 dITCommonData_Kabigon_ItemAttributes[72] = {
+	#include <ITCommonData/Kabigon_ItemAttributes.data.inc.c>
 };

@@ -1,4 +1,7 @@
 /* Raw data from file offset 0x2120 to 0x2130 (16 bytes) */
-u32 dPurinSpecial2_JointCmd_0x2120[] = {
-	0x00000001, 0x08580824, 0x00000004, 0x00000000, /* reloc: +0x4->0x2090 */
+
+#include "relocdata_types.h"
+
+u8 dPurinSpecial2_JointCmd_0x2120[16] = {
+	#include <PurinSpecial2/JointCmd_0x2120.data.inc.c>
 };

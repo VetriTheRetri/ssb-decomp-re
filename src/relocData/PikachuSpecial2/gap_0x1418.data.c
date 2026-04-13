@@ -1,4 +1,7 @@
 /* Raw data from file offset 0x1418 to 0x1438 (32 bytes) */
-u32 dPikachuSpecial2_gap_0x1418[] = {
-	0xFFFFFF00, 0x80808000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x054504EE, 0x00000000, /* reloc: +0x18->0x13B8 */
+
+#include "relocdata_types.h"
+
+u8 dPikachuSpecial2_gap_0x1418[32] = {
+	#include <PikachuSpecial2/gap_0x1418.data.inc.c>
 };

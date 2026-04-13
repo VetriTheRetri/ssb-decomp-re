@@ -1,4 +1,7 @@
 /* Raw data from file offset 0x75C4 to 0x75D8 (20 bytes) */
-u32 dMNBackupClear_gap_0x75C4[] = {
-	0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dMNBackupClear_gap_0x75C4[20] = {
+	#include <MNBackupClear/gap_0x75C4.data.inc.c>
 };

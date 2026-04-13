@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x4F10 to 0x4F40 (48 bytes) */
-u32 dStageLastFile2_Layer1AnimJoint_AnimJoint[] = {
-	0x00000000, 0x00000000, 0x00000000, 0x13CE13C9, 0x00000000, 0x06010000, 0x00000000, 0x060102CF, /* reloc: +0xC->0x4F24 */
-	0x40C90FDB, 0x1C000000, 0x13D113C9, 0x00000000, /* reloc: +0x28->0x4F24 */
+
+#include "relocdata_types.h"
+
+u8 dStageLastFile2_Layer1AnimJoint_AnimJoint[48] = {
+	#include <StageLastFile2/Layer1AnimJoint_AnimJoint.data.inc.c>
 };

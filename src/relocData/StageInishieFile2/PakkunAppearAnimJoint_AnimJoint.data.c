@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x0CC8 to 0x0CF8 (48 bytes) */
-u32 dStageInishieFile2_PakkunAppearAnimJoint_AnimJoint[] = {
-	0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x99888866, 0x99888866, 0x99888866, 0x99888866,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dStageInishieFile2_PakkunAppearAnimJoint_AnimJoint[48] = {
+	#include <StageInishieFile2/PakkunAppearAnimJoint_AnimJoint.data.inc.c>
 };

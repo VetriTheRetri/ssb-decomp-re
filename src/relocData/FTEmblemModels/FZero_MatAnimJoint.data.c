@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x38AC to 0x3900 (84 bytes) */
-u32 dFTEmblemModels_FZero_MatAnimJoint[] = {
-	0x00000000, 0x0E3E0E3F, 0x240C0000, 0xB3191900, 0x26262600, 0x240C0001, 0x00199900, 0x26262600, /* reloc: +0x4->0x38FC */
-	0x240C0001, 0xFFB30000, 0x26262600, 0x240C0001, 0x00991900, 0x26262600, 0x260C0001, 0x66666600,
-	0x00000000, 0x04000002, 0x1C000000, 0x0E3F0E2D, 0x0E410E2D, /* reloc: +0x4C->0x38B4, +0x50->0x38B4 */
+
+#include "relocdata_types.h"
+
+u8 dFTEmblemModels_FZero_MatAnimJoint[84] = {
+	#include <FTEmblemModels/FZero_MatAnimJoint.data.inc.c>
 };

@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x00BC to 0x00F0 (52 bytes) */
-u32 dGRSectorMap_ArwingLaser2D_WeaponAttributes[] = {
-	0x003C0714, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x001C0000, /* reloc: +0x0->0x1C50X */
-	0xFFE40234, 0x012C5A40, 0x12C40000, 0x0540013C, 0x11800000,
+
+#include "relocdata_types.h"
+
+u8 dGRSectorMap_ArwingLaser2D_WeaponAttributes[52] = {
+	#include <GRSectorMap/ArwingLaser2D_WeaponAttributes.data.inc.c>
 };

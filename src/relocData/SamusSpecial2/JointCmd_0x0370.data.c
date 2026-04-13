@@ -1,4 +1,7 @@
 /* Raw data from file offset 0x0370 to 0x0380 (16 bytes) */
-u32 dSamusSpecial2_JointCmd_0x0370[] = {
-	0x00000001, 0x00EC00B8, 0x00000004, 0x00000000, /* reloc: +0x4->0x02E0 */
+
+#include "relocdata_types.h"
+
+u8 dSamusSpecial2_JointCmd_0x0370[16] = {
+	#include <SamusSpecial2/JointCmd_0x0370.data.inc.c>
 };

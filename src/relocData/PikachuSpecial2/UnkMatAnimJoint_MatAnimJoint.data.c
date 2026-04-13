@@ -1,7 +1,7 @@
 /* Raw data from file offset 0x0900 to 0x0968 (104 bytes) */
-u32 dPikachuSpecial2_UnkMatAnimJoint_MatAnimJoint[] = {
-	0x00000000, 0x02530254, 0x14008000, 0x00000000, 0x14008001, 0x3F800000, 0x14008001, 0x40000000, /* reloc: +0x4->0x0950 */
-	0x14008001, 0x3F800000, 0x14008001, 0x00000000, 0x14008001, 0x00000000, 0x14008002, 0x40000000,
-	0x14008002, 0x00000000, 0x1C000000, 0x02540242, 0x04EB0242, 0x00000000, 0x00000000, 0x00000000, /* reloc: +0x4C->0x0908, +0x50->0x0908 */
-	0x00000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dPikachuSpecial2_UnkMatAnimJoint_MatAnimJoint[104] = {
+	#include <PikachuSpecial2/UnkMatAnimJoint_MatAnimJoint.data.inc.c>
 };

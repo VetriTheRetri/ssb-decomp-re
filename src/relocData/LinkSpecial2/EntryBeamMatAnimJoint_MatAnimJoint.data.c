@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x0BF0 to 0x0C38 (72 bytes) */
-u32 dLinkSpecial2_EntryBeamMatAnimJoint_MatAnimJoint[] = {
-	0x00000000, 0x030A030B, 0x2A008000, 0xFFFFFF66, 0x240C0000, 0xB3B3B300, 0x7F808000, 0x28008028, /* reloc: +0x4->0x0C2C */
-	0xFFFFFF33, 0x28008028, 0xFFFFFF66, 0x28008028, 0xFFFFFF00, 0x1C000000, 0x030B02FE, 0x040F02FE, /* reloc: +0x38->0x0BF8, +0x3C->0x0BF8 */
-	0x00000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dLinkSpecial2_EntryBeamMatAnimJoint_MatAnimJoint[72] = {
+	#include <LinkSpecial2/EntryBeamMatAnimJoint_MatAnimJoint.data.inc.c>
 };

@@ -992,19 +992,17 @@ def generate(file_id, data, file_name, entries, reloc_map, csv_entry,
     asset_dir = os.path.join(PROJECT_DIR, "build", "src", "relocData", file_subdir)
 
     def emit_data_block(start, end, name_suffix):
-        """Extract a raw data region to a .data.c file and add to manifest.
+        """Extract a raw data region to a .data.c wrapper + companion inc.c.
 
         `name_suffix` is used verbatim as the filename stem (so dots in
         names like `Mario.MObjSubPtrArray` survive to `Mario.MObjSubPtrArray.data.c`),
         but the C variable name replaces `.` with `_` to produce a valid
         C identifier.
 
-        For `Tex_*` blocks (texture data decoded from a DL SETTIMG), the
-        raw bytes get split out into a companion `.tex.inc.c` that
-        extractRelocInc regenerates from the ROM at `make extract` time —
-        keeping copyrighted texture bytes out of the committed source.
-        Non-Tex gap blocks stay inline since they're mixed data we can't
-        cleanly classify.
+        The raw bytes get split out into a companion `.inc.c` that
+        extractRelocInc regenerates from the ROM at `make extract` time,
+        keeping copyrighted game bytes out of the committed source tree.
+        `Tex_*` blocks go to `.tex.inc.c`, everything else to `.data.inc.c`.
         """
         size = end - start
         if size == 0:
@@ -1013,52 +1011,33 @@ def generate(file_id, data, file_name, entries, reloc_map, csv_entry,
         var_name = f"{prefix}_{c_ident}"
         sym_map.add(var_name, start, end)
 
+        sub_dir_name = os.path.basename(block_dir.rstrip('/'))
         is_tex = name_suffix.startswith('Tex_')
-
-        if is_tex:
-            sub_dir_name = os.path.basename(block_dir.rstrip('/'))
-            inc_name = f"{name_suffix}.tex.inc.c"
-            block_lines = [
-                f"/* Texture data @ 0x{start:04X} ({size} bytes) */",
-                '',
-                '#include "relocdata_types.h"',
-                '',
-                f"u8 {var_name}[{size}] = {{",
-                f"\t#include <{sub_dir_name}/{inc_name}>",
-                "};",
-            ]
-        else:
-            block_lines = [f"/* Raw data from file offset 0x{start:04X} to 0x{end:04X} ({size} bytes) */"]
-            has_relocs = any(start <= off < end for off in reloc_map)
-            if size % 4 == 0:
-                block_lines.append(f"u32 {var_name}[] = {{")
-                wpl = 8
-                for i in range(0, size, wpl * 4):
-                    if has_relocs:
-                        block_lines.append(format_u32_line_with_relocs(data[start:end], i, start, wpl, reloc_map))
-                    else:
-                        block_lines.append(format_u32_line(data[start:end], i, wpl))
-                block_lines.append("};")
-            else:
-                block_lines.append(f"u8 {var_name}[] = {{")
-                for i in range(0, size, 16):
-                    chunk = data[start + i:start + i + 16]
-                    block_lines.append(f"\t{', '.join(f'0x{b:02X}' for b in chunk)},")
-                block_lines.append("};")
+        inc_suffix = 'tex' if is_tex else 'data'
+        inc_name = f"{name_suffix}.{inc_suffix}.inc.c"
+        header = (f"/* Texture data @ 0x{start:04X} ({size} bytes) */"
+                  if is_tex else
+                  f"/* Raw data from file offset 0x{start:04X} to 0x{end:04X} ({size} bytes) */")
+        block_lines = [
+            header,
+            '',
+            '#include "relocdata_types.h"',
+            '',
+            f"u8 {var_name}[{size}] = {{",
+            f"\t#include <{sub_dir_name}/{inc_name}>",
+            "};",
+        ]
 
         filename = f"{name_suffix}.data.c"
         if extract_data:
             write_block_file(block_dir, filename, block_lines)
-            if is_tex:
-                # Write the .inc.c companion immediately so the fresh
-                # manifest compiles without a separate extract pass.
-                inc_dir = os.path.join(PROJECT_DIR, "build", "src", "relocData",
-                                        sub_dir_name)
-                os.makedirs(inc_dir, exist_ok=True)
-                with open(os.path.join(inc_dir, inc_name), 'w') as f:
-                    for i in range(0, size, 16):
-                        chunk = data[start + i:start + min(i + 16, size)]
-                        f.write("\t" + ", ".join(f"0x{b:02X}" for b in chunk) + ",\n")
+            inc_dir = os.path.join(PROJECT_DIR, "build", "src", "relocData",
+                                    sub_dir_name)
+            os.makedirs(inc_dir, exist_ok=True)
+            with open(os.path.join(inc_dir, inc_name), 'w') as f:
+                for i in range(0, size, 16):
+                    chunk = data[start + i:start + min(i + 16, size)]
+                    f.write("\t" + ", ".join(f"0x{b:02X}" for b in chunk) + ",\n")
             manifest.append(('block', filename))
         else:
             lines.extend(block_lines)

@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x0268 to 0x02B0 (72 bytes) */
-u32 dITCommonData_LGun_ItemAttributes[] = {
-	0x00AC0FD4, 0x00000000, 0x00000000, 0x00000000, 0x18000000, 0x00000000, 0x00000000, 0x00000000, /* reloc: +0x0->0x3F50X */
-	0x00000000, 0x003C003C, 0x003C0064, 0x0000FF9C, 0x006400C8, 0x5A46E020, 0x00001840, 0x27028800,
-	0x0E4390E4, 0x3200008C,
+
+#include "relocdata_types.h"
+
+u8 dITCommonData_LGun_ItemAttributes[72] = {
+	#include <ITCommonData/LGun_ItemAttributes.data.inc.c>
 };

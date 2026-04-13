@@ -1,7 +1,7 @@
 /* Raw data from file offset 0x0410 to 0x0480 (112 bytes) */
-u32 dSamusSpecial2_GrappleBeamAnimJoint_AnimJoint[] = {
-	0x00000000, 0x011E0106, 0x16038000, 0x00000000, 0x00000000, 0x00000000, 0x07C00000, 0x3ECB3681, /* reloc: +0x4->0x0418 */
-	0x3ECB3681, 0x3ECB3681, 0x16020006, 0x3F490FDB, 0x0900000C, 0x3F800000, 0x06C00006, 0x3F800000,
-	0x3F800000, 0x06C00000, 0x3ECB367A, 0x3ECB367A, 0x16020006, 0x00000000, 0x06C00006, 0x3F800000,
-	0x3F800000, 0x1C000000, 0x01210106, 0x00000000, /* reloc: +0x68->0x0418 */
+
+#include "relocdata_types.h"
+
+u8 dSamusSpecial2_GrappleBeamAnimJoint_AnimJoint[112] = {
+	#include <SamusSpecial2/GrappleBeamAnimJoint_AnimJoint.data.inc.c>
 };

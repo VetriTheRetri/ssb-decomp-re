@@ -1,4 +1,7 @@
 /* Raw data from file offset 0x19B8 to 0x19C8 (16 bytes) */
-u32 dFTEmblemModels_gap_0x19B8[] = {
-	0x00000000, 0x00000000, 0x07FF0652, 0x00000000, /* reloc: +0x8->0x1948 */
+
+#include "relocdata_types.h"
+
+u8 dFTEmblemModels_gap_0x19B8[16] = {
+	#include <FTEmblemModels/gap_0x19B8.data.inc.c>
 };

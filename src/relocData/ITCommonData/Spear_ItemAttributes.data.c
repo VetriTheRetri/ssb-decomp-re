@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x098C to 0x09D4 (72 bytes) */
-u32 dITCommonData_Spear_ItemAttributes[] = {
-	0x026437CE, 0x0275375C, 0x00000000, 0x00000000, 0x18000000, 0x00000000, 0x00000000, 0x00000000, /* reloc: +0x0->0xDF38X, +0x4->0xDD70X */
-	0x00000000, 0x00960096, 0x009600F4, 0x0000FF0C, 0x00F4012C, 0x16864120, 0x0000104A, 0x310F1800,
-	0x0E4390E4, 0x32000000,
+
+#include "relocdata_types.h"
+
+u8 dITCommonData_Spear_ItemAttributes[72] = {
+	#include <ITCommonData/Spear_ItemAttributes.data.inc.c>
 };

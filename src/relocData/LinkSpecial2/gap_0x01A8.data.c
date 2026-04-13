@@ -1,4 +1,7 @@
 /* Raw data from file offset 0x01A8 to 0x01B8 (16 bytes) */
-u32 dLinkSpecial2_gap_0x01A8[] = {
-	0x00000000, 0x00000000, 0x00C9004E, 0x00000000, /* reloc: +0x8->0x0138 */
+
+#include "relocdata_types.h"
+
+u8 dLinkSpecial2_gap_0x01A8[16] = {
+	#include <LinkSpecial2/gap_0x01A8.data.inc.c>
 };

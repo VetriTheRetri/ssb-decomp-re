@@ -1,4 +1,7 @@
 /* Raw data from file offset 0x1AD4 to 0x1AF0 (28 bytes) */
-u32 dGRBonus1SamusFile2_MPGeometryData_0x1AD4[] = {
-	0x00020000, 0x06B70646, 0x06B80670, 0x06B9068A, 0x06BB06A4, 0x00050000, 0x06BD06AD, /* reloc: +0x4->0x1918, +0x8->0x19C0, +0xC->0x1A28, +0x10->0x1A90, +0x18->0x1AB4 */
+
+#include "relocdata_types.h"
+
+u8 dGRBonus1SamusFile2_MPGeometryData_0x1AD4[28] = {
+	#include <GRBonus1SamusFile2/MPGeometryData_0x1AD4.data.inc.c>
 };

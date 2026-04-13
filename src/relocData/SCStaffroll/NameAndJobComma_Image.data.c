@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x3018 to 0x3078 (96 bytes) */
-u32 dSCStaffroll_NameAndJobComma_Image[] = {
-	0x00000000, 0x00000000, 0x000FFFB0, 0x00000000, 0x003FFF60, 0x00000000, 0x007FFE00, 0x00000000,
-	0x00AFF800, 0x00000000, 0x00FFF400, 0x00000000, 0x04FFC000, 0x00000000, 0x08FF6000, 0x00000000,
-	0x0AFE0000, 0x00000000, 0x05F60000, 0x00000000, 0x00000000, 0x00000000, 0xB8000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dSCStaffroll_NameAndJobComma_Image[96] = {
+	#include <SCStaffroll/NameAndJobComma_Image.data.inc.c>
 };

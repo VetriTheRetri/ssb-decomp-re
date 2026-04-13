@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x0A84 to 0x0ACC (72 bytes) */
-u32 dITCommonData_MLucky_ItemAttributes[] = {
-	0x02B34000, 0x00000000, 0x00000000, 0x00000000, 0x18000000, 0x00000000, 0x00000000, 0x00000000, /* reloc: +0x0->0x10000X */
-	0x00000000, 0x00FA00FA, 0x00FA012C, 0x0000FF38, 0x00F001F4, 0x5A4500C0, 0x0000184A, 0x390F1800,
-	0x0E4390E4, 0x32000000,
+
+#include "relocdata_types.h"
+
+u8 dITCommonData_MLucky_ItemAttributes[72] = {
+	#include <ITCommonData/MLucky_ItemAttributes.data.inc.c>
 };

@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x0C00 to 0x0C48 (72 bytes) */
-u32 dCaptainSpecial2_FalconKickMatAnimJoint_MatAnimJoint[] = {
-	0x00000000, 0x030E030F, 0x140F0000, 0x00000000, 0x00000000, 0x3F800000, 0x3F800000, 0x14008000, /* reloc: +0x4->0x0C3C */
-	0x3F800000, 0x14008002, 0x00000000, 0x14008002, 0x3F800000, 0x1C000000, 0x030F0302, 0x15BB0302, /* reloc: +0x38->0x0C08, +0x3C->0x0C08 */
-	0x00000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dCaptainSpecial2_FalconKickMatAnimJoint_MatAnimJoint[72] = {
+	#include <CaptainSpecial2/FalconKickMatAnimJoint_MatAnimJoint.data.inc.c>
 };

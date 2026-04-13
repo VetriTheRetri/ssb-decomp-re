@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x18E4 to 0x1940 (92 bytes) */
-u32 dFTEmblemModels_Metroid_MatAnimJoint[] = {
-	0x00000000, 0x064C064D, 0x240C0000, 0xB3191900, 0x26262600, 0x240C0001, 0x00199900, 0x26262600, /* reloc: +0x4->0x1934 */
-	0x240C0001, 0xFFB30000, 0x26262600, 0x240C0001, 0x00991900, 0x26262600, 0x260C0001, 0x66666600,
-	0x00000000, 0x04000002, 0x1C000000, 0x064D063B, 0x0651063B, 0x00000000, 0x00000000, /* reloc: +0x4C->0x18EC, +0x50->0x18EC */
+
+#include "relocdata_types.h"
+
+u8 dFTEmblemModels_Metroid_MatAnimJoint[92] = {
+	#include <FTEmblemModels/Metroid_MatAnimJoint.data.inc.c>
 };

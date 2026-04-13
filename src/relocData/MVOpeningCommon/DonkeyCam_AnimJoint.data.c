@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x0030 to 0x0060 (48 bytes) */
-u32 dMVOpeningCommon_DonkeyCam_AnimJoint[] = {
-	0x173B8000, 0xC38F6F05, 0x438C0EC1, 0x4413780A, 0xC3A612E8, 0x4331D43F, 0xC1BFF0A9, 0x428E17D4,
-	0x04000001, 0x00000000, 0x00000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dMVOpeningCommon_DonkeyCam_AnimJoint[48] = {
+	#include <MVOpeningCommon/DonkeyCam_AnimJoint.data.inc.c>
 };

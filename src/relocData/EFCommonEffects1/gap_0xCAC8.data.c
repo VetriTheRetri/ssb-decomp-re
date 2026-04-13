@@ -1,4 +1,7 @@
 /* Raw data from file offset 0xCAC8 to 0xCAE0 (24 bytes) */
-u32 dEFCommonEffects1_gap_0xCAC8[] = {
-	0x00000001, 0x32B83296, 0x00000004, 0x00000000, 0x00000000, 0x00000000, /* reloc: +0x4->0xCA58 */
+
+#include "relocdata_types.h"
+
+u8 dEFCommonEffects1_gap_0xCAC8[24] = {
+	#include <EFCommonEffects1/gap_0xCAC8.data.inc.c>
 };

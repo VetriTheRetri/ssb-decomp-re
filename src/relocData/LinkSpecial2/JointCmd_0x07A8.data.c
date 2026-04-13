@@ -1,4 +1,7 @@
 /* Raw data from file offset 0x07A8 to 0x07B8 (16 bytes) */
-u32 dLinkSpecial2_JointCmd_0x07A8[] = {
-	0x00000001, 0x01FA01A6, 0x00000004, 0x00000000, /* reloc: +0x4->0x0698 */
+
+#include "relocdata_types.h"
+
+u8 dLinkSpecial2_JointCmd_0x07A8[16] = {
+	#include <LinkSpecial2/JointCmd_0x07A8.data.inc.c>
 };

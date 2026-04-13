@@ -1,4 +1,7 @@
 /* Raw data from file offset 0x1F34 to 0x1F50 (28 bytes) */
-u32 dStagePupupuFile2_MPGeometryData_0x1F34[] = {
-	0x00010000, 0x07CF0759, 0x07D00776, 0x07D10782, 0x07D30789, 0x002A0000, 0x07D6078E, /* reloc: +0x4->0x1D64, +0x8->0x1DD8, +0xC->0x1E08, +0x10->0x1E24, +0x18->0x1E38 */
+
+#include "relocdata_types.h"
+
+u8 dStagePupupuFile2_MPGeometryData_0x1F34[28] = {
+	#include <StagePupupuFile2/MPGeometryData_0x1F34.data.inc.c>
 };

@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x6E8C to 0x6EB0 (36 bytes) */
-u32 dStageYamabukiFile2_MPGeometryData_0x6E8C[] = {
-	0x00040000, 0x1BA51B0A, 0x1BA61B39, 0x1BA71B4E, 0x1BA91B5E, 0x00220000, 0x1BB11B70, 0x00000000, /* reloc: +0x4->0x6C28, +0x8->0x6CE4, +0xC->0x6D38, +0x10->0x6D78, +0x18->0x6DC0 */
-	0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dStageYamabukiFile2_MPGeometryData_0x6E8C[36] = {
+	#include <StageYamabukiFile2/MPGeometryData_0x6E8C.data.inc.c>
 };

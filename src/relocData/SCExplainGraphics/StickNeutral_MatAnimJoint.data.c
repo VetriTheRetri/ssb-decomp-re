@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x5390 to 0x53C0 (48 bytes) */
-u32 dSCExplainGraphics_StickNeutral_MatAnimJoint[] = {
-	0x14EC14EC, 0x00000000, 0x14008000, 0x00000000, 0x16008014, 0x3F800000, 0x04000001, 0x00000000, /* reloc: +0x0->0x53B0 */
-	0x14F014E6, 0x00000000, 0x00000000, 0x00000000, /* reloc: +0x20->0x5398 */
+
+#include "relocdata_types.h"
+
+u8 dSCExplainGraphics_StickNeutral_MatAnimJoint[48] = {
+	#include <SCExplainGraphics/StickNeutral_MatAnimJoint.data.inc.c>
 };

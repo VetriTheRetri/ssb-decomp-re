@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x7D40 to 0x7DA0 (96 bytes) */
-u32 dEFCommonEffects1_ImpactWave_AnimJoint[] = {
-	0x1F681F51, 0x16008000, 0x00000000, 0x0D400000, 0x3F4CCCCD, 0x3F0C9D7F, 0x3F4CCCCD, 0x3F0C6C35, /* reloc: +0x0->0x7D44 */
-	0x06810000, 0x00000000, 0x3F800000, 0x0801000C, 0xBF1A702C, 0x0D40000C, 0x408EEBE2, 0x3E38E11B,
-	0x408EEBE2, 0x3E38342B, 0x06800004, 0x41180000, 0x06800008, 0x3FEB2136, 0x00000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dEFCommonEffects1_ImpactWave_AnimJoint[96] = {
+	#include <EFCommonEffects1/ImpactWave_AnimJoint.data.inc.c>
 };

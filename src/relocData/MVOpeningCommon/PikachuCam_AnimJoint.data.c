@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x0120 to 0x0150 (48 bytes) */
-u32 dMVOpeningCommon_PikachuCam_AnimJoint[] = {
-	0x173B8000, 0x437D518E, 0x4424FFA4, 0x45260092, 0xC1615200, 0x429806F9, 0xC110E340, 0x418A1580,
-	0x04000001, 0x00000000, 0x00000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dMVOpeningCommon_PikachuCam_AnimJoint[48] = {
+	#include <MVOpeningCommon/PikachuCam_AnimJoint.data.inc.c>
 };

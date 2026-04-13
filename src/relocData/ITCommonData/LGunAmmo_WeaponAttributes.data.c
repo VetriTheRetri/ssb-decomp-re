@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x02B0 to 0x02E4 (52 bytes) */
-u32 dITCommonData_LGunAmmo_WeaponAttributes[] = {
-	0x00B9102A, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x0000FFFB, 0x00000000, 0x000A0000, /* reloc: +0x0->0x40A8X */
-	0xFFF6000A, 0x00781180, 0x0A028800, 0xF880113C, 0x0C800000,
+
+#include "relocdata_types.h"
+
+u8 dITCommonData_LGunAmmo_WeaponAttributes[52] = {
+	#include <ITCommonData/LGunAmmo_WeaponAttributes.data.inc.c>
 };

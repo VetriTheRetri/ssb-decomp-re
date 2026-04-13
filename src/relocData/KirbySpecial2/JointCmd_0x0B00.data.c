@@ -1,4 +1,7 @@
 /* Raw data from file offset 0x0B00 to 0x0B10 (16 bytes) */
-u32 dKirbySpecial2_JointCmd_0x0B00[] = {
-	0x00000001, 0x02C5026C, 0x00000004, 0x00000000, /* reloc: +0x4->0x09B0 */
+
+#include "relocdata_types.h"
+
+u8 dKirbySpecial2_JointCmd_0x0B00[16] = {
+	#include <KirbySpecial2/JointCmd_0x0B00.data.inc.c>
 };

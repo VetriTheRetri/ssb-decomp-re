@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x24D4 to 0x2520 (76 bytes) */
-u32 dLBTransitionStar_AnimJoint_0x24D4[] = {
-	0x00000000, 0xFFFF0937, 0x17000000, 0x3F800000, 0x12C00000, 0x3F800000, 0x3F800000, 0x06020000, /* reloc: +0x4->0x24DC */
-	0x00000000, 0x0CC00040, 0x428C0000, 0x40177777, 0x428C0000, 0x40177777, 0x06020040, 0xBFC90FDB,
-	0x00000000, 0x00000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dLBTransitionStar_AnimJoint_0x24D4[76] = {
+	#include <LBTransitionStar/AnimJoint_0x24D4.data.inc.c>
 };

@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x0120 to 0x0170 (80 bytes) */
-u32 dGRInishieMap_Pakkun_ItemAttributes[] = {
-	0x0049030C, 0xFFFF029A, 0x00000000, 0x00000000, 0x18000000, 0x00000000, 0x00000000, 0x00000000, /* reloc: +0x0->0x0C30X, +0x4->0x0A68X */
-	0x00000000, 0x01C201EA, 0x01C2006E, 0x0000FF92, 0x009F00C8, 0x14050050, 0x0000184A, 0x39141840,
-	0x0E4390E4, 0x32000000, 0x00000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dGRInishieMap_Pakkun_ItemAttributes[80] = {
+	#include <GRInishieMap/Pakkun_ItemAttributes.data.inc.c>
 };

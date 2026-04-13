@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x0AD0 to 0x0B10 (64 bytes) */
-u32 dNessSpecial2_PsychicMagnetMatAnimJoint_MatAnimJoint[] = {
-	0x00000000, 0x02C102C2, 0x14008000, 0x00000000, 0x14008006, 0x3F800000, 0x14008003, 0xB0800000, /* reloc: +0x4->0x0B08 */
-	0x14008006, 0x3F800000, 0x14008003, 0x32C00000, 0x1C000000, 0x02C202B6, 0xFFFF02B6, 0x00000000, /* reloc: +0x34->0x0AD8, +0x38->0x0AD8 */
+
+#include "relocdata_types.h"
+
+u8 dNessSpecial2_PsychicMagnetMatAnimJoint_MatAnimJoint[64] = {
+	#include <NessSpecial2/PsychicMagnetMatAnimJoint_MatAnimJoint.data.inc.c>
 };

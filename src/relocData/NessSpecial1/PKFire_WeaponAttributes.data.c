@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x0000 to 0x0034 (52 bytes) */
-u32 dNessSpecial1_PKFire_WeaponAttributes[] = {
-	0x0001005A, 0x00030000, 0x00000000, 0x000D0078, 0x00000000, 0x00000000, 0x00000000, 0x000A0000, /* reloc: +0x0->0x0168X, +0x4->0x0000X, +0xC->0x01E0X */
-	0xFFF6000A, 0x00C81400, 0x0C810400, 0x0160113C, 0x0A000000,
+
+#include "relocdata_types.h"
+
+u8 dNessSpecial1_PKFire_WeaponAttributes[52] = {
+	#include <NessSpecial1/PKFire_WeaponAttributes.data.inc.c>
 };

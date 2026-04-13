@@ -1,4 +1,7 @@
 /* Raw data from file offset 0x3650 to 0x3670 (32 bytes) */
-u32 dGRBonus2LuigiFile2_MPGeometryData_0x3650[] = {
-	0x000F0000, 0x0D960C1F, 0x0D970CAC, 0x0D980CFC, 0x0D9A0D48, 0x00050000, 0x0DA10D8C, 0x00000000, /* reloc: +0x4->0x307C, +0x8->0x32B0, +0xC->0x33F0, +0x10->0x3520, +0x18->0x3630 */
+
+#include "relocdata_types.h"
+
+u8 dGRBonus2LuigiFile2_MPGeometryData_0x3650[32] = {
+	#include <GRBonus2LuigiFile2/MPGeometryData_0x3650.data.inc.c>
 };

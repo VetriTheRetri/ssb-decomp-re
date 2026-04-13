@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x00BC to 0x00E0 (36 bytes) */
-u32 dGRHyruleMap_TwisterThrow_HitDesc[] = {
-	0x00000002, 0x0000000E, 0x0000005A, 0x0000003C, 0x00000000, 0x00000073, 0x00000000, 0x00000000,
-	0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dGRHyruleMap_TwisterThrow_HitDesc[36] = {
+	#include <GRHyruleMap/TwisterThrow_HitDesc.data.inc.c>
 };

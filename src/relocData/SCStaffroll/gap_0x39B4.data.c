@@ -1,4 +1,7 @@
 /* Raw data from file offset 0x39B4 to 0x39C8 (20 bytes) */
-u32 dSCStaffroll_gap_0x39B4[] = {
-	0x00000000, 0x00000000, 0x00000000, 0xB8000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dSCStaffroll_gap_0x39B4[20] = {
+	#include <SCStaffroll/gap_0x39B4.data.inc.c>
 };

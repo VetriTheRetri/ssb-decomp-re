@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x101C to 0x1070 (84 bytes) */
-u32 dLBTransitionRotScale_AnimJoint_0x101C[] = {
-	0x00000000, 0xFFFF0409, 0x16018000, 0x00000000, 0x00000000, 0x12020000, 0x00000000, 0x07C00000, /* reloc: +0x4->0x1024 */
-	0x3F800000, 0x3F800000, 0x3F800000, 0x0C020040, 0x41FB53D1, 0x3FA53483, 0x07C00040, 0x3727C5AC,
-	0x3727C5AC, 0x3727C5AC, 0x00000000, 0x00000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dLBTransitionRotScale_AnimJoint_0x101C[84] = {
+	#include <LBTransitionRotScale/AnimJoint_0x101C.data.inc.c>
 };

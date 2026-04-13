@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x0244 to 0x0278 (52 bytes) */
-u32 dGRYamabukiMap_HitokageFlame_WeaponAttributes[] = {
-	0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00320000,
-	0xFFCE0032, 0x01400000, 0x19008403, 0x0140E19C, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dGRYamabukiMap_HitokageFlame_WeaponAttributes[52] = {
+	#include <GRYamabukiMap/HitokageFlame_WeaponAttributes.data.inc.c>
 };

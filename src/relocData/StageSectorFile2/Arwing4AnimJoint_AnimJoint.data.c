@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x1D54 to 0x1DA4 (80 bytes) */
-u32 dStageSectorFile2_Arwing4AnimJoint_AnimJoint[] = {
-	0xCCDDB1CC, 0xDE1ECC89, 0x9999CC79, 0x999DDEDD, 0xBDEDCEDC, 0xECECDCCC, 0xCCDDC1CD, 0xCD1DCC7C,
-	0xCCCCCCBC, 0xCDCCCDDD, 0xBDDCBDDB, 0xDCDCDCCB, 0xCCDDB1CC, 0xCD1DCC7C, 0xCCCCCCBC, 0xCDCCCDDD,
-	0xBDDCBDDB, 0xDCDCDCCB, 0xCCDDB1CC, 0xDE1ECC8D,
+
+#include "relocdata_types.h"
+
+u8 dStageSectorFile2_Arwing4AnimJoint_AnimJoint[80] = {
+	#include <StageSectorFile2/Arwing4AnimJoint_AnimJoint.data.inc.c>
 };

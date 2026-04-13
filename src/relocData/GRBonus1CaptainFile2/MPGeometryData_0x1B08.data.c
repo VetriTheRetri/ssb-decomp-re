@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x1B08 to 0x1B30 (40 bytes) */
-u32 dGRBonus1CaptainFile2_MPGeometryData_0x1B08[] = {
-	0x00020000, 0x06C4064E, 0x06C5067B, 0x06C60696, 0x06C806B1, 0x00050000, 0x06CE06BA, 0x00000000, /* reloc: +0x4->0x1938, +0x8->0x19EC, +0xC->0x1A58, +0x10->0x1AC4, +0x18->0x1AE8 */
-	0x00000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dGRBonus1CaptainFile2_MPGeometryData_0x1B08[40] = {
+	#include <GRBonus1CaptainFile2/MPGeometryData_0x1B08.data.inc.c>
 };

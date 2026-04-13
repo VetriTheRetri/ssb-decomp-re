@@ -1,6 +1,7 @@
 /* Raw data from file offset 0xC940 to 0xC9A0 (96 bytes) */
-u32 dMVOpeningYoster_Cam_AnimJoint[] = {
-	0x14310000, 0x43BBABF2, 0x438922E8, 0xC2875278, 0x100A8000, 0xC202C30E, 0x447DE941, 0xC202C30E,
-	0x120A805A, 0x00000000, 0x44D4D49D, 0x00000000, 0x180A8001, 0x17000000, 0x42262863, 0x04000059,
-	0x100A8046, 0x00000000, 0x44D4D49D, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dMVOpeningYoster_Cam_AnimJoint[96] = {
+	#include <MVOpeningYoster/Cam_AnimJoint.data.inc.c>
 };

@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x3EEC to 0x3F40 (84 bytes) */
-u32 dFTEmblemModels_Kirby_MatAnimJoint[] = {
-	0x00000000, 0x0FCE0FCF, 0x240C0000, 0xB3191900, 0x26262600, 0x240C0001, 0x00199900, 0x26262600, /* reloc: +0x4->0x3F3C */
-	0x240C0001, 0xFFB30000, 0x26262600, 0x240C0001, 0x00991900, 0x26262600, 0x260C0001, 0x66666600,
-	0x00000000, 0x04000002, 0x1C000000, 0x0FCF0FBD, 0x0FD10FBD, /* reloc: +0x4C->0x3EF4, +0x50->0x3EF4 */
+
+#include "relocdata_types.h"
+
+u8 dFTEmblemModels_Kirby_MatAnimJoint[84] = {
+	#include <FTEmblemModels/Kirby_MatAnimJoint.data.inc.c>
 };

@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x3078 to 0x30B8 (64 bytes) */
-u32 dSCStaffroll_NameAndJobPeriod_Image[] = {
-	0x00001000, 0x00000000, 0x007CA100, 0x00000000, 0x07EFE700, 0x00000000, 0x0CFFFC00, 0x00000000,
-	0x08EFE700, 0x00000000, 0x007CA100, 0x00000000, 0x00001000, 0x00000000, 0xDF000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dSCStaffroll_NameAndJobPeriod_Image[64] = {
+	#include <SCStaffroll/NameAndJobPeriod_Image.data.inc.c>
 };

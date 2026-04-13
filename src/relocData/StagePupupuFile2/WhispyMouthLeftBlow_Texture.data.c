@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x2C30 to 0x2C80 (80 bytes) */
-u32 dStagePupupuFile2_WhispyMouthLeftBlow_Texture[] = {
-	0xC21A39DB, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x3F800000, 0x3F800000, 0x3F800000,
-	0x00000001, 0x0B200A92, 0x00000000, 0xC21A39DB, 0x00000000, 0x00000000, 0x00000000, 0x00000000, /* reloc: +0x24->0x2A48 */
-	0x3F800000, 0x3F800000, 0x3F800000, 0x00000001,
+
+#include "relocdata_types.h"
+
+u8 dStagePupupuFile2_WhispyMouthLeftBlow_Texture[80] = {
+	#include <StagePupupuFile2/WhispyMouthLeftBlow_Texture.data.inc.c>
 };

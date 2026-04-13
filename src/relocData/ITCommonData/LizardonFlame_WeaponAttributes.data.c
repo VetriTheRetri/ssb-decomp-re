@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x0944 to 0x098C (72 bytes) */
-u32 dITCommonData_LizardonFlame_WeaponAttributes[] = {
-	0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00040000,
-	0xFFFC0004, 0x01400000, 0x19010408, 0x0140E19C, 0x00000000, 0xBE860A92, 0xBE060A92, 0x00000000,
-	0x3E060A92, 0x3E860A92,
+
+#include "relocdata_types.h"
+
+u8 dITCommonData_LizardonFlame_WeaponAttributes[72] = {
+	#include <ITCommonData/LizardonFlame_WeaponAttributes.data.inc.c>
 };

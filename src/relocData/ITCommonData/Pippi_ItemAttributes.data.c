@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x0C74 to 0x0CBC (72 bytes) */
-u32 dITCommonData_Pippi_ItemAttributes[] = {
-	0x032F4D66, 0x00000000, 0x00000000, 0x00000000, 0x18000000, 0x00000000, 0x00000000, 0x00000000, /* reloc: +0x0->0x13598X */
-	0x00000000, 0x00960096, 0x009600C0, 0x0000FF40, 0x00C0012C, 0x5A4500C0, 0x0000184A, 0x390F1800,
-	0x0E4390E4, 0x32000000,
+
+#include "relocdata_types.h"
+
+u8 dITCommonData_Pippi_ItemAttributes[72] = {
+	#include <ITCommonData/Pippi_ItemAttributes.data.inc.c>
 };

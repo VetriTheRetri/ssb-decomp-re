@@ -1,4 +1,7 @@
 /* Raw data from file offset 0x0288 to 0x02A0 (24 bytes) */
-u32 dSamusSpecial2_gap_0x0288[] = {
-	0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00D30088, 0x00000000, /* reloc: +0x10->0x0220 */
+
+#include "relocdata_types.h"
+
+u8 dSamusSpecial2_gap_0x0288[24] = {
+	#include <SamusSpecial2/gap_0x0288.data.inc.c>
 };

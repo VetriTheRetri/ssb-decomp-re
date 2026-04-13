@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x53C0 to 0x53F0 (48 bytes) */
-u32 dSCExplainGraphics_StickHoldUp_MatAnimJoint[] = {
-	0x14F814F8, 0x00000000, 0x14008000, 0x40000000, 0x1600800A, 0x00000000, 0x04000001, 0x00000000, /* reloc: +0x0->0x53E0 */
-	0x14FC14F2, 0x00000000, 0x00000000, 0x00000000, /* reloc: +0x20->0x53C8 */
+
+#include "relocdata_types.h"
+
+u8 dSCExplainGraphics_StickHoldUp_MatAnimJoint[48] = {
+	#include <SCExplainGraphics/StickHoldUp_MatAnimJoint.data.inc.c>
 };

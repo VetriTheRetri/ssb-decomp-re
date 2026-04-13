@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x0ACC to 0x0B14 (72 bytes) */
-u32 dITCommonData_Egg_ItemAttributes[] = {
-	0x02B54128, 0x00000000, 0x02CD4154, 0x00000000, 0x18000000, 0x00000000, 0x00000000, 0x00000000, /* reloc: +0x0->0x104A0X, +0x8->0x10550X */
-	0x00000000, 0x00960096, 0x009600C8, 0x0000FF74, 0x011800C8, 0x5A450030, 0x0000184A, 0x270F0C40,
-	0x0E4390E4, 0x32000064,
+
+#include "relocdata_types.h"
+
+u8 dITCommonData_Egg_ItemAttributes[72] = {
+	#include <ITCommonData/Egg_ItemAttributes.data.inc.c>
 };

@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x0480 to 0x04C8 (72 bytes) */
-u32 dSamusSpecial2_GrappleBeamMatAnimJoint_MatAnimJoint[] = {
-	0x00000000, 0x012D012E, 0x14008000, 0x00000000, 0x14008004, 0x3F800000, 0x14008002, 0x00000000, /* reloc: +0x4->0x04B8 */
-	0x14008004, 0x3F800000, 0x14008002, 0x00000000, 0x1C000000, 0x012E0122, 0x02630122, 0x00000000, /* reloc: +0x34->0x0488, +0x38->0x0488 */
-	0x00000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dSamusSpecial2_GrappleBeamMatAnimJoint_MatAnimJoint[72] = {
+	#include <SamusSpecial2/GrappleBeamMatAnimJoint_MatAnimJoint.data.inc.c>
 };

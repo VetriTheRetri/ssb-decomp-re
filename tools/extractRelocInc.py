@@ -55,9 +55,25 @@ def wrapper_inc_target(block_filename):
         return block_filename[:-len('.vtx.c')] + '.vtx.inc.c'
     if block_filename.endswith('.palette.c'):
         return block_filename[:-len('.palette.c')] + '.palette.inc.c'
-    if block_filename.startswith('Tex_') and block_filename.endswith('.data.c'):
-        return block_filename[:-len('.data.c')] + '.tex.inc.c'
+    if block_filename.endswith('.data.c'):
+        base = block_filename[:-len('.data.c')]
+        if block_filename.startswith('Tex_'):
+            return base + '.tex.inc.c'
+        return base + '.data.inc.c'
     return None
+
+
+def wrapper_is_include_form(block_path):
+    """Return True if the committed wrapper uses the `#include <...inc.c>`
+    form (so we should regenerate its companion inc.c from the ROM).
+    Files that still hold typed struct initializers (MPGroundData etc.)
+    don't have an inc.c and should be left alone."""
+    try:
+        with open(block_path) as f:
+            content = f.read()
+    except OSError:
+        return False
+    return bool(re.search(r'#include\s+[<"][^>"]+\.inc\.c[>"]', content))
 
 
 def write_lines(path, lines):
@@ -127,7 +143,7 @@ def process_fid(fid):
         block_path = os.path.join(src_sub_dir, payload)
         size = compute_block_size(block_path, search_paths=search_paths)
         inc_name = wrapper_inc_target(payload)
-        if inc_name is None:
+        if inc_name is None or not wrapper_is_include_form(block_path):
             offset += size
             continue
         inc_path = os.path.join(build_sub_dir, inc_name)
@@ -136,7 +152,7 @@ def process_fid(fid):
             emit_vtx(data, offset, count, inc_path)
         elif payload.endswith('.palette.c'):
             emit_palette(data, offset, inc_path)
-        elif payload.startswith('Tex_'):
+        elif payload.endswith('.data.c'):
             emit_tex(data, offset, size, inc_path)
         emitted += 1
         offset += size

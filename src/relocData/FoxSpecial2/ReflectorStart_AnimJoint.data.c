@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x0340 to 0x03A0 (96 bytes) */
-u32 dFoxSpecial2_ReflectorStart_AnimJoint[] = {
-	0x00000000, 0x00E900D2, 0x07F80000, 0x00000000, 0x43700000, 0x00000000, 0x3E4CCCCD, 0x3E4CCCCD, /* reloc: +0x4->0x0348 */
-	0x3E4CCCCD, 0x08380009, 0x00000000, 0x43700000, 0x00000000, 0x07C00004, 0x3F800000, 0x3F800000,
-	0x3F800000, 0x09C00001, 0x3ECCCCCD, 0x3ECCCCCD, 0x3ECCCCCD, 0x04000000, 0x00000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dFoxSpecial2_ReflectorStart_AnimJoint[96] = {
+	#include <FoxSpecial2/ReflectorStart_AnimJoint.data.inc.c>
 };

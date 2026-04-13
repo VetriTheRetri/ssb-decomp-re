@@ -1,6 +1,7 @@
 /* Raw data from file offset 0xCAE0 to 0xCB40 (96 bytes) */
-u32 dEFCommonEffects1_DamageFlyMDust_AnimJoint[] = {
-	0x32D032B9, 0x0BD00000, 0x00000000, 0x3FE464E9, 0x3F800000, 0x3D6EEEEF, 0x3F800000, 0x3D6EEEEF, /* reloc: +0x0->0xCAE4 */
-	0x3F800000, 0x3D6EEEEF, 0x13C0001D, 0x40000001, 0x40000001, 0x40000001, 0x0A10000F, 0x00000000,
-	0xC093B13C, 0x0C10000B, 0xC2F00000, 0xC19990A9, 0x0400000A, 0x00000000, 0x00000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dEFCommonEffects1_DamageFlyMDust_AnimJoint[96] = {
+	#include <EFCommonEffects1/DamageFlyMDust_AnimJoint.data.inc.c>
 };

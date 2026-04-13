@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x7A60 to 0x7A88 (40 bytes) */
-u32 dMNBackupClear_OptionNoHighlight_Palette[] = {
-	0x00000847, 0x18CD2113, 0x2957319D, 0x39E16A91, 0x42235A9F, 0x83117AD9, 0x9391ABCB, 0xC409DC41,
-	0x00000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dMNBackupClear_OptionNoHighlight_Palette[40] = {
+	#include <MNBackupClear/OptionNoHighlight_Palette.data.inc.c>
 };

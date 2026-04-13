@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x0584 to 0x05CC (72 bytes) */
-u32 dITCommonData_RShell_ItemAttributes[] = {
-	0x016217E2, 0x01731778, 0x00000000, 0x00000000, 0x18000000, 0x00000000, 0x00000000, 0x00000000, /* reloc: +0x0->0x5F88X, +0x4->0x5DE0X */
-	0x00000000, 0x00960096, 0x00960096, 0x0000FF6A, 0x009600C8, 0x5A4500A0, 0x16801070, 0x2F0F0C00,
-	0x0E4390E4, 0x32000000,
+
+#include "relocdata_types.h"
+
+u8 dITCommonData_RShell_ItemAttributes[72] = {
+	#include <ITCommonData/RShell_ItemAttributes.data.inc.c>
 };

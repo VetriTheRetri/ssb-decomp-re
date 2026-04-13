@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x0220 to 0x0268 (72 bytes) */
-u32 dITCommonData_Harisen_ItemAttributes[] = {
-	0x009A0866, 0x00000000, 0x00000000, 0x00000000, 0x18000000, 0x00000000, 0x00000000, 0x00000000, /* reloc: +0x0->0x2198X */
-	0x00000000, 0x00960096, 0x009600D2, 0x0000FF2E, 0x005A00C8, 0x18064010, 0x00001866, 0x27118400,
-	0x0E4390E4, 0x23000032,
+
+#include "relocdata_types.h"
+
+u8 dITCommonData_Harisen_ItemAttributes[72] = {
+	#include <ITCommonData/Harisen_ItemAttributes.data.inc.c>
 };

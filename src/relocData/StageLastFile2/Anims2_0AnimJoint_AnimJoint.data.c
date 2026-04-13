@@ -1,6 +1,7 @@
 /* Raw data from file offset 0xDE70 to 0xDEC0 (80 bytes) */
-u32 dStageLastFile2_Anims2_0AnimJoint_AnimJoint[] = {
-	0x00000000, 0x00000000, 0x379F37A0, 0x37A937AA, 0x06020000, 0x40C90FDB, 0x06020257, 0x00000000, /* reloc: +0x8->0xDE80, +0xC->0xDEA8 */
-	0x14020001, 0x40C90FDB, 0x06020257, 0x00000000, 0x1C000000, 0x37AF37A0, 0x06020000, 0x00000000, /* reloc: +0x34->0xDE80 */
-	0x060204AF, 0x40C90FDB, 0x1C000000, 0x37B237AA, /* reloc: +0x4C->0xDEA8 */
+
+#include "relocdata_types.h"
+
+u8 dStageLastFile2_Anims2_0AnimJoint_AnimJoint[80] = {
+	#include <StageLastFile2/Anims2_0AnimJoint_AnimJoint.data.inc.c>
 };

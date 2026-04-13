@@ -1,4 +1,7 @@
 /* Raw data from file offset 0x0670 to 0x0690 (32 bytes) */
-u32 dStageYosterFile2_CloudSolid_MatAnimJoint[] = {
-	0xFD100000, 0x01A7005E, 0xE6000000, 0x00000000, 0xF0000000, 0x0503C000, 0xE7000000, 0x00000000, /* reloc: +0x4->0x0178X */
+
+#include "relocdata_types.h"
+
+u8 dStageYosterFile2_CloudSolid_MatAnimJoint[32] = {
+	#include <StageYosterFile2/CloudSolid_MatAnimJoint.data.inc.c>
 };

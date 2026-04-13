@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x0B90 to 0x0BD0 (64 bytes) */
-u32 dStageZebesFile2_AcidAnimJoint_AnimJoint[] = {
-	0xABA6778B, 0xDEEDDEDD, 0x11DFFDCC, 0xDEDDBD0D, 0xBD86788B, 0xEFEEFFEE, 0x111FFFFF, 0xDDDEF0DB,
-	0xDB66788D, 0xFFFFEDEF, 0x11EE00FF, 0xF000EBBD, 0xB866788D, 0xFDDDBAA9, 0x1FDF0000, 0xFDCBBDDB,
+
+#include "relocdata_types.h"
+
+u8 dStageZebesFile2_AcidAnimJoint_AnimJoint[64] = {
+	#include <StageZebesFile2/AcidAnimJoint_AnimJoint.data.inc.c>
 };

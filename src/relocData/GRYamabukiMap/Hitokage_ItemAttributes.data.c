@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x01FC to 0x0244 (72 bytes) */
-u32 dGRYamabukiMap_Hitokage_ItemAttributes[] = {
-	0x00800664, 0x008105F4, 0x009E0688, 0x00000000, 0x58000000, 0x00000000, 0x00000000, 0x00000000, /* reloc: +0x0->0x1990X, +0x4->0x17D0X, +0x8->0x1A20X */
-	0x00000000, 0x00C800C8, 0x00C800FC, 0x0000FF04, 0x01110154, 0x5A464050, 0x00001036, 0x39051840,
-	0x0E4390E4, 0x32000000,
+
+#include "relocdata_types.h"
+
+u8 dGRYamabukiMap_Hitokage_ItemAttributes[72] = {
+	#include <GRYamabukiMap/Hitokage_ItemAttributes.data.inc.c>
 };

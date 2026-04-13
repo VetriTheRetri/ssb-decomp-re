@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x06E4 to 0x072C (72 bytes) */
-u32 dITCommonData_MBall_ItemAttributes[] = {
-	0x01BA250C, 0x01CB2448, 0x00000000, 0x00000000, 0x58000000, 0x00000000, 0x00000000, 0x00000000, /* reloc: +0x0->0x9430X, +0x4->0x9120X */
-	0x00000000, 0x00960096, 0x0096006D, 0x0000FF93, 0x00A400C8, 0x5A4500C0, 0x0000184A, 0x270F0C00,
-	0x0E4390E4, 0x28000014,
+
+#include "relocdata_types.h"
+
+u8 dITCommonData_MBall_ItemAttributes[72] = {
+	#include <ITCommonData/MBall_ItemAttributes.data.inc.c>
 };

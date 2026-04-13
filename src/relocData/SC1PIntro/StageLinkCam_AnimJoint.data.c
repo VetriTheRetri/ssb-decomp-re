@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x6FE0 to 0x7010 (48 bytes) */
-u32 dSC1PIntro_StageLinkCam_AnimJoint[] = {
-	0x17BB8000, 0x4486A0F4, 0xC2C405F2, 0x4326F7F1, 0xBF4EACC0, 0x43B1B444, 0x4326AB6F, 0x00000000,
-	0x41983CD3, 0x04000001, 0x00000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dSC1PIntro_StageLinkCam_AnimJoint[48] = {
+	#include <SC1PIntro/StageLinkCam_AnimJoint.data.inc.c>
 };

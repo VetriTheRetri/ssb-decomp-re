@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x34E0 to 0x3510 (48 bytes) */
-u32 dStagePupupuFile2_BrontoLMatAnimJoint_MatAnimJoint[] = {
-	0x00000000, 0x0DB50DB6, 0x14008000, 0x00000000, 0x14008004, 0x3F800000, 0x14008004, 0x40000000, /* reloc: +0x4->0x36D8 */
-	0x14008004, 0x00000000, 0x14008004, 0x3F800000,
+
+#include "relocdata_types.h"
+
+u8 dStagePupupuFile2_BrontoLMatAnimJoint_MatAnimJoint[48] = {
+	#include <StagePupupuFile2/BrontoLMatAnimJoint_MatAnimJoint.data.inc.c>
 };

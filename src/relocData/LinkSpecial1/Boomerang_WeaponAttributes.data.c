@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x0000 to 0x0040 (64 bytes) */
-u32 dLinkSpecial1_Boomerang_WeaponAttributes[] = {
-	0x00020184, 0x00000000, 0xFFFF01B0, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00960000, /* reloc: +0x0->0x0610X, +0x8->0x06C0X */
-	0xFF6A0096, 0x00C81180, 0x07824000, 0x01A0F9B4, 0x0DC00000, 0x00000000, 0x00000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dLinkSpecial1_Boomerang_WeaponAttributes[64] = {
+	#include <LinkSpecial1/Boomerang_WeaponAttributes.data.inc.c>
 };

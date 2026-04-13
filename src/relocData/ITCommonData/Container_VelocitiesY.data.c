@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x0000 to 0x0050 (80 bytes) */
-u32 dITCommonData_Container_VelocitiesY[] = {
-	0x41D00000, 0x41D00000, 0x41D00000, 0x41D00000, 0x41D00000, 0x41D00000, 0x41D00000, 0x42200000,
-	0x41D00000, 0x41D00000, 0x41D00000, 0x41D00000, 0x41D00000, 0x41D00000, 0x41D00000, 0x41D00000,
-	0x41D00000, 0x41D00000, 0x41D00000, 0x41D00000,
+
+#include "relocdata_types.h"
+
+u8 dITCommonData_Container_VelocitiesY[80] = {
+	#include <ITCommonData/Container_VelocitiesY.data.inc.c>
 };

@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x0BF8 to 0x0C40 (72 bytes) */
-u32 dITCommonData_Dogas_ItemAttributes[] = {
-	0x03104A08, 0x00000000, 0x00000000, 0x00000000, 0x18000000, 0x00000000, 0x00000000, 0x00000000, /* reloc: +0x0->0x12820X */
-	0x00000000, 0x00960096, 0x009600F0, 0x0000FF10, 0x00F00032, 0x5A4500C0, 0x0000104A, 0x390F1800,
-	0x0E4390E4, 0x32000000,
+
+#include "relocdata_types.h"
+
+u8 dITCommonData_Dogas_ItemAttributes[72] = {
+	#include <ITCommonData/Dogas_ItemAttributes.data.inc.c>
 };

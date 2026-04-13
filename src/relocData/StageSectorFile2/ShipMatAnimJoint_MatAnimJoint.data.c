@@ -1,5 +1,7 @@
 /* Raw data from file offset 0xB7B0 to 0xB7E0 (48 bytes) */
-u32 dStageSectorFile2_ShipMatAnimJoint_MatAnimJoint[] = {
-	0x00000000, 0x2DF42DF5, 0x14008000, 0x00000000, 0x16008002, 0x3F800000, 0x04000004, 0x1C000000, /* reloc: +0x4->0xB7D4 */
-	0x2DF52DEE, 0x2DF82DEE, 0x00000000, 0x00000000, /* reloc: +0x20->0xB7B8, +0x24->0xB7B8 */
+
+#include "relocdata_types.h"
+
+u8 dStageSectorFile2_ShipMatAnimJoint_MatAnimJoint[48] = {
+	#include <StageSectorFile2/ShipMatAnimJoint_MatAnimJoint.data.inc.c>
 };

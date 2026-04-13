@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x01D8 to 0x0220 (72 bytes) */
-u32 dITCommonData_Bat_ItemAttributes[] = {
-	0x00880780, 0x00000000, 0x00000000, 0x00000000, 0x18000000, 0x00000000, 0x00000000, 0x00000000, /* reloc: +0x0->0x1E00X */
-	0x00000000, 0x00960096, 0x009600F0, 0x0000FF10, 0x001B00C8, 0x5A4500C0, 0x0000184A, 0x270F0400,
-	0x0E4390E4, 0x37000064,
+
+#include "relocdata_types.h"
+
+u8 dITCommonData_Bat_ItemAttributes[72] = {
+	#include <ITCommonData/Bat_ItemAttributes.data.inc.c>
 };

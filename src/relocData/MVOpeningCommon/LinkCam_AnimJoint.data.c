@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x00C0 to 0x00F0 (48 bytes) */
-u32 dMVOpeningCommon_LinkCam_AnimJoint[] = {
-	0x173B8000, 0x423C3D48, 0x43586FB6, 0x442E044F, 0x41ECA387, 0x43581B71, 0x4218A8FA, 0x418A1580,
-	0x04000001, 0x00000000, 0x00000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dMVOpeningCommon_LinkCam_AnimJoint[48] = {
+	#include <MVOpeningCommon/LinkCam_AnimJoint.data.inc.c>
 };

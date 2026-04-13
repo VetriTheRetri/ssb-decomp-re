@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x0000 to 0x0040 (64 bytes) */
-u32 dSamusSpecial1_ChargeShot_WeaponAttributes[] = {
-	0xFFFF009C, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, /* reloc: +0x0->0x0270X */
-	0x00000000, 0x00005A40, 0x19000800, 0x0160013C, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dSamusSpecial1_ChargeShot_WeaponAttributes[64] = {
+	#include <SamusSpecial1/ChargeShot_WeaponAttributes.data.inc.c>
 };

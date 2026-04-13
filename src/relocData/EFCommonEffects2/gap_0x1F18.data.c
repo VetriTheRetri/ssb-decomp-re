@@ -1,4 +1,7 @@
 /* Raw data from file offset 0x1F18 to 0x1F38 (32 bytes) */
-u32 dEFCommonEffects2_gap_0x1F18[] = {
-	0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x07F307AE, 0x00000000, /* reloc: +0x18->0x1EB8 */
+
+#include "relocdata_types.h"
+
+u8 dEFCommonEffects2_gap_0x1F18[32] = {
+	#include <EFCommonEffects2/gap_0x1F18.data.inc.c>
 };

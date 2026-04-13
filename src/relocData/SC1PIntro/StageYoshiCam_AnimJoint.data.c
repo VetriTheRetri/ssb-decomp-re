@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x6EF0 to 0x6F20 (48 bytes) */
-u32 dSC1PIntro_StageYoshiCam_AnimJoint[] = {
-	0x17BB8000, 0x4509FB6D, 0x43C706D7, 0x4451F546, 0xC304B3C6, 0x4377DC81, 0x4451DB5A, 0x00000000,
-	0x422627EF, 0x04000011, 0x00000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dSC1PIntro_StageYoshiCam_AnimJoint[48] = {
+	#include <SC1PIntro/StageYoshiCam_AnimJoint.data.inc.c>
 };

@@ -1,7 +1,7 @@
 /* Raw data from file offset 0x09B0 to 0x0A20 (112 bytes) */
-u32 dStageYamabukiFile2_GateOpen_AnimJoint[] = {
-	0xEED49554, 0x2470EEEE, 0xEEE29119, 0x9170EEEE, 0xEEE51191, 0x1370EEEE, 0xEEE73212, 0x7700EEEE,
-	0xEEB11111, 0x1700EEEE, 0xEEB21111, 0x2F00EEEE, 0xEEB72112, 0x7700EEEE, 0xEEB99991, 0x9300EEEE,
-	0xEEB22233, 0x2500EEEE, 0xEEE42432, 0x2700EEEE, 0xEEB13499, 0x9270EEEE, 0xEEB94317, 0x1270EEEE,
-	0xEEB91111, 0x9270EEEE, 0xEEE39991, 0x1500EEEE,
+
+#include "relocdata_types.h"
+
+u8 dStageYamabukiFile2_GateOpen_AnimJoint[112] = {
+	#include <StageYamabukiFile2/GateOpen_AnimJoint.data.inc.c>
 };

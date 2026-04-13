@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x05CC to 0x0614 (72 bytes) */
-u32 dITCommonData_Box_ItemAttributes[] = {
-	0x018D19DE, 0x00000000, 0x00000000, 0x00000000, 0x10000000, 0x00000000, 0x00000000, 0x00000000, /* reloc: +0x0->0x6778X */
-	0x00000000, 0x01C201C2, 0x01C200E1, 0x0000FF1F, 0x00E100C8, 0x5A4640F0, 0x0000184A, 0x230A0040,
-	0x0E4390E4, 0x32000028,
+
+#include "relocdata_types.h"
+
+u8 dITCommonData_Box_ItemAttributes[72] = {
+	#include <ITCommonData/Box_ItemAttributes.data.inc.c>
 };

@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x6CB0 to 0x6CE0 (48 bytes) */
-u32 dSC1PIntro_FighterFoxCam_AnimJoint[] = {
-	0x17BB8000, 0xC4FB9666, 0x4426190C, 0x43886CB3, 0xC2A16667, 0x43B1FEE4, 0x43880762, 0x00000000,
-	0x4199A9FB, 0x04000001, 0x00000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dSC1PIntro_FighterFoxCam_AnimJoint[48] = {
+	#include <SC1PIntro/FighterFoxCam_AnimJoint.data.inc.c>
 };

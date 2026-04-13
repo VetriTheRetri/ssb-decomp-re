@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x6D10 to 0x6D40 (48 bytes) */
-u32 dSC1PIntro_FighterSamusCam_AnimJoint[] = {
-	0x17BB8000, 0xC45249AA, 0x43E39E70, 0x3FCAFF48, 0x42348C19, 0x43C48BDE, 0x3FA9EBC8, 0x00000000,
-	0x420BFFFF, 0x04000001, 0x00000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dSC1PIntro_FighterSamusCam_AnimJoint[48] = {
+	#include <SC1PIntro/FighterSamusCam_AnimJoint.data.inc.c>
 };

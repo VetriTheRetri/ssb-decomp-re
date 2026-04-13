@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x00D8 to 0x0120 (72 bytes) */
-u32 dGRInishieMap_PowerBlock_ItemAttributes[] = {
-	0x0038047E, 0x00000000, 0x004804EC, 0x00000000, 0x18000000, 0x00000000, 0x00000000, 0x00000000, /* reloc: +0x0->0x11F8X, +0x8->0x13B0X */
-	0x00000000, 0x0190012C, 0x012C006E, 0x0000FF92, 0x009F000A, 0x5A464050, 0x0000184A, 0x35051800,
-	0x0E4390E4, 0x32000000,
+
+#include "relocdata_types.h"
+
+u8 dGRInishieMap_PowerBlock_ItemAttributes[72] = {
+	#include <GRInishieMap/PowerBlock_ItemAttributes.data.inc.c>
 };

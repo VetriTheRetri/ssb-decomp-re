@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x6E30 to 0x6E60 (48 bytes) */
-u32 dSC1PIntro_FighterPikachuCam_AnimJoint[] = {
-	0x17BB8000, 0xC517AAA1, 0x43F9C97A, 0x42730E85, 0x42A4CE41, 0x4305D452, 0x428513C5, 0x00000000,
-	0x4133AF7F, 0x04000001, 0x00000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dSC1PIntro_FighterPikachuCam_AnimJoint[48] = {
+	#include <SC1PIntro/FighterPikachuCam_AnimJoint.data.inc.c>
 };

@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x0C40 to 0x0C74 (52 bytes) */
-u32 dITCommonData_DogasSmog_WeaponAttributes[] = {
-	0x03114C40, 0x03124BDE, 0x03134C64, 0x031D4C78, 0x00000000, 0x00000000, 0x00000000, 0x004B0000, /* reloc: +0x0->0x13100X, +0x4->0x12F78X, +0x8->0x13190X, +0xC->0x131E0X */
-	0xFFB5004B, 0x00322580, 0x1900C03C, 0x01601180, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dITCommonData_DogasSmog_WeaponAttributes[52] = {
+	#include <ITCommonData/DogasSmog_WeaponAttributes.data.inc.c>
 };

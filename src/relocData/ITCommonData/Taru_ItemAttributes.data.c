@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x0634 to 0x067C (72 bytes) */
-u32 dITCommonData_Taru_ItemAttributes[] = {
-	0x01A71C6A, 0x00000000, 0x00000000, 0x00000000, 0x10000000, 0x00000000, 0x00000000, 0x00000000, /* reloc: +0x0->0x71A8X */
-	0x00000000, 0x0126013C, 0x012600EC, 0x0000FF14, 0x00DD0122, 0x5A4640C0, 0x0000184A, 0x230A0040,
-	0x0E4390E4, 0x32000000,
+
+#include "relocdata_types.h"
+
+u8 dITCommonData_Taru_ItemAttributes[72] = {
+	#include <ITCommonData/Taru_ItemAttributes.data.inc.c>
 };

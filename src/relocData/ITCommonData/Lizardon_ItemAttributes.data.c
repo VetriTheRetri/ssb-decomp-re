@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x08FC to 0x0944 (72 bytes) */
-u32 dITCommonData_Lizardon_ItemAttributes[] = {
-	0x02403570, 0x02633504, 0x00000000, 0x00000000, 0x18000000, 0x00000000, 0x00000000, 0x00000000, /* reloc: +0x0->0xD5C0X, +0x4->0xD410X */
-	0x00000000, 0x00960096, 0x00960190, 0x0000FE7A, 0x01A40258, 0x5A450120, 0x0000104A, 0x390F1800,
-	0x0E4390E4, 0x32000000,
+
+#include "relocdata_types.h"
+
+u8 dITCommonData_Lizardon_ItemAttributes[72] = {
+	#include <ITCommonData/Lizardon_ItemAttributes.data.inc.c>
 };

@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x6C80 to 0x6CB0 (48 bytes) */
-u32 dSC1PIntro_FighterMarioCam_AnimJoint[] = {
-	0x17BB8000, 0xC3F523C0, 0x438E33DA, 0x436D8261, 0xC201A4F0, 0x4361E6CA, 0x436DF174, 0x00000000,
-	0x422E7735, 0x04000001, 0x00000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dSC1PIntro_FighterMarioCam_AnimJoint[48] = {
+	#include <SC1PIntro/FighterMarioCam_AnimJoint.data.inc.c>
 };

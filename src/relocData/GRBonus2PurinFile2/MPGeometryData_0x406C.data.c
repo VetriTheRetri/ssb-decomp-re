@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x406C to 0x4090 (36 bytes) */
-u32 dGRBonus2PurinFile2_MPGeometryData_0x406C[] = {
-	0x001F0000, 0x101D0DF5, 0x101E0EC4, 0x101F0F28, 0x10210F87, 0x00050000, 0x102A1013, 0x00000000, /* reloc: +0x4->0x37D4, +0x8->0x3B10, +0xC->0x3CA0, +0x10->0x3E1C, +0x18->0x404C */
-	0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dGRBonus2PurinFile2_MPGeometryData_0x406C[36] = {
+	#include <GRBonus2PurinFile2/MPGeometryData_0x406C.data.inc.c>
 };

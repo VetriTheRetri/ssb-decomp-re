@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x1A80 to 0x1AC0 (64 bytes) */
-u32 dPikachuSpecial2_ThunderShock0MatAnimJoint_MatAnimJoint[] = {
-	0x00000000, 0x00000000, 0x00000000, 0x06AF06AF, 0x140F8000, 0x3F800000, 0x00000000, 0x00000000, /* reloc: +0xC->0x1ABC */
-	0x3F800000, 0x3F800000, 0x14008002, 0x00000000, 0x14008004, 0x00000000, 0x00000000, 0x06B306A4, /* reloc: +0x3C->0x1A90 */
+
+#include "relocdata_types.h"
+
+u8 dPikachuSpecial2_ThunderShock0MatAnimJoint_MatAnimJoint[64] = {
+	#include <PikachuSpecial2/ThunderShock0MatAnimJoint_MatAnimJoint.data.inc.c>
 };

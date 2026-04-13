@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x0034 to 0x0080 (76 bytes) */
-u32 dNessSpecial1_PKFire_ItemAttributes[] = {
-	0x000F0282, 0x00000000, 0xFFFF02BC, 0x00000000, 0x98000000, 0x00640000, 0x0000015E, 0x00000000, /* reloc: +0x0->0x0A08X, +0x8->0x0AF0X */
-	0x00C80000, 0x00C80190, 0x00C80190, 0x00C80000, 0x006400C8, 0x1180A031, 0x00002036, 0x39011840,
-	0x0E4390E4, 0x32000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dNessSpecial1_PKFire_ItemAttributes[76] = {
+	#include <NessSpecial1/PKFire_ItemAttributes.data.inc.c>
 };

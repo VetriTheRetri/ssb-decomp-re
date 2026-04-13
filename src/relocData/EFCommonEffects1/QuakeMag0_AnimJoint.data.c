@@ -1,6 +1,7 @@
 /* Raw data from file offset 0xCBC0 to 0xCC20 (96 bytes) */
-u32 dEFCommonEffects1_QuakeMag0_AnimJoint[] = {
-	0x330832F1, 0x06100000, 0x00000000, 0x06100002, 0x41D80000, 0x06100002, 0xC1A80000, 0x06100002, /* reloc: +0x0->0xCBC4 */
-	0x41D80001, 0x06100002, 0xC1A80001, 0x06100002, 0x41D80001, 0x06100002, 0xC1A80000, 0x06100002,
-	0x41D80000, 0x06100002, 0xC1A80000, 0x06100002, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dEFCommonEffects1_QuakeMag0_AnimJoint[96] = {
+	#include <EFCommonEffects1/QuakeMag0_AnimJoint.data.inc.c>
 };

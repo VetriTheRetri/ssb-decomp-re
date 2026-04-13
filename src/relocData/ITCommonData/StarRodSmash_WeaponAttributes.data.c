@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x0508 to 0x053C (52 bytes) */
-u32 dITCommonData_StarRodSmash_WeaponAttributes[] = {
-	0x014F1516, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x000AFFF6, /* reloc: +0x0->0x5458X */
-	0xFFF6000A, 0x00C85A40, 0x19030000, 0x0161293C, 0x02800000,
+
+#include "relocdata_types.h"
+
+u8 dITCommonData_StarRodSmash_WeaponAttributes[52] = {
+	#include <ITCommonData/StarRodSmash_WeaponAttributes.data.inc.c>
 };

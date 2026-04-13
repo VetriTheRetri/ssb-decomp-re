@@ -1,4 +1,7 @@
 /* Raw data from file offset 0x31F0 to 0x3210 (32 bytes) */
-u32 dGRBonus1YoshiFile2_MPGeometryData_0x31F0[] = {
-	0x00030000, 0x0C7E0B91, 0x0C7F0BEE, 0x0C800C2A, 0x0C820C66, 0x00050000, 0x0C850C74, 0x00000000, /* reloc: +0x4->0x2E44, +0x8->0x2FB8, +0xC->0x30A8, +0x10->0x3198, +0x18->0x31D0 */
+
+#include "relocdata_types.h"
+
+u8 dGRBonus1YoshiFile2_MPGeometryData_0x31F0[32] = {
+	#include <GRBonus1YoshiFile2/MPGeometryData_0x31F0.data.inc.c>
 };

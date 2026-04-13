@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x0000 to 0x0050 (80 bytes) */
-u32 dMVOpeningRoomScene2_Cam_AnimJoint[] = {
-	0x113B8000, 0xC47F39E0, 0x453E361B, 0xC493A5CA, 0xC48EEDDF, 0x45056987, 0xC56B334B, 0x41800355,
-	0x113B812C, 0x43FC2BD5, 0x459F6057, 0x452CA200, 0x44028796, 0x453CD9A7, 0xC580EC18, 0x420510A0,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dMVOpeningRoomScene2_Cam_AnimJoint[80] = {
+	#include <MVOpeningRoomScene2/Cam_AnimJoint.data.inc.c>
 };

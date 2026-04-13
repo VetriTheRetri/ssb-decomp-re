@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x02E4 to 0x032C (72 bytes) */
-u32 dITCommonData_FFlower_ItemAttributes[] = {
-	0x00BA11AC, 0x00BC10E2, 0x00000000, 0x00DD11D8, 0x18000000, 0x00000000, 0x00000000, 0x00000000, /* reloc: +0x0->0x46B0X, +0x4->0x4388X, +0xC->0x4760X */
-	0x00000000, 0x003C003C, 0x003C007F, 0x0000FF95, 0x006B00C8, 0x5A464021, 0x00001836, 0x27078800,
-	0x0E4390E4, 0x28000000,
+
+#include "relocdata_types.h"
+
+u8 dITCommonData_FFlower_ItemAttributes[72] = {
+	#include <ITCommonData/FFlower_ItemAttributes.data.inc.c>
 };

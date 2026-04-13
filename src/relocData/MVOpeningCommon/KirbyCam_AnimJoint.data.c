@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x0150 to 0x0180 (48 bytes) */
-u32 dMVOpeningCommon_KirbyCam_AnimJoint[] = {
-	0x173B8000, 0x41989603, 0x43E524A6, 0x44ACD3C2, 0xC190D3BC, 0x43109B71, 0x427B8A2E, 0x41F7FAA0,
-	0x04000001, 0x00000000, 0x00000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dMVOpeningCommon_KirbyCam_AnimJoint[48] = {
+	#include <MVOpeningCommon/KirbyCam_AnimJoint.data.inc.c>
 };

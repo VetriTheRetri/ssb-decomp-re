@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x0B7C to 0x0BB0 (52 bytes) */
-u32 dITCommonData_StarmieSwift_WeaponAttributes[] = {
-	0x02EC4676, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00710000, /* reloc: +0x0->0x119D8X */
-	0xFF8F0135, 0x00C81900, 0x0500C000, 0x0161013C, 0x0A000000,
+
+#include "relocdata_types.h"
+
+u8 dITCommonData_StarmieSwift_WeaponAttributes[52] = {
+	#include <ITCommonData/StarmieSwift_WeaponAttributes.data.inc.c>
 };

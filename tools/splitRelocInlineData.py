@@ -169,27 +169,45 @@ def migrate_palette(path):
     return True
 
 
-def migrate_tex(path):
-    """Rewrite a `Tex_*.data.c` file into wrapper + inc.c form.
+def migrate_data(path, inc_suffix):
+    """Rewrite a generic `.data.c` file into wrapper + inc.c form.
 
-    Input: `u32 dName_Tex_0xNNNN[] = { 0x..., 0x..., ... };`
-    Output wrapper: `u8 dName_Tex_0xNNNN[N] = { #include <...> };`
-    The inc.c gets the bytes re-emitted as u8 hex literals for friendliness.
+    Input:  `u32 dName_X[] = { 0x..., 0x..., ... };` (or u8/u16/u64)
+    Output: `u8 dName_X[N] = { #include <Sub/X.<suffix>.inc.c> };`
+
+    Only files with a single top-level literal array are handled —
+    anything using typed struct initializers (MPGroundData etc.),
+    DL terminators (gsSPEndDisplayList), or an existing `#include`
+    gets skipped untouched.
     """
     with open(path) as f:
         content = f.read()
+    # If the file already uses the wrapper pattern, nothing to do.
+    if re.search(r'#include\s+[<"][^>"]+\.inc\.c[>"]', content):
+        return False
+    # Skip files that declare typed structs we'd lose (MPGroundData, etc.)
+    # or DL terminators — those stay inline because they aren't raw bytes.
+    if re.search(r'\bMPGroundData\s+\w+\s*=', content):
+        return False
+    if 'gsSPEndDisplayList' in content:
+        return False
+
     clean = re.sub(r'/\*.*?\*/', '', content, flags=re.DOTALL)
-    m = re.search(r'(u(?:8|16|32))\s+(\w+)\s*\[\s*(\d*)\s*\]\s*=\s*\{([^}]*)\};',
-                  clean, re.DOTALL)
-    if not m:
+    clean = re.sub(r'//[^\n]*', '', clean)
+
+    # Reject files with more than one top-level literal array — those
+    # need manual attention.
+    decls = list(re.finditer(
+        r'(u(?:8|16|32|64))\s+(\w+)\s*\[\s*\d*\s*\]\s*=\s*\{([^}]*)\};',
+        clean, re.DOTALL))
+    if len(decls) != 1:
         return False
-    if '#include' in m.group(4):
-        return False
+    m = decls[0]
     elem_type = m.group(1)
     var_name = m.group(2)
-    body = m.group(4)
+    body = m.group(3)
 
-    elem_bytes = {'u8': 1, 'u16': 2, 'u32': 4}[elem_type]
+    elem_bytes = {'u8': 1, 'u16': 2, 'u32': 4, 'u64': 8}[elem_type]
     values = re.findall(r'0x[0-9A-Fa-f]+', body)
     total_bytes = len(values) * elem_bytes
 
@@ -207,7 +225,7 @@ def migrate_tex(path):
 
     sub_dir = os.path.basename(os.path.dirname(path))
     base_name = os.path.basename(path)[:-len('.data.c')]
-    inc_name = f"{base_name}.tex.inc.c"
+    inc_name = f"{base_name}.{inc_suffix}.inc.c"
     inc_path = os.path.join(BUILD_RELOC, sub_dir, inc_name)
 
     # Write inc.c: 16 bytes per line (last row may be shorter)
@@ -233,8 +251,8 @@ def migrate_tex(path):
 
 
 def main():
-    vtx_done = pal_done = tex_done = 0
-    vtx_skip = pal_skip = tex_skip = 0
+    vtx_done = pal_done = data_done = 0
+    vtx_skip = pal_skip = data_skip = 0
 
     for root, dirs, files in os.walk(SRC_RELOC):
         for fn in files:
@@ -249,15 +267,18 @@ def main():
                     pal_done += 1
                 else:
                     pal_skip += 1
-            elif fn.startswith('Tex_') and fn.endswith('.data.c'):
-                if migrate_tex(path):
-                    tex_done += 1
+            elif fn.endswith('.data.c'):
+                # Tex_ blocks get a `.tex.inc.c` companion to match the
+                # earlier split pass; everything else gets `.data.inc.c`.
+                suffix = 'tex' if fn.startswith('Tex_') else 'data'
+                if migrate_data(path, suffix):
+                    data_done += 1
                 else:
-                    tex_skip += 1
+                    data_skip += 1
 
     print(f"Vtx:     {vtx_done} migrated, {vtx_skip} skipped")
     print(f"Palette: {pal_done} migrated, {pal_skip} skipped")
-    print(f"Tex:     {tex_done} migrated, {tex_skip} skipped")
+    print(f"Data:    {data_done} migrated, {data_skip} skipped")
 
 
 if __name__ == '__main__':

@@ -1,4 +1,7 @@
 /* Raw data from file offset 0x2A848 to 0x2A864 (28 bytes) */
-u32 dMVOpeningNewcomers2_NessShow_post[] = {
-	0x00000001, 0xAA18A912, 0x00000004, 0x00000000, 0x00000000, 0x00000000, 0xD581AA19, /* reloc: +0x4->0x2A448, +0x18->0x2A864 */
+
+#include "relocdata_types.h"
+
+u8 dMVOpeningNewcomers2_NessShow_post[28] = {
+	#include <MVOpeningNewcomers2/NessShow_post.data.inc.c>
 };

@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x0CBC to 0x0CF0 (52 bytes) */
-u32 dITCommonData_PippiSwarm_WeaponAttributes[] = {
-	0x033C4D66, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00C00000, /* reloc: +0x0->0x13598X */
-	0xFF4000C0, 0x00C81400, 0x19030000, 0x016011C4, 0x0A000000,
+
+#include "relocdata_types.h"
+
+u8 dITCommonData_PippiSwarm_WeaponAttributes[52] = {
+	#include <ITCommonData/PippiSwarm_WeaponAttributes.data.inc.c>
 };

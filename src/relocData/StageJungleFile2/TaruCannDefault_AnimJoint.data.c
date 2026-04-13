@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x0B20 to 0x0B68 (72 bytes) */
-u32 dStageJungleFile2_TaruCannDefault_AnimJoint[] = {
-	0x75555440, 0x00068BB0, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x75555440, 0x00A868BB, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x75555440, 0x0ABA86AB,
+
+#include "relocdata_types.h"
+
+u8 dStageJungleFile2_TaruCannDefault_AnimJoint[72] = {
+	#include <StageJungleFile2/TaruCannDefault_AnimJoint.data.inc.c>
 };

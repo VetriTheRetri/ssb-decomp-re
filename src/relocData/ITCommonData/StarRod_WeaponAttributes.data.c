@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x04D4 to 0x0508 (52 bytes) */
-u32 dITCommonData_StarRod_WeaponAttributes[] = {
-	0x01421516, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x000AFFF6, /* reloc: +0x0->0x5458X */
-	0xFFF6000A, 0x00C85A40, 0x19020000, 0x0161313C, 0x02800000,
+
+#include "relocdata_types.h"
+
+u8 dITCommonData_StarRod_WeaponAttributes[52] = {
+	#include <ITCommonData/StarRod_WeaponAttributes.data.inc.c>
 };

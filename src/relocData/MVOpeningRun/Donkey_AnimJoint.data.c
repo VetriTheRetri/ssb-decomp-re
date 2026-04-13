@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x0124 to 0x0184 (96 bytes) */
-u32 dMVOpeningRun_Donkey_AnimJoint[] = {
-	0x08280000, 0xC4231C23, 0xC4DC5A37, 0x16100000, 0x00000000, 0x08080087, 0xC4231C23, 0x06200073,
-	0xC4DC5A37, 0x0E200000, 0x4286A12D, 0x0C20001E, 0x42C5B9EB, 0x419F6247, 0x04000014, 0x0A08000A,
-	0xC4231C23, 0xC07FBE6B, 0x10280023, 0xC450109D, 0x43F2F0A9, 0x00000000, 0x00000000, 0x00880061, /* reloc: +0x5C->0x0184 */
+
+#include "relocdata_types.h"
+
+u8 dMVOpeningRun_Donkey_AnimJoint[96] = {
+	#include <MVOpeningRun/Donkey_AnimJoint.data.inc.c>
 };

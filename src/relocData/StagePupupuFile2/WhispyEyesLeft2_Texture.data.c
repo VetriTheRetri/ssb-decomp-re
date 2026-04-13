@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x34B0 to 0x34E0 (48 bytes) */
-u32 dStagePupupuFile2_WhispyEyesLeft2_Texture[] = {
-	0xC0480001, 0x0A100018, 0x42B40000, 0xC05C0001, 0x0A100018, 0xC1700000, 0xBFF00001, 0x10100018,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dStagePupupuFile2_WhispyEyesLeft2_Texture[48] = {
+	#include <StagePupupuFile2/WhispyEyesLeft2_Texture.data.inc.c>
 };

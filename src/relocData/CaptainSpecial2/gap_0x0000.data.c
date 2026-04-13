@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x0000 to 0x0030 (48 bytes) */
-u32 dCaptainSpecial2_gap_0x0000[] = {
-	0x00000000, 0x00000000, 0x40025885, 0x688578C5, 0x89059945, 0xA9C7BA05, 0xCA42D343, 0xE3C1E3C0,
-	0xF405F507, 0xF5CFF721, 0x00000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dCaptainSpecial2_gap_0x0000[48] = {
+	#include <CaptainSpecial2/gap_0x0000.data.inc.c>
 };

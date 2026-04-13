@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x00B8 to 0x0100 (72 bytes) */
-u32 dITCommonData_Tomato_ItemAttributes[] = {
-	0x004002AC, 0x00000000, 0x00000000, 0x00000000, 0x18000000, 0x00000000, 0x00000000, 0x00000000, /* reloc: +0x0->0x0AB0X */
-	0x00000000, 0x00960096, 0x009600B4, 0x0000FF4C, 0x00B400C8, 0x5A464010, 0x00001850, 0x37001400,
-	0x0E4390E4, 0x32000064,
+
+#include "relocdata_types.h"
+
+u8 dITCommonData_Tomato_ItemAttributes[72] = {
+	#include <ITCommonData/Tomato_ItemAttributes.data.inc.c>
 };

@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x07F0 to 0x0838 (72 bytes) */
-u32 dITCommonData_Tosakinto_ItemAttributes[] = {
-	0x01FD2DC2, 0x020E2D50, 0x00000000, 0x00000000, 0x18000000, 0x00000000, 0x00000000, 0x00000000, /* reloc: +0x0->0xB708X, +0x4->0xB540X */
-	0x00000000, 0x00960096, 0x00960087, 0x0000FF79, 0x00C300C8, 0x5A4500C0, 0x0000184A, 0x390F1800,
-	0x0E4390E4, 0x32000000,
+
+#include "relocdata_types.h"
+
+u8 dITCommonData_Tosakinto_ItemAttributes[72] = {
+	#include <ITCommonData/Tosakinto_ItemAttributes.data.inc.c>
 };

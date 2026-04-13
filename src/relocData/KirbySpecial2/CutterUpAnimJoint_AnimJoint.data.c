@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x1470 to 0x14B8 (72 bytes) */
-u32 dKirbySpecial2_CutterUpAnimJoint_AnimJoint[] = {
-	0x00000000, 0x00000000, 0x051F0521, 0x05200525, 0x074F0528, 0x04000001, 0x1E000002, 0x1E010001, /* reloc: +0x8->0x1484, +0xC->0x1494, +0x10->0x14A0 */
-	0x00000000, 0x1E000002, 0x1E010002, 0x00000000, 0x04000002, 0x1E000002, 0x1E010000, 0x00000000,
-	0x00000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dKirbySpecial2_CutterUpAnimJoint_AnimJoint[72] = {
+	#include <KirbySpecial2/CutterUpAnimJoint_AnimJoint.data.inc.c>
 };

@@ -1,4 +1,7 @@
 /* Raw data from file offset 0x375C to 0x3768 (12 bytes) */
-u32 dSCStaffroll_gap_0x375C[] = {
-	0x00000000, 0xB8000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dSCStaffroll_gap_0x375C[12] = {
+	#include <SCStaffroll/gap_0x375C.data.inc.c>
 };

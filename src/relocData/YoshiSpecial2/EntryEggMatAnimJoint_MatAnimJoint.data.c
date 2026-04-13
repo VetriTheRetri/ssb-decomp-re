@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x0780 to 0x07C0 (64 bytes) */
-u32 dYoshiSpecial2_EntryEggMatAnimJoint_MatAnimJoint[] = {
-	0x01ED01ED, 0x140F8000, 0x00000000, 0x00000000, 0x00000000, 0x3F800000, 0x3F800000, 0x14008002, /* reloc: +0x0->0x07B4 */
-	0x00000000, 0x1600803C, 0x3F800000, 0x04000076, 0x00000000, 0xFFFF01E1, 0x00000000, 0x00000000, /* reloc: +0x34->0x0784 */
+
+#include "relocdata_types.h"
+
+u8 dYoshiSpecial2_EntryEggMatAnimJoint_MatAnimJoint[64] = {
+	#include <YoshiSpecial2/EntryEggMatAnimJoint_MatAnimJoint.data.inc.c>
 };

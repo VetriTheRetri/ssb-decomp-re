@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x03BC to 0x0404 (72 bytes) */
-u32 dITCommonData_MSBomb_ItemAttributes[] = {
-	0x01090E68, 0x00000000, 0x00000000, 0x00000000, 0x18000000, 0x00000000, 0x00000000, 0x00000000, /* reloc: +0x0->0x39A0X */
-	0x00000000, 0x00960096, 0x0096003C, 0x0000FFC4, 0x003C00C8, 0x5A464050, 0x00001850, 0x27028C00,
-	0x0E4390E4, 0x2D000078,
+
+#include "relocdata_types.h"
+
+u8 dITCommonData_MSBomb_ItemAttributes[72] = {
+	#include <ITCommonData/MSBomb_ItemAttributes.data.inc.c>
 };

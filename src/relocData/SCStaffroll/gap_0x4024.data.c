@@ -1,4 +1,7 @@
 /* Raw data from file offset 0x4024 to 0x4038 (20 bytes) */
-u32 dSCStaffroll_gap_0x4024[] = {
-	0x00000000, 0x00000000, 0x00000000, 0xB8000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dSCStaffroll_gap_0x4024[20] = {
+	#include <SCStaffroll/gap_0x4024.data.inc.c>
 };

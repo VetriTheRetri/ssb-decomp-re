@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x0034 to 0x0070 (60 bytes) */
-u32 dPikachuSpecial1_ThunderJoltGround_WeaponAttributes[] = {
-	0x000E0622, 0x000F0406, 0x00100688, 0xFFFF06B8, 0x00000064, 0x00000000, 0x00000000, 0x00C80064, /* reloc: +0x0->0x1888X, +0x4->0x1018X, +0x8->0x1A20X, +0xC->0x1AE0X */
-	0x00000032, 0x00C85A40, 0x0501C800, 0x0160B91C, 0x02800000, 0x00000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dPikachuSpecial1_ThunderJoltGround_WeaponAttributes[60] = {
+	#include <PikachuSpecial1/ThunderJoltGround_WeaponAttributes.data.inc.c>
 };

@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x0000 to 0x0030 (48 bytes) */
-u32 dIFCommonPlayer_gap_0x0000[] = {
-	0x00000028, 0x00000000, 0x00000000, 0xFFFFFFFF, 0x0006001A, 0x00000000, 0x00000000, 0xFFFFFFFF,
-	0xFFFA001A, 0x00000000, 0x00000000, 0xFFFFFFFF,
+
+#include "relocdata_types.h"
+
+u8 dIFCommonPlayer_gap_0x0000[48] = {
+	#include <IFCommonPlayer/gap_0x0000.data.inc.c>
 };

@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x0050 to 0x0098 (72 bytes) */
-u32 dITCommonData_Capsule_ItemAttributes[] = {
-	0x002E019C, 0x00000000, 0x00000000, 0x00000000, 0x18000000, 0x00000000, 0x00000000, 0x00000000, /* reloc: +0x0->0x0670X */
-	0x00000000, 0x00960096, 0x00960078, 0x0000FF9C, 0x003C00C8, 0x5A450050, 0x0000184A, 0x27050C40,
-	0x0E4390E4, 0x28000078,
+
+#include "relocdata_types.h"
+
+u8 dITCommonData_Capsule_ItemAttributes[72] = {
+	#include <ITCommonData/Capsule_ItemAttributes.data.inc.c>
 };

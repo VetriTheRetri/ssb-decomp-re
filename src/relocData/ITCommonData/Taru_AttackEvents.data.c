@@ -1,4 +1,7 @@
 /* Raw data from file offset 0x067C to 0x069C (32 bytes) */
-u32 dITCommonData_Taru_AttackEvents[] = {
-	0x005A4500, 0x015E0000, 0x045A43C0, 0x00FA0000, 0x065A4280, 0x00960000, 0x085A4040, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dITCommonData_Taru_AttackEvents[32] = {
+	#include <ITCommonData/Taru_AttackEvents.data.inc.c>
 };

@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x6598 to 0x65E0 (72 bytes) */
-u32 dCaptainSpecial2__6598__AnimJoint[] = {
-	0x16400000, 0x3F800000, 0x0D000000, 0x3F800000, 0x3F5D916C, 0x06800000, 0x3F800000, 0x13000002,
-	0x40000000, 0x06800002, 0x3F19999F, 0x17000002, 0x3F800000, 0x06800002, 0x3F800000, 0x1C000000,
-	0xFFFF1966, 0x00000000, /* reloc: +0x40->0x6598 */
+
+#include "relocdata_types.h"
+
+u8 dCaptainSpecial2__6598__AnimJoint[72] = {
+	#include <CaptainSpecial2/_6598__AnimJoint.data.inc.c>
 };

@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x0880 to 0x08C8 (72 bytes) */
-u32 dITCommonData_Nyars_ItemAttributes[] = {
-	0x0232304C, 0x00000000, 0x00000000, 0x00000000, 0x18000000, 0x00000000, 0x00000000, 0x00000000, /* reloc: +0x0->0xC130X */
-	0x00000000, 0x00960096, 0x009600F4, 0x0000FF0C, 0x00F4012C, 0x5A4500C0, 0x0000104A, 0x390F1800,
-	0x0E4390E4, 0x32000000,
+
+#include "relocdata_types.h"
+
+u8 dITCommonData_Nyars_ItemAttributes[72] = {
+	#include <ITCommonData/Nyars_ItemAttributes.data.inc.c>
 };

@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x032C to 0x0360 (52 bytes) */
-u32 dITCommonData_FFlowerFlame_WeaponAttributes[] = {
-	0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00320000,
-	0xFFCE0032, 0x010E0000, 0x1900C403, 0x0140E19C, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dITCommonData_FFlowerFlame_WeaponAttributes[52] = {
+	#include <ITCommonData/FFlowerFlame_WeaponAttributes.data.inc.c>
 };

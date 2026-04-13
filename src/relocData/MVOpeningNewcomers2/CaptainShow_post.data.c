@@ -1,4 +1,7 @@
 /* Raw data from file offset 0x1C9B8 to 0x1C9D4 (28 bytes) */
-u32 dMVOpeningNewcomers2_CaptainShow_post[] = {
-	0x00000001, 0x7274708E, 0x00000004, 0x00000000, 0x00000000, 0x00000000, 0xA9257275, /* reloc: +0x4->0x1C238, +0x18->0x1C9D4 */
+
+#include "relocdata_types.h"
+
+u8 dMVOpeningNewcomers2_CaptainShow_post[28] = {
+	#include <MVOpeningNewcomers2/CaptainShow_post.data.inc.c>
 };

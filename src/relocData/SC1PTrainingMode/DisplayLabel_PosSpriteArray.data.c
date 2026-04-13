@@ -1,4 +1,7 @@
 /* Raw data from file offset 0x0000 to 0x0020 (32 bytes) */
-u32 dSC1PTrainingMode_DisplayLabel_PosSpriteArray[] = {
-	0x00140014, 0x00031CCE, 0x00140024, 0x00051DA6, 0x00940014, 0x00071E7E, 0x00EC0014, 0x00081F36, /* reloc: +0x4->0x7338X, +0xC->0x7698X, +0x14->0x79F8X, +0x1C->0x7CD8X */
+
+#include "relocdata_types.h"
+
+u8 dSC1PTrainingMode_DisplayLabel_PosSpriteArray[32] = {
+	#include <SC1PTrainingMode/DisplayLabel_PosSpriteArray.data.inc.c>
 };

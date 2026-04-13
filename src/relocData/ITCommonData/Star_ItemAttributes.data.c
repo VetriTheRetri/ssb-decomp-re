@@ -1,6 +1,7 @@
 /* Raw data from file offset 0x0148 to 0x0190 (72 bytes) */
-u32 dITCommonData_Star_ItemAttributes[] = {
-	0x00530558, 0x005504AE, 0x00000000, 0x0064057C, 0x18000000, 0x00000000, 0x00000000, 0x00000000, /* reloc: +0x0->0x1560X, +0x4->0x12B8X, +0xC->0x15F0X */
-	0x00000000, 0x00960096, 0x0096001E, 0x0000FFE2, 0x001E00C8, 0x5A464010, 0x0000104A, 0x30001000,
-	0x0E4390E4, 0x32000000,
+
+#include "relocdata_types.h"
+
+u8 dITCommonData_Star_ItemAttributes[72] = {
+	#include <ITCommonData/Star_ItemAttributes.data.inc.c>
 };

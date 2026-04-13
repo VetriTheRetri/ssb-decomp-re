@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x1DFD8 to 0x1E010 (56 bytes) */
-u32 dMVCommon_RoomCloseUpEffectAir_MatAnimJoint[] = {
-	0x00000000, 0x78027802, 0x00000000, 0x28008000, 0xFFFFFFFF, 0x28008076, 0xFFFFFFFF, 0x28008004, /* reloc: +0x4->0x1E008 */
-	0xFFFFFF00, 0x2800803A, 0xFFFFFF00, 0x00000000, 0x780477F9, 0x00000000, /* reloc: +0x30->0x1DFE4 */
+
+#include "relocdata_types.h"
+
+u8 dMVCommon_RoomCloseUpEffectAir_MatAnimJoint[56] = {
+	#include <MVCommon/RoomCloseUpEffectAir_MatAnimJoint.data.inc.c>
 };

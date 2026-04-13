@@ -32,6 +32,12 @@ try:
 except ImportError:
     _HAS_PYGFXD = False
 
+try:
+    import n64img.image as _n64img
+    _HAS_N64IMG = True
+except ImportError:
+    _HAS_N64IMG = False
+
 
 def bin_path(fid):
     for ext in (".vpk0.bin", ".bin"):
@@ -69,6 +75,82 @@ def wrapper_inc_target(block_filename):
             return base + '.tex.inc.c'
         return base + '.data.inc.c'
     return None
+
+
+def scan_dl_for_tex_meta(data, dl_start, dl_end):
+    """Walk an F3DEX2 DL region looking for SETTIMG/SETTILESIZE/LOADBLOCK
+    triples, LOADTLUT, and SETTILE, and return a map
+        {tex_target_offset: (fmt, siz, width, height, palette_target_offset)}
+
+    where fmt ∈ 0..4 (RGBA/YUV/CI/IA/I) and siz ∈ 0..3 (4/8/16/32-bit)
+    are taken from the *render* tile's SETTILE (tile 0 — byte-accurate
+    rendering format) rather than SETTIMG (which usually reflects the
+    LOAD tile's DMA format, e.g. CI16 for loading a CI4 block fast).
+    palette_target_offset is the file-relative byte offset of the last
+    palette SETTIMG seen (for CI textures) or None.
+    """
+    meta = {}
+    pending_settimg = None        # (addr,) — load-tile SETTIMG
+    last_settilesize = None       # (width, height)
+    last_palette_addr = None
+    render_tile_fmt = None        # (fmt, siz) for the render tile (tile 0)
+
+    pos = dl_start
+    while pos + 8 <= dl_end:
+        w0, w1 = struct.unpack('>II', data[pos:pos + 8])
+        op = (w0 >> 24) & 0xFF
+        if op == 0xFD:  # G_SETTIMG
+            addr = (w1 & 0xFFFF) * 4
+            pending_settimg = addr
+        elif op == 0xF5:  # G_SETTILE — track render tile (tile index 0)
+            fmt_nibble = (w0 >> 21) & 0x7   # fff
+            siz_field = (w0 >> 19) & 0x3    # ii
+            tile = (w1 >> 24) & 0x7
+            if tile == 0:
+                render_tile_fmt = (fmt_nibble, siz_field)
+        elif op == 0xF2:  # G_SETTILESIZE
+            w_raw = (w1 >> 12) & 0xFFF
+            h_raw = w1 & 0xFFF
+            width = (w_raw >> 2) + 1
+            height = (h_raw >> 2) + 1
+            last_settilesize = (width, height)
+        elif op == 0xF0:  # G_LOADTLUT — the pending SETTIMG was a palette
+            if pending_settimg is not None:
+                last_palette_addr = pending_settimg
+            pending_settimg = None
+        elif op == 0xF3:  # G_LOADBLOCK — the pending SETTIMG was a texture
+            if (pending_settimg is not None and last_settilesize is not None
+                    and render_tile_fmt is not None):
+                addr = pending_settimg
+                fmt, siz = render_tile_fmt
+                w, h = last_settilesize
+                meta[addr] = (fmt, siz, w, h, last_palette_addr)
+            pending_settimg = None
+        elif op == 0xDF:
+            break
+        pos += 8
+    return meta
+
+
+def n64img_class_for(fmt, siz):
+    """Map F3DEX2 fmt/siz pair to an `n64img.image.*` class. Returns
+    None if n64img doesn't support the combination."""
+    if not _HAS_N64IMG:
+        return None
+    # fmt: 0=RGBA, 1=YUV, 2=CI, 3=IA, 4=I
+    # siz: 0=4b, 1=8b, 2=16b, 3=32b
+    mapping = {
+        (0, 2): _n64img.RGBA16,
+        (0, 3): _n64img.RGBA32,
+        (2, 0): _n64img.CI4,
+        (2, 1): _n64img.CI8,
+        (3, 0): _n64img.IA4,
+        (3, 1): _n64img.IA8,
+        (3, 2): _n64img.IA16,
+        (4, 0): _n64img.I4,
+        (4, 1): _n64img.I8,
+    }
+    return mapping.get((fmt, siz))
 
 
 def wrapper_is_include_form(block_path):
@@ -202,32 +284,95 @@ def process_fid(fid):
     search_paths = [SRC_RELOC, BUILD_RELOC]
 
     entries = parse_manifest(manifest)
+
+    # First pass: record each block's offset + size and, for .dl.c blocks,
+    # scan their F3DEX2 command stream to recover Tex format metadata for
+    # the second pass (so we can emit PNG previews alongside Tex inc.c).
+    block_info = []  # (payload, offset, size)
+    tex_meta = {}    # tex_offset → (fmt, siz, width, height, palette_offset)
     offset = 0
-    emitted = 0
     for kind, payload in entries:
         if kind == 'pad':
             offset += payload
             continue
-        # kind == 'block'
         block_path = os.path.join(src_sub_dir, payload)
         size = compute_block_size(block_path, search_paths=search_paths)
+        block_info.append((payload, offset, size))
+        if payload.endswith('.dl.c'):
+            tex_meta.update(scan_dl_for_tex_meta(data, offset, offset + size))
+        offset += size
+
+    # Second pass: emit inc.c / PNG outputs for wrapper blocks.
+    emitted = 0
+    for payload, off, size in block_info:
+        block_path = os.path.join(src_sub_dir, payload)
         inc_name = wrapper_inc_target(payload)
         if inc_name is None or not wrapper_is_include_form(block_path):
-            offset += size
             continue
         inc_path = os.path.join(build_sub_dir, inc_name)
         if payload.endswith('.vtx.c'):
             count = size // 16
-            emit_vtx(data, offset, count, inc_path)
+            emit_vtx(data, off, count, inc_path)
         elif payload.endswith('.palette.c'):
-            emit_palette(data, offset, inc_path)
+            emit_palette(data, off, inc_path)
         elif payload.endswith('.dl.c'):
-            emit_dl(data, offset, size, inc_path)
+            emit_dl(data, off, size, inc_path)
         elif payload.endswith('.data.c'):
-            emit_tex(data, offset, size, inc_path)
+            emit_tex(data, off, size, inc_path)
+            if _HAS_N64IMG and payload.startswith('Tex_'):
+                emit_tex_png(data, off, size, tex_meta, block_sub_dir=build_sub_dir,
+                             payload=payload)
         emitted += 1
-        offset += size
     return emitted
+
+
+def _expected_tex_bytes(fmt, siz, width, height):
+    """Bytes needed to represent a width*height texture at the given
+    fmt/siz. Returns None if the format isn't understood."""
+    pixels = width * height
+    if siz == 0:  # 4bpp
+        return (pixels + 1) // 2
+    if siz == 1:  # 8bpp
+        return pixels
+    if siz == 2:  # 16bpp
+        return pixels * 2
+    if siz == 3:  # 32bpp
+        return pixels * 4
+    return None
+
+
+def emit_tex_png(data, offset, size, tex_meta, block_sub_dir, payload):
+    """If the metadata map has a format entry for this Tex block, render
+    it as a PNG alongside the inc.c using n64img."""
+    meta = tex_meta.get(offset)
+    if meta is None:
+        return
+    fmt, siz, width, height, palette_offset = meta
+    img_cls = n64img_class_for(fmt, siz)
+    if img_cls is None:
+        return
+    # SETTILESIZE can outsize the actual block (the DL may load with a
+    # line stride larger than the stored texture). Skip if the
+    # dimensions don't fit in the committed block size.
+    expected = _expected_tex_bytes(fmt, siz, width, height)
+    if expected is None or expected > size:
+        return
+    tex_bytes = data[offset:offset + expected]
+    try:
+        img = img_cls(tex_bytes, width, height)
+    except Exception:
+        return
+    if fmt == 2 and palette_offset is not None:
+        img.set_palette(data[palette_offset:palette_offset + 32])
+    png_name = payload[:-len('.data.c')] + '.png'
+    png_path = os.path.join(block_sub_dir, png_name)
+    os.makedirs(block_sub_dir, exist_ok=True)
+    try:
+        img.write(png_path)
+    except Exception:
+        # Clean up a partially-written file so a stale 0-byte doesn't linger
+        if os.path.exists(png_path) and os.path.getsize(png_path) == 0:
+            os.remove(png_path)
 
 
 def main():

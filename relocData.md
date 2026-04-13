@@ -18,278 +18,253 @@ byte-identical to the baserom.
 
 | Source type | Files | Description |
 |---|---|---|
-| Typed Fighter Main | 27 | `FTAttributes` struct initializers + typed hitbox / throw arrays |
-| Typed MainMotion | 14 | `u32[]` ftMotionCommand subaction scripts with named arrays |
-| Typed ShieldPose | 11 | Figatree pointer arrays + AObjEvent16 per-joint data |
-| Typed AnimJoint | 1775 | Per-joint `u16[]` AObjEvent16 scripts with `ftAnim*` macros |
-| Typed manifests | 66 | Mixed-content files (sprites + DObjDesc + AnimJoint + MObjSub) |
+| Typed C files (struct initializers) | 1,861 | `FTAttributes` / `MPGroundData` / `ftMotionCommand` / AObjEvent16 / sprite structs |
+| Typed manifests (structural blocks) | 121 | Mixed-content files decomposed into sprite / DObjDesc / DL / Vtx / MObjSub / palette blocks |
 | Typed spritelists | 89 | Sprite-only files with named sprite structs |
-| **Typed total** | **1982 (92.97%)** | |
-| **Raw u32 blobs** | **150** | Unstructured hex dumps — builds correctly but not human-readable |
-| **Total** | **2132** | |
+| **Typed total** | **2,071 (97.1%)** | |
+| **Raw blobs** | **61 (2.9%)** | Single inline `u8`/`u32` array or manifest with only gap blocks |
+| **Total** | **2,132** | |
 
-### Remaining raw u32 blobs (150 files, ~1.6 MB)
+### Copyrighted game bytes extracted from the ROM at build time
 
-These build and match but are opaque hex. Each category needs either
-block descriptions added to `tools/relocFileDescriptions.us.txt` (so
-`tools/genRelocDataC.py` can decompose into typed sprite / DObjDesc /
-DisplayList / Vtx blocks) or manual typing against an engine-side struct.
+Nothing in `src/relocData/` carries raw vertex / palette / texture /
+display-list bytes. Every committed `.vtx.c`, `.palette.c`, `.dl.c`, and
+`.data.c` (Tex_* + gap_*) file is a thin C wrapper that `#include`s a
+companion `.inc.c` generated from `assets/relocData/<fid>.vpk0.bin` on
+every `make extract`:
 
-| Category | Files | Bytes | Blockers / notes |
+    Vtx X[N] = { #include <Sub/X.vtx.inc.c>   };
+    u16 X[16] = { #include <Sub/X.palette.inc.c> };
+    u8  X[N]  = { #include <Sub/X.{tex,data}.inc.c> };
+    Gfx X[N]  = { #include <Sub/X.dl.inc.c>    };
+
+The `.dl.inc.c` files are disassembled through `pygfxd` into readable
+`gsSP* / gsDP*` macro calls (guarded by a byte-roundtrip check).
+`Tex_*` blocks whose format/dimensions are recoverable from their
+parent display list also produce a `.png` preview via `n64img`.
+
+### Raw blobs remaining (61 files, ~545 KB)
+
+These are either (a) untyped manifests whose only block is a single
+`gap_*.data.c`, or (b) inline `.c` files that haven't been promoted to
+a manifest at all. They build and match, but they aren't structurally
+decomposed.
+
+| Category | Files | Bytes | Notes |
 |---|---:|---:|---|
-| Stage File2/File3/File4          |  23 |  550,848 | DObjDesc / DisplayList / Vtx / texture decomposition |
-| Stage Map (`GR*Map`)             |  41 |    8,560 | Small map-layout files, uniform 176–832 bytes each |
-| Bonus stage File2/File3          |  26 |  400,768 | Same pipeline as stage File2, per-character bonus rooms |
-| Fighter Model (N-variants, etc.) |  14 |  209,472 | Display-list / Vtx / texture blocks for "normal" fighter models |
-| Fighter Special                  |  13 |    7,008 | Small mixed DObjDesc + texture files |
-| Opening / movie                  |  10 |  266,656 | `MVOpeningYamabuki` (257 KB) hit a fixRelocChain overflow historically |
-| Item / object                    |   5 |  103,888 | `IFCommonObject`, `ITCommonObject` — complex mixed data |
-| Common textures                  |   4 |    8,704 | `Bonus1CommonImages1..4` |
-| Stage Beta (Pupupu prototype)    |   2 |   17,056 | Early beta stage data, likely obsolete DObjDesc/texture |
-| Scene / UI                       |   2 |    6,768 | `SCExplainMain`, `SC1PTrainingMode` |
-| Stage images                     |   3 |   43,440 | Texture format identification (width/height/format) |
-| Other                            |   7 |    8,480 | See section 8 below |
+| Opening / movie                 | 10 | 266,656 | `MVOpeningYamabuki` (257 KB) — hit a `fixRelocChain` overflow historically |
+| Item / object                   |  5 | 102,592 | `IFCommonObject`, `ITCommonObject` — complex mixed item tables |
+| Stage File2/3/4                 | 11 |  83,904 | `StagePupupuFile2`, `StageBattlefieldFile2`, and the File3/File4 tails |
+| Stage images                    |  3 |  43,440 | `StagePupupuImages`, `StageYosterImages`, `StagePupupuBetaImages` |
+| Pupupu beta                     |  2 |  17,056 | Beta prototype geometry files |
+| Other                           |  7 |   9,776 | `LBTransitionPaperAirplane`, `FTCommonMoveset`, misc headers |
+| Common textures                 |  4 |   8,704 | `Bonus1CommonImages1..4` |
+| Scene / UI                      |  2 |   6,768 | `SCExplainMain`, `SC1PTrainingMode` |
+| Bonus stage                     |  2 |   2,592 | `GRBonus3File3`, `GRBonus3Map` |
+| Stage Map (`GR*Map`)            |  6 |   2,176 | `GRZebesMap`, `GRInishieMap`, etc. — 224–832 B each |
+| Fighter Special                 |  8 |     608 | `*Special1` 48–128 B weapon attribute tables |
+| Fighter Model                   |  1 |     464 | `LinkBoomerangModel` — 464 B, too small for DObjDesc scan |
+| **Raw total**                   | **61** | **544,736** | |
 
-#### Full list — every file with raw u32 blobs
+### Gap bytes inside already-typed manifests (1.76 MB, 47.8% of typed bytes)
 
-Each file is grouped by category. `Kind` is `.c` if the file is a
-hand-written / auto-generated master C source, or `.manifest` if it's a
-manifest with only `.data.c` blocks (no typed sprite / DObjDesc / etc.).
+Typed files often still have `gap_*.data.c` blocks for regions we haven't
+classified — usually vertex pools / textures / palettes referenced by
+display lists through segmented addresses the DL walker can't follow.
+These aren't "raw" in the blob sense (the file has structural typing
+around them) but they're the next big pool of bytes to break up.
 
-##### 1. Stage images (3 files)
+| Category | Files | Gap bytes |
+|---|---:|---:|
+| Fighter Model (typed)          | 18 |   502,044 |
+| Opening / movie (typed)        | 12 |   356,328 |
+| Bonus stage File2/3 (typed)    | 25 |   292,652 |
+| Stage File2/3/4 (typed)        | 13 |   286,272 |
+| Transition (`LBTransition*`)   | 11 |   200,904 |
+| Effects (`EFCommon*`)          |  3 |    43,640 |
+| Scene / UI (typed)             |  2 |    25,384 |
+| Fighter Special (typed)        | 13 |    21,884 |
+| Menu / misc                    | 16 |    32,492 |
+| **Total**                      | **113** | **1,761,600** |
+
+Worst offenders (percent gap within the typed file):
+
+| ID | Name | Gap | Total | Gap % |
+|---:|---|---:|---:|---:|
+|  50 | `LBTransitionCurtain`     |  31,456 |  32,368 | 97.2% |
+|  45 | `LBTransitionSudare1`     |  29,864 |  30,768 | 97.1% |
+|  40 | `LBTransitionAeroplane`   |  46,072 |  47,600 | 96.8% |
+| 149 | `GRBonus3File2`           |  25,112 |  26,768 | 93.8% |
+| 338 | `YoshiModel`              |  40,868 |  44,256 | 92.3% |
+| 328 | `KirbyModel`              | 108,488 | 120,864 | 89.8% |
+| 112 | `StageYamabukiFile2`      |  59,200 |  66,160 | 89.5% |
+|  67 | `MVOpeningYoster`         |  45,488 |  51,616 | 88.1% |
+| 108 | `StageJungleFile2`        |  50,888 |  62,944 | 80.8% |
+| 317 | `DonkeyModel`             |  41,368 |  54,784 | 75.5% |
+| 320 | `SamusModel`              |  43,452 |  58,704 | 74.0% |
+| 332 | `CaptainModel`            |  37,160 |  51,344 | 72.4% |
+| 341 | `PikachuModel`            |  29,948 |  39,984 | 74.9% |
+| 324 | `LinkModel`               |  52,372 |  73,584 | 71.2% |
+| 323 | `LuigiModel`              |  23,860 |  32,528 | 73.4% |
+
+### Untyped-blob full list
+
+`Kind` is `.c` if the file is a single inline array, or `.manifest` if
+it's a manifest whose only blocks are `gap_*.data.c`.
+
+##### Opening / movie (10 files, 266,656 B)
+
+| ID | Name | Kind | Bytes |
+|---:|---|---|---:|
+|  56 | `MVOpeningRoomScene1`   | .manifest |   1,008 |
+|  57 | `MVOpeningRoomScene2`   | .manifest |      80 |
+|  58 | `MVOpeningRoomScene3`   | .manifest |     112 |
+|  59 | `MVOpeningRoomScene4`   | .manifest |     224 |
+|  60 | `MVOpeningRunMain`      | .manifest |     240 |
+|  64 | `MVOpeningJungle`       | .manifest |     400 |
+|  65 | `MVOpeningCommon`       | .manifest |     384 |
+|  71 | `MVOpeningYamabuki`     | .c        | 257,696 |
+|  72 | `MVOpeningClashFighters`| .manifest |   5,248 |
+|  76 | `MVEnding`              | .manifest |   1,264 |
+
+##### Item / object (5 files, 102,592 B)
+
+| ID | Name | Kind | Bytes |
+|---:|---|---|---:|
+|  39 | `IFCommonObject`        | .c |  16,352 |
+|  86 | `ITCommonObject`        | .c |  79,584 |
+| 150 | `ITBonus1Object`        | .c |   4,480 |
+| 201 | `FTCommonMoveset`       | .c |   2,096 |
+| 253 | `ITBonus1ObjectHeader`  | .c |      80 |
+
+##### Stage File2/3/4 (11 files, 83,904 B)
+
+| ID | Name | Kind | Bytes |
+|---:|---|---|---:|
+| 104 | `StagePupupuFile2`      | .manifest | 17,392 |
+| 116 | `StageBattlefieldFile2` | .c        | 17,328 |
+| 152 | `StagePupupuFile3`      | .c        | 14,080 |
+| 153 | `StageSectorFile3`      | .c        |  7,680 |
+| 154 | `StageYosterFile3`      | .c        |  1,712 |
+| 155 | `StageInishieFile3`     | .c        |  5,136 |
+| 156 | `StageCastleFile3`      | .c        |     64 |
+| 157 | `StageZebesFile3`       | .c        |  3,536 |
+| 158 | `StageJungleFile3`      | .c        |  3,296 |
+| 159 | `StageYamabukiFile3`    | .c        | 10,976 |
+| 160 | `StageYamabukiFile4`    | .c        |  2,704 |
+
+##### Stage images (3 files, 43,440 B)
 
 | ID | Name | Kind | Bytes |
 |---:|---|---|---:|
 | 100 | `StagePupupuBetaImages` | .c | 10,176 |
-| 103 | `StagePupupuImages` | .c | 12,224 |
-| 110 | `StageYosterImages` | .c | 21,040 |
+| 103 | `StagePupupuImages`     | .c | 12,224 |
+| 110 | `StageYosterImages`     | .c | 21,040 |
 
-##### 2. Stage Beta (Pupupu prototype) (2 files)
+##### Pupupu beta (2 files, 17,056 B)
 
 | ID | Name | Kind | Bytes |
 |---:|---|---|---:|
-| 101 | `StagePupupuBeta1` | .c | 6,560 |
+| 101 | `StagePupupuBeta1` | .c |  6,560 |
 | 102 | `StagePupupuBeta2` | .c | 10,496 |
 
-##### 3. Stage File2/File3/File4 (23 files)
+##### Other (7 files, 9,776 B)
 
 | ID | Name | Kind | Bytes |
 |---:|---|---|---:|
-| 104 | `StagePupupuFile2` | .c | 17,392 |
-| 105 | `StageZebesFile2` | .c | 57,184 |
-| 106 | `StageCastleFile2` | .c | 17,696 |
-| 107 | `StageInishieFile2` | .c | 27,792 |
-| 108 | `StageJungleFile2` | .c | 62,944 |
-| 109 | `StageSectorFile2` | .c | 47,120 |
-| 111 | `StageYosterFile2` | .c | 47,408 |
-| 112 | `StageYamabukiFile2` | .c | 66,160 |
-| 113 | `StageHyruleFile2` | .c | 26,768 |
-| 114 | `StageLastFile2` | .c | 76,128 |
-| 115 | `StageExplainFile2` | .c | 3,680 |
-| 116 | `StageBattlefieldFile2` | .c | 17,328 |
-| 117 | `StageMetalFile2` | .c | 16,320 |
-| 118 | `StageYosterSmallFile2` | .c | 17,744 |
-| 152 | `StagePupupuFile3` | .c | 14,080 |
-| 153 | `StageSectorFile3` | .c | 7,680 |
-| 154 | `StageYosterFile3` | .c | 1,712 |
-| 155 | `StageInishieFile3` | .c | 5,136 |
-| 156 | `StageCastleFile3` | .c | 64 |
-| 157 | `StageZebesFile3` | .c | 3,536 |
-| 158 | `StageJungleFile3` | .c | 3,296 |
-| 159 | `StageYamabukiFile3` | .c | 10,976 |
-| 160 | `StageYamabukiFile4` | .c | 2,704 |
+|  47 | `LBTransitionPaperAirplane` | .c        | 4,176 |
+| 199 | `SYKseg1Validate`           | .manifest |    64 |
+| 200 | `SYSignValidate`            | .manifest |    80 |
+| 251 | `ITCommonData`              | .manifest | 3,392 |
+| 299 | `MarioSecondaryImage`       | .c        |   192 |
+| 302 | `NCommonTexture`            | .c        |   560 |
+| 315 | `FoxUnknown`                | .c        | 1,312 |
 
-##### 4. Stage Map (41 files)
-
-| ID | Name | Kind | Bytes |
-|---:|---|---|---:|
-| 255 | `GRPupupuMap` | .manifest | 192 |
-| 256 | `GRPupupuSmallMap` | .manifest | 192 |
-| 257 | `GRZebesMap` | .manifest | 224 |
-| 258 | `GRPupupuTestMap` | .manifest | 192 |
-| 259 | `GRCastleMap` | .manifest | 192 |
-| 260 | `GRInishieMap` | .manifest | 368 |
-| 261 | `GRJungleMap` | .manifest | 224 |
-| 262 | `GRSectorMap` | .manifest | 304 |
-| 263 | `GRYosterMap` | .manifest | 192 |
-| 264 | `GRYamabukiMap` | .manifest | 832 |
-| 265 | `GRHyruleMap` | .manifest | 224 |
-| 266 | `GRLastMap` | .manifest | 176 |
-| 267 | `GRExplainMap` | .manifest | 176 |
-| 268 | `GRZakoMap` | .manifest | 192 |
-| 269 | `GRMetalMap` | .manifest | 192 |
-| 270 | `GRYosterSmallMap` | .manifest | 192 |
-| 271 | `GRBonus1MarioMap` | .manifest | 176 |
-| 272 | `GRBonus1FoxMap` | .manifest | 176 |
-| 273 | `GRBonus1DonkeyMap` | .manifest | 176 |
-| 274 | `GRBonus1SamusMap` | .manifest | 176 |
-| 275 | `GRBonus1LuigiMap` | .manifest | 176 |
-| 276 | `GRBonus1LinkMap` | .manifest | 176 |
-| 277 | `GRBonus1YoshiMap` | .manifest | 176 |
-| 278 | `GRBonus1CaptainMap` | .manifest | 176 |
-| 279 | `GRBonus1KirbyMap` | .manifest | 176 |
-| 280 | `GRBonus1PikachuMap` | .manifest | 176 |
-| 281 | `GRBonus1PurinMap` | .manifest | 176 |
-| 282 | `GRBonus1NessMap` | .manifest | 176 |
-| 283 | `GRBonus2MarioMap` | .manifest | 176 |
-| 284 | `GRBonus2FoxMap` | .manifest | 176 |
-| 285 | `GRBonus2DonkeyMap` | .manifest | 176 |
-| 286 | `GRBonus2SamusMap` | .manifest | 176 |
-| 287 | `GRBonus2LuigiMap` | .manifest | 176 |
-| 288 | `GRBonus2LinkMap` | .manifest | 176 |
-| 289 | `GRBonus2YoshiMap` | .manifest | 176 |
-| 290 | `GRBonus2CaptainMap` | .manifest | 176 |
-| 291 | `GRBonus2KirbyMap` | .manifest | 176 |
-| 292 | `GRBonus2PikachuMap` | .manifest | 176 |
-| 293 | `GRBonus2PurinMap` | .manifest | 176 |
-| 294 | `GRBonus2NessMap` | .manifest | 176 |
-| 295 | `GRBonus3Map` | .manifest | 272 |
-
-##### 5. Bonus stage File2/File3 (26 files)
-
-| ID | Name | Kind | Bytes |
-|---:|---|---|---:|
-| 124 | `GRBonus1MarioFile2` | .c | 9,152 |
-| 125 | `GRBonus1FoxFile2` | .c | 10,080 |
-| 126 | `GRBonus1DonkeyFile2` | .c | 9,392 |
-| 127 | `GRBonus1SamusFile2` | .c | 7,584 |
-| 128 | `GRBonus1LuigiFile2` | .c | 8,832 |
-| 129 | `GRBonus1LinkFile2` | .c | 10,720 |
-| 130 | `GRBonus1YoshiFile2` | .c | 13,536 |
-| 131 | `GRBonus1CaptainFile2` | .c | 7,648 |
-| 132 | `GRBonus1KirbyFile2` | .c | 10,112 |
-| 133 | `GRBonus1PikachuFile2` | .c | 11,488 |
-| 134 | `GRBonus1PurinFile2` | .c | 9,808 |
-| 135 | `GRBonus1NessFile2` | .c | 12,496 |
-| 137 | `GRBonus2MarioFile2` | .c | 15,648 |
-| 138 | `GRBonus2FoxFile2` | .c | 68,624 |
-| 139 | `GRBonus2DonkeyFile2` | .c | 13,760 |
-| 140 | `GRBonus2SamusFile2` | .c | 10,736 |
-| 141 | `GRBonus2LuigiFile2` | .c | 16,032 |
-| 142 | `GRBonus2LinkFile2` | .c | 18,768 |
-| 143 | `GRBonus2YoshiFile2` | .c | 14,352 |
-| 144 | `GRBonus2CaptainFile2` | .c | 20,368 |
-| 145 | `GRBonus2KirbyFile2` | .c | 15,568 |
-| 146 | `GRBonus2PikachuFile2` | .c | 18,672 |
-| 147 | `GRBonus2PurinFile2` | .c | 21,728 |
-| 148 | `GRBonus2NessFile2` | .c | 16,576 |
-| 149 | `GRBonus3File2` | .c | 26,768 |
-| 162 | `GRBonus3File3` | .c | 2,320 |
-
-##### 6. Fighter Model (14 files)
-
-| ID | Name | Kind | Bytes |
-|---:|---|---|---:|
-| 301 | `NMarioModel` | .c | 11,952 |
-| 303 | `NFoxModel` | .c | 13,008 |
-| 304 | `NYoshiModel` | .c | 13,312 |
-| 305 | `NKirbyModel` | .c | 10,032 |
-| 306 | `NPurinModel` | .c | 10,336 |
-| 307 | `NPikachuModel` | .c | 11,344 |
-| 308 | `NDonkeyModel` | .c | 12,752 |
-| 309 | `NSamusModel` | .c | 19,408 |
-| 310 | `NLinkModel` | .c | 13,872 |
-| 311 | `NCaptainModel` | .c | 12,832 |
-| 312 | `NNessModel` | .c | 13,792 |
-| 317 | `DonkeyModel` | .c | 54,784 |
-| 326 | `LinkBoomerangModel` | .c | 464 |
-| 344 | `BossModel` | .c | 11,584 |
-
-##### 7. Fighter Special (13 files)
-
-| ID | Name | Kind | Bytes |
-|---:|---|---|---:|
-| 204 | `MarioSpecial1` | .manifest | 64 |
-| 210 | `FoxSpecial1` | .manifest | 64 |
-| 218 | `SamusSpecial1` | .manifest | 64 |
-| 222 | `LuigiSpecial1` | .manifest | 64 |
-| 226 | `LinkSpecial1` | .manifest | 64 |
-| 230 | `KirbySpecial1` | .c | 48 |
-| 240 | `NessSpecial1` | .manifest | 128 |
-| 244 | `PikachuSpecial1` | .manifest | 112 |
-| 297 | `MarioSpecial3` | .c | 656 |
-| 316 | `FoxSpecial4` | .c | 144 |
-| 321 | `SamusSpecial3` | .c | 848 |
-| 325 | `LinkSpecial3` | .c | 1,776 |
-| 336 | `NessSpecial3` | .c | 2,976 |
-
-##### 8. Other (7 files)
-
-| ID | Name | Kind | Bytes |
-|---:|---|---|---:|
-| 47 | `LBTransitionPaperAirplane` | .c | 4,176 |
-| 199 | `SYKseg1Validate` | .manifest | 64 |
-| 200 | `SYSignValidate` | .manifest | 80 |
-| 201 | `FTCommonMoveset` | .c | 2,096 |
-| 299 | `MarioSecondaryImage` | .c | 192 |
-| 302 | `NCommonTexture` | .c | 560 |
-| 315 | `FoxUnknown` | .c | 1,312 |
-
-##### 9. Common textures (4 files)
+##### Common textures (4 files, 8,704 B)
 
 | ID | Name | Kind | Bytes |
 |---:|---|---|---:|
 | 120 | `Bonus1CommonImages1` | .c | 2,672 |
 | 121 | `Bonus1CommonImages2` | .c | 2,032 |
-| 122 | `Bonus1CommonImages3` | .c | 976 |
+| 122 | `Bonus1CommonImages3` | .c |   976 |
 | 123 | `Bonus1CommonImages4` | .c | 3,024 |
 
-##### 10. Opening / movie (10 files)
+##### Scene / UI (2 files, 6,768 B)
 
 | ID | Name | Kind | Bytes |
 |---:|---|---|---:|
-| 56 | `MVOpeningRoomScene1` | .manifest | 1,008 |
-| 57 | `MVOpeningRoomScene2` | .manifest | 80 |
-| 58 | `MVOpeningRoomScene3` | .manifest | 112 |
-| 59 | `MVOpeningRoomScene4` | .manifest | 224 |
-| 60 | `MVOpeningRunMain` | .manifest | 240 |
-| 64 | `MVOpeningJungle` | .manifest | 400 |
-| 65 | `MVOpeningCommon` | .manifest | 384 |
-| 71 | `MVOpeningYamabuki` | .c | 257,696 |
-| 72 | `MVOpeningClashFighters` | .manifest | 5,248 |
-| 76 | `MVEnding` | .manifest | 1,264 |
+| 252 | `SCExplainMain`    | .manifest | 6,096 |
+| 254 | `SC1PTrainingMode` | .manifest |   672 |
 
-##### 11. Scene / UI (2 files)
+##### Bonus stage (2 files, 2,592 B)
 
 | ID | Name | Kind | Bytes |
 |---:|---|---|---:|
-| 252 | `SCExplainMain` | .manifest | 6,096 |
-| 254 | `SC1PTrainingMode` | .manifest | 672 |
+| 162 | `GRBonus3File3` | .c        | 2,320 |
+| 295 | `GRBonus3Map`   | .manifest |   272 |
 
-##### 12. Item / object (5 files)
+##### Stage Map (6 files, 2,176 B)
 
 | ID | Name | Kind | Bytes |
 |---:|---|---|---:|
-| 39 | `IFCommonObject` | .c | 16,352 |
-| 86 | `ITCommonObject` | .c | 79,584 |
-| 150 | `ITBonus1Object` | .c | 4,480 |
-| 251 | `ITCommonData` | .manifest | 3,392 |
-| 253 | `ITBonus1ObjectHeader` | .c | 80 |
+| 257 | `GRZebesMap`    | .manifest | 224 |
+| 260 | `GRInishieMap`  | .manifest | 368 |
+| 261 | `GRJungleMap`   | .manifest | 224 |
+| 262 | `GRSectorMap`   | .manifest | 304 |
+| 264 | `GRYamabukiMap` | .manifest | 832 |
+| 265 | `GRHyruleMap`   | .manifest | 224 |
 
-The raw count and category breakdown can be regenerated any time with:
+##### Fighter Special (8 files, 608 B)
+
+All `*Special1` files — small `WeaponAttributes` headers.
+
+| ID | Name | Kind | Bytes |
+|---:|---|---|---:|
+| 204 | `MarioSpecial1`    | .manifest |  64 |
+| 210 | `FoxSpecial1`      | .manifest |  64 |
+| 218 | `SamusSpecial1`    | .manifest |  64 |
+| 222 | `LuigiSpecial1`    | .manifest |  64 |
+| 226 | `LinkSpecial1`     | .manifest |  64 |
+| 230 | `KirbySpecial1`    | .c        |  48 |
+| 240 | `NessSpecial1`     | .manifest | 128 |
+| 244 | `PikachuSpecial1`  | .manifest | 112 |
+
+##### Fighter Model (1 file, 464 B)
+
+| ID | Name | Kind | Bytes |
+|---:|---|---|---:|
+| 326 | `LinkBoomerangModel` | .c | 464 |
+
+The raw-count + gap-byte breakdown can be regenerated any time with:
 
 ```bash
 python3 - <<'PY'
-import os, re
+import os, re, sys
+sys.path.insert(0, 'tools')
+from genRelocMaster import parse_manifest, compute_block_size
 R = "src/relocData"
-T = re.compile(r'\b(ftAnim[A-Z]\w*|ftMotionCommand\w*|FTAttributes|FTThrowHitDesc'
-               r'|Sprite|Bitmap|DObjDesc|MObjSub|AObjEvent\d+|Gfx|Vtx'
-               r'|FTSkeleton|FtStatusDesc)|#include\s+<ft/')
-def is_raw_c(p):
-    t = re.sub(r'/\*.*?\*/','',open(p).read(),flags=re.DOTALL)
-    return not T.search(re.sub(r'//[^\n]*','',t))
-def is_raw_m(n):
-    d = f"{R}/{n}"
-    return not any(f.endswith(('.sprite.c','.dobjdesc.c','.mobjsub.c',
-                               '.palette.c','.dl.c','.vtx.c'))
-                   for f in os.listdir(d)) if os.path.isdir(d) else True
-raw = 0
-for fn in os.listdir(R):
-    m = re.match(r'(\d+)_(\w+)\.c$', fn)
-    if m and not fn.endswith('.jp.c') and is_raw_c(f"{R}/{fn}"): raw += 1
+TYPED = ('.sprite.c','.dobjdesc.c','.dl.c','.vtx.c','.mobjsub.c','.palette.c')
+sp = [R, 'build/src/relocData']
+raw = typed = total_gap = 0
+for fn in sorted(os.listdir(R)):
+    full = os.path.join(R, fn)
     m = re.match(r'(\d+)_(\w+)\.manifest$', fn)
-    if m and is_raw_m(m.group(2)): raw += 1
-print(f"raw: {raw} / 2132")
+    if m:
+        has_typed = False
+        for line in open(full):
+            line = line.strip()
+            if line and not line.startswith('#') and not line.startswith('pad ') and line.endswith(TYPED):
+                has_typed = True; break
+        (typed if has_typed else raw).__iadd__ if False else None
+        if has_typed:
+            typed += 1
+            for kind, payload in parse_manifest(full):
+                if kind == 'block' and payload.startswith('gap_'):
+                    try: total_gap += compute_block_size(os.path.join(R, m.group(2), payload), sp)
+                    except: pass
+        else:
+            raw += 1
+print(f"raw={raw} typed={typed} gap_bytes={total_gap:,}")
 PY
 ```
 
@@ -310,21 +285,28 @@ src/relocData/<id>_<Name>.reloc    ─── fixRelocChain.py ──→  patched
 
 ### Source file types
 
-| Extension | What |
-|---|---|
-| `<id>_<Name>.c` | Hand-written or raw blob C source |
-| `<id>_<Name>.manifest` | Block ordering for mixed-content files |
-| `<id>_<Name>.spritelist` | Sprite-only block ordering |
-| `<id>_<Name>.reloc` | Relocation chain metadata (symbolic labels) |
-| `<id>_<Name>.jp.c` | JP-specific override (used when content differs) |
-| `<Name>/<block>.sprite.c` | Sprite struct + Bitmap[] + texture `#include` |
-| `<Name>/<block>.data.c` | Raw data arrays for gaps/untyped regions |
-| `<Name>/<block>.dobjdesc.c` | DObjDesc[] arrays |
-| `<Name>/<block>.mobjsub.c` | MObjSub material structs |
-| `<Name>/<block>.dl.c` | F3DEX display lists |
-| `<Name>/<block>.vtx.c` | Vtx[] vertex arrays |
-| `<Name>/<block>.palette.c` | 16-color RGBA5551 palettes |
-| `<Name>/<block>.png` | Optional texture override (auto-encoded on build) |
+All wrapper blocks (`.vtx.c`, `.palette.c`, `.dl.c`, `.data.c`)
+`#include` a companion `.inc.c` holding the raw game bytes.
+Everything under `build/src/relocData/` is gitignored and regenerated
+from `assets/relocData/<fid>.vpk0.bin` at every `make extract`.
+
+| Extension | Location | What |
+|---|---|---|
+| `<id>_<Name>.c` | committed | Hand-written master C source (FTAttributes / MPGroundData / etc.) |
+| `<id>_<Name>.manifest` | committed | Block ordering + `pad N` entries for mixed-content files |
+| `<id>_<Name>.spritelist` | committed | Sprite-only block ordering |
+| `<id>_<Name>.reloc` | committed | Relocation chain metadata (symbolic labels) |
+| `<id>_<Name>.jp.c` | committed | JP-specific master override |
+| `<Name>/<block>.sprite.c` | committed | `Sprite` + `Bitmap[]` struct declarations + texture `#include` |
+| `<Name>/<block>.dobjdesc.c` | committed | `DObjDesc[]` joint arrays (hand-readable struct initializers) |
+| `<Name>/<block>.mobjsub.c` | committed | `MObjSub` material struct initializers |
+| `<Name>/<block>.vtx.c` | committed wrapper | `Vtx X[N] = { #include <...vtx.inc.c> }` |
+| `<Name>/<block>.palette.c` | committed wrapper | `u16 X[16] = { #include <...palette.inc.c> }` |
+| `<Name>/<block>.dl.c` | committed wrapper | `Gfx X[N] = { #include <...dl.inc.c> }` |
+| `<Name>/<block>.data.c` | committed wrapper | `u8 X[N] = { #include <....inc.c> }` — Tex / gap / AnimJoint / etc. |
+| `<Name>/<block>.*.inc.c` | **build/** | Raw bytes, regenerated at extract. Not in git. |
+| `<Name>/<block>.png` | **build/** | Texture preview (sprites via `relocSpriteTool`, typed Tex blocks via `n64img`). Not in git. |
+| `<Name>/<block>.png` (user) | committed | Optional user override — a `.png` in `src/` regenerates its `.inc.c` at build time. |
 
 ---
 
@@ -332,36 +314,57 @@ src/relocData/<id>_<Name>.reloc    ─── fixRelocChain.py ──→  patched
 
 | Tool | Purpose |
 |---|---|
-| `tools/genRelocDataC.py` | Binary → C auto-generator (with block discovery) |
-| `tools/genRelocMaster.py` | Manifest/spritelist → master `.c` (build-time) |
-| `tools/genRelocSymbols.py` | Generate `reloc_data.h` + linker symbols |
-| `tools/fixRelocChain.py` | Post-compile reloc chain rebuilder |
-| `tools/relocSpriteTool.py` | Texture extraction + PNG conversion |
-| `tools/promoteAnimJoints.py` | AnimJoint → typed AObjEvent16 with macros |
-| `tools/promoteMotionFiles.py` | MainMotion/ShieldPose → typed scripts |
-| `tools/promoteAnimFiles.py` | Batch raw blob promotion for anim files |
-| `tools/relocData.py` | Original extract/assemble tool |
-| `tools/verifyRelocOffsets.py` | Per-file binary verification |
+| `tools/genRelocDataC.py` | Binary → C auto-generator. Emits wrapper + inc.c split directly. |
+| `tools/genRelocMaster.py` | Manifest/spritelist → master `.c` (build-time). Computes block sizes from wrappers. |
+| `tools/genRelocSymbols.py` | Generate `reloc_data.h` + linker symbols from descriptions + manifests. |
+| `tools/fixRelocChain.py` | Post-compile reloc chain rebuilder (patches chain pointers from `.reloc` metadata). |
+| `tools/relocSpriteTool.py` | Sprite texture extraction + PNG conversion from ROM. |
+| `tools/extractRelocInc.py` | Regenerate every typed block's `.inc.c` body from the decompressed ROM segment. Runs at `make extract` time. Uses `pygfxd` for DL macro disassembly and `n64img` for Tex PNG previews. |
+| `tools/splitRelocInlineData.py` | One-shot migration: splits a committed inline `.vtx.c` / `.palette.c` / `.dl.c` / `.data.c` into a wrapper + inc.c. Idempotent. |
+| `tools/typeFighterModels.py` | Promote N-variant / main fighter models to typed DObjDesc + DL + Vtx blocks. |
+| `tools/typeFighterSpecials.py` | Promote fighter Special2/3 files to typed DObjDesc / MObjSub / AnimJoint / MatAnimJoint blocks driven by the `ll*` symbol map. |
+| `tools/typeSpecialGaps.py` | Walk each Special2/3 file's typed DLs and carve Vtx / LUT / Tex references out of the `gap_*` bytes. |
+| `tools/typeStageMap.py` | Promote `GR*Map` files into `MPGroundData` struct initializers. |
+| `tools/typeStageFile2.py` | Promote Stage File2 files using `gr_desc` metadata. |
+| `tools/promoteAnimJoints.py` | AnimJoint files → typed `AObjEvent16` scripts with `ftAnim*` macros. |
+| `tools/promoteMotionFiles.py` | MainMotion/ShieldPose → typed scripts. |
+| `tools/promoteAnimFiles.py` | Batch raw blob promotion for anim files. |
+| `tools/relocData.py` | Original extract/assemble tool. |
+| `tools/verifyRelocOffsets.py` | Per-file binary verification. |
 
 ---
 
 ## Contributing
 
-All files already build from C. The remaining work is converting the
-**150 raw `u32[]` blobs** (~1.6 MB, 7.03% of the segment) into
-structurally typed source.
+All files build from C and the ROM is byte-identical. The remaining
+work is (a) promoting the **61 raw blob files** (~545 KB) into
+structurally typed source and (b) carving the **1.76 MB of `gap_*`
+bytes** inside already-typed manifests into `Vtx` / `Tex` / `LUT` /
+`DisplayList` wrappers.
 
 **To type a raw blob file:**
 
 1. Study how the game loads the file (check `ftdata.c`, `ftmanager.c`,
-   stage loading code, etc.)
+   `ef/efmanager.c`, stage loading code, etc.)
 2. Add block entries to `tools/relocFileDescriptions.us.txt`
-3. Run `python3 tools/genRelocDataC.py <id> --extract-data`
+3. Run `python3 tools/genRelocDataC.py <id> --extract-data --no-discover`
 4. Build: `make RELOC_DATA=1 -j$(nproc)`
 5. Verify: `cmp build/smashbrothers.us.z64 baserom.us.z64`
 
+For fighter models and Special2/3 files, the typing tools already
+handle most of the work:
+
+    python3 tools/typeFighterModels.py     # all N-variant + main fighter models
+    python3 tools/typeFighterSpecials.py   # uses ll* symbols
+    python3 tools/typeSpecialGaps.py       # carves Vtx / Tex / LUT from DL refs
+
 **To edit a promoted file:**
 
-- **Replace a sprite:** save a PNG at `<Name>/<block>.<fmt>.png`
+- **Replace a sprite:** save a PNG at `src/relocData/<Name>/<block>.<fmt>.png`
 - **Tweak structs:** edit `.sprite.c` / `.dobjdesc.c` / `.mobjsub.c`
 - **Reorder blocks:** edit the `.manifest` or `.spritelist`
+
+The raw byte wrappers (`.vtx.c`, `.palette.c`, `.dl.c`, Tex_*/gap_*
+`.data.c`) aren't meant to be hand-edited — they're regenerated from
+the ROM on every extract. Edit the binary or the manifest block
+shape instead.

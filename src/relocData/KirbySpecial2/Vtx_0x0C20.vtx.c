@@ -1,6 +1,7 @@
 /* Vtx: Vtx_0x0C20 @ 0xC20 (3 vertices) */
-Vtx dKirbySpecial2_Vtx_0x0C20_Vtx[] = {
-	{ { { 0, -210, -30 }, 0x0000, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0x00 } } },
-	{ { { 0, 210, 30 }, 0x0000, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0x00 } } },
-	{ { { 0, -390, 30 }, 0x0000, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0x00 } } },
+
+#include "relocdata_types.h"
+
+Vtx dKirbySpecial2_Vtx_0x0C20_Vtx[3] = {
+	#include <KirbySpecial2/Vtx_0x0C20.vtx.inc.c>
 };

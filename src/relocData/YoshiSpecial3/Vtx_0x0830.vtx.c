@@ -1,7 +1,7 @@
 /* Vtx: Vtx_0x0830 @ 0x830 (4 vertices) */
-Vtx dYoshiSpecial3_Vtx_0x0830_Vtx[] = {
-	{ { { 120, 120, 0 }, 0x0000, { 2047, 2048 }, { 0xFF, 0xFF, 0xFF, 0x00 } } },
-	{ { { 120, -120, 0 }, 0x0000, { 2048, 0 }, { 0xFF, 0xFF, 0xFF, 0x00 } } },
-	{ { { -120, -120, 0 }, 0x0000, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0x00 } } },
-	{ { { -120, 120, 0 }, 0x0000, { 0, 2047 }, { 0xFF, 0xFF, 0xFF, 0x00 } } },
+
+#include "relocdata_types.h"
+
+Vtx dYoshiSpecial3_Vtx_0x0830_Vtx[4] = {
+	#include <YoshiSpecial3/Vtx_0x0830.vtx.inc.c>
 };

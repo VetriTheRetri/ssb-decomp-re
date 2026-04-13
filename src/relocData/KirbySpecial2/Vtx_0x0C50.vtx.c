@@ -1,5 +1,7 @@
 /* Vtx: Vtx_0x0C50 @ 0xC50 (2 vertices) */
-Vtx dKirbySpecial2_Vtx_0x0C50_Vtx[] = {
-	{ { { 0, -420, 0 }, 0x0000, { -34, 151 }, { 0xFF, 0xFF, 0xFF, 0x00 } } },
-	{ { { 0, 0, 0 }, 0x0000, { 271, 0 }, { 0xFF, 0xFF, 0xFF, 0x00 } } },
+
+#include "relocdata_types.h"
+
+Vtx dKirbySpecial2_Vtx_0x0C50_Vtx[2] = {
+	#include <KirbySpecial2/Vtx_0x0C50.vtx.inc.c>
 };

@@ -998,6 +998,13 @@ def generate(file_id, data, file_name, entries, reloc_map, csv_entry,
         names like `Mario.MObjSubPtrArray` survive to `Mario.MObjSubPtrArray.data.c`),
         but the C variable name replaces `.` with `_` to produce a valid
         C identifier.
+
+        For `Tex_*` blocks (texture data decoded from a DL SETTIMG), the
+        raw bytes get split out into a companion `.tex.inc.c` that
+        extractRelocInc regenerates from the ROM at `make extract` time —
+        keeping copyrighted texture bytes out of the committed source.
+        Non-Tex gap blocks stay inline since they're mixed data we can't
+        cleanly classify.
         """
         size = end - start
         if size == 0:
@@ -1005,26 +1012,53 @@ def generate(file_id, data, file_name, entries, reloc_map, csv_entry,
         c_ident = name_suffix.replace('.', '_')
         var_name = f"{prefix}_{c_ident}"
         sym_map.add(var_name, start, end)
-        block_lines = [f"/* Raw data from file offset 0x{start:04X} to 0x{end:04X} ({size} bytes) */"]
-        has_relocs = any(start <= off < end for off in reloc_map)
-        if size % 4 == 0:
-            block_lines.append(f"u32 {var_name}[] = {{")
-            wpl = 8
-            for i in range(0, size, wpl * 4):
-                if has_relocs:
-                    block_lines.append(format_u32_line_with_relocs(data[start:end], i, start, wpl, reloc_map))
-                else:
-                    block_lines.append(format_u32_line(data[start:end], i, wpl))
-            block_lines.append("};")
+
+        is_tex = name_suffix.startswith('Tex_')
+
+        if is_tex:
+            sub_dir_name = os.path.basename(block_dir.rstrip('/'))
+            inc_name = f"{name_suffix}.tex.inc.c"
+            block_lines = [
+                f"/* Texture data @ 0x{start:04X} ({size} bytes) */",
+                '',
+                '#include "relocdata_types.h"',
+                '',
+                f"u8 {var_name}[{size}] = {{",
+                f"\t#include <{sub_dir_name}/{inc_name}>",
+                "};",
+            ]
         else:
-            block_lines.append(f"u8 {var_name}[] = {{")
-            for i in range(0, size, 16):
-                chunk = data[start + i:start + i + 16]
-                block_lines.append(f"\t{', '.join(f'0x{b:02X}' for b in chunk)},")
-            block_lines.append("};")
+            block_lines = [f"/* Raw data from file offset 0x{start:04X} to 0x{end:04X} ({size} bytes) */"]
+            has_relocs = any(start <= off < end for off in reloc_map)
+            if size % 4 == 0:
+                block_lines.append(f"u32 {var_name}[] = {{")
+                wpl = 8
+                for i in range(0, size, wpl * 4):
+                    if has_relocs:
+                        block_lines.append(format_u32_line_with_relocs(data[start:end], i, start, wpl, reloc_map))
+                    else:
+                        block_lines.append(format_u32_line(data[start:end], i, wpl))
+                block_lines.append("};")
+            else:
+                block_lines.append(f"u8 {var_name}[] = {{")
+                for i in range(0, size, 16):
+                    chunk = data[start + i:start + i + 16]
+                    block_lines.append(f"\t{', '.join(f'0x{b:02X}' for b in chunk)},")
+                block_lines.append("};")
+
         filename = f"{name_suffix}.data.c"
         if extract_data:
             write_block_file(block_dir, filename, block_lines)
+            if is_tex:
+                # Write the .inc.c companion immediately so the fresh
+                # manifest compiles without a separate extract pass.
+                inc_dir = os.path.join(PROJECT_DIR, "build", "src", "relocData",
+                                        sub_dir_name)
+                os.makedirs(inc_dir, exist_ok=True)
+                with open(os.path.join(inc_dir, inc_name), 'w') as f:
+                    for i in range(0, size, 16):
+                        chunk = data[start + i:start + min(i + 16, size)]
+                        f.write("\t" + ", ".join(f"0x{b:02X}" for b in chunk) + ",\n")
             manifest.append(('block', filename))
         else:
             lines.extend(block_lines)
@@ -1338,7 +1372,14 @@ def generate(file_id, data, file_name, entries, reloc_map, csv_entry,
         return end
 
     def emit_vtx_block(offset, name, count):
-        """Emit a Vtx[] array. count = number of vertices (each 16 bytes)."""
+        """Emit a Vtx[] wrapper + companion .inc.c. count = number of
+        vertices (each 16 bytes).
+
+        The committed wrapper declares `Vtx X[N] = { #include <...> };` so
+        no raw vertex bytes live in the source tree — the .inc.c body gets
+        regenerated from the ROM by tools/extractRelocInc.py at each
+        `make extract`.
+        """
         size = count * VTX_SIZE
         if offset + size > len(data):
             return offset
@@ -1351,22 +1392,36 @@ def generate(file_id, data, file_name, entries, reloc_map, csv_entry,
             var_name = f"{prefix}_{name_suffix}"
         sym_map.add(var_name, offset, offset + size)
 
-        block_lines = [f"/* Vtx: {name} @ 0x{offset:X} ({count} vertices) */"]
-        block_lines.append(f"Vtx {var_name}[] = {{")
-        for i in range(count):
-            v = data[offset + i * VTX_SIZE:offset + (i + 1) * VTX_SIZE]
-            x, y, z = struct.unpack('>3h', v[0:6])
-            flag = struct.unpack('>H', v[6:8])[0]
-            s, t = struct.unpack('>2h', v[8:12])
-            r, g, b, a = v[12], v[13], v[14], v[15]
-            block_lines.append(
-                f"\t{{ {{ {{ {x}, {y}, {z} }}, 0x{flag:04X}, "
-                f"{{ {s}, {t} }}, {{ 0x{r:02X}, 0x{g:02X}, 0x{b:02X}, 0x{a:02X} }} }} }},")
-        block_lines.append("};")
+        sub_dir_name = os.path.basename(block_dir.rstrip('/'))
+        inc_name = f"{name_suffix}.vtx.inc.c"
+
+        block_lines = [f"/* Vtx: {name} @ 0x{offset:X} ({count} vertices) */",
+                       '',
+                       '#include "relocdata_types.h"',
+                       '',
+                       f"Vtx {var_name}[{count}] = {{",
+                       f"\t#include <{sub_dir_name}/{inc_name}>",
+                       "};"]
 
         filename = f"{name_suffix}.vtx.c"
         if extract_data:
             write_block_file(block_dir, filename, block_lines)
+            # Write the companion inc.c immediately so the fresh manifest
+            # compiles without requiring a separate extract pass.
+            inc_dir = os.path.join(PROJECT_DIR, "build", "src", "relocData",
+                                    sub_dir_name)
+            os.makedirs(inc_dir, exist_ok=True)
+            inc_path = os.path.join(inc_dir, inc_name)
+            with open(inc_path, 'w') as f:
+                for i in range(count):
+                    v = data[offset + i * VTX_SIZE:offset + (i + 1) * VTX_SIZE]
+                    x, y, z = struct.unpack('>3h', v[0:6])
+                    flag = struct.unpack('>H', v[6:8])[0]
+                    s, t = struct.unpack('>2h', v[8:12])
+                    r, g, b, a = v[12], v[13], v[14], v[15]
+                    f.write(
+                        f"\t{{ {{ {{ {x}, {y}, {z} }}, 0x{flag:04X}, "
+                        f"{{ {s}, {t} }}, {{ 0x{r:02X}, 0x{g:02X}, 0x{b:02X}, 0x{a:02X} }} }} }},\n")
             manifest.append(('block', filename))
         else:
             lines.extend(block_lines)
@@ -1374,28 +1429,43 @@ def generate(file_id, data, file_name, entries, reloc_map, csv_entry,
         return offset + size
 
     def emit_palette(p_offset, p_name):
-        """Write a .palette.c file for a 16-color RGBA5551 palette and
-        generate a 16x16 PNG preview alongside it.
+        """Emit a 16-color RGBA5551 palette wrapper + companion .inc.c.
+        Also generates a 16x16 PNG preview alongside.
 
-        The palette symbol is already in sym_map (registered during the
-        pre-scan), so reloc entries pointing here resolve to the right name.
+        The committed wrapper declares `u16 X[16] = { #include <...> };`
+        so the raw palette bytes stay out of the source tree — the .inc.c
+        body is regenerated from the ROM by extractRelocInc at each
+        `make extract`.
         """
         var_name = palette_var_name(p_offset, p_name)
 
         colors = struct.unpack('>16H', data[p_offset:p_offset + 32])
 
-        block_lines = []
-        title = f"{p_name} @ 0x{p_offset:X}" if p_name else f"@ 0x{p_offset:X}"
-        block_lines.append(f"/* Palette: {title} (16 colors RGBA5551) */")
-        block_lines.append(f"u16 {var_name}[16] = {{")
-        for i in range(0, 16, 8):
-            row = ", ".join(f"0x{c:04X}" for c in colors[i:i + 8])
-            block_lines.append(f"\t{row},")
-        block_lines.append("};")
-
         filename = palette_filename(p_offset, p_name)
+        sub_dir_name = os.path.basename(block_dir.rstrip('/'))
+        base_name = filename[:-len('.palette.c')]
+        inc_name = f"{base_name}.palette.inc.c"
+
+        title = f"{p_name} @ 0x{p_offset:X}" if p_name else f"@ 0x{p_offset:X}"
+        block_lines = [
+            f"/* Palette: {title} (16 colors RGBA5551) */",
+            '',
+            '#include "relocdata_types.h"',
+            '',
+            f"u16 {var_name}[16] = {{",
+            f"\t#include <{sub_dir_name}/{inc_name}>",
+            "};",
+        ]
+
         if extract_data:
             write_block_file(block_dir, filename, block_lines)
+            # Write the .inc.c body
+            inc_dir = os.path.join(PROJECT_DIR, "build", "src", "relocData",
+                                    sub_dir_name)
+            os.makedirs(inc_dir, exist_ok=True)
+            with open(os.path.join(inc_dir, inc_name), 'w') as f:
+                f.write("\t" + ", ".join(f"0x{c:04X}" for c in colors[0:8]) + ",\n")
+                f.write("\t" + ", ".join(f"0x{c:04X}" for c in colors[8:16]) + ",\n")
             png_suffix = p_name if p_name else f"palette_0x{p_offset:04X}"
             png_path = os.path.join(asset_dir, f"{png_suffix}.palette.png")
             write_palette_png(colors, png_path)

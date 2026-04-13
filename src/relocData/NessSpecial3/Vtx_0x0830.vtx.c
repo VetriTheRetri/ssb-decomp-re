@@ -1,6 +1,7 @@
 /* Vtx: Vtx_0x0830 @ 0x830 (3 vertices) */
-Vtx dNessSpecial3_Vtx_0x0830_Vtx[] = {
-	{ { { -180, 900, 0 }, 0x0000, { 0, 512 }, { 0x00, 0x00, 0x7F, 0x00 } } },
-	{ { { 180, 900, 0 }, 0x0000, { 512, 512 }, { 0x00, 0x00, 0x7F, 0x00 } } },
-	{ { { 180, 0, 0 }, 0x0000, { 512, 0 }, { 0x00, 0x00, 0x7F, 0x00 } } },
+
+#include "relocdata_types.h"
+
+Vtx dNessSpecial3_Vtx_0x0830_Vtx[3] = {
+	#include <NessSpecial3/Vtx_0x0830.vtx.inc.c>
 };

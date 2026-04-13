@@ -1,7 +1,7 @@
 /* Vtx: Vtx_0x0970 @ 0x970 (4 vertices) */
-Vtx dKirbySpecial2_Vtx_0x0970_Vtx[] = {
-	{ { { 60, -60, 0 }, 0x0000, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0x00 } } },
-	{ { { -60, -60, 0 }, 0x0000, { 0, 1024 }, { 0xFF, 0xFF, 0xFF, 0x00 } } },
-	{ { { -60, 60, 0 }, 0x0000, { 1024, 1024 }, { 0xFF, 0xFF, 0xFF, 0x00 } } },
-	{ { { 60, 60, 0 }, 0x0000, { 1024, 0 }, { 0xFF, 0xFF, 0xFF, 0x00 } } },
+
+#include "relocdata_types.h"
+
+Vtx dKirbySpecial2_Vtx_0x0970_Vtx[4] = {
+	#include <KirbySpecial2/Vtx_0x0970.vtx.inc.c>
 };

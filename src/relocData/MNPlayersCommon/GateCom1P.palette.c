@@ -1,5 +1,7 @@
 /* Palette: GateCom1P @ 0x11378 (16 colors RGBA5551) */
+
+#include "relocdata_types.h"
+
 u16 dMNPlayersCommon_GateCom1P_palette[16] = {
-	0x0000, 0x51CF, 0x5A11, 0x7AD7, 0x835B, 0x93DF, 0xFFFF, 0xFFFF,
-	0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF,
+	#include <MNPlayersCommon/GateCom1P.palette.inc.c>
 };

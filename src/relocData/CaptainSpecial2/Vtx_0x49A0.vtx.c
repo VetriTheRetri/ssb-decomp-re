@@ -1,6 +1,7 @@
 /* Vtx: Vtx_0x49A0 @ 0x49A0 (3 vertices) */
-Vtx dCaptainSpecial2_Vtx_0x49A0_Vtx[] = {
-	{ { { -53, 273, 768 }, 0x0000, { 0, 0 }, { 0xA5, 0x55, 0x17, 0x00 } } },
-	{ { { -157, 205, 610 }, 0x0000, { 0, 0 }, { 0xA5, 0x55, 0x17, 0x00 } } },
-	{ { { -183, 272, 266 }, 0x0000, { 0, 0 }, { 0xA5, 0x55, 0x17, 0x00 } } },
+
+#include "relocdata_types.h"
+
+Vtx dCaptainSpecial2_Vtx_0x49A0_Vtx[3] = {
+	#include <CaptainSpecial2/Vtx_0x49A0.vtx.inc.c>
 };

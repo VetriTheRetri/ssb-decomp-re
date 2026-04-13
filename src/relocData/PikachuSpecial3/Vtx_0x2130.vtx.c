@@ -1,7 +1,7 @@
 /* Vtx: Vtx_0x2130 @ 0x2130 (4 vertices) */
-Vtx dPikachuSpecial3_Vtx_0x2130_Vtx[] = {
-	{ { { 90, 0, 0 }, 0x0000, { 2048, 0 }, { 0xFF, 0xFF, 0xFF, 0x00 } } },
-	{ { { -90, 180, 0 }, 0x0000, { 0, 1024 }, { 0xFF, 0xFF, 0xFF, 0x00 } } },
-	{ { { 90, 180, 0 }, 0x0000, { 2048, 1024 }, { 0xFF, 0xFF, 0xFF, 0x00 } } },
-	{ { { -90, 0, 0 }, 0x0000, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0x00 } } },
+
+#include "relocdata_types.h"
+
+Vtx dPikachuSpecial3_Vtx_0x2130_Vtx[4] = {
+	#include <PikachuSpecial3/Vtx_0x2130.vtx.inc.c>
 };

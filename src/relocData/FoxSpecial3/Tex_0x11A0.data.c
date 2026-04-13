@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x11A0 to 0x11E0 (64 bytes) */
-u32 dFoxSpecial3_Tex_0x11A0[] = {
-	0x00000000, 0x00000000, 0x00044000, 0x00000000, 0x00044000, 0x00000000, 0x07700770, 0x00000000,
-	0x0EE00EE0, 0x00000000, 0x00BBBB00, 0x00000000, 0x000EE000, 0x00000000, 0x00000000, 0x00000000,
+
+#include "relocdata_types.h"
+
+u8 dFoxSpecial3_Tex_0x11A0[64] = {
+	#include <FoxSpecial3/Tex_0x11A0.tex.inc.c>
 };

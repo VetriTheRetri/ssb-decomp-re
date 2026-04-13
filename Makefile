@@ -563,14 +563,20 @@ endif
 
 # Per-file extract stamp: re-extracting the textures takes meaningful time, so
 # do it once per file and tracking via a stamp avoids redundant work.
+# relocSpriteTool pulls sprite texture `.inc.c` + PNG previews out of the
+# decompressed ROM segment; extractRelocInc pulls raw Vtx / palette /
+# texture bytes for typed Vtx / LUT / Tex wrapper blocks. Both must run
+# before the master C file is compiled, so they hang off the same stamp.
 $(BUILD_DIR)/src/relocData/.extract-%.stamp: assets/relocData/%.vpk0.bin
 	@mkdir -p $(@D)
 	$(V)$(PYTHON) tools/relocSpriteTool.py extract $* --version $(VERSION) >/dev/null
+	$(V)$(PYTHON) tools/extractRelocInc.py $* >/dev/null
 	@touch $@
 
 $(BUILD_DIR)/src/relocData/.extract-%.stamp: assets/relocData/%.bin
 	@mkdir -p $(@D)
 	$(V)$(PYTHON) tools/relocSpriteTool.py extract $* --version $(VERSION) >/dev/null
+	$(V)$(PYTHON) tools/extractRelocInc.py $* >/dev/null
 	@touch $@
 
 # User PNG override: if src/relocData/<Name>/<sprite>.<fmt>.png exists, use it

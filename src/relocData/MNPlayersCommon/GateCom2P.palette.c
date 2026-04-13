@@ -1,5 +1,7 @@
 /* Palette: GateCom2P @ 0x113A0 (16 colors RGBA5551) */
+
+#include "relocdata_types.h"
+
 u16 dMNPlayersCommon_GateCom2P_palette[16] = {
-	0x0000, 0x5ADB, 0x6B5F, 0x6B61, 0x73A3, 0x8425, 0xFFFF, 0xFFFF,
-	0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF,
+	#include <MNPlayersCommon/GateCom2P.palette.inc.c>
 };

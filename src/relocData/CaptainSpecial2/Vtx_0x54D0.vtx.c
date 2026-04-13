@@ -1,7 +1,7 @@
 /* Vtx: Vtx_0x54D0 @ 0x54D0 (4 vertices) */
-Vtx dCaptainSpecial2_Vtx_0x54D0_Vtx[] = {
-	{ { { 75, 75, 0 }, 0x0000, { 512, 512 }, { 0x00, 0x00, 0x7F, 0x00 } } },
-	{ { { 75, -75, 0 }, 0x0000, { 512, 0 }, { 0x00, 0x00, 0x7F, 0x00 } } },
-	{ { { -75, -75, 0 }, 0x0000, { 0, 0 }, { 0x00, 0x00, 0x7F, 0x00 } } },
-	{ { { -75, 75, 0 }, 0x0000, { 0, 512 }, { 0x00, 0x00, 0x7F, 0x00 } } },
+
+#include "relocdata_types.h"
+
+Vtx dCaptainSpecial2_Vtx_0x54D0_Vtx[4] = {
+	#include <CaptainSpecial2/Vtx_0x54D0.vtx.inc.c>
 };

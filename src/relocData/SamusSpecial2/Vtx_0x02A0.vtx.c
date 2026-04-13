@@ -1,7 +1,7 @@
 /* Vtx: Vtx_0x02A0 @ 0x2A0 (4 vertices) */
-Vtx dSamusSpecial2_Vtx_0x02A0_Vtx[] = {
-	{ { { -90, 91, 0 }, 0x0000, { 0, 0 }, { 0x00, 0x00, 0x7F, 0x00 } } },
-	{ { { -90, -90, 0 }, 0x0000, { 0, 1024 }, { 0x00, 0x00, 0x7F, 0x00 } } },
-	{ { { 90, 91, 0 }, 0x0000, { 1023, 0 }, { 0x00, 0x00, 0x7F, 0x00 } } },
-	{ { { 90, -90, 0 }, 0x0000, { 1024, 1024 }, { 0x00, 0x00, 0x7F, 0x00 } } },
+
+#include "relocdata_types.h"
+
+Vtx dSamusSpecial2_Vtx_0x02A0_Vtx[4] = {
+	#include <SamusSpecial2/Vtx_0x02A0.vtx.inc.c>
 };

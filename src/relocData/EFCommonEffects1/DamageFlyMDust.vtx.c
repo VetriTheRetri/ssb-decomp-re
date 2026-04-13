@@ -1,7 +1,7 @@
 /* Vtx: DamageFlyMDust @ 0xCA18 (4 vertices) */
-Vtx dEFCommonEffects1_DamageFlyMDust_Vtx[] = {
-	{ { { 62, -62, 0 }, 0x0000, { 1024, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-	{ { { -62, -62, 0 }, 0x0000, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-	{ { { -62, 62, 0 }, 0x0000, { 0, 1024 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-	{ { { 62, 62, 0 }, 0x0000, { 1024, 1024 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+
+#include "relocdata_types.h"
+
+Vtx dEFCommonEffects1_DamageFlyMDust_Vtx[4] = {
+	#include <EFCommonEffects1/DamageFlyMDust.vtx.inc.c>
 };

@@ -1,6 +1,7 @@
 /* Vtx: JointVerts @ 0x0 (3 vertices) */
-Vtx dFoxSpecial4_JointVerts_Vtx[] = {
-	{ { { 0, 24, 0 }, 0x0000, { 0, 0 }, { 0xDB, 0x00, 0x86, 0x00 } } },
-	{ { { 0, -26, 0 }, 0x0000, { 0, 0 }, { 0xDB, 0x00, 0x86, 0x00 } } },
-	{ { { -30, -26, 0 }, 0x0000, { 0, 0 }, { 0xDB, 0x00, 0x86, 0x00 } } },
+
+#include "relocdata_types.h"
+
+Vtx dFoxSpecial4_JointVerts_Vtx[3] = {
+	#include <FoxSpecial4/JointVerts.vtx.inc.c>
 };

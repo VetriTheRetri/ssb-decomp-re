@@ -145,12 +145,20 @@ def compute_data_c_size(data_c_path, search_paths=()):
                               content))
     total += dl_count * DL_TERMINATOR_SIZE
 
-    # Texture-include arrays: u8 X[] = { #include <...> };
-    for m in re.finditer(r'u8\s+\w+\[\]\s*=\s*\{\s*#include\s+[<"]([^>"]+)[>"]',
-                         content):
-        inc_file = find_inc_file(m.group(1), file_dir, search_paths)
+    # Texture-include arrays: either `u8 X[] = { #include <...> };` (sprite
+    # texture form, size counted in the inc.c) or `u8 X[N] = { #include <...> };`
+    # (Tex wrapper form — N is authoritative, the inc.c just supplies bytes
+    # at extract time).
+    for m in re.finditer(
+            r'u8\s+\w+\s*\[\s*(\d*)\s*\]\s*=\s*\{\s*#include\s+[<"]([^>"]+)[>"]',
+            content):
+        explicit_n = m.group(1)
+        if explicit_n:
+            total += int(explicit_n)
+            continue
+        inc_file = find_inc_file(m.group(2), file_dir, search_paths)
         if inc_file is None:
-            print(f"Error: {data_c_path} references missing {m.group(1)}",
+            print(f"Error: {data_c_path} references missing {m.group(2)}",
                   file=sys.stderr)
             sys.exit(1)
         total += count_hex_values(inc_file)
@@ -193,12 +201,13 @@ def compute_data_c_size(data_c_path, search_paths=()):
 def compute_palette_c_size(palette_c_path):
     """A .palette.c file is always a 16-color RGBA5551 palette = 32 bytes.
 
-    We still validate that the file looks like a palette (u16 X[16]) but
-    the byte count is fixed.
+    Accepts either the wrapper form `u16 X[16] = { #include <...> };`
+    (the committed form; bytes are pulled from a build-time inc.c) or
+    the legacy inline form `u16 X[16] = { 0x..., ... };`.
     """
     with open(palette_c_path) as f:
         content = f.read()
-    if not re.search(r'u16\s+\w+\[16\]\s*=\s*\{', content):
+    if not re.search(r'u16\s+\w+\s*\[\s*16\s*\]\s*=\s*\{', content):
         print(f"Error: {palette_c_path} doesn't look like a 16-color palette",
               file=sys.stderr)
         sys.exit(1)
@@ -278,13 +287,19 @@ def compute_dl_c_size(dl_c_path):
 
 
 def compute_vtx_c_size(vtx_c_path):
-    """A .vtx.c file is `Vtx <name>[] = { ... };`. Each top-level entry is
-    one Vtx struct = 16 bytes.
+    """A .vtx.c file is either `Vtx <name>[N] = { #include <...> };` (the
+    wrapper form, where the body lives in a build-time inc.c) or the
+    legacy inline form `Vtx <name>[] = { { ... }, ... };`. The wrapper
+    form declares the count explicitly in the array brackets; the
+    inline form is counted by walking top-level braces.
     """
     with open(vtx_c_path) as f:
         content = f.read()
     content = re.sub(r'/\*.*?\*/', '', content, flags=re.DOTALL)
     content = re.sub(r'//[^\n]*', '', content)
+    m = re.search(r'Vtx\s+\w+\s*\[\s*(\d+)\s*\]\s*=\s*\{', content)
+    if m:
+        return int(m.group(1)) * 16
     m = re.search(r'Vtx\s+\w+\[\]\s*=\s*\{(.*)\};', content, re.DOTALL)
     if not m:
         print(f"Error: {vtx_c_path} doesn't look like a Vtx[] array",

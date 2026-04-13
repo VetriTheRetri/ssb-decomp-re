@@ -1,5 +1,7 @@
 /* Palette: GateMan1P @ 0x103F8 (16 colors RGBA5551) */
+
+#include "relocdata_types.h"
+
 u16 dMNPlayersCommon_GateMan1P_palette[16] = {
-	0x0000, 0x3001, 0x4801, 0x7885, 0x8109, 0x918D, 0xFFFF, 0xFFFF,
-	0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF,
+	#include <MNPlayersCommon/GateMan1P.palette.inc.c>
 };

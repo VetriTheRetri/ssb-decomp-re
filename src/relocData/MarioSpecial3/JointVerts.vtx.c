@@ -1,10 +1,7 @@
 /* Vtx: JointVerts @ 0x168 (7 vertices) */
-Vtx dMarioSpecial3_JointVerts_Vtx[] = {
-	{ { { 0, 150, 150 }, 0x0000, { 512, 512 }, { 0xFF, 0xFF, 0xFF, 0x00 } } },
-	{ { { 0, -150, 150 }, 0x0000, { 512, 0 }, { 0xFF, 0xFF, 0xFF, 0x00 } } },
-	{ { { 0, -150, -150 }, 0x0000, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0x00 } } },
-	{ { { 0, 150, -150 }, 0x0000, { 0, 512 }, { 0xFF, 0xFF, 0xFF, 0x00 } } },
-	{ { { -6400, 0, 0 }, 0x0000, { -7424, 4097 }, { 0x00, 0x00, 0x80, 0x00 } } },
-	{ { { -7680, 7681, 0 }, 0x0001, { -7680, 28 }, { 0x00, 0x55, 0x30, 0x48 } } },
-	{ { { -1006, 32292, -1 }, 0xF3F9, { -1792, 0 }, { 0x00, 0x00, 0x00, 0x00 } } },
+
+#include "relocdata_types.h"
+
+Vtx dMarioSpecial3_JointVerts_Vtx[7] = {
+	#include <MarioSpecial3/JointVerts.vtx.inc.c>
 };

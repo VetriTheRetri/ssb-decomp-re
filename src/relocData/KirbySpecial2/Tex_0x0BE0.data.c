@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x0BE0 to 0x0C20 (64 bytes) */
-u32 dKirbySpecial2_Tex_0x0BE0[] = {
-	0xAAAAAAA1, 0x74462253, 0xAAAAAA17, 0x44622533, 0xAAAAA174, 0x46225333, 0xAAAA1744, 0x62253333,
-	0xAAA17446, 0x22533333, 0xAA174462, 0x25333333, 0xA1744622, 0x53333333, 0x17448229, 0x33333333,
+
+#include "relocdata_types.h"
+
+u8 dKirbySpecial2_Tex_0x0BE0[64] = {
+	#include <KirbySpecial2/Tex_0x0BE0.tex.inc.c>
 };

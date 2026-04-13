@@ -1,7 +1,7 @@
 /* Vtx: Vtx_0x1EB8 @ 0x1EB8 (4 vertices) */
-Vtx dPurinSpecial2_Vtx_0x1EB8_Vtx[] = {
-	{ { { 75, -75, 0 }, 0x0000, { 1024, 0 }, { 0xE6, 0xFF, 0xE6, 0x00 } } },
-	{ { { -75, -75, 0 }, 0x0000, { 0, 0 }, { 0xE6, 0xFF, 0xE6, 0x00 } } },
-	{ { { -75, 75, 0 }, 0x0000, { 0, 1024 }, { 0xE6, 0xFF, 0xE6, 0x00 } } },
-	{ { { 75, 75, 0 }, 0x0000, { 1024, 1024 }, { 0xE6, 0xFF, 0xE6, 0x00 } } },
+
+#include "relocdata_types.h"
+
+Vtx dPurinSpecial2_Vtx_0x1EB8_Vtx[4] = {
+	#include <PurinSpecial2/Vtx_0x1EB8.vtx.inc.c>
 };

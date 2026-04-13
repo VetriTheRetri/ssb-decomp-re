@@ -1,6 +1,7 @@
 /* Vtx: Vtx_0x01B0 @ 0x1B0 (3 vertices) */
-Vtx dLinkSpecial3_Vtx_0x01B0_Vtx[] = {
-	{ { { 0, -61, -162 }, 0x0000, { 0, 0 }, { 0x80, 0xFF, 0xFF, 0x00 } } },
-	{ { { 0, -71, -147 }, 0x0000, { 0, 0 }, { 0x80, 0xFF, 0xFF, 0x00 } } },
-	{ { { 0, -80, -162 }, 0x0000, { 0, 0 }, { 0x80, 0xFF, 0xFF, 0x00 } } },
+
+#include "relocdata_types.h"
+
+Vtx dLinkSpecial3_Vtx_0x01B0_Vtx[3] = {
+	#include <LinkSpecial3/Vtx_0x01B0.vtx.inc.c>
 };

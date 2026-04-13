@@ -1,7 +1,7 @@
 /* Vtx: Vtx_0x1830 @ 0x1830 (4 vertices) */
-Vtx dFoxSpecial3_Vtx_0x1830_Vtx[] = {
-	{ { { 141, -15, -239 }, 0x0000, { 6146, 18 }, { 0xD4, 0x68, 0xC6, 0x00 } } },
-	{ { { -141, -15, -239 }, 0x0000, { -14, 18 }, { 0x2C, 0x68, 0xC6, 0x00 } } },
-	{ { { 0, -117, -312 }, 0x0000, { 3060, 18 }, { 0x00, 0x6F, 0xC1, 0x00 } } },
-	{ { { 0, -72, -232 }, 0x0000, { 3036, 254 }, { 0x00, 0x6F, 0xC1, 0x00 } } },
+
+#include "relocdata_types.h"
+
+Vtx dFoxSpecial3_Vtx_0x1830_Vtx[4] = {
+	#include <FoxSpecial3/Vtx_0x1830.vtx.inc.c>
 };

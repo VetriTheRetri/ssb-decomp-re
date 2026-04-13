@@ -1,7 +1,7 @@
 /* Vtx: FireSparkVtx @ 0x1F38 (4 vertices) */
-Vtx dEFCommonEffects2_FireSparkVtx_Vtx[] = {
-	{ { { 90, 0, 0 }, 0x0000, { 1024, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-	{ { { -90, 0, 0 }, 0x0000, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-	{ { { -90, 180, 0 }, 0x0000, { 0, 1024 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-	{ { { 90, 180, 0 }, 0x0000, { 1024, 1024 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+
+#include "relocdata_types.h"
+
+Vtx dEFCommonEffects2_FireSparkVtx_Vtx[4] = {
+	#include <EFCommonEffects2/FireSparkVtx.vtx.inc.c>
 };

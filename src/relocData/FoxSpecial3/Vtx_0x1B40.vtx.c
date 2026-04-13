@@ -1,7 +1,7 @@
 /* Vtx: Vtx_0x1B40 @ 0x1B40 (4 vertices) */
-Vtx dFoxSpecial3_Vtx_0x1B40_Vtx[] = {
-	{ { { 141, -15, -239 }, 0x0000, { 255, 2050 }, { 0xC8, 0x8E, 0xF9, 0x00 } } },
-	{ { { 0, 81, -627 }, 0x0000, { 128, 3 }, { 0x00, 0x81, 0xF8, 0x00 } } },
-	{ { { -141, -15, -239 }, 0x0000, { 0, 2041 }, { 0x38, 0x8E, 0xF9, 0x00 } } },
-	{ { { 0, 54, -233 }, 0x0000, { 127, 2045 }, { 0x00, 0x81, 0xF8, 0x00 } } },
+
+#include "relocdata_types.h"
+
+Vtx dFoxSpecial3_Vtx_0x1B40_Vtx[4] = {
+	#include <FoxSpecial3/Vtx_0x1B40.vtx.inc.c>
 };

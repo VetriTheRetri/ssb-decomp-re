@@ -1,7 +1,7 @@
 /* Vtx: Vtx_0x06D8 @ 0x6D8 (4 vertices) */
-Vtx dPikachuSpecial2_Vtx_0x06D8_Vtx[] = {
-	{ { { 0, 548, 0 }, 0x0000, { 2048, 2047 }, { 0xFF, 0xFF, 0xFF, 0x00 } } },
-	{ { { 0, -4, -551 }, 0x0000, { 0, 2048 }, { 0xFF, 0xFF, 0xFF, 0x00 } } },
-	{ { { 0, -555, 0 }, 0x0000, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0x00 } } },
-	{ { { 0, -4, 552 }, 0x0000, { 2047, 0 }, { 0xFF, 0xFF, 0xFF, 0x00 } } },
+
+#include "relocdata_types.h"
+
+Vtx dPikachuSpecial2_Vtx_0x06D8_Vtx[4] = {
+	#include <PikachuSpecial2/Vtx_0x06D8.vtx.inc.c>
 };

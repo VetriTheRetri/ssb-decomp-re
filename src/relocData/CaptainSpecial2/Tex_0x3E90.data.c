@@ -1,5 +1,7 @@
 /* Raw data from file offset 0x3E90 to 0x3ED0 (64 bytes) */
-u32 dCaptainSpecial2_Tex_0x3E90[] = {
-	0x00000000, 0x00000101, 0x00000000, 0x1215283A, 0x00000014, 0x3A5D6F7F, 0x0000143B, 0x6FAFCFDF,
-	0x0002396F, 0xBFEFFFFF, 0x00155DAF, 0xEFFFFFFF, 0x00286FCF, 0xFFFFFFFF, 0x01397FDF, 0xFFFFFFFF,
+
+#include "relocdata_types.h"
+
+u8 dCaptainSpecial2_Tex_0x3E90[64] = {
+	#include <CaptainSpecial2/Tex_0x3E90.tex.inc.c>
 };

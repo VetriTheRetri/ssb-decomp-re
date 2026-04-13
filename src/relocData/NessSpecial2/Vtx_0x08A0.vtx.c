@@ -1,7 +1,7 @@
 /* Vtx: Vtx_0x08A0 @ 0x8A0 (4 vertices) */
-Vtx dNessSpecial2_Vtx_0x08A0_Vtx[] = {
-	{ { { 150, -150, 0 }, 0x0000, { 2048, 0 }, { 0x00, 0x00, 0x7F, 0x00 } } },
-	{ { { -150, -150, 0 }, 0x0000, { 0, 0 }, { 0x00, 0x00, 0x7F, 0x00 } } },
-	{ { { -150, 150, 0 }, 0x0000, { 0, 2048 }, { 0x00, 0x00, 0x7F, 0x00 } } },
-	{ { { 150, 150, 0 }, 0x0000, { 2048, 2048 }, { 0x00, 0x00, 0x7F, 0x00 } } },
+
+#include "relocdata_types.h"
+
+Vtx dNessSpecial2_Vtx_0x08A0_Vtx[4] = {
+	#include <NessSpecial2/Vtx_0x08A0.vtx.inc.c>
 };

@@ -3,12 +3,12 @@
 # The master .c file is generated from this manifest at build time.
 
 gap_0x0000.data.c
-GrappleBeam.mobjsub.c
+GrappleBeamMObjSub.mobjsub.c
 gap_0x0288.data.c
-GrappleBeam.dobjdesc.c
+GrappleBeamDObjDesc.dobjdesc.c
 pad 12
-GrappleBeam_AnimJoint.data.c
-GrappleBeam_MatAnimJoint.data.c
-EntryPoint.dobjdesc.c
+GrappleBeamAnimJoint_AnimJoint.data.c
+GrappleBeamMatAnimJoint_MatAnimJoint.data.c
+EntryPointDObjDesc.dobjdesc.c
 pad 12
-EntryPoint_AnimJoint.data.c
+EntryPointAnimJoint_AnimJoint.data.c

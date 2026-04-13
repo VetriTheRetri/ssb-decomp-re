@@ -3,9 +3,9 @@
 # The master .c file is generated from this manifest at build time.
 
 gap_0x0000.data.c
-Sing.mobjsub.c
+SingMObjSub.mobjsub.c
 gap_0x1C98.data.c
-Sing.dobjdesc.c
+SingDObjDesc.dobjdesc.c
 pad 12
-Sing_AnimJoint.data.c
-Sing_MatAnimJoint.data.c
+SingAnimJoint_AnimJoint.data.c
+SingMatAnimJoint_MatAnimJoint.data.c

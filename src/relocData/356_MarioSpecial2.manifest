@@ -3,6 +3,6 @@
 # The master .c file is generated from this manifest at build time.
 
 gap_0x0000.data.c
-EntryDokan.dobjdesc.c
+EntryDokanDObjDesc.dobjdesc.c
 pad 8
-EntryDokan_AnimJoint.data.c
+EntryDokanAnimJoint_AnimJoint.data.c

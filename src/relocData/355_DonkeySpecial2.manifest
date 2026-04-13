@@ -3,6 +3,6 @@
 # The master .c file is generated from this manifest at build time.
 
 gap_0x0000.data.c
-EntryTaru.dobjdesc.c
+EntryTaruDObjDesc.dobjdesc.c
 pad 4
-EntryTaru_AnimJoint.data.c
+EntryTaruAnimJoint_AnimJoint.data.c

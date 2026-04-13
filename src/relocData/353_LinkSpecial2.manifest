@@ -3,21 +3,21 @@
 # The master .c file is generated from this manifest at build time.
 
 gap_0x0000.data.c
-EntryWave.mobjsub.c
+EntryWaveMObjSub.mobjsub.c
 gap_0x01A8.data.c
-EntryWave.dobjdesc.c
+EntryWaveDObjDesc.dobjdesc.c
 gap_0x047C.data.c
-EntryBeam.mobjsub.c
+EntryBeamMObjSub.mobjsub.c
 gap_0x0568.data.c
-EntryBeam.dobjdesc.c
+EntryBeamDObjDesc.dobjdesc.c
 pad 4
-EntryWave_AnimJoint.data.c
-EntryBeam_AnimJoint.data.c
-EntryWave_MatAnimJoint.data.c
-EntryBeam_MatAnimJoint.data.c
-SpinAttack.mobjsub.c
+EntryWaveAnimJoint_AnimJoint.data.c
+EntryBeamAnimJoint_AnimJoint.data.c
+EntryWaveMatAnimJoint_MatAnimJoint.data.c
+EntryBeamMatAnimJoint_MatAnimJoint.data.c
+SpinAttackMObjSub.mobjsub.c
 gap_0x10B0.data.c
-SpinAttack.dobjdesc.c
+SpinAttackDObjDesc.dobjdesc.c
 pad 12
-SpinAttack_AnimJoint.data.c
-SpinAttack_MatAnimJoint.data.c
+SpinAttackAnimJoint_AnimJoint.data.c
+SpinAttackMatAnimJoint_MatAnimJoint.data.c

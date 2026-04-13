@@ -3,14 +3,12 @@
 # The master .c file is generated from this manifest at build time.
 
 gap_0x0000.data.c
-FalconKick.mobjsub.c
+FalconKickMObjSub.mobjsub.c
 gap_0x09D8.data.c
-FalconKick.vtx.c
-FalconKick.dl.c
-FalconKick.dobjdesc.c
+FalconKickDObjDesc.dobjdesc.c
 pad 4
-FalconKick_AnimJoint.data.c
-FalconKick_MatAnimJoint.data.c
+FalconKickAnimJoint_AnimJoint.data.c
+FalconKickMatAnimJoint_MatAnimJoint.data.c
 EntryCar.dobjdesc.c
 pad 4
 _6200__AnimJoint.data.c

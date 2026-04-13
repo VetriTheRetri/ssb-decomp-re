@@ -4841,9 +4841,9 @@ DObjDesc JointTree_0x7900 0x7900
 Sprite Stock 0xC6A8
 Sprite FTEmblem 0xC848
 [333]
-DObjDesc FalconPunch 0x0760
-MObjSub FalconPunch 0x0690
-MatAnimJoint FalconPunch 0x0830
+MObjSub FalconPunch 0x690
+DObjDesc FalconPunch 0x760
+MatAnimJoint FalconPunch 0x830
 
 [335]
 Vtx JointVerts 0x0
@@ -4938,8 +4938,8 @@ Sprite FTEmblem 0x9BE8
 [342]
 AnimJoint ThunderJoltB 0x1A20
 MatAnimJoint ThunderJoltB 0x1AE0
-DObjDesc ThunderJolt 0x2258
 MObjSub ThunderJolt 0x20A0
+DObjDesc ThunderJolt 0x2258
 AnimJoint ThunderJolt 0x22E0
 MatAnimJoint ThunderJolt 0x2350
 
@@ -4949,18 +4949,18 @@ Sprite FTEmblem 0x2b8
 
 [346]
 DObjDesc Reflector 0x2B0
-AnimJoint EntryArwingL 0x590
-AnimJoint EntryArwingR 0x9E0
 AnimJoint ReflectorStart 0x340
 AnimJoint ReflectorHit 0x3A0
 AnimJoint ReflectorEnd 0x430
 AnimJoint ReflectorLoop 0x4C0
+AnimJoint EntryArwingL 0x590
+AnimJoint EntryArwingR 0x9E0
 
 [347]
-MObjSub Unk 0x0640
-DObjDesc Unk 0x0800
-AnimJoint Unk 0x0890
-MatAnimJoint Unk 0x0900
+MObjSub Unk 0x640
+DObjDesc Unk 0x800
+AnimJoint Unk 0x890
+MatAnimJoint Unk 0x900
 MObjSub ThunderShock 0x13A0
 DObjDesc ThunderShock 0x1640
 AnimJoint ThunderShock0 0x1720
@@ -4971,75 +4971,75 @@ MatAnimJoint ThunderShock1 0x1AC0
 MatAnimJoint ThunderShock2 0x1B10
 
 [348]
-DObjDesc VulcanJab 0x0B20
+DObjDesc VulcanJab 0xB20
+DObjDesc CutterTrail 0xDF8
 DObjDesc CutterUp 0x12E8
-AnimJoint CutterUp 0x1470
-DObjDesc CutterDown 0x2390
-AnimJoint CutterDown 0x24D0
-DObjDesc CutterDraw 0x2888
-DObjDesc CutterTrail 0x0DF8
 AnimJoint CutterTrail 0x13F0
+AnimJoint CutterUp 0x1470
 DObjDesc EntryStar 0x1DA8
 AnimJoint EntryStarL 0x1E30
 AnimJoint EntryStarR 0x1EA0
+DObjDesc CutterDown 0x2390
+AnimJoint CutterDown 0x24D0
+DObjDesc CutterDraw 0x2888
 
 [349]
-DObjDesc GrappleBeam 0x0380
-MObjSub GrappleBeam 0x0210
-AnimJoint GrappleBeam 0x0410
-MatAnimJoint GrappleBeam 0x0480
-DObjDesc EntryPoint 0x0B90
-AnimJoint EntryPoint 0x0C20
+MObjSub GrappleBeam 0x210
+DObjDesc GrappleBeam 0x380
+AnimJoint GrappleBeam 0x410
+MatAnimJoint GrappleBeam 0x480
+DObjDesc EntryPoint 0xB90
+AnimJoint EntryPoint 0xC20
 
 [350]
-DObjDesc FalconKick 0x0B08
-MObjSub FalconKick 0x0960
-AnimJoint FalconKick 0x0B90
-MatAnimJoint FalconKick 0x0C00
+MObjSub FalconKick 0x960
+DObjDesc FalconKick 0xB08
+AnimJoint FalconKick 0xB90
+MatAnimJoint FalconKick 0xC00
 DObjDesc EntryCar 0x5FC0
 AnimJoint _6200_ 0x6200
 AnimJoint _6518_ 0x6518
 AnimJoint _6598_ 0x6598
 
 [351]
-DObjDesc Sing 0x2130
 MObjSub Sing 0x1C20
+DObjDesc Sing 0x2130
 AnimJoint Sing 0x2270
 MatAnimJoint Sing 0x2D70
 
 [352]
-MObjSub PsychicMagnet 0x0810
-DObjDesc PsychicMagnet 0x09A8
-AnimJoint PsychicMagnet 0x0A30
-MatAnimJoint PsychicMagnet 0x0AD0
+MObjSub PsychicMagnet 0x810
+DObjDesc PsychicMagnet 0x9A8
+AnimJoint PsychicMagnet 0xA30
+MatAnimJoint PsychicMagnet 0xAD0
 
 [353]
-DObjDesc EntryWave 0x03F8
-MObjSub EntryWave 0x0130
-AnimJoint EntryWave 0x0840
-MatAnimJoint EntryWave 0x0B90
-DObjDesc EntryBeam 0x07B8
-MObjSub EntryBeam 0x04F0
-AnimJoint EntryBeam 0x0B60
-MatAnimJoint EntryBeam 0x0BF0
-DObjDesc SpinAttack 0x11C0
+MObjSub EntryWave 0x130
+DObjDesc EntryWave 0x3F8
+MObjSub EntryBeam 0x4F0
+DObjDesc EntryBeam 0x7B8
+AnimJoint EntryWave 0x840
+AnimJoint EntryBeam 0xB60
+MatAnimJoint EntryWave 0xB90
+MatAnimJoint EntryBeam 0xBF0
 MObjSub SpinAttack 0x1038
+DObjDesc SpinAttack 0x11C0
 AnimJoint SpinAttack 0x1250
 MatAnimJoint SpinAttack 0x12F0
 
 [354]
-DObjDesc EntryEgg 0x0530
-MObjSub EntryEgg 0x0460
-AnimJoint EntryEgg 0x0600
-MatAnimJoint EntryEgg 0x0780
+MObjSub EntryEgg 0x460
+DObjDesc EntryEgg 0x530
+AnimJoint EntryEgg 0x600
+MatAnimJoint EntryEgg 0x780
 
 [355]
-DObjDesc EntryTaru 0x07C8
-AnimJoint EntryTaru 0x0850
+DObjDesc EntryTaru 0x7C8
+AnimJoint EntryTaru 0x850
 
 [356]
-DObjDesc EntryDokan 0x0608
-AnimJoint EntryDokan 0x06C0
+DObjDesc EntryDokan 0x608
+AnimJoint EntryDokan 0x6C0
 [104]
 DObjDesc Layer0DObj 0x898
 AnimJoint Layer0Anim 0x9D0

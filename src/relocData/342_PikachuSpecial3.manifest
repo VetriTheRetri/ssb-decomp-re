@@ -3,13 +3,11 @@
 # The master .c file is generated from this manifest at build time.
 
 gap_0x0000.data.c
-ThunderJoltB_AnimJoint.data.c
-ThunderJoltB_MatAnimJoint.data.c
-ThunderJolt.mobjsub.c
+ThunderJoltBAnimJoint_AnimJoint.data.c
+ThunderJoltBMatAnimJoint_MatAnimJoint.data.c
+ThunderJoltMObjSub.mobjsub.c
 gap_0x2118.data.c
-ThunderJolt.vtx.c
-ThunderJolt.dl.c
-ThunderJolt.dobjdesc.c
+ThunderJoltDObjDesc.dobjdesc.c
 pad 4
-ThunderJolt_AnimJoint.data.c
-ThunderJolt_MatAnimJoint.data.c
+ThunderJoltAnimJoint_AnimJoint.data.c
+ThunderJoltMatAnimJoint_MatAnimJoint.data.c

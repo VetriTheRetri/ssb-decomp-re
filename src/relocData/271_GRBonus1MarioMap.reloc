@@ -1,8 +1,8 @@
 # Relocation metadata for file 271
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dGRBonus1MarioMap_MapHeader_0x0000 0xA60
-extern dGRBonus1MarioMap_MapHeader_0x0000+0x10 0x1EB0
-extern dGRBonus1MarioMap_MapHeader_0x0000+0x14 0x2110
-extern dGRBonus1MarioMap_MapHeader_0x0000+0x40 0x20E8
-extern dGRBonus1MarioMap_MapHeader_0x0000+0x48 0x26C88
+extern dGRBonus1MarioMap_header 0xA60
+extern dGRBonus1MarioMap_header+0x10 0x1EB0
+extern dGRBonus1MarioMap_header+0x14 0x2110
+extern dGRBonus1MarioMap_header+0x40 0x20E8
+extern dGRBonus1MarioMap_header+0x48 0x26C88

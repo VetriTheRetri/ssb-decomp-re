@@ -1,0 +1,58 @@
+/* MPGroundData for relocData file 268 (GRZakoMap) */
+/* File size: 192 bytes (0xC0) */
+
+#include <mp/mptypes.h>
+#include "relocdata_types.h"
+
+/* Item-randomizer weights, referenced by `header.item_weights` */
+u8 dGRZakoMap_item_weights[20] = { 0x46, 0x28, 0x78, 0x00, 0x1B, 0x09, 0x07, 0x0A, 0x05, 0x0C, 0x16, 0x08, 0x0A, 0x07, 0x0A, 0x0C, 0x0A, 0x03, 0x08, 0x1E };
+
+MPGroundData dGRZakoMap_header =
+{
+    /* gr_desc[4] */
+    {
+        { NULL, NULL, NULL, NULL },
+        { (DObjDesc *)0x0015105C, NULL, NULL, NULL },
+        { NULL, NULL, NULL, NULL },
+        { NULL, NULL, NULL, NULL },
+    },
+    (MPGeometryData *)0x001710E2,  /* map_geometry */
+    0,  /* layer_mask */
+    (Sprite *)0xFFFF9B22,  /* wallpaper */
+    { 0x41, 0x00, 0x69 },  /* fog_color */
+    0x00,  /* fog_alpha */
+    /* emblem_colors[4] */
+    {
+        { 0xFF, 0x80, 0x80 },
+        { 0x8C, 0x8C, 0xFF },
+        { 0xE6, 0xE6, 0x64 },
+        { 0x80, 0xFF, 0x80 },
+    },
+    0xC8C8C800,  /* unused */
+    { 0.0f, -60.0f, -0.17453294f },  /* light_angle */
+    3000,  /* camera_bound_top */
+    -2000,  /* camera_bound_bottom */
+    4000,  /* camera_bound_right */
+    -4000,  /* camera_bound_left */
+    9000,  /* map_bound_top */
+    -4200,  /* map_bound_bottom */
+    9000,  /* map_bound_right */
+    -9000,  /* map_bound_left */
+    0x00000024,  /* bgm_id */
+    NULL,  /* map_nodes */
+    (MPItemWeights *)0xFFFF0000,  /* item_weights */
+    -2900,  /* alt_warning */
+    3000,  /* camera_bound_team_top */
+    -1000,  /* camera_bound_team_bottom */
+    2800,  /* camera_bound_team_right */
+    -2800,  /* camera_bound_team_left */
+    8000,  /* map_bound_team_top */
+    -3800,  /* map_bound_team_bottom */
+    7500,  /* map_bound_team_right */
+    -7500,  /* map_bound_team_left */
+    { 0, 0, 0 },  /* zoom_start */
+    { 0, 0, 15000 },  /* zoom_end */
+};
+
+/* 4 bytes of trailing pad to 16-byte file boundary */
+u8 dGRZakoMap_pad[4] = { 0, 0, 0, 0 };

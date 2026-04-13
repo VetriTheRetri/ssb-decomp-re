@@ -1,9 +1,47 @@
-/* Raw data from file offset 0x0014 to 0x00BC (168 bytes) */
-u32 dGRJungleMap_MapHeader_0x0014[] = {
-	0x000922C6, 0x00000000, 0x00000000, 0x00000000, 0x000A261E, 0x000D26C8, 0x00000000, 0x00000000, /* reloc: +0x0->0x8B18X, +0x10->0x9878X, +0x14->0x9B20X */
-	0x001131F6, 0x00000000, 0x00000000, 0x00000000, 0x00153462, 0x00000000, 0x00000000, 0x00000000, /* reloc: +0x20->0xC7D8X, +0x30->0xD188X */
-	0x001726BF, 0x00000000, 0x00259B22, 0x5A0F0000, 0xFF808080, 0x80FFFFFF, 0x8080FF80, 0xC8C8C800, /* reloc: +0x40->0x9AFCX, +0x48->0x26C88X */
-	0x00000000, 0x42F00000, 0xBE32B8C3, 0x0FA0F830, 0x0E74F18C, 0x1F40EDA4, 0x1FA4E05C, 0x00000005,
-	0xFFFF02A6, 0xFFFF0000, 0xF8940FA0, 0xF8300E10, 0xF1F01F40, 0xEDA420D0, 0xDF300000, 0x00000000, /* reloc: +0x80->0x0A98X, +0x84->0x0000 */
-	0x00000000, 0x3A980000,
+/* MPGroundData (typed via tools/typeStageMap.py) */
+MPGroundData dGRJungleMap_MapHeader_0x0014 =
+{
+    /* gr_desc[4] */
+    {
+        { (DObjDesc *)0x000922C6, NULL, NULL, NULL },
+        { (DObjDesc *)0x000A261E, (AObjEvent32 **)0x000D26C8, NULL, NULL },
+        { (DObjDesc *)0x001131F6, NULL, NULL, NULL },
+        { (DObjDesc *)0x00153462, NULL, NULL, NULL },
+    },
+    (MPGeometryData *)0x001726BF,  /* map_geometry */
+    0,  /* layer_mask */
+    (Sprite *)0x00259B22,  /* wallpaper */
+    { 0x5A, 0x0F, 0x00 },  /* fog_color */
+    0x00,  /* fog_alpha */
+    /* emblem_colors[4] */
+    {
+        { 0xFF, 0x80, 0x80 },
+        { 0x80, 0x80, 0xFF },
+        { 0xFF, 0xFF, 0x80 },
+        { 0x80, 0xFF, 0x80 },
+    },
+    0xC8C8C800,  /* unused */
+    { 0.0f, 120.0f, -0.17453294f },  /* light_angle */
+    4000,  /* camera_bound_top */
+    -2000,  /* camera_bound_bottom */
+    3700,  /* camera_bound_right */
+    -3700,  /* camera_bound_left */
+    8000,  /* map_bound_top */
+    -4700,  /* map_bound_bottom */
+    8100,  /* map_bound_right */
+    -8100,  /* map_bound_left */
+    0x00000005,  /* bgm_id */
+    (void *)0xFFFF02A6,  /* map_nodes */
+    (MPItemWeights *)0xFFFF0000,  /* item_weights */
+    -1900,  /* alt_warning */
+    4000,  /* camera_bound_team_top */
+    -2000,  /* camera_bound_team_bottom */
+    3600,  /* camera_bound_team_right */
+    -3600,  /* camera_bound_team_left */
+    8000,  /* map_bound_team_top */
+    -4700,  /* map_bound_team_bottom */
+    8400,  /* map_bound_team_right */
+    -8400,  /* map_bound_team_left */
+    { 0, 0, 0 },  /* zoom_start */
+    { 0, 0, 15000 },  /* zoom_end */
 };

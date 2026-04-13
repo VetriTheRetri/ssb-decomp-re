@@ -1,9 +1,47 @@
-/* Raw data from file offset 0x0000 to 0x00A8 (168 bytes) */
-u32 dGRBonus3Map_gap_0x0000[] = {
-	0x00040D24, 0x00000000, 0x00000000, 0x00000000, 0x00061848, 0x00000000, 0x00070DA8, 0x00101974, /* reloc: +0x0->0x3490X, +0x10->0x6120X, +0x18->0x36A0X, +0x1C->0x65D0X */
-	0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x0020196A, 0x02000000, 0x00000000, 0x00000000, 0xFFA0A0B4, 0xB4FFE6E6, 0x78A0FFA0, 0xDCDCDC00, /* reloc: +0x40->0x65A8X */
-	0x00000000, 0xC2700000, 0xBE32B8C3, 0x1D4CE2B4, 0x1D4CE2B4, 0x1F40E0C0, 0x1F40E0C0, 0x0000001A,
-	0x002A0000, 0x00000000, 0x80001D4C, 0xE2B41D4C, 0xE2B41F40, 0xE0C01F40, 0xE0C00000, 0x00000000, /* reloc: +0x80->0x0000X */
-	0x00000000, 0x00000000,
+/* MPGroundData (typed via tools/typeStageMap.py) */
+MPGroundData dGRBonus3Map_gap_0x0000 =
+{
+    /* gr_desc[4] */
+    {
+        { (DObjDesc *)0x00040D24, NULL, NULL, NULL },
+        { (DObjDesc *)0x00061848, NULL, (MObjSub ***)0x00070DA8, (AObjEvent32 ***)0x00101974 },
+        { NULL, NULL, NULL, NULL },
+        { NULL, NULL, NULL, NULL },
+    },
+    (MPGeometryData *)0x0020196A,  /* map_geometry */
+    2,  /* layer_mask */
+    NULL,  /* wallpaper */
+    { 0x00, 0x00, 0x00 },  /* fog_color */
+    0x00,  /* fog_alpha */
+    /* emblem_colors[4] */
+    {
+        { 0xFF, 0xA0, 0xA0 },
+        { 0xB4, 0xB4, 0xFF },
+        { 0xE6, 0xE6, 0x78 },
+        { 0xA0, 0xFF, 0xA0 },
+    },
+    0xDCDCDC00,  /* unused */
+    { 0.0f, -60.0f, -0.17453294f },  /* light_angle */
+    7500,  /* camera_bound_top */
+    -7500,  /* camera_bound_bottom */
+    7500,  /* camera_bound_right */
+    -7500,  /* camera_bound_left */
+    8000,  /* map_bound_top */
+    -8000,  /* map_bound_bottom */
+    8000,  /* map_bound_right */
+    -8000,  /* map_bound_left */
+    0x0000001A,  /* bgm_id */
+    (void *)0x002A0000,  /* map_nodes */
+    NULL,  /* item_weights */
+    -32768,  /* alt_warning */
+    7500,  /* camera_bound_team_top */
+    -7500,  /* camera_bound_team_bottom */
+    7500,  /* camera_bound_team_right */
+    -7500,  /* camera_bound_team_left */
+    8000,  /* map_bound_team_top */
+    -8000,  /* map_bound_team_bottom */
+    8000,  /* map_bound_team_right */
+    -8000,  /* map_bound_team_left */
+    { 0, 0, 0 },  /* zoom_start */
+    { 0, 0, 0 },  /* zoom_end */
 };

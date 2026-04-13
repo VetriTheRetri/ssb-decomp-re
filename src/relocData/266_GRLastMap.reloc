@@ -1,9 +1,9 @@
 # Relocation metadata for file 266
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dGRLastMap_MapHeader_0x0000+0x10 0x4D48
-extern dGRLastMap_MapHeader_0x0000+0x14 0x4F10
-extern dGRLastMap_MapHeader_0x0000+0x18 0x2078
-extern dGRLastMap_MapHeader_0x0000+0x1C 0x4F40
-extern dGRLastMap_MapHeader_0x0000+0x40 0x4EF4
-extern dGRLastMap_MapHeader_0x0000+0x48 0x26C88
+extern dGRLastMap_header+0x10 0x4D48
+extern dGRLastMap_header+0x14 0x4F10
+extern dGRLastMap_header+0x18 0x2078
+extern dGRLastMap_header+0x1C 0x4F40
+extern dGRLastMap_header+0x40 0x4EF4
+extern dGRLastMap_header+0x48 0x26C88

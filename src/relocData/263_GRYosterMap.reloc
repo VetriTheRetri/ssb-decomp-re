@@ -1,14 +1,14 @@
 # Relocation metadata for file 263
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dGRYosterMap_MapHeader_0x0014 0xE00
-extern dGRYosterMap_MapHeader_0x0014+0x4 0x1150
-extern dGRYosterMap_MapHeader_0x0014+0x8 0x0
-extern dGRYosterMap_MapHeader_0x0014+0xC 0x3780
-extern dGRYosterMap_MapHeader_0x0014+0x10 0x4E78
-extern dGRYosterMap_MapHeader_0x0014+0x20 0x5448
-extern dGRYosterMap_MapHeader_0x0014+0x30 0x5C38
-extern dGRYosterMap_MapHeader_0x0014+0x40 0x5188
-extern dGRYosterMap_MapHeader_0x0014+0x48 0x26C88
-extern dGRYosterMap_MapHeader_0x0014+0x80 0x100
-intern dGRYosterMap_MapHeader_0x0014+0x84 dGRYosterMap_gap_0x0000
+extern dGRYosterMap_header 0xE00
+extern dGRYosterMap_header+0x4 0x1150
+extern dGRYosterMap_header+0x8 0x0
+extern dGRYosterMap_header+0xC 0x3780
+extern dGRYosterMap_header+0x10 0x4E78
+extern dGRYosterMap_header+0x20 0x5448
+extern dGRYosterMap_header+0x30 0x5C38
+extern dGRYosterMap_header+0x40 0x5188
+extern dGRYosterMap_header+0x48 0x26C88
+extern dGRYosterMap_header+0x80 0x100
+intern dGRYosterMap_header+0x84 dGRYosterMap_item_weights

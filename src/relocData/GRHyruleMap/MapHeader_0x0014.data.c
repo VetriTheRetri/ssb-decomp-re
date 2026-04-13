@@ -1,9 +1,47 @@
-/* Raw data from file offset 0x0014 to 0x00BC (168 bytes) */
-u32 dGRHyruleMap_MapHeader_0x0014[] = {
-	0x00091162, 0x00000000, 0x00000000, 0x00000000, 0x001115C0, 0x00000000, 0x00000000, 0x00000000, /* reloc: +0x0->0x4588X, +0x10->0x5700X */
-	0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x001519AA, 0x00000000, 0x00000000, 0x00000000, /* reloc: +0x30->0x66A8X */
-	0x00171667, 0x01000000, 0xFFFF9B22, 0xE1C8FF00, 0xFFA0A0A0, 0xA0FFF0F0, 0x64AAFFAA, 0xDCDCDC00, /* reloc: +0x40->0x599CX, +0x48->0x26C88X */
-	0x42A00000, 0x41C80000, 0xBE32B8C3, 0x1770F7CC, 0x1770E890, 0x2328EC78, 0x2EE0D120, 0x00000009,
-	0x00000000, 0xFFFF0000, 0xF5D81770, 0xF7CC1770, 0xE8902328, 0xEC782AF8, 0xD5080000, 0x00000000, /* reloc: +0x84->0x0000 */
-	0x00000000, 0x3A980000,
+/* MPGroundData (typed via tools/typeStageMap.py) */
+MPGroundData dGRHyruleMap_MapHeader_0x0014 =
+{
+    /* gr_desc[4] */
+    {
+        { (DObjDesc *)0x00091162, NULL, NULL, NULL },
+        { (DObjDesc *)0x001115C0, NULL, NULL, NULL },
+        { NULL, NULL, NULL, NULL },
+        { (DObjDesc *)0x001519AA, NULL, NULL, NULL },
+    },
+    (MPGeometryData *)0x00171667,  /* map_geometry */
+    1,  /* layer_mask */
+    (Sprite *)0xFFFF9B22,  /* wallpaper */
+    { 0xE1, 0xC8, 0xFF },  /* fog_color */
+    0x00,  /* fog_alpha */
+    /* emblem_colors[4] */
+    {
+        { 0xFF, 0xA0, 0xA0 },
+        { 0xA0, 0xA0, 0xFF },
+        { 0xF0, 0xF0, 0x64 },
+        { 0xAA, 0xFF, 0xAA },
+    },
+    0xDCDCDC00,  /* unused */
+    { 80.0f, 25.0f, -0.17453294f },  /* light_angle */
+    6000,  /* camera_bound_top */
+    -2100,  /* camera_bound_bottom */
+    6000,  /* camera_bound_right */
+    -6000,  /* camera_bound_left */
+    9000,  /* map_bound_top */
+    -5000,  /* map_bound_bottom */
+    12000,  /* map_bound_right */
+    -12000,  /* map_bound_left */
+    0x00000009,  /* bgm_id */
+    NULL,  /* map_nodes */
+    (MPItemWeights *)0xFFFF0000,  /* item_weights */
+    -2600,  /* alt_warning */
+    6000,  /* camera_bound_team_top */
+    -2100,  /* camera_bound_team_bottom */
+    6000,  /* camera_bound_team_right */
+    -6000,  /* camera_bound_team_left */
+    9000,  /* map_bound_team_top */
+    -5000,  /* map_bound_team_bottom */
+    11000,  /* map_bound_team_right */
+    -11000,  /* map_bound_team_left */
+    { 0, 0, 0 },  /* zoom_start */
+    { 0, 0, 15000 },  /* zoom_end */
 };

@@ -1,9 +1,9 @@
 # Relocation metadata for file 267
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dGRExplainMap_MapHeader_0x0000 0x108
-extern dGRExplainMap_MapHeader_0x0000+0x10 0x720
-extern dGRExplainMap_MapHeader_0x0000+0x20 0x9B8
-extern dGRExplainMap_MapHeader_0x0000+0x30 0xDD0
-extern dGRExplainMap_MapHeader_0x0000+0x40 0x854
-extern dGRExplainMap_MapHeader_0x0000+0x48 0x26C88
+extern dGRExplainMap_header 0x108
+extern dGRExplainMap_header+0x10 0x720
+extern dGRExplainMap_header+0x20 0x9B8
+extern dGRExplainMap_header+0x30 0xDD0
+extern dGRExplainMap_header+0x40 0x854
+extern dGRExplainMap_header+0x48 0x26C88

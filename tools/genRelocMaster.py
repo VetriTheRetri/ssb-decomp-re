@@ -168,6 +168,20 @@ def compute_data_c_size(data_c_path, search_paths=()):
         elem_size = {'u8': 1, 'u16': 2, 'u32': 4, 'u64': 8}[elem_type]
         total += elem_count * elem_size
 
+    # Typed top-level structs whose size is fixed and known. Each entry
+    # contributes its sizeof regardless of how complex its initializer is.
+    # This lets manifest-driven block files declare actual game structs
+    # (rather than raw u32 arrays) without losing the byte-offset accounting
+    # the manifest pipeline relies on.
+    KNOWN_STRUCT_SIZES = {
+        'MPGroundData': 0xA8,  # 168 bytes per IDO sizeof
+    }
+    for type_name, type_size in KNOWN_STRUCT_SIZES.items():
+        # Match `<TypeName> <ident> = {`. Brace-balanced body skipping is
+        # not needed since we just count occurrences.
+        pattern = rf'\b{re.escape(type_name)}\s+\w+\s*=\s*\{{'
+        total += len(re.findall(pattern, content)) * type_size
+
     if total == 0:
         print(f"Error: can't parse {data_c_path} (no recognized declarations)",
               file=sys.stderr)

@@ -1,8 +1,8 @@
 # Relocation metadata for file 274
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dGRBonus1SamusMap_MapHeader_0x0000 0x950
-extern dGRBonus1SamusMap_MapHeader_0x0000+0x10 0x1868
-extern dGRBonus1SamusMap_MapHeader_0x0000+0x14 0x1AF0
-extern dGRBonus1SamusMap_MapHeader_0x0000+0x40 0x1AD4
-extern dGRBonus1SamusMap_MapHeader_0x0000+0x48 0x26C88
+extern dGRBonus1SamusMap_header 0x950
+extern dGRBonus1SamusMap_header+0x10 0x1868
+extern dGRBonus1SamusMap_header+0x14 0x1AF0
+extern dGRBonus1SamusMap_header+0x40 0x1AD4
+extern dGRBonus1SamusMap_header+0x48 0x26C88

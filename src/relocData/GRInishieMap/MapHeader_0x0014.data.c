@@ -1,9 +1,47 @@
-/* Raw data from file offset 0x0014 to 0x00BC (168 bytes) */
-u32 dGRInishieMap_MapHeader_0x0014[] = {
-	0x00061292, 0x0007130C, 0x00080DCC, 0x00091390, 0x000D18C8, 0x00000000, 0x00000000, 0x00000000, /* reloc: +0x0->0x4A48X, +0x4->0x4C30X, +0x8->0x3730X, +0xC->0x4E40X, +0x10->0x6320X */
-	0x00111A08, 0x00000000, 0x00000000, 0x00000000, 0x00151B00, 0x00000000, 0x00000000, 0x00000000, /* reloc: +0x20->0x6820X, +0x30->0x6C00X */
-	0x001719A6, 0x01000000, 0x00259B22, 0x7188B800, 0xFFA0A0B4, 0xB4FFE6E6, 0x78A0FFA0, 0xDCDCDC00, /* reloc: +0x40->0x6698X, +0x48->0x26C88X */
-	0x41A00000, 0x42340000, 0xBE32B8C3, 0x0BB8FC18, 0x0D48F2B8, 0x2328EF02, 0x1CE8E318, 0x00000002,
-	0x0036017C, 0xFFFF0000, 0xF7680BB8, 0xFC181194, 0xEE6C2328, 0xEF021194, 0xEE6C0000, 0x00000000, /* reloc: +0x80->0x05F0X, +0x84->0x0000 */
-	0x00000000, 0x3A980000,
+/* MPGroundData (typed via tools/typeStageMap.py) */
+MPGroundData dGRInishieMap_MapHeader_0x0014 =
+{
+    /* gr_desc[4] */
+    {
+        { (DObjDesc *)0x00061292, (AObjEvent32 **)0x0007130C, (MObjSub ***)0x00080DCC, (AObjEvent32 ***)0x00091390 },
+        { (DObjDesc *)0x000D18C8, NULL, NULL, NULL },
+        { (DObjDesc *)0x00111A08, NULL, NULL, NULL },
+        { (DObjDesc *)0x00151B00, NULL, NULL, NULL },
+    },
+    (MPGeometryData *)0x001719A6,  /* map_geometry */
+    1,  /* layer_mask */
+    (Sprite *)0x00259B22,  /* wallpaper */
+    { 0x71, 0x88, 0xB8 },  /* fog_color */
+    0x00,  /* fog_alpha */
+    /* emblem_colors[4] */
+    {
+        { 0xFF, 0xA0, 0xA0 },
+        { 0xB4, 0xB4, 0xFF },
+        { 0xE6, 0xE6, 0x78 },
+        { 0xA0, 0xFF, 0xA0 },
+    },
+    0xDCDCDC00,  /* unused */
+    { 20.0f, 45.0f, -0.17453294f },  /* light_angle */
+    3000,  /* camera_bound_top */
+    -1000,  /* camera_bound_bottom */
+    3400,  /* camera_bound_right */
+    -3400,  /* camera_bound_left */
+    9000,  /* map_bound_top */
+    -4350,  /* map_bound_bottom */
+    7400,  /* map_bound_right */
+    -7400,  /* map_bound_left */
+    0x00000002,  /* bgm_id */
+    (void *)0x0036017C,  /* map_nodes */
+    (MPItemWeights *)0xFFFF0000,  /* item_weights */
+    -2200,  /* alt_warning */
+    3000,  /* camera_bound_team_top */
+    -1000,  /* camera_bound_team_bottom */
+    4500,  /* camera_bound_team_right */
+    -4500,  /* camera_bound_team_left */
+    9000,  /* map_bound_team_top */
+    -4350,  /* map_bound_team_bottom */
+    4500,  /* map_bound_team_right */
+    -4500,  /* map_bound_team_left */
+    { 0, 0, 0 },  /* zoom_start */
+    { 0, 0, 15000 },  /* zoom_end */
 };

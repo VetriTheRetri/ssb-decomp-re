@@ -1,7 +1,7 @@
-/* Vtx: JointVerts @ 0x0 (465 vertices) */
+/* Vtx: JointVerts @ 0x0 (0 vertices) */
 
 #include "relocdata_types.h"
 
-Vtx dNLinkModel_JointVerts_Vtx[465] = {
+Vtx dNLinkModel_JointVerts_Vtx[0] = {
 	#include <NLinkModel/JointVerts.vtx.inc.c>
 };

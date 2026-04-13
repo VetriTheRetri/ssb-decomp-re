@@ -1,7 +1,7 @@
-/* Vtx: JointVerts @ 0x0 (429 vertices) */
+/* Vtx: JointVerts @ 0x0 (0 vertices) */
 
 #include "relocdata_types.h"
 
-Vtx dNSamusModel_JointVerts_Vtx[429] = {
+Vtx dNSamusModel_JointVerts_Vtx[0] = {
 	#include <NSamusModel/JointVerts.vtx.inc.c>
 };

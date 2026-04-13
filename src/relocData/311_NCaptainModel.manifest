@@ -3,6 +3,34 @@
 # The master .c file is generated from this manifest at build time.
 
 JointVerts.vtx.c
+gap_0x0000.data.c
+Lut_0x0008.palette.c
+gap_0x0028.data.c
+Tex_0x0030.data.c
+Vtx_0x01F0.vtx.c
+Vtx_0x0260.vtx.c
+Vtx_0x0440.vtx.c
+Vtx_0x05E0.vtx.c
+Vtx_0x0600.vtx.c
+gap_0x0610.data.c
+Vtx_0x07E0.vtx.c
+Vtx_0x0820.vtx.c
+Vtx_0x0970.vtx.c
+Vtx_0x0AF0.vtx.c
+Vtx_0x0CF0.vtx.c
+Vtx_0x0D10.vtx.c
+gap_0x0D20.data.c
+Vtx_0x0EF0.vtx.c
+Vtx_0x0F30.vtx.c
+Vtx_0x1080.vtx.c
+Vtx_0x1200.vtx.c
+Vtx_0x1400.vtx.c
+Vtx_0x1560.vtx.c
+Vtx_0x1740.vtx.c
+Vtx_0x17A0.vtx.c
+Vtx_0x1960.vtx.c
+Vtx_0x1AC0.vtx.c
+Vtx_0x1CA0.vtx.c
 Joint_0x1D00.dl.c
 Joint_0x1E30.dl.c
 Joint_0x1F70.dl.c

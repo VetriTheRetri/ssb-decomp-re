@@ -1,4 +1,4 @@
-/* DisplayList: Joint_0x16A0 @ 0x16A0 (656 bytes) */
+/* DisplayList: Joint_0x16A0 @ 0x16A0 (656 bytes, 82 cmds) */
 
 #include "relocdata_types.h"
 

@@ -276,18 +276,26 @@ def cleanup_orphan_blocks(block_dir, manifest_path):
             os.remove(os.path.join(block_dir, fn))
 
 
+VALID_DL_START_CMDS = {
+    0xD7, 0xD9, 0xDA, 0xDB, 0xDC, 0xDE, 0xDF,
+    0xE2, 0xE3, 0xE6, 0xE7, 0xE8, 0xE9, 0xEF,
+    0xF8, 0xFB, 0xFC, 0xFD,
+}
+
+
 def walk_dl_targets(data, arrays, file_size):
     """For each DObjDesc array in `arrays`, collect the dl pointer target
     offsets (chain-encoded `target_word * 4`). Returns a sorted list of
     unique byte offsets that each look like a real display list start —
     ie. the target fits in the file and the byte at that offset is a
     known F3DEX opening opcode.
+
+    Some fighter models (Yoshi, Boss, NYoshi, NPikachu) route
+    `DObjDesc.dl` through a 16-byte link struct whose layout is
+    `{ id, Gfx*, 0x00000004, 0 }`. When the direct target's first byte
+    is 0x00 we also try decoding a chain pointer at `target + 4` and
+    accept it if *that* lands on a valid DL opcode.
     """
-    VALID_DL_START_CMDS = {
-        0xD7, 0xD9, 0xDA, 0xDB, 0xDC, 0xDE, 0xDF,
-        0xE2, 0xE3, 0xE6, 0xE7, 0xE8, 0xE9, 0xEF,
-        0xF8, 0xFB, 0xFC, 0xFD,
-    }
     targets = set()
     for arr_off, count in arrays:
         for i in range(count):
@@ -303,6 +311,15 @@ def walk_dl_targets(data, arrays, file_size):
             opcode = data[target_byte]
             if opcode in VALID_DL_START_CMDS:
                 targets.add(target_byte)
+                continue
+            # Indirect: the "dl" points at a link struct whose real
+            # Gfx* lives at offset +4 (also chain-encoded).
+            if opcode == 0x00 and target_byte + 16 <= file_size:
+                inner_raw = struct.unpack_from(">I", data, target_byte + 4)[0]
+                inner_byte = (inner_raw & 0xFFFF) * 4
+                if (0 < inner_byte < file_size
+                        and data[inner_byte] in VALID_DL_START_CMDS):
+                    targets.add(inner_byte)
     return sorted(targets)
 
 
@@ -383,6 +400,17 @@ def process(fid, name):
     n_dl = sum(1 for e in entries if e[0] == "DisplayList")
     print(f"  {fid} {name}: {n_dobj} DObjDesc + {n_dl} DisplayList entries")
     run_generator(fid)
+
+    # Now walk the freshly-typed joint DLs and extract Vtx / LUT / Tex
+    # pointer targets into an `.extras` sidecar, then re-run the
+    # generator. This carves the remaining `gap_0x0000.data.c` blob into
+    # named vertex / palette / texture blocks so fighter models end up
+    # with the same decomposition depth as typed Special2/3 files.
+    try:
+        import typeSpecialGaps as tsg
+        tsg.process(fid, name)
+    except Exception as exc:
+        print(f"  {fid} {name}: gap-walk skipped ({exc})")
 
     # Sweep any stale block files left over from a previous (with-discovery)
     # run so the classifier sees only what's actually in the manifest.

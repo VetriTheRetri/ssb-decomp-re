@@ -1,4 +1,4 @@
-/* DisplayList: Joint_0x1DD8 @ 0x1DD8 (304 bytes) */
+/* DisplayList: Joint_0x1DD8 @ 0x1DD8 (304 bytes, 38 cmds) */
 
 #include "relocdata_types.h"
 

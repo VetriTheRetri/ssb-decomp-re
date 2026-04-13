@@ -1,7 +1,7 @@
-/* Raw data from file offset 0x0000 to 0x2188 (8584 bytes) */
+/* Raw data from file offset 0x0000 to 0x0020 (32 bytes) */
 
 #include "relocdata_types.h"
 
-u8 dDonkeyModel_gap_0x0000[8584] = {
+u8 dDonkeyModel_gap_0x0000[32] = {
 	#include <DonkeyModel/gap_0x0000.data.inc.c>
 };

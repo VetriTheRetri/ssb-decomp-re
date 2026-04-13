@@ -2,7 +2,7 @@
 MObjSub dPikachuModel_ThunderTrailMObjSub_MObjSub = {
 	0x2509,
 	0x25, 0x2C,
-	(void**)((u8*)dPikachuModel_gap_0x59B8 + 0x3668),
+	(void**)((u8*)dPikachuModel_Tex_0x80F8 + 0xF28),
 	0x250B, 0x2306, 0x250C, 0x2204,
 	621748482,
 	0.0f, 1.0789998175301091e-42f,

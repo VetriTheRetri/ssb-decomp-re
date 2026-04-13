@@ -3,6 +3,31 @@
 # The master .c file is generated from this manifest at build time.
 
 JointVerts.vtx.c
+Vtx_0x0140.vtx.c
+Vtx_0x01D0.vtx.c
+Vtx_0x0210.vtx.c
+Vtx_0x0310.vtx.c
+Vtx_0x0490.vtx.c
+gap_0x04A0.data.c
+Vtx_0x04D0.vtx.c
+gap_0x04E0.data.c
+Vtx_0x0500.vtx.c
+Vtx_0x0510.vtx.c
+Vtx_0x0520.vtx.c
+Vtx_0x0540.vtx.c
+Vtx_0x0560.vtx.c
+Vtx_0x0570.vtx.c
+Vtx_0x0590.vtx.c
+Vtx_0x05A0.vtx.c
+Vtx_0x0710.vtx.c
+Vtx_0x07A0.vtx.c
+Vtx_0x07E0.vtx.c
+Vtx_0x08E0.vtx.c
+Vtx_0x0990.vtx.c
+Vtx_0x09F0.vtx.c
+Vtx_0x0AA0.vtx.c
+Vtx_0x0B50.vtx.c
+Vtx_0x0BB0.vtx.c
 Joint_0x0C60.dl.c
 Joint_0x0DD0.dl.c
 Joint_0x0EE0.dl.c
@@ -18,7 +43,9 @@ Joint_0x1AA0.dl.c
 Joint_0x1BC0.dl.c
 Joint_0x1CE0.dl.c
 JointTree.dobjdesc.c
-gap_0x22AC.data.c
+pad 8
+Lut256_0x2288.data.c
+Tex_0x2490.data.c
 Stock_tex.data.c
 palette_0x2CD0.palette.c
 Stock.sprite.c

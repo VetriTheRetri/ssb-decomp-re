@@ -1,0 +1,18 @@
+# Block manifest for relocData file 107 (StageInishieFile2)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+gap_0x0000.data.c
+Layer0MObj.mobjsub.c
+gap_0x37A8.data.c
+Layer0DObj.dobjdesc.c
+pad 4
+Layer0Anim_AnimJoint.data.c
+Layer0MatAnim_MatAnimJoint.data.c
+Layer1DObj.dobjdesc.c
+gap_0x63A4.data.c
+MPGeometryData_0x6698.data.c
+Layer2DObj.dobjdesc.c
+gap_0x68D0.data.c
+Layer3DObj.dobjdesc.c
+pad 12

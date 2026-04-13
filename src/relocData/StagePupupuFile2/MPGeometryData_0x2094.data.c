@@ -1,0 +1,4 @@
+/* Raw data from file offset 0x2094 to 0x20B0 (28 bytes) */
+u32 dStagePupupuFile2_MPGeometryData_0x2094[] = {
+	0xFFFFFFFF, 0x04870000, 0x05540000, 0x12000A1D, 0xFFFFFFFF, 0x090F0000, 0x01A20000,
+};

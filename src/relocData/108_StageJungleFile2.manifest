@@ -1,0 +1,15 @@
+# Block manifest for relocData file 108 (StageJungleFile2)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+gap_0x0000.data.c
+Layer0DObj.dobjdesc.c
+gap_0x8B9C.data.c
+Layer1DObj.dobjdesc.c
+gap_0x9954.data.c
+MPGeometryData_0x9AFC.data.c
+Layer1Anim_AnimJoint.data.c
+Layer2DObj.dobjdesc.c
+gap_0xC888.data.c
+Layer3DObj.dobjdesc.c
+gap_0xD1B4.data.c

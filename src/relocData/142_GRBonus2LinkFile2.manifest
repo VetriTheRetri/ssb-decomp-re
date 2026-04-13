@@ -1,0 +1,11 @@
+# Block manifest for relocData file 142 (GRBonus2LinkFile2)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+gap_0x0000.data.c
+Layer0DObj.dobjdesc.c
+gap_0x0BA0.data.c
+Layer1DObj.dobjdesc.c
+gap_0x3F6C.data.c
+MPGeometryData_0x465C.data.c
+Layer1Anim_AnimJoint.data.c

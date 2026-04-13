@@ -1,0 +1,12 @@
+# Block manifest for relocData file 109 (StageSectorFile2)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+gap_0x0000.data.c
+Layer0DObj.dobjdesc.c
+gap_0x45D0.data.c
+Layer0Anim_AnimJoint.data.c
+Layer1DObj.dobjdesc.c
+gap_0x8730.data.c
+MPGeometryData_0x8AD8.data.c
+Layer1Anim_AnimJoint.data.c

@@ -1,0 +1,11 @@
+# Block manifest for relocData file 124 (GRBonus1MarioFile2)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+gap_0x0000.data.c
+Layer0DObj.dobjdesc.c
+gap_0x0B94.data.c
+Layer1DObj.dobjdesc.c
+gap_0x1F60.data.c
+MPGeometryData_0x20E8.data.c
+Layer1Anim_AnimJoint.data.c

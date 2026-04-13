@@ -1,0 +1,15 @@
+# Block manifest for relocData file 118 (StageYosterSmallFile2)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+gap_0x0000.data.c
+Layer0DObj.dobjdesc.c
+pad 4
+Layer0Anim_AnimJoint.data.c
+Layer1DObj.dobjdesc.c
+gap_0x3874.data.c
+MPGeometryData_0x39F0.data.c
+Layer2DObj.dobjdesc.c
+gap_0x3D2C.data.c
+Layer3DObj.dobjdesc.c
+pad 8

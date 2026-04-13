@@ -3532,6 +3532,15 @@ Sprite 0x26c88 0x26c88
 [99]
 Sprite - 0x26c88
 
+[106]
+DObjDesc Layer0DObj 0x1850
+DObjDesc Layer1DObj 0x2A08
+MPGeometryData - 0x2D58
+AnimJoint Layer1Anim 0x2D80
+DObjDesc Layer2DObj 0x3218
+AnimJoint Layer2Anim 0x32D0
+DObjDesc Layer3DObj 0x3600
+
 [119]
 Sprite 0x26c88 0x26c88
 
@@ -4696,3 +4705,261 @@ AnimJoint EntryTaru 0x0850
 [356]
 DObjDesc EntryDokan 0x0608
 AnimJoint EntryDokan 0x06C0
+[104]
+DObjDesc Layer0DObj 0x898
+AnimJoint Layer0Anim 0x9D0
+DObjDesc Layer1DObj 0x1D00
+MPGeometryData - 0x2094
+AnimJoint Layer1Anim 0x20B0
+DObjDesc Layer2DObj 0x22D0
+DObjDesc Layer3DObj 0x2810
+AnimJoint Layer3Anim 0x28C0
+
+[105]
+MObjSub Layer1MObj 0x2B48
+DObjDesc Layer1DObj 0x5AC0
+MPGeometryData - 0x6160
+AnimJoint Layer1Anim 0x6180
+MatAnimJoint Layer1MatAnim 0x6410
+
+[107]
+MObjSub Layer0MObj 0x3730
+DObjDesc Layer0DObj 0x4A48
+AnimJoint Layer0Anim 0x4C30
+MatAnimJoint Layer0MatAnim 0x4E40
+DObjDesc Layer1DObj 0x6320
+MPGeometryData - 0x6698
+DObjDesc Layer2DObj 0x6820
+DObjDesc Layer3DObj 0x6C00
+
+[108]
+DObjDesc Layer0DObj 0x8B18
+DObjDesc Layer1DObj 0x9878
+MPGeometryData - 0x9AFC
+AnimJoint Layer1Anim 0x9B20
+DObjDesc Layer2DObj 0xC7D8
+DObjDesc Layer3DObj 0xD188
+
+[109]
+DObjDesc Layer0DObj 0x44C8
+AnimJoint Layer0Anim 0x4710
+DObjDesc Layer1DObj 0x8680
+MPGeometryData - 0x8AD8
+AnimJoint Layer1Anim 0x8B00
+
+[111]
+MObjSub Layer0MObj 0x0
+DObjDesc Layer0DObj 0xE00
+AnimJoint Layer0Anim 0x1150
+MatAnimJoint Layer0MatAnim 0x3780
+DObjDesc Layer1DObj 0x4E78
+MPGeometryData - 0x5188
+DObjDesc Layer2DObj 0x5448
+DObjDesc Layer3DObj 0x5C38
+
+[112]
+DObjDesc Layer0DObj 0x5058
+AnimJoint Layer0Anim 0x51C0
+MObjSub Layer1MObj 0x5260
+DObjDesc Layer1DObj 0x6A70
+MPGeometryData - 0x6E8C
+AnimJoint Layer1Anim 0x6EB0
+MatAnimJoint Layer1MatAnim 0x7000
+DObjDesc Layer3DObj 0x8718
+
+[113]
+DObjDesc Layer0DObj 0x4588
+DObjDesc Layer1DObj 0x5700
+MPGeometryData - 0x599C
+DObjDesc Layer3DObj 0x66A8
+
+[114]
+MObjSub Layer1MObj 0x2078
+DObjDesc Layer1DObj 0x4D48
+MPGeometryData - 0x4EF4
+AnimJoint Layer1Anim 0x4F10
+MatAnimJoint Layer1MatAnim 0x4F40
+
+[115]
+DObjDesc Layer0DObj 0x108
+DObjDesc Layer1DObj 0x720
+MPGeometryData - 0x854
+DObjDesc Layer2DObj 0x9B8
+DObjDesc Layer3DObj 0xDD0
+
+[117]
+MObjSub Layer0MObj 0xC30
+DObjDesc Layer0DObj 0x1B10
+MatAnimJoint Layer0MatAnim 0x1BA0
+MObjSub Layer1MObj 0x1DD0
+DObjDesc Layer1DObj 0x2EE0
+MPGeometryData - 0x3068
+MatAnimJoint Layer1MatAnim 0x3090
+MObjSub Layer2MObj 0x3220
+DObjDesc Layer2DObj 0x3468
+MatAnimJoint Layer2MatAnim 0x34F0
+MObjSub Layer3MObj 0x3550
+DObjDesc Layer3DObj 0x3DD8
+MatAnimJoint Layer3MatAnim 0x3E60
+
+[118]
+DObjDesc Layer0DObj 0xA88
+AnimJoint Layer0Anim 0xD20
+DObjDesc Layer1DObj 0x37F0
+MPGeometryData - 0x39F0
+DObjDesc Layer2DObj 0x3CA8
+DObjDesc Layer3DObj 0x4498
+
+[124]
+DObjDesc Layer0DObj 0xA60
+DObjDesc Layer1DObj 0x1EB0
+MPGeometryData - 0x20E8
+AnimJoint Layer1Anim 0x2110
+
+[125]
+DObjDesc Layer0DObj 0xA60
+DObjDesc Layer1DObj 0x2068
+MPGeometryData - 0x240C
+AnimJoint Layer1Anim 0x2430
+
+[126]
+DObjDesc Layer0DObj 0x840
+DObjDesc Layer1DObj 0x1F20
+MPGeometryData - 0x21B8
+AnimJoint Layer1Anim 0x21E0
+
+[127]
+DObjDesc Layer0DObj 0x950
+DObjDesc Layer1DObj 0x1868
+MPGeometryData - 0x1AD4
+AnimJoint Layer1Anim 0x1AF0
+
+[128]
+DObjDesc Layer0DObj 0x950
+DObjDesc Layer1DObj 0x1BA0
+MPGeometryData - 0x1F38
+AnimJoint Layer1Anim 0x1F60
+
+[129]
+DObjDesc Layer0DObj 0xC80
+DObjDesc Layer1DObj 0x2378
+MPGeometryData - 0x26E0
+AnimJoint Layer1Anim 0x2700
+
+[130]
+DObjDesc Layer0DObj 0xC80
+DObjDesc Layer1DObj 0x2D68
+MPGeometryData - 0x31F0
+AnimJoint Layer1Anim 0x3210
+
+[131]
+DObjDesc Layer0DObj 0x840
+DObjDesc Layer1DObj 0x1888
+MPGeometryData - 0x1B08
+AnimJoint Layer1Anim 0x1B30
+
+[132]
+DObjDesc Layer0DObj 0xA60
+DObjDesc Layer1DObj 0x2150
+MPGeometryData - 0x24AC
+AnimJoint Layer1Anim 0x24D0
+
+[133]
+DObjDesc Layer0DObj 0xA60
+DObjDesc Layer1DObj 0x2658
+MPGeometryData - 0x2A10
+AnimJoint Layer1Anim 0x2A30
+
+[134]
+DObjDesc Layer0DObj 0x950
+DObjDesc Layer1DObj 0x1FF8
+MPGeometryData - 0x2304
+AnimJoint Layer1Anim 0x2320
+
+[135]
+DObjDesc Layer0DObj 0x950
+DObjDesc Layer1DObj 0x2940
+MPGeometryData - 0x2DF8
+AnimJoint Layer1Anim 0x2E20
+
+[137]
+DObjDesc Layer0DObj 0x9D0
+DObjDesc Layer1DObj 0x32F0
+MPGeometryData - 0x3B7C
+AnimJoint Layer1Anim 0x3BA0
+
+[138]
+DObjDesc Layer0DObj 0x950
+MObjSub Layer1MObj 0xA60
+DObjDesc Layer1DObj 0x2998
+MPGeometryData - 0x3214
+AnimJoint Layer1Anim 0x3230
+MatAnimJoint Layer1MatAnim 0x3B40
+
+[139]
+DObjDesc Layer0DObj 0x848
+DObjDesc Layer1DObj 0x2D90
+MPGeometryData - 0x34B0
+AnimJoint Layer1Anim 0x34D0
+
+[140]
+DObjDesc Layer0DObj 0x720
+DObjDesc Layer1DObj 0x1CA8
+MPGeometryData - 0x2460
+AnimJoint Layer1Anim 0x2480
+
+[141]
+DObjDesc Layer0DObj 0x990
+DObjDesc Layer1DObj 0x2CE0
+MPGeometryData - 0x3650
+AnimJoint Layer1Anim 0x3670
+
+[142]
+DObjDesc Layer0DObj 0x938
+DObjDesc Layer1DObj 0x3C28
+MPGeometryData - 0x465C
+AnimJoint Layer1Anim 0x4680
+
+[143]
+DObjDesc Layer0DObj 0xD40
+DObjDesc Layer1DObj 0x2510
+MPGeometryData - 0x2E68
+AnimJoint Layer1Anim 0x2E90
+
+[144]
+DObjDesc Layer0DObj 0xEA0
+DObjDesc Layer1DObj 0x4198
+MPGeometryData - 0x4BA4
+AnimJoint Layer1Anim 0x4BC0
+
+[145]
+DObjDesc Layer0DObj 0xA20
+DObjDesc Layer1DObj 0x2DB8
+MPGeometryData - 0x3670
+AnimJoint Layer1Anim 0x3690
+
+[146]
+DObjDesc Layer0DObj 0xD58
+DObjDesc Layer1DObj 0x3690
+MPGeometryData - 0x4204
+AnimJoint Layer1Anim 0x4220
+
+[147]
+DObjDesc Layer0DObj 0x840
+DObjDesc Layer1DObj 0x3228
+MPGeometryData - 0x406C
+AnimJoint Layer1Anim 0x4090
+
+[148]
+DObjDesc Layer0DObj 0xB70
+DObjDesc Layer1DObj 0x34A0
+MPGeometryData - 0x3DC0
+AnimJoint Layer1Anim 0x3DE0
+
+[149]
+DObjDesc Layer0DObj 0x3490
+MObjSub Layer1MObj 0x36A0
+DObjDesc Layer1DObj 0x6120
+MPGeometryData - 0x65A8
+MatAnimJoint Layer1MatAnim 0x65D0
+

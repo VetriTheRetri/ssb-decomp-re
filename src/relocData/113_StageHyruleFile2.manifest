@@ -1,0 +1,12 @@
+# Block manifest for relocData file 113 (StageHyruleFile2)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+gap_0x0000.data.c
+Layer0DObj.dobjdesc.c
+gap_0x4664.data.c
+Layer1DObj.dobjdesc.c
+gap_0x57DC.data.c
+MPGeometryData_0x599C.data.c
+Layer3DObj.dobjdesc.c
+pad 4

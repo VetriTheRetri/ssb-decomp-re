@@ -1,0 +1,13 @@
+# Block manifest for relocData file 104 (StagePupupuFile2)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+gap_0x0000.data.c
+gap_0x0898.data.c
+Layer0Anim_AnimJoint.data.c
+gap_0x1D00.data.c
+MPGeometryData_0x2094.data.c
+Layer1Anim_AnimJoint.data.c
+gap_0x22D0.data.c
+gap_0x2810.data.c
+Layer3Anim_AnimJoint.data.c

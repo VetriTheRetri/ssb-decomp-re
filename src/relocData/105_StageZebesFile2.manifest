@@ -1,0 +1,12 @@
+# Block manifest for relocData file 105 (StageZebesFile2)
+# Each line is either a block filename or 'pad N'.
+# The master .c file is generated from this manifest at build time.
+
+gap_0x0000.data.c
+Layer1MObj.mobjsub.c
+gap_0x2BC0.data.c
+Layer1DObj.dobjdesc.c
+gap_0x5C78.data.c
+MPGeometryData_0x6160.data.c
+Layer1Anim_AnimJoint.data.c
+Layer1MatAnim_MatAnimJoint.data.c

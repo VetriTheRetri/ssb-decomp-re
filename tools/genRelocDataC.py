@@ -944,7 +944,8 @@ def write_block_file(block_dir, filename, block_lines):
 
 
 def generate(file_id, data, file_name, entries, reloc_map, csv_entry,
-             extract_data=False, output_dir=None, extras_payload=None):
+             extract_data=False, output_dir=None, extras_payload=None,
+             no_discover=False):
     lines = []
     sym_map = SymbolMap()
     reloc_entries = []  # list of (type, ptr_label, target_label)
@@ -1734,7 +1735,7 @@ def generate(file_id, data, file_name, entries, reloc_map, csv_entry,
     # been hand-curated and we should stay out of the way — otherwise
     # discovery would re-classify random data as DLs inside regions that
     # the descriptions already account for.
-    has_existing_dls = any(
+    has_existing_dls = no_discover or any(
         bt == 'DisplayList' for bt, bn, bo in valid_entries)
     seen_dls = set()
     # Track how many discovered DLs we've seen per owner name so we can
@@ -2165,6 +2166,12 @@ def main():
     parser.add_argument("--output", "-o", default=None)
     parser.add_argument("--version", "-v", default="us")
     parser.add_argument("--extract-data", "-e", action="store_true")
+    parser.add_argument("--no-discover", action="store_true",
+                        help="Skip Phase 2 DL/Vtx auto-discovery — only "
+                             "emit blocks for entries explicitly listed in "
+                             "the description. Useful for files with shared "
+                             "vertex pools where auto-discovery produces "
+                             "overlapping Vtx blocks.")
     args = parser.parse_args()
 
     file_id = args.file_id
@@ -2204,7 +2211,7 @@ def main():
     c_source, sym_map, reloc_entries, manifest = generate(
         file_id, data, file_name, entries, reloc_map, csv_entry,
         extract_data=args.extract_data, output_dir=output_dir,
-        extras_payload=extras_payload)
+        extras_payload=extras_payload, no_discover=args.no_discover)
 
     os.makedirs(output_dir, exist_ok=True)
 

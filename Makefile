@@ -673,13 +673,24 @@ else ifneq ($$(RELOC_MANIFEST_$(1)),)
 	@mkdir -p $$(@D)
 	$$(V)$$(PYTHON) tools/genRelocMaster.py $$(RELOC_MANIFEST_$(1)) $$@ -Isrc/relocData -I$$(BUILD_DIR)/src/relocData
 else ifneq ($$(RELOC_LIST_$(1)),)
-  # Sprite-only .spritelist drives the master .c
+  # .spritelist is a marker — actual layout/names come from walking the ROM
+  # binary's reloc chain via tools/extractSpriteFile.py. The master .c, its
+  # companion .reloc, and every texture/palette .inc.c under the sprite
+  # subdir get regenerated whenever the spritelist file changes or the
+  # extract stamp advances. No hand-maintained .sprite.c wrappers needed.
   RELOC_MASTER_$(1) := $$(BUILD_DIR)/src/relocData/$$(RELOC_BASENAME_$(1)).c
+  RELOC_AUTO_RELOC_$(1) := $$(BUILD_DIR)/src/relocData/$$(RELOC_BASENAME_$(1)).reloc
 
-  $$(RELOC_MASTER_$(1)): $$(RELOC_LIST_$(1)) $$(RELOC_SPRITE_DEPS_$(1)) $$(RELOC_STAMP_$(1)) $$(RELOC_INC_OVERRIDES_$(1))
-	$$(call print_3,Generating master from spritelist:,$$<,$$@)
+  # Order-only dependency on the extract stamp so relocSpriteTool.py /
+  # extractRelocInc.py run first (they write inc.c files based on the
+  # legacy description-offset pipeline). The auto-extract runs second and
+  # overwrites those files with the binary-walked version — the two paths
+  # produce byte-identical content for well-behaved sprites, but the
+  # ordering makes sure our bytes are the ones that land on disk.
+  $$(RELOC_MASTER_$(1)) $$(RELOC_AUTO_RELOC_$(1)): $$(RELOC_LIST_$(1)) tools/extractSpriteFile.py tools/relocFileDescriptions.$(VERSION).txt assets/relocData/$(1).vpk0.bin | $$(RELOC_STAMP_$(1))
+	$$(call print_3,Auto-extracting sprite file:,assets/relocData/$(1).vpk0.bin,$$@)
 	@mkdir -p $$(@D)
-	$$(V)$$(PYTHON) tools/genRelocMaster.py $$(RELOC_LIST_$(1)) $$@ -Isrc/relocData -I$$(BUILD_DIR)/src/relocData --version $(VERSION)
+	$$(V)$$(PYTHON) tools/extractSpriteFile.py $(1) $$(RELOC_MASTER_$(1)) --version $(VERSION)
 else
   # Hand-written .c master (no manifest)
   RELOC_MASTER_$(1) := $$(RELOC_C_$(1))
@@ -695,10 +706,14 @@ $$(BUILD_DIR)/src/relocData/$(1).o: $$(RELOC_MASTER_$(1)) $$(RELOC_SPRITE_DEPS_$
 	@mkdir -p $$(@D)
 	$$(V)$$(IDO7) $$(CCFLAGS) $$(OPTFLAGS) -Isrc/relocData -I$$(BUILD_DIR)/src/relocData -o $$@ $$<
 
-# .reloc file path (sibling of either the master .c or the manifest).
-# Version-specific overrides are raw blobs with relocation data already baked
-# in, so skip reloc-chain fixing for them.
-RELOC_RELOC_$(1) := $$(if $$(RELOC_VC_$(1)),,src/relocData/$$(RELOC_BASENAME_$(1)).reloc)
+# .reloc file path. Three sources, in priority order:
+#   1. Version-specific .c override (raw blob, no reloc fixing).
+#   2. Spritelist-driven auto-extract (.reloc lives in build/, generated
+#      alongside the master .c by extractSpriteFile.py).
+#   3. Manifest or hand-written master (.reloc is committed under src/).
+RELOC_RELOC_$(1) := $$(if $$(RELOC_VC_$(1)),,\
+                     $$(if $$(RELOC_AUTO_RELOC_$(1)),$$(RELOC_AUTO_RELOC_$(1)),\
+                        src/relocData/$$(RELOC_BASENAME_$(1)).reloc))
 
 # Compiled .data section goes to build/ to avoid overwriting the original asset.
 # Compressed files (ID < 499) go to .vpk0.bin which then gets compressed to .vpk0;

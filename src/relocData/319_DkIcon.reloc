@@ -1,8 +1,0 @@
-# Relocation metadata for file 319
-# Format: <type> <ptr_label> <target_label>
-# Labels are C variable names resolved via .o symbol table
-intern dDkIcon_Stock_bitmaps+0x8 dDkIcon_Stock_tex
-intern dDkIcon_Stock+0x20 dDkIcon_Stock_tex+0x58
-intern dDkIcon_Stock+0x34 dDkIcon_Stock_bitmaps
-intern dDkIcon_FTEmblem_bitmaps+0x8 dDkIcon_FTEmblem_tex
-intern dDkIcon_FTEmblem+0x34 dDkIcon_FTEmblem_bitmaps

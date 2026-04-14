@@ -1,9 +1,0 @@
-# Relocation metadata for file 32
-# Format: <type> <ptr_label> <target_label>
-# Labels are C variable names resolved via .o symbol table
-intern dMNDataCommon_DataHeader_bitmaps+0x8 dMNDataCommon_DataHeader_tex
-intern dMNDataCommon_DataHeader+0x34 dMNDataCommon_DataHeader_bitmaps
-intern dMNDataCommon_ArrowL_bitmaps+0x8 dMNDataCommon_ArrowL_tex
-intern dMNDataCommon_ArrowL+0x34 dMNDataCommon_ArrowL_bitmaps
-intern dMNDataCommon_ArrowR_bitmaps+0x8 dMNDataCommon_ArrowR_tex
-intern dMNDataCommon_ArrowR+0x34 dMNDataCommon_ArrowR_bitmaps

@@ -1,5 +1,0 @@
-# Relocation metadata for file 87
-# Format: <type> <ptr_label> <target_label>
-# Labels are C variable names resolved via .o symbol table
-intern dIFCommonItem_Arrow_bitmaps+0x8 dIFCommonItem_Arrow_tex
-intern dIFCommonItem_Arrow+0x34 dIFCommonItem_Arrow_bitmaps

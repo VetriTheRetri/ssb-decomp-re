@@ -1,5 +1,0 @@
-# Relocation metadata for file 81
-# Format: <type> <ptr_label> <target_label>
-# Labels are C variable names resolved via .o symbol table
-intern dSC1PStageClear2_ScoreText_bitmaps+0x8 dSC1PStageClear2_ScoreText_tex
-intern dSC1PStageClear2_ScoreText+0x34 dSC1PStageClear2_ScoreText_bitmaps

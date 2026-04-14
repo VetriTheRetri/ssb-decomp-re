@@ -1,5 +1,0 @@
-# Relocation metadata for file 78
-# Format: <type> <ptr_label> <target_label>
-# Labels are C variable names resolved via .o symbol table
-intern dMNBackupClearHeaderOption_sprite_0x0B40_bitmaps+0x8 dMNBackupClearHeaderOption_sprite_0x0B40_tex
-intern dMNBackupClearHeaderOption_sprite_0x0B40+0x34 dMNBackupClearHeaderOption_sprite_0x0B40_bitmaps

@@ -1,9 +1,0 @@
-# Relocation metadata for file 151
-# Format: <type> <ptr_label> <target_label>
-# Labels are C variable names resolved via .o symbol table
-intern dSC1PStageClear3_Platform_bitmaps+0x8 dSC1PStageClear3_Platform_tex
-intern dSC1PStageClear3_Platform+0x20 dSC1PStageClear3_Platform_tex+0x88
-intern dSC1PStageClear3_Platform+0x34 dSC1PStageClear3_Platform_bitmaps
-intern dSC1PStageClear3_Target_bitmaps+0x8 dSC1PStageClear3_Target_tex
-intern dSC1PStageClear3_Target+0x20 dSC1PStageClear3_Target_tex+0x88
-intern dSC1PStageClear3_Target+0x34 dSC1PStageClear3_Target_bitmaps

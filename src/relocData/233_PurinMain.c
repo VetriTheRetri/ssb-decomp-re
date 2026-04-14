@@ -335,14 +335,34 @@ FTAttributes dPurinMain_attr = {
 	410.0f, /* camera_zoom_base */
 	{ 230.0f, 160.0f, 0.0f, 130.0f }, /* map_coll */
 	{ 250.0f, 400.0f }, /* cliffcatch_coll */
+#if defined(REGION_JP)
+	{ 0x0228, 0x011D }, /* dead_fgm_ids */
+#else
 	{ 0x0234, 0x0127 }, /* dead_fgm_ids */
+#endif
+#if defined(REGION_JP)
+	0x0226, /* deadup_sfx */
+#else
 	0x0232, /* deadup_sfx */
+#endif
+#if defined(REGION_JP)
+	0x0228, /* damage_sfx */
+#else
 	0x0234, /* damage_sfx */
+#endif
+#if defined(REGION_JP)
+	{ 0x0222, 0x0223, 0x0224 }, /* smash_sfx */
+#else
 	{ 0x022E, 0x022F, 0x0230 }, /* smash_sfx */
+#endif
 	{ { 118.0f, 0.0f }, { 420.0f, 200.0f }, { 80.0f, 0.0f }, { 150.0f, 150.0f } }, /* item_pickup */
 	0x0064, /* itemthrow_vel_scale */
 	0x0064, /* itemthrow_damage_scale */
+#if defined(REGION_JP)
+	0x029D, /* heavyget_sfx */
+#else
 	0x02B7, /* heavyget_sfx */
+#endif
 	1.2f, /* halo_size */
 	{ { 0xFF, 0xFF, 0xFF, 0x50 }, { 0x00, 0x00, 0x00, 0x50 }, { 0x00, 0x00, 0x00, 0x00 } }, /* shade_color */
 	{ 0xFF, 0x00, 0x00, 0x00 }, /* fog_color */

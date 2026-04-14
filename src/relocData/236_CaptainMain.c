@@ -311,18 +311,38 @@ FTAttributes dCaptainMain_attr = {
 	1.8f, /* traction */
 	80.0f, /* dash_speed */
 	6.0f, /* dash_decel */
+#if defined(REGION_JP)
+	70.0f, /* run_speed */
+#else
 	75.0f, /* run_speed */
+#endif
 	4.0f, /* kneebend_anim_length */
+#if defined(REGION_JP)
+	0.35f, /* jump_vel_x */
+#else
 	0.31f, /* jump_vel_x */
+#endif
 	1.0f, /* jump_height_mul */
+#if defined(REGION_JP)
+	25.0f, /* jump_height_base */
+#else
 	24.0f, /* jump_height_base */
+#endif
 	0.35f, /* jumpaerial_vel_x */
+#if defined(REGION_JP)
+	0.95f, /* jumpaerial_height */
+#else
 	0.9f, /* jumpaerial_height */
+#endif
 	0.04f, /* air_accel */
 	31.0f, /* air_speed_max_x */
 	0.2f, /* air_friction */
 	3.4f, /* gravity */
+#if defined(REGION_JP)
+	60.0f, /* tvel_base */
+#else
 	66.0f, /* tvel_base */
+#endif
 	100.0f, /* tvel_fast */
 	2, /* jumps_max */
 	0.96f, /* weight */
@@ -340,14 +360,34 @@ FTAttributes dCaptainMain_attr = {
 	615.0f, /* camera_zoom_base */
 	{ 400.0f, 250.0f, 0.0f, 150.0f }, /* map_coll */
 	{ 440.0f, 550.0f }, /* cliffcatch_coll */
+#if defined(REGION_JP)
+	{ 0x0159, 0x0116 }, /* dead_fgm_ids */
+#else
 	{ 0x0163, 0x0120 }, /* dead_fgm_ids */
+#endif
+#if defined(REGION_JP)
+	0x0153, /* deadup_sfx */
+#else
 	0x015D, /* deadup_sfx */
+#endif
+#if defined(REGION_JP)
+	0x0155, /* damage_sfx */
+#else
 	0x015F, /* damage_sfx */
+#endif
+#if defined(REGION_JP)
+	{ 0x014B, 0x014A, 0x0157 }, /* smash_sfx */
+#else
 	{ 0x0155, 0x0154, 0x0161 }, /* smash_sfx */
+#endif
 	{ { 107.0f, 0.0f }, { 386.0f, 200.0f }, { 75.0f, 0.0f }, { 150.0f, 150.0f } }, /* item_pickup */
 	0x0064, /* itemthrow_vel_scale */
 	0x0064, /* itemthrow_damage_scale */
+#if defined(REGION_JP)
+	0x0158, /* heavyget_sfx */
+#else
 	0x0162, /* heavyget_sfx */
+#endif
 	1.2f, /* halo_size */
 	{ { 0xFF, 0xFF, 0xFF, 0x50 }, { 0x00, 0x00, 0x00, 0x50 }, { 0x00, 0x00, 0x00, 0x00 } }, /* shade_color */
 	{ 0xFF, 0x00, 0x00, 0x00 }, /* fog_color */

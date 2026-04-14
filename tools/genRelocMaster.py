@@ -466,8 +466,25 @@ def generate_from_manifest(manifest_path, output_path, search_paths=()):
           f"{cursor} bytes (0x{cursor:X})")
 
 
-def generate_from_spritelist(spritelist_path, output_path, search_paths=()):
-    """Generate a master .c file from a .spritelist (sprite-only manifest)."""
+def _find_sprite_wrapper(sprite_dir, sprite_name, version):
+    """Resolve the `<Name>.sprite.c` wrapper to use for `sprite_name`.
+
+    Prefers a version-specific override (`Name.sprite.<version>.c`) when it
+    exists so JP / US can diverge per-sprite without splitting the whole
+    spritelist pipeline. Falls back to the shared `Name.sprite.c`."""
+    if version:
+        vp = os.path.join(sprite_dir, f"{sprite_name}.sprite.{version}.c")
+        if os.path.exists(vp):
+            return vp
+    return os.path.join(sprite_dir, f"{sprite_name}.sprite.c")
+
+
+def generate_from_spritelist(spritelist_path, output_path, search_paths=(),
+                              version=None):
+    """Generate a master .c file from a .spritelist (sprite-only manifest).
+
+    If `version` is set, per-sprite `Name.sprite.<version>.c` overrides in
+    the subdir take priority over the shared `Name.sprite.c`."""
     subdir = derive_subdir(spritelist_path)
     sprite_dir = os.path.join(os.path.dirname(spritelist_path), subdir)
 
@@ -487,7 +504,7 @@ def generate_from_spritelist(spritelist_path, output_path, search_paths=()):
 
     cursor = 0
     for sprite_name in sprites:
-        sprite_c = os.path.join(sprite_dir, f"{sprite_name}.sprite.c")
+        sprite_c = _find_sprite_wrapper(sprite_dir, sprite_name, version)
         if not os.path.exists(sprite_c):
             print(f"Error: {sprite_c} not found", file=sys.stderr)
             sys.exit(1)
@@ -503,7 +520,10 @@ def generate_from_spritelist(spritelist_path, output_path, search_paths=()):
             lines.append("")
             cursor += pad_size
 
-        lines.append(f'#include "{subdir}/{sprite_name}.sprite.c"')
+        # Emit the include using the RESOLVED filename — if the version
+        # override fired, use its basename so the C compiler picks it up
+        # rather than the shared wrapper.
+        lines.append(f'#include "{subdir}/{os.path.basename(sprite_c)}"')
         lines.append("")
         cursor += size
 
@@ -529,12 +549,15 @@ def main():
     parser.add_argument("output", help="Output .c file path")
     parser.add_argument("-I", dest="include_paths", action="append", default=[],
                         help="Search paths for resolving #include'd .inc.c files (mirrors compiler -I)")
+    parser.add_argument("--version", default=None,
+                        help="Build version (us/jp); selects per-sprite overrides")
     args = parser.parse_args()
 
     if args.manifest.endswith('.manifest'):
         generate_from_manifest(args.manifest, args.output, args.include_paths)
     elif args.manifest.endswith('.spritelist'):
-        generate_from_spritelist(args.manifest, args.output, args.include_paths)
+        generate_from_spritelist(args.manifest, args.output, args.include_paths,
+                                  version=args.version)
     else:
         print(f"Error: input must be .manifest or .spritelist", file=sys.stderr)
         sys.exit(1)

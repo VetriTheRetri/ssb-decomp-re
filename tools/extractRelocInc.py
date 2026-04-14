@@ -64,6 +64,20 @@ def inline_master_for(fid):
     return None
 
 
+def _detect_version():
+    """Figure out which baserom the currently-extracted assets came from.
+    JP has 2107 files + sentinel + header (2109 csv lines), US has 2132
+    + sentinel + header (2134 csv lines) — use that as a cheap fingerprint."""
+    csv_path = os.path.join(os.path.dirname(SRC_RELOC), "..",
+                             "assets", "relocData.csv")
+    try:
+        with open(csv_path) as f:
+            row_count = sum(1 for _ in f)
+    except OSError:
+        return None
+    return "jp" if row_count == 2109 else "us"
+
+
 # Matches the start of a top-level typed declaration: `<Type> <name>...;`
 # optionally wrapped in `static`/`const`. The declaration body (initializer
 # list, if any) is consumed by brace-balanced scanning below, so this
@@ -281,7 +295,23 @@ def parse_master_c(path):
             try:
                 size = compute_block_size(virt_path, search_paths=search_paths)
             except SystemExit:
-                size = 0
+                size = None
+            if not size:
+                # Fallback to the fixed per-element table when compute_*
+                # can't parse the declaration (e.g. a FTAttributes struct
+                # instance, or an sNN array compute_data_c_size doesn't
+                # recognise). Count top-level initializers where possible,
+                # otherwise treat as a single instance.
+                per_elem = _FIXED_TYPE_SIZES.get(type_, 0)
+                if per_elem:
+                    # Extract just the body for counting.
+                    brace_open = decl_text.find("{")
+                    if brace_open >= 0:
+                        body_text = decl_text[brace_open:]
+                        n = _count_top_level_initializers(body_text)
+                        size = (n * per_elem) if n else per_elem
+                    else:
+                        size = per_elem
 
             out.append(('block', {
                 'type': type_, 'name': name, 'size': size,
@@ -579,7 +609,21 @@ def _process_inline(fid, master_path):
     with open(binp, 'rb') as f:
         data = f.read()
 
-    entries = parse_master_c(master_path)
+    # If this fid has a version-specific `.c` override in play (`.jp.c` /
+    # `.us.c`), the master .c here is NOT the one the build will compile.
+    # Walking it against a potentially-different binary would corrupt any
+    # existing inc.c files the real master depends on, so skip entirely.
+    version = _detect_version()
+    if version:
+        for fn in os.listdir(SRC_RELOC):
+            if (fn.startswith(f"{fid}_") and
+                    fn.endswith(f".{version}.c")):
+                return 0
+
+    try:
+        entries = parse_master_c(master_path)
+    except SystemExit:
+        return 0
 
     # First pass: assign byte offsets and gather DL tex metadata.
     block_info = []  # (entry, offset)
@@ -592,9 +636,17 @@ def _process_inline(fid, master_path):
         size = payload['size']
         block_info.append((payload, offset))
         inc_path = payload.get('inc_path') or ''
-        if inc_path.endswith('.dl.inc.c'):
+        if inc_path.endswith('.dl.inc.c') and offset + size <= len(data):
             tex_meta.update(scan_dl_for_tex_meta(data, offset, offset + size))
         offset += size
+
+    # If the master's total size doesn't match the binary, we're almost
+    # certainly walking a US-authored master against a JP binary (or
+    # vice-versa). Bail out cleanly — the real master (via a .jp.c / .us.c
+    # override or a version-specific .spritelist) will drive extraction
+    # through a different code path.
+    if offset != len(data):
+        return 0
 
     # Second pass: write each block's inc.c into build/.
     emitted = 0

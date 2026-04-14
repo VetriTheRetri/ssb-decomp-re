@@ -631,7 +631,9 @@ RELOC_MANIFEST_$(1) := $$(firstword $$(if $$(RELOC_NAME_$(1)),\
     $$(wildcard src/relocData/*_$$(RELOC_NAME_$(1)).manifest),\
     $$(wildcard src/relocData/$(1)_*.manifest src/relocData/$(1).manifest)))
 RELOC_LIST_$(1) := $$(firstword $$(if $$(RELOC_NAME_$(1)),\
+    $$(wildcard src/relocData/*_$$(RELOC_NAME_$(1)).$(VERSION).spritelist) \
     $$(wildcard src/relocData/*_$$(RELOC_NAME_$(1)).spritelist),\
+    $$(wildcard src/relocData/$(1)_*.$(VERSION).spritelist) \
     $$(wildcard src/relocData/$(1)_*.spritelist src/relocData/$(1).spritelist)))
 RELOC_C_$(1) := $$(firstword $$(if $$(RELOC_NAME_$(1)),\
     $$(wildcard src/relocData/*_$$(RELOC_NAME_$(1)).c),\
@@ -677,7 +679,7 @@ else ifneq ($$(RELOC_LIST_$(1)),)
   $$(RELOC_MASTER_$(1)): $$(RELOC_LIST_$(1)) $$(RELOC_SPRITE_DEPS_$(1)) $$(RELOC_STAMP_$(1)) $$(RELOC_INC_OVERRIDES_$(1))
 	$$(call print_3,Generating master from spritelist:,$$<,$$@)
 	@mkdir -p $$(@D)
-	$$(V)$$(PYTHON) tools/genRelocMaster.py $$(RELOC_LIST_$(1)) $$@ -Isrc/relocData -I$$(BUILD_DIR)/src/relocData
+	$$(V)$$(PYTHON) tools/genRelocMaster.py $$(RELOC_LIST_$(1)) $$@ -Isrc/relocData -I$$(BUILD_DIR)/src/relocData --version $(VERSION)
 else
   # Hand-written .c master (no manifest)
   RELOC_MASTER_$(1) := $$(RELOC_C_$(1))

@@ -1,2 +1,23 @@
 # Auto-extracted from ROM by tools/extractSpriteFile.py — no hand-maintained
 # sprite offsets. Layout/names come from walking the binary's reloc chain.
+
+HeaderBackupClear
+0x11e0
+0x1770
+0x1b98
+0x2300
+0x2890
+0x2d30
+0x33b0
+OptionNewcomers
+Option1PHighScore
+OptionVSRecord
+OptionSubjectMode
+OptionPrize
+OptionAllDataClear
+OptionCircle
+IsOkayText
+AreYouSureText
+OptionBonusStageTime
+OptionYes
+OptionNo

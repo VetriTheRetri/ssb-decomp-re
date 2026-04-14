@@ -347,12 +347,46 @@ def build_layout(data, sprites, file_size):
 
 # ── Naming ──────────────────────────────────────────────────────────────
 
-def resolve_sprite_names(sprites, description_entries):
-    """Assign a base name to each discovered sprite. The description file's
-    `Sprite` entries take priority when their offset matches a discovered
-    sprite; unmatched sprites get a `sprite_0x<hex>` fallback tied to the
-    offset so the name is stable across rebuilds.
+def parse_spritelist(path):
+    """Read ordered sprite names from a .spritelist file. Blank lines and
+    `#` comment lines are skipped. Returns [] if the file has no real
+    entries, which signals "fall back to description / generic naming"."""
+    if not path or not os.path.exists(path):
+        return []
+    names = []
+    with open(path) as f:
+        for line in f:
+            s = line.strip()
+            if not s or s.startswith("#"):
+                continue
+            names.append(s)
+    return names
+
+
+def resolve_sprite_names(sprites, description_entries, spritelist_names=None):
+    """Assign a base name to each discovered sprite.
+
+    Name-source priority:
+      1. `spritelist_names`, a list of sprite names in physical order — the
+         committed src/relocData/<fid>_<Name>.spritelist drives this. Names
+         get zipped with the auto-discovered sprites (sorted by offset), so
+         the Nth line in the spritelist names the Nth sprite. A length
+         mismatch raises — the spritelist needs to stay in sync with what
+         the extractor actually finds in the binary.
+      2. Description file `Sprite` entries matching by offset. Used only
+         when no spritelist is provided (e.g. during standalone testing
+         where the tool is invoked without build wiring).
+      3. `sprite_0x<hex>` fallback keyed on the file offset, so names stay
+         stable across rebuilds.
     """
+    if spritelist_names:
+        if len(spritelist_names) != len(sprites):
+            raise RuntimeError(
+                f"spritelist has {len(spritelist_names)} names but "
+                f"{len(sprites)} sprites were discovered in the binary "
+                f"(spritelist names: {spritelist_names})")
+        return {idx: spritelist_names[idx] for idx in range(len(sprites))}
+
     desc_by_off = {e[2]: e[1] for e in description_entries if e[0] == "Sprite"}
     names = {}
     for idx, sp in enumerate(sprites):
@@ -565,6 +599,27 @@ def emit_reloc_file(sprites, names, prefix, layout):
 
 # ── Main ────────────────────────────────────────────────────────────────
 
+def _find_spritelist_for(fid, version, file_name):
+    """Locate the src/relocData spritelist that drives this fid.
+
+    Prefers `*_<Name>.<version>.spritelist` (JP override) over the shared
+    `*_<Name>.spritelist`. Matching by file name keeps US and JP in sync
+    when the two versions store the same sprite file at different fid
+    numbers — the filename always reflects the US-era fid but the NAME
+    portion is what the build actually resolves against.
+    """
+    import glob
+    src_dir = os.path.join(PROJECT_DIR, "src", "relocData")
+    if version:
+        vp = glob.glob(os.path.join(src_dir, f"*_{file_name}.{version}.spritelist"))
+        if vp:
+            return vp[0]
+    sp = glob.glob(os.path.join(src_dir, f"*_{file_name}.spritelist"))
+    if sp:
+        return sp[0]
+    return None
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("fid", type=int)
@@ -575,6 +630,11 @@ def main():
     ap.add_argument("--inc-dir", default=None,
                     help="Directory for texture/palette .inc.c files "
                          "(default: <dirname(output)>/<subdir>)")
+    ap.add_argument("--spritelist", default=None,
+                    help="Explicit spritelist path to drive sprite names / "
+                         "order. If omitted, the tool looks for "
+                         "src/relocData/*_<Name>.<version>.spritelist "
+                         "(with a fallback to *_<Name>.spritelist).")
     args = ap.parse_args()
 
     data = load_binary(args.fid)
@@ -592,7 +652,12 @@ def main():
     prefix = file_name
     subdir_name = file_name
 
-    names = resolve_sprite_names(sprites, description_entries)
+    spritelist_path = args.spritelist or _find_spritelist_for(
+        args.fid, args.version, file_name)
+    spritelist_names = parse_spritelist(spritelist_path)
+
+    names = resolve_sprite_names(sprites, description_entries,
+                                  spritelist_names=spritelist_names)
     layout = build_layout(data, sprites, len(data))
 
     # Write texture / palette .inc.c blobs.

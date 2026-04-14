@@ -1,2 +1,18 @@
 # Auto-extracted from ROM by tools/extractSpriteFile.py — no hand-maintained
 # sprite offsets. Layout/names come from walking the binary's reloc chain.
+
+1PlayerGameText
+ClosingParenthesis
+OpeningParenthesis
+LevelColonText
+StockColonText
+OptionOutline
+BestTimeText
+TotalBestTimeText
+TargetsText
+PlatformsText
+SmashLogo
+OptionText
+Sec
+CSec
+RedCard

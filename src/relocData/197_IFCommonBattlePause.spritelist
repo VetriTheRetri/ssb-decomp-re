@@ -1,2 +1,19 @@
 # Auto-extracted from ROM by tools/extractSpriteFile.py — no hand-maintained
 # sprite offsets. Layout/names come from walking the binary's reloc chain.
+
+PlayerNum1P
+PlayerNum2P
+PlayerNum3P
+PlayerNum4P
+DecalPause
+DecalPlus
+DecalReset
+DecalSmashBall
+DecalRetry
+DecalAButton
+DecalBButton
+DecalZTrigger
+DecalRTrigger
+DecalArrows
+DecalControlStick
+DecalLTrigger

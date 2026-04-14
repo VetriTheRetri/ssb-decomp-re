@@ -5,6 +5,14 @@
 #include <ft/ftdef.h>
 #include <ft/fttypes.h>
 
+#if defined(REGION_JP)
+u32 dMMarioMainMotion_0x0000[] = {
+	0x0800000A, 0x38000076,
+	0x08000028, 0x38000076,
+	0x94000000, 0x90000000,
+	0x000D0000,
+};
+#else
 u32 dMMarioMainMotion_0x0000[] = {
 	ftMotionCommandWaitAsync(10),
 	ftMotionPlayFGM(122),
@@ -13,7 +21,21 @@ u32 dMMarioMainMotion_0x0000[] = {
 	ftMotionCommandPauseScript(),
 	ftMotionCommandGoto(dMMarioMainMotion_0x0000),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dMMarioMainMotion_0x001C[] = {
+	0x0800000A, 0x38000076,
+	0x0800001E, 0x38000076,
+	0x94000000, 0x90000000,
+	0x00260007, 0xBC000003,
+	0x38000076, 0x80000002,
+	0x98002C00, 0x00000000,
+	0xFF880000, 0x003C0000,
+	0x04000006, 0x84000000,
+	0x00000000,
+};
+#else
 u32 dMMarioMainMotion_0x001C[] = {
 	ftMotionCommandWaitAsync(10),
 	ftMotionPlayFGM(122),
@@ -29,7 +51,23 @@ u32 dMMarioMainMotion_0x001C[] = {
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dMMarioMainMotion_0x0060[] = {
+	0x08000002, 0x38000076,
+	0x98002C00, 0x00000000,
+	0x003C0000, 0x00000000,
+	0x0400000F, 0x38000076,
+	0x98002C00, 0x00000000,
+	0x003C0000, 0x00000000,
+	0x94000000, 0x90000000,
+	0xFFFF0018, 0xBC000003,
+	0x38000076, 0x98002C00,
+	0x00000000, 0xFFC40000,
+	0x00000000, 0x00000000,
+};
+#else
 u32 dMMarioMainMotion_0x0060[] = {
 	ftMotionCommandWaitAsync(2),
 	ftMotionPlayFGM(122),
@@ -44,38 +82,81 @@ u32 dMMarioMainMotion_0x0060[] = {
 	ftMotionCommandEffect(0, 11, 0, 0, 0, -60, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dMMarioMainMotion_0x00B8[] = {
+	0xBC000003, 0x38000076,
+	0x98003400, 0x00000000,
+	0x00000000, 0x00000000,
+	0x00000000,
+};
+#else
 u32 dMMarioMainMotion_0x00B8[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionPlayFGM(122),
 	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dMMarioMainMotion_0x00D4[] = {
+	0xBC000003, 0x38000076,
+	0x98003400, 0x00000000,
+	0x00000000, 0x00000000,
+	0x00000000,
+};
+#else
 u32 dMMarioMainMotion_0x00D4[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionPlayFGM(122),
 	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dMMarioMainMotion_0x00F0[] = {
+	0x38000076, 0x98003400,
+	0x00000000, 0x00000000,
+	0x00000000, 0x00000000,
+};
+#else
 u32 dMMarioMainMotion_0x00F0[] = {
 	ftMotionPlayFGM(122),
 	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dMMarioMainMotion_0x0108[] = {
+	0x38000076, 0x98003400,
+	0x00000000, 0x00000000,
+	0x00000000, 0x00000000,
+};
+#else
 u32 dMMarioMainMotion_0x0108[] = {
 	ftMotionPlayFGM(122),
 	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dMMarioMainMotion_0x0120[] = {
+	0x38000076, 0x98003400,
+	0x00000000, 0x00000000,
+	0x00000000, 0x00000000,
+};
+#else
 u32 dMMarioMainMotion_0x0120[] = {
 	ftMotionPlayFGM(122),
 	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
+#endif
 
 u32 dMMarioMainMotion_0x0138[] = {
 	ftMotionCommandEnd(),

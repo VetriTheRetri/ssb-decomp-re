@@ -21,6 +21,20 @@ u32 dYoshiMainMotion_0x0000[] = {
 	ftMotionCommandReturn(),
 };
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x0034[] = {
+	0x88000000, 0x00110000,
+	0x04000050, 0x88000000,
+	0x00140000, 0x04000014,
+	0x88000000, 0x00170000,
+	0x04000050, 0x90000000,
+	0x0030000D, 0x3800007E,
+	0x80000002, 0x98002C00,
+	0x00000000, 0xFF880000,
+	0x003C0000, 0x04000006,
+	0x84000000, 0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x0034[] = {
 	ftMotionCommandSubroutine(dYoshiMainMotion_0x0000),
 	ftMotionCommandWait(80),
@@ -36,7 +50,23 @@ u32 dYoshiMainMotion_0x0034[] = {
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x0084[] = {
+	0xBC000004, 0x08000002,
+	0x3800006F, 0x98002C00,
+	0x00000000, 0x003C0000,
+	0x00000000, 0x0400000F,
+	0x3800006F, 0x98002C00,
+	0x00000000, 0x003C0000,
+	0x00000000, 0x94000000,
+	0x90000000, 0x007C0021,
+	0x3800007C, 0x98002C00,
+	0x00000000, 0x00000000,
+	0x00000000, 0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x0084[] = {
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandWaitAsync(2),
@@ -51,6 +81,7 @@ u32 dYoshiMainMotion_0x0084[] = {
 	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
+#endif
 
 u32 dYoshiMainMotion_0x00DC[] = {
 	ftMotionCommandWaitAsync(6),
@@ -79,12 +110,30 @@ u32 dYoshiMainMotion_0x012C[] = {
 	ftMotionCommandEnd(),
 };
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x013C[] = {
+	0x44000243, 0x98003400,
+	0x00000000, 0x00000000,
+	0x00000000, 0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x013C[] = {
 	ftMotionPlayVoice(591),
 	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x0154[] = {
+	0xAC000006, 0xAC100006,
+	0x44000245, 0x80000002,
+	0x98002C00, 0x00000000,
+	0x00000064, 0x00640064,
+	0x04000006, 0x84000000,
+	0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x0154[] = {
 	ftMotionCommandSetTexturePartID(6),
 	ftMotionCommandSetTexturePartID(1048582),
@@ -95,35 +144,72 @@ u32 dYoshiMainMotion_0x0154[] = {
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandEnd(),
 };
+#endif
 
 u32 dYoshiMainMotion_0x0180[] = {
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandEnd(),
 };
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x0188[] = {
+	0x3800004E, 0x98002C00,
+	0x00000000, 0xFFC40000,
+	0x00000000, 0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x0188[] = {
 	ftMotionPlayFGM(82),
 	ftMotionCommandEffect(0, 11, 0, 0, 0, -60, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x01A0[] = {
+	0xBC000003, 0x3800004E,
+	0x98003400, 0x00000000,
+	0x00000000, 0x00000000,
+	0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x01A0[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionPlayFGM(82),
 	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x01BC[] = {
+	0x44000246, 0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x01BC[] = {
 	ftMotionPlayVoice(594),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x01C4[] = {
+	0x38000274, 0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x01C4[] = {
 	ftMotionPlayFGM(640),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x01CC[] = {
+	0x38000274, 0x74000003,
+	0x08000002, 0x74000001,
+	0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x01CC[] = {
 	ftMotionPlayFGM(640),
 	ftMotionCommandSetHitStatusAll(3),
@@ -131,6 +217,7 @@ u32 dYoshiMainMotion_0x01CC[] = {
 	ftMotionCommandSetHitStatusAll(1),
 	ftMotionCommandEnd(),
 };
+#endif
 
 u32 dYoshiMainMotion_0x01E0[] = {
 	ftMotionCommandSetTexturePartID(7),
@@ -149,12 +236,21 @@ u32 dYoshiMainMotion_0x01F8[] = {
 	ftMotionCommandEnd(),
 };
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x020C[] = {
+	0xBC000003, 0x3800004E,
+	0x98003400, 0x00000000,
+	0x00000000, 0x00000000,
+	0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x020C[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionPlayFGM(82),
 	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
+#endif
 
 u32 dYoshiMainMotion_0x0228[] = {
 	ftMotionCommandWaitAsync(8),
@@ -251,6 +347,19 @@ u32 dYoshiMainMotion_0x037C[] = {
 	ftMotionCommandEnd(),
 };
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x03E0[] = {
+	0xC4000009, 0xAC000006,
+	0xAC100006, 0x9800AC00,
+	0x00000000, 0x00000000,
+	0x00000000, 0x44000243,
+	0x38000011, 0x98007C00,
+	0x00000000, 0x00000000,
+	0x00000000, 0x74000003,
+	0x08000018, 0x74000001,
+	0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x03E0[] = {
 	ftMotionCommandMakeRumble(0, 9),
 	ftMotionCommandSetTexturePartID(6),
@@ -264,7 +373,21 @@ u32 dYoshiMainMotion_0x03E0[] = {
 	ftMotionCommandSetHitStatusAll(1),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x0424[] = {
+	0xC4000007, 0xAC000006,
+	0xAC100006, 0x9800AC00,
+	0x00000000, 0x00000000,
+	0x00000000, 0x44000243,
+	0x3800000B, 0x98007C00,
+	0x00000000, 0x00000000,
+	0x00000000, 0x74000003,
+	0x08000014, 0x74000001,
+	0xC8000007, 0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x0424[] = {
 	ftMotionCommandMakeRumble(0, 7),
 	ftMotionCommandSetTexturePartID(6),
@@ -279,6 +402,7 @@ u32 dYoshiMainMotion_0x0424[] = {
 	ftMotionCommandStopRumble(7),
 	ftMotionCommandEnd(),
 };
+#endif
 
 u32 dYoshiMainMotion_0x046C[] = {
 	ftMotionCommandGoto(dYoshiMainMotion_0x0424),
@@ -358,6 +482,24 @@ u32 dYoshiMainMotion_0x0564[] = {
 	ftMotionCommandEnd(),
 };
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x056C[] = {
+	0x74000003, 0x98007C00,
+	0x00000000, 0x00000000,
+	0x00000000, 0x4400023C,
+	0x74000001, 0x0C0260D0,
+	0x00DC0000, 0x0000FFCE,
+	0x5A464193, 0x00400000,
+	0x0C8280D0, 0x00B40000,
+	0x0000FFB0, 0x5A464193,
+	0x00400000, 0x4C000026,
+	0x98004C00, 0x0000FFB0,
+	0xFF4C0000, 0x00000000,
+	0x04000002, 0x74000001,
+	0x04000001, 0x18000000,
+	0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x056C[] = {
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandEffect(0, 31, 0, 0, 0, 0, 0, 0, 0),
@@ -373,12 +515,31 @@ u32 dYoshiMainMotion_0x056C[] = {
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
 };
+#endif
 
 u32 dYoshiMainMotion_0x05D8[] = {
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandEnd(),
 };
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x05E0[] = {
+	0x98007C00, 0x00000000,
+	0x00000000, 0x00000000,
+	0x74000003, 0x08000010,
+	0x4400023C, 0x0C0000D0,
+	0x015E0000, 0x00B40118,
+	0x5A464193, 0x00400000,
+	0x0C8000D0, 0x00F00000,
+	0x00B4003C, 0x5A464193,
+	0x00400000, 0x4C000026,
+	0x98004C00, 0x0000FFB0,
+	0xFF4C0000, 0x00000000,
+	0x04000002, 0x74000001,
+	0x04000002, 0x74000001,
+	0x18000000, 0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x05E0[] = {
 	ftMotionCommandEffect(0, 31, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
@@ -395,6 +556,7 @@ u32 dYoshiMainMotion_0x05E0[] = {
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
 };
+#endif
 
 u32 dYoshiMainMotion_0x0650[] = {
 	ftMotionCommandSetHitStatusAll(3),
@@ -663,6 +825,17 @@ u32 dYoshiMainMotion_0x09E0[] = {
 	ftMotionCommandEnd(),
 };
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x0A04[] = {
+	0xC4000007, 0xAC000006,
+	0xAC100006, 0x50000000,
+	0xB12C0028, 0x08000013,
+	0xBC000004, 0x88000000,
+	0x02920092, 0x04000005,
+	0x18000000, 0x0800001A,
+	0xBC000000, 0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x0A04[] = {
 	ftMotionCommandMakeRumble(0, 7),
 	ftMotionCommandSetTexturePartID(6),
@@ -678,6 +851,7 @@ u32 dYoshiMainMotion_0x0A04[] = {
 	ftMotionCommandSetSlopeContour(0),
 	ftMotionCommandEnd(),
 };
+#endif
 
 u32 dYoshiMainMotion_0x0A3C[] = {
 	ftMotionCommandSetSlopeContour(4),
@@ -736,6 +910,15 @@ u32 dYoshiMainMotion_0x0AD4[] = {
 	ftMotionCommandEnd(),
 };
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x0AF8[] = {
+	0xB128000B, 0x08000006,
+	0xBC000004, 0x88000000,
+	0x02CC0125, 0x04000005,
+	0x18000000, 0x0800000F,
+	0xBC000000, 0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x0AF8[] = {
 	ftMotionCommandSetColAnim(75, 11),
 	ftMotionCommandWaitAsync(6),
@@ -747,7 +930,18 @@ u32 dYoshiMainMotion_0x0AF8[] = {
 	ftMotionCommandSetSlopeContour(0),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x0B20[] = {
+	0xB1280012, 0x0800000C,
+	0xBC000004, 0x88000000,
+	0x02DB013E, 0x0800000E,
+	0x54000001, 0x04000004,
+	0x18000000, 0x08000020,
+	0xBC000000, 0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x0B20[] = {
 	ftMotionCommandSetColAnim(75, 18),
 	ftMotionCommandWaitAsync(12),
@@ -761,7 +955,20 @@ u32 dYoshiMainMotion_0x0B20[] = {
 	ftMotionCommandSetSlopeContour(0),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x0B50[] = {
+	0xAC000006, 0xAC100006,
+	0xB128001A, 0x50000000,
+	0x08000014, 0xBC000004,
+	0x88000000, 0x02E70157,
+	0x08000015, 0x54000002,
+	0x04000005, 0x18000000,
+	0x0800001A, 0xBC000000,
+	0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x0B50[] = {
 	ftMotionCommandSetTexturePartID(6),
 	ftMotionCommandSetTexturePartID(1048582),
@@ -778,7 +985,17 @@ u32 dYoshiMainMotion_0x0B50[] = {
 	ftMotionCommandSetSlopeContour(0),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x0B8C[] = {
+	0xB128001A, 0xBC000004,
+	0x08000008, 0x88000000,
+	0x02FE0170, 0x04000012,
+	0x18000000, 0x0800001E,
+	0xBC000000, 0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x0B8C[] = {
 	ftMotionCommandSetColAnim(75, 26),
 	ftMotionCommandSetSlopeContour(4),
@@ -790,6 +1007,7 @@ u32 dYoshiMainMotion_0x0B8C[] = {
 	ftMotionCommandSetSlopeContour(0),
 	ftMotionCommandEnd(),
 };
+#endif
 
 u32 dYoshiMainMotion_0x0BB4[] = {
 	ftMotionCommandSetSlopeContour(3),
@@ -820,6 +1038,27 @@ u32 dYoshiMainMotion_0x0BE4[] = {
 	ftMotionCommandGoto(dYoshiMainMotion_0x0BE4),
 };
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x0C0C[] = {
+	0x98007C00, 0x00000000,
+	0x007800C8, 0x00C800C8,
+	0x80000003, 0x98002800,
+	0x00000000, 0x007800C8,
+	0x00C800C8, 0x04000004,
+	0x84000000, 0x90000000,
+	0x03190303, 0x9BF88800,
+	0x00000000, 0x00000000,
+	0x00000000, 0x44000242,
+	0xAC000007, 0xAC100007,
+	0x74000003, 0x90000000,
+	0x031B0303, 0x90000000,
+	0x03330303, 0x9BF88400,
+	0x00000000, 0x00000000,
+	0x00000000, 0x98003400,
+	0x00000000, 0x00000000,
+	0x00000000, 0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x0C0C[] = {
 	ftMotionCommandEffect(0, 31, 0, 0, 0, 120, 200, 200, 200),
 	ftMotionCommandLoopBegin(3),
@@ -838,12 +1077,24 @@ u32 dYoshiMainMotion_0x0C0C[] = {
 	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
+#endif
 
 u32 dYoshiMainMotion_0x0C94[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandEnd(),
 };
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x0C9C[] = {
+	0xAC000008, 0xAC100008,
+	0xBC000003, 0x44000241,
+	0x80000006, 0x9800A000,
+	0x00000082, 0x00000104,
+	0x010400C8, 0x0400000A,
+	0x84000000, 0x90000000,
+	0x033E0327,
+};
+#else
 u32 dYoshiMainMotion_0x0C9C[] = {
 	ftMotionCommandSetTexturePartID(8),
 	ftMotionCommandSetTexturePartID(1048584),
@@ -855,7 +1106,18 @@ u32 dYoshiMainMotion_0x0C9C[] = {
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandGoto(dYoshiMainMotion_0x0C9C),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x0CD0[] = {
+	0x48000248, 0xAC000005,
+	0xAC100005, 0xBC000003,
+	0x98016800, 0x0000008C,
+	0x00000118, 0x011800E6,
+	0x0400000A, 0x90000000,
+	0x034E0334,
+};
+#else
 u32 dYoshiMainMotion_0x0CD0[] = {
 	ftMotionPlayInterruptableVoice(596),
 	ftMotionCommandSetTexturePartID(5),
@@ -865,12 +1127,28 @@ u32 dYoshiMainMotion_0x0CD0[] = {
 	ftMotionCommandWait(10),
 	ftMotionCommandGoto(dYoshiMainMotion_0x0CD0),
 };
+#endif
 
 FTThrowHitDesc dYoshiMainMotion_0x0CFC[] = {
 	{ -1, 6, 361, 100, 0, 0, 0 },
 	{ -1, 6, 361, 100, 0, 0, 0 },
 };
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x0D34[] = {
+	0x30000000, 0x0373033F,
+	0x0800000F, 0xC4000006,
+	0xBC000004, 0x0C03E030,
+	0x00DC0000, 0x00000000,
+	0x5A464003, 0x00200000,
+	0x98004000, 0x00000000,
+	0xFF9C0000, 0x00000000,
+	0x4400023F, 0x58000006,
+	0x5C000002, 0x04000006,
+	0x18000000, 0x0800002C,
+	0xBC000000, 0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x0D34[] = {
 	ftMotionCommandSetThrow((u32)dYoshiMainMotion_0x0CFC),
 	ftMotionCommandWaitAsync(15),
@@ -887,6 +1165,7 @@ u32 dYoshiMainMotion_0x0D34[] = {
 	ftMotionCommandSetSlopeContour(0),
 	ftMotionCommandEnd(),
 };
+#endif
 
 u32 dYoshiMainMotion_0x0D8C[] = {
 	ftMotionCommandEnd(),
@@ -897,6 +1176,23 @@ FTThrowHitDesc dYoshiMainMotion_0x0D90[] = {
 	{ -1, 6, 361, 100, 0, 0, 0 },
 };
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x0DC8[] = {
+	0x30000000, 0x039A0364,
+	0xA0380001, 0x08000004,
+	0x74000002, 0x08000013,
+	0x4400024D, 0x38000002,
+	0x98887C00, 0x00000000,
+	0x00000000, 0x00000000,
+	0x98004C00, 0x00000000,
+	0xFF6A0000, 0x00000000,
+	0x9BF88400, 0x00000000,
+	0x00000000, 0x00000000,
+	0x5C000001, 0xA0380000,
+	0x0800000C, 0x74000001,
+	0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x0DC8[] = {
 	ftMotionCommandSetThrow((u32)dYoshiMainMotion_0x0D90),
 	ftMotionCommandSetModelPartID(7, 1),
@@ -914,12 +1210,30 @@ u32 dYoshiMainMotion_0x0DC8[] = {
 	ftMotionCommandSetHitStatusAll(1),
 	ftMotionCommandEnd(),
 };
+#endif
 
 FTThrowHitDesc dYoshiMainMotion_0x0E2C[] = {
 	{ 52, 16, 45, 70, 0, 70, 0 },
 	{ -1, 8, 361, 100, 0, 0, 0 },
 };
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x0E64[] = {
+	0x30000000, 0x03BC038B,
+	0xA0380001, 0x08000004,
+	0x74000002, 0x08000013,
+	0x4400024D, 0x38000002,
+	0x98F87C00, 0x00000000,
+	0x00000000, 0x00000000,
+	0x98004C00, 0x00000000,
+	0xFF6A0000, 0x00000000,
+	0x9BF88400, 0x00000000,
+	0x00000000, 0x00000000,
+	0x5C000002, 0xA0380000,
+	0x0800000C, 0x74000001,
+	0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x0E64[] = {
 	ftMotionCommandSetThrow((u32)dYoshiMainMotion_0x0E2C),
 	ftMotionCommandSetModelPartID(7, 1),
@@ -937,6 +1251,7 @@ u32 dYoshiMainMotion_0x0E64[] = {
 	ftMotionCommandSetHitStatusAll(1),
 	ftMotionCommandEnd(),
 };
+#endif
 
 u32 dYoshiMainMotion_0x0EC8[] = {
 	ftMotionCommandSubroutine(0x06AC), /* extern */
@@ -965,6 +1280,13 @@ u32 dYoshiMainMotion_0x0F00[] = {
 	ftMotionCommandEnd(),
 };
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x0F14[] = {
+	0x4400023B, 0xC4000006,
+	0x0800003C, 0x58000001,
+	0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x0F14[] = {
 	ftMotionPlayVoice(583),
 	ftMotionCommandMakeRumble(0, 6),
@@ -972,7 +1294,21 @@ u32 dYoshiMainMotion_0x0F14[] = {
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x0F28[] = {
+	0x08000003, 0x0C02E070,
+	0x01180000, 0x00000000,
+	0x5A432003, 0x00000400,
+	0x0C832070, 0x01180000,
+	0x00000000, 0x5A432003,
+	0x00000400, 0x4C000027,
+	0x04000003, 0x18000000,
+	0x0800000A, 0x58000001,
+	0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x0F28[] = {
 	ftMotionCommandWaitAsync(3),
 	ftMotionCommandMakeAttackColl(0, 0, 23, 3, 1, 0, 280, 0, 0, 0, 361, 50, 0, 3, 0, 0, 0, 8),
@@ -984,7 +1320,20 @@ u32 dYoshiMainMotion_0x0F28[] = {
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x0F6C[] = {
+	0x08000001, 0x0C0380B0,
+	0x012C0000, 0x00000000,
+	0x5A478003, 0x00200400,
+	0x0C83C0B0, 0x012C0000,
+	0x00000000, 0x5A478003,
+	0x00200400, 0x4C000027,
+	0x04000003, 0x18000000,
+	0x08000008, 0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x0F6C[] = {
 	ftMotionCommandWaitAsync(1),
 	ftMotionCommandMakeAttackColl(0, 0, 28, 5, 1, 0, 300, 0, 0, 0, 361, 120, 0, 3, 0, 1, 0, 8),
@@ -995,7 +1344,26 @@ u32 dYoshiMainMotion_0x0F6C[] = {
 	ftMotionCommandWaitAsync(8),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x0FAC[] = {
+	0xBC000004, 0x70380003,
+	0x04000008, 0x4400023D,
+	0x0C000190, 0x01180000,
+	0x00B40118, 0x5A464003,
+	0x00420500, 0x0C800190,
+	0x00C80000, 0x00B4001E,
+	0x5A464003, 0x00420500,
+	0x4C000026, 0x98004C00,
+	0x0000FFB0, 0xFF4C0000,
+	0x00000000, 0x04000004,
+	0x6C000001, 0x20040000,
+	0x20840000, 0x0400000A,
+	0x18000000, 0x0800001B,
+	0xBC000000, 0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x0FAC[] = {
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandSetHitStatusPartID(7, 3),
@@ -1015,7 +1383,20 @@ u32 dYoshiMainMotion_0x0FAC[] = {
 	ftMotionCommandSetSlopeContour(0),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x101C[] = {
+	0x08000008, 0x0C0381B0,
+	0x012C0000, 0x00000000,
+	0x11864003, 0x00200400,
+	0x0C83C1B0, 0x012C005A,
+	0x00000000, 0x11864003,
+	0x00200400, 0x4C000026,
+	0x04000003, 0x18000000,
+	0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x101C[] = {
 	ftMotionCommandWaitAsync(8),
 	ftMotionCommandMakeAttackColl(0, 0, 28, 13, 1, 0, 300, 0, 0, 0, 70, 100, 0, 3, 0, 1, 0, 8),
@@ -1025,7 +1406,20 @@ u32 dYoshiMainMotion_0x101C[] = {
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x1058[] = {
+	0x08000008, 0x0C0381B0,
+	0x012C0000, 0x00000000,
+	0x11864003, 0x00200400,
+	0x0C83C1B0, 0x012C005A,
+	0x00000000, 0x11864003,
+	0x00200400, 0x4C000026,
+	0x04000003, 0x18000000,
+	0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x1058[] = {
 	ftMotionCommandWaitAsync(8),
 	ftMotionCommandMakeAttackColl(0, 0, 28, 13, 1, 0, 300, 0, 0, 0, 70, 100, 0, 3, 0, 1, 0, 8),
@@ -1035,7 +1429,20 @@ u32 dYoshiMainMotion_0x1058[] = {
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x1094[] = {
+	0x08000008, 0x0C0381B0,
+	0x012C0000, 0x00000000,
+	0x11864003, 0x00200400,
+	0x0C83C1B0, 0x012C005A,
+	0x00000000, 0x11864003,
+	0x00200400, 0x4C000026,
+	0x04000003, 0x18000000,
+	0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x1094[] = {
 	ftMotionCommandWaitAsync(8),
 	ftMotionCommandMakeAttackColl(0, 0, 28, 13, 1, 0, 300, 0, 0, 0, 70, 100, 0, 3, 0, 1, 0, 8),
@@ -1045,7 +1452,21 @@ u32 dYoshiMainMotion_0x1094[] = {
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x10D0[] = {
+	0x04000007, 0x70380003,
+	0x0C00E190, 0x01860000,
+	0x00280028, 0x1906420B,
+	0x00420000, 0x0C80C190,
+	0x00F00000, 0x00000000,
+	0x1906420B, 0x00420000,
+	0x4C000026, 0x04000004,
+	0x6C000001, 0x18000000,
+	0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x10D0[] = {
 	ftMotionCommandWait(7),
 	ftMotionCommandSetHitStatusPartID(7, 3),
@@ -1057,7 +1478,22 @@ u32 dYoshiMainMotion_0x10D0[] = {
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x1114[] = {
+	0xBC000004, 0x04000008,
+	0x0C026150, 0x01040000,
+	0xFFEC0000, 0x078641BB,
+	0x00400000, 0x0C828150,
+	0x00D20000, 0x00000000,
+	0x078641BB, 0x00400000,
+	0x4C000026, 0x98004000,
+	0x0000FFB0, 0xFF4C0000,
+	0x00000000, 0x04000003,
+	0x18000000, 0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x1114[] = {
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandWait(8),
@@ -1069,7 +1505,25 @@ u32 dYoshiMainMotion_0x1114[] = {
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x1164[] = {
+	0x08000006, 0xAC000006,
+	0xAC100006, 0x98387C00,
+	0x00000000, 0x00000064,
+	0x00640064, 0x70380003,
+	0x08000012, 0x50000000,
+	0x0C00E250, 0x017C0000,
+	0x00280028, 0x5A464003,
+	0x00420A00, 0x0C80C250,
+	0x00C80000, 0x00000000,
+	0x5A464003, 0x00420A00,
+	0x4C000025, 0x04000007,
+	0x6C000001, 0x18000000,
+	0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x1164[] = {
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandSetTexturePartID(6),
@@ -1086,7 +1540,34 @@ u32 dYoshiMainMotion_0x1164[] = {
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x11C8[] = {
+	0x90000000, 0x04750459,
+	0x90000000, 0x04770459,
+	0x90000000, 0x05720459,
+	0x08000006, 0x98387C00,
+	0x00000000, 0x00000064,
+	0x00640064, 0x70380003,
+	0x08000009, 0x50000000,
+	0x4C000025, 0x0C00E250,
+	0x01400000, 0x00280028,
+	0x5A476003, 0x00420A00,
+	0x0C80C250, 0x00D20000,
+	0x00000000, 0x5A476003,
+	0x00420A00, 0x04000001,
+	0x2400B900, 0x24807800,
+	0x04000002, 0x0C00E250,
+	0x01400000, 0x00280028,
+	0x1406E003, 0x00420A00,
+	0x0C80C250, 0x00D20000,
+	0x00000000, 0x1406E003,
+	0x00420A00, 0x04000004,
+	0x6C000001, 0x18000000,
+	0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x11C8[] = {
 	ftMotionCommandGoto(dYoshiMainMotion_0x1164),
 	ftMotionCommandGoto(dYoshiMainMotion_0x1164),
@@ -1110,7 +1591,36 @@ u32 dYoshiMainMotion_0x11C8[] = {
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x1274[] = {
+	0x50000000, 0x04000006,
+	0xBC000004, 0x0C0261B0,
+	0x012C0000, 0x00000000,
+	0x08C69003, 0x00400A00,
+	0x0C8281B0, 0x01040000,
+	0x00000000, 0x08C69003,
+	0x00400A00, 0x4C000026,
+	0x98A07C00, 0x00640000,
+	0x0000003C, 0x003C003C,
+	0x98003C00, 0x00000000,
+	0x00960000, 0x00000000,
+	0x04000002, 0x18000000,
+	0x0400000D, 0x0C0261B0,
+	0x012C0000, 0x00000000,
+	0x08C69003, 0x00400A00,
+	0x0C8281B0, 0x01040000,
+	0x00000000, 0x08C69003,
+	0x00400A00, 0x4C000026,
+	0x98A07C00, 0x00640000,
+	0x0000003C, 0x003C003C,
+	0x98004000, 0x00000000,
+	0xFF6A0000, 0x00000000,
+	0x04000002, 0x18000000,
+	0xBC000000, 0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x1274[] = {
 	ftMotionCommandPlaySmashVoice(0),
 	ftMotionCommandWait(6),
@@ -1133,7 +1643,31 @@ u32 dYoshiMainMotion_0x1274[] = {
 	ftMotionCommandSetSlopeContour(0),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x1334[] = {
+	0x08000005, 0x58000032,
+	0x0C0381D0, 0x00F0000A,
+	0x00000000, 0x5A464003,
+	0x00420780, 0x0C82E1D0,
+	0x00F0000A, 0x00000000,
+	0x5A464003, 0x00420780,
+	0x0D00A1D0, 0x01040000,
+	0x00000000, 0x5A464003,
+	0x00420780, 0x4C000026,
+	0x04000004, 0x0C038170,
+	0x00F0000A, 0x00000000,
+	0x5A464003, 0x00420000,
+	0x0C82E170, 0x00F0000A,
+	0x00000000, 0x5A464003,
+	0x00420000, 0x0D00A170,
+	0x01040000, 0x00000000,
+	0x5A464003, 0x00420000,
+	0x0400001E, 0x58000000,
+	0x18000000, 0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x1334[] = {
 	ftMotionCommandWaitAsync(5),
 	ftMotionCommandSetFlag1(50),
@@ -1150,7 +1684,27 @@ u32 dYoshiMainMotion_0x1334[] = {
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x13CC[] = {
+	0x0800000B, 0x58000028,
+	0x50000000, 0x4C000025,
+	0x0C00E250, 0x012C0000,
+	0x00280028, 0xEAC64003,
+	0x00420000, 0x0C80C250,
+	0x00C80000, 0x00000000,
+	0xEAC64003, 0x00420000,
+	0x04000002, 0x0C00E250,
+	0x012C0000, 0x00280028,
+	0xE7064003, 0x00420000,
+	0x0C80C250, 0x00C80000,
+	0x00000000, 0xE7064003,
+	0x00420000, 0x04000003,
+	0x18000000, 0x0400000F,
+	0x58000000, 0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x13CC[] = {
 	ftMotionCommandWaitAsync(11),
 	ftMotionCommandSetFlag1(40),
@@ -1167,13 +1721,40 @@ u32 dYoshiMainMotion_0x13CC[] = {
 	ftMotionCommandSetFlag1(0),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x1444[] = {
+	0x3800004E, 0x98003400,
+	0x00000000, 0x00000000,
+	0x00000000, 0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x1444[] = {
 	ftMotionPlayFGM(82),
 	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x145C[] = {
+	0x0800000A, 0x58000001,
+	0x0C038210, 0x010EFFE2,
+	0x002D0000, 0x5A464003,
+	0x00420500, 0x0C838210,
+	0x0154006E, 0x00280000,
+	0x5A464003, 0x00420500,
+	0x4C000025, 0x04000004,
+	0x0C038150, 0x00F0FFE2,
+	0x002D0000, 0x5A464003,
+	0x00220000, 0x0C838150,
+	0x012C0050, 0x001E0000,
+	0x5A464003, 0x00220000,
+	0x04000006, 0x58000000,
+	0x18000000, 0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x145C[] = {
 	ftMotionCommandWaitAsync(10),
 	ftMotionCommandSetFlag1(1),
@@ -1188,13 +1769,35 @@ u32 dYoshiMainMotion_0x145C[] = {
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x14CC[] = {
+	0x3800004E, 0x98003400,
+	0x00000000, 0x00000000,
+	0x00000000, 0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x14CC[] = {
 	ftMotionPlayFGM(82),
 	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x14E4[] = {
+	0x08000009, 0x58000032,
+	0x0C0261F0, 0x01540000,
+	0x00000000, 0x16864003,
+	0x00420A00, 0x0C8281F0,
+	0x01540000, 0x00780000,
+	0x16864003, 0x00420A00,
+	0x4C000025, 0x04000002,
+	0x58000000, 0x18000000,
+	0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x14E4[] = {
 	ftMotionCommandWaitAsync(9),
 	ftMotionCommandSetFlag1(50),
@@ -1206,7 +1809,24 @@ u32 dYoshiMainMotion_0x14E4[] = {
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x1528[] = {
+	0x08000004, 0x58000032,
+	0x0C038090, 0x012C0000,
+	0x00000000, 0xE985A003,
+	0x00420280, 0x0C82E090,
+	0x012C0000, 0x00000000,
+	0xE985A003, 0x00420280,
+	0x8000000E, 0x4C0000D1,
+	0x04000001, 0x18000000,
+	0x04000001, 0x2C000000,
+	0x2C000001, 0x84000000,
+	0x58000000, 0x18000000,
+	0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x1528[] = {
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandSetFlag1(50),
@@ -1224,13 +1844,31 @@ u32 dYoshiMainMotion_0x1528[] = {
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x1584[] = {
+	0x3800004E, 0x98003400,
+	0x00000000, 0x00000000,
+	0x00000000, 0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x1584[] = {
 	ftMotionPlayFGM(82),
 	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x159C[] = {
+	0x0800003C, 0x98016C00,
+	0x00000000, 0x00000000,
+	0x00000000, 0x380000F7,
+	0xC4000009, 0x04000001,
+	0x5C000001, 0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x159C[] = {
 	ftMotionCommandWaitAsync(60),
 	ftMotionCommandEffect(0, 91, 0, 0, 0, 0, 0, 0, 0),
@@ -1240,7 +1878,21 @@ u32 dYoshiMainMotion_0x159C[] = {
 	ftMotionCommandSetFlag2(1),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x15C4[] = {
+	0x90000000, 0x05CD0567,
+	0x08000004, 0x98691C00,
+	0x00000000, 0x00000000,
+	0x00000000, 0x5C000001,
+	0x08000017, 0x98003400,
+	0x00000000, 0x00000000,
+	0x00000000, 0x380000F6,
+	0x50000000, 0x5C000002,
+	0xC4000006, 0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x15C4[] = {
 	ftMotionCommandGoto(dYoshiMainMotion_0x159C),
 	ftMotionCommandWaitAsync(4),
@@ -1254,7 +1906,23 @@ u32 dYoshiMainMotion_0x15C4[] = {
 	ftMotionCommandMakeRumble(0, 6),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x160C[] = {
+	0x08000005, 0x98004C00,
+	0x00000000, 0xFF600000,
+	0x00000000, 0x4400024A,
+	0x08000013, 0x98011C00,
+	0x0000008C, 0x00000000,
+	0x00000000, 0x0800001E,
+	0x58000001, 0x4400024B,
+	0x0C000250, 0x01CC0000,
+	0x00A00000, 0x0F064003,
+	0x00421900, 0x04000064,
+	0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x160C[] = {
 	ftMotionCommandWaitAsync(5),
 	ftMotionCommandEffect(0, 19, 0, 0, 0, -160, 0, 0, 0),
@@ -1268,7 +1936,23 @@ u32 dYoshiMainMotion_0x160C[] = {
 	ftMotionCommandWait(100),
 	ftMotionCommandEnd(),
 };
+#endif
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x1660[] = {
+	0x08000005, 0x98003400,
+	0x00000000, 0xFF600000,
+	0x00000000, 0x4400024A,
+	0x58000001, 0x0800000A,
+	0x98011C00, 0x0000008C,
+	0x00000000, 0x00000000,
+	0x08000018, 0x4400024B,
+	0x0C000250, 0x01CC0000,
+	0x00A00000, 0x0F064003,
+	0x00421900, 0x04000064,
+	0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x1660[] = {
 	ftMotionCommandWaitAsync(5),
 	ftMotionCommandEffect(0, 13, 0, 0, 0, -160, 0, 0, 0),
@@ -1282,6 +1966,7 @@ u32 dYoshiMainMotion_0x1660[] = {
 	ftMotionCommandWait(100),
 	ftMotionCommandEnd(),
 };
+#endif
 
 u32 dYoshiMainMotion_0x16B4[] = {
 	ftMotionCommandMakeRumble(0, 10),
@@ -1299,6 +1984,16 @@ FTThrowHitDesc dYoshiMainMotion_0x16F8[] = {
 	{ -1, 5, 361, 100, 0, 0, 0 },
 };
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x1730[] = {
+	0x30000000, 0xFFFF05BE,
+	0x08000012, 0x0C03E030,
+	0x012C0000, 0x00640000,
+	0x5A464003, 0x00200000,
+	0x380000F4, 0x04000006,
+	0x18000000, 0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x1730[] = {
 	ftMotionCommandSetThrow((u32)dYoshiMainMotion_0x16F8),
 	ftMotionCommandWaitAsync(18),
@@ -1308,6 +2003,7 @@ u32 dYoshiMainMotion_0x1730[] = {
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
 };
+#endif
 
 u32 dYoshiMainMotion_0x1760[] = {
 	ftMotionPlayFGM(19),
@@ -1317,6 +2013,20 @@ u32 dYoshiMainMotion_0x1760[] = {
 	ftMotionCommandEnd(),
 };
 
+#if defined(REGION_JP)
+u32 dYoshiMainMotion_0x1774[] = {
+	0xAC000008, 0xAC100008,
+	0x08000006, 0x5C000001,
+	0x74000002, 0x08000014,
+	0x58000001, 0xC4000009,
+	0x98001C00, 0x00000064,
+	0x00C80000, 0x00000000,
+	0x38000034, 0xAC000007,
+	0xAC100007, 0x04000008,
+	0xAC000000, 0xAC100000,
+	0x00000000,
+};
+#else
 u32 dYoshiMainMotion_0x1774[] = {
 	ftMotionCommandSetTexturePartID(8),
 	ftMotionCommandSetTexturePartID(1048584),
@@ -1335,3 +2045,4 @@ u32 dYoshiMainMotion_0x1774[] = {
 	ftMotionCommandSetTexturePartID(1048576),
 	ftMotionCommandEnd(),
 };
+#endif

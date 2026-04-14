@@ -79,7 +79,7 @@ endef
 # ----- Common flags -----
 
 PYTHON   := python3
-INCLUDES := -Iinclude -Isrc
+INCLUDES = -Iinclude -Isrc -I$(BUILD_DIR)/src
 DEFINES  := -DF3DEX_GBI_2 -D_MIPS_SZLONG=32 -DNDEBUG -DN_MICRO -D_FINALROM
 OPTFLAGS := -O2 -mips2
 
@@ -174,8 +174,8 @@ S_TEXT_FILES   := $(shell find asm src -type f -name '*.s' | grep -v /nonmatchin
 S_DATA_FILES   := $(shell find asm -type f | grep \\.data\\.s$)
 S_RODATA_FILES := $(shell find asm -type f | grep \\.rodata\\.s$)
 S_BSS_FILES    := $(shell find asm -type f | grep \\.bss\\.s$)
-PNG_FILES      := $(shell find assets -type f | grep \\.png$)
-BIN_FILES      := $(shell find assets -type f | grep \\.bin$ | grep -v /relocData/) \
+PNG_FILES      := $(shell find assets -type f | grep \\.png$ | grep -v '^assets/db/')
+BIN_FILES      := $(shell find assets -type f | grep \\.bin$ | grep -v /relocData/ | grep -v '^assets/db/') \
                   $(foreach f,$(PNG_FILES:.png=.bin),$f)
 # The number of compressed (vpk0) relocData files differs by version (US: 499,
 # JP: 474). Detect from the filesystem so the same Makefile works for both.
@@ -519,6 +519,33 @@ $(BUILD_DIR)/%.o: %.bin
 assets/%.bin: assets/%.png
 	$(call print_3,Converting Image:,$<,$@)
 	$(V)$(PYTHON) tools/image_converter.py $< $@
+
+# Debug cube Kirby face texture — 32x32 RGBA5551 baked into `dbcube.c`'s
+# .data section. Extracted from the baserom at the version-specific ROM
+# offset into both a raw .bin (gitignored asset) and a build-time .inc.c
+# (hex initializer for the `dDBCubeKirbyFaceTexture` array). The .png
+# preview sits next to the .bin so the asset is viewable without building.
+.PRECIOUS: assets/db/dbkirby.rgba16.bin assets/db/dbkirby.png
+assets/db/dbkirby.rgba16.bin assets/db/dbkirby.png &: $(BASEROM) tools/extractDbKirbyTex.py
+	$(call print_3,Extracting dbkirby texture:,$<,$@)
+	$(V)$(PYTHON) tools/extractDbKirbyTex.py --version $(VERSION) \
+		--baserom $(BASEROM) \
+		--bin assets/db/dbkirby.rgba16.bin \
+		--inc $(BUILD_DIR)/src/db/dbkirby.rgba16.inc.c \
+		--png assets/db/dbkirby.png
+
+$(BUILD_DIR)/src/db/dbkirby.rgba16.inc.c: assets/db/dbkirby.rgba16.bin
+	@# The grouped rule above wrote this file too — touch it so make
+	@# doesn't re-run the generator on every incremental build.
+	@test -f $@ || $(PYTHON) tools/extractDbKirbyTex.py --version $(VERSION) \
+		--baserom $(BASEROM) \
+		--bin assets/db/dbkirby.rgba16.bin \
+		--inc $@ \
+		--png assets/db/dbkirby.png
+
+# dbcube.c `#include`s the generated inc.c, so its .o must wait for the
+# extraction step to finish.
+$(BUILD_DIR)/src/db/dbcube.o: $(BUILD_DIR)/src/db/dbkirby.rgba16.inc.c
 
 ifeq ($(RELOC_DATA),1)
 # Compiled relocData files go in build/assets/relocData/ as overrides.

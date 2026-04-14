@@ -1,0 +1,7 @@
+/* Vtx: Vtx_0x0310 @ 0x310 (1 vertices) */
+
+#include "relocdata_types.h"
+
+Vtx dLBTransitionAeroplane_Vtx_0x0310_Vtx[1] = {
+	#include <LBTransitionAeroplane/Vtx_0x0310.vtx.inc.c>
+};

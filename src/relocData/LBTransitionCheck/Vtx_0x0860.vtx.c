@@ -1,0 +1,7 @@
+/* Vtx: Vtx_0x0860 @ 0x860 (2 vertices) */
+
+#include "relocdata_types.h"
+
+Vtx dLBTransitionCheck_Vtx_0x0860_Vtx[2] = {
+	#include <LBTransitionCheck/Vtx_0x0860.vtx.inc.c>
+};

@@ -361,7 +361,11 @@ u32 dLuigiMain_pre[352] = {
 };
 
 FTAttributes dLuigiMain_attr = {
+#if defined(REGION_JP)
+	1.0f, /* size */
+#else
 	1.12f, /* size */
+#endif
 	90.0f, /* walkslow_anim_length */
 	60.0f, /* walkmiddle_anim_length */
 	40.0f, /* walkfast_anim_length */
@@ -381,7 +385,11 @@ FTAttributes dLuigiMain_attr = {
 	0.35f, /* jumpaerial_vel_x */
 	0.9f, /* jumpaerial_height */
 	0.025f, /* air_accel */
+#if defined(REGION_JP)
+	26.0f, /* air_speed_max_x */
+#else
 	22.5f, /* air_speed_max_x */
+#endif
 	0.15f, /* air_friction */
 	2.1f, /* gravity */
 	42.0f, /* tvel_base */
@@ -402,14 +410,34 @@ FTAttributes dLuigiMain_attr = {
 	530.0f, /* camera_zoom_base */
 	{ 370.0f, 250.0f, 0.0f, 150.0f }, /* map_coll */
 	{ 400.0f, 360.0f }, /* cliffcatch_coll */
+#if defined(REGION_JP)
+	{ 0x01A1, 0x011A }, /* dead_fgm_ids */
+#else
 	{ 0x01AB, 0x0124 }, /* dead_fgm_ids */
+#endif
+#if defined(REGION_JP)
+	0x019A, /* deadup_sfx */
+#else
 	0x01A4, /* deadup_sfx */
+#endif
+#if defined(REGION_JP)
+	0x019C, /* damage_sfx */
+#else
 	0x01A6, /* damage_sfx */
+#endif
+#if defined(REGION_JP)
+	{ 0x0196, 0x0197, 0x0198 }, /* smash_sfx */
+#else
 	{ 0x01A0, 0x01A1, 0x01A2 }, /* smash_sfx */
+#endif
 	{ { 105.0f, 0.0f }, { 378.0f, 200.0f }, { 75.0f, 0.0f }, { 150.0f, 150.0f } }, /* item_pickup */
 	0x0064, /* itemthrow_vel_scale */
 	0x0064, /* itemthrow_damage_scale */
+#if defined(REGION_JP)
+	0x01A0, /* heavyget_sfx */
+#else
 	0x01AA, /* heavyget_sfx */
+#endif
 	1.02f, /* halo_size */
 	{ { 0xFF, 0xFF, 0xFF, 0x50 }, { 0x00, 0x00, 0x00, 0x50 }, { 0x00, 0x00, 0x00, 0x00 } }, /* shade_color */
 	{ 0xFF, 0x00, 0x00, 0x00 }, /* fog_color */
@@ -435,6 +463,22 @@ FTAttributes dLuigiMain_attr = {
 	1, /* is_have_specialairlw */
 	1, /* is_have_catch */
 	1, /* is_have_voice */
+#if defined(REGION_JP)
+	/* damage_coll_descs */
+	{
+		{ 6, 1, TRUE, { 0.0f, 28.0f, 9.0f }, { 110.0f, 130.0f, 98.0f } },
+		{ 12, 2, TRUE, { 0.0f, 81.0f, 14.0f }, { 155.0f, 200.0f, 150.0f } },
+		{ 14, 1, FALSE, { 0.0f, 0.0f, 0.0f }, { 51.0f, 50.0f, 50.0f } },
+		{ 8, 1, FALSE, { 0.0f, 0.0f, 0.0f }, { 51.0f, 50.0f, 50.0f } },
+		{ 15, 1, FALSE, { 20.0f, 0.0f, 0.0f }, { 74.0f, 54.0f, 54.0f } },
+		{ 9, 1, FALSE, { 20.0f, 0.0f, 0.0f }, { 74.0f, 54.0f, 54.0f } },
+		{ 24, 0, FALSE, { 18.0f, 0.0f, 0.0f }, { 62.0f, 67.0f, 67.0f } },
+		{ 19, 0, FALSE, { 18.0f, 0.0f, 0.0f }, { 62.0f, 67.0f, 67.0f } },
+		{ 25, 0, FALSE, { 34.0f, 0.0f, 0.0f }, { 67.0f, 78.0f, 76.0f } },
+		{ 20, 0, FALSE, { 34.0f, 0.0f, 0.0f }, { 67.0f, 78.0f, 76.0f } },
+		{ -1, 0, FALSE, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
+	},
+#else
 	/* damage_coll_descs */
 	{
 		{ 6, 1, TRUE, { 0.0f, 28.0f, 9.0f }, { 110.0f, 130.0f, 98.0f } },
@@ -449,6 +493,7 @@ FTAttributes dLuigiMain_attr = {
 		{ 20, 0, FALSE, { 34.0f, 0.0f, 0.0f }, { 67.0f, 78.0f, 76.0f } },
 		{ -1, 0, FALSE, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 	},
+#endif
 	{ 900.0f, 450.0f, 900.0f }, /* hit_detect_range */
 	NULL, /* setup_parts */
 	NULL, /* animlock */

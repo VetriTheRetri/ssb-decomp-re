@@ -706,14 +706,20 @@ $$(BUILD_DIR)/src/relocData/$(1).o: $$(RELOC_MASTER_$(1)) $$(RELOC_SPRITE_DEPS_$
 	@mkdir -p $$(@D)
 	$$(V)$$(IDO7) $$(CCFLAGS) $$(OPTFLAGS) -Isrc/relocData -I$$(BUILD_DIR)/src/relocData -o $$@ $$<
 
-# .reloc file path. Three sources, in priority order:
+# .reloc file path. Four sources, in priority order:
 #   1. Version-specific .c override (raw blob, no reloc fixing).
 #   2. Spritelist-driven auto-extract (.reloc lives in build/, generated
 #      alongside the master .c by extractSpriteFile.py).
-#   3. Manifest or hand-written master (.reloc is committed under src/).
+#   3. Version-specific .reloc override (`*.jp.reloc` / `*.us.reloc`),
+#      used when the shared .c compiles fine for both versions but the
+#      extern target offsets / chain structure differ. Falls through
+#      to the shared .reloc when no override exists.
+#   4. Shared manifest or hand-written master .reloc.
 RELOC_RELOC_$(1) := $$(if $$(RELOC_VC_$(1)),,\
                      $$(if $$(RELOC_AUTO_RELOC_$(1)),$$(RELOC_AUTO_RELOC_$(1)),\
-                        src/relocData/$$(RELOC_BASENAME_$(1)).reloc))
+                        $$(firstword \
+                          $$(wildcard src/relocData/$$(RELOC_BASENAME_$(1)).$(VERSION).reloc) \
+                          src/relocData/$$(RELOC_BASENAME_$(1)).reloc)))
 
 # Compiled .data section goes to build/ to avoid overwriting the original asset.
 # Compressed files (ID < 499) go to .vpk0.bin which then gets compressed to .vpk0;

@@ -70,59 +70,46 @@ u32 dSamusMainMotion_0x009C[] = {
 	ftMotionCommandEnd(),
 };
 
-#if defined(REGION_JP)
 u32 dSamusMainMotion_0x00A4[] = {
 	ftMotionCommandSetSlopeContour(3),
+#if defined(REGION_JP)
 	ftMotionPlayFGM(123),
-	ftMotionCommandLoopBegin(2),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, -120, 0, 60, 0),
-	ftMotionCommandWait(6),
-	ftMotionCommandLoopEnd(),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x00A4[] = {
-	ftMotionCommandSetSlopeContour(3),
 	ftMotionPlayFGM(127),
+#endif
 	ftMotionCommandLoopBegin(2),
 	ftMotionCommandEffect(0, 11, 0, 0, 0, -120, 0, 60, 0),
 	ftMotionCommandWait(6),
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandEnd(),
 };
-#endif
 
+u32 dSamusMainMotion_0x00CC[] = {
+	ftMotionCommandSetSlopeContour(3),
 #if defined(REGION_JP)
-u32 dSamusMainMotion_0x00CC[] = {
-	ftMotionCommandSetSlopeContour(3),
 	ftMotionPlayFGM(110),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 60, 0, 0, 0),
-	ftMotionCommandWait(12),
-	ftMotionPlayFGM(110),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 60, 0, 0, 0),
-	ftMotionCommandPauseScript(),
-	ftMotionCommandGoto(dSamusMainMotion_0x00CC),
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionPlayFGM(124),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 60, 0, 0, 0),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x00CC[] = {
-	ftMotionCommandSetSlopeContour(3),
 	ftMotionPlayFGM(114),
+#endif
 	ftMotionCommandEffect(0, 11, 0, 0, 0, 60, 0, 0, 0),
 	ftMotionCommandWait(12),
+#if defined(REGION_JP)
+	ftMotionPlayFGM(110),
+#else
 	ftMotionPlayFGM(114),
+#endif
 	ftMotionCommandEffect(0, 11, 0, 0, 0, 60, 0, 0, 0),
 	ftMotionCommandPauseScript(),
 	ftMotionCommandGoto(dSamusMainMotion_0x00CC),
 	ftMotionCommandSetSlopeContour(3),
+#if defined(REGION_JP)
+	ftMotionPlayFGM(124),
+#else
 	ftMotionPlayFGM(128),
+#endif
 	ftMotionCommandEffect(0, 11, 0, 0, 0, 60, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
-#endif
 
 u32 dSamusMainMotion_0x0124[] = {
 	ftMotionCommandSetSlopeContour(3),
@@ -147,120 +134,86 @@ u32 dSamusMainMotion_0x0164[] = {
 	ftMotionCommandEnd(),
 };
 
-#if defined(REGION_JP)
 u32 dSamusMainMotion_0x0174[] = {
+#if defined(REGION_JP)
 	ftMotionPlayFGM(99),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x0174[] = {
 	ftMotionPlayFGM(103),
+#endif
 	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
-#endif
 
-#if defined(REGION_JP)
 u32 dSamusMainMotion_0x018C[] = {
+#if defined(REGION_JP)
 	ftMotionPlayFGM(88),
-	ftMotionCommandLoopBegin(2),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 100, 100, 100),
-	ftMotionCommandWait(6),
-	ftMotionCommandLoopEnd(),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x018C[] = {
 	ftMotionPlayFGM(92),
+#endif
 	ftMotionCommandLoopBegin(2),
 	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 100, 100, 100),
 	ftMotionCommandWait(6),
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandEnd(),
 };
-#endif
 
-#if defined(REGION_JP)
 u32 dSamusMainMotion_0x01B0[] = {
 	ftMotionCommandSetSlopeContour(3),
+#if defined(REGION_JP)
 	ftMotionPlayFGM(77),
+#else
+	ftMotionPlayFGM(81),
+#endif
 	ftMotionCommandEffect(0, 11, 0, 0, 0, -60, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
-#else
-u32 dSamusMainMotion_0x01B0[] = {
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionPlayFGM(81),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, -60, 0, 0, 0),
-	ftMotionCommandEnd(),
-};
-#endif
 
-#if defined(REGION_JP)
 u32 dSamusMainMotion_0x01CC[] = {
 	ftMotionCommandSetSlopeContour(3),
+#if defined(REGION_JP)
 	ftMotionPlayFGM(77),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x01CC[] = {
-	ftMotionCommandSetSlopeContour(3),
 	ftMotionPlayFGM(81),
+#endif
 	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
-#endif
 
-#if defined(REGION_JP)
 u32 dSamusMainMotion_0x01E8[] = {
+#if defined(REGION_JP)
 	ftMotionPlayFGM(627),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x01E8[] = {
 	ftMotionPlayFGM(639),
+#endif
 	ftMotionCommandEnd(),
 };
-#endif
 
-#if defined(REGION_JP)
 u32 dSamusMainMotion_0x01F0[] = {
+#if defined(REGION_JP)
 	ftMotionPlayFGM(627),
+#else
+	ftMotionPlayFGM(639),
+#endif
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWaitAsync(2),
 	ftMotionCommandSetHitStatusAll(1),
 	ftMotionCommandEnd(),
 };
-#else
-u32 dSamusMainMotion_0x01F0[] = {
-	ftMotionPlayFGM(639),
-	ftMotionCommandSetHitStatusAll(3),
-	ftMotionCommandWaitAsync(2),
-	ftMotionCommandSetHitStatusAll(1),
-	ftMotionCommandEnd(),
-};
-#endif
 
 u32 dSamusMainMotion_0x0204[] = {
 	ftMotionCommandSetDamageThrown(0x0758), /* extern */
 	ftMotionCommandEnd(),
 };
 
+u32 dSamusMainMotion_0x0210[] = {
 #if defined(REGION_JP)
-u32 dSamusMainMotion_0x0210[] = {
 	ftMotionPlayFGM(77),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x0210[] = {
 	ftMotionPlayFGM(81),
+#endif
 	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
-#endif
 
 u32 dSamusMainMotion_0x0228[] = {
 	ftMotionCommandSetSlopeContour(1),
@@ -366,23 +319,14 @@ u32 dSamusMainMotion_0x0388[] = {
 	ftMotionCommandEnd(),
 };
 
+u32 dSamusMainMotion_0x0400[] = {
+	ftMotionCommandMakeRumble(0, 9),
+	ftMotionCommandEffect(0, 43, 0, 0, 0, 0, 0, 0, 0),
 #if defined(REGION_JP)
-u32 dSamusMainMotion_0x0400[] = {
-	ftMotionCommandMakeRumble(0, 9),
-	ftMotionCommandEffect(0, 43, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionPlayVoice(568),
-	ftMotionPlayFGM(17),
-	ftMotionCommandEffect(0, 31, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandSetHitStatusAll(3),
-	ftMotionCommandWaitAsync(24),
-	ftMotionCommandSetHitStatusAll(1),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x0400[] = {
-	ftMotionCommandMakeRumble(0, 9),
-	ftMotionCommandEffect(0, 43, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionPlayVoice(580),
+#endif
 	ftMotionPlayFGM(17),
 	ftMotionCommandEffect(0, 31, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
@@ -390,26 +334,15 @@ u32 dSamusMainMotion_0x0400[] = {
 	ftMotionCommandSetHitStatusAll(1),
 	ftMotionCommandEnd(),
 };
-#endif
 
+u32 dSamusMainMotion_0x043C[] = {
+	ftMotionCommandMakeRumble(0, 7),
+	ftMotionCommandEffect(0, 43, 0, 0, 0, 0, 0, 0, 0),
 #if defined(REGION_JP)
-u32 dSamusMainMotion_0x043C[] = {
-	ftMotionCommandMakeRumble(0, 7),
-	ftMotionCommandEffect(0, 43, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionPlayVoice(568),
-	ftMotionPlayFGM(11),
-	ftMotionCommandEffect(0, 31, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandSetHitStatusAll(3),
-	ftMotionCommandWaitAsync(20),
-	ftMotionCommandSetHitStatusAll(1),
-	ftMotionCommandStopRumble(7),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x043C[] = {
-	ftMotionCommandMakeRumble(0, 7),
-	ftMotionCommandEffect(0, 43, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionPlayVoice(580),
+#endif
 	ftMotionPlayFGM(11),
 	ftMotionCommandEffect(0, 31, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
@@ -418,7 +351,6 @@ u32 dSamusMainMotion_0x043C[] = {
 	ftMotionCommandStopRumble(7),
 	ftMotionCommandEnd(),
 };
-#endif
 
 u32 dSamusMainMotion_0x047C[] = {
 	ftMotionCommandGoto(dSamusMainMotion_0x043C),
@@ -504,31 +436,22 @@ u32 dSamusMainMotion_0x055C[] = {
 	ftMotionCommandEnd(),
 };
 
+u32 dSamusMainMotion_0x0564[] = {
+	ftMotionCommandEffect(0, 31, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandSetHitStatusAll(3),
 #if defined(REGION_JP)
-u32 dSamusMainMotion_0x0564[] = {
-	ftMotionCommandEffect(0, 31, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandSetHitStatusAll(3),
 	ftMotionPlayVoice(561),
-	ftMotionCommandWaitAsync(5),
-	ftMotionCommandMakeAttackColl(0, 0, 35, 6, 0, 0, 280, 0, 0, 0, 361, 100, 100, 3, 0, 1, 1, 0),
-	ftMotionCommandMakeAttackColl(1, 0, 5, 6, 0, 0, 150, 0, 0, 0, 361, 100, 100, 3, 0, 1, 1, 0),
-	ftMotionCommandPlayFGMStoreInfo(38),
-	ftMotionCommandEffect(0, 19, 0, 0, -80, -180, 0, 0, 0),
-	ftMotionCommandWait(2),
-	ftMotionCommandSetHitStatusAll(1),
-	ftMotionCommandWait(4),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x0564[] = {
-	ftMotionCommandEffect(0, 31, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandSetHitStatusAll(3),
 	ftMotionPlayVoice(573),
+#endif
 	ftMotionCommandWaitAsync(5),
 	ftMotionCommandMakeAttackColl(0, 0, 35, 6, 0, 0, 280, 0, 0, 0, 361, 100, 100, 3, 0, 1, 1, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 5, 6, 0, 0, 150, 0, 0, 0, 361, 100, 100, 3, 0, 1, 1, 0),
+#if defined(REGION_JP)
+	ftMotionCommandPlayFGMStoreInfo(38),
+#else
 	ftMotionCommandPlayFGMStoreInfo(42),
+#endif
 	ftMotionCommandEffect(0, 19, 0, 0, -80, -180, 0, 0, 0),
 	ftMotionCommandWait(2),
 	ftMotionCommandSetHitStatusAll(1),
@@ -536,7 +459,6 @@ u32 dSamusMainMotion_0x0564[] = {
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
 };
-#endif
 
 u32 dSamusMainMotion_0x05D0[] = {
 	ftMotionCommandSetHitStatusAll(3),
@@ -545,39 +467,29 @@ u32 dSamusMainMotion_0x05D0[] = {
 	ftMotionCommandEnd(),
 };
 
+u32 dSamusMainMotion_0x05E0[] = {
+	ftMotionCommandEffect(0, 31, 0, 0, 0, 0, 0, 0, 0),
 #if defined(REGION_JP)
-u32 dSamusMainMotion_0x05E0[] = {
-	ftMotionCommandEffect(0, 31, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionPlayVoice(561),
-	ftMotionCommandSetHitStatusAll(3),
-	ftMotionCommandWaitAsync(13),
-	ftMotionCommandMakeAttackColl(0, 0, 5, 6, 0, 0, 150, 0, 0, 0, 361, 100, 100, 3, 0, 1, 1, 0),
-	ftMotionCommandMakeAttackColl(1, 0, 10, 6, 0, 0, 280, 0, 0, 0, 361, 100, 100, 3, 0, 1, 1, 0),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
-	ftMotionCommandPlayFGMStoreInfo(38),
-	ftMotionCommandWait(2),
-	ftMotionCommandSetHitStatusAll(1),
-	ftMotionCommandWait(3),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x05E0[] = {
-	ftMotionCommandEffect(0, 31, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionPlayVoice(573),
+#endif
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWaitAsync(13),
 	ftMotionCommandMakeAttackColl(0, 0, 5, 6, 0, 0, 150, 0, 0, 0, 361, 100, 100, 3, 0, 1, 1, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 10, 6, 0, 0, 280, 0, 0, 0, 361, 100, 100, 3, 0, 1, 1, 0),
 	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
+#if defined(REGION_JP)
+	ftMotionCommandPlayFGMStoreInfo(38),
+#else
 	ftMotionCommandPlayFGMStoreInfo(42),
+#endif
 	ftMotionCommandWait(2),
 	ftMotionCommandSetHitStatusAll(1),
 	ftMotionCommandWait(3),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
 };
-#endif
 
 u32 dSamusMainMotion_0x064C[] = {
 	ftMotionCommandSetHitStatusAll(3),
@@ -861,35 +773,27 @@ u32 dSamusMainMotion_0x0A38[] = {
 	ftMotionCommandEnd(),
 };
 
+u32 dSamusMainMotion_0x0A5C[] = {
+	ftMotionCommandMakeRumble(0, 7),
+	ftMotionCommandPlaySmashVoice(0),
 #if defined(REGION_JP)
-u32 dSamusMainMotion_0x0A5C[] = {
-	ftMotionCommandMakeRumble(0, 7),
-	ftMotionCommandPlaySmashVoice(0),
 	ftMotionCommandSetColAnim(75, 40),
-	ftMotionCommandWaitAsync(19),
-	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandSubroutine(0x248), /* extern */
-	ftMotionCommandWait(6),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandWaitAsync(51),
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x0A5C[] = {
-	ftMotionCommandMakeRumble(0, 7),
-	ftMotionCommandPlaySmashVoice(0),
 	ftMotionCommandSetColAnim(76, 40),
+#endif
 	ftMotionCommandWaitAsync(19),
 	ftMotionCommandSetSlopeContour(4),
+#if defined(REGION_JP)
+	ftMotionCommandSubroutine(0x248), /* extern */
+#else
 	ftMotionCommandSubroutine(0x0248), /* extern */
+#endif
 	ftMotionCommandWait(6),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWaitAsync(51),
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandEnd(),
 };
-#endif
 
 u32 dSamusMainMotion_0x0A8C[] = {
 	ftMotionCommandSetSlopeContour(3),
@@ -945,47 +849,37 @@ u32 dSamusMainMotion_0x0B14[] = {
 	ftMotionCommandEnd(),
 };
 
-#if defined(REGION_JP)
 u32 dSamusMainMotion_0x0B3C[] = {
+#if defined(REGION_JP)
 	ftMotionCommandSetColAnim(74, 10),
-	ftMotionCommandWaitAsync(6),
-	ftMotionCommandSubroutine(0x494), /* extern */
-	ftMotionCommandWait(10),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x0B3C[] = {
 	ftMotionCommandSetColAnim(75, 10),
+#endif
 	ftMotionCommandWaitAsync(6),
+#if defined(REGION_JP)
+	ftMotionCommandSubroutine(0x494), /* extern */
+#else
 	ftMotionCommandSubroutine(0x0494), /* extern */
+#endif
 	ftMotionCommandWait(10),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
 };
-#endif
 
-#if defined(REGION_JP)
 u32 dSamusMainMotion_0x0B58[] = {
+#if defined(REGION_JP)
 	ftMotionCommandSetColAnim(74, 17),
-	ftMotionCommandWaitAsync(8),
-	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandWaitAsync(9),
-	ftMotionCommandSubroutine(0x4F8), /* extern */
-	ftMotionCommandWaitAsync(11),
-	ftMotionCommandSetFlag0(1),
-	ftMotionCommandWait(6),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x0B58[] = {
 	ftMotionCommandSetColAnim(75, 17),
+#endif
 	ftMotionCommandWaitAsync(8),
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandWaitAsync(9),
+#if defined(REGION_JP)
+	ftMotionCommandSubroutine(0x4F8), /* extern */
+#else
 	ftMotionCommandSubroutine(0x04F8), /* extern */
+#endif
 	ftMotionCommandWaitAsync(11),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandWait(6),
@@ -993,30 +887,21 @@ u32 dSamusMainMotion_0x0B58[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandEnd(),
 };
-#endif
 
-#if defined(REGION_JP)
 u32 dSamusMainMotion_0x0B88[] = {
+#if defined(REGION_JP)
 	ftMotionCommandSetColAnim(74, 25),
-	ftMotionCommandPlaySmashVoice(0),
-	ftMotionCommandWaitAsync(19),
-	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandSubroutine(0x55C), /* extern */
-	ftMotionCommandWaitAsync(21),
-	ftMotionCommandSetFlag0(2),
-	ftMotionCommandWait(4),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandWaitAsync(51),
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x0B88[] = {
 	ftMotionCommandSetColAnim(75, 25),
+#endif
 	ftMotionCommandPlaySmashVoice(0),
 	ftMotionCommandWaitAsync(19),
 	ftMotionCommandSetSlopeContour(4),
+#if defined(REGION_JP)
+	ftMotionCommandSubroutine(0x55C), /* extern */
+#else
 	ftMotionCommandSubroutine(0x055C), /* extern */
+#endif
 	ftMotionCommandWaitAsync(21),
 	ftMotionCommandSetFlag0(2),
 	ftMotionCommandWait(4),
@@ -1025,37 +910,28 @@ u32 dSamusMainMotion_0x0B88[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandEnd(),
 };
-#endif
 
+u32 dSamusMainMotion_0x0BBC[] = {
+	ftMotionCommandSetSlopeContour(3),
+	ftMotionCommandWaitAsync(4),
+	ftMotionCommandSetSlopeContour(4),
 #if defined(REGION_JP)
-u32 dSamusMainMotion_0x0BBC[] = {
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandWaitAsync(4),
-	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandSetColAnim(74, 22),
-	ftMotionCommandWaitAsync(4),
-	ftMotionCommandSubroutine(0x5C0), /* extern */
-	ftMotionCommandWait(18),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandWaitAsync(40),
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x0BBC[] = {
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandWaitAsync(4),
-	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandSetColAnim(75, 22),
+#endif
 	ftMotionCommandWaitAsync(4),
+#if defined(REGION_JP)
+	ftMotionCommandSubroutine(0x5C0), /* extern */
+#else
 	ftMotionCommandSubroutine(0x05C0), /* extern */
+#endif
 	ftMotionCommandWait(18),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWaitAsync(40),
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandEnd(),
 };
-#endif
 
 u32 dSamusMainMotion_0x0BEC[] = {
 	ftMotionCommandSetSlopeContour(3),
@@ -1080,7 +956,6 @@ u32 dSamusMainMotion_0x0C0C[] = {
 	ftMotionCommandGoto(dSamusMainMotion_0x0C0C),
 };
 
-#if defined(REGION_JP)
 u32 dSamusMainMotion_0x0C2C[] = {
 	ftMotionCommandEffect(0, 31, 0, 0, 0, 120, 200, 200, 200),
 	ftMotionCommandLoopBegin(3),
@@ -1088,73 +963,52 @@ u32 dSamusMainMotion_0x0C2C[] = {
 	ftMotionCommandWait(4),
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandGoto(dSamusMainMotion_0x0C2C),
+#if defined(REGION_JP)
 	ftMotionCommandEffect(127, 34, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionPlayVoice(569),
-	ftMotionCommandSetHitStatusAll(3),
-	ftMotionCommandGoto(dSamusMainMotion_0x0C2C),
-	ftMotionCommandGoto(dSamusMainMotion_0x0C2C),
-	ftMotionCommandEffect(127, 34, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x0C2C[] = {
-	ftMotionCommandEffect(0, 31, 0, 0, 0, 120, 200, 200, 200),
-	ftMotionCommandLoopBegin(3),
-	ftMotionCommandEffect(0, 10, 0, 0, 0, 120, 200, 200, 200),
-	ftMotionCommandWait(4),
-	ftMotionCommandLoopEnd(),
-	ftMotionCommandGoto(dSamusMainMotion_0x0C2C),
 	ftMotionCommandEffect(-1, 34, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionPlayVoice(581),
+#endif
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandGoto(dSamusMainMotion_0x0C2C),
 	ftMotionCommandGoto(dSamusMainMotion_0x0C2C),
+#if defined(REGION_JP)
+	ftMotionCommandEffect(127, 34, 0, 0, 0, 0, 0, 0, 0),
+#else
 	ftMotionCommandEffect(-1, 34, 0, 0, 0, 0, 0, 0, 0),
+#endif
 	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
-#endif
 
 u32 dSamusMainMotion_0x0CAC[] = {
 	ftMotionCommandEnd(),
 };
 
+u32 dSamusMainMotion_0x0CB0[] = {
+	ftMotionCommandSetSlopeContour(3),
 #if defined(REGION_JP)
-u32 dSamusMainMotion_0x0CB0[] = {
-	ftMotionCommandSetSlopeContour(3),
 	ftMotionPlayVoice(565),
-};
 #else
-u32 dSamusMainMotion_0x0CB0[] = {
-	ftMotionCommandSetSlopeContour(3),
 	ftMotionPlayVoice(577),
-};
 #endif
+};
 
+u32 dSamusMainMotion_0x0CB8[] = {
+	ftMotionCommandLoopBegin(3),
+	ftMotionCommandEffect(0, 10, 0, 0, 0, 200, 200, 200, 200),
+	ftMotionCommandWait(10),
+	ftMotionCommandLoopEnd(),
+	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 100, 0, 0),
+	ftMotionCommandGoto(dSamusMainMotion_0x0CB8),
+	ftMotionCommandSetSlopeContour(3),
 #if defined(REGION_JP)
-u32 dSamusMainMotion_0x0CB8[] = {
-	ftMotionCommandLoopBegin(3),
-	ftMotionCommandEffect(0, 10, 0, 0, 0, 200, 200, 200, 200),
-	ftMotionCommandWait(10),
-	ftMotionCommandLoopEnd(),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 100, 0, 0),
-	ftMotionCommandGoto(dSamusMainMotion_0x0CB8),
-	ftMotionCommandSetSlopeContour(3),
 	ftMotionPlayVoice(565),
-};
 #else
-u32 dSamusMainMotion_0x0CB8[] = {
-	ftMotionCommandLoopBegin(3),
-	ftMotionCommandEffect(0, 10, 0, 0, 0, 200, 200, 200, 200),
-	ftMotionCommandWait(10),
-	ftMotionCommandLoopEnd(),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 100, 0, 0),
-	ftMotionCommandGoto(dSamusMainMotion_0x0CB8),
-	ftMotionCommandSetSlopeContour(3),
 	ftMotionPlayVoice(577),
-};
 #endif
+};
 
 u32 dSamusMainMotion_0x0CF4[] = {
 	ftMotionCommandEffect(0, 90, 0, 0, 150, 0, 200, 300, 200),
@@ -1179,44 +1033,23 @@ FTThrowHitDesc dSamusMainMotion_0x0D34[] = {
 	{ -1, 8, 361, 100, 0, 0, 0 },
 };
 
+u32 dSamusMainMotion_0x0D6C[] = {
+	ftMotionCommandSetSlopeContour(3),
+	ftMotionCommandSetThrow((u32)dSamusMainMotion_0x0D34),
+	ftMotionCommandSubroutine(dSamusMainMotion_0x0D10),
+	ftMotionCommandLoopBegin(5),
+	ftMotionCommandWait(4),
+	ftMotionCommandEffect(16, 31, 0, 150, 0, 0, 100, 100, 100),
+	ftMotionCommandLoopEnd(),
+	ftMotionCommandMakeRumble(16, 9),
+	ftMotionCommandMakeAttackColl(0, 0, 36, 1, 1, 0, 210, 0, 0, 0, 361, 100, 0, 3, 0, 1, 0, 0),
+	ftMotionCommandMakeAttackColl(1, 0, 36, 1, 1, 0, 160, 0, 0, 200, 361, 100, 0, 3, 0, 1, 0, 0),
+	ftMotionCommandEffect(0, 16, 0, 0, 0, -100, 0, 0, 0),
 #if defined(REGION_JP)
-u32 dSamusMainMotion_0x0D6C[] = {
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandSetThrow((u32)dSamusMainMotion_0x0D34),
-	ftMotionCommandSubroutine(dSamusMainMotion_0x0D10),
-	ftMotionCommandLoopBegin(5),
-	ftMotionCommandWait(4),
-	ftMotionCommandEffect(16, 31, 0, 150, 0, 0, 100, 100, 100),
-	ftMotionCommandLoopEnd(),
-	ftMotionCommandMakeRumble(16, 9),
-	ftMotionCommandMakeAttackColl(0, 0, 36, 1, 1, 0, 210, 0, 0, 0, 361, 100, 0, 3, 0, 1, 0, 0),
-	ftMotionCommandMakeAttackColl(1, 0, 36, 1, 1, 0, 160, 0, 0, 200, 361, 100, 0, 3, 0, 1, 0, 0),
-	ftMotionCommandEffect(0, 16, 0, 0, 0, -100, 0, 0, 0),
 	ftMotionPlayFGM(238),
-	ftMotionCommandSetFlag1(17),
-	ftMotionCommandSetFlag2(9),
-	ftMotionCommandLoopBegin(5),
-	ftMotionCommandWait(3),
-	ftMotionCommandEffect(36, 31, 0, 150, 0, 0, 100, 100, 100),
-	ftMotionCommandLoopEnd(),
-	ftMotionCommandWait(4),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x0D6C[] = {
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandSetThrow((u32)dSamusMainMotion_0x0D34),
-	ftMotionCommandSubroutine(dSamusMainMotion_0x0D10),
-	ftMotionCommandLoopBegin(5),
-	ftMotionCommandWait(4),
-	ftMotionCommandEffect(16, 31, 0, 150, 0, 0, 100, 100, 100),
-	ftMotionCommandLoopEnd(),
-	ftMotionCommandMakeRumble(16, 9),
-	ftMotionCommandMakeAttackColl(0, 0, 36, 1, 1, 0, 210, 0, 0, 0, 361, 100, 0, 3, 0, 1, 0, 0),
-	ftMotionCommandMakeAttackColl(1, 0, 36, 1, 1, 0, 160, 0, 0, 200, 361, 100, 0, 3, 0, 1, 0, 0),
-	ftMotionCommandEffect(0, 16, 0, 0, 0, -100, 0, 0, 0),
 	ftMotionPlayFGM(248),
+#endif
 	ftMotionCommandSetFlag1(17),
 	ftMotionCommandSetFlag2(9),
 	ftMotionCommandLoopBegin(5),
@@ -1227,7 +1060,6 @@ u32 dSamusMainMotion_0x0D6C[] = {
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
 };
-#endif
 
 u32 dSamusMainMotion_0x0E0C[] = {
 	ftMotionPlayFGM(19),
@@ -1241,78 +1073,58 @@ FTThrowHitDesc dSamusMainMotion_0x0E20[] = {
 	{ -1, 8, 361, 100, 0, 0, 0 },
 };
 
+u32 dSamusMainMotion_0x0E58[] = {
+	ftMotionCommandSetThrow((u32)dSamusMainMotion_0x0E20),
+	ftMotionCommandSubroutine(dSamusMainMotion_0x0D10),
+	ftMotionCommandWait(4),
+	ftMotionCommandSetHitStatusAll(2),
+	ftMotionCommandWaitAsync(9),
 #if defined(REGION_JP)
-u32 dSamusMainMotion_0x0E58[] = {
-	ftMotionCommandSetThrow((u32)dSamusMainMotion_0x0E20),
-	ftMotionCommandSubroutine(dSamusMainMotion_0x0D10),
-	ftMotionCommandWait(4),
-	ftMotionCommandSetHitStatusAll(2),
-	ftMotionCommandWaitAsync(9),
 	ftMotionPlayVoice(561),
-	ftMotionPlayFGM(18),
-	ftMotionCommandEffect(0, 31, 0, 0, 200, 280, 0, 0, 0),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
-	ftMotionCommandEffect(127, 33, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandSetFlag2(1),
-	ftMotionCommandSetHitStatusAll(1),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x0E58[] = {
-	ftMotionCommandSetThrow((u32)dSamusMainMotion_0x0E20),
-	ftMotionCommandSubroutine(dSamusMainMotion_0x0D10),
-	ftMotionCommandWait(4),
-	ftMotionCommandSetHitStatusAll(2),
-	ftMotionCommandWaitAsync(9),
 	ftMotionPlayVoice(573),
+#endif
 	ftMotionPlayFGM(18),
 	ftMotionCommandEffect(0, 31, 0, 0, 200, 280, 0, 0, 0),
 	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
+#if defined(REGION_JP)
+	ftMotionCommandEffect(127, 33, 0, 0, 0, 0, 0, 0, 0),
+#else
 	ftMotionCommandEffect(-1, 33, 0, 0, 0, 0, 0, 0, 0),
+#endif
 	ftMotionCommandSetFlag2(1),
 	ftMotionCommandSetHitStatusAll(1),
 	ftMotionCommandEnd(),
 };
-#endif
 
 FTThrowHitDesc dSamusMainMotion_0x0EB8[] = {
 	{ 52, 18, 40, 60, 0, 90, 2 },
 	{ -1, 8, 361, 100, 0, 0, 0 },
 };
 
+u32 dSamusMainMotion_0x0EF0[] = {
+	ftMotionCommandSetThrow((u32)dSamusMainMotion_0x0EB8),
+	ftMotionCommandSubroutine(dSamusMainMotion_0x0D10),
+	ftMotionCommandWait(4),
+	ftMotionCommandSetHitStatusAll(2),
+	ftMotionCommandWaitAsync(9),
 #if defined(REGION_JP)
-u32 dSamusMainMotion_0x0EF0[] = {
-	ftMotionCommandSetThrow((u32)dSamusMainMotion_0x0EB8),
-	ftMotionCommandSubroutine(dSamusMainMotion_0x0D10),
-	ftMotionCommandWait(4),
-	ftMotionCommandSetHitStatusAll(2),
-	ftMotionCommandWaitAsync(9),
 	ftMotionPlayVoice(561),
-	ftMotionPlayFGM(18),
-	ftMotionCommandEffect(0, 31, 0, 0, 200, 280, 0, 0, 0),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
-	ftMotionCommandEffect(127, 33, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandSetFlag2(2),
-	ftMotionCommandSetHitStatusAll(1),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x0EF0[] = {
-	ftMotionCommandSetThrow((u32)dSamusMainMotion_0x0EB8),
-	ftMotionCommandSubroutine(dSamusMainMotion_0x0D10),
-	ftMotionCommandWait(4),
-	ftMotionCommandSetHitStatusAll(2),
-	ftMotionCommandWaitAsync(9),
 	ftMotionPlayVoice(573),
+#endif
 	ftMotionPlayFGM(18),
 	ftMotionCommandEffect(0, 31, 0, 0, 200, 280, 0, 0, 0),
 	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
+#if defined(REGION_JP)
+	ftMotionCommandEffect(127, 33, 0, 0, 0, 0, 0, 0, 0),
+#else
 	ftMotionCommandEffect(-1, 33, 0, 0, 0, 0, 0, 0, 0),
+#endif
 	ftMotionCommandSetFlag2(2),
 	ftMotionCommandSetHitStatusAll(1),
 	ftMotionCommandEnd(),
 };
-#endif
 
 u32 dSamusMainMotion_0x0F50[] = {
 	ftMotionCommandSubroutine(0x06AC), /* extern */
@@ -1339,86 +1151,63 @@ u32 dSamusMainMotion_0x0F80[] = {
 	ftMotionCommandEnd(),
 };
 
-#if defined(REGION_JP)
 u32 dSamusMainMotion_0x0F8C[] = {
 	ftMotionCommandWait(24),
 	ftMotionCommandMakeRumble(0, 6),
+#if defined(REGION_JP)
 	ftMotionPlayVoice(568),
-	ftMotionCommandWaitAsync(60),
-	ftMotionCommandSetFlag1(1),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x0F8C[] = {
-	ftMotionCommandWait(24),
-	ftMotionCommandMakeRumble(0, 6),
 	ftMotionPlayVoice(580),
+#endif
 	ftMotionCommandWaitAsync(60),
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandEnd(),
 };
-#endif
 
-#if defined(REGION_JP)
 u32 dSamusMainMotion_0x0FA4[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandMakeAttackColl(0, 0, 9, 3, 1, 0, 180, 120, 0, 0, 361, 100, 0, 3, 0, 0, 0, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 8, 3, 1, 0, 180, 60, 0, 0, 361, 100, 0, 3, 0, 0, 0, 0),
 	ftMotionCommandMakeAttackColl(2, 0, 8, 3, 1, 0, 180, -60, 0, 0, 361, 100, 0, 3, 0, 0, 0, 0),
+#if defined(REGION_JP)
 	ftMotionCommandPlayFGMStoreInfo(39),
-	ftMotionCommandWait(2),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandWaitAsync(12),
-	ftMotionCommandSetFlag1(1),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x0FA4[] = {
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandWaitAsync(4),
-	ftMotionCommandMakeAttackColl(0, 0, 9, 3, 1, 0, 180, 120, 0, 0, 361, 100, 0, 3, 0, 0, 0, 0),
-	ftMotionCommandMakeAttackColl(1, 0, 8, 3, 1, 0, 180, 60, 0, 0, 361, 100, 0, 3, 0, 0, 0, 0),
-	ftMotionCommandMakeAttackColl(2, 0, 8, 3, 1, 0, 180, -60, 0, 0, 361, 100, 0, 3, 0, 0, 0, 0),
 	ftMotionCommandPlayFGMStoreInfo(43),
+#endif
 	ftMotionCommandWait(2),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWaitAsync(12),
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandEnd(),
 };
-#endif
 
-#if defined(REGION_JP)
 u32 dSamusMainMotion_0x1000[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(7),
+#if defined(REGION_JP)
 	ftMotionCommandMakeAttackColl(0, 0, 16, 7, 1, 0, 220, 120, 0, 0, 361, 100, 0, 3, 0, 2, 0, 10),
 	ftMotionCommandMakeAttackColl(1, 0, 15, 7, 1, 0, 220, 30, 0, 0, 361, 100, 0, 3, 0, 2, 0, 10),
 	ftMotionCommandPlayFGMStoreInfo(38),
-	ftMotionCommandWait(5),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x1000[] = {
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandWaitAsync(7),
 	ftMotionCommandMakeAttackColl(0, 0, 16, 7, 1, 0, 220, 120, 0, 0, 361, 100, 0, 3, 0, 1, 0, 10),
 	ftMotionCommandMakeAttackColl(1, 0, 15, 7, 1, 0, 220, 30, 0, 0, 361, 100, 0, 3, 0, 1, 0, 10),
 	ftMotionCommandPlayFGMStoreInfo(42),
+#endif
 	ftMotionCommandWait(5),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
 };
-#endif
 
-#if defined(REGION_JP)
 u32 dSamusMainMotion_0x1040[] = {
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandMakeAttackColl(0, 0, 15, 12, 1, 0, 220, 16, 0, 0, 361, 100, 0, 3, 1, 2, 0, 0),
 	ftMotionCommandEffect(0, 19, 0, 0, 0, 0, 0, 0, 0),
+#if defined(REGION_JP)
 	ftMotionCommandPlayFGMStoreInfo(37),
+#else
+	ftMotionCommandPlayFGMStoreInfo(41),
+#endif
 	ftMotionCommandWait(4),
 	ftMotionCommandMakeAttackColl(0, 0, 15, 10, 1, 0, 220, 16, 0, 0, 361, 100, 0, 3, 1, 2, 0, 0),
 	ftMotionCommandWait(16),
@@ -1426,25 +1215,14 @@ u32 dSamusMainMotion_0x1040[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandEnd(),
 };
-#else
-u32 dSamusMainMotion_0x1040[] = {
-	ftMotionCommandWaitAsync(6),
-	ftMotionCommandMakeAttackColl(0, 0, 15, 12, 1, 0, 220, 16, 0, 0, 361, 100, 0, 3, 1, 2, 0, 0),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandPlayFGMStoreInfo(41),
-	ftMotionCommandWait(4),
-	ftMotionCommandMakeAttackColl(0, 0, 15, 10, 1, 0, 220, 16, 0, 0, 361, 100, 0, 3, 1, 2, 0, 0),
-	ftMotionCommandWait(16),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandEnd(),
-};
-#endif
 
-#if defined(REGION_JP)
 u32 dSamusMainMotion_0x1094[] = {
 	ftMotionCommandWaitAsync(7),
+#if defined(REGION_JP)
 	ftMotionCommandPlayFGMStoreInfo(38),
+#else
+	ftMotionCommandPlayFGMStoreInfo(42),
+#endif
 	ftMotionCommandMakeAttackColl(2, 0, 32, 12, 1, 0, 110, 0, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
 	ftMotionCommandMakeAttackColl(1, 0, 33, 12, 1, 0, 200, 0, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
 	ftMotionCommandMakeAttackColl(0, 0, 33, 12, 1, 0, 200, 180, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
@@ -1452,23 +1230,14 @@ u32 dSamusMainMotion_0x1094[] = {
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
 };
-#else
-u32 dSamusMainMotion_0x1094[] = {
-	ftMotionCommandWaitAsync(7),
-	ftMotionCommandPlayFGMStoreInfo(42),
-	ftMotionCommandMakeAttackColl(2, 0, 32, 12, 1, 0, 110, 0, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
-	ftMotionCommandMakeAttackColl(1, 0, 33, 12, 1, 0, 200, 0, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
-	ftMotionCommandMakeAttackColl(0, 0, 33, 12, 1, 0, 200, 180, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
-	ftMotionCommandWait(5),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-#endif
 
-#if defined(REGION_JP)
 u32 dSamusMainMotion_0x10E4[] = {
 	ftMotionCommandWaitAsync(7),
+#if defined(REGION_JP)
 	ftMotionCommandPlayFGMStoreInfo(38),
+#else
+	ftMotionCommandPlayFGMStoreInfo(42),
+#endif
 	ftMotionCommandMakeAttackColl(2, 0, 32, 11, 1, 0, 110, 0, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
 	ftMotionCommandMakeAttackColl(1, 0, 33, 11, 1, 0, 200, 0, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
 	ftMotionCommandMakeAttackColl(0, 0, 33, 11, 1, 0, 200, 180, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
@@ -1476,23 +1245,14 @@ u32 dSamusMainMotion_0x10E4[] = {
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
 };
-#else
-u32 dSamusMainMotion_0x10E4[] = {
-	ftMotionCommandWaitAsync(7),
-	ftMotionCommandPlayFGMStoreInfo(42),
-	ftMotionCommandMakeAttackColl(2, 0, 32, 11, 1, 0, 110, 0, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
-	ftMotionCommandMakeAttackColl(1, 0, 33, 11, 1, 0, 200, 0, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
-	ftMotionCommandMakeAttackColl(0, 0, 33, 11, 1, 0, 200, 180, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
-	ftMotionCommandWait(5),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-#endif
 
-#if defined(REGION_JP)
 u32 dSamusMainMotion_0x1134[] = {
 	ftMotionCommandWaitAsync(7),
+#if defined(REGION_JP)
 	ftMotionCommandPlayFGMStoreInfo(38),
+#else
+	ftMotionCommandPlayFGMStoreInfo(42),
+#endif
 	ftMotionCommandMakeAttackColl(2, 0, 32, 10, 1, 0, 110, 0, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
 	ftMotionCommandMakeAttackColl(1, 0, 33, 10, 1, 0, 200, 0, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
 	ftMotionCommandMakeAttackColl(0, 0, 33, 10, 1, 0, 200, 180, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
@@ -1500,130 +1260,78 @@ u32 dSamusMainMotion_0x1134[] = {
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
 };
-#else
-u32 dSamusMainMotion_0x1134[] = {
-	ftMotionCommandWaitAsync(7),
-	ftMotionCommandPlayFGMStoreInfo(42),
-	ftMotionCommandMakeAttackColl(2, 0, 32, 10, 1, 0, 110, 0, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
-	ftMotionCommandMakeAttackColl(1, 0, 33, 10, 1, 0, 200, 0, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
-	ftMotionCommandMakeAttackColl(0, 0, 33, 10, 1, 0, 200, 180, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
-	ftMotionCommandWait(5),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-#endif
 
-#if defined(REGION_JP)
 u32 dSamusMainMotion_0x1184[] = {
 	ftMotionCommandWaitAsync(7),
-	ftMotionCommandPlayFGMStoreInfo(38),
-	ftMotionCommandMakeAttackColl(2, 0, 32, 9, 1, 0, 110, 0, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
-	ftMotionCommandMakeAttackColl(1, 0, 33, 9, 1, 0, 200, 0, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
-	ftMotionCommandMakeAttackColl(0, 0, 33, 9, 1, 0, 200, 180, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
-	ftMotionCommandWait(5),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-#else
-u32 dSamusMainMotion_0x1184[] = {
-	ftMotionCommandWaitAsync(7),
-	ftMotionCommandPlayFGMStoreInfo(42),
-	ftMotionCommandMakeAttackColl(2, 0, 32, 9, 1, 0, 110, 0, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
-	ftMotionCommandMakeAttackColl(1, 0, 33, 9, 1, 0, 200, 0, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
-	ftMotionCommandMakeAttackColl(0, 0, 33, 9, 1, 0, 200, 180, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
-	ftMotionCommandWait(5),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-#endif
-
 #if defined(REGION_JP)
+	ftMotionCommandPlayFGMStoreInfo(38),
+#else
+	ftMotionCommandPlayFGMStoreInfo(42),
+#endif
+	ftMotionCommandMakeAttackColl(2, 0, 32, 9, 1, 0, 110, 0, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
+	ftMotionCommandMakeAttackColl(1, 0, 33, 9, 1, 0, 200, 0, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
+	ftMotionCommandMakeAttackColl(0, 0, 33, 9, 1, 0, 200, 180, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
+	ftMotionCommandWait(5),
+	ftMotionCommandClearAttackCollAll(),
+	ftMotionCommandEnd(),
+};
+
 u32 dSamusMainMotion_0x11D4[] = {
 	ftMotionCommandWaitAsync(7),
-	ftMotionCommandPlayFGMStoreInfo(38),
-	ftMotionCommandMakeAttackColl(2, 0, 32, 9, 1, 0, 110, 0, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
-	ftMotionCommandMakeAttackColl(1, 0, 33, 9, 1, 0, 200, 0, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
-	ftMotionCommandMakeAttackColl(0, 0, 33, 9, 1, 0, 200, 180, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
-	ftMotionCommandWait(5),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-#else
-u32 dSamusMainMotion_0x11D4[] = {
-	ftMotionCommandWaitAsync(7),
-	ftMotionCommandPlayFGMStoreInfo(42),
-	ftMotionCommandMakeAttackColl(2, 0, 32, 9, 1, 0, 110, 0, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
-	ftMotionCommandMakeAttackColl(1, 0, 33, 9, 1, 0, 200, 0, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
-	ftMotionCommandMakeAttackColl(0, 0, 33, 9, 1, 0, 200, 180, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
-	ftMotionCommandWait(5),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-#endif
-
 #if defined(REGION_JP)
+	ftMotionCommandPlayFGMStoreInfo(38),
+#else
+	ftMotionCommandPlayFGMStoreInfo(42),
+#endif
+	ftMotionCommandMakeAttackColl(2, 0, 32, 9, 1, 0, 110, 0, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
+	ftMotionCommandMakeAttackColl(1, 0, 33, 9, 1, 0, 200, 0, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
+	ftMotionCommandMakeAttackColl(0, 0, 33, 9, 1, 0, 200, 180, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
+	ftMotionCommandWait(5),
+	ftMotionCommandClearAttackCollAll(),
+	ftMotionCommandEnd(),
+};
+
 u32 dSamusMainMotion_0x1224[] = {
 	ftMotionCommandWaitAsync(8),
 	ftMotionCommandMakeAttackColl(0, 0, 33, 8, 1, 0, 200, -20, 0, 0, 361, 100, 0, 3, 0, 1, 1, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 33, 8, 1, 0, 200, 180, 0, 0, 361, 100, 0, 3, 0, 1, 1, 0),
+#if defined(REGION_JP)
 	ftMotionCommandPlayFGMStoreInfo(38),
+#else
+	ftMotionCommandPlayFGMStoreInfo(42),
+#endif
 	ftMotionCommandWait(17),
 	ftMotionCommandMakeAttackColl(0, 0, 33, 13, 1, 0, 300, -20, 0, 0, 361, 100, 0, 3, 0, 2, 1, 5),
 	ftMotionCommandMakeAttackColl(1, 0, 33, 13, 1, 0, 300, 180, 0, 0, 361, 100, 0, 3, 0, 2, 1, 5),
+#if defined(REGION_JP)
 	ftMotionCommandPlayFGMStoreInfo(37),
-	ftMotionCommandEffect(33, 31, 0, 100, 0, 0, 0, 0, 0),
-	ftMotionCommandWait(5),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x1224[] = {
-	ftMotionCommandWaitAsync(8),
-	ftMotionCommandMakeAttackColl(0, 0, 33, 8, 1, 0, 200, -20, 0, 0, 361, 100, 0, 3, 0, 1, 1, 0),
-	ftMotionCommandMakeAttackColl(1, 0, 33, 8, 1, 0, 200, 180, 0, 0, 361, 100, 0, 3, 0, 1, 1, 0),
-	ftMotionCommandPlayFGMStoreInfo(42),
-	ftMotionCommandWait(17),
-	ftMotionCommandMakeAttackColl(0, 0, 33, 13, 1, 0, 300, -20, 0, 0, 361, 100, 0, 3, 0, 2, 1, 5),
-	ftMotionCommandMakeAttackColl(1, 0, 33, 13, 1, 0, 300, 180, 0, 0, 361, 100, 0, 3, 0, 2, 1, 5),
 	ftMotionCommandPlayFGMStoreInfo(41),
+#endif
 	ftMotionCommandEffect(33, 31, 0, 100, 0, 0, 0, 0, 0),
 	ftMotionCommandWait(5),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
 };
-#endif
 
-#if defined(REGION_JP)
 u32 dSamusMainMotion_0x12A0[] = {
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandSetModelPartID(10, 1),
 	ftMotionCommandWaitAsync(8),
 	ftMotionCommandMakeAttackColl(0, 0, 33, 13, 1, 0, 200, -40, 0, 0, 40, 100, 0, 3, 0, 1, 1, 10),
 	ftMotionCommandMakeAttackColl(1, 0, 33, 13, 1, 0, 200, 180, 0, 0, 40, 100, 0, 3, 0, 1, 1, 10),
+#if defined(REGION_JP)
 	ftMotionCommandPlayFGMStoreInfo(38),
-	ftMotionCommandWait(5),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandWaitAsync(30),
-	ftMotionCommandSetSlopeContour(1),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x12A0[] = {
-	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandSetModelPartID(10, 1),
-	ftMotionCommandWaitAsync(8),
-	ftMotionCommandMakeAttackColl(0, 0, 33, 13, 1, 0, 200, -40, 0, 0, 40, 100, 0, 3, 0, 1, 1, 10),
-	ftMotionCommandMakeAttackColl(1, 0, 33, 13, 1, 0, 200, 180, 0, 0, 40, 100, 0, 3, 0, 1, 1, 10),
 	ftMotionCommandPlayFGMStoreInfo(42),
+#endif
 	ftMotionCommandWait(5),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWaitAsync(30),
 	ftMotionCommandSetSlopeContour(1),
 	ftMotionCommandEnd(),
 };
-#endif
 
-#if defined(REGION_JP)
 u32 dSamusMainMotion_0x12EC[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(8),
@@ -1634,30 +1342,16 @@ u32 dSamusMainMotion_0x12EC[] = {
 	ftMotionCommandMakeAttackColl(2, 0, 8, 20, 1, 0, 150, 0, 0, 0, 40, 100, 0, 3, 0, 2, 0, 15),
 	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
 	ftMotionCommandPlaySmashVoice(0),
-	ftMotionCommandPlayFGMStoreInfo(37),
-	ftMotionCommandWait(4),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-#else
-u32 dSamusMainMotion_0x12EC[] = {
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandWaitAsync(8),
-	ftMotionCommandEffect(16, 31, 0, 120, 0, 0, 0, 0, 0),
-	ftMotionCommandWaitAsync(12),
-	ftMotionCommandMakeAttackColl(0, 0, 16, 20, 1, 0, 210, -80, 0, 0, 361, 100, 0, 3, 0, 2, 0, 15),
-	ftMotionCommandMakeAttackColl(1, 0, 16, 20, 1, 0, 240, 120, 0, 0, 361, 100, 0, 3, 0, 2, 0, 15),
-	ftMotionCommandMakeAttackColl(2, 0, 8, 20, 1, 0, 150, 0, 0, 0, 40, 100, 0, 3, 0, 2, 0, 15),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
-	ftMotionCommandPlaySmashVoice(0),
-	ftMotionCommandPlayFGMStoreInfo(41),
-	ftMotionCommandWait(4),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-#endif
-
 #if defined(REGION_JP)
+	ftMotionCommandPlayFGMStoreInfo(37),
+#else
+	ftMotionCommandPlayFGMStoreInfo(41),
+#endif
+	ftMotionCommandWait(4),
+	ftMotionCommandClearAttackCollAll(),
+	ftMotionCommandEnd(),
+};
+
 u32 dSamusMainMotion_0x1368[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(8),
@@ -1668,30 +1362,16 @@ u32 dSamusMainMotion_0x1368[] = {
 	ftMotionCommandMakeAttackColl(2, 0, 8, 19, 1, 0, 150, 0, 0, 0, 40, 100, 0, 3, 0, 2, 0, 15),
 	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
 	ftMotionCommandPlaySmashVoice(0),
-	ftMotionCommandPlayFGMStoreInfo(37),
-	ftMotionCommandWait(4),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-#else
-u32 dSamusMainMotion_0x1368[] = {
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandWaitAsync(8),
-	ftMotionCommandEffect(16, 31, 0, 120, 0, 0, 0, 0, 0),
-	ftMotionCommandWaitAsync(12),
-	ftMotionCommandMakeAttackColl(0, 0, 16, 19, 1, 0, 210, -80, 0, 0, 361, 100, 0, 3, 0, 2, 0, 15),
-	ftMotionCommandMakeAttackColl(1, 0, 16, 19, 1, 0, 240, 120, 0, 0, 361, 100, 0, 3, 0, 2, 0, 15),
-	ftMotionCommandMakeAttackColl(2, 0, 8, 19, 1, 0, 150, 0, 0, 0, 40, 100, 0, 3, 0, 2, 0, 15),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
-	ftMotionCommandPlaySmashVoice(0),
-	ftMotionCommandPlayFGMStoreInfo(41),
-	ftMotionCommandWait(4),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-#endif
-
 #if defined(REGION_JP)
+	ftMotionCommandPlayFGMStoreInfo(37),
+#else
+	ftMotionCommandPlayFGMStoreInfo(41),
+#endif
+	ftMotionCommandWait(4),
+	ftMotionCommandClearAttackCollAll(),
+	ftMotionCommandEnd(),
+};
+
 u32 dSamusMainMotion_0x13E4[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(8),
@@ -1701,31 +1381,17 @@ u32 dSamusMainMotion_0x13E4[] = {
 	ftMotionCommandMakeAttackColl(1, 0, 16, 18, 1, 0, 240, 120, 0, 0, 361, 100, 0, 3, 0, 2, 0, 15),
 	ftMotionCommandMakeAttackColl(2, 0, 8, 18, 1, 0, 150, 0, 0, 0, 40, 100, 0, 3, 0, 2, 0, 15),
 	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
-	ftMotionCommandPlayFGMStoreInfo(37),
-	ftMotionCommandPlaySmashVoice(0),
-	ftMotionCommandWait(4),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-#else
-u32 dSamusMainMotion_0x13E4[] = {
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandWaitAsync(8),
-	ftMotionCommandEffect(16, 31, 0, 120, 0, 0, 0, 0, 0),
-	ftMotionCommandWaitAsync(12),
-	ftMotionCommandMakeAttackColl(0, 0, 16, 18, 1, 0, 210, -80, 0, 0, 361, 100, 0, 3, 0, 2, 0, 15),
-	ftMotionCommandMakeAttackColl(1, 0, 16, 18, 1, 0, 240, 120, 0, 0, 361, 100, 0, 3, 0, 2, 0, 15),
-	ftMotionCommandMakeAttackColl(2, 0, 8, 18, 1, 0, 150, 0, 0, 0, 40, 100, 0, 3, 0, 2, 0, 15),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
-	ftMotionCommandPlayFGMStoreInfo(41),
-	ftMotionCommandPlaySmashVoice(0),
-	ftMotionCommandWait(4),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-#endif
-
 #if defined(REGION_JP)
+	ftMotionCommandPlayFGMStoreInfo(37),
+#else
+	ftMotionCommandPlayFGMStoreInfo(41),
+#endif
+	ftMotionCommandPlaySmashVoice(0),
+	ftMotionCommandWait(4),
+	ftMotionCommandClearAttackCollAll(),
+	ftMotionCommandEnd(),
+};
+
 u32 dSamusMainMotion_0x1460[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(8),
@@ -1735,31 +1401,17 @@ u32 dSamusMainMotion_0x1460[] = {
 	ftMotionCommandMakeAttackColl(1, 0, 16, 17, 1, 0, 240, 120, 0, 0, 361, 100, 0, 3, 0, 2, 0, 15),
 	ftMotionCommandMakeAttackColl(2, 0, 8, 17, 1, 0, 150, 0, 0, 0, 40, 100, 0, 3, 0, 2, 0, 15),
 	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
-	ftMotionCommandPlayFGMStoreInfo(37),
-	ftMotionCommandPlaySmashVoice(0),
-	ftMotionCommandWait(4),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-#else
-u32 dSamusMainMotion_0x1460[] = {
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandWaitAsync(8),
-	ftMotionCommandEffect(16, 31, 0, 120, 0, 0, 0, 0, 0),
-	ftMotionCommandWaitAsync(12),
-	ftMotionCommandMakeAttackColl(0, 0, 16, 17, 1, 0, 210, -80, 0, 0, 361, 100, 0, 3, 0, 2, 0, 15),
-	ftMotionCommandMakeAttackColl(1, 0, 16, 17, 1, 0, 240, 120, 0, 0, 361, 100, 0, 3, 0, 2, 0, 15),
-	ftMotionCommandMakeAttackColl(2, 0, 8, 17, 1, 0, 150, 0, 0, 0, 40, 100, 0, 3, 0, 2, 0, 15),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
-	ftMotionCommandPlayFGMStoreInfo(41),
-	ftMotionCommandPlaySmashVoice(0),
-	ftMotionCommandWait(4),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-#endif
-
 #if defined(REGION_JP)
+	ftMotionCommandPlayFGMStoreInfo(37),
+#else
+	ftMotionCommandPlayFGMStoreInfo(41),
+#endif
+	ftMotionCommandPlaySmashVoice(0),
+	ftMotionCommandWait(4),
+	ftMotionCommandClearAttackCollAll(),
+	ftMotionCommandEnd(),
+};
+
 u32 dSamusMainMotion_0x14DC[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(8),
@@ -1769,143 +1421,133 @@ u32 dSamusMainMotion_0x14DC[] = {
 	ftMotionCommandMakeAttackColl(1, 0, 16, 16, 1, 0, 240, 120, 0, 0, 361, 100, 0, 3, 0, 2, 0, 15),
 	ftMotionCommandMakeAttackColl(2, 0, 8, 16, 1, 0, 150, 0, 0, 0, 40, 100, 0, 3, 0, 2, 0, 15),
 	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
-	ftMotionCommandPlayFGMStoreInfo(37),
-	ftMotionCommandPlaySmashVoice(0),
-	ftMotionCommandWait(4),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-#else
-u32 dSamusMainMotion_0x14DC[] = {
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandWaitAsync(8),
-	ftMotionCommandEffect(16, 31, 0, 120, 0, 0, 0, 0, 0),
-	ftMotionCommandWaitAsync(12),
-	ftMotionCommandMakeAttackColl(0, 0, 16, 16, 1, 0, 210, -80, 0, 0, 361, 100, 0, 3, 0, 2, 0, 15),
-	ftMotionCommandMakeAttackColl(1, 0, 16, 16, 1, 0, 240, 120, 0, 0, 361, 100, 0, 3, 0, 2, 0, 15),
-	ftMotionCommandMakeAttackColl(2, 0, 8, 16, 1, 0, 150, 0, 0, 0, 40, 100, 0, 3, 0, 2, 0, 15),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
-	ftMotionCommandPlayFGMStoreInfo(41),
-	ftMotionCommandPlaySmashVoice(0),
-	ftMotionCommandWait(4),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-#endif
-
 #if defined(REGION_JP)
+	ftMotionCommandPlayFGMStoreInfo(37),
+#else
+	ftMotionCommandPlayFGMStoreInfo(41),
+#endif
+	ftMotionCommandPlaySmashVoice(0),
+	ftMotionCommandWait(4),
+	ftMotionCommandClearAttackCollAll(),
+	ftMotionCommandEnd(),
+};
+
 u32 dSamusMainMotion_0x1558[] = {
 	ftMotionCommandSetSlopeContour(3),
+#if defined(REGION_JP)
 	ftMotionPlayVoice(566),
+#else
+	ftMotionPlayVoice(578),
+#endif
 	ftMotionCommandWaitAsync(8),
 	ftMotionCommandEffect(16, 31, 0, 60, 0, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(17),
+#if defined(REGION_JP)
 	ftMotionCommandMakeAttackColl(0, 0, 16, 10, 1, 1, 190, -80, 0, 0, 80, 100, 0, 3, 1, 2, 3, 10),
 	ftMotionCommandMakeAttackColl(1, 0, 16, 10, 1, 1, 370, 200, 0, 0, 80, 100, 0, 3, 1, 2, 3, 10),
-	ftMotionCommandEffect(16, 28, 0, 300, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -180, 0, 0, 0),
-	ftMotionCommandEffect(127, 37, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandMakeRumble(6, 7),
-	ftMotionCommandPlayFGMStoreInfo(2),
-	ftMotionCommandWait(2),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandWait(2),
-	ftMotionCommandRefreshAttackCollID(0),
-	ftMotionCommandRefreshAttackCollID(1),
-	ftMotionCommandEffect(16, 28, 0, 300, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(127, 37, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandMakeRumble(6, 7),
-	ftMotionCommandPlayFGMStoreInfo(2),
-	ftMotionCommandWait(2),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandWait(2),
-	ftMotionCommandRefreshAttackCollID(0),
-	ftMotionCommandRefreshAttackCollID(1),
-	ftMotionCommandEffect(16, 28, 0, 300, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(127, 37, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandMakeRumble(6, 7),
-	ftMotionCommandPlayFGMStoreInfo(2),
-	ftMotionCommandWait(2),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandWait(2),
-	ftMotionCommandRefreshAttackCollID(0),
-	ftMotionCommandRefreshAttackCollID(1),
-	ftMotionCommandEffect(16, 28, 0, 300, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(127, 37, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandMakeRumble(6, 7),
-	ftMotionCommandPlayFGMStoreInfo(2),
-	ftMotionCommandWait(2),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandWait(2),
-	ftMotionCommandRefreshAttackCollID(0),
-	ftMotionCommandRefreshAttackCollID(1),
-	ftMotionCommandEffect(16, 28, 0, 300, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -180, 0, 0, 0),
-	ftMotionCommandEffect(127, 37, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandMakeRumble(6, 7),
-	ftMotionCommandPlayFGMStoreInfo(2),
-	ftMotionCommandWait(2),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x1558[] = {
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionPlayVoice(578),
-	ftMotionCommandWaitAsync(8),
-	ftMotionCommandEffect(16, 31, 0, 60, 0, 0, 0, 0, 0),
-	ftMotionCommandWaitAsync(17),
 	ftMotionCommandMakeAttackColl(0, 0, 16, 10, 1, 1, 190, -80, 0, 0, 80, 100, 0, 3, 1, 2, 3, 22),
 	ftMotionCommandMakeAttackColl(1, 0, 16, 10, 1, 1, 400, 200, 0, 0, 80, 100, 0, 3, 1, 2, 3, 22),
+#endif
 	ftMotionCommandEffect(16, 28, 0, 300, 0, 0, 0, 0, 0),
 	ftMotionCommandEffect(0, 19, 0, 0, 0, -180, 0, 0, 0),
+#if defined(REGION_JP)
+	ftMotionCommandEffect(127, 37, 0, 0, 0, 0, 0, 0, 0),
+#else
 	ftMotionCommandEffect(-1, 37, 0, 0, 0, 0, 0, 0, 0),
+#endif
 	ftMotionCommandMakeRumble(6, 7),
 	ftMotionCommandPlayFGMStoreInfo(2),
+#if defined(REGION_JP)
+	ftMotionCommandWait(2),
+#else
 	ftMotionCommandWait(3),
+#endif
 	ftMotionCommandClearAttackCollAll(),
+#if defined(REGION_JP)
+	ftMotionCommandWait(2),
+#else
 	ftMotionCommandWait(1),
+#endif
 	ftMotionCommandRefreshAttackCollID(0),
 	ftMotionCommandRefreshAttackCollID(1),
 	ftMotionCommandEffect(16, 28, 0, 300, 0, 0, 0, 0, 0),
+#if defined(REGION_JP)
+	ftMotionCommandEffect(127, 37, 0, 0, 0, 0, 0, 0, 0),
+#else
 	ftMotionCommandEffect(-1, 37, 0, 0, 0, 0, 0, 0, 0),
+#endif
 	ftMotionCommandMakeRumble(6, 7),
 	ftMotionCommandPlayFGMStoreInfo(2),
+#if defined(REGION_JP)
+	ftMotionCommandWait(2),
+#else
 	ftMotionCommandWait(3),
+#endif
 	ftMotionCommandClearAttackCollAll(),
+#if defined(REGION_JP)
+	ftMotionCommandWait(2),
+#else
 	ftMotionCommandWait(1),
+#endif
 	ftMotionCommandRefreshAttackCollID(0),
 	ftMotionCommandRefreshAttackCollID(1),
 	ftMotionCommandEffect(16, 28, 0, 300, 0, 0, 0, 0, 0),
+#if defined(REGION_JP)
+	ftMotionCommandEffect(127, 37, 0, 0, 0, 0, 0, 0, 0),
+#else
 	ftMotionCommandEffect(-1, 37, 0, 0, 0, 0, 0, 0, 0),
+#endif
 	ftMotionCommandMakeRumble(6, 7),
 	ftMotionCommandPlayFGMStoreInfo(2),
+#if defined(REGION_JP)
+	ftMotionCommandWait(2),
+#else
 	ftMotionCommandWait(3),
+#endif
 	ftMotionCommandClearAttackCollAll(),
+#if defined(REGION_JP)
+	ftMotionCommandWait(2),
+#else
 	ftMotionCommandWait(1),
+#endif
 	ftMotionCommandRefreshAttackCollID(0),
 	ftMotionCommandRefreshAttackCollID(1),
 	ftMotionCommandEffect(16, 28, 0, 300, 0, 0, 0, 0, 0),
+#if defined(REGION_JP)
+	ftMotionCommandEffect(127, 37, 0, 0, 0, 0, 0, 0, 0),
+#else
 	ftMotionCommandEffect(-1, 37, 0, 0, 0, 0, 0, 0, 0),
+#endif
 	ftMotionCommandMakeRumble(6, 7),
 	ftMotionCommandPlayFGMStoreInfo(2),
+#if defined(REGION_JP)
+	ftMotionCommandWait(2),
+#else
 	ftMotionCommandWait(3),
+#endif
 	ftMotionCommandClearAttackCollAll(),
+#if defined(REGION_JP)
+	ftMotionCommandWait(2),
+#else
 	ftMotionCommandWait(1),
+#endif
 	ftMotionCommandRefreshAttackCollID(0),
 	ftMotionCommandRefreshAttackCollID(1),
 	ftMotionCommandEffect(16, 28, 0, 300, 0, 0, 0, 0, 0),
 	ftMotionCommandEffect(0, 19, 0, 0, 0, -180, 0, 0, 0),
+#if defined(REGION_JP)
+	ftMotionCommandEffect(127, 37, 0, 0, 0, 0, 0, 0, 0),
+#else
 	ftMotionCommandEffect(-1, 37, 0, 0, 0, 0, 0, 0, 0),
+#endif
 	ftMotionCommandMakeRumble(6, 7),
 	ftMotionCommandPlayFGMStoreInfo(2),
 	ftMotionCommandWait(2),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
 };
-#endif
 
-#if defined(REGION_JP)
 u32 dSamusMainMotion_0x16E4[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandPlaySmashVoice(0),
@@ -1915,66 +1557,38 @@ u32 dSamusMainMotion_0x16E4[] = {
 	ftMotionCommandMakeAttackColl(1, 0, 33, 16, 1, 0, 240, 220, 0, 0, 60, 80, 0, 3, 0, 2, 1, 35),
 	ftMotionCommandEffect(33, 31, 0, 220, 0, 0, 0, 0, 0),
 	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+#if defined(REGION_JP)
 	ftMotionCommandPlayFGMStoreInfo(37),
-	ftMotionCommandWait(5),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandWait(6),
-	ftMotionCommandMakeAttackColl(0, 0, 33, 14, 1, 0, 210, -60, 0, 0, 60, 80, 0, 3, 0, 1, 1, 35),
-	ftMotionCommandMakeAttackColl(1, 0, 33, 14, 1, 0, 240, 220, 0, 0, 60, 80, 0, 3, 0, 1, 1, 35),
-	ftMotionCommandPlayFGMStoreInfo(38),
-	ftMotionCommandWait(4),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandWaitAsync(31),
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x16E4[] = {
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandPlaySmashVoice(0),
-	ftMotionCommandWaitAsync(8),
-	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandMakeAttackColl(0, 0, 33, 16, 1, 0, 210, -60, 0, 0, 60, 80, 0, 3, 0, 2, 1, 35),
-	ftMotionCommandMakeAttackColl(1, 0, 33, 16, 1, 0, 240, 220, 0, 0, 60, 80, 0, 3, 0, 2, 1, 35),
-	ftMotionCommandEffect(33, 31, 0, 220, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandPlayFGMStoreInfo(41),
+#endif
 	ftMotionCommandWait(5),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWait(6),
 	ftMotionCommandMakeAttackColl(0, 0, 33, 14, 1, 0, 210, -60, 0, 0, 60, 80, 0, 3, 0, 1, 1, 35),
 	ftMotionCommandMakeAttackColl(1, 0, 33, 14, 1, 0, 240, 220, 0, 0, 60, 80, 0, 3, 0, 1, 1, 35),
+#if defined(REGION_JP)
+	ftMotionCommandPlayFGMStoreInfo(38),
+#else
 	ftMotionCommandPlayFGMStoreInfo(42),
+#endif
 	ftMotionCommandWait(4),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWaitAsync(31),
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandEnd(),
 };
-#endif
 
+u32 dSamusMainMotion_0x178C[] = {
+	ftMotionCommandWaitAsync(4),
+	ftMotionCommandSetFlag1(50),
+	ftMotionCommandMakeAttackColl(0, 0, 27, 16, 1, 0, 240, -30, 0, 0, 361, 100, 0, 3, 0, 2, 1, 10),
+	ftMotionCommandMakeAttackColl(1, 0, 33, 16, 1, 0, 280, 50, 0, 0, 361, 100, 0, 3, 0, 2, 1, 10),
 #if defined(REGION_JP)
-u32 dSamusMainMotion_0x178C[] = {
-	ftMotionCommandWaitAsync(4),
-	ftMotionCommandSetFlag1(50),
-	ftMotionCommandMakeAttackColl(0, 0, 27, 16, 1, 0, 240, -30, 0, 0, 361, 100, 0, 3, 0, 2, 1, 10),
-	ftMotionCommandMakeAttackColl(1, 0, 33, 16, 1, 0, 280, 50, 0, 0, 361, 100, 0, 3, 0, 2, 1, 10),
 	ftMotionCommandPlayFGMStoreInfo(38),
-	ftMotionCommandWait(4),
-	ftMotionCommandMakeAttackColl(0, 0, 27, 13, 1, 0, 240, -30, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
-	ftMotionCommandMakeAttackColl(1, 0, 33, 13, 1, 0, 280, 50, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
-	ftMotionCommandWait(20),
-	ftMotionCommandSetFlag1(0),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x178C[] = {
-	ftMotionCommandWaitAsync(4),
-	ftMotionCommandSetFlag1(50),
-	ftMotionCommandMakeAttackColl(0, 0, 27, 16, 1, 0, 240, -30, 0, 0, 361, 100, 0, 3, 0, 2, 1, 10),
-	ftMotionCommandMakeAttackColl(1, 0, 33, 16, 1, 0, 280, 50, 0, 0, 361, 100, 0, 3, 0, 2, 1, 10),
 	ftMotionCommandPlayFGMStoreInfo(42),
+#endif
 	ftMotionCommandWait(4),
 	ftMotionCommandMakeAttackColl(0, 0, 27, 13, 1, 0, 240, -30, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
 	ftMotionCommandMakeAttackColl(1, 0, 33, 13, 1, 0, 280, 50, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
@@ -1983,7 +1597,6 @@ u32 dSamusMainMotion_0x178C[] = {
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
 };
-#endif
 
 u32 dSamusMainMotion_0x17FC[] = {
 	ftMotionCommandWaitAsync(5),
@@ -2029,85 +1642,50 @@ u32 dSamusMainMotion_0x17FC[] = {
 	ftMotionCommandEnd(),
 };
 
-#if defined(REGION_JP)
 u32 dSamusMainMotion_0x1938[] = {
 	ftMotionCommandWaitAsync(5),
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandMakeAttackColl(0, 0, 33, 14, 1, 0, 240, -30, 0, 0, 361, 145, 0, 3, 0, 2, 1, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 33, 14, 1, 0, 260, 110, 0, 0, 361, 145, 0, 3, 0, 2, 1, 0),
+#if defined(REGION_JP)
 	ftMotionCommandPlayFGMStoreInfo(37),
+#else
+	ftMotionCommandPlayFGMStoreInfo(41),
+#endif
 	ftMotionCommandWait(4),
 	ftMotionCommandMakeAttackColl(0, 0, 33, 10, 1, 0, 240, -30, 0, 0, 361, 145, 0, 3, 0, 1, 1, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 33, 10, 1, 0, 260, 110, 0, 0, 361, 145, 0, 3, 0, 1, 1, 0),
+#if defined(REGION_JP)
 	ftMotionCommandPlayFGMStoreInfo(38),
-	ftMotionCommandWait(8),
-	ftMotionCommandSetFlag1(0),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x1938[] = {
-	ftMotionCommandWaitAsync(5),
-	ftMotionCommandSetFlag1(1),
-	ftMotionCommandMakeAttackColl(0, 0, 33, 14, 1, 0, 240, -30, 0, 0, 361, 145, 0, 3, 0, 2, 1, 0),
-	ftMotionCommandMakeAttackColl(1, 0, 33, 14, 1, 0, 260, 110, 0, 0, 361, 145, 0, 3, 0, 2, 1, 0),
-	ftMotionCommandPlayFGMStoreInfo(41),
-	ftMotionCommandWait(4),
-	ftMotionCommandMakeAttackColl(0, 0, 33, 10, 1, 0, 240, -30, 0, 0, 361, 145, 0, 3, 0, 1, 1, 0),
-	ftMotionCommandMakeAttackColl(1, 0, 33, 10, 1, 0, 260, 110, 0, 0, 361, 145, 0, 3, 0, 1, 1, 0),
 	ftMotionCommandPlayFGMStoreInfo(42),
+#endif
 	ftMotionCommandWait(8),
 	ftMotionCommandSetFlag1(0),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
 };
-#endif
 
-#if defined(REGION_JP)
 u32 dSamusMainMotion_0x19AC[] = {
 	ftMotionCommandSetSlopeContour(4),
+#if defined(REGION_JP)
 	ftMotionPlayFGM(77),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandWaitAsync(15),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x19AC[] = {
-	ftMotionCommandSetSlopeContour(4),
 	ftMotionPlayFGM(81),
+#endif
 	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(15),
 	ftMotionCommandEnd(),
 };
-#endif
 
-#if defined(REGION_JP)
 u32 dSamusMainMotion_0x19CC[] = {
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandSetFlag1(1),
+#if defined(REGION_JP)
 	ftMotionPlayVoice(567),
-	ftMotionCommandMakeAttackColl(0, 0, 28, 2, 1, 0, 320, -50, 45, 0, 80, 100, 30, 3, 0, 1, 0, 0),
-	ftMotionCommandMakeAttackColl(1, 0, 28, 2, 1, 0, 360, 100, 30, 0, 80, 100, 30, 3, 0, 1, 0, 0),
-	ftMotionCommandLoopBegin(4),
-	ftMotionCommandWait(2),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandWait(1),
-	ftMotionCommandRefreshAttackCollID(0),
-	ftMotionCommandRefreshAttackCollID(1),
-	ftMotionCommandLoopEnd(),
-	ftMotionCommandWait(2),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandMakeAttackColl(0, 0, 28, 4, 1, 0, 290, -50, 45, 0, 80, 150, 0, 3, 0, 1, 0, 0),
-	ftMotionCommandMakeAttackColl(1, 0, 28, 4, 1, 0, 320, 60, 30, 0, 80, 150, 0, 3, 0, 1, 0, 0),
-	ftMotionCommandSetFlag1(0),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x19CC[] = {
-	ftMotionCommandWaitAsync(6),
-	ftMotionCommandSetFlag1(1),
 	ftMotionPlayVoice(579),
+#endif
 	ftMotionCommandMakeAttackColl(0, 0, 28, 2, 1, 0, 320, -50, 45, 0, 80, 100, 30, 3, 0, 1, 0, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 28, 2, 1, 0, 360, 100, 30, 0, 80, 100, 30, 3, 0, 1, 0, 0),
 	ftMotionCommandLoopBegin(4),
@@ -2125,81 +1703,55 @@ u32 dSamusMainMotion_0x19CC[] = {
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
 };
-#endif
 
-#if defined(REGION_JP)
 u32 dSamusMainMotion_0x1A58[] = {
+#if defined(REGION_JP)
 	ftMotionPlayFGM(77),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x1A58[] = {
 	ftMotionPlayFGM(81),
+#endif
 	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
-#endif
 
-#if defined(REGION_JP)
 u32 dSamusMainMotion_0x1A70[] = {
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandSetFlag1(20),
 	ftMotionCommandMakeAttackColl(0, 0, 16, 14, 1, 0, 250, -60, 0, 0, -90, 100, 0, 3, 0, 2, 0, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 16, 14, 1, 0, 280, 120, 0, 0, -90, 100, 0, 3, 0, 2, 0, 0),
+#if defined(REGION_JP)
 	ftMotionCommandPlayFGMStoreInfo(37),
-	ftMotionCommandWait(9),
-	ftMotionCommandSetFlag1(0),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x1A70[] = {
-	ftMotionCommandWaitAsync(4),
-	ftMotionCommandSetFlag1(20),
-	ftMotionCommandMakeAttackColl(0, 0, 16, 14, 1, 0, 250, -60, 0, 0, -90, 100, 0, 3, 0, 2, 0, 0),
-	ftMotionCommandMakeAttackColl(1, 0, 16, 14, 1, 0, 280, 120, 0, 0, -90, 100, 0, 3, 0, 2, 0, 0),
 	ftMotionCommandPlayFGMStoreInfo(41),
+#endif
 	ftMotionCommandWait(9),
 	ftMotionCommandSetFlag1(0),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
 };
-#endif
 
-#if defined(REGION_JP)
 u32 dSamusMainMotion_0x1AB4[] = {
+#if defined(REGION_JP)
 	ftMotionPlayFGM(77),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x1AB4[] = {
 	ftMotionPlayFGM(81),
+#endif
 	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
-#endif
 
-#if defined(REGION_JP)
 u32 dSamusMainMotion_0x1ACC[] = {
 	ftMotionCommandWaitAsync(1),
+#if defined(REGION_JP)
 	ftMotionPlayFGM(241),
-	ftMotionCommandWait(80),
-	ftMotionCommandSetFlag2(1),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x1ACC[] = {
-	ftMotionCommandWaitAsync(1),
 	ftMotionPlayFGM(251),
+#endif
 	ftMotionCommandWait(80),
 	ftMotionCommandSetFlag2(1),
 	ftMotionCommandEnd(),
 };
-#endif
 
-#if defined(REGION_JP)
 u32 dSamusMainMotion_0x1AE0[] = {
 	ftMotionCommandGoto(dSamusMainMotion_0x1ACC),
 	ftMotionCommandSetColAnim(45, 0),
@@ -2208,132 +1760,109 @@ u32 dSamusMainMotion_0x1AE0[] = {
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandSetAirJumpMax(0),
 	ftMotionCommandSetFlag1(1),
+#if defined(REGION_JP)
 	ftMotionPlayFGM(239),
+#else
+	ftMotionPlayFGM(249),
+#endif
 	ftMotionCommandEffect(0, 22, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEffect(5, 31, 0, 0, 0, 0, 200, 200, 0),
+#if defined(REGION_JP)
 	ftMotionCommandMakeAttackColl(0, 0, 0, 2, 1, 0, 200, 0, -30, 140, 100, 0, 1, 3, 3, 1, 1, 120),
 	ftMotionCommandMakeAttackColl(1, 0, 0, 2, 1, 0, 200, 0, -30, -140, 100, 0, 1, 3, 3, 1, 1, 120),
 	ftMotionCommandMakeAttackColl(2, 0, 0, 2, 1, 0, 200, 0, 330, 140, 100, 0, 1, 3, 3, 1, 1, 110),
 	ftMotionCommandMakeAttackColl(3, 0, 0, 2, 1, 0, 200, 0, 330, -140, 100, 0, 1, 3, 3, 1, 1, 110),
-	ftMotionCommandWait(2),
-	ftMotionCommandLoopBegin(3),
-	ftMotionCommandEffect(5, 31, 0, 0, 0, 0, 200, 200, 0),
-	ftMotionCommandMakeAttackColl(0, 0, 0, 1, 1, 0, 180, 0, -80, 110, 105, 0, 1, 3, 3, 1, 1, 110),
-	ftMotionCommandMakeAttackColl(1, 0, 0, 1, 1, 0, 180, 0, -80, -110, 105, 0, 1, 3, 3, 1, 1, 110),
-	ftMotionCommandMakeAttackColl(2, 0, 0, 1, 1, 0, 180, 0, 310, 110, 100, 0, 1, 3, 3, 1, 1, 70),
-	ftMotionCommandMakeAttackColl(3, 0, 0, 1, 1, 0, 180, 0, 310, -110, 100, 0, 1, 3, 3, 1, 1, 70),
-	ftMotionCommandWait(2),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandLoopEnd(),
-	ftMotionCommandSetHitStatusAll(1),
-	ftMotionCommandLoopBegin(10),
-	ftMotionCommandEffect(5, 31, 0, 0, 0, 0, 200, 200, 200),
-	ftMotionCommandMakeAttackColl(0, 0, 0, 1, 1, 0, 140, 0, 290, 100, 200, 0, 1, 3, 3, 1, 1, 20),
-	ftMotionCommandMakeAttackColl(1, 0, 0, 1, 1, 0, 140, 0, 290, -100, 200, 0, 1, 3, 3, 1, 1, 20),
-	ftMotionCommandMakeAttackColl(2, 0, 0, 1, 1, 0, 140, 0, 10, 100, 110, 0, 1, 3, 3, 1, 1, 50),
-	ftMotionCommandMakeAttackColl(3, 0, 0, 1, 1, 0, 140, 0, 10, -100, 110, 0, 1, 3, 3, 1, 1, 50),
-	ftMotionCommandWait(2),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandLoopEnd(),
-};
 #else
-u32 dSamusMainMotion_0x1AE0[] = {
-	ftMotionCommandGoto(dSamusMainMotion_0x1ACC),
-	ftMotionCommandSetColAnim(45, 0),
-	ftMotionCommandSetHitStatusAll(2),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -180, 0, 0, 0),
-	ftMotionCommandWaitAsync(4),
-	ftMotionCommandSetAirJumpMax(0),
-	ftMotionCommandSetFlag1(1),
-	ftMotionPlayFGM(249),
-	ftMotionCommandEffect(0, 22, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(5, 31, 0, 0, 0, 0, 200, 200, 0),
 	ftMotionCommandMakeAttackColl(0, 0, 0, 2, 1, 0, 200, 0, -30, 140, 100, 0, 1, 3, 3, 0, 1, 120),
 	ftMotionCommandMakeAttackColl(1, 0, 0, 2, 1, 0, 200, 0, -30, -140, 100, 0, 1, 3, 3, 0, 1, 120),
 	ftMotionCommandMakeAttackColl(2, 0, 0, 2, 1, 0, 200, 0, 330, 140, 100, 0, 1, 3, 3, 0, 1, 110),
 	ftMotionCommandMakeAttackColl(3, 0, 0, 2, 1, 0, 200, 0, 330, -140, 100, 0, 1, 3, 3, 0, 1, 110),
+#endif
 	ftMotionCommandWait(2),
+#if defined(REGION_JP)
+#else
 	ftMotionCommandSetHitStatusAll(1),
+#endif
 	ftMotionCommandLoopBegin(3),
 	ftMotionCommandEffect(5, 31, 0, 0, 0, 0, 200, 200, 0),
+#if defined(REGION_JP)
+	ftMotionCommandMakeAttackColl(0, 0, 0, 1, 1, 0, 180, 0, -80, 110, 105, 0, 1, 3, 3, 1, 1, 110),
+	ftMotionCommandMakeAttackColl(1, 0, 0, 1, 1, 0, 180, 0, -80, -110, 105, 0, 1, 3, 3, 1, 1, 110),
+	ftMotionCommandMakeAttackColl(2, 0, 0, 1, 1, 0, 180, 0, 310, 110, 100, 0, 1, 3, 3, 1, 1, 70),
+	ftMotionCommandMakeAttackColl(3, 0, 0, 1, 1, 0, 180, 0, 310, -110, 100, 0, 1, 3, 3, 1, 1, 70),
+#else
 	ftMotionCommandMakeAttackColl(0, 0, 0, 1, 1, 0, 180, 0, -80, 110, 105, 0, 1, 3, 3, 0, 1, 110),
 	ftMotionCommandMakeAttackColl(1, 0, 0, 1, 1, 0, 180, 0, -80, -110, 105, 0, 1, 3, 3, 0, 1, 110),
 	ftMotionCommandMakeAttackColl(2, 0, 0, 1, 1, 0, 180, 0, 310, 110, 100, 0, 1, 3, 3, 0, 1, 70),
 	ftMotionCommandMakeAttackColl(3, 0, 0, 1, 1, 0, 180, 0, 310, -110, 100, 0, 1, 3, 3, 0, 1, 70),
+#endif
 	ftMotionCommandWait(2),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandLoopEnd(),
+#if defined(REGION_JP)
+	ftMotionCommandSetHitStatusAll(1),
+#else
+#endif
 	ftMotionCommandLoopBegin(10),
 	ftMotionCommandEffect(5, 31, 0, 0, 0, 0, 200, 200, 200),
+#if defined(REGION_JP)
+	ftMotionCommandMakeAttackColl(0, 0, 0, 1, 1, 0, 140, 0, 290, 100, 200, 0, 1, 3, 3, 1, 1, 20),
+	ftMotionCommandMakeAttackColl(1, 0, 0, 1, 1, 0, 140, 0, 290, -100, 200, 0, 1, 3, 3, 1, 1, 20),
+	ftMotionCommandMakeAttackColl(2, 0, 0, 1, 1, 0, 140, 0, 10, 100, 110, 0, 1, 3, 3, 1, 1, 50),
+	ftMotionCommandMakeAttackColl(3, 0, 0, 1, 1, 0, 140, 0, 10, -100, 110, 0, 1, 3, 3, 1, 1, 50),
+#else
 	ftMotionCommandMakeAttackColl(0, 0, 0, 1, 1, 0, 140, 0, 290, 100, 200, 0, 1, 3, 3, 0, 1, 20),
 	ftMotionCommandMakeAttackColl(1, 0, 0, 1, 1, 0, 140, 0, 290, -100, 200, 0, 1, 3, 3, 0, 1, 20),
 	ftMotionCommandMakeAttackColl(2, 0, 0, 1, 1, 0, 140, 0, 10, 100, 110, 0, 1, 3, 3, 0, 1, 50),
 	ftMotionCommandMakeAttackColl(3, 0, 0, 1, 1, 0, 140, 0, 10, -100, 110, 0, 1, 3, 3, 0, 1, 50),
+#endif
 	ftMotionCommandWait(2),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandLoopEnd(),
 };
-#endif
 
-#if defined(REGION_JP)
 u32 dSamusMainMotion_0x1C68[] = {
+#if defined(REGION_JP)
 	ftMotionCommandMakeAttackColl(0, 0, 0, 1, 1, 2, 400, 0, 100, 0, 361, 100, 80, 3, 3, 2, 1, 0),
-	ftMotionCommandWait(2),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandResetColAnim(),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x1C68[] = {
 	ftMotionCommandMakeAttackColl(0, 0, 0, 1, 1, 2, 400, 0, 100, 0, 361, 100, 80, 3, 3, 1, 1, 0),
+#endif
 	ftMotionCommandWait(2),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandResetColAnim(),
 	ftMotionCommandEnd(),
 };
-#endif
 
-#if defined(REGION_JP)
 u32 dSamusMainMotion_0x1C8C[] = {
 	ftMotionCommandSetColAnim(45, 0),
 	ftMotionCommandSetHitStatusAll(2),
 	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(4),
+#if defined(REGION_JP)
 	ftMotionPlayFGM(239),
+#else
+	ftMotionPlayFGM(249),
+#endif
 	ftMotionCommandSetHitStatusAll(1),
 	ftMotionCommandLoopBegin(13),
 	ftMotionCommandEffect(5, 31, 0, 0, 0, 0, 200, 200, 200),
+#if defined(REGION_JP)
 	ftMotionCommandMakeAttackColl(0, 0, 0, 1, 1, 0, 160, 0, 290, 150, 200, 0, 1, 3, 3, 1, 1, 20),
 	ftMotionCommandMakeAttackColl(1, 0, 0, 1, 1, 0, 160, 0, 290, -150, 200, 0, 1, 3, 3, 1, 1, 20),
 	ftMotionCommandMakeAttackColl(2, 0, 0, 1, 1, 0, 160, 0, 10, 150, 110, 0, 1, 3, 3, 1, 1, 50),
 	ftMotionCommandMakeAttackColl(3, 0, 0, 1, 1, 0, 160, 0, 10, -150, 110, 0, 1, 3, 3, 1, 1, 50),
-	ftMotionCommandWait(2),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandLoopEnd(),
-	ftMotionCommandGoto(dSamusMainMotion_0x1C68),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x1C8C[] = {
-	ftMotionCommandSetColAnim(45, 0),
-	ftMotionCommandSetHitStatusAll(2),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandWaitAsync(4),
-	ftMotionPlayFGM(249),
-	ftMotionCommandSetHitStatusAll(1),
-	ftMotionCommandLoopBegin(13),
-	ftMotionCommandEffect(5, 31, 0, 0, 0, 0, 200, 200, 200),
 	ftMotionCommandMakeAttackColl(0, 0, 0, 1, 1, 0, 160, 0, 290, 150, 200, 0, 1, 3, 3, 0, 1, 20),
 	ftMotionCommandMakeAttackColl(1, 0, 0, 1, 1, 0, 160, 0, 290, -150, 200, 0, 1, 3, 3, 0, 1, 20),
 	ftMotionCommandMakeAttackColl(2, 0, 0, 1, 1, 0, 160, 0, 10, 150, 110, 0, 1, 3, 3, 0, 1, 50),
 	ftMotionCommandMakeAttackColl(3, 0, 0, 1, 1, 0, 160, 0, 10, -150, 110, 0, 1, 3, 3, 0, 1, 50),
+#endif
 	ftMotionCommandWait(2),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandGoto(dSamusMainMotion_0x1C68),
 	ftMotionCommandEnd(),
 };
-#endif
 
 u32 dSamusMainMotion_0x1D2C[] = {
 	ftMotionCommandSetSlopeContour(3),
@@ -2379,34 +1908,18 @@ u32 dSamusMainMotion_0x1DE0[] = {
 	ftMotionCommandEnd(),
 };
 
+u32 dSamusMainMotion_0x1E10[] = {
+	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandWaitAsync(3),
+	ftMotionCommandSubroutine(dSamusMainMotion_0x0000),
+	ftMotionCommandSetAirJumpMax(0),
+	ftMotionCommandWaitAsync(10),
+	ftMotionCommandSetFlag0(1),
 #if defined(REGION_JP)
-u32 dSamusMainMotion_0x1E10[] = {
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandWaitAsync(3),
-	ftMotionCommandSubroutine(dSamusMainMotion_0x0000),
-	ftMotionCommandSetAirJumpMax(0),
-	ftMotionCommandWaitAsync(10),
-	ftMotionCommandSetFlag0(1),
 	ftMotionPlayFGM(237),
-	ftMotionCommandMakeRumble(0, 6),
-	ftMotionCommandSetFlag3(1),
-	ftMotionCommandSubroutine(dSamusMainMotion_0x0044),
-	ftMotionCommandWaitAsync(43),
-	ftMotionCommandSetFlag3(0),
-	ftMotionCommandSubroutine(dSamusMainMotion_0x005C),
-	ftMotionCommandWaitAsync(49),
-	ftMotionCommandSubroutine(dSamusMainMotion_0x0074),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x1E10[] = {
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandWaitAsync(3),
-	ftMotionCommandSubroutine(dSamusMainMotion_0x0000),
-	ftMotionCommandSetAirJumpMax(0),
-	ftMotionCommandWaitAsync(10),
-	ftMotionCommandSetFlag0(1),
 	ftMotionPlayFGM(247),
+#endif
 	ftMotionCommandMakeRumble(0, 6),
 	ftMotionCommandSetFlag3(1),
 	ftMotionCommandSubroutine(dSamusMainMotion_0x0044),
@@ -2417,32 +1930,18 @@ u32 dSamusMainMotion_0x1E10[] = {
 	ftMotionCommandSubroutine(dSamusMainMotion_0x0074),
 	ftMotionCommandEnd(),
 };
-#endif
 
+u32 dSamusMainMotion_0x1E6C[] = {
+	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
+	ftMotionCommandWaitAsync(3),
+	ftMotionCommandSubroutine(dSamusMainMotion_0x0000),
+	ftMotionCommandWaitAsync(10),
+	ftMotionCommandSetFlag0(1),
 #if defined(REGION_JP)
-u32 dSamusMainMotion_0x1E6C[] = {
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandWaitAsync(3),
-	ftMotionCommandSubroutine(dSamusMainMotion_0x0000),
-	ftMotionCommandWaitAsync(10),
-	ftMotionCommandSetFlag0(1),
 	ftMotionPlayFGM(237),
-	ftMotionCommandMakeRumble(0, 6),
-	ftMotionCommandSubroutine(dSamusMainMotion_0x0044),
-	ftMotionCommandWaitAsync(43),
-	ftMotionCommandSubroutine(dSamusMainMotion_0x005C),
-	ftMotionCommandWaitAsync(49),
-	ftMotionCommandSubroutine(dSamusMainMotion_0x0074),
-	ftMotionCommandEnd(),
-};
 #else
-u32 dSamusMainMotion_0x1E6C[] = {
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandWaitAsync(3),
-	ftMotionCommandSubroutine(dSamusMainMotion_0x0000),
-	ftMotionCommandWaitAsync(10),
-	ftMotionCommandSetFlag0(1),
 	ftMotionPlayFGM(247),
+#endif
 	ftMotionCommandMakeRumble(0, 6),
 	ftMotionCommandSubroutine(dSamusMainMotion_0x0044),
 	ftMotionCommandWaitAsync(43),
@@ -2451,7 +1950,6 @@ u32 dSamusMainMotion_0x1E6C[] = {
 	ftMotionCommandSubroutine(dSamusMainMotion_0x0074),
 	ftMotionCommandEnd(),
 };
-#endif
 
 u32 dSamusMainMotion_0x1EBC[] = {
 	ftMotionCommandEnd(),

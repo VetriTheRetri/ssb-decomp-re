@@ -1,4 +1,4 @@
-/* DisplayList: RoomHaze @ 0x98F8 (2872 bytes) */
+/* DisplayList: RoomHaze @ 0x98F8 (2872 bytes, 359 cmds) */
 
 #include "relocdata_types.h"
 

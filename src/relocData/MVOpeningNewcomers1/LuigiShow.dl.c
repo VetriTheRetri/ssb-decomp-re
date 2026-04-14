@@ -1,4 +1,4 @@
-/* DisplayList: LuigiShow @ 0x1C838 (1600 bytes) */
+/* DisplayList: LuigiShow @ 0x1C838 (1600 bytes, 200 cmds) */
 
 #include "relocdata_types.h"
 

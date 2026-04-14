@@ -1,4 +1,4 @@
-/* DisplayList: NessHidden @ 0x3BAF8 (520 bytes) */
+/* DisplayList: NessHidden @ 0x3BAF8 (520 bytes, 65 cmds) */
 
 #include "relocdata_types.h"
 

@@ -8,7 +8,7 @@ MObjSub dStageYamabukiFile2_Layer1MObj_MObjSub = {
 	1.60631370417321e-26f, 0.0f,
 	1.626508851495659e-26f, 0.0f,
 	1.6362753192808443e-26f, 1.646293236479569e-26f,
-	(void**)((u8*)dStageYamabukiFile2_gap_0x0000 + 0x2E00),
+	(void**)((u8*)dStageYamabukiFile2_Tex_0x28F0 + 0x510),
 	0x14A5,
 	0x0C, 0x82,
 	0x14A6,

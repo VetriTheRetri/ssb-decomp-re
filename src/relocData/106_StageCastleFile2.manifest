@@ -2,7 +2,58 @@
 # Each line is either a block filename or 'pad N'.
 # The master .c file is generated from this manifest at build time.
 
-gap_0x0000.data.c
+pad 8
+Lut_0x0008.palette.c
+pad 8
+Tex_0x0030.data.c
+Lut_0x0238.palette.c
+pad 8
+Lut_0x0260.palette.c
+pad 8
+Lut_0x0288.palette.c
+pad 8
+Lut_0x02B0.palette.c
+pad 8
+Lut_0x02D8.palette.c
+pad 8
+Lut_0x0300.palette.c
+pad 8
+Tex_0x0328.data.c
+Tex_0x0370.data.c
+Tex_0x0388.data.c
+Tex_0x0410.data.c
+Lut_0x0458.palette.c
+pad 8
+Tex_0x0480.data.c
+Tex_0x0548.data.c
+Lut_0x0610.palette.c
+pad 8
+Tex_0x0638.data.c
+Tex_0x06C0.data.c
+Tex_0x0748.data.c
+Tex_0x0790.data.c
+Tex_0x07B8.data.c
+Tex_0x0800.data.c
+Tex_0x0828.data.c
+Lut_0x0870.palette.c
+pad 8
+Tex_0x0898.data.c
+Tex_0x0920.data.c
+Tex_0x0AA8.data.c
+Tex_0x0AC0.data.c
+Tex_0x0B48.data.c
+Tex_0x0B90.data.c
+Vtx_0x0D90.vtx.c
+Vtx_0x0DC0.vtx.c
+Vtx_0x0E00.vtx.c
+Vtx_0x0E30.vtx.c
+Vtx_0x0EB0.vtx.c
+Vtx_0x0F40.vtx.c
+Vtx_0x0F80.vtx.c
+Vtx_0x0FE0.vtx.c
+Vtx_0x1020.vtx.c
+Vtx_0x1150.vtx.c
+gap_0x1190.data.c
 Layer0DObj.dobjdesc.c
 gap_0x18A8.data.c
 Layer1DObj.dobjdesc.c

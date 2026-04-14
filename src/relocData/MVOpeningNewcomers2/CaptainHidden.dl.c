@@ -1,4 +1,4 @@
-/* DisplayList: CaptainHidden @ 0x355C0 (800 bytes) */
+/* DisplayList: CaptainHidden @ 0x355C0 (800 bytes, 100 cmds) */
 
 #include "relocdata_types.h"
 

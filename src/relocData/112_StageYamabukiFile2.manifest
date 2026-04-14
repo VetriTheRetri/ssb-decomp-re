@@ -2,7 +2,122 @@
 # Each line is either a block filename or 'pad N'.
 # The master .c file is generated from this manifest at build time.
 
-gap_0x0000.data.c
+pad 8
+Lut_0x0008.palette.c
+pad 8
+Tex_0x0030.data.c
+Lut_0x0438.palette.c
+pad 8
+Tex_0x0460.data.c
+Lut_0x0C98.palette.c
+pad 8
+Tex_0x0CC0.data.c
+Lut_0x0D08.palette.c
+pad 8
+Tex_0x0D30.data.c
+Lut_0x0D78.palette.c
+pad 8
+Tex_0x0DA0.data.c
+Lut_0x0E28.palette.c
+pad 8
+Tex_0x0E50.data.c
+Lut_0x0ED8.palette.c
+pad 8
+Tex_0x0F00.data.c
+Lut_0x0F88.palette.c
+pad 8
+Tex_0x0FB0.data.c
+Lut_0x1038.palette.c
+pad 8
+Tex_0x1060.data.c
+Lut_0x1168.palette.c
+pad 8
+Tex_0x1190.data.c
+Lut_0x1218.palette.c
+pad 8
+Tex_0x1240.data.c
+Lut_0x1348.palette.c
+pad 8
+Tex_0x1370.data.c
+Lut_0x13F8.palette.c
+pad 8
+Tex_0x1420.data.c
+Lut_0x1828.palette.c
+pad 8
+Tex_0x1850.data.c
+Lut_0x1898.palette.c
+pad 8
+Tex_0x18C0.data.c
+Lut_0x1AC8.palette.c
+pad 8
+Tex_0x1AF0.data.c
+Lut_0x1B78.palette.c
+pad 8
+Tex_0x1BA0.data.c
+Lut_0x21D8.palette.c
+pad 8
+Tex_0x2200.data.c
+Lut_0x2288.palette.c
+pad 8
+Tex_0x22B0.data.c
+Lut_0x2338.palette.c
+pad 8
+Tex_0x2360.data.c
+Lut_0x2568.palette.c
+pad 8
+Tex_0x2590.data.c
+Lut_0x2798.palette.c
+pad 8
+Tex_0x27C0.data.c
+Lut_0x28C8.palette.c
+pad 8
+Tex_0x28F0.data.c
+Lut_0x3610.palette.c
+pad 8
+Tex_0x3638.data.c
+Lut_0x3840.palette.c
+pad 8
+Tex_0x3868.data.c
+Lut_0x38F0.palette.c
+pad 8
+Tex_0x3918.data.c
+Lut_0x3B20.palette.c
+pad 8
+Tex_0x3B48.data.c
+Vtx_0x3BC8.vtx.c
+Vtx_0x3C08.vtx.c
+Vtx_0x3C48.vtx.c
+Vtx_0x3C88.vtx.c
+Vtx_0x3CC8.vtx.c
+Vtx_0x3D08.vtx.c
+Vtx_0x3D68.vtx.c
+Vtx_0x3DC8.vtx.c
+Vtx_0x3E28.vtx.c
+Vtx_0x3E68.vtx.c
+Vtx_0x3E98.vtx.c
+Vtx_0x3EC8.vtx.c
+Vtx_0x3EF8.vtx.c
+Vtx_0x3F38.vtx.c
+Vtx_0x3F78.vtx.c
+Vtx_0x3FB8.vtx.c
+Vtx_0x3FF8.vtx.c
+Vtx_0x4038.vtx.c
+Vtx_0x4078.vtx.c
+Vtx_0x40D8.vtx.c
+Vtx_0x4138.vtx.c
+Vtx_0x4198.vtx.c
+Vtx_0x41D8.vtx.c
+Vtx_0x4298.vtx.c
+Vtx_0x42D8.vtx.c
+Vtx_0x4318.vtx.c
+Vtx_0x4358.vtx.c
+Vtx_0x4398.vtx.c
+Vtx_0x43D8.vtx.c
+Vtx_0x4418.vtx.c
+Vtx_0x4498.vtx.c
+Vtx_0x4518.vtx.c
+Vtx_0x4598.vtx.c
+gap_0x45D8.data.c
 Layer0DObj.dobjdesc.c
 gap_0x50DC.data.c
 Layer0Anim_AnimJoint.data.c

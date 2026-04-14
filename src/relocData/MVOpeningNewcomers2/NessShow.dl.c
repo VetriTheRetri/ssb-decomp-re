@@ -1,4 +1,4 @@
-/* DisplayList: NessShow @ 0x2A448 (1024 bytes) */
+/* DisplayList: NessShow @ 0x2A448 (1024 bytes, 128 cmds) */
 
 #include "relocdata_types.h"
 

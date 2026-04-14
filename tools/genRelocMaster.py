@@ -297,20 +297,30 @@ def compute_vtx_c_size(vtx_c_path):
     legacy inline form `Vtx <name>[] = { { ... }, ... };`. The wrapper
     form declares the count explicitly in the array brackets; the
     inline form is counted by walking top-level braces.
+
+    Zero-vertex wrappers (emitted as a comment-only stub when a
+    description entry collapses to 0 vertices because an extras block
+    starts at the same offset — see genRelocDataC.emit_vtx_block) have
+    no declaration at all. They take up zero bytes in the data section.
     """
     with open(vtx_c_path) as f:
-        content = f.read()
-    content = re.sub(r'/\*.*?\*/', '', content, flags=re.DOTALL)
+        raw = f.read()
+    content = re.sub(r'/\*.*?\*/', '', raw, flags=re.DOTALL)
     content = re.sub(r'//[^\n]*', '', content)
     m = re.search(r'Vtx\s+\w+\s*\[\s*(\d+)\s*\]\s*=\s*\{', content)
     if m:
         return int(m.group(1)) * 16
     m = re.search(r'Vtx\s+\w+\[\]\s*=\s*\{(.*)\};', content, re.DOTALL)
-    if not m:
-        print(f"Error: {vtx_c_path} doesn't look like a Vtx[] array",
-              file=sys.stderr)
-        sys.exit(1)
-    return _count_top_level_braces(m.group(1)) * 16
+    if m:
+        return _count_top_level_braces(m.group(1)) * 16
+    # No declaration at all — elided 0-vertex stub. A file that's purely
+    # comments contributes zero bytes. Detect this by looking for the
+    # "(0 vertices" marker embedded in the header comment we wrote.
+    if '(0 vertices' in raw:
+        return 0
+    print(f"Error: {vtx_c_path} doesn't look like a Vtx[] array",
+          file=sys.stderr)
+    sys.exit(1)
 
 
 def compute_dobjdesc_c_size(dobjdesc_c_path):

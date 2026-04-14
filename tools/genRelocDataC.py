@@ -1363,6 +1363,14 @@ def generate(file_id, data, file_name, entries, reloc_map, csv_entry,
         no raw vertex bytes live in the source tree — the .inc.c body gets
         regenerated from the ROM by tools/extractRelocInc.py at each
         `make extract`.
+
+        Special case: when `count == 0` (a description entry immediately
+        followed by an extras-typed block — e.g. the fighter-model
+        `JointVerts` entry that gets shadowed by a Lut at 0x8), emit a
+        comment-only stub. `Vtx X[0] = {}` is a hard syntax error in IDO's
+        CFE, and since the slot consumes no bytes we can drop the
+        definition entirely. Callers that need the offset already use the
+        `ll*` linker-script aliases, not the C symbol.
         """
         size = count * VTX_SIZE
         if offset + size > len(data):
@@ -1379,13 +1387,24 @@ def generate(file_id, data, file_name, entries, reloc_map, csv_entry,
         sub_dir_name = os.path.basename(block_dir.rstrip('/'))
         inc_name = f"{name_suffix}.vtx.inc.c"
 
-        block_lines = [f"/* Vtx: {name} @ 0x{offset:X} ({count} vertices) */",
-                       '',
-                       '#include "relocdata_types.h"',
-                       '',
-                       f"Vtx {var_name}[{count}] = {{",
-                       f"\t#include <{sub_dir_name}/{inc_name}>",
-                       "};"]
+        if count == 0:
+            block_lines = [
+                f"/* Vtx: {name} @ 0x{offset:X} (0 vertices — elided) */",
+                '',
+                '/* Placeholder wrapper: the description slot collapsed to',
+                ' * zero vertices because an extras block starts at the',
+                ' * same offset. No C declaration is emitted so IDO CFE',
+                ' * does not choke on `Vtx X[0] = {}`.',
+                ' */',
+            ]
+        else:
+            block_lines = [f"/* Vtx: {name} @ 0x{offset:X} ({count} vertices) */",
+                           '',
+                           '#include "relocdata_types.h"',
+                           '',
+                           f"Vtx {var_name}[{count}] = {{",
+                           f"\t#include <{sub_dir_name}/{inc_name}>",
+                           "};"]
 
         filename = f"{name_suffix}.vtx.c"
         if extract_data:

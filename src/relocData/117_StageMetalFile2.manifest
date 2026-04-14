@@ -2,7 +2,8 @@
 # Each line is either a block filename or 'pad N'.
 # The master .c file is generated from this manifest at build time.
 
-gap_0x0000.data.c
+pad 8
+Tex_0x0008.data.c
 Layer0MObj.mobjsub.c
 gap_0x0EA8.data.c
 Layer0DObj.dobjdesc.c

@@ -2,7 +2,42 @@
 # Each line is either a block filename or 'pad N'.
 # The master .c file is generated from this manifest at build time.
 
-gap_0x0000.data.c
+pad 8
+Tex_0x0008.data.c
+Vtx_0x1BE08.vtx.c
+Vtx_0x1BE18.vtx.c
+gap_0x1BE28.data.c
+Vtx_0x1BE38.vtx.c
+Vtx_0x1BE48.vtx.c
+Vtx_0x1BE68.vtx.c
+Vtx_0x1BE88.vtx.c
+Vtx_0x1BEA8.vtx.c
+Vtx_0x1BEC8.vtx.c
+Vtx_0x1BEE8.vtx.c
+Vtx_0x1BF08.vtx.c
+Vtx_0x1BF28.vtx.c
+Vtx_0x1BF48.vtx.c
+Vtx_0x1BF68.vtx.c
+Vtx_0x1BF88.vtx.c
+Vtx_0x1BFA8.vtx.c
+Vtx_0x1BFC8.vtx.c
+Vtx_0x1BFE8.vtx.c
+Vtx_0x1C008.vtx.c
+Vtx_0x1C028.vtx.c
+Vtx_0x1C048.vtx.c
+Vtx_0x1C068.vtx.c
+Vtx_0x1C088.vtx.c
+Vtx_0x1C0A8.vtx.c
+Vtx_0x1C0C8.vtx.c
+Vtx_0x1C0E8.vtx.c
+Vtx_0x1C108.vtx.c
+Vtx_0x1C128.vtx.c
+Vtx_0x1C148.vtx.c
+Vtx_0x1C168.vtx.c
+Vtx_0x1C188.vtx.c
+Vtx_0x1C1B8.vtx.c
+Vtx_0x1C1D8.vtx.c
+Vtx_0x1C1F8.vtx.c
 CaptainShow.dl.c
 CaptainShow_post.data.c
 Captain_AnimJoint.data.c

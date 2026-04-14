@@ -2,56 +2,108 @@
 # Each line is either a block filename or 'pad N'.
 # The master .c file is generated from this manifest at build time.
 
-gap_0x0000.data.c
-RoomBackground.mobjsub.c
+pad 8
+Lut_0x0008.palette.c
+pad 8
+Lut_0x0030.palette.c
+gap_0x0050.data.c
+Lut_0x0080.palette.c
+pad 8
+Lut_0x00A8.palette.c
+pad 8
+Lut_0x00D0.palette.c
+pad 8
+Lut_0x00F8.palette.c
+pad 8
+Lut_0x0120.palette.c
+pad 8
+Lut_0x0148.palette.c
+pad 8
+Lut_0x0170.palette.c
+pad 8
+Lut_0x0198.palette.c
+pad 8
+Lut_0x01C0.palette.c
+pad 8
+Lut227_0x01E8.data.c
+Lut213_0x03B8.data.c
+Lut_0x0598.palette.c
+pad 8
+Lut_0x05C0.palette.c
+pad 8
+Lut_0x05E8.palette.c
+pad 8
+Lut_0x0610.palette.c
+pad 8
+Tex_0x0638.data.c
+Tex_0x0740.data.c
+Tex_0x0F48.data.c
+Tex_0x1058.data.c
+Tex_0x10E0.data.c
+Tex_0x1128.data.c
+Tex_0x1230.data.c
+Tex_0x1338.data.c
+Tex_0x1440.data.c
+Tex_0x14C8.data.c
+Tex_0x16D0.data.c
+Tex_0x18D8.data.c
+Tex_0x1960.data.c
+Tex_0x19E8.data.c
+Tex_0x21F0.data.c
+Tex_0x2E00.data.c
+Tex_0x2E88.data.c
+Tex_0x2EE8.data.c
+Tex_0x30F0.data.c
+Tex_0x32F8.data.c
+RoomBackgroundMObjSub.mobjsub.c
 gap_0x4370.data.c
-RoomBackground.dobjdesc.c
-RoomBackground_MatAnimJoint.data.c
+RoomBackgroundDObjDesc.dobjdesc.c
+RoomBackgroundMatAnimJoint_MatAnimJoint.data.c
 RoomDesk.dobjdesc.c
 gap_0x8E7C.data.c
 RoomHaze.dl.c
 RoomHaze_post.data.c
-RoomBooks.dobjdesc.c
+RoomBooksDObjDesc.dobjdesc.c
 pad 8
-RoomBooks_AnimJoint.data.c
-RoomPencils.dobjdesc.c
+RoomBooksAnimJoint_AnimJoint.data.c
+RoomPencilsDObjDesc.dobjdesc.c
 pad 8
-RoomPencils_AnimJoint.data.c
-RoomLamp.dobjdesc.c
+RoomPencilsAnimJoint_AnimJoint.data.c
+RoomLampDObjDesc.dobjdesc.c
 pad 4
-RoomLamp_AnimJoint.data.c
-RoomTissues.dl.c
-RoomTissues_post.data.c
-RoomTissues_AnimJoint.data.c
-RoomLogo.mobjsub.c
+RoomLampAnimJoint_AnimJoint.data.c
+RoomTissuesDisplayList.dl.c
+RoomTissuesDisplayList_post.data.c
+RoomTissuesAnimJoint_AnimJoint.data.c
+RoomLogoMObjSub.mobjsub.c
 gap_0x1BCD8.data.c
-RoomLogo.dobjdesc.c
-RoomLogo_MatAnimJoint.data.c
-RoomSnap.dobjdesc.c
+RoomLogoDObjDesc.dobjdesc.c
+RoomLogoMatAnimJoint_MatAnimJoint.data.c
+RoomSnapDObjDesc.dobjdesc.c
 pad 4
-RoomSnap_AnimJoint.data.c
-RoomCloseUpEffectAir.mobjsub.c
+RoomSnapAnimJoint_AnimJoint.data.c
+RoomCloseUpEffectAirMObjSub.mobjsub.c
 gap_0x1DD18.data.c
-RoomCloseUpEffectAir.dobjdesc.c
-RoomCloseUpEffectAir_MatAnimJoint.data.c
-RoomCloseUpEffectAir_AnimJoint.data.c
-RoomCloseUpEffectGround.mobjsub.c
+RoomCloseUpEffectAirDObjDesc.dobjdesc.c
+RoomCloseUpEffectAirMatAnimJoint_MatAnimJoint.data.c
+RoomCloseUpEffectAirAnimJoint_AnimJoint.data.c
+RoomCloseUpEffectGroundMObjSub.mobjsub.c
 gap_0x1F170.data.c
-RoomCloseUpEffectGround.dobjdesc.c
-RoomCloseUpEffectGround_MatAnimJoint.data.c
-RoomCloseUpEffectGround_AnimJoint.data.c
-RoomBossShadow.dl.c
-RoomBossShadow_post.data.c
-RoomBossShadow_AnimJoint.data.c
-RoomDeskGround.mobjsub.c
+RoomCloseUpEffectGroundDObjDesc.dobjdesc.c
+RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint.data.c
+RoomCloseUpEffectGroundAnimJoint_AnimJoint.data.c
+RoomBossShadowDisplayList.dl.c
+RoomBossShadowDisplayList_post.data.c
+RoomBossShadowAnimJoint_AnimJoint.data.c
+RoomDeskGroundMObjSub.mobjsub.c
 gap_0x204F8.data.c
-RoomDeskGround.dobjdesc.c
+RoomDeskGroundDObjDesc.dobjdesc.c
 gap_0x224C4.data.c
-RoomDeskGround_MatAnimJoint.data.c
-RoomSpotlight.mobjsub.c
+RoomDeskGroundMatAnimJoint_MatAnimJoint.data.c
+RoomSpotlightMObjSub.mobjsub.c
 gap_0x22D08.data.c
-RoomSpotlight.dl.c
-RoomSpotlight_post.data.c
-RoomSpotlight_MatAnimJoint.data.c
+RoomSpotlightDisplayList.dl.c
+RoomSpotlightDisplayList_post.data.c
+RoomSpotlightMatAnimJoint_MatAnimJoint.data.c
 RoomOutside.dl.c
 RoomSunlight_post.data.c

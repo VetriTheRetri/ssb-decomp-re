@@ -1,4 +1,4 @@
-/* DisplayList: PurinShow @ 0x5C28 (520 bytes) */
+/* DisplayList: PurinShow @ 0x5C28 (520 bytes, 65 cmds) */
 
 #include "relocdata_types.h"
 

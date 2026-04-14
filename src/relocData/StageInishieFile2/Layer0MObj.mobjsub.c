@@ -8,7 +8,7 @@ MObjSub dStageInishieFile2_Layer0MObj_MObjSub = {
 	1.3007335878289515e-30f, 0.0f,
 	1.319222703374165e-30f, 0.0f,
 	0.0f, 1.3251789802695556e-30f,
-	(void**)((u8*)dStageInishieFile2_gap_0x0000 + 0x18A8),
+	(void**)((u8*)dStageInishieFile2_Tex_0x12E8 + 0x5C0),
 	0x0DD9,
 	0x06, 0x8C,
 	0x0DDA,

@@ -1,4 +1,4 @@
-/* DisplayList: RoomOutside @ 0x24200 (1288 bytes) */
+/* DisplayList: RoomOutside @ 0x24200 (1288 bytes, 161 cmds) */
 
 #include "relocdata_types.h"
 

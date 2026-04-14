@@ -2,9 +2,45 @@
 # Each line is either a block filename or 'pad N'.
 # The master .c file is generated from this manifest at build time.
 
-gap_0x0000.data.c
+pad 8
+Lut12_0x0008.data.c
+Lut12_0x0028.data.c
+Lut13_0x0048.data.c
+Lut15_0x0070.data.c
+Lut13_0x0098.data.c
+Tex_0x00C0.data.c
+Tex_0x08C8.data.c
+Tex_0x10D0.data.c
+Tex_0x18D8.data.c
+Tex_0x20E0.data.c
+Vtx_0x22E0.vtx.c
+Vtx_0x24E0.vtx.c
+Vtx_0x24F0.vtx.c
+Vtx_0x2620.vtx.c
+Vtx_0x2650.vtx.c
+Vtx_0x2660.vtx.c
+gap_0x2670.data.c
+Vtx_0x2680.vtx.c
+Vtx_0x26A0.vtx.c
+gap_0x26B0.data.c
+Vtx_0x26C0.vtx.c
+gap_0x26D0.data.c
+Vtx_0x26F0.vtx.c
+Vtx_0x2720.vtx.c
+gap_0x2730.data.c
+Vtx_0x2780.vtx.c
+Vtx_0x27E0.vtx.c
+Vtx_0x2880.vtx.c
+Vtx_0x28B0.vtx.c
+Vtx_0x29A0.vtx.c
+Vtx_0x29B0.vtx.c
+Vtx_0x2BB0.vtx.c
+Vtx_0x2D70.vtx.c
+Vtx_0x2ED0.vtx.c
+Vtx_0x3000.vtx.c
+gap_0x3070.data.c
 Hills.dobjdesc.c
 gap_0x3850.data.c
-Ocarina.dobjdesc.c
-Ocarina_AnimJoint.data.c
+OcarinaDObjDesc.dobjdesc.c
+OcarinaAnimJoint_AnimJoint.data.c
 Cam_AnimJoint.data.c

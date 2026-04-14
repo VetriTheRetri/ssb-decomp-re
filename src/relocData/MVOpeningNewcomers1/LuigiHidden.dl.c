@@ -1,4 +1,4 @@
-/* DisplayList: LuigiHidden @ 0x28C28 (632 bytes) */
+/* DisplayList: LuigiHidden @ 0x28C28 (632 bytes, 79 cmds) */
 
 #include "relocdata_types.h"
 

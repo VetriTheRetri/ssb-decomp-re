@@ -1,4 +1,4 @@
-/* DisplayList: PurinHidden @ 0x203A8 (352 bytes) */
+/* DisplayList: PurinHidden @ 0x203A8 (352 bytes, 44 cmds) */
 
 #include "relocdata_types.h"
 

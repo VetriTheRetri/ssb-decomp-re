@@ -1,4 +1,4 @@
-/* DisplayList: Ground @ 0x1C10 (1288 bytes) */
+/* DisplayList: Ground @ 0x1C10 (1288 bytes, 161 cmds) */
 
 #include "relocdata_types.h"
 

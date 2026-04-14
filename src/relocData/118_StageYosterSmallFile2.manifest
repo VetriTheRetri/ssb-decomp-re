@@ -3,6 +3,37 @@
 # The master .c file is generated from this manifest at build time.
 
 gap_0x0000.data.c
+Lut_0x0008.palette.c
+gap_0x0028.data.c
+Lut_0x0030.palette.c
+gap_0x0050.data.c
+Tex_0x0058.data.c
+Vtx_0x0080.vtx.c
+Tex_0x00A0.data.c
+Vtx_0x0100.vtx.c
+Lut_0x0150.palette.c
+gap_0x0170.data.c
+Lut_0x0178.palette.c
+gap_0x0198.data.c
+Vtx_0x01A0.vtx.c
+gap_0x01B0.data.c
+Lut_0x01C8.palette.c
+gap_0x01E8.data.c
+Vtx_0x01F0.vtx.c
+gap_0x0210.data.c
+Lut_0x0218.palette.c
+gap_0x0238.data.c
+Tex_0x0240.data.c
+Vtx_0x0250.vtx.c
+Vtx_0x0290.vtx.c
+gap_0x02C0.data.c
+Tex_0x02C8.data.c
+Vtx_0x02D0.vtx.c
+Vtx_0x0310.vtx.c
+Vtx_0x0350.vtx.c
+Vtx_0x0380.vtx.c
+Vtx_0x03B0.vtx.c
+gap_0x03C0.data.c
 Layer0DObj.dobjdesc.c
 pad 4
 Layer0Anim_AnimJoint.data.c

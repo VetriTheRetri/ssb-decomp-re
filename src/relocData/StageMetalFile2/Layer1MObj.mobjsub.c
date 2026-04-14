@@ -8,7 +8,7 @@ MObjSub dStageMetalFile2_Layer1MObj_MObjSub = {
 	1.8808648888900672e-34f, 1.888388741501551e-34f,
 	1.8959125941130348e-34f, 1.9034364467245187e-34f,
 	1.9109602993360025e-34f, 1.9184841519474863e-34f,
-	(void**)((u8*)dStageMetalFile2_gap_0x0000 + 0xAA0),
+	(void**)((u8*)dStageMetalFile2_Tex_0x0008 + 0xA98),
 	0x0781,
 	0x02, 0xAE,
 	0x0782,

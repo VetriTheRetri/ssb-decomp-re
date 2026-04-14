@@ -1,7 +1,0 @@
-/* Vtx: Vtx_0x0960 @ 0x960 (2 vertices) */
-
-#include "relocdata_types.h"
-
-Vtx dLBTransitionKannon_Vtx_0x0960_Vtx[2] = {
-	#include <LBTransitionKannon/Vtx_0x0960.vtx.inc.c>
-};

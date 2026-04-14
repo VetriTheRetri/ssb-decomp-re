@@ -1,8 +1,0 @@
-# Block manifest for relocData file 262 (GRSectorMap)
-# Each line is either a block filename or 'pad N'.
-# The master .c file is generated from this manifest at build time.
-
-Arwing0_AnimJoint.data.c
-MapHeader_0x0014.data.c
-ArwingLaser2D_WeaponAttributes.data.c
-ArwingLaser3D_WeaponAttributes.data.c

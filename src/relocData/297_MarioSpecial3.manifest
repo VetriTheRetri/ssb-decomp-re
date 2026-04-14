@@ -1,8 +1,0 @@
-# Block manifest for relocData file 297 (MarioSpecial3)
-# Each line is either a block filename or 'pad N'.
-# The master .c file is generated from this manifest at build time.
-
-gap_0x0000.data.c
-Tex_0x0058.data.c
-JointVerts.vtx.c
-SuperJumpPunchDL.dl.c

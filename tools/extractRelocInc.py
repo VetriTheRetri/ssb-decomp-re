@@ -54,6 +54,243 @@ def manifest_for(fid):
     return None
 
 
+def inline_master_for(fid):
+    """Return the path to the new-style hand-written master .c (inline
+    block declarations) for `fid`, or None."""
+    for fn in os.listdir(SRC_RELOC):
+        if fn.startswith(f"{fid}_") and fn.endswith(".c") \
+                and not fn.endswith(".jp.c") and not fn.endswith(".us.c"):
+            return os.path.join(SRC_RELOC, fn)
+    return None
+
+
+# Matches the start of a top-level typed declaration: `<Type> <name>...;`
+# optionally wrapped in `static`/`const`. The declaration body (initializer
+# list, if any) is consumed by brace-balanced scanning below, so this
+# regex only needs to lock on to the opening tokens.
+_TOP_DECL_RE = re.compile(
+    r"^(?P<static>\s*(?:static\s+)?(?:const\s+)?)"
+    r"(?P<type>\w+)\s+"
+    r"(?P<name>\w+)"
+    r"(?:\s*\[\s*(?P<count>\d*)\s*\])?",
+    re.MULTILINE,
+)
+_INC_RE = re.compile(r'#include\s+[<"](?P<path>[^>"]+\.inc\.c)[>"]')
+_PAD_RE = re.compile(r"^\s*PAD\(\s*(?P<n>\d+)\s*\)\s*;", re.MULTILINE)
+
+# Every typed block in the current tree is one of these. The walker skips
+# identifiers that don't appear here (e.g. `extern`, `#define`, forward
+# declarations).
+_SUPPORTED_DECL_TYPES = frozenset({
+    "u8", "u16", "u32", "u64", "s8", "s16", "s32", "s64", "f32",
+    "Vtx", "Vtx_t", "Gfx", "Bitmap", "DObjDesc", "MObjSub",
+    "Sprite", "MPGroundData", "FTAttributes", "FTThrowHitDesc",
+})
+
+
+def _scan_declaration_body(text, body_start):
+    """Given the position just past a declaration's type/name, locate the
+    terminating semicolon (for either an `= { ... };` initializer or a
+    bare `;` forward decl) and return (body_text, end_pos).
+
+    `body_text` is everything between (and including) the opening `{` and
+    the final `}` if present, otherwise the empty string. `end_pos` is the
+    index just past the trailing `;`."""
+    pos = body_start
+    length = len(text)
+    # Skip optional `= {` — if present, do brace-balanced scan; if absent,
+    # look for the terminating `;`.
+    while pos < length and text[pos] in " \t\n\r":
+        pos += 1
+    if pos < length and text[pos] == "=":
+        pos += 1
+        while pos < length and text[pos] in " \t\n\r":
+            pos += 1
+    if pos < length and text[pos] == "{":
+        depth = 0
+        body_begin = pos
+        while pos < length:
+            ch = text[pos]
+            if ch == "{":
+                depth += 1
+            elif ch == "}":
+                depth -= 1
+                if depth == 0:
+                    pos += 1
+                    break
+            pos += 1
+        body = text[body_begin:pos]
+        # Consume trailing `;`
+        while pos < length and text[pos] in " \t\n\r":
+            pos += 1
+        if pos < length and text[pos] == ";":
+            pos += 1
+        return body, pos
+    # No initializer — find the `;` and return empty body.
+    semi = text.find(";", pos)
+    if semi < 0:
+        return "", length
+    return "", semi + 1
+
+
+def _count_top_level_initializers(body):
+    """Count the number of top-level `{ ... }` groups inside a `{ ... };`
+    initializer. Used to size `Type foo[] = { {...}, {...}, ... };`."""
+    if not body or body[0] != "{" or body[-1] != "}":
+        return 0
+    inner = body[1:-1]
+    count = 0
+    depth = 0
+    for ch in inner:
+        if ch == "{":
+            if depth == 0:
+                count += 1
+            depth += 1
+        elif ch == "}":
+            depth -= 1
+    return count
+
+
+# Fixed per-element / per-instance struct sizes used when a declaration's
+# array count comes from counting top-level `{}` groups instead of an
+# explicit `[N]` bracket. MPGroundData / FTAttributes / FTThrowHitDesc come
+# from the IDO sizeof; the others match the N64 SDK layouts.
+_FIXED_TYPE_SIZES = {
+    "u8":  1, "u16": 2, "u32": 4, "u64": 8,
+    "s8":  1, "s16": 2, "s32": 4, "s64": 8, "f32": 4,
+    "Vtx": 16, "Vtx_t": 16, "Gfx": 8, "Bitmap": 16,
+    "DObjDesc": 44, "MObjSub": 120, "Sprite": 68,
+    "MPGroundData": 0xA8,
+    "FTAttributes": 0x488,       # from src/ft/fttypes.h, matches stock main sources
+    "FTThrowHitDesc": 0x60,      # from src/ft/fttypes.h
+}
+
+
+def _count_hex_literals(body):
+    return len(re.findall(r"0x[0-9A-Fa-f]+", body))
+
+
+def _classify_decl_virtual_path(type_, inc_path, decl_text):
+    """Pick an appropriate filename suffix so `compute_block_size` routes
+    each virtual block to the right compute_*_c_size helper.
+
+    The helper dispatches on filename extension (.vtx.c, .dl.c, .palette.c,
+    .data.c, .dobjdesc.c, .mobjsub.c) so we just need to pick one whose
+    semantics match the declaration we're feeding it."""
+    if type_ == "Vtx" or type_ == "Vtx_t":
+        return "block.vtx.c"
+    if type_ == "Gfx":
+        # `Gfx X[] = { gsSPEndDisplayList() };` is a DL terminator stub —
+        # compute_dl_c_size doesn't recognise it (it counts `{{}}` pairs),
+        # so route those through compute_data_c_size which hard-codes the
+        # 8-byte DL_TERMINATOR_SIZE for exactly this pattern.
+        if "gsSPEndDisplayList" in decl_text:
+            return "block.data.c"
+        return "block.dl.c"
+    if type_ == "DObjDesc":
+        return "block.dobjdesc.c"
+    if type_ == "MObjSub":
+        return "block.mobjsub.c"
+    if type_ == "Sprite" or type_ == "Bitmap":
+        return "block.sprite.c"
+    if type_ == "u16" and inc_path and inc_path.endswith(".palette.inc.c"):
+        return "block.palette.c"
+    # Everything else (u8/u16/u32/u64/FTAttributes/MPGroundData/...) goes
+    # through compute_data_c_size, which handles both raw-literal arrays
+    # and `#include` blobs, plus KNOWN_STRUCT_SIZES hard-coded structs.
+    return "block.data.c"
+
+
+def _virtual_block_text(body_open, body_close, decl_text, type_):
+    """Wrap a declaration's raw text in the minimal .c file the compute_*
+    helpers expect (a `#include "relocdata_types.h"` plus the single
+    declaration). Extra includes for any types referenced by the decl
+    keep the file self-consistent for the helper that parses it."""
+    extras = []
+    if type_ in ("FTAttributes", "FTThrowHitDesc"):
+        extras.append('#include <ft/fttypes.h>')
+    if type_ == "MPGroundData":
+        extras.append('#include <mp/mptypes.h>')
+    header = '#include "relocdata_types.h"\n' + "".join(e + "\n" for e in extras)
+    return header + "\n" + decl_text
+
+
+def parse_master_c(path):
+    """Walk a hand-written inline master .c and yield a sequence of
+
+        ('pad', byte_count)
+        ('block', {'type': str, 'name': str, 'size': int,
+                   'inc_path': 'Sub/Foo.inc.c' or None})
+
+    in source order. Each declaration's size comes from extracting just
+    that declaration into a temporary virtual block .c file and calling
+    `genRelocMaster.compute_block_size` on it — the same helper the old
+    manifest-driven pipeline used for per-block files, so the results
+    stay byte-accurate."""
+    import tempfile
+    try:
+        from genRelocMaster import compute_block_size
+    except ImportError:  # pragma: no cover — shouldn't happen in practice
+        raise RuntimeError("genRelocMaster.compute_block_size is required")
+
+    with open(path) as f:
+        raw = f.read()
+    # Preserve comments (parse_sprite_info / compute_data_c_size strip
+    # them themselves) but remove them *for the scan positions only*.
+    scan_text = re.sub(r"/\*.*?\*/", lambda m: " " * len(m.group(0)),
+                        raw, flags=re.DOTALL)
+    scan_text = re.sub(r"//[^\n]*", lambda m: " " * len(m.group(0)), scan_text)
+
+    out = []
+    pos = 0
+    length = len(scan_text)
+    search_paths = [SRC_RELOC, BUILD_RELOC]
+
+    with tempfile.TemporaryDirectory() as tmpdir:
+        while pos < length:
+            pad_m = _PAD_RE.search(scan_text, pos)
+            decl_m = _TOP_DECL_RE.search(scan_text, pos)
+            if pad_m is None and decl_m is None:
+                break
+            if decl_m is None or (
+                    pad_m is not None and pad_m.start() < decl_m.start()):
+                out.append(('pad', int(pad_m.group('n'))))
+                pos = pad_m.end()
+                continue
+            type_ = decl_m.group('type')
+            name = decl_m.group('name')
+            if type_ not in _SUPPORTED_DECL_TYPES:
+                pos = decl_m.end()
+                continue
+
+            body, body_end = _scan_declaration_body(scan_text, decl_m.end())
+            # The real (commented) text of the declaration, for feeding to
+            # the compute helper — we want compute_sprite_c_size to see
+            # the actual `Bitmap foo[] = { {...} };` instead of our
+            # blanked-out scan buffer.
+            decl_start = decl_m.start('type')
+            decl_text = raw[decl_start:body_end]
+
+            inc_m = _INC_RE.search(body)
+            inc_path = inc_m.group('path') if inc_m else None
+
+            virt_name = _classify_decl_virtual_path(type_, inc_path, decl_text)
+            virt_path = os.path.join(tmpdir, virt_name)
+            with open(virt_path, "w") as fh:
+                fh.write(_virtual_block_text(None, None, decl_text, type_))
+            try:
+                size = compute_block_size(virt_path, search_paths=search_paths)
+            except SystemExit:
+                size = 0
+
+            out.append(('block', {
+                'type': type_, 'name': name, 'size': size,
+                'inc_path': inc_path,
+            }))
+            pos = body_end
+    return out
+
+
 def sub_name_of(manifest_path):
     """Extract `<Name>` from `src/relocData/<fid>_<Name>.manifest`."""
     name = os.path.basename(manifest_path)[:-len(".manifest")]
@@ -270,8 +507,15 @@ def emit_dl(data, start, size, path):
 
 def process_fid(fid):
     manifest = manifest_for(fid)
-    if manifest is None:
-        return 0
+    if manifest is not None:
+        return _process_manifest(fid, manifest)
+    inline = inline_master_for(fid)
+    if inline is not None:
+        return _process_inline(fid, inline)
+    return 0
+
+
+def _process_manifest(fid, manifest):
     binp = bin_path(fid)
     if binp is None:
         return 0
@@ -322,6 +566,62 @@ def process_fid(fid):
             if _HAS_N64IMG and payload.startswith('Tex_'):
                 emit_tex_png(data, off, size, tex_meta, block_sub_dir=build_sub_dir,
                              payload=payload)
+        emitted += 1
+    return emitted
+
+
+def _process_inline(fid, master_path):
+    """Walk a hand-written inline master .c file (the new layout) and emit
+    its referenced `.inc.c` files from the binary at the running offset."""
+    binp = bin_path(fid)
+    if binp is None:
+        return 0
+    with open(binp, 'rb') as f:
+        data = f.read()
+
+    entries = parse_master_c(master_path)
+
+    # First pass: assign byte offsets and gather DL tex metadata.
+    block_info = []  # (entry, offset)
+    tex_meta = {}
+    offset = 0
+    for kind, payload in entries:
+        if kind == 'pad':
+            offset += payload
+            continue
+        size = payload['size']
+        block_info.append((payload, offset))
+        inc_path = payload.get('inc_path') or ''
+        if inc_path.endswith('.dl.inc.c'):
+            tex_meta.update(scan_dl_for_tex_meta(data, offset, offset + size))
+        offset += size
+
+    # Second pass: write each block's inc.c into build/.
+    emitted = 0
+    for payload, off in block_info:
+        inc_path_rel = payload.get('inc_path')
+        if not inc_path_rel:
+            continue
+        inc_full = os.path.join(BUILD_RELOC, inc_path_rel)
+        size = payload['size']
+        if inc_path_rel.endswith('.vtx.inc.c'):
+            count = size // 16
+            emit_vtx(data, off, count, inc_full)
+        elif inc_path_rel.endswith('.palette.inc.c'):
+            emit_palette(data, off, inc_full)
+        elif inc_path_rel.endswith('.dl.inc.c'):
+            emit_dl(data, off, size, inc_full)
+        elif inc_path_rel.endswith('.tex.inc.c') or inc_path_rel.endswith('.data.inc.c'):
+            emit_tex(data, off, size, inc_full)
+            # Try a PNG preview for blocks whose `payload` name starts with
+            # `Tex_` (matches the manifest-era convention).
+            if _HAS_N64IMG and payload.get('name', '').startswith('dSamus') is False:
+                # n/a — leave PNG emission to the manifest path for now
+                pass
+        else:
+            # Other formats (e.g. `.inc.c` without a recognised suffix)
+            # get raw-byte extraction.
+            emit_tex(data, off, size, inc_full)
         emitted += 1
     return emitted
 

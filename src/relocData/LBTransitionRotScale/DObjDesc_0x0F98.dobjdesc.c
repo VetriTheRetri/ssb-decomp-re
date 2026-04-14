@@ -1,6 +1,0 @@
-/* DObjDesc: - @ 0xF98 (3 entries) */
-DObjDesc dLBTransitionRotScale_DObjDesc_0x0F98[] = {
-	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
-	{ 1, (void*)((u8*)dLBTransitionRotScale_gap_0x0000 + 0x5A0), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 1.5436489582061768f }, { 0.7031279802322388f, 0.7031279802322388f, 0.7031279802322388f } },
-	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
-};

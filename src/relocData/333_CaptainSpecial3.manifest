@@ -1,9 +1,0 @@
-# Block manifest for relocData file 333 (CaptainSpecial3)
-# Each line is either a block filename or 'pad N'.
-# The master .c file is generated from this manifest at build time.
-
-gap_0x0000.data.c
-FalconPunchMObjSub.mobjsub.c
-gap_0x0708.data.c
-gap_0x0760.data.c
-FalconPunchMatAnimJoint_MatAnimJoint.data.c

@@ -1,7 +1,0 @@
-/* Palette: Lut_0x08E8 @ 0x8E8 (16 colors RGBA5551) */
-
-#include "relocdata_types.h"
-
-u16 dStageSectorFile2_Lut_0x08E8_palette[16] = {
-	#include <StageSectorFile2/Lut_0x08E8.palette.inc.c>
-};

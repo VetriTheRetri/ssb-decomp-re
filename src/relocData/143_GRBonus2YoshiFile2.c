@@ -1,0 +1,72 @@
+/* relocData file 143: GRBonus2YoshiFile2 */
+/* Inlined block layout - edit this file directly. The .inc.c
+ * files referenced below live under build/src/relocData/ and
+ * are regenerated from the baserom by tools/extractRelocInc.py
+ * at extract time. */
+
+#include "relocdata_types.h"
+
+/* Raw data from file offset 0x0000 to 0x0D40 (3392 bytes) */
+u8 dGRBonus2YoshiFile2_gap_0x0000[3392] = {
+	#include <GRBonus2YoshiFile2/gap_0x0000.data.inc.c>
+};
+
+/* DObjDesc: Layer0DObj @ 0xD40 (9 entries) */
+DObjDesc dGRBonus2YoshiFile2_Layer0DObj[] = {
+	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dGRBonus2YoshiFile2_gap_0x0000 + 0xCD0), { -2550.0f, 4950.0f, -600.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dGRBonus2YoshiFile2_gap_0x0000 + 0xCE0), { 5400.0f, 1500.0f, -600.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dGRBonus2YoshiFile2_gap_0x0000 + 0xCF0), { -5550.0f, 750.0f, -600.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dGRBonus2YoshiFile2_gap_0x0000 + 0xD00), { 5550.0f, -5700.0f, -600.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dGRBonus2YoshiFile2_gap_0x0000 + 0xD10), { 0.0f, -5700.0f, -600.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dGRBonus2YoshiFile2_gap_0x0000 + 0xD20), { -5400.0f, -5700.0f, -600.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dGRBonus2YoshiFile2_gap_0x0000 + 0xD30), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
+};
+
+/* Raw data from file offset 0x0ECC to 0x2510 (5700 bytes) */
+u8 dGRBonus2YoshiFile2_gap_0x0ECC[5700] = {
+	#include <GRBonus2YoshiFile2/gap_0x0ECC.data.inc.c>
+};
+
+/* DObjDesc: Layer1DObj @ 0x2510 (22 entries) */
+DObjDesc dGRBonus2YoshiFile2_Layer1DObj[] = {
+	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)0x00000000, { 3750.0f, 600.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)0x00000000, { -3808.892822265625f, -6600.00048828125f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)0x00000000, { 760.0f, -6600.00048828125f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)0x00000000, { -5100.0f, 3600.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)0x00000000, { -5100.0f, -1200.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)0x00000000, { 7050.0f, -5100.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)0x00000000, { 1800.0f, 1800.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)0x00000000, { 8266.0205078125f, -2261.16015625f, 67.14710998535156f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)0x00000000, { -7200.0f, -5400.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)0x00000000, { 0.0f, 2700.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dGRBonus2YoshiFile2_gap_0x0ECC + 0x15A4), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dGRBonus2YoshiFile2_gap_0x0ECC + 0x15B4), { 1920.0f, -10147.7919921875f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dGRBonus2YoshiFile2_gap_0x0ECC + 0x15C4), { -5280.0f, -9836.6708984375f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dGRBonus2YoshiFile2_gap_0x0ECC + 0x15D4), { -1835.5545654296875f, -11100.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dGRBonus2YoshiFile2_gap_0x0ECC + 0x15E4), { 407.8473205566406f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dGRBonus2YoshiFile2_gap_0x0ECC + 0x15F4), { 1500.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dGRBonus2YoshiFile2_gap_0x0ECC + 0x1604), { 8260.3291015625f, -9537.23828125f, 9.295312881469727f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dGRBonus2YoshiFile2_gap_0x0ECC + 0x1614), { 5551.8115234375f, -7830.1748046875f, 20.14175796508789f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dGRBonus2YoshiFile2_gap_0x0ECC + 0x1624), { 5557.21044921875f, -554.0460205078125f, 80.17713165283203f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dGRBonus2YoshiFile2_gap_0x0ECC + 0x1634), { 7806.4189453125f, 4631.78857421875f, 116.0595703125f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
+};
+
+/* Raw data from file offset 0x28D8 to 0x2E68 (1424 bytes) */
+u8 dGRBonus2YoshiFile2_gap_0x28D8[1424] = {
+	#include <GRBonus2YoshiFile2/gap_0x28D8.data.inc.c>
+};
+
+/* Raw data from file offset 0x2E68 to 0x2E90 (40 bytes) */
+u8 dGRBonus2YoshiFile2_MPGeometryData_0x2E68[40] = {
+	#include <GRBonus2YoshiFile2/MPGeometryData_0x2E68.data.inc.c>
+};
+
+/* Raw data from file offset 0x2E90 to 0x3810 (2432 bytes) */
+u8 dGRBonus2YoshiFile2_Layer1Anim_AnimJoint[2432] = {
+	#include <GRBonus2YoshiFile2/Layer1Anim_AnimJoint.data.inc.c>
+};
+

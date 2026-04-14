@@ -1,7 +1,0 @@
-/* Vtx: Vtx_0x0220 @ 0x220 (2 vertices) */
-
-#include "relocdata_types.h"
-
-Vtx dLBTransitionBlock_Vtx_0x0220_Vtx[2] = {
-	#include <LBTransitionBlock/Vtx_0x0220.vtx.inc.c>
-};

@@ -1,9 +1,0 @@
-# Block manifest for relocData file 22 (MNPlayersSpotlight)
-# Each line is either a block filename or 'pad N'.
-# The master .c file is generated from this manifest at build time.
-
-gap_0x0000.data.c
-MObjSub_0x0408.mobjsub.c
-gap_0x0480.data.c
-DObjDesc_0x0568.dobjdesc.c
-pad 4

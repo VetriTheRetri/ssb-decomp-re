@@ -1,0 +1,61 @@
+/* relocData file 75: MVOpeningRunCrash */
+/* Inlined block layout - edit this file directly. The .inc.c
+ * files referenced below live under build/src/relocData/ and
+ * are regenerated from the baserom by tools/extractRelocInc.py
+ * at extract time. */
+
+#include "relocdata_types.h"
+
+/* Raw data from file offset 0x0000 to 0x2AA8 (10920 bytes) */
+u8 dMVOpeningRunCrash_gap_0x0000[10920] = {
+	#include <MVOpeningRunCrash/gap_0x0000.data.inc.c>
+};
+
+/* MObjSub: - @ 0x2AA8 */
+MObjSub dMVOpeningRunCrash_MObjSub_0x2AA8_MObjSub = {
+	0x0000,
+	0x00, 0x00,
+	(void**)0x0AAC0B90,
+	0x0AAD, 0x0B92, 0x0AAE, 0x0B94,
+	179243926,
+	1.6948653708348004e-32f, 1.704493551188798e-32f,
+	1.7141217315427957e-32f, 1.7237499118967934e-32f,
+	1.733378092250791e-32f, 1.7430062726047887e-32f,
+	(void**)0x0AB60104,
+	0x0AB7,
+	0x00, 0xFA,
+	0x0AB8,
+	0x00F0, 0x0AB9, 0x00E6,
+	1.791147174374777e-32f, 1.8007753547287746e-32f,
+	1.8104035350827723e-32f, 1.82003171543677e-32f,
+	0x0ABE00B4,
+	{ { 0x0A, 0xBF, 0x00, 0xAA } },
+	0x0A, 0xC0, { 0x00, 0xA0 },
+	{ { 0x0A, 0xC1, 0x00, 0x96 } },
+	{ { 0x0A, 0xC2, 0x00, 0x8C } },
+	{ { 0x0A, 0xC3, 0x00, 0x82 } },
+	{ { 0x0A, 0xC4, 0x00, 0x78 } },
+	180682862, 180748388,
+	180813914, 180879440,
+};
+
+/* Raw data from file offset 0x2B20 to 0x35F8 (2776 bytes) */
+u8 dMVOpeningRunCrash_gap_0x2B20[2776] = {
+	#include <MVOpeningRunCrash/gap_0x2B20.data.inc.c>
+};
+
+/* DObjDesc: - @ 0x35F8 (6 entries) */
+DObjDesc dMVOpeningRunCrash_DObjDesc_0x35F8[] = {
+	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dMVOpeningRunCrash_gap_0x2B20 + 0x480), { 0.0f, 0.0f, 0.0f }, { 0.0f, 3.1415929794311523f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dMVOpeningRunCrash_gap_0x2B20 + 0x640), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 3.1415929794311523f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dMVOpeningRunCrash_gap_0x2B20 + 0x7B8), { 0.0f, 0.0f, 0.0f }, { 3.1415929794311523f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dMVOpeningRunCrash_gap_0x2B20 + 0xAA8), { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
+};
+
+/* Raw data from file offset 0x3700 to 0x3AB0 (944 bytes) */
+u8 dMVOpeningRunCrash_MatAnimJoint_0x3700[944] = {
+	#include <MVOpeningRunCrash/MatAnimJoint_0x3700.data.inc.c>
+};
+

@@ -127,32 +127,68 @@ def parse_file_descriptions(desc_path, file_id):
 def split_sprites_in_subdir(file_id):
     """Find sprite names that use the split _tex.data.c layout.
 
-    A split sprite has its texture data in a sibling `<Name>_tex.data.c` file
-    (so palettes can sit at their original physical position between the
-    texture and the bitmap array). The texture extraction must truncate at
-    palette boundaries for these sprites only — old-style sprites that keep
-    everything in a single `.sprite.c` need the full untruncated region.
+    A split sprite has its texture array declared separately from the
+    Sprite struct so palette blocks can sit at their original physical
+    position between the texture and the bitmap array. The texture
+    extraction must truncate at palette boundaries for these sprites
+    only — old-style sprites that keep everything in a single .sprite.c
+    need the full untruncated region.
 
-    Returns a set of sprite base names (e.g. {"RedCard", "GrayCard"}).
-    """
+    Two layouts are recognised:
+      1. Legacy manifest-era: `<Name>_tex.data.c` block files in the
+         per-file subdir.
+      2. Inline master-era: the master `<fid>_<Name>.c` declares
+         `u8 <Prefix>_<SpriteName>_tex[] = { #include <...> };`
+         separately from `Sprite <Prefix>_<SpriteName>`.
+
+    Returns a set of sprite base names (e.g. {"Stock", "FTEmblem"})."""
     import glob
-    # Find the file's source subdir name
+    split = set()
+
+    # Find the file's source subdir name from either the manifest or the
+    # hand-written master .c.
     candidates = glob.glob(os.path.join(PROJECT_DIR, "src", "relocData",
                                          f"{file_id}_*.manifest"))
     candidates += glob.glob(os.path.join(PROJECT_DIR, "src", "relocData",
                                           f"{file_id}.manifest"))
-    if not candidates:
-        return set()
-    base = os.path.basename(candidates[0]).rsplit('.', 1)[0]
-    parts = base.split('_', 1)
-    subdir_name = parts[1] if len(parts) == 2 and parts[0].isdigit() else parts[0]
+    master_candidates = glob.glob(os.path.join(PROJECT_DIR, "src", "relocData",
+                                                 f"{file_id}_*.c"))
+    # Filter out version-specific overrides
+    master_candidates = [m for m in master_candidates
+                          if not m.endswith(".jp.c") and not m.endswith(".us.c")]
+
+    subdir_name = None
+    if candidates:
+        base = os.path.basename(candidates[0]).rsplit('.', 1)[0]
+        parts = base.split('_', 1)
+        subdir_name = parts[1] if len(parts) == 2 and parts[0].isdigit() else parts[0]
+    elif master_candidates:
+        base = os.path.basename(master_candidates[0])[:-len('.c')]
+        parts = base.split('_', 1)
+        subdir_name = parts[1] if len(parts) == 2 and parts[0].isdigit() else parts[0]
+
+    if subdir_name is None:
+        return split
+
     subdir = os.path.join(PROJECT_DIR, "src", "relocData", subdir_name)
-    if not os.path.isdir(subdir):
-        return set()
-    split = set()
-    for f in os.listdir(subdir):
-        if f.endswith('_tex.data.c'):
-            split.add(f[:-len('_tex.data.c')])
+    if os.path.isdir(subdir):
+        for f in os.listdir(subdir):
+            if f.endswith('_tex.data.c'):
+                split.add(f[:-len('_tex.data.c')])
+
+    # Also scan the master .c for inline split-sprite patterns:
+    # `u8 d<Prefix>_<Name>_tex[]` paired with a later `Sprite d<Prefix>_<Name>`.
+    for mp in master_candidates:
+        try:
+            with open(mp) as fh:
+                text = fh.read()
+        except OSError:
+            continue
+        text = re.sub(r'/\*.*?\*/', '', text, flags=re.DOTALL)
+        # Match `u8 d<prefix>_<SpriteName>_tex[]` — strip the leading `d<prefix>_`
+        # and trailing `_tex` to recover the sprite name.
+        for m in re.finditer(r'u8\s+d\w+?_([A-Za-z0-9]+)_tex\s*\[\s*\]\s*=\s*\{', text):
+            split.add(m.group(1))
     return split
 
 

@@ -1,9 +1,0 @@
-# Block manifest for relocData file 75 (MVOpeningRunCrash)
-# Each line is either a block filename or 'pad N'.
-# The master .c file is generated from this manifest at build time.
-
-gap_0x0000.data.c
-MObjSub_0x2AA8.mobjsub.c
-gap_0x2B20.data.c
-DObjDesc_0x35F8.dobjdesc.c
-MatAnimJoint_0x3700.data.c

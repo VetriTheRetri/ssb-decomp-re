@@ -1,0 +1,5 @@
+# Relocation metadata for file 296 (JP variant)
+# Format: <type> <ptr_label> <target_label>
+# JP build compiles MarioModel as a single chain-encoded raw u32 blob
+# — the chain bytes are already baked into the .c source, so
+# fixRelocChain has no per-symbol patches to apply here.

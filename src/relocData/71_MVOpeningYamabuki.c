@@ -1,50 +1,28 @@
 /* relocData file 71: MVOpeningYamabuki — opening scene where the Pikachu
  * figure topples onto the carpet in the yellow room.
  *
- * Second-pass typing: the 10 symbol-bounded blocks from the first pass
- * are now broken down into the sub-structures recoverable from the
- * file's 151-entry reloc chain and the F3DEX2 DL walk:
+ * Third-pass typing: the three `DObjDesc` arrays, the 53-entry wallpaper
+ * `Bitmap` array, and the final `Sprite` struct are all real typed
+ * declarations now. Every pointer field (`.dl`, `.buf`, `.bitmap`) with
+ * a chain entry is written as a real C reference to its target symbol;
+ * the companion 71_MVOpeningYamabuki.reloc file feeds `fixRelocChain` a
+ * symbolic ptr/target list that overwrites those positions with the
+ * chain-encoded form at link time.
  *
- *   - pre_start (0x0000..0x9548) splits into a 35,472-byte texture /
- *     palette pool and seven standalone F3DEX2 display lists that the
- *     LegsDObjDesc tree below references via its `dl` pointers.
- *
- *   - CamAnimJoint_and_wallpaper (0xD330..0x3EE58) is actually FOUR
- *     sub-blocks:
- *         0xD330..0xD368    CamAnimJoint   — 14 u32s, 1 AObjEvent32 track
- *         0xD368..0x3EB08   Wallpaper_tex_tiles — 53 × 3840-byte RGBA16 tiles
- *         0x3EB08..0x3EE58  Wallpaper_bitmaps   — 53 × 16-byte Bitmap structs
- *                                                whose .buf fields patch to
- *                                                the tiles above via the
- *                                                intern chain.
- *         0x3EE58..0x3EE9C  Wallpaper_sprite    — 68-byte Sprite struct,
- *                                                320×264 RGBA16, attr
- *                                                SP_OVERLAP|SP_TEXSHUF.
- *
- *   - The three DObjDesc blocks (Legs / LegsShadow / MBall) each contain
- *     a DObjDesc[] array terminated by a DOBJ_ARRAY_MAX (18) sentinel,
- *     followed by 4–8 bytes of zero alignment padding to the next 0x10
- *     boundary. Entry counts: Legs = 19+term, LegsShadow = 4+term,
- *     MBall = 4+term. Six LegsDObjDesc entries (indices 4, 5, 7, 10, 11,
- *     13) have their `dl` fields chain-patched to the seven DLs in the
- *     pre region; the remaining entries are null-dl joint hierarchy nodes.
- *
- * The AnimJoint blocks (Legs, LegsShadow, MBall, Cam) are kept as named
- * `u8` wrappers — they're AObjEvent32 scripts with their own internal
- * chain structure and extracting them into typed `AObjEvent32[]` arrays
- * needs a per-script walker that isn't built yet. The Sprite and Bitmap
- * struct blocks stay as `u8` too because their pointer fields live
- * inside chain-encoded raw bytes that would need a `.reloc` sidecar to
- * patch — a bigger structural change than this refinement pass.
+ * The remaining `u8`-wrapped blocks (the shared Tex pool, 7 DLs, 4 AnimJoint
+ * scripts, and the 203 KB wallpaper texture tile pool) stay as raw byte
+ * wrappers — their bytes are already regenerable from the ROM and their
+ * internal structure (F3DEX2 streams, AObjEvent32 tracks, raw RGBA16
+ * pixels) is best left as-is for now.
  */
 
 #include "relocdata_types.h"
 
 /* ──────────────── Pre-region: texture pool + 7 display lists ──────────── */
 
-/* Shared texture / palette pool referenced by the 7 DLs below (35,472 B).
- * The DLs at 0x08A90.. pull Vtx / Tex / LUT data from everywhere inside
- * this block via SETTIMG / LOADTLUT / VTX commands. */
+/* Shared texture / palette / Vtx pool referenced by the 7 DLs below
+ * (35,472 B). Each DL at 0x08A90.. pulls data out of this region via
+ * SETTIMG / LOADTLUT / VTX commands. */
 u8 dMVOpeningYamabuki_Tex_pool[0x8A90] = {
 	#include <MVOpeningYamabuki/Tex_pool.data.inc.c>
 };
@@ -86,13 +64,33 @@ u8 dMVOpeningYamabuki_DL_0x09248[0x300] = {
 
 /* ──────────────── Pikachu legs joint hierarchy ─────────────────────────── */
 
-/* `llMVOpeningYamabukiLegsDObjDesc` — 19 DObjDesc entries + DOBJ_ARRAY_MAX
- * terminator (880 B) + 8 B zero pad. Six of the 19 non-terminator entries
- * (indices 4, 5, 7, 10, 11, 13) have non-null `dl` fields patched to the
- * seven DLs in the pre region. */
-u8 dMVOpeningYamabuki_LegsDObjDesc[0x378] = {
-	#include <MVOpeningYamabuki/LegsDObjDesc.data.inc.c>
+/* `llMVOpeningYamabukiLegsDObjDesc` — 19-joint DObjDesc tree. Entries 4,
+ * 5, 7, 10, 11, 13 have their `.dl` fields pointing at the 7 DLs above;
+ * the rest are null-dl hierarchy nodes. */
+
+DObjDesc dMVOpeningYamabuki_LegsDObjDesc[20] = {
+	{ 0, NULL, { 56.15043f, -29.66133f, -607.43524f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, NULL, { 522.5648f, 0.0f, -525.3599f }, { 0.0f, 0.41469f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, NULL, { -168.31274f, 138.55083f, 496.86102f }, { 0.0f, -0.020944f, 0.0f }, { 0.999999f, 1.0f, 0.999999f } },
+	{ 3, NULL, { -0.099907f, 1149.8403f, -366.29163f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 4, (void*)dMVOpeningYamabuki_DL_0x08A90, { -0.000114f, 0.0f, 0.0f }, { 0.241375f, -0.027391f, -1.694158f }, { 1.0f, 1.0f, 1.0f } },
+	{ 5, (void*)dMVOpeningYamabuki_DL_0x08BA8, { 640.3021f, 0.0f, 0.0f }, { 0.0f, 0.0f, 1.322579f }, { 1.0f, 1.0f, 1.0f } },
+	{ 6, NULL, { 562.4227f, 12.692986f, 0.183249f }, { -8e-06f, -5e-06f, 1.003806f }, { 1.0f, 1.0f, 1.0f } },
+	{ 7, (void*)dMVOpeningYamabuki_DL_0x08CE8, { -0.000114f, -7e-06f, 0.0f }, { 0.045205f, 0.024147f, -2.374348f }, { 1.0f, 1.0f, 1.0f } },
+	{ 7, NULL, { -475.98587f, -459.01047f, -15.970173f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, NULL, { -0.099907f, 1149.8403f, -673.55566f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 4, (void*)dMVOpeningYamabuki_DL_0x08FF8, { -0.000114f, 0.0f, -0.000114f }, { 0.407719f, 0.143131f, -1.803483f }, { 1.0f, 1.0f, 1.0f } },
+	{ 5, (void*)dMVOpeningYamabuki_DL_0x09108, { 640.3021f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.231169f }, { 1.0f, 1.0f, 1.0f } },
+	{ 6, NULL, { 562.35223f, 18.216934f, -1.564922f }, { 0.0f, 0.0f, 1.008399f }, { 1.0f, 1.0f, 1.0f } },
+	{ 7, (void*)dMVOpeningYamabuki_DL_0x09248, { -0.000114f, 2.9e-05f, 0.0f }, { -3.131045f, 3.144606f, 0.626922f }, { 1.0f, 1.0f, 1.0f } },
+	{ 7, NULL, { -564.25714f, -408.75436f, 2.099419f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, NULL, { 919.2105f, 514.5704f, -108.19203f }, { 0.0f, 0.0f, 0.0f }, { 5.000003f, 5.0f, 5.000003f } },
+	{ 4, NULL, { -7.866493f, -415.9666f, 20.406769f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 3, NULL, { 553.44696f, 511.78116f, -445.38196f }, { 0.0f, 0.0f, 0.0f }, { 5.000003f, 5.0f, 5.000003f } },
+	{ 4, NULL, { -114.84872f, -227.21042f, -60.610836f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },  /* DOBJ_ARRAY_MAX terminator */
 };
+PAD(8);  /* tail pad after the DObjDesc array */
 
 /* `llMVOpeningYamabukiLegsAnimJoint` — AObjEvent32 tracks driving the
  * leg joints (6,640 B). Fed to `gcAddAnimJointAll` in
@@ -103,11 +101,18 @@ u8 dMVOpeningYamabuki_LegsAnimJoint[0x19F0] = {
 
 /* ──────────────── Projected leg shadow ─────────────────────────────────── */
 
-/* `llMVOpeningYamabukiLegsShadowDObjDesc` — 4 entries + terminator
- * (220 B) + 4 B pad. */
-u8 dMVOpeningYamabuki_LegsShadowDObjDesc[0xE0] = {
-	#include <MVOpeningYamabuki/LegsShadowDObjDesc.data.inc.c>
+/* `llMVOpeningYamabukiLegsShadowDObjDesc` — 4-joint DObjDesc tree.
+ * Entries 1, 2, 3 each point into the tail of LegsAnimJoint where three
+ * small shadow-render DLs are packed. */
+
+DObjDesc dMVOpeningYamabuki_LegsShadowDObjDesc[5] = {
+	{ 0, NULL, { 26.818335f, -29.66133f, -670.0845f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dMVOpeningYamabuki_LegsAnimJoint + 0x19C0), { 1285.9763f, 0.989575f, -366.32028f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dMVOpeningYamabuki_LegsAnimJoint + 0x19D0), { 1645.5571f, 0.989575f, -673.21893f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dMVOpeningYamabuki_LegsAnimJoint + 0x19E0), { 1523.6108f, 0.989575f, -519.7696f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },  /* DOBJ_ARRAY_MAX terminator */
 };
+PAD(4);
 
 /* `llMVOpeningYamabukiLegsShadowAnimJoint` (5,712 B). */
 u8 dMVOpeningYamabuki_LegsShadowAnimJoint[0x1650] = {
@@ -116,11 +121,18 @@ u8 dMVOpeningYamabuki_LegsShadowAnimJoint[0x1650] = {
 
 /* ──────────────── Master Ball on the carpet ────────────────────────────── */
 
-/* `llMVOpeningYamabukiMBallDObjDesc` — 4 entries + terminator
- * (220 B) + 4 B pad. */
-u8 dMVOpeningYamabuki_MBallDObjDesc[0xE0] = {
-	#include <MVOpeningYamabuki/MBallDObjDesc.data.inc.c>
+/* `llMVOpeningYamabukiMBallDObjDesc` — 4-joint DObjDesc tree. Entries 1
+ * and 2 point into the tail of LegsShadowAnimJoint where two small
+ * MBall-render DLs are packed. */
+
+DObjDesc dMVOpeningYamabuki_MBallDObjDesc[5] = {
+	{ 0, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, -0.27f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 1, (void*)((u8*)dMVOpeningYamabuki_LegsShadowAnimJoint + 0x1630), { 0.0f, 15.111347f, 103.71317f }, { 0.0f, 0.3f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+	{ 2, (void*)((u8*)dMVOpeningYamabuki_LegsShadowAnimJoint + 0x1640), { -2.1e-05f, 125.51372f, 2.9e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.022218f, 1.022218f, 1.022218f } },
+	{ 3, NULL, { -76.396164f, 161.02469f, -26.60802f }, { 0.738324f, 0.491944f, 0.149688f }, { 0.978265f, 0.978265f, 0.978265f } },
+	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },  /* DOBJ_ARRAY_MAX terminator */
 };
+PAD(4);
 
 /* `llMVOpeningYamabukiMBallAnimJoint` (2,160 B). */
 u8 dMVOpeningYamabuki_MBallAnimJoint[0x870] = {
@@ -136,29 +148,96 @@ u8 dMVOpeningYamabuki_CamAnimJoint[0x38] = {
 	#include <MVOpeningYamabuki/CamAnimJoint.data.inc.c>
 };
 
-/* Wallpaper texture tiles @ 0x0D368..0x3EB08 (203,680 B). The Sprite at
- * the end of the file is 320×264 RGBA16, split into 53 tiles of 320×6
- * pixels each. Each tile spans 0x0D368 + i × 0xF08 bytes — the 8 bytes of
- * slack per tile come from the N64 texture engine's 64-bit alignment
- * requirement on LOADBLOCK stride. The 53 `Bitmap.buf` fields in the
- * block below get chain-patched to point at each tile start. */
+/* Wallpaper texture tiles @ 0x0D368..0x3EB08 (203,680 B). 53 × 320×6
+ * RGBA16 tiles packed at 0xF08 byte stride each (8 B of slack per tile
+ * from the N64 LOADBLOCK 64-bit alignment). Each `Bitmap.buf` in the
+ * array below gets chain-patched to point at `tex_tiles[i * 0xF08]`. */
 u8 dMVOpeningYamabuki_Wallpaper_tex_tiles[0x317A0] = {
 	#include <MVOpeningYamabuki/Wallpaper_tex_tiles.data.inc.c>
 };
 
-/* Wallpaper Bitmap array @ 0x3EB08..0x3EE58 (53 × 16 bytes). Each entry
- * is 304(304)x6 RGBA16 with its `buf` field patched at link time to the
- * corresponding tile start in the pool above. */
-u8 dMVOpeningYamabuki_Wallpaper_bitmaps[0x350] = {
-	#include <MVOpeningYamabuki/Wallpaper_bitmaps.data.inc.c>
+/* 53-entry Bitmap array. Each `.buf` points at the matching tile inside
+ * the tex pool above (0xF08-byte stride). fixRelocChain rewrites these
+ * positions from the .reloc sidecar at link time. */
+
+Bitmap dMVOpeningYamabuki_Wallpaper_bitmaps[53] = {
+	{ 320, 320, 0, 0, (void*)dMVOpeningYamabuki_Wallpaper_tex_tiles, 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0xF08), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x1E10), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x2D18), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x3C20), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x4B28), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x5A30), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x6938), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x7840), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x8748), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x9650), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0xA558), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0xB460), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0xC368), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0xD270), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0xE178), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0xF080), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0xFF88), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x10E90), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x11D98), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x12CA0), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x13BA8), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x14AB0), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x159B8), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x168C0), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x177C8), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x186D0), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x195D8), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x1A4E0), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x1B3E8), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x1C2F0), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x1D1F8), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x1E100), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x1F008), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x1FF10), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x20E18), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x21D20), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x22C28), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x23B30), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x24A38), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x25940), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x26848), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x27750), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x28658), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x29560), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x2A468), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x2B370), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x2C278), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x2D180), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x2E088), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x2EF90), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x2FE98), 6, 0 },
+	{ 320, 320, 0, 0, (void*)((u8*)dMVOpeningYamabuki_Wallpaper_tex_tiles + 0x30DA0), 4, 0 },
 };
 
-/* `llMVOpeningYamabukiWallpaperSprite` @ 0x3EE58..0x3EE9C — the 68-byte
- * Sprite struct drawn by `mvOpeningYamabukiMakeWallpaper()` as the
- * background layer. 320×264 RGBA16, attr SP_OVERLAP | SP_TEXSHUF, with
- * its `bitmap` field chain-patched to dMVOpeningYamabuki_Wallpaper_bitmaps. */
-u8 dMVOpeningYamabuki_WallpaperSprite[0x44] = {
-	#include <MVOpeningYamabuki/WallpaperSprite.data.inc.c>
+/* `llMVOpeningYamabukiWallpaperSprite` — the 320×264 RGBA16 background
+ * sprite drawn by `mvOpeningYamabukiMakeWallpaper()`. `.bitmap` points
+ * at the array above; its on-disk value is written by fixRelocChain
+ * from the .reloc sidecar. */
+Sprite dMVOpeningYamabuki_WallpaperSprite = {
+	0, 0,
+	320, 264,
+	1.0f, 1.0f,
+	0, 0,
+	0x0240,
+	4660,
+	255, 255, 255, 255,
+	0, 0,
+	(int*)NULL,
+	0, 1,
+	53, 660,
+	5, 6,
+	0, 2,
+	dMVOpeningYamabuki_Wallpaper_bitmaps,
+	(Gfx*)NULL,
+	(Gfx*)NULL,
+	0, 0,
 };
 
 /* Trailing 4-byte pad @ 0x3EE9C..0x3EEA0. */

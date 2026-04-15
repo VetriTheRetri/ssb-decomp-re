@@ -44,7 +44,7 @@ struct WPAttributes                         // Moreso hitbox stuff
     s16 map_coll_center;
     s16 map_coll_bottom;
     s16 map_coll_width;
-    u16 size;
+    u32 size : 16;
     s32 angle : 10;
     u32 knockback_scale : 10;
     u32 damage : 8;

@@ -392,18 +392,25 @@ def parse_master_c(path):
                 # Fallback to the fixed per-element table when compute_*
                 # can't parse the declaration (e.g. a FTAttributes struct
                 # instance, or an sNN array compute_data_c_size doesn't
-                # recognise). Count top-level initializers where possible,
-                # otherwise treat as a single instance.
+                # recognise). Prefer the explicit `[N]` count from the
+                # declaration when present; otherwise count top-level
+                # `{...}` groups in the initializer; fall back to a
+                # single instance as a last resort.
                 per_elem = _FIXED_TYPE_SIZES.get(type_, 0)
                 if per_elem:
-                    # Extract just the body for counting.
-                    brace_open = decl_text.find("{")
-                    if brace_open >= 0:
-                        body_text = decl_text[brace_open:]
-                        n = _count_top_level_initializers(body_text)
-                        size = (n * per_elem) if n else per_elem
+                    count_str = decl_m.group('count')
+                    if count_str:
+                        n = int(count_str, 0)
                     else:
-                        size = per_elem
+                        brace_open = decl_text.find("{")
+                        if brace_open >= 0:
+                            body_text = decl_text[brace_open:]
+                            if body_text.endswith(";"):
+                                body_text = body_text[:-1].rstrip()
+                            n = _count_top_level_initializers(body_text)
+                        else:
+                            n = 0
+                    size = (n * per_elem) if n else per_elem
 
             out.append(('block', {
                 'type': type_, 'name': name, 'size': size,

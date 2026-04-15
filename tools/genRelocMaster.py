@@ -148,13 +148,14 @@ def compute_data_c_size(data_c_path, search_paths=()):
     # Texture-include arrays: either `u8 X[] = { #include <...> };` (sprite
     # texture form, size counted in the inc.c) or `u8 X[N] = { #include <...> };`
     # (Tex wrapper form — N is authoritative, the inc.c just supplies bytes
-    # at extract time).
+    # at extract time). N accepts decimal or `0x`-prefixed hex so big
+    # symbol-bounded blocks can stay readable as e.g. `[0x9548]`.
     for m in re.finditer(
-            r'u8\s+\w+\s*\[\s*(\d*)\s*\]\s*=\s*\{\s*#include\s+[<"]([^>"]+)[>"]',
+            r'u8\s+\w+\s*\[\s*(0[xX][0-9A-Fa-f]+|\d*)\s*\]\s*=\s*\{\s*#include\s+[<"]([^>"]+)[>"]',
             content):
         explicit_n = m.group(1)
         if explicit_n:
-            total += int(explicit_n)
+            total += int(explicit_n, 0)
             continue
         inc_file = find_inc_file(m.group(2), file_dir, search_paths)
         if inc_file is None:

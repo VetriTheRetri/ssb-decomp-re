@@ -54,9 +54,48 @@ def manifest_for(fid):
     return None
 
 
+def _name_for_fid(fid, version):
+    """Look up the file's symbolic name from
+    `relocFileDescriptions.<version>.txt`. Returns `None` when the id
+    has no name entry (the raw `-NNN:` header row is optional)."""
+    path = os.path.join(SCRIPT_DIR,
+                         f"relocFileDescriptions.{version}.txt")
+    if not os.path.exists(path):
+        return None
+    with open(path) as f:
+        for line in f:
+            s = line.strip()
+            if s.startswith(f"-{fid:d}:") or s.startswith(f"-{fid:03d}:"):
+                name = s.split(":", 1)[1].strip()
+                if re.match(r"^_\d+_$", name):
+                    return None
+                return name
+    return None
+
+
 def inline_master_for(fid):
     """Return the path to the new-style hand-written master .c (inline
-    block declarations) for `fid`, or None."""
+    block declarations) for `fid`, or None.
+
+    Resolution priority:
+      1. Name lookup via `relocFileDescriptions.<version>.txt`. The
+         current version's name for `fid` gets globbed against
+         `*_<Name>.c` in `src/relocData/`. This matters because file
+         names always encode the US fid, so a JP extract walking
+         fid N needs to find the file that represents the SAME
+         content under its US-era name.
+      2. Fallback: literal `{fid}_*.c` prefix lookup. Only hits when
+         the descriptions file is missing or the name isn't committed.
+    """
+    version = _detect_version() or "us"
+    name = _name_for_fid(fid, version)
+    if name:
+        import glob
+        candidates = [p for p in glob.glob(
+            os.path.join(SRC_RELOC, f"*_{name}.c"))
+            if not p.endswith(".jp.c") and not p.endswith(".us.c")]
+        if candidates:
+            return candidates[0]
     for fn in os.listdir(SRC_RELOC):
         if fn.startswith(f"{fid}_") and fn.endswith(".c") \
                 and not fn.endswith(".jp.c") and not fn.endswith(".us.c"):

@@ -1,14 +1,7 @@
-/* Auto-generated raw blob for relocData file 299 */
-/* File ID (US): 299 (MarioSecondaryImage) */
-/* File size: 192 bytes (0xC0) */
+/* relocData file 299: MarioSecondaryImage — raw blob (pending structural decomposition). */
 
 #include "relocdata_types.h"
 
-u32 dMarioSecondaryImage[] = {
-	0x00000000, 0x00000000, 0x00010001, 0xF7BD0000, 0x00000000, 0x00000000, 0x11111122, 0x00000000,
-	0x11111122, 0x00000000, 0x22222222, 0x00000000, 0x22222222, 0x00000000, 0x22222222, 0x00000000,
-	0x22222222, 0x00000000, 0x11111122, 0x00000000, 0x11111122, 0x00000000, 0x00000000, 0x00000000,
-	0x00010001, 0x10854A53, 0x8421BDEF, 0xDEF7F7BD, 0x00000000, 0x00000000, 0x77777777, 0x00000000,
-	0x77777777, 0x00000000, 0x77776432, 0x00000000, 0x77753111, 0x00000000, 0x77631111, 0x00000000,
-	0x77411111, 0x00000000, 0x77311111, 0x00000000, 0x77211111, 0x00000000, 0x00000000, 0x00000000,
+u8 dMarioSecondaryImage[0xC0] = {
+	#include <MarioSecondaryImage/MarioSecondaryImage.data.inc.c>
 };

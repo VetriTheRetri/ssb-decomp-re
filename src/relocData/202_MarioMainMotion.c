@@ -27,11 +27,7 @@ u32 dMarioMainMotion_0x0024[] = {
 	ftMotionCommandWait(80),
 	ftMotionCommandGoto(dMarioMainMotion_0x0024),
 	ftMotionCommandSetSlopeContour(3),
-#if defined(REGION_JP)
-	ftMotionPlayFGM(117),
-#else
-	ftMotionPlayFGM(121),
-#endif
+	ftMotionPlayFGM(nSYAudioFGMMarioDash),
 	ftMotionCommandLoopBegin(2),
 	ftMotionCommandEffect(0, 11, 0, 0, 0, -120, 0, 60, 0),
 	ftMotionCommandWait(4),
@@ -41,26 +37,14 @@ u32 dMarioMainMotion_0x0024[] = {
 
 u32 dMarioMainMotion_0x007C[] = {
 	ftMotionCommandWaitAsync(2),
-#if defined(REGION_JP)
-	ftMotionPlayFGM(106),
-#else
-	ftMotionPlayFGM(110),
-#endif
+	ftMotionPlayFGM(nSYAudioFGMMarioFoot),
 	ftMotionCommandEffect(0, 11, 0, 0, 0, 60, 0, 0, 0),
 	ftMotionCommandWait(15),
-#if defined(REGION_JP)
-	ftMotionPlayFGM(106),
-#else
-	ftMotionPlayFGM(110),
-#endif
+	ftMotionPlayFGM(nSYAudioFGMMarioFoot),
 	ftMotionCommandEffect(0, 11, 0, 0, 0, 60, 0, 0, 0),
 	ftMotionCommandPauseScript(),
 	ftMotionCommandGoto(dMarioMainMotion_0x007C),
-#if defined(REGION_JP)
-	ftMotionPlayFGM(124),
-#else
-	ftMotionPlayFGM(128),
-#endif
+	ftMotionPlayFGM(nSYAudioFGMGroundBrakeGrind),
 	ftMotionCommandEffect(0, 11, 0, 0, 0, 60, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
@@ -89,21 +73,13 @@ u32 dMarioMainMotion_0x0110[] = {
 };
 
 u32 dMarioMainMotion_0x0120[] = {
-#if defined(REGION_JP)
-	ftMotionPlayVoice(425),
-#else
-	ftMotionPlayVoice(435),
-#endif
+	ftMotionPlayVoice(nSYAudioVoiceMarioJump),
 	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
 u32 dMarioMainMotion_0x0138[] = {
-#if defined(REGION_JP)
-	ftMotionPlayVoice(426),
-#else
-	ftMotionPlayVoice(436),
-#endif
+	ftMotionPlayVoice(nSYAudioVoiceMarioJumpAerial),
 	ftMotionCommandLoopBegin(2),
 	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 100, 100, 100),
 	ftMotionCommandWait(6),
@@ -113,41 +89,25 @@ u32 dMarioMainMotion_0x0138[] = {
 
 u32 dMarioMainMotion_0x015C[] = {
 	ftMotionCommandSetSlopeContour(3),
-#if defined(REGION_JP)
-	ftMotionPlayFGM(73),
-#else
-	ftMotionPlayFGM(77),
-#endif
+	ftMotionPlayFGM(nSYAudioFGMMarioLanding),
 	ftMotionCommandEffect(0, 11, 0, 0, 0, -60, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
 u32 dMarioMainMotion_0x0178[] = {
 	ftMotionCommandSetSlopeContour(3),
-#if defined(REGION_JP)
-	ftMotionPlayFGM(73),
-#else
-	ftMotionPlayFGM(77),
-#endif
+	ftMotionPlayFGM(nSYAudioFGMMarioLanding),
 	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
 u32 dMarioMainMotion_0x0194[] = {
-#if defined(REGION_JP)
-	ftMotionPlayFGM(623),
-#else
-	ftMotionPlayFGM(635),
-#endif
+	ftMotionPlayFGM(nSYAudioFGMCharacterUnkZip6),
 	ftMotionCommandEnd(),
 };
 
 u32 dMarioMainMotion_0x019C[] = {
-#if defined(REGION_JP)
-	ftMotionPlayFGM(623),
-#else
-	ftMotionPlayFGM(635),
-#endif
+	ftMotionPlayFGM(nSYAudioFGMCharacterUnkZip6),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWaitAsync(2),
 	ftMotionCommandSetHitStatusAll(1),
@@ -172,11 +132,7 @@ u32 dMarioMainMotion_0x01C4[] = {
 
 u32 dMarioMainMotion_0x01D8[] = {
 	ftMotionCommandSetSlopeContour(3),
-#if defined(REGION_JP)
-	ftMotionPlayFGM(73),
-#else
-	ftMotionPlayFGM(77),
-#endif
+	ftMotionPlayFGM(nSYAudioFGMMarioLanding),
 	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
@@ -232,7 +188,7 @@ u32 dMarioMainMotion_0x028C[] = {
 };
 
 u32 dMarioMainMotion_0x0294[] = {
-	ftMotionPlayFGM(11),
+	ftMotionPlayFGM(nSYAudioFGMEscape),
 	ftMotionCommandSubroutine(dMarioMainMotion_0x0254),
 	ftMotionCommandEnd(),
 };
@@ -276,12 +232,8 @@ u32 dMarioMainMotion_0x0324[] = {
 u32 dMarioMainMotion_0x0380[] = {
 	ftMotionCommandMakeRumble(0, 9),
 	ftMotionCommandEffect(0, 43, 0, 0, 0, 0, 0, 0, 0),
-#if defined(REGION_JP)
-	ftMotionPlayVoice(425),
-#else
-	ftMotionPlayVoice(435),
-#endif
-	ftMotionPlayFGM(17),
+	ftMotionPlayVoice(nSYAudioVoiceMarioJump),
+	ftMotionPlayFGM(nSYAudioFGMHeavySwing1),
 	ftMotionCommandEffect(0, 31, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWaitAsync(24),
@@ -292,12 +244,8 @@ u32 dMarioMainMotion_0x0380[] = {
 u32 dMarioMainMotion_0x03BC[] = {
 	ftMotionCommandMakeRumble(0, 7),
 	ftMotionCommandEffect(0, 43, 0, 0, 0, 0, 0, 0, 0),
-#if defined(REGION_JP)
-	ftMotionPlayVoice(425),
-#else
-	ftMotionPlayVoice(435),
-#endif
-	ftMotionPlayFGM(11),
+	ftMotionPlayVoice(nSYAudioVoiceMarioJump),
+	ftMotionPlayFGM(nSYAudioFGMEscape),
 	ftMotionCommandEffect(0, 31, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWaitAsync(20),
@@ -308,7 +256,7 @@ u32 dMarioMainMotion_0x03BC[] = {
 
 u32 dMarioMainMotion_0x03FC[] = {
 	ftMotionCommandGoto(dMarioMainMotion_0x03BC),
-	ftMotionPlayFGM(11),
+	ftMotionPlayFGM(nSYAudioFGMEscape),
 	ftMotionCommandEffect(0, 31, 0, 0, 120, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandEffect(0, 16, 0, 100, 0, 0, 0, 0, 0),
@@ -320,7 +268,7 @@ u32 dMarioMainMotion_0x03FC[] = {
 };
 
 u32 dMarioMainMotion_0x0440[] = {
-	ftMotionPlayFGM(11),
+	ftMotionPlayFGM(nSYAudioFGMEscape),
 	ftMotionCommandEffect(0, 31, 0, 0, 120, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandEffect(0, 15, 0, -100, 0, 0, 0, 0, 0),
@@ -333,7 +281,7 @@ u32 dMarioMainMotion_0x0440[] = {
 u32 dMarioMainMotion_0x0478[] = {
 	ftMotionCommandSetTexturePartID(1),
 	ftMotionCommandSetHitStatusAll(3),
-	ftMotionPlayFGM(19),
+	ftMotionPlayFGM(nSYAudioFGMCatch),
 	ftMotionCommandEnd(),
 };
 
@@ -385,19 +333,11 @@ u32 dMarioMainMotion_0x04CC[] = {
 u32 dMarioMainMotion_0x04DC[] = {
 	ftMotionCommandEffect(0, 31, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
-#if defined(REGION_JP)
-	ftMotionPlayVoice(419),
-#else
-	ftMotionPlayVoice(429),
-#endif
+	ftMotionPlayVoice(nSYAudioVoiceMarioSmash1),
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandMakeAttackColl(0, 0, 27, 6, 0, 0, 280, 0, 0, 0, 361, 100, 100, 3, 0, 1, 1, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 5, 6, 0, 0, 150, 0, 0, 0, 361, 100, 100, 3, 0, 1, 1, 0),
-#if defined(REGION_JP)
-	ftMotionCommandPlayFGMStoreInfo(38),
-#else
-	ftMotionCommandPlayFGMStoreInfo(42),
-#endif
+	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingM),
 	ftMotionCommandEffect(0, 19, 0, 0, -80, -180, 0, 0, 0),
 	ftMotionCommandWait(2),
 	ftMotionCommandSetHitStatusAll(1),
@@ -414,20 +354,12 @@ u32 dMarioMainMotion_0x0548[] = {
 u32 dMarioMainMotion_0x0550[] = {
 	ftMotionCommandEffect(0, 31, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
-#if defined(REGION_JP)
-	ftMotionPlayVoice(419),
-#else
-	ftMotionPlayVoice(429),
-#endif
+	ftMotionPlayVoice(nSYAudioVoiceMarioSmash1),
 	ftMotionCommandWaitAsync(3),
 	ftMotionCommandMakeAttackColl(0, 0, 5, 6, 0, 0, 150, 0, 0, 0, 361, 100, 100, 3, 0, 1, 1, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 27, 6, 0, 0, 280, 80, 0, 0, 361, 100, 100, 3, 0, 1, 1, 0),
 	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
-#if defined(REGION_JP)
-	ftMotionCommandPlayFGMStoreInfo(38),
-#else
-	ftMotionCommandPlayFGMStoreInfo(42),
-#endif
+	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingM),
 	ftMotionCommandWait(2),
 	ftMotionCommandSetHitStatusAll(1),
 	ftMotionCommandWait(4),
@@ -441,7 +373,7 @@ u32 dMarioMainMotion_0x05BC[] = {
 };
 
 u32 dMarioMainMotion_0x05C4[] = {
-	ftMotionPlayFGM(11),
+	ftMotionPlayFGM(nSYAudioFGMEscape),
 	ftMotionCommandEffect(0, 16, 0, 100, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWait(15),
@@ -455,7 +387,7 @@ u32 dMarioMainMotion_0x05E8[] = {
 };
 
 u32 dMarioMainMotion_0x05F0[] = {
-	ftMotionPlayFGM(11),
+	ftMotionPlayFGM(nSYAudioFGMEscape),
 	ftMotionCommandEffect(0, 16, 0, 100, 0, 0, 0, 0, 0),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandWait(15),
@@ -513,7 +445,7 @@ u32 dMarioMainMotion_0x0698[] = {
 
 u32 dMarioMainMotion_0x06B4[] = {
 	ftMotionCommandWaitAsync(8),
-	ftMotionCommandPlaySmashVoice(0),
+	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
@@ -523,7 +455,7 @@ u32 dMarioMainMotion_0x06D4[] = {
 	ftMotionCommandSetFlag3(6),
 	ftMotionCommandGoto(dMarioMainMotion_0x06B4),
 	ftMotionCommandWaitAsync(8),
-	ftMotionCommandPlaySmashVoice(0),
+	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
@@ -531,7 +463,7 @@ u32 dMarioMainMotion_0x06D4[] = {
 
 u32 dMarioMainMotion_0x0700[] = {
 	ftMotionCommandWaitAsync(6),
-	ftMotionCommandPlaySmashVoice(0),
+	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
@@ -562,7 +494,7 @@ u32 dMarioMainMotion_0x0764[] = {
 
 u32 dMarioMainMotion_0x0780[] = {
 	ftMotionCommandWaitAsync(6),
-	ftMotionCommandPlaySmashVoice(0),
+	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandEffect(0, 16, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
@@ -572,7 +504,7 @@ u32 dMarioMainMotion_0x07A0[] = {
 	ftMotionCommandSetFlag3(4),
 	ftMotionCommandGoto(dMarioMainMotion_0x0780),
 	ftMotionCommandWaitAsync(6),
-	ftMotionCommandPlaySmashVoice(0),
+	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
@@ -580,7 +512,7 @@ u32 dMarioMainMotion_0x07A0[] = {
 
 u32 dMarioMainMotion_0x07CC[] = {
 	ftMotionCommandWaitAsync(6),
-	ftMotionCommandPlaySmashVoice(0),
+	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEnd(),
@@ -633,7 +565,7 @@ u32 dMarioMainMotion_0x0844[] = {
 };
 
 u32 dMarioMainMotion_0x0878[] = {
-	ftMotionCommandPlaySmashVoice(0),
+	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandSetAfterImage(1, 0),
@@ -682,7 +614,7 @@ u32 dMarioMainMotion_0x08F4[] = {
 
 u32 dMarioMainMotion_0x0918[] = {
 	ftMotionCommandMakeRumble(0, 7),
-	ftMotionCommandPlaySmashVoice(0),
+	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 #if defined(REGION_JP)
 	ftMotionCommandSetColAnim(75, 40),
 #else
@@ -692,11 +624,7 @@ u32 dMarioMainMotion_0x0918[] = {
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandWaitAsync(22),
-#if defined(REGION_JP)
-	ftMotionCommandSubroutine(0x248), /* extern */
-#else
 	ftMotionCommandSubroutine(0x0248), /* extern */
-#endif
 	ftMotionCommandWait(3),
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWait(3),
@@ -760,11 +688,7 @@ u32 dMarioMainMotion_0x09EC[] = {
 	ftMotionCommandSetColAnim(75, 8),
 #endif
 	ftMotionCommandWaitAsync(4),
-#if defined(REGION_JP)
-	ftMotionCommandSubroutine(0x494), /* extern */
-#else
 	ftMotionCommandSubroutine(0x0494), /* extern */
-#endif
 	ftMotionCommandWait(8),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
@@ -778,11 +702,7 @@ u32 dMarioMainMotion_0x0A08[] = {
 #endif
 	ftMotionCommandWaitAsync(9),
 	ftMotionCommandSetSlopeContour(4),
-#if defined(REGION_JP)
-	ftMotionCommandSubroutine(0x4F8), /* extern */
-#else
 	ftMotionCommandSubroutine(0x04F8), /* extern */
-#endif
 	ftMotionCommandWaitAsync(11),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandWait(9),
@@ -798,15 +718,11 @@ u32 dMarioMainMotion_0x0A38[] = {
 #else
 	ftMotionCommandSetColAnim(75, 28),
 #endif
-	ftMotionCommandPlaySmashVoice(0),
+	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandWaitAsync(23),
-#if defined(REGION_JP)
-	ftMotionCommandSubroutine(0x55C), /* extern */
-#else
 	ftMotionCommandSubroutine(0x055C), /* extern */
-#endif
 	ftMotionCommandSetFlag0(2),
 	ftMotionCommandWait(2),
 	ftMotionCommandSetSlopeContour(3),
@@ -823,11 +739,7 @@ u32 dMarioMainMotion_0x0A6C[] = {
 	ftMotionCommandSetColAnim(75, 10),
 #endif
 	ftMotionCommandWaitAsync(4),
-#if defined(REGION_JP)
-	ftMotionCommandSubroutine(0x5C0), /* extern */
-#else
 	ftMotionCommandSubroutine(0x05C0), /* extern */
-#endif
 	ftMotionCommandWait(27),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
@@ -866,11 +778,10 @@ u32 dMarioMainMotion_0x0AD0[] = {
 	ftMotionCommandGoto(dMarioMainMotion_0x0AD0),
 #if defined(REGION_JP)
 	ftMotionCommandEffect(127, 34, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionPlayVoice(430),
 #else
 	ftMotionCommandEffect(-1, 34, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionPlayVoice(440),
 #endif
+	ftMotionPlayVoice(nSYAudioVoiceMarioDamage),
 	ftMotionCommandSetTexturePartID(1),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandGoto(dMarioMainMotion_0x0AD0),
@@ -891,11 +802,7 @@ u32 dMarioMainMotion_0x0B54[] = {
 
 u32 dMarioMainMotion_0x0B5C[] = {
 	ftMotionCommandSetSlopeContour(3),
-#if defined(REGION_JP)
-	ftMotionPlayVoice(424),
-#else
-	ftMotionPlayVoice(434),
-#endif
+	ftMotionPlayVoice(nSYAudioVoiceMarioFuraFura),
 	ftMotionCommandSetTexturePartID(1),
 	ftMotionCommandLoopBegin(6),
 	ftMotionCommandEffect(0, 40, 0, 0, 130, 0, 200, 260, 200),
@@ -905,11 +812,7 @@ u32 dMarioMainMotion_0x0B5C[] = {
 };
 
 u32 dMarioMainMotion_0x0B8C[] = {
-#if defined(REGION_JP)
-	ftMotionPlayInterruptableVoice(314),
-#else
-	ftMotionPlayInterruptableVoice(324),
-#endif
+	ftMotionPlayInterruptableVoice(nSYAudioVoiceDonkeyFuraSleep),
 	ftMotionCommandSetTexturePartID(3),
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandEffect(0, 90, 0, 0, 130, 0, 200, 260, 200),
@@ -928,7 +831,7 @@ u32 dMarioMainMotion_0x0BEC[] = {
 	ftMotionCommandEffect(0, 11, 0, 0, 0, -120, 0, 60, 0),
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandMakeAttackColl(0, 0, 28, 1, 1, 0, 290, 0, 0, 0, 361, 100, 0, 3, 0, 1, 0, 0),
-	ftMotionPlayFGM(19),
+	ftMotionPlayFGM(nSYAudioFGMCatch),
 	ftMotionCommandWait(1),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
@@ -941,20 +844,12 @@ FTThrowHitDesc dMarioMainMotion_0x0C30[] = {
 
 u32 dMarioMainMotion_0x0C68[] = {
 	ftMotionCommandSetThrow((u32)dMarioMainMotion_0x0C30),
-#if defined(REGION_JP)
-	ftMotionCommandPlayFGMStoreInfo(39),
-#else
-	ftMotionCommandPlayFGMStoreInfo(43),
-#endif
+	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingS),
 	ftMotionCommandWait(4),
 	ftMotionCommandSetHitStatusAll(2),
 	ftMotionCommandWaitAsync(14),
-#if defined(REGION_JP)
-	ftMotionPlayVoice(419),
-#else
-	ftMotionPlayVoice(429),
-#endif
-	ftMotionPlayFGM(18),
+	ftMotionPlayVoice(nSYAudioVoiceMarioSmash1),
+	ftMotionPlayFGM(nSYAudioFGMLightSwingLw1),
 	ftMotionCommandEffect(0, 31, 0, 0, 200, 280, 0, 0, 0),
 	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
 #if defined(REGION_JP)
@@ -981,11 +876,7 @@ FTThrowHitDesc dMarioMainMotion_0x0CC4[] = {
 
 u32 dMarioMainMotion_0x0CFC[] = {
 	ftMotionCommandSetThrow((u32)dMarioMainMotion_0x0CC4),
-#if defined(REGION_JP)
-	ftMotionPlayVoice(422),
-#else
-	ftMotionPlayVoice(432),
-#endif
+	ftMotionPlayVoice(nSYAudioVoiceMarioSpecialLw),
 	ftMotionCommandWait(4),
 	ftMotionCommandSetHitStatusAll(2),
 	ftMotionCommandWaitAsync(10),
@@ -995,21 +886,13 @@ u32 dMarioMainMotion_0x0CFC[] = {
 	ftMotionCommandEffect(-1, 33, 0, 0, 0, 0, 0, 0, 0),
 #endif
 	ftMotionCommandEffect(0, 13, 0, 0, 0, 260, 0, 0, 0),
-#if defined(REGION_JP)
-	ftMotionPlayFGM(293),
-#else
-	ftMotionPlayFGM(303),
-#endif
+	ftMotionPlayFGM(nSYAudioFGMMarioDownBounce),
 	ftMotionCommandWait(8),
 	ftMotionCommandSetTexturePartID(1),
 	ftMotionCommandMakeAttackColl(0, 0, 10, 10, 0, 0, 300, 120, 0, 0, 361, 80, 0, 3, 1, 2, 0, 30),
 	ftMotionCommandSetHitStatusAll(1),
 	ftMotionCommandLoopBegin(2),
-#if defined(REGION_JP)
-	ftMotionPlayFGM(39),
-#else
-	ftMotionPlayFGM(43),
-#endif
+	ftMotionPlayFGM(nSYAudioFGMLightSwingS),
 	ftMotionCommandWait(14),
 	ftMotionCommandLoopEnd(),
 	ftMotionCommandSetFlag1(1),
@@ -1021,7 +904,7 @@ u32 dMarioMainMotion_0x0CFC[] = {
 #else
 	ftMotionCommandEffect(-1, 33, 0, 0, 0, 0, 0, 0, 0),
 #endif
-	ftMotionPlayFGM(18),
+	ftMotionPlayFGM(nSYAudioFGMLightSwingLw1),
 	ftMotionCommandSetFlag2(1),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
@@ -1058,18 +941,10 @@ u32 dMarioMainMotion_0x0DFC[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandMakeRumble(60, 7),
 	ftMotionCommandSetColAnim(40, 60),
-#if defined(REGION_JP)
-	ftMotionPlayFGM(202),
-#else
-	ftMotionPlayFGM(212),
-#endif
+	ftMotionPlayFGM(nSYAudioFGMMarioAppealGrow),
 	ftMotionCommandWaitAsync(120),
 	ftMotionCommandMakeRumble(60, 7),
-#if defined(REGION_JP)
-	ftMotionPlayFGM(203),
-#else
-	ftMotionPlayFGM(213),
-#endif
+	ftMotionPlayFGM(nSYAudioFGMMarioAppealShrink),
 	ftMotionCommandWait(8),
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandEnd(),
@@ -1079,11 +954,7 @@ u32 dMarioMainMotion_0x0E24[] = {
 	ftMotionCommandWaitAsync(2),
 	ftMotionCommandMakeAttackColl(0, 0, 10, 2, 1, 0, 160, 0, 0, 0, 361, 50, 0, 3, 0, 0, 0, 8),
 	ftMotionCommandMakeAttackColl(1, 0, 9, 2, 1, 0, 160, 0, 0, 0, 361, 50, 0, 3, 0, 0, 0, 8),
-#if defined(REGION_JP)
-	ftMotionCommandPlayFGMStoreInfo(39),
-#else
-	ftMotionCommandPlayFGMStoreInfo(43),
-#endif
+	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingS),
 	ftMotionCommandWait(2),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWaitAsync(10),
@@ -1096,12 +967,11 @@ u32 dMarioMainMotion_0x0E68[] = {
 #if defined(REGION_JP)
 	ftMotionCommandMakeAttackColl(0, 0, 16, 2, 1, 0, 180, 16, 0, 0, 70, 50, 0, 3, 0, 1, 0, 8),
 	ftMotionCommandMakeAttackColl(1, 0, 15, 2, 1, 0, 180, 0, 0, 0, 70, 50, 0, 3, 0, 1, 0, 8),
-	ftMotionCommandPlayFGMStoreInfo(39),
 #else
 	ftMotionCommandMakeAttackColl(0, 0, 16, 2, 1, 0, 180, 16, 0, 0, 70, 50, 0, 3, 0, 0, 0, 8),
 	ftMotionCommandMakeAttackColl(1, 0, 15, 2, 1, 0, 180, 0, 0, 0, 70, 50, 0, 3, 0, 0, 0, 8),
-	ftMotionCommandPlayFGMStoreInfo(43),
 #endif
+	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingS),
 	ftMotionCommandWait(3),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWaitAsync(8),
@@ -1110,19 +980,11 @@ u32 dMarioMainMotion_0x0E68[] = {
 };
 
 u32 dMarioMainMotion_0x0EAC[] = {
-#if defined(REGION_JP)
-	ftMotionPlayVoice(419),
-#else
-	ftMotionPlayVoice(429),
-#endif
+	ftMotionPlayVoice(nSYAudioVoiceMarioSmash1),
 	ftMotionCommandWaitAsync(3),
 	ftMotionCommandMakeAttackColl(0, 0, 25, 4, 0, 0, 150, 0, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
 	ftMotionCommandMakeAttackColl(1, 0, 27, 4, 0, 0, 280, 0, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
-#if defined(REGION_JP)
-	ftMotionCommandPlayFGMStoreInfo(38),
-#else
-	ftMotionCommandPlayFGMStoreInfo(42),
-#endif
+	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingM),
 	ftMotionCommandWait(2),
 	ftMotionCommandSetAttackCollDamage(0, 4),
 	ftMotionCommandSetAttackCollDamage(1, 4),
@@ -1135,15 +997,11 @@ u32 dMarioMainMotion_0x0EAC[] = {
 
 u32 dMarioMainMotion_0x0F00[] = {
 	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandPlaySmashVoice(0),
+	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandWaitAsync(7),
 	ftMotionCommandMakeAttackColl(0, 0, 5, 12, 1, 0, 250, 40, 0, 0, 361, 100, 0, 3, 1, 2, 1, 16),
 	ftMotionCommandEffect(0, 19, 0, 0, 0, 0, 0, 0, 0),
-#if defined(REGION_JP)
-	ftMotionCommandPlayFGMStoreInfo(37),
-#else
-	ftMotionCommandPlayFGMStoreInfo(41),
-#endif
+	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingL),
 	ftMotionCommandWait(4),
 	ftMotionCommandMakeAttackColl(0, 0, 5, 10, 1, 0, 250, 40, 0, 0, 361, 100, 0, 3, 1, 2, 1, 10),
 	ftMotionCommandWait(17),
@@ -1155,11 +1013,7 @@ u32 dMarioMainMotion_0x0F58[] = {
 	ftMotionCommandWaitAsync(8),
 	ftMotionCommandMakeAttackColl(0, 0, 24, 14, 1, 0, 180, 20, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
 	ftMotionCommandMakeAttackColl(1, 0, 25, 14, 1, 0, 230, 90, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
-#if defined(REGION_JP)
-	ftMotionCommandPlayFGMStoreInfo(38),
-#else
-	ftMotionCommandPlayFGMStoreInfo(42),
-#endif
+	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingM),
 	ftMotionCommandWait(10),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
@@ -1169,11 +1023,7 @@ u32 dMarioMainMotion_0x0F94[] = {
 	ftMotionCommandWaitAsync(8),
 	ftMotionCommandMakeAttackColl(0, 0, 24, 13, 1, 0, 180, 20, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
 	ftMotionCommandMakeAttackColl(1, 0, 25, 13, 1, 0, 230, 90, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
-#if defined(REGION_JP)
-	ftMotionCommandPlayFGMStoreInfo(38),
-#else
-	ftMotionCommandPlayFGMStoreInfo(42),
-#endif
+	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingM),
 	ftMotionCommandWait(10),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
@@ -1183,11 +1033,7 @@ u32 dMarioMainMotion_0x0FD0[] = {
 	ftMotionCommandWaitAsync(8),
 	ftMotionCommandMakeAttackColl(0, 0, 24, 12, 1, 0, 180, 20, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
 	ftMotionCommandMakeAttackColl(1, 0, 25, 12, 1, 0, 230, 90, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
-#if defined(REGION_JP)
-	ftMotionCommandPlayFGMStoreInfo(38),
-#else
-	ftMotionCommandPlayFGMStoreInfo(42),
-#endif
+	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingM),
 	ftMotionCommandWait(10),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
@@ -1198,11 +1044,7 @@ u32 dMarioMainMotion_0x100C[] = {
 	ftMotionCommandWaitAsync(5),
 	ftMotionCommandMakeAttackColl(0, 0, 14, 10, 1, 0, 180, 0, 0, 0, 86, 150, 0, 3, 0, 1, 0, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 15, 10, 1, 0, 290, 60, 0, 0, 86, 150, 0, 3, 0, 1, 0, 0),
-#if defined(REGION_JP)
-	ftMotionCommandPlayFGMStoreInfo(38),
-#else
-	ftMotionCommandPlayFGMStoreInfo(42),
-#endif
+	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingM),
 	ftMotionCommandWait(12),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
@@ -1214,11 +1056,7 @@ u32 dMarioMainMotion_0x104C[] = {
 	ftMotionCommandEffect(0, 11, 0, 0, 0, -140, 0, 0, 0),
 	ftMotionCommandMakeAttackColl(0, 0, 24, 12, 1, 0, 180, 20, 0, 0, 361, 100, 0, 3, 0, 1, 1, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 25, 12, 1, 0, 260, 140, 0, 0, 361, 100, 0, 3, 0, 1, 1, 0),
-#if defined(REGION_JP)
-	ftMotionCommandPlayFGMStoreInfo(38),
-#else
-	ftMotionCommandPlayFGMStoreInfo(42),
-#endif
+	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingM),
 	ftMotionCommandWait(7),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
@@ -1229,15 +1067,11 @@ u32 dMarioMainMotion_0x109C[] = {
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandEffect(15, 31, 0, 60, 0, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(16),
-	ftMotionCommandPlaySmashVoice(0),
+	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandMakeAttackColl(0, 0, 14, 18, 1, 0, 180, 0, 0, 0, 361, 100, 0, 3, 0, 2, 0, 30),
 	ftMotionCommandMakeAttackColl(1, 0, 15, 18, 1, 0, 240, 60, 0, 0, 361, 100, 0, 3, 0, 2, 0, 30),
 	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
-#if defined(REGION_JP)
-	ftMotionCommandPlayFGMStoreInfo(37),
-#else
-	ftMotionCommandPlayFGMStoreInfo(41),
-#endif
+	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingL),
 	ftMotionCommandWait(5),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
@@ -1248,15 +1082,11 @@ u32 dMarioMainMotion_0x1104[] = {
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandEffect(15, 31, 0, 60, 0, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(16),
-	ftMotionCommandPlaySmashVoice(0),
+	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandMakeAttackColl(0, 0, 14, 18, 1, 0, 180, 0, 0, 0, 361, 100, 0, 3, 0, 2, 0, 30),
 	ftMotionCommandMakeAttackColl(1, 0, 15, 18, 1, 0, 240, 50, 0, 0, 361, 100, 0, 3, 0, 2, 0, 30),
 	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
-#if defined(REGION_JP)
-	ftMotionCommandPlayFGMStoreInfo(37),
-#else
-	ftMotionCommandPlayFGMStoreInfo(41),
-#endif
+	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingL),
 	ftMotionCommandWait(5),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
@@ -1267,15 +1097,11 @@ u32 dMarioMainMotion_0x116C[] = {
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandEffect(15, 31, 0, 60, 0, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(16),
-	ftMotionCommandPlaySmashVoice(0),
+	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandMakeAttackColl(0, 0, 14, 17, 1, 0, 180, 0, 0, 0, 361, 100, 0, 3, 0, 2, 0, 30),
 	ftMotionCommandMakeAttackColl(1, 0, 15, 17, 1, 0, 240, 50, 0, 0, 361, 100, 0, 3, 0, 2, 0, 30),
 	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
-#if defined(REGION_JP)
-	ftMotionCommandPlayFGMStoreInfo(37),
-#else
-	ftMotionCommandPlayFGMStoreInfo(41),
-#endif
+	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingL),
 	ftMotionCommandWait(5),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
@@ -1286,15 +1112,11 @@ u32 dMarioMainMotion_0x11D4[] = {
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandEffect(15, 31, 0, 60, 0, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(16),
-	ftMotionCommandPlaySmashVoice(0),
+	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandMakeAttackColl(0, 0, 14, 16, 1, 0, 180, 0, 0, 0, 361, 100, 0, 3, 0, 2, 0, 30),
 	ftMotionCommandMakeAttackColl(1, 0, 15, 16, 1, 0, 240, 50, 0, 0, 361, 100, 0, 3, 0, 2, 0, 30),
 	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
-#if defined(REGION_JP)
-	ftMotionCommandPlayFGMStoreInfo(37),
-#else
-	ftMotionCommandPlayFGMStoreInfo(41),
-#endif
+	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingL),
 	ftMotionCommandWait(5),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
@@ -1305,15 +1127,11 @@ u32 dMarioMainMotion_0x123C[] = {
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandEffect(15, 31, 0, 60, 0, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(16),
-	ftMotionCommandPlaySmashVoice(0),
+	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandMakeAttackColl(0, 0, 14, 16, 1, 0, 180, 0, 0, 0, 361, 100, 0, 3, 0, 2, 0, 30),
 	ftMotionCommandMakeAttackColl(1, 0, 15, 16, 1, 0, 240, 50, 0, 0, 361, 100, 0, 3, 0, 2, 0, 30),
 	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
-#if defined(REGION_JP)
-	ftMotionCommandPlayFGMStoreInfo(37),
-#else
-	ftMotionCommandPlayFGMStoreInfo(41),
-#endif
+	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingL),
 	ftMotionCommandWait(5),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
@@ -1322,15 +1140,11 @@ u32 dMarioMainMotion_0x123C[] = {
 u32 dMarioMainMotion_0x12A4[] = {
 	ftMotionCommandWaitAsync(7),
 	ftMotionCommandEffect(0, 31, 0, 0, 300, -100, 0, 0, 0),
-	ftMotionCommandPlaySmashVoice(0),
+	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandSetHitStatusPartID(12, 3),
 	ftMotionCommandMakeAttackColl(0, 0, 12, 19, 1, 0, 380, 0, 100, 0, 85, 120, 0, 3, 0, 2, 0, 26),
 	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
-#if defined(REGION_JP)
-	ftMotionCommandPlayFGMStoreInfo(37),
-#else
-	ftMotionCommandPlayFGMStoreInfo(41),
-#endif
+	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingL),
 	ftMotionCommandWait(4),
 	ftMotionCommandSetHitStatusPartAll(1),
 	ftMotionCommandWait(5),
@@ -1343,24 +1157,16 @@ u32 dMarioMainMotion_0x12FC[] = {
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandEffect(25, 31, 0, 120, 0, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(8),
-	ftMotionCommandPlaySmashVoice(0),
+	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandMakeAttackColl(0, 0, 25, 17, 1, 0, 170, 0, 0, 20, 361, 100, 0, 3, 0, 2, 1, 20),
 	ftMotionCommandMakeAttackColl(1, 0, 25, 17, 1, 0, 210, 120, 0, 50, 361, 100, 0, 3, 0, 2, 1, 20),
 	ftMotionCommandMakeAttackColl(2, 0, 20, 17, 1, 0, 170, 0, 0, 20, 361, 100, 0, 3, 0, 2, 1, 20),
 	ftMotionCommandMakeAttackColl(3, 0, 20, 17, 1, 0, 210, 120, 0, 50, 361, 100, 0, 3, 0, 2, 1, 20),
 	ftMotionCommandEffect(0, 16, 0, 0, 0, 0, 0, 0, 0),
-#if defined(REGION_JP)
-	ftMotionCommandPlayFGMStoreInfo(38),
-#else
-	ftMotionCommandPlayFGMStoreInfo(42),
-#endif
+	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingM),
 	ftMotionCommandWait(15),
 	ftMotionCommandEffect(0, 15, 0, 0, 0, 0, 0, 0, 0),
-#if defined(REGION_JP)
-	ftMotionCommandPlayFGMStoreInfo(38),
-#else
-	ftMotionCommandPlayFGMStoreInfo(42),
-#endif
+	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingM),
 	ftMotionCommandWait(7),
 	ftMotionCommandSetSlopeContour(0),
 	ftMotionCommandClearAttackCollAll(),
@@ -1373,11 +1179,7 @@ u32 dMarioMainMotion_0x13A8[] = {
 	ftMotionCommandMakeAttackColl(0, 0, 25, 14, 1, 0, 240, 10, 0, 0, 361, 100, 0, 3, 0, 2, 1, 15),
 	ftMotionCommandMakeAttackColl(1, 0, 20, 14, 1, 0, 240, 10, 0, 0, 361, 100, 0, 3, 0, 2, 1, 15),
 	ftMotionCommandMakeAttackColl(2, 0, 5, 14, 1, 0, 260, 0, 0, 0, 361, 100, 0, 3, 0, 2, 1, 15),
-#if defined(REGION_JP)
-	ftMotionCommandPlayFGMStoreInfo(38),
-#else
-	ftMotionCommandPlayFGMStoreInfo(42),
-#endif
+	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingM),
 	ftMotionCommandWait(8),
 	ftMotionCommandMakeAttackColl(0, 0, 25, 11, 1, 0, 240, 10, 0, 0, 361, 100, 0, 3, 0, 1, 1, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 20, 11, 1, 0, 240, 10, 0, 0, 361, 100, 0, 3, 0, 1, 1, 0),
@@ -1393,11 +1195,7 @@ u32 dMarioMainMotion_0x1440[] = {
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandMakeAttackColl(0, 0, 25, 16, 1, 0, 220, -30, 45, 0, 361, 100, 0, 3, 0, 2, 1, 10),
 	ftMotionCommandMakeAttackColl(1, 0, 25, 16, 1, 0, 270, 80, 30, 0, 361, 100, 0, 3, 0, 2, 1, 10),
-#if defined(REGION_JP)
-	ftMotionCommandPlayFGMStoreInfo(37),
-#else
-	ftMotionCommandPlayFGMStoreInfo(41),
-#endif
+	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingL),
 	ftMotionCommandWait(4),
 	ftMotionCommandMakeAttackColl(0, 0, 25, 10, 1, 0, 220, -30, 45, 0, 361, 100, 0, 3, 0, 1, 1, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 25, 10, 1, 0, 270, 80, 30, 0, 361, 100, 0, 3, 0, 1, 1, 0),
@@ -1408,11 +1206,7 @@ u32 dMarioMainMotion_0x1440[] = {
 };
 
 u32 dMarioMainMotion_0x14B0[] = {
-#if defined(REGION_JP)
-	ftMotionPlayFGM(73),
-#else
-	ftMotionPlayFGM(77),
-#endif
+	ftMotionPlayFGM(nSYAudioFGMMarioLanding),
 	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
@@ -1422,11 +1216,7 @@ u32 dMarioMainMotion_0x14C8[] = {
 	ftMotionCommandSetFlag1(1),
 	ftMotionCommandMakeAttackColl(0, 0, 25, 16, 1, 0, 240, -30, 45, 0, 361, 100, 0, 3, 0, 2, 1, 10),
 	ftMotionCommandMakeAttackColl(1, 0, 25, 16, 1, 0, 290, 80, 30, 0, 361, 100, 0, 3, 0, 2, 1, 10),
-#if defined(REGION_JP)
-	ftMotionCommandPlayFGMStoreInfo(37),
-#else
-	ftMotionCommandPlayFGMStoreInfo(41),
-#endif
+	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingL),
 	ftMotionCommandWait(4),
 	ftMotionCommandMakeAttackColl(0, 0, 25, 10, 1, 0, 220, -30, 45, 0, 361, 100, 0, 3, 0, 1, 1, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 25, 10, 1, 0, 270, 80, 30, 0, 361, 100, 0, 3, 0, 1, 1, 0),
@@ -1437,11 +1227,7 @@ u32 dMarioMainMotion_0x14C8[] = {
 };
 
 u32 dMarioMainMotion_0x1538[] = {
-#if defined(REGION_JP)
-	ftMotionPlayFGM(73),
-#else
-	ftMotionPlayFGM(77),
-#endif
+	ftMotionPlayFGM(nSYAudioFGMMarioLanding),
 	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
@@ -1451,11 +1237,7 @@ u32 dMarioMainMotion_0x1550[] = {
 	ftMotionCommandSetFlag1(20),
 	ftMotionCommandMakeAttackColl(0, 0, 25, 12, 1, 0, 220, 0, 0, 0, 80, 120, 0, 3, 0, 2, 1, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 27, 12, 1, 0, 250, 0, 0, 0, 80, 120, 0, 3, 0, 2, 1, 0),
-#if defined(REGION_JP)
-	ftMotionCommandPlayFGMStoreInfo(37),
-#else
-	ftMotionCommandPlayFGMStoreInfo(41),
-#endif
+	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMLightSwingL),
 	ftMotionCommandWait(3),
 	ftMotionCommandMakeAttackColl(0, 0, 25, 9, 1, 0, 220, 0, 0, 0, 70, 120, 0, 3, 0, 1, 1, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 27, 9, 1, 0, 250, 0, 0, 0, 70, 120, 0, 3, 0, 1, 1, 0),
@@ -1466,11 +1248,7 @@ u32 dMarioMainMotion_0x1550[] = {
 };
 
 u32 dMarioMainMotion_0x15C0[] = {
-#if defined(REGION_JP)
-	ftMotionPlayFGM(73),
-#else
-	ftMotionPlayFGM(77),
-#endif
+	ftMotionPlayFGM(nSYAudioFGMMarioLanding),
 	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
@@ -1481,22 +1259,14 @@ u32 dMarioMainMotion_0x15D8[] = {
 	ftMotionCommandMakeAttackColl(0, 0, 25, 3, 1, 0, 350, -30, 45, 0, -70, 100, 30, 3, 0, 1, 0, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 25, 3, 1, 0, 350, 50, 30, 0, -70, 100, 30, 3, 0, 1, 0, 0),
 	ftMotionCommandLoopBegin(7),
-#if defined(REGION_JP)
-	ftMotionCommandPlayFGMStoreInfo(209),
-#else
-	ftMotionCommandPlayFGMStoreInfo(219),
-#endif
+	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMMarioUnkSwing2),
 	ftMotionCommandWait(2),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandWait(1),
 	ftMotionCommandRefreshAttackCollID(0),
 	ftMotionCommandRefreshAttackCollID(1),
 	ftMotionCommandLoopEnd(),
-#if defined(REGION_JP)
-	ftMotionCommandPlayFGMStoreInfo(209),
-#else
-	ftMotionCommandPlayFGMStoreInfo(219),
-#endif
+	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMMarioUnkSwing2),
 	ftMotionCommandWait(2),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandSetFlag1(0),
@@ -1505,11 +1275,7 @@ u32 dMarioMainMotion_0x15D8[] = {
 };
 
 u32 dMarioMainMotion_0x1640[] = {
-#if defined(REGION_JP)
-	ftMotionPlayFGM(73),
-#else
-	ftMotionPlayFGM(77),
-#endif
+	ftMotionPlayFGM(nSYAudioFGMMarioLanding),
 	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
@@ -1517,11 +1283,7 @@ u32 dMarioMainMotion_0x1640[] = {
 u32 dMarioMainMotion_0x1658[] = {
 	ftMotionCommandWaitAsync(30),
 	ftMotionCommandMakeRumble(30, 7),
-#if defined(REGION_JP)
-	ftMotionPlayFGM(204),
-#else
-	ftMotionPlayFGM(214),
-#endif
+	ftMotionPlayFGM(nSYAudioFGMMarioDokan),
 	ftMotionCommandSetFlag2(1),
 	ftMotionCommandEnd(),
 };
@@ -1538,11 +1300,7 @@ u32 dMarioMainMotion_0x1688[] = {
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandSetColAnim(39, 0),
 	ftMotionCommandEffect(16, 31, 0, 60, 0, 0, 0, 0, 0),
-#if defined(REGION_JP)
-	ftMotionPlayFGM(205),
-#else
-	ftMotionPlayFGM(215),
-#endif
+	ftMotionPlayFGM(nSYAudioFGMMarioSpecialN),
 	ftMotionCommandMakeRumble(0, 6),
 	ftMotionCommandEnd(),
 };
@@ -1561,11 +1319,7 @@ u32 dMarioMainMotion_0x16CC[] = {
 	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
 	ftMotionCommandWait(1),
 	ftMotionCommandEffect(15, 31, 0, 80, 0, 0, 0, 0, 0),
-#if defined(REGION_JP)
-	ftMotionPlayFGM(207),
-#else
-	ftMotionPlayFGM(217),
-#endif
+	ftMotionPlayFGM(nSYAudioFGMMarioSpecialHiJump),
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandSetHitStatusAll(1),
 	ftMotionCommandSetAirJumpMax(0),
@@ -1593,21 +1347,13 @@ u32 dMarioMainMotion_0x17B4[] = {
 	ftMotionCommandMakeRumble(30, 7),
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandSetFlag3(1),
-#if defined(REGION_JP)
-	ftMotionPlayVoice(422),
-#else
-	ftMotionPlayVoice(432),
-#endif
+	ftMotionPlayVoice(nSYAudioVoiceMarioSpecialLw),
 	ftMotionCommandMakeAttackColl(0, 0, 0, 1, 1, 0, 140, 0, 300, 150, 180, 0, 1, 3, 0, 1, 1, 70),
 	ftMotionCommandMakeAttackColl(1, 0, 0, 1, 1, 0, 140, 0, 300, -150, 180, 0, 1, 3, 0, 1, 1, 70),
 	ftMotionCommandMakeAttackColl(2, 0, 0, 1, 1, 0, 220, 0, 0, 0, 90, 0, 1, 3, 0, 1, 1, 10),
 	ftMotionCommandWait(4),
 	ftMotionCommandLoopBegin(13),
-#if defined(REGION_JP)
-	ftMotionCommandPlayFGMStoreInfo(208),
-#else
-	ftMotionCommandPlayFGMStoreInfo(218),
-#endif
+	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMMarioUnkSwing1),
 	ftMotionCommandMakeAttackColl(0, 0, 0, 1, 1, 0, 160, 0, 280, 150, 180, 0, 1, 3, 0, 1, 1, 70),
 	ftMotionCommandMakeAttackColl(1, 0, 0, 1, 1, 0, 160, 0, 280, -150, 180, 0, 1, 3, 0, 1, 1, 70),
 	ftMotionCommandWait(1),
@@ -1627,21 +1373,13 @@ u32 dMarioMainMotion_0x17B4[] = {
 u32 dMarioMainMotion_0x1884[] = {
 	ftMotionCommandMakeRumble(30, 7),
 	ftMotionCommandSetFlag3(1),
-#if defined(REGION_JP)
-	ftMotionPlayVoice(422),
-#else
-	ftMotionPlayVoice(432),
-#endif
+	ftMotionPlayVoice(nSYAudioVoiceMarioSpecialLw),
 	ftMotionCommandMakeAttackColl(0, 0, 0, 1, 1, 0, 140, 0, 300, 150, 180, 0, 1, 3, 0, 1, 1, 70),
 	ftMotionCommandMakeAttackColl(1, 0, 0, 1, 1, 0, 140, 0, 300, -150, 180, 0, 1, 3, 0, 1, 1, 70),
 	ftMotionCommandMakeAttackColl(2, 0, 0, 1, 1, 0, 180, 0, 0, 0, 90, 0, 1, 3, 0, 1, 1, 10),
 	ftMotionCommandWait(4),
 	ftMotionCommandLoopBegin(13),
-#if defined(REGION_JP)
-	ftMotionCommandPlayFGMStoreInfo(208),
-#else
-	ftMotionCommandPlayFGMStoreInfo(218),
-#endif
+	ftMotionCommandPlayFGMStoreInfo(nSYAudioFGMMarioUnkSwing1),
 	ftMotionCommandMakeAttackColl(0, 0, 0, 1, 1, 0, 140, 0, 260, 150, 180, 0, 1, 3, 0, 1, 1, 70),
 	ftMotionCommandMakeAttackColl(1, 0, 0, 1, 1, 0, 140, 0, 260, -150, 180, 0, 1, 3, 0, 1, 1, 70),
 	ftMotionCommandMakeAttackColl(2, 0, 0, 1, 1, 0, 160, 0, 80, 0, -90, 0, 1, 3, 0, 1, 1, 10),

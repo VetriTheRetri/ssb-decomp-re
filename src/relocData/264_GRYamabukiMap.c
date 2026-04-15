@@ -55,7 +55,7 @@ MPGroundData dGRYamabukiMap_ItemHead_0x0014 =
     -6000,  /* map_bound_bottom */
     10000,  /* map_bound_right */
     -10000,  /* map_bound_left */
-    0x00000007,  /* bgm_id */
+    nSYAudioBGMYamabuki,  /* bgm_id */
     (void *)((u8 *)dStageYamabukiFile2_gap_0x0000 + 0x8A0),  /* map_nodes */
     dGRYamabukiMap_gap_0x0000,  /* item_weights */
     -2900,  /* alt_warning */

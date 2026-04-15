@@ -54,7 +54,7 @@ MPGroundData dGRMetalMap_header =
     -4200,  /* map_bound_bottom */
     10000,  /* map_bound_right */
     -10000,  /* map_bound_left */
-    0x00000025,  /* bgm_id */
+    nSYAudioBGMMetal,  /* bgm_id */
     NULL,  /* map_nodes */
     dGRMetalMap_item_weights,  /* item_weights */
     -2900,  /* alt_warning */

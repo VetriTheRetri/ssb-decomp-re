@@ -49,7 +49,7 @@ MPGroundData dGRCastleMap_header =
     -4000,  /* map_bound_bottom */
     9000,  /* map_bound_right */
     -9000,  /* map_bound_left */
-    0x00000006,  /* bgm_id */
+    nSYAudioBGMCastle,  /* bgm_id */
     dStageCastleFile2_gap_0x0000,  /* map_nodes */
     dGRCastleMap_item_weights,  /* item_weights */
     -1900,  /* alt_warning */

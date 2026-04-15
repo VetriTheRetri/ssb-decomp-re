@@ -41,7 +41,7 @@ MPGroundData dGRBonus1KirbyMap_header =
     -8300,  /* map_bound_bottom */
     8210,  /* map_bound_right */
     -9390,  /* map_bound_left */
-    0x0000001A,  /* bgm_id */
+    nSYAudioBGM1PBonusStage,  /* bgm_id */
     NULL,  /* map_nodes */
     NULL,  /* item_weights */
     -32768,  /* alt_warning */

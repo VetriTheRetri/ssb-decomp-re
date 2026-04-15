@@ -50,7 +50,7 @@ MPGroundData dGRYosterMap_header =
     -4000,  /* map_bound_bottom */
     10500,  /* map_bound_right */
     -7800,  /* map_bound_left */
-    0x00000008,  /* bgm_id */
+    nSYAudioBGMYoster,  /* bgm_id */
     (void *)((u8 *)dStageYosterFile2_gap_0x0078 + 0x88),  /* map_nodes */
     dGRYosterMap_item_weights,  /* item_weights */
     -2500,  /* alt_warning */

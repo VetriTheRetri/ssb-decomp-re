@@ -55,7 +55,7 @@ MPGroundData dGRInishieMap_MapHeader_0x0014 =
     -4350,  /* map_bound_bottom */
     7400,  /* map_bound_right */
     -7400,  /* map_bound_left */
-    0x00000002,  /* bgm_id */
+    nSYAudioBGMInishie,  /* bgm_id */
     (void *)((u8 *)dStageInishieFile2_gap_0x0000 + 0x5F0),  /* map_nodes */
     dGRInishieMap_gap_0x0000,  /* item_weights */
     -2200,  /* alt_warning */

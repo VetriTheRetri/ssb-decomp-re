@@ -43,7 +43,7 @@ MPGroundData dGRLastMap_header =
     -4200,  /* map_bound_bottom */
     11000,  /* map_bound_right */
     -11000,  /* map_bound_left */
-    0x00000018,  /* bgm_id */
+    nSYAudioBGMBossEntry,  /* bgm_id */
     NULL,  /* map_nodes */
     NULL,  /* item_weights */
     -2900,  /* alt_warning */

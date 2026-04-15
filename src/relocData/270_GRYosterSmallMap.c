@@ -47,7 +47,7 @@ MPGroundData dGRYosterSmallMap_header =
     -4000,  /* map_bound_bottom */
     7000,  /* map_bound_right */
     -7000,  /* map_bound_left */
-    0x00000008,  /* bgm_id */
+    nSYAudioBGMYoster,  /* bgm_id */
     NULL,  /* map_nodes */
     dGRYosterSmallMap_item_weights,  /* item_weights */
     -2500,  /* alt_warning */

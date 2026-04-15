@@ -49,7 +49,7 @@ MPGroundData dGRHyruleMap_MapHeader_0x0014 =
     -5000,  /* map_bound_bottom */
     12000,  /* map_bound_right */
     -12000,  /* map_bound_left */
-    0x00000009,  /* bgm_id */
+    nSYAudioBGMHyrule,  /* bgm_id */
     NULL,  /* map_nodes */
     dGRHyruleMap_gap_0x0000,  /* item_weights */
     -2600,  /* alt_warning */

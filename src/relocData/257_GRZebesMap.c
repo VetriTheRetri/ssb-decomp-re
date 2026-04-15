@@ -52,7 +52,7 @@ MPGroundData dGRZebesMap_MapHeader_0x0014 =
     -4200,  /* map_bound_bottom */
     9500,  /* map_bound_right */
     -9500,  /* map_bound_left */
-    0x00000001,  /* bgm_id */
+    nSYAudioBGMZebes,  /* bgm_id */
     (void *)((u8 *)dStageZebesFile2_gap_0x0000 + 0xB08),  /* map_nodes */
     dGRZebesMap_gap_0x0000,  /* item_weights */
     -2900,  /* alt_warning */

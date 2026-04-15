@@ -42,7 +42,7 @@ MPGroundData dGRBonus2SamusMap_header =
     -9000,  /* map_bound_bottom */
     9300,  /* map_bound_right */
     -8925,  /* map_bound_left */
-    0x0000001A,  /* bgm_id */
+    nSYAudioBGM1PBonusStage,  /* bgm_id */
     (void *)((u8 *)dGRBonus2SamusFile2_Layer1Anim_AnimJoint + 0x490),  /* map_nodes */
     NULL,  /* item_weights */
     -32768,  /* alt_warning */

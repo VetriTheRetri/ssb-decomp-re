@@ -46,7 +46,7 @@ MPGroundData dGRBonus3Map_gap_0x0000 =
     -8000,  /* map_bound_bottom */
     8000,  /* map_bound_right */
     -8000,  /* map_bound_left */
-    0x0000001A,  /* bgm_id */
+    nSYAudioBGM1PBonusStage,  /* bgm_id */
     dGRBonus3File2_gap_0x0000,  /* map_nodes */
     NULL,  /* item_weights */
     -32768,  /* alt_warning */

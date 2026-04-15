@@ -41,7 +41,7 @@ MPGroundData dGRBonus1SamusMap_header =
     -8000,  /* map_bound_bottom */
     8800,  /* map_bound_right */
     -8800,  /* map_bound_left */
-    0x0000001A,  /* bgm_id */
+    nSYAudioBGM1PBonusStage,  /* bgm_id */
     NULL,  /* map_nodes */
     NULL,  /* item_weights */
     -32768,  /* alt_warning */

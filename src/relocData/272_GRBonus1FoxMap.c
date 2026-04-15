@@ -41,7 +41,7 @@ MPGroundData dGRBonus1FoxMap_header =
     -9600,  /* map_bound_bottom */
     9300,  /* map_bound_right */
     -9340,  /* map_bound_left */
-    0x0000001A,  /* bgm_id */
+    nSYAudioBGM1PBonusStage,  /* bgm_id */
     NULL,  /* map_nodes */
     NULL,  /* item_weights */
     -32768,  /* alt_warning */

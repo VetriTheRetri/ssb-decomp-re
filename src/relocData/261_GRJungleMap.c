@@ -53,7 +53,7 @@ MPGroundData dGRJungleMap_MapHeader_0x0014 =
     -4700,  /* map_bound_bottom */
     8100,  /* map_bound_right */
     -8100,  /* map_bound_left */
-    0x00000005,  /* bgm_id */
+    nSYAudioBGMJungle,  /* bgm_id */
     (void *)((u8 *)dStageJungleFile2_gap_0x0000 + 0xA98),  /* map_nodes */
     dGRJungleMap_gap_0x0000,  /* item_weights */
     -1900,  /* alt_warning */

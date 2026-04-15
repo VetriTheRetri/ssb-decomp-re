@@ -42,7 +42,7 @@ MPGroundData dGRBonus2KirbyMap_header =
     -11000,  /* map_bound_bottom */
     9600,  /* map_bound_right */
     -9600,  /* map_bound_left */
-    0x0000001A,  /* bgm_id */
+    nSYAudioBGM1PBonusStage,  /* bgm_id */
     (void *)((u8 *)dGRBonus2KirbyFile2_Layer1Anim_AnimJoint + 0x290),  /* map_nodes */
     NULL,  /* item_weights */
     -32768,  /* alt_warning */

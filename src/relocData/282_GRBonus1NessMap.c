@@ -41,7 +41,7 @@ MPGroundData dGRBonus1NessMap_header =
     -9000,  /* map_bound_bottom */
     9450,  /* map_bound_right */
     -9420,  /* map_bound_left */
-    0x0000001A,  /* bgm_id */
+    nSYAudioBGM1PBonusStage,  /* bgm_id */
     NULL,  /* map_nodes */
     NULL,  /* item_weights */
     -32768,  /* alt_warning */

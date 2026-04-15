@@ -49,7 +49,7 @@ MPGroundData dGRPupupuTestMap_header =
     -5000,  /* map_bound_bottom */
     11000,  /* map_bound_right */
     -11000,  /* map_bound_left */
-    0x00000000,  /* bgm_id */
+    nSYAudioBGMPupupu,  /* bgm_id */
     NULL,  /* map_nodes */
     dGRPupupuTestMap_item_weights,  /* item_weights */
     -2900,  /* alt_warning */

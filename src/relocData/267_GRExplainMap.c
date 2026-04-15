@@ -42,7 +42,7 @@ MPGroundData dGRExplainMap_header =
     -3000,  /* map_bound_bottom */
     6300,  /* map_bound_right */
     -10000,  /* map_bound_left */
-    0x00000022,  /* bgm_id */
+    nSYAudioBGMExplain,  /* bgm_id */
     NULL,  /* map_nodes */
     NULL,  /* item_weights */
     -1900,  /* alt_warning */

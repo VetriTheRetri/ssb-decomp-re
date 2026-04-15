@@ -38,7 +38,7 @@ MPGroundData dGRZakoMap_header =
     -4200,  /* map_bound_bottom */
     9000,  /* map_bound_right */
     -9000,  /* map_bound_left */
-    0x00000024,  /* bgm_id */
+    nSYAudioBGMZako,  /* bgm_id */
     NULL,  /* map_nodes */
     (MPItemWeights *)0xFFFF0000,  /* item_weights */
     -2900,  /* alt_warning */

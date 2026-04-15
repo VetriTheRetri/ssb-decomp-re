@@ -42,7 +42,7 @@ MPGroundData dGRPupupuMap_header =
     -3500,  /* map_bound_bottom */
     9000,  /* map_bound_right */
     -9000,  /* map_bound_left */
-    0x00000000,  /* bgm_id */
+    nSYAudioBGMPupupu,  /* bgm_id */
     (void *)((u8 *)dStagePupupuFile2_Layer0Anim_AnimJoint + 0x720),  /* map_nodes */
     dGRPupupuMap_item_weights,  /* item_weights */
     -2900,  /* alt_warning */

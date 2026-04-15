@@ -52,7 +52,7 @@ MPGroundData dGRSectorMap_MapHeader_0x0014 =
     -6500,  /* map_bound_bottom */
     14000,  /* map_bound_right */
     -14000,  /* map_bound_left */
-    0x00000004,  /* bgm_id */
+    nSYAudioBGMSector,  /* bgm_id */
     dStageSectorFile2_gap_0x0000,  /* map_nodes */
     dGRSectorMap_Arwing0_AnimJoint,  /* item_weights */
     -2300,  /* alt_warning */

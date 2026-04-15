@@ -1,6 +1,18 @@
-/* Auto-generated test for file 100 */
+/* relocData file 100: StagePupupuBetaImages — Pupupu Beta stage image pool.
+ *
+ * Orphaned in the source tree: no code path in src/ references
+ * llStagePupupuBetaImagesFileID beyond its extern declaration, and the file has
+ * zero intern/extern relocs (pure data pool), so we can't walk
+ * a chain to recover block boundaries. First-pass typing just
+ * splits off the leading 8-byte pad so anyone who finds the
+ * loader can carve the body into typed Tex / LUT blocks without
+ * an initial conversion step. */
+
 #include "relocdata_types.h"
 
-u8 dStagePupupuBetaImages[0x27C0] = {
-	#include <StagePupupuBetaImages/StagePupupuBetaImages.data.inc.c>
+PAD(8);
+
+/* @ 0x00008, 10,168 bytes — image data pool */
+u8 dStagePupupuBetaImages_data_0x0008[0x27B8] = {
+	#include <StagePupupuBetaImages/data_0x0008.data.inc.c>
 };

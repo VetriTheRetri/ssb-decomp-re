@@ -6,7 +6,8 @@
  *
  * The JP binary (5280 B) has a different layout than the US one
  * (6096 B), so REGION_JP folds in the JP file as a single chain-
- * encoded raw u32 blob. The companion 252_SCExplainMain.jp.reloc is
+ * encoded raw u8 block (see jp_raw.data.inc.c under
+ * build/src/relocData/). The companion 252_SCExplainMain.jp.reloc is
  * empty — fixRelocChain leaves the pre-baked JP chain bytes alone.
  */
 
@@ -14,10 +15,11 @@
 
 #if defined(REGION_JP)
 
-/* JP binary has a different layout; fold it in as a single raw
- * u8 block that extractRelocInc regenerates from the JP binary
- * whenever JP assets are extracted. The companion .jp.reloc is
- * empty so fixRelocChain leaves the pre-baked chain bytes alone. */
+/* JP binary has a different layout; fold in its chain-encoded
+ * bytes as a single raw u8 block. extractRelocInc regenerates
+ * the inc.c below from the JP binary whenever JP assets are
+ * extracted, and the companion .jp.reloc is empty so
+ * fixRelocChain leaves the pre-baked chain bytes alone. */
 u8 dSCExplainMain[5280] = {
 	#include <SCExplainMain/jp_raw.data.inc.c>
 };

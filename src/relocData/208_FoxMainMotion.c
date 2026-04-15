@@ -5,13 +5,11 @@
 
 #if defined(REGION_JP)
 
-/* JP binary has a different layout; fold it in as a chain-encoded
- * raw u32 blob. The companion .jp.reloc is empty so fixRelocChain
- * leaves the pre-baked JP chain bytes alone. */
-/* JP binary has a different layout; fold it in as a single raw
- * u8 block that extractRelocInc regenerates from the JP binary
- * whenever JP assets are extracted. The companion .jp.reloc is
- * empty so fixRelocChain leaves the pre-baked chain bytes alone. */
+/* JP binary has a different layout; fold in its chain-encoded
+ * bytes as a single raw u8 block. extractRelocInc regenerates
+ * the inc.c below from the JP binary whenever JP assets are
+ * extracted, and the companion .jp.reloc is empty so
+ * fixRelocChain leaves the pre-baked chain bytes alone. */
 u8 dFoxMainMotion[6848] = {
 	#include <FoxMainMotion/jp_raw.data.inc.c>
 };

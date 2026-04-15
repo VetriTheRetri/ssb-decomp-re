@@ -1,8 +1,14 @@
-/* relocData file 244: PikachuSpecial1 */
-/* Inlined block layout - edit this file directly. The .inc.c
- * files referenced below live under build/src/relocData/ and
- * are regenerated from the baserom by tools/extractRelocInc.py
- * at extract time. */
+/* relocData file 244: PikachuSpecial1 — Thunder Jolt weapon attributes.
+ *
+ * Contains two `WPAttributes`-shaped blocks (one each for the
+ * airborne and grounded variants of Thunder Jolt), used by
+ * src/wp/wppikachu/wppikachuthunderjolt.c:
+ *   0x00..0x34 (52 B): Thunder Jolt (air) — falls and bounces on landing
+ *   0x34..0x70 (60 B): Thunder Jolt (ground) — travels along the stage
+ *
+ * Both blocks' bitfield-packed tails don't initialize cleanly as
+ * IDO-compiled structs, so the bytes stay as raw u8 arrays.
+ */
 
 #include "relocdata_types.h"
 
@@ -15,4 +21,3 @@ u8 dPikachuSpecial1_ThunderJoltAir_WeaponAttributes[52] = {
 u8 dPikachuSpecial1_ThunderJoltGround_WeaponAttributes[60] = {
 	#include <PikachuSpecial1/ThunderJoltGround_WeaponAttributes.data.inc.c>
 };
-

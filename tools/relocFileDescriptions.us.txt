@@ -3066,6 +3066,11 @@ AnimJoint - 0x7660
 DObjDesc - 0x3EA0
 AnimJoint - 0x3F50
 
+
+[47]
+DObjDesc - 0xF98
+AnimJoint - 0x101C
+
 [48]
 DObjDesc - 0x4E18
 AnimJoint - 0x536C

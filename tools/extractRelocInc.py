@@ -268,6 +268,53 @@ def _virtual_block_text(body_open, body_close, decl_text, type_):
     return header + "\n" + decl_text
 
 
+def _strip_inactive_region_branches(text, version):
+    """Blank out the inactive half of `#if defined(REGION_JP) / #else /
+    #endif` guards in `text`, keeping byte offsets stable so downstream
+    position-based slicing keeps working. Each stripped character is
+    replaced with a space (newlines preserved) so lines/columns line up
+    with the original. Handles simple, non-nested REGION_JP guards —
+    the only form used by relocData masters."""
+
+    def blank(s):
+        return "".join(c if c == "\n" else " " for c in s)
+
+    want_jp = (version == "jp")
+    out = []
+    pos = 0
+    if_re = re.compile(
+        r"^[ \t]*#if\s+defined\s*\(\s*REGION_JP\s*\)[^\n]*\n",
+        re.MULTILINE)
+    else_re = re.compile(r"^[ \t]*#else\b[^\n]*\n", re.MULTILINE)
+    endif_re = re.compile(r"^[ \t]*#endif\b[^\n]*\n", re.MULTILINE)
+
+    while True:
+        m_if = if_re.search(text, pos)
+        if m_if is None:
+            out.append(text[pos:])
+            break
+        out.append(text[pos:m_if.start()])
+        out.append(blank(m_if.group(0)))
+        jp_start = m_if.end()
+        m_end = endif_re.search(text, jp_start)
+        if m_end is None:
+            out.append(text[jp_start:])
+            break
+        m_else = else_re.search(text, jp_start, m_end.start())
+        if m_else is not None:
+            jp_body = text[jp_start:m_else.start()]
+            us_body = text[m_else.end():m_end.start()]
+            out.append(jp_body if want_jp else blank(jp_body))
+            out.append(blank(m_else.group(0)))
+            out.append(us_body if not want_jp else blank(us_body))
+        else:
+            jp_body = text[jp_start:m_end.start()]
+            out.append(jp_body if want_jp else blank(jp_body))
+        out.append(blank(m_end.group(0)))
+        pos = m_end.end()
+    return "".join(out)
+
+
 def parse_master_c(path):
     """Walk a hand-written inline master .c and yield a sequence of
 
@@ -288,6 +335,12 @@ def parse_master_c(path):
 
     with open(path) as f:
         raw = f.read()
+    # Resolve `#if defined(REGION_JP) / #else / #endif` guards for the
+    # current version so the scanner only sees declarations from the
+    # active branch. The inactive branch is blanked out (spaces, same
+    # length) so byte offsets in `raw` still line up with `scan_text`
+    # for the decl-text extraction below.
+    raw = _strip_inactive_region_branches(raw, _detect_version() or "us")
     # Preserve comments (parse_sprite_info / compute_data_c_size strip
     # them themselves) but remove them *for the scan positions only*.
     scan_text = re.sub(r"/\*.*?\*/", lambda m: " " * len(m.group(0)),

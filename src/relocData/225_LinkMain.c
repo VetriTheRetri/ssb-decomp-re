@@ -127,477 +127,225 @@ u32 dLinkMain_setup_parts[2] = {
 };
 
 /* @ 0x00D0, 96 bytes: FTAttributes.hiddenparts target (was dLinkMain_pre+0xD0) */
-u32 dLinkMain_hiddenparts[24] = {
-	0x00000002,
-	0x00000000,
-	0x00000001,
-	0x00000003,
-	0x00000001,
-	0x00000000,
-	0x00000000,
-	0x00000003,
-	0x00000003,
-	0x00000002,
-	0x00000001,
-	0x00000000,
-	0x00000023,
-	0x00000004,
-	0x00000001,
-	0x00000000,
-	0x00000011,
-	0x00000010,
-	0x00000001,
-	0x00000000,
-	0x00000012,
-	0x00000010,
-	0x00000001,
-	0x00000000,
+FTHiddenPart dLinkMain_hiddenparts[6] = {
+	{ 0x00000002, 0x00000000, 0x00000001, 0x00000003 },
+	{ 0x00000001, 0x00000000, 0x00000000, 0x00000003 },
+	{ 0x00000003, 0x00000002, 0x00000001, 0x00000000 },
+	{ 0x00000023, 0x00000004, 0x00000001, 0x00000000 },
+	{ 0x00000011, 0x00000010, 0x00000001, 0x00000000 },
+	{ 0x00000012, 0x00000010, 0x00000001, 0x00000000 },
 };
 
 /* @ 0x0130, 120 bytes: FTAttributes.sub_0x130 target (was dLinkMain_pre+0x130) */
-u32 dLinkMain_sub_0x130[30] = {
-	(u32)&dLinkModel_Joint_0x2630_DisplayList, /* extern -> 0x2630 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dLinkModel_Joint_0x6370_DisplayList, /* extern -> 0x6370 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dLinkBoomerangModel_Joint_0x00F8_DisplayList, /* extern -> 0x00F8 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dLinkBoomerangModel_Joint_0x00F8_DisplayList, /* extern -> 0x00F8 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dLinkModel_gap_0x9DA8_sub_0x358, /* extern -> 0xA100 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dLinkModel_gap_0x9DA8_sub_0x358, /* extern -> 0xA100 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
+FTModelPart dLinkMain_modelparts_desc_0x130[6] = {
+	{ (Gfx*)&dLinkModel_Joint_0x2630_DisplayList, NULL, NULL, NULL, 0x00 },
+	{ (Gfx*)&dLinkModel_Joint_0x6370_DisplayList, NULL, NULL, NULL, 0x00 },
+	{ (Gfx*)&dLinkBoomerangModel_Joint_0x00F8_DisplayList, NULL, NULL, NULL, 0x00 },
+	{ (Gfx*)&dLinkBoomerangModel_Joint_0x00F8_DisplayList, NULL, NULL, NULL, 0x00 },
+	{ (Gfx*)&dLinkModel_gap_0x9DA8_sub_0x358, NULL, NULL, NULL, 0x00 },
+	{ (Gfx*)&dLinkModel_gap_0x9DA8_sub_0x358, NULL, NULL, NULL, 0x00 },
 };
 
 /* @ 0x01A8, 40 bytes: FTAttributes.sub_0x1A8 target (was dLinkMain_pre+0x1A8) */
-u32 dLinkMain_sub_0x1A8[10] = {
-	(u32)&dLinkModel_Joint_0x7DB0_DisplayList, /* extern -> 0x7DB0 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dLinkModel_Joint_0x7DB0_DisplayList, /* extern -> 0x7DB0 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
+FTModelPart dLinkMain_modelparts_desc_0x1A8[2] = {
+	{ (Gfx*)&dLinkModel_Joint_0x7DB0_DisplayList, NULL, NULL, NULL, 0x00 },
+	{ (Gfx*)&dLinkModel_Joint_0x7DB0_DisplayList, NULL, NULL, NULL, 0x00 },
 };
 
 /* @ 0x01D0, 40 bytes: FTAttributes.sub_0x1D0 target (was dLinkMain_pre+0x1D0) */
-u32 dLinkMain_sub_0x1D0[10] = {
-	(u32)&dLinkModel_Joint_0x7EA8_DisplayList, /* extern -> 0x7EA8 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dLinkModel_Joint_0x7EA8_DisplayList, /* extern -> 0x7EA8 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
+FTModelPart dLinkMain_modelparts_desc_0x1D0[2] = {
+	{ (Gfx*)&dLinkModel_Joint_0x7EA8_DisplayList, NULL, NULL, NULL, 0x00 },
+	{ (Gfx*)&dLinkModel_Joint_0x7EA8_DisplayList, NULL, NULL, NULL, 0x00 },
 };
 
 /* @ 0x01F8, 40 bytes: FTAttributes.sub_0x1F8 target (was dLinkMain_pre+0x1F8) */
-u32 dLinkMain_sub_0x1F8[10] = {
-	(u32)&dLinkModel_Joint_0x7F98_DisplayList, /* extern -> 0x7F98 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dLinkModel_Joint_0x7F98_DisplayList, /* extern -> 0x7F98 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
+FTModelPart dLinkMain_modelparts_desc_0x1F8[2] = {
+	{ (Gfx*)&dLinkModel_Joint_0x7F98_DisplayList, NULL, NULL, NULL, 0x00 },
+	{ (Gfx*)&dLinkModel_Joint_0x7F98_DisplayList, NULL, NULL, NULL, 0x00 },
 };
 
 /* @ 0x0220, 40 bytes: FTAttributes.sub_0x220 target (was dLinkMain_pre+0x220) */
-u32 dLinkMain_sub_0x220[10] = {
-	(u32)&dLinkModel_Joint_0x2C88_DisplayList, /* extern -> 0x2C88 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dLinkModel_Joint_0x2C88_DisplayList, /* extern -> 0x2C88 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
+FTModelPart dLinkMain_modelparts_desc_0x220[2] = {
+	{ (Gfx*)&dLinkModel_Joint_0x2C88_DisplayList, NULL, NULL, NULL, 0x00 },
+	{ (Gfx*)&dLinkModel_Joint_0x2C88_DisplayList, NULL, NULL, NULL, 0x00 },
 };
 
 /* @ 0x0248, 40 bytes: FTAttributes.sub_0x248 target (was dLinkMain_pre+0x248) */
-u32 dLinkMain_sub_0x248[10] = {
-	(u32)&dLinkModel_gap_0x8110_sub_0xB0, /* extern -> 0x81C0 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dLinkModel_gap_0x8110_sub_0x270, /* extern -> 0x8380 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
+FTModelPart dLinkMain_modelparts_desc_0x248[2] = {
+	{ (Gfx*)&dLinkModel_gap_0x8110_sub_0xB0, NULL, NULL, NULL, 0x00 },
+	{ (Gfx*)&dLinkModel_gap_0x8110_sub_0x270, NULL, NULL, NULL, 0x00 },
 };
 
 /* @ 0x0270, 40 bytes: FTAttributes.sub_0x270 target (was dLinkMain_pre+0x270) */
-u32 dLinkMain_sub_0x270[10] = {
-	(u32)&dLinkModel_Joint_0x2C88_DisplayList, /* extern -> 0x2C88 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dLinkModel_Joint_0x2C88_DisplayList, /* extern -> 0x2C88 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
+FTModelPart dLinkMain_modelparts_desc_0x270[2] = {
+	{ (Gfx*)&dLinkModel_Joint_0x2C88_DisplayList, NULL, NULL, NULL, 0x00 },
+	{ (Gfx*)&dLinkModel_Joint_0x2C88_DisplayList, NULL, NULL, NULL, 0x00 },
 };
 
 /* @ 0x0298, 80 bytes: FTAttributes.sub_0x298 target (was dLinkMain_pre+0x298) */
-u32 dLinkMain_sub_0x298[20] = {
-	(u32)&dLinkModel_Joint_0x2E08_DisplayList, /* extern -> 0x2E08 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dLinkModel_Joint_0x6950_DisplayList, /* extern -> 0x6950 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dLinkModel_Joint_0x93B8_DisplayList, /* extern -> 0x93B8 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dLinkModel_Joint_0x93B8_DisplayList, /* extern -> 0x93B8 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
+FTModelPart dLinkMain_modelparts_desc_0x298[4] = {
+	{ (Gfx*)&dLinkModel_Joint_0x2E08_DisplayList, NULL, NULL, NULL, 0x00 },
+	{ (Gfx*)&dLinkModel_Joint_0x6950_DisplayList, NULL, NULL, NULL, 0x00 },
+	{ (Gfx*)&dLinkModel_Joint_0x93B8_DisplayList, NULL, NULL, NULL, 0x00 },
+	{ (Gfx*)&dLinkModel_Joint_0x93B8_DisplayList, NULL, NULL, NULL, 0x00 },
 };
 
 /* @ 0x02E8, 80 bytes: FTAttributes.sub_0x2E8 target (was dLinkMain_pre+0x2E8) */
-u32 dLinkMain_sub_0x2E8[20] = {
-	(u32)&dLinkModel_Joint_0x2EF0_DisplayList, /* extern -> 0x2EF0 */
-	(u32)((u8*)dLinkModel_gap_0x0000_sub_0x18 + 0x578), /* extern -> 0x0590 */
-	(u32)&dLinkModel_gap_0x40EC_sub_0x238, /* extern -> 0x4324 */
-	0x00000000,
-	0x00000000,
-	(u32)&dLinkModel_Joint_0x6A30_DisplayList, /* extern -> 0x6A30 */
-	(u32)&dLinkModel_gap_0x40EC_sub_0x7E4, /* extern -> 0x48D0 */
-	(u32)&dLinkModel_gap_0x7AE0_sub_0x204, /* extern -> 0x7CE4 */
-	0x00000000,
-	0x00000000,
-	(u32)&dLinkModel_Joint_0x94F0_DisplayList, /* extern -> 0x94F0 */
-	(u32)&dLinkModel_gap_0x8110_sub_0x5B0, /* extern -> 0x86C0 */
-	(u32)&dLinkModel_gap_0x9DA8_sub_0xCC, /* extern -> 0x9E74 */
-	0x00000000,
-	0x00000000,
-	(u32)&dLinkModel_Joint_0x94F0_DisplayList, /* extern -> 0x94F0 */
-	(u32)&dLinkModel_gap_0x8110_sub_0x5B0, /* extern -> 0x86C0 */
-	(u32)&dLinkModel_gap_0x9DA8_sub_0xCC, /* extern -> 0x9E74 */
-	0x00000000,
-	0x00000000,
+FTModelPart dLinkMain_modelparts_desc_0x2E8[4] = {
+	{ (Gfx*)&dLinkModel_Joint_0x2EF0_DisplayList, (MObjSub**)((u8*)dLinkModel_gap_0x0000_sub_0x18 + 0x578), (AObjEvent32**)&dLinkModel_gap_0x40EC_sub_0x238, NULL, 0x00 },
+	{ (Gfx*)&dLinkModel_Joint_0x6A30_DisplayList, (MObjSub**)&dLinkModel_gap_0x40EC_sub_0x7E4, (AObjEvent32**)&dLinkModel_gap_0x7AE0_sub_0x204, NULL, 0x00 },
+	{ (Gfx*)&dLinkModel_Joint_0x94F0_DisplayList, (MObjSub**)&dLinkModel_gap_0x8110_sub_0x5B0, (AObjEvent32**)&dLinkModel_gap_0x9DA8_sub_0xCC, NULL, 0x00 },
+	{ (Gfx*)&dLinkModel_Joint_0x94F0_DisplayList, (MObjSub**)&dLinkModel_gap_0x8110_sub_0x5B0, (AObjEvent32**)&dLinkModel_gap_0x9DA8_sub_0xCC, NULL, 0x00 },
 };
 
 /* @ 0x0338, 80 bytes: FTAttributes.sub_0x338 target (was dLinkMain_pre+0x338) */
-u32 dLinkMain_sub_0x338[20] = {
-	(u32)&dLinkModel_Joint_0x3398_DisplayList, /* extern -> 0x3398 */
-	(u32)((u8*)dLinkModel_gap_0x0000_sub_0x18 + 0x588), /* extern -> 0x05A0 */
-	(u32)&dLinkModel_gap_0x40EC_sub_0x244, /* extern -> 0x4330 */
-	0x00000000,
-	0x00000000,
-	(u32)&dLinkModel_Joint_0x6E08_DisplayList, /* extern -> 0x6E08 */
-	(u32)&dLinkModel_gap_0x40EC_sub_0x7F4, /* extern -> 0x48E0 */
-	(u32)&dLinkModel_gap_0x7AE0_sub_0x210, /* extern -> 0x7CF0 */
-	0x00000000,
-	0x00000000,
-	(u32)&dLinkModel_Joint_0x9B98_DisplayList, /* extern -> 0x9B98 */
-	(u32)&dLinkModel_gap_0x8110_sub_0x5C0, /* extern -> 0x86D0 */
-	(u32)&dLinkModel_gap_0x9DA8_sub_0xD8, /* extern -> 0x9E80 */
-	0x00000000,
-	0x00000000,
-	(u32)&dLinkModel_Joint_0x9B98_DisplayList, /* extern -> 0x9B98 */
-	(u32)&dLinkModel_gap_0x8110_sub_0x5C0, /* extern -> 0x86D0 */
-	(u32)&dLinkModel_gap_0x9DA8_sub_0xD8, /* extern -> 0x9E80 */
-	0x00000000,
-	0x00000000,
+FTModelPart dLinkMain_modelparts_desc_0x338[4] = {
+	{ (Gfx*)&dLinkModel_Joint_0x3398_DisplayList, (MObjSub**)((u8*)dLinkModel_gap_0x0000_sub_0x18 + 0x588), (AObjEvent32**)&dLinkModel_gap_0x40EC_sub_0x244, NULL, 0x00 },
+	{ (Gfx*)&dLinkModel_Joint_0x6E08_DisplayList, (MObjSub**)&dLinkModel_gap_0x40EC_sub_0x7F4, (AObjEvent32**)&dLinkModel_gap_0x7AE0_sub_0x210, NULL, 0x00 },
+	{ (Gfx*)&dLinkModel_Joint_0x9B98_DisplayList, (MObjSub**)&dLinkModel_gap_0x8110_sub_0x5C0, (AObjEvent32**)&dLinkModel_gap_0x9DA8_sub_0xD8, NULL, 0x00 },
+	{ (Gfx*)&dLinkModel_Joint_0x9B98_DisplayList, (MObjSub**)&dLinkModel_gap_0x8110_sub_0x5C0, (AObjEvent32**)&dLinkModel_gap_0x9DA8_sub_0xD8, NULL, 0x00 },
 };
 
 /* @ 0x0388, 128 bytes: FTAttributes.modelparts_container target (was dLinkMain_pre+0x388) */
-u32 dLinkMain_modelparts_container[32] = {
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)dLinkMain_sub_0x130, /* intern -> 0x0130 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)dLinkMain_sub_0x1A8, /* intern -> 0x01A8 */
-	(u32)dLinkMain_sub_0x1D0, /* intern -> 0x01D0 */
-	(u32)dLinkMain_sub_0x1F8, /* intern -> 0x01F8 */
-	(u32)dLinkMain_sub_0x220, /* intern -> 0x0220 */
-	(u32)dLinkMain_sub_0x248, /* intern -> 0x0248 */
-	(u32)dLinkMain_sub_0x270, /* intern -> 0x0270 */
-	(u32)dLinkMain_sub_0x298, /* intern -> 0x0298 */
-	(u32)dLinkMain_sub_0x2E8, /* intern -> 0x02E8 */
-	(u32)dLinkMain_sub_0x338, /* intern -> 0x0338 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
+FTModelPartDesc *dLinkMain_modelparts_container[32] = {
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	NULL, (FTModelPartDesc*)dLinkMain_modelparts_desc_0x130, NULL, NULL, NULL, NULL,
+	(FTModelPartDesc*)dLinkMain_modelparts_desc_0x1A8, (FTModelPartDesc*)dLinkMain_modelparts_desc_0x1D0, (FTModelPartDesc*)dLinkMain_modelparts_desc_0x1F8, (FTModelPartDesc*)dLinkMain_modelparts_desc_0x220, (FTModelPartDesc*)dLinkMain_modelparts_desc_0x248, (FTModelPartDesc*)dLinkMain_modelparts_desc_0x270,
+	(FTModelPartDesc*)dLinkMain_modelparts_desc_0x298, (FTModelPartDesc*)dLinkMain_modelparts_desc_0x2E8, (FTModelPartDesc*)dLinkMain_modelparts_desc_0x338, NULL, NULL, NULL,
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	NULL, NULL,
 };
 
 /* @ 0x0408, 8 bytes: FTAttributes.textureparts_container target (was dLinkMain_pre+0x408) */
-u32 dLinkMain_textureparts_container[2] = {
-	0x17000017,
-	0x01010000,
+FTTexturePartContainer dLinkMain_textureparts_container = {
+	{
+		{ 0x17, { 0x00, 0x00 } },
+		{ 0x17, { 0x01, 0x01 } },
+	},
 };
 
 /* @ 0x0410, 32 bytes: FTAttributes.commonparts_container target (was dLinkMain_pre+0x410) */
-u32 dLinkMain_commonparts_container[8] = {
-	(u32)&dLinkModel_JointTree, /* extern -> 0x3AE8 */
-	(u32)&dLinkModel_gap_0x0000, /* extern -> 0x0000 */
-	(u32)((u8*)dLinkModel_JointTree + 0x5B8), /* extern -> 0x40A0 */
-	0x00000000,
-	(u32)&dLinkModel_JointTree_0x74B0, /* extern -> 0x74B0 */
-	(u32)&dLinkModel_gap_0x40EC_sub_0x254, /* extern -> 0x4340 */
-	(u32)((u8*)dLinkModel_JointTree_0x74B0 + 0x5B0), /* extern -> 0x7A60 */
-	0x00000000,
+FTCommonPartContainer dLinkMain_commonparts_container = {
+	{
+		{ (DObjDesc*)&dLinkModel_JointTree, (MObjSub***)&dLinkModel_gap_0x0000, (AObjEvent32***)((u8*)dLinkModel_JointTree + 0x5B8), 0x00 },
+		{ (DObjDesc*)&dLinkModel_JointTree_0x74B0, (MObjSub***)&dLinkModel_gap_0x40EC_sub_0x254, (AObjEvent32***)((u8*)dLinkModel_JointTree_0x74B0 + 0x5B0), 0x00 },
+	},
 };
 
 /* @ 0x0430, 432 bytes: FTAttributes.thrown_status target (was dLinkMain_pre+0x430) */
-u32 dLinkMain_thrown_status[108] = {
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
+FTThrownStatus dLinkMain_thrown_status[54] = {
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
 };
 
 /* @ 0x05E0, 16 bytes: FTAttributes.sub_0x5E0 target (was dLinkMain_pre+0x5E0) */
-u32 dLinkMain_sub_0x5E0[4] = {
-	(u32)&dLinkModel_palette_0x11CA0, /* extern -> 0x11CA0 */
-	(u32)&dLinkModel_gap_0x11CC0_sub_0x8, /* extern -> 0x11CC8 */
-	(u32)&dLinkModel_gap_0x11CC0_sub_0x30, /* extern -> 0x11CF0 */
-	(u32)&dLinkModel_gap_0x11CC0_sub_0x58, /* extern -> 0x11D18 */
+int *dLinkMain_stock_luts[4] = {
+	(int*)&dLinkModel_palette_0x11CA0,
+	(int*)&dLinkModel_gap_0x11CC0_sub_0x8,
+	(int*)&dLinkModel_gap_0x11CC0_sub_0x30,
+	(int*)&dLinkModel_gap_0x11CC0_sub_0x58,
 };
 
 /* @ 0x05F0, 12 bytes: FTAttributes.sprites target (was dLinkMain_pre+0x5F0) */
-u32 dLinkMain_sprites[3] = {
-	(u32)((u8*)dLinkModel_gap_0x11CC0_sub_0x58 + 0x30), /* extern -> 0x11D48 */
-	(u32)dLinkMain_sub_0x5E0, /* intern -> 0x05E0 */
-	(u32)((u8*)dLinkModel_gap_0x11CC0_sub_0x58 + 0x210), /* extern -> 0x11F28 */
+FTSprites dLinkMain_sprites = {
+	(Sprite*)((u8*)dLinkModel_gap_0x11CC0_sub_0x58 + 0x30), /* stock_sprite */
+	(int**)dLinkMain_stock_luts, /* stock_luts */
+	(Sprite*)((u8*)dLinkModel_gap_0x11CC0_sub_0x58 + 0x210), /* emblem */
 };
 
 /* @ 0x05FC, 256 bytes: FTAttributes.sub_0x5FC target (was dLinkMain_pre+0x5FC) */
-u32 dLinkMain_sub_0x5FC[64] = {
-	0x00000000,
-	0x00000000,
-	(u32)&dLinkModel_gap_0x9DA8_sub_0x618, /* extern -> 0xA3C0 */
-	0x00000000,
-	(u32)&dLinkModel_gap_0x9DA8_sub_0x6E8, /* extern -> 0xA490 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dLinkModel_gap_0x9DA8_sub_0xC68, /* extern -> 0xAA10 */
-	0x00000000,
-	(u32)&dLinkModel_gap_0x9DA8_sub_0xB58, /* extern -> 0xA900 */
-	0x00000000,
-	(u32)&dLinkModel_gap_0x9DA8_sub_0xD48, /* extern -> 0xAAF0 */
-	0x00000000,
-	(u32)&dLinkModel_gap_0x9DA8_sub_0x12B8, /* extern -> 0xB060 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dLinkModel_gap_0x9DA8_sub_0xC68, /* extern -> 0xAA10 */
-	0x00000000,
-	(u32)&dLinkModel_gap_0x9DA8_sub_0xB58, /* extern -> 0xA900 */
-	0x00000000,
-	(u32)&dLinkModel_gap_0x9DA8_sub_0xE28, /* extern -> 0xABD0 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dLinkModel_gap_0x9DA8_sub_0x1378, /* extern -> 0xB120 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dLinkModel_gap_0x9DA8_sub_0x958, /* extern -> 0xA700 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dLinkModel_gap_0x9DA8_sub_0xF38, /* extern -> 0xACE0 */
-	0x00000000,
-	(u32)&dLinkModel_gap_0x9DA8_sub_0x1048, /* extern -> 0xADF0 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dLinkModel_gap_0x9DA8_sub_0x10F8, /* extern -> 0xAEA0 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dLinkModel_gap_0x9DA8_sub_0xF38, /* extern -> 0xACE0 */
-	0x00000000,
-	(u32)&dLinkModel_gap_0x9DA8_sub_0x1048, /* extern -> 0xADF0 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dLinkModel_gap_0x9DA8_sub_0x10F8, /* extern -> 0xAEA0 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
+FTSkeleton dLinkMain_skeleton_dls[32] = {
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dLinkModel_gap_0x9DA8_sub_0x618 }, 0 },
+	{ { (Gfx*)&dLinkModel_gap_0x9DA8_sub_0x6E8 }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dLinkModel_gap_0x9DA8_sub_0xC68 }, 0 },
+	{ { (Gfx*)&dLinkModel_gap_0x9DA8_sub_0xB58 }, 0 },
+	{ { (Gfx*)&dLinkModel_gap_0x9DA8_sub_0xD48 }, 0 },
+	{ { (Gfx*)&dLinkModel_gap_0x9DA8_sub_0x12B8 }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dLinkModel_gap_0x9DA8_sub_0xC68 }, 0 },
+	{ { (Gfx*)&dLinkModel_gap_0x9DA8_sub_0xB58 }, 0 },
+	{ { (Gfx*)&dLinkModel_gap_0x9DA8_sub_0xE28 }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dLinkModel_gap_0x9DA8_sub_0x1378 }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dLinkModel_gap_0x9DA8_sub_0x958 }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dLinkModel_gap_0x9DA8_sub_0xF38 }, 0 },
+	{ { (Gfx*)&dLinkModel_gap_0x9DA8_sub_0x1048 }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dLinkModel_gap_0x9DA8_sub_0x10F8 }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dLinkModel_gap_0x9DA8_sub_0xF38 }, 0 },
+	{ { (Gfx*)&dLinkModel_gap_0x9DA8_sub_0x1048 }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dLinkModel_gap_0x9DA8_sub_0x10F8 }, 0 },
+	{ { NULL }, 0 },
 };
 
 /* @ 0x06FC, 12 bytes: FTAttributes.skeleton target (was dLinkMain_pre+0x6FC) */
-u32 dLinkMain_skeleton[3] = {
-	0x00000017,
-	(u32)dLinkMain_sub_0x5FC, /* intern -> 0x05FC */
-	0x00000000,
+FTSkeleton *dLinkMain_skeleton[3] = {
+	(FTSkeleton*)23,
+	dLinkMain_skeleton_dls,
+	NULL,
 };
 
 FTAttributes dLinkMain_attr = {
@@ -696,7 +444,7 @@ FTAttributes dLinkMain_attr = {
 	{ FALSE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	0, /* unused_0x2CC */
 	(FTHiddenPart*)dLinkMain_hiddenparts, /* hiddenparts */
-	(FTCommonPartContainer*)dLinkMain_commonparts_container, /* commonparts_container */
+	&dLinkMain_commonparts_container, /* commonparts_container */
 	NULL, /* dobj_lookup */
 	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
 	30, /* joint_rfoot_id */
@@ -709,10 +457,10 @@ FTAttributes dLinkMain_attr = {
 	NULL, /* translate_scales */
 	(FTModelPartContainer*)dLinkMain_modelparts_container, /* modelparts_container */
 	NULL, /* accesspart */
-	(FTTexturePartContainer*)dLinkMain_textureparts_container, /* textureparts_container */
+	&dLinkMain_textureparts_container, /* textureparts_container */
 	35, /* joint_itemheavy_id */
 	(FTThrownStatusArray*)dLinkMain_thrown_status, /* thrown_status */
 	16, /* joint_itemlight_id */
-	(FTSprites*)dLinkMain_sprites, /* sprites */
+	&dLinkMain_sprites, /* sprites */
 	(FTSkeleton**)dLinkMain_skeleton, /* skeleton */
 };

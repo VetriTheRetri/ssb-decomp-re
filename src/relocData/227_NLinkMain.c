@@ -27,204 +27,104 @@ u32 dNLinkMain_setup_parts[2] = {
 };
 
 /* @ 0x0014, 96 bytes: FTAttributes.hiddenparts target (was dNLinkMain_pre+0x14) */
-u32 dNLinkMain_hiddenparts[24] = {
-	0x00000002,
-	0x00000000,
-	0x00000001,
-	0x00000003,
-	0x00000001,
-	0x00000000,
-	0x00000000,
-	0x00000003,
-	0x00000003,
-	0x00000002,
-	0x00000001,
-	0x00000000,
-	0x00000023,
-	0x00000004,
-	0x00000001,
-	0x00000000,
-	0x00000011,
-	0x00000010,
-	0x00000001,
-	0x00000000,
-	0x00000012,
-	0x00000010,
-	0x00000001,
-	0x00000000,
+FTHiddenPart dNLinkMain_hiddenparts[6] = {
+	{ 0x00000002, 0x00000000, 0x00000001, 0x00000003 },
+	{ 0x00000001, 0x00000000, 0x00000000, 0x00000003 },
+	{ 0x00000003, 0x00000002, 0x00000001, 0x00000000 },
+	{ 0x00000023, 0x00000004, 0x00000001, 0x00000000 },
+	{ 0x00000011, 0x00000010, 0x00000001, 0x00000000 },
+	{ 0x00000012, 0x00000010, 0x00000001, 0x00000000 },
 };
 
 /* @ 0x0074, 128 bytes: FTAttributes.modelparts_container target (was dNLinkMain_pre+0x74) */
-u32 dNLinkMain_modelparts_container[32] = {
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
+FTModelPartDesc *dNLinkMain_modelparts_container[32] = {
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	NULL, NULL,
 };
 
 /* @ 0x00F4, 8 bytes: FTAttributes.textureparts_container target (was dNLinkMain_pre+0xF4) */
-u32 dNLinkMain_textureparts_container[2] = {
-	0x17000017,
-	0x01010000,
+FTTexturePartContainer dNLinkMain_textureparts_container = {
+	{
+		{ 0x17, { 0x00, 0x00 } },
+		{ 0x17, { 0x01, 0x01 } },
+	},
 };
 
 /* @ 0x00FC, 32 bytes: FTAttributes.commonparts_container target (was dNLinkMain_pre+0xFC) */
-u32 dNLinkMain_commonparts_container[8] = {
-	(u32)&dNLinkModel_JointTree, /* extern -> 0x3080 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dNLinkModel_JointTree, /* extern -> 0x3080 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
+FTCommonPartContainer dNLinkMain_commonparts_container = {
+	{
+		{ (DObjDesc*)&dNLinkModel_JointTree, NULL, NULL, 0x00 },
+		{ (DObjDesc*)&dNLinkModel_JointTree, NULL, NULL, 0x00 },
+	},
 };
 
 /* @ 0x011C, 432 bytes: FTAttributes.thrown_status target (was dNLinkMain_pre+0x11C) */
-u32 dNLinkMain_thrown_status[108] = {
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
+FTThrownStatus dNLinkMain_thrown_status[54] = {
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
 };
 
 /* @ 0x02CC, 12 bytes: FTAttributes.sprites target (was dNLinkMain_pre+0x2CC) */
-u32 dNLinkMain_sprites[3] = {
-	0x00000000,
-	0x00000000,
-	0x016C00AE, /* extern -> 0x02B8 */
+FTSprites dNLinkMain_sprites = {
+	NULL, /* stock_sprite */
+	NULL, /* stock_luts */
+	(Sprite*)0x016C00AE, /* emblem */
 };
 
 FTAttributes dNLinkMain_attr = {
@@ -323,7 +223,7 @@ FTAttributes dNLinkMain_attr = {
 	{ FALSE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	0, /* unused_0x2CC */
 	(FTHiddenPart*)dNLinkMain_hiddenparts, /* hiddenparts */
-	(FTCommonPartContainer*)dNLinkMain_commonparts_container, /* commonparts_container */
+	&dNLinkMain_commonparts_container, /* commonparts_container */
 	NULL, /* dobj_lookup */
 	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
 	30, /* joint_rfoot_id */
@@ -336,10 +236,10 @@ FTAttributes dNLinkMain_attr = {
 	NULL, /* translate_scales */
 	(FTModelPartContainer*)dNLinkMain_modelparts_container, /* modelparts_container */
 	NULL, /* accesspart */
-	(FTTexturePartContainer*)dNLinkMain_textureparts_container, /* textureparts_container */
+	&dNLinkMain_textureparts_container, /* textureparts_container */
 	35, /* joint_itemheavy_id */
 	(FTThrownStatusArray*)dNLinkMain_thrown_status, /* thrown_status */
 	16, /* joint_itemlight_id */
-	(FTSprites*)dNLinkMain_sprites, /* sprites */
+	&dNLinkMain_sprites, /* sprites */
 	NULL, /* skeleton */
 };

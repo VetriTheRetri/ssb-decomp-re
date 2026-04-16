@@ -36,191 +36,101 @@ u32 dNFoxMain_setup_parts[2] = {
 };
 
 /* @ 0x0014, 64 bytes: FTAttributes.hiddenparts target (was dNFoxMain_pre+0x14) */
-u32 dNFoxMain_hiddenparts[16] = {
-	0x00000002,
-	0x00000000,
-	0x00000001,
-	0x00000003,
-	0x00000001,
-	0x00000000,
-	0x00000000,
-	0x00000003,
-	0x00000003,
-	0x00000002,
-	0x00000001,
-	0x00000000,
-	0x0000001E,
-	0x00000004,
-	0x00000001,
-	0x00000000,
+FTHiddenPart dNFoxMain_hiddenparts[4] = {
+	{ 0x00000002, 0x00000000, 0x00000001, 0x00000003 },
+	{ 0x00000001, 0x00000000, 0x00000000, 0x00000003 },
+	{ 0x00000003, 0x00000002, 0x00000001, 0x00000000 },
+	{ 0x0000001E, 0x00000004, 0x00000001, 0x00000000 },
 };
 
 /* @ 0x0054, 108 bytes: FTAttributes.modelparts_container target (was dNFoxMain_pre+0x54) */
-u32 dNFoxMain_modelparts_container[27] = {
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
+FTModelPartDesc *dNFoxMain_modelparts_container[27] = {
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	NULL, NULL, NULL,
 };
 
 /* @ 0x00C0, 8 bytes: FTAttributes.textureparts_container target (was dNFoxMain_pre+0xC0) */
-u32 dNFoxMain_textureparts_container[2] = {
-	0x0C00000C,
-	0x01010000,
+FTTexturePartContainer dNFoxMain_textureparts_container = {
+	{
+		{ 0x0C, { 0x00, 0x00 } },
+		{ 0x0C, { 0x01, 0x01 } },
+	},
 };
 
 /* @ 0x00C8, 32 bytes: FTAttributes.commonparts_container target (was dNFoxMain_pre+0xC8) */
-u32 dNFoxMain_commonparts_container[8] = {
-	(u32)&dNFoxModel_JointTree, /* extern -> 0x2DF8 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dNFoxModel_JointTree, /* extern -> 0x2DF8 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
+FTCommonPartContainer dNFoxMain_commonparts_container = {
+	{
+		{ (DObjDesc*)&dNFoxModel_JointTree, NULL, NULL, 0x00 },
+		{ (DObjDesc*)&dNFoxModel_JointTree, NULL, NULL, 0x00 },
+	},
 };
 
 /* @ 0x00E8, 432 bytes: FTAttributes.thrown_status target (was dNFoxMain_pre+0xE8) */
-u32 dNFoxMain_thrown_status[108] = {
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BB,
-	0xFFFFFFFF,
-	0x000000BC,
-	0x000000B7,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B7,
-	0x000000BB,
-	0xFFFFFFFF,
-	0x000000BC,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BB,
-	0xFFFFFFFF,
-	0x000000BC,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BB,
-	0xFFFFFFFF,
-	0x000000BC,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BB,
-	0xFFFFFFFF,
-	0x000000BC,
-	0x000000B7,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B7,
-	0x000000BB,
-	0xFFFFFFFF,
-	0x000000BC,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BB,
-	0xFFFFFFFF,
-	0x000000BC,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BB,
-	0xFFFFFFFF,
-	0x000000BC,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B7,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
+FTThrownStatus dNFoxMain_thrown_status[54] = {
+	{                             -1, nFTCommonStatusThrownCommon    },
+	{                             -1, nFTCommonStatusThrownCommon    },
+	{                             -1, nFTCommonStatusThrownFoxF      },
+	{                             -1, nFTCommonStatusThrownFoxB      },
+	{ nFTCommonStatusThrownFoxFStart, nFTCommonStatusThrownCommon    },
+	{                             -1, nFTCommonStatusThrownCommon    },
+	{ nFTCommonStatusThrownFoxFStart, nFTCommonStatusThrownFoxF      },
+	{                             -1, nFTCommonStatusThrownFoxB      },
+	{                             -1, nFTCommonStatusThrownCommon    },
+	{                             -1, nFTCommonStatusThrownCommon    },
+	{                             -1, nFTCommonStatusThrownCommon    },
+	{                             -1, nFTCommonStatusThrownCommon    },
+	{                             -1, nFTCommonStatusThrownCommon    },
+	{                             -1, nFTCommonStatusThrownCommon    },
+	{                             -1, nFTCommonStatusThrownCommon    },
+	{                             -1, nFTCommonStatusThrownCommon    },
+	{                             -1, nFTCommonStatusThrownFoxF      },
+	{                             -1, nFTCommonStatusThrownFoxB      },
+	{                             -1, nFTCommonStatusThrownCommon    },
+	{                             -1, nFTCommonStatusThrownCommon    },
+	{                             -1, nFTCommonStatusThrownFoxF      },
+	{                             -1, nFTCommonStatusThrownFoxB      },
+	{                             -1, nFTCommonStatusThrownCommon    },
+	{                             -1, nFTCommonStatusThrownCommon    },
+	{                             -1, nFTCommonStatusThrownCommon    },
+	{                             -1, nFTCommonStatusThrownCommon    },
+	{                             -1, nFTCommonStatusThrownCommon    },
+	{                             -1, nFTCommonStatusThrownCommon    },
+	{                             -1, nFTCommonStatusThrownCommon    },
+	{                             -1, nFTCommonStatusThrownCommon    },
+	{                             -1, nFTCommonStatusThrownFoxF      },
+	{                             -1, nFTCommonStatusThrownFoxB      },
+	{ nFTCommonStatusThrownFoxFStart, nFTCommonStatusThrownCommon    },
+	{                             -1, nFTCommonStatusThrownCommon    },
+	{ nFTCommonStatusThrownFoxFStart, nFTCommonStatusThrownFoxF      },
+	{                             -1, nFTCommonStatusThrownFoxB      },
+	{                             -1, nFTCommonStatusThrownCommon    },
+	{                             -1, nFTCommonStatusThrownCommon    },
+	{                             -1, nFTCommonStatusThrownCommon    },
+	{                             -1, nFTCommonStatusThrownCommon    },
+	{                             -1, nFTCommonStatusThrownCommon    },
+	{                             -1, nFTCommonStatusThrownCommon    },
+	{                             -1, nFTCommonStatusThrownCommon    },
+	{                             -1, nFTCommonStatusThrownCommon    },
+	{                             -1, nFTCommonStatusThrownFoxF      },
+	{                             -1, nFTCommonStatusThrownFoxB      },
+	{                             -1, nFTCommonStatusThrownCommon    },
+	{                             -1, nFTCommonStatusThrownCommon    },
+	{                             -1, nFTCommonStatusThrownFoxF      },
+	{                             -1, nFTCommonStatusThrownFoxB      },
+	{                             -1, nFTCommonStatusThrownCommon    },
+	{                             -1, nFTCommonStatusThrownCommon    },
+	{ nFTCommonStatusThrownFoxFStart, nFTCommonStatusThrownCommon    },
+	{                             -1, nFTCommonStatusThrownCommon    },
 };
 
 /* @ 0x0298, 12 bytes: FTAttributes.sprites target (was dNFoxMain_pre+0x298) */
-u32 dNFoxMain_sprites[3] = {
-	0x00000000,
-	0x00000000,
-	0x015F00AE, /* extern -> 0x02B8 */
+FTSprites dNFoxMain_sprites = {
+	NULL, /* stock_sprite */
+	NULL, /* stock_luts */
+	(Sprite*)0x015F00AE, /* emblem */
 };
 
 FTAttributes dNFoxMain_attr = {
@@ -319,7 +229,7 @@ FTAttributes dNFoxMain_attr = {
 	{ FALSE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	0, /* unused_0x2CC */
 	(FTHiddenPart*)dNFoxMain_hiddenparts, /* hiddenparts */
-	(FTCommonPartContainer*)dNFoxMain_commonparts_container, /* commonparts_container */
+	&dNFoxMain_commonparts_container, /* commonparts_container */
 	(DObjDesc*)((u8*)dFoxShieldPose_script0_17 + 0x10), /* dobj_lookup */
 	{
 		(AObjEvent32**)((u8*)dFoxShieldPose_ptrs1 + 0x23C),
@@ -341,11 +251,11 @@ FTAttributes dNFoxMain_attr = {
 	NULL, /* translate_scales */
 	(FTModelPartContainer*)dNFoxMain_modelparts_container, /* modelparts_container */
 	NULL, /* accesspart */
-	(FTTexturePartContainer*)dNFoxMain_textureparts_container, /* textureparts_container */
+	&dNFoxMain_textureparts_container, /* textureparts_container */
 	30, /* joint_itemheavy_id */
 	(FTThrownStatusArray*)dNFoxMain_thrown_status, /* thrown_status */
 	17, /* joint_itemlight_id */
-	(FTSprites*)dNFoxMain_sprites, /* sprites */
+	&dNFoxMain_sprites, /* sprites */
 	NULL, /* skeleton */
 };
 

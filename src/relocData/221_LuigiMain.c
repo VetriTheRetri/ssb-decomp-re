@@ -71,100 +71,36 @@ u32 dLuigiMain_setup_parts[2] = {
 };
 
 /* @ 0x001C, 64 bytes: FTAttributes.hiddenparts target (was dLuigiMain_pre+0x1C) */
-u32 dLuigiMain_hiddenparts[16] = {
-	0x00000002,
-	0x00000000,
-	0x00000001,
-	0x00000003,
-	0x00000001,
-	0x00000000,
-	0x00000000,
-	0x00000003,
-	0x00000003,
-	0x00000002,
-	0x00000001,
-	0x00000000,
-	0x0000001C,
-	0x00000004,
-	0x00000001,
-	0x00000000,
+FTHiddenPart dLuigiMain_hiddenparts[4] = {
+	{ 0x00000002, 0x00000000, 0x00000001, 0x00000003 },
+	{ 0x00000001, 0x00000000, 0x00000000, 0x00000003 },
+	{ 0x00000003, 0x00000002, 0x00000001, 0x00000000 },
+	{ 0x0000001C, 0x00000004, 0x00000001, 0x00000000 },
 };
 
 /* @ 0x005C, 80 bytes: FTAttributes.sub_0x05C target (was dLuigiMain_pre+0x5C) */
-u32 dLuigiMain_sub_0x05C[20] = {
-	(u32)&dLuigiModel_Joint_0x1AB0_DisplayList, /* extern -> 0x1AB0 */
-	(u32)((u8*)dLuigiModel_gap_0x0000_sub_0x18 + 0x898), /* extern -> 0x08B0 */
-	(u32)&dLuigiModel_gap_0x28E0_sub_0x360, /* extern -> 0x2C40 */
-	0x00000000,
-	0x00000000,
-	(u32)&dLuigiModel_Joint_0x4248_DisplayList, /* extern -> 0x4248 */
-	(u32)&dLuigiModel_gap_0x28E0_sub_0xC50, /* extern -> 0x3530 */
-	(u32)&dLuigiModel_gap_0x4E8C_sub_0x384, /* extern -> 0x5210 */
-	0x00000000,
-	0x00000000,
-	(u32)&dLuigiModel_gap_0x4E8C_sub_0xA84, /* extern -> 0x5910 */
-	0x00000000,
-	(u32)&dLuigiModel_gap_0x4E8C_sub_0xBF0, /* extern -> 0x5A7C */
-	0x00000000,
-	0x00000000,
-	(u32)&dLuigiModel_gap_0x4E8C_sub_0xD14, /* extern -> 0x5BA0 */
-	(u32)&dLuigiModel_gap_0x4E8C_sub_0xE14, /* extern -> 0x5CA0 */
-	(u32)&dLuigiModel_gap_0x4E8C_sub_0xE60, /* extern -> 0x5CEC */
-	0x00000000,
-	0x00000000,
+FTModelPart dLuigiMain_modelparts_desc_0x05C[4] = {
+	{ (Gfx*)&dLuigiModel_Joint_0x1AB0_DisplayList, (MObjSub**)((u8*)dLuigiModel_gap_0x0000_sub_0x18 + 0x898), (AObjEvent32**)&dLuigiModel_gap_0x28E0_sub_0x360, NULL, 0x00 },
+	{ (Gfx*)&dLuigiModel_Joint_0x4248_DisplayList, (MObjSub**)&dLuigiModel_gap_0x28E0_sub_0xC50, (AObjEvent32**)&dLuigiModel_gap_0x4E8C_sub_0x384, NULL, 0x00 },
+	{ (Gfx*)&dLuigiModel_gap_0x4E8C_sub_0xA84, NULL, (AObjEvent32**)&dLuigiModel_gap_0x4E8C_sub_0xBF0, NULL, 0x00 },
+	{ (Gfx*)&dLuigiModel_gap_0x4E8C_sub_0xD14, (MObjSub**)&dLuigiModel_gap_0x4E8C_sub_0xE14, (AObjEvent32**)&dLuigiModel_gap_0x4E8C_sub_0xE60, NULL, 0x00 },
 };
 
 /* @ 0x00AC, 80 bytes: FTAttributes.sub_0x0AC target (was dLuigiMain_pre+0xAC) */
-u32 dLuigiMain_sub_0x0AC[20] = {
-	(u32)&dLuigiModel_Joint_0x1FC0_DisplayList, /* extern -> 0x1FC0 */
-	(u32)((u8*)dLuigiModel_gap_0x0000_sub_0x18 + 0x8CC), /* extern -> 0x08E4 */
-	(u32)&dLuigiModel_gap_0x28E0_sub_0x384, /* extern -> 0x2C64 */
-	0x00000000,
-	0x00000000,
-	(u32)&dLuigiModel_Joint_0x46B8_DisplayList, /* extern -> 0x46B8 */
-	(u32)&dLuigiModel_gap_0x28E0_sub_0xC84, /* extern -> 0x3564 */
-	(u32)&dLuigiModel_gap_0x4E8C_sub_0x3A8, /* extern -> 0x5234 */
-	0x00000000,
-	0x00000000,
-	(u32)&dLuigiModel_gap_0x4E8C_sub_0x534, /* extern -> 0x53C0 */
-	(u32)&dLuigiModel_gap_0x4E8C_sub_0x654, /* extern -> 0x54E0 */
-	(u32)&dLuigiModel_gap_0x4E8C_sub_0x6A0, /* extern -> 0x552C */
-	0x00000000,
-	0x00000000,
-	(u32)&dLuigiModel_gap_0x4E8C_sub_0x7C4, /* extern -> 0x5650 */
-	(u32)&dLuigiModel_gap_0x4E8C_sub_0x8C4, /* extern -> 0x5750 */
-	(u32)&dLuigiModel_gap_0x4E8C_sub_0x910, /* extern -> 0x579C */
-	0x00000000,
-	0x00000000,
+FTModelPart dLuigiMain_modelparts_desc_0x0AC[4] = {
+	{ (Gfx*)&dLuigiModel_Joint_0x1FC0_DisplayList, (MObjSub**)((u8*)dLuigiModel_gap_0x0000_sub_0x18 + 0x8CC), (AObjEvent32**)&dLuigiModel_gap_0x28E0_sub_0x384, NULL, 0x00 },
+	{ (Gfx*)&dLuigiModel_Joint_0x46B8_DisplayList, (MObjSub**)&dLuigiModel_gap_0x28E0_sub_0xC84, (AObjEvent32**)&dLuigiModel_gap_0x4E8C_sub_0x3A8, NULL, 0x00 },
+	{ (Gfx*)&dLuigiModel_gap_0x4E8C_sub_0x534, (MObjSub**)&dLuigiModel_gap_0x4E8C_sub_0x654, (AObjEvent32**)&dLuigiModel_gap_0x4E8C_sub_0x6A0, NULL, 0x00 },
+	{ (Gfx*)&dLuigiModel_gap_0x4E8C_sub_0x7C4, (MObjSub**)&dLuigiModel_gap_0x4E8C_sub_0x8C4, (AObjEvent32**)&dLuigiModel_gap_0x4E8C_sub_0x910, NULL, 0x00 },
 };
 
 /* @ 0x00FC, 100 bytes: FTAttributes.modelparts_container target (was dLuigiMain_pre+0xFC) */
-u32 dLuigiMain_modelparts_container[25] = {
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)dLuigiMain_sub_0x05C, /* intern -> 0x005C */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)dLuigiMain_sub_0x0AC, /* intern -> 0x00AC */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
+FTModelPartDesc *dLuigiMain_modelparts_container[25] = {
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	(FTModelPartDesc*)dLuigiMain_modelparts_desc_0x05C, NULL, NULL, NULL, NULL, NULL,
+	(FTModelPartDesc*)dLuigiMain_modelparts_desc_0x0AC, NULL, NULL, NULL, NULL, NULL,
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	NULL,
 };
 
 /* @ 0x0160, 4 bytes: FTAttributes.textureparts_container target (was dLuigiMain_pre+0x160) */
@@ -173,127 +109,69 @@ u32 dLuigiMain_textureparts_container[1] = {
 };
 
 /* @ 0x0164, 32 bytes: FTAttributes.commonparts_container target (was dLuigiMain_pre+0x164) */
-u32 dLuigiMain_commonparts_container[8] = {
-	(u32)&dLuigiModel_JointTree, /* extern -> 0x2410 */
-	(u32)&dLuigiModel_gap_0x0000, /* extern -> 0x0000 */
-	(u32)((u8*)dLuigiModel_JointTree + 0x480), /* extern -> 0x2890 */
-	0x00000000,
-	(u32)&dLuigiModel_JointTree_0x49E8, /* extern -> 0x49E8 */
-	(u32)&dLuigiModel_gap_0x28E0_sub_0x3A0, /* extern -> 0x2C80 */
-	(u32)((u8*)dLuigiModel_JointTree_0x49E8 + 0x478), /* extern -> 0x4E60 */
-	0x00000000,
+FTCommonPartContainer dLuigiMain_commonparts_container = {
+	{
+		{ (DObjDesc*)&dLuigiModel_JointTree, (MObjSub***)&dLuigiModel_gap_0x0000, (AObjEvent32***)((u8*)dLuigiModel_JointTree + 0x480), 0x00 },
+		{ (DObjDesc*)&dLuigiModel_JointTree_0x49E8, (MObjSub***)&dLuigiModel_gap_0x28E0_sub_0x3A0, (AObjEvent32***)((u8*)dLuigiModel_JointTree_0x49E8 + 0x478), 0x00 },
+	},
 };
 
 /* @ 0x0184, 432 bytes: FTAttributes.thrown_status target (was dLuigiMain_pre+0x184) */
-u32 dLuigiMain_thrown_status[108] = {
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
+FTThrownStatus dLuigiMain_thrown_status[54] = {
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
 };
 
 /* @ 0x0334, 348 bytes: FTAttributes.translate_scales target (was dLuigiMain_pre+0x334) */
@@ -388,79 +266,54 @@ u32 dLuigiMain_translate_scales[87] = {
 };
 
 /* @ 0x0490, 16 bytes: FTAttributes.sub_0x490 target (was dLuigiMain_pre+0x490) */
-u32 dLuigiMain_sub_0x490[4] = {
-	(u32)&dLuigiModel_palette_0x7C30, /* extern -> 0x7C30 */
-	(u32)&dLuigiModel_gap_0x7C50_sub_0x8, /* extern -> 0x7C58 */
-	(u32)&dLuigiModel_gap_0x7C50_sub_0x30, /* extern -> 0x7C80 */
-	(u32)&dLuigiModel_gap_0x7C50_sub_0x58, /* extern -> 0x7CA8 */
+int *dLuigiMain_stock_luts[4] = {
+	(int*)&dLuigiModel_palette_0x7C30,
+	(int*)&dLuigiModel_gap_0x7C50_sub_0x8,
+	(int*)&dLuigiModel_gap_0x7C50_sub_0x30,
+	(int*)&dLuigiModel_gap_0x7C50_sub_0x58,
 };
 
 /* @ 0x04A0, 12 bytes: FTAttributes.sprites target (was dLuigiMain_pre+0x4A0) */
-u32 dLuigiMain_sprites[3] = {
-	(u32)((u8*)dLuigiModel_gap_0x7C50_sub_0x68 + 0x20), /* extern -> 0x7CD8 */
-	(u32)dLuigiMain_sub_0x490, /* intern -> 0x0490 */
-	(u32)((u8*)dLuigiModel_gap_0x7C50_sub_0x68 + 0x210), /* extern -> 0x7EC8 */
+FTSprites dLuigiMain_sprites = {
+	(Sprite*)((u8*)dLuigiModel_gap_0x7C50_sub_0x68 + 0x20), /* stock_sprite */
+	(int**)dLuigiMain_stock_luts, /* stock_luts */
+	(Sprite*)((u8*)dLuigiModel_gap_0x7C50_sub_0x68 + 0x210), /* emblem */
 };
 
 /* @ 0x04AC, 200 bytes: FTAttributes.sub_0x4AC target (was dLuigiMain_pre+0x4AC) */
-u32 dLuigiMain_sub_0x4AC[50] = {
-	0x00000000,
-	0x00000000,
-	(u32)&dLuigiModel_gap_0x4E8C_sub_0xEE4, /* extern -> 0x5D70 */
-	0x00000000,
-	(u32)&dLuigiModel_gap_0x4E8C_sub_0xFC4, /* extern -> 0x5E50 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dLuigiModel_gap_0x4E8C_sub_0x17B4, /* extern -> 0x6640 */
-	0x00000000,
-	(u32)&dLuigiModel_gap_0x4E8C_sub_0x16A4, /* extern -> 0x6530 */
-	0x00000000,
-	(u32)&dLuigiModel_gap_0x4E8C_sub_0x18A4, /* extern -> 0x6730 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dLuigiModel_gap_0x4E8C_sub_0x13E4, /* extern -> 0x6270 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dLuigiModel_gap_0x4E8C_sub_0x17B4, /* extern -> 0x6640 */
-	0x00000000,
-	(u32)&dLuigiModel_gap_0x4E8C_sub_0x16A4, /* extern -> 0x6530 */
-	0x00000000,
-	(u32)&dLuigiModel_gap_0x4E8C_sub_0x19A4, /* extern -> 0x6830 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dLuigiModel_gap_0x4E8C_sub_0x1AC4, /* extern -> 0x6950 */
-	0x00000000,
-	(u32)&dLuigiModel_gap_0x4E8C_sub_0x1BD4, /* extern -> 0x6A60 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dLuigiModel_gap_0x4E8C_sub_0x1CB4, /* extern -> 0x6B40 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dLuigiModel_gap_0x4E8C_sub_0x1AC4, /* extern -> 0x6950 */
-	0x00000000,
-	(u32)&dLuigiModel_gap_0x4E8C_sub_0x1BD4, /* extern -> 0x6A60 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dLuigiModel_gap_0x4E8C_sub_0x1CB4, /* extern -> 0x6B40 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
+FTSkeleton dLuigiMain_skeleton_dls[25] = {
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dLuigiModel_gap_0x4E8C_sub_0xEE4 }, 0 },
+	{ { (Gfx*)&dLuigiModel_gap_0x4E8C_sub_0xFC4 }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dLuigiModel_gap_0x4E8C_sub_0x17B4 }, 0 },
+	{ { (Gfx*)&dLuigiModel_gap_0x4E8C_sub_0x16A4 }, 0 },
+	{ { (Gfx*)&dLuigiModel_gap_0x4E8C_sub_0x18A4 }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dLuigiModel_gap_0x4E8C_sub_0x13E4 }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dLuigiModel_gap_0x4E8C_sub_0x17B4 }, 0 },
+	{ { (Gfx*)&dLuigiModel_gap_0x4E8C_sub_0x16A4 }, 0 },
+	{ { (Gfx*)&dLuigiModel_gap_0x4E8C_sub_0x19A4 }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dLuigiModel_gap_0x4E8C_sub_0x1AC4 }, 0 },
+	{ { (Gfx*)&dLuigiModel_gap_0x4E8C_sub_0x1BD4 }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dLuigiModel_gap_0x4E8C_sub_0x1CB4 }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dLuigiModel_gap_0x4E8C_sub_0x1AC4 }, 0 },
+	{ { (Gfx*)&dLuigiModel_gap_0x4E8C_sub_0x1BD4 }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dLuigiModel_gap_0x4E8C_sub_0x1CB4 }, 0 },
+	{ { NULL }, 0 },
 };
 
 /* @ 0x0574, 12 bytes: FTAttributes.skeleton target (was dLuigiMain_pre+0x574) */
-u32 dLuigiMain_skeleton[3] = {
-	0x0000000C,
-	(u32)dLuigiMain_sub_0x4AC, /* intern -> 0x04AC */
-	0x00000000,
+FTSkeleton *dLuigiMain_skeleton[3] = {
+	(FTSkeleton*)12,
+	dLuigiMain_skeleton_dls,
+	NULL,
 };
 
 FTAttributes dLuigiMain_attr = {
@@ -584,7 +437,7 @@ FTAttributes dLuigiMain_attr = {
 	{ FALSE, TRUE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	0, /* unused_0x2CC */
 	(FTHiddenPart*)dLuigiMain_hiddenparts, /* hiddenparts */
-	(FTCommonPartContainer*)dLuigiMain_commonparts_container, /* commonparts_container */
+	&dLuigiMain_commonparts_container, /* commonparts_container */
 	NULL, /* dobj_lookup */
 	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
 	23, /* joint_rfoot_id */
@@ -601,7 +454,7 @@ FTAttributes dLuigiMain_attr = {
 	28, /* joint_itemheavy_id */
 	(FTThrownStatusArray*)dLuigiMain_thrown_status, /* thrown_status */
 	17, /* joint_itemlight_id */
-	(FTSprites*)dLuigiMain_sprites, /* sprites */
+	&dLuigiMain_sprites, /* sprites */
 	(FTSkeleton**)dLuigiMain_skeleton, /* skeleton */
 };
 

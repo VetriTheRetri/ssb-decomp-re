@@ -163,294 +163,88 @@ u32 dKirbyMain_setup_parts[2] = {
 };
 
 /* @ 0x004C, 128 bytes: FTAttributes.hiddenparts target (was dKirbyMain_pre+0x4C) */
-u32 dKirbyMain_hiddenparts[32] = {
-	0x00000002,
-	0x00000000,
-	0x00000001,
-	0x00000003,
-	0x00000001,
-	0x00000000,
-	0x00000000,
-	0x00000003,
-	0x00000003,
-	0x00000002,
-	0x00000001,
-	0x00000000,
-	0x0000001E,
-	0x00000004,
-	0x00000001,
-	0x00000000,
-	0x00000007,
-	0x00000006,
-	0x00000001,
-	0x00000001,
-	0x00000013,
-	0x00000005,
-	0x00000001,
-	0x00000002,
-	0x0000000C,
-	0x0000000B,
-	0x00000001,
-	0x00000000,
-	0x00000012,
-	0x00000006,
-	0x00000001,
-	0x00000000,
+FTHiddenPart dKirbyMain_hiddenparts[8] = {
+	{ 0x00000002, 0x00000000, 0x00000001, 0x00000003 },
+	{ 0x00000001, 0x00000000, 0x00000000, 0x00000003 },
+	{ 0x00000003, 0x00000002, 0x00000001, 0x00000000 },
+	{ 0x0000001E, 0x00000004, 0x00000001, 0x00000000 },
+	{ 0x00000007, 0x00000006, 0x00000001, 0x00000001 },
+	{ 0x00000013, 0x00000005, 0x00000001, 0x00000002 },
+	{ 0x0000000C, 0x0000000B, 0x00000001, 0x00000000 },
+	{ 0x00000012, 0x00000006, 0x00000001, 0x00000000 },
 };
 
 /* @ 0x00CC, 600 bytes: FTAttributes.sub_0x0CC target (was dKirbyMain_pre+0xCC) */
-u32 dKirbyMain_sub_0x0CC[150] = {
-	(u32)&dKirbyModel_Joint_0x0DB0_DisplayList, /* extern -> 0x0DB0 */
-	(u32)((u8*)dKirbyModel_JointVerts_Vtx + 0x470), /* extern -> 0x0470 */
-	(u32)&dKirbyModel_gap_0x1970_sub_0x2A0, /* extern -> 0x1C10 */
-	0x00000000,
-	0x00000000,
-	(u32)&dKirbyModel_Joint_0x27B0_DisplayList, /* extern -> 0x27B0 */
-	(u32)&dKirbyModel_gap_0x1970_sub_0x730, /* extern -> 0x20A0 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x2E4, /* extern -> 0x34B0 */
-	0x00000000,
-	0x00000000,
-	(u32)&dKirbyModel_gap_0x31CC_sub_0xCAC, /* extern -> 0x3E78 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x8DC, /* extern -> 0x3AA8 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x1194, /* extern -> 0x4360 */
-	0x00000000,
-	0x00000000,
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x155C, /* extern -> 0x4728 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x129C, /* extern -> 0x4468 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x1940, /* extern -> 0x4B0C */
-	0x00000000,
-	0x00000000,
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x15894, /* extern -> 0x18A60 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x15894, /* extern -> 0x18A60 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x211C, /* extern -> 0x52E8 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x1A8C, /* extern -> 0x4C58 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x25EC, /* extern -> 0x57B8 */
-	0x00000000,
-	0x00000000,
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x2BFC, /* extern -> 0x5DC8 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x272C, /* extern -> 0x58F8 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x2FCC, /* extern -> 0x6198 */
-	0x00000000,
-	0x00000000,
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x381C, /* extern -> 0x69E8 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x3094, /* extern -> 0x6260 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x3D60, /* extern -> 0x6F2C */
-	0x00000000,
-	0x00000000,
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x438C, /* extern -> 0x7558 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x3E24, /* extern -> 0x6FF0 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x47E0, /* extern -> 0x79AC */
-	0x00000000,
-	0x00000000,
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x509C, /* extern -> 0x8268 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x491C, /* extern -> 0x7AE8 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x568C, /* extern -> 0x8858 */
-	0x00000000,
-	0x00000000,
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x5D4C, /* extern -> 0x8F18 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x57CC, /* extern -> 0x8998 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x61E8, /* extern -> 0x93B4 */
-	0x00000000,
-	0x00000000,
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x6AEC, /* extern -> 0x9CB8 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x632C, /* extern -> 0x94F8 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x717C, /* extern -> 0xA348 */
-	0x00000000,
-	0x00000000,
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x784C, /* extern -> 0xAA18 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x72BC, /* extern -> 0xA488 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x7E1C, /* extern -> 0xAFE8 */
-	0x00000000,
-	0x00000000,
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x866C, /* extern -> 0xB838 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x7F5C, /* extern -> 0xB128 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x8B7C, /* extern -> 0xBD48 */
-	0x00000000,
-	0x00000000,
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x91CC, /* extern -> 0xC398 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x8CBC, /* extern -> 0xBE88 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x95FC, /* extern -> 0xC7C8 */
-	0x00000000,
-	0x00000000,
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x9FEC, /* extern -> 0xD1B8 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x973C, /* extern -> 0xC908 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0xA638, /* extern -> 0xD804 */
-	0x00000000,
-	0x00000000,
-	(u32)&dKirbyModel_gap_0x31CC_sub_0xAEEC, /* extern -> 0xE0B8 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x973C, /* extern -> 0xC908 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0xA638, /* extern -> 0xD804 */
-	0x00000000,
-	0x00000000,
-	(u32)&dKirbyModel_gap_0x31CC_sub_0xBE6C, /* extern -> 0xF038 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0xB64C, /* extern -> 0xE818 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0xC4DC, /* extern -> 0xF6A8 */
-	0x00000000,
-	0x00000000,
-	(u32)&dKirbyModel_gap_0x31CC_sub_0xCC4C, /* extern -> 0xFE18 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0xC61C, /* extern -> 0xF7E8 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0xD23C, /* extern -> 0x10408 */
-	0x00000000,
-	0x00000000,
-	(u32)&dKirbyModel_gap_0x31CC_sub_0xD93C, /* extern -> 0x10B08 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0xD37C, /* extern -> 0x10548 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0xDDBC, /* extern -> 0x10F88 */
-	0x00000000,
-	0x00000000,
-	(u32)&dKirbyModel_gap_0x31CC_sub_0xE3FC, /* extern -> 0x115C8 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0xDEFC, /* extern -> 0x110C8 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0xE82C, /* extern -> 0x119F8 */
-	0x00000000,
-	0x00000000,
-	(u32)&dKirbyModel_gap_0x31CC_sub_0xEF3C, /* extern -> 0x12108 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0xE96C, /* extern -> 0x11B38 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0xF40C, /* extern -> 0x125D8 */
-	0x00000000,
-	0x00000000,
-	(u32)&dKirbyModel_gap_0x31CC_sub_0xFA3C, /* extern -> 0x12C08 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0xF54C, /* extern -> 0x12718 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0xFE9C, /* extern -> 0x13068 */
-	0x00000000,
-	0x00000000,
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x105AC, /* extern -> 0x13778 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0xFFDC, /* extern -> 0x131A8 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x10A7C, /* extern -> 0x13C48 */
-	0x00000000,
-	0x00000000,
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x110AC, /* extern -> 0x14278 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x10BBC, /* extern -> 0x13D88 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x1150C, /* extern -> 0x146D8 */
-	0x00000000,
-	0x00000000,
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x11BCC, /* extern -> 0x14D98 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x1164C, /* extern -> 0x14818 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x1205C, /* extern -> 0x15228 */
-	0x00000000,
-	0x00000000,
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x1263C, /* extern -> 0x15808 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x1219C, /* extern -> 0x15368 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x12A7C, /* extern -> 0x15C48 */
-	0x00000000,
-	0x00000000,
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x1328C, /* extern -> 0x16458 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x12B7C, /* extern -> 0x15D48 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x13A14, /* extern -> 0x16BE0 */
-	0x00000000,
-	0x00000000,
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x1405C, /* extern -> 0x17228 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x13B1C, /* extern -> 0x16CE8 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x14634, /* extern -> 0x17800 */
-	0x00000000,
-	0x00000000,
+FTModelPart dKirbyMain_modelparts_desc_0x0CC[30] = {
+	{ (Gfx*)&dKirbyModel_Joint_0x0DB0_DisplayList, (MObjSub**)((u8*)dKirbyModel_JointVerts_Vtx + 0x470), (AObjEvent32**)&dKirbyModel_gap_0x1970_sub_0x2A0, NULL, 0x00 },
+	{ (Gfx*)&dKirbyModel_Joint_0x27B0_DisplayList, (MObjSub**)&dKirbyModel_gap_0x1970_sub_0x730, (AObjEvent32**)&dKirbyModel_gap_0x31CC_sub_0x2E4, NULL, 0x00 },
+	{ (Gfx*)&dKirbyModel_gap_0x31CC_sub_0xCAC, (MObjSub**)&dKirbyModel_gap_0x31CC_sub_0x8DC, (AObjEvent32**)&dKirbyModel_gap_0x31CC_sub_0x1194, NULL, 0x00 },
+	{ (Gfx*)&dKirbyModel_gap_0x31CC_sub_0x155C, (MObjSub**)&dKirbyModel_gap_0x31CC_sub_0x129C, (AObjEvent32**)&dKirbyModel_gap_0x31CC_sub_0x1940, NULL, 0x00 },
+	{ (Gfx*)&dKirbyModel_gap_0x31CC_sub_0x15894, NULL, NULL, NULL, 0x00 },
+	{ (Gfx*)&dKirbyModel_gap_0x31CC_sub_0x15894, NULL, NULL, NULL, 0x00 },
+	{ (Gfx*)&dKirbyModel_gap_0x31CC_sub_0x211C, (MObjSub**)&dKirbyModel_gap_0x31CC_sub_0x1A8C, (AObjEvent32**)&dKirbyModel_gap_0x31CC_sub_0x25EC, NULL, 0x00 },
+	{ (Gfx*)&dKirbyModel_gap_0x31CC_sub_0x2BFC, (MObjSub**)&dKirbyModel_gap_0x31CC_sub_0x272C, (AObjEvent32**)&dKirbyModel_gap_0x31CC_sub_0x2FCC, NULL, 0x00 },
+	{ (Gfx*)&dKirbyModel_gap_0x31CC_sub_0x381C, (MObjSub**)&dKirbyModel_gap_0x31CC_sub_0x3094, (AObjEvent32**)&dKirbyModel_gap_0x31CC_sub_0x3D60, NULL, 0x00 },
+	{ (Gfx*)&dKirbyModel_gap_0x31CC_sub_0x438C, (MObjSub**)&dKirbyModel_gap_0x31CC_sub_0x3E24, (AObjEvent32**)&dKirbyModel_gap_0x31CC_sub_0x47E0, NULL, 0x00 },
+	{ (Gfx*)&dKirbyModel_gap_0x31CC_sub_0x509C, (MObjSub**)&dKirbyModel_gap_0x31CC_sub_0x491C, (AObjEvent32**)&dKirbyModel_gap_0x31CC_sub_0x568C, NULL, 0x00 },
+	{ (Gfx*)&dKirbyModel_gap_0x31CC_sub_0x5D4C, (MObjSub**)&dKirbyModel_gap_0x31CC_sub_0x57CC, (AObjEvent32**)&dKirbyModel_gap_0x31CC_sub_0x61E8, NULL, 0x00 },
+	{ (Gfx*)&dKirbyModel_gap_0x31CC_sub_0x6AEC, (MObjSub**)&dKirbyModel_gap_0x31CC_sub_0x632C, (AObjEvent32**)&dKirbyModel_gap_0x31CC_sub_0x717C, NULL, 0x00 },
+	{ (Gfx*)&dKirbyModel_gap_0x31CC_sub_0x784C, (MObjSub**)&dKirbyModel_gap_0x31CC_sub_0x72BC, (AObjEvent32**)&dKirbyModel_gap_0x31CC_sub_0x7E1C, NULL, 0x00 },
+	{ (Gfx*)&dKirbyModel_gap_0x31CC_sub_0x866C, (MObjSub**)&dKirbyModel_gap_0x31CC_sub_0x7F5C, (AObjEvent32**)&dKirbyModel_gap_0x31CC_sub_0x8B7C, NULL, 0x00 },
+	{ (Gfx*)&dKirbyModel_gap_0x31CC_sub_0x91CC, (MObjSub**)&dKirbyModel_gap_0x31CC_sub_0x8CBC, (AObjEvent32**)&dKirbyModel_gap_0x31CC_sub_0x95FC, NULL, 0x00 },
+	{ (Gfx*)&dKirbyModel_gap_0x31CC_sub_0x9FEC, (MObjSub**)&dKirbyModel_gap_0x31CC_sub_0x973C, (AObjEvent32**)&dKirbyModel_gap_0x31CC_sub_0xA638, NULL, 0x00 },
+	{ (Gfx*)&dKirbyModel_gap_0x31CC_sub_0xAEEC, (MObjSub**)&dKirbyModel_gap_0x31CC_sub_0x973C, (AObjEvent32**)&dKirbyModel_gap_0x31CC_sub_0xA638, NULL, 0x00 },
+	{ (Gfx*)&dKirbyModel_gap_0x31CC_sub_0xBE6C, (MObjSub**)&dKirbyModel_gap_0x31CC_sub_0xB64C, (AObjEvent32**)&dKirbyModel_gap_0x31CC_sub_0xC4DC, NULL, 0x00 },
+	{ (Gfx*)&dKirbyModel_gap_0x31CC_sub_0xCC4C, (MObjSub**)&dKirbyModel_gap_0x31CC_sub_0xC61C, (AObjEvent32**)&dKirbyModel_gap_0x31CC_sub_0xD23C, NULL, 0x00 },
+	{ (Gfx*)&dKirbyModel_gap_0x31CC_sub_0xD93C, (MObjSub**)&dKirbyModel_gap_0x31CC_sub_0xD37C, (AObjEvent32**)&dKirbyModel_gap_0x31CC_sub_0xDDBC, NULL, 0x00 },
+	{ (Gfx*)&dKirbyModel_gap_0x31CC_sub_0xE3FC, (MObjSub**)&dKirbyModel_gap_0x31CC_sub_0xDEFC, (AObjEvent32**)&dKirbyModel_gap_0x31CC_sub_0xE82C, NULL, 0x00 },
+	{ (Gfx*)&dKirbyModel_gap_0x31CC_sub_0xEF3C, (MObjSub**)&dKirbyModel_gap_0x31CC_sub_0xE96C, (AObjEvent32**)&dKirbyModel_gap_0x31CC_sub_0xF40C, NULL, 0x00 },
+	{ (Gfx*)&dKirbyModel_gap_0x31CC_sub_0xFA3C, (MObjSub**)&dKirbyModel_gap_0x31CC_sub_0xF54C, (AObjEvent32**)&dKirbyModel_gap_0x31CC_sub_0xFE9C, NULL, 0x00 },
+	{ (Gfx*)&dKirbyModel_gap_0x31CC_sub_0x105AC, (MObjSub**)&dKirbyModel_gap_0x31CC_sub_0xFFDC, (AObjEvent32**)&dKirbyModel_gap_0x31CC_sub_0x10A7C, NULL, 0x00 },
+	{ (Gfx*)&dKirbyModel_gap_0x31CC_sub_0x110AC, (MObjSub**)&dKirbyModel_gap_0x31CC_sub_0x10BBC, (AObjEvent32**)&dKirbyModel_gap_0x31CC_sub_0x1150C, NULL, 0x00 },
+	{ (Gfx*)&dKirbyModel_gap_0x31CC_sub_0x11BCC, (MObjSub**)&dKirbyModel_gap_0x31CC_sub_0x1164C, (AObjEvent32**)&dKirbyModel_gap_0x31CC_sub_0x1205C, NULL, 0x00 },
+	{ (Gfx*)&dKirbyModel_gap_0x31CC_sub_0x1263C, (MObjSub**)&dKirbyModel_gap_0x31CC_sub_0x1219C, (AObjEvent32**)&dKirbyModel_gap_0x31CC_sub_0x12A7C, NULL, 0x00 },
+	{ (Gfx*)&dKirbyModel_gap_0x31CC_sub_0x1328C, (MObjSub**)&dKirbyModel_gap_0x31CC_sub_0x12B7C, (AObjEvent32**)&dKirbyModel_gap_0x31CC_sub_0x13A14, NULL, 0x00 },
+	{ (Gfx*)&dKirbyModel_gap_0x31CC_sub_0x1405C, (MObjSub**)&dKirbyModel_gap_0x31CC_sub_0x13B1C, (AObjEvent32**)&dKirbyModel_gap_0x31CC_sub_0x14634, NULL, 0x00 },
 };
 
 /* @ 0x0324, 40 bytes: FTAttributes.sub_0x324 target (was dKirbyMain_pre+0x324) */
-u32 dKirbyMain_sub_0x324[10] = {
-	(u32)&dKirbyModel_gap_0x31CC_sub_0xED4, /* extern -> 0x40A0 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x8E4, /* extern -> 0x3AB0 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x1198, /* extern -> 0x4364 */
-	0x00000000,
-	0x00000000,
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x1694, /* extern -> 0x4860 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x12A4, /* extern -> 0x4470 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x1944, /* extern -> 0x4B10 */
-	0x00000000,
-	0x00000000,
+FTModelPart dKirbyMain_modelparts_desc_0x324[2] = {
+	{ (Gfx*)&dKirbyModel_gap_0x31CC_sub_0xED4, (MObjSub**)&dKirbyModel_gap_0x31CC_sub_0x8E4, (AObjEvent32**)&dKirbyModel_gap_0x31CC_sub_0x1198, NULL, 0x00 },
+	{ (Gfx*)&dKirbyModel_gap_0x31CC_sub_0x1694, (MObjSub**)&dKirbyModel_gap_0x31CC_sub_0x12A4, (AObjEvent32**)&dKirbyModel_gap_0x31CC_sub_0x1944, NULL, 0x00 },
 };
 
 /* @ 0x034C, 40 bytes: FTAttributes.sub_0x34C target (was dKirbyMain_pre+0x34C) */
-u32 dKirbyMain_sub_0x34C[10] = {
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x41C, /* extern -> 0x35E8 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x394, /* extern -> 0x3560 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x568, /* extern -> 0x3734 */
-	0x00000000,
-	0x00000000,
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x68C, /* extern -> 0x3858 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x604, /* extern -> 0x37D0 */
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x7D8, /* extern -> 0x39A4 */
-	0x00000000,
-	0x00000000,
+FTModelPart dKirbyMain_modelparts_desc_0x34C[2] = {
+	{ (Gfx*)&dKirbyModel_gap_0x31CC_sub_0x41C, (MObjSub**)&dKirbyModel_gap_0x31CC_sub_0x394, (AObjEvent32**)&dKirbyModel_gap_0x31CC_sub_0x568, NULL, 0x00 },
+	{ (Gfx*)&dKirbyModel_gap_0x31CC_sub_0x68C, (MObjSub**)&dKirbyModel_gap_0x31CC_sub_0x604, (AObjEvent32**)&dKirbyModel_gap_0x31CC_sub_0x7D8, NULL, 0x00 },
 };
 
 /* @ 0x0374, 40 bytes: FTAttributes.sub_0x374 target (was dKirbyMain_pre+0x374) */
-u32 dKirbyMain_sub_0x374[10] = {
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x14684, /* extern -> 0x17850 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dKirbyModel_gap_0x31CC_sub_0x14684, /* extern -> 0x17850 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
+FTModelPart dKirbyMain_modelparts_desc_0x374[2] = {
+	{ (Gfx*)&dKirbyModel_gap_0x31CC_sub_0x14684, NULL, NULL, NULL, 0x00 },
+	{ (Gfx*)&dKirbyModel_gap_0x31CC_sub_0x14684, NULL, NULL, NULL, 0x00 },
 };
 
 /* @ 0x039C, 40 bytes: FTAttributes.sub_0x39C target (was dKirbyMain_pre+0x39C) */
-u32 dKirbyMain_sub_0x39C[10] = {
-	(u32)&dLinkBoomerangModel_Joint_0x00F8_DisplayList, /* extern -> 0x00F8 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dLinkBoomerangModel_Joint_0x00F8_DisplayList, /* extern -> 0x00F8 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
+FTModelPart dKirbyMain_modelparts_desc_0x39C[2] = {
+	{ (Gfx*)&dLinkBoomerangModel_Joint_0x00F8_DisplayList, NULL, NULL, NULL, 0x00 },
+	{ (Gfx*)&dLinkBoomerangModel_Joint_0x00F8_DisplayList, NULL, NULL, NULL, 0x00 },
 };
 
 /* @ 0x03C4, 40 bytes: FTAttributes.sub_0x3C4 target (was dKirbyMain_pre+0x3C4) */
-u32 dKirbyMain_sub_0x3C4[10] = {
-	(u32)((u8*)dFoxUnknown + 0x3F0), /* extern -> 0x03F0 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)((u8*)dFoxUnknown + 0x3F0), /* extern -> 0x03F0 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
+FTModelPart dKirbyMain_modelparts_desc_0x3C4[2] = {
+	{ (Gfx*)((u8*)dFoxUnknown + 0x3F0), NULL, NULL, NULL, 0x00 },
+	{ (Gfx*)((u8*)dFoxUnknown + 0x3F0), NULL, NULL, NULL, 0x00 },
 };
 
 /* @ 0x03EC, 108 bytes: FTAttributes.modelparts_container target (was dKirbyMain_pre+0x3EC) */
-u32 dKirbyMain_modelparts_container[27] = {
-	0x00000000,
-	0x00000000,
-	(u32)dKirbyMain_sub_0x0CC, /* intern -> 0x00CC */
-	(u32)dKirbyMain_sub_0x324, /* intern -> 0x0324 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)dKirbyMain_sub_0x39C, /* intern -> 0x039C */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)dKirbyMain_sub_0x3C4, /* intern -> 0x03C4 */
-	(u32)dKirbyMain_sub_0x374, /* intern -> 0x0374 */
-	(u32)dKirbyMain_sub_0x34C, /* intern -> 0x034C */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
+FTModelPartDesc *dKirbyMain_modelparts_container[27] = {
+	NULL, NULL, (FTModelPartDesc*)dKirbyMain_modelparts_desc_0x0CC, (FTModelPartDesc*)dKirbyMain_modelparts_desc_0x324, NULL, NULL,
+	NULL, NULL, (FTModelPartDesc*)dKirbyMain_modelparts_desc_0x39C, NULL, NULL, NULL,
+	NULL, (FTModelPartDesc*)dKirbyMain_modelparts_desc_0x3C4, (FTModelPartDesc*)dKirbyMain_modelparts_desc_0x374, (FTModelPartDesc*)dKirbyMain_modelparts_desc_0x34C, NULL, NULL,
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	NULL, NULL, NULL,
 };
 
 /* @ 0x0458, 4 bytes: FTAttributes.textureparts_container target (was dKirbyMain_pre+0x458) */
@@ -459,201 +253,116 @@ u32 dKirbyMain_textureparts_container[1] = {
 };
 
 /* @ 0x045C, 32 bytes: FTAttributes.commonparts_container target (was dKirbyMain_pre+0x45C) */
-u32 dKirbyMain_commonparts_container[8] = {
-	(u32)&dKirbyModel_JointTree, /* extern -> 0x1448 */
-	(u32)&dKirbyModel_JointVerts_Vtx, /* extern -> 0x0000 */
-	(u32)((u8*)dKirbyModel_JointTree + 0x4D8), /* extern -> 0x1920 */
-	0x00000000,
-	(u32)&dKirbyModel_JointTree_0x2CD0, /* extern -> 0x2CD0 */
-	(u32)&dKirbyModel_gap_0x1970_sub_0x2C0, /* extern -> 0x1C30 */
-	(u32)((u8*)dKirbyModel_JointTree_0x2CD0 + 0x4D0), /* extern -> 0x31A0 */
-	0x00000000,
+FTCommonPartContainer dKirbyMain_commonparts_container = {
+	{
+		{ (DObjDesc*)&dKirbyModel_JointTree, (MObjSub***)&dKirbyModel_JointVerts_Vtx, (AObjEvent32***)((u8*)dKirbyModel_JointTree + 0x4D8), 0x00 },
+		{ (DObjDesc*)&dKirbyModel_JointTree_0x2CD0, (MObjSub***)&dKirbyModel_gap_0x1970_sub_0x2C0, (AObjEvent32***)((u8*)dKirbyModel_JointTree_0x2CD0 + 0x4D0), 0x00 },
+	},
 };
 
 /* @ 0x047C, 432 bytes: FTAttributes.thrown_status target (was dKirbyMain_pre+0x47C) */
-u32 dKirbyMain_thrown_status[108] = {
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
+FTThrownStatus dKirbyMain_thrown_status[54] = {
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
 };
 
 /* @ 0x062C, 20 bytes: FTAttributes.sub_0x62C target (was dKirbyMain_pre+0x62C) */
-u32 dKirbyMain_sub_0x62C[5] = {
-	(u32)&dKirbyModel_palette_0x1D510, /* extern -> 0x1D510 */
-	(u32)&dKirbyModel_gap_0x1D530_sub_0x8, /* extern -> 0x1D538 */
-	(u32)&dKirbyModel_gap_0x1D530_sub_0x30, /* extern -> 0x1D560 */
-	(u32)&dKirbyModel_gap_0x1D530_sub_0x58, /* extern -> 0x1D588 */
-	(u32)&dKirbyModel_gap_0x1D530_sub_0x80, /* extern -> 0x1D5B0 */
+int *dKirbyMain_stock_luts[5] = {
+	(int*)&dKirbyModel_palette_0x1D510,
+	(int*)&dKirbyModel_gap_0x1D530_sub_0x8,
+	(int*)&dKirbyModel_gap_0x1D530_sub_0x30,
+	(int*)&dKirbyModel_gap_0x1D530_sub_0x58,
+	(int*)&dKirbyModel_gap_0x1D530_sub_0x80,
 };
 
 /* @ 0x0640, 12 bytes: FTAttributes.sprites target (was dKirbyMain_pre+0x640) */
-u32 dKirbyMain_sprites[3] = {
-	(u32)((u8*)dKirbyModel_gap_0x1D530_sub_0x80 + 0x30), /* extern -> 0x1D5E0 */
-	(u32)dKirbyMain_sub_0x62C, /* intern -> 0x062C */
-	(u32)((u8*)dKirbyModel_gap_0x1D530_sub_0x80 + 0x228), /* extern -> 0x1D7D8 */
+FTSprites dKirbyMain_sprites = {
+	(Sprite*)((u8*)dKirbyModel_gap_0x1D530_sub_0x80 + 0x30), /* stock_sprite */
+	(int**)dKirbyMain_stock_luts, /* stock_luts */
+	(Sprite*)((u8*)dKirbyModel_gap_0x1D530_sub_0x80 + 0x228), /* emblem */
 };
 
 /* @ 0x064C, 216 bytes: FTAttributes.sub_0x64C target (was dKirbyMain_pre+0x64C) */
-u32 dKirbyMain_sub_0x64C[54] = {
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dKirbyModel_Joint_0x198F8_DisplayList, /* extern -> 0x198F8 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dKirbyModel_Joint_0x19B38_DisplayList, /* extern -> 0x19B38 */
-	0x00000000,
-	(u32)&dKirbyModel_Joint_0x19BC0_DisplayList, /* extern -> 0x19BC0 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dKirbyModel_Joint_0x19C68_DisplayList, /* extern -> 0x19C68 */
-	0x00000000,
-	(u32)&dKirbyModel_Joint_0x19D10_DisplayList, /* extern -> 0x19D10 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dKirbyModel_Joint_0x19DB8_DisplayList, /* extern -> 0x19DB8 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dKirbyModel_Joint_0x19E60_DisplayList, /* extern -> 0x19E60 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
+FTSkeleton dKirbyMain_skeleton_dls[27] = {
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dKirbyModel_Joint_0x198F8_DisplayList }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dKirbyModel_Joint_0x19B38_DisplayList }, 0 },
+	{ { (Gfx*)&dKirbyModel_Joint_0x19BC0_DisplayList }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dKirbyModel_Joint_0x19C68_DisplayList }, 0 },
+	{ { (Gfx*)&dKirbyModel_Joint_0x19D10_DisplayList }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dKirbyModel_Joint_0x19DB8_DisplayList }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dKirbyModel_Joint_0x19E60_DisplayList }, 0 },
+	{ { NULL }, 0 },
 };
 
 /* @ 0x0724, 216 bytes: FTAttributes.sub_0x724 target (was dKirbyMain_pre+0x724) */
@@ -715,10 +424,10 @@ u32 dKirbyMain_sub_0x724[54] = {
 };
 
 /* @ 0x07FC, 12 bytes: FTAttributes.skeleton target (was dKirbyMain_pre+0x7FC) */
-u32 dKirbyMain_skeleton[3] = {
-	0x0000000A,
-	(u32)dKirbyMain_sub_0x64C, /* intern -> 0x064C */
-	(u32)dKirbyMain_sub_0x724, /* intern -> 0x0724 */
+FTSkeleton *dKirbyMain_skeleton[3] = {
+	(FTSkeleton*)10,
+	dKirbyMain_skeleton_dls,
+	dKirbyMain_sub_0x724,
 };
 
 FTAttributes dKirbyMain_attr = {
@@ -817,7 +526,7 @@ FTAttributes dKirbyMain_attr = {
 	{ FALSE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	0, /* unused_0x2CC */
 	(FTHiddenPart*)dKirbyMain_hiddenparts, /* hiddenparts */
-	(FTCommonPartContainer*)dKirbyMain_commonparts_container, /* commonparts_container */
+	&dKirbyMain_commonparts_container, /* commonparts_container */
 	NULL, /* dobj_lookup */
 	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
 	25, /* joint_rfoot_id */
@@ -834,6 +543,6 @@ FTAttributes dKirbyMain_attr = {
 	30, /* joint_itemheavy_id */
 	(FTThrownStatusArray*)dKirbyMain_thrown_status, /* thrown_status */
 	17, /* joint_itemlight_id */
-	(FTSprites*)dKirbyMain_sprites, /* sprites */
+	&dKirbyMain_sprites, /* sprites */
 	(FTSkeleton**)dKirbyMain_skeleton, /* skeleton */
 };

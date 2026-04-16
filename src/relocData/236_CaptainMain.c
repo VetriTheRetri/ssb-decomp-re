@@ -85,121 +85,40 @@ u32 dCaptainMain_setup_parts[2] = {
 };
 
 /* @ 0x001C, 64 bytes: FTAttributes.hiddenparts target (was dCaptainMain_pre+0x1C) */
-u32 dCaptainMain_hiddenparts[16] = {
-	0x00000002,
-	0x00000000,
-	0x00000001,
-	0x00000003,
-	0x00000001,
-	0x00000000,
-	0x00000000,
-	0x00000003,
-	0x00000003,
-	0x00000002,
-	0x00000001,
-	0x00000000,
-	0x0000001D,
-	0x00000004,
-	0x00000001,
-	0x00000000,
+FTHiddenPart dCaptainMain_hiddenparts[4] = {
+	{ 0x00000002, 0x00000000, 0x00000001, 0x00000003 },
+	{ 0x00000001, 0x00000000, 0x00000000, 0x00000003 },
+	{ 0x00000003, 0x00000002, 0x00000001, 0x00000000 },
+	{ 0x0000001D, 0x00000004, 0x00000001, 0x00000000 },
 };
 
 /* @ 0x005C, 120 bytes: FTAttributes.sub_0x05C target (was dCaptainMain_pre+0x5C) */
-u32 dCaptainMain_sub_0x05C[30] = {
-	(u32)&dCaptainModel_Joint_0x2A98_DisplayList, /* extern -> 0x2A98 */
-	(u32)((u8*)dCaptainModel_gap_0x0000_sub_0x18 + 0x11F4), /* extern -> 0x120C */
-	(u32)&dCaptainModel_gap_0x40B0_sub_0x784, /* extern -> 0x4834 */
-	0x00000000,
-	0x00000000,
-	(u32)&dCaptainModel_Joint_0x6AF0_DisplayList, /* extern -> 0x6AF0 */
-	(u32)&dCaptainModel_gap_0x40B0_sub_0x17A4, /* extern -> 0x5854 */
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0x694, /* extern -> 0x8464 */
-	0x00000000,
-	0x00000000,
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0x16D8, /* extern -> 0x94A8 */
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0x15B8, /* extern -> 0x9388 */
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0x18E4, /* extern -> 0x96B4 */
-	0x00000000,
-	0x00000000,
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0x1A30, /* extern -> 0x9800 */
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0x1988, /* extern -> 0x9758 */
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0x1B7C, /* extern -> 0x994C */
-	0x00000000,
-	0x00000000,
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0x1DB8, /* extern -> 0x9B88 */
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0x1CA8, /* extern -> 0x9A78 */
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0x1FD4, /* extern -> 0x9DA4 */
-	0x00000000,
-	0x00000000,
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0x2100, /* extern -> 0x9ED0 */
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0x2078, /* extern -> 0x9E48 */
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0x223C, /* extern -> 0xA00C */
-	0x00000000,
-	0x00000000,
+FTModelPart dCaptainMain_modelparts_desc_0x05C[6] = {
+	{ (Gfx*)&dCaptainModel_Joint_0x2A98_DisplayList, (MObjSub**)((u8*)dCaptainModel_gap_0x0000_sub_0x18 + 0x11F4), (AObjEvent32**)&dCaptainModel_gap_0x40B0_sub_0x784, NULL, 0x00 },
+	{ (Gfx*)&dCaptainModel_Joint_0x6AF0_DisplayList, (MObjSub**)&dCaptainModel_gap_0x40B0_sub_0x17A4, (AObjEvent32**)&dCaptainModel_gap_0x7DD0_sub_0x694, NULL, 0x00 },
+	{ (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0x16D8, (MObjSub**)&dCaptainModel_gap_0x7DD0_sub_0x15B8, (AObjEvent32**)&dCaptainModel_gap_0x7DD0_sub_0x18E4, NULL, 0x00 },
+	{ (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0x1A30, (MObjSub**)&dCaptainModel_gap_0x7DD0_sub_0x1988, (AObjEvent32**)&dCaptainModel_gap_0x7DD0_sub_0x1B7C, NULL, 0x00 },
+	{ (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0x1DB8, (MObjSub**)&dCaptainModel_gap_0x7DD0_sub_0x1CA8, (AObjEvent32**)&dCaptainModel_gap_0x7DD0_sub_0x1FD4, NULL, 0x00 },
+	{ (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0x2100, (MObjSub**)&dCaptainModel_gap_0x7DD0_sub_0x2078, (AObjEvent32**)&dCaptainModel_gap_0x7DD0_sub_0x223C, NULL, 0x00 },
 };
 
 /* @ 0x00D4, 120 bytes: FTAttributes.sub_0x0D4 target (was dCaptainMain_pre+0xD4) */
-u32 dCaptainMain_sub_0x0D4[30] = {
-	(u32)&dCaptainModel_Joint_0x3308_DisplayList, /* extern -> 0x3308 */
-	(u32)((u8*)dCaptainModel_gap_0x0000_sub_0x18 + 0x1230), /* extern -> 0x1248 */
-	(u32)&dCaptainModel_gap_0x40B0_sub_0x7B0, /* extern -> 0x4860 */
-	0x00000000,
-	0x00000000,
-	(u32)&dCaptainModel_Joint_0x7148_DisplayList, /* extern -> 0x7148 */
-	(u32)&dCaptainModel_gap_0x40B0_sub_0x17D4, /* extern -> 0x5884 */
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0x6B4, /* extern -> 0x8484 */
-	0x00000000,
-	0x00000000,
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0x928, /* extern -> 0x86F8 */
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0x808, /* extern -> 0x85D8 */
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0xB34, /* extern -> 0x8904 */
-	0x00000000,
-	0x00000000,
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0xC80, /* extern -> 0x8A50 */
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0xBD8, /* extern -> 0x89A8 */
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0xDCC, /* extern -> 0x8B9C */
-	0x00000000,
-	0x00000000,
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0x1008, /* extern -> 0x8DD8 */
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0xEF8, /* extern -> 0x8CC8 */
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0x1224, /* extern -> 0x8FF4 */
-	0x00000000,
-	0x00000000,
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0x1350, /* extern -> 0x9120 */
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0x12C8, /* extern -> 0x9098 */
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0x148C, /* extern -> 0x925C */
-	0x00000000,
-	0x00000000,
+FTModelPart dCaptainMain_modelparts_desc_0x0D4[6] = {
+	{ (Gfx*)&dCaptainModel_Joint_0x3308_DisplayList, (MObjSub**)((u8*)dCaptainModel_gap_0x0000_sub_0x18 + 0x1230), (AObjEvent32**)&dCaptainModel_gap_0x40B0_sub_0x7B0, NULL, 0x00 },
+	{ (Gfx*)&dCaptainModel_Joint_0x7148_DisplayList, (MObjSub**)&dCaptainModel_gap_0x40B0_sub_0x17D4, (AObjEvent32**)&dCaptainModel_gap_0x7DD0_sub_0x6B4, NULL, 0x00 },
+	{ (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0x928, (MObjSub**)&dCaptainModel_gap_0x7DD0_sub_0x808, (AObjEvent32**)&dCaptainModel_gap_0x7DD0_sub_0xB34, NULL, 0x00 },
+	{ (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0xC80, (MObjSub**)&dCaptainModel_gap_0x7DD0_sub_0xBD8, (AObjEvent32**)&dCaptainModel_gap_0x7DD0_sub_0xDCC, NULL, 0x00 },
+	{ (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0x1008, (MObjSub**)&dCaptainModel_gap_0x7DD0_sub_0xEF8, (AObjEvent32**)&dCaptainModel_gap_0x7DD0_sub_0x1224, NULL, 0x00 },
+	{ (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0x1350, (MObjSub**)&dCaptainModel_gap_0x7DD0_sub_0x12C8, (AObjEvent32**)&dCaptainModel_gap_0x7DD0_sub_0x148C, NULL, 0x00 },
 };
 
 /* @ 0x014C, 104 bytes: FTAttributes.modelparts_container target (was dCaptainMain_pre+0x14C) */
-u32 dCaptainMain_modelparts_container[26] = {
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)dCaptainMain_sub_0x05C, /* intern -> 0x005C */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)dCaptainMain_sub_0x0D4, /* intern -> 0x00D4 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
+FTModelPartDesc *dCaptainMain_modelparts_container[26] = {
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	(FTModelPartDesc*)dCaptainMain_modelparts_desc_0x05C, NULL, NULL, NULL, NULL, NULL,
+	(FTModelPartDesc*)dCaptainMain_modelparts_desc_0x0D4, NULL, NULL, NULL, NULL, NULL,
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	NULL, NULL,
 };
 
 /* @ 0x01B4, 4 bytes: FTAttributes.textureparts_container target (was dCaptainMain_pre+0x1B4) */
@@ -208,207 +127,123 @@ u32 dCaptainMain_textureparts_container[1] = {
 };
 
 /* @ 0x01B8, 32 bytes: FTAttributes.commonparts_container target (was dCaptainMain_pre+0x1B8) */
-u32 dCaptainMain_commonparts_container[8] = {
-	(u32)&dCaptainModel_JointTree, /* extern -> 0x3BE0 */
-	(u32)&dCaptainModel_gap_0x0000, /* extern -> 0x0000 */
-	(u32)((u8*)dCaptainModel_JointTree + 0x4B0), /* extern -> 0x4090 */
-	0x00000000,
-	(u32)&dCaptainModel_JointTree_0x7900, /* extern -> 0x7900 */
-	(u32)&dCaptainModel_gap_0x40B0_sub_0x7E0, /* extern -> 0x4890 */
-	(u32)((u8*)dCaptainModel_JointTree_0x7900 + 0x4B0), /* extern -> 0x7DB0 */
-	0x00000000,
+FTCommonPartContainer dCaptainMain_commonparts_container = {
+	{
+		{ (DObjDesc*)&dCaptainModel_JointTree, (MObjSub***)&dCaptainModel_gap_0x0000, (AObjEvent32***)((u8*)dCaptainModel_JointTree + 0x4B0), 0x00 },
+		{ (DObjDesc*)&dCaptainModel_JointTree_0x7900, (MObjSub***)&dCaptainModel_gap_0x40B0_sub_0x7E0, (AObjEvent32***)((u8*)dCaptainModel_JointTree_0x7900 + 0x4B0), 0x00 },
+	},
 };
 
 /* @ 0x01D8, 432 bytes: FTAttributes.thrown_status target (was dCaptainMain_pre+0x1D8) */
-u32 dCaptainMain_thrown_status[108] = {
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
+FTThrownStatus dCaptainMain_thrown_status[54] = {
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
 };
 
 /* @ 0x0388, 24 bytes: FTAttributes.sub_0x388 target (was dCaptainMain_pre+0x388) */
-u32 dCaptainMain_sub_0x388[6] = {
-	(u32)&dCaptainModel_palette_0xC5B0, /* extern -> 0xC5B0 */
-	(u32)&dCaptainModel_gap_0xC5D0_sub_0x8, /* extern -> 0xC5D8 */
-	(u32)&dCaptainModel_gap_0xC5D0_sub_0x30, /* extern -> 0xC600 */
-	(u32)&dCaptainModel_gap_0xC5D0_sub_0x58, /* extern -> 0xC628 */
-	(u32)&dCaptainModel_gap_0xC5D0_sub_0x80, /* extern -> 0xC650 */
-	(u32)&dCaptainModel_gap_0xC5D0_sub_0xA8, /* extern -> 0xC678 */
+int *dCaptainMain_stock_luts[6] = {
+	(int*)&dCaptainModel_palette_0xC5B0,
+	(int*)&dCaptainModel_gap_0xC5D0_sub_0x8,
+	(int*)&dCaptainModel_gap_0xC5D0_sub_0x30,
+	(int*)&dCaptainModel_gap_0xC5D0_sub_0x58,
+	(int*)&dCaptainModel_gap_0xC5D0_sub_0x80,
+	(int*)&dCaptainModel_gap_0xC5D0_sub_0xA8,
 };
 
 /* @ 0x03A0, 12 bytes: FTAttributes.sprites target (was dCaptainMain_pre+0x3A0) */
-u32 dCaptainMain_sprites[3] = {
-	(u32)((u8*)dCaptainModel_gap_0xC5D0_sub_0xA8 + 0x30), /* extern -> 0xC6A8 */
-	(u32)dCaptainMain_sub_0x388, /* intern -> 0x0388 */
-	(u32)((u8*)dCaptainModel_gap_0xC5D0_sub_0xA8 + 0x1D0), /* extern -> 0xC848 */
+FTSprites dCaptainMain_sprites = {
+	(Sprite*)((u8*)dCaptainModel_gap_0xC5D0_sub_0xA8 + 0x30), /* stock_sprite */
+	(int**)dCaptainMain_stock_luts, /* stock_luts */
+	(Sprite*)((u8*)dCaptainModel_gap_0xC5D0_sub_0xA8 + 0x1D0), /* emblem */
 };
 
 /* @ 0x03AC, 208 bytes: FTAttributes.sub_0x3AC target (was dCaptainMain_pre+0x3AC) */
-u32 dCaptainMain_sub_0x3AC[52] = {
-	0x00000000,
-	0x00000000,
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0x22C0, /* extern -> 0xA090 */
-	0x00000000,
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0x2390, /* extern -> 0xA160 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0x28C0, /* extern -> 0xA690 */
-	0x00000000,
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0x27B0, /* extern -> 0xA580 */
-	0x00000000,
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0x2B30, /* extern -> 0xA900 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0x25C0, /* extern -> 0xA390 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0x2A30, /* extern -> 0xA800 */
-	0x00000000,
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0x27B0, /* extern -> 0xA580 */
-	0x00000000,
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0x2C30, /* extern -> 0xAA00 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0x2D50, /* extern -> 0xAB20 */
-	0x00000000,
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0x2E60, /* extern -> 0xAC30 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0x2F40, /* extern -> 0xAD10 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0x2D50, /* extern -> 0xAB20 */
-	0x00000000,
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0x2E60, /* extern -> 0xAC30 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dCaptainModel_gap_0x7DD0_sub_0x2F40, /* extern -> 0xAD10 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
+FTSkeleton dCaptainMain_skeleton_dls[26] = {
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0x22C0 }, 0 },
+	{ { (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0x2390 }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0x28C0 }, 0 },
+	{ { (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0x27B0 }, 0 },
+	{ { (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0x2B30 }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0x25C0 }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0x2A30 }, 0 },
+	{ { (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0x27B0 }, 0 },
+	{ { (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0x2C30 }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0x2D50 }, 0 },
+	{ { (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0x2E60 }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0x2F40 }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0x2D50 }, 0 },
+	{ { (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0x2E60 }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dCaptainModel_gap_0x7DD0_sub_0x2F40 }, 0 },
+	{ { NULL }, 0 },
 };
 
 /* @ 0x047C, 12 bytes: FTAttributes.skeleton target (was dCaptainMain_pre+0x47C) */
-u32 dCaptainMain_skeleton[3] = {
-	0x0000000C,
-	(u32)dCaptainMain_sub_0x3AC, /* intern -> 0x03AC */
-	0x00000000,
+FTSkeleton *dCaptainMain_skeleton[3] = {
+	(FTSkeleton*)12,
+	dCaptainMain_skeleton_dls,
+	NULL,
 };
 
 FTAttributes dCaptainMain_attr = {
@@ -527,7 +362,7 @@ FTAttributes dCaptainMain_attr = {
 	{ FALSE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	0, /* unused_0x2CC */
 	(FTHiddenPart*)dCaptainMain_hiddenparts, /* hiddenparts */
-	(FTCommonPartContainer*)dCaptainMain_commonparts_container, /* commonparts_container */
+	&dCaptainMain_commonparts_container, /* commonparts_container */
 	NULL, /* dobj_lookup */
 	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
 	24, /* joint_rfoot_id */
@@ -544,6 +379,6 @@ FTAttributes dCaptainMain_attr = {
 	29, /* joint_itemheavy_id */
 	(FTThrownStatusArray*)dCaptainMain_thrown_status, /* thrown_status */
 	17, /* joint_itemlight_id */
-	(FTSprites*)dCaptainMain_sprites, /* sprites */
+	&dCaptainMain_sprites, /* sprites */
 	(FTSkeleton**)dCaptainMain_skeleton, /* skeleton */
 };

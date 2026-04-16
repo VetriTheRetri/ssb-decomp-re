@@ -2,13 +2,13 @@
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
 extern dNSamusMain_file_handles 0x84 # -> file 216 (SamusMainMotion)
-extern dNSamusMain_sub_0x0E4 0x1C00 # -> file 309 (NSamusModel)
-extern dNSamusMain_sub_0x0E4+0x14 0x1C00 # -> file 309 (NSamusModel)
-extern dNSamusMain_sub_0x0E4+0x28 0x3BF0 # -> file 309 (NSamusModel)
-extern dNSamusMain_sub_0x0E4+0x3C 0x3BF0 # -> file 309 (NSamusModel)
-extern dNSamusMain_sub_0x0E4+0x50 0x4960 # -> file 309 (NSamusModel)
-extern dNSamusMain_sub_0x0E4+0x64 0x4960 # -> file 309 (NSamusModel)
-intern dNSamusMain_modelparts_container+0x8 dNSamusMain_sub_0x0E4
+extern dNSamusMain_modelparts_desc_0x0E4 0x1C00 # -> file 309 (NSamusModel)
+extern dNSamusMain_modelparts_desc_0x0E4+0x14 0x1C00 # -> file 309 (NSamusModel)
+extern dNSamusMain_modelparts_desc_0x0E4+0x28 0x3BF0 # -> file 309 (NSamusModel)
+extern dNSamusMain_modelparts_desc_0x0E4+0x3C 0x3BF0 # -> file 309 (NSamusModel)
+extern dNSamusMain_modelparts_desc_0x0E4+0x50 0x4960 # -> file 309 (NSamusModel)
+extern dNSamusMain_modelparts_desc_0x0E4+0x64 0x4960 # -> file 309 (NSamusModel)
+intern dNSamusMain_modelparts_container+0x8 dNSamusMain_modelparts_desc_0x0E4
 extern dNSamusMain_commonparts_container 0x2A10 # -> file 309 (NSamusModel)
 extern dNSamusMain_commonparts_container+0x10 0x2A10 # -> file 309 (NSamusModel)
 extern dNSamusMain_sprites+0x8 0x2B8 # -> file 345 (MasterHandIcon)

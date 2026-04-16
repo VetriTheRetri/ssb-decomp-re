@@ -27,52 +27,20 @@ u32 dNLuigiMain_setup_parts[2] = {
 };
 
 /* @ 0x0014, 64 bytes: FTAttributes.hiddenparts target (was dNLuigiMain_pre+0x14) */
-u32 dNLuigiMain_hiddenparts[16] = {
-	0x00000002,
-	0x00000000,
-	0x00000001,
-	0x00000003,
-	0x00000001,
-	0x00000000,
-	0x00000000,
-	0x00000003,
-	0x00000003,
-	0x00000002,
-	0x00000001,
-	0x00000000,
-	0x0000001C,
-	0x00000004,
-	0x00000001,
-	0x00000000,
+FTHiddenPart dNLuigiMain_hiddenparts[4] = {
+	{ 0x00000002, 0x00000000, 0x00000001, 0x00000003 },
+	{ 0x00000001, 0x00000000, 0x00000000, 0x00000003 },
+	{ 0x00000003, 0x00000002, 0x00000001, 0x00000000 },
+	{ 0x0000001C, 0x00000004, 0x00000001, 0x00000000 },
 };
 
 /* @ 0x0054, 100 bytes: FTAttributes.modelparts_container target (was dNLuigiMain_pre+0x54) */
-u32 dNLuigiMain_modelparts_container[25] = {
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
+FTModelPartDesc *dNLuigiMain_modelparts_container[25] = {
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	NULL,
 };
 
 /* @ 0x00B8, 4 bytes: FTAttributes.textureparts_container target (was dNLuigiMain_pre+0xB8) */
@@ -81,134 +49,76 @@ u32 dNLuigiMain_textureparts_container[1] = {
 };
 
 /* @ 0x00BC, 32 bytes: FTAttributes.commonparts_container target (was dNLuigiMain_pre+0xBC) */
-u32 dNLuigiMain_commonparts_container[8] = {
-	(u32)&dNMarioModel_JointTree, /* extern -> 0x2A30 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dNMarioModel_JointTree, /* extern -> 0x2A30 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
+FTCommonPartContainer dNLuigiMain_commonparts_container = {
+	{
+		{ (DObjDesc*)&dNMarioModel_JointTree, NULL, NULL, 0x00 },
+		{ (DObjDesc*)&dNMarioModel_JointTree, NULL, NULL, 0x00 },
+	},
 };
 
 /* @ 0x00DC, 432 bytes: FTAttributes.thrown_status target (was dNLuigiMain_pre+0xDC) */
-u32 dNLuigiMain_thrown_status[108] = {
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B6,
-	0x000000B9,
+FTThrownStatus dNLuigiMain_thrown_status[54] = {
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
+	{                               -1, nFTCommonStatusThrownCommon      },
+	{ nFTCommonStatusThrownMarioBStart, nFTCommonStatusThrownMarioB      },
 };
 
 /* @ 0x028C, 12 bytes: FTAttributes.sprites target (was dNLuigiMain_pre+0x28C) */
-u32 dNLuigiMain_sprites[3] = {
-	0x00000000,
-	0x00000000,
-	0x015C00AE, /* extern -> 0x02B8 */
+FTSprites dNLuigiMain_sprites = {
+	NULL, /* stock_sprite */
+	NULL, /* stock_luts */
+	(Sprite*)0x015C00AE, /* emblem */
 };
 
 FTAttributes dNLuigiMain_attr = {
@@ -307,7 +217,7 @@ FTAttributes dNLuigiMain_attr = {
 	{ FALSE, TRUE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	0, /* unused_0x2CC */
 	(FTHiddenPart*)dNLuigiMain_hiddenparts, /* hiddenparts */
-	(FTCommonPartContainer*)dNLuigiMain_commonparts_container, /* commonparts_container */
+	&dNLuigiMain_commonparts_container, /* commonparts_container */
 	NULL, /* dobj_lookup */
 	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
 	23, /* joint_rfoot_id */
@@ -324,6 +234,6 @@ FTAttributes dNLuigiMain_attr = {
 	28, /* joint_itemheavy_id */
 	(FTThrownStatusArray*)dNLuigiMain_thrown_status, /* thrown_status */
 	17, /* joint_itemlight_id */
-	(FTSprites*)dNLuigiMain_sprites, /* sprites */
+	&dNLuigiMain_sprites, /* sprites */
 	NULL, /* skeleton */
 };

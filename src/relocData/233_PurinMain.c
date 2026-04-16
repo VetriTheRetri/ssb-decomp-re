@@ -53,53 +53,20 @@ u32 dPurinMain_setup_parts[2] = {
 };
 
 /* @ 0x0018, 64 bytes: FTAttributes.hiddenparts target (was dPurinMain_pre+0x18) */
-u32 dPurinMain_hiddenparts[16] = {
-	0x00000002,
-	0x00000000,
-	0x00000001,
-	0x00000003,
-	0x00000001,
-	0x00000000,
-	0x00000000,
-	0x00000003,
-	0x00000003,
-	0x00000002,
-	0x00000001,
-	0x00000000,
-	0x0000001D,
-	0x00000004,
-	0x00000001,
-	0x00000000,
+FTHiddenPart dPurinMain_hiddenparts[4] = {
+	{ 0x00000002, 0x00000000, 0x00000001, 0x00000003 },
+	{ 0x00000001, 0x00000000, 0x00000000, 0x00000003 },
+	{ 0x00000003, 0x00000002, 0x00000001, 0x00000000 },
+	{ 0x0000001D, 0x00000004, 0x00000001, 0x00000000 },
 };
 
 /* @ 0x0058, 104 bytes: FTAttributes.modelparts_container target (was dPurinMain_pre+0x58) */
-u32 dPurinMain_modelparts_container[26] = {
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
+FTModelPartDesc *dPurinMain_modelparts_container[26] = {
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	NULL, NULL,
 };
 
 /* @ 0x00C0, 16 bytes: FTAttributes.accesspart target (was dPurinMain_pre+0xC0) */
@@ -111,205 +78,123 @@ u32 dPurinMain_accesspart[4] = {
 };
 
 /* @ 0x00D0, 8 bytes: FTAttributes.textureparts_container target (was dPurinMain_pre+0xD0) */
-u32 dPurinMain_textureparts_container[2] = {
-	0x06000006,
-	0x01010000,
+FTTexturePartContainer dPurinMain_textureparts_container = {
+	{
+		{ 0x06, { 0x00, 0x00 } },
+		{ 0x06, { 0x01, 0x01 } },
+	},
 };
 
 /* @ 0x00D8, 32 bytes: FTAttributes.commonparts_container target (was dPurinMain_pre+0xD8) */
-u32 dPurinMain_commonparts_container[8] = {
-	(u32)&dPurinModel_JointTree, /* extern -> 0x2028 */
-	(u32)&dPurinModel_JointVerts_Vtx, /* extern -> 0x0000 */
-	(u32)((u8*)dPurinModel_JointTree + 0x4A8), /* extern -> 0x24D0 */
-	0x00000000,
-	(u32)&dPurinModel_JointTree_0x40A0, /* extern -> 0x40A0 */
-	(u32)&dPurinModel_gap_0x24F8_sub_0x3B8, /* extern -> 0x28B0 */
-	(u32)((u8*)dPurinModel_JointTree_0x40A0 + 0x4B0), /* extern -> 0x4550 */
-	0x00000000,
+FTCommonPartContainer dPurinMain_commonparts_container = {
+	{
+		{ (DObjDesc*)&dPurinModel_JointTree, (MObjSub***)&dPurinModel_JointVerts_Vtx, (AObjEvent32***)((u8*)dPurinModel_JointTree + 0x4A8), 0x00 },
+		{ (DObjDesc*)&dPurinModel_JointTree_0x40A0, (MObjSub***)&dPurinModel_gap_0x24F8_sub_0x3B8, (AObjEvent32***)((u8*)dPurinModel_JointTree_0x40A0 + 0x4B0), 0x00 },
+	},
 };
 
 /* @ 0x00F8, 432 bytes: FTAttributes.thrown_status target (was dPurinMain_pre+0xF8) */
-u32 dPurinMain_thrown_status[108] = {
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
+FTThrownStatus dPurinMain_thrown_status[54] = {
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
 };
 
 /* @ 0x02A8, 20 bytes: FTAttributes.sub_0x2A8 target (was dPurinMain_pre+0x2A8) */
-u32 dPurinMain_sub_0x2A8[5] = {
-	(u32)&dPurinModel_palette_0x7AE0, /* extern -> 0x7AE0 */
-	(u32)&dPurinModel_gap_0x7B00_sub_0x8, /* extern -> 0x7B08 */
-	(u32)&dPurinModel_gap_0x7B00_sub_0x30, /* extern -> 0x7B30 */
-	(u32)&dPurinModel_gap_0x7B00_sub_0x58, /* extern -> 0x7B58 */
-	(u32)&dPurinModel_gap_0x7B00_sub_0x80, /* extern -> 0x7B80 */
+int *dPurinMain_stock_luts[5] = {
+	(int*)&dPurinModel_palette_0x7AE0,
+	(int*)&dPurinModel_gap_0x7B00_sub_0x8,
+	(int*)&dPurinModel_gap_0x7B00_sub_0x30,
+	(int*)&dPurinModel_gap_0x7B00_sub_0x58,
+	(int*)&dPurinModel_gap_0x7B00_sub_0x80,
 };
 
 /* @ 0x02BC, 12 bytes: FTAttributes.sprites target (was dPurinMain_pre+0x2BC) */
-u32 dPurinMain_sprites[3] = {
-	(u32)((u8*)dPurinModel_gap_0x7B00_sub_0x80 + 0x30), /* extern -> 0x7BB0 */
-	(u32)dPurinMain_sub_0x2A8, /* intern -> 0x02A8 */
-	(u32)((u8*)dPurinModel_gap_0x7B00_sub_0x80 + 0x218), /* extern -> 0x7D98 */
+FTSprites dPurinMain_sprites = {
+	(Sprite*)((u8*)dPurinModel_gap_0x7B00_sub_0x80 + 0x30), /* stock_sprite */
+	(int**)dPurinMain_stock_luts, /* stock_luts */
+	(Sprite*)((u8*)dPurinModel_gap_0x7B00_sub_0x80 + 0x218), /* emblem */
 };
 
 /* @ 0x02C8, 208 bytes: FTAttributes.sub_0x2C8 target (was dPurinMain_pre+0x2C8) */
-u32 dPurinMain_sub_0x2C8[52] = {
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dPurinModel_Joint_0x54C0_DisplayList, /* extern -> 0x54C0 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dPurinModel_Joint_0x5850_DisplayList, /* extern -> 0x5850 */
-	0x00000000,
-	(u32)&dPurinModel_Joint_0x58D0_DisplayList, /* extern -> 0x58D0 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dPurinModel_Joint_0x5978_DisplayList, /* extern -> 0x5978 */
-	0x00000000,
-	(u32)&dPurinModel_Joint_0x59F8_DisplayList, /* extern -> 0x59F8 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dPurinModel_Joint_0x5AA0_DisplayList, /* extern -> 0x5AA0 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dPurinModel_Joint_0x5B28_DisplayList, /* extern -> 0x5B28 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
+FTSkeleton dPurinMain_skeleton_dls[26] = {
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dPurinModel_Joint_0x54C0_DisplayList }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dPurinModel_Joint_0x5850_DisplayList }, 0 },
+	{ { (Gfx*)&dPurinModel_Joint_0x58D0_DisplayList }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dPurinModel_Joint_0x5978_DisplayList }, 0 },
+	{ { (Gfx*)&dPurinModel_Joint_0x59F8_DisplayList }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dPurinModel_Joint_0x5AA0_DisplayList }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dPurinModel_Joint_0x5B28_DisplayList }, 0 },
+	{ { NULL }, 0 },
 };
 
 /* @ 0x0398, 208 bytes: FTAttributes.sub_0x398 target (was dPurinMain_pre+0x398) */
@@ -369,10 +254,10 @@ u32 dPurinMain_sub_0x398[52] = {
 };
 
 /* @ 0x0468, 12 bytes: FTAttributes.skeleton target (was dPurinMain_pre+0x468) */
-u32 dPurinMain_skeleton[3] = {
-	0x0000000A,
-	(u32)dPurinMain_sub_0x2C8, /* intern -> 0x02C8 */
-	(u32)dPurinMain_sub_0x398, /* intern -> 0x0398 */
+FTSkeleton *dPurinMain_skeleton[3] = {
+	(FTSkeleton*)10,
+	dPurinMain_skeleton_dls,
+	dPurinMain_sub_0x398,
 };
 
 FTAttributes dPurinMain_attr = {
@@ -471,7 +356,7 @@ FTAttributes dPurinMain_attr = {
 	{ FALSE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	0, /* unused_0x2CC */
 	(FTHiddenPart*)dPurinMain_hiddenparts, /* hiddenparts */
-	(FTCommonPartContainer*)dPurinMain_commonparts_container, /* commonparts_container */
+	&dPurinMain_commonparts_container, /* commonparts_container */
 	NULL, /* dobj_lookup */
 	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
 	24, /* joint_rfoot_id */
@@ -484,11 +369,11 @@ FTAttributes dPurinMain_attr = {
 	NULL, /* translate_scales */
 	(FTModelPartContainer*)dPurinMain_modelparts_container, /* modelparts_container */
 	(FTAccessPart*)dPurinMain_accesspart, /* accesspart */
-	(FTTexturePartContainer*)dPurinMain_textureparts_container, /* textureparts_container */
+	&dPurinMain_textureparts_container, /* textureparts_container */
 	29, /* joint_itemheavy_id */
 	(FTThrownStatusArray*)dPurinMain_thrown_status, /* thrown_status */
 	16, /* joint_itemlight_id */
-	(FTSprites*)dPurinMain_sprites, /* sprites */
+	&dPurinMain_sprites, /* sprites */
 	(FTSkeleton**)dPurinMain_skeleton, /* skeleton */
 };
 

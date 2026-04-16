@@ -78,54 +78,20 @@ u32 dPikachuMain_setup_parts[2] = {
 };
 
 /* @ 0x0084, 64 bytes: FTAttributes.hiddenparts target (was dPikachuMain_pre+0x84) */
-u32 dPikachuMain_hiddenparts[16] = {
-	0x00000002,
-	0x00000000,
-	0x00000001,
-	0x00000003,
-	0x00000001,
-	0x00000000,
-	0x00000000,
-	0x00000003,
-	0x00000003,
-	0x00000002,
-	0x00000001,
-	0x00000000,
-	0x0000001E,
-	0x00000004,
-	0x00000001,
-	0x00000000,
+FTHiddenPart dPikachuMain_hiddenparts[4] = {
+	{ 0x00000002, 0x00000000, 0x00000001, 0x00000003 },
+	{ 0x00000001, 0x00000000, 0x00000000, 0x00000003 },
+	{ 0x00000003, 0x00000002, 0x00000001, 0x00000000 },
+	{ 0x0000001E, 0x00000004, 0x00000001, 0x00000000 },
 };
 
 /* @ 0x00C4, 108 bytes: FTAttributes.modelparts_container target (was dPikachuMain_pre+0xC4) */
-u32 dPikachuMain_modelparts_container[27] = {
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
+FTModelPartDesc *dPikachuMain_modelparts_container[27] = {
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	NULL, NULL, NULL,
 };
 
 /* @ 0x0130, 16 bytes: FTAttributes.accesspart target (was dPikachuMain_pre+0x130) */
@@ -137,214 +103,131 @@ u32 dPikachuMain_accesspart[4] = {
 };
 
 /* @ 0x0140, 8 bytes: FTAttributes.textureparts_container target (was dPikachuMain_pre+0x140) */
-u32 dPikachuMain_textureparts_container[2] = {
-	0x0B00000B,
-	0x01010000,
+FTTexturePartContainer dPikachuMain_textureparts_container = {
+	{
+		{ 0x0B, { 0x00, 0x00 } },
+		{ 0x0B, { 0x01, 0x01 } },
+	},
 };
 
 /* @ 0x0148, 32 bytes: FTAttributes.commonparts_container target (was dPikachuMain_pre+0x148) */
-u32 dPikachuMain_commonparts_container[8] = {
-	(u32)&dPikachuModel_JointTree, /* extern -> 0x2650 */
-	(u32)&dPikachuModel_gap_0x0000, /* extern -> 0x0000 */
-	(u32)((u8*)dPikachuModel_JointTree + 0x4D0), /* extern -> 0x2B20 */
-	0x00000000,
-	(u32)&dPikachuModel_JointTree_0x5490, /* extern -> 0x5490 */
-	(u32)&dPikachuModel_gap_0x2B78_sub_0x8B8, /* extern -> 0x3430 */
-	(u32)((u8*)dPikachuModel_JointTree_0x5490 + 0x4D0), /* extern -> 0x5960 */
-	0x00000000,
+FTCommonPartContainer dPikachuMain_commonparts_container = {
+	{
+		{ (DObjDesc*)&dPikachuModel_JointTree, (MObjSub***)&dPikachuModel_gap_0x0000, (AObjEvent32***)((u8*)dPikachuModel_JointTree + 0x4D0), 0x00 },
+		{ (DObjDesc*)&dPikachuModel_JointTree_0x5490, (MObjSub***)&dPikachuModel_gap_0x2B78_sub_0x8B8, (AObjEvent32***)((u8*)dPikachuModel_JointTree_0x5490 + 0x4D0), 0x00 },
+	},
 };
 
 /* @ 0x0168, 432 bytes: FTAttributes.thrown_status target (was dPikachuMain_pre+0x168) */
-u32 dPikachuMain_thrown_status[108] = {
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
+FTThrownStatus dPikachuMain_thrown_status[54] = {
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
 };
 
 /* @ 0x0318, 20 bytes: FTAttributes.sub_0x318 target (was dPikachuMain_pre+0x318) */
-u32 dPikachuMain_sub_0x318[5] = {
-	(u32)&dPikachuModel_palette_0x9930, /* extern -> 0x9930 */
-	(u32)&dPikachuModel_gap_0x9950_sub_0x8, /* extern -> 0x9958 */
-	(u32)&dPikachuModel_gap_0x9950_sub_0x30, /* extern -> 0x9980 */
-	(u32)&dPikachuModel_gap_0x9950_sub_0x58, /* extern -> 0x99A8 */
-	(u32)&dPikachuModel_gap_0x9950_sub_0x80, /* extern -> 0x99D0 */
+int *dPikachuMain_stock_luts[5] = {
+	(int*)&dPikachuModel_palette_0x9930,
+	(int*)&dPikachuModel_gap_0x9950_sub_0x8,
+	(int*)&dPikachuModel_gap_0x9950_sub_0x30,
+	(int*)&dPikachuModel_gap_0x9950_sub_0x58,
+	(int*)&dPikachuModel_gap_0x9950_sub_0x80,
 };
 
 /* @ 0x032C, 12 bytes: FTAttributes.sprites target (was dPikachuMain_pre+0x32C) */
-u32 dPikachuMain_sprites[3] = {
-	(u32)((u8*)dPikachuModel_gap_0x9950_sub_0x80 + 0x30), /* extern -> 0x9A00 */
-	(u32)dPikachuMain_sub_0x318, /* intern -> 0x0318 */
-	(u32)((u8*)dPikachuModel_gap_0x9950_sub_0x80 + 0x218), /* extern -> 0x9BE8 */
+FTSprites dPikachuMain_sprites = {
+	(Sprite*)((u8*)dPikachuModel_gap_0x9950_sub_0x80 + 0x30), /* stock_sprite */
+	(int**)dPikachuMain_stock_luts, /* stock_luts */
+	(Sprite*)((u8*)dPikachuModel_gap_0x9950_sub_0x80 + 0x218), /* emblem */
 };
 
 /* @ 0x0338, 216 bytes: FTAttributes.sub_0x338 target (was dPikachuMain_pre+0x338) */
-u32 dPikachuMain_sub_0x338[54] = {
-	0x00000000,
-	0x00000000,
-	(u32)&dPikachuModel_gap_0x59B8_sub_0xC38, /* extern -> 0x65F0 */
-	0x00000000,
-	(u32)&dPikachuModel_gap_0x59B8_sub_0xD88, /* extern -> 0x6740 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dPikachuModel_gap_0x59B8_sub_0x1438, /* extern -> 0x6DF0 */
-	0x00000000,
-	(u32)&dPikachuModel_gap_0x59B8_sub_0x1338, /* extern -> 0x6CF0 */
-	0x00000000,
-	(u32)&dPikachuModel_gap_0x59B8_sub_0x1128, /* extern -> 0x6AE0 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dPikachuModel_gap_0x59B8_sub_0x1868, /* extern -> 0x7220 */
-	0x00000000,
-	(u32)&dPikachuModel_gap_0x59B8_sub_0x1908, /* extern -> 0x72C0 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dPikachuModel_gap_0x59B8_sub_0x1438, /* extern -> 0x6DF0 */
-	0x00000000,
-	(u32)&dPikachuModel_gap_0x59B8_sub_0x1338, /* extern -> 0x6CF0 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dPikachuModel_gap_0x59B8_sub_0x1548, /* extern -> 0x6F00 */
-	0x00000000,
-	(u32)&dPikachuModel_gap_0x59B8_sub_0x1658, /* extern -> 0x7010 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dPikachuModel_gap_0x59B8_sub_0x1718, /* extern -> 0x70D0 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dPikachuModel_gap_0x59B8_sub_0x1548, /* extern -> 0x6F00 */
-	0x00000000,
-	(u32)&dPikachuModel_gap_0x59B8_sub_0x1658, /* extern -> 0x7010 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dPikachuModel_gap_0x59B8_sub_0x1718, /* extern -> 0x70D0 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
+FTSkeleton dPikachuMain_skeleton_dls[27] = {
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dPikachuModel_gap_0x59B8_sub_0xC38 }, 0 },
+	{ { (Gfx*)&dPikachuModel_gap_0x59B8_sub_0xD88 }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dPikachuModel_gap_0x59B8_sub_0x1438 }, 0 },
+	{ { (Gfx*)&dPikachuModel_gap_0x59B8_sub_0x1338 }, 0 },
+	{ { (Gfx*)&dPikachuModel_gap_0x59B8_sub_0x1128 }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dPikachuModel_gap_0x59B8_sub_0x1868 }, 0 },
+	{ { (Gfx*)&dPikachuModel_gap_0x59B8_sub_0x1908 }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dPikachuModel_gap_0x59B8_sub_0x1438 }, 0 },
+	{ { (Gfx*)&dPikachuModel_gap_0x59B8_sub_0x1338 }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dPikachuModel_gap_0x59B8_sub_0x1548 }, 0 },
+	{ { (Gfx*)&dPikachuModel_gap_0x59B8_sub_0x1658 }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dPikachuModel_gap_0x59B8_sub_0x1718 }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dPikachuModel_gap_0x59B8_sub_0x1548 }, 0 },
+	{ { (Gfx*)&dPikachuModel_gap_0x59B8_sub_0x1658 }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dPikachuModel_gap_0x59B8_sub_0x1718 }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
 };
 
 /* @ 0x0410, 12 bytes: FTAttributes.skeleton target (was dPikachuMain_pre+0x410) */
-u32 dPikachuMain_skeleton[3] = {
-	0x0000000B,
-	(u32)dPikachuMain_sub_0x338, /* intern -> 0x0338 */
-	0x00000000,
+FTSkeleton *dPikachuMain_skeleton[3] = {
+	(FTSkeleton*)11,
+	dPikachuMain_skeleton_dls,
+	NULL,
 };
 
 FTAttributes dPikachuMain_attr = {
@@ -443,7 +326,7 @@ FTAttributes dPikachuMain_attr = {
 	{ FALSE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	0, /* unused_0x2CC */
 	(FTHiddenPart*)dPikachuMain_hiddenparts, /* hiddenparts */
-	(FTCommonPartContainer*)dPikachuMain_commonparts_container, /* commonparts_container */
+	&dPikachuMain_commonparts_container, /* commonparts_container */
 	NULL, /* dobj_lookup */
 	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
 	24, /* joint_rfoot_id */
@@ -456,11 +339,11 @@ FTAttributes dPikachuMain_attr = {
 	NULL, /* translate_scales */
 	(FTModelPartContainer*)dPikachuMain_modelparts_container, /* modelparts_container */
 	(FTAccessPart*)dPikachuMain_accesspart, /* accesspart */
-	(FTTexturePartContainer*)dPikachuMain_textureparts_container, /* textureparts_container */
+	&dPikachuMain_textureparts_container, /* textureparts_container */
 	30, /* joint_itemheavy_id */
 	(FTThrownStatusArray*)dPikachuMain_thrown_status, /* thrown_status */
 	12, /* joint_itemlight_id */
-	(FTSprites*)dPikachuMain_sprites, /* sprites */
+	&dPikachuMain_sprites, /* sprites */
 	(FTSkeleton**)dPikachuMain_skeleton, /* skeleton */
 };
 

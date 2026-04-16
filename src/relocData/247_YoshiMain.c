@@ -88,297 +88,159 @@ u32 dYoshiMain_setup_parts[2] = {
 };
 
 /* @ 0x0084, 80 bytes: FTAttributes.hiddenparts target (was dYoshiMain_pre+0x84) */
-u32 dYoshiMain_hiddenparts[20] = {
-	0x00000002,
-	0x00000000,
-	0x00000001,
-	0x00000003,
-	0x00000001,
-	0x00000000,
-	0x00000000,
-	0x00000003,
-	0x00000003,
-	0x00000002,
-	0x00000001,
-	0x00000000,
-	0x0000001F,
-	0x00000004,
-	0x00000001,
-	0x00000000,
-	0x00000009,
-	0x00000007,
-	0x00000001,
-	0x00000000,
+FTHiddenPart dYoshiMain_hiddenparts[5] = {
+	{ 0x00000002, 0x00000000, 0x00000001, 0x00000003 },
+	{ 0x00000001, 0x00000000, 0x00000000, 0x00000003 },
+	{ 0x00000003, 0x00000002, 0x00000001, 0x00000000 },
+	{ 0x0000001F, 0x00000004, 0x00000001, 0x00000000 },
+	{ 0x00000009, 0x00000007, 0x00000001, 0x00000000 },
 };
 
 /* @ 0x00D4, 80 bytes: FTAttributes.sub_0x0D4 target (was dYoshiMain_pre+0xD4) */
-u32 dYoshiMain_sub_0x0D4[20] = {
-	(u32)&dYoshiModel_Joint_0x2398_DisplayList, /* extern -> 0x2398 */
-	(u32)((u8*)dYoshiModel_gap_0x0000_sub_0x18 + 0xDE4), /* extern -> 0x0DFC */
-	(u32)&dYoshiModel_gap_0x38F4_sub_0x6E8, /* extern -> 0x3FDC */
-	0x00000000,
-	0x00000000,
-	(u32)&dYoshiModel_Joint_0x5CF8_DisplayList, /* extern -> 0x5CF8 */
-	(u32)&dYoshiModel_gap_0x38F4_sub_0x1410, /* extern -> 0x4D04 */
-	(u32)&dYoshiModel_gap_0x6E70_sub_0x6A4, /* extern -> 0x7514 */
-	0x00000000,
-	0x00000000,
-	(u32)&dYoshiModel_gap_0x6E70_sub_0xEA0, /* extern -> 0x7D10 */
-	(u32)&dYoshiModel_gap_0x6E70_sub_0x9A8, /* extern -> 0x7818 */
-	(u32)&dYoshiModel_gap_0x6E70_sub_0x13BC, /* extern -> 0x822C */
-	0x00000000,
-	0x00000000,
-	(u32)&dYoshiModel_gap_0x6E70_sub_0xEA0, /* extern -> 0x7D10 */
-	(u32)&dYoshiModel_gap_0x6E70_sub_0x9A8, /* extern -> 0x7818 */
-	(u32)&dYoshiModel_gap_0x6E70_sub_0x13BC, /* extern -> 0x822C */
-	0x00000000,
-	0x00000000,
+FTModelPart dYoshiMain_modelparts_desc_0x0D4[4] = {
+	{ (Gfx*)&dYoshiModel_Joint_0x2398_DisplayList, (MObjSub**)((u8*)dYoshiModel_gap_0x0000_sub_0x18 + 0xDE4), (AObjEvent32**)&dYoshiModel_gap_0x38F4_sub_0x6E8, NULL, 0x00 },
+	{ (Gfx*)&dYoshiModel_Joint_0x5CF8_DisplayList, (MObjSub**)&dYoshiModel_gap_0x38F4_sub_0x1410, (AObjEvent32**)&dYoshiModel_gap_0x6E70_sub_0x6A4, NULL, 0x00 },
+	{ (Gfx*)&dYoshiModel_gap_0x6E70_sub_0xEA0, (MObjSub**)&dYoshiModel_gap_0x6E70_sub_0x9A8, (AObjEvent32**)&dYoshiModel_gap_0x6E70_sub_0x13BC, NULL, 0x00 },
+	{ (Gfx*)&dYoshiModel_gap_0x6E70_sub_0xEA0, (MObjSub**)&dYoshiModel_gap_0x6E70_sub_0x9A8, (AObjEvent32**)&dYoshiModel_gap_0x6E70_sub_0x13BC, NULL, 0x00 },
 };
 
 /* @ 0x0124, 112 bytes: FTAttributes.modelparts_container target (was dYoshiMain_pre+0x124) */
-u32 dYoshiMain_modelparts_container[28] = {
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)dYoshiMain_sub_0x0D4, /* intern -> 0x00D4 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
+FTModelPartDesc *dYoshiMain_modelparts_container[28] = {
+	NULL, NULL, NULL, (FTModelPartDesc*)dYoshiMain_modelparts_desc_0x0D4, NULL, NULL,
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	NULL, NULL, NULL, NULL,
 };
 
 /* @ 0x0194, 8 bytes: FTAttributes.textureparts_container target (was dYoshiMain_pre+0x194) */
-u32 dYoshiMain_textureparts_container[2] = {
-	0x07000007,
-	0x01010000,
+FTTexturePartContainer dYoshiMain_textureparts_container = {
+	{
+		{ 0x07, { 0x00, 0x00 } },
+		{ 0x07, { 0x01, 0x01 } },
+	},
 };
 
 /* @ 0x019C, 32 bytes: FTAttributes.commonparts_container target (was dYoshiMain_pre+0x19C) */
-u32 dYoshiMain_commonparts_container[8] = {
-	(u32)&dYoshiModel_JointTree, /* extern -> 0x33A0 */
-	(u32)&dYoshiModel_gap_0x0000, /* extern -> 0x0000 */
-	(u32)((u8*)dYoshiModel_JointTree + 0x500), /* extern -> 0x38A0 */
-	0x01000000,
-	(u32)&dYoshiModel_JointTree_0x6948, /* extern -> 0x6948 */
-	(u32)&dYoshiModel_gap_0x38F4_sub_0x73C, /* extern -> 0x4030 */
-	(u32)((u8*)dYoshiModel_JointTree_0x6948 + 0x508), /* extern -> 0x6E50 */
-	0x01000000,
+FTCommonPartContainer dYoshiMain_commonparts_container = {
+	{
+		{ (DObjDesc*)&dYoshiModel_JointTree, (MObjSub***)&dYoshiModel_gap_0x0000, (AObjEvent32***)((u8*)dYoshiModel_JointTree + 0x500), 0x01 },
+		{ (DObjDesc*)&dYoshiModel_JointTree_0x6948, (MObjSub***)&dYoshiModel_gap_0x38F4_sub_0x73C, (AObjEvent32***)((u8*)dYoshiModel_JointTree_0x6948 + 0x508), 0x01 },
+	},
 };
 
 /* @ 0x01BC, 432 bytes: FTAttributes.thrown_status target (was dYoshiMain_pre+0x1BC) */
-u32 dYoshiMain_thrown_status[108] = {
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
+FTThrownStatus dYoshiMain_thrown_status[54] = {
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
 };
 
 /* @ 0x036C, 24 bytes: FTAttributes.sub_0x36C target (was dYoshiMain_pre+0x36C) */
-u32 dYoshiMain_sub_0x36C[6] = {
-	(u32)&dYoshiModel_palette_0xA9B0, /* extern -> 0xA9B0 */
-	(u32)&dYoshiModel_gap_0xA9D0_sub_0x8, /* extern -> 0xA9D8 */
-	(u32)&dYoshiModel_gap_0xA9D0_sub_0x30, /* extern -> 0xAA00 */
-	(u32)&dYoshiModel_gap_0xA9D0_sub_0x58, /* extern -> 0xAA28 */
-	(u32)&dYoshiModel_gap_0xA9D0_sub_0x80, /* extern -> 0xAA50 */
-	(u32)&dYoshiModel_gap_0xA9D0_sub_0xA8, /* extern -> 0xAA78 */
+int *dYoshiMain_stock_luts[6] = {
+	(int*)&dYoshiModel_palette_0xA9B0,
+	(int*)&dYoshiModel_gap_0xA9D0_sub_0x8,
+	(int*)&dYoshiModel_gap_0xA9D0_sub_0x30,
+	(int*)&dYoshiModel_gap_0xA9D0_sub_0x58,
+	(int*)&dYoshiModel_gap_0xA9D0_sub_0x80,
+	(int*)&dYoshiModel_gap_0xA9D0_sub_0xA8,
 };
 
 /* @ 0x0384, 12 bytes: FTAttributes.sprites target (was dYoshiMain_pre+0x384) */
-u32 dYoshiMain_sprites[3] = {
-	(u32)((u8*)dYoshiModel_gap_0xA9D0_sub_0xA8 + 0x30), /* extern -> 0xAAA8 */
-	(u32)dYoshiMain_sub_0x36C, /* intern -> 0x036C */
-	(u32)((u8*)dYoshiModel_gap_0xA9D0_sub_0xA8 + 0x220), /* extern -> 0xAC98 */
+FTSprites dYoshiMain_sprites = {
+	(Sprite*)((u8*)dYoshiModel_gap_0xA9D0_sub_0xA8 + 0x30), /* stock_sprite */
+	(int**)dYoshiMain_stock_luts, /* stock_luts */
+	(Sprite*)((u8*)dYoshiModel_gap_0xA9D0_sub_0xA8 + 0x220), /* emblem */
 };
 
 /* @ 0x0390, 224 bytes: FTAttributes.sub_0x390 target (was dYoshiMain_pre+0x390) */
-u32 dYoshiMain_sub_0x390[56] = {
-	0x00000000,
-	0x00000000,
-	(u32)&dYoshiModel_gap_0x6E70_sub_0x1490, /* extern -> 0x8300 */
-	0x00000000,
-	(u32)&dYoshiModel_gap_0x6E70_sub_0x1620, /* extern -> 0x8490 */
-	0x00000000,
-	(u32)&dYoshiModel_gap_0x6E70_sub_0x1A40, /* extern -> 0x88B0 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dYoshiModel_gap_0x6E70_sub_0x1DE0, /* extern -> 0x8C50 */
-	0x00000000,
-	(u32)&dYoshiModel_gap_0x6E70_sub_0x1CD0, /* extern -> 0x8B40 */
-	0x00000000,
-	(u32)&dYoshiModel_gap_0x6E70_sub_0x1EA0, /* extern -> 0x8D10 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dYoshiModel_gap_0x6E70_sub_0x1DE0, /* extern -> 0x8C50 */
-	0x00000000,
-	(u32)&dYoshiModel_gap_0x6E70_sub_0x1CD0, /* extern -> 0x8B40 */
-	0x00000000,
-	(u32)&dYoshiModel_gap_0x6E70_sub_0x1F50, /* extern -> 0x8DC0 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dYoshiModel_gap_0x6E70_sub_0x23B0, /* extern -> 0x9220 */
-	0x00000000,
-	(u32)&dYoshiModel_gap_0x6E70_sub_0x24E0, /* extern -> 0x9350 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dYoshiModel_gap_0x6E70_sub_0x2050, /* extern -> 0x8EC0 */
-	0x00000000,
-	(u32)&dYoshiModel_gap_0x6E70_sub_0x2160, /* extern -> 0x8FD0 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dYoshiModel_gap_0x6E70_sub_0x2220, /* extern -> 0x9090 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dYoshiModel_gap_0x6E70_sub_0x2050, /* extern -> 0x8EC0 */
-	0x00000000,
-	(u32)&dYoshiModel_gap_0x6E70_sub_0x2160, /* extern -> 0x8FD0 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dYoshiModel_gap_0x6E70_sub_0x2220, /* extern -> 0x9090 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
+FTSkeleton dYoshiMain_skeleton_dls[28] = {
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dYoshiModel_gap_0x6E70_sub_0x1490 }, 0 },
+	{ { (Gfx*)&dYoshiModel_gap_0x6E70_sub_0x1620 }, 0 },
+	{ { (Gfx*)&dYoshiModel_gap_0x6E70_sub_0x1A40 }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dYoshiModel_gap_0x6E70_sub_0x1DE0 }, 0 },
+	{ { (Gfx*)&dYoshiModel_gap_0x6E70_sub_0x1CD0 }, 0 },
+	{ { (Gfx*)&dYoshiModel_gap_0x6E70_sub_0x1EA0 }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dYoshiModel_gap_0x6E70_sub_0x1DE0 }, 0 },
+	{ { (Gfx*)&dYoshiModel_gap_0x6E70_sub_0x1CD0 }, 0 },
+	{ { (Gfx*)&dYoshiModel_gap_0x6E70_sub_0x1F50 }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dYoshiModel_gap_0x6E70_sub_0x23B0 }, 0 },
+	{ { (Gfx*)&dYoshiModel_gap_0x6E70_sub_0x24E0 }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dYoshiModel_gap_0x6E70_sub_0x2050 }, 0 },
+	{ { (Gfx*)&dYoshiModel_gap_0x6E70_sub_0x2160 }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dYoshiModel_gap_0x6E70_sub_0x2220 }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dYoshiModel_gap_0x6E70_sub_0x2050 }, 0 },
+	{ { (Gfx*)&dYoshiModel_gap_0x6E70_sub_0x2160 }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)&dYoshiModel_gap_0x6E70_sub_0x2220 }, 0 },
+	{ { NULL }, 0 },
 };
 
 /* @ 0x0470, 12 bytes: FTAttributes.skeleton target (was dYoshiMain_pre+0x470) */
-u32 dYoshiMain_skeleton[3] = {
-	0x00000007,
-	(u32)dYoshiMain_sub_0x390, /* intern -> 0x0390 */
-	0x00000000,
+FTSkeleton *dYoshiMain_skeleton[3] = {
+	(FTSkeleton*)7,
+	dYoshiMain_skeleton_dls,
+	NULL,
 };
 
 FTAttributes dYoshiMain_attr = {
@@ -477,7 +339,7 @@ FTAttributes dYoshiMain_attr = {
 	{ FALSE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	0, /* unused_0x2CC */
 	(FTHiddenPart*)dYoshiMain_hiddenparts, /* hiddenparts */
-	(FTCommonPartContainer*)dYoshiMain_commonparts_container, /* commonparts_container */
+	&dYoshiMain_commonparts_container, /* commonparts_container */
 	NULL, /* dobj_lookup */
 	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
 	26, /* joint_rfoot_id */
@@ -490,11 +352,11 @@ FTAttributes dYoshiMain_attr = {
 	NULL, /* translate_scales */
 	(FTModelPartContainer*)dYoshiMain_modelparts_container, /* modelparts_container */
 	NULL, /* accesspart */
-	(FTTexturePartContainer*)dYoshiMain_textureparts_container, /* textureparts_container */
+	&dYoshiMain_textureparts_container, /* textureparts_container */
 	31, /* joint_itemheavy_id */
 	(FTThrownStatusArray*)dYoshiMain_thrown_status, /* thrown_status */
 	18, /* joint_itemlight_id */
-	(FTSprites*)dYoshiMain_sprites, /* sprites */
+	&dYoshiMain_sprites, /* sprites */
 	(FTSkeleton**)dYoshiMain_skeleton, /* skeleton */
 };
 

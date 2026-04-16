@@ -98,423 +98,194 @@ u32 dSamusMain_setup_parts[2] = {
 };
 
 /* @ 0x0050, 208 bytes: FTAttributes.hiddenparts target (was dSamusMain_pre+0x50) */
-u32 dSamusMain_hiddenparts[52] = {
-	0x00000002,
-	0x00000000,
-	0x00000001,
-	0x00000003,
-	0x00000001,
-	0x00000000,
-	0x00000000,
-	0x00000003,
-	0x00000003,
-	0x00000002,
-	0x00000001,
-	0x00000000,
-	0x00000024,
-	0x00000004,
-	0x00000001,
-	0x00000000,
-	0x00000011,
-	0x00000010,
-	0x00000001,
-	0x00000000,
-	0x00000012,
-	0x00000011,
-	0x00000001,
-	0x00000000,
-	0x00000013,
-	0x00000012,
-	0x00000001,
-	0x00000000,
-	0x00000014,
-	0x00000013,
-	0x00000001,
-	0x00000000,
-	0x00000015,
-	0x00000014,
-	0x00000001,
-	0x00000000,
-	0x00000016,
-	0x00000015,
-	0x00000001,
-	0x00000000,
-	0x00000017,
-	0x00000016,
-	0x00000001,
-	0x00000000,
-	0x00000018,
-	0x00000010,
-	0x00000001,
-	0x00000000,
-	0x00000019,
-	0x00000010,
-	0x00000001,
-	0x00000000,
+FTHiddenPart dSamusMain_hiddenparts[13] = {
+	{ 0x00000002, 0x00000000, 0x00000001, 0x00000003 },
+	{ 0x00000001, 0x00000000, 0x00000000, 0x00000003 },
+	{ 0x00000003, 0x00000002, 0x00000001, 0x00000000 },
+	{ 0x00000024, 0x00000004, 0x00000001, 0x00000000 },
+	{ 0x00000011, 0x00000010, 0x00000001, 0x00000000 },
+	{ 0x00000012, 0x00000011, 0x00000001, 0x00000000 },
+	{ 0x00000013, 0x00000012, 0x00000001, 0x00000000 },
+	{ 0x00000014, 0x00000013, 0x00000001, 0x00000000 },
+	{ 0x00000015, 0x00000014, 0x00000001, 0x00000000 },
+	{ 0x00000016, 0x00000015, 0x00000001, 0x00000000 },
+	{ 0x00000017, 0x00000016, 0x00000001, 0x00000000 },
+	{ 0x00000018, 0x00000010, 0x00000001, 0x00000000 },
+	{ 0x00000019, 0x00000010, 0x00000001, 0x00000000 },
 };
 
 /* @ 0x0120, 120 bytes: FTAttributes.sub_0x120 target (was dSamusMain_pre+0x120) */
-u32 dSamusMain_sub_0x120[30] = {
-	(u32)&dSamusModel_Joint_0x20C8_DisplayList, /* extern -> 0x20C8 */
-	0x004A031D, /* extern -> 0x0C74 */
-	(u32)&dSamusModel_gap_0x3B24_sub_0x488, /* extern -> 0x3FAC */
-	0x00000000,
-	0x00000000,
-	(u32)&dSamusModel_Joint_0x5960_DisplayList, /* extern -> 0x5960 */
-	(u32)&dSamusModel_gap_0x3B24_sub_0x1150, /* extern -> 0x4C74 */
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x488, /* extern -> 0x745C */
-	0x00000000,
-	0x00000000,
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x1184, /* extern -> 0x8158 */
-	(u32)&dSamusModel_gap_0x6FD4_sub_0xE4C, /* extern -> 0x7E20 */
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x13F0, /* extern -> 0x83C4 */
-	0x00000000,
-	0x00000000,
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x1184, /* extern -> 0x8158 */
-	(u32)&dSamusModel_gap_0x6FD4_sub_0xE4C, /* extern -> 0x7E20 */
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x13F0, /* extern -> 0x83C4 */
-	0x00000000,
-	0x00000000,
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x1734, /* extern -> 0x8708 */
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x148C, /* extern -> 0x8460 */
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x1990, /* extern -> 0x8964 */
-	0x00000000,
-	0x00000000,
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x1734, /* extern -> 0x8708 */
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x148C, /* extern -> 0x8460 */
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x1990, /* extern -> 0x8964 */
-	0x00000000,
-	0x00000000,
+FTModelPart dSamusMain_modelparts_desc_0x120[6] = {
+	{ (Gfx*)&dSamusModel_Joint_0x20C8_DisplayList, (MObjSub**)0x004A031D, (AObjEvent32**)&dSamusModel_gap_0x3B24_sub_0x488, NULL, 0x00 },
+	{ (Gfx*)&dSamusModel_Joint_0x5960_DisplayList, (MObjSub**)&dSamusModel_gap_0x3B24_sub_0x1150, (AObjEvent32**)&dSamusModel_gap_0x6FD4_sub_0x488, NULL, 0x00 },
+	{ (Gfx*)&dSamusModel_gap_0x6FD4_sub_0x1184, (MObjSub**)&dSamusModel_gap_0x6FD4_sub_0xE4C, (AObjEvent32**)&dSamusModel_gap_0x6FD4_sub_0x13F0, NULL, 0x00 },
+	{ (Gfx*)&dSamusModel_gap_0x6FD4_sub_0x1184, (MObjSub**)&dSamusModel_gap_0x6FD4_sub_0xE4C, (AObjEvent32**)&dSamusModel_gap_0x6FD4_sub_0x13F0, NULL, 0x00 },
+	{ (Gfx*)&dSamusModel_gap_0x6FD4_sub_0x1734, (MObjSub**)&dSamusModel_gap_0x6FD4_sub_0x148C, (AObjEvent32**)&dSamusModel_gap_0x6FD4_sub_0x1990, NULL, 0x00 },
+	{ (Gfx*)&dSamusModel_gap_0x6FD4_sub_0x1734, (MObjSub**)&dSamusModel_gap_0x6FD4_sub_0x148C, (AObjEvent32**)&dSamusModel_gap_0x6FD4_sub_0x1990, NULL, 0x00 },
 };
 
 /* @ 0x0198, 80 bytes: FTAttributes.sub_0x198 target (was dSamusMain_pre+0x198) */
-u32 dSamusMain_sub_0x198[20] = {
-	(u32)&dSamusModel_Joint_0x2608_DisplayList, /* extern -> 0x2608 */
-	0x00680326, /* extern -> 0x0C98 */
-	(u32)&dSamusModel_gap_0x3B24_sub_0x4A0, /* extern -> 0x3FC4 */
-	0x00000000,
-	0x00000000,
-	(u32)&dSamusModel_Joint_0x5E00_DisplayList, /* extern -> 0x5E00 */
-	(u32)&dSamusModel_gap_0x3B24_sub_0x1174, /* extern -> 0x4C98 */
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x4A0, /* extern -> 0x7474 */
-	0x00000000,
-	0x00000000,
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x79C, /* extern -> 0x7770 */
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x5FC, /* extern -> 0x75D0 */
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x9B0, /* extern -> 0x7984 */
-	0x00000000,
-	0x00000000,
-	(u32)&dSamusModel_gap_0x6FD4_sub_0xBEC, /* extern -> 0x7BC0 */
-	(u32)&dSamusModel_gap_0x6FD4_sub_0xADC, /* extern -> 0x7AB0 */
-	(u32)&dSamusModel_gap_0x6FD4_sub_0xDB0, /* extern -> 0x7D84 */
-	0x00000000,
-	0x00000000,
+FTModelPart dSamusMain_modelparts_desc_0x198[4] = {
+	{ (Gfx*)&dSamusModel_Joint_0x2608_DisplayList, (MObjSub**)0x00680326, (AObjEvent32**)&dSamusModel_gap_0x3B24_sub_0x4A0, NULL, 0x00 },
+	{ (Gfx*)&dSamusModel_Joint_0x5E00_DisplayList, (MObjSub**)&dSamusModel_gap_0x3B24_sub_0x1174, (AObjEvent32**)&dSamusModel_gap_0x6FD4_sub_0x4A0, NULL, 0x00 },
+	{ (Gfx*)&dSamusModel_gap_0x6FD4_sub_0x79C, (MObjSub**)&dSamusModel_gap_0x6FD4_sub_0x5FC, (AObjEvent32**)&dSamusModel_gap_0x6FD4_sub_0x9B0, NULL, 0x00 },
+	{ (Gfx*)&dSamusModel_gap_0x6FD4_sub_0xBEC, (MObjSub**)&dSamusModel_gap_0x6FD4_sub_0xADC, (AObjEvent32**)&dSamusModel_gap_0x6FD4_sub_0xDB0, NULL, 0x00 },
 };
 
 /* @ 0x01E8, 40 bytes: FTAttributes.sub_0x1E8 target (was dSamusMain_pre+0x1E8) */
-u32 dSamusMain_sub_0x1E8[10] = {
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x1DBC, /* extern -> 0x8D90 */
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x1D2C, /* extern -> 0x8D00 */
-	0x00000000,
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x1FC0, /* extern -> 0x8F94 */
-	0x00000000,
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x1DBC, /* extern -> 0x8D90 */
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x1D2C, /* extern -> 0x8D00 */
-	0x00000000,
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x1FC0, /* extern -> 0x8F94 */
-	0x00000000,
+FTModelPart dSamusMain_modelparts_desc_0x1E8[2] = {
+	{ (Gfx*)&dSamusModel_gap_0x6FD4_sub_0x1DBC, (MObjSub**)&dSamusModel_gap_0x6FD4_sub_0x1D2C, NULL, (AObjEvent32**)&dSamusModel_gap_0x6FD4_sub_0x1FC0, 0x00 },
+	{ (Gfx*)&dSamusModel_gap_0x6FD4_sub_0x1DBC, (MObjSub**)&dSamusModel_gap_0x6FD4_sub_0x1D2C, NULL, (AObjEvent32**)&dSamusModel_gap_0x6FD4_sub_0x1FC0, 0x00 },
 };
 
 /* @ 0x0210, 40 bytes: FTAttributes.sub_0x210 target (was dSamusMain_pre+0x210) */
-u32 dSamusMain_sub_0x210[10] = {
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x216C, /* extern -> 0x9140 */
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x20DC, /* extern -> 0x90B0 */
-	0x00000000,
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x2370, /* extern -> 0x9344 */
-	0x00000000,
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x216C, /* extern -> 0x9140 */
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x20DC, /* extern -> 0x90B0 */
-	0x00000000,
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x2370, /* extern -> 0x9344 */
-	0x00000000,
+FTModelPart dSamusMain_modelparts_desc_0x210[2] = {
+	{ (Gfx*)&dSamusModel_gap_0x6FD4_sub_0x216C, (MObjSub**)&dSamusModel_gap_0x6FD4_sub_0x20DC, NULL, (AObjEvent32**)&dSamusModel_gap_0x6FD4_sub_0x2370, 0x00 },
+	{ (Gfx*)&dSamusModel_gap_0x6FD4_sub_0x216C, (MObjSub**)&dSamusModel_gap_0x6FD4_sub_0x20DC, NULL, (AObjEvent32**)&dSamusModel_gap_0x6FD4_sub_0x2370, 0x00 },
 };
 
 /* @ 0x0238, 80 bytes: FTAttributes.sub_0x238 target (was dSamusMain_pre+0x238) */
-u32 dSamusMain_sub_0x238[20] = {
-	(u32)&dSamusModel_Joint_0x2C20_DisplayList, /* extern -> 0x2C20 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dSamusModel_Joint_0x2C20_DisplayList, /* extern -> 0x2C20 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x1A9C, /* extern -> 0x8A70 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x1A9C, /* extern -> 0x8A70 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
+FTModelPart dSamusMain_modelparts_desc_0x238[4] = {
+	{ (Gfx*)&dSamusModel_Joint_0x2C20_DisplayList, NULL, NULL, NULL, 0x00 },
+	{ (Gfx*)&dSamusModel_Joint_0x2C20_DisplayList, NULL, NULL, NULL, 0x00 },
+	{ (Gfx*)&dSamusModel_gap_0x6FD4_sub_0x1A9C, NULL, NULL, NULL, 0x00 },
+	{ (Gfx*)&dSamusModel_gap_0x6FD4_sub_0x1A9C, NULL, NULL, NULL, 0x00 },
 };
 
 /* @ 0x0288, 132 bytes: FTAttributes.modelparts_container target (was dSamusMain_pre+0x288) */
-u32 dSamusMain_modelparts_container[33] = {
-	0x00000000,
-	0x00000000,
-	(u32)dSamusMain_sub_0x120, /* intern -> 0x0120 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)dSamusMain_sub_0x198, /* intern -> 0x0198 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	(u32)dSamusMain_sub_0x1E8, /* intern -> 0x01E8 */
-	(u32)dSamusMain_sub_0x210, /* intern -> 0x0210 */
-	(u32)dSamusMain_sub_0x210, /* intern -> 0x0210 */
-	(u32)dSamusMain_sub_0x210, /* intern -> 0x0210 */
-	(u32)dSamusMain_sub_0x210, /* intern -> 0x0210 */
-	(u32)dSamusMain_sub_0x210, /* intern -> 0x0210 */
-	0x00000000,
-	(u32)dSamusMain_sub_0x238, /* intern -> 0x0238 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
+FTModelPartDesc *dSamusMain_modelparts_container[33] = {
+	NULL, NULL, (FTModelPartDesc*)dSamusMain_modelparts_desc_0x120, NULL, NULL, NULL,
+	(FTModelPartDesc*)dSamusMain_modelparts_desc_0x198, NULL, NULL, NULL, NULL, NULL,
+	NULL, (FTModelPartDesc*)dSamusMain_modelparts_desc_0x1E8, (FTModelPartDesc*)dSamusMain_modelparts_desc_0x210, (FTModelPartDesc*)dSamusMain_modelparts_desc_0x210, (FTModelPartDesc*)dSamusMain_modelparts_desc_0x210, (FTModelPartDesc*)dSamusMain_modelparts_desc_0x210,
+	(FTModelPartDesc*)dSamusMain_modelparts_desc_0x210, NULL, (FTModelPartDesc*)dSamusMain_modelparts_desc_0x238, NULL, NULL, NULL,
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	NULL, NULL, NULL,
 };
 
 /* @ 0x030C, 32 bytes: FTAttributes.commonparts_container target (was dSamusMain_pre+0x30C) */
-u32 dSamusMain_commonparts_container[8] = {
-	(u32)&dSamusModel_JointTree, /* extern -> 0x3520 */
-	0x00C50000, /* extern -> 0x0000 */
-	(u32)((u8*)dSamusModel_JointTree + 0x5E0), /* extern -> 0x3B00 */
-	0x00000000,
-	(u32)&dSamusModel_JointTree_0x69D0, /* extern -> 0x69D0 */
-	(u32)&dSamusModel_gap_0x3B24_sub_0x4DC, /* extern -> 0x4000 */
-	(u32)((u8*)dSamusModel_JointTree_0x69D0 + 0x5E0), /* extern -> 0x6FB0 */
-	0x00000000,
+FTCommonPartContainer dSamusMain_commonparts_container = {
+	{
+		{ (DObjDesc*)&dSamusModel_JointTree, (MObjSub***)0x00C50000, (AObjEvent32***)((u8*)dSamusModel_JointTree + 0x5E0), 0x00 },
+		{ (DObjDesc*)&dSamusModel_JointTree_0x69D0, (MObjSub***)&dSamusModel_gap_0x3B24_sub_0x4DC, (AObjEvent32***)((u8*)dSamusModel_JointTree_0x69D0 + 0x5E0), 0x00 },
+	},
 };
 
 /* @ 0x032C, 432 bytes: FTAttributes.thrown_status target (was dSamusMain_pre+0x32C) */
-u32 dSamusMain_thrown_status[108] = {
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
+FTThrownStatus dSamusMain_thrown_status[54] = {
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
+	{                          -1, nFTCommonStatusThrownCommon },
 };
 
 /* @ 0x04DC, 20 bytes: FTAttributes.sub_0x4DC target (was dSamusMain_pre+0x4DC) */
-u32 dSamusMain_sub_0x4DC[5] = {
-	(u32)&dSamusModel_palette_0xE220, /* extern -> 0xE220 */
-	(u32)&dSamusModel_gap_0xE240_sub_0x8, /* extern -> 0xE248 */
-	(u32)&dSamusModel_gap_0xE240_sub_0x30, /* extern -> 0xE270 */
-	(u32)&dSamusModel_gap_0xE240_sub_0x58, /* extern -> 0xE298 */
-	(u32)&dSamusModel_gap_0xE240_sub_0x80, /* extern -> 0xE2C0 */
+int *dSamusMain_stock_luts[5] = {
+	(int*)&dSamusModel_palette_0xE220,
+	(int*)&dSamusModel_gap_0xE240_sub_0x8,
+	(int*)&dSamusModel_gap_0xE240_sub_0x30,
+	(int*)&dSamusModel_gap_0xE240_sub_0x58,
+	(int*)&dSamusModel_gap_0xE240_sub_0x80,
 };
 
 /* @ 0x04F0, 12 bytes: FTAttributes.sprites target (was dSamusMain_pre+0x4F0) */
-u32 dSamusMain_sprites[3] = {
-	(u32)((u8*)dSamusModel_gap_0xE240_sub_0x80 + 0x30), /* extern -> 0xE2F0 */
-	(u32)dSamusMain_sub_0x4DC, /* intern -> 0x04DC */
-	(u32)((u8*)dSamusModel_gap_0xE240_sub_0x80 + 0x248), /* extern -> 0xE508 */
+FTSprites dSamusMain_sprites = {
+	(Sprite*)((u8*)dSamusModel_gap_0xE240_sub_0x80 + 0x30), /* stock_sprite */
+	(int**)dSamusMain_stock_luts, /* stock_luts */
+	(Sprite*)((u8*)dSamusModel_gap_0xE240_sub_0x80 + 0x248), /* emblem */
 };
 
 /* @ 0x04FC, 264 bytes: FTAttributes.sub_0x4FC target (was dSamusMain_pre+0x4FC) */
-u32 dSamusMain_sub_0x4FC[66] = {
-	0x00000000,
-	0x01000000,
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x3D84, /* extern -> 0xAD58 */
-	0x01000000,
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x3D8C, /* extern -> 0xAD60 */
-	0x01000000,
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x3D94, /* extern -> 0xAD68 */
-	0x01000000,
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x3D9C, /* extern -> 0xAD70 */
-	0x01000000,
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x3DA4, /* extern -> 0xAD78 */
-	0x01000000,
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x3DAC, /* extern -> 0xAD80 */
-	0x01000000,
-	0x00000000,
-	0x01000000,
-	0x00000000,
-	0x01000000,
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x3DB4, /* extern -> 0xAD88 */
-	0x01000000,
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x3DBC, /* extern -> 0xAD90 */
-	0x01000000,
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x3DC4, /* extern -> 0xAD98 */
-	0x01000000,
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x3DCC, /* extern -> 0xADA0 */
-	0x01000000,
-	0x00000000,
-	0x01000000,
-	0x00000000,
-	0x01000000,
-	0x00000000,
-	0x01000000,
-	0x00000000,
-	0x01000000,
-	0x00000000,
-	0x01000000,
-	0x00000000,
-	0x01000000,
-	0x00000000,
-	0x01000000,
-	0x00000000,
-	0x01000000,
-	0x00000000,
-	0x01000000,
-	0x00000000,
-	0x01000000,
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x3DD4, /* extern -> 0xADA8 */
-	0x01000000,
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x3DDC, /* extern -> 0xADB0 */
-	0x01000000,
-	0x00000000,
-	0x01000000,
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x3DE4, /* extern -> 0xADB8 */
-	0x01000000,
-	0x00000000,
-	0x01000000,
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x3DEC, /* extern -> 0xADC0 */
-	0x01000000,
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x3DF4, /* extern -> 0xADC8 */
-	0x01000000,
-	0x00000000,
-	0x01000000,
-	(u32)&dSamusModel_gap_0x6FD4_sub_0x3DFC, /* extern -> 0xADD0 */
-	0x01000000,
-	0x00000000,
-	0x01000000,
+FTSkeleton dSamusMain_skeleton_dls[33] = {
+	{ { NULL }, 1 },
+	{ { (Gfx*)&dSamusModel_gap_0x6FD4_sub_0x3D84 }, 1 },
+	{ { (Gfx*)&dSamusModel_gap_0x6FD4_sub_0x3D8C }, 1 },
+	{ { (Gfx*)&dSamusModel_gap_0x6FD4_sub_0x3D94 }, 1 },
+	{ { (Gfx*)&dSamusModel_gap_0x6FD4_sub_0x3D9C }, 1 },
+	{ { (Gfx*)&dSamusModel_gap_0x6FD4_sub_0x3DA4 }, 1 },
+	{ { (Gfx*)&dSamusModel_gap_0x6FD4_sub_0x3DAC }, 1 },
+	{ { NULL }, 1 },
+	{ { NULL }, 1 },
+	{ { (Gfx*)&dSamusModel_gap_0x6FD4_sub_0x3DB4 }, 1 },
+	{ { (Gfx*)&dSamusModel_gap_0x6FD4_sub_0x3DBC }, 1 },
+	{ { (Gfx*)&dSamusModel_gap_0x6FD4_sub_0x3DC4 }, 1 },
+	{ { (Gfx*)&dSamusModel_gap_0x6FD4_sub_0x3DCC }, 1 },
+	{ { NULL }, 1 },
+	{ { NULL }, 1 },
+	{ { NULL }, 1 },
+	{ { NULL }, 1 },
+	{ { NULL }, 1 },
+	{ { NULL }, 1 },
+	{ { NULL }, 1 },
+	{ { NULL }, 1 },
+	{ { NULL }, 1 },
+	{ { NULL }, 1 },
+	{ { (Gfx*)&dSamusModel_gap_0x6FD4_sub_0x3DD4 }, 1 },
+	{ { (Gfx*)&dSamusModel_gap_0x6FD4_sub_0x3DDC }, 1 },
+	{ { NULL }, 1 },
+	{ { (Gfx*)&dSamusModel_gap_0x6FD4_sub_0x3DE4 }, 1 },
+	{ { NULL }, 1 },
+	{ { (Gfx*)&dSamusModel_gap_0x6FD4_sub_0x3DEC }, 1 },
+	{ { (Gfx*)&dSamusModel_gap_0x6FD4_sub_0x3DF4 }, 1 },
+	{ { NULL }, 1 },
+	{ { (Gfx*)&dSamusModel_gap_0x6FD4_sub_0x3DFC }, 1 },
+	{ { NULL }, 1 },
 };
 
 /* @ 0x0604, 12 bytes: FTAttributes.skeleton target (was dSamusMain_pre+0x604) */
-u32 dSamusMain_skeleton[3] = {
-	0x0000000D,
-	(u32)dSamusMain_sub_0x4FC, /* intern -> 0x04FC */
-	0x00000000,
+FTSkeleton *dSamusMain_skeleton[3] = {
+	(FTSkeleton*)13,
+	dSamusMain_skeleton_dls,
+	NULL,
 };
 
 FTAttributes dSamusMain_attr = {
@@ -613,7 +384,7 @@ FTAttributes dSamusMain_attr = {
 	{ FALSE, TRUE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	0, /* unused_0x2CC */
 	(FTHiddenPart*)dSamusMain_hiddenparts, /* hiddenparts */
-	(FTCommonPartContainer*)dSamusMain_commonparts_container, /* commonparts_container */
+	&dSamusMain_commonparts_container, /* commonparts_container */
 	NULL, /* dobj_lookup */
 	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
 	31, /* joint_rfoot_id */
@@ -630,7 +401,7 @@ FTAttributes dSamusMain_attr = {
 	36, /* joint_itemheavy_id */
 	(FTThrownStatusArray*)dSamusMain_thrown_status, /* thrown_status */
 	11, /* joint_itemlight_id */
-	(FTSprites*)dSamusMain_sprites, /* sprites */
+	&dSamusMain_sprites, /* sprites */
 	(FTSkeleton**)dSamusMain_skeleton, /* skeleton */
 };
 

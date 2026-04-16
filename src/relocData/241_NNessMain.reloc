@@ -2,12 +2,12 @@
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
 extern dNNessMain_file_handles 0x24 # -> file 238 (NessMainMotion)
-extern dNNessMain_sub_0x054 0x34C0 # -> file 312 (NNessModel)
-extern dNNessMain_sub_0x054+0x14 0x34C0 # -> file 312 (NNessModel)
-extern dNNessMain_sub_0x07C 0x3240 # -> file 312 (NNessModel)
-extern dNNessMain_sub_0x07C+0x14 0x3240 # -> file 312 (NNessModel)
-intern dNNessMain_modelparts_container+0x34 dNNessMain_sub_0x054
-intern dNNessMain_modelparts_container+0x68 dNNessMain_sub_0x07C
+extern dNNessMain_modelparts_desc_0x054 0x34C0 # -> file 312 (NNessModel)
+extern dNNessMain_modelparts_desc_0x054+0x14 0x34C0 # -> file 312 (NNessModel)
+extern dNNessMain_modelparts_desc_0x07C 0x3240 # -> file 312 (NNessModel)
+extern dNNessMain_modelparts_desc_0x07C+0x14 0x3240 # -> file 312 (NNessModel)
+intern dNNessMain_modelparts_container+0x34 dNNessMain_modelparts_desc_0x054
+intern dNNessMain_modelparts_container+0x68 dNNessMain_modelparts_desc_0x07C
 extern dNNessMain_commonparts_container 0x2D40 # -> file 312 (NNessModel)
 extern dNNessMain_commonparts_container+0x10 0x2D40 # -> file 312 (NNessModel)
 extern dNNessMain_sprites+0x8 0x2B8 # -> file 345 (MasterHandIcon)

@@ -26,76 +26,40 @@ u32 dBossMain_setup_parts[2] = {
 };
 
 /* @ 0x0014, 64 bytes: FTAttributes.hiddenparts target (was dBossMain_pre+0x14) */
-u32 dBossMain_hiddenparts[16] = {
-	0x00000002,
-	0x00000000,
-	0x00000001,
-	0x00000003,
-	0x00000001,
-	0x00000000,
-	0x00000000,
-	0x00000003,
-	0x00000003,
-	0x00000002,
-	0x00000001,
-	0x00000000,
-	0x00000005,
-	0x00000004,
-	0x00000001,
-	0x00000000,
+FTHiddenPart dBossMain_hiddenparts[4] = {
+	{ 0x00000002, 0x00000000, 0x00000001, 0x00000003 },
+	{ 0x00000001, 0x00000000, 0x00000000, 0x00000003 },
+	{ 0x00000003, 0x00000002, 0x00000001, 0x00000000 },
+	{ 0x00000005, 0x00000004, 0x00000001, 0x00000000 },
 };
 
 /* @ 0x0054, 100 bytes: FTAttributes.modelparts_container target (was dBossMain_pre+0x54) */
-u32 dBossMain_modelparts_container[25] = {
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
+FTModelPartDesc *dBossMain_modelparts_container[25] = {
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	NULL,
 };
 
 /* @ 0x00B8, 32 bytes: FTAttributes.commonparts_container target (was dBossMain_pre+0xB8) */
-u32 dBossMain_commonparts_container[8] = {
-	(u32)&dBossModel_JointTree, /* extern -> 0x23D8 */
-	0x00000000,
-	0x00000000,
-	0x01000000,
-	(u32)&dBossModel_JointTree, /* extern -> 0x23D8 */
-	0x00000000,
-	0x00000000,
-	0x01000000,
+FTCommonPartContainer dBossMain_commonparts_container = {
+	{
+		{ (DObjDesc*)&dBossModel_JointTree, NULL, NULL, 0x01 },
+		{ (DObjDesc*)&dBossModel_JointTree, NULL, NULL, 0x01 },
+	},
 };
 
 /* @ 0x00D8, 4 bytes: FTAttributes.sub_0x0D8 target (was dBossMain_pre+0xD8) */
-u32 dBossMain_sub_0x0D8[1] = {
-	0x00370024, /* extern -> 0x0090 */
+int *dBossMain_stock_luts[1] = {
+	(int*)0x00370024,
 };
 
 /* @ 0x00DC, 12 bytes: FTAttributes.sprites target (was dBossMain_pre+0xDC) */
-u32 dBossMain_sprites[3] = {
-	0x00390030, /* extern -> 0x00C0 */
-	(u32)dBossMain_sub_0x0D8, /* intern -> 0x00D8 */
-	0xFFFF00AE, /* extern -> 0x02B8 */
+FTSprites dBossMain_sprites = {
+	(Sprite*)0x00390030, /* stock_sprite */
+	(int**)dBossMain_stock_luts, /* stock_luts */
+	(Sprite*)0xFFFF00AE, /* emblem */
 };
 
 FTAttributes dBossMain_attr = {
@@ -194,7 +158,7 @@ FTAttributes dBossMain_attr = {
 	{ FALSE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	0, /* unused_0x2CC */
 	(FTHiddenPart*)dBossMain_hiddenparts, /* hiddenparts */
-	(FTCommonPartContainer*)dBossMain_commonparts_container, /* commonparts_container */
+	&dBossMain_commonparts_container, /* commonparts_container */
 	NULL, /* dobj_lookup */
 	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
 	-1, /* joint_rfoot_id */
@@ -211,6 +175,6 @@ FTAttributes dBossMain_attr = {
 	5, /* joint_itemheavy_id */
 	NULL, /* thrown_status */
 	-1, /* joint_itemlight_id */
-	(FTSprites*)dBossMain_sprites, /* sprites */
+	&dBossMain_sprites, /* sprites */
 	NULL, /* skeleton */
 };

@@ -573,6 +573,28 @@ def emit_tex(data, start, size, path):
     write_lines(path, lines)
 
 
+def emit_u16(data, start, size, path):
+    """Emit `size` bytes as u16 big-endian values, 8 per line."""
+    assert size % 2 == 0, f"u16 block size {size} isn't 2-byte aligned"
+    vals = list(struct.unpack(f">{size // 2}H", data[start:start + size]))
+    lines = []
+    for i in range(0, len(vals), 8):
+        row = ", ".join(f"0x{v:04X}" for v in vals[i:i + 8])
+        lines.append("\t" + row + ",")
+    write_lines(path, lines)
+
+
+def emit_u32(data, start, size, path):
+    """Emit `size` bytes as u32 big-endian values, 6 per line."""
+    assert size % 4 == 0, f"u32 block size {size} isn't 4-byte aligned"
+    vals = list(struct.unpack(f">{size // 4}I", data[start:start + size]))
+    lines = []
+    for i in range(0, len(vals), 6):
+        row = " ".join(f"0x{v:08X}," for v in vals[i:i + 6])
+        lines.append("\t" + row)
+    write_lines(path, lines)
+
+
 def _emit_dl_raw(data, start, size, path):
     """Emit a DL inc.c as raw `{ { w0, w1 } },` word pairs."""
     lines = []
@@ -739,15 +761,16 @@ def _process_inline(fid, master_path):
             tex_meta.update(scan_dl_for_tex_meta(data, offset, offset + size))
         offset += size
 
-    # If the master's total size doesn't match the binary, we're almost
-    # certainly walking a US-authored master against a JP binary (or
-    # vice-versa). Bail out cleanly — the real master (via a .jp.c / .us.c
-    # override or a version-specific .spritelist) will drive extraction
-    # through a different code path.
-    if offset != len(data):
+    # Bail out only when we'd walk off the end of the binary (overshoot);
+    # undershoot is fine — the trailing bytes are ignored. An overshoot
+    # usually means we're extracting the wrong file/version and any bytes
+    # we write would be junk.
+    if offset > len(data):
         return 0
 
-    # Second pass: write each block's inc.c into build/.
+    # Second pass: write each block's inc.c into build/. Route by declared
+    # C type — an inc.c included into `u32 X[N]` needs u32-hex values, not
+    # u8 bytes, or IDO rejects it with "Too many initial values".
     emitted = 0
     for payload, off in block_info:
         inc_path_rel = payload.get('inc_path')
@@ -755,23 +778,19 @@ def _process_inline(fid, master_path):
             continue
         inc_full = os.path.join(BUILD_RELOC, inc_path_rel)
         size = payload['size']
-        if inc_path_rel.endswith('.vtx.inc.c'):
+        decl_type = payload.get('type', 'u8')
+        if decl_type in ('Vtx', 'Vtx_t'):
             count = size // 16
             emit_vtx(data, off, count, inc_full)
+        elif decl_type == 'Gfx':
+            emit_dl(data, off, size, inc_full)
+        elif decl_type == 'u16':
+            emit_u16(data, off, size, inc_full)
+        elif decl_type == 'u32':
+            emit_u32(data, off, size, inc_full)
         elif inc_path_rel.endswith('.palette.inc.c'):
             emit_palette(data, off, inc_full)
-        elif inc_path_rel.endswith('.dl.inc.c'):
-            emit_dl(data, off, size, inc_full)
-        elif inc_path_rel.endswith('.tex.inc.c') or inc_path_rel.endswith('.data.inc.c'):
-            emit_tex(data, off, size, inc_full)
-            # Try a PNG preview for blocks whose `payload` name starts with
-            # `Tex_` (matches the manifest-era convention).
-            if _HAS_N64IMG and payload.get('name', '').startswith('dSamus') is False:
-                # n/a — leave PNG emission to the manifest path for now
-                pass
         else:
-            # Other formats (e.g. `.inc.c` without a recognised suffix)
-            # get raw-byte extraction.
             emit_tex(data, off, size, inc_full)
         emitted += 1
     return emitted

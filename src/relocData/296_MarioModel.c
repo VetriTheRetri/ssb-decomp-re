@@ -469,8 +469,29 @@ u16 dMarioModel_palette_0x7200[16] = {
 };
 
 /* Raw data from file offset 0x7220 to 0x72C0 (160 bytes) */
-u8 dMarioModel_gap_0x7220[160] = {
+/* gap sub-block @ 0x7220 (was gap+0x0, 8 bytes) */
+u8 dMarioModel_gap_0x7220[8] = {
 	#include <MarioModel/gap_0x7220.data.inc.c>
+};
+
+/* gap sub-block @ 0x7228 (was gap+0x8, 40 bytes) */
+u8 dMarioModel_gap_0x7220_sub_0x8[40] = {
+	#include <MarioModel/gap_0x7220_sub_0x8.data.inc.c>
+};
+
+/* gap sub-block @ 0x7250 (was gap+0x30, 40 bytes) */
+u8 dMarioModel_gap_0x7220_sub_0x30[40] = {
+	#include <MarioModel/gap_0x7220_sub_0x30.data.inc.c>
+};
+
+/* gap sub-block @ 0x7278 (was gap+0x58, 40 bytes) */
+u8 dMarioModel_gap_0x7220_sub_0x58[40] = {
+	#include <MarioModel/gap_0x7220_sub_0x58.data.inc.c>
+};
+
+/* gap sub-block @ 0x72A0 (was gap+0x80, 32 bytes) */
+u8 dMarioModel_gap_0x7220_sub_0x80[32] = {
+	#include <MarioModel/gap_0x7220_sub_0x80.data.inc.c>
 };
 
 /* Sprite: Stock */

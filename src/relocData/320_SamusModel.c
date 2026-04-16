@@ -679,8 +679,29 @@ u16 dSamusModel_palette_0xE220[16] = {
 };
 
 /* Raw data from file offset 0xE240 to 0xE2E0 (160 bytes) */
-u8 dSamusModel_gap_0xE240[160] = {
+/* gap sub-block @ 0xE240 (was gap+0x0, 8 bytes) */
+u8 dSamusModel_gap_0xE240[8] = {
 	#include <SamusModel/gap_0xE240.data.inc.c>
+};
+
+/* gap sub-block @ 0xE248 (was gap+0x8, 40 bytes) */
+u8 dSamusModel_gap_0xE240_sub_0x8[40] = {
+	#include <SamusModel/gap_0xE240_sub_0x8.data.inc.c>
+};
+
+/* gap sub-block @ 0xE270 (was gap+0x30, 40 bytes) */
+u8 dSamusModel_gap_0xE240_sub_0x30[40] = {
+	#include <SamusModel/gap_0xE240_sub_0x30.data.inc.c>
+};
+
+/* gap sub-block @ 0xE298 (was gap+0x58, 40 bytes) */
+u8 dSamusModel_gap_0xE240_sub_0x58[40] = {
+	#include <SamusModel/gap_0xE240_sub_0x58.data.inc.c>
+};
+
+/* gap sub-block @ 0xE2C0 (was gap+0x80, 32 bytes) */
+u8 dSamusModel_gap_0xE240_sub_0x80[32] = {
+	#include <SamusModel/gap_0xE240_sub_0x80.data.inc.c>
 };
 
 /* Sprite: Stock */

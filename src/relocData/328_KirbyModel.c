@@ -445,8 +445,29 @@ u16 dKirbyModel_palette_0x1D510[16] = {
 };
 
 /* Raw data from file offset 0x1D530 to 0x1D5D0 (160 bytes) */
-u8 dKirbyModel_gap_0x1D530[160] = {
+/* gap sub-block @ 0x1D530 (was gap+0x0, 8 bytes) */
+u8 dKirbyModel_gap_0x1D530[8] = {
 	#include <KirbyModel/gap_0x1D530.data.inc.c>
+};
+
+/* gap sub-block @ 0x1D538 (was gap+0x8, 40 bytes) */
+u8 dKirbyModel_gap_0x1D530_sub_0x8[40] = {
+	#include <KirbyModel/gap_0x1D530_sub_0x8.data.inc.c>
+};
+
+/* gap sub-block @ 0x1D560 (was gap+0x30, 40 bytes) */
+u8 dKirbyModel_gap_0x1D530_sub_0x30[40] = {
+	#include <KirbyModel/gap_0x1D530_sub_0x30.data.inc.c>
+};
+
+/* gap sub-block @ 0x1D588 (was gap+0x58, 40 bytes) */
+u8 dKirbyModel_gap_0x1D530_sub_0x58[40] = {
+	#include <KirbyModel/gap_0x1D530_sub_0x58.data.inc.c>
+};
+
+/* gap sub-block @ 0x1D5B0 (was gap+0x80, 32 bytes) */
+u8 dKirbyModel_gap_0x1D530_sub_0x80[32] = {
+	#include <KirbyModel/gap_0x1D530_sub_0x80.data.inc.c>
 };
 
 /* Sprite: Stock */

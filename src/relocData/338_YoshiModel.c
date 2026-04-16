@@ -782,8 +782,34 @@ u16 dYoshiModel_palette_0xA9B0[16] = {
 };
 
 /* Raw data from file offset 0xA9D0 to 0xAA98 (200 bytes) */
-u8 dYoshiModel_gap_0xA9D0[200] = {
+/* gap sub-block @ 0xA9D0 (was gap+0x0, 8 bytes) */
+u8 dYoshiModel_gap_0xA9D0[8] = {
 	#include <YoshiModel/gap_0xA9D0.data.inc.c>
+};
+
+/* gap sub-block @ 0xA9D8 (was gap+0x8, 40 bytes) */
+u8 dYoshiModel_gap_0xA9D0_sub_0x8[40] = {
+	#include <YoshiModel/gap_0xA9D0_sub_0x8.data.inc.c>
+};
+
+/* gap sub-block @ 0xAA00 (was gap+0x30, 40 bytes) */
+u8 dYoshiModel_gap_0xA9D0_sub_0x30[40] = {
+	#include <YoshiModel/gap_0xA9D0_sub_0x30.data.inc.c>
+};
+
+/* gap sub-block @ 0xAA28 (was gap+0x58, 40 bytes) */
+u8 dYoshiModel_gap_0xA9D0_sub_0x58[40] = {
+	#include <YoshiModel/gap_0xA9D0_sub_0x58.data.inc.c>
+};
+
+/* gap sub-block @ 0xAA50 (was gap+0x80, 40 bytes) */
+u8 dYoshiModel_gap_0xA9D0_sub_0x80[40] = {
+	#include <YoshiModel/gap_0xA9D0_sub_0x80.data.inc.c>
+};
+
+/* gap sub-block @ 0xAA78 (was gap+0xA8, 32 bytes) */
+u8 dYoshiModel_gap_0xA9D0_sub_0xA8[32] = {
+	#include <YoshiModel/gap_0xA9D0_sub_0xA8.data.inc.c>
 };
 
 /* Sprite: Stock */

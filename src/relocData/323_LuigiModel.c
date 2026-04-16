@@ -488,8 +488,39 @@ u16 dLuigiModel_palette_0x7C30[16] = {
 };
 
 /* Raw data from file offset 0x7C50 to 0x7CC8 (120 bytes) */
-u8 dLuigiModel_gap_0x7C50[120] = {
+/* gap sub-block @ 0x7C50 (was gap+0x0, 8 bytes) */
+u8 dLuigiModel_gap_0x7C50[8] = {
 	#include <LuigiModel/gap_0x7C50.data.inc.c>
+};
+
+/* gap sub-block @ 0x7C58 (was gap+0x8, 8 bytes) */
+u8 dLuigiModel_gap_0x7C50_sub_0x8[8] = {
+	#include <LuigiModel/gap_0x7C50_sub_0x8.data.inc.c>
+};
+
+/* gap sub-block @ 0x7C60 (was gap+0x10, 32 bytes) */
+u8 dLuigiModel_gap_0x7C50_sub_0x10[32] = {
+	#include <LuigiModel/gap_0x7C50_sub_0x10.data.inc.c>
+};
+
+/* gap sub-block @ 0x7C80 (was gap+0x30, 8 bytes) */
+u8 dLuigiModel_gap_0x7C50_sub_0x30[8] = {
+	#include <LuigiModel/gap_0x7C50_sub_0x30.data.inc.c>
+};
+
+/* gap sub-block @ 0x7C88 (was gap+0x38, 32 bytes) */
+u8 dLuigiModel_gap_0x7C50_sub_0x38[32] = {
+	#include <LuigiModel/gap_0x7C50_sub_0x38.data.inc.c>
+};
+
+/* gap sub-block @ 0x7CA8 (was gap+0x58, 16 bytes) */
+u8 dLuigiModel_gap_0x7C50_sub_0x58[16] = {
+	#include <LuigiModel/gap_0x7C50_sub_0x58.data.inc.c>
+};
+
+/* gap sub-block @ 0x7CB8 (was gap+0x68, 16 bytes) */
+u8 dLuigiModel_gap_0x7C50_sub_0x68[16] = {
+	#include <LuigiModel/gap_0x7C50_sub_0x68.data.inc.c>
 };
 
 /* Sprite: Stock */

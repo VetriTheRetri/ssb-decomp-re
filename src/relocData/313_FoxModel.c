@@ -684,8 +684,24 @@ u16 dFoxModel_palette_0x7B80[16] = {
 };
 
 /* Raw data from file offset 0x7BA0 to 0x7C18 (120 bytes) */
-u8 dFoxModel_gap_0x7BA0[120] = {
+/* gap sub-block @ 0x7BA0 (was gap+0x0, 8 bytes) */
+u8 dFoxModel_gap_0x7BA0[8] = {
 	#include <FoxModel/gap_0x7BA0.data.inc.c>
+};
+
+/* gap sub-block @ 0x7BA8 (was gap+0x8, 40 bytes) */
+u8 dFoxModel_gap_0x7BA0_sub_0x8[40] = {
+	#include <FoxModel/gap_0x7BA0_sub_0x8.data.inc.c>
+};
+
+/* gap sub-block @ 0x7BD0 (was gap+0x30, 40 bytes) */
+u8 dFoxModel_gap_0x7BA0_sub_0x30[40] = {
+	#include <FoxModel/gap_0x7BA0_sub_0x30.data.inc.c>
+};
+
+/* gap sub-block @ 0x7BF8 (was gap+0x58, 32 bytes) */
+u8 dFoxModel_gap_0x7BA0_sub_0x58[32] = {
+	#include <FoxModel/gap_0x7BA0_sub_0x58.data.inc.c>
 };
 
 /* Sprite: Stock */

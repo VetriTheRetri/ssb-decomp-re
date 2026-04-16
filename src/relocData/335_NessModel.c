@@ -736,8 +736,24 @@ u16 dNessModel_palette_0xC0E0[16] = {
 };
 
 /* Raw data from file offset 0xC100 to 0xC178 (120 bytes) */
-u8 dNessModel_gap_0xC100[120] = {
+/* gap sub-block @ 0xC100 (was gap+0x0, 8 bytes) */
+u8 dNessModel_gap_0xC100[8] = {
 	#include <NessModel/gap_0xC100.data.inc.c>
+};
+
+/* gap sub-block @ 0xC108 (was gap+0x8, 40 bytes) */
+u8 dNessModel_gap_0xC100_sub_0x8[40] = {
+	#include <NessModel/gap_0xC100_sub_0x8.data.inc.c>
+};
+
+/* gap sub-block @ 0xC130 (was gap+0x30, 40 bytes) */
+u8 dNessModel_gap_0xC100_sub_0x30[40] = {
+	#include <NessModel/gap_0xC100_sub_0x30.data.inc.c>
+};
+
+/* gap sub-block @ 0xC158 (was gap+0x58, 32 bytes) */
+u8 dNessModel_gap_0xC100_sub_0x58[32] = {
+	#include <NessModel/gap_0xC100_sub_0x58.data.inc.c>
 };
 
 /* Sprite: Stock */

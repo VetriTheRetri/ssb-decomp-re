@@ -695,8 +695,34 @@ u16 dCaptainModel_palette_0xC5B0[16] = {
 };
 
 /* Raw data from file offset 0xC5D0 to 0xC698 (200 bytes) */
-u8 dCaptainModel_gap_0xC5D0[200] = {
+/* gap sub-block @ 0xC5D0 (was gap+0x0, 8 bytes) */
+u8 dCaptainModel_gap_0xC5D0[8] = {
 	#include <CaptainModel/gap_0xC5D0.data.inc.c>
+};
+
+/* gap sub-block @ 0xC5D8 (was gap+0x8, 40 bytes) */
+u8 dCaptainModel_gap_0xC5D0_sub_0x8[40] = {
+	#include <CaptainModel/gap_0xC5D0_sub_0x8.data.inc.c>
+};
+
+/* gap sub-block @ 0xC600 (was gap+0x30, 40 bytes) */
+u8 dCaptainModel_gap_0xC5D0_sub_0x30[40] = {
+	#include <CaptainModel/gap_0xC5D0_sub_0x30.data.inc.c>
+};
+
+/* gap sub-block @ 0xC628 (was gap+0x58, 40 bytes) */
+u8 dCaptainModel_gap_0xC5D0_sub_0x58[40] = {
+	#include <CaptainModel/gap_0xC5D0_sub_0x58.data.inc.c>
+};
+
+/* gap sub-block @ 0xC650 (was gap+0x80, 40 bytes) */
+u8 dCaptainModel_gap_0xC5D0_sub_0x80[40] = {
+	#include <CaptainModel/gap_0xC5D0_sub_0x80.data.inc.c>
+};
+
+/* gap sub-block @ 0xC678 (was gap+0xA8, 32 bytes) */
+u8 dCaptainModel_gap_0xC5D0_sub_0xA8[32] = {
+	#include <CaptainModel/gap_0xC5D0_sub_0xA8.data.inc.c>
 };
 
 /* Sprite: Stock */

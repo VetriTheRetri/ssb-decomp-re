@@ -1225,8 +1225,24 @@ u16 dLinkModel_palette_0x11CA0[16] = {
 };
 
 /* Raw data from file offset 0x11CC0 to 0x11D38 (120 bytes) */
-u8 dLinkModel_gap_0x11CC0[120] = {
+/* gap sub-block @ 0x11CC0 (was gap+0x0, 8 bytes) */
+u8 dLinkModel_gap_0x11CC0[8] = {
 	#include <LinkModel/gap_0x11CC0.data.inc.c>
+};
+
+/* gap sub-block @ 0x11CC8 (was gap+0x8, 40 bytes) */
+u8 dLinkModel_gap_0x11CC0_sub_0x8[40] = {
+	#include <LinkModel/gap_0x11CC0_sub_0x8.data.inc.c>
+};
+
+/* gap sub-block @ 0x11CF0 (was gap+0x30, 40 bytes) */
+u8 dLinkModel_gap_0x11CC0_sub_0x30[40] = {
+	#include <LinkModel/gap_0x11CC0_sub_0x30.data.inc.c>
+};
+
+/* gap sub-block @ 0x11D18 (was gap+0x58, 32 bytes) */
+u8 dLinkModel_gap_0x11CC0_sub_0x58[32] = {
+	#include <LinkModel/gap_0x11CC0_sub_0x58.data.inc.c>
 };
 
 /* Sprite: Stock */

@@ -14,6 +14,7 @@
  * from the baserom by tools/extractRelocInc.py at extract time. */
 
 #include "relocdata_types.h"
+#include <wp/wptypes.h>
 
 /* Raw data from file offset 0x0000 to 0x0050 (80 bytes) */
 u8 dITCommonData_Container_VelocitiesY[80] = {
@@ -129,9 +130,34 @@ u8 dITCommonData_LGun_ItemAttributes[72] = {
 	#include <ITCommonData/LGun_ItemAttributes.data.inc.c>
 };
 
-/* Raw data from file offset 0x02B0 to 0x02E4 (52 bytes) */
-u8 dITCommonData_LGunAmmo_WeaponAttributes[52] = {
-	#include <ITCommonData/LGunAmmo_WeaponAttributes.data.inc.c>
+/* WPAttributes @ 0x02B0 */
+WPAttributes dITCommonData_LGunAmmo_WeaponAttributes = {
+    (void *)0x00B9102A,  /* data (chain) */
+    NULL,  /* p_mobjsubs */
+    NULL,  /* anim_joints */
+    NULL,  /* p_matanim_joints */
+    { { 0, 0, 0 }, { -5, 0, 0 } },  /* attack_offsets */
+    10, 0, -10, 10,  /* map_coll top/center/bottom/width */
+    120,  /* size */
+    70,  /* angle            : 10 */
+    40,  /* knockback_scale  : 10 */
+    10,  /* damage           :  8 */
+    2,  /* element          :  4 */
+    0,  /* knockback_weight : 10 */
+    -8,  /* shield_damage    :  8 */
+    2,  /* attack_count     :  2 */
+    0,  /* can_setoff       :  1 */
+    2,  /* sfx              : 10 */
+    1,  /* priority         :  3 */
+    0,  /* can_rehit_item   :  1 */
+    0,  /* can_rehit_fighter:  1 */
+    1,  /* can_hop          :  1 */
+    1,  /* can_reflect      :  1 */
+    1,  /* can_absorb       :  1 */
+    1,  /* can_shield       :  1 */
+    0,  /* unused_0x2F_b6   :  1 */
+    0,  /* unused_0x2F_b7   :  1 */
+    50,  /* knockback_base   : 10 */
 };
 
 /* ItemAttributes @ 0x02E4 — FFlower */
@@ -147,9 +173,34 @@ u8 dITCommonData_FFlower_ItemAttributes[72] = {
 	#include <ITCommonData/FFlower_ItemAttributes.data.inc.c>
 };
 
-/* Raw data from file offset 0x032C to 0x0360 (52 bytes) */
-u8 dITCommonData_FFlowerFlame_WeaponAttributes[52] = {
-	#include <ITCommonData/FFlowerFlame_WeaponAttributes.data.inc.c>
+/* WPAttributes @ 0x032C */
+WPAttributes dITCommonData_FFlowerFlame_WeaponAttributes = {
+    NULL,  /* data (chain-encoded — fixRelocChain patches if .reloc has entry) */
+    NULL,  /* p_mobjsubs */
+    NULL,  /* anim_joints */
+    NULL,  /* p_matanim_joints */
+    { { 0, 0, 0 }, { 0, 0, 0 } },  /* attack_offsets */
+    50, 0, -50, 50,  /* map_coll top/center/bottom/width */
+    270,  /* size */
+    0,  /* angle            : 10 */
+    100,  /* knockback_scale  : 10 */
+    3,  /* damage           :  8 */
+    1,  /* element          :  4 */
+    3,  /* knockback_weight : 10 */
+    1,  /* shield_damage    :  8 */
+    1,  /* attack_count     :  2 */
+    0,  /* can_setoff       :  1 */
+    28,  /* sfx              : 10 */
+    1,  /* priority         :  3 */
+    1,  /* can_rehit_item   :  1 */
+    0,  /* can_rehit_fighter:  1 */
+    0,  /* can_hop          :  1 */
+    1,  /* can_reflect      :  1 */
+    1,  /* can_absorb       :  1 */
+    1,  /* can_shield       :  1 */
+    0,  /* unused_0x2F_b6   :  1 */
+    0,  /* unused_0x2F_b7   :  1 */
+    0,  /* knockback_base   : 10 */
 };
 
 /* Raw data from file offset 0x0360 to 0x0374 (20 bytes) */
@@ -219,14 +270,64 @@ u8 dITCommonData_StarRod_ItemAttributes[72] = {
 	#include <ITCommonData/StarRod_ItemAttributes.data.inc.c>
 };
 
-/* Raw data from file offset 0x04D4 to 0x0508 (52 bytes) */
-u8 dITCommonData_StarRod_WeaponAttributes[52] = {
-	#include <ITCommonData/StarRod_WeaponAttributes.data.inc.c>
+/* WPAttributes @ 0x04D4 */
+WPAttributes dITCommonData_StarRod_WeaponAttributes = {
+    (void *)0x01421516,  /* data (chain) */
+    NULL,  /* p_mobjsubs */
+    NULL,  /* anim_joints */
+    NULL,  /* p_matanim_joints */
+    { { 0, 0, 0 }, { 0, 0, 0 } },  /* attack_offsets */
+    10, -10, -10, 10,  /* map_coll top/center/bottom/width */
+    200,  /* size */
+    361,  /* angle            : 10 */
+    100,  /* knockback_scale  : 10 */
+    8,  /* damage           :  8 */
+    0,  /* element          :  4 */
+    0,  /* knockback_weight : 10 */
+    1,  /* shield_damage    :  8 */
+    1,  /* attack_count     :  2 */
+    1,  /* can_setoff       :  1 */
+    38,  /* sfx              : 10 */
+    1,  /* priority         :  3 */
+    0,  /* can_rehit_item   :  1 */
+    0,  /* can_rehit_fighter:  1 */
+    1,  /* can_hop          :  1 */
+    1,  /* can_reflect      :  1 */
+    1,  /* can_absorb       :  1 */
+    1,  /* can_shield       :  1 */
+    0,  /* unused_0x2F_b6   :  1 */
+    0,  /* unused_0x2F_b7   :  1 */
+    10,  /* knockback_base   : 10 */
 };
 
-/* Raw data from file offset 0x0508 to 0x053C (52 bytes) */
-u8 dITCommonData_StarRodSmash_WeaponAttributes[52] = {
-	#include <ITCommonData/StarRodSmash_WeaponAttributes.data.inc.c>
+/* WPAttributes @ 0x0508 */
+WPAttributes dITCommonData_StarRodSmash_WeaponAttributes = {
+    (void *)0x014F1516,  /* data (chain) */
+    NULL,  /* p_mobjsubs */
+    NULL,  /* anim_joints */
+    NULL,  /* p_matanim_joints */
+    { { 0, 0, 0 }, { 0, 0, 0 } },  /* attack_offsets */
+    10, -10, -10, 10,  /* map_coll top/center/bottom/width */
+    200,  /* size */
+    361,  /* angle            : 10 */
+    100,  /* knockback_scale  : 10 */
+    12,  /* damage           :  8 */
+    0,  /* element          :  4 */
+    0,  /* knockback_weight : 10 */
+    1,  /* shield_damage    :  8 */
+    1,  /* attack_count     :  2 */
+    1,  /* can_setoff       :  1 */
+    37,  /* sfx              : 10 */
+    1,  /* priority         :  3 */
+    0,  /* can_rehit_item   :  1 */
+    0,  /* can_rehit_fighter:  1 */
+    1,  /* can_hop          :  1 */
+    1,  /* can_reflect      :  1 */
+    1,  /* can_absorb       :  1 */
+    1,  /* can_shield       :  1 */
+    0,  /* unused_0x2F_b6   :  1 */
+    0,  /* unused_0x2F_b7   :  1 */
+    10,  /* knockback_base   : 10 */
 };
 
 /* ItemAttributes @ 0x053C — GShell */
@@ -330,9 +431,34 @@ u8 dITCommonData_Wark_ItemAttributes[72] = {
 	#include <ITCommonData/Wark_ItemAttributes.data.inc.c>
 };
 
-/* Raw data from file offset 0x0774 to 0x07A8 (52 bytes) */
-u8 dITCommonData_WarkRock_WeaponAttributes[52] = {
-	#include <ITCommonData/WarkRock_WeaponAttributes.data.inc.c>
+/* WPAttributes @ 0x0774 */
+WPAttributes dITCommonData_WarkRock_WeaponAttributes = {
+    (void *)0x01DE2AE6,  /* data (chain) */
+    (MObjSub ***)0x01EA2A74,  /* p_mobjsubs (chain) */
+    NULL,  /* anim_joints */
+    NULL,  /* p_matanim_joints */
+    { { 0, 0, 0 }, { 0, 0, 0 } },  /* attack_offsets */
+    210, 0, -210, 210,  /* map_coll top/center/bottom/width */
+    360,  /* size */
+    80,  /* angle            : 10 */
+    80,  /* knockback_scale  : 10 */
+    8,  /* damage           :  8 */
+    0,  /* element          :  4 */
+    0,  /* knockback_weight : 10 */
+    1,  /* shield_damage    :  8 */
+    1,  /* attack_count     :  2 */
+    1,  /* can_setoff       :  1 */
+    2,  /* sfx              : 10 */
+    1,  /* priority         :  3 */
+    1,  /* can_rehit_item   :  1 */
+    0,  /* can_rehit_fighter:  1 */
+    1,  /* can_hop          :  1 */
+    0,  /* can_reflect      :  1 */
+    0,  /* can_absorb       :  1 */
+    1,  /* can_shield       :  1 */
+    0,  /* unused_0x2F_b6   :  1 */
+    0,  /* unused_0x2F_b7   :  1 */
+    30,  /* knockback_base   : 10 */
 };
 
 /* ItemAttributes @ 0x07A8 — Kabigon */
@@ -387,9 +513,34 @@ u8 dITCommonData_Nyars_ItemAttributes[72] = {
 	#include <ITCommonData/Nyars_ItemAttributes.data.inc.c>
 };
 
-/* Raw data from file offset 0x08C8 to 0x08FC (52 bytes) */
-u8 dITCommonData_NyarsCoin_WeaponAttributes[52] = {
-	#include <ITCommonData/NyarsCoin_WeaponAttributes.data.inc.c>
+/* WPAttributes @ 0x08C8 */
+WPAttributes dITCommonData_NyarsCoin_WeaponAttributes = {
+    (void *)0x023F3148,  /* data (chain) */
+    NULL,  /* p_mobjsubs */
+    NULL,  /* anim_joints */
+    NULL,  /* p_matanim_joints */
+    { { 0, 0, 0 }, { 0, 0, 0 } },  /* attack_offsets */
+    113, 0, -113, 94,  /* map_coll top/center/bottom/width */
+    200,  /* size */
+    90,  /* angle            : 10 */
+    60,  /* knockback_scale  : 10 */
+    6,  /* damage           :  8 */
+    4,  /* element          :  4 */
+    0,  /* knockback_weight : 10 */
+    2,  /* shield_damage    :  8 */
+    1,  /* attack_count     :  2 */
+    1,  /* can_setoff       :  1 */
+    216,  /* sfx              : 10 */
+    1,  /* priority         :  3 */
+    0,  /* can_rehit_item   :  1 */
+    0,  /* can_rehit_fighter:  1 */
+    1,  /* can_hop          :  1 */
+    1,  /* can_reflect      :  1 */
+    1,  /* can_absorb       :  1 */
+    1,  /* can_shield       :  1 */
+    0,  /* unused_0x2F_b6   :  1 */
+    0,  /* unused_0x2F_b7   :  1 */
+    30,  /* knockback_base   : 10 */
 };
 
 /* ItemAttributes @ 0x08FC — Lizardon */
@@ -423,9 +574,34 @@ u8 dITCommonData_Spear_ItemAttributes[72] = {
 	#include <ITCommonData/Spear_ItemAttributes.data.inc.c>
 };
 
-/* Raw data from file offset 0x09D4 to 0x0A08 (52 bytes) */
-u8 dITCommonData_SpearSwarm_WeaponAttributes[52] = {
-	#include <ITCommonData/SpearSwarm_WeaponAttributes.data.inc.c>
+/* WPAttributes @ 0x09D4 */
+WPAttributes dITCommonData_SpearSwarm_WeaponAttributes = {
+    (void *)0x0276392A,  /* data (chain) */
+    (MObjSub ***)0x027838B8,  /* p_mobjsubs (chain) */
+    NULL,  /* anim_joints */
+    (AObjEvent32 ***)0x02823958,  /* p_matanim_joints (chain) */
+    { { 0, 0, 0 }, { 0, 0, 0 } },  /* attack_offsets */
+    244, 0, -244, 244,  /* map_coll top/center/bottom/width */
+    300,  /* size */
+    80,  /* angle            : 10 */
+    100,  /* knockback_scale  : 10 */
+    12,  /* damage           :  8 */
+    0,  /* element          :  4 */
+    0,  /* knockback_weight : 10 */
+    1,  /* shield_damage    :  8 */
+    1,  /* attack_count     :  2 */
+    1,  /* can_setoff       :  1 */
+    2,  /* sfx              : 10 */
+    1,  /* priority         :  3 */
+    1,  /* can_rehit_item   :  1 */
+    0,  /* can_rehit_fighter:  1 */
+    0,  /* can_hop          :  1 */
+    0,  /* can_reflect      :  1 */
+    0,  /* can_absorb       :  1 */
+    1,  /* can_shield       :  1 */
+    0,  /* unused_0x2F_b6   :  1 */
+    0,  /* unused_0x2F_b7   :  1 */
+    40,  /* knockback_base   : 10 */
 };
 
 /* ItemAttributes @ 0x0A08 — Kamex */
@@ -441,9 +617,34 @@ u8 dITCommonData_Kamex_ItemAttributes[72] = {
 	#include <ITCommonData/Kamex_ItemAttributes.data.inc.c>
 };
 
-/* Raw data from file offset 0x0A50 to 0x0A84 (52 bytes) */
-u8 dITCommonData_KamexHydro_WeaponAttributes[52] = {
-	#include <ITCommonData/KamexHydro_WeaponAttributes.data.inc.c>
+/* WPAttributes @ 0x0A50 */
+WPAttributes dITCommonData_KamexHydro_WeaponAttributes = {
+    (void *)0x02953E76,  /* data (chain) */
+    (MObjSub ***)0x02963DB0,  /* p_mobjsubs (chain) */
+    (AObjEvent32 **)0x02973EA4,  /* anim_joints (chain) */
+    (AObjEvent32 ***)0x02A13EDC,  /* p_matanim_joints (chain) */
+    { { 0, 0, 0 }, { 0, 0, 0 } },  /* attack_offsets */
+    213, 0, -213, 180,  /* map_coll top/center/bottom/width */
+    200,  /* size */
+    0,  /* angle            : 10 */
+    30,  /* knockback_scale  : 10 */
+    6,  /* damage           :  8 */
+    0,  /* element          :  4 */
+    0,  /* knockback_weight : 10 */
+    1,  /* shield_damage    :  8 */
+    1,  /* attack_count     :  2 */
+    1,  /* can_setoff       :  1 */
+    2,  /* sfx              : 10 */
+    1,  /* priority         :  3 */
+    1,  /* can_rehit_item   :  1 */
+    0,  /* can_rehit_fighter:  1 */
+    0,  /* can_hop          :  1 */
+    0,  /* can_reflect      :  1 */
+    0,  /* can_absorb       :  1 */
+    1,  /* can_shield       :  1 */
+    0,  /* unused_0x2F_b6   :  1 */
+    0,  /* unused_0x2F_b7   :  1 */
+    78,  /* knockback_base   : 10 */
 };
 
 /* ItemAttributes @ 0x0A84 — MLucky */
@@ -490,9 +691,34 @@ u8 dITCommonData_Starmie_ItemAttributes[72] = {
 	#include <ITCommonData/Starmie_ItemAttributes.data.inc.c>
 };
 
-/* Raw data from file offset 0x0B7C to 0x0BB0 (52 bytes) */
-u8 dITCommonData_StarmieSwift_WeaponAttributes[52] = {
-	#include <ITCommonData/StarmieSwift_WeaponAttributes.data.inc.c>
+/* WPAttributes @ 0x0B7C */
+WPAttributes dITCommonData_StarmieSwift_WeaponAttributes = {
+    (void *)0x02EC4676,  /* data (chain) */
+    NULL,  /* p_mobjsubs */
+    NULL,  /* anim_joints */
+    NULL,  /* p_matanim_joints */
+    { { 0, 0, 0 }, { 0, 0, 0 } },  /* attack_offsets */
+    113, 0, -113, 309,  /* map_coll top/center/bottom/width */
+    200,  /* size */
+    100,  /* angle            : 10 */
+    20,  /* knockback_scale  : 10 */
+    3,  /* damage           :  8 */
+    0,  /* element          :  4 */
+    0,  /* knockback_weight : 10 */
+    1,  /* shield_damage    :  8 */
+    1,  /* attack_count     :  2 */
+    1,  /* can_setoff       :  1 */
+    32,  /* sfx              : 10 */
+    1,  /* priority         :  3 */
+    0,  /* can_rehit_item   :  1 */
+    0,  /* can_rehit_fighter:  1 */
+    1,  /* can_hop          :  1 */
+    1,  /* can_reflect      :  1 */
+    1,  /* can_absorb       :  1 */
+    1,  /* can_shield       :  1 */
+    0,  /* unused_0x2F_b6   :  1 */
+    0,  /* unused_0x2F_b7   :  1 */
+    40,  /* knockback_base   : 10 */
 };
 
 /* ItemAttributes @ 0x0BB0 — Sawamura */
@@ -521,9 +747,34 @@ u8 dITCommonData_Dogas_ItemAttributes[72] = {
 	#include <ITCommonData/Dogas_ItemAttributes.data.inc.c>
 };
 
-/* Raw data from file offset 0x0C40 to 0x0C74 (52 bytes) */
-u8 dITCommonData_DogasSmog_WeaponAttributes[52] = {
-	#include <ITCommonData/DogasSmog_WeaponAttributes.data.inc.c>
+/* WPAttributes @ 0x0C40 */
+WPAttributes dITCommonData_DogasSmog_WeaponAttributes = {
+    (void *)0x03114C40,  /* data (chain) */
+    (MObjSub ***)0x03124BDE,  /* p_mobjsubs (chain) */
+    (AObjEvent32 **)0x03134C64,  /* anim_joints (chain) */
+    (AObjEvent32 ***)0x031D4C78,  /* p_matanim_joints (chain) */
+    { { 0, 0, 0 }, { 0, 0, 0 } },  /* attack_offsets */
+    75, 0, -75, 75,  /* map_coll top/center/bottom/width */
+    50,  /* size */
+    150,  /* angle            : 10 */
+    100,  /* knockback_scale  : 10 */
+    3,  /* damage           :  8 */
+    0,  /* element          :  4 */
+    60,  /* knockback_weight : 10 */
+    1,  /* shield_damage    :  8 */
+    1,  /* attack_count     :  2 */
+    1,  /* can_setoff       :  1 */
+    2,  /* sfx              : 10 */
+    1,  /* priority         :  3 */
+    1,  /* can_rehit_item   :  1 */
+    0,  /* can_rehit_fighter:  1 */
+    0,  /* can_hop          :  1 */
+    0,  /* can_reflect      :  1 */
+    0,  /* can_absorb       :  1 */
+    0,  /* can_shield       :  1 */
+    0,  /* unused_0x2F_b6   :  1 */
+    0,  /* unused_0x2F_b7   :  1 */
+    0,  /* knockback_base   : 10 */
 };
 
 /* ItemAttributes @ 0x0C74 — Pippi */
@@ -539,9 +790,34 @@ u8 dITCommonData_Pippi_ItemAttributes[72] = {
 	#include <ITCommonData/Pippi_ItemAttributes.data.inc.c>
 };
 
-/* Raw data from file offset 0x0CBC to 0x0CF0 (52 bytes) */
-u8 dITCommonData_PippiSwarm_WeaponAttributes[52] = {
-	#include <ITCommonData/PippiSwarm_WeaponAttributes.data.inc.c>
+/* WPAttributes @ 0x0CBC */
+WPAttributes dITCommonData_PippiSwarm_WeaponAttributes = {
+    (void *)0x033C4D66,  /* data (chain) */
+    NULL,  /* p_mobjsubs */
+    NULL,  /* anim_joints */
+    NULL,  /* p_matanim_joints */
+    { { 0, 0, 0 }, { 0, 0, 0 } },  /* attack_offsets */
+    192, 0, -192, 192,  /* map_coll top/center/bottom/width */
+    200,  /* size */
+    80,  /* angle            : 10 */
+    100,  /* knockback_scale  : 10 */
+    12,  /* damage           :  8 */
+    0,  /* element          :  4 */
+    0,  /* knockback_weight : 10 */
+    1,  /* shield_damage    :  8 */
+    1,  /* attack_count     :  2 */
+    1,  /* can_setoff       :  1 */
+    2,  /* sfx              : 10 */
+    1,  /* priority         :  3 */
+    1,  /* can_rehit_item   :  1 */
+    1,  /* can_rehit_fighter:  1 */
+    0,  /* can_hop          :  1 */
+    0,  /* can_reflect      :  1 */
+    0,  /* can_absorb       :  1 */
+    1,  /* can_shield       :  1 */
+    0,  /* unused_0x2F_b6   :  1 */
+    0,  /* unused_0x2F_b7   :  1 */
+    40,  /* knockback_base   : 10 */
 };
 
 /* Raw data from file offset 0x0CF0 to 0x0D40 (80 bytes) */

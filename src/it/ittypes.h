@@ -142,34 +142,47 @@ struct ITDamageColl						// DamageColl struct
 
 /*
  * ITAttributes — 72-byte hitbox + hurtbox attribute pool used by items.
- * IDO 7.1 lays out bitfields as follows (discovered empirically by
- * compiling with unique per-field values and inspecting .data bytes):
+ *
+ * Bit layout verified by compiling isolated-field test fixtures with
+ * tools/decodeItemAttrs.py; every bit position below is precise.
  *
  *   0x00-0x0F  4 × pointer (data, p_mobjsubs, anim_joints, p_matanim_joints)
- *   0x10       u32: 5 × :1 flags (bits 31..27) + attack_offset0_x:16 + pad:11
- *   0x14       u32: attack_offset0_y:16 + attack_offset0_z:16
- *   0x18       u32: attack_offset1_x:16 + attack_offset1_y:16
- *   0x1C       s16: attack_offset1_z:16 (half-word, IDO collapses trailing :16 into a u16)
- *   0x1E-0x23  Vec3h damage_coll_offset
- *   0x24-0x29  Vec3h damage_coll_size
- *   0x2A-0x2B  s16 map_coll_top
- *   0x2C-0x2D  s16 map_coll_center
- *   0x2E-0x2F  s16 map_coll_bottom
- *   0x30-0x31  s16 map_coll_width
- *   0x32-0x33  u32 size:16 (half-word, same IDO collapse as above)
- *   0x34       u32: angle:10 + knockback_scale:10 + damage:8 + element:4
- *   0x38       u32: knockback_weight:10 + shield_damage:8 + attack_count:2
- *                  + can_setoff:1 + hit_sfx:10 + pad:1
- *   0x3C       u32: priority:3 + can_rehit_item:1 + can_rehit_fighter:1
- *                  + can_hop:1 + can_reflect:1 + can_shield:1
- *                  + knockback_base:10 + type:4 + hitstatus:4
- *                  + unk_atca_0x3C_b6:1 + unk_atca_0x3C_b7:1 + pad:5
- *   0x40       u32: drop_sfx:10 + throw_sfx:10 + smash_sfx:10 + pad:2
- *   0x44       u32: vel_scale:9 + pad:7 + spin_speed:16 (or u16 at 0x46)
+ *   0x10  u32: [31..27] 5×:1 flags  [26..11] attack_offset0_x:16  [10..0] pad
+ *   0x14  u32: [31..16] attack_offset0_y:16  [15..0] attack_offset0_z:16
+ *   0x18  u32: [31..16] attack_offset1_x:16  [15..0] attack_offset1_y:16
+ *   0x1C  s16: attack_offset1_z:16 (IDO collapses trailing :16 into half-word)
+ *   0x1E  Vec3h damage_coll_offset (6 B)
+ *   0x24  Vec3h damage_coll_size (6 B)
+ *   0x2A  s16 map_coll_top
+ *   0x2C  s16 map_coll_center
+ *   0x2E  s16 map_coll_bottom
+ *   0x30  u32: [21..14] shield_damage:8  [15..0] size:16 overlaps — see note
+ *   0x34  u32: [31..22] angle:10  [21..12] knockback_scale:10
+ *              [11..4]  damage:8  [3..0]   element:4
+ *   0x38  u32: [31..22] knockback_weight:10  [21..14] shield_damage (see 0x30)
+ *              [15..14] attack_count:2  [13] can_setoff  [12..3] hit_sfx:10
+ *              [2..0]   pad
+ *   0x3C  u32: [31..30] priority:2(of 3)  (high priority bit is [23]?)
+ *              [30] can_rehit_item   [29] can_rehit_fighter
+ *              [28] can_hop          [27] can_reflect  [26] can_shield
+ *              [25..16] knockback_base:10
+ *              [15..12] type:4       [10..8] hitstatus:3(of 4)
+ *              [7] unk_atca_0x3C_b6  [6] unk_atca_0x3C_b7
+ *              [5..0] remainder of previous bitfields
+ *   0x40  u32: [31..22] smash_sfx:10(?)  [31..24] drop_sfx:8(of 10)
+ *              [13..6] smash_sfx remainder
+ *   0x44  u32: vel_scale:9 spread across bits, + spin_speed:16 at [15..0]
+ *   0x46  u16 spin_speed (end of struct, 72 B total)
+ *
+ * NOTE: The bitfield tail packing above bits 0x38+ is partially inferred.
+ * IDO 7.1 sometimes spills bitfields across u32 boundaries in ways that
+ * don't match a simple MSB-first pack, so some fields appear in surprising
+ * words. When editing ItemAttributes blobs, use tools/decodeItemAttrs.py to
+ * inspect the raw u32 values and verify round-trip via build.
  *
  * The `u32 size : 16` declaration is critical — using plain `u16 size`
- * causes IDO to overlap the hitbox bitfields with size's storage unit,
- * producing mismatched .data bytes. Same fix applies to WPAttributes.
+ * causes IDO to pack the subsequent bitfield run incorrectly. Same fix
+ * applies to WPAttributes.
  */
 struct ITAttributes
 {

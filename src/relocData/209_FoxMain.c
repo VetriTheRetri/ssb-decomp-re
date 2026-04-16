@@ -33,7 +33,7 @@ extern u8 dFoxModel_gap_0x7BA0_sub_0x30[];
 extern u8 dFoxModel_gap_0x7BA0_sub_0x58[];
 extern u8 dFoxModel_gap_0x7BA0_sub_0x8[];
 extern u16 dFoxModel_palette_0x7B80[];
-extern u8 dFoxUnknown[];
+extern Gfx dFoxUnknown_DL[];
 extern u8 dFoxShieldPose_script0_17[];
 extern u8 dFoxShieldPose_ptrs1[];
 extern u8 dFoxShieldPose_script2_17[];
@@ -95,8 +95,8 @@ FTModelPart dFoxMain_modelparts_desc_0x0B0[4] = {
 
 /* @ 0x0100, 40 bytes: modelparts_desc[2] — FoxUnknown DLs (FTModelPart[2]) */
 FTModelPart dFoxMain_modelparts_desc_0x100[2] = {
-	{ (Gfx*)((u8*)dFoxUnknown + 0x3F0), NULL, NULL, NULL, 0 },
-	{ (Gfx*)((u8*)dFoxUnknown + 0x3F0), NULL, NULL, NULL, 0 },
+	{ (Gfx*)dFoxUnknown_DL, NULL, NULL, NULL, 0 },
+	{ (Gfx*)dFoxUnknown_DL, NULL, NULL, NULL, 0 },
 };
 
 /* @ 0x0128, 108 bytes: FTAttributes.modelparts_container target.

@@ -4,7 +4,7 @@
 #include "relocdata_types.h"
 #include <ft/fttypes.h>
 
-extern u8 dFoxUnknown[];
+extern Gfx dFoxUnknown_DL[];
 extern u32 dKirbyMainMotion_0x0154[];
 extern DObjDesc dKirbyModel_JointTree[];
 extern DObjDesc dKirbyModel_JointTree_0x2CD0[];
@@ -234,8 +234,8 @@ FTModelPart dKirbyMain_modelparts_desc_0x39C[2] = {
 
 /* @ 0x03C4, 40 bytes: FTAttributes.sub_0x3C4 target (was dKirbyMain_pre+0x3C4) */
 FTModelPart dKirbyMain_modelparts_desc_0x3C4[2] = {
-	{ (Gfx*)((u8*)dFoxUnknown + 0x3F0), NULL, NULL, NULL, 0x00 },
-	{ (Gfx*)((u8*)dFoxUnknown + 0x3F0), NULL, NULL, NULL, 0x00 },
+	{ (Gfx*)dFoxUnknown_DL, NULL, NULL, NULL, 0x00 },
+	{ (Gfx*)dFoxUnknown_DL, NULL, NULL, NULL, 0x00 },
 };
 
 /* @ 0x03EC, 108 bytes: FTAttributes.modelparts_container target (was dKirbyMain_pre+0x3EC) */

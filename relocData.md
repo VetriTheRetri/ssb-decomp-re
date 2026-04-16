@@ -48,7 +48,7 @@ build uses one of three override mechanisms, in priority order:
 `.jp.c` raw blobs are no longer used — every previously-blob-overridden
 file has been migrated to one of the structural mechanisms above.
 
-### Remaining raw-blob inline files (11 files, ~50 KB)
+### Remaining raw-blob inline files (9 files, ~51 KB)
 
 These are inline `.c` files whose only declarations are one or two raw
 `u8[]` arrays (no struct types, no LUT/Tex blocks, no animation u32[]).
@@ -59,10 +59,9 @@ They build and match but aren't structurally decomposed.
 | Item / object | 1 | 5,888 | `ITBonus1Object` |
 | Pupupu beta | 3 | 27,232 | `StagePupupuBetaImages`, `StagePupupuBeta1`, `StagePupupuBeta2` — beta prototype geometry |
 | Stage File2/3/4 | 1 | 17,328 | `StageBattlefieldFile2` — split into 3 named u8 regions, no struct typing yet |
-| Other / utility | 4 | 2,128 | `FoxUnknown`, `SC1PTrainingMode`, `SYKseg1Validate`, `SYSignValidate` |
+| Other / utility | 3 | 816 | `SC1PTrainingMode`, `SYKseg1Validate`, `SYSignValidate` |
 | Common textures | 1 | 560 | `NCommonTexture` |
-| Fighter Special | 1 | 48 | `KirbySpecial1` (48 B — tiny stub) |
-| **Total** | **11** | **53,184** | |
+| **Total** | **9** | **51,824** | |
 
 Recent round of structural work:
 - All 27 fighter **Main.c** files now have every `_pre` sub-block
@@ -82,6 +81,16 @@ Recent round of structural work:
   `Gfx` / `LUT` / `Tex` / `MObjSub` / `animjoint` / `matanim` named
   sub-blocks, all `(void*)0xXXXXYYYY` hex placeholders replaced with
   `(void*)&local_sym`. See `tools/symbolizeRelocFile.py`.
+- `KirbySpecial1` (fid 230, 48 B) → `void *[9]` table of cross-file
+  `WPAttributes` pointers — one entry per fighter whose neutral
+  special Kirby can copy. Extern chain with 9 entries, all resolved
+  symbolically (target symbols like `dMarioSpecial1_Fireball_WeaponAttributes`,
+  `dFoxSpecial1_Blaster_WeaponAttributes`, etc.).
+- `FoxUnknown` (fid 315, 1,312 B) split into typed `u16 palette[16]`,
+  `u8 Tex[256]`, `Vtx Vtx[44]`, `Gfx DL[38]` — it's a Fox costume-
+  accessory DL asset referenced by both FoxMain and KirbyMain at
+  offset 0x3F0. Callers now reference `dFoxUnknown_DL` directly
+  instead of `(Gfx*)((u8*)dFoxUnknown + 0x3F0)`.
 - Earlier rounds: all `*MainMotion`, `MV opening / ending`,
   `Bonus*CommonImages`, `Stage*Images`, `Special1`, the `LBTransition*`,
   and `MarioSecondaryImage` files.
@@ -296,10 +305,10 @@ more structural representation instead.
 
 The remaining work splits into four buckets:
 
-1. **Promote the 11 raw-blob inline files** (~53 KB). `StageBattlefieldFile2`
+1. **Promote the 9 raw-blob inline files** (~51 KB). `StageBattlefieldFile2`
    is the biggest remaining (17 KB); the others are each ≤ 14 KB.
-   `ITCommonObject` has been removed from this list (fully structured
-   this round).
+   Recent rounds removed `ITCommonObject`, `KirbySpecial1`, and
+   `FoxUnknown` from this list.
 
 2. **Carve `gap_*` bytes inside typed inline masters** (~1.13 MB
    remaining). These are vertex pools, textures, and palettes

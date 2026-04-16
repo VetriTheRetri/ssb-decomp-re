@@ -11,9 +11,7 @@
 /* Shared vertex / DL pool the item DObjDesc trees reference via the
  * intern chain. Not yet broken down into typed Vtx / Gfx / Tex blocks. */
 /* @ 0x0000, 8 bytes (raw gap) */
-u8 dITCommonObject_data_0x0000_gap_0x0000[0x8] = {
-	#include <ITCommonObject/dITCommonObject_data_0x0000_gap_0x0000.data.inc.c>
-};
+PAD(8);
 
 /* @ 0x0008, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x0008[16] = {
@@ -21,9 +19,7 @@ u16 dITCommonObject_LUT_0x0008[16] = {
 };
 
 /* @ 0x0028, 8 bytes (raw gap) */
-u8 dITCommonObject_data_0x0000_gap_0x0028[0x8] = {
-	#include <ITCommonObject/dITCommonObject_data_0x0000_gap_0x0028.data.inc.c>
-};
+PAD(8);
 
 /* @ 0x0030, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x0030[16] = {
@@ -31,9 +27,7 @@ u16 dITCommonObject_LUT_0x0030[16] = {
 };
 
 /* @ 0x0050, 8 bytes (raw gap) */
-u8 dITCommonObject_data_0x0000_gap_0x0050[0x8] = {
-	#include <ITCommonObject/dITCommonObject_data_0x0000_gap_0x0050.data.inc.c>
-};
+PAD(8);
 
 /* @ 0x0058, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x0058[16] = {
@@ -90,9 +84,7 @@ DObjDesc dITCommonObject_Capsule_Item_data_DObjDesc[5] = {
 };
 
 /* @ 0x074C, 12 bytes (raw gap) */
-u8 dITCommonObject_Capsule_Item_data_remainder_gap_0x074C[0xC] = {
-	#include <ITCommonObject/dITCommonObject_Capsule_Item_data_remainder_gap_0x074C.data.inc.c>
-};
+PAD(12);
 
 /* @ 0x0758, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x0758[16] = {
@@ -177,9 +169,7 @@ DObjDesc dITCommonObject_Star_Item_data_DObjDesc[3] = {
 };
 
 /* @ 0x15E4, 12 bytes (vertex / DL / texture pool) */
-u8 dITCommonObject_Star_Item_data_remainder[0xC] = {
-	#include <ITCommonObject/dITCommonObject_Star_Item_data_remainder.data.inc.c>
-};
+PAD(12);
 
 /* @ 0x015F0, 808 bytes */
 u32 dITCommonObject_Star_Item_matanimjoints[202] = {
@@ -195,9 +185,7 @@ DObjDesc dITCommonObject_Sword_Item_data_DObjDesc[4] = {
 };
 
 /* @ 0x19C8, 16 bytes (raw gap) */
-u8 dITCommonObject_Sword_Item_data_remainder_gap_0x19C8[0x10] = {
-	#include <ITCommonObject/dITCommonObject_Sword_Item_data_remainder_gap_0x19C8.data.inc.c>
-};
+PAD(16);
 
 /* @ 0x19D8, 64 bytes (32-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x19D8[32] = {
@@ -205,9 +193,7 @@ u16 dITCommonObject_LUT_0x19D8[32] = {
 };
 
 /* @ 0x1A18, 8 bytes (raw gap) */
-u8 dITCommonObject_Sword_Item_data_remainder_gap_0x1A18[0x8] = {
-	#include <ITCommonObject/dITCommonObject_Sword_Item_data_remainder_gap_0x1A18.data.inc.c>
-};
+PAD(8);
 
 /* @ 0x1A20, 64 bytes (32-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x1A20[32] = {
@@ -258,9 +244,7 @@ DObjDesc dITCommonObject_Bat_Item_data_DObjDesc[4] = {
 };
 
 /* @ 0x1EB0, 8 bytes (raw gap) */
-u8 dITCommonObject_Bat_Item_data_remainder_gap_0x1EB0[0x8] = {
-	#include <ITCommonObject/dITCommonObject_Bat_Item_data_remainder_gap_0x1EB0.data.inc.c>
-};
+PAD(8);
 
 /* @ 0x1EB8, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x1EB8[16] = {
@@ -328,9 +312,7 @@ DObjDesc dITCommonObject_Hammer_Item_data_DObjDesc[3] = {
 };
 
 /* @ 0x27D4, 20 bytes (raw gap) */
-u8 dITCommonObject_Hammer_Item_data_remainder_gap_0x27D4[0x14] = {
-	#include <ITCommonObject/dITCommonObject_Hammer_Item_data_remainder_gap_0x27D4.data.inc.c>
-};
+PAD(20);
 
 /* @ 0x27E8, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x27E8[16] = {
@@ -376,9 +358,7 @@ u16 dITCommonObject_LUT_0x3608[16] = {
 };
 
 /* @ 0x3628, 8 bytes (raw gap) */
-u8 dITCommonObject_BombHei_Item_data_remainder_gap_0x3628[0x8] = {
-	#include <ITCommonObject/dITCommonObject_BombHei_Item_data_remainder_gap_0x3628.data.inc.c>
-};
+PAD(8);
 
 /* @ 0x3630, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x3630[16] = {
@@ -420,9 +400,7 @@ DObjDesc dITCommonObject_MSBomb_Item_data_DObjDesc[5] = {
 };
 
 /* @ 0x3A7C, 12 bytes (raw gap) */
-u8 dITCommonObject_MSBomb_Item_data_remainder_gap_0x3A7C[0xC] = {
-	#include <ITCommonObject/dITCommonObject_MSBomb_Item_data_remainder_gap_0x3A7C.data.inc.c>
-};
+PAD(12);
 
 /* @ 0x3A88, 96 bytes (48-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x3A88[48] = {
@@ -567,9 +545,7 @@ u16 dITCommonObject_LUT_0x6098[16] = {
 };
 
 /* @ 0x60B8, 8 bytes (raw gap) */
-u8 dITCommonObject_GShell_Item_data_remainder_gap_0x60B8[0x8] = {
-	#include <ITCommonObject/dITCommonObject_GShell_Item_data_remainder_gap_0x60B8.data.inc.c>
-};
+PAD(8);
 
 /* @ 0x60C0, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x60C0[16] = {
@@ -614,9 +590,7 @@ u16 dITCommonObject_LUT_0x69E8[16] = {
 };
 
 /* @ 0x6A08, 8 bytes (raw gap) */
-u8 dITCommonObject_Box_Item_data_remainder_gap_0x6A08[0x8] = {
-	#include <ITCommonObject/dITCommonObject_Box_Item_data_remainder_gap_0x6A08.data.inc.c>
-};
+PAD(8);
 
 /* @ 0x6A10, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x6A10[16] = {
@@ -689,9 +663,7 @@ u16 dITCommonObject_LUT_0x7D90[16] = {
 };
 
 /* @ 0x7DB0, 8 bytes (raw gap) */
-u8 dITCommonObject_NBumper_Item_data_remainder_gap_0x7DB0[0x8] = {
-	#include <ITCommonObject/dITCommonObject_NBumper_Item_data_remainder_gap_0x7DB0.data.inc.c>
-};
+PAD(8);
 
 /* @ 0x7DB8, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x7DB8[16] = {
@@ -912,9 +884,7 @@ DObjDesc dITCommonObject_Mew_Item_data_DObjDesc[3] = {
 };
 
 /* @ 0xBD44, 20 bytes (raw gap) */
-u8 dITCommonObject_Mew_Item_data_remainder_gap_0xBD44[0x14] = {
-	#include <ITCommonObject/dITCommonObject_Mew_Item_data_remainder_gap_0xBD44.data.inc.c>
-};
+PAD(20);
 
 /* @ 0xBD58, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0xBD58[16] = {
@@ -944,9 +914,7 @@ DObjDesc dITCommonObject_Nyars_Item_data_DObjDesc[3] = {
 };
 
 /* @ 0xC1B4, 20 bytes (raw gap) */
-u8 dITCommonObject_Nyars_Item_data_remainder_gap_0xC1B4[0x14] = {
-	#include <ITCommonObject/dITCommonObject_Nyars_Item_data_remainder_gap_0xC1B4.data.inc.c>
-};
+PAD(20);
 
 /* @ 0xC1C8, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0xC1C8[16] = {
@@ -1082,9 +1050,7 @@ DObjDesc dITCommonObject_SpearSwarm_Weapon_data_DObjDesc[4] = {
 };
 
 /* @ 0xE558, 8 bytes (vertex / DL / texture pool) */
-u8 dITCommonObject_SpearSwarm_Weapon_data_remainder[0x8] = {
-	#include <ITCommonObject/dITCommonObject_SpearSwarm_Weapon_data_remainder.data.inc.c>
-};
+PAD(8);
 
 /* @ 0x0E560, 1280 bytes */
 u32 dITCommonObject_SpearSwarm_Weapon_matanimjoints[320] = {
@@ -1163,9 +1129,7 @@ DObjDesc dITCommonObject_KamexHydro_Weapon_data_DObjDesc[4] = {
 };
 
 /* @ 0xFA88, 8 bytes (vertex / DL / texture pool) */
-u8 dITCommonObject_KamexHydro_Weapon_data_remainder[0x8] = {
-	#include <ITCommonObject/dITCommonObject_KamexHydro_Weapon_data_remainder.data.inc.c>
-};
+PAD(8);
 
 /* @ 0x0FA90, 224 bytes */
 u32 dITCommonObject_KamexHydro_Weapon_animjoints[56] = {
@@ -1258,9 +1222,7 @@ DObjDesc dITCommonObject_StarmieSwift_Weapon_data_DObjDesc[3] = {
 };
 
 /* @ 0x11A5C, 12 bytes (raw gap) */
-u8 dITCommonObject_StarmieSwift_Weapon_data_remainder_gap_0x11A5C[0xC] = {
-	#include <ITCommonObject/dITCommonObject_StarmieSwift_Weapon_data_remainder_gap_0x11A5C.data.inc.c>
-};
+PAD(12);
 
 /* @ 0x11A68, 32 bytes (16-color RGBA5551 palette) */
 u16 dITCommonObject_LUT_0x11A68[16] = {
@@ -1340,9 +1302,7 @@ DObjDesc dITCommonObject_DogasSmog_Weapon_data_DObjDesc[3] = {
 };
 
 /* @ 0x13184, 12 bytes (vertex / DL / texture pool) */
-u8 dITCommonObject_DogasSmog_Weapon_data_remainder[0xC] = {
-	#include <ITCommonObject/dITCommonObject_DogasSmog_Weapon_data_remainder.data.inc.c>
-};
+PAD(12);
 
 /* @ 0x13190, 80 bytes */
 u32 dITCommonObject_DogasSmog_Weapon_animjoints[20] = {

@@ -578,27 +578,27 @@ Sprite dMNTitle_Bros = {
 PAD(4);
 
 /* Raw data from file offset 0x251D0 to 0x25350 (384 bytes) */
-u8 dMNTitle_LogoAnimJoint_AnimJoint[384] = {
+u32 dMNTitle_LogoAnimJoint_AnimJoint[96] = {
 	#include <MNTitle/LogoAnimJoint_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x25350 to 0x258D0 (1408 bytes) */
-u8 dMNTitle_LabelsAnimJoint_AnimJoint[1408] = {
+u32 dMNTitle_LabelsAnimJoint_AnimJoint[352] = {
 	#include <MNTitle/LabelsAnimJoint_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x258D0 to 0x25E70 (1440 bytes) */
-u8 dMNTitle_PressStartAnimJoint_AnimJoint[1440] = {
+u32 dMNTitle_PressStartAnimJoint_AnimJoint[360] = {
 	#include <MNTitle/PressStartAnimJoint_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x25E70 to 0x25F60 (240 bytes) */
-u8 dMNTitle_SlashAnimJoint_AnimJoint[240] = {
+u32 dMNTitle_SlashAnimJoint_AnimJoint[60] = {
 	#include <MNTitle/SlashAnimJoint_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x25F60 to 0x26020 (192 bytes) */
-u8 dMNTitle_SlashMat_AnimJoint[192] = {
+u32 dMNTitle_SlashMat_AnimJoint[48] = {
 	#include <MNTitle/SlashMat_AnimJoint.data.inc.c>
 };
 
@@ -698,7 +698,7 @@ DObjDesc dMNTitle_FireDObjDesc[] = {
 };
 
 /* Raw data from file offset 0x29010 to 0x290A0 (144 bytes) */
-u8 dMNTitle_FireAnimJoint_AnimJoint[144] = {
+u32 dMNTitle_FireAnimJoint_AnimJoint[36] = {
 	#include <MNTitle/FireAnimJoint_AnimJoint.data.inc.c>
 };
 

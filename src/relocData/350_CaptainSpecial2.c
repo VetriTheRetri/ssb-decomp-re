@@ -77,12 +77,12 @@ DObjDesc dCaptainSpecial2_FalconKickDObjDesc[] = {
 PAD(4);
 
 /* Raw data from file offset 0x0B90 to 0x0C00 (112 bytes) */
-u8 dCaptainSpecial2_FalconKickAnimJoint_AnimJoint[112] = {
+u32 dCaptainSpecial2_FalconKickAnimJoint_AnimJoint[28] = {
 	#include <CaptainSpecial2/FalconKickAnimJoint_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x0C00 to 0x0C48 (72 bytes) */
-u8 dCaptainSpecial2_FalconKickMatAnimJoint_MatAnimJoint[72] = {
+u32 dCaptainSpecial2_FalconKickMatAnimJoint_MatAnimJoint[18] = {
 	#include <CaptainSpecial2/FalconKickMatAnimJoint_MatAnimJoint.data.inc.c>
 };
 
@@ -376,17 +376,17 @@ DObjDesc dCaptainSpecial2_EntryCar[] = {
 PAD(4);
 
 /* Raw data from file offset 0x6200 to 0x6518 (792 bytes) */
-u8 dCaptainSpecial2__6200__AnimJoint[792] = {
+u32 dCaptainSpecial2__6200__AnimJoint[198] = {
 	#include <CaptainSpecial2/_6200__AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x6518 to 0x6598 (128 bytes) */
-u8 dCaptainSpecial2__6518__AnimJoint[128] = {
+u32 dCaptainSpecial2__6518__AnimJoint[32] = {
 	#include <CaptainSpecial2/_6518__AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x6598 to 0x65E0 (72 bytes) */
-u8 dCaptainSpecial2__6598__AnimJoint[72] = {
+u32 dCaptainSpecial2__6598__AnimJoint[18] = {
 	#include <CaptainSpecial2/_6598__AnimJoint.data.inc.c>
 };
 

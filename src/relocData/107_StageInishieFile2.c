@@ -191,12 +191,12 @@ DObjDesc dStageInishieFile2_Layer0DObj[] = {
 PAD(4);
 
 /* Raw data from file offset 0x4C30 to 0x4E40 (528 bytes) */
-u8 dStageInishieFile2_Layer0Anim_AnimJoint[528] = {
+u32 dStageInishieFile2_Layer0Anim_AnimJoint[132] = {
 	#include <StageInishieFile2/Layer0Anim_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x4E40 to 0x6320 (5344 bytes) */
-u8 dStageInishieFile2_Layer0MatAnim_MatAnimJoint[5344] = {
+u32 dStageInishieFile2_Layer0MatAnim_MatAnimJoint[1336] = {
 	#include <StageInishieFile2/Layer0MatAnim_MatAnimJoint.data.inc.c>
 };
 

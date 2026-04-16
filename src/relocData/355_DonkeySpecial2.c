@@ -57,7 +57,7 @@ DObjDesc dDonkeySpecial2_EntryTaruDObjDesc[] = {
 PAD(4);
 
 /* Raw data from file offset 0x0850 to 0x0930 (224 bytes) */
-u8 dDonkeySpecial2_EntryTaruAnimJoint_AnimJoint[224] = {
+u32 dDonkeySpecial2_EntryTaruAnimJoint_AnimJoint[56] = {
 	#include <DonkeySpecial2/EntryTaruAnimJoint_AnimJoint.data.inc.c>
 };
 

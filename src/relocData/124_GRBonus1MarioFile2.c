@@ -46,7 +46,7 @@ u8 dGRBonus1MarioFile2_MPGeometryData_0x20E8[40] = {
 };
 
 /* Raw data from file offset 0x2110 to 0x23C0 (688 bytes) */
-u8 dGRBonus1MarioFile2_Layer1Anim_AnimJoint[688] = {
+u32 dGRBonus1MarioFile2_Layer1Anim_AnimJoint[172] = {
 	#include <GRBonus1MarioFile2/Layer1Anim_AnimJoint.data.inc.c>
 };
 

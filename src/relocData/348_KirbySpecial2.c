@@ -155,12 +155,12 @@ DObjDesc dKirbySpecial2_CutterUpDObjDesc[] = {
 };
 
 /* Raw data from file offset 0x13F0 to 0x1470 (128 bytes) */
-u8 dKirbySpecial2_CutterTrailAnimJoint_AnimJoint[128] = {
+u32 dKirbySpecial2_CutterTrailAnimJoint_AnimJoint[32] = {
 	#include <KirbySpecial2/CutterTrailAnimJoint_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x1470 to 0x14B8 (72 bytes) */
-u8 dKirbySpecial2_CutterUpAnimJoint_AnimJoint[72] = {
+u32 dKirbySpecial2_CutterUpAnimJoint_AnimJoint[18] = {
 	#include <KirbySpecial2/CutterUpAnimJoint_AnimJoint.data.inc.c>
 };
 
@@ -194,12 +194,12 @@ DObjDesc dKirbySpecial2_EntryStar[] = {
 PAD(4);
 
 /* Raw data from file offset 0x1E30 to 0x1EA0 (112 bytes) */
-u8 dKirbySpecial2_EntryStarL_AnimJoint[112] = {
+u32 dKirbySpecial2_EntryStarL_AnimJoint[28] = {
 	#include <KirbySpecial2/EntryStarL_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x1EA0 to 0x1F10 (112 bytes) */
-u8 dKirbySpecial2_EntryStarR_AnimJoint[112] = {
+u32 dKirbySpecial2_EntryStarR_AnimJoint[28] = {
 	#include <KirbySpecial2/EntryStarR_AnimJoint.data.inc.c>
 };
 
@@ -257,7 +257,7 @@ DObjDesc dKirbySpecial2_CutterDownDObjDesc[] = {
 PAD(12);
 
 /* Raw data from file offset 0x24D0 to 0x2538 (104 bytes) */
-u8 dKirbySpecial2_CutterDownAnimJoint_AnimJoint[104] = {
+u32 dKirbySpecial2_CutterDownAnimJoint_AnimJoint[26] = {
 	#include <KirbySpecial2/CutterDownAnimJoint_AnimJoint.data.inc.c>
 };
 

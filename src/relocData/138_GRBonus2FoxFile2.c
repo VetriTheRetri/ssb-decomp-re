@@ -95,12 +95,12 @@ u8 dGRBonus2FoxFile2_MPGeometryData_0x3214[28] = {
 };
 
 /* Raw data from file offset 0x3230 to 0x3B40 (2320 bytes) */
-u8 dGRBonus2FoxFile2_Layer1Anim_AnimJoint[2320] = {
+u32 dGRBonus2FoxFile2_Layer1Anim_AnimJoint[580] = {
 	#include <GRBonus2FoxFile2/Layer1Anim_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x3B40 to 0x10C10 (53456 bytes) */
-u8 dGRBonus2FoxFile2_Layer1MatAnim_MatAnimJoint[53456] = {
+u32 dGRBonus2FoxFile2_Layer1MatAnim_MatAnimJoint[13364] = {
 	#include <GRBonus2FoxFile2/Layer1MatAnim_MatAnimJoint.data.inc.c>
 };
 

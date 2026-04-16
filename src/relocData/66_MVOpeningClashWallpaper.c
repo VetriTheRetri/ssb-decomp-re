@@ -55,12 +55,12 @@ Gfx dMVOpeningClashWallpaper_LLDisplayList_DisplayList[54] = {
 };
 
 /* Raw data from file offset 0x3458 to 0x36D0 (632 bytes) */
-u8 dMVOpeningClashWallpaper_LLMatAnimJoint_MatAnimJoint[632] = {
+u32 dMVOpeningClashWallpaper_LLMatAnimJoint_MatAnimJoint[158] = {
 	#include <MVOpeningClashWallpaper/LLMatAnimJoint_MatAnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x36D0 to 0x36E0 (16 bytes) */
-u8 dMVOpeningClashWallpaper_LLAnimJoint_AnimJoint[16] = {
+u32 dMVOpeningClashWallpaper_LLAnimJoint_AnimJoint[4] = {
 	#include <MVOpeningClashWallpaper/LLAnimJoint_AnimJoint.data.inc.c>
 };
 
@@ -103,12 +103,12 @@ Gfx dMVOpeningClashWallpaper_LRDisplayList_DisplayList[54] = {
 };
 
 /* Raw data from file offset 0x3AE8 to 0x3D60 (632 bytes) */
-u8 dMVOpeningClashWallpaper_LRMatAnimJoint_MatAnimJoint[632] = {
+u32 dMVOpeningClashWallpaper_LRMatAnimJoint_MatAnimJoint[158] = {
 	#include <MVOpeningClashWallpaper/LRMatAnimJoint_MatAnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x3D60 to 0x3D70 (16 bytes) */
-u8 dMVOpeningClashWallpaper_LRAnimJoint_AnimJoint[16] = {
+u32 dMVOpeningClashWallpaper_LRAnimJoint_AnimJoint[4] = {
 	#include <MVOpeningClashWallpaper/LRAnimJoint_AnimJoint.data.inc.c>
 };
 
@@ -151,12 +151,12 @@ Gfx dMVOpeningClashWallpaper_ULDisplayList_DisplayList[55] = {
 };
 
 /* Raw data from file offset 0x4180 to 0x4400 (640 bytes) */
-u8 dMVOpeningClashWallpaper_ULMatAnimJoint_MatAnimJoint[640] = {
+u32 dMVOpeningClashWallpaper_ULMatAnimJoint_MatAnimJoint[160] = {
 	#include <MVOpeningClashWallpaper/ULMatAnimJoint_MatAnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x4400 to 0x4410 (16 bytes) */
-u8 dMVOpeningClashWallpaper_ULAnimJoint_AnimJoint[16] = {
+u32 dMVOpeningClashWallpaper_ULAnimJoint_AnimJoint[4] = {
 	#include <MVOpeningClashWallpaper/ULAnimJoint_AnimJoint.data.inc.c>
 };
 
@@ -199,17 +199,17 @@ Gfx dMVOpeningClashWallpaper_URDisplayList_DisplayList[55] = {
 };
 
 /* Raw data from file offset 0x4820 to 0x4AA0 (640 bytes) */
-u8 dMVOpeningClashWallpaper_URMatAnimJoint_MatAnimJoint[640] = {
+u32 dMVOpeningClashWallpaper_URMatAnimJoint_MatAnimJoint[160] = {
 	#include <MVOpeningClashWallpaper/URMatAnimJoint_MatAnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x4AA0 to 0x4AB0 (16 bytes) */
-u8 dMVOpeningClashWallpaper_URAnimJoint_AnimJoint[16] = {
+u32 dMVOpeningClashWallpaper_URAnimJoint_AnimJoint[4] = {
 	#include <MVOpeningClashWallpaper/URAnimJoint_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x4AB0 to 0x4AE0 (48 bytes) */
-u8 dMVOpeningClashWallpaper_Cam_AnimJoint[48] = {
+u32 dMVOpeningClashWallpaper_Cam_AnimJoint[12] = {
 	#include <MVOpeningClashWallpaper/Cam_AnimJoint.data.inc.c>
 };
 

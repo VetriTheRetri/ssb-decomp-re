@@ -56,12 +56,12 @@ DObjDesc dEFCommonEffects1_DamageSlash[] = {
 };
 
 /* Raw data from file offset 0x7800 to 0x7860 (96 bytes) */
-u8 dEFCommonEffects1_DamageSlash_AnimJoint[96] = {
+u32 dEFCommonEffects1_DamageSlash_AnimJoint[24] = {
 	#include <EFCommonEffects1/DamageSlash_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x7860 to 0x7A80 (544 bytes) */
-u8 dEFCommonEffects1_DamageSlash_MatAnimJoint[544] = {
+u32 dEFCommonEffects1_DamageSlash_MatAnimJoint[136] = {
 	#include <EFCommonEffects1/DamageSlash_MatAnimJoint.data.inc.c>
 };
 
@@ -104,12 +104,12 @@ u8 dEFCommonEffects1_gap_0x7C28[280] = {
 };
 
 /* Raw data from file offset 0x7D40 to 0x7DA0 (96 bytes) */
-u8 dEFCommonEffects1_ImpactWave_AnimJoint[96] = {
+u32 dEFCommonEffects1_ImpactWave_AnimJoint[24] = {
 	#include <EFCommonEffects1/ImpactWave_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x7DA0 to 0x7E80 (224 bytes) */
-u8 dEFCommonEffects1_ImpactWave_MatAnimJoint[224] = {
+u32 dEFCommonEffects1_ImpactWave_MatAnimJoint[56] = {
 	#include <EFCommonEffects1/ImpactWave_MatAnimJoint.data.inc.c>
 };
 
@@ -119,7 +119,7 @@ u8 dEFCommonEffects1_gap_0x7E80[192] = {
 };
 
 /* Raw data from file offset 0x7F40 to 0x8EC0 (3968 bytes) */
-u8 dEFCommonEffects1_FlyOrbs_AnimJoint[3968] = {
+u32 dEFCommonEffects1_FlyOrbs_AnimJoint[992] = {
 	#include <EFCommonEffects1/FlyOrbs_AnimJoint.data.inc.c>
 };
 
@@ -162,12 +162,12 @@ u8 dEFCommonEffects1_gap_0x8FA0[176] = {
 };
 
 /* Raw data from file offset 0x9050 to 0x90C0 (112 bytes) */
-u8 dEFCommonEffects1_CommonSpark_AnimJoint[112] = {
+u32 dEFCommonEffects1_CommonSpark_AnimJoint[28] = {
 	#include <EFCommonEffects1/CommonSpark_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x90C0 to 0xC978 (14520 bytes) */
-u8 dEFCommonEffects1_CommonSpark_MatAnimJoint[14520] = {
+u32 dEFCommonEffects1_CommonSpark_MatAnimJoint[3630] = {
 	#include <EFCommonEffects1/CommonSpark_MatAnimJoint.data.inc.c>
 };
 
@@ -220,32 +220,32 @@ u8 dEFCommonEffects1_gap_0xCAC8[24] = {
 };
 
 /* Raw data from file offset 0xCAE0 to 0xCB40 (96 bytes) */
-u8 dEFCommonEffects1_DamageFlyMDust_AnimJoint[96] = {
+u32 dEFCommonEffects1_DamageFlyMDust_AnimJoint[24] = {
 	#include <EFCommonEffects1/DamageFlyMDust_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0xCB40 to 0xCBC0 (128 bytes) */
-u8 dEFCommonEffects1_DamageFlyMDust_MatAnimJoint[128] = {
+u32 dEFCommonEffects1_DamageFlyMDust_MatAnimJoint[32] = {
 	#include <EFCommonEffects1/DamageFlyMDust_MatAnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0xCBC0 to 0xCC20 (96 bytes) */
-u8 dEFCommonEffects1_QuakeMag0_AnimJoint[96] = {
+u32 dEFCommonEffects1_QuakeMag0_AnimJoint[24] = {
 	#include <EFCommonEffects1/QuakeMag0_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0xCC20 to 0xCCF0 (208 bytes) */
-u8 dEFCommonEffects1_QuakeMag1_AnimJoint[208] = {
+u32 dEFCommonEffects1_QuakeMag1_AnimJoint[52] = {
 	#include <EFCommonEffects1/QuakeMag1_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0xCCF0 to 0xCDC0 (208 bytes) */
-u8 dEFCommonEffects1_QuakeMag2_AnimJoint[208] = {
+u32 dEFCommonEffects1_QuakeMag2_AnimJoint[52] = {
 	#include <EFCommonEffects1/QuakeMag2_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0xCDC0 to 0xCE00 (64 bytes) */
-u8 dEFCommonEffects1_QuakeMag3_AnimJoint[64] = {
+u32 dEFCommonEffects1_QuakeMag3_AnimJoint[16] = {
 	#include <EFCommonEffects1/QuakeMag3_AnimJoint.data.inc.c>
 };
 

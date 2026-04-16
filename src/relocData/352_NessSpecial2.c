@@ -72,12 +72,12 @@ DObjDesc dNessSpecial2_PsychicMagnetDObjDesc[] = {
 PAD(4);
 
 /* Raw data from file offset 0x0A30 to 0x0AD0 (160 bytes) */
-u8 dNessSpecial2_PsychicMagnetAnimJoint_AnimJoint[160] = {
+u32 dNessSpecial2_PsychicMagnetAnimJoint_AnimJoint[40] = {
 	#include <NessSpecial2/PsychicMagnetAnimJoint_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x0AD0 to 0x0B10 (64 bytes) */
-u8 dNessSpecial2_PsychicMagnetMatAnimJoint_MatAnimJoint[64] = {
+u32 dNessSpecial2_PsychicMagnetMatAnimJoint_MatAnimJoint[16] = {
 	#include <NessSpecial2/PsychicMagnetMatAnimJoint_MatAnimJoint.data.inc.c>
 };
 

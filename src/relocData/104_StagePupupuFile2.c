@@ -234,7 +234,7 @@ u8 dStagePupupuFile2_gap_0x0898_sub_0xE8[80] = {
 };
 
 /* Raw data from file offset 0x09D0 to 0x1D00 (4912 bytes) */
-u8 dStagePupupuFile2_Layer0Anim_AnimJoint[4912] = {
+u32 dStagePupupuFile2_Layer0Anim_AnimJoint[1228] = {
 	#include <StagePupupuFile2/Layer0Anim_AnimJoint.data.inc.c>
 };
 
@@ -330,7 +330,7 @@ u8 dStagePupupuFile2_MPGeometryData_0x2094[28] = {
 };
 
 /* Raw data from file offset 0x20B0 to 0x22D0 (544 bytes) */
-u8 dStagePupupuFile2_Layer1Anim_AnimJoint[544] = {
+u32 dStagePupupuFile2_Layer1Anim_AnimJoint[136] = {
 	#include <StagePupupuFile2/Layer1Anim_AnimJoint.data.inc.c>
 };
 
@@ -417,7 +417,7 @@ u8 dStagePupupuFile2_gap_0x2810_sub_0x98[24] = {
 };
 
 /* Raw data from file offset 0x28C0 to 0x43F0 (6960 bytes) */
-u8 dStagePupupuFile2_Layer3Anim_AnimJoint[6960] = {
+u32 dStagePupupuFile2_Layer3Anim_AnimJoint[1740] = {
 	#include <StagePupupuFile2/Layer3Anim_AnimJoint.data.inc.c>
 };
 

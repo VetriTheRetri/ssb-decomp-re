@@ -60,7 +60,7 @@ u8 dGRBonus2SamusFile2_MPGeometryData_0x2460[32] = {
 };
 
 /* Raw data from file offset 0x2480 to 0x29F0 (1392 bytes) */
-u8 dGRBonus2SamusFile2_Layer1Anim_AnimJoint[1392] = {
+u32 dGRBonus2SamusFile2_Layer1Anim_AnimJoint[348] = {
 	#include <GRBonus2SamusFile2/Layer1Anim_AnimJoint.data.inc.c>
 };
 

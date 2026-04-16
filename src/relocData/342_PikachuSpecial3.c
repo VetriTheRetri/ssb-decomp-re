@@ -256,12 +256,12 @@ u8 dPikachuSpecial3_gap_0x0000_sub_0x1888[408] = {
 };
 
 /* Raw data from file offset 0x1A20 to 0x1AE0 (192 bytes) */
-u8 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint[192] = {
+u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint[48] = {
 	#include <PikachuSpecial3/ThunderJoltBAnimJoint_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x1AE0 to 0x1C70 (400 bytes) */
-u8 dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint[400] = {
+u32 dPikachuSpecial3_ThunderJoltBMatAnimJoint_MatAnimJoint[100] = {
 	#include <PikachuSpecial3/ThunderJoltBMatAnimJoint_MatAnimJoint.data.inc.c>
 };
 
@@ -345,12 +345,12 @@ DObjDesc dPikachuSpecial3_ThunderJoltDObjDesc[] = {
 PAD(4);
 
 /* Raw data from file offset 0x22E0 to 0x2350 (112 bytes) */
-u8 dPikachuSpecial3_ThunderJoltAnimJoint_AnimJoint[112] = {
+u32 dPikachuSpecial3_ThunderJoltAnimJoint_AnimJoint[28] = {
 	#include <PikachuSpecial3/ThunderJoltAnimJoint_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x2350 to 0x2390 (64 bytes) */
-u8 dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint[64] = {
+u32 dPikachuSpecial3_ThunderJoltMatAnimJoint_MatAnimJoint[16] = {
 	#include <PikachuSpecial3/ThunderJoltMatAnimJoint_MatAnimJoint.data.inc.c>
 };
 

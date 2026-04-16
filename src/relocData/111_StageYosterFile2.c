@@ -65,12 +65,12 @@ DObjDesc dStageYosterFile2_Layer0DObj[] = {
 PAD(12);
 
 /* Raw data from file offset 0x1150 to 0x3780 (9776 bytes) */
-u8 dStageYosterFile2_Layer0Anim_AnimJoint[9776] = {
+u32 dStageYosterFile2_Layer0Anim_AnimJoint[2444] = {
 	#include <StageYosterFile2/Layer0Anim_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x3780 to 0x4E78 (5880 bytes) */
-u8 dStageYosterFile2_Layer0MatAnim_MatAnimJoint[5880] = {
+u32 dStageYosterFile2_Layer0MatAnim_MatAnimJoint[1470] = {
 	#include <StageYosterFile2/Layer0MatAnim_MatAnimJoint.data.inc.c>
 };
 

@@ -40,17 +40,17 @@ DObjDesc dYoshiSpecial3_EggLay[] = {
 PAD(12);
 
 /* Raw data from file offset 0x09F0 to 0x0B90 (416 bytes) */
-u8 dYoshiSpecial3_EggLayBreak_AnimJoint[416] = {
+u32 dYoshiSpecial3_EggLayBreak_AnimJoint[104] = {
 	#include <YoshiSpecial3/EggLayBreak_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x0B90 to 0x0DB0 (544 bytes) */
-u8 dYoshiSpecial3_EggLayThrow_AnimJoint[544] = {
+u32 dYoshiSpecial3_EggLayThrow_AnimJoint[136] = {
 	#include <YoshiSpecial3/EggLayThrow_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x0DB0 to 0x0E70 (192 bytes) */
-u8 dYoshiSpecial3_EggLayWait_AnimJoint[192] = {
+u32 dYoshiSpecial3_EggLayWait_AnimJoint[48] = {
 	#include <YoshiSpecial3/EggLayWait_AnimJoint.data.inc.c>
 };
 

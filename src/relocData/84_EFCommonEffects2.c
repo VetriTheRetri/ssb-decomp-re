@@ -53,7 +53,7 @@ u8 dEFCommonEffects2_gap_0x1500[112] = {
 };
 
 /* Raw data from file offset 0x1570 to 0x1EA0 (2352 bytes) */
-u8 dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint[2352] = {
+u32 dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint[588] = {
 	#include <EFCommonEffects2/ShockSmallMatAnimJoint_MatAnimJoint.data.inc.c>
 };
 
@@ -110,12 +110,12 @@ DObjDesc dEFCommonEffects2_FireSparkDObjDesc[] = {
 PAD(12);
 
 /* Raw data from file offset 0x20D0 to 0x2170 (160 bytes) */
-u8 dEFCommonEffects2_FireSparkAnimJoint_AnimJoint[160] = {
+u32 dEFCommonEffects2_FireSparkAnimJoint_AnimJoint[40] = {
 	#include <EFCommonEffects2/FireSparkAnimJoint_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x2170 to 0x22B8 (328 bytes) */
-u8 dEFCommonEffects2_FireSparkMatAnimJoint_MatAnimJoint[328] = {
+u32 dEFCommonEffects2_FireSparkMatAnimJoint_MatAnimJoint[82] = {
 	#include <EFCommonEffects2/FireSparkMatAnimJoint_MatAnimJoint.data.inc.c>
 };
 
@@ -164,12 +164,12 @@ u8 dEFCommonEffects2_gap_0x27D8[200] = {
 };
 
 /* Raw data from file offset 0x28A0 to 0x2AB0 (528 bytes) */
-u8 dEFCommonEffects2_CatchSwirlAnimJoint_AnimJoint[528] = {
+u32 dEFCommonEffects2_CatchSwirlAnimJoint_AnimJoint[132] = {
 	#include <EFCommonEffects2/CatchSwirlAnimJoint_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x2AB0 to 0x2F78 (1224 bytes) */
-u8 dEFCommonEffects2_CatchSwirlMatAnimJoint_MatAnimJoint[1224] = {
+u32 dEFCommonEffects2_CatchSwirlMatAnimJoint_MatAnimJoint[306] = {
 	#include <EFCommonEffects2/CatchSwirlMatAnimJoint_MatAnimJoint.data.inc.c>
 };
 
@@ -218,12 +218,12 @@ u8 dEFCommonEffects2_gap_0x3410[144] = {
 };
 
 /* Raw data from file offset 0x34A0 to 0x35A0 (256 bytes) */
-u8 dEFCommonEffects2_ReflectBreakAnimJoint_AnimJoint[256] = {
+u32 dEFCommonEffects2_ReflectBreakAnimJoint_AnimJoint[64] = {
 	#include <EFCommonEffects2/ReflectBreakAnimJoint_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x35A0 to 0x3A68 (1224 bytes) */
-u8 dEFCommonEffects2_ReflectBreakMatAnimJoint_MatAnimJoint[1224] = {
+u32 dEFCommonEffects2_ReflectBreakMatAnimJoint_MatAnimJoint[306] = {
 	#include <EFCommonEffects2/ReflectBreakMatAnimJoint_MatAnimJoint.data.inc.c>
 };
 
@@ -276,27 +276,27 @@ u8 dEFCommonEffects2_gap_0x5460[112] = {
 };
 
 /* Raw data from file offset 0x54D0 to 0x5800 (816 bytes) */
-u8 dEFCommonEffects2_DeadExplodeDefaultAnimJoint_AnimJoint[816] = {
+u32 dEFCommonEffects2_DeadExplodeDefaultAnimJoint_AnimJoint[204] = {
 	#include <EFCommonEffects2/DeadExplodeDefaultAnimJoint_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x5800 to 0x5870 (112 bytes) */
-u8 dEFCommonEffects2_DeadExplode2_MatAnimJoint[112] = {
+u32 dEFCommonEffects2_DeadExplode2_MatAnimJoint[28] = {
 	#include <EFCommonEffects2/DeadExplode2_MatAnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x5870 to 0x58E0 (112 bytes) */
-u8 dEFCommonEffects2_DeadExplode4_MatAnimJoint[112] = {
+u32 dEFCommonEffects2_DeadExplode4_MatAnimJoint[28] = {
 	#include <EFCommonEffects2/DeadExplode4_MatAnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x58E0 to 0x5950 (112 bytes) */
-u8 dEFCommonEffects2_DeadExplode1_MatAnimJoint[112] = {
+u32 dEFCommonEffects2_DeadExplode1_MatAnimJoint[28] = {
 	#include <EFCommonEffects2/DeadExplode1_MatAnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x5950 to 0x6B40 (4592 bytes) */
-u8 dEFCommonEffects2_DeadExplode3_MatAnimJoint[4592] = {
+u32 dEFCommonEffects2_DeadExplode3_MatAnimJoint[1148] = {
 	#include <EFCommonEffects2/DeadExplode3_MatAnimJoint.data.inc.c>
 };
 
@@ -341,12 +341,12 @@ MObjSub dEFCommonEffects2_NessPKFlashMObjSub_MObjSub = {
 PAD(24);
 
 /* Raw data from file offset 0x6D90 to 0x6E20 (144 bytes) */
-u8 dEFCommonEffects2_NessPKFlashAnimJoint_AnimJoint[144] = {
+u32 dEFCommonEffects2_NessPKFlashAnimJoint_AnimJoint[36] = {
 	#include <EFCommonEffects2/NessPKFlashAnimJoint_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x6E20 to 0x6EC0 (160 bytes) */
-u8 dEFCommonEffects2_NessPKFlashMatAnimJoint_MatAnimJoint[160] = {
+u32 dEFCommonEffects2_NessPKFlashMatAnimJoint_MatAnimJoint[40] = {
 	#include <EFCommonEffects2/NessPKFlashMatAnimJoint_MatAnimJoint.data.inc.c>
 };
 

@@ -143,12 +143,12 @@ DObjDesc dPurinSpecial2_SingDObjDesc[] = {
 PAD(12);
 
 /* Raw data from file offset 0x2270 to 0x2D70 (2816 bytes) */
-u8 dPurinSpecial2_SingAnimJoint_AnimJoint[2816] = {
+u32 dPurinSpecial2_SingAnimJoint_AnimJoint[704] = {
 	#include <PurinSpecial2/SingAnimJoint_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x2D70 to 0x2F50 (480 bytes) */
-u8 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint[480] = {
+u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint[120] = {
 	#include <PurinSpecial2/SingMatAnimJoint_MatAnimJoint.data.inc.c>
 };
 

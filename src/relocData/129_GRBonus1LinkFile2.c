@@ -49,7 +49,7 @@ u8 dGRBonus1LinkFile2_MPGeometryData_0x26E0[32] = {
 };
 
 /* Raw data from file offset 0x2700 to 0x29E0 (736 bytes) */
-u8 dGRBonus1LinkFile2_Layer1Anim_AnimJoint[736] = {
+u32 dGRBonus1LinkFile2_Layer1Anim_AnimJoint[184] = {
 	#include <GRBonus1LinkFile2/Layer1Anim_AnimJoint.data.inc.c>
 };
 

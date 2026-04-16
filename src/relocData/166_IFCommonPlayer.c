@@ -33,7 +33,7 @@ DObjDesc dIFCommonPlayer_Arrows[] = {
 PAD(12);
 
 /* Raw data from file offset 0x0270 to 0x02C8 (88 bytes) */
-u8 dIFCommonPlayer_Arrows_AnimJoint[88] = {
+u32 dIFCommonPlayer_Arrows_AnimJoint[22] = {
 	#include <IFCommonPlayer/Arrows_AnimJoint.data.inc.c>
 };
 

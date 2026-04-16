@@ -265,7 +265,7 @@ u8 dStageCastleFile2_MPGeometryData_0x2D58[40] = {
 };
 
 /* Raw data from file offset 0x2D80 to 0x3218 (1176 bytes) */
-u8 dStageCastleFile2_Layer1Anim_AnimJoint[1176] = {
+u32 dStageCastleFile2_Layer1Anim_AnimJoint[294] = {
 	#include <StageCastleFile2/Layer1Anim_AnimJoint.data.inc.c>
 };
 
@@ -280,7 +280,7 @@ DObjDesc dStageCastleFile2_Layer2DObj[] = {
 PAD(8);
 
 /* Raw data from file offset 0x32D0 to 0x3600 (816 bytes) */
-u8 dStageCastleFile2_Layer2Anim_AnimJoint[816] = {
+u32 dStageCastleFile2_Layer2Anim_AnimJoint[204] = {
 	#include <StageCastleFile2/Layer2Anim_AnimJoint.data.inc.c>
 };
 

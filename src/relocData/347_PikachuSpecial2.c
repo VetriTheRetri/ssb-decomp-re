@@ -74,12 +74,12 @@ DObjDesc dPikachuSpecial2_UnkDObjDesc[] = {
 PAD(12);
 
 /* Raw data from file offset 0x0890 to 0x0900 (112 bytes) */
-u8 dPikachuSpecial2_UnkAnimJoint_AnimJoint[112] = {
+u32 dPikachuSpecial2_UnkAnimJoint_AnimJoint[28] = {
 	#include <PikachuSpecial2/UnkAnimJoint_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x0900 to 0x0968 (104 bytes) */
-u8 dPikachuSpecial2_UnkMatAnimJoint_MatAnimJoint[104] = {
+u32 dPikachuSpecial2_UnkMatAnimJoint_MatAnimJoint[26] = {
 	#include <PikachuSpecial2/UnkMatAnimJoint_MatAnimJoint.data.inc.c>
 };
 
@@ -173,32 +173,32 @@ DObjDesc dPikachuSpecial2_ThunderShockDObjDesc[] = {
 PAD(4);
 
 /* Raw data from file offset 0x1720 to 0x1850 (304 bytes) */
-u8 dPikachuSpecial2_ThunderShock0AnimJoint_AnimJoint[304] = {
+u32 dPikachuSpecial2_ThunderShock0AnimJoint_AnimJoint[76] = {
 	#include <PikachuSpecial2/ThunderShock0AnimJoint_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x1850 to 0x1970 (288 bytes) */
-u8 dPikachuSpecial2_ThunderShock1AnimJoint_AnimJoint[288] = {
+u32 dPikachuSpecial2_ThunderShock1AnimJoint_AnimJoint[72] = {
 	#include <PikachuSpecial2/ThunderShock1AnimJoint_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x1970 to 0x1A80 (272 bytes) */
-u8 dPikachuSpecial2_ThunderShock2AnimJoint_AnimJoint[272] = {
+u32 dPikachuSpecial2_ThunderShock2AnimJoint_AnimJoint[68] = {
 	#include <PikachuSpecial2/ThunderShock2AnimJoint_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x1A80 to 0x1AC0 (64 bytes) */
-u8 dPikachuSpecial2_ThunderShock0MatAnimJoint_MatAnimJoint[64] = {
+u32 dPikachuSpecial2_ThunderShock0MatAnimJoint_MatAnimJoint[16] = {
 	#include <PikachuSpecial2/ThunderShock0MatAnimJoint_MatAnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x1AC0 to 0x1B10 (80 bytes) */
-u8 dPikachuSpecial2_ThunderShock1MatAnimJoint_MatAnimJoint[80] = {
+u32 dPikachuSpecial2_ThunderShock1MatAnimJoint_MatAnimJoint[20] = {
 	#include <PikachuSpecial2/ThunderShock1MatAnimJoint_MatAnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x1B10 to 0x1B60 (80 bytes) */
-u8 dPikachuSpecial2_ThunderShock2MatAnimJoint_MatAnimJoint[80] = {
+u32 dPikachuSpecial2_ThunderShock2MatAnimJoint_MatAnimJoint[20] = {
 	#include <PikachuSpecial2/ThunderShock2MatAnimJoint_MatAnimJoint.data.inc.c>
 };
 

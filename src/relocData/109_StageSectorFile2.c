@@ -316,7 +316,7 @@ u8 dStageSectorFile2_gap_0x45D0[320] = {
 };
 
 /* Raw data from file offset 0x4710 to 0x8680 (16240 bytes) */
-u8 dStageSectorFile2_Layer0Anim_AnimJoint[16240] = {
+u32 dStageSectorFile2_Layer0Anim_AnimJoint[4060] = {
 	#include <StageSectorFile2/Layer0Anim_AnimJoint.data.inc.c>
 };
 
@@ -339,7 +339,7 @@ u8 dStageSectorFile2_MPGeometryData_0x8AD8[40] = {
 };
 
 /* Raw data from file offset 0x8B00 to 0xB810 (11536 bytes) */
-u8 dStageSectorFile2_Layer1Anim_AnimJoint[11536] = {
+u32 dStageSectorFile2_Layer1Anim_AnimJoint[2884] = {
 	#include <StageSectorFile2/Layer1Anim_AnimJoint.data.inc.c>
 };
 

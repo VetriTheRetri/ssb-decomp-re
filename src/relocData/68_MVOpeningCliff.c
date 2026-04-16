@@ -210,12 +210,12 @@ DObjDesc dMVOpeningCliff_OcarinaDObjDesc[] = {
 };
 
 /* Raw data from file offset 0x6850 to 0x8910 (8384 bytes) */
-u8 dMVOpeningCliff_OcarinaAnimJoint_AnimJoint[8384] = {
+u32 dMVOpeningCliff_OcarinaAnimJoint_AnimJoint[2096] = {
 	#include <MVOpeningCliff/OcarinaAnimJoint_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x8910 to 0x8A70 (352 bytes) */
-u8 dMVOpeningCliff_Cam_AnimJoint[352] = {
+u32 dMVOpeningCliff_Cam_AnimJoint[88] = {
 	#include <MVOpeningCliff/Cam_AnimJoint.data.inc.c>
 };
 

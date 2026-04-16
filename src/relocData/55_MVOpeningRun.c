@@ -12,42 +12,42 @@ u8 dMVOpeningRun_gap_0x0000[4] = {
 };
 
 /* Raw data from file offset 0x0004 to 0x00B4 (176 bytes) */
-u8 dMVOpeningRun_Mario_AnimJoint[176] = {
+u32 dMVOpeningRun_Mario_AnimJoint[44] = {
 	#include <MVOpeningRun/Mario_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x00B4 to 0x0124 (112 bytes) */
-u8 dMVOpeningRun_Fox_AnimJoint[112] = {
+u32 dMVOpeningRun_Fox_AnimJoint[28] = {
 	#include <MVOpeningRun/Fox_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x0124 to 0x0184 (96 bytes) */
-u8 dMVOpeningRun_Donkey_AnimJoint[96] = {
+u32 dMVOpeningRun_Donkey_AnimJoint[24] = {
 	#include <MVOpeningRun/Donkey_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x0184 to 0x0224 (160 bytes) */
-u8 dMVOpeningRun_Samus_AnimJoint[160] = {
+u32 dMVOpeningRun_Samus_AnimJoint[40] = {
 	#include <MVOpeningRun/Samus_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x0224 to 0x0334 (272 bytes) */
-u8 dMVOpeningRun_Link_AnimJoint[272] = {
+u32 dMVOpeningRun_Link_AnimJoint[68] = {
 	#include <MVOpeningRun/Link_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x0334 to 0x03A4 (112 bytes) */
-u8 dMVOpeningRun_Yoshi_AnimJoint[112] = {
+u32 dMVOpeningRun_Yoshi_AnimJoint[28] = {
 	#include <MVOpeningRun/Yoshi_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x03A4 to 0x0484 (224 bytes) */
-u8 dMVOpeningRun_Kirby_AnimJoint[224] = {
+u32 dMVOpeningRun_Kirby_AnimJoint[56] = {
 	#include <MVOpeningRun/Kirby_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x0484 to 0x0528 (164 bytes) */
-u8 dMVOpeningRun_Pikachu_AnimJoint[164] = {
+u32 dMVOpeningRun_Pikachu_AnimJoint[41] = {
 	#include <MVOpeningRun/Pikachu_AnimJoint.data.inc.c>
 };
 

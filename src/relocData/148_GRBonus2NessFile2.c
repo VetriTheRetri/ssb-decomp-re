@@ -62,7 +62,7 @@ u8 dGRBonus2NessFile2_MPGeometryData_0x3DC0[32] = {
 };
 
 /* Raw data from file offset 0x3DE0 to 0x40C0 (736 bytes) */
-u8 dGRBonus2NessFile2_Layer1Anim_AnimJoint[736] = {
+u32 dGRBonus2NessFile2_Layer1Anim_AnimJoint[184] = {
 	#include <GRBonus2NessFile2/Layer1Anim_AnimJoint.data.inc.c>
 };
 

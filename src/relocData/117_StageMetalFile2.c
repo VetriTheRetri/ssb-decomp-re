@@ -179,7 +179,7 @@ DObjDesc dStageMetalFile2_Layer0DObj[] = {
 PAD(12);
 
 /* Raw data from file offset 0x1BA0 to 0x1DD0 (560 bytes) */
-u8 dStageMetalFile2_Layer0MatAnim_MatAnimJoint[560] = {
+u32 dStageMetalFile2_Layer0MatAnim_MatAnimJoint[140] = {
 	#include <StageMetalFile2/Layer0MatAnim_MatAnimJoint.data.inc.c>
 };
 
@@ -234,7 +234,7 @@ u8 dStageMetalFile2_MPGeometryData_0x3068[40] = {
 };
 
 /* Raw data from file offset 0x3090 to 0x3220 (400 bytes) */
-u8 dStageMetalFile2_Layer1MatAnim_MatAnimJoint[400] = {
+u32 dStageMetalFile2_Layer1MatAnim_MatAnimJoint[100] = {
 	#include <StageMetalFile2/Layer1MatAnim_MatAnimJoint.data.inc.c>
 };
 
@@ -281,7 +281,7 @@ DObjDesc dStageMetalFile2_Layer2DObj[] = {
 PAD(4);
 
 /* Raw data from file offset 0x34F0 to 0x3550 (96 bytes) */
-u8 dStageMetalFile2_Layer2MatAnim_MatAnimJoint[96] = {
+u32 dStageMetalFile2_Layer2MatAnim_MatAnimJoint[24] = {
 	#include <StageMetalFile2/Layer2MatAnim_MatAnimJoint.data.inc.c>
 };
 
@@ -420,7 +420,7 @@ DObjDesc dStageMetalFile2_Layer3DObj[] = {
 PAD(4);
 
 /* Raw data from file offset 0x3E60 to 0x3FC0 (352 bytes) */
-u8 dStageMetalFile2_Layer3MatAnim_MatAnimJoint[352] = {
+u32 dStageMetalFile2_Layer3MatAnim_MatAnimJoint[88] = {
 	#include <StageMetalFile2/Layer3MatAnim_MatAnimJoint.data.inc.c>
 };
 

@@ -10,7 +10,7 @@
 extern u8 dStageSectorFile2_Tex_0x1C00[];
 
 /* Raw data from file offset 0x0000 to 0x0014 (20 bytes) */
-u8 dGRSectorMap_Arwing0_AnimJoint[20] = {
+u32 dGRSectorMap_Arwing0_AnimJoint[5] = {
 	#include <GRSectorMap/Arwing0_AnimJoint.data.inc.c>
 };
 

@@ -56,12 +56,12 @@ DObjDesc dEFCommonEffects3_MBallRays[] = {
 PAD(12);
 
 /* Raw data from file offset 0x0710 to 0x0860 (336 bytes) */
-u8 dEFCommonEffects3_MBallRays_AnimJoint[336] = {
+u32 dEFCommonEffects3_MBallRays_AnimJoint[84] = {
 	#include <EFCommonEffects3/MBallRays_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x0860 to 0x2AC0 (8800 bytes) */
-u8 dEFCommonEffects3_MBallRays_MatAnimJoint[8800] = {
+u32 dEFCommonEffects3_MBallRays_MatAnimJoint[2200] = {
 	#include <EFCommonEffects3/MBallRays_MatAnimJoint.data.inc.c>
 };
 
@@ -74,7 +74,7 @@ DObjDesc dEFCommonEffects3_RebirthHalo[] = {
 };
 
 /* Raw data from file offset 0x2B70 to 0x2CA8 (312 bytes) */
-u8 dEFCommonEffects3_RebirthHalo_AnimJoint[312] = {
+u32 dEFCommonEffects3_RebirthHalo_AnimJoint[78] = {
 	#include <EFCommonEffects3/RebirthHalo_AnimJoint.data.inc.c>
 };
 
@@ -125,12 +125,12 @@ DObjDesc dEFCommonEffects3_ItemGetSwirl[] = {
 PAD(12);
 
 /* Raw data from file offset 0x32B0 to 0x3490 (480 bytes) */
-u8 dEFCommonEffects3_ItemGetSwirl_AnimJoint[480] = {
+u32 dEFCommonEffects3_ItemGetSwirl_AnimJoint[120] = {
 	#include <EFCommonEffects3/ItemGetSwirl_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x3490 to 0x3530 (160 bytes) */
-u8 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint[160] = {
+u32 dEFCommonEffects3_ItemGetSwirl_MatAnimJoint[40] = {
 	#include <EFCommonEffects3/ItemGetSwirl_MatAnimJoint.data.inc.c>
 };
 

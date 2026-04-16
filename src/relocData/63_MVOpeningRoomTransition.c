@@ -22,7 +22,7 @@ u8 dMVOpeningRoomTransition_Overlay_post[12] = {
 };
 
 /* Raw data from file offset 0x0714 to 0x0F40 (2092 bytes) */
-u8 dMVOpeningRoomTransition_Overlay_AnimJoint[2092] = {
+u32 dMVOpeningRoomTransition_Overlay_AnimJoint[523] = {
 	#include <MVOpeningRoomTransition/Overlay_AnimJoint.data.inc.c>
 };
 
@@ -37,7 +37,7 @@ u8 dMVOpeningRoomTransition_Outline_post[12] = {
 };
 
 /* Raw data from file offset 0x11C4 to 0x11F0 (44 bytes) */
-u8 dMVOpeningRoomTransition_Outline_AnimJoint[44] = {
+u32 dMVOpeningRoomTransition_Outline_AnimJoint[11] = {
 	#include <MVOpeningRoomTransition/Outline_AnimJoint.data.inc.c>
 };
 

@@ -27,22 +27,22 @@ u8 dSCExplainMain[5280] = {
 #else  /* REGION_US */
 
 /* Raw data from file offset 0x0000 to 0x09D4 (2516 bytes) */
-u8 dSCExplainMain_0_KeyEvent[2516] = {
+u32 dSCExplainMain_0_KeyEvent[629] = {
 	#include <SCExplainMain/0_KeyEvent.data.inc.c>
 };
 
 /* Raw data from file offset 0x09D4 to 0x13FC (2600 bytes) */
-u8 dSCExplainMain_1_KeyEvent[2600] = {
+u32 dSCExplainMain_1_KeyEvent[650] = {
 	#include <SCExplainMain/1_KeyEvent.data.inc.c>
 };
 
 /* Raw data from file offset 0x13FC to 0x1400 (4 bytes) */
-u8 dSCExplainMain_2_KeyEvent[4] = {
+u32 dSCExplainMain_2_KeyEvent[1] = {
 	#include <SCExplainMain/2_KeyEvent.data.inc.c>
 };
 
 /* Raw data from file offset 0x1400 to 0x1404 (4 bytes) */
-u8 dSCExplainMain_3_KeyEvent[4] = {
+u32 dSCExplainMain_3_KeyEvent[1] = {
 	#include <SCExplainMain/3_KeyEvent.data.inc.c>
 };
 

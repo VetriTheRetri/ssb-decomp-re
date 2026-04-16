@@ -47,7 +47,7 @@ u8 dGRBonus1LuigiFile2_MPGeometryData_0x1F38[40] = {
 };
 
 /* Raw data from file offset 0x1F60 to 0x2280 (800 bytes) */
-u8 dGRBonus1LuigiFile2_Layer1Anim_AnimJoint[800] = {
+u32 dGRBonus1LuigiFile2_Layer1Anim_AnimJoint[200] = {
 	#include <GRBonus1LuigiFile2/Layer1Anim_AnimJoint.data.inc.c>
 };
 

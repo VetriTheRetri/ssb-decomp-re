@@ -38,32 +38,32 @@ DObjDesc dFoxSpecial2_Reflector[] = {
 PAD(12);
 
 /* Raw data from file offset 0x0340 to 0x03A0 (96 bytes) */
-u8 dFoxSpecial2_ReflectorStart_AnimJoint[96] = {
+u32 dFoxSpecial2_ReflectorStart_AnimJoint[24] = {
 	#include <FoxSpecial2/ReflectorStart_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x03A0 to 0x0430 (144 bytes) */
-u8 dFoxSpecial2_ReflectorHit_AnimJoint[144] = {
+u32 dFoxSpecial2_ReflectorHit_AnimJoint[36] = {
 	#include <FoxSpecial2/ReflectorHit_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x0430 to 0x04C0 (144 bytes) */
-u8 dFoxSpecial2_ReflectorEnd_AnimJoint[144] = {
+u32 dFoxSpecial2_ReflectorEnd_AnimJoint[36] = {
 	#include <FoxSpecial2/ReflectorEnd_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x04C0 to 0x0590 (208 bytes) */
-u8 dFoxSpecial2_ReflectorLoop_AnimJoint[208] = {
+u32 dFoxSpecial2_ReflectorLoop_AnimJoint[52] = {
 	#include <FoxSpecial2/ReflectorLoop_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x0590 to 0x09E0 (1104 bytes) */
-u8 dFoxSpecial2_EntryArwingL_AnimJoint[1104] = {
+u32 dFoxSpecial2_EntryArwingL_AnimJoint[276] = {
 	#include <FoxSpecial2/EntryArwingL_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x09E0 to 0x0E30 (1104 bytes) */
-u8 dFoxSpecial2_EntryArwingR_AnimJoint[1104] = {
+u32 dFoxSpecial2_EntryArwingR_AnimJoint[276] = {
 	#include <FoxSpecial2/EntryArwingR_AnimJoint.data.inc.c>
 };
 

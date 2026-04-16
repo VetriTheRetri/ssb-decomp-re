@@ -1843,27 +1843,27 @@ DObjDesc dMVOpeningSector_GreatFoxDObjDesc[] = {
 PAD(12);
 
 /* Raw data from file offset 0xDA10 to 0xE110 (1792 bytes) */
-u8 dMVOpeningSector_GreatFoxAnimJoint_AnimJoint[1792] = {
+u32 dMVOpeningSector_GreatFoxAnimJoint_AnimJoint[448] = {
 	#include <MVOpeningSector/GreatFoxAnimJoint_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0xE110 to 0xE910 (2048 bytes) */
-u8 dMVOpeningSector_Arwing0_AnimJoint[2048] = {
+u32 dMVOpeningSector_Arwing0_AnimJoint[512] = {
 	#include <MVOpeningSector/Arwing0_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0xE910 to 0xF1C0 (2224 bytes) */
-u8 dMVOpeningSector_Arwing1_AnimJoint[2224] = {
+u32 dMVOpeningSector_Arwing1_AnimJoint[556] = {
 	#include <MVOpeningSector/Arwing1_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0xF1C0 to 0xF9A0 (2016 bytes) */
-u8 dMVOpeningSector_Arwing2_AnimJoint[2016] = {
+u32 dMVOpeningSector_Arwing2_AnimJoint[504] = {
 	#include <MVOpeningSector/Arwing2_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0xF9A0 to 0xFA90 (240 bytes) */
-u8 dMVOpeningSector_Cam_AnimJoint[240] = {
+u32 dMVOpeningSector_Cam_AnimJoint[60] = {
 	#include <MVOpeningSector/Cam_AnimJoint.data.inc.c>
 };
 

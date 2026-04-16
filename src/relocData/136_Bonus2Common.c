@@ -60,12 +60,12 @@ DObjDesc dBonus2Common_PlatformSmall[] = {
 PAD(8);
 
 /* Raw data from file offset 0x3E60 to 0x3F00 (160 bytes) */
-u8 dBonus2Common_PlatformSmall_AnimJoint[160] = {
+u32 dBonus2Common_PlatformSmall_AnimJoint[40] = {
 	#include <Bonus2Common/PlatformSmall_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x3F00 to 0x3F70 (112 bytes) */
-u8 dBonus2Common_PlatformSmall_MatAnimJoint[112] = {
+u32 dBonus2Common_PlatformSmall_MatAnimJoint[28] = {
 	#include <Bonus2Common/PlatformSmall_MatAnimJoint.data.inc.c>
 };
 
@@ -113,12 +113,12 @@ DObjDesc dBonus2Common_PlatformMedium[] = {
 PAD(8);
 
 /* Raw data from file offset 0x4690 to 0x4730 (160 bytes) */
-u8 dBonus2Common_PlatformMedium_AnimJoint[160] = {
+u32 dBonus2Common_PlatformMedium_AnimJoint[40] = {
 	#include <Bonus2Common/PlatformMedium_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x4730 to 0x47A0 (112 bytes) */
-u8 dBonus2Common_PlatformMedium_MatAnimJoint[112] = {
+u32 dBonus2Common_PlatformMedium_MatAnimJoint[28] = {
 	#include <Bonus2Common/PlatformMedium_MatAnimJoint.data.inc.c>
 };
 
@@ -166,12 +166,12 @@ DObjDesc dBonus2Common_PlatformLarge[] = {
 PAD(8);
 
 /* Raw data from file offset 0x4EC0 to 0x4F70 (176 bytes) */
-u8 dBonus2Common_PlatformLarge_AnimJoint[176] = {
+u32 dBonus2Common_PlatformLarge_AnimJoint[44] = {
 	#include <Bonus2Common/PlatformLarge_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x4F70 to 0x5520 (1456 bytes) */
-u8 dBonus2Common_PlatformLarge_MatAnimJoint[1456] = {
+u32 dBonus2Common_PlatformLarge_MatAnimJoint[364] = {
 	#include <Bonus2Common/PlatformLarge_MatAnimJoint.data.inc.c>
 };
 
@@ -184,7 +184,7 @@ DObjDesc dBonus2Common_BoardedPlatformSmall[] = {
 };
 
 /* Raw data from file offset 0x55D0 to 0x5B80 (1456 bytes) */
-u8 dBonus2Common_BoardedPlatformSmall_AnimJoint[1456] = {
+u32 dBonus2Common_BoardedPlatformSmall_AnimJoint[364] = {
 	#include <Bonus2Common/BoardedPlatformSmall_AnimJoint.data.inc.c>
 };
 
@@ -197,7 +197,7 @@ DObjDesc dBonus2Common_BoardedPlatformMedium[] = {
 };
 
 /* Raw data from file offset 0x5C30 to 0x61E0 (1456 bytes) */
-u8 dBonus2Common_BoardedPlatformMedium_AnimJoint[1456] = {
+u32 dBonus2Common_BoardedPlatformMedium_AnimJoint[364] = {
 	#include <Bonus2Common/BoardedPlatformMedium_AnimJoint.data.inc.c>
 };
 
@@ -210,7 +210,7 @@ DObjDesc dBonus2Common_BoardedPlatformLarge[] = {
 };
 
 /* Raw data from file offset 0x6290 to 0x6330 (160 bytes) */
-u8 dBonus2Common_BoardedPlatformLarge_AnimJoint[160] = {
+u32 dBonus2Common_BoardedPlatformLarge_AnimJoint[40] = {
 	#include <Bonus2Common/BoardedPlatformLarge_AnimJoint.data.inc.c>
 };
 

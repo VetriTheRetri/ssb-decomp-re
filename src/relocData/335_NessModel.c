@@ -1327,12 +1327,12 @@ DObjDesc dNessModel_PKThunderWaveDObjDesc[] = {
 };
 
 /* Raw data from file offset 0x9AC0 to 0x9BB0 (240 bytes) */
-u8 dNessModel_PKThunderWaveAnimJoint_AnimJoint[240] = {
+u32 dNessModel_PKThunderWaveAnimJoint_AnimJoint[60] = {
 	#include <NessModel/PKThunderWaveAnimJoint_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x9BB0 to 0xAB20 (3952 bytes) */
-u8 dNessModel_PKThunderWaveMatAnimJoint_MatAnimJoint[3952] = {
+u32 dNessModel_PKThunderWaveMatAnimJoint_MatAnimJoint[988] = {
 	#include <NessModel/PKThunderWaveMatAnimJoint_MatAnimJoint.data.inc.c>
 };
 

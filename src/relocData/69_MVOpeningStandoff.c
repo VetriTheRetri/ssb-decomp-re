@@ -179,17 +179,17 @@ DObjDesc dMVOpeningStandoff_LightningDObjDesc[] = {
 };
 
 /* Raw data from file offset 0x6BB8 to 0x6D60 (424 bytes) */
-u8 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint[424] = {
+u32 dMVOpeningStandoff_LightningMatAnimJoint_MatAnimJoint[106] = {
 	#include <MVOpeningStandoff/LightningMatAnimJoint_MatAnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x6D60 to 0x7250 (1264 bytes) */
-u8 dMVOpeningStandoff_LightningAnimJoint_AnimJoint[1264] = {
+u32 dMVOpeningStandoff_LightningAnimJoint_AnimJoint[316] = {
 	#include <MVOpeningStandoff/LightningAnimJoint_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x7250 to 0x8F30 (7392 bytes) */
-u8 dMVOpeningStandoff_Cam_AnimJoint[7392] = {
+u32 dMVOpeningStandoff_Cam_AnimJoint[1848] = {
 	#include <MVOpeningStandoff/Cam_AnimJoint.data.inc.c>
 };
 

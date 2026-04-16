@@ -73,7 +73,7 @@ u8 dGRBonus2PurinFile2_MPGeometryData_0x406C[36] = {
 };
 
 /* Raw data from file offset 0x4090 to 0x54E0 (5200 bytes) */
-u8 dGRBonus2PurinFile2_Layer1Anim_AnimJoint[5200] = {
+u32 dGRBonus2PurinFile2_Layer1Anim_AnimJoint[1300] = {
 	#include <GRBonus2PurinFile2/Layer1Anim_AnimJoint.data.inc.c>
 };
 

@@ -68,7 +68,7 @@ u8 dGRBonus3Map_TaruBomb_ItemAttributes[72] = {
 };
 
 /* Raw data from file offset 0x00F0 to 0x0110 (32 bytes) */
-u8 dGRBonus3Map_TaruBomb_AttackEvents[32] = {
+u32 dGRBonus3Map_TaruBomb_AttackEvents[8] = {
 	#include <GRBonus3Map/TaruBomb_AttackEvents.data.inc.c>
 };
 

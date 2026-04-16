@@ -312,12 +312,12 @@ u8 dMVOpeningYoster_gap_0xBA98[1240] = {
 };
 
 /* Raw data from file offset 0xBF70 to 0xC940 (2512 bytes) */
-u8 dMVOpeningYoster_GroundAnimJoint_AnimJoint[2512] = {
+u32 dMVOpeningYoster_GroundAnimJoint_AnimJoint[628] = {
 	#include <MVOpeningYoster/GroundAnimJoint_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0xC940 to 0xC9A0 (96 bytes) */
-u8 dMVOpeningYoster_Cam_AnimJoint[96] = {
+u32 dMVOpeningYoster_Cam_AnimJoint[24] = {
 	#include <MVOpeningYoster/Cam_AnimJoint.data.inc.c>
 };
 

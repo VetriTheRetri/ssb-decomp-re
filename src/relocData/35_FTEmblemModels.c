@@ -125,7 +125,7 @@ DObjDesc dFTEmblemModels_Mario[] = {
 };
 
 /* Raw data from file offset 0x0A14 to 0x0B00 (236 bytes) */
-u8 dFTEmblemModels_Mario_MatAnimJoint[236] = {
+u32 dFTEmblemModels_Mario_MatAnimJoint[59] = {
 	#include <FTEmblemModels/Mario_MatAnimJoint.data.inc.c>
 };
 
@@ -215,7 +215,7 @@ DObjDesc dFTEmblemModels_Donkey[] = {
 };
 
 /* Raw data from file offset 0x13CC to 0x1470 (164 bytes) */
-u8 dFTEmblemModels_Donkey_MatAnimJoint[164] = {
+u32 dFTEmblemModels_Donkey_MatAnimJoint[41] = {
 	#include <FTEmblemModels/Donkey_MatAnimJoint.data.inc.c>
 };
 
@@ -270,7 +270,7 @@ DObjDesc dFTEmblemModels_Metroid[] = {
 };
 
 /* Raw data from file offset 0x18E4 to 0x1940 (92 bytes) */
-u8 dFTEmblemModels_Metroid_MatAnimJoint[92] = {
+u32 dFTEmblemModels_Metroid_MatAnimJoint[23] = {
 	#include <FTEmblemModels/Metroid_MatAnimJoint.data.inc.c>
 };
 
@@ -325,7 +325,7 @@ DObjDesc dFTEmblemModels_Fox[] = {
 };
 
 /* Raw data from file offset 0x2254 to 0x22B0 (92 bytes) */
-u8 dFTEmblemModels_Fox_MatAnimJoint[92] = {
+u32 dFTEmblemModels_Fox_MatAnimJoint[23] = {
 	#include <FTEmblemModels/Fox_MatAnimJoint.data.inc.c>
 };
 
@@ -440,7 +440,7 @@ DObjDesc dFTEmblemModels_Zelda[] = {
 };
 
 /* Raw data from file offset 0x25A4 to 0x2690 (236 bytes) */
-u8 dFTEmblemModels_Zelda_MatAnimJoint[236] = {
+u32 dFTEmblemModels_Zelda_MatAnimJoint[59] = {
 	#include <FTEmblemModels/Zelda_MatAnimJoint.data.inc.c>
 };
 
@@ -495,7 +495,7 @@ DObjDesc dFTEmblemModels_Yoshi[] = {
 };
 
 /* Raw data from file offset 0x2F94 to 0x2FF0 (92 bytes) */
-u8 dFTEmblemModels_Yoshi_MatAnimJoint[92] = {
+u32 dFTEmblemModels_Yoshi_MatAnimJoint[23] = {
 	#include <FTEmblemModels/Yoshi_MatAnimJoint.data.inc.c>
 };
 
@@ -550,7 +550,7 @@ DObjDesc dFTEmblemModels_FZero[] = {
 };
 
 /* Raw data from file offset 0x38AC to 0x3900 (84 bytes) */
-u8 dFTEmblemModels_FZero_MatAnimJoint[84] = {
+u32 dFTEmblemModels_FZero_MatAnimJoint[21] = {
 	#include <FTEmblemModels/FZero_MatAnimJoint.data.inc.c>
 };
 
@@ -605,7 +605,7 @@ DObjDesc dFTEmblemModels_Kirby[] = {
 };
 
 /* Raw data from file offset 0x3EEC to 0x3F40 (84 bytes) */
-u8 dFTEmblemModels_Kirby_MatAnimJoint[84] = {
+u32 dFTEmblemModels_Kirby_MatAnimJoint[21] = {
 	#include <FTEmblemModels/Kirby_MatAnimJoint.data.inc.c>
 };
 
@@ -695,7 +695,7 @@ DObjDesc dFTEmblemModels_PMonsters[] = {
 };
 
 /* Raw data from file offset 0x4794 to 0x4840 (172 bytes) */
-u8 dFTEmblemModels_PMonsters_MatAnimJoint[172] = {
+u32 dFTEmblemModels_PMonsters_MatAnimJoint[43] = {
 	#include <FTEmblemModels/PMonsters_MatAnimJoint.data.inc.c>
 };
 
@@ -750,7 +750,7 @@ DObjDesc dFTEmblemModels_Mother[] = {
 };
 
 /* Raw data from file offset 0x5A84 to 0x5AE0 (92 bytes) */
-u8 dFTEmblemModels_Mother_MatAnimJoint[92] = {
+u32 dFTEmblemModels_Mother_MatAnimJoint[23] = {
 	#include <FTEmblemModels/Mother_MatAnimJoint.data.inc.c>
 };
 

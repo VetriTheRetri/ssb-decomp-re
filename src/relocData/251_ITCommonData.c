@@ -34,7 +34,7 @@ u8 dITCommonData_Capsule_ItemAttributes[72] = {
 };
 
 /* Raw data from file offset 0x0098 to 0x00B8 (32 bytes) */
-u8 dITCommonData_Capsule_AttackEvents[32] = {
+u32 dITCommonData_Capsule_AttackEvents[8] = {
 	#include <ITCommonData/Capsule_AttackEvents.data.inc.c>
 };
 
@@ -184,7 +184,7 @@ u8 dITCommonData_MSBomb_ItemAttributes[72] = {
 };
 
 /* Raw data from file offset 0x0404 to 0x0424 (32 bytes) */
-u8 dITCommonData_MSBomb_AttackEvents[32] = {
+u32 dITCommonData_MSBomb_AttackEvents[8] = {
 	#include <ITCommonData/MSBomb_AttackEvents.data.inc.c>
 };
 
@@ -202,7 +202,7 @@ u8 dITCommonData_BombHei_ItemAttributes[72] = {
 };
 
 /* Raw data from file offset 0x046C to 0x048C (32 bytes) */
-u8 dITCommonData_BombHei_AttackEvents[32] = {
+u32 dITCommonData_BombHei_AttackEvents[8] = {
 	#include <ITCommonData/BombHei_AttackEvents.data.inc.c>
 };
 
@@ -269,7 +269,7 @@ u8 dITCommonData_Box_ItemAttributes[72] = {
 };
 
 /* Raw data from file offset 0x0614 to 0x0634 (32 bytes) */
-u8 dITCommonData_Box_AttackEvents[32] = {
+u32 dITCommonData_Box_AttackEvents[8] = {
 	#include <ITCommonData/Box_AttackEvents.data.inc.c>
 };
 
@@ -287,7 +287,7 @@ u8 dITCommonData_Taru_ItemAttributes[72] = {
 };
 
 /* Raw data from file offset 0x067C to 0x069C (32 bytes) */
-u8 dITCommonData_Taru_AttackEvents[32] = {
+u32 dITCommonData_Taru_AttackEvents[8] = {
 	#include <ITCommonData/Taru_AttackEvents.data.inc.c>
 };
 
@@ -473,7 +473,7 @@ u8 dITCommonData_Egg_ItemAttributes[72] = {
 };
 
 /* Raw data from file offset 0x0B14 to 0x0B34 (32 bytes) */
-u8 dITCommonData_Egg_AttackEvents[32] = {
+u32 dITCommonData_Egg_AttackEvents[8] = {
 	#include <ITCommonData/Egg_AttackEvents.data.inc.c>
 };
 

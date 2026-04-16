@@ -515,7 +515,7 @@ u8 dStageYamabukiFile2_gap_0x50DC[228] = {
 };
 
 /* Raw data from file offset 0x51C0 to 0x5260 (160 bytes) */
-u8 dStageYamabukiFile2_Layer0Anim_AnimJoint[160] = {
+u32 dStageYamabukiFile2_Layer0Anim_AnimJoint[40] = {
 	#include <StageYamabukiFile2/Layer0Anim_AnimJoint.data.inc.c>
 };
 
@@ -569,12 +569,12 @@ u8 dStageYamabukiFile2_MPGeometryData_0x6E8C[36] = {
 };
 
 /* Raw data from file offset 0x6EB0 to 0x7000 (336 bytes) */
-u8 dStageYamabukiFile2_Layer1Anim_AnimJoint[336] = {
+u32 dStageYamabukiFile2_Layer1Anim_AnimJoint[84] = {
 	#include <StageYamabukiFile2/Layer1Anim_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x7000 to 0x8718 (5912 bytes) */
-u8 dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint[5912] = {
+u32 dStageYamabukiFile2_Layer1MatAnim_MatAnimJoint[1478] = {
 	#include <StageYamabukiFile2/Layer1MatAnim_MatAnimJoint.data.inc.c>
 };
 

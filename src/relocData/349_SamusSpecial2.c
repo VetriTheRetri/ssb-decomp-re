@@ -72,12 +72,12 @@ DObjDesc dSamusSpecial2_GrappleBeamDObjDesc[] = {
 PAD(12);
 
 /* Raw data from file offset 0x0410 to 0x0480 (112 bytes) */
-u8 dSamusSpecial2_GrappleBeamAnimJoint_AnimJoint[112] = {
+u32 dSamusSpecial2_GrappleBeamAnimJoint_AnimJoint[28] = {
 	#include <SamusSpecial2/GrappleBeamAnimJoint_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x0480 to 0x04C8 (72 bytes) */
-u8 dSamusSpecial2_GrappleBeamMatAnimJoint_MatAnimJoint[72] = {
+u32 dSamusSpecial2_GrappleBeamMatAnimJoint_MatAnimJoint[18] = {
 	#include <SamusSpecial2/GrappleBeamMatAnimJoint_MatAnimJoint.data.inc.c>
 };
 
@@ -138,7 +138,7 @@ DObjDesc dSamusSpecial2_EntryPointDObjDesc[] = {
 PAD(12);
 
 /* Raw data from file offset 0x0C20 to 0x0CA0 (128 bytes) */
-u8 dSamusSpecial2_EntryPointAnimJoint_AnimJoint[128] = {
+u32 dSamusSpecial2_EntryPointAnimJoint_AnimJoint[32] = {
 	#include <SamusSpecial2/EntryPointAnimJoint_AnimJoint.data.inc.c>
 };
 

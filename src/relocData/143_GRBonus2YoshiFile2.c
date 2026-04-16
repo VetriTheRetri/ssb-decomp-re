@@ -66,7 +66,7 @@ u8 dGRBonus2YoshiFile2_MPGeometryData_0x2E68[40] = {
 };
 
 /* Raw data from file offset 0x2E90 to 0x3810 (2432 bytes) */
-u8 dGRBonus2YoshiFile2_Layer1Anim_AnimJoint[2432] = {
+u32 dGRBonus2YoshiFile2_Layer1Anim_AnimJoint[608] = {
 	#include <GRBonus2YoshiFile2/Layer1Anim_AnimJoint.data.inc.c>
 };
 

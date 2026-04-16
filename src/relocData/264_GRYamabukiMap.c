@@ -88,7 +88,7 @@ u8 dGRYamabukiMap_Marumine_ItemAttributes[72] = {
 };
 
 /* Raw data from file offset 0x014C to 0x016C (32 bytes) */
-u8 dGRYamabukiMap_Marumine_AttackEvents[32] = {
+u32 dGRYamabukiMap_Marumine_AttackEvents[8] = {
 	#include <GRYamabukiMap/Marumine_AttackEvents.data.inc.c>
 };
 

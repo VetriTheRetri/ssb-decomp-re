@@ -72,12 +72,12 @@ u8 dStageZebesFile2_MPGeometryData_0x6160[32] = {
 };
 
 /* Raw data from file offset 0x6180 to 0x6410 (656 bytes) */
-u8 dStageZebesFile2_Layer1Anim_AnimJoint[656] = {
+u32 dStageZebesFile2_Layer1Anim_AnimJoint[164] = {
 	#include <StageZebesFile2/Layer1Anim_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x6410 to 0xDF60 (31568 bytes) */
-u8 dStageZebesFile2_Layer1MatAnim_MatAnimJoint[31568] = {
+u32 dStageZebesFile2_Layer1MatAnim_MatAnimJoint[7892] = {
 	#include <StageZebesFile2/Layer1MatAnim_MatAnimJoint.data.inc.c>
 };
 

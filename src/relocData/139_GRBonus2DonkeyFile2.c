@@ -61,7 +61,7 @@ u8 dGRBonus2DonkeyFile2_MPGeometryData_0x34B0[32] = {
 };
 
 /* Raw data from file offset 0x34D0 to 0x35C0 (240 bytes) */
-u8 dGRBonus2DonkeyFile2_Layer1Anim_AnimJoint[240] = {
+u32 dGRBonus2DonkeyFile2_Layer1Anim_AnimJoint[60] = {
 	#include <GRBonus2DonkeyFile2/Layer1Anim_AnimJoint.data.inc.c>
 };
 

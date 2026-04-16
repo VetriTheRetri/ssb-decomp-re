@@ -50,12 +50,12 @@ u8 dYoshiSpecial2_gap_0x0530[208] = {
 };
 
 /* Raw data from file offset 0x0600 to 0x0780 (384 bytes) */
-u8 dYoshiSpecial2_EntryEggAnimJoint_AnimJoint[384] = {
+u32 dYoshiSpecial2_EntryEggAnimJoint_AnimJoint[96] = {
 	#include <YoshiSpecial2/EntryEggAnimJoint_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x0780 to 0x07C0 (64 bytes) */
-u8 dYoshiSpecial2_EntryEggMatAnimJoint_MatAnimJoint[64] = {
+u32 dYoshiSpecial2_EntryEggMatAnimJoint_MatAnimJoint[16] = {
 	#include <YoshiSpecial2/EntryEggMatAnimJoint_MatAnimJoint.data.inc.c>
 };
 

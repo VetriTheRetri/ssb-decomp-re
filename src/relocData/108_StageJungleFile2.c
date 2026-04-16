@@ -480,7 +480,7 @@ u8 dStageJungleFile2_MPGeometryData_0x9AFC[36] = {
 };
 
 /* Raw data from file offset 0x9B20 to 0xC7D8 (11448 bytes) */
-u8 dStageJungleFile2_Layer1Anim_AnimJoint[11448] = {
+u32 dStageJungleFile2_Layer1Anim_AnimJoint[2862] = {
 	#include <StageJungleFile2/Layer1Anim_AnimJoint.data.inc.c>
 };
 

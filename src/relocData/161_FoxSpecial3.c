@@ -301,7 +301,7 @@ u8 dFoxSpecial3_gap_0x1B30[4] = {
 };
 
 /* Raw data from file offset 0x1B34 to 0x1B40 (12 bytes) */
-u8 dFoxSpecial3__1B34__AnimJoint[12] = {
+u32 dFoxSpecial3__1B34__AnimJoint[3] = {
 	#include <FoxSpecial3/_1B34__AnimJoint.data.inc.c>
 };
 
@@ -316,7 +316,7 @@ u8 dFoxSpecial3_gap_0x1B80[4] = {
 };
 
 /* Raw data from file offset 0x1B84 to 0x1D80 (508 bytes) */
-u8 dFoxSpecial3__1B84__AnimJoint[508] = {
+u32 dFoxSpecial3__1B84__AnimJoint[127] = {
 	#include <FoxSpecial3/_1B84__AnimJoint.data.inc.c>
 };
 
@@ -387,12 +387,12 @@ u8 dFoxSpecial3_gap_0x2C88[492] = {
 };
 
 /* Raw data from file offset 0x2E74 to 0x2EB4 (64 bytes) */
-u8 dFoxSpecial3__2E74__AnimJoint[64] = {
+u32 dFoxSpecial3__2E74__AnimJoint[16] = {
 	#include <FoxSpecial3/_2E74__AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x2EB4 to 0x2F80 (204 bytes) */
-u8 dFoxSpecial3__2EB4__AnimJoint[204] = {
+u32 dFoxSpecial3__2EB4__AnimJoint[51] = {
 	#include <FoxSpecial3/_2EB4__AnimJoint.data.inc.c>
 };
 

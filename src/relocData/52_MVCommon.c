@@ -320,7 +320,7 @@ DObjDesc dMVCommon_RoomBackgroundDObjDesc[] = {
 };
 
 /* Raw data from file offset 0x8788 to 0x8DF8 (1648 bytes) */
-u8 dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint[1648] = {
+u32 dMVCommon_RoomBackgroundMatAnimJoint_MatAnimJoint[412] = {
 	#include <MVCommon/RoomBackgroundMatAnimJoint_MatAnimJoint.data.inc.c>
 };
 
@@ -357,7 +357,7 @@ DObjDesc dMVCommon_RoomBooksDObjDesc[] = {
 PAD(8);
 
 /* Raw data from file offset 0xA7B0 to 0xAEB8 (1800 bytes) */
-u8 dMVCommon_RoomBooksAnimJoint_AnimJoint[1800] = {
+u32 dMVCommon_RoomBooksAnimJoint_AnimJoint[450] = {
 	#include <MVCommon/RoomBooksAnimJoint_AnimJoint.data.inc.c>
 };
 
@@ -372,7 +372,7 @@ DObjDesc dMVCommon_RoomPencilsDObjDesc[] = {
 PAD(8);
 
 /* Raw data from file offset 0xAF70 to 0xBDC0 (3664 bytes) */
-u8 dMVCommon_RoomPencilsAnimJoint_AnimJoint[3664] = {
+u32 dMVCommon_RoomPencilsAnimJoint_AnimJoint[916] = {
 	#include <MVCommon/RoomPencilsAnimJoint_AnimJoint.data.inc.c>
 };
 
@@ -388,7 +388,7 @@ DObjDesc dMVCommon_RoomLampDObjDesc[] = {
 PAD(4);
 
 /* Raw data from file offset 0xBEA0 to 0xC690 (2032 bytes) */
-u8 dMVCommon_RoomLampAnimJoint_AnimJoint[2032] = {
+u32 dMVCommon_RoomLampAnimJoint_AnimJoint[508] = {
 	#include <MVCommon/RoomLampAnimJoint_AnimJoint.data.inc.c>
 };
 
@@ -403,7 +403,7 @@ u8 dMVCommon_RoomTissuesDisplayList_post[12] = {
 };
 
 /* Raw data from file offset 0xC884 to 0x1BC60 (62428 bytes) */
-u8 dMVCommon_RoomTissuesAnimJoint_AnimJoint[62428] = {
+u32 dMVCommon_RoomTissuesAnimJoint_AnimJoint[15607] = {
 	#include <MVCommon/RoomTissuesAnimJoint_AnimJoint.data.inc.c>
 };
 
@@ -448,7 +448,7 @@ DObjDesc dMVCommon_RoomLogoDObjDesc[] = {
 };
 
 /* Raw data from file offset 0x1C52C to 0x1CA68 (1340 bytes) */
-u8 dMVCommon_RoomLogoMatAnimJoint_MatAnimJoint[1340] = {
+u32 dMVCommon_RoomLogoMatAnimJoint_MatAnimJoint[335] = {
 	#include <MVCommon/RoomLogoMatAnimJoint_MatAnimJoint.data.inc.c>
 };
 
@@ -462,7 +462,7 @@ DObjDesc dMVCommon_RoomSnapDObjDesc[] = {
 PAD(4);
 
 /* Raw data from file offset 0x1CAF0 to 0x1DCA0 (4528 bytes) */
-u8 dMVCommon_RoomSnapAnimJoint_AnimJoint[4528] = {
+u32 dMVCommon_RoomSnapAnimJoint_AnimJoint[1132] = {
 	#include <MVCommon/RoomSnapAnimJoint_AnimJoint.data.inc.c>
 };
 
@@ -508,12 +508,12 @@ DObjDesc dMVCommon_RoomCloseUpEffectAirDObjDesc[] = {
 };
 
 /* Raw data from file offset 0x1DFD8 to 0x1E010 (56 bytes) */
-u8 dMVCommon_RoomCloseUpEffectAirMatAnimJoint_MatAnimJoint[56] = {
+u32 dMVCommon_RoomCloseUpEffectAirMatAnimJoint_MatAnimJoint[14] = {
 	#include <MVCommon/RoomCloseUpEffectAirMatAnimJoint_MatAnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x1E010 to 0x1F0F8 (4328 bytes) */
-u8 dMVCommon_RoomCloseUpEffectAirAnimJoint_AnimJoint[4328] = {
+u32 dMVCommon_RoomCloseUpEffectAirAnimJoint_AnimJoint[1082] = {
 	#include <MVCommon/RoomCloseUpEffectAirAnimJoint_AnimJoint.data.inc.c>
 };
 
@@ -558,12 +558,12 @@ DObjDesc dMVCommon_RoomCloseUpEffectGroundDObjDesc[] = {
 };
 
 /* Raw data from file offset 0x1F2F4 to 0x1F330 (60 bytes) */
-u8 dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint[60] = {
+u32 dMVCommon_RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint[15] = {
 	#include <MVCommon/RoomCloseUpEffectGroundMatAnimJoint_MatAnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x1F330 to 0x1F790 (1120 bytes) */
-u8 dMVCommon_RoomCloseUpEffectGroundAnimJoint_AnimJoint[1120] = {
+u32 dMVCommon_RoomCloseUpEffectGroundAnimJoint_AnimJoint[280] = {
 	#include <MVCommon/RoomCloseUpEffectGroundAnimJoint_AnimJoint.data.inc.c>
 };
 
@@ -578,7 +578,7 @@ u8 dMVCommon_RoomBossShadowDisplayList_post[20] = {
 };
 
 /* Raw data from file offset 0x1F924 to 0x20480 (2908 bytes) */
-u8 dMVCommon_RoomBossShadowAnimJoint_AnimJoint[2908] = {
+u32 dMVCommon_RoomBossShadowAnimJoint_AnimJoint[727] = {
 	#include <MVCommon/RoomBossShadowAnimJoint_AnimJoint.data.inc.c>
 };
 
@@ -628,7 +628,7 @@ u8 dMVCommon_gap_0x224C4[264] = {
 };
 
 /* Raw data from file offset 0x225CC to 0x22C90 (1732 bytes) */
-u8 dMVCommon_RoomDeskGroundMatAnimJoint_MatAnimJoint[1732] = {
+u32 dMVCommon_RoomDeskGroundMatAnimJoint_MatAnimJoint[433] = {
 	#include <MVCommon/RoomDeskGroundMatAnimJoint_MatAnimJoint.data.inc.c>
 };
 
@@ -676,7 +676,7 @@ u8 dMVCommon_RoomSpotlightDisplayList_post[16] = {
 };
 
 /* Raw data from file offset 0x22F10 to 0x24200 (4848 bytes) */
-u8 dMVCommon_RoomSpotlightMatAnimJoint_MatAnimJoint[4848] = {
+u32 dMVCommon_RoomSpotlightMatAnimJoint_MatAnimJoint[1212] = {
 	#include <MVCommon/RoomSpotlightMatAnimJoint_MatAnimJoint.data.inc.c>
 };
 

@@ -44,7 +44,7 @@ u8 dGRBonus1CaptainFile2_MPGeometryData_0x1B08[40] = {
 };
 
 /* Raw data from file offset 0x1B30 to 0x1DE0 (688 bytes) */
-u8 dGRBonus1CaptainFile2_Layer1Anim_AnimJoint[688] = {
+u32 dGRBonus1CaptainFile2_Layer1Anim_AnimJoint[172] = {
 	#include <GRBonus1CaptainFile2/Layer1Anim_AnimJoint.data.inc.c>
 };
 

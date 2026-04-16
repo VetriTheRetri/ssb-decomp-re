@@ -68,12 +68,12 @@ u8 dStageLastFile2_MPGeometryData_0x4EF4[28] = {
 };
 
 /* Raw data from file offset 0x4F10 to 0x4F40 (48 bytes) */
-u8 dStageLastFile2_Layer1Anim_AnimJoint[48] = {
+u32 dStageLastFile2_Layer1Anim_AnimJoint[12] = {
 	#include <StageLastFile2/Layer1Anim_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x4F40 to 0x12960 (55840 bytes) */
-u8 dStageLastFile2_Layer1MatAnim_MatAnimJoint[55840] = {
+u32 dStageLastFile2_Layer1MatAnim_MatAnimJoint[13960] = {
 	#include <StageLastFile2/Layer1MatAnim_MatAnimJoint.data.inc.c>
 };
 

@@ -68,27 +68,27 @@ DObjDesc dSCExplainGraphics_StickDObjDesc[] = {
 PAD(12);
 
 /* Raw data from file offset 0x5390 to 0x53C0 (48 bytes) */
-u8 dSCExplainGraphics_StickNeutral_MatAnimJoint[48] = {
+u32 dSCExplainGraphics_StickNeutral_MatAnimJoint[12] = {
 	#include <SCExplainGraphics/StickNeutral_MatAnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x53C0 to 0x53F0 (48 bytes) */
-u8 dSCExplainGraphics_StickHoldUp_MatAnimJoint[48] = {
+u32 dSCExplainGraphics_StickHoldUp_MatAnimJoint[12] = {
 	#include <SCExplainGraphics/StickHoldUp_MatAnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x53F0 to 0x5430 (64 bytes) */
-u8 dSCExplainGraphics_StickTapUp_MatAnimJoint[64] = {
+u32 dSCExplainGraphics_StickTapUp_MatAnimJoint[16] = {
 	#include <SCExplainGraphics/StickTapUp_MatAnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x5430 to 0x5450 (32 bytes) */
-u8 dSCExplainGraphics_StickHoldForward_MatAnimJoint[32] = {
+u32 dSCExplainGraphics_StickHoldForward_MatAnimJoint[8] = {
 	#include <SCExplainGraphics/StickHoldForward_MatAnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x5450 to 0x5A98 (1608 bytes) */
-u8 dSCExplainGraphics_StickTapForward_MatAnimJoint[1608] = {
+u32 dSCExplainGraphics_StickTapForward_MatAnimJoint[402] = {
 	#include <SCExplainGraphics/StickTapForward_MatAnimJoint.data.inc.c>
 };
 
@@ -136,7 +136,7 @@ u8 dSCExplainGraphics_TapSparkDisplayList_post[24] = {
 };
 
 /* Raw data from file offset 0x5C20 to 0x5E40 (544 bytes) */
-u8 dSCExplainGraphics_TapSparkMatAnimJoint_MatAnimJoint[544] = {
+u32 dSCExplainGraphics_TapSparkMatAnimJoint_MatAnimJoint[136] = {
 	#include <SCExplainGraphics/TapSparkMatAnimJoint_MatAnimJoint.data.inc.c>
 };
 

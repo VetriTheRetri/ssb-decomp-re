@@ -194,7 +194,7 @@ u8 dMVOpeningNewcomers2_CaptainShow_post[28] = {
 };
 
 /* Raw data from file offset 0x1C9D4 to 0x2A448 (55924 bytes) */
-u8 dMVOpeningNewcomers2_Captain_AnimJoint[55924] = {
+u32 dMVOpeningNewcomers2_Captain_AnimJoint[13981] = {
 	#include <MVOpeningNewcomers2/Captain_AnimJoint.data.inc.c>
 };
 
@@ -209,7 +209,7 @@ u8 dMVOpeningNewcomers2_NessShow_post[28] = {
 };
 
 /* Raw data from file offset 0x2A864 to 0x355C0 (44380 bytes) */
-u8 dMVOpeningNewcomers2_Ness_AnimJoint[44380] = {
+u32 dMVOpeningNewcomers2_Ness_AnimJoint[11095] = {
 	#include <MVOpeningNewcomers2/Ness_AnimJoint.data.inc.c>
 };
 

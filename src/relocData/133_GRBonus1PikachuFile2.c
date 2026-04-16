@@ -47,7 +47,7 @@ u8 dGRBonus1PikachuFile2_MPGeometryData_0x2A10[32] = {
 };
 
 /* Raw data from file offset 0x2A30 to 0x2CE0 (688 bytes) */
-u8 dGRBonus1PikachuFile2_Layer1Anim_AnimJoint[688] = {
+u32 dGRBonus1PikachuFile2_Layer1Anim_AnimJoint[172] = {
 	#include <GRBonus1PikachuFile2/Layer1Anim_AnimJoint.data.inc.c>
 };
 

@@ -69,7 +69,7 @@ u8 dMVOpeningNewcomers1_PurinShow_post[20] = {
 };
 
 /* Raw data from file offset 0x5E44 to 0x1C838 (92660 bytes) */
-u8 dMVOpeningNewcomers1_Purin_AnimJoint[92660] = {
+u32 dMVOpeningNewcomers1_Purin_AnimJoint[23165] = {
 	#include <MVOpeningNewcomers1/Purin_AnimJoint.data.inc.c>
 };
 
@@ -84,7 +84,7 @@ u8 dMVOpeningNewcomers1_LuigiShow_post[28] = {
 };
 
 /* Raw data from file offset 0x1CE94 to 0x203A8 (13588 bytes) */
-u8 dMVOpeningNewcomers1_Luigi_AnimJoint[13588] = {
+u32 dMVOpeningNewcomers1_Luigi_AnimJoint[3397] = {
 	#include <MVOpeningNewcomers1/Luigi_AnimJoint.data.inc.c>
 };
 

@@ -50,7 +50,7 @@ u8 dCaptainSpecial3_gap_0x0760[208] = {
 };
 
 /* Raw data from file offset 0x0830 to 0x0870 (64 bytes) */
-u8 dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint[64] = {
+u32 dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint[16] = {
 	#include <CaptainSpecial3/FalconPunchMatAnimJoint_MatAnimJoint.data.inc.c>
 };
 

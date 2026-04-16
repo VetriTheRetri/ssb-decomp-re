@@ -152,22 +152,22 @@ DObjDesc dLinkSpecial2_EntryBeamDObjDesc[] = {
 PAD(4);
 
 /* Raw data from file offset 0x0840 to 0x0B60 (800 bytes) */
-u8 dLinkSpecial2_EntryWaveAnimJoint_AnimJoint[800] = {
+u32 dLinkSpecial2_EntryWaveAnimJoint_AnimJoint[200] = {
 	#include <LinkSpecial2/EntryWaveAnimJoint_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x0B60 to 0x0B90 (48 bytes) */
-u8 dLinkSpecial2_EntryBeamAnimJoint_AnimJoint[48] = {
+u32 dLinkSpecial2_EntryBeamAnimJoint_AnimJoint[12] = {
 	#include <LinkSpecial2/EntryBeamAnimJoint_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x0B90 to 0x0BF0 (96 bytes) */
-u8 dLinkSpecial2_EntryWaveMatAnimJoint_MatAnimJoint[96] = {
+u32 dLinkSpecial2_EntryWaveMatAnimJoint_MatAnimJoint[24] = {
 	#include <LinkSpecial2/EntryWaveMatAnimJoint_MatAnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x0BF0 to 0x0C38 (72 bytes) */
-u8 dLinkSpecial2_EntryBeamMatAnimJoint_MatAnimJoint[72] = {
+u32 dLinkSpecial2_EntryBeamMatAnimJoint_MatAnimJoint[18] = {
 	#include <LinkSpecial2/EntryBeamMatAnimJoint_MatAnimJoint.data.inc.c>
 };
 
@@ -234,12 +234,12 @@ DObjDesc dLinkSpecial2_SpinAttackDObjDesc[] = {
 PAD(12);
 
 /* Raw data from file offset 0x1250 to 0x12F0 (160 bytes) */
-u8 dLinkSpecial2_SpinAttackAnimJoint_AnimJoint[160] = {
+u32 dLinkSpecial2_SpinAttackAnimJoint_AnimJoint[40] = {
 	#include <LinkSpecial2/SpinAttackAnimJoint_AnimJoint.data.inc.c>
 };
 
 /* Raw data from file offset 0x12F0 to 0x1A10 (1824 bytes) */
-u8 dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint[1824] = {
+u32 dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint[456] = {
 	#include <LinkSpecial2/SpinAttackMatAnimJoint_MatAnimJoint.data.inc.c>
 };
 

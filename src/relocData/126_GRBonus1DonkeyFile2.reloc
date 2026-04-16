@@ -1,11 +1,11 @@
 # Relocation metadata for file 126
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dGRBonus1DonkeyFile2_gap_0x0000_sub_0x4E8+0xC 0x598
-extern dGRBonus1DonkeyFile2_gap_0x0000_sub_0x510+0x14 0x5A8
+extern dGRBonus1DonkeyFile2_gap_0x0000_sub_0x4E8+0xC 0x598  # -> file 120 (Bonus1CommonImages1)
+extern dGRBonus1DonkeyFile2_gap_0x0000_sub_0x510+0x14 0x5A8  # -> file 120 (Bonus1CommonImages1)
 intern dGRBonus1DonkeyFile2_gap_0x0000_sub_0x510+0x34 dGRBonus1DonkeyFile2_gap_0x0000
-extern dGRBonus1DonkeyFile2_gap_0x0000_sub_0x5A8+0x4C 0x598
-extern dGRBonus1DonkeyFile2_gap_0x0000_sub_0x5A8+0x7C 0x5A8
+extern dGRBonus1DonkeyFile2_gap_0x0000_sub_0x5A8+0x4C 0x598  # -> file 120 (Bonus1CommonImages1)
+extern dGRBonus1DonkeyFile2_gap_0x0000_sub_0x5A8+0x7C 0x5A8  # -> file 120 (Bonus1CommonImages1)
 intern dGRBonus1DonkeyFile2_gap_0x0000_sub_0x5A8+0x9C dGRBonus1DonkeyFile2_gap_0x0000
 intern dGRBonus1DonkeyFile2_gap_0x0000_sub_0x680+0x3C dGRBonus1DonkeyFile2_gap_0x0000_sub_0x40
 intern dGRBonus1DonkeyFile2_gap_0x0000_sub_0x680+0x4C dGRBonus1DonkeyFile2_gap_0x0000_sub_0x80
@@ -31,12 +31,12 @@ intern dGRBonus1DonkeyFile2_Layer0DObj+0x30 dGRBonus1DonkeyFile2_gap_0x0000_sub_
 intern dGRBonus1DonkeyFile2_Layer0DObj+0x5C dGRBonus1DonkeyFile2_gap_0x0000_sub_0x820
 intern dGRBonus1DonkeyFile2_Layer0DObj+0x88 dGRBonus1DonkeyFile2_gap_0x0000_sub_0x830
 intern dGRBonus1DonkeyFile2_gap_0x091C_sub_0x1054+0x4C dGRBonus1DonkeyFile2_gap_0x091C_sub_0x10AC
-extern dGRBonus1DonkeyFile2_gap_0x091C_sub_0x10AC+0x3C 0x3F0
-extern dGRBonus1DonkeyFile2_gap_0x091C_sub_0x10AC+0x64 0x418
+extern dGRBonus1DonkeyFile2_gap_0x091C_sub_0x10AC+0x3C 0x3F0  # -> file 120 (Bonus1CommonImages1)
+extern dGRBonus1DonkeyFile2_gap_0x091C_sub_0x10AC+0x64 0x418  # -> file 120 (Bonus1CommonImages1)
 intern dGRBonus1DonkeyFile2_gap_0x091C_sub_0x10AC+0x84 dGRBonus1DonkeyFile2_gap_0x091C_sub_0x4
 intern dGRBonus1DonkeyFile2_gap_0x091C_sub_0x10AC+0xCC dGRBonus1DonkeyFile2_gap_0x091C_sub_0x204
-extern dGRBonus1DonkeyFile2_gap_0x091C_sub_0x10AC+0xFC 0x4E8
-extern dGRBonus1DonkeyFile2_gap_0x091C_sub_0x10AC+0x124 0x510
+extern dGRBonus1DonkeyFile2_gap_0x091C_sub_0x10AC+0xFC 0x4E8  # -> file 120 (Bonus1CommonImages1)
+extern dGRBonus1DonkeyFile2_gap_0x091C_sub_0x10AC+0x124 0x510  # -> file 120 (Bonus1CommonImages1)
 intern dGRBonus1DonkeyFile2_gap_0x091C_sub_0x10AC+0x144 dGRBonus1DonkeyFile2_gap_0x091C_sub_0x284
 intern dGRBonus1DonkeyFile2_gap_0x091C_sub_0x10AC+0x194 dGRBonus1DonkeyFile2_gap_0x091C_sub_0x3C4
 intern dGRBonus1DonkeyFile2_gap_0x091C_sub_0x10AC+0x1C4 dGRBonus1DonkeyFile2_gap_0x091C_sub_0x484
@@ -45,17 +45,17 @@ intern dGRBonus1DonkeyFile2_gap_0x091C_sub_0x10AC+0x214 dGRBonus1DonkeyFile2_gap
 intern dGRBonus1DonkeyFile2_gap_0x091C_sub_0x10AC+0x21C dGRBonus1DonkeyFile2_gap_0x091C_sub_0x2E4
 intern dGRBonus1DonkeyFile2_gap_0x091C_sub_0x10AC+0x224 dGRBonus1DonkeyFile2_gap_0x091C_sub_0x684
 intern dGRBonus1DonkeyFile2_gap_0x091C_sub_0x10AC+0x274 dGRBonus1DonkeyFile2_gap_0x091C_sub_0x794
-extern dGRBonus1DonkeyFile2_gap_0x091C_sub_0x10AC+0x2C4 0x2F8
+extern dGRBonus1DonkeyFile2_gap_0x091C_sub_0x10AC+0x2C4 0x2F8  # -> file 120 (Bonus1CommonImages1)
 intern dGRBonus1DonkeyFile2_gap_0x091C_sub_0x10AC+0x2E4 dGRBonus1DonkeyFile2_gap_0x091C_sub_0x854
 intern dGRBonus1DonkeyFile2_gap_0x091C_sub_0x10AC+0x32C dGRBonus1DonkeyFile2_gap_0x091C_sub_0xA54
 intern dGRBonus1DonkeyFile2_gap_0x091C_sub_0x10AC+0x374 dGRBonus1DonkeyFile2_gap_0x091C_sub_0xC54
-extern dGRBonus1DonkeyFile2_gap_0x091C_sub_0x10AC+0x3B4 0x510
+extern dGRBonus1DonkeyFile2_gap_0x091C_sub_0x10AC+0x3B4 0x510  # -> file 120 (Bonus1CommonImages1)
 intern dGRBonus1DonkeyFile2_gap_0x091C_sub_0x10AC+0x3D4 dGRBonus1DonkeyFile2_gap_0x091C_sub_0xD14
-extern dGRBonus1DonkeyFile2_gap_0x091C_sub_0x14A4+0x2C 0x3F0
-extern dGRBonus1DonkeyFile2_gap_0x091C_sub_0x14A4+0x54 0x418
+extern dGRBonus1DonkeyFile2_gap_0x091C_sub_0x14A4+0x2C 0x3F0  # -> file 120 (Bonus1CommonImages1)
+extern dGRBonus1DonkeyFile2_gap_0x091C_sub_0x14A4+0x54 0x418  # -> file 120 (Bonus1CommonImages1)
 intern dGRBonus1DonkeyFile2_gap_0x091C_sub_0x14A4+0x74 dGRBonus1DonkeyFile2_gap_0x091C_sub_0xDD4
-extern dGRBonus1DonkeyFile2_gap_0x091C_sub_0x154C+0x24 0x380
-extern dGRBonus1DonkeyFile2_gap_0x091C_sub_0x154C+0x4C 0x3A8
+extern dGRBonus1DonkeyFile2_gap_0x091C_sub_0x154C+0x24 0x380  # -> file 120 (Bonus1CommonImages1)
+extern dGRBonus1DonkeyFile2_gap_0x091C_sub_0x154C+0x4C 0x3A8  # -> file 120 (Bonus1CommonImages1)
 intern dGRBonus1DonkeyFile2_gap_0x091C_sub_0x154C+0x6C dGRBonus1DonkeyFile2_gap_0x091C_sub_0xF14
 intern dGRBonus1DonkeyFile2_Layer1DObj+0x30 dGRBonus1DonkeyFile2_gap_0x091C_sub_0x1054
 intern dGRBonus1DonkeyFile2_Layer1DObj+0x5C dGRBonus1DonkeyFile2_gap_0x091C_sub_0x14A4

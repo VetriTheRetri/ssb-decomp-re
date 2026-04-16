@@ -2,7 +2,7 @@
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
 intern dSamusMainMotion_0x00CC+0x38 dSamusMainMotion_0x00CC
-extern dSamusMainMotion_0x0204+0x4 0x758
+extern dSamusMainMotion_0x0204+0x4 0x758  # -> file 201 (FTCommonMoveset)
 intern dSamusMainMotion_0x0294+0x4 dSamusMainMotion_0x0258
 intern dSamusMainMotion_0x02D4+0x4 dSamusMainMotion_0x02BC
 intern dSamusMainMotion_0x02DC+0x8 dSamusMainMotion_0x029C
@@ -30,23 +30,23 @@ intern dSamusMainMotion_0x0858+0x8 dSamusMainMotion_0x083C
 intern dSamusMainMotion_0x08BC+0x8 dSamusMainMotion_0x089C
 intern dSamusMainMotion_0x0918+0xC dSamusMainMotion_0x0908
 intern dSamusMainMotion_0x093C+0x10 dSamusMainMotion_0x0928
-extern dSamusMainMotion_0x093C+0x28 0x0
-extern dSamusMainMotion_0x097C+0x18 0x64
-extern dSamusMainMotion_0x09B0+0x1C 0xC8
-extern dSamusMainMotion_0x09E8+0x18 0x12C
-extern dSamusMainMotion_0x0A20+0x8 0x1A0
-extern dSamusMainMotion_0x0A38+0x10 0x1F4
-extern dSamusMainMotion_0x0A5C+0x18 0x248
-extern dSamusMainMotion_0x0A8C+0x10 0x2B0
-extern dSamusMainMotion_0x0AB4+0x8 0x324
-extern dSamusMainMotion_0x0ACC+0x10 0x378
-extern dSamusMainMotion_0x0AF0+0xC 0x3CC
-extern dSamusMainMotion_0x0B14+0x10 0x430
-extern dSamusMainMotion_0x0B3C+0xC 0x494
-extern dSamusMainMotion_0x0B58+0x14 0x4F8
-extern dSamusMainMotion_0x0B88+0x14 0x55C
-extern dSamusMainMotion_0x0BBC+0x18 0x5C0
-extern dSamusMainMotion_0x0C0C+0xC 0x634
+extern dSamusMainMotion_0x093C+0x28 0x0  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_0x097C+0x18 0x64  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_0x09B0+0x1C 0xC8  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_0x09E8+0x18 0x12C  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_0x0A20+0x8 0x1A0  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_0x0A38+0x10 0x1F4  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_0x0A5C+0x18 0x248  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_0x0A8C+0x10 0x2B0  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_0x0AB4+0x8 0x324  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_0x0ACC+0x10 0x378  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_0x0AF0+0xC 0x3CC  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_0x0B14+0x10 0x430  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_0x0B3C+0xC 0x494  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_0x0B58+0x14 0x4F8  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_0x0B88+0x14 0x55C  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_0x0BBC+0x18 0x5C0  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_0x0C0C+0xC 0x634  # -> file 201 (FTCommonMoveset)
 intern dSamusMainMotion_0x0C0C+0x1C dSamusMainMotion_0x0C0C
 intern dSamusMainMotion_0x0C2C+0x30 dSamusMainMotion_0x0C2C
 intern dSamusMainMotion_0x0C2C+0x50 dSamusMainMotion_0x0C2C
@@ -60,11 +60,11 @@ intern dSamusMainMotion_0x0E58+0x4 dSamusMainMotion_0x0E20
 intern dSamusMainMotion_0x0E58+0xC dSamusMainMotion_0x0D10
 intern dSamusMainMotion_0x0EF0+0x4 dSamusMainMotion_0x0EB8
 intern dSamusMainMotion_0x0EF0+0xC dSamusMainMotion_0x0D10
-extern dSamusMainMotion_0x0F50+0x4 0x6AC
-extern dSamusMainMotion_0x0F5C+0x4 0x6C4
-extern dSamusMainMotion_0x0F68+0x4 0x6CC
-extern dSamusMainMotion_0x0F74+0x4 0x6F0
-extern dSamusMainMotion_0x0F80+0x4 0x70C
+extern dSamusMainMotion_0x0F50+0x4 0x6AC  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_0x0F5C+0x4 0x6C4  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_0x0F68+0x4 0x6CC  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_0x0F74+0x4 0x6F0  # -> file 201 (FTCommonMoveset)
+extern dSamusMainMotion_0x0F80+0x4 0x70C  # -> file 201 (FTCommonMoveset)
 intern dSamusMainMotion_0x1AE0+0x4 dSamusMainMotion_0x1ACC
 intern dSamusMainMotion_0x1C8C+0x98 dSamusMainMotion_0x1C68
 intern dSamusMainMotion_0x1D88+0x1C dSamusMainMotion_0x1D88

@@ -3,44 +3,44 @@
 # Labels are C variable names resolved via .o symbol table
 intern dStageYosterFile2_Layer0MObj_MObjSub+0x3C 0x0148
 intern dStageYosterFile2_Layer0MObj_MObjSub+0x44 0x0150
-extern dStageYosterFile2_Layer0MObj_MObjSub+0x48 0x550
-extern dStageYosterFile2_Layer0MObj_MObjSub+0x4C 0x658
-extern dStageYosterFile2_Layer0MObj_MObjSub+0x50 0x550
-extern dStageYosterFile2_Layer0MObj_MObjSub+0x54 0x658
+extern dStageYosterFile2_Layer0MObj_MObjSub+0x48 0x550  # -> file 110 (StageYosterImages)
+extern dStageYosterFile2_Layer0MObj_MObjSub+0x4C 0x658  # -> file 110 (StageYosterImages)
+extern dStageYosterFile2_Layer0MObj_MObjSub+0x50 0x550  # -> file 110 (StageYosterImages)
+extern dStageYosterFile2_Layer0MObj_MObjSub+0x54 0x658  # -> file 110 (StageYosterImages)
 intern dStageYosterFile2_Layer0MObj_MObjSub+0x5C dStageYosterFile2_Layer0MObj_MObjSub+0x48
 intern dStageYosterFile2_gap_0x0078_sub_0x58+0x4 dStageYosterFile2_Layer0MObj_MObjSub+0x50
 intern dStageYosterFile2_gap_0x0078_sub_0xD0 dStageYosterFile2_Layer0MObj_MObjSub+0x58
 intern dStageYosterFile2_gap_0x0078_sub_0xD8 dStageYosterFile2_gap_0x0078_sub_0x58
 intern dStageYosterFile2_gap_0x0078_sub_0x4E0+0x44 dStageYosterFile2_gap_0x0078_sub_0x530
-extern dStageYosterFile2_gap_0x0078_sub_0x530+0x3C 0x760
+extern dStageYosterFile2_gap_0x0078_sub_0x530+0x3C 0x760  # -> file 110 (StageYosterImages)
 intern dStageYosterFile2_gap_0x0078_sub_0x530+0x5C dStageYosterFile2_gap_0x0078_sub_0xE0
 intern dStageYosterFile2_gap_0x0078_sub_0x5A0+0x14 dStageYosterFile2_gap_0x0078_sub_0x120
-extern dStageYosterFile2_gap_0x0078_sub_0x5E0+0x1C 0x178
-extern dStageYosterFile2_gap_0x0078_sub_0x5E0+0x44 0xBD0
+extern dStageYosterFile2_gap_0x0078_sub_0x5E0+0x1C 0x178  # -> file 110 (StageYosterImages)
+extern dStageYosterFile2_gap_0x0078_sub_0x5E0+0x44 0xBD0  # -> file 110 (StageYosterImages)
 intern dStageYosterFile2_gap_0x0078_sub_0x5E0+0x64 dStageYosterFile2_gap_0x0078_sub_0x160
-extern dStageYosterFile2_gap_0x0078_sub_0x5E0+0x94 0x8
-extern dStageYosterFile2_gap_0x0078_sub_0x5E0+0xBC 0xA0
+extern dStageYosterFile2_gap_0x0078_sub_0x5E0+0x94 0x8  # -> file 110 (StageYosterImages)
+extern dStageYosterFile2_gap_0x0078_sub_0x5E0+0xBC 0xA0  # -> file 110 (StageYosterImages)
 intern dStageYosterFile2_gap_0x0078_sub_0x5E0+0xDC dStageYosterFile2_gap_0x0078_sub_0x1E0
-extern dStageYosterFile2_gap_0x0078_sub_0x6E8+0x4 0x1030
+extern dStageYosterFile2_gap_0x0078_sub_0x6E8+0x4 0x1030  # -> file 110 (StageYosterImages)
 intern dStageYosterFile2_gap_0x0078_sub_0x6E8+0x3C dStageYosterFile2_gap_0x0078_sub_0x260
 intern dStageYosterFile2_gap_0x0078_sub_0x6E8+0x7C dStageYosterFile2_gap_0x0078_sub_0x280
 intern dStageYosterFile2_gap_0x0078_sub_0x6E8+0x84 dStageYosterFile2_gap_0x0078_sub_0x2A0
 intern dStageYosterFile2_gap_0x0078_sub_0x6E8+0xBC dStageYosterFile2_gap_0x0078_sub_0x2B0
 intern dStageYosterFile2_gap_0x0078_sub_0x6E8+0xF4 dStageYosterFile2_gap_0x0078_sub_0x2D0
 intern dStageYosterFile2_gap_0x0078_sub_0x6E8+0x12C dStageYosterFile2_gap_0x0078_sub_0x2F0
-extern dStageYosterFile2_gap_0x0078_sub_0x828+0x3C 0x218
-extern dStageYosterFile2_gap_0x0078_sub_0x828+0x64 0xEA8
+extern dStageYosterFile2_gap_0x0078_sub_0x828+0x3C 0x218  # -> file 110 (StageYosterImages)
+extern dStageYosterFile2_gap_0x0078_sub_0x828+0x64 0xEA8  # -> file 110 (StageYosterImages)
 intern dStageYosterFile2_gap_0x0078_sub_0x828+0x84 dStageYosterFile2_gap_0x0078_sub_0x330
-extern dStageYosterFile2_gap_0x0078_sub_0x8C0+0x1C 0x1A0
-extern dStageYosterFile2_gap_0x0078_sub_0x8C0+0x44 0xA68
+extern dStageYosterFile2_gap_0x0078_sub_0x8C0+0x1C 0x1A0  # -> file 110 (StageYosterImages)
+extern dStageYosterFile2_gap_0x0078_sub_0x8C0+0x44 0xA68  # -> file 110 (StageYosterImages)
 intern dStageYosterFile2_gap_0x0078_sub_0x8C0+0x64 dStageYosterFile2_gap_0x0078_sub_0x370
-extern dStageYosterFile2_gap_0x0078_sub_0x8C0+0x8C 0x1F0
-extern dStageYosterFile2_gap_0x0078_sub_0x8C0+0xB4 0x2C8
+extern dStageYosterFile2_gap_0x0078_sub_0x8C0+0x8C 0x1F0  # -> file 110 (StageYosterImages)
+extern dStageYosterFile2_gap_0x0078_sub_0x8C0+0xB4 0x2C8  # -> file 110 (StageYosterImages)
 intern dStageYosterFile2_gap_0x0078_sub_0x8C0+0xD4 dStageYosterFile2_gap_0x0078_sub_0x3B0
-extern dStageYosterFile2_gap_0x0078_sub_0x8C0+0xFC 0x1A0
-extern dStageYosterFile2_gap_0x0078_sub_0x8C0+0x124 0xA68
+extern dStageYosterFile2_gap_0x0078_sub_0x8C0+0xFC 0x1A0  # -> file 110 (StageYosterImages)
+extern dStageYosterFile2_gap_0x0078_sub_0x8C0+0x124 0xA68  # -> file 110 (StageYosterImages)
 intern dStageYosterFile2_gap_0x0078_sub_0x9F0+0x14 dStageYosterFile2_gap_0x0078_sub_0x3F0
-extern dStageYosterFile2_gap_0x0078_sub_0xA18+0x4C 0x528
+extern dStageYosterFile2_gap_0x0078_sub_0xA18+0x4C 0x528  # -> file 110 (StageYosterImages)
 intern dStageYosterFile2_gap_0x0078_sub_0xA18+0x6C dStageYosterFile2_gap_0x0078_sub_0x430
 intern dStageYosterFile2_gap_0x0078_sub_0xA98+0xC dStageYosterFile2_gap_0x0078_sub_0x460
 intern dStageYosterFile2_gap_0x0078_sub_0xAB8+0xC dStageYosterFile2_gap_0x0078_sub_0x460
@@ -50,9 +50,9 @@ intern dStageYosterFile2_gap_0x0078_sub_0xB00+0xC dStageYosterFile2_gap_0x0078_s
 intern dStageYosterFile2_gap_0x0078_sub_0xB20+0xC dStageYosterFile2_gap_0x0078_sub_0x460
 intern dStageYosterFile2_gap_0x0078_sub_0xB40+0xC dStageYosterFile2_gap_0x0078_sub_0x460
 intern dStageYosterFile2_gap_0x0078_sub_0xB60+0xC dStageYosterFile2_gap_0x0078_sub_0x430
-extern dStageYosterFile2_gap_0x0078_sub_0xBA8+0x5C 0x128
+extern dStageYosterFile2_gap_0x0078_sub_0xBA8+0x5C 0x128  # -> file 110 (StageYosterImages)
 intern dStageYosterFile2_gap_0x0078_sub_0xBA8+0xAC dStageYosterFile2_gap_0x0078_sub_0x4A0
-extern dStageYosterFile2_gap_0x0078_sub_0xCA8+0x4C 0x128
+extern dStageYosterFile2_gap_0x0078_sub_0xCA8+0x4C 0x128  # -> file 110 (StageYosterImages)
 intern dStageYosterFile2_gap_0x0078_sub_0xCA8+0x9C dStageYosterFile2_gap_0x0078_sub_0x4A0
 intern dStageYosterFile2_Layer0DObj+0x30 dStageYosterFile2_gap_0x0078_sub_0x4E0
 intern dStageYosterFile2_Layer0DObj+0x5C dStageYosterFile2_gap_0x0078_sub_0x5A0
@@ -105,24 +105,24 @@ intern dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x454 dStageYosterFile2_Laye
 intern dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x864 dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x458
 intern dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x868 dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x48
 intern dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x86C dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x458
-extern dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x126C 0x30
-extern dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x129C 0x58
+extern dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x126C 0x30  # -> file 110 (StageYosterImages)
+extern dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x129C 0x58  # -> file 110 (StageYosterImages)
 intern dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x12BC dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x870
 intern dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x131C dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0xA70
 intern dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x1354 dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0xB70
 intern dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x139C dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0xD70
-extern dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x13E4 0x1C8
-extern dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x140C 0xC18
+extern dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x13E4 0x1C8  # -> file 110 (StageYosterImages)
+extern dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x140C 0xC18  # -> file 110 (StageYosterImages)
 intern dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x142C dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0xDB0
-extern dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x145C 0xD20
+extern dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x145C 0xD20  # -> file 110 (StageYosterImages)
 intern dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x147C dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0xDF0
-extern dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x14B4 0x150
-extern dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x14DC 0x240
+extern dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x14B4 0x150  # -> file 110 (StageYosterImages)
+extern dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x14DC 0x240  # -> file 110 (StageYosterImages)
 intern dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x14FC dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0xE30
 intern dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x1534 dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0xEB0
 intern dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x1564 dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0xF30
-extern dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x1594 0x8
-extern dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x15BC 0xA0
+extern dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x1594 0x8  # -> file 110 (StageYosterImages)
+extern dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x15BC 0xA0  # -> file 110 (StageYosterImages)
 intern dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x15DC dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0xFB0
 intern dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x1604 dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0xFF0
 intern dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x162C dStageYosterFile2_Layer0MatAnim_MatAnimJoint+0x1030
@@ -135,27 +135,27 @@ intern dStageYosterFile2_MPGeometryData_0x5188+0x8 dStageYosterFile2_gap_0x4F80_
 intern dStageYosterFile2_MPGeometryData_0x5188+0xC dStageYosterFile2_gap_0x4F80_sub_0xB4
 intern dStageYosterFile2_MPGeometryData_0x5188+0x10 dStageYosterFile2_gap_0x4F80_sub_0xDC
 intern dStageYosterFile2_MPGeometryData_0x5188+0x18 dStageYosterFile2_gap_0x4F80_sub_0x124
-extern dStageYosterFile2_MPGeometryData_0x5188+0x1AC 0x178
-extern dStageYosterFile2_MPGeometryData_0x5188+0x1DC 0xBD0
+extern dStageYosterFile2_MPGeometryData_0x5188+0x1AC 0x178  # -> file 110 (StageYosterImages)
+extern dStageYosterFile2_MPGeometryData_0x5188+0x1DC 0xBD0  # -> file 110 (StageYosterImages)
 intern dStageYosterFile2_MPGeometryData_0x5188+0x1FC dStageYosterFile2_MPGeometryData_0x5188+0x28
-extern dStageYosterFile2_MPGeometryData_0x5188+0x23C 0x8
-extern dStageYosterFile2_MPGeometryData_0x5188+0x264 0xA0
+extern dStageYosterFile2_MPGeometryData_0x5188+0x23C 0x8  # -> file 110 (StageYosterImages)
+extern dStageYosterFile2_MPGeometryData_0x5188+0x264 0xA0  # -> file 110 (StageYosterImages)
 intern dStageYosterFile2_MPGeometryData_0x5188+0x284 dStageYosterFile2_MPGeometryData_0x5188+0xE8
 intern dStageYosterFile2_Layer2DObj+0x30 dStageYosterFile2_MPGeometryData_0x5188+0x168
 intern dStageYosterFile2_gap_0x54CC_sub_0x3F4+0x2C dStageYosterFile2_gap_0x54CC_sub_0x42C
-extern dStageYosterFile2_gap_0x54CC_sub_0x42C+0x3C 0x1F0
-extern dStageYosterFile2_gap_0x54CC_sub_0x42C+0x6C 0x2C8
+extern dStageYosterFile2_gap_0x54CC_sub_0x42C+0x3C 0x1F0  # -> file 110 (StageYosterImages)
+extern dStageYosterFile2_gap_0x54CC_sub_0x42C+0x6C 0x2C8  # -> file 110 (StageYosterImages)
 intern dStageYosterFile2_gap_0x54CC_sub_0x42C+0x8C dStageYosterFile2_gap_0x54CC_sub_0x4
-extern dStageYosterFile2_gap_0x54CC_sub_0x42C+0xB4 0x1A0
-extern dStageYosterFile2_gap_0x54CC_sub_0x42C+0xDC 0xA68
+extern dStageYosterFile2_gap_0x54CC_sub_0x42C+0xB4 0x1A0  # -> file 110 (StageYosterImages)
+extern dStageYosterFile2_gap_0x54CC_sub_0x42C+0xDC 0xA68  # -> file 110 (StageYosterImages)
 intern dStageYosterFile2_gap_0x54CC_sub_0x42C+0xFC dStageYosterFile2_gap_0x54CC_sub_0x44
-extern dStageYosterFile2_gap_0x54CC_sub_0x53C+0x2C 0x30
-extern dStageYosterFile2_gap_0x54CC_sub_0x53C+0x54 0x58
+extern dStageYosterFile2_gap_0x54CC_sub_0x53C+0x2C 0x30  # -> file 110 (StageYosterImages)
+extern dStageYosterFile2_gap_0x54CC_sub_0x53C+0x54 0x58  # -> file 110 (StageYosterImages)
 intern dStageYosterFile2_gap_0x54CC_sub_0x53C+0x74 dStageYosterFile2_gap_0x54CC_sub_0x84
 intern dStageYosterFile2_gap_0x54CC_sub_0x53C+0x94 dStageYosterFile2_gap_0x54CC_sub_0xC4
 intern dStageYosterFile2_gap_0x54CC_sub_0x53C+0xBC dStageYosterFile2_gap_0x54CC_sub_0x144
-extern dStageYosterFile2_gap_0x54CC_sub_0x53C+0xE4 0x150
-extern dStageYosterFile2_gap_0x54CC_sub_0x53C+0x10C 0x240
+extern dStageYosterFile2_gap_0x54CC_sub_0x53C+0xE4 0x150  # -> file 110 (StageYosterImages)
+extern dStageYosterFile2_gap_0x54CC_sub_0x53C+0x10C 0x240  # -> file 110 (StageYosterImages)
 intern dStageYosterFile2_gap_0x54CC_sub_0x53C+0x12C dStageYosterFile2_gap_0x54CC_sub_0x184
 intern dStageYosterFile2_gap_0x54CC_sub_0x53C+0x154 dStageYosterFile2_gap_0x54CC_sub_0x1F4
 intern dStageYosterFile2_gap_0x54CC_sub_0x53C+0x16C dStageYosterFile2_gap_0x54CC_sub_0x234

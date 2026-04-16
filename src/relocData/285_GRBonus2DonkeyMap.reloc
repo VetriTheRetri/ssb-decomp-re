@@ -1,8 +1,8 @@
 # Relocation metadata for file 285
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dGRBonus2DonkeyMap_header 0x848
-extern dGRBonus2DonkeyMap_header+0x10 0x2D90
-extern dGRBonus2DonkeyMap_header+0x14 0x34D0
-extern dGRBonus2DonkeyMap_header+0x40 0x34B0
-extern dGRBonus2DonkeyMap_header+0x48 0x26C88
+extern dGRBonus2DonkeyMap_header 0x848  # -> file 139 (GRBonus2DonkeyFile2)
+extern dGRBonus2DonkeyMap_header+0x10 0x2D90  # -> file 139 (GRBonus2DonkeyFile2)
+extern dGRBonus2DonkeyMap_header+0x14 0x34D0  # -> file 139 (GRBonus2DonkeyFile2)
+extern dGRBonus2DonkeyMap_header+0x40 0x34B0  # -> file 139 (GRBonus2DonkeyFile2)
+extern dGRBonus2DonkeyMap_header+0x48 0x26C88  # -> file 119 (Bonus1CommonBackground)

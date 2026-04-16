@@ -1,8 +1,8 @@
 # Relocation metadata for file 287
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dGRBonus2LuigiMap_header 0x990
-extern dGRBonus2LuigiMap_header+0x10 0x2CE0
-extern dGRBonus2LuigiMap_header+0x14 0x3670
-extern dGRBonus2LuigiMap_header+0x40 0x3650
-extern dGRBonus2LuigiMap_header+0x48 0x26C88
+extern dGRBonus2LuigiMap_header 0x990  # -> file 141 (GRBonus2LuigiFile2)
+extern dGRBonus2LuigiMap_header+0x10 0x2CE0  # -> file 141 (GRBonus2LuigiFile2)
+extern dGRBonus2LuigiMap_header+0x14 0x3670  # -> file 141 (GRBonus2LuigiFile2)
+extern dGRBonus2LuigiMap_header+0x40 0x3650  # -> file 141 (GRBonus2LuigiFile2)
+extern dGRBonus2LuigiMap_header+0x48 0x26C88  # -> file 119 (Bonus1CommonBackground)

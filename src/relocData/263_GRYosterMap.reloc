@@ -1,14 +1,14 @@
 # Relocation metadata for file 263
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dGRYosterMap_header 0xE00
-extern dGRYosterMap_header+0x4 0x1150
-extern dGRYosterMap_header+0x8 0x0
-extern dGRYosterMap_header+0xC 0x3780
-extern dGRYosterMap_header+0x10 0x4E78
-extern dGRYosterMap_header+0x20 0x5448
-extern dGRYosterMap_header+0x30 0x5C38
-extern dGRYosterMap_header+0x40 0x5188
-extern dGRYosterMap_header+0x48 0x26C88
-extern dGRYosterMap_header+0x80 0x100
+extern dGRYosterMap_header 0xE00  # -> file 111 (StageYosterFile2)
+extern dGRYosterMap_header+0x4 0x1150  # -> file 111 (StageYosterFile2)
+extern dGRYosterMap_header+0x8 0x0  # -> file 111 (StageYosterFile2)
+extern dGRYosterMap_header+0xC 0x3780  # -> file 111 (StageYosterFile2)
+extern dGRYosterMap_header+0x10 0x4E78  # -> file 111 (StageYosterFile2)
+extern dGRYosterMap_header+0x20 0x5448  # -> file 111 (StageYosterFile2)
+extern dGRYosterMap_header+0x30 0x5C38  # -> file 111 (StageYosterFile2)
+extern dGRYosterMap_header+0x40 0x5188  # -> file 111 (StageYosterFile2)
+extern dGRYosterMap_header+0x48 0x26C88  # -> file 93 (StageYoshi)
+extern dGRYosterMap_header+0x80 0x100  # -> file 154 (StageYosterFile3)
 intern dGRYosterMap_header+0x84 dGRYosterMap_item_weights

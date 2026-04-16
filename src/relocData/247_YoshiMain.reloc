@@ -1,70 +1,70 @@
 # Relocation metadata for file 247
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dYoshiMain_pre+0x0 0x34
-extern dYoshiMain_pre+0x4 0x530
-extern dYoshiMain_pre+0x8 0x960
-extern dYoshiMain_pre+0xC 0xA860
-extern dYoshiMain_pre+0x40 0x5458
-extern dYoshiMain_pre+0xD4 0x2398
-extern dYoshiMain_pre+0xD8 0xDFC
-extern dYoshiMain_pre+0xDC 0x3FDC
-extern dYoshiMain_pre+0xE8 0x5CF8
-extern dYoshiMain_pre+0xEC 0x4D04
-extern dYoshiMain_pre+0xF0 0x7514
-extern dYoshiMain_pre+0xFC 0x7D10
-extern dYoshiMain_pre+0x100 0x7818
-extern dYoshiMain_pre+0x104 0x822C
-extern dYoshiMain_pre+0x110 0x7D10
-extern dYoshiMain_pre+0x114 0x7818
-extern dYoshiMain_pre+0x118 0x822C
+extern dYoshiMain_pre+0x0 0x34  # -> file 246 (YoshiMainMotion)
+extern dYoshiMain_pre+0x4 0x530  # -> file 354 (YoshiSpecial2)
+extern dYoshiMain_pre+0x8 0x960  # -> file 339 (YoshiSpecial3)
+extern dYoshiMain_pre+0xC 0xA860  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0x40 0x5458  # -> file 86 (ITCommonObject)
+extern dYoshiMain_pre+0xD4 0x2398  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0xD8 0xDFC  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0xDC 0x3FDC  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0xE8 0x5CF8  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0xEC 0x4D04  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0xF0 0x7514  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0xFC 0x7D10  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0x100 0x7818  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0x104 0x822C  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0x110 0x7D10  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0x114 0x7818  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0x118 0x822C  # -> file 338 (YoshiModel)
 intern dYoshiMain_pre+0x130 dYoshiMain_pre+0xD4
-extern dYoshiMain_pre+0x19C 0x33A0
-extern dYoshiMain_pre+0x1A0 0x0
-extern dYoshiMain_pre+0x1A4 0x38A0
-extern dYoshiMain_pre+0x1AC 0x6948
-extern dYoshiMain_pre+0x1B0 0x4030
-extern dYoshiMain_pre+0x1B4 0x6E50
-extern dYoshiMain_pre+0x36C 0xA9B0
-extern dYoshiMain_pre+0x370 0xA9D8
-extern dYoshiMain_pre+0x374 0xAA00
-extern dYoshiMain_pre+0x378 0xAA28
-extern dYoshiMain_pre+0x37C 0xAA50
-extern dYoshiMain_pre+0x380 0xAA78
-extern dYoshiMain_pre+0x384 0xAAA8
+extern dYoshiMain_pre+0x19C 0x33A0  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0x1A0 0x0  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0x1A4 0x38A0  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0x1AC 0x6948  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0x1B0 0x4030  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0x1B4 0x6E50  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0x36C 0xA9B0  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0x370 0xA9D8  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0x374 0xAA00  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0x378 0xAA28  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0x37C 0xAA50  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0x380 0xAA78  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0x384 0xAAA8  # -> file 338 (YoshiModel)
 intern dYoshiMain_pre+0x388 dYoshiMain_pre+0x36C
-extern dYoshiMain_pre+0x38C 0xAC98
-extern dYoshiMain_pre+0x398 0x8300
-extern dYoshiMain_pre+0x3A0 0x8490
-extern dYoshiMain_pre+0x3A8 0x88B0
-extern dYoshiMain_pre+0x3C8 0x8C50
-extern dYoshiMain_pre+0x3D0 0x8B40
-extern dYoshiMain_pre+0x3D8 0x8D10
-extern dYoshiMain_pre+0x3E8 0x8C50
-extern dYoshiMain_pre+0x3F0 0x8B40
-extern dYoshiMain_pre+0x3F8 0x8DC0
-extern dYoshiMain_pre+0x408 0x9220
-extern dYoshiMain_pre+0x410 0x9350
-extern dYoshiMain_pre+0x420 0x8EC0
-extern dYoshiMain_pre+0x428 0x8FD0
-extern dYoshiMain_pre+0x438 0x9090
-extern dYoshiMain_pre+0x448 0x8EC0
-extern dYoshiMain_pre+0x450 0x8FD0
-extern dYoshiMain_pre+0x460 0x9090
+extern dYoshiMain_pre+0x38C 0xAC98  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0x398 0x8300  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0x3A0 0x8490  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0x3A8 0x88B0  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0x3C8 0x8C50  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0x3D0 0x8B40  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0x3D8 0x8D10  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0x3E8 0x8C50  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0x3F0 0x8B40  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0x3F8 0x8DC0  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0x408 0x9220  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0x410 0x9350  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0x420 0x8EC0  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0x428 0x8FD0  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0x438 0x9090  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0x448 0x8EC0  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0x450 0x8FD0  # -> file 338 (YoshiModel)
+extern dYoshiMain_pre+0x460 0x9090  # -> file 338 (YoshiModel)
 intern dYoshiMain_pre+0x474 dYoshiMain_pre+0x390
 intern dYoshiMain_attr+0x29C dYoshiMain_pre+0x7C
 intern dYoshiMain_attr+0x2A0 dYoshiMain_pre+0x74
 intern dYoshiMain_attr+0x2D0 dYoshiMain_pre+0x84
 intern dYoshiMain_attr+0x2D4 dYoshiMain_pre+0x19C
-extern dYoshiMain_attr+0x2D8 0x0
-extern dYoshiMain_attr+0x2DC 0x500
-extern dYoshiMain_attr+0x2E0 0x7D0
-extern dYoshiMain_attr+0x2E4 0xAA0
-extern dYoshiMain_attr+0x2E8 0xD70
-extern dYoshiMain_attr+0x2EC 0x1040
-extern dYoshiMain_attr+0x2F0 0x1310
-extern dYoshiMain_attr+0x2F4 0x15E0
-extern dYoshiMain_attr+0x2F8 0x18B0
+extern dYoshiMain_attr+0x2D8 0x0  # -> file 340 (YoshiShieldPose)
+extern dYoshiMain_attr+0x2DC 0x500  # -> file 340 (YoshiShieldPose)
+extern dYoshiMain_attr+0x2E0 0x7D0  # -> file 340 (YoshiShieldPose)
+extern dYoshiMain_attr+0x2E4 0xAA0  # -> file 340 (YoshiShieldPose)
+extern dYoshiMain_attr+0x2E8 0xD70  # -> file 340 (YoshiShieldPose)
+extern dYoshiMain_attr+0x2EC 0x1040  # -> file 340 (YoshiShieldPose)
+extern dYoshiMain_attr+0x2F0 0x1310  # -> file 340 (YoshiShieldPose)
+extern dYoshiMain_attr+0x2F4 0x15E0  # -> file 340 (YoshiShieldPose)
+extern dYoshiMain_attr+0x2F8 0x18B0  # -> file 340 (YoshiShieldPose)
 intern dYoshiMain_attr+0x328 dYoshiMain_pre+0x124
 intern dYoshiMain_attr+0x330 dYoshiMain_pre+0x194
 intern dYoshiMain_attr+0x338 dYoshiMain_pre+0x1BC

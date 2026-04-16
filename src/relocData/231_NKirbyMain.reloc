@@ -1,23 +1,23 @@
 # Relocation metadata for file 231
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dNKirbyMain_pre+0x0 0x154
-extern dNKirbyMain_pre+0xE4 0x2258
-extern dNKirbyMain_pre+0xF4 0x2258
-extern dNKirbyMain_pre+0x2BC 0x2B8
+extern dNKirbyMain_pre+0x0 0x154  # -> file 228 (KirbyMainMotion)
+extern dNKirbyMain_pre+0xE4 0x2258  # -> file 305 (NKirbyModel)
+extern dNKirbyMain_pre+0xF4 0x2258  # -> file 305 (NKirbyModel)
+extern dNKirbyMain_pre+0x2BC 0x2B8  # -> file 345 (MasterHandIcon)
 intern dNKirbyMain_attr+0x29C dNKirbyMain_pre+0xC
 intern dNKirbyMain_attr+0x2A0 dNKirbyMain_pre+0x4
 intern dNKirbyMain_attr+0x2D0 dNKirbyMain_pre+0x14
 intern dNKirbyMain_attr+0x2D4 dNKirbyMain_pre+0xE4
-extern dNKirbyMain_attr+0x2D8 0x0
-extern dNKirbyMain_attr+0x2DC 0x450
-extern dNKirbyMain_attr+0x2E0 0x990
-extern dNKirbyMain_attr+0x2E4 0xEF0
-extern dNKirbyMain_attr+0x2E8 0x1420
-extern dNKirbyMain_attr+0x2EC 0x19D0
-extern dNKirbyMain_attr+0x2F0 0x1F00
-extern dNKirbyMain_attr+0x2F4 0x2480
-extern dNKirbyMain_attr+0x2F8 0x29A0
+extern dNKirbyMain_attr+0x2D8 0x0  # -> file 329 (KirbyShieldPose)
+extern dNKirbyMain_attr+0x2DC 0x450  # -> file 329 (KirbyShieldPose)
+extern dNKirbyMain_attr+0x2E0 0x990  # -> file 329 (KirbyShieldPose)
+extern dNKirbyMain_attr+0x2E4 0xEF0  # -> file 329 (KirbyShieldPose)
+extern dNKirbyMain_attr+0x2E8 0x1420  # -> file 329 (KirbyShieldPose)
+extern dNKirbyMain_attr+0x2EC 0x19D0  # -> file 329 (KirbyShieldPose)
+extern dNKirbyMain_attr+0x2F0 0x1F00  # -> file 329 (KirbyShieldPose)
+extern dNKirbyMain_attr+0x2F4 0x2480  # -> file 329 (KirbyShieldPose)
+extern dNKirbyMain_attr+0x2F8 0x29A0  # -> file 329 (KirbyShieldPose)
 intern dNKirbyMain_attr+0x328 dNKirbyMain_pre+0x74
 intern dNKirbyMain_attr+0x330 dNKirbyMain_pre+0xE0
 intern dNKirbyMain_attr+0x338 dNKirbyMain_pre+0x104

@@ -1,12 +1,12 @@
 # Relocation metadata for file 261
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dGRJungleMap_MapHeader_0x0014 0x8B18
-extern dGRJungleMap_MapHeader_0x0014+0x10 0x9878
-extern dGRJungleMap_MapHeader_0x0014+0x14 0x9B20
-extern dGRJungleMap_MapHeader_0x0014+0x20 0xC7D8
-extern dGRJungleMap_MapHeader_0x0014+0x30 0xD188
-extern dGRJungleMap_MapHeader_0x0014+0x40 0x9AFC
-extern dGRJungleMap_MapHeader_0x0014+0x48 0x26C88
-extern dGRJungleMap_MapHeader_0x0014+0x80 0xA98
+extern dGRJungleMap_MapHeader_0x0014 0x8B18  # -> file 108 (StageJungleFile2)
+extern dGRJungleMap_MapHeader_0x0014+0x10 0x9878  # -> file 108 (StageJungleFile2)
+extern dGRJungleMap_MapHeader_0x0014+0x14 0x9B20  # -> file 108 (StageJungleFile2)
+extern dGRJungleMap_MapHeader_0x0014+0x20 0xC7D8  # -> file 108 (StageJungleFile2)
+extern dGRJungleMap_MapHeader_0x0014+0x30 0xD188  # -> file 108 (StageJungleFile2)
+extern dGRJungleMap_MapHeader_0x0014+0x40 0x9AFC  # -> file 108 (StageJungleFile2)
+extern dGRJungleMap_MapHeader_0x0014+0x48 0x26C88  # -> file 92 (StageJungle)
+extern dGRJungleMap_MapHeader_0x0014+0x80 0xA98  # -> file 158 (StageJungleFile3)
 intern dGRJungleMap_MapHeader_0x0014+0x84 dGRJungleMap_gap_0x0000

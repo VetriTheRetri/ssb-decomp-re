@@ -1,8 +1,8 @@
 # Relocation metadata for file 289
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dGRBonus2YoshiMap_header 0xD40
-extern dGRBonus2YoshiMap_header+0x10 0x2510
-extern dGRBonus2YoshiMap_header+0x14 0x2E90
-extern dGRBonus2YoshiMap_header+0x40 0x2E68
-extern dGRBonus2YoshiMap_header+0x48 0x26C88
+extern dGRBonus2YoshiMap_header 0xD40  # -> file 143 (GRBonus2YoshiFile2)
+extern dGRBonus2YoshiMap_header+0x10 0x2510  # -> file 143 (GRBonus2YoshiFile2)
+extern dGRBonus2YoshiMap_header+0x14 0x2E90  # -> file 143 (GRBonus2YoshiFile2)
+extern dGRBonus2YoshiMap_header+0x40 0x2E68  # -> file 143 (GRBonus2YoshiFile2)
+extern dGRBonus2YoshiMap_header+0x48 0x26C88  # -> file 119 (Bonus1CommonBackground)

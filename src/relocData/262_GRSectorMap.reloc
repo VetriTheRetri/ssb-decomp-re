@@ -1,13 +1,13 @@
 # Relocation metadata for file 262
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dGRSectorMap_MapHeader_0x0014 0x44C8
-extern dGRSectorMap_MapHeader_0x0014+0x4 0x4710
-extern dGRSectorMap_MapHeader_0x0014+0x10 0x8680
-extern dGRSectorMap_MapHeader_0x0014+0x14 0x8B00
-extern dGRSectorMap_MapHeader_0x0014+0x40 0x8AD8
-extern dGRSectorMap_MapHeader_0x0014+0x48 0x26C88
-extern dGRSectorMap_MapHeader_0x0014+0x80 0x0
+extern dGRSectorMap_MapHeader_0x0014 0x44C8  # -> file 109 (StageSectorFile2)
+extern dGRSectorMap_MapHeader_0x0014+0x4 0x4710  # -> file 109 (StageSectorFile2)
+extern dGRSectorMap_MapHeader_0x0014+0x10 0x8680  # -> file 109 (StageSectorFile2)
+extern dGRSectorMap_MapHeader_0x0014+0x14 0x8B00  # -> file 109 (StageSectorFile2)
+extern dGRSectorMap_MapHeader_0x0014+0x40 0x8AD8  # -> file 109 (StageSectorFile2)
+extern dGRSectorMap_MapHeader_0x0014+0x48 0x26C88  # -> file 99 (StageSector)
+extern dGRSectorMap_MapHeader_0x0014+0x80 0x0  # -> file 153 (StageSectorFile3)
 intern dGRSectorMap_MapHeader_0x0014+0x84 dGRSectorMap_Arwing0_AnimJoint
-extern dGRSectorMap_ArwingLaser2D_WeaponAttributes 0x1C50
-extern dGRSectorMap_ArwingLaser3D_WeaponAttributes 0x1C50
+extern dGRSectorMap_ArwingLaser2D_WeaponAttributes 0x1C50  # -> file 153 (StageSectorFile3)
+extern dGRSectorMap_ArwingLaser3D_WeaponAttributes 0x1C50  # -> file 153 (StageSectorFile3)

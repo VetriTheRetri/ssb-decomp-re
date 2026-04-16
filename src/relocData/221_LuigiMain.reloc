@@ -1,76 +1,76 @@
 # Relocation metadata for file 221
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dLuigiMain_pre+0x0 0x24
-extern dLuigiMain_pre+0x4 0x608
-extern dLuigiMain_pre+0x8 0x0
-extern dLuigiMain_pre+0x5C 0x1AB0
-extern dLuigiMain_pre+0x60 0x8B0
-extern dLuigiMain_pre+0x64 0x2C40
-extern dLuigiMain_pre+0x70 0x4248
-extern dLuigiMain_pre+0x74 0x3530
-extern dLuigiMain_pre+0x78 0x5210
-extern dLuigiMain_pre+0x84 0x5910
-extern dLuigiMain_pre+0x8C 0x5A7C
-extern dLuigiMain_pre+0x98 0x5BA0
-extern dLuigiMain_pre+0x9C 0x5CA0
-extern dLuigiMain_pre+0xA0 0x5CEC
-extern dLuigiMain_pre+0xAC 0x1FC0
-extern dLuigiMain_pre+0xB0 0x8E4
-extern dLuigiMain_pre+0xB4 0x2C64
-extern dLuigiMain_pre+0xC0 0x46B8
-extern dLuigiMain_pre+0xC4 0x3564
-extern dLuigiMain_pre+0xC8 0x5234
-extern dLuigiMain_pre+0xD4 0x53C0
-extern dLuigiMain_pre+0xD8 0x54E0
-extern dLuigiMain_pre+0xDC 0x552C
-extern dLuigiMain_pre+0xE8 0x5650
-extern dLuigiMain_pre+0xEC 0x5750
-extern dLuigiMain_pre+0xF0 0x579C
+extern dLuigiMain_pre+0x0 0x24  # -> file 220 (LuigiMainMotion)
+extern dLuigiMain_pre+0x4 0x608  # -> file 356 (MarioSpecial2)
+extern dLuigiMain_pre+0x8 0x0  # -> file 222 (LuigiSpecial1)
+extern dLuigiMain_pre+0x5C 0x1AB0  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0x60 0x8B0  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0x64 0x2C40  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0x70 0x4248  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0x74 0x3530  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0x78 0x5210  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0x84 0x5910  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0x8C 0x5A7C  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0x98 0x5BA0  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0x9C 0x5CA0  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0xA0 0x5CEC  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0xAC 0x1FC0  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0xB0 0x8E4  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0xB4 0x2C64  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0xC0 0x46B8  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0xC4 0x3564  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0xC8 0x5234  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0xD4 0x53C0  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0xD8 0x54E0  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0xDC 0x552C  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0xE8 0x5650  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0xEC 0x5750  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0xF0 0x579C  # -> file 323 (LuigiModel)
 intern dLuigiMain_pre+0x114 dLuigiMain_pre+0x5C
 intern dLuigiMain_pre+0x12C dLuigiMain_pre+0xAC
-extern dLuigiMain_pre+0x164 0x2410
-extern dLuigiMain_pre+0x168 0x0
-extern dLuigiMain_pre+0x16C 0x2890
-extern dLuigiMain_pre+0x174 0x49E8
-extern dLuigiMain_pre+0x178 0x2C80
-extern dLuigiMain_pre+0x17C 0x4E60
-extern dLuigiMain_pre+0x490 0x7C30
-extern dLuigiMain_pre+0x494 0x7C58
-extern dLuigiMain_pre+0x498 0x7C80
-extern dLuigiMain_pre+0x49C 0x7CA8
-extern dLuigiMain_pre+0x4A0 0x7CD8
+extern dLuigiMain_pre+0x164 0x2410  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0x168 0x0  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0x16C 0x2890  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0x174 0x49E8  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0x178 0x2C80  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0x17C 0x4E60  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0x490 0x7C30  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0x494 0x7C58  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0x498 0x7C80  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0x49C 0x7CA8  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0x4A0 0x7CD8  # -> file 323 (LuigiModel)
 intern dLuigiMain_pre+0x4A4 dLuigiMain_pre+0x490
-extern dLuigiMain_pre+0x4A8 0x7EC8
-extern dLuigiMain_pre+0x4B4 0x5D70
-extern dLuigiMain_pre+0x4BC 0x5E50
-extern dLuigiMain_pre+0x4CC 0x6640
-extern dLuigiMain_pre+0x4D4 0x6530
-extern dLuigiMain_pre+0x4DC 0x6730
-extern dLuigiMain_pre+0x4EC 0x6270
-extern dLuigiMain_pre+0x4FC 0x6640
-extern dLuigiMain_pre+0x504 0x6530
-extern dLuigiMain_pre+0x50C 0x6830
-extern dLuigiMain_pre+0x524 0x6950
-extern dLuigiMain_pre+0x52C 0x6A60
-extern dLuigiMain_pre+0x53C 0x6B40
-extern dLuigiMain_pre+0x54C 0x6950
-extern dLuigiMain_pre+0x554 0x6A60
-extern dLuigiMain_pre+0x564 0x6B40
+extern dLuigiMain_pre+0x4A8 0x7EC8  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0x4B4 0x5D70  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0x4BC 0x5E50  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0x4CC 0x6640  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0x4D4 0x6530  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0x4DC 0x6730  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0x4EC 0x6270  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0x4FC 0x6640  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0x504 0x6530  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0x50C 0x6830  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0x524 0x6950  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0x52C 0x6A60  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0x53C 0x6B40  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0x54C 0x6950  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0x554 0x6A60  # -> file 323 (LuigiModel)
+extern dLuigiMain_pre+0x564 0x6B40  # -> file 323 (LuigiModel)
 intern dLuigiMain_pre+0x578 dLuigiMain_pre+0x4AC
 intern dLuigiMain_attr+0x29C dLuigiMain_pre+0x14
 intern dLuigiMain_attr+0x2A0 dLuigiMain_pre+0xC
 intern dLuigiMain_attr+0x2D0 dLuigiMain_pre+0x1C
 intern dLuigiMain_attr+0x2D4 dLuigiMain_pre+0x164
-extern dLuigiMain_attr+0x2D8 0xF0
-extern dLuigiMain_attr+0x2DC 0x5A0
-extern dLuigiMain_attr+0x2E0 0xA10
-extern dLuigiMain_attr+0x2E4 0xE80
-extern dLuigiMain_attr+0x2E8 0x12F0
-extern dLuigiMain_attr+0x2EC 0x17A0
-extern dLuigiMain_attr+0x2F0 0x1C60
-extern dLuigiMain_attr+0x2F4 0x20E0
-extern dLuigiMain_attr+0x2F8 0x2540
+extern dLuigiMain_attr+0x2D8 0xF0  # -> file 298 (MarioShieldPose)
+extern dLuigiMain_attr+0x2DC 0x5A0  # -> file 298 (MarioShieldPose)
+extern dLuigiMain_attr+0x2E0 0xA10  # -> file 298 (MarioShieldPose)
+extern dLuigiMain_attr+0x2E4 0xE80  # -> file 298 (MarioShieldPose)
+extern dLuigiMain_attr+0x2E8 0x12F0  # -> file 298 (MarioShieldPose)
+extern dLuigiMain_attr+0x2EC 0x17A0  # -> file 298 (MarioShieldPose)
+extern dLuigiMain_attr+0x2F0 0x1C60  # -> file 298 (MarioShieldPose)
+extern dLuigiMain_attr+0x2F4 0x20E0  # -> file 298 (MarioShieldPose)
+extern dLuigiMain_attr+0x2F8 0x2540  # -> file 298 (MarioShieldPose)
 intern dLuigiMain_attr+0x324 dLuigiMain_pre+0x334
 intern dLuigiMain_attr+0x328 dLuigiMain_pre+0xFC
 intern dLuigiMain_attr+0x330 dLuigiMain_pre+0x160

@@ -4,7 +4,7 @@
 intern dCaptainMainMotion_0x00A4+0x3C dCaptainMainMotion_0x00A4
 intern dCaptainMainMotion_0x025C+0x4 dCaptainMainMotion_0x0254
 intern dCaptainMainMotion_0x0268+0x4 dCaptainMainMotion_0x0254
-extern dCaptainMainMotion_0x0268+0xC 0x758
+extern dCaptainMainMotion_0x0268+0xC 0x758  # -> file 201 (FTCommonMoveset)
 intern dCaptainMainMotion_0x02E8+0x4 dCaptainMainMotion_0x02AC
 intern dCaptainMainMotion_0x0328+0x4 dCaptainMainMotion_0x0310
 intern dCaptainMainMotion_0x0330+0x8 dCaptainMainMotion_0x02F0
@@ -18,23 +18,23 @@ intern dCaptainMainMotion_0x0848+0x8 dCaptainMainMotion_0x082C
 intern dCaptainMainMotion_0x08AC+0x8 dCaptainMainMotion_0x088C
 intern dCaptainMainMotion_0x0908+0xC dCaptainMainMotion_0x08F8
 intern dCaptainMainMotion_0x0928+0xC dCaptainMainMotion_0x0918
-extern dCaptainMainMotion_0x0928+0x24 0x0
-extern dCaptainMainMotion_0x0964+0x1C 0x64
-extern dCaptainMainMotion_0x09A0+0x20 0xC8
-extern dCaptainMainMotion_0x09E0+0x10 0x12C
-extern dCaptainMainMotion_0x0A10+0xC 0x1A0
-extern dCaptainMainMotion_0x0A2C+0x14 0x1F4
-extern dCaptainMainMotion_0x0A58+0x20 0x248
-extern dCaptainMainMotion_0x0A90+0xC 0x2B0
-extern dCaptainMainMotion_0x0AB4+0xC 0x324
-extern dCaptainMainMotion_0x0AD0+0x14 0x378
-extern dCaptainMainMotion_0x0AFC+0x14 0x3CC
-extern dCaptainMainMotion_0x0B28+0xC 0x430
-extern dCaptainMainMotion_0x0B4C+0x10 0x494
-extern dCaptainMainMotion_0x0B6C+0x18 0x4F8
-extern dCaptainMainMotion_0x0BA4+0x20 0x55C
-extern dCaptainMainMotion_0x0BDC+0x10 0x5C0
-extern dCaptainMainMotion_0x0C24+0xC 0x634
+extern dCaptainMainMotion_0x0928+0x24 0x0  # -> file 201 (FTCommonMoveset)
+extern dCaptainMainMotion_0x0964+0x1C 0x64  # -> file 201 (FTCommonMoveset)
+extern dCaptainMainMotion_0x09A0+0x20 0xC8  # -> file 201 (FTCommonMoveset)
+extern dCaptainMainMotion_0x09E0+0x10 0x12C  # -> file 201 (FTCommonMoveset)
+extern dCaptainMainMotion_0x0A10+0xC 0x1A0  # -> file 201 (FTCommonMoveset)
+extern dCaptainMainMotion_0x0A2C+0x14 0x1F4  # -> file 201 (FTCommonMoveset)
+extern dCaptainMainMotion_0x0A58+0x20 0x248  # -> file 201 (FTCommonMoveset)
+extern dCaptainMainMotion_0x0A90+0xC 0x2B0  # -> file 201 (FTCommonMoveset)
+extern dCaptainMainMotion_0x0AB4+0xC 0x324  # -> file 201 (FTCommonMoveset)
+extern dCaptainMainMotion_0x0AD0+0x14 0x378  # -> file 201 (FTCommonMoveset)
+extern dCaptainMainMotion_0x0AFC+0x14 0x3CC  # -> file 201 (FTCommonMoveset)
+extern dCaptainMainMotion_0x0B28+0xC 0x430  # -> file 201 (FTCommonMoveset)
+extern dCaptainMainMotion_0x0B4C+0x10 0x494  # -> file 201 (FTCommonMoveset)
+extern dCaptainMainMotion_0x0B6C+0x18 0x4F8  # -> file 201 (FTCommonMoveset)
+extern dCaptainMainMotion_0x0BA4+0x20 0x55C  # -> file 201 (FTCommonMoveset)
+extern dCaptainMainMotion_0x0BDC+0x10 0x5C0  # -> file 201 (FTCommonMoveset)
+extern dCaptainMainMotion_0x0C24+0xC 0x634  # -> file 201 (FTCommonMoveset)
 intern dCaptainMainMotion_0x0C24+0x1C dCaptainMainMotion_0x0C24
 intern dCaptainMainMotion_0x0C44+0x34 dCaptainMainMotion_0x0C44
 intern dCaptainMainMotion_0x0C44+0x54 dCaptainMainMotion_0x0C44
@@ -44,13 +44,13 @@ intern dCaptainMainMotion_0x0D00+0x24 dCaptainMainMotion_0x0D00
 intern dCaptainMainMotion_0x0D60+0x4 dCaptainMainMotion_0x0D28
 intern dCaptainMainMotion_0x0DDC+0x4 dCaptainMainMotion_0x0DA4
 intern dCaptainMainMotion_0x0E88+0x8 dCaptainMainMotion_0x0E50
-extern dCaptainMainMotion_0x0F18+0x4 0x6AC
-extern dCaptainMainMotion_0x0F24+0x4 0x6C4
-extern dCaptainMainMotion_0x0F30+0x4 0x6CC
+extern dCaptainMainMotion_0x0F18+0x4 0x6AC  # -> file 201 (FTCommonMoveset)
+extern dCaptainMainMotion_0x0F24+0x4 0x6C4  # -> file 201 (FTCommonMoveset)
+extern dCaptainMainMotion_0x0F30+0x4 0x6CC  # -> file 201 (FTCommonMoveset)
 intern dCaptainMainMotion_0x0F3C+0x4 dCaptainMainMotion_0x0254
-extern dCaptainMainMotion_0x0F3C+0xC 0x6F0
+extern dCaptainMainMotion_0x0F3C+0xC 0x6F0  # -> file 201 (FTCommonMoveset)
 intern dCaptainMainMotion_0x0F50+0x4 dCaptainMainMotion_0x0254
-extern dCaptainMainMotion_0x0F50+0xC 0x70C
+extern dCaptainMainMotion_0x0F50+0xC 0x70C  # -> file 201 (FTCommonMoveset)
 intern dCaptainMainMotion_0x10A4+0xC dCaptainMainMotion_0x1068
 intern dCaptainMainMotion_0x10A4+0x1C dCaptainMainMotion_0x1068
 intern dCaptainMainMotion_0x10A4+0x2C dCaptainMainMotion_0x1068

@@ -1,18 +1,18 @@
 # Relocation metadata for file 260
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dGRInishieMap_MapHeader_0x0014 0x4A48
-extern dGRInishieMap_MapHeader_0x0014+0x4 0x4C30
-extern dGRInishieMap_MapHeader_0x0014+0x8 0x3730
-extern dGRInishieMap_MapHeader_0x0014+0xC 0x4E40
-extern dGRInishieMap_MapHeader_0x0014+0x10 0x6320
-extern dGRInishieMap_MapHeader_0x0014+0x20 0x6820
-extern dGRInishieMap_MapHeader_0x0014+0x30 0x6C00
-extern dGRInishieMap_MapHeader_0x0014+0x40 0x6698
-extern dGRInishieMap_MapHeader_0x0014+0x48 0x26C88
-extern dGRInishieMap_MapHeader_0x0014+0x80 0x5F0
+extern dGRInishieMap_MapHeader_0x0014 0x4A48  # -> file 107 (StageInishieFile2)
+extern dGRInishieMap_MapHeader_0x0014+0x4 0x4C30  # -> file 107 (StageInishieFile2)
+extern dGRInishieMap_MapHeader_0x0014+0x8 0x3730  # -> file 107 (StageInishieFile2)
+extern dGRInishieMap_MapHeader_0x0014+0xC 0x4E40  # -> file 107 (StageInishieFile2)
+extern dGRInishieMap_MapHeader_0x0014+0x10 0x6320  # -> file 107 (StageInishieFile2)
+extern dGRInishieMap_MapHeader_0x0014+0x20 0x6820  # -> file 107 (StageInishieFile2)
+extern dGRInishieMap_MapHeader_0x0014+0x30 0x6C00  # -> file 107 (StageInishieFile2)
+extern dGRInishieMap_MapHeader_0x0014+0x40 0x6698  # -> file 107 (StageInishieFile2)
+extern dGRInishieMap_MapHeader_0x0014+0x48 0x26C88  # -> file 91 (StageInishieBackground)
+extern dGRInishieMap_MapHeader_0x0014+0x80 0x5F0  # -> file 155 (StageInishieFile3)
 intern dGRInishieMap_MapHeader_0x0014+0x84 dGRInishieMap_gap_0x0000
-extern dGRInishieMap_PowerBlock_ItemAttributes 0x11F8
-extern dGRInishieMap_PowerBlock_ItemAttributes+0x8 0x13B0
-extern dGRInishieMap_Pakkun_ItemAttributes 0xC30
-extern dGRInishieMap_Pakkun_ItemAttributes+0x4 0xA68
+extern dGRInishieMap_PowerBlock_ItemAttributes 0x11F8  # -> file 155 (StageInishieFile3)
+extern dGRInishieMap_PowerBlock_ItemAttributes+0x8 0x13B0  # -> file 155 (StageInishieFile3)
+extern dGRInishieMap_Pakkun_ItemAttributes 0xC30  # -> file 155 (StageInishieFile3)
+extern dGRInishieMap_Pakkun_ItemAttributes+0x4 0xA68  # -> file 155 (StageInishieFile3)

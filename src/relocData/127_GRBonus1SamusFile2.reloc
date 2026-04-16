@@ -1,14 +1,14 @@
 # Relocation metadata for file 127
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dGRBonus1SamusFile2_gap_0x0000_sub_0x480+0x74 0x6E0
-extern dGRBonus1SamusFile2_gap_0x0000_sub_0x480+0xA4 0x6F0
+extern dGRBonus1SamusFile2_gap_0x0000_sub_0x480+0x74 0x6E0  # -> file 121 (Bonus1CommonImages2)
+extern dGRBonus1SamusFile2_gap_0x0000_sub_0x480+0xA4 0x6F0  # -> file 121 (Bonus1CommonImages2)
 intern dGRBonus1SamusFile2_gap_0x0000_sub_0x480+0xC4 dGRBonus1SamusFile2_gap_0x0000
-extern dGRBonus1SamusFile2_gap_0x0000_sub_0x5A8+0x4C 0x6E0
-extern dGRBonus1SamusFile2_gap_0x0000_sub_0x5A8+0x7C 0x6F0
+extern dGRBonus1SamusFile2_gap_0x0000_sub_0x5A8+0x4C 0x6E0  # -> file 121 (Bonus1CommonImages2)
+extern dGRBonus1SamusFile2_gap_0x0000_sub_0x5A8+0x7C 0x6F0  # -> file 121 (Bonus1CommonImages2)
 intern dGRBonus1SamusFile2_gap_0x0000_sub_0x630+0x14 dGRBonus1SamusFile2_gap_0x0000
-extern dGRBonus1SamusFile2_gap_0x0000_sub_0x6F0+0x4 0x6E0
-extern dGRBonus1SamusFile2_gap_0x0000_sub_0x6F0+0x34 0x6F0
+extern dGRBonus1SamusFile2_gap_0x0000_sub_0x6F0+0x4 0x6E0  # -> file 121 (Bonus1CommonImages2)
+extern dGRBonus1SamusFile2_gap_0x0000_sub_0x6F0+0x34 0x6F0  # -> file 121 (Bonus1CommonImages2)
 intern dGRBonus1SamusFile2_gap_0x0000_sub_0x6F0+0x54 dGRBonus1SamusFile2_gap_0x0000
 intern dGRBonus1SamusFile2_gap_0x0000_sub_0x780+0x3C dGRBonus1SamusFile2_gap_0x0000_sub_0x40
 intern dGRBonus1SamusFile2_gap_0x0000_sub_0x780+0x4C dGRBonus1SamusFile2_gap_0x0000_sub_0x80
@@ -36,22 +36,22 @@ intern dGRBonus1SamusFile2_Layer0DObj+0x5C dGRBonus1SamusFile2_gap_0x0000_sub_0x
 intern dGRBonus1SamusFile2_Layer0DObj+0x88 dGRBonus1SamusFile2_gap_0x0000_sub_0x930
 intern dGRBonus1SamusFile2_Layer0DObj+0xB4 dGRBonus1SamusFile2_gap_0x0000_sub_0x940
 intern dGRBonus1SamusFile2_gap_0x0A58_sub_0xA08+0x54 dGRBonus1SamusFile2_gap_0x0A58_sub_0xA68
-extern dGRBonus1SamusFile2_gap_0x0A58_sub_0xA68+0x1C 0xB8
-extern dGRBonus1SamusFile2_gap_0x0A58_sub_0xA68+0x44 0xE0
+extern dGRBonus1SamusFile2_gap_0x0A58_sub_0xA68+0x1C 0xB8  # -> file 121 (Bonus1CommonImages2)
+extern dGRBonus1SamusFile2_gap_0x0A58_sub_0xA68+0x44 0xE0  # -> file 121 (Bonus1CommonImages2)
 intern dGRBonus1SamusFile2_gap_0x0A58_sub_0xA68+0x64 dGRBonus1SamusFile2_gap_0x0A58_sub_0x8
 intern dGRBonus1SamusFile2_gap_0x0A58_sub_0xB00+0xC dGRBonus1SamusFile2_gap_0x0A58_sub_0x148
-extern dGRBonus1SamusFile2_gap_0x0A58_sub_0xB00+0x54 0x588
-extern dGRBonus1SamusFile2_gap_0x0A58_sub_0xB00+0x7C 0x5A8
+extern dGRBonus1SamusFile2_gap_0x0A58_sub_0xB00+0x54 0x588  # -> file 121 (Bonus1CommonImages2)
+extern dGRBonus1SamusFile2_gap_0x0A58_sub_0xB00+0x7C 0x5A8  # -> file 121 (Bonus1CommonImages2)
 intern dGRBonus1SamusFile2_gap_0x0A58_sub_0xB00+0x9C dGRBonus1SamusFile2_gap_0x0A58_sub_0x288
 intern dGRBonus1SamusFile2_gap_0x0A58_sub_0xB00+0xD4 dGRBonus1SamusFile2_gap_0x0A58_sub_0x388
-extern dGRBonus1SamusFile2_gap_0x0A58_sub_0xB00+0x114 0x630
-extern dGRBonus1SamusFile2_gap_0x0A58_sub_0xB00+0x13C 0x658
+extern dGRBonus1SamusFile2_gap_0x0A58_sub_0xB00+0x114 0x630  # -> file 121 (Bonus1CommonImages2)
+extern dGRBonus1SamusFile2_gap_0x0A58_sub_0xB00+0x13C 0x658  # -> file 121 (Bonus1CommonImages2)
 intern dGRBonus1SamusFile2_gap_0x0A58_sub_0xB00+0x15C dGRBonus1SamusFile2_gap_0x0A58_sub_0x508
 intern dGRBonus1SamusFile2_gap_0x0A58_sub_0xB00+0x184 dGRBonus1SamusFile2_gap_0x0A58_sub_0x588
 intern dGRBonus1SamusFile2_gap_0x0A58_sub_0xB00+0x1AC dGRBonus1SamusFile2_gap_0x0A58_sub_0x608
 intern dGRBonus1SamusFile2_gap_0x0A58_sub_0xB00+0x1F4 dGRBonus1SamusFile2_gap_0x0A58_sub_0x788
-extern dGRBonus1SamusFile2_gap_0x0A58_sub_0xB00+0x214 0x8
-extern dGRBonus1SamusFile2_gap_0x0A58_sub_0xB00+0x234 0x30
+extern dGRBonus1SamusFile2_gap_0x0A58_sub_0xB00+0x214 0x8  # -> file 121 (Bonus1CommonImages2)
+extern dGRBonus1SamusFile2_gap_0x0A58_sub_0xB00+0x234 0x30  # -> file 121 (Bonus1CommonImages2)
 intern dGRBonus1SamusFile2_gap_0x0A58_sub_0xB00+0x254 dGRBonus1SamusFile2_gap_0x0A58_sub_0x808
 intern dGRBonus1SamusFile2_gap_0x0A58_sub_0xB00+0x274 dGRBonus1SamusFile2_gap_0x0A58_sub_0x848
 intern dGRBonus1SamusFile2_gap_0x0A58_sub_0xB00+0x294 dGRBonus1SamusFile2_gap_0x0A58_sub_0x888

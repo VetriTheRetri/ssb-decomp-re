@@ -1,91 +1,91 @@
 # Relocation metadata for file 236
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dCaptainMain_pre+0x0 0x6C
-extern dCaptainMain_pre+0x4 0x760
-extern dCaptainMain_pre+0x8 0xB08
-extern dCaptainMain_pre+0x5C 0x2A98
-extern dCaptainMain_pre+0x60 0x120C
-extern dCaptainMain_pre+0x64 0x4834
-extern dCaptainMain_pre+0x70 0x6AF0
-extern dCaptainMain_pre+0x74 0x5854
-extern dCaptainMain_pre+0x78 0x8464
-extern dCaptainMain_pre+0x84 0x94A8
-extern dCaptainMain_pre+0x88 0x9388
-extern dCaptainMain_pre+0x8C 0x96B4
-extern dCaptainMain_pre+0x98 0x9800
-extern dCaptainMain_pre+0x9C 0x9758
-extern dCaptainMain_pre+0xA0 0x994C
-extern dCaptainMain_pre+0xAC 0x9B88
-extern dCaptainMain_pre+0xB0 0x9A78
-extern dCaptainMain_pre+0xB4 0x9DA4
-extern dCaptainMain_pre+0xC0 0x9ED0
-extern dCaptainMain_pre+0xC4 0x9E48
-extern dCaptainMain_pre+0xC8 0xA00C
-extern dCaptainMain_pre+0xD4 0x3308
-extern dCaptainMain_pre+0xD8 0x1248
-extern dCaptainMain_pre+0xDC 0x4860
-extern dCaptainMain_pre+0xE8 0x7148
-extern dCaptainMain_pre+0xEC 0x5884
-extern dCaptainMain_pre+0xF0 0x8484
-extern dCaptainMain_pre+0xFC 0x86F8
-extern dCaptainMain_pre+0x100 0x85D8
-extern dCaptainMain_pre+0x104 0x8904
-extern dCaptainMain_pre+0x110 0x8A50
-extern dCaptainMain_pre+0x114 0x89A8
-extern dCaptainMain_pre+0x118 0x8B9C
-extern dCaptainMain_pre+0x124 0x8DD8
-extern dCaptainMain_pre+0x128 0x8CC8
-extern dCaptainMain_pre+0x12C 0x8FF4
-extern dCaptainMain_pre+0x138 0x9120
-extern dCaptainMain_pre+0x13C 0x9098
-extern dCaptainMain_pre+0x140 0x925C
+extern dCaptainMain_pre+0x0 0x6C  # -> file 235 (CaptainMainMotion)
+extern dCaptainMain_pre+0x4 0x760  # -> file 333 (CaptainSpecial3)
+extern dCaptainMain_pre+0x8 0xB08  # -> file 350 (CaptainSpecial2)
+extern dCaptainMain_pre+0x5C 0x2A98  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x60 0x120C  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x64 0x4834  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x70 0x6AF0  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x74 0x5854  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x78 0x8464  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x84 0x94A8  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x88 0x9388  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x8C 0x96B4  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x98 0x9800  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x9C 0x9758  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0xA0 0x994C  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0xAC 0x9B88  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0xB0 0x9A78  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0xB4 0x9DA4  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0xC0 0x9ED0  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0xC4 0x9E48  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0xC8 0xA00C  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0xD4 0x3308  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0xD8 0x1248  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0xDC 0x4860  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0xE8 0x7148  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0xEC 0x5884  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0xF0 0x8484  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0xFC 0x86F8  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x100 0x85D8  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x104 0x8904  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x110 0x8A50  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x114 0x89A8  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x118 0x8B9C  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x124 0x8DD8  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x128 0x8CC8  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x12C 0x8FF4  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x138 0x9120  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x13C 0x9098  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x140 0x925C  # -> file 332 (CaptainModel)
 intern dCaptainMain_pre+0x164 dCaptainMain_pre+0x5C
 intern dCaptainMain_pre+0x17C dCaptainMain_pre+0xD4
-extern dCaptainMain_pre+0x1B8 0x3BE0
-extern dCaptainMain_pre+0x1BC 0x0
-extern dCaptainMain_pre+0x1C0 0x4090
-extern dCaptainMain_pre+0x1C8 0x7900
-extern dCaptainMain_pre+0x1CC 0x4890
-extern dCaptainMain_pre+0x1D0 0x7DB0
-extern dCaptainMain_pre+0x388 0xC5B0
-extern dCaptainMain_pre+0x38C 0xC5D8
-extern dCaptainMain_pre+0x390 0xC600
-extern dCaptainMain_pre+0x394 0xC628
-extern dCaptainMain_pre+0x398 0xC650
-extern dCaptainMain_pre+0x39C 0xC678
-extern dCaptainMain_pre+0x3A0 0xC6A8
+extern dCaptainMain_pre+0x1B8 0x3BE0  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x1BC 0x0  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x1C0 0x4090  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x1C8 0x7900  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x1CC 0x4890  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x1D0 0x7DB0  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x388 0xC5B0  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x38C 0xC5D8  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x390 0xC600  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x394 0xC628  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x398 0xC650  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x39C 0xC678  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x3A0 0xC6A8  # -> file 332 (CaptainModel)
 intern dCaptainMain_pre+0x3A4 dCaptainMain_pre+0x388
-extern dCaptainMain_pre+0x3A8 0xC848
-extern dCaptainMain_pre+0x3B4 0xA090
-extern dCaptainMain_pre+0x3BC 0xA160
-extern dCaptainMain_pre+0x3CC 0xA690
-extern dCaptainMain_pre+0x3D4 0xA580
-extern dCaptainMain_pre+0x3DC 0xA900
-extern dCaptainMain_pre+0x3EC 0xA390
-extern dCaptainMain_pre+0x3FC 0xA800
-extern dCaptainMain_pre+0x404 0xA580
-extern dCaptainMain_pre+0x40C 0xAA00
-extern dCaptainMain_pre+0x42C 0xAB20
-extern dCaptainMain_pre+0x434 0xAC30
-extern dCaptainMain_pre+0x444 0xAD10
-extern dCaptainMain_pre+0x454 0xAB20
-extern dCaptainMain_pre+0x45C 0xAC30
-extern dCaptainMain_pre+0x46C 0xAD10
+extern dCaptainMain_pre+0x3A8 0xC848  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x3B4 0xA090  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x3BC 0xA160  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x3CC 0xA690  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x3D4 0xA580  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x3DC 0xA900  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x3EC 0xA390  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x3FC 0xA800  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x404 0xA580  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x40C 0xAA00  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x42C 0xAB20  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x434 0xAC30  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x444 0xAD10  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x454 0xAB20  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x45C 0xAC30  # -> file 332 (CaptainModel)
+extern dCaptainMain_pre+0x46C 0xAD10  # -> file 332 (CaptainModel)
 intern dCaptainMain_pre+0x480 dCaptainMain_pre+0x3AC
 intern dCaptainMain_attr+0x29C dCaptainMain_pre+0x14
 intern dCaptainMain_attr+0x2A0 dCaptainMain_pre+0xC
 intern dCaptainMain_attr+0x2D0 dCaptainMain_pre+0x1C
 intern dCaptainMain_attr+0x2D4 dCaptainMain_pre+0x1B8
-extern dCaptainMain_attr+0x2D8 0x0
-extern dCaptainMain_attr+0x2DC 0x4D0
-extern dCaptainMain_attr+0x2E0 0x980
-extern dCaptainMain_attr+0x2E4 0xE50
-extern dCaptainMain_attr+0x2E8 0x1320
-extern dCaptainMain_attr+0x2EC 0x17E0
-extern dCaptainMain_attr+0x2F0 0x1CA0
-extern dCaptainMain_attr+0x2F4 0x2180
-extern dCaptainMain_attr+0x2F8 0x2650
+extern dCaptainMain_attr+0x2D8 0x0  # -> file 334 (CaptainShieldPose)
+extern dCaptainMain_attr+0x2DC 0x4D0  # -> file 334 (CaptainShieldPose)
+extern dCaptainMain_attr+0x2E0 0x980  # -> file 334 (CaptainShieldPose)
+extern dCaptainMain_attr+0x2E4 0xE50  # -> file 334 (CaptainShieldPose)
+extern dCaptainMain_attr+0x2E8 0x1320  # -> file 334 (CaptainShieldPose)
+extern dCaptainMain_attr+0x2EC 0x17E0  # -> file 334 (CaptainShieldPose)
+extern dCaptainMain_attr+0x2F0 0x1CA0  # -> file 334 (CaptainShieldPose)
+extern dCaptainMain_attr+0x2F4 0x2180  # -> file 334 (CaptainShieldPose)
+extern dCaptainMain_attr+0x2F8 0x2650  # -> file 334 (CaptainShieldPose)
 intern dCaptainMain_attr+0x328 dCaptainMain_pre+0x14C
 intern dCaptainMain_attr+0x330 dCaptainMain_pre+0x1B4
 intern dCaptainMain_attr+0x338 dCaptainMain_pre+0x1D8

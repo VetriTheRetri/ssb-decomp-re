@@ -1,23 +1,23 @@
 # Relocation metadata for file 237
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dNCaptainMain_pre+0x0 0x6C
-extern dNCaptainMain_pre+0xC0 0x2D70
-extern dNCaptainMain_pre+0xD0 0x2D70
-extern dNCaptainMain_pre+0x298 0x2B8
+extern dNCaptainMain_pre+0x0 0x6C  # -> file 235 (CaptainMainMotion)
+extern dNCaptainMain_pre+0xC0 0x2D70  # -> file 311 (NCaptainModel)
+extern dNCaptainMain_pre+0xD0 0x2D70  # -> file 311 (NCaptainModel)
+extern dNCaptainMain_pre+0x298 0x2B8  # -> file 345 (MasterHandIcon)
 intern dNCaptainMain_attr+0x29C dNCaptainMain_pre+0xC
 intern dNCaptainMain_attr+0x2A0 dNCaptainMain_pre+0x4
 intern dNCaptainMain_attr+0x2D0 dNCaptainMain_pre+0x14
 intern dNCaptainMain_attr+0x2D4 dNCaptainMain_pre+0xC0
-extern dNCaptainMain_attr+0x2D8 0x0
-extern dNCaptainMain_attr+0x2DC 0x4D0
-extern dNCaptainMain_attr+0x2E0 0x980
-extern dNCaptainMain_attr+0x2E4 0xE50
-extern dNCaptainMain_attr+0x2E8 0x1320
-extern dNCaptainMain_attr+0x2EC 0x17E0
-extern dNCaptainMain_attr+0x2F0 0x1CA0
-extern dNCaptainMain_attr+0x2F4 0x2180
-extern dNCaptainMain_attr+0x2F8 0x2650
+extern dNCaptainMain_attr+0x2D8 0x0  # -> file 334 (CaptainShieldPose)
+extern dNCaptainMain_attr+0x2DC 0x4D0  # -> file 334 (CaptainShieldPose)
+extern dNCaptainMain_attr+0x2E0 0x980  # -> file 334 (CaptainShieldPose)
+extern dNCaptainMain_attr+0x2E4 0xE50  # -> file 334 (CaptainShieldPose)
+extern dNCaptainMain_attr+0x2E8 0x1320  # -> file 334 (CaptainShieldPose)
+extern dNCaptainMain_attr+0x2EC 0x17E0  # -> file 334 (CaptainShieldPose)
+extern dNCaptainMain_attr+0x2F0 0x1CA0  # -> file 334 (CaptainShieldPose)
+extern dNCaptainMain_attr+0x2F4 0x2180  # -> file 334 (CaptainShieldPose)
+extern dNCaptainMain_attr+0x2F8 0x2650  # -> file 334 (CaptainShieldPose)
 intern dNCaptainMain_attr+0x328 dNCaptainMain_pre+0x54
 intern dNCaptainMain_attr+0x330 dNCaptainMain_pre+0xBC
 intern dNCaptainMain_attr+0x338 dNCaptainMain_pre+0xE0

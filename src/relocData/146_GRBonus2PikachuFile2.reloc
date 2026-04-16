@@ -1,24 +1,24 @@
 # Relocation metadata for file 146
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dGRBonus2PikachuFile2_gap_0x0000_sub_0x550+0x74 0x2C0
-extern dGRBonus2PikachuFile2_gap_0x0000_sub_0x550+0xA4 0x2D0
+extern dGRBonus2PikachuFile2_gap_0x0000_sub_0x550+0x74 0x2C0  # -> file 122 (Bonus1CommonImages3)
+extern dGRBonus2PikachuFile2_gap_0x0000_sub_0x550+0xA4 0x2D0  # -> file 122 (Bonus1CommonImages3)
 intern dGRBonus2PikachuFile2_gap_0x0000_sub_0x550+0xC4 dGRBonus2PikachuFile2_gap_0x0000
-extern dGRBonus2PikachuFile2_gap_0x0000_sub_0x650+0x74 0x2C0
-extern dGRBonus2PikachuFile2_gap_0x0000_sub_0x650+0xA4 0x2D0
+extern dGRBonus2PikachuFile2_gap_0x0000_sub_0x650+0x74 0x2C0  # -> file 122 (Bonus1CommonImages3)
+extern dGRBonus2PikachuFile2_gap_0x0000_sub_0x650+0xA4 0x2D0  # -> file 122 (Bonus1CommonImages3)
 intern dGRBonus2PikachuFile2_gap_0x0000_sub_0x650+0xC4 dGRBonus2PikachuFile2_gap_0x0000_sub_0x40
-extern dGRBonus2PikachuFile2_gap_0x0000_sub_0x750+0x74 0x2C0
-extern dGRBonus2PikachuFile2_gap_0x0000_sub_0x750+0xA4 0x2D0
+extern dGRBonus2PikachuFile2_gap_0x0000_sub_0x750+0x74 0x2C0  # -> file 122 (Bonus1CommonImages3)
+extern dGRBonus2PikachuFile2_gap_0x0000_sub_0x750+0xA4 0x2D0  # -> file 122 (Bonus1CommonImages3)
 intern dGRBonus2PikachuFile2_gap_0x0000_sub_0x750+0xC4 dGRBonus2PikachuFile2_gap_0x0000_sub_0x80
-extern dGRBonus2PikachuFile2_gap_0x0000_sub_0x850+0x74 0x2C0
-extern dGRBonus2PikachuFile2_gap_0x0000_sub_0x850+0xA4 0x2D0
+extern dGRBonus2PikachuFile2_gap_0x0000_sub_0x850+0x74 0x2C0  # -> file 122 (Bonus1CommonImages3)
+extern dGRBonus2PikachuFile2_gap_0x0000_sub_0x850+0xA4 0x2D0  # -> file 122 (Bonus1CommonImages3)
 intern dGRBonus2PikachuFile2_gap_0x0000_sub_0x850+0xC4 dGRBonus2PikachuFile2_gap_0x0000_sub_0x10
 intern dGRBonus2PikachuFile2_gap_0x0000_sub_0x850+0xCC dGRBonus2PikachuFile2_gap_0x0000_sub_0xC0
-extern dGRBonus2PikachuFile2_gap_0x0000_sub_0x958+0x74 0x2C0
-extern dGRBonus2PikachuFile2_gap_0x0000_sub_0x958+0xA4 0x2D0
+extern dGRBonus2PikachuFile2_gap_0x0000_sub_0x958+0x74 0x2C0  # -> file 122 (Bonus1CommonImages3)
+extern dGRBonus2PikachuFile2_gap_0x0000_sub_0x958+0xA4 0x2D0  # -> file 122 (Bonus1CommonImages3)
 intern dGRBonus2PikachuFile2_gap_0x0000_sub_0x958+0xC4 dGRBonus2PikachuFile2_gap_0x0000_sub_0xD0
-extern dGRBonus2PikachuFile2_gap_0x0000_sub_0xA58+0x74 0x2C0
-extern dGRBonus2PikachuFile2_gap_0x0000_sub_0xA58+0xA4 0x2D0
+extern dGRBonus2PikachuFile2_gap_0x0000_sub_0xA58+0x74 0x2C0  # -> file 122 (Bonus1CommonImages3)
+extern dGRBonus2PikachuFile2_gap_0x0000_sub_0xA58+0xA4 0x2D0  # -> file 122 (Bonus1CommonImages3)
 intern dGRBonus2PikachuFile2_gap_0x0000_sub_0xA58+0xC4 dGRBonus2PikachuFile2_gap_0x0000_sub_0xD0
 intern dGRBonus2PikachuFile2_gap_0x0000_sub_0xB58+0x3C dGRBonus2PikachuFile2_gap_0x0000_sub_0x110
 intern dGRBonus2PikachuFile2_gap_0x0000_sub_0xB58+0x4C dGRBonus2PikachuFile2_gap_0x0000_sub_0x150
@@ -51,17 +51,17 @@ intern dGRBonus2PikachuFile2_Layer0DObj+0xB4 dGRBonus2PikachuFile2_gap_0x0000_su
 intern dGRBonus2PikachuFile2_Layer0DObj+0xE0 dGRBonus2PikachuFile2_gap_0x0000_sub_0xD28
 intern dGRBonus2PikachuFile2_Layer0DObj+0x10C dGRBonus2PikachuFile2_gap_0x0000_sub_0xD38
 intern dGRBonus2PikachuFile2_Layer0DObj+0x138 dGRBonus2PikachuFile2_gap_0x0000_sub_0xD48
-extern dGRBonus2PikachuFile2_gap_0x0F10_sub_0x1EF0+0x24 0x298
+extern dGRBonus2PikachuFile2_gap_0x0F10_sub_0x1EF0+0x24 0x298  # -> file 122 (Bonus1CommonImages3)
 intern dGRBonus2PikachuFile2_gap_0x0F10_sub_0x1EF0+0x44 dGRBonus2PikachuFile2_gap_0x0F10_sub_0x1F40
-extern dGRBonus2PikachuFile2_gap_0x0F10_sub_0x1F40+0x54 0x78
+extern dGRBonus2PikachuFile2_gap_0x0F10_sub_0x1F40+0x54 0x78  # -> file 122 (Bonus1CommonImages3)
 intern dGRBonus2PikachuFile2_gap_0x0F10_sub_0x1F40+0x74 dGRBonus2PikachuFile2_Layer0DObj+0x198
 intern dGRBonus2PikachuFile2_gap_0x0F10_sub_0x1F40+0xA4 dGRBonus2PikachuFile2_gap_0x0F10_sub_0xA0
-extern dGRBonus2PikachuFile2_gap_0x0F10_sub_0x1F40+0xDC 0x100
+extern dGRBonus2PikachuFile2_gap_0x0F10_sub_0x1F40+0xDC 0x100  # -> file 122 (Bonus1CommonImages3)
 intern dGRBonus2PikachuFile2_gap_0x0F10_sub_0x1F40+0xFC dGRBonus2PikachuFile2_gap_0x0F10_sub_0x160
 intern dGRBonus2PikachuFile2_gap_0x0F10_sub_0x1F40+0x164 dGRBonus2PikachuFile2_gap_0x0F10_sub_0x360
 intern dGRBonus2PikachuFile2_gap_0x0F10_sub_0x1F40+0x1B4 dGRBonus2PikachuFile2_gap_0x0F10_sub_0x4E0
 intern dGRBonus2PikachuFile2_gap_0x0F10_sub_0x1F40+0x214 dGRBonus2PikachuFile2_gap_0x0F10_sub_0x6D0
-extern dGRBonus2PikachuFile2_gap_0x0F10_sub_0x1F40+0x274 0x78
+extern dGRBonus2PikachuFile2_gap_0x0F10_sub_0x1F40+0x274 0x78  # -> file 122 (Bonus1CommonImages3)
 intern dGRBonus2PikachuFile2_gap_0x0F10_sub_0x1F40+0x294 dGRBonus2PikachuFile2_gap_0x0F10_sub_0x8B0
 intern dGRBonus2PikachuFile2_gap_0x0F10_sub_0x1F40+0x2CC dGRBonus2PikachuFile2_gap_0x0F10_sub_0x9B0
 intern dGRBonus2PikachuFile2_gap_0x0F10_sub_0x1F40+0x324 dGRBonus2PikachuFile2_gap_0x0F10_sub_0xB60

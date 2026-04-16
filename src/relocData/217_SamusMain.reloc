@@ -1,57 +1,57 @@
 # Relocation metadata for file 217
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dSamusMain_pre+0x0 0x84
-extern dSamusMain_pre+0x4 0x380
-extern dSamusMain_pre+0x8 0x0
-extern dSamusMain_pre+0xC 0xE0D8
-extern dSamusMain_pre+0x10 0xE008
-extern dSamusMain_pre+0x120 0x20C8
-extern dSamusMain_pre+0x124 0xC74
-extern dSamusMain_pre+0x128 0x3FAC
-extern dSamusMain_pre+0x134 0x5960
-extern dSamusMain_pre+0x138 0x4C74
-extern dSamusMain_pre+0x13C 0x745C
-extern dSamusMain_pre+0x148 0x8158
-extern dSamusMain_pre+0x14C 0x7E20
-extern dSamusMain_pre+0x150 0x83C4
-extern dSamusMain_pre+0x15C 0x8158
-extern dSamusMain_pre+0x160 0x7E20
-extern dSamusMain_pre+0x164 0x83C4
-extern dSamusMain_pre+0x170 0x8708
-extern dSamusMain_pre+0x174 0x8460
-extern dSamusMain_pre+0x178 0x8964
-extern dSamusMain_pre+0x184 0x8708
-extern dSamusMain_pre+0x188 0x8460
-extern dSamusMain_pre+0x18C 0x8964
-extern dSamusMain_pre+0x198 0x2608
-extern dSamusMain_pre+0x19C 0xC98
-extern dSamusMain_pre+0x1A0 0x3FC4
-extern dSamusMain_pre+0x1AC 0x5E00
-extern dSamusMain_pre+0x1B0 0x4C98
-extern dSamusMain_pre+0x1B4 0x7474
-extern dSamusMain_pre+0x1C0 0x7770
-extern dSamusMain_pre+0x1C4 0x75D0
-extern dSamusMain_pre+0x1C8 0x7984
-extern dSamusMain_pre+0x1D4 0x7BC0
-extern dSamusMain_pre+0x1D8 0x7AB0
-extern dSamusMain_pre+0x1DC 0x7D84
-extern dSamusMain_pre+0x1E8 0x8D90
-extern dSamusMain_pre+0x1EC 0x8D00
-extern dSamusMain_pre+0x1F4 0x8F94
-extern dSamusMain_pre+0x1FC 0x8D90
-extern dSamusMain_pre+0x200 0x8D00
-extern dSamusMain_pre+0x208 0x8F94
-extern dSamusMain_pre+0x210 0x9140
-extern dSamusMain_pre+0x214 0x90B0
-extern dSamusMain_pre+0x21C 0x9344
-extern dSamusMain_pre+0x224 0x9140
-extern dSamusMain_pre+0x228 0x90B0
-extern dSamusMain_pre+0x230 0x9344
-extern dSamusMain_pre+0x238 0x2C20
-extern dSamusMain_pre+0x24C 0x2C20
-extern dSamusMain_pre+0x260 0x8A70
-extern dSamusMain_pre+0x274 0x8A70
+extern dSamusMain_pre+0x0 0x84  # -> file 216 (SamusMainMotion)
+extern dSamusMain_pre+0x4 0x380  # -> file 349 (SamusSpecial2)
+extern dSamusMain_pre+0x8 0x0  # -> file 218 (SamusSpecial1)
+extern dSamusMain_pre+0xC 0xE0D8  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x10 0xE008  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x120 0x20C8  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x124 0xC74  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x128 0x3FAC  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x134 0x5960  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x138 0x4C74  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x13C 0x745C  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x148 0x8158  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x14C 0x7E20  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x150 0x83C4  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x15C 0x8158  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x160 0x7E20  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x164 0x83C4  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x170 0x8708  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x174 0x8460  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x178 0x8964  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x184 0x8708  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x188 0x8460  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x18C 0x8964  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x198 0x2608  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x19C 0xC98  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x1A0 0x3FC4  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x1AC 0x5E00  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x1B0 0x4C98  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x1B4 0x7474  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x1C0 0x7770  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x1C4 0x75D0  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x1C8 0x7984  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x1D4 0x7BC0  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x1D8 0x7AB0  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x1DC 0x7D84  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x1E8 0x8D90  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x1EC 0x8D00  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x1F4 0x8F94  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x1FC 0x8D90  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x200 0x8D00  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x208 0x8F94  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x210 0x9140  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x214 0x90B0  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x21C 0x9344  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x224 0x9140  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x228 0x90B0  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x230 0x9344  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x238 0x2C20  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x24C 0x2C20  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x260 0x8A70  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x274 0x8A70  # -> file 320 (SamusModel)
 intern dSamusMain_pre+0x290 dSamusMain_pre+0x120
 intern dSamusMain_pre+0x2A0 dSamusMain_pre+0x198
 intern dSamusMain_pre+0x2BC dSamusMain_pre+0x1E8
@@ -61,50 +61,50 @@ intern dSamusMain_pre+0x2C8 dSamusMain_pre+0x210
 intern dSamusMain_pre+0x2CC dSamusMain_pre+0x210
 intern dSamusMain_pre+0x2D0 dSamusMain_pre+0x210
 intern dSamusMain_pre+0x2D8 dSamusMain_pre+0x238
-extern dSamusMain_pre+0x30C 0x3520
-extern dSamusMain_pre+0x310 0x0
-extern dSamusMain_pre+0x314 0x3B00
-extern dSamusMain_pre+0x31C 0x69D0
-extern dSamusMain_pre+0x320 0x4000
-extern dSamusMain_pre+0x324 0x6FB0
-extern dSamusMain_pre+0x4DC 0xE220
-extern dSamusMain_pre+0x4E0 0xE248
-extern dSamusMain_pre+0x4E4 0xE270
-extern dSamusMain_pre+0x4E8 0xE298
-extern dSamusMain_pre+0x4EC 0xE2C0
-extern dSamusMain_pre+0x4F0 0xE2F0
+extern dSamusMain_pre+0x30C 0x3520  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x310 0x0  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x314 0x3B00  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x31C 0x69D0  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x320 0x4000  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x324 0x6FB0  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x4DC 0xE220  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x4E0 0xE248  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x4E4 0xE270  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x4E8 0xE298  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x4EC 0xE2C0  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x4F0 0xE2F0  # -> file 320 (SamusModel)
 intern dSamusMain_pre+0x4F4 dSamusMain_pre+0x4DC
-extern dSamusMain_pre+0x4F8 0xE508
-extern dSamusMain_pre+0x504 0xAD58
-extern dSamusMain_pre+0x50C 0xAD60
-extern dSamusMain_pre+0x514 0xAD68
-extern dSamusMain_pre+0x51C 0xAD70
-extern dSamusMain_pre+0x524 0xAD78
-extern dSamusMain_pre+0x52C 0xAD80
-extern dSamusMain_pre+0x544 0xAD88
-extern dSamusMain_pre+0x54C 0xAD90
-extern dSamusMain_pre+0x554 0xAD98
-extern dSamusMain_pre+0x55C 0xADA0
-extern dSamusMain_pre+0x5B4 0xADA8
-extern dSamusMain_pre+0x5BC 0xADB0
-extern dSamusMain_pre+0x5CC 0xADB8
-extern dSamusMain_pre+0x5DC 0xADC0
-extern dSamusMain_pre+0x5E4 0xADC8
-extern dSamusMain_pre+0x5F4 0xADD0
+extern dSamusMain_pre+0x4F8 0xE508  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x504 0xAD58  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x50C 0xAD60  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x514 0xAD68  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x51C 0xAD70  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x524 0xAD78  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x52C 0xAD80  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x544 0xAD88  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x54C 0xAD90  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x554 0xAD98  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x55C 0xADA0  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x5B4 0xADA8  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x5BC 0xADB0  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x5CC 0xADB8  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x5DC 0xADC0  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x5E4 0xADC8  # -> file 320 (SamusModel)
+extern dSamusMain_pre+0x5F4 0xADD0  # -> file 320 (SamusModel)
 intern dSamusMain_pre+0x608 dSamusMain_pre+0x4FC
 intern dSamusMain_attr+0x29C dSamusMain_pre+0x48
 intern dSamusMain_attr+0x2A0 dSamusMain_pre+0x40
 intern dSamusMain_attr+0x2D0 dSamusMain_pre+0x50
 intern dSamusMain_attr+0x2D4 dSamusMain_pre+0x30C
-extern dSamusMain_attr+0x2D8 0xF0
-extern dSamusMain_attr+0x2DC 0x570
-extern dSamusMain_attr+0x2E0 0x9A0
-extern dSamusMain_attr+0x2E4 0xDE0
-extern dSamusMain_attr+0x2E8 0x1210
-extern dSamusMain_attr+0x2EC 0x1650
-extern dSamusMain_attr+0x2F0 0x1A90
-extern dSamusMain_attr+0x2F4 0x1EE0
-extern dSamusMain_attr+0x2F8 0x2310
+extern dSamusMain_attr+0x2D8 0xF0  # -> file 322 (SamusShieldPose)
+extern dSamusMain_attr+0x2DC 0x570  # -> file 322 (SamusShieldPose)
+extern dSamusMain_attr+0x2E0 0x9A0  # -> file 322 (SamusShieldPose)
+extern dSamusMain_attr+0x2E4 0xDE0  # -> file 322 (SamusShieldPose)
+extern dSamusMain_attr+0x2E8 0x1210  # -> file 322 (SamusShieldPose)
+extern dSamusMain_attr+0x2EC 0x1650  # -> file 322 (SamusShieldPose)
+extern dSamusMain_attr+0x2F0 0x1A90  # -> file 322 (SamusShieldPose)
+extern dSamusMain_attr+0x2F4 0x1EE0  # -> file 322 (SamusShieldPose)
+extern dSamusMain_attr+0x2F8 0x2310  # -> file 322 (SamusShieldPose)
 intern dSamusMain_attr+0x328 dSamusMain_pre+0x288
 intern dSamusMain_attr+0x338 dSamusMain_pre+0x32C
 intern dSamusMain_attr+0x340 dSamusMain_pre+0x4F0

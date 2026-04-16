@@ -1,7 +1,7 @@
 # Relocation metadata for file 268
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dGRZakoMap_header+0x10 0x4170
-extern dGRZakoMap_header+0x40 0x4388
-extern dGRZakoMap_header+0x48 0x26C88
+extern dGRZakoMap_header+0x10 0x4170  # -> file 116 (StageBattlefieldFile2)
+extern dGRZakoMap_header+0x40 0x4388  # -> file 116 (StageBattlefieldFile2)
+extern dGRZakoMap_header+0x48 0x26C88  # -> file 97 (StageBattlefieldBackground)
 intern dGRZakoMap_header+0x84 dGRZakoMap_item_weights

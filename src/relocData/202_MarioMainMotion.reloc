@@ -8,7 +8,7 @@ intern dMarioMainMotion_0x0024+0x2C dMarioMainMotion_0x0024
 intern dMarioMainMotion_0x007C+0x38 dMarioMainMotion_0x007C
 intern dMarioMainMotion_0x01B8+0x4 dMarioMainMotion_0x01B0
 intern dMarioMainMotion_0x01C4+0x4 dMarioMainMotion_0x01B0
-extern dMarioMainMotion_0x01C4+0xC 0x758
+extern dMarioMainMotion_0x01C4+0xC 0x758  # -> file 201 (FTCommonMoveset)
 intern dMarioMainMotion_0x024C+0x4 dMarioMainMotion_0x020C
 intern dMarioMainMotion_0x028C+0x4 dMarioMainMotion_0x0274
 intern dMarioMainMotion_0x0294+0x8 dMarioMainMotion_0x0254
@@ -22,23 +22,23 @@ intern dMarioMainMotion_0x073C+0x8 dMarioMainMotion_0x0720
 intern dMarioMainMotion_0x07A0+0x8 dMarioMainMotion_0x0780
 intern dMarioMainMotion_0x07F8+0x8 dMarioMainMotion_0x07EC
 intern dMarioMainMotion_0x0810+0x8 dMarioMainMotion_0x0804
-extern dMarioMainMotion_0x0810+0x1C 0x0
-extern dMarioMainMotion_0x0844+0x14 0x64
-extern dMarioMainMotion_0x0878+0x18 0xC8
-extern dMarioMainMotion_0x08B0+0x14 0x12C
-extern dMarioMainMotion_0x08DC+0x8 0x1A0
-extern dMarioMainMotion_0x08F4+0xC 0x1F4
-extern dMarioMainMotion_0x0918+0x20 0x248
-extern dMarioMainMotion_0x0950+0xC 0x2B0
-extern dMarioMainMotion_0x096C+0x8 0x324
-extern dMarioMainMotion_0x0984+0xC 0x378
-extern dMarioMainMotion_0x09A8+0x10 0x3CC
-extern dMarioMainMotion_0x09D0+0xC 0x430
-extern dMarioMainMotion_0x09EC+0xC 0x494
-extern dMarioMainMotion_0x0A08+0x10 0x4F8
-extern dMarioMainMotion_0x0A38+0x18 0x55C
-extern dMarioMainMotion_0x0A6C+0x10 0x5C0
-extern dMarioMainMotion_0x0AAC+0x10 0x634
+extern dMarioMainMotion_0x0810+0x1C 0x0  # -> file 201 (FTCommonMoveset)
+extern dMarioMainMotion_0x0844+0x14 0x64  # -> file 201 (FTCommonMoveset)
+extern dMarioMainMotion_0x0878+0x18 0xC8  # -> file 201 (FTCommonMoveset)
+extern dMarioMainMotion_0x08B0+0x14 0x12C  # -> file 201 (FTCommonMoveset)
+extern dMarioMainMotion_0x08DC+0x8 0x1A0  # -> file 201 (FTCommonMoveset)
+extern dMarioMainMotion_0x08F4+0xC 0x1F4  # -> file 201 (FTCommonMoveset)
+extern dMarioMainMotion_0x0918+0x20 0x248  # -> file 201 (FTCommonMoveset)
+extern dMarioMainMotion_0x0950+0xC 0x2B0  # -> file 201 (FTCommonMoveset)
+extern dMarioMainMotion_0x096C+0x8 0x324  # -> file 201 (FTCommonMoveset)
+extern dMarioMainMotion_0x0984+0xC 0x378  # -> file 201 (FTCommonMoveset)
+extern dMarioMainMotion_0x09A8+0x10 0x3CC  # -> file 201 (FTCommonMoveset)
+extern dMarioMainMotion_0x09D0+0xC 0x430  # -> file 201 (FTCommonMoveset)
+extern dMarioMainMotion_0x09EC+0xC 0x494  # -> file 201 (FTCommonMoveset)
+extern dMarioMainMotion_0x0A08+0x10 0x4F8  # -> file 201 (FTCommonMoveset)
+extern dMarioMainMotion_0x0A38+0x18 0x55C  # -> file 201 (FTCommonMoveset)
+extern dMarioMainMotion_0x0A6C+0x10 0x5C0  # -> file 201 (FTCommonMoveset)
+extern dMarioMainMotion_0x0AAC+0x10 0x634  # -> file 201 (FTCommonMoveset)
 intern dMarioMainMotion_0x0AAC+0x20 dMarioMainMotion_0x0AAC
 intern dMarioMainMotion_0x0AD0+0x30 dMarioMainMotion_0x0AD0
 intern dMarioMainMotion_0x0AD0+0x54 dMarioMainMotion_0x0AD0
@@ -48,13 +48,13 @@ intern dMarioMainMotion_0x0B8C+0x24 dMarioMainMotion_0x0B8C
 intern dMarioMainMotion_0x0BEC+0x4 dMarioMainMotion_0x0BB4
 intern dMarioMainMotion_0x0C68+0x4 dMarioMainMotion_0x0C30
 intern dMarioMainMotion_0x0CFC+0x4 dMarioMainMotion_0x0CC4
-extern dMarioMainMotion_0x0DB0+0x4 0x6AC
-extern dMarioMainMotion_0x0DBC+0x4 0x6C4
-extern dMarioMainMotion_0x0DC8+0x4 0x6CC
+extern dMarioMainMotion_0x0DB0+0x4 0x6AC  # -> file 201 (FTCommonMoveset)
+extern dMarioMainMotion_0x0DBC+0x4 0x6C4  # -> file 201 (FTCommonMoveset)
+extern dMarioMainMotion_0x0DC8+0x4 0x6CC  # -> file 201 (FTCommonMoveset)
 intern dMarioMainMotion_0x0DD4+0x4 dMarioMainMotion_0x01B0
-extern dMarioMainMotion_0x0DD4+0xC 0x6F0
+extern dMarioMainMotion_0x0DD4+0xC 0x6F0  # -> file 201 (FTCommonMoveset)
 intern dMarioMainMotion_0x0DE8+0x4 dMarioMainMotion_0x01B0
-extern dMarioMainMotion_0x0DE8+0xC 0x70C
+extern dMarioMainMotion_0x0DE8+0xC 0x70C  # -> file 201 (FTCommonMoveset)
 intern dMarioMainMotion_0x166C+0x4 dMarioMainMotion_0x1658
 intern dMarioMainMotion_0x16B4+0x14 dMarioMainMotion_0x1688
 intern dMarioMainMotion_0x17A8+0x4 dMarioMainMotion_0x16CC

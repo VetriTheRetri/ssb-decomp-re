@@ -1,14 +1,14 @@
 # Relocation metadata for file 141
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dGRBonus2LuigiFile2_gap_0x0000_sub_0x510+0x24 0x598
-extern dGRBonus2LuigiFile2_gap_0x0000_sub_0x510+0x54 0x5A8
+extern dGRBonus2LuigiFile2_gap_0x0000_sub_0x510+0x24 0x598  # -> file 120 (Bonus1CommonImages1)
+extern dGRBonus2LuigiFile2_gap_0x0000_sub_0x510+0x54 0x5A8  # -> file 120 (Bonus1CommonImages1)
 intern dGRBonus2LuigiFile2_gap_0x0000_sub_0x510+0x74 dGRBonus2LuigiFile2_gap_0x0000
-extern dGRBonus2LuigiFile2_gap_0x0000_sub_0x5C0+0x74 0x598
-extern dGRBonus2LuigiFile2_gap_0x0000_sub_0x5C0+0xA4 0x5A8
+extern dGRBonus2LuigiFile2_gap_0x0000_sub_0x5C0+0x74 0x598  # -> file 120 (Bonus1CommonImages1)
+extern dGRBonus2LuigiFile2_gap_0x0000_sub_0x5C0+0xA4 0x5A8  # -> file 120 (Bonus1CommonImages1)
 intern dGRBonus2LuigiFile2_gap_0x0000_sub_0x5C0+0xC4 dGRBonus2LuigiFile2_gap_0x0000
-extern dGRBonus2LuigiFile2_gap_0x0000_sub_0x720+0x14 0x598
-extern dGRBonus2LuigiFile2_gap_0x0000_sub_0x748+0x1C 0x5A8
+extern dGRBonus2LuigiFile2_gap_0x0000_sub_0x720+0x14 0x598  # -> file 120 (Bonus1CommonImages1)
+extern dGRBonus2LuigiFile2_gap_0x0000_sub_0x748+0x1C 0x5A8  # -> file 120 (Bonus1CommonImages1)
 intern dGRBonus2LuigiFile2_gap_0x0000_sub_0x748+0x3C dGRBonus2LuigiFile2_gap_0x0000_sub_0x40
 intern dGRBonus2LuigiFile2_gap_0x0000_sub_0x7F8+0x4 dGRBonus2LuigiFile2_gap_0x0000_sub_0x80
 intern dGRBonus2LuigiFile2_gap_0x0000_sub_0x7F8+0x14 dGRBonus2LuigiFile2_gap_0x0000_sub_0xC0
@@ -36,45 +36,45 @@ intern dGRBonus2LuigiFile2_Layer0DObj+0x5C dGRBonus2LuigiFile2_gap_0x0000_sub_0x
 intern dGRBonus2LuigiFile2_Layer0DObj+0x88 dGRBonus2LuigiFile2_gap_0x0000_sub_0x970
 intern dGRBonus2LuigiFile2_Layer0DObj+0xB4 dGRBonus2LuigiFile2_gap_0x0000_sub_0x980
 intern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x17F8+0x54 dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858
-extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0x24 0x8
-extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0x4C 0x30
+extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0x24 0x8  # -> file 120 (Bonus1CommonImages1)
+extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0x4C 0x30  # -> file 120 (Bonus1CommonImages1)
 intern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0x6C dGRBonus2LuigiFile2_gap_0x0A98_sub_0x8
-extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0xBC 0x380
-extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0xE4 0x3A8
+extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0xBC 0x380  # -> file 120 (Bonus1CommonImages1)
+extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0xE4 0x3A8  # -> file 120 (Bonus1CommonImages1)
 intern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0x104 dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1E8
-extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0x15C 0x720
-extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0x184 0x748
+extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0x15C 0x720  # -> file 120 (Bonus1CommonImages1)
+extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0x184 0x748  # -> file 120 (Bonus1CommonImages1)
 intern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0x1A4 dGRBonus2LuigiFile2_gap_0x0A98_sub_0x328
 intern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0x204 dGRBonus2LuigiFile2_gap_0x0A98_sub_0x528
-extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0x254 0x6B0
-extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0x27C 0x6D8
+extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0x254 0x6B0  # -> file 120 (Bonus1CommonImages1)
+extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0x27C 0x6D8  # -> file 120 (Bonus1CommonImages1)
 intern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0x29C dGRBonus2LuigiFile2_gap_0x0A98_sub_0x628
 intern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0x2EC dGRBonus2LuigiFile2_gap_0x0A98_sub_0x828
 intern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0x30C dGRBonus2LuigiFile2_gap_0x0A98_sub_0x868
 intern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0x35C dGRBonus2LuigiFile2_gap_0x0A98_sub_0xA68
 intern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0x384 dGRBonus2LuigiFile2_gap_0x0A98_sub_0xAE8
 intern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0x3CC dGRBonus2LuigiFile2_gap_0x0A98_sub_0xCE8
-extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0x41C 0x7D0
-extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0x444 0x7F8
+extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0x41C 0x7D0  # -> file 120 (Bonus1CommonImages1)
+extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0x444 0x7F8  # -> file 120 (Bonus1CommonImages1)
 intern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0x464 dGRBonus2LuigiFile2_gap_0x0A98_sub_0xD68
-extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0x4AC 0xA00
-extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0x4D4 0xA28
+extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0x4AC 0xA00  # -> file 120 (Bonus1CommonImages1)
+extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0x4D4 0xA28  # -> file 120 (Bonus1CommonImages1)
 intern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0x4F4 dGRBonus2LuigiFile2_gap_0x0A98_sub_0xE28
 intern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0x564 dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1028
 intern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0x5CC dGRBonus2LuigiFile2_gap_0x0A98_sub_0x11F8
 intern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1858+0x5E4 dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1228
-extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1E68+0x2C 0x6B0
-extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1E68+0x54 0x6D8
+extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1E68+0x2C 0x6B0  # -> file 120 (Bonus1CommonImages1)
+extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1E68+0x54 0x6D8  # -> file 120 (Bonus1CommonImages1)
 intern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1E68+0x74 dGRBonus2LuigiFile2_gap_0x0A98_sub_0x12D8
-extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1F10+0x2C 0x4E8
-extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1F10+0x54 0x510
+extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1F10+0x2C 0x4E8  # -> file 120 (Bonus1CommonImages1)
+extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1F10+0x54 0x510  # -> file 120 (Bonus1CommonImages1)
 intern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1F10+0x74 dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1418
 intern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1FB8+0x14 dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1558
-extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x2000+0x2C 0x8
-extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x2000+0x54 0x30
+extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x2000+0x2C 0x8  # -> file 120 (Bonus1CommonImages1)
+extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x2000+0x54 0x30  # -> file 120 (Bonus1CommonImages1)
 intern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x2000+0x74 dGRBonus2LuigiFile2_gap_0x0A98_sub_0x1698
-extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x20A8+0x2C 0x288
-extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x20A8+0x54 0x2B0
+extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x20A8+0x2C 0x288  # -> file 120 (Bonus1CommonImages1)
+extern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x20A8+0x54 0x2B0  # -> file 120 (Bonus1CommonImages1)
 intern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x20A8+0x74 dGRBonus2LuigiFile2_gap_0x0A98_sub_0x17B8
 intern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x2130+0xC dGRBonus2LuigiFile2_gap_0x0A98_sub_0x17B8
 intern dGRBonus2LuigiFile2_gap_0x0A98_sub_0x2150+0xC dGRBonus2LuigiFile2_gap_0x0A98_sub_0x17B8

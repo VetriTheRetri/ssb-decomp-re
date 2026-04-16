@@ -1,163 +1,163 @@
 # Relocation metadata for file 229
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dKirbyMain_pre+0x0 0x154
-extern dKirbyMain_pre+0x4 0xB20
-extern dKirbyMain_pre+0x8 0x1D388
-extern dKirbyMain_pre+0x10 0x1D410
-extern dKirbyMain_pre+0xCC 0xDB0
-extern dKirbyMain_pre+0xD0 0x470
-extern dKirbyMain_pre+0xD4 0x1C10
-extern dKirbyMain_pre+0xE0 0x27B0
-extern dKirbyMain_pre+0xE4 0x20A0
-extern dKirbyMain_pre+0xE8 0x34B0
-extern dKirbyMain_pre+0xF4 0x3E78
-extern dKirbyMain_pre+0xF8 0x3AA8
-extern dKirbyMain_pre+0xFC 0x4360
-extern dKirbyMain_pre+0x108 0x4728
-extern dKirbyMain_pre+0x10C 0x4468
-extern dKirbyMain_pre+0x110 0x4B0C
-extern dKirbyMain_pre+0x11C 0x18A60
-extern dKirbyMain_pre+0x130 0x18A60
-extern dKirbyMain_pre+0x144 0x52E8
-extern dKirbyMain_pre+0x148 0x4C58
-extern dKirbyMain_pre+0x14C 0x57B8
-extern dKirbyMain_pre+0x158 0x5DC8
-extern dKirbyMain_pre+0x15C 0x58F8
-extern dKirbyMain_pre+0x160 0x6198
-extern dKirbyMain_pre+0x16C 0x69E8
-extern dKirbyMain_pre+0x170 0x6260
-extern dKirbyMain_pre+0x174 0x6F2C
-extern dKirbyMain_pre+0x180 0x7558
-extern dKirbyMain_pre+0x184 0x6FF0
-extern dKirbyMain_pre+0x188 0x79AC
-extern dKirbyMain_pre+0x194 0x8268
-extern dKirbyMain_pre+0x198 0x7AE8
-extern dKirbyMain_pre+0x19C 0x8858
-extern dKirbyMain_pre+0x1A8 0x8F18
-extern dKirbyMain_pre+0x1AC 0x8998
-extern dKirbyMain_pre+0x1B0 0x93B4
-extern dKirbyMain_pre+0x1BC 0x9CB8
-extern dKirbyMain_pre+0x1C0 0x94F8
-extern dKirbyMain_pre+0x1C4 0xA348
-extern dKirbyMain_pre+0x1D0 0xAA18
-extern dKirbyMain_pre+0x1D4 0xA488
-extern dKirbyMain_pre+0x1D8 0xAFE8
-extern dKirbyMain_pre+0x1E4 0xB838
-extern dKirbyMain_pre+0x1E8 0xB128
-extern dKirbyMain_pre+0x1EC 0xBD48
-extern dKirbyMain_pre+0x1F8 0xC398
-extern dKirbyMain_pre+0x1FC 0xBE88
-extern dKirbyMain_pre+0x200 0xC7C8
-extern dKirbyMain_pre+0x20C 0xD1B8
-extern dKirbyMain_pre+0x210 0xC908
-extern dKirbyMain_pre+0x214 0xD804
-extern dKirbyMain_pre+0x220 0xE0B8
-extern dKirbyMain_pre+0x224 0xC908
-extern dKirbyMain_pre+0x228 0xD804
-extern dKirbyMain_pre+0x234 0xF038
-extern dKirbyMain_pre+0x238 0xE818
-extern dKirbyMain_pre+0x23C 0xF6A8
-extern dKirbyMain_pre+0x248 0xFE18
-extern dKirbyMain_pre+0x24C 0xF7E8
-extern dKirbyMain_pre+0x250 0x10408
-extern dKirbyMain_pre+0x25C 0x10B08
-extern dKirbyMain_pre+0x260 0x10548
-extern dKirbyMain_pre+0x264 0x10F88
-extern dKirbyMain_pre+0x270 0x115C8
-extern dKirbyMain_pre+0x274 0x110C8
-extern dKirbyMain_pre+0x278 0x119F8
-extern dKirbyMain_pre+0x284 0x12108
-extern dKirbyMain_pre+0x288 0x11B38
-extern dKirbyMain_pre+0x28C 0x125D8
-extern dKirbyMain_pre+0x298 0x12C08
-extern dKirbyMain_pre+0x29C 0x12718
-extern dKirbyMain_pre+0x2A0 0x13068
-extern dKirbyMain_pre+0x2AC 0x13778
-extern dKirbyMain_pre+0x2B0 0x131A8
-extern dKirbyMain_pre+0x2B4 0x13C48
-extern dKirbyMain_pre+0x2C0 0x14278
-extern dKirbyMain_pre+0x2C4 0x13D88
-extern dKirbyMain_pre+0x2C8 0x146D8
-extern dKirbyMain_pre+0x2D4 0x14D98
-extern dKirbyMain_pre+0x2D8 0x14818
-extern dKirbyMain_pre+0x2DC 0x15228
-extern dKirbyMain_pre+0x2E8 0x15808
-extern dKirbyMain_pre+0x2EC 0x15368
-extern dKirbyMain_pre+0x2F0 0x15C48
-extern dKirbyMain_pre+0x2FC 0x16458
-extern dKirbyMain_pre+0x300 0x15D48
-extern dKirbyMain_pre+0x304 0x16BE0
-extern dKirbyMain_pre+0x310 0x17228
-extern dKirbyMain_pre+0x314 0x16CE8
-extern dKirbyMain_pre+0x318 0x17800
-extern dKirbyMain_pre+0x324 0x40A0
-extern dKirbyMain_pre+0x328 0x3AB0
-extern dKirbyMain_pre+0x32C 0x4364
-extern dKirbyMain_pre+0x338 0x4860
-extern dKirbyMain_pre+0x33C 0x4470
-extern dKirbyMain_pre+0x340 0x4B10
-extern dKirbyMain_pre+0x34C 0x35E8
-extern dKirbyMain_pre+0x350 0x3560
-extern dKirbyMain_pre+0x354 0x3734
-extern dKirbyMain_pre+0x360 0x3858
-extern dKirbyMain_pre+0x364 0x37D0
-extern dKirbyMain_pre+0x368 0x39A4
-extern dKirbyMain_pre+0x374 0x17850
-extern dKirbyMain_pre+0x388 0x17850
-extern dKirbyMain_pre+0x39C 0xF8
-extern dKirbyMain_pre+0x3B0 0xF8
-extern dKirbyMain_pre+0x3C4 0x3F0
-extern dKirbyMain_pre+0x3D8 0x3F0
+extern dKirbyMain_pre+0x0 0x154  # -> file 228 (KirbyMainMotion)
+extern dKirbyMain_pre+0x4 0xB20  # -> file 348 (KirbySpecial2)
+extern dKirbyMain_pre+0x8 0x1D388  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x10 0x1D410  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0xCC 0xDB0  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0xD0 0x470  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0xD4 0x1C10  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0xE0 0x27B0  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0xE4 0x20A0  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0xE8 0x34B0  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0xF4 0x3E78  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0xF8 0x3AA8  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0xFC 0x4360  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x108 0x4728  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x10C 0x4468  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x110 0x4B0C  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x11C 0x18A60  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x130 0x18A60  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x144 0x52E8  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x148 0x4C58  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x14C 0x57B8  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x158 0x5DC8  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x15C 0x58F8  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x160 0x6198  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x16C 0x69E8  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x170 0x6260  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x174 0x6F2C  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x180 0x7558  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x184 0x6FF0  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x188 0x79AC  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x194 0x8268  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x198 0x7AE8  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x19C 0x8858  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x1A8 0x8F18  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x1AC 0x8998  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x1B0 0x93B4  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x1BC 0x9CB8  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x1C0 0x94F8  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x1C4 0xA348  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x1D0 0xAA18  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x1D4 0xA488  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x1D8 0xAFE8  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x1E4 0xB838  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x1E8 0xB128  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x1EC 0xBD48  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x1F8 0xC398  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x1FC 0xBE88  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x200 0xC7C8  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x20C 0xD1B8  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x210 0xC908  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x214 0xD804  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x220 0xE0B8  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x224 0xC908  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x228 0xD804  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x234 0xF038  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x238 0xE818  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x23C 0xF6A8  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x248 0xFE18  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x24C 0xF7E8  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x250 0x10408  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x25C 0x10B08  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x260 0x10548  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x264 0x10F88  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x270 0x115C8  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x274 0x110C8  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x278 0x119F8  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x284 0x12108  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x288 0x11B38  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x28C 0x125D8  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x298 0x12C08  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x29C 0x12718  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x2A0 0x13068  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x2AC 0x13778  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x2B0 0x131A8  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x2B4 0x13C48  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x2C0 0x14278  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x2C4 0x13D88  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x2C8 0x146D8  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x2D4 0x14D98  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x2D8 0x14818  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x2DC 0x15228  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x2E8 0x15808  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x2EC 0x15368  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x2F0 0x15C48  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x2FC 0x16458  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x300 0x15D48  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x304 0x16BE0  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x310 0x17228  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x314 0x16CE8  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x318 0x17800  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x324 0x40A0  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x328 0x3AB0  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x32C 0x4364  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x338 0x4860  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x33C 0x4470  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x340 0x4B10  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x34C 0x35E8  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x350 0x3560  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x354 0x3734  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x360 0x3858  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x364 0x37D0  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x368 0x39A4  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x374 0x17850  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x388 0x17850  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x39C 0xF8  # -> file 326 (LinkBoomerangModel)
+extern dKirbyMain_pre+0x3B0 0xF8  # -> file 326 (LinkBoomerangModel)
+extern dKirbyMain_pre+0x3C4 0x3F0  # -> file 315 (FoxUnknown)
+extern dKirbyMain_pre+0x3D8 0x3F0  # -> file 315 (FoxUnknown)
 intern dKirbyMain_pre+0x3F4 dKirbyMain_pre+0xCC
 intern dKirbyMain_pre+0x3F8 dKirbyMain_pre+0x324
 intern dKirbyMain_pre+0x40C dKirbyMain_pre+0x39C
 intern dKirbyMain_pre+0x420 dKirbyMain_pre+0x3C4
 intern dKirbyMain_pre+0x424 dKirbyMain_pre+0x374
 intern dKirbyMain_pre+0x428 dKirbyMain_pre+0x34C
-extern dKirbyMain_pre+0x45C 0x1448
-extern dKirbyMain_pre+0x460 0x0
-extern dKirbyMain_pre+0x464 0x1920
-extern dKirbyMain_pre+0x46C 0x2CD0
-extern dKirbyMain_pre+0x470 0x1C30
-extern dKirbyMain_pre+0x474 0x31A0
-extern dKirbyMain_pre+0x62C 0x1D510
-extern dKirbyMain_pre+0x630 0x1D538
-extern dKirbyMain_pre+0x634 0x1D560
-extern dKirbyMain_pre+0x638 0x1D588
-extern dKirbyMain_pre+0x63C 0x1D5B0
-extern dKirbyMain_pre+0x640 0x1D5E0
+extern dKirbyMain_pre+0x45C 0x1448  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x460 0x0  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x464 0x1920  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x46C 0x2CD0  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x470 0x1C30  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x474 0x31A0  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x62C 0x1D510  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x630 0x1D538  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x634 0x1D560  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x638 0x1D588  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x63C 0x1D5B0  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x640 0x1D5E0  # -> file 328 (KirbyModel)
 intern dKirbyMain_pre+0x644 dKirbyMain_pre+0x62C
-extern dKirbyMain_pre+0x648 0x1D7D8
-extern dKirbyMain_pre+0x65C 0x198F8
-extern dKirbyMain_pre+0x67C 0x19B38
-extern dKirbyMain_pre+0x684 0x19BC0
-extern dKirbyMain_pre+0x6A4 0x19C68
-extern dKirbyMain_pre+0x6AC 0x19D10
-extern dKirbyMain_pre+0x6EC 0x19DB8
-extern dKirbyMain_pre+0x714 0x19E60
-extern dKirbyMain_pre+0x734 0x1A620
-extern dKirbyMain_pre+0x754 0x29A0
-extern dKirbyMain_pre+0x75C 0x2A08
-extern dKirbyMain_pre+0x77C 0x2A90
-extern dKirbyMain_pre+0x784 0x2AF8
-extern dKirbyMain_pre+0x7C4 0x2B80
-extern dKirbyMain_pre+0x7EC 0x2C28
+extern dKirbyMain_pre+0x648 0x1D7D8  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x65C 0x198F8  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x67C 0x19B38  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x684 0x19BC0  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x6A4 0x19C68  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x6AC 0x19D10  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x6EC 0x19DB8  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x714 0x19E60  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x734 0x1A620  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x754 0x29A0  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x75C 0x2A08  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x77C 0x2A90  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x784 0x2AF8  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x7C4 0x2B80  # -> file 328 (KirbyModel)
+extern dKirbyMain_pre+0x7EC 0x2C28  # -> file 328 (KirbyModel)
 intern dKirbyMain_pre+0x800 dKirbyMain_pre+0x64C
 intern dKirbyMain_pre+0x804 dKirbyMain_pre+0x724
 intern dKirbyMain_attr+0x29C dKirbyMain_pre+0x44
 intern dKirbyMain_attr+0x2A0 dKirbyMain_pre+0x3C
 intern dKirbyMain_attr+0x2D0 dKirbyMain_pre+0x4C
 intern dKirbyMain_attr+0x2D4 dKirbyMain_pre+0x45C
-extern dKirbyMain_attr+0x2D8 0x0
-extern dKirbyMain_attr+0x2DC 0x450
-extern dKirbyMain_attr+0x2E0 0x990
-extern dKirbyMain_attr+0x2E4 0xEF0
-extern dKirbyMain_attr+0x2E8 0x1420
-extern dKirbyMain_attr+0x2EC 0x19D0
-extern dKirbyMain_attr+0x2F0 0x1F00
-extern dKirbyMain_attr+0x2F4 0x2480
-extern dKirbyMain_attr+0x2F8 0x29A0
+extern dKirbyMain_attr+0x2D8 0x0  # -> file 329 (KirbyShieldPose)
+extern dKirbyMain_attr+0x2DC 0x450  # -> file 329 (KirbyShieldPose)
+extern dKirbyMain_attr+0x2E0 0x990  # -> file 329 (KirbyShieldPose)
+extern dKirbyMain_attr+0x2E4 0xEF0  # -> file 329 (KirbyShieldPose)
+extern dKirbyMain_attr+0x2E8 0x1420  # -> file 329 (KirbyShieldPose)
+extern dKirbyMain_attr+0x2EC 0x19D0  # -> file 329 (KirbyShieldPose)
+extern dKirbyMain_attr+0x2F0 0x1F00  # -> file 329 (KirbyShieldPose)
+extern dKirbyMain_attr+0x2F4 0x2480  # -> file 329 (KirbyShieldPose)
+extern dKirbyMain_attr+0x2F8 0x29A0  # -> file 329 (KirbyShieldPose)
 intern dKirbyMain_attr+0x328 dKirbyMain_pre+0x3EC
 intern dKirbyMain_attr+0x330 dKirbyMain_pre+0x458
 intern dKirbyMain_attr+0x338 dKirbyMain_pre+0x47C

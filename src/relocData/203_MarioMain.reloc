@@ -1,62 +1,62 @@
 # Relocation metadata for file 203
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dMarioMain_pre+0x0 0x24
-extern dMarioMain_pre+0x4 0x608
-extern dMarioMain_pre+0x8 0x0
-extern dMarioMain_pre+0x5C 0x18D8
-extern dMarioMain_pre+0x70 0x3E60
-extern dMarioMain_pre+0x84 0x5300
-extern dMarioMain_pre+0x98 0x54E0
-extern dMarioMain_pre+0xAC 0x1DC8
-extern dMarioMain_pre+0xC0 0x4278
-extern dMarioMain_pre+0xD4 0x4F10
-extern dMarioMain_pre+0xE8 0x50F0
+extern dMarioMain_pre+0x0 0x24  # -> file 202 (MarioMainMotion)
+extern dMarioMain_pre+0x4 0x608  # -> file 356 (MarioSpecial2)
+extern dMarioMain_pre+0x8 0x0  # -> file 204 (MarioSpecial1)
+extern dMarioMain_pre+0x5C 0x18D8  # -> file 296 (MarioModel)
+extern dMarioMain_pre+0x70 0x3E60  # -> file 296 (MarioModel)
+extern dMarioMain_pre+0x84 0x5300  # -> file 296 (MarioModel)
+extern dMarioMain_pre+0x98 0x54E0  # -> file 296 (MarioModel)
+extern dMarioMain_pre+0xAC 0x1DC8  # -> file 296 (MarioModel)
+extern dMarioMain_pre+0xC0 0x4278  # -> file 296 (MarioModel)
+extern dMarioMain_pre+0xD4 0x4F10  # -> file 296 (MarioModel)
+extern dMarioMain_pre+0xE8 0x50F0  # -> file 296 (MarioModel)
 intern dMarioMain_pre+0x114 dMarioMain_pre+0x5C
 intern dMarioMain_pre+0x12C dMarioMain_pre+0xAC
-extern dMarioMain_pre+0x164 0x2200
-extern dMarioMain_pre+0x168 0x0
-extern dMarioMain_pre+0x16C 0x2680
-extern dMarioMain_pre+0x174 0x4590
-extern dMarioMain_pre+0x178 0x29F0
-extern dMarioMain_pre+0x17C 0x4A10
-extern dMarioMain_pre+0x334 0x7200
-extern dMarioMain_pre+0x338 0x7228
-extern dMarioMain_pre+0x33C 0x7250
-extern dMarioMain_pre+0x340 0x7278
-extern dMarioMain_pre+0x344 0x72A0
-extern dMarioMain_pre+0x348 0x72D0
+extern dMarioMain_pre+0x164 0x2200  # -> file 296 (MarioModel)
+extern dMarioMain_pre+0x168 0x0  # -> file 296 (MarioModel)
+extern dMarioMain_pre+0x16C 0x2680  # -> file 296 (MarioModel)
+extern dMarioMain_pre+0x174 0x4590  # -> file 296 (MarioModel)
+extern dMarioMain_pre+0x178 0x29F0  # -> file 296 (MarioModel)
+extern dMarioMain_pre+0x17C 0x4A10  # -> file 296 (MarioModel)
+extern dMarioMain_pre+0x334 0x7200  # -> file 296 (MarioModel)
+extern dMarioMain_pre+0x338 0x7228  # -> file 296 (MarioModel)
+extern dMarioMain_pre+0x33C 0x7250  # -> file 296 (MarioModel)
+extern dMarioMain_pre+0x340 0x7278  # -> file 296 (MarioModel)
+extern dMarioMain_pre+0x344 0x72A0  # -> file 296 (MarioModel)
+extern dMarioMain_pre+0x348 0x72D0  # -> file 296 (MarioModel)
 intern dMarioMain_pre+0x34C dMarioMain_pre+0x334
-extern dMarioMain_pre+0x350 0x74C8
-extern dMarioMain_pre+0x35C 0x5600
-extern dMarioMain_pre+0x364 0x56E0
-extern dMarioMain_pre+0x374 0x5ED0
-extern dMarioMain_pre+0x37C 0x5DC0
-extern dMarioMain_pre+0x384 0x5FC0
-extern dMarioMain_pre+0x394 0x5B00
-extern dMarioMain_pre+0x3A4 0x5ED0
-extern dMarioMain_pre+0x3AC 0x5DC0
-extern dMarioMain_pre+0x3B4 0x60C0
-extern dMarioMain_pre+0x3CC 0x61E0
-extern dMarioMain_pre+0x3D4 0x62F0
-extern dMarioMain_pre+0x3E4 0x63D0
-extern dMarioMain_pre+0x3F4 0x61E0
-extern dMarioMain_pre+0x3FC 0x62F0
-extern dMarioMain_pre+0x40C 0x63D0
+extern dMarioMain_pre+0x350 0x74C8  # -> file 296 (MarioModel)
+extern dMarioMain_pre+0x35C 0x5600  # -> file 296 (MarioModel)
+extern dMarioMain_pre+0x364 0x56E0  # -> file 296 (MarioModel)
+extern dMarioMain_pre+0x374 0x5ED0  # -> file 296 (MarioModel)
+extern dMarioMain_pre+0x37C 0x5DC0  # -> file 296 (MarioModel)
+extern dMarioMain_pre+0x384 0x5FC0  # -> file 296 (MarioModel)
+extern dMarioMain_pre+0x394 0x5B00  # -> file 296 (MarioModel)
+extern dMarioMain_pre+0x3A4 0x5ED0  # -> file 296 (MarioModel)
+extern dMarioMain_pre+0x3AC 0x5DC0  # -> file 296 (MarioModel)
+extern dMarioMain_pre+0x3B4 0x60C0  # -> file 296 (MarioModel)
+extern dMarioMain_pre+0x3CC 0x61E0  # -> file 296 (MarioModel)
+extern dMarioMain_pre+0x3D4 0x62F0  # -> file 296 (MarioModel)
+extern dMarioMain_pre+0x3E4 0x63D0  # -> file 296 (MarioModel)
+extern dMarioMain_pre+0x3F4 0x61E0  # -> file 296 (MarioModel)
+extern dMarioMain_pre+0x3FC 0x62F0  # -> file 296 (MarioModel)
+extern dMarioMain_pre+0x40C 0x63D0  # -> file 296 (MarioModel)
 intern dMarioMain_pre+0x420 dMarioMain_pre+0x354
 intern dMarioMain_attr+0x29C dMarioMain_pre+0x14
 intern dMarioMain_attr+0x2A0 dMarioMain_pre+0xC
 intern dMarioMain_attr+0x2D0 dMarioMain_pre+0x1C
 intern dMarioMain_attr+0x2D4 dMarioMain_pre+0x164
-extern dMarioMain_attr+0x2D8 0xF0
-extern dMarioMain_attr+0x2DC 0x5A0
-extern dMarioMain_attr+0x2E0 0xA10
-extern dMarioMain_attr+0x2E4 0xE80
-extern dMarioMain_attr+0x2E8 0x12F0
-extern dMarioMain_attr+0x2EC 0x17A0
-extern dMarioMain_attr+0x2F0 0x1C60
-extern dMarioMain_attr+0x2F4 0x20E0
-extern dMarioMain_attr+0x2F8 0x2540
+extern dMarioMain_attr+0x2D8 0xF0  # -> file 298 (MarioShieldPose)
+extern dMarioMain_attr+0x2DC 0x5A0  # -> file 298 (MarioShieldPose)
+extern dMarioMain_attr+0x2E0 0xA10  # -> file 298 (MarioShieldPose)
+extern dMarioMain_attr+0x2E4 0xE80  # -> file 298 (MarioShieldPose)
+extern dMarioMain_attr+0x2E8 0x12F0  # -> file 298 (MarioShieldPose)
+extern dMarioMain_attr+0x2EC 0x17A0  # -> file 298 (MarioShieldPose)
+extern dMarioMain_attr+0x2F0 0x1C60  # -> file 298 (MarioShieldPose)
+extern dMarioMain_attr+0x2F4 0x20E0  # -> file 298 (MarioShieldPose)
+extern dMarioMain_attr+0x2F8 0x2540  # -> file 298 (MarioShieldPose)
 intern dMarioMain_attr+0x328 dMarioMain_pre+0xFC
 intern dMarioMain_attr+0x330 dMarioMain_pre+0x160
 intern dMarioMain_attr+0x338 dMarioMain_pre+0x184

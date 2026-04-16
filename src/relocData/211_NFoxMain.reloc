@@ -1,23 +1,23 @@
 # Relocation metadata for file 211
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dNFoxMain_pre+0x0 0x0
-extern dNFoxMain_pre+0xC8 0x2DF8
-extern dNFoxMain_pre+0xD8 0x2DF8
-extern dNFoxMain_pre+0x2A0 0x2B8
+extern dNFoxMain_pre+0x0 0x0  # -> file 208 (FoxMainMotion)
+extern dNFoxMain_pre+0xC8 0x2DF8  # -> file 303 (NFoxModel)
+extern dNFoxMain_pre+0xD8 0x2DF8  # -> file 303 (NFoxModel)
+extern dNFoxMain_pre+0x2A0 0x2B8  # -> file 345 (MasterHandIcon)
 intern dNFoxMain_attr+0x29C dNFoxMain_pre+0xC
 intern dNFoxMain_attr+0x2A0 dNFoxMain_pre+0x4
 intern dNFoxMain_attr+0x2D0 dNFoxMain_pre+0x14
 intern dNFoxMain_attr+0x2D4 dNFoxMain_pre+0xC8
-extern dNFoxMain_attr+0x2D8 0x120
-extern dNFoxMain_attr+0x2DC 0x620
-extern dNFoxMain_attr+0x2E0 0xAD0
-extern dNFoxMain_attr+0x2E4 0xF90
-extern dNFoxMain_attr+0x2E8 0x1440
-extern dNFoxMain_attr+0x2EC 0x1900
-extern dNFoxMain_attr+0x2F0 0x1DB0
-extern dNFoxMain_attr+0x2F4 0x2270
-extern dNFoxMain_attr+0x2F8 0x2710
+extern dNFoxMain_attr+0x2D8 0x120  # -> file 314 (FoxShieldPose)
+extern dNFoxMain_attr+0x2DC 0x620  # -> file 314 (FoxShieldPose)
+extern dNFoxMain_attr+0x2E0 0xAD0  # -> file 314 (FoxShieldPose)
+extern dNFoxMain_attr+0x2E4 0xF90  # -> file 314 (FoxShieldPose)
+extern dNFoxMain_attr+0x2E8 0x1440  # -> file 314 (FoxShieldPose)
+extern dNFoxMain_attr+0x2EC 0x1900  # -> file 314 (FoxShieldPose)
+extern dNFoxMain_attr+0x2F0 0x1DB0  # -> file 314 (FoxShieldPose)
+extern dNFoxMain_attr+0x2F4 0x2270  # -> file 314 (FoxShieldPose)
+extern dNFoxMain_attr+0x2F8 0x2710  # -> file 314 (FoxShieldPose)
 intern dNFoxMain_attr+0x328 dNFoxMain_pre+0x54
 intern dNFoxMain_attr+0x330 dNFoxMain_pre+0xC0
 intern dNFoxMain_attr+0x338 dNFoxMain_pre+0xE8

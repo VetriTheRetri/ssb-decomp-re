@@ -1,11 +1,11 @@
 # Relocation metadata for file 257
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dGRZebesMap_MapHeader_0x0014+0x10 0x5AC0
-extern dGRZebesMap_MapHeader_0x0014+0x14 0x6180
-extern dGRZebesMap_MapHeader_0x0014+0x18 0x2B48
-extern dGRZebesMap_MapHeader_0x0014+0x1C 0x6410
-extern dGRZebesMap_MapHeader_0x0014+0x40 0x6160
-extern dGRZebesMap_MapHeader_0x0014+0x48 0x26C88
-extern dGRZebesMap_MapHeader_0x0014+0x80 0xB08
+extern dGRZebesMap_MapHeader_0x0014+0x10 0x5AC0  # -> file 105 (StageZebesFile2)
+extern dGRZebesMap_MapHeader_0x0014+0x14 0x6180  # -> file 105 (StageZebesFile2)
+extern dGRZebesMap_MapHeader_0x0014+0x18 0x2B48  # -> file 105 (StageZebesFile2)
+extern dGRZebesMap_MapHeader_0x0014+0x1C 0x6410  # -> file 105 (StageZebesFile2)
+extern dGRZebesMap_MapHeader_0x0014+0x40 0x6160  # -> file 105 (StageZebesFile2)
+extern dGRZebesMap_MapHeader_0x0014+0x48 0x26C88  # -> file 89 (StageZebes)
+extern dGRZebesMap_MapHeader_0x0014+0x80 0xB08  # -> file 157 (StageZebesFile3)
 intern dGRZebesMap_MapHeader_0x0014+0x84 dGRZebesMap_gap_0x0000

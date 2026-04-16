@@ -1,29 +1,29 @@
 # Relocation metadata for file 206
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dMMarioMain_pre+0x0 0x38
-extern dMMarioMain_pre+0x4 0x24
-extern dMMarioMain_pre+0x8 0x608
-extern dMMarioMain_pre+0xC 0x0
-extern dMMarioMain_pre+0xC8 0x1E08
-extern dMMarioMain_pre+0xD8 0x1E08
-extern dMMarioMain_pre+0x298 0x2CD0
-extern dMMarioMain_pre+0x29C 0x2D00
+extern dMMarioMain_pre+0x0 0x38  # -> file 205 (MMarioMainMotion)
+extern dMMarioMain_pre+0x4 0x24  # -> file 202 (MarioMainMotion)
+extern dMMarioMain_pre+0x8 0x608  # -> file 356 (MarioSpecial2)
+extern dMMarioMain_pre+0xC 0x0  # -> file 204 (MarioSpecial1)
+extern dMMarioMain_pre+0xC8 0x1E08  # -> file 300 (MMarioModel)
+extern dMMarioMain_pre+0xD8 0x1E08  # -> file 300 (MMarioModel)
+extern dMMarioMain_pre+0x298 0x2CD0  # -> file 300 (MMarioModel)
+extern dMMarioMain_pre+0x29C 0x2D00  # -> file 300 (MMarioModel)
 intern dMMarioMain_pre+0x2A0 dMMarioMain_pre+0x298
-extern dMMarioMain_pre+0x2A4 0x2EF8
+extern dMMarioMain_pre+0x2A4 0x2EF8  # -> file 300 (MMarioModel)
 intern dMMarioMain_attr+0x29C dMMarioMain_pre+0x18
 intern dMMarioMain_attr+0x2A0 dMMarioMain_pre+0x10
 intern dMMarioMain_attr+0x2D0 dMMarioMain_pre+0x20
 intern dMMarioMain_attr+0x2D4 dMMarioMain_pre+0xC8
-extern dMMarioMain_attr+0x2D8 0xF0
-extern dMMarioMain_attr+0x2DC 0x5A0
-extern dMMarioMain_attr+0x2E0 0xA10
-extern dMMarioMain_attr+0x2E4 0xE80
-extern dMMarioMain_attr+0x2E8 0x12F0
-extern dMMarioMain_attr+0x2EC 0x17A0
-extern dMMarioMain_attr+0x2F0 0x1C60
-extern dMMarioMain_attr+0x2F4 0x20E0
-extern dMMarioMain_attr+0x2F8 0x2540
+extern dMMarioMain_attr+0x2D8 0xF0  # -> file 298 (MarioShieldPose)
+extern dMMarioMain_attr+0x2DC 0x5A0  # -> file 298 (MarioShieldPose)
+extern dMMarioMain_attr+0x2E0 0xA10  # -> file 298 (MarioShieldPose)
+extern dMMarioMain_attr+0x2E4 0xE80  # -> file 298 (MarioShieldPose)
+extern dMMarioMain_attr+0x2E8 0x12F0  # -> file 298 (MarioShieldPose)
+extern dMMarioMain_attr+0x2EC 0x17A0  # -> file 298 (MarioShieldPose)
+extern dMMarioMain_attr+0x2F0 0x1C60  # -> file 298 (MarioShieldPose)
+extern dMMarioMain_attr+0x2F4 0x20E0  # -> file 298 (MarioShieldPose)
+extern dMMarioMain_attr+0x2F8 0x2540  # -> file 298 (MarioShieldPose)
 intern dMMarioMain_attr+0x328 dMMarioMain_pre+0x60
 intern dMMarioMain_attr+0x330 dMMarioMain_pre+0xC4
 intern dMMarioMain_attr+0x338 dMMarioMain_pre+0xE8

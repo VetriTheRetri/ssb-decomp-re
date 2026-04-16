@@ -1,4 +1,4 @@
 # Relocation metadata for file 210
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dFoxSpecial1_Blaster_WeaponAttributes 0x40
+extern dFoxSpecial1_Blaster_WeaponAttributes 0x40  # -> file 316 (FoxSpecial4)

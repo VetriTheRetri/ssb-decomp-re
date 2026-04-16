@@ -11,6 +11,17 @@ the symbolic target.
 
 fixRelocChain.py overwrites the chain slot at build time, so byte output
 stays identical.
+
+NOT HANDLED (no clean way to symbolicize): chain entries inside the Vec3f
+translate/rotate/scale fields of DObjDesc elements. These are the
+"terminator chain run" tail of JointTree arrays in fighter Model files —
+the chain walks past the .data slots into bytes that the typed source
+declares as f32 values like `4.213954025813984e-33f`. The compiled bytes
+are correct (chain values reinterpreted as float bit patterns), and
+fixRelocChain overwrites them at build time, but the source can't express
+them as symbolic refs without breaking the Vec3f struct shape. A future
+restructure could declare those terminator elements as a `union { Vec3f v;
+u32 raw[3]; }` to make the chain bytes visible — left as TODO.
 """
 
 import argparse

@@ -1,8 +1,17 @@
-/* relocData file 251: ITCommonData */
-/* Inlined block layout - edit this file directly. The .inc.c
- * files referenced below live under build/src/relocData/ and
- * are regenerated from the baserom by tools/extractRelocInc.py
- * at extract time. */
+/* relocData file 251: ITCommonData
+ *
+ * Common-item attribute + weapon-attribute pool. Every `*_ItemAttributes`
+ * block is a 72-byte ITAttributes (see src/it/ittypes.h) and every
+ * `*_WeaponAttributes` block is a 52-byte WPAttributes (see src/wp/wptypes.h).
+ * Both struct definitions now use `u32 size : 16` (not `u16 size`) so that
+ * future work can promote any of these u8 blobs to typed initializers —
+ * see the comment above struct ITAttributes for the verified IDO bitfield
+ * layout (Vec3h damage_coll_* at 0x1E/0x24, map_coll at 0x2A, size :16 at
+ * 0x32, then packed bitfield tail at 0x34+).
+ *
+ * Inlined block layout - edit this file directly. The .inc.c files
+ * referenced below live under build/src/relocData/ and are regenerated
+ * from the baserom by tools/extractRelocInc.py at extract time. */
 
 #include "relocdata_types.h"
 

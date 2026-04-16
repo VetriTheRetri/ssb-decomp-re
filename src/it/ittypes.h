@@ -140,6 +140,37 @@ struct ITDamageColl						// DamageColl struct
 	Vec3f size;		  					// DamageColl size
 };
 
+/*
+ * ITAttributes — 72-byte hitbox + hurtbox attribute pool used by items.
+ * IDO 7.1 lays out bitfields as follows (discovered empirically by
+ * compiling with unique per-field values and inspecting .data bytes):
+ *
+ *   0x00-0x0F  4 × pointer (data, p_mobjsubs, anim_joints, p_matanim_joints)
+ *   0x10       u32: 5 × :1 flags (bits 31..27) + attack_offset0_x:16 + pad:11
+ *   0x14       u32: attack_offset0_y:16 + attack_offset0_z:16
+ *   0x18       u32: attack_offset1_x:16 + attack_offset1_y:16
+ *   0x1C       s16: attack_offset1_z:16 (half-word, IDO collapses trailing :16 into a u16)
+ *   0x1E-0x23  Vec3h damage_coll_offset
+ *   0x24-0x29  Vec3h damage_coll_size
+ *   0x2A-0x2B  s16 map_coll_top
+ *   0x2C-0x2D  s16 map_coll_center
+ *   0x2E-0x2F  s16 map_coll_bottom
+ *   0x30-0x31  s16 map_coll_width
+ *   0x32-0x33  u32 size:16 (half-word, same IDO collapse as above)
+ *   0x34       u32: angle:10 + knockback_scale:10 + damage:8 + element:4
+ *   0x38       u32: knockback_weight:10 + shield_damage:8 + attack_count:2
+ *                  + can_setoff:1 + hit_sfx:10 + pad:1
+ *   0x3C       u32: priority:3 + can_rehit_item:1 + can_rehit_fighter:1
+ *                  + can_hop:1 + can_reflect:1 + can_shield:1
+ *                  + knockback_base:10 + type:4 + hitstatus:4
+ *                  + unk_atca_0x3C_b6:1 + unk_atca_0x3C_b7:1 + pad:5
+ *   0x40       u32: drop_sfx:10 + throw_sfx:10 + smash_sfx:10 + pad:2
+ *   0x44       u32: vel_scale:9 + pad:7 + spin_speed:16 (or u16 at 0x46)
+ *
+ * The `u32 size : 16` declaration is critical — using plain `u16 size`
+ * causes IDO to overlap the hitbox bitfields with size's storage unit,
+ * producing mismatched .data bytes. Same fix applies to WPAttributes.
+ */
 struct ITAttributes
 {
 	void *data; 						// Either DObjDesc or displaylist?

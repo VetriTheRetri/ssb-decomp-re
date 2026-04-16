@@ -3157,8 +3157,89 @@ Vtx dLBTransitionAeroplane_Vtx_0x3CB0_Vtx[3] = {
 };
 
 /* Raw data from file offset 0x3CE0 to 0xB3F8 (30488 bytes) */
-u8 dLBTransitionAeroplane_gap_0x3CE0[30488] = {
+/* gap sub-block @ 0x3CE0 (was gap+0x0, 96 bytes) */
+u8 dLBTransitionAeroplane_gap_0x3CE0[96] = {
 	#include <LBTransitionAeroplane/gap_0x3CE0.data.inc.c>
+};
+
+/* gap sub-block @ 0x3D40 (was gap+0x60, 2496 bytes) */
+u8 dLBTransitionAeroplane_gap_0x3CE0_sub_0x60[2496] = {
+	#include <LBTransitionAeroplane/gap_0x3CE0_sub_0x60.data.inc.c>
+};
+
+/* gap sub-block @ 0x4700 (was gap+0xA20, 2504 bytes) */
+u8 dLBTransitionAeroplane_gap_0x3CE0_sub_0xA20[2504] = {
+	#include <LBTransitionAeroplane/gap_0x3CE0_sub_0xA20.data.inc.c>
+};
+
+/* gap sub-block @ 0x50C8 (was gap+0x13E8, 2528 bytes) */
+u8 dLBTransitionAeroplane_gap_0x3CE0_sub_0x13E8[2528] = {
+	#include <LBTransitionAeroplane/gap_0x3CE0_sub_0x13E8.data.inc.c>
+};
+
+/* gap sub-block @ 0x5AA8 (was gap+0x1DC8, 2528 bytes) */
+u8 dLBTransitionAeroplane_gap_0x3CE0_sub_0x1DC8[2528] = {
+	#include <LBTransitionAeroplane/gap_0x3CE0_sub_0x1DC8.data.inc.c>
+};
+
+/* gap sub-block @ 0x6488 (was gap+0x27A8, 1704 bytes) */
+u8 dLBTransitionAeroplane_gap_0x3CE0_sub_0x27A8[1704] = {
+	#include <LBTransitionAeroplane/gap_0x3CE0_sub_0x27A8.data.inc.c>
+};
+
+/* gap sub-block @ 0x6B30 (was gap+0x2E50, 1704 bytes) */
+u8 dLBTransitionAeroplane_gap_0x3CE0_sub_0x2E50[1704] = {
+	#include <LBTransitionAeroplane/gap_0x3CE0_sub_0x2E50.data.inc.c>
+};
+
+/* gap sub-block @ 0x71D8 (was gap+0x34F8, 528 bytes) */
+u8 dLBTransitionAeroplane_gap_0x3CE0_sub_0x34F8[528] = {
+	#include <LBTransitionAeroplane/gap_0x3CE0_sub_0x34F8.data.inc.c>
+};
+
+/* gap sub-block @ 0x73E8 (was gap+0x3708, 528 bytes) */
+u8 dLBTransitionAeroplane_gap_0x3CE0_sub_0x3708[528] = {
+	#include <LBTransitionAeroplane/gap_0x3CE0_sub_0x3708.data.inc.c>
+};
+
+/* gap sub-block @ 0x75F8 (was gap+0x3918, 3160 bytes) */
+u8 dLBTransitionAeroplane_gap_0x3CE0_sub_0x3918[3160] = {
+	#include <LBTransitionAeroplane/gap_0x3CE0_sub_0x3918.data.inc.c>
+};
+
+/* gap sub-block @ 0x8250 (was gap+0x4570, 3168 bytes) */
+u8 dLBTransitionAeroplane_gap_0x3CE0_sub_0x4570[3168] = {
+	#include <LBTransitionAeroplane/gap_0x3CE0_sub_0x4570.data.inc.c>
+};
+
+/* gap sub-block @ 0x8EB0 (was gap+0x51D0, 2520 bytes) */
+u8 dLBTransitionAeroplane_gap_0x3CE0_sub_0x51D0[2520] = {
+	#include <LBTransitionAeroplane/gap_0x3CE0_sub_0x51D0.data.inc.c>
+};
+
+/* gap sub-block @ 0x9888 (was gap+0x5BA8, 2512 bytes) */
+u8 dLBTransitionAeroplane_gap_0x3CE0_sub_0x5BA8[2512] = {
+	#include <LBTransitionAeroplane/gap_0x3CE0_sub_0x5BA8.data.inc.c>
+};
+
+/* gap sub-block @ 0xA258 (was gap+0x6578, 1752 bytes) */
+u8 dLBTransitionAeroplane_gap_0x3CE0_sub_0x6578[1752] = {
+	#include <LBTransitionAeroplane/gap_0x3CE0_sub_0x6578.data.inc.c>
+};
+
+/* gap sub-block @ 0xA930 (was gap+0x6C50, 1720 bytes) */
+u8 dLBTransitionAeroplane_gap_0x3CE0_sub_0x6C50[1720] = {
+	#include <LBTransitionAeroplane/gap_0x3CE0_sub_0x6C50.data.inc.c>
+};
+
+/* gap sub-block @ 0xAFE8 (was gap+0x7308, 520 bytes) */
+u8 dLBTransitionAeroplane_gap_0x3CE0_sub_0x7308[520] = {
+	#include <LBTransitionAeroplane/gap_0x3CE0_sub_0x7308.data.inc.c>
+};
+
+/* gap sub-block @ 0xB1F0 (was gap+0x7510, 520 bytes) */
+u8 dLBTransitionAeroplane_gap_0x3CE0_sub_0x7510[520] = {
+	#include <LBTransitionAeroplane/gap_0x3CE0_sub_0x7510.data.inc.c>
 };
 
 /* DObjDesc: - @ 0xB3F8 (18 entries) */

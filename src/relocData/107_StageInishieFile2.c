@@ -124,8 +124,14 @@ u16 dStageInishieFile2_Lut_0x3698_palette[16] = {
 };
 
 /* Raw data from file offset 0x36B8 to 0x36E8 (48 bytes) */
-u8 dStageInishieFile2_gap_0x36B8[48] = {
+/* gap sub-block @ 0x36B8 (was gap+0x0, 8 bytes) */
+u8 dStageInishieFile2_gap_0x36B8[8] = {
 	#include <StageInishieFile2/gap_0x36B8.data.inc.c>
+};
+
+/* gap sub-block @ 0x36C0 (was gap+0x8, 40 bytes) */
+u8 dStageInishieFile2_gap_0x36B8_sub_0x8[40] = {
+	#include <StageInishieFile2/gap_0x36B8_sub_0x8.data.inc.c>
 };
 
 /* Palette: Lut_0x36E8 @ 0x36E8 (16 colors RGBA5551) */
@@ -169,8 +175,279 @@ MObjSub dStageInishieFile2_Layer0MObj_MObjSub = {
 };
 
 /* Raw data from file offset 0x37A8 to 0x4A48 (4768 bytes) */
-u8 dStageInishieFile2_gap_0x37A8[4768] = {
+/* gap sub-block @ 0x37A8 (was gap+0x0, 80 bytes) */
+u8 dStageInishieFile2_gap_0x37A8[80] = {
 	#include <StageInishieFile2/gap_0x37A8.data.inc.c>
+};
+
+/* gap sub-block @ 0x37F8 (was gap+0x50, 120 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x50[120] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x50.data.inc.c>
+};
+
+/* gap sub-block @ 0x3870 (was gap+0xC8, 120 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0xC8[120] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0xC8.data.inc.c>
+};
+
+/* gap sub-block @ 0x38E8 (was gap+0x140, 120 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x140[120] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x140.data.inc.c>
+};
+
+/* gap sub-block @ 0x3960 (was gap+0x1B8, 8 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x1B8[8] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x1B8.data.inc.c>
+};
+
+/* gap sub-block @ 0x3968 (was gap+0x1C0, 8 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x1C0[8] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x1C0.data.inc.c>
+};
+
+/* gap sub-block @ 0x3970 (was gap+0x1C8, 8 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x1C8[8] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x1C8.data.inc.c>
+};
+
+/* gap sub-block @ 0x3978 (was gap+0x1D0, 8 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x1D0[8] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x1D0.data.inc.c>
+};
+
+/* gap sub-block @ 0x3980 (was gap+0x1D8, 64 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x1D8[64] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x1D8.data.inc.c>
+};
+
+/* gap sub-block @ 0x39C0 (was gap+0x218, 64 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x218[64] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x218.data.inc.c>
+};
+
+/* gap sub-block @ 0x3A00 (was gap+0x258, 64 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x258[64] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x258.data.inc.c>
+};
+
+/* gap sub-block @ 0x3A40 (was gap+0x298, 32 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x298[32] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x298.data.inc.c>
+};
+
+/* gap sub-block @ 0x3A60 (was gap+0x2B8, 32 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x2B8[32] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x2B8.data.inc.c>
+};
+
+/* gap sub-block @ 0x3A80 (was gap+0x2D8, 48 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x2D8[48] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x2D8.data.inc.c>
+};
+
+/* gap sub-block @ 0x3AB0 (was gap+0x308, 64 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x308[64] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x308.data.inc.c>
+};
+
+/* gap sub-block @ 0x3AF0 (was gap+0x348, 64 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x348[64] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x348.data.inc.c>
+};
+
+/* gap sub-block @ 0x3B30 (was gap+0x388, 64 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x388[64] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x388.data.inc.c>
+};
+
+/* gap sub-block @ 0x3B70 (was gap+0x3C8, 64 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x3C8[64] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x3C8.data.inc.c>
+};
+
+/* gap sub-block @ 0x3BB0 (was gap+0x408, 64 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x408[64] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x408.data.inc.c>
+};
+
+/* gap sub-block @ 0x3BF0 (was gap+0x448, 64 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x448[64] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x448.data.inc.c>
+};
+
+/* gap sub-block @ 0x3C30 (was gap+0x488, 64 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x488[64] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x488.data.inc.c>
+};
+
+/* gap sub-block @ 0x3C70 (was gap+0x4C8, 64 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x4C8[64] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x4C8.data.inc.c>
+};
+
+/* gap sub-block @ 0x3CB0 (was gap+0x508, 64 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x508[64] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x508.data.inc.c>
+};
+
+/* gap sub-block @ 0x3CF0 (was gap+0x548, 64 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x548[64] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x548.data.inc.c>
+};
+
+/* gap sub-block @ 0x3D30 (was gap+0x588, 64 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x588[64] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x588.data.inc.c>
+};
+
+/* gap sub-block @ 0x3D70 (was gap+0x5C8, 64 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x5C8[64] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x5C8.data.inc.c>
+};
+
+/* gap sub-block @ 0x3DB0 (was gap+0x608, 64 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x608[64] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x608.data.inc.c>
+};
+
+/* gap sub-block @ 0x3DF0 (was gap+0x648, 64 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x648[64] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x648.data.inc.c>
+};
+
+/* gap sub-block @ 0x3E30 (was gap+0x688, 64 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x688[64] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x688.data.inc.c>
+};
+
+/* gap sub-block @ 0x3E70 (was gap+0x6C8, 64 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x6C8[64] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x6C8.data.inc.c>
+};
+
+/* gap sub-block @ 0x3EB0 (was gap+0x708, 64 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x708[64] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x708.data.inc.c>
+};
+
+/* gap sub-block @ 0x3EF0 (was gap+0x748, 64 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x748[64] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x748.data.inc.c>
+};
+
+/* gap sub-block @ 0x3F30 (was gap+0x788, 72 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x788[72] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x788.data.inc.c>
+};
+
+/* gap sub-block @ 0x3F78 (was gap+0x7D0, 400 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x7D0[400] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x7D0.data.inc.c>
+};
+
+/* gap sub-block @ 0x4108 (was gap+0x960, 128 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x960[128] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x960.data.inc.c>
+};
+
+/* gap sub-block @ 0x4188 (was gap+0x9E0, 128 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x9E0[128] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x9E0.data.inc.c>
+};
+
+/* gap sub-block @ 0x4208 (was gap+0xA60, 128 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0xA60[128] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0xA60.data.inc.c>
+};
+
+/* gap sub-block @ 0x4288 (was gap+0xAE0, 96 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0xAE0[96] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0xAE0.data.inc.c>
+};
+
+/* gap sub-block @ 0x42E8 (was gap+0xB40, 96 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0xB40[96] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0xB40.data.inc.c>
+};
+
+/* gap sub-block @ 0x4348 (was gap+0xBA0, 96 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0xBA0[96] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0xBA0.data.inc.c>
+};
+
+/* gap sub-block @ 0x43A8 (was gap+0xC00, 536 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0xC00[536] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0xC00.data.inc.c>
+};
+
+/* gap sub-block @ 0x45C0 (was gap+0xE18, 200 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0xE18[200] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0xE18.data.inc.c>
+};
+
+/* gap sub-block @ 0x4688 (was gap+0xEE0, 88 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0xEE0[88] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0xEE0.data.inc.c>
+};
+
+/* gap sub-block @ 0x46E0 (was gap+0xF38, 120 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0xF38[120] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0xF38.data.inc.c>
+};
+
+/* gap sub-block @ 0x4758 (was gap+0xFB0, 424 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0xFB0[424] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0xFB0.data.inc.c>
+};
+
+/* gap sub-block @ 0x4900 (was gap+0x1158, 160 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x1158[160] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x1158.data.inc.c>
+};
+
+/* gap sub-block @ 0x49A0 (was gap+0x11F8, 24 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x11F8[24] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x11F8.data.inc.c>
+};
+
+/* gap sub-block @ 0x49B8 (was gap+0x1210, 16 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x1210[16] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x1210.data.inc.c>
+};
+
+/* gap sub-block @ 0x49C8 (was gap+0x1220, 16 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x1220[16] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x1220.data.inc.c>
+};
+
+/* gap sub-block @ 0x49D8 (was gap+0x1230, 16 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x1230[16] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x1230.data.inc.c>
+};
+
+/* gap sub-block @ 0x49E8 (was gap+0x1240, 16 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x1240[16] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x1240.data.inc.c>
+};
+
+/* gap sub-block @ 0x49F8 (was gap+0x1250, 16 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x1250[16] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x1250.data.inc.c>
+};
+
+/* gap sub-block @ 0x4A08 (was gap+0x1260, 16 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x1260[16] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x1260.data.inc.c>
+};
+
+/* gap sub-block @ 0x4A18 (was gap+0x1270, 24 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x1270[24] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x1270.data.inc.c>
+};
+
+/* gap sub-block @ 0x4A30 (was gap+0x1288, 24 bytes) */
+u8 dStageInishieFile2_gap_0x37A8_sub_0x1288[24] = {
+	#include <StageInishieFile2/gap_0x37A8_sub_0x1288.data.inc.c>
 };
 
 /* DObjDesc: Layer0DObj @ 0x4A48 (11 entries) */
@@ -208,8 +485,34 @@ DObjDesc dStageInishieFile2_Layer1DObj[] = {
 };
 
 /* Raw data from file offset 0x63A4 to 0x6698 (756 bytes) */
-u8 dStageInishieFile2_gap_0x63A4[756] = {
+/* gap sub-block @ 0x63A4 (was gap+0x0, 176 bytes) */
+u8 dStageInishieFile2_gap_0x63A4[176] = {
 	#include <StageInishieFile2/gap_0x63A4.data.inc.c>
+};
+
+/* gap sub-block @ 0x6454 (was gap+0xB0, 156 bytes) */
+u8 dStageInishieFile2_gap_0x63A4_sub_0xB0[156] = {
+	#include <StageInishieFile2/gap_0x63A4_sub_0xB0.data.inc.c>
+};
+
+/* gap sub-block @ 0x64F0 (was gap+0x14C, 76 bytes) */
+u8 dStageInishieFile2_gap_0x63A4_sub_0x14C[76] = {
+	#include <StageInishieFile2/gap_0x63A4_sub_0x14C.data.inc.c>
+};
+
+/* gap sub-block @ 0x653C (was gap+0x198, 76 bytes) */
+u8 dStageInishieFile2_gap_0x63A4_sub_0x198[76] = {
+	#include <StageInishieFile2/gap_0x63A4_sub_0x198.data.inc.c>
+};
+
+/* gap sub-block @ 0x6588 (was gap+0x1E4, 56 bytes) */
+u8 dStageInishieFile2_gap_0x63A4_sub_0x1E4[56] = {
+	#include <StageInishieFile2/gap_0x63A4_sub_0x1E4.data.inc.c>
+};
+
+/* gap sub-block @ 0x65C0 (was gap+0x21C, 216 bytes) */
+u8 dStageInishieFile2_gap_0x63A4_sub_0x21C[216] = {
+	#include <StageInishieFile2/gap_0x63A4_sub_0x21C.data.inc.c>
 };
 
 /* Raw data from file offset 0x6698 to 0x6820 (392 bytes) */
@@ -226,8 +529,39 @@ DObjDesc dStageInishieFile2_Layer2DObj[] = {
 };
 
 /* Raw data from file offset 0x68D0 to 0x6C00 (816 bytes) */
-u8 dStageInishieFile2_gap_0x68D0[816] = {
+/* gap sub-block @ 0x68D0 (was gap+0x0, 32 bytes) */
+u8 dStageInishieFile2_gap_0x68D0[32] = {
 	#include <StageInishieFile2/gap_0x68D0.data.inc.c>
+};
+
+/* gap sub-block @ 0x68F0 (was gap+0x20, 64 bytes) */
+u8 dStageInishieFile2_gap_0x68D0_sub_0x20[64] = {
+	#include <StageInishieFile2/gap_0x68D0_sub_0x20.data.inc.c>
+};
+
+/* gap sub-block @ 0x6930 (was gap+0x60, 64 bytes) */
+u8 dStageInishieFile2_gap_0x68D0_sub_0x60[64] = {
+	#include <StageInishieFile2/gap_0x68D0_sub_0x60.data.inc.c>
+};
+
+/* gap sub-block @ 0x6970 (was gap+0xA0, 64 bytes) */
+u8 dStageInishieFile2_gap_0x68D0_sub_0xA0[64] = {
+	#include <StageInishieFile2/gap_0x68D0_sub_0xA0.data.inc.c>
+};
+
+/* gap sub-block @ 0x69B0 (was gap+0xE0, 64 bytes) */
+u8 dStageInishieFile2_gap_0x68D0_sub_0xE0[64] = {
+	#include <StageInishieFile2/gap_0x68D0_sub_0xE0.data.inc.c>
+};
+
+/* gap sub-block @ 0x69F0 (was gap+0x120, 64 bytes) */
+u8 dStageInishieFile2_gap_0x68D0_sub_0x120[64] = {
+	#include <StageInishieFile2/gap_0x68D0_sub_0x120.data.inc.c>
+};
+
+/* gap sub-block @ 0x6A30 (was gap+0x160, 464 bytes) */
+u8 dStageInishieFile2_gap_0x68D0_sub_0x160[464] = {
+	#include <StageInishieFile2/gap_0x68D0_sub_0x160.data.inc.c>
 };
 
 /* DObjDesc: Layer3DObj @ 0x6C00 (3 entries) */

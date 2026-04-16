@@ -17,8 +17,24 @@ u16 dPikachuSpecial2_Lut_0x0008_palette[16] = {
 };
 
 /* Raw data from file offset 0x0028 to 0x0640 (1560 bytes) */
-u8 dPikachuSpecial2_gap_0x0028[1560] = {
+/* gap sub-block @ 0x0028 (was gap+0x0, 8 bytes) */
+u8 dPikachuSpecial2_gap_0x0028[8] = {
 	#include <PikachuSpecial2/gap_0x0028.data.inc.c>
+};
+
+/* gap sub-block @ 0x0030 (was gap+0x8, 520 bytes) */
+u8 dPikachuSpecial2_gap_0x0028_sub_0x8[520] = {
+	#include <PikachuSpecial2/gap_0x0028_sub_0x8.data.inc.c>
+};
+
+/* gap sub-block @ 0x0238 (was gap+0x210, 520 bytes) */
+u8 dPikachuSpecial2_gap_0x0028_sub_0x210[520] = {
+	#include <PikachuSpecial2/gap_0x0028_sub_0x210.data.inc.c>
+};
+
+/* gap sub-block @ 0x0440 (was gap+0x418, 512 bytes) */
+u8 dPikachuSpecial2_gap_0x0028_sub_0x418[512] = {
+	#include <PikachuSpecial2/gap_0x0028_sub_0x418.data.inc.c>
 };
 
 /* MObjSub: UnkMObjSub @ 0x640 */
@@ -50,8 +66,14 @@ MObjSub dPikachuSpecial2_UnkMObjSub_MObjSub = {
 };
 
 /* Raw data from file offset 0x06B8 to 0x06D8 (32 bytes) */
-u8 dPikachuSpecial2_gap_0x06B8[32] = {
+/* gap sub-block @ 0x06B8 (was gap+0x0, 24 bytes) */
+u8 dPikachuSpecial2_gap_0x06B8[24] = {
 	#include <PikachuSpecial2/gap_0x06B8.data.inc.c>
+};
+
+/* gap sub-block @ 0x06D0 (was gap+0x18, 8 bytes) */
+u8 dPikachuSpecial2_gap_0x06B8_sub_0x18[8] = {
+	#include <PikachuSpecial2/gap_0x06B8_sub_0x18.data.inc.c>
 };
 
 /* Vtx: Vtx_0x06D8 @ 0x6D8 (4 vertices) */
@@ -89,8 +111,19 @@ u16 dPikachuSpecial2_Lut_0x0968_palette[16] = {
 };
 
 /* Raw data from file offset 0x0988 to 0x11A0 (2072 bytes) */
-u8 dPikachuSpecial2_gap_0x0988[2072] = {
+/* gap sub-block @ 0x0988 (was gap+0x0, 8 bytes) */
+u8 dPikachuSpecial2_gap_0x0988[8] = {
 	#include <PikachuSpecial2/gap_0x0988.data.inc.c>
+};
+
+/* gap sub-block @ 0x0990 (was gap+0x8, 1032 bytes) */
+u8 dPikachuSpecial2_gap_0x0988_sub_0x8[1032] = {
+	#include <PikachuSpecial2/gap_0x0988_sub_0x8.data.inc.c>
+};
+
+/* gap sub-block @ 0x0D98 (was gap+0x410, 1032 bytes) */
+u8 dPikachuSpecial2_gap_0x0988_sub_0x410[1032] = {
+	#include <PikachuSpecial2/gap_0x0988_sub_0x410.data.inc.c>
 };
 
 /* Raw data from file offset 0x11A0 to 0x13A0 (512 bytes) */
@@ -127,8 +160,14 @@ MObjSub dPikachuSpecial2_ThunderShockMObjSub_MObjSub = {
 };
 
 /* Raw data from file offset 0x1418 to 0x1438 (32 bytes) */
-u8 dPikachuSpecial2_gap_0x1418[32] = {
+/* gap sub-block @ 0x1418 (was gap+0x0, 24 bytes) */
+u8 dPikachuSpecial2_gap_0x1418[24] = {
 	#include <PikachuSpecial2/gap_0x1418.data.inc.c>
+};
+
+/* gap sub-block @ 0x1430 (was gap+0x18, 8 bytes) */
+u8 dPikachuSpecial2_gap_0x1418_sub_0x18[8] = {
+	#include <PikachuSpecial2/gap_0x1418_sub_0x18.data.inc.c>
 };
 
 /* Vtx: Vtx_0x1438 @ 0x1438 (4 vertices) */

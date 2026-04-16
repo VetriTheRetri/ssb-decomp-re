@@ -7,8 +7,19 @@
 #include "relocdata_types.h"
 
 /* Raw data from file offset 0x0000 to 0x0058 (88 bytes) */
-u8 dMarioSpecial3_gap_0x0000[88] = {
+/* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
+u8 dMarioSpecial3_gap_0x0000[8] = {
 	#include <MarioSpecial3/gap_0x0000.data.inc.c>
+};
+
+/* gap sub-block @ 0x0008 (was gap+0x8, 40 bytes) */
+u8 dMarioSpecial3_gap_0x0000_sub_0x8[40] = {
+	#include <MarioSpecial3/gap_0x0000_sub_0x8.data.inc.c>
+};
+
+/* gap sub-block @ 0x0030 (was gap+0x30, 40 bytes) */
+u8 dMarioSpecial3_gap_0x0000_sub_0x30[40] = {
+	#include <MarioSpecial3/gap_0x0000_sub_0x30.data.inc.c>
 };
 
 /* Raw data from file offset 0x0058 to 0x0168 (272 bytes) */

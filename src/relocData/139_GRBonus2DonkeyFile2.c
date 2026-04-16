@@ -7,8 +7,174 @@
 #include "relocdata_types.h"
 
 /* Raw data from file offset 0x0000 to 0x0848 (2120 bytes) */
-u8 dGRBonus2DonkeyFile2_gap_0x0000[2120] = {
+/* gap sub-block @ 0x0000 (was gap+0x0, 64 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0000[64] = {
 	#include <GRBonus2DonkeyFile2/gap_0x0000.data.inc.c>
+};
+
+/* gap sub-block @ 0x0040 (was gap+0x40, 56 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0000_sub_0x40[56] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0000_sub_0x40.data.inc.c>
+};
+
+/* gap sub-block @ 0x0078 (was gap+0x78, 8 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0000_sub_0x78[8] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0000_sub_0x78.data.inc.c>
+};
+
+/* gap sub-block @ 0x0080 (was gap+0x80, 512 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0000_sub_0x80[512] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0000_sub_0x80.data.inc.c>
+};
+
+/* gap sub-block @ 0x0280 (was gap+0x280, 120 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0000_sub_0x280[120] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0000_sub_0x280.data.inc.c>
+};
+
+/* gap sub-block @ 0x02F8 (was gap+0x2F8, 136 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0000_sub_0x2F8[136] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0000_sub_0x2F8.data.inc.c>
+};
+
+/* gap sub-block @ 0x0380 (was gap+0x380, 40 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0000_sub_0x380[40] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0000_sub_0x380.data.inc.c>
+};
+
+/* gap sub-block @ 0x03A8 (was gap+0x3A8, 72 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0000_sub_0x3A8[72] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0000_sub_0x3A8.data.inc.c>
+};
+
+/* gap sub-block @ 0x03F0 (was gap+0x3F0, 40 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0000_sub_0x3F0[40] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0000_sub_0x3F0.data.inc.c>
+};
+
+/* gap sub-block @ 0x0418 (was gap+0x418, 40 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0000_sub_0x418[40] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0000_sub_0x418.data.inc.c>
+};
+
+/* gap sub-block @ 0x0440 (was gap+0x440, 32 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0000_sub_0x440[32] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0000_sub_0x440.data.inc.c>
+};
+
+/* gap sub-block @ 0x0460 (was gap+0x460, 96 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0000_sub_0x460[96] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0000_sub_0x460.data.inc.c>
+};
+
+/* gap sub-block @ 0x04C0 (was gap+0x4C0, 40 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0000_sub_0x4C0[40] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0000_sub_0x4C0.data.inc.c>
+};
+
+/* gap sub-block @ 0x04E8 (was gap+0x4E8, 40 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0000_sub_0x4E8[40] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0000_sub_0x4E8.data.inc.c>
+};
+
+/* gap sub-block @ 0x0510 (was gap+0x510, 104 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0000_sub_0x510[104] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0000_sub_0x510.data.inc.c>
+};
+
+/* gap sub-block @ 0x0578 (was gap+0x578, 32 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0000_sub_0x578[32] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0000_sub_0x578.data.inc.c>
+};
+
+/* gap sub-block @ 0x0598 (was gap+0x598, 16 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0000_sub_0x598[16] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0000_sub_0x598.data.inc.c>
+};
+
+/* gap sub-block @ 0x05A8 (was gap+0x5A8, 16 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0000_sub_0x5A8[16] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0000_sub_0x5A8.data.inc.c>
+};
+
+/* gap sub-block @ 0x05B8 (was gap+0x5B8, 32 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0000_sub_0x5B8[32] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0000_sub_0x5B8.data.inc.c>
+};
+
+/* gap sub-block @ 0x05D8 (was gap+0x5D8, 32 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0000_sub_0x5D8[32] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0000_sub_0x5D8.data.inc.c>
+};
+
+/* gap sub-block @ 0x05F8 (was gap+0x5F8, 32 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0000_sub_0x5F8[32] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0000_sub_0x5F8.data.inc.c>
+};
+
+/* gap sub-block @ 0x0618 (was gap+0x618, 32 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0000_sub_0x618[32] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0000_sub_0x618.data.inc.c>
+};
+
+/* gap sub-block @ 0x0638 (was gap+0x638, 32 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0000_sub_0x638[32] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0000_sub_0x638.data.inc.c>
+};
+
+/* gap sub-block @ 0x0658 (was gap+0x658, 80 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0000_sub_0x658[80] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0000_sub_0x658.data.inc.c>
+};
+
+/* gap sub-block @ 0x06A8 (was gap+0x6A8, 272 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0000_sub_0x6A8[272] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0000_sub_0x6A8.data.inc.c>
+};
+
+/* gap sub-block @ 0x07B8 (was gap+0x7B8, 16 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0000_sub_0x7B8[16] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0000_sub_0x7B8.data.inc.c>
+};
+
+/* gap sub-block @ 0x07C8 (was gap+0x7C8, 16 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0000_sub_0x7C8[16] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0000_sub_0x7C8.data.inc.c>
+};
+
+/* gap sub-block @ 0x07D8 (was gap+0x7D8, 16 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0000_sub_0x7D8[16] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0000_sub_0x7D8.data.inc.c>
+};
+
+/* gap sub-block @ 0x07E8 (was gap+0x7E8, 16 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0000_sub_0x7E8[16] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0000_sub_0x7E8.data.inc.c>
+};
+
+/* gap sub-block @ 0x07F8 (was gap+0x7F8, 16 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0000_sub_0x7F8[16] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0000_sub_0x7F8.data.inc.c>
+};
+
+/* gap sub-block @ 0x0808 (was gap+0x808, 16 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0000_sub_0x808[16] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0000_sub_0x808.data.inc.c>
+};
+
+/* gap sub-block @ 0x0818 (was gap+0x818, 16 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0000_sub_0x818[16] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0000_sub_0x818.data.inc.c>
+};
+
+/* gap sub-block @ 0x0828 (was gap+0x828, 16 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0000_sub_0x828[16] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0000_sub_0x828.data.inc.c>
+};
+
+/* gap sub-block @ 0x0838 (was gap+0x838, 16 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0000_sub_0x838[16] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0000_sub_0x838.data.inc.c>
 };
 
 /* DObjDesc: Layer0DObj @ 0x848 (11 entries) */
@@ -27,8 +193,154 @@ DObjDesc dGRBonus2DonkeyFile2_Layer0DObj[] = {
 };
 
 /* Raw data from file offset 0x0A2C to 0x2D90 (9060 bytes) */
-u8 dGRBonus2DonkeyFile2_gap_0x0A2C[9060] = {
+/* gap sub-block @ 0x0A2C (was gap+0x0, 4 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0A2C[4] = {
 	#include <GRBonus2DonkeyFile2/gap_0x0A2C.data.inc.c>
+};
+
+/* gap sub-block @ 0x0A30 (was gap+0x4, 192 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x4[192] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0A2C_sub_0x4.data.inc.c>
+};
+
+/* gap sub-block @ 0x0AF0 (was gap+0xC4, 384 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0xC4[384] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0A2C_sub_0xC4.data.inc.c>
+};
+
+/* gap sub-block @ 0x0C70 (was gap+0x244, 256 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x244[256] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0A2C_sub_0x244.data.inc.c>
+};
+
+/* gap sub-block @ 0x0D70 (was gap+0x344, 272 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x344[272] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0A2C_sub_0x344.data.inc.c>
+};
+
+/* gap sub-block @ 0x0E80 (was gap+0x454, 256 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x454[256] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0A2C_sub_0x454.data.inc.c>
+};
+
+/* gap sub-block @ 0x0F80 (was gap+0x554, 192 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x554[192] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0A2C_sub_0x554.data.inc.c>
+};
+
+/* gap sub-block @ 0x1040 (was gap+0x614, 384 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x614[384] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0A2C_sub_0x614.data.inc.c>
+};
+
+/* gap sub-block @ 0x11C0 (was gap+0x794, 512 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x794[512] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0A2C_sub_0x794.data.inc.c>
+};
+
+/* gap sub-block @ 0x13C0 (was gap+0x994, 320 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x994[320] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0A2C_sub_0x994.data.inc.c>
+};
+
+/* gap sub-block @ 0x1500 (was gap+0xAD4, 400 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0xAD4[400] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0A2C_sub_0xAD4.data.inc.c>
+};
+
+/* gap sub-block @ 0x1690 (was gap+0xC64, 512 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0xC64[512] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0A2C_sub_0xC64.data.inc.c>
+};
+
+/* gap sub-block @ 0x1890 (was gap+0xE64, 16 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0xE64[16] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0A2C_sub_0xE64.data.inc.c>
+};
+
+/* gap sub-block @ 0x18A0 (was gap+0xE74, 128 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0xE74[128] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0A2C_sub_0xE74.data.inc.c>
+};
+
+/* gap sub-block @ 0x1920 (was gap+0xEF4, 272 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0xEF4[272] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0A2C_sub_0xEF4.data.inc.c>
+};
+
+/* gap sub-block @ 0x1A30 (was gap+0x1004, 480 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x1004[480] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0A2C_sub_0x1004.data.inc.c>
+};
+
+/* gap sub-block @ 0x1C10 (was gap+0x11E4, 256 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x11E4[256] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0A2C_sub_0x11E4.data.inc.c>
+};
+
+/* gap sub-block @ 0x1D10 (was gap+0x12E4, 352 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x12E4[352] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0A2C_sub_0x12E4.data.inc.c>
+};
+
+/* gap sub-block @ 0x1E70 (was gap+0x1444, 352 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x1444[352] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0A2C_sub_0x1444.data.inc.c>
+};
+
+/* gap sub-block @ 0x1FD0 (was gap+0x15A4, 288 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x15A4[288] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0A2C_sub_0x15A4.data.inc.c>
+};
+
+/* gap sub-block @ 0x20F0 (was gap+0x16C4, 512 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x16C4[512] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0A2C_sub_0x16C4.data.inc.c>
+};
+
+/* gap sub-block @ 0x22F0 (was gap+0x18C4, 64 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x18C4[64] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0A2C_sub_0x18C4.data.inc.c>
+};
+
+/* gap sub-block @ 0x2330 (was gap+0x1904, 320 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x1904[320] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0A2C_sub_0x1904.data.inc.c>
+};
+
+/* gap sub-block @ 0x2470 (was gap+0x1A44, 96 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x1A44[96] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0A2C_sub_0x1A44.data.inc.c>
+};
+
+/* gap sub-block @ 0x24D0 (was gap+0x1AA4, 1912 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x1AA4[1912] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0A2C_sub_0x1AA4.data.inc.c>
+};
+
+/* gap sub-block @ 0x2C48 (was gap+0x221C, 176 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x221C[176] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0A2C_sub_0x221C.data.inc.c>
+};
+
+/* gap sub-block @ 0x2CF8 (was gap+0x22CC, 104 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x22CC[104] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0A2C_sub_0x22CC.data.inc.c>
+};
+
+/* gap sub-block @ 0x2D60 (was gap+0x2334, 16 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x2334[16] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0A2C_sub_0x2334.data.inc.c>
+};
+
+/* gap sub-block @ 0x2D70 (was gap+0x2344, 16 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x2344[16] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0A2C_sub_0x2344.data.inc.c>
+};
+
+/* gap sub-block @ 0x2D80 (was gap+0x2354, 16 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x0A2C_sub_0x2354[16] = {
+	#include <GRBonus2DonkeyFile2/gap_0x0A2C_sub_0x2354.data.inc.c>
 };
 
 /* DObjDesc: Layer1DObj @ 0x2D90 (15 entries) */
@@ -51,8 +363,29 @@ DObjDesc dGRBonus2DonkeyFile2_Layer1DObj[] = {
 };
 
 /* Raw data from file offset 0x3024 to 0x34B0 (1164 bytes) */
-u8 dGRBonus2DonkeyFile2_gap_0x3024[1164] = {
+/* gap sub-block @ 0x3024 (was gap+0x0, 452 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x3024[452] = {
 	#include <GRBonus2DonkeyFile2/gap_0x3024.data.inc.c>
+};
+
+/* gap sub-block @ 0x31E8 (was gap+0x1C4, 232 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x3024_sub_0x1C4[232] = {
+	#include <GRBonus2DonkeyFile2/gap_0x3024_sub_0x1C4.data.inc.c>
+};
+
+/* gap sub-block @ 0x32D0 (was gap+0x2AC, 212 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x3024_sub_0x2AC[212] = {
+	#include <GRBonus2DonkeyFile2/gap_0x3024_sub_0x2AC.data.inc.c>
+};
+
+/* gap sub-block @ 0x33A4 (was gap+0x380, 236 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x3024_sub_0x380[236] = {
+	#include <GRBonus2DonkeyFile2/gap_0x3024_sub_0x380.data.inc.c>
+};
+
+/* gap sub-block @ 0x3490 (was gap+0x46C, 32 bytes) */
+u8 dGRBonus2DonkeyFile2_gap_0x3024_sub_0x46C[32] = {
+	#include <GRBonus2DonkeyFile2/gap_0x3024_sub_0x46C.data.inc.c>
 };
 
 /* Raw data from file offset 0x34B0 to 0x34D0 (32 bytes) */

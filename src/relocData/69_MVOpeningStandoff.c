@@ -156,8 +156,149 @@ MObjSub dMVOpeningStandoff_LightningMObjSub_MObjSub = {
 };
 
 /* Raw data from file offset 0x61B8 to 0x6950 (1944 bytes) */
-u8 dMVOpeningStandoff_gap_0x61B8[1944] = {
+/* gap sub-block @ 0x61B8 (was gap+0x0, 12 bytes) */
+u8 dMVOpeningStandoff_gap_0x61B8[12] = {
 	#include <MVOpeningStandoff/gap_0x61B8.data.inc.c>
+};
+
+/* gap sub-block @ 0x61C4 (was gap+0xC, 20 bytes) */
+u8 dMVOpeningStandoff_gap_0x61B8_sub_0xC[20] = {
+	#include <MVOpeningStandoff/gap_0x61B8_sub_0xC.data.inc.c>
+};
+
+/* gap sub-block @ 0x61D8 (was gap+0x20, 24 bytes) */
+u8 dMVOpeningStandoff_gap_0x61B8_sub_0x20[24] = {
+	#include <MVOpeningStandoff/gap_0x61B8_sub_0x20.data.inc.c>
+};
+
+/* gap sub-block @ 0x61F0 (was gap+0x38, 120 bytes) */
+u8 dMVOpeningStandoff_gap_0x61B8_sub_0x38[120] = {
+	#include <MVOpeningStandoff/gap_0x61B8_sub_0x38.data.inc.c>
+};
+
+/* gap sub-block @ 0x6268 (was gap+0xB0, 120 bytes) */
+u8 dMVOpeningStandoff_gap_0x61B8_sub_0xB0[120] = {
+	#include <MVOpeningStandoff/gap_0x61B8_sub_0xB0.data.inc.c>
+};
+
+/* gap sub-block @ 0x62E0 (was gap+0x128, 120 bytes) */
+u8 dMVOpeningStandoff_gap_0x61B8_sub_0x128[120] = {
+	#include <MVOpeningStandoff/gap_0x61B8_sub_0x128.data.inc.c>
+};
+
+/* gap sub-block @ 0x6358 (was gap+0x1A0, 120 bytes) */
+u8 dMVOpeningStandoff_gap_0x61B8_sub_0x1A0[120] = {
+	#include <MVOpeningStandoff/gap_0x61B8_sub_0x1A0.data.inc.c>
+};
+
+/* gap sub-block @ 0x63D0 (was gap+0x218, 120 bytes) */
+u8 dMVOpeningStandoff_gap_0x61B8_sub_0x218[120] = {
+	#include <MVOpeningStandoff/gap_0x61B8_sub_0x218.data.inc.c>
+};
+
+/* gap sub-block @ 0x6448 (was gap+0x290, 120 bytes) */
+u8 dMVOpeningStandoff_gap_0x61B8_sub_0x290[120] = {
+	#include <MVOpeningStandoff/gap_0x61B8_sub_0x290.data.inc.c>
+};
+
+/* gap sub-block @ 0x64C0 (was gap+0x308, 8 bytes) */
+u8 dMVOpeningStandoff_gap_0x61B8_sub_0x308[8] = {
+	#include <MVOpeningStandoff/gap_0x61B8_sub_0x308.data.inc.c>
+};
+
+/* gap sub-block @ 0x64C8 (was gap+0x310, 8 bytes) */
+u8 dMVOpeningStandoff_gap_0x61B8_sub_0x310[8] = {
+	#include <MVOpeningStandoff/gap_0x61B8_sub_0x310.data.inc.c>
+};
+
+/* gap sub-block @ 0x64D0 (was gap+0x318, 8 bytes) */
+u8 dMVOpeningStandoff_gap_0x61B8_sub_0x318[8] = {
+	#include <MVOpeningStandoff/gap_0x61B8_sub_0x318.data.inc.c>
+};
+
+/* gap sub-block @ 0x64D8 (was gap+0x320, 8 bytes) */
+u8 dMVOpeningStandoff_gap_0x61B8_sub_0x320[8] = {
+	#include <MVOpeningStandoff/gap_0x61B8_sub_0x320.data.inc.c>
+};
+
+/* gap sub-block @ 0x64E0 (was gap+0x328, 8 bytes) */
+u8 dMVOpeningStandoff_gap_0x61B8_sub_0x328[8] = {
+	#include <MVOpeningStandoff/gap_0x61B8_sub_0x328.data.inc.c>
+};
+
+/* gap sub-block @ 0x64E8 (was gap+0x330, 8 bytes) */
+u8 dMVOpeningStandoff_gap_0x61B8_sub_0x330[8] = {
+	#include <MVOpeningStandoff/gap_0x61B8_sub_0x330.data.inc.c>
+};
+
+/* gap sub-block @ 0x64F0 (was gap+0x338, 64 bytes) */
+u8 dMVOpeningStandoff_gap_0x61B8_sub_0x338[64] = {
+	#include <MVOpeningStandoff/gap_0x61B8_sub_0x338.data.inc.c>
+};
+
+/* gap sub-block @ 0x6530 (was gap+0x378, 64 bytes) */
+u8 dMVOpeningStandoff_gap_0x61B8_sub_0x378[64] = {
+	#include <MVOpeningStandoff/gap_0x61B8_sub_0x378.data.inc.c>
+};
+
+/* gap sub-block @ 0x6570 (was gap+0x3B8, 152 bytes) */
+u8 dMVOpeningStandoff_gap_0x61B8_sub_0x3B8[152] = {
+	#include <MVOpeningStandoff/gap_0x61B8_sub_0x3B8.data.inc.c>
+};
+
+/* gap sub-block @ 0x6608 (was gap+0x450, 152 bytes) */
+u8 dMVOpeningStandoff_gap_0x61B8_sub_0x450[152] = {
+	#include <MVOpeningStandoff/gap_0x61B8_sub_0x450.data.inc.c>
+};
+
+/* gap sub-block @ 0x66A0 (was gap+0x4E8, 152 bytes) */
+u8 dMVOpeningStandoff_gap_0x61B8_sub_0x4E8[152] = {
+	#include <MVOpeningStandoff/gap_0x61B8_sub_0x4E8.data.inc.c>
+};
+
+/* gap sub-block @ 0x6738 (was gap+0x580, 152 bytes) */
+u8 dMVOpeningStandoff_gap_0x61B8_sub_0x580[152] = {
+	#include <MVOpeningStandoff/gap_0x61B8_sub_0x580.data.inc.c>
+};
+
+/* gap sub-block @ 0x67D0 (was gap+0x618, 136 bytes) */
+u8 dMVOpeningStandoff_gap_0x61B8_sub_0x618[136] = {
+	#include <MVOpeningStandoff/gap_0x61B8_sub_0x618.data.inc.c>
+};
+
+/* gap sub-block @ 0x6858 (was gap+0x6A0, 152 bytes) */
+u8 dMVOpeningStandoff_gap_0x61B8_sub_0x6A0[152] = {
+	#include <MVOpeningStandoff/gap_0x61B8_sub_0x6A0.data.inc.c>
+};
+
+/* gap sub-block @ 0x68F0 (was gap+0x738, 16 bytes) */
+u8 dMVOpeningStandoff_gap_0x61B8_sub_0x738[16] = {
+	#include <MVOpeningStandoff/gap_0x61B8_sub_0x738.data.inc.c>
+};
+
+/* gap sub-block @ 0x6900 (was gap+0x748, 16 bytes) */
+u8 dMVOpeningStandoff_gap_0x61B8_sub_0x748[16] = {
+	#include <MVOpeningStandoff/gap_0x61B8_sub_0x748.data.inc.c>
+};
+
+/* gap sub-block @ 0x6910 (was gap+0x758, 16 bytes) */
+u8 dMVOpeningStandoff_gap_0x61B8_sub_0x758[16] = {
+	#include <MVOpeningStandoff/gap_0x61B8_sub_0x758.data.inc.c>
+};
+
+/* gap sub-block @ 0x6920 (was gap+0x768, 16 bytes) */
+u8 dMVOpeningStandoff_gap_0x61B8_sub_0x768[16] = {
+	#include <MVOpeningStandoff/gap_0x61B8_sub_0x768.data.inc.c>
+};
+
+/* gap sub-block @ 0x6930 (was gap+0x778, 16 bytes) */
+u8 dMVOpeningStandoff_gap_0x61B8_sub_0x778[16] = {
+	#include <MVOpeningStandoff/gap_0x61B8_sub_0x778.data.inc.c>
+};
+
+/* gap sub-block @ 0x6940 (was gap+0x788, 16 bytes) */
+u8 dMVOpeningStandoff_gap_0x61B8_sub_0x788[16] = {
+	#include <MVOpeningStandoff/gap_0x61B8_sub_0x788.data.inc.c>
 };
 
 /* DObjDesc: LightningDObjDesc @ 0x6950 (14 entries) */

@@ -341,8 +341,19 @@ Vtx dFoxSpecial3_Vtx_0x1EC0_Vtx[4] = {
 };
 
 /* Raw data from file offset 0x1F00 to 0x1FA0 (160 bytes) */
-u8 dFoxSpecial3_gap_0x1F00[160] = {
+/* gap sub-block @ 0x1F00 (was gap+0x0, 64 bytes) */
+u8 dFoxSpecial3_gap_0x1F00[64] = {
 	#include <FoxSpecial3/gap_0x1F00.data.inc.c>
+};
+
+/* gap sub-block @ 0x1F40 (was gap+0x40, 32 bytes) */
+u8 dFoxSpecial3_gap_0x1F00_sub_0x40[32] = {
+	#include <FoxSpecial3/gap_0x1F00_sub_0x40.data.inc.c>
+};
+
+/* gap sub-block @ 0x1F60 (was gap+0x60, 64 bytes) */
+u8 dFoxSpecial3_gap_0x1F00_sub_0x60[64] = {
+	#include <FoxSpecial3/gap_0x1F00_sub_0x60.data.inc.c>
 };
 
 /* DisplayList: Joint_0x1FA0 @ 0x1FA0 (64 bytes) */

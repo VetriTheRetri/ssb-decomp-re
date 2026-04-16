@@ -10,8 +10,19 @@
 extern u8 dSamusSpecial2_gap_0x0288[];
 
 /* Raw data from file offset 0x0000 to 0x0210 (528 bytes) */
-u8 dSamusSpecial2_gap_0x0000[528] = {
+/* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
+u8 dSamusSpecial2_gap_0x0000[8] = {
 	#include <SamusSpecial2/gap_0x0000.data.inc.c>
+};
+
+/* gap sub-block @ 0x0008 (was gap+0x8, 264 bytes) */
+u8 dSamusSpecial2_gap_0x0000_sub_0x8[264] = {
+	#include <SamusSpecial2/gap_0x0000_sub_0x8.data.inc.c>
+};
+
+/* gap sub-block @ 0x0110 (was gap+0x110, 256 bytes) */
+u8 dSamusSpecial2_gap_0x0000_sub_0x110[256] = {
+	#include <SamusSpecial2/gap_0x0000_sub_0x110.data.inc.c>
 };
 
 /* MObjSub: GrappleBeamMObjSub @ 0x210 */
@@ -43,8 +54,14 @@ MObjSub dSamusSpecial2_GrappleBeamMObjSub_MObjSub = {
 };
 
 /* Raw data from file offset 0x0288 to 0x02A0 (24 bytes) */
-u8 dSamusSpecial2_gap_0x0288[24] = {
+/* gap sub-block @ 0x0288 (was gap+0x0, 16 bytes) */
+u8 dSamusSpecial2_gap_0x0288[16] = {
 	#include <SamusSpecial2/gap_0x0288.data.inc.c>
+};
+
+/* gap sub-block @ 0x0298 (was gap+0x10, 8 bytes) */
+u8 dSamusSpecial2_gap_0x0288_sub_0x10[8] = {
+	#include <SamusSpecial2/gap_0x0288_sub_0x10.data.inc.c>
 };
 
 /* Vtx: Vtx_0x02A0 @ 0x2A0 (4 vertices) */

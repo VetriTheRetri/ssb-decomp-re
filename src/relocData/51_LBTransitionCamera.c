@@ -927,8 +927,49 @@ Vtx dLBTransitionCamera_Vtx_0x17A0_Vtx[4] = {
 };
 
 /* Raw data from file offset 0x17E0 to 0x3F90 (10160 bytes) */
-u8 dLBTransitionCamera_gap_0x17E0[10160] = {
+/* gap sub-block @ 0x17E0 (was gap+0x0, 72 bytes) */
+u8 dLBTransitionCamera_gap_0x17E0[72] = {
 	#include <LBTransitionCamera/gap_0x17E0.data.inc.c>
+};
+
+/* gap sub-block @ 0x1828 (was gap+0x48, 1328 bytes) */
+u8 dLBTransitionCamera_gap_0x17E0_sub_0x48[1328] = {
+	#include <LBTransitionCamera/gap_0x17E0_sub_0x48.data.inc.c>
+};
+
+/* gap sub-block @ 0x1D58 (was gap+0x578, 1248 bytes) */
+u8 dLBTransitionCamera_gap_0x17E0_sub_0x578[1248] = {
+	#include <LBTransitionCamera/gap_0x17E0_sub_0x578.data.inc.c>
+};
+
+/* gap sub-block @ 0x2238 (was gap+0xA58, 1248 bytes) */
+u8 dLBTransitionCamera_gap_0x17E0_sub_0xA58[1248] = {
+	#include <LBTransitionCamera/gap_0x17E0_sub_0xA58.data.inc.c>
+};
+
+/* gap sub-block @ 0x2718 (was gap+0xF38, 1248 bytes) */
+u8 dLBTransitionCamera_gap_0x17E0_sub_0xF38[1248] = {
+	#include <LBTransitionCamera/gap_0x17E0_sub_0xF38.data.inc.c>
+};
+
+/* gap sub-block @ 0x2BF8 (was gap+0x1418, 1248 bytes) */
+u8 dLBTransitionCamera_gap_0x17E0_sub_0x1418[1248] = {
+	#include <LBTransitionCamera/gap_0x17E0_sub_0x1418.data.inc.c>
+};
+
+/* gap sub-block @ 0x30D8 (was gap+0x18F8, 1248 bytes) */
+u8 dLBTransitionCamera_gap_0x17E0_sub_0x18F8[1248] = {
+	#include <LBTransitionCamera/gap_0x17E0_sub_0x18F8.data.inc.c>
+};
+
+/* gap sub-block @ 0x35B8 (was gap+0x1DD8, 1248 bytes) */
+u8 dLBTransitionCamera_gap_0x17E0_sub_0x1DD8[1248] = {
+	#include <LBTransitionCamera/gap_0x17E0_sub_0x1DD8.data.inc.c>
+};
+
+/* gap sub-block @ 0x3A98 (was gap+0x22B8, 1272 bytes) */
+u8 dLBTransitionCamera_gap_0x17E0_sub_0x22B8[1272] = {
+	#include <LBTransitionCamera/gap_0x17E0_sub_0x22B8.data.inc.c>
 };
 
 /* DObjDesc: - @ 0x3F90 (10 entries) */

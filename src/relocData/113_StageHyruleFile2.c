@@ -295,8 +295,59 @@ Vtx dStageHyruleFile2_Vtx_0x3960_Vtx[3] = {
 };
 
 /* Raw data from file offset 0x3990 to 0x4588 (3064 bytes) */
-u8 dStageHyruleFile2_gap_0x3990[3064] = {
+/* gap sub-block @ 0x3990 (was gap+0x0, 64 bytes) */
+u8 dStageHyruleFile2_gap_0x3990[64] = {
 	#include <StageHyruleFile2/gap_0x3990.data.inc.c>
+};
+
+/* gap sub-block @ 0x39D0 (was gap+0x40, 64 bytes) */
+u8 dStageHyruleFile2_gap_0x3990_sub_0x40[64] = {
+	#include <StageHyruleFile2/gap_0x3990_sub_0x40.data.inc.c>
+};
+
+/* gap sub-block @ 0x3A10 (was gap+0x80, 64 bytes) */
+u8 dStageHyruleFile2_gap_0x3990_sub_0x80[64] = {
+	#include <StageHyruleFile2/gap_0x3990_sub_0x80.data.inc.c>
+};
+
+/* gap sub-block @ 0x3A50 (was gap+0xC0, 80 bytes) */
+u8 dStageHyruleFile2_gap_0x3990_sub_0xC0[80] = {
+	#include <StageHyruleFile2/gap_0x3990_sub_0xC0.data.inc.c>
+};
+
+/* gap sub-block @ 0x3AA0 (was gap+0x110, 1624 bytes) */
+u8 dStageHyruleFile2_gap_0x3990_sub_0x110[1624] = {
+	#include <StageHyruleFile2/gap_0x3990_sub_0x110.data.inc.c>
+};
+
+/* gap sub-block @ 0x40F8 (was gap+0x768, 136 bytes) */
+u8 dStageHyruleFile2_gap_0x3990_sub_0x768[136] = {
+	#include <StageHyruleFile2/gap_0x3990_sub_0x768.data.inc.c>
+};
+
+/* gap sub-block @ 0x4180 (was gap+0x7F0, 840 bytes) */
+u8 dStageHyruleFile2_gap_0x3990_sub_0x7F0[840] = {
+	#include <StageHyruleFile2/gap_0x3990_sub_0x7F0.data.inc.c>
+};
+
+/* gap sub-block @ 0x44C8 (was gap+0xB38, 136 bytes) */
+u8 dStageHyruleFile2_gap_0x3990_sub_0xB38[136] = {
+	#include <StageHyruleFile2/gap_0x3990_sub_0xB38.data.inc.c>
+};
+
+/* gap sub-block @ 0x4550 (was gap+0xBC0, 16 bytes) */
+u8 dStageHyruleFile2_gap_0x3990_sub_0xBC0[16] = {
+	#include <StageHyruleFile2/gap_0x3990_sub_0xBC0.data.inc.c>
+};
+
+/* gap sub-block @ 0x4560 (was gap+0xBD0, 16 bytes) */
+u8 dStageHyruleFile2_gap_0x3990_sub_0xBD0[16] = {
+	#include <StageHyruleFile2/gap_0x3990_sub_0xBD0.data.inc.c>
+};
+
+/* gap sub-block @ 0x4570 (was gap+0xBE0, 24 bytes) */
+u8 dStageHyruleFile2_gap_0x3990_sub_0xBE0[24] = {
+	#include <StageHyruleFile2/gap_0x3990_sub_0xBE0.data.inc.c>
 };
 
 /* DObjDesc: Layer0DObj @ 0x4588 (5 entries) */
@@ -309,8 +360,124 @@ DObjDesc dStageHyruleFile2_Layer0DObj[] = {
 };
 
 /* Raw data from file offset 0x4664 to 0x5700 (4252 bytes) */
-u8 dStageHyruleFile2_gap_0x4664[4252] = {
+/* gap sub-block @ 0x4664 (was gap+0x0, 12 bytes) */
+u8 dStageHyruleFile2_gap_0x4664[12] = {
 	#include <StageHyruleFile2/gap_0x4664.data.inc.c>
+};
+
+/* gap sub-block @ 0x4670 (was gap+0xC, 128 bytes) */
+u8 dStageHyruleFile2_gap_0x4664_sub_0xC[128] = {
+	#include <StageHyruleFile2/gap_0x4664_sub_0xC.data.inc.c>
+};
+
+/* gap sub-block @ 0x46F0 (was gap+0x8C, 64 bytes) */
+u8 dStageHyruleFile2_gap_0x4664_sub_0x8C[64] = {
+	#include <StageHyruleFile2/gap_0x4664_sub_0x8C.data.inc.c>
+};
+
+/* gap sub-block @ 0x4730 (was gap+0xCC, 64 bytes) */
+u8 dStageHyruleFile2_gap_0x4664_sub_0xCC[64] = {
+	#include <StageHyruleFile2/gap_0x4664_sub_0xCC.data.inc.c>
+};
+
+/* gap sub-block @ 0x4770 (was gap+0x10C, 64 bytes) */
+u8 dStageHyruleFile2_gap_0x4664_sub_0x10C[64] = {
+	#include <StageHyruleFile2/gap_0x4664_sub_0x10C.data.inc.c>
+};
+
+/* gap sub-block @ 0x47B0 (was gap+0x14C, 96 bytes) */
+u8 dStageHyruleFile2_gap_0x4664_sub_0x14C[96] = {
+	#include <StageHyruleFile2/gap_0x4664_sub_0x14C.data.inc.c>
+};
+
+/* gap sub-block @ 0x4810 (was gap+0x1AC, 128 bytes) */
+u8 dStageHyruleFile2_gap_0x4664_sub_0x1AC[128] = {
+	#include <StageHyruleFile2/gap_0x4664_sub_0x1AC.data.inc.c>
+};
+
+/* gap sub-block @ 0x4890 (was gap+0x22C, 192 bytes) */
+u8 dStageHyruleFile2_gap_0x4664_sub_0x22C[192] = {
+	#include <StageHyruleFile2/gap_0x4664_sub_0x22C.data.inc.c>
+};
+
+/* gap sub-block @ 0x4950 (was gap+0x2EC, 64 bytes) */
+u8 dStageHyruleFile2_gap_0x4664_sub_0x2EC[64] = {
+	#include <StageHyruleFile2/gap_0x4664_sub_0x2EC.data.inc.c>
+};
+
+/* gap sub-block @ 0x4990 (was gap+0x32C, 128 bytes) */
+u8 dStageHyruleFile2_gap_0x4664_sub_0x32C[128] = {
+	#include <StageHyruleFile2/gap_0x4664_sub_0x32C.data.inc.c>
+};
+
+/* gap sub-block @ 0x4A10 (was gap+0x3AC, 64 bytes) */
+u8 dStageHyruleFile2_gap_0x4664_sub_0x3AC[64] = {
+	#include <StageHyruleFile2/gap_0x4664_sub_0x3AC.data.inc.c>
+};
+
+/* gap sub-block @ 0x4A50 (was gap+0x3EC, 32 bytes) */
+u8 dStageHyruleFile2_gap_0x4664_sub_0x3EC[32] = {
+	#include <StageHyruleFile2/gap_0x4664_sub_0x3EC.data.inc.c>
+};
+
+/* gap sub-block @ 0x4A70 (was gap+0x40C, 16 bytes) */
+u8 dStageHyruleFile2_gap_0x4664_sub_0x40C[16] = {
+	#include <StageHyruleFile2/gap_0x4664_sub_0x40C.data.inc.c>
+};
+
+/* gap sub-block @ 0x4A80 (was gap+0x41C, 64 bytes) */
+u8 dStageHyruleFile2_gap_0x4664_sub_0x41C[64] = {
+	#include <StageHyruleFile2/gap_0x4664_sub_0x41C.data.inc.c>
+};
+
+/* gap sub-block @ 0x4AC0 (was gap+0x45C, 96 bytes) */
+u8 dStageHyruleFile2_gap_0x4664_sub_0x45C[96] = {
+	#include <StageHyruleFile2/gap_0x4664_sub_0x45C.data.inc.c>
+};
+
+/* gap sub-block @ 0x4B20 (was gap+0x4BC, 384 bytes) */
+u8 dStageHyruleFile2_gap_0x4664_sub_0x4BC[384] = {
+	#include <StageHyruleFile2/gap_0x4664_sub_0x4BC.data.inc.c>
+};
+
+/* gap sub-block @ 0x4CA0 (was gap+0x63C, 512 bytes) */
+u8 dStageHyruleFile2_gap_0x4664_sub_0x63C[512] = {
+	#include <StageHyruleFile2/gap_0x4664_sub_0x63C.data.inc.c>
+};
+
+/* gap sub-block @ 0x4EA0 (was gap+0x83C, 64 bytes) */
+u8 dStageHyruleFile2_gap_0x4664_sub_0x83C[64] = {
+	#include <StageHyruleFile2/gap_0x4664_sub_0x83C.data.inc.c>
+};
+
+/* gap sub-block @ 0x4EE0 (was gap+0x87C, 144 bytes) */
+u8 dStageHyruleFile2_gap_0x4664_sub_0x87C[144] = {
+	#include <StageHyruleFile2/gap_0x4664_sub_0x87C.data.inc.c>
+};
+
+/* gap sub-block @ 0x4F70 (was gap+0x90C, 48 bytes) */
+u8 dStageHyruleFile2_gap_0x4664_sub_0x90C[48] = {
+	#include <StageHyruleFile2/gap_0x4664_sub_0x90C.data.inc.c>
+};
+
+/* gap sub-block @ 0x4FA0 (was gap+0x93C, 128 bytes) */
+u8 dStageHyruleFile2_gap_0x4664_sub_0x93C[128] = {
+	#include <StageHyruleFile2/gap_0x4664_sub_0x93C.data.inc.c>
+};
+
+/* gap sub-block @ 0x5020 (was gap+0x9BC, 80 bytes) */
+u8 dStageHyruleFile2_gap_0x4664_sub_0x9BC[80] = {
+	#include <StageHyruleFile2/gap_0x4664_sub_0x9BC.data.inc.c>
+};
+
+/* gap sub-block @ 0x5070 (was gap+0xA0C, 1360 bytes) */
+u8 dStageHyruleFile2_gap_0x4664_sub_0xA0C[1360] = {
+	#include <StageHyruleFile2/gap_0x4664_sub_0xA0C.data.inc.c>
+};
+
+/* gap sub-block @ 0x55C0 (was gap+0xF5C, 320 bytes) */
+u8 dStageHyruleFile2_gap_0x4664_sub_0xF5C[320] = {
+	#include <StageHyruleFile2/gap_0x4664_sub_0xF5C.data.inc.c>
 };
 
 /* DObjDesc: Layer1DObj @ 0x5700 (5 entries) */
@@ -323,8 +490,29 @@ DObjDesc dStageHyruleFile2_Layer1DObj[] = {
 };
 
 /* Raw data from file offset 0x57DC to 0x599C (448 bytes) */
-u8 dStageHyruleFile2_gap_0x57DC[448] = {
+/* gap sub-block @ 0x57DC (was gap+0x0, 144 bytes) */
+u8 dStageHyruleFile2_gap_0x57DC[144] = {
 	#include <StageHyruleFile2/gap_0x57DC.data.inc.c>
+};
+
+/* gap sub-block @ 0x586C (was gap+0x90, 68 bytes) */
+u8 dStageHyruleFile2_gap_0x57DC_sub_0x90[68] = {
+	#include <StageHyruleFile2/gap_0x57DC_sub_0x90.data.inc.c>
+};
+
+/* gap sub-block @ 0x58B0 (was gap+0xD4, 60 bytes) */
+u8 dStageHyruleFile2_gap_0x57DC_sub_0xD4[60] = {
+	#include <StageHyruleFile2/gap_0x57DC_sub_0xD4.data.inc.c>
+};
+
+/* gap sub-block @ 0x58EC (was gap+0x110, 20 bytes) */
+u8 dStageHyruleFile2_gap_0x57DC_sub_0x110[20] = {
+	#include <StageHyruleFile2/gap_0x57DC_sub_0x110.data.inc.c>
+};
+
+/* gap sub-block @ 0x5900 (was gap+0x124, 156 bytes) */
+u8 dStageHyruleFile2_gap_0x57DC_sub_0x124[156] = {
+	#include <StageHyruleFile2/gap_0x57DC_sub_0x124.data.inc.c>
 };
 
 /* Raw data from file offset 0x599C to 0x66A8 (3340 bytes) */

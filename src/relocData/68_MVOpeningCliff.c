@@ -184,8 +184,19 @@ Vtx dMVOpeningCliff_Vtx_0x3000_Vtx[7] = {
 };
 
 /* Raw data from file offset 0x3070 to 0x37A0 (1840 bytes) */
-u8 dMVOpeningCliff_gap_0x3070[1840] = {
+/* gap sub-block @ 0x3070 (was gap+0x0, 72 bytes) */
+u8 dMVOpeningCliff_gap_0x3070[72] = {
 	#include <MVOpeningCliff/gap_0x3070.data.inc.c>
+};
+
+/* gap sub-block @ 0x30B8 (was gap+0x48, 896 bytes) */
+u8 dMVOpeningCliff_gap_0x3070_sub_0x48[896] = {
+	#include <MVOpeningCliff/gap_0x3070_sub_0x48.data.inc.c>
+};
+
+/* gap sub-block @ 0x3438 (was gap+0x3C8, 872 bytes) */
+u8 dMVOpeningCliff_gap_0x3070_sub_0x3C8[872] = {
+	#include <MVOpeningCliff/gap_0x3070_sub_0x3C8.data.inc.c>
 };
 
 /* DObjDesc: Hills @ 0x37A0 (4 entries) */
@@ -197,8 +208,84 @@ DObjDesc dMVOpeningCliff_Hills[] = {
 };
 
 /* Raw data from file offset 0x3850 to 0x67A0 (12112 bytes) */
-u8 dMVOpeningCliff_gap_0x3850[12112] = {
+/* gap sub-block @ 0x3850 (was gap+0x0, 8 bytes) */
+u8 dMVOpeningCliff_gap_0x3850[8] = {
 	#include <MVOpeningCliff/gap_0x3850.data.inc.c>
+};
+
+/* gap sub-block @ 0x3858 (was gap+0x8, 40 bytes) */
+u8 dMVOpeningCliff_gap_0x3850_sub_0x8[40] = {
+	#include <MVOpeningCliff/gap_0x3850_sub_0x8.data.inc.c>
+};
+
+/* gap sub-block @ 0x3880 (was gap+0x30, 40 bytes) */
+u8 dMVOpeningCliff_gap_0x3850_sub_0x30[40] = {
+	#include <MVOpeningCliff/gap_0x3850_sub_0x30.data.inc.c>
+};
+
+/* gap sub-block @ 0x38A8 (was gap+0x58, 40 bytes) */
+u8 dMVOpeningCliff_gap_0x3850_sub_0x58[40] = {
+	#include <MVOpeningCliff/gap_0x3850_sub_0x58.data.inc.c>
+};
+
+/* gap sub-block @ 0x38D0 (was gap+0x80, 2056 bytes) */
+u8 dMVOpeningCliff_gap_0x3850_sub_0x80[2056] = {
+	#include <MVOpeningCliff/gap_0x3850_sub_0x80.data.inc.c>
+};
+
+/* gap sub-block @ 0x40D8 (was gap+0x888, 2056 bytes) */
+u8 dMVOpeningCliff_gap_0x3850_sub_0x888[2056] = {
+	#include <MVOpeningCliff/gap_0x3850_sub_0x888.data.inc.c>
+};
+
+/* gap sub-block @ 0x48E0 (was gap+0x1090, 2048 bytes) */
+u8 dMVOpeningCliff_gap_0x3850_sub_0x1090[2048] = {
+	#include <MVOpeningCliff/gap_0x3850_sub_0x1090.data.inc.c>
+};
+
+/* gap sub-block @ 0x50E0 (was gap+0x1890, 304 bytes) */
+u8 dMVOpeningCliff_gap_0x3850_sub_0x1890[304] = {
+	#include <MVOpeningCliff/gap_0x3850_sub_0x1890.data.inc.c>
+};
+
+/* gap sub-block @ 0x5210 (was gap+0x19C0, 144 bytes) */
+u8 dMVOpeningCliff_gap_0x3850_sub_0x19C0[144] = {
+	#include <MVOpeningCliff/gap_0x3850_sub_0x19C0.data.inc.c>
+};
+
+/* gap sub-block @ 0x52A0 (was gap+0x1A50, 368 bytes) */
+u8 dMVOpeningCliff_gap_0x3850_sub_0x1A50[368] = {
+	#include <MVOpeningCliff/gap_0x3850_sub_0x1A50.data.inc.c>
+};
+
+/* gap sub-block @ 0x5410 (was gap+0x1BC0, 128 bytes) */
+u8 dMVOpeningCliff_gap_0x3850_sub_0x1BC0[128] = {
+	#include <MVOpeningCliff/gap_0x3850_sub_0x1BC0.data.inc.c>
+};
+
+/* gap sub-block @ 0x5490 (was gap+0x1C40, 1240 bytes) */
+u8 dMVOpeningCliff_gap_0x3850_sub_0x1C40[1240] = {
+	#include <MVOpeningCliff/gap_0x3850_sub_0x1C40.data.inc.c>
+};
+
+/* gap sub-block @ 0x5968 (was gap+0x2118, 2816 bytes) */
+u8 dMVOpeningCliff_gap_0x3850_sub_0x2118[2816] = {
+	#include <MVOpeningCliff/gap_0x3850_sub_0x2118.data.inc.c>
+};
+
+/* gap sub-block @ 0x6468 (was gap+0x2C18, 320 bytes) */
+u8 dMVOpeningCliff_gap_0x3850_sub_0x2C18[320] = {
+	#include <MVOpeningCliff/gap_0x3850_sub_0x2C18.data.inc.c>
+};
+
+/* gap sub-block @ 0x65A8 (was gap+0x2D58, 192 bytes) */
+u8 dMVOpeningCliff_gap_0x3850_sub_0x2D58[192] = {
+	#include <MVOpeningCliff/gap_0x3850_sub_0x2D58.data.inc.c>
+};
+
+/* gap sub-block @ 0x6668 (was gap+0x2E18, 312 bytes) */
+u8 dMVOpeningCliff_gap_0x3850_sub_0x2E18[312] = {
+	#include <MVOpeningCliff/gap_0x3850_sub_0x2E18.data.inc.c>
 };
 
 /* DObjDesc: OcarinaDObjDesc @ 0x67A0 (4 entries) */

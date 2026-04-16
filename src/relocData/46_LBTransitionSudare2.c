@@ -787,8 +787,19 @@ Vtx dLBTransitionSudare2_Vtx_0x1DA0_Vtx[2] = {
 };
 
 /* Raw data from file offset 0x1DC0 to 0x3EA0 (8416 bytes) */
-u8 dLBTransitionSudare2_gap_0x1DC0[8416] = {
+/* gap sub-block @ 0x1DC0 (was gap+0x0, 72 bytes) */
+u8 dLBTransitionSudare2_gap_0x1DC0[72] = {
 	#include <LBTransitionSudare2/gap_0x1DC0.data.inc.c>
+};
+
+/* gap sub-block @ 0x1E08 (was gap+0x48, 3952 bytes) */
+u8 dLBTransitionSudare2_gap_0x1DC0_sub_0x48[3952] = {
+	#include <LBTransitionSudare2/gap_0x1DC0_sub_0x48.data.inc.c>
+};
+
+/* gap sub-block @ 0x2D78 (was gap+0xFB8, 4392 bytes) */
+u8 dLBTransitionSudare2_gap_0x1DC0_sub_0xFB8[4392] = {
+	#include <LBTransitionSudare2/gap_0x1DC0_sub_0xFB8.data.inc.c>
 };
 
 /* DObjDesc: - @ 0x3EA0 (4 entries) */

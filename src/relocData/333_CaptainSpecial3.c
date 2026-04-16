@@ -7,8 +7,29 @@
 #include "relocdata_types.h"
 
 /* Raw data from file offset 0x0000 to 0x0690 (1680 bytes) */
-u8 dCaptainSpecial3_gap_0x0000[1680] = {
+/* gap sub-block @ 0x0000 (was gap+0x0, 88 bytes) */
+u8 dCaptainSpecial3_gap_0x0000[88] = {
 	#include <CaptainSpecial3/gap_0x0000.data.inc.c>
+};
+
+/* gap sub-block @ 0x0058 (was gap+0x58, 40 bytes) */
+u8 dCaptainSpecial3_gap_0x0000_sub_0x58[40] = {
+	#include <CaptainSpecial3/gap_0x0000_sub_0x58.data.inc.c>
+};
+
+/* gap sub-block @ 0x0080 (was gap+0x80, 520 bytes) */
+u8 dCaptainSpecial3_gap_0x0000_sub_0x80[520] = {
+	#include <CaptainSpecial3/gap_0x0000_sub_0x80.data.inc.c>
+};
+
+/* gap sub-block @ 0x0288 (was gap+0x288, 520 bytes) */
+u8 dCaptainSpecial3_gap_0x0000_sub_0x288[520] = {
+	#include <CaptainSpecial3/gap_0x0000_sub_0x288.data.inc.c>
+};
+
+/* gap sub-block @ 0x0490 (was gap+0x490, 512 bytes) */
+u8 dCaptainSpecial3_gap_0x0000_sub_0x490[512] = {
+	#include <CaptainSpecial3/gap_0x0000_sub_0x490.data.inc.c>
 };
 
 /* MObjSub: FalconPunchMObjSub @ 0x690 */
@@ -40,8 +61,19 @@ MObjSub dCaptainSpecial3_FalconPunchMObjSub_MObjSub = {
 };
 
 /* Raw data from file offset 0x0708 to 0x0760 (88 bytes) */
-u8 dCaptainSpecial3_gap_0x0708[88] = {
+/* gap sub-block @ 0x0708 (was gap+0x0, 16 bytes) */
+u8 dCaptainSpecial3_gap_0x0708[16] = {
 	#include <CaptainSpecial3/gap_0x0708.data.inc.c>
+};
+
+/* gap sub-block @ 0x0718 (was gap+0x10, 8 bytes) */
+u8 dCaptainSpecial3_gap_0x0708_sub_0x10[8] = {
+	#include <CaptainSpecial3/gap_0x0708_sub_0x10.data.inc.c>
+};
+
+/* gap sub-block @ 0x0720 (was gap+0x18, 64 bytes) */
+u8 dCaptainSpecial3_gap_0x0708_sub_0x18[64] = {
+	#include <CaptainSpecial3/gap_0x0708_sub_0x18.data.inc.c>
 };
 
 /* Raw data from file offset 0x0760 to 0x0830 (208 bytes) */

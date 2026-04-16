@@ -10,8 +10,19 @@
 extern u8 dNessSpecial2_gap_0x0888[];
 
 /* Raw data from file offset 0x0000 to 0x0810 (2064 bytes) */
-u8 dNessSpecial2_gap_0x0000[2064] = {
+/* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
+u8 dNessSpecial2_gap_0x0000[8] = {
 	#include <NessSpecial2/gap_0x0000.data.inc.c>
+};
+
+/* gap sub-block @ 0x0008 (was gap+0x8, 1032 bytes) */
+u8 dNessSpecial2_gap_0x0000_sub_0x8[1032] = {
+	#include <NessSpecial2/gap_0x0000_sub_0x8.data.inc.c>
+};
+
+/* gap sub-block @ 0x0410 (was gap+0x410, 1024 bytes) */
+u8 dNessSpecial2_gap_0x0000_sub_0x410[1024] = {
+	#include <NessSpecial2/gap_0x0000_sub_0x410.data.inc.c>
 };
 
 /* MObjSub: PsychicMagnetMObjSub @ 0x810 */
@@ -43,8 +54,14 @@ MObjSub dNessSpecial2_PsychicMagnetMObjSub_MObjSub = {
 };
 
 /* Raw data from file offset 0x0888 to 0x08A0 (24 bytes) */
-u8 dNessSpecial2_gap_0x0888[24] = {
+/* gap sub-block @ 0x0888 (was gap+0x0, 16 bytes) */
+u8 dNessSpecial2_gap_0x0888[16] = {
 	#include <NessSpecial2/gap_0x0888.data.inc.c>
+};
+
+/* gap sub-block @ 0x0898 (was gap+0x10, 8 bytes) */
+u8 dNessSpecial2_gap_0x0888_sub_0x10[8] = {
+	#include <NessSpecial2/gap_0x0888_sub_0x10.data.inc.c>
 };
 
 /* Vtx: Vtx_0x08A0 @ 0x8A0 (4 vertices) */

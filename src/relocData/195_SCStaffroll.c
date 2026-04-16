@@ -3144,8 +3144,24 @@ Sprite dSCStaffroll_TextBoxBracketRight = {
 };
 
 /* Raw data from file offset 0x721C to 0x7304 (232 bytes) */
-u8 dSCStaffroll_gap_0x721C[232] = {
+/* gap sub-block @ 0x721C (was gap+0x0, 12 bytes) */
+u8 dSCStaffroll_gap_0x721C[12] = {
 	#include <SCStaffroll/gap_0x721C.data.inc.c>
+};
+
+/* gap sub-block @ 0x7228 (was gap+0xC, 96 bytes) */
+u8 dSCStaffroll_gap_0x721C_sub_0xC[96] = {
+	#include <SCStaffroll/gap_0x721C_sub_0xC.data.inc.c>
+};
+
+/* gap sub-block @ 0x7288 (was gap+0x6C, 24 bytes) */
+u8 dSCStaffroll_gap_0x721C_sub_0x6C[24] = {
+	#include <SCStaffroll/gap_0x721C_sub_0x6C.data.inc.c>
+};
+
+/* gap sub-block @ 0x72A0 (was gap+0x84, 100 bytes) */
+u8 dSCStaffroll_gap_0x721C_sub_0x84[100] = {
+	#include <SCStaffroll/gap_0x721C_sub_0x84.data.inc.c>
 };
 
 /* Raw data from file offset 0x7304 to 0x7338 (52 bytes) */

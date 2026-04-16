@@ -2,8 +2,8 @@
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
 intern dMarioSpecial3_Tex_0x0058+0x80 dMarioSpecial3_Tex_0x0058+0x108
-intern dMarioSpecial3_Tex_0x0058+0x84 dMarioSpecial3_gap_0x0000+0x30
-intern dMarioSpecial3_Tex_0x0058+0x88 dMarioSpecial3_gap_0x0000+0x8
+intern dMarioSpecial3_Tex_0x0058+0x84 dMarioSpecial3_gap_0x0000_sub_0x30
+intern dMarioSpecial3_Tex_0x0058+0x88 dMarioSpecial3_gap_0x0000_sub_0x8
 intern dMarioSpecial3_Tex_0x0058+0xBC dMarioSpecial3_Tex_0x0058+0x84
 intern dMarioSpecial3_Tex_0x0058+0x108 dMarioSpecial3_Tex_0x0058+0x90
 intern dMarioSpecial3_SuperJumpPunchDL_DisplayList+0x54 dMarioSpecial3_Tex_0x0058

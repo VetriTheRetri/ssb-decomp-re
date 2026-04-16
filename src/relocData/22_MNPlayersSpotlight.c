@@ -10,8 +10,14 @@
 extern u8 dMNPlayersSpotlight_gap_0x0480[];
 
 /* Raw data from file offset 0x0000 to 0x0408 (1032 bytes) */
-u8 dMNPlayersSpotlight_gap_0x0000[1032] = {
+/* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
+u8 dMNPlayersSpotlight_gap_0x0000[8] = {
 	#include <MNPlayersSpotlight/gap_0x0000.data.inc.c>
+};
+
+/* gap sub-block @ 0x0008 (was gap+0x8, 1024 bytes) */
+u8 dMNPlayersSpotlight_gap_0x0000_sub_0x8[1024] = {
+	#include <MNPlayersSpotlight/gap_0x0000_sub_0x8.data.inc.c>
 };
 
 /* MObjSub: - @ 0x408 */
@@ -43,8 +49,29 @@ MObjSub dMNPlayersSpotlight_MObjSub_0x0408 = {
 };
 
 /* Raw data from file offset 0x0480 to 0x0568 (232 bytes) */
-u8 dMNPlayersSpotlight_gap_0x0480[232] = {
+/* gap sub-block @ 0x0480 (was gap+0x0, 8 bytes) */
+u8 dMNPlayersSpotlight_gap_0x0480[8] = {
 	#include <MNPlayersSpotlight/gap_0x0480.data.inc.c>
+};
+
+/* gap sub-block @ 0x0488 (was gap+0x8, 8 bytes) */
+u8 dMNPlayersSpotlight_gap_0x0480_sub_0x8[8] = {
+	#include <MNPlayersSpotlight/gap_0x0480_sub_0x8.data.inc.c>
+};
+
+/* gap sub-block @ 0x0490 (was gap+0x10, 64 bytes) */
+u8 dMNPlayersSpotlight_gap_0x0480_sub_0x10[64] = {
+	#include <MNPlayersSpotlight/gap_0x0480_sub_0x10.data.inc.c>
+};
+
+/* gap sub-block @ 0x04D0 (was gap+0x50, 136 bytes) */
+u8 dMNPlayersSpotlight_gap_0x0480_sub_0x50[136] = {
+	#include <MNPlayersSpotlight/gap_0x0480_sub_0x50.data.inc.c>
+};
+
+/* gap sub-block @ 0x0558 (was gap+0xD8, 16 bytes) */
+u8 dMNPlayersSpotlight_gap_0x0480_sub_0xD8[16] = {
+	#include <MNPlayersSpotlight/gap_0x0480_sub_0xD8.data.inc.c>
 };
 
 /* DObjDesc: - @ 0x568 (3 entries) */

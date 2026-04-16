@@ -452,8 +452,19 @@ Vtx dLBTransitionKannon_Vtx_0x0B00_Vtx[4] = {
 };
 
 /* Raw data from file offset 0x0B40 to 0x1F00 (5056 bytes) */
-u8 dLBTransitionKannon_gap_0x0B40[5056] = {
+/* gap sub-block @ 0x0B40 (was gap+0x0, 72 bytes) */
+u8 dLBTransitionKannon_gap_0x0B40[72] = {
 	#include <LBTransitionKannon/gap_0x0B40.data.inc.c>
+};
+
+/* gap sub-block @ 0x0B88 (was gap+0x48, 2480 bytes) */
+u8 dLBTransitionKannon_gap_0x0B40_sub_0x48[2480] = {
+	#include <LBTransitionKannon/gap_0x0B40_sub_0x48.data.inc.c>
+};
+
+/* gap sub-block @ 0x1538 (was gap+0x9F8, 2504 bytes) */
+u8 dLBTransitionKannon_gap_0x0B40_sub_0x9F8[2504] = {
+	#include <LBTransitionKannon/gap_0x0B40_sub_0x9F8.data.inc.c>
 };
 
 /* DObjDesc: - @ 0x1F00 (4 entries) */

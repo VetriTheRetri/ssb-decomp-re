@@ -165,8 +165,49 @@ u32 dStageMetalFile2_Layer0MObj_MObjSubPtrArray[] = {
 };
 
 /* Raw data from file offset 0x0EA8 to 0x1B10 (3176 bytes) */
-u8 dStageMetalFile2_gap_0x0EA8[3176] = {
+/* gap sub-block @ 0x0EA8 (was gap+0x0, 208 bytes) */
+u8 dStageMetalFile2_gap_0x0EA8[208] = {
 	#include <StageMetalFile2/gap_0x0EA8.data.inc.c>
+};
+
+/* gap sub-block @ 0x0F78 (was gap+0xD0, 64 bytes) */
+u8 dStageMetalFile2_gap_0x0EA8_sub_0xD0[64] = {
+	#include <StageMetalFile2/gap_0x0EA8_sub_0xD0.data.inc.c>
+};
+
+/* gap sub-block @ 0x0FB8 (was gap+0x110, 480 bytes) */
+u8 dStageMetalFile2_gap_0x0EA8_sub_0x110[480] = {
+	#include <StageMetalFile2/gap_0x0EA8_sub_0x110.data.inc.c>
+};
+
+/* gap sub-block @ 0x1198 (was gap+0x2F0, 288 bytes) */
+u8 dStageMetalFile2_gap_0x0EA8_sub_0x2F0[288] = {
+	#include <StageMetalFile2/gap_0x0EA8_sub_0x2F0.data.inc.c>
+};
+
+/* gap sub-block @ 0x12B8 (was gap+0x410, 480 bytes) */
+u8 dStageMetalFile2_gap_0x0EA8_sub_0x410[480] = {
+	#include <StageMetalFile2/gap_0x0EA8_sub_0x410.data.inc.c>
+};
+
+/* gap sub-block @ 0x1498 (was gap+0x5F0, 96 bytes) */
+u8 dStageMetalFile2_gap_0x0EA8_sub_0x5F0[96] = {
+	#include <StageMetalFile2/gap_0x0EA8_sub_0x5F0.data.inc.c>
+};
+
+/* gap sub-block @ 0x14F8 (was gap+0x650, 432 bytes) */
+u8 dStageMetalFile2_gap_0x0EA8_sub_0x650[432] = {
+	#include <StageMetalFile2/gap_0x0EA8_sub_0x650.data.inc.c>
+};
+
+/* gap sub-block @ 0x16A8 (was gap+0x800, 96 bytes) */
+u8 dStageMetalFile2_gap_0x0EA8_sub_0x800[96] = {
+	#include <StageMetalFile2/gap_0x0EA8_sub_0x800.data.inc.c>
+};
+
+/* gap sub-block @ 0x1708 (was gap+0x860, 1032 bytes) */
+u8 dStageMetalFile2_gap_0x0EA8_sub_0x860[1032] = {
+	#include <StageMetalFile2/gap_0x0EA8_sub_0x860.data.inc.c>
 };
 
 /* DObjDesc: Layer0DObj @ 0x1B10 (3 entries) */
@@ -212,8 +253,114 @@ MObjSub dStageMetalFile2_Layer1MObj_MObjSub = {
 };
 
 /* Raw data from file offset 0x1E48 to 0x2EE0 (4248 bytes) */
-u8 dStageMetalFile2_gap_0x1E48[4248] = {
+/* gap sub-block @ 0x1E48 (was gap+0x0, 72 bytes) */
+u8 dStageMetalFile2_gap_0x1E48[72] = {
 	#include <StageMetalFile2/gap_0x1E48.data.inc.c>
+};
+
+/* gap sub-block @ 0x1E90 (was gap+0x48, 64 bytes) */
+u8 dStageMetalFile2_gap_0x1E48_sub_0x48[64] = {
+	#include <StageMetalFile2/gap_0x1E48_sub_0x48.data.inc.c>
+};
+
+/* gap sub-block @ 0x1ED0 (was gap+0x88, 120 bytes) */
+u8 dStageMetalFile2_gap_0x1E48_sub_0x88[120] = {
+	#include <StageMetalFile2/gap_0x1E48_sub_0x88.data.inc.c>
+};
+
+/* gap sub-block @ 0x1F48 (was gap+0x100, 120 bytes) */
+u8 dStageMetalFile2_gap_0x1E48_sub_0x100[120] = {
+	#include <StageMetalFile2/gap_0x1E48_sub_0x100.data.inc.c>
+};
+
+/* gap sub-block @ 0x1FC0 (was gap+0x178, 16 bytes) */
+u8 dStageMetalFile2_gap_0x1E48_sub_0x178[16] = {
+	#include <StageMetalFile2/gap_0x1E48_sub_0x178.data.inc.c>
+};
+
+/* gap sub-block @ 0x1FD0 (was gap+0x188, 480 bytes) */
+u8 dStageMetalFile2_gap_0x1E48_sub_0x188[480] = {
+	#include <StageMetalFile2/gap_0x1E48_sub_0x188.data.inc.c>
+};
+
+/* gap sub-block @ 0x21B0 (was gap+0x368, 96 bytes) */
+u8 dStageMetalFile2_gap_0x1E48_sub_0x368[96] = {
+	#include <StageMetalFile2/gap_0x1E48_sub_0x368.data.inc.c>
+};
+
+/* gap sub-block @ 0x2210 (was gap+0x3C8, 64 bytes) */
+u8 dStageMetalFile2_gap_0x1E48_sub_0x3C8[64] = {
+	#include <StageMetalFile2/gap_0x1E48_sub_0x3C8.data.inc.c>
+};
+
+/* gap sub-block @ 0x2250 (was gap+0x408, 256 bytes) */
+u8 dStageMetalFile2_gap_0x1E48_sub_0x408[256] = {
+	#include <StageMetalFile2/gap_0x1E48_sub_0x408.data.inc.c>
+};
+
+/* gap sub-block @ 0x2350 (was gap+0x508, 320 bytes) */
+u8 dStageMetalFile2_gap_0x1E48_sub_0x508[320] = {
+	#include <StageMetalFile2/gap_0x1E48_sub_0x508.data.inc.c>
+};
+
+/* gap sub-block @ 0x2490 (was gap+0x648, 64 bytes) */
+u8 dStageMetalFile2_gap_0x1E48_sub_0x648[64] = {
+	#include <StageMetalFile2/gap_0x1E48_sub_0x648.data.inc.c>
+};
+
+/* gap sub-block @ 0x24D0 (was gap+0x688, 64 bytes) */
+u8 dStageMetalFile2_gap_0x1E48_sub_0x688[64] = {
+	#include <StageMetalFile2/gap_0x1E48_sub_0x688.data.inc.c>
+};
+
+/* gap sub-block @ 0x2510 (was gap+0x6C8, 64 bytes) */
+u8 dStageMetalFile2_gap_0x1E48_sub_0x6C8[64] = {
+	#include <StageMetalFile2/gap_0x1E48_sub_0x6C8.data.inc.c>
+};
+
+/* gap sub-block @ 0x2550 (was gap+0x708, 320 bytes) */
+u8 dStageMetalFile2_gap_0x1E48_sub_0x708[320] = {
+	#include <StageMetalFile2/gap_0x1E48_sub_0x708.data.inc.c>
+};
+
+/* gap sub-block @ 0x2690 (was gap+0x848, 192 bytes) */
+u8 dStageMetalFile2_gap_0x1E48_sub_0x848[192] = {
+	#include <StageMetalFile2/gap_0x1E48_sub_0x848.data.inc.c>
+};
+
+/* gap sub-block @ 0x2750 (was gap+0x908, 128 bytes) */
+u8 dStageMetalFile2_gap_0x1E48_sub_0x908[128] = {
+	#include <StageMetalFile2/gap_0x1E48_sub_0x908.data.inc.c>
+};
+
+/* gap sub-block @ 0x27D0 (was gap+0x988, 64 bytes) */
+u8 dStageMetalFile2_gap_0x1E48_sub_0x988[64] = {
+	#include <StageMetalFile2/gap_0x1E48_sub_0x988.data.inc.c>
+};
+
+/* gap sub-block @ 0x2810 (was gap+0x9C8, 128 bytes) */
+u8 dStageMetalFile2_gap_0x1E48_sub_0x9C8[128] = {
+	#include <StageMetalFile2/gap_0x1E48_sub_0x9C8.data.inc.c>
+};
+
+/* gap sub-block @ 0x2890 (was gap+0xA48, 64 bytes) */
+u8 dStageMetalFile2_gap_0x1E48_sub_0xA48[64] = {
+	#include <StageMetalFile2/gap_0x1E48_sub_0xA48.data.inc.c>
+};
+
+/* gap sub-block @ 0x28D0 (was gap+0xA88, 64 bytes) */
+u8 dStageMetalFile2_gap_0x1E48_sub_0xA88[64] = {
+	#include <StageMetalFile2/gap_0x1E48_sub_0xA88.data.inc.c>
+};
+
+/* gap sub-block @ 0x2910 (was gap+0xAC8, 64 bytes) */
+u8 dStageMetalFile2_gap_0x1E48_sub_0xAC8[64] = {
+	#include <StageMetalFile2/gap_0x1E48_sub_0xAC8.data.inc.c>
+};
+
+/* gap sub-block @ 0x2950 (was gap+0xB08, 1424 bytes) */
+u8 dStageMetalFile2_gap_0x1E48_sub_0xB08[1424] = {
+	#include <StageMetalFile2/gap_0x1E48_sub_0xB08.data.inc.c>
 };
 
 /* DObjDesc: Layer1DObj @ 0x2EE0 (3 entries) */
@@ -224,8 +371,29 @@ DObjDesc dStageMetalFile2_Layer1DObj[] = {
 };
 
 /* Raw data from file offset 0x2F64 to 0x3068 (260 bytes) */
-u8 dStageMetalFile2_gap_0x2F64[260] = {
+/* gap sub-block @ 0x2F64 (was gap+0x0, 72 bytes) */
+u8 dStageMetalFile2_gap_0x2F64[72] = {
 	#include <StageMetalFile2/gap_0x2F64.data.inc.c>
+};
+
+/* gap sub-block @ 0x2FAC (was gap+0x48, 36 bytes) */
+u8 dStageMetalFile2_gap_0x2F64_sub_0x48[36] = {
+	#include <StageMetalFile2/gap_0x2F64_sub_0x48.data.inc.c>
+};
+
+/* gap sub-block @ 0x2FD0 (was gap+0x6C, 28 bytes) */
+u8 dStageMetalFile2_gap_0x2F64_sub_0x6C[28] = {
+	#include <StageMetalFile2/gap_0x2F64_sub_0x6C.data.inc.c>
+};
+
+/* gap sub-block @ 0x2FEC (was gap+0x88, 20 bytes) */
+u8 dStageMetalFile2_gap_0x2F64_sub_0x88[20] = {
+	#include <StageMetalFile2/gap_0x2F64_sub_0x88.data.inc.c>
+};
+
+/* gap sub-block @ 0x3000 (was gap+0x9C, 104 bytes) */
+u8 dStageMetalFile2_gap_0x2F64_sub_0x9C[104] = {
+	#include <StageMetalFile2/gap_0x2F64_sub_0x9C.data.inc.c>
 };
 
 /* Raw data from file offset 0x3068 to 0x3090 (40 bytes) */
@@ -267,8 +435,24 @@ MObjSub dStageMetalFile2_Layer2MObj_MObjSub = {
 };
 
 /* Raw data from file offset 0x3298 to 0x3468 (464 bytes) */
-u8 dStageMetalFile2_gap_0x3298[464] = {
+/* gap sub-block @ 0x3298 (was gap+0x0, 8 bytes) */
+u8 dStageMetalFile2_gap_0x3298[8] = {
 	#include <StageMetalFile2/gap_0x3298.data.inc.c>
+};
+
+/* gap sub-block @ 0x32A0 (was gap+0x8, 8 bytes) */
+u8 dStageMetalFile2_gap_0x3298_sub_0x8[8] = {
+	#include <StageMetalFile2/gap_0x3298_sub_0x8.data.inc.c>
+};
+
+/* gap sub-block @ 0x32A8 (was gap+0x10, 192 bytes) */
+u8 dStageMetalFile2_gap_0x3298_sub_0x10[192] = {
+	#include <StageMetalFile2/gap_0x3298_sub_0x10.data.inc.c>
+};
+
+/* gap sub-block @ 0x3368 (was gap+0xD0, 256 bytes) */
+u8 dStageMetalFile2_gap_0x3298_sub_0xD0[256] = {
+	#include <StageMetalFile2/gap_0x3298_sub_0xD0.data.inc.c>
 };
 
 /* DObjDesc: Layer2DObj @ 0x3468 (3 entries) */
@@ -406,8 +590,34 @@ u32 dStageMetalFile2_Layer3MObj_MObjSubPtrArray[] = {
 };
 
 /* Raw data from file offset 0x374C to 0x3DD8 (1676 bytes) */
-u8 dStageMetalFile2_gap_0x374C[1676] = {
+/* gap sub-block @ 0x374C (was gap+0x0, 4 bytes) */
+u8 dStageMetalFile2_gap_0x374C[4] = {
 	#include <StageMetalFile2/gap_0x374C.data.inc.c>
+};
+
+/* gap sub-block @ 0x3750 (was gap+0x4, 144 bytes) */
+u8 dStageMetalFile2_gap_0x374C_sub_0x4[144] = {
+	#include <StageMetalFile2/gap_0x374C_sub_0x4.data.inc.c>
+};
+
+/* gap sub-block @ 0x37E0 (was gap+0x94, 496 bytes) */
+u8 dStageMetalFile2_gap_0x374C_sub_0x94[496] = {
+	#include <StageMetalFile2/gap_0x374C_sub_0x94.data.inc.c>
+};
+
+/* gap sub-block @ 0x39D0 (was gap+0x284, 144 bytes) */
+u8 dStageMetalFile2_gap_0x374C_sub_0x284[144] = {
+	#include <StageMetalFile2/gap_0x374C_sub_0x284.data.inc.c>
+};
+
+/* gap sub-block @ 0x3A60 (was gap+0x314, 240 bytes) */
+u8 dStageMetalFile2_gap_0x374C_sub_0x314[240] = {
+	#include <StageMetalFile2/gap_0x374C_sub_0x314.data.inc.c>
+};
+
+/* gap sub-block @ 0x3B50 (was gap+0x404, 648 bytes) */
+u8 dStageMetalFile2_gap_0x374C_sub_0x404[648] = {
+	#include <StageMetalFile2/gap_0x374C_sub_0x404.data.inc.c>
 };
 
 /* DObjDesc: Layer3DObj @ 0x3DD8 (3 entries) */

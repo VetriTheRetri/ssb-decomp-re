@@ -20,8 +20,19 @@ u16 dCaptainSpecial2_Lut_0x0030_palette[16] = {
 };
 
 /* Raw data from file offset 0x0050 to 0x0960 (2320 bytes) */
-u8 dCaptainSpecial2_gap_0x0050[2320] = {
+/* gap sub-block @ 0x0050 (was gap+0x0, 8 bytes) */
+u8 dCaptainSpecial2_gap_0x0050[8] = {
 	#include <CaptainSpecial2/gap_0x0050.data.inc.c>
+};
+
+/* gap sub-block @ 0x0058 (was gap+0x8, 1160 bytes) */
+u8 dCaptainSpecial2_gap_0x0050_sub_0x8[1160] = {
+	#include <CaptainSpecial2/gap_0x0050_sub_0x8.data.inc.c>
+};
+
+/* gap sub-block @ 0x04E0 (was gap+0x490, 1152 bytes) */
+u8 dCaptainSpecial2_gap_0x0050_sub_0x490[1152] = {
+	#include <CaptainSpecial2/gap_0x0050_sub_0x490.data.inc.c>
 };
 
 /* MObjSub: FalconKickMObjSub @ 0x960 */
@@ -53,8 +64,14 @@ MObjSub dCaptainSpecial2_FalconKickMObjSub_MObjSub = {
 };
 
 /* Raw data from file offset 0x09D8 to 0x09F0 (24 bytes) */
-u8 dCaptainSpecial2_gap_0x09D8[24] = {
+/* gap sub-block @ 0x09D8 (was gap+0x0, 16 bytes) */
+u8 dCaptainSpecial2_gap_0x09D8[16] = {
 	#include <CaptainSpecial2/gap_0x09D8.data.inc.c>
+};
+
+/* gap sub-block @ 0x09E8 (was gap+0x10, 8 bytes) */
+u8 dCaptainSpecial2_gap_0x09D8_sub_0x10[8] = {
+	#include <CaptainSpecial2/gap_0x09D8_sub_0x10.data.inc.c>
 };
 
 /* Vtx: Vtx_0x09F0 @ 0x9F0 (4 vertices) */

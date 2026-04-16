@@ -21,8 +21,34 @@ u8 dSCExplainGraphics[126176] = {
 #else  /* REGION_US */
 
 /* Raw data from file offset 0x0000 to 0x5028 (20520 bytes) */
-u8 dSCExplainGraphics_gap_0x0000[20520] = {
+/* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
+u8 dSCExplainGraphics_gap_0x0000[8] = {
 	#include <SCExplainGraphics/gap_0x0000.data.inc.c>
+};
+
+/* gap sub-block @ 0x0008 (was gap+0x8, 4104 bytes) */
+u8 dSCExplainGraphics_gap_0x0000_sub_0x8[4104] = {
+	#include <SCExplainGraphics/gap_0x0000_sub_0x8.data.inc.c>
+};
+
+/* gap sub-block @ 0x1010 (was gap+0x1010, 4104 bytes) */
+u8 dSCExplainGraphics_gap_0x0000_sub_0x1010[4104] = {
+	#include <SCExplainGraphics/gap_0x0000_sub_0x1010.data.inc.c>
+};
+
+/* gap sub-block @ 0x2018 (was gap+0x2018, 4104 bytes) */
+u8 dSCExplainGraphics_gap_0x0000_sub_0x2018[4104] = {
+	#include <SCExplainGraphics/gap_0x0000_sub_0x2018.data.inc.c>
+};
+
+/* gap sub-block @ 0x3020 (was gap+0x3020, 4104 bytes) */
+u8 dSCExplainGraphics_gap_0x0000_sub_0x3020[4104] = {
+	#include <SCExplainGraphics/gap_0x0000_sub_0x3020.data.inc.c>
+};
+
+/* gap sub-block @ 0x4028 (was gap+0x4028, 4096 bytes) */
+u8 dSCExplainGraphics_gap_0x0000_sub_0x4028[4096] = {
+	#include <SCExplainGraphics/gap_0x0000_sub_0x4028.data.inc.c>
 };
 
 /* MObjSub: StickMObjSub @ 0x5028 */
@@ -54,8 +80,44 @@ MObjSub dSCExplainGraphics_StickMObjSub_MObjSub = {
 };
 
 /* Raw data from file offset 0x50A0 to 0x5300 (608 bytes) */
-u8 dSCExplainGraphics_gap_0x50A0[608] = {
+/* gap sub-block @ 0x50A0 (was gap+0x0, 32 bytes) */
+u8 dSCExplainGraphics_gap_0x50A0[32] = {
 	#include <SCExplainGraphics/gap_0x50A0.data.inc.c>
+};
+
+/* gap sub-block @ 0x50C0 (was gap+0x20, 8 bytes) */
+u8 dSCExplainGraphics_gap_0x50A0_sub_0x20[8] = {
+	#include <SCExplainGraphics/gap_0x50A0_sub_0x20.data.inc.c>
+};
+
+/* gap sub-block @ 0x50C8 (was gap+0x28, 64 bytes) */
+u8 dSCExplainGraphics_gap_0x50A0_sub_0x28[64] = {
+	#include <SCExplainGraphics/gap_0x50A0_sub_0x28.data.inc.c>
+};
+
+/* gap sub-block @ 0x5108 (was gap+0x68, 192 bytes) */
+u8 dSCExplainGraphics_gap_0x50A0_sub_0x68[192] = {
+	#include <SCExplainGraphics/gap_0x50A0_sub_0x68.data.inc.c>
+};
+
+/* gap sub-block @ 0x51C8 (was gap+0x128, 160 bytes) */
+u8 dSCExplainGraphics_gap_0x50A0_sub_0x128[160] = {
+	#include <SCExplainGraphics/gap_0x50A0_sub_0x128.data.inc.c>
+};
+
+/* gap sub-block @ 0x5268 (was gap+0x1C8, 120 bytes) */
+u8 dSCExplainGraphics_gap_0x50A0_sub_0x1C8[120] = {
+	#include <SCExplainGraphics/gap_0x50A0_sub_0x1C8.data.inc.c>
+};
+
+/* gap sub-block @ 0x52E0 (was gap+0x240, 16 bytes) */
+u8 dSCExplainGraphics_gap_0x50A0_sub_0x240[16] = {
+	#include <SCExplainGraphics/gap_0x50A0_sub_0x240.data.inc.c>
+};
+
+/* gap sub-block @ 0x52F0 (was gap+0x250, 16 bytes) */
+u8 dSCExplainGraphics_gap_0x50A0_sub_0x250[16] = {
+	#include <SCExplainGraphics/gap_0x50A0_sub_0x250.data.inc.c>
 };
 
 /* DObjDesc: StickDObjDesc @ 0x5300 (3 entries) */
@@ -121,8 +183,19 @@ MObjSub dSCExplainGraphics_TapSparkMObjSub_MObjSub = {
 };
 
 /* Raw data from file offset 0x5B10 to 0x5B68 (88 bytes) */
-u8 dSCExplainGraphics_gap_0x5B10[88] = {
+/* gap sub-block @ 0x5B10 (was gap+0x0, 16 bytes) */
+u8 dSCExplainGraphics_gap_0x5B10[16] = {
 	#include <SCExplainGraphics/gap_0x5B10.data.inc.c>
+};
+
+/* gap sub-block @ 0x5B20 (was gap+0x10, 8 bytes) */
+u8 dSCExplainGraphics_gap_0x5B10_sub_0x10[8] = {
+	#include <SCExplainGraphics/gap_0x5B10_sub_0x10.data.inc.c>
+};
+
+/* gap sub-block @ 0x5B28 (was gap+0x18, 64 bytes) */
+u8 dSCExplainGraphics_gap_0x5B10_sub_0x18[64] = {
+	#include <SCExplainGraphics/gap_0x5B10_sub_0x18.data.inc.c>
 };
 
 /* DisplayList: TapSparkDisplayList @ 0x5B68 (160 bytes) */

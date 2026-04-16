@@ -7,8 +7,54 @@
 #include "relocdata_types.h"
 
 /* Raw data from file offset 0x0000 to 0x05A0 (1440 bytes) */
-u8 dMVOpeningRoomTransition_gap_0x0000[1440] = {
+/* gap sub-block @ 0x0000 (was gap+0x0, 132 bytes) */
+u8 dMVOpeningRoomTransition_gap_0x0000[132] = {
 	#include <MVOpeningRoomTransition/gap_0x0000.data.inc.c>
+};
+
+/* gap sub-block @ 0x0084 (was gap+0x84, 44 bytes) */
+u8 dMVOpeningRoomTransition_gap_0x0000_sub_0x84[44] = {
+	#include <MVOpeningRoomTransition/gap_0x0000_sub_0x84.data.inc.c>
+};
+
+/* gap sub-block @ 0x00B0 (was gap+0xB0, 196 bytes) */
+u8 dMVOpeningRoomTransition_gap_0x0000_sub_0xB0[196] = {
+	#include <MVOpeningRoomTransition/gap_0x0000_sub_0xB0.data.inc.c>
+};
+
+/* gap sub-block @ 0x0174 (was gap+0x174, 44 bytes) */
+u8 dMVOpeningRoomTransition_gap_0x0000_sub_0x174[44] = {
+	#include <MVOpeningRoomTransition/gap_0x0000_sub_0x174.data.inc.c>
+};
+
+/* gap sub-block @ 0x01A0 (was gap+0x1A0, 512 bytes) */
+u8 dMVOpeningRoomTransition_gap_0x0000_sub_0x1A0[512] = {
+	#include <MVOpeningRoomTransition/gap_0x0000_sub_0x1A0.data.inc.c>
+};
+
+/* gap sub-block @ 0x03A0 (was gap+0x3A0, 16 bytes) */
+u8 dMVOpeningRoomTransition_gap_0x0000_sub_0x3A0[16] = {
+	#include <MVOpeningRoomTransition/gap_0x0000_sub_0x3A0.data.inc.c>
+};
+
+/* gap sub-block @ 0x03B0 (was gap+0x3B0, 16 bytes) */
+u8 dMVOpeningRoomTransition_gap_0x0000_sub_0x3B0[16] = {
+	#include <MVOpeningRoomTransition/gap_0x0000_sub_0x3B0.data.inc.c>
+};
+
+/* gap sub-block @ 0x03C0 (was gap+0x3C0, 352 bytes) */
+u8 dMVOpeningRoomTransition_gap_0x0000_sub_0x3C0[352] = {
+	#include <MVOpeningRoomTransition/gap_0x0000_sub_0x3C0.data.inc.c>
+};
+
+/* gap sub-block @ 0x0520 (was gap+0x520, 48 bytes) */
+u8 dMVOpeningRoomTransition_gap_0x0000_sub_0x520[48] = {
+	#include <MVOpeningRoomTransition/gap_0x0000_sub_0x520.data.inc.c>
+};
+
+/* gap sub-block @ 0x0550 (was gap+0x550, 80 bytes) */
+u8 dMVOpeningRoomTransition_gap_0x0000_sub_0x550[80] = {
+	#include <MVOpeningRoomTransition/gap_0x0000_sub_0x550.data.inc.c>
 };
 
 /* DisplayList: Overlay @ 0x5A0 (360 bytes) */

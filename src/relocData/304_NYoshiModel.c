@@ -40,8 +40,19 @@ Vtx dNYoshiModel_Vtx_0x0110_Vtx[1] = {
 };
 
 /* Raw data from file offset 0x0120 to 0x01C0 (160 bytes) */
-u8 dNYoshiModel_gap_0x0120[160] = {
+/* gap sub-block @ 0x0120 (was gap+0x0, 16 bytes) */
+u8 dNYoshiModel_gap_0x0120[16] = {
 	#include <NYoshiModel/gap_0x0120.data.inc.c>
+};
+
+/* gap sub-block @ 0x0130 (was gap+0x10, 16 bytes) */
+u8 dNYoshiModel_gap_0x0120_sub_0x10[16] = {
+	#include <NYoshiModel/gap_0x0120_sub_0x10.data.inc.c>
+};
+
+/* gap sub-block @ 0x0140 (was gap+0x20, 128 bytes) */
+u8 dNYoshiModel_gap_0x0120_sub_0x20[128] = {
+	#include <NYoshiModel/gap_0x0120_sub_0x20.data.inc.c>
 };
 
 /* Vtx: Vtx_0x01C0 @ 0x1C0 (1 vertices) */
@@ -75,8 +86,14 @@ Vtx dNYoshiModel_Vtx_0x0220_Vtx[1] = {
 };
 
 /* Raw data from file offset 0x0230 to 0x0270 (64 bytes) */
-u8 dNYoshiModel_gap_0x0230[64] = {
+/* gap sub-block @ 0x0230 (was gap+0x0, 32 bytes) */
+u8 dNYoshiModel_gap_0x0230[32] = {
 	#include <NYoshiModel/gap_0x0230.data.inc.c>
+};
+
+/* gap sub-block @ 0x0250 (was gap+0x20, 32 bytes) */
+u8 dNYoshiModel_gap_0x0230_sub_0x20[32] = {
+	#include <NYoshiModel/gap_0x0230_sub_0x20.data.inc.c>
 };
 
 /* Vtx: Vtx_0x0270 @ 0x270 (18 vertices) */

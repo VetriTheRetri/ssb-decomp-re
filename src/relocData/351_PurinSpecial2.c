@@ -60,8 +60,44 @@ MObjSub dPurinSpecial2_SingMObjSub_MObjSub = {
 };
 
 /* Raw data from file offset 0x1C98 to 0x1E38 (416 bytes) */
-u8 dPurinSpecial2_gap_0x1C98[416] = {
+/* gap sub-block @ 0x1C98 (was gap+0x0, 24 bytes) */
+u8 dPurinSpecial2_gap_0x1C98[24] = {
 	#include <PurinSpecial2/gap_0x1C98.data.inc.c>
+};
+
+/* gap sub-block @ 0x1CB0 (was gap+0x18, 120 bytes) */
+u8 dPurinSpecial2_gap_0x1C98_sub_0x18[120] = {
+	#include <PurinSpecial2/gap_0x1C98_sub_0x18.data.inc.c>
+};
+
+/* gap sub-block @ 0x1D28 (was gap+0x90, 120 bytes) */
+u8 dPurinSpecial2_gap_0x1C98_sub_0x90[120] = {
+	#include <PurinSpecial2/gap_0x1C98_sub_0x90.data.inc.c>
+};
+
+/* gap sub-block @ 0x1DA0 (was gap+0x108, 120 bytes) */
+u8 dPurinSpecial2_gap_0x1C98_sub_0x108[120] = {
+	#include <PurinSpecial2/gap_0x1C98_sub_0x108.data.inc.c>
+};
+
+/* gap sub-block @ 0x1E18 (was gap+0x180, 8 bytes) */
+u8 dPurinSpecial2_gap_0x1C98_sub_0x180[8] = {
+	#include <PurinSpecial2/gap_0x1C98_sub_0x180.data.inc.c>
+};
+
+/* gap sub-block @ 0x1E20 (was gap+0x188, 8 bytes) */
+u8 dPurinSpecial2_gap_0x1C98_sub_0x188[8] = {
+	#include <PurinSpecial2/gap_0x1C98_sub_0x188.data.inc.c>
+};
+
+/* gap sub-block @ 0x1E28 (was gap+0x190, 8 bytes) */
+u8 dPurinSpecial2_gap_0x1C98_sub_0x190[8] = {
+	#include <PurinSpecial2/gap_0x1C98_sub_0x190.data.inc.c>
+};
+
+/* gap sub-block @ 0x1E30 (was gap+0x198, 8 bytes) */
+u8 dPurinSpecial2_gap_0x1C98_sub_0x198[8] = {
+	#include <PurinSpecial2/gap_0x1C98_sub_0x198.data.inc.c>
 };
 
 /* Vtx: Vtx_0x1E38 @ 0x1E38 (4 vertices) */

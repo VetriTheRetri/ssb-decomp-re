@@ -7,8 +7,14 @@
 #include "relocdata_types.h"
 
 /* Raw data from file offset 0x0000 to 0x0108 (264 bytes) */
-u8 dStageExplainFile2_gap_0x0000[264] = {
+/* gap sub-block @ 0x0000 (was gap+0x0, 64 bytes) */
+u8 dStageExplainFile2_gap_0x0000[64] = {
 	#include <StageExplainFile2/gap_0x0000.data.inc.c>
+};
+
+/* gap sub-block @ 0x0040 (was gap+0x40, 200 bytes) */
+u8 dStageExplainFile2_gap_0x0000_sub_0x40[200] = {
+	#include <StageExplainFile2/gap_0x0000_sub_0x40.data.inc.c>
 };
 
 /* DObjDesc: Layer0DObj @ 0x108 (3 entries) */
@@ -19,8 +25,69 @@ DObjDesc dStageExplainFile2_Layer0DObj[] = {
 };
 
 /* Raw data from file offset 0x018C to 0x0720 (1428 bytes) */
-u8 dStageExplainFile2_gap_0x018C[1428] = {
+/* gap sub-block @ 0x018C (was gap+0x0, 4 bytes) */
+u8 dStageExplainFile2_gap_0x018C[4] = {
 	#include <StageExplainFile2/gap_0x018C.data.inc.c>
+};
+
+/* gap sub-block @ 0x0190 (was gap+0x4, 48 bytes) */
+u8 dStageExplainFile2_gap_0x018C_sub_0x4[48] = {
+	#include <StageExplainFile2/gap_0x018C_sub_0x4.data.inc.c>
+};
+
+/* gap sub-block @ 0x01C0 (was gap+0x34, 80 bytes) */
+u8 dStageExplainFile2_gap_0x018C_sub_0x34[80] = {
+	#include <StageExplainFile2/gap_0x018C_sub_0x34.data.inc.c>
+};
+
+/* gap sub-block @ 0x0210 (was gap+0x84, 192 bytes) */
+u8 dStageExplainFile2_gap_0x018C_sub_0x84[192] = {
+	#include <StageExplainFile2/gap_0x018C_sub_0x84.data.inc.c>
+};
+
+/* gap sub-block @ 0x02D0 (was gap+0x144, 128 bytes) */
+u8 dStageExplainFile2_gap_0x018C_sub_0x144[128] = {
+	#include <StageExplainFile2/gap_0x018C_sub_0x144.data.inc.c>
+};
+
+/* gap sub-block @ 0x0350 (was gap+0x1C4, 96 bytes) */
+u8 dStageExplainFile2_gap_0x018C_sub_0x1C4[96] = {
+	#include <StageExplainFile2/gap_0x018C_sub_0x1C4.data.inc.c>
+};
+
+/* gap sub-block @ 0x03B0 (was gap+0x224, 32 bytes) */
+u8 dStageExplainFile2_gap_0x018C_sub_0x224[32] = {
+	#include <StageExplainFile2/gap_0x018C_sub_0x224.data.inc.c>
+};
+
+/* gap sub-block @ 0x03D0 (was gap+0x244, 48 bytes) */
+u8 dStageExplainFile2_gap_0x018C_sub_0x244[48] = {
+	#include <StageExplainFile2/gap_0x018C_sub_0x244.data.inc.c>
+};
+
+/* gap sub-block @ 0x0400 (was gap+0x274, 104 bytes) */
+u8 dStageExplainFile2_gap_0x018C_sub_0x274[104] = {
+	#include <StageExplainFile2/gap_0x018C_sub_0x274.data.inc.c>
+};
+
+/* gap sub-block @ 0x0468 (was gap+0x2DC, 40 bytes) */
+u8 dStageExplainFile2_gap_0x018C_sub_0x2DC[40] = {
+	#include <StageExplainFile2/gap_0x018C_sub_0x2DC.data.inc.c>
+};
+
+/* gap sub-block @ 0x0490 (was gap+0x304, 136 bytes) */
+u8 dStageExplainFile2_gap_0x018C_sub_0x304[136] = {
+	#include <StageExplainFile2/gap_0x018C_sub_0x304.data.inc.c>
+};
+
+/* gap sub-block @ 0x0518 (was gap+0x38C, 40 bytes) */
+u8 dStageExplainFile2_gap_0x018C_sub_0x38C[40] = {
+	#include <StageExplainFile2/gap_0x018C_sub_0x38C.data.inc.c>
+};
+
+/* gap sub-block @ 0x0540 (was gap+0x3B4, 480 bytes) */
+u8 dStageExplainFile2_gap_0x018C_sub_0x3B4[480] = {
+	#include <StageExplainFile2/gap_0x018C_sub_0x3B4.data.inc.c>
 };
 
 /* DObjDesc: Layer1DObj @ 0x720 (3 entries) */
@@ -31,8 +98,29 @@ DObjDesc dStageExplainFile2_Layer1DObj[] = {
 };
 
 /* Raw data from file offset 0x07A4 to 0x0854 (176 bytes) */
-u8 dStageExplainFile2_gap_0x07A4[176] = {
+/* gap sub-block @ 0x07A4 (was gap+0x0, 80 bytes) */
+u8 dStageExplainFile2_gap_0x07A4[80] = {
 	#include <StageExplainFile2/gap_0x07A4.data.inc.c>
+};
+
+/* gap sub-block @ 0x07F4 (was gap+0x50, 36 bytes) */
+u8 dStageExplainFile2_gap_0x07A4_sub_0x50[36] = {
+	#include <StageExplainFile2/gap_0x07A4_sub_0x50.data.inc.c>
+};
+
+/* gap sub-block @ 0x0818 (was gap+0x74, 20 bytes) */
+u8 dStageExplainFile2_gap_0x07A4_sub_0x74[20] = {
+	#include <StageExplainFile2/gap_0x07A4_sub_0x74.data.inc.c>
+};
+
+/* gap sub-block @ 0x082C (was gap+0x88, 20 bytes) */
+u8 dStageExplainFile2_gap_0x07A4_sub_0x88[20] = {
+	#include <StageExplainFile2/gap_0x07A4_sub_0x88.data.inc.c>
+};
+
+/* gap sub-block @ 0x0840 (was gap+0x9C, 20 bytes) */
+u8 dStageExplainFile2_gap_0x07A4_sub_0x9C[20] = {
+	#include <StageExplainFile2/gap_0x07A4_sub_0x9C.data.inc.c>
 };
 
 /* Raw data from file offset 0x0854 to 0x09B8 (356 bytes) */
@@ -48,8 +136,24 @@ DObjDesc dStageExplainFile2_Layer2DObj[] = {
 };
 
 /* Raw data from file offset 0x0A3C to 0x0DD0 (916 bytes) */
-u8 dStageExplainFile2_gap_0x0A3C[916] = {
+/* gap sub-block @ 0x0A3C (was gap+0x0, 4 bytes) */
+u8 dStageExplainFile2_gap_0x0A3C[4] = {
 	#include <StageExplainFile2/gap_0x0A3C.data.inc.c>
+};
+
+/* gap sub-block @ 0x0A40 (was gap+0x4, 256 bytes) */
+u8 dStageExplainFile2_gap_0x0A3C_sub_0x4[256] = {
+	#include <StageExplainFile2/gap_0x0A3C_sub_0x4.data.inc.c>
+};
+
+/* gap sub-block @ 0x0B40 (was gap+0x104, 224 bytes) */
+u8 dStageExplainFile2_gap_0x0A3C_sub_0x104[224] = {
+	#include <StageExplainFile2/gap_0x0A3C_sub_0x104.data.inc.c>
+};
+
+/* gap sub-block @ 0x0C20 (was gap+0x1E4, 432 bytes) */
+u8 dStageExplainFile2_gap_0x0A3C_sub_0x1E4[432] = {
+	#include <StageExplainFile2/gap_0x0A3C_sub_0x1E4.data.inc.c>
 };
 
 /* DObjDesc: Layer3DObj @ 0xDD0 (3 entries) */

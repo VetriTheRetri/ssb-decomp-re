@@ -7,8 +7,29 @@
 #include "relocdata_types.h"
 
 /* Raw data from file offset 0x0000 to 0x0300 (768 bytes) */
-u8 dFTManagerCommon_gap_0x0000[768] = {
+/* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
+u8 dFTManagerCommon_gap_0x0000[8] = {
 	#include <FTManagerCommon/gap_0x0000.data.inc.c>
+};
+
+/* gap sub-block @ 0x0008 (was gap+0x8, 512 bytes) */
+u8 dFTManagerCommon_gap_0x0000_sub_0x8[512] = {
+	#include <FTManagerCommon/gap_0x0000_sub_0x8.data.inc.c>
+};
+
+/* gap sub-block @ 0x0208 (was gap+0x208, 64 bytes) */
+u8 dFTManagerCommon_gap_0x0000_sub_0x208[64] = {
+	#include <FTManagerCommon/gap_0x0000_sub_0x208.data.inc.c>
+};
+
+/* gap sub-block @ 0x0248 (was gap+0x248, 168 bytes) */
+u8 dFTManagerCommon_gap_0x0000_sub_0x248[168] = {
+	#include <FTManagerCommon/gap_0x0000_sub_0x248.data.inc.c>
+};
+
+/* gap sub-block @ 0x02F0 (was gap+0x2F0, 16 bytes) */
+u8 dFTManagerCommon_gap_0x0000_sub_0x2F0[16] = {
+	#include <FTManagerCommon/gap_0x0000_sub_0x2F0.data.inc.c>
 };
 
 /* DObjDesc: Shield @ 0x300 (3 entries) */

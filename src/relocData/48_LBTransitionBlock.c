@@ -1467,8 +1467,154 @@ Vtx dLBTransitionBlock_Vtx_0x19D0_Vtx[2] = {
 };
 
 /* Raw data from file offset 0x19F0 to 0x4E18 (13352 bytes) */
-u8 dLBTransitionBlock_gap_0x19F0[13352] = {
+/* gap sub-block @ 0x19F0 (was gap+0x0, 72 bytes) */
+u8 dLBTransitionBlock_gap_0x19F0[72] = {
 	#include <LBTransitionBlock/gap_0x19F0.data.inc.c>
+};
+
+/* gap sub-block @ 0x1A38 (was gap+0x48, 352 bytes) */
+u8 dLBTransitionBlock_gap_0x19F0_sub_0x48[352] = {
+	#include <LBTransitionBlock/gap_0x19F0_sub_0x48.data.inc.c>
+};
+
+/* gap sub-block @ 0x1B98 (was gap+0x1A8, 656 bytes) */
+u8 dLBTransitionBlock_gap_0x19F0_sub_0x1A8[656] = {
+	#include <LBTransitionBlock/gap_0x19F0_sub_0x1A8.data.inc.c>
+};
+
+/* gap sub-block @ 0x1E28 (was gap+0x438, 352 bytes) */
+u8 dLBTransitionBlock_gap_0x19F0_sub_0x438[352] = {
+	#include <LBTransitionBlock/gap_0x19F0_sub_0x438.data.inc.c>
+};
+
+/* gap sub-block @ 0x1F88 (was gap+0x598, 352 bytes) */
+u8 dLBTransitionBlock_gap_0x19F0_sub_0x598[352] = {
+	#include <LBTransitionBlock/gap_0x19F0_sub_0x598.data.inc.c>
+};
+
+/* gap sub-block @ 0x20E8 (was gap+0x6F8, 432 bytes) */
+u8 dLBTransitionBlock_gap_0x19F0_sub_0x6F8[432] = {
+	#include <LBTransitionBlock/gap_0x19F0_sub_0x6F8.data.inc.c>
+};
+
+/* gap sub-block @ 0x2298 (was gap+0x8A8, 432 bytes) */
+u8 dLBTransitionBlock_gap_0x19F0_sub_0x8A8[432] = {
+	#include <LBTransitionBlock/gap_0x19F0_sub_0x8A8.data.inc.c>
+};
+
+/* gap sub-block @ 0x2448 (was gap+0xA58, 352 bytes) */
+u8 dLBTransitionBlock_gap_0x19F0_sub_0xA58[352] = {
+	#include <LBTransitionBlock/gap_0x19F0_sub_0xA58.data.inc.c>
+};
+
+/* gap sub-block @ 0x25A8 (was gap+0xBB8, 432 bytes) */
+u8 dLBTransitionBlock_gap_0x19F0_sub_0xBB8[432] = {
+	#include <LBTransitionBlock/gap_0x19F0_sub_0xBB8.data.inc.c>
+};
+
+/* gap sub-block @ 0x2758 (was gap+0xD68, 352 bytes) */
+u8 dLBTransitionBlock_gap_0x19F0_sub_0xD68[352] = {
+	#include <LBTransitionBlock/gap_0x19F0_sub_0xD68.data.inc.c>
+};
+
+/* gap sub-block @ 0x28B8 (was gap+0xEC8, 392 bytes) */
+u8 dLBTransitionBlock_gap_0x19F0_sub_0xEC8[392] = {
+	#include <LBTransitionBlock/gap_0x19F0_sub_0xEC8.data.inc.c>
+};
+
+/* gap sub-block @ 0x2A40 (was gap+0x1050, 696 bytes) */
+u8 dLBTransitionBlock_gap_0x19F0_sub_0x1050[696] = {
+	#include <LBTransitionBlock/gap_0x19F0_sub_0x1050.data.inc.c>
+};
+
+/* gap sub-block @ 0x2CF8 (was gap+0x1308, 320 bytes) */
+u8 dLBTransitionBlock_gap_0x19F0_sub_0x1308[320] = {
+	#include <LBTransitionBlock/gap_0x19F0_sub_0x1308.data.inc.c>
+};
+
+/* gap sub-block @ 0x2E38 (was gap+0x1448, 352 bytes) */
+u8 dLBTransitionBlock_gap_0x19F0_sub_0x1448[352] = {
+	#include <LBTransitionBlock/gap_0x19F0_sub_0x1448.data.inc.c>
+};
+
+/* gap sub-block @ 0x2F98 (was gap+0x15A8, 656 bytes) */
+u8 dLBTransitionBlock_gap_0x19F0_sub_0x15A8[656] = {
+	#include <LBTransitionBlock/gap_0x19F0_sub_0x15A8.data.inc.c>
+};
+
+/* gap sub-block @ 0x3228 (was gap+0x1838, 432 bytes) */
+u8 dLBTransitionBlock_gap_0x19F0_sub_0x1838[432] = {
+	#include <LBTransitionBlock/gap_0x19F0_sub_0x1838.data.inc.c>
+};
+
+/* gap sub-block @ 0x33D8 (was gap+0x19E8, 432 bytes) */
+u8 dLBTransitionBlock_gap_0x19F0_sub_0x19E8[432] = {
+	#include <LBTransitionBlock/gap_0x19F0_sub_0x19E8.data.inc.c>
+};
+
+/* gap sub-block @ 0x3588 (was gap+0x1B98, 664 bytes) */
+u8 dLBTransitionBlock_gap_0x19F0_sub_0x1B98[664] = {
+	#include <LBTransitionBlock/gap_0x19F0_sub_0x1B98.data.inc.c>
+};
+
+/* gap sub-block @ 0x3820 (was gap+0x1E30, 352 bytes) */
+u8 dLBTransitionBlock_gap_0x19F0_sub_0x1E30[352] = {
+	#include <LBTransitionBlock/gap_0x19F0_sub_0x1E30.data.inc.c>
+};
+
+/* gap sub-block @ 0x3980 (was gap+0x1F90, 352 bytes) */
+u8 dLBTransitionBlock_gap_0x19F0_sub_0x1F90[352] = {
+	#include <LBTransitionBlock/gap_0x19F0_sub_0x1F90.data.inc.c>
+};
+
+/* gap sub-block @ 0x3AE0 (was gap+0x20F0, 704 bytes) */
+u8 dLBTransitionBlock_gap_0x19F0_sub_0x20F0[704] = {
+	#include <LBTransitionBlock/gap_0x19F0_sub_0x20F0.data.inc.c>
+};
+
+/* gap sub-block @ 0x3DA0 (was gap+0x23B0, 352 bytes) */
+u8 dLBTransitionBlock_gap_0x19F0_sub_0x23B0[352] = {
+	#include <LBTransitionBlock/gap_0x19F0_sub_0x23B0.data.inc.c>
+};
+
+/* gap sub-block @ 0x3F00 (was gap+0x2510, 472 bytes) */
+u8 dLBTransitionBlock_gap_0x19F0_sub_0x2510[472] = {
+	#include <LBTransitionBlock/gap_0x19F0_sub_0x2510.data.inc.c>
+};
+
+/* gap sub-block @ 0x40D8 (was gap+0x26E8, 792 bytes) */
+u8 dLBTransitionBlock_gap_0x19F0_sub_0x26E8[792] = {
+	#include <LBTransitionBlock/gap_0x19F0_sub_0x26E8.data.inc.c>
+};
+
+/* gap sub-block @ 0x43F0 (was gap+0x2A00, 656 bytes) */
+u8 dLBTransitionBlock_gap_0x19F0_sub_0x2A00[656] = {
+	#include <LBTransitionBlock/gap_0x19F0_sub_0x2A00.data.inc.c>
+};
+
+/* gap sub-block @ 0x4680 (was gap+0x2C90, 352 bytes) */
+u8 dLBTransitionBlock_gap_0x19F0_sub_0x2C90[352] = {
+	#include <LBTransitionBlock/gap_0x19F0_sub_0x2C90.data.inc.c>
+};
+
+/* gap sub-block @ 0x47E0 (was gap+0x2DF0, 352 bytes) */
+u8 dLBTransitionBlock_gap_0x19F0_sub_0x2DF0[352] = {
+	#include <LBTransitionBlock/gap_0x19F0_sub_0x2DF0.data.inc.c>
+};
+
+/* gap sub-block @ 0x4940 (was gap+0x2F50, 352 bytes) */
+u8 dLBTransitionBlock_gap_0x19F0_sub_0x2F50[352] = {
+	#include <LBTransitionBlock/gap_0x19F0_sub_0x2F50.data.inc.c>
+};
+
+/* gap sub-block @ 0x4AA0 (was gap+0x30B0, 432 bytes) */
+u8 dLBTransitionBlock_gap_0x19F0_sub_0x30B0[432] = {
+	#include <LBTransitionBlock/gap_0x19F0_sub_0x30B0.data.inc.c>
+};
+
+/* gap sub-block @ 0x4C50 (was gap+0x3260, 456 bytes) */
+u8 dLBTransitionBlock_gap_0x19F0_sub_0x3260[456] = {
+	#include <LBTransitionBlock/gap_0x19F0_sub_0x3260.data.inc.c>
 };
 
 /* DObjDesc: - @ 0x4E18 (31 entries) */

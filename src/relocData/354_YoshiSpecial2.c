@@ -7,8 +7,24 @@
 #include "relocdata_types.h"
 
 /* Raw data from file offset 0x0000 to 0x0460 (1120 bytes) */
-u8 dYoshiSpecial2_gap_0x0000[1120] = {
+/* gap sub-block @ 0x0000 (was gap+0x0, 48 bytes) */
+u8 dYoshiSpecial2_gap_0x0000[48] = {
 	#include <YoshiSpecial2/gap_0x0000.data.inc.c>
+};
+
+/* gap sub-block @ 0x0030 (was gap+0x30, 40 bytes) */
+u8 dYoshiSpecial2_gap_0x0000_sub_0x30[40] = {
+	#include <YoshiSpecial2/gap_0x0000_sub_0x30.data.inc.c>
+};
+
+/* gap sub-block @ 0x0058 (was gap+0x58, 520 bytes) */
+u8 dYoshiSpecial2_gap_0x0000_sub_0x58[520] = {
+	#include <YoshiSpecial2/gap_0x0000_sub_0x58.data.inc.c>
+};
+
+/* gap sub-block @ 0x0260 (was gap+0x260, 512 bytes) */
+u8 dYoshiSpecial2_gap_0x0000_sub_0x260[512] = {
+	#include <YoshiSpecial2/gap_0x0000_sub_0x260.data.inc.c>
 };
 
 /* MObjSub: EntryEggMObjSub @ 0x460 */
@@ -40,8 +56,19 @@ MObjSub dYoshiSpecial2_EntryEggMObjSub_MObjSub = {
 };
 
 /* Raw data from file offset 0x04D8 to 0x0530 (88 bytes) */
-u8 dYoshiSpecial2_gap_0x04D8[88] = {
+/* gap sub-block @ 0x04D8 (was gap+0x0, 16 bytes) */
+u8 dYoshiSpecial2_gap_0x04D8[16] = {
 	#include <YoshiSpecial2/gap_0x04D8.data.inc.c>
+};
+
+/* gap sub-block @ 0x04E8 (was gap+0x10, 8 bytes) */
+u8 dYoshiSpecial2_gap_0x04D8_sub_0x10[8] = {
+	#include <YoshiSpecial2/gap_0x04D8_sub_0x10.data.inc.c>
+};
+
+/* gap sub-block @ 0x04F0 (was gap+0x18, 64 bytes) */
+u8 dYoshiSpecial2_gap_0x04D8_sub_0x18[64] = {
+	#include <YoshiSpecial2/gap_0x04D8_sub_0x18.data.inc.c>
 };
 
 /* Raw data from file offset 0x0530 to 0x0600 (208 bytes) */

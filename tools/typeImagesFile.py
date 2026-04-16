@@ -25,12 +25,37 @@ Usage:
 import argparse
 import os
 import re
+import subprocess
 import sys
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RELOC_DIR = os.path.join(PROJECT_DIR, "src", "relocData")
+BUILD_DIR = os.path.join(PROJECT_DIR, "build", "src", "relocData")
 EXCESS_PATH = os.path.join(PROJECT_DIR, "tools", "vpk0_excess_bytes.txt")
 ASSETS_DIR = os.path.join(PROJECT_DIR, "assets", "relocData")
+
+
+_nm_cache = {}
+def nm_symbols(fid):
+    if fid in _nm_cache:
+        return _nm_cache[fid]
+    obj = os.path.join(BUILD_DIR, f"{fid}.o")
+    if not os.path.exists(obj):
+        _nm_cache[fid] = {}
+        return {}
+    try:
+        r = subprocess.run(["mips-linux-gnu-nm", obj],
+                           capture_output=True, text=True, check=True)
+    except (FileNotFoundError, subprocess.CalledProcessError):
+        _nm_cache[fid] = {}
+        return {}
+    syms = {}
+    for ln in r.stdout.splitlines():
+        p = ln.split()
+        if len(p) >= 3 and p[1] in ("D", "d"):
+            syms[p[2]] = int(p[0], 16)
+    _nm_cache[fid] = syms
+    return syms
 
 
 def load_excess_bytes():
@@ -47,11 +72,16 @@ def load_excess_bytes():
     return result
 
 
-def parse_externs(reloc_path):
-    """Return sorted list of (ptr_sym, ptr_off_in_sym, target_byte)."""
+def parse_externs(reloc_path, src_fid):
+    """Return list of (abs_ptr_off, ptr_sym, ptr_off_in_sym, target_byte)
+    sorted by absolute ptr offset (matches trailer-file-IDs ordering)."""
     externs = []
+    syms = nm_symbols(src_fid)
     with open(reloc_path) as f:
         for line in f:
+            # Strip trailing comment annotations from annotateExternRelocFids
+            if "  #" in line:
+                line = line.split("  #", 1)[0]
             line = line.strip()
             if not line or line.startswith("#"):
                 continue
@@ -67,7 +97,8 @@ def parse_externs(reloc_path):
                 target_byte = int(parts[2], 16)
             except ValueError:
                 continue
-            externs.append((ptr_off, ptr_sym, target_byte))
+            abs_off = syms.get(ptr_sym, 0) + ptr_off
+            externs.append((abs_off, ptr_sym, ptr_off, target_byte))
     externs.sort(key=lambda e: e[0])
     return externs
 
@@ -84,7 +115,7 @@ def discover_refs(target_fid):
         if not m:
             continue
         src_fid = int(m.group(1))
-        externs = parse_externs(os.path.join(RELOC_DIR, fn))
+        externs = parse_externs(os.path.join(RELOC_DIR, fn), src_fid)
         n = len(externs)
         if n == 0:
             continue
@@ -93,7 +124,7 @@ def discover_refs(target_fid):
             continue
         tail = trailer[-2 * n:]
         fids = [int.from_bytes(tail[i*2:(i+1)*2], "big") for i in range(n)]
-        for (_, _, tgt), tfid in zip(externs, fids):
+        for (_, _, _, tgt), tfid in zip(externs, fids):
             if tfid == target_fid:
                 offsets.add(tgt)
     return sorted(offsets)

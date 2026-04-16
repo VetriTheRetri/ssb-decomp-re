@@ -258,7 +258,113 @@ DObjDesc dNSamusModel_JointTree[] = {
 };
 
 /* Raw data from file offset 0x2FE8 to 0x4BD0 (7144 bytes) */
-u8 dNSamusModel_gap_0x2FE8[7144] = {
+/* gap sub-block @ 0x2FE8 (was gap+0x0, 8 bytes) */
+u8 dNSamusModel_gap_0x2FE8[8] = {
 	#include <NSamusModel/gap_0x2FE8.data.inc.c>
+};
+
+/* gap sub-block @ 0x2FF0 (was gap+0x8, 32 bytes) */
+u8 dNSamusModel_gap_0x2FE8_sub_0x8[32] = {
+	#include <NSamusModel/gap_0x2FE8_sub_0x8.data.inc.c>
+};
+
+/* gap sub-block @ 0x3010 (was gap+0x28, 480 bytes) */
+u8 dNSamusModel_gap_0x2FE8_sub_0x28[480] = {
+	#include <NSamusModel/gap_0x2FE8_sub_0x28.data.inc.c>
+};
+
+/* gap sub-block @ 0x31F0 (was gap+0x208, 480 bytes) */
+u8 dNSamusModel_gap_0x2FE8_sub_0x208[480] = {
+	#include <NSamusModel/gap_0x2FE8_sub_0x208.data.inc.c>
+};
+
+/* gap sub-block @ 0x33D0 (was gap+0x3E8, 32 bytes) */
+u8 dNSamusModel_gap_0x2FE8_sub_0x3E8[32] = {
+	#include <NSamusModel/gap_0x2FE8_sub_0x3E8.data.inc.c>
+};
+
+/* gap sub-block @ 0x33F0 (was gap+0x408, 16 bytes) */
+u8 dNSamusModel_gap_0x2FE8_sub_0x408[16] = {
+	#include <NSamusModel/gap_0x2FE8_sub_0x408.data.inc.c>
+};
+
+/* gap sub-block @ 0x3400 (was gap+0x418, 416 bytes) */
+u8 dNSamusModel_gap_0x2FE8_sub_0x418[416] = {
+	#include <NSamusModel/gap_0x2FE8_sub_0x418.data.inc.c>
+};
+
+/* gap sub-block @ 0x35A0 (was gap+0x5B8, 480 bytes) */
+u8 dNSamusModel_gap_0x2FE8_sub_0x5B8[480] = {
+	#include <NSamusModel/gap_0x2FE8_sub_0x5B8.data.inc.c>
+};
+
+/* gap sub-block @ 0x3780 (was gap+0x798, 480 bytes) */
+u8 dNSamusModel_gap_0x2FE8_sub_0x798[480] = {
+	#include <NSamusModel/gap_0x2FE8_sub_0x798.data.inc.c>
+};
+
+/* gap sub-block @ 0x3960 (was gap+0x978, 512 bytes) */
+u8 dNSamusModel_gap_0x2FE8_sub_0x978[512] = {
+	#include <NSamusModel/gap_0x2FE8_sub_0x978.data.inc.c>
+};
+
+/* gap sub-block @ 0x3B60 (was gap+0xB78, 144 bytes) */
+u8 dNSamusModel_gap_0x2FE8_sub_0xB78[144] = {
+	#include <NSamusModel/gap_0x2FE8_sub_0xB78.data.inc.c>
+};
+
+/* gap sub-block @ 0x3BF0 (was gap+0xC08, 624 bytes) */
+u8 dNSamusModel_gap_0x2FE8_sub_0xC08[624] = {
+	#include <NSamusModel/gap_0x2FE8_sub_0xC08.data.inc.c>
+};
+
+/* gap sub-block @ 0x3E60 (was gap+0xE78, 32 bytes) */
+u8 dNSamusModel_gap_0x2FE8_sub_0xE78[32] = {
+	#include <NSamusModel/gap_0x2FE8_sub_0xE78.data.inc.c>
+};
+
+/* gap sub-block @ 0x3E80 (was gap+0xE98, 480 bytes) */
+u8 dNSamusModel_gap_0x2FE8_sub_0xE98[480] = {
+	#include <NSamusModel/gap_0x2FE8_sub_0xE98.data.inc.c>
+};
+
+/* gap sub-block @ 0x4060 (was gap+0x1078, 480 bytes) */
+u8 dNSamusModel_gap_0x2FE8_sub_0x1078[480] = {
+	#include <NSamusModel/gap_0x2FE8_sub_0x1078.data.inc.c>
+};
+
+/* gap sub-block @ 0x4240 (was gap+0x1258, 32 bytes) */
+u8 dNSamusModel_gap_0x2FE8_sub_0x1258[32] = {
+	#include <NSamusModel/gap_0x2FE8_sub_0x1258.data.inc.c>
+};
+
+/* gap sub-block @ 0x4260 (was gap+0x1278, 16 bytes) */
+u8 dNSamusModel_gap_0x2FE8_sub_0x1278[16] = {
+	#include <NSamusModel/gap_0x2FE8_sub_0x1278.data.inc.c>
+};
+
+/* gap sub-block @ 0x4270 (was gap+0x1288, 416 bytes) */
+u8 dNSamusModel_gap_0x2FE8_sub_0x1288[416] = {
+	#include <NSamusModel/gap_0x2FE8_sub_0x1288.data.inc.c>
+};
+
+/* gap sub-block @ 0x4410 (was gap+0x1428, 480 bytes) */
+u8 dNSamusModel_gap_0x2FE8_sub_0x1428[480] = {
+	#include <NSamusModel/gap_0x2FE8_sub_0x1428.data.inc.c>
+};
+
+/* gap sub-block @ 0x45F0 (was gap+0x1608, 480 bytes) */
+u8 dNSamusModel_gap_0x2FE8_sub_0x1608[480] = {
+	#include <NSamusModel/gap_0x2FE8_sub_0x1608.data.inc.c>
+};
+
+/* gap sub-block @ 0x47D0 (was gap+0x17E8, 400 bytes) */
+u8 dNSamusModel_gap_0x2FE8_sub_0x17E8[400] = {
+	#include <NSamusModel/gap_0x2FE8_sub_0x17E8.data.inc.c>
+};
+
+/* gap sub-block @ 0x4960 (was gap+0x1978, 624 bytes) */
+u8 dNSamusModel_gap_0x2FE8_sub_0x1978[624] = {
+	#include <NSamusModel/gap_0x2FE8_sub_0x1978.data.inc.c>
 };
 

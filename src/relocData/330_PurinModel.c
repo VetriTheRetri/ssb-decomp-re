@@ -309,8 +309,259 @@ DObjDesc dPurinModel_JointTree[] = {
 };
 
 /* Raw data from file offset 0x24F8 to 0x3028 (2864 bytes) */
-u8 dPurinModel_gap_0x24F8[2864] = {
+/* gap sub-block @ 0x24F8 (was gap+0x0, 64 bytes) */
+u8 dPurinModel_gap_0x24F8[64] = {
 	#include <PurinModel/gap_0x24F8.data.inc.c>
+};
+
+/* gap sub-block @ 0x2538 (was gap+0x40, 92 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x40[92] = {
+	#include <PurinModel/gap_0x24F8_sub_0x40.data.inc.c>
+};
+
+/* gap sub-block @ 0x2594 (was gap+0x9C, 92 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x9C[92] = {
+	#include <PurinModel/gap_0x24F8_sub_0x9C.data.inc.c>
+};
+
+/* gap sub-block @ 0x25F0 (was gap+0xF8, 48 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0xF8[48] = {
+	#include <PurinModel/gap_0x24F8_sub_0xF8.data.inc.c>
+};
+
+/* gap sub-block @ 0x2620 (was gap+0x128, 48 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x128[48] = {
+	#include <PurinModel/gap_0x24F8_sub_0x128.data.inc.c>
+};
+
+/* gap sub-block @ 0x2650 (was gap+0x158, 48 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x158[48] = {
+	#include <PurinModel/gap_0x24F8_sub_0x158.data.inc.c>
+};
+
+/* gap sub-block @ 0x2680 (was gap+0x188, 48 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x188[48] = {
+	#include <PurinModel/gap_0x24F8_sub_0x188.data.inc.c>
+};
+
+/* gap sub-block @ 0x26B0 (was gap+0x1B8, 48 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x1B8[48] = {
+	#include <PurinModel/gap_0x24F8_sub_0x1B8.data.inc.c>
+};
+
+/* gap sub-block @ 0x26E0 (was gap+0x1E8, 48 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x1E8[48] = {
+	#include <PurinModel/gap_0x24F8_sub_0x1E8.data.inc.c>
+};
+
+/* gap sub-block @ 0x2710 (was gap+0x218, 48 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x218[48] = {
+	#include <PurinModel/gap_0x24F8_sub_0x218.data.inc.c>
+};
+
+/* gap sub-block @ 0x2740 (was gap+0x248, 48 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x248[48] = {
+	#include <PurinModel/gap_0x24F8_sub_0x248.data.inc.c>
+};
+
+/* gap sub-block @ 0x2770 (was gap+0x278, 48 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x278[48] = {
+	#include <PurinModel/gap_0x24F8_sub_0x278.data.inc.c>
+};
+
+/* gap sub-block @ 0x27A0 (was gap+0x2A8, 48 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x2A8[48] = {
+	#include <PurinModel/gap_0x24F8_sub_0x2A8.data.inc.c>
+};
+
+/* gap sub-block @ 0x27D0 (was gap+0x2D8, 48 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x2D8[48] = {
+	#include <PurinModel/gap_0x24F8_sub_0x2D8.data.inc.c>
+};
+
+/* gap sub-block @ 0x2800 (was gap+0x308, 48 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x308[48] = {
+	#include <PurinModel/gap_0x24F8_sub_0x308.data.inc.c>
+};
+
+/* gap sub-block @ 0x2830 (was gap+0x338, 56 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x338[56] = {
+	#include <PurinModel/gap_0x24F8_sub_0x338.data.inc.c>
+};
+
+/* gap sub-block @ 0x2868 (was gap+0x370, 36 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x370[36] = {
+	#include <PurinModel/gap_0x24F8_sub_0x370.data.inc.c>
+};
+
+/* gap sub-block @ 0x288C (was gap+0x394, 4 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x394[4] = {
+	#include <PurinModel/gap_0x24F8_sub_0x394.data.inc.c>
+};
+
+/* gap sub-block @ 0x2890 (was gap+0x398, 4 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x398[4] = {
+	#include <PurinModel/gap_0x24F8_sub_0x398.data.inc.c>
+};
+
+/* gap sub-block @ 0x2894 (was gap+0x39C, 4 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x39C[4] = {
+	#include <PurinModel/gap_0x24F8_sub_0x39C.data.inc.c>
+};
+
+/* gap sub-block @ 0x2898 (was gap+0x3A0, 4 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x3A0[4] = {
+	#include <PurinModel/gap_0x24F8_sub_0x3A0.data.inc.c>
+};
+
+/* gap sub-block @ 0x289C (was gap+0x3A4, 4 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x3A4[4] = {
+	#include <PurinModel/gap_0x24F8_sub_0x3A4.data.inc.c>
+};
+
+/* gap sub-block @ 0x28A0 (was gap+0x3A8, 16 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x3A8[16] = {
+	#include <PurinModel/gap_0x24F8_sub_0x3A8.data.inc.c>
+};
+
+/* gap sub-block @ 0x28B0 (was gap+0x3B8, 104 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x3B8[104] = {
+	#include <PurinModel/gap_0x24F8_sub_0x3B8.data.inc.c>
+};
+
+/* gap sub-block @ 0x2918 (was gap+0x420, 32 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x420[32] = {
+	#include <PurinModel/gap_0x24F8_sub_0x420.data.inc.c>
+};
+
+/* gap sub-block @ 0x2938 (was gap+0x440, 20 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x440[20] = {
+	#include <PurinModel/gap_0x24F8_sub_0x440.data.inc.c>
+};
+
+/* gap sub-block @ 0x294C (was gap+0x454, 32 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x454[32] = {
+	#include <PurinModel/gap_0x24F8_sub_0x454.data.inc.c>
+};
+
+/* gap sub-block @ 0x296C (was gap+0x474, 20 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x474[20] = {
+	#include <PurinModel/gap_0x24F8_sub_0x474.data.inc.c>
+};
+
+/* gap sub-block @ 0x2980 (was gap+0x488, 20 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x488[20] = {
+	#include <PurinModel/gap_0x24F8_sub_0x488.data.inc.c>
+};
+
+/* gap sub-block @ 0x2994 (was gap+0x49C, 20 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x49C[20] = {
+	#include <PurinModel/gap_0x24F8_sub_0x49C.data.inc.c>
+};
+
+/* gap sub-block @ 0x29A8 (was gap+0x4B0, 24 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x4B0[24] = {
+	#include <PurinModel/gap_0x24F8_sub_0x4B0.data.inc.c>
+};
+
+/* gap sub-block @ 0x29C0 (was gap+0x4C8, 120 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x4C8[120] = {
+	#include <PurinModel/gap_0x24F8_sub_0x4C8.data.inc.c>
+};
+
+/* gap sub-block @ 0x2A38 (was gap+0x540, 120 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x540[120] = {
+	#include <PurinModel/gap_0x24F8_sub_0x540.data.inc.c>
+};
+
+/* gap sub-block @ 0x2AB0 (was gap+0x5B8, 120 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x5B8[120] = {
+	#include <PurinModel/gap_0x24F8_sub_0x5B8.data.inc.c>
+};
+
+/* gap sub-block @ 0x2B28 (was gap+0x630, 120 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x630[120] = {
+	#include <PurinModel/gap_0x24F8_sub_0x630.data.inc.c>
+};
+
+/* gap sub-block @ 0x2BA0 (was gap+0x6A8, 120 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x6A8[120] = {
+	#include <PurinModel/gap_0x24F8_sub_0x6A8.data.inc.c>
+};
+
+/* gap sub-block @ 0x2C18 (was gap+0x720, 120 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x720[120] = {
+	#include <PurinModel/gap_0x24F8_sub_0x720.data.inc.c>
+};
+
+/* gap sub-block @ 0x2C90 (was gap+0x798, 120 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x798[120] = {
+	#include <PurinModel/gap_0x24F8_sub_0x798.data.inc.c>
+};
+
+/* gap sub-block @ 0x2D08 (was gap+0x810, 120 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x810[120] = {
+	#include <PurinModel/gap_0x24F8_sub_0x810.data.inc.c>
+};
+
+/* gap sub-block @ 0x2D80 (was gap+0x888, 120 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x888[120] = {
+	#include <PurinModel/gap_0x24F8_sub_0x888.data.inc.c>
+};
+
+/* gap sub-block @ 0x2DF8 (was gap+0x900, 120 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x900[120] = {
+	#include <PurinModel/gap_0x24F8_sub_0x900.data.inc.c>
+};
+
+/* gap sub-block @ 0x2E70 (was gap+0x978, 120 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x978[120] = {
+	#include <PurinModel/gap_0x24F8_sub_0x978.data.inc.c>
+};
+
+/* gap sub-block @ 0x2EE8 (was gap+0x9F0, 120 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0x9F0[120] = {
+	#include <PurinModel/gap_0x24F8_sub_0x9F0.data.inc.c>
+};
+
+/* gap sub-block @ 0x2F60 (was gap+0xA68, 120 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0xA68[120] = {
+	#include <PurinModel/gap_0x24F8_sub_0xA68.data.inc.c>
+};
+
+/* gap sub-block @ 0x2FD8 (was gap+0xAE0, 32 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0xAE0[32] = {
+	#include <PurinModel/gap_0x24F8_sub_0xAE0.data.inc.c>
+};
+
+/* gap sub-block @ 0x2FF8 (was gap+0xB00, 8 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0xB00[8] = {
+	#include <PurinModel/gap_0x24F8_sub_0xB00.data.inc.c>
+};
+
+/* gap sub-block @ 0x3000 (was gap+0xB08, 8 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0xB08[8] = {
+	#include <PurinModel/gap_0x24F8_sub_0xB08.data.inc.c>
+};
+
+/* gap sub-block @ 0x3008 (was gap+0xB10, 8 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0xB10[8] = {
+	#include <PurinModel/gap_0x24F8_sub_0xB10.data.inc.c>
+};
+
+/* gap sub-block @ 0x3010 (was gap+0xB18, 8 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0xB18[8] = {
+	#include <PurinModel/gap_0x24F8_sub_0xB18.data.inc.c>
+};
+
+/* gap sub-block @ 0x3018 (was gap+0xB20, 8 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0xB20[8] = {
+	#include <PurinModel/gap_0x24F8_sub_0xB20.data.inc.c>
+};
+
+/* gap sub-block @ 0x3020 (was gap+0xB28, 8 bytes) */
+u8 dPurinModel_gap_0x24F8_sub_0xB28[8] = {
+	#include <PurinModel/gap_0x24F8_sub_0xB28.data.inc.c>
 };
 
 /* Vtx: Vtx_0x3028 @ 0x3028 (10 vertices) */
@@ -492,8 +743,164 @@ DObjDesc dPurinModel_JointTree_0x40A0[] = {
 };
 
 /* Raw data from file offset 0x459C to 0x4BF0 (1620 bytes) */
-u8 dPurinModel_gap_0x459C[1620] = {
+/* gap sub-block @ 0x459C (was gap+0x0, 28 bytes) */
+u8 dPurinModel_gap_0x459C[28] = {
 	#include <PurinModel/gap_0x459C.data.inc.c>
+};
+
+/* gap sub-block @ 0x45B8 (was gap+0x1C, 92 bytes) */
+u8 dPurinModel_gap_0x459C_sub_0x1C[92] = {
+	#include <PurinModel/gap_0x459C_sub_0x1C.data.inc.c>
+};
+
+/* gap sub-block @ 0x4614 (was gap+0x78, 92 bytes) */
+u8 dPurinModel_gap_0x459C_sub_0x78[92] = {
+	#include <PurinModel/gap_0x459C_sub_0x78.data.inc.c>
+};
+
+/* gap sub-block @ 0x4670 (was gap+0xD4, 48 bytes) */
+u8 dPurinModel_gap_0x459C_sub_0xD4[48] = {
+	#include <PurinModel/gap_0x459C_sub_0xD4.data.inc.c>
+};
+
+/* gap sub-block @ 0x46A0 (was gap+0x104, 48 bytes) */
+u8 dPurinModel_gap_0x459C_sub_0x104[48] = {
+	#include <PurinModel/gap_0x459C_sub_0x104.data.inc.c>
+};
+
+/* gap sub-block @ 0x46D0 (was gap+0x134, 48 bytes) */
+u8 dPurinModel_gap_0x459C_sub_0x134[48] = {
+	#include <PurinModel/gap_0x459C_sub_0x134.data.inc.c>
+};
+
+/* gap sub-block @ 0x4700 (was gap+0x164, 48 bytes) */
+u8 dPurinModel_gap_0x459C_sub_0x164[48] = {
+	#include <PurinModel/gap_0x459C_sub_0x164.data.inc.c>
+};
+
+/* gap sub-block @ 0x4730 (was gap+0x194, 48 bytes) */
+u8 dPurinModel_gap_0x459C_sub_0x194[48] = {
+	#include <PurinModel/gap_0x459C_sub_0x194.data.inc.c>
+};
+
+/* gap sub-block @ 0x4760 (was gap+0x1C4, 48 bytes) */
+u8 dPurinModel_gap_0x459C_sub_0x1C4[48] = {
+	#include <PurinModel/gap_0x459C_sub_0x1C4.data.inc.c>
+};
+
+/* gap sub-block @ 0x4790 (was gap+0x1F4, 48 bytes) */
+u8 dPurinModel_gap_0x459C_sub_0x1F4[48] = {
+	#include <PurinModel/gap_0x459C_sub_0x1F4.data.inc.c>
+};
+
+/* gap sub-block @ 0x47C0 (was gap+0x224, 48 bytes) */
+u8 dPurinModel_gap_0x459C_sub_0x224[48] = {
+	#include <PurinModel/gap_0x459C_sub_0x224.data.inc.c>
+};
+
+/* gap sub-block @ 0x47F0 (was gap+0x254, 48 bytes) */
+u8 dPurinModel_gap_0x459C_sub_0x254[48] = {
+	#include <PurinModel/gap_0x459C_sub_0x254.data.inc.c>
+};
+
+/* gap sub-block @ 0x4820 (was gap+0x284, 48 bytes) */
+u8 dPurinModel_gap_0x459C_sub_0x284[48] = {
+	#include <PurinModel/gap_0x459C_sub_0x284.data.inc.c>
+};
+
+/* gap sub-block @ 0x4850 (was gap+0x2B4, 48 bytes) */
+u8 dPurinModel_gap_0x459C_sub_0x2B4[48] = {
+	#include <PurinModel/gap_0x459C_sub_0x2B4.data.inc.c>
+};
+
+/* gap sub-block @ 0x4880 (was gap+0x2E4, 28 bytes) */
+u8 dPurinModel_gap_0x459C_sub_0x2E4[28] = {
+	#include <PurinModel/gap_0x459C_sub_0x2E4.data.inc.c>
+};
+
+/* gap sub-block @ 0x489C (was gap+0x300, 4 bytes) */
+u8 dPurinModel_gap_0x459C_sub_0x300[4] = {
+	#include <PurinModel/gap_0x459C_sub_0x300.data.inc.c>
+};
+
+/* gap sub-block @ 0x48A0 (was gap+0x304, 4 bytes) */
+u8 dPurinModel_gap_0x459C_sub_0x304[4] = {
+	#include <PurinModel/gap_0x459C_sub_0x304.data.inc.c>
+};
+
+/* gap sub-block @ 0x48A4 (was gap+0x308, 4 bytes) */
+u8 dPurinModel_gap_0x459C_sub_0x308[4] = {
+	#include <PurinModel/gap_0x459C_sub_0x308.data.inc.c>
+};
+
+/* gap sub-block @ 0x48A8 (was gap+0x30C, 4 bytes) */
+u8 dPurinModel_gap_0x459C_sub_0x30C[4] = {
+	#include <PurinModel/gap_0x459C_sub_0x30C.data.inc.c>
+};
+
+/* gap sub-block @ 0x48AC (was gap+0x310, 4 bytes) */
+u8 dPurinModel_gap_0x459C_sub_0x310[4] = {
+	#include <PurinModel/gap_0x459C_sub_0x310.data.inc.c>
+};
+
+/* gap sub-block @ 0x48B0 (was gap+0x314, 20 bytes) */
+u8 dPurinModel_gap_0x459C_sub_0x314[20] = {
+	#include <PurinModel/gap_0x459C_sub_0x314.data.inc.c>
+};
+
+/* gap sub-block @ 0x48C4 (was gap+0x328, 12 bytes) */
+u8 dPurinModel_gap_0x459C_sub_0x328[12] = {
+	#include <PurinModel/gap_0x459C_sub_0x328.data.inc.c>
+};
+
+/* gap sub-block @ 0x48D0 (was gap+0x334, 16 bytes) */
+u8 dPurinModel_gap_0x459C_sub_0x334[16] = {
+	#include <PurinModel/gap_0x459C_sub_0x334.data.inc.c>
+};
+
+/* gap sub-block @ 0x48E0 (was gap+0x344, 120 bytes) */
+u8 dPurinModel_gap_0x459C_sub_0x344[120] = {
+	#include <PurinModel/gap_0x459C_sub_0x344.data.inc.c>
+};
+
+/* gap sub-block @ 0x4958 (was gap+0x3BC, 120 bytes) */
+u8 dPurinModel_gap_0x459C_sub_0x3BC[120] = {
+	#include <PurinModel/gap_0x459C_sub_0x3BC.data.inc.c>
+};
+
+/* gap sub-block @ 0x49D0 (was gap+0x434, 16 bytes) */
+u8 dPurinModel_gap_0x459C_sub_0x434[16] = {
+	#include <PurinModel/gap_0x459C_sub_0x434.data.inc.c>
+};
+
+/* gap sub-block @ 0x49E0 (was gap+0x444, 64 bytes) */
+u8 dPurinModel_gap_0x459C_sub_0x444[64] = {
+	#include <PurinModel/gap_0x459C_sub_0x444.data.inc.c>
+};
+
+/* gap sub-block @ 0x4A20 (was gap+0x484, 64 bytes) */
+u8 dPurinModel_gap_0x459C_sub_0x484[64] = {
+	#include <PurinModel/gap_0x459C_sub_0x484.data.inc.c>
+};
+
+/* gap sub-block @ 0x4A60 (was gap+0x4C4, 308 bytes) */
+u8 dPurinModel_gap_0x459C_sub_0x4C4[308] = {
+	#include <PurinModel/gap_0x459C_sub_0x4C4.data.inc.c>
+};
+
+/* gap sub-block @ 0x4B94 (was gap+0x5F8, 40 bytes) */
+u8 dPurinModel_gap_0x459C_sub_0x5F8[40] = {
+	#include <PurinModel/gap_0x459C_sub_0x5F8.data.inc.c>
+};
+
+/* gap sub-block @ 0x4BBC (was gap+0x620, 40 bytes) */
+u8 dPurinModel_gap_0x459C_sub_0x620[40] = {
+	#include <PurinModel/gap_0x459C_sub_0x620.data.inc.c>
+};
+
+/* gap sub-block @ 0x4BE4 (was gap+0x648, 12 bytes) */
+u8 dPurinModel_gap_0x459C_sub_0x648[12] = {
+	#include <PurinModel/gap_0x459C_sub_0x648.data.inc.c>
 };
 
 /* Vtx: Vtx_0x4BF0 @ 0x4BF0 (6 vertices) */
@@ -752,8 +1159,94 @@ DObjDesc dPurinModel_JointTree_0x5BB0[] = {
 };
 
 /* Raw data from file offset 0x6028 to 0x6948 (2336 bytes) */
-u8 dPurinModel_gap_0x6028[2336] = {
+/* gap sub-block @ 0x6028 (was gap+0x0, 8 bytes) */
+u8 dPurinModel_gap_0x6028[8] = {
 	#include <PurinModel/gap_0x6028.data.inc.c>
+};
+
+/* gap sub-block @ 0x6030 (was gap+0x8, 80 bytes) */
+u8 dPurinModel_gap_0x6028_sub_0x8[80] = {
+	#include <PurinModel/gap_0x6028_sub_0x8.data.inc.c>
+};
+
+/* gap sub-block @ 0x6080 (was gap+0x58, 336 bytes) */
+u8 dPurinModel_gap_0x6028_sub_0x58[336] = {
+	#include <PurinModel/gap_0x6028_sub_0x58.data.inc.c>
+};
+
+/* gap sub-block @ 0x61D0 (was gap+0x1A8, 144 bytes) */
+u8 dPurinModel_gap_0x6028_sub_0x1A8[144] = {
+	#include <PurinModel/gap_0x6028_sub_0x1A8.data.inc.c>
+};
+
+/* gap sub-block @ 0x6260 (was gap+0x238, 224 bytes) */
+u8 dPurinModel_gap_0x6028_sub_0x238[224] = {
+	#include <PurinModel/gap_0x6028_sub_0x238.data.inc.c>
+};
+
+/* gap sub-block @ 0x6340 (was gap+0x318, 144 bytes) */
+u8 dPurinModel_gap_0x6028_sub_0x318[144] = {
+	#include <PurinModel/gap_0x6028_sub_0x318.data.inc.c>
+};
+
+/* gap sub-block @ 0x63D0 (was gap+0x3A8, 80 bytes) */
+u8 dPurinModel_gap_0x6028_sub_0x3A8[80] = {
+	#include <PurinModel/gap_0x6028_sub_0x3A8.data.inc.c>
+};
+
+/* gap sub-block @ 0x6420 (was gap+0x3F8, 32 bytes) */
+u8 dPurinModel_gap_0x6028_sub_0x3F8[32] = {
+	#include <PurinModel/gap_0x6028_sub_0x3F8.data.inc.c>
+};
+
+/* gap sub-block @ 0x6440 (was gap+0x418, 144 bytes) */
+u8 dPurinModel_gap_0x6028_sub_0x418[144] = {
+	#include <PurinModel/gap_0x6028_sub_0x418.data.inc.c>
+};
+
+/* gap sub-block @ 0x64D0 (was gap+0x4A8, 728 bytes) */
+u8 dPurinModel_gap_0x6028_sub_0x4A8[728] = {
+	#include <PurinModel/gap_0x6028_sub_0x4A8.data.inc.c>
+};
+
+/* gap sub-block @ 0x67A8 (was gap+0x780, 40 bytes) */
+u8 dPurinModel_gap_0x6028_sub_0x780[40] = {
+	#include <PurinModel/gap_0x6028_sub_0x780.data.inc.c>
+};
+
+/* gap sub-block @ 0x67D0 (was gap+0x7A8, 136 bytes) */
+u8 dPurinModel_gap_0x6028_sub_0x7A8[136] = {
+	#include <PurinModel/gap_0x6028_sub_0x7A8.data.inc.c>
+};
+
+/* gap sub-block @ 0x6858 (was gap+0x830, 40 bytes) */
+u8 dPurinModel_gap_0x6028_sub_0x830[40] = {
+	#include <PurinModel/gap_0x6028_sub_0x830.data.inc.c>
+};
+
+/* gap sub-block @ 0x6880 (was gap+0x858, 40 bytes) */
+u8 dPurinModel_gap_0x6028_sub_0x858[40] = {
+	#include <PurinModel/gap_0x6028_sub_0x858.data.inc.c>
+};
+
+/* gap sub-block @ 0x68A8 (was gap+0x880, 40 bytes) */
+u8 dPurinModel_gap_0x6028_sub_0x880[40] = {
+	#include <PurinModel/gap_0x6028_sub_0x880.data.inc.c>
+};
+
+/* gap sub-block @ 0x68D0 (was gap+0x8A8, 40 bytes) */
+u8 dPurinModel_gap_0x6028_sub_0x8A8[40] = {
+	#include <PurinModel/gap_0x6028_sub_0x8A8.data.inc.c>
+};
+
+/* gap sub-block @ 0x68F8 (was gap+0x8D0, 40 bytes) */
+u8 dPurinModel_gap_0x6028_sub_0x8D0[40] = {
+	#include <PurinModel/gap_0x6028_sub_0x8D0.data.inc.c>
+};
+
+/* gap sub-block @ 0x6920 (was gap+0x8F8, 40 bytes) */
+u8 dPurinModel_gap_0x6028_sub_0x8F8[40] = {
+	#include <PurinModel/gap_0x6028_sub_0x8F8.data.inc.c>
 };
 
 /* Palette: Lut_0x6948 @ 0x6948 (16 colors RGBA5551) */
@@ -788,8 +1281,29 @@ u16 dPurinModel_palette_0x7AE0[16] = {
 };
 
 /* Raw data from file offset 0x7B00 to 0x7BA0 (160 bytes) */
-u8 dPurinModel_gap_0x7B00[160] = {
+/* gap sub-block @ 0x7B00 (was gap+0x0, 8 bytes) */
+u8 dPurinModel_gap_0x7B00[8] = {
 	#include <PurinModel/gap_0x7B00.data.inc.c>
+};
+
+/* gap sub-block @ 0x7B08 (was gap+0x8, 40 bytes) */
+u8 dPurinModel_gap_0x7B00_sub_0x8[40] = {
+	#include <PurinModel/gap_0x7B00_sub_0x8.data.inc.c>
+};
+
+/* gap sub-block @ 0x7B30 (was gap+0x30, 40 bytes) */
+u8 dPurinModel_gap_0x7B00_sub_0x30[40] = {
+	#include <PurinModel/gap_0x7B00_sub_0x30.data.inc.c>
+};
+
+/* gap sub-block @ 0x7B58 (was gap+0x58, 40 bytes) */
+u8 dPurinModel_gap_0x7B00_sub_0x58[40] = {
+	#include <PurinModel/gap_0x7B00_sub_0x58.data.inc.c>
+};
+
+/* gap sub-block @ 0x7B80 (was gap+0x80, 32 bytes) */
+u8 dPurinModel_gap_0x7B00_sub_0x80[32] = {
+	#include <PurinModel/gap_0x7B00_sub_0x80.data.inc.c>
 };
 
 /* Sprite: Stock */

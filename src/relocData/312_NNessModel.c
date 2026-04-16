@@ -247,7 +247,28 @@ DObjDesc dNNessModel_JointTree[] = {
 };
 
 /* Raw data from file offset 0x3210 to 0x35E0 (976 bytes) */
-u8 dNNessModel_gap_0x3210[976] = {
+/* gap sub-block @ 0x3210 (was gap+0x0, 48 bytes) */
+u8 dNNessModel_gap_0x3210[48] = {
 	#include <NNessModel/gap_0x3210.data.inc.c>
+};
+
+/* gap sub-block @ 0x3240 (was gap+0x30, 256 bytes) */
+u8 dNNessModel_gap_0x3210_sub_0x30[256] = {
+	#include <NNessModel/gap_0x3210_sub_0x30.data.inc.c>
+};
+
+/* gap sub-block @ 0x3340 (was gap+0x130, 192 bytes) */
+u8 dNNessModel_gap_0x3210_sub_0x130[192] = {
+	#include <NNessModel/gap_0x3210_sub_0x130.data.inc.c>
+};
+
+/* gap sub-block @ 0x3400 (was gap+0x1F0, 192 bytes) */
+u8 dNNessModel_gap_0x3210_sub_0x1F0[192] = {
+	#include <NNessModel/gap_0x3210_sub_0x1F0.data.inc.c>
+};
+
+/* gap sub-block @ 0x34C0 (was gap+0x2B0, 288 bytes) */
+u8 dNNessModel_gap_0x3210_sub_0x2B0[288] = {
+	#include <NNessModel/gap_0x3210_sub_0x2B0.data.inc.c>
 };
 

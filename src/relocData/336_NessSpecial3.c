@@ -7,8 +7,59 @@
 #include "relocdata_types.h"
 
 /* Raw data from file offset 0x0000 to 0x02A8 (680 bytes) */
-u8 dNessSpecial3_gap_0x0000[680] = {
+/* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
+u8 dNessSpecial3_gap_0x0000[8] = {
 	#include <NessSpecial3/gap_0x0000.data.inc.c>
+};
+
+/* gap sub-block @ 0x0008 (was gap+0x8, 120 bytes) */
+u8 dNessSpecial3_gap_0x0000_sub_0x8[120] = {
+	#include <NessSpecial3/gap_0x0000_sub_0x8.data.inc.c>
+};
+
+/* gap sub-block @ 0x0080 (was gap+0x80, 120 bytes) */
+u8 dNessSpecial3_gap_0x0000_sub_0x80[120] = {
+	#include <NessSpecial3/gap_0x0000_sub_0x80.data.inc.c>
+};
+
+/* gap sub-block @ 0x00F8 (was gap+0xF8, 16 bytes) */
+u8 dNessSpecial3_gap_0x0000_sub_0xF8[16] = {
+	#include <NessSpecial3/gap_0x0000_sub_0xF8.data.inc.c>
+};
+
+/* gap sub-block @ 0x0108 (was gap+0x108, 48 bytes) */
+u8 dNessSpecial3_gap_0x0000_sub_0x108[48] = {
+	#include <NessSpecial3/gap_0x0000_sub_0x108.data.inc.c>
+};
+
+/* gap sub-block @ 0x0138 (was gap+0x138, 48 bytes) */
+u8 dNessSpecial3_gap_0x0000_sub_0x138[48] = {
+	#include <NessSpecial3/gap_0x0000_sub_0x138.data.inc.c>
+};
+
+/* gap sub-block @ 0x0168 (was gap+0x168, 120 bytes) */
+u8 dNessSpecial3_gap_0x0000_sub_0x168[120] = {
+	#include <NessSpecial3/gap_0x0000_sub_0x168.data.inc.c>
+};
+
+/* gap sub-block @ 0x01E0 (was gap+0x1E0, 4 bytes) */
+u8 dNessSpecial3_gap_0x0000_sub_0x1E0[4] = {
+	#include <NessSpecial3/gap_0x0000_sub_0x1E0.data.inc.c>
+};
+
+/* gap sub-block @ 0x01E4 (was gap+0x1E4, 88 bytes) */
+u8 dNessSpecial3_gap_0x0000_sub_0x1E4[88] = {
+	#include <NessSpecial3/gap_0x0000_sub_0x1E4.data.inc.c>
+};
+
+/* gap sub-block @ 0x023C (was gap+0x23C, 88 bytes) */
+u8 dNessSpecial3_gap_0x0000_sub_0x23C[88] = {
+	#include <NessSpecial3/gap_0x0000_sub_0x23C.data.inc.c>
+};
+
+/* gap sub-block @ 0x0294 (was gap+0x294, 20 bytes) */
+u8 dNessSpecial3_gap_0x0000_sub_0x294[20] = {
+	#include <NessSpecial3/gap_0x0000_sub_0x294.data.inc.c>
 };
 
 /* Raw data from file offset 0x02A8 to 0x0330 (136 bytes) */

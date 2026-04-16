@@ -7,8 +7,19 @@
 #include "relocdata_types.h"
 
 /* Raw data from file offset 0x0000 to 0x0020 (32 bytes) */
-u8 dLinkModel_gap_0x0000[32] = {
+/* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
+u8 dLinkModel_gap_0x0000[8] = {
 	#include <LinkModel/gap_0x0000.data.inc.c>
+};
+
+/* gap sub-block @ 0x0008 (was gap+0x8, 16 bytes) */
+u8 dLinkModel_gap_0x0000_sub_0x8[16] = {
+	#include <LinkModel/gap_0x0000_sub_0x8.data.inc.c>
+};
+
+/* gap sub-block @ 0x0018 (was gap+0x18, 8 bytes) */
+u8 dLinkModel_gap_0x0000_sub_0x18[8] = {
+	#include <LinkModel/gap_0x0000_sub_0x18.data.inc.c>
 };
 
 /* Raw data from file offset 0x0020 to 0x0040 (32 bytes) */
@@ -391,8 +402,219 @@ DObjDesc dLinkModel_JointTree[] = {
 };
 
 /* Raw data from file offset 0x40EC to 0x48F8 (2060 bytes) */
-u8 dLinkModel_gap_0x40EC[2060] = {
+/* gap sub-block @ 0x40EC (was gap+0x0, 52 bytes) */
+u8 dLinkModel_gap_0x40EC[52] = {
 	#include <LinkModel/gap_0x40EC.data.inc.c>
+};
+
+/* gap sub-block @ 0x4120 (was gap+0x34, 56 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x34[56] = {
+	#include <LinkModel/gap_0x40EC_sub_0x34.data.inc.c>
+};
+
+/* gap sub-block @ 0x4158 (was gap+0x6C, 56 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x6C[56] = {
+	#include <LinkModel/gap_0x40EC_sub_0x6C.data.inc.c>
+};
+
+/* gap sub-block @ 0x4190 (was gap+0xA4, 56 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0xA4[56] = {
+	#include <LinkModel/gap_0x40EC_sub_0xA4.data.inc.c>
+};
+
+/* gap sub-block @ 0x41C8 (was gap+0xDC, 40 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0xDC[40] = {
+	#include <LinkModel/gap_0x40EC_sub_0xDC.data.inc.c>
+};
+
+/* gap sub-block @ 0x41F0 (was gap+0x104, 44 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x104[44] = {
+	#include <LinkModel/gap_0x40EC_sub_0x104.data.inc.c>
+};
+
+/* gap sub-block @ 0x421C (was gap+0x130, 56 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x130[56] = {
+	#include <LinkModel/gap_0x40EC_sub_0x130.data.inc.c>
+};
+
+/* gap sub-block @ 0x4254 (was gap+0x168, 56 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x168[56] = {
+	#include <LinkModel/gap_0x40EC_sub_0x168.data.inc.c>
+};
+
+/* gap sub-block @ 0x428C (was gap+0x1A0, 40 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x1A0[40] = {
+	#include <LinkModel/gap_0x40EC_sub_0x1A0.data.inc.c>
+};
+
+/* gap sub-block @ 0x42B4 (was gap+0x1C8, 40 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x1C8[40] = {
+	#include <LinkModel/gap_0x40EC_sub_0x1C8.data.inc.c>
+};
+
+/* gap sub-block @ 0x42DC (was gap+0x1F0, 56 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x1F0[56] = {
+	#include <LinkModel/gap_0x40EC_sub_0x1F0.data.inc.c>
+};
+
+/* gap sub-block @ 0x4314 (was gap+0x228, 4 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x228[4] = {
+	#include <LinkModel/gap_0x40EC_sub_0x228.data.inc.c>
+};
+
+/* gap sub-block @ 0x4318 (was gap+0x22C, 4 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x22C[4] = {
+	#include <LinkModel/gap_0x40EC_sub_0x22C.data.inc.c>
+};
+
+/* gap sub-block @ 0x431C (was gap+0x230, 4 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x230[4] = {
+	#include <LinkModel/gap_0x40EC_sub_0x230.data.inc.c>
+};
+
+/* gap sub-block @ 0x4320 (was gap+0x234, 4 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x234[4] = {
+	#include <LinkModel/gap_0x40EC_sub_0x234.data.inc.c>
+};
+
+/* gap sub-block @ 0x4324 (was gap+0x238, 12 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x238[12] = {
+	#include <LinkModel/gap_0x40EC_sub_0x238.data.inc.c>
+};
+
+/* gap sub-block @ 0x4330 (was gap+0x244, 4 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x244[4] = {
+	#include <LinkModel/gap_0x40EC_sub_0x244.data.inc.c>
+};
+
+/* gap sub-block @ 0x4334 (was gap+0x248, 4 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x248[4] = {
+	#include <LinkModel/gap_0x40EC_sub_0x248.data.inc.c>
+};
+
+/* gap sub-block @ 0x4338 (was gap+0x24C, 8 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x24C[8] = {
+	#include <LinkModel/gap_0x40EC_sub_0x24C.data.inc.c>
+};
+
+/* gap sub-block @ 0x4340 (was gap+0x254, 128 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x254[128] = {
+	#include <LinkModel/gap_0x40EC_sub_0x254.data.inc.c>
+};
+
+/* gap sub-block @ 0x43C0 (was gap+0x2D4, 12 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x2D4[12] = {
+	#include <LinkModel/gap_0x40EC_sub_0x2D4.data.inc.c>
+};
+
+/* gap sub-block @ 0x43CC (was gap+0x2E0, 8 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x2E0[8] = {
+	#include <LinkModel/gap_0x40EC_sub_0x2E0.data.inc.c>
+};
+
+/* gap sub-block @ 0x43D4 (was gap+0x2E8, 8 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x2E8[8] = {
+	#include <LinkModel/gap_0x40EC_sub_0x2E8.data.inc.c>
+};
+
+/* gap sub-block @ 0x43DC (was gap+0x2F0, 16 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x2F0[16] = {
+	#include <LinkModel/gap_0x40EC_sub_0x2F0.data.inc.c>
+};
+
+/* gap sub-block @ 0x43EC (was gap+0x300, 20 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x300[20] = {
+	#include <LinkModel/gap_0x40EC_sub_0x300.data.inc.c>
+};
+
+/* gap sub-block @ 0x4400 (was gap+0x314, 120 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x314[120] = {
+	#include <LinkModel/gap_0x40EC_sub_0x314.data.inc.c>
+};
+
+/* gap sub-block @ 0x4478 (was gap+0x38C, 120 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x38C[120] = {
+	#include <LinkModel/gap_0x40EC_sub_0x38C.data.inc.c>
+};
+
+/* gap sub-block @ 0x44F0 (was gap+0x404, 120 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x404[120] = {
+	#include <LinkModel/gap_0x40EC_sub_0x404.data.inc.c>
+};
+
+/* gap sub-block @ 0x4568 (was gap+0x47C, 120 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x47C[120] = {
+	#include <LinkModel/gap_0x40EC_sub_0x47C.data.inc.c>
+};
+
+/* gap sub-block @ 0x45E0 (was gap+0x4F4, 120 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x4F4[120] = {
+	#include <LinkModel/gap_0x40EC_sub_0x4F4.data.inc.c>
+};
+
+/* gap sub-block @ 0x4658 (was gap+0x56C, 120 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x56C[120] = {
+	#include <LinkModel/gap_0x40EC_sub_0x56C.data.inc.c>
+};
+
+/* gap sub-block @ 0x46D0 (was gap+0x5E4, 120 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x5E4[120] = {
+	#include <LinkModel/gap_0x40EC_sub_0x5E4.data.inc.c>
+};
+
+/* gap sub-block @ 0x4748 (was gap+0x65C, 120 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x65C[120] = {
+	#include <LinkModel/gap_0x40EC_sub_0x65C.data.inc.c>
+};
+
+/* gap sub-block @ 0x47C0 (was gap+0x6D4, 120 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x6D4[120] = {
+	#include <LinkModel/gap_0x40EC_sub_0x6D4.data.inc.c>
+};
+
+/* gap sub-block @ 0x4838 (was gap+0x74C, 120 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x74C[120] = {
+	#include <LinkModel/gap_0x40EC_sub_0x74C.data.inc.c>
+};
+
+/* gap sub-block @ 0x48B0 (was gap+0x7C4, 8 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x7C4[8] = {
+	#include <LinkModel/gap_0x40EC_sub_0x7C4.data.inc.c>
+};
+
+/* gap sub-block @ 0x48B8 (was gap+0x7CC, 8 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x7CC[8] = {
+	#include <LinkModel/gap_0x40EC_sub_0x7CC.data.inc.c>
+};
+
+/* gap sub-block @ 0x48C0 (was gap+0x7D4, 8 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x7D4[8] = {
+	#include <LinkModel/gap_0x40EC_sub_0x7D4.data.inc.c>
+};
+
+/* gap sub-block @ 0x48C8 (was gap+0x7DC, 8 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x7DC[8] = {
+	#include <LinkModel/gap_0x40EC_sub_0x7DC.data.inc.c>
+};
+
+/* gap sub-block @ 0x48D0 (was gap+0x7E4, 16 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x7E4[16] = {
+	#include <LinkModel/gap_0x40EC_sub_0x7E4.data.inc.c>
+};
+
+/* gap sub-block @ 0x48E0 (was gap+0x7F4, 8 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x7F4[8] = {
+	#include <LinkModel/gap_0x40EC_sub_0x7F4.data.inc.c>
+};
+
+/* gap sub-block @ 0x48E8 (was gap+0x7FC, 8 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x7FC[8] = {
+	#include <LinkModel/gap_0x40EC_sub_0x7FC.data.inc.c>
+};
+
+/* gap sub-block @ 0x48F0 (was gap+0x804, 8 bytes) */
+u8 dLinkModel_gap_0x40EC_sub_0x804[8] = {
+	#include <LinkModel/gap_0x40EC_sub_0x804.data.inc.c>
 };
 
 /* Vtx: Vtx_0x48F8 @ 0x48F8 (8 vertices) */
@@ -776,8 +998,94 @@ DObjDesc dLinkModel_JointTree_0x74B0[] = {
 };
 
 /* Raw data from file offset 0x7AE0 to 0x7D00 (544 bytes) */
-u8 dLinkModel_gap_0x7AE0[544] = {
+/* gap sub-block @ 0x7AE0 (was gap+0x0, 56 bytes) */
+u8 dLinkModel_gap_0x7AE0[56] = {
 	#include <LinkModel/gap_0x7AE0.data.inc.c>
+};
+
+/* gap sub-block @ 0x7B18 (was gap+0x38, 56 bytes) */
+u8 dLinkModel_gap_0x7AE0_sub_0x38[56] = {
+	#include <LinkModel/gap_0x7AE0_sub_0x38.data.inc.c>
+};
+
+/* gap sub-block @ 0x7B50 (was gap+0x70, 56 bytes) */
+u8 dLinkModel_gap_0x7AE0_sub_0x70[56] = {
+	#include <LinkModel/gap_0x7AE0_sub_0x70.data.inc.c>
+};
+
+/* gap sub-block @ 0x7B88 (was gap+0xA8, 40 bytes) */
+u8 dLinkModel_gap_0x7AE0_sub_0xA8[40] = {
+	#include <LinkModel/gap_0x7AE0_sub_0xA8.data.inc.c>
+};
+
+/* gap sub-block @ 0x7BB0 (was gap+0xD0, 44 bytes) */
+u8 dLinkModel_gap_0x7AE0_sub_0xD0[44] = {
+	#include <LinkModel/gap_0x7AE0_sub_0xD0.data.inc.c>
+};
+
+/* gap sub-block @ 0x7BDC (was gap+0xFC, 56 bytes) */
+u8 dLinkModel_gap_0x7AE0_sub_0xFC[56] = {
+	#include <LinkModel/gap_0x7AE0_sub_0xFC.data.inc.c>
+};
+
+/* gap sub-block @ 0x7C14 (was gap+0x134, 56 bytes) */
+u8 dLinkModel_gap_0x7AE0_sub_0x134[56] = {
+	#include <LinkModel/gap_0x7AE0_sub_0x134.data.inc.c>
+};
+
+/* gap sub-block @ 0x7C4C (was gap+0x16C, 40 bytes) */
+u8 dLinkModel_gap_0x7AE0_sub_0x16C[40] = {
+	#include <LinkModel/gap_0x7AE0_sub_0x16C.data.inc.c>
+};
+
+/* gap sub-block @ 0x7C74 (was gap+0x194, 40 bytes) */
+u8 dLinkModel_gap_0x7AE0_sub_0x194[40] = {
+	#include <LinkModel/gap_0x7AE0_sub_0x194.data.inc.c>
+};
+
+/* gap sub-block @ 0x7C9C (was gap+0x1BC, 56 bytes) */
+u8 dLinkModel_gap_0x7AE0_sub_0x1BC[56] = {
+	#include <LinkModel/gap_0x7AE0_sub_0x1BC.data.inc.c>
+};
+
+/* gap sub-block @ 0x7CD4 (was gap+0x1F4, 4 bytes) */
+u8 dLinkModel_gap_0x7AE0_sub_0x1F4[4] = {
+	#include <LinkModel/gap_0x7AE0_sub_0x1F4.data.inc.c>
+};
+
+/* gap sub-block @ 0x7CD8 (was gap+0x1F8, 4 bytes) */
+u8 dLinkModel_gap_0x7AE0_sub_0x1F8[4] = {
+	#include <LinkModel/gap_0x7AE0_sub_0x1F8.data.inc.c>
+};
+
+/* gap sub-block @ 0x7CDC (was gap+0x1FC, 4 bytes) */
+u8 dLinkModel_gap_0x7AE0_sub_0x1FC[4] = {
+	#include <LinkModel/gap_0x7AE0_sub_0x1FC.data.inc.c>
+};
+
+/* gap sub-block @ 0x7CE0 (was gap+0x200, 4 bytes) */
+u8 dLinkModel_gap_0x7AE0_sub_0x200[4] = {
+	#include <LinkModel/gap_0x7AE0_sub_0x200.data.inc.c>
+};
+
+/* gap sub-block @ 0x7CE4 (was gap+0x204, 12 bytes) */
+u8 dLinkModel_gap_0x7AE0_sub_0x204[12] = {
+	#include <LinkModel/gap_0x7AE0_sub_0x204.data.inc.c>
+};
+
+/* gap sub-block @ 0x7CF0 (was gap+0x210, 4 bytes) */
+u8 dLinkModel_gap_0x7AE0_sub_0x210[4] = {
+	#include <LinkModel/gap_0x7AE0_sub_0x210.data.inc.c>
+};
+
+/* gap sub-block @ 0x7CF4 (was gap+0x214, 4 bytes) */
+u8 dLinkModel_gap_0x7AE0_sub_0x214[4] = {
+	#include <LinkModel/gap_0x7AE0_sub_0x214.data.inc.c>
+};
+
+/* gap sub-block @ 0x7CF8 (was gap+0x218, 8 bytes) */
+u8 dLinkModel_gap_0x7AE0_sub_0x218[8] = {
+	#include <LinkModel/gap_0x7AE0_sub_0x218.data.inc.c>
 };
 
 /* Vtx: Vtx_0x7D00 @ 0x7D00 (4 vertices) */
@@ -819,8 +1127,74 @@ DObjDesc dLinkModel_JointTree_0x8060[] = {
 };
 
 /* Raw data from file offset 0x8110 to 0x86D8 (1480 bytes) */
-u8 dLinkModel_gap_0x8110[1480] = {
+/* gap sub-block @ 0x8110 (was gap+0x0, 64 bytes) */
+u8 dLinkModel_gap_0x8110[64] = {
 	#include <LinkModel/gap_0x8110.data.inc.c>
+};
+
+/* gap sub-block @ 0x8150 (was gap+0x40, 112 bytes) */
+u8 dLinkModel_gap_0x8110_sub_0x40[112] = {
+	#include <LinkModel/gap_0x8110_sub_0x40.data.inc.c>
+};
+
+/* gap sub-block @ 0x81C0 (was gap+0xB0, 336 bytes) */
+u8 dLinkModel_gap_0x8110_sub_0xB0[336] = {
+	#include <LinkModel/gap_0x8110_sub_0xB0.data.inc.c>
+};
+
+/* gap sub-block @ 0x8310 (was gap+0x200, 48 bytes) */
+u8 dLinkModel_gap_0x8110_sub_0x200[48] = {
+	#include <LinkModel/gap_0x8110_sub_0x200.data.inc.c>
+};
+
+/* gap sub-block @ 0x8340 (was gap+0x230, 64 bytes) */
+u8 dLinkModel_gap_0x8110_sub_0x230[64] = {
+	#include <LinkModel/gap_0x8110_sub_0x230.data.inc.c>
+};
+
+/* gap sub-block @ 0x8380 (was gap+0x270, 332 bytes) */
+u8 dLinkModel_gap_0x8110_sub_0x270[332] = {
+	#include <LinkModel/gap_0x8110_sub_0x270.data.inc.c>
+};
+
+/* gap sub-block @ 0x84CC (was gap+0x3BC, 12 bytes) */
+u8 dLinkModel_gap_0x8110_sub_0x3BC[12] = {
+	#include <LinkModel/gap_0x8110_sub_0x3BC.data.inc.c>
+};
+
+/* gap sub-block @ 0x84D8 (was gap+0x3C8, 8 bytes) */
+u8 dLinkModel_gap_0x8110_sub_0x3C8[8] = {
+	#include <LinkModel/gap_0x8110_sub_0x3C8.data.inc.c>
+};
+
+/* gap sub-block @ 0x84E0 (was gap+0x3D0, 120 bytes) */
+u8 dLinkModel_gap_0x8110_sub_0x3D0[120] = {
+	#include <LinkModel/gap_0x8110_sub_0x3D0.data.inc.c>
+};
+
+/* gap sub-block @ 0x8558 (was gap+0x448, 120 bytes) */
+u8 dLinkModel_gap_0x8110_sub_0x448[120] = {
+	#include <LinkModel/gap_0x8110_sub_0x448.data.inc.c>
+};
+
+/* gap sub-block @ 0x85D0 (was gap+0x4C0, 120 bytes) */
+u8 dLinkModel_gap_0x8110_sub_0x4C0[120] = {
+	#include <LinkModel/gap_0x8110_sub_0x4C0.data.inc.c>
+};
+
+/* gap sub-block @ 0x8648 (was gap+0x538, 120 bytes) */
+u8 dLinkModel_gap_0x8110_sub_0x538[120] = {
+	#include <LinkModel/gap_0x8110_sub_0x538.data.inc.c>
+};
+
+/* gap sub-block @ 0x86C0 (was gap+0x5B0, 16 bytes) */
+u8 dLinkModel_gap_0x8110_sub_0x5B0[16] = {
+	#include <LinkModel/gap_0x8110_sub_0x5B0.data.inc.c>
+};
+
+/* gap sub-block @ 0x86D0 (was gap+0x5C0, 8 bytes) */
+u8 dLinkModel_gap_0x8110_sub_0x5C0[8] = {
+	#include <LinkModel/gap_0x8110_sub_0x5C0.data.inc.c>
 };
 
 /* Vtx: Vtx_0x86D8 @ 0x86D8 (1 vertices) */
@@ -982,8 +1356,209 @@ DObjDesc dLinkModel_JointTree_0x9CF8[] = {
 };
 
 /* Raw data from file offset 0x9DA8 to 0xB188 (5088 bytes) */
-u8 dLinkModel_gap_0x9DA8[5088] = {
+/* gap sub-block @ 0x9DA8 (was gap+0x0, 20 bytes) */
+u8 dLinkModel_gap_0x9DA8[20] = {
 	#include <LinkModel/gap_0x9DA8.data.inc.c>
+};
+
+/* gap sub-block @ 0x9DBC (was gap+0x14, 56 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0x14[56] = {
+	#include <LinkModel/gap_0x9DA8_sub_0x14.data.inc.c>
+};
+
+/* gap sub-block @ 0x9DF4 (was gap+0x4C, 40 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0x4C[40] = {
+	#include <LinkModel/gap_0x9DA8_sub_0x4C.data.inc.c>
+};
+
+/* gap sub-block @ 0x9E1C (was gap+0x74, 32 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0x74[32] = {
+	#include <LinkModel/gap_0x9DA8_sub_0x74.data.inc.c>
+};
+
+/* gap sub-block @ 0x9E3C (was gap+0x94, 56 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0x94[56] = {
+	#include <LinkModel/gap_0x9DA8_sub_0x94.data.inc.c>
+};
+
+/* gap sub-block @ 0x9E74 (was gap+0xCC, 12 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0xCC[12] = {
+	#include <LinkModel/gap_0x9DA8_sub_0xCC.data.inc.c>
+};
+
+/* gap sub-block @ 0x9E80 (was gap+0xD8, 16 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0xD8[16] = {
+	#include <LinkModel/gap_0x9DA8_sub_0xD8.data.inc.c>
+};
+
+/* gap sub-block @ 0x9E90 (was gap+0xE8, 64 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0xE8[64] = {
+	#include <LinkModel/gap_0x9DA8_sub_0xE8.data.inc.c>
+};
+
+/* gap sub-block @ 0x9ED0 (was gap+0x128, 112 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0x128[112] = {
+	#include <LinkModel/gap_0x9DA8_sub_0x128.data.inc.c>
+};
+
+/* gap sub-block @ 0x9F40 (was gap+0x198, 96 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0x198[96] = {
+	#include <LinkModel/gap_0x9DA8_sub_0x198.data.inc.c>
+};
+
+/* gap sub-block @ 0x9FA0 (was gap+0x1F8, 128 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0x1F8[128] = {
+	#include <LinkModel/gap_0x9DA8_sub_0x1F8.data.inc.c>
+};
+
+/* gap sub-block @ 0xA020 (was gap+0x278, 96 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0x278[96] = {
+	#include <LinkModel/gap_0x9DA8_sub_0x278.data.inc.c>
+};
+
+/* gap sub-block @ 0xA080 (was gap+0x2D8, 128 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0x2D8[128] = {
+	#include <LinkModel/gap_0x9DA8_sub_0x2D8.data.inc.c>
+};
+
+/* gap sub-block @ 0xA100 (was gap+0x358, 576 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0x358[576] = {
+	#include <LinkModel/gap_0x9DA8_sub_0x358.data.inc.c>
+};
+
+/* gap sub-block @ 0xA340 (was gap+0x598, 128 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0x598[128] = {
+	#include <LinkModel/gap_0x9DA8_sub_0x598.data.inc.c>
+};
+
+/* gap sub-block @ 0xA3C0 (was gap+0x618, 112 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0x618[112] = {
+	#include <LinkModel/gap_0x9DA8_sub_0x618.data.inc.c>
+};
+
+/* gap sub-block @ 0xA430 (was gap+0x688, 96 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0x688[96] = {
+	#include <LinkModel/gap_0x9DA8_sub_0x688.data.inc.c>
+};
+
+/* gap sub-block @ 0xA490 (was gap+0x6E8, 224 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0x6E8[224] = {
+	#include <LinkModel/gap_0x9DA8_sub_0x6E8.data.inc.c>
+};
+
+/* gap sub-block @ 0xA570 (was gap+0x7C8, 112 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0x7C8[112] = {
+	#include <LinkModel/gap_0x9DA8_sub_0x7C8.data.inc.c>
+};
+
+/* gap sub-block @ 0xA5E0 (was gap+0x838, 192 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0x838[192] = {
+	#include <LinkModel/gap_0x9DA8_sub_0x838.data.inc.c>
+};
+
+/* gap sub-block @ 0xA6A0 (was gap+0x8F8, 96 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0x8F8[96] = {
+	#include <LinkModel/gap_0x9DA8_sub_0x8F8.data.inc.c>
+};
+
+/* gap sub-block @ 0xA700 (was gap+0x958, 352 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0x958[352] = {
+	#include <LinkModel/gap_0x9DA8_sub_0x958.data.inc.c>
+};
+
+/* gap sub-block @ 0xA860 (was gap+0xAB8, 160 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0xAB8[160] = {
+	#include <LinkModel/gap_0x9DA8_sub_0xAB8.data.inc.c>
+};
+
+/* gap sub-block @ 0xA900 (was gap+0xB58, 112 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0xB58[112] = {
+	#include <LinkModel/gap_0x9DA8_sub_0xB58.data.inc.c>
+};
+
+/* gap sub-block @ 0xA970 (was gap+0xBC8, 160 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0xBC8[160] = {
+	#include <LinkModel/gap_0x9DA8_sub_0xBC8.data.inc.c>
+};
+
+/* gap sub-block @ 0xAA10 (was gap+0xC68, 112 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0xC68[112] = {
+	#include <LinkModel/gap_0x9DA8_sub_0xC68.data.inc.c>
+};
+
+/* gap sub-block @ 0xAA80 (was gap+0xCD8, 112 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0xCD8[112] = {
+	#include <LinkModel/gap_0x9DA8_sub_0xCD8.data.inc.c>
+};
+
+/* gap sub-block @ 0xAAF0 (was gap+0xD48, 112 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0xD48[112] = {
+	#include <LinkModel/gap_0x9DA8_sub_0xD48.data.inc.c>
+};
+
+/* gap sub-block @ 0xAB60 (was gap+0xDB8, 112 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0xDB8[112] = {
+	#include <LinkModel/gap_0x9DA8_sub_0xDB8.data.inc.c>
+};
+
+/* gap sub-block @ 0xABD0 (was gap+0xE28, 112 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0xE28[112] = {
+	#include <LinkModel/gap_0x9DA8_sub_0xE28.data.inc.c>
+};
+
+/* gap sub-block @ 0xAC40 (was gap+0xE98, 160 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0xE98[160] = {
+	#include <LinkModel/gap_0x9DA8_sub_0xE98.data.inc.c>
+};
+
+/* gap sub-block @ 0xACE0 (was gap+0xF38, 112 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0xF38[112] = {
+	#include <LinkModel/gap_0x9DA8_sub_0xF38.data.inc.c>
+};
+
+/* gap sub-block @ 0xAD50 (was gap+0xFA8, 160 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0xFA8[160] = {
+	#include <LinkModel/gap_0x9DA8_sub_0xFA8.data.inc.c>
+};
+
+/* gap sub-block @ 0xADF0 (was gap+0x1048, 112 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0x1048[112] = {
+	#include <LinkModel/gap_0x9DA8_sub_0x1048.data.inc.c>
+};
+
+/* gap sub-block @ 0xAE60 (was gap+0x10B8, 64 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0x10B8[64] = {
+	#include <LinkModel/gap_0x9DA8_sub_0x10B8.data.inc.c>
+};
+
+/* gap sub-block @ 0xAEA0 (was gap+0x10F8, 96 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0x10F8[96] = {
+	#include <LinkModel/gap_0x9DA8_sub_0x10F8.data.inc.c>
+};
+
+/* gap sub-block @ 0xAF00 (was gap+0x1158, 160 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0x1158[160] = {
+	#include <LinkModel/gap_0x9DA8_sub_0x1158.data.inc.c>
+};
+
+/* gap sub-block @ 0xAFA0 (was gap+0x11F8, 192 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0x11F8[192] = {
+	#include <LinkModel/gap_0x9DA8_sub_0x11F8.data.inc.c>
+};
+
+/* gap sub-block @ 0xB060 (was gap+0x12B8, 96 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0x12B8[96] = {
+	#include <LinkModel/gap_0x9DA8_sub_0x12B8.data.inc.c>
+};
+
+/* gap sub-block @ 0xB0C0 (was gap+0x1318, 96 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0x1318[96] = {
+	#include <LinkModel/gap_0x9DA8_sub_0x1318.data.inc.c>
+};
+
+/* gap sub-block @ 0xB120 (was gap+0x1378, 104 bytes) */
+u8 dLinkModel_gap_0x9DA8_sub_0x1378[104] = {
+	#include <LinkModel/gap_0x9DA8_sub_0x1378.data.inc.c>
 };
 
 /* Palette: Lut_0xB188 @ 0xB188 (16 colors RGBA5551) */
@@ -1050,8 +1625,14 @@ u16 dLinkModel_Lut_0xC6C0_palette[16] = {
 };
 
 /* Raw data from file offset 0xC6E0 to 0xC8F0 (528 bytes) */
-u8 dLinkModel_gap_0xC6E0[528] = {
+/* gap sub-block @ 0xC6E0 (was gap+0x0, 8 bytes) */
+u8 dLinkModel_gap_0xC6E0[8] = {
 	#include <LinkModel/gap_0xC6E0.data.inc.c>
+};
+
+/* gap sub-block @ 0xC6E8 (was gap+0x8, 520 bytes) */
+u8 dLinkModel_gap_0xC6E0_sub_0x8[520] = {
+	#include <LinkModel/gap_0xC6E0_sub_0x8.data.inc.c>
 };
 
 /* Texture data @ 0xC8F0 (136 bytes) */

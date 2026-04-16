@@ -21,8 +21,19 @@ u8 dLuigiModel[32496] = {
 #else  /* REGION_US */
 
 /* Raw data from file offset 0x0000 to 0x0020 (32 bytes) */
-u8 dLuigiModel_gap_0x0000[32] = {
+/* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
+u8 dLuigiModel_gap_0x0000[8] = {
 	#include <LuigiModel/gap_0x0000.data.inc.c>
+};
+
+/* gap sub-block @ 0x0008 (was gap+0x8, 16 bytes) */
+u8 dLuigiModel_gap_0x0000_sub_0x8[16] = {
+	#include <LuigiModel/gap_0x0000_sub_0x8.data.inc.c>
+};
+
+/* gap sub-block @ 0x0018 (was gap+0x18, 8 bytes) */
+u8 dLuigiModel_gap_0x0000_sub_0x18[8] = {
+	#include <LuigiModel/gap_0x0000_sub_0x18.data.inc.c>
 };
 
 /* Raw data from file offset 0x0020 to 0x0040 (32 bytes) */
@@ -253,8 +264,334 @@ DObjDesc dLuigiModel_JointTree[] = {
 };
 
 /* Raw data from file offset 0x28E0 to 0x3590 (3248 bytes) */
-u8 dLuigiModel_gap_0x28E0[3248] = {
+/* gap sub-block @ 0x28E0 (was gap+0x0, 20 bytes) */
+u8 dLuigiModel_gap_0x28E0[20] = {
 	#include <LuigiModel/gap_0x28E0.data.inc.c>
+};
+
+/* gap sub-block @ 0x28F4 (was gap+0x14, 40 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x14[40] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x14.data.inc.c>
+};
+
+/* gap sub-block @ 0x291C (was gap+0x3C, 56 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x3C[56] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x3C.data.inc.c>
+};
+
+/* gap sub-block @ 0x2954 (was gap+0x74, 40 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x74[40] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x74.data.inc.c>
+};
+
+/* gap sub-block @ 0x297C (was gap+0x9C, 40 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x9C[40] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x9C.data.inc.c>
+};
+
+/* gap sub-block @ 0x29A4 (was gap+0xC4, 112 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0xC4[112] = {
+	#include <LuigiModel/gap_0x28E0_sub_0xC4.data.inc.c>
+};
+
+/* gap sub-block @ 0x2A14 (was gap+0x134, 40 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x134[40] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x134.data.inc.c>
+};
+
+/* gap sub-block @ 0x2A3C (was gap+0x15C, 40 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x15C[40] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x15C.data.inc.c>
+};
+
+/* gap sub-block @ 0x2A64 (was gap+0x184, 56 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x184[56] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x184.data.inc.c>
+};
+
+/* gap sub-block @ 0x2A9C (was gap+0x1BC, 56 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x1BC[56] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x1BC.data.inc.c>
+};
+
+/* gap sub-block @ 0x2AD4 (was gap+0x1F4, 56 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x1F4[56] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x1F4.data.inc.c>
+};
+
+/* gap sub-block @ 0x2B0C (was gap+0x22C, 56 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x22C[56] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x22C.data.inc.c>
+};
+
+/* gap sub-block @ 0x2B44 (was gap+0x264, 40 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x264[40] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x264.data.inc.c>
+};
+
+/* gap sub-block @ 0x2B6C (was gap+0x28C, 40 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x28C[40] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x28C.data.inc.c>
+};
+
+/* gap sub-block @ 0x2B94 (was gap+0x2B4, 40 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x2B4[40] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x2B4.data.inc.c>
+};
+
+/* gap sub-block @ 0x2BBC (was gap+0x2DC, 40 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x2DC[40] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x2DC.data.inc.c>
+};
+
+/* gap sub-block @ 0x2BE4 (was gap+0x304, 40 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x304[40] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x304.data.inc.c>
+};
+
+/* gap sub-block @ 0x2C0C (was gap+0x32C, 36 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x32C[36] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x32C.data.inc.c>
+};
+
+/* gap sub-block @ 0x2C30 (was gap+0x350, 4 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x350[4] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x350.data.inc.c>
+};
+
+/* gap sub-block @ 0x2C34 (was gap+0x354, 4 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x354[4] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x354.data.inc.c>
+};
+
+/* gap sub-block @ 0x2C38 (was gap+0x358, 4 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x358[4] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x358.data.inc.c>
+};
+
+/* gap sub-block @ 0x2C3C (was gap+0x35C, 4 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x35C[4] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x35C.data.inc.c>
+};
+
+/* gap sub-block @ 0x2C40 (was gap+0x360, 4 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x360[4] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x360.data.inc.c>
+};
+
+/* gap sub-block @ 0x2C44 (was gap+0x364, 16 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x364[16] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x364.data.inc.c>
+};
+
+/* gap sub-block @ 0x2C54 (was gap+0x374, 8 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x374[8] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x374.data.inc.c>
+};
+
+/* gap sub-block @ 0x2C5C (was gap+0x37C, 4 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x37C[4] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x37C.data.inc.c>
+};
+
+/* gap sub-block @ 0x2C60 (was gap+0x380, 4 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x380[4] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x380.data.inc.c>
+};
+
+/* gap sub-block @ 0x2C64 (was gap+0x384, 4 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x384[4] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x384.data.inc.c>
+};
+
+/* gap sub-block @ 0x2C68 (was gap+0x388, 4 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x388[4] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x388.data.inc.c>
+};
+
+/* gap sub-block @ 0x2C6C (was gap+0x38C, 4 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x38C[4] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x38C.data.inc.c>
+};
+
+/* gap sub-block @ 0x2C70 (was gap+0x390, 4 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x390[4] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x390.data.inc.c>
+};
+
+/* gap sub-block @ 0x2C74 (was gap+0x394, 12 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x394[12] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x394.data.inc.c>
+};
+
+/* gap sub-block @ 0x2C80 (was gap+0x3A0, 100 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x3A0[100] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x3A0.data.inc.c>
+};
+
+/* gap sub-block @ 0x2CE4 (was gap+0x404, 16 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x404[16] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x404.data.inc.c>
+};
+
+/* gap sub-block @ 0x2CF4 (was gap+0x414, 20 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x414[20] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x414.data.inc.c>
+};
+
+/* gap sub-block @ 0x2D08 (was gap+0x428, 8 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x428[8] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x428.data.inc.c>
+};
+
+/* gap sub-block @ 0x2D10 (was gap+0x430, 16 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x430[16] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x430.data.inc.c>
+};
+
+/* gap sub-block @ 0x2D20 (was gap+0x440, 120 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x440[120] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x440.data.inc.c>
+};
+
+/* gap sub-block @ 0x2D98 (was gap+0x4B8, 120 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x4B8[120] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x4B8.data.inc.c>
+};
+
+/* gap sub-block @ 0x2E10 (was gap+0x530, 120 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x530[120] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x530.data.inc.c>
+};
+
+/* gap sub-block @ 0x2E88 (was gap+0x5A8, 120 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x5A8[120] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x5A8.data.inc.c>
+};
+
+/* gap sub-block @ 0x2F00 (was gap+0x620, 120 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x620[120] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x620.data.inc.c>
+};
+
+/* gap sub-block @ 0x2F78 (was gap+0x698, 120 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x698[120] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x698.data.inc.c>
+};
+
+/* gap sub-block @ 0x2FF0 (was gap+0x710, 120 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x710[120] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x710.data.inc.c>
+};
+
+/* gap sub-block @ 0x3068 (was gap+0x788, 120 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x788[120] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x788.data.inc.c>
+};
+
+/* gap sub-block @ 0x30E0 (was gap+0x800, 120 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x800[120] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x800.data.inc.c>
+};
+
+/* gap sub-block @ 0x3158 (was gap+0x878, 120 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x878[120] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x878.data.inc.c>
+};
+
+/* gap sub-block @ 0x31D0 (was gap+0x8F0, 120 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x8F0[120] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x8F0.data.inc.c>
+};
+
+/* gap sub-block @ 0x3248 (was gap+0x968, 120 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x968[120] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x968.data.inc.c>
+};
+
+/* gap sub-block @ 0x32C0 (was gap+0x9E0, 120 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0x9E0[120] = {
+	#include <LuigiModel/gap_0x28E0_sub_0x9E0.data.inc.c>
+};
+
+/* gap sub-block @ 0x3338 (was gap+0xA58, 120 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0xA58[120] = {
+	#include <LuigiModel/gap_0x28E0_sub_0xA58.data.inc.c>
+};
+
+/* gap sub-block @ 0x33B0 (was gap+0xAD0, 120 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0xAD0[120] = {
+	#include <LuigiModel/gap_0x28E0_sub_0xAD0.data.inc.c>
+};
+
+/* gap sub-block @ 0x3428 (was gap+0xB48, 120 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0xB48[120] = {
+	#include <LuigiModel/gap_0x28E0_sub_0xB48.data.inc.c>
+};
+
+/* gap sub-block @ 0x34A0 (was gap+0xBC0, 120 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0xBC0[120] = {
+	#include <LuigiModel/gap_0x28E0_sub_0xBC0.data.inc.c>
+};
+
+/* gap sub-block @ 0x3518 (was gap+0xC38, 8 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0xC38[8] = {
+	#include <LuigiModel/gap_0x28E0_sub_0xC38.data.inc.c>
+};
+
+/* gap sub-block @ 0x3520 (was gap+0xC40, 8 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0xC40[8] = {
+	#include <LuigiModel/gap_0x28E0_sub_0xC40.data.inc.c>
+};
+
+/* gap sub-block @ 0x3528 (was gap+0xC48, 8 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0xC48[8] = {
+	#include <LuigiModel/gap_0x28E0_sub_0xC48.data.inc.c>
+};
+
+/* gap sub-block @ 0x3530 (was gap+0xC50, 8 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0xC50[8] = {
+	#include <LuigiModel/gap_0x28E0_sub_0xC50.data.inc.c>
+};
+
+/* gap sub-block @ 0x3538 (was gap+0xC58, 28 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0xC58[28] = {
+	#include <LuigiModel/gap_0x28E0_sub_0xC58.data.inc.c>
+};
+
+/* gap sub-block @ 0x3554 (was gap+0xC74, 8 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0xC74[8] = {
+	#include <LuigiModel/gap_0x28E0_sub_0xC74.data.inc.c>
+};
+
+/* gap sub-block @ 0x355C (was gap+0xC7C, 8 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0xC7C[8] = {
+	#include <LuigiModel/gap_0x28E0_sub_0xC7C.data.inc.c>
+};
+
+/* gap sub-block @ 0x3564 (was gap+0xC84, 8 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0xC84[8] = {
+	#include <LuigiModel/gap_0x28E0_sub_0xC84.data.inc.c>
+};
+
+/* gap sub-block @ 0x356C (was gap+0xC8C, 8 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0xC8C[8] = {
+	#include <LuigiModel/gap_0x28E0_sub_0xC8C.data.inc.c>
+};
+
+/* gap sub-block @ 0x3574 (was gap+0xC94, 8 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0xC94[8] = {
+	#include <LuigiModel/gap_0x28E0_sub_0xC94.data.inc.c>
+};
+
+/* gap sub-block @ 0x357C (was gap+0xC9C, 8 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0xC9C[8] = {
+	#include <LuigiModel/gap_0x28E0_sub_0xC9C.data.inc.c>
+};
+
+/* gap sub-block @ 0x3584 (was gap+0xCA4, 12 bytes) */
+u8 dLuigiModel_gap_0x28E0_sub_0xCA4[12] = {
+	#include <LuigiModel/gap_0x28E0_sub_0xCA4.data.inc.c>
 };
 
 /* Vtx: Vtx_0x3590 @ 0x3590 (17 vertices) */
@@ -459,8 +796,524 @@ DObjDesc dLuigiModel_JointTree_0x49E8[] = {
 };
 
 /* Raw data from file offset 0x4E8C to 0x6D38 (7852 bytes) */
-u8 dLuigiModel_gap_0x4E8C[7852] = {
+/* gap sub-block @ 0x4E8C (was gap+0x0, 56 bytes) */
+u8 dLuigiModel_gap_0x4E8C[56] = {
 	#include <LuigiModel/gap_0x4E8C.data.inc.c>
+};
+
+/* gap sub-block @ 0x4EC4 (was gap+0x38, 40 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x38[40] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x38.data.inc.c>
+};
+
+/* gap sub-block @ 0x4EEC (was gap+0x60, 56 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x60[56] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x60.data.inc.c>
+};
+
+/* gap sub-block @ 0x4F24 (was gap+0x98, 40 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x98[40] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x98.data.inc.c>
+};
+
+/* gap sub-block @ 0x4F4C (was gap+0xC0, 40 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0xC0[40] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0xC0.data.inc.c>
+};
+
+/* gap sub-block @ 0x4F74 (was gap+0xE8, 112 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0xE8[112] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0xE8.data.inc.c>
+};
+
+/* gap sub-block @ 0x4FE4 (was gap+0x158, 40 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x158[40] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x158.data.inc.c>
+};
+
+/* gap sub-block @ 0x500C (was gap+0x180, 40 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x180[40] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x180.data.inc.c>
+};
+
+/* gap sub-block @ 0x5034 (was gap+0x1A8, 56 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x1A8[56] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x1A8.data.inc.c>
+};
+
+/* gap sub-block @ 0x506C (was gap+0x1E0, 56 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x1E0[56] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x1E0.data.inc.c>
+};
+
+/* gap sub-block @ 0x50A4 (was gap+0x218, 56 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x218[56] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x218.data.inc.c>
+};
+
+/* gap sub-block @ 0x50DC (was gap+0x250, 56 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x250[56] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x250.data.inc.c>
+};
+
+/* gap sub-block @ 0x5114 (was gap+0x288, 40 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x288[40] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x288.data.inc.c>
+};
+
+/* gap sub-block @ 0x513C (was gap+0x2B0, 40 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x2B0[40] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x2B0.data.inc.c>
+};
+
+/* gap sub-block @ 0x5164 (was gap+0x2D8, 40 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x2D8[40] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x2D8.data.inc.c>
+};
+
+/* gap sub-block @ 0x518C (was gap+0x300, 40 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x300[40] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x300.data.inc.c>
+};
+
+/* gap sub-block @ 0x51B4 (was gap+0x328, 40 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x328[40] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x328.data.inc.c>
+};
+
+/* gap sub-block @ 0x51DC (was gap+0x350, 20 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x350[20] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x350.data.inc.c>
+};
+
+/* gap sub-block @ 0x51F0 (was gap+0x364, 20 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x364[20] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x364.data.inc.c>
+};
+
+/* gap sub-block @ 0x5204 (was gap+0x378, 4 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x378[4] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x378.data.inc.c>
+};
+
+/* gap sub-block @ 0x5208 (was gap+0x37C, 4 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x37C[4] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x37C.data.inc.c>
+};
+
+/* gap sub-block @ 0x520C (was gap+0x380, 4 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x380[4] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x380.data.inc.c>
+};
+
+/* gap sub-block @ 0x5210 (was gap+0x384, 4 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x384[4] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x384.data.inc.c>
+};
+
+/* gap sub-block @ 0x5214 (was gap+0x388, 24 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x388[24] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x388.data.inc.c>
+};
+
+/* gap sub-block @ 0x522C (was gap+0x3A0, 4 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x3A0[4] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x3A0.data.inc.c>
+};
+
+/* gap sub-block @ 0x5230 (was gap+0x3A4, 4 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x3A4[4] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x3A4.data.inc.c>
+};
+
+/* gap sub-block @ 0x5234 (was gap+0x3A8, 4 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x3A8[4] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x3A8.data.inc.c>
+};
+
+/* gap sub-block @ 0x5238 (was gap+0x3AC, 4 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x3AC[4] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x3AC.data.inc.c>
+};
+
+/* gap sub-block @ 0x523C (was gap+0x3B0, 4 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x3B0[4] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x3B0.data.inc.c>
+};
+
+/* gap sub-block @ 0x5240 (was gap+0x3B4, 4 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x3B4[4] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x3B4.data.inc.c>
+};
+
+/* gap sub-block @ 0x5244 (was gap+0x3B8, 12 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x3B8[12] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x3B8.data.inc.c>
+};
+
+/* gap sub-block @ 0x5250 (was gap+0x3C4, 336 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x3C4[336] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x3C4.data.inc.c>
+};
+
+/* gap sub-block @ 0x53A0 (was gap+0x514, 32 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x514[32] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x514.data.inc.c>
+};
+
+/* gap sub-block @ 0x53C0 (was gap+0x534, 168 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x534[168] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x534.data.inc.c>
+};
+
+/* gap sub-block @ 0x5468 (was gap+0x5DC, 88 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x5DC[88] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x5DC.data.inc.c>
+};
+
+/* gap sub-block @ 0x54C0 (was gap+0x634, 32 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x634[32] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x634.data.inc.c>
+};
+
+/* gap sub-block @ 0x54E0 (was gap+0x654, 20 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x654[20] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x654.data.inc.c>
+};
+
+/* gap sub-block @ 0x54F4 (was gap+0x668, 24 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x668[24] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x668.data.inc.c>
+};
+
+/* gap sub-block @ 0x550C (was gap+0x680, 32 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x680[32] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x680.data.inc.c>
+};
+
+/* gap sub-block @ 0x552C (was gap+0x6A0, 4 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x6A0[4] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x6A0.data.inc.c>
+};
+
+/* gap sub-block @ 0x5530 (was gap+0x6A4, 256 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x6A4[256] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x6A4.data.inc.c>
+};
+
+/* gap sub-block @ 0x5630 (was gap+0x7A4, 32 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x7A4[32] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x7A4.data.inc.c>
+};
+
+/* gap sub-block @ 0x5650 (was gap+0x7C4, 136 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x7C4[136] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x7C4.data.inc.c>
+};
+
+/* gap sub-block @ 0x56D8 (was gap+0x84C, 88 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x84C[88] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x84C.data.inc.c>
+};
+
+/* gap sub-block @ 0x5730 (was gap+0x8A4, 32 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x8A4[32] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x8A4.data.inc.c>
+};
+
+/* gap sub-block @ 0x5750 (was gap+0x8C4, 20 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x8C4[20] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x8C4.data.inc.c>
+};
+
+/* gap sub-block @ 0x5764 (was gap+0x8D8, 24 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x8D8[24] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x8D8.data.inc.c>
+};
+
+/* gap sub-block @ 0x577C (was gap+0x8F0, 32 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x8F0[32] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x8F0.data.inc.c>
+};
+
+/* gap sub-block @ 0x579C (was gap+0x910, 4 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x910[4] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x910.data.inc.c>
+};
+
+/* gap sub-block @ 0x57A0 (was gap+0x914, 336 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x914[336] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x914.data.inc.c>
+};
+
+/* gap sub-block @ 0x58F0 (was gap+0xA64, 32 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0xA64[32] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0xA64.data.inc.c>
+};
+
+/* gap sub-block @ 0x5910 (was gap+0xA84, 168 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0xA84[168] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0xA84.data.inc.c>
+};
+
+/* gap sub-block @ 0x59B8 (was gap+0xB2C, 120 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0xB2C[120] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0xB2C.data.inc.c>
+};
+
+/* gap sub-block @ 0x5A30 (was gap+0xBA4, 20 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0xBA4[20] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0xBA4.data.inc.c>
+};
+
+/* gap sub-block @ 0x5A44 (was gap+0xBB8, 24 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0xBB8[24] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0xBB8.data.inc.c>
+};
+
+/* gap sub-block @ 0x5A5C (was gap+0xBD0, 32 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0xBD0[32] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0xBD0.data.inc.c>
+};
+
+/* gap sub-block @ 0x5A7C (was gap+0xBF0, 4 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0xBF0[4] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0xBF0.data.inc.c>
+};
+
+/* gap sub-block @ 0x5A80 (was gap+0xBF4, 256 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0xBF4[256] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0xBF4.data.inc.c>
+};
+
+/* gap sub-block @ 0x5B80 (was gap+0xCF4, 32 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0xCF4[32] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0xCF4.data.inc.c>
+};
+
+/* gap sub-block @ 0x5BA0 (was gap+0xD14, 136 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0xD14[136] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0xD14.data.inc.c>
+};
+
+/* gap sub-block @ 0x5C28 (was gap+0xD9C, 88 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0xD9C[88] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0xD9C.data.inc.c>
+};
+
+/* gap sub-block @ 0x5C80 (was gap+0xDF4, 32 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0xDF4[32] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0xDF4.data.inc.c>
+};
+
+/* gap sub-block @ 0x5CA0 (was gap+0xE14, 20 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0xE14[20] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0xE14.data.inc.c>
+};
+
+/* gap sub-block @ 0x5CB4 (was gap+0xE28, 24 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0xE28[24] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0xE28.data.inc.c>
+};
+
+/* gap sub-block @ 0x5CCC (was gap+0xE40, 32 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0xE40[32] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0xE40.data.inc.c>
+};
+
+/* gap sub-block @ 0x5CEC (was gap+0xE60, 4 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0xE60[4] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0xE60.data.inc.c>
+};
+
+/* gap sub-block @ 0x5CF0 (was gap+0xE64, 96 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0xE64[96] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0xE64.data.inc.c>
+};
+
+/* gap sub-block @ 0x5D50 (was gap+0xEC4, 32 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0xEC4[32] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0xEC4.data.inc.c>
+};
+
+/* gap sub-block @ 0x5D70 (was gap+0xEE4, 112 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0xEE4[112] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0xEE4.data.inc.c>
+};
+
+/* gap sub-block @ 0x5DE0 (was gap+0xF54, 80 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0xF54[80] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0xF54.data.inc.c>
+};
+
+/* gap sub-block @ 0x5E30 (was gap+0xFA4, 32 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0xFA4[32] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0xFA4.data.inc.c>
+};
+
+/* gap sub-block @ 0x5E50 (was gap+0xFC4, 240 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0xFC4[240] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0xFC4.data.inc.c>
+};
+
+/* gap sub-block @ 0x5F40 (was gap+0x10B4, 96 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x10B4[96] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x10B4.data.inc.c>
+};
+
+/* gap sub-block @ 0x5FA0 (was gap+0x1114, 512 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x1114[512] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x1114.data.inc.c>
+};
+
+/* gap sub-block @ 0x61A0 (was gap+0x1314, 112 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x1314[112] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x1314.data.inc.c>
+};
+
+/* gap sub-block @ 0x6210 (was gap+0x1384, 64 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x1384[64] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x1384.data.inc.c>
+};
+
+/* gap sub-block @ 0x6250 (was gap+0x13C4, 32 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x13C4[32] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x13C4.data.inc.c>
+};
+
+/* gap sub-block @ 0x6270 (was gap+0x13E4, 544 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x13E4[544] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x13E4.data.inc.c>
+};
+
+/* gap sub-block @ 0x6490 (was gap+0x1604, 128 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x1604[128] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x1604.data.inc.c>
+};
+
+/* gap sub-block @ 0x6510 (was gap+0x1684, 32 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x1684[32] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x1684.data.inc.c>
+};
+
+/* gap sub-block @ 0x6530 (was gap+0x16A4, 112 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x16A4[112] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x16A4.data.inc.c>
+};
+
+/* gap sub-block @ 0x65A0 (was gap+0x1714, 128 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x1714[128] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x1714.data.inc.c>
+};
+
+/* gap sub-block @ 0x6620 (was gap+0x1794, 32 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x1794[32] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x1794.data.inc.c>
+};
+
+/* gap sub-block @ 0x6640 (was gap+0x17B4, 112 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x17B4[112] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x17B4.data.inc.c>
+};
+
+/* gap sub-block @ 0x66B0 (was gap+0x1824, 96 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x1824[96] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x1824.data.inc.c>
+};
+
+/* gap sub-block @ 0x6710 (was gap+0x1884, 32 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x1884[32] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x1884.data.inc.c>
+};
+
+/* gap sub-block @ 0x6730 (was gap+0x18A4, 128 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x18A4[128] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x18A4.data.inc.c>
+};
+
+/* gap sub-block @ 0x67B0 (was gap+0x1924, 96 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x1924[96] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x1924.data.inc.c>
+};
+
+/* gap sub-block @ 0x6810 (was gap+0x1984, 32 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x1984[32] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x1984.data.inc.c>
+};
+
+/* gap sub-block @ 0x6830 (was gap+0x19A4, 128 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x19A4[128] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x19A4.data.inc.c>
+};
+
+/* gap sub-block @ 0x68B0 (was gap+0x1A24, 128 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x1A24[128] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x1A24.data.inc.c>
+};
+
+/* gap sub-block @ 0x6930 (was gap+0x1AA4, 32 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x1AA4[32] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x1AA4.data.inc.c>
+};
+
+/* gap sub-block @ 0x6950 (was gap+0x1AC4, 112 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x1AC4[112] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x1AC4.data.inc.c>
+};
+
+/* gap sub-block @ 0x69C0 (was gap+0x1B34, 128 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x1B34[128] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x1B34.data.inc.c>
+};
+
+/* gap sub-block @ 0x6A40 (was gap+0x1BB4, 32 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x1BB4[32] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x1BB4.data.inc.c>
+};
+
+/* gap sub-block @ 0x6A60 (was gap+0x1BD4, 112 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x1BD4[112] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x1BD4.data.inc.c>
+};
+
+/* gap sub-block @ 0x6AD0 (was gap+0x1C44, 80 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x1C44[80] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x1C44.data.inc.c>
+};
+
+/* gap sub-block @ 0x6B20 (was gap+0x1C94, 32 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x1C94[32] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x1C94.data.inc.c>
+};
+
+/* gap sub-block @ 0x6B40 (was gap+0x1CB4, 112 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x1CB4[112] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x1CB4.data.inc.c>
+};
+
+/* gap sub-block @ 0x6BB0 (was gap+0x1D24, 232 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x1D24[232] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x1D24.data.inc.c>
+};
+
+/* gap sub-block @ 0x6C98 (was gap+0x1E0C, 40 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x1E0C[40] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x1E0C.data.inc.c>
+};
+
+/* gap sub-block @ 0x6CC0 (was gap+0x1E34, 40 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x1E34[40] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x1E34.data.inc.c>
+};
+
+/* gap sub-block @ 0x6CE8 (was gap+0x1E5C, 40 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x1E5C[40] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x1E5C.data.inc.c>
+};
+
+/* gap sub-block @ 0x6D10 (was gap+0x1E84, 40 bytes) */
+u8 dLuigiModel_gap_0x4E8C_sub_0x1E84[40] = {
+	#include <LuigiModel/gap_0x4E8C_sub_0x1E84.data.inc.c>
 };
 
 /* Texture data @ 0x6D38 (1672 bytes) */

@@ -1,13 +1,13 @@
-/* relocData file 76: MVEnding */
-/* Inlined block layout - edit this file directly. The .inc.c
- * files referenced below live under build/src/relocData/ and
- * are regenerated from the baserom by tools/extractRelocInc.py
- * at extract time. */
+/* relocData file 76: MVEnding — movie/opening camera animation data.
+ *
+ * Block boundaries from symbols/reloc_data_symbols.us.txt offsets.
+ * Each ll{Name}CamAnimJoint in that file points at a u32 AObjEvent32
+ * command stream; the movie engine passes each to gcAddCObjCamAnimJoint.
+ */
 
 #include "relocdata_types.h"
 
-/* Raw data from file offset 0x0000 to 0x04F0 (1264 bytes) */
-u8 dMVEnding_OperatorCam_AnimJoint[1264] = {
-	#include <MVEnding/OperatorCam_AnimJoint.data.inc.c>
+/* CamAnimJoint OperatorCamAnimJoint @ 0x0000 (1264 bytes) */
+u32 dMVEnding_OperatorCamAnimJoint[316] = {
+	#include <MVEnding/OperatorCamAnimJoint.data.inc.c>
 };
-

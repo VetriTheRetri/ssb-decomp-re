@@ -1,13 +1,13 @@
-/* relocData file 56: MVOpeningRoomScene1 */
-/* Inlined block layout - edit this file directly. The .inc.c
- * files referenced below live under build/src/relocData/ and
- * are regenerated from the baserom by tools/extractRelocInc.py
- * at extract time. */
+/* relocData file 56: MVOpeningRoomScene1 — movie/opening camera animation data.
+ *
+ * Block boundaries from symbols/reloc_data_symbols.us.txt offsets.
+ * Each ll{Name}CamAnimJoint in that file points at a u32 AObjEvent32
+ * command stream; the movie engine passes each to gcAddCObjCamAnimJoint.
+ */
 
 #include "relocdata_types.h"
 
-/* Raw data from file offset 0x0000 to 0x03F0 (1008 bytes) */
-u8 dMVOpeningRoomScene1_Cam_AnimJoint[1008] = {
-	#include <MVOpeningRoomScene1/Cam_AnimJoint.data.inc.c>
+/* CamAnimJoint CamAnimJoint @ 0x0000 (1008 bytes) */
+u32 dMVOpeningRoomScene1_CamAnimJoint[252] = {
+	#include <MVOpeningRoomScene1/CamAnimJoint.data.inc.c>
 };
-

@@ -1,48 +1,48 @@
-/* relocData file 65: MVOpeningCommon */
-/* Inlined block layout - edit this file directly. The .inc.c
- * files referenced below live under build/src/relocData/ and
- * are regenerated from the baserom by tools/extractRelocInc.py
- * at extract time. */
+/* relocData file 65: MVOpeningCommon — movie/opening camera animation data.
+ *
+ * Block boundaries from symbols/reloc_data_symbols.us.txt offsets.
+ * Each ll{Name}CamAnimJoint in that file points at a u32 AObjEvent32
+ * command stream; the movie engine passes each to gcAddCObjCamAnimJoint.
+ */
 
 #include "relocdata_types.h"
 
-/* Raw data from file offset 0x0000 to 0x0030 (48 bytes) */
-u8 dMVOpeningCommon_MarioCam_AnimJoint[48] = {
-	#include <MVOpeningCommon/MarioCam_AnimJoint.data.inc.c>
+/* CamAnimJoint MarioCamAnimJoint @ 0x0000 (48 bytes) */
+u32 dMVOpeningCommon_MarioCamAnimJoint[12] = {
+	#include <MVOpeningCommon/MarioCamAnimJoint.data.inc.c>
 };
 
-/* Raw data from file offset 0x0030 to 0x0060 (48 bytes) */
-u8 dMVOpeningCommon_DonkeyCam_AnimJoint[48] = {
-	#include <MVOpeningCommon/DonkeyCam_AnimJoint.data.inc.c>
+/* CamAnimJoint DonkeyCamAnimJoint @ 0x0030 (48 bytes) */
+u32 dMVOpeningCommon_DonkeyCamAnimJoint[12] = {
+	#include <MVOpeningCommon/DonkeyCamAnimJoint.data.inc.c>
 };
 
-/* Raw data from file offset 0x0060 to 0x0090 (48 bytes) */
-u8 dMVOpeningCommon_SamusCam_AnimJoint[48] = {
-	#include <MVOpeningCommon/SamusCam_AnimJoint.data.inc.c>
+/* CamAnimJoint SamusCamAnimJoint @ 0x0060 (48 bytes) */
+u32 dMVOpeningCommon_SamusCamAnimJoint[12] = {
+	#include <MVOpeningCommon/SamusCamAnimJoint.data.inc.c>
 };
 
-/* Raw data from file offset 0x0090 to 0x00C0 (48 bytes) */
-u8 dMVOpeningCommon_FoxCam_AnimJoint[48] = {
-	#include <MVOpeningCommon/FoxCam_AnimJoint.data.inc.c>
+/* CamAnimJoint FoxCamAnimJoint @ 0x0090 (48 bytes) */
+u32 dMVOpeningCommon_FoxCamAnimJoint[12] = {
+	#include <MVOpeningCommon/FoxCamAnimJoint.data.inc.c>
 };
 
-/* Raw data from file offset 0x00C0 to 0x00F0 (48 bytes) */
-u8 dMVOpeningCommon_LinkCam_AnimJoint[48] = {
-	#include <MVOpeningCommon/LinkCam_AnimJoint.data.inc.c>
+/* CamAnimJoint LinkCamAnimJoint @ 0x00C0 (48 bytes) */
+u32 dMVOpeningCommon_LinkCamAnimJoint[12] = {
+	#include <MVOpeningCommon/LinkCamAnimJoint.data.inc.c>
 };
 
-/* Raw data from file offset 0x00F0 to 0x0120 (48 bytes) */
-u8 dMVOpeningCommon_YoshiCam_AnimJoint[48] = {
-	#include <MVOpeningCommon/YoshiCam_AnimJoint.data.inc.c>
+/* CamAnimJoint YoshiCamAnimJoint @ 0x00F0 (48 bytes) */
+u32 dMVOpeningCommon_YoshiCamAnimJoint[12] = {
+	#include <MVOpeningCommon/YoshiCamAnimJoint.data.inc.c>
 };
 
-/* Raw data from file offset 0x0120 to 0x0150 (48 bytes) */
-u8 dMVOpeningCommon_PikachuCam_AnimJoint[48] = {
-	#include <MVOpeningCommon/PikachuCam_AnimJoint.data.inc.c>
+/* CamAnimJoint PikachuCamAnimJoint @ 0x0120 (48 bytes) */
+u32 dMVOpeningCommon_PikachuCamAnimJoint[12] = {
+	#include <MVOpeningCommon/PikachuCamAnimJoint.data.inc.c>
 };
 
-/* Raw data from file offset 0x0150 to 0x0180 (48 bytes) */
-u8 dMVOpeningCommon_KirbyCam_AnimJoint[48] = {
-	#include <MVOpeningCommon/KirbyCam_AnimJoint.data.inc.c>
+/* CamAnimJoint KirbyCamAnimJoint @ 0x0150 (48 bytes) */
+u32 dMVOpeningCommon_KirbyCamAnimJoint[12] = {
+	#include <MVOpeningCommon/KirbyCamAnimJoint.data.inc.c>
 };
-

@@ -150,7 +150,7 @@ def process_file(file_id, dry=False):
         text = f.read()
 
     pat = re.compile(
-        r"u32 (d\w+?_(?:AnimJoint|MatAnimJoint|CamAnimJoint)(?:_\w+)?)\[(\d+)\] = \{\n"
+        r"u32 (d\w+?_(?:AnimJoint|MatAnimJoint|CamAnimJoint|animjoints|matanimjoints)(?:_\w+)?)\[(\d+)\] = \{\n"
         r"(\t#include <[^>]+>\n)\};",
         re.MULTILINE,
     )

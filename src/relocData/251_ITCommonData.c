@@ -556,9 +556,42 @@ u8 dITCommonData_Lizardon_ItemAttributes[72] = {
 	#include <ITCommonData/Lizardon_ItemAttributes.data.inc.c>
 };
 
-/* Raw data from file offset 0x0944 to 0x098C (72 bytes) */
-u8 dITCommonData_LizardonFlame_WeaponAttributes[72] = {
-	#include <ITCommonData/LizardonFlame_WeaponAttributes.data.inc.c>
+/* WPAttributes @ 0x0944 — LizardonFlame (52 bytes) + 20 trailing bytes
+ * holding a 5-float radian-angle spread pattern (-15°, -7.5°, 0°, 7.5°, 15°)
+ * the engine uses to fan out individual flame projectiles. */
+WPAttributes dITCommonData_LizardonFlame_WeaponAttributes = {
+    NULL,  /* data (chain-encoded — fixRelocChain patches if .reloc has entry) */
+    NULL,  /* p_mobjsubs */
+    NULL,  /* anim_joints */
+    NULL,  /* p_matanim_joints */
+    { { 0, 0, 0 }, { 0, 0, 0 } },  /* attack_offsets */
+    4, 0, -4, 4,  /* map_coll top/center/bottom/width */
+    320,  /* size */
+    0,  /* angle            : 10 */
+    100,  /* knockback_scale  : 10 */
+    4,  /* damage           :  8 */
+    1,  /* element          :  4 */
+    8,  /* knockback_weight : 10 */
+    1,  /* shield_damage    :  8 */
+    1,  /* attack_count     :  2 */
+    0,  /* can_setoff       :  1 */
+    28,  /* sfx              : 10 */
+    1,  /* priority         :  3 */
+    1,  /* can_rehit_item   :  1 */
+    0,  /* can_rehit_fighter:  1 */
+    0,  /* can_hop          :  1 */
+    1,  /* can_reflect      :  1 */
+    1,  /* can_absorb       :  1 */
+    1,  /* can_shield       :  1 */
+    0,  /* unused_0x2F_b6   :  1 */
+    0,  /* unused_0x2F_b7   :  1 */
+    0,  /* knockback_base   : 10 */
+};
+
+/* @ 0x0978 — flame spread angles (radians) */
+f32 dITCommonData_LizardonFlame_AngleSpread[5] = {
+    -0.2617993950843811f, -0.13089969754219055f, 0.0f,
+    0.13089969754219055f, 0.2617993950843811f,
 };
 
 /* ItemAttributes @ 0x098C — Spear */

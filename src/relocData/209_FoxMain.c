@@ -34,11 +34,27 @@ extern u8 dFoxModel_gap_0x7BA0_sub_0x58[];
 extern u8 dFoxModel_gap_0x7BA0_sub_0x8[];
 extern u16 dFoxModel_palette_0x7B80[];
 extern u8 dFoxUnknown[];
+extern u8 dFoxShieldPose_script0_17[];
+extern u8 dFoxShieldPose_ptrs1[];
+extern u8 dFoxShieldPose_script2_17[];
+extern u8 dFoxShieldPose_script3_17[];
+extern u8 dFoxShieldPose_script4_17[];
+extern u8 dFoxShieldPose_script5_17[];
+extern u8 dFoxShieldPose_script6_17[];
+extern u8 dFoxShieldPose_script7_17[];
+extern u8 dFoxShieldPose_script8_17[];
+extern u8 dFoxMainMotion_0x0000[];
+extern u8 dFoxSpecial2_Reflector[];
+extern u8 dFoxSpecial3_EntryArwing[];
+extern WPAttributes dFoxSpecial1_Blaster_WeaponAttributes;
 
-/* @ 0x0000, 16 bytes: sibling-file handles fixed up by fixRelocChain.
- * Each slot points into FoxMainMotion (208), FoxSpecial2 (346),
- * FoxSpecial3 (161), FoxSpecial1 (210) respectively; see .reloc. */
-void *dFoxMain_file_handles[4] = { NULL, NULL, NULL, NULL };
+/* @ 0x0000, 16 bytes: sibling-file handles fixed up by fixRelocChain. */
+void *dFoxMain_file_handles[4] = {
+	&dFoxMainMotion_0x0000,                /* -> FoxMainMotion (208) */
+	&dFoxSpecial2_Reflector,               /* -> FoxSpecial2 (346) */
+	&dFoxSpecial3_EntryArwing,             /* -> FoxSpecial3 (161) */
+	&dFoxSpecial1_Blaster_WeaponAttributes,/* -> FoxSpecial1 (210) */
+};
 
 /* @ 0x0010, 8 bytes: FTAttributes.animlock target (was dFoxMain_pre+0x10) */
 u32 dFoxMain_animlock[2] = {
@@ -313,15 +329,24 @@ FTAttributes dFoxMain_attr = {
 		{ 20, 0, FALSE, { 36.0f, 0.0f, 0.0f }, { 113.0f, 44.0f, 44.0f } },
 	},
 	{ 1100.0f, 550.0f, 1100.0f }, /* hit_detect_range */
-	NULL, /* setup_parts */
-	NULL, /* animlock */
+	dFoxMain_setup_parts, /* setup_parts */
+	dFoxMain_animlock, /* animlock */
 	{ 12, 15, 20, 25, 9 }, /* effect_joint_ids */
 	{ FALSE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	0, /* unused_0x2CC */
-	NULL, /* hiddenparts */
-	NULL, /* commonparts_container */
-	NULL, /* dobj_lookup */
-	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
+	dFoxMain_hiddenparts, /* hiddenparts */
+	&dFoxMain_commonparts_container, /* commonparts_container */
+	(DObjDesc*)((u8*)dFoxShieldPose_script0_17 + 0x10), /* dobj_lookup */
+	{
+		(AObjEvent32**)((u8*)dFoxShieldPose_ptrs1 + 0x23C),
+		(AObjEvent32**)((u8*)dFoxShieldPose_script2_17 + 0x2C),
+		(AObjEvent32**)((u8*)dFoxShieldPose_script3_17 + 0x30),
+		(AObjEvent32**)((u8*)dFoxShieldPose_script4_17 + 0x2C),
+		(AObjEvent32**)((u8*)dFoxShieldPose_script5_17 + 0x2C),
+		(AObjEvent32**)((u8*)dFoxShieldPose_script6_17 + 0x30),
+		(AObjEvent32**)((u8*)dFoxShieldPose_script7_17 + 0x34),
+		(AObjEvent32**)((u8*)dFoxShieldPose_script8_17 + 0x38),
+	}, /* shield_anim_joints */
 	23, /* joint_rfoot_id */
 	89.754f, /* joint_rfoot_rotate */
 	18, /* joint_lfoot_id */
@@ -330,14 +355,14 @@ FTAttributes dFoxMain_attr = {
 	50.0f, /* unk_0x31C */
 	0.5235988f, /* unk_0x320 */
 	NULL, /* translate_scales */
-	NULL, /* modelparts_container */
+	dFoxMain_modelparts_container, /* modelparts_container */
 	NULL, /* accesspart */
-	NULL, /* textureparts_container */
+	&dFoxMain_textureparts_container, /* textureparts_container */
 	30, /* joint_itemheavy_id */
-	NULL, /* thrown_status */
+	(FTThrownStatusArray*)dFoxMain_thrown_status, /* thrown_status */
 	17, /* joint_itemlight_id */
-	NULL, /* sprites */
-	NULL, /* skeleton */
+	&dFoxMain_sprites, /* sprites */
+	dFoxMain_skeleton, /* skeleton */
 };
 
 /* Trailing padding (3 words) */

@@ -143,46 +143,47 @@ struct ITDamageColl						// DamageColl struct
 /*
  * ITAttributes — 72-byte hitbox + hurtbox attribute pool used by items.
  *
- * Bit layout verified by compiling isolated-field test fixtures with
- * tools/decodeItemAttrs.py; every bit position below is precise.
+ * Bit layout discovered by setting each positional initializer to a unique
+ * value and tracking which u32 word/bit the value lands at. NOT every field
+ * is fully decoded — some fields (notably shield_damage, priority,
+ * drop_sfx, throw_sfx, vel_scale) only retain a subset of bits in isolated
+ * compilations, which strongly suggests IDO 7.1 packs them in ways that
+ * don't reduce to "a single contiguous bit range per field." See the test
+ * harness in /tmp/itlayout.py for raw evidence.
  *
  *   0x00-0x0F  4 × pointer (data, p_mobjsubs, anim_joints, p_matanim_joints)
  *   0x10  u32: [31..27] 5×:1 flags  [26..11] attack_offset0_x:16  [10..0] pad
  *   0x14  u32: [31..16] attack_offset0_y:16  [15..0] attack_offset0_z:16
  *   0x18  u32: [31..16] attack_offset1_x:16  [15..0] attack_offset1_y:16
- *   0x1C  s16: attack_offset1_z:16 (IDO collapses trailing :16 into half-word)
+ *   0x1C  s16: attack_offset1_z (IDO collapses trailing :16 into half-word)
  *   0x1E  Vec3h damage_coll_offset (6 B)
  *   0x24  Vec3h damage_coll_size (6 B)
  *   0x2A  s16 map_coll_top
  *   0x2C  s16 map_coll_center
  *   0x2E  s16 map_coll_bottom
- *   0x30  u32: [21..14] shield_damage:8  [15..0] size:16 overlaps — see note
+ *   0x30  s16 map_coll_width  (high half of u32 storage @ 0x30)
+ *   0x32  u16 size  (low half of u32 storage @ 0x30)
  *   0x34  u32: [31..22] angle:10  [21..12] knockback_scale:10
  *              [11..4]  damage:8  [3..0]   element:4
- *   0x38  u32: [31..22] knockback_weight:10  [21..14] shield_damage (see 0x30)
- *              [15..14] attack_count:2  [13] can_setoff  [12..3] hit_sfx:10
- *              [2..0]   pad
- *   0x3C  u32: [31..30] priority:2(of 3)  (high priority bit is [23]?)
- *              [30] can_rehit_item   [29] can_rehit_fighter
- *              [28] can_hop          [27] can_reflect  [26] can_shield
+ *   0x38  u32: [31..22] knockback_weight:10  [15..14] attack_count:2
+ *              [13]     can_setoff:1         [12..3]  hit_sfx:10
+ *              + ??? (shield_damage spans here, exact mapping unclear)
+ *   0x3C  u32: [31] priority bit, [30] can_rehit_item, [29] can_rehit_fighter,
+ *              [28] can_hop, [27] can_reflect, [26] can_shield,
  *              [25..16] knockback_base:10
- *              [15..12] type:4       [10..8] hitstatus:3(of 4)
- *              [7] unk_atca_0x3C_b6  [6] unk_atca_0x3C_b7
- *              [5..0] remainder of previous bitfields
- *   0x40  u32: [31..22] smash_sfx:10(?)  [31..24] drop_sfx:8(of 10)
- *              [13..6] smash_sfx remainder
- *   0x44  u32: vel_scale:9 spread across bits, + spin_speed:16 at [15..0]
- *   0x46  u16 spin_speed (end of struct, 72 B total)
+ *              [15..12] type:4   [11..8] hitstatus:4
+ *              [7] unk_atca_0x3C_b6   [6] unk_atca_0x3C_b7
+ *   0x40  u32: drop_sfx, smash_sfx packed (smash_sfx :10 at bits 6..15 verified)
+ *   0x44-0x47  vel_scale + spin_speed (spin_speed :16 at bits 0..15 verified)
  *
- * NOTE: The bitfield tail packing above bits 0x38+ is partially inferred.
- * IDO 7.1 sometimes spills bitfields across u32 boundaries in ways that
- * don't match a simple MSB-first pack, so some fields appear in surprising
- * words. When editing ItemAttributes blobs, use tools/decodeItemAttrs.py to
- * inspect the raw u32 values and verify round-trip via build.
- *
- * The `u32 size : 16` declaration is critical — using plain `u16 size`
+ * NOTE: The `u32 size : 16` declaration is critical — using plain `u16 size`
  * causes IDO to pack the subsequent bitfield run incorrectly. Same fix
- * applies to WPAttributes.
+ * applies to WPAttributes (where the layout IS fully verified — see
+ * src/wp/wptypes.h and the 7 byte-identical Special1 files).
+ *
+ * For modder-friendly edits today, use tools/decodeItemAttrs.py to dump the
+ * blob's raw u32 words plus the visible fields (pointers, flags, offsets,
+ * Vec3h, map_coll, size); patch bytes by hand for the bitfield tail.
  */
 struct ITAttributes
 {

@@ -5,6 +5,7 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Raw data from file offset 0x0000 to 0x0004 (4 bytes) */
 u8 dMVOpeningRun_gap_0x0000[4] = {
@@ -23,12 +24,74 @@ u32 dMVOpeningRun_Fox_AnimJoint[28] = {
 
 /* Raw data from file offset 0x0124 to 0x0184 (96 bytes) */
 u32 dMVOpeningRun_Donkey_AnimJoint[24] = {
-	#include <MVOpeningRun/Donkey_AnimJoint.data.inc.c>
+	aobjEvent32SetVal(0x050, 0),
+	    0xC4231C23,
+	    0xC4DC5A37,
+	aobjEvent32SetValAfter(0x020, 0),
+	    0x00000000,
+	aobjEvent32SetVal(0x010, 135),
+	    0xC4231C23,
+	aobjEvent32SetValBlock(0x040, 115),
+	    0xC4DC5A37,
+	aobjEvent32SetTargetRate(0x040, 0),
+	    0x4286A12D,
+	aobjEvent32SetValRate(0x040, 30),
+	    0x42C5B9EB,
+	    0x419F6247,
+	aobjEvent32Wait(20),
+	aobjEvent32SetValRateBlock(0x010, 10),
+	    0xC4231C23,
+	    0xC07FBE6B,
+	aobjEvent32SetVal0RateBlock(0x050, 35),
+	    0xC450109D,
+	    0x43F2F0A9,
+	    0x00000000,
+	    0x00000000,
+	aobjEvent32End(),
 };
 
 /* Raw data from file offset 0x0184 to 0x0224 (160 bytes) */
 u32 dMVOpeningRun_Samus_AnimJoint[40] = {
-	#include <MVOpeningRun/Samus_AnimJoint.data.inc.c>
+	aobjEvent32SetValBlock(0x070, 0),
+	    0x4457C5A6,
+	    0xC2E36497,
+	    0xC481D6C6,
+	aobjEvent32SetVal(0x030, 62),
+	    0x4457C5A6,
+	    0xC2E36497,
+	aobjEvent32SetValBlock(0x040, 45),
+	    0xC481D6C6,
+	aobjEvent32SetTargetRate(0x040, 0),
+	    0x43169029,
+	aobjEvent32SetValRateBlock(0x040, 11),
+	    0xC33250F3,
+	    0x421E6BD6,
+	aobjEvent32SetValRate(0x040, 20),
+	    0x4325B98C,
+	    0x3FBA6870,
+	aobjEvent32Wait(6),
+	aobjEvent32SetTargetRate(0x010, 0),
+	    0xBF3DC5E4,
+	aobjEvent32SetValRateBlock(0x030, 14),
+	    0x44468D97,
+	    0xC1B629A1,
+	    0xC2F4119B,
+	    0x3F8D3293,
+	aobjEvent32SetValRateBlock(0x070, 22),
+	    0x422D6D7E,
+	    0xC1125509,
+	    0xC293F827,
+	    0x3FBCB040,
+	    0xC2EA4D5F,
+	    0xC182DE10,
+	aobjEvent32SetValRate(0x040, 82),
+	    0xC3C8FD00,
+	    0x40A70EC2,
+	aobjEvent32SetVal0RateBlock(0x030, 82),
+	    0xC1C875B8,
+	    0x00000000,
+	    0x00000000,
+	    0x00CC0089,
 };
 
 /* Raw data from file offset 0x0224 to 0x0334 (272 bytes) */

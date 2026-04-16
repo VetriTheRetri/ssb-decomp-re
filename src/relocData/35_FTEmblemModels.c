@@ -5,6 +5,7 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#include <sys/objdef.h>  // aobjEvent32* macros
 
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dFTEmblemModels_gap_0x14E8[];
@@ -216,7 +217,47 @@ DObjDesc dFTEmblemModels_Donkey[] = {
 
 /* Raw data from file offset 0x13CC to 0x1470 (164 bytes) */
 u32 dFTEmblemModels_Donkey_MatAnimJoint[41] = {
-	#include <FTEmblemModels/Donkey_MatAnimJoint.data.inc.c>
+	aobjEvent32End(),
+	aobjEvent32Wait(1305),
+	aobjEvent32SetExtValAfterBlock(0x018, 0),
+	    0xB3191900,
+	    0x26262600,
+	aobjEvent32SetExtValAfterBlock(0x018, 1),
+	    0x00199900,
+	    0x26262600,
+	aobjEvent32SetExtValAfterBlock(0x018, 1),
+	    0xFFB30000,
+	    0x26262600,
+	aobjEvent32SetExtValAfterBlock(0x018, 1),
+	    0x00991900,
+	    0x26262600,
+	aobjEvent32SetExtValAfter(0x018, 1),
+	    0x66666600,
+	    0x00000000,
+	aobjEvent32Wait(2),
+	aobjEvent32SetAnim(0x000, 0),
+	aobjEvent32Wait(1269),
+	aobjEvent32SetExtValAfterBlock(0x018, 0),
+	    0xB3191900,
+	    0x26262600,
+	aobjEvent32SetExtValAfterBlock(0x018, 1),
+	    0x00199900,
+	    0x26262600,
+	aobjEvent32SetExtValAfterBlock(0x018, 1),
+	    0xFFB30000,
+	    0x26262600,
+	aobjEvent32SetExtValAfterBlock(0x018, 1),
+	    0x00991900,
+	    0x26262600,
+	aobjEvent32SetExtValAfter(0x018, 1),
+	    0x66666600,
+	    0x00000000,
+	aobjEvent32Wait(2),
+	aobjEvent32SetAnim(0x000, 0),
+	aobjEvent32Wait(1287),
+	aobjEvent32Wait(1269),
+	aobjEvent32Wait(1287),
+	aobjEvent32End(),
 };
 
 /* MObjSub: Metroid @ 0x1470 */

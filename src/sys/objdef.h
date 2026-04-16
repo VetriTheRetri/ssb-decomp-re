@@ -307,6 +307,10 @@ typedef enum AObjTrackKind
 #define aobjEvent32SetInterp(kind, flags_mask)     aobjEvent32(nGCAnimEvent32SetInterp, (flags_mask), (kind))
 #define aobjEvent32SetAnim(flags_mask, payload)    aobjEvent32(nGCAnimEvent32SetAnim, (flags_mask), (payload))
 #define aobjEvent32SetFlags(flags_mask, payload)   aobjEvent32(nGCAnimEvent32SetFlags, (flags_mask), (payload))
+#define aobjEvent32SetExtVal(flags_mask, dur)         aobjEvent32(nGCAnimEvent32SetExtVal, (flags_mask), (dur))
+#define aobjEvent32SetExtValBlock(flags_mask, dur)    aobjEvent32(nGCAnimEvent32SetExtValBlock, (flags_mask), (dur))
+#define aobjEvent32SetExtValAfter(flags_mask, dur)    aobjEvent32(nGCAnimEvent32SetExtValAfter, (flags_mask), (dur))
+#define aobjEvent32SetExtValAfterBlock(flags_mask,d)  aobjEvent32(nGCAnimEvent32SetExtValAfterBlock, (flags_mask), (d))
 
 /* Track-flag bitmask helpers (for the `flags_mask` argument above). The
  * flags field is 10 bits, covering the joint-track range from RotX (bit 0)

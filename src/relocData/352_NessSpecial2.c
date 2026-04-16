@@ -5,6 +5,7 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#include <sys/objdef.h>  // aobjEvent32* macros
 
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dNessSpecial2_gap_0x0888[];
@@ -95,6 +96,19 @@ u32 dNessSpecial2_PsychicMagnetAnimJoint_AnimJoint[40] = {
 
 /* Raw data from file offset 0x0AD0 to 0x0B10 (64 bytes) */
 u32 dNessSpecial2_PsychicMagnetMatAnimJoint_MatAnimJoint[16] = {
-	#include <NessSpecial2/PsychicMagnetMatAnimJoint_MatAnimJoint.data.inc.c>
+	aobjEvent32End(),
+	aobjEvent32Jump(0x14008000),
+	aobjEvent32End(),
+	aobjEvent32SetValAfterBlock(0x001, 6),
+	    0x3F800000,
+	aobjEvent32SetValAfterBlock(0x001, 3),
+	    0xB0800000,
+	aobjEvent32SetValAfterBlock(0x001, 6),
+	    0x3F800000,
+	aobjEvent32SetValAfterBlock(0x001, 3),
+	    0x32C00000,
+	aobjEvent32SetAnim(0x000, 0),
+	aobjEvent32Jump(0xFFFF02B6),
+	aobjEvent32End(),
 };
 

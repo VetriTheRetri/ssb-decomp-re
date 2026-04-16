@@ -5,6 +5,7 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#include <sys/objdef.h>  // aobjEvent32* macros
 
 /* Forward DObjDesc chain-target decls for fixRelocChain.py */
 extern u8 dEFCommonEffects2_gap_0x4F34_sub_0x14C[];
@@ -158,7 +159,46 @@ PAD(12);
 
 /* Raw data from file offset 0x20D0 to 0x2170 (160 bytes) */
 u32 dEFCommonEffects2_FireSparkAnimJoint_AnimJoint[40] = {
-	#include <EFCommonEffects2/FireSparkAnimJoint_AnimJoint.data.inc.c>
+	aobjEvent32End(),
+	aobjEvent32SetVal(0x0BA, 2102),
+	    0x15D00000,
+	    0xC2B40000,
+	    0x3F800000,
+	    0x3F800000,
+	    0x3F800000,
+	aobjEvent32SetValAfterBlock(0x3A0, 4),
+	    0x35700000,
+	    0x3F333336,
+	    0x3EAF9DBC,
+	    0x3F333336,
+	aobjEvent32SetValAfter(0x020, 6),
+	    0x35700000,
+	aobjEvent32SetValAfterBlock(0x380, 1),
+	    0x3FF83120,
+	    0x3F980487,
+	    0x3FF83120,
+	aobjEvent32SetValAfterBlock(0x380, 1),
+	    0x3F5A68AE,
+	    0x3FB7F0FE,
+	    0x3FF83120,
+	aobjEvent32SetValAfterBlock(0x380, 1),
+	    0x3FD2C3B1,
+	    0x3F51B171,
+	    0x3FF83120,
+	aobjEvent32SetValAfterBlock(0x380, 1),
+	    0x3F9E12C6,
+	    0x3F80F616,
+	    0x3FF83120,
+	aobjEvent32SetValAfterBlock(0x380, 1),
+	    0x3F1AE973,
+	    0x3EFCC3A4,
+	    0x3F733A69,
+	aobjEvent32SetValAfterBlock(0x380, 1),
+	    0x3727C5AC,
+	    0x3727C5AC,
+	    0x3727C5AC,
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* Raw data from file offset 0x2170 to 0x22B8 (328 bytes) */

@@ -5,6 +5,7 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#include <sys/objdef.h>  // aobjEvent32* macros
 
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dSamusSpecial2_gap_0x0288[];
@@ -90,12 +91,55 @@ PAD(12);
 
 /* Raw data from file offset 0x0410 to 0x0480 (112 bytes) */
 u32 dSamusSpecial2_GrappleBeamAnimJoint_AnimJoint[28] = {
-	#include <SamusSpecial2/GrappleBeamAnimJoint_AnimJoint.data.inc.c>
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32SetValAfter(0x007, 0),
+	    0x00000000,
+	    0x00000000,
+	    0x00000000,
+	aobjEvent32SetValBlock(0x380, 0),
+	    0x3ECB3681,
+	    0x3ECB3681,
+	    0x3ECB3681,
+	aobjEvent32SetValAfter(0x004, 6),
+	    0x3F490FDB,
+	aobjEvent32SetVal(0x200, 12),
+	    0x3F800000,
+	aobjEvent32SetValBlock(0x180, 6),
+	    0x3F800000,
+	    0x3F800000,
+	aobjEvent32SetValBlock(0x180, 0),
+	    0x3ECB367A,
+	    0x3ECB367A,
+	aobjEvent32SetValAfter(0x004, 6),
+	    0x00000000,
+	aobjEvent32SetValBlock(0x180, 6),
+	    0x3F800000,
+	    0x3F800000,
+	aobjEvent32SetAnim(0x000, 0),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* Raw data from file offset 0x0480 to 0x04C8 (72 bytes) */
 u32 dSamusSpecial2_GrappleBeamMatAnimJoint_MatAnimJoint[18] = {
-	#include <SamusSpecial2/GrappleBeamMatAnimJoint_MatAnimJoint.data.inc.c>
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32SetValAfterBlock(0x001, 0),
+	    0x00000000,
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x3F800000,
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,
+	aobjEvent32SetValAfterBlock(0x001, 4),
+	    0x3F800000,
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,
+	aobjEvent32SetAnim(0x000, 0),
+	aobjEvent32End(),
+	aobjEvent32Jump(0x00000000),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* Palette: Lut_0x04C8 @ 0x4C8 (16 colors RGBA5551) */

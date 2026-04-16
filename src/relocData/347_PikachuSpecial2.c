@@ -5,6 +5,7 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#include <sys/objdef.h>  // aobjEvent32* macros
 
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dPikachuSpecial2_gap_0x06B8[];
@@ -102,7 +103,30 @@ u32 dPikachuSpecial2_UnkAnimJoint_AnimJoint[28] = {
 
 /* Raw data from file offset 0x0900 to 0x0968 (104 bytes) */
 u32 dPikachuSpecial2_UnkMatAnimJoint_MatAnimJoint[26] = {
-	#include <PikachuSpecial2/UnkMatAnimJoint_MatAnimJoint.data.inc.c>
+	aobjEvent32End(),
+	aobjEvent32Jump(0x14008000),
+	aobjEvent32End(),
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x40000000,
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x3F800000,
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x00000000,
+	aobjEvent32SetValAfterBlock(0x001, 1),
+	    0x00000000,
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x40000000,
+	aobjEvent32SetValAfterBlock(0x001, 2),
+	    0x00000000,
+	aobjEvent32SetAnim(0x000, 0),
+	aobjEvent32Jump(0x04EB0242),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* Palette: Lut_0x0968 @ 0x968 (16 colors RGBA5551) */

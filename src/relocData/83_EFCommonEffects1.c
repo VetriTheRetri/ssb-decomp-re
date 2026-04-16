@@ -5,6 +5,7 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#include <sys/objdef.h>  // aobjEvent32* macros
 
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dEFCommonEffects1_gap_0x7458[];
@@ -274,7 +275,30 @@ DObjDesc dEFCommonEffects1_DamageSlash[] = {
 
 /* Raw data from file offset 0x7800 to 0x7860 (96 bytes) */
 u32 dEFCommonEffects1_DamageSlash_AnimJoint[24] = {
-	#include <EFCommonEffects1/DamageSlash_AnimJoint.data.inc.c>
+	aobjEvent32End(),
+	aobjEvent32SetFlags(0x004, 7683),
+	aobjEvent32SetFlags(0x032, 7690),
+	aobjEvent32SetValAfter(0x070, 0),
+	    0x00000000,
+	    0x00000000,
+	    0x00000000,
+	aobjEvent32SetFlags(0x000, 17),
+	aobjEvent32SetFlags(0x002, 0),
+	aobjEvent32End(),
+	aobjEvent32SetVal(0x004, 0),
+	    0x00000000,
+	aobjEvent32SetValAfter(0x003, 0),
+	    0x00000000,
+	    0x00000000,
+	aobjEvent32SetValBlock(0x004, 9),
+	    0x00000000,
+	aobjEvent32SetValBlock(0x004, 6),
+	    0xBFC90FDB,
+	aobjEvent32SetValBlock(0x004, 2),
+	    0xBFC90FDB,
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* Raw data from file offset 0x7860 to 0x7A80 (544 bytes) */
@@ -333,7 +357,30 @@ u8 dEFCommonEffects1_gap_0x7C28[280] = {
 
 /* Raw data from file offset 0x7D40 to 0x7DA0 (96 bytes) */
 u32 dEFCommonEffects1_ImpactWave_AnimJoint[24] = {
-	#include <EFCommonEffects1/ImpactWave_AnimJoint.data.inc.c>
+	aobjEvent32SetFlags(0x2D0, 8017),
+	aobjEvent32SetValAfter(0x001, 0),
+	    0x00000000,
+	aobjEvent32SetValRate(0x280, 0),
+	    0x3F4CCCCD,
+	    0x3F0C9D7F,
+	    0x3F4CCCCD,
+	    0x3F0C6C35,
+	aobjEvent32SetValBlock(0x102, 0),
+	    0x00000000,
+	    0x3F800000,
+	aobjEvent32SetVal(0x002, 12),
+	    0xBF1A702C,
+	aobjEvent32SetValRate(0x280, 12),
+	    0x408EEBE2,
+	    0x3E38E11B,
+	    0x408EEBE2,
+	    0x3E38342B,
+	aobjEvent32SetValBlock(0x100, 4),
+	    0x41180000,
+	aobjEvent32SetValBlock(0x100, 8),
+	    0x3FEB2136,
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* Raw data from file offset 0x7DA0 to 0x7E80 (224 bytes) */

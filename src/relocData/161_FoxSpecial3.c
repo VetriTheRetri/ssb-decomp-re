@@ -5,6 +5,7 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#include <sys/objdef.h>  // aobjEvent32* macros
 
 PAD(8);
 
@@ -404,6 +405,56 @@ u32 dFoxSpecial3__2E74__AnimJoint[16] = {
 
 /* Raw data from file offset 0x2EB4 to 0x2F80 (204 bytes) */
 u32 dFoxSpecial3__2EB4__AnimJoint[51] = {
-	#include <FoxSpecial3/_2EB4__AnimJoint.data.inc.c>
+	aobjEvent32SetValBlock(0x380, 0),
+	    0x3F800000,
+	    0x3F800000,
+	    0x3F800000,
+	aobjEvent32SetValBlock(0x380, 1),
+	    0x3FC911F1,
+	    0x3FC911F1,
+	    0x3FCB76B4,
+	aobjEvent32SetValBlock(0x380, 2),
+	    0x3F570A3D,
+	    0x3F570A3D,
+	    0x3F59999A,
+	aobjEvent32SetValBlock(0x380, 2),
+	    0x3FB9999A,
+	    0x3FB9999A,
+	    0x3FB9999A,
+	aobjEvent32SetValBlock(0x380, 3),
+	    0x3F570A3D,
+	    0x3F570A3D,
+	    0x3F59999A,
+	aobjEvent32SetValBlock(0x380, 3),
+	    0x3F873C60,
+	    0x3F873C60,
+	    0x3F873C60,
+	aobjEvent32SetTargetRate(0x380, 0),
+	    0xBE09E117,
+	    0xBE1A2A2E,
+	    0xBE0F4EC7,
+	aobjEvent32SetValRateBlock(0x380, 8),
+	    0x3F000000,
+	    0xBC63F461,
+	    0x3F000000,
+	    0xBC63F461,
+	    0x3F000000,
+	    0xBC63F461,
+	aobjEvent32SetValRateBlock(0x380, 32),
+	    0x3F000003,
+	    0x3C47CE0C,
+	    0x3F000003,
+	    0x3C47CE0C,
+	    0x3F000003,
+	    0x3C47CE0C,
+	aobjEvent32SetValRateBlock(0x380, 9),
+	    0x3F800000,
+	    0x3CE81B4A,
+	    0x3F800000,
+	    0x3CE81B4A,
+	    0x3F800000,
+	    0x3CEEEEEA,
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 

@@ -5,6 +5,7 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#include <sys/objdef.h>  // aobjEvent32* macros
 
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dLinkSpecial2_gap_0x01A8[];
@@ -158,7 +159,16 @@ u32 dLinkSpecial2_EntryWaveAnimJoint_AnimJoint[200] = {
 
 /* Raw data from file offset 0x0B60 to 0x0B90 (48 bytes) */
 u32 dLinkSpecial2_EntryBeamAnimJoint_AnimJoint[12] = {
-	#include <LinkSpecial2/EntryBeamAnimJoint_AnimJoint.data.inc.c>
+	aobjEvent32Jump(0x00000000),
+	aobjEvent32SetVal(0x002, 0),
+	    0x00000000,
+	aobjEvent32SetValAfter(0x005, 0),
+	    0x00000000,
+	    0x00000000,
+	aobjEvent32SetValBlock(0x002, 120),
+	    0x3FC90FDB,
+	aobjEvent32SetAnim(0x000, 0),
+	aobjEvent32Jump(0x00000000),
 };
 
 /* Raw data from file offset 0x0B90 to 0x0BF0 (96 bytes) */
@@ -235,7 +245,46 @@ PAD(12);
 
 /* Raw data from file offset 0x1250 to 0x12F0 (160 bytes) */
 u32 dLinkSpecial2_SpinAttackAnimJoint_AnimJoint[40] = {
-	#include <LinkSpecial2/SpinAttackAnimJoint_AnimJoint.data.inc.c>
+	aobjEvent32End(),
+	aobjEvent32Wait(1174),
+	aobjEvent32SetValAfter(0x020, 0),
+	    0x43960000,
+	aobjEvent32SetVal0Rate(0x002, 0),
+	    0x00000000,
+	    0x1E010000,
+	aobjEvent32SetValRateBlock(0x002, 7),
+	    0xBFAC0508,
+	    0xBF0FF75D,
+	aobjEvent32SetFlags(0x000, 0),
+	aobjEvent32SetTargetRate(0x002, 0),
+	    0xBFA31564,
+	aobjEvent32SetValRateBlock(0x002, 9),
+	    0xC139B3FA,
+	    0xBF68A84B,
+	aobjEvent32SetTargetRate(0x002, 0),
+	    0xBF728967,
+	aobjEvent32SetValRateBlock(0x002, 9),
+	    0xC19996C7,
+	    0xBF1C3681,
+	aobjEvent32SetTargetRate(0x002, 0),
+	    0xBF293A22,
+	aobjEvent32SetValRateBlock(0x002, 15),
+	    0xC1DAEF21,
+	    0xBEDD9D6B,
+	aobjEvent32SetValRateBlock(0x002, 20),
+	    0xC209646F,
+	    0xBE9C61D6,
+	aobjEvent32SetTargetRate(0x002, 0),
+	    0xBE82F2F7,
+	aobjEvent32SetValRate(0x002, 40),
+	    0xC21DEADA,
+	    0xBDC635F6,
+	aobjEvent32Wait(5),
+	aobjEvent32SetFlags(0x002, 35),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* Raw data from file offset 0x12F0 to 0x1A10 (1824 bytes) */

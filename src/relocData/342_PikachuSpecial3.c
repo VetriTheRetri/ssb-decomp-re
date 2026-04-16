@@ -5,6 +5,7 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#include <sys/objdef.h>  // aobjEvent32* macros
 
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dPikachuSpecial3_gap_0x2118_sub_0x10[];
@@ -257,7 +258,54 @@ u8 dPikachuSpecial3_gap_0x0000_sub_0x1888[408] = {
 
 /* Raw data from file offset 0x1A20 to 0x1AE0 (192 bytes) */
 u32 dPikachuSpecial3_ThunderJoltBAnimJoint_AnimJoint[48] = {
-	#include <PikachuSpecial3/ThunderJoltBAnimJoint_AnimJoint.data.inc.c>
+	aobjEvent32End(),
+	aobjEvent32SetValBlock(0x114, 1680),
+	    0x068B0699,
+	    0x068C069E,
+	    0x068D06A3,
+	aobjEvent32SetValBlock(0x11C, 1704),
+	    0x068F06AC,
+	    0x069806B1,
+	    0x08080000,
+	    0xC3C30000,
+	aobjEvent32SetValAfter(0x060, 0),
+	    0x00000000,
+	    0x00000000,
+	aobjEvent32SetValBlock(0x010, 9),
+	    0x44160000,
+	aobjEvent32SetAnim(0x000, 0),
+	aobjEvent32SetValBlock(0x13A, 1680),
+	    0x1E010001,
+	    0x1E000004,
+	    0x1E010004,
+	    0x1C000000,
+	    0x06A20699,
+	aobjEvent32SetFlags(0x002, 3),
+	aobjEvent32SetFlags(0x000, 4),
+	aobjEvent32SetFlags(0x002, 2),
+	aobjEvent32SetAnim(0x000, 0),
+	aobjEvent32SetValBlock(0x14E, 1694),
+	    0x1E010005,
+	    0x1E000004,
+	    0x1E010000,
+	    0x1C000000,
+	    0x06AB06A3,
+	aobjEvent32SetFlags(0x000, 4),
+	aobjEvent32SetFlags(0x002, 5),
+	aobjEvent32SetAnim(0x000, 0),
+	aobjEvent32SetValBlock(0x160, 1704),
+	    0x1E010002,
+	    0x1E000004,
+	    0x1E010003,
+	aobjEvent32SetAnim(0x000, 0),
+	aobjEvent32SetValBlock(0x16A, 1708),
+	    0x1E010004,
+	    0x1E000004,
+	    0x1E010001,
+	    0x1C000000,
+	    0x06BA06B1,
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* Raw data from file offset 0x1AE0 to 0x1C70 (400 bytes) */

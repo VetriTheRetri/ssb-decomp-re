@@ -5,6 +5,7 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#include <sys/objdef.h>  // aobjEvent32* macros
 
 PAD(8);
 
@@ -161,7 +162,24 @@ u32 dKirbySpecial2_CutterTrailAnimJoint_AnimJoint[32] = {
 
 /* Raw data from file offset 0x1470 to 0x14B8 (72 bytes) */
 u32 dKirbySpecial2_CutterUpAnimJoint_AnimJoint[18] = {
-	#include <KirbySpecial2/CutterUpAnimJoint_AnimJoint.data.inc.c>
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32Wait(1313),
+	aobjEvent32Wait(1317),
+	aobjEvent32SetValBlock(0x29E, 1320),
+	    0x04000001,
+	    0x1E000002,
+	    0x1E010001,
+	    0x00000000,
+	    0x1E000002,
+	    0x1E010002,
+	aobjEvent32End(),
+	aobjEvent32Wait(2),
+	aobjEvent32SetFlags(0x000, 2),
+	aobjEvent32SetFlags(0x002, 0),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* Raw data from file offset 0x14B8 to 0x1CB8 (2048 bytes) */
@@ -258,7 +276,32 @@ PAD(12);
 
 /* Raw data from file offset 0x24D0 to 0x2538 (104 bytes) */
 u32 dKirbySpecial2_CutterDownAnimJoint_AnimJoint[26] = {
-	#include <KirbySpecial2/CutterDownAnimJoint_AnimJoint.data.inc.c>
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32SetVal(0x26E, 2362),
+	    0x0938093E,
+	    0x09390941,
+	    0x09FD0945,
+	    0x04000001,
+	    0x1E000002,
+	    0x1E010002,
+	aobjEvent32End(),
+	aobjEvent32SetFlags(0x000, 2),
+	aobjEvent32SetFlags(0x002, 3),
+	aobjEvent32End(),
+	aobjEvent32Wait(3),
+	aobjEvent32SetFlags(0x000, 2),
+	aobjEvent32SetFlags(0x002, 0),
+	aobjEvent32End(),
+	aobjEvent32Wait(2),
+	aobjEvent32SetFlags(0x000, 2),
+	aobjEvent32SetFlags(0x002, 1),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* Palette: Lut_0x2538 @ 0x2538 (16 colors RGBA5551) */

@@ -5,6 +5,7 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#include <sys/objdef.h>  // aobjEvent32* macros
 
 
 #if defined(REGION_JP)
@@ -1175,117 +1176,372 @@ PAD(4);
 
 /* Raw data from file offset 0x6C80 to 0x6CB0 (48 bytes) */
 u32 dSC1PIntro_FighterMarioCam_AnimJoint[12] = {
-	#include <SC1PIntro/FighterMarioCam_AnimJoint.data.inc.c>
+	aobjEvent32SetValAfter(0x377, 0),
+	    0xC3F523C0,
+	    0x438E33DA,
+	    0x436D8261,
+	    0xC201A4F0,
+	    0x4361E6CA,
+	    0x436DF174,
+	    0x00000000,
+	    0x422E7735,
+	aobjEvent32Wait(1),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* Raw data from file offset 0x6CB0 to 0x6CE0 (48 bytes) */
 u32 dSC1PIntro_FighterFoxCam_AnimJoint[12] = {
-	#include <SC1PIntro/FighterFoxCam_AnimJoint.data.inc.c>
+	aobjEvent32SetValAfter(0x377, 0),
+	    0xC4FB9666,
+	    0x4426190C,
+	    0x43886CB3,
+	    0xC2A16667,
+	    0x43B1FEE4,
+	    0x43880762,
+	    0x00000000,
+	    0x4199A9FB,
+	aobjEvent32Wait(1),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* Raw data from file offset 0x6CE0 to 0x6D10 (48 bytes) */
 u32 dSC1PIntro_FighterDonkeyCam_AnimJoint[12] = {
-	#include <SC1PIntro/FighterDonkeyCam_AnimJoint.data.inc.c>
+	aobjEvent32SetValAfter(0x377, 0),
+	    0xC481AC0C,
+	    0x42AC052A,
+	    0x431E31BA,
+	    0x41AF8840,
+	    0x433D2674,
+	    0x43208FB3,
+	    0x00000000,
+	    0x42262863,
+	aobjEvent32Wait(1),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* Raw data from file offset 0x6D10 to 0x6D40 (48 bytes) */
 u32 dSC1PIntro_FighterSamusCam_AnimJoint[12] = {
-	#include <SC1PIntro/FighterSamusCam_AnimJoint.data.inc.c>
+	aobjEvent32SetValAfter(0x377, 0),
+	    0xC45249AA,
+	    0x43E39E70,
+	    0x3FCAFF48,
+	    0x42348C19,
+	    0x43C48BDE,
+	    0x3FA9EBC8,
+	    0x00000000,
+	    0x420BFFFF,
+	aobjEvent32Wait(1),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* Raw data from file offset 0x6D40 to 0x6D70 (48 bytes) */
 u32 dSC1PIntro_FighterLuigiCam_AnimJoint[12] = {
-	#include <SC1PIntro/FighterLuigiCam_AnimJoint.data.inc.c>
+	aobjEvent32SetValAfter(0x377, 0),
+	    0xC5839063,
+	    0x443AE3D5,
+	    0x42D91A13,
+	    0xC1BBCDC5,
+	    0x4386DEC6,
+	    0x42D8E6FC,
+	    0x00000000,
+	    0x40DC9F67,
+	aobjEvent32Wait(1),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* Raw data from file offset 0x6D70 to 0x6DA0 (48 bytes) */
 u32 dSC1PIntro_FighterLinkCam_AnimJoint[12] = {
-	#include <SC1PIntro/FighterLinkCam_AnimJoint.data.inc.c>
+	aobjEvent32SetValAfter(0x377, 0),
+	    0xC41A41A6,
+	    0x4363FDE6,
+	    0x428FA2FC,
+	    0x42254E9C,
+	    0x439E28FA,
+	    0x4297FF3D,
+	    0x00000000,
+	    0x41EC2BA3,
+	aobjEvent32Wait(1),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* Raw data from file offset 0x6DA0 to 0x6DD0 (48 bytes) */
 u32 dSC1PIntro_FighterYoshiCam_AnimJoint[12] = {
-	#include <SC1PIntro/FighterYoshiCam_AnimJoint.data.inc.c>
+	aobjEvent32SetValAfter(0x377, 0),
+	    0xC4713F6B,
+	    0x43BF83E0,
+	    0x431F8912,
+	    0xC3073173,
+	    0x438FD849,
+	    0x431F4743,
+	    0x00000000,
+	    0x422627EF,
+	aobjEvent32Wait(1),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* Raw data from file offset 0x6DD0 to 0x6E00 (48 bytes) */
 u32 dSC1PIntro_FighterCaptainCam_AnimJoint[12] = {
-	#include <SC1PIntro/FighterCaptainCam_AnimJoint.data.inc.c>
+	aobjEvent32SetValAfter(0x377, 0),
+	    0xC529BA15,
+	    0x43ABC000,
+	    0x42495C29,
+	    0x418D9999,
+	    0x436BD47B,
+	    0x42553D70,
+	    0x00000000,
+	    0x413020C5,
+	aobjEvent32Wait(1),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* Raw data from file offset 0x6E00 to 0x6E30 (48 bytes) */
 u32 dSC1PIntro_FighterKirbyCam_AnimJoint[12] = {
-	#include <SC1PIntro/FighterKirbyCam_AnimJoint.data.inc.c>
+	aobjEvent32SetValAfter(0x377, 0),
+	    0xC49B4E7A,
+	    0xC3ED778F,
+	    0x43022DAE,
+	    0x42B43307,
+	    0x43637F64,
+	    0x4301E1DC,
+	    0x00000000,
+	    0x41D636AD,
+	aobjEvent32Wait(1),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* Raw data from file offset 0x6E30 to 0x6E60 (48 bytes) */
 u32 dSC1PIntro_FighterPikachuCam_AnimJoint[12] = {
-	#include <SC1PIntro/FighterPikachuCam_AnimJoint.data.inc.c>
+	aobjEvent32SetValAfter(0x377, 0),
+	    0xC517AAA1,
+	    0x43F9C97A,
+	    0x42730E85,
+	    0x42A4CE41,
+	    0x4305D452,
+	    0x428513C5,
+	    0x00000000,
+	    0x4133AF7F,
+	aobjEvent32Wait(1),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* Raw data from file offset 0x6E60 to 0x6E90 (48 bytes) */
 u32 dSC1PIntro_FighterPurinCam_AnimJoint[12] = {
-	#include <SC1PIntro/FighterPurinCam_AnimJoint.data.inc.c>
+	aobjEvent32SetValAfter(0x377, 0),
+	    0xC4ECC4C7,
+	    0x43486773,
+	    0x43395E24,
+	    0xC3802C66,
+	    0x432E8845,
+	    0x43382F81,
+	    0x00000000,
+	    0x41838232,
+	aobjEvent32Wait(1),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* Raw data from file offset 0x6E90 to 0x6EC0 (48 bytes) */
 u32 dSC1PIntro_FighterNessCam_AnimJoint[12] = {
-	#include <SC1PIntro/FighterNessCam_AnimJoint.data.inc.c>
+	aobjEvent32SetValAfter(0x377, 0),
+	    0xC4408381,
+	    0x4343E74F,
+	    0x43749F08,
+	    0xC2BAFBF5,
+	    0x4363851F,
+	    0x4374665B,
+	    0x00000000,
+	    0x42200000,
+	aobjEvent32Wait(1),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* Raw data from file offset 0x6EC0 to 0x6EF0 (48 bytes) */
 u32 dSC1PIntro_StageKirbyCam_AnimJoint[12] = {
-	#include <SC1PIntro/StageKirbyCam_AnimJoint.data.inc.c>
+	aobjEvent32SetValAfter(0x377, 0),
+	    0x454AAE36,
+	    0x44948F16,
+	    0xC3443CD7,
+	    0xC3C2D009,
+	    0x43D2DA47,
+	    0xC343D0D9,
+	    0x00000000,
+	    0x41B03BE9,
+	aobjEvent32Wait(7),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* Raw data from file offset 0x6EF0 to 0x6F20 (48 bytes) */
 u32 dSC1PIntro_StageYoshiCam_AnimJoint[12] = {
-	#include <SC1PIntro/StageYoshiCam_AnimJoint.data.inc.c>
+	aobjEvent32SetValAfter(0x377, 0),
+	    0x4509FB6D,
+	    0x43C706D7,
+	    0x4451F546,
+	    0xC304B3C6,
+	    0x4377DC81,
+	    0x4451DB5A,
+	    0x00000000,
+	    0x422627EF,
+	aobjEvent32Wait(17),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* Raw data from file offset 0x6F20 to 0x6F50 (48 bytes) */
 u32 dSC1PIntro_StageBossCam_AnimJoint[12] = {
-	#include <SC1PIntro/StageBossCam_AnimJoint.data.inc.c>
+	aobjEvent32SetValAfter(0x377, 0),
+	    0x4514BFD1,
+	    0x44712570,
+	    0x445E67CB,
+	    0xC37770C6,
+	    0x442574CD,
+	    0x445E03F3,
+	    0x00000000,
+	    0x42340000,
+	aobjEvent32Wait(1),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* Raw data from file offset 0x6F50 to 0x6F80 (48 bytes) */
 u32 dSC1PIntro_StageSamusCam_AnimJoint[12] = {
-	#include <SC1PIntro/StageSamusCam_AnimJoint.data.inc.c>
+	aobjEvent32SetValAfter(0x377, 0),
+	    0x444BB14C,
+	    0x441998E4,
+	    0x4377E69D,
+	    0xBF89DA48,
+	    0x4401C318,
+	    0x4377A4D0,
+	    0x00000000,
+	    0x4208B26B,
+	aobjEvent32Wait(1),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* Raw data from file offset 0x6F80 to 0x6FB0 (48 bytes) */
 u32 dSC1PIntro_StageFoxCam_AnimJoint[12] = {
-	#include <SC1PIntro/StageFoxCam_AnimJoint.data.inc.c>
+	aobjEvent32SetValAfter(0x377, 0),
+	    0x44795109,
+	    0x43F6D70C,
+	    0x4365E164,
+	    0x404EF6AE,
+	    0x43CA85D8,
+	    0x43659F97,
+	    0x00000000,
+	    0x4208B26B,
+	aobjEvent32Wait(1),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* Raw data from file offset 0x6FB0 to 0x6FE0 (48 bytes) */
 u32 dSC1PIntro_StagePikachuCam_AnimJoint[12] = {
-	#include <SC1PIntro/StagePikachuCam_AnimJoint.data.inc.c>
+	aobjEvent32SetValAfter(0x377, 0),
+	    0x44681DE4,
+	    0x44359805,
+	    0x43956F47,
+	    0xC3073173,
+	    0x434AD41B,
+	    0x43954E60,
+	    0x00000000,
+	    0x4208B26B,
+	aobjEvent32Wait(1),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* Raw data from file offset 0x6FE0 to 0x7010 (48 bytes) */
 u32 dSC1PIntro_StageLinkCam_AnimJoint[12] = {
-	#include <SC1PIntro/StageLinkCam_AnimJoint.data.inc.c>
+	aobjEvent32SetValAfter(0x377, 0),
+	    0x4486A0F4,
+	    0xC2C405F2,
+	    0x4326F7F1,
+	    0xBF4EACC0,
+	    0x43B1B444,
+	    0x4326AB6F,
+	    0x00000000,
+	    0x41983CD3,
+	aobjEvent32Wait(1),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* Raw data from file offset 0x7010 to 0x7040 (48 bytes) */
 u32 dSC1PIntro_StageDonkeyCam_AnimJoint[12] = {
-	#include <SC1PIntro/StageDonkeyCam_AnimJoint.data.inc.c>
+	aobjEvent32SetValAfter(0x377, 0),
+	    0x449C504B,
+	    0x431F0749,
+	    0x43CE391E,
+	    0xBF5B9480,
+	    0x43BDF6DA,
+	    0x43CE6393,
+	    0x00000000,
+	    0x42262863,
+	aobjEvent32Wait(1),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* Raw data from file offset 0x7040 to 0x7070 (48 bytes) */
 u32 dSC1PIntro_StageMarioCam_AnimJoint[12] = {
-	#include <SC1PIntro/StageMarioCam_AnimJoint.data.inc.c>
+	aobjEvent32SetValAfter(0x377, 0),
+	    0x4483CB33,
+	    0x43CA7C29,
+	    0x4378E86B,
+	    0xC39B9852,
+	    0x439AD0A4,
+	    0x4378A34C,
+	    0x00000000,
+	    0x42340000,
+	aobjEvent32Wait(1),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* Raw data from file offset 0x7070 to 0x70A0 (48 bytes) */
 u32 dSC1PIntro_StageMMarioCam_AnimJoint[12] = {
-	#include <SC1PIntro/StageMMarioCam_AnimJoint.data.inc.c>
+	aobjEvent32SetValAfter(0x377, 0),
+	    0x448251F0,
+	    0x43A0C538,
+	    0x43868FE8,
+	    0x4311F4D6,
+	    0x439ADB3B,
+	    0x43869718,
+	    0x00000000,
+	    0x4208B2CB,
+	aobjEvent32Wait(1),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* Raw data from file offset 0x70A0 to 0x70D8 (56 bytes) */
 u32 dSC1PIntro_StageZakoCam_AnimJoint[14] = {
-	#include <SC1PIntro/StageZakoCam_AnimJoint.data.inc.c>
+	aobjEvent32SetValAfter(0x377, 0),
+	    0x4501DBFD,
+	    0x4450910F,
+	    0x44570692,
+	    0x3FD413AA,
+	    0x43C27589,
+	    0x44570692,
+	    0x00000000,
+	    0x422627F0,
+	aobjEvent32Wait(2),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
+	aobjEvent32End(),
 };
 
 /* Texture data for sprite LinkMarker */

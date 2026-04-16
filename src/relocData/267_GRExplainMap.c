@@ -5,6 +5,9 @@
 #include "relocdata_types.h"
 
 /* Cross-file references resolved by fixRelocChain.py — see .reloc */
+extern Sprite dStageDreamLand_sprite_0x26C88[];
+
+/* Cross-file references resolved by fixRelocChain.py — see .reloc */
 extern DObjDesc dStageExplainFile2_Layer0DObj[];
 extern DObjDesc dStageExplainFile2_Layer1DObj[];
 extern DObjDesc dStageExplainFile2_Layer2DObj[];
@@ -22,7 +25,7 @@ MPGroundData dGRExplainMap_header =
     },
     dStageExplainFile2_MPGeometryData_0x0854,  /* map_geometry */
     0,  /* layer_mask */
-    (Sprite *)0xFFFF9B22,  /* wallpaper */
+    (Sprite *)dStageDreamLand_sprite_0x26C88,  /* wallpaper */
     { 0x6E, 0xD2, 0xFF },  /* fog_color */
     0x00,  /* fog_alpha */
     /* emblem_colors[4] */

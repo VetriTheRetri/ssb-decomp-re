@@ -4,6 +4,10 @@
 #include <mp/mptypes.h>
 #include "relocdata_types.h"
 
+/* Cross-file references resolved by fixRelocChain.py — see .reloc */
+extern Sprite dStageBattlefieldBackground_0x26c88[];
+extern u8 dStageBattlefieldFile2[];
+
 /* Item-randomizer weights, referenced by `header.item_weights` */
 u8 dGRZakoMap_item_weights[20] = { 0x46, 0x28, 0x78, 0x00, 0x1B, 0x09, 0x07, 0x0A, 0x05, 0x0C, 0x16, 0x08, 0x0A, 0x07, 0x0A, 0x0C, 0x0A, 0x03, 0x08, 0x1E };
 
@@ -12,13 +16,13 @@ MPGroundData dGRZakoMap_header =
     /* gr_desc[4] */
     {
         { NULL, NULL, NULL, NULL },
-        { (DObjDesc *)0x0015105C, NULL, NULL, NULL },
+        { ((u8 *)dStageBattlefieldFile2 + 0x4170), NULL, NULL, NULL },
         { NULL, NULL, NULL, NULL },
         { NULL, NULL, NULL, NULL },
     },
-    (MPGeometryData *)0x001710E2,  /* map_geometry */
+    ((u8 *)dStageBattlefieldFile2 + 0x4388),  /* map_geometry */
     0,  /* layer_mask */
-    (Sprite *)0xFFFF9B22,  /* wallpaper */
+    (Sprite *)dStageBattlefieldBackground_0x26c88,  /* wallpaper */
     { 0x41, 0x00, 0x69 },  /* fog_color */
     0x00,  /* fog_alpha */
     /* emblem_colors[4] */

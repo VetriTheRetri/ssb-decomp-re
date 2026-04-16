@@ -5,6 +5,9 @@
 #include "relocdata_types.h"
 
 /* Cross-file references resolved by fixRelocChain.py — see .reloc */
+extern u8 dStageYosterFile3[];
+
+/* Cross-file references resolved by fixRelocChain.py — see .reloc */
 extern Sprite dStageYoshi_sprite_0x26C88[];
 extern DObjDesc dStageYosterFile2_Layer0DObj[];
 extern u32 dStageYosterFile2_Layer0Anim_AnimJoint[];

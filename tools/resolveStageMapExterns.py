@@ -215,13 +215,16 @@ def classify_extern_target(struct_off, target_off, stage):
     named symbol in the target file."""
     _, file2, _file3, sprite, _ = STAGE_EXTERNS[stage]
 
-    # gr_desc pointers and map_geometry are in File2 at a named symbol
+    # gr_desc pointers and map_geometry are in File2. Prefer a named
+    # symbol, but fall back to nearest-preceding if File2 doesn't yet
+    # have a typed symbol at that exact offset (some File2 blocks are
+    # still raw u8 arrays).
     if struct_off in (0x00, 0x04, 0x08, 0x0C,
                       0x10, 0x14, 0x18, 0x1C,
                       0x20, 0x24, 0x28, 0x2C,
                       0x30, 0x34, 0x38, 0x3C,
                       0x40):
-        return file2, False
+        return file2, True
     # Wallpaper is in the stage's sprite file, exact match
     if struct_off == 0x48:
         return sprite, False
@@ -422,6 +425,15 @@ def rewrite_map_c(stage, info, type_map):
         new_text, n = re.subn(pattern, replace, new_text, count=1)
         if n == 0:
             print(f"  {stage}: failed to match slot 0x{_off:X} ({_fname})")
+
+    # Skip any symbols that already have an `extern` declaration in the
+    # source (prior-run leftovers), so we don't emit duplicates that the
+    # IDO compiler rejects as redeclarations.
+    already_externed = set(
+        re.findall(r"^\s*extern\s+[^;]*?\s([A-Za-z_]\w*)\s*\[", new_text, re.MULTILINE)
+    )
+    externs_needed = {k: v for k, v in externs_needed.items()
+                      if k not in already_externed}
 
     # Insert extern declarations just below the #include lines.
     if externs_needed:

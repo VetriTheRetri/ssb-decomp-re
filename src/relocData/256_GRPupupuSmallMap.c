@@ -5,6 +5,12 @@
 #include "relocdata_types.h"
 
 /* Cross-file references resolved by fixRelocChain.py — see .reloc */
+extern u8 dStagePupupuBeta1[];
+
+/* Cross-file references resolved by fixRelocChain.py — see .reloc */
+extern u8 dStagePupupuFile2_gap_0x0000[];
+extern u8 dStagePupupuFile2_gap_0x0898[];
+extern u8 dStagePupupuFile2_Layer0Anim_AnimJoint[];
 extern Sprite dStageDreamLand_sprite_0x26C88[];
 
 /* Item-randomizer weights, referenced by `header.item_weights` */
@@ -14,12 +20,12 @@ MPGroundData dGRPupupuSmallMap_header =
 {
     /* gr_desc[4] */
     {
-        { (DObjDesc *)0x0006021C, (AObjEvent32 **)0x0009026C, NULL, NULL },
-        { (DObjDesc *)0x00110496, NULL, NULL, NULL },
+        { (void *)((u8 *)dStagePupupuFile2_gap_0x0000 + 0x870), (void *)((u8 *)dStagePupupuFile2_gap_0x0898 + 0x118), NULL, NULL },
+        { (void *)((u8 *)dStagePupupuFile2_Layer0Anim_AnimJoint + 0x888), NULL, NULL, NULL },
         { NULL, NULL, NULL, NULL },
-        { (DObjDesc *)0x00150644, NULL, NULL, NULL },
+        { (void *)((u8 *)dStagePupupuFile2_Layer0Anim_AnimJoint + 0xF40), NULL, NULL, NULL },
     },
-    (MPGeometryData *)0x001704DD,  /* map_geometry */
+    (void *)((u8 *)dStagePupupuFile2_Layer0Anim_AnimJoint + 0x9A4),  /* map_geometry */
     0,  /* layer_mask */
     dStageDreamLand_sprite_0x26C88,  /* wallpaper */
     { 0x4B, 0xC2, 0xF4 },  /* fog_color */

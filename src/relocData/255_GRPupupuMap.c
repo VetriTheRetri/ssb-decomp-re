@@ -5,6 +5,12 @@
 #include "relocdata_types.h"
 
 /* Cross-file references resolved by fixRelocChain.py — see .reloc */
+extern u8 dStagePupupuFile3[];
+
+/* Cross-file references resolved by fixRelocChain.py — see .reloc */
+extern u8 dStagePupupuFile2_gap_0x22D0[];
+extern u8 dStagePupupuFile2_gap_0x1D00[];
+extern u8 dStagePupupuFile2_Layer3Anim_AnimJoint[];
 extern Sprite dStageDreamLand_sprite_0x26C88[];
 extern u32 dStagePupupuFile2_Layer0Anim_AnimJoint[];
 
@@ -15,12 +21,12 @@ MPGroundData dGRPupupuMap_header =
 {
     /* gr_desc[4] */
     {
-        { (DObjDesc *)0x00090402, NULL, NULL, NULL },
-        { (DObjDesc *)0x000D0738, NULL, NULL, NULL },
-        { (DObjDesc *)0x000F0914, NULL, (MObjSub ***)0x001007D4, (AObjEvent32 ***)0x0011094C },
-        { (DObjDesc *)0x00150AFE, NULL, NULL, NULL },
+        { (void *)((u8 *)dStagePupupuFile2_Layer0Anim_AnimJoint + 0x638), NULL, NULL, NULL },
+        { (void *)((u8 *)dStagePupupuFile2_Layer0Anim_AnimJoint + 0x1310), NULL, NULL, NULL },
+        { (void *)((u8 *)dStagePupupuFile2_gap_0x22D0 + 0x180), NULL, (void *)((u8 *)dStagePupupuFile2_gap_0x1D00 + 0x250), (void *)((u8 *)dStagePupupuFile2_gap_0x22D0 + 0x260) },
+        { (void *)((u8 *)dStagePupupuFile2_Layer3Anim_AnimJoint + 0x338), NULL, NULL, NULL },
     },
-    (MPGeometryData *)0x001707CD,  /* map_geometry */
+    (void *)((u8 *)dStagePupupuFile2_gap_0x1D00 + 0x234),  /* map_geometry */
     0,  /* layer_mask */
     dStageDreamLand_sprite_0x26C88,  /* wallpaper */
     { 0x6E, 0xD2, 0xFF },  /* fog_color */

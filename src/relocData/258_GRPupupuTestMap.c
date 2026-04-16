@@ -5,6 +5,9 @@
 #include "relocdata_types.h"
 
 /* Cross-file references resolved by fixRelocChain.py — see .reloc */
+extern u8 dStagePupupuBeta2[];
+
+/* Cross-file references resolved by fixRelocChain.py — see .reloc */
 extern Sprite dStageDreamLand_sprite_0x26C88[];
 extern u32 dStagePupupuFile2_gap_0x0898[];
 extern u32 dStagePupupuFile2_Layer0Anim_AnimJoint[];

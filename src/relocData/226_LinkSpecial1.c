@@ -4,17 +4,24 @@
  * Link Boomerang hitbox. Used by src/wp/wplink/wplinkboomerang.c via the `WPDesc` at
  *   &gFTDataLinkSpecial1 + llLinkSpecial1BoomerangWeaponAttributes (= 0x0),
  * which `lbRelocGetFileData(WPAttributes*, ...)` casts into a typed view.
- * Pointer fields (`data`, `anim_joints`) are chain-encoded; fixRelocChain
- * patches them at link time to symbols inside the owning fighter's *Main file.
+ *
+ * `data` and `anim_joints` point into LinkSpecial3. The u16 target-file
+ * IDs are in the post-compression trailer (see tools/vpk0_excess_bytes.txt);
+ * fixRelocChain.py overwrites each slot at build time with the chain-encoded
+ * pair from the .reloc file, so the symbolic references below are purely
+ * for source readability.
  */
 
 #include "relocdata_types.h"
 #include <wp/wptypes.h>
 
+/* Cross-file references resolved by fixRelocChain.py — see .reloc */
+extern u8 dLinkSpecial3_BoomerangDL_post[];  /* file 325 */
+
 WPAttributes dLinkSpecial1_Boomerang_WeaponAttributes = {
-    (void *)0x00020184,  /* data */
+    (void *)(dLinkSpecial3_BoomerangDL_post + 0x1B8),                /* data (325+0x610) */
     NULL,  /* p_mobjsubs */
-    (AObjEvent32 **)0xFFFF01B0,  /* anim_joints */
+    (AObjEvent32 **)(dLinkSpecial3_BoomerangDL_post + 0x268),        /* anim_joints (325+0x6C0) */
     NULL,  /* p_matanim_joints */
     { { 0, 0, 0 }, { 0, 0, 0 } },  /* attack_offsets */
     150, 0, -150, 150,  /* map_coll top/center/bottom/width */

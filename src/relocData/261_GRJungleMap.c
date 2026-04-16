@@ -6,6 +6,9 @@
 
 #include "relocdata_types.h"
 
+/* Cross-file references resolved by fixRelocChain.py — see .reloc */
+extern u16 dStageJungleFile2_Lut_0x0A98_palette[];
+
 /* Item-randomizer weights — referenced by header.item_weights */
 u8 dGRJungleMap_gap_0x0000[20] = {
 	#include <GRJungleMap/gap_0x0000.data.inc.c>

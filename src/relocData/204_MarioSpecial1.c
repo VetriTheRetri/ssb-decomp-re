@@ -4,16 +4,26 @@
  * Mario Fireball hitbox. Used by src/wp/wpmario/wpmariofireball.c via the `WPDesc` at
  *   &gFTDataMarioSpecial1 + llMarioSpecial1FireballWeaponAttributes (= 0x0),
  * which `lbRelocGetFileData(WPAttributes*, ...)` casts into a typed view.
- * Pointer fields (`data`, `anim_joints`) are chain-encoded; fixRelocChain
- * patches them at link time to symbols inside the owning fighter's *Main file.
+ *
+ * `data` and `p_mobjsubs` carry cross-file reloc chain entries whose u16
+ * target-file IDs are stored in the post-compression trailer (see
+ * tools/vpk0_excess_bytes.txt). The source-level symbolic references below
+ * are placeholders — fixRelocChain.py overwrites each slot at build time
+ * with the chain-encoded (next_word << 16 | target_word) pair taken from
+ * the .reloc file, so the final bytes are byte-identical regardless of the
+ * symbolic form.
  */
 
 #include "relocdata_types.h"
 #include <wp/wptypes.h>
 
+/* Cross-file references resolved by fixRelocChain.py — see .reloc */
+extern Vtx dMarioSpecial3_JointVerts_Vtx[];        /* file 297 */
+extern u8  dMarioSpecial3_Tex_0x0058[];            /* file 297 */
+
 WPAttributes dMarioSpecial1_Fireball_WeaponAttributes = {
-    (void *)0x0001006A,  /* data */
-    (MObjSub ***)0xFFFF0036,  /* p_mobjsubs */
+    (void *)&dMarioSpecial3_JointVerts_Vtx[4],                   /* data (297+0x1A8) */
+    (MObjSub ***)((u8 *)dMarioSpecial3_Tex_0x0058 + 0x80),       /* p_mobjsubs (297+0xD8) */
     NULL,  /* anim_joints */
     NULL,  /* p_matanim_joints */
     { { 0, 0, 0 }, { 0, 0, 0 } },  /* attack_offsets */

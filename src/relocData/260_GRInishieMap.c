@@ -6,6 +6,10 @@
 
 #include "relocdata_types.h"
 
+/* Cross-file references resolved by fixRelocChain.py — see .reloc */
+extern u8 dStageInishieFile2_Tex_0x02E0[];
+extern u8 dStageInishieFile2_Tex_0x12E8[];
+
 /* Item-randomizer weights — referenced by header.item_weights */
 u8 dGRInishieMap_gap_0x0000[20] = {
 	#include <GRInishieMap/gap_0x0000.data.inc.c>

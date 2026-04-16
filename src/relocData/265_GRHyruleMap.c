@@ -18,6 +18,7 @@ extern DObjDesc dStageHyruleFile2_Layer0DObj[];
 extern DObjDesc dStageHyruleFile2_Layer1DObj[];
 extern DObjDesc dStageHyruleFile2_Layer3DObj[];
 extern u32 dStageHyruleFile2_MPGeometryData_0x599C[];
+extern Sprite dStageCastle_sprite_0x26C88[];  /* file 95 — Hyrule reuses the Castle sprite file */
 MPGroundData dGRHyruleMap_MapHeader_0x0014 =
 {
     /* gr_desc[4] */
@@ -29,7 +30,7 @@ MPGroundData dGRHyruleMap_MapHeader_0x0014 =
     },
     dStageHyruleFile2_MPGeometryData_0x599C,  /* map_geometry */
     1,  /* layer_mask */
-    (Sprite *)0xFFFF9B22,  /* wallpaper */
+    dStageCastle_sprite_0x26C88,  /* wallpaper */
     { 0xE1, 0xC8, 0xFF },  /* fog_color */
     0x00,  /* fog_alpha */
     /* emblem_colors[4] */

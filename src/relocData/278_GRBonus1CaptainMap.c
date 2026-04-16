@@ -5,6 +5,9 @@
 #include "relocdata_types.h"
 
 /* Cross-file references resolved by fixRelocChain.py — see .reloc */
+extern Sprite dBonus1CommonBackground_0x26c88[];
+
+/* Cross-file references resolved by fixRelocChain.py — see .reloc */
 extern DObjDesc dGRBonus1CaptainFile2_Layer0DObj[];
 extern DObjDesc dGRBonus1CaptainFile2_Layer1DObj[];
 extern u32 dGRBonus1CaptainFile2_Layer1Anim_AnimJoint[];
@@ -21,7 +24,7 @@ MPGroundData dGRBonus1CaptainMap_header =
     },
     dGRBonus1CaptainFile2_MPGeometryData_0x1B08,  /* map_geometry */
     1,  /* layer_mask */
-    (Sprite *)0xFFFF9B22,  /* wallpaper */
+    (Sprite *)dBonus1CommonBackground_0x26c88,  /* wallpaper */
     { 0x4B, 0xC2, 0xF4 },  /* fog_color */
     0x00,  /* fog_alpha */
     /* emblem_colors[4] */

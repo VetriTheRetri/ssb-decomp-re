@@ -4,15 +4,22 @@
  * Samus Charge Shot hitbox. Used by src/wp/wpsamus/wpsamuschargeshot.c via the `WPDesc` at
  *   &gFTDataSamusSpecial1 + llSamusSpecial1ChargeShotWeaponAttributes (= 0x0),
  * which `lbRelocGetFileData(WPAttributes*, ...)` casts into a typed view.
- * Pointer fields (`data`, `anim_joints`) are chain-encoded; fixRelocChain
- * patches them at link time to symbols inside the owning fighter's *Main file.
+ *
+ * `data` carries a cross-file reloc chain entry whose u16 target-file ID
+ * is stored in the post-compression trailer (see tools/vpk0_excess_bytes.txt).
+ * fixRelocChain.py overwrites the slot at build time with the chain-encoded
+ * pair from the .reloc file; the symbolic reference below is purely for
+ * source readability.
  */
 
 #include "relocdata_types.h"
 #include <wp/wptypes.h>
 
+/* Cross-file references resolved by fixRelocChain.py — see .reloc */
+extern Vtx dSamusSpecial3_JointVerts_Vtx[];  /* file 321 */
+
 WPAttributes dSamusSpecial1_ChargeShot_WeaponAttributes = {
-    (void *)0xFFFF009C,  /* data */
+    (void *)&dSamusSpecial3_JointVerts_Vtx[4],  /* data (321+0x270) */
     NULL,  /* p_mobjsubs */
     NULL,  /* anim_joints */
     NULL,  /* p_matanim_joints */

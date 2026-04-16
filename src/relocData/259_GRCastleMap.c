@@ -5,6 +5,10 @@
 #include "relocdata_types.h"
 
 /* Cross-file references resolved by fixRelocChain.py — see .reloc */
+extern Sprite dMVOpeningRoomWallpaper_sprite_0x26C88[];
+extern u8 dStageCastleFile3[];
+
+/* Cross-file references resolved by fixRelocChain.py — see .reloc */
 extern Sprite dStageCastle_sprite_0x26C88[];
 extern DObjDesc dStageCastleFile2_Layer0DObj[];
 extern DObjDesc dStageCastleFile2_Layer1DObj[];

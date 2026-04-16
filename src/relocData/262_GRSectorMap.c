@@ -6,6 +6,9 @@
 
 #include "relocdata_types.h"
 
+/* Cross-file references resolved by fixRelocChain.py — see .reloc */
+extern u8 dStageSectorFile2_Tex_0x1C00[];
+
 /* Raw data from file offset 0x0000 to 0x0014 (20 bytes) */
 u8 dGRSectorMap_Arwing0_AnimJoint[20] = {
 	#include <GRSectorMap/Arwing0_AnimJoint.data.inc.c>

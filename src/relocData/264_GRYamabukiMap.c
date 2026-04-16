@@ -6,6 +6,12 @@
 
 #include "relocdata_types.h"
 
+/* Cross-file references resolved by fixRelocChain.py — see .reloc */
+extern u8 dStageYamabukiFile2_Tex_0x28F0[];
+extern u8 dStageYamabukiFile2_Tex_0x1BA0[];
+extern u8 dStageYamabukiFile2_Tex_0x2360[];
+extern u8 dStageYamabukiFile2_Tex_0x0460[];
+
 /* Item-randomizer weights — referenced by header.item_weights */
 u8 dGRYamabukiMap_gap_0x0000[20] = {
 	#include <GRYamabukiMap/gap_0x0000.data.inc.c>

@@ -1,68 +1,68 @@
 # Relocation metadata for file 209
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dFoxMain_pre+0x0 0x0  # -> file 208 (FoxMainMotion)
-extern dFoxMain_pre+0x4 0x2B0  # -> file 346 (FoxSpecial2)
-extern dFoxMain_pre+0x8 0x2C30  # -> file 161 (FoxSpecial3)
-extern dFoxMain_pre+0xC 0x0  # -> file 210 (FoxSpecial1)
-extern dFoxMain_pre+0x60 0x1DF8  # -> file 313 (FoxModel)
-extern dFoxMain_pre+0x74 0x4B20  # -> file 313 (FoxModel)
-extern dFoxMain_pre+0x88 0x6030  # -> file 313 (FoxModel)
-extern dFoxMain_pre+0x9C 0x6140  # -> file 313 (FoxModel)
-extern dFoxMain_pre+0xB0 0x2318  # -> file 313 (FoxModel)
-extern dFoxMain_pre+0xC4 0x4FC0  # -> file 313 (FoxModel)
-extern dFoxMain_pre+0xD8 0x5DD0  # -> file 313 (FoxModel)
-extern dFoxMain_pre+0xEC 0x5EE0  # -> file 313 (FoxModel)
-extern dFoxMain_pre+0x100 0x3F0  # -> file 315 (FoxUnknown)
-extern dFoxMain_pre+0x114 0x3F0  # -> file 315 (FoxUnknown)
-intern dFoxMain_pre+0x140 dFoxMain_pre+0x60
-intern dFoxMain_pre+0x158 dFoxMain_pre+0xB0
-intern dFoxMain_pre+0x15C dFoxMain_pre+0x100
-extern dFoxMain_pre+0x19C 0x2938  # -> file 313 (FoxModel)
-extern dFoxMain_pre+0x1A0 0x0  # -> file 313 (FoxModel)
-extern dFoxMain_pre+0x1A4 0x2E10  # -> file 313 (FoxModel)
-extern dFoxMain_pre+0x1AC 0x5510  # -> file 313 (FoxModel)
-extern dFoxMain_pre+0x1B0 0x3130  # -> file 313 (FoxModel)
-extern dFoxMain_pre+0x1B4 0x59E0  # -> file 313 (FoxModel)
-extern dFoxMain_pre+0x36C 0x7B80  # -> file 313 (FoxModel)
-extern dFoxMain_pre+0x370 0x7BA8  # -> file 313 (FoxModel)
-extern dFoxMain_pre+0x374 0x7BD0  # -> file 313 (FoxModel)
-extern dFoxMain_pre+0x378 0x7BF8  # -> file 313 (FoxModel)
-extern dFoxMain_pre+0x37C 0x7C28  # -> file 313 (FoxModel)
-intern dFoxMain_pre+0x380 dFoxMain_pre+0x36C
-extern dFoxMain_pre+0x384 0x7E08  # -> file 313 (FoxModel)
-extern dFoxMain_pre+0x390 0x6240  # -> file 313 (FoxModel)
-extern dFoxMain_pre+0x398 0x6320  # -> file 313 (FoxModel)
-extern dFoxMain_pre+0x3A8 0x6A20  # -> file 313 (FoxModel)
-extern dFoxMain_pre+0x3B0 0x6910  # -> file 313 (FoxModel)
-extern dFoxMain_pre+0x3B8 0x6B10  # -> file 313 (FoxModel)
-extern dFoxMain_pre+0x3C8 0x66B0  # -> file 313 (FoxModel)
-extern dFoxMain_pre+0x3D8 0x6A20  # -> file 313 (FoxModel)
-extern dFoxMain_pre+0x3E0 0x6910  # -> file 313 (FoxModel)
-extern dFoxMain_pre+0x3E8 0x6C10  # -> file 313 (FoxModel)
-extern dFoxMain_pre+0x400 0x6D30  # -> file 313 (FoxModel)
-extern dFoxMain_pre+0x408 0x6DE0  # -> file 313 (FoxModel)
-extern dFoxMain_pre+0x418 0x6E90  # -> file 313 (FoxModel)
-extern dFoxMain_pre+0x428 0x6D30  # -> file 313 (FoxModel)
-extern dFoxMain_pre+0x430 0x6DE0  # -> file 313 (FoxModel)
-extern dFoxMain_pre+0x440 0x6E90  # -> file 313 (FoxModel)
-extern dFoxMain_pre+0x448 0x7020  # -> file 313 (FoxModel)
-intern dFoxMain_pre+0x464 dFoxMain_pre+0x388
-intern dFoxMain_attr+0x29C dFoxMain_pre+0x18
-intern dFoxMain_attr+0x2A0 dFoxMain_pre+0x10
-intern dFoxMain_attr+0x2D0 dFoxMain_pre+0x20
-intern dFoxMain_attr+0x2D4 dFoxMain_pre+0x19C
-extern dFoxMain_attr+0x2D8 0x120  # -> file 314 (FoxShieldPose)
-extern dFoxMain_attr+0x2DC 0x620  # -> file 314 (FoxShieldPose)
-extern dFoxMain_attr+0x2E0 0xAD0  # -> file 314 (FoxShieldPose)
-extern dFoxMain_attr+0x2E4 0xF90  # -> file 314 (FoxShieldPose)
-extern dFoxMain_attr+0x2E8 0x1440  # -> file 314 (FoxShieldPose)
-extern dFoxMain_attr+0x2EC 0x1900  # -> file 314 (FoxShieldPose)
-extern dFoxMain_attr+0x2F0 0x1DB0  # -> file 314 (FoxShieldPose)
-extern dFoxMain_attr+0x2F4 0x2270  # -> file 314 (FoxShieldPose)
-extern dFoxMain_attr+0x2F8 0x2710  # -> file 314 (FoxShieldPose)
-intern dFoxMain_attr+0x328 dFoxMain_pre+0x128
-intern dFoxMain_attr+0x330 dFoxMain_pre+0x194
-intern dFoxMain_attr+0x338 dFoxMain_pre+0x1BC
-intern dFoxMain_attr+0x340 dFoxMain_pre+0x37C
-intern dFoxMain_attr+0x344 dFoxMain_pre+0x460
+extern dFoxMain_file_handles 0x0 # -> file 208 (FoxMainMotion)
+extern dFoxMain_file_handles+0x4 0x2B0 # -> file 346 (FoxSpecial2)
+extern dFoxMain_file_handles+0x8 0x2C30 # -> file 161 (FoxSpecial3)
+extern dFoxMain_file_handles+0xC 0x0 # -> file 210 (FoxSpecial1)
+extern dFoxMain_modelparts_desc_0x060 0x1DF8 # -> file 313 (FoxModel)
+extern dFoxMain_modelparts_desc_0x060+0x14 0x4B20 # -> file 313 (FoxModel)
+extern dFoxMain_modelparts_desc_0x060+0x28 0x6030 # -> file 313 (FoxModel)
+extern dFoxMain_modelparts_desc_0x060+0x3C 0x6140 # -> file 313 (FoxModel)
+extern dFoxMain_modelparts_desc_0x0B0 0x2318 # -> file 313 (FoxModel)
+extern dFoxMain_modelparts_desc_0x0B0+0x14 0x4FC0 # -> file 313 (FoxModel)
+extern dFoxMain_modelparts_desc_0x0B0+0x28 0x5DD0 # -> file 313 (FoxModel)
+extern dFoxMain_modelparts_desc_0x0B0+0x3C 0x5EE0 # -> file 313 (FoxModel)
+extern dFoxMain_modelparts_desc_0x100 0x3F0 # -> file 315 (FoxUnknown)
+extern dFoxMain_modelparts_desc_0x100+0x14 0x3F0 # -> file 315 (FoxUnknown)
+intern dFoxMain_modelparts_container+0x18 dFoxMain_modelparts_desc_0x060
+intern dFoxMain_modelparts_container+0x30 dFoxMain_modelparts_desc_0x0B0
+intern dFoxMain_modelparts_container+0x34 dFoxMain_modelparts_desc_0x100
+extern dFoxMain_commonparts_container 0x2938 # -> file 313 (FoxModel)
+extern dFoxMain_commonparts_container+0x4 0x0 # -> file 313 (FoxModel)
+extern dFoxMain_commonparts_container+0x8 0x2E10 # -> file 313 (FoxModel)
+extern dFoxMain_commonparts_container+0x10 0x5510 # -> file 313 (FoxModel)
+extern dFoxMain_commonparts_container+0x14 0x3130 # -> file 313 (FoxModel)
+extern dFoxMain_commonparts_container+0x18 0x59E0 # -> file 313 (FoxModel)
+extern dFoxMain_stock_luts 0x7B80 # -> file 313 (FoxModel)
+extern dFoxMain_stock_luts+0x4 0x7BA8 # -> file 313 (FoxModel)
+extern dFoxMain_stock_luts+0x8 0x7BD0 # -> file 313 (FoxModel)
+extern dFoxMain_stock_luts+0xC 0x7BF8 # -> file 313 (FoxModel)
+extern dFoxMain_sprites 0x7C28 # -> file 313 (FoxModel)
+intern dFoxMain_sprites+0x4 dFoxMain_stock_luts
+extern dFoxMain_sprites+0x8 0x7E08 # -> file 313 (FoxModel)
+extern dFoxMain_skeleton_dls+0x8 0x6240 # -> file 313 (FoxModel)
+extern dFoxMain_skeleton_dls+0x10 0x6320 # -> file 313 (FoxModel)
+extern dFoxMain_skeleton_dls+0x20 0x6A20 # -> file 313 (FoxModel)
+extern dFoxMain_skeleton_dls+0x28 0x6910 # -> file 313 (FoxModel)
+extern dFoxMain_skeleton_dls+0x30 0x6B10 # -> file 313 (FoxModel)
+extern dFoxMain_skeleton_dls+0x40 0x66B0 # -> file 313 (FoxModel)
+extern dFoxMain_skeleton_dls+0x50 0x6A20 # -> file 313 (FoxModel)
+extern dFoxMain_skeleton_dls+0x58 0x6910 # -> file 313 (FoxModel)
+extern dFoxMain_skeleton_dls+0x60 0x6C10 # -> file 313 (FoxModel)
+extern dFoxMain_skeleton_dls+0x78 0x6D30 # -> file 313 (FoxModel)
+extern dFoxMain_skeleton_dls+0x80 0x6DE0 # -> file 313 (FoxModel)
+extern dFoxMain_skeleton_dls+0x90 0x6E90 # -> file 313 (FoxModel)
+extern dFoxMain_skeleton_dls+0xA0 0x6D30 # -> file 313 (FoxModel)
+extern dFoxMain_skeleton_dls+0xA8 0x6DE0 # -> file 313 (FoxModel)
+extern dFoxMain_skeleton_dls+0xB8 0x6E90 # -> file 313 (FoxModel)
+extern dFoxMain_skeleton_dls+0xC0 0x7020 # -> file 313 (FoxModel)
+intern dFoxMain_skeleton+0x4 dFoxMain_skeleton_dls
+intern dFoxMain_attr+0x29C dFoxMain_setup_parts
+intern dFoxMain_attr+0x2A0 dFoxMain_animlock
+intern dFoxMain_attr+0x2D0 dFoxMain_hiddenparts
+intern dFoxMain_attr+0x2D4 dFoxMain_commonparts_container
+extern dFoxMain_attr+0x2D8 0x120 # -> file 314 (FoxShieldPose)
+extern dFoxMain_attr+0x2DC 0x620 # -> file 314 (FoxShieldPose)
+extern dFoxMain_attr+0x2E0 0xAD0 # -> file 314 (FoxShieldPose)
+extern dFoxMain_attr+0x2E4 0xF90 # -> file 314 (FoxShieldPose)
+extern dFoxMain_attr+0x2E8 0x1440 # -> file 314 (FoxShieldPose)
+extern dFoxMain_attr+0x2EC 0x1900 # -> file 314 (FoxShieldPose)
+extern dFoxMain_attr+0x2F0 0x1DB0 # -> file 314 (FoxShieldPose)
+extern dFoxMain_attr+0x2F4 0x2270 # -> file 314 (FoxShieldPose)
+extern dFoxMain_attr+0x2F8 0x2710 # -> file 314 (FoxShieldPose)
+intern dFoxMain_attr+0x328 dFoxMain_modelparts_container
+intern dFoxMain_attr+0x330 dFoxMain_textureparts_container
+intern dFoxMain_attr+0x338 dFoxMain_thrown_status
+intern dFoxMain_attr+0x340 dFoxMain_sprites
+intern dFoxMain_attr+0x344 dFoxMain_skeleton

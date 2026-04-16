@@ -5,7 +5,9 @@
 #include <ft/fttypes.h>
 
 /* Pre-attributes data (263 words, 0x041C bytes) */
-u32 dPikachuMain_pre[263] = {
+/* @ 0x0000, 116 bytes: FTAttributes.file_handles target (was dPikachuMain_pre+0x0) */
+u32 dPikachuMain_file_handles[29] = {
+
 	0x00010004, /* extern -> 0x0010 */
 	0x00020200, /* extern -> 0x0800 */
 	0x00030000, /* extern -> 0x0000 */
@@ -35,10 +37,22 @@ u32 dPikachuMain_pre[263] = {
 	0x0C830800,
 	0x0180B984,
 	0x14000000,
+};
+
+/* @ 0x0074, 8 bytes: FTAttributes.animlock target (was dPikachuMain_pre+0x74) */
+u32 dPikachuMain_animlock[2] = {
 	0x08092900,
 	0x00000000,
+};
+
+/* @ 0x007C, 8 bytes: FTAttributes.setup_parts target (was dPikachuMain_pre+0x7C) */
+u32 dPikachuMain_setup_parts[2] = {
 	0xFFFFFFC0,
 	0x00000000,
+};
+
+/* @ 0x0084, 64 bytes: FTAttributes.hiddenparts target (was dPikachuMain_pre+0x84) */
+u32 dPikachuMain_hiddenparts[16] = {
 	0x00000002,
 	0x00000000,
 	0x00000001,
@@ -55,6 +69,10 @@ u32 dPikachuMain_pre[263] = {
 	0x00000004,
 	0x00000001,
 	0x00000000,
+};
+
+/* @ 0x00C4, 108 bytes: FTAttributes.modelparts_container target (was dPikachuMain_pre+0xC4) */
+u32 dPikachuMain_modelparts_container[27] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -82,12 +100,24 @@ u32 dPikachuMain_pre[263] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x0130, 16 bytes: FTAttributes.accesspart target (was dPikachuMain_pre+0x130) */
+u32 dPikachuMain_accesspart[4] = {
 	0x0000000B,
 	0x004E18FC, /* extern -> 0x63F0 */
 	0x004F18D4, /* extern -> 0x6350 */
 	0x00521953, /* extern -> 0x654C */
+};
+
+/* @ 0x0140, 8 bytes: FTAttributes.textureparts_container target (was dPikachuMain_pre+0x140) */
+u32 dPikachuMain_textureparts_container[2] = {
 	0x0B00000B,
 	0x01010000,
+};
+
+/* @ 0x0148, 32 bytes: FTAttributes.commonparts_container target (was dPikachuMain_pre+0x148) */
+u32 dPikachuMain_commonparts_container[8] = {
 	0x00530994, /* extern -> 0x2650 */
 	0x00540000, /* extern -> 0x0000 */
 	0x00560AC8, /* extern -> 0x2B20 */
@@ -96,6 +126,10 @@ u32 dPikachuMain_pre[263] = {
 	0x00580D0C, /* extern -> 0x3430 */
 	0x00C61658, /* extern -> 0x5960 */
 	0x00000000,
+};
+
+/* @ 0x0168, 432 bytes: FTAttributes.thrown_status target (was dPikachuMain_pre+0x168) */
+u32 dPikachuMain_thrown_status[108] = {
 	0xFFFFFFFF,
 	0x000000BA,
 	0xFFFFFFFF,
@@ -204,14 +238,26 @@ u32 dPikachuMain_pre[263] = {
 	0x000000BA,
 	0xFFFFFFFF,
 	0x000000BA,
+};
+
+/* @ 0x0318, 20 bytes: FTAttributes.sub_0x318 target (was dPikachuMain_pre+0x318) */
+u32 dPikachuMain_sub_0x318[5] = {
 	0x00C7264C, /* extern -> 0x9930 */
 	0x00C82656, /* extern -> 0x9958 */
 	0x00C92660, /* extern -> 0x9980 */
 	0x00CA266A, /* extern -> 0x99A8 */
 	0x00CB2674, /* extern -> 0x99D0 */
+};
+
+/* @ 0x032C, 12 bytes: FTAttributes.sprites target (was dPikachuMain_pre+0x32C) */
+u32 dPikachuMain_sprites[3] = {
 	0x00CD2680, /* extern -> 0x9A00 */
 	0x010500C6, /* intern -> 0x0318 */
 	0x00D026FA, /* extern -> 0x9BE8 */
+};
+
+/* @ 0x0338, 216 bytes: FTAttributes.sub_0x338 target (was dPikachuMain_pre+0x338) */
+u32 dPikachuMain_sub_0x338[54] = {
 	0x00000000,
 	0x00000000,
 	0x00D2197C, /* extern -> 0x65F0 */
@@ -266,6 +312,10 @@ u32 dPikachuMain_pre[263] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x0410, 12 bytes: FTAttributes.skeleton target (was dPikachuMain_pre+0x410) */
+u32 dPikachuMain_skeleton[3] = {
 	0x0000000B,
 	0x01AE00CE, /* intern -> 0x0338 */
 	0x00000000,

@@ -5,7 +5,9 @@
 #include <ft/fttypes.h>
 
 /* Pre-attributes data (388 words, 0x0610 bytes) */
-u32 dSamusMain_pre[388] = {
+/* @ 0x0000, 64 bytes: FTAttributes.file_handles target (was dSamusMain_pre+0x0) */
+u32 dSamusMain_file_handles[16] = {
+
 	0x00010021, /* extern -> 0x0084 */
 	0x000200E0, /* extern -> 0x0380 */
 	0x00030000, /* extern -> 0x0000 */
@@ -22,10 +24,22 @@ u32 dSamusMain_pre[388] = {
 	0x10424400,
 	0x0140E124,
 	0x02800000,
+};
+
+/* @ 0x0040, 8 bytes: FTAttributes.animlock target (was dSamusMain_pre+0x40) */
+u32 dSamusMain_animlock[2] = {
 	0x10200252,
 	0x00000000,
+};
+
+/* @ 0x0048, 8 bytes: FTAttributes.setup_parts target (was dSamusMain_pre+0x48) */
+u32 dSamusMain_setup_parts[2] = {
 	0xFFF803FF,
 	0x00000000,
+};
+
+/* @ 0x0050, 208 bytes: FTAttributes.hiddenparts target (was dSamusMain_pre+0x50) */
+u32 dSamusMain_hiddenparts[52] = {
 	0x00000002,
 	0x00000000,
 	0x00000001,
@@ -78,6 +92,10 @@ u32 dSamusMain_pre[388] = {
 	0x00000010,
 	0x00000001,
 	0x00000000,
+};
+
+/* @ 0x0120, 120 bytes: FTAttributes.sub_0x120 target (was dSamusMain_pre+0x120) */
+u32 dSamusMain_sub_0x120[30] = {
 	0x00490832, /* extern -> 0x20C8 */
 	0x004A031D, /* extern -> 0x0C74 */
 	0x004D0FEB, /* extern -> 0x3FAC */
@@ -108,6 +126,10 @@ u32 dSamusMain_pre[388] = {
 	0x00662259, /* extern -> 0x8964 */
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x0198, 80 bytes: FTAttributes.sub_0x198 target (was dSamusMain_pre+0x198) */
+u32 dSamusMain_sub_0x198[20] = {
 	0x00670982, /* extern -> 0x2608 */
 	0x00680326, /* extern -> 0x0C98 */
 	0x006B0FF1, /* extern -> 0x3FC4 */
@@ -128,6 +150,10 @@ u32 dSamusMain_pre[388] = {
 	0x007A1F61, /* extern -> 0x7D84 */
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x01E8, 40 bytes: FTAttributes.sub_0x1E8 target (was dSamusMain_pre+0x1E8) */
+u32 dSamusMain_sub_0x1E8[10] = {
 	0x007B2364, /* extern -> 0x8D90 */
 	0x007D2340, /* extern -> 0x8D00 */
 	0x00000000,
@@ -138,6 +164,10 @@ u32 dSamusMain_pre[388] = {
 	0x00000000,
 	0x008423E5, /* extern -> 0x8F94 */
 	0x00000000,
+};
+
+/* @ 0x0210, 40 bytes: FTAttributes.sub_0x210 target (was dSamusMain_pre+0x210) */
+u32 dSamusMain_sub_0x210[10] = {
 	0x00852450, /* extern -> 0x9140 */
 	0x0087242C, /* extern -> 0x90B0 */
 	0x00000000,
@@ -148,6 +178,10 @@ u32 dSamusMain_pre[388] = {
 	0x00000000,
 	0x008E24D1, /* extern -> 0x9344 */
 	0x00000000,
+};
+
+/* @ 0x0238, 80 bytes: FTAttributes.sub_0x238 target (was dSamusMain_pre+0x238) */
+u32 dSamusMain_sub_0x238[20] = {
 	0x00930B08, /* extern -> 0x2C20 */
 	0x00000000,
 	0x00000000,
@@ -168,6 +202,10 @@ u32 dSamusMain_pre[388] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x0288, 132 bytes: FTAttributes.modelparts_container target (was dSamusMain_pre+0x288) */
+u32 dSamusMain_modelparts_container[33] = {
 	0x00000000,
 	0x00000000,
 	0x00A80048, /* intern -> 0x0120 */
@@ -201,6 +239,10 @@ u32 dSamusMain_pre[388] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x030C, 32 bytes: FTAttributes.commonparts_container target (was dSamusMain_pre+0x30C) */
+u32 dSamusMain_commonparts_container[8] = {
 	0x00C40D48, /* extern -> 0x3520 */
 	0x00C50000, /* extern -> 0x0000 */
 	0x00C70EC0, /* extern -> 0x3B00 */
@@ -209,6 +251,10 @@ u32 dSamusMain_pre[388] = {
 	0x00C91000, /* extern -> 0x4000 */
 	0x01371BEC, /* extern -> 0x6FB0 */
 	0x00000000,
+};
+
+/* @ 0x032C, 432 bytes: FTAttributes.thrown_status target (was dSamusMain_pre+0x32C) */
+u32 dSamusMain_thrown_status[108] = {
 	0xFFFFFFFF,
 	0x000000BA,
 	0xFFFFFFFF,
@@ -317,14 +363,26 @@ u32 dSamusMain_pre[388] = {
 	0x000000BA,
 	0xFFFFFFFF,
 	0x000000BA,
+};
+
+/* @ 0x04DC, 20 bytes: FTAttributes.sub_0x4DC target (was dSamusMain_pre+0x4DC) */
+u32 dSamusMain_sub_0x4DC[5] = {
 	0x01383888, /* extern -> 0xE220 */
 	0x01393892, /* extern -> 0xE248 */
 	0x013A389C, /* extern -> 0xE270 */
 	0x013B38A6, /* extern -> 0xE298 */
 	0x013C38B0, /* extern -> 0xE2C0 */
+};
+
+/* @ 0x04F0, 12 bytes: FTAttributes.sprites target (was dSamusMain_pre+0x4F0) */
+u32 dSamusMain_sprites[3] = {
 	0x013E38BC, /* extern -> 0xE2F0 */
 	0x01820137, /* intern -> 0x04DC */
 	0x01413942, /* extern -> 0xE508 */
+};
+
+/* @ 0x04FC, 264 bytes: FTAttributes.sub_0x4FC target (was dSamusMain_pre+0x4FC) */
+u32 dSamusMain_sub_0x4FC[66] = {
 	0x00000000,
 	0x01000000,
 	0x01432B56, /* extern -> 0xAD58 */
@@ -391,6 +449,10 @@ u32 dSamusMain_pre[388] = {
 	0x01000000,
 	0x00000000,
 	0x01000000,
+};
+
+/* @ 0x0604, 12 bytes: FTAttributes.skeleton target (was dSamusMain_pre+0x604) */
+u32 dSamusMain_skeleton[3] = {
 	0x0000000D,
 	0x022B013F, /* intern -> 0x04FC */
 	0x00000000,

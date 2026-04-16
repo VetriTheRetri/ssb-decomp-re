@@ -5,7 +5,9 @@
 #include <ft/fttypes.h>
 
 /* Pre-attributes data (514 words, 0x0808 bytes) */
-u32 dKirbyMain_pre[514] = {
+/* @ 0x0000, 60 bytes: FTAttributes.file_handles target (was dKirbyMain_pre+0x0) */
+u32 dKirbyMain_file_handles[15] = {
+
 	0x00010055, /* extern -> 0x0154 */
 	0x000202C8, /* extern -> 0x0B20 */
 	0x000474E2, /* extern -> 0x1D388 */
@@ -21,10 +23,22 @@ u32 dKirbyMain_pre[514] = {
 	0x0C818C00,
 	0x0168319C,
 	0x11800000,
+};
+
+/* @ 0x003C, 8 bytes: FTAttributes.animlock target (was dKirbyMain_pre+0x3C) */
+u32 dKirbyMain_animlock[2] = {
 	0x04209480,
 	0x00000000,
+};
+
+/* @ 0x0044, 8 bytes: FTAttributes.setup_parts target (was dKirbyMain_pre+0x44) */
+u32 dKirbyMain_setup_parts[2] = {
 	0xEF7CFFC0,
 	0x00000000,
+};
+
+/* @ 0x004C, 128 bytes: FTAttributes.hiddenparts target (was dKirbyMain_pre+0x4C) */
+u32 dKirbyMain_hiddenparts[32] = {
 	0x00000002,
 	0x00000000,
 	0x00000001,
@@ -57,6 +71,10 @@ u32 dKirbyMain_pre[514] = {
 	0x00000006,
 	0x00000001,
 	0x00000000,
+};
+
+/* @ 0x00CC, 600 bytes: FTAttributes.sub_0x0CC target (was dKirbyMain_pre+0xCC) */
+u32 dKirbyMain_sub_0x0CC[150] = {
 	0x0034036C, /* extern -> 0x0DB0 */
 	0x0035011C, /* extern -> 0x0470 */
 	0x00380704, /* extern -> 0x1C10 */
@@ -207,6 +225,10 @@ u32 dKirbyMain_pre[514] = {
 	0x00C95E00, /* extern -> 0x17800 */
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x0324, 40 bytes: FTAttributes.sub_0x324 target (was dKirbyMain_pre+0x324) */
+u32 dKirbyMain_sub_0x324[10] = {
 	0x00CA1028, /* extern -> 0x40A0 */
 	0x00CB0EAC, /* extern -> 0x3AB0 */
 	0x00CE10D9, /* extern -> 0x4364 */
@@ -217,6 +239,10 @@ u32 dKirbyMain_pre[514] = {
 	0x00D312C4, /* extern -> 0x4B10 */
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x034C, 40 bytes: FTAttributes.sub_0x34C target (was dKirbyMain_pre+0x34C) */
+u32 dKirbyMain_sub_0x34C[10] = {
 	0x00D40D7A, /* extern -> 0x35E8 */
 	0x00D50D58, /* extern -> 0x3560 */
 	0x00D80DCD, /* extern -> 0x3734 */
@@ -227,6 +253,10 @@ u32 dKirbyMain_pre[514] = {
 	0x00DD0E69, /* extern -> 0x39A4 */
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x0374, 40 bytes: FTAttributes.sub_0x374 target (was dKirbyMain_pre+0x374) */
+u32 dKirbyMain_sub_0x374[10] = {
 	0x00E25E14, /* extern -> 0x17850 */
 	0x00000000,
 	0x00000000,
@@ -237,6 +267,10 @@ u32 dKirbyMain_pre[514] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x039C, 40 bytes: FTAttributes.sub_0x39C target (was dKirbyMain_pre+0x39C) */
+u32 dKirbyMain_sub_0x39C[10] = {
 	0x00EC003E, /* extern -> 0x00F8 */
 	0x00000000,
 	0x00000000,
@@ -247,6 +281,10 @@ u32 dKirbyMain_pre[514] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x03C4, 40 bytes: FTAttributes.sub_0x3C4 target (was dKirbyMain_pre+0x3C4) */
+u32 dKirbyMain_sub_0x3C4[10] = {
 	0x00F600FC, /* extern -> 0x03F0 */
 	0x00000000,
 	0x00000000,
@@ -257,6 +295,10 @@ u32 dKirbyMain_pre[514] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x03EC, 108 bytes: FTAttributes.modelparts_container target (was dKirbyMain_pre+0x3EC) */
+u32 dKirbyMain_modelparts_container[27] = {
 	0x00000000,
 	0x00000000,
 	0x00FE0033, /* intern -> 0x00CC */
@@ -284,7 +326,15 @@ u32 dKirbyMain_pre[514] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x0458, 4 bytes: FTAttributes.textureparts_container target (was dKirbyMain_pre+0x458) */
+u32 dKirbyMain_textureparts_container[1] = {
 	0x06000000,
+};
+
+/* @ 0x045C, 32 bytes: FTAttributes.commonparts_container target (was dKirbyMain_pre+0x45C) */
+u32 dKirbyMain_commonparts_container[8] = {
 	0x01180512, /* extern -> 0x1448 */
 	0x01190000, /* extern -> 0x0000 */
 	0x011B0648, /* extern -> 0x1920 */
@@ -293,6 +343,10 @@ u32 dKirbyMain_pre[514] = {
 	0x011D070C, /* extern -> 0x1C30 */
 	0x018B0C68, /* extern -> 0x31A0 */
 	0x00000000,
+};
+
+/* @ 0x047C, 432 bytes: FTAttributes.thrown_status target (was dKirbyMain_pre+0x47C) */
+u32 dKirbyMain_thrown_status[108] = {
 	0xFFFFFFFF,
 	0x000000BA,
 	0xFFFFFFFF,
@@ -401,14 +455,26 @@ u32 dKirbyMain_pre[514] = {
 	0x000000BA,
 	0xFFFFFFFF,
 	0x000000BA,
+};
+
+/* @ 0x062C, 20 bytes: FTAttributes.sub_0x62C target (was dKirbyMain_pre+0x62C) */
+u32 dKirbyMain_sub_0x62C[5] = {
 	0x018C7544, /* extern -> 0x1D510 */
 	0x018D754E, /* extern -> 0x1D538 */
 	0x018E7558, /* extern -> 0x1D560 */
 	0x018F7562, /* extern -> 0x1D588 */
 	0x0190756C, /* extern -> 0x1D5B0 */
+};
+
+/* @ 0x0640, 12 bytes: FTAttributes.sprites target (was dKirbyMain_pre+0x640) */
+u32 dKirbyMain_sprites[3] = {
 	0x01927578, /* extern -> 0x1D5E0 */
 	0x0200018B, /* intern -> 0x062C */
 	0x019775F6, /* extern -> 0x1D7D8 */
+};
+
+/* @ 0x064C, 216 bytes: FTAttributes.sub_0x64C target (was dKirbyMain_pre+0x64C) */
+u32 dKirbyMain_sub_0x64C[54] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -463,6 +529,10 @@ u32 dKirbyMain_pre[514] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x0724, 216 bytes: FTAttributes.sub_0x724 target (was dKirbyMain_pre+0x724) */
+u32 dKirbyMain_sub_0x724[54] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -517,6 +587,10 @@ u32 dKirbyMain_pre[514] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x07FC, 12 bytes: FTAttributes.skeleton target (was dKirbyMain_pre+0x7FC) */
+u32 dKirbyMain_skeleton[3] = {
 	0x0000000A,
 	0x02010193, /* intern -> 0x064C */
 	0x02A901C9, /* intern -> 0x0724 */

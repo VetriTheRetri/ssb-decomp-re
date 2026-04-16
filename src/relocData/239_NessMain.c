@@ -5,7 +5,9 @@
 #include <ft/fttypes.h>
 
 /* Pre-attributes data (367 words, 0x05BC bytes) */
-u32 dNessMain_pre[367] = {
+/* @ 0x0000, 116 bytes: FTAttributes.file_handles target (was dNessMain_pre+0x0) */
+u32 dNessMain_file_handles[29] = {
+
 	0x00010009, /* extern -> 0x0024 */
 	0x0002026A, /* extern -> 0x09A8 */
 	0x00030000, /* extern -> 0x0000 */
@@ -35,10 +37,22 @@ u32 dNessMain_pre[367] = {
 	0x0780C800,
 	0x0140B984,
 	0x0C800000,
+};
+
+/* @ 0x0074, 8 bytes: FTAttributes.animlock target (was dNessMain_pre+0x74) */
+u32 dNessMain_animlock[2] = {
 	0x10424900,
 	0x00000000,
+};
+
+/* @ 0x007C, 8 bytes: FTAttributes.setup_parts target (was dNessMain_pre+0x7C) */
+u32 dNessMain_setup_parts[2] = {
 	0xFFFFFFC0,
 	0x00000000,
+};
+
+/* @ 0x0084, 64 bytes: FTAttributes.hiddenparts target (was dNessMain_pre+0x84) */
+u32 dNessMain_hiddenparts[16] = {
 	0x00000002,
 	0x00000000,
 	0x00000001,
@@ -55,6 +69,10 @@ u32 dNessMain_pre[367] = {
 	0x00000004,
 	0x00000001,
 	0x00000000,
+};
+
+/* @ 0x00C4, 80 bytes: FTAttributes.sub_0x0C4 target (was dNessMain_pre+0xC4) */
+u32 dNessMain_sub_0x0C4[20] = {
 	0x003206E2, /* extern -> 0x1B88 */
 	0x003301A6, /* extern -> 0x0698 */
 	0x00360B7B, /* extern -> 0x2DEC */
@@ -75,6 +93,10 @@ u32 dNessMain_pre[367] = {
 	0x00000000,
 	0x00000000,
 	0x40000000,
+};
+
+/* @ 0x0114, 120 bytes: FTAttributes.sub_0x114 target (was dNessMain_pre+0x114) */
+u32 dNessMain_sub_0x114[30] = {
 	0x004A06BE, /* extern -> 0x1AF8 */
 	0x00000000,
 	0x00000000,
@@ -105,6 +127,10 @@ u32 dNessMain_pre[367] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x018C, 120 bytes: FTAttributes.sub_0x18C target (was dNessMain_pre+0x18C) */
+u32 dNessMain_sub_0x18C[30] = {
 	0x0068083A, /* extern -> 0x20E8 */
 	0x00000000,
 	0x00000000,
@@ -135,6 +161,10 @@ u32 dNessMain_pre[367] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x0204, 80 bytes: FTAttributes.sub_0x204 target (was dNessMain_pre+0x204) */
+u32 dNessMain_sub_0x204[20] = {
 	0x00861AD4, /* extern -> 0x6B50 */
 	0x00000000,
 	0x00000000,
@@ -155,6 +185,10 @@ u32 dNessMain_pre[367] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x0254, 40 bytes: FTAttributes.sub_0x254 target (was dNessMain_pre+0x254) */
+u32 dNessMain_sub_0x254[10] = {
 	0x009A1A78, /* extern -> 0x69E0 */
 	0x00000000,
 	0x00000000,
@@ -165,6 +199,10 @@ u32 dNessMain_pre[367] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x027C, 108 bytes: FTAttributes.modelparts_container target (was dNessMain_pre+0x27C) */
+u32 dNessMain_modelparts_container[27] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -192,7 +230,15 @@ u32 dNessMain_pre[367] = {
 	0x00000000,
 	0x00000000,
 	0x01340095, /* intern -> 0x0254 */
+};
+
+/* @ 0x02E8, 4 bytes: FTAttributes.textureparts_container target (was dNessMain_pre+0x2E8) */
+u32 dNessMain_textureparts_container[1] = {
 	0x0C000000,
+};
+
+/* @ 0x02EC, 32 bytes: FTAttributes.commonparts_container target (was dNessMain_pre+0x2EC) */
+u32 dNessMain_commonparts_container[8] = {
 	0x00BC09AC, /* extern -> 0x26B0 */
 	0x00BD0000, /* extern -> 0x0000 */
 	0x00BF0AE0, /* extern -> 0x2B80 */
@@ -201,6 +247,10 @@ u32 dNessMain_pre[367] = {
 	0x00C10B84, /* extern -> 0x2E10 */
 	0x012F1530, /* extern -> 0x54C0 */
 	0x00000000,
+};
+
+/* @ 0x030C, 432 bytes: FTAttributes.thrown_status target (was dNessMain_pre+0x30C) */
+u32 dNessMain_thrown_status[108] = {
 	0xFFFFFFFF,
 	0x000000BA,
 	0xFFFFFFFF,
@@ -309,13 +359,25 @@ u32 dNessMain_pre[367] = {
 	0x000000BA,
 	0xFFFFFFFF,
 	0x000000BA,
+};
+
+/* @ 0x04BC, 16 bytes: FTAttributes.sub_0x4BC target (was dNessMain_pre+0x4BC) */
+u32 dNessMain_sub_0x4BC[4] = {
 	0x01303038, /* extern -> 0xC0E0 */
 	0x01313042, /* extern -> 0xC108 */
 	0x0132304C, /* extern -> 0xC130 */
 	0x01333056, /* extern -> 0xC158 */
+};
+
+/* @ 0x04CC, 12 bytes: FTAttributes.sprites target (was dNessMain_pre+0x4CC) */
+u32 dNessMain_sprites[3] = {
 	0x01353062, /* extern -> 0xC188 */
 	0x016D012F, /* intern -> 0x04BC */
 	0x013830DE, /* extern -> 0xC378 */
+};
+
+/* @ 0x04D8, 216 bytes: FTAttributes.sub_0x4D8 target (was dNessMain_pre+0x4D8) */
+u32 dNessMain_sub_0x4D8[54] = {
 	0x00000000,
 	0x00000000,
 	0x013A2738, /* extern -> 0x9CE0 */
@@ -370,6 +432,10 @@ u32 dNessMain_pre[367] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x05B0, 12 bytes: FTAttributes.skeleton target (was dNessMain_pre+0x5B0) */
+u32 dNessMain_skeleton[3] = {
 	0x0000000C,
 	0x02160136, /* intern -> 0x04D8 */
 	0x00000000,

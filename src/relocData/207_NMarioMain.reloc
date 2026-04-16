@@ -1,24 +1,24 @@
 # Relocation metadata for file 207
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dNMarioMain_pre+0x0 0x24  # -> file 202 (MarioMainMotion)
-extern dNMarioMain_pre+0xBC 0x2A30  # -> file 301 (NMarioModel)
-extern dNMarioMain_pre+0xCC 0x2A30  # -> file 301 (NMarioModel)
-extern dNMarioMain_pre+0x294 0x2B8  # -> file 345 (MasterHandIcon)
-intern dNMarioMain_attr+0x29C dNMarioMain_pre+0xC
-intern dNMarioMain_attr+0x2A0 dNMarioMain_pre+0x4
-intern dNMarioMain_attr+0x2D0 dNMarioMain_pre+0x14
-intern dNMarioMain_attr+0x2D4 dNMarioMain_pre+0xBC
-extern dNMarioMain_attr+0x2D8 0xF0  # -> file 298 (MarioShieldPose)
-extern dNMarioMain_attr+0x2DC 0x5A0  # -> file 298 (MarioShieldPose)
-extern dNMarioMain_attr+0x2E0 0xA10  # -> file 298 (MarioShieldPose)
-extern dNMarioMain_attr+0x2E4 0xE80  # -> file 298 (MarioShieldPose)
-extern dNMarioMain_attr+0x2E8 0x12F0  # -> file 298 (MarioShieldPose)
-extern dNMarioMain_attr+0x2EC 0x17A0  # -> file 298 (MarioShieldPose)
-extern dNMarioMain_attr+0x2F0 0x1C60  # -> file 298 (MarioShieldPose)
-extern dNMarioMain_attr+0x2F4 0x20E0  # -> file 298 (MarioShieldPose)
-extern dNMarioMain_attr+0x2F8 0x2540  # -> file 298 (MarioShieldPose)
-intern dNMarioMain_attr+0x328 dNMarioMain_pre+0x54
-intern dNMarioMain_attr+0x330 dNMarioMain_pre+0xB8
-intern dNMarioMain_attr+0x338 dNMarioMain_pre+0xDC
-intern dNMarioMain_attr+0x340 dNMarioMain_pre+0x28C
+extern dNMarioMain_file_handles 0x24 # -> file 202 (MarioMainMotion)
+extern dNMarioMain_commonparts_container 0x2A30 # -> file 301 (NMarioModel)
+extern dNMarioMain_commonparts_container+0x10 0x2A30 # -> file 301 (NMarioModel)
+extern dNMarioMain_sprites+0x8 0x2B8 # -> file 345 (MasterHandIcon)
+intern dNMarioMain_attr+0x29C dNMarioMain_setup_parts
+intern dNMarioMain_attr+0x2A0 dNMarioMain_animlock
+intern dNMarioMain_attr+0x2D0 dNMarioMain_hiddenparts
+intern dNMarioMain_attr+0x2D4 dNMarioMain_commonparts_container
+extern dNMarioMain_attr+0x2D8 0xF0 # -> file 298 (MarioShieldPose)
+extern dNMarioMain_attr+0x2DC 0x5A0 # -> file 298 (MarioShieldPose)
+extern dNMarioMain_attr+0x2E0 0xA10 # -> file 298 (MarioShieldPose)
+extern dNMarioMain_attr+0x2E4 0xE80 # -> file 298 (MarioShieldPose)
+extern dNMarioMain_attr+0x2E8 0x12F0 # -> file 298 (MarioShieldPose)
+extern dNMarioMain_attr+0x2EC 0x17A0 # -> file 298 (MarioShieldPose)
+extern dNMarioMain_attr+0x2F0 0x1C60 # -> file 298 (MarioShieldPose)
+extern dNMarioMain_attr+0x2F4 0x20E0 # -> file 298 (MarioShieldPose)
+extern dNMarioMain_attr+0x2F8 0x2540 # -> file 298 (MarioShieldPose)
+intern dNMarioMain_attr+0x328 dNMarioMain_modelparts_container
+intern dNMarioMain_attr+0x330 dNMarioMain_textureparts_container
+intern dNMarioMain_attr+0x338 dNMarioMain_thrown_status
+intern dNMarioMain_attr+0x340 dNMarioMain_sprites

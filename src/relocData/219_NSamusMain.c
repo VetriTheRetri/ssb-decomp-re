@@ -5,12 +5,26 @@
 #include <ft/fttypes.h>
 
 /* Pre-attributes data (239 words, 0x03BC bytes) */
-u32 dNSamusMain_pre[239] = {
+/* @ 0x0000, 4 bytes: FTAttributes.file_handles target (was dNSamusMain_pre+0x0) */
+u32 dNSamusMain_file_handles[1] = {
+
 	0x00390021, /* extern -> 0x0084 */
+};
+
+/* @ 0x0004, 8 bytes: FTAttributes.animlock target (was dNSamusMain_pre+0x4) */
+u32 dNSamusMain_animlock[2] = {
 	0x10200252,
 	0x00000000,
+};
+
+/* @ 0x000C, 8 bytes: FTAttributes.setup_parts target (was dNSamusMain_pre+0xC) */
+u32 dNSamusMain_setup_parts[2] = {
 	0xFFF803FF,
 	0x00000000,
+};
+
+/* @ 0x0014, 208 bytes: FTAttributes.hiddenparts target (was dNSamusMain_pre+0x14) */
+u32 dNSamusMain_hiddenparts[52] = {
 	0x00000002,
 	0x00000000,
 	0x00000001,
@@ -63,6 +77,10 @@ u32 dNSamusMain_pre[239] = {
 	0x00000010,
 	0x00000001,
 	0x00000000,
+};
+
+/* @ 0x00E4, 120 bytes: FTAttributes.sub_0x0E4 target (was dNSamusMain_pre+0xE4) */
+u32 dNSamusMain_sub_0x0E4[30] = {
 	0x003E0700, /* extern -> 0x1C00 */
 	0x00000000,
 	0x00000000,
@@ -93,6 +111,10 @@ u32 dNSamusMain_pre[239] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x015C, 132 bytes: FTAttributes.modelparts_container target (was dNSamusMain_pre+0x15C) */
+u32 dNSamusMain_modelparts_container[33] = {
 	0x00000000,
 	0x00000000,
 	0x01960039, /* intern -> 0x00E4 */
@@ -126,6 +148,10 @@ u32 dNSamusMain_pre[239] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x01E0, 32 bytes: FTAttributes.commonparts_container target (was dNSamusMain_pre+0x1E0) */
+u32 dNSamusMain_commonparts_container[8] = {
 	0x007C0A84, /* extern -> 0x2A10 */
 	0x00000000,
 	0x00000000,
@@ -134,6 +160,10 @@ u32 dNSamusMain_pre[239] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x0200, 432 bytes: FTAttributes.thrown_status target (was dNSamusMain_pre+0x200) */
+u32 dNSamusMain_thrown_status[108] = {
 	0xFFFFFFFF,
 	0x000000BA,
 	0xFFFFFFFF,
@@ -242,6 +272,10 @@ u32 dNSamusMain_pre[239] = {
 	0x000000BA,
 	0xFFFFFFFF,
 	0x000000BA,
+};
+
+/* @ 0x03B0, 12 bytes: FTAttributes.sprites target (was dNSamusMain_pre+0x3B0) */
+u32 dNSamusMain_sprites[3] = {
 	0x00000000,
 	0x00000000,
 	0x01A500AE, /* extern -> 0x02B8 */
@@ -289,34 +323,14 @@ FTAttributes dNSamusMain_attr = {
 	900.0f, /* camera_zoom_base */
 	{ 500.0f, 250.0f, 0.0f, 150.0f }, /* map_coll */
 	{ 440.0f, 550.0f }, /* cliffcatch_coll */
-#if defined(REGION_JP)
-	{ 0x029D, 0x029D }, /* dead_fgm_ids */
-#else
-	{ 0x02B7, 0x02B7 }, /* dead_fgm_ids */
-#endif
-#if defined(REGION_JP)
-	0x029D, /* deadup_sfx */
-#else
-	0x02B7, /* deadup_sfx */
-#endif
-#if defined(REGION_JP)
-	0x029D, /* damage_sfx */
-#else
-	0x02B7, /* damage_sfx */
-#endif
-#if defined(REGION_JP)
-	{ 0x029D, 0x029D, 0x029D }, /* smash_sfx */
-#else
-	{ 0x02B7, 0x02B7, 0x02B7 }, /* smash_sfx */
-#endif
+	{ nSYAudioFGMVoiceEnd, nSYAudioFGMVoiceEnd }, /* dead_fgm_ids */
+	nSYAudioFGMVoiceEnd, /* deadup_sfx */
+	nSYAudioFGMVoiceEnd, /* damage_sfx */
+	{ nSYAudioFGMVoiceEnd, nSYAudioFGMVoiceEnd, nSYAudioFGMVoiceEnd }, /* smash_sfx */
 	{ { 107.0f, 0.0f }, { 322.0f, 150.0f }, { 75.0f, 0.0f }, { 150.0f, 150.0f } }, /* item_pickup */
 	0x0064, /* itemthrow_vel_scale */
 	0x0064, /* itemthrow_damage_scale */
-#if defined(REGION_JP)
-	0x029D, /* heavyget_sfx */
-#else
-	0x02B7, /* heavyget_sfx */
-#endif
+	nSYAudioFGMVoiceEnd, /* heavyget_sfx */
 	1.2f, /* halo_size */
 	{ { 0xFF, 0xFF, 0xFF, 0x50 }, { 0x00, 0x00, 0x00, 0x50 }, { 0x00, 0x00, 0x00, 0x00 } }, /* shade_color */
 	{ 0xFF, 0x00, 0x00, 0x00 }, /* fog_color */

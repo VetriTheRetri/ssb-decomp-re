@@ -1,62 +1,62 @@
 # Relocation metadata for file 243
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dPikachuMain_pre+0x0 0x10  # -> file 242 (PikachuMainMotion)
-extern dPikachuMain_pre+0x4 0x800  # -> file 347 (PikachuSpecial2)
-extern dPikachuMain_pre+0x8 0x0  # -> file 244 (PikachuSpecial1)
-extern dPikachuMain_pre+0xC 0x95B0  # -> file 341 (PikachuModel)
-extern dPikachuMain_pre+0x10 0x9420  # -> file 341 (PikachuModel)
-extern dPikachuMain_pre+0x40 0x95B0  # -> file 341 (PikachuModel)
-extern dPikachuMain_pre+0x44 0x9420  # -> file 341 (PikachuModel)
-extern dPikachuMain_pre+0x134 0x63F0  # -> file 341 (PikachuModel)
-extern dPikachuMain_pre+0x138 0x6350  # -> file 341 (PikachuModel)
-extern dPikachuMain_pre+0x13C 0x654C  # -> file 341 (PikachuModel)
-extern dPikachuMain_pre+0x148 0x2650  # -> file 341 (PikachuModel)
-extern dPikachuMain_pre+0x14C 0x0  # -> file 341 (PikachuModel)
-extern dPikachuMain_pre+0x150 0x2B20  # -> file 341 (PikachuModel)
-extern dPikachuMain_pre+0x158 0x5490  # -> file 341 (PikachuModel)
-extern dPikachuMain_pre+0x15C 0x3430  # -> file 341 (PikachuModel)
-extern dPikachuMain_pre+0x160 0x5960  # -> file 341 (PikachuModel)
-extern dPikachuMain_pre+0x318 0x9930  # -> file 341 (PikachuModel)
-extern dPikachuMain_pre+0x31C 0x9958  # -> file 341 (PikachuModel)
-extern dPikachuMain_pre+0x320 0x9980  # -> file 341 (PikachuModel)
-extern dPikachuMain_pre+0x324 0x99A8  # -> file 341 (PikachuModel)
-extern dPikachuMain_pre+0x328 0x99D0  # -> file 341 (PikachuModel)
-extern dPikachuMain_pre+0x32C 0x9A00  # -> file 341 (PikachuModel)
-intern dPikachuMain_pre+0x330 dPikachuMain_pre+0x318
-extern dPikachuMain_pre+0x334 0x9BE8  # -> file 341 (PikachuModel)
-extern dPikachuMain_pre+0x340 0x65F0  # -> file 341 (PikachuModel)
-extern dPikachuMain_pre+0x348 0x6740  # -> file 341 (PikachuModel)
-extern dPikachuMain_pre+0x360 0x6DF0  # -> file 341 (PikachuModel)
-extern dPikachuMain_pre+0x368 0x6CF0  # -> file 341 (PikachuModel)
-extern dPikachuMain_pre+0x370 0x6AE0  # -> file 341 (PikachuModel)
-extern dPikachuMain_pre+0x380 0x7220  # -> file 341 (PikachuModel)
-extern dPikachuMain_pre+0x388 0x72C0  # -> file 341 (PikachuModel)
-extern dPikachuMain_pre+0x3A0 0x6DF0  # -> file 341 (PikachuModel)
-extern dPikachuMain_pre+0x3A8 0x6CF0  # -> file 341 (PikachuModel)
-extern dPikachuMain_pre+0x3B8 0x6F00  # -> file 341 (PikachuModel)
-extern dPikachuMain_pre+0x3C0 0x7010  # -> file 341 (PikachuModel)
-extern dPikachuMain_pre+0x3D0 0x70D0  # -> file 341 (PikachuModel)
-extern dPikachuMain_pre+0x3E0 0x6F00  # -> file 341 (PikachuModel)
-extern dPikachuMain_pre+0x3E8 0x7010  # -> file 341 (PikachuModel)
-extern dPikachuMain_pre+0x3F8 0x70D0  # -> file 341 (PikachuModel)
-intern dPikachuMain_pre+0x414 dPikachuMain_pre+0x338
-intern dPikachuMain_attr+0x29C dPikachuMain_pre+0x7C
-intern dPikachuMain_attr+0x2A0 dPikachuMain_pre+0x74
-intern dPikachuMain_attr+0x2D0 dPikachuMain_pre+0x84
-intern dPikachuMain_attr+0x2D4 dPikachuMain_pre+0x148
-extern dPikachuMain_attr+0x2D8 0x0  # -> file 343 (PikachuShieldPose)
-extern dPikachuMain_attr+0x2DC 0x500  # -> file 343 (PikachuShieldPose)
-extern dPikachuMain_attr+0x2E0 0xB50  # -> file 343 (PikachuShieldPose)
-extern dPikachuMain_attr+0x2E4 0x11A0  # -> file 343 (PikachuShieldPose)
-extern dPikachuMain_attr+0x2E8 0x17F0  # -> file 343 (PikachuShieldPose)
-extern dPikachuMain_attr+0x2EC 0x1E60  # -> file 343 (PikachuShieldPose)
-extern dPikachuMain_attr+0x2F0 0x24B0  # -> file 343 (PikachuShieldPose)
-extern dPikachuMain_attr+0x2F4 0x2B00  # -> file 343 (PikachuShieldPose)
-extern dPikachuMain_attr+0x2F8 0x3150  # -> file 343 (PikachuShieldPose)
-intern dPikachuMain_attr+0x328 dPikachuMain_pre+0xC4
-intern dPikachuMain_attr+0x32C dPikachuMain_pre+0x130
-intern dPikachuMain_attr+0x330 dPikachuMain_pre+0x140
-intern dPikachuMain_attr+0x338 dPikachuMain_pre+0x168
-intern dPikachuMain_attr+0x340 dPikachuMain_pre+0x32C
-intern dPikachuMain_attr+0x344 dPikachuMain_pre+0x410
+extern dPikachuMain_file_handles 0x10 # -> file 242 (PikachuMainMotion)
+extern dPikachuMain_file_handles+0x4 0x800 # -> file 347 (PikachuSpecial2)
+extern dPikachuMain_file_handles+0x8 0x0 # -> file 244 (PikachuSpecial1)
+extern dPikachuMain_file_handles+0xC 0x95B0 # -> file 341 (PikachuModel)
+extern dPikachuMain_file_handles+0x10 0x9420 # -> file 341 (PikachuModel)
+extern dPikachuMain_file_handles+0x40 0x95B0 # -> file 341 (PikachuModel)
+extern dPikachuMain_file_handles+0x44 0x9420 # -> file 341 (PikachuModel)
+extern dPikachuMain_accesspart+0x4 0x63F0 # -> file 341 (PikachuModel)
+extern dPikachuMain_accesspart+0x8 0x6350 # -> file 341 (PikachuModel)
+extern dPikachuMain_accesspart+0xC 0x654C # -> file 341 (PikachuModel)
+extern dPikachuMain_commonparts_container 0x2650 # -> file 341 (PikachuModel)
+extern dPikachuMain_commonparts_container+0x4 0x0 # -> file 341 (PikachuModel)
+extern dPikachuMain_commonparts_container+0x8 0x2B20 # -> file 341 (PikachuModel)
+extern dPikachuMain_commonparts_container+0x10 0x5490 # -> file 341 (PikachuModel)
+extern dPikachuMain_commonparts_container+0x14 0x3430 # -> file 341 (PikachuModel)
+extern dPikachuMain_commonparts_container+0x18 0x5960 # -> file 341 (PikachuModel)
+extern dPikachuMain_sub_0x318 0x9930 # -> file 341 (PikachuModel)
+extern dPikachuMain_sub_0x318+0x4 0x9958 # -> file 341 (PikachuModel)
+extern dPikachuMain_sub_0x318+0x8 0x9980 # -> file 341 (PikachuModel)
+extern dPikachuMain_sub_0x318+0xC 0x99A8 # -> file 341 (PikachuModel)
+extern dPikachuMain_sub_0x318+0x10 0x99D0 # -> file 341 (PikachuModel)
+extern dPikachuMain_sprites 0x9A00 # -> file 341 (PikachuModel)
+intern dPikachuMain_sprites+0x4 dPikachuMain_sub_0x318
+extern dPikachuMain_sprites+0x8 0x9BE8 # -> file 341 (PikachuModel)
+extern dPikachuMain_sub_0x338+0x8 0x65F0 # -> file 341 (PikachuModel)
+extern dPikachuMain_sub_0x338+0x10 0x6740 # -> file 341 (PikachuModel)
+extern dPikachuMain_sub_0x338+0x28 0x6DF0 # -> file 341 (PikachuModel)
+extern dPikachuMain_sub_0x338+0x30 0x6CF0 # -> file 341 (PikachuModel)
+extern dPikachuMain_sub_0x338+0x38 0x6AE0 # -> file 341 (PikachuModel)
+extern dPikachuMain_sub_0x338+0x48 0x7220 # -> file 341 (PikachuModel)
+extern dPikachuMain_sub_0x338+0x50 0x72C0 # -> file 341 (PikachuModel)
+extern dPikachuMain_sub_0x338+0x68 0x6DF0 # -> file 341 (PikachuModel)
+extern dPikachuMain_sub_0x338+0x70 0x6CF0 # -> file 341 (PikachuModel)
+extern dPikachuMain_sub_0x338+0x80 0x6F00 # -> file 341 (PikachuModel)
+extern dPikachuMain_sub_0x338+0x88 0x7010 # -> file 341 (PikachuModel)
+extern dPikachuMain_sub_0x338+0x98 0x70D0 # -> file 341 (PikachuModel)
+extern dPikachuMain_sub_0x338+0xA8 0x6F00 # -> file 341 (PikachuModel)
+extern dPikachuMain_sub_0x338+0xB0 0x7010 # -> file 341 (PikachuModel)
+extern dPikachuMain_sub_0x338+0xC0 0x70D0 # -> file 341 (PikachuModel)
+intern dPikachuMain_skeleton+0x4 dPikachuMain_sub_0x338
+intern dPikachuMain_attr+0x29C dPikachuMain_setup_parts
+intern dPikachuMain_attr+0x2A0 dPikachuMain_animlock
+intern dPikachuMain_attr+0x2D0 dPikachuMain_hiddenparts
+intern dPikachuMain_attr+0x2D4 dPikachuMain_commonparts_container
+extern dPikachuMain_attr+0x2D8 0x0 # -> file 343 (PikachuShieldPose)
+extern dPikachuMain_attr+0x2DC 0x500 # -> file 343 (PikachuShieldPose)
+extern dPikachuMain_attr+0x2E0 0xB50 # -> file 343 (PikachuShieldPose)
+extern dPikachuMain_attr+0x2E4 0x11A0 # -> file 343 (PikachuShieldPose)
+extern dPikachuMain_attr+0x2E8 0x17F0 # -> file 343 (PikachuShieldPose)
+extern dPikachuMain_attr+0x2EC 0x1E60 # -> file 343 (PikachuShieldPose)
+extern dPikachuMain_attr+0x2F0 0x24B0 # -> file 343 (PikachuShieldPose)
+extern dPikachuMain_attr+0x2F4 0x2B00 # -> file 343 (PikachuShieldPose)
+extern dPikachuMain_attr+0x2F8 0x3150 # -> file 343 (PikachuShieldPose)
+intern dPikachuMain_attr+0x328 dPikachuMain_modelparts_container
+intern dPikachuMain_attr+0x32C dPikachuMain_accesspart
+intern dPikachuMain_attr+0x330 dPikachuMain_textureparts_container
+intern dPikachuMain_attr+0x338 dPikachuMain_thrown_status
+intern dPikachuMain_attr+0x340 dPikachuMain_sprites
+intern dPikachuMain_attr+0x344 dPikachuMain_skeleton

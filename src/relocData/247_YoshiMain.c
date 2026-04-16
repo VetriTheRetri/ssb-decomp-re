@@ -5,7 +5,9 @@
 #include <ft/fttypes.h>
 
 /* Pre-attributes data (287 words, 0x047C bytes) */
-u32 dYoshiMain_pre[287] = {
+/* @ 0x0000, 116 bytes: FTAttributes.file_handles target (was dYoshiMain_pre+0x0) */
+u32 dYoshiMain_file_handles[29] = {
+
 	0x0001000D, /* extern -> 0x0034 */
 	0x0002014C, /* extern -> 0x0530 */
 	0x00030258, /* extern -> 0x0960 */
@@ -35,10 +37,22 @@ u32 dYoshiMain_pre[287] = {
 	0x1901001E,
 	0xFD6111BC,
 	0x00000000,
+};
+
+/* @ 0x0074, 8 bytes: FTAttributes.animlock target (was dYoshiMain_pre+0x74) */
+u32 dYoshiMain_animlock[2] = {
 	0x02204A40,
 	0x00000000,
+};
+
+/* @ 0x007C, 8 bytes: FTAttributes.setup_parts target (was dYoshiMain_pre+0x7C) */
+u32 dYoshiMain_setup_parts[2] = {
 	0xFBFFFFE0,
 	0x00000000,
+};
+
+/* @ 0x0084, 80 bytes: FTAttributes.hiddenparts target (was dYoshiMain_pre+0x84) */
+u32 dYoshiMain_hiddenparts[20] = {
 	0x00000002,
 	0x00000000,
 	0x00000001,
@@ -59,6 +73,10 @@ u32 dYoshiMain_pre[287] = {
 	0x00000007,
 	0x00000001,
 	0x00000000,
+};
+
+/* @ 0x00D4, 80 bytes: FTAttributes.sub_0x0D4 target (was dYoshiMain_pre+0xD4) */
+u32 dYoshiMain_sub_0x0D4[20] = {
 	0x003608E6, /* extern -> 0x2398 */
 	0x0037037F, /* extern -> 0x0DFC */
 	0x003A0FF7, /* extern -> 0x3FDC */
@@ -79,6 +97,10 @@ u32 dYoshiMain_pre[287] = {
 	0x0067208B, /* extern -> 0x822C */
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x0124, 112 bytes: FTAttributes.modelparts_container target (was dYoshiMain_pre+0x124) */
+u32 dYoshiMain_modelparts_container[28] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -107,8 +129,16 @@ u32 dYoshiMain_pre[287] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x0194, 8 bytes: FTAttributes.textureparts_container target (was dYoshiMain_pre+0x194) */
+u32 dYoshiMain_textureparts_container[2] = {
 	0x07000007,
 	0x01010000,
+};
+
+/* @ 0x019C, 32 bytes: FTAttributes.commonparts_container target (was dYoshiMain_pre+0x19C) */
+u32 dYoshiMain_commonparts_container[8] = {
 	0x00680CE8, /* extern -> 0x33A0 */
 	0x00690000, /* extern -> 0x0000 */
 	0x006B0E28, /* extern -> 0x38A0 */
@@ -117,6 +147,10 @@ u32 dYoshiMain_pre[287] = {
 	0x006D100C, /* extern -> 0x4030 */
 	0x00DB1B94, /* extern -> 0x6E50 */
 	0x01000000,
+};
+
+/* @ 0x01BC, 432 bytes: FTAttributes.thrown_status target (was dYoshiMain_pre+0x1BC) */
+u32 dYoshiMain_thrown_status[108] = {
 	0xFFFFFFFF,
 	0x000000BA,
 	0xFFFFFFFF,
@@ -225,15 +259,27 @@ u32 dYoshiMain_pre[287] = {
 	0x000000BA,
 	0xFFFFFFFF,
 	0x000000BA,
+};
+
+/* @ 0x036C, 24 bytes: FTAttributes.sub_0x36C target (was dYoshiMain_pre+0x36C) */
+u32 dYoshiMain_sub_0x36C[6] = {
 	0x00DC2A6C, /* extern -> 0xA9B0 */
 	0x00DD2A76, /* extern -> 0xA9D8 */
 	0x00DE2A80, /* extern -> 0xAA00 */
 	0x00DF2A8A, /* extern -> 0xAA28 */
 	0x00E02A94, /* extern -> 0xAA50 */
 	0x00E12A9E, /* extern -> 0xAA78 */
+};
+
+/* @ 0x0384, 12 bytes: FTAttributes.sprites target (was dYoshiMain_pre+0x384) */
+u32 dYoshiMain_sprites[3] = {
 	0x00E32AAA, /* extern -> 0xAAA8 */
 	0x011D00DB, /* intern -> 0x036C */
 	0x00E62B26, /* extern -> 0xAC98 */
+};
+
+/* @ 0x0390, 224 bytes: FTAttributes.sub_0x390 target (was dYoshiMain_pre+0x390) */
+u32 dYoshiMain_sub_0x390[56] = {
 	0x00000000,
 	0x00000000,
 	0x00E820C0, /* extern -> 0x8300 */
@@ -290,6 +336,10 @@ u32 dYoshiMain_pre[287] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x0470, 12 bytes: FTAttributes.skeleton target (was dYoshiMain_pre+0x470) */
+u32 dYoshiMain_skeleton[3] = {
 	0x00000007,
 	0x01C600E4, /* intern -> 0x0390 */
 	0x00000000,

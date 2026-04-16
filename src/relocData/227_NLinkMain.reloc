@@ -1,24 +1,24 @@
 # Relocation metadata for file 227
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dNLinkMain_pre+0x0 0x14  # -> file 224 (LinkMainMotion)
-extern dNLinkMain_pre+0xFC 0x3080  # -> file 310 (NLinkModel)
-extern dNLinkMain_pre+0x10C 0x3080  # -> file 310 (NLinkModel)
-extern dNLinkMain_pre+0x2D4 0x2B8  # -> file 345 (MasterHandIcon)
-intern dNLinkMain_attr+0x29C dNLinkMain_pre+0xC
-intern dNLinkMain_attr+0x2A0 dNLinkMain_pre+0x4
-intern dNLinkMain_attr+0x2D0 dNLinkMain_pre+0x14
-intern dNLinkMain_attr+0x2D4 dNLinkMain_pre+0xFC
-extern dNLinkMain_attr+0x2D8 0x0  # -> file 327 (LinkShieldPose)
-extern dNLinkMain_attr+0x2DC 0x580  # -> file 327 (LinkShieldPose)
-extern dNLinkMain_attr+0x2E0 0xA40  # -> file 327 (LinkShieldPose)
-extern dNLinkMain_attr+0x2E4 0xF30  # -> file 327 (LinkShieldPose)
-extern dNLinkMain_attr+0x2E8 0x1450  # -> file 327 (LinkShieldPose)
-extern dNLinkMain_attr+0x2EC 0x1990  # -> file 327 (LinkShieldPose)
-extern dNLinkMain_attr+0x2F0 0x1EB0  # -> file 327 (LinkShieldPose)
-extern dNLinkMain_attr+0x2F4 0x23F0  # -> file 327 (LinkShieldPose)
-extern dNLinkMain_attr+0x2F8 0x2910  # -> file 327 (LinkShieldPose)
-intern dNLinkMain_attr+0x328 dNLinkMain_pre+0x74
-intern dNLinkMain_attr+0x330 dNLinkMain_pre+0xF4
-intern dNLinkMain_attr+0x338 dNLinkMain_pre+0x11C
-intern dNLinkMain_attr+0x340 dNLinkMain_pre+0x2CC
+extern dNLinkMain_file_handles 0x14 # -> file 224 (LinkMainMotion)
+extern dNLinkMain_commonparts_container 0x3080 # -> file 310 (NLinkModel)
+extern dNLinkMain_commonparts_container+0x10 0x3080 # -> file 310 (NLinkModel)
+extern dNLinkMain_sprites+0x8 0x2B8 # -> file 345 (MasterHandIcon)
+intern dNLinkMain_attr+0x29C dNLinkMain_setup_parts
+intern dNLinkMain_attr+0x2A0 dNLinkMain_animlock
+intern dNLinkMain_attr+0x2D0 dNLinkMain_hiddenparts
+intern dNLinkMain_attr+0x2D4 dNLinkMain_commonparts_container
+extern dNLinkMain_attr+0x2D8 0x0 # -> file 327 (LinkShieldPose)
+extern dNLinkMain_attr+0x2DC 0x580 # -> file 327 (LinkShieldPose)
+extern dNLinkMain_attr+0x2E0 0xA40 # -> file 327 (LinkShieldPose)
+extern dNLinkMain_attr+0x2E4 0xF30 # -> file 327 (LinkShieldPose)
+extern dNLinkMain_attr+0x2E8 0x1450 # -> file 327 (LinkShieldPose)
+extern dNLinkMain_attr+0x2EC 0x1990 # -> file 327 (LinkShieldPose)
+extern dNLinkMain_attr+0x2F0 0x1EB0 # -> file 327 (LinkShieldPose)
+extern dNLinkMain_attr+0x2F4 0x23F0 # -> file 327 (LinkShieldPose)
+extern dNLinkMain_attr+0x2F8 0x2910 # -> file 327 (LinkShieldPose)
+intern dNLinkMain_attr+0x328 dNLinkMain_modelparts_container
+intern dNLinkMain_attr+0x330 dNLinkMain_textureparts_container
+intern dNLinkMain_attr+0x338 dNLinkMain_thrown_status
+intern dNLinkMain_attr+0x340 dNLinkMain_sprites

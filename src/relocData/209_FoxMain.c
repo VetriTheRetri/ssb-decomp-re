@@ -5,290 +5,196 @@
 #include <ft/fttypes.h>
 
 /* Pre-attributes data (283 words, 0x046C bytes) */
-u32 dFoxMain_pre[283] = {
+/* @ 0x0000, 16 bytes: FTAttributes.file_handles target (was dFoxMain_pre+0x0) */
+u32 dFoxMain_file_handles[4] = {
+
 	0x00010000, /* extern -> 0x0000 */
 	0x000200AC, /* extern -> 0x02B0 */
 	0x00030B0C, /* extern -> 0x2C30 */
 	0x00180000, /* extern -> 0x0000 */
+};
+
+/* @ 0x0010, 8 bytes: FTAttributes.animlock target (was dFoxMain_pre+0x10) */
+u32 dFoxMain_animlock[2] = {
 	0x10425200,
 	0x00000000,
+};
+
+/* @ 0x0018, 8 bytes: FTAttributes.setup_parts target (was dFoxMain_pre+0x18) */
+u32 dFoxMain_setup_parts[2] = {
 	0xFFFFFFC0,
 	0x00000000,
-	0x00000002,
-	0x00000000,
-	0x00000001,
-	0x00000003,
-	0x00000001,
-	0x00000000,
-	0x00000000,
-	0x00000003,
-	0x00000003,
-	0x00000002,
-	0x00000001,
-	0x00000000,
-	0x0000001E,
-	0x00000004,
-	0x00000001,
-	0x00000000,
-	0x001D077E, /* extern -> 0x1DF8 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x002212C8, /* extern -> 0x4B20 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x0027180C, /* extern -> 0x6030 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x002C1850, /* extern -> 0x6140 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x003108C6, /* extern -> 0x2318 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x003613F0, /* extern -> 0x4FC0 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x003B1774, /* extern -> 0x5DD0 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x004017B8, /* extern -> 0x5EE0 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x004500FC, /* extern -> 0x03F0 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x006700FC, /* extern -> 0x03F0 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00560018, /* intern -> 0x0060 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x0057002C, /* intern -> 0x00B0 */
-	0x00E00040, /* intern -> 0x0100 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x0C00000C,
-	0x01010000,
-	0x00680A4E, /* extern -> 0x2938 */
-	0x00690000, /* extern -> 0x0000 */
-	0x006B0B84, /* extern -> 0x2E10 */
-	0x00000000,
-	0x006C1544, /* extern -> 0x5510 */
-	0x006D0C4C, /* extern -> 0x3130 */
-	0x00DB1678, /* extern -> 0x59E0 */
-	0x00000000,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BB,
-	0xFFFFFFFF,
-	0x000000BC,
-	0x000000B7,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B7,
-	0x000000BB,
-	0xFFFFFFFF,
-	0x000000BC,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BB,
-	0xFFFFFFFF,
-	0x000000BC,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BB,
-	0xFFFFFFFF,
-	0x000000BC,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BB,
-	0xFFFFFFFF,
-	0x000000BC,
-	0x000000B7,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B7,
-	0x000000BB,
-	0xFFFFFFFF,
-	0x000000BC,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BB,
-	0xFFFFFFFF,
-	0x000000BC,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BB,
-	0xFFFFFFFF,
-	0x000000BC,
-	0xFFFFFFFF,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x000000B7,
-	0x000000BA,
-	0xFFFFFFFF,
-	0x000000BA,
-	0x00DC1EE0, /* extern -> 0x7B80 */
-	0x00DD1EEA, /* extern -> 0x7BA8 */
-	0x00DE1EF4, /* extern -> 0x7BD0 */
-	0x00DF1EFE, /* extern -> 0x7BF8 */
-	0x00E11F0A, /* extern -> 0x7C28 */
-	0x011900DB, /* intern -> 0x036C */
-	0x00E41F82, /* extern -> 0x7E08 */
-	0x00000000,
-	0x00000000,
-	0x00E61890, /* extern -> 0x6240 */
-	0x00000000,
-	0x00EA18C8, /* extern -> 0x6320 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00EC1A88, /* extern -> 0x6A20 */
-	0x00000000,
-	0x00EE1A44, /* extern -> 0x6910 */
-	0x00000000,
-	0x00F21AC4, /* extern -> 0x6B10 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00F619AC, /* extern -> 0x66B0 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00F81A88, /* extern -> 0x6A20 */
-	0x00000000,
-	0x00FA1A44, /* extern -> 0x6910 */
-	0x00000000,
-	0x01001B04, /* extern -> 0x6C10 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x01021B4C, /* extern -> 0x6D30 */
-	0x00000000,
-	0x01061B78, /* extern -> 0x6DE0 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x010A1BA4, /* extern -> 0x6E90 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x010C1B4C, /* extern -> 0x6D30 */
-	0x00000000,
-	0x01101B78, /* extern -> 0x6DE0 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x01121BA4, /* extern -> 0x6E90 */
-	0x00000000,
-	0x01D11C08, /* extern -> 0x7020 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x0000000C,
-	0x01C200E2, /* intern -> 0x0388 */
-	0x00000000,
+};
+
+/* @ 0x0020, 64 bytes: FTAttributes.hiddenparts target */
+FTHiddenPart dFoxMain_hiddenparts[4] = {
+	{ 2, 0, 1, 3 },
+	{ 1, 0, 0, 3 },
+	{ 3, 2, 1, 0 },
+	{ 30, 4, 1, 0 },
+};
+
+/* @ 0x0060, 80 bytes: modelparts_desc[0] pointed-to by modelparts_container.
+ * The backing type is `FTModelPart[4]` — two 2-entry FTModelPartDesc groups. */
+FTModelPart dFoxMain_modelparts_desc_0x060[4] = {
+	{ (Gfx*)0x001D077E, NULL, NULL, NULL, 0 },
+	{ (Gfx*)0x002212C8, NULL, NULL, NULL, 0 },
+	{ (Gfx*)0x0027180C, NULL, NULL, NULL, 0 },
+	{ (Gfx*)0x002C1850, NULL, NULL, NULL, 0 },
+};
+
+/* @ 0x00B0, 80 bytes: modelparts_desc[1] (FTModelPart[4]) */
+FTModelPart dFoxMain_modelparts_desc_0x0B0[4] = {
+	{ (Gfx*)0x003108C6, NULL, NULL, NULL, 0 },
+	{ (Gfx*)0x003613F0, NULL, NULL, NULL, 0 },
+	{ (Gfx*)0x003B1774, NULL, NULL, NULL, 0 },
+	{ (Gfx*)0x004017B8, NULL, NULL, NULL, 0 },
+};
+
+/* @ 0x0100, 40 bytes: modelparts_desc[2] — FoxUnknown DLs (FTModelPart[2]) */
+FTModelPart dFoxMain_modelparts_desc_0x100[2] = {
+	{ (Gfx*)0x004500FC, NULL, NULL, NULL, 0 },
+	{ (Gfx*)0x006700FC, NULL, NULL, NULL, 0 },
+};
+
+/* @ 0x0128, 108 bytes: FTAttributes.modelparts_container target.
+ * FTPARTS_JOINT_NUM_MAX is 37; this file only packs 27 joint-slots. */
+FTModelPartDesc *dFoxMain_modelparts_container[27] = {
+	NULL, NULL, NULL, NULL, NULL, NULL,
+	(FTModelPartDesc*)dFoxMain_modelparts_desc_0x060,
+	NULL, NULL, NULL, NULL, NULL,
+	(FTModelPartDesc*)dFoxMain_modelparts_desc_0x0B0,
+	(FTModelPartDesc*)dFoxMain_modelparts_desc_0x100,
+	NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+};
+
+/* @ 0x0194, 8 bytes: FTAttributes.textureparts_container target */
+FTTexturePartContainer dFoxMain_textureparts_container = {
+	{
+		{ 0x0C, { 0x00, 0x00 } },
+		{ 0x0C, { 0x01, 0x01 } },
+	},
+};
+
+/* @ 0x019C, 32 bytes: FTAttributes.commonparts_container target */
+FTCommonPartContainer dFoxMain_commonparts_container = {
+	{
+		{ (DObjDesc*)0x00680A4E, (MObjSub***)0x00690000, (AObjEvent32***)0x006B0B84, 0 },
+		{ (DObjDesc*)0x006C1544, (MObjSub***)0x006D0C4C, (AObjEvent32***)0x00DB1678, 0 },
+	},
+};
+
+/* @ 0x01BC, 432 bytes: FTAttributes.thrown_status target */
+FTThrownStatus dFoxMain_thrown_status[54] = {
+	{   -1,  186 },
+	{   -1,  186 },
+	{   -1,  187 },
+	{   -1,  188 },
+	{  183,  186 },
+	{   -1,  186 },
+	{  183,  187 },
+	{   -1,  188 },
+	{   -1,  186 },
+	{   -1,  186 },
+	{   -1,  186 },
+	{   -1,  186 },
+	{   -1,  186 },
+	{   -1,  186 },
+	{   -1,  186 },
+	{   -1,  186 },
+	{   -1,  187 },
+	{   -1,  188 },
+	{   -1,  186 },
+	{   -1,  186 },
+	{   -1,  187 },
+	{   -1,  188 },
+	{   -1,  186 },
+	{   -1,  186 },
+	{   -1,  186 },
+	{   -1,  186 },
+	{   -1,  186 },
+	{   -1,  186 },
+	{   -1,  186 },
+	{   -1,  186 },
+	{   -1,  187 },
+	{   -1,  188 },
+	{  183,  186 },
+	{   -1,  186 },
+	{  183,  187 },
+	{   -1,  188 },
+	{   -1,  186 },
+	{   -1,  186 },
+	{   -1,  186 },
+	{   -1,  186 },
+	{   -1,  186 },
+	{   -1,  186 },
+	{   -1,  186 },
+	{   -1,  186 },
+	{   -1,  187 },
+	{   -1,  188 },
+	{   -1,  186 },
+	{   -1,  186 },
+	{   -1,  187 },
+	{   -1,  188 },
+	{   -1,  186 },
+	{   -1,  186 },
+	{  183,  186 },
+	{   -1,  186 },
+};
+
+/* @ 0x036C, 16 bytes: LUT-pointer array pointed-to by dFoxMain_sprites.stock_luts */
+int *dFoxMain_stock_luts[4] = {
+	(int*)0x00DC1EE0,
+	(int*)0x00DD1EEA,
+	(int*)0x00DE1EF4,
+	(int*)0x00DF1EFE,
+};
+
+/* @ 0x037C, 12 bytes: FTAttributes.sprites target */
+FTSprites dFoxMain_sprites = {
+	(Sprite*)0x00E11F0A, /* stock_sprite */
+	dFoxMain_stock_luts, /* stock_luts */
+	(Sprite*)0x00E41F82, /* emblem */
+};
+
+/* @ 0x0388, 216 bytes: electric-damage skeleton DL array (FTSkeleton[27]) */
+FTSkeleton dFoxMain_skeleton_dls[27] = {
+	{ { NULL }, 0 },
+	{ { (Gfx*)0x00E61890 }, 0 },
+	{ { (Gfx*)0x00EA18C8 }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)0x00EC1A88 }, 0 },
+	{ { (Gfx*)0x00EE1A44 }, 0 },
+	{ { (Gfx*)0x00F21AC4 }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)0x00F619AC }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)0x00F81A88 }, 0 },
+	{ { (Gfx*)0x00FA1A44 }, 0 },
+	{ { (Gfx*)0x01001B04 }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)0x01021B4C }, 0 },
+	{ { (Gfx*)0x01061B78 }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)0x010A1BA4 }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)0x010C1B4C }, 0 },
+	{ { (Gfx*)0x01101B78 }, 0 },
+	{ { NULL }, 0 },
+	{ { (Gfx*)0x01121BA4 }, 0 },
+	{ { (Gfx*)0x01D11C08 }, 0 },
+	{ { NULL }, 0 },
+	{ { NULL }, 0 },
+};
+
+/* @ 0x0460, 12 bytes: FTAttributes.skeleton target.
+ * Slot 0 stores a joint id (cast as pointer — see ftdisplaymain.c:939);
+ * slot 1 points at the per-joint FTSkeleton array; slot 2 is NULL. */
+FTSkeleton *dFoxMain_skeleton[3] = {
+	(FTSkeleton*)12,
+	dFoxMain_skeleton_dls,
+	NULL,
 };
 
 FTAttributes dFoxMain_attr = {
@@ -333,34 +239,14 @@ FTAttributes dFoxMain_attr = {
 	610.0f, /* camera_zoom_base */
 	{ 400.0f, 250.0f, 0.0f, 150.0f }, /* map_coll */
 	{ 400.0f, 400.0f }, /* cliffcatch_coll */
-#if defined(REGION_JP)
-	{ 0x0168, 0x0117 }, /* dead_fgm_ids */
-#else
-	{ 0x0172, 0x0121 }, /* dead_fgm_ids */
-#endif
-#if defined(REGION_JP)
-	0x015E, /* deadup_sfx */
-#else
-	0x0168, /* deadup_sfx */
-#endif
-#if defined(REGION_JP)
-	0x016D, /* damage_sfx */
-#else
-	0x0177, /* damage_sfx */
-#endif
-#if defined(REGION_JP)
-	{ 0x016C, 0x016A, 0x016B }, /* smash_sfx */
-#else
-	{ 0x0176, 0x0174, 0x0175 }, /* smash_sfx */
-#endif
+	{ nSYAudioVoiceFoxDead, nSYAudioFGMFoxDeadSlam }, /* dead_fgm_ids */
+	nSYAudioVoiceFoxDeadUp, /* deadup_sfx */
+	nSYAudioVoiceFoxDamage, /* damage_sfx */
+	{ nSYAudioVoiceFoxSmash3, nSYAudioVoiceFoxSmash1, nSYAudioVoiceFoxSmash2 }, /* smash_sfx */
 	{ { 105.0f, 0.0f }, { 378.0f, 200.0f }, { 75.0f, 0.0f }, { 150.0f, 150.0f } }, /* item_pickup */
 	0x0064, /* itemthrow_vel_scale */
 	0x0064, /* itemthrow_damage_scale */
-#if defined(REGION_JP)
-	0x029D, /* heavyget_sfx */
-#else
-	0x02B7, /* heavyget_sfx */
-#endif
+	nSYAudioFGMVoiceEnd, /* heavyget_sfx */
 	1.1f, /* halo_size */
 	{ { 0xFF, 0xFF, 0xFF, 0x50 }, { 0x00, 0x00, 0x00, 0x50 }, { 0x00, 0x00, 0x00, 0x00 } }, /* shade_color */
 	{ 0xFF, 0x00, 0x00, 0x00 }, /* fog_color */

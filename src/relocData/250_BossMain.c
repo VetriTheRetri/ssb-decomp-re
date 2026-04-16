@@ -5,12 +5,26 @@
 #include <ft/fttypes.h>
 
 /* Pre-attributes data (58 words, 0x00E8 bytes) */
-u32 dBossMain_pre[58] = {
+/* @ 0x0000, 4 bytes: FTAttributes.file_handles target (was dBossMain_pre+0x0) */
+u32 dBossMain_file_handles[1] = {
+
 	0x002E0000, /* extern -> 0x0000 */
+};
+
+/* @ 0x0004, 8 bytes: FTAttributes.animlock target (was dBossMain_pre+0x4) */
+u32 dBossMain_animlock[2] = {
 	0x04884400,
 	0x00000000,
+};
+
+/* @ 0x000C, 8 bytes: FTAttributes.setup_parts target (was dBossMain_pre+0xC) */
+u32 dBossMain_setup_parts[2] = {
 	0xFFFFFF80,
 	0x00000000,
+};
+
+/* @ 0x0014, 64 bytes: FTAttributes.hiddenparts target (was dBossMain_pre+0x14) */
+u32 dBossMain_hiddenparts[16] = {
 	0x00000002,
 	0x00000000,
 	0x00000001,
@@ -27,6 +41,10 @@ u32 dBossMain_pre[58] = {
 	0x00000004,
 	0x00000001,
 	0x00000000,
+};
+
+/* @ 0x0054, 100 bytes: FTAttributes.modelparts_container target (was dBossMain_pre+0x54) */
+u32 dBossMain_modelparts_container[25] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -52,6 +70,10 @@ u32 dBossMain_pre[58] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x00B8, 32 bytes: FTAttributes.commonparts_container target (was dBossMain_pre+0xB8) */
+u32 dBossMain_commonparts_container[8] = {
 	0x003208F6, /* extern -> 0x23D8 */
 	0x00000000,
 	0x00000000,
@@ -60,7 +82,15 @@ u32 dBossMain_pre[58] = {
 	0x00000000,
 	0x00000000,
 	0x01000000,
+};
+
+/* @ 0x00D8, 4 bytes: FTAttributes.sub_0x0D8 target (was dBossMain_pre+0xD8) */
+u32 dBossMain_sub_0x0D8[1] = {
 	0x00370024, /* extern -> 0x0090 */
+};
+
+/* @ 0x00DC, 12 bytes: FTAttributes.sprites target (was dBossMain_pre+0xDC) */
+u32 dBossMain_sprites[3] = {
 	0x00390030, /* extern -> 0x00C0 */
 	0x00E10036, /* intern -> 0x00D8 */
 	0xFFFF00AE, /* extern -> 0x02B8 */
@@ -108,34 +138,14 @@ FTAttributes dBossMain_attr = {
 	1200.0f, /* camera_zoom_base */
 	{ 200.0f, 100.0f, 0.0f, 120.0f }, /* map_coll */
 	{ 250.0f, 400.0f }, /* cliffcatch_coll */
-#if defined(REGION_JP)
-	{ 0x029D, 0x029D }, /* dead_fgm_ids */
-#else
-	{ 0x02B7, 0x02B7 }, /* dead_fgm_ids */
-#endif
-#if defined(REGION_JP)
-	0x029D, /* deadup_sfx */
-#else
-	0x02B7, /* deadup_sfx */
-#endif
-#if defined(REGION_JP)
-	0x029D, /* damage_sfx */
-#else
-	0x02B7, /* damage_sfx */
-#endif
-#if defined(REGION_JP)
-	{ 0x029D, 0x029D, 0x029D }, /* smash_sfx */
-#else
-	{ 0x02B7, 0x02B7, 0x02B7 }, /* smash_sfx */
-#endif
+	{ nSYAudioFGMVoiceEnd, nSYAudioFGMVoiceEnd }, /* dead_fgm_ids */
+	nSYAudioFGMVoiceEnd, /* deadup_sfx */
+	nSYAudioFGMVoiceEnd, /* damage_sfx */
+	{ nSYAudioFGMVoiceEnd, nSYAudioFGMVoiceEnd, nSYAudioFGMVoiceEnd }, /* smash_sfx */
 	{ { 0.0f, 0.0f }, { 150.0f, 150.0f }, { 0.0f, 0.0f }, { 150.0f, 150.0f } }, /* item_pickup */
 	0x0064, /* itemthrow_vel_scale */
 	0x0064, /* itemthrow_damage_scale */
-#if defined(REGION_JP)
-	0x029D, /* heavyget_sfx */
-#else
-	0x02B7, /* heavyget_sfx */
-#endif
+	nSYAudioFGMVoiceEnd, /* heavyget_sfx */
 	1.0f, /* halo_size */
 	{ { 0xFF, 0xFF, 0xFF, 0x00 }, { 0xFF, 0xFF, 0xFF, 0x00 }, { 0xFF, 0xFF, 0xFF, 0x00 } }, /* shade_color */
 	{ 0x59, 0x00, 0x00, 0x00 }, /* fog_color */

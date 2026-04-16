@@ -5,7 +5,9 @@
 #include <ft/fttypes.h>
 
 /* Pre-attributes data (450 words, 0x0708 bytes) */
-u32 dLinkMain_pre[450] = {
+/* @ 0x0000, 192 bytes: FTAttributes.file_handles target (was dLinkMain_pre+0x0) */
+u32 dLinkMain_file_handles[48] = {
+
 	0x00010005, /* extern -> 0x0014 */
 	0x000200FE, /* extern -> 0x03F8 */
 	0x00030000, /* extern -> 0x0000 */
@@ -54,10 +56,22 @@ u32 dLinkMain_pre[450] = {
 	0x3FB33333,
 	0x3FCCCCCD,
 	0x3FE66666,
+};
+
+/* @ 0x00C0, 8 bytes: FTAttributes.animlock target (was dLinkMain_pre+0xC0) */
+u32 dLinkMain_animlock[2] = {
 	0x108004A4,
 	0x00000000,
+};
+
+/* @ 0x00C8, 8 bytes: FTAttributes.setup_parts target (was dLinkMain_pre+0xC8) */
+u32 dLinkMain_setup_parts[2] = {
 	0xFFF9FFFE,
 	0x00000000,
+};
+
+/* @ 0x00D0, 96 bytes: FTAttributes.hiddenparts target (was dLinkMain_pre+0xD0) */
+u32 dLinkMain_hiddenparts[24] = {
 	0x00000002,
 	0x00000000,
 	0x00000001,
@@ -82,6 +96,10 @@ u32 dLinkMain_pre[450] = {
 	0x00000010,
 	0x00000001,
 	0x00000000,
+};
+
+/* @ 0x0130, 120 bytes: FTAttributes.sub_0x130 target (was dLinkMain_pre+0x130) */
+u32 dLinkMain_sub_0x130[30] = {
 	0x0051098C, /* extern -> 0x2630 */
 	0x00000000,
 	0x00000000,
@@ -112,6 +130,10 @@ u32 dLinkMain_pre[450] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x01A8, 40 bytes: FTAttributes.sub_0x1A8 target (was dLinkMain_pre+0x1A8) */
+u32 dLinkMain_sub_0x1A8[10] = {
 	0x006F1F6C, /* extern -> 0x7DB0 */
 	0x00000000,
 	0x00000000,
@@ -122,6 +144,10 @@ u32 dLinkMain_pre[450] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x01D0, 40 bytes: FTAttributes.sub_0x1D0 target (was dLinkMain_pre+0x1D0) */
+u32 dLinkMain_sub_0x1D0[10] = {
 	0x00791FAA, /* extern -> 0x7EA8 */
 	0x00000000,
 	0x00000000,
@@ -132,6 +158,10 @@ u32 dLinkMain_pre[450] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x01F8, 40 bytes: FTAttributes.sub_0x1F8 target (was dLinkMain_pre+0x1F8) */
+u32 dLinkMain_sub_0x1F8[10] = {
 	0x00831FE6, /* extern -> 0x7F98 */
 	0x00000000,
 	0x00000000,
@@ -142,6 +172,10 @@ u32 dLinkMain_pre[450] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x0220, 40 bytes: FTAttributes.sub_0x220 target (was dLinkMain_pre+0x220) */
+u32 dLinkMain_sub_0x220[10] = {
 	0x008D0B22, /* extern -> 0x2C88 */
 	0x00000000,
 	0x00000000,
@@ -152,6 +186,10 @@ u32 dLinkMain_pre[450] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x0248, 40 bytes: FTAttributes.sub_0x248 target (was dLinkMain_pre+0x248) */
+u32 dLinkMain_sub_0x248[10] = {
 	0x00972070, /* extern -> 0x81C0 */
 	0x00000000,
 	0x00000000,
@@ -162,6 +200,10 @@ u32 dLinkMain_pre[450] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x0270, 40 bytes: FTAttributes.sub_0x270 target (was dLinkMain_pre+0x270) */
+u32 dLinkMain_sub_0x270[10] = {
 	0x00A10B22, /* extern -> 0x2C88 */
 	0x00000000,
 	0x00000000,
@@ -172,6 +214,10 @@ u32 dLinkMain_pre[450] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x0298, 80 bytes: FTAttributes.sub_0x298 target (was dLinkMain_pre+0x298) */
+u32 dLinkMain_sub_0x298[20] = {
 	0x00AB0B82, /* extern -> 0x2E08 */
 	0x00000000,
 	0x00000000,
@@ -192,6 +238,10 @@ u32 dLinkMain_pre[450] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x02E8, 80 bytes: FTAttributes.sub_0x2E8 target (was dLinkMain_pre+0x2E8) */
+u32 dLinkMain_sub_0x2E8[20] = {
 	0x00BB0BBC, /* extern -> 0x2EF0 */
 	0x00BC0164, /* extern -> 0x0590 */
 	0x00BF10C9, /* extern -> 0x4324 */
@@ -212,6 +262,10 @@ u32 dLinkMain_pre[450] = {
 	0x00CE279D, /* extern -> 0x9E74 */
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x0338, 80 bytes: FTAttributes.sub_0x338 target (was dLinkMain_pre+0x338) */
+u32 dLinkMain_sub_0x338[20] = {
 	0x00CF0CE6, /* extern -> 0x3398 */
 	0x00D00168, /* extern -> 0x05A0 */
 	0x00D310CC, /* extern -> 0x4330 */
@@ -232,6 +286,10 @@ u32 dLinkMain_pre[450] = {
 	0x010427A0, /* extern -> 0x9E80 */
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x0388, 128 bytes: FTAttributes.modelparts_container target (was dLinkMain_pre+0x388) */
+u32 dLinkMain_modelparts_container[32] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -264,8 +322,16 @@ u32 dLinkMain_pre[450] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x0408, 8 bytes: FTAttributes.textureparts_container target (was dLinkMain_pre+0x408) */
+u32 dLinkMain_textureparts_container[2] = {
 	0x17000017,
 	0x01010000,
+};
+
+/* @ 0x0410, 32 bytes: FTAttributes.commonparts_container target (was dLinkMain_pre+0x410) */
+u32 dLinkMain_commonparts_container[8] = {
 	0x01050EBA, /* extern -> 0x3AE8 */
 	0x01060000, /* extern -> 0x0000 */
 	0x01081028, /* extern -> 0x40A0 */
@@ -274,6 +340,10 @@ u32 dLinkMain_pre[450] = {
 	0x010A10D0, /* extern -> 0x4340 */
 	0x01781E98, /* extern -> 0x7A60 */
 	0x00000000,
+};
+
+/* @ 0x0430, 432 bytes: FTAttributes.thrown_status target (was dLinkMain_pre+0x430) */
+u32 dLinkMain_thrown_status[108] = {
 	0xFFFFFFFF,
 	0x000000BA,
 	0xFFFFFFFF,
@@ -382,13 +452,25 @@ u32 dLinkMain_pre[450] = {
 	0x000000BA,
 	0xFFFFFFFF,
 	0x000000BA,
+};
+
+/* @ 0x05E0, 16 bytes: FTAttributes.sub_0x5E0 target (was dLinkMain_pre+0x5E0) */
+u32 dLinkMain_sub_0x5E0[4] = {
 	0x01794728, /* extern -> 0x11CA0 */
 	0x017A4732, /* extern -> 0x11CC8 */
 	0x017B473C, /* extern -> 0x11CF0 */
 	0x017C4746, /* extern -> 0x11D18 */
+};
+
+/* @ 0x05F0, 12 bytes: FTAttributes.sprites target (was dLinkMain_pre+0x5F0) */
+u32 dLinkMain_sprites[3] = {
 	0x017E4752, /* extern -> 0x11D48 */
 	0x01C00178, /* intern -> 0x05E0 */
 	0x018147CA, /* extern -> 0x11F28 */
+};
+
+/* @ 0x05FC, 256 bytes: FTAttributes.sub_0x5FC target (was dLinkMain_pre+0x5FC) */
+u32 dLinkMain_sub_0x5FC[64] = {
 	0x00000000,
 	0x00000000,
 	0x018328F0, /* extern -> 0xA3C0 */
@@ -453,6 +535,10 @@ u32 dLinkMain_pre[450] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x06FC, 12 bytes: FTAttributes.skeleton target (was dLinkMain_pre+0x6FC) */
+u32 dLinkMain_skeleton[3] = {
 	0x00000017,
 	0x0269017F, /* intern -> 0x05FC */
 	0x00000000,

@@ -1,30 +1,30 @@
 # Relocation metadata for file 241
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dNNessMain_pre+0x0 0x24  # -> file 238 (NessMainMotion)
-extern dNNessMain_pre+0x54 0x34C0  # -> file 312 (NNessModel)
-extern dNNessMain_pre+0x68 0x34C0  # -> file 312 (NNessModel)
-extern dNNessMain_pre+0x7C 0x3240  # -> file 312 (NNessModel)
-extern dNNessMain_pre+0x90 0x3240  # -> file 312 (NNessModel)
-intern dNNessMain_pre+0xD8 dNNessMain_pre+0x54
-intern dNNessMain_pre+0x10C dNNessMain_pre+0x7C
-extern dNNessMain_pre+0x114 0x2D40  # -> file 312 (NNessModel)
-extern dNNessMain_pre+0x124 0x2D40  # -> file 312 (NNessModel)
-extern dNNessMain_pre+0x2EC 0x2B8  # -> file 345 (MasterHandIcon)
-intern dNNessMain_attr+0x29C dNNessMain_pre+0xC
-intern dNNessMain_attr+0x2A0 dNNessMain_pre+0x4
-intern dNNessMain_attr+0x2D0 dNNessMain_pre+0x14
-intern dNNessMain_attr+0x2D4 dNNessMain_pre+0x114
-extern dNNessMain_attr+0x2D8 0x0  # -> file 337 (NessShieldPose)
-extern dNNessMain_attr+0x2DC 0x500  # -> file 337 (NessShieldPose)
-extern dNNessMain_attr+0x2E0 0xA20  # -> file 337 (NessShieldPose)
-extern dNNessMain_attr+0x2E4 0xF50  # -> file 337 (NessShieldPose)
-extern dNNessMain_attr+0x2E8 0x1490  # -> file 337 (NessShieldPose)
-extern dNNessMain_attr+0x2EC 0x1A00  # -> file 337 (NessShieldPose)
-extern dNNessMain_attr+0x2F0 0x1FD0  # -> file 337 (NessShieldPose)
-extern dNNessMain_attr+0x2F4 0x2560  # -> file 337 (NessShieldPose)
-extern dNNessMain_attr+0x2F8 0x2BA0  # -> file 337 (NessShieldPose)
-intern dNNessMain_attr+0x328 dNNessMain_pre+0xA4
-intern dNNessMain_attr+0x330 dNNessMain_pre+0x110
-intern dNNessMain_attr+0x338 dNNessMain_pre+0x134
-intern dNNessMain_attr+0x340 dNNessMain_pre+0x2E4
+extern dNNessMain_file_handles 0x24 # -> file 238 (NessMainMotion)
+extern dNNessMain_sub_0x054 0x34C0 # -> file 312 (NNessModel)
+extern dNNessMain_sub_0x054+0x14 0x34C0 # -> file 312 (NNessModel)
+extern dNNessMain_sub_0x07C 0x3240 # -> file 312 (NNessModel)
+extern dNNessMain_sub_0x07C+0x14 0x3240 # -> file 312 (NNessModel)
+intern dNNessMain_modelparts_container+0x34 dNNessMain_sub_0x054
+intern dNNessMain_modelparts_container+0x68 dNNessMain_sub_0x07C
+extern dNNessMain_commonparts_container 0x2D40 # -> file 312 (NNessModel)
+extern dNNessMain_commonparts_container+0x10 0x2D40 # -> file 312 (NNessModel)
+extern dNNessMain_sprites+0x8 0x2B8 # -> file 345 (MasterHandIcon)
+intern dNNessMain_attr+0x29C dNNessMain_setup_parts
+intern dNNessMain_attr+0x2A0 dNNessMain_animlock
+intern dNNessMain_attr+0x2D0 dNNessMain_hiddenparts
+intern dNNessMain_attr+0x2D4 dNNessMain_commonparts_container
+extern dNNessMain_attr+0x2D8 0x0 # -> file 337 (NessShieldPose)
+extern dNNessMain_attr+0x2DC 0x500 # -> file 337 (NessShieldPose)
+extern dNNessMain_attr+0x2E0 0xA20 # -> file 337 (NessShieldPose)
+extern dNNessMain_attr+0x2E4 0xF50 # -> file 337 (NessShieldPose)
+extern dNNessMain_attr+0x2E8 0x1490 # -> file 337 (NessShieldPose)
+extern dNNessMain_attr+0x2EC 0x1A00 # -> file 337 (NessShieldPose)
+extern dNNessMain_attr+0x2F0 0x1FD0 # -> file 337 (NessShieldPose)
+extern dNNessMain_attr+0x2F4 0x2560 # -> file 337 (NessShieldPose)
+extern dNNessMain_attr+0x2F8 0x2BA0 # -> file 337 (NessShieldPose)
+intern dNNessMain_attr+0x328 dNNessMain_modelparts_container
+intern dNNessMain_attr+0x330 dNNessMain_textureparts_container
+intern dNNessMain_attr+0x338 dNNessMain_thrown_status
+intern dNNessMain_attr+0x340 dNNessMain_sprites

@@ -90,8 +90,13 @@ def parse_reloc_metadata(reloc_path, symbols):
 
     with open(reloc_path) as f:
         for line in f:
+            # Strip trailing inline comments like `# -> file 208 (FoxMainMotion)`
+            # that annotateExternRelocFids.py writes for readability.
+            hash_idx = line.find('#')
+            if hash_idx >= 0:
+                line = line[:hash_idx]
             line = line.strip()
-            if not line or line.startswith('#'):
+            if not line:
                 continue
             parts = line.split()
             if len(parts) != 3:

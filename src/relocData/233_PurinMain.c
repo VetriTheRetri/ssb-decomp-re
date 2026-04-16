@@ -5,13 +5,27 @@
 #include <ft/fttypes.h>
 
 /* Pre-attributes data (285 words, 0x0474 bytes) */
-u32 dPurinMain_pre[285] = {
+/* @ 0x0000, 8 bytes: FTAttributes.file_handles target (was dPurinMain_pre+0x0) */
+u32 dPurinMain_file_handles[2] = {
+
 	0x0001000D, /* extern -> 0x0034 */
 	0x0031084C, /* extern -> 0x2130 */
+};
+
+/* @ 0x0008, 8 bytes: FTAttributes.animlock target (was dPurinMain_pre+0x8) */
+u32 dPurinMain_animlock[2] = {
 	0x04412900,
 	0x00000000,
+};
+
+/* @ 0x0010, 8 bytes: FTAttributes.setup_parts target (was dPurinMain_pre+0x10) */
+u32 dPurinMain_setup_parts[2] = {
 	0xEFF9FF80,
 	0x00000000,
+};
+
+/* @ 0x0018, 64 bytes: FTAttributes.hiddenparts target (was dPurinMain_pre+0x18) */
+u32 dPurinMain_hiddenparts[16] = {
 	0x00000002,
 	0x00000000,
 	0x00000001,
@@ -28,6 +42,10 @@ u32 dPurinMain_pre[285] = {
 	0x00000004,
 	0x00000001,
 	0x00000000,
+};
+
+/* @ 0x0058, 104 bytes: FTAttributes.modelparts_container target (was dPurinMain_pre+0x58) */
+u32 dPurinMain_modelparts_container[26] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -54,12 +72,24 @@ u32 dPurinMain_pre[285] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x00C0, 16 bytes: FTAttributes.accesspart target (was dPurinMain_pre+0xC0) */
+u32 dPurinMain_accesspart[4] = {
 	0x00000006,
 	0x00321298, /* extern -> 0x4A60 */
 	0x00331274, /* extern -> 0x49D0 */
 	0x003612F9, /* extern -> 0x4BE4 */
+};
+
+/* @ 0x00D0, 8 bytes: FTAttributes.textureparts_container target (was dPurinMain_pre+0xD0) */
+u32 dPurinMain_textureparts_container[2] = {
 	0x06000006,
 	0x01010000,
+};
+
+/* @ 0x00D8, 32 bytes: FTAttributes.commonparts_container target (was dPurinMain_pre+0xD8) */
+u32 dPurinMain_commonparts_container[8] = {
 	0x0037080A, /* extern -> 0x2028 */
 	0x00380000, /* extern -> 0x0000 */
 	0x003A0934, /* extern -> 0x24D0 */
@@ -68,6 +98,10 @@ u32 dPurinMain_pre[285] = {
 	0x003C0A2C, /* extern -> 0x28B0 */
 	0x00AA1154, /* extern -> 0x4550 */
 	0x00000000,
+};
+
+/* @ 0x00F8, 432 bytes: FTAttributes.thrown_status target (was dPurinMain_pre+0xF8) */
+u32 dPurinMain_thrown_status[108] = {
 	0xFFFFFFFF,
 	0x000000BA,
 	0xFFFFFFFF,
@@ -176,14 +210,26 @@ u32 dPurinMain_pre[285] = {
 	0x000000BA,
 	0xFFFFFFFF,
 	0x000000BA,
+};
+
+/* @ 0x02A8, 20 bytes: FTAttributes.sub_0x2A8 target (was dPurinMain_pre+0x2A8) */
+u32 dPurinMain_sub_0x2A8[5] = {
 	0x00AB1EB8, /* extern -> 0x7AE0 */
 	0x00AC1EC2, /* extern -> 0x7B08 */
 	0x00AD1ECC, /* extern -> 0x7B30 */
 	0x00AE1ED6, /* extern -> 0x7B58 */
 	0x00AF1EE0, /* extern -> 0x7B80 */
+};
+
+/* @ 0x02BC, 12 bytes: FTAttributes.sprites target (was dPurinMain_pre+0x2BC) */
+u32 dPurinMain_sprites[3] = {
 	0x00B11EEC, /* extern -> 0x7BB0 */
 	0x011B00AA, /* intern -> 0x02A8 */
 	0x00B61F66, /* extern -> 0x7D98 */
+};
+
+/* @ 0x02C8, 208 bytes: FTAttributes.sub_0x2C8 target (was dPurinMain_pre+0x2C8) */
+u32 dPurinMain_sub_0x2C8[52] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -236,6 +282,10 @@ u32 dPurinMain_pre[285] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x0398, 208 bytes: FTAttributes.sub_0x398 target (was dPurinMain_pre+0x398) */
+u32 dPurinMain_sub_0x398[52] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -288,6 +338,10 @@ u32 dPurinMain_pre[285] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x0468, 12 bytes: FTAttributes.skeleton target (was dPurinMain_pre+0x468) */
+u32 dPurinMain_skeleton[3] = {
 	0x0000000A,
 	0x011C00B2, /* intern -> 0x02C8 */
 	0x01C400E6, /* intern -> 0x0398 */
@@ -335,34 +389,14 @@ FTAttributes dPurinMain_attr = {
 	410.0f, /* camera_zoom_base */
 	{ 230.0f, 160.0f, 0.0f, 130.0f }, /* map_coll */
 	{ 250.0f, 400.0f }, /* cliffcatch_coll */
-#if defined(REGION_JP)
-	{ 0x0228, 0x011D }, /* dead_fgm_ids */
-#else
-	{ 0x0234, 0x0127 }, /* dead_fgm_ids */
-#endif
-#if defined(REGION_JP)
-	0x0226, /* deadup_sfx */
-#else
-	0x0232, /* deadup_sfx */
-#endif
-#if defined(REGION_JP)
-	0x0228, /* damage_sfx */
-#else
-	0x0234, /* damage_sfx */
-#endif
-#if defined(REGION_JP)
-	{ 0x0222, 0x0223, 0x0224 }, /* smash_sfx */
-#else
-	{ 0x022E, 0x022F, 0x0230 }, /* smash_sfx */
-#endif
+	{ nSYAudioVoicePurinDamage, nSYAudioFGMPurinDeadSlam }, /* dead_fgm_ids */
+	nSYAudioVoicePurinDeadUp, /* deadup_sfx */
+	nSYAudioVoicePurinDamage, /* damage_sfx */
+	{ nSYAudioVoicePurinSmash1, nSYAudioVoicePurinSmash2, nSYAudioVoicePurinSmash3 }, /* smash_sfx */
 	{ { 118.0f, 0.0f }, { 420.0f, 200.0f }, { 80.0f, 0.0f }, { 150.0f, 150.0f } }, /* item_pickup */
 	0x0064, /* itemthrow_vel_scale */
 	0x0064, /* itemthrow_damage_scale */
-#if defined(REGION_JP)
-	0x029D, /* heavyget_sfx */
-#else
-	0x02B7, /* heavyget_sfx */
-#endif
+	nSYAudioFGMVoiceEnd, /* heavyget_sfx */
 	1.2f, /* halo_size */
 	{ { 0xFF, 0xFF, 0xFF, 0x50 }, { 0x00, 0x00, 0x00, 0x50 }, { 0x00, 0x00, 0x00, 0x00 } }, /* shade_color */
 	{ 0xFF, 0x00, 0x00, 0x00 }, /* fog_color */

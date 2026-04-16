@@ -5,12 +5,26 @@
 #include <ft/fttypes.h>
 
 /* Pre-attributes data (182 words, 0x02D8 bytes) */
-u32 dNLinkMain_pre[182] = {
+/* @ 0x0000, 4 bytes: FTAttributes.file_handles target (was dNLinkMain_pre+0x0) */
+u32 dNLinkMain_file_handles[1] = {
+
 	0x003F0005, /* extern -> 0x0014 */
+};
+
+/* @ 0x0004, 8 bytes: FTAttributes.animlock target (was dNLinkMain_pre+0x4) */
+u32 dNLinkMain_animlock[2] = {
 	0x108004A4,
 	0x00000000,
+};
+
+/* @ 0x000C, 8 bytes: FTAttributes.setup_parts target (was dNLinkMain_pre+0xC) */
+u32 dNLinkMain_setup_parts[2] = {
 	0xFFF9FFFE,
 	0x00000000,
+};
+
+/* @ 0x0014, 96 bytes: FTAttributes.hiddenparts target (was dNLinkMain_pre+0x14) */
+u32 dNLinkMain_hiddenparts[24] = {
 	0x00000002,
 	0x00000000,
 	0x00000001,
@@ -35,6 +49,10 @@ u32 dNLinkMain_pre[182] = {
 	0x00000010,
 	0x00000001,
 	0x00000000,
+};
+
+/* @ 0x0074, 128 bytes: FTAttributes.modelparts_container target (was dNLinkMain_pre+0x74) */
+u32 dNLinkMain_modelparts_container[32] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -67,8 +85,16 @@ u32 dNLinkMain_pre[182] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x00F4, 8 bytes: FTAttributes.textureparts_container target (was dNLinkMain_pre+0xF4) */
+u32 dNLinkMain_textureparts_container[2] = {
 	0x17000017,
 	0x01010000,
+};
+
+/* @ 0x00FC, 32 bytes: FTAttributes.commonparts_container target (was dNLinkMain_pre+0xFC) */
+u32 dNLinkMain_commonparts_container[8] = {
 	0x00430C20, /* extern -> 0x3080 */
 	0x00000000,
 	0x00000000,
@@ -77,6 +103,10 @@ u32 dNLinkMain_pre[182] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x011C, 432 bytes: FTAttributes.thrown_status target (was dNLinkMain_pre+0x11C) */
+u32 dNLinkMain_thrown_status[108] = {
 	0xFFFFFFFF,
 	0x000000BA,
 	0xFFFFFFFF,
@@ -185,6 +215,10 @@ u32 dNLinkMain_pre[182] = {
 	0x000000BA,
 	0xFFFFFFFF,
 	0x000000BA,
+};
+
+/* @ 0x02CC, 12 bytes: FTAttributes.sprites target (was dNLinkMain_pre+0x2CC) */
+u32 dNLinkMain_sprites[3] = {
 	0x00000000,
 	0x00000000,
 	0x016C00AE, /* extern -> 0x02B8 */
@@ -232,34 +266,14 @@ FTAttributes dNLinkMain_attr = {
 	800.0f, /* camera_zoom_base */
 	{ 400.0f, 250.0f, 0.0f, 150.0f }, /* map_coll */
 	{ 280.0f, 400.0f }, /* cliffcatch_coll */
-#if defined(REGION_JP)
-	{ 0x029D, 0x029D }, /* dead_fgm_ids */
-#else
-	{ 0x02B7, 0x02B7 }, /* dead_fgm_ids */
-#endif
-#if defined(REGION_JP)
-	0x029D, /* deadup_sfx */
-#else
-	0x02B7, /* deadup_sfx */
-#endif
-#if defined(REGION_JP)
-	0x029D, /* damage_sfx */
-#else
-	0x02B7, /* damage_sfx */
-#endif
-#if defined(REGION_JP)
-	{ 0x029D, 0x029D, 0x029D }, /* smash_sfx */
-#else
-	{ 0x02B7, 0x02B7, 0x02B7 }, /* smash_sfx */
-#endif
+	{ nSYAudioFGMVoiceEnd, nSYAudioFGMVoiceEnd }, /* dead_fgm_ids */
+	nSYAudioFGMVoiceEnd, /* deadup_sfx */
+	nSYAudioFGMVoiceEnd, /* damage_sfx */
+	{ nSYAudioFGMVoiceEnd, nSYAudioFGMVoiceEnd, nSYAudioFGMVoiceEnd }, /* smash_sfx */
 	{ { 105.0f, 0.0f }, { 315.0f, 150.0f }, { 75.0f, 0.0f }, { 150.0f, 150.0f } }, /* item_pickup */
 	0x0064, /* itemthrow_vel_scale */
 	0x0064, /* itemthrow_damage_scale */
-#if defined(REGION_JP)
-	0x029D, /* heavyget_sfx */
-#else
-	0x02B7, /* heavyget_sfx */
-#endif
+	nSYAudioFGMVoiceEnd, /* heavyget_sfx */
 	1.1f, /* halo_size */
 	{ { 0xFF, 0xFF, 0xFF, 0x50 }, { 0x00, 0x00, 0x00, 0x50 }, { 0x00, 0x00, 0x00, 0x00 } }, /* shade_color */
 	{ 0xFF, 0x00, 0x00, 0x00 }, /* fog_color */

@@ -5,14 +5,28 @@
 #include <ft/fttypes.h>
 
 /* Pre-attributes data (266 words, 0x0428 bytes) */
-u32 dMarioMain_pre[266] = {
+/* @ 0x0000, 12 bytes: FTAttributes.file_handles target (was dMarioMain_pre+0x0) */
+u32 dMarioMain_file_handles[3] = {
+
 	0x00010009, /* extern -> 0x0024 */
 	0x00020182, /* extern -> 0x0608 */
 	0x00170000, /* extern -> 0x0000 */
+};
+
+/* @ 0x000C, 8 bytes: FTAttributes.animlock target (was dMarioMain_pre+0xC) */
+u32 dMarioMain_animlock[2] = {
 	0x10425200,
 	0x00000000,
+};
+
+/* @ 0x0014, 8 bytes: FTAttributes.setup_parts target (was dMarioMain_pre+0x14) */
+u32 dMarioMain_setup_parts[2] = {
 	0xFFFFFF00,
 	0x00000000,
+};
+
+/* @ 0x001C, 64 bytes: FTAttributes.hiddenparts target (was dMarioMain_pre+0x1C) */
+u32 dMarioMain_hiddenparts[16] = {
 	0x00000002,
 	0x00000000,
 	0x00000001,
@@ -29,6 +43,10 @@ u32 dMarioMain_pre[266] = {
 	0x00000004,
 	0x00000001,
 	0x00000000,
+};
+
+/* @ 0x005C, 80 bytes: FTAttributes.sub_0x05C target (was dMarioMain_pre+0x5C) */
+u32 dMarioMain_sub_0x05C[20] = {
 	0x001C0636, /* extern -> 0x18D8 */
 	0x00000000,
 	0x00000000,
@@ -49,6 +67,10 @@ u32 dMarioMain_pre[266] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x00AC, 80 bytes: FTAttributes.sub_0x0AC target (was dMarioMain_pre+0xAC) */
+u32 dMarioMain_sub_0x0AC[20] = {
 	0x00300772, /* extern -> 0x1DC8 */
 	0x00000000,
 	0x00000000,
@@ -69,6 +91,10 @@ u32 dMarioMain_pre[266] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x00FC, 100 bytes: FTAttributes.modelparts_container target (was dMarioMain_pre+0xFC) */
+u32 dMarioMain_modelparts_container[25] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -94,7 +120,15 @@ u32 dMarioMain_pre[266] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x0160, 4 bytes: FTAttributes.textureparts_container target (was dMarioMain_pre+0x160) */
+u32 dMarioMain_textureparts_container[1] = {
 	0x0C000000,
+};
+
+/* @ 0x0164, 32 bytes: FTAttributes.commonparts_container target (was dMarioMain_pre+0x164) */
+u32 dMarioMain_commonparts_container[8] = {
 	0x005A0880, /* extern -> 0x2200 */
 	0x005B0000, /* extern -> 0x0000 */
 	0x005D09A0, /* extern -> 0x2680 */
@@ -103,6 +137,10 @@ u32 dMarioMain_pre[266] = {
 	0x005F0A7C, /* extern -> 0x29F0 */
 	0x00CD1284, /* extern -> 0x4A10 */
 	0x00000000,
+};
+
+/* @ 0x0184, 432 bytes: FTAttributes.thrown_status target (was dMarioMain_pre+0x184) */
+u32 dMarioMain_thrown_status[108] = {
 	0xFFFFFFFF,
 	0x000000BA,
 	0x000000B6,
@@ -211,14 +249,26 @@ u32 dMarioMain_pre[266] = {
 	0x000000BA,
 	0x000000B6,
 	0x000000B9,
+};
+
+/* @ 0x0334, 20 bytes: FTAttributes.sub_0x334 target (was dMarioMain_pre+0x334) */
+u32 dMarioMain_sub_0x334[5] = {
 	0x00CE1C80, /* extern -> 0x7200 */
 	0x00CF1C8A, /* extern -> 0x7228 */
 	0x00D01C94, /* extern -> 0x7250 */
 	0x00D11C9E, /* extern -> 0x7278 */
 	0x00D21CA8, /* extern -> 0x72A0 */
+};
+
+/* @ 0x0348, 12 bytes: FTAttributes.sprites target (was dMarioMain_pre+0x348) */
+u32 dMarioMain_sprites[3] = {
 	0x00D41CB4, /* extern -> 0x72D0 */
 	0x010800CD, /* intern -> 0x0334 */
 	0x00D71D32, /* extern -> 0x74C8 */
+};
+
+/* @ 0x0354, 200 bytes: FTAttributes.sub_0x354 target (was dMarioMain_pre+0x354) */
+u32 dMarioMain_sub_0x354[50] = {
 	0x00000000,
 	0x00000000,
 	0x00D91580, /* extern -> 0x5600 */
@@ -269,6 +319,10 @@ u32 dMarioMain_pre[266] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x041C, 12 bytes: FTAttributes.skeleton target (was dMarioMain_pre+0x41C) */
+u32 dMarioMain_skeleton[3] = {
 	0x0000000C,
 	0x01B100D5, /* intern -> 0x0354 */
 	0x00000000,

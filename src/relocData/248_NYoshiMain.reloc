@@ -1,24 +1,24 @@
 # Relocation metadata for file 248
 # Format: <type> <ptr_label> <target_label>
 # Labels are C variable names resolved via .o symbol table
-extern dNYoshiMain_pre+0x0 0x34  # -> file 246 (YoshiMainMotion)
-extern dNYoshiMain_pre+0xDC 0x2EF8  # -> file 304 (NYoshiModel)
-extern dNYoshiMain_pre+0xEC 0x2EF8  # -> file 304 (NYoshiModel)
-extern dNYoshiMain_pre+0x2B4 0x2B8  # -> file 345 (MasterHandIcon)
-intern dNYoshiMain_attr+0x29C dNYoshiMain_pre+0xC
-intern dNYoshiMain_attr+0x2A0 dNYoshiMain_pre+0x4
-intern dNYoshiMain_attr+0x2D0 dNYoshiMain_pre+0x14
-intern dNYoshiMain_attr+0x2D4 dNYoshiMain_pre+0xDC
-extern dNYoshiMain_attr+0x2D8 0x0  # -> file 340 (YoshiShieldPose)
-extern dNYoshiMain_attr+0x2DC 0x500  # -> file 340 (YoshiShieldPose)
-extern dNYoshiMain_attr+0x2E0 0x7D0  # -> file 340 (YoshiShieldPose)
-extern dNYoshiMain_attr+0x2E4 0xAA0  # -> file 340 (YoshiShieldPose)
-extern dNYoshiMain_attr+0x2E8 0xD70  # -> file 340 (YoshiShieldPose)
-extern dNYoshiMain_attr+0x2EC 0x1040  # -> file 340 (YoshiShieldPose)
-extern dNYoshiMain_attr+0x2F0 0x1310  # -> file 340 (YoshiShieldPose)
-extern dNYoshiMain_attr+0x2F4 0x15E0  # -> file 340 (YoshiShieldPose)
-extern dNYoshiMain_attr+0x2F8 0x18B0  # -> file 340 (YoshiShieldPose)
-intern dNYoshiMain_attr+0x328 dNYoshiMain_pre+0x64
-intern dNYoshiMain_attr+0x330 dNYoshiMain_pre+0xD4
-intern dNYoshiMain_attr+0x338 dNYoshiMain_pre+0xFC
-intern dNYoshiMain_attr+0x340 dNYoshiMain_pre+0x2AC
+extern dNYoshiMain_file_handles 0x34 # -> file 246 (YoshiMainMotion)
+extern dNYoshiMain_commonparts_container 0x2EF8 # -> file 304 (NYoshiModel)
+extern dNYoshiMain_commonparts_container+0x10 0x2EF8 # -> file 304 (NYoshiModel)
+extern dNYoshiMain_sprites+0x8 0x2B8 # -> file 345 (MasterHandIcon)
+intern dNYoshiMain_attr+0x29C dNYoshiMain_setup_parts
+intern dNYoshiMain_attr+0x2A0 dNYoshiMain_animlock
+intern dNYoshiMain_attr+0x2D0 dNYoshiMain_hiddenparts
+intern dNYoshiMain_attr+0x2D4 dNYoshiMain_commonparts_container
+extern dNYoshiMain_attr+0x2D8 0x0 # -> file 340 (YoshiShieldPose)
+extern dNYoshiMain_attr+0x2DC 0x500 # -> file 340 (YoshiShieldPose)
+extern dNYoshiMain_attr+0x2E0 0x7D0 # -> file 340 (YoshiShieldPose)
+extern dNYoshiMain_attr+0x2E4 0xAA0 # -> file 340 (YoshiShieldPose)
+extern dNYoshiMain_attr+0x2E8 0xD70 # -> file 340 (YoshiShieldPose)
+extern dNYoshiMain_attr+0x2EC 0x1040 # -> file 340 (YoshiShieldPose)
+extern dNYoshiMain_attr+0x2F0 0x1310 # -> file 340 (YoshiShieldPose)
+extern dNYoshiMain_attr+0x2F4 0x15E0 # -> file 340 (YoshiShieldPose)
+extern dNYoshiMain_attr+0x2F8 0x18B0 # -> file 340 (YoshiShieldPose)
+intern dNYoshiMain_attr+0x328 dNYoshiMain_modelparts_container
+intern dNYoshiMain_attr+0x330 dNYoshiMain_textureparts_container
+intern dNYoshiMain_attr+0x338 dNYoshiMain_thrown_status
+intern dNYoshiMain_attr+0x340 dNYoshiMain_sprites

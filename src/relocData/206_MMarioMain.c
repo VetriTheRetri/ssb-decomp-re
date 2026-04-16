@@ -5,15 +5,29 @@
 #include <ft/fttypes.h>
 
 /* Pre-attributes data (170 words, 0x02A8 bytes) */
-u32 dMMarioMain_pre[170] = {
+/* @ 0x0000, 16 bytes: FTAttributes.file_handles target (was dMMarioMain_pre+0x0) */
+u32 dMMarioMain_file_handles[4] = {
+
 	0x0001000E, /* extern -> 0x0038 */
 	0x00020009, /* extern -> 0x0024 */
 	0x00030182, /* extern -> 0x0608 */
 	0x00320000, /* extern -> 0x0000 */
+};
+
+/* @ 0x0010, 8 bytes: FTAttributes.animlock target (was dMMarioMain_pre+0x10) */
+u32 dMMarioMain_animlock[2] = {
 	0x10425200,
 	0x00000000,
+};
+
+/* @ 0x0018, 8 bytes: FTAttributes.setup_parts target (was dMMarioMain_pre+0x18) */
+u32 dMMarioMain_setup_parts[2] = {
 	0xFFFFFF00,
 	0x00000000,
+};
+
+/* @ 0x0020, 64 bytes: FTAttributes.hiddenparts target (was dMMarioMain_pre+0x20) */
+u32 dMMarioMain_hiddenparts[16] = {
 	0x00000002,
 	0x00000000,
 	0x00000001,
@@ -30,6 +44,10 @@ u32 dMMarioMain_pre[170] = {
 	0x00000004,
 	0x00000001,
 	0x00000000,
+};
+
+/* @ 0x0060, 100 bytes: FTAttributes.modelparts_container target (was dMMarioMain_pre+0x60) */
+u32 dMMarioMain_modelparts_container[25] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -55,7 +73,15 @@ u32 dMMarioMain_pre[170] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x00C4, 4 bytes: FTAttributes.textureparts_container target (was dMMarioMain_pre+0xC4) */
+u32 dMMarioMain_textureparts_container[1] = {
 	0x0C000000,
+};
+
+/* @ 0x00C8, 32 bytes: FTAttributes.commonparts_container target (was dMMarioMain_pre+0xC8) */
+u32 dMMarioMain_commonparts_container[8] = {
 	0x00360782, /* extern -> 0x1E08 */
 	0x00000000,
 	0x00000000,
@@ -64,6 +90,10 @@ u32 dMMarioMain_pre[170] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x00E8, 432 bytes: FTAttributes.thrown_status target (was dMMarioMain_pre+0xE8) */
+u32 dMMarioMain_thrown_status[108] = {
 	0xFFFFFFFF,
 	0x000000BA,
 	0x000000B6,
@@ -172,7 +202,15 @@ u32 dMMarioMain_pre[170] = {
 	0x000000BA,
 	0x000000B6,
 	0x000000B9,
+};
+
+/* @ 0x0298, 4 bytes: FTAttributes.sub_0x298 target (was dMMarioMain_pre+0x298) */
+u32 dMMarioMain_sub_0x298[1] = {
 	0x00A70B34, /* extern -> 0x2CD0 */
+};
+
+/* @ 0x029C, 12 bytes: FTAttributes.sprites target (was dMMarioMain_pre+0x29C) */
+u32 dMMarioMain_sprites[3] = {
 	0x00A90B40, /* extern -> 0x2D00 */
 	0x015100A6, /* intern -> 0x0298 */
 	0x01600BBE, /* extern -> 0x2EF8 */
@@ -220,34 +258,14 @@ FTAttributes dMMarioMain_attr = {
 	600.0f, /* camera_zoom_base */
 	{ 500.0f, 300.0f, 0.0f, 230.0f }, /* map_coll */
 	{ 600.0f, 500.0f }, /* cliffcatch_coll */
-#if defined(REGION_JP)
-	{ 0x029D, 0x029D }, /* dead_fgm_ids */
-#else
-	{ 0x02B7, 0x02B7 }, /* dead_fgm_ids */
-#endif
-#if defined(REGION_JP)
-	0x029D, /* deadup_sfx */
-#else
-	0x02B7, /* deadup_sfx */
-#endif
-#if defined(REGION_JP)
-	0x029D, /* damage_sfx */
-#else
-	0x02B7, /* damage_sfx */
-#endif
-#if defined(REGION_JP)
-	{ 0x029D, 0x029D, 0x029D }, /* smash_sfx */
-#else
-	{ 0x02B7, 0x02B7, 0x02B7 }, /* smash_sfx */
-#endif
+	{ nSYAudioFGMVoiceEnd, nSYAudioFGMVoiceEnd }, /* dead_fgm_ids */
+	nSYAudioFGMVoiceEnd, /* deadup_sfx */
+	nSYAudioFGMVoiceEnd, /* damage_sfx */
+	{ nSYAudioFGMVoiceEnd, nSYAudioFGMVoiceEnd, nSYAudioFGMVoiceEnd }, /* smash_sfx */
 	{ { 105.0f, 0.0f }, { 315.0f, 150.0f }, { 75.0f, 0.0f }, { 150.0f, 150.0f } }, /* item_pickup */
 	0x0064, /* itemthrow_vel_scale */
 	0x0064, /* itemthrow_damage_scale */
-#if defined(REGION_JP)
-	0x029D, /* heavyget_sfx */
-#else
-	0x02B7, /* heavyget_sfx */
-#endif
+	nSYAudioFGMVoiceEnd, /* heavyget_sfx */
 	1.0f, /* halo_size */
 	{ { 0xFF, 0xFF, 0xFF, 0x50 }, { 0x00, 0x00, 0x00, 0x50 }, { 0x00, 0x00, 0x00, 0x00 } }, /* shade_color */
 	{ 0xFF, 0x00, 0x00, 0x00 }, /* fog_color */

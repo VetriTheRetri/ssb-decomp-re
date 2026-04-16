@@ -5,12 +5,26 @@
 #include <ft/fttypes.h>
 
 /* Pre-attributes data (174 words, 0x02B8 bytes) */
-u32 dNYoshiMain_pre[174] = {
+/* @ 0x0000, 4 bytes: FTAttributes.file_handles target (was dNYoshiMain_pre+0x0) */
+u32 dNYoshiMain_file_handles[1] = {
+
 	0x0037000D, /* extern -> 0x0034 */
+};
+
+/* @ 0x0004, 8 bytes: FTAttributes.animlock target (was dNYoshiMain_pre+0x4) */
+u32 dNYoshiMain_animlock[2] = {
 	0x02204A40,
 	0x00000000,
+};
+
+/* @ 0x000C, 8 bytes: FTAttributes.setup_parts target (was dNYoshiMain_pre+0xC) */
+u32 dNYoshiMain_setup_parts[2] = {
 	0xFBFFFFE0,
 	0x00000000,
+};
+
+/* @ 0x0014, 80 bytes: FTAttributes.hiddenparts target (was dNYoshiMain_pre+0x14) */
+u32 dNYoshiMain_hiddenparts[20] = {
 	0x00000002,
 	0x00000000,
 	0x00000001,
@@ -31,6 +45,10 @@ u32 dNYoshiMain_pre[174] = {
 	0x00000007,
 	0x00000001,
 	0x00000000,
+};
+
+/* @ 0x0064, 112 bytes: FTAttributes.modelparts_container target (was dNYoshiMain_pre+0x64) */
+u32 dNYoshiMain_modelparts_container[28] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -59,8 +77,16 @@ u32 dNYoshiMain_pre[174] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
+};
+
+/* @ 0x00D4, 8 bytes: FTAttributes.textureparts_container target (was dNYoshiMain_pre+0xD4) */
+u32 dNYoshiMain_textureparts_container[2] = {
 	0x07000007,
 	0x01010000,
+};
+
+/* @ 0x00DC, 32 bytes: FTAttributes.commonparts_container target (was dNYoshiMain_pre+0xDC) */
+u32 dNYoshiMain_commonparts_container[8] = {
 	0x003B0BBE, /* extern -> 0x2EF8 */
 	0x00000000,
 	0x00000000,
@@ -69,6 +95,10 @@ u32 dNYoshiMain_pre[174] = {
 	0x00000000,
 	0x00000000,
 	0x01000000,
+};
+
+/* @ 0x00FC, 432 bytes: FTAttributes.thrown_status target (was dNYoshiMain_pre+0xFC) */
+u32 dNYoshiMain_thrown_status[108] = {
 	0xFFFFFFFF,
 	0x000000BA,
 	0xFFFFFFFF,
@@ -177,6 +207,10 @@ u32 dNYoshiMain_pre[174] = {
 	0x000000BA,
 	0xFFFFFFFF,
 	0x000000BA,
+};
+
+/* @ 0x02AC, 12 bytes: FTAttributes.sprites target (was dNYoshiMain_pre+0x2AC) */
+u32 dNYoshiMain_sprites[3] = {
 	0x00000000,
 	0x00000000,
 	0x016400AE, /* extern -> 0x02B8 */
@@ -224,34 +258,14 @@ FTAttributes dNYoshiMain_attr = {
 	800.0f, /* camera_zoom_base */
 	{ 400.0f, 250.0f, 0.0f, 210.0f }, /* map_coll */
 	{ 320.0f, 400.0f }, /* cliffcatch_coll */
-#if defined(REGION_JP)
-	{ 0x029D, 0x029D }, /* dead_fgm_ids */
-#else
-	{ 0x02B7, 0x02B7 }, /* dead_fgm_ids */
-#endif
-#if defined(REGION_JP)
-	0x029D, /* deadup_sfx */
-#else
-	0x02B7, /* deadup_sfx */
-#endif
-#if defined(REGION_JP)
-	0x029D, /* damage_sfx */
-#else
-	0x02B7, /* damage_sfx */
-#endif
-#if defined(REGION_JP)
-	{ 0x029D, 0x029D, 0x029D }, /* smash_sfx */
-#else
-	{ 0x02B7, 0x02B7, 0x02B7 }, /* smash_sfx */
-#endif
+	{ nSYAudioFGMVoiceEnd, nSYAudioFGMVoiceEnd }, /* dead_fgm_ids */
+	nSYAudioFGMVoiceEnd, /* deadup_sfx */
+	nSYAudioFGMVoiceEnd, /* damage_sfx */
+	{ nSYAudioFGMVoiceEnd, nSYAudioFGMVoiceEnd, nSYAudioFGMVoiceEnd }, /* smash_sfx */
 	{ { 100.0f, 0.0f }, { 490.0f, 150.0f }, { 0.0f, 0.0f }, { 150.0f, 150.0f } }, /* item_pickup */
 	0x0064, /* itemthrow_vel_scale */
 	0x0064, /* itemthrow_damage_scale */
-#if defined(REGION_JP)
-	0x029D, /* heavyget_sfx */
-#else
-	0x02B7, /* heavyget_sfx */
-#endif
+	nSYAudioFGMVoiceEnd, /* heavyget_sfx */
 	1.2f, /* halo_size */
 	{ { 0xFF, 0xFF, 0xFF, 0x50 }, { 0x00, 0x00, 0x00, 0x50 }, { 0x00, 0x00, 0x00, 0x00 } }, /* shade_color */
 	{ 0xFF, 0x00, 0x00, 0x00 }, /* fog_color */

@@ -28,48 +28,46 @@ JP-aware inline-master extractor. The ROM remains byte-clean because
 
 | Source type | Files | Description |
 |---|---:|---|
-| Inline typed `.c` masters | **1,983** | Self-contained `.c` file with typed struct initializers (`FTAttributes` / `MPGroundData` / `ftMotionCommand` / `ftAnim` / `Sprite` / `DObjDesc` / `MObjSub` / `Vtx` / raw-byte wrappers). Any referenced `.inc.c` blobs live under `build/` and are regenerated from the ROM at `make extract` time. |
+| Inline typed `.c` masters | **2,026** | Self-contained `.c` file with typed struct initializers (`FTAttributes` / `MPGroundData` / `ftMotionCommand` / `aobjEvent32` / `ftAnim` / `Sprite` / `DObjDesc` / `MObjSub` / `WPAttributes` / `Vtx` / `Gfx` DL / `LUT` palette / `Tex` / raw-byte wrappers). Any referenced `.inc.c` blobs live under `build/` and are regenerated from the ROM at `make extract` time. |
 | Auto-extracted sprite files | **94** | A committed `.spritelist` marker drives `tools/extractSpriteFile.py`, which walks the ROM binary's reloc chain, auto-discovers every Sprite + Bitmap + pixel block, and emits a full master `.c` + `.reloc` + `.inc.c` set under `build/`. |
-| Raw-blob inline `.c` files | **55** | Inline `.c` whose only content is a single `u8[]` / `u32[]` array. Build, match, but aren't structurally typed yet. |
+| Raw-blob inline `.c` files | **12** | Inline `.c` whose only content is one or two raw `u8[]` arrays (no struct types). Build, match, but aren't structurally typed yet. |
 | **Total** | **2,132** | |
 
 ### Per-region divergence (JP build)
 
 For files where US and JP share the same `.c` source but diverge on a
 handful of values (FGM ids, gameplay tuning, extern reloc targets) the
-build uses one of four override mechanisms, in priority order:
+build uses one of three override mechanisms, in priority order:
 
 | Priority | Mechanism | Count | Purpose |
 |---|---|---:|---|
-| 1 | `<id>_<Name>.jp.c` raw blob | 50 | Raw byte dump of the JP file. Skips `fixRelocChain` entirely. Legacy mechanism for fids that never shared a `.c` with US. |
-| 2 | `<id>_<Name>.jp.spritelist` | 2 | JP-specific sprite name list (drops / reorders entries). Falls through to `extractSpriteFile.py` which walks the JP binary. |
-| 3 | `<id>_<Name>.jp.reloc` | 2 | JP-specific relocation chain (different extern targets / intern positions). Used with the shared `.c` when the structure matches but the chain diverges. |
-| 4 | `#if defined(REGION_JP)` / `REGION_US` guards inside the shared `.c` | 30 files, **326 guards** | Per-line gameplay tuning differences (FGM ids, color-anim indices, attack collision damage, etc.). Guarded at whichever granularity narrows best — most guards are 1–3 lines. |
+| 1 | `<id>_<Name>.jp.spritelist` | 2 | JP-specific sprite name list (drops / reorders entries). Falls through to `extractSpriteFile.py` which walks the JP binary. |
+| 2 | `<id>_<Name>.jp.reloc` | 12 | JP-specific relocation chain (different extern targets / intern positions). Used with the shared `.c` when the structure matches but the chain diverges. |
+| 3 | `#if defined(REGION_JP)` / `REGION_US` guards inside the shared `.c` | 37 files, **358 guards** | Per-line gameplay tuning differences (FGM ids, color-anim indices, attack collision damage, etc.). Guarded at whichever granularity narrows best — most guards are 1–3 lines. |
 
-The 50 `.jp.c` raw blobs are tracked as a technical-debt pool: any one
-of them could be promoted to a shared `.c` + one of mechanisms 2–4 if
-the structural delta turns out to be small.
+`.jp.c` raw blobs are no longer used — every previously-blob-overridden
+file has been migrated to one of the structural mechanisms above.
 
-### Remaining raw-blob inline files (55 files, ~650 KB)
+### Remaining raw-blob inline files (12 files, ~128 KB)
 
-These are inline `.c` files whose only declaration is a single
-`u8[]` / `u32[]` array. They build and match but aren't structurally
-decomposed.
+These are inline `.c` files whose only declarations are one or two raw
+`u8[]` arrays (no struct types, no LUT/Tex blocks, no animation u32[]).
+They build and match but aren't structurally decomposed.
 
 | Category | Files | Bytes | Notes |
 |---|---:|---:|---|
-| Opening / movie | 11 | 271,248 | `MVOpeningYamabuki` dominates (257 KB); hit a historical `fixRelocChain` overflow |
-| Item / object | 5 | 100,656 | `IFCommonObject`, `ITCommonObject` — complex mixed item tables |
-| Stage images | 2 | 94,624 | `StagePupupuImages`, `StageYosterImages` |
-| Stage File2/3/4 | 10 | 54,752 | `StagePupupuFile2`, `StageBattlefieldFile2` and the File3/File4 tails |
-| Pupupu beta | 4 | 48,528 | Beta prototype geometry |
-| Other | 7 | 29,968 | `SYKseg1Validate`, `SYSignValidate`, `ITCommonData`, misc headers |
-| Pupupu images | 2 | 22,400 | `StagePupupuBetaImages`, secondary pupupu images |
-| Fighter Special | 8 | 18,400 | `*Special1` weapon attribute tables |
-| Fighter Model | 1 | 12,112 | `LinkBoomerangModel` — too small for DObjDesc scan |
-| Common textures | 4 | 8,704 | `Bonus1CommonImages1..4` |
-| Transition | 1 | 4,176 | `LBTransitionPaperAirplane` |
-| **Total** | **55** | **665,568** | |
+| Item / object | 2 | 84,064 | `ITCommonObject` (78 KB — complex mixed item table), `ITBonus1Object` |
+| Pupupu beta | 3 | 27,232 | `StagePupupuBetaImages`, `StagePupupuBeta1`, `StagePupupuBeta2` — beta prototype geometry |
+| Stage File2/3/4 | 1 | 17,328 | `StageBattlefieldFile2` — split into 3 named u8 regions, no struct typing yet |
+| Other / utility | 4 | 2,128 | `FoxUnknown`, `SC1PTrainingMode`, `SYKseg1Validate`, `SYSignValidate` |
+| Common textures | 1 | 560 | `NCommonTexture` |
+| Fighter Special | 1 | 48 | `KirbySpecial1` (48 B — tiny stub) |
+| **Total** | **12** | **131,360** | |
+
+The byte total is down from ~650 KB / 55 files in earlier snapshots.
+Promotions in this round include all `*MainMotion`, `MV opening / ending`,
+`Bonus*CommonImages`, `Stage*Images`, `Special1`, the `LBTransition*`,
+and `MarioSecondaryImage` files.
 
 ### JP-unpromoted inline masters (39 files)
 
@@ -101,9 +99,12 @@ through segmented addresses the DL walker can't follow. They aren't
 but they're the next big pool of bytes to break up.
 
 Roughly 1.13 MB of `gap_*` / `data_*` raw-byte array bytes remain
-across the 1,983 typed inline masters. The biggest offenders are the
-character model files and the Opening / Yamabuki stage assets. Use
-this to regenerate the exact breakdown:
+across the 2,026 typed inline masters. The biggest offenders are the
+character model files and the Opening / Yamabuki stage assets. Many
+gaps that DO have inbound chain references (extern from other files,
+or intern within the same file) have already been split into named
+sub-regions via `tools/splitGapFull.py`. Use this to regenerate the
+exact remaining breakdown:
 
 ```python
 import os, re
@@ -123,14 +124,14 @@ print(f'{total:,} bytes')
 
 ```
                   ┌──── [1] inline typed .c ────────────────────┐
-                  │         (1983 files)                        │
+                  │         (2,026 files)                       │
                   │                                             │
 src/relocData/    ├──── [2] auto-extracted sprite file ────────┤
                   │         (.spritelist marker, 94 files)      │
                   │         build/ master .c + .reloc + .inc.c  │
                   │                                             │
                   └──── [3] raw-blob inline .c ─────────────────┤
-                            (55 files)                          │
+                            (12 files, 128 KB)                  │
                                                                 ▼
                                                        IDO 7.1 compile
                                                                 ▼
@@ -157,16 +158,15 @@ the fly into `build/src/relocData/` — no committed artifacts.
 
 | Extension | Committed? | What |
 |---|---|---|
-| `<id>_<Name>.c` | yes | Inline typed master — struct initializers, `ftMotion*` / `ftAnim*` macros, raw-byte wrappers. May contain `#if defined(REGION_JP)` / `REGION_US` guards around per-region tuning. |
-| `<id>_<Name>.reloc` | yes | Relocation chain metadata using symbolic labels. Resolved via `nm` on the compiled `.o`. |
+| `<id>_<Name>.c` | yes | Inline typed master — struct initializers, `ftMotion*` / `ftAnim*` / `aobjEvent32*` macros, raw-byte wrappers. May contain `#if defined(REGION_JP)` / `REGION_US` guards around per-region tuning. |
+| `<id>_<Name>.reloc` | yes | Relocation chain metadata using symbolic labels. Resolved via `nm` on the compiled `.o`. Each `extern` line carries a trailing `# -> file N (Name)` comment naming the trailer-resolved target file. |
 | `<id>_<Name>.spritelist` | yes | Marker file for the auto-sprite-extract pipeline. Contains an optional ordered list of sprite names which `extractSpriteFile.py` zips with the sprites it auto-discovers from the binary. |
-| `<id>_<Name>.jp.c` | yes | JP-specific raw blob override. Highest priority — skips `fixRelocChain`. |
 | `<id>_<Name>.jp.spritelist` | yes | JP-specific sprite name list. |
 | `<id>_<Name>.jp.reloc` | yes | JP-specific relocation chain (different extern targets / ptr positions). |
 | `build/src/relocData/<id>_<Name>.c` | no | Auto-generated master `.c` for spritelist-driven fids. |
 | `build/src/relocData/<id>_<Name>.reloc` | no | Auto-generated `.reloc` for spritelist-driven fids. |
 | `build/src/relocData/<Name>/<block>.*.inc.c` | no | Raw bytes extracted from `assets/relocData/<fid>.vpk0.bin` at `make extract` time. Regenerated every build. Not in git. |
-| `build/src/relocData/<Name>/<block>.png` | no | Texture preview (sprites via `relocSpriteTool`, typed Tex blocks via `n64img`). Not in git. |
+| `build/src/relocData/<Name>/<block>.png` | no | Texture preview (sprites via `relocSpriteTool`, typed Tex blocks via `n64img` driven by `previewImagesTextures.py`). Not in git. |
 | `src/relocData/<Name>/<block>.png` | yes (optional) | User texture override — drop a `.png` here and its `.inc.c` gets regenerated from it at build time instead of from the baserom. |
 
 Everything under `build/src/relocData/` is gitignored and regenerated
@@ -175,6 +175,8 @@ from `assets/relocData/<fid>.vpk0.bin` on every `make extract`.
 ---
 
 ## Tools
+
+### Build-time pipeline
 
 | Tool | Purpose |
 |---|---|
@@ -185,18 +187,47 @@ from `assets/relocData/<fid>.vpk0.bin` on every `make extract`.
 | `tools/fixRelocChain.py` | Post-compile reloc chain rebuilder — patches chain pointers at specific byte offsets using the symbolic labels in a `.reloc` file. |
 | `tools/genRelocSymbols.py` | Generates `include/reloc_data.h` and the version-specific linker symbol file from `relocFileDescriptions.<version>.txt` plus the committed inline masters. |
 | `tools/genRelocMaster.py` | Legacy manifest/spritelist → master `.c` generator. Still used by `genRelocSymbols.py` for size computation; no longer drives build-time master generation (auto-extract handles that). |
-| `tools/genRelocDataC.py` | Binary → C auto-generator used during initial file typing. |
+| `tools/genMotionDescOffsets.py` | Scans every `u32 d<File>_<label>[]` motion-script symbol across `*MainMotion.c` / `*SubMotion.c` and emits `include/ft/motiondesc_offsets.h` (one `#define name byte_offset` per script entry). Lets `src/ft/ftdata.c` reference scripts by name. |
 | `tools/relocData.py` | Original extract / assemble tool. `makeBin` assembles the final `relocData.bin` from override (`build/assets/relocData/`) or baserom (`assets/relocData/`) files. |
 | `tools/verifyRelocOffsets.py` | Per-file binary verification. |
-| `tools/splitRelocInlineData.py` | One-shot migration: splits a committed inline `u8[]` / `u32[]` / `Vtx[]` / `Gfx[]` declaration into an outer wrapper + `.inc.c` companion. |
+| `tools/previewImagesTextures.py` | CI4 PNG previews for typed `LUT` + `Tex` block pairs. Runs at `make extract` time alongside `extractRelocInc.py`. |
+
+### Migration / promotion (one-shot)
+
+| Tool | Purpose |
+|---|---|
+| `tools/splitRelocInlineData.py` | Splits a committed inline `u8[]` / `u32[]` / `Vtx[]` / `Gfx[]` declaration into an outer wrapper + `.inc.c` companion. |
 | `tools/typeFighterModels.py` | Promote N-variant and main fighter models to typed DObjDesc + DL + Vtx blocks. |
 | `tools/typeFighterSpecials.py` | Promote fighter `Special2/3` files to typed DObjDesc / MObjSub / AnimJoint / MatAnimJoint blocks driven by the `ll*` symbol map. |
 | `tools/typeSpecialGaps.py` | Walks each `Special2/3` file's typed DLs and carves `Vtx` / `LUT` / `Tex` references out of the `gap_*` bytes. |
 | `tools/typeStageMap.py` | Promote `GR*Map` files into `MPGroundData` struct initializers. |
 | `tools/typeStageFile2.py` | Promote Stage File2 files using `gr_desc` metadata. |
+| `tools/typeImagesFile.py` | Decompose a stage `*Images` data pool by scanning every other file's extern reloc chain + post-compression trailer file IDs ("req-list reverse lookup"), pairing offsets that differ by 0x28 as `(LUT, Tex)` and the rest as raw u8 blocks. Used for `Stage*Images`, `Bonus1CommonImages*`, `MarioSecondaryImage`. |
 | `tools/promoteAnimJoints.py` | Animation files → typed `AObjEvent16` scripts with `ftAnim*` macros. |
 | `tools/promoteMotionFiles.py` | MainMotion / ShieldPose → typed motion scripts. |
 | `tools/promoteAnimFiles.py` | Batch raw-blob promotion for animation files. |
+| `tools/promoteWPAttributes.py` | Decode a `u8[52]` blob using the verified WPAttributes bitfield layout and emit a typed struct initializer. |
+| `tools/decodeItemAttrs.py` | Decode a `u8[72]` ITAttributes blob's visible fields (pointers, flags, attack offsets, Vec3h, map_coll, size) and emit a documentation comment block above the array. |
+| `tools/decodeAObjEvent32.py` | Walk a `u32 dXxx_AnimJoint[]` / `MatAnimJoint` / `CamAnimJoint` array as an AObjEvent32 command stream, applying per-opcode payload-consumption rules from `src/sys/objanim.c`, and rewrite each command word as an `aobjEvent32End/Wait/SetVal/...` macro call. |
+| `tools/retypeAnimBlocks.py` | Bulk rename `u8 dXxx_AnimJoint[]` → `u32 dXxx_AnimJoint[]` (and same for `MatAnimJoint` / `AttackEvents` / `KeyEvent`). |
+
+### Symbolic chain rewriting
+
+| Tool | Purpose |
+|---|---|
+| `tools/resolveStageMapExterns.py` | Rewrite raw chain hex casts in `GR*Map` MPGroundData struct fields (`gr_desc[].dobjdesc/anim_joints/p_mobjsubs/p_matanim_joints`, `map_geometry`, `wallpaper`, `map_nodes`) as symbolic refs to the target stage's File2/sprite symbols. |
+| `tools/resolveRelocExterns.py` | Generic version of `resolveStageMapExterns.py` — works on any file with extern chains by reading the trailer u16 file IDs and looking up symbols in the target file's compiled `.o` via `nm`. |
+| `tools/resolveMObjSubChains.py` | Rewrite `(void**) 0xAABBCCDD` casts at MObjSub struct offsets 0x04 (sprites) and 0x2C (palettes) as symbolic intern/extern refs. |
+| `tools/resolveDObjDescChains.py` | Rewrite raw chain casts at `DObjDesc[N].data` slots (element `N*44 + 4`) inside DObjDesc array initializers. |
+| `tools/annotateExternRelocFids.py` | Annotate every `extern` line in every `.reloc` with a trailing `# -> file N (Name)` comment resolving the trailer u16 file ID. Pure documentation, idempotent. |
+
+### Gap decomposition
+
+| Tool | Purpose |
+|---|---|
+| `tools/auditGapRefs.py` | Report `gap_0xNNNN` raw-byte regions that have inbound external references from other files. |
+| `tools/splitGapAtExternRefs.py` | Split such gap regions at the inbound offsets, naming each sub-region `gap_0xNNNN_sub_0xMM`. Skips gaps whose symbol is referenced anywhere in the local `.reloc` (would need label rewrites). |
+| `tools/splitGapFull.py` | Like `splitGapAtExternRefs.py` but ALSO rewrites local `.reloc` intern entries to use the new sub-region symbols, so it works on gaps with intra-file chain references too. |
 
 ---
 
@@ -221,25 +252,35 @@ more structural representation instead.
 
 ## Contributing
 
-The remaining work splits into three buckets:
+The remaining work splits into four buckets:
 
-1. **Promote the 55 raw-blob inline files** (~650 KB). Each one needs
-   its block structure analyzed and broken into typed declarations
-   driven by the game loader. `MVOpeningYamabuki` and the
-   `ITCommonObject` / `IFCommonObject` item tables dominate the byte
-   count; the rest are small.
+1. **Promote the 12 raw-blob inline files** (~128 KB). `ITCommonObject`
+   alone is 78 KB — a complex mixed item table that needs careful per-
+   item structural analysis. The other 11 are small (≤ 17 KB each).
 
 2. **Carve `gap_*` bytes inside typed inline masters** (~1.13 MB
    remaining). These are vertex pools, textures, and palettes
    referenced through segmented addresses the DL walker can't follow
-   yet. Worst offenders are the character model files and the stage
-   File2/File3 files.
+   yet. Worst offenders are the character model files and the Opening /
+   Yamabuki stage assets. Many gaps that have inbound chain references
+   have already been split via `tools/splitGapFull.py`; the remaining
+   bytes mostly live in self-contained internal regions.
 
 3. **Promote the 39 JP-unpromoted inline masters**. This needs
    `extractRelocInc.py` to learn how to walk a typed inline master
    against a version-mismatched binary and emit a companion `.inc.c`
    set sized for that binary — or alternatively commit JP-specific
    inline masters for each one.
+
+4. **Finish typing struct bitfield tails**. The `WPAttributes` 52-byte
+   layout is fully verified (used by 8 hand-typed Special1 / Lizardon
+   files and 11 promoted ITCommonData blobs). `ITAttributes` 72-byte
+   layout has the visible fields (size, angle, ks, dmg, elem) verified
+   via empirical IDO test fixtures, but the bitfield tail at 0x38+
+   doesn't reduce to a clean MSB-first packing — see the comment block
+   above `struct ITAttributes` in `src/it/ittypes.h`. Decoding the rest
+   would unlock typed promotion of the 33 remaining `ITCommonData`
+   `*_ItemAttributes` blobs.
 
 ### Quick reference
 

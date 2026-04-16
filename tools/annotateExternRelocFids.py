@@ -25,7 +25,7 @@ DESC_PATH = os.path.join(PROJECT_DIR, "tools", "relocFileDescriptions.us.txt")
 _nm = {}
 def nm_symbols(fid):
     if fid in _nm: return _nm[fid]
-    obj = os.path.join(BUILD_DIR, f"{fid}.o")
+    obj = os.path.join(BUILD_DIR, ".build", f"{fid}.o")
     if not os.path.exists(obj): _nm[fid] = {}; return {}
     try: r = subprocess.run(["mips-linux-gnu-nm", obj], capture_output=True, text=True, check=True)
     except: _nm[fid] = {}; return {}

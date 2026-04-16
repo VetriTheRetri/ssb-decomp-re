@@ -474,7 +474,7 @@ endif
 # src/relocData/. The texture .inc.c files (in build/) also affect sprite
 # block sizes, so each file's extract stamp is also a dependency.
 RELOCDATA_STRUCT_FILES := $(wildcard src/relocData/*.manifest src/relocData/*.spritelist src/relocData/*/*.sprite.c src/relocData/*/*.data.c src/relocData/*/*.dobjdesc.c src/relocData/*/*.palette.c src/relocData/*/*.mobjsub.c src/relocData/*/*.dl.c src/relocData/*/*.vtx.c)
-RELOCDATA_EXTRACT_STAMPS := $(foreach f,$(RELOC_C_FILES),$(BUILD_DIR)/src/relocData/.extract-$(f).stamp)
+RELOCDATA_EXTRACT_STAMPS := $(foreach f,$(RELOC_C_FILES),$(BUILD_DIR)/src/relocData/.build/.extract-$(f).stamp)
 
 include/reloc_data.h symbols/reloc_data_symbols.$(VERSION).txt &: \
 		./tools/relocFileDescriptions.$(VERSION).txt \
@@ -594,14 +594,14 @@ endif
 # decompressed ROM segment; extractRelocInc pulls raw Vtx / palette /
 # texture bytes for typed Vtx / LUT / Tex wrapper blocks. Both must run
 # before the master C file is compiled, so they hang off the same stamp.
-$(BUILD_DIR)/src/relocData/.extract-%.stamp: assets/relocData/%.vpk0.bin
+$(BUILD_DIR)/src/relocData/.build/.extract-%.stamp: assets/relocData/%.vpk0.bin
 	@mkdir -p $(@D)
 	$(V)$(PYTHON) tools/relocSpriteTool.py extract $* --version $(VERSION) >/dev/null
 	$(V)$(PYTHON) tools/extractRelocInc.py $* >/dev/null
 	$(V)$(PYTHON) tools/previewImagesTextures.py $* 2>/dev/null || true
 	@touch $@
 
-$(BUILD_DIR)/src/relocData/.extract-%.stamp: assets/relocData/%.bin
+$(BUILD_DIR)/src/relocData/.build/.extract-%.stamp: assets/relocData/%.bin
 	@mkdir -p $(@D)
 	$(V)$(PYTHON) tools/relocSpriteTool.py extract $* --version $(VERSION) >/dev/null
 	$(V)$(PYTHON) tools/extractRelocInc.py $* >/dev/null
@@ -661,7 +661,7 @@ RELOC_SPRITE_DEPS_$(1) := $$(wildcard $$(RELOC_DIR_$(1))*.sprite.c) \
 RELOC_PNG_OVERRIDES_$(1) := $$(wildcard $$(RELOC_DIR_$(1))*.png)
 RELOC_INC_OVERRIDES_$(1) := $$(patsubst $$(RELOC_DIR_$(1))%.png,$$(RELOC_BUILD_DIR_$(1))%.inc.c,$$(RELOC_PNG_OVERRIDES_$(1)))
 # Stamp marking that the extract step has populated build/.../<sprite>.inc.c files
-RELOC_STAMP_$(1) := $$(BUILD_DIR)/src/relocData/.extract-$(1).stamp
+RELOC_STAMP_$(1) := $$(BUILD_DIR)/src/relocData/.build/.extract-$(1).stamp
 
 ifneq ($$(RELOC_VC_$(1)),)
   # Version-specific .c override (e.g. *_Name.jp.c) — always wins
@@ -703,7 +703,7 @@ endif
 #   - structural block files (.sprite.c etc.) in src/
 #   - extract stamp (ensures build/.../inc.c files exist)
 #   - any PNG overrides (each one regenerates its build/.../inc.c)
-$$(BUILD_DIR)/src/relocData/$(1).o: $$(RELOC_MASTER_$(1)) $$(RELOC_SPRITE_DEPS_$(1)) $$(RELOC_STAMP_$(1)) $$(RELOC_INC_OVERRIDES_$(1))
+$$(BUILD_DIR)/src/relocData/.build/$(1).o: $$(RELOC_MASTER_$(1)) $$(RELOC_SPRITE_DEPS_$(1)) $$(RELOC_STAMP_$(1)) $$(RELOC_INC_OVERRIDES_$(1))
 	$$(call print_3,Compiling relocData:,$$<,$$@)
 	@mkdir -p $$(@D)
 	$$(V)$$(IDO7) $$(CCFLAGS) $$(OPTFLAGS) -Isrc/relocData -I$$(BUILD_DIR)/src/relocData -o $$@ $$<
@@ -726,7 +726,7 @@ RELOC_RELOC_$(1) := $$(if $$(RELOC_VC_$(1)),,\
 # Compiled .data section goes to build/ to avoid overwriting the original asset.
 # Compressed files (ID < 499) go to .vpk0.bin which then gets compressed to .vpk0;
 # uncompressed files (ID >= 499) go directly to .bin.
-$$(BUILD_DIR)/assets/relocData/$(1).vpk0.bin: $$(BUILD_DIR)/src/relocData/$(1).o
+$$(BUILD_DIR)/assets/relocData/$(1).vpk0.bin: $$(BUILD_DIR)/src/relocData/.build/$(1).o
 	$$(call print_3,Extracting relocData .data:,$$<,$$@)
 	@mkdir -p $$(@D)
 	$$(V)$$(OBJCOPY) -O binary --only-section=.data $$< $$@
@@ -735,7 +735,7 @@ $$(BUILD_DIR)/assets/relocData/$(1).vpk0.bin: $$(BUILD_DIR)/src/relocData/$(1).o
 		$$(PYTHON) tools/fixRelocChain.py $$@ $$(RELOC_RELOC_$(1)) $$< --file-id $(1); \
 	fi
 
-$$(BUILD_DIR)/assets/relocData/$(1).bin: $$(BUILD_DIR)/src/relocData/$(1).o
+$$(BUILD_DIR)/assets/relocData/$(1).bin: $$(BUILD_DIR)/src/relocData/.build/$(1).o
 	$$(call print_3,Extracting relocData .data:,$$<,$$@)
 	@mkdir -p $$(@D)
 	$$(V)$$(OBJCOPY) -O binary --only-section=.data $$< $$@
@@ -750,6 +750,27 @@ $(foreach f,$(RELOC_C_FILES),$(eval $(call RELOC_C_RULE,$(f))))
 .PHONY: verify-reloc
 verify-reloc:
 	@$(PYTHON) tools/verifyRelocOffsets.py $(RELOC_C_FILES)
+
+# reloc-expand-<fid>: generate the human-readable expanded .c + texture PNGs
+# for one relocData file. Depends on the compiled .o because the expander uses
+# nm to resolve chain-encoded pointers to symbol references.
+#
+#   make reloc-expand-86              # single file by fid
+#   make reloc-expand-all             # every file in RELOC_C_FILES
+.PHONY: reloc-expand-% reloc-expand-all reloc-expand-compile
+reloc-expand-%: $(BUILD_DIR)/src/relocData/.build/%.o
+	$(V)$(PYTHON) tools/previewImagesTextures.py $* 2>/dev/null || true
+	$(V)$(PYTHON) tools/expandRelocFile.py $*
+
+# Prerequisite phase: compile every reloc .o in parallel via make.
+reloc-expand-compile: $(foreach f,$(RELOC_C_FILES),$(BUILD_DIR)/src/relocData/.build/$(f).o)
+
+# reloc-expand-all: compile every .o in parallel (make's own -j), then run the
+# expander + previewer on the whole corpus in one shot (each tool's --all
+# walks the list internally, avoiding sub-make overhead per file).
+reloc-expand-all: reloc-expand-compile
+	$(V)$(PYTHON) tools/previewImagesTextures.py --all 2>&1 | tail -5
+	$(V)$(PYTHON) tools/expandRelocFile.py --all 2>&1 | tail -20
 
 # relocData texture management
 # extract-textures: extract PNG previews from relocData sprite files

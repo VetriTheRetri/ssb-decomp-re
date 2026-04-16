@@ -1,16 +1,23 @@
 #!/usr/bin/env python3
 """
-Generate PNG previews for (LUT, Tex) blocks in typed Images files.
+Generate PNG previews for LUT and Tex blocks declared in any relocData .c file.
 
-Uses n64img (splat's dependency) for CI4 → PNG conversion. Each LUT +
-following Tex block(s) are rendered as CI4 images with RGBA5551 palettes.
-Width is guessed from standard N64 texture widths to minimize distortion.
+Parses array declarations in src/relocData/<fid>_<Name>.c to discover LUT/Tex
+blocks by name convention (`d<Name>_LUT_0xXXXX`, `d<Name>_Tex_0xXXXX`), then
+renders each texture as a PNG using the most-recently-declared LUT as palette.
 
-Output goes to build/src/relocData/<Name>/Tex_0xXXXX.ci4.png.
+An optional structured annotation immediately above a Tex decl can override
+the inferred format/dimensions:
+
+    /* @tex fmt=CI4 dim=96x16 lut=dITCommonObject_LUT_0x0058 */
+    u8 dITCommonObject_Tex_0x0080[0x190] = { ... };
+
+Output: build/src/relocData/<Name>/<Tex_0xXXXX>.<fmt>.png
+        build/src/relocData/<Name>/<LUT_0xXXXX>.lut.png (16×1 palette strip)
 
 Usage:
-    tools/previewImagesTextures.py <file_id>     # generate PNGs
-    tools/previewImagesTextures.py --all          # all Images files
+    tools/previewImagesTextures.py <fid> [<fid> ...]
+    tools/previewImagesTextures.py --all
 """
 
 import argparse
@@ -19,100 +26,248 @@ import re
 import struct
 import sys
 
-from n64img.image import CI4
+from n64img.image import CI4, CI8
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RELOC_DIR = os.path.join(PROJECT_DIR, "src", "relocData")
 ASSETS_DIR = os.path.join(PROJECT_DIR, "assets", "relocData")
 BUILD_DIR = os.path.join(PROJECT_DIR, "build", "src", "relocData")
 
-N64_WIDTHS = [8, 16, 24, 32, 48, 64, 96, 128]
+N64_WIDTHS = [8, 16, 24, 32, 48, 64, 96, 128, 160, 192, 256]
 
 
-def rgba5551_to_palette(lut_bytes):
-    """Convert 32 bytes of RGBA5551 u16s to a list of (r,g,b,a) tuples."""
+def rgba5551_to_palette(lut_bytes, entries):
     palette = []
-    for i in range(16):
+    for i in range(entries):
+        if (i + 1) * 2 > len(lut_bytes):
+            break
         val = struct.unpack(">H", lut_bytes[i*2:(i+1)*2])[0]
         r = ((val >> 11) & 0x1F) << 3
         g = ((val >>  6) & 0x1F) << 3
         b = ((val >>  1) & 0x1F) << 3
         a = 255 if (val & 1) else 0
         palette.append((r, g, b, a))
+    while len(palette) < entries:
+        palette.append((0, 0, 0, 0))
     return palette
 
 
-def guess_width(tex_size):
-    total_pixels = tex_size * 2
-    best, best_ratio = 32, 999
+def guess_dims(pixel_count):
+    best, best_ratio = (pixel_count, 1), 999
     for w in N64_WIDTHS:
-        if total_pixels % w != 0:
+        if pixel_count % w != 0:
             continue
-        h = total_pixels // w
+        h = pixel_count // w
         ratio = max(w / h, h / w)
         if ratio < best_ratio:
             best_ratio = ratio
-            best = w
+            best = (w, h)
     return best
 
 
-def process_file(file_id):
-    c_path = target_name = None
+def parse_annotation(line):
+    m = re.search(r"/\*\s*@(\w+)\s+([^*]+?)\*/", line)
+    if not m:
+        return None, {}
+    tag = m.group(1)
+    kvs = {}
+    for kv in re.finditer(r"(\w+)=(\S+)", m.group(2)):
+        kvs[kv.group(1)] = kv.group(2)
+    return tag, kvs
+
+
+def parse_c_blocks(text, target_name):
+    """Walk the .c source and return ordered blocks:
+        [{kind, name, off, size, ann}, ...]
+    where kind is one of lut/tex/vtx/gfx/other.
+    ann carries structured `@<tag>` metadata parsed from the line above."""
+    lines = text.split("\n")
+    blocks = []
+    prefix = f"d{target_name}_"
+    decl_re = re.compile(
+        rf"^\s*(u8|u16|u32|Vtx|Gfx|DObjDesc|void\*?|f32)\s+({re.escape(prefix)}\w+)"
+        rf"(?:\[(0x[0-9A-Fa-f]+|\d+)\])?\s*="
+    )
+    for i, ln in enumerate(lines):
+        m = decl_re.match(ln)
+        if not m:
+            continue
+        ctype, name, size_expr = m.group(1), m.group(2), m.group(3)
+        ann_tag, ann_kvs = (None, {})
+        if i > 0:
+            ann_tag, ann_kvs = parse_annotation(lines[i - 1])
+        off_matches = re.findall(r"_0[xX]([0-9A-Fa-f]+)", name)
+        off = int(off_matches[-1], 16) if off_matches else None
+        short = name[len(prefix):]
+        lower = short.lower()
+        if "_lut_" in lower or "_tlut_" in lower or "_palette" in lower or lower.startswith(("lut_", "tlut_")):
+            kind = "lut"
+        elif "_tex_" in lower or lower.startswith("tex_"):
+            kind = "tex"
+        elif ctype == "Vtx":
+            kind = "vtx"
+        elif ctype == "Gfx":
+            kind = "gfx"
+        else:
+            kind = "other"
+        size = None
+        if size_expr is not None:
+            size = int(size_expr, 16) if size_expr.startswith("0x") else int(size_expr)
+            if ctype == "u16":
+                size *= 2
+            elif ctype == "u32":
+                size *= 4
+        blocks.append({
+            "kind": kind,
+            "ctype": ctype,
+            "name": name,
+            "short": short,
+            "off": off,
+            "size": size,
+            "ann_tag": ann_tag,
+            "ann": ann_kvs,
+            "line": i + 1,
+        })
+    return blocks
+
+
+def infer_tex_format(block, prose_comment):
+    """From an annotation or prose comment, infer (fmt, width, height).
+    Returns None if we can't decide."""
+    ann = block["ann"]
+    if block["ann_tag"] == "tex":
+        fmt = ann.get("fmt", "CI4")
+        dim = ann.get("dim", "")
+        wh = re.match(r"(\d+)x(\d+)", dim)
+        if wh:
+            return fmt, int(wh.group(1)), int(wh.group(2))
+    # prose fallback: "(texture pixels — CI4_96x16)"
+    m = re.search(r"CI(4|8)_(\d+)x(\d+)", prose_comment or "")
+    if m:
+        return f"CI{m.group(1)}", int(m.group(2)), int(m.group(3))
+    # guess from size
+    if block["size"]:
+        fmt = "CI4"
+        pixels = block["size"] * 2
+        w, h = guess_dims(pixels)
+        return fmt, w, h
+    return None
+
+
+def find_c_file(fid):
     for fn in os.listdir(RELOC_DIR):
-        m = re.match(rf"^{file_id}_(\w+)\.c$", fn)
+        m = re.match(rf"^{fid}_(\w+)\.c$", fn)
         if m:
-            c_path = os.path.join(RELOC_DIR, fn)
-            target_name = m.group(1)
-            break
+            return os.path.join(RELOC_DIR, fn), m.group(1)
+    return None, None
+
+
+def process_file(fid):
+    c_path, target_name = find_c_file(fid)
     if c_path is None:
         return
 
+    data_path = None
     for suf in (".vpk0.bin", ".bin"):
-        data_path = os.path.join(ASSETS_DIR, f"{file_id}{suf}")
-        if os.path.exists(data_path):
+        p = os.path.join(ASSETS_DIR, f"{fid}{suf}")
+        if os.path.exists(p):
+            data_path = p
             break
+    if data_path is None:
+        return
     with open(data_path, "rb") as f:
         data = f.read()
 
     with open(c_path) as f:
         text = f.read()
+    lines = text.split("\n")
 
-    blocks = []
-    for m in re.finditer(
-        r"(u16|u8)\s+d\w+_(Lut_0x[0-9A-Fa-f]+)_palette\[16\]|"
-        r"u8\s+d\w+_(Tex_0x[0-9A-Fa-f]+)\[(\d+)\]",
-        text
-    ):
-        if m.group(2):
-            off = int(m.group(2).split("_")[1], 16)
-            blocks.append(("lut", off, 32))
-        elif m.group(3):
-            off = int(m.group(3).split("_")[1], 16)
-            size = int(m.group(4))
-            blocks.append(("tex", off, size))
-    blocks.sort(key=lambda b: b[1])
-    if not blocks:
+    blocks = parse_c_blocks(text, target_name)
+    luts = {b["name"]: b for b in blocks if b["kind"] == "lut"}
+    textures = [b for b in blocks if b["kind"] == "tex"]
+    if not textures and not luts:
         return
 
     out_dir = os.path.join(BUILD_DIR, target_name)
     os.makedirs(out_dir, exist_ok=True)
 
-    current_lut = None
-    count = 0
-    for kind, off, size in blocks:
-        if kind == "lut":
-            current_lut = data[off:off+32]
-        elif kind == "tex" and current_lut is not None and size > 0:
-            width = guess_width(size)
-            height = (size * 2) // width
-            img = CI4(data[off:off+size], width, height)
-            img.palette = rgba5551_to_palette(current_lut)
-            png_path = os.path.join(out_dir, f"Tex_0x{off:04X}.ci4.png")
-            img.write(png_path)
-            count += 1
+    lut_count = 0
+    for name, b in luts.items():
+        if b["off"] is None or b["size"] is None:
+            continue
+        entries = b["size"] // 2
+        palette = rgba5551_to_palette(data[b["off"]:b["off"]+b["size"]], entries)
+        png_path = os.path.join(out_dir, f"LUT_0x{b['off']:04X}.lut.png")
+        raw = bytes(range(entries)) if entries <= 256 else bytes((i & 0xFF) for i in range(entries))
+        img = CI8(raw, entries, 1) if entries > 16 else CI4(_pack_ci4(entries), entries, 1)
+        img.palette = palette
+        img.write(png_path)
+        lut_count += 1
 
-    if count > 0:
-        print(f"fid {file_id} ({target_name}): {count} PNGs → {out_dir}/")
+    tex_count = 0
+    sorted_blocks = sorted([b for b in blocks if b["kind"] in ("lut", "tex")],
+                           key=lambda b: b["off"] or 0)
+    current_lut_name = None
+    for b in sorted_blocks:
+        if b["kind"] == "lut":
+            current_lut_name = b["name"]
+            continue
+        if b["off"] is None or not b["size"]:
+            continue
+        prose = lines[b["line"] - 2] if b["line"] >= 2 else ""
+        info = infer_tex_format(b, prose)
+        if info is None:
+            continue
+        fmt, w, h = info
+        ann_lut = b["ann"].get("lut")
+        lut_name = ann_lut or current_lut_name
+        if lut_name not in luts:
+            continue
+        lut_b = luts[lut_name]
+        lut_bytes = data[lut_b["off"]:lut_b["off"] + lut_b["size"]]
+        tex_bytes = data[b["off"]:b["off"] + b["size"]]
+        expected_bytes = (w * h) // 2 if fmt == "CI4" else w * h
+        if len(tex_bytes) < expected_bytes:
+            # prose dims don't fit the array; re-guess from actual size
+            pixels = len(tex_bytes) * (2 if fmt == "CI4" else 1)
+            w, h = guess_dims(pixels)
+            expected_bytes = (w * h) // 2 if fmt == "CI4" else w * h
+            if len(tex_bytes) < expected_bytes or w * h == 0:
+                continue
+        if fmt == "CI4":
+            img = CI4(tex_bytes[:expected_bytes], w, h)
+            palette = rgba5551_to_palette(lut_bytes, 16)
+        elif fmt == "CI8":
+            img = CI8(tex_bytes[:expected_bytes], w, h)
+            palette = rgba5551_to_palette(lut_bytes, 256)
+        else:
+            continue
+        img.palette = palette
+        png_path = os.path.join(out_dir, f"Tex_0x{b['off']:04X}.{fmt.lower()}.png")
+        img.write(png_path)
+        tex_count += 1
+
+    if tex_count + lut_count > 0:
+        print(f"fid {fid} ({target_name}): {tex_count} textures + {lut_count} LUTs → {out_dir}/")
+
+
+def _pack_ci4(entries):
+    """Pack 0..entries-1 indices into CI4 (2 per byte)."""
+    out = bytearray()
+    for i in range(0, entries, 2):
+        hi = i & 0xF
+        lo = (i + 1) & 0xF if i + 1 < entries else 0
+        out.append((hi << 4) | lo)
+    return bytes(out)
+
+
+def discover_all():
+    fids = []
+    for fn in os.listdir(RELOC_DIR):
+        m = re.match(r"^(\d+)_\w+\.c$", fn)
+        if m:
+            fids.append(int(m.group(1)))
+    return sorted(fids)
 
 
 def main():
@@ -122,7 +277,7 @@ def main():
     args = ap.parse_args()
 
     if args.all:
-        targets = [103, 110, 120, 121, 122, 123]
+        targets = discover_all()
     elif args.file_ids:
         targets = args.file_ids
     else:
@@ -130,7 +285,10 @@ def main():
         sys.exit(1)
 
     for fid in targets:
-        process_file(fid)
+        try:
+            process_file(fid)
+        except Exception as e:
+            print(f"fid {fid}: ERROR {e}", file=sys.stderr)
 
 
 if __name__ == "__main__":

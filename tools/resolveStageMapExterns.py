@@ -84,7 +84,7 @@ def nm(file_id):
     if file_id in _nm_cache:
         return _nm_cache[file_id]
 
-    obj_path = os.path.join(BUILD_DIR, f"{file_id}.o")
+    obj_path = os.path.join(BUILD_DIR, ".build", f"{file_id}.o")
     if not os.path.exists(obj_path):
         print(f"  WARNING: {obj_path} missing — skipping symbol lookup")
         _nm_cache[file_id] = {}

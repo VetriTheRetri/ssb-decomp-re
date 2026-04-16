@@ -39,7 +39,7 @@ _nm_cache = {}
 def nm_symbols(fid):
     if fid in _nm_cache:
         return _nm_cache[fid]
-    obj = os.path.join(BUILD_DIR, f"{fid}.o")
+    obj = os.path.join(BUILD_DIR, ".build", f"{fid}.o")
     if not os.path.exists(obj):
         _nm_cache[fid] = {}
         return {}

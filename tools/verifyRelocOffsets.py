@@ -33,7 +33,7 @@ def verify_file(file_id):
 
     # The Makefile extracts .data to replace the original, so we compare
     # the .o's extracted .data against a backup or use objcopy inline
-    obj_path = os.path.join(BUILD_DIR, f"{file_id}.o")
+    obj_path = os.path.join(BUILD_DIR, ".build", f"{file_id}.o")
 
     if not os.path.exists(original_path):
         print(f"  [{file_id}] SKIP: original not found ({original_path})")

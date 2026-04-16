@@ -1,1418 +1,668 @@
-/* ftMotionCommand script data for relocData file 238 (NessMainMotion) */
-/* File size: 6064 bytes (0x17B0) */
+/* relocData file 238: NessMainMotion — fighter animation command data.
+ *
+ * Block boundaries recovered from src/ft/ftdata.c, which references
+ * dNessMainMotion_0xNNNN symbols at known offsets. Each such offset becomes
+ * a named u32 motion-script block (picked up by genMotionDescOffsets.py).
+ */
 
 #include "relocdata_types.h"
 
-#if defined(REGION_JP)
-
-/* JP binary has a different layout; fold in its chain-encoded
- * bytes as a single raw u8 block. extractRelocInc regenerates
- * the inc.c below from the JP binary whenever JP assets are
- * extracted, and the companion .jp.reloc is empty so
- * fixRelocChain leaves the pre-baked chain bytes alone. */
-u8 dNessMainMotion[6048] = {
-	#include <NessMainMotion/jp_raw.data.inc.c>
-};
-
-#else  /* REGION_US */
-
-#include <ft/ftdef.h>
-#include <ft/fttypes.h>
-
-extern u32 dNessMainMotion_0x0128[];
-
-u32 dNessMainMotion_0x0000[] = {
-	ftMotionCommandSetTexturePartID(1),
-	ftMotionCommandWait(2),
-	ftMotionCommandSetTexturePartID(2),
-	ftMotionCommandWait(4),
-	ftMotionCommandSetTexturePartID(1),
-	ftMotionCommandWait(3),
-	ftMotionCommandSetTexturePartID(0),
-	ftMotionCommandWait(1),
-	ftMotionCommandReturn(),
-};
-
-u32 dNessMainMotion_0x0024[] = {
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandSubroutine(dNessMainMotion_0x0000),
-	ftMotionCommandWait(80),
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandSubroutine(dNessMainMotion_0x0000),
-	ftMotionCommandWait(20),
-	ftMotionCommandSubroutine(dNessMainMotion_0x0000),
-	ftMotionCommandWait(80),
-	ftMotionCommandGoto(dNessMainMotion_0x0024),
-	ftMotionPlayFGM(124),
-	ftMotionCommandLoopBegin(2),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, -120, 0, 60, 0),
-	ftMotionCommandWait(6),
-	ftMotionCommandLoopEnd(),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x007C[] = {
-	ftMotionCommandWaitAsync(2),
-	ftMotionPlayFGM(111),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 60, 0, 0, 0),
-	ftMotionCommandWait(15),
-	ftMotionPlayFGM(111),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 60, 0, 0, 0),
-	ftMotionCommandPauseScript(),
-	ftMotionCommandGoto(dNessMainMotion_0x007C),
-	ftMotionPlayFGM(128),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 60, 0, 0, 0),
-	ftMotionCommandEnd(),
+/* @ 0x0000 (36 bytes) */
+u32 dNessMainMotion_0x0000[9] = {
+	#include <NessMainMotion/NessMainMotion_0x0000.data.inc.c>
 };
-
-u32 dNessMainMotion_0x00D0[] = {
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandWaitAsync(6),
-	ftMotionCommandSetFlag1(1),
-	ftMotionCommandEnd(),
+
+/* @ 0x0024 (88 bytes) */
+u32 dNessMainMotion_0x0024[22] = {
+	#include <NessMainMotion/NessMainMotion_0x0024.data.inc.c>
+};
+
+/* @ 0x007C (84 bytes) */
+u32 dNessMainMotion_0x007C[21] = {
+	#include <NessMainMotion/NessMainMotion_0x007C.data.inc.c>
+};
+
+/* @ 0x00D0 (16 bytes) */
+u32 dNessMainMotion_0x00D0[4] = {
+	#include <NessMainMotion/NessMainMotion_0x00D0.data.inc.c>
+};
+
+/* @ 0x00E0 (52 bytes) */
+u32 dNessMainMotion_0x00E0[13] = {
+	#include <NessMainMotion/NessMainMotion_0x00E0.data.inc.c>
+};
+
+/* @ 0x0114 (20 bytes) */
+u32 dNessMainMotion_0x0114[5] = {
+	#include <NessMainMotion/NessMainMotion_0x0114.data.inc.c>
+};
+
+/* @ 0x0128 (52 bytes) */
+u32 dNessMainMotion_0x0128[13] = {
+	#include <NessMainMotion/NessMainMotion_0x0128.data.inc.c>
+};
+
+/* @ 0x015C (36 bytes) */
+u32 dNessMainMotion_0x015C[9] = {
+	#include <NessMainMotion/NessMainMotion_0x015C.data.inc.c>
+};
+
+/* @ 0x0180 (28 bytes) */
+u32 dNessMainMotion_0x0180[7] = {
+	#include <NessMainMotion/NessMainMotion_0x0180.data.inc.c>
+};
+
+/* @ 0x019C (28 bytes) */
+u32 dNessMainMotion_0x019C[7] = {
+	#include <NessMainMotion/NessMainMotion_0x019C.data.inc.c>
+};
+
+/* @ 0x01B8 (8 bytes) */
+u32 dNessMainMotion_0x01B8[2] = {
+	#include <NessMainMotion/NessMainMotion_0x01B8.data.inc.c>
+};
+
+/* @ 0x01C0 (8 bytes) */
+u32 dNessMainMotion_0x01C0[2] = {
+	#include <NessMainMotion/NessMainMotion_0x01C0.data.inc.c>
+};
+
+/* @ 0x01C8 (28 bytes) */
+u32 dNessMainMotion_0x01C8[7] = {
+	#include <NessMainMotion/NessMainMotion_0x01C8.data.inc.c>
+};
+
+/* @ 0x01E4 (12 bytes) */
+u32 dNessMainMotion_0x01E4[3] = {
+	#include <NessMainMotion/NessMainMotion_0x01E4.data.inc.c>
+};
+
+/* @ 0x01F0 (20 bytes) */
+u32 dNessMainMotion_0x01F0[5] = {
+	#include <NessMainMotion/NessMainMotion_0x01F0.data.inc.c>
+};
+
+/* @ 0x0204 (28 bytes) */
+u32 dNessMainMotion_0x0204[7] = {
+	#include <NessMainMotion/NessMainMotion_0x0204.data.inc.c>
+};
+
+/* @ 0x0220 (12 bytes) */
+u32 dNessMainMotion_0x0220[3] = {
+	#include <NessMainMotion/NessMainMotion_0x0220.data.inc.c>
+};
+
+/* @ 0x022C (12 bytes) */
+u32 dNessMainMotion_0x022C[3] = {
+	#include <NessMainMotion/NessMainMotion_0x022C.data.inc.c>
+};
+
+/* @ 0x0238 (64 bytes) */
+u32 dNessMainMotion_0x0238[16] = {
+	#include <NessMainMotion/NessMainMotion_0x0238.data.inc.c>
+};
+
+/* @ 0x0278 (40 bytes) */
+u32 dNessMainMotion_0x0278[10] = {
+	#include <NessMainMotion/NessMainMotion_0x0278.data.inc.c>
+};
+
+/* @ 0x02A0 (24 bytes) */
+u32 dNessMainMotion_0x02A0[6] = {
+	#include <NessMainMotion/NessMainMotion_0x02A0.data.inc.c>
+};
+
+/* @ 0x02B8 (8 bytes) */
+u32 dNessMainMotion_0x02B8[2] = {
+	#include <NessMainMotion/NessMainMotion_0x02B8.data.inc.c>
+};
+
+/* @ 0x02C0 (16 bytes) */
+u32 dNessMainMotion_0x02C0[4] = {
+	#include <NessMainMotion/NessMainMotion_0x02C0.data.inc.c>
+};
+
+/* @ 0x02D0 (136 bytes) */
+u32 dNessMainMotion_0x02D0[34] = {
+	#include <NessMainMotion/NessMainMotion_0x02D0.data.inc.c>
+};
+
+/* @ 0x0358 (100 bytes) */
+u32 dNessMainMotion_0x0358[25] = {
+	#include <NessMainMotion/NessMainMotion_0x0358.data.inc.c>
+};
+
+/* @ 0x03BC (44 bytes) */
+u32 dNessMainMotion_0x03BC[11] = {
+	#include <NessMainMotion/NessMainMotion_0x03BC.data.inc.c>
+};
+
+/* @ 0x03E8 (48 bytes) */
+u32 dNessMainMotion_0x03E8[12] = {
+	#include <NessMainMotion/NessMainMotion_0x03E8.data.inc.c>
+};
+
+/* @ 0x0418 (68 bytes) */
+u32 dNessMainMotion_0x0418[17] = {
+	#include <NessMainMotion/NessMainMotion_0x0418.data.inc.c>
+};
+
+/* @ 0x045C (56 bytes) */
+u32 dNessMainMotion_0x045C[14] = {
+	#include <NessMainMotion/NessMainMotion_0x045C.data.inc.c>
+};
+
+/* @ 0x0494 (16 bytes) */
+u32 dNessMainMotion_0x0494[4] = {
+	#include <NessMainMotion/NessMainMotion_0x0494.data.inc.c>
+};
+
+/* @ 0x04A4 (20 bytes) */
+u32 dNessMainMotion_0x04A4[5] = {
+	#include <NessMainMotion/NessMainMotion_0x04A4.data.inc.c>
+};
+
+/* @ 0x04B8 (8 bytes) */
+u32 dNessMainMotion_0x04B8[2] = {
+	#include <NessMainMotion/NessMainMotion_0x04B8.data.inc.c>
+};
+
+/* @ 0x04C0 (8 bytes) */
+u32 dNessMainMotion_0x04C0[2] = {
+	#include <NessMainMotion/NessMainMotion_0x04C0.data.inc.c>
+};
+
+/* @ 0x04C8 (8 bytes) */
+u32 dNessMainMotion_0x04C8[2] = {
+	#include <NessMainMotion/NessMainMotion_0x04C8.data.inc.c>
+};
+
+/* @ 0x04D0 (8 bytes) */
+u32 dNessMainMotion_0x04D0[2] = {
+	#include <NessMainMotion/NessMainMotion_0x04D0.data.inc.c>
+};
+
+/* @ 0x04D8 (8 bytes) */
+u32 dNessMainMotion_0x04D8[2] = {
+	#include <NessMainMotion/NessMainMotion_0x04D8.data.inc.c>
+};
+
+/* @ 0x04E0 (8 bytes) */
+u32 dNessMainMotion_0x04E0[2] = {
+	#include <NessMainMotion/NessMainMotion_0x04E0.data.inc.c>
+};
+
+/* @ 0x04E8 (16 bytes) */
+u32 dNessMainMotion_0x04E8[4] = {
+	#include <NessMainMotion/NessMainMotion_0x04E8.data.inc.c>
+};
+
+/* @ 0x04F8 (108 bytes) */
+u32 dNessMainMotion_0x04F8[27] = {
+	#include <NessMainMotion/NessMainMotion_0x04F8.data.inc.c>
+};
+
+/* @ 0x0564 (8 bytes) */
+u32 dNessMainMotion_0x0564[2] = {
+	#include <NessMainMotion/NessMainMotion_0x0564.data.inc.c>
+};
+
+/* @ 0x056C (108 bytes) */
+u32 dNessMainMotion_0x056C[27] = {
+	#include <NessMainMotion/NessMainMotion_0x056C.data.inc.c>
+};
+
+/* @ 0x05D8 (8 bytes) */
+u32 dNessMainMotion_0x05D8[2] = {
+	#include <NessMainMotion/NessMainMotion_0x05D8.data.inc.c>
+};
+
+/* @ 0x05E0 (36 bytes) */
+u32 dNessMainMotion_0x05E0[9] = {
+	#include <NessMainMotion/NessMainMotion_0x05E0.data.inc.c>
+};
+
+/* @ 0x0604 (8 bytes) */
+u32 dNessMainMotion_0x0604[2] = {
+	#include <NessMainMotion/NessMainMotion_0x0604.data.inc.c>
+};
+
+/* @ 0x060C (36 bytes) */
+u32 dNessMainMotion_0x060C[9] = {
+	#include <NessMainMotion/NessMainMotion_0x060C.data.inc.c>
+};
+
+/* @ 0x0630 (12 bytes) */
+u32 dNessMainMotion_0x0630[3] = {
+	#include <NessMainMotion/NessMainMotion_0x0630.data.inc.c>
+};
+
+/* @ 0x063C (12 bytes) */
+u32 dNessMainMotion_0x063C[3] = {
+	#include <NessMainMotion/NessMainMotion_0x063C.data.inc.c>
+};
+
+/* @ 0x0648 (12 bytes) */
+u32 dNessMainMotion_0x0648[3] = {
+	#include <NessMainMotion/NessMainMotion_0x0648.data.inc.c>
+};
+
+/* @ 0x0654 (28 bytes) */
+u32 dNessMainMotion_0x0654[7] = {
+	#include <NessMainMotion/NessMainMotion_0x0654.data.inc.c>
+};
+
+/* @ 0x0670 (28 bytes) */
+u32 dNessMainMotion_0x0670[7] = {
+	#include <NessMainMotion/NessMainMotion_0x0670.data.inc.c>
+};
+
+/* @ 0x068C (40 bytes) */
+u32 dNessMainMotion_0x068C[10] = {
+	#include <NessMainMotion/NessMainMotion_0x068C.data.inc.c>
+};
+
+/* @ 0x06B4 (28 bytes) */
+u32 dNessMainMotion_0x06B4[7] = {
+	#include <NessMainMotion/NessMainMotion_0x06B4.data.inc.c>
+};
+
+/* @ 0x06D0 (32 bytes) */
+u32 dNessMainMotion_0x06D0[8] = {
+	#include <NessMainMotion/NessMainMotion_0x06D0.data.inc.c>
+};
+
+/* @ 0x06F0 (44 bytes) */
+u32 dNessMainMotion_0x06F0[11] = {
+	#include <NessMainMotion/NessMainMotion_0x06F0.data.inc.c>
+};
+
+/* @ 0x071C (32 bytes) */
+u32 dNessMainMotion_0x071C[8] = {
+	#include <NessMainMotion/NessMainMotion_0x071C.data.inc.c>
+};
+
+/* @ 0x073C (28 bytes) */
+u32 dNessMainMotion_0x073C[7] = {
+	#include <NessMainMotion/NessMainMotion_0x073C.data.inc.c>
+};
+
+/* @ 0x0758 (40 bytes) */
+u32 dNessMainMotion_0x0758[10] = {
+	#include <NessMainMotion/NessMainMotion_0x0758.data.inc.c>
+};
+
+/* @ 0x0780 (28 bytes) */
+u32 dNessMainMotion_0x0780[7] = {
+	#include <NessMainMotion/NessMainMotion_0x0780.data.inc.c>
+};
+
+/* @ 0x079C (32 bytes) */
+u32 dNessMainMotion_0x079C[8] = {
+	#include <NessMainMotion/NessMainMotion_0x079C.data.inc.c>
+};
+
+/* @ 0x07BC (44 bytes) */
+u32 dNessMainMotion_0x07BC[11] = {
+	#include <NessMainMotion/NessMainMotion_0x07BC.data.inc.c>
+};
+
+/* @ 0x07E8 (32 bytes) */
+u32 dNessMainMotion_0x07E8[8] = {
+	#include <NessMainMotion/NessMainMotion_0x07E8.data.inc.c>
+};
+
+/* @ 0x0808 (12 bytes) */
+u32 dNessMainMotion_0x0808[3] = {
+	#include <NessMainMotion/NessMainMotion_0x0808.data.inc.c>
+};
+
+/* @ 0x0814 (12 bytes) */
+u32 dNessMainMotion_0x0814[3] = {
+	#include <NessMainMotion/NessMainMotion_0x0814.data.inc.c>
+};
+
+/* @ 0x0820 (12 bytes) */
+u32 dNessMainMotion_0x0820[3] = {
+	#include <NessMainMotion/NessMainMotion_0x0820.data.inc.c>
+};
+
+/* @ 0x082C (52 bytes) */
+u32 dNessMainMotion_0x082C[13] = {
+	#include <NessMainMotion/NessMainMotion_0x082C.data.inc.c>
+};
+
+/* @ 0x0860 (52 bytes) */
+u32 dNessMainMotion_0x0860[13] = {
+	#include <NessMainMotion/NessMainMotion_0x0860.data.inc.c>
+};
+
+/* @ 0x0894 (60 bytes) */
+u32 dNessMainMotion_0x0894[15] = {
+	#include <NessMainMotion/NessMainMotion_0x0894.data.inc.c>
+};
+
+/* @ 0x08D0 (40 bytes) */
+u32 dNessMainMotion_0x08D0[10] = {
+	#include <NessMainMotion/NessMainMotion_0x08D0.data.inc.c>
+};
+
+/* @ 0x08F8 (24 bytes) */
+u32 dNessMainMotion_0x08F8[6] = {
+	#include <NessMainMotion/NessMainMotion_0x08F8.data.inc.c>
+};
+
+/* @ 0x0910 (36 bytes) */
+u32 dNessMainMotion_0x0910[9] = {
+	#include <NessMainMotion/NessMainMotion_0x0910.data.inc.c>
+};
+
+/* @ 0x0934 (56 bytes) */
+u32 dNessMainMotion_0x0934[14] = {
+	#include <NessMainMotion/NessMainMotion_0x0934.data.inc.c>
+};
+
+/* @ 0x096C (28 bytes) */
+u32 dNessMainMotion_0x096C[7] = {
+	#include <NessMainMotion/NessMainMotion_0x096C.data.inc.c>
+};
+
+/* @ 0x0988 (24 bytes) */
+u32 dNessMainMotion_0x0988[6] = {
+	#include <NessMainMotion/NessMainMotion_0x0988.data.inc.c>
+};
+
+/* @ 0x09A0 (36 bytes) */
+u32 dNessMainMotion_0x09A0[9] = {
+	#include <NessMainMotion/NessMainMotion_0x09A0.data.inc.c>
+};
+
+/* @ 0x09C4 (40 bytes) */
+u32 dNessMainMotion_0x09C4[10] = {
+	#include <NessMainMotion/NessMainMotion_0x09C4.data.inc.c>
+};
+
+/* @ 0x09EC (28 bytes) */
+u32 dNessMainMotion_0x09EC[7] = {
+	#include <NessMainMotion/NessMainMotion_0x09EC.data.inc.c>
+};
+
+/* @ 0x0A08 (28 bytes) */
+u32 dNessMainMotion_0x0A08[7] = {
+	#include <NessMainMotion/NessMainMotion_0x0A08.data.inc.c>
+};
+
+/* @ 0x0A24 (48 bytes) */
+u32 dNessMainMotion_0x0A24[12] = {
+	#include <NessMainMotion/NessMainMotion_0x0A24.data.inc.c>
+};
+
+/* @ 0x0A54 (52 bytes) */
+u32 dNessMainMotion_0x0A54[13] = {
+	#include <NessMainMotion/NessMainMotion_0x0A54.data.inc.c>
+};
+
+/* @ 0x0A88 (32 bytes) */
+u32 dNessMainMotion_0x0A88[8] = {
+	#include <NessMainMotion/NessMainMotion_0x0A88.data.inc.c>
+};
+
+/* @ 0x0AA8 (16 bytes) */
+u32 dNessMainMotion_0x0AA8[4] = {
+	#include <NessMainMotion/NessMainMotion_0x0AA8.data.inc.c>
+};
+
+/* @ 0x0AB8 (16 bytes) */
+u32 dNessMainMotion_0x0AB8[4] = {
+	#include <NessMainMotion/NessMainMotion_0x0AB8.data.inc.c>
+};
+
+/* @ 0x0AC8 (32 bytes) */
+u32 dNessMainMotion_0x0AC8[8] = {
+	#include <NessMainMotion/NessMainMotion_0x0AC8.data.inc.c>
+};
+
+/* @ 0x0AE8 (132 bytes) */
+u32 dNessMainMotion_0x0AE8[33] = {
+	#include <NessMainMotion/NessMainMotion_0x0AE8.data.inc.c>
+};
+
+/* @ 0x0B6C (8 bytes) */
+u32 dNessMainMotion_0x0B6C[2] = {
+	#include <NessMainMotion/NessMainMotion_0x0B6C.data.inc.c>
+};
+
+/* @ 0x0B74 (48 bytes) */
+u32 dNessMainMotion_0x0B74[12] = {
+	#include <NessMainMotion/NessMainMotion_0x0B74.data.inc.c>
+};
+
+/* @ 0x0BA4 (96 bytes) */
+u32 dNessMainMotion_0x0BA4[24] = {
+	#include <NessMainMotion/NessMainMotion_0x0BA4.data.inc.c>
+};
+
+/* @ 0x0C04 (128 bytes) */
+u32 dNessMainMotion_0x0C04[32] = {
+	#include <NessMainMotion/NessMainMotion_0x0C04.data.inc.c>
+};
+
+/* @ 0x0C84 (236 bytes) */
+u32 dNessMainMotion_0x0C84[59] = {
+	#include <NessMainMotion/NessMainMotion_0x0C84.data.inc.c>
+};
+
+/* @ 0x0D70 (180 bytes) */
+u32 dNessMainMotion_0x0D70[45] = {
+	#include <NessMainMotion/NessMainMotion_0x0D70.data.inc.c>
+};
+
+/* @ 0x0E24 (12 bytes) */
+u32 dNessMainMotion_0x0E24[3] = {
+	#include <NessMainMotion/NessMainMotion_0x0E24.data.inc.c>
+};
+
+/* @ 0x0E30 (12 bytes) */
+u32 dNessMainMotion_0x0E30[3] = {
+	#include <NessMainMotion/NessMainMotion_0x0E30.data.inc.c>
+};
+
+/* @ 0x0E3C (12 bytes) */
+u32 dNessMainMotion_0x0E3C[3] = {
+	#include <NessMainMotion/NessMainMotion_0x0E3C.data.inc.c>
+};
+
+/* @ 0x0E48 (20 bytes) */
+u32 dNessMainMotion_0x0E48[5] = {
+	#include <NessMainMotion/NessMainMotion_0x0E48.data.inc.c>
+};
+
+/* @ 0x0E5C (20 bytes) */
+u32 dNessMainMotion_0x0E5C[5] = {
+	#include <NessMainMotion/NessMainMotion_0x0E5C.data.inc.c>
+};
+
+/* @ 0x0E70 (32 bytes) */
+u32 dNessMainMotion_0x0E70[8] = {
+	#include <NessMainMotion/NessMainMotion_0x0E70.data.inc.c>
 };
 
-u32 dNessMainMotion_0x00E0[] = {
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandEffect(0, 16, 0, 0, 0, 120, 0, 0, 0),
-	ftMotionCommandWaitAsync(12),
-	ftMotionCommandSetFlag1(1),
-	ftMotionCommandSetFlag2(1),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x0114[] = {
-	ftMotionCommandSetHitStatusAll(3),
-	ftMotionCommandWaitAsync(2),
-	ftMotionCommandSetHitStatusAll(1),
-	ftMotionCommandGoto(dNessMainMotion_0x0128),
-};
-
-u32 dNessMainMotion_0x0128[] = {
-	ftMotionPlayFGM(100),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandLoopBegin(4),
-	ftMotionCommandEffect(0, 41, 0, 0, 0, 0, 100, 100, 100),
-	ftMotionCommandWait(6),
-	ftMotionCommandLoopEnd(),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x015C[] = {
-	ftMotionPlayFGM(222),
-	ftMotionCommandLoopBegin(4),
-	ftMotionCommandEffect(0, 41, 0, 0, 0, 0, 100, 100, 100),
-	ftMotionCommandWait(6),
-	ftMotionCommandLoopEnd(),
-	ftMotionCommandEnd(),
+/* @ 0x0E90 (72 bytes) */
+u32 dNessMainMotion_0x0E90[18] = {
+	#include <NessMainMotion/NessMainMotion_0x0E90.data.inc.c>
 };
 
-u32 dNessMainMotion_0x0180[] = {
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionPlayFGM(78),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, -60, 0, 0, 0),
-	ftMotionCommandEnd(),
+/* @ 0x0ED8 (72 bytes) */
+u32 dNessMainMotion_0x0ED8[18] = {
+	#include <NessMainMotion/NessMainMotion_0x0ED8.data.inc.c>
 };
 
-u32 dNessMainMotion_0x019C[] = {
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionPlayFGM(78),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEnd(),
+/* @ 0x0F20 (84 bytes) */
+u32 dNessMainMotion_0x0F20[21] = {
+	#include <NessMainMotion/NessMainMotion_0x0F20.data.inc.c>
 };
 
-u32 dNessMainMotion_0x01B8[] = {
-	ftMotionPlayVoice(452),
-	ftMotionCommandEnd(),
+/* @ 0x0F74 (88 bytes) */
+u32 dNessMainMotion_0x0F74[22] = {
+	#include <NessMainMotion/NessMainMotion_0x0F74.data.inc.c>
 };
 
-u32 dNessMainMotion_0x01C0[] = {
-	ftMotionPlayFGM(636),
-	ftMotionCommandEnd(),
+/* @ 0x0FCC (60 bytes) */
+u32 dNessMainMotion_0x0FCC[15] = {
+	#include <NessMainMotion/NessMainMotion_0x0FCC.data.inc.c>
 };
 
-u32 dNessMainMotion_0x01C8[] = {
-	ftMotionPlayFGM(636),
-	ftMotionCommandSetHitStatusAll(3),
-	ftMotionCommandWaitAsync(2),
-	ftMotionCommandSetHitStatusAll(1),
-	ftMotionCommandEnd(),
+/* @ 0x1008 (60 bytes) */
+u32 dNessMainMotion_0x1008[15] = {
+	#include <NessMainMotion/NessMainMotion_0x1008.data.inc.c>
 };
 
-u32 dNessMainMotion_0x01DC[] = {
-	ftMotionCommandSetTexturePartID(4),
-	ftMotionCommandReturn(),
+/* @ 0x1044 (60 bytes) */
+u32 dNessMainMotion_0x1044[15] = {
+	#include <NessMainMotion/NessMainMotion_0x1044.data.inc.c>
 };
 
-u32 dNessMainMotion_0x01E4[] = {
-	ftMotionCommandSubroutine(dNessMainMotion_0x01DC),
-	ftMotionCommandEnd(),
+/* @ 0x1080 (72 bytes) */
+u32 dNessMainMotion_0x1080[18] = {
+	#include <NessMainMotion/NessMainMotion_0x1080.data.inc.c>
 };
 
-u32 dNessMainMotion_0x01F0[] = {
-	ftMotionCommandSubroutine(dNessMainMotion_0x01DC),
-	ftMotionCommandSetDamageThrown(0x0758), /* extern */
-	ftMotionCommandEnd(),
+/* @ 0x10C8 (112 bytes) */
+u32 dNessMainMotion_0x10C8[28] = {
+	#include <NessMainMotion/NessMainMotion_0x10C8.data.inc.c>
 };
 
-u32 dNessMainMotion_0x0204[] = {
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionPlayFGM(78),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEnd(),
+/* @ 0x1138 (112 bytes) */
+u32 dNessMainMotion_0x1138[28] = {
+	#include <NessMainMotion/NessMainMotion_0x1138.data.inc.c>
 };
 
-u32 dNessMainMotion_0x0220[] = {
-	ftMotionCommandWaitAsync(8),
-	ftMotionCommandSetHitStatusAll(3),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x022C[] = {
-	ftMotionCommandWaitAsync(24),
-	ftMotionCommandSetHitStatusAll(1),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x0238[] = {
-	ftMotionCommandSetTexturePartID(4),
-	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(-1, 33, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandWait(2),
-	ftMotionCommandSetSlopeContour(0),
-	ftMotionCommandWaitAsync(24),
-	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandWait(1),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x0278[] = {
-	ftMotionCommandGoto(dNessMainMotion_0x0238),
-};
-
-u32 dNessMainMotion_0x0280[] = {
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandSetHitStatusAll(3),
-	ftMotionCommandWaitAsync(20),
-	ftMotionCommandSetHitStatusAll(1),
-	ftMotionCommandReturn(),
-};
-
-u32 dNessMainMotion_0x02A0[] = {
-	ftMotionCommandSetHitStatusAll(3),
-	ftMotionCommandWaitAsync(22),
-	ftMotionCommandSetHitStatusAll(1),
-	ftMotionCommandWaitAsync(2),
-	ftMotionCommandSetFlag1(1),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x02B8[] = {
-	ftMotionCommandGoto(dNessMainMotion_0x02A0),
-};
-
-u32 dNessMainMotion_0x02C0[] = {
-	ftMotionPlayFGM(11),
-	ftMotionCommandSubroutine(dNessMainMotion_0x0280),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x02D0[] = {
-	ftMotionCommandGoto(dNessMainMotion_0x02C0),
-	ftMotionCommandGoto(dNessMainMotion_0x02C0),
-	ftMotionCommandGoto(dNessMainMotion_0x02C0),
-	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandSetHitStatusAll(3),
-	ftMotionCommandWaitAsync(20),
-	ftMotionCommandSetTexturePartID(4),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandMakeAttackColl(0, 0, 12, 6, 0, 0, 200, 0, 100, 0, 361, 100, 90, 3, 1, 1, 1, 0),
-	ftMotionCommandWait(2),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandWait(3),
-	ftMotionCommandMakeAttackColl(0, 0, 12, 6, 0, 0, 200, 0, 100, 0, 361, 100, 90, 3, 1, 1, 1, 0),
-	ftMotionCommandSetHitStatusAll(1),
-	ftMotionCommandWait(2),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandWait(14),
-	ftMotionCommandSetTexturePartID(0),
-	ftMotionCommandEnd(),
-};
+/* @ 0x11A8 (132 bytes) */
+u32 dNessMainMotion_0x11A8[33] = {
+	#include <NessMainMotion/NessMainMotion_0x11A8.data.inc.c>
+};
+
+/* @ 0x122C (80 bytes) */
+u32 dNessMainMotion_0x122C[20] = {
+	#include <NessMainMotion/NessMainMotion_0x122C.data.inc.c>
+};
 
-u32 dNessMainMotion_0x0358[] = {
-	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandSetHitStatusAll(3),
-	ftMotionCommandWaitAsync(20),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandMakeAttackColl(0, 0, 26, 6, 0, 0, 180, 70, -50, 60, 361, 100, 90, 3, 1, 1, 1, 0),
-	ftMotionCommandWait(2),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandWait(2),
-	ftMotionCommandMakeAttackColl(0, 0, 26, 6, 0, 0, 180, 70, -50, 60, 361, 100, 90, 3, 1, 1, 1, 0),
-	ftMotionCommandSetHitStatusAll(1),
-	ftMotionCommandWait(2),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandEnd(),
+/* @ 0x127C (152 bytes) */
+u32 dNessMainMotion_0x127C[38] = {
+	#include <NessMainMotion/NessMainMotion_0x127C.data.inc.c>
 };
 
-u32 dNessMainMotion_0x03BC[] = {
-	ftMotionCommandMakeRumble(0, 9),
-	ftMotionPlayVoice(443),
-	ftMotionPlayFGM(17),
-	ftMotionCommandEffect(0, 31, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandSetHitStatusAll(3),
-	ftMotionCommandWaitAsync(24),
-	ftMotionCommandSetHitStatusAll(1),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x03E8[] = {
-	ftMotionCommandMakeRumble(0, 7),
-	ftMotionPlayVoice(443),
-	ftMotionPlayFGM(11),
-	ftMotionCommandEffect(0, 31, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandSetHitStatusAll(3),
-	ftMotionCommandWaitAsync(20),
-	ftMotionCommandSetHitStatusAll(1),
-	ftMotionCommandStopRumble(7),
-	ftMotionCommandEnd(),
+/* @ 0x1314 (76 bytes) */
+u32 dNessMainMotion_0x1314[19] = {
+	#include <NessMainMotion/NessMainMotion_0x1314.data.inc.c>
 };
 
-u32 dNessMainMotion_0x0418[] = {
-	ftMotionCommandGoto(dNessMainMotion_0x03E8),
-	ftMotionPlayFGM(11),
-	ftMotionCommandEffect(0, 31, 0, 0, 120, 0, 0, 0, 0),
-	ftMotionCommandWaitAsync(4),
-	ftMotionCommandEffect(0, 16, 0, 100, 0, 0, 0, 0, 0),
-	ftMotionCommandSetHitStatusAll(3),
-	ftMotionCommandWaitAsync(20),
-	ftMotionCommandSetHitStatusAll(1),
-	ftMotionCommandSetFlag1(1),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x045C[] = {
-	ftMotionPlayFGM(11),
-	ftMotionCommandEffect(0, 31, 0, 0, 120, 0, 0, 0, 0),
-	ftMotionCommandWaitAsync(4),
-	ftMotionCommandEffect(0, 15, 0, -100, 0, 0, 0, 0, 0),
-	ftMotionCommandSetHitStatusAll(3),
-	ftMotionCommandWaitAsync(20),
-	ftMotionCommandSetHitStatusAll(1),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x0494[] = {
-	ftMotionCommandSetTexturePartID(4),
-	ftMotionCommandSetHitStatusAll(3),
-	ftMotionPlayFGM(19),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x04A4[] = {
-	ftMotionCommandSetTexturePartID(4),
-	ftMotionCommandSetHitStatusAll(3),
-	ftMotionCommandWait(60),
-	ftMotionCommandSetHitStatusAll(1),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x04B8[] = {
-	ftMotionCommandSetHitStatusAll(3),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x04C0[] = {
-	ftMotionCommandSetHitStatusAll(3),
-	ftMotionCommandEnd(),
+/* @ 0x1360 (36 bytes) */
+u32 dNessMainMotion_0x1360[9] = {
+	#include <NessMainMotion/NessMainMotion_0x1360.data.inc.c>
 };
 
-u32 dNessMainMotion_0x04C8[] = {
-	ftMotionCommandSetHitStatusAll(3),
-	ftMotionCommandEnd(),
+/* @ 0x1384 (112 bytes) */
+u32 dNessMainMotion_0x1384[28] = {
+	#include <NessMainMotion/NessMainMotion_0x1384.data.inc.c>
 };
 
-u32 dNessMainMotion_0x04D0[] = {
-	ftMotionCommandSetHitStatusAll(3),
-	ftMotionCommandEnd(),
+/* @ 0x13F4 (28 bytes) */
+u32 dNessMainMotion_0x13F4[7] = {
+	#include <NessMainMotion/NessMainMotion_0x13F4.data.inc.c>
 };
 
-u32 dNessMainMotion_0x04D8[] = {
-	ftMotionCommandSetHitStatusAll(3),
-	ftMotionCommandEnd(),
+/* @ 0x1410 (68 bytes) */
+u32 dNessMainMotion_0x1410[17] = {
+	#include <NessMainMotion/NessMainMotion_0x1410.data.inc.c>
 };
 
-u32 dNessMainMotion_0x04E0[] = {
-	ftMotionCommandSetHitStatusAll(3),
-	ftMotionCommandEnd(),
+/* @ 0x1454 (64 bytes) */
+u32 dNessMainMotion_0x1454[16] = {
+	#include <NessMainMotion/NessMainMotion_0x1454.data.inc.c>
 };
 
-u32 dNessMainMotion_0x04E8[] = {
-	ftMotionCommandSetHitStatusAll(3),
-	ftMotionCommandWaitAsync(36),
-	ftMotionCommandSetHitStatusAll(1),
-	ftMotionCommandEnd(),
+/* @ 0x1494 (24 bytes) */
+u32 dNessMainMotion_0x1494[6] = {
+	#include <NessMainMotion/NessMainMotion_0x1494.data.inc.c>
 };
 
-u32 dNessMainMotion_0x04F8[] = {
-	ftMotionCommandEffect(0, 31, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandSetHitStatusAll(3),
-	ftMotionPlayVoice(443),
-	ftMotionCommandWaitAsync(4),
-	ftMotionCommandMakeAttackColl(0, 0, 28, 6, 0, 0, 280, 0, 0, 0, 361, 100, 100, 3, 0, 1, 1, 0),
-	ftMotionCommandMakeAttackColl(1, 0, 5, 6, 0, 0, 150, 0, 0, 0, 361, 100, 100, 3, 0, 1, 1, 0),
-	ftMotionCommandPlayFGMStoreInfo(42),
-	ftMotionCommandEffect(0, 19, 0, 0, -80, -180, 0, 0, 0),
-	ftMotionCommandWait(2),
-	ftMotionCommandSetHitStatusAll(1),
-	ftMotionCommandWait(4),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
+/* @ 0x14AC (12 bytes) */
+u32 dNessMainMotion_0x14AC[3] = {
+	#include <NessMainMotion/NessMainMotion_0x14AC.data.inc.c>
 };
 
-u32 dNessMainMotion_0x0564[] = {
-	ftMotionCommandSetHitStatusAll(3),
-	ftMotionCommandEnd(),
+/* @ 0x14B8 (104 bytes) */
+u32 dNessMainMotion_0x14B8[26] = {
+	#include <NessMainMotion/NessMainMotion_0x14B8.data.inc.c>
 };
 
-u32 dNessMainMotion_0x056C[] = {
-	ftMotionCommandEffect(0, 31, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandSetHitStatusAll(3),
-	ftMotionPlayVoice(443),
-	ftMotionCommandWaitAsync(3),
-	ftMotionCommandMakeAttackColl(0, 0, 5, 6, 0, 0, 150, 0, 0, 0, 361, 100, 100, 3, 0, 1, 1, 0),
-	ftMotionCommandMakeAttackColl(1, 0, 28, 6, 0, 0, 280, 80, 0, 0, 361, 100, 100, 3, 0, 1, 1, 0),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
-	ftMotionCommandPlayFGMStoreInfo(42),
-	ftMotionCommandWait(2),
-	ftMotionCommandSetHitStatusAll(1),
-	ftMotionCommandWait(4),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
+/* @ 0x1520 (4 bytes) */
+u32 dNessMainMotion_0x1520[1] = {
+	#include <NessMainMotion/NessMainMotion_0x1520.data.inc.c>
 };
 
-u32 dNessMainMotion_0x05D8[] = {
-	ftMotionCommandSetHitStatusAll(3),
-	ftMotionCommandEnd(),
+/* @ 0x1524 (104 bytes) */
+u32 dNessMainMotion_0x1524[26] = {
+	#include <NessMainMotion/NessMainMotion_0x1524.data.inc.c>
 };
 
-u32 dNessMainMotion_0x05E0[] = {
-	ftMotionPlayFGM(11),
-	ftMotionCommandEffect(0, 16, 0, 100, 0, 0, 0, 0, 0),
-	ftMotionCommandSetHitStatusAll(3),
-	ftMotionCommandWait(15),
-	ftMotionCommandSetHitStatusAll(1),
-	ftMotionCommandEnd(),
+/* @ 0x158C (92 bytes) */
+u32 dNessMainMotion_0x158C[23] = {
+	#include <NessMainMotion/NessMainMotion_0x158C.data.inc.c>
 };
 
-u32 dNessMainMotion_0x0604[] = {
-	ftMotionCommandSetHitStatusAll(3),
-	ftMotionCommandEnd(),
+/* @ 0x15E8 (80 bytes) */
+u32 dNessMainMotion_0x15E8[20] = {
+	#include <NessMainMotion/NessMainMotion_0x15E8.data.inc.c>
 };
 
-u32 dNessMainMotion_0x060C[] = {
-	ftMotionPlayFGM(11),
-	ftMotionCommandEffect(0, 16, 0, 100, 0, 0, 0, 0, 0),
-	ftMotionCommandSetHitStatusAll(3),
-	ftMotionCommandWait(15),
-	ftMotionCommandSetHitStatusAll(1),
-	ftMotionCommandEnd(),
+/* @ 0x1638 (28 bytes) */
+u32 dNessMainMotion_0x1638[7] = {
+	#include <NessMainMotion/NessMainMotion_0x1638.data.inc.c>
 };
 
-u32 dNessMainMotion_0x0630[] = {
-	ftMotionCommandWaitAsync(2),
-	ftMotionCommandSetFlag1(1),
-	ftMotionCommandEnd(),
+/* @ 0x1654 (8 bytes) */
+u32 dNessMainMotion_0x1654[2] = {
+	#include <NessMainMotion/NessMainMotion_0x1654.data.inc.c>
 };
 
-u32 dNessMainMotion_0x063C[] = {
-	ftMotionCommandWaitAsync(4),
-	ftMotionCommandSetFlag1(1),
-	ftMotionCommandEnd(),
+/* @ 0x165C (84 bytes) */
+u32 dNessMainMotion_0x165C[21] = {
+	#include <NessMainMotion/NessMainMotion_0x165C.data.inc.c>
 };
 
-u32 dNessMainMotion_0x0648[] = {
-	ftMotionCommandWaitAsync(8),
-	ftMotionCommandSetFlag0(1),
-	ftMotionCommandEnd(),
+/* @ 0x16B0 (56 bytes) */
+u32 dNessMainMotion_0x16B0[14] = {
+	#include <NessMainMotion/NessMainMotion_0x16B0.data.inc.c>
 };
 
-u32 dNessMainMotion_0x0654[] = {
-	ftMotionCommandWaitAsync(4),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandSetFlag0(1),
-	ftMotionCommandEnd(),
+/* @ 0x16E8 (16 bytes) */
+u32 dNessMainMotion_0x16E8[4] = {
+	#include <NessMainMotion/NessMainMotion_0x16E8.data.inc.c>
 };
 
-u32 dNessMainMotion_0x0670[] = {
-	ftMotionCommandWaitAsync(9),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandSetFlag0(1),
-	ftMotionCommandEnd(),
+/* @ 0x16F8 (32 bytes) */
+u32 dNessMainMotion_0x16F8[8] = {
+	#include <NessMainMotion/NessMainMotion_0x16F8.data.inc.c>
 };
 
-u32 dNessMainMotion_0x068C[] = {
-	ftMotionCommandSetFlag3(6),
-	ftMotionCommandGoto(dNessMainMotion_0x0670),
-	ftMotionCommandWaitAsync(8),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandSetFlag0(1),
-	ftMotionCommandEnd(),
+/* @ 0x1718 (16 bytes) */
+u32 dNessMainMotion_0x1718[4] = {
+	#include <NessMainMotion/NessMainMotion_0x1718.data.inc.c>
 };
 
-u32 dNessMainMotion_0x06B4[] = {
-	ftMotionCommandWaitAsync(4),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandSetFlag0(1),
-	ftMotionCommandEnd(),
+/* @ 0x1728 (88 bytes) */
+u32 dNessMainMotion_0x1728[22] = {
+	#include <NessMainMotion/NessMainMotion_0x1728.data.inc.c>
 };
 
-u32 dNessMainMotion_0x06D0[] = {
-	ftMotionCommandWaitAsync(9),
-	ftMotionCommandPlaySmashVoice(0),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
-	ftMotionCommandSetFlag0(1),
-	ftMotionCommandEnd(),
+/* @ 0x1780 (8 bytes) */
+u32 dNessMainMotion_0x1780[2] = {
+	#include <NessMainMotion/NessMainMotion_0x1780.data.inc.c>
 };
 
-u32 dNessMainMotion_0x06F0[] = {
-	ftMotionCommandSetFlag3(6),
-	ftMotionCommandGoto(dNessMainMotion_0x06D0),
-	ftMotionCommandWaitAsync(8),
-	ftMotionCommandPlaySmashVoice(0),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandSetFlag0(1),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x071C[] = {
-	ftMotionCommandWaitAsync(4),
-	ftMotionCommandPlaySmashVoice(0),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandSetFlag0(1),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x073C[] = {
-	ftMotionCommandWaitAsync(7),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandSetFlag0(1),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x0758[] = {
-	ftMotionCommandSetFlag3(4),
-	ftMotionCommandGoto(dNessMainMotion_0x073C),
-	ftMotionCommandWaitAsync(6),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandSetFlag0(1),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x0780[] = {
-	ftMotionCommandWaitAsync(6),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandSetFlag0(1),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x079C[] = {
-	ftMotionCommandWaitAsync(6),
-	ftMotionCommandPlaySmashVoice(0),
-	ftMotionCommandEffect(0, 16, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandSetFlag0(1),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x07BC[] = {
-	ftMotionCommandSetFlag3(4),
-	ftMotionCommandGoto(dNessMainMotion_0x079C),
-	ftMotionCommandWaitAsync(6),
-	ftMotionCommandPlaySmashVoice(0),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandSetFlag0(1),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x07E8[] = {
-	ftMotionCommandWaitAsync(6),
-	ftMotionCommandPlaySmashVoice(0),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandSetFlag0(1),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x0808[] = {
-	ftMotionCommandWaitAsync(18),
-	ftMotionCommandSetFlag0(1),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x0814[] = {
-	ftMotionCommandSetFlag3(9),
-	ftMotionCommandGoto(dNessMainMotion_0x0808),
-};
-
-u32 dNessMainMotion_0x0820[] = {
-	ftMotionCommandWaitAsync(18),
-	ftMotionCommandSetFlag0(1),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x082C[] = {
-	ftMotionCommandSetFlag3(9),
-	ftMotionCommandGoto(dNessMainMotion_0x0820),
-	ftMotionCommandWaitAsync(2),
-	ftMotionCommandSetAfterImage(1, 0),
-	ftMotionCommandWaitAsync(4),
-	ftMotionCommandSubroutine(0x0000), /* extern */
-	ftMotionCommandWait(4),
-	ftMotionCommandSetAfterImage(0, -1),
-	ftMotionCommandWait(4),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x0860[] = {
-	ftMotionCommandWaitAsync(7),
-	ftMotionCommandSetAfterImage(1, 0),
-	ftMotionCommandWaitAsync(9),
-	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandSubroutine(0x0064), /* extern */
-	ftMotionCommandWait(4),
-	ftMotionCommandSetAfterImage(0, -1),
-	ftMotionCommandWait(5),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandWaitAsync(36),
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x0894[] = {
-	ftMotionCommandPlaySmashVoice(0),
-	ftMotionCommandWaitAsync(19),
-	ftMotionCommandSetAfterImage(1, 0),
-	ftMotionCommandWaitAsync(20),
-	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandWaitAsync(22),
-	ftMotionCommandSubroutine(0x00C8), /* extern */
-	ftMotionCommandWait(3),
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandWait(3),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandWait(4),
-	ftMotionCommandSetAfterImage(0, -1),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x08D0[] = {
-	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandSetAfterImage(1, 0),
-	ftMotionCommandWaitAsync(4),
-	ftMotionCommandSubroutine(0x012C), /* extern */
-	ftMotionCommandWait(1),
-	ftMotionCommandSetAfterImage(0, -1),
-	ftMotionCommandWait(25),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x08F8[] = {
-	ftMotionCommandWaitAsync(4),
-	ftMotionCommandSubroutine(0x01A0), /* extern */
-	ftMotionCommandWait(8),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x0910[] = {
-	ftMotionCommandWaitAsync(9),
-	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandSubroutine(0x01F4), /* extern */
-	ftMotionCommandWait(9),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandWaitAsync(36),
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x0934[] = {
-	ftMotionCommandMakeRumble(0, 7),
-	ftMotionCommandPlaySmashVoice(0),
-	ftMotionCommandSetColAnim(76, 40),
-	ftMotionCommandSetTexturePartID(4),
-	ftMotionCommandWaitAsync(20),
-	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandWaitAsync(22),
-	ftMotionCommandSubroutine(0x0248), /* extern */
-	ftMotionCommandWait(3),
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandWait(3),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x096C[] = {
-	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandWaitAsync(4),
-	ftMotionCommandSubroutine(0x02B0), /* extern */
-	ftMotionCommandWait(27),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x0988[] = {
-	ftMotionCommandWaitAsync(4),
-	ftMotionCommandSubroutine(0x0324), /* extern */
-	ftMotionCommandWait(8),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x09A0[] = {
-	ftMotionCommandWaitAsync(9),
-	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandSubroutine(0x0378), /* extern */
-	ftMotionCommandWait(9),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandWaitAsync(36),
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x09C4[] = {
-	ftMotionCommandWaitAsync(20),
-	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandWaitAsync(22),
-	ftMotionCommandSubroutine(0x03CC), /* extern */
-	ftMotionCommandWait(3),
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandWait(3),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x09EC[] = {
-	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandWaitAsync(4),
-	ftMotionCommandSubroutine(0x0430), /* extern */
-	ftMotionCommandWait(27),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x0A08[] = {
-	ftMotionCommandSetColAnim(75, 8),
-	ftMotionCommandWaitAsync(4),
-	ftMotionCommandSubroutine(0x0494), /* extern */
-	ftMotionCommandWait(8),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x0A24[] = {
-	ftMotionCommandSetColAnim(75, 16),
-	ftMotionCommandWaitAsync(9),
-	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandSubroutine(0x04F8), /* extern */
-	ftMotionCommandWaitAsync(11),
-	ftMotionCommandSetFlag0(1),
-	ftMotionCommandWait(9),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandWaitAsync(36),
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x0A54[] = {
-	ftMotionCommandSetColAnim(75, 28),
-	ftMotionCommandPlaySmashVoice(0),
-	ftMotionCommandWaitAsync(20),
-	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandWaitAsync(22),
-	ftMotionCommandSubroutine(0x055C), /* extern */
-	ftMotionCommandSetFlag0(2),
-	ftMotionCommandWait(3),
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandWait(3),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x0A88[] = {
-	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandSetColAnim(75, 10),
-	ftMotionCommandWaitAsync(4),
-	ftMotionCommandSubroutine(0x05C0), /* extern */
-	ftMotionCommandWait(27),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x0AA8[] = {
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandWaitAsync(8),
-	ftMotionCommandSetFlag0(1),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x0AB8[] = {
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandWaitAsync(8),
-	ftMotionCommandSetFlag0(1),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x0AC8[] = {
-	ftMotionCommandMakeRumble(0, 7),
-	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandSubroutine(0x0634), /* extern */
-	ftMotionCommandWait(16),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandGoto(dNessMainMotion_0x0AC8),
-};
-
-u32 dNessMainMotion_0x0AE8[] = {
-	ftMotionCommandEffect(0, 31, 0, 0, 0, 120, 200, 200, 200),
-	ftMotionCommandLoopBegin(3),
-	ftMotionCommandEffect(0, 10, 0, 0, 0, 120, 200, 200, 200),
-	ftMotionCommandWait(4),
-	ftMotionCommandLoopEnd(),
-	ftMotionCommandGoto(dNessMainMotion_0x0AE8),
-	ftMotionCommandEffect(-1, 34, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionPlayVoice(449),
-	ftMotionCommandSetTexturePartID(4),
-	ftMotionCommandSetHitStatusAll(3),
-	ftMotionCommandGoto(dNessMainMotion_0x0AE8),
-	ftMotionCommandGoto(dNessMainMotion_0x0AE8),
-	ftMotionCommandEffect(-1, 33, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x0B6C[] = {
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x0B74[] = {
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionPlayVoice(448),
-	ftMotionCommandSetTexturePartID(4),
-	ftMotionCommandLoopBegin(12),
-	ftMotionCommandEffect(0, 40, 0, 0, 130, 0, 200, 260, 200),
-	ftMotionCommandWait(10),
-	ftMotionCommandLoopEnd(),
-	ftMotionCommandGoto(dNessMainMotion_0x0B74),
-};
-
-u32 dNessMainMotion_0x0BA4[] = {
-	ftMotionPlayInterruptableVoice(458),
-	ftMotionCommandSetTexturePartID(2),
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandEffect(0, 90, 0, 0, 130, 0, 240, 240, 240),
-	ftMotionCommandWait(10),
-	ftMotionCommandGoto(dNessMainMotion_0x0BA4),
-};
-
-FTThrowHitDesc dNessMainMotion_0x0BCC[] = {
-	{ -1, 8, 361, 100, 0, 0, 0 },
-	{ -1, 8, 361, 100, 0, 0, 0 },
-};
-
-u32 dNessMainMotion_0x0C04[] = {
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandSetThrow((u32)dNessMainMotion_0x0BCC),
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, -120, 0, 60, 0),
-	ftMotionCommandWaitAsync(6),
-	ftMotionCommandMakeAttackColl(0, 0, 30, 1, 1, 0, 310, 0, 0, 0, 361, 100, 0, 3, 0, 1, 0, 0),
-	ftMotionPlayFGM(19),
-	ftMotionCommandWait(1),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-
-FTThrowHitDesc dNessMainMotion_0x0C4C[] = {
-	{ 52, 16, 45, 70, 0, 90, 0 },
-	{ -1, 8, 361, 100, 0, 0, 0 },
-};
-
-u32 dNessMainMotion_0x0C84[] = {
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandSetThrow((u32)dNessMainMotion_0x0C4C),
-	ftMotionCommandSetModelPartID(16, 2),
-	ftMotionCommandSetModelPartID(10, 2),
-	ftMotionCommandSetTexturePartID(4),
-	ftMotionPlayFGM(222),
-	ftMotionCommandEffect(30, 31, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandWaitAsync(3),
-	ftMotionCommandSetHitStatusAll(2),
-	ftMotionCommandMakeAttackColl(0, 0, 30, 10, 0, 0, 300, 0, 0, 0, 361, 80, 0, 3, 1, 2, 0, 10),
-	ftMotionCommandLoopBegin(8),
-	ftMotionCommandEffect(30, 41, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandWait(3),
-	ftMotionCommandLoopEnd(),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandSetFlag2(1),
-	ftMotionCommandPlaySmashVoice(0),
-	ftMotionCommandSetTexturePartID(0),
-	ftMotionPlayFGM(18),
-	ftMotionCommandEffect(30, 31, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
-	ftMotionCommandEffect(-1, 33, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandWaitAsync(22),
-	ftMotionCommandSetHitStatusAll(1),
-	ftMotionCommandEnd(),
-};
-
-FTThrowHitDesc dNessMainMotion_0x0D38[] = {
-	{ 52, 16, 45, 70, 0, 90, 0 },
-	{ -1, 8, 361, 100, 0, 0, 0 },
-};
-
-u32 dNessMainMotion_0x0D70[] = {
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandSetThrow((u32)dNessMainMotion_0x0D38),
-	ftMotionCommandSetModelPartID(16, 2),
-	ftMotionCommandSetModelPartID(10, 2),
-	ftMotionCommandSetTexturePartID(4),
-	ftMotionPlayFGM(222),
-	ftMotionCommandEffect(30, 31, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandWaitAsync(3),
-	ftMotionCommandSetHitStatusAll(2),
-	ftMotionCommandMakeAttackColl(0, 0, 30, 10, 0, 0, 300, 0, 0, 0, 361, 80, 0, 3, 1, 2, 0, 10),
-	ftMotionCommandLoopBegin(8),
-	ftMotionCommandEffect(30, 41, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandWait(3),
-	ftMotionCommandLoopEnd(),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandSetFlag2(2),
-	ftMotionCommandPlaySmashVoice(0),
-	ftMotionCommandSetTexturePartID(0),
-	ftMotionPlayFGM(18),
-	ftMotionCommandEffect(30, 31, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
-	ftMotionCommandEffect(-1, 33, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandWaitAsync(22),
-	ftMotionCommandSetHitStatusAll(1),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x0E24[] = {
-	ftMotionCommandSubroutine(0x06AC), /* extern */
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x0E30[] = {
-	ftMotionCommandSubroutine(0x06C4), /* extern */
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x0E3C[] = {
-	ftMotionCommandSubroutine(0x06CC), /* extern */
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x0E48[] = {
-	ftMotionCommandSubroutine(dNessMainMotion_0x01DC),
-	ftMotionCommandSubroutine(0x06F0), /* extern */
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x0E5C[] = {
-	ftMotionCommandSubroutine(dNessMainMotion_0x01DC),
-	ftMotionCommandSubroutine(0x070C), /* extern */
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x0E70[] = {
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandSetTexturePartID(3),
-	ftMotionPlayVoice(442),
-	ftMotionCommandWait(20),
-	ftMotionCommandMakeRumble(0, 6),
-	ftMotionCommandWaitAsync(60),
-	ftMotionCommandSetFlag1(1),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x0E90[] = {
-	ftMotionCommandSetSlopeContour(1),
-	ftMotionCommandWaitAsync(2),
-	ftMotionCommandMakeAttackColl(0, 0, 10, 2, 1, 0, 160, 0, 0, 0, 361, 50, 0, 3, 0, 0, 0, 8),
-	ftMotionCommandMakeAttackColl(1, 0, 9, 2, 1, 0, 160, 0, 0, 0, 361, 50, 0, 3, 0, 0, 0, 8),
-	ftMotionCommandPlayFGMStoreInfo(43),
-	ftMotionCommandWait(2),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandWaitAsync(10),
-	ftMotionCommandSetFlag1(1),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x0ED8[] = {
-	ftMotionCommandSetSlopeContour(1),
-	ftMotionCommandWaitAsync(3),
-	ftMotionCommandMakeAttackColl(0, 0, 16, 2, 1, 0, 180, 16, 0, 0, 70, 50, 0, 3, 0, 0, 0, 8),
-	ftMotionCommandMakeAttackColl(1, 0, 15, 2, 1, 0, 180, 0, 0, 0, 70, 50, 0, 3, 0, 0, 0, 8),
-	ftMotionCommandPlayFGMStoreInfo(43),
-	ftMotionCommandWait(3),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandWaitAsync(8),
-	ftMotionCommandSetFlag1(1),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x0F20[] = {
-	ftMotionCommandWaitAsync(6),
-	ftMotionPlayVoice(443),
-	ftMotionCommandMakeAttackColl(0, 0, 26, 4, 0, 0, 150, 0, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
-	ftMotionCommandMakeAttackColl(1, 0, 28, 4, 0, 0, 280, 0, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
-	ftMotionCommandPlayFGMStoreInfo(42),
-	ftMotionCommandWait(2),
-	ftMotionCommandSetAttackCollDamage(0, 4),
-	ftMotionCommandSetAttackCollDamage(1, 4),
-	ftMotionCommandSetAttackCollSize(0, 180),
-	ftMotionCommandSetAttackCollSize(1, 280),
-	ftMotionCommandWait(4),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x0F74[] = {
-	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandPlaySmashVoice(0),
-	ftMotionCommandWaitAsync(7),
-	ftMotionCommandMakeAttackColl(0, 0, 0, 12, 1, 0, 280, 0, 140, 120, 361, 100, 0, 3, 1, 2, 0, 16),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandPlayFGMStoreInfo(41),
-	ftMotionCommandWait(4),
-	ftMotionCommandMakeAttackColl(0, 0, 0, 9, 1, 0, 250, 0, 140, 120, 361, 100, 0, 3, 1, 2, 0, 10),
-	ftMotionCommandWait(14),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x0FCC[] = {
-	ftMotionCommandWaitAsync(7),
-	ftMotionCommandMakeAttackColl(0, 0, 25, 11, 1, 0, 180, 20, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
-	ftMotionCommandMakeAttackColl(1, 0, 26, 11, 1, 0, 230, 80, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
-	ftMotionCommandPlayFGMStoreInfo(42),
-	ftMotionCommandWait(5),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x1008[] = {
-	ftMotionCommandWaitAsync(7),
-	ftMotionCommandMakeAttackColl(0, 0, 25, 10, 1, 0, 180, 20, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
-	ftMotionCommandMakeAttackColl(1, 0, 26, 10, 1, 0, 230, 80, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
-	ftMotionCommandPlayFGMStoreInfo(42),
-	ftMotionCommandWait(5),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x1044[] = {
-	ftMotionCommandWaitAsync(7),
-	ftMotionCommandMakeAttackColl(0, 0, 25, 9, 1, 0, 180, 20, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
-	ftMotionCommandMakeAttackColl(1, 0, 26, 9, 1, 0, 230, 80, 0, 0, 361, 100, 0, 3, 0, 1, 1, 10),
-	ftMotionCommandPlayFGMStoreInfo(42),
-	ftMotionCommandWait(5),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x1080[] = {
-	ftMotionCommandWaitAsync(5),
-	ftMotionCommandSetHitStatusPartID(12, 3),
-	ftMotionCommandMakeAttackColl(0, 0, 10, 7, 1, 0, 370, 0, 0, 0, 100, 40, 0, 3, 0, 1, 0, 80),
-	ftMotionCommandMakeAttackColl(1, 0, 16, 7, 1, 0, 370, 0, 0, 0, 100, 40, 0, 3, 0, 1, 0, 80),
-	ftMotionCommandPlayFGMStoreInfo(42),
-	ftMotionCommandWait(15),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandSetHitStatusPartAll(1),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x10C8[] = {
-	ftMotionCommandWaitAsync(4),
-	ftMotionCommandMakeAttackColl(0, 0, 19, 3, 1, 0, 160, 20, 0, 0, 361, 20, 0, 3, 0, 1, 1, 2),
-	ftMotionCommandMakeAttackColl(1, 0, 20, 3, 1, 0, 200, 140, 0, 0, 361, 20, 0, 3, 0, 1, 1, 2),
-	ftMotionCommandPlayFGMStoreInfo(43),
-	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandWait(5),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandWait(2),
-	ftMotionCommandSetFlag1(1),
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x1114[] = {
-	0x00000002,
-};
-
-u32 dNessMainMotion_0x1118[] = {
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x111C[] = {
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x1120[] = {
-	ftMotionCommandStopLoopSFX(51773440),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x1128[] = {
-	ftMotionCommandStopLoopSFX(60162048),
-	ftMotionCommandStopLoopSFX(60162048),
-	ftMotionCommandStopLoopSFX(60162048),
-	0x000003E8,
-};
-
-u32 dNessMainMotion_0x1138[] = {
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandWaitAsync(2),
-	ftMotionCommandSetModelPartID(17, 0),
-	ftMotionCommandHideItem(0),
-	ftMotionCommandWaitAsync(10),
-	ftMotionCommandEffect(17, 31, 0, 120, 0, 0, 0, 0, 0),
-	ftMotionCommandPlaySmashVoice(0),
-	ftMotionCommandWaitAsync(16),
-	ftMotionCommandSetFlag1(1),
-	ftMotionCommandWaitAsync(18),
-	ftMotionCommandPlayFGMStoreInfo(41),
-	ftMotionCommandMakeAttackColl(0, 0, 17, 18, 1, 0, 200, 0, 280, 0, 361, 65, 0, 3, 0, 2, 7, 70),
-	ftMotionCommandMakeAttackColl(1, 0, 17, 18, 1, 0, 180, 0, 60, 0, 361, 65, 0, 3, 0, 2, 7, 70),
-	ftMotionCommandWait(4),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandSetFlag1(0),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x11A8[] = {
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandPlaySmashVoice(0),
-	ftMotionCommandWaitAsync(2),
-	ftMotionCommandSetModelPartID(30, 0),
-	ftMotionCommandHideItem(0),
-	ftMotionCommandWaitAsync(6),
-	ftMotionCommandEffect(30, 31, 0, 0, 0, 0, 100, 100, 100),
-	ftMotionCommandWaitAsync(13),
-	ftMotionCommandPlayFGMStoreInfo(207),
-	ftMotionCommandMakeAttackColl(0, 0, 30, 17, 1, 0, 200, 0, 0, 0, 110, 100, 0, 3, 0, 2, 1, 20),
-	ftMotionCommandWait(5),
-	ftMotionCommandMakeAttackColl(0, 0, 30, 15, 1, 0, 200, 0, 0, 0, 78, 100, 0, 3, 0, 2, 1, 0),
-	ftMotionCommandWait(3),
-	ftMotionCommandMakeAttackColl(0, 0, 30, 13, 1, 0, 200, 0, 0, 0, 361, 100, 0, 3, 0, 2, 1, 0),
-	ftMotionCommandWait(5),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionPlayFGM(40),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x122C[] = {
-	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandPlaySmashVoice(0),
-	ftMotionCommandWaitAsync(2),
-	ftMotionCommandSetModelPartID(30, 0),
-	ftMotionCommandHideItem(0),
-	ftMotionCommandWaitAsync(13),
-	ftMotionCommandPlayFGMStoreInfo(207),
-	ftMotionCommandEffect(30, 31, 0, 0, 0, 0, 100, 100, 100),
-	ftMotionCommandMakeAttackColl(0, 0, 30, 19, 1, 0, 200, 0, 0, 0, 361, 100, 0, 3, 0, 2, 1, 0),
-	ftMotionCommandWait(40),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionPlayFGM(40),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x127C[] = {
-	ftMotionCommandWaitAsync(5),
-	ftMotionCommandSetFlag1(50),
-	ftMotionCommandMakeAttackColl(0, 0, 26, 14, 1, 0, 240, 10, 0, 0, 361, 100, 0, 3, 0, 2, 1, 15),
-	ftMotionCommandMakeAttackColl(1, 0, 20, 14, 1, 0, 240, 10, 0, 0, 361, 100, 0, 3, 0, 2, 1, 15),
-	ftMotionCommandMakeAttackColl(2, 0, 5, 14, 1, 0, 260, 0, 0, 0, 361, 100, 0, 3, 0, 2, 1, 15),
-	ftMotionCommandPlayFGMStoreInfo(42),
-	ftMotionCommandWait(8),
-	ftMotionCommandMakeAttackColl(0, 0, 26, 11, 1, 0, 240, 10, 0, 0, 361, 100, 0, 3, 0, 2, 1, 0),
-	ftMotionCommandMakeAttackColl(1, 0, 20, 11, 1, 0, 240, 10, 0, 0, 361, 100, 0, 3, 0, 2, 1, 0),
-	ftMotionCommandMakeAttackColl(2, 0, 5, 11, 1, 0, 260, 0, 0, 0, 361, 100, 0, 3, 0, 2, 1, 0),
-	ftMotionCommandWait(30),
-	ftMotionCommandSetFlag1(0),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x1314[] = {
-	ftMotionCommandWaitAsync(10),
-	ftMotionCommandSetFlag1(1),
-	ftMotionCommandPlayFGMStoreInfo(41),
-	ftMotionCommandMakeAttackColl(0, 0, 0, 12, 1, 0, 310, 0, 140, 180, 361, 100, 0, 3, 1, 2, 0, 16),
-	ftMotionCommandPlayFGMStoreInfo(41),
-	ftMotionCommandWait(4),
-	ftMotionCommandMakeAttackColl(0, 0, 0, 10, 1, 0, 280, 0, 140, 180, 361, 100, 0, 3, 0, 1, 0, 0),
-	ftMotionCommandWait(13),
-	ftMotionCommandSetFlag1(0),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x1360[] = {
-	ftMotionCommandSetSlopeContour(4),
-	ftMotionPlayFGM(78),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandWait(8),
-	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x1384[] = {
-	ftMotionCommandWaitAsync(10),
-	ftMotionCommandSetFlag1(1),
-	ftMotionCommandMakeAttackColl(0, 0, 26, 16, 1, 0, 240, -30, 45, 0, 361, 100, 0, 3, 0, 2, 1, 10),
-	ftMotionCommandMakeAttackColl(1, 0, 26, 16, 1, 0, 290, 80, 30, 0, 361, 100, 0, 3, 0, 2, 1, 10),
-	ftMotionCommandPlayFGMStoreInfo(41),
-	ftMotionCommandWait(4),
-	ftMotionCommandMakeAttackColl(0, 0, 26, 10, 1, 0, 220, -30, 45, 0, 361, 100, 0, 3, 0, 1, 1, 0),
-	ftMotionCommandMakeAttackColl(1, 0, 26, 10, 1, 0, 270, 80, 30, 0, 361, 100, 0, 3, 0, 1, 1, 0),
-	ftMotionCommandWait(6),
-	ftMotionCommandSetFlag1(0),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x13F4[] = {
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionPlayFGM(78),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x1410[] = {
-	ftMotionCommandWaitAsync(8),
-	ftMotionCommandSetHitStatusPartID(12, 3),
-	ftMotionCommandMakeAttackColl(0, 0, 12, 15, 1, 0, 350, 0, 100, 0, 85, 110, 0, 3, 0, 2, 0, 10),
-	ftMotionCommandEffect(0, 11, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandPlayFGMStoreInfo(41),
-	ftMotionCommandWait(4),
-	ftMotionCommandSetHitStatusPartAll(1),
-	ftMotionCommandWait(5),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x1454[] = {
-	ftMotionCommandWaitAsync(4),
-	ftMotionCommandMakeAttackColl(0, 0, 0, 15, 1, 0, 320, 0, -30, 30, -90, 120, 0, 3, 0, 2, 0, 10),
-	ftMotionCommandPlayFGMStoreInfo(41),
-	ftMotionCommandWait(4),
-	ftMotionCommandMakeAttackColl(0, 0, 0, 15, 1, 0, 300, 0, -30, 30, -90, 120, 0, 3, 0, 2, 0, 0),
-	ftMotionCommandWait(13),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x1494[] = {
-	ftMotionPlayFGM(78),
-	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x14AC[] = {
-	ftMotionCommandWaitAsync(20),
-	ftMotionPlayFGM(222),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x14B8[] = {
-	ftMotionCommandGoto(dNessMainMotion_0x14AC),
-	ftMotionPlayFGM(25),
-	ftMotionCommandEffect(0, 33, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandEffect(0, 29, 0, 0, 180, 0, 0, 0, 0),
-	ftMotionCommandSetColAnim(67, 0),
-	ftMotionCommandSetModelPartID(12, 1),
-	ftMotionCommandMakeRumble(0, 10),
-	ftMotionCommandSetFlag2(1),
-	ftMotionCommandWait(36),
-	ftMotionCommandResetModelPartAll(),
-	ftMotionCommandMakeRumble(20, 7),
-	ftMotionCommandLoopBegin(4),
-	ftMotionCommandEffect(0, 7, 0, 0, 100, 0, 200, 200, 200),
-	ftMotionCommandWait(4),
-	ftMotionCommandLoopEnd(),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x1520[] = {
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x1524[] = {
-	ftMotionCommandGoto(dNessMainMotion_0x1520),
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandSetModelPartID(16, 2),
-	ftMotionCommandSetModelPartID(10, 2),
-	ftMotionCommandSetTexturePartID(4),
-	ftMotionPlayFGM(222),
-	ftMotionPlayVoice(453),
-	ftMotionCommandEffect(0, 41, 0, 0, 150, 0, 0, 0, 0),
-	ftMotionCommandWaitAsync(20),
-	ftMotionCommandEffect(0, 31, 0, 0, 150, 130, 0, 0, 0),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
-	ftMotionCommandSetFlag0(1),
-	ftMotionCommandMakeRumble(0, 6),
-	ftMotionCommandWaitAsync(40),
-	ftMotionCommandSetTexturePartID(0),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x158C[] = {
-	ftMotionCommandSetModelPartID(16, 2),
-	ftMotionCommandSetModelPartID(10, 2),
-	ftMotionCommandSetTexturePartID(4),
-	ftMotionPlayFGM(222),
-	ftMotionPlayVoice(453),
-	ftMotionCommandEffect(0, 41, 0, 0, 150, 0, 0, 0, 0),
-	ftMotionCommandWaitAsync(20),
-	ftMotionCommandEffect(0, 31, 0, 0, 120, 130, 0, 0, 0),
-	ftMotionCommandEffect(0, 16, 0, 0, 0, -150, 0, 0, 0),
-	ftMotionCommandSetFlag0(1),
-	ftMotionCommandMakeRumble(0, 6),
-	ftMotionCommandWaitAsync(40),
-	ftMotionCommandSetTexturePartID(0),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x15E8[] = {
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandSetModelPartID(16, 2),
-	ftMotionCommandSetModelPartID(10, 2),
-	ftMotionCommandSetTexturePartID(4),
-	ftMotionPlayVoice(456),
-	ftMotionCommandEffect(0, 41, 0, 0, 150, 0, 0, 0, 0),
-	ftMotionCommandWaitAsync(20),
-	ftMotionCommandPlayLoopSFXStoreInfo(221),
-	ftMotionCommandEffect(0, 31, 0, 0, 150, 130, 0, 0, 0),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x1638[] = {
-	ftMotionCommandMakeRumble(0, 7),
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandSetModelPartID(16, 2),
-	ftMotionCommandSetModelPartID(10, 2),
-	ftMotionCommandSetTexturePartID(2),
-	ftMotionCommandSetColAnim(65, 0),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x1654[] = {
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x165C[] = {
-	ftMotionCommandMakeRumble(0, 10),
-	ftMotionCommandSetHitStatusAll(2),
-	ftMotionCommandMakeAttackColl(0, 0, 0, 30, 1, 2, 300, 0, 100, 0, 361, 84, 0, 3, 0, 2, 4, 40),
-	ftMotionCommandSetTexturePartID(4),
-	ftMotionCommandSetColAnim(66, 0),
-	ftMotionPlayVoice(449),
-	ftMotionPlayFGM(184),
-	ftMotionPlayFGM(616),
-	ftMotionCommandEffect(0, 17, 0, 0, 90, 0, 0, 0, 0),
-	ftMotionCommandWaitAsync(10),
-	ftMotionCommandSetHitStatusAll(1),
-	ftMotionCommandWait(9),
-	ftMotionCommandClearAttackCollAll(),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x16B0[] = {
-	ftMotionCommandGoto(dNessMainMotion_0x15E8),
-	ftMotionCommandGoto(dNessMainMotion_0x1638),
-	ftMotionCommandGoto(dNessMainMotion_0x1654),
-	ftMotionCommandGoto(dNessMainMotion_0x165C),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x16D4[] = {
-	0x00000001,
-};
-
-u32 dNessMainMotion_0x16D8[] = {
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x16DC[] = {
-	ftMotionCommandStopLoopSFX(60162048),
-	ftMotionCommandStopLoopSFX(54722560),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x16E8[] = {
-	ftMotionCommandStopLoopSFX(64421888),
-	ftMotionCommandStopLoopSFX(64421888),
-	ftMotionCommandStopLoopSFX(64421888),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x16F8[] = {
-	ftMotionCommandMakeRumble(0, 9),
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandEffect(0, 71, 0, 0, 120, 0, 0, 0, 0),
-	ftMotionCommandPlayLoopSFXStoreInfo(224),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x1718[] = {
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandSetTexturePartID(2),
-	ftMotionCommandSetColAnim(63, 0),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x1728[] = {
-	ftMotionCommandMakeRumble(0, 10),
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionPlayFGM(220),
-	ftMotionPlayFGM(627),
-	ftMotionCommandSetColAnim(64, 0),
-	ftMotionCommandEffect(0, 19, 0, 0, 0, -120, 0, 0, 0),
-	ftMotionCommandEffect(8, 27, 0, 0, 0, 0, 0, 0, 0),
-	ftMotionCommandLoopBegin(14),
-	ftMotionCommandEffect(0, 74, 0, 0, 0, 0, 200, 200, 200),
-	ftMotionCommandWait(1),
-	ftMotionCommandLoopEnd(),
-	ftMotionCommandSetFlag1(1),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x1780[] = {
-	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x1788[] = {
-	ftMotionCommandGoto(dNessMainMotion_0x16F8),
-	ftMotionCommandGoto(dNessMainMotion_0x1718),
-	ftMotionCommandGoto(dNessMainMotion_0x1728),
-	ftMotionCommandGoto(dNessMainMotion_0x1780),
-	ftMotionCommandEnd(),
-};
-
-u32 dNessMainMotion_0x17AC[] = {
-	ftMotionCommandEnd(),
-};
-
-#endif
+/* @ 0x1788 (40 bytes) */
+u32 dNessMainMotion_0x1788[10] = {
+	#include <NessMainMotion/NessMainMotion_0x1788.data.inc.c>
+};

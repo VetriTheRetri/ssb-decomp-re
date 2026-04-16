@@ -10,8 +10,74 @@
 
 /* Shared vertex / DL pool the item DObjDesc trees reference via the
  * intern chain. Not yet broken down into typed Vtx / Gfx / Tex blocks. */
-u8 dITCommonObject_data_0x0000[0x670] = {
-	#include <ITCommonObject/data_0x0000.data.inc.c>
+/* @ 0x0000, 8 bytes (raw gap) */
+u8 dITCommonObject_data_0x0000_gap_0x0000[0x8] = {
+	#include <ITCommonObject/dITCommonObject_data_0x0000_gap_0x0000.data.inc.c>
+};
+
+/* @ 0x0008, 32 bytes (16-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0x0008[16] = {
+	#include <ITCommonObject/dITCommonObject_LUT_0x0008.data.inc.c>
+};
+
+/* @ 0x0028, 8 bytes (raw gap) */
+u8 dITCommonObject_data_0x0000_gap_0x0028[0x8] = {
+	#include <ITCommonObject/dITCommonObject_data_0x0000_gap_0x0028.data.inc.c>
+};
+
+/* @ 0x0030, 32 bytes (16-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0x0030[16] = {
+	#include <ITCommonObject/dITCommonObject_LUT_0x0030.data.inc.c>
+};
+
+/* @ 0x0050, 8 bytes (raw gap) */
+u8 dITCommonObject_data_0x0000_gap_0x0050[0x8] = {
+	#include <ITCommonObject/dITCommonObject_data_0x0000_gap_0x0050.data.inc.c>
+};
+
+/* @ 0x0058, 32 bytes (16-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0x0058[16] = {
+	#include <ITCommonObject/dITCommonObject_LUT_0x0058.data.inc.c>
+};
+
+/* @ 0x0078, 408 bytes (raw gap) */
+u8 dITCommonObject_data_0x0000_gap_0x0078[0x198] = {
+	#include <ITCommonObject/dITCommonObject_data_0x0000_gap_0x0078.data.inc.c>
+};
+
+/* @ 0x0210, 224 bytes (14 vertices) */
+Vtx dITCommonObject_Vtx_0x0210[14] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0x0210.data.inc.c>
+};
+
+/* @ 0x02F0, 176 bytes (11 vertices) */
+Vtx dITCommonObject_Vtx_0x02F0[11] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0x02F0.data.inc.c>
+};
+
+/* @ 0x03A0, 64 bytes (4 vertices) */
+Vtx dITCommonObject_Vtx_0x03A0[4] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0x03A0.data.inc.c>
+};
+
+/* @ 0x03E0, 96 bytes (12 Gfx commands) */
+Gfx dITCommonObject_Gfx_0x03E0[12] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0x03E0.data.inc.c>
+};
+
+/* @ 0x0440, 256 bytes (32 Gfx commands) */
+Gfx dITCommonObject_Gfx_0x0440[32] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0x0440.data.inc.c>
+};
+
+/* @ 0x0540, 160 bytes (20 Gfx commands) */
+Gfx dITCommonObject_Gfx_0x0540[20] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0x0540.data.inc.c>
+};
+
+/* @ 0x05E0, 144 bytes (18 Gfx commands) */
+Gfx dITCommonObject_Gfx_0x05E0[18] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0x05E0.data.inc.c>
 };
 
 /* @ 0x00670, 1088 bytes */
@@ -23,9 +89,29 @@ DObjDesc dITCommonObject_Capsule_Item_data_DObjDesc[5] = {
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* @ 0x074C, 868 bytes (vertex / DL / texture pool) */
-u8 dITCommonObject_Capsule_Item_data_remainder[0x364] = {
-	#include <ITCommonObject/dITCommonObject_Capsule_Item_data_remainder.data.inc.c>
+/* @ 0x074C, 12 bytes (raw gap) */
+u8 dITCommonObject_Capsule_Item_data_remainder_gap_0x074C[0xC] = {
+	#include <ITCommonObject/dITCommonObject_Capsule_Item_data_remainder_gap_0x074C.data.inc.c>
+};
+
+/* @ 0x0758, 32 bytes (16-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0x0758[16] = {
+	#include <ITCommonObject/dITCommonObject_LUT_0x0758.data.inc.c>
+};
+
+/* @ 0x0778, 520 bytes (raw gap) */
+u8 dITCommonObject_Capsule_Item_data_remainder_gap_0x0778[0x208] = {
+	#include <ITCommonObject/dITCommonObject_Capsule_Item_data_remainder_gap_0x0778.data.inc.c>
+};
+
+/* @ 0x0980, 64 bytes (4 vertices) */
+Vtx dITCommonObject_Vtx_0x0980[4] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0x0980.data.inc.c>
+};
+
+/* @ 0x09C0, 240 bytes (30 Gfx commands) */
+Gfx dITCommonObject_Gfx_0x09C0[30] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0x09C0.data.inc.c>
 };
 
 /* @ 0x00AB0, 1704 bytes */
@@ -47,14 +133,40 @@ DObjDesc dITCommonObject_Heart_Item_data_DObjDesc[3] = {
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* @ 0x11DC, 220 bytes (vertex / DL / texture pool) */
-u8 dITCommonObject_Heart_Item_data_remainder[0xDC] = {
-	#include <ITCommonObject/dITCommonObject_Heart_Item_data_remainder.data.inc.c>
+/* @ 0x11DC, 92 bytes (raw gap) */
+u8 dITCommonObject_Heart_Item_data_remainder_gap_0x11DC[0x5C] = {
+	#include <ITCommonObject/dITCommonObject_Heart_Item_data_remainder_gap_0x11DC.data.inc.c>
+};
+
+/* @ 0x1238, 32 bytes (16-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0x1238[16] = {
+	#include <ITCommonObject/dITCommonObject_LUT_0x1238.data.inc.c>
+};
+
+/* @ 0x1258, 96 bytes (trailing gap) */
+u8 dITCommonObject_Heart_Item_data_remainder_gap_0x1258[0x60] = {
+	#include <ITCommonObject/dITCommonObject_Heart_Item_data_remainder_gap_0x1258.data.inc.c>
 };
 
 /* @ 0x012B8, 680 bytes */
-u8 dITCommonObject_Star_Item_mobjsubs[0x2A8] = {
-	#include <ITCommonObject/Star_Item_mobjsubs.data.inc.c>
+/* @ 0x12B8, 280 bytes (raw gap) */
+u8 dITCommonObject_Star_Item_mobjsubs_gap_0x12B8[0x118] = {
+	#include <ITCommonObject/dITCommonObject_Star_Item_mobjsubs_gap_0x12B8.data.inc.c>
+};
+
+/* @ 0x13D0, 48 bytes (3 vertices) */
+Vtx dITCommonObject_Vtx_0x13D0[3] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0x13D0.data.inc.c>
+};
+
+/* @ 0x1400, 64 bytes (4 vertices) */
+Vtx dITCommonObject_Vtx_0x1400[4] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0x1400.data.inc.c>
+};
+
+/* @ 0x1440, 288 bytes (36 Gfx commands) */
+Gfx dITCommonObject_Gfx_0x1440[36] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0x1440.data.inc.c>
 };
 
 /* @ 0x01560, 144 bytes */
@@ -82,9 +194,59 @@ DObjDesc dITCommonObject_Sword_Item_data_DObjDesc[4] = {
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* @ 0x19C8, 1080 bytes (vertex / DL / texture pool) */
-u8 dITCommonObject_Sword_Item_data_remainder[0x438] = {
-	#include <ITCommonObject/dITCommonObject_Sword_Item_data_remainder.data.inc.c>
+/* @ 0x19C8, 16 bytes (raw gap) */
+u8 dITCommonObject_Sword_Item_data_remainder_gap_0x19C8[0x10] = {
+	#include <ITCommonObject/dITCommonObject_Sword_Item_data_remainder_gap_0x19C8.data.inc.c>
+};
+
+/* @ 0x19D8, 64 bytes (32-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0x19D8[32] = {
+	#include <ITCommonObject/dITCommonObject_LUT_0x19D8.data.inc.c>
+};
+
+/* @ 0x1A18, 8 bytes (raw gap) */
+u8 dITCommonObject_Sword_Item_data_remainder_gap_0x1A18[0x8] = {
+	#include <ITCommonObject/dITCommonObject_Sword_Item_data_remainder_gap_0x1A18.data.inc.c>
+};
+
+/* @ 0x1A20, 64 bytes (32-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0x1A20[32] = {
+	#include <ITCommonObject/dITCommonObject_LUT_0x1A20.data.inc.c>
+};
+
+/* @ 0x1A60, 144 bytes (raw gap) */
+u8 dITCommonObject_Sword_Item_data_remainder_gap_0x1A60[0x90] = {
+	#include <ITCommonObject/dITCommonObject_Sword_Item_data_remainder_gap_0x1A60.data.inc.c>
+};
+
+/* @ 0x1AF0, 48 bytes (3 vertices) */
+Vtx dITCommonObject_Vtx_0x1AF0[3] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0x1AF0.data.inc.c>
+};
+
+/* @ 0x1B20, 144 bytes (9 vertices) */
+Vtx dITCommonObject_Vtx_0x1B20[9] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0x1B20.data.inc.c>
+};
+
+/* @ 0x1BB0, 64 bytes (4 vertices) */
+Vtx dITCommonObject_Vtx_0x1BB0[4] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0x1BB0.data.inc.c>
+};
+
+/* @ 0x1BF0, 88 bytes (11 Gfx commands) */
+Gfx dITCommonObject_Gfx_0x1BF0[11] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0x1BF0.data.inc.c>
+};
+
+/* @ 0x1C48, 256 bytes (32 Gfx commands) */
+Gfx dITCommonObject_Gfx_0x1C48[32] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0x1C48.data.inc.c>
+};
+
+/* @ 0x1D48, 184 bytes (23 Gfx commands) */
+Gfx dITCommonObject_Gfx_0x1D48[23] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0x1D48.data.inc.c>
 };
 
 /* @ 0x01E00, 920 bytes */
@@ -95,9 +257,29 @@ DObjDesc dITCommonObject_Bat_Item_data_DObjDesc[4] = {
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* @ 0x1EB0, 744 bytes (vertex / DL / texture pool) */
-u8 dITCommonObject_Bat_Item_data_remainder[0x2E8] = {
-	#include <ITCommonObject/dITCommonObject_Bat_Item_data_remainder.data.inc.c>
+/* @ 0x1EB0, 8 bytes (raw gap) */
+u8 dITCommonObject_Bat_Item_data_remainder_gap_0x1EB0[0x8] = {
+	#include <ITCommonObject/dITCommonObject_Bat_Item_data_remainder_gap_0x1EB0.data.inc.c>
+};
+
+/* @ 0x1EB8, 32 bytes (16-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0x1EB8[16] = {
+	#include <ITCommonObject/dITCommonObject_LUT_0x1EB8.data.inc.c>
+};
+
+/* @ 0x1ED8, 72 bytes (raw gap) */
+u8 dITCommonObject_Bat_Item_data_remainder_gap_0x1ED8[0x48] = {
+	#include <ITCommonObject/dITCommonObject_Bat_Item_data_remainder_gap_0x1ED8.data.inc.c>
+};
+
+/* @ 0x1F20, 384 bytes (24 vertices) */
+Vtx dITCommonObject_Vtx_0x1F20[24] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0x1F20.data.inc.c>
+};
+
+/* @ 0x20A0, 248 bytes (31 Gfx commands) */
+Gfx dITCommonObject_Gfx_0x20A0[31] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0x20A0.data.inc.c>
 };
 
 /* @ 0x02198, 1464 bytes */
@@ -108,9 +290,34 @@ DObjDesc dITCommonObject_Harisen_Item_data_DObjDesc[4] = {
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* @ 0x2248, 1288 bytes (vertex / DL / texture pool) */
-u8 dITCommonObject_Harisen_Item_data_remainder[0x508] = {
-	#include <ITCommonObject/dITCommonObject_Harisen_Item_data_remainder.data.inc.c>
+/* @ 0x2248, 128 bytes (raw gap) */
+u8 dITCommonObject_Harisen_Item_data_remainder_gap_0x2248[0x80] = {
+	#include <ITCommonObject/dITCommonObject_Harisen_Item_data_remainder_gap_0x2248.data.inc.c>
+};
+
+/* @ 0x22C8, 32 bytes (16-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0x22C8[16] = {
+	#include <ITCommonObject/dITCommonObject_LUT_0x22C8.data.inc.c>
+};
+
+/* @ 0x22E8, 200 bytes (raw gap) */
+u8 dITCommonObject_Harisen_Item_data_remainder_gap_0x22E8[0xC8] = {
+	#include <ITCommonObject/dITCommonObject_Harisen_Item_data_remainder_gap_0x22E8.data.inc.c>
+};
+
+/* @ 0x23B0, 192 bytes (12 vertices) */
+Vtx dITCommonObject_Vtx_0x23B0[12] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0x23B0.data.inc.c>
+};
+
+/* @ 0x2470, 384 bytes (24 vertices) */
+Vtx dITCommonObject_Vtx_0x2470[24] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0x2470.data.inc.c>
+};
+
+/* @ 0x25F0, 352 bytes (44 Gfx commands) */
+Gfx dITCommonObject_Gfx_0x25F0[44] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0x25F0.data.inc.c>
 };
 
 /* @ 0x02750, 2784 bytes */
@@ -120,14 +327,35 @@ DObjDesc dITCommonObject_Hammer_Item_data_DObjDesc[3] = {
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* @ 0x27D4, 2652 bytes (vertex / DL / texture pool) */
-u8 dITCommonObject_Hammer_Item_data_remainder[0xA5C] = {
-	#include <ITCommonObject/dITCommonObject_Hammer_Item_data_remainder.data.inc.c>
+/* @ 0x27D4, 20 bytes (raw gap) */
+u8 dITCommonObject_Hammer_Item_data_remainder_gap_0x27D4[0x14] = {
+	#include <ITCommonObject/dITCommonObject_Hammer_Item_data_remainder_gap_0x27D4.data.inc.c>
+};
+
+/* @ 0x27E8, 32 bytes (16-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0x27E8[16] = {
+	#include <ITCommonObject/dITCommonObject_LUT_0x27E8.data.inc.c>
+};
+
+/* @ 0x2808, 2600 bytes (trailing gap) */
+u8 dITCommonObject_Hammer_Item_data_remainder_gap_0x2808[0xA28] = {
+	#include <ITCommonObject/dITCommonObject_Hammer_Item_data_remainder_gap_0x2808.data.inc.c>
 };
 
 /* @ 0x03230, 456 bytes */
-u8 dITCommonObject_BombHei_Item_mobjsubs[0x1C8] = {
-	#include <ITCommonObject/BombHei_Item_mobjsubs.data.inc.c>
+/* @ 0x3230, 160 bytes (raw gap) */
+u8 dITCommonObject_BombHei_Item_mobjsubs_gap_0x3230[0xA0] = {
+	#include <ITCommonObject/dITCommonObject_BombHei_Item_mobjsubs_gap_0x3230.data.inc.c>
+};
+
+/* @ 0x32D0, 64 bytes (4 vertices) */
+Vtx dITCommonObject_Vtx_0x32D0[4] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0x32D0.data.inc.c>
+};
+
+/* @ 0x3310, 232 bytes (29 Gfx commands) */
+Gfx dITCommonObject_Gfx_0x3310[29] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0x3310.data.inc.c>
 };
 
 /* @ 0x033F8, 1448 bytes */
@@ -137,9 +365,49 @@ DObjDesc dITCommonObject_BombHei_Item_data_DObjDesc[3] = {
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* @ 0x347C, 1316 bytes (vertex / DL / texture pool) */
-u8 dITCommonObject_BombHei_Item_data_remainder[0x524] = {
-	#include <ITCommonObject/dITCommonObject_BombHei_Item_data_remainder.data.inc.c>
+/* @ 0x347C, 396 bytes (raw gap) */
+u8 dITCommonObject_BombHei_Item_data_remainder_gap_0x347C[0x18C] = {
+	#include <ITCommonObject/dITCommonObject_BombHei_Item_data_remainder_gap_0x347C.data.inc.c>
+};
+
+/* @ 0x3608, 32 bytes (16-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0x3608[16] = {
+	#include <ITCommonObject/dITCommonObject_LUT_0x3608.data.inc.c>
+};
+
+/* @ 0x3628, 8 bytes (raw gap) */
+u8 dITCommonObject_BombHei_Item_data_remainder_gap_0x3628[0x8] = {
+	#include <ITCommonObject/dITCommonObject_BombHei_Item_data_remainder_gap_0x3628.data.inc.c>
+};
+
+/* @ 0x3630, 32 bytes (16-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0x3630[16] = {
+	#include <ITCommonObject/dITCommonObject_LUT_0x3630.data.inc.c>
+};
+
+/* @ 0x3650, 208 bytes (raw gap) */
+u8 dITCommonObject_BombHei_Item_data_remainder_gap_0x3650[0xD0] = {
+	#include <ITCommonObject/dITCommonObject_BombHei_Item_data_remainder_gap_0x3650.data.inc.c>
+};
+
+/* @ 0x3720, 64 bytes (4 vertices) */
+Vtx dITCommonObject_Vtx_0x3720[4] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0x3720.data.inc.c>
+};
+
+/* @ 0x3760, 64 bytes (4 vertices) */
+Vtx dITCommonObject_Vtx_0x3760[4] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0x3760.data.inc.c>
+};
+
+/* @ 0x37A0, 272 bytes (34 Gfx commands) */
+Gfx dITCommonObject_Gfx_0x37A0[34] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0x37A0.data.inc.c>
+};
+
+/* @ 0x38B0, 240 bytes (30 Gfx commands) */
+Gfx dITCommonObject_Gfx_0x38B0[30] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0x38B0.data.inc.c>
 };
 
 /* @ 0x039A0, 1456 bytes */
@@ -151,9 +419,39 @@ DObjDesc dITCommonObject_MSBomb_Item_data_DObjDesc[5] = {
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* @ 0x3A7C, 1236 bytes (vertex / DL / texture pool) */
-u8 dITCommonObject_MSBomb_Item_data_remainder[0x4D4] = {
-	#include <ITCommonObject/dITCommonObject_MSBomb_Item_data_remainder.data.inc.c>
+/* @ 0x3A7C, 12 bytes (raw gap) */
+u8 dITCommonObject_MSBomb_Item_data_remainder_gap_0x3A7C[0xC] = {
+	#include <ITCommonObject/dITCommonObject_MSBomb_Item_data_remainder_gap_0x3A7C.data.inc.c>
+};
+
+/* @ 0x3A88, 96 bytes (48-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0x3A88[48] = {
+	#include <ITCommonObject/dITCommonObject_LUT_0x3A88.data.inc.c>
+};
+
+/* @ 0x3AE8, 216 bytes (raw gap) */
+u8 dITCommonObject_MSBomb_Item_data_remainder_gap_0x3AE8[0xD8] = {
+	#include <ITCommonObject/dITCommonObject_MSBomb_Item_data_remainder_gap_0x3AE8.data.inc.c>
+};
+
+/* @ 0x3BC0, 64 bytes (4 vertices) */
+Vtx dITCommonObject_Vtx_0x3BC0[4] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0x3BC0.data.inc.c>
+};
+
+/* @ 0x3C00, 192 bytes (12 vertices) */
+Vtx dITCommonObject_Vtx_0x3C00[12] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0x3C00.data.inc.c>
+};
+
+/* @ 0x3CC0, 240 bytes (15 vertices) */
+Vtx dITCommonObject_Vtx_0x3CC0[15] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0x3CC0.data.inc.c>
+};
+
+/* @ 0x3DB0, 416 bytes (52 Gfx commands) */
+Gfx dITCommonObject_Gfx_0x3DB0[52] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0x3DB0.data.inc.c>
 };
 
 /* @ 0x03F50, 344 bytes */
@@ -174,8 +472,34 @@ u8 dITCommonObject_LGunAmmo_Weapon_data[0x2E0] = {
 };
 
 /* @ 0x04388, 808 bytes */
-u8 dITCommonObject_FFlower_Item_mobjsubs[0x328] = {
-	#include <ITCommonObject/FFlower_Item_mobjsubs.data.inc.c>
+/* @ 0x4388, 152 bytes (raw gap) */
+u8 dITCommonObject_FFlower_Item_mobjsubs_gap_0x4388[0x98] = {
+	#include <ITCommonObject/dITCommonObject_FFlower_Item_mobjsubs_gap_0x4388.data.inc.c>
+};
+
+/* @ 0x4420, 192 bytes (12 vertices) */
+Vtx dITCommonObject_Vtx_0x4420[12] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0x4420.data.inc.c>
+};
+
+/* @ 0x44E0, 64 bytes (4 vertices) */
+Vtx dITCommonObject_Vtx_0x44E0[4] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0x44E0.data.inc.c>
+};
+
+/* @ 0x4520, 88 bytes (11 Gfx commands) */
+Gfx dITCommonObject_Gfx_0x4520[11] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0x4520.data.inc.c>
+};
+
+/* @ 0x4578, 144 bytes (18 Gfx commands) */
+Gfx dITCommonObject_Gfx_0x4578[18] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0x4578.data.inc.c>
+};
+
+/* @ 0x4608, 168 bytes (21 Gfx commands) */
+Gfx dITCommonObject_Gfx_0x4608[21] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0x4608.data.inc.c>
 };
 
 /* @ 0x046B0, 176 bytes */
@@ -210,8 +534,19 @@ u8 dITCommonObject_StarRod_Weapon_data[0x988] = {
 };
 
 /* @ 0x05DE0, 424 bytes */
-u8 dITCommonObject_GShell_Item_mobjsubs[0x1A8] = {
-	#include <ITCommonObject/GShell_Item_mobjsubs.data.inc.c>
+/* @ 0x5DE0, 160 bytes (raw gap) */
+u8 dITCommonObject_GShell_Item_mobjsubs_gap_0x5DE0[0xA0] = {
+	#include <ITCommonObject/dITCommonObject_GShell_Item_mobjsubs_gap_0x5DE0.data.inc.c>
+};
+
+/* @ 0x5E80, 64 bytes (4 vertices) */
+Vtx dITCommonObject_Vtx_0x5E80[4] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0x5E80.data.inc.c>
+};
+
+/* @ 0x5EC0, 200 bytes (25 Gfx commands) */
+Gfx dITCommonObject_Gfx_0x5EC0[25] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0x5EC0.data.inc.c>
 };
 
 /* @ 0x05F88, 2032 bytes */
@@ -221,9 +556,44 @@ DObjDesc dITCommonObject_GShell_Item_data_DObjDesc[3] = {
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* @ 0x600C, 1900 bytes (vertex / DL / texture pool) */
-u8 dITCommonObject_GShell_Item_data_remainder[0x76C] = {
-	#include <ITCommonObject/dITCommonObject_GShell_Item_data_remainder.data.inc.c>
+/* @ 0x600C, 140 bytes (raw gap) */
+u8 dITCommonObject_GShell_Item_data_remainder_gap_0x600C[0x8C] = {
+	#include <ITCommonObject/dITCommonObject_GShell_Item_data_remainder_gap_0x600C.data.inc.c>
+};
+
+/* @ 0x6098, 32 bytes (16-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0x6098[16] = {
+	#include <ITCommonObject/dITCommonObject_LUT_0x6098.data.inc.c>
+};
+
+/* @ 0x60B8, 8 bytes (raw gap) */
+u8 dITCommonObject_GShell_Item_data_remainder_gap_0x60B8[0x8] = {
+	#include <ITCommonObject/dITCommonObject_GShell_Item_data_remainder_gap_0x60B8.data.inc.c>
+};
+
+/* @ 0x60C0, 32 bytes (16-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0x60C0[16] = {
+	#include <ITCommonObject/dITCommonObject_LUT_0x60C0.data.inc.c>
+};
+
+/* @ 0x60E0, 1040 bytes (raw gap) */
+u8 dITCommonObject_GShell_Item_data_remainder_gap_0x60E0[0x410] = {
+	#include <ITCommonObject/dITCommonObject_GShell_Item_data_remainder_gap_0x60E0.data.inc.c>
+};
+
+/* @ 0x64F0, 224 bytes (14 vertices) */
+Vtx dITCommonObject_Vtx_0x64F0[14] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0x64F0.data.inc.c>
+};
+
+/* @ 0x65D0, 96 bytes (6 vertices) */
+Vtx dITCommonObject_Vtx_0x65D0[6] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0x65D0.data.inc.c>
+};
+
+/* @ 0x6630, 328 bytes (41 Gfx commands) */
+Gfx dITCommonObject_Gfx_0x6630[41] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0x6630.data.inc.c>
 };
 
 /* @ 0x06778, 2608 bytes */
@@ -233,9 +603,44 @@ DObjDesc dITCommonObject_Box_Item_data_DObjDesc[3] = {
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* @ 0x67FC, 2476 bytes (vertex / DL / texture pool) */
-u8 dITCommonObject_Box_Item_data_remainder[0x9AC] = {
-	#include <ITCommonObject/dITCommonObject_Box_Item_data_remainder.data.inc.c>
+/* @ 0x67FC, 492 bytes (raw gap) */
+u8 dITCommonObject_Box_Item_data_remainder_gap_0x67FC[0x1EC] = {
+	#include <ITCommonObject/dITCommonObject_Box_Item_data_remainder_gap_0x67FC.data.inc.c>
+};
+
+/* @ 0x69E8, 32 bytes (16-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0x69E8[16] = {
+	#include <ITCommonObject/dITCommonObject_LUT_0x69E8.data.inc.c>
+};
+
+/* @ 0x6A08, 8 bytes (raw gap) */
+u8 dITCommonObject_Box_Item_data_remainder_gap_0x6A08[0x8] = {
+	#include <ITCommonObject/dITCommonObject_Box_Item_data_remainder_gap_0x6A08.data.inc.c>
+};
+
+/* @ 0x6A10, 32 bytes (16-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0x6A10[16] = {
+	#include <ITCommonObject/dITCommonObject_LUT_0x6A10.data.inc.c>
+};
+
+/* @ 0x6A30, 1040 bytes (raw gap) */
+u8 dITCommonObject_Box_Item_data_remainder_gap_0x6A30[0x410] = {
+	#include <ITCommonObject/dITCommonObject_Box_Item_data_remainder_gap_0x6A30.data.inc.c>
+};
+
+/* @ 0x6E40, 160 bytes (10 vertices) */
+Vtx dITCommonObject_Vtx_0x6E40[10] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0x6E40.data.inc.c>
+};
+
+/* @ 0x6EE0, 288 bytes (18 vertices) */
+Vtx dITCommonObject_Vtx_0x6EE0[18] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0x6EE0.data.inc.c>
+};
+
+/* @ 0x7000, 424 bytes (53 Gfx commands) */
+Gfx dITCommonObject_Gfx_0x7000[53] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0x7000.data.inc.c>
 };
 
 /* @ 0x071A8, 736 bytes */
@@ -251,8 +656,19 @@ u8 dITCommonObject_Taru_Item_data_remainder[0x25C] = {
 };
 
 /* @ 0x07488, 448 bytes */
-u8 dITCommonObject_NBumper_Item_mobjsubs[0x1C0] = {
-	#include <ITCommonObject/NBumper_Item_mobjsubs.data.inc.c>
+/* @ 0x7488, 144 bytes (raw gap) */
+u8 dITCommonObject_NBumper_Item_mobjsubs_gap_0x7488[0x90] = {
+	#include <ITCommonObject/dITCommonObject_NBumper_Item_mobjsubs_gap_0x7488.data.inc.c>
+};
+
+/* @ 0x7518, 64 bytes (4 vertices) */
+Vtx dITCommonObject_Vtx_0x7518[4] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0x7518.data.inc.c>
+};
+
+/* @ 0x7558, 240 bytes (30 Gfx commands) */
+Gfx dITCommonObject_Gfx_0x7558[30] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0x7558.data.inc.c>
 };
 
 /* @ 0x07648, 6872 bytes */
@@ -262,14 +678,55 @@ DObjDesc dITCommonObject_NBumper_Item_data_DObjDesc[3] = {
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* @ 0x76CC, 6740 bytes (vertex / DL / texture pool) */
-u8 dITCommonObject_NBumper_Item_data_remainder[0x1A54] = {
-	#include <ITCommonObject/dITCommonObject_NBumper_Item_data_remainder.data.inc.c>
+/* @ 0x76CC, 1732 bytes (raw gap) */
+u8 dITCommonObject_NBumper_Item_data_remainder_gap_0x76CC[0x6C4] = {
+	#include <ITCommonObject/dITCommonObject_NBumper_Item_data_remainder_gap_0x76CC.data.inc.c>
+};
+
+/* @ 0x7D90, 32 bytes (16-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0x7D90[16] = {
+	#include <ITCommonObject/dITCommonObject_LUT_0x7D90.data.inc.c>
+};
+
+/* @ 0x7DB0, 8 bytes (raw gap) */
+u8 dITCommonObject_NBumper_Item_data_remainder_gap_0x7DB0[0x8] = {
+	#include <ITCommonObject/dITCommonObject_NBumper_Item_data_remainder_gap_0x7DB0.data.inc.c>
+};
+
+/* @ 0x7DB8, 32 bytes (16-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0x7DB8[16] = {
+	#include <ITCommonObject/dITCommonObject_LUT_0x7DB8.data.inc.c>
+};
+
+/* @ 0x7DD8, 4936 bytes (trailing gap) */
+u8 dITCommonObject_NBumper_Item_data_remainder_gap_0x7DD8[0x1348] = {
+	#include <ITCommonObject/dITCommonObject_NBumper_Item_data_remainder_gap_0x7DD8.data.inc.c>
 };
 
 /* @ 0x09120, 784 bytes */
-u8 dITCommonObject_MBall_Item_mobjsubs[0x310] = {
-	#include <ITCommonObject/MBall_Item_mobjsubs.data.inc.c>
+/* @ 0x9120, 176 bytes (raw gap) */
+u8 dITCommonObject_MBall_Item_mobjsubs_gap_0x9120[0xB0] = {
+	#include <ITCommonObject/dITCommonObject_MBall_Item_mobjsubs_gap_0x9120.data.inc.c>
+};
+
+/* @ 0x91D0, 64 bytes (4 vertices) */
+Vtx dITCommonObject_Vtx_0x91D0[4] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0x91D0.data.inc.c>
+};
+
+/* @ 0x9210, 64 bytes (4 vertices) */
+Vtx dITCommonObject_Vtx_0x9210[4] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0x9210.data.inc.c>
+};
+
+/* @ 0x9250, 240 bytes (30 Gfx commands) */
+Gfx dITCommonObject_Gfx_0x9250[30] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0x9250.data.inc.c>
+};
+
+/* @ 0x9340, 240 bytes (30 Gfx commands) */
+Gfx dITCommonObject_Gfx_0x9340[30] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0x9340.data.inc.c>
 };
 
 /* @ 0x09430, 3344 bytes */
@@ -281,9 +738,29 @@ DObjDesc dITCommonObject_MBall_Item_data_DObjDesc[5] = {
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* @ 0x950C, 3124 bytes (vertex / DL / texture pool) */
-u8 dITCommonObject_MBall_Item_data_remainder[0xC34] = {
-	#include <ITCommonObject/dITCommonObject_MBall_Item_data_remainder.data.inc.c>
+/* @ 0x950C, 988 bytes (raw gap) */
+u8 dITCommonObject_MBall_Item_data_remainder_gap_0x950C[0x3DC] = {
+	#include <ITCommonObject/dITCommonObject_MBall_Item_data_remainder_gap_0x950C.data.inc.c>
+};
+
+/* @ 0x98E8, 32 bytes (16-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0x98E8[16] = {
+	#include <ITCommonObject/dITCommonObject_LUT_0x98E8.data.inc.c>
+};
+
+/* @ 0x9908, 1800 bytes (raw gap) */
+u8 dITCommonObject_MBall_Item_data_remainder_gap_0x9908[0x708] = {
+	#include <ITCommonObject/dITCommonObject_MBall_Item_data_remainder_gap_0x9908.data.inc.c>
+};
+
+/* @ 0xA010, 64 bytes (4 vertices) */
+Vtx dITCommonObject_Vtx_0xA010[4] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0xA010.data.inc.c>
+};
+
+/* @ 0xA050, 240 bytes (30 Gfx commands) */
+Gfx dITCommonObject_Gfx_0xA050[30] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0xA050.data.inc.c>
 };
 
 /* @ 0x0A140, 2192 bytes */
@@ -293,14 +770,35 @@ DObjDesc dITCommonObject_Wark_Item_data_DObjDesc[3] = {
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* @ 0xA1C4, 2060 bytes (vertex / DL / texture pool) */
-u8 dITCommonObject_Wark_Item_data_remainder[0x80C] = {
-	#include <ITCommonObject/dITCommonObject_Wark_Item_data_remainder.data.inc.c>
+/* @ 0xA1C4, 1620 bytes (raw gap) */
+u8 dITCommonObject_Wark_Item_data_remainder_gap_0xA1C4[0x654] = {
+	#include <ITCommonObject/dITCommonObject_Wark_Item_data_remainder_gap_0xA1C4.data.inc.c>
+};
+
+/* @ 0xA818, 32 bytes (16-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0xA818[16] = {
+	#include <ITCommonObject/dITCommonObject_LUT_0xA818.data.inc.c>
+};
+
+/* @ 0xA838, 408 bytes (trailing gap) */
+u8 dITCommonObject_Wark_Item_data_remainder_gap_0xA838[0x198] = {
+	#include <ITCommonObject/dITCommonObject_Wark_Item_data_remainder_gap_0xA838.data.inc.c>
 };
 
 /* @ 0x0A9D0, 456 bytes */
-u8 dITCommonObject_WarkRock_Weapon_mobjsubs[0x1C8] = {
-	#include <ITCommonObject/WarkRock_Weapon_mobjsubs.data.inc.c>
+/* @ 0xA9D0, 152 bytes (raw gap) */
+u8 dITCommonObject_WarkRock_Weapon_mobjsubs_gap_0xA9D0[0x98] = {
+	#include <ITCommonObject/dITCommonObject_WarkRock_Weapon_mobjsubs_gap_0xA9D0.data.inc.c>
+};
+
+/* @ 0xAA68, 64 bytes (4 vertices) */
+Vtx dITCommonObject_Vtx_0xAA68[4] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0xAA68.data.inc.c>
+};
+
+/* @ 0xAAA8, 240 bytes (30 Gfx commands) */
+Gfx dITCommonObject_Gfx_0xAAA8[30] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0xAAA8.data.inc.c>
 };
 
 /* @ 0x0AB98, 1472 bytes */
@@ -310,9 +808,29 @@ DObjDesc dITCommonObject_WarkRock_Weapon_data_DObjDesc[3] = {
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* @ 0xAC1C, 1340 bytes (vertex / DL / texture pool) */
-u8 dITCommonObject_WarkRock_Weapon_data_remainder[0x53C] = {
-	#include <ITCommonObject/dITCommonObject_WarkRock_Weapon_data_remainder.data.inc.c>
+/* @ 0xAC1C, 108 bytes (raw gap) */
+u8 dITCommonObject_WarkRock_Weapon_data_remainder_gap_0xAC1C[0x6C] = {
+	#include <ITCommonObject/dITCommonObject_WarkRock_Weapon_data_remainder_gap_0xAC1C.data.inc.c>
+};
+
+/* @ 0xAC88, 32 bytes (16-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0xAC88[16] = {
+	#include <ITCommonObject/dITCommonObject_LUT_0xAC88.data.inc.c>
+};
+
+/* @ 0xACA8, 904 bytes (raw gap) */
+u8 dITCommonObject_WarkRock_Weapon_data_remainder_gap_0xACA8[0x388] = {
+	#include <ITCommonObject/dITCommonObject_WarkRock_Weapon_data_remainder_gap_0xACA8.data.inc.c>
+};
+
+/* @ 0xB030, 64 bytes (4 vertices) */
+Vtx dITCommonObject_Vtx_0xB030[4] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0xB030.data.inc.c>
+};
+
+/* @ 0xB070, 232 bytes (29 Gfx commands) */
+Gfx dITCommonObject_Gfx_0xB070[29] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0xB070.data.inc.c>
 };
 
 /* @ 0x0B158, 1000 bytes */
@@ -322,14 +840,35 @@ DObjDesc dITCommonObject_Kabigon_Item_data_DObjDesc[3] = {
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* @ 0xB1DC, 868 bytes (vertex / DL / texture pool) */
-u8 dITCommonObject_Kabigon_Item_data_remainder[0x364] = {
-	#include <ITCommonObject/dITCommonObject_Kabigon_Item_data_remainder.data.inc.c>
+/* @ 0xB1DC, 52 bytes (raw gap) */
+u8 dITCommonObject_Kabigon_Item_data_remainder_gap_0xB1DC[0x34] = {
+	#include <ITCommonObject/dITCommonObject_Kabigon_Item_data_remainder_gap_0xB1DC.data.inc.c>
+};
+
+/* @ 0xB210, 32 bytes (16-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0xB210[16] = {
+	#include <ITCommonObject/dITCommonObject_LUT_0xB210.data.inc.c>
+};
+
+/* @ 0xB230, 784 bytes (trailing gap) */
+u8 dITCommonObject_Kabigon_Item_data_remainder_gap_0xB230[0x310] = {
+	#include <ITCommonObject/dITCommonObject_Kabigon_Item_data_remainder_gap_0xB230.data.inc.c>
 };
 
 /* @ 0x0B540, 456 bytes */
-u8 dITCommonObject_Tosakinto_Item_mobjsubs[0x1C8] = {
-	#include <ITCommonObject/Tosakinto_Item_mobjsubs.data.inc.c>
+/* @ 0xB540, 152 bytes (raw gap) */
+u8 dITCommonObject_Tosakinto_Item_mobjsubs_gap_0xB540[0x98] = {
+	#include <ITCommonObject/dITCommonObject_Tosakinto_Item_mobjsubs_gap_0xB540.data.inc.c>
+};
+
+/* @ 0xB5D8, 64 bytes (4 vertices) */
+Vtx dITCommonObject_Vtx_0xB5D8[4] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0xB5D8.data.inc.c>
+};
+
+/* @ 0xB618, 240 bytes (30 Gfx commands) */
+Gfx dITCommonObject_Gfx_0xB618[30] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0xB618.data.inc.c>
 };
 
 /* @ 0x0B708, 1464 bytes */
@@ -340,9 +879,29 @@ DObjDesc dITCommonObject_Tosakinto_Item_data_DObjDesc[4] = {
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* @ 0xB7B8, 1288 bytes (vertex / DL / texture pool) */
-u8 dITCommonObject_Tosakinto_Item_data_remainder[0x508] = {
-	#include <ITCommonObject/dITCommonObject_Tosakinto_Item_data_remainder.data.inc.c>
+/* @ 0xB7B8, 432 bytes (raw gap) */
+u8 dITCommonObject_Tosakinto_Item_data_remainder_gap_0xB7B8[0x1B0] = {
+	#include <ITCommonObject/dITCommonObject_Tosakinto_Item_data_remainder_gap_0xB7B8.data.inc.c>
+};
+
+/* @ 0xB968, 32 bytes (16-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0xB968[16] = {
+	#include <ITCommonObject/dITCommonObject_LUT_0xB968.data.inc.c>
+};
+
+/* @ 0xB988, 520 bytes (raw gap) */
+u8 dITCommonObject_Tosakinto_Item_data_remainder_gap_0xB988[0x208] = {
+	#include <ITCommonObject/dITCommonObject_Tosakinto_Item_data_remainder_gap_0xB988.data.inc.c>
+};
+
+/* @ 0xBB90, 64 bytes (4 vertices) */
+Vtx dITCommonObject_Vtx_0xBB90[4] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0xBB90.data.inc.c>
+};
+
+/* @ 0xBBD0, 240 bytes (30 Gfx commands) */
+Gfx dITCommonObject_Gfx_0xBBD0[30] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0xBBD0.data.inc.c>
 };
 
 /* @ 0x0BCC0, 1136 bytes */
@@ -352,9 +911,29 @@ DObjDesc dITCommonObject_Mew_Item_data_DObjDesc[3] = {
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* @ 0xBD44, 1004 bytes (vertex / DL / texture pool) */
-u8 dITCommonObject_Mew_Item_data_remainder[0x3EC] = {
-	#include <ITCommonObject/dITCommonObject_Mew_Item_data_remainder.data.inc.c>
+/* @ 0xBD44, 20 bytes (raw gap) */
+u8 dITCommonObject_Mew_Item_data_remainder_gap_0xBD44[0x14] = {
+	#include <ITCommonObject/dITCommonObject_Mew_Item_data_remainder_gap_0xBD44.data.inc.c>
+};
+
+/* @ 0xBD58, 32 bytes (16-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0xBD58[16] = {
+	#include <ITCommonObject/dITCommonObject_LUT_0xBD58.data.inc.c>
+};
+
+/* @ 0xBD78, 648 bytes (raw gap) */
+u8 dITCommonObject_Mew_Item_data_remainder_gap_0xBD78[0x288] = {
+	#include <ITCommonObject/dITCommonObject_Mew_Item_data_remainder_gap_0xBD78.data.inc.c>
+};
+
+/* @ 0xC000, 64 bytes (4 vertices) */
+Vtx dITCommonObject_Vtx_0xC000[4] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0xC000.data.inc.c>
+};
+
+/* @ 0xC040, 240 bytes (30 Gfx commands) */
+Gfx dITCommonObject_Gfx_0xC040[30] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0xC040.data.inc.c>
 };
 
 /* @ 0x0C130, 1008 bytes */
@@ -364,9 +943,29 @@ DObjDesc dITCommonObject_Nyars_Item_data_DObjDesc[3] = {
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* @ 0xC1B4, 876 bytes (vertex / DL / texture pool) */
-u8 dITCommonObject_Nyars_Item_data_remainder[0x36C] = {
-	#include <ITCommonObject/dITCommonObject_Nyars_Item_data_remainder.data.inc.c>
+/* @ 0xC1B4, 20 bytes (raw gap) */
+u8 dITCommonObject_Nyars_Item_data_remainder_gap_0xC1B4[0x14] = {
+	#include <ITCommonObject/dITCommonObject_Nyars_Item_data_remainder_gap_0xC1B4.data.inc.c>
+};
+
+/* @ 0xC1C8, 32 bytes (16-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0xC1C8[16] = {
+	#include <ITCommonObject/dITCommonObject_LUT_0xC1C8.data.inc.c>
+};
+
+/* @ 0xC1E8, 520 bytes (raw gap) */
+u8 dITCommonObject_Nyars_Item_data_remainder_gap_0xC1E8[0x208] = {
+	#include <ITCommonObject/dITCommonObject_Nyars_Item_data_remainder_gap_0xC1E8.data.inc.c>
+};
+
+/* @ 0xC3F0, 64 bytes (4 vertices) */
+Vtx dITCommonObject_Vtx_0xC3F0[4] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0xC3F0.data.inc.c>
+};
+
+/* @ 0xC430, 240 bytes (30 Gfx commands) */
+Gfx dITCommonObject_Gfx_0xC430[30] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0xC430.data.inc.c>
 };
 
 /* @ 0x0C520, 3824 bytes */
@@ -376,14 +975,35 @@ DObjDesc dITCommonObject_NyarsCoin_Weapon_data_DObjDesc[3] = {
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* @ 0xC5A4, 3692 bytes (vertex / DL / texture pool) */
-u8 dITCommonObject_NyarsCoin_Weapon_data_remainder[0xE6C] = {
-	#include <ITCommonObject/dITCommonObject_NyarsCoin_Weapon_data_remainder.data.inc.c>
+/* @ 0xC5A4, 60 bytes (raw gap) */
+u8 dITCommonObject_NyarsCoin_Weapon_data_remainder_gap_0xC5A4[0x3C] = {
+	#include <ITCommonObject/dITCommonObject_NyarsCoin_Weapon_data_remainder_gap_0xC5A4.data.inc.c>
+};
+
+/* @ 0xC5E0, 32 bytes (16-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0xC5E0[16] = {
+	#include <ITCommonObject/dITCommonObject_LUT_0xC5E0.data.inc.c>
+};
+
+/* @ 0xC600, 3600 bytes (trailing gap) */
+u8 dITCommonObject_NyarsCoin_Weapon_data_remainder_gap_0xC600[0xE10] = {
+	#include <ITCommonObject/dITCommonObject_NyarsCoin_Weapon_data_remainder_gap_0xC600.data.inc.c>
 };
 
 /* @ 0x0D410, 432 bytes */
-u8 dITCommonObject_Lizardon_Item_mobjsubs[0x1B0] = {
-	#include <ITCommonObject/Lizardon_Item_mobjsubs.data.inc.c>
+/* @ 0xD410, 144 bytes (raw gap) */
+u8 dITCommonObject_Lizardon_Item_mobjsubs_gap_0xD410[0x90] = {
+	#include <ITCommonObject/dITCommonObject_Lizardon_Item_mobjsubs_gap_0xD410.data.inc.c>
+};
+
+/* @ 0xD4A0, 64 bytes (4 vertices) */
+Vtx dITCommonObject_Vtx_0xD4A0[4] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0xD4A0.data.inc.c>
+};
+
+/* @ 0xD4E0, 224 bytes (28 Gfx commands) */
+Gfx dITCommonObject_Gfx_0xD4E0[28] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0xD4E0.data.inc.c>
 };
 
 /* @ 0x0D5C0, 1968 bytes */
@@ -393,14 +1013,35 @@ DObjDesc dITCommonObject_Lizardon_Item_data_DObjDesc[3] = {
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* @ 0xD644, 1836 bytes (vertex / DL / texture pool) */
-u8 dITCommonObject_Lizardon_Item_data_remainder[0x72C] = {
-	#include <ITCommonObject/dITCommonObject_Lizardon_Item_data_remainder.data.inc.c>
+/* @ 0xD644, 244 bytes (raw gap) */
+u8 dITCommonObject_Lizardon_Item_data_remainder_gap_0xD644[0xF4] = {
+	#include <ITCommonObject/dITCommonObject_Lizardon_Item_data_remainder_gap_0xD644.data.inc.c>
+};
+
+/* @ 0xD738, 32 bytes (16-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0xD738[16] = {
+	#include <ITCommonObject/dITCommonObject_LUT_0xD738.data.inc.c>
+};
+
+/* @ 0xD758, 1560 bytes (trailing gap) */
+u8 dITCommonObject_Lizardon_Item_data_remainder_gap_0xD758[0x618] = {
+	#include <ITCommonObject/dITCommonObject_Lizardon_Item_data_remainder_gap_0xD758.data.inc.c>
 };
 
 /* @ 0x0DD70, 456 bytes */
-u8 dITCommonObject_Spear_Item_mobjsubs[0x1C8] = {
-	#include <ITCommonObject/Spear_Item_mobjsubs.data.inc.c>
+/* @ 0xDD70, 152 bytes (raw gap) */
+u8 dITCommonObject_Spear_Item_mobjsubs_gap_0xDD70[0x98] = {
+	#include <ITCommonObject/dITCommonObject_Spear_Item_mobjsubs_gap_0xDD70.data.inc.c>
+};
+
+/* @ 0xDE08, 64 bytes (4 vertices) */
+Vtx dITCommonObject_Vtx_0xDE08[4] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0xDE08.data.inc.c>
+};
+
+/* @ 0xDE48, 240 bytes (30 Gfx commands) */
+Gfx dITCommonObject_Gfx_0xDE48[30] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0xDE48.data.inc.c>
 };
 
 /* @ 0x0DF38, 936 bytes */
@@ -417,8 +1058,19 @@ u8 dITCommonObject_Spear_Item_data_remainder[0x2F8] = {
 };
 
 /* @ 0x0E2E0, 456 bytes */
-u8 dITCommonObject_SpearSwarm_Weapon_mobjsubs[0x1C8] = {
-	#include <ITCommonObject/SpearSwarm_Weapon_mobjsubs.data.inc.c>
+/* @ 0xE2E0, 152 bytes (raw gap) */
+u8 dITCommonObject_SpearSwarm_Weapon_mobjsubs_gap_0xE2E0[0x98] = {
+	#include <ITCommonObject/dITCommonObject_SpearSwarm_Weapon_mobjsubs_gap_0xE2E0.data.inc.c>
+};
+
+/* @ 0xE378, 64 bytes (4 vertices) */
+Vtx dITCommonObject_Vtx_0xE378[4] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0xE378.data.inc.c>
+};
+
+/* @ 0xE3B8, 240 bytes (30 Gfx commands) */
+Gfx dITCommonObject_Gfx_0xE3B8[30] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0xE3B8.data.inc.c>
 };
 
 /* @ 0x0E4A8, 184 bytes */
@@ -446,14 +1098,60 @@ DObjDesc dITCommonObject_Kamex_Item_data_DObjDesc[3] = {
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* @ 0xEAE4, 3036 bytes (vertex / DL / texture pool) */
-u8 dITCommonObject_Kamex_Item_data_remainder[0xBDC] = {
-	#include <ITCommonObject/dITCommonObject_Kamex_Item_data_remainder.data.inc.c>
+/* @ 0xEAE4, 1108 bytes (raw gap) */
+u8 dITCommonObject_Kamex_Item_data_remainder_gap_0xEAE4[0x454] = {
+	#include <ITCommonObject/dITCommonObject_Kamex_Item_data_remainder_gap_0xEAE4.data.inc.c>
+};
+
+/* @ 0xEF38, 32 bytes (16-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0xEF38[16] = {
+	#include <ITCommonObject/dITCommonObject_LUT_0xEF38.data.inc.c>
+};
+
+/* @ 0xEF58, 88 bytes (raw gap) */
+u8 dITCommonObject_Kamex_Item_data_remainder_gap_0xEF58[0x58] = {
+	#include <ITCommonObject/dITCommonObject_Kamex_Item_data_remainder_gap_0xEF58.data.inc.c>
+};
+
+/* @ 0xEFB0, 32 bytes (16-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0xEFB0[16] = {
+	#include <ITCommonObject/dITCommonObject_LUT_0xEFB0.data.inc.c>
+};
+
+/* @ 0xEFD0, 1776 bytes (trailing gap) */
+u8 dITCommonObject_Kamex_Item_data_remainder_gap_0xEFD0[0x6F0] = {
+	#include <ITCommonObject/dITCommonObject_Kamex_Item_data_remainder_gap_0xEFD0.data.inc.c>
 };
 
 /* @ 0x0F6C0, 792 bytes */
-u8 dITCommonObject_KamexHydro_Weapon_mobjsubs[0x318] = {
-	#include <ITCommonObject/KamexHydro_Weapon_mobjsubs.data.inc.c>
+/* @ 0xF6C0, 296 bytes (raw gap) */
+u8 dITCommonObject_KamexHydro_Weapon_mobjsubs_gap_0xF6C0[0x128] = {
+	#include <ITCommonObject/dITCommonObject_KamexHydro_Weapon_mobjsubs_gap_0xF6C0.data.inc.c>
+};
+
+/* @ 0xF7E8, 64 bytes (4 vertices) */
+Vtx dITCommonObject_Vtx_0xF7E8[4] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0xF7E8.data.inc.c>
+};
+
+/* @ 0xF828, 32 bytes (2 vertices) */
+Vtx dITCommonObject_Vtx_0xF828[2] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0xF828.data.inc.c>
+};
+
+/* @ 0xF848, 96 bytes (12 Gfx commands) */
+Gfx dITCommonObject_Gfx_0xF848[12] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0xF848.data.inc.c>
+};
+
+/* @ 0xF8A8, 120 bytes (15 Gfx commands) */
+Gfx dITCommonObject_Gfx_0xF8A8[15] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0xF8A8.data.inc.c>
+};
+
+/* @ 0xF920, 184 bytes (23 Gfx commands) */
+Gfx dITCommonObject_Gfx_0xF920[23] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0xF920.data.inc.c>
 };
 
 /* @ 0x0F9D8, 184 bytes */
@@ -487,9 +1185,29 @@ DObjDesc dITCommonObject_MLucky_Item_data_DObjDesc[4] = {
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* @ 0x100B0, 1008 bytes (vertex / DL / texture pool) */
-u8 dITCommonObject_MLucky_Item_data_remainder[0x3F0] = {
-	#include <ITCommonObject/dITCommonObject_MLucky_Item_data_remainder.data.inc.c>
+/* @ 0x100B0, 168 bytes (raw gap) */
+u8 dITCommonObject_MLucky_Item_data_remainder_gap_0x100B0[0xA8] = {
+	#include <ITCommonObject/dITCommonObject_MLucky_Item_data_remainder_gap_0x100B0.data.inc.c>
+};
+
+/* @ 0x10158, 32 bytes (16-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0x10158[16] = {
+	#include <ITCommonObject/dITCommonObject_LUT_0x10158.data.inc.c>
+};
+
+/* @ 0x10178, 520 bytes (raw gap) */
+u8 dITCommonObject_MLucky_Item_data_remainder_gap_0x10178[0x208] = {
+	#include <ITCommonObject/dITCommonObject_MLucky_Item_data_remainder_gap_0x10178.data.inc.c>
+};
+
+/* @ 0x10380, 48 bytes (3 vertices) */
+Vtx dITCommonObject_Vtx_0x10380[3] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0x10380.data.inc.c>
+};
+
+/* @ 0x103B0, 240 bytes (30 Gfx commands) */
+Gfx dITCommonObject_Gfx_0x103B0[30] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0x103B0.data.inc.c>
 };
 
 /* @ 0x104A0, 176 bytes */
@@ -505,9 +1223,19 @@ u32 dITCommonObject_Egg_Item_animjoints[740] = {
 	#include <ITCommonObject/Egg_Item_animjoints.data.inc.c>
 };
 
-/* @ 0x110E0, 448 bytes */
-u8 dITCommonObject_Starmie_Item_mobjsubs[0x1C0] = {
-	#include <ITCommonObject/Starmie_Item_mobjsubs.data.inc.c>
+/* @ 0x110E0, 160 bytes (raw gap) */
+u8 dITCommonObject_Starmie_Item_mobjsubs_gap_0x110E0[0xA0] = {
+	#include <ITCommonObject/dITCommonObject_Starmie_Item_mobjsubs_gap_0x110E0.data.inc.c>
+};
+
+/* @ 0x11180, 48 bytes (3 vertices) */
+Vtx dITCommonObject_Vtx_0x11180[3] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0x11180.data.inc.c>
+};
+
+/* @ 0x111B0, 240 bytes (30 Gfx commands) */
+Gfx dITCommonObject_Gfx_0x111B0[30] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0x111B0.data.inc.c>
 };
 
 /* @ 0x112A0, 1848 bytes */
@@ -529,9 +1257,29 @@ DObjDesc dITCommonObject_StarmieSwift_Weapon_data_DObjDesc[3] = {
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* @ 0x11A5C, 1252 bytes (vertex / DL / texture pool) */
-u8 dITCommonObject_StarmieSwift_Weapon_data_remainder[0x4E4] = {
-	#include <ITCommonObject/dITCommonObject_StarmieSwift_Weapon_data_remainder.data.inc.c>
+/* @ 0x11A5C, 12 bytes (raw gap) */
+u8 dITCommonObject_StarmieSwift_Weapon_data_remainder_gap_0x11A5C[0xC] = {
+	#include <ITCommonObject/dITCommonObject_StarmieSwift_Weapon_data_remainder_gap_0x11A5C.data.inc.c>
+};
+
+/* @ 0x11A68, 32 bytes (16-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0x11A68[16] = {
+	#include <ITCommonObject/dITCommonObject_LUT_0x11A68.data.inc.c>
+};
+
+/* @ 0x11A88, 904 bytes (raw gap) */
+u8 dITCommonObject_StarmieSwift_Weapon_data_remainder_gap_0x11A88[0x388] = {
+	#include <ITCommonObject/dITCommonObject_StarmieSwift_Weapon_data_remainder_gap_0x11A88.data.inc.c>
+};
+
+/* @ 0x11E10, 64 bytes (4 vertices) */
+Vtx dITCommonObject_Vtx_0x11E10[4] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0x11E10.data.inc.c>
+};
+
+/* @ 0x11E50, 240 bytes (30 Gfx commands) */
+Gfx dITCommonObject_Gfx_0x11E50[30] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0x11E50.data.inc.c>
 };
 
 /* @ 0x11F40, 2272 bytes */
@@ -541,9 +1289,29 @@ DObjDesc dITCommonObject_Sawamura_Item_data_DObjDesc[3] = {
 	{ 18, NULL, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
-/* @ 0x11FC4, 2140 bytes (vertex / DL / texture pool) */
-u8 dITCommonObject_Sawamura_Item_data_remainder[0x85C] = {
-	#include <ITCommonObject/dITCommonObject_Sawamura_Item_data_remainder.data.inc.c>
+/* @ 0x11FC4, 1284 bytes (raw gap) */
+u8 dITCommonObject_Sawamura_Item_data_remainder_gap_0x11FC4[0x504] = {
+	#include <ITCommonObject/dITCommonObject_Sawamura_Item_data_remainder_gap_0x11FC4.data.inc.c>
+};
+
+/* @ 0x124C8, 32 bytes (16-color RGBA5551 palette) */
+u16 dITCommonObject_LUT_0x124C8[16] = {
+	#include <ITCommonObject/dITCommonObject_LUT_0x124C8.data.inc.c>
+};
+
+/* @ 0x124E8, 520 bytes (raw gap) */
+u8 dITCommonObject_Sawamura_Item_data_remainder_gap_0x124E8[0x208] = {
+	#include <ITCommonObject/dITCommonObject_Sawamura_Item_data_remainder_gap_0x124E8.data.inc.c>
+};
+
+/* @ 0x126F0, 64 bytes (4 vertices) */
+Vtx dITCommonObject_Vtx_0x126F0[4] = {
+	#include <ITCommonObject/dITCommonObject_Vtx_0x126F0.data.inc.c>
+};
+
+/* @ 0x12730, 240 bytes (30 Gfx commands) */
+Gfx dITCommonObject_Gfx_0x12730[30] = {
+	#include <ITCommonObject/dITCommonObject_Gfx_0x12730.data.inc.c>
 };
 
 /* @ 0x12820, 1880 bytes */

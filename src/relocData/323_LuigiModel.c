@@ -6,6 +6,9 @@
 
 #include "relocdata_types.h"
 
+/* Forward DObjDesc chain-target decls for fixRelocChain.py */
+extern u8 dLuigiModel_gap_0x28E0_sub_0x37C[];
+
 
 #if defined(REGION_JP)
 
@@ -260,7 +263,7 @@ DObjDesc dLuigiModel_JointTree[] = {
 	{ 1, (void*)0x00000000, { 0.0f, 30.0f, 120.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 8.090984187375438e-33f }, { 0.0f, 8.139133170669088e-33f, 8.187282153962739e-33f }, { 8.28357938586607e-33f, 0.0f, 8.3798766177694e-33f } },
-	{ 0, (void*)0x0A2F0B17, { 8.476178257776547e-33f, 8.620623738289559e-33f, 0.0f }, { 0.0f, 8.66877272158321e-33f, 8.861366450705902e-33f }, { 0.0f, 0.0f, 0.0f } },
+	{ 0, (void *)dLuigiModel_gap_0x28E0_sub_0x37C, { 8.476178257776547e-33f, 8.620623738289559e-33f, 0.0f }, { 0.0f, 8.66877272158321e-33f, 8.861366450705902e-33f }, { 0.0f, 0.0f, 0.0f } },
 };
 
 /* Raw data from file offset 0x28E0 to 0x3590 (3248 bytes) */

@@ -6,6 +6,10 @@
 
 #include "relocdata_types.h"
 
+/* Forward DObjDesc chain-target decls for fixRelocChain.py */
+extern u8 dLinkModel_gap_0x40EC_sub_0x234[];
+extern u8 dLinkModel_gap_0x7AE0_sub_0x214[];
+
 /* Raw data from file offset 0x0000 to 0x0020 (32 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
 u8 dLinkModel_gap_0x0000[8] = {
@@ -398,7 +402,7 @@ DObjDesc dLinkModel_JointTree[] = {
 	{ 1, (void*)0x00000000, { 0.0f, -249.00003051757812f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 3.3539507248848087e-29f }, { 3.393394071072413e-29f, 0.0f, 3.4920019851515934e-29f }, { 0.0f, 0.0f, 0.0f } },
-	{ 0, (void*)0x103B10C8, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
+	{ 0, (void *)dLinkModel_gap_0x40EC_sub_0x234, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
 /* Raw data from file offset 0x40EC to 0x48F8 (2060 bytes) */
@@ -994,7 +998,7 @@ DObjDesc dLinkModel_JointTree_0x74B0[] = {
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 	{ 0, (void*)0x00000000, { 1.631829116025795e-20f, 1.653005101265866e-20f, 0.0f }, { 1.705944822027973e-20f, 0.0f, 0.0f }, { 0.0f, 0.0f, 1.811824101993474e-20f } },
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 1.822412175392866e-20f, 1.8435884837503638e-20f } },
-	{ 0, (void*)0x1EB31F3D, { 0.0f, 0.0f, 0.0f }, { 0.0f, 3.8354083795050837e-20f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
+	{ 0, (void *)dLinkModel_gap_0x7AE0_sub_0x214, { 0.0f, 0.0f, 0.0f }, { 0.0f, 3.8354083795050837e-20f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 };
 
 /* Raw data from file offset 0x7AE0 to 0x7D00 (544 bytes) */

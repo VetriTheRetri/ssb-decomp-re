@@ -6,6 +6,9 @@
 
 #include "relocdata_types.h"
 
+/* Forward DObjDesc chain-target decls for fixRelocChain.py */
+extern u8 dNessModel_gap_0x553C_sub_0x1FC[];
+
 /* Vtx: JointVerts @ 0x0 (2 vertices) */
 Vtx dNessModel_JointVerts_Vtx[2] = {
 	#include <NessModel/JointVerts.vtx.inc.c>
@@ -838,7 +841,7 @@ DObjDesc dNessModel_JointTree_0x4FE8[] = {
 	{ 1, (void*)0x00000000, { 0.0f, 0.0f, 120.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 3.636788980768816e-26f }, { 0.0f, 3.717569261909821e-26f, 0.0f }, { 0.0f, 0.0f, 3.7579592484059276e-26f } },
-	{ 0, (void*)0x154215CE, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 3.939714033564013e-26f, 4.040688537581094e-26f } },
+	{ 0, (void *)dNessModel_gap_0x553C_sub_0x1FC, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 3.939714033564013e-26f, 4.040688537581094e-26f } },
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 4.060883684903543e-26f }, { 8.040988629410036e-26f, 0.0f, 2.5849394142282115e-26f }, { 0.0f, 2.5849397223770026e-26f, 1.0f } },
 };
 

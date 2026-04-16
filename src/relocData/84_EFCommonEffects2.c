@@ -6,6 +6,10 @@
 
 #include "relocdata_types.h"
 
+/* Forward DObjDesc chain-target decls for fixRelocChain.py */
+extern u8 dEFCommonEffects2_gap_0x4F34_sub_0x14C[];
+extern u8 dEFCommonEffects2_gap_0x6B6C_sub_0x74[];
+
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dEFCommonEffects2_gap_0x1F18[];
 
@@ -429,7 +433,7 @@ u8 dEFCommonEffects2_Shadow_TextureImage[5280] = {
 
 /* DObjDesc: DeadExplodeDefaultDObjDesc @ 0x4F08 (1 entries) */
 DObjDesc dEFCommonEffects2_DeadExplodeDefaultDObjDesc[] = {
-	{ 0, (void*)0x13C41420, { 4.974964395099933e-27f, 8.081907707380465e-27f, 1.0789998175301091e-42f }, { 0.0f, 2.938735877055719e-39f, 5.877561437213154e-39f }, { 0.0f, 0.0f, 0.0f } },
+	{ 0, (void *)dEFCommonEffects2_gap_0x4F34_sub_0x14C, { 4.974964395099933e-27f, 8.081907707380465e-27f, 1.0789998175301091e-42f }, { 0.0f, 2.938735877055719e-39f, 5.877561437213154e-39f }, { 0.0f, 0.0f, 0.0f } },
 };
 
 /* Raw data from file offset 0x4F34 to 0x53E8 (1204 bytes) */
@@ -573,7 +577,7 @@ u32 dEFCommonEffects2_DeadExplode3_MatAnimJoint[1148] = {
 
 /* DObjDesc: NessPKFlashDObjDesc @ 0x6B40 (1 entries) */
 DObjDesc dEFCommonEffects2_NessPKFlashDObjDesc[] = {
-	{ 0, (void*)0x1AD21AF8, { 8.731006476080497e-23f, 8.772283465174005e-23f, 8.813560454267514e-23f }, { 8.854837443361022e-23f, 8.89611443245453e-23f, 8.937391421548039e-23f }, { 8.978668410641547e-23f, 9.061304430362707e-23f, 7.20267410662956e-43f } },
+	{ 0, (void *)dEFCommonEffects2_gap_0x6B6C_sub_0x74, { 8.731006476080497e-23f, 8.772283465174005e-23f, 8.813560454267514e-23f }, { 8.854837443361022e-23f, 8.89611443245453e-23f, 8.937391421548039e-23f }, { 8.978668410641547e-23f, 9.061304430362707e-23f, 7.20267410662956e-43f } },
 };
 
 /* Raw data from file offset 0x6B6C to 0x6D00 (404 bytes) */

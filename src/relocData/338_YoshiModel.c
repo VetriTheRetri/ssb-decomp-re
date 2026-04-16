@@ -6,6 +6,9 @@
 
 #include "relocdata_types.h"
 
+/* Forward DObjDesc chain-target decls for fixRelocChain.py */
+extern u8 dYoshiModel_gap_0x38F4_sub_0x708[];
+
 /* Raw data from file offset 0x0000 to 0x0020 (32 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
 u8 dYoshiModel_gap_0x0000[8] = {
@@ -409,7 +412,7 @@ DObjDesc dYoshiModel_JointTree[] = {
 	{ 1, (void*)0x00000000, { 0.0f, -168.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 	{ 0, (void*)0x00000000, { 2.0961795183637217e-30f, 2.1085062223241845e-30f, 2.157810216979594e-30f }, { 0.0f, 0.0f, 0.0f }, { 2.170137109019153e-30f, 2.1824632487423273e-30f, 2.20711534010958e-30f } },
-	{ 0, (void*)0x0E340FFF, { 2.231767619555929e-30f, 2.2564197109231817e-30f, 0.0f }, { 2.268745850646356e-30f, 2.293397942013609e-30f, 0.0f }, { 2.3057240817367833e-30f, 2.330376173104036e-30f, 0.0f } },
+	{ 0, (void *)dYoshiModel_gap_0x38F4_sub_0x708, { 2.231767619555929e-30f, 2.2564197109231817e-30f, 0.0f }, { 2.268745850646356e-30f, 2.293397942013609e-30f, 0.0f }, { 2.3057240817367833e-30f, 2.330376173104036e-30f, 0.0f } },
 };
 
 /* Raw data from file offset 0x38F4 to 0x4D98 (5284 bytes) */

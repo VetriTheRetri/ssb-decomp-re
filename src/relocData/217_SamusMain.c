@@ -4,15 +4,74 @@
 #include "relocdata_types.h"
 #include <ft/fttypes.h>
 
+extern u32 dSamusMainMotion_0x0084[];
+extern DObjDesc dSamusModel_JointTree[];
+extern DObjDesc dSamusModel_JointTree_0x69D0[];
+extern Gfx dSamusModel_Joint_0x20C8_DisplayList[];
+extern Gfx dSamusModel_Joint_0x2608_DisplayList[];
+extern Gfx dSamusModel_Joint_0x2C20_DisplayList[];
+extern Gfx dSamusModel_Joint_0x5960_DisplayList[];
+extern Gfx dSamusModel_Joint_0x5E00_DisplayList[];
+extern u8 dSamusModel_Tex_0xD618[];
+extern u8 dSamusModel_gap_0x3B24_sub_0x1150[];
+extern u8 dSamusModel_gap_0x3B24_sub_0x1174[];
+extern u8 dSamusModel_gap_0x3B24_sub_0x488[];
+extern u8 dSamusModel_gap_0x3B24_sub_0x4A0[];
+extern u8 dSamusModel_gap_0x3B24_sub_0x4DC[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x1184[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x13F0[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x148C[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x1734[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x1990[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x1A9C[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x1D2C[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x1DBC[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x1FC0[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x20DC[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x216C[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x2370[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x3D84[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x3D8C[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x3D94[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x3D9C[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x3DA4[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x3DAC[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x3DB4[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x3DBC[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x3DC4[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x3DCC[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x3DD4[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x3DDC[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x3DE4[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x3DEC[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x3DF4[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x3DFC[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x488[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x4A0[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x5FC[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x79C[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0x9B0[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0xADC[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0xBEC[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0xDB0[];
+extern u8 dSamusModel_gap_0x6FD4_sub_0xE4C[];
+extern u8 dSamusModel_gap_0xE240_sub_0x30[];
+extern u8 dSamusModel_gap_0xE240_sub_0x58[];
+extern u8 dSamusModel_gap_0xE240_sub_0x8[];
+extern u8 dSamusModel_gap_0xE240_sub_0x80[];
+extern u16 dSamusModel_palette_0xE220[];
+extern WPAttributes dSamusSpecial1_ChargeShot_WeaponAttributes;
+extern DObjDesc dSamusSpecial2_GrappleBeamDObjDesc[];
+
 /* Pre-attributes data (388 words, 0x0610 bytes) */
 /* @ 0x0000, 64 bytes: FTAttributes.file_handles target (was dSamusMain_pre+0x0) */
 u32 dSamusMain_file_handles[16] = {
 
-	0x00010021, /* extern -> 0x0084 */
-	0x000200E0, /* extern -> 0x0380 */
-	0x00030000, /* extern -> 0x0000 */
-	0x00043836, /* extern -> 0xE0D8 */
-	0x00483802, /* extern -> 0xE008 */
+	(u32)&dSamusMainMotion_0x0084, /* extern -> 0x0084 */
+	(u32)&dSamusSpecial2_GrappleBeamDObjDesc, /* extern -> 0x0380 */
+	(u32)&dSamusSpecial1_ChargeShot_WeaponAttributes, /* extern -> 0x0000 */
+	(u32)((u8*)dSamusModel_Tex_0xD618 + 0xAC0), /* extern -> 0xE0D8 */
+	(u32)((u8*)dSamusModel_Tex_0xD618 + 0x9F0), /* extern -> 0xE008 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -96,108 +155,108 @@ u32 dSamusMain_hiddenparts[52] = {
 
 /* @ 0x0120, 120 bytes: FTAttributes.sub_0x120 target (was dSamusMain_pre+0x120) */
 u32 dSamusMain_sub_0x120[30] = {
-	0x00490832, /* extern -> 0x20C8 */
+	(u32)&dSamusModel_Joint_0x20C8_DisplayList, /* extern -> 0x20C8 */
 	0x004A031D, /* extern -> 0x0C74 */
-	0x004D0FEB, /* extern -> 0x3FAC */
+	(u32)&dSamusModel_gap_0x3B24_sub_0x488, /* extern -> 0x3FAC */
 	0x00000000,
 	0x00000000,
-	0x004E1658, /* extern -> 0x5960 */
-	0x004F131D, /* extern -> 0x4C74 */
-	0x00521D17, /* extern -> 0x745C */
+	(u32)&dSamusModel_Joint_0x5960_DisplayList, /* extern -> 0x5960 */
+	(u32)&dSamusModel_gap_0x3B24_sub_0x1150, /* extern -> 0x4C74 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x488, /* extern -> 0x745C */
 	0x00000000,
 	0x00000000,
-	0x00532056, /* extern -> 0x8158 */
-	0x00541F88, /* extern -> 0x7E20 */
-	0x005720F1, /* extern -> 0x83C4 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x1184, /* extern -> 0x8158 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0xE4C, /* extern -> 0x7E20 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x13F0, /* extern -> 0x83C4 */
 	0x00000000,
 	0x00000000,
-	0x00582056, /* extern -> 0x8158 */
-	0x00591F88, /* extern -> 0x7E20 */
-	0x005C20F1, /* extern -> 0x83C4 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x1184, /* extern -> 0x8158 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0xE4C, /* extern -> 0x7E20 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x13F0, /* extern -> 0x83C4 */
 	0x00000000,
 	0x00000000,
-	0x005D21C2, /* extern -> 0x8708 */
-	0x005E2118, /* extern -> 0x8460 */
-	0x00612259, /* extern -> 0x8964 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x1734, /* extern -> 0x8708 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x148C, /* extern -> 0x8460 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x1990, /* extern -> 0x8964 */
 	0x00000000,
 	0x00000000,
-	0x006221C2, /* extern -> 0x8708 */
-	0x00632118, /* extern -> 0x8460 */
-	0x00662259, /* extern -> 0x8964 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x1734, /* extern -> 0x8708 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x148C, /* extern -> 0x8460 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x1990, /* extern -> 0x8964 */
 	0x00000000,
 	0x00000000,
 };
 
 /* @ 0x0198, 80 bytes: FTAttributes.sub_0x198 target (was dSamusMain_pre+0x198) */
 u32 dSamusMain_sub_0x198[20] = {
-	0x00670982, /* extern -> 0x2608 */
+	(u32)&dSamusModel_Joint_0x2608_DisplayList, /* extern -> 0x2608 */
 	0x00680326, /* extern -> 0x0C98 */
-	0x006B0FF1, /* extern -> 0x3FC4 */
+	(u32)&dSamusModel_gap_0x3B24_sub_0x4A0, /* extern -> 0x3FC4 */
 	0x00000000,
 	0x00000000,
-	0x006C1780, /* extern -> 0x5E00 */
-	0x006D1326, /* extern -> 0x4C98 */
-	0x00701D1D, /* extern -> 0x7474 */
+	(u32)&dSamusModel_Joint_0x5E00_DisplayList, /* extern -> 0x5E00 */
+	(u32)&dSamusModel_gap_0x3B24_sub_0x1174, /* extern -> 0x4C98 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x4A0, /* extern -> 0x7474 */
 	0x00000000,
 	0x00000000,
-	0x00711DDC, /* extern -> 0x7770 */
-	0x00721D74, /* extern -> 0x75D0 */
-	0x00751E61, /* extern -> 0x7984 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x79C, /* extern -> 0x7770 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x5FC, /* extern -> 0x75D0 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x9B0, /* extern -> 0x7984 */
 	0x00000000,
 	0x00000000,
-	0x00761EF0, /* extern -> 0x7BC0 */
-	0x00771EAC, /* extern -> 0x7AB0 */
-	0x007A1F61, /* extern -> 0x7D84 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0xBEC, /* extern -> 0x7BC0 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0xADC, /* extern -> 0x7AB0 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0xDB0, /* extern -> 0x7D84 */
 	0x00000000,
 	0x00000000,
 };
 
 /* @ 0x01E8, 40 bytes: FTAttributes.sub_0x1E8 target (was dSamusMain_pre+0x1E8) */
 u32 dSamusMain_sub_0x1E8[10] = {
-	0x007B2364, /* extern -> 0x8D90 */
-	0x007D2340, /* extern -> 0x8D00 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x1DBC, /* extern -> 0x8D90 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x1D2C, /* extern -> 0x8D00 */
 	0x00000000,
-	0x007F23E5, /* extern -> 0x8F94 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x1FC0, /* extern -> 0x8F94 */
 	0x00000000,
-	0x00802364, /* extern -> 0x8D90 */
-	0x00822340, /* extern -> 0x8D00 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x1DBC, /* extern -> 0x8D90 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x1D2C, /* extern -> 0x8D00 */
 	0x00000000,
-	0x008423E5, /* extern -> 0x8F94 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x1FC0, /* extern -> 0x8F94 */
 	0x00000000,
 };
 
 /* @ 0x0210, 40 bytes: FTAttributes.sub_0x210 target (was dSamusMain_pre+0x210) */
 u32 dSamusMain_sub_0x210[10] = {
-	0x00852450, /* extern -> 0x9140 */
-	0x0087242C, /* extern -> 0x90B0 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x216C, /* extern -> 0x9140 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x20DC, /* extern -> 0x90B0 */
 	0x00000000,
-	0x008924D1, /* extern -> 0x9344 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x2370, /* extern -> 0x9344 */
 	0x00000000,
-	0x008A2450, /* extern -> 0x9140 */
-	0x008C242C, /* extern -> 0x90B0 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x216C, /* extern -> 0x9140 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x20DC, /* extern -> 0x90B0 */
 	0x00000000,
-	0x008E24D1, /* extern -> 0x9344 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x2370, /* extern -> 0x9344 */
 	0x00000000,
 };
 
 /* @ 0x0238, 80 bytes: FTAttributes.sub_0x238 target (was dSamusMain_pre+0x238) */
 u32 dSamusMain_sub_0x238[20] = {
-	0x00930B08, /* extern -> 0x2C20 */
+	(u32)&dSamusModel_Joint_0x2C20_DisplayList, /* extern -> 0x2C20 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00980B08, /* extern -> 0x2C20 */
+	(u32)&dSamusModel_Joint_0x2C20_DisplayList, /* extern -> 0x2C20 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x009D229C, /* extern -> 0x8A70 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x1A9C, /* extern -> 0x8A70 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00C3229C, /* extern -> 0x8A70 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x1A9C, /* extern -> 0x8A70 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -208,25 +267,25 @@ u32 dSamusMain_sub_0x238[20] = {
 u32 dSamusMain_modelparts_container[33] = {
 	0x00000000,
 	0x00000000,
-	0x00A80048, /* intern -> 0x0120 */
+	(u32)dSamusMain_sub_0x120, /* intern -> 0x0120 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00AF0066, /* intern -> 0x0198 */
+	(u32)dSamusMain_sub_0x198, /* intern -> 0x0198 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00B0007A, /* intern -> 0x01E8 */
-	0x00B10084, /* intern -> 0x0210 */
-	0x00B20084, /* intern -> 0x0210 */
-	0x00B30084, /* intern -> 0x0210 */
-	0x00B40084, /* intern -> 0x0210 */
-	0x00B60084, /* intern -> 0x0210 */
+	(u32)dSamusMain_sub_0x1E8, /* intern -> 0x01E8 */
+	(u32)dSamusMain_sub_0x210, /* intern -> 0x0210 */
+	(u32)dSamusMain_sub_0x210, /* intern -> 0x0210 */
+	(u32)dSamusMain_sub_0x210, /* intern -> 0x0210 */
+	(u32)dSamusMain_sub_0x210, /* intern -> 0x0210 */
+	(u32)dSamusMain_sub_0x210, /* intern -> 0x0210 */
 	0x00000000,
-	0x013D008E, /* intern -> 0x0238 */
+	(u32)dSamusMain_sub_0x238, /* intern -> 0x0238 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -243,13 +302,13 @@ u32 dSamusMain_modelparts_container[33] = {
 
 /* @ 0x030C, 32 bytes: FTAttributes.commonparts_container target (was dSamusMain_pre+0x30C) */
 u32 dSamusMain_commonparts_container[8] = {
-	0x00C40D48, /* extern -> 0x3520 */
+	(u32)&dSamusModel_JointTree, /* extern -> 0x3520 */
 	0x00C50000, /* extern -> 0x0000 */
-	0x00C70EC0, /* extern -> 0x3B00 */
+	(u32)((u8*)dSamusModel_JointTree + 0x5E0), /* extern -> 0x3B00 */
 	0x00000000,
-	0x00C81A74, /* extern -> 0x69D0 */
-	0x00C91000, /* extern -> 0x4000 */
-	0x01371BEC, /* extern -> 0x6FB0 */
+	(u32)&dSamusModel_JointTree_0x69D0, /* extern -> 0x69D0 */
+	(u32)&dSamusModel_gap_0x3B24_sub_0x4DC, /* extern -> 0x4000 */
+	(u32)((u8*)dSamusModel_JointTree_0x69D0 + 0x5E0), /* extern -> 0x6FB0 */
 	0x00000000,
 };
 
@@ -367,53 +426,47 @@ u32 dSamusMain_thrown_status[108] = {
 
 /* @ 0x04DC, 20 bytes: FTAttributes.sub_0x4DC target (was dSamusMain_pre+0x4DC) */
 u32 dSamusMain_sub_0x4DC[5] = {
-	0x01383888, /* extern -> 0xE220 */
-	0x01393892, /* extern -> 0xE248 */
-	0x013A389C, /* extern -> 0xE270 */
-	0x013B38A6, /* extern -> 0xE298 */
-	0x013C38B0, /* extern -> 0xE2C0 */
+	(u32)&dSamusModel_palette_0xE220, /* extern -> 0xE220 */
+	(u32)&dSamusModel_gap_0xE240_sub_0x8, /* extern -> 0xE248 */
+	(u32)&dSamusModel_gap_0xE240_sub_0x30, /* extern -> 0xE270 */
+	(u32)&dSamusModel_gap_0xE240_sub_0x58, /* extern -> 0xE298 */
+	(u32)&dSamusModel_gap_0xE240_sub_0x80, /* extern -> 0xE2C0 */
 };
 
 /* @ 0x04F0, 12 bytes: FTAttributes.sprites target (was dSamusMain_pre+0x4F0) */
 u32 dSamusMain_sprites[3] = {
-	0x013E38BC, /* extern -> 0xE2F0 */
-	0x01820137, /* intern -> 0x04DC */
-	0x01413942, /* extern -> 0xE508 */
+	(u32)((u8*)dSamusModel_gap_0xE240_sub_0x80 + 0x30), /* extern -> 0xE2F0 */
+	(u32)dSamusMain_sub_0x4DC, /* intern -> 0x04DC */
+	(u32)((u8*)dSamusModel_gap_0xE240_sub_0x80 + 0x248), /* extern -> 0xE508 */
 };
 
 /* @ 0x04FC, 264 bytes: FTAttributes.sub_0x4FC target (was dSamusMain_pre+0x4FC) */
 u32 dSamusMain_sub_0x4FC[66] = {
 	0x00000000,
 	0x01000000,
-	0x01432B56, /* extern -> 0xAD58 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x3D84, /* extern -> 0xAD58 */
 	0x01000000,
-	0x01452B58, /* extern -> 0xAD60 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x3D8C, /* extern -> 0xAD60 */
 	0x01000000,
-	0x01472B5A, /* extern -> 0xAD68 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x3D94, /* extern -> 0xAD68 */
 	0x01000000,
-	0x01492B5C, /* extern -> 0xAD70 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x3D9C, /* extern -> 0xAD70 */
 	0x01000000,
-	0x014B2B5E, /* extern -> 0xAD78 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x3DA4, /* extern -> 0xAD78 */
 	0x01000000,
-	0x01512B60, /* extern -> 0xAD80 */
-	0x01000000,
-	0x00000000,
-	0x01000000,
-	0x00000000,
-	0x01000000,
-	0x01532B62, /* extern -> 0xAD88 */
-	0x01000000,
-	0x01552B64, /* extern -> 0xAD90 */
-	0x01000000,
-	0x01572B66, /* extern -> 0xAD98 */
-	0x01000000,
-	0x016D2B68, /* extern -> 0xADA0 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x3DAC, /* extern -> 0xAD80 */
 	0x01000000,
 	0x00000000,
 	0x01000000,
 	0x00000000,
 	0x01000000,
-	0x00000000,
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x3DB4, /* extern -> 0xAD88 */
+	0x01000000,
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x3DBC, /* extern -> 0xAD90 */
+	0x01000000,
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x3DC4, /* extern -> 0xAD98 */
+	0x01000000,
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x3DCC, /* extern -> 0xADA0 */
 	0x01000000,
 	0x00000000,
 	0x01000000,
@@ -429,23 +482,29 @@ u32 dSamusMain_sub_0x4FC[66] = {
 	0x01000000,
 	0x00000000,
 	0x01000000,
-	0x016F2B6A, /* extern -> 0xADA8 */
-	0x01000000,
-	0x01732B6C, /* extern -> 0xADB0 */
+	0x00000000,
 	0x01000000,
 	0x00000000,
 	0x01000000,
-	0x01772B6E, /* extern -> 0xADB8 */
+	0x00000000,
+	0x01000000,
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x3DD4, /* extern -> 0xADA8 */
+	0x01000000,
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x3DDC, /* extern -> 0xADB0 */
 	0x01000000,
 	0x00000000,
 	0x01000000,
-	0x01792B70, /* extern -> 0xADC0 */
-	0x01000000,
-	0x017D2B72, /* extern -> 0xADC8 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x3DE4, /* extern -> 0xADB8 */
 	0x01000000,
 	0x00000000,
 	0x01000000,
-	0x023A2B74, /* extern -> 0xADD0 */
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x3DEC, /* extern -> 0xADC0 */
+	0x01000000,
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x3DF4, /* extern -> 0xADC8 */
+	0x01000000,
+	0x00000000,
+	0x01000000,
+	(u32)&dSamusModel_gap_0x6FD4_sub_0x3DFC, /* extern -> 0xADD0 */
 	0x01000000,
 	0x00000000,
 	0x01000000,
@@ -454,7 +513,7 @@ u32 dSamusMain_sub_0x4FC[66] = {
 /* @ 0x0604, 12 bytes: FTAttributes.skeleton target (was dSamusMain_pre+0x604) */
 u32 dSamusMain_skeleton[3] = {
 	0x0000000D,
-	0x022B013F, /* intern -> 0x04FC */
+	(u32)dSamusMain_sub_0x4FC, /* intern -> 0x04FC */
 	0x00000000,
 };
 
@@ -548,13 +607,13 @@ FTAttributes dSamusMain_attr = {
 		{ 28, 0, FALSE, { 80.0f, 0.0f, 0.0f }, { 203.0f, 56.0f, 64.0f } },
 	},
 	{ 1200.0f, 600.0f, 1200.0f }, /* hit_detect_range */
-	NULL, /* setup_parts */
-	NULL, /* animlock */
+	(u32*)dSamusMain_setup_parts, /* setup_parts */
+	(u32*)dSamusMain_animlock, /* animlock */
 	{ 13, 16, 28, 33, 9 }, /* effect_joint_ids */
 	{ FALSE, TRUE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	0, /* unused_0x2CC */
-	NULL, /* hiddenparts */
-	NULL, /* commonparts_container */
+	(FTHiddenPart*)dSamusMain_hiddenparts, /* hiddenparts */
+	(FTCommonPartContainer*)dSamusMain_commonparts_container, /* commonparts_container */
 	NULL, /* dobj_lookup */
 	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
 	31, /* joint_rfoot_id */
@@ -565,14 +624,14 @@ FTAttributes dSamusMain_attr = {
 	100.0f, /* unk_0x31C */
 	0.5235988f, /* unk_0x320 */
 	NULL, /* translate_scales */
-	NULL, /* modelparts_container */
+	(FTModelPartContainer*)dSamusMain_modelparts_container, /* modelparts_container */
 	NULL, /* accesspart */
 	NULL, /* textureparts_container */
 	36, /* joint_itemheavy_id */
-	NULL, /* thrown_status */
+	(FTThrownStatusArray*)dSamusMain_thrown_status, /* thrown_status */
 	11, /* joint_itemlight_id */
-	NULL, /* sprites */
-	NULL, /* skeleton */
+	(FTSprites*)dSamusMain_sprites, /* sprites */
+	(FTSkeleton**)dSamusMain_skeleton, /* skeleton */
 };
 
 /* Trailing padding (2 words) */

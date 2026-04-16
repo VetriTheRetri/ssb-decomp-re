@@ -4,12 +4,40 @@
 #include "relocdata_types.h"
 #include <ft/fttypes.h>
 
+extern DObjDesc dPurinModel_JointTree[];
+extern DObjDesc dPurinModel_JointTree_0x40A0[];
+extern Vtx dPurinModel_JointVerts_Vtx[];
+extern Gfx dPurinModel_Joint_0x3D10_DisplayList[];
+extern Gfx dPurinModel_Joint_0x3D90_DisplayList[];
+extern Gfx dPurinModel_Joint_0x3E38_DisplayList[];
+extern Gfx dPurinModel_Joint_0x3ED8_DisplayList[];
+extern Gfx dPurinModel_Joint_0x3F90_DisplayList[];
+extern Gfx dPurinModel_Joint_0x4018_DisplayList[];
+extern Gfx dPurinModel_Joint_0x54C0_DisplayList[];
+extern Gfx dPurinModel_Joint_0x5850_DisplayList[];
+extern Gfx dPurinModel_Joint_0x58D0_DisplayList[];
+extern Gfx dPurinModel_Joint_0x5978_DisplayList[];
+extern Gfx dPurinModel_Joint_0x59F8_DisplayList[];
+extern Gfx dPurinModel_Joint_0x5AA0_DisplayList[];
+extern Gfx dPurinModel_Joint_0x5B28_DisplayList[];
+extern u8 dPurinModel_gap_0x24F8_sub_0x3B8[];
+extern u8 dPurinModel_gap_0x459C_sub_0x434[];
+extern u8 dPurinModel_gap_0x459C_sub_0x4C4[];
+extern u8 dPurinModel_gap_0x459C_sub_0x648[];
+extern u8 dPurinModel_gap_0x6028_sub_0x4A8[];
+extern u8 dPurinModel_gap_0x7B00_sub_0x30[];
+extern u8 dPurinModel_gap_0x7B00_sub_0x58[];
+extern u8 dPurinModel_gap_0x7B00_sub_0x8[];
+extern u8 dPurinModel_gap_0x7B00_sub_0x80[];
+extern u16 dPurinModel_palette_0x7AE0[];
+extern DObjDesc dPurinSpecial2_SingDObjDesc[];
+
 /* Pre-attributes data (285 words, 0x0474 bytes) */
 /* @ 0x0000, 8 bytes: FTAttributes.file_handles target (was dPurinMain_pre+0x0) */
 u32 dPurinMain_file_handles[2] = {
 
 	0x0001000D, /* extern -> 0x0034 */
-	0x0031084C, /* extern -> 0x2130 */
+	(u32)&dPurinSpecial2_SingDObjDesc, /* extern -> 0x2130 */
 };
 
 /* @ 0x0008, 8 bytes: FTAttributes.animlock target (was dPurinMain_pre+0x8) */
@@ -77,9 +105,9 @@ u32 dPurinMain_modelparts_container[26] = {
 /* @ 0x00C0, 16 bytes: FTAttributes.accesspart target (was dPurinMain_pre+0xC0) */
 u32 dPurinMain_accesspart[4] = {
 	0x00000006,
-	0x00321298, /* extern -> 0x4A60 */
-	0x00331274, /* extern -> 0x49D0 */
-	0x003612F9, /* extern -> 0x4BE4 */
+	(u32)&dPurinModel_gap_0x459C_sub_0x4C4, /* extern -> 0x4A60 */
+	(u32)&dPurinModel_gap_0x459C_sub_0x434, /* extern -> 0x49D0 */
+	(u32)&dPurinModel_gap_0x459C_sub_0x648, /* extern -> 0x4BE4 */
 };
 
 /* @ 0x00D0, 8 bytes: FTAttributes.textureparts_container target (was dPurinMain_pre+0xD0) */
@@ -90,13 +118,13 @@ u32 dPurinMain_textureparts_container[2] = {
 
 /* @ 0x00D8, 32 bytes: FTAttributes.commonparts_container target (was dPurinMain_pre+0xD8) */
 u32 dPurinMain_commonparts_container[8] = {
-	0x0037080A, /* extern -> 0x2028 */
-	0x00380000, /* extern -> 0x0000 */
-	0x003A0934, /* extern -> 0x24D0 */
+	(u32)&dPurinModel_JointTree, /* extern -> 0x2028 */
+	(u32)&dPurinModel_JointVerts_Vtx, /* extern -> 0x0000 */
+	(u32)((u8*)dPurinModel_JointTree + 0x4A8), /* extern -> 0x24D0 */
 	0x00000000,
-	0x003B1028, /* extern -> 0x40A0 */
-	0x003C0A2C, /* extern -> 0x28B0 */
-	0x00AA1154, /* extern -> 0x4550 */
+	(u32)&dPurinModel_JointTree_0x40A0, /* extern -> 0x40A0 */
+	(u32)&dPurinModel_gap_0x24F8_sub_0x3B8, /* extern -> 0x28B0 */
+	(u32)((u8*)dPurinModel_JointTree_0x40A0 + 0x4B0), /* extern -> 0x4550 */
 	0x00000000,
 };
 
@@ -214,18 +242,18 @@ u32 dPurinMain_thrown_status[108] = {
 
 /* @ 0x02A8, 20 bytes: FTAttributes.sub_0x2A8 target (was dPurinMain_pre+0x2A8) */
 u32 dPurinMain_sub_0x2A8[5] = {
-	0x00AB1EB8, /* extern -> 0x7AE0 */
-	0x00AC1EC2, /* extern -> 0x7B08 */
-	0x00AD1ECC, /* extern -> 0x7B30 */
-	0x00AE1ED6, /* extern -> 0x7B58 */
-	0x00AF1EE0, /* extern -> 0x7B80 */
+	(u32)&dPurinModel_palette_0x7AE0, /* extern -> 0x7AE0 */
+	(u32)&dPurinModel_gap_0x7B00_sub_0x8, /* extern -> 0x7B08 */
+	(u32)&dPurinModel_gap_0x7B00_sub_0x30, /* extern -> 0x7B30 */
+	(u32)&dPurinModel_gap_0x7B00_sub_0x58, /* extern -> 0x7B58 */
+	(u32)&dPurinModel_gap_0x7B00_sub_0x80, /* extern -> 0x7B80 */
 };
 
 /* @ 0x02BC, 12 bytes: FTAttributes.sprites target (was dPurinMain_pre+0x2BC) */
 u32 dPurinMain_sprites[3] = {
-	0x00B11EEC, /* extern -> 0x7BB0 */
-	0x011B00AA, /* intern -> 0x02A8 */
-	0x00B61F66, /* extern -> 0x7D98 */
+	(u32)((u8*)dPurinModel_gap_0x7B00_sub_0x80 + 0x30), /* extern -> 0x7BB0 */
+	(u32)dPurinMain_sub_0x2A8, /* intern -> 0x02A8 */
+	(u32)((u8*)dPurinModel_gap_0x7B00_sub_0x80 + 0x218), /* extern -> 0x7D98 */
 };
 
 /* @ 0x02C8, 208 bytes: FTAttributes.sub_0x2C8 target (was dPurinMain_pre+0x2C8) */
@@ -234,7 +262,7 @@ u32 dPurinMain_sub_0x2C8[52] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00BE1530, /* extern -> 0x54C0 */
+	(u32)&dPurinModel_Joint_0x54C0_DisplayList, /* extern -> 0x54C0 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -242,33 +270,17 @@ u32 dPurinMain_sub_0x2C8[52] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00C01614, /* extern -> 0x5850 */
+	(u32)&dPurinModel_Joint_0x5850_DisplayList, /* extern -> 0x5850 */
 	0x00000000,
-	0x00C61634, /* extern -> 0x58D0 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00C8165E, /* extern -> 0x5978 */
-	0x00000000,
-	0x00D8167E, /* extern -> 0x59F8 */
+	(u32)&dPurinModel_Joint_0x58D0_DisplayList, /* extern -> 0x58D0 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
+	(u32)&dPurinModel_Joint_0x5978_DisplayList, /* extern -> 0x5978 */
 	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00E216A8, /* extern -> 0x5AA0 */
+	(u32)&dPurinModel_Joint_0x59F8_DisplayList, /* extern -> 0x59F8 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -278,7 +290,23 @@ u32 dPurinMain_sub_0x2C8[52] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00EA16CA, /* extern -> 0x5B28 */
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	(u32)&dPurinModel_Joint_0x5AA0_DisplayList, /* extern -> 0x5AA0 */
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	(u32)&dPurinModel_Joint_0x5B28_DisplayList, /* extern -> 0x5B28 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -290,7 +318,7 @@ u32 dPurinMain_sub_0x398[52] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00F21934, /* extern -> 0x64D0 */
+	(u32)&dPurinModel_gap_0x6028_sub_0x4A8, /* extern -> 0x64D0 */
 	0x40000000,
 	0x00000000,
 	0x00000000,
@@ -298,19 +326,17 @@ u32 dPurinMain_sub_0x398[52] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00F40F44, /* extern -> 0x3D10 */
+	(u32)&dPurinModel_Joint_0x3D10_DisplayList, /* extern -> 0x3D10 */
 	0x00000000,
-	0x00FA0F64, /* extern -> 0x3D90 */
-	0x00000000,
-	0x00000000,
+	(u32)&dPurinModel_Joint_0x3D90_DisplayList, /* extern -> 0x3D90 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00FC0F8E, /* extern -> 0x3E38 */
-	0x00000000,
-	0x010C0FB6, /* extern -> 0x3ED8 */
 	0x00000000,
 	0x00000000,
+	(u32)&dPurinModel_Joint_0x3E38_DisplayList, /* extern -> 0x3E38 */
+	0x00000000,
+	(u32)&dPurinModel_Joint_0x3ED8_DisplayList, /* extern -> 0x3ED8 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -324,7 +350,9 @@ u32 dPurinMain_sub_0x398[52] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x01160FE4, /* extern -> 0x3F90 */
+	0x00000000,
+	0x00000000,
+	(u32)&dPurinModel_Joint_0x3F90_DisplayList, /* extern -> 0x3F90 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -334,7 +362,7 @@ u32 dPurinMain_sub_0x398[52] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x01D31006, /* extern -> 0x4018 */
+	(u32)&dPurinModel_Joint_0x4018_DisplayList, /* extern -> 0x4018 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -343,8 +371,8 @@ u32 dPurinMain_sub_0x398[52] = {
 /* @ 0x0468, 12 bytes: FTAttributes.skeleton target (was dPurinMain_pre+0x468) */
 u32 dPurinMain_skeleton[3] = {
 	0x0000000A,
-	0x011C00B2, /* intern -> 0x02C8 */
-	0x01C400E6, /* intern -> 0x0398 */
+	(u32)dPurinMain_sub_0x2C8, /* intern -> 0x02C8 */
+	(u32)dPurinMain_sub_0x398, /* intern -> 0x0398 */
 };
 
 FTAttributes dPurinMain_attr = {
@@ -437,13 +465,13 @@ FTAttributes dPurinMain_attr = {
 		{ -1, 0, FALSE, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 	},
 	{ 900.0f, 450.0f, 900.0f }, /* hit_detect_range */
-	NULL, /* setup_parts */
-	NULL, /* animlock */
+	(u32*)dPurinMain_setup_parts, /* setup_parts */
+	(u32*)dPurinMain_animlock, /* animlock */
 	{ 6, 15, 21, 26, 11 }, /* effect_joint_ids */
 	{ FALSE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	0, /* unused_0x2CC */
-	NULL, /* hiddenparts */
-	NULL, /* commonparts_container */
+	(FTHiddenPart*)dPurinMain_hiddenparts, /* hiddenparts */
+	(FTCommonPartContainer*)dPurinMain_commonparts_container, /* commonparts_container */
 	NULL, /* dobj_lookup */
 	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
 	24, /* joint_rfoot_id */
@@ -454,14 +482,14 @@ FTAttributes dPurinMain_attr = {
 	50.0f, /* unk_0x31C */
 	0.5235988f, /* unk_0x320 */
 	NULL, /* translate_scales */
-	NULL, /* modelparts_container */
-	NULL, /* accesspart */
-	NULL, /* textureparts_container */
+	(FTModelPartContainer*)dPurinMain_modelparts_container, /* modelparts_container */
+	(FTAccessPart*)dPurinMain_accesspart, /* accesspart */
+	(FTTexturePartContainer*)dPurinMain_textureparts_container, /* textureparts_container */
 	29, /* joint_itemheavy_id */
-	NULL, /* thrown_status */
+	(FTThrownStatusArray*)dPurinMain_thrown_status, /* thrown_status */
 	16, /* joint_itemlight_id */
-	NULL, /* sprites */
-	NULL, /* skeleton */
+	(FTSprites*)dPurinMain_sprites, /* sprites */
+	(FTSkeleton**)dPurinMain_skeleton, /* skeleton */
 };
 
 /* Trailing padding (1 words) */

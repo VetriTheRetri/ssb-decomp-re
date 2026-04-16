@@ -4,17 +4,73 @@
 #include "relocdata_types.h"
 #include <ft/fttypes.h>
 
+extern Gfx dLinkBoomerangModel_Joint_0x00F8_DisplayList[];
+extern u32 dLinkMainMotion_0x0014[];
+extern DObjDesc dLinkModel_JointTree[];
+extern DObjDesc dLinkModel_JointTree_0x74B0[];
+extern Gfx dLinkModel_Joint_0x2630_DisplayList[];
+extern Gfx dLinkModel_Joint_0x2C88_DisplayList[];
+extern Gfx dLinkModel_Joint_0x2E08_DisplayList[];
+extern Gfx dLinkModel_Joint_0x2EF0_DisplayList[];
+extern Gfx dLinkModel_Joint_0x3398_DisplayList[];
+extern Gfx dLinkModel_Joint_0x6370_DisplayList[];
+extern Gfx dLinkModel_Joint_0x6950_DisplayList[];
+extern Gfx dLinkModel_Joint_0x6A30_DisplayList[];
+extern Gfx dLinkModel_Joint_0x6E08_DisplayList[];
+extern Gfx dLinkModel_Joint_0x7DB0_DisplayList[];
+extern Gfx dLinkModel_Joint_0x7EA8_DisplayList[];
+extern Gfx dLinkModel_Joint_0x7F98_DisplayList[];
+extern Gfx dLinkModel_Joint_0x93B8_DisplayList[];
+extern Gfx dLinkModel_Joint_0x94F0_DisplayList[];
+extern Gfx dLinkModel_Joint_0x9B98_DisplayList[];
+extern u8 dLinkModel_Tex_0xE338[];
+extern u8 dLinkModel_gap_0x0000[];
+extern u8 dLinkModel_gap_0x0000_sub_0x18[];
+extern u8 dLinkModel_gap_0x11CC0_sub_0x30[];
+extern u8 dLinkModel_gap_0x11CC0_sub_0x58[];
+extern u8 dLinkModel_gap_0x11CC0_sub_0x8[];
+extern u8 dLinkModel_gap_0x40EC_sub_0x238[];
+extern u8 dLinkModel_gap_0x40EC_sub_0x244[];
+extern u8 dLinkModel_gap_0x40EC_sub_0x254[];
+extern u8 dLinkModel_gap_0x40EC_sub_0x7E4[];
+extern u8 dLinkModel_gap_0x40EC_sub_0x7F4[];
+extern u8 dLinkModel_gap_0x7AE0_sub_0x204[];
+extern u8 dLinkModel_gap_0x7AE0_sub_0x210[];
+extern u8 dLinkModel_gap_0x8110_sub_0x270[];
+extern u8 dLinkModel_gap_0x8110_sub_0x5B0[];
+extern u8 dLinkModel_gap_0x8110_sub_0x5C0[];
+extern u8 dLinkModel_gap_0x8110_sub_0xB0[];
+extern u8 dLinkModel_gap_0x9DA8_sub_0x1048[];
+extern u8 dLinkModel_gap_0x9DA8_sub_0x10F8[];
+extern u8 dLinkModel_gap_0x9DA8_sub_0x12B8[];
+extern u8 dLinkModel_gap_0x9DA8_sub_0x1378[];
+extern u8 dLinkModel_gap_0x9DA8_sub_0x358[];
+extern u8 dLinkModel_gap_0x9DA8_sub_0x618[];
+extern u8 dLinkModel_gap_0x9DA8_sub_0x6E8[];
+extern u8 dLinkModel_gap_0x9DA8_sub_0x958[];
+extern u8 dLinkModel_gap_0x9DA8_sub_0xB58[];
+extern u8 dLinkModel_gap_0x9DA8_sub_0xC68[];
+extern u8 dLinkModel_gap_0x9DA8_sub_0xCC[];
+extern u8 dLinkModel_gap_0x9DA8_sub_0xD48[];
+extern u8 dLinkModel_gap_0x9DA8_sub_0xD8[];
+extern u8 dLinkModel_gap_0x9DA8_sub_0xE28[];
+extern u8 dLinkModel_gap_0x9DA8_sub_0xF38[];
+extern u16 dLinkModel_palette_0x11CA0[];
+extern WPAttributes dLinkSpecial1_Boomerang_WeaponAttributes;
+extern DObjDesc dLinkSpecial2_EntryWaveDObjDesc[];
+extern DObjDesc dLinkSpecial2_SpinAttackDObjDesc[];
+
 /* Pre-attributes data (450 words, 0x0708 bytes) */
 /* @ 0x0000, 192 bytes: FTAttributes.file_handles target (was dLinkMain_pre+0x0) */
 u32 dLinkMain_file_handles[48] = {
 
-	0x00010005, /* extern -> 0x0014 */
-	0x000200FE, /* extern -> 0x03F8 */
-	0x00030000, /* extern -> 0x0000 */
-	0x00044642, /* extern -> 0x11908 */
-	0x0005442A, /* extern -> 0x110A8 */
-	0x00064664, /* extern -> 0x11990 */
-	0x00104690, /* extern -> 0x11A40 */
+	(u32)&dLinkMainMotion_0x0014, /* extern -> 0x0014 */
+	(u32)&dLinkSpecial2_EntryWaveDObjDesc, /* extern -> 0x03F8 */
+	(u32)&dLinkSpecial1_Boomerang_WeaponAttributes, /* extern -> 0x0000 */
+	(u32)((u8*)dLinkModel_Tex_0xE338 + 0x35D0), /* extern -> 0x11908 */
+	(u32)((u8*)dLinkModel_Tex_0xE338 + 0x2D70), /* extern -> 0x110A8 */
+	(u32)((u8*)dLinkModel_Tex_0xE338 + 0x3658), /* extern -> 0x11990 */
+	(u32)((u8*)dLinkModel_Tex_0xE338 + 0x3708), /* extern -> 0x11A40 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -24,9 +80,9 @@ u32 dLinkMain_file_handles[48] = {
 	0x0C814000,
 	0x01A10184,
 	0x07800000,
-	0x00120636, /* extern -> 0x18D8 */
+	(u32)((u8*)dLinkSpecial2_SpinAttackDObjDesc + 0x718), /* extern -> 0x18D8 */
 	0x00000000,
-	0x004C0664, /* extern -> 0x1990 */
+	(u32)((u8*)dLinkSpecial2_SpinAttackDObjDesc + 0x7D0), /* extern -> 0x1990 */
 	0x00000000,
 	0xB8000000,
 	0x00000000,
@@ -100,32 +156,32 @@ u32 dLinkMain_hiddenparts[24] = {
 
 /* @ 0x0130, 120 bytes: FTAttributes.sub_0x130 target (was dLinkMain_pre+0x130) */
 u32 dLinkMain_sub_0x130[30] = {
-	0x0051098C, /* extern -> 0x2630 */
+	(u32)&dLinkModel_Joint_0x2630_DisplayList, /* extern -> 0x2630 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x005618DC, /* extern -> 0x6370 */
+	(u32)&dLinkModel_Joint_0x6370_DisplayList, /* extern -> 0x6370 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x005B003E, /* extern -> 0x00F8 */
+	(u32)&dLinkBoomerangModel_Joint_0x00F8_DisplayList, /* extern -> 0x00F8 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x0060003E, /* extern -> 0x00F8 */
+	(u32)&dLinkBoomerangModel_Joint_0x00F8_DisplayList, /* extern -> 0x00F8 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00652840, /* extern -> 0xA100 */
+	(u32)&dLinkModel_gap_0x9DA8_sub_0x358, /* extern -> 0xA100 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x006A2840, /* extern -> 0xA100 */
+	(u32)&dLinkModel_gap_0x9DA8_sub_0x358, /* extern -> 0xA100 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -134,12 +190,12 @@ u32 dLinkMain_sub_0x130[30] = {
 
 /* @ 0x01A8, 40 bytes: FTAttributes.sub_0x1A8 target (was dLinkMain_pre+0x1A8) */
 u32 dLinkMain_sub_0x1A8[10] = {
-	0x006F1F6C, /* extern -> 0x7DB0 */
+	(u32)&dLinkModel_Joint_0x7DB0_DisplayList, /* extern -> 0x7DB0 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00741F6C, /* extern -> 0x7DB0 */
+	(u32)&dLinkModel_Joint_0x7DB0_DisplayList, /* extern -> 0x7DB0 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -148,12 +204,12 @@ u32 dLinkMain_sub_0x1A8[10] = {
 
 /* @ 0x01D0, 40 bytes: FTAttributes.sub_0x1D0 target (was dLinkMain_pre+0x1D0) */
 u32 dLinkMain_sub_0x1D0[10] = {
-	0x00791FAA, /* extern -> 0x7EA8 */
+	(u32)&dLinkModel_Joint_0x7EA8_DisplayList, /* extern -> 0x7EA8 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x007E1FAA, /* extern -> 0x7EA8 */
+	(u32)&dLinkModel_Joint_0x7EA8_DisplayList, /* extern -> 0x7EA8 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -162,12 +218,12 @@ u32 dLinkMain_sub_0x1D0[10] = {
 
 /* @ 0x01F8, 40 bytes: FTAttributes.sub_0x1F8 target (was dLinkMain_pre+0x1F8) */
 u32 dLinkMain_sub_0x1F8[10] = {
-	0x00831FE6, /* extern -> 0x7F98 */
+	(u32)&dLinkModel_Joint_0x7F98_DisplayList, /* extern -> 0x7F98 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00881FE6, /* extern -> 0x7F98 */
+	(u32)&dLinkModel_Joint_0x7F98_DisplayList, /* extern -> 0x7F98 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -176,12 +232,12 @@ u32 dLinkMain_sub_0x1F8[10] = {
 
 /* @ 0x0220, 40 bytes: FTAttributes.sub_0x220 target (was dLinkMain_pre+0x220) */
 u32 dLinkMain_sub_0x220[10] = {
-	0x008D0B22, /* extern -> 0x2C88 */
+	(u32)&dLinkModel_Joint_0x2C88_DisplayList, /* extern -> 0x2C88 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00920B22, /* extern -> 0x2C88 */
+	(u32)&dLinkModel_Joint_0x2C88_DisplayList, /* extern -> 0x2C88 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -190,12 +246,12 @@ u32 dLinkMain_sub_0x220[10] = {
 
 /* @ 0x0248, 40 bytes: FTAttributes.sub_0x248 target (was dLinkMain_pre+0x248) */
 u32 dLinkMain_sub_0x248[10] = {
-	0x00972070, /* extern -> 0x81C0 */
+	(u32)&dLinkModel_gap_0x8110_sub_0xB0, /* extern -> 0x81C0 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x009C20E0, /* extern -> 0x8380 */
+	(u32)&dLinkModel_gap_0x8110_sub_0x270, /* extern -> 0x8380 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -204,12 +260,12 @@ u32 dLinkMain_sub_0x248[10] = {
 
 /* @ 0x0270, 40 bytes: FTAttributes.sub_0x270 target (was dLinkMain_pre+0x270) */
 u32 dLinkMain_sub_0x270[10] = {
-	0x00A10B22, /* extern -> 0x2C88 */
+	(u32)&dLinkModel_Joint_0x2C88_DisplayList, /* extern -> 0x2C88 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00A60B22, /* extern -> 0x2C88 */
+	(u32)&dLinkModel_Joint_0x2C88_DisplayList, /* extern -> 0x2C88 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -218,22 +274,22 @@ u32 dLinkMain_sub_0x270[10] = {
 
 /* @ 0x0298, 80 bytes: FTAttributes.sub_0x298 target (was dLinkMain_pre+0x298) */
 u32 dLinkMain_sub_0x298[20] = {
-	0x00AB0B82, /* extern -> 0x2E08 */
+	(u32)&dLinkModel_Joint_0x2E08_DisplayList, /* extern -> 0x2E08 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00B01A54, /* extern -> 0x6950 */
+	(u32)&dLinkModel_Joint_0x6950_DisplayList, /* extern -> 0x6950 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00B524EE, /* extern -> 0x93B8 */
+	(u32)&dLinkModel_Joint_0x93B8_DisplayList, /* extern -> 0x93B8 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00BA24EE, /* extern -> 0x93B8 */
+	(u32)&dLinkModel_Joint_0x93B8_DisplayList, /* extern -> 0x93B8 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -242,48 +298,48 @@ u32 dLinkMain_sub_0x298[20] = {
 
 /* @ 0x02E8, 80 bytes: FTAttributes.sub_0x2E8 target (was dLinkMain_pre+0x2E8) */
 u32 dLinkMain_sub_0x2E8[20] = {
-	0x00BB0BBC, /* extern -> 0x2EF0 */
-	0x00BC0164, /* extern -> 0x0590 */
-	0x00BF10C9, /* extern -> 0x4324 */
+	(u32)&dLinkModel_Joint_0x2EF0_DisplayList, /* extern -> 0x2EF0 */
+	(u32)((u8*)dLinkModel_gap_0x0000_sub_0x18 + 0x578), /* extern -> 0x0590 */
+	(u32)&dLinkModel_gap_0x40EC_sub_0x238, /* extern -> 0x4324 */
 	0x00000000,
 	0x00000000,
-	0x00C01A8C, /* extern -> 0x6A30 */
-	0x00C11234, /* extern -> 0x48D0 */
-	0x00C41F39, /* extern -> 0x7CE4 */
+	(u32)&dLinkModel_Joint_0x6A30_DisplayList, /* extern -> 0x6A30 */
+	(u32)&dLinkModel_gap_0x40EC_sub_0x7E4, /* extern -> 0x48D0 */
+	(u32)&dLinkModel_gap_0x7AE0_sub_0x204, /* extern -> 0x7CE4 */
 	0x00000000,
 	0x00000000,
-	0x00C5253C, /* extern -> 0x94F0 */
-	0x00C621B0, /* extern -> 0x86C0 */
-	0x00C9279D, /* extern -> 0x9E74 */
+	(u32)&dLinkModel_Joint_0x94F0_DisplayList, /* extern -> 0x94F0 */
+	(u32)&dLinkModel_gap_0x8110_sub_0x5B0, /* extern -> 0x86C0 */
+	(u32)&dLinkModel_gap_0x9DA8_sub_0xCC, /* extern -> 0x9E74 */
 	0x00000000,
 	0x00000000,
-	0x00CA253C, /* extern -> 0x94F0 */
-	0x00CB21B0, /* extern -> 0x86C0 */
-	0x00CE279D, /* extern -> 0x9E74 */
+	(u32)&dLinkModel_Joint_0x94F0_DisplayList, /* extern -> 0x94F0 */
+	(u32)&dLinkModel_gap_0x8110_sub_0x5B0, /* extern -> 0x86C0 */
+	(u32)&dLinkModel_gap_0x9DA8_sub_0xCC, /* extern -> 0x9E74 */
 	0x00000000,
 	0x00000000,
 };
 
 /* @ 0x0338, 80 bytes: FTAttributes.sub_0x338 target (was dLinkMain_pre+0x338) */
 u32 dLinkMain_sub_0x338[20] = {
-	0x00CF0CE6, /* extern -> 0x3398 */
-	0x00D00168, /* extern -> 0x05A0 */
-	0x00D310CC, /* extern -> 0x4330 */
+	(u32)&dLinkModel_Joint_0x3398_DisplayList, /* extern -> 0x3398 */
+	(u32)((u8*)dLinkModel_gap_0x0000_sub_0x18 + 0x588), /* extern -> 0x05A0 */
+	(u32)&dLinkModel_gap_0x40EC_sub_0x244, /* extern -> 0x4330 */
 	0x00000000,
 	0x00000000,
-	0x00D41B82, /* extern -> 0x6E08 */
-	0x00D51238, /* extern -> 0x48E0 */
-	0x00D81F3C, /* extern -> 0x7CF0 */
+	(u32)&dLinkModel_Joint_0x6E08_DisplayList, /* extern -> 0x6E08 */
+	(u32)&dLinkModel_gap_0x40EC_sub_0x7F4, /* extern -> 0x48E0 */
+	(u32)&dLinkModel_gap_0x7AE0_sub_0x210, /* extern -> 0x7CF0 */
 	0x00000000,
 	0x00000000,
-	0x00D926E6, /* extern -> 0x9B98 */
-	0x00DA21B4, /* extern -> 0x86D0 */
-	0x00DD27A0, /* extern -> 0x9E80 */
+	(u32)&dLinkModel_Joint_0x9B98_DisplayList, /* extern -> 0x9B98 */
+	(u32)&dLinkModel_gap_0x8110_sub_0x5C0, /* extern -> 0x86D0 */
+	(u32)&dLinkModel_gap_0x9DA8_sub_0xD8, /* extern -> 0x9E80 */
 	0x00000000,
 	0x00000000,
-	0x00DE26E6, /* extern -> 0x9B98 */
-	0x00DF21B4, /* extern -> 0x86D0 */
-	0x010427A0, /* extern -> 0x9E80 */
+	(u32)&dLinkModel_Joint_0x9B98_DisplayList, /* extern -> 0x9B98 */
+	(u32)&dLinkModel_gap_0x8110_sub_0x5C0, /* extern -> 0x86D0 */
+	(u32)&dLinkModel_gap_0x9DA8_sub_0xD8, /* extern -> 0x9E80 */
 	0x00000000,
 	0x00000000,
 };
@@ -297,20 +353,20 @@ u32 dLinkMain_modelparts_container[32] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00EE004C, /* intern -> 0x0130 */
+	(u32)dLinkMain_sub_0x130, /* intern -> 0x0130 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00EF006A, /* intern -> 0x01A8 */
-	0x00F00074, /* intern -> 0x01D0 */
-	0x00F1007E, /* intern -> 0x01F8 */
-	0x00F20088, /* intern -> 0x0220 */
-	0x00F30092, /* intern -> 0x0248 */
-	0x00F4009C, /* intern -> 0x0270 */
-	0x00F500A6, /* intern -> 0x0298 */
-	0x00F600BA, /* intern -> 0x02E8 */
-	0x017D00CE, /* intern -> 0x0338 */
+	(u32)dLinkMain_sub_0x1A8, /* intern -> 0x01A8 */
+	(u32)dLinkMain_sub_0x1D0, /* intern -> 0x01D0 */
+	(u32)dLinkMain_sub_0x1F8, /* intern -> 0x01F8 */
+	(u32)dLinkMain_sub_0x220, /* intern -> 0x0220 */
+	(u32)dLinkMain_sub_0x248, /* intern -> 0x0248 */
+	(u32)dLinkMain_sub_0x270, /* intern -> 0x0270 */
+	(u32)dLinkMain_sub_0x298, /* intern -> 0x0298 */
+	(u32)dLinkMain_sub_0x2E8, /* intern -> 0x02E8 */
+	(u32)dLinkMain_sub_0x338, /* intern -> 0x0338 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -332,13 +388,13 @@ u32 dLinkMain_textureparts_container[2] = {
 
 /* @ 0x0410, 32 bytes: FTAttributes.commonparts_container target (was dLinkMain_pre+0x410) */
 u32 dLinkMain_commonparts_container[8] = {
-	0x01050EBA, /* extern -> 0x3AE8 */
-	0x01060000, /* extern -> 0x0000 */
-	0x01081028, /* extern -> 0x40A0 */
+	(u32)&dLinkModel_JointTree, /* extern -> 0x3AE8 */
+	(u32)&dLinkModel_gap_0x0000, /* extern -> 0x0000 */
+	(u32)((u8*)dLinkModel_JointTree + 0x5B8), /* extern -> 0x40A0 */
 	0x00000000,
-	0x01091D2C, /* extern -> 0x74B0 */
-	0x010A10D0, /* extern -> 0x4340 */
-	0x01781E98, /* extern -> 0x7A60 */
+	(u32)&dLinkModel_JointTree_0x74B0, /* extern -> 0x74B0 */
+	(u32)&dLinkModel_gap_0x40EC_sub_0x254, /* extern -> 0x4340 */
+	(u32)((u8*)dLinkModel_JointTree_0x74B0 + 0x5B0), /* extern -> 0x7A60 */
 	0x00000000,
 };
 
@@ -456,52 +512,44 @@ u32 dLinkMain_thrown_status[108] = {
 
 /* @ 0x05E0, 16 bytes: FTAttributes.sub_0x5E0 target (was dLinkMain_pre+0x5E0) */
 u32 dLinkMain_sub_0x5E0[4] = {
-	0x01794728, /* extern -> 0x11CA0 */
-	0x017A4732, /* extern -> 0x11CC8 */
-	0x017B473C, /* extern -> 0x11CF0 */
-	0x017C4746, /* extern -> 0x11D18 */
+	(u32)&dLinkModel_palette_0x11CA0, /* extern -> 0x11CA0 */
+	(u32)&dLinkModel_gap_0x11CC0_sub_0x8, /* extern -> 0x11CC8 */
+	(u32)&dLinkModel_gap_0x11CC0_sub_0x30, /* extern -> 0x11CF0 */
+	(u32)&dLinkModel_gap_0x11CC0_sub_0x58, /* extern -> 0x11D18 */
 };
 
 /* @ 0x05F0, 12 bytes: FTAttributes.sprites target (was dLinkMain_pre+0x5F0) */
 u32 dLinkMain_sprites[3] = {
-	0x017E4752, /* extern -> 0x11D48 */
-	0x01C00178, /* intern -> 0x05E0 */
-	0x018147CA, /* extern -> 0x11F28 */
+	(u32)((u8*)dLinkModel_gap_0x11CC0_sub_0x58 + 0x30), /* extern -> 0x11D48 */
+	(u32)dLinkMain_sub_0x5E0, /* intern -> 0x05E0 */
+	(u32)((u8*)dLinkModel_gap_0x11CC0_sub_0x58 + 0x210), /* extern -> 0x11F28 */
 };
 
 /* @ 0x05FC, 256 bytes: FTAttributes.sub_0x5FC target (was dLinkMain_pre+0x5FC) */
 u32 dLinkMain_sub_0x5FC[64] = {
 	0x00000000,
 	0x00000000,
-	0x018328F0, /* extern -> 0xA3C0 */
+	(u32)&dLinkModel_gap_0x9DA8_sub_0x618, /* extern -> 0xA3C0 */
 	0x00000000,
-	0x01872924, /* extern -> 0xA490 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x01892A84, /* extern -> 0xAA10 */
-	0x00000000,
-	0x018B2A40, /* extern -> 0xA900 */
-	0x00000000,
-	0x018D2ABC, /* extern -> 0xAAF0 */
-	0x00000000,
-	0x01912C18, /* extern -> 0xB060 */
+	(u32)&dLinkModel_gap_0x9DA8_sub_0x6E8, /* extern -> 0xA490 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x01932A84, /* extern -> 0xAA10 */
+	(u32)&dLinkModel_gap_0x9DA8_sub_0xC68, /* extern -> 0xAA10 */
 	0x00000000,
-	0x01952A40, /* extern -> 0xA900 */
+	(u32)&dLinkModel_gap_0x9DA8_sub_0xB58, /* extern -> 0xA900 */
 	0x00000000,
-	0x019D2AF4, /* extern -> 0xABD0 */
+	(u32)&dLinkModel_gap_0x9DA8_sub_0xD48, /* extern -> 0xAAF0 */
 	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
+	(u32)&dLinkModel_gap_0x9DA8_sub_0x12B8, /* extern -> 0xB060 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x01A52C48, /* extern -> 0xB120 */
+	(u32)&dLinkModel_gap_0x9DA8_sub_0xC68, /* extern -> 0xAA10 */
+	0x00000000,
+	(u32)&dLinkModel_gap_0x9DA8_sub_0xB58, /* extern -> 0xA900 */
+	0x00000000,
+	(u32)&dLinkModel_gap_0x9DA8_sub_0xE28, /* extern -> 0xABD0 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -509,29 +557,37 @@ u32 dLinkMain_sub_0x5FC[64] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x01AB29C0, /* extern -> 0xA700 */
+	(u32)&dLinkModel_gap_0x9DA8_sub_0x1378, /* extern -> 0xB120 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x01AD2B38, /* extern -> 0xACE0 */
-	0x00000000,
-	0x01B12B7C, /* extern -> 0xADF0 */
 	0x00000000,
 	0x00000000,
-	0x00000000,
-	0x01B52BA8, /* extern -> 0xAEA0 */
+	(u32)&dLinkModel_gap_0x9DA8_sub_0x958, /* extern -> 0xA700 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x01B72B38, /* extern -> 0xACE0 */
-	0x00000000,
-	0x01BB2B7C, /* extern -> 0xADF0 */
 	0x00000000,
 	0x00000000,
+	(u32)&dLinkModel_gap_0x9DA8_sub_0xF38, /* extern -> 0xACE0 */
 	0x00000000,
-	0x02782BA8, /* extern -> 0xAEA0 */
+	(u32)&dLinkModel_gap_0x9DA8_sub_0x1048, /* extern -> 0xADF0 */
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	(u32)&dLinkModel_gap_0x9DA8_sub_0x10F8, /* extern -> 0xAEA0 */
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	(u32)&dLinkModel_gap_0x9DA8_sub_0xF38, /* extern -> 0xACE0 */
+	0x00000000,
+	(u32)&dLinkModel_gap_0x9DA8_sub_0x1048, /* extern -> 0xADF0 */
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	(u32)&dLinkModel_gap_0x9DA8_sub_0x10F8, /* extern -> 0xAEA0 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -540,7 +596,7 @@ u32 dLinkMain_sub_0x5FC[64] = {
 /* @ 0x06FC, 12 bytes: FTAttributes.skeleton target (was dLinkMain_pre+0x6FC) */
 u32 dLinkMain_skeleton[3] = {
 	0x00000017,
-	0x0269017F, /* intern -> 0x05FC */
+	(u32)dLinkMain_sub_0x5FC, /* intern -> 0x05FC */
 	0x00000000,
 };
 
@@ -634,13 +690,13 @@ FTAttributes dLinkMain_attr = {
 		{ 27, 0, FALSE, { 43.0f, -3.0f, 0.0f }, { 121.0f, 43.0f, 51.0f } },
 	},
 	{ 1200.0f, 600.0f, 1200.0f }, /* hit_detect_range */
-	NULL, /* setup_parts */
-	NULL, /* animlock */
+	(u32*)dLinkMain_setup_parts, /* setup_parts */
+	(u32*)dLinkMain_animlock, /* animlock */
 	{ 23, 14, 27, 32, 9 }, /* effect_joint_ids */
 	{ FALSE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	0, /* unused_0x2CC */
-	NULL, /* hiddenparts */
-	NULL, /* commonparts_container */
+	(FTHiddenPart*)dLinkMain_hiddenparts, /* hiddenparts */
+	(FTCommonPartContainer*)dLinkMain_commonparts_container, /* commonparts_container */
 	NULL, /* dobj_lookup */
 	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
 	30, /* joint_rfoot_id */
@@ -651,12 +707,12 @@ FTAttributes dLinkMain_attr = {
 	50.0f, /* unk_0x31C */
 	0.5235988f, /* unk_0x320 */
 	NULL, /* translate_scales */
-	NULL, /* modelparts_container */
+	(FTModelPartContainer*)dLinkMain_modelparts_container, /* modelparts_container */
 	NULL, /* accesspart */
-	NULL, /* textureparts_container */
+	(FTTexturePartContainer*)dLinkMain_textureparts_container, /* textureparts_container */
 	35, /* joint_itemheavy_id */
-	NULL, /* thrown_status */
+	(FTThrownStatusArray*)dLinkMain_thrown_status, /* thrown_status */
 	16, /* joint_itemlight_id */
-	NULL, /* sprites */
-	NULL, /* skeleton */
+	(FTSprites*)dLinkMain_sprites, /* sprites */
+	(FTSkeleton**)dLinkMain_skeleton, /* skeleton */
 };

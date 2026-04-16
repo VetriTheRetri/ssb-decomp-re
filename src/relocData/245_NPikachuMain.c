@@ -4,12 +4,15 @@
 #include "relocdata_types.h"
 #include <ft/fttypes.h>
 
+extern DObjDesc dNPikachuModel_JointTree[];
+extern DObjDesc dPikachuSpecial2_UnkDObjDesc[];
+
 /* Pre-attributes data (170 words, 0x02A8 bytes) */
 /* @ 0x0000, 8 bytes: FTAttributes.file_handles target (was dNPikachuMain_pre+0x0) */
 u32 dNPikachuMain_file_handles[2] = {
 
 	0x00010004, /* extern -> 0x0010 */
-	0x00330200, /* extern -> 0x0800 */
+	(u32)&dPikachuSpecial2_UnkDObjDesc, /* extern -> 0x0800 */
 };
 
 /* @ 0x0008, 8 bytes: FTAttributes.animlock target (was dNPikachuMain_pre+0x8) */
@@ -83,11 +86,11 @@ u32 dNPikachuMain_textureparts_container[2] = {
 
 /* @ 0x00CC, 32 bytes: FTAttributes.commonparts_container target (was dNPikachuMain_pre+0xCC) */
 u32 dNPikachuMain_commonparts_container[8] = {
-	0x003709DE, /* extern -> 0x2778 */
+	(u32)&dNPikachuModel_JointTree, /* extern -> 0x2778 */
 	0x00000000,
 	0x00000000,
 	0x01000000,
-	0x00A909DE, /* extern -> 0x2778 */
+	(u32)&dNPikachuModel_JointTree, /* extern -> 0x2778 */
 	0x00000000,
 	0x00000000,
 	0x01000000,
@@ -302,13 +305,13 @@ FTAttributes dNPikachuMain_attr = {
 		{ 21, 0, FALSE, { 43.0f, 3.0f, 0.0f }, { 69.0f, 45.0f, 45.0f } },
 	},
 	{ 800.0f, 400.0f, 800.0f }, /* hit_detect_range */
-	NULL, /* setup_parts */
-	NULL, /* animlock */
+	(u32*)dNPikachuMain_setup_parts, /* setup_parts */
+	(u32*)dNPikachuMain_animlock, /* animlock */
 	{ 11, 18, 21, 26, 10 }, /* effect_joint_ids */
 	{ FALSE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	0, /* unused_0x2CC */
-	NULL, /* hiddenparts */
-	NULL, /* commonparts_container */
+	(FTHiddenPart*)dNPikachuMain_hiddenparts, /* hiddenparts */
+	(FTCommonPartContainer*)dNPikachuMain_commonparts_container, /* commonparts_container */
 	NULL, /* dobj_lookup */
 	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
 	24, /* joint_rfoot_id */
@@ -319,12 +322,12 @@ FTAttributes dNPikachuMain_attr = {
 	50.0f, /* unk_0x31C */
 	0.5235988f, /* unk_0x320 */
 	NULL, /* translate_scales */
-	NULL, /* modelparts_container */
+	(FTModelPartContainer*)dNPikachuMain_modelparts_container, /* modelparts_container */
 	NULL, /* accesspart */
-	NULL, /* textureparts_container */
+	(FTTexturePartContainer*)dNPikachuMain_textureparts_container, /* textureparts_container */
 	30, /* joint_itemheavy_id */
-	NULL, /* thrown_status */
+	(FTThrownStatusArray*)dNPikachuMain_thrown_status, /* thrown_status */
 	12, /* joint_itemlight_id */
-	NULL, /* sprites */
+	(FTSprites*)dNPikachuMain_sprites, /* sprites */
 	NULL, /* skeleton */
 };

@@ -4,11 +4,23 @@
 #include "relocdata_types.h"
 #include <ft/fttypes.h>
 
+extern u32 dFoxMainMotion_0x0000[];
+extern u32 dFoxShieldPose_ptrs1[];
+extern u16 dFoxShieldPose_script0_17[];
+extern u16 dFoxShieldPose_script2_17[];
+extern u16 dFoxShieldPose_script3_17[];
+extern u16 dFoxShieldPose_script4_17[];
+extern u16 dFoxShieldPose_script5_17[];
+extern u16 dFoxShieldPose_script6_17[];
+extern u16 dFoxShieldPose_script7_17[];
+extern u16 dFoxShieldPose_script8_17[];
+extern DObjDesc dNFoxModel_JointTree[];
+
 /* Pre-attributes data (169 words, 0x02A4 bytes) */
 /* @ 0x0000, 4 bytes: FTAttributes.file_handles target (was dNFoxMain_pre+0x0) */
 u32 dNFoxMain_file_handles[1] = {
 
-	0x00320000, /* extern -> 0x0000 */
+	(u32)&dFoxMainMotion_0x0000, /* extern -> 0x0000 */
 };
 
 /* @ 0x0004, 8 bytes: FTAttributes.animlock target (was dNFoxMain_pre+0x4) */
@@ -82,11 +94,11 @@ u32 dNFoxMain_textureparts_container[2] = {
 
 /* @ 0x00C8, 32 bytes: FTAttributes.commonparts_container target (was dNFoxMain_pre+0xC8) */
 u32 dNFoxMain_commonparts_container[8] = {
-	0x00360B7E, /* extern -> 0x2DF8 */
+	(u32)&dNFoxModel_JointTree, /* extern -> 0x2DF8 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00A80B7E, /* extern -> 0x2DF8 */
+	(u32)&dNFoxModel_JointTree, /* extern -> 0x2DF8 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -301,15 +313,24 @@ FTAttributes dNFoxMain_attr = {
 		{ 20, 0, FALSE, { 36.0f, 0.0f, 0.0f }, { 113.0f, 44.0f, 44.0f } },
 	},
 	{ 1100.0f, 550.0f, 1100.0f }, /* hit_detect_range */
-	NULL, /* setup_parts */
-	NULL, /* animlock */
+	(u32*)dNFoxMain_setup_parts, /* setup_parts */
+	(u32*)dNFoxMain_animlock, /* animlock */
 	{ 12, 15, 20, 25, 9 }, /* effect_joint_ids */
 	{ FALSE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	0, /* unused_0x2CC */
-	NULL, /* hiddenparts */
-	NULL, /* commonparts_container */
-	NULL, /* dobj_lookup */
-	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
+	(FTHiddenPart*)dNFoxMain_hiddenparts, /* hiddenparts */
+	(FTCommonPartContainer*)dNFoxMain_commonparts_container, /* commonparts_container */
+	(DObjDesc*)((u8*)dFoxShieldPose_script0_17 + 0x10), /* dobj_lookup */
+	{
+		(AObjEvent32**)((u8*)dFoxShieldPose_ptrs1 + 0x23C),
+		(AObjEvent32**)((u8*)dFoxShieldPose_script2_17 + 0x2C),
+		(AObjEvent32**)((u8*)dFoxShieldPose_script3_17 + 0x30),
+		(AObjEvent32**)((u8*)dFoxShieldPose_script4_17 + 0x2C),
+		(AObjEvent32**)((u8*)dFoxShieldPose_script5_17 + 0x2C),
+		(AObjEvent32**)((u8*)dFoxShieldPose_script6_17 + 0x30),
+		(AObjEvent32**)((u8*)dFoxShieldPose_script7_17 + 0x34),
+		(AObjEvent32**)((u8*)dFoxShieldPose_script8_17 + 0x38),
+	}, /* shield_anim_joints */
 	23, /* joint_rfoot_id */
 	89.754f, /* joint_rfoot_rotate */
 	18, /* joint_lfoot_id */
@@ -318,13 +339,13 @@ FTAttributes dNFoxMain_attr = {
 	50.0f, /* unk_0x31C */
 	0.5235988f, /* unk_0x320 */
 	NULL, /* translate_scales */
-	NULL, /* modelparts_container */
+	(FTModelPartContainer*)dNFoxMain_modelparts_container, /* modelparts_container */
 	NULL, /* accesspart */
-	NULL, /* textureparts_container */
+	(FTTexturePartContainer*)dNFoxMain_textureparts_container, /* textureparts_container */
 	30, /* joint_itemheavy_id */
-	NULL, /* thrown_status */
+	(FTThrownStatusArray*)dNFoxMain_thrown_status, /* thrown_status */
 	17, /* joint_itemlight_id */
-	NULL, /* sprites */
+	(FTSprites*)dNFoxMain_sprites, /* sprites */
 	NULL, /* skeleton */
 };
 

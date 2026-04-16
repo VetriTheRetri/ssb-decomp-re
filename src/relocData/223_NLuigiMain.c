@@ -4,11 +4,14 @@
 #include "relocdata_types.h"
 #include <ft/fttypes.h>
 
+extern u32 dLuigiMainMotion_0x0024[];
+extern DObjDesc dNMarioModel_JointTree[];
+
 /* Pre-attributes data (166 words, 0x0298 bytes) */
 /* @ 0x0000, 4 bytes: FTAttributes.file_handles target (was dNLuigiMain_pre+0x0) */
 u32 dNLuigiMain_file_handles[1] = {
 
-	0x002F0009, /* extern -> 0x0024 */
+	(u32)&dLuigiMainMotion_0x0024, /* extern -> 0x0024 */
 };
 
 /* @ 0x0004, 8 bytes: FTAttributes.animlock target (was dNLuigiMain_pre+0x4) */
@@ -79,11 +82,11 @@ u32 dNLuigiMain_textureparts_container[1] = {
 
 /* @ 0x00BC, 32 bytes: FTAttributes.commonparts_container target (was dNLuigiMain_pre+0xBC) */
 u32 dNLuigiMain_commonparts_container[8] = {
-	0x00330A8C, /* extern -> 0x2A30 */
+	(u32)&dNMarioModel_JointTree, /* extern -> 0x2A30 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00A50A8C, /* extern -> 0x2A30 */
+	(u32)&dNMarioModel_JointTree, /* extern -> 0x2A30 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -298,13 +301,13 @@ FTAttributes dNLuigiMain_attr = {
 		{ -1, 0, FALSE, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 	},
 	{ 900.0f, 450.0f, 900.0f }, /* hit_detect_range */
-	NULL, /* setup_parts */
-	NULL, /* animlock */
+	(u32*)dNLuigiMain_setup_parts, /* setup_parts */
+	(u32*)dNLuigiMain_animlock, /* animlock */
 	{ 12, 15, 20, 25, 9 }, /* effect_joint_ids */
 	{ FALSE, TRUE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	0, /* unused_0x2CC */
-	NULL, /* hiddenparts */
-	NULL, /* commonparts_container */
+	(FTHiddenPart*)dNLuigiMain_hiddenparts, /* hiddenparts */
+	(FTCommonPartContainer*)dNLuigiMain_commonparts_container, /* commonparts_container */
 	NULL, /* dobj_lookup */
 	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
 	23, /* joint_rfoot_id */
@@ -315,12 +318,12 @@ FTAttributes dNLuigiMain_attr = {
 	50.0f, /* unk_0x31C */
 	0.5235988f, /* unk_0x320 */
 	NULL, /* translate_scales */
-	NULL, /* modelparts_container */
+	(FTModelPartContainer*)dNLuigiMain_modelparts_container, /* modelparts_container */
 	NULL, /* accesspart */
-	NULL, /* textureparts_container */
+	(FTTexturePartContainer*)dNLuigiMain_textureparts_container, /* textureparts_container */
 	28, /* joint_itemheavy_id */
-	NULL, /* thrown_status */
+	(FTThrownStatusArray*)dNLuigiMain_thrown_status, /* thrown_status */
 	17, /* joint_itemlight_id */
-	NULL, /* sprites */
+	(FTSprites*)dNLuigiMain_sprites, /* sprites */
 	NULL, /* skeleton */
 };

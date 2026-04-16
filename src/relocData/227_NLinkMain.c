@@ -4,11 +4,14 @@
 #include "relocdata_types.h"
 #include <ft/fttypes.h>
 
+extern u32 dLinkMainMotion_0x0014[];
+extern DObjDesc dNLinkModel_JointTree[];
+
 /* Pre-attributes data (182 words, 0x02D8 bytes) */
 /* @ 0x0000, 4 bytes: FTAttributes.file_handles target (was dNLinkMain_pre+0x0) */
 u32 dNLinkMain_file_handles[1] = {
 
-	0x003F0005, /* extern -> 0x0014 */
+	(u32)&dLinkMainMotion_0x0014, /* extern -> 0x0014 */
 };
 
 /* @ 0x0004, 8 bytes: FTAttributes.animlock target (was dNLinkMain_pre+0x4) */
@@ -95,11 +98,11 @@ u32 dNLinkMain_textureparts_container[2] = {
 
 /* @ 0x00FC, 32 bytes: FTAttributes.commonparts_container target (was dNLinkMain_pre+0xFC) */
 u32 dNLinkMain_commonparts_container[8] = {
-	0x00430C20, /* extern -> 0x3080 */
+	(u32)&dNLinkModel_JointTree, /* extern -> 0x3080 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00B50C20, /* extern -> 0x3080 */
+	(u32)&dNLinkModel_JointTree, /* extern -> 0x3080 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -314,13 +317,13 @@ FTAttributes dNLinkMain_attr = {
 		{ 27, 0, FALSE, { 43.0f, -3.0f, 0.0f }, { 121.0f, 43.0f, 51.0f } },
 	},
 	{ 1200.0f, 600.0f, 1200.0f }, /* hit_detect_range */
-	NULL, /* setup_parts */
-	NULL, /* animlock */
+	(u32*)dNLinkMain_setup_parts, /* setup_parts */
+	(u32*)dNLinkMain_animlock, /* animlock */
 	{ 23, 14, 27, 32, 9 }, /* effect_joint_ids */
 	{ FALSE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	0, /* unused_0x2CC */
-	NULL, /* hiddenparts */
-	NULL, /* commonparts_container */
+	(FTHiddenPart*)dNLinkMain_hiddenparts, /* hiddenparts */
+	(FTCommonPartContainer*)dNLinkMain_commonparts_container, /* commonparts_container */
 	NULL, /* dobj_lookup */
 	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
 	30, /* joint_rfoot_id */
@@ -331,12 +334,12 @@ FTAttributes dNLinkMain_attr = {
 	50.0f, /* unk_0x31C */
 	0.5235988f, /* unk_0x320 */
 	NULL, /* translate_scales */
-	NULL, /* modelparts_container */
+	(FTModelPartContainer*)dNLinkMain_modelparts_container, /* modelparts_container */
 	NULL, /* accesspart */
-	NULL, /* textureparts_container */
+	(FTTexturePartContainer*)dNLinkMain_textureparts_container, /* textureparts_container */
 	35, /* joint_itemheavy_id */
-	NULL, /* thrown_status */
+	(FTThrownStatusArray*)dNLinkMain_thrown_status, /* thrown_status */
 	16, /* joint_itemlight_id */
-	NULL, /* sprites */
+	(FTSprites*)dNLinkMain_sprites, /* sprites */
 	NULL, /* skeleton */
 };

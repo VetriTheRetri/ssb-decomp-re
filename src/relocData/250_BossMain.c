@@ -4,6 +4,8 @@
 #include "relocdata_types.h"
 #include <ft/fttypes.h>
 
+extern DObjDesc dBossModel_JointTree[];
+
 /* Pre-attributes data (58 words, 0x00E8 bytes) */
 /* @ 0x0000, 4 bytes: FTAttributes.file_handles target (was dBossMain_pre+0x0) */
 u32 dBossMain_file_handles[1] = {
@@ -74,11 +76,11 @@ u32 dBossMain_modelparts_container[25] = {
 
 /* @ 0x00B8, 32 bytes: FTAttributes.commonparts_container target (was dBossMain_pre+0xB8) */
 u32 dBossMain_commonparts_container[8] = {
-	0x003208F6, /* extern -> 0x23D8 */
+	(u32)&dBossModel_JointTree, /* extern -> 0x23D8 */
 	0x00000000,
 	0x00000000,
 	0x01000000,
-	0x003608F6, /* extern -> 0x23D8 */
+	(u32)&dBossModel_JointTree, /* extern -> 0x23D8 */
 	0x00000000,
 	0x00000000,
 	0x01000000,
@@ -92,7 +94,7 @@ u32 dBossMain_sub_0x0D8[1] = {
 /* @ 0x00DC, 12 bytes: FTAttributes.sprites target (was dBossMain_pre+0xDC) */
 u32 dBossMain_sprites[3] = {
 	0x00390030, /* extern -> 0x00C0 */
-	0x00E10036, /* intern -> 0x00D8 */
+	(u32)dBossMain_sub_0x0D8, /* intern -> 0x00D8 */
 	0xFFFF00AE, /* extern -> 0x02B8 */
 };
 
@@ -186,13 +188,13 @@ FTAttributes dBossMain_attr = {
 		{ 28, 1, TRUE, { 50.0f, 30.0f, 0.0f }, { 370.0f, 162.0f, 162.0f } },
 	},
 	{ 3600.0f, 900.0f, 2300.0f }, /* hit_detect_range */
-	NULL, /* setup_parts */
-	NULL, /* animlock */
+	(u32*)dBossMain_setup_parts, /* setup_parts */
+	(u32*)dBossMain_animlock, /* animlock */
 	{ 8, 12, 16, 21, 25 }, /* effect_joint_ids */
 	{ FALSE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	0, /* unused_0x2CC */
-	NULL, /* hiddenparts */
-	NULL, /* commonparts_container */
+	(FTHiddenPart*)dBossMain_hiddenparts, /* hiddenparts */
+	(FTCommonPartContainer*)dBossMain_commonparts_container, /* commonparts_container */
 	NULL, /* dobj_lookup */
 	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
 	-1, /* joint_rfoot_id */
@@ -203,12 +205,12 @@ FTAttributes dBossMain_attr = {
 	50.0f, /* unk_0x31C */
 	0.5235988f, /* unk_0x320 */
 	NULL, /* translate_scales */
-	NULL, /* modelparts_container */
+	(FTModelPartContainer*)dBossMain_modelparts_container, /* modelparts_container */
 	NULL, /* accesspart */
 	NULL, /* textureparts_container */
 	5, /* joint_itemheavy_id */
 	NULL, /* thrown_status */
 	-1, /* joint_itemlight_id */
-	NULL, /* sprites */
+	(FTSprites*)dBossMain_sprites, /* sprites */
 	NULL, /* skeleton */
 };

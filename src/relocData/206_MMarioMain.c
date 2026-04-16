@@ -4,14 +4,21 @@
 #include "relocdata_types.h"
 #include <ft/fttypes.h>
 
+extern u32 dMMarioMainMotion_0x001C[];
+extern DObjDesc dMMarioModel_JointTree[];
+extern u16 dMMarioModel_palette_0x2CD0[];
+extern u32 dMarioMainMotion_0x0024[];
+extern WPAttributes dMarioSpecial1_Fireball_WeaponAttributes;
+extern DObjDesc dMarioSpecial2_EntryDokanDObjDesc[];
+
 /* Pre-attributes data (170 words, 0x02A8 bytes) */
 /* @ 0x0000, 16 bytes: FTAttributes.file_handles target (was dMMarioMain_pre+0x0) */
 u32 dMMarioMain_file_handles[4] = {
 
-	0x0001000E, /* extern -> 0x0038 */
-	0x00020009, /* extern -> 0x0024 */
-	0x00030182, /* extern -> 0x0608 */
-	0x00320000, /* extern -> 0x0000 */
+	(u32)((u8*)dMMarioMainMotion_0x001C + 0x1C), /* extern -> 0x0038 */
+	(u32)&dMarioMainMotion_0x0024, /* extern -> 0x0024 */
+	(u32)&dMarioSpecial2_EntryDokanDObjDesc, /* extern -> 0x0608 */
+	(u32)&dMarioSpecial1_Fireball_WeaponAttributes, /* extern -> 0x0000 */
 };
 
 /* @ 0x0010, 8 bytes: FTAttributes.animlock target (was dMMarioMain_pre+0x10) */
@@ -82,11 +89,11 @@ u32 dMMarioMain_textureparts_container[1] = {
 
 /* @ 0x00C8, 32 bytes: FTAttributes.commonparts_container target (was dMMarioMain_pre+0xC8) */
 u32 dMMarioMain_commonparts_container[8] = {
-	0x00360782, /* extern -> 0x1E08 */
+	(u32)&dMMarioModel_JointTree, /* extern -> 0x1E08 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00A60782, /* extern -> 0x1E08 */
+	(u32)&dMMarioModel_JointTree, /* extern -> 0x1E08 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -206,14 +213,14 @@ u32 dMMarioMain_thrown_status[108] = {
 
 /* @ 0x0298, 4 bytes: FTAttributes.sub_0x298 target (was dMMarioMain_pre+0x298) */
 u32 dMMarioMain_sub_0x298[1] = {
-	0x00A70B34, /* extern -> 0x2CD0 */
+	(u32)&dMMarioModel_palette_0x2CD0, /* extern -> 0x2CD0 */
 };
 
 /* @ 0x029C, 12 bytes: FTAttributes.sprites target (was dMMarioMain_pre+0x29C) */
 u32 dMMarioMain_sprites[3] = {
-	0x00A90B40, /* extern -> 0x2D00 */
-	0x015100A6, /* intern -> 0x0298 */
-	0x01600BBE, /* extern -> 0x2EF8 */
+	(u32)((u8*)dMMarioModel_palette_0x2CD0 + 0x30), /* extern -> 0x2D00 */
+	(u32)dMMarioMain_sub_0x298, /* intern -> 0x0298 */
+	(u32)((u8*)dMMarioModel_palette_0x2CD0 + 0x228), /* extern -> 0x2EF8 */
 };
 
 FTAttributes dMMarioMain_attr = {
@@ -306,13 +313,13 @@ FTAttributes dMMarioMain_attr = {
 		{ -1, 0, FALSE, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 	},
 	{ 900.0f, 450.0f, 900.0f }, /* hit_detect_range */
-	NULL, /* setup_parts */
-	NULL, /* animlock */
+	(u32*)dMMarioMain_setup_parts, /* setup_parts */
+	(u32*)dMMarioMain_animlock, /* animlock */
 	{ 12, 15, 20, 25, 9 }, /* effect_joint_ids */
 	{ FALSE, TRUE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	0, /* unused_0x2CC */
-	NULL, /* hiddenparts */
-	NULL, /* commonparts_container */
+	(FTHiddenPart*)dMMarioMain_hiddenparts, /* hiddenparts */
+	(FTCommonPartContainer*)dMMarioMain_commonparts_container, /* commonparts_container */
 	NULL, /* dobj_lookup */
 	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
 	23, /* joint_rfoot_id */
@@ -323,12 +330,12 @@ FTAttributes dMMarioMain_attr = {
 	50.0f, /* unk_0x31C */
 	0.5235988f, /* unk_0x320 */
 	NULL, /* translate_scales */
-	NULL, /* modelparts_container */
+	(FTModelPartContainer*)dMMarioMain_modelparts_container, /* modelparts_container */
 	NULL, /* accesspart */
-	NULL, /* textureparts_container */
+	(FTTexturePartContainer*)dMMarioMain_textureparts_container, /* textureparts_container */
 	28, /* joint_itemheavy_id */
-	NULL, /* thrown_status */
+	(FTThrownStatusArray*)dMMarioMain_thrown_status, /* thrown_status */
 	17, /* joint_itemlight_id */
-	NULL, /* sprites */
+	(FTSprites*)dMMarioMain_sprites, /* sprites */
 	NULL, /* skeleton */
 };

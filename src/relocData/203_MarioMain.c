@@ -4,13 +4,44 @@
 #include "relocdata_types.h"
 #include <ft/fttypes.h>
 
+extern u32 dMarioMainMotion_0x0024[];
+extern DObjDesc dMarioModel_JointTree[];
+extern DObjDesc dMarioModel_JointTree_0x4590[];
+extern Gfx dMarioModel_Joint_0x18D8_DisplayList[];
+extern Gfx dMarioModel_Joint_0x1DC8_DisplayList[];
+extern Gfx dMarioModel_Joint_0x3E60_DisplayList[];
+extern Gfx dMarioModel_Joint_0x4278_DisplayList[];
+extern u8 dMarioModel_gap_0x0000[];
+extern u8 dMarioModel_gap_0x26D0_sub_0x320[];
+extern u8 dMarioModel_gap_0x4A60_sub_0x10A0[];
+extern u8 dMarioModel_gap_0x4A60_sub_0x1360[];
+extern u8 dMarioModel_gap_0x4A60_sub_0x1470[];
+extern u8 dMarioModel_gap_0x4A60_sub_0x1560[];
+extern u8 dMarioModel_gap_0x4A60_sub_0x1660[];
+extern u8 dMarioModel_gap_0x4A60_sub_0x1780[];
+extern u8 dMarioModel_gap_0x4A60_sub_0x1890[];
+extern u8 dMarioModel_gap_0x4A60_sub_0x1970[];
+extern u8 dMarioModel_gap_0x4A60_sub_0x4B0[];
+extern u8 dMarioModel_gap_0x4A60_sub_0x690[];
+extern u8 dMarioModel_gap_0x4A60_sub_0x8A0[];
+extern u8 dMarioModel_gap_0x4A60_sub_0xA80[];
+extern u8 dMarioModel_gap_0x4A60_sub_0xBA0[];
+extern u8 dMarioModel_gap_0x4A60_sub_0xC80[];
+extern u8 dMarioModel_gap_0x7220_sub_0x30[];
+extern u8 dMarioModel_gap_0x7220_sub_0x58[];
+extern u8 dMarioModel_gap_0x7220_sub_0x8[];
+extern u8 dMarioModel_gap_0x7220_sub_0x80[];
+extern u16 dMarioModel_palette_0x7200[];
+extern WPAttributes dMarioSpecial1_Fireball_WeaponAttributes;
+extern DObjDesc dMarioSpecial2_EntryDokanDObjDesc[];
+
 /* Pre-attributes data (266 words, 0x0428 bytes) */
 /* @ 0x0000, 12 bytes: FTAttributes.file_handles target (was dMarioMain_pre+0x0) */
 u32 dMarioMain_file_handles[3] = {
 
-	0x00010009, /* extern -> 0x0024 */
-	0x00020182, /* extern -> 0x0608 */
-	0x00170000, /* extern -> 0x0000 */
+	(u32)&dMarioMainMotion_0x0024, /* extern -> 0x0024 */
+	(u32)&dMarioSpecial2_EntryDokanDObjDesc, /* extern -> 0x0608 */
+	(u32)&dMarioSpecial1_Fireball_WeaponAttributes, /* extern -> 0x0000 */
 };
 
 /* @ 0x000C, 8 bytes: FTAttributes.animlock target (was dMarioMain_pre+0xC) */
@@ -47,22 +78,22 @@ u32 dMarioMain_hiddenparts[16] = {
 
 /* @ 0x005C, 80 bytes: FTAttributes.sub_0x05C target (was dMarioMain_pre+0x5C) */
 u32 dMarioMain_sub_0x05C[20] = {
-	0x001C0636, /* extern -> 0x18D8 */
+	(u32)&dMarioModel_Joint_0x18D8_DisplayList, /* extern -> 0x18D8 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00210F98, /* extern -> 0x3E60 */
+	(u32)&dMarioModel_Joint_0x3E60_DisplayList, /* extern -> 0x3E60 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x002614C0, /* extern -> 0x5300 */
+	(u32)&dMarioModel_gap_0x4A60_sub_0x8A0, /* extern -> 0x5300 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x002B1538, /* extern -> 0x54E0 */
+	(u32)&dMarioModel_gap_0x4A60_sub_0xA80, /* extern -> 0x54E0 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -71,22 +102,22 @@ u32 dMarioMain_sub_0x05C[20] = {
 
 /* @ 0x00AC, 80 bytes: FTAttributes.sub_0x0AC target (was dMarioMain_pre+0xAC) */
 u32 dMarioMain_sub_0x0AC[20] = {
-	0x00300772, /* extern -> 0x1DC8 */
+	(u32)&dMarioModel_Joint_0x1DC8_DisplayList, /* extern -> 0x1DC8 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x0035109E, /* extern -> 0x4278 */
+	(u32)&dMarioModel_Joint_0x4278_DisplayList, /* extern -> 0x4278 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x003A13C4, /* extern -> 0x4F10 */
+	(u32)&dMarioModel_gap_0x4A60_sub_0x4B0, /* extern -> 0x4F10 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x0059143C, /* extern -> 0x50F0 */
+	(u32)&dMarioModel_gap_0x4A60_sub_0x690, /* extern -> 0x50F0 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -101,13 +132,13 @@ u32 dMarioMain_modelparts_container[25] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x004B0017, /* intern -> 0x005C */
+	(u32)dMarioMain_sub_0x05C, /* intern -> 0x005C */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00D3002B, /* intern -> 0x00AC */
+	(u32)dMarioMain_sub_0x0AC, /* intern -> 0x00AC */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -129,13 +160,13 @@ u32 dMarioMain_textureparts_container[1] = {
 
 /* @ 0x0164, 32 bytes: FTAttributes.commonparts_container target (was dMarioMain_pre+0x164) */
 u32 dMarioMain_commonparts_container[8] = {
-	0x005A0880, /* extern -> 0x2200 */
-	0x005B0000, /* extern -> 0x0000 */
-	0x005D09A0, /* extern -> 0x2680 */
+	(u32)&dMarioModel_JointTree, /* extern -> 0x2200 */
+	(u32)&dMarioModel_gap_0x0000, /* extern -> 0x0000 */
+	(u32)((u8*)dMarioModel_JointTree + 0x480), /* extern -> 0x2680 */
 	0x00000000,
-	0x005E1164, /* extern -> 0x4590 */
-	0x005F0A7C, /* extern -> 0x29F0 */
-	0x00CD1284, /* extern -> 0x4A10 */
+	(u32)&dMarioModel_JointTree_0x4590, /* extern -> 0x4590 */
+	(u32)&dMarioModel_gap_0x26D0_sub_0x320, /* extern -> 0x29F0 */
+	(u32)((u8*)dMarioModel_JointTree_0x4590 + 0x480), /* extern -> 0x4A10 */
 	0x00000000,
 };
 
@@ -253,69 +284,69 @@ u32 dMarioMain_thrown_status[108] = {
 
 /* @ 0x0334, 20 bytes: FTAttributes.sub_0x334 target (was dMarioMain_pre+0x334) */
 u32 dMarioMain_sub_0x334[5] = {
-	0x00CE1C80, /* extern -> 0x7200 */
-	0x00CF1C8A, /* extern -> 0x7228 */
-	0x00D01C94, /* extern -> 0x7250 */
-	0x00D11C9E, /* extern -> 0x7278 */
-	0x00D21CA8, /* extern -> 0x72A0 */
+	(u32)&dMarioModel_palette_0x7200, /* extern -> 0x7200 */
+	(u32)&dMarioModel_gap_0x7220_sub_0x8, /* extern -> 0x7228 */
+	(u32)&dMarioModel_gap_0x7220_sub_0x30, /* extern -> 0x7250 */
+	(u32)&dMarioModel_gap_0x7220_sub_0x58, /* extern -> 0x7278 */
+	(u32)&dMarioModel_gap_0x7220_sub_0x80, /* extern -> 0x72A0 */
 };
 
 /* @ 0x0348, 12 bytes: FTAttributes.sprites target (was dMarioMain_pre+0x348) */
 u32 dMarioMain_sprites[3] = {
-	0x00D41CB4, /* extern -> 0x72D0 */
-	0x010800CD, /* intern -> 0x0334 */
-	0x00D71D32, /* extern -> 0x74C8 */
+	(u32)((u8*)dMarioModel_gap_0x7220_sub_0x80 + 0x30), /* extern -> 0x72D0 */
+	(u32)dMarioMain_sub_0x334, /* intern -> 0x0334 */
+	(u32)((u8*)dMarioModel_gap_0x7220_sub_0x80 + 0x228), /* extern -> 0x74C8 */
 };
 
 /* @ 0x0354, 200 bytes: FTAttributes.sub_0x354 target (was dMarioMain_pre+0x354) */
 u32 dMarioMain_sub_0x354[50] = {
 	0x00000000,
 	0x00000000,
-	0x00D91580, /* extern -> 0x5600 */
+	(u32)&dMarioModel_gap_0x4A60_sub_0xBA0, /* extern -> 0x5600 */
 	0x00000000,
-	0x00DD15B8, /* extern -> 0x56E0 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00DF17B4, /* extern -> 0x5ED0 */
-	0x00000000,
-	0x00E11770, /* extern -> 0x5DC0 */
-	0x00000000,
-	0x00E517F0, /* extern -> 0x5FC0 */
+	(u32)&dMarioModel_gap_0x4A60_sub_0xC80, /* extern -> 0x56E0 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00E916C0, /* extern -> 0x5B00 */
+	(u32)&dMarioModel_gap_0x4A60_sub_0x1470, /* extern -> 0x5ED0 */
+	0x00000000,
+	(u32)&dMarioModel_gap_0x4A60_sub_0x1360, /* extern -> 0x5DC0 */
+	0x00000000,
+	(u32)&dMarioModel_gap_0x4A60_sub_0x1560, /* extern -> 0x5FC0 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00EB17B4, /* extern -> 0x5ED0 */
-	0x00000000,
-	0x00ED1770, /* extern -> 0x5DC0 */
-	0x00000000,
-	0x00F31830, /* extern -> 0x60C0 */
+	(u32)&dMarioModel_gap_0x4A60_sub_0x10A0, /* extern -> 0x5B00 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
+	(u32)&dMarioModel_gap_0x4A60_sub_0x1470, /* extern -> 0x5ED0 */
 	0x00000000,
+	(u32)&dMarioModel_gap_0x4A60_sub_0x1360, /* extern -> 0x5DC0 */
 	0x00000000,
-	0x00F51878, /* extern -> 0x61E0 */
-	0x00000000,
-	0x00F918BC, /* extern -> 0x62F0 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00FD18F4, /* extern -> 0x63D0 */
+	(u32)&dMarioModel_gap_0x4A60_sub_0x1660, /* extern -> 0x60C0 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00FF1878, /* extern -> 0x61E0 */
-	0x00000000,
-	0x010318BC, /* extern -> 0x62F0 */
 	0x00000000,
 	0x00000000,
+	(u32)&dMarioModel_gap_0x4A60_sub_0x1780, /* extern -> 0x61E0 */
 	0x00000000,
-	0x01C018F4, /* extern -> 0x63D0 */
+	(u32)&dMarioModel_gap_0x4A60_sub_0x1890, /* extern -> 0x62F0 */
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	(u32)&dMarioModel_gap_0x4A60_sub_0x1970, /* extern -> 0x63D0 */
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	(u32)&dMarioModel_gap_0x4A60_sub_0x1780, /* extern -> 0x61E0 */
+	0x00000000,
+	(u32)&dMarioModel_gap_0x4A60_sub_0x1890, /* extern -> 0x62F0 */
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	(u32)&dMarioModel_gap_0x4A60_sub_0x1970, /* extern -> 0x63D0 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -324,7 +355,7 @@ u32 dMarioMain_sub_0x354[50] = {
 /* @ 0x041C, 12 bytes: FTAttributes.skeleton target (was dMarioMain_pre+0x41C) */
 u32 dMarioMain_skeleton[3] = {
 	0x0000000C,
-	0x01B100D5, /* intern -> 0x0354 */
+	(u32)dMarioMain_sub_0x354, /* intern -> 0x0354 */
 	0x00000000,
 };
 
@@ -418,13 +449,13 @@ FTAttributes dMarioMain_attr = {
 		{ -1, 0, FALSE, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 	},
 	{ 900.0f, 450.0f, 900.0f }, /* hit_detect_range */
-	NULL, /* setup_parts */
-	NULL, /* animlock */
+	(u32*)dMarioMain_setup_parts, /* setup_parts */
+	(u32*)dMarioMain_animlock, /* animlock */
 	{ 12, 15, 20, 25, 9 }, /* effect_joint_ids */
 	{ FALSE, TRUE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	0, /* unused_0x2CC */
-	NULL, /* hiddenparts */
-	NULL, /* commonparts_container */
+	(FTHiddenPart*)dMarioMain_hiddenparts, /* hiddenparts */
+	(FTCommonPartContainer*)dMarioMain_commonparts_container, /* commonparts_container */
 	NULL, /* dobj_lookup */
 	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
 	23, /* joint_rfoot_id */
@@ -435,12 +466,12 @@ FTAttributes dMarioMain_attr = {
 	50.0f, /* unk_0x31C */
 	0.5235988f, /* unk_0x320 */
 	NULL, /* translate_scales */
-	NULL, /* modelparts_container */
+	(FTModelPartContainer*)dMarioMain_modelparts_container, /* modelparts_container */
 	NULL, /* accesspart */
-	NULL, /* textureparts_container */
+	(FTTexturePartContainer*)dMarioMain_textureparts_container, /* textureparts_container */
 	28, /* joint_itemheavy_id */
-	NULL, /* thrown_status */
+	(FTThrownStatusArray*)dMarioMain_thrown_status, /* thrown_status */
 	17, /* joint_itemlight_id */
-	NULL, /* sprites */
-	NULL, /* skeleton */
+	(FTSprites*)dMarioMain_sprites, /* sprites */
+	(FTSkeleton**)dMarioMain_skeleton, /* skeleton */
 };

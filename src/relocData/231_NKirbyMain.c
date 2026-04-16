@@ -4,11 +4,14 @@
 #include "relocdata_types.h"
 #include <ft/fttypes.h>
 
+extern u32 dKirbyMainMotion_0x0154[];
+extern DObjDesc dNKirbyModel_JointTree[];
+
 /* Pre-attributes data (176 words, 0x02C0 bytes) */
 /* @ 0x0000, 4 bytes: FTAttributes.file_handles target (was dNKirbyMain_pre+0x0) */
 u32 dNKirbyMain_file_handles[1] = {
 
-	0x00390055, /* extern -> 0x0154 */
+	(u32)&dKirbyMainMotion_0x0154, /* extern -> 0x0154 */
 };
 
 /* @ 0x0004, 8 bytes: FTAttributes.animlock target (was dNKirbyMain_pre+0x4) */
@@ -89,11 +92,11 @@ u32 dNKirbyMain_textureparts_container[1] = {
 
 /* @ 0x00E4, 32 bytes: FTAttributes.commonparts_container target (was dNKirbyMain_pre+0xE4) */
 u32 dNKirbyMain_commonparts_container[8] = {
-	0x003D0896, /* extern -> 0x2258 */
+	(u32)&dNKirbyModel_JointTree, /* extern -> 0x2258 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00AF0896, /* extern -> 0x2258 */
+	(u32)&dNKirbyModel_JointTree, /* extern -> 0x2258 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -308,13 +311,13 @@ FTAttributes dNKirbyMain_attr = {
 		{ -1, 0, FALSE, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 	},
 	{ 800.0f, 400.0f, 800.0f }, /* hit_detect_range */
-	NULL, /* setup_parts */
-	NULL, /* animlock */
+	(u32*)dNKirbyMain_setup_parts, /* setup_parts */
+	(u32*)dNKirbyMain_animlock, /* animlock */
 	{ 6, 16, 22, 27, 11 }, /* effect_joint_ids */
 	{ FALSE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	0, /* unused_0x2CC */
-	NULL, /* hiddenparts */
-	NULL, /* commonparts_container */
+	(FTHiddenPart*)dNKirbyMain_hiddenparts, /* hiddenparts */
+	(FTCommonPartContainer*)dNKirbyMain_commonparts_container, /* commonparts_container */
 	NULL, /* dobj_lookup */
 	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
 	25, /* joint_rfoot_id */
@@ -325,13 +328,13 @@ FTAttributes dNKirbyMain_attr = {
 	50.0f, /* unk_0x31C */
 	0.5235988f, /* unk_0x320 */
 	NULL, /* translate_scales */
-	NULL, /* modelparts_container */
+	(FTModelPartContainer*)dNKirbyMain_modelparts_container, /* modelparts_container */
 	NULL, /* accesspart */
-	NULL, /* textureparts_container */
+	(FTTexturePartContainer*)dNKirbyMain_textureparts_container, /* textureparts_container */
 	30, /* joint_itemheavy_id */
-	NULL, /* thrown_status */
+	(FTThrownStatusArray*)dNKirbyMain_thrown_status, /* thrown_status */
 	17, /* joint_itemlight_id */
-	NULL, /* sprites */
+	(FTSprites*)dNKirbyMain_sprites, /* sprites */
 	NULL, /* skeleton */
 };
 

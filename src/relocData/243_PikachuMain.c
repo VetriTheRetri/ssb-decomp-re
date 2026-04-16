@@ -4,15 +4,41 @@
 #include "relocdata_types.h"
 #include <ft/fttypes.h>
 
+extern DObjDesc dPikachuModel_JointTree[];
+extern DObjDesc dPikachuModel_JointTree_0x5490[];
+extern DObjDesc dPikachuModel_ThunderTrailDObjDesc[];
+extern MObjSub dPikachuModel_ThunderTrailMObjSub_MObjSub;
+extern u8 dPikachuModel_gap_0x0000[];
+extern u8 dPikachuModel_gap_0x2B78_sub_0x8B8[];
+extern u8 dPikachuModel_gap_0x59B8_sub_0x1128[];
+extern u8 dPikachuModel_gap_0x59B8_sub_0x1338[];
+extern u8 dPikachuModel_gap_0x59B8_sub_0x1438[];
+extern u8 dPikachuModel_gap_0x59B8_sub_0x1548[];
+extern u8 dPikachuModel_gap_0x59B8_sub_0x1658[];
+extern u8 dPikachuModel_gap_0x59B8_sub_0x1718[];
+extern u8 dPikachuModel_gap_0x59B8_sub_0x1868[];
+extern u8 dPikachuModel_gap_0x59B8_sub_0x1908[];
+extern u8 dPikachuModel_gap_0x59B8_sub_0x998[];
+extern u8 dPikachuModel_gap_0x59B8_sub_0xA38[];
+extern u8 dPikachuModel_gap_0x59B8_sub_0xB94[];
+extern u8 dPikachuModel_gap_0x59B8_sub_0xC38[];
+extern u8 dPikachuModel_gap_0x59B8_sub_0xD88[];
+extern u8 dPikachuModel_gap_0x9950_sub_0x30[];
+extern u8 dPikachuModel_gap_0x9950_sub_0x58[];
+extern u8 dPikachuModel_gap_0x9950_sub_0x8[];
+extern u8 dPikachuModel_gap_0x9950_sub_0x80[];
+extern u16 dPikachuModel_palette_0x9930[];
+extern DObjDesc dPikachuSpecial2_UnkDObjDesc[];
+
 /* Pre-attributes data (263 words, 0x041C bytes) */
 /* @ 0x0000, 116 bytes: FTAttributes.file_handles target (was dPikachuMain_pre+0x0) */
 u32 dPikachuMain_file_handles[29] = {
 
 	0x00010004, /* extern -> 0x0010 */
-	0x00020200, /* extern -> 0x0800 */
+	(u32)&dPikachuSpecial2_UnkDObjDesc, /* extern -> 0x0800 */
 	0x00030000, /* extern -> 0x0000 */
-	0x0004256C, /* extern -> 0x95B0 */
-	0x00102508, /* extern -> 0x9420 */
+	(u32)&dPikachuModel_ThunderTrailDObjDesc, /* extern -> 0x95B0 */
+	(u32)&dPikachuModel_ThunderTrailMObjSub_MObjSub, /* extern -> 0x9420 */
 	0x00000000,
 	0x00000000,
 	0x000000E1,
@@ -24,8 +50,8 @@ u32 dPikachuMain_file_handles[29] = {
 	0x0C830800,
 	0x0140B9C0,
 	0x14000000,
-	0x0011256C, /* extern -> 0x95B0 */
-	0x004D2508, /* extern -> 0x9420 */
+	(u32)&dPikachuModel_ThunderTrailDObjDesc, /* extern -> 0x95B0 */
+	(u32)&dPikachuModel_ThunderTrailMObjSub_MObjSub, /* extern -> 0x9420 */
 	0x00000000,
 	0x00000000,
 	0x000000F0,
@@ -105,9 +131,9 @@ u32 dPikachuMain_modelparts_container[27] = {
 /* @ 0x0130, 16 bytes: FTAttributes.accesspart target (was dPikachuMain_pre+0x130) */
 u32 dPikachuMain_accesspart[4] = {
 	0x0000000B,
-	0x004E18FC, /* extern -> 0x63F0 */
-	0x004F18D4, /* extern -> 0x6350 */
-	0x00521953, /* extern -> 0x654C */
+	(u32)&dPikachuModel_gap_0x59B8_sub_0xA38, /* extern -> 0x63F0 */
+	(u32)&dPikachuModel_gap_0x59B8_sub_0x998, /* extern -> 0x6350 */
+	(u32)&dPikachuModel_gap_0x59B8_sub_0xB94, /* extern -> 0x654C */
 };
 
 /* @ 0x0140, 8 bytes: FTAttributes.textureparts_container target (was dPikachuMain_pre+0x140) */
@@ -118,13 +144,13 @@ u32 dPikachuMain_textureparts_container[2] = {
 
 /* @ 0x0148, 32 bytes: FTAttributes.commonparts_container target (was dPikachuMain_pre+0x148) */
 u32 dPikachuMain_commonparts_container[8] = {
-	0x00530994, /* extern -> 0x2650 */
-	0x00540000, /* extern -> 0x0000 */
-	0x00560AC8, /* extern -> 0x2B20 */
+	(u32)&dPikachuModel_JointTree, /* extern -> 0x2650 */
+	(u32)&dPikachuModel_gap_0x0000, /* extern -> 0x0000 */
+	(u32)((u8*)dPikachuModel_JointTree + 0x4D0), /* extern -> 0x2B20 */
 	0x00000000,
-	0x00571524, /* extern -> 0x5490 */
-	0x00580D0C, /* extern -> 0x3430 */
-	0x00C61658, /* extern -> 0x5960 */
+	(u32)&dPikachuModel_JointTree_0x5490, /* extern -> 0x5490 */
+	(u32)&dPikachuModel_gap_0x2B78_sub_0x8B8, /* extern -> 0x3430 */
+	(u32)((u8*)dPikachuModel_JointTree_0x5490 + 0x4D0), /* extern -> 0x5960 */
 	0x00000000,
 };
 
@@ -242,71 +268,71 @@ u32 dPikachuMain_thrown_status[108] = {
 
 /* @ 0x0318, 20 bytes: FTAttributes.sub_0x318 target (was dPikachuMain_pre+0x318) */
 u32 dPikachuMain_sub_0x318[5] = {
-	0x00C7264C, /* extern -> 0x9930 */
-	0x00C82656, /* extern -> 0x9958 */
-	0x00C92660, /* extern -> 0x9980 */
-	0x00CA266A, /* extern -> 0x99A8 */
-	0x00CB2674, /* extern -> 0x99D0 */
+	(u32)&dPikachuModel_palette_0x9930, /* extern -> 0x9930 */
+	(u32)&dPikachuModel_gap_0x9950_sub_0x8, /* extern -> 0x9958 */
+	(u32)&dPikachuModel_gap_0x9950_sub_0x30, /* extern -> 0x9980 */
+	(u32)&dPikachuModel_gap_0x9950_sub_0x58, /* extern -> 0x99A8 */
+	(u32)&dPikachuModel_gap_0x9950_sub_0x80, /* extern -> 0x99D0 */
 };
 
 /* @ 0x032C, 12 bytes: FTAttributes.sprites target (was dPikachuMain_pre+0x32C) */
 u32 dPikachuMain_sprites[3] = {
-	0x00CD2680, /* extern -> 0x9A00 */
-	0x010500C6, /* intern -> 0x0318 */
-	0x00D026FA, /* extern -> 0x9BE8 */
+	(u32)((u8*)dPikachuModel_gap_0x9950_sub_0x80 + 0x30), /* extern -> 0x9A00 */
+	(u32)dPikachuMain_sub_0x318, /* intern -> 0x0318 */
+	(u32)((u8*)dPikachuModel_gap_0x9950_sub_0x80 + 0x218), /* extern -> 0x9BE8 */
 };
 
 /* @ 0x0338, 216 bytes: FTAttributes.sub_0x338 target (was dPikachuMain_pre+0x338) */
 u32 dPikachuMain_sub_0x338[54] = {
 	0x00000000,
 	0x00000000,
-	0x00D2197C, /* extern -> 0x65F0 */
+	(u32)&dPikachuModel_gap_0x59B8_sub_0xC38, /* extern -> 0x65F0 */
 	0x00000000,
-	0x00D819D0, /* extern -> 0x6740 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00DA1B7C, /* extern -> 0x6DF0 */
-	0x00000000,
-	0x00DC1B3C, /* extern -> 0x6CF0 */
-	0x00000000,
-	0x00E01AB8, /* extern -> 0x6AE0 */
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00E21C88, /* extern -> 0x7220 */
-	0x00000000,
-	0x00E81CB0, /* extern -> 0x72C0 */
+	(u32)&dPikachuModel_gap_0x59B8_sub_0xD88, /* extern -> 0x6740 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00EA1B7C, /* extern -> 0x6DF0 */
+	(u32)&dPikachuModel_gap_0x59B8_sub_0x1438, /* extern -> 0x6DF0 */
 	0x00000000,
-	0x00EE1B3C, /* extern -> 0x6CF0 */
+	(u32)&dPikachuModel_gap_0x59B8_sub_0x1338, /* extern -> 0x6CF0 */
 	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00F01BC0, /* extern -> 0x6F00 */
-	0x00000000,
-	0x00F41C04, /* extern -> 0x7010 */
+	(u32)&dPikachuModel_gap_0x59B8_sub_0x1128, /* extern -> 0x6AE0 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00F81C34, /* extern -> 0x70D0 */
+	(u32)&dPikachuModel_gap_0x59B8_sub_0x1868, /* extern -> 0x7220 */
+	0x00000000,
+	(u32)&dPikachuModel_gap_0x59B8_sub_0x1908, /* extern -> 0x72C0 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00FA1BC0, /* extern -> 0x6F00 */
-	0x00000000,
-	0x00FE1C04, /* extern -> 0x7010 */
 	0x00000000,
 	0x00000000,
+	(u32)&dPikachuModel_gap_0x59B8_sub_0x1438, /* extern -> 0x6DF0 */
 	0x00000000,
-	0x01BD1C34, /* extern -> 0x70D0 */
+	(u32)&dPikachuModel_gap_0x59B8_sub_0x1338, /* extern -> 0x6CF0 */
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	(u32)&dPikachuModel_gap_0x59B8_sub_0x1548, /* extern -> 0x6F00 */
+	0x00000000,
+	(u32)&dPikachuModel_gap_0x59B8_sub_0x1658, /* extern -> 0x7010 */
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	(u32)&dPikachuModel_gap_0x59B8_sub_0x1718, /* extern -> 0x70D0 */
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	(u32)&dPikachuModel_gap_0x59B8_sub_0x1548, /* extern -> 0x6F00 */
+	0x00000000,
+	(u32)&dPikachuModel_gap_0x59B8_sub_0x1658, /* extern -> 0x7010 */
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	(u32)&dPikachuModel_gap_0x59B8_sub_0x1718, /* extern -> 0x70D0 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -317,7 +343,7 @@ u32 dPikachuMain_sub_0x338[54] = {
 /* @ 0x0410, 12 bytes: FTAttributes.skeleton target (was dPikachuMain_pre+0x410) */
 u32 dPikachuMain_skeleton[3] = {
 	0x0000000B,
-	0x01AE00CE, /* intern -> 0x0338 */
+	(u32)dPikachuMain_sub_0x338, /* intern -> 0x0338 */
 	0x00000000,
 };
 
@@ -411,13 +437,13 @@ FTAttributes dPikachuMain_attr = {
 		{ 21, 0, FALSE, { 43.0f, 3.0f, 0.0f }, { 69.0f, 45.0f, 45.0f } },
 	},
 	{ 800.0f, 400.0f, 800.0f }, /* hit_detect_range */
-	NULL, /* setup_parts */
-	NULL, /* animlock */
+	(u32*)dPikachuMain_setup_parts, /* setup_parts */
+	(u32*)dPikachuMain_animlock, /* animlock */
 	{ 11, 18, 21, 26, 10 }, /* effect_joint_ids */
 	{ FALSE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	0, /* unused_0x2CC */
-	NULL, /* hiddenparts */
-	NULL, /* commonparts_container */
+	(FTHiddenPart*)dPikachuMain_hiddenparts, /* hiddenparts */
+	(FTCommonPartContainer*)dPikachuMain_commonparts_container, /* commonparts_container */
 	NULL, /* dobj_lookup */
 	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
 	24, /* joint_rfoot_id */
@@ -428,14 +454,14 @@ FTAttributes dPikachuMain_attr = {
 	50.0f, /* unk_0x31C */
 	0.5235988f, /* unk_0x320 */
 	NULL, /* translate_scales */
-	NULL, /* modelparts_container */
-	NULL, /* accesspart */
-	NULL, /* textureparts_container */
+	(FTModelPartContainer*)dPikachuMain_modelparts_container, /* modelparts_container */
+	(FTAccessPart*)dPikachuMain_accesspart, /* accesspart */
+	(FTTexturePartContainer*)dPikachuMain_textureparts_container, /* textureparts_container */
 	30, /* joint_itemheavy_id */
-	NULL, /* thrown_status */
+	(FTThrownStatusArray*)dPikachuMain_thrown_status, /* thrown_status */
 	12, /* joint_itemlight_id */
-	NULL, /* sprites */
-	NULL, /* skeleton */
+	(FTSprites*)dPikachuMain_sprites, /* sprites */
+	(FTSkeleton**)dPikachuMain_skeleton, /* skeleton */
 };
 
 /* Trailing padding (3 words) */

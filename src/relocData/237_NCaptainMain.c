@@ -4,6 +4,8 @@
 #include "relocdata_types.h"
 #include <ft/fttypes.h>
 
+extern DObjDesc dNCaptainModel_JointTree[];
+
 /* Pre-attributes data (167 words, 0x029C bytes) */
 /* @ 0x0000, 4 bytes: FTAttributes.file_handles target (was dNCaptainMain_pre+0x0) */
 u32 dNCaptainMain_file_handles[1] = {
@@ -80,11 +82,11 @@ u32 dNCaptainMain_textureparts_container[1] = {
 
 /* @ 0x00C0, 32 bytes: FTAttributes.commonparts_container target (was dNCaptainMain_pre+0xC0) */
 u32 dNCaptainMain_commonparts_container[8] = {
-	0x00340B5C, /* extern -> 0x2D70 */
+	(u32)&dNCaptainModel_JointTree, /* extern -> 0x2D70 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00A60B5C, /* extern -> 0x2D70 */
+	(u32)&dNCaptainModel_JointTree, /* extern -> 0x2D70 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -299,13 +301,13 @@ FTAttributes dNCaptainMain_attr = {
 		{ 21, 0, FALSE, { 93.0f, -3.0f, 0.0f }, { 180.0f, 70.0f, 64.0f } },
 	},
 	{ 1200.0f, 600.0f, 1200.0f }, /* hit_detect_range */
-	NULL, /* setup_parts */
-	NULL, /* animlock */
+	(u32*)dNCaptainMain_setup_parts, /* setup_parts */
+	(u32*)dNCaptainMain_animlock, /* animlock */
 	{ 12, 15, 21, 26, 9 }, /* effect_joint_ids */
 	{ FALSE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	0, /* unused_0x2CC */
-	NULL, /* hiddenparts */
-	NULL, /* commonparts_container */
+	(FTHiddenPart*)dNCaptainMain_hiddenparts, /* hiddenparts */
+	(FTCommonPartContainer*)dNCaptainMain_commonparts_container, /* commonparts_container */
 	NULL, /* dobj_lookup */
 	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
 	24, /* joint_rfoot_id */
@@ -316,13 +318,13 @@ FTAttributes dNCaptainMain_attr = {
 	50.0f, /* unk_0x31C */
 	0.5235988f, /* unk_0x320 */
 	NULL, /* translate_scales */
-	NULL, /* modelparts_container */
+	(FTModelPartContainer*)dNCaptainMain_modelparts_container, /* modelparts_container */
 	NULL, /* accesspart */
-	NULL, /* textureparts_container */
+	(FTTexturePartContainer*)dNCaptainMain_textureparts_container, /* textureparts_container */
 	29, /* joint_itemheavy_id */
-	NULL, /* thrown_status */
+	(FTThrownStatusArray*)dNCaptainMain_thrown_status, /* thrown_status */
 	17, /* joint_itemlight_id */
-	NULL, /* sprites */
+	(FTSprites*)dNCaptainMain_sprites, /* sprites */
 	NULL, /* skeleton */
 };
 

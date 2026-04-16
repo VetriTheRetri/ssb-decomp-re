@@ -4,11 +4,17 @@
 #include "relocdata_types.h"
 #include <ft/fttypes.h>
 
+extern DObjDesc dNSamusModel_JointTree[];
+extern Gfx dNSamusModel_Joint_0x1C00_DisplayList[];
+extern u8 dNSamusModel_gap_0x2FE8_sub_0x1978[];
+extern u8 dNSamusModel_gap_0x2FE8_sub_0xC08[];
+extern u32 dSamusMainMotion_0x0084[];
+
 /* Pre-attributes data (239 words, 0x03BC bytes) */
 /* @ 0x0000, 4 bytes: FTAttributes.file_handles target (was dNSamusMain_pre+0x0) */
 u32 dNSamusMain_file_handles[1] = {
 
-	0x00390021, /* extern -> 0x0084 */
+	(u32)&dSamusMainMotion_0x0084, /* extern -> 0x0084 */
 };
 
 /* @ 0x0004, 8 bytes: FTAttributes.animlock target (was dNSamusMain_pre+0x4) */
@@ -81,32 +87,32 @@ u32 dNSamusMain_hiddenparts[52] = {
 
 /* @ 0x00E4, 120 bytes: FTAttributes.sub_0x0E4 target (was dNSamusMain_pre+0xE4) */
 u32 dNSamusMain_sub_0x0E4[30] = {
-	0x003E0700, /* extern -> 0x1C00 */
+	(u32)&dNSamusModel_Joint_0x1C00_DisplayList, /* extern -> 0x1C00 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00430700, /* extern -> 0x1C00 */
+	(u32)&dNSamusModel_Joint_0x1C00_DisplayList, /* extern -> 0x1C00 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00480EFC, /* extern -> 0x3BF0 */
+	(u32)&dNSamusModel_gap_0x2FE8_sub_0xC08, /* extern -> 0x3BF0 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x004D0EFC, /* extern -> 0x3BF0 */
+	(u32)&dNSamusModel_gap_0x2FE8_sub_0xC08, /* extern -> 0x3BF0 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00521258, /* extern -> 0x4960 */
+	(u32)&dNSamusModel_gap_0x2FE8_sub_0x1978, /* extern -> 0x4960 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00781258, /* extern -> 0x4960 */
+	(u32)&dNSamusModel_gap_0x2FE8_sub_0x1978, /* extern -> 0x4960 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -117,7 +123,7 @@ u32 dNSamusMain_sub_0x0E4[30] = {
 u32 dNSamusMain_modelparts_container[33] = {
 	0x00000000,
 	0x00000000,
-	0x01960039, /* intern -> 0x00E4 */
+	(u32)dNSamusMain_sub_0x0E4, /* intern -> 0x00E4 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -152,11 +158,11 @@ u32 dNSamusMain_modelparts_container[33] = {
 
 /* @ 0x01E0, 32 bytes: FTAttributes.commonparts_container target (was dNSamusMain_pre+0x1E0) */
 u32 dNSamusMain_commonparts_container[8] = {
-	0x007C0A84, /* extern -> 0x2A10 */
+	(u32)&dNSamusModel_JointTree, /* extern -> 0x2A10 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00EE0A84, /* extern -> 0x2A10 */
+	(u32)&dNSamusModel_JointTree, /* extern -> 0x2A10 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -371,13 +377,13 @@ FTAttributes dNSamusMain_attr = {
 		{ 28, 0, FALSE, { 80.0f, 0.0f, 0.0f }, { 203.0f, 56.0f, 64.0f } },
 	},
 	{ 1200.0f, 600.0f, 1200.0f }, /* hit_detect_range */
-	NULL, /* setup_parts */
-	NULL, /* animlock */
+	(u32*)dNSamusMain_setup_parts, /* setup_parts */
+	(u32*)dNSamusMain_animlock, /* animlock */
 	{ 13, 16, 28, 33, 9 }, /* effect_joint_ids */
 	{ FALSE, TRUE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	0, /* unused_0x2CC */
-	NULL, /* hiddenparts */
-	NULL, /* commonparts_container */
+	(FTHiddenPart*)dNSamusMain_hiddenparts, /* hiddenparts */
+	(FTCommonPartContainer*)dNSamusMain_commonparts_container, /* commonparts_container */
 	NULL, /* dobj_lookup */
 	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
 	31, /* joint_rfoot_id */
@@ -388,13 +394,13 @@ FTAttributes dNSamusMain_attr = {
 	100.0f, /* unk_0x31C */
 	0.5235988f, /* unk_0x320 */
 	NULL, /* translate_scales */
-	NULL, /* modelparts_container */
+	(FTModelPartContainer*)dNSamusMain_modelparts_container, /* modelparts_container */
 	NULL, /* accesspart */
 	NULL, /* textureparts_container */
 	36, /* joint_itemheavy_id */
-	NULL, /* thrown_status */
+	(FTThrownStatusArray*)dNSamusMain_thrown_status, /* thrown_status */
 	11, /* joint_itemlight_id */
-	NULL, /* sprites */
+	(FTSprites*)dNSamusMain_sprites, /* sprites */
 	NULL, /* skeleton */
 };
 

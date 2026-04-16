@@ -4,11 +4,16 @@
 #include "relocdata_types.h"
 #include <ft/fttypes.h>
 
+extern DObjDesc dNNessModel_JointTree[];
+extern u8 dNNessModel_gap_0x3210_sub_0x2B0[];
+extern u8 dNNessModel_gap_0x3210_sub_0x30[];
+extern u32 dNessMainMotion_0x0024[];
+
 /* Pre-attributes data (188 words, 0x02F0 bytes) */
 /* @ 0x0000, 4 bytes: FTAttributes.file_handles target (was dNNessMain_pre+0x0) */
 u32 dNNessMain_file_handles[1] = {
 
-	0x00150009, /* extern -> 0x0024 */
+	(u32)&dNessMainMotion_0x0024, /* extern -> 0x0024 */
 };
 
 /* @ 0x0004, 8 bytes: FTAttributes.animlock target (was dNNessMain_pre+0x4) */
@@ -45,12 +50,12 @@ u32 dNNessMain_hiddenparts[16] = {
 
 /* @ 0x0054, 40 bytes: FTAttributes.sub_0x054 target (was dNNessMain_pre+0x54) */
 u32 dNNessMain_sub_0x054[10] = {
-	0x001A0D30, /* extern -> 0x34C0 */
+	(u32)&dNNessModel_gap_0x3210_sub_0x2B0, /* extern -> 0x34C0 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x001F0D30, /* extern -> 0x34C0 */
+	(u32)&dNNessModel_gap_0x3210_sub_0x2B0, /* extern -> 0x34C0 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -59,12 +64,12 @@ u32 dNNessMain_sub_0x054[10] = {
 
 /* @ 0x007C, 40 bytes: FTAttributes.sub_0x07C target (was dNNessMain_pre+0x7C) */
 u32 dNNessMain_sub_0x07C[10] = {
-	0x00240C90, /* extern -> 0x3240 */
+	(u32)&dNNessModel_gap_0x3210_sub_0x30, /* extern -> 0x3240 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00450C90, /* extern -> 0x3240 */
+	(u32)&dNNessModel_gap_0x3210_sub_0x30, /* extern -> 0x3240 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -86,7 +91,7 @@ u32 dNNessMain_modelparts_container[27] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00430015, /* intern -> 0x0054 */
+	(u32)dNNessMain_sub_0x054, /* intern -> 0x0054 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -99,7 +104,7 @@ u32 dNNessMain_modelparts_container[27] = {
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x0163001F, /* intern -> 0x007C */
+	(u32)dNNessMain_sub_0x07C, /* intern -> 0x007C */
 };
 
 /* @ 0x0110, 4 bytes: FTAttributes.textureparts_container target (was dNNessMain_pre+0x110) */
@@ -109,11 +114,11 @@ u32 dNNessMain_textureparts_container[1] = {
 
 /* @ 0x0114, 32 bytes: FTAttributes.commonparts_container target (was dNNessMain_pre+0x114) */
 u32 dNNessMain_commonparts_container[8] = {
-	0x00490B50, /* extern -> 0x2D40 */
+	(u32)&dNNessModel_JointTree, /* extern -> 0x2D40 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
-	0x00BB0B50, /* extern -> 0x2D40 */
+	(u32)&dNNessModel_JointTree, /* extern -> 0x2D40 */
 	0x00000000,
 	0x00000000,
 	0x00000000,
@@ -328,13 +333,13 @@ FTAttributes dNNessMain_attr = {
 		{ 20, 0, FALSE, { 26.0f, 0.0f, -2.0f }, { 68.0f, 47.0f, 42.0f } },
 	},
 	{ 900.0f, 900.0f, 600.0f }, /* hit_detect_range */
-	NULL, /* setup_parts */
-	NULL, /* animlock */
+	(u32*)dNNessMain_setup_parts, /* setup_parts */
+	(u32*)dNNessMain_animlock, /* animlock */
 	{ 12, 15, 20, 26, 9 }, /* effect_joint_ids */
 	{ FALSE, TRUE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	0, /* unused_0x2CC */
-	NULL, /* hiddenparts */
-	NULL, /* commonparts_container */
+	(FTHiddenPart*)dNNessMain_hiddenparts, /* hiddenparts */
+	(FTCommonPartContainer*)dNNessMain_commonparts_container, /* commonparts_container */
 	NULL, /* dobj_lookup */
 	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
 	24, /* joint_rfoot_id */
@@ -345,13 +350,13 @@ FTAttributes dNNessMain_attr = {
 	50.0f, /* unk_0x31C */
 	0.5235988f, /* unk_0x320 */
 	NULL, /* translate_scales */
-	NULL, /* modelparts_container */
+	(FTModelPartContainer*)dNNessMain_modelparts_container, /* modelparts_container */
 	NULL, /* accesspart */
-	NULL, /* textureparts_container */
+	(FTTexturePartContainer*)dNNessMain_textureparts_container, /* textureparts_container */
 	30, /* joint_itemheavy_id */
-	NULL, /* thrown_status */
+	(FTThrownStatusArray*)dNNessMain_thrown_status, /* thrown_status */
 	17, /* joint_itemlight_id */
-	NULL, /* sprites */
+	(FTSprites*)dNNessMain_sprites, /* sprites */
 	NULL, /* skeleton */
 };
 

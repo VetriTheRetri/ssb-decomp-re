@@ -4,6 +4,8 @@
 #include "relocdata_types.h"
 #include <ft/fttypes.h>
 
+extern DObjDesc dNYoshiModel_JointTree[];
+
 /* Pre-attributes data (174 words, 0x02B8 bytes) */
 /* @ 0x0000, 4 bytes: FTAttributes.file_handles target (was dNYoshiMain_pre+0x0) */
 u32 dNYoshiMain_file_handles[1] = {
@@ -87,11 +89,11 @@ u32 dNYoshiMain_textureparts_container[2] = {
 
 /* @ 0x00DC, 32 bytes: FTAttributes.commonparts_container target (was dNYoshiMain_pre+0xDC) */
 u32 dNYoshiMain_commonparts_container[8] = {
-	0x003B0BBE, /* extern -> 0x2EF8 */
+	(u32)&dNYoshiModel_JointTree, /* extern -> 0x2EF8 */
 	0x00000000,
 	0x00000000,
 	0x01000000,
-	0x00AD0BBE, /* extern -> 0x2EF8 */
+	(u32)&dNYoshiModel_JointTree, /* extern -> 0x2EF8 */
 	0x00000000,
 	0x00000000,
 	0x01000000,
@@ -306,13 +308,13 @@ FTAttributes dNYoshiMain_attr = {
 		{ 23, 0, FALSE, { 36.0f, 0.0f, 0.0f }, { 90.0f, 45.0f, 51.0f } },
 	},
 	{ 1200.0f, 600.0f, 1200.0f }, /* hit_detect_range */
-	NULL, /* setup_parts */
-	NULL, /* animlock */
+	(u32*)dNYoshiMain_setup_parts, /* setup_parts */
+	(u32*)dNYoshiMain_animlock, /* animlock */
 	{ 7, 16, 23, 28, 12 }, /* effect_joint_ids */
 	{ FALSE, FALSE, FALSE, FALSE, FALSE }, /* cliff_status_ga */
 	0, /* unused_0x2CC */
-	NULL, /* hiddenparts */
-	NULL, /* commonparts_container */
+	(FTHiddenPart*)dNYoshiMain_hiddenparts, /* hiddenparts */
+	(FTCommonPartContainer*)dNYoshiMain_commonparts_container, /* commonparts_container */
 	NULL, /* dobj_lookup */
 	{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL }, /* shield_anim_joints */
 	26, /* joint_rfoot_id */
@@ -323,12 +325,12 @@ FTAttributes dNYoshiMain_attr = {
 	50.0f, /* unk_0x31C */
 	0.5235988f, /* unk_0x320 */
 	NULL, /* translate_scales */
-	NULL, /* modelparts_container */
+	(FTModelPartContainer*)dNYoshiMain_modelparts_container, /* modelparts_container */
 	NULL, /* accesspart */
-	NULL, /* textureparts_container */
+	(FTTexturePartContainer*)dNYoshiMain_textureparts_container, /* textureparts_container */
 	31, /* joint_itemheavy_id */
-	NULL, /* thrown_status */
+	(FTThrownStatusArray*)dNYoshiMain_thrown_status, /* thrown_status */
 	18, /* joint_itemlight_id */
-	NULL, /* sprites */
+	(FTSprites*)dNYoshiMain_sprites, /* sprites */
 	NULL, /* skeleton */
 };

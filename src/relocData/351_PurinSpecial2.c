@@ -6,6 +6,9 @@
 
 #include "relocdata_types.h"
 
+/* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
+extern u8 dPurinSpecial2_gap_0x1C98[];
+
 PAD(8);
 
 /* Raw data from file offset 0x0008 to 0x0810 (2056 bytes) */
@@ -32,7 +35,7 @@ u8 dPurinSpecial2_Tex_0x1820[1024] = {
 MObjSub dPurinSpecial2_SingMObjSub_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)0x070B0786,
+	(void**)((u8*)dPurinSpecial2_gap_0x1C98 + 0x180),
 	0x0000, 0x0000, 0x070C, 0x0788,
 	118294410,
 	2.0166514759768306e-34f, 1.0789998175301091e-42f,

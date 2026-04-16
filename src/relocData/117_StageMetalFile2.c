@@ -6,6 +6,10 @@
 
 #include "relocdata_types.h"
 
+/* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
+extern u8 dStageMetalFile2_gap_0x1E48[];
+extern u8 dStageMetalFile2_gap_0x3298[];
+
 PAD(8);
 
 /* Texture data @ 0x0008 (3112 bytes) */
@@ -183,7 +187,7 @@ u8 dStageMetalFile2_Layer0MatAnim_MatAnimJoint[560] = {
 MObjSub dStageMetalFile2_Layer1MObj_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)0x077607F0,
+	(void**)((u8*)dStageMetalFile2_gap_0x1E48 + 0x178),
 	0x0777, 0x026C, 0x0778, 0x0278,
 	125371006,
 	1.8808648888900672e-34f, 1.888388741501551e-34f,
@@ -238,7 +242,7 @@ u8 dStageMetalFile2_Layer1MatAnim_MatAnimJoint[400] = {
 MObjSub dStageMetalFile2_Layer2MObj_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)0x0CA80CA8,
+	(void**)((u8*)dStageMetalFile2_gap_0x3298 + 0x8),
 	0x0000, 0x0202, 0x0000, 0x0000,
 	2097152,
 	1.4601954591699284e-38f, 2.802596928649634e-45f,

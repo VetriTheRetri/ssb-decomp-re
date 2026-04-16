@@ -6,6 +6,9 @@
 
 #include "relocdata_types.h"
 
+/* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
+extern u8 dPikachuSpecial3_gap_0x2118_sub_0x10[];
+
 /* Raw data from file offset 0x0000 to 0x1A20 (6688 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
 u8 dPikachuSpecial3_gap_0x0000[8] = {
@@ -287,7 +290,7 @@ u8 dPikachuSpecial3_gap_0x1C90_sub_0x210[512] = {
 MObjSub dPikachuSpecial3_ThunderJoltMObjSub_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)0x082A084A,
+	(void**)dPikachuSpecial3_gap_0x2118_sub_0x10,
 	0x082B, 0x07A8, 0x082D, 0x0726,
 	514,
 	6.079676067907064e-34f, 2.938735877055719e-39f,

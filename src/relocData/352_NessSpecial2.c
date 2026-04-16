@@ -6,6 +6,9 @@
 
 #include "relocdata_types.h"
 
+/* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
+extern u8 dNessSpecial2_gap_0x0888[];
+
 /* Raw data from file offset 0x0000 to 0x0810 (2064 bytes) */
 u8 dNessSpecial2_gap_0x0000[2064] = {
 	#include <NessSpecial2/gap_0x0000.data.inc.c>
@@ -15,7 +18,7 @@ u8 dNessSpecial2_gap_0x0000[2064] = {
 MObjSub dNessSpecial2_PsychicMagnetMObjSub_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)0x02060226,
+	(void**)((u8*)dNessSpecial2_gap_0x0888 + 0x10),
 	0x0207, 0x0104, 0x0209, 0x0002,
 	770,
 	1.219633458786485e-37f, 2.938735877055719e-39f,

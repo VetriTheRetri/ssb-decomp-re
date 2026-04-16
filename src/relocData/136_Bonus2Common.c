@@ -6,6 +6,11 @@
 
 #include "relocdata_types.h"
 
+/* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
+extern u8 dBonus2Common_gap_0x3798[];
+extern u8 dBonus2Common_gap_0x3FE8[];
+extern u8 dBonus2Common_gap_0x4818[];
+
 /* Raw data from file offset 0x0000 to 0x3720 (14112 bytes) */
 u8 dBonus2Common_gap_0x0000[14112] = {
 	#include <Bonus2Common/gap_0x0000.data.inc.c>
@@ -15,7 +20,7 @@ u8 dBonus2Common_gap_0x0000[14112] = {
 MObjSub dBonus2Common_PlatformSmall_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)0x0DCA0E08,
+	(void**)((u8*)dBonus2Common_gap_0x3798 + 0x88),
 	0x0E08, 0x0E0A, 0x0000, 0x0000,
 	1026,
 	0.0f, 2.938735877055719e-39f,
@@ -68,7 +73,7 @@ u8 dBonus2Common_PlatformSmall_MatAnimJoint[112] = {
 MObjSub dBonus2Common_PlatformMedium_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)0x0FDE101C,
+	(void**)((u8*)dBonus2Common_gap_0x3FE8 + 0x88),
 	0x101C, 0x101E, 0x0000, 0x0000,
 	1026,
 	0.0f, 2.938735877055719e-39f,
@@ -121,7 +126,7 @@ u8 dBonus2Common_PlatformMedium_MatAnimJoint[112] = {
 MObjSub dBonus2Common_PlatformLarge_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)0x11EA1228,
+	(void**)((u8*)dBonus2Common_gap_0x4818 + 0x88),
 	0x1228, 0x122A, 0x0000, 0x0000,
 	1026,
 	0.0f, 2.938735877055719e-39f,

@@ -6,6 +6,9 @@
 
 #include "relocdata_types.h"
 
+/* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
+extern u8 dCaptainSpecial2_gap_0x09D8[];
+
 /* Raw data from file offset 0x0000 to 0x0030 (48 bytes) */
 u8 dCaptainSpecial2_gap_0x0000[48] = {
 	#include <CaptainSpecial2/gap_0x0000.data.inc.c>
@@ -25,7 +28,7 @@ u8 dCaptainSpecial2_gap_0x0050[2320] = {
 MObjSub dCaptainSpecial2_FalconKickMObjSub_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)0x025A027A,
+	(void**)((u8*)dCaptainSpecial2_gap_0x09D8 + 0x10),
 	0x025B, 0x0138, 0x025D, 0x0016,
 	514,
 	1.8367774096938661e-37f, 2.938735877055719e-39f,

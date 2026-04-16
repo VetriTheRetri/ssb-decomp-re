@@ -6,6 +6,14 @@
 
 #include "relocdata_types.h"
 
+/* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
+extern u8 dFTEmblemModels_gap_0x14E8[];
+extern u8 dFTEmblemModels_gap_0x19B8[];
+extern u8 dFTEmblemModels_gap_0x2708[];
+extern u8 dFTEmblemModels_gap_0x3068[];
+extern u8 dFTEmblemModels_gap_0x3978[];
+extern u8 dFTEmblemModels_gap_0x48B8[];
+
 extern u32 dFTEmblemModels_Mario_MObjSubPtrArray[];
 
 /* MObjSub array: Mario @ 0x0 (3 entries) */
@@ -215,7 +223,7 @@ u8 dFTEmblemModels_Donkey_MatAnimJoint[164] = {
 MObjSub dFTEmblemModels_Metroid_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)0x053C053C,
+	(void**)((u8*)dFTEmblemModels_gap_0x14E8 + 0x8),
 	0x0000, 0x0002, 0x0000, 0x0000,
 	0,
 	0.0f, 0.0f,
@@ -270,7 +278,7 @@ u8 dFTEmblemModels_Metroid_MatAnimJoint[92] = {
 MObjSub dFTEmblemModels_Fox_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)0x06700670,
+	(void**)((u8*)dFTEmblemModels_gap_0x19B8 + 0x8),
 	0x0000, 0x0002, 0x0000, 0x0000,
 	0,
 	0.0f, 0.0f,
@@ -440,7 +448,7 @@ u8 dFTEmblemModels_Zelda_MatAnimJoint[236] = {
 MObjSub dFTEmblemModels_Yoshi_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)0x09C409C4,
+	(void**)((u8*)dFTEmblemModels_gap_0x2708 + 0x8),
 	0x0000, 0x0002, 0x0000, 0x0000,
 	0,
 	0.0f, 0.0f,
@@ -495,7 +503,7 @@ u8 dFTEmblemModels_Yoshi_MatAnimJoint[92] = {
 MObjSub dFTEmblemModels_FZero_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)0x0C1C0C1C,
+	(void**)((u8*)dFTEmblemModels_gap_0x3068 + 0x8),
 	0x0000, 0x0002, 0x0000, 0x0000,
 	0,
 	0.0f, 0.0f,
@@ -550,7 +558,7 @@ u8 dFTEmblemModels_FZero_MatAnimJoint[84] = {
 MObjSub dFTEmblemModels_Kirby_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)0x0E600E60,
+	(void**)((u8*)dFTEmblemModels_gap_0x3978 + 0x8),
 	0x0000, 0x0002, 0x0000, 0x0000,
 	0,
 	0.0f, 0.0f,
@@ -695,7 +703,7 @@ u8 dFTEmblemModels_PMonsters_MatAnimJoint[172] = {
 MObjSub dFTEmblemModels_Mother_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)0x12301230,
+	(void**)((u8*)dFTEmblemModels_gap_0x48B8 + 0x8),
 	0x0000, 0x0002, 0x0000, 0x0000,
 	0,
 	0.0f, 0.0f,

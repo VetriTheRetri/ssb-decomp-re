@@ -6,6 +6,9 @@
 
 #include "relocdata_types.h"
 
+/* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
+extern u8 dSamusSpecial2_gap_0x0288[];
+
 /* Raw data from file offset 0x0000 to 0x0210 (528 bytes) */
 u8 dSamusSpecial2_gap_0x0000[528] = {
 	#include <SamusSpecial2/gap_0x0000.data.inc.c>
@@ -15,7 +18,7 @@ u8 dSamusSpecial2_gap_0x0000[528] = {
 MObjSub dSamusSpecial2_GrappleBeamMObjSub_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)0x008600A6,
+	(void**)((u8*)dSamusSpecial2_gap_0x0288 + 0x10),
 	0x0087, 0x0044, 0x0089, 0x0002,
 	770,
 	1.524488013622076e-38f, 2.938735877055719e-39f,

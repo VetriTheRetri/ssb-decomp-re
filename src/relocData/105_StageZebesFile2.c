@@ -6,6 +6,9 @@
 
 #include "relocdata_types.h"
 
+/* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
+extern u8 dStageZebesFile2_gap_0x2BC0[];
+
 /* Raw data from file offset 0x0000 to 0x2B48 (11080 bytes) */
 u8 dStageZebesFile2_gap_0x0000[11080] = {
 	#include <StageZebesFile2/gap_0x0000.data.inc.c>
@@ -15,7 +18,7 @@ u8 dStageZebesFile2_gap_0x0000[11080] = {
 MObjSub dStageZebesFile2_Layer1MObj_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)0x0AD40D42,
+	(void**)((u8*)dStageZebesFile2_gap_0x2BC0 + 0x948),
 	0x0AD7, 0x0D46, 0x0000, 0x0000,
 	0,
 	2.080504218910902e-32f, 2.1190231116722343e-32f,

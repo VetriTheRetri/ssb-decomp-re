@@ -6,6 +6,9 @@
 
 #include "relocdata_types.h"
 
+/* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
+extern u8 dMVOpeningStandoff_gap_0x61B8[];
+
 PAD(8);
 
 /* Palette: Lut_0x0008 @ 0x8 (16 colors RGBA5551) */
@@ -134,7 +137,7 @@ MObjSub dMVOpeningStandoff_LightningMObjSub_MObjSub = {
 	0.0f, 0.0f,
 	2.79300700000659e-24f, 2.8317814856504657e-24f,
 	0.0f, 0.0f,
-	(void**)0x185C1938,
+	(void**)((u8*)dMVOpeningStandoff_gap_0x61B8 + 0x328),
 	0x185D,
 	0x19, 0x3A,
 	0x185F,

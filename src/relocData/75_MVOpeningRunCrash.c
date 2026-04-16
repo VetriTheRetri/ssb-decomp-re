@@ -6,6 +6,9 @@
 
 #include "relocdata_types.h"
 
+/* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
+extern u8 dMVOpeningRunCrash_gap_0x2B20[];
+
 /* Raw data from file offset 0x0000 to 0x2AA8 (10920 bytes) */
 u8 dMVOpeningRunCrash_gap_0x0000[10920] = {
 	#include <MVOpeningRunCrash/gap_0x0000.data.inc.c>
@@ -15,13 +18,13 @@ u8 dMVOpeningRunCrash_gap_0x0000[10920] = {
 MObjSub dMVOpeningRunCrash_MObjSub_0x2AA8_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)0x0AAC0B90,
+	(void**)((u8*)dMVOpeningRunCrash_gap_0x2B20 + 0x320),
 	0x0AAD, 0x0B92, 0x0AAE, 0x0B94,
 	179243926,
 	1.6948653708348004e-32f, 1.704493551188798e-32f,
 	1.7141217315427957e-32f, 1.7237499118967934e-32f,
 	1.733378092250791e-32f, 1.7430062726047887e-32f,
-	(void**)0x0AB60104,
+	(void**)((u8*)dMVOpeningRunCrash_gap_0x0000 + 0x410),
 	0x0AB7,
 	0x00, 0xFA,
 	0x0AB8,

@@ -6,6 +6,11 @@
 
 #include "relocdata_types.h"
 
+/* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
+extern u8 dLinkSpecial2_gap_0x01A8[];
+extern u8 dLinkSpecial2_gap_0x0568[];
+extern u8 dLinkSpecial2_gap_0x10B0[];
+
 PAD(8);
 
 /* Palette: Lut_0x0008 @ 0x8 (16 colors RGBA5551) */
@@ -24,7 +29,7 @@ u8 dLinkSpecial2_Tex_0x0030[256] = {
 MObjSub dLinkSpecial2_EntryWaveMObjSub_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)0x006C006C,
+	(void**)((u8*)dLinkSpecial2_gap_0x01A8 + 0x8),
 	0x0000, 0x0202, 0x0000, 0x0000,
 	2097152,
 	1.4105968083108137e-37f, 0.0f,
@@ -93,7 +98,7 @@ u8 dLinkSpecial2_Tex_0x04B0[64] = {
 MObjSub dLinkSpecial2_EntryBeamMObjSub_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)0x015C015C,
+	(void**)((u8*)dLinkSpecial2_gap_0x0568 + 0x8),
 	0x0000, 0x0202, 0x0000, 0x0000,
 	4194304,
 	1.175495471861059e-38f, 1.401298464324817e-45f,
@@ -175,7 +180,7 @@ u8 dLinkSpecial2_Tex_0x0C38[1024] = {
 MObjSub dLinkSpecial2_SpinAttackMObjSub_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)0x042E042E,
+	(void**)((u8*)dLinkSpecial2_gap_0x10B0 + 0x8),
 	0x0000, 0x0302, 0x0000, 0x0000,
 	2097152,
 	2.938780718606577e-39f, 0.0f,

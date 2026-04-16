@@ -6,6 +6,9 @@
 
 #include "relocdata_types.h"
 
+/* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
+extern u8 dGRBonus2FoxFile2_gap_0x0AD8[];
+
 /* Raw data from file offset 0x0000 to 0x0950 (2384 bytes) */
 u8 dGRBonus2FoxFile2_gap_0x0000[2384] = {
 	#include <GRBonus2FoxFile2/gap_0x0000.data.inc.c>
@@ -33,7 +36,7 @@ MObjSub dGRBonus2FoxFile2_Layer1MObj_MObjSub = {
 	0.0f, 0.0f,
 	0.0f, 0.0f,
 	0.0f, 0.0f,
-	(void**)0x02A9033C,
+	(void**)((u8*)dGRBonus2FoxFile2_gap_0x0AD8 + 0x218),
 	0x0000,
 	0x00, 0x00,
 	0x0000,

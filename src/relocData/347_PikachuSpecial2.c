@@ -6,6 +6,9 @@
 
 #include "relocdata_types.h"
 
+/* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
+extern u8 dPikachuSpecial2_gap_0x06B8[];
+
 PAD(8);
 
 /* Palette: Lut_0x0008 @ 0x8 (16 colors RGBA5551) */
@@ -22,7 +25,7 @@ u8 dPikachuSpecial2_gap_0x0028[1560] = {
 MObjSub dPikachuSpecial2_UnkMObjSub_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)0x019201B4,
+	(void**)((u8*)dPikachuSpecial2_gap_0x06B8 + 0x18),
 	0x0193, 0x0110, 0x0194, 0x008E,
 	26673164,
 	0.0f, 7.20267410662956e-43f,

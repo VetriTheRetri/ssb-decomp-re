@@ -6,6 +6,9 @@
 
 #include "relocdata_types.h"
 
+/* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
+extern u8 dEFCommonEffects2_gap_0x1F18[];
+
 /* Raw data from file offset 0x0000 to 0x1428 (5160 bytes) */
 u8 dEFCommonEffects2_gap_0x0000[5160] = {
 	#include <EFCommonEffects2/gap_0x0000.data.inc.c>
@@ -58,7 +61,7 @@ u8 dEFCommonEffects2_ShockSmallMatAnimJoint_MatAnimJoint[2352] = {
 MObjSub dEFCommonEffects2_FireSparkMObjSub_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)0x07AA07CC,
+	(void**)((u8*)dEFCommonEffects2_gap_0x1F18 + 0x18),
 	0x07AB, 0x0728, 0x07AC, 0x06A6,
 	128779812,
 	2.6334384128055736e-34f, 7.20267410662956e-43f,

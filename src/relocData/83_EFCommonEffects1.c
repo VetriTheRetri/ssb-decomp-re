@@ -6,6 +6,9 @@
 
 #include "relocdata_types.h"
 
+/* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
+extern u8 dEFCommonEffects1_gap_0x7458[];
+
 /* Raw data from file offset 0x0000 to 0x73E0 (29664 bytes) */
 u8 dEFCommonEffects1_gap_0x0000[29664] = {
 	#include <EFCommonEffects1/gap_0x0000.data.inc.c>
@@ -15,7 +18,7 @@ u8 dEFCommonEffects1_gap_0x0000[29664] = {
 MObjSub dEFCommonEffects1_DamageSlash_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)0x1CFA1D44,
+	(void**)((u8*)dEFCommonEffects1_gap_0x7458 + 0xB8),
 	0x1CFB, 0x1D46, 0x1CFC, 0x1C98,
 	486349878,
 	1.681550344879118e-21f, 1.688157894308347e-21f,

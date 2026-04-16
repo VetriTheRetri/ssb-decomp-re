@@ -6,6 +6,10 @@
 
 #include "relocdata_types.h"
 
+/* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
+extern u8 dMVCommon_gap_0x1DD18[];
+extern u8 dMVCommon_gap_0x1F170[];
+
 PAD(8);
 
 /* Palette: Lut_0x0008 @ 0x8 (16 colors RGBA5551) */
@@ -466,7 +470,7 @@ u8 dMVCommon_RoomSnapAnimJoint_AnimJoint[4528] = {
 MObjSub dMVCommon_RoomCloseUpEffectAirMObjSub_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)0x774A774A,
+	(void**)((u8*)dMVCommon_gap_0x1DD18 + 0x10),
 	0x0000, 0x0000, 0x0000, 0x0000,
 	3,
 	0.0f, 2.938735877055719e-39f,
@@ -517,7 +521,7 @@ u8 dMVCommon_RoomCloseUpEffectAirAnimJoint_AnimJoint[4328] = {
 MObjSub dMVCommon_RoomCloseUpEffectGroundMObjSub_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)0x7C5E7C5E,
+	(void**)((u8*)dMVCommon_gap_0x1F170 + 0x8),
 	0x0000, 0x0003, 0x0000, 0x0000,
 	2097152,
 	5.877561437213154e-39f, 0.0f,

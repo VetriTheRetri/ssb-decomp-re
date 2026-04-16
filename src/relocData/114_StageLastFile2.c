@@ -6,6 +6,9 @@
 
 #include "relocdata_types.h"
 
+/* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
+extern u8 dStageLastFile2_gap_0x20F0[];
+
 /* Raw data from file offset 0x0000 to 0x2078 (8312 bytes) */
 u8 dStageLastFile2_gap_0x0000[8312] = {
 	#include <StageLastFile2/gap_0x0000.data.inc.c>
@@ -15,7 +18,7 @@ u8 dStageLastFile2_gap_0x0000[8312] = {
 MObjSub dStageLastFile2_Layer1MObj_MObjSub = {
 	0x0000,
 	0x00, 0x00,
-	(void**)0x08200A94,
+	(void**)((u8*)dStageLastFile2_gap_0x20F0 + 0x960),
 	0x0821, 0x0A9A, 0x0822, 0x0AA0,
 	136514211,
 	4.935279052793796e-34f, 4.965367116400038e-34f,

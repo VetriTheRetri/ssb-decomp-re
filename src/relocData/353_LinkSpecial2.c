@@ -6,13 +6,6 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
-#if defined(REGION_JP)
-
-u8 dLinkSpecial2[6672] = {
-	#include <LinkSpecial2/jp_raw.data.inc.c>
-};
-
-#else  /* REGION_US */
 
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dLinkSpecial2_gap_0x01A8[];
@@ -298,5 +291,3 @@ u32 dLinkSpecial2_SpinAttackAnimJoint_AnimJoint[40] = {
 u32 dLinkSpecial2_SpinAttackMatAnimJoint_MatAnimJoint[456] = {
 	#include <LinkSpecial2/SpinAttackMatAnimJoint_MatAnimJoint.data.inc.c>
 };
-
-#endif  /* REGION_US */

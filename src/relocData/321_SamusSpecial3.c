@@ -5,13 +5,6 @@
  * at extract time. */
 
 #include "relocdata_types.h"
-#if defined(REGION_JP)
-
-u8 dSamusSpecial3[848] = {
-	#include <SamusSpecial3/jp_raw.data.inc.c>
-};
-
-#else  /* REGION_US */
 
 PAD(8);
 
@@ -36,5 +29,3 @@ Vtx dSamusSpecial3_JointVerts_Vtx[7] = {
 Gfx dSamusSpecial3_BombDL_DisplayList[22] = {
 	#include <SamusSpecial3/BombDL.dl.inc.c>
 };
-
-#endif  /* REGION_US */

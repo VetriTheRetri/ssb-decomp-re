@@ -5,13 +5,6 @@
  * at extract time. */
 
 #include "relocdata_types.h"
-#if defined(REGION_JP)
-
-u8 dMarioSpecial2[1856] = {
-	#include <MarioSpecial2/jp_raw.data.inc.c>
-};
-
-#else  /* REGION_US */
 
 PAD(8);
 
@@ -83,5 +76,3 @@ PAD(8);
 u32 dMarioSpecial2_EntryDokanAnimJoint_AnimJoint[32] = {
 	#include <MarioSpecial2/EntryDokanAnimJoint_AnimJoint.data.inc.c>
 };
-
-#endif  /* REGION_US */

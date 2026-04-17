@@ -5,13 +5,6 @@
  * at extract time. */
 
 #include "relocdata_types.h"
-#if defined(REGION_JP)
-
-u8 dLinkSpecial3[1776] = {
-	#include <LinkSpecial3/jp_raw.data.inc.c>
-};
-
-#else  /* REGION_US */
 
 PAD(8);
 
@@ -76,5 +69,3 @@ Gfx dLinkSpecial3_BoomerangDL_DisplayList[27] = {
 u8 dLinkSpecial3_BoomerangDL_post[664] = {
 	#include <LinkSpecial3/BoomerangDL_post.data.inc.c>
 };
-
-#endif  /* REGION_US */

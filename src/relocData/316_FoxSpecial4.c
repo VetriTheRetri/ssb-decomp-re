@@ -5,13 +5,6 @@
  * at extract time. */
 
 #include "relocdata_types.h"
-#if defined(REGION_JP)
-
-u8 dFoxSpecial4[144] = {
-	#include <FoxSpecial4/jp_raw.data.inc.c>
-};
-
-#else  /* REGION_US */
 
 /* Vtx: JointVerts @ 0x0 (3 vertices) */
 Vtx dFoxSpecial4_JointVerts_Vtx[3] = {
@@ -32,5 +25,3 @@ Gfx dFoxSpecial4_ReflectorDL_DisplayList[10] = {
 u8 dFoxSpecial4_ReflectorDL_post[8] = {
 	#include <FoxSpecial4/ReflectorDL_post.data.inc.c>
 };
-
-#endif  /* REGION_US */

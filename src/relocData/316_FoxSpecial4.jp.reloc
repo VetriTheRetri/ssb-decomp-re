@@ -1,2 +1,6 @@
-# Relocation metadata for file 316 (JP variant)
-# JP build compiles FoxSpecial4 as a single raw u8 blob.
+# Relocation metadata for file 316 (JP binary walk)
+# Format: <type> <ptr_label> <target_label>
+# Labels resolved via src/relocData/316_FoxSpecial4.reloc .o symbol table
+
+intern dFoxSpecial4_ReflectorDL_DisplayList+0x2C dFoxSpecial4_JointVerts_Vtx
+

@@ -13,13 +13,6 @@
  */
 
 #include "relocdata_types.h"
-#if defined(REGION_JP)
-
-u8 dSYSignValidate[80] = {
-	#include <SYSignValidate/jp_raw.data.inc.c>
-};
-
-#else  /* REGION_US */
 
 /* @ 0x0000, 64 bytes — 16 MIPS instructions cast and called as `sb32 (*)(void*)` */
 u32 dSYSignValidate_Func[16] = {
@@ -31,5 +24,3 @@ s32 dSYSignValidate_NBytes = 0x40;
 
 /* @ 0x0044, 12 bytes — trailing padding so the file rounds to 80 bytes. */
 u32 dSYSignValidate_pad[3] = { 0x00000000, 0x00000000, 0x00000000 };
-
-#endif  /* REGION_US */

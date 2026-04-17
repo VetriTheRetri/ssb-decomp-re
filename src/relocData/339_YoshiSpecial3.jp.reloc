@@ -1,2 +1,17 @@
-# Relocation metadata for file 339 (JP variant)
-# JP build compiles YoshiSpecial3 as a single raw u8 blob.
+# Relocation metadata for file 339 (JP binary walk)
+# Format: <type> <ptr_label> <target_label>
+# Labels resolved via src/relocData/339_YoshiSpecial3.reloc .o symbol table
+
+intern dYoshiSpecial3_Joint_0x0870_DisplayList+0x5C dYoshiSpecial3_Lut_0x0008_palette
+intern dYoshiSpecial3_Joint_0x0870_DisplayList+0x8C dYoshiSpecial3_Tex_0x0030
+intern dYoshiSpecial3_Joint_0x0870_DisplayList+0xAC dYoshiSpecial3_Vtx_0x0830_Vtx
+intern dYoshiSpecial3_EggLay+0x30 dYoshiSpecial3_Joint_0x0870_DisplayList
+intern dYoshiSpecial3_EggLayBreak_AnimJoint dYoshiSpecial3_EggLayBreak_AnimJoint+0x8
+intern dYoshiSpecial3_EggLayBreak_AnimJoint+0x4 dYoshiSpecial3_EggLayBreak_AnimJoint+0x18
+intern dYoshiSpecial3_EggLayThrow_AnimJoint dYoshiSpecial3_EggLayThrow_AnimJoint+0x8
+intern dYoshiSpecial3_EggLayThrow_AnimJoint+0x4 dYoshiSpecial3_EggLayThrow_AnimJoint+0x18
+intern dYoshiSpecial3_EggLayWait_AnimJoint dYoshiSpecial3_EggLayWait_AnimJoint+0x8
+intern dYoshiSpecial3_EggLayWait_AnimJoint+0x4 dYoshiSpecial3_EggLayWait_AnimJoint+0x44
+intern dYoshiSpecial3_EggLayWait_AnimJoint+0x40 dYoshiSpecial3_EggLayWait_AnimJoint+0x8
+intern dYoshiSpecial3_EggLayWait_AnimJoint+0xB8 dYoshiSpecial3_EggLayWait_AnimJoint+0x44
+

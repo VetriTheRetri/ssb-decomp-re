@@ -5,13 +5,6 @@
  * at extract time. */
 
 #include "relocdata_types.h"
-#if defined(REGION_JP)
-
-u8 dCaptainSpecial3[2160] = {
-	#include <CaptainSpecial3/jp_raw.data.inc.c>
-};
-
-#else  /* REGION_US */
 
 /* Raw data from file offset 0x0000 to 0x0690 (1680 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 88 bytes) */
@@ -92,5 +85,3 @@ u8 dCaptainSpecial3_gap_0x0760[208] = {
 u32 dCaptainSpecial3_FalconPunchMatAnimJoint_MatAnimJoint[16] = {
 	#include <CaptainSpecial3/FalconPunchMatAnimJoint_MatAnimJoint.data.inc.c>
 };
-
-#endif  /* REGION_US */

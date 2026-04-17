@@ -1,2 +1,12 @@
-# Relocation metadata for file 297 (JP variant)
-# JP build compiles MarioSpecial3 as a single raw u8 blob.
+# Relocation metadata for file 297 (JP binary walk)
+# Format: <type> <ptr_label> <target_label>
+# Labels resolved via src/relocData/297_MarioSpecial3.reloc .o symbol table
+
+intern dMarioSpecial3_Tex_0x0058+0x80 dMarioSpecial3_Tex_0x0058+0x108
+intern dMarioSpecial3_Tex_0x0058+0x84 dMarioSpecial3_gap_0x0000_sub_0x30
+intern dMarioSpecial3_Tex_0x0058+0x88 dMarioSpecial3_gap_0x0000_sub_0x8
+intern dMarioSpecial3_Tex_0x0058+0xBC dMarioSpecial3_Tex_0x0058+0x84
+intern dMarioSpecial3_Tex_0x0058+0x108 dMarioSpecial3_Tex_0x0058+0x90
+intern dMarioSpecial3_SuperJumpPunchDL_DisplayList+0x54 dMarioSpecial3_Tex_0x0058
+intern dMarioSpecial3_SuperJumpPunchDL_DisplayList+0x7C dMarioSpecial3_JointVerts_Vtx
+

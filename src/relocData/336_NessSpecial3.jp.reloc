@@ -1,2 +1,27 @@
-# Relocation metadata for file 336 (JP variant)
-# JP build compiles NessSpecial3 as a single raw u8 blob.
+# Relocation metadata for file 336 (JP binary walk)
+# Format: <type> <ptr_label> <target_label>
+# Labels resolved via src/relocData/336_NessSpecial3.reloc .o symbol table
+
+intern dNessSpecial3_gap_0x0000 dNessSpecial3_gap_0x0000_sub_0xF8
+intern dNessSpecial3_gap_0x0000_sub_0xF8 dNessSpecial3_gap_0x0000_sub_0x8
+intern dNessSpecial3_gap_0x0000_sub_0xF8+0x4 dNessSpecial3_gap_0x0000_sub_0x80
+intern dNessSpecial3_gap_0x0000_sub_0x168+0x2C dNessSpecial3_gap_0x0000_sub_0x108
+intern dNessSpecial3_gap_0x0000_sub_0x168+0x4C dNessSpecial3_gap_0x0000_sub_0x138
+intern dNessSpecial3_gap_0x0000_sub_0x1E0 dNessSpecial3_gap_0x0000_sub_0x294
+intern dNessSpecial3_gap_0x0000_sub_0x294 dNessSpecial3_gap_0x0000_sub_0x1E4
+intern dNessSpecial3_gap_0x0000_sub_0x294+0x4 dNessSpecial3_gap_0x0000_sub_0x23C
+intern dNessSpecial3_PKFireDL_DisplayList+0x4C dNessSpecial3_PKFireDL_post
+intern dNessSpecial3_PKFireDL_post+0x34 dNessSpecial3_Tex_0x0330
+intern dNessSpecial3_PKFireDL_post+0x54 dNessSpecial3_Vtx_0x0730_Vtx
+intern dNessSpecial3_PKFireDL_post+0x84 dNessSpecial3_Vtx_0x07B0_Vtx
+intern dNessSpecial3_PKFireDL_post+0xDC dNessSpecial3_Tex_0x02A8
+intern dNessSpecial3_PKFireDL_post+0xFC dNessSpecial3_Vtx_0x0830_Vtx
+intern dNessSpecial3_PKFireDL_post+0x12C dNessSpecial3_PKFireDL_DisplayList+0x8
+intern dNessSpecial3_PKFireDL_post+0x13C dNessSpecial3_PKFireDL_post+0xA0
+intern dNessSpecial3_PKFireDL_post+0x1A4 dNessSpecial3_PKFireDL_post+0x128
+intern dNessSpecial3_PKFireDL_post+0x1D0 dNessSpecial3_PKFireDL_post+0x138
+intern dNessSpecial3_PKFireDL_post+0x238 dNessSpecial3_PKFireDL_post+0x240
+intern dNessSpecial3_PKFireDL_post+0x23C dNessSpecial3_PKFireDL_post+0x294
+intern dNessSpecial3_PKFireDL_post+0x290 dNessSpecial3_PKFireDL_post+0x240
+intern dNessSpecial3_PKFireDL_post+0x2D4 dNessSpecial3_PKFireDL_post+0x294
+

@@ -13,13 +13,6 @@
  */
 
 #include "relocdata_types.h"
-#if defined(REGION_JP)
-
-u8 dSYKseg1Validate[64] = {
-	#include <SYKseg1Validate/jp_raw.data.inc.c>
-};
-
-#else  /* REGION_US */
 
 /* @ 0x0000, 48 bytes — 12 MIPS instructions cast and called as `sb32 (*)(void)` */
 u32 dSYKseg1Validate_Func[12] = {
@@ -31,5 +24,3 @@ s32 dSYKseg1Validate_NBytes = 0x30;
 
 /* @ 0x0034, 12 bytes — trailing padding so the file rounds to 64 bytes. */
 u32 dSYKseg1Validate_pad[3] = { 0x00000000, 0x00000000, 0x00000000 };
-
-#endif  /* REGION_US */

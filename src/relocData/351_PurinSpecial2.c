@@ -5,13 +5,6 @@
  * at extract time. */
 
 #include "relocdata_types.h"
-#if defined(REGION_JP)
-
-u8 dPurinSpecial2[12112] = {
-	#include <PurinSpecial2/jp_raw.data.inc.c>
-};
-
-#else  /* REGION_US */
 
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dPurinSpecial2_gap_0x1C98[];
@@ -194,5 +187,3 @@ u32 dPurinSpecial2_SingAnimJoint_AnimJoint[704] = {
 u32 dPurinSpecial2_SingMatAnimJoint_MatAnimJoint[120] = {
 	#include <PurinSpecial2/SingMatAnimJoint_MatAnimJoint.data.inc.c>
 };
-
-#endif  /* REGION_US */

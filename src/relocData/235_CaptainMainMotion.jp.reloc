@@ -1,4 +1,2 @@
 # Relocation metadata for file 235 (JP variant)
-# Format: <type> <ptr_label> <target_label>
-# JP build compiles CaptainMainMotion as a single chain-encoded raw u8 blob
-# so fixRelocChain has no per-symbol patches to apply here.
+# JP build compiles CaptainMainMotion as a single raw u8 blob.

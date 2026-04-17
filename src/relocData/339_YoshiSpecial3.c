@@ -5,13 +5,6 @@
  * at extract time. */
 
 #include "relocdata_types.h"
-#if defined(REGION_JP)
-
-u8 dYoshiSpecial3[3696] = {
-	#include <YoshiSpecial3/jp_raw.data.inc.c>
-};
-
-#else  /* REGION_US */
 
 PAD(8);
 
@@ -60,5 +53,3 @@ u32 dYoshiSpecial3_EggLayThrow_AnimJoint[136] = {
 u32 dYoshiSpecial3_EggLayWait_AnimJoint[48] = {
 	#include <YoshiSpecial3/EggLayWait_AnimJoint.data.inc.c>
 };
-
-#endif  /* REGION_US */

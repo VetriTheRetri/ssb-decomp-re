@@ -48,7 +48,7 @@ build uses one of three override mechanisms, in priority order:
 `.jp.c` raw blobs are no longer used — every previously-blob-overridden
 file has been migrated to one of the structural mechanisms above.
 
-### Remaining raw-blob inline files (7 files, ~45 KB)
+### Remaining raw-blob inline files (4 files, ~44 KB)
 
 These are inline `.c` files whose only declarations are one or two raw
 `u8[]` arrays (no struct types, no LUT/Tex blocks, no animation u32[]).
@@ -58,8 +58,7 @@ They build and match but aren't structurally decomposed.
 |---|---:|---:|---|
 | Pupupu beta | 3 | 27,232 | `StagePupupuBetaImages`, `StagePupupuBeta1`, `StagePupupuBeta2` — beta prototype geometry |
 | Stage File2/3/4 | 1 | 17,328 | `StageBattlefieldFile2` — split into 3 named u8 regions plus a 43-entry intern chain that crosses the existing block boundaries; needs careful re-split before further typing |
-| Other / utility | 3 | 816 | `SC1PTrainingMode`, `SYKseg1Validate`, `SYSignValidate` |
-| **Total** | **7** | **45,376** | |
+| **Total** | **4** | **44,560** | |
 
 Recent round of structural work:
 - All 27 fighter **Main.c** files now have every `_pre` sub-block
@@ -97,6 +96,18 @@ Recent round of structural work:
   `Vtx[4]`, `Gfx DL[20]`, `u8 dobj[0x98]` (DObjDesc-shaped block,
   exact field layout TBD). Four intern chain entries inside the DL
   resolved to the typed sub-blocks via a committed `.reloc`.
+- `SYKseg1Validate` (fid 199, 64 B) and `SYSignValidate` (fid 200,
+  80 B) — small MIPS validator stubs the engine loads onto a heap and
+  invokes via `lbRelocGetFileData` + `osWritebackDCache`. Typed as
+  `u32 Func[12 / 16]` (the raw instructions) plus an `s32 NBytes`
+  size constant the runtime reads to size the icache flush.
+- `SC1PTrainingMode` (fid 254, 672 B) — Training-mode menu/HUD
+  layout. Now uses two local typedefs:
+  `SC1PTrainingPosSprite { s16 x, s16 y, u16 sprite_id, u16 offset }`
+  for positioned label arrays and `SC1PTrainingSprite { u16 sprite_id,
+  u16 offset }` for option-text glyph streams. Six named arrays cover
+  the file (DisplayLabel/Option, MenuLabel/Option, plus two tag-named
+  PosSprite arrays).
 - Earlier rounds: all `*MainMotion`, `MV opening / ending`,
   `Bonus*CommonImages`, `Stage*Images`, `Special1`, the `LBTransition*`,
   and `MarioSecondaryImage` files.
@@ -311,10 +322,11 @@ more structural representation instead.
 
 The remaining work splits into four buckets:
 
-1. **Promote the 7 raw-blob inline files** (~45 KB). `StageBattlefieldFile2`
-   is the biggest remaining (17 KB); the others are each ≤ 14 KB.
-   Recent rounds removed `ITCommonObject`, `KirbySpecial1`,
-   `FoxUnknown`, `NCommonTexture`, and `ITBonus1Object` from this list.
+1. **Promote the 4 raw-blob inline files** (~44 KB). `StageBattlefieldFile2`
+   is the biggest remaining (17 KB); the three Pupupu beta files are
+   each ≤ 14 KB. Recent rounds removed `ITCommonObject`, `KirbySpecial1`,
+   `FoxUnknown`, `NCommonTexture`, `ITBonus1Object`, `SYKseg1Validate`,
+   `SYSignValidate`, and `SC1PTrainingMode` from this list.
 
 2. **Carve `gap_*` bytes inside typed inline masters** (~1.13 MB
    remaining). These are vertex pools, textures, and palettes

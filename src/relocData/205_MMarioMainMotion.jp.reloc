@@ -1,2 +1,8 @@
-# Relocation metadata for file 205 (JP variant)
-# JP build compiles MMarioMainMotion as a single raw u8 blob.
+# Relocation metadata for file 205 (JP binary walk)
+# Format: <type> <ptr_label> <target_label>
+# Labels resolved via src/relocData/205_MMarioMainMotion.reloc .o symbol table
+
+intern dMMarioMainMotion_0x0000+0x18 dMMarioMainMotion_0x0000
+intern dMMarioMainMotion_0x001C+0x18 dMMarioMainMotion_0x001C
+intern dMMarioMainMotion_0x0060+0x38 dMMarioMainMotion_0x0060
+

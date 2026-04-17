@@ -446,31 +446,14 @@ FTAttributes dLinkMain_attr = {
 	630.0f, /* camera_zoom_base */
 	{ 400.0f, 250.0f, 0.0f, 150.0f }, /* map_coll */
 	{ 280.0f, 400.0f }, /* cliffcatch_coll */
-#if defined(REGION_JP)
-	{ 0x0193, 0x0119 }, /* dead_fgm_ids */
-#else
-	{ 0x019D, 0x0123 }, /* dead_fgm_ids */
-#endif
-	#if defined(REGION_JP)
-	0x018B, /* deadup_sfx */
-	0x018D, /* damage_sfx */
-#else
-	0x0195, /* deadup_sfx */
-	0x0197, /* damage_sfx */
-#endif
-#if defined(REGION_JP)
-	{ 0x0187, 0x0188, 0x0189 }, /* smash_sfx */
-#else
-	{ 0x0191, 0x0192, 0x0193 }, /* smash_sfx */
-#endif
+	{ nSYAudioVoiceLinkDead, nSYAudioFGMLinkDeadSlam }, /* dead_fgm_ids */
+	nSYAudioVoiceLinkDeadUp, /* deadup_sfx */
+	nSYAudioVoiceLinkDamage, /* damage_sfx */
+	{ nSYAudioVoiceLinkSmash1, nSYAudioVoiceLinkSmash2, nSYAudioVoiceLinkSmash3 }, /* smash_sfx */
 	{ { 105.0f, 0.0f }, { 378.0f, 200.0f }, { 75.0f, 0.0f }, { 150.0f, 150.0f } }, /* item_pickup */
 	0x0064, /* itemthrow_vel_scale */
 	0x0064, /* itemthrow_damage_scale */
-#if defined(REGION_JP)
-	0x0191, /* heavyget_sfx */
-#else
-	0x019B, /* heavyget_sfx */
-#endif
+	nSYAudioVoiceLinkHeavyGet, /* heavyget_sfx */
 	1.1f, /* halo_size */
 	{ { 0xFF, 0xFF, 0xFF, 0x50 }, { 0x00, 0x00, 0x00, 0x50 }, { 0x00, 0x00, 0x00, 0x00 } }, /* shade_color */
 	{ 0xFF, 0x00, 0x00, 0x00 }, /* fog_color */

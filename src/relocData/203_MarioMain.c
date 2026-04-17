@@ -258,39 +258,14 @@ FTAttributes dMarioMain_attr = {
 	500.0f, /* camera_zoom_base */
 	{ 320.0f, 190.0f, 0.0f, 150.0f }, /* map_coll */
 	{ 400.0f, 360.0f }, /* cliffcatch_coll */
-#if defined(REGION_JP)
-	{ 0x01AD, 0x011A }, /* dead_fgm_ids */
-#else
-	{ 0x01B7, 0x0124 }, /* dead_fgm_ids */
-#endif
-	#if defined(REGION_JP)
-	0x01A7, /* deadup_sfx */
-	0x01AE, /* damage_sfx */
-#else
-	0x01B1, /* deadup_sfx */
-	0x01B8, /* damage_sfx */
-#endif
-#if defined(REGION_JP)
-#if defined(REGION_JP)
-	{ 0x01A3, 0x01A4, 0x01A5 }, /* smash_sfx */
-#else
-	{ 0x01AD, 0x01AE, 0x01A5 }, /* smash_sfx */
-#endif
-#else
-#if defined(REGION_JP)
-	{ 0x01A3, 0x01A4, 0x01AF }, /* smash_sfx */
-#else
-	{ 0x01AD, 0x01AE, 0x01AF }, /* smash_sfx */
-#endif
-#endif
+	{ nSYAudioVoiceMarioDead, nSYAudioFGMMarioDeadSlam }, /* dead_fgm_ids */
+	nSYAudioVoiceMarioDeadUp, /* deadup_sfx */
+	nSYAudioVoiceMarioDamage, /* damage_sfx */
+	{ nSYAudioVoiceMarioSmash1, nSYAudioVoiceMarioSmash2, nSYAudioVoiceMarioSmash3 }, /* smash_sfx */
 	{ { 105.0f, 0.0f }, { 378.0f, 200.0f }, { 75.0f, 0.0f }, { 150.0f, 150.0f } }, /* item_pickup */
 	0x0064, /* itemthrow_vel_scale */
 	0x0064, /* itemthrow_damage_scale */
-#if defined(REGION_JP)
-	0x01AC, /* heavyget_sfx */
-#else
-	0x01B6, /* heavyget_sfx */
-#endif
+	nSYAudioVoiceMarioHeavyGet, /* heavyget_sfx */
 	1.0f, /* halo_size */
 	{ { 0xFF, 0xFF, 0xFF, 0x50 }, { 0x00, 0x00, 0x00, 0x50 }, { 0x00, 0x00, 0x00, 0x00 } }, /* shade_color */
 	{ 0xFF, 0x00, 0x00, 0x00 }, /* fog_color */

@@ -315,39 +315,14 @@ FTAttributes dNessMain_attr = {
 	500.0f, /* camera_zoom_base */
 	{ 250.0f, 140.0f, 0.0f, 115.0f }, /* map_coll */
 	{ 280.0f, 420.0f }, /* cliffcatch_coll */
-#if defined(REGION_JP)
-	{ 0x01BF, 0x011B }, /* dead_fgm_ids */
-#else
-	{ 0x01C9, 0x0125 }, /* dead_fgm_ids */
-#endif
-	#if defined(REGION_JP)
-	0x01B5, /* deadup_sfx */
-	0x01B7, /* damage_sfx */
-#else
-	0x01BF, /* deadup_sfx */
-	0x01C1, /* damage_sfx */
-#endif
-#if defined(REGION_JP)
-#if defined(REGION_JP)
-	{ 0x01B1, 0x01B2, 0x01B3 }, /* smash_sfx */
-#else
-	{ 0x01BB, 0x01BC, 0x01B3 }, /* smash_sfx */
-#endif
-#else
-#if defined(REGION_JP)
-	{ 0x01B1, 0x01B2, 0x01BD }, /* smash_sfx */
-#else
-	{ 0x01BB, 0x01BC, 0x01BD }, /* smash_sfx */
-#endif
-#endif
+	{ nSYAudioVoiceNessDead, nSYAudioFGMNessDeadSlam }, /* dead_fgm_ids */
+	nSYAudioVoiceNessDeadUp, /* deadup_sfx */
+	nSYAudioVoiceNessDamage, /* damage_sfx */
+	{ nSYAudioVoiceNessSmash1, nSYAudioVoiceNessSmash2, nSYAudioVoiceNessSmash3 }, /* smash_sfx */
 	{ { 105.0f, 0.0f }, { 378.0f, 200.0f }, { 75.0f, 0.0f }, { 150.0f, 150.0f } }, /* item_pickup */
 	0x0064, /* itemthrow_vel_scale */
 	0x0064, /* itemthrow_damage_scale */
-#if defined(REGION_JP)
-	0x01B9, /* heavyget_sfx */
-#else
-	0x01C3, /* heavyget_sfx */
-#endif
+	nSYAudioVoiceNessHeavyGet, /* heavyget_sfx */
 	1.0f, /* halo_size */
 	{ { 0xFF, 0xFF, 0xFF, 0x50 }, { 0x00, 0x00, 0x00, 0x50 }, { 0x00, 0x00, 0x00, 0x00 } }, /* shade_color */
 	{ 0xFF, 0x00, 0x00, 0x00 }, /* fog_color */

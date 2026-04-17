@@ -330,39 +330,14 @@ FTAttributes dSamusMain_attr = {
 	660.0f, /* camera_zoom_base */
 	{ 500.0f, 250.0f, 0.0f, 150.0f }, /* map_coll */
 	{ 440.0f, 550.0f }, /* cliffcatch_coll */
-#if defined(REGION_JP)
-	{ 0x023A, 0x011E }, /* dead_fgm_ids */
-#else
-	{ 0x0246, 0x0128 }, /* dead_fgm_ids */
-#endif
-	#if defined(REGION_JP)
-	0x0234, /* deadup_sfx */
-	0x0239, /* damage_sfx */
-#else
-	0x0240, /* deadup_sfx */
-	0x0245, /* damage_sfx */
-#endif
-#if defined(REGION_JP)
-#if defined(REGION_JP)
-	{ 0x0231, 0x0232, 0x0233 }, /* smash_sfx */
-#else
-	{ 0x023D, 0x023E, 0x0233 }, /* smash_sfx */
-#endif
-#else
-#if defined(REGION_JP)
-	{ 0x0231, 0x0232, 0x023F }, /* smash_sfx */
-#else
-	{ 0x023D, 0x023E, 0x023F }, /* smash_sfx */
-#endif
-#endif
+	{ nSYAudioVoiceSamusDead, nSYAudioFGMSamusDeadSlam }, /* dead_fgm_ids */
+	nSYAudioVoiceSamusDeadUp, /* deadup_sfx */
+	nSYAudioVoiceSamusDamage, /* damage_sfx */
+	{ nSYAudioVoiceSamusSmash1, nSYAudioVoiceSamusSmash2, nSYAudioVoiceSamusSmash3 }, /* smash_sfx */
 	{ { 107.0f, 0.0f }, { 386.0f, 200.0f }, { 75.0f, 0.0f }, { 150.0f, 150.0f } }, /* item_pickup */
 	0x0064, /* itemthrow_vel_scale */
 	0x0064, /* itemthrow_damage_scale */
-#if defined(REGION_JP)
-	0x029D, /* heavyget_sfx */
-#else
-	0x02B7, /* heavyget_sfx */
-#endif
+	nSYAudioFGMVoiceEnd, /* heavyget_sfx */
 	1.2f, /* halo_size */
 	{ { 0xFF, 0xFF, 0xFF, 0x50 }, { 0x00, 0x00, 0x00, 0x50 }, { 0x00, 0x00, 0x00, 0x00 } }, /* shade_color */
 	{ 0xFF, 0x00, 0x00, 0x00 }, /* fog_color */

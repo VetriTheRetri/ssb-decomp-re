@@ -5,6 +5,13 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#if defined(REGION_JP)
+
+u8 dDonkeySpecial2[2352] = {
+	#include <DonkeySpecial2/jp_raw.data.inc.c>
+};
+
+#else  /* REGION_US */
 
 PAD(8);
 
@@ -61,3 +68,4 @@ u32 dDonkeySpecial2_EntryTaruAnimJoint_AnimJoint[56] = {
 	#include <DonkeySpecial2/EntryTaruAnimJoint_AnimJoint.data.inc.c>
 };
 
+#endif  /* REGION_US */

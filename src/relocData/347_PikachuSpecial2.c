@@ -6,6 +6,13 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
+#if defined(REGION_JP)
+
+u8 dPikachuSpecial2[7008] = {
+	#include <PikachuSpecial2/jp_raw.data.inc.c>
+};
+
+#else  /* REGION_US */
 
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dPikachuSpecial2_gap_0x06B8[];
@@ -265,3 +272,4 @@ u32 dPikachuSpecial2_ThunderShock2MatAnimJoint_MatAnimJoint[20] = {
 	#include <PikachuSpecial2/ThunderShock2MatAnimJoint_MatAnimJoint.data.inc.c>
 };
 
+#endif  /* REGION_US */

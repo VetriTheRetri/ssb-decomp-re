@@ -5,6 +5,13 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#if defined(REGION_JP)
+
+u8 dCaptainSpecial2[26080] = {
+	#include <CaptainSpecial2/jp_raw.data.inc.c>
+};
+
+#else  /* REGION_US */
 
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dCaptainSpecial2_gap_0x09D8[];
@@ -407,3 +414,4 @@ u32 dCaptainSpecial2__6598__AnimJoint[18] = {
 	#include <CaptainSpecial2/_6598__AnimJoint.data.inc.c>
 };
 
+#endif  /* REGION_US */

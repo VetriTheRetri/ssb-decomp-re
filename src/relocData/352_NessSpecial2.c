@@ -6,6 +6,13 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
+#if defined(REGION_JP)
+
+u8 dNessSpecial2[2832] = {
+	#include <NessSpecial2/jp_raw.data.inc.c>
+};
+
+#else  /* REGION_US */
 
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dNessSpecial2_gap_0x0888[];
@@ -112,3 +119,4 @@ u32 dNessSpecial2_PsychicMagnetMatAnimJoint_MatAnimJoint[16] = {
 	aobjEvent32End(),
 };
 
+#endif  /* REGION_US */

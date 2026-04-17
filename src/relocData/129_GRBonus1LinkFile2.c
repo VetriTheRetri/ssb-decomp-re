@@ -5,6 +5,13 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#if defined(REGION_JP)
+
+u8 dGRBonus1LinkFile2[10720] = {
+	#include <GRBonus1LinkFile2/jp_raw.data.inc.c>
+};
+
+#else  /* REGION_US */
 
 /* Raw data from file offset 0x0000 to 0x0C80 (3200 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 64 bytes) */
@@ -381,3 +388,4 @@ u32 dGRBonus1LinkFile2_Layer1Anim_AnimJoint[184] = {
 	#include <GRBonus1LinkFile2/Layer1Anim_AnimJoint.data.inc.c>
 };
 
+#endif  /* REGION_US */

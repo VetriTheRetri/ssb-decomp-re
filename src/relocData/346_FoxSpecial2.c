@@ -6,6 +6,13 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
+#if defined(REGION_JP)
+
+u8 dFoxSpecial2[3632] = {
+	#include <FoxSpecial2/jp_raw.data.inc.c>
+};
+
+#else  /* REGION_US */
 
 PAD(8);
 
@@ -212,3 +219,4 @@ u32 dFoxSpecial2_EntryArwingR_AnimJoint[276] = {
 	#include <FoxSpecial2/EntryArwingR_AnimJoint.data.inc.c>
 };
 
+#endif  /* REGION_US */

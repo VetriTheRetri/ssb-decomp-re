@@ -5,6 +5,13 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#if defined(REGION_JP)
+
+u8 dStageYamabukiFile2[64016] = {
+	#include <StageYamabukiFile2/jp_raw.data.inc.c>
+};
+
+#else  /* REGION_US */
 
 PAD(8);
 
@@ -1160,3 +1167,4 @@ u8 dStageYamabukiFile2_gap_0x87C8_sub_0x7AA0[8] = {
 	#include <StageYamabukiFile2/gap_0x87C8_sub_0x7AA0.data.inc.c>
 };
 
+#endif  /* REGION_US */

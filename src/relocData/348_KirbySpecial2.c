@@ -6,6 +6,13 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
+#if defined(REGION_JP)
+
+u8 dKirbySpecial2[10512] = {
+	#include <KirbySpecial2/jp_raw.data.inc.c>
+};
+
+#else  /* REGION_US */
 
 PAD(8);
 
@@ -335,3 +342,4 @@ DObjDesc dKirbySpecial2_CutterDraw[] = {
 
 PAD(4);
 
+#endif  /* REGION_US */

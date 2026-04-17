@@ -6,6 +6,13 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
+#if defined(REGION_JP)
+
+u8 dSamusSpecial2[3232] = {
+	#include <SamusSpecial2/jp_raw.data.inc.c>
+};
+
+#else  /* REGION_US */
 
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dSamusSpecial2_gap_0x0288[];
@@ -203,3 +210,4 @@ u32 dSamusSpecial2_EntryPointAnimJoint_AnimJoint[32] = {
 	#include <SamusSpecial2/EntryPointAnimJoint_AnimJoint.data.inc.c>
 };
 
+#endif  /* REGION_US */

@@ -5,6 +5,13 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#if defined(REGION_JP)
+
+u8 dNessSpecial3[2976] = {
+	#include <NessSpecial3/jp_raw.data.inc.c>
+};
+
+#else  /* REGION_US */
 
 /* Raw data from file offset 0x0000 to 0x02A8 (680 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
@@ -102,3 +109,4 @@ u8 dNessSpecial3_PKFireDL_post[736] = {
 	#include <NessSpecial3/PKFireDL_post.data.inc.c>
 };
 
+#endif  /* REGION_US */

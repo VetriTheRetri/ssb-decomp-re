@@ -14,6 +14,13 @@
 
 #include "relocdata_types.h"
 #include <wp/wptypes.h>
+#if defined(REGION_JP)
+
+u8 dSamusSpecial1[64] = {
+	#include <SamusSpecial1/jp_raw.data.inc.c>
+};
+
+#else  /* REGION_US */
 
 /* Cross-file references resolved by fixRelocChain.py — see .reloc */
 extern Vtx dSamusSpecial3_JointVerts_Vtx[];  /* file 321 */
@@ -46,3 +53,5 @@ WPAttributes dSamusSpecial1_ChargeShot_WeaponAttributes = {
     0,  /* unused_0x2F_b7   :  1 */
     0,  /* knockback_base   : 10 */
 };
+
+#endif  /* REGION_US */

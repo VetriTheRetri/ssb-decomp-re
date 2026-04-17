@@ -5,13 +5,6 @@
  * at extract time. */
 
 #include "relocdata_types.h"
-#if defined(REGION_JP)
-
-u8 dNPikachuModel[11344] = {
-	#include <NPikachuModel/jp_raw.data.inc.c>
-};
-
-#else  /* REGION_US */
 
 /* Vtx: JointVerts @ 0x0 (0 vertices — elided) */
 
@@ -244,5 +237,3 @@ DObjDesc dNPikachuModel_JointTree[] = {
 };
 
 PAD(8);
-
-#endif  /* REGION_US */

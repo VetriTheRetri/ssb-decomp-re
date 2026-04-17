@@ -6,13 +6,6 @@
 
 #include "relocdata_types.h"
 #include <sys/objdef.h>  // aobjEvent32* macros
-#if defined(REGION_JP)
-
-u8 dFTEmblemModels[23264] = {
-	#include <FTEmblemModels/jp_raw.data.inc.c>
-};
-
-#else  /* REGION_US */
 
 /* MObjSub chain targets (forward decl + cross-file) resolved by fixRelocChain.py */
 extern u8 dFTEmblemModels_gap_0x14E8[];
@@ -801,5 +794,3 @@ DObjDesc dFTEmblemModels_Mother[] = {
 u32 dFTEmblemModels_Mother_MatAnimJoint[23] = {
 	#include <FTEmblemModels/Mother_MatAnimJoint.data.inc.c>
 };
-
-#endif  /* REGION_US */

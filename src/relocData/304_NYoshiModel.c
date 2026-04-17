@@ -5,13 +5,6 @@
  * at extract time. */
 
 #include "relocdata_types.h"
-#if defined(REGION_JP)
-
-u8 dNYoshiModel[13312] = {
-	#include <NYoshiModel/jp_raw.data.inc.c>
-};
-
-#else  /* REGION_US */
 
 /* Vtx: JointVerts @ 0x0 (0 vertices — elided) */
 
@@ -347,5 +340,3 @@ DObjDesc dNYoshiModel_JointTree[] = {
 };
 
 PAD(12);
-
-#endif  /* REGION_US */

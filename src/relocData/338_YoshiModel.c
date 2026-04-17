@@ -5,13 +5,6 @@
  * at extract time. */
 
 #include "relocdata_types.h"
-#if defined(REGION_JP)
-
-u8 dYoshiModel[44256] = {
-	#include <YoshiModel/jp_raw.data.inc.c>
-};
-
-#else  /* REGION_US */
 
 /* Forward DObjDesc chain-target decls for fixRelocChain.py */
 extern u8 dYoshiModel_gap_0x38F4_sub_0x708[];
@@ -1870,5 +1863,3 @@ Sprite dYoshiModel_FTEmblem = {
 };
 
 PAD(4);
-
-#endif  /* REGION_US */

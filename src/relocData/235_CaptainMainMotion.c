@@ -793,7 +793,7 @@ u32 dCaptainMainMotion_0x0A2C[] = {
 u32 dCaptainMainMotion_0x0A58[] = {
 	ftMotionCommandMakeRumble(0, 7),
 	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandSetColAnim(nGMColAnimFighterBat,, 40)),
+	ftMotionCommandSetColAnim(nGMColAnimFighterBat, 40),
 	ftMotionCommandWaitAsync(19),
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandPlaySmashVoice(0),
@@ -865,7 +865,7 @@ u32 dCaptainMainMotion_0x0B28[] = {
 
 u32 dCaptainMainMotion_0x0B4C[] = {
 	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod,, 16)),
+	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod, 16),
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandSubroutine(0x0494), /* extern */
 	ftMotionCommandWait(10),
@@ -877,7 +877,7 @@ u32 dCaptainMainMotion_0x0B6C[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod,, 13)),
+	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod, 13),
 	ftMotionCommandWaitAsync(7),
 	ftMotionCommandSubroutine(0x04F8), /* extern */
 	ftMotionCommandWaitAsync(9),
@@ -893,7 +893,7 @@ u32 dCaptainMainMotion_0x0BA4[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(19),
 	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod,, 36)),
+	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod, 36),
 	ftMotionCommandPlaySmashVoice(0),
 	ftMotionCommandWaitAsync(21),
 	ftMotionCommandSetFlag0(2),
@@ -907,7 +907,7 @@ u32 dCaptainMainMotion_0x0BA4[] = {
 
 u32 dCaptainMainMotion_0x0BDC[] = {
 	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod,, 20)),
+	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod, 20),
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandSubroutine(0x05C0), /* extern */
 	ftMotionCommandWait(16),
@@ -1277,7 +1277,7 @@ u32 dCaptainMainMotion_0x13A8[] = {
 	ftMotionCommandMakeAttackColl(1, 0, 26, 19, 1, 1, 360, 0, 0, 0, 361, 100, 0, 3, 0, 1, 1, 20),
 	ftMotionCommandMakeAttackColl(2, 0, 5, 19, 1, 1, 260, 0, 0, 0, 361, 100, 0, 3, 0, 1, 1, 20),
 	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
-	ftMotionCommandSetColAnim(nGMColAnimFighterCaptainSpecialN,, 8)),
+	ftMotionCommandSetColAnim(nGMColAnimFighterCaptainSpecialN, 8),
 	ftMotionCommandWait(8),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
@@ -1294,7 +1294,7 @@ u32 dCaptainMainMotion_0x1428[] = {
 	ftMotionCommandMakeAttackColl(1, 0, 26, 18, 1, 1, 360, 0, 0, 0, 361, 100, 0, 3, 0, 1, 1, 20),
 	ftMotionCommandMakeAttackColl(2, 0, 5, 18, 1, 1, 260, 0, 0, 0, 361, 100, 0, 3, 0, 1, 1, 20),
 	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
-	ftMotionCommandSetColAnim(nGMColAnimFighterCaptainSpecialN,, 8)),
+	ftMotionCommandSetColAnim(nGMColAnimFighterCaptainSpecialN, 8),
 	ftMotionCommandWait(8),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
@@ -1311,7 +1311,7 @@ u32 dCaptainMainMotion_0x14A8[] = {
 	ftMotionCommandMakeAttackColl(1, 0, 26, 17, 1, 1, 360, 0, 0, 0, 361, 100, 0, 3, 0, 1, 1, 20),
 	ftMotionCommandMakeAttackColl(2, 0, 5, 17, 1, 1, 260, 0, 0, 0, 361, 100, 0, 3, 0, 1, 1, 20),
 	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
-	ftMotionCommandSetColAnim(nGMColAnimFighterCaptainSpecialN,, 8)),
+	ftMotionCommandSetColAnim(nGMColAnimFighterCaptainSpecialN, 8),
 	ftMotionCommandWait(5),
 	ftMotionCommandClearAttackCollAll(),
 	ftMotionCommandEnd(),
@@ -1480,7 +1480,7 @@ u32 dCaptainMainMotion_0x18FC[] = {
 	ftMotionCommandSetTexturePartID(6),
 	ftMotionCommandMakeRumble(0, 7),
 	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandSetColAnim(nGMColAnimFighterCaptainSpecialN,, 0)),
+	ftMotionCommandSetColAnim(nGMColAnimFighterCaptainSpecialN, 0),
 	ftMotionPlayVoice(nSYAudioVoiceCaptainSpecialNFalcon),
 	ftMotionCommandLoopBegin(3),
 	ftMotionCommandEffect(0, 22, 0, 0, 0, 0, 0, 0, 0),
@@ -1509,7 +1509,7 @@ u32 dCaptainMainMotion_0x18FC[] = {
 u32 dCaptainMainMotion_0x19D0[] = {
 	ftMotionCommandSetTexturePartID(6),
 	ftMotionCommandMakeRumble(0, 7),
-	ftMotionCommandSetColAnim(nGMColAnimFighterCaptainSpecialN,, 0)),
+	ftMotionCommandSetColAnim(nGMColAnimFighterCaptainSpecialN, 0),
 	ftMotionPlayVoice(nSYAudioVoiceCaptainSpecialNFalcon),
 	ftMotionCommandEffect(0, 22, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandLoopBegin(3),
@@ -1617,7 +1617,7 @@ u32 dCaptainMainMotion_0x1C8C[] = {
 	ftMotionCommandWaitAsync(13),
 	ftMotionCommandSetFlag1(1),
 	ftMotionPlayFGM(nSYAudioFGMCaptainSpecialHi),
-	ftMotionCommandSetColAnim(nGMColAnimFighterCaptainSpecialHi,, 0)),
+	ftMotionCommandSetColAnim(nGMColAnimFighterCaptainSpecialHi, 0),
 	ftMotionCommandMakeAttackColl(0, 0, 0, 1, 1, 0, 200, 0, 260, 180, 361, 100, 0, 3, 0, 1, 0, 0),
 	ftMotionCommandMakeAttackColl(1, 0, 0, 1, 1, 0, 300, 0, 260, 400, 361, 100, 0, 2, 0, 1, 0, 0),
 	ftMotionCommandEffect(0, 19, 0, 0, 0, -210, 0, 0, 0),

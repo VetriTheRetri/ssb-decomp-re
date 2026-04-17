@@ -137,8 +137,10 @@ def walk_chain(data, start_word):
     return entries
 
 
-def compile_for_symbols(us_fid):
-    """Compile the shared .c file with REGION_US, return the .o path."""
+def compile_for_symbols(us_fid, region='us'):
+    """Compile the shared .c file, return the .o path.
+    Uses the specified region define so symbol offsets match the target
+    binary layout — important when #if REGION_JP guards change array sizes."""
     import glob
     cands = glob.glob(os.path.join(SRC_DIR, f'{us_fid}_*.c'))
     cands = [c for c in cands if not c.endswith('.jp.c')
@@ -149,8 +151,9 @@ def compile_for_symbols(us_fid):
     obj_dir = '/tmp/jp_reloc_obj'
     os.makedirs(obj_dir, exist_ok=True)
     obj_path = os.path.join(obj_dir, f'{us_fid}.o')
+    region_def = '-DREGION_JP' if region == 'jp' else '-DREGION_US'
     defines = ['-DF3DEX_GBI_2', '-D_MIPS_SZLONG=32', '-DNDEBUG', '-DN_MICRO',
-               '-D_FINALROM', '-DREGION_US']
+               '-D_FINALROM', region_def]
     subprocess.run([IDO] + CFLAGS + INCLUDES + defines +
                    ['-o', obj_path, c_path],
                    cwd=PROJECT_DIR, check=True, capture_output=True)
@@ -237,7 +240,7 @@ def process_fid(us_fid, version, out_path=None):
     intern = walk_chain(data, row['intern_off'])
     extern = walk_chain(data, row['extern_off'])
 
-    obj_path, c_path = compile_for_symbols(us_fid)
+    obj_path, c_path = compile_for_symbols(us_fid, region=version)
     syms = nm_symbols(obj_path)
 
     if out_path is None:

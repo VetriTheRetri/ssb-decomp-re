@@ -616,7 +616,7 @@ u32 dMarioMainMotion_0x08F4[] = {
 u32 dMarioMainMotion_0x0918[] = {
 	ftMotionCommandMakeRumble(0, 7),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
-	ftMotionCommandSetColAnim(nGMColAnimFighterBat,, 40)),
+	ftMotionCommandSetColAnim(nGMColAnimFighterBat, 40),
 	ftMotionCommandSetTexturePartID(1),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetSlopeContour(4),
@@ -679,7 +679,7 @@ u32 dMarioMainMotion_0x09D0[] = {
 };
 
 u32 dMarioMainMotion_0x09EC[] = {
-	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod,, 8)),
+	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod, 8),
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandSubroutine(0x0494), /* extern */
 	ftMotionCommandWait(8),
@@ -688,7 +688,7 @@ u32 dMarioMainMotion_0x09EC[] = {
 };
 
 u32 dMarioMainMotion_0x0A08[] = {
-	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod,, 16)),
+	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod, 16),
 	ftMotionCommandWaitAsync(9),
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandSubroutine(0x04F8), /* extern */
@@ -702,7 +702,7 @@ u32 dMarioMainMotion_0x0A08[] = {
 };
 
 u32 dMarioMainMotion_0x0A38[] = {
-	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod,, 28)),
+	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod, 28),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetSlopeContour(4),
@@ -718,7 +718,7 @@ u32 dMarioMainMotion_0x0A38[] = {
 
 u32 dMarioMainMotion_0x0A6C[] = {
 	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod,, 10)),
+	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod, 10),
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandSubroutine(0x05C0), /* extern */
 	ftMotionCommandWait(27),
@@ -921,7 +921,7 @@ u32 dMarioMainMotion_0x0DE8[] = {
 u32 dMarioMainMotion_0x0DFC[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandMakeRumble(60, 7),
-	ftMotionCommandSetColAnim(nGMColAnimFighterMarioAppeal,, 60)),
+	ftMotionCommandSetColAnim(nGMColAnimFighterMarioAppeal, 60),
 	ftMotionPlayFGM(nSYAudioFGMMarioAppealGrow),
 	ftMotionCommandWaitAsync(120),
 	ftMotionCommandMakeRumble(60, 7),
@@ -1279,7 +1279,7 @@ u32 dMarioMainMotion_0x1688[] = {
 	ftMotionCommandSetTexturePartID(1),
 	ftMotionCommandWaitAsync(16),
 	ftMotionCommandSetFlag0(1),
-	ftMotionCommandSetColAnim(nGMColAnimFighterMarioSpecialN,, 0)),
+	ftMotionCommandSetColAnim(nGMColAnimFighterMarioSpecialN, 0),
 	ftMotionCommandEffect(16, 31, 0, 60, 0, 0, 0, 0, 0),
 	ftMotionPlayFGM(nSYAudioFGMMarioSpecialN),
 	ftMotionCommandMakeRumble(0, 6),

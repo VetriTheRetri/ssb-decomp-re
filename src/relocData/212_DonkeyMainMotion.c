@@ -665,7 +665,7 @@ u32 dDonkeyMainMotion_0x0978[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandSetModelPartID(12, 2),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
-	ftMotionCommandSetColAnim(nGMColAnimFighterBat,, 40)),
+	ftMotionCommandSetColAnim(nGMColAnimFighterBat, 40),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSubroutine(0x0248), /* extern */
 	ftMotionCommandWait(4),
@@ -724,7 +724,7 @@ u32 dDonkeyMainMotion_0x0A1C[] = {
 
 u32 dDonkeyMainMotion_0x0A40[] = {
 	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod,, 8)),
+	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod, 8),
 	ftMotionCommandWaitAsync(5),
 	ftMotionCommandSubroutine(0x0494), /* extern */
 	ftMotionCommandWait(6),
@@ -733,7 +733,7 @@ u32 dDonkeyMainMotion_0x0A40[] = {
 };
 
 u32 dDonkeyMainMotion_0x0A60[] = {
-	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod,, 13)),
+	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod, 13),
 	ftMotionCommandWaitAsync(9),
 	ftMotionCommandSubroutine(0x04F8), /* extern */
 	ftMotionCommandWaitAsync(10),
@@ -746,7 +746,7 @@ u32 dDonkeyMainMotion_0x0A60[] = {
 u32 dDonkeyMainMotion_0x0A84[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandSetModelPartID(12, 2),
-	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod,, 24)),
+	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod, 24),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSubroutine(0x055C), /* extern */
@@ -759,7 +759,7 @@ u32 dDonkeyMainMotion_0x0A84[] = {
 
 u32 dDonkeyMainMotion_0x0AB4[] = {
 	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod,, 22)),
+	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod, 22),
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandSubroutine(0x05C0), /* extern */
 	ftMotionCommandWait(22),
@@ -1340,7 +1340,7 @@ u32 dDonkeyMainMotion_0x17FC[] = {
 u32 dDonkeyMainMotion_0x1810[] = {
 	ftMotionCommandMakeRumble(0, 7),
 	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandSetColAnim(nGMColAnimFighterFoxSpecialHi,, 0)),
+	ftMotionCommandSetColAnim(nGMColAnimFighterFoxSpecialHi, 0),
 	ftMotionCommandSetModelPartID(12, 2),
 	ftMotionCommandWaitAsync(2),
 	ftMotionPlayFGM(nSYAudioFGMDonkeyCharge),
@@ -1351,7 +1351,7 @@ u32 dDonkeyMainMotion_0x1810[] = {
 
 u32 dDonkeyMainMotion_0x1844[] = {
 	ftMotionCommandMakeRumble(0, 7),
-	ftMotionCommandSetColAnim(nGMColAnimFighterFoxSpecialHi,, 0)),
+	ftMotionCommandSetColAnim(nGMColAnimFighterFoxSpecialHi, 0),
 	ftMotionCommandSetModelPartID(12, 2),
 	ftMotionCommandWaitAsync(2),
 	ftMotionPlayFGM(nSYAudioFGMDonkeyCharge),
@@ -1362,7 +1362,7 @@ u32 dDonkeyMainMotion_0x1844[] = {
 u32 dDonkeyMainMotion_0x1864[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWait(2),
-	ftMotionCommandSetColAnim(nGMColAnimFighterLinkSpecialHi,, 4)),
+	ftMotionCommandSetColAnim(nGMColAnimFighterLinkSpecialHi, 4),
 	ftMotionCommandWait(7),
 	ftMotionCommandMakeRumble(0, 10),
 	ftMotionCommandEffect(0, 19, 0, 0, 0, -100, 0, 0, 0),
@@ -1381,7 +1381,7 @@ u32 dDonkeyMainMotion_0x18C4[] = {
 
 u32 dDonkeyMainMotion_0x18CC[] = {
 	ftMotionCommandSetSlopeContour(3),
-	ftMotionCommandSetColAnim(nGMColAnimFighterLinkSpecialHi,, 16)),
+	ftMotionCommandSetColAnim(nGMColAnimFighterLinkSpecialHi, 16),
 	ftMotionCommandWait(9),
 	ftMotionCommandSetHitStatusAll(3),
 	ftMotionCommandMakeRumble(0, 10),

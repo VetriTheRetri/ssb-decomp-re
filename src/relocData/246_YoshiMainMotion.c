@@ -669,7 +669,7 @@ u32 dYoshiMainMotion_0x0A04[] = {
 	ftMotionCommandSetTexturePartID(6),
 	ftMotionCommandSetTexturePartID(1048582),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
-	ftMotionCommandSetColAnim(nGMColAnimFighterBat,, 40)),
+	ftMotionCommandSetColAnim(nGMColAnimFighterBat, 40),
 	ftMotionCommandWaitAsync(19),
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandSubroutine(0x0248), /* extern */
@@ -738,7 +738,7 @@ u32 dYoshiMainMotion_0x0AD4[] = {
 };
 
 u32 dYoshiMainMotion_0x0AF8[] = {
-	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod,, 11)),
+	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod, 11),
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandSubroutine(0x0494), /* extern */
@@ -750,7 +750,7 @@ u32 dYoshiMainMotion_0x0AF8[] = {
 };
 
 u32 dYoshiMainMotion_0x0B20[] = {
-	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod,, 18)),
+	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod, 18),
 	ftMotionCommandWaitAsync(12),
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandSubroutine(0x04F8), /* extern */
@@ -766,7 +766,7 @@ u32 dYoshiMainMotion_0x0B20[] = {
 u32 dYoshiMainMotion_0x0B50[] = {
 	ftMotionCommandSetTexturePartID(6),
 	ftMotionCommandSetTexturePartID(1048582),
-	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod,, 26)),
+	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod, 26),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetSlopeContour(4),
@@ -781,7 +781,7 @@ u32 dYoshiMainMotion_0x0B50[] = {
 };
 
 u32 dYoshiMainMotion_0x0B8C[] = {
-	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod,, 26)),
+	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod, 26),
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandWaitAsync(8),
 	ftMotionCommandSubroutine(0x05C0), /* extern */

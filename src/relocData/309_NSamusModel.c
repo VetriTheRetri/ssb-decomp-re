@@ -5,13 +5,6 @@
  * at extract time. */
 
 #include "relocdata_types.h"
-#if defined(REGION_JP)
-
-u8 dNSamusModel[19408] = {
-	#include <NSamusModel/jp_raw.data.inc.c>
-};
-
-#else  /* REGION_US */
 
 /* Vtx: JointVerts @ 0x0 (0 vertices — elided) */
 
@@ -374,5 +367,3 @@ u8 dNSamusModel_gap_0x2FE8_sub_0x17E8[400] = {
 u8 dNSamusModel_gap_0x2FE8_sub_0x1978[624] = {
 	#include <NSamusModel/gap_0x2FE8_sub_0x1978.data.inc.c>
 };
-
-#endif  /* REGION_US */

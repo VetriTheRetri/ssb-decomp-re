@@ -676,7 +676,7 @@ u32 dPurinMainMotion_0x09BC[] = {
 	ftMotionCommandSetTexturePartID(1048580),
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
-	ftMotionCommandSetColAnim(nGMColAnimFighterBat,, 40)),
+	ftMotionCommandSetColAnim(nGMColAnimFighterBat, 40),
 	ftMotionCommandWaitAsync(19),
 	ftMotionCommandSubroutine(0x0248), /* extern */
 	ftMotionCommandWait(8),
@@ -750,7 +750,7 @@ u32 dPurinMainMotion_0x0A9C[] = {
 };
 
 u32 dPurinMainMotion_0x0AC8[] = {
-	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod,, 13)),
+	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod, 13),
 	ftMotionCommandWaitAsync(5),
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandSubroutine(0x0494), /* extern */
@@ -762,7 +762,7 @@ u32 dPurinMainMotion_0x0AC8[] = {
 };
 
 u32 dPurinMainMotion_0x0AF0[] = {
-	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod,, 17)),
+	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod, 17),
 	ftMotionCommandWaitAsync(9),
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandSubroutine(0x04F8), /* extern */
@@ -777,7 +777,7 @@ u32 dPurinMainMotion_0x0AF0[] = {
 
 u32 dPurinMainMotion_0x0B20[] = {
 	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod,, 32)),
+	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod, 32),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandWaitAsync(19),
 	ftMotionCommandSubroutine(0x055C), /* extern */
@@ -792,7 +792,7 @@ u32 dPurinMainMotion_0x0B20[] = {
 
 u32 dPurinMainMotion_0x0B54[] = {
 	ftMotionCommandSetSlopeContour(4),
-	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod,, 26)),
+	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod, 26),
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandSubroutine(0x05C0), /* extern */
 	ftMotionCommandWait(22),
@@ -836,7 +836,7 @@ u32 dPurinMainMotion_0x0BBC[] = {
 };
 
 u32 dPurinMainMotion_0x0BE4[] = {
-	ftMotionCommandSetColAnim(nGMColAnimFighterUnknown1,, 0)),
+	ftMotionCommandSetColAnim(nGMColAnimFighterUnknown1, 0),
 	ftMotionCommandEffect(0, 31, 0, 0, 0, 120, 200, 200, 200),
 	ftMotionCommandLoopBegin(10),
 	ftMotionCommandEffect(0, 10, 0, 0, 0, 120, 200, 200, 200),

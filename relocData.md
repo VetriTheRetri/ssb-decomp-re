@@ -13,16 +13,18 @@ resulting ROM is byte-identical to the baserom, for both US and JP.
 | Version | Building from C | Total | ROM matches |
 |---|---|---|---|
 | US | **2132 / 2132** (100%) | 2132 | yes |
-| JP | **2068 / 2107** (98.1%) | 2107 | yes |
+| JP | **2069 / 2107** (98.2%) | 2107 | yes |
 
-39 JP fids still fall back to the raw baserom bytes via `makeBin`'s
-override-or-fallback path — all of them are inline-master files
-(character Models / Specials / a couple of stage files) whose
-US-authored structure can't be walked against the JP binary without a
-JP-aware inline-master extractor. The ROM remains byte-clean because
-`tools/relocData.py makeBin` silently drops back to
-`assets/relocData/<fid>.vpk0` for any fid that doesn't produce a
-`build/assets/relocData/<fid>.vpk0` override.
+Both `make init RELOC_DATA=1` (US) and `make init RELOC_DATA=1 VERSION=jp`
+produce byte-identical ROMs.
+
+38 JP fids still fall back to the raw baserom bytes via `makeBin`'s
+override-or-fallback path — character N-Models, Special2/3 files, and
+a handful of stage/validator files whose JP binary layout differs
+structurally from US (different total sizes, not just value tweaks).
+The ROM remains byte-clean because `tools/relocData.py makeBin`
+silently drops back to `assets/relocData/<fid>.vpk0` for any fid that
+doesn't produce a `build/assets/relocData/<fid>.vpk0` override.
 
 ### Structural decomposition
 
@@ -30,7 +32,7 @@ JP-aware inline-master extractor. The ROM remains byte-clean because
 |---|---:|---|
 | Inline typed `.c` masters | **2,026** | Self-contained `.c` file with typed struct initializers (`FTAttributes` / `MPGroundData` / `ftMotionCommand` / `aobjEvent32` / `ftAnim` / `Sprite` / `DObjDesc` / `MObjSub` / `WPAttributes` / `Vtx` / `Gfx` DL / `LUT` palette / `Tex` / raw-byte wrappers). Any referenced `.inc.c` blobs live under `build/` and are regenerated from the ROM at `make extract` time. |
 | Auto-extracted sprite files | **94** | A committed `.spritelist` marker drives `tools/extractSpriteFile.py`, which walks the ROM binary's reloc chain, auto-discovers every Sprite + Bitmap + pixel block, and emits a full master `.c` + `.reloc` + `.inc.c` set under `build/`. |
-| Raw-blob inline `.c` files | **12** | Inline `.c` whose only content is one or two raw `u8[]` arrays (no struct types). Build, match, but aren't structurally typed yet. |
+| Raw-blob inline `.c` files | **1** | `StageBattlefieldFile2` — builds and matches but isn't structurally typed yet. |
 | **Total** | **2,132** | |
 
 ### Per-region divergence (JP build)
@@ -42,22 +44,17 @@ build uses one of three override mechanisms, in priority order:
 | Priority | Mechanism | Count | Purpose |
 |---|---|---:|---|
 | 1 | `<id>_<Name>.jp.spritelist` | 2 | JP-specific sprite name list (drops / reorders entries). Falls through to `extractSpriteFile.py` which walks the JP binary. |
-| 2 | `<id>_<Name>.jp.reloc` | 12 | JP-specific relocation chain (different extern targets / intern positions). Used with the shared `.c` when the structure matches but the chain diverges. |
-| 3 | `#if defined(REGION_JP)` / `REGION_US` guards inside the shared `.c` | 20 files, **258 guards** | Per-line gameplay tuning differences (FGM ids, color-anim indices, attack collision damage, etc.). Guarded at whichever granularity narrows best — most guards are 1–3 lines. Down from 358 after `tools/replaceFGMRegionGuards.py` collapsed 100 fighter-Main guards (fgm_id / sfx / dead_fgm_ids / smash_sfx / heavyget_sfx / deadup_sfx / damage_sfx) into `gmFGMVoiceID` enum references; the enum is itself region-aware so the named value picks the right ordinal. |
+| 2 | `<id>_<Name>.jp.reloc` | 50 | JP-specific relocation chain (different extern targets / intern positions). Used with the shared `.c` when the structure matches but the chain diverges. |
+| 3 | `#if defined(REGION_JP)` / `REGION_US` guards inside the shared `.c` | 55 files, **~440 guards** | Per-line gameplay tuning: FTAttributes stats (size, weight, air speed, gravity), SFX IDs, WPAttributes hitbox bitfields, GR map item spawn weights, damage collision descriptors, raw-blob `u8[]` fallback for files with structural JP/US layout differences (18 MainMotion + Model files). Where possible, SFX values use `gmFGMVoiceID` enum names directly (the enum is region-aware), eliminating the need for per-file guards — `tools/replaceFGMRegionGuards.py` collapsed 128 guards across 29 fighter Main files this way. |
 
 `.jp.c` raw blobs are no longer used — every previously-blob-overridden
 file has been migrated to one of the structural mechanisms above.
 
 ### Remaining raw-blob inline files (1 file, ~17 KB)
 
-These are inline `.c` files whose only declarations are one or two raw
-`u8[]` arrays (no struct types, no LUT/Tex blocks, no animation u32[]).
-They build and match but aren't structurally decomposed.
-
-| Category | Files | Bytes | Notes |
-|---|---:|---:|---|
-| Stage File2/3/4 | 1 | 17,328 | `StageBattlefieldFile2` — split into 3 named u8 regions plus a 43-entry intern chain that crosses the existing block boundaries; needs careful re-split before further typing |
-| **Total** | **1** | **17,328** | |
+| File | Bytes | Notes |
+|---|---:|---|
+| `StageBattlefieldFile2` | 17,328 | Split into 3 named u8 regions plus a 43-entry intern chain that crosses the existing block boundaries; needs careful re-split before further typing |
 
 Recent round of structural work:
 - All 27 fighter **Main.c** files now have every `_pre` sub-block
@@ -127,27 +124,25 @@ Recent round of structural work:
   `Bonus*CommonImages`, `Stage*Images`, `Special1`, the `LBTransition*`,
   and `MarioSecondaryImage` files.
 
-### JP-unpromoted inline masters (39 files)
+### JP-unpromoted inline masters (38 files)
 
-All 39 have a shared US-authored inline `.c` that happens to compile
-for JP but produces wrong bytes — either the binary layout differs,
-the extern reloc targets shift, or the JP binary has a different
-total size. They currently fall back to the raw baserom file via
-`makeBin`'s override mechanism.
+These 38 JP fids fall back to the raw baserom file because their JP
+binary has a structurally different layout from US (different total
+size, not just value-level tweaks). Adding them requires either
+teaching `extractRelocInc.py` to walk a typed inline master against a
+version-mismatched binary, or committing a JP-specific inline `.c`
+override for each.
 
-| Category | JP fids | Count | What's needed |
+| Category | JP fids | Count | Notes |
 |---|---|---:|---|
-| Character `Model` files | `276 NMarioModel`, `278 NFoxModel`, `279 NYoshiModel`, `280 NKirbyModel`, `281 NPurinModel`, `282 NPikachuModel`, `283 NDonkeyModel`, `284 NSamusModel`, `285 NLinkModel`, `286 NCaptainModel`, `287 NNessModel`, `292 DonkeyModel`, `313 YoshiModel`, `319 BossModel` | 14 | JP-specific `.inc.c` generation for the vertex / texture / DObjDesc blocks |
-| Character `Special2` | `321 FoxSpecial2`, `322 PikachuSpecial2`, `323 KirbySpecial2`, `324 SamusSpecial2`, `325 CaptainSpecial2`, `326 PurinSpecial2`, `327 NessSpecial2`, `328 LinkSpecial2`, `329 YoshiSpecial2`, `330 DonkeySpecial2`, `331 MarioSpecial2` | 11 | Same |
-| Character `Special3` | `272 MarioSpecial3`, `291 FoxSpecial4`, `296 SamusSpecial3`, `300 LinkSpecial3`, `308 CaptainSpecial3`, `311 NessSpecial3`, `314 YoshiSpecial3`, `317 PikachuSpecial3` | 8 | Same |
-| Stage / validator | `112 StageYamabukiFile2`, `129 GRBonus1LinkFile2`, `174 SYKseg1Validate`, `175 SYSignValidate` | 4 | Same |
-| Miscellaneous | `193 SamusSpecial1`, `217 PikachuMainMotion` | 2 | `PikachuMainMotion` has a 16-byte total size difference — needs a genuine JP-specific master |
+| Character N-`Model` files | 276–287 (NMarioModel … NNessModel) | 12 | JP N-models are 4–265× larger than US |
+| Character `Model` files | 292 DonkeyModel, 313 YoshiModel, 319 BossModel | 3 | 1–10% size difference |
+| Character `Special2` | 321–331 (FoxSpecial2 … MarioSpecial2) | 11 | Ratio 1.00–1.04 — many may just need `.jp.reloc` |
+| Character `Special3/4` | 272, 291, 296, 300, 308, 311, 314, 317 | 8 | Mixed ratios |
+| Stage / validator | 112 StageYamabukiFile2, 129 GRBonus1LinkFile2, 174 SYKseg1Validate, 175 SYSignValidate | 4 | Validate files are 1.00 ratio |
+| Miscellaneous | 193 SamusSpecial1 | 1 | 64 bytes JP vs ~52 US |
 
-Fixing these needs `extractRelocInc.py` to learn how to walk a typed
-inline master against a version-mismatched binary and emit a
-companion `.inc.c` set sized for that binary. Separate project.
-
-### Gap bytes inside typed inline masters (~1.13 MB)
+### Gap bytes inside typed inline masters (~73 KB)
 
 Typed files often still have `u8 d<Prefix>_gap_0xNNNN[N]` or `u8
 d<Prefix>_data_0xNNNN[N]` raw-byte blocks for regions we haven't
@@ -156,8 +151,8 @@ through segmented addresses the DL walker can't follow. They aren't
 "raw" in the blob sense (the file has structural typing around them)
 but they're the next big pool of bytes to break up.
 
-Roughly 1.13 MB of `gap_*` / `data_*` raw-byte array bytes remain
-across the 2,026 typed inline masters. The biggest offenders are the
+Roughly 73 KB of `gap_*` / `data_*` raw-byte array bytes remain
+across the typed inline masters. The biggest offenders are the
 character model files and the Opening / Yamabuki stage assets. Many
 gaps that DO have inbound chain references (extern from other files,
 or intern within the same file) have already been split into named
@@ -352,11 +347,13 @@ The remaining work splits into four buckets:
    have already been split via `tools/splitGapFull.py`; the remaining
    bytes mostly live in self-contained internal regions.
 
-3. **Promote the 39 JP-unpromoted inline masters**. This needs
-   `extractRelocInc.py` to learn how to walk a typed inline master
-   against a version-mismatched binary and emit a companion `.inc.c`
-   set sized for that binary — or alternatively commit JP-specific
-   inline masters for each one.
+3. **Promote the 38 JP-unpromoted inline masters**. Many Special2/3
+   files with JP/US ratio ≈1.00 may only need a `.jp.reloc` (different
+   chain targets but identical layout). For N-Model files with 4–265×
+   size differences, the `#if REGION_JP` raw-blob fallback is already
+   the pattern — but teaching `extractRelocInc.py` to walk the JP
+   binary's actual layout against a JP-specific inline `.c` would let
+   them graduate to full structural typing.
 
 4. **Finish typing struct bitfield tails**. The `WPAttributes` 52-byte
    layout is fully verified (used by 8 hand-typed Special1 / Lizardon

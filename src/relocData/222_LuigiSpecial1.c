@@ -29,7 +29,11 @@ WPAttributes dLuigiSpecial1_Fireball_WeaponAttributes = {
     50, 0, -50, 50,  /* map_coll top/center/bottom/width */
     200,  /* size */
     361,  /* angle            : 10 */
+#if defined(REGION_JP)
+    50,  /* knockback_scale  : 10 */
+#else
     25,  /* knockback_scale  : 10 */
+#endif
     6,  /* damage           :  8 */
     1,  /* element          :  4 */
     0,  /* knockback_weight : 10 */
@@ -46,5 +50,9 @@ WPAttributes dLuigiSpecial1_Fireball_WeaponAttributes = {
     1,  /* can_shield       :  1 */
     0,  /* unused_0x2F_b6   :  1 */
     0,  /* unused_0x2F_b7   :  1 */
+#if defined(REGION_JP)
+    22,  /* knockback_base   : 10 */
+#else
     10,  /* knockback_base   : 10 */
+#endif
 };

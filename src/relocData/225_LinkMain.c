@@ -78,7 +78,11 @@ u32 dLinkMain_file_handles[48] = {
 	0xFF6A0096,
 	0x01900780,
 	0x0C814000,
+#if defined(REGION_JP)
+	0x01A0F984,
+#else
 	0x01A10184,
+#endif
 	0x07800000,
 	(u32)((u8*)dLinkSpecial2_SpinAttackDObjDesc + 0x718), /* extern -> 0x18D8 */
 	0x00000000,
@@ -93,18 +97,58 @@ u32 dLinkMain_file_handles[48] = {
 	0x00640071,
 	0x0000FF8F,
 	0x007100DC,
+#if defined(REGION_JP)
+	0x14041010,
+#else
 	0x14014020,
+#endif
+#if defined(REGION_JP)
+	0x0000103E,
+#else
 	0x00001040,
+#endif
+#if defined(REGION_JP)
+	0x27028C00,
+#else
 	0x270F0C00,
+#endif
+#if defined(REGION_JP)
+	0x0D4350D4,
+#else
 	0x0E4390E4,
+#endif
 	0x1E000000,
+#if defined(REGION_JP)
+	0x005A4200,
+#else
 	0x005A4140,
+#endif
+#if defined(REGION_JP)
+	0x015E0000,
+#else
 	0x012C0000,
+#endif
+#if defined(REGION_JP)
+	0x025A4180,
+#else
 	0x025A4140,
+#endif
+#if defined(REGION_JP)
+	0x00FA0000,
+#else
 	0x00E60000,
+#endif
+#if defined(REGION_JP)
+	0x045A4100,
+#else
 	0x045A4140,
+#endif
 	0x00960000,
+#if defined(REGION_JP)
+	0x065A4040,
+#else
 	0x065A4140,
+#endif
 	0x00000000,
 	0x3F4CCCCD,
 	0x3F800000,
@@ -357,7 +401,11 @@ FTAttributes dLinkMain_attr = {
 	0.0f, /* throw_walkmiddle_anim_length */
 	0.0f, /* throw_walkfast_anim_length */
 	16.0f, /* rebound_anim_length */
+#if defined(REGION_JP)
+	0.4f, /* walk_speed_mul */
+#else
 	0.37f, /* walk_speed_mul */
+#endif
 	2.0f, /* traction */
 	68.0f, /* dash_speed */
 	5.4f, /* dash_decel */
@@ -371,14 +419,22 @@ FTAttributes dLinkMain_attr = {
 	0.04f, /* air_accel */
 	31.0f, /* air_speed_max_x */
 	0.0f, /* air_friction */
+#if defined(REGION_JP)
+	3.2f, /* gravity */
+#else
 	3.4f, /* gravity */
+#endif
 	64.0f, /* tvel_base */
 	102.0f, /* tvel_fast */
 	2, /* jumps_max */
 	0.96f, /* weight */
 	24.0f, /* attack1_followup_frames */
 	16.0f, /* dash_to_run */
+#if defined(REGION_JP)
+	260.0f, /* shield_size */
+#else
 	280.0f, /* shield_size */
+#endif
 	90.0f, /* shield_break_vel_y */
 	200.0f, /* shadow_size */
 	112.5f, /* jostle_width */
@@ -390,14 +446,31 @@ FTAttributes dLinkMain_attr = {
 	630.0f, /* camera_zoom_base */
 	{ 400.0f, 250.0f, 0.0f, 150.0f }, /* map_coll */
 	{ 280.0f, 400.0f }, /* cliffcatch_coll */
+#if defined(REGION_JP)
+	{ 0x0193, 0x0119 }, /* dead_fgm_ids */
+#else
 	{ 0x019D, 0x0123 }, /* dead_fgm_ids */
+#endif
+	#if defined(REGION_JP)
+	0x018B, /* deadup_sfx */
+	0x018D, /* damage_sfx */
+#else
 	0x0195, /* deadup_sfx */
 	0x0197, /* damage_sfx */
+#endif
+#if defined(REGION_JP)
+	{ 0x0187, 0x0188, 0x0189 }, /* smash_sfx */
+#else
 	{ 0x0191, 0x0192, 0x0193 }, /* smash_sfx */
+#endif
 	{ { 105.0f, 0.0f }, { 378.0f, 200.0f }, { 75.0f, 0.0f }, { 150.0f, 150.0f } }, /* item_pickup */
 	0x0064, /* itemthrow_vel_scale */
 	0x0064, /* itemthrow_damage_scale */
+#if defined(REGION_JP)
+	0x0191, /* heavyget_sfx */
+#else
 	0x019B, /* heavyget_sfx */
+#endif
 	1.1f, /* halo_size */
 	{ { 0xFF, 0xFF, 0xFF, 0x50 }, { 0x00, 0x00, 0x00, 0x50 }, { 0x00, 0x00, 0x00, 0x00 } }, /* shade_color */
 	{ 0xFF, 0x00, 0x00, 0x00 }, /* fog_color */

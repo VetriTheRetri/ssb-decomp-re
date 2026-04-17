@@ -26,11 +26,21 @@ WPAttributes dFoxSpecial1_Blaster_WeaponAttributes = {
     { { 0, 0, 0 }, { 0, 0, 0 } },  /* attack_offsets */
     10, 0, -10, 10,  /* map_coll top/center/bottom/width */
     40,  /* size */
+#if defined(REGION_JP)
+    361,  /* angle            : 10 */
+#else
     10,  /* angle            : 10 */
+#endif
     100,  /* knockback_scale  : 10 */
+#if defined(REGION_JP)
+    5,  /* damage           :  8 */
+    0,  /* element          :  4 */
+    5,  /* knockback_weight : 10 */
+#else
     6,  /* damage           :  8 */
     0,  /* element          :  4 */
     1,  /* knockback_weight : 10 */
+#endif
     1,  /* shield_damage    :  8 */
     1,  /* attack_count     :  2 */
     0,  /* can_setoff       :  1 */

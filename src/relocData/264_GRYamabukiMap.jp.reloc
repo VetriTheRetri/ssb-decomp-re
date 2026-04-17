@@ -1,0 +1,29 @@
+# Relocation metadata for file 264 (JP binary walk)
+# Format: <type> <ptr_label> <target_label>
+# Labels resolved via src/relocData/264_GRYamabukiMap.reloc .o symbol table
+
+intern dGRYamabukiMap_ItemHead_0x0014+0x84 dGRYamabukiMap_gap_0x0000
+
+extern dGRYamabukiMap_ItemHead_0x0014 0x47F8
+extern dGRYamabukiMap_ItemHead_0x0014+0x4 0x4960
+extern dGRYamabukiMap_ItemHead_0x0014+0x10 0x6210
+extern dGRYamabukiMap_ItemHead_0x0014+0x14 0x6650
+extern dGRYamabukiMap_ItemHead_0x0014+0x18 0x4A00
+extern dGRYamabukiMap_ItemHead_0x0014+0x1C 0x67A0
+extern dGRYamabukiMap_ItemHead_0x0014+0x30 0x7EB8
+extern dGRYamabukiMap_ItemHead_0x0014+0x40 0x662C
+extern dGRYamabukiMap_ItemHead_0x0014+0x48 0x26C88
+extern dGRYamabukiMap_ItemHead_0x0014+0x80 0x8A0
+extern dGRYamabukiMap_GLucky_ItemAttributes 0x360
+extern dGRYamabukiMap_GLucky_ItemAttributes+0x8 0x3F0
+extern dGRYamabukiMap_Marumine_ItemAttributes 0x790
+extern dGRYamabukiMap_Marumine_ItemAttributes+0x8 0x820
+extern dGRYamabukiMap_Porygon_ItemAttributes 0xEA0
+extern dGRYamabukiMap_Porygon_ItemAttributes+0x8 0xF30
+extern dGRYamabukiMap_Hitokage_ItemAttributes 0x1990
+extern dGRYamabukiMap_Hitokage_ItemAttributes+0x4 0x17D0
+extern dGRYamabukiMap_Hitokage_ItemAttributes+0x8 0x1A20
+extern dGRYamabukiMap_Fushigibana_ItemAttributes 0x2340
+extern dGRYamabukiMap_Fushigibana_ItemAttributes+0x4 0x2180
+extern dGRYamabukiMap_Fushigibana_ItemAttributes+0x8 0x23D0
+extern dGRYamabukiMap_FushigibanaRazor_WeaponAttributes 0x2A50

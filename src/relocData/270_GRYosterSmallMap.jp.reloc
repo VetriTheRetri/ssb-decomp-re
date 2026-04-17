@@ -1,0 +1,13 @@
+# Relocation metadata for file 270 (JP binary walk)
+# Format: <type> <ptr_label> <target_label>
+# Labels resolved via src/relocData/270_GRYosterSmallMap.reloc .o symbol table
+
+intern dGRYosterSmallMap_header+0x84 dGRYosterSmallMap_item_weights
+
+extern dGRYosterSmallMap_header 0xA88
+extern dGRYosterSmallMap_header+0x4 0xD20
+extern dGRYosterSmallMap_header+0x10 0x37F0
+extern dGRYosterSmallMap_header+0x20 0x3CA8
+extern dGRYosterSmallMap_header+0x30 0x4498
+extern dGRYosterSmallMap_header+0x40 0x39F0
+extern dGRYosterSmallMap_header+0x48 0x26C88

@@ -1,0 +1,11 @@
+# Relocation metadata for file 244 (JP binary walk)
+# Format: <type> <ptr_label> <target_label>
+# Labels resolved via src/relocData/244_PikachuSpecial1.reloc .o symbol table
+
+
+extern dPikachuSpecial1_ThunderJoltAir_WeaponAttributes 0x270
+extern dPikachuSpecial1_ThunderJoltAir_WeaponAttributes+0x8 0x360
+extern dPikachuSpecial1_ThunderJoltGround_WeaponAttributes 0x1888
+extern dPikachuSpecial1_ThunderJoltGround_WeaponAttributes+0x4 0x1018
+extern dPikachuSpecial1_ThunderJoltGround_WeaponAttributes+0x8 0x1A20
+extern dPikachuSpecial1_ThunderJoltGround_WeaponAttributes+0xC 0x1AE0

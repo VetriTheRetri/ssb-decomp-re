@@ -287,7 +287,11 @@ WPAttributes dITCommonData_StarRod_WeaponAttributes = {
     1,  /* shield_damage    :  8 */
     1,  /* attack_count     :  2 */
     1,  /* can_setoff       :  1 */
+#if defined(REGION_JP)
+    35,  /* sfx              : 10 */
+#else
     38,  /* sfx              : 10 */
+#endif
     1,  /* priority         :  3 */
     0,  /* can_rehit_item   :  1 */
     0,  /* can_rehit_fighter:  1 */
@@ -317,7 +321,11 @@ WPAttributes dITCommonData_StarRodSmash_WeaponAttributes = {
     1,  /* shield_damage    :  8 */
     1,  /* attack_count     :  2 */
     1,  /* can_setoff       :  1 */
+#if defined(REGION_JP)
+    34,  /* sfx              : 10 */
+#else
     37,  /* sfx              : 10 */
+#endif
     1,  /* priority         :  3 */
     0,  /* can_rehit_item   :  1 */
     0,  /* can_rehit_fighter:  1 */
@@ -530,7 +538,11 @@ WPAttributes dITCommonData_NyarsCoin_WeaponAttributes = {
     2,  /* shield_damage    :  8 */
     1,  /* attack_count     :  2 */
     1,  /* can_setoff       :  1 */
+#if defined(REGION_JP)
+    206,  /* sfx              : 10 */
+#else
     216,  /* sfx              : 10 */
+#endif
     1,  /* priority         :  3 */
     0,  /* can_rehit_item   :  1 */
     0,  /* can_rehit_fighter:  1 */
@@ -658,12 +670,22 @@ WPAttributes dITCommonData_KamexHydro_WeaponAttributes = {
     (AObjEvent32 ***)0x02A13EDC,  /* p_matanim_joints (chain) */
     { { 0, 0, 0 }, { 0, 0, 0 } },  /* attack_offsets */
     213, 0, -213, 180,  /* map_coll top/center/bottom/width */
+#if defined(REGION_JP)
+    400,  /* size */
+    20,  /* angle            : 10 */
+    100,  /* knockback_scale  : 10 */
+#else
     200,  /* size */
     0,  /* angle            : 10 */
     30,  /* knockback_scale  : 10 */
+#endif
     6,  /* damage           :  8 */
     0,  /* element          :  4 */
+#if defined(REGION_JP)
+    40,  /* knockback_weight : 10 */
+#else
     0,  /* knockback_weight : 10 */
+#endif
     1,  /* shield_damage    :  8 */
     1,  /* attack_count     :  2 */
     1,  /* can_setoff       :  1 */
@@ -677,7 +699,11 @@ WPAttributes dITCommonData_KamexHydro_WeaponAttributes = {
     1,  /* can_shield       :  1 */
     0,  /* unused_0x2F_b6   :  1 */
     0,  /* unused_0x2F_b7   :  1 */
+#if defined(REGION_JP)
+    0,  /* knockback_base   : 10 */
+#else
     78,  /* knockback_base   : 10 */
+#endif
 };
 
 /* ItemAttributes @ 0x0A84 — MLucky */
@@ -741,7 +767,11 @@ WPAttributes dITCommonData_StarmieSwift_WeaponAttributes = {
     1,  /* shield_damage    :  8 */
     1,  /* attack_count     :  2 */
     1,  /* can_setoff       :  1 */
+#if defined(REGION_JP)
+    31,  /* sfx              : 10 */
+#else
     32,  /* sfx              : 10 */
+#endif
     1,  /* priority         :  3 */
     0,  /* can_rehit_item   :  1 */
     0,  /* can_rehit_fighter:  1 */

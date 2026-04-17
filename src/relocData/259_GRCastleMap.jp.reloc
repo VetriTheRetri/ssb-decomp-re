@@ -1,0 +1,15 @@
+# Relocation metadata for file 259 (JP binary walk)
+# Format: <type> <ptr_label> <target_label>
+# Labels resolved via src/relocData/259_GRCastleMap.reloc .o symbol table
+
+intern dGRCastleMap_header+0x84 dGRCastleMap_item_weights
+
+extern dGRCastleMap_header 0x1850
+extern dGRCastleMap_header+0x10 0x2A08
+extern dGRCastleMap_header+0x14 0x2D80
+extern dGRCastleMap_header+0x20 0x3218
+extern dGRCastleMap_header+0x24 0x32D0
+extern dGRCastleMap_header+0x30 0x3600
+extern dGRCastleMap_header+0x40 0x2D58
+extern dGRCastleMap_header+0x48 0x26C88
+extern dGRCastleMap_header+0x80 0x0

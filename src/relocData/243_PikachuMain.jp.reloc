@@ -1,0 +1,64 @@
+# Relocation metadata for file 243 (JP binary walk)
+# Format: <type> <ptr_label> <target_label>
+# Labels resolved via src/relocData/243_PikachuMain.reloc .o symbol table
+
+intern dPikachuMain_sprites+0x4 dPikachuMain_stock_luts
+intern dPikachuMain_skeleton+0x4 dPikachuMain_skeleton_dls
+intern dPikachuMain_attr+0x29C dPikachuMain_setup_parts
+intern dPikachuMain_attr+0x2A0 dPikachuMain_animlock
+intern dPikachuMain_attr+0x2D0 dPikachuMain_hiddenparts
+intern dPikachuMain_attr+0x2D4 dPikachuMain_commonparts_container
+intern dPikachuMain_attr+0x328 dPikachuMain_modelparts_container
+intern dPikachuMain_attr+0x32C dPikachuMain_accesspart
+intern dPikachuMain_attr+0x330 dPikachuMain_textureparts_container
+intern dPikachuMain_attr+0x338 dPikachuMain_thrown_status
+intern dPikachuMain_attr+0x340 dPikachuMain_sprites
+intern dPikachuMain_attr+0x344 dPikachuMain_skeleton
+
+extern dPikachuMain_file_handles 0x10
+extern dPikachuMain_file_handles+0x4 0x800
+extern dPikachuMain_file_handles+0x8 0x0
+extern dPikachuMain_file_handles+0xC 0x95B0
+extern dPikachuMain_file_handles+0x10 0x9420
+extern dPikachuMain_file_handles+0x40 0x95B0
+extern dPikachuMain_file_handles+0x44 0x9420
+extern dPikachuMain_accesspart+0x4 0x63F0
+extern dPikachuMain_accesspart+0x8 0x6350
+extern dPikachuMain_accesspart+0xC 0x654C
+extern dPikachuMain_commonparts_container 0x2650
+extern dPikachuMain_commonparts_container+0x4 0x0
+extern dPikachuMain_commonparts_container+0x8 0x2B20
+extern dPikachuMain_commonparts_container+0x10 0x5490
+extern dPikachuMain_commonparts_container+0x14 0x3430
+extern dPikachuMain_commonparts_container+0x18 0x5960
+extern dPikachuMain_stock_luts 0x9930
+extern dPikachuMain_stock_luts+0x4 0x9958
+extern dPikachuMain_stock_luts+0x8 0x9980
+extern dPikachuMain_stock_luts+0xC 0x99A8
+extern dPikachuMain_stock_luts+0x10 0x99D0
+extern dPikachuMain_sprites 0x9A00
+extern dPikachuMain_sprites+0x8 0x9BE8
+extern dPikachuMain_skeleton_dls+0x8 0x65F0
+extern dPikachuMain_skeleton_dls+0x10 0x6740
+extern dPikachuMain_skeleton_dls+0x28 0x6DF0
+extern dPikachuMain_skeleton_dls+0x30 0x6CF0
+extern dPikachuMain_skeleton_dls+0x38 0x6AE0
+extern dPikachuMain_skeleton_dls+0x48 0x7220
+extern dPikachuMain_skeleton_dls+0x50 0x72C0
+extern dPikachuMain_skeleton_dls+0x68 0x6DF0
+extern dPikachuMain_skeleton_dls+0x70 0x6CF0
+extern dPikachuMain_skeleton_dls+0x80 0x6F00
+extern dPikachuMain_skeleton_dls+0x88 0x7010
+extern dPikachuMain_skeleton_dls+0x98 0x70D0
+extern dPikachuMain_skeleton_dls+0xA8 0x6F00
+extern dPikachuMain_skeleton_dls+0xB0 0x7010
+extern dPikachuMain_skeleton_dls+0xC0 0x70D0
+extern dPikachuMain_attr+0x2D8 0x0
+extern dPikachuMain_attr+0x2DC 0x500
+extern dPikachuMain_attr+0x2E0 0xB50
+extern dPikachuMain_attr+0x2E4 0x11A0
+extern dPikachuMain_attr+0x2E8 0x17F0
+extern dPikachuMain_attr+0x2EC 0x1E60
+extern dPikachuMain_attr+0x2F0 0x24B0
+extern dPikachuMain_attr+0x2F4 0x2B00
+extern dPikachuMain_attr+0x2F8 0x3150

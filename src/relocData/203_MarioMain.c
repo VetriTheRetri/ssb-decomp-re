@@ -213,7 +213,11 @@ FTSkeleton *dMarioMain_skeleton[3] = {
 };
 
 FTAttributes dMarioMain_attr = {
+#if defined(REGION_JP)
+	1.0f, /* size */
+#else
 	1.12f, /* size */
+#endif
 	90.0f, /* walkslow_anim_length */
 	60.0f, /* walkmiddle_anim_length */
 	40.0f, /* walkfast_anim_length */
@@ -254,14 +258,39 @@ FTAttributes dMarioMain_attr = {
 	500.0f, /* camera_zoom_base */
 	{ 320.0f, 190.0f, 0.0f, 150.0f }, /* map_coll */
 	{ 400.0f, 360.0f }, /* cliffcatch_coll */
+#if defined(REGION_JP)
+	{ 0x01AD, 0x011A }, /* dead_fgm_ids */
+#else
 	{ 0x01B7, 0x0124 }, /* dead_fgm_ids */
+#endif
+	#if defined(REGION_JP)
+	0x01A7, /* deadup_sfx */
+	0x01AE, /* damage_sfx */
+#else
 	0x01B1, /* deadup_sfx */
 	0x01B8, /* damage_sfx */
+#endif
+#if defined(REGION_JP)
+#if defined(REGION_JP)
+	{ 0x01A3, 0x01A4, 0x01A5 }, /* smash_sfx */
+#else
+	{ 0x01AD, 0x01AE, 0x01A5 }, /* smash_sfx */
+#endif
+#else
+#if defined(REGION_JP)
+	{ 0x01A3, 0x01A4, 0x01AF }, /* smash_sfx */
+#else
 	{ 0x01AD, 0x01AE, 0x01AF }, /* smash_sfx */
+#endif
+#endif
 	{ { 105.0f, 0.0f }, { 378.0f, 200.0f }, { 75.0f, 0.0f }, { 150.0f, 150.0f } }, /* item_pickup */
 	0x0064, /* itemthrow_vel_scale */
 	0x0064, /* itemthrow_damage_scale */
+#if defined(REGION_JP)
+	0x01AC, /* heavyget_sfx */
+#else
 	0x01B6, /* heavyget_sfx */
+#endif
 	1.0f, /* halo_size */
 	{ { 0xFF, 0xFF, 0xFF, 0x50 }, { 0x00, 0x00, 0x00, 0x50 }, { 0x00, 0x00, 0x00, 0x00 } }, /* shade_color */
 	{ 0xFF, 0x00, 0x00, 0x00 }, /* fog_color */
@@ -290,7 +319,11 @@ FTAttributes dMarioMain_attr = {
 	/* damage_coll_descs */
 	{
 		{ 6, 1, TRUE, { 0.0f, 10.0f, 4.0f }, { 103.0f, 112.0f, 95.0f } },
+#if defined(REGION_JP)
+		{ 12, 2, TRUE, { 0.0f, 68.0f, 8.0f }, { 148.0f, 160.0f, 138.0f } },
+#else
 		{ 12, 2, TRUE, { 0.0f, 68.0f, 8.0f }, { 148.0f, 140.0f, 138.0f } },
+#endif
 		{ 14, 1, FALSE, { 15.0f, 0.0f, 0.0f }, { 36.0f, 50.0f, 50.0f } },
 		{ 8, 1, FALSE, { 15.0f, 0.0f, 0.0f }, { 36.0f, 50.0f, 50.0f } },
 		{ 15, 1, FALSE, { 30.0f, 0.0f, 0.0f }, { 58.0f, 54.0f, 54.0f } },

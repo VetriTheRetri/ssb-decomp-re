@@ -58,7 +58,11 @@ u32 dYoshiMain_file_handles[29] = {
 	0xFF6A0096,
 	0x00C85A40,
 	0x0C838000,
+#if defined(REGION_JP)
+	0x0660F134,
+#else
 	0x0660F934,
+#endif
 	0x0C800000,
 	(u32)&dITCommonObject_StarRod_Weapon_data, /* extern -> 0x5458 */
 	0x00000000,
@@ -71,7 +75,11 @@ u32 dYoshiMain_file_handles[29] = {
 	0xFF9C0060,
 	0x00A05A40,
 	0x1901001E,
+#if defined(REGION_JP)
+	0xFD6101BC,
+#else
 	0xFD6111BC,
+#endif
 	0x00000000,
 };
 
@@ -261,13 +269,29 @@ FTAttributes dYoshiMain_attr = {
 	0.35f, /* jump_vel_x */
 	0.7f, /* jump_height_mul */
 	27.5f, /* jump_height_base */
+#if defined(REGION_JP)
+	0.35f, /* jumpaerial_vel_x */
+#else
 	0.4f, /* jumpaerial_vel_x */
+#endif
 	1.2f, /* jumpaerial_height */
 	0.04f, /* air_accel */
+#if defined(REGION_JP)
+	40.0f, /* air_speed_max_x */
+#else
 	44.0f, /* air_speed_max_x */
+#endif
 	0.4f, /* air_friction */
+#if defined(REGION_JP)
+	2.7f, /* gravity */
+#else
 	2.8f, /* gravity */
+#endif
+	#if defined(REGION_JP)
+	55.0f, /* tvel_base */
+#else
 	58.0f, /* tvel_base */
+#endif
 	88.0f, /* tvel_fast */
 	2, /* jumps_max */
 	0.93f, /* weight */
@@ -285,14 +309,39 @@ FTAttributes dYoshiMain_attr = {
 	600.0f, /* camera_zoom_base */
 	{ 400.0f, 250.0f, 0.0f, 210.0f }, /* map_coll */
 	{ 420.0f, 400.0f }, /* cliffcatch_coll */
+#if defined(REGION_JP)
+	{ 0x0247, 0x011F }, /* dead_fgm_ids */
+#else
 	{ 0x0253, 0x0129 }, /* dead_fgm_ids */
+#endif
+	#if defined(REGION_JP)
+	0x0240, /* deadup_sfx */
+	0x0242, /* damage_sfx */
+#else
 	0x024C, /* deadup_sfx */
 	0x024E, /* damage_sfx */
+#endif
+#if defined(REGION_JP)
+#if defined(REGION_JP)
+	{ 0x023C, 0x023D, 0x023E }, /* smash_sfx */
+#else
+	{ 0x0248, 0x0249, 0x023E }, /* smash_sfx */
+#endif
+#else
+#if defined(REGION_JP)
+	{ 0x023C, 0x023D, 0x024A }, /* smash_sfx */
+#else
 	{ 0x0248, 0x0249, 0x024A }, /* smash_sfx */
+#endif
+#endif
 	{ { 100.0f, 0.0f }, { 588.0f, 200.0f }, { 0.0f, 0.0f }, { 150.0f, 150.0f } }, /* item_pickup */
 	0x0064, /* itemthrow_vel_scale */
 	0x0064, /* itemthrow_damage_scale */
+#if defined(REGION_JP)
+	0x0245, /* heavyget_sfx */
+#else
 	0x0251, /* heavyget_sfx */
+#endif
 	1.2f, /* halo_size */
 	{ { 0xFF, 0xFF, 0xFF, 0x50 }, { 0x00, 0x00, 0x00, 0x50 }, { 0x00, 0x00, 0x00, 0x00 } }, /* shade_color */
 	{ 0xFF, 0x00, 0x00, 0x00 }, /* fog_color */

@@ -146,7 +146,11 @@ u32 dKirbyMain_file_handles[15] = {
 	0xFF240032,
 	0x00FA5A40,
 	0x0C818C00,
+#if defined(REGION_JP)
+	0x0167E19C,
+#else
 	0x0168319C,
+#endif
 	0x11800000,
 };
 
@@ -431,7 +435,11 @@ FTSkeleton *dKirbyMain_skeleton[3] = {
 };
 
 FTAttributes dKirbyMain_attr = {
+#if defined(REGION_JP)
+	0.94f, /* size */
+#else
 	0.91f, /* size */
+#endif
 	90.0f, /* walkslow_anim_length */
 	60.0f, /* walkmiddle_anim_length */
 	40.0f, /* walkfast_anim_length */
@@ -472,14 +480,39 @@ FTAttributes dKirbyMain_attr = {
 	410.0f, /* camera_zoom_base */
 	{ 230.0f, 160.0f, 0.0f, 130.0f }, /* map_coll */
 	{ 250.0f, 400.0f }, /* cliffcatch_coll */
+#if defined(REGION_JP)
+	{ 0x0182, 0x0118 }, /* dead_fgm_ids */
+#else
 	{ 0x018C, 0x0122 }, /* dead_fgm_ids */
+#endif
+	#if defined(REGION_JP)
+	0x017A, /* deadup_sfx */
+	0x017C, /* damage_sfx */
+#else
 	0x0184, /* deadup_sfx */
 	0x0186, /* damage_sfx */
+#endif
+#if defined(REGION_JP)
+#if defined(REGION_JP)
+	{ 0x0170, 0x0171, 0x0172 }, /* smash_sfx */
+#else
+	{ 0x017A, 0x017B, 0x0172 }, /* smash_sfx */
+#endif
+#else
+#if defined(REGION_JP)
+	{ 0x0170, 0x0171, 0x017C }, /* smash_sfx */
+#else
 	{ 0x017A, 0x017B, 0x017C }, /* smash_sfx */
+#endif
+#endif
 	{ { 112.0f, 0.0f }, { 403.0f, 150.0f }, { 80.0f, 0.0f }, { 150.0f, 150.0f } }, /* item_pickup */
 	0x0064, /* itemthrow_vel_scale */
 	0x0064, /* itemthrow_damage_scale */
+#if defined(REGION_JP)
+	0x017F, /* heavyget_sfx */
+#else
 	0x0189, /* heavyget_sfx */
+#endif
 	1.14f, /* halo_size */
 	{ { 0xFF, 0xFF, 0xFF, 0x50 }, { 0x00, 0x00, 0x00, 0x50 }, { 0x00, 0x00, 0x00, 0x00 } }, /* shade_color */
 	{ 0xFF, 0x00, 0x00, 0x00 }, /* fog_color */

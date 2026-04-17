@@ -2,80 +2,80 @@
 # Format: <type> <ptr_label> <target_label>
 # Labels resolved via src/relocData/221_LuigiMain.reloc .o symbol table
 
-intern dLuigiMain_attr+0x114 dLuigiMain_attr+0x5C
-intern dLuigiMain_attr+0x12C dLuigiMain_attr+0xAC
+intern dLuigiMain_modelparts_container+0x18 dLuigiMain_modelparts_desc_0x05C
+intern dLuigiMain_modelparts_container+0x30 dLuigiMain_modelparts_desc_0x0AC
 intern dLuigiMain_sprites+0x4 dLuigiMain_stock_luts
 intern dLuigiMain_skeleton+0x4 dLuigiMain_skeleton_dls
-intern dLuigiMain_attr+0x29C dLuigiMain_attr+0x14
-intern dLuigiMain_attr+0x2A0 dLuigiMain_attr+0xC
-intern dLuigiMain_attr+0x2D0 dLuigiMain_attr+0x1C
-intern dLuigiMain_attr+0x2D4 dLuigiMain_attr+0x164
-intern dLuigiMain_attr+0x324 dLuigiMain_attr+0x334
-intern dLuigiMain_attr+0x328 dLuigiMain_attr+0xFC
-intern dLuigiMain_attr+0x330 dLuigiMain_attr+0x160
-intern dLuigiMain_attr+0x338 dLuigiMain_attr+0x184
+intern dLuigiMain_attr+0x29C dLuigiMain_setup_parts
+intern dLuigiMain_attr+0x2A0 dLuigiMain_animlock
+intern dLuigiMain_attr+0x2D0 dLuigiMain_hiddenparts
+intern dLuigiMain_attr+0x2D4 dLuigiMain_commonparts_container
+intern dLuigiMain_attr+0x324 dLuigiMain_translate_scales
+intern dLuigiMain_attr+0x328 dLuigiMain_modelparts_container
+intern dLuigiMain_attr+0x330 dLuigiMain_textureparts_container
+intern dLuigiMain_attr+0x338 dLuigiMain_thrown_status
 intern dLuigiMain_attr+0x340 dLuigiMain_sprites
 intern dLuigiMain_attr+0x344 dLuigiMain_skeleton
 
-extern dLuigiMain_file_handles 0x24  # -> file 220 (LuigiMainMotion)
-extern dLuigiMain_file_handles+0x4 0x608  # -> file 356 (MarioSpecial2)
-extern dLuigiMain_file_handles+0x8 0x0  # -> file 222 (LuigiSpecial1)
-extern dLuigiMain_attr+0x5C 0x1AB0  # -> file 323 (LuigiModel)
-extern dLuigiMain_attr+0x60 0x8B0  # -> file 323 (LuigiModel)
-extern dLuigiMain_attr+0x64 0x2C30  # -> file 323 (LuigiModel)
-extern dLuigiMain_attr+0x70 0x4238  # -> file 323 (LuigiModel)
-extern dLuigiMain_attr+0x74 0x3520  # -> file 323 (LuigiModel)
-extern dLuigiMain_attr+0x78 0x51F0  # -> file 323 (LuigiModel)
-extern dLuigiMain_attr+0x84 0x58F0  # -> file 323 (LuigiModel)
-extern dLuigiMain_attr+0x8C 0x5A5C  # -> file 323 (LuigiModel)
-extern dLuigiMain_attr+0x98 0x5B80  # -> file 323 (LuigiModel)
-extern dLuigiMain_attr+0x9C 0x5C80  # -> file 323 (LuigiModel)
-extern dLuigiMain_attr+0xA0 0x5CCC  # -> file 323 (LuigiModel)
-extern dLuigiMain_attr+0xAC 0x1FB0  # -> file 323 (LuigiModel)
-extern dLuigiMain_attr+0xB0 0x8E4  # -> file 323 (LuigiModel)
-extern dLuigiMain_attr+0xB4 0x2C54  # -> file 323 (LuigiModel)
-extern dLuigiMain_attr+0xC0 0x4698  # -> file 323 (LuigiModel)
-extern dLuigiMain_attr+0xC4 0x3554  # -> file 323 (LuigiModel)
-extern dLuigiMain_attr+0xC8 0x5214  # -> file 323 (LuigiModel)
-extern dLuigiMain_attr+0xD4 0x53A0  # -> file 323 (LuigiModel)
-extern dLuigiMain_attr+0xD8 0x54C0  # -> file 323 (LuigiModel)
-extern dLuigiMain_attr+0xDC 0x550C  # -> file 323 (LuigiModel)
-extern dLuigiMain_attr+0xE8 0x5630  # -> file 323 (LuigiModel)
-extern dLuigiMain_attr+0xEC 0x5730  # -> file 323 (LuigiModel)
-extern dLuigiMain_attr+0xF0 0x577C  # -> file 323 (LuigiModel)
-extern dLuigiMain_attr+0x164 0x2400  # -> file 323 (LuigiModel)
-extern dLuigiMain_attr+0x168 0x0  # -> file 323 (LuigiModel)
-extern dLuigiMain_attr+0x16C 0x2880  # -> file 323 (LuigiModel)
-extern dLuigiMain_attr+0x174 0x49C8  # -> file 323 (LuigiModel)
-extern dLuigiMain_attr+0x178 0x2C70  # -> file 323 (LuigiModel)
-extern dLuigiMain_attr+0x17C 0x4E40  # -> file 323 (LuigiModel)
-extern dLuigiMain_stock_luts 0x7C10  # -> file 323 (LuigiModel)
-extern dLuigiMain_stock_luts+0x4 0x7C38  # -> file 323 (LuigiModel)
-extern dLuigiMain_stock_luts+0x8 0x7C60  # -> file 323 (LuigiModel)
-extern dLuigiMain_stock_luts+0xC 0x7C88  # -> file 323 (LuigiModel)
-extern dLuigiMain_sprites 0x7CB8  # -> file 323 (LuigiModel)
-extern dLuigiMain_sprites+0x8 0x7EA8  # -> file 323 (LuigiModel)
-extern dLuigiMain_skeleton_dls+0x8 0x5D50  # -> file 323 (LuigiModel)
-extern dLuigiMain_skeleton_dls+0x10 0x5E30  # -> file 323 (LuigiModel)
-extern dLuigiMain_skeleton_dls+0x20 0x6620  # -> file 323 (LuigiModel)
-extern dLuigiMain_skeleton_dls+0x28 0x6510  # -> file 323 (LuigiModel)
-extern dLuigiMain_skeleton_dls+0x30 0x6710  # -> file 323 (LuigiModel)
-extern dLuigiMain_skeleton_dls+0x40 0x6250  # -> file 323 (LuigiModel)
-extern dLuigiMain_skeleton_dls+0x50 0x6620  # -> file 323 (LuigiModel)
-extern dLuigiMain_skeleton_dls+0x58 0x6510  # -> file 323 (LuigiModel)
-extern dLuigiMain_skeleton_dls+0x60 0x6810  # -> file 323 (LuigiModel)
-extern dLuigiMain_skeleton_dls+0x78 0x6930  # -> file 323 (LuigiModel)
-extern dLuigiMain_skeleton_dls+0x80 0x6A40  # -> file 323 (LuigiModel)
-extern dLuigiMain_skeleton_dls+0x90 0x6B20  # -> file 323 (LuigiModel)
-extern dLuigiMain_skeleton_dls+0xA0 0x6930  # -> file 323 (LuigiModel)
-extern dLuigiMain_skeleton_dls+0xA8 0x6A40  # -> file 323 (LuigiModel)
-extern dLuigiMain_skeleton_dls+0xB8 0x6B20  # -> file 323 (LuigiModel)
-extern dLuigiMain_attr+0x2D8 0xF0  # -> file 298 (MarioShieldPose)
-extern dLuigiMain_attr+0x2DC 0x5A0  # -> file 298 (MarioShieldPose)
-extern dLuigiMain_attr+0x2E0 0xA10  # -> file 298 (MarioShieldPose)
-extern dLuigiMain_attr+0x2E4 0xE80  # -> file 298 (MarioShieldPose)
-extern dLuigiMain_attr+0x2E8 0x12F0  # -> file 298 (MarioShieldPose)
-extern dLuigiMain_attr+0x2EC 0x17A0  # -> file 298 (MarioShieldPose)
-extern dLuigiMain_attr+0x2F0 0x1C60  # -> file 298 (MarioShieldPose)
-extern dLuigiMain_attr+0x2F4 0x20E0  # -> file 298 (MarioShieldPose)
-extern dLuigiMain_attr+0x2F8 0x2540  # -> file 298 (MarioShieldPose)
+extern dLuigiMain_file_handles 0x24
+extern dLuigiMain_file_handles+0x4 0x608
+extern dLuigiMain_file_handles+0x8 0x0
+extern dLuigiMain_modelparts_desc_0x05C 0x1AB0
+extern dLuigiMain_modelparts_desc_0x05C+0x4 0x8B0
+extern dLuigiMain_modelparts_desc_0x05C+0x8 0x2C30
+extern dLuigiMain_modelparts_desc_0x05C+0x14 0x4238
+extern dLuigiMain_modelparts_desc_0x05C+0x18 0x3520
+extern dLuigiMain_modelparts_desc_0x05C+0x1C 0x51F0
+extern dLuigiMain_modelparts_desc_0x05C+0x28 0x58F0
+extern dLuigiMain_modelparts_desc_0x05C+0x30 0x5A5C
+extern dLuigiMain_modelparts_desc_0x05C+0x3C 0x5B80
+extern dLuigiMain_modelparts_desc_0x05C+0x40 0x5C80
+extern dLuigiMain_modelparts_desc_0x05C+0x44 0x5CCC
+extern dLuigiMain_modelparts_desc_0x0AC 0x1FB0
+extern dLuigiMain_modelparts_desc_0x0AC+0x4 0x8E4
+extern dLuigiMain_modelparts_desc_0x0AC+0x8 0x2C54
+extern dLuigiMain_modelparts_desc_0x0AC+0x14 0x4698
+extern dLuigiMain_modelparts_desc_0x0AC+0x18 0x3554
+extern dLuigiMain_modelparts_desc_0x0AC+0x1C 0x5214
+extern dLuigiMain_modelparts_desc_0x0AC+0x28 0x53A0
+extern dLuigiMain_modelparts_desc_0x0AC+0x2C 0x54C0
+extern dLuigiMain_modelparts_desc_0x0AC+0x30 0x550C
+extern dLuigiMain_modelparts_desc_0x0AC+0x3C 0x5630
+extern dLuigiMain_modelparts_desc_0x0AC+0x40 0x5730
+extern dLuigiMain_modelparts_desc_0x0AC+0x44 0x577C
+extern dLuigiMain_commonparts_container 0x2400
+extern dLuigiMain_commonparts_container+0x4 0x0
+extern dLuigiMain_commonparts_container+0x8 0x2880
+extern dLuigiMain_commonparts_container+0x10 0x49C8
+extern dLuigiMain_commonparts_container+0x14 0x2C70
+extern dLuigiMain_commonparts_container+0x18 0x4E40
+extern dLuigiMain_stock_luts 0x7C10
+extern dLuigiMain_stock_luts+0x4 0x7C38
+extern dLuigiMain_stock_luts+0x8 0x7C60
+extern dLuigiMain_stock_luts+0xC 0x7C88
+extern dLuigiMain_sprites 0x7CB8
+extern dLuigiMain_sprites+0x8 0x7EA8
+extern dLuigiMain_skeleton_dls+0x8 0x5D50
+extern dLuigiMain_skeleton_dls+0x10 0x5E30
+extern dLuigiMain_skeleton_dls+0x20 0x6620
+extern dLuigiMain_skeleton_dls+0x28 0x6510
+extern dLuigiMain_skeleton_dls+0x30 0x6710
+extern dLuigiMain_skeleton_dls+0x40 0x6250
+extern dLuigiMain_skeleton_dls+0x50 0x6620
+extern dLuigiMain_skeleton_dls+0x58 0x6510
+extern dLuigiMain_skeleton_dls+0x60 0x6810
+extern dLuigiMain_skeleton_dls+0x78 0x6930
+extern dLuigiMain_skeleton_dls+0x80 0x6A40
+extern dLuigiMain_skeleton_dls+0x90 0x6B20
+extern dLuigiMain_skeleton_dls+0xA0 0x6930
+extern dLuigiMain_skeleton_dls+0xA8 0x6A40
+extern dLuigiMain_skeleton_dls+0xB8 0x6B20
+extern dLuigiMain_attr+0x2D8 0xF0
+extern dLuigiMain_attr+0x2DC 0x5A0
+extern dLuigiMain_attr+0x2E0 0xA10
+extern dLuigiMain_attr+0x2E4 0xE80
+extern dLuigiMain_attr+0x2E8 0x12F0
+extern dLuigiMain_attr+0x2EC 0x17A0
+extern dLuigiMain_attr+0x2F0 0x1C60
+extern dLuigiMain_attr+0x2F4 0x20E0
+extern dLuigiMain_attr+0x2F8 0x2540

@@ -34,7 +34,11 @@ WPAttributes dLinkSpecial1_Boomerang_WeaponAttributes = {
     1,  /* shield_damage    :  8 */
     2,  /* attack_count     :  2 */
     1,  /* can_setoff       :  1 */
+#if defined(REGION_JP)
+    30,  /* sfx              : 10 */
+#else
     31,  /* sfx              : 10 */
+#endif
     1,  /* priority         :  3 */
     1,  /* can_rehit_item   :  1 */
     0,  /* can_rehit_fighter:  1 */

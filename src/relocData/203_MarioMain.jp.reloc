@@ -1,0 +1,66 @@
+# Relocation metadata for file 203 (JP binary walk)
+# Format: <type> <ptr_label> <target_label>
+# Labels resolved via src/relocData/203_MarioMain.reloc .o symbol table
+
+intern dMarioMain_modelparts_container+0x18 dMarioMain_modelparts_desc_0x05C
+intern dMarioMain_modelparts_container+0x30 dMarioMain_modelparts_desc_0x0AC
+intern dMarioMain_sprites+0x4 dMarioMain_stock_luts
+intern dMarioMain_skeleton+0x4 dMarioMain_skeleton_dls
+intern dMarioMain_attr+0x29C dMarioMain_setup_parts
+intern dMarioMain_attr+0x2A0 dMarioMain_animlock
+intern dMarioMain_attr+0x2D0 dMarioMain_hiddenparts
+intern dMarioMain_attr+0x2D4 dMarioMain_commonparts_container
+intern dMarioMain_attr+0x328 dMarioMain_modelparts_container
+intern dMarioMain_attr+0x330 dMarioMain_textureparts_container
+intern dMarioMain_attr+0x338 dMarioMain_thrown_status
+intern dMarioMain_attr+0x340 dMarioMain_sprites
+intern dMarioMain_attr+0x344 dMarioMain_skeleton
+
+extern dMarioMain_file_handles 0x24
+extern dMarioMain_file_handles+0x4 0x608
+extern dMarioMain_file_handles+0x8 0x0
+extern dMarioMain_modelparts_desc_0x05C 0x18D8
+extern dMarioMain_modelparts_desc_0x05C+0x14 0x3E70
+extern dMarioMain_modelparts_desc_0x05C+0x28 0x5320
+extern dMarioMain_modelparts_desc_0x05C+0x3C 0x5500
+extern dMarioMain_modelparts_desc_0x0AC 0x1DD8
+extern dMarioMain_modelparts_desc_0x0AC+0x14 0x4298
+extern dMarioMain_modelparts_desc_0x0AC+0x28 0x4F30
+extern dMarioMain_modelparts_desc_0x0AC+0x3C 0x5110
+extern dMarioMain_commonparts_container 0x2210
+extern dMarioMain_commonparts_container+0x4 0x0
+extern dMarioMain_commonparts_container+0x8 0x2690
+extern dMarioMain_commonparts_container+0x10 0x45B0
+extern dMarioMain_commonparts_container+0x14 0x2A00
+extern dMarioMain_commonparts_container+0x18 0x4A30
+extern dMarioMain_stock_luts 0x7220
+extern dMarioMain_stock_luts+0x4 0x7248
+extern dMarioMain_stock_luts+0x8 0x7270
+extern dMarioMain_stock_luts+0xC 0x7298
+extern dMarioMain_stock_luts+0x10 0x72C0
+extern dMarioMain_sprites 0x72F0
+extern dMarioMain_sprites+0x8 0x74E8
+extern dMarioMain_skeleton_dls+0x8 0x5620
+extern dMarioMain_skeleton_dls+0x10 0x5700
+extern dMarioMain_skeleton_dls+0x20 0x5EF0
+extern dMarioMain_skeleton_dls+0x28 0x5DE0
+extern dMarioMain_skeleton_dls+0x30 0x5FE0
+extern dMarioMain_skeleton_dls+0x40 0x5B20
+extern dMarioMain_skeleton_dls+0x50 0x5EF0
+extern dMarioMain_skeleton_dls+0x58 0x5DE0
+extern dMarioMain_skeleton_dls+0x60 0x60E0
+extern dMarioMain_skeleton_dls+0x78 0x6200
+extern dMarioMain_skeleton_dls+0x80 0x6310
+extern dMarioMain_skeleton_dls+0x90 0x63F0
+extern dMarioMain_skeleton_dls+0xA0 0x6200
+extern dMarioMain_skeleton_dls+0xA8 0x6310
+extern dMarioMain_skeleton_dls+0xB8 0x63F0
+extern dMarioMain_attr+0x2D8 0xF0
+extern dMarioMain_attr+0x2DC 0x5A0
+extern dMarioMain_attr+0x2E0 0xA10
+extern dMarioMain_attr+0x2E4 0xE80
+extern dMarioMain_attr+0x2E8 0x12F0
+extern dMarioMain_attr+0x2EC 0x17A0
+extern dMarioMain_attr+0x2F0 0x1C60
+extern dMarioMain_attr+0x2F4 0x20E0
+extern dMarioMain_attr+0x2F8 0x2540

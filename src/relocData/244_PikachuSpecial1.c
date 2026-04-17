@@ -30,8 +30,13 @@ WPAttributes dPikachuSpecial1_ThunderJoltAir_WeaponAttributes = {
     50, 0, -50, 50,  /* map_coll top/center/bottom/width */
     200,  /* size */
     361,  /* angle            : 10 */
+#if defined(REGION_JP)
+    50,  /* knockback_scale  : 10 */
+    8,  /* damage           :  8 */
+#else
     30,  /* knockback_scale  : 10 */
     10,  /* damage           :  8 */
+#endif
     2,  /* element          :  4 */
     0,  /* knockback_weight : 10 */
     1,  /* shield_damage    :  8 */
@@ -47,7 +52,11 @@ WPAttributes dPikachuSpecial1_ThunderJoltAir_WeaponAttributes = {
     1,  /* can_shield       :  1 */
     0,  /* unused_0x2F_b6   :  1 */
     0,  /* unused_0x2F_b7   :  1 */
+#if defined(REGION_JP)
+    30,  /* knockback_base   : 10 */
+#else
     50,  /* knockback_base   : 10 */
+#endif
 };
 
 WPAttributes dPikachuSpecial1_ThunderJoltGround_WeaponAttributes = {
@@ -59,7 +68,11 @@ WPAttributes dPikachuSpecial1_ThunderJoltGround_WeaponAttributes = {
     200, 100, 0, 50,  /* map_coll top/center/bottom/width */
     200,  /* size */
     361,  /* angle            : 10 */
+#if defined(REGION_JP)
+    50,  /* knockback_scale  : 10 */
+#else
     20,  /* knockback_scale  : 10 */
+#endif
     7,  /* damage           :  8 */
     2,  /* element          :  4 */
     0,  /* knockback_weight : 10 */
@@ -76,7 +89,11 @@ WPAttributes dPikachuSpecial1_ThunderJoltGround_WeaponAttributes = {
     1,  /* can_shield       :  1 */
     0,  /* unused_0x2F_b6   :  1 */
     0,  /* unused_0x2F_b7   :  1 */
+#if defined(REGION_JP)
+    20,  /* knockback_base   : 10 */
+#else
     10,  /* knockback_base   : 10 */
+#endif
 };
 
 PAD(8);  /* trail to 16-byte file alignment (2 * sizeof(WPAttributes) = 104, +8 = 112) */

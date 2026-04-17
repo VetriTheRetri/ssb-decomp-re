@@ -11,18 +11,6 @@ extern u8 dMarioModel_gap_0x26D0_sub_0x2F4[];
 extern u8 dMarioModel_gap_0x4A60_sub_0x314[];
 
 
-#if defined(REGION_JP)
-
-/* JP binary has a different layout; fold in its chain-encoded
- * bytes as a single raw u8 block. extractRelocInc regenerates
- * the inc.c below from the JP binary whenever JP assets are
- * extracted, and the companion .jp.reloc is empty so
- * fixRelocChain leaves the pre-baked chain bytes alone. */
-u8 dMarioModel[30000] = {
-	#include <MarioModel/jp_raw.data.inc.c>
-};
-
-#else  /* REGION_US */
 
 /* Raw data from file offset 0x0000 to 0x0020 (32 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
@@ -160,8 +148,12 @@ Gfx dMarioModel_Joint_0x18D8_DisplayList[23] = {
 	#include <MarioModel/Joint_0x18D8.dl.inc.c>
 };
 
-/* DisplayList: Joint_0x1990 @ 0x1990 (808 bytes, 101 cmds) */
+/* DisplayList: Joint_0x1990 @ 0x1990 (US 808 bytes/101 cmds, JP 824 bytes/103 cmds) */
+#if defined(REGION_JP)
+Gfx dMarioModel_Joint_0x1990_DisplayList[103] = {
+#else
 Gfx dMarioModel_Joint_0x1990_DisplayList[101] = {
+#endif
 	#include <MarioModel/Joint_0x1990.dl.inc.c>
 };
 
@@ -643,8 +635,12 @@ Gfx dMarioModel_Joint_0x3E60_DisplayList[19] = {
 	#include <MarioModel/Joint_0x3E60.dl.inc.c>
 };
 
-/* DisplayList: Joint_0x3EF8 @ 0x3EF8 (712 bytes, 89 cmds) */
+/* DisplayList: Joint_0x3EF8 @ 0x3EF8 (US 712 bytes/89 cmds, JP 728 bytes/91 cmds) */
+#if defined(REGION_JP)
+Gfx dMarioModel_Joint_0x3EF8_DisplayList[91] = {
+#else
 Gfx dMarioModel_Joint_0x3EF8_DisplayList[89] = {
+#endif
 	#include <MarioModel/Joint_0x3EF8.dl.inc.c>
 };
 
@@ -699,8 +695,13 @@ DObjDesc dMarioModel_JointTree_0x4590[] = {
 	{ 1, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)dMarioModel_Joint_0x3C78_DisplayList, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 3, (void*)0x00000000, { 51.06291961669922f, 53.745887756347656f, 0.0f }, { -1.570796012878418f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
+#if defined(REGION_JP)
+	{ 4, (void*)dMarioModel_Joint_0x3DA8_DisplayList, { 0.0f, 0.0f, 3.999999989900971e-06f }, { -0.10734699666500092f, -0.4990589916706085f, 0.00949000008404255f }, { 1.0f, 1.0f, 1.0f } },
+	{ 5, (void*)dMarioModel_Joint_0x3E00_DisplayList, { 40.34217071533203f, 3.999999989900971e-06f, 1.4000000192027073e-05f }, { 0.0f, 0.0f, -0.017795000225305557f }, { 1.0f, 1.0f, 1.0f } },
+#else
 	{ 4, (void*)dMarioModel_Joint_0x3DA8_DisplayList, { 0.0f, 0.0f, 3.999999989900971e-06f }, { -0.10734499990940094f, -0.4990589916706085f, 0.009487000294029713f }, { 1.0f, 1.0f, 1.0f } },
 	{ 5, (void*)dMarioModel_Joint_0x3E00_DisplayList, { 40.34217071533203f, 3.999999989900971e-06f, 1.4000000192027073e-05f }, { 0.0f, 0.0f, -0.017788000404834747f }, { 1.0f, 1.0f, 1.0f } },
+#endif
 	{ 6, (void*)dMarioModel_Joint_0x3E60_DisplayList, { 35.965396881103516f, 0.00101500004529953f, 2.9000000722589903e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 3, (void*)0x00000000, { 0.0f, 72.0720443725586f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 4, (void*)dMarioModel_Joint_0x3EF8_DisplayList, { 0.0f, 13.513498306274414f, -4.5f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
@@ -710,15 +711,33 @@ DObjDesc dMarioModel_JointTree_0x4590[] = {
 	{ 6, (void*)dMarioModel_Joint_0x4278_DisplayList, { 35.993019104003906f, 0.001016999944113195f, -1.4000000192027073e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 7, (void*)0x00000000, { 35.062339782714844f, -17.55162239074707f, 3.520087957382202f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)0x00000000, { 31.6803035736084f, -20.653295516967773f, -3.0f }, { -1.570796012878418f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
+#if defined(REGION_JP)
+	{ 3, (void*)dMarioModel_Joint_0x4310_DisplayList, { 0.0f, 0.0f, 0.0f }, { 0.04165399819612503f, -0.08303400129079819f, -0.04252900183200836f }, { 1.0f, 1.0f, 1.0f } },
+	{ 4, (void*)dMarioModel_Joint_0x4378_DisplayList, { 55.57932662963867f, 3.999999989900971e-06f, 0.0f }, { 0.0f, 0.0f, 0.01440299954265356f }, { 1.0f, 1.0f, 1.0f } },
+#else
 	{ 3, (void*)dMarioModel_Joint_0x4310_DisplayList, { 0.0f, 0.0f, 0.0f }, { 0.04165500029921532f, -0.08303400129079819f, -0.042534999549388885f }, { 1.0f, 1.0f, 1.0f } },
 	{ 4, (void*)dMarioModel_Joint_0x4378_DisplayList, { 55.57932662963867f, 3.999999989900971e-06f, 0.0f }, { 0.0f, 0.0f, 0.014414999634027481f }, { 1.0f, 1.0f, 1.0f } },
+#endif
 	{ 5, (void*)0x00000000, { 66.10771179199219f, 1.3644230365753174f, 2.316188097000122f }, { 0.0f, -9.000000318337698e-06f, -1.6418110132217407f }, { 1.0f, 1.0f, 1.0f } },
+#if defined(REGION_JP)
+	{ 6, (void*)dMarioModel_Joint_0x43F8_DisplayList, { 0.0f, -1.2999999853491317e-05f, -7.000000096013537e-06f }, { -0.17834100127220154f, -0.39459899067878723f, 0.20836299657821655f }, { 1.0f, 1.0f, 1.0f } },
+#else
 	{ 6, (void*)dMarioModel_Joint_0x43F8_DisplayList, { 0.0f, -1.2999999853491317e-05f, -7.000000096013537e-06f }, { -0.1783429980278015f, -0.39459899067878723f, 0.20836299657821655f }, { 1.0f, 1.0f, 1.0f } },
+#endif
 	{ 2, (void*)0x00000000, { -31.680540084838867f, -20.653295516967773f, -3.0f }, { -1.570796012878418f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
+#if defined(REGION_JP)
+	{ 3, (void*)dMarioModel_Joint_0x4450_DisplayList, { 0.0f, 0.0f, 0.0f }, { -0.04041999951004982f, 0.0830719992518425f, -0.026506999507546425f }, { 1.0f, 1.0f, 1.0f } },
+	{ 4, (void*)dMarioModel_Joint_0x44B8_DisplayList, { 55.579776763916016f, 3.999999989900971e-06f, -7.000000096013537e-06f }, { 0.0f, 0.0f, 0.014657000079751015f }, { 1.0f, 1.0f, 1.0f } },
+#else
 	{ 3, (void*)dMarioModel_Joint_0x4450_DisplayList, { 0.0f, 0.0f, 0.0f }, { -0.040421001613140106f, 0.0830719992518425f, -0.026528000831604004f }, { 1.0f, 1.0f, 1.0f } },
 	{ 4, (void*)dMarioModel_Joint_0x44B8_DisplayList, { 55.579776763916016f, 3.999999989900971e-06f, -7.000000096013537e-06f }, { 0.0f, 0.0f, 0.014697999693453312f }, { 1.0f, 1.0f, 1.0f } },
+#endif
 	{ 5, (void*)0x00000000, { 65.8060302734375f, 1.3083360195159912f, 2.316215991973877f }, { 0.0f, 9.000000318337698e-06f, -1.6418240070343018f }, { 1.0f, 1.0f, 1.0f } },
+#if defined(REGION_JP)
+	{ 6, (void*)dMarioModel_Joint_0x4538_DisplayList, { 0.0f, 0.0f, -3.999999989900971e-06f }, { 0.12845900654792786f, 0.4220089912414551f, 0.19265300035476685f }, { 1.0f, 1.0f, 1.0f } },
+#else
 	{ 6, (void*)dMarioModel_Joint_0x4538_DisplayList, { 0.0f, 0.0f, -3.999999989900971e-06f }, { 0.12846599519252777f, 0.4220089912414551f, 0.19265300035476685f }, { 1.0f, 1.0f, 1.0f } },
+#endif
 	{ 1, (void*)0x00000000, { -9.999999974752427e-07f, 0.0f, 119.99999237060547f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 18, (void*)0x00000000, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f } },
 	{ 0, (void*)0x00000000, { 0.0f, 0.0f, 8.587574288381939e-28f }, { 0.0f, 8.650684123764592e-28f, 8.840011703982607e-28f }, { 0.0f, 0.0f, 8.966230411782941e-28f } },
@@ -1177,5 +1196,3 @@ Sprite dMarioModel_FTEmblem = {
 };
 
 PAD(4);
-
-#endif

@@ -10,18 +10,6 @@
 extern u8 dLuigiModel_gap_0x28E0_sub_0x37C[];
 
 
-#if defined(REGION_JP)
-
-/* JP binary has a different layout; fold in its chain-encoded
- * bytes as a single raw u8 block. extractRelocInc regenerates
- * the inc.c below from the JP binary whenever JP assets are
- * extracted, and the companion .jp.reloc is empty so
- * fixRelocChain leaves the pre-baked chain bytes alone. */
-u8 dLuigiModel[32496] = {
-	#include <LuigiModel/jp_raw.data.inc.c>
-};
-
-#else  /* REGION_US */
 
 /* Raw data from file offset 0x0000 to 0x0020 (32 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
@@ -184,8 +172,12 @@ Gfx dLuigiModel_Joint_0x1AB0_DisplayList[20] = {
 	#include <LuigiModel/Joint_0x1AB0.dl.inc.c>
 };
 
-/* DisplayList: Joint_0x1B50 @ 0x1B50 (848 bytes, 106 cmds) */
+/* DisplayList: Joint_0x1B50 @ 0x1B50 (US 848 bytes/106 cmds, JP 832 bytes/104 cmds) */
+#if defined(REGION_JP)
+Gfx dLuigiModel_Joint_0x1B50_DisplayList[104] = {
+#else
 Gfx dLuigiModel_Joint_0x1B50_DisplayList[106] = {
+#endif
 	#include <LuigiModel/Joint_0x1B50.dl.inc.c>
 };
 
@@ -717,8 +709,12 @@ Gfx dLuigiModel_Joint_0x4248_DisplayList[16] = {
 	#include <LuigiModel/Joint_0x4248.dl.inc.c>
 };
 
-/* DisplayList: Joint_0x42C8 @ 0x42C8 (760 bytes, 95 cmds) */
+/* DisplayList: Joint_0x42C8 @ 0x42C8 (US 760 bytes/95 cmds, JP 744 bytes/93 cmds) */
+#if defined(REGION_JP)
+Gfx dLuigiModel_Joint_0x42C8_DisplayList[93] = {
+#else
 Gfx dLuigiModel_Joint_0x42C8_DisplayList[95] = {
+#endif
 	#include <LuigiModel/Joint_0x42C8.dl.inc.c>
 };
 
@@ -784,10 +780,19 @@ DObjDesc dLuigiModel_JointTree_0x49E8[] = {
 	{ 6, (void*)dLuigiModel_Joint_0x46B8_DisplayList, { 35.993019104003906f, 0.001016999944113195f, -1.4000000192027073e-05f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
 	{ 7, (void*)0x00000000, { 28.222082138061523f, -17.530595779418945f, 2.1372129917144775f }, { -0.04081299901008606f, 0.00010099999781232327f, 0.009386000223457813f }, { 1.0f, 1.0f, 1.0f } },
 	{ 2, (void*)0x00000000, { 31.6803035736084f, -20.653295516967773f, -3.0f }, { -1.570796012878418f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
+#if defined(REGION_JP)
+	{ 3, (void*)dLuigiModel_Joint_0x4738_DisplayList, { 0.0f, 0.0f, 0.0f }, { 0.041026998311281204f, -0.08334500342607498f, -0.03497999906539917f }, { 1.0f, 1.0f, 1.0f } },
+	{ 4, (void*)dLuigiModel_Joint_0x47A0_DisplayList, { 55.57932662963867f, 3.999999989900971e-06f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f, 1.0f } },
+#else
 	{ 3, (void*)dLuigiModel_Joint_0x4738_DisplayList, { 0.0f, 0.0f, 0.0f }, { 0.04165299981832504f, -0.08303400129079819f, -0.04251600056886673f }, { 1.0f, 1.0f, 1.0f } },
 	{ 4, (void*)dLuigiModel_Joint_0x47A0_DisplayList, { 55.57932662963867f, 3.999999989900971e-06f, 0.0f }, { 0.0f, 0.0f, 0.014378000050783157f }, { 1.0f, 1.0f, 1.0f } },
+#endif
 	{ 5, (void*)0x00000000, { 66.10771179199219f, 1.3644230365753174f, 2.316188097000122f }, { 0.0f, -9.000000318337698e-06f, -1.6418110132217407f }, { 1.0f, 1.0f, 1.0f } },
+#if defined(REGION_JP)
+	{ 6, (void*)dLuigiModel_Joint_0x4820_DisplayList, { 0.0f, -1.2999999853491317e-05f, -7.000000096013537e-06f }, { -0.1762229949235916f, -0.39459899067878723f, 0.20836299657821655f }, { 1.0f, 1.0f, 1.0f } },
+#else
 	{ 6, (void*)dLuigiModel_Joint_0x4820_DisplayList, { 0.0f, -1.2999999853491317e-05f, -7.000000096013537e-06f }, { -0.1783369928598404f, -0.39459899067878723f, 0.20836299657821655f }, { 1.0f, 1.0f, 1.0f } },
+#endif
 	{ 2, (void*)0x00000000, { -31.680540084838867f, -20.653295516967773f, -3.0f }, { -1.570796012878418f, 0.0f, -1.570796012878418f }, { 1.0f, 1.0f, 1.0f } },
 	{ 3, (void*)dLuigiModel_Joint_0x4890_DisplayList, { 0.0f, 0.0f, 0.0f }, { -0.040408000349998474f, 0.08307799696922302f, -0.0263689998537302f }, { 1.0f, 1.0f, 1.0f } },
 	{ 4, (void*)dLuigiModel_Joint_0x48F8_DisplayList, { 55.579776763916016f, 3.999999989900971e-06f, -7.000000096013537e-06f }, { 0.0f, 0.0f, 0.014394000172615051f }, { 1.0f, 1.0f, 1.0f } },
@@ -1444,5 +1449,3 @@ Sprite dLuigiModel_FTEmblem = {
 };
 
 PAD(4);
-
-#endif

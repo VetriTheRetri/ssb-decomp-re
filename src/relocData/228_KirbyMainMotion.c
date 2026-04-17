@@ -6,6 +6,13 @@
  */
 
 #include "relocdata_types.h"
+#if defined(REGION_JP)
+
+u8 dKirbyMainMotion[9632] = {
+	#include <KirbyMainMotion/jp_raw.data.inc.c>
+};
+
+#else  /* REGION_US */
 
 /* @ 0x0000 (340 bytes) */
 u32 dKirbyMainMotion_0x0000[85] = {
@@ -896,3 +903,5 @@ u32 dKirbyMainMotion_0x24E8[21] = {
 u32 dKirbyMainMotion_0x253C[29] = {
 	#include <KirbyMainMotion/KirbyMainMotion_0x253C.data.inc.c>
 };
+
+#endif  /* REGION_US */

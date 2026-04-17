@@ -5,6 +5,13 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#if defined(REGION_JP)
+
+u8 dCaptainModel[51344] = {
+	#include <CaptainModel/jp_raw.data.inc.c>
+};
+
+#else  /* REGION_US */
 
 /* Raw data from file offset 0x0000 to 0x0020 (32 bytes) */
 /* gap sub-block @ 0x0000 (was gap+0x0, 8 bytes) */
@@ -2115,3 +2122,4 @@ Sprite dCaptainModel_FTEmblem = {
 
 PAD(4);
 
+#endif  /* REGION_US */

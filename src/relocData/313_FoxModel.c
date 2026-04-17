@@ -5,6 +5,13 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#if defined(REGION_JP)
+
+u8 dFoxModel[32336] = {
+	#include <FoxModel/jp_raw.data.inc.c>
+};
+
+#else  /* REGION_US */
 
 /* Forward DObjDesc chain-target decls for fixRelocChain.py */
 extern u8 dFoxModel_gap_0x2E60_sub_0x2B0[];
@@ -1435,3 +1442,4 @@ Sprite dFoxModel_FTEmblem = {
 
 PAD(4);
 
+#endif  /* REGION_US */

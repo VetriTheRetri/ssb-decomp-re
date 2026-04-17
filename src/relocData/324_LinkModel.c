@@ -5,6 +5,13 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#if defined(REGION_JP)
+
+u8 dLinkModel[73584] = {
+	#include <LinkModel/jp_raw.data.inc.c>
+};
+
+#else  /* REGION_US */
 
 /* Forward DObjDesc chain-target decls for fixRelocChain.py */
 extern u8 dLinkModel_gap_0x40EC_sub_0x234[];
@@ -1896,3 +1903,4 @@ Sprite dLinkModel_FTEmblem = {
 
 PAD(4);
 
+#endif  /* REGION_US */

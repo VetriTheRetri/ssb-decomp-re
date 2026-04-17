@@ -165,15 +165,22 @@ def compute_data_c_size(data_c_path, search_paths=()):
         total += count_hex_values(inc_file)
 
     # Literal arrays: count bytes from each one. Match the array body
-    # explicitly so we don't double-count #include arrays.
+    # explicitly so we don't double-count #include arrays. Prefer the
+    # declared `[N]` count when present — inline arrays can include
+    # macros like `aobjEvent32End()` that expand to a u32 but carry no
+    # hex literal of their own, so counting `0x...` substrings underruns.
     for m in re.finditer(
-            r'(u8|u16|u32|u64)\s+\w+\[(?:\d*)\]\s*=\s*\{([^}]*)\}',
+            r'(u8|u16|u32|u64)\s+\w+\[(0[xX][0-9A-Fa-f]+|\d*)\]\s*=\s*\{([^}]*)\}',
             content, re.DOTALL):
-        body = m.group(2)
+        body = m.group(3)
         if '#include' in body:
             continue  # already counted above
         elem_type = m.group(1)
-        elem_count = len(re.findall(r'0x[0-9A-Fa-f]+', body))
+        explicit_n = m.group(2)
+        if explicit_n:
+            elem_count = int(explicit_n, 0)
+        else:
+            elem_count = len(re.findall(r'0x[0-9A-Fa-f]+', body))
         elem_size = {'u8': 1, 'u16': 2, 'u32': 4, 'u64': 8}[elem_type]
         total += elem_count * elem_size
 

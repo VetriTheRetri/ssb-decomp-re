@@ -5,6 +5,13 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#if defined(REGION_JP)
+
+u8 dKirbyModel[120864] = {
+	#include <KirbyModel/jp_raw.data.inc.c>
+};
+
+#else  /* REGION_US */
 
 /* Vtx: JointVerts @ 0x0 (2 vertices) */
 Vtx dKirbyModel_JointVerts_Vtx[2] = {
@@ -3854,3 +3861,4 @@ Sprite dKirbyModel_FTEmblem = {
 
 PAD(4);
 
+#endif  /* REGION_US */

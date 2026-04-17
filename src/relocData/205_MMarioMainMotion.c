@@ -4,6 +4,13 @@
 #include "relocdata_types.h"
 #include <ft/ftdef.h>
 #include <ft/fttypes.h>
+#if defined(REGION_JP)
+
+u8 dMMarioMainMotion[320] = {
+	#include <MMarioMainMotion/jp_raw.data.inc.c>
+};
+
+#else  /* REGION_US */
 
 u32 dMMarioMainMotion_0x0000[] = {
 	ftMotionCommandWaitAsync(10),
@@ -84,3 +91,5 @@ u32 dMMarioMainMotion_0x0138[] = {
 u32 dMMarioMainMotion_0x013C[] = {
 	ftMotionCommandEnd(),
 };
+
+#endif  /* REGION_US */

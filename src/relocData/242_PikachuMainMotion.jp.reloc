@@ -1,0 +1,4 @@
+# Relocation metadata for file 242 (JP variant)
+# Format: <type> <ptr_label> <target_label>
+# JP build compiles PikachuMainMotion as a single chain-encoded raw u8 blob
+# so fixRelocChain has no per-symbol patches to apply here.

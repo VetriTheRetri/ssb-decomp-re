@@ -5,6 +5,13 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#if defined(REGION_JP)
+
+u8 dLinkBoomerangModel[464] = {
+	#include <LinkBoomerangModel/jp_raw.data.inc.c>
+};
+
+#else  /* REGION_US */
 
 PAD(8);
 
@@ -28,3 +35,4 @@ Gfx dLinkBoomerangModel_Joint_0x00F8_DisplayList[27] = {
 	#include <LinkBoomerangModel/Joint_0x00F8.dl.inc.c>
 };
 
+#endif  /* REGION_US */

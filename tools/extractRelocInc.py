@@ -138,6 +138,7 @@ _SUPPORTED_DECL_TYPES = frozenset({
     "u8", "u16", "u32", "u64", "s8", "s16", "s32", "s64", "f32",
     "Vtx", "Vtx_t", "Gfx", "Bitmap", "DObjDesc", "MObjSub",
     "Sprite", "MPGroundData", "FTAttributes", "FTThrowHitDesc",
+    "WPAttributes",
 })
 
 
@@ -216,6 +217,7 @@ _FIXED_TYPE_SIZES = {
     "MPGroundData": 0xA8,
     "FTAttributes": 0x488,       # from src/ft/fttypes.h, matches stock main sources
     "FTThrowHitDesc": 0x60,      # from src/ft/fttypes.h
+    "WPAttributes": 52,          # from src/wp/wptypes.h (0x34 bytes)
 }
 
 
@@ -315,6 +317,54 @@ def _strip_inactive_region_branches(text, version):
     return "".join(out)
 
 
+_TYPEDEF_STRUCT_RE = re.compile(
+    r"typedef\s+struct\s*\{([^{}]*)\}\s*(\w+)\s*;",
+    re.DOTALL,
+)
+_PRIM_SIZES = {
+    "u8": 1, "s8": 1,
+    "u16": 2, "s16": 2,
+    "u32": 4, "s32": 4,
+    "u64": 8, "s64": 8,
+    "f32": 4,
+}
+
+
+def _collect_local_typedef_info(text):
+    """Return `{TypedefName: (byte_size, [(field_type, array_len)...])}` for
+    `typedef struct { ... } Name;` blocks whose fields are all primitives
+    we can size. The field list is in declaration order and drives the
+    per-struct initializer emitter."""
+    info = {}
+    for m in _TYPEDEF_STRUCT_RE.finditer(text):
+        body = m.group(1)
+        name = m.group(2)
+        total = 0
+        fields = []
+        for fm in re.finditer(
+                r"\b(u8|s8|u16|s16|u32|s32|u64|s64|f32)\s+\w+"
+                r"(?:\s*\[\s*(\d+)\s*\])?\s*;",
+                body):
+            t = fm.group(1)
+            n = int(fm.group(2)) if fm.group(2) else 1
+            total += _PRIM_SIZES[t] * n
+            fields.append((t, n))
+        # Bail out if the typedef contains anything other than primitive
+        # scalar fields — we'd rather miss the size than guess wrong.
+        if total > 0 and fields:
+            info[name] = (total, fields)
+    return info
+
+
+def _collect_local_typedef_sizes(text):
+    return {k: v[0] for k, v in _collect_local_typedef_info(text).items()}
+
+
+def _blank_typedef_struct_blocks(text):
+    return _TYPEDEF_STRUCT_RE.sub(
+        lambda m: " " * len(m.group(0)), text)
+
+
 def parse_master_c(path):
     """Walk a hand-written inline master .c and yield a sequence of
 
@@ -346,6 +396,14 @@ def parse_master_c(path):
     scan_text = re.sub(r"/\*.*?\*/", lambda m: " " * len(m.group(0)),
                         raw, flags=re.DOTALL)
     scan_text = re.sub(r"//[^\n]*", lambda m: " " * len(m.group(0)), scan_text)
+    # Some .c files declare small local typedef structs whose field list
+    # would otherwise match `_TOP_DECL_RE` line-by-line (e.g. `s16 x;`
+    # inside `typedef struct { ... } Name;`). Blank those blocks in the
+    # scan buffer and record each typedef's byte size so the main loop
+    # can size arrays declared with that typedef.
+    local_typedef_info = _collect_local_typedef_info(scan_text)
+    local_typedef_sizes = {k: v[0] for k, v in local_typedef_info.items()}
+    scan_text = _blank_typedef_struct_blocks(scan_text)
 
     out = []
     pos = 0
@@ -365,7 +423,8 @@ def parse_master_c(path):
                 continue
             type_ = decl_m.group('type')
             name = decl_m.group('name')
-            if type_ not in _SUPPORTED_DECL_TYPES:
+            if type_ not in _SUPPORTED_DECL_TYPES \
+                    and type_ not in local_typedef_sizes:
                 pos = decl_m.end()
                 continue
 
@@ -396,7 +455,8 @@ def parse_master_c(path):
                 # declaration when present; otherwise count top-level
                 # `{...}` groups in the initializer; fall back to a
                 # single instance as a last resort.
-                per_elem = _FIXED_TYPE_SIZES.get(type_, 0)
+                per_elem = _FIXED_TYPE_SIZES.get(
+                    type_, local_typedef_sizes.get(type_, 0))
                 if per_elem:
                     count_str = decl_m.group('count')
                     if count_str:
@@ -412,10 +472,14 @@ def parse_master_c(path):
                             n = 0
                     size = (n * per_elem) if n else per_elem
 
-            out.append(('block', {
+            block = {
                 'type': type_, 'name': name, 'size': size,
                 'inc_path': inc_path,
-            }))
+            }
+            if type_ in local_typedef_info:
+                block['typedef_fields'] = local_typedef_info[type_][1]
+                block['typedef_size'] = local_typedef_info[type_][0]
+            out.append(('block', block))
             pos = body_end
     return out
 
@@ -592,6 +656,38 @@ def emit_u32(data, start, size, path):
     for i in range(0, len(vals), 6):
         row = " ".join(f"0x{v:08X}," for v in vals[i:i + 6])
         lines.append("\t" + row)
+    write_lines(path, lines)
+
+
+def emit_typedef_struct(data, start, total_size, path, fields, struct_size):
+    """Emit `total_size / struct_size` entries of a `typedef struct`
+    array as nested `{ v0, v1, ... },` initializers. `fields` is the
+    declaration-order list of `(primitive_type, array_len)` captured when
+    the local typedef was parsed."""
+    fmt_map = {
+        "u8": ("B", 1), "s8": ("b", 1),
+        "u16": ("H", 2), "s16": ("h", 2),
+        "u32": ("I", 4), "s32": ("i", 4),
+        "u64": ("Q", 8), "s64": ("q", 8),
+        "f32": ("f", 4),
+    }
+    assert total_size % struct_size == 0, \
+        f"typedef array {total_size} bytes / {struct_size} per-struct mismatch"
+    lines = []
+    off = start
+    for _ in range(total_size // struct_size):
+        parts = []
+        for ftype, flen in fields:
+            code, esize = fmt_map[ftype]
+            for _j in range(flen):
+                val = struct.unpack(f">{code}", data[off:off + esize])[0]
+                if ftype == "f32":
+                    parts.append(f"{val}f")
+                else:
+                    width = esize * 2
+                    parts.append(f"0x{val & ((1 << (esize * 8)) - 1):0{width}X}")
+                off += esize
+        lines.append("\t{ " + ", ".join(parts) + " },")
     write_lines(path, lines)
 
 
@@ -788,6 +884,10 @@ def _process_inline(fid, master_path):
             emit_u16(data, off, size, inc_full)
         elif decl_type == 'u32':
             emit_u32(data, off, size, inc_full)
+        elif 'typedef_fields' in payload:
+            emit_typedef_struct(data, off, size, inc_full,
+                                payload['typedef_fields'],
+                                payload['typedef_size'])
         elif inc_path_rel.endswith('.palette.inc.c'):
             emit_palette(data, off, inc_full)
         else:

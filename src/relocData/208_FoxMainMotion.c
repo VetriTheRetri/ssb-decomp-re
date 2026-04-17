@@ -6,6 +6,13 @@
  */
 
 #include "relocdata_types.h"
+#if defined(REGION_JP)
+
+u8 dFoxMainMotion[6848] = {
+	#include <FoxMainMotion/jp_raw.data.inc.c>
+};
+
+#else  /* REGION_US */
 
 /* @ 0x0000 (8 bytes) */
 u32 dFoxMainMotion_0x0000[2] = {
@@ -696,3 +703,5 @@ u32 dFoxMainMotion_0x1A68[4] = {
 u32 dFoxMainMotion_0x1A78[10] = {
 	#include <FoxMainMotion/FoxMainMotion_0x1A78.data.inc.c>
 };
+
+#endif  /* REGION_US */

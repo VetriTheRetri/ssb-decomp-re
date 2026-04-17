@@ -4,6 +4,13 @@
 #include "relocdata_types.h"
 #include <ft/ftdef.h>
 #include <ft/fttypes.h>
+#if defined(REGION_JP)
+
+u8 dPikachuMainMotion[5968] = {
+	#include <PikachuMainMotion/jp_raw.data.inc.c>
+};
+
+#else  /* REGION_US */
 
 u32 dPikachuMainMotion_0x0000[] = {
 	ftMotionCommandSetTexturePartID(6),
@@ -1326,3 +1333,5 @@ u32 dPikachuMainMotion_0x1750[] = {
 	ftMotionCommandGoto(dPikachuMainMotion_0x1710),
 	ftMotionCommandGoto(dPikachuMainMotion_0x1730),
 };
+
+#endif  /* REGION_US */

@@ -4,6 +4,13 @@
 #include "relocdata_types.h"
 #include <ft/ftdef.h>
 #include <ft/fttypes.h>
+#if defined(REGION_JP)
+
+u8 dCaptainMainMotion[7600] = {
+	#include <CaptainMainMotion/jp_raw.data.inc.c>
+};
+
+#else  /* REGION_US */
 
 u32 dCaptainMainMotion_0x0000[] = {
 	0x001E0046,
@@ -1654,3 +1661,5 @@ u32 dCaptainMainMotion_0x1DA8[] = {
 u32 dCaptainMainMotion_0x1DAC[] = {
 	ftMotionCommandEnd(),
 };
+
+#endif  /* REGION_US */

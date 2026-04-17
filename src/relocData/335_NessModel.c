@@ -5,6 +5,13 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#if defined(REGION_JP)
+
+u8 dNessModel[50112] = {
+	#include <NessModel/jp_raw.data.inc.c>
+};
+
+#else  /* REGION_US */
 
 /* Forward DObjDesc chain-target decls for fixRelocChain.py */
 extern u8 dNessModel_gap_0x553C_sub_0x1FC[];
@@ -1494,3 +1501,4 @@ Sprite dNessModel_FTEmblem = {
 
 PAD(4);
 
+#endif  /* REGION_US */

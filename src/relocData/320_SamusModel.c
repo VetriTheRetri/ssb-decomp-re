@@ -5,6 +5,13 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#if defined(REGION_JP)
+
+u8 dSamusModel[58704] = {
+	#include <SamusModel/jp_raw.data.inc.c>
+};
+
+#else  /* REGION_US */
 
 /* Raw data from file offset 0x0000 to 0x0020 (32 bytes) */
 u8 dSamusModel_gap_0x0000[32] = {
@@ -2053,3 +2060,4 @@ Sprite dSamusModel_FTEmblem = {
 
 PAD(4);
 
+#endif  /* REGION_US */

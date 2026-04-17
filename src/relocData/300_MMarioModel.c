@@ -5,6 +5,13 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#if defined(REGION_JP)
+
+u8 dMMarioModel[12096] = {
+	#include <MMarioModel/jp_raw.data.inc.c>
+};
+
+#else  /* REGION_US */
 
 /* Vtx: JointVerts @ 0x0 (20 vertices) */
 Vtx dMMarioModel_JointVerts_Vtx[20] = {
@@ -328,3 +335,4 @@ Sprite dMMarioModel_FTEmblem = {
 
 PAD(4);
 
+#endif  /* REGION_US */

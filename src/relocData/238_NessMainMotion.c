@@ -6,6 +6,13 @@
  */
 
 #include "relocdata_types.h"
+#if defined(REGION_JP)
+
+u8 dNessMainMotion[6048] = {
+	#include <NessMainMotion/jp_raw.data.inc.c>
+};
+
+#else  /* REGION_US */
 
 /* @ 0x0000 (36 bytes) */
 u32 dNessMainMotion_0x0000[9] = {
@@ -666,3 +673,5 @@ u32 dNessMainMotion_0x1780[2] = {
 u32 dNessMainMotion_0x1788[10] = {
 	#include <NessMainMotion/NessMainMotion_0x1788.data.inc.c>
 };
+
+#endif  /* REGION_US */

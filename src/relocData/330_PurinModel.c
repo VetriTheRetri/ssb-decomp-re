@@ -5,6 +5,13 @@
  * at extract time. */
 
 #include "relocdata_types.h"
+#if defined(REGION_JP)
+
+u8 dPurinModel[32224] = {
+	#include <PurinModel/jp_raw.data.inc.c>
+};
+
+#else  /* REGION_US */
 
 /* Vtx: JointVerts @ 0x0 (2 vertices) */
 Vtx dPurinModel_JointVerts_Vtx[2] = {
@@ -1372,3 +1379,4 @@ Sprite dPurinModel_FTEmblem = {
 
 PAD(4);
 
+#endif  /* REGION_US */

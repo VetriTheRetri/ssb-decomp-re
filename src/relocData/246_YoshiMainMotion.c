@@ -4,6 +4,7 @@
 #include "relocdata_types.h"
 #include <ft/ftdef.h>
 #include <ft/fttypes.h>
+#include <gm/gmdef.h>
 
 u32 dYoshiMainMotion_0x0000[] = {
 	ftMotionCommandSetTexturePartID(4),
@@ -668,11 +669,7 @@ u32 dYoshiMainMotion_0x0A04[] = {
 	ftMotionCommandSetTexturePartID(6),
 	ftMotionCommandSetTexturePartID(1048582),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
-#if defined(REGION_JP)
-	ftMotionCommandSetColAnim(75, 40),
-#else
-	ftMotionCommandSetColAnim(76, 40),
-#endif
+	ftMotionCommandSetColAnim(nGMColAnimFighterBat,, 40)),
 	ftMotionCommandWaitAsync(19),
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandSubroutine(0x0248), /* extern */
@@ -741,11 +738,7 @@ u32 dYoshiMainMotion_0x0AD4[] = {
 };
 
 u32 dYoshiMainMotion_0x0AF8[] = {
-#if defined(REGION_JP)
-	ftMotionCommandSetColAnim(74, 11),
-#else
-	ftMotionCommandSetColAnim(75, 11),
-#endif
+	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod,, 11)),
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandSubroutine(0x0494), /* extern */
@@ -757,11 +750,7 @@ u32 dYoshiMainMotion_0x0AF8[] = {
 };
 
 u32 dYoshiMainMotion_0x0B20[] = {
-#if defined(REGION_JP)
-	ftMotionCommandSetColAnim(74, 18),
-#else
-	ftMotionCommandSetColAnim(75, 18),
-#endif
+	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod,, 18)),
 	ftMotionCommandWaitAsync(12),
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandSubroutine(0x04F8), /* extern */
@@ -777,11 +766,7 @@ u32 dYoshiMainMotion_0x0B20[] = {
 u32 dYoshiMainMotion_0x0B50[] = {
 	ftMotionCommandSetTexturePartID(6),
 	ftMotionCommandSetTexturePartID(1048582),
-#if defined(REGION_JP)
-	ftMotionCommandSetColAnim(74, 26),
-#else
-	ftMotionCommandSetColAnim(75, 26),
-#endif
+	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod,, 26)),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetSlopeContour(4),
@@ -796,11 +781,7 @@ u32 dYoshiMainMotion_0x0B50[] = {
 };
 
 u32 dYoshiMainMotion_0x0B8C[] = {
-#if defined(REGION_JP)
-	ftMotionCommandSetColAnim(74, 26),
-#else
-	ftMotionCommandSetColAnim(75, 26),
-#endif
+	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod,, 26)),
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandWaitAsync(8),
 	ftMotionCommandSubroutine(0x05C0), /* extern */

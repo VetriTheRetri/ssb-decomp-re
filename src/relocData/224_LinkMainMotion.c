@@ -4,6 +4,7 @@
 #include "relocdata_types.h"
 #include <ft/ftdef.h>
 #include <ft/fttypes.h>
+#include <gm/gmdef.h>
 
 u32 dLinkMainMotion_0x0000[] = {
 	ftMotionCommandSetTexturePartID(2),
@@ -791,11 +792,7 @@ u32 dLinkMainMotion_0x0B80[] = {
 	ftMotionCommandMakeRumble(0, 7),
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
-#if defined(REGION_JP)
-	ftMotionCommandSetColAnim(75, 40),
-#else
-	ftMotionCommandSetColAnim(76, 40),
-#endif
+	ftMotionCommandSetColAnim(nGMColAnimFighterBat,, 40)),
 	ftMotionCommandWaitAsync(17),
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandSubroutine(0x0248), /* extern */
@@ -863,11 +860,7 @@ u32 dLinkMainMotion_0x0C48[] = {
 
 u32 dLinkMainMotion_0x0C68[] = {
 	ftMotionCommandSetSlopeContour(3),
-#if defined(REGION_JP)
-	ftMotionCommandSetColAnim(74, 11),
-#else
-	ftMotionCommandSetColAnim(75, 11),
-#endif
+	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod,, 11)),
 	ftMotionCommandWaitAsync(7),
 	ftMotionCommandSubroutine(0x0494), /* extern */
 	ftMotionCommandWait(4),
@@ -877,11 +870,7 @@ u32 dLinkMainMotion_0x0C68[] = {
 
 u32 dLinkMainMotion_0x0C88[] = {
 	ftMotionCommandSetSlopeContour(3),
-#if defined(REGION_JP)
-	ftMotionCommandSetColAnim(74, 15),
-#else
-	ftMotionCommandSetColAnim(75, 15),
-#endif
+	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod,, 15)),
 	ftMotionCommandWaitAsync(11),
 	ftMotionCommandSubroutine(0x04F8), /* extern */
 	ftMotionCommandWaitAsync(12),
@@ -893,11 +882,7 @@ u32 dLinkMainMotion_0x0C88[] = {
 
 u32 dLinkMainMotion_0x0CB0[] = {
 	ftMotionCommandSetSlopeContour(3),
-#if defined(REGION_JP)
-	ftMotionCommandSetColAnim(74, 28),
-#else
-	ftMotionCommandSetColAnim(75, 28),
-#endif
+	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod,, 28)),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandWaitAsync(17),
 	ftMotionCommandSetSlopeContour(4),
@@ -915,11 +900,7 @@ u32 dLinkMainMotion_0x0CE8[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandSetSlopeContour(4),
-#if defined(REGION_JP)
-	ftMotionCommandSetColAnim(74, 25),
-#else
-	ftMotionCommandSetColAnim(75, 25),
-#endif
+	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod,, 25)),
 	ftMotionCommandWaitAsync(8),
 	ftMotionCommandSubroutine(0x05C0), /* extern */
 	ftMotionCommandWait(17),
@@ -2384,7 +2365,7 @@ u32 dLinkMainMotion_0x1DCC[] = {
 #endif
 	ftMotionPlayFGM(nSYAudioFGMLinkSpecialHi),
 	ftMotionPlayVoice(nSYAudioVoiceLinkSpecialHi),
-	ftMotionCommandSetColAnim(44, 50),
+	ftMotionCommandSetColAnim(nGMColAnimFighterSamusSpecialNEnd,, 50)),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandMakeRumble(30, 7),
 	ftMotionCommandSetFlag2(13),

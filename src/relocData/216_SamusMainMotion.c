@@ -4,6 +4,7 @@
 #include "relocdata_types.h"
 #include <ft/ftdef.h>
 #include <ft/fttypes.h>
+#include <gm/gmdef.h>
 
 u32 dSamusMainMotion_0x0000[] = {
 	ftMotionCommandHideModelPartAll(),
@@ -708,11 +709,7 @@ u32 dSamusMainMotion_0x0A38[] = {
 u32 dSamusMainMotion_0x0A5C[] = {
 	ftMotionCommandMakeRumble(0, 7),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
-#if defined(REGION_JP)
-	ftMotionCommandSetColAnim(75, 40),
-#else
-	ftMotionCommandSetColAnim(76, 40),
-#endif
+	ftMotionCommandSetColAnim(nGMColAnimFighterBat,, 40)),
 	ftMotionCommandWaitAsync(19),
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandSubroutine(0x0248), /* extern */
@@ -778,11 +775,7 @@ u32 dSamusMainMotion_0x0B14[] = {
 };
 
 u32 dSamusMainMotion_0x0B3C[] = {
-#if defined(REGION_JP)
-	ftMotionCommandSetColAnim(74, 10),
-#else
-	ftMotionCommandSetColAnim(75, 10),
-#endif
+	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod,, 10)),
 	ftMotionCommandWaitAsync(6),
 	ftMotionCommandSubroutine(0x0494), /* extern */
 	ftMotionCommandWait(10),
@@ -791,11 +784,7 @@ u32 dSamusMainMotion_0x0B3C[] = {
 };
 
 u32 dSamusMainMotion_0x0B58[] = {
-#if defined(REGION_JP)
-	ftMotionCommandSetColAnim(74, 17),
-#else
-	ftMotionCommandSetColAnim(75, 17),
-#endif
+	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod,, 17)),
 	ftMotionCommandWaitAsync(8),
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandWaitAsync(9),
@@ -809,11 +798,7 @@ u32 dSamusMainMotion_0x0B58[] = {
 };
 
 u32 dSamusMainMotion_0x0B88[] = {
-#if defined(REGION_JP)
-	ftMotionCommandSetColAnim(74, 25),
-#else
-	ftMotionCommandSetColAnim(75, 25),
-#endif
+	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod,, 25)),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandWaitAsync(19),
 	ftMotionCommandSetSlopeContour(4),
@@ -831,11 +816,7 @@ u32 dSamusMainMotion_0x0BBC[] = {
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandSetSlopeContour(4),
-#if defined(REGION_JP)
-	ftMotionCommandSetColAnim(74, 22),
-#else
-	ftMotionCommandSetColAnim(75, 22),
-#endif
+	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod,, 22)),
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandSubroutine(0x05C0), /* extern */
 	ftMotionCommandWait(18),
@@ -1532,7 +1513,7 @@ u32 dSamusMainMotion_0x1ACC[] = {
 
 u32 dSamusMainMotion_0x1AE0[] = {
 	ftMotionCommandGoto(dSamusMainMotion_0x1ACC),
-	ftMotionCommandSetColAnim(45, 0),
+	ftMotionCommandSetColAnim(nGMColAnimFighterSamusSpecialHi,, 0)),
 	ftMotionCommandSetHitStatusAll(2),
 	ftMotionCommandEffect(0, 19, 0, 0, 0, -180, 0, 0, 0),
 	ftMotionCommandWaitAsync(4),
@@ -1608,7 +1589,7 @@ u32 dSamusMainMotion_0x1C68[] = {
 };
 
 u32 dSamusMainMotion_0x1C8C[] = {
-	ftMotionCommandSetColAnim(45, 0),
+	ftMotionCommandSetColAnim(nGMColAnimFighterSamusSpecialHi,, 0)),
 	ftMotionCommandSetHitStatusAll(2),
 	ftMotionCommandEffect(0, 13, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandWaitAsync(4),
@@ -1661,7 +1642,7 @@ u32 dSamusMainMotion_0x1D88[] = {
 	ftMotionCommandGoto(dSamusMainMotion_0x1D88),
 	ftMotionCommandSetSlopeContour(3),
 	ftMotionCommandMakeRumble(0, 7),
-	ftMotionCommandSetColAnim(47, 0),
+	ftMotionCommandSetColAnim(nGMColAnimFighterFoxSpecialHiStart,, 0)),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEffect(16, 18, 0, 200, 0, 0, 0, 0, 0),
 	ftMotionCommandEffect(0, 19, 0, 0, 0, -180, 0, 0, 0),
@@ -1670,7 +1651,7 @@ u32 dSamusMainMotion_0x1D88[] = {
 };
 
 u32 dSamusMainMotion_0x1DE0[] = {
-	ftMotionCommandSetColAnim(47, 0),
+	ftMotionCommandSetColAnim(nGMColAnimFighterFoxSpecialHiStart,, 0)),
 	ftMotionCommandSetFlag0(1),
 	ftMotionCommandEffect(16, 18, 0, 200, 0, 0, 0, 0, 0),
 	ftMotionCommandEffect(0, 16, 0, 0, 0, 0, 0, 0, 0),

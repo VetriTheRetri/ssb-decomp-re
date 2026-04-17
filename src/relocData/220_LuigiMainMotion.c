@@ -4,6 +4,7 @@
 #include "relocdata_types.h"
 #include <ft/ftdef.h>
 #include <ft/fttypes.h>
+#include <gm/gmdef.h>
 
 u32 dLuigiMainMotion_0x0000[] = {
 	ftMotionCommandSetTexturePartID(3),
@@ -630,11 +631,7 @@ u32 dLuigiMainMotion_0x0944[] = {
 	ftMotionCommandMakeRumble(0, 7),
 	ftMotionCommandSetTexturePartID(2),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
-#if defined(REGION_JP)
-	ftMotionCommandSetColAnim(75, 40),
-#else
-	ftMotionCommandSetColAnim(76, 40),
-#endif
+	ftMotionCommandSetColAnim(nGMColAnimFighterBat,, 40)),
 	ftMotionCommandSetTexturePartID(2),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetSlopeContour(4),
@@ -697,11 +694,7 @@ u32 dLuigiMainMotion_0x0A00[] = {
 };
 
 u32 dLuigiMainMotion_0x0A1C[] = {
-#if defined(REGION_JP)
-	ftMotionCommandSetColAnim(74, 8),
-#else
-	ftMotionCommandSetColAnim(75, 8),
-#endif
+	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod,, 8)),
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandSubroutine(0x0494), /* extern */
 	ftMotionCommandWait(8),
@@ -710,11 +703,7 @@ u32 dLuigiMainMotion_0x0A1C[] = {
 };
 
 u32 dLuigiMainMotion_0x0A38[] = {
-#if defined(REGION_JP)
-	ftMotionCommandSetColAnim(74, 16),
-#else
-	ftMotionCommandSetColAnim(75, 16),
-#endif
+	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod,, 16)),
 	ftMotionCommandWaitAsync(9),
 	ftMotionCommandSetSlopeContour(4),
 	ftMotionCommandSubroutine(0x04F8), /* extern */
@@ -729,11 +718,7 @@ u32 dLuigiMainMotion_0x0A38[] = {
 
 u32 dLuigiMainMotion_0x0A68[] = {
 	ftMotionCommandSetTexturePartID(2),
-#if defined(REGION_JP)
-	ftMotionCommandSetColAnim(74, 28),
-#else
-	ftMotionCommandSetColAnim(75, 28),
-#endif
+	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod,, 28)),
 	ftMotionCommandPlaySmashVoice(nSYAudioFGMExplodeS),
 	ftMotionCommandWaitAsync(20),
 	ftMotionCommandSetSlopeContour(4),
@@ -749,11 +734,7 @@ u32 dLuigiMainMotion_0x0A68[] = {
 
 u32 dLuigiMainMotion_0x0AA0[] = {
 	ftMotionCommandSetSlopeContour(4),
-#if defined(REGION_JP)
-	ftMotionCommandSetColAnim(74, 10),
-#else
-	ftMotionCommandSetColAnim(75, 10),
-#endif
+	ftMotionCommandSetColAnim(nGMColAnimFighterStarRod,, 10)),
 	ftMotionCommandWaitAsync(4),
 	ftMotionCommandSubroutine(0x05C0), /* extern */
 	ftMotionCommandWait(27),
@@ -1350,7 +1331,7 @@ u32 dLuigiMainMotion_0x1758[] = {
 	ftMotionCommandSetTexturePartID(2),
 	ftMotionCommandWaitAsync(16),
 	ftMotionCommandSetFlag0(1),
-	ftMotionCommandSetColAnim(39, 0),
+	ftMotionCommandSetColAnim(nGMColAnimFighterMarioSpecialN,, 0)),
 	ftMotionCommandEffect(16, 31, 0, 60, 0, 0, 0, 0, 0),
 	ftMotionPlayFGM(nSYAudioFGMMarioSpecialN),
 	ftMotionCommandMakeRumble(0, 6),
@@ -1373,7 +1354,7 @@ u32 dLuigiMainMotion_0x1784[] = {
 	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
 	ftMotionCommandEffect(15, 31, 0, 80, 0, 0, 0, 0, 0),
 	ftMotionPlayFGM(nSYAudioFGMMarioSpecialHiJump),
-	ftMotionCommandSetColAnim(5, 1),
+	ftMotionCommandSetColAnim(nGMColAnimFighterDamageCommon,, 1)),
 	ftMotionCommandWait(1),
 };
 
@@ -1409,7 +1390,7 @@ u32 dLuigiMainMotion_0x1844[] = {
 	ftMotionCommandEffect(0, 19, 0, 0, 0, -150, 0, 0, 0),
 	ftMotionCommandEffect(15, 31, 0, 80, 0, 0, 0, 0, 0),
 	ftMotionPlayFGM(nSYAudioFGMMarioSpecialHiJump),
-	ftMotionCommandSetColAnim(5, 1),
+	ftMotionCommandSetColAnim(nGMColAnimFighterDamageCommon,, 1)),
 	ftMotionCommandWait(1),
 	ftMotionCommandGoto(dLuigiMainMotion_0x17FC),
 	ftMotionCommandSetTexturePartID(2),

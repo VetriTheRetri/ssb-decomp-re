@@ -4,6 +4,7 @@
 #include "relocdata_types.h"
 #include <ft/ftdef.h>
 #include <ft/fttypes.h>
+#include <gm/gmdef.h>
 #if defined(REGION_JP)
 
 u8 dBossMainMotion[2480] = {
@@ -47,14 +48,14 @@ u32 dBossMainMotion_0x0068[] = {
 	ftMotionCommandWaitAsync(100),
 	ftMotionCommandMakeAttackColl(0, 0, 20, 12, 1, 0, 750, 0, 300, -105, 361, 100, 0, 3, 10, 2, 1, 16),
 	ftMotionCommandMakeAttackColl(1, 0, 20, 12, 1, 0, 750, 0, -100, -105, 361, 100, 0, 3, 10, 2, 1, 16),
-	ftMotionCommandSetColAnim(69, 0),
+	ftMotionCommandSetColAnim(nGMColAnimFighterBossOkuhikouki,, 0)),
 	ftMotionPlayFGM(nSYAudioFGMFoxSpecialHiFly),
 	ftMotionCommandEffect(-1, 34, 0, 0, 0, 0, 0, 0, 0),
 	ftMotionCommandEnd(),
 };
 
 u32 dBossMainMotion_0x00EC[] = {
-	ftMotionCommandSetColAnim(70, 0),
+	ftMotionCommandSetColAnim(nGMColAnimFighterBossOkupunch,, 0)),
 	ftMotionPlayFGM(nSYAudioFGMSectorAmbient1),
 	ftMotionCommandMakeAttackColl(0, 0, 20, 16, 1, 0, 800, 0, 0, 0, 90, 100, 0, 3, 20, 2, 1, 30),
 	ftMotionCommandMakeAttackColl(1, 0, 11, 16, 1, 0, 300, 0, 0, 0, 90, 100, 0, 3, 20, 2, 1, 30),
@@ -65,7 +66,7 @@ u32 dBossMainMotion_0x00EC[] = {
 };
 
 u32 dBossMainMotion_0x0148[] = {
-	ftMotionCommandSetColAnim(69, 30),
+	ftMotionCommandSetColAnim(nGMColAnimFighterBossOkuhikouki,, 30)),
 	ftMotionPlayFGM(nSYAudioFGMSectorAmbient2),
 	ftMotionCommandMakeAttackColl(0, 0, 20, 12, 1, 0, 700, 0, 300, -105, 361, 100, 0, 3, 10, 2, 1, 16),
 	ftMotionCommandMakeAttackColl(1, 0, 20, 12, 1, 0, 700, 0, -100, -105, 361, 100, 0, 3, 10, 2, 1, 16),
@@ -255,7 +256,7 @@ u32 dBossMainMotion_0x0694[] = {
 };
 
 u32 dBossMainMotion_0x06C0[] = {
-	ftMotionCommandSetColAnim(72, 0),
+	ftMotionCommandSetColAnim(nGMColAnimFighterBossYubideppou3,, 0)),
 	ftMotionCommandEffect(15, 28, 0, 220, 0, 0, 0, 0, 0),
 	ftMotionCommandEffect(19, 28, 0, 220, 0, 0, 0, 0, 0),
 	ftMotionCommandEffect(-1, 34, 0, 0, 0, 0, 0, 0, 0),
@@ -269,7 +270,7 @@ u32 dBossMainMotion_0x06C0[] = {
 };
 
 u32 dBossMainMotion_0x0728[] = {
-	ftMotionCommandSetColAnim(71, 0),
+	ftMotionCommandSetColAnim(nGMColAnimFighterBossYubideppou2,, 0)),
 };
 
 u32 dBossMainMotion_0x072C[] = {
@@ -374,7 +375,7 @@ u32 dBossMainMotion_0x07DC[] = {
 };
 
 u32 dBossMainMotion_0x07E0[] = {
-	ftMotionCommandSetColAnim(70, 0),
+	ftMotionCommandSetColAnim(nGMColAnimFighterBossOkupunch,, 0)),
 	ftMotionPlayFGM(nSYAudioFGMSectorAmbient1),
 	ftMotionCommandMakeAttackColl(0, 1, 20, 16, 1, 0, 800, 0, 300, -105, 100, 100, 0, 3, 20, 2, 1, 40),
 	ftMotionCommandMakeAttackColl(1, 1, 20, 16, 1, 0, 800, 0, -100, -105, 100, 100, 0, 3, 20, 2, 1, 40),
@@ -420,7 +421,7 @@ u32 dBossMainMotion_0x0924[] = {
 };
 
 u32 dBossMainMotion_0x0950[] = {
-	ftMotionCommandSetColAnim(42, 0),
+	ftMotionCommandSetColAnim(nGMColAnimFighterDonkeySpecialNEnd,, 0)),
 	ftMotionCommandEffect(20, 29, 0, 0, 0, 0, 300, 300, 300),
 	ftMotionCommandWait(1),
 	ftMotionCommandGoto(dBossMainMotion_0x0950),

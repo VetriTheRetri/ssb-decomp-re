@@ -48,7 +48,7 @@ build uses one of three override mechanisms, in priority order:
 `.jp.c` raw blobs are no longer used — every previously-blob-overridden
 file has been migrated to one of the structural mechanisms above.
 
-### Remaining raw-blob inline files (4 files, ~44 KB)
+### Remaining raw-blob inline files (1 file, ~17 KB)
 
 These are inline `.c` files whose only declarations are one or two raw
 `u8[]` arrays (no struct types, no LUT/Tex blocks, no animation u32[]).
@@ -56,9 +56,8 @@ They build and match but aren't structurally decomposed.
 
 | Category | Files | Bytes | Notes |
 |---|---:|---:|---|
-| Pupupu beta | 3 | 27,232 | `StagePupupuBetaImages`, `StagePupupuBeta1`, `StagePupupuBeta2` — beta prototype geometry |
 | Stage File2/3/4 | 1 | 17,328 | `StageBattlefieldFile2` — split into 3 named u8 regions plus a 43-entry intern chain that crosses the existing block boundaries; needs careful re-split before further typing |
-| **Total** | **4** | **44,560** | |
+| **Total** | **1** | **17,328** | |
 
 Recent round of structural work:
 - All 27 fighter **Main.c** files now have every `_pre` sub-block
@@ -108,6 +107,19 @@ Recent round of structural work:
   u16 offset }` for option-text glyph streams. Six named arrays cover
   the file (DisplayLabel/Option, MenuLabel/Option, plus two tag-named
   PosSprite arrays).
+- `StagePupupuBetaImages` (fid 100, 10,176 B) → 12 typed (LUT + Tex)
+  pairs in the same `PAD(8) + Lut(32) + PAD(8) + Tex(N)` cadence as
+  the production `StagePupupuImages` file. Block layout recovered by
+  walking the extern reloc chains in StagePupupuBeta1/2 (both target
+  the same 12 LUT and 12 Tex offsets). Tex sizes 128 / 512 / 1024 /
+  2048 bytes (CI4 32×8 / 32×32 / 64×32 / 64×64).
+- `StagePupupuBeta1` (fid 101, 6,560 B) and `StagePupupuBeta2`
+  (fid 102, 10,496 B) — Pupupu Beta stage geometry. Each split into
+  three structural regions discovered by walking gsSPEndDisplayList
+  markers and the intern + extern reloc chains: a Vtx/DObjDesc pool,
+  a contiguous Gfx section (8 DLs in Beta1, 13 in Beta2), and a
+  trailing DObjDesc-shaped block. Held as named u8 sub-blocks for
+  now — DL-by-DL Gfx[] typing is still pending.
 - Earlier rounds: all `*MainMotion`, `MV opening / ending`,
   `Bonus*CommonImages`, `Stage*Images`, `Special1`, the `LBTransition*`,
   and `MarioSecondaryImage` files.
@@ -322,11 +334,12 @@ more structural representation instead.
 
 The remaining work splits into four buckets:
 
-1. **Promote the 4 raw-blob inline files** (~44 KB). `StageBattlefieldFile2`
-   is the biggest remaining (17 KB); the three Pupupu beta files are
-   each ≤ 14 KB. Recent rounds removed `ITCommonObject`, `KirbySpecial1`,
-   `FoxUnknown`, `NCommonTexture`, `ITBonus1Object`, `SYKseg1Validate`,
-   `SYSignValidate`, and `SC1PTrainingMode` from this list.
+1. **Promote the 1 remaining raw-blob inline file** (~17 KB):
+   `StageBattlefieldFile2`. Recent rounds removed `ITCommonObject`,
+   `KirbySpecial1`, `FoxUnknown`, `NCommonTexture`, `ITBonus1Object`,
+   `SYKseg1Validate`, `SYSignValidate`, `SC1PTrainingMode`,
+   `StagePupupuBetaImages`, `StagePupupuBeta1`, and `StagePupupuBeta2`
+   from this list.
 
 2. **Carve `gap_*` bytes inside typed inline masters** (~1.13 MB
    remaining). These are vertex pools, textures, and palettes
